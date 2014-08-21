@@ -40,7 +40,7 @@ $side-nav-heading-text-transform: uppercase !default;
 // We use these to control border styles
 $side-nav-divider-size: 1px !default;
 $side-nav-divider-style: solid !default;
-$side-nav-divider-color: scale-color(#fff, $lightness: 10%) !default;
+$side-nav-divider-color: scale-color($white, $lightness: 10%) !default;
 
 
 //

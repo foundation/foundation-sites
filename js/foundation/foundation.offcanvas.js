@@ -17,48 +17,97 @@
 
     events : function () {
       var self = this,
-          S = self.S;
-      
+          S = self.S,
+          move_class = '',
+          right_postfix = '',
+          left_postfix = '';
+
+      if (this.settings.open_method === 'move') {
+        move_class = 'move-';
+        right_postfix = 'right';
+        left_postfix = 'left';
+      } else if (this.settings.open_method === 'overlap_single') {
+        move_class = 'offcanvas-overlap-';
+        right_postfix = 'right';
+        left_postfix = 'left';
+      } else if (this.settings.open_method === 'overlap') {
+        move_class = 'offcanvas-overlap';
+      }
+
       S(this.scope).off('.offcanvas')
         .on('click.fndtn.offcanvas', '.left-off-canvas-toggle', function (e) {
-            self.click_toggle_class(e, 'move-right');
-            S(".left-submenu").removeClass('move-right');
+          self.click_toggle_class(e, move_class + right_postfix);
+          if (self.settings.open_method !== 'overlap'){
+            S(".left-submenu").removeClass(move_class + right_postfix);
+          }
         })
         .on('click.fndtn.offcanvas', '.left-off-canvas-menu a', function (e) {
-          if(self.settings.close_on_click && !S(this).parent().hasClass("has-submenu") && !S(this).parent().hasClass("back")){
-            S(".off-canvas-wrap").removeClass("move-right");
-            S(this).parent().parent().removeClass('move-right');
+          var settings = self.get_settings(e);
+          var parent = S(this).parent();
+          
+          if(settings.close_on_click && !parent.hasClass("has-submenu") && !parent.hasClass("back")){
+            self.hide.call(self, move_class + right_postfix, self.get_wrapper(e));
+            parent.parent().removeClass(move_class + right_postfix);
           }else if(S(this).parent().hasClass("has-submenu")){
             e.preventDefault();
-            S(this).siblings(".left-submenu").toggleClass('move-right');
-          }else if(S(this).parent().hasClass("back")){
+            S(this).siblings(".left-submenu").toggleClass(move_class + right_postfix);
+          }else if(parent.hasClass("back")){
             e.preventDefault();
-            S(this).parent().parent().removeClass('move-right');
-          }
+            parent.parent().removeClass(move_class + right_postfix);
+          }     
         })
         .on('click.fndtn.offcanvas', '.right-off-canvas-toggle', function (e) {
-          self.click_toggle_class(e, 'move-left');
-          S(".right-submenu").removeClass('move-left');
-        })
-        .on('click.fndtn.offcanvas', '.right-off-canvas-menu a', function (e) {
-          if(self.settings.close_on_click && !S(this).parent().hasClass("has-submenu") && !S(this).parent().hasClass("back")){
-            S(".off-canvas-wrap").removeClass("move-left");
-            S(this).parent().parent().removeClass('move-left');
-          }else if(S(this).parent().hasClass("has-submenu")){
-            e.preventDefault();
-            S(this).siblings(".right-submenu").toggleClass('move-left');
-          }else if(S(this).parent().hasClass("back")){
-            e.preventDefault();
-            S(this).parent().parent().removeClass('move-left');
+          self.click_toggle_class(e, move_class + left_postfix);
+          if (self.settings.open_method !== 'overlap'){
+            S(".right-submenu").removeClass(move_class + left_postfix);
           }
         })
-        .on('click.fndtn.offcanvas', '.exit-off-canvas', function (e) {
-          self.click_remove_class(e, 'move-left');
-          self.click_remove_class(e, 'move-right');
-          S(".left-submenu").removeClass('move-right');
-          S(".right-submenu").removeClass('move-left');
+        .on('click.fndtn.offcanvas', '.right-off-canvas-menu a', function (e) {
+          var settings = self.get_settings(e);
+          var parent = S(this).parent();
+          
+          if(settings.close_on_click && !parent.hasClass("has-submenu") && !parent.hasClass("back")){
+            self.hide.call(self, move_class + left_postfix, self.get_wrapper(e));
+            parent.parent().removeClass(move_class + left_postfix);
+          }else if(S(this).parent().hasClass("has-submenu")){
+            e.preventDefault();
+            S(this).siblings(".right-submenu").toggleClass(move_class + left_postfix);
+          }else if(parent.hasClass("back")){
+            e.preventDefault();
+            parent.parent().removeClass(move_class + left_postfix);
+          }          
         })
+        .on('click.fndtn.offcanvas', '.exit-off-canvas', function (e) {
+          self.click_remove_class(e, move_class + left_postfix);
+          S(".right-submenu").removeClass(move_class + left_postfix);
+          if (right_postfix){
+            self.click_remove_class(e, move_class + right_postfix);
+            S(".left-submenu").removeClass(move_class + left_postfix);
+          }
+        });
     },
+
+    toggle: function(class_name, $off_canvas) {
+      $off_canvas = $off_canvas || this.get_wrapper();
+      if ($off_canvas.is('.' + class_name)) {
+        this.hide(class_name, $off_canvas);
+      } else {
+        this.show(class_name, $off_canvas);
+      }
+    },
+
+    show: function(class_name, $off_canvas) {
+      $off_canvas = $off_canvas || this.get_wrapper();
+      $off_canvas.trigger('open').trigger('open.fndtn.offcanvas');
+      $off_canvas.addClass(class_name);
+    },
+
+    hide: function(class_name, $off_canvas) {
+      $off_canvas = $off_canvas || this.get_wrapper();
+      $off_canvas.trigger('close').trigger('close.fndtn.offcanvas');
+      $off_canvas.removeClass(class_name);
+    },
+
     click_toggle_class: function(e, class_name) {
       e.preventDefault();
       var $off_canvas = this.get_wrapper(e);

@@ -19,8 +19,8 @@ $include-html-button-classes: $include-html-classes !default;
 
 // We use these to control different shared styles for Split Buttons
 $split-button-function-factor: 10% !default;
-$split-button-pip-color: #fff !default;
-$split-button-pip-color-alt: #333 !default;
+$split-button-pip-color: $white !default;
+$split-button-pip-color-alt: $oil !default;
 $split-button-active-bg-tint: rgba(0,0,0,0.1) !default;
 
 // We use these to control tiny split buttons

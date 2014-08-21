@@ -12,7 +12,7 @@
 $include-html-top-bar-classes: $include-html-classes !default;
 
 // Background color for the top bar
-$topbar-bg-color: #333 !default;
+$topbar-bg-color: $oil !default;
 $topbar-bg: $topbar-bg-color !default;
 
 // Height and margin
@@ -24,25 +24,25 @@ $topbar-title-weight: $font-weight-normal !default;
 $topbar-title-font-size: rem-calc(17) !default;
 
 // Style the top bar dropdown elements
-$topbar-dropdown-bg: #333 !default;
-$topbar-dropdown-link-color: #fff !default;
-$topbar-dropdown-link-bg: #333 !default;
+$topbar-dropdown-bg: $oil !default;
+$topbar-dropdown-link-color: $white !default;
+$topbar-dropdown-link-bg: $oil !default;
 $topbar-dropdown-link-weight: $font-weight-normal !default;
 $topbar-dropdown-toggle-size: 5px !default;
-$topbar-dropdown-toggle-color: #fff !default;
+$topbar-dropdown-toggle-color: $white !default;
 $topbar-dropdown-toggle-alpha: 0.4 !default;
 
 // Set the link colors and styles for top-level nav
-$topbar-link-color: #fff !default;
-$topbar-link-color-hover: #fff !default;
-$topbar-link-color-active: #fff !default;
-$topbar-link-color-active-hover: #fff !default;
+$topbar-link-color: $white !default;
+$topbar-link-color-hover: $white !default;
+$topbar-link-color-active: $white !default;
+$topbar-link-color-active-hover: $white !default;
 $topbar-link-weight: $font-weight-normal !default;
 $topbar-link-font-size: rem-calc(13) !default;
 $topbar-link-hover-lightness: -10% !default; // Darken by 10%
 $topbar-link-bg: $topbar-bg !default;
 $topbar-link-bg-hover: #272727 !default;
-$topbar-link-bg-color-hover: #555555 !default;
+$topbar-link-bg-color-hover: $charcoal !default;
 $topbar-link-bg-active: $primary-color !default;
 $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%) !default;
 $topbar-link-font-family: $body-font-family !default;
@@ -52,20 +52,20 @@ $topbar-link-padding: $topbar-height / 3 !default;
 $topbar-button-font-size: 0.75rem !default;
 $topbar-button-top: 7px !default;
 
-$topbar-dropdown-label-color: #777 !default;
+$topbar-dropdown-label-color: $monsoon !default;
 $topbar-dropdown-label-text-transform: uppercase !default;
 $topbar-dropdown-label-font-weight: $font-weight-bold !default;
 $topbar-dropdown-label-font-size: rem-calc(10) !default;
-$topbar-dropdown-label-bg: #333 !default;
+$topbar-dropdown-label-bg: $oil !default;
 
 // Top menu icon styles
 $topbar-menu-link-transform: uppercase !default;
 $topbar-menu-link-font-size: rem-calc(13) !default;
 $topbar-menu-link-weight: $font-weight-bold !default;
-$topbar-menu-link-color: #fff !default;
-$topbar-menu-icon-color: #fff !default;
-$topbar-menu-link-color-toggled: #888 !default;
-$topbar-menu-icon-color-toggled: #888 !default;
+$topbar-menu-link-color: $white !default;
+$topbar-menu-icon-color: $white !default;
+$topbar-menu-link-color-toggled: $jumbo !default;
+$topbar-menu-icon-color-toggled: $jumbo !default;
 
 // Transitions and breakpoint styles
 $topbar-transition-speed: 300ms !default;
@@ -226,7 +226,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
             }
             height: 34px;
             line-height: 33px;
-            padding: 0 $topbar-link-padding+25 0 $topbar-link-padding;
+            padding: 0 $topbar-link-padding+25px 0 $topbar-link-padding;
             color: $topbar-menu-link-color;
             position: relative;
 
@@ -567,15 +567,18 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
               background: $topbar-dropdown-link-bg;
             }
 
-            &:not(.has-form) a:not(.button) {
-              color: $topbar-dropdown-link-color;
-              background: $topbar-dropdown-link-bg;
-            }
-            &:not(.has-form):hover > a:not(.button) {
-              color: $topbar-link-color-hover;
-              background-color: $topbar-link-bg-color-hover;
-              @if ($topbar-link-bg-hover) {
-                background: $topbar-link-bg-hover;
+            &:not(.has-form):not(.active) {
+              & > a:not(.button) {
+                color: $topbar-dropdown-link-color;
+                background: $topbar-dropdown-link-bg;
+              }
+
+              &:hover > a:not(.button) {
+                color: $topbar-link-color-hover;
+                background-color: $topbar-link-bg-color-hover;
+                @if ($topbar-link-bg-hover) {
+                  background: $topbar-link-bg-hover;
+                }
               }
             }
 
