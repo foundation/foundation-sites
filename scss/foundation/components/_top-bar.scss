@@ -48,7 +48,8 @@ $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%) !def
 $topbar-link-font-family: $body-font-family !default;
 $topbar-link-text-transform: none !default;
 $topbar-link-padding: $topbar-height / 3 !default;
-
+$topbar-back-link-size: $h5-font-size !default;
+$topbar-link-dropdown-padding: 20px;
 $topbar-button-font-size: 0.75rem !default;
 $topbar-button-top: 7px !default;
 
@@ -163,13 +164,18 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
       input { height: 1.8rem; padding-top: .35rem; padding-bottom: .35rem; font-size: $topbar-button-font-size; }
 
       .button, button {
-        padding-top: .45rem;
-        padding-bottom: .35rem;
+        padding-top: .35rem + rem-calc(1);
+        padding-bottom: .35rem + rem-calc(1);
         margin-bottom: 0;
         font-size: $topbar-button-font-size;
           // position: relative;
           // top: -1px;
-
+        
+        // Corrects a slight misalignment when put next to an input field
+        @media #{$small-only} {
+          position: relative;
+          top: -1px;
+        }
       }
 
       // Title Area
@@ -402,11 +408,12 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
           }
 
           &.title h5, &.parent-link {
+            // Back Button
             margin-bottom: 0;
             margin-top: 0;
             a {
               color: $topbar-link-color;
-              line-height: $topbar-height / 2;
+              // line-height: $topbar-height / 2;
               display: block;
               &:hover { background:none; }
             }
@@ -515,7 +522,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
           @if($topbar-arrows){
 
             & > a {
-              padding-#{$opposite-direction}: $topbar-link-padding + 20 !important;
+              padding-#{$opposite-direction}: $topbar-link-padding + $topbar-link-dropdown-padding !important;
               &:after {
                 @include css-triangle($topbar-dropdown-toggle-size, rgba($topbar-dropdown-toggle-color, $topbar-dropdown-toggle-alpha), top);
                 margin-top: -($topbar-dropdown-toggle-size / 2);
@@ -535,6 +542,9 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
             & > .dropdown {
               @include topbar-show-dropdown();
             }
+          }
+          > a:focus + .dropdown {
+            @include topbar-show-dropdown();
           }
 
           .dropdown li.has-dropdown {
@@ -655,6 +665,9 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
             & > .dropdown {
               @include topbar-show-dropdown();
             }
+          }
+          > a:focus + .dropdown {
+            @include topbar-show-dropdown();
           }
         }
       }
