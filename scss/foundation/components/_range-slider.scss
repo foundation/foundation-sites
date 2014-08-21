@@ -95,6 +95,10 @@ $range-slider-disabled-opacity: 0.7 !default;
   height: $range-slider-handle-height;
   border: $range-slider-handle-border-width $range-slider-handle-border-style $range-slider-handle-border-color;
   cursor: $range-slider-handle-cursor;
+
+  // This removes the 300ms touch delay on Windows 8
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
 }
 @mixin range-slider-handle-style(
   $bg: true,
