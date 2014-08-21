@@ -99,23 +99,24 @@ You can add more classes to your alert box to change its appearance.
   </div>
 </div>
 
+***
 
-<h3>ARIA Accessible</h3>
+## Accessibility
 
-You can create an alert box using minimal markup.
+To make your alerts conform to accessibility standards, use the markup below, which adds a handful of ARIA attributes to the alert container, and uses the `<button>` tag for the close button instead of `<a>`.
 
 <div class="row">
   <div class="large-6 columns">
 
     <h4>HTML</h4>
 
-{{> examples_alert_aria_rendered}}
+    {{> examples_alert_aria}}
 
   </div>
   <div class="large-6 columns">
     <h4>Rendered HTML</h4>
 
-{{> examples_alert_aria}}
+    {{> examples_alert_aria_rendered}}
 
   </div>
 </div>
