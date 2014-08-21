@@ -44,7 +44,7 @@ It's easy. Just add a class of `.vertical` to make the Icon Bar stack up.
 
 ***
 
-<h3>Advanced</h3>
+### Advanced
 
 Instead of images you can use Icon Fonts. This will help you change the colors and size faster instead of having to upload new images each time. <a href="http://zurb.com/playground/foundation-icon-fonts-3">Check out our badass Icon Fonts here.</a>
 
@@ -59,9 +59,17 @@ Instead of images you can use Icon Fonts. This will help you change the colors a
   </div>
 </div>
 
-### ARIA Accessible
+### Other Options
 
-Here is how to use `role`, `aria-label`, and `tabindex` when using the Icon Bar to make it accessible to screen readers.
+The default orientation for the labels are on the bottom. By adding a class of `.label-right` you can have the label on the right and icon on the left.
+
+***
+
+## Accessibility
+
+To make the icon bar navigable with a keyboard, add the attribute `tabindex="0"` to each `item`, which allows it to be focused when tabbing through items. Each item also gets the attribute `role="button"`, indicating its functionality.
+
+For icon bars without text labels, add `aria-label` to each item, with a value representing what the icon is. For icon bars with labels, give each label a unique ID, and add `aria-labelledby` to each item container, with a value equal to the ID of the label.
 
 <div class="row">
   <div class="large-6 columns">
@@ -77,10 +85,6 @@ Here is how to use `role`, `aria-label`, and `tabindex` when using the Icon Bar 
     {{> examples_icon_bar_text_aria}}
   </div>
 </div>
-
-### Other Options
-
-The default orientation for the labels are on the bottom. By adding a class of `.label-right` you can have the label on the right and icon on the left.
 
 ***
 
