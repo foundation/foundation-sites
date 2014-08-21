@@ -144,9 +144,9 @@
       // WARNING: The activation and deactivation of the tab content must
       // occur after the deep linking in order to properly refresh the browser
       // window (notably in Chrome).
-      tab.addClass(settings.active_class).triggerHandler('opened');
-      siblings.removeClass(settings.active_class);
-      target.siblings().removeClass(settings.active_class).end().addClass(settings.active_class);
+      tab.addClass(settings.active_class).attr('aria-selected', "true").triggerHandler('opened');
+      siblings.removeClass(settings.active_class).attr('aria-selected', 'false');
+      target.siblings().removeClass(settings.active_class).attr('aria-hidden', 'true').end().addClass(settings.active_class).attr('aria-hidden', 'false');
       settings.callback(tab);
       target.triggerHandler('toggled', [tab]);
       tabs.triggerHandler('toggled', [target]);
