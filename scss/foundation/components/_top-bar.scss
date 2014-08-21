@@ -48,6 +48,7 @@ $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%) !def
 $topbar-link-font-family: $body-font-family !default;
 $topbar-link-text-transform: none !default;
 $topbar-link-padding: $topbar-height / 3 !default;
+$topbar-link-dropdown-padding: 20px;
 
 $topbar-button-font-size: 0.75rem !default;
 $topbar-button-top: 7px !default;
@@ -515,7 +516,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
           @if($topbar-arrows){
 
             & > a {
-              padding-#{$opposite-direction}: $topbar-link-padding + 20 !important;
+              padding-#{$opposite-direction}: $topbar-link-padding + $topbar-link-dropdown-padding !important;
               &:after {
                 @include css-triangle($topbar-dropdown-toggle-size, rgba($topbar-dropdown-toggle-color, $topbar-dropdown-toggle-alpha), top);
                 margin-top: -($topbar-dropdown-toggle-size / 2);
