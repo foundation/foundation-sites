@@ -38,7 +38,7 @@
       S(this.scope)
         .off('.tab')
         // Click event: tab title
-        .on('click.fndtn.tab', '[' + this.attr_name() + '] > * > a', function (e) {
+        .on('focus.fndtn.tab', '[' + this.attr_name() + '] > * > a', function (e) {
           var settings = S(this).closest('[' + self.attr_name() +']').data(self.attr_name(true) + '-init');
           if (!settings.is_hover || Modernizr.touch) {
             e.preventDefault();
@@ -56,7 +56,14 @@
       S(window).on('hashchange.fndtn.tab', function (e) {
         e.preventDefault();
         self.handle_location_hash_change();
-      });
+
+      }).on('keyup', function (e) {
+        if (e.keyword == 9) {
+          // active tab
+          console.log(document.querySelector('[data-tab] .tab-title :focus'))
+        }
+      });
+      ;
     },
 
     handle_location_hash_change : function () {
@@ -144,12 +151,62 @@
       // WARNING: The activation and deactivation of the tab content must
       // occur after the deep linking in order to properly refresh the browser
       // window (notably in Chrome).
-      tab.addClass(settings.active_class).attr('aria-selected', "true").triggerHandler('opened');
-      siblings.removeClass(settings.active_class).attr('aria-selected', 'false');
-      target.siblings().removeClass(settings.active_class).attr('aria-hidden', 'true').end().addClass(settings.active_class).attr('aria-hidden', 'false');
+      // Clean up multiple attr instances to done once
+      tab.addClass(settings.active_class).triggerHandler('opened');
+      tab.find('a').attr({"aria-selected": "true",  tabindex: 0});
+      siblings.removeClass(settings.active_class)
+      siblings.find('a').attr({"aria-selected": "false",  tabindex: -1});
+      target.siblings().removeClass(settings.active_class).attr({"aria-hidden": "true",  tabindex: -1}).end().addClass(settings.active_class).attr('aria-hidden', 'false').find(':first-child').attr('tabindex', 0);
       settings.callback(tab);
       target.triggerHandler('toggled', [tab]);
       tabs.triggerHandler('toggled', [target]);
+
+      // From Heydon "the Great" Pickering 
+      $('[role="tab"]').on('keydown', function(e) {
+
+        // define current, previous and next (possible) tabs
+
+        var $original = $(this);
+        var $prev = $(this).parents('li').prev().children('[role="tab"]');
+        var $next = $(this).parents('li').next().children('[role="tab"]');
+        var $target;
+
+        // find the direction (prev or next)
+
+        switch (e.keyCode) {
+          case 37:
+            $target = $prev;
+            break;
+          case 39:
+            $target = $next;
+            break;
+          default:
+            $target = false
+            break;
+        }
+
+        if ($target.length) {
+            $original.attr({
+              'tabindex' : '-1',
+              'aria-selected' : null
+            });
+            $target.attr({
+              'tabindex' : '0',
+              'aria-selected' : true
+            }).focus();
+        }
+
+        // Hide panels
+
+        $('[role="tabpanel"]')
+          .attr('aria-hidden', 'true');
+
+        // Show panel which corresponds to target
+
+        $('#' + $(document.activeElement).attr('href').substring(1))
+          .attr('aria-hidden', null);
+
+      });
     },
 
     data_attr: function (str) {
