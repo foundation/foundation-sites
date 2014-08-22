@@ -214,7 +214,8 @@
             el.setAttribute('aria-invalid', 'true');
 
             // Try to find the error associated with the input
-            var errorID = parent.find('small.error, span.error')[0].id;
+            var errorElem = parent.find('small.error, span.error');
+            var errorID = errorElem.length > 0 ? errorElem[0].id : "";
             if (errorID.length > 0) el.setAttribute('aria-describedby', errorID);
 
             // el.setAttribute('aria-describedby', $(el).find('.error')[0].id);
