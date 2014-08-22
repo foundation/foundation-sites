@@ -35,17 +35,20 @@
       var self = this,
           S = this.S;
 
-      S(this.scope)
-        .off('.tab')
-        // Click event: tab title
-        .on('focus.fndtn.tab', '[' + this.attr_name() + '] > * > a', function (e) {
+      var usual_tab_behavior =  function (e) {
           var settings = S(this).closest('[' + self.attr_name() +']').data(self.attr_name(true) + '-init');
           if (!settings.is_hover || Modernizr.touch) {
             e.preventDefault();
             e.stopPropagation();
             self.toggle_active_tab(S(this).parent());
           }
-        })
+        };
+
+      S(this.scope)
+        .off('.tab')
+        // Click event: tab title
+        .on('focus.fndtn.tab', '[' + this.attr_name() + '] > * > a', usual_tab_behavior )
+        .on('click.fndtn.tab', '[' + this.attr_name() + '] > * > a', usual_tab_behavior )
         // Hover event: tab title
         .on('mouseenter.fndtn.tab', '[' + this.attr_name() + '] > * > a', function (e) {
           var settings = S(this).closest('[' + self.attr_name() +']').data(self.attr_name(true) + '-init');
