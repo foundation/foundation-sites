@@ -224,8 +224,8 @@ $button-disabled-cursor: $cursor-default-value !default;
       &.secondary { @include button-style($bg:$secondary-color, $bg-hover:$secondary-button-bg-hover, $border-color:$secondary-button-border-color); }
       &.success   { @include button-style($bg:$success-color, $bg-hover:$success-button-bg-hover, $border-color:$success-button-border-color); }
       &.alert     { @include button-style($bg:$alert-color, $bg-hover:$alert-button-bg-hover, $border-color:$alert-button-border-color); }
-      &.warning   { @include button-style($bg:$warning-color); }
-      &.info      { @include button-style($bg:$info-color); }
+      &.warning   { @include button-style($bg:$warning-color, $bg-hover:$warning-button-bg-hover, $border-color:$warning-button-border-color); }
+      &.info      { @include button-style($bg:$info-color, $bg-hover:$info-button-bg-hover, $border-color:$info-button-border-color); }
 
       &.large  { @include button-size($padding:$button-lrg); }
       &.small  { @include button-size($padding:$button-sml); }
