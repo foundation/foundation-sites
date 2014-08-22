@@ -180,17 +180,17 @@
           parent = direct_parent.parent();
         }
 
+        if (validator) {
+          valid = this.settings.validators[validator].apply(this, [el, required, parent]);
+          validations.push(valid);
+        }
+
         if (is_radio && required) {
           validations.push(this.valid_radio(el, required));
         } else if (is_checkbox && required) {
           validations.push(this.valid_checkbox(el, required));
         } else {
           
-          if (validator) {
-            valid = this.settings.validators[validator].apply(this, [el, required, parent]);
-            validations.push(valid);
-          }
-
           if (el_patterns[i][1].test(value) && valid_length ||
             !required && el.value.length < 1 || $(el).attr('disabled')) {
             validations.push(true);
