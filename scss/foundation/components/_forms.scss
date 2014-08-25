@@ -321,14 +321,14 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
   -webkit-appearance: none !important;
   -webkit-border-radius: 0px;
   background-color: $select-bg-color;
-  
+
   // The custom arrow have some fake horizontal padding so we can align it
   // from the right side of the element without relying on CSS3
   background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+);
-  
+
   // We can safely use leftmost and rightmost now
   background-position: if($text-direction == 'rtl', 0%, 100%) center;
-  
+
   background-repeat: no-repeat;
   border: $input-border-width $input-border-style $input-border-color;
   padding: $form-spacing / 2;
@@ -397,12 +397,8 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
     .postfix.button.round { @include radius(0); @include side-radius($opposite-direction, $button-round); }
 
     /* Separate prefix and postfix styles when on span or label so buttons keep their own */
-    span.prefix,label.prefix { @include prefix();
-      &.radius { @include radius(0); @include side-radius($default-float, $global-radius); }
-    }
-    span.postfix,label.postfix { @include postfix();
-      &.radius { @include radius(0); @include side-radius($opposite-direction, $global-radius); }
-    }
+    span.prefix,label.prefix { @include prefix(); }
+    span.postfix,label.postfix { @include postfix(); }
 
     /* We use this to get basic styling on all basic form elements */
     input[type="text"],
@@ -418,6 +414,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
     input[type="tel"],
     input[type="time"],
     input[type="url"],
+    input[type="color"],
     textarea {
       -webkit-appearance: none;
       -webkit-border-radius: 0px;
@@ -427,6 +424,35 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
       }
       &.radius {
         @include radius($input-border-radius);
+      }
+    }
+
+    form {
+      .row {
+        .prefix-radius.row.collapse {
+          input,
+          textarea,
+          select { @include radius(0); @include side-radius($opposite-direction, $button-radius); }
+          .prefix { @include radius(0); @include side-radius($default-float, $button-radius); }
+        }
+        .postfix-radius.row.collapse {
+          input,
+          textarea,
+          select { @include radius(0); @include side-radius($default-float, $button-radius); }
+          .postfix { @include radius(0); @include side-radius($opposite-direction, $button-radius); }
+        }
+        .prefix-round.row.collapse {
+          input,
+          textarea,
+          select { @include radius(0); @include side-radius($opposite-direction, $button-round); }
+          .prefix { @include radius(0); @include side-radius($default-float, $button-round); }
+        }
+        .postfix-round.row.collapse {
+          input,
+          textarea,
+          select { @include radius(0); @include side-radius($default-float, $button-round); }
+          .postfix { @include radius(0); @include side-radius($opposite-direction, $button-round); }
+        }
       }
     }
 

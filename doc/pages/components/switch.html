@@ -32,6 +32,25 @@ The class options:
 
 ***
 
+## Accessibility
+
+To have switches work with ARIA, you will need to change the div to fieldset and add a `tabindex` of 0. Here is how to use `aria-checked` when using Switches to make it accessible to screen readers:
+
+Because our switches are non-standard form elements, assistive devices need help figuring out what they are. To make switches more accessible, use the `<fieldset>` tag as a container, with the attribute `tabindex="0"`, so keyboards can tab to it.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{> examples_switch_basic_aria_rendered}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+{{> examples_switch_basic_aria}}
+  </div>
+</div>
+
+***
+
 ## Customize with Sass
 
 Switches can be easily customized using our Sass variables.

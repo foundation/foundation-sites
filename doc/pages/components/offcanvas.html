@@ -35,7 +35,7 @@ This is the outer-most element. It contains the entire off-canvas layout and hid
 <h4>HTML</h4>
 
 ```html
-<div class="off-canvas-wrap" data-offcanvas><!-- page layout goes here --></div>
+<div class="off-canvas-wrap"><!-- page layout goes here --></div>
 ```
 
 ### Inner Wrap
@@ -45,7 +45,7 @@ This is the element that is animated. All of your page content needs to be insid
 <h4>HTML</h4>
 
 ```html
-<div class="off-canvas-wrap" data-offcanvas>
+<div class="off-canvas-wrap">
   <div class="inner-wrap"><!-- all content goes here --></div>
 </div>
 ```
@@ -63,15 +63,15 @@ This is the panel that slides in and out when activated. You can place it on eit
 
 ### Target Off-Canvas Menu
 
-To target an off-canvas menu, add `.left-off-canvas-toggle` or `.right-off-canvas-toggle` to your layout. Clicking on these will activate their corresponding menu.  These anchor elements require the `href` attribute to <a href="http://foundation.zurb.com/forum/posts/1651-cant-get-off-canvas-to-toggle-on-mobile">work on iphones</a>.
+To target an off-canvas menu, add `.left-off-canvas-toggle` or `.right-off-canvas-toggle` to your layout. Clicking on these will activate their corresponding menu.
 
 <h4>HTML</h4>
 
 ```html
 <!-- target the leftside menu -->
-<a class="left-off-canvas-toggle" href="#">Left Menu</a>
+<a class="left-off-canvas-toggle">Left Menu</a>
 <!-- target the rightside menu -->
-<a class="right-off-canvas-toggle" href="#">Right Menu</a>
+<a class="right-off-canvas-toggle">Right Menu</a>
 
 <aside class="left-off-canvas-menu"></aside>
 <aside class="right-off-canvas-menu"></aside>
@@ -132,7 +132,7 @@ The button containers, `section.left-small` and `section.right-small`, contain t
 To add the nice hamburger icon that everyone knows and loves, add a class of `.menu-icon` to your menu target, and nest a `span` inside of it.
 
 ```html
-<a class="right-off-canvas-toggle menu-icon" href="#"><span></span></a>
+<a class="right-off-canvas-toggle menu-icon" ><span></span></a>
 ```
 
 Now put it all together...
@@ -142,10 +142,10 @@ Now put it all together...
 ```html
 <nav class="tab-bar">
   <section class="left-small">
-    <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
+    <a class="left-off-canvas-toggle menu-icon" ><span></span></a>
   </section>
   <section class="right-small">
-    <a class="right-off-canvas-toggle menu-icon" href="#"><span></span></a>
+    <a class="right-off-canvas-toggle menu-icon" ><span></span></a>
   </section>
 </nav>
 ```
@@ -171,13 +171,13 @@ The last thing we need is a section for the tab bar content. Add `section.tab-ba
 ```html
 <nav class="tab-bar">
   <section class="left-small">
-    <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
+    <a class="left-off-canvas-toggle menu-icon" ><span></span></a>
   </section>
   <section class="middle tab-bar-section">
     <h1 class="title">Foundation</h1>
   </section>
   <section class="right-small">
-    <a class="right-off-canvas-toggle menu-icon" href="#"><span></span></a>
+    <a class="right-off-canvas-toggle menu-icon" ><span></span></a>
   </section>
 </nav>
 ```
@@ -206,20 +206,21 @@ Add a class of `.left`, `.right`, or `.middle` depending on which space you want
 <!-- that's what she said, lol -->
 
 <nav class="tab-bar">
-  <section class="left-small"><a class=" menu-icon" href="#"><span></span></a></section>
+  <section class="left-small"><a class=" menu-icon" ><span></span></a></section>
   <section class="right tab-bar-section"><h1>Left Section</h1></section>
 </nav>
 &nbsp;
 <nav class="tab-bar">
-  <section class="left-small"><a class=" menu-icon" href="#"><span></span></a></section>
+  <section class="left-small"><a class=" menu-icon" ><span></span></a></section>
   <section class="middle tab-bar-section"><h1>Middle Section</h1></section>
-  <section class="right-small"><a class=" menu-icon" href="#"><span></span></a></section>
+  <section class="right-small"><a class=" menu-icon" ><span></span></a></section>
 </nav>
 &nbsp;
 <nav class="tab-bar">
   <section class="left tab-bar-section"><h1>Right Section</h1></section>
-  <section class="right-small"><a class=" menu-icon" href="#"><span></span></a></section>
+  <section class="right-small"><a class=" menu-icon" ><span></span></a></section>
 </nav>
+
 &nbsp;
 
 ### Off-Canvas List
@@ -257,6 +258,33 @@ We've included a nice list pattern for list in the off-canvas menu. Include `ul.
   </div>
 </div>
 
+&nbsp;
+
+### Off-Canvas Multilevel Menu
+
+We've included a nice multilevel pattern for list in the off-canvas menu. Add a `li.has-submenu` and include `ul.left-submenu` or `ul.right-submenu` within to start to define a submenu, later add a `li.back` element inside this new list. This supports multiple level of submenus.
+
+<div class="row">
+  <div class="large-6 columns">
+  <h4>HTML</h4>
+  {{> examples_offcanvas_multiple_level_markup}}
+  </div>
+  <div class="large-6 columns">
+  <h4>Rendered HTML</h4>
+  {{> examples_offcanvas_multiple_level_rendered}}
+  </div>
+</div>
+
+***
+
+## Accessibility
+
+The off-canvas menu is not yet fully accessible. Because it's tucked away off-screen but not totally hidden, the user's browser will still tab through each item, and screen readers will read each item in the navigation. However, the off-canvas menu will not appear when focused with the keyboard.
+
+If your page has two primary navigation menus, perhaps a horizontal one for larger screens and an off-canvas menu for small screens, it's best to hide one so screen readers won't read through two whole navigation menus. Add the attribute `aria-hidden="true"` to the container of one navigation, which will tell assistive devices to skip it entirely.
+
+The multi-level off-canvas menu, being a relatively recent addition to Foundation, is also not yet fully accessible. The browser will tab through the top-level menu items, but not drill down into any of the sub menus.
+
 ***
 
 ## Customize with Sass
@@ -283,7 +311,6 @@ Just add `foundation.offcanvas.js` AFTER the `foundation.js` file. Your markup s
 
   ...
 
-  <script src="js/vendor/jquery.js"></script>
   <script src="js/foundation/foundation.js"></script>
   <script src="js/foundation/foundation.offcanvas.js"></script>
   <!-- Other JS plugins can be included here -->
