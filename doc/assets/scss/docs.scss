@@ -300,6 +300,8 @@ footer { margin-top: 45px; }
       color: $small-font-color;
       line-height: 0;
     }
+
+    &.subheader { @include subheader; text-transform: none; }
   }
 
   h1 { font-size: $h1-font-size - rem-calc(10); }
@@ -308,8 +310,6 @@ footer { margin-top: 45px; }
   h4 { font-size: $h4-font-size - rem-calc(5); }
   h5 { font-size: $h5-font-size; }
   h6 { font-size: $h6-font-size; }
-
-  .subheader { @extend %subheader; text-transform: none; }
 
   hr {
     border: $hr-border-style $hr-border-color;
