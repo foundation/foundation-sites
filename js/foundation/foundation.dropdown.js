@@ -102,12 +102,9 @@
 
     close: function (dropdown) {
       var self = this;
-      console.log(dropdown);
-      console.log("slf.attr_name", self.attr_name());
       dropdown.each(function () {
         var original_target = $('[' + self.attr_name() + '=' + dropdown[0].id + ']') || $('aria-controls=' + dropdown[0].id+ ']');
         original_target.attr('aria-expanded', "false");
-        console.log(original_target);
         if (self.S(this).hasClass(self.settings.active_class)) {
           self.S(this)
             .css(Foundation.rtl ? 'right':'left', '-99999px')
