@@ -4,7 +4,7 @@
   Foundation.libs.reveal = {
     name : 'reveal',
 
-    version : '5.3.3',
+    version : '5.4.1',
 
     locked : false,
 
