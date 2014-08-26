@@ -300,6 +300,8 @@ footer { margin-top: 45px; }
       color: $small-font-color;
       line-height: 0;
     }
+
+    &.subheader { @include subheader; text-transform: none; }
   }
 
   h1 { font-size: $h1-font-size - rem-calc(10); }
@@ -308,8 +310,6 @@ footer { margin-top: 45px; }
   h4 { font-size: $h4-font-size - rem-calc(5); }
   h5 { font-size: $h5-font-size; }
   h6 { font-size: $h6-font-size; }
-
-  .subheader { @extend %subheader; text-transform: none; }
 
   hr {
     border: $hr-border-style $hr-border-color;
@@ -670,7 +670,7 @@ padding
 /*------------------------------------
  timeline styles
 ------------------------------------*/
-.two-column {
+.two-paths {
   margin-top: 20px;
 }
 
@@ -684,6 +684,7 @@ padding
     font-weight: normal;
     text-transform: capitalize;
     padding-bottom: 10px;
+
   }
 }
 
@@ -698,7 +699,7 @@ circles
   width: 35px;
   height: 35px;
   position: relative;
-  margin-top: 6px;
+  margin-top: -5px;
   margin-right: 18px; 
   margin-bottom: 5px;
   margin-left: 0.83333rem;
@@ -723,7 +724,7 @@ circles
   }
 }
 
-@media only screen and (min-width: 64.063em) { 
+@media #{$large-up} { 
   .path-item {
     padding-left: 65px;
     position: relative;
@@ -803,6 +804,9 @@ what you get
     padding: 20px 30px;
     pre {
       margin-bottom: 0;
+      code {
+        background: #fff;
+      }
     }
   }
   li:nth-child(even) {
@@ -887,6 +891,8 @@ what you get
   margin-top: 30px;
 }
 
+// Styling for Skill Level with Icon fonts on Index page
+
 .skill-list h4 {
   margin-bottom: 0;
 }
@@ -905,8 +911,6 @@ what you get
 
 .gs-example {
   .row {
-    // margin-right: -0.3rem;
-    // margin-left: -0.3rem;
     border: 1px solid #c6c6c6;
     margin: 0.3rem !important;
     .row {
@@ -965,6 +969,8 @@ what you get
   margin-top: -7px;
 }
 
+// Styles Codepen on Index Page
+
 .codepen-demo {
   margin-top: 20px;
   .tabs-content {
@@ -988,6 +994,8 @@ what you get
     color: #333;
   }
 }
+
+// Stlyings for Getting Started Examples
 
 .what-comes-with { 
   hr {
@@ -1013,6 +1021,8 @@ what you get
       }
     }
   }
+
+  // Adds stylings to Index page
 
   .gs-iconbar {
     margin-bottom: 10px;
@@ -1051,6 +1061,13 @@ what you get
   .reveal-modal-bg {
     z-index: 1000;
   }
+}
+
+
+// Used on CSS Page to add rounded corners and padding to images
+img.round-margin {
+  border-radius: 5px;
+  margin-bottom: 20px;
 }
 
 

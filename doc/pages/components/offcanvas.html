@@ -277,6 +277,16 @@ We've included a nice multilevel pattern for list in the off-canvas menu. Add a 
 
 ***
 
+## Accessibility
+
+The off-canvas menu is not yet fully accessible. Because it's tucked away off-screen but not totally hidden, the user's browser will still tab through each item, and screen readers will read each item in the navigation. However, the off-canvas menu will not appear when focused with the keyboard.
+
+If your page has two primary navigation menus, perhaps a horizontal one for larger screens and an off-canvas menu for small screens, it's best to hide one so screen readers won't read through two whole navigation menus. Add the attribute `aria-hidden="true"` to the container of one navigation, which will tell assistive devices to skip it entirely.
+
+The multi-level off-canvas menu, being a relatively recent addition to Foundation, is also not yet fully accessible. The browser will tab through the top-level menu items, but not drill down into any of the sub menus.
+
+***
+
 ## Customize with Sass
 
 Off-canvas layouts can be easily customized using our provided Sass variables.

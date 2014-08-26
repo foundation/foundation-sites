@@ -175,7 +175,7 @@ $button-disabled-cursor: $cursor-default-value !default;
     &:focus { background-color: $bg; }
   }
 
-  // We can control how much button radius us used.
+  // We can control how much button radius is used.
   @if $radius == true { @include radius($button-radius); }
   @else if $radius { @include radius($radius); }
 
