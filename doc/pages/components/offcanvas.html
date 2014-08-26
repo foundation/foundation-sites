@@ -46,7 +46,8 @@ This is the element that is animated. All of your page content needs to be insid
 
 ```html
 <div class="off-canvas-wrap">
-  <div class="inner-wrap"><!-- all content goes here --></div>
+  <!-- If the contents of the .inner-wrap isn't the main content of the page, use another approripate sectioning element instead -->
+  <main class="inner-wrap"><!-- all content goes here --></main>
 </div>
 ```
 
@@ -57,8 +58,8 @@ This is the panel that slides in and out when activated. You can place it on eit
 <h4>HTML</h4>
 
 ```html
-<aside class="left-off-canvas-menu"><!-- put your links in here --></aside>
-<aside class="right-off-canvas-menu"><!-- put your links in here --></aside>
+<nav class="left-off-canvas-menu"><!-- put your links in here --></nav>
+<nav class="right-off-canvas-menu"><!-- put your links in here --></nav>
 ```
 
 ### Target Off-Canvas Menu
@@ -69,12 +70,12 @@ To target an off-canvas menu, add `.left-off-canvas-toggle` or `.right-off-canva
 
 ```html
 <!-- target the leftside menu -->
-<a class="left-off-canvas-toggle">Left Menu</a>
+<a href="idOfLeftMenu" role="button" class="left-off-canvas-toggle">Left Menu</a>
 <!-- target the rightside menu -->
-<a class="right-off-canvas-toggle">Right Menu</a>
+<a href="idOfRightMenu" role="button" class="right-off-canvas-toggle">Right Menu</a>
 
-<aside class="left-off-canvas-menu"></aside>
-<aside class="right-off-canvas-menu"></aside>
+<nav class="left-off-canvas-menu"></nav>
+<nav class="right-off-canvas-menu"></nav>
 ```
 
 ### Exit Off-Canvas Menu
@@ -84,7 +85,7 @@ Include `.exit-off-canvas` to provide a way back to the main page. This is an ov
 <h4>HTML</h4>
 
 ```html
-<a class="exit-off-canvas"></a>
+<button class="exit-off-canvas"></button>
 ```
 
 ***
@@ -132,7 +133,7 @@ The button containers, `section.left-small` and `section.right-small`, contain t
 To add the nice hamburger icon that everyone knows and loves, add a class of `.menu-icon` to your menu target, and nest a `span` inside of it.
 
 ```html
-<a class="right-off-canvas-toggle menu-icon" ><span></span></a>
+<a role="button" href="#idOfRightMenu" class="right-off-canvas-toggle menu-icon" ><span></span></a>
 ```
 
 Now put it all together...
@@ -142,10 +143,10 @@ Now put it all together...
 ```html
 <nav class="tab-bar">
   <section class="left-small">
-    <a class="left-off-canvas-toggle menu-icon" ><span></span></a>
+    <a href="#idOfLeftMenu" role="button" aria-expanded="false" class="left-off-canvas-toggle menu-icon" ><span></span></a>
   </section>
   <section class="right-small">
-    <a class="right-off-canvas-toggle menu-icon" ><span></span></a>
+    <a href="#idOfRightMenu" role="button" aria-expanded="false" class="right-off-canvas-toggle menu-icon" ><span></span></a>
   </section>
 </nav>
 ```
