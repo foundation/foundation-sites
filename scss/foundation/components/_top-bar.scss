@@ -263,11 +263,11 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
 
         .toggle-topbar {
           a { color: $topbar-menu-link-color-toggled;
-            &::after {
+            span::after {
               // Shh, don't tell, but box-shadows create the menu icon :)
-              box-shadow: 0 10px 0 1px $topbar-menu-icon-color-toggled,
-                          0 16px 0 1px $topbar-menu-icon-color-toggled,
-                          0 22px 0 1px $topbar-menu-icon-color-toggled;
+              box-shadow: 0 0 0 1px $topbar-menu-icon-color-toggled,
+                          0 7px 0 1px $topbar-menu-icon-color-toggled,
+                          0 14px 0 1px $topbar-menu-icon-color-toggled;
             }
           }
         }
