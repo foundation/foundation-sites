@@ -62,6 +62,24 @@ module.exports = function(grunt) {
       }
     },
 
+    'string-replace': {
+      dist: {
+        files: {
+          'dist/assets/css/':'dist/assets/css/*.css',
+          'dist/assets/js/':'dist/assets/js/*js',
+          'dist/assets/js/foundation/':'dist/assets/js/foundation/*js',
+          'dist/assets/scss/foundation/components/':'dist/assets/scss/foundation/components/*.scss',
+          'dist/docs/assets/css/':'dist/docs/assets/css/*.css',
+          'dist/docs/assets/js/':'dist/docs/assets/js/*.js'
+        },
+        options: {
+          replacements: [
+            {pattern: /{{\s*VERSION\s*}}/g, replacement: '<%= pkg.version %>'}
+          ]
+        }
+      }
+    },
+
     concat: {
       dist: {
         files: {
@@ -219,9 +237,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-rsync');
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-jst');
+  grunt.loadNpmTasks('grunt-string-replace');
 
   grunt.task.registerTask('watch_start', ['karma:dev_watch:start', 'watch']);
-  grunt.registerTask('build:assets', ['clean', 'sass', 'concat', 'uglify', 'copy', 'jst']);
+  grunt.registerTask('build:assets', ['clean', 'sass', 'concat', 'uglify', 'copy', 'jst', 'string-replace']);
   grunt.registerTask('build', ['build:assets', 'assemble']);
   grunt.registerTask('travis', ['build', 'karma:continuous']);
   grunt.registerTask('develop', ['travis', 'watch_start']);
