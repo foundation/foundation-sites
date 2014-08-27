@@ -339,7 +339,7 @@ $cursor-text-value: text !default;
   // Forward slash placed around everything to convince PhantomJS to read the value.
 
   meta.foundation-version {
-    font-family: "/5.4.1/";
+    font-family: "/{{VERSION}}/";
   }
 
   meta.foundation-mq-small {
