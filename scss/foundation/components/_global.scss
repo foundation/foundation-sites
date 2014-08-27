@@ -274,6 +274,20 @@ $opposite-direction: right !default;
   $opposite-direction: left;
 }
 
+$base-spacing: rem-calc(20);
+
+// We use these to control vertical margins and padding
+$vertical-spacing-base: $base-spacing;
+$vertical-spacing-double: $vertical-spacing-base * 2;
+$vertical-spacing-half: $vertical-spacing-base / 2;
+$vertical-spacing-quarter: $vertical-spacing-base / 4;
+
+// We use these to control horizontal margins and padding
+$horizontal-spacing-base: $base-spacing;
+$horizontal-spacing-double: $horizontal-spacing-base * 2;
+$horizontal-spacing-half: $horizontal-spacing-base / 2;
+$horizontal-spacing-quarter: $horizontal-spacing-base / 4;
+
 // We use these to make sure border radius matches unless we want it different.
 $global-radius: 3px !default;
 $global-rounded: 1000px !default;
