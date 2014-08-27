@@ -253,8 +253,8 @@ $font-weight-normal: normal !default;
 $font-weight-bold: bold !default;
 
 // We use these to control various global styles
-$body-bg: #fff !default;
-$body-font-color: #222 !default;
+$body-bg: $white !default;
+$body-font-color: $jet !default;
 $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
 $body-font-weight: $font-weight-normal !default;
 $body-font-style: normal !default;
@@ -273,6 +273,20 @@ $opposite-direction: right !default;
   $default-float: right;
   $opposite-direction: left;
 }
+
+$base-spacing: rem-calc(20);
+
+// We use these to control vertical margins and padding
+$vertical-spacing-base: $base-spacing;
+$vertical-spacing-double: $vertical-spacing-base * 2;
+$vertical-spacing-half: $vertical-spacing-base / 2;
+$vertical-spacing-quarter: $vertical-spacing-base / 4;
+
+// We use these to control horizontal margins and padding
+$horizontal-spacing-base: $base-spacing;
+$horizontal-spacing-double: $horizontal-spacing-base * 2;
+$horizontal-spacing-half: $horizontal-spacing-base / 2;
+$horizontal-spacing-quarter: $horizontal-spacing-base / 4;
 
 // We use these to make sure border radius matches unless we want it different.
 $global-radius: 3px !default;
