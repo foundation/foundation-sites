@@ -4,7 +4,7 @@
   Foundation.libs.alert = {
     name : 'alert',
 
-    version : '5.4.1',
+    version : '{{VERSION}}',
 
     settings : {
       callback: function (){}
