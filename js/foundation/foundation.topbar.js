@@ -225,6 +225,7 @@
               section.find('>.name').css({right: 100 * topbar.data('index') + '%'});
             }
 
+            window.scrollTo(0, topbar.data('height'));
             topbar.css('height', $this.siblings('ul').outerHeight(true) + topbar.data('height'));
           }
         });
