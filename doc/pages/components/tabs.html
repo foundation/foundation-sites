@@ -12,6 +12,12 @@ title: Tabs
 {{> examples_tabs_intro}}
 </div>
 
+### Vertical Tabs
+
+<div>
+{{> examples_tabs_vertical_intro}}
+</div>
+
 ***
 
 <h3>Basic</h3>
@@ -37,10 +43,7 @@ You can create a group of horizontal tabs using minimal markup.
 
 ### Vertical Tabs
 
-<!-- {{> examples_tabs_vertical_intro}} -->
-
-
-You can create a group of vertical tabs using minimal markup.
+You can create a group of vertical tabs using minimal markup. Just adding the class `vertical` changes the orientation of horizontal tabs.
 
 <h4>HTML</h4>
 
@@ -100,6 +103,27 @@ There are two ways to bind to callbacks in your tabs.
 </script>
 ```
 {{/markdown}}
+  </div>
+</div>
+
+***
+
+## Accessibility
+
+You can make tabs more accessible by using the code snippet below. The tabs are keyboard accessible meaning that a user can use the tab key or arrow keys to navigate through them. The role of `tablist` tells a screen reader what the element is and reads the necessary content.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+{{> examples_tabs_accessibility}}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+{{> examples_tabs_accessibility}}
   </div>
 </div>
 
