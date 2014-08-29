@@ -70,6 +70,7 @@ $side-nav-divider-color: scale-color($white, $lightness: 10%) !default;
   li {
     margin: $side-nav-list-margin;
     font-size: $font-size;
+    font-weight: $side-nav-font-weight;
 
     a:not(.button) {
       display: block;
