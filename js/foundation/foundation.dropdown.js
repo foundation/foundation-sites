@@ -58,14 +58,14 @@
           if (settings.is_hover) self.open.apply(self, [dropdown, target]);
         })
         .on('mouseleave.fndtn.dropdown', '[' + this.attr_name() + '], [' + this.attr_name() + '-content]', function (e) {
-          var $this = S(this), setting;
+          var $this = S(this);
           self.timeout = setTimeout(function () {
             if ($this.data(self.data_attr())) {
-              settings = $this.data(self.data_attr(true) + '-init') || self.settings;
+              var settings = $this.data(self.data_attr(true) + '-init') || self.settings;
               if (settings.is_hover) self.close.call(self, S('#' + $this.data(self.data_attr())));
             } else {
-              var target   = S('[' + self.attr_name() + '="' + S(this).attr('id') + '"]');
-              settings = target.data(self.attr_name(true) + '-init') || self.settings;
+              var target   = S('[' + self.attr_name() + '="' + S(this).attr('id') + '"]'),
+                  settings = target.data(self.attr_name(true) + '-init') || self.settings;
               if (settings.is_hover) self.close.call(self, $this);
             }
           }.bind(this), 150);
