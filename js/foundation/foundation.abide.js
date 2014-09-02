@@ -193,11 +193,22 @@
           validations.push(this.valid_checkbox(el, required));
         } else {
 
+
           if (el_patterns[i][1].test(value) && valid_length ||
             !required && el.value.length < 1 || $(el).attr('disabled')) {
             validations.push(true);
           } else {
             validations.push(false);
+
+          if (valid) {
+            this.S(el).removeAttr(this.invalid_attr);
+            parent.removeClass('error');
+            if (label.length > 0 && settings.error_labels) label.removeClass('error');
+          } else {
+            this.S(el).attr(this.invalid_attr, '');
+            parent.addClass('error');
+            if (label.length > 0 && settings.error_labels) label.addClass('error');
+
           }
 
           validations = [validations.every(function(valid){return valid;})];
