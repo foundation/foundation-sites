@@ -36,6 +36,8 @@
         dateISO: /^\d{4}[\/\-]\d{1,2}[\/\-]\d{1,2}$/,
         // MM/DD/YYYY
         month_day_year : /^(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.]\d{4}$/,
+        // DD/MM/YYYY
+        day_month_year : /^(0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])[- \/.]\d{4}$/,
 
         // #FFF or #FFFFFF
         color: /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/
@@ -190,7 +192,7 @@
         } else if (is_checkbox && required) {
           validations.push(this.valid_checkbox(el, required));
         } else {
-          
+
           if (el_patterns[i][1].test(value) && valid_length ||
             !required && el.value.length < 1 || $(el).attr('disabled')) {
             validations.push(true);
