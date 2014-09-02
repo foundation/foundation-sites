@@ -62,7 +62,11 @@ if [ -d "${FOUNDATION_LIBSASS_TEMPLATE}" ]; then
 fi
 git clone git://github.com/zurb/${FOUNDATION_LIBSASS_TEMPLATE}.git
 cd $FOUNDATION_LIBSASS_TEMPLATE
-npm install
+SUDO=''
+if (( $EUID != 0 )); then
+    SUDO='sudo'
+fi
+$SUDO npm install
 bower install ../../dist/assets --save
 cp -f bower_components/foundation/scss/foundation/_settings.scss scss/_settings.scss
 grunt sass:dist

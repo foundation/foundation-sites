@@ -5,7 +5,6 @@
 @import "global";
 @import "buttons";
 
-
 //
 // Button Group Variables
 //
@@ -66,11 +65,11 @@ $button-group-border-width: 1px !default;
     display:block;
     margin:0;
     > button, .button {
-    border-top: $button-group-border-width solid;
-    border-color: rgba(255, 255, 255, 0.5);
-    border-left-width: 0px;
-    margin:0;
-    display: block;
+      border-top: $button-group-border-width solid;
+      border-color: rgba(255, 255, 255, 0.5);
+      border-left-width: 0px;
+      margin:0;
+      display: block;
     }
 
     &:first-child {
@@ -89,7 +88,7 @@ $button-group-border-width: 1px !default;
     &:first-child,
     &:first-child > a,
     &:first-child > button,
-    &:first-child > .button {   
+    &:first-child > .button {
       @if $orientation == vertical {
         @include side-radius(top, $button-radius);
       }
@@ -100,12 +99,12 @@ $button-group-border-width: 1px !default;
     &:last-child,
     &:last-child > a,
     &:last-child > button,
-    &:last-child > .button { 
+    &:last-child > .button {
       @if $orientation == vertical {
         @include side-radius(bottom, $button-radius);
       }
       @else {
-        @include side-radius($opposite-direction, $button-radius); 
+        @include side-radius($opposite-direction, $button-radius);
       }
     }
   }
@@ -117,24 +116,24 @@ $button-group-border-width: 1px !default;
     &:first-child,
     &:first-child > a,
     &:first-child > button,
-    &:first-child > .button { 
+    &:first-child > .button {
       @if $orientation == vertical {
         @include side-radius(top, $radius);
       }
       @else {
         @include side-radius($default-float, $radius);
-      } 
+      }
     }
     &:last-child,
     &:last-child > a,
     &:last-child > button,
-    &:last-child > .button { 
+    &:last-child > .button {
       @if $orientation == vertical {
         @include side-radius(bottom, $radius);
       }
       @else {
-        @include side-radius($opposite-direction, $radius); 
-      } 
+        @include side-radius($opposite-direction, $radius);
+      }
     }
   }
 
@@ -143,7 +142,6 @@ $button-group-border-width: 1px !default;
     width: percentage((100/$even) / 100);
     button, .button { width: 100%; }
   }
-
 }
 
 @include exports("button-group") {
@@ -159,7 +157,7 @@ $button-group-border-width: 1px !default;
       &.stack-for-small {
         & > li {
           @include button-group-style($orientation:horizontal);
-          @media #{$small-only} { 
+          @media #{$small-only} {
             @include button-group-style($orientation:vertical);
           }
         }
@@ -167,22 +165,22 @@ $button-group-border-width: 1px !default;
 
       &.radius > * { @include button-group-style($radius:$button-radius, $float:null); }
       &.radius.stack > * { @include button-group-style($radius:$button-radius, $float:null, $orientation:vertical); }
-      &.radius.stack-for-small > * { 
+      &.radius.stack-for-small > * {
         @media #{$medium-up} {
           @include button-group-style($radius:$button-radius, $orientation:horizontal);
         }
-        @media #{$small-only} { 
+        @media #{$small-only} {
           @include button-group-style($radius:$button-radius, $orientation:vertical);
         }
       }
 
       &.round > * { @include button-group-style($radius:$button-round, $float:null); }
       &.round.stack > * { @include button-group-style($radius:$button-med, $float:null, $orientation:vertical); }
-      &.round.stack-for-small > * { 
+      &.round.stack-for-small > * {
         @media #{$medium-up} {
           @include button-group-style($radius:$button-round, $orientation:horizontal);
         }
-        @media #{$small-only} { 
+        @media #{$small-only} {
           @include button-group-style($radius:$button-med, $orientation:vertical);
         }
       }
@@ -194,7 +192,7 @@ $button-group-border-width: 1px !default;
 
     .button-bar {
       @include clearfix;
-      .button-group { @include button-group-container($styles:false,$float:true); }
+      .button-group { @include button-group-container($styles:false, $float:true); }
     }
   }
 }
