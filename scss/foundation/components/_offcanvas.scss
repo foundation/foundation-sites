@@ -29,6 +29,7 @@ $tabbar-header-margin: 0 !default;
 // Off Canvas Menu Variables
 $off-canvas-width: rem-calc(250) !default;
 $off-canvas-bg: $oil !default;
+$off-canvas-bg-hover: scale-color($tabbar-bg, $lightness: -30%) !default;
 
 // Off Canvas Menu List Variables
 $off-canvas-label-padding: 0.3rem rem-calc(15) !default;
@@ -107,7 +108,7 @@ $menu-slide: "transform 500ms ease" !default;
   bottom: 0;
   position: absolute;
   overflow-x: hidden;
-  overflow-y: auto;  
+  overflow-y: auto;
   background: $off-canvas-bg;
   z-index: 1001;
   box-sizing: content-box;
@@ -198,7 +199,7 @@ $menu-slide: "transform 500ms ease" !default;
   text-align: center;
   height: $tabbar-height;
   top: 0;
-  @media #{$medium-up} { 
+  @media #{$medium-up} {
     &.left, &.right { text-align: left; }
   }
 
@@ -242,8 +243,10 @@ $menu-slide: "transform 500ms ease" !default;
       padding: $off-canvas-link-padding;
       color: $off-canvas-link-color;
       border-bottom: $off-canvas-link-border-bottom;
-      &:hover { background: scale-color($tabbar-bg, $lightness: -30%); }
       transition: background 300ms ease;
+      &:hover {
+        background: $off-canvas-bg-hover;
+      }
     }
   }
 
@@ -398,7 +401,7 @@ $menu-slide: "transform 500ms ease" !default;
   position: absolute;
   margin: 0;
   overflow-x: hidden;
-  overflow-y: auto;  
+  overflow-y: auto;
   background: $off-canvas-bg;
   z-index: 1002;
   box-sizing: content-box;
@@ -416,7 +419,7 @@ $menu-slide: "transform 500ms ease" !default;
   -ms-transition: -ms-#{$menu-slide};
   -o-transition: -o-#{$menu-slide};
   transition: #{$menu-slide};
-    
+
   //back button style like label
   .back > a {
     padding: $off-canvas-label-padding;
@@ -435,18 +438,18 @@ $menu-slide: "transform 500ms ease" !default;
     @if $position == right {
       @if $text-direction == rtl {
         &:before {
-          @include icon-double-arrows($position: left);        
+          @include icon-double-arrows($position: left);
         }
       } @else {
         &:after {
-          @include icon-double-arrows($position: right);        
+          @include icon-double-arrows($position: right);
         }
-      }      
+      }
     }
     @if $position == left {
       @if $text-direction == rtl {
         &:after {
-          @include icon-double-arrows($position: right);        
+          @include icon-double-arrows($position: right);
         }
       } @else {
         &:before {
@@ -465,7 +468,7 @@ $menu-slide: "transform 500ms ease" !default;
     } @else {
       margin-right: 0.5rem;
     }
-  } 
+  }
   @if $position == right {
     content: "\BB";
     @if $text-direction == rtl {
@@ -479,31 +482,31 @@ $menu-slide: "transform 500ms ease" !default;
 
 @if $include-html-off-canvas-classes {
   .left-submenu {
-    @include off-canvas-submenu($position: left);   
+    @include off-canvas-submenu($position: left);
     &.move-right {
       @include translate3d(0%,0,0);
     }
   }
-  
-  .right-submenu { 
-    @include off-canvas-submenu($position: right);    
+
+  .right-submenu {
+    @include off-canvas-submenu($position: right);
     &.move-left {
       @include translate3d(0%,0,0);
     }
   }
-  
+
   @if $text-direction == rtl {
-    .left-off-canvas-menu ul.off-canvas-list li.has-submenu > a:before { 
+    .left-off-canvas-menu ul.off-canvas-list li.has-submenu > a:before {
       @include icon-double-arrows($position: left);
     }
-    .right-off-canvas-menu ul.off-canvas-list li.has-submenu > a:after { 
+    .right-off-canvas-menu ul.off-canvas-list li.has-submenu > a:after {
       @include icon-double-arrows($position: right);
     }
   } @else {
-    .left-off-canvas-menu ul.off-canvas-list li.has-submenu > a:after { 
+    .left-off-canvas-menu ul.off-canvas-list li.has-submenu > a:after {
        @include icon-double-arrows($position: right);
     }
-    .right-off-canvas-menu ul.off-canvas-list li.has-submenu > a:before { 
+    .right-off-canvas-menu ul.off-canvas-list li.has-submenu > a:before {
        @include icon-double-arrows($position: left);
     }
   }

@@ -4,7 +4,7 @@
 
 //Foundation Libraries
 @import 
-  "scss/foundation/settings",
+  "foundation/settings",
   "foundation";
 
 //Marketing Site Common Library
@@ -274,7 +274,7 @@ footer { margin-top: 45px; }
     margin-bottom: $paragraph-margin-bottom;
     text-rendering: $paragraph-text-rendering;
 
-    &.lead { @extend %lead; }
+    &.lead { @include lead; }
 
     & aside {
       font-size: $paragraph-aside-font-size;
@@ -549,7 +549,7 @@ $custom-active-bg:darken($custom-link-color, 5%);
 // .docs-wrap { margin-top: 30px; }
 .docs-wrap .inner-wrap { background: #efefef; }
 .docs-wrap .main-section { padding: 0 20px 0 20px; }
-.main-section { @extend %kill-flicker; }
+.main-section { @include kill-flicker; }
 .doc-oc-list { background: $off-canvas-bg; }
 
 // Make sure topbar dropdowns are above tab bar.

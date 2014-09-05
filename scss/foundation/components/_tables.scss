@@ -50,7 +50,8 @@ $table-row-font-size: rem-calc(14) !default;
 $table-row-font-color: $jet !default;
 $table-line-height: rem-calc(18) !default;
 
-// These are for controlling the display and margin of tables
+// These are for controlling the layout, display and margin of tables
+$table-layout: auto !default;
 $table-display: table-cell !default;
 $table-margin-bottom: rem-calc(20) !default;
 
@@ -63,8 +64,7 @@ $table-margin-bottom: rem-calc(20) !default;
   background: $table-bg;
   margin-bottom: $table-margin-bottom;
   border: $table-border-style $table-border-size $table-border-color;
-  table-layout: fixed;
-  width: 100%;
+  table-layout: $table-layout;
 
   caption {
     background: $table-caption-bg;
