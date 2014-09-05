@@ -169,7 +169,8 @@
             is_radio = el.type === "radio",
             is_checkbox = el.type === "checkbox",
             label = this.S('label[for="' + el.getAttribute('id') + '"]'),
-            valid_length = (required) ? (el.value.length > 0) : true;
+            valid_length = (required) ? (el.value.length > 0) : true,
+            el_validations = [];
 
         var parent, valid;
 
@@ -184,25 +185,25 @@
 
         if (validator) {
           valid = this.settings.validators[validator].apply(this, [el, required, parent]);
-          validations.push(valid);
+          el_validations.push(valid);
         }
 
         if (is_radio && required) {
-          validations.push(this.valid_radio(el, required));
+          el_validations.push(this.valid_radio(el, required));
         } else if (is_checkbox && required) {
-          validations.push(this.valid_checkbox(el, required));
+          el_validations.push(this.valid_checkbox(el, required));
         } else {
 
           if (el_patterns[i][1].test(value) && valid_length ||
             !required && el.value.length < 1 || $(el).attr('disabled')) {
-            validations.push(true);
+            el_validations.push(true);
           } else {
-            validations.push(false);
+            el_validations.push(false);
           }
 
-          validations = [validations.every(function(valid){return valid;})];
+          el_validations = [el_validations.every(function(valid){return valid;})];
 
-          if(validations[0]){
+          if(el_validations[0]){
             this.S(el).removeAttr(this.invalid_attr);
             el.setAttribute('aria-invalid', 'false');
             el.removeAttribute('aria-describedby');
@@ -227,10 +228,10 @@
             }
             $(el).triggerHandler('invalid');
           }
-
+          validations.push(el_validations[0]);
         }
       }
-
+      validations = [validations.every(function(valid){return valid;})];
       return validations;
     },
 
