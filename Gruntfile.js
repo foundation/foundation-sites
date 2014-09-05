@@ -51,8 +51,9 @@ module.exports = function(grunt) {
     sass: {
       dist: {
         options: {
-          includePaths: ['scss'],
-          sourceMap: true
+          loadPath: [__dirname + '/scss'],
+          sourcemap: 'auto',
+          bundleExec: true
         },
         files: {
           'dist/assets/css/foundation.css': '<%= foundation.scss %>',
@@ -232,10 +233,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-newer');
   grunt.loadNpmTasks('grunt-rsync');
-  grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-jst');
   grunt.loadNpmTasks('grunt-string-replace');
 
