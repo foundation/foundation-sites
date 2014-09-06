@@ -48,7 +48,7 @@ $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%) !def
 $topbar-link-font-family: $body-font-family !default;
 $topbar-link-text-transform: none !default;
 $topbar-link-padding: $topbar-height / 3 !default;
-$topbar-back-link-size: $h5-font-size !default;
+$topbar-back-link-size: rem-calc(18) !default;
 $topbar-link-dropdown-padding: 20px;
 $topbar-button-font-size: 0.75rem !default;
 $topbar-button-top: 7px !default;
@@ -411,6 +411,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
             // Back Button
             margin-bottom: 0;
             margin-top: 0;
+            font-size: $topbar-back-link-size;
             a {
               color: $topbar-link-color;
               // line-height: $topbar-height / 2;
