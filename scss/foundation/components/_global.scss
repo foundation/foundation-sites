@@ -248,6 +248,11 @@ $oil           : #333333 !default;
 $jet           : #222222 !default;
 $black         : #000000 !default;
 
+// We use these to define default font stacks
+$font-family-sans-serif: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif !default;
+$font-family-serif: Georgia, Cambria, "Times New Roman", Times, serif !default;
+$font-family-monospace: Consolas, "Liberation Mono", Courier, monospace !default;
+
 // We use these to define default font weights
 $font-weight-normal: normal !default;
 $font-weight-bold: bold !default;
@@ -255,7 +260,7 @@ $font-weight-bold: bold !default;
 // We use these to control various global styles
 $body-bg: #fff !default;
 $body-font-color: #222 !default;
-$body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
+$body-font-family: $font-family-sans-serif !default;
 $body-font-weight: $font-weight-normal !default;
 $body-font-style: normal !default;
 
