@@ -210,6 +210,7 @@
           $.ajax(ajax_settings);
         }
       }
+      self.S(window).trigger('resize');
     },
 
     close : function (modal) {
