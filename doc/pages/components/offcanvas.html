@@ -35,7 +35,7 @@ This is the outer-most element. It contains the entire off-canvas layout and hid
 <h4>HTML</h4>
 
 ```html
-<div class="off-canvas-wrap" data-offcanvas><!-- page layout goes here --></div>
+<div class="off-canvas-wrap"><!-- page layout goes here --></div>
 ```
 
 ### Inner Wrap
@@ -45,8 +45,9 @@ This is the element that is animated. All of your page content needs to be insid
 <h4>HTML</h4>
 
 ```html
-<div class="off-canvas-wrap" data-offcanvas>
-  <div class="inner-wrap"><!-- all content goes here --></div>
+<div class="off-canvas-wrap">
+  <!-- If the contents of the .inner-wrap isn't the main content of the page, use another approripate sectioning element instead -->
+  <main class="inner-wrap"><!-- all content goes here --></main>
 </div>
 ```
 
@@ -57,24 +58,24 @@ This is the panel that slides in and out when activated. You can place it on eit
 <h4>HTML</h4>
 
 ```html
-<aside class="left-off-canvas-menu"><!-- put your links in here --></aside>
-<aside class="right-off-canvas-menu"><!-- put your links in here --></aside>
+<nav class="left-off-canvas-menu"><!-- put your links in here --></nav>
+<nav class="right-off-canvas-menu"><!-- put your links in here --></nav>
 ```
 
 ### Target Off-Canvas Menu
 
-To target an off-canvas menu, add `.left-off-canvas-toggle` or `.right-off-canvas-toggle` to your layout. Clicking on these will activate their corresponding menu.  These anchor elements require the `href` attribute to <a href="http://foundation.zurb.com/forum/posts/1651-cant-get-off-canvas-to-toggle-on-mobile">work on iphones</a>.
+To target an off-canvas menu, add `.left-off-canvas-toggle` or `.right-off-canvas-toggle` to your layout. Clicking on these will activate their corresponding menu.
 
 <h4>HTML</h4>
 
 ```html
 <!-- target the leftside menu -->
-<a class="left-off-canvas-toggle" href="#">Left Menu</a>
+<a href="idOfLeftMenu" role="button" class="left-off-canvas-toggle">Left Menu</a>
 <!-- target the rightside menu -->
-<a class="right-off-canvas-toggle" href="#">Right Menu</a>
+<a href="idOfRightMenu" role="button" class="right-off-canvas-toggle">Right Menu</a>
 
-<aside class="left-off-canvas-menu"></aside>
-<aside class="right-off-canvas-menu"></aside>
+<nav class="left-off-canvas-menu"></nav>
+<nav class="right-off-canvas-menu"></nav>
 ```
 
 ### Exit Off-Canvas Menu
@@ -84,7 +85,7 @@ Include `.exit-off-canvas` to provide a way back to the main page. This is an ov
 <h4>HTML</h4>
 
 ```html
-<a class="exit-off-canvas"></a>
+<button class="exit-off-canvas"></button>
 ```
 
 ***
@@ -116,14 +117,14 @@ We've provided a simple navigation pattern called Tab Bar. It's a very plain com
 
 ### Button Containers
 
-The button containers, `section.left-small` and `section.right-small`, contain the toggle buttons.
+The button containers, `div.left-small` and `div.right-small`, contain the toggle buttons.
 
 <h4>HTML</h4>
 
 ```html
 <nav class="tab-bar">
-  <section class="left-small"></section>
-  <section class="right-small"></section>
+  <div class="left-small"></div>
+  <div class="right-small"></div>
 </nav>
 ```
 
@@ -132,7 +133,7 @@ The button containers, `section.left-small` and `section.right-small`, contain t
 To add the nice hamburger icon that everyone knows and loves, add a class of `.menu-icon` to your menu target, and nest a `span` inside of it.
 
 ```html
-<a class="right-off-canvas-toggle menu-icon" href="#"><span></span></a>
+<a role="button" href="#idOfRightMenu" class="right-off-canvas-toggle menu-icon" ><span></span></a>
 ```
 
 Now put it all together...
@@ -141,23 +142,24 @@ Now put it all together...
 
 ```html
 <nav class="tab-bar">
-  <section class="left-small">
-    <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
-  </section>
-  <section class="right-small">
-    <a class="right-off-canvas-toggle menu-icon" href="#"><span></span></a>
-  </section>
+
+  <div class="left-small">
+    <a href="#idOfLeftMenu" role="button" aria-controls="idOfLeftMenu" aria-expanded="false" class="left-off-canvas-toggle menu-icon" ><span></span></a>
+  </div>
+  <div class="right-small">
+    <a href="#idOfRightMenu" role="button" aria-controls="idOfRightMenu" aria-expanded="false" class="right-off-canvas-toggle menu-icon" ><span></span></a>
+  </div>
 </nav>
 ```
 ...and here's what you'll get:
 
 <nav class="tab-bar">
-  <section class="left-small">
-    <a class=" menu-icon" ><span></span></a>
-  </section>
-  <section class="right-small">
-    <a class=" menu-icon" ><span></span></a>
-  </section>
+  <div class="left-small">
+    <a href="#idOfLeftMenu" aria-controls="idOfLeftMenu"  role="button" aria-expanded="false" class="left-off-canvas-toggle menu-icon" ><span></span></a>
+  </div>
+  <div class="right-small">
+    <a href="#idOfRightMenu" aria-controls="idOfRightMenu" role="button" aria-expanded="false" class="right-off-canvas-toggle menu-icon" ><span></span></a>
+  </div>
 </nav>
 
 &nbsp;
@@ -170,15 +172,15 @@ The last thing we need is a section for the tab bar content. Add `section.tab-ba
 
 ```html
 <nav class="tab-bar">
-  <section class="left-small">
-    <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
-  </section>
+  <div class="left-small">
+    <a role="button" aria-expanded="false" aria-controls="idOfLeftMenu" class="left-off-canvas-toggle menu-icon" ><span></span></a>
+  </div>
   <section class="middle tab-bar-section">
     <h1 class="title">Foundation</h1>
   </section>
-  <section class="right-small">
-    <a class="right-off-canvas-toggle menu-icon" href="#"><span></span></a>
-  </section>
+  <div class="right-small">
+    <a role="button" aria-expanded="false" aria-controls="idOfRightMenu" class="right-off-canvas-toggle menu-icon" ><span></span></a>
+  </div>
 </nav>
 ```
 
@@ -188,38 +190,38 @@ Add a class of `.left`, `.right`, or `.middle` depending on which space you want
 
 ```html
 <nav class="tab-bar">
-  <section class="left-small"></section>
-  <section class="right tab-bar-section"><!-- I stretch all the way to the right --></section>
+  <div class="left-small"></div>
+  <div class="right tab-bar-section"><!-- I stretch all the way to the right --></div>
 </nav>
 
 <nav class="tab-bar">
-  <section class="left-small"></section>
-  <section class="middle tab-bar-section"><!-- I'm in the middle --></section>
-  <section class="right-small"></section>
+  <div class="left-small"></div>
+  <div class="middle tab-bar-section"><!-- I'm in the middle --></div>
+  <div class="right-small"></div>
 </nav>
 
 <nav class="tab-bar">
-  <section class="left tab-bar-section"><!-- I stretch all the way to the left --></section>
-  <section class="right-small"></section>
+  <div class="left tab-bar-section"><!-- I stretch all the way to the left --></div>
+  <div class="right-small"></div>
 </nav>
 ```
-<!-- that's what she said, lol -->
 
 <nav class="tab-bar">
-  <section class="left-small"><a class=" menu-icon" href="#"><span></span></a></section>
-  <section class="right tab-bar-section"><h1>Left Section</h1></section>
+  <div class="left-small"><a class=" menu-icon" ><span></span></a></div>
+  <div class="right tab-bar-section"><h1>Left Section</h1></div>
 </nav>
 &nbsp;
 <nav class="tab-bar">
-  <section class="left-small"><a class=" menu-icon" href="#"><span></span></a></section>
+  <div class="left-small"><a class=" menu-icon" ><span></span></a></div>
   <section class="middle tab-bar-section"><h1>Middle Section</h1></section>
-  <section class="right-small"><a class=" menu-icon" href="#"><span></span></a></section>
+  <div class="right-small"><a class=" menu-icon" ><span></span></a></div>
 </nav>
 &nbsp;
 <nav class="tab-bar">
   <section class="left tab-bar-section"><h1>Right Section</h1></section>
-  <section class="right-small"><a class=" menu-icon" href="#"><span></span></a></section>
+  <div class="right-small"><a class=" menu-icon" ><span></span></a></div>
 </nav>
+
 &nbsp;
 
 ### Off-Canvas List
@@ -231,7 +233,7 @@ We've included a nice list pattern for list in the off-canvas menu. Include `ul.
     <h4>HTML</h4>
 {{#markdown}}
 ```html
-<aside class="left-off-canvas-menu">
+<nav class="left-off-canvas-menu">
   <ul class="off-canvas-list">
     <li><label>Foundation</label></li>
     <li><a href="#">The Psychohistorians</a></li>
@@ -240,7 +242,7 @@ We've included a nice list pattern for list in the off-canvas menu. Include `ul.
     <li><a href="#">The Traders</a></li>
     <li><a href="#">The Merchant Princes</a></li>
   </ul>
-</aside>
+</nav>
 ```
 {{/markdown}}
   </div>
@@ -256,6 +258,33 @@ We've included a nice list pattern for list in the off-canvas menu. Include `ul.
       </ul>
   </div>
 </div>
+
+&nbsp;
+
+### Off-Canvas Multilevel Menu
+
+We've included a nice multilevel pattern for list in the off-canvas menu. Add a `li.has-submenu` and include `ul.left-submenu` or `ul.right-submenu` within to start to define a submenu, later add a `li.back` element inside this new list. This supports multiple level of submenus.
+
+<div class="row">
+  <div class="large-6 columns">
+  <h4>HTML</h4>
+  {{> examples_offcanvas_multiple_level_markup}}
+  </div>
+  <div class="large-6 columns">
+  <h4>Rendered HTML</h4>
+  {{> examples_offcanvas_multiple_level_rendered}}
+  </div>
+</div>
+
+***
+
+## Accessibility
+
+The off-canvas menu is not yet fully accessible. Because it's tucked away off-screen but not totally hidden, the user's browser will still tab through each item, and screen readers will read each item in the navigation. However, the off-canvas menu will not appear when focused with the keyboard.
+
+If your page has two primary navigation menus, perhaps a horizontal one for larger screens and an off-canvas menu for small screens, it's best to hide one so screen readers won't read through two whole navigation menus. Add the attribute `aria-hidden="true"` to the container of one navigation, which will tell assistive devices to skip it entirely.
+
+The multi-level off-canvas menu, being a relatively recent addition to Foundation, is also not yet fully accessible. The browser will tab through the top-level menu items, but not drill down into any of the sub menus.
 
 ***
 
@@ -283,7 +312,6 @@ Just add `foundation.offcanvas.js` AFTER the `foundation.js` file. Your markup s
 
   ...
 
-  <script src="js/vendor/jquery.js"></script>
   <script src="js/foundation/foundation.js"></script>
   <script src="js/foundation/foundation.offcanvas.js"></script>
   <!-- Other JS plugins can be included here -->
@@ -342,13 +370,13 @@ $(document)
 
 ```
 
-### Programmatic open / close / toggle
+### Programmatic show / hide / toggle
 
 The `.off-canvas-wrap` container can be targeted for javascript methods. At this time, the presentational open class needs to be included: either `move-right`, `move-left`, `offcanvas-overlap-left`, `offcanvas-overlap-right` or `offcanvas-overlap`.
 
 ```js
-$('.off-canvas-wrap').foundation('offcanvas', 'open', 'move-right');
-$('.off-canvas-wrap').foundation('offcanvas', 'close', 'move-right');
+$('.off-canvas-wrap').foundation('offcanvas', 'show', 'move-right');
+$('.off-canvas-wrap').foundation('offcanvas', 'hide', 'move-right');
 $('.off-canvas-wrap').foundation('offcanvas', 'toggle', 'move-right');
 
 ```

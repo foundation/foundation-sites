@@ -11,15 +11,15 @@
 $include-html-accordion-classes: $include-html-classes !default;
 
 $accordion-navigation-padding: rem-calc(16) !default;
-$accordion-navigation-bg-color: #efefef !default;
+$accordion-navigation-bg-color: $silver !default;
 $accordion-navigation-hover-bg-color: scale-color($accordion-navigation-bg-color, $lightness: -5%) !default;
 $accordion-navigation-active-bg-color: scale-color($accordion-navigation-bg-color, $lightness: -3%) !default;
-$accordion-navigation-font-color: #222 !default;
+$accordion-navigation-font-color: $jet !default;
 $accordion-navigation-font-size: rem-calc(16) !default;
 $accordion-navigation-font-family: $body-font-family !default;
 
 $accordion-content-padding: $column-gutter/2 !default;
-$accordion-content-active-bg-color: #fff !default;
+$accordion-content-active-bg-color: $white !default;
 
 
 //  Mixin: accordion-container()
@@ -61,7 +61,7 @@ $accordion-content-active-bg-color: #fff !default;
         @warn "#{$padding} was read as a #{type-of($padding)}";
         @warn "`#{$padding}` isn't a valid number. $accordion-navigation-padding (#{$accordion-navigation-padding}) will be used instead.)";
         padding: $accordion-navigation-padding;
-      } 
+      }
       @else {
         @warn "`#{$padding}` isn't a valid number and $accordion-navigation-padding is missing. A value of `null` is returned to not output an invalid value for padding";
         padding: null;
@@ -99,10 +99,10 @@ $accordion-content-active-bg-color: #fff !default;
 //    @params $active_class [ string ]: Class name used to keep track of which accordion tab should be visible.
 
 @mixin accordion-content($bg: $accordion-content-active-bg-color, $padding: $accordion-content-padding, $active_class: 'active'){
-  display: none; 
+  display: none;
   @if type-of($padding) != "number" {
     @warn "#{$padding} was read as a #{type-of($padding)}";
-    @if $accordion-content-padding != null { 
+    @if $accordion-content-padding != null {
       @warn "`#{$padding}` isn't a valid number. $accordion-content-padding used instead";
       padding: $accordion-content-padding;
     } @else {
@@ -127,7 +127,8 @@ $accordion-content-active-bg-color: #fff !default;
 @include exports("accordion") {
   @if $include-html-accordion-classes {
     .accordion {
-      @include clearfix; margin-bottom: 0;
+      @include clearfix;
+      margin-bottom: 0;
       .accordion-navigation, dd {
         display: block;
         margin-bottom: 0 !important;
@@ -141,7 +142,7 @@ $accordion-content-active-bg-color: #fff !default;
           font-size: $accordion-navigation-font-size;
           &:hover { background: $accordion-navigation-hover-bg-color; }
         }
-        
+
         > .content {
           display: none;
           padding: $accordion-content-padding;

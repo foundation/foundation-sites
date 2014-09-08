@@ -10,7 +10,7 @@ $include-html-type-classes: $include-html-classes !default;
 $header-font-family: $body-font-family !default;
 $header-font-weight: $font-weight-normal !default;
 $header-font-style: $font-weight-normal !default;
-$header-font-color: #222 !default;
+$header-font-color: $jet !default;
 $header-line-height: 1.4 !default;
 $header-top-margin: .2rem !default;
 $header-bottom-margin: .5rem !default;
@@ -55,7 +55,7 @@ $paragraph-aside-font-style: italic !default;
 $paragraph-text-rendering: optimizeLegibility !default;
 
 // We use these to style <code> tags
-$code-color: #333 !default;
+$code-color: $oil !default;
 $code-font-family: Consolas, 'Liberation Mono', Courier, monospace !default;
 $code-font-weight: $font-weight-normal !default;
 $code-background-color: scale-color($secondary-color, $lightness: 70%) !default;
@@ -73,7 +73,7 @@ $anchor-font-color-hover: scale-color($anchor-font-color, $lightness: -14%) !def
 // We use these to style the <hr> element
 $hr-border-width: 1px !default;
 $hr-border-style: solid !default;
-$hr-border-color: #ddd !default;
+$hr-border-color: $gainsboro !default;
 $hr-margin: rem-calc(20) !default;
 
 // We use these to style lists
@@ -93,13 +93,13 @@ $definition-list-margin-bottom: rem-calc(12) !default;
 // We use these to style blockquotes
 $blockquote-font-color: scale-color($header-font-color, $lightness: 35%) !default;
 $blockquote-padding: rem-calc(9 20 0 19) !default;
-$blockquote-border: 1px solid #ddd !default;
+$blockquote-border: 1px solid $gainsboro !default;
 $blockquote-cite-font-size: rem-calc(13) !default;
 $blockquote-cite-font-color: scale-color($header-font-color, $lightness: 23%) !default;
 $blockquote-cite-link-color: $blockquote-cite-font-color !default;
 
 // Acronym styles
-$acronym-underline: 1px dotted #ddd !default;
+$acronym-underline: 1px dotted $gainsboro !default;
 
 // We use these to control padding and margin
 $microformat-padding: rem-calc(10 12) !default;
@@ -108,7 +108,7 @@ $microformat-margin: rem-calc(0 0 20 0) !default;
 // We use these to control the border styles
 $microformat-border-width: 1px !default;
 $microformat-border-style: solid !default;
-$microformat-border-color: #ddd !default;
+$microformat-border-color: $gainsboro !default;
 
 // We use these to control full name font styles
 $microformat-fullname-font-weight: $font-weight-bold !default;
@@ -471,7 +471,7 @@ $align-class-breakpoints:
       @media print {
         * {
           background: transparent !important;
-          color: #000 !important; /* Black prints faster: h5bp.com/s */
+          color: $black !important; /* Black prints faster: h5bp.com/s */
           box-shadow: none !important;
           text-shadow: none !important;
         }
@@ -489,7 +489,7 @@ $align-class-breakpoints:
 
         pre,
         blockquote {
-          border: 1px solid #999;
+          border: 1px solid $aluminum;
           page-break-inside: avoid;
         }
 

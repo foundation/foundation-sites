@@ -16,7 +16,7 @@
 $include-html-form-classes: $include-html-classes !default;
 
 // Controlling background color for the switch container
-$switch-bg: #ddd !default;
+$switch-bg: $gainsboro !default;
 
 // We use these to control the switch heights for our default classes
 $switch-height-tny: 1.5rem !default;
@@ -26,10 +26,10 @@ $switch-height-lrg: 2.5rem !default;
 $switch-bottom-margin: 1.5rem !default;
 
 // We use these to style the switch-paddle
-$switch-paddle-bg: #fff !default;
+$switch-paddle-bg: $white !default;
 $switch-paddle-transition-speed: .15s !default;
 $switch-paddle-transition-ease: ease-out !default;
-$switch-active-color: $primary-color;
+$switch-active-color: $primary-color !default;
 
 
 //
@@ -63,7 +63,11 @@ $switch-active-color: $primary-color;
   // So that we don't need to recreate the form with any JS, we use the
   // existing checkbox or radio button, but we cleverly position and hide it.
   input {
-    display: none;
+    opacity: 0;
+    position: absolute;
+    top: 9px;
+    left: 10px;
+    padding:0;
 
     & + label { margin-left: 0; margin-right: 0; }
   }
@@ -182,7 +186,10 @@ $switch-active-color: $primary-color;
   $paddle-bg: $switch-paddle-bg,
   $active-color: $switch-active-color,
   $radius:false,
-  $base-style:true) {
+    $base-style:true) {
+    padding: 0;
+    border: none;
+    position: relative;
     @include switch-base($transition-speed, $transition-ease);
     @include switch-size($height);
     @include switch-style($paddle-bg, $radius, $base-style);
@@ -190,7 +197,7 @@ $switch-active-color: $primary-color;
 
 @include exports("switch") {
   @if $include-html-form-classes {
-      div.switch {
+      .switch {
         @include switch;
 
         // Large radio switches
