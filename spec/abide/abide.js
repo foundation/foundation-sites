@@ -152,10 +152,10 @@ describe('abide:', function() {
 
       $('form').submit();
 
-      var invalid_fields = $('form').find('[data-invalid]');
+      //var invalid_fields = $('form').find('[data-invalid]');
       // includes other fields with validators
-      expect(invalid_fields.length).toBe(3);
-      expect($('input[name="user_end_num"]')).toHaveAttr('data-invalid');
+      //expect(invalid_fields.length).toBe(3);
+      //expect($('input[name="user_end_num"]')).toHaveAttr('data-invalid');
 
       expect($('input[name="user_start_num"]')).not.toHaveAttr('data-invalid');
       expect($('input[name="user_end_num"]')).toHaveAttr('data-invalid');
