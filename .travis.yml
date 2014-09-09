@@ -8,6 +8,7 @@ before_install:
   - npm install -g grunt-cli bower
   - gem install bundler
   - bundle install
+  - gem update sass
 before_script:
   - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
   - git config --global user.email "mark@zurb.com"
