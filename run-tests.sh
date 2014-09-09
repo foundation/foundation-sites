@@ -36,24 +36,6 @@ fi
 rm stylesheets/app.css
 echo "[SUCCESS] Compass Build"
 
-# test sass-only install
-cp -f bower_components/foundation/scss/foundation/_settings.scss scss/_settings.scss
-bundle exec sass --load-path bower_components/foundation/scss scss/app.scss:stylesheets/app.css
-rc=$?
-if [ "$rc" -ne 0 ] ; then
-    echo "[FAILURE] Ruby Sass Build"
-    exit $rc
-fi
-rm stylesheets/app.css
-sed -e 's/^\/\/ @/@/' -e 's/^\/\/ \$/\$/' scss/_settings.scss > scss/_settings.scss
-bundle exec sass --load-path bower_components/foundation/scss scss/app.scss:stylesheets/app.css
-rc=$?
-if [ "$rc" -ne 0 ] ; then
-    echo "[FAILURE] Ruby Sass Build w/_settings.scss"
-    exit $rc
-fi
-rm stylesheets/app.css
-echo "[SUCCESS] Ruby Sass Build"
 
 # test libsass install
 cd ..
