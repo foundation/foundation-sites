@@ -57,7 +57,7 @@ $button-group-border-width: 1px !default;
   }
   @else {
     margin: 0 -2px;
-    float: none;
+    float: $default-float;
     display: inline-block;
   }
 
@@ -151,7 +151,7 @@ $button-group-border-width: 1px !default;
       & > li { @include button-group-style(); }
 
       &.stack {
-        & > li { @include button-group-style($orientation:vertical); }
+        & > li { @include button-group-style($orientation:vertical); float: none; }
       }
 
       &.stack-for-small {
