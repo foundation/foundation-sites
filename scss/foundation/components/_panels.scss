@@ -47,6 +47,8 @@ $callout-panel-link-color: $primary-color !default;
     padding: $padding;
 
     background: $bg;
+    @if $bg-lightness >= 50% { color: $panel-font-color; }
+    @else { color: $panel-font-color-alt; }
 
     // Respect the padding, fool.
     &>:first-child { margin-top: 0; }
