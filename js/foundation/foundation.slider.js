@@ -13,6 +13,7 @@
       initial: null,
       display_selector: '',
       vertical: false,
+      trigger_input_change: false,
       on_change: function(){}
     },
 
@@ -109,7 +110,9 @@
           bar_l = $.data($handle[0], 'bar_l'),
           norm_pct = this.normalized_percentage(value, settings.start, settings.end),
           handle_offset = norm_pct*(bar_l-handle_l)-1,
-          progress_bar_length = norm_pct*100;
+          progress_bar_length = norm_pct*100,
+          $handle_parent = $handle.parent(),
+          $hidden_inputs = $handle.parent().children('input[type=hidden]');
 
       if (Foundation.rtl && !settings.vertical) {
         handle_offset = -handle_offset;
@@ -124,9 +127,12 @@
         $handle.siblings('.range-slider-active-segment').css('width', progress_bar_length + '%');
       }
 
-      $handle.parent().attr(this.attr_name(), value).trigger('change').trigger('change.fndtn.slider');
+      $handle_parent.attr(this.attr_name(), value).trigger('change').trigger('change.fndtn.slider');
 
-      $handle.parent().children('input[type=hidden]').val(value);
+      $hidden_inputs.val(value);
+      if (settings.trigger_input_change) {
+          $hidden_inputs.trigger('change');
+      }
 
       if (!$handle[0].hasAttribute('aria-valuemin')) {
         $handle.attr({
