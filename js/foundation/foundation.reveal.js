@@ -380,7 +380,7 @@
 
       if (iframe.length > 0) {
         iframe.attr('data-src', iframe[0].src);
-        iframe.attr('src', iframe.attr('src'));
+        iframe.attr('src', '');
         video.hide();
       }
     },
