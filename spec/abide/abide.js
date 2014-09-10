@@ -89,6 +89,19 @@ describe('abide:', function() {
       expect('invalid').not.toHaveBeenTriggeredOn('input[name="user_name"]');
       expect('invalid').not.toHaveBeenTriggeredOn('input[name="user_email"]');
     });
+
+    it('should not validate on blur or change events when validate_on_blur is false', function() {
+      $(document).foundation({
+        abide: {
+          validate_on_blur: false
+        }
+      });
+
+      $('input[name="user_name"]').blur();
+
+      expect($('input[name="user_name"]')).not.toHaveData('invalid');
+    });
+
   });
 
   describe('advanced validation', function() {

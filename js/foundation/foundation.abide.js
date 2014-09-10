@@ -8,6 +8,7 @@
 
     settings : {
       live_validate : true,
+      validate_on_blur: true,
       focus_on_invalid : true,
       error_labels: true, // labels with a for="inputId" will recieve an `error` class
       timeout : 1000,
@@ -78,7 +79,9 @@
         .find('input, textarea, select')
           .off('.abide')
           .on('blur.fndtn.abide change.fndtn.abide', function (e) {
-            self.validate([this], e);
+            if (settings.validate_on_blur === true) {
+              self.validate([this], e);
+            }
           })
           .on('keydown.fndtn.abide', function (e) {
             if (settings.live_validate === true) {
