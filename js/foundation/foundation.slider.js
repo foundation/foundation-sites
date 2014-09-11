@@ -10,9 +10,11 @@
       start: 0,
       end: 100,
       step: 1,
+      precision: null,
       initial: null,
       display_selector: '',
       vertical: false,
+      trigger_input_change: false,
       on_change: function(){}
     },
 
@@ -97,7 +99,7 @@
 
         pct = settings.vertical ? 1-pct : pct;
 
-        var norm = self.normalized_value(pct, settings.start, settings.end, settings.step);
+        var norm = self.normalized_value(pct, settings.start, settings.end, settings.step, settings.precision);
 
         self.set_ui($handle, norm);
       });
@@ -109,7 +111,9 @@
           bar_l = $.data($handle[0], 'bar_l'),
           norm_pct = this.normalized_percentage(value, settings.start, settings.end),
           handle_offset = norm_pct*(bar_l-handle_l)-1,
-          progress_bar_length = norm_pct*100;
+          progress_bar_length = norm_pct*100,
+          $handle_parent = $handle.parent(),
+          $hidden_inputs = $handle.parent().children('input[type=hidden]');
 
       if (Foundation.rtl && !settings.vertical) {
         handle_offset = -handle_offset;
@@ -124,9 +128,12 @@
         $handle.siblings('.range-slider-active-segment').css('width', progress_bar_length + '%');
       }
 
-      $handle.parent().attr(this.attr_name(), value).trigger('change').trigger('change.fndtn.slider');
+      $handle_parent.attr(this.attr_name(), value).trigger('change').trigger('change.fndtn.slider');
 
-      $handle.parent().children('input[type=hidden]').val(value);
+      $hidden_inputs.val(value);
+      if (settings.trigger_input_change) {
+          $hidden_inputs.trigger('change');
+      }
 
       if (!$handle[0].hasAttribute('aria-valuemin')) {
         $handle.attr({
@@ -152,13 +159,13 @@
       return Math.min(1, (val - start)/(end - start));
     },
 
-    normalized_value : function(val, start, end, step) {
+    normalized_value : function(val, start, end, step, precision) {
       var range = end - start,
           point = val*range,
           mod = (point-(point%step)) / step,
           rem = point % step,
           round = ( rem >= step*0.5 ? step : 0);
-      return (mod*step + round) + start;
+      return ((mod*step + round) + start).toFixed(precision);
     },
 
     set_translate : function(ele, offset, vertical) {
@@ -183,8 +190,16 @@
       return Math.min(Math.max(val, min), max);
     },
 
+
+
     initialize_settings : function(handle) {
-      var settings = $.extend({}, this.settings, this.data_options($(handle).parent()));
+      var settings = $.extend({}, this.settings, this.data_options($(handle).parent())),
+          decimal_places_match_result;
+
+      if (settings.precision === null) {
+        decimal_places_match_result = ('' + settings.step).match(/\.([\d]*)/);
+        settings.precision = decimal_places_match_result && decimal_places_match_result[1] ? decimal_places_match_result[1].length : 0;
+      }
 
       if (settings.vertical) {
         $.data(handle, 'bar_o', $(handle).parent().offset().top);
