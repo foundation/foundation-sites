@@ -44,9 +44,14 @@
           if ($this.data(self.data_attr())) {
             dropdown = S('#' + $this.data(self.data_attr()));
             target = $this;
+            self.last_target = target;
           } else {
             dropdown = $this;
-            target = S("[" + self.attr_name() + "='" + dropdown.attr('id') + "']");
+            if(self.last_target){
+              target = self.last_target;
+            }else{
+              target = S("[" + self.attr_name() + "='" + dropdown.attr('id') + "']");
+            }
           }
 
           var settings = target.data(self.attr_name(true) + '-init') || self.settings;
