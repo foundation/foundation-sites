@@ -11,13 +11,6 @@
       mega_class: 'mega',
       align: 'bottom',
       is_hover: false,
-      smart_position: true,
-      smart_position_arrays: {
-        right:   ['right', 'bottom', 'top', 'left', 'right'],
-        left:    ['left', 'right', 'bottom', 'top', 'left'],
-        top:     ['top', 'right', 'bottom', 'left', 'top'],
-        bottom : ['bottom', 'top', 'right', 'left', 'bottom']
-      },
       opened: function(){},
       closed: function(){}
     },
@@ -207,44 +200,9 @@
 
     style : function (dropdown, target, settings) {
       var css = $.extend({position: 'absolute'},
-
-        this.position(dropdown, target, settings));
+        this.dirs[settings.align].call(dropdown, target, settings));
 
       dropdown.attr('style', '').css(css);
-    },
-    // return CSS property object
-    position: function(d, t, s) {
-      var res = {},
-        vp = {},
-        list = s.smart_position_arrays[s.align],
-        len = list.length,
-        dd_w = d.outerWidth(),
-        dd_h = d.outerHeight(),
-        o = d.offsetParent().offset();
-
-        if (s.smart_position) {
-          var $win = $(window);
-          vp.top =  $win.scrollTop();
-          vp.left = $win.scrollLeft();
-          vp.right  = vp.left + $win.width();
-          vp.bottom = vp.top + $win.height();
-
-          for (var i=0; i < len; i++) {
-            res = this.dirs[list[i]].call(d, t, s);
-            if (this.is_out(vp, res.top + o.top, res.left + o.left, dd_w, dd_h, 3) === false)
-              break;
-          }
-        }
-        else {
-          res = this.dirs[s.align].call(d, t, s);
-        }
-
-        return res;
-    },
-
-    is_out: function (vp, top, left, width, height, buffer) {
-      return (top < vp.top + buffer || left < vp.left + buffer
-           || top + height > vp.bottom - buffer || left + width > vp.right - buffer);
     },
 
     // return CSS property object
@@ -307,7 +265,6 @@
         return {left: p.left + t.outerWidth(), top: p.top};
       }
     },
-
 
     // Insert rule to style psuedo elements
     adjust_pip : function (dropdown,target,settings,position) {
