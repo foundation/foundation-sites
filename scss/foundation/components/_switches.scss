@@ -13,7 +13,7 @@
 // @variables
 //
 
-$include-html-form-classes: $include-html-classes !default;
+$include-html-form-switch-classes: $include-html-classes !default;
 
 // Controlling background color for the switch container
 $switch-bg: $gainsboro !default;
@@ -43,7 +43,7 @@ $switch-active-color: $primary-color !default;
 @mixin switch-base(
   $transition-speed:$switch-paddle-transition-speed,
   $transition-ease:$switch-paddle-transition-ease) {
- 
+
 
   // Default label styles for type and transition
   label {
@@ -210,7 +210,7 @@ $switch-active-color: $primary-color !default;
         &.tiny { @include switch-size($switch-height-tny); }
 
         // Add a radius to the switch
-        &.radius { 
+        &.radius {
           label { @include radius(4px); }
           label:after { @include radius(3px); }
         }

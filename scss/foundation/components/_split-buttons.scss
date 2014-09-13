@@ -15,7 +15,7 @@
 // @variables
 //
 
-$include-html-button-classes: $include-html-classes !default;
+$include-html-split-button-classes: $include-html-classes !default;
 
 // We use these to control different shared styles for Split Buttons
 $split-button-function-factor: 10% !default;
@@ -64,8 +64,8 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
 // $base-style - Apply base style to split button. Default: true.
 @mixin split-button(
   $padding:medium,
-  $pip-color:$split-button-pip-color, 
-  $span-border:$primary-color, 
+  $pip-color:$split-button-pip-color,
+  $span-border:$primary-color,
   $base-style:true) {
 
   // With this, we can control whether or not the base styles come through.
