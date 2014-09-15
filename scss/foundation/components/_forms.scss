@@ -333,6 +333,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
   border: $input-border-width $input-border-style $input-border-color;
   padding: $form-spacing / 2;
   font-size: $input-font-size;
+  font-family: $body-font-family;
   color: $input-font-color;
   line-height: normal;
   @include radius(0);
