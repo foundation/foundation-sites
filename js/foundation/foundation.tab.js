@@ -59,14 +59,7 @@
       S(window).on('hashchange.fndtn.tab', function (e) {
         e.preventDefault();
         self.handle_location_hash_change();
-
-      }).on('keyup', function (e) {
-        if (e.keyword == 9) {
-          // active tab
-          console.log(document.querySelector('[data-tab] .tab-title :focus'))
-        }
-      });
-      ;
+      });
     },
 
     handle_location_hash_change : function () {
