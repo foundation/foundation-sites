@@ -147,9 +147,9 @@ table.plugin-options {
 
 // Modified Panel
 .easel {
-  @include panel($bg:$panel-bg-color);
-  @include border(solid, 1px, darken($panel-bg-color, 6%));
+  @include panel($bg: $panel-bg-color);
   @include radius();
+  border: 1px solid darken($panel-bg-color, 6%);
 }
 
 // 12 column grid mixin (would be cool to implement with mixins where possible)
@@ -176,7 +176,7 @@ table.plugin-options {
 .options-bg {
   padding: 18px;
   background-color: darken($panel-bg-color, 0%);
-  @include border(solid, 1px, darken($panel-bg-color, 4%));
+  border: 1px solid darken($panel-bg-color, 4%);
   border-radius: 4px;
   ul {
     margin-#{$default-float}: 20px;
@@ -187,9 +187,6 @@ table.plugin-options {
 pre { margin-bottom: 15px;
   code {
     .code-container {
-      //@include border(solid, 1px, darken($panel-bg-color, 4%));
-      //border-radius: 3px;
-      //background-color: darken($panel-bg-color, 2%);
       margin: 10px 0px;
       padding: 5px;
       overflow-x: auto;

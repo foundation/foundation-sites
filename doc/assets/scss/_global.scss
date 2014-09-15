@@ -26,31 +26,16 @@
   $shadow-10: false
 ) { }
 
-@mixin border-direction(
-  $direction: top,
-  $style: solid,
-  $width: 2px,
-  $color: darken($panel-bg-color, 1%)) {
-  border-#{$direction}: #{$style} #{$width} #{$color};
-}
-
-@mixin border(
-  $style:solid,
-  $width:2px,
-  $color:darken($panel-bg-color, 1%)) {
-  border: #{$style} #{$width} #{$color};
-}
-
 //
 // @functions
 //
 
-@function image-url($pth) {
-  @return unquote("url(../img/#{$pth})");
+@function image-url($path) {
+  @return unquote("url(../img/#{$path})");
 }
 
-@function font-url($pth) {
-  @return unquote("url(../fonts/#{$pth})");
+@function font-url($path) {
+  @return unquote("url(../fonts/#{$path})");
 }
 
 //
@@ -59,5 +44,4 @@
 
 $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !important;
 $rem-base: 18;
-// $topbar-arrows: false;
 // $text-direction: rtl;
