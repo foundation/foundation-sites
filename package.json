@@ -1,6 +1,6 @@
 {
   "name": "zurb-foundation",
-  "version": "5.4.3.1",
+  "version": "5.4.3",
   "devDependencies": {
     "assemble": "~0.4.37",
     "grunt": "~0.4.4",
