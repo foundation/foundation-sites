@@ -66,6 +66,7 @@ module.exports = function(grunt) {
     'string-replace': {
       dist: {
         files: {
+          'dist/assets/':'dist/assets/bower.json',
           'dist/assets/css/':'dist/assets/css/*.css',
           'dist/assets/js/':'dist/assets/js/*js',
           'dist/assets/js/foundation/':'dist/assets/js/foundation/*js',
