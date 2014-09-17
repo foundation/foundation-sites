@@ -468,7 +468,7 @@ $include-html-global-classes: $include-html-classes;
 // 06. Button Groups
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// $include-html-button-classes: $include-html-classes;
+// $include-html-button-group-classes: $include-html-classes;
 
 // Sets the margin for the right side by default, and the left margin if right-to-left direction is used
 // $button-bar-margin-opposite: rem-calc(10);
@@ -558,7 +558,7 @@ $include-html-global-classes: $include-html-classes;
 // 09. Dropdown Buttons
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// $include-html-button-classes: $include-html-classes;
+// $include-html-dropdown-button-classes: $include-html-classes;
 
 // We use these to set the color of the pip in dropdown buttons
 // $dropdown-button-pip-color: $white;
@@ -1156,7 +1156,7 @@ $include-html-global-classes: $include-html-classes;
 // 27. Split Buttons
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// $include-html-button-classes: $include-html-classes;
+// $include-html-split-button-classes: $include-html-classes;
 
 // We use these to control different shared styles for Split Buttons
 // $split-button-function-factor: 10%;
@@ -1225,7 +1225,7 @@ $include-html-global-classes: $include-html-classes;
 // 29. Switch
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// $include-html-form-classes: $include-html-classes;
+// $include-html-form-switch-classes: $include-html-classes;
 
 // Controlling border styles and background colors for the switch container
 // $switch-border-color: scale-color($white, $lightness: -20%);
