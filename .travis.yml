@@ -22,8 +22,10 @@ after_success:
   - git remote rm origin
   - git remote add origin https://mhayes:${GH_TOKEN}@github.com/zurb/bower-foundation.git
   - git add -A
+  - FOUNDATION_VER=$(git diff bower.json | grep version | cut -d':' -f2 | cut -d'"' -f2 | sort -g -r | head -1) && if [ $(echo $FOUNDATION_VER | wc -m | tr -d ' ') = '1' ]; then echo 'VERSION DID NOT CHANGE'; else git tag -a $FOUNDATION_VER -m "Version $FOUNDATION_VER"; fi
   - git commit -m "Foundation build to bower-foundation"
   - git push -fq origin master
+  - git push -fq origin --tags
   - echo -e "Done with magic\n"
 env:
   global:
