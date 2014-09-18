@@ -23,15 +23,6 @@ $topbar-margin-bottom: 0 !default;
 $topbar-title-weight: $font-weight-normal !default;
 $topbar-title-font-size: rem-calc(17) !default;
 
-// Style the top bar dropdown elements
-$topbar-dropdown-bg: $oil !default;
-$topbar-dropdown-link-color: $white !default;
-$topbar-dropdown-link-bg: $oil !default;
-$topbar-dropdown-link-weight: $font-weight-normal !default;
-$topbar-dropdown-toggle-size: 5px !default;
-$topbar-dropdown-toggle-color: $white !default;
-$topbar-dropdown-toggle-alpha: 0.4 !default;
-
 // Set the link colors and styles for top-level nav
 $topbar-link-color: $white !default;
 $topbar-link-color-hover: $white !default;
@@ -52,6 +43,16 @@ $topbar-back-link-size: rem-calc(18) !default;
 $topbar-link-dropdown-padding: 20px;
 $topbar-button-font-size: 0.75rem !default;
 $topbar-button-top: 7px !default;
+
+// Style the top bar dropdown elements
+$topbar-dropdown-bg: $oil !default;
+$topbar-dropdown-link-color: $white !default;
+$topbar-dropdown-link-color-hover: $topbar-link-color-hover !default;
+$topbar-dropdown-link-bg: $oil !default;
+$topbar-dropdown-link-weight: $font-weight-normal !default;
+$topbar-dropdown-toggle-size: 5px !default;
+$topbar-dropdown-toggle-color: $white !default;
+$topbar-dropdown-toggle-alpha: 0.4 !default;
 
 $topbar-dropdown-label-color: $monsoon !default;
 $topbar-dropdown-label-text-transform: uppercase !default;
@@ -585,7 +586,7 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
               }
 
               &:hover > a:not(.button) {
-                color: $topbar-link-color-hover;
+                color: $topbar-dropdown-link-color-hover;
                 background-color: $topbar-link-bg-color-hover;
                 @if ($topbar-link-bg-hover) {
                   background: $topbar-link-bg-hover;
