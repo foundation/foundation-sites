@@ -247,9 +247,9 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
               // $thickness - thickness of lines in hamburger icon, set value in px
               // $gap - spacing between the lines in hamburger icon, set value in px
               // $color - icon color
-              // $hover-color - icon color during hover, here it is set the same as $color because the values are changed on line 264
+              // $hover-color - icon color during hover, here it isn't set b/c it would override $topbar-menu-icon-color-toggled
               // $offcanvas - Set to false of @include in topbar
-              @include hamburger(16px, false, 0, 1px, 6px, $topbar-menu-icon-color, $topbar-menu-icon-color, false);
+              @include hamburger(16px, false, 0, 1px, 6px, $topbar-menu-icon-color, $offcanvas:false);
             }
           }
         }
@@ -264,11 +264,12 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
 
         .toggle-topbar {
           a { color: $topbar-menu-link-color-toggled;
-            &::after {
+			span::after {
               // Shh, don't tell, but box-shadows create the menu icon :)
-              box-shadow: 0 10px 0 1px $topbar-menu-icon-color-toggled,
-                          0 16px 0 1px $topbar-menu-icon-color-toggled,
-                          0 22px 0 1px $topbar-menu-icon-color-toggled;
+              // Change the color of the bars when the menu is expanded, using given thickness from hamburger() above
+              box-shadow: 0 0px 0 1px $topbar-menu-icon-color-toggled,
+                          0 7px 0 1px $topbar-menu-icon-color-toggled,
+                          0 14px 0 1px $topbar-menu-icon-color-toggled;
             }
           }
         }
