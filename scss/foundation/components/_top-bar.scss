@@ -82,6 +82,7 @@ $topbar-divider-border-top: solid 1px scale-color($topbar-bg-color, $lightness: 
 // Sticky Class
 $topbar-sticky-class: ".sticky" !default;
 $topbar-arrows: true !default; //Set false to remove the triangle icon from the menu item
+$topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text from dropdown subnavigation li
 
 // Accessibility mixins for hiding and showing the menu dropdown items
 @mixin topbar-hide-dropdown {
@@ -552,13 +553,15 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
 
           .dropdown li.has-dropdown {
             & > a {
-              &:after {
-                border: none;
-                content: "\00bb";
-                top: 1rem;
-                margin-top: -1px;
-                #{$opposite-direction}: 5px;
-                line-height: 1.2;
+            @if ($topbar-dropdown-arrows){
+				&:after {
+				border: none;
+				content: "\00bb";
+				top: 1rem;
+				margin-top: -1px;
+				#{$opposite-direction}: 5px;
+				line-height: 1.2;
+				}
               }
             }
           }
