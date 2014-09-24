@@ -83,7 +83,9 @@ We don't see them too much, but one of the useful form elements included with Fo
 
 ### Pre/Postfix Labels &amp; Actions
 
-Foundation forms support actions tied to buttons, and prefix / postfix labels, through a versatile approach using special grid properties. Essentially you can use `<div class="row collapse">` to create label / action / input combinations. You use the Foundation columns to define the size of the pre/postfix `<span class="postfix">` or `<span class="prefix">`. Here are a few examples:
+Foundation forms support actions tied to buttons, and prefix / postfix labels, through a versatile approach using special grid properties. Essentially you can use `<div class="row collapse">` to create label / action / input combinations. You use the Foundation columns to define the size of the pre/postfix `<span class="postfix">` or `<span class="prefix">`.
+
+You can also give a button / input pair a radius or a rounded edge by adding the classes `prefix-radius`, `postfix-radius`, `prefix-round` or `postfix-round` to the row that contains the elements. For example, `<div class="row collapse postfix-round">` will add a rounded edge to the left side of the input field, and to the right side of the button, creating a cohesive rounded input. Here are a few examples:
 
 <div class="row">
   <div class="large-6 columns">
@@ -116,6 +118,64 @@ Foundation includes error states for labels, inputs and messaging that you can h
 {{> examples_form_errors}}
   </div>
 </div>
+
+***
+
+## Accessibility
+
+For the most part, if you stick to standard HTML input types and label them properly, you won't need to worry too much about accessibility. Here are some things to keep in mind.
+
+### Label your inputs
+
+We recommend nesting your inputs inside of their labels, which removes the need to connect them using the `for` attribute.
+
+```html
+<label>
+  Name
+  <input type="text" name="name">
+</label>
+```
+
+If you need your labels and inputs to be separated, make sure the two are connected so screen readers will know (and to keep the labels clickable!).
+
+```html
+<label for="name">Name</label>
+<input type="text" name="name" id="name">
+```
+
+If an input field doesn't have a label, add the attribute `aria-label` to the input to clarify its purpose.
+
+```html
+<input type="text" name="name" aria-label="Name">
+```
+
+### Label help text
+
+If an input has some sort of help text distinct from the label, it should be connected to the input it describes using the attribute `aria-describedby`.
+
+```html
+<label>
+  Name
+  <input type="text" name="name" aria-describedby="nameHelpText">
+</label>
+<p id="nameHelpText">Enter your name.</p>
+```
+
+### Label custom inputs
+
+Custom inputs, like date pickers, range sliders, or switches need some extra attention to be made accessible. Our custom inputs&mdash;the range slider and switch&mdash;do most of this work for you.
+
+Custom inputs with labels or help text need the attributes `aria-labelledby` and `aria-describedby` added to them, so screen readers know how to describe a custom input.
+
+```html
+<label id="ageLabel">Age</label>
+<div class="range-slider" data-slider>
+  <span class="range-slider-handle" role="slider" aria-labelledby="ageLabel" aria-describedby="ageHelpText"></span>
+  <span class="range-slider-active-segment"></span>
+  <input type="hidden">
+</div>
+<p id="ageHelpText">How old are you?</p>
+```
 
 ***
 

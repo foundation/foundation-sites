@@ -26,13 +26,13 @@ $crumb-radius: $global-radius !default;
 // We use these to set various text styles for breadcrumbs.
 $crumb-font-size: rem-calc(11) !default;
 $crumb-font-color: $primary-color !default;
-$crumb-font-color-current: #333 !default;
-$crumb-font-color-unavailable: #999 !default;
+$crumb-font-color-current: $oil !default;
+$crumb-font-color-unavailable: $aluminum !default;
 $crumb-font-transform: uppercase !default;
 $crumb-link-decor: underline !default;
 
 // We use these to control the slash between breadcrumbs
-$crumb-slash-color: #aaa !default;
+$crumb-slash-color: $base !default;
 $crumb-slash: "/" !default;
 
 //
@@ -125,3 +125,8 @@ $crumb-slash: "/" !default;
     }
   }
 }
+
+/* Accessibility - hides the forward slash */
+[aria-label="breadcrumbs"] [aria-hidden="true"]:after {
+  content: "/";
+  }

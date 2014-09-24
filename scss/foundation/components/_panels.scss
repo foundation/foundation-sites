@@ -10,7 +10,7 @@
 $include-html-panel-classes: $include-html-classes !default;
 
 // We use these to control the background and border styles
-$panel-bg: scale-color(#fff, $lightness: -5%) !default;
+$panel-bg: scale-color($white, $lightness: -5%) !default;
 $panel-border-style: solid !default;
 $panel-border-size: 1px !default;
 
@@ -23,8 +23,8 @@ $panel-margin-bottom: rem-calc(20) !default;
 $panel-padding: rem-calc(20) !default;
 
 // We use these to set default font colors
-$panel-font-color: #333 !default;
-$panel-font-color-alt: #fff !default;
+$panel-font-color: $oil !default;
+$panel-font-color-alt: $white !default;
 
 $panel-header-adjust: true !default;
 $callout-panel-link-color: $primary-color !default;
@@ -32,7 +32,7 @@ $callout-panel-link-color: $primary-color !default;
 // @mixins
 //
 // We use this mixin to create panels.
-// $bg - Sets the panel background color. Default: $panel-pg || scale-color(#fff, $lightness: -5%) !default
+// $bg - Sets the panel background color. Default: $panel-pg || scale-color($white, $lightness: -5%) !default
 // $padding - Sets the panel padding amount. Default: $panel-padding || rem-calc(20)
 // $adjust - Sets the font color based on the darkness of the bg & resets header line-heights for panels. Default: $panel-header-adjust || true
 @mixin panel($bg:$panel-bg, $padding:$panel-padding, $adjust:$panel-header-adjust) {
@@ -47,6 +47,8 @@ $callout-panel-link-color: $primary-color !default;
     padding: $padding;
 
     background: $bg;
+    @if $bg-lightness >= 50% { color: $panel-font-color; }
+    @else { color: $panel-font-color-alt; }
 
     // Respect the padding, fool.
     &>:first-child { margin-top: 0; }

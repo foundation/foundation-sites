@@ -1,20 +1,29 @@
 var components = [];
+var unique_search_terms = {};
+
+function pushSearchTerm(searchTerm, data) {
+  if (!unique_search_terms[searchTerm]) {
+    components.push({
+      value: searchTerm,
+      data: data
+    });
+
+    unique_search_terms[searchTerm] = true
+  }
+}
+
 $("[data-search]")
   .each(function() {
     var self = $(this),
         searchTerm = self.text().trim(),
         otherSearchTerms = self.data("search").trim(),
         url = self.attr("href");
-    components.push({
-      value: searchTerm,
-      data: self.attr("href")
-    });
+
+    pushSearchTerm(searchTerm, self.attr("href"))
+
     if (otherSearchTerms !== "") {
       $.each(otherSearchTerms.split(","), function(idx, el) {
-        components.push({
-          value: el,
-          data: self.attr("href")
-        });
+        pushSearchTerm(el, self.attr("href"))
       });
     }
   });

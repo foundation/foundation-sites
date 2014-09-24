@@ -52,6 +52,27 @@ Additional classes can be added to your component to change its appearance.
 
 ***
 
+## Accessibility
+
+Use the snippet below to make buttons more accessible. You can use an `aria-label="submit form"` attribute to give a screen reader the literal purpose of the button if there is no text in it. If there is no `<a href="">` then simply add the `tabindex="0"` to the div or span to make it focusable.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+{{> examples_buttons_accessible}}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+{{> examples_buttons_accessible_rendered}}
+  </div>
+</div>
+
+***
+
 ## Customize with Sass
 
 Buttons can be easily customized using our Sass variables

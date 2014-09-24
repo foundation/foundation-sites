@@ -10,14 +10,14 @@
 $include-html-label-classes: $include-html-classes !default;
 
 // We use these to style the labels
-$label-padding: rem-calc(4 8 6) !default;
+$label-padding: rem-calc(4 8 4) !default;
 $label-radius: $global-radius !default;
 
 // We use these to style the label text
 $label-font-sizing: rem-calc(11) !default;
 $label-font-weight: $font-weight-normal !default;
-$label-font-color: #333 !default;
-$label-font-color-alt: #fff !default;
+$label-font-color: $oil !default;
+$label-font-color-alt: $white !default;
 $label-font-family: $body-font-family !default;
 
 //
@@ -100,6 +100,7 @@ $label-font-family: $body-font-family !default;
       &.warning   { @include label-style($warning-color); }
       &.success   { @include label-style($success-color); }
       &.secondary { @include label-style($secondary-color); }
+      &.info      { @include label-style($info-color); }
     }
   }
 }

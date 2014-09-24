@@ -40,6 +40,7 @@ docs/public/*
 *.ruby-version
 /docs2/public/*
 .settings
+.project
 test/scss/output-test
 test/tmp
 test/version_tmp

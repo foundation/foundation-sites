@@ -1,20 +1,20 @@
-<ul class="tabs vertical" data-tab>
-  <li class="tab-title active"><a href="#panel1a">Tab 1</a></li>
-  <li class="tab-title"><a href="#panel2a">Tab 2</a></li>
-  <li class="tab-title"><a href="#panel3a">Tab 3</a></li>
-  <li class="tab-title"><a href="#panel4a">Tab 4</a></li>
+<ul class="tabs vertical" data-tab role="tablist">
+  <li class="tab-title active" role="presentational"><a href="#panel2-1" role="tab" tabindex="0" aria-selected="true" controls="panel2-1">Tab 1</a></li>
+  <li class="tab-title" role="presentational"><a href="#panel2-2" role="tab" tabindex="0" aria-selected="false" controls="panel2-2">Tab 2</a></li>
+  <li class="tab-title" role="presentational"><a href="#panel2-3" role="tab" tabindex="0" aria-selected="false" controls="panel2-3">Tab 3</a></li>
+  <li class="tab-title" role="presentational"><a href="#panel2-4" role="tab" tabindex="0" aria-selected="false" controls="panel2-4">Tab 4</a></li>
 </ul>
-<div class="tabs-content vertical">
-  <div class="content active" id="panel1a">
-    <p>Panel 1 content goes here. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et, culpa, eos, laboriosam delectus sequi asperiores labore fuga ex molestias a assumenda nesciunt libero consequatur nulla deserunt eveniet ea nobis magni!</p>
-  </div>
-  <div class="content" id="panel2a">
-    <p>Panel 2 content goes here. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat, quos ullam soluta pariatur optio magni repudiandae obcaecati quidem consequuntur possimus quam dicta culpa quia aut odit placeat ut amet nesciunt.</p>
-  </div>
-  <div class="content" id="panel3a">
-    <p>Panel 3 content goes here. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam, possimus, ipsa, aperiam placeat quod doloribus corporis necessitatibus enim sapiente iusto nulla asperiores repudiandae adipisci ea consequuntur dolorem similique recusandae quia.</p>
-  </div>
-  <div class="content" id="panel4a">
-    <p>Panel 4 content goes here. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, quo voluptas ratione assumenda beatae tenetur tempora accusamus quisquam rem ad deserunt magni asperiores voluptatibus aperiam neque iste sit recusandae aspernatur!</p>
-  </div>
+<div class="tabs-content">
+  <section role="tabpanel" aria-hidden="false" class="content active" id="panel2-1">
+    <p>This is the first panel of the basic tab example. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam, pariatur accusantium magni cumque vel voluptates illum repellendus sed dignissimos magnam! Deleniti, fugit tempore quibusdam molestias iusto asperiores incidunt sint nemo?</p>
+  </section>
+  <section role="tabpanel" aria-hidden="true" class="content" id="panel2-2">
+    <p>This is the second panel of the basic tab example. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, deleniti nam eaque sunt excepturi rerum hic labore tempora! Nihil, dolorem blanditiis ipsa veritatis minima dolores consequuntur deserunt sed culpa modi!</p>
+  </section>
+  <section role="tabpanel" aria-hidden="true" class="content" id="panel2-3">
+    <p>This is the third panel of the basic tab example. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, in, sunt, dolorem corrupti officia earum veritatis numquam provident exercitationem non impedit laborum dolor at repellat deleniti. Vero nobis quas tempore.</p>
+  </section>
+  <section role="tabpanel" aria-hidden="true" class="content" id="panel2-4">
+    <p>This is the fourth panel of the basic tab example. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, veritatis, a, nisi, repellat fugit animi consectetur voluptas eligendi et iure voluptatibus neque ullam asperiores quae laboriosam praesentium suscipit amet deserunt.</p>
+  </section>
 </div>

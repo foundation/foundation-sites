@@ -11,7 +11,7 @@ title: Range Sliders
     <div class="row">
       <div class="small-3 small-offset-3 medium-4 medium-offset-0 columns">
         <div class="range-slider vertical-range" data-slider data-options="display_selector:#sliderOutput2;vertical:true;">
-          <span class="range-slider-handle"></span>
+          <span class="range-slider-handle" role="slider" tabindex="0"></span>
           <span class="range-slider-active-segment"></span>
         </div>
       </div>
@@ -24,7 +24,7 @@ title: Range Sliders
     <div class="row">
       <div class="small-10 medium-11 columns">
         <div class="range-slider" data-slider data-options="display_selector:#sliderOutput1;">
-          <span class="range-slider-handle"></span>
+          <span class="range-slider-handle" role="slider" tabindex="0"></span>
           <span class="range-slider-active-segment"></span>
         </div>
       </div>
@@ -54,7 +54,7 @@ By default, the range slider displays horizontally.
 {{#markdown}}
 ```html
 <div class="range-slider" data-slider>
-  <span class="range-slider-handle"></span>
+  <span class="range-slider-handle" role="slider" tabindex="0"></span>
   <span class="range-slider-active-segment"></span>
   <input type="hidden">
 </div>
@@ -64,7 +64,7 @@ By default, the range slider displays horizontally.
   <div class="large-6 columns">
     <h4>Rendered HTML</h4>
     <div class="range-slider" data-slider>
-      <span class="range-slider-handle"></span>
+      <span class="range-slider-handle" role="slider" tabindex="0"></span>
       <span class="range-slider-active-segment"></span>
       <input type="hidden">
     </div>
@@ -81,7 +81,7 @@ Adding the `vertical-range` class to the outer `<div>` and passing the data-opti
 {{#markdown}}
 ```html
 <div class="range-slider vertical-range" data-slider data-options="vertical: true;">
-  <span class="range-slider-handle"></span>
+  <span class="range-slider-handle" role="slider" tabindex="0"></span>
   <span class="range-slider-active-segment"></span>
   <input type="hidden">
 </div>
@@ -91,7 +91,7 @@ Adding the `vertical-range` class to the outer `<div>` and passing the data-opti
   <div class="large-6 columns">
     <h4>Rendered HTML</h4>
     <div class="range-slider vertical-range" data-slider data-options="vertical: true;">
-      <span class="range-slider-handle"></span>
+      <span class="range-slider-handle" role="slider" tabindex="0"></span>
       <span class="range-slider-active-segment"></span>
       <input type="hidden">
     </div>
@@ -110,7 +110,7 @@ You can use the `display_selector` data option to pass in an element (or input) 
 <div class="row">
   <div class="small-10 medium-11 columns">
     <div class="range-slider" data-slider data-options="display_selector: #sliderOutput3;">
-      <span class="range-slider-handle"></span>
+      <span class="range-slider-handle" role="slider" tabindex="0"></span>
       <span class="range-slider-active-segment"></span>
     </div>
   </div>
@@ -126,7 +126,7 @@ You can use the `display_selector` data option to pass in an element (or input) 
     <div class="row">
       <div class="small-10 medium-11 columns">
         <div class="range-slider" data-slider data-options="display_selector: #sliderOutput3;">
-          <span class="range-slider-handle"></span>
+          <span class="range-slider-handle" role="slider" tabindex="0"></span>
           <span class="range-slider-active-segment"></span>
         </div>
       </div>
@@ -153,19 +153,19 @@ You can add a border radius to the range slider by adding the `radius` class to 
 {{#markdown}}
 ```html
 <div class="range-slider radius" data-slider>
-  <span class="range-slider-handle"></span>
+  <span class="range-slider-handle" role="slider" tabindex="0"></span>
   <span class="range-slider-active-segment"></span>
   <input type="hidden">
 </div>
 
 <div class="range-slider round" data-slider>
-  <span class="range-slider-handle"></span>
+  <span class="range-slider-handle" role="slider" tabindex="0"></span>
   <span class="range-slider-active-segment"></span>
   <input type="hidden">
 </div>
 
 <div class="range-slider disabled" data-slider disabled>
-  <span class="range-slider-handle"></span>
+  <span class="range-slider-handle" role="slider" tabindex="0"></span>
   <span class="range-slider-active-segment"></span>
   <input type="hidden">
 </div>
@@ -175,19 +175,19 @@ You can add a border radius to the range slider by adding the `radius` class to 
   <div class="large-6 columns">
     <h4>Rendered HTML</h4>
     <div class="range-slider radius" data-slider>
-      <span class="range-slider-handle"></span>
+      <span class="range-slider-handle" role="slider" tabindex="0"></span>
       <span class="range-slider-active-segment"></span>
       <input type="hidden">
     </div> 
     <br><br>
     <div class="range-slider round" data-slider>
-      <span class="range-slider-handle"></span>
+      <span class="range-slider-handle" role="slider" tabindex="0"></span>
       <span class="range-slider-active-segment"></span>
       <input type="hidden">
     </div>
     <br><br>
     <div class="range-slider disabled" data-slider disabled>
-      <span class="range-slider-handle"></span>
+      <span class="range-slider-handle" role="slider" tabindex="0"></span>
       <span class="range-slider-active-segment"></span>
       <input type="hidden">
     </div>
@@ -204,7 +204,7 @@ You can create a range slider with fixed steps by setting the `steps` variable i
 {{#markdown}}
 ```html
 <div class="range-slider" data-slider data-options="step: 20;">
-  <span class="range-slider-handle"></span>
+  <span class="range-slider-handle" role="slider" tabindex="0"></span>
   <span class="range-slider-active-segment"></span>
   <input type="hidden">
 </div>
@@ -216,7 +216,7 @@ You can create a range slider with fixed steps by setting the `steps` variable i
     <div class="row">
       <div class="small-10 medium-11 columns">
         <div class="range-slider" data-slider data-options="display_selector: #sliderOutput4; step: 20;">
-          <span class="range-slider-handle"></span>
+          <span class="range-slider-handle" role="slider" tabindex="0"></span>
           <span class="range-slider-active-segment"></span>
         </div>
       </div>
@@ -237,7 +237,7 @@ You can create a range slider with custom range by setting the `start` and `end`
 {{#markdown}}
 ```html
 <div class="range-slider" data-slider data-options="start: 1; end: 10;">
-  <span class="range-slider-handle"></span>
+  <span class="range-slider-handle" role="slider" tabindex="0"></span>
   <span class="range-slider-active-segment"></span>
   <input type="hidden">
 </div>
@@ -249,7 +249,7 @@ You can create a range slider with custom range by setting the `start` and `end`
     <div class="row">
       <div class="small-10 medium-11 columns">
         <div class="range-slider" data-slider data-options="display_selector: #sliderOutput5; start: 1; end: 10;">
-          <span class="range-slider-handle"></span>
+          <span class="range-slider-handle" role="slider" tabindex="0"></span>
           <span class="range-slider-active-segment"></span>
         </div>
       </div>
@@ -354,11 +354,32 @@ Required Foundation Library: `foundation.slider.js`
 
 ***
 
+## Accessibility
+
+Because the range slider is a non-standard form input, assistive devices need some additional information to understand what they are. On the slider handle itself, you need the attribute `role="slider"`, to inform assistive devices about the functionality of the element. You also need the attribute `tabindex="0"`, so the element can be focused when navigating using a keyboard.
+
+If the slider has a label, the label should be connected to the slider by giving the label a unique ID, and giving the slider the attribute `aria-labelledby`, using the ID of the label as the value. Our JavaScript handles the rest of the ARIA attributes.
+
+```html
+<label id="sliderLabel">Age</label>
+<div class="range-slider" data-slider>
+  <span class="range-slider-handle" role="slider" tabindex="0" aria-labelledby="sliderLabel"></span>
+  <span class="range-slider-active-segment"></span>
+  <input type="hidden">
+</div>
+```
+
+If a slider doesn't have a text label, we recommend adding the attribute `aria-label` to the slider handle with an appropriate label.
+
+```html
+<span class="range-slider-handle" role="slider" tabindex="0" aria-label="Age"></span>
+```
+
+***
+
 ## Customize with Sass
 
 Sliders can be easily customized using our provided Sass variables.
-
-<h4>SCSS</h4>
 
 {{> examples_slider_variables}}
 

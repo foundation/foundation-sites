@@ -29,7 +29,7 @@ You can create an Icon Bar using minimal markup. Specifying the number of items 
 
 <h3>Vertical Icon Bar</h3>
 
-It's easy. Just add a class of `.vertical` to make the Icon Bar stack up.
+It's easy. Just add a class of `.vertical` to make the Icon Bar stack up. For an Icon bar that's horizontal on small screens but vertical on larger use '.medium-vertical' and 'large-vertical' to utilize those breakpoints. 
 
 <div class="row">
   <div class="large-6 columns">
@@ -44,7 +44,7 @@ It's easy. Just add a class of `.vertical` to make the Icon Bar stack up.
 
 ***
 
-<h3>Advanced</h3>
+### Advanced
 
 Instead of images you can use Icon Fonts. This will help you change the colors and size faster instead of having to upload new images each time. <a href="http://zurb.com/playground/foundation-icon-fonts-3">Check out our badass Icon Fonts here.</a>
 
@@ -59,26 +59,32 @@ Instead of images you can use Icon Fonts. This will help you change the colors a
   </div>
 </div>
 
-### ARIA Accessible
-
-Here is how to use `aria-label` when using the Icon Bar to make it accessible to screen readers.
-
-<div class="row">
-  <div class="large-6 columns">
-    <h4>HTML</h4>
-{{> examples_icon_bar_iconfont_aria}}
-  </div>
-  <div class="large-6 columns">
-    <h4>Rendered HTML</h4>
-    {{> examples_icon_bar_iconfont_aria_rendered}}
-  </div>
-</div>
-
-
-
 ### Other Options
 
 The default orientation for the labels are on the bottom. By adding a class of `.label-right` you can have the label on the right and icon on the left.
+
+***
+
+## Accessibility
+
+To make the icon bar navigable with a keyboard, add the attribute `tabindex="0"` to each `item`, which allows it to be focused when tabbing through items. Each item also gets the attribute `role="button"`, indicating its functionality.
+
+For icon bars without text labels, add `aria-label` to each item, with a value representing what the icon is. For icon bars with labels, give each label a unique ID, and add `aria-labelledby` to each item container, with a value equal to the ID of the label.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>Rendered HTML - Icon Bar w/o Text</h4>
+    {{> examples_icon_bar_iconfont_aria_rendered}}
+    <h4>HTML</h4>
+    {{> examples_icon_bar_iconfont_aria}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML - Icon Bar with Text</h4>
+    {{> examples_icon_bar_text_aria_rendered}}
+    <h4>HTML</h4>
+    {{> examples_icon_bar_text_aria}}
+  </div>
+</div>
 
 ***
 
@@ -95,16 +101,16 @@ Icon Bar can be easily customized using our provided Sass variables.
 $include-html-icon-bar-classes: $include-html-classes
 
 // We use these to style the icon-bar and items
-$icon-bar-bg: #333 
-$icon-bar-font-color: #fff 
-$icon-bar-font-size: 1rem 
-$icon-bar-hover-color: $primary-color 
-$icon-bar-icon-color: #fff 
-$icon-bar-icon-size: 1.875rem 
-$icon-bar-image-width: 1.875rem 
-$icon-bar-image-height: 1.875rem 
-$icon-bar-active-color: $primary-color 
-$icon-bar-item-padding: 1.25rem 
+$icon-bar-bg: $oil !default;
+$icon-bar-font-color: $white !default;
+$icon-bar-font-size: 1rem !default;
+$icon-bar-hover-color: $primary-color !default;
+$icon-bar-icon-color: $white !default;
+$icon-bar-icon-size: 1.875rem !default;
+$icon-bar-image-width: 1.875rem !default;
+$icon-bar-image-height: 1.875rem !default;
+$icon-bar-active-color: $primary-color !default;
+$icon-bar-item-padding: 1.25rem !default;
 ```
 {{/markdown}}
   </div>

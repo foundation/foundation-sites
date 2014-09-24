@@ -2,7 +2,7 @@
 title: Tooltips
 ---
 
-<h3 class="subheader">Tooltips are a quick way to provide <a data-tooltip class="has-tip" title="Tooltips are awesome, you should totally use them!">extended information</a> on a term or action on a page.</h3>
+<h3 class="subheader">Tooltips are a quick way to provide <a data-tooltip aria-haspopup="true" class="has-tip" title="Tooltips are awesome, you should totally use them!">extended information</a> on a term or action on a page.</h3>
 
 ***
 
@@ -35,13 +35,13 @@ Additional classes can be added to your tooltips to change its appearance.
 
 {{#markdown}}
 ```html
-<span data-tooltip data-options="disable_for_touch:true" class="has-tip [tip-top tip-bottom tip-left tip-right] [radius round]" title="Tooltips are awesome, you should totally use them!">extended information</span>
+<span data-tooltip aria-haspopup="true" data-options="disable_for_touch:true" class="has-tip [tip-top tip-bottom tip-left tip-right] [radius round]" title="Tooltips are awesome, you should totally use them!">extended information</span>
 ```
 {{/markdown}}
 
 <h4>Rendered HTML</h4>
 
-<span data-tooltip class="has-tip tip-bottom radius" title="Tooltips are awesome, you should totally use them!">Hover on desktop and touch me on mobile!</span>
+<span data-tooltip aria-haspopup="true" class="has-tip tip-bottom radius" title="Tooltips are awesome, you should totally use them!">Hover on desktop and touch me on mobile!</span>
 
 
 <p>You can now also add `show_on` to your `data-options` attribute to allow your tooltips to show on `small`, `medium`, or `large` when the page loads. They will show on all screen sizes by default.</p>
@@ -71,8 +71,19 @@ Tooltips applied to <kbd>&lt;a&gt;</kbd> tags will automatically be disabled for
 
 ***
 
-## Customize with Sass
+## Accessibility
 
+Tooltips need the attribute `role="tooltip"` so assistive devices understand what they are. On the text connected to the tooltip, you need the attribute `aria-describedby`, where the value is the ID of the tooltip it's connected to. Lucky for you, our JavaScript handles all of this for you!
+
+The only markup change you'll need to make is adding the attribute `aria-haspopup="true"` to your tooltip text. It's helpful for screen readers, and it also makes tooltips easier to use on Windows 8 touch devices.
+
+```html
+<a data-tooltip aria-haspopup="true" class="has-tip" title="Is great!">Accessibility</a>
+```
+
+***
+
+## Customize With Sass
 Tooltips can be easily customized using our provided Sass variables.
 
 <h4>SCSS</h4>
@@ -99,11 +110,13 @@ It's easy to configure tooltips using our Javascript. You can use data-attribute
 
 Using data-attributes is the preferred method of making changes to our Javascript.
 
+You will find all the data-options here: <a href="http://foundation.zurb.com/docs/javascript.html">JavaScript Data Options</a>
+
 <h4>HTML</h4>
 
 {{#markdown}}
 ```html
-<span data-tooltip class="has-tip" title="Tooltips are awesome, you should totally use them!">...</span>
+<span data-tooltip data-options="hover_delay: 50;" class="has-tip" title="Tooltips are awesome, you should totally use them!">...</span>
 ```
 {{/markdown}}
 

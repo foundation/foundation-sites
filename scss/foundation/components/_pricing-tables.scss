@@ -10,50 +10,50 @@
 $include-html-pricing-classes: $include-html-classes !default;
 
 // We use this to control the border color
-$price-table-border: solid 1px #ddd !default;
+$price-table-border: solid 1px $gainsboro !default;
 
 // We use this to control the bottom margin of the pricing table
 $price-table-margin-bottom: rem-calc(20) !default;
 
 // We use these to control the title styles
-$price-title-bg: #333 !default;
+$price-title-bg: $oil !default;
 $price-title-padding: rem-calc(15 20) !default;
 $price-title-align: center !default;
-$price-title-color: #eee !default;
+$price-title-color: $smoke !default;
 $price-title-weight: $font-weight-normal !default;
 $price-title-size: rem-calc(16) !default;
 $price-title-font-family: $body-font-family !default;
 
 // We use these to control the price styles
-$price-money-bg: #f6f6f6 !default;
+$price-money-bg: $vapor !default;
 $price-money-padding: rem-calc(15 20) !default;
 $price-money-align: center !default;
-$price-money-color: #333 !default;
+$price-money-color: $oil !default;
 $price-money-weight: $font-weight-normal !default;
 $price-money-size: rem-calc(32) !default;
 $price-money-font-family: $body-font-family !default;
 
 
 // We use these to control the description styles
-$price-bg: #fff !default;
-$price-desc-color: #777 !default;
+$price-bg: $white !default;
+$price-desc-color: $monsoon !default;
 $price-desc-padding: rem-calc(15) !default;
 $price-desc-align: center !default;
 $price-desc-font-size: rem-calc(12) !default;
 $price-desc-weight: $font-weight-normal !default;
 $price-desc-line-height: 1.4 !default;
-$price-desc-bottom-border: dotted 1px #ddd !default;
+$price-desc-bottom-border: dotted 1px $gainsboro !default;
 
 // We use these to control the list item styles
-$price-item-color: #333 !default;
+$price-item-color: $oil !default;
 $price-item-padding: rem-calc(15) !default;
 $price-item-align: center !default;
 $price-item-font-size: rem-calc(14) !default;
 $price-item-weight: $font-weight-normal !default;
-$price-item-bottom-border: dotted 1px #ddd !default;
+$price-item-bottom-border: dotted 1px $gainsboro !default;
 
 // We use these to control the CTA area styles
-$price-cta-bg: #fff !default;
+$price-cta-bg: $white !default;
 $price-cta-align: center !default;
 $price-cta-padding: rem-calc(20 20 0) !default;
 

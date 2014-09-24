@@ -1,10 +1,13 @@
 {{#markdown}}
 ```scss
+$include-html-tabs-classes: $include-html-classes;
+
 $tabs-navigation-padding: rem-calc(16);
-$tabs-navigation-bg-color: #efefef;
-$tabs-navigation-hover-bg-color: darken($tabs-navigation-bg-color, 5%);
-$tabs-navigation-active-bg-color: #fff;
-$tabs-navigation-font-color: #222;
+$tabs-navigation-bg-color: $silver;
+$tabs-navigation-active-bg-color: $white;
+$tabs-navigation-hover-bg-color: scale-color($tabs-navigation-bg-color, $lightness: -6%);
+$tabs-navigation-font-color: $jet;
+$tabs-navigation-active-font-color: $tabs-navigation-font-color;
 $tabs-navigation-font-size: rem-calc(16);
 $tabs-navigation-font-family: $body-font-family;
 

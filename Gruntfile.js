@@ -51,13 +51,33 @@ module.exports = function(grunt) {
     sass: {
       dist: {
         options: {
-          includePaths: ['scss'],
-          sourceMap: true
+          loadPath: [__dirname + '/scss'],
+          sourcemap: 'auto',
+          bundleExec: true
         },
         files: {
           'dist/assets/css/foundation.css': '<%= foundation.scss %>',
           'dist/assets/css/normalize.css': 'scss/normalize.scss',
           'dist/docs/assets/css/docs.css': 'doc/assets/scss/docs.scss'
+        }
+      }
+    },
+
+    'string-replace': {
+      dist: {
+        files: {
+          'dist/assets/':'dist/assets/bower.json',
+          'dist/assets/css/':'dist/assets/css/*.css',
+          'dist/assets/js/':'dist/assets/js/*js',
+          'dist/assets/js/foundation/':'dist/assets/js/foundation/*js',
+          'dist/assets/scss/foundation/components/':'dist/assets/scss/foundation/components/*.scss',
+          'dist/docs/assets/css/':'dist/docs/assets/css/*.css',
+          'dist/docs/assets/js/':'dist/docs/assets/js/*.js'
+        },
+        options: {
+          replacements: [
+            {pattern: /{{\s*VERSION\s*}}/g, replacement: '<%= pkg.version %>'}
+          ]
         }
       }
     },
@@ -214,14 +234,15 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-newer');
   grunt.loadNpmTasks('grunt-rsync');
-  grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-jst');
+  grunt.loadNpmTasks('grunt-string-replace');
 
   grunt.task.registerTask('watch_start', ['karma:dev_watch:start', 'watch']);
-  grunt.registerTask('build:assets', ['clean', 'sass', 'concat', 'uglify', 'copy', 'jst']);
+  grunt.registerTask('build:assets', ['clean', 'sass', 'concat', 'uglify', 'copy', 'jst', 'string-replace']);
   grunt.registerTask('build', ['build:assets', 'assemble']);
   grunt.registerTask('travis', ['build', 'karma:continuous']);
   grunt.registerTask('develop', ['travis', 'watch_start']);

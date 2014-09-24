@@ -107,6 +107,8 @@ How to Install
       <p class="panel">gem install foundation</p>    
       <p class="subheader note"><strong>Note:</strong> If you run into permission errors running these commands in the CLI, you can add the word 'sudo' before the line inside the interface:</p>
       <p class="panel">sudo npm install -g bower grunt-cli <br> sudo gem install foundation</p>  
+      <p class="subheader note">If you use <a href="https://github.com/sstephenson/rbenv">rbenv</a>, rehash your shims after installing:</p>
+      <p class="panel">rbenv rehash</p>
     </div>
   </div>
 </div>
@@ -127,9 +129,9 @@ Compass/Libsass
 </div>
 
 <div class="row">
-  <div class="large-5 columns path-container two-column">
+  <div class="large-5 columns path-container two-paths">
+    <h4>Creating a Compass Project</h4>
     <div class="path-item">
-      <h4>Creating a Compass Project</h4>
       <div class="circlenumber">
         <h3>1</h3>
       </div><p>If it's not installed yet, you can install it using the following command:</p>
@@ -159,11 +161,11 @@ Compass/Libsass
   </div>
 
 
-  <div class="large-5 large-pull-1 columns path-container two-column">
+  <div class="large-5 large-pull-1 columns path-container two-paths">
     <hr class="dashed hide-for-large-up">
-
-    <div class="path-item">
     <h4>Creating a Libsass Project</h4>
+    <p class="panel">Foundation now supports Sass 3.4. Libsass does not have Sass 3.4 support right now. If you are creating a Libsass project, you can use Sass 3.2 still. If you want to dig into the code and make the needed changes, check this out:<a href="https://github.com/zurb/foundation/issues/5756"> Sass 3.4 Compatibility</a></p>
+    <div class="path-item">
       <div class="circlenumber">
         <h3>1</h3>
       </div>

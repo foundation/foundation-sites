@@ -20,7 +20,7 @@ $namespace: false !default;
 $base-font-size: 100% !default;
 
 // $base-line-height is 24px while $base-font-size is 16px
-$base-line-height: 150% !default;
+$base-line-height: 1.5 !default;
 
 //
 // Global Foundation Mixins
@@ -220,6 +220,39 @@ $base-line-height: 150% !default;
   clip: auto;
 }
 
+// We use these as default colors throughout
+$primary-color: #008CBA !default;   // bondi-blue
+$secondary-color: #e7e7e7 !default; // white-lilac
+$alert-color: #f04124 !default;     // cinnabar
+$success-color: #43AC6A !default;   // sea-green
+$warning-color: #f08a24 !default;   // carrot
+$info-color: #a0d3e8 !default;      // cornflower
+
+$white         : #FFFFFF !default;
+$ghost         : #FAFAFA !default;
+$snow          : #F9F9F9 !default;
+$vapor         : #F6F6F6 !default;
+$white-smoke   : #F5F5F5 !default;
+$silver        : #EFEFEF !default;
+$smoke         : #EEEEEE !default;
+$gainsboro     : #DDDDDD !default;
+$iron          : #CCCCCC !default;
+$base          : #AAAAAA !default;
+$aluminum      : #999999 !default;
+$jumbo         : #888888 !default;
+$monsoon       : #777777 !default;
+$steel         : #666666 !default;
+$charcoal      : #555555 !default;
+$tuatara       : #444444 !default;
+$oil           : #333333 !default;
+$jet           : #222222 !default;
+$black         : #000000 !default;
+
+// We use these to define default font stacks
+$font-family-sans-serif: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif !default;
+$font-family-serif: Georgia, Cambria, "Times New Roman", Times, serif !default;
+$font-family-monospace: Consolas, "Liberation Mono", Courier, monospace !default;
+
 // We use these to define default font weights
 $font-weight-normal: normal !default;
 $font-weight-bold: bold !default;
@@ -227,7 +260,7 @@ $font-weight-bold: bold !default;
 // We use these to control various global styles
 $body-bg: #fff !default;
 $body-font-color: #222 !default;
-$body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
+$body-font-family: $font-family-sans-serif !default;
 $body-font-weight: $font-weight-normal !default;
 $body-font-style: normal !default;
 
@@ -245,13 +278,6 @@ $opposite-direction: right !default;
   $default-float: right;
   $opposite-direction: left;
 }
-// We use these as default colors throughout
-$primary-color: #008CBA !default;
-$secondary-color: #e7e7e7 !default;
-$alert-color: #f04124 !default;
-$success-color: #43AC6A !default;
-$warning-color: #f08a24 !default;
-$info-color: #a0d3e8 !default;
 
 // We use these to make sure border radius matches unless we want it different.
 $global-radius: 3px !default;
@@ -304,6 +330,7 @@ $large: $large-up;
 
 
 //We use this as cursors values for enabling the option of having custom cursors in the whole site's stylesheet
+$cursor-auto-value: auto !default;
 $cursor-crosshair-value: crosshair !default;
 $cursor-default-value: default !default;
 $cursor-pointer-value: pointer !default;
@@ -318,7 +345,7 @@ $cursor-text-value: text !default;
   // Forward slash placed around everything to convince PhantomJS to read the value.
 
   meta.foundation-version {
-    font-family: "/{{ VERSION }}/";
+    font-family: "/{{VERSION}}/";
   }
 
   meta.foundation-mq-small {
@@ -376,7 +403,7 @@ $cursor-text-value: text !default;
       font-style: $body-font-style;
       line-height: $base-line-height; // Set to $base-line-height to take on browser default of 150%
       position: relative;
-      cursor: $cursor-default-value;
+      cursor: $cursor-auto-value;
     }
 
   a:hover { cursor: $cursor-pointer-value; }

@@ -43,12 +43,54 @@ Additional classes can be added to your button group to change its appearance.
 
 <h4>Rendered HTML</h4>
 
-<ul class="button-group radius">
+<ul class="button-group round">
   <li><a href="#" class="button [secondary alert success]">Button 1</a></li>
   <li><a href="#" class="button [secondary alert success]">Button 2</a></li>
   <li><a href="#" class="button [secondary alert success]">Button 3</a></li>
   <li><a href="#" class="button [secondary alert success]">Button 4</a></li>
 </ul>
+
+#### Stacking
+
+You can change the orientation of a button group with the `stack` classes.
+
+`stack`: Stacks buttons vertically.
+
+`stack-for-small`: Stacks buttons vertically on small screens and horizontally on large screens
+
+{{#markdown}}
+```html
+<ul class="stack button-group">
+  <li><a href="#" class="button">Button 1</a></li>
+  <li><a href="#" class="button">Button 2</a></li>
+</ul>
+<ul class="stack-for-small round secondary button-group">
+  <li><a href="#" class="button">Button 1</a></li>
+  <li><a href="#" class="button">Button 2</a></li>
+</ul>
+```
+{{/markdown}}
+
+<div class="row">
+  <div class="medium-6 columns">
+    <h6 for="">Stack</h6>
+    <ul class="stack button-group">
+      <li><a href="#" class="button">Button 1</a></li>
+      <li><a href="#" class="button">Button 2</a></li>
+    </ul>
+  </div>
+  <div class="medium-6 columns">
+    <h6 for="">Stack for Small</h6>
+    <ul class="stack-for-small round button-group">
+      <li><a href="#" class="secondary button">Button 1</a></li>
+      <li><a href="#" class="secondary button">Button 2</a></li>
+    </ul>
+  </div>
+</div>
+
+
+
+
 
 ***
 

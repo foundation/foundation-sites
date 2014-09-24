@@ -4,7 +4,7 @@
 
 //Foundation Libraries
 @import 
-  "scss/foundation/settings",
+  "foundation/settings",
   "foundation";
 
 //Marketing Site Common Library
@@ -147,9 +147,9 @@ table.plugin-options {
 
 // Modified Panel
 .easel {
-  @include panel($bg:$panel-bg-color);
-  @include border(solid, 1px, darken($panel-bg-color, 6%));
+  @include panel($bg: $panel-bg-color);
   @include radius();
+  border: 1px solid darken($panel-bg-color, 6%);
 }
 
 // 12 column grid mixin (would be cool to implement with mixins where possible)
@@ -176,7 +176,7 @@ table.plugin-options {
 .options-bg {
   padding: 18px;
   background-color: darken($panel-bg-color, 0%);
-  @include border(solid, 1px, darken($panel-bg-color, 4%));
+  border: 1px solid darken($panel-bg-color, 4%);
   border-radius: 4px;
   ul {
     margin-#{$default-float}: 20px;
@@ -187,9 +187,6 @@ table.plugin-options {
 pre { margin-bottom: 15px;
   code {
     .code-container {
-      //@include border(solid, 1px, darken($panel-bg-color, 4%));
-      //border-radius: 3px;
-      //background-color: darken($panel-bg-color, 2%);
       margin: 10px 0px;
       padding: 5px;
       overflow-x: auto;
@@ -274,7 +271,7 @@ footer { margin-top: 45px; }
     margin-bottom: $paragraph-margin-bottom;
     text-rendering: $paragraph-text-rendering;
 
-    &.lead { @extend %lead; }
+    &.lead { @include lead; }
 
     & aside {
       font-size: $paragraph-aside-font-size;
@@ -300,6 +297,8 @@ footer { margin-top: 45px; }
       color: $small-font-color;
       line-height: 0;
     }
+
+    &.subheader { @include subheader; text-transform: none; }
   }
 
   h1 { font-size: $h1-font-size - rem-calc(10); }
@@ -308,8 +307,6 @@ footer { margin-top: 45px; }
   h4 { font-size: $h4-font-size - rem-calc(5); }
   h5 { font-size: $h5-font-size; }
   h6 { font-size: $h6-font-size; }
-
-  .subheader { @extend %subheader; text-transform: none; }
 
   hr {
     border: $hr-border-style $hr-border-color;
@@ -549,7 +546,7 @@ $custom-active-bg:darken($custom-link-color, 5%);
 // .docs-wrap { margin-top: 30px; }
 .docs-wrap .inner-wrap { background: #efefef; }
 .docs-wrap .main-section { padding: 0 20px 0 20px; }
-.main-section { @extend %kill-flicker; }
+.main-section { @include kill-flicker; }
 .doc-oc-list { background: $off-canvas-bg; }
 
 // Make sure topbar dropdowns are above tab bar.
@@ -670,7 +667,7 @@ padding
 /*------------------------------------
  timeline styles
 ------------------------------------*/
-.two-column {
+.two-paths {
   margin-top: 20px;
 }
 
@@ -684,6 +681,7 @@ padding
     font-weight: normal;
     text-transform: capitalize;
     padding-bottom: 10px;
+
   }
 }
 
@@ -698,7 +696,7 @@ circles
   width: 35px;
   height: 35px;
   position: relative;
-  margin-top: 6px;
+  margin-top: -5px;
   margin-right: 18px; 
   margin-bottom: 5px;
   margin-left: 0.83333rem;
@@ -723,7 +721,7 @@ circles
   }
 }
 
-@media only screen and (min-width: 64.063em) { 
+@media #{$large-up} { 
   .path-item {
     padding-left: 65px;
     position: relative;
@@ -803,6 +801,9 @@ what you get
     padding: 20px 30px;
     pre {
       margin-bottom: 0;
+      code {
+        background: #fff;
+      }
     }
   }
   li:nth-child(even) {
@@ -887,6 +888,8 @@ what you get
   margin-top: 30px;
 }
 
+// Styling for Skill Level with Icon fonts on Index page
+
 .skill-list h4 {
   margin-bottom: 0;
 }
@@ -905,8 +908,6 @@ what you get
 
 .gs-example {
   .row {
-    // margin-right: -0.3rem;
-    // margin-left: -0.3rem;
     border: 1px solid #c6c6c6;
     margin: 0.3rem !important;
     .row {
@@ -965,6 +966,8 @@ what you get
   margin-top: -7px;
 }
 
+// Styles Codepen on Index Page
+
 .codepen-demo {
   margin-top: 20px;
   .tabs-content {
@@ -988,6 +991,8 @@ what you get
     color: #333;
   }
 }
+
+// Stlyings for Getting Started Examples
 
 .what-comes-with { 
   hr {
@@ -1013,6 +1018,8 @@ what you get
       }
     }
   }
+
+  // Adds stylings to Index page
 
   .gs-iconbar {
     margin-bottom: 10px;
@@ -1053,4 +1060,15 @@ what you get
   }
 }
 
+
+// Used on CSS Page to add rounded corners and padding to images
+img.round-margin {
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.panel.callout-warning {
+background: #fff;
+border: 5px solid red;
+}
 

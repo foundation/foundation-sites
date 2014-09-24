@@ -7,7 +7,7 @@ meta: Top-bar navigation
 
 ***
 
-<nav class="top-bar" data-topbar>
+<nav class="top-bar" data-topbar role="navigation">
   <ul class="title-area">
     <!-- Title Area -->
     <li class="name">
@@ -70,11 +70,11 @@ meta: Top-bar navigation
 
 ### Build With HTML Classes
 
-The top bar is a pretty complex piece of magical UI goodness. We rely on many presentational classes to define its look and feel, and there's a lot happening in the JS. The top bar is hoverable by default, but you can change it use click events instead by adding `data-options="is_hover: false"` to the `<nav>` element. [See an example below](#clickable).
+The top bar is a pretty complex piece of magical UI goodness. We rely on many presentational classes to define its look and feel, and there's a lot happening in the JS. The top bar is hoverable by default, but you can change it to use click events instead by adding `data-options="is_hover: false"` to the `<nav>` element. [See an example below](#clickable).
 
 <div class="row">
   <div class="large-12 columns">
-    <nav class="top-bar" data-topbar>
+    <nav class="top-bar" data-topbar role="navigation">
       <ul class="title-area">
         <li class="name">
           <h1><a href="#">My Site</a></h1>
@@ -91,6 +91,7 @@ The top bar is a pretty complex piece of magical UI goodness. We rely on many pr
             <a href="#">Right Button Dropdown</a>
             <ul class="dropdown">
               <li><a href="#">First link in dropdown</a></li>
+              <li class="active"><a href="#">Active link in dropdown</a></li>
             </ul>
           </li>
         </ul>
@@ -101,6 +102,7 @@ The top bar is a pretty complex piece of magical UI goodness. We rely on many pr
             <a href="#">Right Dropdown</a>
             <ul class="dropdown">
               <li><a href="#">First link in dropdown</a></li>
+              <li class="active"><a href="#">Active link in dropdown</a></li>
             </ul>
           </li>
         </ul>
@@ -136,7 +138,7 @@ The top bar is built with a single `nav` element with a class of `top-bar`. It w
 {{#markdown}}
 ```html
 <div class="fixed">
-  <nav class="top-bar" data-topbar>
+  <nav class="top-bar" data-topbar role="navigation">
     ...
   </nav>
 </div>
@@ -150,7 +152,7 @@ The top bar is built with a single `nav` element with a class of `top-bar`. It w
 {{#markdown}}
 ```html
 <div class="contain-to-grid">
-  <nav class="top-bar" data-topbar>
+  <nav class="top-bar" data-topbar role="navigation">
     ...
   </nav>
 </div>
@@ -177,7 +179,7 @@ You may also wrap your top bar in `div class="sticky"` and put it anywhere withi
 {{#markdown}}
 ```html
 <div class="contain-to-grid sticky">
-  <nav class="top-bar" data-topbar data-options="sticky_on: large">
+  <nav class="top-bar" data-topbar role="navigation" data-options="sticky_on: large">
     ...
   </nav>
 </div>
@@ -201,7 +203,7 @@ You can now make the top bar clickable by adding a data-attribute to the nav ele
 
 {{#markdown}}
 ```html
-<nav class="top-bar" data-topbar data-options="is_hover: false">
+<nav class="top-bar" data-topbar role="navigation" data-options="is_hover: false">
 ```
 {{/markdown}}
 
@@ -227,7 +229,7 @@ Foundation will show the parent link on mobile navigation. A helpful way for mob
 
 Several common elements have been supported by default, each one of these elements gets added to either the `ul.right` or `ul.left` unordered lists within your Top Bar navigation.
 
-<nav class="top-bar" data-topbar>
+<nav class="top-bar" data-topbar role="navigation">
   <!-- Title -->
   <ul class="title-area">
     <li class="name"><h1><a href="#">Sexy Top Bar</a></h1></li>
@@ -342,7 +344,7 @@ If you want a bar that doesn't include a title, just take out the content within
 
 {{#markdown}}
 ```html
-<nav class="top-bar" data-topbar>
+<nav class="top-bar" data-topbar role="navigation">
   <ul class="title-area">
     <li class="name"><!-- Leave this empty --></li>
     ...
@@ -350,6 +352,12 @@ If you want a bar that doesn't include a title, just take out the content within
 </nav>
 ```
 {{/markdown}}
+
+***
+
+## Accessibility
+
+The top bar is a complex component with a lot of different features. However, it's still fully keyboard and screen reader accessible. The main thing you need to add if upgrading from an older version of Foundation is the attribute `role="navigation"` to the top bar container. Additionally, if your page uses top bar and off-canvas navigation, add the attribute `aria-hidden="true"` to one of them&mdash;otherwise, the user's device will tab through (and possibly read) both of them before reaching any content.
 
 ***
 

@@ -103,6 +103,31 @@ You can further customize your alert boxes using the provided options in the `su
 
 ***
 
+<h3>Accessibility</h3>
+
+Use this snippet to make sub-nav more accessible. Adding the role attribute gives context to a screen reader. Using the Tab button, a user can navigate until they've reached the link below. (Use Shift+Tab to navigate back one step.)
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>SCSS</h4>
+{{#markdown}}
+```scss
+{{> examples_subnav_accessible}}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+
+{{> examples_subnav_accessible_rendered}}
+
+  </div>
+</div>
+
+**Note:** It is bad practice to leave links that do not go anywhere on your live site. Use something like foo.html to fill them as you build.
+
+***
+
 ### Sass Errors?
 
 If the default "foundation" import was commented out, then make sure you import this file:

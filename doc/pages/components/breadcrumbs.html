@@ -40,6 +40,33 @@ You can also add a `.breadcrumbs` class to a `nav` element containing anchor lin
 
 ***
 
+<h3>Accessibility</h3>
+
+Use this snippet to make breadcrumbs more accessible. Adding the role attribute gives context to a screen reader. The ```aria-label``` attribute will allow a screen reader to call out what the component is to the user. We added some Scss so the screen reader skips the ```/```. Using the Tab button, a user can navigate until they've reached the link below. (Use Shift+Tab to navigate back one step.)
+
+If you are using an ```unavailable``` link, give it an aria-disabled attribute as in this example:
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+{{> examples_breadcrumbs_accessible}}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+
+{{> examples_breadcrumbs_accessible_rendered}}
+
+  </div>
+</div>
+
+**Note:** It is bad practice to leave links that do not go anywhere on your live site. Use something like foo.html to fill them as you build.
+
+***
+
 ## Customize with Sass
 
 Breadcrumbs can be easily customized using our Sass variables.

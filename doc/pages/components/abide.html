@@ -134,6 +134,23 @@ Additionally, if you are using a custom validator and specify an input type or a
 
 ***
 
+## Accessibility
+
+For the most part, Abide is accessible on its own. Our JavaScript will add the attribute `aria-invalid` to any form fields deemed invalid. However, to properly connect errors to form fields, you'll need to do a little extra work. The error's container should have a unique ID, which our JavaScript will use to bind the error message to its input if there's an error.
+
+```html
+<form data-abide>
+  <div class="name-field">
+    <label>Your name <small>required</small>
+      <input type="text" required pattern="[a-zA-Z]+">
+    </label>
+    <small class="error" id="nameError">Name is required and must be a string.</small>
+  </div>
+</form>
+```
+
+***
+
 ## Using the Javascript
 
 <div class="panel">

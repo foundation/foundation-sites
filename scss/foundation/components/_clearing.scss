@@ -10,13 +10,13 @@
 $include-html-clearing-classes: $include-html-classes !default;
 
 // We use these to set the background colors for parts of Clearing.
-$clearing-bg: #333 !default;
+$clearing-bg: $oil !default;
 $clearing-caption-bg: $clearing-bg !default;
 $clearing-carousel-bg: rgba(51,51,51,0.8) !default;
 $clearing-img-bg: $clearing-bg !default;
 
 // We use these to style the close button
-$clearing-close-color: #ccc !default;
+$clearing-close-color: $iron !default;
 $clearing-close-size: 30px !default;
 
 // We use these to style the arrows
@@ -24,7 +24,7 @@ $clearing-arrow-size: 12px !default;
 $clearing-arrow-color: $clearing-close-color !default;
 
 // We use these to style captions
-$clearing-caption-font-color: #ccc !default;
+$clearing-caption-font-color: $iron !default;
 $clearing-caption-font-size: 0.875em !default;
 $clearing-caption-padding: 10px 30px 20px !default;
 
@@ -81,7 +81,7 @@ $clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
       position: absolute;
       top: 50%;
       left: 50%;
-      color: #aaa;
+      color: $base;
       font-size: 0.6em;
     }
 
@@ -123,7 +123,7 @@ $clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
       display: none;
 
       &:hover,
-      &:focus { color: #ccc; }
+      &:focus { color: $iron; }
     }
 
     .clearing-assembled .clearing-container { height: 100%;

@@ -99,6 +99,28 @@ You can add more classes to your alert box to change its appearance.
   </div>
 </div>
 
+***
+
+## Accessibility
+
+To make your alerts conform to accessibility standards, use the markup below, which adds a handful of ARIA attributes to the alert container, and uses the `<button>` tag for the close button instead of `<a>`.
+
+<div class="row">
+  <div class="large-6 columns">
+
+    <h4>HTML</h4>
+
+    {{> examples_alert_aria}}
+
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+
+    {{> examples_alert_aria_rendered}}
+
+  </div>
+</div>
+
 ---
 
 ## Customize with Sass
@@ -231,6 +253,9 @@ It's easy to configure alert boxes using our provided Javascript. You can use wi
 <h2>Binding to Events</h2>
 
 The last thing you can do with alerts is listen for events and respond accordingly.
+```js
+$(document).foundation();
+```
 
 <h3>Basic</h3>
 
