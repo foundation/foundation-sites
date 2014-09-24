@@ -386,11 +386,13 @@ $align-class-breakpoints:
       text-transform: uppercase;
       font-size: 90%;
       color: $body-font-color;
-      border-bottom: $acronym-underline;
       cursor: $cursor-help-value;
     }
     abbr {
       text-transform: none;
+      &[title] {
+        border-bottom: $acronym-underline;
+      }
     }
 
     /* Blockquotes */
