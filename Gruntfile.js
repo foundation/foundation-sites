@@ -52,7 +52,6 @@ module.exports = function(grunt) {
       dist: {
         options: {
           loadPath: [__dirname + '/scss'],
-          sourcemap: 'auto',
           bundleExec: true
         },
         files: {
