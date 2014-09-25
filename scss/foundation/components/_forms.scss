@@ -467,7 +467,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
       height: auto;
     }
 
-	/* Don't allow resize out of parent */
+	/* Not allow resize out of parent */
 	textarea {
 		max-width: 100%;
 	}
