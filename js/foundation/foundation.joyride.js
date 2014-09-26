@@ -111,8 +111,10 @@
           this.end(this.settings.abort_on_close);
         }.bind(this))
 
-        .on("keyup.joyride", function(e) {
-          if (!this.settings.keyboard) return;
+        .on("keyup.fndtn.joyride", function(e) {
+          // Don't do anything if keystrokes are disabled
+          // or if the joyride is not being shown
+          if (!this.settings.keyboard || !this.settings.riding) return;
 
           switch (e.which) {
             case 39: // right arrow
