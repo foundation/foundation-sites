@@ -325,6 +325,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
           &.button.secondary { @include button-style($bg:$secondary-color); }
           &.button.success { @include button-style($bg:$success-color); }
           &.button.alert { @include button-style($bg:$alert-color); }
+          &.button.warning { @include button-style($bg:$warning-color); }
         }
 
         > button {
@@ -336,6 +337,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
           &.secondary { @include button-style($bg:$secondary-color); }
           &.success { @include button-style($bg:$success-color); }
           &.alert { @include button-style($bg:$alert-color); }
+          &.warning { @include button-style($bg:$warning-color); }
         }
 
         // Apply the hover link color when it has that class
