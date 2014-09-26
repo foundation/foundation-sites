@@ -121,3 +121,7 @@ $tabs-vertical-navigation-margin-bottom: 1.25rem !default;
     }
   }
 }
+
+[tabindex="-1"] {
+  outline: none;
+}
