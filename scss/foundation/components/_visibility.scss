@@ -257,7 +257,7 @@ $visibility-breakpoint-queries:
       }
       @if $include-table-visibility-classes != false {
         #{$visibility-table-list} {
-          display: table;
+          display: table !important;
         }
         #{$visibility-table-header-group-list} {
           display: table-header-group !important;
@@ -290,7 +290,7 @@ $visibility-breakpoint-queries:
   /* Specific visibility for tables */
   table {
     &.hide-for-landscape,
-    &.show-for-portrait { display: table; }
+    &.show-for-portrait { display: table !important; }
   }
   thead {
     &.hide-for-landscape,
@@ -319,7 +319,7 @@ $visibility-breakpoint-queries:
     /* Specific visibility for tables */
     table {
       &.show-for-landscape,
-      &.hide-for-portrait { display: table; }
+      &.hide-for-portrait { display: table !important; }
     }
     thead {
       &.show-for-landscape,
@@ -349,7 +349,7 @@ $visibility-breakpoint-queries:
     /* Specific visibility for tables */
     table {
       &.show-for-portrait,
-      &.hide-for-landscape { display: table; }
+      &.hide-for-landscape { display: table !important; }
     }
     thead {
       &.show-for-portrait,
@@ -377,8 +377,8 @@ $visibility-breakpoint-queries:
   .touch .hide-for-touch { display: none !important; }
 
   /* Specific visibility for tables */
-  table.hide-for-touch { display: table; }
-  .touch table.show-for-touch { display: table; }
+  table.hide-for-touch { display: table !important; }
+  .touch table.show-for-touch { display: table !important; }
   thead.hide-for-touch { display: table-header-group !important; }
   .touch thead.show-for-touch { display: table-header-group !important; }
   tbody.hide-for-touch { display: table-row-group !important; }
@@ -396,7 +396,7 @@ $visibility-breakpoint-queries:
     .show-for-print { display: block; }
     .hide-for-print { display: none; }
 
-    table.show-for-print { display: table; }
+    table.show-for-print { display: table !important; }
     thead.show-for-print { display: table-header-group !important; }
     tbody.show-for-print { display: table-row-group !important; }
     tr.show-for-print { display: table-row !important; }
