@@ -95,7 +95,7 @@
             }
           } else {
             // Reference the default tab hashes which were initialized in the init function
-            for (var ind in self.default_tab_hashes) {
+            for (var ind = 0; ind < self.default_tab_hashes.length; ind++) {
               self.toggle_active_tab($('[' + self.attr_name() + '] > * > a[href=' + self.default_tab_hashes[ind] + ']').parent());
             }
           }
