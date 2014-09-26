@@ -220,14 +220,6 @@ $base-line-height: 1.5 !default;
   clip: auto;
 }
 
-// We use these as default colors throughout
-$primary-color: #008CBA !default;   // bondi-blue
-$secondary-color: #e7e7e7 !default; // white-lilac
-$alert-color: #f04124 !default;     // cinnabar
-$success-color: #43AC6A !default;   // sea-green
-$warning-color: #f08a24 !default;   // carrot
-$info-color: #a0d3e8 !default;      // cornflower
-
 $white         : #FFFFFF !default;
 $ghost         : #FAFAFA !default;
 $snow          : #F9F9F9 !default;
@@ -247,6 +239,14 @@ $tuatara       : #444444 !default;
 $oil           : #333333 !default;
 $jet           : #222222 !default;
 $black         : #000000 !default;
+
+// We use these as default colors throughout
+$primary-color: #008CBA !default;   // bondi-blue
+$secondary-color: #e7e7e7 !default; // white-lilac
+$alert-color: #f04124 !default;     // cinnabar
+$success-color: #43AC6A !default;   // sea-green
+$warning-color: #f08a24 !default;   // carrot
+$info-color: #a0d3e8 !default;      // cornflower
 
 // We use these to define default font stacks
 $font-family-sans-serif: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif !default;
