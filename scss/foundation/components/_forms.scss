@@ -111,7 +111,11 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 @mixin form-element {
   background-color: $input-bg-color;
   font-family: $input-font-family;
-  border: $input-border-width $input-border-style $input-border-color;
+  border: {
+    style: $input-border-style;
+    width: $input-border-width;
+    color: $input-border-color;
+  }
   box-shadow: $input-box-shadow;
   color: $input-font-color;
   display: block;
@@ -330,7 +334,11 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
   background-position: if($text-direction == 'rtl', 0%, 100%) center;
 
   background-repeat: no-repeat;
-  border: $input-border-width $input-border-style $input-border-color;
+  border: {
+    style: $input-border-style;
+    width: $input-border-width;
+    color: $input-border-color;
+  }
   padding: $form-spacing / 2;
   font-size: $input-font-size;
   font-family: $body-font-family;
