@@ -467,6 +467,11 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
       height: auto;
     }
 
+	/* Not allow resize out of parent */
+	textarea {
+		max-width: 100%;
+	}
+
     /* Add height value for select elements to match text input height */
     select {
       @include form-select;
