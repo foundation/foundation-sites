@@ -125,7 +125,7 @@ $microformat-abbr-font-weight: $font-weight-bold !default;
 $microformat-abbr-font-decoration: none !default;
 
 // Text alignment class names
-$align-class-names:
+$media-class-names:
   small-only,
   small,
   medium-only,
@@ -138,7 +138,7 @@ $align-class-names:
   xxlarge;
 
 // Text alignment breakpoints
-$align-class-breakpoints:
+$media-class-breakpoints:
   $small-only,
   $small-up,
   $medium-only,
@@ -151,19 +151,43 @@ $align-class-breakpoints:
   $xxlarge-up;
 
 // Generates text align and justify classes
-@mixin align-classes{
+@mixin align-classes {
   .text-left    { text-align: left !important; }
   .text-right   { text-align: right !important; }
   .text-center  { text-align: center !important; }
   .text-justify { text-align: justify !important; }
 
-  @for $i from 1 through length($align-class-names) {
-    @media #{(nth($align-class-breakpoints, $i))} {
-      .#{(nth($align-class-names, $i))}-text-left { text-align: left !important; }
-      .#{(nth($align-class-names, $i))}-text-right   { text-align: right !important; }
-      .#{(nth($align-class-names, $i))}-text-center  { text-align: center !important; }
-      .#{(nth($align-class-names, $i))}-text-justify { text-align: justify !important; }
+  @for $i from 1 through length($media-class-names) {
+    @media #{(nth($media-class-breakpoints, $i))} {
+      .#{(nth($media-class-names, $i))}-text-left { text-align: left !important; }
+      .#{(nth($media-class-names, $i))}-text-right   { text-align: right !important; }
+      .#{(nth($media-class-names, $i))}-text-center  { text-align: center !important; }
+      .#{(nth($media-class-names, $i))}-text-justify { text-align: justify !important; }
     }
+  }
+}
+
+// Generates margin and padding classes: all media queries or not, 20px increments from 20px to 200px
+@mixin spacing-classes {
+  @for $i from 1 through 10 {
+    $amount: $i * 20;
+    $the-amount: $amount * 1px;
+
+    .margin-top-#{$amount} { margin-top: $the-amount !important; }
+    .margin-right-#{$amount} { margin-right: $the-amount !important; }
+    .margin-bottom-#{$amount} { margin-bottom: $the-amount !important; }
+    .margin-left-#{$amount} { margin-left: $the-amount !important; }
+    .margin-vertical-#{$amount} { margin-top: $the-amount !important; margin-bottom: $the-amount !important; }
+    .margin-horizontal-#{$amount} { margin-left: $the-amount !important; margin-right: $the-amount !important; }
+    .margin-all-#{$amount} { margin: $the-amount !important; }
+
+    .padding-top-#{$amount} { padding-top: $the-amount !important; }
+    .padding-right-#{$amount} { padding-right: $the-amount !important; }
+    .padding-bottom-#{$amount} { padding-bottom: $the-amount !important; }
+    .padding-left-#{$amount} { padding-left: $the-amount !important; }
+    .padding-vertical-#{$amount} { padding-top: $the-amount !important; padding-bottom: $the-amount !important; }
+    .padding-horizontal-#{$amount} { padding-left: $the-amount !important; padding-right: $the-amount !important; }
+    .padding-all-#{$amount} { padding: $the-amount !important; }
   }
 }
 
@@ -188,6 +212,7 @@ $align-class-breakpoints:
   @if $include-html-type-classes {
     // Responsive Text alignment
     @include align-classes;
+    @include spacing-classes;
 
     /* Typography resets */
     div,
