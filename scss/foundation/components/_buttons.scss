@@ -194,12 +194,11 @@ $button-disabled-cursor: $cursor-default-value !default;
 // $radius - If true, set to button radius which is $global-radius || explicitly set radius amount in px (ex. $radius:10px). Default:false.
 // $full-width - We can set $full-width:true to remove side padding extend width. Default:false.
 // $disabled - We can set $disabled:true to create a disabled transparent button. Default:false.
-// $is-input - <input>'s and <button>'s take on strange padding. We added this to help fix that. Default:false.
 // $is-prefix - Not used? Default:false.
 // $bg-hover - Button Hover Color - Default null - see button-style mixin
 // $border-color - Button Border Color - Default null - see button-style mixin
 // $transition - We can control whether or not to include the background-color transition property - Default:true.
-@mixin button($padding:$button-med, $bg:$button-bg-color, $radius:false, $full-width:false, $disabled:false, $is-input:false, $is-prefix:false, $bg-hover:null, $border-color:null, $transition: true) {
+@mixin button($padding:$button-med, $bg:$button-bg-color, $radius:false, $full-width:false, $disabled:false, $is-prefix:false, $bg-hover:null, $border-color:null, $transition: true) {
   @include button-base;
   @include button-size($padding, $full-width);
   @include button-style($bg, $radius, $disabled, $bg-hover, $border-color);
