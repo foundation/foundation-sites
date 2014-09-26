@@ -6,6 +6,8 @@
     "css/foundation.css.map",
     "js/foundation.js"
   ],
+  "ignore": [
+  ],
   "dependencies": {
     "jquery": ">= 2.1.0",
     "modernizr": ">= 2.7.2",
