@@ -1,6 +1,6 @@
 ;(function ($, window, document, undefined) {
   'use strict';
-  var c = 0;
+  var count = 0;
   Foundation.libs.tab = {
     name : 'tab',
 
@@ -87,14 +87,14 @@
               self.toggle_active_tab($('[' + self.attr_name() + '] > * > a[href=' + hash + ']').parent());
             } else if {
               // check if default tabs have been backed to, if so go back in the history instead of realoading default tab.
-              (t.default_tab_hashes.length > 0 && c >= t.default_tab_hashes.length) history.back();
+              (self.default_tab_hashes.length > 0 && count >= self.default_tab_hashes.length) history.back();
             } else {
               // Not the tab content div. If inside the tab content, find the
               // containing tab and toggle it as active.
               var hash_tab_container_id = hash_element.closest('.content').attr('id');
               if (hash_tab_container_id != undefined) {
                 self.toggle_active_tab($('[' + self.attr_name() + '] > * > a[href=#' + hash_tab_container_id + ']').parent(), hash);
-                c += 1; 
+                count += 1; 
               }
             }
           } else {
