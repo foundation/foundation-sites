@@ -259,8 +259,9 @@
 
           this.settings.tipSettings.tipLocationPattern = this.settings.tipLocationPatterns[this.settings.tipSettings.tipLocation];
 
-          // scroll if not modal
+          // scroll and hide bg if not modal
           if (!/body/i.test(this.settings.$target.selector)) {
+            $('.joyride-modal-bg').hide();
             this.scroll_to();
           }
 
@@ -550,7 +551,7 @@
       if (!this.settings.$next_tip.data('closed')) {
         var joyridemodalbg =  $('.joyride-modal-bg');
         if (joyridemodalbg.length < 1) {
-          $('body').append(this.settings.template.modal).show();
+          $(this.settings.template.modal).appendTo('body').show();
         }
 
         if (/pop/i.test(this.settings.tipAnimation)) {
