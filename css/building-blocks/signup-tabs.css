@@ -1,0 +1,50 @@
+.center.row {
+	height: 300px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5%;
+	max-width: 500px;
+}
+
+.signup-panel {
+  padding: 15px;
+}
+
+.signup-panel i {
+  font-size: 30px;
+  line-height: 50px;
+  color: #999;
+}
+
+.signup-panel form input, .signup-panel form span {
+  height: 50px;
+}
+
+.signup-panel .welcome {
+  font-size: 26px;
+  text-align: center;
+  margin-left: 0;
+}
+
+.signup-panel .button {
+  margin-left: 35%;
+}
+
+section.active {
+	padding-top: 75px !important;
+}
+
+p.title {
+	border-bottom: 1px solid #cccccc !important;
+}
+
+.content{
+	height: 450px;
+}
+
+/* Input focus box changes on click 
+
+input[type="text"]:focus {
+	background-color: #000;
+} */
+
