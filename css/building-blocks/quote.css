@@ -1,0 +1,77 @@
+
+.article-content {
+  font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !important;
+  font-weight: 200;
+  max-width: 100%;
+  position: relative;
+  padding: 50px;
+  font-size: 20px;
+  background-color: #fff;
+}
+
+h2 {
+  margin-top: 40px;
+  font-weight: 200;
+  color: #333;
+}
+
+.centered-text {
+  text-align: center;
+}
+
+.quote-marks {
+  font-size: 100px;
+  font-family: Garamond;
+  color: #777;
+}
+
+.move-right {
+  position: relative;
+  text-align: right;
+}
+
+.quote {
+  border-radius: 5px;
+}
+
+.quote p {
+  font-weight: 300;
+}
+
+@media only screen and (max-width: 40em) {
+  .quote p {
+    padding-left: 20px;
+  }
+}
+
+.student {
+  margin-left: 25px;
+  margin-bottom: 25px;
+}
+.student .photo {
+  background-color: #ccc;
+  border-radius: 100px;
+  width: 70px;
+  height: 70px;
+  float: left;
+  margin-right: 15px;
+}
+.student p {
+  position: relative;
+  top: 5px;
+}
+.student p:nth-child(2) {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+.student p:nth-child(3) {
+  font-size: 14px;
+  font-weight: 400;
+  color: #777;
+}              
+
+.testimonial-wrap {
+  float: left;
+  max-width: 350px;
+}
