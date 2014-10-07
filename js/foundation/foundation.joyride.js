@@ -551,7 +551,8 @@
       if (!this.settings.$next_tip.data('closed')) {
         var joyridemodalbg =  $('.joyride-modal-bg');
         if (joyridemodalbg.length < 1) {
-          $(this.settings.template.modal).appendTo('body').show();
+          var joyridemodalbg = $(this.settings.template.modal);
+          joyridemodalbg.appendTo('body');
         }
 
         if (/pop/i.test(this.settings.tipAnimation)) {
