@@ -261,7 +261,12 @@
 
           // scroll and hide bg if not modal
           if (!/body/i.test(this.settings.$target.selector)) {
-            $('.joyride-modal-bg').hide();
+            var joyridemodalbg = $('.joyride-modal-bg');
+            if (/pop/i.test(this.settings.tipAnimation)) {
+                joyridemodalbg.hide();
+            } else {
+                joyridemodalbg.fadeOut(this.settings.tipAnimationFadeSpeed);
+            }
             this.scroll_to();
           }
 
