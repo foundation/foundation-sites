@@ -25,6 +25,15 @@ title: Changelog
 	</div>
 </div>
 
+### 5.4.6- October 9, 2014
+
+  **Full libsass compatability is back!** We fixed the last lingering issue preventing libsass from properly compiling Foundation. **Note that Sass 3.4 is still not officially supported for the time being.** 6d2c5d80b85f41f3e6a309191d72527aae19c4fb
+  - Dropdowns with a `disabled` class won't function when clicked 805b301c38564f2a67f956e6ef8ea16403d40213
+  - Fixes Joyride listening for keyboard events even when not initialized c725ea75c145029f48f8b4d59c9fe33af33a8777
+  - Re-adds `display_selector` parameter to Slider plugin 5314a80d4eb02d78312974c1a6681ac3eff2c267
+  - Fixes a bug with Abide where every valid element after an invalid one is automatically marked invalid 9d9666b89b1a05d7c7e1a6e4f0fa05e154b95737
+  - Fixes odd focusing behavior of Tabs, and their tendency to crash the page when using keyboard navigation 08afa17668a3594f4ed9e7e731f2618f45938cda
+
 ### 5.4.5- September 25, 2014
 
   * Reverted Foundation to Sass 3.2.19. This fixes compatibility for Libsass and Rails Sass users. Added a gemfile that makes Compass 1.0 and Sass 3.4 compatible as well. - [8b85dc3](https://github.com/zurb/foundation/commit/8b85dc37fab3da156cdfdddfc8919667b98eb155)
