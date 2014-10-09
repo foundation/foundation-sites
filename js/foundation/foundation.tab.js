@@ -199,7 +199,7 @@
       target.triggerHandler('toggled', [tab]);
       tabs.triggerHandler('toggled', [target]);
 
-      tab_link.on('keydown', interpret_keyup_action );
+      tab_link.off('keydown').on('keydown', interpret_keyup_action );
     },
 
     data_attr: function (str) {
