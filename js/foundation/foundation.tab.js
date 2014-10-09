@@ -193,9 +193,9 @@
       tab_link.attr({"aria-selected": "true",  tabindex: 0});
       siblings.removeClass(settings.active_class)
       siblings.find('a').attr({"aria-selected": "false",  tabindex: -1});
-      target.siblings().removeClass(settings.active_class).attr({"aria-hidden": "true",  tabindex: -1}).end().addClass(settings.active_class).attr('aria-hidden', 'false').find(':first-child').attr('tabindex', 0);
+      target.siblings().removeClass(settings.active_class).attr({"aria-hidden": "true",  tabindex: -1});
+      target.addClass(settings.active_class).attr('aria-hidden', 'false').removeAttr("tabindex");
       settings.callback(tab);
-      target.children().attr('tab-index', 0);
       target.triggerHandler('toggled', [tab]);
       tabs.triggerHandler('toggled', [target]);
 
