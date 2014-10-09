@@ -425,7 +425,7 @@ $cursor-text-value: text !default;
     .left   { float: left !important; }
     .right  { float: right !important; }
     .clearfix     { @include clearfix; }
-    .hide         { display: none; }
+    .hide         { display: none !important; }
 
     // Font smoothing
     // Antialiased font smoothing works best for light text on a dark background.
