@@ -53,7 +53,7 @@ $table-line-height: rem-calc(18) !default;
 // These are for controlling the layout, display and margin of tables
 $table-layout: auto !default;
 $table-display: table-cell !default;
-$table-margin-bottom: rem-calc(20) !default;
+$table-margin-bottom: $base-spacing-unit !default;
 
 
 //

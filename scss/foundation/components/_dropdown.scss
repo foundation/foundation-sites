@@ -49,7 +49,7 @@ $f-dropdown-list-hover-bg: $smoke !default;
 $dropdown-mobile-default-float: 0 !default;
 
 // We use this to control the styles for when the dropdown has custom content.
-$f-dropdown-content-padding: rem-calc(20) !default;
+$f-dropdown-content-padding: $base-spacing-unit !default;
 
 // Default radius for dropdown.
 $f-dropdown-radius: $global-radius !default;

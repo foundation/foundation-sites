@@ -19,8 +19,8 @@ $panel-function-factor: -11% !default;
 $panel-border-color: scale-color($panel-bg, $lightness: $panel-function-factor) !default;
 
 // We use these to set default inner padding and bottom margin
-$panel-margin-bottom: rem-calc(20) !default;
-$panel-padding: rem-calc(20) !default;
+$panel-margin-bottom: $base-spacing-unit !default;
+$panel-padding: $base-spacing-unit !default;
 
 // We use these to set default font colors
 $panel-font-color: $oil !default;
@@ -56,10 +56,10 @@ $callout-panel-link-color: $primary-color !default;
 
     @if $adjust {
       // We set the font color based on the darkness of the bg.
-      @if $bg-lightness >= 50% { 
+      @if $bg-lightness >= 50% {
         h1,h2,h3,h4,h5,h6,p,li,dl { color: $panel-font-color; }
       }
-      @else { 
+      @else {
         h1,h2,h3,h4,h5,h6,p,li,dl { color: $panel-font-color-alt; }
       }
 

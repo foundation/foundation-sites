@@ -13,7 +13,7 @@ $include-html-pricing-classes: $include-html-classes !default;
 $price-table-border: solid 1px $gainsboro !default;
 
 // We use this to control the bottom margin of the pricing table
-$price-table-margin-bottom: rem-calc(20) !default;
+$price-table-margin-bottom: $base-spacing-unit !default;
 
 // We use these to control the title styles
 $price-title-bg: $oil !default;

@@ -40,7 +40,7 @@ $input-include-glowing-effect: true !default;
 $fieldset-border-style: solid !default;
 $fieldset-border-width: 1px !default;
 $fieldset-border-color: $gainsboro !default;
-$fieldset-padding: rem-calc(20) !default;
+$fieldset-padding: $base-spacing-unit !default;
 $fieldset-margin: rem-calc(18 0) !default;
 
 // We use these to style the legends when you use them

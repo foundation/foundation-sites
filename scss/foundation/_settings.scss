@@ -139,6 +139,9 @@ $include-html-global-classes: $include-html-classes;
 // $default-float: left;
 // $last-child-float: $opposite-direction;
 
+// We use these to control margins and padding
+// $base-spacing-unit: rem-calc(20);
+
 // We use these to make sure border radius matches unless we want it different.
 // $global-radius: 3px;
 // $global-rounded: 1000px;
@@ -236,7 +239,7 @@ $include-html-global-classes: $include-html-classes;
 // $paragraph-font-weight: $font-weight-normal;
 // $paragraph-font-size: 1rem;
 // $paragraph-line-height: 1.6;
-// $paragraph-margin-bottom: rem-calc(20);
+// $paragraph-margin-bottom: $base-spacing-unit;
 // $paragraph-aside-font-size: rem-calc(14);
 // $paragraph-aside-line-height: 1.35;
 // $paragraph-aside-font-style: italic;
@@ -262,7 +265,7 @@ $include-html-global-classes: $include-html-classes;
 // $hr-border-width: 1px;
 // $hr-border-style: solid;
 // $hr-border-color: $gainsboro;
-// $hr-margin: rem-calc(20);
+// $hr-margin: $base-spacing-unit;
 
 // We use these to style lists
 // $list-font-family: $paragraph-font-family;
@@ -273,7 +276,7 @@ $include-html-global-classes: $include-html-classes;
 // $list-side-margin: 1.1rem;
 // $list-ordered-side-margin: 1.4rem;
 // $list-side-margin-no-bullet: 0;
-// $list-nested-margin: rem-calc(20);
+// $list-nested-margin: $base-spacing-unit;
 // $definition-list-header-weight: $font-weight-bold;
 // $definition-list-header-margin-bottom: .3rem;
 // $definition-list-margin-bottom: rem-calc(12);
@@ -352,7 +355,7 @@ $include-html-global-classes: $include-html-classes;
 // $alert-border-style: solid;
 // $alert-border-width: 1px;
 // $alert-border-color: scale-color($primary-color, $lightness: $alert-function-factor);
-// $alert-bottom-margin: rem-calc(20);
+// $alert-bottom-margin: $base-spacing-unit;
 
 // We use these to style the close buttons
 // $alert-close-color: $oil;
@@ -378,7 +381,7 @@ $include-html-global-classes: $include-html-classes;
 
 // We use this to control the maximum number of block grid elements per row
 // $block-grid-elements: 12;
-// $block-grid-default-spacing: rem-calc(20);
+// $block-grid-default-spacing: $base-spacing-unit;
 // $align-block-grid-to-grid: false;
 
 // Enables media queries for block-grid classes. Set to false if writing semantic HTML.
@@ -428,7 +431,7 @@ $include-html-global-classes: $include-html-classes;
 
 // We use this to control the display property.
 // $button-display: inline-block;
-// $button-margin-bottom: rem-calc(20);
+// $button-margin-bottom: $base-spacing-unit;
 
 // We use these to control button text styles.
 // $button-font-family: $body-font-family;
@@ -549,7 +552,7 @@ $include-html-global-classes: $include-html-classes;
 // $dropdown-mobile-default-float: 0;
 
 // We use this to control the styles for when the dropdown has custom content.
-// $f-dropdown-content-padding: rem-calc(20);
+// $f-dropdown-content-padding: $base-spacing-unit;
 
 // Default radius for dropdown.
 // $f-dropdown-radius: $global-radius;
@@ -640,7 +643,7 @@ $include-html-global-classes: $include-html-classes;
 // $fieldset-border-style: solid;
 // $fieldset-border-width: 1px;
 // $fieldset-border-color: $gainsboro;
-// $fieldset-padding: rem-calc(20);
+// $fieldset-padding: $base-spacing-unit;
 // $fieldset-margin: rem-calc(18 0);
 
 // We use these to style the legends when you use them
@@ -960,8 +963,8 @@ $include-html-global-classes: $include-html-classes;
 // $panel-border-color: scale-color($panel-bg, $lightness: $panel-function-factor);
 
 // We use these to set default inner padding and bottom margin
-// $panel-margin-bottom: rem-calc(20);
-// $panel-padding: rem-calc(20);
+// $panel-margin-bottom: $base-spacing-unit;
+// $panel-padding: $base-spacing-unit;
 
 // We use these to set default font colors
 // $panel-font-color: $oil;
@@ -979,7 +982,7 @@ $include-html-global-classes: $include-html-classes;
 // $price-table-border: solid 1px $gainsboro;
 
 // We use this to control the bottom margin of the pricing table
-// $price-table-margin-bottom: rem-calc(20);
+// $price-table-margin-bottom: $base-spacing-unit;
 
 // We use these to control the title styles
 // $price-title-bg: $oil;
@@ -1094,7 +1097,7 @@ $include-html-global-classes: $include-html-classes;
 // $reveal-position-top: rem-calc(100);
 // $reveal-default-width: 80%;
 // $reveal-max-width: $row-width;
-// $reveal-modal-padding: rem-calc(20);
+// $reveal-modal-padding: $base-spacing-unit;
 // $reveal-box-shadow: 0 0 10px rgba($black,.4);
 
 // We use these to style the reveal close button
@@ -1238,7 +1241,7 @@ $include-html-global-classes: $include-html-classes;
 // $switch-height-sml: rem-calc(28);
 // $switch-height-med: rem-calc(36);
 // $switch-height-lrg: rem-calc(44);
-// $switch-bottom-margin: rem-calc(20);
+// $switch-bottom-margin: $base-spacing-unit;
 
 // We use these to control default font sizes for our classes.
 // $switch-font-size-tny: 11px;
@@ -1291,7 +1294,7 @@ $include-html-global-classes: $include-html-classes;
 // These are for controlling the layout, display and margin of tables
 // $table-layout: auto;
 // $table-display: table-cell;
-// $table-margin-bottom: rem-calc(20);
+// $table-margin-bottom: $base-spacing-unit;
 
 // 31. Tabs
 // - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -1307,10 +1310,10 @@ $include-html-global-classes: $include-html-classes;
 // $tabs-navigation-font-size: rem-calc(16);
 // $tabs-navigation-font-family: $body-font-family;
 
-// $tabs-content-margin-bottom: rem-calc(24);
-// $tabs-content-padding: $column-gutter/2;
+// $tabs-content-margin-bottom: $base-spacing-unit;
+// $tabs-content-padding: $base-spacing-unit;
 
-// $tabs-vertical-navigation-margin-bottom: 1.25rem;
+// $tabs-vertical-navigation-margin-bottom: $base-spacing-unit / 2;
 
 // 32. Thumbnails
 // - - - - - - - - - - - - - - - - - - - - - - - - -
