@@ -21,7 +21,7 @@ $reveal-modal-bg: $white !default;
 $reveal-position-top: rem-calc(100) !default;
 $reveal-default-width: 80% !default;
 $reveal-max-width: $row-width !default;
-$reveal-modal-padding: rem-calc(20) !default;
+$reveal-modal-padding: $base-spacing-unit !default;
 $reveal-box-shadow: 0 0 10px rgba($black,.4) !default;
 
 // We use these to style the reveal close button
@@ -212,7 +212,7 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
 
     // Reveal Print Styles: It should be invisible, adds no value being printed.
     @media print {
-      dialog, .#{$reveal-modal-class} { 
+      dialog, .#{$reveal-modal-class} {
         display: none;
         background: $white !important;
       }

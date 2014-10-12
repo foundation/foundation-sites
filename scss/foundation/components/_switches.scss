@@ -23,7 +23,7 @@ $switch-height-tny: 1.5rem !default;
 $switch-height-sml: 1.75rem !default;
 $switch-height-med: 2rem !default;
 $switch-height-lrg: 2.5rem !default;
-$switch-bottom-margin: 1.5rem !default;
+$switch-bottom-margin: $base-spacing-unit !default;
 
 // We use these to style the switch-paddle
 $switch-paddle-bg: $white !default;
@@ -214,7 +214,7 @@ $switch-active-color: $primary-color !default;
         &.tiny { @include switch-size($switch-height-tny); }
 
         // Add a radius to the switch
-        &.radius { 
+        &.radius {
           label { @include radius(4px); }
           label:after { @include radius(3px); }
         }

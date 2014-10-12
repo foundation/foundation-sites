@@ -21,7 +21,7 @@ $progress-bar-border-radius: $global-radius !default;
 
 // We use these to control the margin & padding
 $progress-bar-pad: rem-calc(2) !default;
-$progress-bar-margin-bottom: rem-calc(10) !default;
+$progress-bar-margin-bottom: $base-spacing-unit / 2 !default;
 
 // We use these to set the meter colors
 $progress-meter-color: $primary-color !default;

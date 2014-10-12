@@ -279,6 +279,9 @@ $opposite-direction: right !default;
   $opposite-direction: left;
 }
 
+// We use these to control margins and padding
+$base-spacing-unit: rem-calc(20) !default;
+
 // We use these to make sure border radius matches unless we want it different.
 $global-radius: 3px !default;
 $global-rounded: 1000px !default;
@@ -415,9 +418,9 @@ $cursor-text-value: text !default;
 
     #map_canvas,
     .map_canvas {
-      img,
-      embed,
-      object { max-width: none !important;
+        img,
+        embed,
+        object { max-width: none !important;
       }
     }
 

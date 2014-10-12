@@ -17,7 +17,7 @@ $button-lrg: rem-calc(18) !default;
 
 // We use this to control the display property.
 $button-display: inline-block !default;
-$button-margin-bottom: rem-calc(20) !default;
+$button-margin-bottom: $base-spacing-unit !default;
 
 // We use these to control button text styles.
 $button-font-family: $body-font-family !default;

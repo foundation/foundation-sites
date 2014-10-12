@@ -20,10 +20,10 @@ $tabs-navigation-active-font-color: $tabs-navigation-font-color !default;
 $tabs-navigation-font-size: rem-calc(16) !default;
 $tabs-navigation-font-family: $body-font-family !default;
 
-$tabs-content-margin-bottom: rem-calc(24) !default;
-$tabs-content-padding: $column-gutter/2 !default;
+$tabs-content-margin-bottom: $base-spacing-unit !default;
+$tabs-content-padding: $base-spacing-unit !default;
 
-$tabs-vertical-navigation-margin-bottom: 1.25rem !default;
+$tabs-vertical-navigation-margin-bottom: $base-spacing-unit / 2 !default;
 
 @include exports("tab") {
   @if $include-html-tabs-classes {
