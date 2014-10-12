@@ -393,10 +393,6 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
       }
     }
 
-    select {
-      display: none;
-    }
-
     /* Attach elements to the beginning or end of an input */
     .prefix,
     .postfix { @include prefix-postfix-base; }
