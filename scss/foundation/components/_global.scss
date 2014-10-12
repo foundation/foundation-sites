@@ -80,8 +80,8 @@ $base-line-height: 1.5 !default;
 // We use this to add box-sizing across browser prefixes
 @mixin box-sizing($type:border-box) {
   -webkit-box-sizing: $type; // Android < 2.3, iOS < 4
-	   -moz-box-sizing: $type; // Firefox < 29
-	        box-sizing: $type; // Chrome, IE 8+, Opera, Safari 5.1
+     -moz-box-sizing: $type; // Firefox < 29
+          box-sizing: $type; // Chrome, IE 8+, Opera, Safari 5.1
 }
 
 // @mixins
@@ -140,12 +140,12 @@ $base-line-height: 1.5 !default;
         top: 50%;
         margin-top: -$width/2;
       }
-    	@if $left {
-    	  left: $left;
-    	}
-    	@else {
-    	  left: ($tabbar-menu-icon-width - $width)/2;
-    	}
+      @if $left {
+        left: $left;
+      }
+      @else {
+        left: ($tabbar-menu-icon-width - $width)/2;
+      }
     }
     @else {
       top: 50%;
@@ -422,10 +422,18 @@ $cursor-text-value: text !default;
     }
 
     // Miscellaneous useful HTML classes
-    .left   { float: left !important; }
-    .right  { float: right !important; }
-    .clearfix     { @include clearfix; }
-    .hide         { display: none; }
+    .left { float: left !important; }
+    .right { float: right !important; }
+    .clearfix { @include clearfix; }
+
+    // Hide visually and from screen readers
+    .hide {
+      display: none !important;
+      visibility: hidden;
+    }
+
+    // Hide visually and from screen readers, but maintain layout
+    .invisible { visibility: hidden; }
 
     // Font smoothing
     // Antialiased font smoothing works best for light text on a dark background.
