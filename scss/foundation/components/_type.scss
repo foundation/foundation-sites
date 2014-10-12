@@ -88,7 +88,7 @@ $list-side-margin-no-bullet: 0 !default;
 $list-nested-margin: $base-spacing-unit !default;
 $definition-list-header-weight: $font-weight-bold !default;
 $definition-list-header-margin-bottom: .3rem !default;
-$definition-list-margin-bottom: rem-calc(12) !default;
+$definition-list-margin-bottom: $base-spacing-unit / 2 !default;
 
 // We use these to style blockquotes
 $blockquote-font-color: scale-color($header-font-color, $lightness: 35%) !default;
@@ -103,7 +103,7 @@ $acronym-underline: 1px dotted $gainsboro !default;
 
 // We use these to control padding and margin
 $microformat-padding: rem-calc(10 12) !default;
-$microformat-margin: rem-calc(0 0 20 0) !default;
+$microformat-margin: rem-calc(0 0 $base-spacing-unit 0) !default;
 
 // We use these to control the border styles
 $microformat-border-width: 1px !default;

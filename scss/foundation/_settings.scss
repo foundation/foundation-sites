@@ -279,7 +279,7 @@ $include-html-global-classes: $include-html-classes;
 // $list-nested-margin: $base-spacing-unit;
 // $definition-list-header-weight: $font-weight-bold;
 // $definition-list-header-margin-bottom: .3rem;
-// $definition-list-margin-bottom: rem-calc(12);
+// $definition-list-margin-bottom: $base-spacing-unit / 2;
 
 // We use these to style blockquotes
 // $blockquote-font-color: scale-color($header-font-color, $lightness: 35%);
@@ -294,7 +294,7 @@ $include-html-global-classes: $include-html-classes;
 
 // We use these to control padding and margin
 // $microformat-padding: rem-calc(10 12);
-// $microformat-margin: rem-calc(0 0 20 0);
+// $microformat-margin: rem-calc(0 0 $base-spacing-unit 0);
 
 // We use these to control the border styles
 // $microformat-border-width: 1px;
@@ -644,7 +644,7 @@ $include-html-global-classes: $include-html-classes;
 // $fieldset-border-width: 1px;
 // $fieldset-border-color: $gainsboro;
 // $fieldset-padding: $base-spacing-unit;
-// $fieldset-margin: rem-calc(18 0);
+// $fieldset-margin: rem-calc($base-spacing-unit 0);
 
 // We use these to style the legends when you use them
 // $legend-bg: $white;
@@ -1042,7 +1042,7 @@ $include-html-global-classes: $include-html-classes;
 
 // We use these to control the margin & padding
 // $progress-bar-pad: rem-calc(2);
-// $progress-bar-margin-bottom: rem-calc(10);
+// $progress-bar-margin-bottom: $base-spacing-unit / 2;
 
 // We use these to set the meter colors
 // $progress-meter-color: $primary-color;
