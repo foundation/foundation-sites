@@ -9,7 +9,8 @@ $rem-base: 16px !default;
 // We use this to prevent styles from being loaded multiple times for compenents that rely on other components. 
 $modules: () !default;
 @mixin exports($name) {
-  @if (index($modules, $name) == false) {
+  $module_index: index($modules, $name);
+  @if (($module_index == null) or ($module_index == false)) {
     $modules: append($modules, $name);
     @content;
   }
