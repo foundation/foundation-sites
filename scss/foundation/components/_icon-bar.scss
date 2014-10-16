@@ -31,7 +31,7 @@ $icon-bar-item-padding: 1.25rem !default;
 // We use this mixin to create the base styles for our Icon bar element.
 //
 @mixin icon-bar-base() {
- 
+
  	width: 100%;
 	font-size: 0;
 	display: inline-block;
@@ -45,9 +45,9 @@ $icon-bar-item-padding: 1.25rem !default;
 		padding: $icon-bar-item-padding;
 		float: left;
 
-		i, img { 
+		i, img {
 			display: block;
-			margin: 0 auto; 
+			margin: 0 auto;
 
 			& + label {
 				margin-top: .0625rem;
@@ -67,8 +67,8 @@ $icon-bar-item-padding: 1.25rem !default;
 
 	&.label-right > * {
 
-		i, img { 
-			margin: 0 .0625rem 0 0; 
+		i, img {
+			margin: 0 .0625rem 0 0;
 			display: inline-block;
 
 			& + label {
@@ -132,7 +132,7 @@ $icon-bar-item-padding: 1.25rem !default;
 		font-size: $font-size;
 		padding: $padding;
 
-		i, img { 
+		i, img {
 
 			& + label {
 				margin-top: .0625rem;
@@ -160,7 +160,7 @@ $icon-bar-item-padding: 1.25rem !default;
   $base-style:true) {
 
 	@if $base-style {
-	
+
 		background: $bar-bg;
 
 		& > * {
@@ -217,77 +217,29 @@ $icon-bar-item-padding: 1.25rem !default;
 
 	.icon-bar {
 
-		// Counts
+		&.vertical .item, &.small-vertical .item { width: auto; }
+		&.medium-vertical .item {
+			@media #{$medium-up} {
+				width: auto;
+			}
+		}
+		&.large-vertical .item {
+			@media #{$large-up} {
+				width: auto;
+			}
+		}
 
-		&.two-up {
-			.item { width: 50%; }
-			&.vertical .item, &.small-vertical .item { width: auto; }
-			&.medium-vertical .item {
-				@media #{$medium-up} {
-					width: auto;
-				}
-			}
-			&.large-vertical .item {
-				@media #{$large-up} {
-					width: auto;
-				}
-			}
-		}
-		&.three-up {
-			.item { width: 33.3333%; }
-			&.vertical .item, &.small-vertical .item { width: auto; }
-			&.medium-vertical .item {
-				@media #{$medium-up} {
-					width: auto;
-				}
-			}
-			&.large-vertical .item {
-				@media #{$large-up} {
-					width: auto;
-				}
-			}
-		}
-		&.four-up {
-			.item { width: 25%; }
-			&.vertical .item, &.small-vertical .item { width: auto; }
-			&.medium-vertical .item {
-				@media #{$medium-up} {
-					width: auto;
-				}
-			}
-			&.large-vertical .item {
-				@media #{$large-up} {
-					width: auto;
-				}
-			}
-		}
-		&.five-up {
-			.item { width: 20%; }
-			&.vertical .item, &.small-vertical .item { width: auto; }
-			&.medium-vertical .item {
-				@media #{$medium-up} {
-					width: auto;
-				}
-			}
-			&.large-vertical .item {
-				@media #{$large-up} {
-					width: auto;
-				}
-			}
-		}
-		&.six-up {
-			.item { width: 16.66667%; }
-			&.vertical .item, &.small-vertical .item { width: auto; }
-			&.medium-vertical .item {
-				@media #{$medium-up} {
-					width: auto;
-				}
-			}
-			&.large-vertical .item {
-				@media #{$large-up} {
-					width: auto;
-				}
-			}
-		}
+		// Counts
+		&.two-up .item 		{ width: calc(100% / 2); }
+		&.three-up .item 	{ width: calc(100% / 3); }
+		&.four-up .item 	{ width: calc(100% / 4); }
+		&.five-up .item 	{ width: calc(100% / 5); }
+		&.six-up .item 		{ width: calc(100% / 6); }
+		&.seven-up .item 	{ width: calc(100% / 7); }
+		&.eight-up .item 	{ width: calc(100% / 8); }
+		&.nine-up .item 	{ width: calc(100% / 9); }
+		&.ten-up .item 		{ width: calc(100% / 10); }
+		&.eleven-up .item { width: calc(100% / 11); }
+		&.twelve-up .item { width: calc(100% / 12); }
 	}
 }
