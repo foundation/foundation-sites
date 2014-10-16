@@ -595,8 +595,8 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
               &:hover > a:not(.button) {
                 color: $topbar-dropdown-link-color-hover;
                 background-color: $topbar-link-bg-color-hover;
-                @if ($topbar-link-bg-hover) {
-                  background: $topbar-link-bg-hover;
+                @if ($topbar-dropdown-link-bg-hover) {
+                  background: $topbar-dropdown-link-bg-hover;
                 }
               }
             }
