@@ -178,17 +178,12 @@
     },
 
     css : function (dropdown, target) {
-      var left_offset = Math.max((target.width() - dropdown.width()) / 2, 8);
-      var settings = target.data(this.attr_name(true) + '-init') || this.settings;
-      var offset_parent = dropdown.offsetParent();
-      var position = target.offset();
-
-      position.top -= offset_parent.offset().top;
-      position.left -= offset_parent.offset().left;
+      var left_offset = Math.max((target.width() - dropdown.width()) / 2, 8),
+          settings = target.data(this.attr_name(true) + '-init') || this.settings;
 
       this.clear_idx();
 
-      if (this.small() || this.medium()) {
+      if (this.small()) {
         var p = this.dirs.bottom.call(dropdown, target, settings);
 
         dropdown.attr('style', '').removeClass('drop-left drop-right drop-top').css({
@@ -200,18 +195,8 @@
 
         dropdown.css(Foundation.rtl ? 'right':'left', left_offset);
       } else {
-        if (!Foundation.rtl && $(window).width() > dropdown.outerWidth() + target.offset().left) {
-          var left = position.left;
-        } else {
-          left = position.left - (dropdown.outerWidth() - target.outerWidth());
-        }
 
         this.style(dropdown, target, settings);
-        if(!settings.align.left) {
-          dropdown.css({
-            left: left
-          });
-        }
       }
 
       return dropdown;
@@ -327,10 +312,6 @@
     small : function () {
       return matchMedia(Foundation.media_queries.small).matches &&
         !matchMedia(Foundation.media_queries.medium).matches;
-    },
-
-    medium : function () {
-      return matchMedia(Foundation.media_queries.medium).matches;
     },
 
     off: function () {
