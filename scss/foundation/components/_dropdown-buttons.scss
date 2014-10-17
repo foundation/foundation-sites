@@ -75,7 +75,7 @@ $dropdown-button-pip-top-lrg: -$button-pip-lrg / 2 + rem-calc(3) !default;
   // If we're dealing with tiny buttons, use these styles
   @if $padding == tiny {
     padding-#{$opposite-direction}: $dropdown-button-padding-tny;
-    &::before {
+    &:after {
       border-width: $dropdown-button-pip-size-tny;
       #{$opposite-direction}: $dropdown-button-pip-opposite-tny;
       margin-top: $dropdown-button-pip-top-tny;
