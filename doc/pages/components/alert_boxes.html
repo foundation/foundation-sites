@@ -217,6 +217,12 @@ You can further customize your alert boxes using the provided options in the `al
     // Give a border to the alert box
     $radius: true
   );
+  .close {
+    @include alert-close();
+  }
+  &.alert-close {
+    opacity: 0;
+  }
 }
 ```
 {{/markdown}}
