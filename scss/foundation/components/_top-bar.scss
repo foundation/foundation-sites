@@ -192,7 +192,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
         margin: 0;
         font-size: $rem-base;
 
-        h1 {
+        h1, h2, h3, h4, p, span {
           line-height: $topbar-height;
           font-size: $topbar-title-font-size;
           margin: 0;
