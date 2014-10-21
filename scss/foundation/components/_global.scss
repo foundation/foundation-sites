@@ -272,8 +272,8 @@ $text-direction: ltr !default;
 $default-float: left !default;
 $opposite-direction: right !default;
 @if $text-direction == ltr {
-  $default-float: left;
-  $opposite-direction: right;
+  $default-float: left !global;
+  $opposite-direction: right !global;
 } @else {
   $default-float: right;
   $opposite-direction: left;
