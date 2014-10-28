@@ -119,11 +119,12 @@
           self.S(this).trigger('closed').trigger('closed.fndtn.dropdown', [dropdown]);
         }
       });
+      dropdown.removeClass("f-open-" + this.attr_name(true));
     },
 
     closeall: function() {
       var self = this;
-      $.each(self.S('[' + this.attr_name() + '-content]'), function() {
+      $.each(self.S(".f-open-" + this.attr_name(true)), function() {
         self.close.call(self, self.S(this));
       });
     },
@@ -137,6 +138,7 @@
         dropdown.attr('aria-hidden', 'false');
         target.attr('aria-expanded', 'true');
         dropdown.focus();
+        dropdown.addClass("f-open-" + this.attr_name(true));
     },
 
     data_attr: function () {
