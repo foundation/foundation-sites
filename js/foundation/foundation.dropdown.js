@@ -52,7 +52,7 @@
 
           var settings = target.data(self.attr_name(true) + '-init') || self.settings;
 
-          if(S(e.target).data(self.data_attr()) && settings.is_hover) {
+          if(S(e.currentTarget).data(self.data_attr()) && settings.is_hover) {
             self.closeall.call(self);
           }
 
