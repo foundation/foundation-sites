@@ -288,8 +288,9 @@
 
       var sel_before = '.f-dropdown.open:before',
           sel_after  = '.f-dropdown.open:after',
-          css_before = 'left: ' + pip_offset_base + 'px;',
-          css_after  = 'left: ' + (pip_offset_base - 1) + 'px;';
+          dir = dropdown.hasClass("right") ? "right" : "left",
+          css_before = dir + ': ' + pip_offset_base + 'px;',
+          css_after  = dir + ': ' + (pip_offset_base - 1) + 'px;';
 
       if (sheet.insertRule) {
         sheet.insertRule([sel_before, '{', css_before, '}'].join(' '), this.rule_idx);
