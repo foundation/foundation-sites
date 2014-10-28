@@ -12,7 +12,7 @@ title: Icon Bar
 
 <h3>Basic</h3>
 
-You can create an Icon Bar using minimal markup. Specifying the number of items `one-up` through `six-up` will ensure the items are evenly spaced.
+You can create an Icon Bar using minimal markup. Specifying the number of items `one-up` through `twelve-up` will ensure the items are evenly spaced.
 
 <div class="row">
   <div class="large-6 columns">
@@ -29,7 +29,7 @@ You can create an Icon Bar using minimal markup. Specifying the number of items 
 
 <h3>Vertical Icon Bar</h3>
 
-It's easy. Just add a class of `.vertical` to make the Icon Bar stack up. For an Icon bar that's horizontal on small screens but vertical on larger use '.medium-vertical' and 'large-vertical' to utilize those breakpoints. 
+It's easy. Just add a class of `.vertical` to make the Icon Bar stack up. For an Icon bar that's horizontal on small screens but vertical on larger use '.medium-vertical' and 'large-vertical' to utilize those breakpoints.
 
 <div class="row">
   <div class="large-6 columns">
@@ -88,7 +88,7 @@ For icon bars without text labels, add `aria-label` to each item, with a value r
 
 ***
 
-## Customize with Sass 
+## Customize with Sass
 
 Icon Bar can be easily customized using our provided Sass variables.
 
@@ -132,7 +132,7 @@ You can use the `icon-bar()` mixin to create your own icon-bar, like so:
 
 {{#markdown}}
 ```html
-<div class="my-custom-class"> </div> 
+<div class="my-custom-class"> </div>
 ```
 {{/markdown}}
 
@@ -143,7 +143,7 @@ You can further customize your icon bar using the provided options in the `icon 
 ```scss
 .my-custom-class {
 @include icon-bar(
-  
+
   // Set the background color of the icon bar. Default: $icon-bar-bg.
   $bar-bg: $icon-bar-bg,
   //  Set the font color of the icon bar. Default: $icon-bar-font-color.
