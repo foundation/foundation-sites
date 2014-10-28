@@ -38,6 +38,7 @@ $alert-close-font-size: rem-calc(22) !default;
 $alert-close-opacity: 0.3 !default;
 $alert-close-opacity-hover: 0.5 !default;
 $alert-close-padding: 9px 6px 4px !default;
+$alert-close-background: inherit !default;
 
 // We use this to control border radius
 $alert-radius: $global-radius !default;
@@ -91,6 +92,7 @@ $alert-transition-ease: ease-out !default;
   #{$opposite-direction}: $alert-close-position;
   color: $alert-close-color;
   opacity: $alert-close-opacity;
+  background: $alert-close-background;
   &:hover,
   &:focus { opacity: $alert-close-opacity-hover; }
 }

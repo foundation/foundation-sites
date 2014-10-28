@@ -10,6 +10,7 @@
       live_validate : true,
       focus_on_invalid : true,
       error_labels: true, // labels with a for="inputId" will recieve an `error` class
+      error_class: 'error',
       timeout : 1000,
       patterns : {
         alpha: /^[a-zA-Z]+$/,
@@ -93,7 +94,7 @@
     reset : function (form) {
       form.removeAttr(this.invalid_attr);
       $(this.invalid_attr, form).removeAttr(this.invalid_attr);
-      $('.error', form).not('small').removeClass('error');
+      $('.' + this.settings.error_class, form).not('small').removeClass(this.settings.error_class);
     },
 
     validate : function (els, e, is_ajax) {
@@ -207,9 +208,9 @@
             this.S(el).removeAttr(this.invalid_attr);
             el.setAttribute('aria-invalid', 'false');
             el.removeAttribute('aria-describedby');
-            parent.removeClass('error');
+            parent.removeClass(this.settings.error_class);
             if (label.length > 0 && this.settings.error_labels) {
-              label.removeClass('error').removeAttr('role');
+              label.removeClass(this.settings.error_class).removeAttr('role');
             }
             $(el).triggerHandler('valid');
           } else {
@@ -217,14 +218,14 @@
             el.setAttribute('aria-invalid', 'true');
 
             // Try to find the error associated with the input
-            var errorElem = parent.find('small.error, span.error');
+            var errorElem = parent.find('small.'+this.settings.error_class, 'span.'+this.settings.error_class);
             var errorID = errorElem.length > 0 ? errorElem[0].id : "";
             if (errorID.length > 0) el.setAttribute('aria-describedby', errorID);
 
             // el.setAttribute('aria-describedby', $(el).find('.error')[0].id);
-            parent.addClass('error');
+            parent.addClass(this.settings.error_class);
             if (label.length > 0 && this.settings.error_labels) {
-              label.addClass('error').attr('role', 'alert');
+              label.addClass(this.settings.error_class).attr('role', 'alert');
             }
             $(el).triggerHandler('invalid');
           }
@@ -240,9 +241,9 @@
           valid = (el.is(':checked') || !required);
 
       if (valid) {
-        el.removeAttr(this.invalid_attr).parent().removeClass('error');
+        el.removeAttr(this.invalid_attr).parent().removeClass(this.settings.error_class);
       } else {
-        el.attr(this.invalid_attr, '').parent().addClass('error');
+        el.attr(this.invalid_attr, '').parent().addClass(this.settings.error_class);
       }
 
       return valid;
@@ -262,9 +263,9 @@
       // Has to count up to make sure the focus gets applied to the top error
       for (var i=0; i < count; i++) {
         if (valid) {
-          this.S(group[i]).removeAttr(this.invalid_attr).parent().removeClass('error');
+          this.S(group[i]).removeAttr(this.invalid_attr).parent().removeClass(this.settings.error_class);
         } else {
-          this.S(group[i]).attr(this.invalid_attr, '').parent().addClass('error');
+          this.S(group[i]).attr(this.invalid_attr, '').parent().addClass(this.settings.error_class);
         }
       }
 
@@ -278,12 +279,12 @@
 
       if (valid) {
         this.S(el).removeAttr(this.invalid_attr);
-        parent.removeClass('error');
-        if (label.length > 0 && settings.error_labels) label.removeClass('error');
+        parent.removeClass(this.settings.error_class);
+        if (label.length > 0 && settings.error_labels) label.removeClass(this.settings.error_class);
       } else {
         this.S(el).attr(this.invalid_attr, '');
-        parent.addClass('error');
-        if (label.length > 0 && settings.error_labels) label.addClass('error');
+        parent.addClass(this.settings.error_class);
+        if (label.length > 0 && settings.error_labels) label.addClass(this.settings.error_class);
       }
 
       return valid;
@@ -295,9 +296,9 @@
         valid = others.filter(':checked').length > 0;
 
       if (valid) {
-        el.removeAttr(this.invalid_attr).parent().removeClass('error');
+        el.removeAttr(this.invalid_attr).parent().removeClass(this.settings.error_class);
       } else {
-        el.attr(this.invalid_attr, '').parent().addClass('error');
+        el.attr(this.invalid_attr, '').parent().addClass(this.settings.error_class);
       }
 
       if (!doNotValidateOthers) {

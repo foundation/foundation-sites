@@ -33,7 +33,7 @@ $topbar-link-weight: $font-weight-normal !default;
 $topbar-link-font-size: rem-calc(13) !default;
 $topbar-link-hover-lightness: -10% !default; // Darken by 10%
 $topbar-link-bg: $topbar-bg !default;
-$topbar-link-bg-hover: #272727 !default;
+$topbar-link-bg-hover: $oil !default;
 $topbar-link-bg-color-hover: $charcoal !default;
 $topbar-link-bg-active: $primary-color !default;
 $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%) !default;
@@ -50,6 +50,7 @@ $topbar-dropdown-bg: $oil !default;
 $topbar-dropdown-link-color: $white !default;
 $topbar-dropdown-link-color-hover: $topbar-link-color-hover !default;
 $topbar-dropdown-link-bg: $oil !default;
+$topbar-dropdown-link-bg-hover: $oil !default;
 $topbar-dropdown-link-weight: $font-weight-normal !default;
 $topbar-dropdown-toggle-size: 5px !default;
 $topbar-dropdown-toggle-color: $white !default;
@@ -173,7 +174,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
         font-size: $topbar-button-font-size;
           // position: relative;
           // top: -1px;
-        
+
         // Corrects a slight misalignment when put next to an input field
         @media #{$small-only} {
           position: relative;
@@ -192,7 +193,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
         margin: 0;
         font-size: $rem-base;
 
-        h1 {
+        h1, h2, h3, h4, p, span {
           line-height: $topbar-height;
           font-size: $topbar-title-font-size;
           margin: 0;
@@ -595,8 +596,8 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
               &:hover > a:not(.button) {
                 color: $topbar-dropdown-link-color-hover;
                 background-color: $topbar-link-bg-color-hover;
-                @if ($topbar-link-bg-hover) {
-                  background: $topbar-link-bg-hover;
+                @if ($topbar-dropdown-link-bg-hover) {
+                  background: $topbar-dropdown-link-bg-hover;
                 }
               }
             }
@@ -631,7 +632,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
         }
 
         // Position overrides for ul.right and ul.left
-        .right {
+        .#{$opposite-direction} {
           li .dropdown {
             #{$default-float}: auto;
             #{$opposite-direction}: 0;
@@ -639,7 +640,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
             li .dropdown { #{$opposite-direction}: 100%; }
           }
         }
-        .left {
+        .#{$default-float} {
           li .dropdown {
             #{$opposite-direction}: auto;
             #{$default-float}: 0;

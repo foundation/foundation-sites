@@ -7,6 +7,7 @@
     version : '{{VERSION}}',
 
     settings : {
+      content_class: 'content',
       active_class: 'active',
       multi_expand: false,
       toggleable: true,

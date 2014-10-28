@@ -246,7 +246,7 @@ Manually
     <h2 data-magellan-destination="nocli"><a name="nocli"></a>Install Foundation Manually</h2>
     <h2 class="subheader">You can download our SCSS files and get set up to harness the power of Foundation without the CLI if you want. Here's how:</h2>
     <ul>
-      <li>First you will need to clone or download the <a href="https://github.com/zurb/foundation/archive/master.zip">master zip of the Foundation Compass Template</a> from Github. This will be the root of your project.</li>
+      <li>First you will need to clone or download the <a href="https://github.com/zurb/foundation-compass-template">master zip of the Foundation Compass Template</a> from Github. This will be the root of your project.</li>
       <li>Then you will create a directory called bower_components.</li>
       <li>The next step is to clone or download the master zip of the <a href="https://github.com/zurb/bower-foundation">bower-foundation</a> repo in that directory.</li>
       <li>Then rename this directory to "foundation"</li>
@@ -278,14 +278,14 @@ Upgrade Manually
         <h3>1</h3>
       </div>
       <p>First, you need create a file named bower.json in the root of your Compass project. This should contain the following:</p>
-      <p class="panel">{<br>&nbsp; &nbsp; "name": "PROJECT_NAME",<br>&nbsp; &nbsp; "dependencies": {<br>&nbsp;  &nbsp; &nbsp; &nbsp;"foundation": "~5.1.0"<br>&nbsp; &nbsp;  }<br>}
+      <p class="panel">{<br>&nbsp; &nbsp; "name": "PROJECT_NAME",<br>&nbsp; &nbsp; "dependencies": {<br>&nbsp;  &nbsp; &nbsp; &nbsp;"foundation": "~5.4.7"<br>&nbsp; &nbsp;  }<br>}
     </div>
     <div class="row path-item">
       <div class="circlenumber">
         <h3>2</h3>
       </div>
-      <p>Next you will run bower install.</p> 
-      <p class="panel">bower install</p>
+      <p>Next you will run bower update.</p> 
+      <p class="panel">bower update</p>
       <p>This will create a directory called bower_components/ in your project. Foundation's Sass and JavaScript files will be placed in the bower_components/foundation folder.</p>
     </div>
     <p><a href="{{rel 'sass-files.html'}}">Check out what you get with the Sass download package. →</a></p>

@@ -119,6 +119,8 @@ It's easy to configure dropdowns using our provided Javascript. You can use data
 ```js
 $(document).foundation({
   accordion: {
+    // specify the class used for accordion panels
+    content_class: 'content',
     // specify the class used for active (or open) accordion panels
     active_class: 'active',
     // allow multiple accordion panels to be active at the same time
@@ -133,7 +135,7 @@ $(document).foundation({
 
 ***
 
-## Semantic Markup With Sass Mixins 
+## Semantic Markup With Sass Mixins
 
 You can use the a `accordion-container()`, `accordion-navigation`, and `accordion-navigation` mixins to create your own accordion with semantic markup, like so:
 

@@ -82,7 +82,7 @@
             // Check whether the location hash references a tab content div or
             // another element on the page (inside or outside the tab content div)
             var hash_element = S(hash);
-            if (hash_element.hasClass('content') && hash_element.parent().hasClass('tab-content')) {
+            if (hash_element.hasClass('content') && hash_element.parent().hasClass('tabs-content')) {
               // Tab content div
               self.toggle_active_tab($('[' + self.attr_name() + '] > * > a[href=' + hash + ']').parent());
             } else {
@@ -113,7 +113,7 @@
           siblings = tab.siblings(),
           settings = tabs.data(this.attr_name(true) + '-init'),
           interpret_keyup_action = function(e) {
-            // Light modification of Heydon Pickering's Practical ARIA Examples: http://heydonworks.com/practical_aria_examples/js/a11y.js 
+            // Light modification of Heydon Pickering's Practical ARIA Examples: http://heydonworks.com/practical_aria_examples/js/a11y.js
 
             // define current, previous and next (possible) tabs
 

@@ -52,7 +52,7 @@
 
           var settings = target.data(self.attr_name(true) + '-init') || self.settings;
 
-          if(S(e.target).data(self.data_attr()) && settings.is_hover) {
+          if(S(e.currentTarget).data(self.data_attr()) && settings.is_hover) {
             self.closeall.call(self);
           }
 
@@ -119,11 +119,12 @@
           self.S(this).trigger('closed').trigger('closed.fndtn.dropdown', [dropdown]);
         }
       });
+      dropdown.removeClass("f-open-" + this.attr_name(true));
     },
 
     closeall: function() {
       var self = this;
-      $.each(self.S('[' + this.attr_name() + '-content]'), function() {
+      $.each(self.S(".f-open-" + this.attr_name(true)), function() {
         self.close.call(self, self.S(this));
       });
     },
@@ -137,6 +138,7 @@
         dropdown.attr('aria-hidden', 'false');
         target.attr('aria-expanded', 'true');
         dropdown.focus();
+        dropdown.addClass("f-open-" + this.attr_name(true));
     },
 
     data_attr: function () {
@@ -302,7 +304,7 @@
     clear_idx : function () {
       var sheet = Foundation.stylesheet;
 
-      if (this.rule_idx) {
+      if (typeof this.rule_idx !== 'undefined') {
         sheet.deleteRule(this.rule_idx);
         sheet.deleteRule(this.rule_idx);
         delete this.rule_idx;
