@@ -326,6 +326,11 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
   -webkit-border-radius: 0px;
   background-color: $select-bg-color;
 
+  // Hide the dropdown arrow shown in newer IE versions
+  &::-ms-expand {
+    display: none;
+  }
+
   // The custom arrow have some fake horizontal padding so we can align it
   // from the right side of the element without relying on CSS3
   background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+);
@@ -350,7 +355,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
     background-color: $select-hover-bg-color;
     border-color: $input-focus-border-color;
   }
-  // Disbaled Styles
+  // Disabled Styles
   &:disabled {
     background-color: $input-disabled-bg;
     cursor: $input-disabled-cursor;
@@ -386,10 +391,6 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
         text-transform: $form-label-small-transform;
         color: scale-color($form-label-font-color, $lightness: 15%);
       }
-    }
-
-    select::-ms-expand {
-      display:none;
     }
 
     /* Attach elements to the beginning or end of an input */

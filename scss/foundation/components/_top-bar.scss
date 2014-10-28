@@ -173,7 +173,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
         font-size: $topbar-button-font-size;
           // position: relative;
           // top: -1px;
-        
+
         // Corrects a slight misalignment when put next to an input field
         @media #{$small-only} {
           position: relative;
@@ -631,7 +631,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
         }
 
         // Position overrides for ul.right and ul.left
-        .right {
+        .#{$opposite-direction} {
           li .dropdown {
             #{$default-float}: auto;
             #{$opposite-direction}: 0;
@@ -639,7 +639,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
             li .dropdown { #{$opposite-direction}: 100%; }
           }
         }
-        .left {
+        .#{$default-float} {
           li .dropdown {
             #{$opposite-direction}: auto;
             #{$default-float}: 0;
