@@ -378,6 +378,11 @@ $cursor-text-value: text !default;
   }
 
   @if $include-html-global-classes {
+    
+    // Prevent Global classes from being included multiple times
+    @if $include-html-global-classes == 'once' {
+      $include-html-global-classes:false;  
+    }
 
     // Must be 100% for off canvas to work
     html, body { height: 100%; }
