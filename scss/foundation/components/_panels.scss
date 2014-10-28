@@ -28,6 +28,7 @@ $panel-font-color-alt: $white !default;
 
 $panel-header-adjust: true !default;
 $callout-panel-link-color: $primary-color !default;
+$callout-panel-link-color-hover: scale-color($callout-panel-link-color, $lightness: -14%) !default;
 //
 // @mixins
 //
@@ -82,6 +83,11 @@ $callout-panel-link-color: $primary-color !default;
         @include panel(scale-color($primary-color, $lightness: 94%));
         a:not(.button) {
           color: $callout-panel-link-color;
+
+          &:hover,
+          &:focus {
+            color: $callout-panel-link-color-hover;
+          }
         }
       }
 
