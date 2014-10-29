@@ -79,7 +79,10 @@
         .find('input, textarea, select')
           .off('.abide')
           .on('blur.fndtn.abide change.fndtn.abide', function (e) {
-            self.validate([this], e);
+            clearTimeout(self.timer);
+            self.timer = setTimeout(function () {
+              self.validate([this], e);
+            }.bind(this), settings.timeout);
           })
           .on('keydown.fndtn.abide', function (e) {
             if (settings.live_validate === true) {
