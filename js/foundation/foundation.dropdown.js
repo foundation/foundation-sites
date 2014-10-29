@@ -231,7 +231,12 @@
 		
 		//lets see if the panel will be off the screen
 		//get the actual width of the page and store it
-		var actualBodyWidth = document.getElementsByClassName("row")[0].clientWidth;
+		var actualBodyWidth;
+		if (document.getElementsByClassName("row")[0]) {
+			actualBodyWidth = document.getElementsByClassName("row")[0].clientWidth;
+		} else {
+			actualBodyWidth = window.outerWidth;
+		}
 		var actualMarginWidth = (window.outerWidth - actualBodyWidth) / 2;
 		var actualBoundary = actualBodyWidth;
 		
