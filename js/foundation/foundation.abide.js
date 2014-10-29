@@ -82,7 +82,7 @@
             self.validate([this], e);
           })
           .on('keydown.fndtn.abide', function (e) {
-            if (settings.live_validate === true) {
+            if (settings.live_validate === true && e.which != 9) {
               clearTimeout(self.timer);
               self.timer = setTimeout(function () {
                 self.validate([this], e);
