@@ -250,7 +250,7 @@
 			
 			//miss right
 			if (t.offset().left + this.outerWidth() > t.offset().left + actualMarginWidth && t.offset().left - actualMarginWidth > this.outerWidth()) {
-				if (t.attr("data-options").split(' ').join('').indexOf("align:right") != -1 || p.missTop == true) {
+				if (p.missTop == true) {
 					p.missRight = true;
 					p.missLeft = false;
 				}
@@ -258,7 +258,7 @@
 			
 			//miss left
 			if (t.offset().left - this.outerWidth() <= 0) {
-				if (t.attr("data-options").split(' ').join('').indexOf("align:left") != -1 || p.missTop == true) {
+				if (p.missTop == true) {
 					p.missLeft = true;
 					p.missRight = false;
 				}
