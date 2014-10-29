@@ -18,6 +18,7 @@ $topbar-bg: $topbar-bg-color !default;
 
 // Height and margin
 $topbar-height: 45px !default;
+$topbar-max-height: 999px !default;
 $topbar-margin-bottom: 0 !default;
 
 // Controlling the styles for the title in the top bar
@@ -148,11 +149,12 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
 
     .top-bar {
       overflow: hidden;
-      height: $topbar-height;
+      max-height: $topbar-height;
       line-height: $topbar-height;
       position: relative;
       background: $topbar-bg;
       margin-bottom: $topbar-margin-bottom;
+      @include single-transition(max-height, $topbar-transition-speed);
 
       // Topbar Global list Styles
       ul {
@@ -260,8 +262,9 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
 
       // Change things up when the top-bar is expanded
       &.expanded {
-        height: auto;
+        max-height: $topbar-max-height;
         background: transparent;
+        @include single-transition(max-height, $topbar-transition-speed * 10);
 
         .title-area { background: $topbar-bg; }
 
