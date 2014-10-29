@@ -4,7 +4,7 @@
   Foundation.libs.dropdown = {
     name : 'dropdown',
 
-    version : '{{VERSION}}',
+    version : '5.4.6',
 
     settings : {
       active_class: 'open',
@@ -52,7 +52,7 @@
 
           var settings = target.data(self.attr_name(true) + '-init') || self.settings;
 
-          if(S(e.currentTarget).data(self.data_attr()) && settings.is_hover) {
+          if(S(e.target).data(self.data_attr()) && settings.is_hover) {
             self.closeall.call(self);
           }
 
@@ -119,12 +119,11 @@
           self.S(this).trigger('closed').trigger('closed.fndtn.dropdown', [dropdown]);
         }
       });
-      dropdown.removeClass("f-open-" + this.attr_name(true));
     },
 
     closeall: function() {
       var self = this;
-      $.each(self.S(".f-open-" + this.attr_name(true)), function() {
+      $.each(self.S('[' + this.attr_name() + '-content]'), function() {
         self.close.call(self, self.S(this));
       });
     },
@@ -138,7 +137,6 @@
         dropdown.attr('aria-hidden', 'false');
         target.attr('aria-expanded', 'true');
         dropdown.focus();
-        dropdown.addClass("f-open-" + this.attr_name(true));
     },
 
     data_attr: function () {
@@ -182,7 +180,7 @@
     css : function (dropdown, target) {
       var left_offset = Math.max((target.width() - dropdown.width()) / 2, 8),
           settings = target.data(this.attr_name(true) + '-init') || this.settings;
-
+		
       this.clear_idx();
 
       if (this.small()) {
@@ -218,11 +216,48 @@
       _base : function (t) {
         var o_p = this.offsetParent(),
             o = o_p.offset(),
-            p = t.offset();
+            p = t.offset()
 
         p.top -= o.top;
         p.left -= o.left;
-
+		
+		//set some flags on the p object to pass along
+		p.missRight = false;
+		p.missTop = false;
+		p.missLeft = false;
+		p.leftRightFlag = false;
+		
+		//lets see if the panel will be off the screen
+		//get the actual width of the page and store it
+		var actualBodyWidth = document.body.getElementsByClassName("row")[0].clientWidth;
+		var actualMarginWidth = (window.outerWidth - actualBodyWidth) / 2;
+		var actualBoundary = actualBodyWidth;
+		
+		if (!this.hasClass("mega")) {
+			//miss top
+			if (t.offset().top <= this.outerHeight()) {
+				p.missTop = true;
+				actualBoundary = window.outerWidth - actualMarginWidth;
+				p.leftRightFlag = true;
+			}
+			
+			//miss right
+			if (t.offset().left + this.outerWidth() > t.offset().left + actualMarginWidth && t.offset().left - actualMarginWidth > this.outerWidth()) {
+				if (t.attr("data-options").split(' ').join('').indexOf("align:right") != -1 || p.missTop == true) {
+					p.missRight = true;
+					p.missLeft = false;
+				}
+			}
+			
+			//miss left
+			if (t.offset().left - this.outerWidth() <= 0) {
+				if (t.attr("data-options").split(' ').join('').indexOf("align:left") != -1 || p.missTop == true) {
+					p.missLeft = true;
+					p.missRight = false;
+				}
+			}
+		}
+		
         return p;
       },
       top: function (t, s) {
@@ -230,6 +265,15 @@
             p = self.dirs._base.call(this, t);
 
         this.addClass('drop-top');
+		
+		if (p.missTop == true) {
+			p.top = p.top + t.outerHeight() + this.outerHeight();
+			this.removeClass('drop-top');
+		}
+		
+		if (p.missRight == true) {
+			p.left = p.left - this.outerWidth() + t.outerWidth();
+		}
 
         if (t.outerWidth() < this.outerWidth() || self.small() || this.hasClass(s.mega_menu)) {
           self.adjust_pip(this,t,s,p);
@@ -243,8 +287,13 @@
         return {left: p.left, top: p.top - this.outerHeight()};
       },
       bottom: function (t,s) {
+		
         var self = Foundation.libs.dropdown,
             p = self.dirs._base.call(this, t);
+			
+		if (p.missRight == true) {
+			p.left = p.left - this.outerWidth() + t.outerWidth();
+		}
 
         if (t.outerWidth() < this.outerWidth() || self.small() || this.hasClass(s.mega_menu)) {
           self.adjust_pip(this,t,s,p);
@@ -260,6 +309,12 @@
         var p = Foundation.libs.dropdown.dirs._base.call(this, t);
 
         this.addClass('drop-left');
+		
+		if (p.missLeft == true) {
+			p.left =  p.left + this.outerWidth();
+			p.top = p.top + t.outerHeight();
+			this.removeClass('drop-left');
+		}
 
         return {left: p.left - this.outerWidth(), top: p.top};
       },
@@ -267,7 +322,20 @@
         var p = Foundation.libs.dropdown.dirs._base.call(this, t);
 
         this.addClass('drop-right');
-
+		
+		if (p.missRight == true) {
+			p.left = p.left - this.outerWidth();
+			p.top = p.top + t.outerHeight();
+			this.removeClass('drop-right');
+		} else {
+			p.triggeredRight = true;
+		}
+		
+		var self = Foundation.libs.dropdown;
+		if (t.outerWidth() < this.outerWidth() || self.small() || this.hasClass(s.mega_menu)) {
+		  self.adjust_pip(this,t,s,p);
+		}
+			
         return {left: p.left + t.outerWidth(), top: p.top};
       }
     },
@@ -276,22 +344,39 @@
     adjust_pip : function (dropdown,target,settings,position) {
       var sheet = Foundation.stylesheet,
           pip_offset_base = 8;
-
+		  
       if (dropdown.hasClass(settings.mega_class)) {
         pip_offset_base = position.left + (target.outerWidth()/2) - 8;
       }
       else if (this.small()) {
         pip_offset_base += position.left - 8;
       }
+	  
+	  //default
+	  var sel_before = '.f-dropdown.open:before',
+	  	  sel_after  = '.f-dropdown.open:after',
+	 	  css_before = 'left: ' + pip_offset_base + 'px;',
+	  	  css_after  = 'left: ' + (pip_offset_base - 1) + 'px;';
+	  	  
+	  if (position.missRight == true) {
+		  pip_offset_base = dropdown.outerWidth() - 23;
+		  sel_before = '.f-dropdown.open:before',
+	  	  sel_after  = '.f-dropdown.open:after',
+	 	  css_before = 'left: ' + pip_offset_base + 'px;',
+	  	  css_after  = 'left: ' + (pip_offset_base - 1) + 'px;';
+	  }
+	  
+	  //just a case where right is fired, but its not missing right
+	  if (position.triggeredRight == true) {
+		  sel_before = '.f-dropdown.open:before',
+	  	  sel_after  = '.f-dropdown.open:after',
+	 	  css_before = 'left:-12px;',
+	  	  css_after  = 'left:-14px;';
+	  }
+      
+	  this.rule_idx = sheet.cssRules.length;
 
-      this.rule_idx = sheet.cssRules.length;
-
-      var sel_before = '.f-dropdown.open:before',
-          sel_after  = '.f-dropdown.open:after',
-          css_before = 'left: ' + pip_offset_base + 'px;',
-          css_after  = 'left: ' + (pip_offset_base - 1) + 'px;';
-
-      if (sheet.insertRule) {
+	  if (sheet.insertRule) {
         sheet.insertRule([sel_before, '{', css_before, '}'].join(' '), this.rule_idx);
         sheet.insertRule([sel_after, '{', css_after, '}'].join(' '), this.rule_idx + 1);
       } else {
@@ -304,7 +389,7 @@
     clear_idx : function () {
       var sheet = Foundation.stylesheet;
 
-      if (typeof this.rule_idx !== 'undefined') {
+      if (this.rule_idx) {
         sheet.deleteRule(this.rule_idx);
         sheet.deleteRule(this.rule_idx);
         delete this.rule_idx;
