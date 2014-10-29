@@ -1,0 +1,53 @@
+.full-width {
+  max-width: 100%;
+}
+
+$white: #fff;
+
+// footer CSS
+
+.footer {
+  background-color: #2980b9;
+  padding: 2rem 4rem;
+  text-align: center;
+  color: $white;
+  i {
+    font-size: 100px;
+  }
+}
+
+.footer {
+  h4 {
+  color: $white;
+  font-size: 1em;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-top: 2.5rem;
+  margin-bottom: 10px;
+  }
+  p {
+  font-weight: 300; 
+  font-size: .8em;
+  }
+}
+
+@media only screen and (min-width: 40.063em) {
+.footer {
+  .columns:nth-child(n+2) {
+     border-left: 1px solid scale-color($white, $lightness: -30%);
+     min-height: 280px;
+  }
+ }
+}
+
+.footer-links {
+  list-style-type: none;
+  a {
+    color: $white;
+    font-weight: 300;
+    font-size: .8em;
+  }
+  li {
+    margin-top: .5em;
+  }
+}
