@@ -250,18 +250,14 @@
 			
 			//miss right
 			if (t.offset().left + this.outerWidth() > t.offset().left + actualMarginWidth && t.offset().left - actualMarginWidth > this.outerWidth()) {
-				if (p.missTop == true) {
 					p.missRight = true;
 					p.missLeft = false;
-				}
 			}
 			
 			//miss left
 			if (t.offset().left - this.outerWidth() <= 0) {
-				if (p.missTop == true) {
 					p.missLeft = true;
 					p.missRight = false;
-				}
 			}
 		}
 
