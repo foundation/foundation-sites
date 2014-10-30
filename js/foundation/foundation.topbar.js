@@ -8,6 +8,7 @@
 
     settings : {
       index : 0,
+      start_offset : 0,
       sticky_class : 'sticky',
       custom_back_text: true,
       back_text: 'Back',
@@ -418,7 +419,7 @@
           self = this;
 
       if (self.settings.sticky_topbar && self.is_sticky(this.settings.sticky_topbar,this.settings.sticky_topbar.parent(), this.settings)) {
-        var distance = this.settings.sticky_topbar.data('stickyoffset');
+        var distance = this.settings.sticky_topbar.data('stickyoffset') + this.settings.start_offset;
         if (!self.S(klass).hasClass('expanded')) {
           if ($window.scrollTop() > (distance)) {
             if (!self.S(klass).hasClass('fixed')) {
