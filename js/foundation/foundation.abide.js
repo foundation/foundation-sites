@@ -107,14 +107,14 @@
       for (var i=0; i < validation_count; i++) {
         if (!validations[i] && (submit_event || is_ajax)) {
           if (this.settings.focus_on_invalid) els[i].focus();
-          form.trigger('invalid');
+          form.trigger('invalid').trigger('invalid.fndtn.abide');
           this.S(els[i]).closest('form').attr(this.invalid_attr, '');
           return false;
         }
       }
 
       if (submit_event || is_ajax) {
-        form.trigger('valid');
+        form.trigger('valid').trigger('valid.fndtn.abide');
       }
 
       form.removeAttr(this.invalid_attr);
