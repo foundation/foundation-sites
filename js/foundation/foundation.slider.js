@@ -131,7 +131,7 @@
       if (!$handle[0].hasAttribute('aria-valuemin')) {
         $handle.attr({
           'aria-valuemin': settings.start,
-          'aria-valuemax': settings.end,
+          'aria-valuemax': settings.end
         });
       }
       $handle.attr('aria-valuenow', value);
@@ -204,7 +204,7 @@
 
     set_initial_position : function($ele) {
       var settings = $.data($ele.children('.range-slider-handle')[0], 'settings'),
-          initial = (!!settings.initial ? settings.initial : Math.floor((settings.end-settings.start)*0.5/settings.step)*settings.step+settings.start),
+          initial = ((typeof settings.initial == 'number' && !isNaN(settings.initial)) ? settings.initial : Math.floor((settings.end-settings.start)*0.5/settings.step)*settings.step+settings.start),
           $handle = $ele.children('.range-slider-handle');
       this.set_ui($handle, initial);
     },
