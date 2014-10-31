@@ -32,6 +32,9 @@
           var settings = S(this).data(self.attr_name(true) + '-init') || self.settings;
           if (!settings.is_hover || Modernizr.touch) {
             e.preventDefault();
+            if (S(this).parent('[data-reveal-id]')) {
+              e.stopPropagation();
+            }
             self.toggle($(this));
           }
         })
