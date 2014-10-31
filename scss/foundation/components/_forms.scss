@@ -411,7 +411,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
     span.postfix,label.postfix { @include postfix(); }
 
     /* We use this to get basic styling on all basic form elements */
-    #{text-inputs(all, '.form-control')} {
+    #{text-inputs(all, 'input')} {
       -webkit-appearance: none;
       -webkit-border-radius: 0px;
       @include form-element;
