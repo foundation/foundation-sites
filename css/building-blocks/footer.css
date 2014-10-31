@@ -1,5 +1,5 @@
 .full-width {
-  max-width: 100%;
+  max-width: 1400px;
 }
 
 .footer {
@@ -20,9 +20,10 @@
   margin-top: 2.5rem;
   margin-bottom: 10px;
 }
-.footer p {
+.footer p, .footer a {
   font-weight: 300;
   font-size: .8em;
+  color: #fff;
 }
 
 @media only screen and (min-width: 40.063em) {
@@ -33,11 +34,6 @@
 }
 .footer-links {
   list-style-type: none;
-}
-.footer-links a {
-  color: #fff;
-  font-weight: 300;
-  font-size: .8em;
 }
 .footer-links li {
   margin-top: .5em;
