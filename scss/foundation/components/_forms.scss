@@ -67,6 +67,7 @@ $input-error-message-font-size: rem-calc(12) !default;
 $input-error-message-font-weight: $font-weight-normal !default;
 $input-error-message-font-style: italic !default;
 $input-error-message-font-color: $white !default;
+$input-error-message-bg-color: $alert-color !default;
 $input-error-message-font-color-alt: $oil !default;
 
 // We use this to style the glowing effect of inputs when focused
@@ -304,7 +305,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 //
 // We use this mixin to create error message styles
 // $bg - Default: $alert-color (Found in settings file)
-@mixin form-error-message($bg:$alert-color) {
+@mixin form-error-message($bg:$input-error-message-bg-color) {
   display: block;
   padding: $input-error-message-padding;
   margin-top: $input-error-message-top;
