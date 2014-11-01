@@ -181,6 +181,15 @@ $icon-bar-item-padding: 1.25rem !default;
 
 			i { color: $bar-icon-color-hover; }
 		}
+
+        & > a.active {
+
+			background: $bar-active-color;
+
+			label { color: $bar-font-color-hover; }
+
+			i { color: $bar-icon-color-hover; }
+		}
 	}
 
 }
