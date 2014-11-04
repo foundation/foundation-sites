@@ -17,39 +17,159 @@ describe('clearing:', function() {
       document.body.innerHTML = __html__['spec/clearing/basic.html'];
     });
 
-    // TODO: Disabled - PhantomJS fails during Travis for this but works during watch...needs investigation.
-    xit('displays the first image on click', function() {
-      $(document).foundation();
+    it('displays the first image on click', function() {
+      runs(function() {
+        $(document).foundation();
+        $('#image1').click();
+        jasmine.Clock.tick(500);
+      });
 
-      $('#image1').click();
+      waitsFor(function() {
+        return $('#image1').parents('li').hasClass('visible');
+      }, '#image1 should have class: visible', 500);
 
-      expect($('#image1').hasClass('visible')).toBe(true);
-      expect($('#image2').hasClass('visible')).toBe(false);
-      expect($('#image3').hasClass('visible')).toBe(false);
+      runs(function() {
+        expect($('#image1').parents('li').hasClass('visible')).toBe(true);
+        expect($('#image2').parents('li').hasClass('visible')).toBe(false);
+        expect($('#image3').parents('li').hasClass('visible')).toBe(false);
+      });
     });
 
-  // TODO: Disabled - PhantomJS fails during Travis for this but works during watch...needs investigation.
-      xit('displays the second image on click', function() {
-      $(document).foundation();
+    it('displays the second image on click', function() {
+      runs(function () {
+        $(document).foundation();
+        $('#image2').click();
+        jasmine.Clock.tick(500);
+      });
 
-      $('#image2').click();
+      waitsFor(function() {
+        return $('#image2').parents('li').hasClass('visible');
+      }, '#image2 should have class: visible', 500);
 
-      expect($('#image1').hasClass('visible')).toBe(false);
-      expect($('#image2').hasClass('visible')).toBe(true);
-      expect($('#image3').hasClass('visible')).toBe(false);
+      runs(function() {
+        expect($('#image1').parents('li').hasClass('visible')).toBe(false);
+        expect($('#image2').parents('li').hasClass('visible')).toBe(true);
+        expect($('#image3').parents('li').hasClass('visible')).toBe(false);
+      });
     });
 
-    // TODO: Works in Firefox but nowhere else... disabling test until this is figured out.
-    xit('goes to the next slide on next', function() {
-      $(document).foundation();
+    it('goes to the next slide on next', function() {
+      runs(function () {
+        $(document).foundation();
+        $('#image1').click();
+        jasmine.Clock.tick(500);
+      });
 
-      $('#image1').click();
+      waitsFor(function() {
+        return $('#image1').parents('li').hasClass('visible');
+      }, '#image1 should have class: visible', 500);
 
-      $('.clearing-main-next').click();
+      runs(function () {
+        $('.clearing-main-next').click();
+        jasmine.Clock.tick(500);
+      });
 
-      expect($('#image1').hasClass('visible')).toBe(false);
-      expect($('#image2').hasClass('visible')).toBe(true);
-      expect($('#image3').hasClass('visible')).toBe(false);
+      waitsFor(function() {
+        return $('#image2').parents('li').hasClass('visible');
+      }, '#image2 should have class: visible', 500);
+
+      runs(function() {
+        expect($('#image1').parents('li').hasClass('visible')).toBe(false);
+        expect($('#image2').parents('li').hasClass('visible')).toBe(true);
+        expect($('#image3').parents('li').hasClass('visible')).toBe(false);
+      });
     });
   });
+
+  describe('when below the large breakpoint', when_not('large', function() {
+    describe('when below the medium breakpoint', when_not('medium', function() {
+      describe('with clearing interchange', function() {
+        beforeEach(function() {
+          document.body.innerHTML = __html__['spec/clearing/interchange.html'];
+        });
+
+        it('displays the first image on click', function() {
+          runs(function () {
+            $(document).foundation();
+            $('#image1').click();
+            jasmine.Clock.tick(500);
+          });
+
+          waitsFor(function() {
+            return $('.visible-img img').data('interchange') ? true : false;
+          }, '.visible-img img should have interchange data', 500);
+
+          runs(function() {
+            expect($('.visible-img img').data('interchange')).toBe('[/base/spec/clearing/ccc.gif, (default)], [/base/spec/clearing/777.gif, (medium)], [/base/spec/clearing/222.gif, (large)]');
+            expect($('.visible-img img').attr('src')).toBe('/base/spec/clearing/ccc.gif');
+            expect($('.clearing-preload-next').attr('src')).toBe('/base/spec/clearing/777.gif');
+          });
+        });
+
+        it('displays the second image on click', function() {
+          runs(function () {
+            $(document).foundation();
+            $('#image2').click();
+            jasmine.Clock.tick(500);
+          });
+
+          waitsFor(function() {
+            return $('.visible-img img').data('interchange') ? true : false;
+          }, '.visible-img img should have interchange data', 500);
+
+          runs(function() {
+            expect($('.visible-img img').data('interchange')).toBe('[/base/spec/clearing/777.gif, (default)], [/base/spec/clearing/222.gif, (medium)], [/base/spec/clearing/ccc.gif, (large)]');
+            expect($('.visible-img img').attr('src')).toBe('/base/spec/clearing/777.gif');
+            expect($('.clearing-preload-next').attr('src')).toBe('/base/spec/clearing/222.gif');
+            expect($('.clearing-preload-prev').attr('src')).toBe('/base/spec/clearing/ccc.gif');
+          });
+        });
+      });
+    }));
+  }));
+
+  describe('when above the large breakpoint', when('large', function() {
+    describe('with clearing interchange', function() {
+      beforeEach(function() {
+        document.body.innerHTML = __html__['spec/clearing/interchange.html'];
+      });
+
+      it('displays the first image on click', function() {
+        runs(function () {
+          $(document).foundation();
+          $('#image1').click();
+          jasmine.Clock.tick(500);
+        });
+
+        waitsFor(function() {
+          return $('.visible-img img').data('interchange') ? true : false;
+        }, '.visible-img img should have interchange data', 500);
+
+        runs(function() {
+          expect($('.visible-img img').data('interchange')).toBe('[/base/spec/clearing/ccc.gif, (default)], [/base/spec/clearing/777.gif, (medium)], [/base/spec/clearing/222.gif, (large)]');
+          expect($('.visible-img img').attr('src')).toBe('/base/spec/clearing/222.gif');
+          expect($('.clearing-preload-next').attr('src')).toBe('/base/spec/clearing/ccc.gif');
+        });
+      });
+
+      it('displays the second image on click', function() {
+        runs(function () {
+          $(document).foundation();
+          $('#image2').click();
+          jasmine.Clock.tick(500);
+        });
+
+        waitsFor(function() {
+          return $('.visible-img img').data('interchange') ? true : false;
+        }, '.visible-img img should have interchange data', 500);
+
+        runs(function() {
+          expect($('.visible-img img').data('interchange')).toBe('[/base/spec/clearing/777.gif, (default)], [/base/spec/clearing/222.gif, (medium)], [/base/spec/clearing/ccc.gif, (large)]');
+          expect($('.visible-img img').attr('src')).toBe('/base/spec/clearing/ccc.gif');
+          expect($('.clearing-preload-next').attr('src')).toBe('/base/spec/clearing/777.gif');
+          expect($('.clearing-preload-prev').attr('src')).toBe('/base/spec/clearing/222.gif');
+        });
+      });
+    });
+  }));
 });

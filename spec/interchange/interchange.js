@@ -110,6 +110,7 @@ describe('interchange:', function() {
       $element0.on('replace', callback0);
       $element1.on('replace', callback1);
 
+      Foundation.libs.interchange.update_images();
       Foundation.libs.interchange.update_nodes();
       Foundation.libs.interchange.resize();
 
