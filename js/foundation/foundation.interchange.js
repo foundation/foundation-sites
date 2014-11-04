@@ -15,15 +15,19 @@
       load_attr : 'interchange',
 
       named_queries : {
-        'default' : 'only screen',
-        small : Foundation.media_queries.small,
-        medium : Foundation.media_queries.medium,
-        large : Foundation.media_queries.large,
-        xlarge : Foundation.media_queries.xlarge,
-        xxlarge: Foundation.media_queries.xxlarge,
-        landscape : 'only screen and (orientation: landscape)',
-        portrait : 'only screen and (orientation: portrait)',
-        retina : 'only screen and (-webkit-min-device-pixel-ratio: 2),' +
+        'default'     : 'only screen',
+        'small'       : Foundation.media_queries['small'],
+        'small-only'  : Foundation.media_queries['small-only'],
+        'medium'      : Foundation.media_queries['medium'],
+        'medium-only' : Foundation.media_queries['medium-only'],
+        'large'       : Foundation.media_queries['large'],
+        'large-only'  : Foundation.media_queries['large-only'],
+        'xlarge'      : Foundation.media_queries['xlarge'],
+        'xlarge-only' : Foundation.media_queries['xlarge-only'],
+        'xxlarge'     : Foundation.media_queries['xxlarge'],
+        'landscape'   : 'only screen and (orientation: landscape)',
+        'portrait'    : 'only screen and (orientation: portrait)',
+        'retina'      : 'only screen and (-webkit-min-device-pixel-ratio: 2),' +
           'only screen and (min--moz-device-pixel-ratio: 2),' +
           'only screen and (-o-min-device-pixel-ratio: 2/1),' +
           'only screen and (min-device-pixel-ratio: 2),' +
