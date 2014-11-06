@@ -22,25 +22,25 @@ $button-pip-lrg: rem-calc(11) !default;
 $dropdown-button-padding-tny: $button-pip-tny * 7 !default;
 $dropdown-button-pip-size-tny: $button-pip-tny !default;
 $dropdown-button-pip-opposite-tny: $button-pip-tny * 3 !default;
-$dropdown-button-pip-top-tny: -$button-pip-tny / 2 + rem-calc(1) !default;
+$dropdown-button-pip-top-tny: (-$button-pip-tny / 2) + rem-calc(1) !default;
 
 // We use these to style small dropdown buttons
 $dropdown-button-padding-sml: $button-pip-sml * 7 !default;
 $dropdown-button-pip-size-sml: $button-pip-sml !default;
 $dropdown-button-pip-opposite-sml: $button-pip-sml * 3 !default;
-$dropdown-button-pip-top-sml: -$button-pip-sml / 2 + rem-calc(1) !default;
+$dropdown-button-pip-top-sml: (-$button-pip-sml / 2) + rem-calc(1) !default;
 
 // We use these to style medium dropdown buttons
 $dropdown-button-padding-med: $button-pip-med * 6 + rem-calc(3) !default;
 $dropdown-button-pip-size-med: $button-pip-med - rem-calc(3) !default;
 $dropdown-button-pip-opposite-med: $button-pip-med * 2.5 !default;
-$dropdown-button-pip-top-med: -$button-pip-med / 2 + rem-calc(2) !default;
+$dropdown-button-pip-top-med: (-$button-pip-med / 2) + rem-calc(2) !default;
 
 // We use these to style large dropdown buttons
 $dropdown-button-padding-lrg: $button-pip-lrg * 5 + rem-calc(3) !default;
 $dropdown-button-pip-size-lrg: $button-pip-lrg - rem-calc(6) !default;
 $dropdown-button-pip-opposite-lrg: $button-pip-lrg * 2.5 !default;
-$dropdown-button-pip-top-lrg: -$button-pip-lrg / 2 + rem-calc(3) !default;
+$dropdown-button-pip-top-lrg: (-$button-pip-lrg / 2) + rem-calc(3) !default;
 
 // @mixins
 //

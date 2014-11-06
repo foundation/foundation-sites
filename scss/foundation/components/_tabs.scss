@@ -21,7 +21,7 @@ $tabs-navigation-font-size: rem-calc(16) !default;
 $tabs-navigation-font-family: $body-font-family !default;
 
 $tabs-content-margin-bottom: rem-calc(24) !default;
-$tabs-content-padding: $column-gutter/2 !default;
+$tabs-content-padding: ($column-gutter/2) !default;
 
 $tabs-vertical-navigation-margin-bottom: 1.25rem !default;
 

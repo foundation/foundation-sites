@@ -138,7 +138,7 @@ $base-line-height: 1.5 !default;
       }
       @else {
         top: 50%;
-        margin-top: -$width/2;
+        margin-top: (-$width/2);
       }
       @if $left {
         left: $left;

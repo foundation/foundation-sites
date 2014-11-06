@@ -116,8 +116,8 @@ $last-child-float: $opposite-direction !default;
   // Gutter padding whenever a column isn't set to collapse
   // (use $collapse:null to do nothing)
   @else if $collapse == false {
-    padding-left: $column-gutter / 2;
-    padding-right: $column-gutter / 2;
+    padding-left: ($column-gutter / 2);
+    padding-right: ($column-gutter / 2);
   }
 
   // If a column number is given, calculate width
@@ -172,11 +172,10 @@ $last-child-float: $opposite-direction !default;
     .#{$size}-#{$i} { @include grid-column($columns:$i,$collapse:null,$float:false); }
   }
 
-
-
   @for $i from 0 through $total-columns - 1 {
     .#{$size}-offset-#{$i} { @include grid-column($offset:$i, $collapse:null,$float:false); }
   }
+
   .#{$size}-reset-order {
     margin-#{$default-float}: 0;
     margin-#{$opposite-direction}: 0;
