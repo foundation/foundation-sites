@@ -50,7 +50,7 @@
             target = $this;
           } else {
             dropdown = $this;
-            target = S("[" + self.attr_name() + "='" + dropdown.attr('id') + "']");
+            target = S('[' + self.attr_name() + '="' + dropdown.attr('id') + '"]');
           }
 
           var settings = target.data(self.attr_name(true) + '-init') || self.settings;
@@ -109,11 +109,11 @@
       var self = this;
       dropdown.each(function () {
         var original_target = $('[' + self.attr_name() + '=' + dropdown[0].id + ']') || $('aria-controls=' + dropdown[0].id+ ']');
-        original_target.attr('aria-expanded', "false");
+        original_target.attr('aria-expanded', 'false');
         if (self.S(this).hasClass(self.settings.active_class)) {
           self.S(this)
             .css(Foundation.rtl ? 'right':'left', '-99999px')
-            .attr('aria-hidden', "true")
+            .attr('aria-hidden', 'true')
             .removeClass(self.settings.active_class)
             .prev('[' + self.attr_name() + ']')
             .removeClass(self.settings.active_class)
@@ -122,12 +122,12 @@
           self.S(this).trigger('closed').trigger('closed.fndtn.dropdown', [dropdown]);
         }
       });
-      dropdown.removeClass("f-open-" + this.attr_name(true));
+      dropdown.removeClass('f-open-' + this.attr_name(true));
     },
 
     closeall: function() {
       var self = this;
-      $.each(self.S(".f-open-" + this.attr_name(true)), function() {
+      $.each(self.S('.f-open-' + this.attr_name(true)), function() {
         self.close.call(self, self.S(this));
       });
     },
@@ -141,7 +141,7 @@
         dropdown.attr('aria-hidden', 'false');
         target.attr('aria-expanded', 'true');
         dropdown.focus();
-        dropdown.addClass("f-open-" + this.attr_name(true));
+        dropdown.addClass('f-open-' + this.attr_name(true));
     },
 
     data_attr: function () {
@@ -175,7 +175,7 @@
 
     resize : function () {
       var dropdown = this.S('[' + this.attr_name() + '-content].open'),
-          target = this.S("[" + this.attr_name() + "='" + dropdown.attr('id') + "']");
+          target = this.S('[' + this.attr_name() + '="' + dropdown.attr('id') + '"]');
 
       if (dropdown.length && target.length) {
         this.css(dropdown, target);
@@ -235,15 +235,15 @@
 		//lets see if the panel will be off the screen
 		//get the actual width of the page and store it
 		var actualBodyWidth;
-		if (document.getElementsByClassName("row")[0]) {
-			actualBodyWidth = document.getElementsByClassName("row")[0].clientWidth;
+		if (document.getElementsByClassName('row')[0]) {
+			actualBodyWidth = document.getElementsByClassName('row')[0].clientWidth;
 		} else {
 			actualBodyWidth = window.outerWidth;
 		}
 		var actualMarginWidth = (window.outerWidth - actualBodyWidth) / 2;
 		var actualBoundary = actualBodyWidth;
 		
-		if (!this.hasClass("mega")) {
+		if (!this.hasClass('mega')) {
 			//miss top
 			if (t.offset().top <= this.outerHeight()) {
 				p.missTop = true;
