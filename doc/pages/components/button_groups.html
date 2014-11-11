@@ -24,7 +24,7 @@ You can create a button group using minimal markup.
 
 ***
 
-<h2>Advanced</h2>
+<h2>Styling</h2>
 
 Additional classes can be added to your button group to change its appearance.
 
@@ -32,25 +32,84 @@ Additional classes can be added to your button group to change its appearance.
 
 {{#markdown}}
 ```html
-<ul class="button-group [radius round]">
-  <li><a href="#" class="button [secondary alert success]">Button 1</a></li>
-  <li><a href="#" class="button [secondary alert success]">Button 2</a></li>
-  <li><a href="#" class="button [secondary alert success]">Button 3</a></li>
-  <li><a href="#" class="button [secondary alert success]">Button 4</a></li>
+<!-- Radius Button Group -->
+<ul class="button-group radius">
+  <li><a href="#" class="button">Button 1</a></li>
+  <li><a href="#" class="button">Button 2</a></li>
+  <li><a href="#" class="button">Button 3</a></li>
+  <li><a href="#" class="button">Button 4</a></li>
+</ul>
+<!-- Rounded Button Group -->
+<ul class="button-group round">
+  <li><a href="#" class="button">Button 1</a></li>
+  <li><a href="#" class="button">Button 2</a></li>
+  <li><a href="#" class="button">Button 3</a></li>
+  <li><a href="#" class="button">Button 4</a></li>
 </ul>
 ```
 {{/markdown}}
 
 <h4>Rendered HTML</h4>
 
+<ul class="button-group radius">
+  <li><a href="#" class="button">Button 1</a></li>
+  <li><a href="#" class="button">Button 2</a></li>
+  <li><a href="#" class="button">Button 3</a></li>
+  <li><a href="#" class="button">Button 4</a></li>
+</ul>
 <ul class="button-group round">
-  <li><a href="#" class="button [secondary alert success]">Button 1</a></li>
-  <li><a href="#" class="button [secondary alert success]">Button 2</a></li>
-  <li><a href="#" class="button [secondary alert success]">Button 3</a></li>
-  <li><a href="#" class="button [secondary alert success]">Button 4</a></li>
+  <li><a href="#" class="button">Button 1</a></li>
+  <li><a href="#" class="button">Button 2</a></li>
+  <li><a href="#" class="button">Button 3</a></li>
+  <li><a href="#" class="button">Button 4</a></li>
 </ul>
 
-#### Stacking
+***
+
+<h2>Advanced</h2>
+
+Adding an ```even``` class with the specified number of buttons in that group allows the button group to evenly expand to the edges of its container. With Foundation classes you can use the even class up to ```even-8```.
+
+<h4>HTML</h4>
+
+
+{{#markdown}}
+```html
+<ul class="button-group even-3">
+  <li><a href="#" class="button secondary">Button 1</a></li>
+  <li><a href="#" class="button secondary">Button 2</a></li>
+  <li><a href="#" class="button secondary">Button 3</a></li>
+</ul>
+<ul class="button-group round even-6">
+  <li><a href="#" class="button">Button 1</a></li>
+  <li><a href="#" class="button">Button 2</a></li>
+  <li><a href="#" class="button">Button 3</a></li>
+  <li><a href="#" class="button">Button 4</a></li>
+  <li><a href="#" class="button">Button 5</a></li>
+  <li><a href="#" class="button">Button 6</a></li>
+</ul>
+```
+{{/markdown}}
+
+<h4>Rendered HTML</h4>
+
+<ul class="button-group even-3">
+  <li><a href="#" class="button secondary">Button 1</a></li>
+  <li><a href="#" class="button secondary">Button 2</a></li>
+  <li><a href="#" class="button secondary">Button 3</a></li>
+</ul>
+<ul class="button-group round even-6">
+  <li><a href="#" class="button">Button 1</a></li>
+  <li><a href="#" class="button">Button 2</a></li>
+  <li><a href="#" class="button">Button 3</a></li>
+  <li><a href="#" class="button">Button 4</a></li>
+  <li><a href="#" class="button">Button 5</a></li>
+  <li><a href="#" class="button">Button 6</a></li>
+</ul>
+
+<hr>     
+
+<h2>Stacking</h2>
 
 You can change the orientation of a button group with the `stack` classes.
 
