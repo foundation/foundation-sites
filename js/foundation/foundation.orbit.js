@@ -158,7 +158,7 @@
     self.link_custom = function(e) {
       e.preventDefault();
       var link = $(this).attr('data-orbit-link');
-      if ((typeof link === 'string') && (link = $.trim(link)) != "") {
+      if ((typeof link === 'string') && (link = $.trim(link)) != '') {
         var slide = container.find('[data-orbit-slide='+link+']');
         if (slide.index() != -1) {self._goto(slide.index());}
       }
@@ -166,7 +166,7 @@
 
     self.link_bullet = function(e) {
       var index = $(this).attr('data-orbit-slide');
-      if ((typeof index === 'string') && (index = $.trim(index)) != "") {
+      if ((typeof index === 'string') && (index = $.trim(index)) != '') {
         if(isNaN(parseInt(index)))
         {
           var slide = container.find('[data-orbit-slide='+index+']');
