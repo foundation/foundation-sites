@@ -35,7 +35,7 @@
           var expedition = $(this).closest('[' + self.attr_name() + ']'),
               settings = expedition.data('magellan-expedition-init'),
               hash = this.hash.split('#').join(''),
-              target = $("a[name='"+hash+"']");
+              target = $('a[name="'+hash+'"]');
 
           if (target.length === 0) {
             target = $('#'+hash);

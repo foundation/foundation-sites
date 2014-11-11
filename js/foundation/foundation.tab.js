@@ -190,11 +190,11 @@
       // window (notably in Chrome).
       // Clean up multiple attr instances to done once
       tab.addClass(settings.active_class).triggerHandler('opened');
-      tab_link.attr({"aria-selected": "true",  tabindex: 0});
+      tab_link.attr({'aria-selected': 'true',  tabindex: 0});
       siblings.removeClass(settings.active_class)
-      siblings.find('a').attr({"aria-selected": "false",  tabindex: -1});
-      target.siblings().removeClass(settings.active_class).attr({"aria-hidden": "true",  tabindex: -1});
-      target.addClass(settings.active_class).attr('aria-hidden', 'false').removeAttr("tabindex");
+      siblings.find('a').attr({'aria-selected': 'false',  tabindex: -1});
+      target.siblings().removeClass(settings.active_class).attr({'aria-hidden': 'true',  tabindex: -1});
+      target.addClass(settings.active_class).attr('aria-hidden', 'false').removeAttr('tabindex');
       settings.callback(tab);
       target.triggerHandler('toggled', [tab]);
       tabs.triggerHandler('toggled', [target]);
