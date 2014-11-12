@@ -46,16 +46,9 @@
               if (!e.pageY) {
                 scroll_offset = window.scrollY;
               }
-              self.calculate_position(self.cache.active, (e.pageY || 
-                                                          e.originalEvent.clientY || 
-                                                          e.originalEvent.touches[0].clientY || 
-                                                          e.currentPoint.y) 
-                                                          + scroll_offset);
+              self.calculate_position(self.cache.active, self.get_cursor_position(e, 'y') + scroll_offset);
             } else {
-              self.calculate_position(self.cache.active, e.pageX || 
-                                                         e.originalEvent.clientX || 
-                                                         e.originalEvent.touches[0].clientX || 
-                                                         e.currentPoint.x);
+              self.calculate_position(self.cache.active, self.get_cursor_position(e, 'x'));
             }
           }
         })
@@ -70,6 +63,26 @@
         .on('resize.fndtn.slider', self.throttle(function(e) {
           self.reflow();
         }, 300));
+    },
+
+    get_cursor_position : function(e, xy) {
+      var pageXY = 'page' + xy.toUpperCase(),
+          clientXY = 'client' + xy.toUpperCase(),
+          position;
+
+      if (typeof e[pageXY] !== 'undefined') {
+        position = e[pageXY];
+      }
+      else if (typeof e.originalEvent[clientXY] !== 'undefined') {
+        position = e.originalEvent[clientXY];
+      }
+      else if (e.originalEvent.touches && e.originalEvent.touches[0] && typeof e.originalEvent.touches[0][clientXY] !== 'undefined') {
+        position = e.originalEvent.touches[0][clientXY];
+      }
+      else if(e.currentPoint && typeof e.currentPoint[xy] !== 'undefined') {
+        position = e.currentPoint[xy];
+      }
+      return position;
     },
 
     set_active_slider : function($handle) {
