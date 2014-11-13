@@ -80,7 +80,7 @@ $button-disabled-cursor: $cursor-default-value !default;
     text-decoration: none;
     text-align: $button-font-align;
     -webkit-appearance: none;
-    -webkit-border-radius:0;
+    border-radius:0;
   }
   @if $display { display: $display; }
 }
