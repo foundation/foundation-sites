@@ -19,6 +19,7 @@
     init : function (scope, method, options) {
       Foundation.inherit(this, 'throttle');
 
+      $.extend(true, this.settings, method, options);
       this.bindings(method, options);
     },
 
