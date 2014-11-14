@@ -143,6 +143,7 @@ $switch-active-color: $primary-color !default;
 // $base-style - Apply base styles? Default: true.
 @mixin switch-style(
   $paddle-bg:$switch-paddle-bg,
+  $active-color:$switch-active-color,
   $radius:false,
   $base-style:true) {
 
@@ -158,7 +159,7 @@ $switch-active-color: $primary-color !default;
     }
 
     input:checked + label {
-      background: $switch-active-color;
+      background: $active-color;
     }
   }
 
@@ -201,7 +202,7 @@ $switch-active-color: $primary-color !default;
   $base-style:true) {
     @include switch-base($transition-speed, $transition-ease);
     @include switch-size($height);
-    @include switch-style($paddle-bg, $radius, $base-style);
+    @include switch-style($paddle-bg, $active-color, $radius, $base-style);
 }
 
 @include exports("switch") {
