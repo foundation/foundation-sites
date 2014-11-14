@@ -116,7 +116,7 @@ $orbit-timer-hide-for-small: true !default;
       }
     }
 
- 
+
     .orbit-container {
       overflow: hidden;
       width: 100%;
@@ -205,7 +205,7 @@ $orbit-timer-hide-for-small: true !default;
         & > span {
           display: none;
           position: absolute;
-          top: 0px;
+          top: 0;
           #{$opposite-direction}: 0;
           width: 11px;
           height: 14px;
@@ -213,26 +213,26 @@ $orbit-timer-hide-for-small: true !default;
           border-top: none;
           border-bottom: none;
         }
-      
+
         // Pause button
         &.paused {
           & > span {
             #{$opposite-direction}: -4px;
-            top: 0px;
+            top: 0;
             width: 11px;
             height: 14px;
             border: inset 8px;
             border-left-style: solid;
             border-color: transparent;
             border-left-color: $white;
-            &.dark { 
+            &.dark {
               border-left-color: $oil;
             }
           }
         }
       }
-      
-      
+
+
 
       &:hover .orbit-timer > span { display: block; }
 

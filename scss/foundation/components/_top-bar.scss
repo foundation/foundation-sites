@@ -270,7 +270,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
 			span::after {
               // Shh, don't tell, but box-shadows create the menu icon :)
               // Change the color of the bars when the menu is expanded, using given thickness from hamburger() above
-              box-shadow: 0 0px 0 1px $topbar-menu-icon-color-toggled,
+              box-shadow: 0 0 0 1px $topbar-menu-icon-color-toggled,
                           0 7px 0 1px $topbar-menu-icon-color-toggled,
                           0 14px 0 1px $topbar-menu-icon-color-toggled;
             }

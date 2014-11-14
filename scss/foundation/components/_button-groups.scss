@@ -66,7 +66,7 @@ $button-group-border-width: 1px !default;
     > button, .button {
       border-top: $button-group-border-width solid;
       border-color: rgba(255, 255, 255, 0.5);
-      border-left-width: 0px;
+      border-left-width: 0;
       margin:0;
       display: block;
     }
