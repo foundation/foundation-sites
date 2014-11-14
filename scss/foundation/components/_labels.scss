@@ -39,7 +39,7 @@ $label-font-family: $body-font-family !default;
 // @mixins
 //
 // We use this mixin to add label size styles.
-// $padding - Used to determine label padding. Default: $label-padding || rem-calc(3 10 4) !default
+// $padding - Used to determine label padding. Default: $label-padding || rem-calc(4 8 4) !default
 // $text-size - Used to determine label text-size. Default: $text-size found in settings
 @mixin label-size($padding:$label-padding, $text-size:$label-font-sizing) {
   @if $padding { padding: $padding; }
