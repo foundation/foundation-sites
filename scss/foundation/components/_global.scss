@@ -154,14 +154,14 @@ $base-line-height: 1.5 !default;
     }
 
     box-shadow:
-      0 0px 0 $thickness $color,
+      0 0 0 $thickness $color,
       0 $gap + $thickness 0 $thickness $color,
       0 (2 * $gap + 2*$thickness) 0 $thickness $color;
     width: $width;
   }
   span:hover:after {
     box-shadow:
-      0 0px 0 $thickness $hover-color,
+      0 0 0 $thickness $hover-color,
       0 $gap + $thickness 0 $thickness $hover-color,
       0 (2 * $gap + 2*$thickness) 0 $thickness $hover-color;
   }
