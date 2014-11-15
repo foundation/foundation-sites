@@ -319,8 +319,14 @@
 
           this.settings.tip_settings.tip_location_pattern = this.settings.tip_location_patterns[this.settings.tip_settings.tip_location];
 
-          // scroll if not modal
+          // scroll and hide bg if not modal
           if (!/body/i.test(this.settings.$target.selector)) {
+            var joyridemodalbg = $('.joyride-modal-bg');
+            if (/pop/i.test(this.settings.tipAnimation)) {
+                joyridemodalbg.hide();
+            } else {
+                joyridemodalbg.fadeOut(this.settings.tipAnimationFadeSpeed);
+            }
             this.scroll_to();
           }
 
@@ -618,7 +624,8 @@
       if (!this.settings.$next_tip.data('closed')) {
         var joyridemodalbg =  $('.joyride-modal-bg');
         if (joyridemodalbg.length < 1) {
-          $('body').append(this.settings.template.modal).show();
+          var joyridemodalbg = $(this.settings.template.modal);
+          joyridemodalbg.appendTo('body');
         }
 
         if (/pop/i.test(this.settings.tip_animation)) {
