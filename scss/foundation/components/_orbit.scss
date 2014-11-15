@@ -147,10 +147,10 @@ $orbit-timer-hide-for-small: true !default;
 
           &:first-child {
             @if $text-direction == rtl {
-            margin-right: 0%;
+            margin-right: 0;
             }
             @else {
-            margin-left: 0%;
+            margin-left: 0;
             }
           }
 
@@ -194,7 +194,7 @@ $orbit-timer-hide-for-small: true !default;
             height: 3px;
             background-color: $orbit-timer-bg;
             display: block;
-            width: 0%;
+            width: 0;
             position: relative;
             right: 20px;
             top: 5px;
@@ -345,7 +345,7 @@ $orbit-timer-hide-for-small: true !default;
         .orbit-slides-container {height: auto !important;}
         .orbit-slides-container > * {
           position: relative;
-          margin:0% !important;
+          margin:0 !important;
           opacity:1 !important;
         }
 
