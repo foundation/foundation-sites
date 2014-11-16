@@ -34,7 +34,8 @@
     "karma-script-launcher": "~0.1.0",
     "grunt-karma": "~0.6.2",
     "grunt-rsync": "~0.2.1",
-    "grunt-contrib-jst": "~0.5.1"
+    "grunt-contrib-jst": "~0.5.1",
+    "load-grunt-config": "~0.16.0"
   },
   "repository" : {
     "type" : "git",
