@@ -12,11 +12,11 @@ module.exports = {
   },
   vendor: {
     files: {
-      '<%= paths.dist %>assets/js/paths.vendor/placeholder.js': '<%= paths.vendor %>jquery-placeholder/jquery.placeholder.js',
-      '<%= paths.dist %>assets/js/paths.vendor/fastclick.js': '<%= paths.vendor %>fastclick/lib/fastclick.js',
-      '<%= paths.dist %>assets/js/paths.vendor/jquery.cookie.js': '<%= paths.vendor %>jquery.cookie/jquery.cookie.js',
-      '<%= paths.dist %>assets/js/paths.vendor/jquery.js': '<%= paths.vendor %>jquery/dist/jquery.js',
-      '<%= paths.dist %>assets/js/paths.vendor/modernizr.js': '<%= paths.vendor %>modernizr/modernizr.js'
+      '<%= paths.dist %>assets/js/vendor/placeholder.js': '<%= paths.vendor %>jquery-placeholder/jquery.placeholder.js',
+      '<%= paths.dist %>assets/js/vendor/fastclick.js': '<%= paths.vendor %>fastclick/lib/fastclick.js',
+      '<%= paths.dist %>assets/js/vendor/jquery.cookie.js': '<%= paths.vendor %>jquery.cookie/jquery.cookie.js',
+      '<%= paths.dist %>assets/js/vendor/jquery.js': '<%= paths.vendor %>jquery/dist/jquery.js',
+      '<%= paths.dist %>assets/js/vendor/modernizr.js': '<%= paths.vendor %>modernizr/modernizr.js'
     }
   }
 };

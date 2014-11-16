@@ -12,7 +12,7 @@ build:
   - 'uglify'
   - 'copy'
   - 'jst'
-  - 'replace'
+  - 'string-replace'
 # Travis CI
 travis:
   - 'build'

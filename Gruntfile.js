@@ -12,7 +12,7 @@ module.exports = function(grunt) {
       sassLoad: __dirname + '/scss',
       scss: 'scss/',
       spec: 'spec/',
-      vendor: grunt.file.readJSON('.bowerrc').directory
+      vendor: grunt.file.readJSON('.bowerrc').directory + '/'
     },
     files: {
       get config() {
@@ -31,7 +31,6 @@ module.exports = function(grunt) {
     data: project,
     jitGrunt: {
       staticMappings: {
-        replace: 'grunt-string-replace'
       }
     }
   });
