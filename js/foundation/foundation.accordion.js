@@ -31,6 +31,7 @@
             aunts = $('> .accordion-navigation', accordion),
             siblings = aunts.children('.content'),
             active_content = siblings.filter('.' + settings.active_class);
+
         e.preventDefault();
 
         if (accordion.attr(self.attr_name())) {

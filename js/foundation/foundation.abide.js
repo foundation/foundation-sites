@@ -159,6 +159,7 @@
       return [el, pattern, required];
     },
 
+    // TODO: Break this up into smaller methods, getting hard to read.
     check_validation_and_apply_styles : function (el_patterns) {
       var i = el_patterns.length,
           validations = [],
