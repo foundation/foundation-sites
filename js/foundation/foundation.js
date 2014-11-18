@@ -98,7 +98,6 @@
     var self = this,
         should_bind_events = !S(this).data(this.attr_name(true));
 
-
     if (S(this.scope).is('[' + this.attr_name() +']')) {
       S(this.scope).data(this.attr_name(true) + '-init', $.extend({}, this.settings, (options || method), this.data_options(S(this.scope))));
 
@@ -337,15 +336,15 @@
 
         if (args && args.hasOwnProperty(lib)) {
             if (typeof this.libs[lib].settings !== 'undefined') {
-                $.extend(true, this.libs[lib].settings, args[lib]);
+              $.extend(true, this.libs[lib].settings, args[lib]);
             }
             else if (typeof this.libs[lib].defaults !== 'undefined') {
-                $.extend(true, this.libs[lib].defaults, args[lib]);
+              $.extend(true, this.libs[lib].defaults, args[lib]);
             }
           return this.libs[lib].init.apply(this.libs[lib], [this.scope, args[lib]]);
         }
 
-        args = args instanceof Array ? args : new Array(args);    // PATCH: added this line
+        args = args instanceof Array ? args : new Array(args);
         return this.libs[lib].init.apply(this.libs[lib], args);
       }
 
