@@ -428,7 +428,7 @@ $cursor-text-value: text !default;
 
     // Hide visually and from screen readers
     .hide {
-      display: none !important;
+      display: none;
       visibility: hidden;
     }
 
