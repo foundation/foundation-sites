@@ -427,10 +427,7 @@ $cursor-text-value: text !default;
     .clearfix { @include clearfix; }
 
     // Hide visually and from screen readers
-    .hide {
-      display: none !important;
-      visibility: hidden;
-    }
+    .hide { display: none; }
 
     // Hide visually and from screen readers, but maintain layout
     .invisible { visibility: hidden; }
