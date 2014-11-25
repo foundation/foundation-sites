@@ -29,13 +29,13 @@
             settings = accordion.data(self.attr_name(true) + '-init') || self.settings,
             target = S('#' + this.href.split('#')[1]),
             aunts = $('> .accordion-navigation', accordion),
-            siblings = aunts.children('.content'),
+            siblings = aunts.children('.'+settings.content_class),
             active_content = siblings.filter('.' + settings.active_class);
 
         e.preventDefault();
 
         if (accordion.attr(self.attr_name())) {
-          siblings = siblings.add('[' + groupSelector + '] .accordion-navigation > .content');
+          siblings = siblings.add('[' + groupSelector + '] dd > '+'.'+settings.content_class);
           aunts = aunts.add('[' + groupSelector + '] .accordion-navigation');
         }
 
