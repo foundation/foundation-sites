@@ -210,6 +210,16 @@ $last-child-float: $opposite-direction !default;
   .columns.#{$size}-uncentered.opposite {
     float: $opposite-direction;
   }
+
+	.row.#{$size}-collapse {
+		> .column,
+		> .columns { @include grid-column($collapse:true, $float:false); }
+	}
+
+	.row.#{$size}-uncollapse {
+		> .column,
+		> .columns { @include grid-column; }
+	}
 }
 
 @include exports("grid") {
