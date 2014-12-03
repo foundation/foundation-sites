@@ -26,6 +26,10 @@ $icon-bar-image-height: 1.875rem !default;
 $icon-bar-active-color: $primary-color !default;
 $icon-bar-item-padding: 1.25rem !default;
 
+// We use this to set default opacity and cursor for disabled icons.
+$icon-bar-disabled-opacity: 0.7 !default;
+$icon-bar-disabled-cursor: $cursor-default-value !default;
+
 //
 // @mixins
 //
@@ -161,7 +165,8 @@ $icon-bar-item-padding: 1.25rem !default;
   $bar-icon-color:$icon-bar-icon-color,
   $bar-icon-color-hover:$icon-bar-icon-color-hover,
   $bar-active-color:$icon-bar-active-color,
-  $base-style:true) {
+  $base-style:true,
+  $disabled:false) {
 
 	@if $base-style {
 
@@ -191,6 +196,16 @@ $icon-bar-item-padding: 1.25rem !default;
 			i { color: $bar-icon-color-hover; }
 		}
 	}
+  @if $disabled {
+    .item.disabled {
+      opacity: $icon-bar-disabled-opacity;
+      cursor: $icon-bar-disabled-cursor;
+      >* {
+        opacity: $icon-bar-disabled-opacity;
+        cursor: $icon-bar-disabled-cursor;
+      }
+    }
+  }
 
 }
 
@@ -202,6 +217,7 @@ $icon-bar-item-padding: 1.25rem !default;
 // $bar-icon-color - maybe we could skip explaining them all? Okay this one does change icon color if you use an icon font
 // $bar-active-color - the color of an active / hover state
 // $base-style - Apply base styles? Default: true.
+// $disabled - Allow disabled icons? Default: false.
 
 @mixin icon-bar(
   $bar-bg:$icon-bar-bg,
@@ -216,10 +232,11 @@ $icon-bar-item-padding: 1.25rem !default;
 	$icon-size: $icon-bar-icon-size,
 	$image-width: $icon-bar-image-width,
 	$image-height: $icon-bar-image-height,
-  $base-style:true) {
+  $base-style:true,
+  $disabled:false) {
     @include icon-bar-base();
     @include icon-bar-size($padding, $font-size, $icon-size, $image-width, $image-height);
-    @include icon-bar-style($bar-bg, $bar-font-color, $bar-font-color-hover, $bar-hover-color, $bar-icon-color, $bar-icon-color-hover, $bar-active-color, $base-style);
+    @include icon-bar-style($bar-bg, $bar-font-color, $bar-font-color-hover, $bar-hover-color, $bar-icon-color, $bar-icon-color-hover, $bar-active-color, $base-style, $disabled);
 }
 
 @include exports("icon-bar") {
