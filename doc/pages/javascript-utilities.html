@@ -231,6 +231,31 @@ Media queries are the backbone of most responsive CSS techniques, though they ca
 
 <strong>Match Media</strong> can be used to check if the browser currently matches the media query passed in as a string. To use the function, call <code>matchMedia()</code> with the media query as an argument, and check the <code>matches</code> property (see example below).
 
+<p>In addition to this, you can also check the default Foundation media queries. The available methods are:</p>
+
+{{#markdown}}
+```javascript
+// Small queries
+Foundation.utils.is_small_only();
+Foundation.utils.is_small_up();
+
+// Medium queries
+Foundation.utils.is_medium_only();
+Foundation.utils.is_medium_up();
+
+// Large queries
+Foundation.utils.is_large_only();
+Foundation.utils.is_large_up();
+
+// XLarge queries
+Foundation.utils.is_xlarge_only();
+Foundation.utils.is_xlarge_up();
+
+// XXLarge queries
+Foundation.utils.is_xxlarge_only();
+Foundation.utils.is_xxlarge_up();
+{{/markdown}}
+
 <div class="row">
   <div class="large-6 columns">
     <h4>CSS</h4>
