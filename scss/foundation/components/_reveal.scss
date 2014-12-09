@@ -49,7 +49,8 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
 
 // We use this to create the reveal background overlay styles
 @mixin reveal-bg( $include-z-index-value: true ) {
-  position: fixed;
+  //position: fixed;
+  position: absolute; // allows modal background to extend beyond window position
   top: 0;
   bottom: 0;
   left: 0;
