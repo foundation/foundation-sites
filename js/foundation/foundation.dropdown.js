@@ -77,6 +77,11 @@
         })
         .on('click.fndtn.dropdown', function (e) {
           var parent = S(e.target).closest('[' + self.attr_name() + '-content]');
+          var links  = parent.find('a');
+
+          if (links.length > 0 && parent.attr('aria-autoclose') !== "false") {
+              self.close.call(self, S('[' + self.attr_name() + '-content]'));
+          }
 
           if (S(e.target).closest('[' + self.attr_name() + ']').length > 0) {
             return;
