@@ -139,7 +139,8 @@ $menu-slide: "transform 500ms ease" !default;
 // INNER WRAP
 // Main content area that moves to reveal the off-canvas nav
 @mixin inner-wrap {
-  @include kill-flicker;
+  // @include kill-flicker;
+  // removed for now till chrome fixes backface issue
   @include wrap-base;
   @include clearfix;
   -webkit-transition: -webkit-#{$menu-slide};
