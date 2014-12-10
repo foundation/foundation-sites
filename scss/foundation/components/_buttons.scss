@@ -133,7 +133,7 @@ $button-disabled-cursor: $cursor-default-value !default;
 //
 // We use this mixin to add button color styles
 //
-// $bg - Primary color set in settings file. Default: $button-bg.
+// $bg - Background color. We can set $bg:false for a transparent background. Default: $primary-color.
 // $radius - If true, set to button radius which is $global-radius || explicitly set radius amount in px (ex. $radius:10px). Default: true
 // $disabled - We can set $disabled:true to create a disabled transparent button. Default: false
 // $bg-hover - Button Hover Background Color. Default: $button-bg-hover
