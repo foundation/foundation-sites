@@ -309,7 +309,8 @@
           self.adjust_pip(this,t,s,p);
         }
 
-        if (self.rtl) {
+        if (self.rtl || !($(window).width() > this.outerWidth() + t.offset().left)) {
+          self.adjust_pip(this, t, s, p, true);
           return {left: p.left - this.outerWidth() + t.outerWidth(), top: p.top + t.outerHeight()};
         }
 
@@ -354,7 +355,7 @@
     },
 
     // Insert rule to style psuedo elements
-    adjust_pip : function (dropdown,target,settings,position) {
+    adjust_pip : function (dropdown,target,settings,position,switch_sides) {
       var sheet = Foundation.stylesheet,
           pip_offset_base = 8;
 
@@ -363,6 +364,10 @@
       }
       else if (this.small()) {
         pip_offset_base += position.left - 8;
+      }
+      if(switch_sides) {
+        console.log('a');
+        pip_offset_base = dropdown.innerWidth() - 16;
       }
 
       this.rule_idx = sheet.cssRules.length;
