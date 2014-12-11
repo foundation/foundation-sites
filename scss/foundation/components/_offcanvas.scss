@@ -483,14 +483,14 @@ $menu-slide: "transform 500ms ease" !default;
 @if $include-html-off-canvas-classes {
   .left-submenu {
     @include off-canvas-submenu($position: left);
-    &.move-right {
+    &.move-right, &.offcanvas-overlap-right, &.offcanvas-overlap {
       @include translate3d(0%,0,0);
     }
   }
 
   .right-submenu {
     @include off-canvas-submenu($position: right);
-    &.move-left {
+    &.move-left, &.offcanvas-overlap-left, &.offcanvas-overlap {
       @include translate3d(0%,0,0);
     }
   }
