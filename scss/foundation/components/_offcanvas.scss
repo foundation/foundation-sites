@@ -201,7 +201,8 @@ $menu-slide: "transform 500ms ease" !default;
   height: $tabbar-height;
   top: 0;
   @media #{$medium-up} {
-    &.left, &.right { text-align: left; }
+    &.left { text-align: left; }
+    &.right { text-align: right; }
   }
 
   // still need to make these non-presentational
