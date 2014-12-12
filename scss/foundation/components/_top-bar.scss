@@ -17,7 +17,7 @@ $topbar-bg-color: $oil !default;
 $topbar-bg: $topbar-bg-color !default;
 
 // Height and margin
-$topbar-height: 45px !default;
+$topbar-height: rem-calc(45) !default;
 $topbar-margin-bottom: 0 !default;
 
 // Controlling the styles for the title in the top bar
@@ -41,7 +41,7 @@ $topbar-link-font-family: $body-font-family !default;
 $topbar-link-text-transform: none !default;
 $topbar-link-padding: ($topbar-height / 3) !default;
 $topbar-back-link-size: rem-calc(18) !default;
-$topbar-link-dropdown-padding: 20px !default;
+$topbar-link-dropdown-padding: rem-calc(20) !default;
 $topbar-button-font-size: 0.75rem !default;
 $topbar-button-top: 7px !default;
 
@@ -76,6 +76,9 @@ $topbar-transition-speed: 300ms !default;
 // Using rem-calc for the below breakpoint causes issues with top bar
 $topbar-breakpoint: #{lower-bound($medium-range)} !default; // Change to 9999px for always mobile layout
 $topbar-media-query: $medium-up !default;
+
+// Top-bar input styles
+$topbar-input-height: rem-calc(28) !default;
 
 // Divider Styles
 $topbar-divider-border-bottom: solid 1px scale-color($topbar-bg-color, $lightness: 13%) !default;
@@ -165,7 +168,12 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
       form,
       input { margin-bottom: 0; }
 
-      input { height: 1.8rem; padding-top: .35rem; padding-bottom: .35rem; font-size: $topbar-button-font-size; }
+      input { 
+        height: $topbar-input-height; 
+        padding-top: .35rem; 
+        padding-bottom: .35rem; 
+        font-size: $topbar-button-font-size; 
+      }
 
       .button, button {
         padding-top: .35rem + rem-calc(1);
@@ -236,7 +244,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
             }
             height: 34px;
             line-height: 33px;
-            padding: 0 $topbar-link-padding+25 0 $topbar-link-padding;
+            padding: 0 $topbar-link-padding+rem-calc(25) 0 $topbar-link-padding;
             color: $topbar-menu-link-color;
             position: relative;
 
@@ -267,7 +275,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
 
         .toggle-topbar {
           a { color: $topbar-menu-link-color-toggled;
-			span::after {
+      span::after {
               // Shh, don't tell, but box-shadows create the menu icon :)
               // Change the color of the bars when the menu is expanded, using given thickness from hamburger() above
               box-shadow: 0 0 0 1px $topbar-menu-icon-color-toggled,
@@ -459,7 +467,8 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
         button {
           font-size: rem-calc(14);
           position: relative;
-          top: $topbar-button-top;
+          height: $topbar-input-height;
+          top: (($topbar-height - $topbar-input-height) / 2);
         }
 
         &.expanded { background: $topbar-bg; }

@@ -1368,7 +1368,7 @@ $include-html-global-classes: $include-html-classes;
 // $topbar-bg: $topbar-bg-color;
 
 // Height and margin
-// $topbar-height: 45px;
+// $topbar-height: rem-calc(45);
 // $topbar-margin-bottom: 0;
 
 // Controlling the styles for the title in the top bar
