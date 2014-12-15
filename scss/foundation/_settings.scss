@@ -185,6 +185,7 @@ $include-html-global-classes: $include-html-classes;
 // We use this as cursors values for enabling the option of having custom cursors in the whole site's stylesheet
 // $cursor-crosshair-value: crosshair;
 // $cursor-default-value: default;
+// $cursor-disabled-value: not-allowed;
 // $cursor-pointer-value: pointer;
 // $cursor-help-value: help;
 // $cursor-text-value: text;
@@ -463,7 +464,7 @@ $include-html-global-classes: $include-html-classes;
 
 // We use this to set default opacity and cursor for disabled buttons.
 // $button-disabled-opacity: 0.7;
-// $button-disabled-cursor: $cursor-default-value;
+// $button-disabled-cursor: $cursor-disabled-value;
 
 // 06. Button Groups
 // - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -633,7 +634,7 @@ $include-html-global-classes: $include-html-classes;
 // $input-border-width: 1px;
 // $input-border-radius: $global-radius;
 // $input-disabled-bg: $gainsboro;
-// $input-disabled-cursor: $cursor-default-value;
+// $input-disabled-cursor: $cursor-disabled-value;
 // $input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
 
 // We use these to style the fieldset border and spacing.
@@ -696,6 +697,7 @@ $include-html-global-classes: $include-html-classes;
 // $icon-bar-image-height: 1.875rem;
 // $icon-bar-active-color: $primary-color;
 // $icon-bar-item-padding: 1.25rem;
+// $icon-bar-disabled-cursor: $cursor-disabled-value;
 
 // 13. Inline Lists
 // - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -937,7 +939,7 @@ $include-html-global-classes: $include-html-classes;
 // $pagination-link-active-bg: scale-color($white, $lightness: -10%);
 
 // We use these for disabled anchor links
-// $pagination-link-unavailable-cursor: default;
+// $pagination-link-unavailable-cursor: $cursor-disabled-value;
 // $pagination-link-unavailable-font-color: $aluminum;
 // $pagination-link-unavailable-bg-active: transparent;
 
@@ -1082,6 +1084,7 @@ $include-html-global-classes: $include-html-classes;
 // $range-slider-handle-round: $global-rounded;
 // $range-slider-handle-bg-hover-color: scale-color($primary-color, $lightness: -12%);
 // $range-slider-handle-cursor: pointer;
+// $range-slider-disabled-cursor: $cursor-disabled-value;
 
 // 25. Reveal
 // - - - - - - - - - - - - - - - - - - - - - - - - -

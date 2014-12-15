@@ -95,7 +95,7 @@ $crumb-slash: "/" !default;
     a:focus {
       text-decoration: none;
       color: $crumb-font-color-unavailable;
-      cursor: $cursor-default-value;
+      cursor: $cursor-disabled-value;
     }
   }
 

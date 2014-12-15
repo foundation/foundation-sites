@@ -45,6 +45,7 @@ $range-slider-handle-bg-hover-color: scale-color($primary-color, $lightness: -12
 $range-slider-handle-cursor: pointer !default;
 
 $range-slider-disabled-opacity: 0.7 !default;
+$range-slider-disabled-cursor: $cursor-disabled-value !default;
 
 //
 // @mixins
@@ -74,7 +75,7 @@ $range-slider-disabled-opacity: 0.7 !default;
   @if $radius == true { @include radius($range-slider-radius); }
   @if $round == true { @include radius($range-slider-round); }
   @if $disabled == true {
-    cursor: $cursor-default-value;
+    cursor: $range-slider-disabled-cursor;
     opacity: $range-slider-disabled-opacity;
   }
 }
