@@ -185,6 +185,18 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
 
       &.radius span { @include side-radius($opposite-direction, $global-radius); }
       &.round span { @include side-radius($opposite-direction, 1000px); }
+      &.no-pip{
+        span:before{ border-style:none; }
+        span:after{ border-style:none; }
+        span{
+          i:before{
+            position: absolute;
+            top: -10%;
+            margin-left: -10%;
+            margin-top: 47%;
+          }
+        }
+      }
     }
 
   }
