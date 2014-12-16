@@ -61,6 +61,39 @@ We recommend that you initialize Foundation at the end of the page `<body>`.
 
 ***
 
+### Adding New Content After Page Load
+
+If you add new content after the page has been loaded, you will need to reinitialize the Foundation JavaScript by running the following:
+
+{{#markdown}}
+```javascript
+$(document).foundation(); 
+```
+{{/markdown}}
+
+Reflow will make Foundation check the DOM for any elements and re-apply any listeners to them.
+
+{{#markdown}}
+```javascript
+$(document).foundation('reflow');
+```
+{{/markdown}}
+
+To be efficient, target the actual Foundation plugin you need to `reflow`:
+
+{{#markdown}}
+```javascript
+$(document).foundation('orbit', 'reflow');
+or
+$(document).foundation('tab', 'reflow');
+or
+$(document).foundation('interchange', 'reflow');
+etc...
+```
+{{/markdown}}
+
+***
+
 ### Configuration
 
 Foundation offers you options to customize plugin initialization. By default, calling `$('#scope').foundation();` will initialize all available plugins on the page. Alternatively, you can pass individual plugins along with configuration options and a callback. This way, you can select which plugins you want to customize, and which are fine by default. You can take a look at the call here:

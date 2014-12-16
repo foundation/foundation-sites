@@ -107,6 +107,26 @@ Clearing supports several javascript events that you can listen to:
 
 ***
 
+### Adding New Clearing Content After Page Load
+
+If you add new content after the page has been loaded, you will need to reinitialize the Foundation JavaScript by running the following:
+
+{{#markdown}}
+```javascript
+$(document).foundation(); 
+```
+{{/markdown}}
+
+Reflow will make Foundation check the DOM for any elements and re-apply any listeners to them.
+
+{{#markdown}}
+```javascript
+$(document).foundation('clearing', 'reflow');
+```
+{{/markdown}}
+
+***
+
 ### Sass Errors?
 
 If the default "foundation" import was commented out, then make sure you import this file:

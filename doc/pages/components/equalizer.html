@@ -188,4 +188,23 @@ $(document).on('after-height-change.fndtn.equalizer', function(){
   </div>
 </div>
 
+### Adding New Content After Page Load
+
+If you add new content after the page has been loaded, you will need to reinitialize the Foundation JavaScript by running the following:
+
+{{#markdown}}
+```javascript
+$(document).foundation(); 
+```
+{{/markdown}}
+
+Reflow will make Foundation check the DOM for any elements and re-apply any listeners to them.
+
+{{#markdown}}
+```javascript
+$(document).foundation('equalizer', 'reflow');
+```
+{{/markdown}}
+
+
 

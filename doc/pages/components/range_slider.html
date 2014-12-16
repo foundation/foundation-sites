@@ -377,6 +377,26 @@ If a slider doesn't have a text label, we recommend adding the attribute `aria-l
 
 ***
 
+### Adding New Range Slider After Page Load
+
+If you add new content after the page has been loaded, you will need to reinitialize the Foundation JavaScript by running the following:
+
+{{#markdown}}
+```javascript
+$(document).foundation(); 
+```
+{{/markdown}}
+
+Reflow will make Foundation check the DOM for any elements and re-apply any listeners to them.
+
+{{#markdown}}
+```javascript
+$(document).foundation('slider', 'reflow');
+```
+{{/markdown}}
+
+***
+
 ## Customize with Sass
 
 Sliders can be easily customized using our provided Sass variables.

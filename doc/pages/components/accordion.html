@@ -137,6 +137,26 @@ $(document).foundation({
 
 ***
 
+### Adding New Accordion Content After Page Load
+
+If you add new content after the page has been loaded, you will need to reinitialize the Foundation JavaScript by running the following:
+
+{{#markdown}}
+```javascript
+$(document).foundation(); 
+```
+{{/markdown}}
+
+Reflow will make Foundation check the DOM for any elements and re-apply any listeners to them.
+
+{{#markdown}}
+```javascript
+$(document).foundation('accordion', 'reflow');
+```
+{{/markdown}}
+
+***
+
 ## Semantic Markup With Sass Mixins
 
 You can use the a `accordion-container()`, `accordion-navigation`, and `accordion-navigation` mixins to create your own accordion with semantic markup, like so:

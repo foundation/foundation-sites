@@ -383,6 +383,26 @@ $('.off-canvas-wrap').foundation('offcanvas', 'toggle', 'move-right');
 
 ***
 
+### Adding Off-canvas After Page Load
+
+If you add new content after the page has been loaded, you will need to reinitialize the Foundation JavaScript by running the following:
+
+{{#markdown}}
+```javascript
+$(document).foundation(); 
+```
+{{/markdown}}
+
+Reflow will make Foundation check the DOM for any elements and re-apply any listeners to them.
+
+{{#markdown}}
+```javascript
+$(document).foundation('offcanvas', 'reflow');
+```
+{{/markdown}}
+
+***
+
 ### Sass Errors?
 
 If the default "foundation" import was commented out, then make sure you import this file:
