@@ -9,7 +9,7 @@ $include-html-type-classes: $include-html-classes !default;
 // We use these to control header font styles
 $header-font-family: $body-font-family !default;
 $header-font-weight: $font-weight-normal !default;
-$header-font-style: $font-weight-normal !default;
+$header-font-style: normal !default;
 $header-font-color: $jet !default;
 $header-line-height: 1.4 !default;
 $header-top-margin: .2rem !default;
