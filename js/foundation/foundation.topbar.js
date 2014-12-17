@@ -4,15 +4,15 @@
   Foundation.libs.topbar = {
     name : 'topbar',
 
-    version: '{{VERSION}}',
+    version : '{{VERSION}}',
 
     settings : {
       index : 0,
       sticky_class : 'sticky',
-      custom_back_text: true,
-      back_text: 'Back',
-      mobile_show_parent_link: true,
-      is_hover: true,
+      custom_back_text : true,
+      back_text : 'Back',
+      mobile_show_parent_link : true,
+      is_hover : true,
       scrolltop : true, // jump to top when sticky nav menu toggle is clicked
       sticky_on : 'all'
     },
@@ -60,7 +60,7 @@
 
     },
 
-    is_sticky: function (topbar, topbarContainer, settings) {
+    is_sticky : function (topbar, topbarContainer, settings) {
       var sticky = topbarContainer.hasClass(settings.sticky_class);
 
       if (sticky && settings.sticky_on === 'all') {
@@ -73,7 +73,7 @@
         return (matchMedia(Foundation.media_queries.small).matches && matchMedia(Foundation.media_queries.medium).matches &&
             !matchMedia(Foundation.media_queries.large).matches);
         //return true;
-      } else if(sticky && this.large() && settings.sticky_on === 'large') {
+      } else if (sticky && this.large() && settings.sticky_on === 'large') {
         return (matchMedia(Foundation.media_queries.small).matches && matchMedia(Foundation.media_queries.medium).matches &&
             matchMedia(Foundation.media_queries.large).matches);
         //return true;
@@ -82,7 +82,7 @@
       return false;
     },
 
-    toggle: function (toggleEl) {
+    toggle : function (toggleEl) {
       var self = this,
           topbar;
 
@@ -98,11 +98,11 @@
 
       if (self.breakpoint()) {
         if (!self.rtl) {
-          section.css({left: '0%'});
-          $('>.name', section).css({left: '100%'});
+          section.css({left : '0%'});
+          $('>.name', section).css({left : '100%'});
         } else {
-          section.css({right: '0%'});
-          $('>.name', section).css({right: '100%'});
+          section.css({right : '0%'});
+          $('>.name', section).css({right : '100%'});
         }
 
         self.S('li.moved', section).removeClass('moved');
@@ -126,7 +126,7 @@
             topbar.addClass('fixed');
             self.S('body').removeClass('f-topbar-fixed');
 
-            window.scrollTo(0,0);
+            window.scrollTo(0, 0);
           } else {
             topbar.parent().removeClass('expanded');
           }
@@ -162,11 +162,10 @@
           e.preventDefault();
           self.toggle(this);
         })
-        .on('click.fndtn.topbar','.top-bar .top-bar-section li a[href^="#"],[' + this.attr_name() + '] .top-bar-section li a[href^="#"]',function (e) {
+        .on('click.fndtn.topbar', '.top-bar .top-bar-section li a[href^="#"],[' + this.attr_name() + '] .top-bar-section li a[href^="#"]', function (e) {
             var li = $(this).closest('li');
-            if(self.breakpoint() && !li.hasClass('back') && !li.hasClass('has-dropdown'))
-            {
-            self.toggle();
+            if (self.breakpoint() && !li.hasClass('back') && !li.hasClass('has-dropdown')) {
+              self.toggle();
             }
         })
         .on('click.fndtn.topbar', '[' + this.attr_name() + '] li.has-dropdown', function (e) {
@@ -175,13 +174,18 @@
               topbar = li.closest('[' + self.attr_name() + ']'),
               settings = topbar.data(self.attr_name(true) + '-init');
 
-          if(target.data('revealId')) {
+          if (target.data('revealId')) {
             self.toggle();
             return;
           }
 
-          if (self.breakpoint()) return;
-          if (settings.is_hover && !Modernizr.touch) return;
+          if (self.breakpoint()) {
+            return;
+          }
+
+          if (settings.is_hover && !Modernizr.touch) {
+            return;
+          }
 
           e.stopImmediatePropagation();
 
@@ -218,20 +222,20 @@
             $selectedLi.addClass('moved');
 
             if (!self.rtl) {
-              section.css({left: -(100 * topbar.data('index')) + '%'});
-              section.find('>.name').css({left: 100 * topbar.data('index') + '%'});
+              section.css({left : -(100 * topbar.data('index')) + '%'});
+              section.find('>.name').css({left : 100 * topbar.data('index') + '%'});
             } else {
-              section.css({right: -(100 * topbar.data('index')) + '%'});
-              section.find('>.name').css({right: 100 * topbar.data('index') + '%'});
+              section.css({right : -(100 * topbar.data('index')) + '%'});
+              section.find('>.name').css({right : 100 * topbar.data('index') + '%'});
             }
 
             topbar.css('height', $this.siblings('ul').outerHeight(true) + topbar.data('height'));
           }
         });
 
-      S(window).off('.topbar').on('resize.fndtn.topbar', self.throttle(function() {
+      S(window).off('.topbar').on('resize.fndtn.topbar', self.throttle(function () {
           self.resize.call(self);
-      }, 50)).trigger('resize').trigger('resize.fndtn.topbar').load(function(){
+      }, 50)).trigger('resize').trigger('resize.fndtn.topbar').load(function () {
           // Ensure that the offset is calculated after all of the pages resources have loaded
           S(this).trigger('resize.fndtn.topbar');
       });
@@ -260,11 +264,11 @@
         topbar.data('index', topbar.data('index') - 1);
 
         if (!self.rtl) {
-          section.css({left: -(100 * topbar.data('index')) + '%'});
-          section.find('>.name').css({left: 100 * topbar.data('index') + '%'});
+          section.css({left : -(100 * topbar.data('index')) + '%'});
+          section.find('>.name').css({left : 100 * topbar.data('index') + '%'});
         } else {
-          section.css({right: -(100 * topbar.data('index')) + '%'});
-          section.find('>.name').css({right: 100 * topbar.data('index') + '%'});
+          section.css({right : -(100 * topbar.data('index')) + '%'});
+          section.find('>.name').css({right : 100 * topbar.data('index') + '%'});
         }
 
         if (topbar.data('index') === 0) {
@@ -280,10 +284,10 @@
 
       // Show dropdown menus when their items are focused
       S(this.scope).find('.dropdown a')
-        .focus(function() {
+        .focus(function () {
           $(this).parents('.has-dropdown').addClass('hover');
         })
-        .blur(function() {
+        .blur(function () {
           $(this).parents('.has-dropdown').removeClass('hover');
         });
     },
@@ -305,18 +309,18 @@
             .find('li')
             .removeClass('hover');
 
-            if(doToggle) {
+            if (doToggle) {
               self.toggle(topbar);
             }
         }
 
-        if(self.is_sticky(topbar, stickyContainer, settings)) {
-          if(stickyContainer.hasClass('fixed')) {
+        if (self.is_sticky(topbar, stickyContainer, settings)) {
+          if (stickyContainer.hasClass('fixed')) {
             // Remove the fixed to allow for correct calculation of the offset.
             stickyContainer.removeClass('fixed');
 
             stickyOffset = stickyContainer.offset().top;
-            if(self.S(document.body).hasClass('f-topbar-fixed')) {
+            if (self.S(document.body).hasClass('f-topbar-fixed')) {
               stickyOffset -= topbar.data('height');
             }
 
@@ -361,11 +365,10 @@
             url = $link.attr('href'),
             $titleLi;
 
-
         if (!$dropdown.find('.title.back').length) {
 
           if (settings.mobile_show_parent_link == true && url) {
-            $titleLi = $('<li class="title back js-generated"><h5><a href="javascript:void(0)"></a></h5></li><li class="parent-link show-for-small-only"><a class="parent-link js-generated" href="' + url + '">' + $link.html() +'</a></li>');
+            $titleLi = $('<li class="title back js-generated"><h5><a href="javascript:void(0)"></a></h5></li><li class="parent-link show-for-small-only"><a class="parent-link js-generated" href="' + url + '">' + $link.html() + '</a></li>');
           } else {
             $titleLi = $('<li class="title back js-generated"><h5><a href="javascript:void(0)"></a></h5>');
           }
@@ -390,7 +393,7 @@
     },
 
     assembled : function (topbar) {
-      topbar.data(this.attr_name(true), $.extend({}, topbar.data(this.attr_name(true)), {assembled: true}));
+      topbar.data(this.attr_name(true), $.extend({}, topbar.data(this.attr_name(true)), {assembled : true}));
     },
 
     height : function (ul) {
@@ -407,17 +410,17 @@
     sticky : function () {
       var self = this;
 
-      this.S(window).on('scroll', function() {
+      this.S(window).on('scroll', function () {
         self.update_sticky_positioning();
       });
     },
 
-    update_sticky_positioning: function() {
+    update_sticky_positioning : function () {
       var klass = '.' + this.settings.sticky_class,
           $window = this.S(window),
           self = this;
 
-      if (self.settings.sticky_topbar && self.is_sticky(this.settings.sticky_topbar,this.settings.sticky_topbar.parent(), this.settings)) {
+      if (self.settings.sticky_topbar && self.is_sticky(this.settings.sticky_topbar, this.settings.sticky_topbar.parent(), this.settings)) {
         var distance = this.settings.sticky_topbar.data('stickyoffset');
         if (!self.S(klass).hasClass('expanded')) {
           if ($window.scrollTop() > (distance)) {
