@@ -13,6 +13,7 @@ $include-html-button-classes: $include-html-classes !default;
 $dropdown-button-pip-color: $white !default;
 $dropdown-button-pip-color-alt: $oil !default;
 
+// We use these to set the size of the pip in dropdown buttons
 $button-pip-tny: rem-calc(6) !default;
 $button-pip-sml: rem-calc(7) !default;
 $button-pip-med: rem-calc(9) !default;
