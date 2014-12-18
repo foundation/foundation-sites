@@ -197,11 +197,11 @@ $include-html-global-classes: $include-html-classes;
 // $include-html-type-classes: $include-html-classes;
 
 // We use these to control header font styles
-// // // $header-font-family: $body-font-family;
-// // // $header-font-weight: $font-weight-normal;
-// // // $header-font-style: normal;
-// // // $header-font-color: $jet;
-// // // $header-line-height: 1.4;
+// $header-font-family: $body-font-family;
+// $header-font-weight: $font-weight-normal;
+// $header-font-style: normal;
+// $header-font-color: $jet;
+// $header-line-height: 1.4;
 // $header-top-margin: .2rem;
 // $header-bottom-margin: .5rem;
 // $header-text-rendering: optimizeLegibility;
@@ -223,36 +223,36 @@ $include-html-global-classes: $include-html-classes;
 // $h6-font-reduction: 0;
 
 // These control how subheaders are styled.
-// // $subheader-line-height: 1.4;
-// // $subheader-font-color: scale-color($header-font-color, $lightness: 35%);
-// // $subheader-font-weight: $font-weight-normal;
-// // $subheader-top-margin: .2rem;
-// // $subheader-bottom-margin: .5rem;
+// $subheader-line-height: 1.4;
+// $subheader-font-color: scale-color($header-font-color, $lightness: 35%);
+// $subheader-font-weight: $font-weight-normal;
+// $subheader-top-margin: .2rem;
+// $subheader-bottom-margin: .5rem;
 
 // A general <small> styling
-// // $small-font-size: 60%;
-// // $small-font-color: scale-color($header-font-color, $lightness: 35%);
+// $small-font-size: 60%;
+// $small-font-color: scale-color($header-font-color, $lightness: 35%);
 
 // We use these to style paragraphs
-// // $paragraph-font-family: inherit;
-// // $paragraph-font-weight: $font-weight-normal;
-// // $paragraph-font-size: 1rem;
-// // $paragraph-line-height: 1.6;
-// // $paragraph-margin-bottom: rem-calc(20);
-// // $paragraph-aside-font-size: rem-calc(14);
-// // $paragraph-aside-line-height: 1.35;
-// // $paragraph-aside-font-style: italic;
-// // $paragraph-text-rendering: optimizeLegibility;
+// $paragraph-font-family: inherit;
+// $paragraph-font-weight: $font-weight-normal;
+// $paragraph-font-size: 1rem;
+// $paragraph-line-height: 1.6;
+// $paragraph-margin-bottom: rem-calc(20);
+// $paragraph-aside-font-size: rem-calc(14);
+// $paragraph-aside-line-height: 1.35;
+// $paragraph-aside-font-style: italic;
+// $paragraph-text-rendering: optimizeLegibility;
 
 // We use these to style <code> tags
-// // $code-color: $oil;
-// // $code-font-family: $font-family-monospace;
-// // $code-font-weight: $font-weight-normal;
-// // $code-background-color: scale-color($secondary-color, $lightness: 70%);
-// // $code-border-size: 1px;
-// // $code-border-style: solid;
-// // $code-border-color: scale-color($code-background-color, $lightness: -10%);
-// // $code-padding: rem-calc(2) rem-calc(5) rem-calc(1);
+// $code-color: $oil;
+// $code-font-family: $font-family-monospace;
+// $code-font-weight: $font-weight-normal;
+// $code-background-color: scale-color($secondary-color, $lightness: 70%);
+// $code-border-size: 1px;
+// $code-border-style: solid;
+// $code-border-color: scale-color($code-background-color, $lightness: -10%);
+// $code-padding: rem-calc(2) rem-calc(5) rem-calc(1);
 
 // We use these to style anchors
 // $anchor-text-decoration: none;
