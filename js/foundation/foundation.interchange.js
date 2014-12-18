@@ -276,7 +276,7 @@
 
       if (i > 0) {
         while (i--) {
-          var split = raw_arr[i].split(/\((.*?)(\))$/);
+          var split = raw_arr[i].split(/\(([^\)]*?)(\))$/);
 
           if (split.length > 1) {
             var params = this.parse_scenario(split);
