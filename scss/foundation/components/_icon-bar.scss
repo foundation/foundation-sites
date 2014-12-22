@@ -326,5 +326,19 @@ $icon-bar-disabled-cursor: $cursor-disabled-value !default;
 				}
 			}
 		}
+		&.seven-up {
+            		.item { width: 14.28%; }
+            		&.vertical .item, &.small-vertical .item { width: auto; }
+            		&.medium-vertical .item {
+                		@media #{$medium-up} {
+                    			width: auto;
+                		}
+            		}
+            		&.large-vertical .item {
+                		@media #{$large-up} {
+                	   		width: auto;
+                		}
+            		}
+        	}
 	}
 }
