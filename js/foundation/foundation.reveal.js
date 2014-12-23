@@ -14,6 +14,7 @@
       close_on_background_click: true,
       close_on_esc: true,
       dismiss_modal_class: 'close-reveal-modal',
+      multiple_opened: false,
       bg_class: 'reveal-modal-bg',
       bg_root_element: 'body',
       root_element: 'body',
@@ -184,7 +185,11 @@
 
         if (typeof ajax_settings === 'undefined' || !ajax_settings.url) {
           if (open_modal.length > 0) {
-            this.hide(open_modal, settings.css.close);
+            if (settings.multiple_opened) {
+              this.to_back(open_modal);
+            } else {
+              this.hide(open_modal, settings.css.close);
+            }
           }
 
           this.show(modal, settings.css.open);
@@ -203,7 +208,11 @@
               self.S(modal).children().foundation();
 
               if (open_modal.length > 0) {
-                self.hide(open_modal, settings.css.close);
+                if (settings.multiple_opened) {
+                  this.to_back(open_modal);
+                } else {
+                  this.hide(open_modal, settings.css.close);
+                }
               }
               self.show(modal, settings.css.open);
             }
@@ -224,8 +233,17 @@
         this.locked = true;
         this.key_up_off(modal);   // PATCH #3: turning on key up capture only when a reveal window is open
         modal.trigger('close').trigger('close.fndtn.reveal');
-        this.toggle_bg(modal, false);
-        this.hide(open_modals, settings.css.close, settings);
+        
+        if ((settings.multiple_opened && open_modals.length === 1) || !settings.multiple_opened || modal.length > 1) {
+          this.toggle_bg(modal, false);
+        }
+        
+        if (settings.multiple_opened) {
+          this.hide(modal, settings.css.close, settings);
+          this.to_front($($.makeArray(open_modals).reverse()[1]));
+        } else {
+          this.hide(open_modals, settings.css.close, settings);
+        }
       }
     },
 
@@ -325,6 +343,14 @@
       this.locked = false;
 
       return el.show();
+    },
+    
+    to_back : function(el) {
+      el.addClass('toback');
+    },
+    
+    to_front : function(el) {
+      el.removeClass('toback');
     },
 
     hide : function (el, css) {
