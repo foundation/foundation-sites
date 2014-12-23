@@ -236,6 +236,7 @@
         
         if ((settings.multiple_opened && open_modals.length === 1) || !settings.multiple_opened || modal.length > 1) {
           this.toggle_bg(modal, false);
+          this.to_front(modal);
         }
         
         if (settings.multiple_opened) {
