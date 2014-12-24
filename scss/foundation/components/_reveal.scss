@@ -168,11 +168,6 @@ $z-index-base: 1005;
     // Reveal Modals
     .reveal-modal-bg { @include reveal-bg; }
 
-    // Modals pushed to back
-    .toback {
-      z-index: $z-index-base - 2;
-    }
-
     .#{$reveal-modal-class} {
       @include reveal-modal-base;
       @include reveal-modal-style(
@@ -202,6 +197,11 @@ $z-index-base: 1005;
         min-height:100vh;
         max-width: none !important;
         margin-left: 0 !important;
+      }
+      
+      // Modals pushed to back
+      &.toback {
+        z-index: $z-index-base - 2;
       }
 
       .#{$close-reveal-modal-class} { @include reveal-close; }
