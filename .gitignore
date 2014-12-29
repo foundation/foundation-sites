@@ -6,6 +6,8 @@
 *.ruby-version
 *.scssc
 *.sublime-*
+*.swp
+*.swo
 .bundle
 .config
 .grunt
