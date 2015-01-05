@@ -198,26 +198,5 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
 
       .#{$close-reveal-modal-class} { @include reveal-close; }
     }
-
-    dialog {
-      @extend .#{$reveal-modal-class};
-      display: none;
-
-      &::backdrop, & + .backdrop {
-        @include reveal-bg(false);
-      }
-
-      &[open]{
-        display: block;
-      }
-    }
-
-    // Reveal Print Styles: It should be invisible, adds no value being printed.
-    @media print {
-      dialog, .#{$reveal-modal-class} { 
-        display: none;
-        background: $white !important;
-      }
-    }
   }
 }
