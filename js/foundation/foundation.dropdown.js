@@ -91,7 +91,7 @@
               self.close.call(self, S('[' + self.attr_name() + '-content]'));
           }
 
-          if (!$.contains(document.documentElement, e.target)) {
+          if (e.target !== document && !$.contains(document.documentElement, e.target)) {
             return;
           }
 
