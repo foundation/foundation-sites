@@ -93,6 +93,7 @@
         expedition.data(self.data_attr('magellan-top-offset'), top_offset);
         expedition.attr('style', styles);
       });
+      self.check_for_arrivals();
     },
 
     update_expedition_positions : function() {
