@@ -12,6 +12,9 @@ $include-xl-html-grid-classes: false !default;
 
 $row-width: rem-calc(1000) !default;
 $total-columns: 12 !default;
+$total-small-columns: 4 !default;
+$total-medium-columns: 8 !default;
+$total-large-columns: 12 !default;
 
 $last-child-float: $opposite-direction !default;
 
@@ -153,7 +156,7 @@ $last-child-float: $opposite-direction !default;
 // Create presentational classes for grid
 //
 // $size - Name of class to use, i.e. "large" will generate .large-1, .large-2, etc.
-@mixin grid-html-classes($size) {
+@mixin grid-html-classes($size, $total-columns) {
 
   @for $i from 0 through $total-columns - 1 {
     .#{$size}-push-#{$i} {
@@ -251,11 +254,11 @@ $last-child-float: $opposite-direction !default;
     [class*="column"] + [class*="column"].end { float: $default-float; }
 
     @media #{$small-up} {
-      @include grid-html-classes($size:small);
+      @include grid-html-classes($size:small, $total-columns: $total-small-columns);
     }
 
     @media #{$medium-up} {
-      @include grid-html-classes($size:medium);
+      @include grid-html-classes($size:medium, $total-columns: $total-medium-columns);
       // Old push and pull classes
       @for $i from 0 through $total-columns - 1 {
         .push-#{$i} {
@@ -267,7 +270,7 @@ $last-child-float: $opposite-direction !default;
       }
     }
     @media #{$large-up} {
-      @include grid-html-classes($size:large);
+      @include grid-html-classes($size:large, $total-columns: $total-large-columns);
       @for $i from 0 through $total-columns - 1 {
         .push-#{$i} {
           @include grid-column($push:$i, $collapse:null, $float:false);
