@@ -48,7 +48,7 @@
         .off('.reveal')
         .on('click.fndtn.reveal', '[' + this.add_namespace('data-reveal-id') + ']:not([disabled])', function (e) {
           e.preventDefault();
-        
+
           if (!self.locked) {
             var element = S(this),
                 ajax = element.data(self.data_attr('reveal-ajax'));
@@ -67,9 +67,7 @@
 
       S(document)
         .on('click.fndtn.reveal', this.close_targets(), function (e) {
-
           e.preventDefault();
-
           if (!self.locked) {
             var settings = S('[' + self.attr_name() + '].open').data(self.attr_name(true) + '-init') || self.settings,
                 bg_clicked = S(e.target)[0] === S('.' + settings.bg_class)[0];
@@ -169,7 +167,11 @@
         }
 
         this.key_up_on(modal);    // PATCH #3: turning on key up capture only when a reveal window is open
-        modal.trigger('open').trigger('open.fndtn.reveal');
+        // modal.on('open.fndtn.reveal').trigger('open.fndtn.reveal', function(e) {
+        //   console.log(e);
+        // });
+
+        modal.on('open.fndtn.reveal').trigger('open.fndtn.reveal');
 
         if (open_modal.length < 1) {
           this.toggle_bg(modal, true);
