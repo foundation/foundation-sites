@@ -167,9 +167,6 @@
         }
 
         this.key_up_on(modal);    // PATCH #3: turning on key up capture only when a reveal window is open
-        // modal.on('open.fndtn.reveal').trigger('open.fndtn.reveal', function(e) {
-        //   console.log(e);
-        // });
 
         modal.on('open.fndtn.reveal').trigger('open.fndtn.reveal');
 
