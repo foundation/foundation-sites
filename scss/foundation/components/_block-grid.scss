@@ -30,6 +30,7 @@ $block-grid-media-queries: true !default;
 //
 // $per-row - # of items to display per row. Default: false.
 // $spacing - # of ems to use as padding on each block item. Default: rem-calc(20).
+// $include-spacing - Adds padding to our list item. Default: true.
 // $base-style - Apply a base style to block grid. Default: true.
 @mixin block-grid(
   $per-row:false,
