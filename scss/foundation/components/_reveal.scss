@@ -169,13 +169,12 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
       @include reveal-modal-base;
       @include reveal-modal-style(
         $bg:$reveal-modal-bg,
-        $padding:$reveal-modal-padding,
+        $padding:$reveal-modal-padding * 1.5,
         $border:true,
         $box-shadow:true,
         $radius:false,
         $top-offset:$reveal-position-top
       );
-      @include reveal-modal-style($padding:$reveal-modal-padding * 1.5);
 
       &.radius { @include reveal-modal-style($radius:true); }
       &.round  { @include reveal-modal-style($radius:$reveal-round); }
