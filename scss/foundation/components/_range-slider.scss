@@ -52,10 +52,7 @@ $range-slider-disabled-cursor: $cursor-disabled-value !default;
 //
 
 @mixin range-slider-bar-base($vertical: false) {
-  display: block;
   position: relative;
-  width: $range-slider-bar-width;
-  height: $range-slider-bar-height;
   border: $range-slider-bar-border-width $range-slider-bar-border-style $range-slider-bar-border-color;
   margin: rem-calc(20 0);
   -ms-touch-action: none;
@@ -64,6 +61,10 @@ $range-slider-disabled-cursor: $cursor-disabled-value !default;
     display: inline-block;
     width: $range-slider-vertical-bar-width;
     height: $range-slider-vertical-bar-height;
+  } @else {
+    display: block;
+    width: $range-slider-bar-width;
+    height: $range-slider-bar-height;
   }
 }
 @mixin range-slider-bar-style(
