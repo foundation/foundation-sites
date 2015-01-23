@@ -43,6 +43,9 @@ $reveal-border-color: $steel !default;
 $reveal-modal-class: "reveal-modal" !default;
 $close-reveal-modal-class: "close-reveal-modal" !default;
 
+// Set base z-index
+$z-index-base: 1005;
+
 //
 // @mixins
 //
@@ -57,7 +60,7 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
   right: 0;
   background: $reveal-overlay-bg-old; // Autoprefixer should be used to avoid such variables needed when Foundation for Sites can do so in the near future.
   background: $reveal-overlay-bg;
-  z-index: if( $include-z-index-value, 1004, auto );
+  z-index: if( $include-z-index-value, $z-index-base - 1, auto );
   display: none;
   #{$default-float}: 0;
 }
@@ -72,7 +75,7 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
     visibility: hidden;
     display: none;
     position: absolute;
-    z-index: 1005;
+    z-index: $z-index-base;
     width: 100vw;
     top:0;
     border-radius: $border-radius;
@@ -193,6 +196,11 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
         min-height:100vh;
         max-width: none !important;
         margin-left: 0 !important;
+      }
+      
+      // Modals pushed to back
+      &.toback {
+        z-index: $z-index-base - 2;
       }
 
       .#{$close-reveal-modal-class} { @include reveal-close; }
