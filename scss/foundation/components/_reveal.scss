@@ -76,7 +76,7 @@ $z-index-base: 1005;
     display: none;
     position: absolute;
     z-index: $z-index-base;
-    width: 100vw;
+    width: 100%;
     top:0;
     border-radius: $border-radius;
     #{$default-float}: 0;
@@ -188,7 +188,7 @@ $z-index-base: 1005;
       &.large { @include reveal-modal-base(false, 70%); }
       &.xlarge { @include reveal-modal-base(false, 95%); }
       &.full {
-        @include reveal-modal-base(false, 100vw);
+        @include reveal-modal-base(false, 100%);
         top:0;
         left:0;
         height:100%;
