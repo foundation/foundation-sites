@@ -188,10 +188,14 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
       &.no-pip{
         span:before{ border-style:none; }
         span:after{ border-style:none; }
-        span{padding-top:$split-button-pip-top-med;}
-        &.tiny{ span{ padding-top:$split-button-pip-top-tny; } }
-        &.small{ span{ padding-top:$split-button-pip-top-sml; } }
-        &.large{ span{ padding-top:$split-button-pip-top-lrg; } }
+        span>i{
+          top: 50%;
+          display: block;
+          position: absolute;
+          left: 50%;
+          margin-left: -0.28889em;
+          margin-top: -0.48889em;
+        }
       }
     }
 
