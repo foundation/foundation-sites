@@ -100,24 +100,20 @@
 
   var bindings = function (method, options) {
     var self = this,
-        should_bind_events = !S(this).data(this.attr_name(true));
+        bind = function(){
+          var $this = S(this),
+              should_bind_events = !$this.data(self.attr_name(true) + '-init');
+          $this.data(self.attr_name(true) + '-init', $.extend({}, self.settings, (options || method), self.data_options($this)));
+
+          if (should_bind_events) {
+            self.events(this);
+          }
+        };
 
     if (S(this.scope).is('[' + this.attr_name() +']')) {
-      S(this.scope).data(this.attr_name(true) + '-init', $.extend({}, this.settings, (options || method), this.data_options(S(this.scope))));
-
-      if (should_bind_events) {
-        this.events(this.scope);
-      }
-
+      bind.call(this.scope);
     } else {
-      S('[' + this.attr_name() +']', this.scope).each(function () {
-        var should_bind_events = !S(this).data(self.attr_name(true) + '-init');
-        S(this).data(self.attr_name(true) + '-init', $.extend({}, self.settings, (options || method), self.data_options(S(this))));
-
-        if (should_bind_events) {
-          self.events(this);
-        }
-      });
+      S('[' + this.attr_name() +']', this.scope).each(bind);
     }
     // # Patch to fix #5043 to move this *after* the if/else clause in order for Backbone and similar frameworks to have improved control over event binding and data-options updating.
     if (typeof method === 'string') {

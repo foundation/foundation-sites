@@ -126,15 +126,17 @@
 
           if (passed) {
             this.settings.directives[passed
-              .scenario[1]].call(this, passed.el, passed.scenario[0], function () {
+              .scenario[1]].call(this, passed.el, passed.scenario[0], (function (passed) {
                 if (arguments[0] instanceof Array) { 
                   var args = arguments[0];
                 } else { 
                   var args = Array.prototype.slice.call(arguments, 0);
                 }
 
-                passed.el.trigger(passed.scenario[1], args);
-              });
+                return function() {
+                  passed.el.trigger(passed.scenario[1], args);
+                }
+              }(passed)));
           }
         }
       }

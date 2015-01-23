@@ -21,6 +21,11 @@
           S = this.S;
 
       this.bindings(method, options);
+
+      // store the initial href, which is used to allow correct behaviour of the
+      // browser back button when deep linking is turned on.
+      self.entry_location = window.location.href;
+
       this.handle_location_hash_change();
 
       // Store the default active tabs which will be referenced when the
@@ -29,10 +34,6 @@
       S('[' + this.attr_name() + '] > .active > a', this.scope).each(function () {
         self.default_tab_hashes.push(this.hash);
       });
-
-      // store the initial href, which is used to allow correct behaviour of the
-      // browser back button when deep linking is turned on.
-      self.entry_location = window.location.href;
     },
 
     events : function () {
@@ -167,7 +168,7 @@
             // This function allows correct behaviour of the browser's back button when deep linking is enabled. Without it
             // the user would get continually redirected to the default hash.
             var is_entry_location = window.location.href === self.entry_location,
-                default_hash = settings.scroll_to_content ? self.default_tab_hashes[0] : 'fndtn-' + self.default_tab_hashes[0].replace('#', '')
+                default_hash = settings.scroll_to_content ? self.default_tab_hashes[0] : is_entry_location ? window.location.hash :'fndtn-' + self.default_tab_hashes[0].replace('#', '')
 
             if (!(is_entry_location && hash === default_hash)) {
               window.location.hash = hash;

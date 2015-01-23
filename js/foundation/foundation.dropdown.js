@@ -193,8 +193,8 @@
     },
 
     resize : function () {
-      var dropdown = this.S('[' + this.attr_name() + '-content].open'),
-          target = this.S('[' + this.attr_name() + '="' + dropdown.attr('id') + '"]');
+      var dropdown = this.S('[' + this.attr_name() + '-content].open');
+      var target = $(dropdown.data("target"));
 
       if (dropdown.length && target.length) {
         this.css(dropdown, target);
