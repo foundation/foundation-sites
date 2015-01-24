@@ -61,25 +61,24 @@
     },
 
     is_sticky: function (topbar, topbarContainer, settings) {
-      var sticky = topbarContainer.hasClass(settings.sticky_class);
-
-      if (sticky && settings.sticky_on === 'all') {
-        return true;
-      } else if (sticky && this.small() && settings.sticky_on === 'small') {
-        return (matchMedia(Foundation.media_queries.small).matches && !matchMedia(Foundation.media_queries.medium).matches &&
-            !matchMedia(Foundation.media_queries.large).matches);
-        //return true;
-      } else if (sticky && this.medium() && settings.sticky_on === 'medium') {
-        return (matchMedia(Foundation.media_queries.small).matches && matchMedia(Foundation.media_queries.medium).matches &&
-            !matchMedia(Foundation.media_queries.large).matches);
-        //return true;
-      } else if(sticky && this.large() && settings.sticky_on === 'large') {
-        return (matchMedia(Foundation.media_queries.small).matches && matchMedia(Foundation.media_queries.medium).matches &&
-            matchMedia(Foundation.media_queries.large).matches);
-        //return true;
-      }
-
-      return false;
+      var sticky     = topbarContainer.hasClass(settings.sticky_class);
+      var smallMatch = matchMedia(Foundation.media_queries.small).matches;
+      var medMatch   = matchMedia(Foundation.media_queries.medium).matches;
+      var lrgMatch   = matchMedia(Foundation.media_queries.large).matches;
+      
+       if (sticky && settings.sticky_on === 'all') {
+          return true;
+       }
+       if (sticky && this.small() && settings.sticky_on.indexOf('small') !== -1) {
+           if (smallMatch && !medMatch && !lrgMatch) { return true; }
+       }
+       if (sticky && this.medium() && settings.sticky_on.indexOf('medium') !== -1) {
+           if (smallMatch && medMatch && !lrgMatch) { return true; }
+       }
+       if (sticky && this.large() && settings.sticky_on.indexOf('large') !== -1) {
+           if (smallMatch && medMatch && lrgMatch) { return true; }
+       }
+       return false;
     },
 
     toggle: function (toggleEl) {
