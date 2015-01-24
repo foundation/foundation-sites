@@ -7,14 +7,14 @@
     version : '{{VERSION}}',
 
     settings : {
-      active_class: 'active',
+      active_class : 'active',
       callback : function () {},
-      deep_linking: false,
-      scroll_to_content: true,
-      is_hover: false
+      deep_linking : false,
+      scroll_to_content : true,
+      is_hover : false
     },
 
-    default_tab_hashes: [],
+    default_tab_hashes : [],
 
     init : function (scope, method, options) {
       var self = this,
@@ -41,7 +41,7 @@
           S = this.S;
 
       var usual_tab_behavior =  function (e) {
-          var settings = S(this).closest('[' + self.attr_name() +']').data(self.attr_name(true) + '-init');
+          var settings = S(this).closest('[' + self.attr_name() + ']').data(self.attr_name(true) + '-init');
           if (!settings.is_hover || Modernizr.touch) {
             e.preventDefault();
             e.stopPropagation();
@@ -56,8 +56,10 @@
         .on('click.fndtn.tab', '[' + this.attr_name() + '] > * > a', usual_tab_behavior )
         // Hover event: tab title
         .on('mouseenter.fndtn.tab', '[' + this.attr_name() + '] > * > a', function (e) {
-          var settings = S(this).closest('[' + self.attr_name() +']').data(self.attr_name(true) + '-init');
-          if (settings.is_hover) self.toggle_active_tab(S(this).parent());
+          var settings = S(this).closest('[' + self.attr_name() + ']').data(self.attr_name(true) + '-init');
+          if (settings.is_hover) {
+            self.toggle_active_tab(S(this).parent());
+          }
         });
 
       // Location hash change event
@@ -108,7 +110,7 @@
        });
      },
 
-    toggle_active_tab: function (tab, location_hash) {
+    toggle_active_tab : function (tab, location_hash) {
       var self = this,
           S = self.S,
           tabs = tab.closest('[' + this.attr_name() + ']'),
@@ -118,7 +120,7 @@
           target = S(target_hash),
           siblings = tab.siblings(),
           settings = tabs.data(this.attr_name(true) + '-init'),
-          interpret_keyup_action = function(e) {
+          interpret_keyup_action = function (e) {
             // Light modification of Heydon Pickering's Practical ARIA Examples: http://heydonworks.com/practical_aria_examples/js/a11y.js
 
             // define current, previous and next (possible) tabs
@@ -208,10 +210,10 @@
       // window (notably in Chrome).
       // Clean up multiple attr instances to done once
       tab.addClass(settings.active_class).triggerHandler('opened');
-      tab_link.attr({'aria-selected': 'true',  tabindex: 0});
+      tab_link.attr({'aria-selected' : 'true',  tabindex : 0});
       siblings.removeClass(settings.active_class)
-      siblings.find('a').attr({'aria-selected': 'false',  tabindex: -1});
-      target.siblings().removeClass(settings.active_class).attr({'aria-hidden': 'true',  tabindex: -1});
+      siblings.find('a').attr({'aria-selected' : 'false',  tabindex : -1});
+      target.siblings().removeClass(settings.active_class).attr({'aria-hidden' : 'true',  tabindex : -1});
       target.addClass(settings.active_class).attr('aria-hidden', 'false').removeAttr('tabindex');
       settings.callback(tab);
       target.triggerHandler('toggled', [tab]);
@@ -220,7 +222,7 @@
       tab_link.off('keydown').on('keydown', interpret_keyup_action );
     },
 
-    data_attr: function (str) {
+    data_attr : function (str) {
       if (this.namespace.length > 0) {
         return this.namespace + '-' + str;
       }

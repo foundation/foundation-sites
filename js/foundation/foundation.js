@@ -14,7 +14,7 @@
     var head = $('head');
 
     while (i--) {
-      if(head.has('.' + class_array[i]).length === 0) {
+      if (head.has('.' + class_array[i]).length === 0) {
         head.append('<meta class="' + class_array[i] + '" />');
       }
     }
@@ -34,7 +34,7 @@
 
   // Enable FastClick if present
 
-  $(function() {
+  $(function () {
     if (typeof FastClick !== 'undefined') {
       // Don't attach to body if undefined
       if (typeof document.body !== 'undefined') {
@@ -52,7 +52,9 @@
         var cont;
         if (context.jquery) {
           cont = context[0];
-          if (!cont) return context;
+          if (!cont) {
+            return context;
+          }
         } else {
           cont = context;
         }
@@ -69,8 +71,12 @@
 
   var attr_name = function (init) {
     var arr = [];
-    if (!init) arr.push('data');
-    if (this.namespace.length > 0) arr.push(this.namespace);
+    if (!init) {
+      arr.push('data');
+    }
+    if (this.namespace.length > 0) {
+      arr.push(this.namespace);
+    }
     arr.push(this.name);
 
     return arr.join('-');
@@ -155,7 +161,7 @@
     https://github.com/paulirish/matchMedia.js
   */
 
-  window.matchMedia = window.matchMedia || (function( doc ) {
+  window.matchMedia = window.matchMedia || (function ( doc ) {
 
     'use strict';
 
@@ -180,8 +186,8 @@
       docElem.removeChild( fakeBody );
 
       return {
-        matches: bool,
-        media: q
+        matches : bool,
+        media : q
       };
 
     };
@@ -198,6 +204,7 @@
    */
 
   (function(jQuery) {
+
 
   // requestAnimationFrame polyfill adapted from Erik Möller
   // fixes from Paul Irish and Tino Zijdel
@@ -265,7 +272,6 @@
 
   }( $ ));
 
-
   function removeQuotes (string) {
     if (typeof string === 'string' || string instanceof String) {
       string = string.replace(/^['\\/"]+|(;\s?})+|['\\/"]+$/g, '');
@@ -293,8 +299,8 @@
 
     stylesheet : $('<style></style>').appendTo('head')[0].sheet,
 
-    global: {
-      namespace: undefined
+    global : {
+      namespace : undefined
     },
 
     init : function (scope, libraries, method, options, response) {
@@ -319,7 +325,7 @@
         }
       }
 
-      S(window).load(function(){
+      S(window).load(function () {
         S(window)
           .trigger('resize.fndtn.clearing')
           .trigger('resize.fndtn.dropdown')
@@ -341,8 +347,7 @@
         if (args && args.hasOwnProperty(lib)) {
             if (typeof this.libs[lib].settings !== 'undefined') {
               $.extend(true, this.libs[lib].settings, args[lib]);
-            }
-            else if (typeof this.libs[lib].defaults !== 'undefined') {
+            } else if (typeof this.libs[lib].defaults !== 'undefined') {
               $.extend(true, this.libs[lib].defaults, args[lib]);
             }
           return this.libs[lib].init.apply(this.libs[lib], [this.scope, args[lib]]);
@@ -377,7 +382,7 @@
       }
     },
 
-    set_namespace: function () {
+    set_namespace : function () {
 
       // Description:
       //    Don't bother reading the namespace out of the meta tag
@@ -465,12 +470,16 @@
           var context = this, args = arguments;
           var later = function () {
             timeout = null;
-            if (!immediate) result = func.apply(context, args);
+            if (!immediate) {
+              result = func.apply(context, args);
+            }
           };
           var callNow = immediate && !timeout;
           clearTimeout(timeout);
           timeout = setTimeout(later, delay);
-          if (callNow) result = func.apply(context, args);
+          if (callNow) {
+            result = func.apply(context, args);
+          }
           return result;
         };
       },
@@ -507,11 +516,13 @@
         ii = opts_arr.length;
 
         function isNumber (o) {
-          return ! isNaN (o-0) && o !== null && o !== '' && o !== false && o !== true;
+          return !isNaN (o - 0) && o !== null && o !== '' && o !== false && o !== true;
         }
 
         function trim (str) {
-          if (typeof str === 'string') return $.trim(str);
+          if (typeof str === 'string') {
+            return $.trim(str);
+          }
           return str;
         }
 
@@ -519,8 +530,12 @@
           p = opts_arr[ii].split(':');
           p = [p[0], p.slice(1).join(':')];
 
-          if (/true/i.test(p[1])) p[1] = true;
-          if (/false/i.test(p[1])) p[1] = false;
+          if (/true/i.test(p[1])) {
+            p[1] = true;
+          }
+          if (/false/i.test(p[1])) {
+            p[1] = false;
+          }
           if (isNumber(p[1])) {
             if (p[1].indexOf('.') === -1) {
               p[1] = parseInt(p[1], 10);
@@ -546,7 +561,7 @@
       //
       //    Class (String): Class name for the generated <meta> tag
       register_media : function (media, media_class) {
-        if(Foundation.media_queries[media] === undefined) {
+        if (Foundation.media_queries[media] === undefined) {
           $('head').append('<meta class="' + media_class + '"/>');
           Foundation.media_queries[media] = removeQuotes($('.' + media_class).css('font-family'));
         }
@@ -608,7 +623,9 @@
       // Returns:
       //    Rand (String): Pseudo-random, alphanumeric string.
       random_str : function () {
-        if (!this.fidx) this.fidx = 0;
+        if (!this.fidx) {
+          this.fidx = 0;
+        }
         this.prefix = this.prefix || [(this.name || 'F'), (+new Date).toString(36)].join('-');
 
         return this.prefix + (this.fidx++).toString(36);

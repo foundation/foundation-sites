@@ -4,7 +4,7 @@
   Foundation.libs.clearing = {
     name : 'clearing',
 
-    version: '{{VERSION}}',
+    version : '{{VERSION}}',
 
     settings : {
       templates : {
@@ -107,23 +107,27 @@
       S = self.S;
 
       S(this.scope)
-        .on('touchstart.fndtn.clearing', '.visible-img', function(e) {
+        .on('touchstart.fndtn.clearing', '.visible-img', function (e) {
           if (!e.touches) { e = e.originalEvent; }
           var data = {
-                start_page_x: e.touches[0].pageX,
-                start_page_y: e.touches[0].pageY,
-                start_time: (new Date()).getTime(),
-                delta_x: 0,
-                is_scrolling: undefined
+                start_page_x : e.touches[0].pageX,
+                start_page_y : e.touches[0].pageY,
+                start_time : (new Date()).getTime(),
+                delta_x : 0,
+                is_scrolling : undefined
               };
 
           S(this).data('swipe-transition', data);
           e.stopPropagation();
         })
-        .on('touchmove.fndtn.clearing', '.visible-img', function(e) {
-          if (!e.touches) { e = e.originalEvent; }
+        .on('touchmove.fndtn.clearing', '.visible-img', function (e) {
+          if (!e.touches) {
+            e = e.originalEvent;
+          }
           // Ignore pinch/zoom events
-          if(e.touches.length > 1 || e.scale && e.scale !== 1) return;
+          if (e.touches.length > 1 || e.scale && e.scale !== 1) {
+            return;
+          }
 
           var data = S(this).data('swipe-transition');
 
@@ -148,7 +152,7 @@
             self.nav(e, direction);
           }
         })
-        .on('touchend.fndtn.clearing', '.visible-img', function(e) {
+        .on('touchend.fndtn.clearing', '.visible-img', function (e) {
           S(this).data('swipe-transition', {});
           e.stopPropagation();
         });
@@ -175,8 +179,8 @@
       var holder = this.S('#foundationClearingHolder'),
           settings = $el.data(this.attr_name(true) + '-init'),
           data = {
-            grid: '<div class="carousel">' + grid_outerHTML + '</div>',
-            viewing: settings.templates.viewing
+            grid : '<div class="carousel">' + grid_outerHTML + '</div>',
+            viewing : settings.templates.viewing
           },
           wrapper = '<div class="clearing-assembled"><div>' + data.viewing +
             data.grid + '</div></div>',
@@ -200,7 +204,7 @@
           error = false;
 
       // Event to disable scrolling on touch devices when Clearing is activated
-      $('body').on('touchmove',function(e){
+      $('body').on('touchmove', function (e) {
         e.preventDefault();
       });
 
@@ -291,9 +295,15 @@
           PREV_KEY = this.rtl ? 39 : 37,
           ESC_KEY = 27;
 
-      if (e.which === NEXT_KEY) this.go(clearing, 'next');
-      if (e.which === PREV_KEY) this.go(clearing, 'prev');
-      if (e.which === ESC_KEY) this.S('a.clearing-close').trigger('click').trigger('click.fndtn.clearing');
+      if (e.which === NEXT_KEY) {
+        this.go(clearing, 'next');
+      }
+      if (e.which === PREV_KEY) {
+        this.go(clearing, 'prev');
+      }
+      if (e.which === ESC_KEY) {
+        this.S('a.clearing-close').trigger('click').trigger('click.fndtn.clearing');
+      }
     },
 
     nav : function (e, direction) {
@@ -381,7 +391,9 @@
 
       this.preload($image);
 
-      if (href) return href;
+      if (href) {
+        return href;
+      }
       return $image.attr('src');
     },
 
@@ -454,7 +466,7 @@
       // we use jQuery animate instead of CSS transitions because we
       // need a callback to unlock the next animation
       // needs support for RTL **
-      if (target.index() !== old_index && !/skip/.test(direction)){
+      if (target.index() !== old_index && !/skip/.test(direction)) {
         if (/left/.test(direction)) {
           this.lock();
           dir_obj[dir] = left + width;
@@ -510,7 +522,9 @@
 
     adjacent : function (current_index, target_index) {
       for (var i = target_index + 1; i >= target_index - 1; i--) {
-        if (i === current_index) return true;
+        if (i === current_index) {
+          return true;
+        }
       }
       return false;
     },

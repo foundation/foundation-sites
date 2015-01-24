@@ -9,29 +9,29 @@
     locked : false,
 
     settings : {
-      animation: 'fadeAndPop',
-      animation_speed: 250,
-      close_on_background_click: true,
-      close_on_esc: true,
-      dismiss_modal_class: 'close-reveal-modal',
-      multiple_opened: false,
-      bg_class: 'reveal-modal-bg',
-      root_element: 'body',
-      open: function(){},
-      opened: function(){},
-      close: function(){},
-      closed: function(){},
+      animation : 'fadeAndPop',
+      animation_speed : 250,
+      close_on_background_click : true,
+      close_on_esc : true,
+      dismiss_modal_class : 'close-reveal-modal',
+      multiple_opened : false,
+      bg_class : 'reveal-modal-bg',
+      root_element : 'body',
+      open : function(){},
+      opened : function(){},
+      close : function(){},
+      closed : function(){},
       bg : $('.reveal-modal-bg'),
       css : {
         open : {
-          'opacity': 0,
-          'visibility': 'visible',
+          'opacity' : 0,
+          'visibility' : 'visible',
           'display' : 'block'
         },
         close : {
-          'opacity': 1,
-          'visibility': 'hidden',
-          'display': 'none'
+          'opacity' : 1,
+          'visibility' : 'hidden',
+          'display' : 'none'
         }
       }
     },
@@ -61,7 +61,7 @@
             } else {
               var url = ajax === true ? element.attr('href') : ajax;
 
-              self.open.call(self, element, {url: url});
+              self.open.call(self, element, {url : url});
             }
           }
         });
@@ -86,7 +86,7 @@
           }
         });
 
-      if(S('[' + self.attr_name() + ']', this.scope).length > 0) {
+      if (S('[' + self.attr_name() + ']', this.scope).length > 0) {
         S(this.scope)
           // .off('.reveal')
           .on('open.fndtn.reveal', this.settings.open)
@@ -133,7 +133,6 @@
       return true;
     },
 
-
     open : function (target, ajax_settings) {
       var self = this,
           modal;
@@ -153,7 +152,6 @@
 
       var settings = modal.data(self.attr_name(true) + '-init');
       settings = settings || this.settings;
-
 
       if (modal.hasClass('open') && target.attr('data-reveal-id') == modal.attr('id')) {
         return self.close(modal);
@@ -177,7 +175,7 @@
 
         if (typeof ajax_settings === 'string') {
           ajax_settings = {
-            url: ajax_settings
+            url : ajax_settings
           };
         }
 
@@ -195,10 +193,12 @@
           var old_success = typeof ajax_settings.success !== 'undefined' ? ajax_settings.success : null;
 
           $.extend(ajax_settings, {
-            success: function (data, textStatus, jqXHR) {
+            success : function (data, textStatus, jqXHR) {
               if ( $.isFunction(old_success) ) {
                 var result = old_success(data, textStatus, jqXHR);
-                if (typeof result == 'string') data = result;
+                if (typeof result == 'string') {
+                  data = result;
+                }
               }
 
               modal.html(data);
@@ -281,7 +281,7 @@
         if (el.parent(root_element).length === 0) {
           var placeholder = el.wrap('<div style="display: none;" />').parent();
 
-          el.on('closed.fndtn.reveal.wrapped', function() {
+          el.on('closed.fndtn.reveal.wrapped', function () {
             el.detach().appendTo(placeholder);
             el.unwrap().unbind('closed.fndtn.reveal.wrapped');
           });
@@ -326,7 +326,7 @@
           }.bind(this), settings.animation_speed / 2);
         }
 
-        return el.css(css).show().css({opacity: 1}).addClass('open').trigger('opened').trigger('opened.fndtn.reveal');
+        return el.css(css).show().css({opacity : 1}).addClass('open').trigger('opened').trigger('opened.fndtn.reveal');
       }
 
       var settings = this.settings;
@@ -376,7 +376,7 @@
         }
 
         if (animData.fade) {
-          var end_css = {opacity: 0};
+          var end_css = {opacity : 0};
 
           return setTimeout(function () {
             return el
@@ -429,7 +429,7 @@
       }
     },
 
-    data_attr: function (str) {
+    data_attr : function (str) {
       if (this.namespace.length > 0) {
         return this.namespace + '-' + str;
       }
@@ -463,9 +463,9 @@
     var fade = /fade/i.test(str);
     var pop = /pop/i.test(str);
     return {
-      animate: fade || pop,
-      pop: pop,
-      fade: fade
+      animate : fade || pop,
+      pop : pop,
+      fade : fade
     };
   }
 }(jQuery, window, window.document));
