@@ -462,7 +462,10 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
         .toggle-topbar { display: none; }
 
         .title-area { float: $default-float; }
-        .name h1 a { width: auto; }
+        .name h1 a,
+        .name h2 a,
+        .name h3 a,
+        .name h4 a { width: auto; }
 
         input,
         .button,
