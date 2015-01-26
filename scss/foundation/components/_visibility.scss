@@ -266,7 +266,7 @@ $visibility-breakpoint-queries:
           display: table-row-group !important;
         }
         #{$visibility-table-row-list} {
-          display: table-row !important;
+          display: table-row;
         }
         #{$visibility-table-cell-list} {
           display: table-cell !important;
@@ -390,19 +390,85 @@ $visibility-breakpoint-queries:
   th.hide-for-touch { display: table-cell !important; }
   .touch th.show-for-touch { display: table-cell !important; }
 
+  // Only include these styles if you want them.
+    @if $include-print-styles {
+      /*
+       * Print styles.
+       *
+       * Inlined to avoid required HTTP connection: www.phpied.com/delay-loading-your-print-css/
+       * Credit to Paul Irish and HTML5 Boilerplate (html5boilerplate.com)
+      */
+      .print-only { display: none !important; }
+      @media print {
+        * {
+          background: transparent !important;
+          color: $black !important; /* Black prints faster: h5bp.com/s */
+          box-shadow: none !important;
+          text-shadow: none !important;
+        }
+        .show-for-print { display: block; }
+        .hide-for-print { display: none; }
+
+        table.show-for-print { display: table !important; }
+        thead.show-for-print { display: table-header-group !important; }
+        tbody.show-for-print { display: table-row-group !important; }
+        tr.show-for-print { display: table-row !important; }
+        td.show-for-print { display: table-cell !important; }
+        th.show-for-print { display: table-cell !important; }
+
+        a,
+        a:visited { text-decoration: underline;}
+        a[href]:after { content: " (" attr(href) ")"; }
+
+        abbr[title]:after { content: " (" attr(title) ")"; }
+
+        // Don't show links for images, or javascript/internal links
+        .ir a:after,
+        a[href^="javascript:"]:after,
+        a[href^="#"]:after { content: ""; }
+
+        pre,
+        blockquote {
+          border: 1px solid $aluminum;
+          page-break-inside: avoid;
+        }
+
+        thead { display: table-header-group; /* h5bp.com/t */ }
+
+        tr,
+        img { page-break-inside: avoid; }
+
+        img { max-width: 100% !important; }
+
+        @page { margin: 0.5cm; }
+
+        p,
+        h2,
+        h3 {
+          orphans: 3;
+          widows: 3;
+        }
+
+        h2,
+        h3 { page-break-after: avoid; }
+
+        .hide-on-print { display: none !important; }
+        .print-only { display: block !important; }
+        .hide-for-print { display: none !important; }
+        .show-for-print { display: inherit !important; }
+      }
+    }
 
   /* Print visibility */
-  @media print {
-    .show-for-print { display: block; }
-    .hide-for-print { display: none; }
+    @media print {
+      .show-for-print { display: block; }
+      .hide-for-print { display: none; }
 
-    table.show-for-print { display: table !important; }
-    thead.show-for-print { display: table-header-group !important; }
-    tbody.show-for-print { display: table-row-group !important; }
-    tr.show-for-print { display: table-row !important; }
-    td.show-for-print { display: table-cell !important; }
-    th.show-for-print { display: table-cell !important; }
-
+      table.show-for-print { display: table !important; }
+      thead.show-for-print { display: table-header-group !important; }
+      tbody.show-for-print { display: table-row-group !important; }
+      tr.show-for-print { display: table-row !important; }
+      td.show-for-print { display: table-cell !important; }
+      th.show-for-print { display: table-cell !important; }
   }
-
 }

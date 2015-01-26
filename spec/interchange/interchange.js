@@ -70,4 +70,47 @@ describe('interchange:', function() {
       expect($('div[data-interchange]').data('data-interchange-last-path')).toMatch(/.+html$/)
     });
   });
+
+  describe('events', function() {
+    beforeEach(function() {
+      document.body.innerHTML = __html__['spec/interchange/basic.html'];
+      Foundation.libs.interchange.cache = {};
+    });
+
+    it('should handle emitting one event', function() {
+      var callback = jasmine.createSpy('callback');
+
+      $('div[data-interchange]').on('replace', callback);
+
+      Foundation.libs.interchange.update_nodes();
+      Foundation.libs.interchange.resize();
+
+      expect(callback).toHaveBeenCalled();
+    });
+
+    it('should handle emitting multiple events', function() {
+      var $element0 = $('div[data-interchange]').attr('id', 'element0'),
+          $element1 = $element0.clone().attr('id', 'element1').appendTo('body'),
+          callback0 = jasmine.createSpy('callback0'),
+          callback1 = jasmine.createSpy('callback1');
+
+      $.get.isSpy = false;
+      spyOn($, 'get').andCallFake(function(path, callback) {
+        runs(function() {
+          callback('<h1>TWO EVENTS</h1>')
+        });
+      });
+
+      $element0.on('replace', callback0);
+      $element1.on('replace', callback1);
+
+      Foundation.libs.interchange.update_nodes();
+      Foundation.libs.interchange.resize();
+
+      runs(function() {
+        expect(callback0).toHaveBeenCalled();
+        expect(callback1).toHaveBeenCalled();
+      });
+    });
+  });
 });
