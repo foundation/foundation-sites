@@ -157,6 +157,10 @@ $button-group-border-width: 1px !default;
   @if $include-html-button-classes {
     .button-group { @include button-group-container;
 
+      @for $i from 2 through 8 {
+        &.even-#{$i} li { @include button-group-style($even:$i, $float:null); }
+      }
+      
       & > li { @include button-group-style(); }
 
       &.stack {
@@ -192,10 +196,6 @@ $button-group-border-width: 1px !default;
         @media #{$small-only} {
           @include button-group-style($radius:$button-med, $orientation:vertical);
         }
-      }
-
-      @for $i from 2 through 8 {
-        &.even-#{$i} li { @include button-group-style($even:$i, $float:null); }
       }
     }
 

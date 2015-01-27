@@ -53,7 +53,7 @@ $input-prefix-bg: scale-color($white, $lightness: -5%) !default;
 $input-prefix-border-color: scale-color($white, $lightness: -20%) !default;
 $input-prefix-border-size: 1px !default;
 $input-prefix-border-type: solid !default;
-$input-prefix-overflow: hidden !default;
+$input-prefix-overflow: visible !default;
 $input-prefix-font-color: $oil !default;
 $input-prefix-font-color-alt: $white !default;
 
@@ -427,25 +427,29 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
         .prefix-radius.row.collapse {
           input,
           textarea,
-          select { @include radius(0); @include side-radius($opposite-direction, $button-radius); }
+          select,
+          button { @include radius(0); @include side-radius($opposite-direction, $button-radius); }
           .prefix { @include radius(0); @include side-radius($default-float, $button-radius); }
         }
         .postfix-radius.row.collapse {
           input,
           textarea,
-          select { @include radius(0); @include side-radius($default-float, $button-radius); }
+          select,
+          button { @include radius(0); @include side-radius($default-float, $button-radius); }
           .postfix { @include radius(0); @include side-radius($opposite-direction, $button-radius); }
         }
         .prefix-round.row.collapse {
           input,
           textarea,
-          select { @include radius(0); @include side-radius($opposite-direction, $button-round); }
+          select,
+          button { @include radius(0); @include side-radius($opposite-direction, $button-round); }
           .prefix { @include radius(0); @include side-radius($default-float, $button-round); }
         }
         .postfix-round.row.collapse {
           input,
           textarea,
-          select { @include radius(0); @include side-radius($default-float, $button-round); }
+          select,
+          button { @include radius(0); @include side-radius($default-float, $button-round); }
           .postfix { @include radius(0); @include side-radius($opposite-direction, $button-round); }
         }
       }
@@ -470,6 +474,9 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
     select {
       @include form-select;
       height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
+      &[multiple] {
+        height: auto;
+      }
     }
 
     /* Adjust margin for form elements below */

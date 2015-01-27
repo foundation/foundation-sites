@@ -201,6 +201,7 @@ $icon-bar-disabled-cursor: $cursor-disabled-value !default;
     .item.disabled {
       opacity: $icon-bar-disabled-opacity;
       cursor: $icon-bar-disabled-cursor;
+      pointer-events: none;
       >* {
         opacity: $icon-bar-disabled-opacity;
         cursor: $icon-bar-disabled-cursor;
@@ -234,7 +235,7 @@ $icon-bar-disabled-cursor: $cursor-disabled-value !default;
 	$image-width: $icon-bar-image-width,
 	$image-height: $icon-bar-image-height,
   $base-style:true,
-  $disabled:false) {
+  $disabled:true) {
     @include icon-bar-base();
     @include icon-bar-size($padding, $font-size, $icon-size, $image-width, $image-height);
     @include icon-bar-style($bar-bg, $bar-font-color, $bar-font-color-hover, $bar-hover-color, $bar-icon-color, $bar-icon-color-hover, $bar-active-color, $base-style, $disabled);
