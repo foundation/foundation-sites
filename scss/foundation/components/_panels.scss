@@ -13,6 +13,7 @@ $include-html-panel-classes: $include-html-classes !default;
 $panel-bg: scale-color(#fff, $lightness: -5%) !default;
 $panel-border-style: solid !default;
 $panel-border-size: 1px !default;
+$callout-panel-bg: scale-color($primary-color, $lightness: 94%) !default;
 
 // We use this % to control how much we darken things on hover
 $panel-function-factor: -11% !default;
@@ -74,7 +75,7 @@ $callout-panel-link-color: $primary-color !default;
     .panel { @include panel;
 
       &.callout {
-        @include panel(scale-color($primary-color, $lightness: 94%));
+        @include panel($callout-panel-bg);
         a:not(.button) {
           color: $callout-panel-link-color;
         }
