@@ -78,6 +78,11 @@
        if (sticky && this.large() && settings.sticky_on.indexOf('large') !== -1) {
            if (smallMatch && medMatch && lrgMatch) { return true; }
        }
+
+       // fix for iOS browsers
+       if (sticky && navigator.userAgent.match(/(iPad|iPhone|iPod)/g)) {
+        return true;
+       }
        return false;
     },
 
