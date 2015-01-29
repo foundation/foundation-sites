@@ -207,9 +207,9 @@
 
               if (open_modal.length > 0) {
                 if (settings.multiple_opened) {
-                  this.to_back(open_modal);
+                  self.to_back(open_modal);
                 } else {
-                  this.hide(open_modal, settings.css.close);
+                  self.hide(open_modal, settings.css.close);
                 }
               }
               self.show(modal, settings.css.open);
