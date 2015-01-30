@@ -5,18 +5,13 @@ name: grid
 category: grid
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid voluptatem quibusdam nihil quod nisi esse assumenda rerum, recusandae perspiciatis iure dolor velit, distinctio cum ducimus ut, dicta placeat laborum. Ut!
+<p class="deck">Create powerful multi-device layouts quickly and easily with the default 12-column, nest-able Foundation grid. If you're familiar with grid systems, you'll feel right at home. If not, you'll learn quickly.</p>
 
-## HTML
+---
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis consequatur repellat veritatis impedit, adipisci error ipsum rerum. Debitis numquam natus velit tempora reiciendis enim aliquid, eius aspernatur temporibus, beatae perferendis.
+Start by adding an element with a class of `row`. This will create a horizontal block to contain vertical columns. Then add elements with a `column` class within that row. You can use `column` or `columns`—the only difference is grammar. Specify the widths of each column with the `small-#`, `medium-#`, and `large-#` classes.
 
-```html
-<div class="row">
-  <div class="medium-4 large-3 columns"></div>
-  <div class="medium-8 large-9 columns"></div>
-</div>
-```
+**Foundation is mobile-first.** Code for small screens first, and larger devices will inherit those styles. Customize for larger screens as necessary.
 */
 
 ////
