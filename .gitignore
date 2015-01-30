@@ -14,6 +14,7 @@
 .yardoc
 
 bower_components
+bundle
 dist
 /docs2/public/*
 vendor
