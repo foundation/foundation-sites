@@ -1,0 +1,35 @@
+/*doc
+---
+title: Typography
+name: typography
+category: typography
+---
+
+Typography!
+*/
+
+////
+/// @group typography
+////
+
+@import "modular-scale";
+@import "baseline-grid";
+
+/// Returns multiple `font-size` declarations at different breakpoints, using the breakpoints and scales defined in `$ms-intervals`.
+/// @param {Number} $n - Position on the scale to use. `1` is the starting point (`1em`).
+/// @param {Map} $intervals [$ms-intervals] - A set of intervals to use.
+@mixin font-size($n, $intervals: $ms-intervals) {
+  @each $breakpoint, $scale in $intervals {
+    $font-size: modular-scale($n, $scale);
+    @if $breakpoint == default {
+      font-size: $font-size;
+      @include baseline($font-size);
+    }
+    @else {
+      @include breakpoint($breakpoint) {
+        font-size: $font-size;
+        @include baseline($font-size);
+      }
+    }
+  }
+}

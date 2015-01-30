@@ -1,0 +1,22 @@
+/// Given a user-defined list of keywords and a list of possible keywords, find the ones that were passed in.
+///
+/// @param {list} $opts - List of values to find keywords in.
+/// @param {list} $seeking - List of all possible keywords.
+///
+/// @access private
+///
+/// @return A map of all keywords in $seeking. If a keyword was found in $opts, its value is true, otherwise false.
+@function -zf-get-options($opts, $seeking) {
+  @if type-of($opts) != 'list' {
+    $opts: ($opts);
+  }
+  
+  $map: ();
+  @each $keyword in $seeking {
+    $val: if(index($opts, $keyword) != null, true, false);
+    $item: ($keyword: $val);
+    $map: map-merge($map, $item);
+  }
+  
+  @return $map;
+}

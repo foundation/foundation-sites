@@ -1,0 +1,52 @@
+////
+/// @group functions
+////
+
+/// Map Serialize
+/// Converts a Sass map to a URL-encoded string, like this: `key1=value1&key2=value2`. We use this function to encode the media queries in the `$breakpoints` variable, so it can be transferred to our JavaScript for use there.
+///
+/// @param {map} $map - Map to convert.
+///
+/// @return A string with a map converted to a string.
+@function map-serialize($map) {
+  $str: '';
+  @each $key, $value in $map {
+    $str: $str + $key + '=' + $value + '&';
+  }
+  $str: str-slice($str, 1, -2);
+
+  @return $str;
+}
+
+/// Map Next
+/// Find the next key in a map.
+///
+/// @param {map} $map - Map to traverse.
+/// @param {mixed} $key - Key to use as a starting point.
+///
+/// @return The value for the key after `$key` if `$key` was found. If `$key` was not found, or `$key` was the last value in the map, returns null.
+@function map-next($map, $key) {
+  // Store the values of the map as a list, so we can access them with nth
+  $values: map-values($map);
+
+  // Ghetto for loop
+  $i: 1;
+  $found: false;
+  @each $val in map-keys($map) {
+    @if $found == false {
+      @if ($key == $val) {
+        $found: true;
+      }
+      $i: $i + 1;
+    }
+  }
+
+  // If the key doesn't exist, or it's the last key in the map, return null
+  @if $i > length($map) {
+    @return null;
+  }
+  // Otherwise return the value
+  @else {
+    @return nth($values, $i);
+  }
+}

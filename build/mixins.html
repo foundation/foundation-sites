@@ -1,0 +1,188 @@
+<html>
+
+<head>
+  <title>Supercollider Test</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.0/css/foundation.css"></link>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+  <style>
+    h1[id] {
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    code[class*="lang-"] {
+      display: block;
+      padding: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="contain-to-grid" style="margin-bottom: 2rem">
+    <nav class="top-bar">
+      <ul class="title-area">
+        <li class="name"><h1><a href="#">Supercollider</a></h1></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="row">
+    <div class="medium-4 large-3 columns">
+      <ul class="side-nav">
+        <li><a href="breakpoints.html">Breakpoints</a></li>
+        <li><a href="exports.html">Exports</a></li>
+        <li><a href="functions.html">Functions</a></li>
+        <li><a href="grid.html">Grid</a></li>
+        <li><a href="mixins.html">Mixins</a></li>
+        <li><a href="typography.html">Typography</a></li>
+      </ul>
+    </div>
+    <div class="medium-8 large-9 columns">
+      <h1 id="mixins" class="styleguide">Mixins</h1>
+
+<p>Mixins be swell.</p>
+
+
+<hr>
+
+<section>
+  <h2>Using Sass</h2>
+
+
+  <section>
+    <h3>Mixins</h3>
+
+    <section>
+      <h4>css-triangle</h4>
+
+      <pre><code>@mixin css-triangle($triangle-size, $triangle-color, $triangle-direction) { }</code></pre>
+
+      <p><p>Creates a CSS triangle, which can be used for dropdown arrows, popup tails, and more. Use this mixin inside a <code>&amp;::before</code> or <code>&amp;::after</code> selector, to attach the triangle to an existing element.</p>
+</p>
+
+      <table>
+        <tr><th>Name</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td><code>$triangle-size</code></td>
+          <td>number</td>
+          <td></td>
+          <td><p>Width of the triangle.</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$triangle-color</code></td>
+          <td>color</td>
+          <td></td>
+          <td><p>Color of the triangle.</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$triangle-direction</code></td>
+          <td>keyword</td>
+          <td></td>
+          <td><p>Direction the triangle points. Can be <code>top</code>, <code>right</code>, <code>bottom</code>, or <code>left</code>.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+    <section>
+      <h4>hamburger</h4>
+
+      <pre><code>@mixin hamburger($width, $left, $top, $thickness, $gap, $color, $hover-color) { }</code></pre>
+
+      <p><p>Creates a three-line menu icon, affectionately referred to as the &quot;hamburger icon&quot;.</p>
+</p>
+
+      <table>
+        <tr><th>Name</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td><code>$width</code></td>
+          <td>number</td>
+          <td></td>
+          <td><p>Width of the icon, in rem units.</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$left</code></td>
+          <td>number|boolean</td>
+          <td></td>
+          <td><p>Left offset of the icon. Set to <code>false</code> to center the icon horizontally.</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$top</code></td>
+          <td>number|boolean</td>
+          <td></td>
+          <td><p>Top offset of the icon. Set to <code>false</code> to center the icon vertically.</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$thickness</code></td>
+          <td>number</td>
+          <td></td>
+          <td><p>Height of each line in the icon.</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$gap</code></td>
+          <td>number</td>
+          <td></td>
+          <td><p>Amount of space between each line.</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$color</code></td>
+          <td>color</td>
+          <td></td>
+          <td><p>Color of the lines.</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$hover-color</code></td>
+          <td>color</td>
+          <td></td>
+          <td><p>Color of the lines on hover.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+    <section>
+      <h4>clearfix</h4>
+
+      <pre><code>@mixin clearfi) { }</code></pre>
+
+      <p><p>Uses the micro clearfix hack popularized by Nicolas Gallagher. Include this mixin on a container if its children are all floated, to give the container a proper height.</p>
+</p>
+
+    </section>
+    <section>
+      <h4>element-invisible</h4>
+
+      <pre><code>@mixin element-invisibl) { }</code></pre>
+
+      <p><p>Makes an element visually hidden, but still accessible to keyboards and assistive devices.</p>
+</p>
+
+    </section>
+    <section>
+      <h4>element-invisible-off</h4>
+
+      <pre><code>@mixin element-invisible-of) { }</code></pre>
+
+      <p><p>Reverses the CSS output created by the <code>element-invisible()</code> mixin.</p>
+</p>
+
+    </section>
+  </section>
+  
+  <hr>
+
+
+</section>
+
+    </div>
+  </div>
+</body>
+
+</html>

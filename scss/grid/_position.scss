@@ -1,0 +1,53 @@
+////
+/// @group grid
+////
+
+/// Reposition a column.
+///
+/// @param {number} $position - Direction and amount to move. The column will move equal to the width of the column count specified. A positive number will push the column to the right, while a negative number will pull it to the left.
+@mixin grid-column-position($position) {
+  @if type-of($position) == 'number' {
+    $offset: percentage($position / $grid-column-count);
+    
+    position: relative;
+    left: $offset;
+  }
+  @else if $position == center {
+    margin: {
+      left: auto;
+      right: auto;
+    }
+  }
+  @else {
+    @warn "Wrong syntax for grid-column-position(). Enter a positive or negative number, or center."
+  }
+}
+
+/// Reset a position definition.
+@mixin grid-column-unposition() {
+  position: static;
+  margin: {
+    left: 0;
+    right: 0;
+  }
+}
+
+/// Align a column at the end of the row instead of the beginning.
+@mixin grid-column-end() {
+  float: right;
+}
+
+/// Shorthand for `grid-column-position()`.
+@mixin grid-col-pos($position) {
+  @include grid-column-position($position);
+}
+
+/// Shorthand for `grid-column-unposition()`.
+@mixin grid-col-unpos() {
+  @include grid-column-unposition;
+}
+
+/// Shorthand for `grid-column-end()`.
+@mixin grid-col-end() {
+  @include grid-column-end;
+}

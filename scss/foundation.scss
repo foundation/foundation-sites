@@ -1,47 +1,22 @@
-@charset "UTF-8";
 // Foundation by ZURB
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-// Make sure the charset is set appropriately
+@charset "UTF-8";
 
+// Third-party libraries
 @import "vendor/normalize";
 
-// Behold, here are all the Foundation components.
-@import "components/grid";
-@import "components/accordion";
-@import "components/alert-boxes";
-@import "components/block-grid";
-@import "components/breadcrumbs";
-@import "components/button-groups";
-@import "components/buttons";
-@import "components/clearing";
-@import "components/dropdown";
-@import "components/dropdown-buttons";
-@import "components/flex-video";
-@import "components/forms";
-@import "components/icon-bar";
-@import "components/inline-lists";
-@import "components/joyride";
-@import "components/keystrokes";
-@import "components/labels";
-@import "components/magellan";
-@import "components/orbit";
-@import "components/pagination";
-@import "components/panels";
-@import "components/pricing-tables";
-@import "components/progress-bars";
-@import "components/range-slider";
-@import "components/reveal";
-@import "components/side-nav";
-@import "components/split-buttons";
-@import "components/sub-nav";
-@import "components/switches";
-@import "components/tables";
-@import "components/tabs";
-@import "components/thumbs";
-@import "components/tooltips";
-@import "components/top-bar";
-@import "components/type";
-@import "components/offcanvas";
-@import "components/visibility";
+// Utilities
+@import "util/util";
+
+// Components
+@import "type/type";
+@import "grid/grid";
+
+@include foundation-grid-classes;
+
+$foundation-version: '6.0.0';
+meta.foundation-version {
+  font-family: "#{$foundation-version}";
+}

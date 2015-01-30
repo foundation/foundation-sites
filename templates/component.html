@@ -1,0 +1,91 @@
+{{ html }}
+
+<hr>
+
+{{#ifany variable mixin function}}
+<section>
+  <h2>Using Sass</h2>
+
+  {{#if variable}}
+  <section>
+    <h3>Variables</h3>
+    <table>
+      <tr><th>Name</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+      {{#each variable}}
+      <tr>
+        <td><code>${{this.context.name}}</code></td>
+        <td>{{this.type}}</td>
+        <td><code>{{this.context.value}}</code></td>
+        <td>{{md this.description}}</td>
+      </tr>
+      {{/each}}
+    </table>
+  </section>
+
+  <hr>
+  {{/if}}
+
+  {{#if mixin}}
+  <section>
+    <h3>Mixins</h3>
+
+    {{#each mixin}}
+    <section>
+      <h4>{{this.context.name}}</h4>
+
+      <pre><code>{{writeMixin this}}</code></pre>
+
+      <p>{{md this.description}}</p>
+
+      {{#if this.parameter}}
+      <table>
+        <tr><th>Name</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        {{#each this.parameter}}
+        <tr>
+          <td><code>${{this.name}}</code></td>
+          <td>{{this.type}}</td>
+          <td>{{#if this.default}}<code>{{this.default}}</code>{{/if}}</td>
+          <td>{{md this.description}}</td>
+        </tr>
+        {{/each}}
+      </table>
+      {{/if}}
+    </section>
+    {{/each}}
+  </section>
+  
+  <hr>
+  {{/if}}
+
+
+  {{#if function}}
+  <section>
+    <h3>Functions</h3>
+
+    {{#each function}}
+    <section>
+      <h4>{{this.context.name}}</h4>
+
+      <pre><code>{{writeMixin this}}</code></pre>
+
+      <p>{{md this.description}}</p>
+
+      {{#if this.parameter}}
+      <table>
+        <tr><th>Name</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        {{#each this.parameter}}
+        <tr>
+          <td><code>${{this.name}}</code></td>
+          <td>{{this.type}}</td>
+          <td>{{#if this.default}}<code>{{this.default}}</code>{{/if}}</td>
+          <td>{{md this.description}}</td>
+        </tr>
+        {{/each}}
+      </table>
+      {{/if}}
+    </section>
+    {{/each}}
+  </section>
+  {{/if}}
+</section>
+{{/ifany}}

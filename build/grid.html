@@ -1,0 +1,361 @@
+<html>
+
+<head>
+  <title>Supercollider Test</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.0/css/foundation.css"></link>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+  <style>
+    h1[id] {
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    code[class*="lang-"] {
+      display: block;
+      padding: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="contain-to-grid" style="margin-bottom: 2rem">
+    <nav class="top-bar">
+      <ul class="title-area">
+        <li class="name"><h1><a href="#">Supercollider</a></h1></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="row">
+    <div class="medium-4 large-3 columns">
+      <ul class="side-nav">
+        <li><a href="breakpoints.html">Breakpoints</a></li>
+        <li><a href="exports.html">Exports</a></li>
+        <li><a href="functions.html">Functions</a></li>
+        <li><a href="grid.html">Grid</a></li>
+        <li><a href="mixins.html">Mixins</a></li>
+        <li><a href="typography.html">Typography</a></li>
+      </ul>
+    </div>
+    <div class="medium-8 large-9 columns">
+      <h1 id="grid" class="styleguide">Grid</h1>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid voluptatem quibusdam nihil quod nisi esse assumenda rerum, recusandae perspiciatis iure dolor velit, distinctio cum ducimus ut, dicta placeat laborum. Ut!</p>
+<h2 id="html">HTML</h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis consequatur repellat veritatis impedit, adipisci error ipsum rerum. Debitis numquam natus velit tempora reiciendis enim aliquid, eius aspernatur temporibus, beatae perferendis.</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"medium-4 large-3 columns"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"medium-8 large-9 columns"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+
+
+<hr>
+
+<section>
+  <h2>Using Sass</h2>
+
+  <section>
+    <h3>Variables</h3>
+    <table>
+      <tr><th>Name</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+      <tr>
+        <td><code>$grid-row-width</code></td>
+        <td>Number</td>
+        <td><code>1000px</code></td>
+        <td><p>The maximum width of a row.</p>
+</td>
+      </tr>
+      <tr>
+        <td><code>$grid-column-count</code></td>
+        <td>Number</td>
+        <td><code>12</code></td>
+        <td><p>The default column count of a grid. Changing this value affects the logic of the grid mixins, and the number of CSS classes output.</p>
+</td>
+      </tr>
+      <tr>
+        <td><code>$grid-column-gutter</code></td>
+        <td>Number</td>
+        <td><code>1.875rem / 2</code></td>
+        <td><p>The amount of space between columns.</p>
+</td>
+      </tr>
+    </table>
+  </section>
+
+  <hr>
+
+  <section>
+    <h3>Mixins</h3>
+
+    <section>
+      <h4>foundation-grid-classes</h4>
+
+      <pre><code>@mixin foundation-grid-classes($row, $column) { }</code></pre>
+
+      <p><p>Outputs CSS classes for the grid.</p>
+</p>
+
+      <table>
+        <tr><th>Name</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td><code>$row</code></td>
+          <td>string</td>
+          <td></td>
+          <td><p>Class to use for rows.</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$column</code></td>
+          <td>string</td>
+          <td></td>
+          <td><p>Class to use for columns.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+    <section>
+      <h4>grid-column</h4>
+
+      <pre><code>@mixin grid-column($columns, $gutter) { }</code></pre>
+
+      <p><p>Outputs grid column CSS.</p>
+</p>
+
+      <table>
+        <tr><th>Name</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td><code>$columns</code></td>
+          <td>mixed</td>
+          <td></td>
+          <td><p>Width of the column. Refer to the <code>grid-column()</code> function to see possible values.</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$gutter</code></td>
+          <td>number</td>
+          <td></td>
+          <td><p>Width of the gutters on either side of the column.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+    <section>
+      <h4>grid-col</h4>
+
+      <pre><code>@mixin grid-co) { }</code></pre>
+
+      <p><p>Shorthand for grid-col().</p>
+</p>
+
+    </section>
+    <section>
+      <h4>grid-column-collapse</h4>
+
+      <pre><code>@mixin grid-column-collaps) { }</code></pre>
+
+      <p><p>Collapse the gutters on a column by removing the padding.</p>
+</p>
+
+    </section>
+    <section>
+      <h4>grid-column-uncollapse</h4>
+
+      <pre><code>@mixin grid-column-uncollaps) { }</code></pre>
+
+      <p><p>Un-collapse the gutters on a column by re-adding the padding.</p>
+</p>
+
+    </section>
+    <section>
+      <h4>grid-col-collapse</h4>
+
+      <pre><code>@mixin grid-col-collaps) { }</code></pre>
+
+      <p><p>Shorthand for <code>grid-column-collapse()</code>.</p>
+</p>
+
+    </section>
+    <section>
+      <h4>grid-col-uncollapse</h4>
+
+      <pre><code>@mixin grid-col-uncollaps) { }</code></pre>
+
+      <p><p>Shorthand for <code>grid-column-uncollapse()</code>.</p>
+</p>
+
+    </section>
+    <section>
+      <h4>grid-column-position</h4>
+
+      <pre><code>@mixin grid-column-position($position) { }</code></pre>
+
+      <p><p>Reposition a column.</p>
+</p>
+
+      <table>
+        <tr><th>Name</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td><code>$position</code></td>
+          <td>number</td>
+          <td></td>
+          <td><p>Direction and amount to move. The column will move equal to the width of the column count specified. A positive number will push the column to the right, while a negative number will pull it to the left.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+    <section>
+      <h4>grid-column-unposition</h4>
+
+      <pre><code>@mixin grid-column-unpositio) { }</code></pre>
+
+      <p><p>Reset a position definition.</p>
+</p>
+
+    </section>
+    <section>
+      <h4>grid-column-end</h4>
+
+      <pre><code>@mixin grid-column-en) { }</code></pre>
+
+      <p><p>Align a column at the end of the row instead of the beginning.</p>
+</p>
+
+    </section>
+    <section>
+      <h4>grid-col-pos</h4>
+
+      <pre><code>@mixin grid-col-po) { }</code></pre>
+
+      <p><p>Shorthand for <code>grid-column-position()</code>.</p>
+</p>
+
+    </section>
+    <section>
+      <h4>grid-col-unpos</h4>
+
+      <pre><code>@mixin grid-col-unpo) { }</code></pre>
+
+      <p><p>Shorthand for <code>grid-column-unposition()</code>.</p>
+</p>
+
+    </section>
+    <section>
+      <h4>grid-col-end</h4>
+
+      <pre><code>@mixin grid-col-en) { }</code></pre>
+
+      <p><p>Shorthand for <code>grid-column-end()</code>.</p>
+</p>
+
+    </section>
+    <section>
+      <h4>grid-context</h4>
+
+      <pre><code>@mixin grid-context($columns, $root) { }</code></pre>
+
+      <p><p>Change the behavior of columns defined inside this mixin to use a different column count.</p>
+</p>
+
+      <table>
+        <tr><th>Name</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td><code>$columns</code></td>
+          <td>number</td>
+          <td></td>
+          <td><p>Number of columns to use.</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$root</code></td>
+          <td>booleam</td>
+          <td></td>
+          <td><p>If <code>false</code>, selectors inside this mixin will nest inside the parent selector.
+  If <code>tru</code>, selectors will not nest.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+    <section>
+      <h4>grid-row</h4>
+
+      <pre><code>@mixin grid-row($behavior, $width, $columns) { }</code></pre>
+
+      <p><p>Creates a grid row.</p>
+</p>
+
+      <table>
+        <tr><th>Name</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td><code>$behavior</code></td>
+          <td>keyword|list</td>
+          <td></td>
+          <td><p>Modifications to the default grid styles. <code>nest</code> indicates the row will be placed inside another row. <code>collapse</code> indicates that the columns inside this row will not have padding. <code>nest collapse</code> combines both behaviors.</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$width</code></td>
+          <td>number</td>
+          <td></td>
+          <td><p>Maximum width of the row.</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$columns</code></td>
+          <td>number</td>
+          <td></td>
+          <td><p>Column count for this row.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+  </section>
+  
+  <hr>
+
+
+  <section>
+    <h3>Functions</h3>
+
+    <section>
+      <h4>grid-column</h4>
+
+      <pre><code>@mixin grid-column($columns) { }</code></pre>
+
+      <p><p>Calculates the width of a column based on a number of factors.</p>
+</p>
+
+      <table>
+        <tr><th>Name</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td><code>$columns</code></td>
+          <td>number|list</td>
+          <td></td>
+          <td><p>Width of the column. Accepts multiple values:</p>
+<ul>
+<li>A percentage value will make the column that exact size.</li>
+<li>A single digit will make the column span that number of columns wide, taking into account the column count of the parent row.</li>
+<li>A string of the format &quot;x of y&quot; will make a column that is <em>x</em> columns wide, assuming <em>y</em> total columns for the parent.</li>
+</ul>
+</td>
+        </tr>
+      </table>
+    </section>
+    <section>
+      <h4>grid-col</h4>
+
+      <pre><code>@mixin grid-co) { }</code></pre>
+
+      <p><p>Shorthand for grid-col().</p>
+</p>
+
+    </section>
+  </section>
+</section>
+
+    </div>
+  </div>
+</body>
+
+</html>

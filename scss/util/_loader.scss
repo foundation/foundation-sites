@@ -1,0 +1,42 @@
+$foundation: (
+  _version: '1.0.0',
+);
+
+/// Register a Foundation component, adding it to the $foundation variable.
+/// @param {string} $name - Name of the component.
+/// @param {map} $settings - A map of settings variables for the component.
+@mixin foundation-component($name, $settings) {
+  @if map-has-key($foundation, $name) {
+    @error "A component named #{$name} has already been loaded into Foundation.";
+  }
+  $foundation: map-merge($foundation, ($name: $settings)) !global;
+}
+
+/// Get a Foundation setting from the $foundation variable.
+/// @param {list} $keys
+///   A space-separated list representing the desired settings variable.
+///   For example, to find the "color" setting of the "button" component, write:
+///   ```scss
+///   color: foundation(button color);
+///   ```
+@function foundation($keys) {
+  $map: $foundation;
+  @if not map-has-key($map, nth($keys, 1)) {
+    @error '#{nth($keys, 1)} is not a Foundation component';
+  }
+  @each $key in $keys {
+    @if not map-has-key($map, $key) {
+      @error '"#{inspect($keys)}" is not in the Foundation settings list.';
+    }
+    $map: map-get($map, $key);
+  }
+  @if type-of($map) == 'map' {
+    @if map-has-key($map, default) {
+      $map: map-get($map, default);
+    }
+    @else {
+      @error '"#{inspect($keys)}" has no default value.';
+    }
+  }
+  @return $map;
+}

@@ -1,5 +1,6 @@
-var gulp = require('gulp');
-var $    = require('gulp-load-plugins')();
+var gulp  = require('gulp');
+var Super = require('supercollider');
+var $     = require('gulp-load-plugins')();
 
 var files = {
   sassSrc: 'docs_old/assets/scss/docs.scss',
@@ -18,6 +19,15 @@ gulp.task('html', function() {
       layout: 'default.html'
     }))
     .pipe(gulp.dest('build/'))
+});
+
+gulp.task('docs', function() {
+  Super({
+    html: './scss',
+    sass: './scss',
+    js: './js/**/*.js',
+    dest: './build'
+  });
 });
 
 gulp.task('css', function() {

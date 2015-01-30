@@ -1,0 +1,34 @@
+////
+/// @group functions
+////
+
+/// Checks the lightness of $color, and if it passes the $threshold of lightness, it returns the `$yes` color. Otherwise, it returns the `$no` color. Use this function to dynamically output a foreground color based on a given background color.
+///
+/// @param {color} $color - Color to check the lightness of.
+/// @param {color} $yes - Color to return if $color is light.
+/// @param {color} $no - Color to return if $color is dark.
+/// @param {percentage} $threshold - Threshold of lightness to check against.
+///
+/// @return The $yes color or $no color.
+@function foreground($color, $yes: #000, $no: #fff, $threshold: 60%) {
+  @if (lightness($color) > $threshold) {
+    @return $yes;
+  }
+  @else {
+    @return $no;
+  }
+}
+
+/// Scales a color to be lighter if it's light, or darker if it's dark. Use this function to "fade" a color appropriate to its lightness.
+///
+/// @param {color} $color - Color to scale.
+/// @param {percentage} $scale - Amount to scale up or down.
+/// @param {percentage} $threshold - Threshold of lightness to check against.
+///
+/// @return A scaled color.
+@function smart-scale($color, $scale: 5%, $threshold: 60%) {
+  @if lightness($color) > $threshold {
+    $scale: -$scale;
+  }
+  @return scale-color($color, $lightness: $scale);
+}

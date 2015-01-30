@@ -1,0 +1,384 @@
+<html>
+
+<head>
+  <title>Supercollider Test</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.0/css/foundation.css"></link>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+  <style>
+    h1[id] {
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    code[class*="lang-"] {
+      display: block;
+      padding: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="contain-to-grid" style="margin-bottom: 2rem">
+    <nav class="top-bar">
+      <ul class="title-area">
+        <li class="name"><h1><a href="#">Supercollider</a></h1></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="row">
+    <div class="medium-4 large-3 columns">
+      <ul class="side-nav">
+        <li><a href="breakpoints.html">Breakpoints</a></li>
+        <li><a href="exports.html">Exports</a></li>
+        <li><a href="functions.html">Functions</a></li>
+        <li><a href="grid.html">Grid</a></li>
+        <li><a href="mixins.html">Mixins</a></li>
+        <li><a href="typography.html">Typography</a></li>
+      </ul>
+    </div>
+    <div class="medium-8 large-9 columns">
+      <h1 id="functions" class="styleguide">Functions</h1>
+
+<p>We use these internal functions to make the framework more robust.</p>
+
+
+<hr>
+
+<section>
+  <h2>Using Sass</h2>
+
+  <section>
+    <h3>Variables</h3>
+    <table>
+      <tr><th>Name</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+      <tr>
+        <td><code>$rem-base</code></td>
+        <td>Number</td>
+        <td><code>16px</code></td>
+        <td><p>Defines the base font size of the page, which is the value <code>1rem</code> is equal to.</p>
+</td>
+      </tr>
+    </table>
+  </section>
+
+  <hr>
+
+
+
+  <section>
+    <h3>Functions</h3>
+
+    <section>
+      <h4>foreground</h4>
+
+      <pre><code>@mixin foreground($color, $yes, $no, $threshold) { }</code></pre>
+
+      <p><p>Checks the lightness of $color, and if it passes the $threshold of lightness, it returns the <code>$yes</code> color. Otherwise, it returns the <code>$no</code> color. Use this function to dynamically output a foreground color based on a given background color.</p>
+</p>
+
+      <table>
+        <tr><th>Name</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td><code>$color</code></td>
+          <td>color</td>
+          <td></td>
+          <td><p>Color to check the lightness of.</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$yes</code></td>
+          <td>color</td>
+          <td></td>
+          <td><p>Color to return if $color is light.</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$no</code></td>
+          <td>color</td>
+          <td></td>
+          <td><p>Color to return if $color is dark.</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$threshold</code></td>
+          <td>percentage</td>
+          <td></td>
+          <td><p>Threshold of lightness to check against.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+    <section>
+      <h4>smart-scale</h4>
+
+      <pre><code>@mixin smart-scale($color, $scale, $threshold) { }</code></pre>
+
+      <p><p>Scales a color to be lighter if it&#39;s light, or darker if it&#39;s dark. Use this function to &quot;fade&quot; a color appropriate to its lightness.</p>
+</p>
+
+      <table>
+        <tr><th>Name</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td><code>$color</code></td>
+          <td>color</td>
+          <td></td>
+          <td><p>Color to scale.</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$scale</code></td>
+          <td>percentage</td>
+          <td></td>
+          <td><p>Amount to scale up or down.</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$threshold</code></td>
+          <td>percentage</td>
+          <td></td>
+          <td><p>Threshold of lightness to check against.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+    <section>
+      <h4>map-serialize</h4>
+
+      <pre><code>@mixin map-serialize($map) { }</code></pre>
+
+      <p><p>Map Serialize
+Converts a Sass map to a URL-encoded string, like this: <code>key1=value1&amp;key2=value2</code>. We use this function to encode the media queries in the <code>$breakpoints</code> variable, so it can be transferred to our JavaScript for use there.</p>
+</p>
+
+      <table>
+        <tr><th>Name</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td><code>$map</code></td>
+          <td>map</td>
+          <td></td>
+          <td><p>Map to convert.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+    <section>
+      <h4>map-next</h4>
+
+      <pre><code>@mixin map-next($map, $key) { }</code></pre>
+
+      <p><p>Map Next
+Find the next key in a map.</p>
+</p>
+
+      <table>
+        <tr><th>Name</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td><code>$map</code></td>
+          <td>map</td>
+          <td></td>
+          <td><p>Map to traverse.</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$key</code></td>
+          <td>mixed</td>
+          <td></td>
+          <td><p>Key to use as a starting point.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+    <section>
+      <h4>strip-unit</h4>
+
+      <pre><code>@mixin strip-unit($num) { }</code></pre>
+
+      <p><p>Strip Unit
+Removes the unit (e.g. px, em, rem) from a value, returning the number only.</p>
+</p>
+
+      <table>
+        <tr><th>Name</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td><code>$num</code></td>
+          <td>number</td>
+          <td></td>
+          <td><p>Number to strip unit from.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+    <section>
+      <h4>turn-to-deg</h4>
+
+      <pre><code>@mixin turn-to-deg($value) { }</code></pre>
+
+      <p><p>Turn to Degrees
+Converts a turn unit to the equivalent unit in degrees. 1turn is equal to 360 degrees. Not all browsers support turn, so this function allows us to use turns while outputting a value that all browsers understand.</p>
+</p>
+
+      <table>
+        <tr><th>Name</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td><code>$value</code></td>
+          <td>number</td>
+          <td></td>
+          <td><p>Turn value to convert.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+    <section>
+      <h4>convert-to-rem</h4>
+
+      <pre><code>@mixin convert-to-rem($value) { }</code></pre>
+
+      <p><p>Convert to Rem
+Converts a pixel value to matching rem value. <em>Any</em> value passed, regardless of unit, is assumed to be a pixel value. By default, the base pixel value used to calculate the rem value is taken from the <code>$rem-base</code> variable.</p>
+</p>
+
+      <table>
+        <tr><th>Name</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td><code>$value</code></td>
+          <td>number</td>
+          <td></td>
+          <td><p>Pixel value to convert.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+    <section>
+      <h4>rem-calc</h4>
+
+      <pre><code>@mixin rem-calc($values) { }</code></pre>
+
+      <p><p>Rem Calculator
+Converts one or more pixel values into matching rem values. This function works a lot like <code>convert-to-rem</code>, except it can convert more than one value at once, which is useful when setting multiple values on a <code>margin</code> or <code>padding</code> property.</p>
+</p>
+
+      <table>
+        <tr><th>Name</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td><code>$values</code></td>
+          <td>number|list</td>
+          <td></td>
+          <td><p>One or more values to convert. Be sure to separate them with spaces and not commas. If you need to convert a comma-separated list, wrap the list in parentheses.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+    <section>
+      <h4>hasvalue</h4>
+
+      <pre><code>@mixin hasvalue($val) { }</code></pre>
+
+      <p><p>Determine if a value is not falsey, in CSS terms. Falsey values are <code>null</code>, <code>none</code>, and <code>0</code> with any unit.</p>
+</p>
+
+      <table>
+        <tr><th>Name</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td><code>$val</code></td>
+          <td></td>
+          <td></td>
+          <td><p>Value to check.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+    <section>
+      <h4>get-side</h4>
+
+      <pre><code>@mixin get-side($val, $side) { }</code></pre>
+
+      <p><p>Determine a top/right/bottom/right value on a padding, margin, etc. property, no matter how many values were passed in. Use this function if you need to know the specific side of a value, but don&#39;t know if the value is using shorthand.</p>
+</p>
+
+      <table>
+        <tr><th>Name</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td><code>$val</code></td>
+          <td>list|number</td>
+          <td></td>
+          <td><p>Value to analyze. Should be a shorthand sizing property, e.g. &quot;1em 2em 1em&quot;</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$side</code></td>
+          <td>keyword</td>
+          <td></td>
+          <td><p>Side to return. Should be top, right, bottom, or left.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+    <section>
+      <h4>get-border-value</h4>
+
+      <pre><code>@mixin get-border-value($val, $elem, $If) { }</code></pre>
+
+      <p><p>Given border $val, find a specific element of the border, which is $elem. The possible values for $elem are width, style, and color.</p>
+</p>
+
+      <table>
+        <tr><th>Name</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td><code>$val</code></td>
+          <td>list</td>
+          <td></td>
+          <td><p>Border value to find a value in.</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$elem</code></td>
+          <td>keyword</td>
+          <td></td>
+          <td><p>Border component to extract.</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$If</code></td>
+          <td></td>
+          <td></td>
+          <td><p>the value exists, returns the value. If the value is not in the border definition, the function will return a 0px width, solid style, or black border.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+    <section>
+      <h4>get-shadow-value</h4>
+
+      <pre><code>@mixin get-shadow-value($val, $elem) { }</code></pre>
+
+      <p><p>Given shadow value $val, find a specific element of the shadow, which is $elem. The possible values for $elem are x, y, size, spread, color, and inset.</p>
+</p>
+
+      <table>
+        <tr><th>Name</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        <tr>
+          <td><code>$val</code></td>
+          <td>list</td>
+          <td></td>
+          <td><p>Shadow value to find a value in.</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$elem</code></td>
+          <td>keyword</td>
+          <td></td>
+          <td><p>Shadow component to extract.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+  </section>
+</section>
+
+    </div>
+  </div>
+</body>
+
+</html>

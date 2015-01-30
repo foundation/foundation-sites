@@ -1,0 +1,27 @@
+////
+/// @group typography
+////
+
+/// A map of intervals to use to scale type at various breakpoints. For each item, the key should be the name of a breakpoint used in the `$breakpoints` map, and the value is an integer representing the interval to use. For example, 1.618 is the golden ratio.
+/// @type Map
+$ms-intervals: (
+  default: 1.2,
+  medium: 1.333,
+  large: 1.4,
+) !default;
+
+/// Calculates x^y, where x is `$base` and y is `$power`.
+/// @access private
+/// @param {Number} $base - Base number (x).
+/// @param {Number} $power - Exponent (y).
+@function pow($base, $power) {
+  @if $power == 0 { @return 1; }
+  @return $base * pow($base, $power - 1);
+}
+
+/// Calculates a number at position `$n` on a modular scale, using `$ratio` to move up the scale.
+/// @param {Number} $n [1] - Position on the scale to calculate. `1` is the starting point.
+/// @param {Number} $ratio - Interval to use in calculation.
+@function modular-scale($n, $ratio) {
+  @return pow($ratio, $n - 1) * 1rem;
+}

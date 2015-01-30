@@ -1,0 +1,87 @@
+////
+/// @group grid
+////
+
+/// Outputs CSS classes for the grid.
+///
+/// @param {string} $row - Class to use for rows.
+/// @param {string} $column - Class to use for columns.
+@mixin foundation-grid-classes(
+  $row: 'row',
+  $column: 'columns',
+  $push: 'push',
+  $pull: 'pull',
+  $center: 'center',
+  $uncenter: 'uncenter',
+  $collapse: 'collapse',
+  $uncollapse: 'uncollapse',
+  $end: 'end',
+  $breakpoints: (small medium large)
+) {
+
+// Row
+.#{$row} {
+  @include grid-row;
+  
+  // Nested rows
+  & & {
+    @include grid-row(nest, $cf: false);
+  }
+
+  // Collapsing
+  &.#{$collapse} {
+    > .#{$column} { @include grid-col-collapse; }
+  }
+  &.#{$uncollapse} {
+    > .#{$column} { @include grid-col-uncollapse; }
+  }
+  @each $size in $breakpoints {
+    @include breakpoint($size) {
+      &.#{$size}-#{$collapse} {
+        > .#{$column} { @include grid-col-collapse; }
+      }
+      &.#{$size}-#{$uncollapse} {
+        > .#{$column} { @include grid-col-uncollapse; }
+      }
+    }
+  }
+}
+
+// Column
+.#{$column} {
+  @include grid-col;
+
+  &.#{$end} {
+    @include grid-col-end;
+  }
+}
+@each $size in $breakpoints {
+  @include breakpoint($size) {
+    @for $i from 1 through $grid-column-count {
+      // Column width
+      .#{$size}-#{$i} {
+        width: grid-column($i);
+      }
+      // Source ordering
+      @if $i < $grid-column-count {
+        .#{$size}-#{$push}-#{$i} {
+          @include grid-col-pos($i);
+        }
+        .#{$size}-#{$pull}-#{$i} {
+          @include grid-col-pos(-$i);
+        }
+      }
+    }
+    // Positioning
+    .#{$size}-#{$center} {
+      @include grid-col-pos(center);
+    }
+    .#{$size}-#{$uncenter},
+    .#{$size}-#{$push}-0,
+    .#{$size}-#{$pull}-0 {
+      @include grid-col-unpos;
+    }
+  }
+}
+
+}
