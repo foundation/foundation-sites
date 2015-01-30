@@ -2,7 +2,7 @@ var gulp = require('gulp');
 var $    = require('gulp-load-plugins')();
 
 var files = {
-  sassSrc: 'docs/assets/scss/docs.scss',
+  sassSrc: 'docs_old/assets/scss/docs.scss',
   sassPaths: ['scss'],
   javascript: ['js/foundation/foundation.*.js', 'js/foundation/foundation.js']
 }
@@ -10,6 +10,7 @@ var files = {
 gulp.task('html', function() {
   gulp.src('docs/pages/**/*.html')
     .pipe($.assemble({
+      flatten: false,
       assets: 'build/assets',
       data: ['docs/data/*.json'],
       partials: ['docs/includes/**/*.{html,scss}'],
