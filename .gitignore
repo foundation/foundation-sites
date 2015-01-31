@@ -15,7 +15,7 @@
 
 bower_components
 bundle
-build
+build/*
 dist
 /docs2/public/*
 vendor
@@ -47,7 +47,6 @@ test/scss/output-test
 test/tmp
 test/version_tmp
 tmp
-
 
 pizza/
 docs/*

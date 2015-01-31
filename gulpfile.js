@@ -1,12 +1,28 @@
 var gulp  = require('gulp');
 var Super = require('supercollider');
 var $     = require('gulp-load-plugins')();
+$.uncomment = require('./lib/uncomment-css');
 
 var files = {
   sassSrc: 'docs_old/assets/scss/docs.scss',
   sassPaths: ['scss'],
   javascript: ['js/foundation/foundation.*.js', 'js/foundation/foundation.js']
 }
+
+gulp.task('dist', function() {
+  gulp.src('scss/foundation.scss')
+    .pipe($.sass({
+      includePaths: files.sassPaths
+    }))
+    .pipe($.uncomment())
+    .pipe(gulp.dest('dist/css'))
+    .pipe($.minifyCss({
+      advanced: false,
+      keepSpecialComments: 0
+    }))
+    .pipe($.rename('foundation.min.css'))
+    .pipe(gulp.dest('dist/css'));
+});
 
 gulp.task('html', function() {
   gulp.src('docs/pages/**/*.html')
