@@ -1,6 +1,7 @@
 {
   "name": "zurb-foundation",
   "version": "5.5.1",
+  "main": "js/foundation/foundation.js",
   "devDependencies": {
     "assemble": "~0.4.37",
     "grunt": "~0.4.4",
