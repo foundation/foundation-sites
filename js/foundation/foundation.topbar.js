@@ -79,10 +79,10 @@
            if (smallMatch && medMatch && lrgMatch) { return true; }
        }
 
-       // check for ios
+       // fix for iOS browsers
        if (sticky && navigator.userAgent.match(/(iPad|iPhone|iPod)/g)) {
         return true;
-       };
+       }
        
        return false;
     },
