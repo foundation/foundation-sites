@@ -168,10 +168,11 @@
 
         this.key_up_on(modal);    // PATCH #3: turning on key up capture only when a reveal window is open
         
+        // Prevent namespace event from triggering twice
         modal.on('open.fndtn.reveal', function(e) {
-          if (e.namespace !== 'fndnt.reveal') return;
+          if (e.namespace !== 'fndtn.reveal') return;
         });
-        
+
         modal.on('open.fndtn.reveal').trigger('open.fndtn.reveal');
 
         if (open_modal.length < 1) {
