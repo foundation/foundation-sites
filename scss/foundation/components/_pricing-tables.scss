@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 //
 // @variables
@@ -132,7 +132,7 @@ $price-cta-padding: rem-calc(20 20 0) !default;
   padding: $price-cta-padding;
 }
 
-@include exports("pricing-table") {
+@include exports('pricing-table') {
   @if $include-html-pricing-classes {
 
     /* Pricing Tables */

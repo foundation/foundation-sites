@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 //
 // @variables
@@ -21,7 +21,7 @@ $last-child-float: $opposite-direction !default;
 
 // Deprecated: We'll drop support for this in 5.1, use grid-calc()
 @function gridCalc($colNumber, $totalColumns) {
-  @warn "gridCalc() is deprecated, use grid-calc()";
+  @warn 'gridCalc() is deprecated, use grid-calc()';
   @return grid-calc($colNumber, $totalColumns);
 }
 
@@ -152,7 +152,7 @@ $last-child-float: $opposite-direction !default;
 
 // Create presentational classes for grid
 //
-// $size - Name of class to use, i.e. "large" will generate .large-1, .large-2, etc.
+// $size - Name of class to use, i.e. 'large' will generate .large-1, .large-2, etc.
 @mixin grid-html-classes($size) {
 
   @for $i from 0 through $total-columns - 1 {
@@ -194,7 +194,7 @@ $last-child-float: $opposite-direction !default;
     float: $default-float;
   }
 
-  // Fighting [class*="column"] + [class*="column"]:last-child
+  // Fighting [class*='column'] + [class*='column']:last-child
   .column.#{$size}-centered:last-child,
   .columns.#{$size}-centered:last-child{
     float: none;
@@ -227,7 +227,7 @@ $last-child-float: $opposite-direction !default;
 	}
 }
 
-@include exports("grid") {
+@include exports('grid') {
   @if $include-html-grid-classes {
     .row {
       @include grid-row;
@@ -247,8 +247,8 @@ $last-child-float: $opposite-direction !default;
     .column,
     .columns { @include grid-column($columns:$total-columns); }
 
-    [class*="column"] + [class*="column"]:last-child { float: $last-child-float; }
-    [class*="column"] + [class*="column"].end { float: $default-float; }
+    [class*='column'] + [class*='column']:last-child { float: $last-child-float; }
+    [class*='column'] + [class*='column'].end { float: $default-float; }
 
     @media #{$small-up} {
       @include grid-html-classes($size:small);

@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 //
 // @variables
@@ -188,7 +188,7 @@ $button-disabled-cursor: $cursor-default-value !default;
 
 // @MIXIN
 //
-// We use this to quickly create buttons with a single mixin. As @jaredhardy puts it, "the kitchen sink mixin"
+// We use this to quickly create buttons with a single mixin. As @jaredhardy puts it, 'the kitchen sink mixin'
 //
 // $padding - Used to build padding for buttons Default: $button-med ||= rem-calc(12)
 // $bg - Primary color set in settings file. Default: $button-bg.
@@ -210,7 +210,7 @@ $button-disabled-cursor: $cursor-default-value !default;
 }
 
 
-@include exports("button") {
+@include exports('button') {
   @if $include-html-button-classes {
 
     // Default styles applied outside of media query

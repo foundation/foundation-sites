@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 //
 // @variables
@@ -58,10 +58,10 @@ $callout-panel-link-color-hover: scale-color($callout-panel-link-color, $lightne
 
     @if $adjust {
       // We set the font color based on the darkness of the bg.
-      @if $bg-lightness >= 50% { 
+      @if $bg-lightness >= 50% {
         h1,h2,h3,h4,h5,h6,p,li,dl { color: $panel-font-color; }
       }
-      @else { 
+      @else {
         h1,h2,h3,h4,h5,h6,p,li,dl { color: $panel-font-color-alt; }
       }
 
@@ -74,7 +74,7 @@ $callout-panel-link-color-hover: scale-color($callout-panel-link-color, $lightne
   }
 }
 
-@include exports("panel") {
+@include exports('panel') {
   @if $include-html-panel-classes {
 
     /* Panels */

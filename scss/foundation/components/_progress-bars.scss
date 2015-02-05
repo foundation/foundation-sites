@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 //
 // @variables
@@ -50,7 +50,7 @@ $progress-meter-alert-color: $alert-color !default;
 }
 
 
-@include exports("progress-bar") {
+@include exports('progress-bar') {
   @if $include-html-media-classes {
 
     /* Progress Bar */

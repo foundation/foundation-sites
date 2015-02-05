@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 
 // @name
@@ -241,7 +241,7 @@ $icon-bar-disabled-cursor: $cursor-disabled-value !default;
     @include icon-bar-style($bar-bg, $bar-font-color, $bar-font-color-hover, $bar-hover-color, $bar-icon-color, $bar-icon-color-hover, $bar-active-color, $base-style, $disabled);
 }
 
-@include exports("icon-bar") {
+@include exports('icon-bar') {
   @if $include-html-icon-bar-classes {
     .icon-bar {
       @include icon-bar;

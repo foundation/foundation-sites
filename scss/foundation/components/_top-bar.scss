@@ -2,10 +2,10 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
-@import "grid";
-@import "buttons";
-@import "forms";
+@import 'global';
+@import 'grid';
+@import 'buttons';
+@import 'forms';
 
 //
 // Top Bar Variables
@@ -86,7 +86,7 @@ $topbar-divider-border-bottom: solid 1px scale-color($topbar-bg-color, $lightnes
 $topbar-divider-border-top: solid 1px scale-color($topbar-bg-color, $lightness: -50%) !default;
 
 // Sticky Class
-$topbar-sticky-class: ".sticky" !default;
+$topbar-sticky-class: '.sticky' !default;
 $topbar-arrows: true !default; //Set false to remove the triangle icon from the menu item
 $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text from dropdown subnavigation li
 
@@ -103,7 +103,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
   position: absolute !important; // Reset the position from static to absolute
 }
 
-@include exports("top-bar") {
+@include exports('top-bar') {
 
   @if $include-html-top-bar-classes {
 
@@ -111,7 +111,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
     // This class is generated despite the value of $include-html-top-bar-classes
     // to ensure width calculations work correctly.
     meta.foundation-mq-topbar {
-      font-family: "/" + unquote($topbar-media-query) + "/";
+      font-family: '/' + unquote($topbar-media-query) + '/';
       width: $topbar-breakpoint;
     }
 
@@ -169,11 +169,11 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
       form,
       input { margin-bottom: 0; }
 
-      input { 
-        height: $topbar-input-height; 
-        padding-top: .35rem; 
-        padding-bottom: .35rem; 
-        font-size: $topbar-button-font-size; 
+      input {
+        height: $topbar-input-height;
+        padding-top: .35rem;
+        padding-bottom: .35rem;
+        font-size: $topbar-button-font-size;
       }
 
       .button, button {
@@ -235,7 +235,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
           line-height: $topbar-height;
         }
 
-        // Adding the class "menu-icon" will add the 3-line icon people love and adore.
+        // Adding the class 'menu-icon' will add the 3-line icon people love and adore.
         &.menu-icon {
           top: 50%;
           margin-top: -16px;
@@ -262,7 +262,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
               // $color - icon color
               // $hover-color - icon color during hover, here it isn't set b/c it would override $topbar-menu-icon-color-toggled
               // $offcanvas - Set to false of @include in topbar
-              @include hamburger(16px, false, 0, 1px, 6px, $topbar-menu-icon-color, "", false);
+              @include hamburger(16px, false, 0, 1px, 6px, $topbar-menu-icon-color, '', false);
             }
           }
         }
@@ -306,7 +306,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
       }
 
       .divider,
-      [role="separator"] {
+      [role='separator'] {
         border-top: $topbar-divider-border-top;
         clear: both;
         height: 1px;
@@ -571,7 +571,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
               @if ($topbar-dropdown-arrows){
                 &:after {
                   border: none;
-                  content: "\00bb";
+                  content: '\00bb';
                   top: 1rem;
                   margin-top: -1px;
                   #{$opposite-direction}: 5px;
@@ -626,7 +626,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
         }
 
         & > ul > .divider,
-        & > ul > [role="separator"] {
+        & > ul > [role='separator'] {
           border-bottom: none;
           border-top: none;
           border-#{$opposite-direction}: $topbar-divider-border-bottom;

@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 //
 // Tooltip Variables
@@ -31,7 +31,7 @@ $tooltip-rounded: $global-rounded !default;
 $tooltip-pip-size: 5px !default;
 $tooltip-max-width: 300px !default;
 
-@include exports("tooltip") {
+@include exports('tooltip') {
   @if $include-html-tooltip-classes {
 
     /* Tooltips */

@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 //
 // @variables
@@ -86,7 +86,7 @@ $label-font-family: $body-font-family !default;
   @include label-style($bg, $radius);
 }
 
-@include exports("label") {
+@include exports('label') {
   @if $include-html-label-classes {
     .label {
       @include label-base;

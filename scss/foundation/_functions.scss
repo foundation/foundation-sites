@@ -79,7 +79,7 @@ $modules: () !default;
               $return: append($return, unquote('#{$type}#{$selector}'), comma)
             }
         } @else {
-            $return: append($return, unquote('#{$selector}[type="#{$type}"]'), comma)
+            $return: append($return, unquote('#{$selector}[type='#{$type}']'), comma)
         }
     }
 

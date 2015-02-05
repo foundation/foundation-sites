@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 //
 // @variables
@@ -63,7 +63,7 @@ $dropdown-button-pip-top-lrg: (-$button-pip-lrg / 2) + rem-calc(3) !default;
     // This creates the base styles for the triangle pip
     &::after {
       position: absolute;
-      content: "";
+      content: '';
       width: 0;
       height: 0;
       display: block;
@@ -119,7 +119,7 @@ $dropdown-button-pip-top-lrg: (-$button-pip-lrg / 2) + rem-calc(3) !default;
   }
 }
 
-@include exports("dropdown-button") {
+@include exports('dropdown-button') {
   @if $include-html-button-classes {
     .dropdown.button, button.dropdown { @include dropdown-button;
       &.tiny { @include dropdown-button(tiny,$base-style:false); }

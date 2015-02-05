@@ -2,8 +2,8 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
-@import "type";
+@import 'global';
+@import 'type';
 
 // Off Canvas Tab Bar Variables
 $include-html-off-canvas-classes: $include-html-classes !default;
@@ -74,7 +74,7 @@ $off-canvas-overlay-background: rgba($white, 0.2) !default;
 $off-canvas-overlay-background-hover: rgba($white, 0.05) !default;
 
 // Transition Variables
-$menu-slide: "transform 500ms ease" !default;
+$menu-slide: 'transform 500ms ease' !default;
 
 
 // MIXINS
@@ -284,7 +284,7 @@ $menu-slide: "transform 500ms ease" !default;
 //
 // DEFAULT CLASSES
 //
-@include exports("offcanvas") {
+@include exports('offcanvas') {
   @if $include-html-off-canvas-classes {
 
     .off-canvas-wrap { @include off-canvas-wrap; }
@@ -464,7 +464,7 @@ $menu-slide: "transform 500ms ease" !default;
 //Left double angle quote or Right double angle quote chars
 @mixin icon-double-arrows ($position){
   @if $position == left {
-    content: "\AB";
+    content: '\AB';
     @if $text-direction == rtl {
       margin-left: 0.5rem;
     } @else {
@@ -472,7 +472,7 @@ $menu-slide: "transform 500ms ease" !default;
     }
   }
   @if $position == right {
-    content: "\BB";
+    content: '\BB';
     @if $text-direction == rtl {
       margin-right: 0.5rem;
     } @else {

@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 //
 // @variables
@@ -34,7 +34,7 @@ $clearing-carousel-height: 120px !default;
 $clearing-carousel-thumb-width: 120px !default;
 $clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
 
-@include exports("clearing") {
+@include exports('clearing') {
   @if $include-html-clearing-classes {
     // We decided to not create a mixin for Clearing because it relies
     // on predefined classes and structure to work properly.
@@ -52,7 +52,7 @@ $clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
         margin-#{$opposite-direction}: 10px;
       }
 
-      &[class*="block-grid-"] li {
+      &[class*='block-grid-'] li {
         margin-#{$opposite-direction}: 0;
       }
     }

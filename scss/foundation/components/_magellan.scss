@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 //
 // @variables
@@ -12,7 +12,7 @@ $include-html-magellan-classes: $include-html-classes !default;
 $magellan-bg: $white !default;
 $magellan-padding: 10px !default;
 
-@include exports("magellan") {
+@include exports('magellan') {
   @if $include-html-magellan-classes {
 
     #{data('magellan-expedition')}, #{data('magellan-expedition-clone')} {

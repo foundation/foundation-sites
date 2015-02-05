@@ -2,8 +2,8 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
-@import "grid";
+@import 'global';
+@import 'grid';
 
 //
 // @name _reveal.scss
@@ -40,8 +40,8 @@ $reveal-border-style: solid !default;
 $reveal-border-width: 1px !default;
 $reveal-border-color: $steel !default;
 
-$reveal-modal-class: "reveal-modal" !default;
-$close-reveal-modal-class: "close-reveal-modal" !default;
+$reveal-modal-class: 'reveal-modal' !default;
+$close-reveal-modal-class: 'close-reveal-modal' !default;
 
 // Set base z-index
 $z-index-base: 1005;
@@ -162,7 +162,7 @@ $z-index-base: 1005;
   cursor: $cursor-pointer-value;
 }
 
-@include exports("reveal") {
+@include exports('reveal') {
   @if $include-html-reveal-classes {
 
     // Reveal Modals
@@ -197,7 +197,7 @@ $z-index-base: 1005;
         max-width: none !important;
         margin-left: 0 !important;
       }
-      
+
       // Modals pushed to back
       &.toback {
         z-index: $z-index-base - 2;
