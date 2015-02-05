@@ -169,11 +169,11 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
       form,
       input { margin-bottom: 0; }
 
-      input { 
-        height: $topbar-input-height; 
-        padding-top: .35rem; 
-        padding-bottom: .35rem; 
-        font-size: $topbar-button-font-size; 
+      input {
+        height: $topbar-input-height;
+        padding-top: .35rem;
+        padding-bottom: .35rem;
+        font-size: $topbar-button-font-size;
       }
 
       .button, button {
@@ -379,7 +379,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
 
         & > a {
           &:after {
-            @if ($topbar-arrows){
+            @if ($topbar-arrows) {
               @include css-triangle($topbar-dropdown-toggle-size, rgba($topbar-dropdown-toggle-color, $topbar-dropdown-toggle-alpha), $default-float);
             }
             margin-#{$opposite-direction}: $topbar-link-padding;
@@ -540,7 +540,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
         }
 
         .has-dropdown {
-          @if($topbar-arrows){
+          @if($topbar-arrows) {
             & > a {
               padding-#{$opposite-direction}: $topbar-link-padding + $topbar-link-dropdown-padding !important;
               &:after {
@@ -568,7 +568,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
 
           .dropdown li.has-dropdown {
             & > a {
-              @if ($topbar-dropdown-arrows){
+              @if ($topbar-dropdown-arrows) {
                 &:after {
                   border: none;
                   content: "\00bb";
