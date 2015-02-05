@@ -1,7 +1,10 @@
 # Adding a Building Block
 
 ## Pull down the gh-pages branch from the Foundation repo.
-command - git clone -b gh-pages https://github.com/zurb/foundation.git
+command 
+- git clone -b gh-pages https://github.com/zurb/foundation.git
+- git checkout -b gh-pages
+- git pull origin gh-pages
 
 ## Duplicate the index.html page. 
 This is the standard page that comes with Foundation, which already has the stylesheets and JS attached. From here, build out your pattern. Make sure to take note of any additional styles and JS you include. 
