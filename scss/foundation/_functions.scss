@@ -30,7 +30,7 @@ $modules: () !default;
   @if length($range) <= 0 {
     @return 0;
   }
-  @return nth($range,1);
+  @return nth($range, 1);
 }
 
 @function upper-bound($range) {

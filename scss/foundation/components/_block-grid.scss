@@ -96,7 +96,7 @@ $block-grid-media-queries: true !default;
 @mixin block-grid-html-classes($size,$include-spacing) {
   @for $i from 1 through $block-grid-elements {
     .#{$size}-block-grid-#{($i)} {
-      @include block-grid($i,$block-grid-default-spacing,$include-spacing,false);
+      @include block-grid($i, $block-grid-default-spacing, $include-spacing, false);
     }
   }
 }
