@@ -41,7 +41,7 @@ $topbar-menu-icon-color-toggled: #888 !default;
 // Transitions and breakpoint styles
 $topbar-transition-speed: 300ms !default;
 $topbar-breakpoint: emCalc(940px) !default; // Change to 9999px for always mobile layout
-$topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !default;
+$topbar-media-query: "only screen and (min-width:"$topbar-breakpoint")" !default;
 
 
 /* Wrapped around .top-bar to contain to grid width */
@@ -53,7 +53,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
 // Wrapped around .top-bar to make it fixed at the top
 .fixed {
   width: 100%;
-  #{$default-float}: 0;
+  $default-float: 0;
   position: fixed;
   top: 0;
   z-index: 99;
@@ -107,7 +107,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
   // Menu toggle button on small devices
   .toggle-topbar {
     position: absolute;
-    #{$opposite-direction}: 0;
+    $opposite-direction: 0;
     top: 0;
 
     a {
@@ -124,10 +124,10 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
 
     // Adding the class "menu-icon" will add the 3-line icon people love and adore.
     &.menu-icon {
-      #{$opposite-direction}: $topbar-height / 3;
+      $opposite-direction: $topbar-height / 3;
       top: 50%;
       margin-top: -16px;
-      padding-#{$default-float}: 40px;
+      padding-$default-float: 40px;
 
       a {
         text-indent: -48px;
@@ -139,7 +139,7 @@ $topbar-media-query: "only screen and (min-width:"#{$topbar-breakpoint}")" !defa
 
         span {
           position: absolute;
-          #{$opposite-direction}: 0;
+          $opposite-direction: 0;
           display: block;
           width: 16px;
           height: 0;
