@@ -153,6 +153,7 @@
       var settings = modal.data(self.attr_name(true) + '-init');
       settings = settings || this.settings;
 
+
       if (modal.hasClass('open') && target.attr('data-reveal-id') == modal.attr('id')) {
         return self.close(modal);
       }
@@ -166,6 +167,11 @@
         }
 
         this.key_up_on(modal);    // PATCH #3: turning on key up capture only when a reveal window is open
+        
+        // Prevent namespace event from triggering twice
+        modal.on('open.fndtn.reveal', function(e) {
+          if (e.namespace !== 'fndtn.reveal') return;
+        });
 
         modal.on('open.fndtn.reveal').trigger('open.fndtn.reveal');
 
