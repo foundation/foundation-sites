@@ -462,7 +462,7 @@ $menu-slide: "transform 500ms ease" !default;
   }
 }
 //Left double angle quote or Right double angle quote chars
-@mixin icon-double-arrows ($position){
+@mixin icon-double-arrows ($position) {
   @if $position == left {
     content: "\AB";
     @if $text-direction == rtl {
