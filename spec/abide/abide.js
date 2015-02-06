@@ -102,6 +102,20 @@ describe('abide:', function() {
       expect($('input[name="user_name"]')).not.toHaveData('invalid');
     });
 
+    it('should not focus hidden fields that are not required', function() {
+      $(document).foundation();
+      hidden_element = 'input[name="utf8"]';
+      first_element = 'input[name="user_name"]';
+
+      spyOnEvent(hidden_element, 'focus');
+      spyOnEvent(first_element, 'focus');
+
+      $('form').submit();
+
+      expect('focus').not.toHaveBeenTriggeredOn(hidden_element);
+      expect('focus').toHaveBeenTriggeredOn(first_element);
+    });
+
   });
 
   describe('advanced validation', function() {
