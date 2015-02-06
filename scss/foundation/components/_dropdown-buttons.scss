@@ -53,7 +53,7 @@ $dropdown-button-pip-top-lrg: (-$button-pip-lrg / 2) + rem-calc(3) !default;
 // $pip-color - Color of the little triangle that points to the dropdown. Default: $white.
 // $base-style - Add in base-styles. This can be set to false. Default:true
 
-@mixin dropdown-button($padding:medium, $pip-color:$white, $base-style:true) {
+@mixin dropdown-button($padding:medium, $base-style:true) {
 
   // We add in base styles, but they can be negated by setting to 'false'.
   @if $base-style {
@@ -111,11 +111,6 @@ $dropdown-button-pip-top-lrg: (-$button-pip-lrg / 2) + rem-calc(3) !default;
       #{$opposite-direction}: $dropdown-button-pip-opposite-lrg;
       margin-top: $dropdown-button-pip-top-lrg;
     }
-  }
-
-  // We can control the pip color. We didn't use logic in this case, just set it and forget it.
-  @if $pip-color {
-    &::after { border-color: $pip-color transparent transparent transparent; }
   }
 }
 
