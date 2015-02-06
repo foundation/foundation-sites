@@ -53,7 +53,7 @@ $dropdown-button-pip-top-lrg: (-$button-pip-lrg / 2) + rem-calc(3) !default;
 // $pip-color - Color of the little triangle that points to the dropdown. Default: $white.
 // $base-style - Add in base-styles. This can be set to false. Default:true
 
-@mixin dropdown-button($padding:medium, $pip-color:$white, $base-style:true) {
+@mixin dropdown-button($padding:medium, $pip-color:$dropdown-button-pip-color, $base-style:true) {
 
   // We add in base styles, but they can be negated by setting to 'false'.
   @if $base-style {
