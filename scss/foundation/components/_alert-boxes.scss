@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 //
 // Alert Box Variables
@@ -107,7 +107,7 @@ $alert-transition-ease: ease-out !default;
   @include radius($radius);
 }
 
-@include exports("alert-box") {
+@include exports('alert-box') {
   @if $include-html-alert-classes {
     .alert-box {
       @include alert;

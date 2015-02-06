@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 //
 // @name _thumbs.scss
@@ -36,8 +36,8 @@ $thumb-transition-speed: 200ms !default;
 // $box-shadow - Box shadow to apply to thumbnail. Default: $thumb-box-shadow.
 // $box-shadow-hover - Box shadow to apply on hover. Default: $thumb-box-shadow-hover.
 @mixin thumb(
-  $border-width:$thumb-border-width, 
-  $box-shadow:$thumb-box-shadow, 
+  $border-width:$thumb-border-width,
+  $box-shadow:$thumb-box-shadow,
   $box-shadow-hover:$thumb-box-shadow-hover) {
   line-height: 0;
   display: inline-block;
@@ -52,7 +52,7 @@ $thumb-transition-speed: 200ms !default;
 }
 
 
-@include exports("thumb") {
+@include exports('thumb') {
   @if $include-html-media-classes {
 
     /* Image Thumbnails */

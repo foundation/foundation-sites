@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 //
 // @variables
@@ -48,7 +48,7 @@ $inline-list-children-display: block !default;
   }
 }
 
-@include exports("inline-list") {
+@include exports('inline-list') {
   @if $include-html-inline-list-classes {
     .inline-list {
       @include inline-list();

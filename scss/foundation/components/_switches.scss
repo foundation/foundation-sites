@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 //
 // @name
@@ -84,7 +84,7 @@ $switch-active-color: $primary-color !default;
   // the state of the input.
 
   label:after {
-    content: "";
+    content: '';
     display: block;
     background: $switch-paddle-bg;
     position: absolute;
@@ -207,7 +207,7 @@ $switch-active-color: $primary-color !default;
     @include switch-style($paddle-bg, $active-color, $radius, $base-style);
 }
 
-@include exports("switch") {
+@include exports('switch') {
   @if $include-html-form-classes {
       .switch {
         @include switch;

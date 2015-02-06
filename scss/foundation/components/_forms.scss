@@ -2,8 +2,8 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
-@import "buttons";
+@import 'global';
+@import 'buttons';
 
 //
 // @variables
@@ -373,7 +373,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
   }
 }
 
-@include exports("form") {
+@include exports('form') {
   @if $include-html-form-classes {
     /* Standard Forms */
     form { margin: 0 0 $form-spacing; }
@@ -455,7 +455,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
       }
     }
 
-    input[type="submit"] {
+    input[type='submit'] {
       -webkit-appearance: none;
       border-radius: 0;
     }
@@ -480,15 +480,15 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
     }
 
     /* Adjust margin for form elements below */
-    input[type="file"],
-    input[type="checkbox"],
-    input[type="radio"],
+    input[type='file'],
+    input[type='checkbox'],
+    input[type='radio'],
     select {
       margin: 0 0 $form-spacing 0;
     }
 
-    input[type="checkbox"] + label,
-    input[type="radio"] + label {
+    input[type='checkbox'] + label,
+    input[type='radio'] + label {
       display: inline-block;
       margin-#{$default-float}: $form-spacing * .5;
       margin-#{$opposite-direction}: $form-spacing;
@@ -497,7 +497,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
     }
 
     /* Normalize file input width */
-    input[type="file"] {
+    input[type='file'] {
       width:100%;
     }
 
@@ -505,8 +505,8 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
     input[type=number] {
       @include html5number(moz, $input-number-spinners)
     }
-    input[type="number"]::-webkit-inner-spin-button,
-    input[type="number"]::-webkit-outer-spin-button {
+    input[type='number']::-webkit-inner-spin-button,
+    input[type='number']::-webkit-outer-spin-button {
       @include html5number(webkit, $input-number-spinners);
     }
 
@@ -535,8 +535,8 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
         margin-bottom: 0;
       }
 
-      input[type="checkbox"],
-      input[type="radio"] {
+      input[type='checkbox'],
+      input[type='radio'] {
         margin-bottom: $form-spacing
       }
 

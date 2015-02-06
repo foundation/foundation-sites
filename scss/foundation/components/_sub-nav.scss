@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 //
 // @name _sub-nav.scss
@@ -39,7 +39,7 @@ $sub-nav-active-color: $white !default;
 $sub-nav-active-padding: $sub-nav-padding !default;
 $sub-nav-active-cursor: default !default;
 
-$sub-nav-item-divider: "" !default;
+$sub-nav-item-divider: '' !default;
 $sub-nav-item-divider-margin: rem-calc(12) !default;
 
 //
@@ -99,23 +99,23 @@ $sub-nav-item-divider-margin: rem-calc(12) !default;
         background: $active-bg-hover;
       }
     }
-    @if $sub-nav-item-divider != "" {
+    @if $sub-nav-item-divider != '' {
       margin-#{$default-float}: 0;
 
       &:before {
-        content: "#{$sub-nav-item-divider}";
+        content: '#{$sub-nav-item-divider}';
         margin: 0 $sub-nav-item-divider-margin;
       }
 
       &:first-child:before {
-        content: "";
+        content: '';
         margin: 0;
       }
     }
   }
 }
 
-@include exports("sub-nav") {
+@include exports('sub-nav') {
   @if $include-html-nav-classes {
     .sub-nav { @include sub-nav; }
   }

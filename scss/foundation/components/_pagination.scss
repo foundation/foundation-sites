@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 //
 // @variables
@@ -144,7 +144,7 @@ $pagination-link-current-active-bg: $primary-color !default;
   }
 }
 
-@include exports("pagination") {
+@include exports('pagination') {
   @if $include-pagination-classes {
     ul.pagination {
       @include pagination;

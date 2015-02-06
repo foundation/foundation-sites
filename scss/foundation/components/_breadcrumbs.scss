@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 //
 // Breadcrumb Variables
@@ -33,7 +33,7 @@ $crumb-link-decor: underline !default;
 
 // We use these to control the slash between breadcrumbs
 $crumb-slash-color: $base !default;
-$crumb-slash: "/" !default;
+$crumb-slash: '/' !default;
 
 //
 // Breadcrumb Mixins
@@ -100,7 +100,7 @@ $crumb-slash: "/" !default;
   }
 
   &:before {
-    content: "#{$crumb-slash}";
+    content: '#{$crumb-slash}';
     color: $crumb-slash-color;
     margin: 0 $crumb-side-padding;
     position: relative;
@@ -108,12 +108,12 @@ $crumb-slash: "/" !default;
   }
 
   &:first-child:before {
-    content: " ";
+    content: ' ';
     margin: 0;
   }
 }
 
-@include exports("breadcrumbs") {
+@include exports('breadcrumbs') {
   @if $include-html-nav-classes {
     .breadcrumbs {
       @include crumb-container;
@@ -127,6 +127,6 @@ $crumb-slash: "/" !default;
 }
 
 /* Accessibility - hides the forward slash */
-[aria-label="breadcrumbs"] [aria-hidden="true"]:after {
-  content: "/";
+[aria-label='breadcrumbs'] [aria-hidden='true']:after {
+  content: '/';
   }

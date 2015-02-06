@@ -2,9 +2,9 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
-@import "buttons";
-@import "dropdown-buttons";
+@import 'global';
+@import 'buttons';
+@import 'dropdown-buttons';
 
 //
 // @name _split-buttons.scss
@@ -64,8 +64,8 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
 // $base-style - Apply base style to split button. Default: true.
 @mixin split-button(
   $padding:medium,
-  $pip-color:$split-button-pip-color, 
-  $span-border:$primary-color, 
+  $pip-color:$split-button-pip-color,
+  $span-border:$primary-color,
   $base-style:true) {
 
   // With this, we can control whether or not the base styles come through.
@@ -84,7 +84,7 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
       // Building the triangle pip indicator
       &:after {
         position: absolute;
-        content: "";
+        content: '';
         width: 0;
         height: 0;
         display: block;
@@ -167,7 +167,7 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
   }
 }
 
-@include exports("split-button") {
+@include exports('split-button') {
   @if $include-html-button-classes {
 
     .split.button { @include split-button;
