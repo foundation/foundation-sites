@@ -166,13 +166,13 @@ $menu-slide: "transform 500ms ease" !default;
   // z-index: 999;
 
   // Typography
-  h1,h2,h3,h4,h5,h6 {
+  h1, h2, h3, h4, h5, h6 {
     color: $tabbar-header-color;
     font-weight: $tabbar-header-weight;
     line-height: $tabbar-header-line-height;
     margin: $tabbar-header-margin;
   }
-  h1,h2,h3,h4 { font-size: $h5-font-size; }
+  h1, h2, h3, h4 { font-size: $h5-font-size; }
 }
 
 // SMALL SECTIONS
