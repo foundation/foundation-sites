@@ -6,14 +6,14 @@
   background-color: #2980b9;
   padding: 2rem 4rem;
   text-align: center;
-  color: #fff;
+  color: white;
 }
 .footer i {
   font-size: 100px;
 }
 
 .footer h4 {
-  color: #fff;
+  color: white;
   font-size: 1em;
   font-weight: 400;
   text-transform: uppercase;
@@ -23,7 +23,7 @@
 .footer p, .footer a {
   font-weight: 300;
   font-size: .8em;
-  color: #fff;
+  color: white;
 }
 
 @media only screen and (min-width: 40.063em) {
