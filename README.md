@@ -8,8 +8,13 @@ command
 
 open in text editor
 
+To watch for changes:
+Run `bundle exec compass watch`
+
 ## Duplicate the index.html page. 
 This is the standard page that comes with Foundation, which already has the stylesheets and JS attached. From here, build out your pattern. Make sure to take note of any additional styles and JS you include. 
+
+You will create a SCSS file for your Sass which will create a CSS file which you link. The path for the head to CSS should look like: `<link rel="stylesheet" href="css/building-blocks/name-of-Scss-file.css" />`
 
 ## Commit your changes and push your page up to Github. 
 If successful, you can preview the page with a URL that looks like this: zurb.github.io/foundation/pageName.html
