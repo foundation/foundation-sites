@@ -91,9 +91,9 @@ $menu-slide: "transform 500ms ease" !default;
 }
 
 @mixin translate3d($tx,$ty,$tz) {
-      -ms-transform: translate($tx,$ty);
   -webkit-transform: translate3d($tx,$ty,$tz);
      -moz-transform: translate3d($tx,$ty,$tz);
+      -ms-transform: translate($tx,$ty);
       -ms-transform: translate3d($tx,$ty,$tz);
        -o-transform: translate3d($tx,$ty,$tz);
           transform: translate3d($tx,$ty,$tz)
@@ -166,13 +166,13 @@ $menu-slide: "transform 500ms ease" !default;
   // z-index: 999;
 
   // Typography
-  h1,h2,h3,h4,h5,h6 {
+  h1, h2, h3, h4, h5, h6 {
     color: $tabbar-header-color;
     font-weight: $tabbar-header-weight;
     line-height: $tabbar-header-line-height;
     margin: $tabbar-header-margin;
   }
-  h1,h2,h3,h4 { font-size: $h5-font-size; }
+  h1, h2, h3, h4 { font-size: $h5-font-size; }
 }
 
 // SMALL SECTIONS
@@ -462,7 +462,7 @@ $menu-slide: "transform 500ms ease" !default;
   }
 }
 //Left double angle quote or Right double angle quote chars
-@mixin icon-double-arrows ($position){
+@mixin icon-double-arrows ($position) {
   @if $position == left {
     content: "\AB";
     @if $text-direction == rtl {

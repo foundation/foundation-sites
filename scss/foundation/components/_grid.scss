@@ -29,7 +29,9 @@ $last-child-float: $opposite-direction !default;
 // $colNumber - Found in settings file
 // $totalColumns - Found in settings file
 @function grid-calc($colNumber, $totalColumns) {
-  @return percentage(($colNumber / $totalColumns));
+  $result: percentage(($colNumber / $totalColumns));
+  @if $result == 0% { $result: 0; }
+  @return $result;
 }
 
 //
@@ -45,10 +47,7 @@ $last-child-float: $opposite-direction !default;
   // use @include grid-row(nest); to include a nested row
   @if $behavior == nest {
     width: auto;
-    margin-#{$default-float}: -($column-gutter/2);
-    margin-#{$opposite-direction}: -($column-gutter/2);
-    margin-top: 0;
-    margin-bottom: 0;
+    margin: 0 (-($column-gutter/2));
     max-width: none;
   }
 
@@ -69,10 +68,7 @@ $last-child-float: $opposite-direction !default;
   // use @include grid-row; to use a container row
   @else {
     width: 100%;
-    margin-#{$default-float}: auto;
-    margin-#{$opposite-direction}: auto;
-    margin-top: 0;
-    margin-bottom: 0;
+    margin: 0 auto;
     max-width: $row-width;
   }
 

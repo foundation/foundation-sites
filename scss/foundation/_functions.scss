@@ -26,11 +26,11 @@ $modules: () !default;
 
 // RANGES
 // We use these functions to define ranges for various things, like media queries.
-@function lower-bound($range){
+@function lower-bound($range) {
   @if length($range) <= 0 {
     @return 0;
   }
-  @return nth($range,1);
+  @return nth($range, 1);
 }
 
 @function upper-bound($range) {
@@ -88,7 +88,7 @@ $modules: () !default;
 }
 
 // CONVERT TO REM
-@function convert-to-rem($value, $base-value: $rem-base)  {
+@function convert-to-rem($value, $base-value: $rem-base) {
   $value: strip-unit($value) / strip-unit($base-value) * 1rem;
   @if ($value == 0rem) { $value: 0; } // Turn 0rem into 0
   @return $value;
@@ -135,12 +135,12 @@ $modules: () !default;
 
 // OLD EM CALC
 // Deprecated: We'll drop support for this in 5.1.0, use rem-calc()
-@function emCalc($values){
+@function emCalc($values) {
   @return rem-calc($values);
 }
 
 // OLD EM CALC
 // Deprecated: We'll drop support for this in 5.1.0, use rem-calc()
-@function em-calc($values){
+@function em-calc($values) {
   @return rem-calc($values);
 }
