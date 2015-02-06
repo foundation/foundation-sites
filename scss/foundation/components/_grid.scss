@@ -140,7 +140,7 @@ $total-columns: 12 !default;
   }
 
   /* Styles for screens that are atleast 768px; */
-  @media #{$small} {
+  @media $small {
 
     @for $i from 1 through $total-columns {
       .row .large#{-$i} { @include grid-column($columns:$i,$collapse:null,$float:false); }
