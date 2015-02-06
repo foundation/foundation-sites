@@ -1,0 +1,691 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>What You Get with Foundation Sass | Foundation Docs</title>
+    <link rel="icon" href="assets/img/icons/favicon.ico" type="image/x-icon">
+    <!-- For third-generation iPad with high-resolution Retina display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/img/icons/apple-touch-icon-144x144-precomposed.png">
+    <!-- For iPhone with high-resolution Retina display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/img/icons/apple-touch-icon-114x114-precomposed.png">
+    <!-- For first- and second-generation iPad: -->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/img/icons/apple-touch-icon-72x72-precomposed.png">
+    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <link rel="apple-touch-icon-precomposed" href="assets/img/icons/apple-touch-icon-precomposed.png">
+
+    <meta name="description" content="Documentation and reference library for ZURB Foundation. JavaScript, CSS, components, grid and more.">
+    <meta name="author" content="ZURB, inc. ZURB network also includes zurb.com">
+    <meta name="copyright" content="ZURB, inc. Copyright (c) 2014">
+
+    <link href="assets/css/docs.css" rel="stylesheet" />
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet" />
+    <script src="assets/js/modernizr.js"></script>
+  </head>
+  <body class="antialiased hide-extras">
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+         <title>Foundation: The Most Advanced Responsive Front-end Framework from ZURB</title><meta name="description" content="Foundation from ZURB is the most advanced responsive front-end framework in the world." />
+ 
+
+<!-- <nav class="tab-bar show-for-small">
+  <a class="off-canvas-left-toggle menu-icon ">
+    <span></span>
+  </a>  
+</nav> -->
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="http://foundation.zurb.com/">Foundation</a></h1>
+    </li>
+  </ul>
+
+  <section class="top-bar-section">
+    <ul class="right">
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="http://foundation.zurb.com/learn/features.html" class="">Learn</a>
+        <ul class="dropdown">
+          <li><a href="http://foundation.zurb.com/learn/features.html">Features</a></li>
+          <li><a href="http://foundation.zurb.com/learn/faq.html">FAQ</a></li>
+          <li><a href="http://foundation.zurb.com/learn/case-washington-post.html">Case Studies</a></li>
+          <li><a href="http://foundation.zurb.com/learn/website-examples.html">Website Examples</a></li>
+          <li><a href="http://foundation.zurb.com/learn/video-started-with-foundation.html">Videos</a></li>
+          <li><a href="http://foundation.zurb.com/learn/training.html">Training</a></li>
+          <li><a href="http://foundation.zurb.com/learn/about.html">About</a></li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="http://foundation.zurb.com/templates.html" class="">Develop</a>
+        <ul class="dropdown">
+          <li><a href="http://foundation.zurb.com/templates.html">Add-ons</a></li>
+          <li><a href="http://foundation.zurb.com/docs">Docs</a></li>
+          <li><a href="http://foundation.zurb.com/develop/download.html">Download</a></li>
+          <li><a href="http://foundation.zurb.com/develop/contribute.html">Contribute</a></li>
+          <li><a href="http://foundation.zurb.com/develop/resources.html">Resources</a></li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="http://foundation.zurb.com/support/support.html" class="">Support</a>
+        <ul class="dropdown">
+          <li><a href="http://foundation.zurb.com/support/support.html">Support Channels</a></li>
+          <li><a href="http://foundation.zurb.com/forum">Foundation Forum</a></li>
+          <li><a href="http://foundation.zurb.com/support/images-and-badges.html">Images &amp; Badges</a></li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="../business/services.html" class="">Business</a>
+        <ul class="dropdown">
+          <li><a href="../business/services.html">Services</a></li>
+          <li><a href="../business/certification.html">Certification</a></li>
+          <li><a href="../business/business-support.html">Business Support</a></li>
+          <li><a href="../business/engineering-studios.html">Engineering Studios</a></li>
+          <li><a href="../business/training.html">Business Training</a></li>
+          <li><a href="../business/design-apps.html">Design Apps</a></li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li>
+        <a href="http://foundation.zurb.com/docs" class="">Docs</a>
+      </li>
+      <li class="divider"></li>
+      <li class="has-form">
+        <a href="http://foundation.zurb.com/docs" class="small button">Getting Started</a>
+    </ul>
+  </section>
+</nav>
+        <nav class="tab-bar show-for-small">
+  <a class="left-off-canvas-toggle menu-icon">
+    <span>Foundation</span>
+  </a>
+</nav>
+
+<aside class="marketing-left-off-canvas-menu">
+
+  <ul class="off-canvas-list">
+    <li><label class="first">Foundation</label></li>
+    <li><a href="http://foundation.zurb.com">Home</a></li>
+  </ul>
+
+  <hr>
+
+  <ul class="off-canvas-list">
+      <li><label>Setup</label></li>
+
+      <li><a href="index.html" data-search="">Getting Started</a></li>
+      <li><a href="css.html" data-search="Styles">CSS</a></li>
+      <li><a href="sass.html" data-search="Sass">Sass</a></li>      
+      <li><a href="sass-files.html" data-search="Sass,Sass - What You Get, How to Use Sass">Sass Files</a></li>
+      <li><a href="using-sass.html" data-search="Sass,Sass - What You Get, How to Use Sass">Using Sass</a></li>
+      <li><a href="applications.html" data-search="Rails,Gem">Applications</a></li>
+      <li><a href="javascript.html" data-search="">Javascript</a></li>
+      <li><a href="components/global.html" data-search="Global Styles,Global Mixins,Global Variables,Useful HTML Classes">Global Styles</a></li>
+      <li><a href="components/kitchen_sink.html" data-search="">Kitchen Sink</a></li>
+      <li><a href="upgrading.html" data-search="Migration">Upgrading</a></li>
+
+      <li class="divider"></li>
+      <li><label>Structure</label></li>
+      <li><a href="media-queries.html" data-search="Breakpoints">Media Queries</a></li>
+      <li><a href="components/visibility.html" data-search="">Visibility</a></li>
+      <li><a href="components/grid.html" data-search="">Grid</a></li>
+      <li><a href="components/block_grid.html" data-search="">Block Grid</a></li>
+      <li><a href="components/interchange.html" data-search="Responsive Images">Interchange Responsive Content <span class="label">JS</span></a></li>
+      <li><a href="utility-classes.html" data-search="">Utility Classes</a></li>
+      <li><a href="javascript-utilities.html" data-search="">Javascript Utilities</a></li>
+      <li><a href="components/rtl.html" data-search="RTL">Right-to-Left Support</a></li>
+
+      <li class="divider"></li>
+      <li><label>Navigation</label></li>
+      <li><a href="components/offcanvas.html" data-search="Off Canvas">Off-canvas <span class="label">JS</span></a></li>
+      <li><a href="components/topbar.html" data-search="Nav Bar,Navigation,Sticky">Top Bar <span class="label">JS</span></a></li>
+      <li><a href="components/icon-bar.html" data-search="">Icon Bar</a></li>
+      <li><a href="components/sidenav.html" data-search="">Side Nav</a></li>
+      <li><a href="components/magellan.html" data-search="Scrollspy">Magellan Sticky Nav <span class="label">JS</span></a></li>
+      <li><a href="components/subnav.html" data-search="">Sub Nav</a></li>
+      <li><a href="components/breadcrumbs.html" data-search="Navigation Path,Cookie Crumb">Breadcrumbs</a></li>
+      <li><a href="components/pagination.html" data-search="">Pagination</a></li>
+
+      <li class="divider"></li>
+      <li><label>Media</label></li>
+      <li><a href="components/orbit.html" data-search="Carousel,Slider,Slideshow">Orbit Slider <span class="label">JS</span></a></li>
+      <li><a href="components/thumbnails.html" data-search="Images">Thumbnails</a></li>
+      <li><a href="components/clearing.html" data-search="Responsive Lightbox,Lightbox">Clearing Lightbox <span class="label">JS</span></a></li>
+      <li><a href="components/flex_video.html" data-search="Responsive Video">Flex Video</a></li>
+
+      <li class="divider"></li>
+      <li><label>Forms</label></li>
+      <li><a href="components/forms.html" data-search="">Forms</a></li>
+      <li><a href="components/switch.html" data-search="">Switches</a></li>
+      <li><a href="components/range_slider.html" data-search="Range Slider">Sliders <span class="label">JS</span></a></li>
+      <li><a href="components/abide.html" data-search="Form Validation,Field Validation">Abide Validation <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li><label>Buttons</label></li>
+      <li><a href="components/buttons.html" data-search="">Buttons</a></li>
+      <li><a href="components/button_groups.html" data-search="Button Bar">Button Groups</a></li>
+      <li><a href="components/split_buttons.html" data-search="">Split Buttons <span class="label">JS</span></a></li>
+      <li><a href="components/dropdown_buttons.html" data-search="">Dropdown Buttons <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li><label>Typography</label></li>
+      <li><a href="components/typography.html" data-search="Typography,Type-setting,Composition">Type</a></li>
+      <li><a href="components/inline_lists.html" data-search="Lists">Inline Lists</a></li>
+      <li><a href="components/labels.html" data-search="Tags">Labels</a></li>
+      <li><a href="components/keystrokes.html" data-search="">Keystrokes</a></li>
+
+      <li class="divider"></li>
+      <li class="heading"><label>Callouts &amp; Prompts</label></li>
+      <li><a href="components/reveal.html" data-search="Modal">Reveal Modal <span class="label">JS</span></a></li>
+      <li><a href="components/alert_boxes.html" data-search="Error,Success,Warning">Alerts <span class="label">JS</span></a></li>
+      <li><a href="components/panels.html" data-search="Wells">Panels</a></li>
+      <li><a href="components/tooltips.html" data-search="Popover">Tooltips <span class="label">JS</span></a></li>
+      <li><a href="components/joyride.html" data-search="Tooltip Tour,Guider,Tooltip Walk-through">Joyride <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li><label>Content</label></li>
+      <li><a href="components/dropdown.html" data-search="">Dropdowns <span class="label">JS</span></a></li>
+      <li><a href="components/pricing_tables.html" data-search="">Pricing Tables</a></li>
+      <li><a href="components/progress_bars.html" data-search="">Progress Bars</a></li>
+      <li><a href="components/tables.html" data-search="">Tables</a></li>
+      <li><a href="components/accordion.html" data-search="">Accordion <span class="label">JS</span></a></li>
+      <li><a href="components/tabs.html" data-search="">Tabs <span class="label">JS</span></a></li>
+      <li><a href="components/equalizer.html" data-search="">Equalizer <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li><label>Support</label></li>
+
+      <li><a href="changelog.html" data-search="">Changelog</a></li>
+      <li><a href="compatibility.html" data-search="">Compatibility</a></li>
+
+      <li class="divider"></li>
+      <li class="heading"><label>Older Docs</label></li>
+      <li><a href="/docs/v/4.3.2/" data-search="">Foundation 4</a></li>
+      <li><a href="/docs/v/3.2.5/" data-search="">Foundation 3</a></li>
+      <li><a href="/docs/v/2.2.1/" data-search="">Foundation 2</a></li>
+    </ul>
+
+    <hr>
+
+    <div class="zurb-links">
+    <ul class="top">
+      <li class="logo"><a href="http://zurb.com"></a></li>
+      <li><a href="http://zurb.com/about">About</a></li>
+      <li><a href="http://zurb.com/blog">Blog</a></li>
+      <li><a href="http://zurb.com/contact">Contact</a></li>
+    </ul>
+    <ul class="pillars">
+      <li>
+        <a href="http://www.zurb.com/studios" class="footer-link-block services">
+          <span class="title">Studios</span>
+          <span>Helping startups win since '98.</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://foundation.zurb.com/" class="footer-link-block foundation">
+          <span class="title">Foundation</span>
+          <span>World's most advanced responsive framework.</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://zurb.com/apps" class="footer-link-block apps">
+          <span class="title">Design Apps</span>
+          <span>Tools to rapidly prototype and iterate.</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://zurb.com/university" class="footer-link-block expo">
+          <span class="title">University</span>
+          <span>Online training for smarter product design.</span>
+        </a>
+      </li>
+    </ul>
+</div>
+
+  </ul>
+</aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section role="main" class="scroll-container">
+
+          <div class="row">
+            <div class="large-3 medium-4 columns">
+              <div class="hide-for-small">
+                <div class="sidebar">
+  <h5>Foundation Documentation</h5>
+  <form>
+    <!--  <label>Search Documentation</label> -->
+    <input tabindex="1" id="autocomplete" type="search" placeholder="Search Docs: e.g. forms">
+  </form>
+
+  <a href="/develop/download.html" class="download button expand">Download Foundation</a>
+
+  <nav>
+    <ul class="side-nav">
+      <li class="heading">Setup</li>
+
+      <li><a href="index.html" data-search="">Getting Started</a></li>
+      <li><a href="css.html" data-search="Styles">CSS</a></li>
+      <li><a href="sass.html" data-search="Sass">Sass</a></li>
+      <li><a href="sass-files.html" data-search="Sass,Sass - What You Get, How to Use Sass">Sass Files</a></li>
+      <li><a href="using-sass.html" data-search="Sass,Sass - What You Get, How to Use Sass">Using Sass</a></li>
+      <li><a href="applications.html" data-search="Rails,Gem">Applications</a></li>
+      <li><a href="javascript.html" data-search="">JavaScript</a></li>
+      <li><a href="components/global.html" data-search="Global Styles,Global Mixins,Global Variables,Useful HTML Classes">Global Styles</a></li>
+      <li><a href="components/kitchen_sink.html" data-search="">Kitchen Sink</a></li>
+      <li><a href="accessibility.html" data-search="accessibility">Accessibility</a></li>
+      <li><a href="upgrading.html" data-search="Migration">Upgrading</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Structure</li>
+      <li><a href="media-queries.html" data-search="Breakpoints">Media Queries</a></li>
+      <li><a href="components/visibility.html" data-search="">Visibility</a></li>
+      <li><a href="components/grid.html" data-search="">Grid</a></li>
+      <li><a href="components/block_grid.html" data-search="">Block Grid</a></li>
+      <li><a href="components/interchange.html" data-search="Responsive Images">Interchange Responsive Content <span class="label">JS</span></a></li>
+      <li><a href="utility-classes.html" data-search="">Utility Classes</a></li>
+      <li><a href="javascript-utilities.html" data-search="">Javascript Utilities</a></li>
+      <li><a href="components/rtl.html" data-search="RTL">Right-to-Left Support</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Navigation</li>
+      <li><a href="components/offcanvas.html" data-search="Off Canvas">Off-canvas <span class="label">JS</span></a></li>
+      <li><a href="components/topbar.html" data-search="Nav Bar,Navigation,Sticky">Top Bar <span class="label">JS</span></a></li>
+      <li><a href="components/icon-bar.html" data-search="">Icon Bar</a></li>
+      <li><a href="components/sidenav.html" data-search="">Side Nav</a></li>
+      <li><a href="components/magellan.html" data-search="Scrollspy">Magellan Sticky Nav <span class="label">JS</span></a></li>
+      <li><a href="components/subnav.html" data-search="">Sub Nav</a></li>
+      <li><a href="components/breadcrumbs.html" data-search="Navigation Path,Cookie Crumb">Breadcrumbs</a></li>
+      <li><a href="components/pagination.html" data-search="">Pagination</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Media</li>
+      <li><a href="components/orbit.html" data-search="Carousel,Slider,Slideshow">Orbit Slider <span class="label">JS</span></a></li>
+      <li><a href="components/thumbnails.html" data-search="Images">Thumbnails</a></li>
+      <li><a href="components/clearing.html" data-search="Responsive Lightbox,Lightbox">Clearing Lightbox <span class="label">JS</span></a></li>
+      <li><a href="components/flex_video.html" data-search="Responsive Video">Flex Video</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Forms</li>
+      <li><a href="components/forms.html" data-search="">Forms</a></li>
+      <li><a href="components/switch.html" data-search="">Switches</a></li>
+      <li><a href="components/range_slider.html" data-search="Range Slider">Range Sliders <span class="label">JS</span></a></li>
+      <li><a href="components/abide.html" data-search="Form Validation,Field Validation">Abide Validation <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Buttons</li>
+      <li><a href="components/buttons.html" data-search="">Buttons</a></li>
+      <li><a href="components/button_groups.html" data-search="Button Bar">Button Groups</a></li>
+      <li><a href="components/split_buttons.html" data-search="">Split Buttons <span class="label">JS</span></a></li>
+      <li><a href="components/dropdown_buttons.html" data-search="">Dropdown Buttons <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Typography</li>
+      <li><a href="components/typography.html" data-search="Typography,Type-setting,Composition">Type</a></li>
+      <li><a href="components/inline_lists.html" data-search="Lists">Inline Lists</a></li>
+      <li><a href="components/labels.html" data-search="Tags">Labels</a></li>
+      <li><a href="components/keystrokes.html" data-search="">Keystrokes</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Callouts &amp; Prompts</li>
+      <li><a href="components/reveal.html" data-search="Modal">Reveal Modal <span class="label">JS</span></a></li>
+      <li><a href="components/alert_boxes.html" data-search="Error,Success,Warning">Alerts <span class="label">JS</span></a></li>
+      <li><a href="components/panels.html" data-search="Wells">Panels</a></li>
+      <li><a href="components/tooltips.html" data-search="Popover">Tooltips <span class="label">JS</span></a></li>
+      <li><a href="components/joyride.html" data-search="Tooltip Tour,Guider,Tooltip Walk-through">Joyride <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Content</li>
+      <li><a href="components/dropdown.html" data-search="">Dropdowns <span class="label">JS</span></a></li>
+      <li><a href="components/pricing_tables.html" data-search="">Pricing Tables</a></li>
+      <li><a href="components/progress_bars.html" data-search="">Progress Bars</a></li>
+      <li><a href="components/tables.html" data-search="">Tables</a></li>
+      <li><a href="components/accordion.html" data-search="">Accordion <span class="label">JS</span></a></li>
+      <li><a href="components/tabs.html" data-search="">Tabs <span class="label">JS</span></a></li>
+      <li><a href="components/equalizer.html" data-search="">Equalizer <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Support</li>
+
+      <li><a href="changelog.html" data-search="">Changelog</a></li>
+      <li><a href="compatibility.html" data-search="">Compatibility</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Older Docs</li>
+      <li><a href="/docs/v/4.3.2/" data-search="">Foundation 4</a></li>
+      <li><a href="/docs/v/3.2.5/" data-search="">Foundation 3</a></li>
+      <li><a href="/docs/v/2.2.1/" data-search="">Foundation 2</a></li>
+
+    </ul>
+  </nav>
+
+
+  <section id="jobs">
+    <h5>Get a job, nerd!</h5>
+    <script type="text/javascript" src="http://www.zurb.com/jobs/widgets/jobs.js?limit=3"></script>
+    <p class="via">via <a href="http://www.zurb.com/jobs">Job Board from ZURB</a></p>
+  </section>
+
+</div>
+              </div>
+            </div>
+            <div class="large-9 medium-8 columns">
+              <h1 id="what-you-get-with-foundation-sass">What You Get with Foundation Sass</h1>
+              <h3 class="subheader">We&#39;ve put together all of the pieces you need in one package, let&#39;s see what&#39;s inside.</h3>
+
+<hr>
+
+<div class="row">
+  <div class="small-12 columns">
+    <p><a href="sass.html">← Back to Getting Started</a></p>
+    <h2>Everything Inside</h2>
+    <h3 class="subheader">Need a deeper look into what all the Foundation Sass files do? We&#39;ve got you covered. Or if you simply need a file listing, check <a href="#filelist">here</a>.</h3>
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="medium-6 columns">
+    <div class="header-container">
+      <h3>Customization</h3> 
+    </div>
+    <ul class="info-list">
+      <li>Changes made here are preserved during update.</li>
+      <li><strong>_settings.scss</strong><p>All of Foundation&#39;s Sass variables can be found and modified here to help you customize your version of Foundation.</p></li>
+      <li><strong>app.scss</strong><p>Here you can determine what stylings will be in your project. By default all of Foundation is imported, but you can deactivate and select specific components you want to import or add your custom Sass here.</p></li>
+      <li><strong>stylesheets folder</strong><p>We include a stylesheets folder where your HTML can refer to the CSS files. When your SCSS files compile, the resulting CSS files are saved here. It is important to not make an changes to files here as they may be overwritten. You can, however, simply write Vanilla CSS inside your SCSS file and it will be compiled just fine.</p></li>
+    </ul>
+  </div>
+  <div class="medium-6 columns">
+    <div class="header-container">
+      <h3>JavaScript</h3> 
+    </div>
+    <ul class="info-list">
+      <li><strong>app.js</strong><p>We initialize Foundation&#39;s javascript components here. This is also a great place to add in your own custom javascript.</p></li>
+      <li><strong>jquery.min.js</strong><p>A minified jQuery file which is required for many Foundation components to work.</p></li>
+      <li>The following JS files will be linked up right before the closing <code>&lt;/body&gt;</code> tag. This ensures that your styles and page loads first without having to wait for all the JS to load:
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">&quot;bower_components/jquery/dist/jquery.min.js&quot;</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">&quot;bower_components/foundation/js/foundation.min.js&quot;</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">&quot;js/app.js&quot;</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">body</span>&gt;</span></div></code></pre>
+</li>
+
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="medium-6 columns">
+    <div class="header-container">
+      <h3>Bower Components</h3> 
+    </div>
+    <ul class="info-list">
+      <li>The recommended install uses Bower to package up all the Foundation components and manage any updates. Bower manages the contents of this folder so don&#39;t change anything in this folder.</li>
+      <li><strong>fastclick.js</strong><p>Fastclick gets rid of the ~300ms delay that mobile users expericing when &quot;tapping&quot; on a button. It&#39;s not a Foundation requirement, but makes your site feel faster.</p></li>
+      <li><strong>foundation folder</strong><p>This is where we keep all the files that make foundation work. Any CSS and SCSS partials and javascript live here. Including the components here allows you to easily update your project with <code>bower update</code> command.</p></li>
+      <li><strong>jquery</strong><p> We&#39;ve included jQuery in here because anytime there is an update to jQuery with a Foundation release it will be updated as well.</p></li>
+      <li><strong>jquery.cookie</strong><p>This is included in Foundation for our Joyride feature. It allows the browser to create a cookie specifically for the option to not show the Joyride tour a second time.</p></li>
+      <li><strong>modernizr</strong><p>This acts as a shim for HTML5 elements that older browsers may not recognize, and provides detection for mobile devices. It also helps provide touch support on mobile devices with various browsers.</p></li>
+      <li><strong>normalize.scss</strong><p>We&#39;ve included a copy of Normalize here to give you the option to remove quirks in browsers so that all webpages render elements consistently. We recommend you use this because some Foundation styles are dependant on it.</p></li>
+    </ul>
+  </div>
+  <div class="medium-6 columns">
+    <div class="header-container">
+      <h3>Pre-Packaged Essentials</h3> 
+    </div>
+    <ul class="info-list">
+      <li><strong>index.html</strong><p>This is an example index file which contains some sample markup (the grid, buttons, etc) as well as the basic structure of a responsive Foundation page. Feel free to change or destroy this file as you see fit, just bear in mind that some of the document <code>&lt;head&gt;</code> is required for the page to work including the CSS/JS that is linked up at the end of the document.</p></li>
+      <li><strong>humans.txt</strong><p>Located in the site root just next to the robots.txt file. You don&#39;t have to use if you don&#39;t want. You can mention the developer, the designer, the copywriter, the webmaster, the SEO, SEM or SMO. Name as many people who helped make the site, or not.</p></li>
+      <li><strong>robots.txt</strong><p>Website owners use the robots.txt file to give instructions about their site to web-crawling robots (also known as Web Wanderers, Crawlers, or Spiders); this is called The Robots Exclusion Protocol. Adding this page allows you to block web robots from indexing parts of your site. You can read more about it <a href="http://zurb.us/1jixgzu">here</a>.</p></li>
+      <li><strong>bower.json</strong><p>Bower helps you to download JS/SCSS/CSS files to your project folder for popular projects like Foundation and jQuery. It also allows you to easily update those files when a library is updated. Bower keeps track of these packages in a manifest file, bower.json. You can make it work for you and your workflow. You can target what version to update your project to here.</p></li>
+      <li><strong>config.rb</strong> (compass project only)<p>This is a Compass configuration file. It allows you to specify how to compile your Sass files (i.e. should the CSS be compressed or not) and also where to place the compiled CSS files (default is in the stylesheets/ directory). You can read more about how to control the CSS output <a href="http://zurb.us/1jiytHe">here</a>.</p></li>
+    </ul>
+  </div>
+</div>
+
+<hr class="dashed minus">
+
+<div class="row">
+  <div class="small-12 columns">
+    <h2 id="filelist">Foundation File List</h2>
+    <h3 class="subheader">Our Foundation Sass file structure will look just like this after you complete the download.</h3>
+    <div class="row file-list">
+      <div class="medium-6 columns">
+        <img class="show-for-medium-up" src="assets/img/images/file_listing.png">
+      </div>
+      <div class="medium-6 columns">
+        <ul>
+          <li><i class="fi-folder"></i>&nbsp;&nbsp;bower_components</li>
+          <hr>
+          <li><i class="fi-folder"></i>&nbsp;&nbsp;js</li>
+            <ul>
+              <li><i class="fi-page"></i>&nbsp;&nbsp;app.js</li>
+            </ul>
+          <hr>
+          <li><i class="fi-folder"></i>&nbsp;&nbsp;scss</li>
+            <ul>
+              <li><i class="fi-page"></i>&nbsp;&nbsp;_settings.scss</li>
+              <li><i class="fi-page"></i>&nbsp;&nbsp;app.scss</li>
+            </ul>
+          <hr>
+          <li><i class="fi-folder"></i>&nbsp;&nbsp;stylesheets</li>
+            <ul>
+              <li><i class="fi-page"></i>&nbsp;&nbsp;app.css</li>
+            </ul>
+          <hr>
+          <li><i class="fi-page"></i>&nbsp;&nbsp;bower.json</li>
+          <li><i class="fi-page"></i>&nbsp;&nbsp;config.rb</li>
+          <li><i class="fi-page"></i>&nbsp;&nbsp;humans.txt</li>
+          <li><i class="fi-page"></i>&nbsp;&nbsp;index.html</li>
+          <li><i class="fi-page"></i>&nbsp;&nbsp;robots.txt</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div> 
+<div class="row">
+  <div class="small-12 columns">
+    <p>What to know how to properly modify your files? <a href="using-sass.html">Check out how to use Foundation Sass →</a></p>
+  </div>
+</div>
+
+<hr class="dashed">
+
+<div class="row">
+  <div class="small-12 columns">
+    <h2>HTML Page Markup</h2>
+    <p>As you&#39;ll see in our <code>index.html</code> sample, Foundation pages have some specific markup required for them to work. This code block is a simple boilerplate for content-free Foundation pages that we hope comes in handy. Go ahead and copy/paste this in when creating a new page.</p>
+    <h4>HTML</h4>
+<pre><code class="language-html"><div class="code-container"><span class="doctype">&lt;!doctype html&gt;</span>
+<span class="tag">&lt;<span class="title">html</span> <span class="attribute">class</span>=<span class="value">&quot;no-js&quot;</span> <span class="attribute">lang</span>=<span class="value">&quot;en&quot;</span>&gt;</span>
+
+  <span class="tag">&lt;<span class="title">head</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">charset</span>=<span class="value">&quot;utf-8&quot;</span> /&gt;</span>
+    <span class="comment">&lt;!-- if you remove this meta tag, the NSA will spy on you through your Xbox Kinect camera --&gt;</span>
+    <span class="tag">&lt;<span class="title">meta</span> <span class="attribute">name</span>=<span class="value">&quot;viewport&quot;</span> <span class="attribute">content</span>=<span class="value">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;</span>
+    <span class="tag">&lt;<span class="title">title</span>&gt;</span>Foundation<span class="tag">&lt;/<span class="title">title</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">link</span> <span class="attribute">rel</span>=<span class="value">&quot;stylesheet&quot;</span> <span class="attribute">href</span>=<span class="value">&quot;stylesheets/app.css&quot;</span> /&gt;</span>
+    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">&quot;bower_components/modernizr/modernizr.js&quot;</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">head</span>&gt;</span>
+
+  <span class="tag">&lt;<span class="title">body</span>&gt;</span>
+
+    <span class="comment">&lt;!-- body content here --&gt;</span>
+
+    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">&quot;bower_components/jquery/dist/jquery.min.js&quot;</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">&quot;bower_components/foundation/js/foundation.min.js&quot;</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">&quot;js/app.js&quot;</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">body</span>&gt;</span>
+
+<span class="tag">&lt;/<span class="title">html</span>&gt;</span></div></code></pre>
+
+  </div>
+</div>
+
+
+
+            </div>
+          </div>
+          <section id="courses-banner-large">
+  <div class="row">
+    <div class="large-5 medium-5 columns banner-image">
+      <img src="http://foundation.zurb.com/assets/img/responsive-banner-main.svg" alt="responsive design">
+    </div>
+    <div class="large-7 medium-7 columns banner-info">
+      <h3>Get a running start with Foundation</h3>
+      <p>Learn the fundamentals of the world's most advanced responsive framework in our <strong>Intro to Foundation class.</strong> You'll learn from the creators themselves on how to use Foundation and jumpstart your next project. <a href="http://zurb.com/university/courses" class="inline-hide">Learn more about classes »</a></p>
+      <a href="http://zurb.com/university/foundation-intro?utm_source=Foundation%20Docs&utm_medium=Large%20Banner&utm_campaign=Intro%20to%20Foundation" class="button">Learn More</a>
+      <a href="http://zurb.com/university/courses" class="learn-more hide-for-medium-up">Learn more about classes »</a>
+    </div>
+  </div>
+</section>
+          <div id="newsletter">
+  <div class="row">
+    <div class="medium-8 columns">
+      <h5>Stay on top of what&rsquo;s happening in <a href="http://zurb.com/responsive">responsive design</a>.</h5>
+      <p>Sign up to receive monthly Responsive Reading highlights. <a href="http://zurb.com/responsive/reading">Read Last Month's Edition &raquo;</a></p>
+    </div>
+    <div class="medium-4 columns">
+      <form method="post" action="http://zurb.com/responsive/subscribe">
+        <div class="row collapse margintop-20px">
+          <div class="small-8 medium-8 columns">
+            <input type="text" name="email" placeholder="signup@example.com">
+          </div>
+          <div class="small-4 medium-4 columns">
+            <input type="submit" href="#" class="postfix small button expand" value="Sign Up">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="zurb-footer-top bg-fblue">
+  <div class="row property">
+    <div class="medium-4 columns">
+      <div class="property-info">
+        <h3>Foundation</h3>
+        <p>Foundation is made by <a href="http://zurb.com">ZURB, a product design</a> company in Campbell, California. We've put more than 15 years of experience building web products, services and websites into this framework.
+        </p>
+      </div>
+    </div>
+
+    <div class="medium-8 columns">
+      <div class="row collapse">
+        <div class="medium-4 columns">
+          <div class="learn-links">
+            <h4 class="hide-for-small">Want more?</h4>
+            <ul>
+              <li><a href="http://foundation.zurb.com/business/services.html">Foundation Business</a></li>
+              <li><a href="http://zurb.com/responsive">Responsive</a></li>
+              <li><a href="http://zurb.com/apps">Design Apps</a></li>
+              <li><a href="http://foundation.zurb.com/learn/training.html">Foundation Training</a></li>
+            </ul>
+          </div>
+        </div>
+          <div class="medium-4 columns">
+            <div class="support-links">
+              <h4 class="hide-for-small">Talk to us</h4>
+              <p>Tweet us at <br> <a href="https://twitter.com/zurbfoundation">@zurbfoundation</a></p>
+              <p>Email us at <br> <a href="mailto:foundation@zurb.com">foundation@zurb.com</a><br> or check our <a href="../support/support.html">support page</a></p>
+            </div>
+          </div>
+        <div class="medium-4 columns">
+          <div class="connect-links">
+            <h4 class="hide-for-small">Stay in touch</h4>
+            <p>Keep up with the latest on Foundation. Find us on <a href="https://github.com/zurb/foundation">Github</a>.</p>
+            <a href="http://zurb.com/news" class="small button">Stay Connected</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row global">
+    <div class="medium-3 small-6 columns">
+      <a href="http://zurb.com/studios" class="footer-link-block services">
+        <span class="title">Studios</span>
+        <span>Helping more than 200 startups succeed since 1998.</span>
+      </a>
+    </div>
+    <div class="medium-3 small-6 columns">
+      <a href="http://foundation.zurb.com/" class="footer-link-block foundation">
+        <span class="title">Foundation</span>
+        <span>The most advanced front-end framework in the world.</span>
+      </a>
+    </div>
+    <div class="medium-3 small-6 columns">
+      <a href="http://zurb.com/apps" class="footer-link-block apps">
+        <span class="title">Design Apps</span>
+        <span>Prototype, iterate and collect feedback on your products.</span>
+      </a>
+    </div>
+    <div class="medium-3 small-6 columns">
+      <a href="http://zurb.com/university" class="footer-link-block expo">
+        <span class="title">University</span>
+        <span>Ideas, thoughts and design resources shared with you.</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="zurb-footer-bottom">
+  <div class="row">
+    <div class="medium-4 medium-4 push-8 columns">
+      <ul class="home-social">
+          <li><a href="http://www.twitter.com/ZURB" class="twitter"></a></li>
+          <li><a href="http://www.facebook.com/ZURB" class="facebook"></a></li>
+          <li><a href="http://zurb.com/contact" class="mail"></a></li>
+        </ul>
+     </div>
+     <div class="medium-8 medium-8 pull-4 columns">
+        <a href="http://www.zurb.com" class="zurb-logo regular"></a>
+        <ul class="zurb-links">
+          <li><a href="http://zurb.com/about">About</a></li>
+          <li><a href="http://zurb.com/blog">Blog</a></li>
+          <li><a href="http://zurb.com/news">News<span class="show-for-medium-up"> &amp; Events</span></a></li>
+          <li><a href="http://zurb.com/contact">Contact</a></li>
+          <li><a href="http://zurb.com/sitemap">Sitemap</a></li>
+       </ul>
+       <p class="copyright">&copy; 1998&dash;2014 ZURB, Inc. All rights reserved.</p>
+    </div>
+  </div>
+</div>
+
+        </section>
+
+      </div>
+    </div>
+
+    <script src="assets/js/templates.js"></script>
+    <script src="assets/js/all.js"></script>
+    <script>
+      var _gaq = _gaq || [];
+      _gaq.push(
+        ['_setAccount', 'UA-2195009-2'],
+        ['_trackPageview'],
+        ['b._setAccount', 'UA-2195009-27'],
+        ['b._trackPageview']
+      );
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <script>
+      $(document).foundation().foundation('joyride', 'start');
+    </script>
+  </body>
+</html>
