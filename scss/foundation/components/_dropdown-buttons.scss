@@ -58,7 +58,6 @@ $dropdown-button-pip-top-lrg: (-$button-pip-lrg / 2) + rem-calc(3) !default;
   // We add in base styles, but they can be negated by setting to 'false'.
   @if $base-style {
     position: relative;
-    outline: none;
 
     // This creates the base styles for the triangle pip
     &::after {
