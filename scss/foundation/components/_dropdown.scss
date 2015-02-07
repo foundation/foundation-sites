@@ -68,7 +68,6 @@ $f-dropdown-radius: $global-radius !default;
   left: -9999px;
   list-style: $f-dropdown-list-style;
   margin-#{$default-float}: 0;
-  outline: none;
   display: none;
 
   &.open {
