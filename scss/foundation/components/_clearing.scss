@@ -25,7 +25,7 @@ $clearing-arrow-color: $clearing-close-color !default;
 
 // We use these to style captions
 $clearing-caption-font-color: $iron !default;
-$clearing-caption-font-size: 0.875em !default;
+$clearing-caption-font-size: .875em !default;
 $clearing-caption-padding: 10px 30px 20px !default;
 
 // We use these to make the image and carousel height and style
@@ -82,7 +82,7 @@ $clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
       top: 50%;
       left: 50%;
       color: $base;
-      font-size: 0.6em;
+      font-size: .6em;
     }
 
     .visible-img {
@@ -166,7 +166,7 @@ $clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
           width: 0;
           height: 0;
           border: solid $clearing-arrow-size;
-          &:hover { opacity: 0.8; }
+          &:hover { opacity: .8; }
         }
       }
       .clearing-main-prev {
@@ -186,7 +186,7 @@ $clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
       }
 
       .clearing-main-prev.disabled,
-      .clearing-main-next.disabled { opacity: 0.3; }
+      .clearing-main-next.disabled { opacity: .3; }
 
       .clearing-assembled .clearing-container {
 
@@ -213,7 +213,7 @@ $clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
               padding: 0;
               position: relative;
               cursor: $cursor-pointer-value;
-              opacity: 0.4;
+              opacity: .4;
               clear: none;
 
               &.fix-height {
@@ -235,7 +235,7 @@ $clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
               }
 
               &.visible { opacity: 1; }
-              &:hover { opacity: 0.8; }
+              &:hover { opacity: .8; }
             }
           }
         }
