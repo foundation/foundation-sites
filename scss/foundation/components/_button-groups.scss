@@ -38,7 +38,7 @@ $button-group-border-width: 1px !default;
 
   > button, .button {
     border-#{$default-float}: $button-group-border-width solid;
-    border-color: rgba(255, 255, 255, 0.5);
+    border-color: rgba(255, 255, 255, .5);
   }
 
   &:first-child {
@@ -68,7 +68,7 @@ $button-group-border-width: 1px !default;
     $button-group-margin: 0;
     > button, .button {
       border-top: $button-group-border-width solid;
-      border-color: rgba(255, 255, 255, 0.5);
+      border-color: rgba(255, 255, 255, .5);
       border-left-width: 0;
       margin:0;
       display: block;
@@ -160,7 +160,7 @@ $button-group-border-width: 1px !default;
       @for $i from 2 through 8 {
         &.even-#{$i} li { @include button-group-style($even:$i, $float:null); }
       }
-      
+
       & > li { @include button-group-style(); }
 
       &.stack {
