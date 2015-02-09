@@ -48,6 +48,7 @@ $switch-active-color: $primary-color !default;
   border: none;
   position: relative;
   outline: 0;
+  margin-bottom: $switch-bottom-margin;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
