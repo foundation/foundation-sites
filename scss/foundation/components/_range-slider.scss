@@ -102,6 +102,7 @@ $range-slider-disabled-cursor: $cursor-disabled-value !default;
   -ms-touch-action: manipulation;
       touch-action: manipulation;
 }
+
 @mixin range-slider-handle-style(
   $bg: true,
   $radius: false,
@@ -118,6 +119,7 @@ $range-slider-disabled-cursor: $cursor-disabled-value !default;
     background: $range-slider-handle-bg-hover-color;
   }
 }
+
 @mixin range-slider-handle() {
   @include range-slider-handle-base;
   @include range-slider-handle-style;
