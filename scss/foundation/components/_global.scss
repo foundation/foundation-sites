@@ -193,7 +193,7 @@ $base-line-height: 1.5 !default;
 // $horizontal: Default: 0
 // $vertical: Default: 0
 @mixin translate2d($horizontal:0, $vertical:0) {
-  transform: translate($horizontal,$vertical)
+  transform: translate($horizontal, $vertical)
 }
 
 // @mixins

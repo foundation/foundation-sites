@@ -165,11 +165,11 @@ $last-child-float: $opposite-direction !default;
 
 
   @for $i from 1 through $total-columns {
-    .#{$size}-#{$i} { @include grid-column($columns:$i,$collapse:null,$float:false); }
+    .#{$size}-#{$i} { @include grid-column($columns:$i, $collapse:null, $float:false); }
   }
 
   @for $i from 0 through $total-columns - 1 {
-    .#{$size}-offset-#{$i} { @include grid-column($offset:$i, $collapse:null,$float:false); }
+    .#{$size}-offset-#{$i} { @include grid-column($offset:$i, $collapse:null, $float:false); }
   }
 
   .#{$size}-reset-order {
