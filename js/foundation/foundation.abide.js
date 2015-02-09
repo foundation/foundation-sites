@@ -242,7 +242,6 @@
         }
         validations.push(el_validations[0]);
       }
-      validations = [validations.every(function (valid) {return valid;})];
       return validations;
     },
 

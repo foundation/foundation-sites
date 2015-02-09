@@ -276,8 +276,8 @@ $visibility-breakpoint-queries:
   }
 }
 
-
-@if $include-html-visibility-classes != false {
+@include exports("visibility"){
+  @if $include-html-visibility-classes != false {
 
   @include visibility-loop;
 
@@ -471,4 +471,5 @@ $visibility-breakpoint-queries:
       td.show-for-print { display: table-cell !important; }
       th.show-for-print { display: table-cell !important; }
   }
+}
 }
