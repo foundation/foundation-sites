@@ -20,20 +20,19 @@
       var self = this,
           S = this.S;
 
-      this.bindings(method, options);
+	  // Store the default active tabs which will be referenced when the
+	  // location hash is absent, as in the case of navigating the tabs and
+	  // returning to the first viewing via the browser Back button.
+	  S('[' + this.attr_name() + '] > .active > a', this.scope).each(function () {
+	    self.default_tab_hashes.push(this.hash);
+	  });
 
       // store the initial href, which is used to allow correct behaviour of the
       // browser back button when deep linking is turned on.
       self.entry_location = window.location.href;
 
+      this.bindings(method, options);
       this.handle_location_hash_change();
-
-      // Store the default active tabs which will be referenced when the
-      // location hash is absent, as in the case of navigating the tabs and
-      // returning to the first viewing via the browser Back button.
-      S('[' + this.attr_name() + '] > .active > a', this.scope).each(function () {
-        self.default_tab_hashes.push(this.hash);
-      });
     },
 
     events : function () {
