@@ -71,7 +71,7 @@ $input-error-message-bg-color: $alert-color !default;
 $input-error-message-font-color-alt: $oil !default;
 
 // We use this to style the glowing effect of inputs when focused
-$glowing-effect-fade-time: 0.45s !default;
+$glowing-effect-fade-time: .45s !default;
 $glowing-effect-color: $input-focus-border-color !default;
 
 // Select variables
@@ -284,7 +284,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 // $color - Default: $alert-color (found in settings file)
 @mixin form-error-color($color:$alert-color) {
   border-color: $color;
-  background-color: rgba($color, 0.1);
+  background-color: rgba($color, .1);
 
   // Go back to normal on focus
   &:focus {
@@ -415,7 +415,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
       border-radius: 0;
       @include form-element;
       @if $input-include-glowing-effect == false {
-          @include single-transition(all, 0.15s, linear);
+          @include single-transition(all, .15s, linear);
       }
       &.radius {
         @include radius($input-border-radius);

@@ -10,7 +10,7 @@ $include-html-orbit-classes: $include-html-classes !default;
 
 // We use these to control the caption styles
 $orbit-container-bg: none !default;
-$orbit-caption-bg: rgba(51,51,51, 0.8) !default;
+$orbit-caption-bg: rgba(51,51,51, .8) !default;
 $orbit-caption-font-color: $white !default;
 $orbit-caption-font-size: rem-calc(14) !default;
 $orbit-caption-position: "bottom" !default; // Supported values: "bottom", "under"

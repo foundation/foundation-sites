@@ -42,7 +42,7 @@ $topbar-link-text-transform: none !default;
 $topbar-link-padding: ($topbar-height / 3) !default;
 $topbar-back-link-size: rem-calc(18) !default;
 $topbar-link-dropdown-padding: rem-calc(20) !default;
-$topbar-button-font-size: 0.75rem !default;
+$topbar-button-font-size: .75rem !default;
 $topbar-button-top: 7px !default;
 
 // Style the top bar dropdown elements
@@ -54,7 +54,7 @@ $topbar-dropdown-link-bg-hover: $oil !default;
 $topbar-dropdown-link-weight: $font-weight-normal !default;
 $topbar-dropdown-toggle-size: 5px !default;
 $topbar-dropdown-toggle-color: $white !default;
-$topbar-dropdown-toggle-alpha: 0.4 !default;
+$topbar-dropdown-toggle-alpha: .4 !default;
 
 $topbar-dropdown-label-color: $monsoon !default;
 $topbar-dropdown-label-text-transform: uppercase !default;

@@ -48,6 +48,7 @@ $switch-active-color: $primary-color !default;
   border: none;
   position: relative;
   outline: 0;
+  margin-bottom: $switch-bottom-margin;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
@@ -90,8 +91,8 @@ $switch-active-color: $primary-color !default;
     position: absolute;
     top: .25rem;
     left: .25rem;
-    width: $switch-height-med - 0.5rem;
-    height: $switch-height-med - 0.5rem;
+    width: $switch-height-med - .5rem;
+    height: $switch-height-med - .5rem;
 
     -webkit-transition: left $transition-speed $transition-ease;
     -moz-transition: left $transition-speed $transition-ease;
@@ -109,7 +110,7 @@ $switch-active-color: $primary-color !default;
   }
 
   input:checked + label:after {
-    left: $switch-height-med + 0.25rem;
+    left: $switch-height-med + .25rem;
   }
 }
 
@@ -126,12 +127,12 @@ $switch-active-color: $primary-color !default;
   }
 
   label:after {
-    width: $height - 0.5rem;
-    height: $height - 0.5rem;
+    width: $height - .5rem;
+    height: $height - .5rem;
   }
 
   input:checked + label:after {
-    left: $height + 0.25rem;
+    left: $height + .25rem;
   }
 
 }
