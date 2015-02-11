@@ -44,7 +44,6 @@
           if (!settings.is_hover || Modernizr.touch) {
             e.preventDefault();
             e.stopPropagation();
-            console.log(e);
             self.toggle_active_tab(S(target).parent());
           }
         };
