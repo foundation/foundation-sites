@@ -411,25 +411,6 @@
           css_before = 'left: ' + pip_offset_base + 'px;',
           css_after  = 'left: ' + (pip_offset_base - 1) + 'px;';
         
-      /*if (position.missRight == true) {
-        pip_offset_base = dropdown.outerWidth() - 23;
-        if(settings.pip == 'center') {
-          pip_offset_base = pip_offset_base - target.outerWidth()/2 + (23 - 8);
-        }
-        sel_before = '.f-dropdown.open:before',
-        sel_after  = '.f-dropdown.open:after',
-        css_before = 'left: ' + pip_offset_base + 'px;',
-        css_after  = 'left: ' + (pip_offset_base - 1) + 'px;';
-      }
-    
-      //just a case where right is fired, but its not missing right
-      if (settings.pip != 'center' && position.triggeredRight == true) {
-        sel_before = '.f-dropdown.open:before',
-        sel_after  = '.f-dropdown.open:after',
-        css_before = 'left:-12px;',
-        css_after  = 'left:-14px;';
-      }*/
-
       if (sheet.insertRule) {
         sheet.insertRule([sel_before, '{', css_before, '}'].join(' '), this.rule_idx);
         sheet.insertRule([sel_after, '{', css_after, '}'].join(' '), this.rule_idx + 1);
@@ -456,22 +437,6 @@
           css_before = 'top: ' + pip_offset_base + 'px;',
           css_after  = 'top: ' + (pip_offset_base - 1) + 'px;';
         
-      /*if (position.missRight == true) {
-        pip_offset_base = dropdown.outerWidth() - 23;
-        sel_before = '.f-dropdown.open:before',
-        sel_after  = '.f-dropdown.open:after',
-        css_before = 'top: ' + pip_offset_base + 'px;',
-        css_after  = 'top: ' + (pip_offset_base - 1) + 'px;';
-      }
-    
-      //just a case where right is fired, but its not missing right
-      if (position.triggeredRight == true) {
-        sel_before = '.f-dropdown.open:before',
-        sel_after  = '.f-dropdown.open:after',
-        css_before = 'top:-12px;',
-        css_after  = 'top:-14px;';
-      }*/
-
       if (sheet.insertRule) {
         sheet.insertRule([sel_before, '{', css_before, '}'].join(' '), this.rule_idx);
         sheet.insertRule([sel_after, '{', css_after, '}'].join(' '), this.rule_idx + 1);
