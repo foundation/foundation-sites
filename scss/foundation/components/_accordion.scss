@@ -32,7 +32,7 @@ $accordion-content-active-bg-color: $white !default;
   margin-bottom: 0;
 }
 
-//  Mixin: accordion-navigation( $bg, $hover-bg, $active-bg, $padding, $active_class,  $font-color, $font-size, $font-family){
+//  Mixin: accordion-navigation( $bg, $hover-bg, $active-bg, $padding, $active_class,  $font-color, $font-size, $font-family) {
 //    @params $bg-color: [ color or string ]: Specify the background color for the navigation element
 //    @params $hover-bg-color [ color or string ]: Specify the background color for the navigation element when hovered
 //    @params $active-bg [ color or string ]: Specify the background color for the navigation element when clicked and not released.
@@ -41,7 +41,7 @@ $accordion-content-active-bg-color: $white !default;
 //    @params $font-size [ number ]: Specifiy the font-size of the text inside the navigation element
 //    @params $font-family [ string ]: Specify the font family for the text of the navigation of the accorion
 
-@mixin accordion-navigation( $bg: $accordion-navigation-bg-color, $hover-bg: $accordion-navigation-hover-bg-color, $active-bg: $accordion-navigation-active-bg-color, $padding: $accordion-navigation-padding, $active_class: 'active',  $font-color: $accordion-navigation-font-color, $font-size: $accordion-navigation-font-size, $font-family: $accordion-navigation-font-family ){
+@mixin accordion-navigation( $bg: $accordion-navigation-bg-color, $hover-bg: $accordion-navigation-hover-bg-color, $active-bg: $accordion-navigation-active-bg-color, $padding: $accordion-navigation-padding, $active_class: 'active',  $font-color: $accordion-navigation-font-color, $font-size: $accordion-navigation-font-size, $font-family: $accordion-navigation-font-family ) {
   display: block;
   margin-bottom: 0 !important;
   @if type-of($active_class) != "string" {
@@ -98,7 +98,7 @@ $accordion-content-active-bg-color: $white !default;
 //    @params $bg [ color  ]: Background color for the content when it's visible
 //    @params $active_class [ string ]: Class name used to keep track of which accordion tab should be visible.
 
-@mixin accordion-content($bg: $accordion-content-active-bg-color, $padding: $accordion-content-padding, $active_class: 'active'){
+@mixin accordion-content($bg: $accordion-content-active-bg-color, $padding: $accordion-content-padding, $active_class: 'active') {
   display: none;
   @if type-of($padding) != "number" {
     @warn "#{$padding} was read as a #{type-of($padding)}";

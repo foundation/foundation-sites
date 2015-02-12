@@ -93,10 +93,10 @@ $block-grid-media-queries: true !default;
 // Generate presentational markup for block grid.
 //
 // $size - Name of class to use, i.e. "large" will generate .large-block-grid-1, .large-block-grid-2, etc.
-@mixin block-grid-html-classes($size,$include-spacing) {
+@mixin block-grid-html-classes($size, $include-spacing) {
   @for $i from 1 through $block-grid-elements {
     .#{$size}-block-grid-#{($i)} {
-      @include block-grid($i,$block-grid-default-spacing,$include-spacing,false);
+      @include block-grid($i, $block-grid-default-spacing, $include-spacing, false);
     }
   }
 }
@@ -108,24 +108,24 @@ $block-grid-media-queries: true !default;
 
     @if $block-grid-media-queries {
       @media #{$small-up} {
-        @include block-grid-html-classes($size:small,$include-spacing:false);
+        @include block-grid-html-classes($size:small, $include-spacing:false);
       }
 
       @media #{$medium-up} {
-        @include block-grid-html-classes($size:medium,$include-spacing:false);
+        @include block-grid-html-classes($size:medium, $include-spacing:false);
       }
 
       @media #{$large-up} {
-        @include block-grid-html-classes($size:large,$include-spacing:false);
+        @include block-grid-html-classes($size:large, $include-spacing:false);
       }
 
       @if $include-xl-html-block-grid-classes {
         @media #{$xlarge-up} {
-          @include block-grid-html-classes($size:xlarge,$include-spacing:false);
+          @include block-grid-html-classes($size:xlarge, $include-spacing:false);
         }
 
         @media #{$xxlarge-up} {
-          @include block-grid-html-classes($size:xxlarge,$include-spacing:false);
+          @include block-grid-html-classes($size:xxlarge, $include-spacing:false);
         }
       }
     }

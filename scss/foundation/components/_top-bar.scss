@@ -42,7 +42,7 @@ $topbar-link-text-transform: none !default;
 $topbar-link-padding: ($topbar-height / 3) !default;
 $topbar-back-link-size: rem-calc(18) !default;
 $topbar-link-dropdown-padding: rem-calc(20) !default;
-$topbar-button-font-size: 0.75rem !default;
+$topbar-button-font-size: .75rem !default;
 $topbar-button-top: 7px !default;
 
 // Style the top bar dropdown elements
@@ -54,7 +54,7 @@ $topbar-dropdown-link-bg-hover: $oil !default;
 $topbar-dropdown-link-weight: $font-weight-normal !default;
 $topbar-dropdown-toggle-size: 5px !default;
 $topbar-dropdown-toggle-color: $white !default;
-$topbar-dropdown-toggle-alpha: 0.4 !default;
+$topbar-dropdown-toggle-alpha: .4 !default;
 
 $topbar-dropdown-label-color: $monsoon !default;
 $topbar-dropdown-label-text-transform: uppercase !default;
@@ -76,7 +76,7 @@ $topbar-menu-icon-position: $opposite-direction !default; // Change to $default-
 $topbar-transition-speed: 300ms !default;
 // Using rem-calc for the below breakpoint causes issues with top bar
 $topbar-breakpoint: #{lower-bound($medium-range)} !default; // Change to 9999px for always mobile layout
-$topbar-media-query: $medium-up !default;
+$topbar-media-query: "#{$screen} and (min-width:#{lower-bound($topbar-breakpoint)})";
 
 // Top-bar input styles
 $topbar-input-height: rem-calc(28) !default;
@@ -169,11 +169,11 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
       form,
       input { margin-bottom: 0; }
 
-      input { 
-        height: $topbar-input-height; 
-        padding-top: .35rem; 
-        padding-bottom: .35rem; 
-        font-size: $topbar-button-font-size; 
+      input {
+        height: $topbar-input-height;
+        padding-top: .35rem;
+        padding-bottom: .35rem;
+        font-size: $topbar-button-font-size;
       }
 
       .button, button {
@@ -379,7 +379,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
 
         & > a {
           &:after {
-            @if ($topbar-arrows){
+            @if ($topbar-arrows) {
               @include css-triangle($topbar-dropdown-toggle-size, rgba($topbar-dropdown-toggle-color, $topbar-dropdown-toggle-alpha), $default-float);
             }
             margin-#{$opposite-direction}: $topbar-link-padding;
@@ -462,7 +462,12 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
         .toggle-topbar { display: none; }
 
         .title-area { float: $default-float; }
-        .name h1 a { width: auto; }
+        .name h1 a,
+        .name h2 a,
+        .name h3 a,
+        .name h4 a,
+        .name h5 a,
+        .name h6 a { width: auto; }
 
         input,
         .button,
@@ -535,7 +540,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
         }
 
         .has-dropdown {
-          @if($topbar-arrows){
+          @if($topbar-arrows) {
             & > a {
               padding-#{$opposite-direction}: $topbar-link-padding + $topbar-link-dropdown-padding !important;
               &:after {
@@ -563,7 +568,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
 
           .dropdown li.has-dropdown {
             & > a {
-              @if ($topbar-dropdown-arrows){
+              @if ($topbar-dropdown-arrows) {
                 &:after {
                   border: none;
                   content: "\00bb";
@@ -685,6 +690,34 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
             @include topbar-show-dropdown();
           }
         }
+      }
+    }
+  }
+  @media screen and (-webkit-min-device-pixel-ratio:0) {
+    .top-bar.expanded .top-bar-section {
+      .has-dropdown.moved > .dropdown {
+        clip:initial;
+      }
+      .dropdown {
+        clip:initial;
+      }
+      // This was needed as parent ul's had padding, which the clip: was allowing content to peak through
+      .has-dropdown:not(.moved) > ul {
+        padding: 0;
+      }
+    }
+  }
+  @media screen and (-webkit-min-device-pixel-ratio:0) {
+    .top-bar.expanded .top-bar-section {
+      .has-dropdown.moved > .dropdown {
+        clip:initial;
+      }
+      .dropdown {
+        clip:initial;
+      }
+      // This was needed as parent ul's had padding, which the clip: was allowing content to peak through
+      .has-dropdown:not(.moved) > ul {
+        padding: 0;
       }
     }
   }

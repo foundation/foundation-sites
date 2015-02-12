@@ -20,40 +20,52 @@
       var self = this,
           S = this.S;
 
-      this.bindings(method, options);
+	  // Store the default active tabs which will be referenced when the
+	  // location hash is absent, as in the case of navigating the tabs and
+	  // returning to the first viewing via the browser Back button.
+	  S('[' + this.attr_name() + '] > .active > a', this.scope).each(function () {
+	    self.default_tab_hashes.push(this.hash);
+	  });
 
       // store the initial href, which is used to allow correct behaviour of the
       // browser back button when deep linking is turned on.
       self.entry_location = window.location.href;
 
+      this.bindings(method, options);
       this.handle_location_hash_change();
-
-      // Store the default active tabs which will be referenced when the
-      // location hash is absent, as in the case of navigating the tabs and
-      // returning to the first viewing via the browser Back button.
-      S('[' + this.attr_name() + '] > .active > a', this.scope).each(function () {
-        self.default_tab_hashes.push(this.hash);
-      });
     },
 
     events : function () {
       var self = this,
           S = this.S;
 
-      var usual_tab_behavior =  function (e) {
-          var settings = S(this).closest('[' + self.attr_name() + ']').data(self.attr_name(true) + '-init');
+      var usual_tab_behavior =  function (e, target) {
+          var settings = S(target).closest('[' + self.attr_name() + ']').data(self.attr_name(true) + '-init');
           if (!settings.is_hover || Modernizr.touch) {
             e.preventDefault();
             e.stopPropagation();
-            self.toggle_active_tab(S(this).parent());
+            self.toggle_active_tab(S(target).parent());
           }
         };
 
       S(this.scope)
         .off('.tab')
+        // Key event: focus/tab key
+        .on('keydown.fndtn.tab', '[' + this.attr_name() + '] > * > a', function(e) {
+          var el = this;
+          var keyCode = e.keyCode || e.which;
+            // if user pressed tab key
+            if (keyCode == 9) { 
+              e.preventDefault();
+              // TODO: Change usual_tab_behavior into accessibility function?
+              usual_tab_behavior(e, el);
+            } 
+        })
         // Click event: tab title
-        .on('focus.fndtn.tab', '[' + this.attr_name() + '] > * > a', usual_tab_behavior )
-        .on('click.fndtn.tab', '[' + this.attr_name() + '] > * > a', usual_tab_behavior )
+        .on('click.fndtn.tab', '[' + this.attr_name() + '] > * > a', function(e) {
+          var el = this;
+          usual_tab_behavior(e, el);
+        })
         // Hover event: tab title
         .on('mouseenter.fndtn.tab', '[' + this.attr_name() + '] > * > a', function (e) {
           var settings = S(this).closest('[' + self.attr_name() + ']').data(self.attr_name(true) + '-init');

@@ -55,7 +55,7 @@ $button-radius: $global-radius !default;
 $button-round: $global-rounded !default;
 
 // We use this to set default opacity and cursor for disabled buttons.
-$button-disabled-opacity: 0.7 !default;
+$button-disabled-opacity: .7 !default;
 $button-disabled-cursor: $cursor-default-value !default;
 
 
@@ -98,11 +98,7 @@ $button-disabled-cursor: $cursor-default-value !default;
   // We control which padding styles come through,
   // these can be turned off by setting $padding:false
   @if $padding {
-    padding-top: $padding;
-    padding-#{$opposite-direction}: $padding * 2;
-    padding-bottom: $padding + rem-calc(1);
-    padding-#{$default-float}: $padding * 2;
-
+    padding: $padding ($padding * 2) ($padding + rem-calc(1)) ($padding * 2);
     // We control the font-size based on mixin input.
     @if      $padding == $button-med { font-size: $button-font-med; }
     @else if $padding == $button-tny { font-size: $button-font-tny; }
@@ -135,11 +131,11 @@ $button-disabled-cursor: $cursor-default-value !default;
 // We use this mixin to add button color styles
 //
 // $bg - Background color. We can set $bg:false for a transparent background. Default: $primary-color.
-// $radius - If true, set to button radius which is $button-radius || explicitly set radius amount in px (ex. $radius:10px). Default: true
+// $radius - If true, set to button radius which is $button-radius || explicitly set radius amount in px (ex. $radius:10px). Default: false
 // $disabled - We can set $disabled:true to create a disabled transparent button. Default: false
 // $bg-hover - Button Hover Background Color. Default: $button-bg-hover
 // $border-color - Button Border Color. Default: $button-border-color
-@mixin button-style($bg:$button-bg-color, $radius:true, $disabled:false, $bg-hover:null, $border-color:null) {
+@mixin button-style($bg:$button-bg-color, $radius:false, $disabled:false, $bg-hover:null, $border-color:null) {
 
   // We control which background styles are used,
   // these can be removed by setting $bg:false
@@ -230,7 +226,7 @@ $button-disabled-cursor: $cursor-default-value !default;
       &.large  { @include button-size($padding:$button-lrg); }
       &.small  { @include button-size($padding:$button-sml); }
       &.tiny   { @include button-size($padding:$button-tny); }
-      &.expand { @include button-size($padding:null,$full-width:true); }
+      &.expand { @include button-size($padding:null, $full-width:true); }
 
       &.left-align  { text-align: left; text-indent: rem-calc(12); }
       &.right-align { text-align: right; padding-right: rem-calc(12); }

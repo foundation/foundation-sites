@@ -53,7 +53,7 @@ $input-prefix-bg: scale-color($white, $lightness: -5%) !default;
 $input-prefix-border-color: scale-color($white, $lightness: -20%) !default;
 $input-prefix-border-size: 1px !default;
 $input-prefix-border-type: solid !default;
-$input-prefix-overflow: hidden !default;
+$input-prefix-overflow: visible !default;
 $input-prefix-font-color: $oil !default;
 $input-prefix-font-color-alt: $white !default;
 
@@ -71,7 +71,7 @@ $input-error-message-bg-color: $alert-color !default;
 $input-error-message-font-color-alt: $oil !default;
 
 // We use this to style the glowing effect of inputs when focused
-$glowing-effect-fade-time: 0.45s !default;
+$glowing-effect-fade-time: .45s !default;
 $glowing-effect-color: $input-focus-border-color !default;
 
 // Select variables
@@ -284,7 +284,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 // $color - Default: $alert-color (found in settings file)
 @mixin form-error-color($color:$alert-color) {
   border-color: $color;
-  background-color: rgba($color, 0.1);
+  background-color: rgba($color, .1);
 
   // Go back to normal on focus
   &:focus {
@@ -383,8 +383,8 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 
     /* Label Styles */
     label { @include form-label;
-      &.right { @include form-label(right,false); }
-      &.inline { @include form-label(inline,false); }
+      &.right { @include form-label(right, false); }
+      &.inline { @include form-label(inline, false); }
       /* Styles for required inputs */
       small {
         text-transform: $form-label-small-transform;
@@ -397,8 +397,8 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
     .postfix { @include prefix-postfix-base; }
 
     /* Adjust padding, alignment and radius if pre/post element is a button */
-    .postfix.button { @include button-size(false,false); @include postfix(false, false, true); }
-    .prefix.button { @include button-size(false,false); @include prefix(false, false, true); }
+    .postfix.button { @include button-size(false, false); @include postfix(false, false, true); }
+    .prefix.button { @include button-size(false, false); @include prefix(false, false, true); }
 
     .prefix.button.radius { @include radius(0); @include side-radius($default-float, $button-radius); }
     .postfix.button.radius { @include radius(0); @include side-radius($opposite-direction, $button-radius); }
@@ -406,8 +406,8 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
     .postfix.button.round { @include radius(0); @include side-radius($opposite-direction, $button-round); }
 
     /* Separate prefix and postfix styles when on span or label so buttons keep their own */
-    span.prefix,label.prefix { @include prefix(); }
-    span.postfix,label.postfix { @include postfix(); }
+    span.prefix, label.prefix { @include prefix(); }
+    span.postfix, label.postfix { @include postfix(); }
 
     /* We use this to get basic styling on all basic form elements */
     #{text-inputs(all, 'input')} {
@@ -415,7 +415,11 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
       border-radius: 0;
       @include form-element;
       @if $input-include-glowing-effect == false {
-          @include single-transition(all, 0.15s, linear);
+        -webkit-transition: border-color 0.15s linear, background 0.15s linear;
+        -moz-transition: border-color 0.15s linear, background 0.15s linear;
+        -ms-transition: border-color 0.15s linear, background 0.15s linear;
+        -o-transition: border-color 0.15s linear, background 0.15s linear;
+        transition: border-color 0.15s linear, background 0.15s linear;
       }
       &.radius {
         @include radius($input-border-radius);
@@ -427,25 +431,29 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
         .prefix-radius.row.collapse {
           input,
           textarea,
-          select { @include radius(0); @include side-radius($opposite-direction, $button-radius); }
+          select,
+          button { @include radius(0); @include side-radius($opposite-direction, $button-radius); }
           .prefix { @include radius(0); @include side-radius($default-float, $button-radius); }
         }
         .postfix-radius.row.collapse {
           input,
           textarea,
-          select { @include radius(0); @include side-radius($default-float, $button-radius); }
+          select,
+          button { @include radius(0); @include side-radius($default-float, $button-radius); }
           .postfix { @include radius(0); @include side-radius($opposite-direction, $button-radius); }
         }
         .prefix-round.row.collapse {
           input,
           textarea,
-          select { @include radius(0); @include side-radius($opposite-direction, $button-round); }
+          select,
+          button { @include radius(0); @include side-radius($opposite-direction, $button-round); }
           .prefix { @include radius(0); @include side-radius($default-float, $button-round); }
         }
         .postfix-round.row.collapse {
           input,
           textarea,
-          select { @include radius(0); @include side-radius($default-float, $button-round); }
+          select,
+          button { @include radius(0); @include side-radius($default-float, $button-round); }
           .postfix { @include radius(0); @include side-radius($opposite-direction, $button-round); }
         }
       }
@@ -470,6 +478,9 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
     select {
       @include form-select;
       height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
+      &[multiple] {
+        height: auto;
+      }
     }
 
     /* Adjust margin for form elements below */

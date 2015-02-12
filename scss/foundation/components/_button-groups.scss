@@ -38,7 +38,7 @@ $button-group-border-width: 1px !default;
 
   > button, .button {
     border-#{$default-float}: $button-group-border-width solid;
-    border-color: rgba(255, 255, 255, 0.5);
+    border-color: rgba(255, 255, 255, .5);
   }
 
   &:first-child {
@@ -47,25 +47,28 @@ $button-group-border-width: 1px !default;
     }
   }
 
+  $button-group-display: list-item;
+  $button-group-margin: 0;
+
   // We use this to control the flow, or remove those styles completely.
   @if $float {
-    margin: 0;
+    $button-group-display: list-item;
+    $button-group-margin: 0;
     float: $float;
-    display: list-item;
     // Make sure the first child doesn't get the negative margin.
     &:first-child { margin-#{$default-float}: 0; }
   }
   @else {
-    margin: 0 -2px;
-    display: inline-block;
+    $button-group-display: inline-block;
+    $button-group-margin: 0 -2px;
   }
 
   @if $orientation == vertical {
-    display:block;
-    margin:0;
+    $button-group-display: block;
+    $button-group-margin: 0;
     > button, .button {
       border-top: $button-group-border-width solid;
-      border-color: rgba(255, 255, 255, 0.5);
+      border-color: rgba(255, 255, 255, .5);
       border-left-width: 0;
       margin:0;
       display: block;
@@ -80,6 +83,10 @@ $button-group-border-width: 1px !default;
       }
     }
   }
+
+  display: $button-group-display;
+  margin: $button-group-margin;
+
 
   // We use these to control left and right radius on first/last buttons in the group.
   @if $radius == true {
@@ -153,7 +160,7 @@ $button-group-border-width: 1px !default;
       @for $i from 2 through 8 {
         &.even-#{$i} li { @include button-group-style($even:$i, $float:null); }
       }
-      
+
       & > li { @include button-group-style(); }
 
       &.stack {

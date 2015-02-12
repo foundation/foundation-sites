@@ -13,6 +13,7 @@ $include-html-panel-classes: $include-html-classes !default;
 $panel-bg: scale-color($white, $lightness: -5%) !default;
 $panel-border-style: solid !default;
 $panel-border-size: 1px !default;
+$callout-panel-bg: scale-color($primary-color, $lightness: 94%) !default;
 
 // We use this % to control how much we darken things on hover
 $panel-function-factor: -11% !default;
@@ -57,15 +58,15 @@ $callout-panel-link-color-hover: scale-color($callout-panel-link-color, $lightne
 
     @if $adjust {
       // We set the font color based on the darkness of the bg.
-      @if $bg-lightness >= 50% { 
-        h1,h2,h3,h4,h5,h6,p,li,dl { color: $panel-font-color; }
+      @if $bg-lightness >= 50% {
+        h1, h2, h3, h4, h5, h6, p, li, dl { color: $panel-font-color; }
       }
-      @else { 
-        h1,h2,h3,h4,h5,h6,p,li,dl { color: $panel-font-color-alt; }
+      @else {
+        h1, h2, h3, h4, h5, h6, p, li, dl { color: $panel-font-color-alt; }
       }
 
       // reset header line-heights for panels
-      h1,h2,h3,h4,h5,h6 {
+      h1, h2, h3, h4, h5, h6 {
         line-height: 1; margin-bottom: rem-calc(20) / 2;
         &.subheader { line-height: 1.4; }
       }
@@ -80,7 +81,7 @@ $callout-panel-link-color-hover: scale-color($callout-panel-link-color, $lightne
     .panel { @include panel;
 
       &.callout {
-        @include panel(scale-color($primary-color, $lightness: 94%));
+        @include panel($callout-panel-bg);
         a:not(.button) {
           color: $callout-panel-link-color;
 

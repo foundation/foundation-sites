@@ -57,6 +57,31 @@
 
       self.create(this.S(instance));
 
+      function _startShow(elt, $this, immediate) {
+        if (elt.timer) {
+          return;
+        }
+
+        if (immediate) {
+          elt.timer = null;
+          self.showTip($this);
+        } else {
+          elt.timer = setTimeout(function () {
+            elt.timer = null;
+            self.showTip($this);
+          }.bind(elt), self.settings.hover_delay);
+        }
+      }
+
+      function _startHide(elt, $this) {
+        if (elt.timer) {
+          clearTimeout(elt.timer);
+          elt.timer = null;
+        }
+
+        self.hide($this);
+      }
+
       $(this.scope)
         .off('.tooltip')
         .on('mouseenter.fndtn.tooltip mouseleave.fndtn.tooltip touchstart.fndtn.tooltip MSPointerDown.fndtn.tooltip',
@@ -88,14 +113,11 @@
             }
 
             if (/enter|over/i.test(e.type)) {
-              this.timer = setTimeout(function () {
-                var tip = self.showTip($this);
-              }.bind(this), self.settings.hover_delay);
+              _startShow(this, $this);
             } else if (e.type === 'mouseout' || e.type === 'mouseleave') {
-              clearTimeout(this.timer);
-              self.hide($this);
+              _startHide(this, $this);
             } else {
-              self.showTip($this);
+              _startShow(this, $this, true);
             }
           }
         })
@@ -109,11 +131,11 @@
           } else if ($(this).data('tooltip-open-event-type') == 'mouse' && /MSPointerDown|touchstart/i.test(e.type)) {
             self.convert_to_touch($(this));
           } else {
-            self.hide($(this));
+            _startHide(this, $(this));
           }
         })
         .on('DOMNodeRemoved DOMAttrModified', '[' + this.attr_name() + ']:not(a)', function (e) {
-          self.hide(S(this));
+          _startHide(this, S(this));
         });
     },
 

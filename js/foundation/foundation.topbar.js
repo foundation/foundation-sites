@@ -14,7 +14,8 @@
       mobile_show_parent_link : true,
       is_hover : true,
       scrolltop : true, // jump to top when sticky nav menu toggle is clicked
-      sticky_on : 'all'
+      sticky_on : 'all',
+      dropdown_autoclose: true
     },
 
     init : function (section, method, options) {
@@ -78,6 +79,12 @@
        if (sticky && this.large() && settings.sticky_on.indexOf('large') !== -1) {
            if (smallMatch && medMatch && lrgMatch) { return true; }
        }
+
+       // fix for iOS browsers
+       if (sticky && navigator.userAgent.match(/(iPad|iPhone|iPod)/g)) {
+        return true;
+       }
+       
        return false;
     },
 
@@ -161,11 +168,19 @@
           e.preventDefault();
           self.toggle(this);
         })
-        .on('click.fndtn.topbar', '.top-bar .top-bar-section li a[href^="#"],[' + this.attr_name() + '] .top-bar-section li a[href^="#"]', function (e) {
-            var li = $(this).closest('li');
+        .on('click.fndtn.topbar contextmenu.fndtn.topbar', '.top-bar .top-bar-section li a[href^="#"],[' + this.attr_name() + '] .top-bar-section li a[href^="#"]', function (e) {
+            var li = $(this).closest('li'),
+                topbar = li.closest('[' + self.attr_name() + ']'),
+                settings = topbar.data(self.attr_name(true) + '-init');
+
+            if (settings.dropdown_autoclose && settings.is_hover) {
+              var hoverLi = $(this).closest('.hover');
+              hoverLi.removeClass('hover');
+            }
             if (self.breakpoint() && !li.hasClass('back') && !li.hasClass('has-dropdown')) {
               self.toggle();
             }
+
         })
         .on('click.fndtn.topbar', '[' + this.attr_name() + '] li.has-dropdown', function (e) {
           var li = S(this),
