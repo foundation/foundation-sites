@@ -7,15 +7,15 @@
     version : '{{VERSION}}',
 
     settings : {
-      active_class: 'open',
-      disabled_class: 'disabled',
-      mega_class: 'mega',
-      align: 'bottom',
-      pip: 'default',
-      is_hover: false,
-      hover_timeout: 150,
-      opened: function(){},
-      closed: function(){}
+      active_class : 'open',
+      disabled_class : 'disabled',
+      mega_class : 'mega',
+      align : 'bottom',
+      pip : 'default',
+      is_hover : false,
+      hover_timeout : 150,
+      opened : function () {},
+      closed : function () {}
     },
 
     init : function (scope, method, options) {
@@ -58,11 +58,13 @@
 
           var settings = target.data(self.attr_name(true) + '-init') || self.settings;
 
-          if(S(e.currentTarget).data(self.data_attr()) && settings.is_hover) {
+          if (S(e.currentTarget).data(self.data_attr()) && settings.is_hover) {
             self.closeall.call(self);
           }
 
-          if (settings.is_hover) self.open.apply(self, [dropdown, target]);
+          if (settings.is_hover) {
+            self.open.apply(self, [dropdown, target]);
+          }
         })
         .on('mouseleave.fndtn.dropdown', '[' + this.attr_name() + '], [' + this.attr_name() + '-content]', function (e) {
           var $this = S(this);
@@ -70,17 +72,20 @@
 
           if ($this.data(self.data_attr())) {
               settings = $this.data(self.data_attr(true) + '-init') || self.settings;
-          } 
-          else {
+          } else {
               var target   = S('[' + self.attr_name() + '="' + S(this).attr('id') + '"]'),
                   settings = target.data(self.attr_name(true) + '-init') || self.settings;
           }
 
           self.timeout = setTimeout(function () {
             if ($this.data(self.data_attr())) {
-              if (settings.is_hover) self.close.call(self, S('#' + $this.data(self.data_attr())));
+              if (settings.is_hover) {
+                self.close.call(self, S('#' + $this.data(self.data_attr())));
+              }
             } else {
-              if (settings.is_hover) self.close.call(self, $this);
+              if (settings.is_hover) {
+                self.close.call(self, $this);
+              }
             }
           }.bind(this), settings.hover_timeout);
         })
@@ -88,8 +93,12 @@
           var parent = S(e.target).closest('[' + self.attr_name() + '-content]');
           var links  = parent.find('a');
 
-          if (links.length > 0 && parent.attr('aria-autoclose') !== "false") {
+          if (links.length > 0 && parent.attr('aria-autoclose') !== 'false') {
               self.close.call(self, S('[' + self.attr_name() + '-content]'));
+          }
+
+          if (e.target !== document && !$.contains(document.documentElement, e.target)) {
+            return;
           }
 
           if (S(e.target).closest('[' + self.attr_name() + ']').length > 0) {
@@ -121,14 +130,14 @@
       this.resize();
     },
 
-    close: function (dropdown) {
+    close : function (dropdown) {
       var self = this;
       dropdown.each(function () {
-        var original_target = $('[' + self.attr_name() + '=' + dropdown[0].id + ']') || $('aria-controls=' + dropdown[0].id+ ']');
+        var original_target = $('[' + self.attr_name() + '=' + dropdown[0].id + ']') || $('aria-controls=' + dropdown[0].id + ']');
         original_target.attr('aria-expanded', 'false');
         if (self.S(this).hasClass(self.settings.active_class)) {
           self.S(this)
-            .css(Foundation.rtl ? 'right':'left', '-99999px')
+            .css(Foundation.rtl ? 'right' : 'left', '-99999px')
             .attr('aria-hidden', 'true')
             .removeClass(self.settings.active_class)
             .prev('[' + self.attr_name() + ']')
@@ -141,14 +150,14 @@
       dropdown.removeClass('f-open-' + this.attr_name(true));
     },
 
-    closeall: function() {
+    closeall : function () {
       var self = this;
-      $.each(self.S('.f-open-' + this.attr_name(true)), function() {
+      $.each(self.S('.f-open-' + this.attr_name(true)), function () {
         self.close.call(self, self.S(this));
       });
     },
 
-    open: function (dropdown, target) {
+    open : function (dropdown, target) {
       this
         .css(dropdown
         .addClass(this.settings.active_class), target);
@@ -160,7 +169,7 @@
       dropdown.addClass('f-open-' + this.attr_name(true));
     },
 
-    data_attr: function () {
+    data_attr : function () {
       if (this.namespace.length > 0) {
         return this.namespace + '-' + this.name;
       }
@@ -182,16 +191,17 @@
 
       if (dropdown.hasClass(this.settings.active_class)) {
         this.close.call(this, dropdown);
-        if (dropdown.data('target') !== target.get(0))
+        if (dropdown.data('target') !== target.get(0)) {
           this.open.call(this, dropdown, target);
+        }
       } else {
         this.open.call(this, dropdown, target);
       }
     },
 
     resize : function () {
-      var dropdown = this.S('[' + this.attr_name() + '-content].open'),
-          target = this.S('[' + this.attr_name() + '="' + dropdown.attr('id') + '"]');
+      var dropdown = this.S('[' + this.attr_name() + '-content].open');
+      var target = $(dropdown.data("target"));
 
       if (dropdown.length && target.length) {
         this.css(dropdown, target);
@@ -208,12 +218,12 @@
 
         dropdown.attr('style', '').removeClass('drop-left drop-right drop-top').css({
           position : 'absolute',
-          width: '95%',
-          'max-width': 'none',
-          top: p.top
+          width : '95%',
+          'max-width' : 'none',
+          top : p.top
         });
 
-        dropdown.css(Foundation.rtl ? 'right':'left', 8);
+        dropdown.css(Foundation.rtl ? 'right' : 'left', 8);
       } else {
 
         this.style(dropdown, target, settings);
@@ -223,7 +233,7 @@
     },
 
     style : function (dropdown, target, settings) {
-      var css = $.extend({position: 'absolute'},
+      var css = $.extend({position : 'absolute'},
         this.dirs[settings.align].call(dropdown, target, settings));
 
       dropdown.attr('style', '').css(css);
@@ -241,13 +251,13 @@
         p.top -= o.top;
         p.left -= o.left;
         p.offset = 0;
-        
+    
         //set some flags on the p object to pass along
         p.missRight = false;
         p.missTop = false;
         p.missLeft = false;
         p.leftRightFlag = false;
-    
+
         //lets see if the panel will be off the screen
         //get the actual width of the page and store it
         p.bodyWidth = window.outerWidth;
@@ -297,8 +307,8 @@
         var self = Foundation.libs.dropdown,
             p = self.dirs._base.call(this, t),
             offsetTop = -this.outerHeight();
-        
-        p = self.dirs._position_bottom(this,t,s,p);       
+
+        p = self.dirs._position_bottom(this,t,s,p);
 
         this.addClass('drop-top');
         
@@ -314,10 +324,10 @@
           self.adjust_pip(this,t,s,p);
         }
 
-        return {left: p.left + p.offset, top: p.top + offsetTop};
+        return {left : p.left + p.offset, top : p.top + offsetTop};
       },
 
-      bottom: function (t,s) {
+      bottom : function (t, s) {
         var self = Foundation.libs.dropdown,
             p = self.dirs._base.call(this, t);
         
@@ -329,16 +339,16 @@
           self.adjust_pip(this,t,s,p);
         }
 
-        return {left: p.left + p.offset, top: p.top + t.outerHeight()};
+        return {left : p.left + p.offset, top : p.top + t.outerHeight()};
       },
 
-      left: function (t, s) {
+      left : function (t, s) {
         var self = Foundation.libs.dropdown,
             p = self.dirs._base.call(this, t);
         p.offset = -this.outerWidth();
 
         this.addClass('drop-left');
-        
+
         //miss left
         if (p.left - this.outerWidth() <= 0) {
           p.missLeft = true;
@@ -351,12 +361,13 @@
           self.adjust_pip_vertical(this,t,s,p);
         }
 
-        return {left: p.left + p.offset, top: p.top};
+        return {left : p.left + p.offset, top : p.top};
       },
 
-      right: function (t, s) {
+      right : function (t, s) {
         var self = Foundation.libs.dropdown,
             p = self.dirs._base.call(this, t);
+
         p.offset = t.outerWidth();
 
         this.addClass('drop-right');
@@ -373,8 +384,10 @@
           p.triggeredRight = true;
           self.adjust_pip_vertical(this,t,s,p);
         }
+    
+        var self = Foundation.libs.dropdown;
 
-        return {left: p.left + p.offset, top: p.top};
+        return {left : p.left + p.offset, top : p.top};
       }
     },
 
@@ -462,7 +475,7 @@
         !matchMedia(Foundation.media_queries.medium).matches;
     },
 
-    off: function () {
+    off : function () {
       this.S(this.scope).off('.fndtn.dropdown');
       this.S('html, body').off('.fndtn.dropdown');
       this.S(window).off('.fndtn.dropdown');

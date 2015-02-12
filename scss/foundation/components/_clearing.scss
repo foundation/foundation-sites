@@ -93,7 +93,16 @@ $clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
         position: absolute;
         #{$default-float}: 50%;
         top: 50%;
-        margin-#{$default-float}: -50%;
+        @if $default-float == left {
+          transform: translateY(-50%) translateX(-50%);
+          -webkit-transform: translateY(-50%) translateX(-50%);
+          -ms-transform: translateY(-50%) translateX(-50%);
+        }
+        @else {
+          transform: translateY(-50%) translateX(50%);
+          -webkit-transform: translateY(-50%) translateX(50%);
+          -ms-transform: translateY(-50%) translateX(50%);
+        };
         max-height: 100%;
         max-width: 100%;
       }
@@ -171,7 +180,7 @@ $clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
           border-#{$default-float}-color: $clearing-arrow-color;
         }
       }
-    
+
       .clearing-main-prev.disabled,
       .clearing-main-next.disabled { opacity: 0.3; }
 

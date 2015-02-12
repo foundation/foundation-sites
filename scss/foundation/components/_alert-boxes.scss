@@ -37,7 +37,7 @@ $alert-close-position: rem-calc(4) !default;
 $alert-close-font-size: rem-calc(22) !default;
 $alert-close-opacity: 0.3 !default;
 $alert-close-opacity-hover: 0.5 !default;
-$alert-close-padding: 9px 6px 4px !default;
+$alert-close-padding: 0 6px 4px !default;
 $alert-close-background: inherit !default;
 
 // We use this to control border radius
@@ -85,7 +85,7 @@ $alert-transition-ease: ease-out !default;
 @mixin alert-close {
   font-size: $alert-close-font-size;
   padding: $alert-close-padding;
-  line-height: 0;
+  line-height: .9;
   position: absolute;
   top: $alert-close-top;
   margin-top: -($alert-close-font-size / 2);

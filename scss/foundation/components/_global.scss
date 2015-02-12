@@ -449,8 +449,7 @@ $cursor-text-value: text !default;
 
     // Hide visually and from screen readers
     .hide {
-      display: none !important;
-      visibility: hidden;
+      display: none;
     }
 
     // Hide visually and from screen readers, but maintain layout

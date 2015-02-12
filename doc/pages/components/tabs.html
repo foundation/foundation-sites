@@ -35,9 +35,11 @@ You can create a group of horizontal tabs using minimal markup.
   </div>
   <div class="large-6 columns">
     <h4>Rendered HTML</h4>
-    {{> examples_tabs_basic_rendered}}
+{{> examples_tabs_basic}}
   </div>
 </div>
+
+<p class="lead panel">Note: Tabs used to require `<dl>` and `<dd>` markup. It now works with `<ul>`'s and `<li>`'s as well.</p>
 
 ***
 
@@ -55,7 +57,7 @@ You can create a group of vertical tabs using minimal markup. Just adding the cl
 
 <h4>Rendered HTML</h4>
 
-{{> examples_tabs_vertical_basic_rendered}}
+{{> examples_tabs_vertical_basic}}
 
 <div class="clearfix"></div>
 
@@ -67,7 +69,25 @@ The tabs Foundation component can parse the location hash value and open the cor
 
 In the following example, deep linking is enabled. If the location hash is `#tabs-deeplink-2` then the second tab will become active. If the location hash is `#tabs-deeplink-content-2` then the second tab will become active, and the browser will scroll to the paragraph tag with ID, tabs-deeplink-content-2.
 
-{{> examples_tabs_deep_linking}}
+<ul class="tabs" data-tab role="tablist" data-options="deep_linking: true">
+  <li class="tab-title active" role="presentational"><a href="#tabs-deeplink-1" role="tab" tabindex="0" aria-selected="true" controls="tabs-deeplink-1">Tab 1</a></li>
+  <li class="tab-title active" role="presentational"><a href="#tabs-deeplink-2" role="tab" tabindex="0" aria-selected="true" controls="tabs-deeplink-2">Tab 2</a></li>
+  <li class="tab-title active" role="presentational"><a href="#tabs-deeplink-3" role="tab" tabindex="0" aria-selected="true" controls="tabs-deeplink-3">Tab 3</a></li>
+</ul>
+<div class="tabs-content">
+  <section id="tabs-deeplink-1" role="tabpanel" aria-hidden="false" class="content active">
+    <h2>First Panel Header</h2>
+    <p id="tabs-deeplink-content-1">First panel content goes here...</p>
+  </section>
+  <section id="tabs-deeplink-2"role="tabpanel" aria-hidden="true" class="content" >
+    <h2>Second Panel Header</h2>
+    <p id="tabs-deeplink-content-2"> Second panel content goes here...</p>
+  </section>
+  <section id="tabs-deeplink-3"role="tabpanel" aria-hidden="true" class="content" >
+    <h2>Third Panel Header</h2>
+    <p id="tabs-deeplink-content-3"> Third panel content goes here...</p>
+  </section>
+</div>
 
 ***
 
