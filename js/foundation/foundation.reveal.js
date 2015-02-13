@@ -21,6 +21,7 @@
       opened : function(){},
       close : function(){},
       closed : function(){},
+      on_ajax_error: $.noop,
       bg : $('.reveal-modal-bg'),
       css : {
         open : {
@@ -181,7 +182,7 @@
 
         if (typeof ajax_settings === 'string') {
           ajax_settings = {
-            url : ajax_settings
+            url : ajax_settings,
           };
         }
 
@@ -208,6 +209,7 @@
               }
 
               modal.html(data);
+
               self.S(modal).foundation('section', 'reflow');
               self.S(modal).children().foundation();
 
@@ -221,6 +223,13 @@
               self.show(modal, settings.css.open);
             }
           });
+
+          // check for if user initalized with error callback
+          if (settings.on_ajax_error !== $.noop) {
+            $.extend(ajax_settings, {
+              error : settings.on_ajax_error
+            });
+          }
 
           $.ajax(ajax_settings);
         }
