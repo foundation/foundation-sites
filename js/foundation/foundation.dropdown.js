@@ -278,17 +278,17 @@
         if (document.getElementsByClassName('row')[0]) {
           actualBodyWidth = document.getElementsByClassName('row')[0].clientWidth;
         } else {
-          actualBodyWidth = window.outerWidth;
+          actualBodyWidth = window.innerWidth;
         }
 
-        var actualMarginWidth = (window.outerWidth - actualBodyWidth) / 2;
+        var actualMarginWidth = (window.innerWidth - actualBodyWidth) / 2;
         var actualBoundary = actualBodyWidth;
 
         if (!this.hasClass('mega')) {
           //miss top
           if (t.offset().top <= this.outerHeight()) {
             p.missTop = true;
-            actualBoundary = window.outerWidth - actualMarginWidth;
+            actualBoundary = window.innerWidth - actualMarginWidth;
             p.leftRightFlag = true;
           }
 
