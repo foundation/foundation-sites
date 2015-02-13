@@ -182,7 +182,7 @@
 
         if (typeof ajax_settings === 'string') {
           ajax_settings = {
-            url : ajax_settings,
+            url : ajax_settings
           };
         }
 
