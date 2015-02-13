@@ -599,7 +599,19 @@
         var self = this,
             unloaded = images.length;
 
-        if (unloaded === 0) {
+        function pictures_has_height(images) {
+          var pictures_number = images.length;
+
+          for (var i = pictures_number - 1; i >= 0; i--) {
+            if(images.attr('height') === undefined) {
+              return false;
+            };
+          };
+
+          return true;
+        }
+
+        if (unloaded === 0 || pictures_has_height(images)) {
           callback(images);
         }
 
