@@ -57,8 +57,7 @@ $button-group-border-width: 1px !default;
     float: $float;
     // Make sure the first child doesn't get the negative margin.
     &:first-child { margin-#{$default-float}: 0; }
-  }
-  @else {
+  } @else {
     $button-group-display: inline-block;
     $button-group-margin: 0 -2px;
   }
@@ -111,13 +110,11 @@ $button-group-border-width: 1px !default;
     &:last-child > .button {
       @if $orientation == vertical {
         @include side-radius(bottom, $button-radius);
-      }
-      @else {
+      } @else {
         @include side-radius($opposite-direction, $button-radius);
       }
     }
-  }
-  @else if $radius {
+  } @else if $radius {
     &,
     & > a,
     & > button,
@@ -128,8 +125,7 @@ $button-group-border-width: 1px !default;
     &:first-child > .button {
       @if $orientation == vertical {
         @include side-radius(top, $radius);
-      }
-      @else {
+      } @else {
         @include side-radius($default-float, $radius);
       }
     }
@@ -139,8 +135,7 @@ $button-group-border-width: 1px !default;
     &:last-child > .button {
       @if $orientation == vertical {
         @include side-radius(bottom, $radius);
-      }
-      @else {
+      } @else {
         @include side-radius($opposite-direction, $radius);
       }
     }

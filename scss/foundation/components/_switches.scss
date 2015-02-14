@@ -174,8 +174,7 @@ $switch-active-color: $primary-color !default;
     label:after {
       border-radius: 2rem;
     }
-  }
-  @else if $radius {
+  } @else if $radius {
     label {
       border-radius: $radius;
     }

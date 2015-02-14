@@ -140,16 +140,14 @@ $orbit-timer-hide-for-small: true !default;
           width: 100%;
           @if $text-direction == rtl {
             margin-right: 100%;
-          }
-          @else {
+          } @else {
             margin-left: 100%;
           }
 
           &:first-child {
             @if $text-direction == rtl {
             margin-right: 0;
-            }
-            @else {
+            } @else {
             margin-left: 0;
             }
           }

@@ -86,8 +86,7 @@ $f-dropdown-radius: $global-radius !default;
     border: $f-dropdown-border-style $f-dropdown-border-width $f-dropdown-border-color;
     font-size: $f-dropdown-font-size;
     z-index: 89;
-  }
-  @else if $content == content {
+  } @else if $content == content {
     padding: $f-dropdown-content-padding;
     width: 100%;
     height: $f-dropdown-height;

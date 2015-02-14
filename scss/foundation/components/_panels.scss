@@ -60,8 +60,7 @@ $callout-panel-link-color-hover: scale-color($callout-panel-link-color, $lightne
       // We set the font color based on the darkness of the bg.
       @if $bg-lightness >= 50% {
         h1, h2, h3, h4, h5, h6, p, li, dl { color: $panel-font-color; }
-      }
-      @else {
+      } @else {
         h1, h2, h3, h4, h5, h6, p, li, dl { color: $panel-font-color-alt; }
       }
 

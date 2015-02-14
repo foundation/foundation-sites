@@ -134,19 +134,16 @@ $base-line-height: 1.5 !default;
     @if $offcanvas {
       @if $top {
         top: $top;
-      }
-      @else {
+      } @else {
         top: 50%;
         margin-top: (-$width/2);
       }
       @if $left {
         left: $left;
-      }
-      @else {
+      } @else {
         left: ($tabbar-menu-icon-width - $width)/2;
       }
-    }
-    @else {
+    } @else {
       top: 50%;
       margin-top: -($width/2);
       #{$opposite-direction}: $topbar-link-padding;

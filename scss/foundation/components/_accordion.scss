@@ -46,8 +46,7 @@ $accordion-content-active-bg-color: $white !default;
   margin-bottom: 0 !important;
   @if type-of($active_class) != "string" {
     @warn "`#{$active_class}` isn't a valid string. A valid string is needed to correctly be interpolated as a CSS class. CSS classes cannot start with a number or consist of only numbers. CSS will not be generated for the active state of this navigation component."
-  }
-  @else {
+  } @else {
     &.#{ $active_class } > a {
       background: $active-bg;
     }
@@ -61,13 +60,11 @@ $accordion-content-active-bg-color: $white !default;
         @warn "#{$padding} was read as a #{type-of($padding)}";
         @warn "`#{$padding}` isn't a valid number. $accordion-navigation-padding (#{$accordion-navigation-padding}) will be used instead.)";
         padding: $accordion-navigation-padding;
-      }
-      @else {
+      } @else {
         @warn "`#{$padding}` isn't a valid number and $accordion-navigation-padding is missing. A value of `null` is returned to not output an invalid value for padding";
         padding: null;
       }
-    }
-    @else {
+    } @else {
       padding: $padding;
     }
     display: block;
@@ -83,8 +80,7 @@ $accordion-content-active-bg-color: $white !default;
         font-size: null;
 
       }
-    }
-    @else {
+    } @else {
       font-size: $font-size;
     }
     &:hover {
@@ -115,8 +111,7 @@ $accordion-content-active-bg-color: $white !default;
 
   @if type-of($active_class) != "string" {
     @warn "`#{$active_class}` isn't a valid string. A valid string is needed to correctly be interpolated as a CSS class. CSS classes cannot start with a number or consist of only numbers. CSS will not be generated for the active state of the content. "
-  }
-  @else {
+  } @else {
     &.#{$active_class} {
       display: block;
       background: $bg;

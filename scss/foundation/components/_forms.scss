@@ -173,8 +173,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
   @if $alignment == right {
     float: none !important;
     text-align: right;
-  }
-  @else if $alignment == inline {
+  } @else if $alignment == inline {
     margin: 0 0 $form-spacing 0;
     padding: $form-spacing / 2 + rem-calc($input-border-width) 0;
   }
