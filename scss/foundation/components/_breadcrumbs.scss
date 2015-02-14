@@ -119,7 +119,7 @@ $crumb-slash: "/" !default;
       @include crumb-container;
       @include radius($crumb-radius);
 
-      &>* {
+      > * {
         @include crumbs;
       }
     }

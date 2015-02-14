@@ -89,9 +89,9 @@ $z-index-base: 1005;
     .column, .columns { min-width: 0; }
 
     // Get rid of margin from first and last element inside modal
-    & > :first-child { margin-top: 0; }
+    > :first-child { margin-top: 0; }
 
-    & > :last-child { margin-bottom: 0; }
+    > :last-child { margin-bottom: 0; }
   }
 
   @if $width {
@@ -197,7 +197,7 @@ $z-index-base: 1005;
         max-width: none !important;
         margin-left: 0 !important;
       }
-      
+
       // Modals pushed to back
       &.toback {
         z-index: $z-index-base - 2;

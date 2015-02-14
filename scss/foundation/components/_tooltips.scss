@@ -65,7 +65,7 @@ $tooltip-max-width: 300px !default;
       color: $tooltip-font-color;
       background: $tooltip-bg;
 
-      &>.nub {
+      > .nub {
         display: block;
         #{$default-float}: $tooltip-pip-size;
         position: absolute;
@@ -87,7 +87,7 @@ $tooltip-max-width: 300px !default;
       }
       &.round {
         @include radius($tooltip-rounded);
-        &>.nub {
+        > .nub {
           left: 2rem;
         }
       }
@@ -107,7 +107,7 @@ $tooltip-max-width: 300px !default;
 
     @media #{$small} {
       .tooltip {
-        &>.nub {
+        > .nub {
           border-color: transparent transparent $tooltip-bg transparent;
           top: -($tooltip-pip-size * 2);
         }

@@ -91,9 +91,9 @@ $button-group-border-width: 1px !default;
   // We use these to control left and right radius on first/last buttons in the group.
   @if $radius == true {
     &,
-    & > a,
-    & > button,
-    & > .button { @include radius(0); }
+    > a,
+    > button,
+    > .button { @include radius(0); }
     &:first-child,
     &:first-child > a,
     &:first-child > button,
@@ -119,9 +119,9 @@ $button-group-border-width: 1px !default;
   }
   @else if $radius {
     &,
-    & > a,
-    & > button,
-    & > .button { @include radius(0); }
+    > a,
+    > button,
+    > .button { @include radius(0); }
     &:first-child,
     &:first-child > a,
     &:first-child > button,
@@ -161,14 +161,14 @@ $button-group-border-width: 1px !default;
         &.even-#{$i} li { @include button-group-style($even:$i, $float:null); }
       }
 
-      & > li { @include button-group-style(); }
+      > li { @include button-group-style(); }
 
       &.stack {
-        & > li { @include button-group-style($orientation:vertical); float: none; }
+        > li { @include button-group-style($orientation:vertical); float: none; }
       }
 
       &.stack-for-small {
-        & > li {
+        > li {
           @include button-group-style($orientation:horizontal);
           @media #{$small-only} {
             @include button-group-style($orientation:vertical);
