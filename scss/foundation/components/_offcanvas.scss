@@ -30,6 +30,7 @@ $tabbar-header-margin: 0 !default;
 $off-canvas-width: rem-calc(250) !default;
 $off-canvas-bg: $oil !default;
 $off-canvas-bg-hover: scale-color($tabbar-bg, $lightness: -30%) !default;
+$off-canvas-bg-active: scale-color($tabbar-bg, $lightness: -30%) !default;
 
 // Off Canvas Menu List Variables
 $off-canvas-label-padding: .3rem rem-calc(15) !default;
@@ -248,6 +249,9 @@ $menu-slide: "transform 500ms ease" !default;
       transition: background 300ms ease;
       &:hover {
         background: $off-canvas-bg-hover;
+      }
+      &:active {
+        background: $off-canvas-bg-active;
       }
     }
   }

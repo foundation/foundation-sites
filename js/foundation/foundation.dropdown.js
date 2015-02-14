@@ -215,6 +215,8 @@
 
       this.clear_idx();
 
+
+
       if (this.small()) {
         var p = this.dirs.bottom.call(dropdown, target, settings);
 
@@ -264,8 +266,7 @@
 
         p.top -= o.top;
         p.left -= o.left;
-        p.offset = 0;
-    
+
         //set some flags on the p object to pass along
         p.missRight = false;
         p.missTop = false;
@@ -274,7 +275,7 @@
 
         //lets see if the panel will be off the screen
         //get the actual width of the page and store it
-        p.bodyWidth = window.outerWidth;
+        p.bodyWidth = window.innerWidth;
         if (document.getElementsByClassName('row')[0]) {
           p.bodyWidth = document.getElementsByClassName('row')[0].clientWidth;
         }
@@ -325,7 +326,7 @@
         p = self.dirs._position_bottom(this,t,s,p);
 
         this.addClass('drop-top');
-        
+
         //miss top
         if (t.offset().top <= this.outerHeight()) {
           p.missTop = true;
@@ -385,7 +386,7 @@
         p.offset = t.outerWidth();
 
         this.addClass('drop-right');
-        
+
         //miss right
         if (p.left + this.outerWidth() + t.outerWidth() > p.bodyWidth) {
           p.missRight = true;
@@ -398,17 +399,21 @@
           p.triggeredRight = true;
           self.adjust_pip_vertical(this,t,s,p);
         }
-    
+
         var self = Foundation.libs.dropdown;
 
-        return {left : p.left + p.offset, top : p.top};
+        if (t.outerWidth() < this.outerWidth() || self.small() || this.hasClass(s.mega_menu)) {
+          self.adjust_pip(this, t, s, p);
+        }
+
+        return {left : p.left + t.outerWidth(), top : p.top};
       }
     },
 
     // Insert rule to style psuedo elements
-    adjust_pip : function (dropdown,target,settings,position) {
+    adjust_pip : function (dropdown, target, settings, position) {
       var sheet = Foundation.stylesheet,
-          pip_offset_base = 8 - position.offset;
+          pip_offset_base = 8;
 
       if (dropdown.hasClass(settings.mega_class)) {
         pip_offset_base = position.left + (target.outerWidth()/2) - 8;
@@ -437,7 +442,7 @@
           sel_after  = '.f-dropdown.open:after',
           css_before = 'left: ' + pip_offset_base + 'px;',
           css_after  = 'left: ' + (pip_offset_base - 1) + 'px;';
-        
+
       if (sheet.insertRule) {
         sheet.insertRule([sel_before, '{', css_before, '}'].join(' '), this.rule_idx);
         sheet.insertRule([sel_after, '{', css_after, '}'].join(' '), this.rule_idx + 1);

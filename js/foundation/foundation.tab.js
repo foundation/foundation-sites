@@ -190,8 +190,8 @@
           };
 
       // allow usage of data-tab-content attribute instead of href
-      if (S(this).data(this.data_attr('tab-content'))) {
-        target_hash = '#' + S(this).data(this.data_attr('tab-content')).split('#')[1];
+      if (anchor.data('tab-content')) {
+        target_hash = '#' + anchor.data('tab-content').split('#')[1];
         target = S(target_hash);
       }
 

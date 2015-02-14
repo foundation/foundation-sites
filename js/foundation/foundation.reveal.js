@@ -21,6 +21,7 @@
       opened : function(){},
       close : function(){},
       closed : function(){},
+      on_ajax_error: $.noop,
       bg : $('.reveal-modal-bg'),
       css : {
         open : {
@@ -82,7 +83,7 @@
             }
 
             self.locked = true;
-            self.close.call(self, bg_clicked ? S('[' + self.attr_name() + '].open') : S(this).closest('[' + self.attr_name() + ']'));
+            self.close.call(self, bg_clicked ? S('[' + self.attr_name() + '].open:not(.toback)') : S(this).closest('[' + self.attr_name() + ']'));
           }
         });
 
@@ -208,6 +209,7 @@
               }
 
               modal.html(data);
+
               self.S(modal).foundation('section', 'reflow');
               self.S(modal).children().foundation();
 
@@ -221,6 +223,13 @@
               self.show(modal, settings.css.open);
             }
           });
+
+          // check for if user initalized with error callback
+          if (settings.on_ajax_error !== $.noop) {
+            $.extend(ajax_settings, {
+              error : settings.on_ajax_error
+            });
+          }
 
           $.ajax(ajax_settings);
         }
