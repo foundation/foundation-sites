@@ -58,6 +58,7 @@ $side-nav-divider-color: scale-color($white, $lightness: 10%) !default;
   $divider-color:$side-nav-divider-color,
   $font-size:$side-nav-font-size,
   $link-color:$side-nav-link-color,
+  $link-color-active:$side-nav-link-color-active,
   $link-color-hover:$side-nav-link-color-hover,
   $link-bg-hover:$side-nav-link-bg-hover) {
   display: block;
@@ -81,6 +82,9 @@ $side-nav-divider-color: scale-color($white, $lightness: 10%) !default;
       &:focus {
         background: $link-bg-hover;
         color: $link-color-hover;
+      }
+      &:active {
+        color: $link-color-active;
       }
     }
 
@@ -111,6 +115,6 @@ $side-nav-divider-color: scale-color($white, $lightness: 10%) !default;
 
 @include exports("side-nav") {
   @if $include-html-nav-classes {
-    .side-nav { @include side-nav; }
+    .side-nav {@include side-nav;}
   }
 }
