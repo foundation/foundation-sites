@@ -337,13 +337,12 @@
       return valid;
     },
 
-    reflow : function() {
+    reflow : function(scope, options) {
       var self = this,
-          form = this.S('[' + this.attr_name() + ']').attr('novalidate', 'novalidate');
-
-      this.S(form).each(function (idx, el) {
-        self.events(el);
-      });
+          form = self.S('[' + this.attr_name() + ']').attr('novalidate', 'novalidate');
+          self.S(form).each(function (idx, el) {
+            self.events(el);
+          });
     }
   };
 }(jQuery, window, window.document));
