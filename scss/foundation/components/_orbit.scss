@@ -134,7 +134,7 @@ $orbit-timer-hide-for-small: true !default;
 
         img { display: block; max-width: 100%; }
 
-        &>* {
+        > * {
           position: absolute;
           top: 0;
           width: 100%;

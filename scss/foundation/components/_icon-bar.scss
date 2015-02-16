@@ -43,7 +43,7 @@ $icon-bar-disabled-cursor: $cursor-disabled-value !default;
 	font-size: 0;
 	display: inline-block;
 
-	& > * {
+	> * {
 		text-align: center;
 		font-size: $icon-bar-font-size;
 		width: 25%;
@@ -135,7 +135,7 @@ $icon-bar-disabled-cursor: $cursor-disabled-value !default;
 	$image-width: $icon-bar-image-width,
 	$image-height: $icon-bar-image-height) {
 
-	& > * {
+	> * {
 		font-size: $font-size;
 		padding: $padding;
 
@@ -173,13 +173,13 @@ $icon-bar-disabled-cursor: $cursor-disabled-value !default;
 
 		background: $bar-bg;
 
-		& > * {
+		> * {
 			label { color: $bar-font-color; }
 
 			i { color: $bar-icon-color; }
 		}
 
-		& > a:hover {
+		> a:hover {
 
 			background: $bar-hover-color;
 
@@ -188,7 +188,7 @@ $icon-bar-disabled-cursor: $cursor-disabled-value !default;
 			i { color: $bar-icon-color-hover; }
 		}
 
-        & > a.active {
+        > a.active {
 
 			background: $bar-active-color;
 

@@ -48,7 +48,7 @@ $block-grid-media-queries: true !default;
     }
     @include clearfix;
 
-    &>li {
+    > li {
       display: block;
       height: auto;
       float: $default-float;
@@ -59,7 +59,7 @@ $block-grid-media-queries: true !default;
   }
 
   @if $per-row {
-    &>li {
+    > li {
       width: 100%/$per-row;
       @if $include-spacing {
         padding: 0 ($spacing/2) $spacing;
