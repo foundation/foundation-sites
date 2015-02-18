@@ -167,6 +167,10 @@
             .data('offset', this.cache_offset(modal));
         }
 
+        // Patch for Accessibility
+        modal.attr('tabindex','0').attr('aria-hidden','false');
+        // End: Patch for Accessibility
+
         this.key_up_on(modal);    // PATCH #3: turning on key up capture only when a reveal window is open
         
         // Prevent namespace event from triggering twice
@@ -244,6 +248,11 @@
           self = this;
 
       if (open_modals.length > 0) {
+
+        // Patch for Accessibility
+        modal.removeAttr('tabindex','0').attr('aria-hidden','true');
+        // End: Patch for Accessibility
+
         this.locked = true;
         this.key_up_off(modal);   // PATCH #3: turning on key up capture only when a reveal window is open
         modal.trigger('close').trigger('close.fndtn.reveal');
