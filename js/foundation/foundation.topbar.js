@@ -66,7 +66,7 @@
       var smallMatch = matchMedia(Foundation.media_queries.small).matches;
       var medMatch   = matchMedia(Foundation.media_queries.medium).matches;
       var lrgMatch   = matchMedia(Foundation.media_queries.large).matches;
-      
+
        if (sticky && settings.sticky_on === 'all') {
           return true;
        }
@@ -84,7 +84,7 @@
        if (sticky && navigator.userAgent.match(/(iPad|iPhone|iPod)/g)) {
         return true;
        }
-       
+
        return false;
     },
 
@@ -249,7 +249,7 @@
 
       S(window).off('.topbar').on('resize.fndtn.topbar', self.throttle(function () {
           self.resize.call(self);
-      }, 50)).trigger('resize').trigger('resize.fndtn.topbar').load(function () {
+      }, 50)).trigger('resize.fndtn.topbar').load(function () {
           // Ensure that the offset is calculated after all of the pages resources have loaded
           S(this).trigger('resize.fndtn.topbar');
       });

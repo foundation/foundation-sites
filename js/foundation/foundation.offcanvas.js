@@ -111,13 +111,13 @@
 
     show : function (class_name, $off_canvas) {
       $off_canvas = $off_canvas || this.get_wrapper();
-      $off_canvas.trigger('open').trigger('open.fndtn.offcanvas');
+      $off_canvas.trigger('open.fndtn.offcanvas');
       $off_canvas.addClass(class_name);
     },
 
     hide : function (class_name, $off_canvas) {
       $off_canvas = $off_canvas || this.get_wrapper();
-      $off_canvas.trigger('close').trigger('close.fndtn.offcanvas');
+      $off_canvas.trigger('close.fndtn.offcanvas');
       $off_canvas.removeClass(class_name);
     },
 
