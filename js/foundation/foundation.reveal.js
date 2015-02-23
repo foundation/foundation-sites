@@ -167,6 +167,8 @@
             .data('offset', this.cache_offset(modal));
         }
 
+        modal.attr('tabindex','0').attr('aria-hidden','false');
+
         this.key_up_on(modal);    // PATCH #3: turning on key up capture only when a reveal window is open
         
         // Prevent namespace event from triggering twice
@@ -244,6 +246,9 @@
           self = this;
 
       if (open_modals.length > 0) {
+
+        modal.removeAttr('tabindex','0').attr('aria-hidden','true');
+
         this.locked = true;
         this.key_up_off(modal);   // PATCH #3: turning on key up capture only when a reveal window is open
         modal.trigger('close').trigger('close.fndtn.reveal');
