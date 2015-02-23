@@ -31,22 +31,34 @@ describe('abide:', function() {
 
       spyOnEvent('form', 'invalid');
       spyOnEvent('form', 'valid');
+      spyOnEvent('form', 'invalid.fndtn.abide');
+      spyOnEvent('form', 'valid.fndtn.abide');
 
       spyOnEvent('input[name="user_name"]', 'invalid');
       spyOnEvent('input[name="user_name"]', 'valid');
+      spyOnEvent('input[name="user_name"]', 'invalid.fndtn.abide');
+      spyOnEvent('input[name="user_name"]', 'valid.fndtn.abide');
 
       spyOnEvent('input[name="user_email"]', 'invalid');
       spyOnEvent('input[name="user_email"]', 'valid');
+      spyOnEvent('input[name="user_email"]', 'invalid.fndtn.abide');
+      spyOnEvent('input[name="user_email"]', 'valid.fndtn.abide');
 
       $('form').submit();
 
       expect('valid').not.toHaveBeenTriggeredOn('form');
       expect('valid').not.toHaveBeenTriggeredOn('input[name="user_name"]');
       expect('valid').not.toHaveBeenTriggeredOn('input[name="user_email"]');      
+      expect('valid.fndtn.abide').not.toHaveBeenTriggeredOn('form');
+      expect('valid.fndtn.abide').not.toHaveBeenTriggeredOn('input[name="user_name"]');
+      expect('valid.fndtn.abide').not.toHaveBeenTriggeredOn('input[name="user_email"]');      
 
       expect('invalid').toHaveBeenTriggeredOn('form');
       expect('invalid').toHaveBeenTriggeredOn('input[name="user_name"]');
       expect('invalid').toHaveBeenTriggeredOn('input[name="user_email"]');
+      expect('invalid.fndtn.abide').toHaveBeenTriggeredOn('form');
+      expect('invalid.fndtn.abide').toHaveBeenTriggeredOn('input[name="user_name"]');
+      expect('invalid.fndtn.abide').toHaveBeenTriggeredOn('input[name="user_email"]');
     });
 
     it('should mark missing required fields as invalid', function() {
@@ -69,12 +81,18 @@ describe('abide:', function() {
 
       spyOnEvent('form', 'invalid');
       spyOnEvent('form', 'valid');
+      spyOnEvent('form', 'invalid.fndtn.abide');
+      spyOnEvent('form', 'valid.fndtn.abide');
 
       spyOnEvent('input[name="user_name"]', 'invalid');
       spyOnEvent('input[name="user_name"]', 'valid');
+      spyOnEvent('input[name="user_name"]', 'invalid.fndtn.abide');
+      spyOnEvent('input[name="user_name"]', 'valid.fndtn.abide');
 
       spyOnEvent('input[name="user_email"]', 'invalid');
       spyOnEvent('input[name="user_email"]', 'valid');
+      spyOnEvent('input[name="user_email"]', 'invalid.fndtn.abide');
+      spyOnEvent('input[name="user_email"]', 'valid.fndtn.abide');
 
       $('input[name="user_name"]').val('John');
       $('input[name="user_email"]').val('foo@bar.com');
@@ -84,10 +102,16 @@ describe('abide:', function() {
       expect('valid').toHaveBeenTriggeredOn('form');
       expect('valid').toHaveBeenTriggeredOn('input[name="user_name"]');
       expect('valid').toHaveBeenTriggeredOn('input[name="user_email"]');      
+      expect('valid.fndtn.abide').toHaveBeenTriggeredOn('form');
+      expect('valid.fndtn.abide').toHaveBeenTriggeredOn('input[name="user_name"]');
+      expect('valid.fndtn.abide').toHaveBeenTriggeredOn('input[name="user_email"]');      
 
       expect('invalid').not.toHaveBeenTriggeredOn('form');
       expect('invalid').not.toHaveBeenTriggeredOn('input[name="user_name"]');
       expect('invalid').not.toHaveBeenTriggeredOn('input[name="user_email"]');
+      expect('invalid.fndtn.abide').not.toHaveBeenTriggeredOn('form');
+      expect('invalid.fndtn.abide').not.toHaveBeenTriggeredOn('input[name="user_name"]');
+      expect('invalid.fndtn.abide').not.toHaveBeenTriggeredOn('input[name="user_email"]');
     });
 
     it('should not validate on blur or change events when validate_on_blur is false', function() {
@@ -148,10 +172,13 @@ describe('abide:', function() {
       // now they're equal
       spyOnEvent('form', 'invalid');
       spyOnEvent('form', 'valid');
+      spyOnEvent('form', 'invalid.fndtn.abide');
+      spyOnEvent('form', 'valid.fndtn.abide');
 
       $('form').submit();
 
       expect('valid').toHaveBeenTriggeredOn('form');
+      expect('valid.fndtn.abide').toHaveBeenTriggeredOn('form');
       expect($('input[name="user_password"]')).not.toHaveAttr('data-invalid');
       expect($('input[name="user_password_confirmation"]')).not.toHaveAttr('data-invalid');
     });
@@ -191,10 +218,13 @@ describe('abide:', function() {
       $('input[name="user_end_num"]').val("12");
       spyOnEvent('form', 'invalid');
       spyOnEvent('form', 'valid');
+      spyOnEvent('form', 'invalid.fndtn.abide');
+      spyOnEvent('form', 'valid.fndtn.abide');
 
       $('form').submit();
 
       expect('valid').toHaveBeenTriggeredOn('form');
+      expect('valid.fndtn.abide').toHaveBeenTriggeredOn('form');
       expect($('input[name="user_start_num"]')).not.toHaveAttr('data-invalid');
       expect($('input[name="user_end_num"]')).not.toHaveAttr('data-invalid');
     });
