@@ -6,10 +6,21 @@ This is the supremely in-development version of Foundation for Sites 6.0.
 git clone https://github.com/zurb/foundation-sites-6.git
 cd foundation-sites-6
 npm install
+gulp
 ```
 
-Run `gulp css` to compile the Sass into CSS. Open `foundation.scss` and look at the imports list to see which components are in place.
+## Folder structure
 
-Run `gem install hologram` and then `gulp docs` to compile the documentation. It's written to the `build` folder.
-
-Copyright (c) 2014 ZURB, inc.
+- `dist`: compiled HTML, CSS, and JavaScript.
+- `docs`: some very empty test pages.
+- `docs_old`: the Foundation 5 documentation.
+- `js`: the Foundation 5 JavaScript.
+- `scss`: the Sass.
+  - `scss/components`: new UI components go here.
+  - `scss/components_old`: Foundation 5 components stay here.
+  - `scss/grid`: the new grid.
+  - `scss/type`: typography.
+  - `scss/util`: helper functions and mixins.
+  - `scss/vendor`: third-party libraries.
+  - `_global.scss`: global variables and styles.
+- `spec`: the Foundaion 5 unit tests.
