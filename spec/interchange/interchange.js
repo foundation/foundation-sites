@@ -15,10 +15,13 @@ describe('interchange:', function() {
       switch(path) {
         case 'default.html':
           callback('<h1 id="default">DEFAULT</h1>');
+          break;
         case 'medium.html':
           callback('<h1 id="medium">MEDIUM</h1>');
+          break;
         case 'large.html':
           callback('<h1 id="large">LARGE</h1>');
+          break;
       }
     });
   });
@@ -59,16 +62,19 @@ describe('interchange:', function() {
   }));
 
   describe('setting data-interchange-last-path', function() {
-    beforeEach(function() {
-      document.body.innerHTML = __html__['spec/interchange/basic.html'];
-    });
-
-    it('should set data-interchange-last-path on element when replace occurs', function() {
-      Foundation.libs.interchange.update_nodes();
-      Foundation.libs.interchange.resize();
-
-      expect($('div[data-interchange]').data('data-interchange-last-path')).toMatch(/.+html$/)
-    });
+    describe('when below the large breakpoint', when_not('large', function() {
+      beforeEach(function() {
+        document.body.innerHTML = __html__['spec/interchange/basic.html'];
+      });
+      
+      it('should set data-interchange-last-path on element when replace occurs', function() {
+        expect($('div[data-interchange]').data('data-interchange-last-path')).toBe(undefined);
+        
+        // Last path shouldn't be set until we initialize foundation
+        $(document).foundation();        
+        expect($('div[data-interchange]').data('data-interchange-last-path')).toMatch('default.html');
+      });
+    }))
   });
 
   describe('events', function() {
