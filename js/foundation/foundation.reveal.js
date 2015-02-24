@@ -168,8 +168,10 @@
             .data('offset', this.cache_offset(modal));
         }
 
+        modal.attr('tabindex','0').attr('aria-hidden','false');
+
         this.key_up_on(modal);    // PATCH #3: turning on key up capture only when a reveal window is open
-        
+
         // Prevent namespace event from triggering twice
         modal.on('open.fndtn.reveal', function(e) {
           if (e.namespace !== 'fndtn.reveal') return;
@@ -249,9 +251,13 @@
           self = this;
 
       if (open_modals.length > 0) {
+
+        modal.removeAttr('tabindex','0').attr('aria-hidden','true');
+
         this.locked = true;
         this.key_up_off(modal);   // PATCH #3: turning on key up capture only when a reveal window is open
-        modal.trigger('close').trigger('close.fndtn.reveal');
+
+        modal.trigger('close.fndtn.reveal');
 
         if ((settings.multiple_opened && open_modals.length === 1) || !settings.multiple_opened || modal.length > 1) {
           self.toggle_bg(modal, false);
@@ -327,7 +333,7 @@
               .css(css)
               .animate(end_css, settings.animation_speed, 'linear', function () {
                 context.locked = false;
-                el.trigger('opened').trigger('opened.fndtn.reveal');
+                el.trigger('opened.fndtn.reveal');
               })
               .addClass('open');
           }, settings.animation_speed / 2);
@@ -342,13 +348,13 @@
               .css(css)
               .animate(end_css, settings.animation_speed, 'linear', function () {
                 context.locked = false;
-                el.trigger('opened').trigger('opened.fndtn.reveal');
+                el.trigger('opened.fndtn.reveal');
               })
               .addClass('open');
           }, settings.animation_speed / 2);
         }
 
-        return el.css(css).show().css({opacity : 1}).addClass('open').trigger('opened').trigger('opened.fndtn.reveal');
+        return el.css(css).show().css({opacity : 1}).addClass('open').trigger('opened.fndtn.reveal');
       }
 
       var settings = this.settings;
@@ -392,7 +398,7 @@
             return el
               .animate(end_css, settings.animation_speed, 'linear', function () {
                 context.locked = false;
-                el.css(css).trigger('closed').trigger('closed.fndtn.reveal');
+                el.css(css).trigger('closed.fndtn.reveal');
               })
               .removeClass('open');
           }, settings.animation_speed / 2);
@@ -405,13 +411,13 @@
             return el
               .animate(end_css, settings.animation_speed, 'linear', function () {
                 context.locked = false;
-                el.css(css).trigger('closed').trigger('closed.fndtn.reveal');
+                el.css(css).trigger('closed.fndtn.reveal');
               })
               .removeClass('open');
           }, settings.animation_speed / 2);
         }
 
-        return el.hide().css(css).removeClass('open').trigger('closed').trigger('closed.fndtn.reveal');
+        return el.hide().css(css).removeClass('open').trigger('closed.fndtn.reveal');
       }
 
       var settings = this.settings;

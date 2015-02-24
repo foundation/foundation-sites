@@ -315,7 +315,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
 
       ul li {
         background: $topbar-dropdown-bg;
-        & > a {
+        > a {
           display: block;
           width: 100%;
           color: $topbar-link-color;
@@ -377,7 +377,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
       .has-dropdown {
         position: relative;
 
-        & > a {
+        > a {
           &:after {
             @if ($topbar-arrows) {
               @include css-triangle($topbar-dropdown-toggle-size, rgba($topbar-dropdown-toggle-color, $topbar-dropdown-toggle-alpha), $default-float);
@@ -391,11 +391,11 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
         }
 
         &.moved { position: static;
-          & > .dropdown {
+          > .dropdown {
             @include topbar-show-dropdown();
             width: 100%;
           }
-          & > a:after {
+          > a:after {
             display: none;
           }
         }
@@ -541,7 +541,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
 
         .has-dropdown {
           @if($topbar-arrows) {
-            & > a {
+            > a {
               padding-#{$opposite-direction}: $topbar-link-padding + $topbar-link-dropdown-padding !important;
               &:after {
                 @include css-triangle($topbar-dropdown-toggle-size, rgba($topbar-dropdown-toggle-color, $topbar-dropdown-toggle-alpha), top);
@@ -552,13 +552,13 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
           }
 
           &.moved { position: relative;
-            & > .dropdown {
+            > .dropdown {
               @include topbar-hide-dropdown();
             }
           }
 
           &.hover, &.not-click:hover {
-            & > .dropdown {
+            > .dropdown {
               @include topbar-show-dropdown();
             }
           }
@@ -567,7 +567,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
           }
 
           .dropdown li.has-dropdown {
-            & > a {
+            > a {
               @if ($topbar-dropdown-arrows) {
                 &:after {
                   border: none;
@@ -598,7 +598,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
             }
 
             &:not(.has-form):not(.active) {
-              & > a:not(.button) {
+              > a:not(.button) {
                 color: $topbar-dropdown-link-color;
                 background: $topbar-dropdown-link-bg;
               }
@@ -625,8 +625,8 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
           }
         }
 
-        & > ul > .divider,
-        & > ul > [role="separator"] {
+        > ul > .divider,
+        > ul > [role="separator"] {
           border-bottom: none;
           border-top: none;
           border-#{$opposite-direction}: $topbar-divider-border-bottom;
@@ -682,7 +682,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
 
         .has-dropdown {
           &:hover {
-            & > .dropdown {
+            > .dropdown {
               @include topbar-show-dropdown();
             }
           }

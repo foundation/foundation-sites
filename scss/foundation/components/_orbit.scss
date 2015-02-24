@@ -134,7 +134,7 @@ $orbit-timer-hide-for-small: true !default;
 
         img { display: block; max-width: 100%; }
 
-        &>* {
+        > * {
           position: absolute;
           top: 0;
           width: 100%;
@@ -147,10 +147,10 @@ $orbit-timer-hide-for-small: true !default;
 
           &:first-child {
             @if $text-direction == rtl {
-            margin-right: 0;
+              margin-right: 0;
             }
             @else {
-            margin-left: 0;
+              margin-left: 0;
             }
           }
 
