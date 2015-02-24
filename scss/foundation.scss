@@ -13,8 +13,10 @@
 // Components
 @import "type/type";
 @import "grid/grid";
+@import "components/close-button";
 
 @include foundation-grid-classes;
+@include foundation-close-button;
 
 $foundation-version: '6.0.0';
 meta.foundation-version {

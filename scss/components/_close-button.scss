@@ -1,0 +1,59 @@
+/*doc
+---
+title: Close Button
+name: close-button
+category: media
+---
+
+A close button can close things.
+
+```html
+<a href="#" class="close-button">&times;</a>
+*/
+
+////
+/// @group close-button
+////
+
+/// The default position of the close button. The first value should be `top` or `bottom`, and the second value should be `left` or `right`.
+/// @type List
+$closebutton-position: (top right) !default;
+
+/// The font size of the close button.
+/// @type Number
+$closebutton-size: 2em !default;
+
+/// The line-height of the close button. It affects the spacing of the element.
+/// @type Number
+$closebutton-lineheight: 0.5 !default;
+
+/// The default color of the close button.
+/// @type Color
+$closebutton-color: #999 !default;
+
+/// The color of the close button when being hovered on.
+/// @type Color
+$closebutton-color-hover: #333 !default;
+
+%close-button {
+  $x: nth($closebutton-position, 1);
+  $y: nth($closebutton-position, 2);
+
+  position: absolute;
+  color: $closebutton-color;
+  #{$x}: 1rem;
+  #{$y}: 1rem;
+  font-size: $closebutton-size;
+  line-height: $closebutton-lineheight;
+  cursor: pointer;
+
+  &:hover {
+    color: $closebutton-color-hover;
+  }
+}
+
+@mixin foundation-close-button() {
+  .close-button {
+    @extend %close-button;
+  }
+}
