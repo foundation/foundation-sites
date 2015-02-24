@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var $    = require('gulp-load-plugins')();
+var shipyard = require('shipyard');
 
 var files = {
   sassSrc: 'scss/foundation.scss',
@@ -44,6 +45,15 @@ var files = {
 //   });
 // });
 
+gulp.task('html', function() {
+  gulp.src('docs/pages/**/*.html')
+    .pipe(shipyard({
+      layout: 'docs/layout/default.html',
+      partials: 'docs/partials/*.html'
+    }))
+    .pipe(gulp.dest('dist'));
+});
+
 gulp.task('sass', function() {
   gulp.src(files.sassSrc)
     .pipe($.sass({
@@ -65,7 +75,8 @@ gulp.task('lint', function() {
     }));
 });
 
-gulp.task('default', ['sass', 'javascript'], function() {
+gulp.task('default', ['html', 'sass', 'javascript'], function() {
+  gulp.watch('docs/**/*.html', ['html']);
   gulp.watch('scss/**/*', ['sass']);
   gulp.watch('js/**/*', ['javascript']);
 });
