@@ -82,7 +82,10 @@
           .off('.abide')
           .on('blur.fndtn.abide change.fndtn.abide', function (e) {
             if (settings.validate_on_blur === true) {
-              self.validate([this], e);
+              clearTimeout(self.timer);
+              self.timer = setTimeout(function () {
+                self.validate([this], e);
+              }.bind(this), settings.timeout);
             }
           })
           .on('keydown.fndtn.abide', function (e) {
