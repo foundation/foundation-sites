@@ -18,17 +18,17 @@ Mixins be swell.
 /// @param {color} $triangle-color - Color of the triangle.
 /// @param {keyword} $triangle-direction - Direction the triangle points. Can be `top`, `right`, `bottom`, or `left`.
 @mixin css-triangle($triangle-size, $triangle-color, $triangle-direction) {
-  content: "";
+  content: '';
   display: block;
   width: 0;
   height: 0;
   border: inset $triangle-size;
   @if ($triangle-direction == top) {
-    border-color: $triangle-color transparent transparent transparent;
+    border-color: $triangle-color transparent transparent;
     border-top-style: solid;
   }
   @if ($triangle-direction == bottom) {
-    border-color: transparent transparent $triangle-color transparent;
+    border-color: transparent transparent $triangle-color;
     border-bottom-style: solid;
   }
   @if ($triangle-direction == left) {
@@ -52,7 +52,7 @@ Mixins be swell.
 /// @param {color} $hover-color - Color of the lines on hover.
 @mixin hamburger($width, $left, $top, $thickness, $gap, $color, $hover-color, $offcanvas) {
   span::after {
-    content: "";
+    content: '';
     position: absolute;
     display: block;
     height: 0;
@@ -78,17 +78,18 @@ Mixins be swell.
       #{$opposite-direction}: $topbar-link-padding;
     }
 
-    box-shadow:
-      0 0px 0 $thickness $color,
+    box-shadow: 
+      0 0 0 $thickness $color,
       0 $gap + $thickness 0 $thickness $color,
-      0 (2 * $gap + 2*$thickness) 0 $thickness $color;
+      0 (2 * $gap + 2 * $thickness) 0 $thickness $color;
     width: $width;
   }
+
   span:hover:after {
-    box-shadow:
-      0 0px 0 $thickness $hover-color,
+    box-shadow: 
+      0 0 0 $thickness $hover-color,
       0 $gap + $thickness 0 $thickness $hover-color,
-      0 (2 * $gap + 2*$thickness) 0 $thickness $hover-color;
+      0 (2 * $gap + 2 * $thickness) 0 $thickness $hover-color;
   }
 }
 
@@ -96,8 +97,14 @@ Mixins be swell.
 ///
 /// @link http://nicolasgallagher.com/micro-clearfix-hack/
 @mixin clearfix {
-  &:before, &:after { content: " "; display: table; }
-  &:after { clear: both; }
+  &:before, &:after {
+    content: ' ';
+    display: table;
+  }
+  
+  &:after {
+    clear: both;
+  }
 }
 
 /// Makes an element visually hidden, but still accessible to keyboards and assistive devices.

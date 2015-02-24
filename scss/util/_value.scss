@@ -61,28 +61,28 @@
 /// @param {keyword} $elem - Border component to extract.
 ///
 /// @param If the value exists, returns the value. If the value is not in the border definition, the function will return a 0px width, solid style, or black border.
- @function get-border-value($val, $elem) {
-   // Find the width, style, or color and return it
-   @each $v in $val {
-     $type: type-of($v);
-     @if $elem == width and $type == 'number' {
-       @return $v;
-     }
-     @if $elem == style and $type == 'string' {
-       @return $v;
-     }
-     @if $elem == color and $type == 'color' {
-       @return $v;
-     }
-   }
+@function get-border-value($val, $elem) {
+  // Find the width, style, or color and return it
+  @each $v in $val {
+    $type: type-of($v);
+    @if $elem == width and $type == 'number' {
+      @return $v;
+    }
+    @if $elem == style and $type == 'string' {
+      @return $v;
+    }
+    @if $elem == color and $type == 'color' {
+      @return $v;
+    }
+  }
 
-   // Defaults
-   $defaults: (
-     width: 0,
-     style: solid,
-     color: black,
-   );
-   @return map-get($defaults, $elem);
+  // Defaults
+  $defaults: (
+    width: 0,
+    style: solid,
+    color: #000,
+  );
+  @return map-get($defaults, $elem);
  }
 
 /// Given shadow value $val, find a specific element of the shadow, which is $elem. The possible values for $elem are x, y, size, spread, color, and inset.
@@ -106,7 +106,7 @@
       @return nth($val, -1);
     }
     @else {
-      @return black;
+      @return #000;
     }
   }
 

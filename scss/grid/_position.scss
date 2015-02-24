@@ -19,7 +19,7 @@
     }
   }
   @else {
-    @warn "Wrong syntax for grid-column-position(). Enter a positive or negative number, or center."
+    @warn 'Wrong syntax for grid-column-position(). Enter a positive or negative number, or center.';
   }
 }
 

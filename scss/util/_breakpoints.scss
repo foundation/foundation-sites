@@ -23,6 +23,8 @@ The string interpolation method of creating breakpoints in Foundation 5 has been
 /// @group breakpoints
 ////
 
+// scss-lint:disable ZeroUnit
+
 /// A list of named breakpoints. You can use these with the `breakpoint()` mixin to quickly create media queries.
 /// @type Map
 $breakpoints: (
@@ -45,10 +47,11 @@ $breakpoint-classes: (small medium large) !default;
 /// @param {Keyword|Number} $val - Breakpoint name or px/em/rem value to process.
 /// @output If the breakpoint is "0px and larger", outputs the content. Otherwise, outputs the content wrapped in a media query.
 @mixin breakpoint($val: small) {
+
   // Size or keyword
   $bp: nth($val, 1);
   // Value for max-width media queries
-  $bpMax: 0;
+  $bp-max: 0;
   // Direction of media query (up, down, or only)
   $dir: if(length($val) > 1, nth($val, 2), up);
   // Eventual output
@@ -68,10 +71,10 @@ $breakpoint-classes: (small medium large) !default;
         @if $dir == 'only' {
           $next-bp: map-next($breakpoints, $bp);
           @if $next-bp == null {
-            $bpMax: null;
+            $bp-max: null;
           }
           @else {
-            $bpMax: $next-bp - (1/16);
+            $bp-max: $next-bp - (1/16);
           }
         }
         $bp: map-get($breakpoints, $bp);
@@ -95,12 +98,12 @@ $breakpoint-classes: (small medium large) !default;
       @if $dir == 'only' {
         @if $named == true {
           $str: $str + ' and (min-width: #{$bp})';
-          @if $bpMax != null {
-            $str: $str + ' and (max-width: #{$bpMax})';
+          @if $bp-max != null {
+            $str: $str + ' and (max-width: #{$bp-max})';
           }
         }
         @else {
-          @debug 'ERROR: Only named media queries can have an "only" range.';
+          @warn 'Only named media queries can have an "only" range.';
         }
       }
       @else if $dir == 'down' {
@@ -147,6 +150,6 @@ $breakpoint-classes: (small medium large) !default;
 // Used to provide media query values for javascript components.
 // Forward slash placed around everything to convince PhantomJS to read the value.
 
-meta.foundation-mq {
+.foundation-mq {
   font-family: "#{map-serialize($breakpoints)}";
 }

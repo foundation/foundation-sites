@@ -17,7 +17,7 @@
   // Parsing percents, decimals, and column counts
   @if type-of($columns) == 'number' {
     @if unit($columns) == '%' {
-      $width: $columns
+      $width: $columns;
     }
     @else if $columns < 1 {
       $width: percentage($columns);
@@ -47,7 +47,10 @@
 ///
 /// @param {mixed} $columns - Width of the column. Refer to the `grid-column()` function to see possible values.
 /// @param {number} $gutter - Width of the gutters on either side of the column.
-@mixin grid-column($columns: $grid-column-count, $gutter: $grid-column-gutter) {
+@mixin grid-column(
+  $columns: $grid-column-count,
+  $gutter: $grid-column-gutter
+) {
   float: left;
   width: grid-column($columns);
   padding: {
@@ -57,11 +60,16 @@
 }
 
 /// Shorthand for grid-col().
-@function grid-col($columns: $grid-column-count) {
+@function grid-col(
+  $columns: $grid-column-count
+) {
   @return grid-column($columns);
 }
 
 /// Shorthand for grid-col().
-@mixin grid-col($columns: $grid-column-count, $gutter: $grid-column-gutter) {
+@mixin grid-col(
+  $columns: $grid-column-count,
+  $gutter: $grid-column-gutter
+) {
   @include grid-column($columns, $gutter);
 }

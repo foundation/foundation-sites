@@ -2,6 +2,8 @@
 /// @group functions
 ////
 
+// scss-lint:disable ZeroUnit
+
 /// Defines the base font size of the page, which is the value `1rem` is equal to.
 /// @type Number
 $rem-base: 16px !default;
@@ -32,7 +34,7 @@ $rem-base: 16px !default;
 /// @param {number} $value - Pixel value to convert.
 ///
 /// @return A number in rems, calculated based on the given value and the base pixel value.
-@function convert-to-rem($value, $base-value: $rem-base)  {
+@function convert-to-rem($value, $base-value: $rem-base) {
   $value: strip-unit($value) / strip-unit($base-value) * 1rem;
   @if ($value == 0rem) { $value: 0; } // Turn 0rem into 0
   @return $value;
@@ -52,9 +54,9 @@ $rem-base: 16px !default;
 
   @if $max == 1 { @return convert-to-rem(nth($values, 1), $base-value); }
 
-  $remValues: ();
+  $rem-values: ();
   @for $i from 1 through $max {
-    $remValues: append($remValues, convert-to-rem(nth($values, $i), $base-value));
+    $rem-values: append($rem-values, convert-to-rem(nth($values, $i), $base-value));
   }
-  @return $remValues;
+  @return $rem-values;
 }

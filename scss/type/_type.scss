@@ -18,8 +18,10 @@ Typography!
 /// @group typography
 ////
 
-@import "modular-scale";
-@import "baseline-grid";
+// scss-lint:disable DeclarationOrder
+
+@import 'modular-scale';
+@import 'baseline-grid';
 
 /// Returns multiple `font-size` declarations at different breakpoints, using the breakpoints and scales defined in `$ms-intervals`.
 /// @param {Number} $n - Position on the scale to use. `1` is the starting point (`1em`).

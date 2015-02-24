@@ -58,6 +58,13 @@ gulp.task('javascript', function() {
     .pipe(gulp.dest('dist/assets/js'));
 });
 
+gulp.task('lint', function() {
+  gulp.src(['scss/**/*.scss', '!scss/vendor/**/*.scss', '!scss/components_old/**/*.scss'])
+    .pipe($.scssLint({
+      'config': 'config/scss-lint.yml'
+    }));
+});
+
 gulp.task('default', ['sass', 'javascript'], function() {
   gulp.watch('scss/**/*', ['sass']);
   gulp.watch('js/**/*', ['javascript']);

@@ -10,15 +10,15 @@ We use these internal functions to make the framework more robust.
 */
 
 // Utilities
-@import "unit";
-@import "map";
-@import "value";
-@import "color";
+@import 'unit';
+@import 'map';
+@import 'value';
+@import 'color';
 
 // Libraries
-@import "breakpoints";
-@import "loader";
-@import "exports";
+@import 'breakpoints';
+@import 'loader';
+@import 'exports';
 
 // Mixins
-@import "mixins";
+@import 'mixins';

@@ -2,23 +2,24 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@charset "UTF-8";
+@charset 'UTF-8';
 
 // Third-party libraries
-@import "vendor/normalize";
+@import 'vendor/normalize';
 
 // Utilities
-@import "util/util";
+@import 'util/util';
 
 // Components
-@import "type/type";
-@import "grid/grid";
-@import "components/close-button";
+@import 'type/type';
+@import 'grid/grid';
+@import 'components/close-button';
 
 @include foundation-grid-classes;
 @include foundation-close-button;
 
 $foundation-version: '6.0.0';
-meta.foundation-version {
+
+.foundation-version {
   font-family: "#{$foundation-version}";
 }
