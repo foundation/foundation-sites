@@ -59,6 +59,6 @@ gulp.task('javascript', function() {
 });
 
 gulp.task('default', ['sass', 'javascript'], function() {
-  gulp.watch('scss/**/*', ['css']);
+  gulp.watch('scss/**/*', ['sass']);
   gulp.watch('js/**/*', ['javascript']);
 });
