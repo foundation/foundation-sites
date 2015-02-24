@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import '../functions';
+@import 'util/util';
 //
 // Foundation Variables
 //
@@ -98,42 +98,6 @@ $include-html-classes: true !default;
 $include-print-styles: true !default;
 $include-html-global-classes: $include-html-classes !default;
 
-$column-gutter: rem-calc(30) !default;
-
-// Media Query Ranges
-$small-range: (0, 40em) !default;
-$medium-range: (40.063em, 64em) !default;
-$large-range: (64.063em, 90em) !default;
-$xlarge-range: (90.063em, 120em) !default;
-$xxlarge-range: (120.063em, 99999999em) !default;
-
-
-$screen: 'only screen' !default;
-
-$landscape: '#{$screen} and (orientation: landscape)' !default;
-$portrait: '#{$screen} and (orientation: portrait)' !default;
-
-$small-up: $screen !default;
-$small-only: '#{$screen} and (max-width: #{upper-bound($small-range)})' !default;
-
-$medium-up: '#{$screen} and (min-width:#{lower-bound($medium-range)})' !default;
-$medium-only: '#{$screen} and (min-width:#{lower-bound($medium-range)}) and (max-width:#{upper-bound($medium-range)})' !default;
-
-$large-up: '#{$screen} and (min-width:#{lower-bound($large-range)})' !default;
-$large-only: '#{$screen} and (min-width:#{lower-bound($large-range)}) and (max-width:#{upper-bound($large-range)})' !default;
-
-$xlarge-up: '#{$screen} and (min-width:#{lower-bound($xlarge-range)})' !default;
-$xlarge-only: '#{$screen} and (min-width:#{lower-bound($xlarge-range)}) and (max-width:#{upper-bound($xlarge-range)})' !default;
-
-$xxlarge-up: '#{$screen} and (min-width:#{lower-bound($xxlarge-range)})' !default;
-$xxlarge-only: '#{$screen} and (min-width:#{lower-bound($xxlarge-range)}) and (max-width:#{upper-bound($xxlarge-range)})' !default;
-
-// Legacy
-$small: $medium-up;
-$medium: $medium-up;
-$large: $large-up;
-
-
 //We use this as cursors values for enabling the option of having custom cursors in the whole site's stylesheet
 $cursor-auto-value: auto !default;
 $cursor-crosshair-value: crosshair !default;
@@ -143,143 +107,77 @@ $cursor-pointer-value: pointer !default;
 $cursor-help-value: help !default;
 $cursor-text-value: text !default;
 
+@mixin foundation-global-styles {
+  // Must be 100% for off canvas to work
+  html, body { height: 100%; }
 
-@include exports('global') {
-
-  // Meta styles are included in all builds, as they are a dependancy of the Javascript.
-  // Used to provide media query values for javascript components.
-  // Forward slash placed around everything to convince PhantomJS to read the value.
-
-  meta.foundation-version {
-    font-family: "/{{VERSION}}/";
+  // Set box-sizing globally to handle padding and border widths
+  *,
+  *:before,
+  *:after {
+    @include box-sizing(border-box);
   }
 
-  meta.foundation-mq-small {
-    font-family: "/" + unquote($small-up) + "/";
-    width: lower-bound($small-range);
+  html,
+  body { font-size: $base-font-size; }
+
+  // Default body styles
+  body {
+    background: $body-bg;
+    color: $body-font-color;
+    padding: 0;
+    margin: 0;
+    font-family: $body-font-family;
+    font-weight: $body-font-weight;
+    font-style: $body-font-style;
+    line-height: $base-line-height; // Set to $base-line-height to take on browser default of 150%
+    position: relative;
+    cursor: $cursor-auto-value;
   }
-
-  meta.foundation-mq-small-only {
-    font-family: "/" + unquote($small-only) + "/";
-    width: lower-bound($small-range);
-  }
-
-  meta.foundation-mq-medium {
-    font-family: "/" + unquote($medium-up) + "/";
-    width: lower-bound($medium-range);
-  }
-
-  meta.foundation-mq-medium-only {
-    font-family: "/" + unquote($medium-only) + "/";
-    width: lower-bound($medium-range);
-  }
-
-  meta.foundation-mq-large {
-    font-family: "/" + unquote($large-up) + "/";
-    width: lower-bound($large-range);
-  }
-
-  meta.foundation-mq-large-only {
-    font-family: "/" + unquote($large-only) + "/";
-    width: lower-bound($large-range);
-  }
-
-  meta.foundation-mq-xlarge {
-    font-family: "/" + unquote($xlarge-up) + "/";
-    width: lower-bound($xlarge-range);
-  }
-
-  meta.foundation-mq-xlarge-only {
-    font-family: "/" + unquote($xlarge-only) + "/";
-    width: lower-bound($xlarge-range);
-  }
-
-  meta.foundation-mq-xxlarge {
-    font-family: "/" + unquote($xxlarge-up) + "/";
-    width: lower-bound($xxlarge-range);
-  }
-
-  meta.foundation-data-attribute-namespace {
-    font-family: #{$namespace};
-  }
-
-  @if $include-html-global-classes {
-
-    // Must be 100% for off canvas to work
-    html, body { height: 100%; }
-
-    // Set box-sizing globally to handle padding and border widths
-    *,
-    *:before,
-    *:after {
-      @include box-sizing(border-box);
-    }
-
-    html,
-    body { font-size: $base-font-size; }
-
-    // Default body styles
-    body {
-      background: $body-bg;
-      color: $body-font-color;
-      padding: 0;
-      margin: 0;
-      font-family: $body-font-family;
-      font-weight: $body-font-weight;
-      font-style: $body-font-style;
-      line-height: $base-line-height; // Set to $base-line-height to take on browser default of 150%
-      position: relative;
-      cursor: $cursor-auto-value;
-    }
 
   a:hover { cursor: $cursor-pointer-value; }
 
-    // Grid Defaults to get images and embeds to work properly
-    img { max-width: 100%; height: auto; }
+  // Grid Defaults to get images and embeds to work properly
+  img { max-width: 100%; height: auto; }
 
-    img { -ms-interpolation-mode: bicubic; }
+  img { -ms-interpolation-mode: bicubic; }
 
-    #map_canvas,
-    .map_canvas {
-      img,
-      embed,
-      object { max-width: none !important;
-      }
+  #map_canvas,
+  .map_canvas {
+    img,
+    embed,
+    object { max-width: none !important;
     }
-
-    // Miscellaneous useful HTML classes
-    .left { float: left !important; }
-    .right { float: right !important; }
-    .clearfix { @include clearfix; }
-
-    // Hide visually and from screen readers
-    .hide {
-      display: none;
-    }
-
-    // Hide visually and from screen readers, but maintain layout
-    .invisible { visibility: hidden; }
-
-    // Font smoothing
-    // Antialiased font smoothing works best for light text on a dark background.
-    // Apply to single elements instead of globally to body.
-    // Note this only applies to webkit-based desktop browsers and Firefox 25 (and later) on the Mac.
-    .antialiased { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-
-    // Get rid of gap under images by making them display: inline-block; by default
-    img {
-      display: inline-block;
-      vertical-align: middle;
-    }
-
-    //
-    // Global resets for forms
-    //
-
-    // Make sure textarea takes on height automatically
-    textarea { height: auto; min-height: 50px; }
-
-    // Make select elements 100% width by default
-    select { width: 100%; }
   }
+
+  // Miscellaneous useful HTML classes
+  .left { float: left !important; }
+  .right { float: right !important; }
+  .clearfix { @include clearfix; }
+
+  // Hide visually and from screen readers
+  .hide {
+    display: none;
+  }
+
+  // Hide visually and from screen readers, but maintain layout
+  .invisible { visibility: hidden; }
+
+  // Font smoothing
+  // Antialiased font smoothing works best for light text on a dark background.
+  // Apply to single elements instead of globally to body.
+  // Note this only applies to webkit-based desktop browsers and Firefox 25 (and later) on the Mac.
+  .antialiased { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+  // Get rid of gap under images by making them display: inline-block; by default
+  img {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  // Make sure textarea takes on height automatically
+  textarea { height: auto; min-height: 50px; }
+
+  // Make select elements 100% width by default
+  select { width: 100%; }
 }

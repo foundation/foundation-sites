@@ -20,7 +20,19 @@ Typography!
 
 // scss-lint:disable DeclarationOrder
 
+// Base typography styles (tags only)
+@import 'global';
+
+// Typography helper classes (classes only)
+@import 'helpers';
+
+// Text alignment classes
+@import 'align';
+
+// Modular scale mixins
 @import 'modular-scale';
+
+// Baseline grid mixins
 @import 'baseline-grid';
 
 /// Returns multiple `font-size` declarations at different breakpoints, using the breakpoints and scales defined in `$ms-intervals`.

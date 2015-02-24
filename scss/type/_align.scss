@@ -1,0 +1,19 @@
+@mixin foundation-text-alignment {
+  @each $align in (left, right, center, justify) {
+    @each $size in $breakpoint-classes {
+      .text-#{$align} {
+        text-align: $align;
+      }
+      @include breakpoint($size) {
+        .#{$size}-text-#{$align} {
+          text-align: $align;
+        }
+      }
+      @include breakpoint($size only) {
+        .#{$size}-only-text-#{$align} {
+          text-align: $align;
+        }
+      }
+    }
+  }
+}
