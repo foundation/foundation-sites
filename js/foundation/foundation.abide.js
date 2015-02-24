@@ -113,14 +113,14 @@
           if (this.settings.focus_on_invalid) {
             els[i].focus();
           }
-          form.trigger('invalid').trigger('invalid.fndtn.abide');
+          form.trigger('invalid.fndtn.abide');
           this.S(els[i]).closest('form').attr(this.invalid_attr, '');
           return false;
         }
       }
 
       if (submit_event || is_ajax) {
-        form.trigger('valid').trigger('valid.fndtn.abide');
+        form.trigger('valid.fndtn.abide');
       }
 
       form.removeAttr(this.invalid_attr);
