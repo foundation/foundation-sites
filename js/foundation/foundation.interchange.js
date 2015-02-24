@@ -88,8 +88,7 @@
       this.data_attr = this.set_data_attr();
       $.extend(true, this.settings, method, options);
       this.bindings(method, options);
-      this.load('images');
-      this.load('nodes');
+      this.reflow();
     },
 
     get_media_hash : function () {
