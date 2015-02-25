@@ -229,24 +229,18 @@ $acronym-underline: 1px dotted #ddd !default;
     font-family: $list-font-family;
   }
 
+  /* Unordered lists */
   ul {
     margin-#{$default-float}: $list-side-margin;
   }
 
-  /* Unordered Lists */
-  ul {
-    li {
-      ul,
-      ol {
-        margin-#{$default-float}: $list-nested-margin;
-        margin-bottom: 0;
-      }
-    }
-  }
-
-  /* Ordered Lists */
+  /* Ordered lists */
   ol {
     margin-#{$default-float}: $list-ordered-side-margin;
+  }
+
+  /* Nested unordered/ordered lists */
+  ul, ol {
     li {
       ul,
       ol {
@@ -256,7 +250,7 @@ $acronym-underline: 1px dotted #ddd !default;
     }
   }
 
-  /* Definition Lists */
+  /* Definition lists */
   dl {
     dt {
       margin-bottom: $definition-list-header-margin-bottom;
