@@ -1,0 +1,32 @@
+.media-object {
+  margin-bottom: 1rem;
+  display: block;
+  img {
+    max-width: none;
+  }
+  .image-left, .image-right, .content {
+    display: table-cell;
+    vertical-align: top;
+  }
+  .image-right {
+    padding-left: 10px;
+  }
+  .image-left {
+    padding-right: 10px;
+  }
+  .title {
+    margin-top: 0;
+  }
+  .image-middle {
+    vertical-align: middle;
+  }
+  .image-bottom {
+    vertical-align: bottom;
+    // adjust for bottom margin on media-object
+    padding-bottom: 1rem;
+  }
+}
+
+
+
+
