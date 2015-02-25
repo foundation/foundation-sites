@@ -227,6 +227,7 @@
       function cb (image) {
         var $image = $(image);
         $image.css('visibility', 'visible');
+        $image.trigger('imageVisible');
         // toggle the gallery
         body.css('overflow', 'hidden');
         root.addClass('clearing-blackout');
