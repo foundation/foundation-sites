@@ -72,6 +72,9 @@
       form
         .off('.abide')
         .on('submit.fndtn.abide validate.fndtn.abide', function (e) {
+          if (e.namespace !== 'abide.fndtn') {
+            return;
+          }
           var is_ajax = /ajax/i.test(self.S(this).attr(self.attr_name()));
           return self.validate(self.S(this).find('input, textarea, select').get(), e, is_ajax);
         })
