@@ -9,6 +9,7 @@
     settings : {
       live_validate : true,
       validate_on_blur : true,
+      // validate_on: 'tab', // tab (when user tabs between fields), change (input changes), manual (call custom events) 
       focus_on_invalid : true,
       error_labels : true, // labels with a for="inputId" will recieve an `error` class
       error_class : 'error',
@@ -66,17 +67,18 @@
           form = self.S(scope).attr('novalidate', 'novalidate'),
           settings = form.data(this.attr_name(true) + '-init') || {};
 
-
       this.invalid_attr = this.add_namespace('data-invalid');
 
       form
         .off('.abide')
-        .on('submit.fndtn.abide validate.fndtn.abide', function (e) {
-          if (e.namespace !== 'abide.fndtn') {
-            return;
-          }
+        .on('submit.fndtn.abide', function (e) {
           var is_ajax = /ajax/i.test(self.S(this).attr(self.attr_name()));
           return self.validate(self.S(this).find('input, textarea, select').get(), e, is_ajax);
+        })
+        .on('validate.fndtn.abide', function (e) {
+          if (settings.validate_on === 'manual') {
+            self.validate([e.target], e);
+          }
         })
         .on('reset', function (e) {
           return self.reset($(this), e);          
@@ -84,19 +86,34 @@
         .find('input, textarea, select')
           .off('.abide')
           .on('blur.fndtn.abide change.fndtn.abide', function (e) {
-            if (settings.validate_on_blur === true) {
+            // old settings fallback
+            // will be deprecated with F6 release
+            if (settings.validate_on_blur && settings.validate_on_blur === true) {
               clearTimeout(self.timer);
               self.timer = setTimeout(function () {
                 self.validate([this], e);
               }.bind(this), settings.timeout);
             }
+            // new settings combining validate options into one setting
+            if (settings.validate_on === 'change') {
+              self.validate([this], e);
+            }
           })
           .on('keydown.fndtn.abide', function (e) {
-            if (settings.live_validate === true && e.which != 9) {
+            // old settings fallback
+            // will be deprecated with F6 release
+            if (settings.live_validate && settings.live_validate === true && e.which != 9) {
               clearTimeout(self.timer);
               self.timer = setTimeout(function () {
                 self.validate([this], e);
               }.bind(this), settings.timeout);
+            }
+            // new settings combining validate options into one setting
+            if (settings.validate_on === 'tab' && e.which === 9) {
+              self.validate([this], e);
+            }
+            else if (settings.validate_on === 'change') {
+              self.validate([this], e);
             }
           });
     },
