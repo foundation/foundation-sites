@@ -75,8 +75,8 @@
           var is_ajax = /ajax/i.test(self.S(this).attr(self.attr_name()));
           return self.validate(self.S(this).find('input, textarea, select').get(), e, is_ajax);
         })
-        .on('reset', function () {
-          return self.reset($(this));
+        .on('reset', function (e) {
+          return self.reset($(this), e);          
         })
         .find('input, textarea, select')
           .off('.abide')
@@ -98,10 +98,13 @@
           });
     },
 
-    reset : function (form) {
-      form.removeAttr(this.invalid_attr);
-      $(this.invalid_attr, form).removeAttr(this.invalid_attr);
-      $('.' + this.settings.error_class, form).not('small').removeClass(this.settings.error_class);
+    reset : function (form, e) {
+      var self = this;
+      form.removeAttr(self.invalid_attr);
+
+      $('[' + self.invalid_attr + ']', form).removeAttr(self.invalid_attr);
+      $('.' + self.settings.error_class, form).not('small').removeClass(self.settings.error_class);
+      $(':input', form).not(':button, :submit, :reset, :hidden').val('').removeAttr(self.invalid_attr);
     },
 
     validate : function (els, e, is_ajax) {
