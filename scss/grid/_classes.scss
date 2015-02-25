@@ -82,11 +82,12 @@
           }
         }
       }
+
       // Positioning
       .#{$size}-#{$center} {
         @include grid-col-pos(center);
       }
-      
+
       .#{$size}-#{$uncenter},
       .#{$size}-#{$push}-0,
       .#{$size}-#{$pull}-0 {

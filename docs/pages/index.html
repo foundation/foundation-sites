@@ -1,19 +1,59 @@
-<div class="row">
-  <div class="medium-6 columns">
-    <header>
-      <h2>Heading Level 2</h2>
-      <h3 class="subheader">Subheading Level 3</h3>
-    </header>
+<section class="docs-grid">
+  <h2>The Grid</h2>
 
-    <p class="lead">This is a lead paragraph.</p>
-
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum vitae atque nihil officia eius, veritatis veniam magnam numquam placeat aperiam voluptatibus beatae alias repudiandae, nam perspiciatis esse impedit tempora eos.</p>
-
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum deleniti enim sequi, reiciendis hic soluta obcaecati id quos libero magnam quidem, vel ad fugiat ut fugit voluptatibus nam sit impedit!</p>
+  <div class="row">
+    <div class="medium-6 large-3 columns">
+      <p>Column One</p>
+    </div>
+    <div class="medium-6 large-3 columns">
+      <p>Column Two</p>
+    </div>
+    <div class="medium-6 large-3 columns">
+      <p>Column Three</p>
+    </div>
+    <div class="medium-6 large-3 columns">
+      <p>Column Four</p>
+    </div>
   </div>
-  <div class="medium-6 columns">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum vitae atque nihil officia eius, veritatis veniam magnam numquam placeat aperiam voluptatibus beatae alias repudiandae, nam perspiciatis esse impedit tempora eos.</p>
 
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum deleniti enim sequi, reiciendis hic soluta obcaecati id quos libero magnam quidem, vel ad fugiat ut fugit voluptatibus nam sit impedit!</p>
+  <hr>
+
+  <div class="row">
+    <div class="medium-6 columns">
+      <p>This is a column.</p>
+      <div class="row">
+        <div class="medium-6 columns">
+          <p>This is a nested column.</p>
+        </div>
+        <div class="medium-6 columns">
+          <p>This is a nested column.</p>
+        </div>
+      </div>
+    </div>
+    <div class="medium-6 columns">
+      <p>This is a column.</p>
+    </div>
   </div>
-</div>
+
+  <hr>
+
+  <div class="row">
+    <div class="small-6 medium-push-6 columns">
+      <p>This should be on the left on small, and right on medium.</p>
+    </div>
+    <div class="small-6 medium-pull-6 columns">
+      <p>This should be on the right on small, and left on medium.</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row collapse large-uncollapse">
+    <div class="medium-6 columns">
+      <p>These two columns should be collapsed on medium and lower...</p>
+    </div>
+    <div class="medium-6 columns">
+      <p>...and uncollapsed on large and up.</p>
+    </div>
+  </div>
+</section>

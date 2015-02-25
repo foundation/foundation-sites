@@ -8,16 +8,30 @@
     <title>Foundation for Sites 6.0.0</title>
 
     <link href="assets/css/foundation.css" rel="stylesheet" />
+    <style>
+      .docs-grid .row {
+        background: rgba(0, 140, 186, 0.15);
+      }
+      .docs-grid .columns {
+        position: relative;
+      }
+        .docs-grid .columns::after {
+          content: ''; display: block; position: absolute;
+          top: 0; right: 15px; bottom: 0; left: 15px;
+          background: rgba(0, 140, 186, 0.15);
+        }
+        .docs-grid .row.collapse:not([class*="uncollapse"]) .columns::after {
+          right: 0; left: 0;
+        }
+    </style>
   </head>
   <body class="">
     
-    <div class="row">
-      <div class="small-12 columns">
-        <h1>Foundation for Sites 6.0.0</h1>
-        <hr>
+    <div class="column-row">
+      <h1>Foundation for Sites 6.0.0</h1>
+      <hr>
 
-        {{> body}}
-      </div>
+      {{> body}}
     </div>
 
     <script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
