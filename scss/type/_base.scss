@@ -118,11 +118,11 @@ $acronym-underline: 1px dotted #ddd !default;
   blockquote,
   th,
   td {
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
   }
 
-  /* Default Link Styles */
+  // Links
   a {
     color: $anchor-font-color;
     text-decoration: $anchor-text-decoration;
@@ -136,10 +136,12 @@ $acronym-underline: 1px dotted #ddd !default;
       }
     }
 
-    img { border:none; }
+    img {
+      border: none;
+    }
   }
 
-  /* Default paragraph styles */
+  // Paragraphs
   p {
     font-family: $paragraph-font-family;
     font-weight: $paragraph-font-weight;
@@ -147,16 +149,9 @@ $acronym-underline: 1px dotted #ddd !default;
     line-height: $paragraph-line-height;
     margin-bottom: $paragraph-margin-bottom;
     text-rendering: $paragraph-text-rendering;
-
-
-    & aside {
-      font-size: $paragraph-aside-font-size;
-      line-height: $paragraph-aside-line-height;
-      font-style: $paragraph-aside-font-style;
-    }
   }
 
-  /* Default header styles */
+  // Headings
   h1, h2, h3, h4, h5, h6 {
     font-family: $header-font-family;
     font-weight: $header-font-weight;
@@ -174,6 +169,7 @@ $acronym-underline: 1px dotted #ddd !default;
     }
   }
 
+  // Heading sizes
   h1 { font-size: $h1-font-size - $h1-font-reduction; }
   h2 { font-size: $h2-font-size - $h2-font-reduction; }
   h3 { font-size: $h3-font-size - $h3-font-reduction; }
@@ -181,6 +177,18 @@ $acronym-underline: 1px dotted #ddd !default;
   h5 { font-size: $h5-font-size - $h5-font-reduction; }
   h6 { font-size: $h6-font-size - $h6-font-reduction; }
 
+  // Heading sizes on larger screens
+  @include breakpoint(medium) {
+    h1,h2,h3,h4,h5,h6 { line-height: $header-line-height; }
+    h1 { font-size: $h1-font-size; }
+    h2 { font-size: $h2-font-size; }
+    h3 { font-size: $h3-font-size; }
+    h4 { font-size: $h4-font-size; }
+    h5 { font-size: $h5-font-size; }
+    h6 { font-size: $h6-font-size; }
+  }
+
+  // Horizontal rule
   hr {
     border: $hr-border-style $hr-border-color;
     border-width: $hr-border-width 0 0;
@@ -189,24 +197,27 @@ $acronym-underline: 1px dotted #ddd !default;
     height: 0;
   }
 
-  /* Helpful Typography Defaults */
+  // Emphasized text
   em,
   i {
     font-style: italic;
     line-height: inherit;
   }
 
+  // Strong text
   strong,
   b {
     font-weight: $font-weight-bold;
     line-height: inherit;
   }
 
+  // Small text
   small {
     font-size: $small-font-size;
     line-height: inherit;
   }
 
+  // Code
   code {
     font-family: $code-font-family;
     font-weight: $code-font-weight;
@@ -218,7 +229,7 @@ $acronym-underline: 1px dotted #ddd !default;
     padding: $code-padding;
   }
 
-  /* Lists */
+  // Lists
   ul,
   ol,
   dl {
@@ -229,17 +240,17 @@ $acronym-underline: 1px dotted #ddd !default;
     font-family: $list-font-family;
   }
 
-  /* Unordered lists */
+  // Unordered lists
   ul {
     margin-#{$default-float}: $list-side-margin;
   }
 
-  /* Ordered lists */
+  // Ordered lists
   ol {
     margin-#{$default-float}: $list-ordered-side-margin;
   }
 
-  /* Nested unordered/ordered lists */
+  // Nested unordered/ordered lists
   ul, ol {
     li {
       ul,
@@ -250,16 +261,19 @@ $acronym-underline: 1px dotted #ddd !default;
     }
   }
 
-  /* Definition lists */
+  // Definition lists
   dl {
     dt {
       margin-bottom: $definition-list-header-margin-bottom;
       font-weight: $definition-list-header-weight;
     }
-    dd { margin-bottom: $definition-list-margin-bottom; }
+
+    dd {
+      margin-bottom: $definition-list-margin-bottom;
+    }
   }
 
-  /* Abbreviations */
+  // Abbreviations and acronyms
   abbr,
   acronym {
     text-transform: uppercase;
@@ -267,6 +281,7 @@ $acronym-underline: 1px dotted #ddd !default;
     color: $body-font-color;
     cursor: $cursor-help-value;
   }
+
   abbr {
     text-transform: none;
     &[title] {
@@ -274,16 +289,23 @@ $acronym-underline: 1px dotted #ddd !default;
     }
   }
 
-  /* Blockquotes */
+  // Blockquotes
   blockquote {
     margin: 0 0 $paragraph-margin-bottom;
     padding: $blockquote-padding;
     border-#{$default-float}: $blockquote-border;
 
+    &, p {
+      line-height: $paragraph-line-height;
+      color: $blockquote-font-color;
+    }
+
+    // Citations
     cite {
       display: block;
       font-size: $blockquote-cite-font-size;
       color: $blockquote-cite-font-color;
+
       &:before {
         content: "\2014 \0020";
       }
@@ -293,20 +315,5 @@ $acronym-underline: 1px dotted #ddd !default;
         color: $blockquote-cite-link-color;
       }
     }
-  }
-  blockquote,
-  blockquote p {
-    line-height: $paragraph-line-height;
-    color: $blockquote-font-color;
-  }
-
-  @include breakpoint(medium) {
-    h1,h2,h3,h4,h5,h6 { line-height: $header-line-height; }
-    h1 { font-size: $h1-font-size; }
-    h2 { font-size: $h2-font-size; }
-    h3 { font-size: $h3-font-size; }
-    h4 { font-size: $h4-font-size; }
-    h5 { font-size: $h5-font-size; }
-    h6 { font-size: $h6-font-size; }
   }
 }
