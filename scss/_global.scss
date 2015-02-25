@@ -156,3 +156,7 @@ $cursor-text-value: text !default;
     -moz-osx-font-smoothing: grayscale;
   }
 }
+
+.foundation-version {
+  font-family: "#{$foundation-version}";
+}
