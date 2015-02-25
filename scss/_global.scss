@@ -3,9 +3,6 @@
 // Licensed under MIT Open Source
 
 @import 'util/util';
-//
-// Foundation Variables
-//
 
 // Temporary!
 // scss-lint:disable all
@@ -26,12 +23,12 @@ $base-font-size: 100% !default;
 $base-line-height: 1.5 !default;
 
 // We use these as default colors throughout
-$primary-color: #008CBA !default;   // bondi-blue
-$secondary-color: #e7e7e7 !default; // white-lilac
-$alert-color: #f04124 !default;     // cinnabar
-$success-color: #43AC6A !default;   // sea-green
-$warning-color: #f08a24 !default;   // carrot
-$info-color: #a0d3e8 !default;      // cornflower
+$primary-color: #008CBA !default;
+$secondary-color: #e7e7e7 !default;
+$alert-color: #f04124 !default;
+$success-color: #43AC6A !default;
+$warning-color: #f08a24 !default;
+$info-color: #a0d3e8 !default;
 
 // We use these to define default font styles
 $font-family-monospace: Consolas, "Liberation Mono", Courier, monospace !default;
@@ -74,18 +71,20 @@ $cursor-help-value: help !default;
 $cursor-text-value: text !default;
 
 @mixin foundation-global-styles {
-  // Must be 100% for off canvas to work
-  html, body { height: 100%; }
+  // Must be height: 100% for off canvas to work
+  html,
+  body {
+    height: 100%;
+    font-size: $base-font-size;
+    box-sizing: border-box;
+  }
 
   // Set box-sizing globally to handle padding and border widths
   *,
   *:before,
   *:after {
-    @include box-sizing(border-box);
+    box-sizing: inherit;
   }
-
-  html,
-  body { font-size: $base-font-size; }
 
   // Default body styles
   body {
@@ -96,29 +95,50 @@ $cursor-text-value: text !default;
     font-family: $body-font-family;
     font-weight: $body-font-weight;
     font-style: $body-font-style;
-    line-height: $base-line-height; // Set to $base-line-height to take on browser default of 150%
+    // Set to $base-line-height to take on browser default of 150%
+    line-height: $base-line-height;
     position: relative;
     cursor: $cursor-auto-value;
   }
 
-  a:hover { cursor: $cursor-pointer-value; }
+  a:hover {
+    cursor: $cursor-pointer-value;
+  }
 
-  // Grid Defaults to get images and embeds to work properly
-  img { max-width: 100%; height: auto; }
+  img {
+    // Grid defaults to get images and embeds to work properly
+    max-width: 100%;
+    height: auto;
+    -ms-interpolation-mode: bicubic;
 
-  img { -ms-interpolation-mode: bicubic; }
+    // Get rid of gap under images by making them display: inline-block; by default
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  // Make sure textarea takes on height automatically
+  textarea {
+    height: auto;
+    min-height: 50px;
+  }
+
+  // Make select elements are 100% width by default
+  select {
+    width: 100%;
+  }
 
   #map_canvas,
   .map_canvas {
     img,
     embed,
-    object { max-width: none !important;
+    object {
+      max-width: none !important;
     }
   }
 
   // Miscellaneous useful HTML classes
-  .left { float: left !important; }
-  .right { float: right !important; }
+  .float-left { float: left !important; }
+  .float-right { float: right !important; }
   .clearfix { @include clearfix; }
 
   // Hide visually and from screen readers
@@ -127,23 +147,14 @@ $cursor-text-value: text !default;
   }
 
   // Hide visually and from screen readers, but maintain layout
-  .invisible { visibility: hidden; }
-
-  // Font smoothing
-  // Antialiased font smoothing works best for light text on a dark background.
-  // Apply to single elements instead of globally to body.
-  // Note this only applies to webkit-based desktop browsers and Firefox 25 (and later) on the Mac.
-  .antialiased { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-
-  // Get rid of gap under images by making them display: inline-block; by default
-  img {
-    display: inline-block;
-    vertical-align: middle;
+  .invisible {
+    visibility: hidden;
   }
 
-  // Make sure textarea takes on height automatically
-  textarea { height: auto; min-height: 50px; }
-
-  // Make select elements 100% width by default
-  select { width: 100%; }
+  // Font smoothing
+  // Antialiased font smoothing works best for light text on a dark background. Apply to single elements instead of globally to body. Note this only applies to webkit-based desktop browsers and Firefox 25 (and later) on the Mac.
+  .antialiased {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
