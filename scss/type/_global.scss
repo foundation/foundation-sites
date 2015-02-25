@@ -98,9 +98,6 @@ $blockquote-cite-link-color: $blockquote-cite-font-color !default;
 $acronym-underline: 1px dotted $gainsboro !default;
 
 @mixin foundation-typography-base {
-  // Responsive Text alignment
-  @include align-classes;
-
   /* Typography resets */
   div,
   dl,
@@ -309,7 +306,7 @@ $acronym-underline: 1px dotted $gainsboro !default;
     color: $blockquote-font-color;
   }
 
-  @media #{$medium-up} {
+  @include breakpoint(medium) {
     h1,h2,h3,h4,h5,h6 { line-height: $header-line-height; }
     h1 { font-size: $h1-font-size; }
     h2 { font-size: $h2-font-size; }

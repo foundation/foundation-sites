@@ -17,9 +17,10 @@
 @import 'type/type';
 @import 'grid/grid';
 @import 'components/close-button';
-@import 'components/media-object';
+// @import 'components/media-object';
 
 @include foundation-grid-classes;
+@include foundation-typography;
 @include foundation-close-button;
 
 $foundation-version: '6.0.0';

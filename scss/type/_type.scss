@@ -26,30 +26,25 @@ Typography!
 // Typography helper classes (classes only)
 @import 'helpers';
 
+// Keystroke styles
+@import 'keystroke';
+
 // Text alignment classes
 @import 'align';
-
-// Modular scale mixins
-@import 'modular-scale';
 
 // Baseline grid mixins
 @import 'baseline-grid';
 
-/// Returns multiple `font-size` declarations at different breakpoints, using the breakpoints and scales defined in `$ms-intervals`.
-/// @param {Number} $n - Position on the scale to use. `1` is the starting point (`1em`).
-/// @param {Map} $intervals [$ms-intervals] - A set of intervals to use.
-@mixin font-size($n, $intervals: $ms-intervals) {
-  @each $breakpoint, $scale in $intervals {
-    $font-size: modular-scale($n, $scale);
-    @if $breakpoint == default {
-      font-size: $font-size;
-      @include baseline($font-size);
-    }
-    @else {
-      @include breakpoint($breakpoint) {
-        font-size: $font-size;
-        @include baseline($font-size);
-      }
-    }
-  }
+// Modular scale mixins
+@import 'modular-scale';
+
+// Print styles
+@import 'print';
+
+@mixin foundation-typography {
+  @include foundation-typography-base;
+  @include foundation-typography-helpers;
+  @include foundation-text-alignment;
+  @include foundation-keystroke;
+  @include foundation-print-styles;
 }

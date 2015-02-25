@@ -1,0 +1,50 @@
+////
+/// @group typography
+////
+
+/// Default typeface for keystrokes.
+/// @type List
+$keystroke-font: "Consolas", "Menlo", "Courier", monospace !default;
+
+/// Default text color for keystrokes.
+/// @type Color
+$keystroke-color: $jet !default;
+
+/// Default background color for keystrokes.
+/// @type Color
+$keystroke-background: scale-color($white, $lightness: -10%) !default;
+
+/// Default padding inside a keystroke container.
+/// @type Number|List
+$keystroke-padding: rem-calc(2 4 0) !default;
+
+/// Border radius of a keystroke container.
+/// @type Number
+$keystroke-radius: $global-radius !default;
+
+/// Creates styles for a keystroke indicator.
+/// @param {List} $font [$keystroke-font] - Font family.
+/// @param {Color} $color [$keystroke-color] - Font color.
+/// @param {Color} $background [$keystroke-color] - Background color.
+/// @param {Number|List} $padding [$keystroke-padding] - Padding of element.
+/// @param {Number} $radius [$keystroke-radius] - Border radius of element.
+@mixin keystroke(
+  $font: $keystroke-font,
+  $color: $keystroke-color,
+  $background: $keystroke-background,
+  $padding: $keystroke-padding,
+  $radius: $keystroke-radius
+) {
+  padding: $padding;
+  margin: 0;
+  background-color: $background;
+  color: $color;
+  font-family: $font;
+}
+
+@mixin foundation-keystroke {
+  .keystroke,
+  kbd {
+    @include keystroke;
+  }
+}
