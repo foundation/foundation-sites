@@ -196,15 +196,29 @@
           parent = direct_parent.parent();
         }
 
-        if (validator) {
-          valid = this.settings.validators[validator].apply(this, [el, required, parent]);
-          el_validations.push(valid);
-        }
-
         if (is_radio && required) {
           el_validations.push(this.valid_radio(el, required));
         } else if (is_checkbox && required) {
           el_validations.push(this.valid_checkbox(el, required));
+
+        } else if (validator) {
+          // Validate using each of the specified (space-delimited) validators.
+          var validators = validator.split(' ');
+          var last_valid = true, all_valid = true;
+          for (var iv = 0; iv < validators.length; iv++) {
+              valid = this.settings.validators[validators[iv]].apply(this, [el, required, parent])
+              el_validations.push(valid);
+              all_valid = valid && last_valid;
+              last_valid = valid;
+          }
+
+          if (valid) {
+              this.S(el).removeAttr(this.invalid_attr);
+              parent.removeClass('error');
+          } else {
+              this.S(el).attr(this.invalid_attr, '');
+              parent.addClass('error');
+          }
         } else {
 
           if (el_patterns[i][1].test(value) && valid_length ||

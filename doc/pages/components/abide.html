@@ -132,6 +132,15 @@ Additionally, if you are using a custom validator and specify an input type or a
 ```
 {{/markdown}}
 
+You can also use multiple custom validators if you wish by separating the names of the custom validators with a space. The input, however, must pass ALL validations in order for the input to be considered valid. The example below would only be valid if the the outcome of `diceRoll` is true AND the input is within the array of accepted inputs of `isAllowed`.
+
+{{#markdown}}
+```html
+<input type="email" data-abide-validator="diceRoll isAllowed">
+```
+{{/markdown}}
+
+
 ***
 
 ## Accessibility
