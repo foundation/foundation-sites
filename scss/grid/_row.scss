@@ -63,3 +63,23 @@
     @include clearfix;
   }
 }
+
+/// Creates a full-width column with proper gutters. Meant to be a replacement for:
+/// ```html
+/// <div class="row">
+///   <div class="small-12 columns">
+///   </div>
+/// </div>
+///
+/// @param {Number} $width [$grid-row-width] - The maximum width of the column.
+/// @param {Number} $gutter [$grid-column-gutter] - Padding to add to the left and right side.
+@mixin grid-column-row(
+  $width: $grid-row-width,
+  $gutter: $grid-column-gutter
+) {
+  max-width: $width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $gutter;
+  padding-right: $gutter;
+}

@@ -32,10 +32,6 @@
       > .#{$column} { @include grid-col-collapse; }
     }
 
-    &.#{$uncollapse} {
-      > .#{$column} { @include grid-col-uncollapse; }
-    }
-
     @each $size in $breakpoints {
       @include breakpoint($size) {
         &.#{$size}-#{$collapse} {
@@ -55,6 +51,15 @@
 
     &.#{$end} {
       @include grid-col-end;
+    }
+  }
+
+  // Column row
+  .column-row {
+    @include grid-column-row;
+
+    .#{$row} {
+      @include grid-row(nest, $cf: false);
     }
   }
   
