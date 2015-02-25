@@ -48,14 +48,14 @@
           //   console.log($(this).html(), a, b, c);
           // });
 
-          if (/IMG/.test(el[0].nodeName)) {
+          if (el !== null && /IMG/.test(el[0].nodeName)) {
             var orig_path = el[0].src;
 
             if (new RegExp(path, 'i').test(orig_path)) {
               return;
             }
 
-            el[0].src = path;
+            el.attr("src", path);
 
             return trigger(el[0].src);
           }
