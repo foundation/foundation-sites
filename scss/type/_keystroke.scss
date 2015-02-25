@@ -8,11 +8,11 @@ $keystroke-font: "Consolas", "Menlo", "Courier", monospace !default;
 
 /// Default text color for keystrokes.
 /// @type Color
-$keystroke-color: $jet !default;
+$keystroke-color: #222 !default;
 
 /// Default background color for keystrokes.
 /// @type Color
-$keystroke-background: scale-color($white, $lightness: -10%) !default;
+$keystroke-background: scale-color(#fff, $lightness: -10%) !default;
 
 /// Default padding inside a keystroke container.
 /// @type Number|List

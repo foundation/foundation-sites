@@ -10,7 +10,7 @@
   @media print {
     * {
       background: transparent !important;
-      color: $black !important; // Black prints faster: h5bp.com/s
+      color: black !important; // Black prints faster: h5bp.com/s
       box-shadow: none !important;
       text-shadow: none !important;
     }
@@ -41,7 +41,7 @@
     // Prevent page breaks in the middle of a blockquote or preformatted text block
     pre,
     blockquote {
-      border: 1px solid $aluminum;
+      border: 1px solid #999;
       page-break-inside: avoid;
     }
 

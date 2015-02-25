@@ -6,7 +6,7 @@
 $header-font-family: $body-font-family !default;
 $header-font-weight: $font-weight-normal !default;
 $header-font-style: normal !default;
-$header-font-color: $jet !default;
+$header-font-color: #222 !default;
 $header-line-height: 1.4 !default;
 $header-top-margin: .2rem !default;
 $header-bottom-margin: .5rem !default;
@@ -51,7 +51,7 @@ $paragraph-aside-font-style: italic !default;
 $paragraph-text-rendering: optimizeLegibility !default;
 
 // We use these to style <code> tags
-$code-color: $oil !default;
+$code-color: #333 !default;
 $code-font-family: $font-family-monospace !default;
 $code-font-weight: $font-weight-normal !default;
 $code-background-color: scale-color($secondary-color, $lightness: 70%) !default;
@@ -69,7 +69,7 @@ $anchor-font-color-hover: scale-color($anchor-font-color, $lightness: -14%) !def
 // We use these to style the <hr> element
 $hr-border-width: 1px !default;
 $hr-border-style: solid !default;
-$hr-border-color: $gainsboro !default;
+$hr-border-color: #ddd !default;
 $hr-margin: rem-calc(20) !default;
 
 // We use these to style lists
@@ -89,13 +89,13 @@ $definition-list-margin-bottom: rem-calc(12) !default;
 // We use these to style blockquotes
 $blockquote-font-color: scale-color($header-font-color, $lightness: 35%) !default;
 $blockquote-padding: rem-calc(9 20 0 19) !default;
-$blockquote-border: 1px solid $gainsboro !default;
+$blockquote-border: 1px solid #ddd !default;
 $blockquote-cite-font-size: rem-calc(13) !default;
 $blockquote-cite-font-color: scale-color($header-font-color, $lightness: 23%) !default;
 $blockquote-cite-link-color: $blockquote-cite-font-color !default;
 
 // Acronym styles
-$acronym-underline: 1px dotted $gainsboro !default;
+$acronym-underline: 1px dotted #ddd !default;
 
 @mixin foundation-typography-base {
   /* Typography resets */
