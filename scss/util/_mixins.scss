@@ -94,7 +94,6 @@ Mixins be swell.
 }
 
 /// Uses the micro clearfix hack popularized by Nicolas Gallagher. Include this mixin on a container if its children are all floated, to give the container a proper height.
-///
 /// @link http://nicolasgallagher.com/micro-clearfix-hack/
 @mixin clearfix {
   &:before, &:after {
