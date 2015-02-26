@@ -22,7 +22,8 @@ gulp.task('html', function() {
 gulp.task('sass', function() {
   gulp.src(files.sassSrc)
     .pipe($.sass({
-      includePaths: files.sassPaths
+      includePaths: files.sassPaths,
+      errLogToConsole: true
     }))
     .pipe(gulp.dest('dist/assets/css'));
 });
