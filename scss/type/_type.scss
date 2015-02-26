@@ -26,9 +26,6 @@ Typography!
 // Typography helper classes (classes only)
 @import 'helpers';
 
-// Keystroke styles
-@import 'keystroke';
-
 // Text alignment classes
 @import 'align';
 
@@ -45,6 +42,5 @@ Typography!
   @include foundation-typography-base;
   @include foundation-typography-helpers;
   @include foundation-text-alignment;
-  @include foundation-keystroke;
   @include foundation-print-styles;
 }

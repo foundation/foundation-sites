@@ -87,7 +87,14 @@ $blockquote-cite-font-size: rem-calc(13) !default;
 $blockquote-cite-font-color: scale-color($header-font-color, $lightness: 23%) !default;
 $blockquote-cite-link-color: $blockquote-cite-font-color !default;
 
-// Acronym styles
+// We use these to style keystrokes.
+$keystroke-font: "Consolas", "Menlo", "Courier", monospace !default;
+$keystroke-color: #222 !default;
+$keystroke-background: scale-color(#fff, $lightness: -10%) !default;
+$keystroke-padding: rem-calc(2 4 0) !default;
+$keystroke-radius: $global-radius !default;
+
+// We use these to style acronyms and abbreviations
 $acronym-underline: 1px dotted #ddd !default;
 
 @mixin foundation-typography-base {
@@ -264,6 +271,14 @@ $acronym-underline: 1px dotted #ddd !default;
     dd {
       margin-bottom: $definition-list-margin-bottom;
     }
+  }
+
+  kbd {
+    padding: $keystroke-padding;
+    margin: 0;
+    background-color: $keystroke-background;
+    color: $keystroke-color;
+    font-family: $keystroke-font;
   }
 
   // Abbreviations and acronyms
