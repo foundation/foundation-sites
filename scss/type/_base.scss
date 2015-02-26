@@ -38,9 +38,6 @@ $paragraph-font-weight: $font-weight-normal !default;
 $paragraph-font-size: 1rem !default;
 $paragraph-line-height: 1.6 !default;
 $paragraph-margin-bottom: rem-calc(20) !default;
-$paragraph-aside-font-size: rem-calc(14) !default;
-$paragraph-aside-line-height: 1.35 !default;
-$paragraph-aside-font-style: italic !default;
 $paragraph-text-rendering: optimizeLegibility !default;
 
 // We use these to style <code> tags
@@ -65,7 +62,7 @@ $hr-border-style: solid !default;
 $hr-border-color: #ddd !default;
 $hr-margin: rem-calc(20) !default;
 
-// We use these to style lists
+// We use these to style unordered, ordered, and definition lists
 $list-font-family: $paragraph-font-family !default;
 $list-font-size: $paragraph-font-size !default;
 $list-line-height: $paragraph-line-height !default;
@@ -75,19 +72,21 @@ $list-side-margin: 1.1rem !default;
 $list-ordered-side-margin: 1.4rem !default;
 $list-side-margin-no-bullet: 0 !default;
 $list-nested-margin: rem-calc(20) !default;
+
 $definition-list-header-weight: $font-weight-bold !default;
 $definition-list-header-margin-bottom: .3rem !default;
 $definition-list-margin-bottom: rem-calc(12) !default;
 
-// We use these to style blockquotes
+// We use these to style blockquotes and citations
 $blockquote-font-color: scale-color($header-font-color, $lightness: 35%) !default;
 $blockquote-padding: rem-calc(9 20 0 19) !default;
 $blockquote-border: 1px solid #ddd !default;
-$blockquote-cite-font-size: rem-calc(13) !default;
-$blockquote-cite-font-color: scale-color($header-font-color, $lightness: 23%) !default;
-$blockquote-cite-link-color: $blockquote-cite-font-color !default;
 
-// We use these to style keystrokes.
+$cite-font-size: rem-calc(13) !default;
+$cite-font-color: scale-color($header-font-color, $lightness: 23%) !default;
+$cite-link-color: $cite-font-color !default;
+
+// We use these to style keystrokes
 $keystroke-font: "Consolas", "Menlo", "Courier", monospace !default;
 $keystroke-color: #222 !default;
 $keystroke-background: scale-color(#fff, $lightness: -10%) !default;
@@ -307,21 +306,21 @@ $acronym-underline: 1px dotted #ddd !default;
       line-height: $paragraph-line-height;
       color: $blockquote-font-color;
     }
+  }
 
-    // Citations
-    cite {
-      display: block;
-      font-size: $blockquote-cite-font-size;
-      color: $blockquote-cite-font-color;
+  // Citations
+  cite {
+    display: block;
+    font-size: $cite-font-size;
+    color: $cite-font-color;
 
-      &:before {
-        content: "\2014 \0020";
-      }
+    &:before {
+      content: "\2014 \0020";
+    }
 
-      a,
-      a:visited {
-        color: $blockquote-cite-link-color;
-      }
+    a,
+    a:visited {
+      color: $cite-link-color;
     }
   }
 }
