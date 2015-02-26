@@ -97,7 +97,7 @@
           if (/mouse/i.test(e.type) && self.ie_touch(e)) {
             return false;
           }
-
+          
           if ($this.hasClass('open')) {
             if (Modernizr.touch && /touchstart|MSPointerDown/i.test(e.type)) {
               e.preventDefault();
@@ -110,10 +110,16 @@
               e.preventDefault();
               S(settings.tooltip_class + '.open').hide();
               is_touch = true;
+              // close other open tooltips on touch
+              if ($('.open[' + self.attr_name() + ']').length > 0) {
+               var prevOpen = S($('.open[' + self.attr_name() + ']')[0]);
+               self.hide(prevOpen);
+              }
             }
 
             if (/enter|over/i.test(e.type)) {
               _startShow(this, $this);
+
             } else if (e.type === 'mouseout' || e.type === 'mouseleave') {
               _startHide(this, $this);
             } else {
@@ -308,7 +314,6 @@
 
     hide : function ($target) {
       var $tip = this.getTip($target);
-
       $tip.fadeOut(150, function () {
         $tip.find('.tap-to-close').remove();
         $tip.off('click.fndtn.tooltip.tapclose MSPointerDown.fndtn.tapclose');
