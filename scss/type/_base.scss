@@ -6,10 +6,9 @@
 $header-font-family: $body-font-family !default;
 $header-font-weight: $font-weight-normal !default;
 $header-font-style: normal !default;
-$header-font-color: #222 !default;
-$header-line-height: 1.4 !default;
-$header-top-margin: .2rem !default;
-$header-bottom-margin: .5rem !default;
+$header-color: #222 !default;
+$header-lineheight: 1.4 !default;
+$header-margin-bottom: 0.5rem !default;
 $header-text-rendering: optimizeLegibility !default;
 
 // We use these to control header font sizes
@@ -29,14 +28,14 @@ $h5-font-reduction: 0 !default;
 $h6-font-reduction: 0 !default;
 
 // A general <small> styling
-$small-font-size: 60% !default;
-$small-font-color: scale-color($header-font-color, $lightness: 35%) !default;
+$small-font-size: 80% !default;
+$small-font-color: scale-color($header-color, $lightness: 35%) !default;
 
 // We use these to style paragraphs
 $paragraph-font-family: inherit !default;
 $paragraph-font-weight: $font-weight-normal !default;
 $paragraph-font-size: 1rem !default;
-$paragraph-line-height: 1.6 !default;
+$paragraph-lineheight: 1.6 !default;
 $paragraph-margin-bottom: rem-calc(20) !default;
 $paragraph-text-rendering: optimizeLegibility !default;
 
@@ -44,28 +43,24 @@ $paragraph-text-rendering: optimizeLegibility !default;
 $code-color: #333 !default;
 $code-font-family: $font-family-monospace !default;
 $code-font-weight: $font-weight-normal !default;
-$code-background-color: scale-color($secondary-color, $lightness: 70%) !default;
-$code-border-size: 1px !default;
-$code-border-style: solid !default;
-$code-border-color: scale-color($code-background-color, $lightness: -10%) !default;
+$code-background: #eee !default;
+$code-border: 1px solid #ccc !default;
 $code-padding: rem-calc(2) rem-calc(5) rem-calc(1) !default;
 
 // We use these to style anchors
 $anchor-text-decoration: none !default;
 $anchor-text-decoration-hover: none !default;
-$anchor-font-color: $primary-color !default;
-$anchor-font-color-hover: scale-color($anchor-font-color, $lightness: -14%) !default;
+$anchor-color: $primary-color !default;
+$anchor-color-hover: scale-color($anchor-color, $lightness: -14%) !default;
 
 // We use these to style the <hr> element
-$hr-border-width: 1px !default;
-$hr-border-style: solid !default;
-$hr-border-color: #ddd !default;
-$hr-margin: rem-calc(20) !default;
+$hr-border: 1px solid #ddd;
+$hr-margin: rem-calc(20) 0 !default;
 
 // We use these to style unordered, ordered, and definition lists
 $list-font-family: $paragraph-font-family !default;
 $list-font-size: $paragraph-font-size !default;
-$list-line-height: $paragraph-line-height !default;
+$list-line-height: $paragraph-lineheight !default;
 $list-margin-bottom: $paragraph-margin-bottom !default;
 $list-style-position: outside !default;
 $list-side-margin: 1.1rem !default;
@@ -74,17 +69,16 @@ $list-side-margin-no-bullet: 0 !default;
 $list-nested-margin: rem-calc(20) !default;
 
 $definition-list-header-weight: $font-weight-bold !default;
-$definition-list-header-margin-bottom: .3rem !default;
+$definition-list-header-margin-bottom: 0.3rem !default;
 $definition-list-margin-bottom: rem-calc(12) !default;
 
 // We use these to style blockquotes and citations
-$blockquote-font-color: scale-color($header-font-color, $lightness: 35%) !default;
+$blockquote-color: scale-color($header-color, $lightness: 35%) !default;
 $blockquote-padding: rem-calc(9 20 0 19) !default;
 $blockquote-border: 1px solid #ddd !default;
 
 $cite-font-size: rem-calc(13) !default;
-$cite-font-color: scale-color($header-font-color, $lightness: 23%) !default;
-$cite-link-color: $cite-font-color !default;
+$cite-color: scale-color($header-color, $lightness: 23%) !default;
 
 // We use these to style keystrokes
 $keystroke-font: "Consolas", "Menlo", "Courier", monospace !default;
@@ -123,13 +117,13 @@ $acronym-underline: 1px dotted #ddd !default;
 
   // Links
   a {
-    color: $anchor-font-color;
+    color: $anchor-color;
     text-decoration: $anchor-text-decoration;
     line-height: inherit;
 
     &:hover,
     &:focus {
-      color: $anchor-font-color-hover;
+      color: $anchor-color-hover;
       @if $anchor-text-decoration-hover != $anchor-text-decoration {
         text-decoration: $anchor-text-decoration-hover;
       }
@@ -145,7 +139,7 @@ $acronym-underline: 1px dotted #ddd !default;
     font-family: $paragraph-font-family;
     font-weight: $paragraph-font-weight;
     font-size: $paragraph-font-size;
-    line-height: $paragraph-line-height;
+    line-height: $paragraph-lineheight;
     margin-bottom: $paragraph-margin-bottom;
     text-rendering: $paragraph-text-rendering;
   }
@@ -155,11 +149,11 @@ $acronym-underline: 1px dotted #ddd !default;
     font-family: $header-font-family;
     font-weight: $header-font-weight;
     font-style: $header-font-style;
-    color: $header-font-color;
+    color: $header-color;
     text-rendering: $header-text-rendering;
-    margin-top: $header-top-margin;
-    margin-bottom: $header-bottom-margin;
-    line-height: $header-line-height;
+    margin-top: 0;
+    margin-bottom: $header-margin-bottom;
+    line-height: $header-lineheight;
 
     small {
       font-size: $small-font-size;
@@ -178,7 +172,7 @@ $acronym-underline: 1px dotted #ddd !default;
 
   // Heading sizes on larger screens
   @include breakpoint(medium) {
-    h1,h2,h3,h4,h5,h6 { line-height: $header-line-height; }
+    h1,h2,h3,h4,h5,h6 { line-height: $header-lineheight; }
     h1 { font-size: $h1-font-size; }
     h2 { font-size: $h2-font-size; }
     h3 { font-size: $h3-font-size; }
@@ -189,11 +183,11 @@ $acronym-underline: 1px dotted #ddd !default;
 
   // Horizontal rule
   hr {
-    border: $hr-border-style $hr-border-color;
-    border-width: $hr-border-width 0 0;
-    clear: both;
-    margin: $hr-margin 0 ($hr-margin - rem-calc($hr-border-width));
     height: 0;
+    border-top: 0;
+    border-bottom: $hr-border;
+    margin: $hr-margin;
+    clear: both;
   }
 
   // Emphasized text
@@ -221,10 +215,8 @@ $acronym-underline: 1px dotted #ddd !default;
     font-family: $code-font-family;
     font-weight: $code-font-weight;
     color: $code-color;
-    background-color: $code-background-color;
-    border-width: $code-border-size;
-    border-style: $code-border-style;
-    border-color: $code-border-color;
+    background-color: $code-background;
+    border: $code-border;
     padding: $code-padding;
   }
 
@@ -303,8 +295,8 @@ $acronym-underline: 1px dotted #ddd !default;
     border-#{$default-float}: $blockquote-border;
 
     &, p {
-      line-height: $paragraph-line-height;
-      color: $blockquote-font-color;
+      line-height: $paragraph-lineheight;
+      color: $blockquote-color;
     }
   }
 
@@ -312,15 +304,10 @@ $acronym-underline: 1px dotted #ddd !default;
   cite {
     display: block;
     font-size: $cite-font-size;
-    color: $cite-font-color;
+    color: $cite-color;
 
     &:before {
       content: "\2014 \0020";
-    }
-
-    a,
-    a:visited {
-      color: $cite-link-color;
     }
   }
 }
