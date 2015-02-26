@@ -68,23 +68,18 @@
       var medMatch   = matchMedia(Foundation.media_queries.medium).matches;
       var lrgMatch   = matchMedia(Foundation.media_queries.large).matches;
 
-       if (sticky && settings.sticky_on === 'all') {
-          return true;
-       }
-       if (sticky && this.small() && settings.sticky_on.indexOf('small') !== -1) {
-           if (smallMatch && !medMatch && !lrgMatch) { return true; }
-       }
-       if (sticky && this.medium() && settings.sticky_on.indexOf('medium') !== -1) {
-           if (smallMatch && medMatch && !lrgMatch) { return true; }
-       }
-       if (sticky && this.large() && settings.sticky_on.indexOf('large') !== -1) {
-           if (smallMatch && medMatch && lrgMatch) { return true; }
-       }
-
-       // fix for iOS browsers
-       if (sticky && navigator.userAgent.match(/(iPad|iPhone|iPod)/g)) {
+      if (sticky && settings.sticky_on === 'all') {
         return true;
-       }
+      }
+      if (sticky && this.small() && settings.sticky_on.indexOf('small') !== -1) {
+        if (smallMatch && !medMatch && !lrgMatch) { return true; }
+      }
+      if (sticky && this.medium() && settings.sticky_on.indexOf('medium') !== -1) {
+        if (smallMatch && medMatch && !lrgMatch) { return true; }
+      }
+      if (sticky && this.large() && settings.sticky_on.indexOf('large') !== -1) {
+        if (smallMatch && medMatch && lrgMatch) { return true; }
+      }
 
        return false;
     },

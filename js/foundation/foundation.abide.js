@@ -115,6 +115,13 @@
             else if (settings.validate_on === 'change') {
               self.validate([this], e);
             }
+          })
+          .on('focus', function (e) {
+            if (navigator.userAgent.match(/iPad|iPhone|Android|BlackBerry|Windows Phone|webOS/i)) {
+              $('html, body').animate({
+                  scrollTop: $(e.target).offset().top
+              }, 100);
+            } 
           });
     },
 
