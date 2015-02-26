@@ -293,8 +293,10 @@
 
       if (valid) {
         el.removeAttr(this.invalid_attr).parent().removeClass(this.settings.error_class);
+        $(el).triggerHandler('valid');
       } else {
         el.attr(this.invalid_attr, '').parent().addClass(this.settings.error_class);
+        $(el).triggerHandler('invalid');
       }
 
       return valid;
@@ -327,8 +329,10 @@
       for (var i = 0; i < count; i++) {
         if (valid) {
           this.S(group[i]).removeAttr(this.invalid_attr).parent().removeClass(this.settings.error_class);
+          $(group[i]).triggerHandler('valid');
         } else {
           this.S(group[i]).attr(this.invalid_attr, '').parent().addClass(this.settings.error_class);
+          $(group[i]).triggerHandler('invalid');
         }
       }
 
@@ -346,14 +350,12 @@
         if (label.length > 0 && settings.error_labels) {
           label.removeClass(this.settings.error_class);
         }
-        $(el).trigger('valid');
       } else {
         this.S(el).attr(this.invalid_attr, '');
         parent.addClass(this.settings.error_class);
         if (label.length > 0 && settings.error_labels) {
           label.addClass(this.settings.error_class);
         }
-        $(el).trigger('invalid');
       }
 
       return valid;
