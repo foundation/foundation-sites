@@ -286,6 +286,97 @@ $menu-slide: "transform 500ms ease" !default;
 }
 
 //
+// Off-Canvas Submenu Classes
+//
+@mixin off-canvas-submenu($position) {
+  @include kill-flicker;
+  * { @include kill-flicker; }
+  width: $off-canvas-width;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: $off-canvas-bg;
+  z-index: 1002;
+  box-sizing: content-box;
+  -webkit-overflow-scrolling: touch;
+  @if $position == left {
+    @include translate3d(-100%,0,0);
+    left: 0;
+  }
+  @if $position == right {
+    @include translate3d(100%,0,0);
+    right: 0;
+  }
+  -webkit-transition: -webkit-#{$menu-slide};
+  -moz-transition: -moz-#{$menu-slide};
+  -ms-transition: -ms-#{$menu-slide};
+  -o-transition: -o-#{$menu-slide};
+  transition: #{$menu-slide};
+
+  //back button style like label
+  .back > a {
+    padding: $off-canvas-label-padding;
+    color: $off-canvas-label-color;
+    text-transform: $off-canvas-label-text-transform;
+    font-weight: $off-canvas-label-font-weight;
+    background: $off-canvas-back-bg;
+    border-top: $off-canvas-back-border-top;
+    border-bottom: $off-canvas-back-border-bottom;
+    &:hover {
+    	background: $off-canvas-back-hover-bg;
+    	border-top: $off-canvas-back-hover-border-top;
+    	border-bottom: $off-canvas-back-hover-border-bottom;
+    }
+    margin: $off-canvas-label-margin;
+    @if $position == right {
+      @if $text-direction == rtl {
+        &:before {
+          @include icon-double-arrows($position: left);
+        }
+      } @else {
+        &:after {
+          @include icon-double-arrows($position: right);
+        }
+      }
+    }
+    @if $position == left {
+      @if $text-direction == rtl {
+        &:after {
+          @include icon-double-arrows($position: right);
+        }
+      } @else {
+        &:before {
+          @include icon-double-arrows($position: left);
+        }
+      }
+    }
+  }
+}
+//Left double angle quote or Right double angle quote chars
+@mixin icon-double-arrows ($position) {
+  @if $position == left {
+    content: "\AB";
+    @if $text-direction == rtl {
+      margin-left: .5rem;
+    } @else {
+      margin-right: .5rem;
+    }
+  }
+  @if $position == right {
+    content: "\BB";
+    @if $text-direction == rtl {
+      margin-right: .5rem;
+    } @else {
+      margin-left: .5rem;
+    }
+  }
+  display: inline;
+}
+
+//
 // DEFAULT CLASSES
 //
 @include exports("offcanvas") {
@@ -391,129 +482,36 @@ $menu-slide: "transform 500ms ease" !default;
       .move-left > .inner-wrap { right: $off-canvas-width; }
       .move-right > .inner-wrap { left: $off-canvas-width; }
     }
-
-  }
-}
-
-//
-// Off-Canvas Submenu Classes
-//
-@mixin off-canvas-submenu($position) {
-  @include kill-flicker;
-  * { @include kill-flicker; }
-  width: $off-canvas-width;
-  top: 0;
-  bottom: 0;
-  position: absolute;
-  margin: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-  background: $off-canvas-bg;
-  z-index: 1002;
-  box-sizing: content-box;
-  -webkit-overflow-scrolling: touch;
-  @if $position == left {
-    @include translate3d(-100%,0,0);
-    left: 0;
-  }
-  @if $position == right {
-    @include translate3d(100%,0,0);
-    right: 0;
-  }
-  -webkit-transition: -webkit-#{$menu-slide};
-  -moz-transition: -moz-#{$menu-slide};
-  -ms-transition: -ms-#{$menu-slide};
-  -o-transition: -o-#{$menu-slide};
-  transition: #{$menu-slide};
-
-  //back button style like label
-  .back > a {
-    padding: $off-canvas-label-padding;
-    color: $off-canvas-label-color;
-    text-transform: $off-canvas-label-text-transform;
-    font-weight: $off-canvas-label-font-weight;
-    background: $off-canvas-back-bg;
-    border-top: $off-canvas-back-border-top;
-    border-bottom: $off-canvas-back-border-bottom;
-    &:hover {
-    	background: $off-canvas-back-hover-bg;
-    	border-top: $off-canvas-back-hover-border-top;
-    	border-bottom: $off-canvas-back-hover-border-bottom;
-    }
-    margin: $off-canvas-label-margin;
-    @if $position == right {
-      @if $text-direction == rtl {
-        &:before {
-          @include icon-double-arrows($position: left);
-        }
-      } @else {
-        &:after {
-          @include icon-double-arrows($position: right);
-        }
+    
+    .left-submenu {
+      @include off-canvas-submenu($position: left);
+      &.move-right, &.offcanvas-overlap-right, &.offcanvas-overlap {
+        @include translate3d(0%,0,0);
       }
     }
-    @if $position == left {
-      @if $text-direction == rtl {
-        &:after {
-          @include icon-double-arrows($position: right);
-        }
-      } @else {
-        &:before {
-          @include icon-double-arrows($position: left);
-        }
+
+    .right-submenu {
+      @include off-canvas-submenu($position: right);
+      &.move-left, &.offcanvas-overlap-left, &.offcanvas-overlap {
+        @include translate3d(0%,0,0);
       }
     }
-  }
-}
-//Left double angle quote or Right double angle quote chars
-@mixin icon-double-arrows ($position) {
-  @if $position == left {
-    content: "\AB";
+
     @if $text-direction == rtl {
-      margin-left: .5rem;
+      .left-off-canvas-menu ul.off-canvas-list li.has-submenu > a:before {
+        @include icon-double-arrows($position: left);
+      }
+      .right-off-canvas-menu ul.off-canvas-list li.has-submenu > a:after {
+        @include icon-double-arrows($position: right);
+      }
     } @else {
-      margin-right: .5rem;
+      .left-off-canvas-menu ul.off-canvas-list li.has-submenu > a:after {
+        @include icon-double-arrows($position: right);
+      }
+      .right-off-canvas-menu ul.off-canvas-list li.has-submenu > a:before {
+        @include icon-double-arrows($position: left);
+      }
     }
-  }
-  @if $position == right {
-    content: "\BB";
-    @if $text-direction == rtl {
-      margin-right: .5rem;
-    } @else {
-      margin-left: .5rem;
-    }
-  }
-  display: inline;
-}
 
-@if $include-html-off-canvas-classes {
-  .left-submenu {
-    @include off-canvas-submenu($position: left);
-    &.move-right, &.offcanvas-overlap-right, &.offcanvas-overlap {
-      @include translate3d(0%,0,0);
-    }
-  }
-
-  .right-submenu {
-    @include off-canvas-submenu($position: right);
-    &.move-left, &.offcanvas-overlap-left, &.offcanvas-overlap {
-      @include translate3d(0%,0,0);
-    }
-  }
-
-  @if $text-direction == rtl {
-    .left-off-canvas-menu ul.off-canvas-list li.has-submenu > a:before {
-      @include icon-double-arrows($position: left);
-    }
-    .right-off-canvas-menu ul.off-canvas-list li.has-submenu > a:after {
-      @include icon-double-arrows($position: right);
-    }
-  } @else {
-    .left-off-canvas-menu ul.off-canvas-list li.has-submenu > a:after {
-       @include icon-double-arrows($position: right);
-    }
-    .right-off-canvas-menu ul.off-canvas-list li.has-submenu > a:before {
-       @include icon-double-arrows($position: left);
-    }
   }
 }
