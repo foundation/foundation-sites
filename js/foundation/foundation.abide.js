@@ -234,13 +234,14 @@
               all_valid = valid && last_valid;
               last_valid = valid;
           }
-
           if (valid) {
               this.S(el).removeAttr(this.invalid_attr);
               parent.removeClass('error');
+              $(el).triggerHandler('valid');
           } else {
               this.S(el).attr(this.invalid_attr, '');
               parent.addClass('error');
+              $(el).triggerHandler('invalid');
           }
         } else {
 
@@ -345,12 +346,14 @@
         if (label.length > 0 && settings.error_labels) {
           label.removeClass(this.settings.error_class);
         }
+        $(el).trigger('valid');
       } else {
         this.S(el).attr(this.invalid_attr, '');
         parent.addClass(this.settings.error_class);
         if (label.length > 0 && settings.error_labels) {
           label.addClass(this.settings.error_class);
         }
+        $(el).trigger('invalid');
       }
 
       return valid;
