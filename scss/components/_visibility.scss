@@ -35,6 +35,7 @@
 }
 
 @mixin foundation-visibility-classes {
+  // Basic hiding classes
   .hide {
     display: none !important;
   }
@@ -42,6 +43,7 @@
     visibility: hidden !important;
   }
 
+  // Responsive visibility classes
   @each $size in $breakpoint-classes {
     @if $size != small {
       .hide-for-#{$size} {
@@ -62,6 +64,24 @@
     }
   }
 
+  // Screen reader visibility classes
+  // Need a "hide-for-sr" class? Add aria-hidden="true" to the element
+  .show-for-sr {
+    @include element-invisible;
+  }
+  
+  // Only display the element when its focused
+  .show-on-focus {
+    @extend .show-for-sr;
+    
+    &:active,
+    &:focus {
+      @include element-invisible-off;
+    }
+  }
+  
+
+  // Orientation visibility classes
   @each $orientation in (portrait, landscape) {
     @include breakpoint($orientation) {
       .hide-for-#{$orientation} {

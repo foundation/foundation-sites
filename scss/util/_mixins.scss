@@ -108,14 +108,13 @@ Mixins be swell.
 }
 
 /// Makes an element visually hidden, but still accessible to keyboards and assistive devices.
-///
 /// @link http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
 @mixin element-invisible {
   position: absolute !important;
-  height: 1px;
   width: 1px;
+  height: 1px;
   overflow: hidden;
-  clip: rect(1px, 1px, 1px, 1px);
+  clip: rect(0, 0, 0, 0);
 }
 
 /// Reverses the CSS output created by the `element-invisible()` mixin.
