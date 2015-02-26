@@ -2,6 +2,23 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
+// Base Typography
+// - - - - - - - - - - - - - - -
+// These are styles applied to basic HTML tags. Here we style:
+//   - Paragraphs <p>
+//   - Headings <h1>—<h6>
+//   - Small text <small>
+//   - Anchors <a>
+//   - Dividers <hr>
+//   - Bold/italics <b> <strong> <i> <em>
+//   - Code blocks <code>
+//   - Lists <ul> <ol> <dl>
+//   - Keystrokes <kbd>
+//   - Abbreviations <abbr>
+//   - Acronyms <acronym>
+//   - Blockquotes <blockquote>
+//   - Citations <cite>
+
 // We use these to control header font styles
 $header-font-family: $body-font-family !default;
 $header-font-weight: $font-weight-normal !default;
