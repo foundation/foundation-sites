@@ -18,11 +18,21 @@ $foundation-version: '6.0.0';
 // Components
 @import 'type/type';
 @import 'grid/grid';
+@import 'components/visibility';
 @import 'components/close-button';
 @import 'components/media-object';
 
 @include foundation-global-styles;
 @include foundation-grid-classes;
 @include foundation-typography;
+@include foundation-visibility-classes;
 @include foundation-close-button;
 @include foundation-media-object;
+
+// These styles are applied to <meta> tags, which are read by the Foundation JavaScript
+.foundation-mq {
+  font-family: "#{map-serialize($breakpoints)}";
+}
+.foundation-version {
+  font-family: "#{$foundation-version}";
+}

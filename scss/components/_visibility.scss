@@ -1,0 +1,76 @@
+/// Hide an element by default, only displaying it above a certain screen size. Normally `display: block` is used to un-hide the element, but you can change this if you're working with an element that's inline, table-based, etc.
+/// @param {Keyword} $size - Breakpoint name or screen width to use.
+/// @param {Keyword} $prop [block] - The `display` property to use to un-hide the element.
+@mixin show-for($size, $prop: block) {
+  display: none !important;
+  @include breakpoint($size) {
+    display: $prop !important;
+  }
+}
+
+/// Hide an element by default, only displaying it within a certain breakpoint. Normally `display: block` is used to un-hide the element, but you can change this if you're working with an element that's inline, table-based, etc.
+/// @param {Keyword} $size - Breakpoint name to use.
+/// @param {Keyword} $prop [block] - The `display` property to use to un-hide the element.
+@mixin show-for-only($size, $prop: block) {
+  display: none !important;
+  @include breakpoint($size only) {
+    display: $prop !important;
+  }
+}
+
+/// Show an element by default, and hide it above a certain screen size.
+/// @param {Keyword} $size - Breakpoint name or screen width to use.
+@mixin hide-for($size) {
+  @include breakpoint($size) {
+    display: none !important;
+  }
+}
+
+/// Show an element by default, and hide it above a certain screen size.
+/// @param {Keyword} $size - Breakpoint name or screen width to use.
+@mixin hide-for-only($size) {
+  @include breakpoint($size only) {
+    display: none !important;
+  }
+}
+
+@mixin foundation-visibility-classes {
+  .hide {
+    display: none !important;
+  }
+  .invisible {
+    visibility: hidden !important;
+  }
+
+  @each $size in $breakpoint-classes {
+    @if $size != small {
+      .hide-for-#{$size} {
+        @include hide-for($size);
+      }
+
+      .show-for-#{$size} {
+        @include show-for($size);
+      }
+    }
+
+    .hide-for-#{$size}-only {
+      @include hide-for-only($size);
+    }
+
+    .show-for-#{$size}-only {
+      @include show-for-only($size);
+    }
+  }
+
+  @each $orientation in (portrait, landscape) {
+    @include breakpoint($orientation) {
+      .hide-for-#{$orientation} {
+        display: none !important;
+      }
+
+      .show-for-#{$orientation} {
+        display: block !important;
+      }
+    }
+  }
+}
