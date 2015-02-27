@@ -66,11 +66,15 @@ $menubar-expand-max: 6 !default;
   }
 
   // Even-width
-  @for $i from 1 through $menubar-expand-max {
-    &.expand-#{$i} {
-      > li {
-        width: percentage(1 / $i);
-      }
+  &.expand {
+    width: 100%;
+    display: table;
+    table-layout: fixed;
+
+    > li {
+      float: none;
+      width: 100%;
+      display: table-cell;
     }
   }
 
