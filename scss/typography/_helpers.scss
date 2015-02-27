@@ -31,11 +31,12 @@ $subheader-margin-bottom: .5rem !default;
 $stat-font-size: 2.5rem !default;
 
 @mixin foundation-typography-helpers {
-  .lead {
-    font-size: $lead-font-size;
-    line-height: $lead-lineheight;
-  }
-  
+  // Use to create a subheading under a main header
+  // Make sure you pair the two elements in a <header> element, like this:
+  // <header>
+  //   <h1>Heading</h1>
+  //   <h2>Subheading</h2>
+  // </header>
   .subheader {
     margin-top: $subheader-margin-top;
     margin-bottom: $subheader-margin-bottom;
@@ -44,6 +45,13 @@ $stat-font-size: 2.5rem !default;
     color: $subheader-color;
   }
 
+  // Use to style an introductory lead, deck, blurb, etc.
+  .lead {
+    font-size: $lead-font-size;
+    line-height: $lead-lineheight;
+  }
+
+  // Use to style a large number to display a statistic
   .stat {
     font-size: $stat-font-size;
     line-height: 1;
@@ -53,6 +61,7 @@ $stat-font-size: 2.5rem !default;
     }
   }
 
+  // Use to change the bullet style of an unordered list
   ul {
     &.square,
     &.circle,
@@ -79,5 +88,12 @@ $stat-font-size: 2.5rem !default;
       list-style: none;
       margin-#{$default-float}: $list-side-margin-no-bullet;
     }
+  }
+
+  // Font smoothing
+  // Antialiased font smoothing works best for light text on a dark background. Apply to single elements instead of globally to body. Note this only applies to Webkit-based desktop browsers and Firefox 25+ for Mac.
+  .antialiased {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }

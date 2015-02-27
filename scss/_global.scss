@@ -138,21 +138,4 @@ $cursor-text-value: text !default;
   .float-left { float: left !important; }
   .float-right { float: right !important; }
   .clearfix { @include clearfix; }
-
-  // Hide visually and from screen readers
-  .hide {
-    display: none;
-  }
-
-  // Hide visually and from screen readers, but maintain layout
-  .invisible {
-    visibility: hidden;
-  }
-
-  // Font smoothing
-  // Antialiased font smoothing works best for light text on a dark background. Apply to single elements instead of globally to body. Note this only applies to webkit-based desktop browsers and Firefox 25 (and later) on the Mac.
-  .antialiased {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
 }
