@@ -198,13 +198,12 @@ $menu-slide: "transform 500ms ease" !default;
 @mixin tab-bar-section {
   padding: $tabbar-middle-padding;
   position: absolute;
-  text-align: center;
   height: $tabbar-height;
+  text-align: center;
   top: 0;
-  @media #{$medium-up} {
     &.left { text-align: left; }
     &.right { text-align: right; }
-  }
+
 
   // still need to make these non-presentational
   &.left {
