@@ -1,6 +1,6 @@
 {
   "name": "zurb-foundation",
-  "version": "5.5.1",
+  "version": "6.0.0-alpha",
   "main": "js/foundation/foundation.js",
   "devDependencies": {
     "gulp": "^3.8.10",
@@ -24,5 +24,6 @@
       "type": "MIT",
       "url": "https://github.com/zurb/foundation/blob/master/LICENSE"
     }
-  ]
+  ],
+  "private": true
 }
