@@ -35,7 +35,7 @@ $f-dropdown-border-width: 1px !default;
 $f-dropdown-border-color: scale-color($white, $lightness: -20%) !default;
 
 // We use these to style the triangle pip.
-$f-dropdown-triangle-size: 6px !default;
+$f-dropdown-triangle-size: 0px !default;
 $f-dropdown-triangle-color: $white !default;
 $f-dropdown-triangle-side-offset: 10px !default;
 
@@ -101,28 +101,31 @@ $f-dropdown-radius: $global-radius !default;
   @if $triangle == bottom {
     margin-top: $f-dropdown-margin-top;
 
-    &:before {
-      @include css-triangle($f-dropdown-triangle-size, $f-dropdown-triangle-color, bottom);
-      position: absolute;
-      top: -($f-dropdown-triangle-size * 2);
-      #{$default-float}: $f-dropdown-triangle-side-offset;
-      z-index: 89;
-    }
-    &:after {
-      @include css-triangle($f-dropdown-triangle-size + 1, $f-dropdown-border-color, bottom);
-      position: absolute;
-      top: -(($f-dropdown-triangle-size + 1) * 2);
-      #{$default-float}: $f-dropdown-triangle-side-offset - 1;
-      z-index: 88;
-    }
+    @if $f-dropdown-triangle-size != 0px {
+    
+      &:before {
+        @include css-triangle($f-dropdown-triangle-size, $f-dropdown-triangle-color, bottom);
+        position: absolute;
+        top: -($f-dropdown-triangle-size * 2);
+        #{$default-float}: $f-dropdown-triangle-side-offset;
+        z-index: 89;
+      }
+      &:after {
+        @include css-triangle($f-dropdown-triangle-size + 1, $f-dropdown-border-color, bottom);
+        position: absolute;
+        top: -(($f-dropdown-triangle-size + 1) * 2);
+        #{$default-float}: $f-dropdown-triangle-side-offset - 1;
+        z-index: 88;
+      }
 
-    &.right:before {
-      #{$default-float}: auto;
-      #{$opposite-direction}: $f-dropdown-triangle-side-offset;
-    }
-    &.right:after {
-      #{$default-float}: auto;
-      #{$opposite-direction}: $f-dropdown-triangle-side-offset - 1;
+      &.right:before {
+        #{$default-float}: auto;
+        #{$opposite-direction}: $f-dropdown-triangle-side-offset;
+      }
+      &.right:after {
+        #{$default-float}: auto;
+        #{$opposite-direction}: $f-dropdown-triangle-side-offset - 1;
+      }
     }
   }
 
