@@ -1,0 +1,64 @@
+.menu-bar {
+  @include clearfix;
+  margin: 0;
+  list-style-type: none;
+
+  // Default
+  > li {
+    float: left;
+
+    > a {
+      display: block;
+      padding: 0.75rem 1rem;
+      line-height: 1;
+
+      &:hover,
+      &:focus {
+        background: #eee;
+      }
+    }
+  }
+
+  // Plain
+  &.plain {
+    > li > a {
+      padding: 0;
+      margin-right: 1rem;
+
+      &:hover {
+        background: transparent;
+      }
+    }
+  }
+
+  // Even-width
+  @for $i from 1 through 6 {
+    &.expand-#{$i} {
+      > li {
+        width: percentage(1 / $i);
+      }
+    }
+  }
+
+  // Vertical
+  &.vertical {
+    > li {
+      width: 100%;
+      float: none;
+    }
+  }
+
+  // Primary color
+  &.primary {
+    background: $primary-color;
+
+    > li > a {
+      color: foreground($primary-color);
+
+      &:hover,
+      &:focus {
+        background: smart-scale($primary-color);
+      }
+    }
+  }
+}

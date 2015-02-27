@@ -21,7 +21,8 @@ $foundation-version: '6.0.0-alpha';
   'grid/grid',
   'components/visibility',
   'components/close-button',
-  'components/media-object';
+  'components/media-object',
+  'components/menu-bar';
 
 // Exports
 @include foundation-global-styles;
