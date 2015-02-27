@@ -95,7 +95,8 @@ $last-child-float: $opposite-direction !default;
   $pull:false,
   $collapse:false,
   $float:true,
-  $position:false) {
+  $position:false,
+  $square:false) {
 
   // If positioned for default .column, include relative position
   // push and pull require position set
@@ -107,6 +108,11 @@ $last-child-float: $opposite-direction !default;
   @if $collapse {
     padding-left: 0;
     padding-right: 0;
+  }
+
+  // If square, add padding-bottom
+  @if $square {
+    padding-bottom: grid-calc($columns, $total-columns);
   }
 
   // Gutter padding whenever a column isn't set to collapse
@@ -163,6 +169,12 @@ $last-child-float: $opposite-direction !default;
   .column,
   .columns { @include grid-column($columns:false, $position:true); }
 
+  @for $i from 1 through $total-columns {
+    .#{$size}-square-#{$i} { @include grid-column($columns:$i,$collapse:null,$float:false,$square:true); }
+  }
+  .inner-square {
+    position: absolute;
+  }
 
   @for $i from 1 through $total-columns {
     .#{$size}-#{$i} { @include grid-column($columns:$i, $collapse:null, $float:false); }
