@@ -35,7 +35,6 @@
   $behavior: null,
   $width: $grid-row-width,
   $columns: null,
-  $root: false,
   $cf: true
 ) {
   $behavior: -zf-get-options($behavior, nest collapse);

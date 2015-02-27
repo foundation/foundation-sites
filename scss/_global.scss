@@ -93,7 +93,6 @@ $cursor-text-value: text !default;
     font-family: $body-font-family;
     font-weight: $body-font-weight;
     font-style: $body-font-style;
-    // Set to $base-line-height to take on browser default of 150%
     line-height: $base-line-height;
     position: relative;
     cursor: $cursor-auto-value;

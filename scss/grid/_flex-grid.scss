@@ -1,0 +1,123 @@
+/// Creates a container for a flex grid row.
+///
+/// @param {Keyword|List} $behavior
+///   Modifications to the default grid styles. `nest` indicates the row will be placed inside another row. `collapse` indicates that the columns inside this row will not have padding. `nest collapse` combines both behaviors.
+/// @param {Number} $width - Maximum width of the row.
+/// @param {Number} $width - Number of columns to use for this row. If set to `null` (the default), the global column count will be used.
+/// @param {Boolean} $base - Set to `false` to prevent basic styles from being output. Set to `false` if you're calling this mixin on the same element twice, to prevent duplicate CSS output.
+@mixin flex-grid-row(
+  $behavior: null,
+  $width: $grid-row-width,
+  $columns: null,
+  $base: true
+) {
+  $behavior: -zf-get-options($behavior, nest collapse);
+  $margin: auto;
+
+  @if map-get($behavior, nest) {
+    $margin: -$grid-column-gutter;
+  }
+  @else {
+    max-width: $width;
+  }
+
+  @if $base {
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+  margin: {
+    left: $margin;
+    right: $margin;
+  };
+
+  @if $columns != null {
+    @include grid-context($columns, $root) {
+      @content;
+    }
+  }
+}
+
+/// Calculates the `flex` property for a flex grid column. It accepts all of the same values as the basic `grid-column()` function, along with two extras:
+///   - `null` (the default) will make the column expand to fill space.
+///   - `shrink` will make the column contract, so it only takes up the horizontal space it needs.
+/// @param {String|Number|null} - Width of the column.
+@function flex-grid-column($columns: null) {
+  $flex: 1 1 auto;
+  @if $columns == shrink {
+    $flex: 0 0 auto;
+  } @else if $columns != null {
+    $flex: 0 0 grid-column($columns);
+  }
+  @return $flex;
+}
+
+/// Creates a column for a flex grid. By default, the column will stretch to the full width of its container, but this can be overridden with sizing classes, or by using the `unstack` class on the parent flex row.
+/// @param {mixed} $columns - Width of the column. Refer to the `flex-grid-column()` function to see possible values.
+@mixin flex-grid-column(
+  $columns: null,
+  $gutter: $grid-column-gutter
+) {
+  flex: flex-grid-column($columns);
+  padding: {
+    left: $gutter;
+    right: $gutter;
+  }
+}
+
+@mixin foundation-flex-grid-classes {
+  // Row
+  .flex-row {
+    @include flex-grid-row;
+
+    // Nesting behavior
+    .row &,
+    .flex-row &,
+    .column-row & {
+      @include flex-grid-row(nest, $base: false);
+    }
+  }
+
+  // Column
+  .flex-column,
+  .flex-columns {
+    @include flex-grid-column;
+  }
+
+  // Sizing (percentage)
+  @each $size in $breakpoint-classes {
+    @include breakpoint($size) {
+      @for $i from 1 through $grid-column-count {
+        .#{$size}-#{$i} {
+          flex-basis: flex-grid-column($i);
+        }
+      }
+    }
+  }
+
+  // Sizing (shrink)
+  .shrink {
+    flex: flex-grid-column(shrink);
+  }
+
+  // Stacking behavior
+  .unstack { flex-wrap: nowrap; }
+  @each $size in $breakpoint-classes {
+    @include breakpoint($size) {
+      @if $size != 'small' {
+        .#{$size}-unstack { flex-wrap: nowrap; }
+      }
+    }
+  }
+
+  // Source ordering
+  @each $size in $breakpoint-classes {
+    @include breakpoint($size) {
+      @for $i from 1 through 6 {
+        .#{$size}-#{$i} {
+          order: $i;
+        }
+      }
+    }
+  }
+}
