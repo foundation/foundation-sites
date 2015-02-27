@@ -1,6 +1,32 @@
+// Default margin of a menu bar.
+// @type {Number|List}
+$menubar-margin: 0 !default;
+
+// Default background color of a menu bar.
+// @type Color
+$menubar-background: transparent;
+
+// Default text color for items in a menu bar.
+// @type Color
+$menubar-item-color: foreground($menubar-background, $primary-color);
+
+// Default background color on hover for items in a menu bar.
+$menubar-item-background-hover: #eee !default;
+
+// Default padding for items in a menu bar.
+// @type {Number|List}
+$menubar-item-padding: 0.7rem 1rem !default;
+
+// Default spacing between an icon and text in a menu bar item.
+$menubar-icon-spacing: 0.25rem !default;
+
+// Maximum number of `expand-n` classes to include in the CSS.
+// @type Number
+$menubar-expand-max: 6 !default;
+
 .menu-bar {
   @include clearfix;
-  margin: 0;
+  margin: $menubar-margin;
   list-style-type: none;
 
   // Default
@@ -9,12 +35,13 @@
 
     > a {
       display: block;
-      padding: 0.75rem 1rem;
+      padding: $menubar-item-padding;
       line-height: 1;
+      color: $menubar-item-color;
 
       &:hover,
       &:focus {
-        background: #eee;
+        background: $menubar-item-background-hover;
       }
     }
   }
@@ -23,7 +50,7 @@
   &.plain {
     > li > a {
       padding: 0;
-      margin-right: 1rem;
+      margin-right: get-side($menubar-item-padding, right);
 
       &:hover {
         background: transparent;
@@ -31,8 +58,15 @@
     }
   }
 
+  // Align right
+  &.align-right {
+    > li {
+      float: right;
+    }
+  }
+
   // Even-width
-  @for $i from 1 through 6 {
+  @for $i from 1 through $menubar-expand-max {
     &.expand-#{$i} {
       > li {
         width: percentage(1 / $i);
@@ -59,6 +93,28 @@
       &:focus {
         background: smart-scale($primary-color);
       }
+    }
+  }
+
+  // Icons
+  > li > a {
+    > img {
+      vertical-align: middle;
+      display: inline-block;
+      margin-right: $menubar-icon-spacing;
+    }
+    > span {
+      vertical-align: middle;
+    }
+  }
+
+  // Vertical icons
+  &.icon-top > li > a {
+    text-align: center;
+
+    > img {
+      display: block;
+      margin: 0 auto $menubar-icon-spacing auto;
     }
   }
 }
