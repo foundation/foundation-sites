@@ -123,10 +123,9 @@ $crumb-slash: "/" !default;
         @include crumbs;
       }
     }
+    /* Accessibility - hides the forward slash */
+    [aria-label="breadcrumbs"] [aria-hidden="true"]:after {
+      content: "/";
+    }
   }
 }
-
-/* Accessibility - hides the forward slash */
-[aria-label="breadcrumbs"] [aria-hidden="true"]:after {
-  content: "/";
-  }
