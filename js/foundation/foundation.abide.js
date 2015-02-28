@@ -9,6 +9,7 @@
     settings : {
       live_validate : true,
       validate_on_blur : true,
+      // validate_on: 'tab', // tab (when user tabs between fields), change (input changes), manual (call custom events) 
       focus_on_invalid : true,
       error_labels : true, // labels with a for="inputId" will recieve an `error` class
       error_class : 'error',
@@ -66,39 +67,71 @@
           form = self.S(scope).attr('novalidate', 'novalidate'),
           settings = form.data(this.attr_name(true) + '-init') || {};
 
-
       this.invalid_attr = this.add_namespace('data-invalid');
 
       form
         .off('.abide')
-        .on('submit.fndtn.abide validate.fndtn.abide', function (e) {
+        .on('submit.fndtn.abide', function (e) {
           var is_ajax = /ajax/i.test(self.S(this).attr(self.attr_name()));
           return self.validate(self.S(this).find('input, textarea, select').get(), e, is_ajax);
         })
-        .on('reset', function () {
-          return self.reset($(this));
+        .on('validate.fndtn.abide', function (e) {
+          if (settings.validate_on === 'manual') {
+            self.validate([e.target], e);
+          }
+        })
+        .on('reset', function (e) {
+          return self.reset($(this), e);          
         })
         .find('input, textarea, select')
           .off('.abide')
           .on('blur.fndtn.abide change.fndtn.abide', function (e) {
-            if (settings.validate_on_blur === true) {
-              self.validate([this], e);
-            }
-          })
-          .on('keydown.fndtn.abide', function (e) {
-            if (settings.live_validate === true && e.which != 9) {
+            // old settings fallback
+            // will be deprecated with F6 release
+            if (settings.validate_on_blur && settings.validate_on_blur === true) {
               clearTimeout(self.timer);
               self.timer = setTimeout(function () {
                 self.validate([this], e);
               }.bind(this), settings.timeout);
             }
+            // new settings combining validate options into one setting
+            if (settings.validate_on === 'change') {
+              self.validate([this], e);
+            }
+          })
+          .on('keydown.fndtn.abide', function (e) {
+            // old settings fallback
+            // will be deprecated with F6 release
+            if (settings.live_validate && settings.live_validate === true && e.which != 9) {
+              clearTimeout(self.timer);
+              self.timer = setTimeout(function () {
+                self.validate([this], e);
+              }.bind(this), settings.timeout);
+            }
+            // new settings combining validate options into one setting
+            if (settings.validate_on === 'tab' && e.which === 9) {
+              self.validate([this], e);
+            }
+            else if (settings.validate_on === 'change') {
+              self.validate([this], e);
+            }
+          })
+          .on('focus', function (e) {
+            if (navigator.userAgent.match(/iPad|iPhone|Android|BlackBerry|Windows Phone|webOS/i)) {
+              $('html, body').animate({
+                  scrollTop: $(e.target).offset().top
+              }, 100);
+            } 
           });
     },
 
-    reset : function (form) {
-      form.removeAttr(this.invalid_attr);
-      $(this.invalid_attr, form).removeAttr(this.invalid_attr);
-      $('.' + this.settings.error_class, form).not('small').removeClass(this.settings.error_class);
+    reset : function (form, e) {
+      var self = this;
+      form.removeAttr(self.invalid_attr);
+
+      $('[' + self.invalid_attr + ']', form).removeAttr(self.invalid_attr);
+      $('.' + self.settings.error_class, form).not('small').removeClass(self.settings.error_class);
+      $(':input', form).not(':button, :submit, :reset, :hidden').val('').removeAttr(self.invalid_attr);
     },
 
     validate : function (els, e, is_ajax) {
@@ -113,14 +146,14 @@
           if (this.settings.focus_on_invalid) {
             els[i].focus();
           }
-          form.trigger('invalid').trigger('invalid.fndtn.abide');
+          form.trigger('invalid.fndtn.abide');
           this.S(els[i]).closest('form').attr(this.invalid_attr, '');
           return false;
         }
       }
 
       if (submit_event || is_ajax) {
-        form.trigger('valid').trigger('valid.fndtn.abide');
+        form.trigger('valid.fndtn.abide');
       }
 
       form.removeAttr(this.invalid_attr);
@@ -193,15 +226,30 @@
           parent = direct_parent.parent();
         }
 
-        if (validator) {
-          valid = this.settings.validators[validator].apply(this, [el, required, parent]);
-          el_validations.push(valid);
-        }
-
         if (is_radio && required) {
           el_validations.push(this.valid_radio(el, required));
         } else if (is_checkbox && required) {
           el_validations.push(this.valid_checkbox(el, required));
+
+        } else if (validator) {
+          // Validate using each of the specified (space-delimited) validators.
+          var validators = validator.split(' ');
+          var last_valid = true, all_valid = true;
+          for (var iv = 0; iv < validators.length; iv++) {
+              valid = this.settings.validators[validators[iv]].apply(this, [el, required, parent])
+              el_validations.push(valid);
+              all_valid = valid && last_valid;
+              last_valid = valid;
+          }
+          if (valid) {
+              this.S(el).removeAttr(this.invalid_attr);
+              parent.removeClass('error');
+              $(el).triggerHandler('valid');
+          } else {
+              this.S(el).attr(this.invalid_attr, '');
+              parent.addClass('error');
+              $(el).triggerHandler('invalid');
+          }
         } else {
 
           if (el_patterns[i][1].test(value) && valid_length ||
@@ -252,8 +300,10 @@
 
       if (valid) {
         el.removeAttr(this.invalid_attr).parent().removeClass(this.settings.error_class);
+        $(el).triggerHandler('valid');
       } else {
         el.attr(this.invalid_attr, '').parent().addClass(this.settings.error_class);
+        $(el).triggerHandler('invalid');
       }
 
       return valid;
@@ -286,8 +336,10 @@
       for (var i = 0; i < count; i++) {
         if (valid) {
           this.S(group[i]).removeAttr(this.invalid_attr).parent().removeClass(this.settings.error_class);
+          $(group[i]).triggerHandler('valid');
         } else {
           this.S(group[i]).attr(this.invalid_attr, '').parent().addClass(this.settings.error_class);
+          $(group[i]).triggerHandler('invalid');
         }
       }
 
@@ -337,13 +389,12 @@
       return valid;
     },
 
-    reflow : function() {
+    reflow : function(scope, options) {
       var self = this,
-          form = this.S('[' + this.attr_name() + ']').attr('novalidate', 'novalidate');
-
-      this.S(form).each(function (idx, el) {
-        self.events(el);
-      });
+          form = self.S('[' + this.attr_name() + ']').attr('novalidate', 'novalidate');
+          self.S(form).each(function (idx, el) {
+            self.events(el);
+          });
     }
   };
 }(jQuery, window, window.document));

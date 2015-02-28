@@ -47,10 +47,14 @@ $switch-active-color: $primary-color !default;
   padding: 0;
   border: none;
   position: relative;
+<<<<<<< HEAD
   outline: 0;
   margin-bottom: $switch-bottom-margin;
+=======
+>>>>>>> 33575ddf283b97c0d6f96ffa2891d515195ccbbc
   -webkit-user-select: none;
      -moz-user-select: none;
+      -ms-user-select: none;
           user-select: none;
 
   // Default label styles for type and transition
@@ -101,6 +105,7 @@ $switch-active-color: $primary-color !default;
 
     -webkit-transform: translate3d(0,0,0);
     -moz-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
     -o-transform: translate3d(0,0,0);
     transform: translate3d(0,0,0);
   }

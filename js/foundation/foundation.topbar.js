@@ -8,6 +8,7 @@
 
     settings : {
       index : 0,
+      start_offset : 0,
       sticky_class : 'sticky',
       custom_back_text : true,
       back_text : 'Back',
@@ -66,25 +67,20 @@
       var smallMatch = matchMedia(Foundation.media_queries.small).matches;
       var medMatch   = matchMedia(Foundation.media_queries.medium).matches;
       var lrgMatch   = matchMedia(Foundation.media_queries.large).matches;
-      
-       if (sticky && settings.sticky_on === 'all') {
-          return true;
-       }
-       if (sticky && this.small() && settings.sticky_on.indexOf('small') !== -1) {
-           if (smallMatch && !medMatch && !lrgMatch) { return true; }
-       }
-       if (sticky && this.medium() && settings.sticky_on.indexOf('medium') !== -1) {
-           if (smallMatch && medMatch && !lrgMatch) { return true; }
-       }
-       if (sticky && this.large() && settings.sticky_on.indexOf('large') !== -1) {
-           if (smallMatch && medMatch && lrgMatch) { return true; }
-       }
 
-       // fix for iOS browsers
-       if (sticky && navigator.userAgent.match(/(iPad|iPhone|iPod)/g)) {
+      if (sticky && settings.sticky_on === 'all') {
         return true;
-       }
-       
+      }
+      if (sticky && this.small() && settings.sticky_on.indexOf('small') !== -1) {
+        if (smallMatch && !medMatch && !lrgMatch) { return true; }
+      }
+      if (sticky && this.medium() && settings.sticky_on.indexOf('medium') !== -1) {
+        if (smallMatch && medMatch && !lrgMatch) { return true; }
+      }
+      if (sticky && this.large() && settings.sticky_on.indexOf('large') !== -1) {
+        if (smallMatch && medMatch && lrgMatch) { return true; }
+      }
+
        return false;
     },
 
@@ -249,7 +245,7 @@
 
       S(window).off('.topbar').on('resize.fndtn.topbar', self.throttle(function () {
           self.resize.call(self);
-      }, 50)).trigger('resize').trigger('resize.fndtn.topbar').load(function () {
+      }, 50)).trigger('resize.fndtn.topbar').load(function () {
           // Ensure that the offset is calculated after all of the pages resources have loaded
           S(this).trigger('resize.fndtn.topbar');
       });
@@ -434,8 +430,8 @@
           $window = this.S(window),
           self = this;
 
-      if (self.settings.sticky_topbar && self.is_sticky(this.settings.sticky_topbar, this.settings.sticky_topbar.parent(), this.settings)) {
-        var distance = this.settings.sticky_topbar.data('stickyoffset');
+      if (self.settings.sticky_topbar && self.is_sticky(this.settings.sticky_topbar,this.settings.sticky_topbar.parent(), this.settings)) {
+        var distance = this.settings.sticky_topbar.data('stickyoffset') + this.settings.start_offset;
         if (!self.S(klass).hasClass('expanded')) {
           if ($window.scrollTop() > (distance)) {
             if (!self.S(klass).hasClass('fixed')) {

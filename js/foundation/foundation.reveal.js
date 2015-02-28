@@ -53,7 +53,8 @@
 
           if (!self.locked) {
             var element = S(this),
-                ajax = element.data(self.data_attr('reveal-ajax'));
+                ajax = element.data(self.data_attr('reveal-ajax')),
+                replaceContentSel = element.data(self.data_attr('reveal-replace-content'));
 
             self.locked = true;
 
@@ -62,7 +63,7 @@
             } else {
               var url = ajax === true ? element.attr('href') : ajax;
 
-              self.open.call(self, element, {url : url});
+              self.open.call(self, element, {url : url}, { replaceContentSel : replaceContentSel });
             }
           }
         });
@@ -167,8 +168,10 @@
             .data('offset', this.cache_offset(modal));
         }
 
+        modal.attr('tabindex','0').attr('aria-hidden','false');
+
         this.key_up_on(modal);    // PATCH #3: turning on key up capture only when a reveal window is open
-        
+
         // Prevent namespace event from triggering twice
         modal.on('open.fndtn.reveal', function(e) {
           if (e.namespace !== 'fndtn.reveal') return;
@@ -208,7 +211,11 @@
                 }
               }
 
-              modal.html(data);
+              if (typeof options !== 'undefined' && typeof options.replaceContentSel !== 'undefined') {
+                modal.find(options.replaceContentSel).html(data);
+              } else {
+                modal.html(data);
+              }
 
               self.S(modal).foundation('section', 'reflow');
               self.S(modal).children().foundation();
@@ -244,15 +251,19 @@
           self = this;
 
       if (open_modals.length > 0) {
+
+        modal.removeAttr('tabindex','0').attr('aria-hidden','true');
+
         this.locked = true;
         this.key_up_off(modal);   // PATCH #3: turning on key up capture only when a reveal window is open
-        modal.trigger('close').trigger('close.fndtn.reveal');
-        
+
+        modal.trigger('close.fndtn.reveal');
+
         if ((settings.multiple_opened && open_modals.length === 1) || !settings.multiple_opened || modal.length > 1) {
           self.toggle_bg(modal, false);
           self.to_front(modal);
         }
-        
+
         if (settings.multiple_opened) {
           self.hide(modal, settings.css.close, settings);
           self.to_front($($.makeArray(open_modals).reverse()[1]));
@@ -322,7 +333,7 @@
               .css(css)
               .animate(end_css, settings.animation_speed, 'linear', function () {
                 context.locked = false;
-                el.trigger('opened').trigger('opened.fndtn.reveal');
+                el.trigger('opened.fndtn.reveal');
               })
               .addClass('open');
           }, settings.animation_speed / 2);
@@ -337,13 +348,13 @@
               .css(css)
               .animate(end_css, settings.animation_speed, 'linear', function () {
                 context.locked = false;
-                el.trigger('opened').trigger('opened.fndtn.reveal');
+                el.trigger('opened.fndtn.reveal');
               })
               .addClass('open');
           }, settings.animation_speed / 2);
         }
 
-        return el.css(css).show().css({opacity : 1}).addClass('open').trigger('opened').trigger('opened.fndtn.reveal');
+        return el.css(css).show().css({opacity : 1}).addClass('open').trigger('opened.fndtn.reveal');
       }
 
       var settings = this.settings;
@@ -357,11 +368,11 @@
 
       return el.show();
     },
-    
+
     to_back : function(el) {
       el.addClass('toback');
     },
-    
+
     to_front : function(el) {
       el.removeClass('toback');
     },
@@ -387,7 +398,7 @@
             return el
               .animate(end_css, settings.animation_speed, 'linear', function () {
                 context.locked = false;
-                el.css(css).trigger('closed').trigger('closed.fndtn.reveal');
+                el.css(css).trigger('closed.fndtn.reveal');
               })
               .removeClass('open');
           }, settings.animation_speed / 2);
@@ -400,13 +411,13 @@
             return el
               .animate(end_css, settings.animation_speed, 'linear', function () {
                 context.locked = false;
-                el.css(css).trigger('closed').trigger('closed.fndtn.reveal');
+                el.css(css).trigger('closed.fndtn.reveal');
               })
               .removeClass('open');
           }, settings.animation_speed / 2);
         }
 
-        return el.hide().css(css).removeClass('open').trigger('closed').trigger('closed.fndtn.reveal');
+        return el.hide().css(css).removeClass('open').trigger('closed.fndtn.reveal');
       }
 
       var settings = this.settings;
@@ -456,7 +467,7 @@
     },
 
     cache_offset : function (modal) {
-      var offset = modal.show().height() + parseInt(modal.css('top'), 10);
+      var offset = modal.show().height() + parseInt(modal.css('top'), 10) + modal.scrollY;
 
       modal.hide();
 

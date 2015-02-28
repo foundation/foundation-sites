@@ -119,14 +119,13 @@ $crumb-slash: "/" !default;
       @include crumb-container;
       @include radius($crumb-radius);
 
-      &>* {
+      > * {
         @include crumbs;
       }
     }
+    /* Accessibility - hides the forward slash */
+    [aria-label="breadcrumbs"] [aria-hidden="true"]:after {
+      content: "/";
+    }
   }
 }
-
-/* Accessibility - hides the forward slash */
-[aria-label="breadcrumbs"] [aria-hidden="true"]:after {
-  content: "/";
-  }

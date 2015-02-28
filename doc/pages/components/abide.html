@@ -83,7 +83,7 @@ If a submit event is fired, a `valid.fndtn.abide` event is triggered when the fo
 
 <div class="panel">
   <p><strong>Deprecation Notice</strong></p>
-  <p>Previous versions of the abide plugin emitted un-namespaced `valid` and `invalid` events, however, these have been replaced by the namespaced `valid.fndtn.abide` and `invalid.fndtn.abide` events. The un-namespaced events will be fully deprecated when Foundation 5.4 is released.</p>
+  <p>Previous versions of the abide plugin emitted un-namespaced `valid` and `invalid` events, however, these have been replaced by the namespaced `valid.fndtn.abide` and `invalid.fndtn.abide` events. The un-namespaced events have been fully deprecated.</p>
 </div>
 
 You can bind to these events and fire your own callback:
@@ -131,6 +131,15 @@ Additionally, if you are using a custom validator and specify an input type or a
 <input type="email" data-abide-validator="isAllowed">
 ```
 {{/markdown}}
+
+You can also use multiple custom validators if you wish by separating the names of the custom validators with a space. The input, however, must pass ALL validations in order for the input to be considered valid. The example below would only be valid if the the outcome of `diceRoll` is true AND the input is within the array of accepted inputs of `isAllowed`.
+
+{{#markdown}}
+```html
+<input type="email" data-abide-validator="diceRoll isAllowed">
+```
+{{/markdown}}
+
 
 ***
 

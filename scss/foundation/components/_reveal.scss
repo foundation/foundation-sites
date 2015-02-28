@@ -89,9 +89,9 @@ $z-index-base: 1005;
     .column, .columns { min-width: 0; }
 
     // Get rid of margin from first and last element inside modal
-    & > :first-child { margin-top: 0; }
+    > :first-child { margin-top: 0; }
 
-    & > :last-child { margin-bottom: 0; }
+    > :last-child { margin-bottom: 0; }
   }
 
   @if $width {

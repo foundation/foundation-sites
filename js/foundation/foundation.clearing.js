@@ -227,6 +227,7 @@
       function cb (image) {
         var $image = $(image);
         $image.css('visibility', 'visible');
+        $image.trigger('imageVisible');
         // toggle the gallery
         body.css('overflow', 'hidden');
         root.addClass('clearing-blackout');
@@ -302,7 +303,7 @@
         this.go(clearing, 'prev');
       }
       if (e.which === ESC_KEY) {
-        this.S('a.clearing-close').trigger('click').trigger('click.fndtn.clearing');
+        this.S('a.clearing-close').trigger('click.fndtn.clearing');
       }
     },
 
@@ -447,7 +448,7 @@
 
       if (target.length) {
         this.S('img', target)
-          .trigger('click', [current, target]).trigger('click.fndtn.clearing', [current, target])
+          .trigger('click.fndtn.clearing', [current, target])
           .trigger('change.fndtn.clearing');
       }
     },

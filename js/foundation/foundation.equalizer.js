@@ -27,28 +27,31 @@
 
     equalize : function (equalizer) {
       var isStacked = false,
-          vals = equalizer.find('[' + this.attr_name() + '-watch]:visible'),
-          settings = equalizer.data(this.attr_name(true) + '-init');
+          group = equalizer.data('equalizer'),
+          vals = group ? equalizer.find('['+this.attr_name()+'-watch="'+group+'"]:visible') : equalizer.find('['+this.attr_name()+'-watch]:visible'),
+          settings = equalizer.data(this.attr_name(true)+'-init'),
+          firstTopOffset;
 
       if (vals.length === 0) {
         return;
       }
-      var firstTopOffset = vals.first().offset().top;
+      
       settings.before_height_change();
-      equalizer.trigger('before-height-change').trigger('before-height-change.fndth.equalizer');
+      equalizer.trigger('before-height-change.fndth.equalizer');
       vals.height('inherit');
-      vals.each(function () {
-        var el = $(this);
-        if (el.offset().top !== firstTopOffset) {
-          isStacked = true;
-        }
-      });
-
+      
       if (settings.equalize_on_stack === false) {
+        firstTopOffset = vals.first().offset().top;
+        vals.each(function () {
+          if ($(this).offset().top !== firstTopOffset) {
+            isStacked = true;
+            return false;
+          }
+        });
         if (isStacked) {
           return;
         }
-      };
+      }
 
       var heights = vals.map(function () { return $(this).outerHeight(false) }).get();
 
@@ -59,8 +62,9 @@
         var min = Math.min.apply(null, heights);
         vals.css('height', min);
       }
+      
       settings.after_height_change();
-      equalizer.trigger('after-height-change').trigger('after-height-change.fndtn.equalizer');
+      equalizer.trigger('after-height-change.fndtn.equalizer');
     },
 
     reflow : function () {

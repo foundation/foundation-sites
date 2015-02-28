@@ -48,14 +48,14 @@
           //   console.log($(this).html(), a, b, c);
           // });
 
-          if (/IMG/.test(el[0].nodeName)) {
+          if (el !== null && /IMG/.test(el[0].nodeName)) {
             var orig_path = el[0].src;
 
             if (new RegExp(path, 'i').test(orig_path)) {
               return;
             }
 
-            el[0].src = path;
+            el.attr("src", path);
 
             return trigger(el[0].src);
           }
@@ -88,8 +88,7 @@
       this.data_attr = this.set_data_attr();
       $.extend(true, this.settings, method, options);
       this.bindings(method, options);
-      this.load('images');
-      this.load('nodes');
+      this.reflow();
     },
 
     get_media_hash : function () {
@@ -131,7 +130,7 @@
           if (passed) {
             this.settings.directives[passed
               .scenario[1]].call(this, passed.el, passed.scenario[0], (function (passed) {
-                if (arguments[0] instanceof Array) { 
+                if (arguments[0] instanceof Array) {
                   var args = arguments[0];
                 } else {
                   var args = Array.prototype.slice.call(arguments, 0);
@@ -241,7 +240,7 @@
         this.object($(this['cached_' + type][i]));
       }
 
-      return $(window).trigger('resize').trigger('resize.fndtn.interchange');
+      return $(window).trigger('resize.fndtn.interchange');
     },
 
     convert_directive : function (directive) {

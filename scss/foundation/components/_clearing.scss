@@ -158,7 +158,7 @@ $clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
         height: 100%;
         width: 40px;
         top: 0;
-        & > span {
+        > span {
           position: absolute;
           top: 50%;
           display: block;
@@ -170,7 +170,7 @@ $clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
       }
       .clearing-main-prev {
         #{$default-float}: 0;
-        & > span {
+        > span {
           #{$default-float}: 5px;
           border-color: transparent;
           border-#{$opposite-direction}-color: $clearing-arrow-color;
@@ -178,7 +178,7 @@ $clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
       }
       .clearing-main-next {
         #{$opposite-direction}: 0;
-        & > span {
+        > span {
           border-color: transparent;
           border-#{$default-float}-color: $clearing-arrow-color;
         }
@@ -195,7 +195,7 @@ $clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
           margin-top: 10px;
           text-align: center;
 
-          & > ul {
+          > ul {
             display: inline-block;
             z-index: 999;
             height: 100%;
@@ -229,8 +229,8 @@ $clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
               }
 
               img {
-              cursor: $cursor-pointer-value !important;
-              width: 100% !important;
+                cursor: $cursor-pointer-value !important;
+                width: 100% !important;
               }
 
               &.visible { opacity: 1; }

@@ -115,8 +115,8 @@ $button-disabled-cursor: $cursor-default-value !default;
   @if $full-width {
     // We still need to check if $padding is set.
     @if $padding {
-    padding-top: $padding;
-    padding-bottom: $padding + rem-calc(1);
+      padding-top: $padding;
+      padding-bottom: $padding + rem-calc(1);
     } @else if $padding == false {
       padding-top:0;
       padding-bottom:0;
