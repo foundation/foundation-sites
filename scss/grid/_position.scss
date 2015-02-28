@@ -3,7 +3,6 @@
 ////
 
 /// Reposition a column.
-///
 /// @param {number} $position - Direction and amount to move. The column will move equal to the width of the column count specified. A positive number will push the column to the right, while a negative number will pull it to the left.
 @mixin grid-column-position($position) {
   @if type-of($position) == 'number' {
@@ -32,6 +31,12 @@
   }
 }
 
+/// Offsets a column to the right by `$n` columns.
+/// @param {Number|List} $n - Width to offset by. You can pass in any value accepted by the `grid-column()` mixin, such as `6`, `50%`, or `1 of 2`.
+@mixin grid-column-offset($n) {
+  margin-left: grid-column($n);
+}
+
 /// Align a column at the end of the row instead of the beginning.
 @mixin grid-column-end() {
   float: right;
@@ -45,6 +50,11 @@
 /// Shorthand for `grid-column-unposition()`.
 @mixin grid-col-unpos() {
   @include grid-column-unposition;
+}
+
+/// Shorthand for `grid-column-offset()`.
+@mixin grid-col-off($n) {
+  @include grid-column-offset($n);
 }
 
 /// Shorthand for `grid-column-end()`.

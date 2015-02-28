@@ -114,7 +114,7 @@
   @each $size in $breakpoint-classes {
     @include breakpoint($size) {
       @for $i from 1 through 6 {
-        .#{$size}-#{$i} {
+        .#{$size}-order-#{$i} {
           order: $i;
         }
       }

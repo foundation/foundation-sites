@@ -81,6 +81,12 @@
             @include grid-col-pos(-$i);
           }
         }
+
+        // Offsets
+        $o: $i - 1;
+        .#{$size}-offset-#{$o} {
+          @include grid-col-off($o);
+        }
       }
 
       // Positioning
@@ -88,6 +94,7 @@
         @include grid-col-pos(center);
       }
 
+      // Gutter adjustment
       .#{$size}-#{$uncenter},
       .#{$size}-#{$push}-0,
       .#{$size}-#{$pull}-0 {

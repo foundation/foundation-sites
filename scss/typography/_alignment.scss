@@ -5,13 +5,10 @@
         text-align: $align;
       }
       @include breakpoint($size) {
-        .#{$size}-text-#{$align} {
-          text-align: $align;
-        }
-      }
-      @include breakpoint($size only) {
-        .#{$size}-only-text-#{$align} {
-          text-align: $align;
+        @if $size != 'small' {
+          .#{$size}-text-#{$align} {
+            text-align: $align;
+          }
         }
       }
     }
