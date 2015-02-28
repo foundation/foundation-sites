@@ -100,10 +100,15 @@ $button-disabled-cursor: $cursor-default-value !default;
   @if $padding {
     padding: $padding ($padding * 2) ($padding + rem-calc(1)) ($padding * 2);
     // We control the font-size based on mixin input.
-    @if      $padding == $button-med { font-size: $button-font-med; }
-    @else if $padding == $button-tny { font-size: $button-font-tny; }
-    @else if $padding == $button-sml { font-size: $button-font-sml; }
-    @else if $padding == $button-lrg { font-size: $button-font-lrg; }
+    @if $padding == $button-med {
+      font-size: $button-font-med;
+    } @else if $padding == $button-tny {
+      font-size: $button-font-tny;
+    } @else if $padding == $button-sml {
+      font-size: $button-font-sml;
+    } @else if $padding == $button-lrg {
+      font-size: $button-font-lrg;
+    }
   }
 
   // We can set $full-width:true to remove side padding extend width.
@@ -177,8 +182,11 @@ $button-disabled-cursor: $cursor-default-value !default;
   }
 
   // We can control how much button radius is used.
-  @if $radius == true { @include radius($button-radius); }
-  @else if $radius { @include radius($radius); }
+  @if $radius == true {
+    @include radius($button-radius);
+  } @else if $radius {
+    @include radius($radius);
+  }
 
 }
 

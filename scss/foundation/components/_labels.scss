@@ -62,13 +62,19 @@ $label-font-family: $body-font-family !default;
     background-color: $bg;
 
     // We control the text color for you based on the background color.
-    @if $bg-lightness < 70% { color: $label-font-color-alt; }
-    @else { color: $label-font-color; }
+    @if $bg-lightness < 70% {
+      color: $label-font-color-alt;
+    } @else {
+      color: $label-font-color;
+    }
   }
 
   // We use this to control the radius on labels.
-  @if $radius == true { @include radius($label-radius); }
-  @else if $radius { @include radius($radius); }
+  @if $radius == true {
+    @include radius($label-radius);
+  } @else if $radius {
+    @include radius($radius);
+  }
 
 }
 

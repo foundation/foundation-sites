@@ -194,8 +194,11 @@ $f-dropdown-radius: $global-radius !default;
 
   }
 
-  @if $max-width { max-width: $max-width; }
-  @else { max-width: $f-dropdown-max-width; }
+  @if $max-width {
+    max-width: $max-width;
+  } @else {
+    max-width: $f-dropdown-max-width;
+  }
 
 }
 

@@ -49,8 +49,11 @@ $callout-panel-link-color-hover: scale-color($callout-panel-link-color, $lightne
     padding: $padding;
 
     background: $bg;
-    @if $bg-lightness >= 50% { color: $panel-font-color; }
-    @else { color: $panel-font-color-alt; }
+    @if $bg-lightness >= 50% {
+      color: $panel-font-color;
+    } @else {
+      color: $panel-font-color-alt;
+    }
 
     // Respect the padding, fool.
     &>:first-child { margin-top: 0; }

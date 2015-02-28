@@ -99,8 +99,7 @@ $button-group-border-width: 1px !default;
     &:first-child > .button {
       @if $orientation == vertical {
         @include side-radius(top, $button-radius);
-      }
-      @else {
+      } @else {
         @include side-radius($default-float, $button-radius);
       }
     }

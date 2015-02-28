@@ -49,15 +49,18 @@ $last-child-float: $opposite-direction !default;
     width: auto;
     margin: 0 (-($column-gutter/2));
     max-width: none;
-  } @else if $behavior == collapse { // use @include grid-row(collapse); to collapsed a container row margins
+  } @else if $behavior == collapse {
+    // use @include grid-row(collapse); to collapsed a container row margins
     width: 100%;
     margin: 0;
     max-width: $row-width;
-  } @else if $behavior == nest-collapse { // use @include grid-row(nest-collapse); to collapse outer margins on a nested row
+  } @else if $behavior == nest-collapse {
+    // use @include grid-row(nest-collapse); to collapse outer margins on a nested row
     width: auto;
     margin: 0;
     max-width: none;
-  } @else { // use @include grid-row; to use a container row
+  } @else {
+    // use @include grid-row; to use a container row
     width: 100%;
     margin: 0 auto;
     max-width: $row-width;
@@ -98,11 +101,9 @@ $last-child-float: $opposite-direction !default;
   @if $collapse {
     padding-left: 0;
     padding-right: 0;
-  }
-
-  // Gutter padding whenever a column isn't set to collapse
-  // (use $collapse:null to do nothing)
-  @else if $collapse == false {
+  } @else if $collapse == false {
+    // Gutter padding whenever a column isn't set to collapse
+    // (use $collapse:null to do nothing)
     padding-left: ($column-gutter / 2);
     padding-right: ($column-gutter / 2);
   }
@@ -120,9 +121,13 @@ $last-child-float: $opposite-direction !default;
   @if $pull { #{$opposite-direction}: grid-calc($pull, $total-columns); #{$default-float}: auto; }
 
   @if $float {
-    @if $float == left or $float == true { float: $default-float; }
-    @else if $float == right { float: $opposite-direction; }
-    @else { float: none; }
+    @if $float == left or $float == true {
+      float: $default-float;
+    } @else if $float == right {
+      float: $opposite-direction;
+    } @else {
+      float: none;
+    }
   }
 
   // If centered, get rid of float and add appropriate margins

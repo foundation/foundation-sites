@@ -76,8 +76,11 @@ $alert-transition-ease: ease-out !default;
   border-color: scale-color($bg, $lightness: $alert-function-factor);
 
   // We control the text color for you based on the background color.
-  @if $bg-lightness > 70% { color: $alert-font-color-alt; }
-  @else                   { color: $alert-font-color; }
+  @if $bg-lightness > 70% {
+    color: $alert-font-color-alt;
+  } @else {
+    color: $alert-font-color;
+  }
 
 }
 

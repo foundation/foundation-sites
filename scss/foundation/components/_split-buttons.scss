@@ -64,8 +64,8 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
 // $base-style - Apply base style to split button. Default: true.
 @mixin split-button(
   $padding:medium,
-  $pip-color:$split-button-pip-color, 
-  $span-border:$primary-color, 
+  $pip-color:$split-button-pip-color,
+  $span-border:$primary-color,
   $base-style:true) {
 
   // With this, we can control whether or not the base styles come through.
@@ -117,10 +117,8 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
         margin-#{$default-float}: $split-button-pip-default-float-tny;
       }
     }
-  }
-
-  // Style of the button and clickable area for small sizes
-  @else if $padding == small {
+  } @else if $padding == small {
+    // Style of the button and clickable area for small sizes
     padding-#{$opposite-direction}: $split-button-padding-sml;
 
     span { width: $split-button-span-width-sml;
@@ -131,10 +129,8 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
         margin-#{$default-float}: $split-button-pip-default-float-sml;
       }
     }
-  }
-
-  // Style of the button and clickable area for default (medium) sizes
-  @else if $padding == medium {
+  } @else if $padding == medium {
+    // Style of the button and clickable area for default (medium) sizes
     padding-#{$opposite-direction}: $split-button-padding-med;
 
     span { width: $split-button-span-width-med;
@@ -145,10 +141,8 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
         margin-#{$default-float}: $split-button-pip-default-float-med;
       }
     }
-  }
-
-  // Style of the button and clickable area for large sizes
-  @else if $padding == large {
+  } @else if $padding == large {
+    // Style of the button and clickable area for large sizes
     padding-#{$opposite-direction}: $split-button-padding-lrg;
 
     span { width: $split-button-span-width-lrg;

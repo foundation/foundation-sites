@@ -138,8 +138,11 @@ $z-index-base: 1005;
   }
 
   // We can control how much radius is used on the modal
-  @if $radius == true { @include radius($reveal-radius); }
-  @else if $radius { @include radius($radius); }
+  @if $radius == true {
+    @include radius($reveal-radius);
+  } @else if $radius {
+    @include radius($radius);
+  }
 
   @if $top-offset {
     @media #{$medium-up} {
@@ -197,7 +200,7 @@ $z-index-base: 1005;
         max-width: none !important;
         margin-left: 0 !important;
       }
-      
+
       // Modals pushed to back
       &.toback {
         z-index: $z-index-base - 2;
