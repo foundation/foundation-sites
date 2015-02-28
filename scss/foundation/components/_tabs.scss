@@ -50,9 +50,6 @@ $tabs-vertical-navigation-margin-bottom: 1.25rem !default;
               color: $tabs-navigation-hover-bg-color;
             }
           }
-          &:focus{
-              outline: none;
-          }
         }
         &.active a {
           background: {
