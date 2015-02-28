@@ -61,33 +61,9 @@ $stat-font-size: 2.5rem !default;
     }
   }
 
-  // Use to change the bullet style of an unordered list
-  ul {
-    &.square,
-    &.circle,
-    &.disc {
-      li ul { list-style: inherit; }
-    }
-
-    &.square {
-      list-style-type: square;
-      margin-#{$default-float}: $list-side-margin;
-    }
-
-    &.circle {
-      list-style-type: circle;
-      margin-#{$default-float}: $list-side-margin;
-    }
-
-    &.disc { 
-      list-style-type: disc;
-      margin-#{$default-float}: $list-side-margin;
-    }
-
-    &.no-bullet {
-      list-style: none;
-      margin-#{$default-float}: $list-side-margin-no-bullet;
-    }
+  // Use to remove the bullets from an unordered list
+  .no-bullet {
+    list-style: none;
   }
 
   // Font smoothing

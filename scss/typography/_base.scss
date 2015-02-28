@@ -79,10 +79,10 @@ $list-font-family: $paragraph-font-family !default;
 $list-font-size: $paragraph-font-size !default;
 $list-line-height: $paragraph-lineheight !default;
 $list-margin-bottom: $paragraph-margin-bottom !default;
+$list-style-type: disc !default;
 $list-style-position: outside !default;
 $list-side-margin: 1.1rem !default;
 $list-ordered-side-margin: 1.4rem !default;
-$list-side-margin-no-bullet: 0 !default;
 $list-nested-margin: rem-calc(20) !default;
 
 $definition-list-header-weight: $font-weight-bold !default;
@@ -250,6 +250,7 @@ $acronym-underline: 1px dotted #ddd !default;
 
   // Unordered lists
   ul {
+    list-style-type: $list-style-type;
     margin-#{$default-float}: $list-side-margin;
   }
 
