@@ -46,8 +46,8 @@ $menubar-expand-max: 6 !default;
     }
   }
 
-  // Plain
-  &.plain {
+  // Simple
+  &.simple {
     > li > a {
       padding: 0;
       margin-right: get-side($menubar-item-padding, right);
