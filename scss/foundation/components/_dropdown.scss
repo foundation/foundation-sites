@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 //
 // @variables
@@ -101,7 +101,7 @@ $f-dropdown-radius: $global-radius !default;
     margin-top: $f-dropdown-margin-top;
 
     @if $f-dropdown-triangle-size != 0px {
-    
+
       &:before {
         @include css-triangle($f-dropdown-triangle-size, $f-dropdown-triangle-color, bottom);
         position: absolute;
