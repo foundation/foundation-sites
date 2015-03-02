@@ -24,7 +24,7 @@
     
     // Nested rows
     & & {
-      @include grid-row(nest, $cf: false);
+      @include grid-row($behavior: nest, $cf: false);
     }
 
     // Collapsing
@@ -32,7 +32,7 @@
       > .#{$column} { @include grid-col-collapse; }
     }
 
-    @each $size in $breakpoints {
+    @each $size in $breakpoint-classes {
       @include breakpoint($size) {
         &.#{$size}-#{$collapse} {
           > .#{$column} { @include grid-col-collapse; }
@@ -59,11 +59,11 @@
     @include grid-column-row;
 
     .#{$row} {
-      @include grid-row(nest, $cf: false);
+      @include grid-row($behavior: nest, $cf: false);
     }
   }
   
-  @each $size in $breakpoints {
+  @each $size in $breakpoint-classes {
     @include breakpoint($size) {
       @for $i from 1 through $grid-column-count {
         // Column width

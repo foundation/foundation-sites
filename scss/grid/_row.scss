@@ -32,9 +32,9 @@
 /// @param {number} $width - Maximum width of the row.
 /// @param {number} $columns - Column count for this row.
 @mixin grid-row(
+  $columns: null,
   $behavior: null,
   $width: $grid-row-width,
-  $columns: null,
   $cf: true
 ) {
   $behavior: -zf-get-options($behavior, nest collapse);
@@ -53,7 +53,7 @@
   };
   
   @if $columns != null {
-    @include grid-context($columns, $root) {
+    @include grid-context($columns) {
       @content;
     }
   }
