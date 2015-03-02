@@ -25,9 +25,24 @@
   }
 
   Toggler.defaults = {
+    /**
+     * Set what class to toggle on which elements. Use the format `.class of .element`. `.element` can be any simple CSS selector, such as `#id`, `.class`, and `[attribute]`.
+     * @option
+     * @sample .is-visible on #dropdown
+     */
     toggler: '',
-    onText: null,
-    offText: null
+    /**
+     * Set the text to display inside the toggle while the target element *has the class* you set.
+     * @option
+     * @sample Hide dropdown
+     */
+    onText: '',
+    /**
+     * Set the text to display inside the toggle while the target *does not have the class* you set.
+     * @option
+     * @sample Show dropdown
+     */
+    offText: ''
   }
 
   /**
@@ -90,15 +105,13 @@
     }
   }
 
-  Foundation.Toggler = Toggler;
-
   Foundation.plugin('toggler', Toggler);
 
   // Exports for AMD/Browserify
   if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')
     module.exports = Toggler;
   if (typeof define === 'function')
-    define('foundation/toggler', ['jquery'], function($) {
+    define('foundation/toggler', ['foundation'], function() {
       return Toggler;
     });
 

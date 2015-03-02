@@ -1,4 +1,16 @@
 !function($) {
+  // Polyfill to get the name of a function in IE9
+  if (Function.prototype.name === undefined && Object.defineProperty !== undefined) {
+    Object.defineProperty(Function.prototype, 'name', {
+      get: function() {
+        var funcNameRegex = /function\s([^(]{1,})\(/;
+        var results = (funcNameRegex).exec((this).toString());
+        return (results && results.length > 1) ? results[1].trim() : "";
+      },
+      set: function(value) {}
+    });
+  }
+
   var Foundation = {
     /**
      * Stores initialized plugins.
@@ -12,6 +24,9 @@
      * @param {Object} plugin - The constructor of the plugin.
      */
     plugin: function(name, plugin) {
+      // Add to the Foundation object
+      this[Toggler.prototype.constructor.name] = plugin;
+      // Add to the plugins list (for reflowing)
       this._plugins[name] = plugin;
     },
 
