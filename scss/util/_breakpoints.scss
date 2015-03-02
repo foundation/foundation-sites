@@ -126,22 +126,3 @@ $breakpoint-classes: (small medium large) !default;
     }
   }
 }
-
-/// Prefixes selector $class with breakpoint keywords, allowing you to create a batch of breakpoint classes with one chunk of code. If you want to skip a breakpoint (like small, because mobile first and all that), add values to the $omit parameter.
-/// @param {string} $class - Class to prefix with the breakpoint name and a hyphen.
-/// @param {list} $omit - Named breakpoints to skip. No class will be added with breakpoints in this list.
-@mixin each-breakpoint($class, $omit: ()) {
-  // Iterate through breakpoint classes
-  @each $size in $breakpoint-classes {
-    // Only do something if the breakpoint is not in $omit
-    @if index($omit, $size) == null {
-      $val: map-get($breakpoints, $size);
-      // Prefix $class with $size and a hyphen
-      .#{$size + '-' + $class} {
-        @include breakpoint($size) {
-          @content;
-        }
-      }
-    }
-  }
-}
