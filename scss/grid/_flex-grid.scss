@@ -120,4 +120,29 @@
       }
     }
   }
+
+  // Alignment
+  @each $hdir, $prop in (
+    'right': flex-end,
+    'center': center,
+    'justify': space-between,
+    'spaced': space-around,
+  ) {
+    .flex-row.align-#{$hdir} {
+      justify-content: $prop;
+    }
+  }
+  @each $vdir, $prop in (
+    'top': flex-start,
+    'bottom': flex-end,
+    'middle': center,
+    'stretch': stretch,
+  ) {
+    .flex-row.align-#{$vdir} {
+      align-items: $prop;
+    }
+    .flex-column.align-#{$vdir} {
+      align-self: $prop;
+    }
+  }
 }
