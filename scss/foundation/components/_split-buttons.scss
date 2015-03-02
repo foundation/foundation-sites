@@ -61,7 +61,7 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
 //
 // $padding - Type of padding to apply. Default: medium. Options: tiny, small, medium, large.
 // $pip-color - Color of the triangle. Default: $split-button-pip-color.
-// $span-border - Border color of button divider. Default: $primary-color.
+// $span-border - Border color of button divider. Default: $split-button-span-border-color.
 // $base-style - Apply base style to split button. Default: true.
 @mixin split-button(
   $padding:medium,
