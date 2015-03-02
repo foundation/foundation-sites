@@ -5,7 +5,7 @@ var shipyard = require('shipyard');
 var files = {
   sassSrc: 'scss/foundation.scss',
   sassPaths: ['scss'],
-  javascript: ['js/foundation/foundation.*.js', 'js/foundation/foundation.js']
+  javascript: ['js/foundation.core.js', 'js/*.js']
 }
 
 // Assembles the layout, pages, and partials in the docs folder
