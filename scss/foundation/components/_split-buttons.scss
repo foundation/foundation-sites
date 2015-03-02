@@ -102,7 +102,7 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
   // Control the border color for the span area of the split button
   @if $span-border {
     span {
-      border-#{$default-float}-color: $split-button-span-border-color;
+      border-#{$default-float}-color: $span-border;
     }
   }
 
