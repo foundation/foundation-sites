@@ -46,7 +46,8 @@
   $flex: 1 1 auto;
   @if $columns == shrink {
     $flex: 0 0 auto;
-  } @else if $columns != null {
+  }
+  @else if $columns != null {
     $flex: 0 0 grid-column($columns);
   }
   @return $flex;

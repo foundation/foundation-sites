@@ -46,6 +46,11 @@ $menubar-expand-max: 6 !default;
     }
   }
 
+  // Hover/active state
+  > .is-active > a {
+    background: $menubar-item-background-hover;
+  }
+
   // Simple
   &.simple {
     > li > a {
