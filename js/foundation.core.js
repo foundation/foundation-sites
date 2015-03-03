@@ -11,6 +11,8 @@
     });
   }
 
+  // Global Foundation object
+  // This is attached to the window, or used as a module for AMD/Browserify
   var Foundation = {
     /**
      * Stores initialized plugins.
@@ -25,7 +27,7 @@
      */
     plugin: function(name, plugin) {
       // Add to the Foundation object
-      this[Toggler.prototype.constructor.name] = plugin;
+      this[plugin.prototype.constructor.name] = plugin;
       // Add to the plugins list (for reflowing)
       this._plugins[name] = plugin;
     },
@@ -44,15 +46,20 @@
      * @param {String|Array} plugins - A list of plugins to initialize. Leave this out to initialize everything.
      */
     reflow: function(elem, plugins) {
+      // If plugins is undefined, just grab everything
       if (typeof plugins === 'undefined') {
         plugins = Object.keys(this._plugins);
-      } else if (typeof plugins === 'string') {
+      }
+      // If plugins is a string, convert it to an array with one item
+      else if (typeof plugins === 'string') {
         plugins = [plugins];
       }
 
       var _this = this;
 
+      // Iterate through each plugin
       $.each(plugins, function(i, name) {
+        // Get the current plugin
         var plugin = _this._plugins[name];
 
         // Localize the search to all elements inside elem, as well as elem itself, unless elem === document
@@ -82,6 +89,10 @@
     }
   }
 
+  /**
+   * The Foundation jQuery method.
+   * @param {String|Array} method - An action to perform on the current jQuery object.
+   */
   var foundation = function(method) {
     var type = typeof method;
 
