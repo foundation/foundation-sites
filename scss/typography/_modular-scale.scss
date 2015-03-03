@@ -6,8 +6,8 @@
 /// @type Map
 $ms-intervals: (
   default: 1.067,
-  medium: 1.25,
-  large: 1.333,
+  medium: 1.125,
+  large: 1.25,
 ) !default;
 
 /// Calculates x^y, where x is `$base` and y is `$power`.

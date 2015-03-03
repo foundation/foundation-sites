@@ -26,6 +26,6 @@ $cap-height: 0.68;
 
   // CSS output
   line-height: $line-height;
-  padding-top: $baseline-distance;
+  padding-top: $baseline-distance * 1rem;
   margin-bottom: $base-line-height - $baseline-distance;
 }
