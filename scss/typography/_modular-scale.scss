@@ -5,9 +5,9 @@
 /// A map of intervals to use to scale type at various breakpoints. For each item, the key should be the name of a breakpoint used in the `$breakpoints` map, and the value is an integer representing the interval to use. For example, 1.618 is the golden ratio.
 /// @type Map
 $ms-intervals: (
-  default: 1.2,
-  medium: 1.333,
-  large: 1.4,
+  default: 1.067,
+  medium: 1.25,
+  large: 1.333,
 ) !default;
 
 /// Calculates x^y, where x is `$base` and y is `$power`.
@@ -23,23 +23,35 @@ $ms-intervals: (
 /// @param {Number} $n [1] - Position on the scale to calculate. `1` is the starting point.
 /// @param {Number} $ratio - Interval to use in calculation.
 @function modular-scale($n, $ratio) {
-  @return pow($ratio, $n - 1) * 1rem;
+  @return pow($ratio, $n) * 1rem;
 }
 
 /// Returns multiple `font-size` declarations at different breakpoints, using the breakpoints and scales defined in `$ms-intervals`.
 /// @param {Number} $n - Position on the scale to use. `1` is the starting point (`1em`).
 /// @param {Map} $intervals [$ms-intervals] - A set of intervals to use.
 @mixin font-size($n, $intervals: $ms-intervals) {
-  @each $breakpoint, $scale in $intervals {
-    $font-size: modular-scale($n, $scale);
-    @if $breakpoint == default {
-      font-size: $font-size;
-      @include baseline($font-size);
-    }
-    @else {
-      @include breakpoint($breakpoint) {
+  // If n == 0, no responsive adjustments need to be made
+  @if $n == 0 {
+    font-size: modular-scale(0, 1);
+  }
+  @else {
+    // Iterate through each breakpoint/interval pair in the intervals list
+    @each $breakpoint, $scale in $intervals {
+      // Get the font size for the current scale
+      $font-size: modular-scale($n, $scale);
+
+      // For the default scale, no breakpoint is required. Mobile first!
+      @if $breakpoint == default {
         font-size: $font-size;
         @include baseline($font-size);
+      }
+      
+      // For all other sizes, a media query is inserted
+      @else {
+        @include breakpoint($breakpoint) {
+          font-size: $font-size;
+          @include baseline($font-size);
+        }
       }
     }
   }

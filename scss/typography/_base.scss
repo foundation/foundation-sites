@@ -280,23 +280,12 @@ $acronym-underline: 1px dotted #ddd !default;
   }
 
   // Heading sizes
-  h1 { font-size: $h1-font-size - $h1-font-reduction; }
-  h2 { font-size: $h2-font-size - $h2-font-reduction; }
-  h3 { font-size: $h3-font-size - $h3-font-reduction; }
-  h4 { font-size: $h4-font-size - $h4-font-reduction; }
-  h5 { font-size: $h5-font-size - $h5-font-reduction; }
-  h6 { font-size: $h6-font-size - $h6-font-reduction; }
-
-  // Heading sizes on larger screens
-  @include breakpoint(medium) {
-    h1,h2,h3,h4,h5,h6 { line-height: $header-lineheight; }
-    h1 { font-size: $h1-font-size; }
-    h2 { font-size: $h2-font-size; }
-    h3 { font-size: $h3-font-size; }
-    h4 { font-size: $h4-font-size; }
-    h5 { font-size: $h5-font-size; }
-    h6 { font-size: $h6-font-size; }
-  }
+  h1 { @include font-size(5); }
+  h2 { @include font-size(4); }
+  h3 { @include font-size(3); }
+  h4 { @include font-size(2); }
+  h5 { @include font-size(1); }
+  h6 { @include font-size(0); }
 
   // Horizontal rule
   hr {
