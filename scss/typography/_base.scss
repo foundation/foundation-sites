@@ -19,16 +19,35 @@
 //   - Blockquotes <blockquote>
 //   - Citations <cite>
 
-// We use these to control header font styles
+/// Font family for header elements.
+/// @type String | List
 $header-font-family: $body-font-family !default;
+
+/// Font weight of headers.
+/// @type String
 $header-font-weight: $font-weight-normal !default;
+
+/// Font style (e.g. italicized) of headers.
+/// @type String
 $header-font-style: normal !default;
+
+/// Color of headers.
+/// @type Color
 $header-color: #222 !default;
+
+/// Line height of headers.
+/// @type Number
 $header-lineheight: 1.4 !default;
+
+/// Bottom margin of headers.
+/// @type Number
 $header-margin-bottom: 0.5rem !default;
+
+/// Text rendering method of headers.
+/// @type String
 $header-text-rendering: optimizeLegibility !default;
 
-// We use these to control header font sizes
+/// We use these to control header font sizes
 $h1-font-size: rem-calc(44) !default;
 $h2-font-size: rem-calc(37) !default;
 $h3-font-size: rem-calc(27) !default;
@@ -36,7 +55,7 @@ $h4-font-size: rem-calc(23) !default;
 $h5-font-size: rem-calc(18) !default;
 $h6-font-size: 1rem !default;
 
-// We use these to control header size reduction on small screens
+/// We use these to control header size reduction on small screens
 $h1-font-reduction: rem-calc(10) !default;
 $h2-font-reduction: rem-calc(10) !default;
 $h3-font-reduction: rem-calc(5) !default;
@@ -44,67 +63,152 @@ $h4-font-reduction: rem-calc(5) !default;
 $h5-font-reduction: 0 !default;
 $h6-font-reduction: 0 !default;
 
-// A general <small> styling
+/// Font size of `<small>` elements.
+/// @type Number
 $small-font-size: 80% !default;
-$small-font-color: scale-color($header-color, $lightness: 35%) !default;
 
-// We use these to style paragraphs
-$paragraph-font-family: inherit !default;
-$paragraph-font-weight: $font-weight-normal !default;
-$paragraph-font-size: 1rem !default;
+/// Color of `<small>` elements when placed inside headers.
+/// @type Color
+$header-small-font-color: scale-color($header-color, $lightness: 35%) !default;
+
+/// Line height of text inside `<p>` elements.
+/// @type Number
 $paragraph-lineheight: 1.6 !default;
-$paragraph-margin-bottom: rem-calc(20) !default;
+
+/// Bottom margin of paragraphs.
+/// @type Number
+$paragraph-margin-bottom: 1rem !default;
+
+/// Text rendering method for paragraph text.
+/// @type String
 $paragraph-text-rendering: optimizeLegibility !default;
 
-// We use these to style <code> tags
+/// Text color of code samples.
+/// @type Color
 $code-color: #333 !default;
-$code-font-family: $font-family-monospace !default;
-$code-font-weight: $font-weight-normal !default;
-$code-background: #eee !default;
-$code-border: 1px solid #ccc !default;
-$code-padding: rem-calc(2) rem-calc(5) rem-calc(1) !default;
 
-// We use these to style anchors
-$anchor-text-decoration: none !default;
-$anchor-text-decoration-hover: none !default;
+/// Font family of code samples.
+/// @type String | List
+$code-font-family: $font-family-monospace !default;
+
+/// Font weight of text in code samples.
+/// @type String
+$code-font-weight: $font-weight-normal !default;
+
+/// Background color of code samples.
+/// @type Color
+$code-background: #eee !default;
+
+/// Border around code samples.
+/// @type List
+$code-border: 1px solid #ccc !default;
+
+/// Padding around text of code samples.
+/// @type Number | List
+$code-padding: rem-calc(2 5 1) !default;
+
+/// Default color for links.
+/// @type Color
 $anchor-color: $primary-color !default;
+
+/// Default color for links on hover.
+/// @type Color
 $anchor-color-hover: scale-color($anchor-color, $lightness: -14%) !default;
 
-// We use these to style the <hr> element
+/// Default text deocration for links.
+/// @type String
+$anchor-text-decoration: none !default;
+
+/// Default text decoration for links on hover.
+/// @type String
+$anchor-text-decoration-hover: none !default;
+
+/// Default border for a divider.
+/// @type List
 $hr-border: 1px solid #ddd;
+
+/// Default margin for a divider.
+/// @type Number | List
 $hr-margin: rem-calc(20) 0 !default;
 
-// We use these to style unordered, ordered, and definition lists
-$list-font-family: $paragraph-font-family !default;
-$list-font-size: $paragraph-font-size !default;
-$list-line-height: $paragraph-lineheight !default;
+/// Line height for items in a list.
+/// @type Number
+$list-lineheight: $paragraph-lineheight !default;
+
+/// Bottom margin for items in a list.
+/// @type Number
 $list-margin-bottom: $paragraph-margin-bottom !default;
+
+/// Bullet type to use for unordered lists (e.g., `square`, `circle`, `disc`).
+/// @type String
 $list-style-type: disc !default;
+
+/// Positioning for bullets on unordered list items.
+/// @type String
 $list-style-position: outside !default;
-$list-side-margin: 1.1rem !default;
-$list-ordered-side-margin: 1.4rem !default;
-$list-nested-margin: rem-calc(20) !default;
 
-$definition-list-header-weight: $font-weight-bold !default;
-$definition-list-header-margin-bottom: 0.3rem !default;
-$definition-list-margin-bottom: rem-calc(12) !default;
+/// Left (or right) margin for lists.
+/// @type Number
+$list-side-margin: 1.25rem !default;
 
-// We use these to style blockquotes and citations
+/// Left (or right) margin for a list inside a list.
+/// @type Number
+$list-nested-side-margin: 1.25rem !default;
+
+/// Bottom margin for `<dl>` elements.
+/// @type Number
+$defnlist-margin-bottom: 1rem !default;
+
+/// Font weight for `<dt>` elements.
+/// @type String
+$defnlist-term-weight: $font-weight-bold !default;
+
+/// Spacing between `<dt>` and `<dd>` elements.
+/// @type Number
+$defnlist-term-margin-bottom: 0.3rem !default;
+
+/// Text color of `<blockquote>` elements.
+/// @type Color
 $blockquote-color: scale-color($header-color, $lightness: 35%) !default;
+
+/// Padding inside a `<blockquote>` element.
+/// @type Number | List
 $blockquote-padding: rem-calc(9 20 0 19) !default;
+
+/// Side border for `<blockquote>` elements.
+/// @type List
 $blockquote-border: 1px solid #ddd !default;
 
+// Font size for `<cite>` elements.
+// @type Number
 $cite-font-size: rem-calc(13) !default;
+
+// Text color for `<cite>` elements.
+// @type Color
 $cite-color: scale-color($header-color, $lightness: 23%) !default;
 
-// We use these to style keystrokes
-$keystroke-font: "Consolas", "Menlo", "Courier", monospace !default;
+// Font family for `<kbd>` elements.
+// @type String | List
+$keystroke-font: $font-family-monospace !default;
+
+// Text color for `<kbd>` elements.
+// @type Color
 $keystroke-color: #222 !default;
+
+// Background color for `<kbd>` elements.
+// @type Color
 $keystroke-background: scale-color(#fff, $lightness: -10%) !default;
+
+// Padding for `<kbd>` elements.
+// @type Number | List
 $keystroke-padding: rem-calc(2 4 0) !default;
+
+// Border radius for `<kbd>` elements.
+// @type Number | List
 $keystroke-radius: $global-radius !default;
 
-// We use these to style acronyms and abbreviations
+// Bottom border style for `<abbr>` and `<acronym>` elements.
+// @type List
 $acronym-underline: 1px dotted #ddd !default;
 
 @mixin foundation-typography-base {
@@ -153,9 +257,6 @@ $acronym-underline: 1px dotted #ddd !default;
 
   // Paragraphs
   p {
-    font-family: $paragraph-font-family;
-    font-weight: $paragraph-font-weight;
-    font-size: $paragraph-font-size;
     line-height: $paragraph-lineheight;
     margin-bottom: $paragraph-margin-bottom;
     text-rendering: $paragraph-text-rendering;
@@ -173,8 +274,7 @@ $acronym-underline: 1px dotted #ddd !default;
     line-height: $header-lineheight;
 
     small {
-      font-size: $small-font-size;
-      color: $small-font-color;
+      color: $header-small-font-color;
       line-height: 0;
     }
   }
@@ -241,11 +341,9 @@ $acronym-underline: 1px dotted #ddd !default;
   ul,
   ol,
   dl {
-    font-size: $list-font-size;
-    line-height: $list-line-height;
+    line-height: $list-lineheight;
     margin-bottom: $list-margin-bottom;
     list-style-position: $list-style-position;
-    font-family: $list-font-family;
   }
 
   // Unordered lists
@@ -256,7 +354,7 @@ $acronym-underline: 1px dotted #ddd !default;
 
   // Ordered lists
   ol {
-    margin-#{$default-float}: $list-ordered-side-margin;
+    margin-#{$default-float}: $list-side-margin;
   }
 
   // Nested unordered/ordered lists
@@ -264,7 +362,7 @@ $acronym-underline: 1px dotted #ddd !default;
     li {
       ul,
       ol {
-        margin-#{$default-float}: $list-nested-margin;
+        margin-#{$default-float}: $list-nested-side-margin;
         margin-bottom: 0;
       }
     }
@@ -272,16 +370,15 @@ $acronym-underline: 1px dotted #ddd !default;
 
   // Definition lists
   dl {
-    dt {
-      margin-bottom: $definition-list-header-margin-bottom;
-      font-weight: $definition-list-header-weight;
-    }
+    margin-bottom: $defnlist-margin-bottom;
 
-    dd {
-      margin-bottom: $definition-list-margin-bottom;
+    dt {
+      margin-bottom: $defnlist-term-margin-bottom;
+      font-weight: $defnlist-term-weight;
     }
   }
 
+  // Keystrokes
   kbd {
     padding: $keystroke-padding;
     margin: 0;

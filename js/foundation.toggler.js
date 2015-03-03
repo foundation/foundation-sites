@@ -111,7 +111,7 @@
   if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')
     module.exports = Toggler;
   if (typeof define === 'function')
-    define('foundation/toggler', ['foundation'], function() {
+    define(['foundation'], function() {
       return Toggler;
     });
 
