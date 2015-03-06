@@ -150,10 +150,9 @@ For the most part, Abide is accessible on its own. Our JavaScript will add the a
 ```html
 <form data-abide>
   <div class="name-field">
-    <label>Your name <small>required</small>
-      <input type="text" required pattern="[a-zA-Z]+">
-    </label>
-    <small class="error" id="nameError">Name is required and must be a string.</small>
+    <label for="input-example">Your name <small>required</small></label>
+      <input id="input-example" type="text" required pattern="[a-zA-Z]+">
+    <small class="error">Name is required and must be a string.</small>
   </div>
 </form>
 ```
