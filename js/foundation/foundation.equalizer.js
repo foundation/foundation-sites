@@ -71,8 +71,8 @@
       var self = this;
 
       this.S('[' + this.attr_name() + ']', this.scope).each(function () {
-        var $eq_target = $(this);
-        var media_query = $eq_target.data('equalizer-mq'),
+        var $eq_target = $(this),
+            media_query = $eq_target.data('equalizer-mq'),
             ignore_media_query = true;
 
         if (media_query) {
