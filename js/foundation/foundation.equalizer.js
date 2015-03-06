@@ -35,11 +35,11 @@
       if (vals.length === 0) {
         return;
       }
-      
+
       settings.before_height_change();
       equalizer.trigger('before-height-change.fndth.equalizer');
       vals.height('inherit');
-      
+
       if (settings.equalize_on_stack === false) {
         firstTopOffset = vals.first().offset().top;
         vals.each(function () {
@@ -62,7 +62,7 @@
         var min = Math.min.apply(null, heights);
         vals.css('height', min);
       }
-      
+
       settings.after_height_change();
       equalizer.trigger('after-height-change.fndtn.equalizer');
     },
@@ -72,8 +72,23 @@
 
       this.S('[' + this.attr_name() + ']', this.scope).each(function () {
         var $eq_target = $(this);
+        var media_query = $eq_target.data('equalizer-mq'),
+            ignore_media_query = true;
+
+        if (media_query) {
+          media_query = 'is_' + media_query.replace(/-/g, '_');
+          if (Foundation.utils.hasOwnProperty(media_query)) {
+            ignore_media_query = false;
+          }
+        }
+
         self.image_loaded(self.S('img', this), function () {
-          self.equalize($eq_target)
+          if (ignore_media_query || Foundation.utils[media_query]()) {
+            self.equalize($eq_target)
+          } else {
+            var vals = $eq_target.find('[' + self.attr_name() + '-watch]:visible');
+            vals.css('height', 'auto');
+          }
         });
       });
     }

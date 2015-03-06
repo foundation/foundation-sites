@@ -62,6 +62,39 @@ You can create an equal height container using a few data attributes. Apply the 
   </div>
 </div>
 
+## Responsive Equalizer
+
+You can specify media queries for which equalizer should activate on. Apply the `data-equalizer-mq` attribute to the parent container. Set the value of the attribute to the smae media queries you're use to using in foundation. If you use an unknown media query, Equalizer will ignore the media query request. This is useful if you have set `equalize_on_stack` to `true`.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+<div class="row" data-equalizer data-equalizer-mq="large-up">
+  <div class="large-6 columns panel" data-equalizer-watch>
+    ...
+  </div>
+  <div class="large-6 columns panel" data-equalizer-watch>
+    ...
+  </div>
+</div>
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    <div class="row" data-equalizer data-equalizer-mq="large-up">
+      <div class="large-6 columns panel" data-equalizer-watch>
+        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+      </div>
+      <div class="large-6 columns panel" data-equalizer-watch>
+        <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 ## Nested Elements
 
 You can also nest "equalized" elements in other Equalizer elements. Apply the `data-equalizer` attribute to a parent container and assign a unique name to it. Then apply the `data-equalizer-watch` attribute to each nested element with the corresponding name. The height of `data-equalizer-watch` attribute will be equal to that of the tallest element.
@@ -288,6 +321,3 @@ Reflow will make Foundation check the DOM for any elements and re-apply any list
 $(document).foundation('equalizer', 'reflow');
 ```
 {{/markdown}}
-
-
-
