@@ -683,6 +683,10 @@ $include-html-global-classes: $include-html-classes;
 // $glowing-effect-fade-time: .45s;
 // $glowing-effect-color: $input-focus-border-color;
 
+// We use this to style the transition when inputs are focused and when the glowing effect is disabled.
+// $input-transition-fade-time: 0.15s !default;
+// $input-transition-fade-timing-function: linear !default;
+
 // Select variables
 // $select-bg-color: $ghost;
 // $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%);

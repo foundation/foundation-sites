@@ -74,6 +74,10 @@ $input-error-message-font-color-alt: $oil !default;
 $glowing-effect-fade-time: .45s !default;
 $glowing-effect-color: $input-focus-border-color !default;
 
+// We use this to style the transition when inputs are focused and when the glowing effect is disabled.
+$input-transition-fade-time: 0.15s !default;
+$input-transition-fade-timing-function: linear !default;
+
 // Select variables
 $select-bg-color: $ghost !default;
 $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
@@ -417,11 +421,11 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
       border-radius: 0;
       @include form-element;
       @if $input-include-glowing-effect == false {
-        -webkit-transition: border-color 0.15s linear, background 0.15s linear;
-        -moz-transition: border-color 0.15s linear, background 0.15s linear;
-        -ms-transition: border-color 0.15s linear, background 0.15s linear;
-        -o-transition: border-color 0.15s linear, background 0.15s linear;
-        transition: border-color 0.15s linear, background 0.15s linear;
+        -webkit-transition: border-color $input-transition-fade-time $input-transition-fade-timing-function, background $input-transition-fade-time $input-transition-fade-timing-function;
+        -moz-transition: border-color $input-transition-fade-time $input-transition-fade-timing-function, background $input-transition-fade-time $input-transition-fade-timing-function;
+        -ms-transition: border-color $input-transition-fade-time $input-transition-fade-timing-function, background $input-transition-fade-time $input-transition-fade-timing-function;
+        -o-transition: border-color $input-transition-fade-time $input-transition-fade-timing-function, background $input-transition-fade-time $input-transition-fade-timing-function;
+        transition: border-color $input-transition-fade-time $input-transition-fade-timing-function, background $input-transition-fade-time $input-transition-fade-timing-function;
       }
       &.radius {
         @include radius($input-border-radius);
