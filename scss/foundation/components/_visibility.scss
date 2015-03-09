@@ -390,6 +390,19 @@ $visibility-breakpoint-queries:
   th.hide-for-touch { display: table-cell !important; }
   .touch th.show-for-touch { display: table-cell !important; }
 
+  /* Screen reader-specific classes */
+  .show-for-sr {
+    @include element-invisible;
+  }
+  .show-on-focus {
+    @include element-invisible;
+
+    &:focus,
+    &:active {
+      @include element-invisible-off;
+    }
+  }
+
   // Only include these styles if you want them.
     @if $include-print-styles {
       /*
