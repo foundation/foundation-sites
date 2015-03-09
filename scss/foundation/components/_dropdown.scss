@@ -64,11 +64,11 @@ $f-dropdown-radius: $global-radius !default;
 // $triangle - Sets if dropdown has triangle. Default:true.
 // $max-width - Default: $f-dropdown-max-width || 200px.
 @mixin dropdown-container($content:list, $triangle:true, $max-width:$f-dropdown-max-width) {
-  position: absolute;
+  display: none;
   left: -9999px;
   list-style: $f-dropdown-list-style;
   margin-#{$default-float}: 0;
-  display: none;
+  position: absolute;
 
   &.open {
     display: block;
@@ -78,22 +78,22 @@ $f-dropdown-radius: $global-radius !default;
   > *:last-child { margin-bottom: 0; }
 
   @if $content == list {
-    width: 100%;
-    max-height: $f-dropdown-max-height;
-    height: $f-dropdown-height;
     background: $f-dropdown-bg;
     border: $f-dropdown-border-style $f-dropdown-border-width $f-dropdown-border-color;
     font-size: $f-dropdown-font-size;
+    height: $f-dropdown-height;
+    max-height: $f-dropdown-max-height;
+    width: 100%;
     z-index: 89;
   }
   @else if $content == content {
-    padding: $f-dropdown-content-padding;
-    width: 100%;
-    height: $f-dropdown-height;
-    max-height: $f-dropdown-max-height;
     background: $f-dropdown-bg;
     border: $f-dropdown-border-style $f-dropdown-border-width $f-dropdown-border-color;
     font-size: $f-dropdown-font-size;
+    height: $f-dropdown-height;
+    max-height: $f-dropdown-max-height;
+    padding: $f-dropdown-content-padding;
+    width: 100%;
     z-index: 89;
   }
 
@@ -173,23 +173,23 @@ $f-dropdown-radius: $global-radius !default;
   }
 
   @if $triangle == top {
-    margin-top: -$f-dropdown-margin-bottom;
     margin-left: 0;
+    margin-top: -$f-dropdown-margin-bottom;
 
     &:before {
       @include css-triangle($f-dropdown-triangle-size, $f-dropdown-triangle-color, top);
+      bottom: -($f-dropdown-triangle-size * 2);
       position: absolute;
       top: auto;
-      bottom: -($f-dropdown-triangle-size * 2);
       #{$default-float}: $f-dropdown-triangle-side-offset;
       #{$opposite-direction}: auto;
       z-index: 89;
     }
     &:after {
       @include css-triangle($f-dropdown-triangle-size + 1, $f-dropdown-border-color, top);
+      bottom: -($f-dropdown-triangle-size * 2) - 2;
       position: absolute;
       top: auto;
-      bottom: -($f-dropdown-triangle-size * 2) - 2;
       #{$default-float}: $f-dropdown-triangle-side-offset - 1;
       #{$opposite-direction}: auto;
       z-index: 88;
@@ -207,9 +207,8 @@ $f-dropdown-radius: $global-radius !default;
 // We use this to style the list elements or content inside the dropdown.
 
 @mixin dropdown-style {
-  font-size: $f-dropdown-font-size;
   cursor: $cursor-pointer-value;
-
+  font-size: $f-dropdown-font-size;
   line-height: $f-dropdown-line-height;
   margin: 0;
 
