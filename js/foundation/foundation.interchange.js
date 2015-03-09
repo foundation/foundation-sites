@@ -126,7 +126,6 @@
       for (var uuid in cache) {
         if (cache.hasOwnProperty(uuid)) {
           var passed = this.results(uuid, cache[uuid]);
-
           if (passed) {
             this.settings.directives[passed
               .scenario[1]].call(this, passed.el, passed.scenario[0], (function (passed) {
@@ -257,19 +256,25 @@
     parse_scenario : function (scenario) {
       // This logic had to be made more complex since some users were using commas in the url path
       // So we cannot simply just split on a comma
+
       var directive_match = scenario[0].match(/(.+),\s*(\w+)\s*$/),
-      media_query         = scenario[1];
+      // getting the mq has gotten a bit complicated since we started accounting for several use cases
+      // of URLs. For now we'll continue to match these scenarios, but we may consider having these scenarios
+      // as nested objects or arrays in F6.
+      // regex: match everything before close parenthesis for mq
+      media_query         = scenario[1].match(/(.*)\)/);
 
       if (directive_match) {
         var path  = directive_match[1],
         directive = directive_match[2];
+
       } else {
         var cached_split = scenario[0].split(/,\s*$/),
         path             = cached_split[0],
         directive        = '';
       }
 
-      return [this.trim(path), this.convert_directive(directive), this.trim(media_query)];
+      return [this.trim(path), this.convert_directive(directive), this.trim(media_query[1])];
     },
 
     object : function (el) {
@@ -279,10 +284,12 @@
 
       if (i > 0) {
         while (i--) {
-          var split = raw_arr[i].split(/\(([^\)]*?)(\))$/);
+          // split array between comma delimited content and mq
+          // regex: comma, optional space, open parenthesis
+          var scenario = raw_arr[i].split(/,\s?\(/);
 
-          if (split.length > 1) {
-            var params = this.parse_scenario(split);
+          if (scenario.length > 1) {
+            var params = this.parse_scenario(scenario);
             scenarios.push(params);
           }
         }
@@ -300,7 +307,6 @@
       }
 
       el.attr(this.add_namespace('data-uuid'), uuid);
-
       return this.cache[uuid] = scenarios;
     },
 
