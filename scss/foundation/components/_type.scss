@@ -276,8 +276,8 @@ $align-class-breakpoints:
     .subheader { @include subheader; }
 
     hr {
-      border-width: $hr-border-width 0 0;
       border: $hr-border-style $hr-border-color;
+      border-width: $hr-border-width 0 0;
       clear: both;
       height: 0;
       margin: $hr-margin 0 ($hr-margin - rem-calc($hr-border-width));
