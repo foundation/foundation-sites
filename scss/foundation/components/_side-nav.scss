@@ -62,20 +62,20 @@ $side-nav-divider-color: scale-color($white, $lightness: 10%) !default;
   $link-color-hover:$side-nav-link-color-hover,
   $link-bg-hover:$side-nav-link-bg-hover) {
   display: block;
+  font-family: $side-nav-font-family;
+  list-style-position: $side-nav-list-position;
+  list-style-type: $side-nav-list-type;
   margin: 0;
   padding: $side-nav-padding;
-  list-style-type: $side-nav-list-type;
-  list-style-position: $side-nav-list-position;
-  font-family: $side-nav-font-family;
 
   li {
-    margin: $side-nav-list-margin;
     font-size: $font-size;
     font-weight: $side-nav-font-weight;
+    margin: $side-nav-list-margin;
 
     a:not(.button) {
-      display: block;
       color: $link-color;
+      display: block;
       margin: $side-nav-link-margin;
       padding: $side-nav-link-padding;
       &:hover,
@@ -90,16 +90,16 @@ $side-nav-divider-color: scale-color($white, $lightness: 10%) !default;
 
     &.active > a:first-child:not(.button) {
       color: $side-nav-link-color-active;
-      font-weight: $side-nav-font-weight-active;
       font-family: $side-nav-font-family-active;
+      font-weight: $side-nav-font-weight-active;
     }
 
     &.divider {
+      border-top-color: $divider-color;
       border-top: $side-nav-divider-size $side-nav-divider-style;
       height: 0;
-      padding: 0;
       list-style: none;
-      border-top-color: $divider-color;
+      padding: 0;
     }
 
     &.heading {

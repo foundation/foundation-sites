@@ -69,6 +69,9 @@ $button-disabled-cursor: $cursor-default-value !default;
 
 @mixin button-base($style:true, $display:$button-display) {
   @if $style {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-radius:0;
     border-style: $button-border-style;
     border-width: $button-border-width;
     cursor: $cursor-pointer-value;
@@ -77,11 +80,8 @@ $button-disabled-cursor: $cursor-default-value !default;
     line-height: normal;
     margin: 0 0 $button-margin-bottom;
     position: relative;
-    text-decoration: none;
     text-align: $button-font-align;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    border-radius:0;
+    text-decoration: none;
   }
   @if $display { display: $display; }
 }
@@ -110,14 +110,14 @@ $button-disabled-cursor: $cursor-default-value !default;
   @if $full-width {
     // We still need to check if $padding is set.
     @if $padding {
-      padding-top: $padding;
       padding-bottom: $padding + rem-calc(1);
+      padding-top: $padding;
     } @else if $padding == false {
-      padding-top:0;
       padding-bottom:0;
+      padding-top:0;
     }
-    padding-right: 0;
     padding-left: 0;
+    padding-right: 0;
     width: 100%;
   }
 }
@@ -169,9 +169,9 @@ $button-disabled-cursor: $cursor-default-value !default;
 
   // We can set $disabled:true to create a disabled transparent button.
   @if $disabled {
+    box-shadow: none;
     cursor: $button-disabled-cursor;
     opacity: $button-disabled-opacity;
-    box-shadow: none;
     &:hover,
     &:focus { background-color: $bg; }
   }
