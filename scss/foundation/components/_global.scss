@@ -438,7 +438,8 @@ $cursor-text-value: text !default;
     img { -ms-interpolation-mode: bicubic; }
 
     #map_canvas,
-    .map_canvas {
+    .map_canvas,
+    .mqa-display {
       img,
       embed,
       object { max-width: none !important;
