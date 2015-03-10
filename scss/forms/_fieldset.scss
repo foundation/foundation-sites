@@ -1,0 +1,20 @@
+@mixin fieldset {
+  border: $fieldset-border-width $fieldset-border-style $fieldset-border-color;
+  padding: $fieldset-padding;
+  margin: $fieldset-margin;
+
+  // and legend styles
+  legend {
+    font-weight: $legend-font-weight;
+    background: $legend-bg;
+    padding: $legend-padding;
+    margin: 0;
+    margin-#{$default-float}: rem-calc(-3);
+  }
+}
+
+@mixin foundation-form-fieldset {
+  fieldset {
+    @include fieldset;
+  }
+}

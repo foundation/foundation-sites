@@ -1,0 +1,21 @@
+@mixin html5number($browser, $on:true) {
+  @if $on==false {
+      @if $browser==webkit {
+        -webkit-appearance: none;
+        margin: 0;
+      } @else if $browser==moz {
+        -moz-appearance: textfield;
+      }
+  }
+}
+
+@mixin foundation-form-number {
+  /* HTML5 Number spinners settings */
+  input[type=number] {
+    @include html5number(moz, $input-number-spinners)
+  }
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    @include html5number(webkit, $input-number-spinners);
+  }
+}

@@ -1,0 +1,35 @@
+@mixin form-label($alignment:false, $base-style:true) {
+
+  // Control whether or not the base styles come through.
+  @if $base-style {
+    font-size: $form-label-font-size;
+    color: $form-label-font-color;
+    cursor: $form-label-pointer;
+    display: block;
+    font-weight: $form-label-font-weight;
+    line-height: $form-label-line-height;
+    margin-bottom: $form-label-bottom-margin;
+  }
+
+  // Alignment options
+  @if $alignment == right {
+    float: none !important;
+    text-align: right;
+  }
+  @else if $alignment == inline {
+    margin: 0 0 $form-spacing 0;
+    padding: $form-spacing / 2 + rem-calc($input-border-width) 0;
+  }
+}
+
+@mixin foundation-form-label {
+  label { @include form-label;
+    &.right { @include form-label(right, false); }
+    &.inline { @include form-label(inline, false); }
+    /* Styles for required inputs */
+    small {
+      text-transform: $form-label-small-transform;
+      color: scale-color($form-label-font-color, $lightness: 15%);
+    }
+  }
+}

@@ -1,0 +1,22 @@
+@mixin foundation-form-checkbox {
+  input[type="file"],
+  input[type="checkbox"],
+  input[type="radio"],
+  select {
+    margin: 0 0 $form-spacing 0;
+  }
+
+  input[type="checkbox"] + label,
+  input[type="radio"] + label {
+    display: inline-block;
+    margin-#{$default-float}: $form-spacing * .5;
+    margin-#{$opposite-direction}: $form-spacing;
+    margin-bottom: 0;
+    vertical-align: baseline;
+  }
+
+  /* Normalize file input width */
+  input[type="file"] {
+    width:100%;
+  }
+}

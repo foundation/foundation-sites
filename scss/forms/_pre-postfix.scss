@@ -1,0 +1,77 @@
+@mixin prefix-postfix-base {
+  display: block;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  width: 100%;
+  padding-top: 0;
+  padding-bottom: 0;
+  border-style: $input-prefix-border-type;
+  border-width: $input-prefix-border-size;
+  overflow: $input-prefix-overflow;
+  font-size: $form-label-font-size;
+  height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
+  line-height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
+}
+
+@mixin prefix($bg:$input-prefix-bg, $border:$input-prefix-border-color, $is-button:false) {
+
+  @if $bg {
+    $bg-lightness: lightness($bg);
+    background: $bg;
+    border-#{$opposite-direction}: none;
+
+    // Control the font color based on background brightness
+    @if $bg-lightness > 70% or $bg == yellow { color: $input-prefix-font-color; }
+    @else { color: $input-prefix-font-color-alt; }
+  }
+
+  @if $border {
+    border-color: $border;
+  }
+
+  @if $is-button {
+    padding-#{$default-float}: 0;
+    padding-#{$opposite-direction}: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    text-align: center;
+    border: none;
+  }
+
+}
+
+@mixin postfix($bg:$input-prefix-bg, $border:$input-prefix-border-color, $is-button:false) {
+
+  @if $bg {
+    $bg-lightness: lightness($bg);
+    background: $bg;
+    border-#{$default-float}: none;
+
+    // Control the font color based on background brightness
+    @if $bg-lightness > 70%  or $bg == yellow { color: $input-prefix-font-color; }
+    @else { color: $input-prefix-font-color-alt; }
+  }
+
+  @if $border {
+    border-color: $border;
+  }
+
+  @if $is-button {
+    padding-#{$default-float}: 0;
+    padding-#{$opposite-direction}: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    text-align: center;
+    border: none;
+  }
+
+}
+
+@mixin foundation-form-prepostfix {
+  .prefix,
+  .postfix { @include prefix-postfix-base; }
+
+  // .postfix.button { @include button-size(false, false); @include postfix(false, false, true); }
+  // .prefix.button { @include button-size(false, false); @include prefix(false, false, true); }
+}

@@ -1,0 +1,69 @@
+@mixin form-element {
+  background-color: $input-bg-color;
+  font-family: $input-font-family;
+  border: {
+    style: $input-border-style;
+    width: $input-border-width;
+    color: $input-border-color;
+  }
+  box-shadow: $input-box-shadow;
+  color: $input-font-color;
+  display: block;
+  font-size: $input-font-size;
+  margin: 0 0 $form-spacing 0;
+  padding: $form-spacing / 2;
+  height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
+  width: 100%;
+  box-sizing: border-box;
+  @if $input-include-glowing-effect {
+    @include block-glowing-effect(focus, $glowing-effect-fade-time, $glowing-effect-color);
+  }
+  // Basic focus styles
+  &:focus {
+    background: $input-focus-bg-color;
+    border-color: $input-focus-border-color;
+    outline: none;
+  }
+  // Disbaled Styles
+  &:disabled {
+    background-color: $input-disabled-bg;
+    cursor: $input-disabled-cursor;
+  }
+
+  // Disabled background input background color
+  &[disabled],
+  &[readonly],
+  fieldset[disabled] & {
+    background-color: $input-disabled-bg;
+    cursor: $input-disabled-cursor;
+  }
+}
+
+@mixin foundation-form-text {
+  #{text-inputs(all, 'input')} {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-radius: 0;
+    @include form-element;
+    @if $input-include-glowing-effect == false {
+      transition: border-color 0.15s linear, background 0.15s linear;
+    }
+    &.radius {
+      border-radius: $input-border-radius;
+    }
+  }
+
+  input[type="submit"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-radius: 0;
+  }
+
+  textarea {
+    max-width: 100%;
+
+    &[rows] {
+      height: auto;
+    }
+  }
+}
