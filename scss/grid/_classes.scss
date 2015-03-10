@@ -68,7 +68,7 @@
       @for $i from 1 through $grid-column-count {
         // Column width
         .#{$size}-#{$i} {
-          width: grid-column($i);
+          @include grid-col-size($i);
         }
 
         // Source ordering

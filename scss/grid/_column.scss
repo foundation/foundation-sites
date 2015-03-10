@@ -43,7 +43,7 @@
   @return $width;
 }
 
-/// Outputs grid column CSS.
+/// Creates a grid column.
 ///
 /// @param {mixed} $columns - Width of the column. Refer to the `grid-column()` function to see possible values.
 /// @param {number} $gutter - Width of the gutters on either side of the column.
@@ -51,22 +51,24 @@
   $columns: $grid-column-count,
   $gutter: $grid-column-gutter
 ) {
+  @if ($columns < $grid-column-count) {
+    @include grid-column-size($columns);
+  }
   float: left;
-  width: grid-column($columns);
   padding: {
     left: $gutter;
     right: $gutter;
   };
 }
 
-/// Shorthand for grid-col().
+/// Shorthand for `grid-col()`.
 @function grid-col(
   $columns: $grid-column-count
 ) {
   @return grid-column($columns);
 }
 
-/// Shorthand for grid-col().
+/// Shorthand for `grid-col()`.
 @mixin grid-col(
   $columns: $grid-column-count,
   $gutter: $grid-column-gutter
