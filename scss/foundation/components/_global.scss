@@ -291,6 +291,7 @@ $shiny-edge-active-color: rgba(#000, .2) !default;
 // We use this to control whether or not CSS classes come through in the gem files.
 $include-html-classes: true !default;
 $include-print-styles: true !default;
+$include-js-meta-styles: true !default; // Meta styles are a dependancy of the Javascript.
 $include-html-global-classes: $include-html-classes !default;
 
 $column-gutter: rem-calc(30) !default;
@@ -341,61 +342,65 @@ $cursor-text-value: text !default;
 
 @include exports("global") {
 
-  // Meta styles are included in all builds, as they are a dependancy of the Javascript.
+  // Meta styles are a dependancy of the Javascript.
   // Used to provide media query values for javascript components.
   // Forward slash placed around everything to convince PhantomJS to read the value.
 
-  meta.foundation-version {
-    font-family: "/{{VERSION}}/";
-  }
+  @if $include-js-meta-styles {
 
-  meta.foundation-mq-small {
-    font-family: "/" + unquote($small-up) + "/";
-    width: lower-bound($small-range);
-  }
+    meta.foundation-version {
+      font-family: "/{{VERSION}}/";
+    }
 
-  meta.foundation-mq-small-only {
-    font-family: "/" + unquote($small-only) + "/";
-    width: lower-bound($small-range);
-  }
+    meta.foundation-mq-small {
+      font-family: "/" + unquote($small-up) + "/";
+      width: lower-bound($small-range);
+    }
 
-  meta.foundation-mq-medium {
-    font-family: "/" + unquote($medium-up) + "/";
-    width: lower-bound($medium-range);
-  }
+    meta.foundation-mq-small-only {
+      font-family: "/" + unquote($small-only) + "/";
+      width: lower-bound($small-range);
+    }
 
-  meta.foundation-mq-medium-only {
-    font-family: "/" + unquote($medium-only) + "/";
-    width: lower-bound($medium-range);
-  }
+    meta.foundation-mq-medium {
+      font-family: "/" + unquote($medium-up) + "/";
+      width: lower-bound($medium-range);
+    }
 
-  meta.foundation-mq-large {
-    font-family: "/" + unquote($large-up) + "/";
-    width: lower-bound($large-range);
-  }
+    meta.foundation-mq-medium-only {
+      font-family: "/" + unquote($medium-only) + "/";
+      width: lower-bound($medium-range);
+    }
 
-  meta.foundation-mq-large-only {
-    font-family: "/" + unquote($large-only) + "/";
-    width: lower-bound($large-range);
-  }
+    meta.foundation-mq-large {
+      font-family: "/" + unquote($large-up) + "/";
+      width: lower-bound($large-range);
+    }
 
-  meta.foundation-mq-xlarge {
-    font-family: "/" + unquote($xlarge-up) + "/";
-    width: lower-bound($xlarge-range);
-  }
+    meta.foundation-mq-large-only {
+      font-family: "/" + unquote($large-only) + "/";
+      width: lower-bound($large-range);
+    }
 
-  meta.foundation-mq-xlarge-only {
-    font-family: "/" + unquote($xlarge-only) + "/";
-    width: lower-bound($xlarge-range);
-  }
+    meta.foundation-mq-xlarge {
+      font-family: "/" + unquote($xlarge-up) + "/";
+      width: lower-bound($xlarge-range);
+    }
 
-  meta.foundation-mq-xxlarge {
-    font-family: "/" + unquote($xxlarge-up) + "/";
-    width: lower-bound($xxlarge-range);
-  }
+    meta.foundation-mq-xlarge-only {
+      font-family: "/" + unquote($xlarge-only) + "/";
+      width: lower-bound($xlarge-range);
+    }
 
-  meta.foundation-data-attribute-namespace {
-    font-family: #{$namespace};
+    meta.foundation-mq-xxlarge {
+      font-family: "/" + unquote($xxlarge-up) + "/";
+      width: lower-bound($xxlarge-range);
+    }
+
+    meta.foundation-data-attribute-namespace {
+      font-family: #{$namespace};
+    }
+
   }
 
   @if $include-html-global-classes {
