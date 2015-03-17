@@ -126,4 +126,12 @@ $menubar-expand-max: 6 !default;
       margin: 0 auto $menubar-icon-spacing auto;
     }
   }
+
+  // Nesting
+  &.nested {
+    > li > a {
+      $padding-left: get-side($menubar-item-padding, left);
+      padding-left: $padding-left * 2;
+    }
+  }
 }
