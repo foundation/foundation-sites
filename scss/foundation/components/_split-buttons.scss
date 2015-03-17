@@ -2,9 +2,9 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
-@import "buttons";
-@import "dropdown-buttons";
+@import 'global';
+@import 'buttons';
+@import 'dropdown-buttons';
 
 //
 // @name _split-buttons.scss
@@ -64,8 +64,8 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
 // $base-style - Apply base style to split button. Default: true.
 @mixin split-button(
   $padding:medium,
-  $pip-color:$split-button-pip-color, 
-  $span-border:$primary-color, 
+  $pip-color:$split-button-pip-color,
+  $span-border:$primary-color,
   $base-style:true) {
 
   // With this, we can control whether or not the base styles come through.
@@ -74,22 +74,22 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
 
     // Styling for the split arrow clickable area
     span {
+      border-#{$default-float}: solid 1px;
       display: block;
       height: 100%;
       position: absolute;
-      #{$opposite-direction}: 0;
       top: 0;
-      border-#{$default-float}: solid 1px;
+      #{$opposite-direction}: 0;
 
       // Building the triangle pip indicator
       &:after {
-        position: absolute;
-        content: "";
-        width: 0;
-        height: 0;
-        display: block;
         border-style: inset;
+        content: "";
+        display: block;
+        height: 0;
+        position: absolute;
         top: 50%;
+        width: 0;
 
         #{$default-float}: 50%;
       }
@@ -113,8 +113,8 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
       &:after {
         border-top-style: solid;
         border-width: $split-button-pip-size-tny;
-        top: 48%;
         margin-#{$default-float}: $split-button-pip-default-float-tny;
+        top: 48%;
       }
     }
   }
@@ -127,8 +127,8 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
       &:after {
         border-top-style: solid;
         border-width: $split-button-pip-size-sml;
-        top: 48%;
         margin-#{$default-float}: $split-button-pip-default-float-sml;
+        top: 48%;
       }
     }
   }
@@ -141,8 +141,8 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
       &:after {
         border-top-style: solid;
         border-width: $split-button-pip-size-med;
-        top: 48%;
         margin-#{$default-float}: $split-button-pip-default-float-med;
+        top: 48%;
       }
     }
   }
@@ -155,8 +155,8 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
       &:after {
         border-top-style: solid;
         border-width: $split-button-pip-size-lrg;
-        top: 48%;
         margin-#{$default-float}: $split-button-pip-default-float-lrg;
+        top: 48%;
       }
     }
   }
@@ -189,12 +189,12 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
         span:before{ border-style:none; }
         span:after{ border-style:none; }
         span>i{
-          top: 50%;
           display: block;
-          position: absolute;
           left: 50%;
           margin-left: -0.28889em;
           margin-top: -0.48889em;
+          position: absolute;
+          top: 50%;
         }
       }
     }

@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "../functions";
+@import '../functions';
 //
 // Foundation Variables
 //
@@ -91,11 +91,11 @@ $base-line-height: 1.5 !default;
 // $triangle-color - Used to set border-color which makes up triangle. No default
 // $triangle-direction - Used to determine which direction triangle points. Options: top, bottom, left, right
 @mixin css-triangle($triangle-size, $triangle-color, $triangle-direction) {
+  border: inset $triangle-size;
   content: "";
   display: block;
-  width: 0;
   height: 0;
-  border: inset $triangle-size;
+  width: 0;
   @if ($triangle-direction == top) {
     border-color: $triangle-color transparent transparent transparent;
     border-top-style: solid;
@@ -128,9 +128,9 @@ $base-line-height: 1.5 !default;
 @mixin hamburger($width, $left, $top, $thickness, $gap, $color, $hover-color, $offcanvas) {
   span::after {
     content: "";
-    position: absolute;
     display: block;
     height: 0;
+    position: absolute;
 
     @if $offcanvas {
       @if $top {
@@ -148,8 +148,8 @@ $base-line-height: 1.5 !default;
       }
     }
     @else {
-      top: 50%;
       margin-top: -($width/2);
+      top: 50%;
       #{$opposite-direction}: $topbar-link-padding;
     }
 
@@ -183,8 +183,8 @@ $base-line-height: 1.5 !default;
   transition: box-shadow $fade-time, border-color $fade-time ease-in-out;
 
   &:#{$selector} {
-    box-shadow: 0 0 5px $glowing-effect-color;
     border-color: $glowing-effect-color;
+    box-shadow: 0 0 5px $glowing-effect-color;
   }
 }
 
@@ -202,11 +202,11 @@ $base-line-height: 1.5 !default;
 // Makes an element visually hidden, but accessible.
 // @see http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
 @mixin element-invisible {
-  position: absolute !important;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute !important;
+  width: 1px;
 }
 
 // @mixins
@@ -420,14 +420,14 @@ $cursor-text-value: text !default;
     body {
       background: $body-bg;
       color: $body-font-color;
-      padding: 0;
-      margin: 0;
-      font-family: $body-font-family;
-      font-weight: $body-font-weight;
-      font-style: $body-font-style;
-      line-height: $base-line-height; // Set to $base-line-height to take on browser default of 150%
-      position: relative;
       cursor: $cursor-auto-value;
+      font-family: $body-font-family;
+      font-style: $body-font-style;
+      font-weight: $body-font-weight;
+      line-height: $base-line-height; // Set to $base-line-height to take on browser default of 150%
+      margin: 0;
+      padding: 0;
+      position: relative;
     }
 
   a:hover { cursor: $cursor-pointer-value; }
@@ -438,7 +438,8 @@ $cursor-text-value: text !default;
     img { -ms-interpolation-mode: bicubic; }
 
     #map_canvas,
-    .map_canvas {
+    .map_canvas,
+    .mqa-display {
       img,
       embed,
       object { max-width: none !important;

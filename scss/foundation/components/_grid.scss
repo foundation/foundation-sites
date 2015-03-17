@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 //
 // @variables
@@ -46,30 +46,30 @@ $last-child-float: $opposite-direction !default;
 
   // use @include grid-row(nest); to include a nested row
   @if $behavior == nest {
-    width: auto;
     margin: 0 (-($column-gutter/2));
     max-width: none;
+    width: auto;
   }
 
   // use @include grid-row(collapse); to collapsed a container row margins
   @else if $behavior == collapse {
-    width: 100%;
     margin: 0;
     max-width: $row-width;
+    width: 100%;
   }
 
   // use @include grid-row(nest-collapse); to collapse outer margins on a nested row
   @else if $behavior == nest-collapse {
-    width: auto;
     margin: 0;
     max-width: none;
+    width: auto;
   }
 
   // use @include grid-row; to use a container row
   @else {
-    width: 100%;
     margin: 0 auto;
     max-width: $row-width;
+    width: 100%;
   }
 
   // Clearfix for all rows
@@ -173,11 +173,11 @@ $last-child-float: $opposite-direction !default;
   }
 
   .#{$size}-reset-order {
+    float: $default-float;
+    left: auto;
     margin-#{$default-float}: 0;
     margin-#{$opposite-direction}: 0;
-    left: auto;
     right: auto;
-    float: $default-float;
   }
 
   .column.#{$size}-centered,
@@ -185,9 +185,9 @@ $last-child-float: $opposite-direction !default;
 
   .column.#{$size}-uncentered,
   .columns.#{$size}-uncentered {
+    float: $default-float;
     margin-#{$default-float}: 0;
     margin-#{$opposite-direction}: 0;
-    float: $default-float;
   }
 
   // Fighting [class*="column"] + [class*="column"]:last-child

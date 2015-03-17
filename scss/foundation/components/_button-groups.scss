@@ -2,8 +2,8 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
-@import "buttons";
+@import 'global';
+@import 'buttons';
 
 //
 // Button Group Variables
@@ -67,11 +67,11 @@ $button-group-border-width: 1px !default;
     $button-group-display: block;
     $button-group-margin: 0;
     > button, .button {
-      border-top: $button-group-border-width solid;
       border-color: rgba(255, 255, 255, .5);
       border-left-width: 0;
-      margin:0;
+      border-top: $button-group-border-width solid;
       display: block;
+      margin:0;
     }
     > button {
         width: 100%;

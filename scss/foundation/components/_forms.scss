@@ -2,8 +2,8 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
-@import "buttons";
+@import 'global';
+@import 'buttons';
 
 //
 // @variables
@@ -111,7 +111,6 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 // We use this mixin to give all basic form elements their style
 @mixin form-element {
   background-color: $input-bg-color;
-  font-family: $input-font-family;
   border: {
     style: $input-border-style;
     width: $input-border-width;
@@ -120,10 +119,11 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
   box-shadow: $input-box-shadow;
   color: $input-font-color;
   display: block;
+  font-family: $input-font-family;
   font-size: $input-font-size;
+  height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
   margin: 0 0 $form-spacing 0;
   padding: $form-spacing / 2;
-  height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
   width: 100%;
   @include box-sizing(border-box);
   @if $input-include-glowing-effect {
@@ -160,10 +160,10 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 
   // Control whether or not the base styles come through.
   @if $base-style {
-    font-size: $form-label-font-size;
     color: $form-label-font-color;
     cursor: $form-label-pointer;
     display: block;
+    font-size: $form-label-font-size;
     font-weight: $form-label-font-weight;
     line-height: $form-label-line-height;
     margin-bottom: $form-label-bottom-margin;
@@ -182,19 +182,19 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 
 // We use this mixin to create postfix/prefix form Labels
 @mixin prefix-postfix-base {
-  display: block;
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  width: 100%;
-  padding-top: 0;
-  padding-bottom: 0;
   border-style: $input-prefix-border-type;
   border-width: $input-prefix-border-size;
-  overflow: $input-prefix-overflow;
+  display: block;
   font-size: $form-label-font-size;
   height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
   line-height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
+  overflow: $input-prefix-overflow;
+  padding-bottom: 0;
+  padding-top: 0;
+  position: relative;
+  text-align: center;
+  width: 100%;
+  z-index: 2;
 }
 
 // @MIXIN
@@ -220,12 +220,12 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
   }
 
   @if $is-button {
+    border: none;
     padding-#{$default-float}: 0;
     padding-#{$opposite-direction}: 0;
-    padding-top: 0;
     padding-bottom: 0;
+    padding-top: 0;
     text-align: center;
-    border: none;
   }
 
 }
@@ -252,12 +252,12 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
   }
 
   @if $is-button {
+    border: none;
     padding-#{$default-float}: 0;
     padding-#{$opposite-direction}: 0;
-    padding-top: 0;
     padding-bottom: 0;
+    padding-top: 0;
     text-align: center;
-    border: none;
   }
 
 }
@@ -265,16 +265,16 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 // We use this mixin to style fieldsets
 @mixin fieldset {
   border: $fieldset-border-width $fieldset-border-style $fieldset-border-color;
-  padding: $fieldset-padding;
   margin: $fieldset-margin;
+  padding: $fieldset-padding;
 
   // and legend styles
   legend {
-    font-weight: $legend-font-weight;
     background: $legend-bg;
-    padding: $legend-padding;
-    margin: 0;
+    font-weight: $legend-font-weight;
     margin-#{$default-float}: rem-calc(-3);
+    margin: 0;
+    padding: $legend-padding;
   }
 }
 
@@ -283,8 +283,8 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 // We use this mixin to control border and background color of error inputs
 // $color - Default: $alert-color (found in settings file)
 @mixin form-error-color($color:$alert-color) {
-  border-color: $color;
   background-color: rgba($color, .1);
+  border-color: $color;
 
   // Go back to normal on focus
   &:focus {
@@ -305,12 +305,12 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 // $bg - Default: $alert-color (Found in settings file)
 @mixin form-error-message($bg:$input-error-message-bg-color) {
   display: block;
-  padding: $input-error-message-padding;
-  margin-top: $input-error-message-top;
-  margin-bottom: $form-spacing;
   font-size: $input-error-message-font-size;
-  font-weight: $input-error-message-font-weight;
   font-style: $input-error-message-font-style;
+  font-weight: $input-error-message-font-weight;
+  margin-bottom: $form-spacing;
+  margin-top: $input-error-message-top;
+  padding: $input-error-message-padding;
 
   // We can control the text color based on the brightness of the background.
   $bg-lightness: lightness($bg);
@@ -323,8 +323,8 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 @mixin form-select  {
   -webkit-appearance: none !important;
   -moz-appearance: none !important;
-  border-radius: 0;
   background-color: $select-bg-color;
+  border-radius: 0;
 
   // Hide the dropdown arrow shown in newer IE versions
   &::-ms-expand {
@@ -344,11 +344,11 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
     width: $input-border-width;
     color: $input-border-color;
   }
-  padding: ($form-spacing / 2);
-  font-size: $input-font-size;
-  font-family: $input-font-family;
   color: $input-font-color;
+  font-family: $input-font-family;
+  font-size: $input-font-size;
   line-height: normal;
+  padding: ($form-spacing / 2);
   @include radius(0);
   &.radius { @include radius($global-radius); }
   &:hover {
@@ -558,14 +558,14 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 
       > label {
         > small {
-          color: scale-color($form-label-font-color, $lightness: 15%);
           background: transparent;
+          color: scale-color($form-label-font-color, $lightness: 15%);
+          display: inline;
+          font-size: 60%;
+          font-style: normal;
+          margin: 0;
           padding: 0;
           text-transform: $form-label-small-transform;
-          font-style: normal;
-          font-size: 60%;
-          margin: 0;
-          display: inline;
         }
       }
 

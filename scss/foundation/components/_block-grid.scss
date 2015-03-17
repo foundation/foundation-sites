@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 //
 // Block Grid Variables
@@ -50,8 +50,8 @@ $block-grid-media-queries: true !default;
 
     > li {
       display: block;
-      height: auto;
       float: $default-float;
+      height: auto;
       @if $include-spacing {
         padding: 0 ($spacing/2) $spacing;
       }
@@ -60,11 +60,11 @@ $block-grid-media-queries: true !default;
 
   @if $per-row {
     > li {
-      width: 100%/$per-row;
+      list-style: none;
       @if $include-spacing {
         padding: 0 ($spacing/2) $spacing;
       }
-      list-style: none;
+      width: 100%/$per-row;
 
       &:nth-of-type(1n) { clear: none; }
       &:nth-of-type(#{$per-row}n+1) { clear: both; }

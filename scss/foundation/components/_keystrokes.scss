@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 //
 // @variables
@@ -34,7 +34,6 @@ $keystroke-radius: $global-radius !default;
 @mixin keystroke($bg:$keystroke-bg) {
   // This find the lightness percentage of the background color.
   $bg-lightness: lightness($bg);
-
   background-color: $bg;
   border-color: scale-color($bg, $lightness: $keystroke-function-factor);
 
@@ -44,9 +43,9 @@ $keystroke-radius: $global-radius !default;
 
   border-style: $keystroke-border-style;
   border-width: $keystroke-border-width;
-  margin: 0;
   font-family: $keystroke-font;
   font-size: $keystroke-font-size;
+  margin: 0;
   padding: $keystroke-padding;
 }
 

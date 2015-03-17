@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 $include-html-type-classes: $include-html-classes !default;
 
@@ -216,8 +216,8 @@ $align-class-breakpoints:
     /* Default Link Styles */
     a {
       color: $anchor-font-color;
-      text-decoration: $anchor-text-decoration;
       line-height: inherit;
+      text-decoration: $anchor-text-decoration;
 
       &:hover,
       &:focus {
@@ -233,8 +233,8 @@ $align-class-breakpoints:
     /* Default paragraph styles */
     p {
       font-family: $paragraph-font-family;
-      font-weight: $paragraph-font-weight;
       font-size: $paragraph-font-size;
+      font-weight: $paragraph-font-weight;
       line-height: $paragraph-line-height;
       margin-bottom: $paragraph-margin-bottom;
       text-rendering: $paragraph-text-rendering;
@@ -243,25 +243,25 @@ $align-class-breakpoints:
 
       & aside {
         font-size: $paragraph-aside-font-size;
-        line-height: $paragraph-aside-line-height;
         font-style: $paragraph-aside-font-style;
+        line-height: $paragraph-aside-line-height;
       }
     }
 
     /* Default header styles */
     h1, h2, h3, h4, h5, h6 {
-      font-family: $header-font-family;
-      font-weight: $header-font-weight;
-      font-style: $header-font-style;
       color: $header-font-color;
-      text-rendering: $header-text-rendering;
-      margin-top: $header-top-margin;
-      margin-bottom: $header-bottom-margin;
+      font-family: $header-font-family;
+      font-style: $header-font-style;
+      font-weight: $header-font-weight;
       line-height: $header-line-height;
+      margin-bottom: $header-bottom-margin;
+      margin-top: $header-top-margin;
+      text-rendering: $header-text-rendering;
 
       small {
-        font-size: $small-font-size;
         color: $small-font-color;
+        font-size: $small-font-size;
         line-height: 0;
       }
     }
@@ -279,8 +279,8 @@ $align-class-breakpoints:
       border: $hr-border-style $hr-border-color;
       border-width: $hr-border-width 0 0;
       clear: both;
-      margin: $hr-margin 0 ($hr-margin - rem-calc($hr-border-width));
       height: 0;
+      margin: $hr-margin 0 ($hr-margin - rem-calc($hr-border-width));
     }
 
     /* Helpful Typography Defaults */
@@ -302,13 +302,13 @@ $align-class-breakpoints:
     }
 
     code {
+      background-color: $code-background-color;
+      border-color: $code-border-color;
+      border-style: $code-border-style;
+      border-width: $code-border-size;
+      color: $code-color;
       font-family: $code-font-family;
       font-weight: $code-font-weight;
-      color: $code-color;
-      background-color: $code-background-color;
-      border-width: $code-border-size;
-      border-style: $code-border-style;
-      border-color: $code-border-color;
       padding: $code-padding;
     }
 
@@ -316,11 +316,11 @@ $align-class-breakpoints:
     ul,
     ol,
     dl {
+      font-family: $list-font-family;
       font-size: $list-font-size;
       line-height: $list-line-height;
-      margin-bottom: $list-margin-bottom;
       list-style-position: $list-style-position;
-      font-family: $list-font-family;
+      margin-bottom: $list-margin-bottom;
     }
 
     ul {
