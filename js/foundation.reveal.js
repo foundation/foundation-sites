@@ -31,14 +31,14 @@
      * @sample fadeIn
      */
     animationIn: 'fadeIn'
-  }
+  };
 
   /**
    * Initializes the Reveal plugin
    * @private
    */
   Reveal.prototype._init = function() {
-  }
+  };
 
   Foundation.plugin('reveal', Reveal);
 
@@ -50,4 +50,4 @@
       return Reveal;
     });
 
-}(Foundation, jQuery)
+}(Foundation, jQuery);

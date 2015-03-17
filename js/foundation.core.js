@@ -1,5 +1,6 @@
 !function($) {
   // Polyfill to get the name of a function in IE9
+  "use strict";
   if (Function.prototype.name === undefined && Object.defineProperty !== undefined) {
     Object.defineProperty(Function.prototype, 'name', {
       get: function() {
@@ -107,7 +108,7 @@
       this._uuids.push(uuid);
       return uuid;
     }
-  }
+  };
 
   /**
    * The Foundation jQuery method.
@@ -126,8 +127,8 @@
     }
 
     return this;
-  }
+  };
 
   window.Foundation = Foundation;
   $.fn.foundation = foundation;
-}(jQuery)
+}(jQuery);
