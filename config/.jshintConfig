@@ -1,0 +1,10 @@
+{
+  "boss":      true,
+  "node":      true,
+  "strict":    true,
+  "newcap":    false,
+  "undef":     true,
+  "unused":    true,
+  "onecase":   true,
+  "lastsemic": true
+}

@@ -37,13 +37,15 @@ gulp.task('javascript', function() {
 
 // Lints Sass files for formatting issues
 gulp.task('lint', function() {
+  $.jshint.lookup = false;
+  
   gulp.src(['scss/**/*.scss', '!scss/vendor/**/*.scss', '!scss/components_old/**/*.scss'])
     .pipe($.scssLint({
       'config': 'config/scss-lint.yml'
     }));
   gulp.src('js/*.js')
-    .pipe($.jshint())
-    .pipe(jshint.reporter('default'));
+    .pipe($.jshint('./config/.jshintConfig'))
+    .pipe($.jshint.reporter('default'));
 });
 
 // Runs unit tests
