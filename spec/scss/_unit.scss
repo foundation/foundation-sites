@@ -1,0 +1,46 @@
+@import "util/value";
+
+@include describe("Strip Unit") {
+  @include it("strips the unit from a number") {
+    $actual: strip-unit(20px);
+    $expected: 20;
+
+    @include should(expect($actual), to(be($expected)));
+  }
+  @include it("returns the same number when given a unitless value") {
+    $actual: strip-unit(20);
+    $expected: 20;
+
+    @include should(expect($actual), to(be($expected)));
+  }
+}
+
+@include describe("Turn to Degrees") {
+  @include it("converts a turn value to the equivalent in degrees") {
+    $halfTurn:   turn-to-deg(0.5turn);
+    $fullTurn:   turn-to-deg(1turn);
+    $doubleTurn: turn-to-deg(2turn);
+
+    @include should(expect($halfTurn), to(be(180deg)));
+    @include should(expect($fullTurn), to(be(360deg)));
+    @include should(expect($doubleTurn), to(be(720deg)));
+  }
+}
+
+@include describe("Convert to Rem") {
+  @include it("converts a unit to the equivalent in rems") {
+    $actual: rem-calc(32, $base-value: 16);
+    $expected: 2rem;
+
+    @include should(expect($actual), to(be($expected)));
+  }
+}
+
+@include describe("Rem Calculator") {
+  @include it("converts an arbitrary number of values into rem equivalents") {
+    $actual: rem-calc(8 16 32 64, $base-value: 16);
+    $expected: 0.5rem 1rem 2rem 4rem;
+
+    @include should(expect($actual), to(be($expected)));
+  }
+}

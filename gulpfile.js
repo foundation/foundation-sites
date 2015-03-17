@@ -46,6 +46,18 @@ gulp.task('lint', function() {
     .pipe(jshint.reporter('default'));
 });
 
+// Runs unit tests
+gulp.task('test', function() {
+  return $.rubySass('./spec/scss/spec.scss', {
+    loadPath: ['scss', 'bower_components/bootcamp/dist'],
+    style: 'nested',
+    quiet: true
+  })
+    .on('data', function(data) {
+      console.log(data.contents.toString());
+    });
+})
+
 // Runs all of the above tasks and then waits for files to change
 gulp.task('default', ['html', 'sass', 'javascript'], function() {
   gulp.watch('docs/**/*.html', ['html']);
