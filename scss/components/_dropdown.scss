@@ -1,0 +1,20 @@
+.menu-bar > .has-dropdown {
+  position: relative;
+}
+
+.nested.menu-bar {
+  display: none;
+  position: absolute;
+  top: 100%;
+  width: auto;
+  white-space: nowrap;
+
+  .vertical > li > & {
+    top: 0;
+    left: 100%;
+  }
+
+  .has-dropdown:hover > & {
+    display: block;
+  }
+}
