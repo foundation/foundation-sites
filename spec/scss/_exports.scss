@@ -1,0 +1,23 @@
+@import "util/exports";
+
+@include describe("Using") {
+  @include it("checks if a module is in use") {
+    $include-css: (
+      one: true,
+      two: false,
+    ) !global;
+
+    @include should(expect(using(one)), to(be(true)));
+    @include should(expect(using(two)), to(be(false)));
+  }
+}
+
+@include describe("Imported") {
+  @include it("checks if a module has already been imported") {
+    $modules: () !global;
+
+    @include should(expect(imported(test)), to(be(false)));
+    @include export(test) {}
+    @include should(expect(imported(test)), to(be(true)));
+  }
+}
