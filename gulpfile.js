@@ -41,6 +41,9 @@ gulp.task('lint', function() {
     .pipe($.scssLint({
       'config': 'config/scss-lint.yml'
     }));
+  gulp.src('js/*.js')
+    .pipe($.jshint())
+    .pipe(jshint.reporter('default'));
 });
 
 // Runs all of the above tasks and then waits for files to change

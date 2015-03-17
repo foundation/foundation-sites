@@ -20,6 +20,10 @@
     _plugins: {},
 
     /**
+     * Stores generated unique ids for plugin instances
+     */
+    _uuids: [],
+    /**
      * Defines a Foundation plugin, adding it to the `Foundation` namespace and the list of plugins to initialize when reflowing.
      * @param {String} name - Formal name of the component.
      * @param {String} attr - Data attribute used to find instances of this plugin. It's usually the same as the plugin name, but it may be different.
@@ -86,6 +90,22 @@
           $(this).data('zf-plugin', new plugin($(this), options));
         });
       });
+    },
+    /**
+     * Generate a unique 16-character id to assign to an element to account for multiple instances of a plugin
+     */
+    generateUuid: function() {
+      var uuid = '';
+
+      do {
+        uuid += 'zf-uuid-';
+        for (var i=0; i<16; i++) {
+          uuid += Math.floor(Math.random()*16).toString(16);
+        }
+      } while(!this._uuids.indexOf(uuid));
+
+      this._uuids.push(uuid);
+      return uuid;
     }
   }
 
