@@ -90,6 +90,23 @@ $menubar-expand-max: 6 !default;
     }
   }
 
+  // Responsive alignment
+  @each $size in $breakpoint-classes {
+    @if $size != small {
+      &.#{$size}-horizontal {
+        > li {
+          float: left;
+        }
+      }
+      &.#{$size}-vertical {
+        > li {
+          width: 100%;
+          float: none;
+        }
+      }
+    }
+  }
+
   // Primary color
   &.primary {
     background: $primary-color;
