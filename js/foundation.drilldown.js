@@ -5,12 +5,13 @@
    * Creates a new instance of Drilldown.
    * @class
    * @fires Drilldown#init
-   * @param {Object} element - jQuery object to make into a drilldown menu.
+   * @param {jQuery} element - jQuery object to make into a drilldown menu.
    * @param {Object} options - Overrides to the default plugin settings.
    */
   function Drilldown(element, options) {
     this.$element = element;
-    this.options = $.extend(this.defaults, options);
+    this.options = $.extend(this.defaults, options || {});
+    console.log(this.defaults);
 
     this.$container = $();
     this.$currentMenu = this.$element;
@@ -24,8 +25,14 @@
     this.$element.trigger('init.zf.drilldown');
   }
 
-  Drilldown.defaults = {}
+  Drilldown.prototype.defaults = {
+    backButton: '<li><a class="js-drilldown-back">Back</a></li>'
+  }
 
+  /**
+   * Initializes the Drilldown by creating a container to wrap the menu bar in, and initializing all submenus.
+   * @private
+   */
   Drilldown.prototype._init = function() {
     this.$container = $('<div class="js-drilldown"></div>');
     this.$container.css('width', this.$element.css('width'));
@@ -33,12 +40,18 @@
     this._prepareMenu(this.$element, true);
   }
 
+  /**
+   * Scans a menu bar for any sub menu bars inside of it. This is a recursive function, so when a sub menu is found, this method will be called on that sub menu.
+   * @private
+   * @param {jQuery} $elem - Menu to scan for sub menus.
+   * @param {Boolean} root - If true, the menu being scanned is at the root level.
+   */
   Drilldown.prototype._prepareMenu = function($elem, root) {
     var _this = this;
 
-    // Create a trigger to move up the menu
+    // Create a trigger to move up the menu. This is not used on the root-level menu, because it doesn't need a back button.
     if (!root) {
-      var $backButton = $('<li><a class="js-drilldown-back">Back</a></li>');
+      var $backButton = $(_this.options.backButton);
       $backButton.click(function() {
         _this.backward();
       });
@@ -65,15 +78,22 @@
     });
   }
 
+  /**
+   * Moves down the drilldown by activating the menu specified in `$target`.
+   * @param {jQuery} $target - Sub menu to activate.
+   */
   Drilldown.prototype.forward = function($target) {
     $target.addClass('js-drilldown-active');
     this.$currentMenu = $target;
   }
 
+  /**
+   * Moves up the drilldown by deactivating the current menu.
+   */
   Drilldown.prototype.backward = function() {
     this.$currentMenu.removeClass('js-drilldown-active');
     this.$currentMenu = this.$currentMenu.parents('[data-drilldown], [data-submenu]');
   }
 
   Foundation.plugin('drilldown', Drilldown);
-}(window.Foundation, jQuery)
+}(Foundation, jQuery)
