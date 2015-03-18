@@ -8,6 +8,7 @@
   "onecase":   true,
   "lastsemic": true,
   "expr":      true,
+  "eqeqeq":    true,
   "jquery":    true,
   "browser":   true,
   "predef":    ["Foundation", "define"]
