@@ -11,7 +11,6 @@
   function Drilldown(element, options) {
     this.$element = element;
     this.options = $.extend(this.defaults, options || {});
-    console.log(this.defaults);
 
     this.$container = $();
     this.$currentMenu = this.$element;
@@ -80,19 +79,33 @@
 
   /**
    * Moves down the drilldown by activating the menu specified in `$target`.
+   * @fires Drilldown#forward
    * @param {jQuery} $target - Sub menu to activate.
    */
   Drilldown.prototype.forward = function($target) {
     $target.addClass('js-drilldown-active');
     this.$currentMenu = $target;
+
+    /**
+     * Fires when the menu is done moving forwards.
+     * @event Drilldown#forward
+     */
+    this.$element.trigger('forward.zf.drilldown', [this.$currentMenu]);
   }
 
   /**
    * Moves up the drilldown by deactivating the current menu.
+   * @fires Drilldown#backward
    */
   Drilldown.prototype.backward = function() {
     this.$currentMenu.removeClass('js-drilldown-active');
     this.$currentMenu = this.$currentMenu.parents('[data-drilldown], [data-submenu]');
+
+    /**
+     * Fires when the menu is done moving backwards.
+     * @event Drilldown#backward
+     */
+    this.$element.trigger('backward.zf.drilldown', [this.$currentMenu]);
   }
 
   Foundation.plugin('drilldown', Drilldown);
