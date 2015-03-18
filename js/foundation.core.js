@@ -93,6 +93,25 @@
       });
     },
     /**
+     * Executes a function a max of once every n milliseconds. Returns a function with throttling applied.
+     * @param {Function} func - Function to be throttled.
+     * @param {Integer} delay - A list of plugins to initialize. Leave this out to initialize everything.
+     */
+    throttle : function (func, delay) {
+      var timer = null;
+
+      return function () {
+        var context = this, args = arguments;
+
+        if (timer == null) {
+          timer = setTimeout(function () {
+            func.apply(context, args);
+            timer = null;
+          }, delay);
+        }
+      };
+    },
+    /**
      * Generate a unique 16-character id to assign to an element to account for multiple instances of a plugin
      */
     generateUuid: function() {
