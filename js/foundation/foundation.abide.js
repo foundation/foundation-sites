@@ -242,7 +242,7 @@
               all_valid = valid && last_valid;
               last_valid = valid;
           }
-          if (valid) {
+          if (all_valid) {
               this.S(el).removeAttr(this.invalid_attr);
               parent.removeClass('error');
               $(el).triggerHandler('valid');
