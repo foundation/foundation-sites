@@ -1,3 +1,11 @@
+$form-label-pointer: pointer !default;
+$form-label-font-size: rem-calc(14) !default;
+$form-label-font-weight: $font-weight-normal !default;
+$form-label-line-height: 1.5 !default;
+$form-label-font-color: scale-color(#000, $lightness: 30%) !default;
+$form-label-small-transform: capitalize !default;
+$form-label-bottom-margin: 0 !default;
+
 @mixin form-label($alignment:false, $base-style:true) {
 
   // Control whether or not the base styles come through.

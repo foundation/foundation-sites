@@ -1,3 +1,12 @@
+$input-error-message-padding: rem-calc(6 9 9) !default;
+$input-error-message-top: -1px !default;
+$input-error-message-font-size: rem-calc(12) !default;
+$input-error-message-font-weight: $font-weight-normal !default;
+$input-error-message-font-style: italic !default;
+$input-error-message-font-color: #fff !default;
+$input-error-message-bg-color: $alert-color !default;
+$input-error-message-font-color-alt: #333 !default;
+
 // @MIXIN
 //
 // We use this mixin to control border and background color of error inputs

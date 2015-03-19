@@ -1,3 +1,20 @@
+$input-font-family: inherit !default;
+$input-font-color: rgba(0,0,0,0.75) !default;
+$input-font-size: rem-calc(14) !default;
+$input-bg-color: #fff !default;
+$input-focus-bg-color: scale-color(#fff, $lightness: -2%) !default;
+$input-border-color: scale-color(#fff, $lightness: -20%) !default;
+$input-focus-border-color: scale-color(#fff, $lightness: -40%) !default;
+$input-border-style: solid !default;
+$input-border-width: 1px !default;
+$input-border-radius: $global-radius !default;
+$input-disabled-bg: #ddd !default;
+$input-disabled-cursor: $cursor-default-value !default;
+$input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1) !default;
+$input-include-glowing-effect: false !default;
+$glowing-effect-fade-time: .45s !default;
+$glowing-effect-color: $input-focus-border-color !default;
+
 @mixin form-element {
   background-color: $input-bg-color;
   font-family: $input-font-family;

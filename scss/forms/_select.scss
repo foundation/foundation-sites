@@ -1,3 +1,7 @@
+// Select variables
+$select-bg-color: #fafafa !default;
+$select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
+
 @mixin form-select  {
   -webkit-appearance: none !important;
   -moz-appearance: none !important;

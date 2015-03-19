@@ -1,3 +1,11 @@
+$input-prefix-bg: scale-color(#fff, $lightness: -5%) !default;
+$input-prefix-border-color: scale-color(#fff, $lightness: -20%) !default;
+$input-prefix-border-size: 1px !default;
+$input-prefix-border-type: solid !default;
+$input-prefix-overflow: visible !default;
+$input-prefix-font-color: #333 !default;
+$input-prefix-font-color-alt: #fff !default;
+
 @mixin prefix-postfix-base {
   display: block;
   position: relative;

@@ -1,3 +1,5 @@
+$input-number-spinners: true !default;
+
 @mixin html5number($browser, $on:true) {
   @if $on==false {
       @if $browser==webkit {
