@@ -1,0 +1,83 @@
+/*
+  Label
+*/
+.label {
+  line-height: 1;
+  white-space: nowrap;
+  display: inline-block;
+  cursor: default; 
+  font-size: 0.8rem;
+  padding: 0.33333rem 0.5rem;
+  background: $primary-color;
+  border-radius: 0;
+  color: #fff; 
+}
+
+.label.success {
+  background: $success-color;
+  border-radius: 0;
+  color: #fff; 
+}
+
+.label.warning {
+  background: $warning-color;
+  border-radius: 0;
+  color: #fff; 
+}
+
+.label.alert {
+  background: $alert-color;
+  border-radius: 0;
+  color: #fff; 
+}
+
+.label.secondary {
+  background: $secondary-color;
+  border-radius: 0;
+  color: #fff; 
+}
+
+.label.info {
+  background: $info-color;
+  border-radius: 0;
+  color: #fff; 
+}
+
+/*
+  Badge
+*/
+.badge {
+  border-radius: 50%;
+  display: inline-block;
+  padding: 0.5em;
+  min-width: 2.4em;
+  font-size: .8rem;
+  text-align: center;
+  background: $primary-color;
+  color: #fff; 
+}
+
+.badge.secondary {
+  background: $secondary-color;
+  color: #000; 
+}
+
+.badge.success {
+  background: $success-color;
+  color: #fff; 
+}
+
+.badge.warning {
+  background: $warning-color;
+  color: #fff; 
+}
+
+.badge.alert {
+  background: $alert-color;
+  color: #fff; 
+}
+
+.badge.info {
+  background: $info-color;
+  color: #fff; 
+}
