@@ -290,7 +290,7 @@
             $(el).triggerHandler('invalid');
           }
         }
-        validations.push(el_validations[0]);
+        validations = validations.concat(el_validations);
       }
       return validations;
     },
