@@ -9,7 +9,7 @@
 /// @param {color} $no - Color to return if $color is dark.
 /// @param {percentage} $threshold - Threshold of lightness to check against.
 ///
-/// @return The $yes color or $no color.
+/// @returns {Color} The $yes color or $no color.
 @function foreground($color, $yes: #000, $no: #fff, $threshold: 60%) {
   @if $color == transparent {
     $color: $body-bg;
@@ -27,7 +27,7 @@
 /// @param {percentage} $scale - Amount to scale up or down.
 /// @param {percentage} $threshold - Threshold of lightness to check against.
 ///
-/// @return A scaled color.
+/// @returns {Color} A scaled color.
 @function smart-scale($color, $scale: 5%, $threshold: 60%) {
   @if lightness($color) > $threshold {
     $scale: -$scale;
