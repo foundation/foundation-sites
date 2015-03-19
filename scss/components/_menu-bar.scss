@@ -119,6 +119,55 @@ $menubar-expand-max: 6 !default;
   }
 }
 
+/// Changes the default colors of a menu bar.
+@mixin menu-bar-style {
+  background: $primary-color;
+
+  > li > a {
+    color: foreground($primary-color);
+
+    &:hover,
+    &:focus {
+      background: smart-scale($primary-color);
+    }
+  }
+}
+
+/// Adds support for icons to menu bar items.
+/// @param {Keyword} $position [side] - Positioning for icons. Can be `side` (left, or right on RTL) or `top`.
+/// @param {Boolean} $base [true] - Set to `false` to prevent the shared CSS between side- and top-aligned icons from being printed. Set this to `false` if you're calling the mixin multiple times on the same element.
+@mixin menu-bar-icons($position: side, $base: true) {
+  @if $base {
+    > li > a {
+      > img {
+        vertical-align: middle;
+      }
+      > span {
+        vertical-align: middle;
+      }
+    }
+  }
+
+  @if $position == side {
+    > li > a {
+      > img {
+        display: inline-block;
+        margin-right: $menubar-icon-spacing;
+      }
+    }
+  }
+  @else if $position == top {
+    > li > a {
+      text-align: center;
+
+      > img {
+        display: block;
+        margin: 0 auto $menubar-icon-spacing auto;
+      }
+    }
+  }
+}
+
 .menu-bar {
   @include menu-bar-base;
 
@@ -165,38 +214,15 @@ $menubar-expand-max: 6 !default;
 
   // Primary color
   &.primary {
-    background: $primary-color;
-
-    > li > a {
-      color: foreground($primary-color);
-
-      &:hover,
-      &:focus {
-        background: smart-scale($primary-color);
-      }
-    }
+    @include menu-bar-style;
   }
 
   // Icons
-  > li > a {
-    > img {
-      vertical-align: middle;
-      display: inline-block;
-      margin-right: $menubar-icon-spacing;
-    }
-    > span {
-      vertical-align: middle;
-    }
-  }
+  @include menu-bar-icons;
 
   // Vertical icons
-  &.icon-top > li > a {
-    text-align: center;
-
-    > img {
-      display: block;
-      margin: 0 auto $menubar-icon-spacing auto;
-    }
+  &.icon-top {
+    @include menu-bar-icons(top, $base: false);
   }
 
   // Nesting
