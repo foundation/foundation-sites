@@ -36,7 +36,8 @@
      */
     _init: function() {
       var heights = this.getHeights(this.$element);
-      this.applyHeight(this.$element, heights);  
+      this.applyHeight(this.$element, heights);
+
     },
 
     /**
@@ -72,11 +73,12 @@
      * @return {array} heights - An array of heights of children within Equalizer container
      */
     getHeights: function($eqParent) {
-      var children = $eqParent.find('[' + this.attr + '-watch]:visible');
-          children.height('inherit');
 
-      var heights = children.map(function () { return $(this).outerHeight(false) }).get();
+      var eqGroupName = $eqParent.data('equalizer'),
+          eqGroup = eqGroupName ? $eqParent.find('[' + this.attr + '-watch="' + eqGroupName + '"]:visible') : $eqParent.find('[' + this.attr + '-watch]:visible');
+          eqGroup.height('inherit');
 
+      var heights = eqGroup.map(function () { return $(this).outerHeight(false) }).get();
       return heights;
     },
     /**
@@ -87,7 +89,8 @@
      * @fires Equalizer#postEqualized
      */
     applyHeight: function($eqParent, heights) {
-      var children = $eqParent.find('[' + this.attr + '-watch]:visible'),
+      var eqGroupName = $eqParent.data('equalizer'),
+          eqGroup = eqGroupName ? $eqParent.find('['+this.attr+'-watch="'+eqGroupName+'"]:visible') : $eqParent.find('['+this.attr+'-watch]:visible'),
           max      = Math.max.apply(null, heights);
 
       /**
@@ -97,8 +100,8 @@
       $eqParent.trigger('preEqualized.fndtn.equalizer');
 
       // for now, apply the max height found in the array
-      for (var i = 0; i < children.length; i++) {
-        $(children[i]).css('height', max);
+      for (var i = 0; i < eqGroup.length; i++) {
+        $(eqGroup[i]).css('height', max);
       }
 
       /**
