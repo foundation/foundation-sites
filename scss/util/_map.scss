@@ -7,7 +7,7 @@
 ///
 /// @param {map} $map - Map to convert.
 ///
-/// @return A string with a map converted to a string.
+/// @returns {String} A string containing the map's contents.
 @function map-serialize($map) {
   $str: '';
   @each $key, $value in $map {
@@ -24,7 +24,7 @@
 /// @param {map} $map - Map to traverse.
 /// @param {mixed} $key - Key to use as a starting point.
 ///
-/// @return The value for the key after `$key` if `$key` was found. If `$key` was not found, or `$key` was the last value in the map, returns null.
+/// @returns {Mixed} The value for the key after `$key`, if `$key` was found. If `$key` was not found, or `$key` was the last value in the map, returns `null`.
 @function map-next($map, $key) {
   // Store the values of the map as a list, so we can access them with nth
   $values: map-values($map);

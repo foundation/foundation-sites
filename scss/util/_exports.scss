@@ -22,7 +22,7 @@ $exports-used: () !default;
 
 /// Checks if a module is in use.
 /// @param {string} $name - Name of component to look for.
-/// @return True if the module is being used, false if not.
+/// @returns {Boolean} `true` if the module is being used, `false` if not.
 @function using($name) {
   $module-key: map-get($exports-list, $name);
   // Module has already been used
@@ -42,7 +42,7 @@ $exports-used: () !default;
 
 /// Checks if a module's CSS has already been exported.
 /// @param {string} $name - Name of component to look for.
-/// @return True if the component has already been imported, false if not.
+/// @returns {Boolean} `true` if the component has already been imported, `false` if not.
 @function imported($name) {
   // Check if the module is already on the imported list
   @if type-of(index($exports-used, $name)) == 'number' {

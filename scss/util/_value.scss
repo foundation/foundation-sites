@@ -6,7 +6,7 @@
 ///
 /// @param $val - Value to check.
 ///
-/// @return True if `$val` is not falsey.
+/// @returns {Boolean} `true` if `$val` is not falsey.
 @function hasvalue($val) {
   @if $val == null or $val == none {
     @return false;
@@ -22,7 +22,7 @@
 /// @param {list|number} $val - Value to analyze. Should be a shorthand sizing property, e.g. "1em 2em 1em"
 /// @param {keyword} $side - Side to return. Should be top, right, bottom, or left.
 ///
-/// @return A single value based on `$val` and `$side`.
+/// @returns {Number} A single value based on `$val` and `$side`.
 @function get-side($val, $side) {
   $length: length($val);
 
@@ -60,7 +60,7 @@
 /// @param {list} $val - Border value to find a value in.
 /// @param {keyword} $elem - Border component to extract.
 ///
-/// @param If the value exists, returns the value. If the value is not in the border definition, the function will return a 0px width, solid style, or black border.
+/// @returns {Mixed} If the value exists, returns the value. If the value is not in the border definition, the function will return a 0px width, solid style, or black border.
 @function get-border-value($val, $elem) {
   // Find the width, style, or color and return it
   @each $v in $val {
@@ -90,7 +90,7 @@
 /// @param {list} $val - Shadow value to find a value in.
 /// @param {keyword} $elem - Shadow component to extract.
 ///
-/// @return If the value exists, returns the value. If the value is not set, returns false. If `$elem` is "inset", returns true, otherwise false.
+/// @returns {Mixed} If the value exists, returns the value. If the value is not set, returns false. If `$elem` is `inset`, returns true, otherwise false.
 @function get-shadow-value($val, $elem) {
   // Return "none" if there's no shadow
   @if $val == none {
@@ -161,7 +161,7 @@
 ///
 /// @access private
 ///
-/// @return A map of all keywords in $seeking. If a keyword was found in $opts, its value is true, otherwise false.
+/// @returns {Map} A map of all keywords in $seeking. If a keyword was found in $opts, its value is true, otherwise false.
 @function -zf-get-options($opts, $seeking) {
   @if type-of($opts) != 'list' {
     $opts: ($opts);
