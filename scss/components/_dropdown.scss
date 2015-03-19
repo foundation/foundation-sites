@@ -15,7 +15,8 @@
     left: 100%;
   }
 
-  .has-dropdown:hover > & {
+  &:not(.js-dropdown-nohover) > .has-dropdown:hover > &,
+  &.js-dropdown-active {
     display: block;
   }
 }
