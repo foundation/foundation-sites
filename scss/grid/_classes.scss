@@ -32,6 +32,7 @@
       > .#{$column} { @include grid-col-collapse; }
     }
 
+    // Responsive collapsing
     @each $size in $breakpoint-classes {
       @include breakpoint($size) {
         &.#{$size}-#{$collapse} {

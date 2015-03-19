@@ -72,14 +72,13 @@ $menubar-expand-max: 6 !default;
 
   // Even-width
   &.expand {
-    width: 100%;
-    display: table;
-    table-layout: fixed;
-
     > li {
-      float: none;
-      width: 100%;
-      display: table-cell;
+      @for $i from 2 through 6 {
+        &:nth-last-child(#{$i}):first-child,
+        &:nth-last-child(#{$i}):first-child ~ li {
+          width: percentage(1 / $i);
+        }
+      }
     }
   }
 
@@ -88,6 +87,23 @@ $menubar-expand-max: 6 !default;
     > li {
       width: 100%;
       float: none;
+    }
+  }
+
+  // Responsive alignment
+  @each $size in $breakpoint-classes {
+    @if $size != small {
+      &.#{$size}-horizontal {
+        > li {
+          float: left;
+        }
+      }
+      &.#{$size}-vertical {
+        > li {
+          width: 100%;
+          float: none;
+        }
+      }
     }
   }
 
@@ -124,6 +140,14 @@ $menubar-expand-max: 6 !default;
     > img {
       display: block;
       margin: 0 auto $menubar-icon-spacing auto;
+    }
+  }
+
+  // Nesting
+  &.nested {
+    > li > a {
+      $padding-left: get-side($menubar-item-padding, left);
+      padding-left: $padding-left * 2;
     }
   }
 }

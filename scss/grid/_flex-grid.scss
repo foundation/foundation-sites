@@ -94,7 +94,7 @@
     @include breakpoint($size) {
       @for $i from 1 through $grid-column-count {
         .#{$size}-#{$i} {
-          flex-basis: flex-grid-column($i);
+          flex: flex-grid-column($i);
         }
       }
     }

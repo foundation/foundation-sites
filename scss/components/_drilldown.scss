@@ -1,0 +1,15 @@
+.js-drilldown {
+  position: relative;
+  overflow: hidden;
+}
+.js-drilldown-sub {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  background: white;
+  transition: transform 0.15s linear;
+}
+.js-drilldown-active {
+  transform: translateX(-100%);
+}

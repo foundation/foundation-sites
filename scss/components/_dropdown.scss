@@ -2,7 +2,7 @@
   position: relative;
 }
 
-.nested.menu-bar {
+.nested-dropdown.menu-bar {
   display: none;
   position: absolute;
   top: 100%;
@@ -15,7 +15,8 @@
     left: 100%;
   }
 
-  .has-dropdown:hover > & {
+  &:not(.js-dropdown-nohover) > .has-dropdown:hover > &,
+  &.js-dropdown-active {
     display: block;
   }
 }
