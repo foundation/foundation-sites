@@ -25,7 +25,7 @@
   }
 
   Drilldown.prototype.defaults = {
-    backButton: '<li><a class="js-drilldown-back">Back</a></li>'
+    backButton: '<li class="js-drilldown-back"><a>Back</a></li>'
   }
 
   /**
@@ -106,6 +106,20 @@
      * @event Drilldown#backward
      */
     this.$element.trigger('backward.zf.drilldown', [this.$currentMenu]);
+  }
+
+  /**
+   * Destroys an instance of a drilldown. A callback can optionally be run when the process is finished.
+   * @param {Function} cb - Callback to run when the plugin is done being destroyed.
+   */
+  Drilldown.prototype.destroy = function(cb) {
+    this.$element.find('[data-submenu]').removeClass('js-drilldown-sub');
+    this.$currentMenu.removeClass('js-drilldown-active');
+    this.$element.find('.js-drilldown-back').remove();
+    this.$element.removeData('zf-plugin');
+    this.$element.unwrap();
+
+    if (typeof cb === 'function') cb();
   }
 
   Foundation.plugin('drilldown', Drilldown);
