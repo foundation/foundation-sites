@@ -25,7 +25,9 @@ $foundation-version: '6.0.0-alpha';
   'components/media-object',
   'components/menu-bar',
   'components/dropdown',
-  'components/drilldown';
+  'components/drilldown',
+  'components/labels-badges',
+  'components/pagination';
 
 // Exports
 @include foundation-global-styles;

@@ -1,0 +1,92 @@
+ul.pagination {
+  display: block;
+  margin-left: -0.3125rem;
+  min-height: 1.5rem; 
+}
+
+ul.pagination li {
+  display: none; 
+}
+
+ul.pagination li:last-child {
+  display: inline-block;
+}
+
+ul.pagination li:first-child {
+  display:inline-block;
+}
+
+.pagination-centered {
+  text-align: center; 
+}
+
+ul.pagination-centered li {
+  display: none; 
+}
+
+ul.pagination-centered ul.pagination li:last-child {
+  display: inline-block;
+}
+
+ul.pagination-centered ul.pagination li:first-child {
+  display:inline-block;
+}
+
+@include breakpoint(medium) {
+
+  ul.pagination li {
+    color: #222222;
+    font-size: 0.875rem;
+    height: 1.5rem;
+    margin-left: 0.3125rem; 
+  }
+
+  ul.pagination li a, ul.pagination li button {
+    border-radius: 3px;
+    transition: background-color 300ms ease-out;
+    background: none;
+    color: #999999;
+    display: block;
+    font-size: 1em;
+    font-weight: normal;
+    line-height: inherit;
+    padding: 0.0625rem 0.625rem 0.0625rem; 
+  }
+
+  ul.pagination li:hover a,
+  ul.pagination li a:focus, ul.pagination li:hover button,
+  ul.pagination li button:focus {
+    background: #e6e6e6; 
+  }
+
+  ul.pagination li.unavailable a, ul.pagination li.unavailable button {
+    cursor: default;
+    color: #999999; 
+  }
+
+  ul.pagination li.unavailable:hover a, ul.pagination li.unavailable a:focus, ul.pagination li.unavailable:hover button, ul.pagination li.unavailable button:focus {
+    background: transparent; 
+  }
+
+  ul.pagination li.is-active a, ul.pagination li.is-active button {
+    background: #008CBA;
+    color: #FFFFFF;
+    cursor: default;
+    font-weight: bold; 
+  }
+
+  ul.pagination li.is-active a:hover, ul.pagination li.is-active a:focus, ul.pagination li.is-active button:hover, ul.pagination li.is-active button:focus {
+    background: #008CBA; 
+  }
+
+  ul.pagination li {
+    display: block;
+    float: left; 
+  }
+
+  .pagination-centered ul.pagination li {
+    display: inline-block;
+    float: none; 
+  }
+}
+
