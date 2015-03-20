@@ -50,3 +50,17 @@ $foundation-version: '6.0.0-alpha';
 .foundation-version {
   font-family: "#{$foundation-version}";
 }
+
+.button {
+  background: #3498db;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+
+  &:hover {
+    background: #3cb0fd;
+    text-decoration: none;
+    color: #fff;
+  }
+}

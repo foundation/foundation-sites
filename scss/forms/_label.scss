@@ -28,7 +28,7 @@ $form-label-line-height: 1.8 !default;
   text-align: right;
 }
 
-@mixin form-label-inline {
+@mixin form-label-middle {
   $input-border-width: get-border-value($input-border, width);
   margin: 0 0 $form-spacing 0;
   padding: ($form-spacing / 2 + rem-calc($input-border-width)) 0;
@@ -42,8 +42,8 @@ $form-label-line-height: 1.8 !default;
       @include form-label-right;
     }
 
-    &.inline {
-      @include form-label-inline;
+    &.middle {
+      @include form-label-middle;
     }
   }
 }
