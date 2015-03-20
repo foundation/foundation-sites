@@ -1,12 +1,33 @@
 // Select variables
-$select-bg-color: #fafafa !default;
-$select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
+$select-background: #fafafa !default;
+$select-background-focus: #ccc !default;
+$select-radius: $input-radius !default;
 
-@mixin form-select  {
-  -webkit-appearance: none !important;
-  -moz-appearance: none !important;
-  border-radius: 0;
-  background-color: $select-bg-color;
+@mixin form-select {
+  height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
+  padding: ($form-spacing / 2);
+  border: $input-border;
+
+  font-size: $input-font-size;
+  font-family: $input-font-family;
+  line-height: normal;
+  color: $input-color;
+
+  background-color: $select-background;
+  background-position: if($text-direction == 'rtl', 0%, 100%) center;
+  background-repeat: no-repeat;
+  
+  border-radius: $select-radius;
+
+  &:hover {
+    background-color: $select-background-focus;
+    border: $input-border-focus;
+  }
+  // Disabled Styles
+  &:disabled {
+    background-color: $input-background-disabled;
+    cursor: $input-cursor-disabled;
+  }
 
   // Hide the dropdown arrow shown in newer IE versions
   &::-ms-expand {
@@ -16,34 +37,15 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
   // The custom arrow has some fake horizontal padding so we can align it
   // from the right side of the element without relying on CSS3
   background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+);
-
-  // We can safely use leftmost and rightmost now
-  background-position: if($text-direction == 'rtl', 0%, 100%) center;
-
-  background-repeat: no-repeat;
-  border: $input-border;
-  padding: ($form-spacing / 2);
-  font-size: $input-font-size;
-  font-family: $input-font-family;
-  color: $input-color;
-  line-height: normal;
-  border-radius: 0;
-  &.radius { border-radius: $global-radius; }
-  &:hover {
-    background-color: $select-hover-bg-color;
-    border: $input-border-focus;
-  }
-  // Disabled Styles
-  &:disabled {
-    background-color: $input-background-disabled;
-    cursor: $input-cursor-disabled;
-  }
 }
 
 @mixin foundation-form-select {
   select {
     @include form-select;
-    height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
     &[multiple] {
       height: auto;
     }

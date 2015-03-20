@@ -1,22 +1,20 @@
-$fieldset-border-style: solid !default;
-$fieldset-border-width: 1px !default;
-$fieldset-border-color: #ddd !default;
+$fieldset-border: 1px solid #ddd !default;
 $fieldset-padding: rem-calc(20) !default;
 $fieldset-margin: rem-calc(18 0) !default;
 
-$legend-bg: #fff !default;
+$legend-background: #fff !default;
 $legend-font-weight: $font-weight-bold !default;
 $legend-padding: rem-calc(0 3) !default;
 
 @mixin fieldset {
-  border: $fieldset-border-width $fieldset-border-style $fieldset-border-color;
+  border: $fieldset-border;
   padding: $fieldset-padding;
   margin: $fieldset-margin;
 
   // and legend styles
   legend {
     font-weight: $legend-font-weight;
-    background: $legend-bg;
+    background: $legend-background;
     padding: $legend-padding;
     margin: 0;
     margin-#{$default-float}: rem-calc(-3);
@@ -24,14 +22,16 @@ $legend-padding: rem-calc(0 3) !default;
 }
 
 @mixin foundation-form-fieldset {
-  // fieldset {
-  //   @include fieldset;
-  // }
+  .fieldset {
+    @include fieldset;
+  }
+
   fieldset {
     border: 0;
     padding: 0;
     margin: 0;
   }
+
   legend {
     margin-bottom: $form-spacing * 0.5;
   }

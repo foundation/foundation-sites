@@ -2,7 +2,6 @@ $form-spacing: rem-calc(16) !default;
 
 @import
   'text',
-  'number',
   'checkbox',
   'label',
   'pre-postfix',
@@ -12,7 +11,6 @@ $form-spacing: rem-calc(16) !default;
 
 @mixin foundation-forms {
   @include foundation-form-text;
-  @include foundation-form-number;
   @include foundation-form-checkbox;
   @include foundation-form-label;
   @include foundation-form-prepostfix;

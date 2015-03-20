@@ -16,6 +16,8 @@ $input-radius: 0 !default;
 $input-cursor-disabled: $cursor-default-value !default;
 $input-transition: box-shadow 0.5s, border-color 0.5s ease-in-out !default;
 
+$input-number-spinners: true !default;
+
 @mixin form-element {
   display: block;
   box-sizing: border-box;
@@ -62,6 +64,7 @@ $input-transition: box-shadow 0.5s, border-color 0.5s ease-in-out !default;
     -moz-appearance: none;
   }
 
+  // Reset styles on button-like inputs
   input[type="submit"],
   input[type="button"] {
     -webkit-appearance: none;
@@ -69,6 +72,20 @@ $input-transition: box-shadow 0.5s, border-color 0.5s ease-in-out !default;
     border-radius: 0;
   }
 
+  // Number input styles
+  input[type='number'] {
+    @if not($input-number-spinners) {
+      -moz-appearance: textfield;
+
+      input[type='number']::-webkit-inner-spin-button,
+      input[type='number']::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+  }
+
+  // Text areas
   textarea {
     max-width: 100%;
 
