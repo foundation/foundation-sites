@@ -28,7 +28,9 @@ $foundation-version: '6.0.0-alpha';
   'components/drilldown',
   'components/labels-badges',
   'components/pagination',
-  'components/breadcrumbs';
+  'components/breadcrumbs',
+  'components/thumbnail',
+  'components/range-slider';
 
 // Exports
 @include foundation-global-styles;
