@@ -1,25 +1,27 @@
-$input-prefix-background: scale-color(#fff, $lightness: -5%) !default;
-$input-prefix-border-color: scale-color(#fff, $lightness: -20%) !default;
-$input-prefix-border-size: 1px !default;
-$input-prefix-border-type: solid !default;
-$input-prefix-overflow: visible !default;
 $input-prefix-color: #333 !default;
 $input-prefix-color-alt: #fff !default;
+$input-prefix-background: #f2f2f2 !default;
+$input-prefix-border: 1px solid #ccc;
+$input-prefix-overflow: visible !default;
 
 @mixin prefix-postfix-base {
-  display: block;
+  $height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
+  $line-height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
+
   position: relative;
   z-index: 2;
-  text-align: center;
+  overflow: $input-prefix-overflow;
+
+  display: block;
   width: 100%;
+  height: $height;
   padding-top: 0;
   padding-bottom: 0;
-  border-style: $input-prefix-border-type;
-  border-width: $input-prefix-border-size;
-  overflow: $input-prefix-overflow;
+  border: $input-prefix-border;
+  
   font-size: $form-label-font-size;
-  height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
-  line-height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
+  line-height: $line-height;
+  text-align: center;
 }
 
 @mixin prefix(
@@ -42,18 +44,15 @@ $input-prefix-color-alt: #fff !default;
   }
 
   @if $is-button {
-    padding-#{$default-float}: 0;
-    padding-#{$opposite-direction}: 0;
-    padding-top: 0;
-    padding-bottom: 0;
+    padding: 0;
+    border: 0;
     text-align: center;
-    border: none;
   }
 }
 
 @mixin postfix(
   $bg: $input-prefix-background,
-  $border: $input-prefix-border-color,
+  $border: get-border-value($input-prefix-border, color),
   $is-button: false
 ) {
   @if $bg {
@@ -62,8 +61,12 @@ $input-prefix-color-alt: #fff !default;
     border-#{$default-float}: none;
 
     // Control the font color based on background brightness
-    @if $bg-lightness > 70%  or $bg == yellow { color: $input-prefix-color; }
-    @else { color: $input-prefix-color-alt; }
+    @if $bg-lightness > 70%  or $bg == yellow {
+      color: $input-prefix-color;
+    }
+    @else {
+      color: $input-prefix-color-alt;
+    }
   }
 
   @if $border {
@@ -87,7 +90,8 @@ $input-prefix-color-alt: #fff !default;
   }
 
   %prepost-button {
-    @include button-size(false, false);
+    // [PH] Until button styles are in place
+    // @include button-size(false, false);
   }
 
   .postfix.button {
