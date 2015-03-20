@@ -23,16 +23,11 @@
     this.$element.trigger('init.zf.drilldown');
   }
 
-  Drilldown.defaults = {
-    backButton: '<li class="js-drilldown-back"><a>Back</a></li>'
-  };
-
-
   Drilldown.prototype = {
     defaults: {
       backButton: '<li class="js-drilldown-back"><a>Back</a></li>'
     },
-    
+
     /**
      * Initializes the Drilldown by creating a container to wrap the menu bar in, and initializing all submenus.
      * @private
