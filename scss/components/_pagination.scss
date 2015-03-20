@@ -59,12 +59,12 @@ ul.pagination-centered ul.pagination li:first-child {
     background: #e6e6e6; 
   }
 
-  ul.pagination li.unavailable a, ul.pagination li.unavailable button {
-    cursor: default;
+  ul.pagination li.disabled a, ul.pagination li.disabled button {
+    cursor: not-allowed;
     color: #999999; 
   }
 
-  ul.pagination li.unavailable:hover a, ul.pagination li.unavailable a:focus, ul.pagination li.unavailable:hover button, ul.pagination li.unavailable button:focus {
+  ul.pagination li.disabled:hover a, ul.pagination li.disabled a:focus, ul.pagination li.disabled:hover button, ul.pagination li.disabled button:focus {
     background: transparent; 
   }
 

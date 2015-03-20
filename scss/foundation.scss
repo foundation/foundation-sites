@@ -27,7 +27,8 @@ $foundation-version: '6.0.0-alpha';
   'components/dropdown',
   'components/drilldown',
   'components/labels-badges',
-  'components/pagination';
+  'components/pagination',
+  'components/breadcrumbs';
 
 // Exports
 @include foundation-global-styles;
