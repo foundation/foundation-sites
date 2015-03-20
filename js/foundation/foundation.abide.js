@@ -74,7 +74,7 @@
         .off('.abide')
         .on('submit.fndtn.abide', function (e) {
           var is_ajax = /ajax/i.test(self.S(this).attr(self.attr_name()));
-          return self.validate(self.S(this).find('input, textarea, select').get(), e, is_ajax);
+          return self.validate(self.S(this).find('input, textarea, select').not(":hidden").get(), e, is_ajax);
         })
         .on('validate.fndtn.abide', function (e) {
           if (settings.validate_on === 'manual') {
@@ -84,7 +84,7 @@
         .on('reset', function (e) {
           return self.reset($(this), e);          
         })
-        .find('input, textarea, select')
+        .find('input, textarea, select').not(":hidden")
           .off('.abide')
           .on('blur.fndtn.abide change.fndtn.abide', function (e) {
             // old settings fallback
