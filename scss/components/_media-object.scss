@@ -1,6 +1,6 @@
 @mixin foundation-media-object {
   .media-object {
-    :not(:last-child) {
+    &:not(:last-child) {
       margin-bottom: 1rem;
     }
     display: block;
@@ -45,19 +45,4 @@
       padding-bottom: 1rem;
     }
   }
-}
-
-.button {
-  background: #3498db;
-  border-radius: 28px;
-  color: #ffffff;
-  font-size: 20px;
-  padding: 10px 20px 10px 20px;
-  text-decoration: none;
-}
-
-.button:hover {
-  background: #3cb0fd;
-  text-decoration: none;
-  color: #fff;
 }

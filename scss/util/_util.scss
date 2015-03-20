@@ -1,20 +1,10 @@
-/*doc
----
-title: Functions
-name: functions
-category: functions
----
-
-We use these internal functions to make the framework more robust.
-
-*/
-
 // Utilities
 @import 'unit';
 @import 'map';
 @import 'value';
 @import 'color';
 @import 'selector';
+@import 'image';
 
 // Libraries
 @import 'breakpoint';

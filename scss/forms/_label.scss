@@ -1,44 +1,49 @@
-$form-label-pointer: pointer !default;
+/// Color for form labels.
+/// @type Color
+$form-label-color: #4d4d4d !default;
+
+/// Font size for form labels.
+/// @type Number
 $form-label-font-size: rem-calc(14) !default;
+
+/// Font weight for form labels.
+/// @type Keyword
 $form-label-font-weight: $font-weight-normal !default;
-$form-label-line-height: 1.5 !default;
-$form-label-font-color: scale-color(#000, $lightness: 30%) !default;
-$form-label-small-transform: capitalize !default;
-$form-label-bottom-margin: 0 !default;
 
-@mixin form-label($alignment:false, $base-style:true) {
+/// Line height for form labels. The higher the number, the more space between the label and its input field.
+/// @type Number
+$form-label-line-height: 1.8 !default;
 
-  // Control whether or not the base styles come through.
-  @if $base-style {
-    font-size: $form-label-font-size;
-    color: $form-label-font-color;
-    cursor: $form-label-pointer;
-    display: block;
-    font-weight: $form-label-font-weight;
-    line-height: $form-label-line-height;
-    margin-bottom: $form-label-bottom-margin;
-  }
+@mixin form-label {
+  display: block;
+  margin: 0;
+  font-size: $form-label-font-size;
+  font-weight: $form-label-font-weight;
+  line-height: $form-label-line-height;
+  color: $form-label-color;
+}
 
-  // Alignment options
-  @if $alignment == right {
-    float: none !important;
-    text-align: right;
-  }
-  @else if $alignment == inline {
-    $input-border-width: get-border-value($input-border, width);
-    margin: 0 0 $form-spacing 0;
-    padding: ($form-spacing / 2 + rem-calc($input-border-width)) 0;
-  }
+@mixin form-label-right {
+  float: none;
+  text-align: right;
+}
+
+@mixin form-label-middle {
+  $input-border-width: get-border-value($input-border, width);
+  margin: 0 0 $form-spacing 0;
+  padding: ($form-spacing / 2 + rem-calc($input-border-width)) 0;
 }
 
 @mixin foundation-form-label {
-  label { @include form-label;
-    &.right { @include form-label(right, false); }
-    &.inline { @include form-label(inline, false); }
-    /* Styles for required inputs */
-    small {
-      text-transform: $form-label-small-transform;
-      color: scale-color($form-label-font-color, $lightness: 15%);
+  label {
+    @include form-label;
+
+    &.right {
+      @include form-label-right;
+    }
+
+    &.middle {
+      @include form-label-middle;
     }
   }
 }

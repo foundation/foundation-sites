@@ -1,10 +1,29 @@
-$input-error-padding: rem-calc(6 9 9) !default;
-$input-error-font-size: rem-calc(12) !default;
-$input-error-font-weight: $font-weight-normal !default;
-$input-error-font-style: italic !default;
+/// Default font color for form error text.
+/// @type Color
 $input-error-color: #fff !default;
+
+/// Default font color for form error text, if the background is too light for the default color.
+/// @type Color
 $input-error-color-alt: #333 !default;
+
+/// Default background color for form error containers.
 $input-error-background: $alert-color !default;
+
+/// Default font size for form error text.
+/// @type Number
+$input-error-font-size: rem-calc(12) !default;
+
+/// Default font weight for form error text.
+/// @type Number
+$input-error-font-weight: $font-weight-normal !default;
+
+/// Default font style (e.g. italics) for form error text.
+/// @type Keyword
+$input-error-font-style: italic !default;
+
+/// Default padding inside form error containers.
+/// @type Number
+$input-error-padding: rem-calc(6 9 9) !default;
 
 // @MIXIN
 //
@@ -91,10 +110,9 @@ $input-error-background: $alert-color !default;
 
     > label {
       > small {
-        color: scale-color($form-label-font-color, $lightness: 15%);
+        color: scale-color($form-label-color, $lightness: 15%);
         background: transparent;
         padding: 0;
-        text-transform: $form-label-small-transform;
         font-style: normal;
         font-size: 60%;
         margin: 0;
