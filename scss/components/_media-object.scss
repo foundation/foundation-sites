@@ -1,30 +1,63 @@
 @mixin foundation-media-object {
   .media-object {
-    margin-bottom: 1rem;
+    :not(:last-child) {
+      margin-bottom: 1rem;
+    }
     display: block;
     img {
       max-width: none;
     }
-    .image-left, .image-right, .content {
+    .media-item {
       display: table-cell;
       vertical-align: top;
+      &:last-child {
+        padding-left: 1rem;
+      }
+      &:first-child {
+        padding-right: 1rem;
+      }
+      @include breakpoint(small only) {
+      .stack-for-small {
+        
+          display: block;
+          bottom: 3px solid red;
+        }
+      }
     }
-    .image-right {
-      padding-left: 10px;
+    .media-content {
+      display: table-cell;
+      vertical-align: top;
+      .media-title {
+        padding-top: 0;
+      }
+      @include breakpoint(small only) {
+      .stack-for-small {
+          display: block;
+        }
+      }
     }
-    .image-left {
-      padding-right: 10px;
-    }
-    .title {
-      margin-top: 0;
-    }
-    .image-middle {
+    .middle {
       vertical-align: middle;
     }
-    .image-bottom {
+    .bottom {
       vertical-align: bottom;
       // adjust for bottom margin on media-object
       padding-bottom: 1rem;
     }
   }
+}
+
+.button {
+  background: #3498db;
+  border-radius: 28px;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.button:hover {
+  background: #3cb0fd;
+  text-decoration: none;
+  color: #fff;
 }

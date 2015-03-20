@@ -1,66 +1,197 @@
-// Default margin of a menu bar.
-// @type {Number|List}
+////
+/// @group menu-bar
+////
+
+/// Default margin of a menu bar.
+/// @type {Number|List}
 $menubar-margin: 0 !default;
 
-// Default background color of a menu bar.
-// @type Color
+/// Default background color of a menu bar.
+/// @type Color
 $menubar-background: transparent;
 
-// Default text color for items in a menu bar.
-// @type Color
+/// Default text color for items in a menu bar.
+/// @type Color
 $menubar-item-color: foreground($menubar-background, $primary-color);
 
-// Default background color on hover for items in a menu bar.
+/// Default background color on hover for items in a menu bar.
 $menubar-item-background-hover: #eee !default;
 
-// Default padding for items in a menu bar.
-// @type {Number|List}
+/// Default padding for items in a menu bar.
+/// @type {Number|List}
 $menubar-item-padding: 0.7rem 1rem !default;
 
-// Default spacing between an icon and text in a menu bar item.
+/// Default spacing between an icon and text in a menu bar item.
 $menubar-icon-spacing: 0.25rem !default;
 
-// Maximum number of `expand-n` classes to include in the CSS.
-// @type Number
+/// Maximum number of `expand-n` classes to include in the CSS.
+/// @type Number
 $menubar-expand-max: 6 !default;
 
-.menu-bar {
+/// Creates the base styles for a menu bar.
+@mixin menu-bar-base() {
   @include clearfix;
   margin: $menubar-margin;
   list-style-type: none;
-
-  // Default
-  > li {
-    float: left;
-
-    > a {
-      display: block;
-      padding: $menubar-item-padding;
-      line-height: 1;
-      color: $menubar-item-color;
-
-      &:hover,
-      &:focus {
-        background: $menubar-item-background-hover;
-      }
-    }
-  }
 
   // Hover/active state
   > .is-active > a {
     background: $menubar-item-background-hover;
   }
 
-  // Simple
-  &.simple {
-    > li > a {
-      padding: 0;
-      margin-right: get-side($menubar-item-padding, right);
+  // Default
+  > li > a {
+    display: block;
+    padding: $menubar-item-padding;
+    line-height: 1;
+    color: $menubar-item-color;
 
-      &:hover {
-        background: transparent;
+    &:hover,
+    &:focus {
+      background: $menubar-item-background-hover;
+    }
+  }
+}
+
+/// Expands the items of a menu bar, so each item is the same width.
+/// @param {Keyword|Number} $count [auto] - Number of items in the menu bar. You can hardcode a number, or use `auto` to generate CSS that will adapt to the number of items inside the menu.
+@mixin menu-bar-expand($count: auto) {
+  > li {
+    @if $count == auto {
+      @for $i from 2 through $menubar-expand-max {
+        &:nth-last-child(#{$i}):first-child,
+        &:nth-last-child(#{$i}):first-child ~ li {
+          width: percentage(1 / $i);
+        }
       }
     }
+    @else if type-of($count) == 'number' {
+      width: percentage(1 / $count);
+    }
+  }
+}
+
+/// Sets the direction of a menu bar.
+/// @param {Keyword} $dir [horizontal] - Direction of the menu bar. Can be `horizontal` or `vertical`.
+@mixin menu-bar-direction($dir: horizontal) {
+  @if $dir == horizontal {
+    > li {
+      float: left;
+    }
+  }
+  @else if $dir == vertical {
+    > li {
+      width: 100%;
+      float: none;
+    }
+  }
+  @else {
+    @debug "The direction used for menu-bar-direction() must be horizontal or vertical.";
+  }
+}
+
+/// Creates a simple menu bar, which has no padding or hover state.
+@mixin menu-bar-simple {
+  > li > a {
+    padding: 0;
+    margin-right: get-side($menubar-item-padding, right);
+
+    &:hover {
+      background: transparent;
+    }
+  }
+}
+
+/// Adds styles for a nested menu bar. You can pass in a padding amount, which will be applied to the left (or right in RTL) of each item in the menu bar.
+/// @param {Keyword|Number} $padding [auto] - Amount of padding to apply. Use `auto` to apply twice the padding of a normal menu bar item.
+@mixin menu-bar-nested($padding: auto) {
+  > li > a {
+    $padding-left: 0;
+
+    @if $padding == auto {
+      $padding-left: get-side($menubar-item-padding, left) * 2;
+    }
+    @else {
+      $padding-left: $padding;
+    }
+
+    padding-left: $padding-left;
+  }
+}
+
+/// Changes the default colors of a menu bar.
+@mixin menu-bar-style {
+  background: $primary-color;
+
+  > li > a {
+    color: foreground($primary-color);
+
+    &:hover,
+    &:focus {
+      background: smart-scale($primary-color);
+    }
+  }
+}
+
+/// Adds support for icons to menu bar items.
+/// @param {Keyword} $position [side] - Positioning for icons. Can be `side` (left, or right on RTL) or `top`.
+/// @param {Boolean} $base [true] - Set to `false` to prevent the shared CSS between side- and top-aligned icons from being printed. Set this to `false` if you're calling the mixin multiple times on the same element.
+@mixin menu-bar-icons($position: side, $base: true) {
+  @if $base {
+    > li > a {
+      > img {
+        vertical-align: middle;
+      }
+      > span {
+        vertical-align: middle;
+      }
+    }
+  }
+
+  @if $position == side {
+    > li > a {
+      > img {
+        display: inline-block;
+        margin-right: $menubar-icon-spacing;
+      }
+    }
+  }
+  @else if $position == top {
+    > li > a {
+      text-align: center;
+
+      > img {
+        display: block;
+        margin: 0 auto $menubar-icon-spacing auto;
+      }
+    }
+  }
+}
+
+.menu-bar {
+  @include menu-bar-base;
+
+  // Orientation
+  @include menu-bar-direction(horizontal);
+
+  &.vertical {
+    @include menu-bar-direction(vertical);
+  }
+
+  @each $size in $breakpoint-classes {
+    @if $size != small {
+      &.#{$size}-horizontal {
+        @include menu-bar-direction(horizontal);
+      }
+      &.#{$size}-vertical {
+        @include menu-bar-direction(vertical);
+      }
+    }
+  }
+
+  // Simple
+  &.simple {
+    @include menu-bar-simple;
   }
 
   // Align right
@@ -72,58 +203,30 @@ $menubar-expand-max: 6 !default;
 
   // Even-width
   &.expand {
-    width: 100%;
-    display: table;
-    table-layout: fixed;
+    @include menu-bar-expand;
 
     > li {
-      float: none;
-      width: 100%;
-      display: table-cell;
-    }
-  }
-
-  // Vertical
-  &.vertical {
-    > li {
-      width: 100%;
-      float: none;
+      &:first-child:last-child {
+        width: 100%;
+      }
     }
   }
 
   // Primary color
   &.primary {
-    background: $primary-color;
-
-    > li > a {
-      color: foreground($primary-color);
-
-      &:hover,
-      &:focus {
-        background: smart-scale($primary-color);
-      }
-    }
+    @include menu-bar-style;
   }
 
   // Icons
-  > li > a {
-    > img {
-      vertical-align: middle;
-      display: inline-block;
-      margin-right: $menubar-icon-spacing;
-    }
-    > span {
-      vertical-align: middle;
-    }
-  }
+  @include menu-bar-icons;
 
   // Vertical icons
-  &.icon-top > li > a {
-    text-align: center;
+  &.icon-top {
+    @include menu-bar-icons(top, $base: false);
+  }
 
-    > img {
-      display: block;
-      margin: 0 auto $menubar-icon-spacing auto;
-    }
+  // Nesting
+  &.nested {
+    @include menu-bar-nested;
   }
 }

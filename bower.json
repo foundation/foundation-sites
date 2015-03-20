@@ -6,10 +6,12 @@
     "css/foundation.css.map",
     "js/foundation.js"
   ],
-  "ignore": [
-  ],
+  "ignore": [],
   "dependencies": {
     "jquery": ">= 2.1.0"
   },
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "bootcamp": "~1.1.7"
+  }
 }

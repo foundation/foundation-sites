@@ -43,7 +43,7 @@
      * @sample Show dropdown
      */
     offText: ''
-  }
+  };
 
   /**
    * Initializes the Toggler plugin by parsing the target element and class from `options.toggle`.
@@ -65,7 +65,7 @@
       this.$element.text(this.options.onText);
     else
       this.$element.text(this.options.offText);
-  }
+  };
 
   /**
    * Initializes events for the toggle trigger.
@@ -78,7 +78,7 @@
       _this.toggle();
       return false;
     });
-  }
+  };
 
   /**
    * Toggles the target class on the target element. An event is fired from the original trigger depending on if the resultant state was "on" or "off".
@@ -103,7 +103,7 @@
        */
       this.$element.trigger('off.zf.toggler');
     }
-  }
+  };
 
   Foundation.plugin('toggler', Toggler);
 
@@ -115,4 +115,4 @@
       return Toggler;
     });
 
-}(Foundation, jQuery)
+}(Foundation, jQuery);

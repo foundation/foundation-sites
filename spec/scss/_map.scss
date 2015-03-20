@@ -1,0 +1,53 @@
+@import "util/map";
+
+@include describe("Map Serialize") {
+  @include it("converts a Sass map into a string") {
+    $input: (
+      small: 1em,
+      medium: 2em,
+      large: 3em,
+    );
+    $actual: map-serialize($input);
+    $expected: 'small=1em&medium=2em&large=3em';
+
+    @include should(expect($actual), to(be($expected)));
+  }
+}
+
+@include describe("Map Next") {
+  @include it("returns the next value in a map") {
+    $input: (
+      one: 'One',
+      two: 'Two',
+      three: 'Three',
+    );
+    $actual: map-next($input, two);
+    $expected: map-get($input, three);
+
+    @include should(expect($actual), to(be($expected)));
+  }
+
+  @include it("returns null if the key is last in the map") {
+    $input: (
+      one: 'One',
+      two: 'Two',
+      three: 'Three',
+    );
+    $actual: map-next($input, three);
+    $expected: null;
+
+    @include should(expect($actual), to(be($expected)));
+  }
+
+  @include it("returns null if the key is not in the map") {
+    $input: (
+      one: 'One',
+      two: 'Two',
+      three: 'Three',
+    );
+    $actual: map-next($input, four);
+    $expected: null;
+
+    @include should(expect($actual), to(be($expected)));
+  }
+}

@@ -1,0 +1,14 @@
+$helptext-color: #333 !default;
+$helptext-font-size: rem-calc(13) !default;
+$helptext-font-style: italic !default;
+
+@mixin foundation-form-helptext {
+  .help-text {
+    $margin-top: ($form-spacing * 0.5) * -1;
+
+    margin-top: $margin-top;
+    font-size: $helptext-font-size;
+    font-style: $helptext-font-style;
+    color: $helptext-color;
+  }
+}

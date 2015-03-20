@@ -9,14 +9,19 @@
   input[type="checkbox"] + label,
   input[type="radio"] + label {
     display: inline-block;
-    margin-#{$default-float}: $form-spacing * .5;
-    margin-#{$opposite-direction}: $form-spacing;
+    margin-left: $form-spacing * 0.5;
+    margin-right: $form-spacing;
     margin-bottom: 0;
     vertical-align: baseline;
   }
 
-  /* Normalize file input width */
+  label > input[type="checkbox"],
+  label > input[type="label"] {
+    margin-right: $form-spacing * 0.5;
+  }
+
+  // Normalize file input width
   input[type="file"] {
-    width:100%;
+    width: 100%;
   }
 }

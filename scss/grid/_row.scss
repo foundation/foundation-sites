@@ -42,6 +42,10 @@
   
   @if map-get($behavior, nest) {
     $margin: -$grid-column-gutter;
+
+    @if map-get($behavior, collapse) {
+      $margin: 0;
+    }
   }
   @else {
     max-width: $width;

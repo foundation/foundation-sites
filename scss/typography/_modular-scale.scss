@@ -43,14 +43,12 @@ $ms-intervals: (
       // For the default scale, no breakpoint is required. Mobile first!
       @if $breakpoint == default {
         font-size: $font-size;
-        @include baseline($font-size);
       }
       
       // For all other sizes, a media query is inserted
       @else {
         @include breakpoint($breakpoint) {
           font-size: $font-size;
-          @include baseline($font-size);
         }
       }
     }

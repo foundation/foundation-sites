@@ -1,5 +1,6 @@
 !function($) {
   // Polyfill to get the name of a function in IE9
+  "use strict";
   if (Function.prototype.name === undefined && Object.defineProperty !== undefined) {
     Object.defineProperty(Function.prototype, 'name', {
       get: function() {
@@ -19,6 +20,10 @@
      */
     _plugins: {},
 
+    /**
+     * Stores generated unique ids for plugin instances
+     */
+    _uuids: [],
     /**
      * Defines a Foundation plugin, adding it to the `Foundation` namespace and the list of plugins to initialize when reflowing.
      * @param {String} name - Formal name of the component.
@@ -86,8 +91,96 @@
           $(this).data('zf-plugin', new plugin($(this), options));
         });
       });
+    },
+    /**
+     * Executes a function a max of once every n milliseconds. Returns a function with throttling applied.
+     * @param {Function} func - Function to be throttled.
+     * @param {Integer} delay - A list of plugins to initialize. Leave this out to initialize everything.
+     */
+    throttle: function (func, delay) {
+      var timer = null;
+
+      return function () {
+        var context = this, args = arguments;
+
+        if (timer === null) {
+          timer = setTimeout(function () {
+            func.apply(context, args);
+            timer = null;
+          }, delay);
+        }
+      };
+    },
+    /**
+     * Generate a unique 16-character id to assign to an element to account for multiple instances of a plugin
+     */
+    generateUuid: function() {
+      var uuid = '';
+
+      do {
+        uuid += 'zf-uuid-';
+        for (var i=0; i<16; i++) {
+          uuid += Math.floor(Math.random()*16).toString(16);
+        }
+      } while(!this._uuids.indexOf(uuid));
+
+      this._uuids.push(uuid);
+      return uuid;
+    },
+    
+    /**
+     * Performs a callback function when an images are fully loaded.
+     * @param {Object} images - Image(s) to check if loaded.
+     * @param {Func} callback - Function to execute when image is fully loaded.
+     */
+    image_loaded: function (images, callback) {
+      var self = this,
+          unloaded = images.length;
+
+      if (unloaded === 0) {
+        callback(images);
+      }
+      
+      var single_image_loaded = function (image, callback) {
+        
+        var loaded = function() {
+          callback(image[0]);
+        };
+
+        var bindLoad = function() {
+          this.one('load', loaded);
+
+          if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) {
+            var src = this.attr( 'src' ),
+                param = src.match( /\?/ ) ? '&' : '?';
+
+            param += 'random=' + (new Date()).getTime();
+            this.attr('src', src + param);
+          }
+        };
+
+        if (!image.attr('src')) {
+          loaded();
+          return;
+        }
+
+        if (image[0].complete || image[0].readyState === 4) {
+          loaded();
+        } else {
+          bindLoad.call(image);
+        }
+      };
+
+      images.each(function () {
+        single_image_loaded($(this), function () {
+          unloaded -= 1;
+          if (unloaded === 0) {
+            callback(images);
+          }
+        });
+      });
     }
-  }
+  };
 
   /**
    * The Foundation jQuery method.
@@ -106,8 +199,8 @@
     }
 
     return this;
-  }
+  };
 
   window.Foundation = Foundation;
   $.fn.foundation = foundation;
-}(jQuery)
+}(jQuery);

@@ -1,0 +1,22 @@
+.menu-bar > .has-dropdown {
+  position: relative;
+}
+
+.nested-dropdown.menu-bar {
+  display: none;
+  position: absolute;
+  top: 100%;
+  width: auto;
+  white-space: nowrap;
+  background: $body-bg;
+
+  .vertical > li > & {
+    top: 0;
+    left: 100%;
+  }
+
+  &:not(.js-dropdown-nohover) > .has-dropdown:hover > &,
+  &.js-dropdown-active {
+    display: block;
+  }
+}

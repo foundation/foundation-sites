@@ -1,0 +1,102 @@
+
+<h1>Range Slider</h1>
+<hr>
+
+<br>
+
+
+
+
+type="range" step="1" title="Range: 0 to 100 in steps of 1" 
+
+<h1>Basic ARIA Slider</h1>
+	<span id="sliderLabel" class="floatLeft">Volume:</span>
+	<div id="sliderRail1" class="sliderRail floatLeft">
+		<button class="sliderThumb" id="sliderThumb1" role="slider" aria-labelledby="sliderLabel" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="0%"></button>
+	</div>
+	<span id="sliderValue1" class="floatLeft">
+		0%
+	</span>
+
+<h2>Keyboard controls</h2>
+	
+<ul>
+	<li>Use left and right arrows to change the value by 1.</li>
+	<li>Use page up and page down to change the value by 10.</li>
+	<li>Use home and end to move to the first and last value.</li>
+</ul>
+
+<p id="sliderDescription">Use the arrow keys to change the value.</p>
+<div class="sliderRail">
+      <button class="sliderThumb" role="slider" title="Volume" 
+aria-describedby="sliderDescription" aria-valuemin="0" 
+aria-valuemax="100" aria-valuenow="20" aria-valuetext="20 percent">
+</button>
+</div>
+
+<h3>Default - Horizontal</h3>
+
+<div class="range-slider" data-slider>
+  <span class="range-slider-handle" role="slider" tabindex="0"></span>
+  <span class="range-slider-active-segment"></span>
+  <input type="hidden">
+</div>
+
+<hr>
+<br>
+
+<h3>Vertical</h3>
+
+<div class="range-slider vertical-range" data-slider data-options="vertical: true;">
+  <span class="range-slider-handle" role="slider" tabindex="0"></span>
+  <span class="range-slider-active-segment"></span>
+  <input type="hidden">
+</div>
+
+<hr>
+<br>
+
+<h3>Vertical</h3>
+
+<div class="row">
+  <div class="small-10 medium-11 columns">
+    <div class="range-slider" data-slider data-options="display_selector: #sliderOutput3;">
+      <span class="range-slider-handle" role="slider" tabindex="0"></span>
+      <span class="range-slider-active-segment"></span>
+    </div>
+  </div>
+  <div class="small-2 medium-1 columns">
+    <span id="sliderOutput3"></span>
+  </div>
+</div>
+
+<hr>
+<br>
+
+<h3>Vertical</h3>
+
+<h4>Radius</h4>
+
+<div class="range-slider radius" data-slider>
+  <span class="range-slider-handle" role="slider" tabindex="0"></span>
+  <span class="range-slider-active-segment"></span>
+  <input type="hidden">
+</div>
+
+<h4>Round</h4>
+
+<div class="range-slider round" data-slider>
+  <span class="range-slider-handle" role="slider" tabindex="0"></span>
+  <span class="range-slider-active-segment"></span>
+  <input type="hidden">
+</div>
+
+<h4>Disabled</h4>
+
+<div class="range-slider disabled" data-slider disabled>
+  <span class="range-slider-handle" role="slider" tabindex="0"></span>
+  <span class="range-slider-active-segment"></span>
+  <input type="hidden">
+</div>
+
+<a href="http://codepen.io/boars/pen/xupEF">Cool</a>
