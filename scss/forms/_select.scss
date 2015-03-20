@@ -1,11 +1,11 @@
 // Select variables
 $select-background: #fafafa !default;
-$select-background-focus: #ccc !default;
+$select-background-hover: #f3f3f3 !default;
 $select-radius: $input-radius !default;
+$select-triangle-color: #333 !default;
 
 @mixin form-select {
   $height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
-  $background-position: if($text-direction == 'rtl', 0%, 100%) center;
 
   height: $height;
   padding: ($form-spacing / 2);
@@ -16,16 +16,17 @@ $select-radius: $input-radius !default;
   line-height: normal;
   color: $input-color;
 
+  @include background-triangle($select-triangle-color);
+  background-size: 9px 6px;
   background-color: $select-background;
-  background-position: $background-position;
+  background-position: right 1rem center;
   background-repeat: no-repeat;
   
   border-radius: $select-radius;
 
   // Hover state
   &:hover {
-    background-color: $select-background-focus;
-    border: $input-border-focus;
+    background-color: $select-background-hover;
   }
 
   // Disabled state
@@ -38,10 +39,6 @@ $select-radius: $input-radius !default;
   &::-ms-expand {
     display: none;
   }
-
-  // The custom arrow has some fake horizontal padding so we can align it
-  // from the right side of the element without relying on CSS3
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+);
 }
 
 @mixin foundation-form-select {
