@@ -25,18 +25,22 @@ $input-prefix-overflow: visible !default;
 }
 
 @mixin prefix(
-  $bg: $input-prefix-background,
+  $background: $input-prefix-background,
   $border: $input-prefix-border-color,
   $is-button: false
 ) {
-  @if $bg {
-    $bg-lightness: lightness($bg);
-    background: $bg;
+  @if $background {
+    $bg-lightness: lightness($background);
+    background: $background;
     border-#{$opposite-direction}: none;
 
     // Control the font color based on background brightness
-    @if $bg-lightness > 70% or $bg == yellow { color: $input-prefix-color; }
-    @else { color: $input-prefix-color-alt; }
+    @if $bg-lightness > 70% or $background == yellow {
+      color: $input-prefix-color;
+    }
+    @else {
+      color: $input-prefix-color-alt;
+    }
   }
 
   @if $border {
@@ -51,17 +55,17 @@ $input-prefix-overflow: visible !default;
 }
 
 @mixin postfix(
-  $bg: $input-prefix-background,
+  $background: $input-prefix-background,
   $border: get-border-value($input-prefix-border, color),
   $is-button: false
 ) {
-  @if $bg {
-    $bg-lightness: lightness($bg);
-    background: $bg;
+  @if $background {
+    $bg-lightness: lightness($background);
+    background: $background;
     border-#{$default-float}: none;
 
     // Control the font color based on background brightness
-    @if $bg-lightness > 70%  or $bg == yellow {
+    @if $bg-lightness > 70%  or $background == yellow {
       color: $input-prefix-color;
     }
     @else {

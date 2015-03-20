@@ -9,27 +9,34 @@
 @mixin foundation-grid-classes(
   $row: 'row',
   $column: 'columns',
+  $column-row: 'column-row',
   $push: 'push',
   $pull: 'pull',
   $center: 'center',
   $uncenter: 'uncenter',
   $collapse: 'collapse',
   $uncollapse: 'uncollapse',
+  $offset: 'offset',
   $end: 'end',
-  $breakpoints: (small medium large)
+  $breakpoints: $breakpoint-classes
 ) {
   // Row
   .#{$row} {
     @include grid-row;
-    
-    // Nested rows
-    & & {
-      @include grid-row($behavior: nest, $cf: false);
-    }
 
     // Collapsing
     &.#{$collapse} {
       > .#{$column} { @include grid-col-collapse; }
+    }
+
+    // Nesting
+    & &,
+    .#{$column-row} & {
+      @include grid-row($behavior: nest, $cf: false);
+
+      &.#{$collapse} {
+        @include grid-row($behavior: nest collapse, $cf: false);
+      }
     }
 
     // Responsive collapsing
@@ -56,7 +63,7 @@
   }
 
   // Column row
-  .column-row {
+  .#{$column-row} {
     @include grid-column-row;
 
     .#{$row} {
@@ -64,7 +71,7 @@
     }
   }
   
-  @each $size in $breakpoint-classes {
+  @each $size in $breakpoints {
     @include breakpoint($size) {
       @for $i from 1 through $grid-column-count {
         // Column width
@@ -85,7 +92,7 @@
 
         // Offsets
         $o: $i - 1;
-        .#{$size}-offset-#{$o} {
+        .#{$size}-#{$offset}-#{$o} {
           @include grid-col-off($o);
         }
       }
