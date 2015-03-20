@@ -4,6 +4,7 @@ $form-spacing: rem-calc(16) !default;
   'text',
   'checkbox',
   'label',
+  'help-text',
   'pre-postfix',
   'fieldset',
   'select',
@@ -13,6 +14,7 @@ $form-spacing: rem-calc(16) !default;
   @include foundation-form-text;
   @include foundation-form-checkbox;
   @include foundation-form-label;
+  @include foundation-form-helptext;
   @include foundation-form-prepostfix;
   @include foundation-form-fieldset;
   @include foundation-form-select;
