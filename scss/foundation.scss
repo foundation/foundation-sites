@@ -23,7 +23,8 @@ $foundation-version: '6.0.0-alpha';
   'components/visibility',
   'components/close-button',
   'components/media-object',
-  'components/menu-bar';
+  'components/menu-bar',
+  'components/tabs';
 
 // Exports
 @include foundation-global-styles;
