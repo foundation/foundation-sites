@@ -1,24 +1,24 @@
-$input-error-message-padding: rem-calc(6 9 9) !default;
-$input-error-message-top: -1px !default;
-$input-error-message-font-size: rem-calc(12) !default;
-$input-error-message-font-weight: $font-weight-normal !default;
-$input-error-message-font-style: italic !default;
-$input-error-message-font-color: #fff !default;
-$input-error-message-bg-color: $alert-color !default;
-$input-error-message-font-color-alt: #333 !default;
+$input-error-padding: rem-calc(6 9 9) !default;
+$input-error-font-size: rem-calc(12) !default;
+$input-error-font-weight: $font-weight-normal !default;
+$input-error-font-style: italic !default;
+$input-error-color: #fff !default;
+$input-error-color-alt: #333 !default;
+$input-error-background: $alert-color !default;
 
 // @MIXIN
 //
 // We use this mixin to control border and background color of error inputs
 // $color - Default: $alert-color (found in settings file)
-@mixin form-error-color($color:$alert-color) {
+@mixin form-error-color($color: $alert-color) {
   border-color: $color;
-  background-color: rgba($color, .1);
+  background-color: rgba($color, 0.1);
 
   // Go back to normal on focus
   &:focus {
-    background: $input-focus-bg-color;
-    border-color: $input-focus-border-color;
+    $border-color: get-border-value($input-border-focus, color);
+    background: $input-background-focus;
+    border-color: $border-color;
   }
 }
 
@@ -26,34 +26,43 @@ $input-error-message-font-color-alt: #333 !default;
 //
 // We use this simple mixin to style labels for error inputs
 // $color - Default:$alert-color. Found in settings file
-@mixin form-label-error-color($color:$alert-color) { color: $color; }
+@mixin form-label-error-color($color: $alert-color) {
+  color: $color;
+}
 
 // @MIXIN
 //
 // We use this mixin to create error message styles
 // $bg - Default: $alert-color (Found in settings file)
-@mixin form-error-message($bg:$input-error-message-bg-color) {
+@mixin form-error-message($bg: $input-error-background) {
   display: block;
-  padding: $input-error-message-padding;
-  margin-top: $input-error-message-top;
+  padding: $input-error-padding;
+  margin-top: -1px;
   margin-bottom: $form-spacing;
-  font-size: $input-error-message-font-size;
-  font-weight: $input-error-message-font-weight;
-  font-style: $input-error-message-font-style;
+  font-size: $input-error-font-size;
+  font-weight: $input-error-font-weight;
+  font-style: $input-error-font-style;
 
   // We can control the text color based on the brightness of the background.
   $bg-lightness: lightness($bg);
   background: $bg;
-  @if $bg-lightness < 70% or $bg == yellow { color: $input-error-message-font-color; }
-  @else { color: $input-error-message-font-color-alt; }
+  @if $bg-lightness < 70% or $bg == yellow { color: $input-error-color; }
+  @else { color: $input-error-color-alt; }
 }
 
 @mixin foundation-form-error {
   #{data('abide')} {
-    .error small.error, .error span.error, span.error, small.error {
+    .error small.error,
+    .error span.error,
+    span.error,
+    small.error {
       @include form-error-message;
     }
-    span.error, small.error { display: none; }
+
+    span.error,
+    small.error {
+      display: none;
+    }
   }
 
   span.error, small.error {
@@ -72,8 +81,7 @@ $input-error-message-font-color-alt: #333 !default;
       margin-bottom: $form-spacing
     }
 
-    label,
-    label.error {
+    label, {
       @include form-label-error-color;
     }
 
@@ -104,5 +112,8 @@ $input-error-message-font-color-alt: #333 !default;
   select.error {
     margin-bottom: 0;
   }
-  label.error { @include form-label-error-color; }
+
+  label.error {
+    @include form-label-error-color;
+  }
 }

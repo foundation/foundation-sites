@@ -1,41 +1,7 @@
 $form-spacing: rem-calc(16) !default;
 
-@function text-inputs($types: all, $selector: input) {
-  $return: ();
-  $all-text-input-types:
-    text
-    password
-    date
-    datetime
-    datetime-local
-    month
-    week
-    email
-    number
-    search
-    tel
-    time
-    url
-    color
-    textarea;
-  @if $types == all { $types: $all-text-input-types; }
-  @each $type in $types {
-    @if $type == textarea {
-      @if $selector == input {
-        $return: append($return, unquote('#{$type}'), comma)
-      } @else {
-        $return: append($return, unquote('#{$type}#{$selector}'), comma)
-      }
-    } @else {
-      $return: append($return, unquote('#{$selector}[type="#{$type}"]'), comma)
-    }
-  }
-  @return $return;
-}
-
 @import
   'text',
-  'number',
   'checkbox',
   'label',
   'pre-postfix',
@@ -45,7 +11,6 @@ $form-spacing: rem-calc(16) !default;
 
 @mixin foundation-forms {
   @include foundation-form-text;
-  @include foundation-form-number;
   @include foundation-form-checkbox;
   @include foundation-form-label;
   @include foundation-form-prepostfix;
