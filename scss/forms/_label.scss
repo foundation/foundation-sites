@@ -25,8 +25,9 @@ $form-label-bottom-margin: 0 !default;
     text-align: right;
   }
   @else if $alignment == inline {
+    $input-border-width: get-border-value($input-border, width);
     margin: 0 0 $form-spacing 0;
-    padding: $form-spacing / 2 + rem-calc($input-border-width) 0;
+    padding: ($form-spacing / 2 + rem-calc($input-border-width)) 0;
   }
 }
 

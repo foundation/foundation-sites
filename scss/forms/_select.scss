@@ -21,26 +21,22 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
   background-position: if($text-direction == 'rtl', 0%, 100%) center;
 
   background-repeat: no-repeat;
-  border: {
-    style: $input-border-style;
-    width: $input-border-width;
-    color: $input-border-color;
-  }
+  border: $input-border;
   padding: ($form-spacing / 2);
   font-size: $input-font-size;
   font-family: $input-font-family;
-  color: $input-font-color;
+  color: $input-color;
   line-height: normal;
   border-radius: 0;
   &.radius { border-radius: $global-radius; }
   &:hover {
     background-color: $select-hover-bg-color;
-    border-color: $input-focus-border-color;
+    border: $input-border-focus;
   }
   // Disabled Styles
   &:disabled {
-    background-color: $input-disabled-bg;
-    cursor: $input-disabled-cursor;
+    background-color: $input-background-disabled;
+    cursor: $input-cursor-disabled;
   }
 }
 
