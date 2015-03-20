@@ -25,11 +25,11 @@
     this.$element.trigger('init.zf.equalizer');
   }
 
-  Equalizer.defaults = {
-    equalizeOnStack: true
-  };
-
   Equalizer.prototype = {
+    defaults: {
+      equalizeOnStack: true
+    },
+
     /**
      * Initializes the Equalizer plugin and calls functions to get equalizer functioning on load.
      * @private

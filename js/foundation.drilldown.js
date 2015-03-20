@@ -11,7 +11,6 @@
   function Drilldown(element, options) {
     this.$element = element;
     this.options = $.extend(this.defaults, options || {});
-
     this.$container = $();
     this.$currentMenu = this.$element;
 
@@ -30,6 +29,10 @@
 
 
   Drilldown.prototype = {
+    defaults: {
+      backButton: '<li class="js-drilldown-back"><a>Back</a></li>'
+    },
+    
     /**
      * Initializes the Drilldown by creating a container to wrap the menu bar in, and initializing all submenus.
      * @private
@@ -47,7 +50,7 @@
      * @param {jQuery} $elem - Menu to scan for sub menus.
      * @param {Boolean} root - If true, the menu being scanned is at the root level.
      */
-     _prepareMenu: function($elem, root) {
+    _prepareMenu: function($elem, root) {
       var _this = this;
 
       // Create a trigger to move up the menu. This is not used on the root-level menu, because it doesn't need a back button.
@@ -56,6 +59,7 @@
         $backButton.click(function() {
           _this.backward();
         });
+        // console.log(_this.options.backButton);
         $elem.prepend($backButton);
       }
 

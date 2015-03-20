@@ -23,11 +23,11 @@
     this.$element.trigger('init.zf.dropdown');
   }
 
-  Dropdown.defaults = {
-    toggleOn: 'both'
-  };
-
   Dropdown.prototype = {
+    defaults: {
+      toggleOn: 'both' 
+    },
+
     _init: function() {
       this._prepareMenu(this.$element);
     },

@@ -24,29 +24,27 @@
     this.$element.trigger('init.zf.toggler');
   }
 
-  Toggler.defaults = {
-    /**
-     * Set what class to toggle on which elements. Use the format `.class of .element`. `.element` can be any simple CSS selector, such as `#id`, `.class`, and `[attribute]`.
-     * @option
-     * @sample .is-visible on #dropdown
-     */
-    toggler: '',
-    /**
-     * Set the text to display inside the toggle while the target element *has the class* you set.
-     * @option
-     * @sample Hide dropdown
-     */
-    onText: '',
-    /**
-     * Set the text to display inside the toggle while the target *does not have the class* you set.
-     * @option
-     * @sample Show dropdown
-     */
-    offText: ''
-  };
-
-
   Toggler.prototype = {
+    defaults: {
+      /**
+       * Set what class to toggle on which elements. Use the format `.class of .element`. `.element` can be any simple CSS selector, such as `#id`, `.class`, and `[attribute]`.
+       * @option
+       * @sample .is-visible on #dropdown
+       */
+      toggler: '',
+      /**
+       * Set the text to display inside the toggle while the target element *has the class* you set.
+       * @option
+       * @sample Hide dropdown
+       */
+      onText: '',
+      /**
+       * Set the text to display inside the toggle while the target *does not have the class* you set.
+       * @option
+       * @sample Show dropdown
+       */
+      offText: ''
+    },
     /**
      * Initializes the Toggler plugin by parsing the target element and class from `options.toggle`.
      * @private
