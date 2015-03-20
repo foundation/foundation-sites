@@ -14,9 +14,10 @@ We use these internal functions to make the framework more robust.
 @import 'map';
 @import 'value';
 @import 'color';
+@import 'selector';
 
 // Libraries
-@import 'breakpoints';
+@import 'breakpoint';
 @import 'exports';
 
 // Mixins
