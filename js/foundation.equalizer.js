@@ -35,9 +35,7 @@
      * @private
      */
     _init: function() {
-      var heights = this.getHeights(this.$element);
-      this.applyHeight(this.$element, heights);
-
+      this._reflow();
     },
 
     /**
@@ -62,7 +60,11 @@
 
       $('[' + this.attr + ']').each(function() {
         var $eqParent       = $(this),
-            adjustedHeights = self.getHeights($eqParent);
+            adjustedHeights;
+
+        Foundation.image_loaded($eqParent.find('img'), function() {
+          adjustedHeights = self.getHeights($eqParent);
+        });
 
         self.applyHeight($eqParent, adjustedHeights);   
       });
@@ -75,10 +77,13 @@
     getHeights: function($eqParent) {
 
       var eqGroupName = $eqParent.data('equalizer'),
-          eqGroup = eqGroupName ? $eqParent.find('[' + this.attr + '-watch="' + eqGroupName + '"]:visible') : $eqParent.find('[' + this.attr + '-watch]:visible');
-          eqGroup.height('inherit');
+          eqGroup     = eqGroupName ? $eqParent.find('[' + this.attr + '-watch="' + eqGroupName + '"]:visible') : $eqParent.find('[' + this.attr + '-watch]:visible'),
+          heights;
+      
+      eqGroup.height('inherit');
 
       var heights = eqGroup.map(function () { return $(this).outerHeight(false) }).get();
+      
       return heights;
     },
     /**
@@ -90,8 +95,8 @@
      */
     applyHeight: function($eqParent, heights) {
       var eqGroupName = $eqParent.data('equalizer'),
-          eqGroup = eqGroupName ? $eqParent.find('['+this.attr+'-watch="'+eqGroupName+'"]:visible') : $eqParent.find('['+this.attr+'-watch]:visible'),
-          max      = Math.max.apply(null, heights);
+          eqGroup     = eqGroupName ? $eqParent.find('['+this.attr+'-watch="'+eqGroupName+'"]:visible') : $eqParent.find('['+this.attr+'-watch]:visible'),
+          max         = Math.max.apply(null, heights);
 
       /**
        * Fires before the heights are applied

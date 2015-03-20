@@ -97,7 +97,7 @@
      * @param {Function} func - Function to be throttled.
      * @param {Integer} delay - A list of plugins to initialize. Leave this out to initialize everything.
      */
-    throttle : function (func, delay) {
+    throttle: function (func, delay) {
       var timer = null;
 
       return function () {
@@ -126,6 +126,57 @@
 
       this._uuids.push(uuid);
       return uuid;
+    },
+    
+    /**
+     * Performs a callback function when an images are fully loaded.
+     * @param {Object} images - Image(s) to check if loaded.
+     * @param {Func} callback - Function to execute when image is fully loaded.
+     */
+    image_loaded: function (images, callback) {
+      var self = this,
+          unloaded = images.length;
+
+      if (unloaded === 0) {
+        callback(images);
+      }
+      
+      var single_image_loaded = function (image, callback) {
+        function loaded () {
+          callback(image[0]);
+        }
+        function bindLoad () {
+          this.one('load', loaded);
+
+          if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) {
+            var src = this.attr( 'src' ),
+                param = src.match( /\?/ ) ? '&' : '?';
+
+            param += 'random=' + (new Date()).getTime();
+            this.attr('src', src + param);
+          }
+        }
+
+        if (!image.attr('src')) {
+          loaded();
+          return;
+        }
+
+        if (image[0].complete || image[0].readyState === 4) {
+          loaded();
+        } else {
+          bindLoad.call(image);
+        }
+      };
+
+      images.each(function () {
+        single_image_loaded($(this), function () {
+          unloaded -= 1;
+          if (unloaded === 0) {
+            callback(images);
+          }
+        });
+      });
     }
   };
 
