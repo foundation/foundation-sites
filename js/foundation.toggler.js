@@ -45,63 +45,66 @@
     offText: ''
   };
 
-  /**
-   * Initializes the Toggler plugin by parsing the target element and class from `options.toggle`.
-   * @private
-   */
-  Toggler.prototype._init = function() {
-    // Parse the class and target
-    var input = this.options.toggler.split(' ');
 
-    if (input.length === 0) console.warn('You must pass a string of the format ".class on .element" to Toggler.');
+  Toggler.prototype = {
+    /**
+     * Initializes the Toggler plugin by parsing the target element and class from `options.toggle`.
+     * @private
+     */
+    _init: function() {
+      // Parse the class and target
+      var input = this.options.toggler.split(' ');
 
-    this.targetClass = input[0];
-    if (this.targetClass[0] === '.') this.targetClass = this.targetClass.slice(1);
+      if (input.length === 0) console.warn('You must pass a string of the format ".class on .element" to Toggler.');
 
-    this.$target = $(input[input.length - 1]);
+      this.targetClass = input[0];
+      if (this.targetClass[0] === '.') this.targetClass = this.targetClass.slice(1);
 
-    // Set the trigger text based on default state
-    if (this.$target.hasClass(this.targetClass))
-      this.$element.text(this.options.onText);
-    else
-      this.$element.text(this.options.offText);
-  };
+      this.$target = $(input[input.length - 1]);
 
-  /**
-   * Initializes events for the toggle trigger.
-   * @private
-   */
-  Toggler.prototype._events = function() {
-    var _this = this;
+      // Set the trigger text based on default state
+      if (this.$target.hasClass(this.targetClass))
+        this.$element.text(this.options.onText);
+      else
+        this.$element.text(this.options.offText);
+    },
 
-    this.$element.on('click', function() {
-      _this.toggle();
-      return false;
-    });
-  };
+    /**
+     * Initializes events for the toggle trigger.
+     * @private
+     */
+    _events: function() {
+      var _this = this;
 
-  /**
-   * Toggles the target class on the target element. An event is fired from the original trigger depending on if the resultant state was "on" or "off".
-   * @fires Toggler#on
-   * @fires Toggler#off
-   */
-  Toggler.prototype.toggle = function() {
-    this.$target.toggleClass(this.targetClass);
-    if (this.$target.hasClass(this.targetClass)) {
-      this.$element.text(this.options.onText);
-      /**
-       * Fires if the target element has the class after a toggle.
-       * @event Toggler#on
-       */
-      this.$element.trigger('on.zf.toggler');
-    }
-    else {
-      this.$element.text(this.options.offText);
-      /**
-       * Fires if the target element does not have the class after a toggle.
-       * @event Toggler#off
-       */
-      this.$element.trigger('off.zf.toggler');
+      this.$element.on('click', function() {
+        _this.toggle();
+        return false;
+      });
+    },
+
+    /**
+     * Toggles the target class on the target element. An event is fired from the original trigger depending on if the resultant state was "on" or "off".
+     * @fires Toggler#on
+     * @fires Toggler#off
+     */
+    toggle: function() {
+      this.$target.toggleClass(this.targetClass);
+      if (this.$target.hasClass(this.targetClass)) {
+        this.$element.text(this.options.onText);
+        /**
+         * Fires if the target element has the class after a toggle.
+         * @event Toggler#on
+         */
+        this.$element.trigger('on.zf.toggler');
+      }
+      else {
+        this.$element.text(this.options.offText);
+        /**
+         * Fires if the target element does not have the class after a toggle.
+         * @event Toggler#off
+         */
+        this.$element.trigger('off.zf.toggler');
+      }
     }
   };
 

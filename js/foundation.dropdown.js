@@ -23,45 +23,46 @@
     this.$element.trigger('init.zf.dropdown');
   }
 
-  Dropdown.prototype.defaults = {
+  Dropdown.defaults = {
     toggleOn: 'both'
-  }
+  };
 
-  Dropdown.prototype._init = function() {
-    this._prepareMenu(this.$element);
-  }
+  Dropdown.prototype = {
+    _init: function() {
+      this._prepareMenu(this.$element);
+    },
 
-  Dropdown.prototype._prepareMenu = function($elem) {
-    var _this = this;
+    _prepareMenu: function($elem) {
+      var _this = this;
 
-    $elem.children('li').each(function() {
-      var $submenu = $(this).children('[data-submenu]');
+      $elem.children('li').each(function() {
+        var $submenu = $(this).children('[data-submenu]');
 
-      if ($submenu.length) {
-        $submenu.addClass('js-dropdown-nohover');
+        if ($submenu.length) {
+          $submenu.addClass('js-dropdown-nohover');
 
-        $(this).children('a').click(function(event) {
-          event.stopPropagation();
+          $(this).children('a').click(function(event) {
+            event.stopPropagation();
 
-          _this.toggleMenu($submenu);
+            _this.toggleMenu($submenu);
 
-          return false;
-        }).on('mouseenter', function(event) {
-          console.log("Hi");
-          event.stopPropagation();
-          event.preventDefault();
-        });
+            return false;
+          }).on('mouseenter', function(event) {
+            event.stopPropagation();
+            event.preventDefault();
+          });
 
-        _this._prepareMenu($submenu);
-      }
-    });
-  }
+          _this._prepareMenu($submenu);
+        }
+      });
+    },
 
-  Dropdown.prototype.toggleMenu = function($target) {
-    this.$openMenu.removeClass('js-dropdown-active');
-    $target.toggleClass('js-dropdown-active');
-    this.$openMenu = $target;
-  }
+    toggleMenu: function($target) {
+      this.$openMenu.removeClass('js-dropdown-active');
+      $target.toggleClass('js-dropdown-active');
+      this.$openMenu = $target;
+    }
+  };
 
-  Foundation.plugin('dropdown', Dropdown)
-}(Foundation, jQuery)
+  Foundation.plugin('dropdown', Dropdown);
+}(Foundation, jQuery);
