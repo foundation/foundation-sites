@@ -1,7 +1,21 @@
+/// Color of labels prefixed to an input.
+/// @type Color
 $input-prefix-color: #333 !default;
+
+/// Alternate color of labels prefixed to an input, if `$input-prefix-background` is too light.
+/// @type Color
 $input-prefix-color-alt: #fff !default;
+
+/// Background color of labels prefixed to an input.
+/// @type Color
 $input-prefix-background: #f2f2f2 !default;
+
+/// Border around labels prefixed to an input.
+/// @type Border
 $input-prefix-border: 1px solid #ccc;
+
+/// Overflow rules for content inside labels prefixed to an input.
+/// @type Keyword
 $input-prefix-overflow: visible !default;
 
 @mixin prefix-postfix-base {
@@ -26,7 +40,7 @@ $input-prefix-overflow: visible !default;
 
 @mixin prefix(
   $background: $input-prefix-background,
-  $border: $input-prefix-border-color,
+  $border: get-border-value($input-prefix-border, color),
   $is-button: false
 ) {
   @if $background {
@@ -91,6 +105,14 @@ $input-prefix-overflow: visible !default;
   .prefix,
   .postfix {
     @include prefix-postfix-base;
+  }
+
+  .prefix {
+    @include prefix;
+  }
+
+  .postfix {
+    @include postfix;
   }
 
   %prepost-button {

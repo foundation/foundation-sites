@@ -1,9 +1,17 @@
+/// Default border around custom fieldsets.
+/// @type Border
 $fieldset-border: 1px solid #ddd !default;
+
+/// Default padding inside custom fieldsets.
+/// @type Number
 $fieldset-padding: rem-calc(20) !default;
+
+/// Default margin around custom fieldsets.
+/// @type Number
 $fieldset-margin: rem-calc(18 0) !default;
 
-$legend-background: #fff !default;
-$legend-font-weight: $font-weight-bold !default;
+/// Default padding between the legend text and fieldset border.
+/// @type Number
 $legend-padding: rem-calc(0 3) !default;
 
 @mixin fieldset {
@@ -11,10 +19,9 @@ $legend-padding: rem-calc(0 3) !default;
   padding: $fieldset-padding;
   margin: $fieldset-margin;
 
-  // and legend styles
   legend {
-    font-weight: $legend-font-weight;
-    background: $legend-background;
+    // Covers up the fieldset's border to create artificial padding
+    background: $body-bg;
     padding: $legend-padding;
     margin: 0;
     margin-#{$default-float}: rem-calc(-3);
@@ -22,10 +29,6 @@ $legend-padding: rem-calc(0 3) !default;
 }
 
 @mixin foundation-form-fieldset {
-  .fieldset {
-    @include fieldset;
-  }
-
   fieldset {
     border: 0;
     padding: 0;
@@ -34,5 +37,9 @@ $legend-padding: rem-calc(0 3) !default;
 
   legend {
     margin-bottom: $form-spacing * 0.5;
+  }
+
+  .fieldset {
+    @include fieldset;
   }
 }

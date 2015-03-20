@@ -1,7 +1,17 @@
-// Select variables
+/// Background color for select menus.
+/// @type Color
 $select-background: #fafafa !default;
+
+/// Background color for select menus on hover.
+/// @type Color
 $select-background-hover: #f3f3f3 !default;
+
+/// Border radius around select menus.
+/// @type Number
 $select-radius: $input-radius !default;
+
+/// Color of the dropdown triangle inside select menus.
+/// @type Color
 $select-triangle-color: #333 !default;
 
 @mixin form-select {
