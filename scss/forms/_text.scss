@@ -19,10 +19,12 @@ $input-transition: box-shadow 0.5s, border-color 0.5s ease-in-out !default;
 $input-number-spinners: true !default;
 
 @mixin form-element {
+  $height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
+  
   display: block;
   box-sizing: border-box;
   width: 100%;
-  height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
+  height: $height;
   padding: $form-spacing / 2;
   border: $input-border;
   margin: 0 0 $form-spacing 0;
