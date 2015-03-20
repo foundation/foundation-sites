@@ -82,7 +82,7 @@
       
       eqGroup.height('inherit');
 
-      var heights = eqGroup.map(function () { return $(this).outerHeight(false) }).get();
+      heights = eqGroup.map(function () { return $(this).outerHeight(false) }).get();
       
       return heights;
     },
@@ -115,7 +115,7 @@
        */
       $eqParent.trigger('postEqualized.fndtn.equalizer');
     }
-  }
+  };
 
   Foundation.plugin('equalizer', Equalizer);
 

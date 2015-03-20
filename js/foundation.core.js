@@ -103,7 +103,7 @@
       return function () {
         var context = this, args = arguments;
 
-        if (timer == null) {
+        if (timer === null) {
           timer = setTimeout(function () {
             func.apply(context, args);
             timer = null;
@@ -142,10 +142,12 @@
       }
       
       var single_image_loaded = function (image, callback) {
-        function loaded () {
+        
+        var loaded = function() {
           callback(image[0]);
-        }
-        function bindLoad () {
+        };
+
+        var bindLoad = function() {
           this.one('load', loaded);
 
           if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) {
@@ -155,7 +157,7 @@
             param += 'random=' + (new Date()).getTime();
             this.attr('src', src + param);
           }
-        }
+        };
 
         if (!image.attr('src')) {
           loaded();
