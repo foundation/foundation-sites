@@ -50,7 +50,11 @@
         .off('.magellan')
         .on('resize.fndtn.magellan', Foundation.throttle(function () {
           self._reflow();
-        }.bind(this), 50));
+        }.bind(this), 50))
+        .on('scroll.fndtn.magellan', Foundation.throttle(function(e) {
+          e.preventDefault();
+          self.updateActiveClass();
+        }, 100));
 
       this.$element
         .on('click.fndtn.magellan', 'a[href^="#"]', function(e) {
@@ -62,6 +66,8 @@
           $('html, body').animate({
             scrollTop: $(arrival).offset().top - navOffset
           }, 500);
+
+          window.location = arrival;
         })
     },
     /**
@@ -69,6 +75,26 @@
      * @private
      */
     _reflow: function() {
+    },
+    updateActiveClass: function() {
+      var windowPosition = this.$window.scrollTop(),
+          arrivals       = $('[' + this.attrArrival + ']'),
+          magellanNav    = this.$element;
+
+      arrivals.each(function() {
+        var arrivalTop = $(this).offset().top,
+            arrivalEnd = arrivalTop + $(this)[0].clientHeight;
+
+        if (windowPosition >= arrivalTop && windowPosition <= arrivalEnd) {
+          magellanNav.find('a').removeClass('active');
+
+          window.location.hash = $(this).attr('id');
+          // find the corresponding hash/id of the section
+          var activeTarget = magellanNav.find('a[href=#' + $(this).attr('id') +']');
+          activeTarget.addClass('active');
+        }
+      })
+
     }
   };
 
