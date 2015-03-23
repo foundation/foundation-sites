@@ -1,0 +1,28 @@
+<h2>Magellan</h2>
+<style>
+  section {
+    height: 300px;
+    width: 100%;
+    background: #008CBA;
+  }
+  [data-magellan] {
+    position: fixed;
+    top: 0;
+    background: white;
+  }
+</style>
+<ul class="horizontal menu-bar" data-magellan>
+  <li><a href="#first">First Arrival</a></li>
+  <li><a href="#second">Second Arrival</a></li>
+  <li><a href="#third">Third Arrival</a></li>
+  <li><a href="#fourth">Fourth Arrival</a></li>
+  <li><a href="#fifth">Fifth Arrival</a></li>
+</ul>
+
+<div class="sections">
+  <section id="first" data-magellan-arrival="first"><h1>First Section</h1></section>
+  <section id="second" data-magellan-arrival="second"><h1>Second Section</h1></section>
+  <section id="third" data-magellan-arrival="third"><h1>Third Section</h1></section>
+  <section id="fourth" data-magellan-arrival="fourth"><h1>Fourth Section</h1></section>
+  <section id="fifth" data-magellan-arrival="fifth"><h1>Fifth Section</h1></section>
+</div>
