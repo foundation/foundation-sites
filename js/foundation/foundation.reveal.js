@@ -9,7 +9,7 @@
     locked : false,
 
     settings : {
-      animation : 'fadeAndPop',
+      animation : null,
       animation_speed : 250,
       close_on_background_click : true,
       close_on_esc : true,
