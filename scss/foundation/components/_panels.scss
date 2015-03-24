@@ -16,8 +16,7 @@ $panel-border-size: 1px !default;
 $callout-panel-bg: scale-color($primary-color, $lightness: 94%) !default;
 
 // We use this % to control how much we darken things on hover
-$panel-function-factor: -11% !default;
-$panel-border-color: scale-color($panel-bg, $lightness: $panel-function-factor) !default;
+$panel-border-color: scale-color($panel-bg, $lightness: -11%) !default;
 
 // We use these to set default inner padding and bottom margin
 $panel-margin-bottom: rem-calc(20) !default;
