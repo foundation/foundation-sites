@@ -167,9 +167,11 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
       .row { max-width: none; }
 
       form,
-      input { margin-bottom: 0; }
+      input, 
+      select { margin-bottom: 0; }
 
-      input {
+      input, 
+      select {
         font-size: $topbar-button-font-size;
         height: $topbar-input-height;
         padding-bottom: .35rem;
@@ -473,6 +475,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
         .name h6 a { width: auto; }
 
         input,
+        select,
         .button,
         button {
           font-size: rem-calc(14);
