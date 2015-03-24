@@ -6,6 +6,7 @@ var supercollider = require('supercollider').init;
 var files = {
   sassSrc: 'scss/foundation.scss',
   sassPaths: ['scss'],
+  sassTestPaths: ['scss/**/*.scss', '!scss/vendor/**/*.scss', '!scss/components_old/**/*.scss'],
   javascript: ['js/foundation.core.js', 'js/*.js']
 }
 
@@ -49,10 +50,11 @@ gulp.task('javascript', function() {
 gulp.task('lint', function() {
   $.jshint.lookup = false;
   
-  gulp.src(['scss/**/*.scss', '!scss/vendor/**/*.scss', '!scss/components_old/**/*.scss'])
+  gulp.src(files.sassTestPaths)
     .pipe($.scssLint({
       'config': 'config/scss-lint.yml'
     }));
+
   gulp.src('js/*.js')
     .pipe($.jshint('./config/.jshintConfig'))
     .pipe($.jshint.reporter('default'));
