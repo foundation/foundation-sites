@@ -88,7 +88,7 @@
         if (windowPosition >= arrivalTop && windowPosition <= arrivalEnd) {
           magellanNav.find('a').removeClass('active');
 
-          window.location.hash = $(this).attr('id');
+          // window.location.hash = $(this).attr('id');
           // find the corresponding hash/id of the section
           var activeTarget = magellanNav.find('a[href=#' + $(this).attr('id') +']');
           activeTarget.addClass('active');
