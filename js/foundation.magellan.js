@@ -25,14 +25,14 @@
      */
     this.$element.trigger('init.zf.magellan');
   };
-  
+
   /**
    * Default settings for plugin
    */
   Magellan.defaults = {
       animationDuration: 700,
       animationEasing: 'linear',
-      threshold: 700
+      threshold: null
   };
 
   Magellan.prototype = {
@@ -65,7 +65,7 @@
           e.preventDefault();
           // include animation settings
           var arrival   = $(this).attr('href'),
-              navOffset = self.$element[0].clientHeight;
+              navOffset = self.$element.height();
 
           $('html, body').animate({
             scrollTop: $(arrival).offset().top - navOffset
@@ -83,22 +83,26 @@
     updateActiveClass: function() {
       var windowPosition = this.$window.scrollTop(),
           arrivals       = $('[' + this.attrArrival + ']'),
-          magellanNav    = this.$element;
+          // for sensitivty to trigger the active class, either use the specified
+          // threshold amount, or use the height of the nav item plus a little wiggle room
+          threshold      = this.options.threshold || this.$element.height() + 50,
+          magellanNav    = this.$element,
+          self           = this;
 
       arrivals.each(function() {
-        var arrivalTop = $(this).offset().top,
-            arrivalEnd = arrivalTop + $(this)[0].clientHeight;
+        var arrivalTop = $(this).offset().top - threshold,
+            arrivalEnd = arrivalTop + $(this).height();
 
         if (windowPosition >= arrivalTop && windowPosition <= arrivalEnd) {
           magellanNav.find('a').removeClass('active');
 
+          // this feature causes a bit of jumpiness
           // window.location.hash = $(this).attr('id');
           // find the corresponding hash/id of the section
           var activeTarget = magellanNav.find('a[href=#' + $(this).attr('id') +']');
           activeTarget.addClass('active');
         }
       })
-
     }
   };
 
