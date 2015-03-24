@@ -138,8 +138,9 @@ $menubar-expand-max: 6 !default;
 /// @param {Boolean} $base [true] - Set to `false` to prevent the shared CSS between side- and top-aligned icons from being printed. Set this to `false` if you're calling the mixin multiple times on the same element.
 @mixin menu-bar-icons($position: side, $base: true) {
   @if $base {
-    > li > a {
-      > img {
+    > li > a, {
+      > img,
+      > i {
         vertical-align: middle;
       }
       > span {
@@ -150,7 +151,8 @@ $menubar-expand-max: 6 !default;
 
   @if $position == side {
     > li > a {
-      > img {
+      > img,
+      > i {
         display: inline-block;
         margin-right: $menubar-icon-spacing;
       }
@@ -160,7 +162,8 @@ $menubar-expand-max: 6 !default;
     > li > a {
       text-align: center;
 
-      > img {
+      > img,
+      > i {
         display: block;
         margin: 0 auto $menubar-icon-spacing auto;
       }
