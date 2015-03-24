@@ -1,91 +1,102 @@
-{{ html }}
+<h1>{{ title }}</h1>
+
+<p class="lead">{{ description }}</p>
+
+{{ docs }}
 
 <hr>
 
-{{#ifany variable mixin function}}
+{{#if sass}}
 <section>
   <h2>Using Sass</h2>
 
-  {{#if variable}}
+  {{#if sass.variable}}
   <section>
     <h3>Variables</h3>
+
+    <p>The default styles of {{ title }} can be customized using these Sass variables in your project's <a href="#">settings file</a>.</p>
+
     <table>
       <tr><th>Name</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
-      {{#each variable}}
+      {{#each sass.variable}}
       <tr>
         <td><code>${{this.context.name}}</code></td>
         <td>{{this.type}}</td>
         <td><code>{{this.context.value}}</code></td>
-        <td>{{md this.description}}</td>
+        <td>{{this.description}}</td>
       </tr>
       {{/each}}
     </table>
   </section>
-
-  <hr>
   {{/if}}
 
-  {{#if mixin}}
+  <hr>
+
+  {{#if sass.mixin}}
   <section>
     <h3>Mixins</h3>
 
-    {{#each mixin}}
+    <p>We use these mixins to build the final CSS output of this component. You can use the mixins yourself to build your own class structure out of our components.</p>
+
+    {{#each sass.mixin}}
     <section>
       <h4>{{this.context.name}}</h4>
 
       <pre><code>{{writeMixin this}}</code></pre>
 
-      <p>{{md this.description}}</p>
+      <p>{{this.description}}</p>
 
       {{#if this.parameter}}
       <table>
-        <tr><th>Name</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
         {{#each this.parameter}}
         <tr>
           <td><code>${{this.name}}</code></td>
           <td>{{this.type}}</td>
-          <td>{{#if this.default}}<code>{{this.default}}</code>{{/if}}</td>
-          <td>{{md this.description}}</td>
+          <td><code>{{this.default}}</code></td>
+          <td>{{this.description}}</td>
         </tr>
         {{/each}}
       </table>
       {{/if}}
     </section>
+
+    <hr>
     {{/each}}
   </section>
-  
-  <hr>
   {{/if}}
 
-
-  {{#if function}}
+  {{#if sass.function}}
   <section>
     <h3>Functions</h3>
 
-    {{#each function}}
+    {{#each sass.function}}
     <section>
       <h4>{{this.context.name}}</h4>
 
-      <pre><code>{{writeMixin this}}</code></pre>
+      <pre><code>{{writeFunction this}}</code></pre>
 
-      <p>{{md this.description}}</p>
+      <p>{{this.description}}</p>
 
       {{#if this.parameter}}
       <table>
-        <tr><th>Name</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
         {{#each this.parameter}}
         <tr>
           <td><code>${{this.name}}</code></td>
           <td>{{this.type}}</td>
-          <td>{{#if this.default}}<code>{{this.default}}</code>{{/if}}</td>
-          <td>{{md this.description}}</td>
+          <td><code>{{this.default}}</code></td>
+          <td>{{this.description}}</td>
         </tr>
         {{/each}}
       </table>
       {{/if}}
     </section>
+
+    <hr>
     {{/each}}
   </section>
   {{/if}}
+
 </section>
-{{/ifany}}
+{{/if}}
