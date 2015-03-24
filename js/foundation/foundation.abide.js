@@ -70,6 +70,14 @@
 
       this.invalid_attr = this.add_namespace('data-invalid');
 
+      function validate(originalSelf, e) {
+        clearTimeout(self.timer);
+        self.timer = setTimeout(function () {
+          self.validate([originalSelf], e);
+        }.bind(originalSelf), settings.timeout);
+      }
+
+
       form
         .off('.abide')
         .on('submit.fndtn.abide', function (e) {
@@ -90,31 +98,25 @@
             // old settings fallback
             // will be deprecated with F6 release
             if (settings.validate_on_blur && settings.validate_on_blur === true) {
-              clearTimeout(self.timer);
-              self.timer = setTimeout(function () {
-                self.validate([this], e);
-              }.bind(this), settings.timeout);
+              validate(this, e);
             }
             // new settings combining validate options into one setting
             if (settings.validate_on === 'change') {
-              self.validate([this], e);
+              validate(this, e);
             }
           })
           .on('keydown.fndtn.abide', function (e) {
             // old settings fallback
             // will be deprecated with F6 release
             if (settings.live_validate && settings.live_validate === true && e.which != 9) {
-              clearTimeout(self.timer);
-              self.timer = setTimeout(function () {
-                self.validate([this], e);
-              }.bind(this), settings.timeout);
+              validate(this, e);
             }
             // new settings combining validate options into one setting
             if (settings.validate_on === 'tab' && e.which === 9) {
-              self.validate([this], e);
+              validate(this, e);
             }
             else if (settings.validate_on === 'change') {
-              self.validate([this], e);
+              validate(this, e);
             }
           })
           .on('focus', function (e) {
