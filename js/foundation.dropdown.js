@@ -10,7 +10,7 @@
    */
   function Dropdown(element, options) {
     this.$element = element;
-    this.options = $.extend(this.defaults, options || {});
+    this.options = $.extend(Dropdown.defaults, options || {});
 
     this.$openMenu = $();
 
@@ -21,12 +21,16 @@
      * @event Drilldown#init
      */
     this.$element.trigger('init.zf.dropdown');
-  }
+  };
+
+  /**
+   * Default settings for plugin
+   */
+  Dropdown.defaults = {
+    toggleOn: 'both' 
+  };
 
   Dropdown.prototype = {
-    defaults: {
-      toggleOn: 'both' 
-    },
 
     _init: function() {
       this._prepareMenu(this.$element);

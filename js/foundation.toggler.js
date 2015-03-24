@@ -10,7 +10,7 @@
    */
   function Toggler(element, options) {
     this.$element = element;
-    this.options = $.extend(this.defaults, options);
+    this.options = $.extend(Toggler.defaults, options);
     this.targetClass = '';
     this.$target = $();
 
@@ -22,10 +22,12 @@
      * @event Toggler#init
      */
     this.$element.trigger('init.zf.toggler');
-  }
-
-  Toggler.prototype = {
-    defaults: {
+  };
+  
+  /**
+   * Default settings for plugin
+   */
+  Toggler.defaults = {
       /**
        * Set what class to toggle on which elements. Use the format `.class of .element`. `.element` can be any simple CSS selector, such as `#id`, `.class`, and `[attribute]`.
        * @option
@@ -44,7 +46,9 @@
        * @sample Show dropdown
        */
       offText: ''
-    },
+  };
+
+  Toggler.prototype = {
     /**
      * Initializes the Toggler plugin by parsing the target element and class from `options.toggle`.
      * @private

@@ -10,7 +10,7 @@
    */
   function Equalizer(element, options) {
     this.$element = element;
-    this.options  = $.extend(this.defaults, options);
+    this.options  = $.extend(Equalizer.defaults, options);
     this.$window  = $(window);
     this.name     = 'equalizer';
     this.attr     = 'data-equalizer';
@@ -25,11 +25,14 @@
     this.$element.trigger('init.zf.equalizer');
   }
 
-  Equalizer.prototype = {
-    defaults: {
-      equalizeOnStack: true
-    },
+  /**
+   * Default settings for plugin
+   */
+  Equalizer.defaults = {
+    equalizeOnStack: true
+  };
 
+  Equalizer.prototype = {
     /**
      * Initializes the Equalizer plugin and calls functions to get equalizer functioning on load.
      * @private

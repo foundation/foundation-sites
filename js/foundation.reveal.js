@@ -10,7 +10,7 @@
    */
   function Reveal(element, options) {
     this.$element = element;
-    this.options = $.extend(this.defaults, options);
+    this.options = $.extend(Reveal.defaults, options);
     this.targetClass = '';
     this.$target = $();
 
@@ -23,7 +23,10 @@
      */
     this.$element.trigger('init.zf.reveal');
   }
-
+  
+  /**
+   * Default settings for plugin
+   */
   Reveal.defaults = {
     /**
      * Set the animation class for the modal to use to animate into view

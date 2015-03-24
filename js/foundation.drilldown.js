@@ -10,7 +10,7 @@
    */
   function Drilldown(element, options) {
     this.$element = element;
-    this.options = $.extend(this.defaults, options || {});
+    this.options = $.extend(Drilldown.defaults, options || {});
     this.$container = $();
     this.$currentMenu = this.$element;
 
@@ -21,13 +21,13 @@
      * @event Drilldown#init
      */
     this.$element.trigger('init.zf.drilldown');
-  }
+  };
+
+  Drilldown.defaults = {
+    backButton: '<li class="js-drilldown-back"><a>Back</a></li>'
+  };
 
   Drilldown.prototype = {
-    defaults: {
-      backButton: '<li class="js-drilldown-back"><a>Back</a></li>'
-    },
-
     /**
      * Initializes the Drilldown by creating a container to wrap the menu bar in, and initializing all submenus.
      * @private

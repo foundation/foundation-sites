@@ -10,7 +10,7 @@
    */
   function Magellan(element, options) {
     this.$element = element;
-    this.options  = $.extend(this.defaults, options);
+    this.options  = $.extend(Magellan.defaults, options);
     this.$window  = $(window);
     this.name     = 'magellan';
     this.attr     = 'data-magellan';
@@ -24,14 +24,18 @@
      * @event Magellan#init
      */
     this.$element.trigger('init.zf.magellan');
-  }
+  };
+  
+  /**
+   * Default settings for plugin
+   */
+  Magellan.defaults = {
+      animationDuration: 700,
+      animationEasing: 'linear',
+      threshold: 700
+  };
 
   Magellan.prototype = {
-    defaults: {
-      animationDuration: 700,
-      animationEasing: 'linear'
-    },
-
     /**
      * Initializes the Magellan plugin and calls functions to get equalizer functioning on load.
      * @private
