@@ -31,7 +31,8 @@ $foundation-version: '6.0.0-alpha';
   'components/pagination',
   'components/breadcrumbs',
   'components/thumbnail',
-  'components/range-slider';
+  'components/range-slider',
+  'components/callout';
 
 // Exports
 @include foundation-global-styles;
