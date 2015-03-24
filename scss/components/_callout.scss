@@ -5,10 +5,11 @@
 ///
 /// @variables
 ///
-$include-html-panel-classes: $include-html-classes !default;
+// $include-html-panel-classes: $include-html-classes !default;
 
 // We use these to control the background and border styles
-$panel-background: scale-color($white, $lightness: -5%) !default;
+$panel-background: scale-color(#fff, $lightness: -5%) !default;
+$panel-bg: $panel-background;
 $panel-border-style: solid !default;
 $panel-border-size: 1px !default;
 $callout-panel-bg: scale-color($primary-color, $lightness: 94%) !default;
@@ -22,8 +23,8 @@ $panel-margin-bottom: rem-calc(20) !default;
 $panel-padding: rem-calc(20) !default;
 
 // We use these to set default font colors
-$panel-font-color: $oil !default;
-$panel-font-color-alt: $white !default;
+$panel-font-color: #222 !default;
+$panel-font-color-alt: #fff !default;
 
 $panel-header-adjust: true !default;
 $callout-panel-link-color: $primary-color !default;
@@ -32,7 +33,7 @@ $callout-panel-link-color-hover: scale-color($callout-panel-link-color, $lightne
 // @mixins
 //
 // We use this mixin to create panels.
-// $bg - Sets the panel background color. Default: $panel-pg || scale-color($white, $lightness: -5%) !default
+// $bg - Sets the panel background color. Default: $panel-pg || scale-color(#fff, $lightness: -5%) !default
 // $padding - Sets the panel padding amount. Default: $panel-padding || rem-calc(20)
 // $adjust - Sets the font color based on the darkness of the bg & resets header line-heights for panels. Default: $panel-header-adjust || true
 @mixin panel($bg:$panel-bg, $padding:$panel-padding, $adjust:$panel-header-adjust, $border:true) {
@@ -78,29 +79,18 @@ $callout-panel-link-color-hover: scale-color($callout-panel-link-color, $lightne
   }
 }
 
-@include exports("panel") {
-  @if $include-html-panel-classes {
+.panel { @include panel;
 
-    /* Panels */
-    .panel { @include panel;
+  &.callout {
+    @include panel($callout-panel-bg);
+    a:not(.button) {
+      color: $callout-panel-link-color;
 
-      &.callout {
-        @include panel($callout-panel-bg);
-        a:not(.button) {
-          color: $callout-panel-link-color;
-
-          &:hover,
-          &:focus {
-            color: $callout-panel-link-color-hover;
-          }
-        }
+      &:hover,
+      &:focus {
+        color: $callout-panel-link-color-hover;
       }
-
-      &.radius {
-        @include radius;
-      }
-
     }
-
   }
+
 }

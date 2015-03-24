@@ -32,7 +32,8 @@ $foundation-version: '6.0.0-alpha';
   'components/breadcrumbs',
   'components/thumbnail',
   'components/range-slider',
-  'components/callout';
+  'components/callout',
+  'components/table';
 
 // Exports
 @include foundation-global-styles;
