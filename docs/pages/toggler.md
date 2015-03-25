@@ -1,5 +1,9 @@
-<h2>Toggler</h2>
+---
+title: Toggler
+description: Toggler makes it easy to swap CSS classes on any element on click.
+---
 
+```html_example
 <a 
   data-toggler=".expand on #menuBar"
   data-ontext="Un-expand!"
@@ -11,3 +15,4 @@
   <li><a href="#">Three</a></li>
   <li><a href="#">Four</a></li>
 </ul>
+```

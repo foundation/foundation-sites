@@ -15,7 +15,7 @@ Form elements in Foundation are styled based on their type attribute rather than
 
 This is an example form we've created that is laid out using the grid:
 
-```html
+```html_example
 <form>
   <div class="row">
     <div class="large-12 columns">
@@ -88,7 +88,7 @@ This is an example form we've created that is laid out using the grid:
 
 Sometimes you want a form with labels to the left of your inputs. Piece of cake. You can put the label inside a different column to the left of the input. Then add a class of .right to the label to have it align to the right.
 
-```html
+```html_example
 <form>
   <div class="row">
     <div class="small-8 columns">
@@ -109,7 +109,7 @@ Sometimes you want a form with labels to the left of your inputs. Piece of cake.
 
 Add the `.middle` class to vertically align the label with its input.
 
-```html
+```html_example
 <form>
   <div class="row">
     <div class="small-8 columns">
@@ -132,7 +132,7 @@ Add the `.middle` class to vertically align the label with its input.
 
 Foundation forms support actions tied to buttons, and prefix / postfix labels, through a versatile approach using special grid properties. Essentially you can use `<div class="row collapse">` to create label / action / input combinations. You use the Foundation columns to define the size of the pre/postfix `<span class="postfix">` or `<span class="prefix">`.
 
-```html
+```html_example
 <form>
   <div class="row collapse">
     <div class="small-3 large-2 columns">

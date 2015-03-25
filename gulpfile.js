@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 var shipyard = require('shipyard');
 var supercollider = require('supercollider').init;
+var rimraf = require('rimraf');
 
 var files = {
   sassSrc: 'scss/foundation.scss',
@@ -10,9 +11,13 @@ var files = {
   javascript: ['js/foundation.core.js', 'js/*.js']
 }
 
+gulp.task('clean', function() {
+  rimraf('dist', function() {});
+});
+
 // Assembles the layout, pages, and partials in the docs folder
 gulp.task('html', function() {
-  var mdFilter = $.filter(['*.md']);
+  var mdFilter = $.filter(['*.md', '!menu-bar.md']);
 
   gulp.src('docs/pages/**/*')
     .pipe($.cached('docs'))
@@ -73,7 +78,7 @@ gulp.task('test', function() {
 })
 
 // Runs all of the above tasks and then waits for files to change
-gulp.task('default', ['html', 'sass', 'javascript'], function() {
+gulp.task('default', ['clean', 'html', 'sass', 'javascript'], function() {
   gulp.watch('docs/**/*', ['html']);
   gulp.watch('scss/**/*', ['sass']);
   gulp.watch('js/**/*', ['javascript']);

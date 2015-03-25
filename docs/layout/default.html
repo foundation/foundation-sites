@@ -11,6 +11,35 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
     <link href="//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
     <style>
+      .docs-header {
+        position: relative;
+      }
+        .docs-header-icon {
+          display: none;
+          position: absolute;
+          right: 100%;
+          width: 2rem;
+          font-size: 2rem;
+          top: 0.4rem;
+        }
+        .docs-header-icon::before {
+          font-family: "foundation-icons";
+          content: "\f165";
+          color: #999;
+        }
+        .docs-header-icon:hover,
+        .docs-header:hover .docs-header-icon {
+          display: block;
+        }
+      .docs-variable-table code {
+        background: transparent;
+        color: #222;
+        border: 0;
+        padding: 0;
+      }
+        .docs-variable-table td:first-child code {
+          font-weight: bold;
+        }
       .docs-grid .row {
         background: rgba(0, 140, 186, 0.15);
       }
