@@ -97,7 +97,7 @@ $pagination-link-current-active-bg: $primary-color !default;
 @mixin pagination($center:false, $base-style:true, $use-default-classes:true) {
 
   @if $base-style {
-    display: block;
+    @include display(block);
     margin-#{$default-float}: $pagination-margin;
     min-height: $pagination-height;
 
@@ -112,7 +112,7 @@ $pagination-link-current-active-bg: $primary-color !default;
         @include single-transition(background-color);
         background: none;
         color: $pagination-link-font-color;
-        display: block;
+        @include display(block);
         font-size: 1em;
         font-weight: normal;
         line-height: inherit;
@@ -135,10 +135,10 @@ $pagination-link-current-active-bg: $primary-color !default;
   // Left or center align the li elements
   li {
     @if $center {
-      display: inline-block;
+      @include display(inline-block);
       float: none;
     } @else {
-      display: block;
+      @include display(block);
       float: $pagination-li-float;
     }
   }

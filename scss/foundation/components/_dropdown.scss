@@ -64,14 +64,14 @@ $f-dropdown-radius: $global-radius !default;
 // $triangle - Sets if dropdown has triangle. Default:true.
 // $max-width - Default: $f-dropdown-max-width || 200px.
 @mixin dropdown-container($content:list, $triangle:true, $max-width:$f-dropdown-max-width) {
-  display: none;
+  @include display(none);
   left: -9999px;
   list-style: $f-dropdown-list-style;
   margin-#{$default-float}: 0;
   position: absolute;
 
   &.open {
-    display: block;
+    @include display(block);
   }
 
   > *:first-child { margin-top: 0; }
@@ -218,7 +218,7 @@ $f-dropdown-radius: $global-radius !default;
   &.radius { @include radius($f-dropdown-radius); }
 
   a {
-    display: block;
+    @include display(block);
     padding: $f-dropdown-list-padding;
     color: $f-dropdown-font-color;
   }

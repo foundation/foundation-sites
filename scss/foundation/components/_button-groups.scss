@@ -70,7 +70,7 @@ $button-group-border-width: 1px !default;
       border-color: rgba(255, 255, 255, .5);
       border-left-width: 0;
       border-top: $button-group-border-width solid;
-      display: block;
+      @include display(block);
       margin:0;
     }
     > button {
@@ -84,7 +84,7 @@ $button-group-border-width: 1px !default;
     }
   }
 
-  display: $button-group-display;
+  @include display($button-group-display);
   margin: $button-group-margin;
 
 

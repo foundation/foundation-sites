@@ -61,7 +61,7 @@ $side-nav-divider-color: scale-color($white, $lightness: -10%) !default;
   $link-color-active:$side-nav-link-color-active,
   $link-color-hover:$side-nav-link-color-hover,
   $link-bg-hover:$side-nav-link-bg-hover) {
-  display: block;
+  @include display(block);
   font-family: $side-nav-font-family;
   list-style-position: $side-nav-list-position;
   list-style-type: $side-nav-list-type;
@@ -75,7 +75,7 @@ $side-nav-divider-color: scale-color($white, $lightness: -10%) !default;
 
     a:not(.button) {
       color: $link-color;
-      display: block;
+      @include display(block);
       margin: $side-nav-link-margin;
       padding: $side-nav-link-padding;
       &:hover,

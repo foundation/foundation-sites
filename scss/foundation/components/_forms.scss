@@ -122,7 +122,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
   }
   box-shadow: $input-box-shadow;
   color: $input-font-color;
-  display: block;
+  @include display(block);
   font-family: $input-font-family;
   font-size: $input-font-size;
   height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
@@ -166,7 +166,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
   @if $base-style {
     color: $form-label-font-color;
     cursor: $form-label-pointer;
-    display: block;
+    @include display(block);
     font-size: $form-label-font-size;
     font-weight: $form-label-font-weight;
     line-height: $form-label-line-height;
@@ -188,7 +188,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 @mixin prefix-postfix-base {
   border-style: $input-prefix-border-type;
   border-width: $input-prefix-border-size;
-  display: block;
+  @include display(block);
   font-size: $form-label-font-size;
   height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
   line-height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
@@ -308,7 +308,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 // We use this mixin to create error message styles
 // $bg - Default: $alert-color (Found in settings file)
 @mixin form-error-message($bg:$input-error-message-bg-color) {
-  display: block;
+  @include display(block);
   font-size: $input-error-message-font-size;
   font-style: $input-error-message-font-style;
   font-weight: $input-error-message-font-weight;
@@ -500,7 +500,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 
     input[type="checkbox"] + label,
     input[type="radio"] + label {
-      display: inline-block;
+      @include display(inline-block);
       margin-#{$default-float}: $form-spacing * .5;
       margin-#{$opposite-direction}: $form-spacing;
       margin-bottom: 0;
@@ -564,7 +564,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
         > small {
           background: transparent;
           color: scale-color($form-label-font-color, $lightness: 15%);
-          display: inline;
+          @include display(inline);
           font-size: 60%;
           font-style: normal;
           margin: 0;
@@ -574,7 +574,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
       }
 
       span.error-message {
-        display: block;
+        @include display(block);
       }
     }
 

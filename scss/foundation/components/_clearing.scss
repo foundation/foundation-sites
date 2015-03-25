@@ -66,7 +66,7 @@ $clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
       z-index: 998;
       #{$default-float}: 0;
 
-      .clearing-close { display: block; }
+      .clearing-close { @include display(block); }
     }
 
     .clearing-container {
@@ -128,7 +128,7 @@ $clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
 
     .clearing-close {
       color: $clearing-close-color;
-      display: none;
+      @include display(none);
       font-size: $clearing-close-size;
       line-height: 1;
       padding-#{$default-float}: 20px;
@@ -140,14 +140,14 @@ $clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
     }
 
     .clearing-assembled .clearing-container { height: 100%;
-      .carousel > ul { display: none; }
+      .carousel > ul { @include display(none); }
     }
 
     // If you want to show a lightbox, but only have a single image come through as the thumbnail
     .clearing-feature li {
-      display: none;
+      @include display(none);
       &.clearing-featured-img {
-        display: block;
+        @include display(block);
       }
     }
 
@@ -161,7 +161,7 @@ $clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
         width: 40px;
         > span {
           border: solid $clearing-arrow-size;
-          display: block;
+          @include display(block);
           height: 0;
           position: absolute;
           top: 50%;
@@ -197,7 +197,7 @@ $clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
           text-align: center;
 
           > ul {
-            display: inline-block;
+            @include display(inline-block);
             z-index: 999;
             height: 100%;
             position: relative;
@@ -206,7 +206,7 @@ $clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
             li {
               clear: none;
               cursor: $cursor-pointer-value;
-              display: block;
+              @include display(block);
               float: $default-float;
               margin-#{$opposite-direction}: 0;
               min-height: inherit;
@@ -226,7 +226,7 @@ $clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
               a.th {
                 border: none;
                 box-shadow: none;
-                display: block;
+                @include display(block);
               }
 
               img {

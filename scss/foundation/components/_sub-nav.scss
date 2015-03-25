@@ -58,7 +58,7 @@ $sub-nav-item-divider-margin: rem-calc(12) !default;
   $font-size: $sub-nav-font-size,
   $active-bg: $sub-nav-active-bg,
   $active-bg-hover: $sub-nav-active-bg-hover) {
-  display: block;
+  @include display(block);
   margin: $sub-nav-list-margin;
   overflow: hidden;
   padding-top: $sub-nav-list-padding-top;

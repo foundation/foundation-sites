@@ -37,7 +37,7 @@ $tabs-vertical-navigation-margin-bottom: 1.25rem !default;
         margin-bottom: 0 !important;
         position: relative;
         > a {
-          display: block;
+          @include display(block);
           background: {
             color: $tabs-navigation-bg-color;
           }
@@ -70,7 +70,7 @@ $tabs-vertical-navigation-margin-bottom: 1.25rem !default;
         dd, .tab-title {
           position: inherit;
           float: none;
-          display: block;
+          @include display(block);
           top: auto;
         }
       }
@@ -81,15 +81,15 @@ $tabs-vertical-navigation-margin-bottom: 1.25rem !default;
       margin-bottom: $tabs-content-margin-bottom;
       width: 100%;
       > .content {
-        display: none;
+        @include display(none);
         float: $default-float;
         padding: $tabs-content-padding 0;
         width: 100%;
-        &.active { display: block; float: none; }
+        &.active { @include display(block); float: none; }
         &.contained { padding: $tabs-content-padding; }
       }
       &.vertical {
-        display: block;
+        @include display(block);
         > .content { padding: 0 $tabs-content-padding; }
       }
     }
@@ -114,7 +114,7 @@ $tabs-vertical-navigation-margin-bottom: 1.25rem !default;
     }
     .no-js {
       .tabs-content > .content {
-        display: block;
+        @include display(block);
         float: none;
       }
     }

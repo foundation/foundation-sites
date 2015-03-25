@@ -233,7 +233,7 @@ $menu-slide: "transform 500ms ease" !default;
       border-bottom: $off-canvas-label-border-bottom;
       border-top: $off-canvas-label-border-top;
       color: $off-canvas-label-color;
-      display: block;
+      @include display(block);
       font-size: $off-canvas-label-font-size;
       font-weight: $off-canvas-label-font-weight;
       margin: $off-canvas-label-margin;
@@ -243,7 +243,7 @@ $menu-slide: "transform 500ms ease" !default;
     a {
       border-bottom: $off-canvas-link-border-bottom;
       color: $off-canvas-link-color;
-      display: block;
+      @include display(block);
       padding: $off-canvas-link-padding;
       transition: background 300ms ease;
       &:hover {
@@ -270,7 +270,7 @@ $menu-slide: "transform 500ms ease" !default;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   background: $off-canvas-overlay-background;
   bottom: 0;
-  display: block;
+  @include display(block);
   left: 0;
   position: absolute;
   right: 0;
@@ -374,7 +374,7 @@ $menu-slide: "transform 500ms ease" !default;
       margin-left: .5rem;
     }
   }
-  display: inline;
+  @include display(inline);
 }
 
 //
@@ -397,7 +397,7 @@ $menu-slide: "transform 500ms ease" !default;
     // This is a little bonus. You don't need it for off canvas to work. Mixins to be written in the future.
     .tab-bar .menu-icon {
       color: $tabbar-menu-icon-color;
-      display: block;
+      @include display(block);
       height: $tabbar-menu-icon-height;
       padding: $tabbar-menu-icon-padding;
       position: relative;

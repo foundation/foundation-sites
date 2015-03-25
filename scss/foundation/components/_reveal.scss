@@ -56,7 +56,7 @@ $z-index-base: 1005;
   background: $reveal-overlay-bg-old; // Autoprefixer should be used to avoid such variables needed when Foundation for Sites can do so in the near future.
   background: $reveal-overlay-bg;
   bottom: 0;
-  display: none;
+  @include display(none);
   left: 0;
   position: fixed;
   right: 0;
@@ -73,7 +73,7 @@ $z-index-base: 1005;
 @mixin reveal-modal-base( $base-style: true, $width:$reveal-default-width, $max-width:$reveal-max-width, $border-radius: $reveal-radius) {
   @if $base-style {
     border-radius: $border-radius;
-    display: none;
+    @include display(none);
     position: absolute;
     top:0;
     visibility: hidden;

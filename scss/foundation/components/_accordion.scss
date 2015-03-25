@@ -42,7 +42,7 @@ $accordion-content-active-bg-color: $white !default;
 //    @params $font-family [ string ]: Specify the font family for the text of the navigation of the accorion
 
 @mixin accordion-navigation( $bg: $accordion-navigation-bg-color, $hover-bg: $accordion-navigation-hover-bg-color, $active-bg: $accordion-navigation-active-bg-color, $padding: $accordion-navigation-padding, $active_class: 'active',  $font-color: $accordion-navigation-font-color, $font-size: $accordion-navigation-font-size, $font-family: $accordion-navigation-font-family ) {
-  display: block;
+  @include display(block);
   margin-bottom: 0 !important;
   @if type-of($active_class) != "string" {
     @warn "`#{$active_class}` isn't a valid string. A valid string is needed to correctly be interpolated as a CSS class. CSS classes cannot start with a number or consist of only numbers. CSS will not be generated for the active state of this navigation component."
@@ -70,7 +70,7 @@ $accordion-content-active-bg-color: $white !default;
     @else {
       padding: $padding;
     }
-    display: block;
+    @include display(block);
     font-family: $font-family;
     @if type-of($font-size) != number {
       @warn "`#{$font-size}` was read as a #{type-of($font-size)}";
@@ -99,7 +99,7 @@ $accordion-content-active-bg-color: $white !default;
 //    @params $active_class [ string ]: Class name used to keep track of which accordion tab should be visible.
 
 @mixin accordion-content($bg: $accordion-content-active-bg-color, $padding: $accordion-content-padding, $active_class: 'active') {
-  display: none;
+  @include display(none);
   @if type-of($padding) != "number" {
     @warn "#{$padding} was read as a #{type-of($padding)}";
     @if $accordion-content-padding != null {
@@ -119,7 +119,7 @@ $accordion-content-active-bg-color: $white !default;
   @else {
     &.#{$active_class} {
       background: $bg;
-      display: block;
+      @include display(block);
     }
   }
 }
@@ -130,12 +130,13 @@ $accordion-content-active-bg-color: $white !default;
       @include clearfix;
       margin-bottom: 0;
       .accordion-navigation, dd {
-        display: block;
+        @include display(block);
         margin-bottom: 0 !important;
         &.active > a { background: $accordion-navigation-active-bg-color; }
         > a {
           background: $accordion-navigation-bg-color;
           color: $accordion-navigation-font-color;
+          @include display(block);
           display: block;
           font-family: $accordion-navigation-font-family;
           font-size: $accordion-navigation-font-size;
@@ -144,11 +145,11 @@ $accordion-content-active-bg-color: $white !default;
         }
 
         > .content {
-          display: none;
+          @include display(none);
           padding: $accordion-content-padding;
           &.active {
             background: $accordion-content-active-bg-color;
-            display: block;
+            @include display(block);
           }
         }
       }

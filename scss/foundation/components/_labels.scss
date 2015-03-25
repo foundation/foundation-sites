@@ -25,7 +25,7 @@ $label-font-family: $body-font-family !default;
 //
 // We use this mixin to create a default label base.
 @mixin label-base {
-  display: inline-block;
+  @include display(inline-block);
   font-family: $label-font-family;
   font-weight: $label-font-weight;
   line-height: 1;

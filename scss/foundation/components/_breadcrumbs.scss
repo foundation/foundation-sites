@@ -43,7 +43,7 @@ $crumb-slash: "/" !default;
 @mixin crumb-container {
   border-style: $crumb-border-style;
   border-width: $crumb-border-size;
-  display: block;
+  @include display(block);
   list-style: none;
   margin-#{$default-float}: 0;
   overflow: hidden;
