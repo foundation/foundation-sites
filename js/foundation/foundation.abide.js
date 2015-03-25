@@ -82,7 +82,7 @@
         .off('.abide')
         .on('submit.fndtn.abide', function (e) {
           var is_ajax = /ajax/i.test(self.S(this).attr(self.attr_name()));
-          return self.validate(self.S(this).find('input, textarea, select').not(":hidden").get(), e, is_ajax);
+          return self.validate(self.S(this).find('input, textarea, select').not(":hidden, [data-abide-ignore]").get(), e, is_ajax);
         })
         .on('validate.fndtn.abide', function (e) {
           if (settings.validate_on === 'manual') {
@@ -92,7 +92,7 @@
         .on('reset', function (e) {
           return self.reset($(this), e);          
         })
-        .find('input, textarea, select').not(":hidden")
+        .find('input, textarea, select').not(":hidden, [data-abide-ignore]")
           .off('.abide')
           .on('blur.fndtn.abide change.fndtn.abide', function (e) {
             // old settings fallback
@@ -134,7 +134,7 @@
 
       $('[' + self.invalid_attr + ']', form).removeAttr(self.invalid_attr);
       $('.' + self.settings.error_class, form).not('small').removeClass(self.settings.error_class);
-      $(':input', form).not(':button, :submit, :reset, :hidden').val('').removeAttr(self.invalid_attr);
+      $(':input', form).not(':button, :submit, :reset, :hidden, [data-abide-ignore]').val('').removeAttr(self.invalid_attr);
     },
 
     validate : function (els, e, is_ajax) {
