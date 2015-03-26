@@ -12,7 +12,7 @@ var files = {
 }
 
 gulp.task('clean', function() {
-  rimraf('dist', function() {});
+  rimraf.sync('dist');
 });
 
 // Assembles the layout, pages, and partials in the docs folder
@@ -37,7 +37,7 @@ gulp.task('html', function() {
 
 // Compiles Sass files into CSS
 gulp.task('sass', function() {
-  gulp.src(files.sassSrc)
+  return gulp.src(files.sassSrc)
     .pipe($.sass({
       includePaths: files.sassPaths,
       errLogToConsole: true
@@ -47,12 +47,12 @@ gulp.task('sass', function() {
 
 // Compiles JavaScript into a single file
 gulp.task('javascript', function() {
-  gulp.src(files.javascript)
+  return gulp.src(files.javascript)
     .pipe($.concat('foundation.js'))
     .pipe(gulp.dest('dist/assets/js'));
 });
 
-// Lints Sass files for formatting issues
+// Lints Sass and JavaScript files for formatting issues
 gulp.task('lint', function() {
   $.jshint.lookup = false;
   
@@ -78,8 +78,10 @@ gulp.task('test', function() {
     });
 })
 
+gulp.task('build', ['clean', 'html', 'sass', 'javascript']);
+
 // Runs all of the above tasks and then waits for files to change
-gulp.task('default', ['clean', 'html', 'sass', 'javascript'], function() {
+gulp.task('default', ['build'], function() {
   gulp.watch('docs/**/*', ['html']);
   gulp.watch('scss/**/*', ['sass']);
   gulp.watch('js/**/*', ['javascript']);

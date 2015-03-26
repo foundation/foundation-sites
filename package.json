@@ -14,6 +14,7 @@
     "gulp-scss-lint": "^0.1.7",
     "gulp-uglify": "^1.1.0",
     "rimraf": "^2.3.2",
+    "run-sequence": "^1.0.2",
     "shipyard": "git://github.com/gakimball/shipyard.git",
     "supercollider": "git://github.com/gakimball/supercollider.git"
   },
