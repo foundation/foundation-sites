@@ -3,7 +3,7 @@
 ////
 
 /// Default margin of a menu bar.
-/// @type {Number|List}
+/// @type Number
 $menubar-margin: 0 !default;
 
 /// Default background color of a menu bar.
@@ -18,10 +18,11 @@ $menubar-item-color: foreground($menubar-background, $primary-color);
 $menubar-item-background-hover: #eee !default;
 
 /// Default padding for items in a menu bar.
-/// @type {Number|List}
+/// @type Number
 $menubar-item-padding: 0.7rem 1rem !default;
 
 /// Default spacing between an icon and text in a menu bar item.
+/// @type Number
 $menubar-icon-spacing: 0.25rem !default;
 
 /// Maximum number of `expand-n` classes to include in the CSS.

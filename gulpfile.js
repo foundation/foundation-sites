@@ -17,7 +17,7 @@ gulp.task('clean', function() {
 
 // Assembles the layout, pages, and partials in the docs folder
 gulp.task('html', function() {
-  var mdFilter = $.filter(['*.md', '!menu-bar.md']);
+  var mdFilter = $.filter(['*.md', '!menu-bar.md', '!grid.md']);
 
   gulp.src('docs/pages/**/*')
     .pipe($.cached('docs'))
@@ -26,6 +26,7 @@ gulp.task('html', function() {
         template: 'docs/layout/component.html',
         adapters: ['sass', 'js']
       }))
+      .pipe(require('gulp-using')())
     .pipe(mdFilter.restore())
     .pipe(shipyard({
       layout: 'docs/layout/default.html',
