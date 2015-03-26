@@ -4,11 +4,11 @@
 
 /// Creates a container for a flex grid row.
 ///
-/// @param {Keyword|List} $behavior
+/// @param {Keyword|List} $behavior [null]
 ///   Modifications to the default grid styles. `nest` indicates the row will be placed inside another row. `collapse` indicates that the columns inside this row will not have padding. `nest collapse` combines both behaviors.
-/// @param {Number} $width - Maximum width of the row.
-/// @param {Number} $width - Number of columns to use for this row. If set to `null` (the default), the global column count will be used.
-/// @param {Boolean} $base - Set to `false` to prevent basic styles from being output. Set to `false` if you're calling this mixin on the same element twice, to prevent duplicate CSS output.
+/// @param {Number} $width [$grid-row-width] - Maximum width of the row.
+/// @param {Number} $width [null] - Number of columns to use for this row. If set to `null` (the default), the global column count will be used.
+/// @param {Boolean} $base [true] - Set to `false` to prevent basic styles from being output. Useful if you're calling this mixin on the same element twice, as it prevents duplicate CSS output.
 @mixin flex-grid-row(
   $behavior: null,
   $width: $grid-row-width,
@@ -45,9 +45,9 @@
 /// Calculates the `flex` property for a flex grid column. It accepts all of the same values as the basic `grid-column()` function, along with two extras:
 ///   - `null` (the default) will make the column expand to fill space.
 ///   - `shrink` will make the column contract, so it only takes up the horizontal space it needs.
-/// @param {String|Number|null} - Width of the column.
+/// @param {Mixed} $columns [null] - Width of the column.
 @function flex-grid-column($columns: null) {
-  $flex: 1 1 auto;
+  $flex: 1 1 0;
   @if $columns == shrink {
     $flex: 0 0 auto;
   }
@@ -58,7 +58,8 @@
 }
 
 /// Creates a column for a flex grid. By default, the column will stretch to the full width of its container, but this can be overridden with sizing classes, or by using the `unstack` class on the parent flex row.
-/// @param {mixed} $columns - Width of the column. Refer to the `flex-grid-column()` function to see possible values.
+/// @param {Mixed} $columns [null] - Width of the column. Refer to the `flex-grid-column()` function to see possible values.
+/// @param {Number} $gutter [$grid-column-gutter] - Space between columns, added as a left and right padding.
 @mixin flex-grid-column(
   $columns: null,
   $gutter: $grid-column-gutter
@@ -100,17 +101,33 @@
     }
   }
 
+  // Sizing (expand)
+  @each $size in $breakpoint-classes {
+    @if $size != small {
+      @include breakpoint($size) {
+        .#{$size}-expand {
+          flex: flex-grid-column();
+        }
+      }
+    }
+  }
+
   // Sizing (shrink)
   .shrink {
     flex: flex-grid-column(shrink);
   }
 
-  // Stacking behavior
-  .unstack { flex-wrap: nowrap; }
+  // Auto-stacking/unstacking
   @each $size in $breakpoint-classes {
-    @include breakpoint($size) {
-      @if $size != 'small' {
-        .#{$size}-unstack { flex-wrap: nowrap; }
+    @if $size != small {
+      .flex-row.#{$size}-unstack {
+        > .flex-column {
+          flex: flex-grid-column(100%);
+
+          @include breakpoint($size) {
+            flex: flex-grid-column();
+          }
+        }
       }
     }
   }

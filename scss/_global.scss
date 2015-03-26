@@ -133,6 +133,16 @@ $cursor-text-value: text !default;
     }
   }
 
+  // Reset button styles
+  button {
+    -webkit-appearance: none;
+       -moz-appearance: none;
+    background: transparent;
+    padding: 0;
+    border: 0;
+    line-height: 1;
+  }
+
   // Miscellaneous useful HTML classes
   .float-left { float: left !important; }
   .float-right { float: right !important; }

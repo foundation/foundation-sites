@@ -4,7 +4,7 @@
 
 {{ docs }}
 
-<hr>
+<br>
 
 {{#if sass}}
 <section>
@@ -16,7 +16,7 @@
 
     <p>The default styles of {{ title }} can be customized using these Sass variables in your project's <a href="#">settings file</a>.</p>
 
-    <table>
+    <table class="docs-variable-table">
       <tr><th>Name</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
       {{#each sass.variable}}
       <tr>
@@ -28,9 +28,9 @@
       {{/each}}
     </table>
   </section>
-  {{/if}}
 
   <hr>
+  {{/if}}
 
   {{#if sass.mixin}}
   <section>
@@ -54,7 +54,7 @@
           <td><code>${{this.name}}</code></td>
           <td>{{this.type}}</td>
           <td><code>{{this.default}}</code></td>
-          <td>{{this.description}}</td>
+          <td>{{md this.description}}</td>
         </tr>
         {{/each}}
       </table>
@@ -86,14 +86,12 @@
           <td><code>${{this.name}}</code></td>
           <td>{{this.type}}</td>
           <td><code>{{this.default}}</code></td>
-          <td>{{this.description}}</td>
+          <td>{{md this.description}}</td>
         </tr>
         {{/each}}
       </table>
       {{/if}}
     </section>
-
-    <hr>
     {{/each}}
   </section>
   {{/if}}
