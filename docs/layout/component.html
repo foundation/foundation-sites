@@ -7,6 +7,8 @@
 <br>
 
 {{#if sass}}
+<hr>
+
 <section>
   <h2>Using Sass</h2>
 
@@ -42,12 +44,14 @@
     <section>
       <h4>{{this.context.name}}</h4>
 
-      <pre><code>{{writeMixin this}}</code></pre>
+      <div class="docs-code">
+        <pre><code>{{writeMixin this}}</code></pre>
+      </div>
 
       <p>{{this.description}}</p>
 
       {{#if this.parameter}}
-      <table>
+      <table class="docs-variable-table">
         <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
         {{#each this.parameter}}
         <tr>
@@ -74,12 +78,14 @@
     <section>
       <h4>{{this.context.name}}</h4>
 
-      <pre><code>{{writeFunction this}}</code></pre>
+      <div class="docs-code">
+        <pre><code>{{writeFunction this}}</code></pre>
+      </div>
 
       <p>{{this.description}}</p>
 
       {{#if this.parameter}}
-      <table>
+      <table class="docs-variable-table">
         <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
         {{#each this.parameter}}
         <tr>

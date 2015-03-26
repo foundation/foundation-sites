@@ -12,6 +12,7 @@ var files = {
   docsJavascript: ['docs/assets/js/docs.js', 'bower_components/zeroclipboard/dist/ZeroClipboard.js']
 }
 
+// Erases the dist folder
 gulp.task('clean', function() {
   rimraf.sync('dist');
 });
@@ -38,7 +39,16 @@ gulp.task('html', function() {
 gulp.task('copy', function() {
   gulp.src('bower_components/zeroclipboard/dist/ZeroClipboard.swf')
     .pipe(gulp.dest('dist/assets/js'));
-})
+});
+
+gulp.task('html:map', function() {
+  supercollider({
+    src: 'docs/pages/**/*.md',
+    template: 'docs/layout/component.html',
+    adapters: ['sass', 'js'],
+    debug: 'data.json'
+  });
+});
 
 // Compiles Sass files into CSS
 gulp.task('sass', ['sass:foundation', 'sass:docs']);
@@ -57,7 +67,7 @@ gulp.task('sass:docs', function() {
       errLogToConsole: true
     }))
     .pipe(gulp.dest('dist/assets/css'));
-})
+});
 
 // Compiles JavaScript into a single file
 gulp.task('javascript', ['javascript:foundation', 'javascript:docs'])
