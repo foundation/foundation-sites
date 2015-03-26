@@ -35,7 +35,9 @@ gulp.task('html', function() {
 });
 
 // Compiles Sass files into CSS
-gulp.task('sass', function() {
+gulp.task('sass', ['sass:foundation', 'sass:docs']);
+
+gulp.task('sass:foundation', function() {
   return gulp.src(files.sassSrc)
     .pipe($.sass({
       includePaths: files.sassPaths,
@@ -43,6 +45,14 @@ gulp.task('sass', function() {
     }))
     .pipe(gulp.dest('dist/assets/css'));
 });
+
+gulp.task('sass:docs', function() {
+  return gulp.src('docs/assets/scss/docs.scss')
+    .pipe($.sass({
+      errLogToConsole: true
+    }))
+    .pipe(gulp.dest('dist/assets/css'));
+})
 
 // Compiles JavaScript into a single file
 gulp.task('javascript', function() {
@@ -82,6 +92,7 @@ gulp.task('build', ['clean', 'html', 'sass', 'javascript']);
 // Runs all of the above tasks and then waits for files to change
 gulp.task('default', ['build'], function() {
   gulp.watch('docs/**/*', ['html']);
-  gulp.watch('scss/**/*', ['sass']);
+  gulp.watch('scss/**/*', ['sass:foundation']);
+  gulp.watch('docs/assets/scss/**/*', ['sass:docs'])
   gulp.watch('js/**/*', ['javascript']);
 });
