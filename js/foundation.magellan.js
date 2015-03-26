@@ -89,6 +89,10 @@
           magellanNav    = this.$element,
           self           = this;
 
+      if (windowPosition + this.$window.height() === $(document).height()) {
+        magellanNav.find('a').last().addClass('active');
+        return;
+      }
       arrivals.each(function() {
         var arrivalTop = $(this).offset().top - threshold,
             arrivalEnd = arrivalTop + $(this).height();
