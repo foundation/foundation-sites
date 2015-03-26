@@ -4,12 +4,6 @@ description: We set out to create an easy, powerful and versatile form layout sy
 sass: scss/forms/*.scss
 ---
 
-<div class="input-group">
-  <span class="input-group-label">www.</span>
-  <input class="input-group-field" type="url">
-  <span class="input-group-button button">.com</span>
-</div>
-
 ## Form Basics
 
 Creating a form in Foundation is designed to be easy but extremely flexible. Forms are built with a combination of standard form elements, as well as the Grid (rows and columns).
@@ -43,15 +37,12 @@ This is an example form we've created that is laid out using the grid:
       </label>
     </div>
     <div class="large-4 columns">
-      <div class="row collapse">
-        <label>Input Label</label>
-        <div class="small-9 columns">
-          <input type="text" placeholder="small-9.columns">
+      <label>Input Label
+        <div class="input-group">
+          <input class="input-group-field" type="text" placeholder="small-9.columns">
+          <span class="input-group-label">.com</span>
         </div>
-        <div class="small-3 columns">
-          <span class="postfix">.com</span>
-        </div>
-      </div>
+      </label>
     </div>
   </div>
   <div class="row">
@@ -134,31 +125,18 @@ Add the `.middle` class to vertically align the label with its input.
 
 ---
 
-## Pre/postfix Labels and Actions
+## Inline Labels and Buttons
 
-Foundation forms support actions tied to buttons, and prefix / postfix labels, through a versatile approach using special grid properties. Essentially you can use `<div class="row collapse">` to create label / action / input combinations. You use the Foundation columns to define the size of the pre/postfix `<span class="postfix">` or `<span class="prefix">`.
+To attach extra text or controls to the left or right of an input field, wrap the elements in an `.input-group` container, then add these classes to the elements inside:
+
+- `.input-group-field` on the text field.
+- `.input-group-label` on a text label.
+- `.input-group-button` on a button.
 
 ```html_example
-<form>
-  <div class="row collapse">
-    <div class="small-3 large-2 columns">
-      <span class="prefix">http://</span>
-    </div>
-    <div class="small-9 large-10 columns">
-      <input type="text" placeholder="Enter your URL...">
-    </div>
-  </div>
-  <div class="row">
-    <div class="large-12 columns">
-      <div class="row collapse">
-        <div class="small-10 columns">
-          <input type="text" placeholder="Hex Value">
-        </div>
-        <div class="small-2 columns">
-          <a href="#" class="button postfix">Go</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</form>
+<div class="input-group">
+  <span class="input-group-label">$</span>
+  <input class="input-group-field" type="url">
+  <a class="input-group-button button">Submit</a>
+</div>
 ```

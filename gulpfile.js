@@ -113,7 +113,7 @@ gulp.task('build', ['clean', 'copy', 'html', 'sass', 'javascript']);
 // Runs all of the above tasks and then waits for files to change
 gulp.task('default', ['build'], function() {
   gulp.watch('docs/**/*', ['html']);
-  gulp.watch('scss/**/*', ['sass:foundation']);
+  gulp.watch('scss/**/*', ['sass']);
   gulp.watch('docs/assets/scss/**/*', ['sass:docs'])
   gulp.watch('js/**/*', ['javascript:foundation']);
   gulp.watch('docs/assets/js/**/*', ['javascript:docs']);

@@ -31,6 +31,15 @@ $input-prefix-border: 1px solid #ccc;
     background: $input-prefix-background;
     color: $input-prefix-color;
     border: $input-prefix-border;
+
+    @if hasvalue($input-prefix-border) {
+      &:first-child {
+        border-right: 0;
+      }
+      &:last-child {
+        border-left: 0;
+      }
+    }
   }
 
   input.input-group-field {

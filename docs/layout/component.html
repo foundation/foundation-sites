@@ -31,7 +31,10 @@
     </table>
   </section>
 
-  <hr>
+  {{#if sass.mixin}}{{#unless sass.function}}
+    <hr>
+  {{/unless}}{{/if}}
+
   {{/if}}
 
   {{#if sass.mixin}}
@@ -65,7 +68,10 @@
       {{/if}}
     </section>
 
-    <hr>
+    {{#if sass.function}}
+      <hr>
+    {{/if}}
+
     {{/each}}
   </section>
   {{/if}}
