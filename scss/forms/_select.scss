@@ -10,7 +10,7 @@ $select-background-hover: #f3f3f3 !default;
 /// @type Number
 $select-radius: $input-radius !default;
 
-/// Color of the dropdown triangle inside select menus.
+/// Color of the dropdown triangle inside select menus. Set to `transparent` to remove it entirely.
 /// @type Color
 $select-triangle-color: #333 !default;
 
@@ -25,12 +25,14 @@ $select-triangle-color: #333 !default;
   font-family: $input-font-family;
   line-height: normal;
   color: $input-color;
-
-  @include background-triangle($select-triangle-color);
-  background-size: 9px 6px;
   background-color: $select-background;
-  background-position: right 1rem center;
-  background-repeat: no-repeat;
+
+  @if $select-triangle-color != transparent {
+    @include background-triangle($select-triangle-color);
+    background-size: 9px 6px;
+    background-position: right ($form-spacing / 2) center;
+    background-repeat: no-repeat;
+  }
   
   border-radius: $select-radius;
 
