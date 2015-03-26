@@ -49,6 +49,7 @@ gulp.task('sass:foundation', function() {
 gulp.task('sass:docs', function() {
   return gulp.src('docs/assets/scss/docs.scss')
     .pipe($.sass({
+      includePaths: files.sassPaths,
       errLogToConsole: true
     }))
     .pipe(gulp.dest('dist/assets/css'));

@@ -1,3 +1,5 @@
+@import "global";
+
 .docs-header {
   position: relative;
 }
@@ -81,4 +83,11 @@ pre > code {
       background: darken(#eee, 10%)
     }
   }
+}
+
+a > code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  color: $primary-color;
 }
