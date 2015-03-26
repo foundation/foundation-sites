@@ -22,6 +22,7 @@ $split-button-function-factor: 10% !default;
 $split-button-pip-color: $white !default;
 $split-button-pip-color-alt: $oil !default;
 $split-button-active-bg-tint: rgba(0,0,0,0.1) !default;
+$split-button-span-border-color: rgba(255,255,255,0.5) !default;
 
 // We use these to control tiny split buttons
 $split-button-padding-tny: $button-pip-tny * 10 !default;
@@ -60,12 +61,14 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
 //
 // $padding - Type of padding to apply. Default: medium. Options: tiny, small, medium, large.
 // $pip-color - Color of the triangle. Default: $split-button-pip-color.
-// $span-border - Border color of button divider. Default: $primary-color.
+// $span-border - Border color of button divider. Default: $split-button-span-border-color.
 // $base-style - Apply base style to split button. Default: true.
 @mixin split-button(
   $padding:medium,
   $pip-color:$split-button-pip-color,
   $span-border:$primary-color,
+  $pip-color:$split-button-pip-color, 
+  $span-border:$split-button-span-border-color, 
   $base-style:true) {
 
   // With this, we can control whether or not the base styles come through.
@@ -101,7 +104,7 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
   // Control the border color for the span area of the split button
   @if $span-border {
     span {
-      border-#{$default-float}-color: rgba(255,255,255,0.5);
+      border-#{$default-float}-color: $span-border;
     }
   }
 
