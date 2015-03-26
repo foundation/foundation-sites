@@ -4,6 +4,12 @@ description: We set out to create an easy, powerful and versatile form layout sy
 sass: scss/forms/*.scss
 ---
 
+<div class="input-group">
+  <span class="input-group-label">www.</span>
+  <input class="input-group-field" type="url">
+  <span class="input-group-button button">.com</span>
+</div>
+
 ## Form Basics
 
 Creating a form in Foundation is designed to be easy but extremely flexible. Forms are built with a combination of standard form elements, as well as the Grid (rows and columns).

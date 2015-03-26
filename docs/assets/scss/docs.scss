@@ -1,4 +1,14 @@
-@import "global";
+@import "foundation";
+
+@include foundation-global-styles;
+@include foundation-grid-classes;
+@include foundation-button;
+@include foundation-flex-grid-classes;
+@include foundation-forms;
+@include foundation-typography;
+@include foundation-visibility-classes;
+@include foundation-close-button;
+@include foundation-media-object;
 
 .docs-header {
   position: relative;

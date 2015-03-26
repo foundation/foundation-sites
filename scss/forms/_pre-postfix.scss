@@ -2,10 +2,6 @@
 /// @type Color
 $input-prefix-color: #333 !default;
 
-/// Alternate color of labels prefixed to an input, if `$input-prefix-background` is too light.
-/// @type Color
-$input-prefix-color-alt: #fff !default;
-
 /// Background color of labels prefixed to an input.
 /// @type Color
 $input-prefix-background: #f2f2f2 !default;
@@ -14,119 +10,37 @@ $input-prefix-background: #f2f2f2 !default;
 /// @type Border
 $input-prefix-border: 1px solid #ccc;
 
-/// Overflow rules for content inside labels prefixed to an input.
-/// @type Keyword
-$input-prefix-overflow: visible !default;
-
-@mixin prefix-postfix-base {
-  $height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
-  $line-height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
-
-  position: relative;
-  z-index: 2;
-  overflow: $input-prefix-overflow;
-
-  display: block;
-  width: 100%;
-  height: $height;
-  padding-top: 0;
-  padding-bottom: 0;
-  border: $input-prefix-border;
-  
-  font-size: $form-label-font-size;
-  line-height: $line-height;
-  text-align: center;
-}
-
-@mixin prefix(
-  $background: $input-prefix-background,
-  $border: get-border-value($input-prefix-border, color),
-  $is-button: false
-) {
-  @if $background {
-    $bg-lightness: lightness($background);
-    background: $background;
-    border-#{$opposite-direction}: none;
-
-    // Control the font color based on background brightness
-    @if $bg-lightness > 70% or $background == yellow {
-      color: $input-prefix-color;
-    }
-    @else {
-      color: $input-prefix-color-alt;
-    }
-  }
-
-  @if $border {
-    border-color: $border;
-  }
-
-  @if $is-button {
-    padding: 0;
-    border: 0;
-    text-align: center;
-  }
-}
-
-@mixin postfix(
-  $background: $input-prefix-background,
-  $border: get-border-value($input-prefix-border, color),
-  $is-button: false
-) {
-  @if $background {
-    $bg-lightness: lightness($background);
-    background: $background;
-    border-#{$default-float}: none;
-
-    // Control the font color based on background brightness
-    @if $bg-lightness > 70%  or $background == yellow {
-      color: $input-prefix-color;
-    }
-    @else {
-      color: $input-prefix-color-alt;
-    }
-  }
-
-  @if $border {
-    border-color: $border;
-  }
-
-  @if $is-button {
-    padding-#{$default-float}: 0;
-    padding-#{$opposite-direction}: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    text-align: center;
-    border: none;
-  }
-}
-
 @mixin foundation-form-prepostfix {
-  .prefix,
-  .postfix {
-    @include prefix-postfix-base;
+  .input-group {
+    display: table;
+    width: 100%;
+    margin-bottom: $form-spacing;
   }
 
-  .prefix {
-    @include prefix;
+  %input-group-child {
+    display: table-cell;
+    margin: 0;
+    vertical-align: middle;
   }
 
-  .postfix {
-    @include postfix;
+  .input-group-label {
+    @extend %input-group-child;
+    text-align: center;
+    height: 100%;
+    padding: 0;
+    background: $input-prefix-background;
+    color: $input-prefix-color;
+    border: $input-prefix-border;
   }
 
-  %prepost-button {
-    // [PH] Until button styles are in place
-    // @include button-size(false, false);
+  input.input-group-field {
+    @extend %input-group-child;
   }
 
-  .postfix.button {
-    @extend %prepost-button;
-    @include postfix(false, false, true);
-  }
-
-  .prefix.button {
-    @extend %prepost-button;
-    @include prefix(false, false, true);
+  .input-group-button {
+    @extend %input-group-child;
+    height: 100%;
+    padding: 0;
+    text-align: center;
   }
 }
