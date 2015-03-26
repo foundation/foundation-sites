@@ -140,6 +140,9 @@ $range-slider-disabled-cursor: $cursor-disabled-value !default;
           position: absolute;
         }
         .range-slider-active-segment {
+          border-bottom-left-radius: inherit;
+          border-bottom-right-radius: inherit;
+          border-top-left-radius: initial;
           bottom: 0;
           height: auto;
           width: $range-slider-bar-height - rem-calc((strip-unit($range-slider-bar-border-width) * 2));
@@ -160,6 +163,8 @@ $range-slider-disabled-cursor: $cursor-disabled-value !default;
     }
     .range-slider-active-segment {
       background: $range-slider-active-segment-bg-color;
+      border-bottom-left-radius: inherit;
+      border-top-left-radius: inherit;
       display: inline-block;
       height: $range-slider-bar-height - rem-calc((strip-unit($range-slider-bar-border-width) * 2));
       position: absolute;
