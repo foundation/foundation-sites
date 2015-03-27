@@ -244,7 +244,7 @@
               all_valid = valid && last_valid;
               last_valid = valid;
           }
-          if (valid) {
+          if (all_valid) {
               this.S(el).removeAttr(this.invalid_attr);
               parent.removeClass('error');
               $(el).triggerHandler('valid');
@@ -292,7 +292,7 @@
             $(el).triggerHandler('invalid');
           }
         }
-        validations.push(el_validations[0]);
+        validations = validations.concat(el_validations);
       }
       return validations;
     },
