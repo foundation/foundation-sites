@@ -10,7 +10,7 @@
 <hr>
 
 <section>
-  <h2>Using Sass</h2>
+  <h2>Sass Reference</h2>
 
   {{#if sass.variable}}
   <section>
@@ -108,5 +108,109 @@
   </section>
   {{/if}}
 
+</section>
+{{/if}}
+
+{{#if js}}
+<section>
+  <h2>JavaScript Reference</h2>
+
+  {{#each js.class}}
+  <section>
+    <h3>Foundation.{{this.name}}</h3>
+    {{md this.description}}
+    <div class="docs-code"><pre><code>var elem = new Foundation.{{this.name}}(element, options);</code></pre></div>
+    {{#if this.fires}}
+      <p><strong>Fires these events:</strong>
+      {{#each this.fires}}
+        {{this}}
+      {{/each}}
+      </p>
+    {{/if}}
+    {{#if this.params}}
+    <table class="docs-variable-table">
+      <tr><th>Name</th><th>Type</th><th>Description</th></tr>
+      {{#each this.params}}
+      <tr>
+        <td><code>{{this.name}}</code></td>
+        <td>{{this.type.names.[0]}}</td>
+        <td>{{this.description}}</td>
+      </tr>
+      {{/each}}
+    </table>
+    {{/if}}
+  </section>
+  {{/each}}
+
+  <hr>
+
+  {{#if js.member}}
+  <section>
+    <h3>Plugin Options</h3>
+    <p>Use these options to customize an instance of {{title}}. Plugin options can be set as individual data attributes, one combined <code>data-options</code> attribute, or as an object passed to the plugin's constructor. <a href="#">Learn more about how JavaScript plugins are initialized.</a></p>
+    <table class="docs-variable-table">
+      <tr><th>Name</th><th>Description</th><th>Example</th></tr>
+      {{#each js.member}}
+      <tr>
+        <td>{{this.name}}</td>
+        <td>{{this.description}}</td>
+        <td><code>Sample!</code></td>
+      </tr>
+      {{/each}}
+    </table>
+  </section>
+  {{/if}}
+
+  <hr>
+
+  {{#if js.event}}
+  <section>
+    <h3>Events</h3>
+    <p>These events will fire from any element with a {{title}} plugin attached.</p>
+    <table class="docs-variable-table">
+      <tr><th>Name</th><th>Description</th></tr>
+      {{#each js.event}}
+        <tr>
+          <td>{{this.name}}.zf.{{../title}}</td>
+          <td>{{this.description}}</td>
+        </tr>
+      {{/each}}
+    </table>
+  </section>
+  {{/if}}
+
+  <hr>
+
+  {{#if js.function}}
+  <section>
+    <h3>Functions</h3>
+
+    {{#each js.function}}
+    <section>
+      <h4>{{../js.class.0.name}}.{{this.name}}</h4>
+      {{md this.description}}
+      {{#if this.fires}}
+        <p><strong>Fires these events:</strong>
+        {{#each this.fires}}
+          {{this}}
+        {{/each}}
+        </p>
+      {{/if}}
+      {{#if this.params}}
+      <table class="docs-variable-table">
+        <tr><th>Name</th><th>Type</th><th>Description</th></tr>
+        {{#each this.params}}
+        <tr>
+          <td><code>{{this.name}}</code></td>
+          <td>{{this.type.names.[0]}}</td>
+          <td>{{this.description}}</td>
+        </tr>
+        {{/each}}
+      </table>
+      {{/if}}
+    </section>
+    {{/each}}
+  </section>
+  {{/if}}
 </section>
 {{/if}}

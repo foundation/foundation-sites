@@ -1,6 +1,7 @@
 ---
 title: Toggler
 description: Toggler makes it easy to swap CSS classes on any element on click.
+js: js/foundation.toggler.js
 ---
 
 ```html_example

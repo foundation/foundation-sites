@@ -13,27 +13,29 @@
 .docs-header {
   position: relative;
 }
-.docs-header-icon {
-  display: none;
-  position: absolute;
-  right: 100%;
-  width: 2rem;
-  font-size: 2rem;
-  top: 0.4rem;
+  .docs-header-icon {
+    display: none;
+    position: absolute;
+    right: 100%;
+    width: 2rem;
+    font-size: 2rem;
+    top: 0.4rem;
 
-  &::before {
-    font-family: "foundation-icons";
-    content: "\f165";
-    color: #999;
-  }
+    &::before {
+      font-family: "foundation-icons";
+      content: "\f165";
+      color: #999;
+    }
 
-  &:hover,
-  .docs-header:hover & {
-    display: block;
+    &:hover,
+    .docs-header:hover & {
+      display: block;
+    }
   }
-}
 
 .docs-variable-table {
+  width: 100%;
+  
   code {
     background: transparent;
     color: #222;
