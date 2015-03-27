@@ -29,7 +29,7 @@
       var isStacked = false,
           group = equalizer.data('equalizer'),
           vals = group ? equalizer.find('['+this.attr_name()+'-watch="'+group+'"]:visible') : equalizer.find('['+this.attr_name()+'-watch]:visible'),
-          settings = equalizer.data(this.attr_name(true)+'-init'),
+          settings = equalizer.data(this.attr_name(true)+'-init') || this.settings,
           firstTopOffset;
 
       if (vals.length === 0) {
