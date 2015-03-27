@@ -21,7 +21,7 @@
      * @event Drilldown#init
      */
     this.$element.trigger('init.zf.dropdown');
-  };
+  }
 
   /**
    * Default settings for plugin

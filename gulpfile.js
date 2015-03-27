@@ -83,18 +83,21 @@ gulp.task('javascript:docs', function() {
 });
 
 // Lints Sass and JavaScript files for formatting issues
-gulp.task('lint', function() {
-  $.jshint.lookup = false;
-  
-  gulp.src(files.sassTestPaths)
+gulp.task('lint', ['lint:sass', 'lint:javascript']);
+gulp.task('lint:sass', function() {
+  return gulp.src(files.sassTestPaths)
     .pipe($.scssLint({
       'config': 'config/scss-lint.yml'
     }));
-
-  gulp.src('js/*.js')
+});
+gulp.task('lint:javascript', function() {
+  $.jshint.lookup = false;
+  
+  return gulp.src('js/*.js')
     .pipe($.jshint('./config/.jshintConfig'))
     .pipe($.jshint.reporter('default'));
 });
+
 
 // Runs unit tests
 gulp.task('test', function() {

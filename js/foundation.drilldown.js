@@ -21,7 +21,7 @@
      * @event Drilldown#init
      */
     this.$element.trigger('init.zf.drilldown');
-  };
+  }
 
   Drilldown.defaults = {
     backButton: '<li class="js-drilldown-back"><a>Back</a></li>'

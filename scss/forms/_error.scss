@@ -65,27 +65,24 @@ $input-error-padding: rem-calc(6 9 9) !default;
   // We can control the text color based on the brightness of the background.
   $bg-lightness: lightness($bg);
   background: $bg;
-  @if $bg-lightness < 70% or $bg == yellow { color: $input-error-color; }
-  @else { color: $input-error-color-alt; }
+  @if $bg-lightness < 70% or $bg == #ff0 {
+    color: $input-error-color;
+  }
+  @else {
+    color: $input-error-color-alt;
+  }
 }
 
 @mixin foundation-form-error {
   #{data('abide')} {
-    .error small.error,
-    .error span.error,
-    span.error,
-    small.error {
+    .error,
+    .error .error {
       @include form-error-message;
     }
 
-    span.error,
-    small.error {
+    .error {
       display: none;
     }
-  }
-
-  span.error, small.error {
-    @include form-error-message;
   }
 
   .error {
@@ -97,14 +94,14 @@ $input-error-padding: rem-calc(6 9 9) !default;
 
     input[type="checkbox"],
     input[type="radio"] {
-      margin-bottom: $form-spacing
+      margin-bottom: $form-spacing;
     }
 
     label, {
       @include form-label-error-color;
     }
 
-    small.error {
+    .error {
       @include form-error-message;
     }
 

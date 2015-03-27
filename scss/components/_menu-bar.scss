@@ -87,7 +87,7 @@ $menubar-expand-max: 6 !default;
     }
   }
   @else {
-    @debug "The direction used for menu-bar-direction() must be horizontal or vertical.";
+    @warn 'The direction used for menu-bar-direction() must be horizontal or vertical.';
   }
 }
 
@@ -144,6 +144,7 @@ $menubar-expand-max: 6 !default;
       > i {
         vertical-align: middle;
       }
+
       > span {
         vertical-align: middle;
       }
@@ -166,7 +167,7 @@ $menubar-expand-max: 6 !default;
       > img,
       > i {
         display: block;
-        margin: 0 auto $menubar-icon-spacing auto;
+        margin: 0 auto $menubar-icon-spacing;
       }
     }
   }
@@ -174,6 +175,7 @@ $menubar-expand-max: 6 !default;
 
 .menu-bar {
   @include menu-bar-base;
+  @include menu-bar-icons;
 
   // Orientation
   @include menu-bar-direction(horizontal);
@@ -187,6 +189,7 @@ $menubar-expand-max: 6 !default;
       &.#{$size}-horizontal {
         @include menu-bar-direction(horizontal);
       }
+
       &.#{$size}-vertical {
         @include menu-bar-direction(vertical);
       }
@@ -220,9 +223,6 @@ $menubar-expand-max: 6 !default;
   &.primary {
     @include menu-bar-style;
   }
-
-  // Icons
-  @include menu-bar-icons;
 
   // Vertical icons
   &.icon-top {

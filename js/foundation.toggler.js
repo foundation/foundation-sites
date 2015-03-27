@@ -22,7 +22,7 @@
      * @event Toggler#init
      */
     this.$element.trigger('init.zf.toggler');
-  };
+  }
   
   /**
    * Default settings for plugin
