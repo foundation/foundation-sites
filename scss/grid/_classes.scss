@@ -92,6 +92,7 @@
 
         // Offsets
         $o: $i - 1;
+        
         .#{$size}-#{$offset}-#{$o} {
           @include grid-col-off($o);
         }

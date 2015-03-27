@@ -163,6 +163,7 @@
     .flex-row.align-#{$vdir} {
       align-items: $prop;
     }
+    
     .flex-column.align-#{$vdir} {
       align-self: $prop;
     }

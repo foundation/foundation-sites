@@ -1,24 +1,3 @@
-/*doc
----
-title: Breakpoints
-name: breakpoints
-category: breakpoints
----
-
-The string interpolation method of creating breakpoints in Foundation 5 has been replaced with a new `breakpoint()` mixin.
-
-```scss
-.element {
-  font-size: 1.5rem;
-
-  @include breakpoint(medium) {
-    font-size: 2rem;
-  }
-}
-```
-
-*/
-
 ////
 /// @group breakpoints
 ////

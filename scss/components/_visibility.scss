@@ -64,15 +64,19 @@
     }
   }
 
+  %show-for-sr {
+    @include element-invisible;
+  }
+
   // Screen reader visibility classes
   // Need a "hide-for-sr" class? Add aria-hidden="true" to the element
   .show-for-sr {
-    @include element-invisible;
+    @extend %show-for-sr;
   }
   
   // Only display the element when its focused
   .show-on-focus {
-    @extend .show-for-sr;
+    @extend %show-for-sr;
     
     &:active,
     &:focus {

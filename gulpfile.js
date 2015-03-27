@@ -12,6 +12,7 @@ var files = {
   docsJavascript: ['docs/assets/js/docs.js', 'bower_components/zeroclipboard/dist/ZeroClipboard.js']
 }
 
+// Erases the dist folder
 gulp.task('clean', function() {
   rimraf.sync('dist');
 });
@@ -38,7 +39,16 @@ gulp.task('html', function() {
 gulp.task('copy', function() {
   gulp.src('bower_components/zeroclipboard/dist/ZeroClipboard.swf')
     .pipe(gulp.dest('dist/assets/js'));
-})
+});
+
+gulp.task('html:map', function() {
+  supercollider({
+    src: 'docs/pages/**/*.md',
+    template: 'docs/layout/component.html',
+    adapters: ['sass', 'js'],
+    debug: 'data.json'
+  });
+});
 
 // Compiles Sass files into CSS
 gulp.task('sass', ['sass:foundation', 'sass:docs']);
@@ -57,7 +67,7 @@ gulp.task('sass:docs', function() {
       errLogToConsole: true
     }))
     .pipe(gulp.dest('dist/assets/css'));
-})
+});
 
 // Compiles JavaScript into a single file
 gulp.task('javascript', ['javascript:foundation', 'javascript:docs'])
@@ -73,18 +83,21 @@ gulp.task('javascript:docs', function() {
 });
 
 // Lints Sass and JavaScript files for formatting issues
-gulp.task('lint', function() {
-  $.jshint.lookup = false;
-  
-  gulp.src(files.sassTestPaths)
+gulp.task('lint', ['lint:sass', 'lint:javascript']);
+gulp.task('lint:sass', function() {
+  return gulp.src(files.sassTestPaths)
     .pipe($.scssLint({
       'config': 'config/scss-lint.yml'
     }));
-
-  gulp.src('js/*.js')
+});
+gulp.task('lint:javascript', function() {
+  $.jshint.lookup = false;
+  
+  return gulp.src('js/*.js')
     .pipe($.jshint('./config/.jshintConfig'))
     .pipe($.jshint.reporter('default'));
 });
+
 
 // Runs unit tests
 gulp.task('test', function() {
@@ -103,7 +116,7 @@ gulp.task('build', ['clean', 'copy', 'html', 'sass', 'javascript']);
 // Runs all of the above tasks and then waits for files to change
 gulp.task('default', ['build'], function() {
   gulp.watch('docs/**/*', ['html']);
-  gulp.watch('scss/**/*', ['sass:foundation']);
+  gulp.watch('scss/**/*', ['sass']);
   gulp.watch('docs/assets/scss/**/*', ['sass:docs'])
   gulp.watch('js/**/*', ['javascript:foundation']);
   gulp.watch('docs/assets/js/**/*', ['javascript:docs']);

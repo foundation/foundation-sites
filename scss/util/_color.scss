@@ -16,7 +16,8 @@
   }
   @if (lightness($color) > $threshold) {
     @return $yes;
-  } @else {
+  }
+  @else {
     @return $no;
   }
 }

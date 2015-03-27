@@ -21,6 +21,7 @@ $foundation-version: '6.0.0-alpha';
   'grid/grid',
   'forms/forms',
   'components/visibility',
+  'components/button',
   'components/close-button',
   'components/media-object',
   'components/menu-bar',
@@ -35,34 +36,10 @@ $foundation-version: '6.0.0-alpha';
   'components/callout',
   'components/table';
 
-// Exports
-@include foundation-global-styles;
-@include foundation-grid-classes;
-@include foundation-flex-grid-classes;
-@include foundation-forms;
-@include foundation-typography;
-@include foundation-visibility-classes;
-@include foundation-close-button;
-@include foundation-media-object;
-
 // These styles are applied to <meta> tags, which are read by the Foundation JavaScript
 .foundation-mq {
   font-family: "#{map-serialize($breakpoints)}";
 }
 .foundation-version {
   font-family: "#{$foundation-version}";
-}
-
-.button {
-  background: #3498db;
-  color: #ffffff;
-  font-size: 20px;
-  padding: 10px 20px 10px 20px;
-  text-decoration: none;
-
-  &:hover {
-    background: #3cb0fd;
-    text-decoration: none;
-    color: #fff;
-  }
 }

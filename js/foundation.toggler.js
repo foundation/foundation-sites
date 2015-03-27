@@ -22,7 +22,7 @@
      * @event Toggler#init
      */
     this.$element.trigger('init.zf.toggler');
-  };
+  }
   
   /**
    * Default settings for plugin
@@ -51,6 +51,7 @@
   Toggler.prototype = {
     /**
      * Initializes the Toggler plugin by parsing the target element and class from `options.toggle`.
+     * @function
      * @private
      */
     _init: function() {
@@ -73,6 +74,7 @@
 
     /**
      * Initializes events for the toggle trigger.
+     * @function
      * @private
      */
     _events: function() {
@@ -86,6 +88,7 @@
 
     /**
      * Toggles the target class on the target element. An event is fired from the original trigger depending on if the resultant state was "on" or "off".
+     * @function
      * @fires Toggler#on
      * @fires Toggler#off
      */
