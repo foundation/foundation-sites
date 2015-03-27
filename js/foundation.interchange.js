@@ -39,7 +39,10 @@
      * @private
      */
     _init: function() {
-      this.mapMqContent(this.$element);
+      var instanceId = Foundation.generateUuid();
+      this.$element.data('uuid', instanceId);
+      this.$element.attr('data-uuid', instanceId);
+      this.cacheInterchangeInstance(this.$element);
       this._reflow();
     },
 
@@ -62,30 +65,63 @@
      */
     _reflow: function() {
       var self = this;
-
-      // just for testing purposes
-      var initData = ["http://placehold.it/300x300", "(min-width: 400px)"];
-
+      var elementScenarios;
       $('[' + this.attr + ']').each(function() {
-        if (self.checkMq(initData[1])) {
-          self.setSrc(self.$element, initData[0]);
+        // var instanceId = $(this).data('uuid');
+        if (self.cache) {
+          elementScenarios = self.cache;
+          for (var i = elementScenarios.length - 1; i >= 0; i--) {
+            if (self.checkMq(elementScenarios[i].mq)) {
+              // var $targetInterchange = $('[data-uuid=' + instanceId + ']');
+              self.setSrc(self.$element, elementScenarios[i].path);
+              return;
+            }
+          }
         }
-
       });
     },
     mapMqContent: function($element) {
-      var self = this,
-          initData = $element.data(self.name),
-          scenarios = {};
+      var self      = this,
+          initData  = $element.data(self.name),
+          mqMatch   = /\((.*?)\)/g,
+          pathMatch = /\[(.+?)\,\s/g,
+          scenarios = [],
+          mqArr     = [],
+          pathArr   = [],
+          pathTmp;
 
+      initData.split(',');
+      mqArr = initData.match(mqMatch);
+
+      // weird little loop to get the stuff INSIDE regex
+      while (pathTmp = pathMatch.exec(initData)) {
+        pathArr.push(pathTmp[1]);
+      }
+
+      if (mqArr.length === pathArr.length) {
+        for (var i = 0; i < mqArr.length; i++) {
+          scenarios.push({
+            'mq': mqArr[i],
+            'path': pathArr[i]
+          });
+        }
+      }
+      else {
+        // this is a case that we'll have to account for, however. like same path for multiple scenarios.
+        throw "Not 1:1 match";
+      }
+      
+      return scenarios;
     },
-    cacheMqContent: function() {
-
+    cacheInterchangeInstance: function($element) {
+      this.cache = this.mapMqContent($element);
     },
     checkMq: function(mq) {
       return window.matchMedia(mq).matches;
     },
     setSrc: function($element, path, cb) {
+      console.log($element.data('uuid'));
+      console.log(path);
       $element.attr('src', path);
     }
   };

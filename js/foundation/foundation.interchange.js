@@ -118,7 +118,6 @@
 
     resize : function () {
       var cache = this.cache;
-
       if (!this.images_loaded || !this.nodes_loaded) {
         setTimeout($.proxy(this.resize, this), 50);
         return;
