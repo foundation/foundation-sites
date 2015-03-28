@@ -21,7 +21,7 @@ $legend-padding: rem-calc(0 3) !default;
 
   legend {
     // Covers up the fieldset's border to create artificial padding
-    background: $body-bg;
+    background: $body-background;
     padding: $legend-padding;
     margin: 0;
     margin-#{$default-float}: rem-calc(-3);
