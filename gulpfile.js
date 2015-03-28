@@ -36,7 +36,8 @@ gulp.task('html', function() {
     .pipe(mdFilter)
       .pipe(supercollider({
         template: 'docs/layout/component.html',
-        adapters: ['sass', 'js']
+        adapters: ['sass', 'js'],
+        handlebars: require('./lib/handlebars')
       }))
     .pipe(mdFilter.restore())
     .pipe(shipyard({
