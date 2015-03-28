@@ -2,21 +2,21 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-///
-/// @variables
-///
-/// $include-html-callout-classes: $include-html-classes !default;
-
-$callout-background-fade: 74% !default;
-$callout-border-darken: -11% !default;
-
 /// Defualt background color.
 /// @type Color
 $callout-background: #fff !default;
 
+/// Default fade value for callout backgrounds.
+/// @type Number
+$callout-background-fade: 74% !default;
+
 /// Defualt border style.
-/// @type {Color|List}
+/// @type List
 $callout-border: 1px solid scale-color($callout-background, $lightness: -15%) !default;
+
+/// Default darken value for callout borders.
+/// @type Number
+$callout-border-darken: -11% !default;
 
 /// Default bottom margin for callouts.
 /// @type Number
@@ -34,10 +34,6 @@ $callout-font-color: $body-font-color !default;
 /// @type Color
 $callout-font-color-alt: $body-bg !default;
 
-/// Defualt adjustment for headings when detecting lightness.
-/// @type Boolean
-$callout-header-adjust: true !default;
-
 /// Default color for callout links.
 /// @type Color
 $callout-callout-link-color: $primary-color !default;
@@ -46,13 +42,9 @@ $callout-callout-link-color: $primary-color !default;
 /// @type Color
 $callout-callout-link-color-hover: scale-color($callout-callout-link-color, $lightness: -14%) !default;
 
-///
-/// @mixins
-///
-/// Mixin to create callouts.
-/// $background - Sets the callout background color. Default: $callout-background || scale-color($body-background, $lightness: -5%) !default
-/// $padding    - Sets the callout padding amount. Default: $callout-padding || 1.4rem
-/// $adjust     - Sets the font color based on the darkness of the background. It also resets header line-heights for callouts. Default: $callout-header-adjust || true
+/// Sets padding and margin for callouts.
+/// @param {Number} $padding [$callout-padding] - Inner padding for callouts.
+/// @param {Number} $margin [$callout-margin] - Margin for callouts.
 @mixin callout-layout(
   $padding: $callout-padding,
   $margin: $callout-margin
@@ -60,6 +52,7 @@ $callout-callout-link-color-hover: scale-color($callout-callout-link-color, $lig
   
   margin: $callout-margin;
   padding: $padding;
+  position: relative;
 
   // Respect the padding, fool.
   > :first-child { margin-top: 0; }
@@ -72,6 +65,9 @@ $callout-callout-link-color-hover: scale-color($callout-callout-link-color, $lig
   }
 }
 
+/// Sets styles for callouts
+/// @param {Color} $background [$callout-background] - The background color for callouts.
+/// @param {List} $border [$callout-border] - The border color for callouts.
 @mixin callout-style(
   $background: $callout-background, 
   $border: $callout-border
