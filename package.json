@@ -2,7 +2,11 @@
   "name": "zurb-foundation",
   "version": "6.0.0-alpha",
   "main": "js/foundation/foundation.js",
+  "dependencies": {
+    "jquery": ">= 2.1.0"
+  },
   "devDependencies": {
+    "bootcamp": "^1.1.7",
     "gulp": "^3.8.10",
     "gulp-cached": "^1.0.4",
     "gulp-concat": "^2.4.3",
@@ -14,9 +18,9 @@
     "gulp-scss-lint": "^0.1.7",
     "gulp-uglify": "^1.1.0",
     "rimraf": "^2.3.2",
-    "run-sequence": "^1.0.2",
     "shipyard": "git://github.com/gakimball/shipyard.git",
-    "supercollider": "git://github.com/gakimball/supercollider.git"
+    "supercollider": "git://github.com/gakimball/supercollider.git",
+    "zeroclipboard": "^2.2.0"
   },
   "repository": {
     "type": "git",

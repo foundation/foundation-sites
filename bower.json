@@ -10,8 +10,5 @@
   "dependencies": {
     "jquery": ">= 2.1.0"
   },
-  "private": true,
-  "devDependencies": {
-    "bootcamp": "~1.1.7"
-  }
+  "private": true
 }
