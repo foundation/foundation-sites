@@ -28,6 +28,14 @@ $success-color: #43AC6A !default;
 $warning-color: #f08a24 !default;
 $info-color: #a0d3e8 !default;
 
+$foundation-colors: (
+  primary: $primary-color,
+  secondary: $secondary-color,
+  alert: $alert-color,
+  success: $success-color,
+  warning: $warning-color,
+);
+
 // We use these to define default font styles
 $font-family-monospace: Consolas, "Liberation Mono", Courier, monospace !default;
 $font-weight-normal: normal !default;
