@@ -2,95 +2,107 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-///
-/// @variables
-///
-// $include-html-panel-classes: $include-html-classes !default;
+/// Defualt background color.
+/// @type Color
+$callout-background: #fff !default;
 
-// We use these to control the background and border styles
-$panel-background: scale-color(#fff, $lightness: -5%) !default;
-$panel-bg: $panel-background;
-$panel-border-style: solid !default;
-$panel-border-size: 1px !default;
-$callout-panel-bg: scale-color($primary-color, $lightness: 94%) !default;
+/// Default fade value for callout backgrounds.
+/// @type Number
+$callout-background-fade: 74% !default;
 
-// We use this % to control how much we darken things on hover
-$panel-function-factor: -11% !default;
-$panel-border-color: scale-color($panel-bg, $lightness: $panel-function-factor) !default;
+/// Defualt border style.
+/// @type List
+$callout-border: 1px solid scale-color($callout-background, $lightness: -15%) !default;
 
-// We use these to set default inner padding and bottom margin
-$panel-margin-bottom: rem-calc(20) !default;
-$panel-padding: rem-calc(20) !default;
+/// Default darken value for callout borders.
+/// @type Number
+$callout-border-darken: -11% !default;
 
-// We use these to set default font colors
-$panel-font-color: #222 !default;
-$panel-font-color-alt: #fff !default;
+/// Default bottom margin for callouts.
+/// @type Number
+$callout-margin:0 0 1rem 0 !default;
 
-$panel-header-adjust: true !default;
-$callout-panel-link-color: $primary-color !default;
-$callout-panel-link-color-hover: scale-color($callout-panel-link-color, $lightness: -14%) !default;
-//
-// @mixins
-//
-// We use this mixin to create panels.
-// $bg - Sets the panel background color. Default: $panel-pg || scale-color(#fff, $lightness: -5%) !default
-// $padding - Sets the panel padding amount. Default: $panel-padding || rem-calc(20)
-// $adjust - Sets the font color based on the darkness of the bg & resets header line-heights for panels. Default: $panel-header-adjust || true
-@mixin panel($bg:$panel-bg, $padding:$panel-padding, $adjust:$panel-header-adjust, $border:true) {
+/// Default inner padding for callouts.
+/// @type Number
+$callout-padding: 1.4rem !default;
 
-  @if $bg {
-    $bg-lightness: lightness($bg);
+/// Default font color for callouts.
+/// @type Color
+$callout-font-color: $body-font-color !default;
 
-    @if $border {
-      border-style: $panel-border-style;
-      border-width: $panel-border-size;
-      border-color: scale-color($bg, $lightness: $panel-function-factor);    
-    } @else {
-      border-style: none;
-      border-width: 0;
-    }
+/// Default alternate font color for callouts.
+/// @type Color
+$callout-font-color-alt: $body-background !default;
 
-    margin-bottom: $panel-margin-bottom;
-    padding: $padding;
+/// Default color for callout links.
+/// @type Color
+$callout-callout-link-color: $primary-color !default;
 
-    background: $bg;
-    @if $bg-lightness >= 50% { color: $panel-font-color; }
-    @else { color: $panel-font-color-alt; }
+/// Default color for callout links on hover.
+/// @type Color
+$callout-callout-link-color-hover: scale-color($callout-callout-link-color, $lightness: -14%) !default;
 
-    // Respect the padding, fool.
-    > :first-child { margin-top: 0; }
-    > :last-child { margin-bottom: 0; }
+/// Sets padding and margin for callouts.
+/// @param {Number} $padding [$callout-padding] - Inner padding for callouts.
+/// @param {Number} $margin [$callout-margin] - Margin for callouts.
+@mixin callout-layout(
+  $padding: $callout-padding,
+  $margin: $callout-margin
+  ) {
+  
+  margin: $callout-margin;
+  padding: $padding;
+  position: relative;
 
-    @if $adjust {
-      // We set the font color based on the darkness of the bg.
-      @if $bg-lightness >= 50% {
-        h1, h2, h3, h4, h5, h6, p, li, dl { color: $panel-font-color; }
-      }
-      @else {
-        h1, h2, h3, h4, h5, h6, p, li, dl { color: $panel-font-color-alt; }
-      }
+  // Respect the padding, fool.
+  > :first-child { margin-top: 0; }
+  > :last-child { margin-bottom: 0; }
 
-      // reset header line-heights for panels
-      h1, h2, h3, h4, h5, h6 {
-        line-height: 1; margin-bottom: rem-calc(20) / 2;
-        &.subheader { line-height: 1.4; }
+  // Resets header line-heights for callouts
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1; margin: $callout-margin / 2;
+    &.subheader { line-height: 1.4; }
+  }
+}
+
+/// Sets styles for callouts
+/// @param {Color} $background [$callout-background] - The background color for callouts.
+/// @param {List} $border [$callout-border] - The border color for callouts.
+@mixin callout-style(
+  $background: $callout-background, 
+  $border: $callout-border
+  ) {
+
+  $background-lightness: lightness($background);
+  border: $border;   
+  background: $background;
+
+  @if $background-lightness >= 30% { color: $callout-font-color; }
+  @else { color: $callout-font-color-alt; }
+
+  // Adjusts the font color based on the darkness of the background.
+  @if $background-lightness >= 60% {
+    h1, h2, h3, h4, h5, h6, p, li, dl { color: $callout-font-color; }
+  }
+  @else {
+    h1, h2, h3, h4, h5, h6, p, li, dl { color: $callout-font-color-alt; }
+  }
+
+}
+
+.callout { 
+  @include callout-layout;
+  @include callout-style;
+  @each $name, $color in $foundation-colors{
+    &.#{$name} {
+      @include callout-style( $background: scale-color( $color, $lightness: $callout-background-fade ), $border: 1px solid scale-color( $color, $lightness: $callout-border-darken ));
+      a {
+        color: scale-color( $color, $lightness: -10% );
+        &:hover {
+          color: scale-color( $color, $lightness: -30% );
+        }
       }
     }
   }
 }
 
-.panel { @include panel;
-
-  &.callout {
-    @include panel($callout-panel-bg);
-    a:not(.button) {
-      color: $callout-panel-link-color;
-
-      &:hover,
-      &:focus {
-        color: $callout-panel-link-color-hover;
-      }
-    }
-  }
-
-}

@@ -20,12 +20,14 @@
   @each $type in $types {
     @if $type == textarea {
       @if $selector == input {
-        $return: append($return, unquote('#{$type}'), comma)
-      } @else {
-        $return: append($return, unquote('#{$type}#{$selector}'), comma)
+        $return: append($return, unquote('#{$type}'), comma);
       }
-    } @else {
-      $return: append($return, unquote('#{$selector}[type="#{$type}"]'), comma)
+      @else {
+        $return: append($return, unquote('#{$type}#{$selector}'), comma);
+      }
+    }
+    @else {
+      $return: append($return, unquote('#{$selector}[type="#{$type}"]'), comma);
     }
   }
   @return $return;

@@ -235,7 +235,7 @@ $acronym-underline: 1px dotted #ddd !default;
     }
 
     img {
-      border: none;
+      border: 0;
     }
   }
 
@@ -371,6 +371,7 @@ $acronym-underline: 1px dotted #ddd !default;
 
   abbr {
     text-transform: none;
+
     &[title] {
       border-bottom: $acronym-underline;
     }
@@ -395,7 +396,7 @@ $acronym-underline: 1px dotted #ddd !default;
     color: $cite-color;
 
     &:before {
-      content: "\2014 \0020";
+      content: '\2014 \0020';
     }
   }
 }

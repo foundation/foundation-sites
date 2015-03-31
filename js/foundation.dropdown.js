@@ -21,7 +21,7 @@
      * @event Drilldown#init
      */
     this.$element.trigger('init.zf.dropdown');
-  };
+  }
 
   /**
    * Default settings for plugin
@@ -31,7 +31,6 @@
   };
 
   Dropdown.prototype = {
-
     _init: function() {
       this._prepareMenu(this.$element);
     },
@@ -65,6 +64,18 @@
       this.$openMenu.removeClass('js-dropdown-active');
       $target.toggleClass('js-dropdown-active');
       this.$openMenu = $target;
+    },
+
+    destroy: function() {
+      this.$element.find('li').each(function() {
+        $(this)
+          .children('[data-submenu]')
+            .removeClass('js-dropdown-nohover')
+            .end()
+          .children('a')
+            .off('click mouseenter');
+      });
+      this.$openMenu.removeClass('js-dropdown-active');
     }
   };
 

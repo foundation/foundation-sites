@@ -1,0 +1,41 @@
+/// Default background color for labels.
+/// @type Color
+$label-background: $primary-color !default;
+
+/// Default text color for labels.
+/// @type Color
+$label-color: foreground($label-background) !default;
+
+/// Default font size for labels.
+/// @type Number
+$label-font-size: 0.8rem !default;
+
+/// Default padding inside labels.
+/// @type Number
+$label-padding: 0.33333rem 0.5rem !default;
+
+/// Generates base styles for a label.
+@mixin label {
+  display: inline-block;
+  padding: $label-padding; 
+  font-size: $label-font-size;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: default;
+}
+
+.label {
+  @include label;
+
+  background: $label-background;
+  color: $label-color;
+
+  @each $name, $color in $foundation-colors {
+    @if $name != primary {
+      &.#{$name} {
+        background: $color;
+        color: foreground($color);
+      }
+    }
+  }
+}

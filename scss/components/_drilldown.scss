@@ -2,6 +2,7 @@
   position: relative;
   overflow: hidden;
 }
+
 .js-drilldown-sub {
   position: absolute;
   top: 0;
@@ -10,6 +11,7 @@
   background: white;
   transition: transform 0.15s linear;
 }
+
 .js-drilldown-active {
   transform: translateX(-100%);
 }

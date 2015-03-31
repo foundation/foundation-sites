@@ -7,9 +7,19 @@ var rimraf = require('rimraf');
 var files = {
   sassSrc: 'scss/foundation.scss',
   sassPaths: ['scss'],
-  sassTestPaths: ['scss/**/*.scss', '!scss/vendor/**/*.scss', '!scss/components_old/**/*.scss'],
-  javascript: ['js/foundation.core.js', 'js/*.js'],
-  docsJavascript: ['docs/assets/js/docs.js', 'bower_components/zeroclipboard/dist/ZeroClipboard.js']
+  sassTestPaths: [
+    'scss/**/*.scss',
+    '!scss/vendor/**/*.scss',
+    '!scss/components_old/**/*.scss'
+  ],
+  javascript: [
+    'js/foundation.core.js',
+    'js/*.js'
+  ],
+  docsJavascript: [
+    'node_modules/zeroclipboard/dist/ZeroClipboard.js',
+    'docs/assets/js/docs.js'
+  ]
 }
 
 // Erases the dist folder
@@ -26,7 +36,8 @@ gulp.task('html', function() {
     .pipe(mdFilter)
       .pipe(supercollider({
         template: 'docs/layout/component.html',
-        adapters: ['sass', 'js']
+        adapters: ['sass', 'js'],
+        handlebars: require('./lib/handlebars')
       }))
     .pipe(mdFilter.restore())
     .pipe(shipyard({
@@ -37,7 +48,7 @@ gulp.task('html', function() {
 });
 
 gulp.task('copy', function() {
-  gulp.src('bower_components/zeroclipboard/dist/ZeroClipboard.swf')
+  gulp.src('node_modules/zeroclipboard/dist/ZeroClipboard.swf')
     .pipe(gulp.dest('dist/assets/js'));
 });
 
@@ -83,23 +94,26 @@ gulp.task('javascript:docs', function() {
 });
 
 // Lints Sass and JavaScript files for formatting issues
-gulp.task('lint', function() {
-  $.jshint.lookup = false;
-  
-  gulp.src(files.sassTestPaths)
+gulp.task('lint', ['lint:sass', 'lint:javascript']);
+gulp.task('lint:sass', function() {
+  return gulp.src(files.sassTestPaths)
     .pipe($.scssLint({
       'config': 'config/scss-lint.yml'
     }));
-
-  gulp.src('js/*.js')
+});
+gulp.task('lint:javascript', function() {
+  $.jshint.lookup = false;
+  
+  return gulp.src('js/*.js')
     .pipe($.jshint('./config/.jshintConfig'))
     .pipe($.jshint.reporter('default'));
 });
 
+
 // Runs unit tests
 gulp.task('test', function() {
   return $.rubySass('./spec/scss/spec.scss', {
-    loadPath: ['scss', 'bower_components/bootcamp/dist'],
+    loadPath: ['scss', 'node_modules/bootcamp/dist/_bootcamp.scss'],
     style: 'nested',
     quiet: true
   })
