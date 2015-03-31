@@ -6,7 +6,12 @@
     "css/foundation.css.map",
     "js/foundation.js"
   ],
-  "ignore": [],
+  "ignore": [
+    "config",
+    "docs",
+    "lib",
+    "spec"
+  ],
   "dependencies": {
     "jquery": ">= 2.1.0"
   },
