@@ -4,8 +4,8 @@
 
 /// Change the behavior of columns defined inside this mixin to use a different column count.
 ///
-/// @param {number} $columns - Number of columns to use.
-/// @param {booleam} $root
+/// @param {Number} $columns - Number of columns to use.
+/// @param {Booleam} $root [false]
 ///   If `false`, selectors inside this mixin will nest inside the parent selector.
 ///   If `tru`, selectors will not nest.
 @mixin grid-context(
@@ -27,10 +27,10 @@
 
 /// Creates a grid row.
 ///
-/// @param {keyword|list} $behavior
+/// @param {Number} $columns [null] - Column count for this row. `null` will use the default column count.
+/// @param {Keywords} $behavior [null]
 ///   Modifications to the default grid styles. `nest` indicates the row will be placed inside another row. `collapse` indicates that the columns inside this row will not have padding. `nest collapse` combines both behaviors.
-/// @param {number} $width - Maximum width of the row.
-/// @param {number} $columns - Column count for this row.
+/// @param {Number} $width [$grid-row-width] - Maximum width of the row.
 @mixin grid-row(
   $columns: null,
   $behavior: null,
