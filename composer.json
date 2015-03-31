@@ -1,12 +1,28 @@
 {
   "name": "zurb/foundation",
   "description": "The most advanced responsive front-end framework in the world.",
-  "keywords": ["foundation", "scss"],
+  "version": "6.0.0-alpha",
+  "keywords": [
+    "css",
+    "scss",
+    "sass",
+    "js",
+    "responsive",
+    "mobile-first",
+    "framework"
+  ],
   "homepage": "http://foundation.zurb.com",
   "authors": [
-  {
-    "name": "ZURB Inc."
-  }
+    {
+      "name": "ZURB, Inc.",
+      "homepage": "http://zurb.com",
+      "email": "foundation@zurb.com"
+    }
   ],
+  "support": {
+    "email": "foundation@zurb.com",
+    "issues": "https://github.com/zurb/foundation/issues",
+    "forum": "http://foundation.zurb.com/forum"
+  },
   "license": "MIT"
 }
