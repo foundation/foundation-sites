@@ -1,19 +1,33 @@
+/// Default border around thumbnail images.
+/// @type Border
+$thumbnail-border: solid 4px #FFFFFF !default;
 
+/// Default box shadow under thumbnail images.
+/// @type Shadow
+$thumbnail-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2) !default;
 
+/// Default box shadow under thumbnail images.
+/// @type Shadow
+$thumbnail-shadow-hover: 0 0 6px 1px rgba(0, 140, 186, 0.5) !default;
 
+/// Transition proprties for thumbnail images.
+/// @type Transition
+$thumbnail-transition: box-shadow 200ms ease-out !default;
 
-/* Image Thumbnails */
-.th {
-  border: solid 4px #FFFFFF;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+/// Adds thumbnail styles to an element.
+@mixin thumbnail {
+  border: $thumbnail-border;
+  box-shadow: $thumbnail-shadow;
   display: inline-block;
   line-height: 0;
   max-width: 100%;
-  transition: all 200ms ease-out;
+  transition: $thumbnail-transition;
+
   &:hover, &:focus {
-    box-shadow: 0 0 6px 1px rgba(0, 140, 186, 0.5); 
+    box-shadow: $thumbnail-shadow-hover; 
   }
-  .radius {
-    border-radius: 3px; 
-  }
+}
+
+.thumbnail {
+  @include thumbnail;
 }
