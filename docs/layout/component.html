@@ -25,11 +25,15 @@
         <td><code>${{this.context.name}}</code></td>
         <td>{{this.type}}</td>
         <td><code>{{this.context.value}}</code></td>
-        <td>{{this.description}}</td>
+        <td>{{md this.description}}</td>
       </tr>
       {{/each}}
     </table>
   </section>
+
+  {{#if sass.mixin}}
+    <hr>
+  {{/if}}
 
   {{#if sass.mixin}}{{#unless sass.function}}
     <hr>
@@ -51,7 +55,7 @@
         <pre><code>{{writeMixin this}}</code></pre>
       </div>
 
-      <p>{{this.description}}</p>
+      <p>{{md this.description}}</p>
 
       {{#if this.parameter}}
       <table class="docs-variable-table">
@@ -88,7 +92,7 @@
         <pre><code>{{writeFunction this}}</code></pre>
       </div>
 
-      <p>{{this.description}}</p>
+      <p>{{md this.description}}</p>
 
       {{#if this.parameter}}
       <table class="docs-variable-table">
