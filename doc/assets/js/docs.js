@@ -1,6 +1,17 @@
 var components = [];
 var unique_search_terms = {};
 
+function pushSearchTerm(searchTerm, data) {
+  if (!unique_search_terms[searchTerm]) {
+    components.push({
+      value: searchTerm,
+      data: data
+    });
+
+    unique_search_terms[searchTerm] = true
+  }
+};
+
 $("[data-search]")
   .each(function() {
     var self = $(this),
