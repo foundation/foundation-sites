@@ -65,9 +65,14 @@
         var $eqParent       = $(this),
             adjustedHeights;
 
-        Foundation.image_loaded($eqParent.find('img'), function() {
+        if ($eqParent.find('img').length) {
+          Foundation.image_loaded($eqParent.find('img'), function() {
+            adjustedHeights = self.getHeights($eqParent);
+          });
+        }
+        else {
           adjustedHeights = self.getHeights($eqParent);
-        });
+        }
 
         self.applyHeight($eqParent, adjustedHeights);   
       });

@@ -14,7 +14,7 @@
     this.$window  = $(window);
     this.name     = 'magellan';
     this.attr     = 'data-magellan';
-    this.attrArrival  = 'data-magellan-arrival';
+    this.attrArrival  = 'data-magellan-target';
 
     this._init();
     this._events();
