@@ -67,6 +67,8 @@ Additional classes can be added to your dropdown to change its appearance.
   </div>
 </div>
 
+***
+
 <h3>Directions</h3>
 
 You can now position dropdowns on the top, bottom, left, or right of the target element. The default position is *bottom* and you do not need to change anything to get your tooltip positioned *bottom*.
@@ -89,6 +91,56 @@ To set other alignments, just specify the <code>align</code> property in <code>d
     {{> examples_dropdown_directions}}
   </div>
 </div>
+
+***
+
+<!-- hide until 5.5.2
+<h3>Pip Alignment</h3>
+
+By default, the pip connecting the dropdown to the button is positioned at the left edge of the dropdown for top and bottom aligned dropdowns on the left half of the screen, at the right edge of the dropdown for top and bottom aligned dropdowns on the right half of the screen, and at the top edge of the dropdown for left and right aligned dropdowns.
+
+Adding `pip: center` to the `data-options` attribute will override this behavior and align the pip to the center of the button for all dropdown alignments.
+
+<div class="row">
+  <div class="large-6 columns">
+{{#markdown}}
+```html
+<a href="#" data-options="align:right; pip: center" data-dropdown="drop" class="button">Link Dropdown &raquo;</a>
+<ul id="drop" class="f-dropdown" data-dropdown-content>
+  <li><a href="#">This is a link</a></li>
+  <li><a href="#">This is another</a></li>
+  <li><a href="#">Yet another</a></li>
+</ul>
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    {{> examples_dropdown_pip_directions}}
+  </div>
+</div>
+
+For buttons wider than the dropdown, the entire dropdown is centered.
+
+<div class="row">
+  <div class="large-6 columns">
+{{#markdown}}
+```html
+<a href="#" class="button expand" data-options="pip: center" data-dropdown="drop" class="button">Expanded Dropdown</a>
+<ul id="drop" class="f-dropdown" data-dropdown-content>
+  <li><a href="#">This is a link</a></li>
+  <li><a href="#">This is another</a></li>
+  <li><a href="#">Yet another</a></li>
+</ul>
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    {{> examples_dropdown_pip_expand}}
+  </div>
+</div>
+
+
+*** -->
 
 <h3>Autoclose</h3>
 
