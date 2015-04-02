@@ -1,15 +1,11 @@
 
 .breadcrumbs {
-  border-style: solid;
-  border-width: 1px;
   display: block;
   list-style: none;
   margin-left: 0;
   overflow: hidden;
   padding: 0.5625rem 0.875rem 0.5625rem;
-  background-color: none;
-  border-color: gainsboro;
-  border-radius: 3px; }
+}
   .breadcrumbs > * {
     color: #008CBA;
     float: left;
@@ -17,38 +13,38 @@
     line-height: 0.6875rem;
     margin: 0;
     text-transform: uppercase; }
-    .breadcrumbs > *:hover a, .breadcrumbs > *:focus a {
+    .breadcrumbs > :hover a, .breadcrumbs > :focus a {
       text-decoration: underline; }
-    .breadcrumbs > * a {
+    .breadcrumbs >  a {
       color: #008CBA; }
-    .breadcrumbs > *.is-active {
+    .breadcrumbs > .is-active {
       color: #333333;
       cursor: default; }
-      .breadcrumbs > *.is-active a {
+      .breadcrumbs > .is-active a {
         color: #333333;
         cursor: default; }
-      .breadcrumbs > *.is-active:hover, .breadcrumbs > *.is-active:hover a, .breadcrumbs > *.is-active:focus, .breadcrumbs > *.is-active:focus a {
+      .breadcrumbs > .is-active:hover, .breadcrumbs > .is-active:hover a, .breadcrumbs > .is-active:focus, .breadcrumbs > .is-active:focus a {
         text-decoration: none; }
-    .breadcrumbs > *.disabled {
+    .breadcrumbs > .disabled {
       color: #999999; }
-      .breadcrumbs > *.disabled a {
+      .breadcrumbs > .disabled a {
         color: #999999; }
-      .breadcrumbs > *.disabled:hover, .breadcrumbs > *.disabled:hover a, .breadcrumbs > *.disabled:focus,
-      .breadcrumbs > *.disabled a:focus {
+      .breadcrumbs > .disabled:hover, .breadcrumbs > .disabled:hover a, .breadcrumbs > .disabled:focus,
+      .breadcrumbs > .disabled a:focus {
         color: #999999;
         cursor: not-allowed;
         text-decoration: none; }
-    .breadcrumbs > *:before {
+    .breadcrumbs > :before {
       color: #AAAAAA;
       content: "/";
       margin: 0 0.75rem;
       position: relative;
       top: 1px; }
-    .breadcrumbs > *:first-child:before {
+    .breadcrumbs > :first-child:before {
       content: " ";
       margin: 0; }
 
 /* Accessibility - hides the forward slash */
 [aria-label="breadcrumbs"] [aria-hidden="true"]:after {
   content: "/"; }
-  
+

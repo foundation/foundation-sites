@@ -3,9 +3,7 @@
 ////
 
 /// Outputs CSS classes for the grid.
-///
-/// @param {string} $row - Class to use for rows.
-/// @param {string} $column - Class to use for columns.
+/// @access private
 @mixin foundation-grid-classes(
   $row: 'row',
   $column: 'columns',

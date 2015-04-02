@@ -4,6 +4,25 @@ ul.pagination {
   min-height: 1.5rem; 
 }
 
+ul.pagination li:hover a,
+ul.pagination li a:focus, 
+ul.pagination li:hover button,
+ul.pagination li button:focus {
+  background: #e6e6e6; 
+}
+
+ul.pagination li a, ul.pagination li button {
+  border-radius: 3px;
+  transition: background-color 300ms ease-out;
+  background: none;
+  color: #999999;
+  display: block;
+  font-size: 1em;
+  font-weight: normal;
+  line-height: inherit;
+  padding: 0.0625rem 0.625rem 0.0625rem; 
+}
+
 ul.pagination li {
   display: none; 
 }
@@ -24,12 +43,18 @@ ul.pagination-centered li {
   display: none; 
 }
 
-ul.pagination-centered ul.pagination li:last-child {
-  display: inline-block;
-}
-
 ul.pagination-centered ul.pagination li:first-child {
   display:inline-block;
+  width: 100%;
+  a {
+    display: block;
+    width: 100%;
+    padding-left: 150px;
+  }
+}
+
+ul.pagination-centered ul.pagination li:last-child {
+  display: inline-block;
 }
 
 @include breakpoint(medium) {
@@ -39,24 +64,6 @@ ul.pagination-centered ul.pagination li:first-child {
     font-size: 0.875rem;
     height: 1.5rem;
     margin-left: 0.3125rem; 
-  }
-
-  ul.pagination li a, ul.pagination li button {
-    border-radius: 3px;
-    transition: background-color 300ms ease-out;
-    background: none;
-    color: #999999;
-    display: block;
-    font-size: 1em;
-    font-weight: normal;
-    line-height: inherit;
-    padding: 0.0625rem 0.625rem 0.0625rem; 
-  }
-
-  ul.pagination li:hover a,
-  ul.pagination li a:focus, ul.pagination li:hover button,
-  ul.pagination li button:focus {
-    background: #e6e6e6; 
   }
 
   ul.pagination li.disabled a, ul.pagination li.disabled button {

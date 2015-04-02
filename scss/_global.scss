@@ -28,13 +28,21 @@ $success-color: #43AC6A !default;
 $warning-color: #f08a24 !default;
 $info-color: #a0d3e8 !default;
 
+$foundation-colors: (
+  primary: $primary-color,
+  secondary: $secondary-color,
+  alert: $alert-color,
+  success: $success-color,
+  warning: $warning-color,
+);
+
 // We use these to define default font styles
 $font-family-monospace: Consolas, "Liberation Mono", Courier, monospace !default;
 $font-weight-normal: normal !default;
 $font-weight-bold: bold !default;
 
 // We use these to control various global styles
-$body-bg: #fff !default;
+$body-background: #fff !default;
 $body-font-color: #222 !default;
 $body-font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif !default;
 $body-font-weight: $font-weight-normal !default;
@@ -86,7 +94,7 @@ $cursor-text-value: text !default;
 
   // Default body styles
   body {
-    background: $body-bg;
+    background: $body-background;
     color: $body-font-color;
     padding: 0;
     margin: 0;

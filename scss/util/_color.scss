@@ -12,7 +12,7 @@
 /// @returns {Color} The $yes color or $no color.
 @function foreground($color, $yes: #000, $no: #fff, $threshold: 60%) {
   @if $color == transparent {
-    $color: $body-bg;
+    $color: $body-background;
   }
   @if (lightness($color) > $threshold) {
     @return $yes;

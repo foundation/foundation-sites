@@ -1,7 +1,9 @@
 ---
 title: The Grid
 description: Create powerful multi-device layouts quickly and easily with the default 12-column, nest-able Foundation grid. If you're familiar with grid systems, you'll feel right at home. If not, you'll learn quickly.
-sass: scss/grid/*.scss
+sass: 
+  - scss/grid/*.scss
+  - '!scss/grid/_flex-grid.scss'
 ---
 
 ## Basics
@@ -359,3 +361,102 @@ Using these source ordering classes, you can shift columns around between our br
   <div class="medium-6 medium-push-6 columns">6</div>
   <div class="medium-6 medium-pull-6 columns">6, last</div>
 </div>
+
+---
+
+## Building Semantically
+
+Our grid CSS is generated with a powerful set of Sass mixins, which you can use in your own code to build a semantic grid.
+
+### Rows
+
+Use the `grid-row()` mixin to create a row.
+
+```scss
+.container {
+  @include grid-row;
+}
+```
+
+---
+
+### Columns
+
+Use the `grid-column()` mixin to create a row. There are a number of ways to define the width of the column.
+
+```scss
+.main-content {
+  // Use the full column count (100%)
+  @include grid-column;
+
+  // Use a column count (33%);
+  @include grid-column(4);
+
+  // Use a percentage (15%)
+  @include grid-column(15%);
+
+  // Use a custom fraction (20%)
+  @include grid-column(1 of 5);
+}
+```
+
+The grid column calculator can also be accessed as a function. This gives you the percentage value, without any of the grid column CSS.
+
+```scss
+.main-content {
+  width: grid-column(1 of 7);
+}
+```
+
+---
+
+### Multiple Grids
+
+By default, all grids use the number of columns set by the `$grid-column-count` variable. However, this can be selectively overridden within an instance of a row.
+
+In this example, the grid is 16 columns instead of the normal 12. Any references to column math inside the mixin will use the new column count. 
+
+```scss
+.container {
+  @include grid-row(16) {
+    .main-content {
+      // 5/16 = 31.25%
+      @include grid-column(5);
+    }
+
+    .sidebar {
+      // 11/16 = 68.75%
+      @include grid-column(11);
+    }
+  }
+}
+```
+
+You can also temporarily change the grid context without outputting any row CSS, by using the `grid-context()` mixin.
+
+```scss
+@include grid-context(7) {
+  .sidebar {
+    @include grid-column(4);
+  }
+}
+```
+
+Every other grid feature, from sizing to offsets to source ordering, can also be accessed with a mixin. Pair them with the `breakpoint()` mixin to make your grid responsive.
+
+Refer to the Sass documentation below to learn how each mixin works.
+
+```scss
+.main-content {
+  // The mixins have shorthands, too!
+  @include grid-col;
+
+  @include breakpoint(medium) {
+    // Changes size only
+    @include grid-col-size(8);
+
+    // Changes position only
+    @include grid-col-pos(4);
+  }
+}
+```

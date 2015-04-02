@@ -4,7 +4,7 @@
 
 /// Set the width of a grid column.
 ///
-/// @param {Number|List} Width to make the column. You can pass in any value accepted by the `grid-column()` function, such as `6`, `50%`, or `1 of 2`.
+/// @param {Number|List} $width [$grid-column-count] - Width to make the column. You can pass in any value accepted by the `grid-column()` function, such as `6`, `50%`, or `1 of 2`.
 @mixin grid-column-size(
   $columns: $grid-column-count
 ) {
