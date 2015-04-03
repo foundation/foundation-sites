@@ -30,9 +30,10 @@
    * Default settings for plugin
    */
   Magellan.defaults = {
-      animationDuration: 700,
-      animationEasing: 'linear',
-      threshold: null
+    animationDuration: 500,
+    animationEasing: 'linear',
+    threshold: null,
+    activeClass: 'active'
   };
 
   Magellan.prototype = {
@@ -69,7 +70,11 @@
 
           $('html, body').animate({
             scrollTop: $(arrival).offset().top - navOffset
-          }, 500);
+          },
+          {
+            duration: self.options.animationDuration,
+            easing:   self.options.animationEasing
+          });
 
           window.location = arrival;
         })
@@ -90,8 +95,8 @@
           self           = this;
 
       if (windowPosition + this.$window.height() === $(document).height()) {
-        magellanNav.find('a').removeClass('active');
-        magellanNav.find('a').last().addClass('active');
+        magellanNav.find('a').removeClass(self.options.activeClass);
+        magellanNav.find('a').last().addClass(self.options.activeClass);
         return;
       }
       arrivals.each(function() {
@@ -99,13 +104,13 @@
             arrivalEnd = arrivalTop + $(this).height();
 
         if (windowPosition >= arrivalTop && windowPosition <= arrivalEnd) {
-          magellanNav.find('a').removeClass('active');
+          magellanNav.find('a').removeClass(self.options.activeClass);
 
           // this feature causes a bit of jumpiness
           // window.location.hash = $(this).attr('id');
           // find the corresponding hash/id of the section
           var activeTarget = magellanNav.find('a[href=#' + $(this).attr('id') +']');
-          activeTarget.addClass('active');
+          activeTarget.addClass(self.options.activeClass);
         }
       })
     }
