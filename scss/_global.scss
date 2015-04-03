@@ -9,6 +9,8 @@
 // styles get applied to [data-mysite-plugin], etc
 $namespace: false !default;
 
+$global-padding: 1rem !default;
+
 // The default font-size is set to 100% of the browser style sheet (usually 16px)
 // for compatibility with browser-based text zoom or user-set defaults.
 
@@ -67,6 +69,7 @@ $opposite-direction: right !default;
 $global-radius: 3px !default;
 $global-rounded: 1000px !default;
 
+
 // We use these to store cursor values, for use around the entire stylesheet.
 $cursor-auto-value: auto !default;
 $cursor-crosshair-value: crosshair !default;
@@ -104,6 +107,8 @@ $cursor-text-value: text !default;
     line-height: $base-line-height;
     position: relative;
     cursor: $cursor-auto-value;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   a:hover {

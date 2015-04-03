@@ -1,0 +1,101 @@
+/// Defualt background color.
+/// @type Color
+$card-background: #fff !default;
+
+/// Default font color for cards.
+/// @type Color
+$card-font-color: $body-font-color !default;
+
+/// Default alternate font color for cards.
+/// @type Color
+$card-font-color-alt: $body-background !default;
+
+$card-divider-background: smart-scale($card-background, 7%) !default;
+
+/// Defualt border style.
+/// @type List
+$card-border: 1px solid #ededed !default;
+
+/// Defualt border radius.
+/// @type Number
+$card-radius: $global-radius !default;
+
+/// Default card shadow.
+/// @type List
+$card-shadow: 0 1px 2px rgba(#000, 0.2) !default;
+
+/// Default padding.
+/// @type Number
+$card-padding: $global-padding !default;
+
+/// Default margin.
+/// @type number
+$card-margin: 0.5rem !default;
+
+@mixin card-container(
+  $background: $card-background,
+  $border: $card-border,
+  $radius: $card-radius,
+  $shadow: $card-shadow,
+  $padding: $card-padding,
+  $margin: $card-margin
+  ) {
+  border: $border;
+  margin-bottom: $margin;
+  background: $background;
+  border-radius: $radius;
+  box-shadow: $shadow;
+  overflow: hidden;
+
+  $background-lightness: lightness($background);
+  @if $background-lightness >= 60% { color: $card-font-color; }
+  @else { color: $card-font-color-alt; }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: inherit;
+  }
+
+  ul {
+    margin-bottom: 0;
+  }
+
+}
+
+@mixin card-divider(
+  $background: $card-divider-background,
+  $padding: $card-padding
+  ) {
+  background: $background;
+  padding: $padding;
+}
+
+@mixin card-section(
+  $padding: $card-padding
+  ) {
+  padding: $padding;
+}
+
+.card {
+  @include card-container;
+  @each $name, $color in $foundation-colors {
+    &.#{$name} {
+      @include card-container(
+        $background: $color,
+        $border: 0
+        );
+      .card-divider {
+        @include card-divider(
+          $background: smart-scale($color, 7%)
+          );
+      }
+    }
+  }
+}
+
+.card-divider {
+  @include card-divider;
+}
+
+.card-section {
+  @include card-section;
+}
