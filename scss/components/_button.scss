@@ -2,250 +2,206 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+/// Defualt padding for button.
+/// @type List
+$button-padding: 0.85em 1em !default;
 
-// We use these to build padding for buttons.
-$button-tny: rem-calc(10) !default;
-$button-sml: rem-calc(14) !default;
-$button-med: rem-calc(16) !default;
-$button-lrg: rem-calc(18) !default;
+/// Defualt margin for button.
+/// @type List
+$button-margin: 0 $global-padding $global-padding 0 !default;
 
-// We use this to control the display property.
-$button-display: inline-block !default;
-$button-margin-bottom: rem-calc(20) !default;
+/// Defualt fill for button. Is either solid or hollow.
+/// @type Keyword
+$button-fill: solid !default;
 
-// We use these to control button text styles.
-$button-font-family: $body-font-family !default;
+/// Defualt margin for button.
+/// @type Color
+$button-background: $primary-color !default;
+
+/// Defualt margin for button.
+/// @type Color
+$button-background-hover: scale-color($button-background, $lightness: -15%) !default;
+
+/// Defualt border style for button-border.
+/// @type List
+$button-border: 1px solid $button-background !default;
+
+/// Defualt font color for button.
+/// @type List
 $button-font-color: #fff !default;
-$button-font-color-alt: #333 !default;
-$button-font-tny: rem-calc(11) !default;
-$button-font-sml: rem-calc(13) !default;
-$button-font-med: rem-calc(16) !default;
-$button-font-lrg: rem-calc(20) !default;
-$button-font-weight: $font-weight-normal !default;
-$button-font-align: center !default;
 
-// We use these to control various hover effects.
-$button-function-factor: -20% !default;
+/// Defualt alternative font color for button.
+/// @type List
+$button-font-color-alt: #000 !default;
 
-// We use these to control button border styles.
-$button-border-width: 0 !default;
-$button-border-style: solid !default;
-$button-bg-color: $primary-color !default;
-$button-bg-hover: scale-color($button-bg-color, $lightness: $button-function-factor) !default;
-$button-border-color: $button-bg-hover !default;
-$secondary-button-bg-hover: scale-color($secondary-color, $lightness: $button-function-factor) !default;
-$secondary-button-border-color: $secondary-button-bg-hover !default;
-$success-button-bg-hover: scale-color($success-color, $lightness: $button-function-factor) !default;
-$success-button-border-color: $success-button-bg-hover !default;
-$alert-button-bg-hover: scale-color($alert-color, $lightness: $button-function-factor) !default;
-$alert-button-border-color: $alert-button-bg-hover !default;
-$warning-button-bg-hover: scale-color($warning-color, $lightness: $button-function-factor) !default;
-$warning-button-border-color: $warning-button-bg-hover !default;
-$info-button-bg-hover: scale-color($info-color, $lightness: $button-function-factor) !default;
-$info-button-border-color: $info-button-bg-hover !default;
+/// Defualt radius for button.
+/// @type Number
+$button-radius: 0 !default;
 
-// We use this to set the default radius used throughout the core.
-$button-radius: $global-radius !default;
-$button-round: $global-rounded !default;
+/// Defualt sizes for button.
+/// @type List
+$button-sizes: (
+  tiny: 0.7,
+  small: 0.8,
+  medium: 1,
+  large: 1.3,
+  ) !default;
 
-// We use this to set default opacity and cursor for disabled buttons.
-$button-disabled-opacity: 0.7 !default;
-$button-disabled-cursor: $cursor-default-value !default;
+/// Defualt font size for button.
+/// @type Number
+$button-font-size: 0.9rem !default;
 
+/// Defualt opacity for a disabled button.
+/// @type List
+$button-opacity-disabled: 0.5 !default;
 
-//
-// @MIXIN
-//
-// We use this mixin to create a default button base.
-//
-// $style - Sets base styles. Can be set to false. Default: true.
-// $display - Used to control display property. Default: $button-display || inline-block
+%button {
+  display: inline-block;
+  border: $button-border;
+  text-align: center;
+  line-height: 1;
+  cursor: pointer;
+  -webkit-appearance: none;
+  transition: all 0.25s ease-out;
+  vertical-align: middle;
 
-@mixin button-base($style:true, $display:$button-display) {
-  @if $style {
-    border-style: $button-border-style;
-    border-width: $button-border-width;
-    cursor: $cursor-pointer-value;
-    font-family: $button-font-family;
-    font-weight: $button-font-weight;
-    line-height: normal;
-    margin: 0 0 $button-margin-bottom;
-    position: relative;
-    text-decoration: none;
-    text-align: $button-font-align;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    border-radius:0;
-  }
-  @if $display { display: $display; }
+  padding: $button-padding;
+  margin: $button-margin;
+  font-size: $button-font-size;
+  border-radius: $button-radius;
 }
 
-// @MIXIN
-//
-// We use this mixin to add button size styles
-//
-// $padding - Used to build padding for buttons Default: $button-med ||= rem-calc(12)
-// $full-width - We can set $full-width:true to remove side padding extend width - Default: false
+@mixin button-size($size: medium, $expand: false) {
+  $size: $button-font-size * map-get($button-sizes, $size);
+  font-size: $size;
 
-@mixin button-size($padding:$button-med, $full-width:false) {
-
-  // We control which padding styles come through,
-  // these can be turned off by setting $padding:false
-  @if $padding {
-    padding-top: $padding;
-    padding-#{$opposite-direction}: $padding * 2;
-    padding-bottom: $padding + rem-calc(1);
-    padding-#{$default-float}: $padding * 2;
-
-    // We control the font-size based on mixin input.
-    @if      $padding == $button-med { font-size: $button-font-med; }
-    @else if $padding == $button-tny { font-size: $button-font-tny; }
-    @else if $padding == $button-sml { font-size: $button-font-sml; }
-    @else if $padding == $button-lrg { font-size: $button-font-lrg; }
+  @if $expand {
+    @include button-expand;
   }
+}
 
-  // We can set $full-width:true to remove side padding extend width.
-  @if $full-width {
-    // We still need to check if $padding is set.
-    @if $padding {
-    padding-top: $padding;
-    padding-bottom: $padding + rem-calc(1);
-    } @else if $padding == false {
-      padding-top:0;
-      padding-bottom:0;
-    }
-    padding-right: 0;
-    padding-left: 0;
+@mixin button-expand($expand: true) {
+  @if $expand {
+    display: block;
     width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  @else {
+    display: inline-block;
+    width: auto;
+    margin: $button-margin;
   }
 }
 
-// @MIXIN
-//
-// we use this mixin to create the button hover and border colors
+@mixin button-style(
+  $background: $button-background,
+  $background-hover: $button-background-hover,
+  $border: $button-border,
+  $color: $button-font-color,
+  $style: $button-fill,
+  $radius: $button-radius,
+  $btngroup: false
+  ){
 
-// @MIXIN
-//
-// We use this mixin to add button color styles
-//
-// $bg - Background color. We can set $bg:false for a transparent background. Default: $primary-color.
-// $radius - If true, set to button radius which is $button-radius || explicitly set radius amount in px (ex. $radius:10px). Default: false
-// $disabled - We can set $disabled:true to create a disabled transparent button. Default: false
-// $bg-hover - Button Hover Background Color. Default: $button-bg-hover
-// $border-color - Button Border Color. Default: $button-border-color
-@mixin button-style($bg:$button-bg-color, $radius:false, $disabled:false, $bg-hover:null, $border-color:null) {
+  border: $border;
 
-  // We control which background styles are used,
-  // these can be removed by setting $bg:false
-  @if $bg {
+  @if $style == hollow {
+    border: 1px solid $background;
+    background: transparent;
+    color: $background;
 
-    @if $bg-hover == null {
-      $bg-hover: if($bg == $button-bg-color, $button-bg-hover, scale-color($bg, $lightness: $button-function-factor));
+    &:hover, &:focus {
+      border-color: scale-color($background, $lightness: 25%);
+      background: transparent;
+      color: scale-color($background, $lightness: 25%);
+    }
+  }
+  
+  // Solid fill is the default
+  @else {
+    @if $color == auto {
+      $color: isitlight($background);
     }
 
-    @if $border-color == null {
-      $border-color: if($bg == $button-bg-color, $button-border-color, scale-color($bg, $lightness: $button-function-factor));
-    }
+    background: $background;
 
-    // This find the lightness percentage of the background color.
-    $bg-lightness: lightness($bg);
-    $bg-hover-lightness: lightness($bg-hover);
+    $background-lightness: lightness($background);
+    @if $background-lightness >= 80% { color: $button-font-color-alt; }
+    @else { color: $button-font-color; }
 
-    background-color: $bg;
-    border-color: $border-color;
-    &:hover,
-    &:focus { background-color: $bg-hover; }
 
-    // We control the text color for you based on the background color.
-    color: if($bg-lightness > 70%, $button-font-color-alt, $button-font-color);
-
-    &:hover,
-    &:focus {
-      color: if($bg-hover-lightness > 70%, $button-font-color-alt, $button-font-color);
+    &:hover, &:focus {
+      @if $background-hover == auto {
+        background: scale-color($background, $lightness: -15%);
+      }
+      @else {
+        background: $background-hover;
+        border-color: $background-hover;
+      }
+      color: $color;
     }
   }
 
-  // We can set $disabled:true to create a disabled transparent button.
-  @if $disabled {
-    cursor: $button-disabled-cursor;
-    opacity: $button-disabled-opacity;
-    box-shadow: none;
-    &:hover,
-    &:focus { background-color: $bg; }
-  }
-
-  // We can control how much button radius is used.
-  @if $radius == true { border-radius: $button-radius; }
-  @else if $radius { border-radius: $radius; }
-
+  // @if $btngroup {
+  //   border-color: $background;
+  //   &:hover, &:focus {
+  //     border-color: scale-color($background, $lightness: -25%);
+  //   }
+  // }
 }
 
-// @MIXIN
-//
-// We use this to quickly create buttons with a single mixin. As @jaredhardy puts it, "the kitchen sink mixin"
-//
-// $padding - Used to build padding for buttons Default: $button-med ||= rem-calc(12)
-// $bg - Primary color set in settings file. Default: $button-bg.
-// $radius - If true, set to button radius which is $global-radius || explicitly set radius amount in px (ex. $radius:10px). Default:false.
-// $full-width - We can set $full-width:true to remove side padding extend width. Default:false.
-// $disabled - We can set $disabled:true to create a disabled transparent button. Default:false.
-// $is-prefix - Not used? Default:false.
-// $bg-hover - Button Hover Color - Default null - see button-style mixin
-// $border-color - Button Border Color - Default null - see button-style mixin
-// $transition - We can control whether or not to include the background-color transition property - Default:true.
-@mixin button($padding:$button-med, $bg:$button-bg-color, $radius:false, $full-width:false, $disabled:false, $is-prefix:false, $bg-hover:null, $border-color:null, $transition: true) {
-  @include button-base;
-  @include button-size($padding, $full-width);
-  @include button-style($bg, $radius, $disabled, $bg-hover, $border-color);
-
-  @if $transition {
-    transition: background-color 300ms ease-out;
-  }
+@mixin button-disabled() {
+  opacity: $button-opacity-disabled;
+  cursor: default;
+  pointer-events: none;
 }
 
-@mixin foundation-button {
-  // Default styles applied outside of media query
-  .button {
-    @include button-base;
-    @include button-size;
-    @include button-style;
+@mixin button(
+  $size: medium,
+  $expand: false,
+  $background: $button-background,
+  $background-hover: $button-background-hover,
+  $color: $button-font-color,
+  $style: $button-fill,
+  $radius: $button-radius
+  ) {
+  @extend %button;
+  @include button-size($size);
+  @include button-expand($expand);
+  @include button-style($background, $background-hover, $color, $style);
+}
 
-    transition: background-color 300ms ease-out;
+.button {
+  @include button;
 
-    &.secondary { @include button-style($bg:$secondary-color, $bg-hover:$secondary-button-bg-hover, $border-color:$secondary-button-border-color); }
-    &.success   { @include button-style($bg:$success-color, $bg-hover:$success-button-bg-hover, $border-color:$success-button-border-color); }
-    &.alert     { @include button-style($bg:$alert-color, $bg-hover:$alert-button-bg-hover, $border-color:$alert-button-border-color); }
-    &.warning   { @include button-style($bg:$warning-color, $bg-hover:$warning-button-bg-hover, $border-color:$warning-button-border-color); }
-    &.info      { @include button-style($bg:$info-color, $bg-hover:$info-button-bg-hover, $border-color:$info-button-border-color); }
+  &.tiny   { @include button-size(tiny); }
+  &.small  { @include button-size(small); }
+  &.large  { @include button-size(large); }
+  &.expand { @include button-expand; }
 
-    &.large  { @include button-size($padding:$button-lrg); }
-    &.small  { @include button-size($padding:$button-sml); }
-    &.tiny   { @include button-size($padding:$button-tny); }
-    &.expand { @include button-size($padding:null,$full-width:true); }
+  @each $name, $color in $foundation-colors {
+    //Gotta get that default style in there.
+    @include button-style();
 
-    &.left-align  { text-align: left; text-indent: rem-calc(12); }
-    &.right-align { text-align: right; padding-right: rem-calc(12); }
-
-    &.radius { @include button-style($bg:false, $radius:true); }
-    &.round  { @include button-style($bg:false, $radius:$button-round); }
-
-    &.disabled, &[disabled] { @include button-style($bg:$button-bg-color, $disabled:true, $bg-hover:$button-bg-hover, $border-color:$button-border-color);
-      &.secondary { @include button-style($bg:$secondary-color, $disabled:true, $bg-hover:$secondary-button-bg-hover, $border-color:$secondary-button-border-color); }
-      &.success { @include button-style($bg:$success-color, $disabled:true, $bg-hover:$success-button-bg-hover, $border-color:$success-button-border-color); }
-      &.alert { @include button-style($bg:$alert-color, $disabled:true, $bg-hover:$alert-button-bg-hover, $border-color:$alert-button-border-color); }
-      &.warning { @include button-style($bg:$warning-color, $disabled:true, $bg-hover:$warning-button-bg-hover, $border-color:$warning-button-border-color); }
-      &.info { @include button-style($bg:$info-color, $disabled:true, $bg-hover:$info-button-bg-hover, $border-color:$info-button-border-color); }
+    //Getting those fancy-pants colors.
+    &.#{$name} {
+      @include button-style( 
+        $background: scale-color( $color, $lightness: 25% ),
+        $border: 1px solid scale-color( $color, $lightness: 25% ),
+        $background-hover: scale-color( $color, $lightness: -30% ));
     }
   }
+  
+  @if $button-fill != hollow {
+    &.hollow { @include button-style($style: hollow);
+      @each $name, $color in $foundation-colors {
+        &.#{$name} {
+         @include button-style($color, $style: hollow); 
+       }
+     }
+   }
+ }
 
-  //firefox 2px fix
-  button::-moz-focus-inner {border:0; padding:0;}
-
-  @include breakpoint(medium) {
-    .button {
-      @include button-base($style:false, $display:inline-block);
-      @include button-size($padding:false, $full-width:false);
-    }
-  }
+ &.disabled { @include button-disabled; }
 }

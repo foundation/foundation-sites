@@ -10,7 +10,7 @@ $callout-background: #fff !default;
 /// @type Number
 $callout-background-fade: 74% !default;
 
-/// Defualt border style.
+/// Defualt border style for callouts.
 /// @type List
 $callout-border: 1px solid scale-color($callout-background, $lightness: -15%) !default;
 
@@ -93,7 +93,7 @@ $callout-callout-link-color-hover: scale-color($callout-callout-link-color, $lig
 .callout { 
   @include callout-layout;
   @include callout-style;
-  @each $name, $color in $foundation-colors{
+  @each $name, $color in $foundation-colors {
     &.#{$name} {
       @include callout-style( $background: scale-color( $color, $lightness: $callout-background-fade ), $border: 1px solid scale-color( $color, $lightness: $callout-border-darken ));
       a {

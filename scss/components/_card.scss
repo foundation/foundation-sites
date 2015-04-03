@@ -10,6 +10,8 @@ $card-font-color: $body-font-color !default;
 /// @type Color
 $card-font-color-alt: $body-background !default;
 
+/// Default dvbackground .
+/// @type Color
 $card-divider-background: smart-scale($card-background, 7%) !default;
 
 /// Defualt border style.
