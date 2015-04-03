@@ -90,6 +90,7 @@
           self           = this;
 
       if (windowPosition + this.$window.height() === $(document).height()) {
+        magellanNav.find('a').removeClass('active');
         magellanNav.find('a').last().addClass('active');
         return;
       }
