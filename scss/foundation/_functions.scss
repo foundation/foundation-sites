@@ -145,3 +145,22 @@ $modules: () !default;
 @function em-calc($values) {
   @return rem-calc($values);
 }
+
+
+// CALC EMs for BREAKPOINTS
+// This function only exists, because media queries have some difficulties to
+// work with REMs. Once these difficulties are removed,
+// bp-em-calc will be deprecated
+@function bp-em-calc($values) {
+  $remValues: rem-calc($values);
+
+  $max: length($remValues);
+
+  @if $max == 1 { @return strip-unit(nth($remValues, 1)) * 1em; }
+
+  $emValues: ();
+  @for $i from 1 through $max {
+    $emValues: append($emValues, strip-unit(nth($remValues, $i)) * 1em);
+  }
+  @return $emValues;
+}

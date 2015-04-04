@@ -8,7 +8,8 @@ title: Media Queries
 
 <h3>Basic</h3>
 
-Media queries are built using ems in Foundation.
+Media queries are built using ems in Foundation. At some point in time we will move to rem's, however, at the moment not all browsers like rem's in
+media queries.
 
 <h4>CSS</h4>
 
@@ -46,12 +47,20 @@ Media queries can be easily customized by changing the variable values in `_sett
 <h4>SCSS</h4>
 
 ```scss
+// Here we define the breakpoints which will become the upper border for each media size.
+// The function bp-em-calc() calulates the em-value from a px-value and
+// should exclusively be used for breakpoints
+$small-breakpoint:  bp-em-calc(640)  !default;
+$medium-breakpoint: bp-em-calc(1024) !default;
+$large-breakpoint:  bp-em-calc(1440) !default;
+$xlarge-breakpoint: bp-em-calc(1920) !default;
+
 // Here we define the lower and upper bounds for each media size
-$small-range: (0em, 40em); /* 0, 640px */
-$medium-range: (40.063em, 64em); /* 641px, 1024px */
-$large-range: (64.063em, 90em); /* 1025px, 1440px */
-$xlarge-range: (90.063em, 120em); /* 1441px, 1920px */
-$xxlarge-range: (120.063em); /* 1921px */
+$small-range:   (0, $small-breakpoint) !default; /* 0, 640px */
+$medium-range:  ($small-breakpoint  + bp-em-calc(1), $medium-breakpoint) !default; /* 641px, 1024px */
+$large-range:   ($medium-breakpoint + bp-em-calc(1), $large-breakpoint)  !default; /* 1025px, 1440px */
+$xlarge-range:  ($large-breakpoint  + bp-em-calc(1), $xlarge-breakpoint) !default; /* 1441px, 1920px */
+$xxlarge-range: ($xlarge-breakpoint + bp-em-calc(1), bp-em-calc(99999999)) !default; /* 1921px, ... */
 
 // Media Queries
 $screen: "only screen" !default;
