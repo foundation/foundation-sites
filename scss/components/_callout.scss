@@ -96,7 +96,7 @@ $callout-callout-link-color-hover: scale-color($callout-callout-link-color, $lig
   @each $name, $color in $foundation-colors {
     &.#{$name} {
       @include callout-style( $background: scale-color( $color, $lightness: $callout-background-fade ), $border: 1px solid scale-color( $color, $lightness: $callout-border-darken ));
-      a {
+      a, button {
         color: scale-color( $color, $lightness: -10% );
         &:hover {
           color: scale-color( $color, $lightness: -30% );

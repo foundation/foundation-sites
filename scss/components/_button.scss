@@ -100,7 +100,6 @@ $button-opacity-disabled: 0.5 !default;
   $border: $button-border,
   $color: $button-font-color,
   $style: $button-fill,
-  $radius: $button-radius,
   $btngroup: false
   ){
 
@@ -129,7 +128,6 @@ $button-opacity-disabled: 0.5 !default;
     $background-lightness: lightness($background);
     @if $background-lightness >= 80% { color: $button-font-color-alt; }
     @else { color: $button-font-color; }
-
 
     &:hover, &:focus {
       @if $background-hover == auto {
@@ -163,8 +161,7 @@ $button-opacity-disabled: 0.5 !default;
   $background: $button-background,
   $background-hover: $button-background-hover,
   $color: $button-font-color,
-  $style: $button-fill,
-  $radius: $button-radius
+  $style: $button-fill
   ) {
   @extend %button;
   @include button-size($size);
