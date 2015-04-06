@@ -81,6 +81,7 @@
             .off('.zf.dropdown');
       });
       this.$openMenu.removeClass('js-dropdown-active');
+      this.$element.removeData('zf-plugin');
     }
   };
 

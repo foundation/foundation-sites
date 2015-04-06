@@ -1,16 +1,31 @@
 !function(Foundation, $) {
   'use strict';
 
+  // The plugin matches the plugin classes with these plugin instances.
   var menubarPlugins = {
-    dropdown: Foundation._plugins.dropdown || null,
-    drilldown: Foundation._plugins.drilldown || null
+    dropdown: {
+      cssClass: 'dropdown',
+      plugin: Foundation._plugins.dropdown || null
+    },
+    drilldown: {
+      cssClass: 'drilldown',
+      plugin: Foundation._plugins.drilldown || null
+    }
   }
 
+  // [PH] Media queries
   var phMedia = {
     small: '(min-width: 0px)',
     medium: '(min-width: 640px)'
   }
 
+  /**
+   * Creates a new instance of Dropdown.
+   * @class
+   * @fires Dropdown#init
+   * @param {jQuery} element - jQuery object to make into a dropdown menu.
+   * @param {Object} options - Overrides to the default plugin settings.
+   */
   function MenuBar(element, options) {
     this.$element = $(element);
     this.rules = this.$element.data('menubar');
@@ -20,6 +35,12 @@
     this._init();
     this._events();
     this._checkMediaQueries();
+
+    /**
+     * Fires when the plugin has been successfuly initialized.
+     * @event Drilldown#init
+     */
+     this.$element.trigger('init.zf.menubar');
   }
 
   MenuBar.prototype.defaults = {};
@@ -47,24 +68,43 @@
   MenuBar.prototype._events = function() {
     var _this = this;
 
-    $(window).on('resize', function() {
+    $(window).on('resize.zf.menubar', function() {
       _this._checkMediaQueries();
     });
   };
 
   MenuBar.prototype._checkMediaQueries = function() {
-    var matchedMq;
+    var matchedMq, _this = this;
 
-    $.each(phMedia, function(key, value) {
-      if (window.matchMedia(value).matches && key !== this.currentMq) {
+    // Iterate through each rule and find the last matching rule
+    $.each(this.rules, function(key, value) {
+      if (window.matchMedia(phMedia[key]).matches && key !== _this.currentMq) {
         matchedMq = key;
       }
     });
 
+    // No match? No dice
     if (!matchedMq) return;
 
+    // Plugin already initialized? We good
+    if (this.currentPlugin instanceof this.rules[matchedMq].plugin) return;
+
+    // Remove existing plugin-specific CSS classes
+    $.each(menubarPlugins, function(key, value) {
+      _this.$element.removeClass(value.cssClass);
+    });
+
+    // Add the CSS class for the new plugin
+    this.$element.addClass(this.rules[matchedMq].cssClass);
+
+    // Create an instance of the new plugin
     if (this.currentPlugin) this.currentPlugin.destroy();    
-    this.currentPlugin = new this.rules[matchedMq](this.$element, {});
+    this.currentPlugin = new this.rules[matchedMq].plugin(this.$element, {});
+  }
+
+  MenuBar.prototype.destroy = function() {
+    this.currentPlugin.destroy();
+    $(window).off('.zf.menubar');
   }
 
   Foundation.plugin('menubar', MenuBar);
