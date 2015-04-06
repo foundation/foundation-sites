@@ -7,6 +7,7 @@ $input-error-color: #fff !default;
 $input-error-color-alt: #333 !default;
 
 /// Default background color for form error containers.
+/// @type Color
 $input-error-background: $alert-color !default;
 
 /// Default font size for form error text.
