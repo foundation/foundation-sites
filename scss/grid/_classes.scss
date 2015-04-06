@@ -96,6 +96,15 @@
         }
       }
 
+      // Block grid
+      @for $i from 1 through 6 {
+        @include breakpoint($size) {
+          .#{$size}-up-#{$i} {
+            @include grid-layout($i);
+          }
+        }
+      }
+
       // Positioning
       .#{$size}-#{$center} {
         @include grid-col-pos(center);
@@ -108,5 +117,9 @@
         @include grid-col-unpos;
       }
     }
+  }
+
+  .column {
+    @extend .columns;
   }
 }

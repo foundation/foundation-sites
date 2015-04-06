@@ -364,6 +364,35 @@ Using these source ordering classes, you can shift columns around between our br
 
 ---
 
+### Block Grids
+
+The block grid from Foundation 5 has been merged into the main grid. Add a class of the format `[size]-up-[n]` to change the size of all columns within the row.
+
+```html_example
+<div class="row small-up-1 medium-up-2 large-up-4">
+  <div class="column">
+    <img src="//placehold.it/300x300" class="thumbnail" alt="">
+  </div>
+  <div class="column">
+    <img src="//placehold.it/300x300" class="thumbnail" alt="">
+  </div>
+  <div class="column">
+    <img src="//placehold.it/300x300" class="thumbnail" alt="">
+  </div>
+  <div class="column">
+    <img src="//placehold.it/300x300" class="thumbnail" alt="">
+  </div>
+  <div class="column">
+    <img src="//placehold.it/300x300" class="thumbnail" alt="">
+  </div>
+  <div class="column">
+    <img src="//placehold.it/300x300" class="thumbnail" alt="">
+  </div>
+</div>
+```
+
+---
+
 ## Building Semantically
 
 Our grid CSS is generated with a powerful set of Sass mixins, which you can use in your own code to build a semantic grid.
