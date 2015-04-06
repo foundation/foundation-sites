@@ -1,0 +1,19 @@
+@mixin foundation-utilities {
+  .float-left {
+    float: left !important;
+  }
+
+  .float-right {
+    float: right !important;
+  }
+
+  .float-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .clearfix {
+    @include clearfix;
+  }
+}

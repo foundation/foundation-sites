@@ -155,10 +155,4 @@ $cursor-text-value: text !default;
     border: 0;
     line-height: 1;
   }
-
-  // Miscellaneous useful HTML classes
-  .float-left { float: left !important; }
-  .float-right { float: right !important; }
-  .float-center { margin-left: auto; margin-right: auto; }
-  .clearfix { @include clearfix; }
 }
