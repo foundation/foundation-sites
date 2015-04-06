@@ -114,6 +114,7 @@
 
     /**
      * Destroys the instance of Toggler on the element.
+     * @function
      */
     destroy: function() {
       this.$element.off('.zf.toggler');
