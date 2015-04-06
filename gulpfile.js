@@ -27,6 +27,12 @@ gulp.task('clean', function() {
   rimraf.sync('dist');
 });
 
+// Copies static assets
+gulp.task('copy', function() {
+  gulp.src('node_modules/zeroclipboard/dist/ZeroClipboard.swf')
+    .pipe(gulp.dest('dist/assets/js'));
+});
+
 // Assembles the layout, pages, and partials in the docs folder
 gulp.task('html', function() {
   var mdFilter = $.filter(['*.md']);
@@ -46,12 +52,10 @@ gulp.task('html', function() {
     }))
     .pipe(gulp.dest('dist'));
 });
-
-gulp.task('copy', function() {
-  gulp.src('node_modules/zeroclipboard/dist/ZeroClipboard.swf')
-    .pipe(gulp.dest('dist/assets/js'));
+gulp.task('html:reset', function() {
+  delete $.cached.caches['docs'];
+  gulp.run('html');
 });
-
 gulp.task('html:map', function() {
   supercollider({
     src: 'docs/pages/**/*.md',
@@ -127,6 +131,7 @@ gulp.task('build', ['clean', 'copy', 'html', 'sass', 'javascript']);
 // Runs all of the above tasks and then waits for files to change
 gulp.task('default', ['build'], function() {
   gulp.watch('docs/**/*', ['html']);
+  gulp.watch('docs/layout/*.html', ['html:reset']);
   gulp.watch('scss/**/*', ['sass']);
   gulp.watch('docs/assets/scss/**/*', ['sass:docs'])
   gulp.watch('js/**/*', ['javascript:foundation']);
