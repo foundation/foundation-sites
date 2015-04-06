@@ -8,7 +8,7 @@ $form-label-font-size: rem-calc(14) !default;
 
 /// Font weight for form labels.
 /// @type Keyword
-$form-label-font-weight: $font-weight-normal !default;
+$form-label-font-weight: $global-weight-normal !default;
 
 /// Line height for form labels. The higher the number, the more space between the label and its input field.
 /// @type Number

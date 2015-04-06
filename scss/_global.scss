@@ -5,31 +5,87 @@
 // Temporary!
 // scss-lint:disable all
 
-// Data attribute namespace
-// styles get applied to [data-mysite-plugin], etc
-$namespace: false !default;
+/// Font size attribute applied to `<html>` and `<body>`. We use 100% by default so the value is inherited from the user's browser settings.
+/// @type Number
+$global-font-size: 100% !default;
 
+/// Default line height for all type. `$global-lineheight` is 24px while `$global-font-size` is 16px
+/// @type Number
+$global-lineheight: 1.5 !default;
+
+/// Primary color for interactive components like links and buttons.
+/// @type Color
+$primary-color: #008CBA !default;
+
+/// Secondary color, used with components that support the `.secondary` class.
+/// @type Color
+$secondary-color: #e7e7e7 !default;
+
+/// Color to indicate a negative status or action, used with the `.alert` class.
+/// @type Color
+$alert-color: #f04124 !default;
+
+/// Color to indicate a positive status or action, used with the `.success` class.
+/// @type Color
+$success-color: #43AC6A !default;
+
+/// Color to indicate a caution status or action, used with the `.warning` class.
+/// @type Color
+$warning-color: #f08a24 !default;
+
+/// Background color of the body.
+/// @type Color
+$body-background: #fff !default;
+
+/// Text color of the body.
+/// @type Color
+$body-font-color: #222 !default;
+
+/// Font stack of the body.
+/// @type Color
+$body-font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif !default;
+
+/// Set to `true` to enable antialiased type, using the `-webkit-font-smoothing` and `-moz-osx-font-smoothing` CSS properties.
+/// @type Boolean
+$body-antialiased: true !default;
+
+/// Text direction for the document. Set to `rtl` to reverse the orientation and direction of all components.
+/// @type Keyword
+$text-direction: ltr !default;
+
+/// Global value used for padding on components.
+/// @type Number
 $global-padding: 1rem !default;
 
-// The default font-size is set to 100% of the browser style sheet (usually 16px)
-// for compatibility with browser-based text zoom or user-set defaults.
+/// Global font weight used for normal type.
+/// @type Keyword | Number
+$global-weight-normal: normal !default;
 
-// Since the typical default browser font-size is 16px, that makes the calculation for grid size.
-// If you want your base font-size to be different and not have it affect the grid breakpoints,
-// set $rem-base to $base-font-size and make sure $base-font-size is a px value.
-$base-font-size: 100% !default;
+/// Global font weight used for bold type.
+/// @type Keyword | Number
+$global-weight-bold: bold !default;
 
-// $base-line-height is 24px while $base-font-size is 16px
-$base-line-height: 1.5 !default;
+/// Global value used for elements that have a border radius.
+/// @type Number
+$global-radius: 3px !default;
 
-// We use these as default colors throughout
-$primary-color: #008CBA !default;
-$secondary-color: #e7e7e7 !default;
-$alert-color: #f04124 !default;
-$success-color: #43AC6A !default;
-$warning-color: #f08a24 !default;
-$info-color: #a0d3e8 !default;
+/// Global value used for elements that have a rounded appearance.
+/// @type Number
+$global-rounded: 1000px !default;
 
+/// Namespace for the data attributes used to initialize Foundation plugins.
+/// @type String | Boolean
+$global-namespace: false !default;
+
+// Reverse text direction if needed
+$default-float: left;
+$opposite-direction: right;
+@if $text-direction == rtl {
+  $default-float: right;
+  $opposite-direction: left;
+}
+
+// Internal map used to iterate through colors, to generate CSS classes with less code
 $foundation-colors: (
   primary: $primary-color,
   secondary: $secondary-color,
@@ -38,39 +94,7 @@ $foundation-colors: (
   warning: $warning-color,
 );
 
-// We use these to define default font styles
-$font-family-monospace: Consolas, "Liberation Mono", Courier, monospace !default;
-$font-weight-normal: normal !default;
-$font-weight-bold: bold !default;
-
-// We use these to control various global styles
-$body-background: #fff !default;
-$body-font-color: #222 !default;
-$body-font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif !default;
-$body-font-weight: $font-weight-normal !default;
-$body-font-style: normal !default;
-
-// We use this to control font smoothing
-$font-smoothing: antialiased !default;
-
-// We use these to control text direction
-$text-direction: ltr !default;
-$default-float: left !default;
-$opposite-direction: right !default;
-@if $text-direction == ltr {
-  $default-float: left;
-  $opposite-direction: right;
-} @else {
-  $default-float: right;
-  $opposite-direction: left;
-}
-
-// We use these to make sure border radius matches unless we want it different.
-$global-radius: 3px !default;
-$global-rounded: 1000px !default;
-
-
-// We use these to store cursor values, for use around the entire stylesheet.
+// The go-away list
 $cursor-auto-value: auto !default;
 $cursor-crosshair-value: crosshair !default;
 $cursor-default-value: default !default;
@@ -78,13 +102,14 @@ $cursor-disabled-value: not-allowed !default;
 $cursor-pointer-value: pointer !default;
 $cursor-help-value: help !default;
 $cursor-text-value: text !default;
+$info-color: #a0d3e8 !default;
 
 @mixin foundation-global-styles {
-  // Must be height: 100% for off canvas to work
+  // Must be height: 100% for off-canvas to work
   html,
   body {
     height: 100%;
-    font-size: $base-font-size;
+    font-size: $global-font-size;
     box-sizing: border-box;
   }
 
@@ -97,22 +122,18 @@ $cursor-text-value: text !default;
 
   // Default body styles
   body {
-    background: $body-background;
-    color: $body-font-color;
     padding: 0;
     margin: 0;
     font-family: $body-font-family;
-    font-weight: $body-font-weight;
-    font-style: $body-font-style;
-    line-height: $base-line-height;
-    position: relative;
-    cursor: $cursor-auto-value;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
+    font-weight: $global-weight-normal;
+    line-height: $global-lineheight;
+    color: $body-font-color;
+    background: $body-background;
 
-  a:hover {
-    cursor: $cursor-pointer-value;
+    @if ($body-antialiased) {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
   }
 
   img {
@@ -137,6 +158,7 @@ $cursor-text-value: text !default;
     width: 100%;
   }
 
+  // Styles Google Maps embeds properly
   #map_canvas,
   .map_canvas {
     img,

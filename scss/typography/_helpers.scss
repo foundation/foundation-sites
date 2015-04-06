@@ -1,6 +1,6 @@
 // Default font size for lead paragraphs.
 // @type Number
-$lead-font-size: $base-font-size * 1.25 !default;
+$lead-font-size: $global-font-size * 1.25 !default;
 
 // Default line height for lead paragraphs.
 // @type String
@@ -16,7 +16,7 @@ $subheader-color: scale-color($header-color, $lightness: 35%) !default;
 
 // Default font weight for subheaders.
 // @type String
-$subheader-font-weight: $font-weight-normal !default;
+$subheader-font-weight: $global-weight-normal !default;
 
 // Default top margin for subhheaders.
 // @type Number

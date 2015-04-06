@@ -16,7 +16,7 @@ $input-error-font-size: rem-calc(12) !default;
 
 /// Default font weight for form error text.
 /// @type Number
-$input-error-font-weight: $font-weight-normal !default;
+$input-error-font-weight: $global-weight-normal !default;
 
 /// Default font style (e.g. italics) for form error text.
 /// @type Keyword

@@ -25,11 +25,15 @@ $header-font-family: $body-font-family !default;
 
 /// Font weight of headers.
 /// @type String
-$header-font-weight: $font-weight-normal !default;
+$header-font-weight: $global-weight-normal !default;
 
 /// Font style (e.g. italicized) of headers.
 /// @type String
 $header-font-style: normal !default;
+
+/// Font stack used for elements that use monospaced type, such as code samples
+/// @type String | List
+$font-family-monospace: Consolas, "Liberation Mono", Courier, monospace !default;
 
 /// Color of headers.
 /// @type Color
@@ -77,7 +81,7 @@ $code-font-family: $font-family-monospace !default;
 
 /// Font weight of text in code samples.
 /// @type String
-$code-font-weight: $font-weight-normal !default;
+$code-font-weight: $global-weight-normal !default;
 
 /// Background color of code samples.
 /// @type Color
@@ -145,7 +149,7 @@ $defnlist-margin-bottom: 1rem !default;
 
 /// Font weight for `<dt>` elements.
 /// @type String
-$defnlist-term-weight: $font-weight-bold !default;
+$defnlist-term-weight: $global-weight-bold !default;
 
 /// Spacing between `<dt>` and `<dd>` elements.
 /// @type Number
@@ -290,7 +294,7 @@ $acronym-underline: 1px dotted #ddd !default;
   // Strong text
   strong,
   b {
-    font-weight: $font-weight-bold;
+    font-weight: $global-weight-bold;
     line-height: inherit;
   }
 
