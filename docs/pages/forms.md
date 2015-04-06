@@ -173,3 +173,61 @@ To attach extra text or controls to the left or right of an input field, wrap th
   <a class="input-group-button button">Submit</a>
 </div>
 ```
+
+---
+
+## Accessibility
+
+For the most part, if you stick to standard HTML input types and label them properly, you won't need to worry too much about accessibility. Here are some things to keep in mind.
+
+### Label Inputs
+
+We recommend nesting your inputs inside of their labels, which removes the need to connect them using the `for` attribute.
+
+```html
+<label>
+  Name
+  <input type="text" name="name">
+</label>
+```
+
+If you need your labels and inputs to be separated, make sure the two are connected so screen readers will know (and to keep the labels clickable!).
+
+```html
+<label for="name">Name</label>
+<input type="text" name="name" id="name">
+```
+
+If an input field doesn't have a label, add the attribute `aria-label` to the input to clarify its purpose.
+
+```html
+<input type="text" name="name" aria-label="Name">
+```
+
+### Label Help Text
+
+If an input has some sort of help text distinct from the label, it should be connected to the input it describes using the attribute `aria-describedby`.
+
+```html
+<label>
+  Name
+  <input type="text" name="name" aria-describedby="nameHelpText">
+</label>
+<p id="nameHelpText">Enter your name.</p>
+```
+
+### Label Custom Controls
+
+Custom form controls, like date pickers, range sliders, or switches need some extra attention to be made accessible. Our custom inputs, such as the range slider and switch, do most of this work for you.
+
+Custom inputs with labels or help text need the attributes `aria-labelledby` and `aria-describedby` added to them, so screen readers know how to describe the control.
+
+```html
+<label id="ageLabel">Age</label>
+<div class="range-slider" data-slider>
+  <span class="range-slider-handle" role="slider" aria-labelledby="ageLabel" aria-describedby="ageHelpText"></span>
+  <span class="range-slider-active-segment"></span>
+  <input type="hidden">
+</div>
+<p id="ageHelpText">How old are you?</p>
+```
