@@ -44,13 +44,13 @@
         if ($submenu.length) {
           $submenu.addClass('js-dropdown-nohover');
 
-          $(this).children('a').click(function(event) {
+          $(this).children('a').on('click.zf.dropdown', function(event) {
             event.stopPropagation();
 
             _this.toggleMenu($submenu);
 
             return false;
-          }).on('mouseenter', function(event) {
+          }).on('mouseenter.zf.dropdown', function(event) {
             event.stopPropagation();
             event.preventDefault();
           });
@@ -61,9 +61,14 @@
     },
 
     toggleMenu: function($target) {
-      this.$openMenu.removeClass('js-dropdown-active');
-      $target.toggleClass('js-dropdown-active');
-      this.$openMenu = $target;
+      if ($target.is(this.$openMenu)) {
+        this.$openMenu.removeClass('js-dropdown-active');
+      }
+      else {
+        this.$openMenu.removeClass('js-dropdown-active');
+        $target.addClass('js-dropdown-active');
+        this.$openMenu = $target;
+      }
     },
 
     destroy: function() {
@@ -73,7 +78,7 @@
             .removeClass('js-dropdown-nohover')
             .end()
           .children('a')
-            .off('click mouseenter');
+            .off('.zf.dropdown');
       });
       this.$openMenu.removeClass('js-dropdown-active');
     }

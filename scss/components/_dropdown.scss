@@ -1,22 +1,24 @@
-.menu-bar > .has-dropdown {
-  position: relative;
-}
-
-.nested-dropdown.menu-bar {
-  display: none;
-  position: absolute;
-  top: 100%;
-  width: auto;
-  white-space: nowrap;
-  background: $body-background;
-
-  .vertical > li > & {
-    top: 0;
-    left: 100%;
+.dropdown.menu-bar {
+  .has-submenu {
+    position: relative;
   }
 
-  &:not(.js-dropdown-nohover) > .has-dropdown:hover > &,
-  &.js-dropdown-active {
-    display: block;
+  .submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    width: auto;
+    white-space: nowrap;
+    background: $body-background;
+    z-index: 1;
+
+    &:not(.js-dropdown-nohover) > .has-submenu:hover > &,
+    &.js-dropdown-active {
+      display: block;
+    }
+  }
+  &.vertical > li > .submenu {
+    top: 0;
+    left: 100%;
   }
 }
