@@ -45,6 +45,11 @@
 
   MenuBar.prototype.defaults = {};
 
+  /**
+   * Initializes the menu bar by parsing the classes from the 'data-menubar' attribute on the element.
+   * @function
+   * @private
+   */
   MenuBar.prototype._init = function() {
     var rulesTree = {};
 
@@ -65,6 +70,11 @@
     this.rules = rulesTree;
   };
 
+  /**
+   * Initializes events for the menu bar.
+   * @function
+   * @private
+   */
   MenuBar.prototype._events = function() {
     var _this = this;
 
@@ -73,6 +83,11 @@
     });
   };
 
+  /**
+   * Checks the current screen width against available media queries. If the media query has changed, and the plugin needed has changed, the plugins will swap out.
+   * @function
+   * @private
+   */
   MenuBar.prototype._checkMediaQueries = function() {
     var matchedMq, _this = this;
 
@@ -102,6 +117,10 @@
     this.currentPlugin = new this.rules[matchedMq].plugin(this.$element, {});
   }
 
+  /**
+   * Destroys the instance of the current plugin on this element, as well as the window resize handler that switches the plugins out.
+   * @function
+   */
   MenuBar.prototype.destroy = function() {
     this.currentPlugin.destroy();
     $(window).off('.zf.menubar');

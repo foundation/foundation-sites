@@ -80,7 +80,7 @@
     _events: function() {
       var _this = this;
 
-      this.$element.on('click', function() {
+      this.$element.on('click.zf.toggler', function() {
         _this.toggle();
         return false;
       });
@@ -110,6 +110,13 @@
          */
         this.$element.trigger('off.zf.toggler');
       }
+    },
+
+    /**
+     * Destroys the instance of Toggler on the element.
+     */
+    destroy: function() {
+      this.$element.off('.zf.toggler');
     }
   };
 
