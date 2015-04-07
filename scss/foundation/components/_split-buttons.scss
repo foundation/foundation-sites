@@ -65,8 +65,6 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
 // $base-style - Apply base style to split button. Default: true.
 @mixin split-button(
   $padding:medium,
-  $pip-color:$split-button-pip-color,
-  $span-border:$primary-color,
   $pip-color:$split-button-pip-color, 
   $span-border:$split-button-span-border-color, 
   $base-style:true) {
