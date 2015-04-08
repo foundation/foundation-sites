@@ -10,6 +10,19 @@
 @include foundation-close-button;
 @include foundation-media-object;
 
+.docs-site-title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #ddd;
+
+  em {
+    font-style: normal;
+    color: #999;
+  }
+}
+
 .docs-header {
   position: relative;
 }
@@ -71,6 +84,21 @@
     &:hover,
     &.zeroclipboard-is-hover {
       background: scale-color($primary-color, $lightness: -5%);
+    }
+  }
+
+.docs-menu {
+  margin-top: 0.5rem;
+}
+  .docs-menu-title {
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+
+    &:not(:first-of-type) {
+      margin-top: 1rem;
     }
   }
 
