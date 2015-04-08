@@ -96,5 +96,12 @@ Use the class `.show-on-focus` to hide an element, except when it has focus.
 
 ```html_example
 <p><a class="show-on-focus" href="#mainContent">Skip to Content</a></p>
-<div id="mainContent"></div>
+
+<header id="header">
+  
+</header>
+
+<div id="mainContent" role="main">
+  
+</div>
 ```
