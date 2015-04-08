@@ -1,7 +1,7 @@
 ---
 title: Typography
 description: Typography in Foundation 5 is meant to make your life easier by providing clean, attractive, simple default styles for all of the most basic typographical elements.
-sass: scss/forms/*.scss
+sass: scss/typography/*.scss
 ---
 
 ## Headers

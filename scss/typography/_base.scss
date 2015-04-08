@@ -4,7 +4,7 @@
 
 // Base Typography
 // - - - - - - - - - - - - - - -
-// These are styles applied to basic HTML tags. Here we style:
+// These are styles applied to basic HTML tags, including:
 //   - Paragraphs <p>
 //   - Headings <h1>—<h6>
 //   - Small text <small>
@@ -57,7 +57,7 @@ $small-font-size: 80% !default;
 
 /// Color of `<small>` elements when placed inside headers.
 /// @type Color
-$header-small-font-color: scale-color($header-color, $lightness: 35%) !default;
+$header-small-font-color: #666 !default;
 
 /// Line height of text inside `<p>` elements.
 /// @type Number
@@ -157,7 +157,7 @@ $defnlist-term-margin-bottom: 0.3rem !default;
 
 /// Text color of `<blockquote>` elements.
 /// @type Color
-$blockquote-color: scale-color($header-color, $lightness: 35%) !default;
+$blockquote-color: #666 !default;
 
 /// Padding inside a `<blockquote>` element.
 /// @type Number | List
@@ -173,7 +173,7 @@ $cite-font-size: rem-calc(13) !default;
 
 // Text color for `<cite>` elements.
 // @type Color
-$cite-color: scale-color($header-color, $lightness: 23%) !default;
+$cite-color: #666 !default;
 
 // Font family for `<kbd>` elements.
 // @type String | List
@@ -185,7 +185,7 @@ $keystroke-color: #222 !default;
 
 // Background color for `<kbd>` elements.
 // @type Color
-$keystroke-background: scale-color(#fff, $lightness: -10%) !default;
+$keystroke-background: #e6e6e6 !default;
 
 // Padding for `<kbd>` elements.
 // @type Number | List
@@ -245,6 +245,7 @@ $acronym-underline: 1px dotted #ddd !default;
 
   // Paragraphs
   p {
+    font-size: inherit;
     line-height: $paragraph-lineheight;
     margin-bottom: $paragraph-margin-bottom;
     text-rendering: $paragraph-text-rendering;
