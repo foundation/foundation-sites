@@ -66,8 +66,11 @@
     _reflow: function() {
       var self = this;
       var elementScenarios;
+      console.log("REFLOW");
+      console.log(self.cache);
       $('[' + this.attr + ']').each(function() {
         // var instanceId = $(this).data('uuid');
+        console.log($(this).data('uuid'));
         if (self.cache) {
           elementScenarios = self.cache;
           for (var i = elementScenarios.length - 1; i >= 0; i--) {
@@ -114,7 +117,7 @@
       return scenarios;
     },
     cacheInterchangeInstance: function($element) {
-      this.cache = this.mapMqContent($element);
+      this.cache[$element.data('uuid')] = this.mapMqContent($element);
     },
     checkMq: function(mq) {
       return window.matchMedia(mq).matches;

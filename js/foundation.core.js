@@ -133,51 +133,33 @@
      * @param {Object} images - Image(s) to check if loaded.
      * @param {Func} callback - Function to execute when image is fully loaded.
      */
-    image_loaded: function (images, callback) {
+    imagesLoaded: function (images, callback) {
       var self = this,
           unloaded = images.length;
 
       if (unloaded === 0) {
-        callback(images);
+        callback();
       }
       
-      var single_image_loaded = function (image, callback) {
-        
-        var loaded = function() {
-          callback(image[0]);
-        };
-
-        var bindLoad = function() {
-          this.one('load', loaded);
-
-          if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) {
-            var src = this.attr( 'src' ),
-                param = src.match( /\?/ ) ? '&' : '?';
-
-            param += 'random=' + (new Date()).getTime();
-            this.attr('src', src + param);
-          }
-        };
-
-        if (!image.attr('src')) {
-          loaded();
-          return;
+      var singleImageLoaded = function() {
+        unloaded--;
+        if (unloaded === 0) {
+          callback();
         }
+      }
 
-        if (image[0].complete || image[0].readyState === 4) {
-          loaded();
-        } else {
-          bindLoad.call(image);
+      images.each(function() {
+        if (this.complete) {
+          singleImageLoaded();
         }
-      };
-
-      images.each(function () {
-        single_image_loaded($(this), function () {
-          unloaded -= 1;
-          if (unloaded === 0) {
-            callback(images);
-          }
-        });
+        else if (typeof this.naturalWidth !== 'undefined' && this.naturalWidth > 0) {
+          singleImageLoaded();
+        }
+        else {
+          $(this).one('load', function() {
+            singleImageLoaded();
+          });
+        }
       });
     }
   };
