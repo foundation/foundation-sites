@@ -47,8 +47,21 @@
     _events: function() {
       var self = this;
 
-      this.$window
+      this.$element
         .off('.abide')
+        .find('input, textarea, select')
+          .off('.abide')
+          .on('blur.fndtn.abide change.fndtn.abide', function (e) {
+            self.requiredCheck(this);
+          })
+          .on('keydown.fndtn.abide', function (e) {
+            // if (settings.live_validate === true && e.which != 9) {
+            //   clearTimeout(self.timer);
+            //   self.timer = setTimeout(function () {
+            //     self.validate([this], e);
+            //   }.bind(this), settings.timeout);
+            // }
+          });
 
     },
     /**
@@ -58,6 +71,28 @@
     _reflow: function() {
       var self = this;
 
+    },
+    requiredCheck: function(el) {
+      var self = this;
+      if ($(el).attr('required')) {
+        if (!$(el).val()) {
+          var label = $(el).parent();
+          self.addErrorClass(label);
+        }
+      }
+      return false;
+    },
+    addErrorClass: function(target) {
+      $(target).addClass('error');
+    },
+    validateRadio: function(el) {
+      // validate radio button
+    },
+    validateCheckbox: function(el) {
+      // validate checkbox
+    },
+    resetForm: function(form) {
+      // reset form
     }
   };
 
