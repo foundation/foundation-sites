@@ -1,7 +1,19 @@
 ---
-title: Typography
+title: Base Typography
 description: Typography in Foundation 5 is meant to make your life easier by providing clean, attractive, simple default styles for all of the most basic typographical elements.
-sass: scss/typography/*.scss
+sass:
+  - scss/typography/_base.scss
+  - scss/typography/_print.scss
+---
+
+## Paragraphs
+
+This is a paragraph. Paragraphs are preset with a font size, line height and spacing to match the overall vertical rhythm. To show what a paragraph looks like this needs a little more content&mdash;so, did you know that there are storms occurring on Jupiter that are larger than the Earth? Pretty cool. Wrap strong around type to **make it bold!** You can also use em to *italicize your words*.
+
+```html
+<p>This is a paragraph. Paragraphs are preset with a font size, line height and spacing to match the overall vertical rhythm. To show what a paragraph looks like this needs a little more content so, did you know that there are storms occurring on Jupiter that are larger than the Earth? Pretty cool. Wrap strong around type to <strong>make it bold!</strong>. You can also use em to <em>italicize your words</em>.</p>
+```
+
 ---
 
 ## Headers
@@ -19,72 +31,19 @@ Foundation includes styles for all of the header elements that are balanced and 
 
 ---
 
-## Subheaders
-
-Lighten up your headers by adding a class of `.subheader` to any header element.
-
-```html_example
-<h1 class="subheader">h1.subheader</h1>
-<h2 class="subheader">h2.subheader</h2>
-<h3 class="subheader">h3.subheader</h3>
-<h4 class="subheader">h4.subheader</h4>
-<h5 class="subheader">h5.subheader</h5>
-<h6 class="subheader">h6.subheader</h6>
-```
-
----
-
-## Small Header Segments
+### Small Header Segments
 
 By inserting a `<small>` element into a header Foundation will scale the header font size down for an inline element, allowing you to use this for subtitles or other secondary header text.
 
 ```html_example
-<h1>h1. <small>Small segment header.</small></h1>
-<h2>h2. <small>Small segment header.</small></h2>
-<h3>h3. <small>Small segment header.</small></h3>
-<h4>h4. <small>Small segment header.</small></h4>
-<h5>h5. <small>Small segment header.</small></h5>
-<h6>h6. <small>Small segment header.</small></h6>
+<h3>Foundation for Sites <small>Version 6.0.0</small></h3>
 ```
-
----
-
-## Paragraphs
-
-This is a paragraph. Paragraphs are preset with a font size, line height and spacing to match the overall vertical rhythm. To show what a paragraph looks like this needs a little more content&mdash;so, did you know that there are storms occurring on Jupiter that are larger than the Earth? Pretty cool. Wrap strong around type to **make it bold!** You can also use em to *italicize your words*.
-
-```html
-<p>This is a paragraph. Paragraphs are preset with a font size, line height and spacing to match the overall vertical rhythm. To show what a paragraph looks like this needs a little more content so, did you know that there are storms occurring on Jupiter that are larger than the Earth? Pretty cool. Wrap strong around type to <strong>make it bold!</strong>. You can also use em to <em>italicize your words</em>.</p>
-```
-
----
-
-## Text Alignment
-
-You can change the text alignment of an element by adding `.text-left`, `.text-right`, `.text-center` or `.text-justify` to an element.
-
-Adding a breakpoint to the front of a text alignment class will cause it to only be applied on that size screen or larger. For example, `.medium-text-center` will keep text left-aligned on the smallest screens, but switch to center-aligned on medium screens and larger.
-
-```html
-<p class="text-left"><!-- ... --></p>
-<p class="text-right"><!-- ... --></p>
-<p class="text-center"><!-- ... --></p>
-<p class="text-justify"><!-- ... --></p>
-```
-
-<p class="text-left"><strong>This text is left-aligned.</strong> Set in the year 0 F.E. ("Foundation Era"), The Psychohistorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire. Though the empire appears stable and powerful, it is slowly decaying in ways that parallel the decline of the Western Roman Empire.</p>
-
-<p class="text-right"><strong>This text is right-aligned.</strong> Set in the year 0 F.E. ("Foundation Era"), The Psychohistorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire. Though the empire appears stable and powerful, it is slowly decaying in ways that parallel the decline of the Western Roman Empire.</p>
-
-<p class="text-center"><strong>This text is center-aligned.</strong> Set in the year 0 F.E. ("Foundation Era"), The Psychohistorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire. Though the empire appears stable and powerful, it is slowly decaying in ways that parallel the decline of the Western Roman Empire.</p>
-
-<p class="text-justify"><strong>This text is justified.</strong> Set in the year 0 F.E. ("Foundation Era"), The Psychohistorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire. Though the empire appears stable and powerful, it is slowly decaying in ways that parallel the decline of the Western Roman Empire.</p>
 
 ---
 
 ## Links
 
-Links are very standard, and the [color is preset](http://www.youtube.com/watch?v=zT2aVoUkSDg) to the Foundation primary color.
+Links are very standard, and the [color is preset](http://www.youtube.com/watch?v=zT2aVoUkSDg) to the Foundation primary color. To make links screen reader-friendly, avoid using vague words like "here" within link text.
 
 ```html
 <p>Links are very standard, and the <a href="http://www.youtube.com/watch?v=zT2aVoUkSDg">color is preset</a> to the Foundation primary color.</p>
@@ -98,27 +57,6 @@ Use an unordered list to... *list things*, if the order of the items doesn't mat
 
 ```html_example
 <ul>
-  <li>List item with a much longer description or more content.</li>
-  <li>List item</li>
-  <li>List item
-    <ul>
-      <li>Nested list item</li>
-      <li>Nested list item</li>
-      <li>Nested list item</li>
-    </ul>
-  </li>
-  <li>List item</li>
-  <li>List item</li>
-  <li>List item</li>
-</ul>
-```
-
----
-
-In Foundation, the `<ul>` is a bulleted list by default, but you can add the class `.no-bullet` to remove the bullets.
-
-```html_example
-<ul class="no-bullet">
   <li>List item with a much longer description or more content.</li>
   <li>List item</li>
   <li>List item
@@ -175,7 +113,7 @@ A definition list is meant to display name-value pairs, like metadata or a dicti
 
 ## Blockquotes
 
-Sometimes other people say smart things, and you may want to mention that through a blockquote callout. We've got you covered.
+Sometimes other people say smart things, and you may want to mention those things with a quote. We've got you covered.
 
 ```html_example
 <blockquote>
@@ -186,13 +124,24 @@ Sometimes other people say smart things, and you may want to mention that throug
 
 ---
 
-## Statistics
+## Abbreviations and Acronyms
 
-If you're building a dashboard, you might need to display some important numbers *real big*. Just add the `.stat` class to any element to amp up the font size.
+Use the `<abbr>` and `<acronym>` tags to annotate a shortened term. These elements must always have a `title` attribute which clarified the full term.
+
+What's the difference between an abbreviation and an acronym? An abbreviation is a shortened spelling of a word, while an acronym is a set of initials that represent a longer word or phrase.
 
 ```html_example
-<p>Days without merge conflict</p>
-<div class="stat">128</div>
+<p>In my dream last night, I saw <acronym title="John Ronald Reuel">J. R. R.</acronym> Tolkien and George <acronym title="Raymond Richard">R. R.</acronym> Martin hanging out on Sunset <abbr title="Boulevard">Blvd</abbr>.</p>
+```
+
+---
+
+## Keystrokes
+
+Use the `<kbd>` element to annotate a key stroke or combination.
+
+```html_example
+<p>Press <kbd>Cmd+Q</kbd> (or <kbd>Ctrl+Q</kbd> on Windows) to play Half-Life 3.</p>
 ```
 
 ---

@@ -197,7 +197,7 @@ $keystroke-radius: $global-radius !default;
 
 // Bottom border style for `<abbr>` and `<acronym>` elements.
 // @type List
-$acronym-underline: 1px dotted #ddd !default;
+$abbr-underline: 1px dotted #333 !default;
 
 @mixin foundation-typography-base {
   /* Typography resets */
@@ -368,18 +368,9 @@ $acronym-underline: 1px dotted #ddd !default;
   // Abbreviations and acronyms
   abbr,
   acronym {
-    text-transform: uppercase;
-    font-size: 90%;
     color: $body-font-color;
     cursor: $cursor-help-value;
-  }
-
-  abbr {
-    text-transform: none;
-
-    &[title] {
-      border-bottom: $acronym-underline;
-    }
+    border-bottom: $abbr-underline;
   }
 
   // Blockquotes
