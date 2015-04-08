@@ -197,6 +197,56 @@ If you're building a dashboard, you might need to display some important numbers
 
 ---
 
+## Accessibility
+
+Text is core to the content of your page, so making it accessible to everyone is important. Here are some general guidelines to follow.
+
+### Text vs. Images
+
+Prefer using actual text over text inside a graphic. Assistive technologies can't read an image, and the text in an image can't be resized by a browser, like normal text. If an image has text that needs to be read, add it in the `alt` attribute of the image.
+
+```html
+<img src="assets/img/buy-now.jpg" alt="Buy now">
+```
+
+### Contrast
+
+The contrast between the color of an element's text and its background should be high enough that low-vision users can read it. There are no automated tools that can effectively check this for you, but if you aren't sure about a specific color combination, you can run it through one of many color contrast checkers, such as [WebAIM's color contrast checker](http://webaim.org/resources/contrastchecker/).
+
+Google Chrome's Accessibility Tools also have a contrast checker. By selecting an element in the inspector, you can see if the contrast meets the minimum standards.
+
+*Image of inspector with contrast viewer*
+
+### Type Size
+
+When possible, use the `rem` and `em` units to size everything. Not just font size, but also padding, margins, and any length value. This ensures that your design scales up and down uniformily if the user changes their browser's text size.
+
+We use the `rem` unit nearly everywhere in Foundation, and we wrote a Sass function to make it a little easier. The `rem-calc()` function can take in one or more pixel values and convert them to a proper `rem` value.
+
+```scss
+.element {
+  width: rem-calc(300);
+  padding: rem-calc(10 16);
+}
+```
+
+### Heading Order
+
+The first heading on a page should be an `<h1>`. Most often, this is the title of the site or page. From there, follow headings in order, from `<h2>` to `<h3>` on down. Lastly, don't skip heading levels. If you need a heading to look bigger or smaller to match a specific style, use CSS to override the default size.
+
+### Emphasis
+
+If the emphasis of a phrase is important, don't make the emphasis purely visual&mdash;use the `<em>` or `<strong>` tags to mark it as well. Both of these tags have built-in styles, but there's no harm in adding additional styles in specific contexts.
+
+### More Resources
+
+- [WebAIM: Fonts](http://webaim.org/techniques/fonts/)
+- [WebAIM: Links and HyperText](http://webaim.org/techniques/hypertext/)
+- [WebAIM: Writing Clearly and Simply](http://webaim.org/techniques/semanticstructure/)
+- [WebAIM: Color Contrast Checker](http://webaim.org/resources/contrastchecker/)
+
+---
+
 ## Print Styles
 
 Foundation includes print styles developed by HTML5 Boilerplate to give you some basic print-specific styles. These are activated when you print through a media query. It includes:
