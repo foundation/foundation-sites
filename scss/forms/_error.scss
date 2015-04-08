@@ -56,7 +56,8 @@ $input-error-padding: rem-calc(6 9 9) !default;
   }
 
   // Form error element
-  .form-error {
+  .form-error,
+  .input-error {
     @include form-error;
 
     &.is-visible {
