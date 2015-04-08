@@ -1,3 +1,11 @@
+/// Background color to use for invalid text inputs.
+/// @type Color
+$input-background-invalid: $alert-color;
+
+/// Color to use for labels of invalid inputs.
+/// @type Color
+$form-label-color-invalid: $alert-color;
+
 /// Default font color for form error text.
 /// @type Color
 $input-error-color: #fff !default;
@@ -14,33 +22,18 @@ $input-error-font-size: rem-calc(12) !default;
 /// @type Number
 $input-error-padding: rem-calc(6 9 9) !default;
 
-// @MIXIN
-//
-// We use this mixin to control border and background color of error inputs
-// $color - Default: $alert-color (found in settings file)
+/// Styles the background and border of an input field to have an error state.
+/// @param {Color} $background [$alert-color] - Color to use for the background and border.
 @mixin form-input-error(
-  $color: $alert-color
+  $background: $alert-color
 ) {
   &:not(:focus) {
-    background-color: rgba($color, 0.1);
-    border-color: $color;
+    background-color: rgba($background, 0.1);
+    border-color: $background;
   }
 }
 
-// @MIXIN
-//
-// We use this simple mixin to style labels for error inputs
-// $color - Default:$alert-color. Found in settings file
-@mixin form-error-label(
-  $color: $alert-color
-) {
-  color: $color;
-}
-
-// @MIXIN
-//
-// We use this mixin to create error message styles
-// $bg - Default: $alert-color (Found in settings file)
+/// Adds error styles to a form element, using the values in the settings file.
 @mixin form-error {
   display: none;
   padding: $input-error-padding;
@@ -52,14 +45,17 @@ $input-error-padding: rem-calc(6 9 9) !default;
 }
 
 @mixin foundation-form-error {
+  // Error class for invalid inputs
   .is-invalid-input {
     @include form-input-error;
   }
 
+  // Error class for labels of invalid outputs
   .is-invalid-label {
-    @include form-error-label;
+    color: $form-label-color-invalid;
   }
 
+  // Form error element
   .form-error {
     @include form-error;
 
