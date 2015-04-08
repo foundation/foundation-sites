@@ -5,7 +5,9 @@ description: Abide is an form validation library that extends the HTML5 validati
 
 <p>&nbsp;</p>
 
-<div class="form-error is-visible">There were some errors with your form.</div>
+<div class="alert callout">
+  <p><i class="fi-alert"></i> There are some errors in your form.</p>
+</div>
 
 <label class="is-invalid-label">
   Required Thing
@@ -24,7 +26,10 @@ description: Abide is an form validation library that extends the HTML5 validati
 
 ```html
 <form data-abide>
-  <div class="form-error" data-abide-error>There were some errors in your form submission.</div>
+  <!-- Add "display: none" right away -->
+  <div data-abide-error class="alert callout" style="display: none;">
+    <p><i class="fi-alert"></i> There are some errors in your form.</p>
+  </div>
   <label>
     Name
     <input type="text" required>
@@ -37,11 +42,17 @@ description: Abide is an form validation library that extends the HTML5 validati
 
 ```html
 <form data-abide>
-  <!-- Focus shifts to this element -->
-  <div class="form-error is-visible" data-abide-error>There were some errors in your form submission.</div>
+  <!-- Add role="alert" -->
+  <!-- Add "display: block" -->
+  <div data-abide-error role="alert" class="alert callout" style="display: block;">
+    <p><i class="fi-alert"></i> There are some errors in your form.</p>
+  </div>
+  <!-- Add "is-invalid-label" -->
   <label class="is-invalid-label">
     Name
+    <!-- Add "is-invalid-input" -->
     <input type="text is-invalid-input" required aria-invalid aria-describedby="uuid">
+    <!-- Add "is-visible" -->
     <span class="form-error is-visible" id="uuid">This field is required.</span>
   </label>
 </form>
