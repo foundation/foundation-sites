@@ -13,7 +13,7 @@
     this.options  = $.extend(Abide.defaults, options);
     this.$window  = $(window);
     this.name     = 'Abide';
-    this.attr     = 'data-Abide';
+    this.attr     = 'data-abide';
 
     this._init();
     this._events();
@@ -29,7 +29,8 @@
    * Default settings for plugin
    */
   Abide.defaults = {
-    validateOn: 'fieldChange' // options: fieldChange, manual, submit
+    validateOn: 'fieldChange', // options: fieldChange, manual, submit
+    errorClass: 'is-invalid-label'
   };
 
   Abide.prototype = {
@@ -52,7 +53,7 @@
         .find('input, textarea, select')
           .off('.abide')
           .on('blur.fndtn.abide change.fndtn.abide', function (e) {
-            self.requiredCheck(this);
+            self.validateForm(self.$element);
           })
           .on('keydown.fndtn.abide', function (e) {
             // if (settings.live_validate === true && e.which != 9) {
@@ -74,16 +75,35 @@
     },
     requiredCheck: function(el) {
       var self = this;
+
       if ($(el).attr('required')) {
+        var label = $(el).closest('label');
+
         if (!$(el).val()) {
-          var label = $(el).parent();
           self.addErrorClass(label);
+        }
+        else {
+          if (label.hasClass(self.options.errorClass)) {
+            label.removeClass(self.options.errorClass);
+          }
         }
       }
       return false;
     },
     addErrorClass: function(target) {
-      $(target).addClass('error');
+      $(target).addClass(this.options.errorClass);
+    },
+    validateForm: function($form) {
+      var self = this,
+          textInput = $form.find('input[type="text"]');
+
+      $(textInput).each(function() {
+        self.requiredCheck(this);
+        self.validateText(this);
+      })
+    },
+    validateText: function(el) {
+
     },
     validateRadio: function(el) {
       // validate radio button
