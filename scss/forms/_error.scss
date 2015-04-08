@@ -1,10 +1,14 @@
+/// Background color to use for invalid text inputs.
+/// @type Color
+$input-background-invalid: $alert-color;
+
+/// Color to use for labels of invalid inputs.
+/// @type Color
+$form-label-color-invalid: $alert-color;
+
 /// Default font color for form error text.
 /// @type Color
 $input-error-color: #fff !default;
-
-/// Default font color for form error text, if the background is too light for the default color.
-/// @type Color
-$input-error-color-alt: #333 !default;
 
 /// Default background color for form error containers.
 /// @type Color
@@ -14,122 +18,49 @@ $input-error-background: $alert-color !default;
 /// @type Number
 $input-error-font-size: rem-calc(12) !default;
 
-/// Default font weight for form error text.
-/// @type Number
-$input-error-font-weight: $global-weight-normal !default;
-
-/// Default font style (e.g. italics) for form error text.
-/// @type Keyword
-$input-error-font-style: italic !default;
-
 /// Default padding inside form error containers.
 /// @type Number
 $input-error-padding: rem-calc(6 9 9) !default;
 
-// @MIXIN
-//
-// We use this mixin to control border and background color of error inputs
-// $color - Default: $alert-color (found in settings file)
-@mixin form-error-color($color: $alert-color) {
-  border-color: $color;
-  background-color: rgba($color, 0.1);
-
-  // Go back to normal on focus
-  &:focus {
-    $border-color: get-border-value($input-border-focus, color);
-    background: $input-background-focus;
-    border-color: $border-color;
+/// Styles the background and border of an input field to have an error state.
+/// @param {Color} $background [$alert-color] - Color to use for the background and border.
+@mixin form-input-error(
+  $background: $alert-color
+) {
+  &:not(:focus) {
+    background-color: rgba($background, 0.1);
+    border-color: $background;
   }
 }
 
-// @MIXIN
-//
-// We use this simple mixin to style labels for error inputs
-// $color - Default:$alert-color. Found in settings file
-@mixin form-label-error-color($color: $alert-color) {
-  color: $color;
-}
-
-// @MIXIN
-//
-// We use this mixin to create error message styles
-// $bg - Default: $alert-color (Found in settings file)
-@mixin form-error-message($bg: $input-error-background) {
-  display: block;
+/// Adds error styles to a form element, using the values in the settings file.
+@mixin form-error {
+  display: none;
   padding: $input-error-padding;
-  margin-top: -1px;
+  margin-top: $form-spacing * -1;
   margin-bottom: $form-spacing;
   font-size: $input-error-font-size;
-  font-weight: $input-error-font-weight;
-  font-style: $input-error-font-style;
-
-  // We can control the text color based on the brightness of the background.
-  $bg-lightness: lightness($bg);
-  background: $bg;
-  @if $bg-lightness < 70% or $bg == #ff0 {
-    color: $input-error-color;
-  }
-  @else {
-    color: $input-error-color-alt;
-  }
+  color: $input-error-color;
+  background: $input-error-background;
 }
 
 @mixin foundation-form-error {
-  #{data('abide')} {
-    .error,
-    .error .error {
-      @include form-error-message;
-    }
-
-    .error {
-      display: none;
-    }
+  // Error class for invalid inputs
+  .is-invalid-input {
+    @include form-input-error;
   }
 
-  .error {
-    input,
-    textarea,
-    select {
-      margin-bottom: 0;
-    }
+  // Error class for labels of invalid outputs
+  .is-invalid-label {
+    color: $form-label-color-invalid;
+  }
 
-    input[type="checkbox"],
-    input[type="radio"] {
-      margin-bottom: $form-spacing;
-    }
+  // Form error element
+  .form-error {
+    @include form-error;
 
-    label, {
-      @include form-label-error-color;
-    }
-
-    .error {
-      @include form-error-message;
-    }
-
-    > label {
-      > small {
-        color: scale-color($form-label-color, $lightness: 15%);
-        background: transparent;
-        padding: 0;
-        font-style: normal;
-        font-size: 60%;
-        margin: 0;
-        display: inline;
-      }
-    }
-
-    span.error-message {
+    &.is-visible {
       display: block;
     }
-  }
-
-  input.error,
-  textarea.error,
-  select.error {
-    margin-bottom: 0;
-  }
-
-  label.error {
-    @include form-label-error-color;
   }
 }
