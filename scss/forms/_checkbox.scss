@@ -1,13 +1,13 @@
 @mixin foundation-form-checkbox {
-  input[type="file"],
-  input[type="checkbox"],
-  input[type="radio"],
+  [type="file"],
+  [type="checkbox"],
+  [type="radio"],
   select {
     margin: 0 0 $form-spacing 0;
   }
 
-  input[type="checkbox"] + label,
-  input[type="radio"] + label {
+  [type="checkbox"] + label,
+  [type="radio"] + label {
     display: inline-block;
     margin-left: $form-spacing * 0.5;
     margin-right: $form-spacing;
@@ -15,13 +15,13 @@
     vertical-align: baseline;
   }
 
-  label > input[type="checkbox"],
-  label > input[type="label"] {
+  label > [type="checkbox"],
+  label > [type="label"] {
     margin-right: $form-spacing * 0.5;
   }
 
   // Normalize file input width
-  input[type="file"] {
+  [type="file"] {
     width: 100%;
   }
 }
