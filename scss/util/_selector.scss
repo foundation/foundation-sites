@@ -1,6 +1,9 @@
-@function text-inputs($types: all, $selector: input) {
+/// Generates a selector with every text input type. You can also filter the list to only output a subset of those selectors.
+/// @param {List|Keyword} $types [()] - A list of text input types to use. Leave blank to use all of them.
+@function text-inputs($types: ()) {
   $return: ();
-  $all-text-input-types:
+
+  $all-types:
     text
     password
     date
@@ -14,21 +17,13 @@
     tel
     time
     url
-    color
-    textarea;
-  @if $types == all { $types: $all-text-input-types; }
+    color;
+
+  @if hasvalue($types) { $types: $all-types; }
+
   @each $type in $types {
-    @if $type == textarea {
-      @if $selector == input {
-        $return: append($return, unquote('#{$type}'), comma);
-      }
-      @else {
-        $return: append($return, unquote('#{$type}#{$selector}'), comma);
-      }
-    }
-    @else {
-      $return: append($return, unquote('#{$selector}[type="#{$type}"]'), comma);
-    }
+    $return: append($return, unquote('[type="#{$type}"]'), comma);
   }
+
   @return $return;
 }

@@ -97,32 +97,12 @@ $input-number-spinners: true !default;
 }
 
 @mixin foundation-form-text {
-  #{text-inputs(all, 'input')} {
+  // Text inputs
+  #{text-inputs(all)},
+  textarea {
     @include form-element;
-
     -webkit-appearance: none;
     -moz-appearance: none;
-  }
-
-  // Reset styles on button-like inputs
-  input[type="submit"],
-  input[type="button"] {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    border-radius: 0;
-  }
-
-  // Number input styles
-  input[type='number'] {
-    @if not($input-number-spinners) {
-      -moz-appearance: textfield;
-
-      input[type='number']::-webkit-inner-spin-button,
-      input[type='number']::-webkit-outer-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-      }
-    }
   }
 
   // Text areas
@@ -131,6 +111,27 @@ $input-number-spinners: true !default;
 
     &[rows] {
       height: auto;
+    }
+  }
+
+  // Reset styles on button-like inputs
+  [type="submit"],
+  [type="button"] {
+    border-radius: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+
+  // Number input styles
+  [type='number'] {
+    @if not($input-number-spinners) {
+      -moz-appearance: textfield;
+
+      [type='number']::-webkit-inner-spin-button,
+      [type='number']::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
     }
   }
 }
