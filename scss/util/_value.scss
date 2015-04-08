@@ -157,6 +157,15 @@
   }
 }
 
+/// Calculates x^y, where x is `$base` and y is `$power`.
+/// @access private
+/// @param {Number} $base - Base number (x).
+/// @param {Number} $power - Exponent (y).
+@function pow($base, $power) {
+  @if $power == 0 { @return 1; }
+  @return $base * pow($base, $power - 1);
+}
+
 /// Given a user-defined list of keywords and a list of possible keywords, find the ones that were passed in.
 ///
 /// @param {list} $opts - List of values to find keywords in.
