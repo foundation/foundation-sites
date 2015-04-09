@@ -47,3 +47,15 @@ $foundation-version: '6.0.0-alpha';
 .foundation-version {
   font-family: "#{$foundation-version}";
 }
+
+@mixin foundation-everything {
+  @include foundation-global-styles;
+  @include foundation-grid-classes;
+  @include foundation-utilities;
+  @include foundation-flex-grid-classes;
+  @include foundation-forms;
+  @include foundation-typography;
+  @include foundation-visibility-classes;
+  @include foundation-close-button;
+  @include foundation-media-object;
+}

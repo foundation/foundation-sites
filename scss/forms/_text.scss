@@ -73,9 +73,7 @@ $input-number-spinners: true !default;
   border-radius: $input-radius;
 
   @if hasvalue($input-transition) {
-    &, &:focus {
-      transition: $input-transition;
-    }
+    transition: $input-transition;
   }
 
   // Focus state
@@ -84,15 +82,10 @@ $input-number-spinners: true !default;
     background: $input-background-focus;
     outline: none;
     box-shadow: $input-shadow-focus;
-  }
 
-  // Disabled state
-  &:disabled,
-  &[disabled],
-  &[readonly],
-  fieldset[disabled] & {
-    background-color: $input-background-disabled;
-    cursor: $input-cursor-disabled;
+    @if hasvalue($input-transition) {
+      transition: $input-transition;
+    }
   }
 }
 
@@ -111,6 +104,16 @@ $input-number-spinners: true !default;
 
     &[rows] {
       height: auto;
+    }
+  }
+
+  // Disabled/readonly state
+  input,
+  textarea {
+    &:disabled,
+    &[readonly] {
+      background-color: $input-background-disabled;
+      cursor: $input-cursor-disabled;
     }
   }
 

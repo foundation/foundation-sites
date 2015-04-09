@@ -1,33 +1,33 @@
-// Default font size for lead paragraphs.
-// @type Number
+/// Default font size for lead paragraphs.
+/// @type Number
 $lead-font-size: $global-font-size * 1.25 !default;
 
-// Default line height for lead paragraphs.
-// @type String
+/// Default line height for lead paragraphs.
+/// @type String
 $lead-lineheight: 1.6 !default;
 
-// Default line height for subheaders.
-// @type Number
+/// Default line height for subheaders.
+/// @type Number
 $subheader-lineheight: 1.4 !default;
 
-// Default font color for subheaders.
-// @type Color
+/// Default font color for subheaders.
+/// @type Color
 $subheader-color: scale-color($header-color, $lightness: 35%) !default;
 
-// Default font weight for subheaders.
-// @type String
+/// Default font weight for subheaders.
+/// @type String
 $subheader-font-weight: $global-weight-normal !default;
 
-// Default top margin for subhheaders.
-// @type Number
+/// Default top margin for subhheaders.
+/// @type Number
 $subheader-margin-top: .2rem !default;
 
-// Default bottom margin for subheaders.
-// @type Number
+/// Default bottom margin for subheaders.
+/// @type Number
 $subheader-margin-bottom: .5rem !default;
 
-// Default font size for statistic numbers.
-// @type Number
+/// Default font size for statistic numbers.
+/// @type Number
 $stat-font-size: 2.5rem !default;
 
 @mixin foundation-typography-helpers {

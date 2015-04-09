@@ -51,7 +51,7 @@
   $columns: $grid-column-count,
   $gutter: $grid-column-gutter
 ) {
-  @if ($columns < $grid-column-count) {
+  @if ($columns <= $grid-column-count) {
     @include grid-column-size($columns);
   }
   float: left;

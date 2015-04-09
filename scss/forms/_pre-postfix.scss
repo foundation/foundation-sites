@@ -42,7 +42,7 @@ $input-prefix-border: 1px solid #ccc;
     }
   }
 
-  input.input-group-field {
+  .input-group-field {
     @extend %input-group-child;
   }
 
