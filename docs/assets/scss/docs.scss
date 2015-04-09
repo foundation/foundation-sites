@@ -1,6 +1,15 @@
 @import "foundation";
+@import "code";
 
 @include foundation-everything;
+
+.docs-site-title,
+.docs-page-title,
+.docs-page-lead,
+.docs-header,
+.docs-menu {
+  font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 
 .docs-site-title {
   font-size: 1rem;

@@ -1,6 +1,6 @@
-<h1>{{ title }}</h1>
+<h1 class="docs-page-title">{{ title }}</h1>
 
-<p class="lead">{{ description }}</p>
+<p class="lead docs-page-lead">{{ description }}</p>
 
 {{ docs }}
 
@@ -10,11 +10,11 @@
 <hr>
 
 <section>
-  <h2>Sass Reference</h2>
+  <h2 class="docs-header">Sass Reference</h2>
 
   {{#if sass.variable}}
   <section>
-    <h3>Variables</h3>
+    <h3 class="docs-header">Variables</h3>
 
     <p>The default styles of {{ title }} can be customized using these Sass variables in your project's <a href="#">settings file</a>.</p>
 
@@ -43,13 +43,13 @@
 
   {{#if sass.mixin}}
   <section>
-    <h3>Mixins</h3>
+    <h3 class="docs-header">Mixins</h3>
 
     <p>We use these mixins to build the final CSS output of this component. You can use the mixins yourself to build your own class structure out of our components.</p>
 
     {{#each sass.mixin}}
     <section>
-      <h4>{{this.context.name}}</h4>
+      <h4 class="docs-header">{{this.context.name}}</h4>
 
       <div class="docs-code">
         <pre><code>{{writeMixin this}}</code></pre>
@@ -82,11 +82,11 @@
 
   {{#if sass.function}}
   <section>
-    <h3>Functions</h3>
+    <h3 class="docs-header">Functions</h3>
 
     {{#each sass.function}}
     <section>
-      <h4>{{this.context.name}}</h4>
+      <h4 class="docs-header">{{this.context.name}}</h4>
 
       <div class="docs-code">
         <pre><code>{{writeFunction this}}</code></pre>
