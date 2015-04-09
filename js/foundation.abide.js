@@ -158,7 +158,18 @@
       // validate radio button
     },
     validateCheckbox: function(el) {
-      // validate checkbox
+      var self = this;
+      if (self.requiredCheck(el)) {
+        if ($(el).is(':checked')) {
+          return true;
+        }
+      }
+      else if ($(el).attr('disabled')) {
+        return true;
+      }
+      else {
+        return false;
+      }
     },
     matchPattern: function(val, pattern) {
 
