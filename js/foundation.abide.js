@@ -147,11 +147,18 @@
           // maybe have a different way of parsing this bc people might use type
           pattern = $(el).attr('pattern');
 
-      if (inputText.match(patternLib[pattern])) {
+      // if there's no value, then return true
+      // since required check has already been done
+      if (inputText.length === 0) {
         return true;
       }
       else {
-        return false;
+        if (inputText.match(patternLib[pattern])) {
+          return true;
+        }
+        else {
+          return false;
+        } 
       }
     },
     validateRadio: function(el) {
