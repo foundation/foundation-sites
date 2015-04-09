@@ -34,6 +34,7 @@
     width: 2rem;
     font-size: 2rem;
     top: 0.4rem;
+    margin-right: -0.1rem;
 
     &::before {
       font-family: "foundation-icons";
@@ -44,6 +45,18 @@
     &:hover,
     .docs-header:hover & {
       display: block;
+    }
+
+    h3 > & {
+      font-size: 1.6rem;
+      top: 0.25rem;
+      margin-right: -0.3rem;
+    }
+
+    h4 > & {
+      font-size: 1.6rem;
+      top: 0.25rem;
+      margin-right: -0.3rem;
     }
   }
 

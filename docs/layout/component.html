@@ -10,11 +10,17 @@
 <hr>
 
 <section>
-  <h2 class="docs-header">Sass Reference</h2>
+  <h2 class="docs-header">
+    {{anchor 'Sass Reference'}}
+    Sass Reference
+  </h2>
 
   {{#if sass.variable}}
   <section>
-    <h3 class="docs-header">Variables</h3>
+    <h3 class="docs-header">
+      {{anchor 'Variables'}}
+      Variables
+    </h3>
 
     <p>The default styles of {{ title }} can be customized using these Sass variables in your project's <a href="#">settings file</a>.</p>
 
@@ -43,13 +49,19 @@
 
   {{#if sass.mixin}}
   <section>
-    <h3 class="docs-header">Mixins</h3>
+    <h3 class="docs-header">
+      {{anchor 'Mixins'}}
+      Mixins
+    </h3>
 
     <p>We use these mixins to build the final CSS output of this component. You can use the mixins yourself to build your own class structure out of our components.</p>
 
     {{#each sass.mixin}}
     <section>
-      <h4 class="docs-header">{{this.context.name}}</h4>
+      <h4 class="docs-header">
+        {{anchor this.context.name}}
+        {{this.context.name}}
+      </h4>
 
       <div class="docs-code">
         <pre><code>{{writeMixin this}}</code></pre>
@@ -82,11 +94,17 @@
 
   {{#if sass.function}}
   <section>
-    <h3 class="docs-header">Functions</h3>
+    <h3 class="docs-header">
+      {{anchor 'Functions'}}
+      Functions
+    </h3>
 
     {{#each sass.function}}
     <section>
-      <h4 class="docs-header">{{this.context.name}}</h4>
+      <h4 class="docs-header">
+        {{anchor this.context.name}}
+        {{this.context.name}}
+      </h4>
 
       <div class="docs-code">
         <pre><code>{{writeFunction this}}</code></pre>
@@ -112,12 +130,19 @@
   </section>
   {{/if}}
 
+  {{#if js}}
+  <hr>
+  {{/if}}
+
 </section>
 {{/if}}
 
 {{#if js}}
 <section>
-  <h2>JavaScript Reference</h2>
+  <h2>
+    {{anchor 'JavaScript Reference'}}
+    JavaScript Reference
+  </h2>
 
   {{#each js.class}}
   <section>
@@ -150,7 +175,10 @@
 
   {{#if js.member}}
   <section>
-    <h3>Plugin Options</h3>
+    <h3>
+      {{anchor 'Plugin Options'}}
+      Plugin Options
+    </h3>
     <p>Use these options to customize an instance of {{title}}. Plugin options can be set as individual data attributes, one combined <code>data-options</code> attribute, or as an object passed to the plugin's constructor. <a href="#">Learn more about how JavaScript plugins are initialized.</a></p>
     <table class="docs-variable-table">
       <tr><th>Name</th><th>Description</th><th>Example</th></tr>
@@ -169,7 +197,10 @@
 
   {{#if js.event}}
   <section>
-    <h3>Events</h3>
+    <h3>
+      {{anchor 'Events'}}
+      Events
+    </h3>
     <p>These events will fire from any element with a {{title}} plugin attached.</p>
     <table class="docs-variable-table">
       <tr><th>Name</th><th>Description</th></tr>
@@ -187,7 +218,10 @@
 
   {{#if js.function}}
   <section>
-    <h3>Functions</h3>
+    <h3>
+      {{anchor 'Functions'}}
+      Functions
+    </h3>
 
     {{#each js.function}}
     <section>
