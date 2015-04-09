@@ -1,23 +1,29 @@
-# [Foundation](http://foundation.zurb.com)
+# [Foundation for Sites](http://foundation.zurb.com)
 
 This is the supremely in-development version of Foundation for Sites 6.0.
 
 ```bash
 git clone https://github.com/zurb/foundation-sites-6.git
 cd foundation-sites-6
-npm install
+npm i
 gulp
 ```
 
 ## Folder structure
 
-- `dist`: compiled HTML, CSS, and JavaScript.
-- `docs`: some very empty test pages.
-- `docs_old`: the Foundation 5 documentation.
-- `js`: the Foundation 5 JavaScript.
+- `config/`: configuration files for our linters.
+- `dist/`: compiled HTML, CSS, and JavaScript.
+- `docs/`: documentation source.
+  - `layouts/default.html`: base HTML template for every docs page.
+  - `layouts/component.html`: Handlebars template for component documentation.
+  - `pages/*.html`: basic documentation pages.
+  - `pages/*.md`: fancy documentation pages for components, which are parsed through [Supercollider](https://github.com/gakimball/supercollider).
+  - `partials/`: Handlebars partials go here.
+  - `assets/`: docs-specific images, styles, and scripts go here.
+- `js/`: the Foundation 5 JavaScript.
   - New components are inside this folder.
-  - Old components are in `js/foundation`.
-- `scss`: the Sass.
+  - Old components are in `js/foundation/`.
+- `scss/`: the Sass.
   - `scss/components`: new UI components go here.
   - `scss/components_old`: Foundation 5 components stay here.
   - `scss/forms`: form styles.
@@ -26,4 +32,5 @@ gulp
   - `scss/util`: helper functions and mixins.
   - `scss/vendor`: third-party libraries.
   - `_global.scss`: global variables and styles.
-- `spec`: the Foundaion 5 unit tests.
+- `docs_old/`: Foundation 5 documentation.
+- `spec/`: Foundaion 5 unit tests.
