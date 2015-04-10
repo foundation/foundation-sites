@@ -142,6 +142,7 @@ $icon-bar-disabled-cursor: $cursor-disabled-value !default;
 
       & + label {
         margin-top: .0625rem;
+        font-size: $font-size;
       }
     }
 
@@ -238,6 +239,107 @@ $icon-bar-disabled-cursor: $cursor-disabled-value !default;
     @include icon-bar-base();
     @include icon-bar-size($padding, $font-size, $icon-size, $image-width, $image-height);
     @include icon-bar-style($bar-bg, $bar-font-color, $bar-font-color-hover, $bar-hover-color, $bar-icon-color, $bar-icon-color-hover, $bar-active-color, $base-style, $disabled);
+
+  // Counts
+
+  &.two-up {
+    .item { width: 50%; }
+    &.vertical .item, &.small-vertical .item { width: auto; }
+    &.medium-vertical .item {
+      @media #{$medium-up} {
+        width: auto;
+      }
+    }
+    &.large-vertical .item {
+      @media #{$large-up} {
+        width: auto;
+      }
+    }
+  }
+  &.three-up {
+    .item { width: 33.3333%; }
+    &.vertical .item, &.small-vertical .item { width: auto; }
+    &.medium-vertical .item {
+      @media #{$medium-up} {
+        width: auto;
+      }
+    }
+    &.large-vertical .item {
+      @media #{$large-up} {
+        width: auto;
+      }
+    }
+  }
+  &.four-up {
+    .item { width: 25%; }
+    &.vertical .item, &.small-vertical .item { width: auto; }
+    &.medium-vertical .item {
+      @media #{$medium-up} {
+        width: auto;
+      }
+    }
+    &.large-vertical .item {
+      @media #{$large-up} {
+        width: auto;
+      }
+    }
+  }
+  &.five-up {
+    .item { width: 20%; }
+    &.vertical .item, &.small-vertical .item { width: auto; }
+    &.medium-vertical .item {
+      @media #{$medium-up} {
+        width: auto;
+      }
+    }
+    &.large-vertical .item {
+      @media #{$large-up} {
+        width: auto;
+      }
+    }
+  }
+  &.six-up {
+    .item { width: 16.66667%; }
+    &.vertical .item, &.small-vertical .item { width: auto; }
+    &.medium-vertical .item {
+      @media #{$medium-up} {
+        width: auto;
+      }
+    }
+    &.large-vertical .item {
+      @media #{$large-up} {
+        width: auto;
+      }
+    }
+  }
+  &.seven-up {
+    .item { width: 14.28571%; }
+    &.vertical .item, &.small-vertical .item { width: auto; }
+    &.medium-vertical .item {
+      @media #{$medium-up} {
+            width: auto;
+      }
+    }
+    &.large-vertical .item {
+      @media #{$large-up} {
+         width: auto;
+      }
+    }
+  }
+  &.eight-up {
+    .item { width: 12.5%; }
+    &.vertical .item, &.small-vertical .item { width: auto; }
+    &.medium-vertical .item {
+      @media #{$medium-up} {
+            width: auto;
+      }
+    }
+    &.large-vertical .item {
+      @media #{$large-up} {
+         width: auto;
+      }
+    }
+  }
 }
 
 @include exports("icon-bar") {
