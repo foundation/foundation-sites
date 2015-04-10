@@ -102,6 +102,7 @@
             //     self.validate([this], e);
             //   }.bind(this), settings.timeout);
             // }
+            self.validateForm(self.$element);
           });
 
     },
@@ -114,19 +115,45 @@
 
     },
     requiredCheck: function(el) {
-      if ($(el).attr('required') && !$(el).val()) {
-        // requirement check does not pass
-        return false;
-      } else {
-        return true;
+      switch (el.type) {
+        case 'text':
+          if ($(el).attr('required') && !$(el).val()) {
+            // requirement check does not pass
+            return false;
+          } else {
+            return true;
+          }
+          break;
+        case 'checkbox':
+          if ($(el).attr('required') && !$(el).is(':checked')) {
+            return false;
+          } else {
+            return true;
+          }
+          break;
+        case 'radio':
+          if ($(el).attr('required') && !$(el).is(':checked')) {
+            return false;
+          } else {
+            return true;
+          }
+          break;
+        default: 
+          if ($(el).attr('required') && $(el).is(':empty')) {
+            return false;
+          } else {
+            return true;
+          }
       }
     },
     validateForm: function($form) {
       var self = this,
           textInput = $form.find('input[type="text"]'),
-          radioInput = $form.find('input[type="radio"]'),
           checkInput = $form.find('input[type="checkbox"]');
 
+      var radioGroups = self.findRadioGroups($form);
+
+      // obviously find a better way to do this
       $(textInput).each(function() {
         var label = $(this).closest('label');
         if (!self.requiredCheck(this) || !self.validateText(this)) {
@@ -138,6 +165,21 @@
           }
         }
       })
+      $(checkInput).each(function() {
+        var label = $(this).next('label');
+
+        if (!self.requiredCheck(this)) {
+          label.addClass(self.options.errorClass);
+        }
+        else {
+          if (label.hasClass(self.options.errorClass)) {
+            label.removeClass(self.options.errorClass);
+          }
+        }
+      })
+      for (var group in radioGroups) {
+        self.validateRadio(group);
+      }
     },
     validateText: function(el) {
       var self = this,
@@ -161,21 +203,36 @@
         } 
       }
     },
-    validateRadio: function(el) {
-      // validate radio button
-    },
-    validateCheckbox: function(el) {
-      var self = this;
-      if (self.requiredCheck(el)) {
-        if ($(el).is(':checked')) {
-          return true;
+    validateRadio: function(group) {
+      var self = this,
+          counter = group.length,
+          labels = $(':radio[name="' + group + '"]').siblings('label');
+      // make counter for number of radio buttons in a group
+      // match up required check
+      $(':radio[name="' + group + '"]').each(function() {
+        if (!self.requiredCheck(this)) {
+          counter--;
         }
-      }
-      else if ($(el).attr('disabled')) {
-        return true;
+      });
+
+      if (counter > 0) {
+        $(labels).each(function() {
+          $(this).addClass(self.options.errorClass);
+        });
       }
       else {
-        return false;
+        $(labels).each(function() {
+          if ($(this).hasClass(self.options.errorClass)) {
+            $(this).removeClass(self.options.errorClass);
+          }
+        });
+      }
+    },
+    // may not need this method?
+    validateCheckbox: function(el) {
+      var self = this;
+      if ($(el).attr('disabled')) {
+        return true;
       }
     },
     matchPattern: function(val, pattern) {
@@ -183,6 +240,17 @@
     },
     matchValidation: function(val, validation) {
 
+    },
+    findRadioGroups: function($form) {
+      var self = this,
+          radioGroups = {},
+          radioSearch = $('input[type="radio"]', $form);
+
+      radioSearch.each(function(){
+        radioGroups[this.name] = $(':radio[name="'+this.name+'"]').length;
+      });
+
+      return radioGroups;
     },
     resetForm: function(form) {
       // reset form
