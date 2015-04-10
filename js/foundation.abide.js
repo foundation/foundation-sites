@@ -205,13 +205,19 @@
     },
     validateRadio: function(group) {
       var self = this,
-          counter = group.length,
-          labels = $(':radio[name="' + group + '"]').siblings('label');
-      // make counter for number of radio buttons in a group
-      // match up required check
+          labels = $(':radio[name="' + group + '"]').siblings('label'),
+          counter = 0;
+      // go through each radio button
       $(':radio[name="' + group + '"]').each(function() {
+        // put them through the required checkpoint
         if (!self.requiredCheck(this)) {
-          counter--;
+          // if at least one doesn't pass, add a tally to the counter
+          counter++;
+        }
+        // if at least one is checked
+        // reset the counter
+        if ($(this).is(':checked')) {
+          counter = 0;
         }
       });
 
