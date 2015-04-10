@@ -103,6 +103,13 @@
 
 .docs-menu {
   margin-top: 0.5rem;
+
+  li small {
+    color: #999;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 60%;
+  }
 }
   .docs-menu-title {
     text-transform: uppercase;
