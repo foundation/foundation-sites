@@ -145,6 +145,14 @@
   }
 }
 
+.docs-example-modal {
+  display: block;
+  position: static;
+  width: 100%;
+  max-width: none;
+  margin-bottom: 1rem;
+}
+
 .row.display-end {
   background: #fff;
   font-size: 11px;

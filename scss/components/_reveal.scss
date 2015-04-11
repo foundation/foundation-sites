@@ -62,7 +62,9 @@ $reveal-overlay-background: rgba(#000, 0.45) !default;
   z-index: $reveal-zindex + 1;
   width: 100%;
   min-height: 100vh;
+  padding: $reveal-padding;
   border: $reveal-border;
+  box-shadow: $reveal-shadow;
 
   @include breakpoint(medium) {
     min-height: 0;
