@@ -65,7 +65,11 @@ $f-dropdown-radius: $global-radius !default;
 // $max-width - Default: $f-dropdown-max-width || 200px.
 @mixin dropdown-container($content:list, $triangle:true, $max-width:$f-dropdown-max-width) {
   display: none;
-  left: -9999px;
+  @if $text-direction == ltr {
+    left: -9999px;
+  } @else {
+    right: -9999px;
+  }
   list-style: $f-dropdown-list-style;
   margin-#{$default-float}: 0;
   position: absolute;
