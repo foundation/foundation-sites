@@ -1,17 +1,3 @@
-/*doc
----
-title: Exports
-name: exports
-category: exports
----
-
-The exporter module ensures that the CSS classes for components aren't output twice, if the module is imported more than once using `@import`.
-*/
-
-////
-/// @group exports
-////
-
 /// A list of components that output CSS. Set a component's value to `true` to include the built-in classes for that module in your finished CSS. Even if a component's value is set to `false`, you can still use its mixins.
 /// @type Map
 $exports-list: () !default;

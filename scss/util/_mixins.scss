@@ -1,17 +1,3 @@
-/*doc
----
-title: Mixins
-name: mixins
-category: mixins
----
-
-Mixins be swell.
-*/
-
-////
-/// @group mixins
-////
-
 /// Creates a CSS triangle, which can be used for dropdown arrows, popup tails, and more. Use this mixin inside a `&::before` or `&::after` selector, to attach the triangle to an existing element.
 ///
 /// @param {number} $triangle-size - Width of the triangle.

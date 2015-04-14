@@ -1,20 +1,3 @@
-/*doc
----
-title: Close Button
-name: close-button
-category: media
----
-
-A close button can close things.
-
-```html
-<a href="#" class="close-button">&times;</a>
-*/
-
-////
-/// @group close-button
-////
-
 /// Default position of the close button. The first value should be `right` or `left`, and the second value should be `top` or `bottom`.
 /// @type List
 $closebutton-position: right top !default;
