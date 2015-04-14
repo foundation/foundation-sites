@@ -71,6 +71,9 @@ $button-opacity-disabled: 0.5 !default;
   border-radius: $button-radius;
 }
 
+/// Sets the size of a button.
+/// @param {Keyword} $size [medium] - Size of the button. This should be a named size from the `$button-sizes` variable in your settings file.
+/// @param {Boolean} $expand [false] - Set to `true` to make the button full-width.
 @mixin button-size($size: medium, $expand: false) {
   $size: $button-font-size * map-get($button-sizes, $size);
   font-size: $size;
@@ -80,6 +83,8 @@ $button-opacity-disabled: 0.5 !default;
   }
 }
 
+/// Expands a button to make it full-width.
+/// @param {Boolean} $expand [true] - Set to `true` to enable the expand behavior. Set to `false` to reverse this behavior.
 @mixin button-expand($expand: true) {
   @if $expand {
     display: block;
@@ -94,6 +99,13 @@ $button-opacity-disabled: 0.5 !default;
   }
 }
 
+/// Sets the visual style of a button.
+/// @param {Color} $background [$button-background] - Background color of the button.
+/// @param {Color} $background-hover [$button-background-hover] - Background color of the button on hover. Set to `auto` to have the mixin automatically generate a hover color.
+/// @param {Border} $border [$button-border] - Border around the button.
+/// @param {Color} $color [$button-font-color] - Text color of the button. Set to `auto` to automatically generate a color based on the background color.
+/// @param {Keyword} $style [solid] - Set to `hollow` to create a hollow button. The color defined in `$background` will be used as the primary color of the button.
+/// @param {Boolean} $btngroup [false] - Set to `true` if the element is being used as a button inside a button group.
 @mixin button-style(
   $background: $button-background,
   $background-hover: $button-background-hover,
@@ -102,8 +114,6 @@ $button-opacity-disabled: 0.5 !default;
   $style: $button-fill,
   $btngroup: false
   ){
-
-  border: $border;
 
   @if $style == hollow {
     border: 1px solid $background;
@@ -119,6 +129,10 @@ $button-opacity-disabled: 0.5 !default;
   
   // Solid fill is the default
   @else {
+    @if hasvalue($border) {
+      border: $border;
+    }
+
     @if $color == auto {
       $color: isitlight($background);
     }
@@ -149,12 +163,39 @@ $button-opacity-disabled: 0.5 !default;
   // }
 }
 
-@mixin button-disabled() {
+/// Adds disabled styles to a button by fading the element, reseting the cursor, and disabling pointer events.
+@mixin button-disabled {
   opacity: $button-opacity-disabled;
   cursor: default;
   pointer-events: none;
 }
 
+/// Adds a dropdown arrow to a button.
+/// @param {Number} $size [0.4em] - Size of the arrow. We recommend using an `em` value so the triangle scales when used inside different sizes of buttons.
+/// @param {Color} $color [white] - Color of the arrow.
+/// @param {Number} $offset [$button-padding] - Distance between the arrow and the text of the button. Defaults to whatever the right padding of a button is.
+@mixin button-dropdown(
+  $size: 0.4em,
+  $color: white,
+  $offset: get-side($button-padding, right)
+) {
+  &::after {
+    @include css-triangle($size, $color, top);
+    position: relative;
+    top: ($size / 2); // Magic number?
+    display: inline-block;
+    margin-left: get-side($button-padding, right);
+    vertical-align: middle;
+  }
+}
+
+/// Adds all styles for a button. For more granular control over styles, use the individual button mixins.
+/// @param {Keyword} $size [medium] - Size of the button. This should be a named size from the `$button-sizes` variable in your settings file.
+/// @param {Boolean} $expand [false] - Set to `true` to make the button full-width.
+/// @param {Color} $background [$button-background] - Background color of the button.
+/// @param {Color} $background-hover [$button-background-hover] - Background color of the button on hover. Set to `auto` to have the mixin automatically generate a hover color.
+/// @param {Color} $color [$button-font-color] - Text color of the button. Set to `auto` to automatically generate a color based on the background color.
+/// @param {Keyword} $style [solid] - Set to `hollow` to create a hollow button. The color defined in `$background` will be used as the primary color of the button.
 @mixin button(
   $size: medium,
   $expand: false,
@@ -178,40 +219,35 @@ $button-opacity-disabled: 0.5 !default;
   &.expand { @include button-expand; }
 
   @each $name, $color in $foundation-colors {
-    //Gotta get that default style in there.
-    @include button-style();
-
-    //Getting those fancy-pants colors.
+    // Getting those fancy-pants colors.
     &.#{$name} {
       @include button-style( 
         $background: scale-color( $color, $lightness: 25% ),
         $border: 1px solid scale-color( $color, $lightness: 25% ),
-        $background-hover: scale-color( $color, $lightness: -30% ));
+        $background-hover: scale-color( $color, $lightness: -30% )
+      );
     }
   }
   
   @if $button-fill != hollow {
-    &.hollow { @include button-style($style: hollow);
+    &.hollow {
+      @include button-style($style: hollow);
+
       @each $name, $color in $foundation-colors {
         &.#{$name} {
-         @include button-style($color, $style: hollow); 
-       }
-     }
-   }
- }
-
- &.disabled { @include button-disabled; }
-
- &.dropdown {
-  &::after {
-    $offset: strip-unit(rem-calc(2)) * 1em;
-
-    @include css-triangle(6px, white, top);
-    display: inline-block;
-    vertical-align: middle;
-    margin-left: get-side($button-padding, right);
-    position: relative;
-    top: $offset; // Magic number?
+          @include button-style($color, $style: hollow); 
+        }
+      }
+    }
   }
- }
+
+  &.disabled { @include button-disabled; }
+
+  &.dropdown { @include button-dropdown; }
+  &.dropdown.expand {
+    &::after {
+      float: right;
+      top: 0.4em; // Magic number
+    }
+  }
 }
