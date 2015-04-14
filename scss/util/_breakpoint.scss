@@ -1,3 +1,5 @@
+@import "util/map";
+
 ////
 /// @group breakpoints
 ////
@@ -18,6 +20,99 @@ $breakpoints: (
 /// @type List
 $breakpoint-classes: (small medium large) !default;
 
+@function breakpoint($val: small) {
+  // Size or keyword
+  $bp: nth($val, 1);
+  // Value for max-width media queries
+  $bp-max: 0;
+  // Direction of media query (up, down, or only)
+  $dir: if(length($val) > 1, nth($val, 2), up);
+  // Eventual output
+  $str: '';
+  // Is it a named media query?
+  $named: false;
+
+  // Orientation media queries have a unique syntax
+  @if $bp == 'landscape' or $bp == 'portrait' {
+    @return '(orientation: #{$bp})';
+  }
+  @else if $bp == 'retina' {
+    @return '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)';
+  }
+
+  // Try to pull a named breakpoint out of the $breakpoints map
+  @if type-of($bp) == 'string' {
+    @if map-has-key($breakpoints, $bp) {
+      @if $dir == 'only' {
+        $next-bp: map-next($breakpoints, $bp);
+
+        @if $next-bp == null {
+          $bp-max: null;
+        }
+        @else {
+          $bp-max: $next-bp - (1/16);
+        }
+      }
+
+      $bp: map-get($breakpoints, $bp);
+      $named: true;
+    }
+    @else {
+      $bp: 0;
+    }
+  }
+
+  // Pixel and unitless values are converted to rems
+  @if unit($bp) == 'px' or unit($bp) == '' {
+    $bp: rem-calc($bp);
+  }
+
+  // Finally, the value is converted to ems
+  $bp: strip-unit($bp) * 1em;
+
+  @if $bp-max {
+    $bp-max: strip-unit($bp-max) * 1em;
+  }
+
+  // Skip media query creation if the input is "0 up" or "0 down"
+  @if $bp > 0 or $dir == 'only' {
+    // "Only" ranges use the format "(min-width: n) and (max-width: n)"
+    @if $dir == 'only' {
+      @if $named == true {
+        $str: $str + '(min-width: #{$bp})';
+
+        @if $bp-max != null {
+          $str: $str + ' and (max-width: #{$bp-max})';
+        }
+      }
+      @else {
+        @warn 'Only named media queries can have an "only" range.';
+      }
+    }
+
+    // "Down" ranges use the format "(max-width: n)"
+    @else if $dir == 'down' {
+      $max: 0;
+
+      // For named breakpoints, subtract the breakpoint value by one "pixel", or 1/16em.
+      @if $named {
+        $max: $bp - (1/16);
+      } @else {
+        $max: $bp;
+      }
+
+      $str: $str + '(max-width: #{$max})';
+    }
+
+    // "Up" ranges use the format "(min-width: n)"
+    @else if strip-unit($bp) > 0 {
+      $str: $str + '(min-width: #{$bp})';
+    }
+  }
+
+  @return $str;
+}
+
 /// Wraps a media query around the content you put inside the mixin. This mixin accepts a number of values:
 ///  - If a string is passed, the mixin will look for it in the `$breakpoints` map, and use a media query there.
 ///  - If a pixel value is passed, it will be converted to an em value using `$rem-base`.
@@ -26,83 +121,14 @@ $breakpoint-classes: (small medium large) !default;
 /// @param {Keyword|Number} $val - Breakpoint name or px/em/rem value to process.
 /// @output If the breakpoint is "0px and larger", outputs the content. Otherwise, outputs the content wrapped in a media query.
 @mixin breakpoint($val: small) {
-  // Size or keyword
-  $bp: nth($val, 1);
-  // Value for max-width media queries
-  $bp-max: 0;
-  // Direction of media query (up, down, or only)
-  $dir: if(length($val) > 1, nth($val, 2), up);
-  // Eventual output
-  $str: 'only screen';
-  // Is it a named media query?
-  $named: false;
+  $str: breakpoint($val);
 
-  // Orientation media queries have a unique syntax
-  @if $bp == 'landscape' or $bp == 'portrait' {
-    $str: $str + ' and (orientation: #{$bp})';
-  }
-  @else if $bp == 'retina' {
-    $str: '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)';
-  }
-  @else {
-    // Try to pull a named breakpoint out of the $breakpoints map
-    @if type-of($bp) == 'string' {
-      @if map-has-key($breakpoints, $bp) {
-        @if $dir == 'only' {
-          $next-bp: map-next($breakpoints, $bp);
-          @if $next-bp == null {
-            $bp-max: null;
-          }
-          @else {
-            $bp-max: $next-bp - (1/16);
-          }
-        }
-        $bp: map-get($breakpoints, $bp);
-        $named: true;
-      }
-      @else {
-        $bp: 0;
-      }
-    }
-
-    // Pixel and unitless values are converted to rems
-    @if unit($bp) == 'px' or unit($bp) == '' {
-      $bp: rem-calc($bp);
-    }
-    // Finally, the rem value is turned into an em value
-    $bp: strip-unit($bp) * 1em;
-
-    // Skip media query creation if the input is "0 up" or "0 down"
-    @if $bp > 0 or $dir == 'only' {
-      // And lo, a media query was born
-      @if $dir == 'only' {
-        @if $named == true {
-          $str: $str + ' and (min-width: #{$bp})';
-          @if $bp-max != null {
-            $str: $str + ' and (max-width: #{$bp-max})';
-          }
-        } @else {
-          @warn 'Only named media queries can have an "only" range.';
-        }
-      }
-      @else if $dir == 'down' {
-        $max: $bp - (1/16);
-        $str: $str + ' and (max-width: #{$max})';
-      }
-      @else {
-        $str: $str + ' and (min-width: #{$bp})';
-      }
-    }
-  }
-
-  // Output
-  // Ranges of the format "0 up" and "0 down" don't need a media query
-  @if $bp == 0em and $dir != 'only' {
+  @if $str == '' {
     @content;
   }
-  // Everything else does
+
   @else {
-    @media #{$str} {
+    @media screen and #{$str} {
       @content;
     }
   }

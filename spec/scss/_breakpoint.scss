@@ -1,0 +1,62 @@
+@import "util/unit";
+@import "util/breakpoint";
+
+@include describe("Breakpoint") {
+  @include it("converts a named breakpoint to an em value") {
+    $medium: strip-unit(map-get($breakpoints, medium));
+
+    $actual: breakpoint(medium);
+    $expected: '(min-width: #{$medium}em)';
+
+    @include should(expect($actual), to(be($expected)));
+  }
+
+  @include it("converts a pixel or rem breakpoint to em") {
+    $expected: '(min-width: 1em)';
+
+    @include should(expect(breakpoint(16px)), to(be($expected)));
+    @include should(expect(breakpoint(1rem)), to(be($expected)));
+  }
+
+  @include it("creates an only range out of a named breakpoint") {
+    $medium: strip-unit(map-get($breakpoints, medium)) * 1em;
+    $large: strip-unit(map-get($breakpoints, large) - (1/16)) * 1em;
+
+    $actual: breakpoint(medium only);
+    $expected: '(min-width: #{$medium}) and (max-width: #{$large})';
+
+    @include should(expect($actual), to(be($expected)));
+  }
+
+  @include it("creates a down range out of a named breakpoint") {
+    $medium: strip-unit(map-get($breakpoints, medium) - (1/16)) * 1em;
+
+    $actual: breakpoint(medium down);
+    $expected: '(max-width: #{$medium})';
+
+    @include should(expect($actual), to(be($expected)));
+  }
+
+  @include it("creates a down range out of a pixel, rem or em value") {
+    $expected: '(max-width: 1em)';
+
+    @include should(expect(breakpoint(16px down)), to(be($expected)));
+    @include should(expect(breakpoint(1rem down)), to(be($expected)));
+    @include should(expect(breakpoint(1em down)), to(be($expected)));
+  }
+
+  @include it("returns an empty string for the values zero down or zero up") {
+    $expected: '';
+
+    @include should(expect(breakpoint(small down)), to(be($expected)));
+    @include should(expect(breakpoint(small up)), to(be($expected)));
+    @include should(expect(breakpoint(0 down)), to(be($expected)));
+    @include should(expect(breakpoint(0 up)), to(be($expected)));
+  }
+
+  @include it("creates special media queries for landscape, portrait, and retina") {
+    @include should(expect(breakpoint(landscape)), to(be('(orientation: landscape)')));
+    @include should(expect(breakpoint(portrait)), to(be('(orientation: portrait)')));
+    @include should(expect(breakpoint(retina)), to(be('(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)')));
+  }
+}
