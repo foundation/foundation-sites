@@ -6,18 +6,18 @@
 // - - - - - - - - - - - - - - -
 // These are styles applied to basic HTML tags, including:
 //   - Paragraphs <p>
-//   - Headings <h1>—<h6>
+//   - Bold/italics <b> <strong> <i> <em>
 //   - Small text <small>
+//   - Headings <h1>—<h6>
 //   - Anchors <a>
 //   - Dividers <hr>
-//   - Bold/italics <b> <strong> <i> <em>
-//   - Code blocks <code>
 //   - Lists <ul> <ol> <dl>
-//   - Keystrokes <kbd>
+//   - Blockquotes <blockquote>
+//   - Code blocks <code>
 //   - Abbreviations <abbr>
 //   - Acronyms <acronym>
-//   - Blockquotes <blockquote>
 //   - Citations <cite>
+//   - Keystrokes <kbd>
 
 /// Font family for header elements.
 /// @type String | List
@@ -200,7 +200,7 @@ $keystroke-radius: $global-radius !default;
 $abbr-underline: 1px dotted #333 !default;
 
 @mixin foundation-typography-base {
-  /* Typography resets */
+  // Typography resets
   div,
   dl,
   dt,
@@ -224,25 +224,6 @@ $abbr-underline: 1px dotted #333 !default;
     padding: 0;
   }
 
-  // Links
-  a {
-    color: $anchor-color;
-    text-decoration: $anchor-text-decoration;
-    line-height: inherit;
-
-    &:hover,
-    &:focus {
-      color: $anchor-color-hover;
-      @if $anchor-text-decoration-hover != $anchor-text-decoration {
-        text-decoration: $anchor-text-decoration-hover;
-      }
-    }
-
-    img {
-      border: 0;
-    }
-  }
-
   // Paragraphs
   p {
     font-size: inherit;
@@ -251,8 +232,33 @@ $abbr-underline: 1px dotted #333 !default;
     text-rendering: $paragraph-text-rendering;
   }
 
+  // Emphasized text
+  em,
+  i {
+    font-style: italic;
+    line-height: inherit;
+  }
+
+  // Strong text
+  strong,
+  b {
+    font-weight: $global-weight-bold;
+    line-height: inherit;
+  }
+
+  // Small text
+  small {
+    font-size: $small-font-size;
+    line-height: inherit;
+  }
+
   // Headings
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: $header-font-family;
     font-weight: $header-font-weight;
     font-style: $header-font-style;
@@ -276,6 +282,25 @@ $abbr-underline: 1px dotted #333 !default;
   h5 { @include font-size(1); }
   h6 { @include font-size(0); }
 
+  // Links
+  a {
+    color: $anchor-color;
+    text-decoration: $anchor-text-decoration;
+    line-height: inherit;
+
+    &:hover,
+    &:focus {
+      color: $anchor-color-hover;
+      @if $anchor-text-decoration-hover != $anchor-text-decoration {
+        text-decoration: $anchor-text-decoration-hover;
+      }
+    }
+
+    img {
+      border: 0;
+    }
+  }
+
   // Horizontal rule
   hr {
     height: 0;
@@ -285,36 +310,6 @@ $abbr-underline: 1px dotted #333 !default;
     clear: both;
   }
 
-  // Emphasized text
-  em,
-  i {
-    font-style: italic;
-    line-height: inherit;
-  }
-
-  // Strong text
-  strong,
-  b {
-    font-weight: $global-weight-bold;
-    line-height: inherit;
-  }
-
-  // Small text
-  small {
-    font-size: $small-font-size;
-    line-height: inherit;
-  }
-
-  // Code
-  code {
-    font-family: $code-font-family;
-    font-weight: $code-font-weight;
-    color: $code-color;
-    background-color: $code-background;
-    border: $code-border;
-    padding: $code-padding;
-  }
-
   // Lists
   ul,
   ol,
@@ -322,6 +317,9 @@ $abbr-underline: 1px dotted #333 !default;
     line-height: $list-lineheight;
     margin-bottom: $list-margin-bottom;
     list-style-position: $list-style-position;
+  }
+  li {
+    font-size: inherit;
   }
 
   // Unordered lists
@@ -337,12 +335,9 @@ $abbr-underline: 1px dotted #333 !default;
 
   // Nested unordered/ordered lists
   ul, ol {
-    li {
-      ul,
-      ol {
-        margin-#{$default-float}: $list-nested-side-margin;
-        margin-bottom: 0;
-      }
+    & & {
+      margin-#{$default-float}: $list-nested-side-margin;
+      margin-bottom: 0;
     }
   }
 
@@ -354,23 +349,6 @@ $abbr-underline: 1px dotted #333 !default;
       margin-bottom: $defnlist-term-margin-bottom;
       font-weight: $defnlist-term-weight;
     }
-  }
-
-  // Keystrokes
-  kbd {
-    padding: $keystroke-padding;
-    margin: 0;
-    background-color: $keystroke-background;
-    color: $keystroke-color;
-    font-family: $keystroke-font;
-  }
-
-  // Abbreviations and acronyms
-  abbr,
-  acronym {
-    color: $body-font-color;
-    cursor: $cursor-help-value;
-    border-bottom: $abbr-underline;
   }
 
   // Blockquotes
@@ -394,5 +372,32 @@ $abbr-underline: 1px dotted #333 !default;
     &:before {
       content: '\2014 \0020';
     }
+  }
+
+  // Abbreviations and acronyms
+  abbr,
+  acronym {
+    color: $body-font-color;
+    cursor: $cursor-help-value;
+    border-bottom: $abbr-underline;
+  }
+
+  // Code
+  code {
+    font-family: $code-font-family;
+    font-weight: $code-font-weight;
+    color: $code-color;
+    background-color: $code-background;
+    border: $code-border;
+    padding: $code-padding;
+  }
+
+  // Keystrokes
+  kbd {
+    padding: $keystroke-padding;
+    margin: 0;
+    background-color: $keystroke-background;
+    color: $keystroke-color;
+    font-family: $keystroke-font;
   }
 }

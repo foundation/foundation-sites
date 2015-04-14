@@ -16,9 +16,9 @@ This is a paragraph. Paragraphs are preset with a font size, line height and spa
 
 ---
 
-## Headers
+## Heading
 
-Foundation includes styles for all of the header elements that are balanced and based on a modular scale.
+Foundation includes styles for all of the headings elements&mdash;they're balanced and sized along a modular scale.
 
 ```html_example
 <h1>h1. This is a very large header.</h1>
@@ -47,6 +47,16 @@ Links are very standard, and the [color is preset](http://www.youtube.com/watch?
 
 ```html
 <p>Links are very standard, and the <a href="http://www.youtube.com/watch?v=zT2aVoUkSDg">color is preset</a> to the Foundation primary color.</p>
+```
+
+---
+
+## Dividers
+
+Use dividers to separate sections of a page.
+
+```html_example
+<hr>
 ```
 
 ---
@@ -132,6 +142,16 @@ What's the difference between an abbreviation and an acronym? An abbreviation is
 
 ```html_example
 <p>In my dream last night, I saw <acronym title="John Ronald Reuel">J. R. R.</acronym> Tolkien and George <acronym title="Raymond Richard">R. R.</acronym> Martin hanging out on Sunset <abbr title="Boulevard">Blvd</abbr>.</p>
+```
+
+---
+
+## Code
+
+Format references to code with the `<code>` tag.
+
+```html_example
+Remember to escape angle brackets when printing HTML: <code>&lt;div&gt;</code>
 ```
 
 ---
