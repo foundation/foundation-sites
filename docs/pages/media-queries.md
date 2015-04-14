@@ -3,7 +3,7 @@ title: Media Queries
 description: CSS media queries allow us to adjust the display and orientation of content at different screen sizes.
 sass: scss/util/_breakpoint.scss
 ---
-
+ 
 ## Default Media Queries
 
 Foundation for Sites has three core breakpoint ranges.
@@ -89,6 +89,15 @@ It's also possible to pass in custom values. You can enter a pixel, rem, or em v
   @include breakpoint(320) { }
   // Converted to 40em
   @include breakpoint(40rem) { }
+}
+```
+
+The `breakpoint()` mixin accepts multiple parameters, allowing you to chain media queries. You can even mix preset breakpoints with custom ones.
+
+```scss
+.element {
+  // Create a custom range
+  @include breakpoint(medium, 1000px down) { }
 }
 ```
 

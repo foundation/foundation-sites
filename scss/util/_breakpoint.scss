@@ -21,7 +21,7 @@ $breakpoints: (
 $breakpoint-classes: (small medium large) !default;
 
 /// Generates a media query string matching the input value. Refer to the documentation for the `breakpoint()` mixin to see what the possible inputs are.
-/// @param {Keyword|Number} $val - Breakpoint name or px, rem, or em value to process.
+/// @param {Keyword|Number} $val - Breakpoint name, or px, rem, or em value to process.
 @function breakpoint($val: small) {
   // Size or keyword
   $bp: nth($val, 1);
@@ -120,17 +120,30 @@ $breakpoint-classes: (small medium large) !default;
 ///  - If a pixel value is passed, it will be converted to an em value using `$rem-base`.
 ///  - If a rem value is passed, the unit will be changed to em.
 ///  - If an em value is passed, the value will be used as-is.
-/// @param {Keyword|Number} $val - Breakpoint name or px, rem, or em value to process.
+/// Passing in additional parameters will add additional values to the media query.
+/// @param {Keyword|Number} $values... - Breakpoint name, or px, rem, or em value to process.
 /// @output If the breakpoint is "0px and larger", outputs the content. Otherwise, outputs the content wrapped in a media query.
-@mixin breakpoint($val: small) {
-  $str: breakpoint($val);
+@mixin breakpoint($values...) {
+  $str: '';
 
+  // Iterate through each parameter given
+  @each $value in $values {
+    $newBp: breakpoint($value);
+
+    // Only append to the media query if the function returned a value
+    @if $newBp != '' {
+      $str: $str + ' and ' + $newBp;
+    }
+  }
+
+  // If $str is still an empty string, no media query is needed
   @if $str == '' {
     @content;
   }
 
+  // Otherwise, wrap the content in a media query
   @else {
-    @media screen and #{$str} {
+    @media screen#{$str} {
       @content;
     }
   }
