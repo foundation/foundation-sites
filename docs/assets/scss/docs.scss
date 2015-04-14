@@ -178,3 +178,25 @@ a > code {
   padding: 0;
   color: $primary-color;
 }
+
+#docs-flex-grid {
+  .flex-row {
+    background: #f9f9f9;
+    font-size: 11px;
+    margin-bottom: 10px;
+    line-height: 2rem;
+    border: solid 1px #c6c6c6;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 1.5rem;
+
+    .flex-column {
+      &:nth-child(odd) {
+        background: #eee;
+      }
+      &:nth-child(even) {
+        background: #ddd;
+      }
+    }
+  }
+}

@@ -6,9 +6,11 @@ sass: scss/grid/_flex-grid.scss
 
 The flex grid works very similarly to the standard float grid, but includes a number of useful features only possible with flexbox.
 
+---
+
 ## Browser support
 
-The flex grid is [only supported](http://caniuse.com/#feat=flexbox) in Chrome, Firefox, Safari 6+, IE10+, and iOS 7+. There is a [flexbox polyfill](https://github.com/doctyper/flexie) that adds support for older browsers, but we haven't tested it with this grid, so it isn't guaranteed to work. We recommend only using the flex grid on projects that only need cutting-edge browser support.
+The flex grid is only supported in Chrome, Firefox, Safari 6+, IE10+, and iOS 7+. ([View flexbox browser support.](http://caniuse.com/#feat=flexbox)) There is a [flexbox polyfill](https://github.com/doctyper/flexie) that adds support for older browsers, but we haven't tested it with this grid, so it isn't guaranteed to work. We recommend only using the flex grid on projects that can live with purely cutting-edge browser support.
 
 ---
 
@@ -118,7 +120,7 @@ Columns within a row will be sorted by their `order` property. Lower numbers are
 We have a set of classes that make it easy to setup source ordering in your HTML. They also come in responsive flavors, allowing you to reorder a grid on different screen sizes.
 
 ```html_example
-<div class="flex-grid">
+<div class="flex-row">
   <div class="flex-column order-2 medium-order-1">
     This column will come second on small, and first on medium and larger.
   </div>
@@ -209,7 +211,7 @@ Applying a vertical alignment class to the flex row will affect every column dir
 
 ```html_example
 <div class="flex-row align-stretch">
-  <div class="flex-column">This colums have the same height.</div>
+  <div class="flex-column">These colums have the same height.</div>
   <div class="flex-column">That's right, equal-height columns are possible with Flexbox too! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, tempora. Impedit eius officia possimus laudantium? Molestiae eaque, sapiente atque doloremque placeat! In sint, fugiat saepe sunt dolore tempore amet cupiditate.</div>
 </div>
 ```
