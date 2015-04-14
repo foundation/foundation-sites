@@ -79,7 +79,7 @@ The behavior of the media query can be changed by adding the keyword `down` or `
 }
 ```
 
-It's also possible to pass in custom values. You can enter a pixel, rem, or em value&mdsh;all values are converted to em at the end.
+It's also possible to pass in custom values. You can enter a pixel, rem, or em value&mdash;all values are converted to em at the end.
 
 ```scss
 .element {

@@ -19,7 +19,9 @@
     url
     color;
 
-  @if hasvalue($types) { $types: $all-types; }
+  @if not(hasvalue($types)) {
+    $types: $all-types;
+  }
 
   @each $type in $types {
     $return: append($return, unquote('[type="#{$type}"]'), comma);

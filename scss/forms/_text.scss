@@ -91,7 +91,7 @@ $input-number-spinners: true !default;
 
 @mixin foundation-form-text {
   // Text inputs
-  #{text-inputs(all)},
+  #{text-inputs()},
   textarea {
     @include form-element;
     -webkit-appearance: none;

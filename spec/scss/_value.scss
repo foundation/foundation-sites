@@ -8,18 +8,20 @@
     $list:    hasvalue(1px solid black);
     
     @include should(expect($boolean), to(be(true)));
-    @include should(expect($number), to(be(true)));
-    @include should(expect($color), to(be(true)));
-    @include should(expect($list), to(be(true)));
+    @include should(expect($number),  to(be(true)));
+    @include should(expect($color),   to(be(true)));
+    @include should(expect($list),    to(be(true)));
   }
   @include it("returns false if the value is falsey") {
-    $zero:  hasvalue(0px);
-    $null:  hasvalue(null);
-    $none:  hasvalue(none);
+    $zero:   hasvalue(0px);
+    $null:   hasvalue(null);
+    $none:   hasvalue(none);
+    $empty:  hasvalue(());
 
-    @include should(expect($zero), to(be(false)));
-    @include should(expect($null), to(be(false)));
-    @include should(expect($none), to(be(false)));
+    @include should(expect($zero),  to(be(false)));
+    @include should(expect($null),  to(be(false)));
+    @include should(expect($none),  to(be(false)));
+    @include should(expect($empty), to(be(false)));
   }
 }
 

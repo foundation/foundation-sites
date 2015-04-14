@@ -47,16 +47,20 @@ $rem-base: 16px !default;
 ///
 /// @returns {List} A list of converted values.
 @function rem-calc($values, $base-value: null) {
+  $rem-values: ();
+  $max: length($values);
+
   @if $base-value == null {
     $base-value: $rem-base;
   }
-  $max: length($values);
 
-  @if $max == 1 { @return convert-to-rem(nth($values, 1), $base-value); }
+  @if $max == 1 {
+    @return convert-to-rem($values, $base-value);
+  }
 
-  $rem-values: ();
   @for $i from 1 through $max {
     $rem-values: append($rem-values, convert-to-rem(nth($values, $i), $base-value));
   }
+  
   @return $rem-values;
 }
