@@ -121,36 +121,39 @@ $button-opacity-disabled: 0.5 !default;
     color: $background;
 
     &:hover, &:focus {
-      border-color: scale-color($background, $lightness: 25%);
+      $background-hover: smart-scale($background, 25%);
+      border-color: $background-hover;
       background: transparent;
-      color: scale-color($background, $lightness: 25%);
+      color: $background-hover;
     }
   }
   
   // Solid fill is the default
   @else {
-    @if hasvalue($border) {
-      border: $border;
-    }
-
     @if $color == auto {
       $color: isitlight($background);
     }
 
-    background: $background;
+    @if $background-hover == auto {
+      $background-hover: smart-scale($background, 20%);
+    }
 
-    $background-lightness: lightness($background);
-    @if $background-lightness >= 80% { color: $button-font-color-alt; }
-    @else { color: $button-font-color; }
+    @if lightness($background) >= 70% {
+      $color: $button-font-color-alt;
+    } @else {
+      $color: $button-font-color;
+    }
+
+    background: $background;
+    color: $color;
+
+    @if hasvalue($border) {
+      border: $border;
+    }
 
     &:hover, &:focus {
-      @if $background-hover == auto {
-        background: scale-color($background, $lightness: -15%);
-      }
-      @else {
-        background: $background-hover;
-        border-color: $background-hover;
-      }
+      background: $background-hover;
+      border-color: $background-hover;
       color: $color;
     }
   }
