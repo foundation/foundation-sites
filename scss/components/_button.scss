@@ -201,4 +201,17 @@ $button-opacity-disabled: 0.5 !default;
  }
 
  &.disabled { @include button-disabled; }
+
+ &.dropdown {
+  &::after {
+    $offset: strip-unit(rem-calc(2)) * 1em;
+
+    @include css-triangle(6px, white, top);
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: get-side($button-padding, right);
+    position: relative;
+    top: $offset; // Magic number?
+  }
+ }
 }
