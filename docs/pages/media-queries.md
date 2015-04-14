@@ -104,3 +104,15 @@ Lastly, there are three special media queries that are not width-based: `portrai
   }
 }
 ```
+
+---
+
+## Breakpoint Function
+
+The functionality of the `breakpoint()` mixin comes from an internal function, also called `breakpoint()`. If you want to create your own media queries, you can use the `breakpoint()` function to access the logic of the mixin directly.
+
+```scss
+@media screen and #{breakpoint(medium)} {
+  // Medium and up styles
+}
+```
