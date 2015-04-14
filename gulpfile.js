@@ -117,7 +117,7 @@ gulp.task('lint:javascript', function() {
 // Runs unit tests
 gulp.task('test', function() {
   return $.rubySass('./spec/scss/spec.scss', {
-    loadPath: ['scss', 'node_modules/bootcamp/dist/_bootcamp.scss'],
+    loadPath: ['scss', 'node_modules/bootcamp/dist'],
     style: 'nested',
     quiet: true
   })

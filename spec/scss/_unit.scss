@@ -1,4 +1,4 @@
-@import "util/value";
+@import "util/unit";
 
 @include describe("Strip Unit") {
   @include it("strips the unit from a number") {
@@ -29,7 +29,7 @@
 
 @include describe("Convert to Rem") {
   @include it("converts a unit to the equivalent in rems") {
-    $actual: rem-calc(32, $base-value: 16);
+    $actual: rem-calc(32, 16);
     $expected: 2rem;
 
     @include should(expect($actual), to(be($expected)));
@@ -38,7 +38,7 @@
 
 @include describe("Rem Calculator") {
   @include it("converts an arbitrary number of values into rem equivalents") {
-    $actual: rem-calc(8 16 32 64, $base-value: 16);
+    $actual: rem-calc((8 16 32 64), 16);
     $expected: 0.5rem 1rem 2rem 4rem;
 
     @include should(expect($actual), to(be($expected)));

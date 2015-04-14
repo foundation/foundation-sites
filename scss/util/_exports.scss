@@ -44,13 +44,8 @@ $exports-used: () !default;
 /// @param {string} $name - Name of component to output
 /// @output The content passed, if the component has not yet been exported.
 @mixin export($name) {
-  @if using($name) {
-    @if not imported($name) {
-      
-    }
-  }
   // Check if the module is on the exports list and hasn't already been exported
-  @if not imported($name) and using($name) {
+  @if not(imported($name) and using($name)) {
     $exports-used: append($exports-used, $name) !global;
     @content;
   }

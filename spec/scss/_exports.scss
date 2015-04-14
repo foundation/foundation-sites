@@ -2,7 +2,7 @@
 
 @include describe("Using") {
   @include it("checks if a module is in use") {
-    $include-css: (
+    $exports-list: (
       one: true,
       two: false,
     ) !global;
@@ -14,7 +14,10 @@
 
 @include describe("Imported") {
   @include it("checks if a module has already been imported") {
-    $modules: () !global;
+    $exports-list: (
+      test: true
+    ) !global;
+    $exports-used: () !global;
 
     @include should(expect(imported(test)), to(be(false)));
     @include export(test) {}

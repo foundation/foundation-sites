@@ -22,7 +22,7 @@
     $scale: 5%;
     $threshold: 60%;
 
-    $actual: smartscale($color, $scale, $threshold);
+    $actual: smart-scale($color, $scale, $threshold);
     $expected: scale-color($color, $lightness: -$scale);
 
     @include should(expect($actual), to(be($expected)));
@@ -32,7 +32,7 @@
     $scale: 5%;
     $threshold: 60%;
 
-    $actual: smartscale($color, $scale, $threshold);
+    $actual: smart-scale($color, $scale, $threshold);
     $expected: scale-color($color, $lightness: $scale);
 
     @include should(expect($actual), to(be($expected)));

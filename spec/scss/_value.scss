@@ -1,3 +1,5 @@
+@import "util/value";
+
 @include describe("Has Value") {
   @include it("returns false if the value is not falsey") {
     $boolean: hasvalue(true);
