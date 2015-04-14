@@ -1,0 +1,37 @@
+// Styles specific to the layout of the docs are here.
+
+.docs-site-title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #ddd;
+
+  em {
+    font-style: normal;
+    color: #999;
+  }
+}
+
+.docs-menu {
+  margin-top: 0.5rem;
+
+  li small {
+    color: #999;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 60%;
+  }
+}
+  .docs-menu-title {
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+
+    &:not(:first-of-type) {
+      margin-top: 1rem;
+    }
+  }
+  

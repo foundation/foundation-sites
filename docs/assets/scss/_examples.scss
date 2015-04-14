@@ -1,0 +1,81 @@
+// Style overrides for component examples
+
+// Grid
+// - - - - - - - - - - - - - - -
+
+.row.display {
+  background: #eee;
+  font-size: 11px;
+  margin-bottom: 10px;
+  line-height: 2rem;
+  border: solid 1px #c6c6c6;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+
+  .columns {
+    &:nth-child(2),
+    &.small-centered,
+    &.large-centered {
+      background: darken(#eee, 5%);
+    }
+
+    &.color-end {
+      background: darken(#eee, 10%)
+    }
+  }
+}
+
+.row.display-end {
+  background: #fff;
+  font-size: 11px;
+  margin-bottom: 10px;
+  line-height: 2rem;
+  border: solid 1px #c6c6c6;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+
+  .columns {
+    background: darken(#eee, 5%);
+    border-left: 1px solid #c6c6c6;
+
+    &.color-end {
+      background: darken(#eee, 10%)
+    }
+  }
+}
+
+// Flex Grid
+// - - - - - - - - - - - - - - -
+
+#docs-flex-grid {
+  .flex-row {
+    background: #f9f9f9;
+    font-size: 11px;
+    margin-bottom: 10px;
+    line-height: 2rem;
+    border: solid 1px #c6c6c6;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 1.5rem;
+
+    .flex-column {
+      &:nth-child(odd) {
+        background: #eee;
+      }
+      &:nth-child(even) {
+        background: #ddd;
+      }
+    }
+  }
+}
+
+// Modal
+// - - - - - - - - - - - - - - -
+
+.docs-example-modal {
+  display: block;
+  position: static;
+  width: 100%;
+  max-width: none;
+  margin-bottom: 1rem;
+}

@@ -1,0 +1,16 @@
+// Styles for the Sass and JavaScript reference sections go here.
+
+.docs-variable-table {
+  width: 100%;
+  
+  code {
+    background: transparent;
+    color: #222;
+    border: 0;
+    padding: 0;
+  }
+
+  td:first-child code {
+    font-weight: bold;
+  }
+}
