@@ -62,7 +62,6 @@
               self.open.call(self, element);
             } else {
               var url = ajax === true ? element.attr('href') : ajax;
-
               self.open.call(self, element, {url : url}, { replaceContentSel : replaceContentSel });
             }
           }
@@ -201,7 +200,6 @@
           this.show(modal, settings.css.open);
         } else {
           var old_success = typeof ajax_settings.success !== 'undefined' ? ajax_settings.success : null;
-
           $.extend(ajax_settings, {
             success : function (data, textStatus, jqXHR) {
               if ( $.isFunction(old_success) ) {

@@ -10,7 +10,7 @@ function pushSearchTerm(searchTerm, data) {
 
     unique_search_terms[searchTerm] = true
   }
-}
+};
 
 $("[data-search]")
   .each(function() {

@@ -11,7 +11,6 @@
       disabled_class : 'disabled',
       mega_class : 'mega',
       align : 'bottom',
-      pip : 'default',
       is_hover : false,
       hover_timeout : 150,
       opened : function () {},
@@ -51,15 +50,9 @@
           if ($this.data(self.data_attr())) {
             dropdown = S('#' + $this.data(self.data_attr()));
             target = $this;
-            self.last_target = target;
           } else {
             dropdown = $this;
-
-            if (self.last_target) {
-              target = self.last_target;
-            } else {
-              target = S("[" + self.attr_name() + "='" + dropdown.attr('id') + "']");
-            }
+            target = S('[' + self.attr_name() + '="' + dropdown.attr('id') + '"]');
           }
 
           var settings = target.data(self.attr_name(true) + '-init') || self.settings;
@@ -281,44 +274,35 @@
 
         //lets see if the panel will be off the screen
         //get the actual width of the page and store it
-        p.bodyWidth = window.innerWidth;
+        var actualBodyWidth;
         if (document.getElementsByClassName('row')[0]) {
-          p.bodyWidth = document.getElementsByClassName('row')[0].clientWidth;
-        }
-
-        return p;
-      },
-
-      _position_bottom : function(d,t,s,p) {
-        if(d.outerWidth() > t.outerWidth()) {
-          //miss right
-          if (p.left + d.outerWidth() > p.bodyWidth) {
-            //miss left
-            if(p.left - (d.outerWidth() - t.outerWidth()) < 0) {
-              // set triggered right if the dropdown won't fit inside the first .row
-              // in either the left or right orientation.
-              p.triggeredRight = true;
-              p.missLeft = true;
-            } else {
-              p.missRight = true;
-            }
-          }
-        }
-
-        if (t.outerWidth() > d.outerWidth() && s.pip == 'center') {
-          p.offset = (t.outerWidth() - d.outerWidth()) / 2;
-        }
-        else if (p.triggeredRight) {
-          if(d.outerWidth() < p.bodyWidth) {
-            p.offset = (p.bodyWidth - p.left) - d.outerWidth();
-          } else {
-            p.offset = -p.left;
-          }
-        }
-        else if (p.missRight || self.rtl) {
-          p.offset = -d.outerWidth() + t.outerWidth();
+          actualBodyWidth = document.getElementsByClassName('row')[0].clientWidth;
         } else {
-          p.offset = 0;
+          actualBodyWidth = window.innerWidth;
+        }
+
+        var actualMarginWidth = (window.innerWidth - actualBodyWidth) / 2;
+        var actualBoundary = actualBodyWidth;
+
+        if (!this.hasClass('mega')) {
+          //miss top
+          if (t.offset().top <= this.outerHeight()) {
+            p.missTop = true;
+            actualBoundary = window.innerWidth - actualMarginWidth;
+            p.leftRightFlag = true;
+          }
+
+          //miss right
+          if (t.offset().left + this.outerWidth() > t.offset().left + actualMarginWidth && t.offset().left - actualMarginWidth > this.outerWidth()) {
+            p.missRight = true;
+            p.missLeft = false;
+          }
+
+          //miss left
+          if (t.offset().left - this.outerWidth() <= 0) {
+            p.missLeft = true;
+            p.missRight = false;
+          }
         }
 
         return p;
@@ -326,84 +310,75 @@
 
       top : function (t, s) {
         var self = Foundation.libs.dropdown,
-            p = self.dirs._base.call(this, t),
-            offsetTop = -this.outerHeight();
-
-        p = self.dirs._position_bottom(this,t,s,p);
+            p = self.dirs._base.call(this, t);
 
         this.addClass('drop-top');
 
-        //miss top
-        if (t.offset().top <= this.outerHeight()) {
-          p.missTop = true;
-          p.leftRightFlag = true;
+        if (p.missTop == true) {
+          p.top = p.top + t.outerHeight() + this.outerHeight();
           this.removeClass('drop-top');
-          offsetTop = t.outerHeight();
         }
 
-        if (self.rtl || t.outerWidth() < this.outerWidth() || self.small() || this.hasClass(s.mega_menu)) {
-          self.adjust_pip(this,t,s,p);
+        if (p.missRight == true) {
+          p.left = p.left - this.outerWidth() + t.outerWidth();
         }
 
-        return {left : p.left + p.offset, top : p.top + offsetTop};
+        if (t.outerWidth() < this.outerWidth() || self.small() || this.hasClass(s.mega_menu)) {
+          self.adjust_pip(this, t, s, p);
+        }
+
+        if (Foundation.rtl) {
+          return {left : p.left - this.outerWidth() + t.outerWidth(),
+            top : p.top - this.outerHeight()};
+        }
+
+        return {left : p.left, top : p.top - this.outerHeight()};
       },
 
       bottom : function (t, s) {
         var self = Foundation.libs.dropdown,
             p = self.dirs._base.call(this, t);
-        
-        p = self.dirs._position_bottom(this,t,s,p);       
 
-        // Is this if statement really worth it?
-        // I assume it is here to avoid unnecessary sheet.insertRule calls, but how expensive are they?
-        if (p.offset || t.outerWidth() < this.outerWidth() || self.small() || this.hasClass(s.mega_menu)) {
-          self.adjust_pip(this,t,s,p);
+        if (p.missRight == true) {
+          p.left = p.left - this.outerWidth() + t.outerWidth();
         }
 
-        return {left : p.left + p.offset, top : p.top + t.outerHeight()};
+        if (t.outerWidth() < this.outerWidth() || self.small() || this.hasClass(s.mega_menu)) {
+          self.adjust_pip(this, t, s, p);
+        }
+
+        if (self.rtl) {
+          return {left : p.left - this.outerWidth() + t.outerWidth(), top : p.top + t.outerHeight()};
+        }
+
+        return {left : p.left, top : p.top + t.outerHeight()};
       },
 
       left : function (t, s) {
-        var self = Foundation.libs.dropdown,
-            p = self.dirs._base.call(this, t);
-        p.offset = -this.outerWidth();
+        var p = Foundation.libs.dropdown.dirs._base.call(this, t);
 
         this.addClass('drop-left');
 
-        //miss left
-        if (p.left - this.outerWidth() <= 0) {
-          p.missLeft = true;
-          p.missRight = false;
+        if (p.missLeft == true) {
+          p.left =  p.left + this.outerWidth();
           p.top = p.top + t.outerHeight();
           this.removeClass('drop-left');
-          p = self.dirs._position_bottom(this,t,s,p);
-          self.adjust_pip(this,t,s,p);
-        } else {
-          self.adjust_pip_vertical(this,t,s,p);
         }
 
-        return {left : p.left + p.offset, top : p.top};
+        return {left : p.left - this.outerWidth(), top : p.top};
       },
 
       right : function (t, s) {
-        var self = Foundation.libs.dropdown,
-            p = self.dirs._base.call(this, t);
-
-        p.offset = t.outerWidth();
+        var p = Foundation.libs.dropdown.dirs._base.call(this, t);
 
         this.addClass('drop-right');
 
-        //miss right
-        if (p.left + this.outerWidth() + t.outerWidth() > p.bodyWidth) {
-          p.missRight = true;
-          p.missLeft = false;
+        if (p.missRight == true) {
+          p.left = p.left - this.outerWidth();
           p.top = p.top + t.outerHeight();
           this.removeClass('drop-right');
-          p = self.dirs._position_bottom(this,t,s,p);
-          self.adjust_pip(this,t,s,p);
         } else {
           p.triggeredRight = true;
-          self.adjust_pip_vertical(this,t,s,p);
         }
 
         var self = Foundation.libs.dropdown;
@@ -422,23 +397,9 @@
           pip_offset_base = 8;
 
       if (dropdown.hasClass(settings.mega_class)) {
-        pip_offset_base = position.left + (target.outerWidth()/2) - 8;
-      }
-      else if (this.small()) {
-        pip_offset_base = position.left;
-        if (settings.pip == 'center') {
-          pip_offset_base += (target.outerWidth()/2) - 15;
-        }
-      }
-      else if (settings.pip == 'center') {
-        if(target.outerWidth() < dropdown.outerWidth()){
-          pip_offset_base = (target.outerWidth()/2) - position.offset - 7;
-        } else {
-          pip_offset_base = (dropdown.outerWidth()/2) - 7;
-        }
-      }
-      else if (position.missRight) {
-        pip_offset_base += target.outerWidth() - 30;
+        pip_offset_base = position.left + (target.outerWidth() / 2) - 8;
+      } else if (this.small()) {
+        pip_offset_base += position.left - 8;
       }
 
       this.rule_idx = sheet.cssRules.length;
@@ -449,32 +410,22 @@
           css_before = 'left: ' + pip_offset_base + 'px;',
           css_after  = 'left: ' + (pip_offset_base - 1) + 'px;';
 
-      if (sheet.insertRule) {
-        sheet.insertRule([sel_before, '{', css_before, '}'].join(' '), this.rule_idx);
-        sheet.insertRule([sel_after, '{', css_after, '}'].join(' '), this.rule_idx + 1);
-      } else {
-        sheet.addRule(sel_before, css_before, this.rule_idx);
-        sheet.addRule(sel_after, css_after, this.rule_idx + 1);
-      }
-    },
-
-    adjust_pip_vertical : function (dropdown,target,settings,position) {
-      var sheet = Foundation.stylesheet,
-          pip_offset_base = 10,
-          pip_halfheight = 14;
-
-      if (settings.pip == 'center') {
-        pip_offset_base = (target.outerHeight() - pip_halfheight) / 2;
+      if (position.missRight == true) {
+        pip_offset_base = dropdown.outerWidth() - 23;
+        sel_before = '.f-dropdown.open:before',
+        sel_after  = '.f-dropdown.open:after',
+        css_before = 'left: ' + pip_offset_base + 'px;',
+        css_after  = 'left: ' + (pip_offset_base - 1) + 'px;';
       }
 
-      this.rule_idx = sheet.cssRules.length;
+      //just a case where right is fired, but its not missing right
+      if (position.triggeredRight == true) {
+        sel_before = '.f-dropdown.open:before',
+        sel_after  = '.f-dropdown.open:after',
+        css_before = 'left:-12px;',
+        css_after  = 'left:-14px;';
+      }
 
-      //default
-      var sel_before = '.f-dropdown.open:before',
-          sel_after  = '.f-dropdown.open:after',
-          css_before = 'top: ' + pip_offset_base + 'px;',
-          css_after  = 'top: ' + (pip_offset_base - 1) + 'px;';
-        
       if (sheet.insertRule) {
         sheet.insertRule([sel_before, '{', css_before, '}'].join(' '), this.rule_idx);
         sheet.insertRule([sel_after, '{', css_after, '}'].join(' '), this.rule_idx + 1);

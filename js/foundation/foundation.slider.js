@@ -63,6 +63,24 @@
         .on('resize.fndtn.slider', self.throttle(function (e) {
           self.reflow();
         }, 300));
+
+      // update slider value as users change input value
+      this.S('[' + this.attr_name() + ']').each(function () {
+        var slider = $(this),
+            handle = slider.children('.range-slider-handle')[0],
+            settings = self.initialize_settings(handle);
+
+        if (settings.display_selector != '') {
+          $(settings.display_selector).each(function(){
+            if (this.hasOwnProperty('value')) {
+              $(this).change(function(){
+                // is there a better way to do this?
+                slider.foundation("slider", "set_value", $(this).val());
+              });
+            }
+          });
+        }
+      });
     },
 
     get_cursor_position : function (e, xy) {
@@ -223,7 +241,7 @@
       }
 
       $.data(handle, 'bar', $(handle).parent());
-      $.data(handle, 'settings', settings);
+      return $.data(handle, 'settings', settings);
     },
 
     set_initial_position : function ($ele) {
