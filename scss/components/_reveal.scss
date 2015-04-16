@@ -127,10 +127,8 @@ $reveal-overlay-background: rgba(#000, 0.45) !default;
 
     // Sizing classes
     &.tiny     { @include reveal-modal-width(30%); }
-    &.small    { @include reveal-modal-width(40%); }
-    &.medium   { @include reveal-modal-width(60%); }
-    &.large    { @include reveal-modal-width(70%); }
-    &.xlarge   { @include reveal-modal-width(95%); }
+    &.small    { @include reveal-modal-width(50%); }
+    &.large    { @include reveal-modal-width(90%); }
 
     // Full-screen mode
     &.full {
@@ -138,7 +136,7 @@ $reveal-overlay-background: rgba(#000, 0.45) !default;
     }
     
     // Modals pushed to back
-    &.toback {
+    &.to-back {
       z-index: $reveal-zindex - 2;
     }
   }

@@ -3,10 +3,11 @@
 /// @param {String} $selector ['.column, .columns'] - Selector(s) to use for child elements.
 @mixin grid-layout(
   $n,
-  $selector: '.column, .columns'
+  $selector: '.columns'
 ) {
   #{$selector} {
     width: percentage(1/$n);
+    float: left;
 
     &:nth-of-type(1n) {
       clear: none;
@@ -14,10 +15,6 @@
 
     &:nth-of-type(#{$n}n+1) {
       clear: both;
-    }
-
-    &:last-of-type {
-      float: left;
     }
   }
 }

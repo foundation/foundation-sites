@@ -85,8 +85,7 @@
   }
 
   // Column
-  .flex-column,
-  .flex-columns {
+  .flex-column {
     @include flex-grid-column;
   }
 

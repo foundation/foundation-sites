@@ -98,10 +98,8 @@
 
       // Block grid
       @for $i from 1 through 6 {
-        @include breakpoint($size) {
-          .#{$size}-up-#{$i} {
-            @include grid-layout($i);
-          }
+        .#{$size}-up-#{$i} {
+          @include grid-layout($i);
         }
       }
 
