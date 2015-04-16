@@ -4,6 +4,8 @@
 
 <p class="lead docs-page-lead">{{ description }}</p>
 
+<hr>
+
 {{ docs }}
 
 <br>
@@ -24,7 +26,7 @@
       Variables
     </h3>
 
-    <p>The default styles of {{ title }} can be customized using these Sass variables in your project's <a href="#">settings file</a>.</p>
+    <p>The default styles of this component can be customized using these Sass variables in your project's <a href="#">settings file</a>.</p>
 
     <table class="docs-variable-table">
       <tr><th>Name</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
@@ -42,10 +44,6 @@
   {{#if sass.mixin}}
     <hr>
   {{/if}}
-
-  {{#if sass.mixin}}{{#unless sass.function}}
-    <hr>
-  {{/unless}}{{/if}}
 
   {{/if}}
 
@@ -93,6 +91,10 @@
     {{/each}}
   </section>
   {{/if}}
+
+  {{#if sass.mixin}}{{#if sass.function}}
+    <hr>
+  {{/if}}{{/if}}
 
   {{#if sass.function}}
   <section>
