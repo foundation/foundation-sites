@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import 'global';
+@import "global";
 
 //
 // Foundation Visibility Classes
@@ -390,19 +390,6 @@ $visibility-breakpoint-queries:
   th.hide-for-touch { display: table-cell !important; }
   .touch th.show-for-touch { display: table-cell !important; }
 
-  /* Screen reader-specific classes */
-  .show-for-sr {
-    @include element-invisible;
-  }
-  .show-on-focus {
-    @include element-invisible;
-
-    &:focus,
-    &:active {
-      @include element-invisible-off;
-    }
-  }
-
   // Only include these styles if you want them.
     @if $include-print-styles {
       /*
@@ -415,8 +402,8 @@ $visibility-breakpoint-queries:
       @media print {
         * {
           background: transparent !important;
-          box-shadow: none !important;
           color: $black !important; /* Black prints faster: h5bp.com/s */
+          box-shadow: none !important;
           text-shadow: none !important;
         }
         .show-for-print { display: block; }

@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import 'global';
+@import "global";
 
 //
 // @variables
@@ -69,9 +69,6 @@ $button-disabled-cursor: $cursor-default-value !default;
 
 @mixin button-base($style:true, $display:$button-display) {
   @if $style {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    border-radius:0;
     border-style: $button-border-style;
     border-width: $button-border-width;
     cursor: $cursor-pointer-value;
@@ -80,8 +77,11 @@ $button-disabled-cursor: $cursor-default-value !default;
     line-height: normal;
     margin: 0 0 $button-margin-bottom;
     position: relative;
-    text-align: $button-font-align;
     text-decoration: none;
+    text-align: $button-font-align;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-radius:0;
   }
   @if $display { display: $display; }
 }
@@ -100,24 +100,29 @@ $button-disabled-cursor: $cursor-default-value !default;
   @if $padding {
     padding: $padding ($padding * 2) ($padding + rem-calc(1)) ($padding * 2);
     // We control the font-size based on mixin input.
-    @if      $padding == $button-med { font-size: $button-font-med; }
-    @else if $padding == $button-tny { font-size: $button-font-tny; }
-    @else if $padding == $button-sml { font-size: $button-font-sml; }
-    @else if $padding == $button-lrg { font-size: $button-font-lrg; }
+    @if $padding == $button-med {
+      font-size: $button-font-med;
+    } @else if $padding == $button-tny {
+      font-size: $button-font-tny;
+    } @else if $padding == $button-sml {
+      font-size: $button-font-sml;
+    } @else if $padding == $button-lrg {
+      font-size: $button-font-lrg;
+    }
   }
 
   // We can set $full-width:true to remove side padding extend width.
   @if $full-width {
     // We still need to check if $padding is set.
     @if $padding {
-      padding-bottom: $padding + rem-calc(1);
       padding-top: $padding;
+      padding-bottom: $padding + rem-calc(1);
     } @else if $padding == false {
-      padding-bottom:0;
       padding-top:0;
+      padding-bottom:0;
     }
-    padding-left: 0;
     padding-right: 0;
+    padding-left: 0;
     width: 100%;
   }
 }
@@ -169,16 +174,19 @@ $button-disabled-cursor: $cursor-default-value !default;
 
   // We can set $disabled:true to create a disabled transparent button.
   @if $disabled {
-    box-shadow: none;
     cursor: $button-disabled-cursor;
     opacity: $button-disabled-opacity;
+    box-shadow: none;
     &:hover,
     &:focus { background-color: $bg; }
   }
 
   // We can control how much button radius is used.
-  @if $radius == true { @include radius($button-radius); }
-  @else if $radius { @include radius($radius); }
+  @if $radius == true {
+    @include radius($button-radius);
+  } @else if $radius {
+    @include radius($radius);
+  }
 
 }
 

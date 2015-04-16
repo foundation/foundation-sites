@@ -36,7 +36,7 @@ $topbar-link-weight: $font-weight-normal;
 $topbar-link-font-size: rem-calc(13);
 $topbar-link-hover-lightness: -10%; // Darken by 10%
 $topbar-link-bg: $topbar-bg;
-$topbar-link-bg-hover: $jet;
+$topbar-link-bg-hover: $oil;
 $topbar-link-bg-color-hover: $charcoal;
 $topbar-link-bg-active: $primary-color;
 $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%);
@@ -67,8 +67,13 @@ $topbar-menu-icon-position: $opposite-direction; // Change to $default-float for
 // Transitions and breakpoint styles
 $topbar-transition-speed: 300ms;
 // Using rem-calc for the below breakpoint causes issues with top bar
+<<<<<<< HEAD
 $topbar-breakpoint: #{lower-bound($medium-range)}; // Change to 9999px for always mobile layout
+$topbar-media-query: $medium-up;
+=======
+$topbar-breakpoint: #{lower-bound($medium-range)} !default; // Change to 9999px for always mobile layout
 $topbar-media-query: "#{$screen} and (min-width:#{lower-bound($topbar-breakpoint)})";
+>>>>>>> pr/5996
 
 // Divider Styles
 $topbar-divider-border-bottom: solid 1px scale-color($topbar-bg-color, $lightness: 13%);

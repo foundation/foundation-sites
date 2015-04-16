@@ -1,6 +1,6 @@
 # [Foundation](http://foundation.zurb.com)
 
-[![Build Status](https://travis-ci.org/zurb/foundation.svg)](https://travis-ci.org/zurb/foundation)
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/zurb/foundation?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)[![Build Status](https://travis-ci.org/zurb/foundation.svg)](https://travis-ci.org/zurb/foundation)
 
 
 Foundation is the most advanced responsive front-end framework in the world. You can quickly prototype and build sites or apps that work on any kind of device with Foundation, which includes layout constructs (like a fully responsive grid), elements and best practices.
@@ -12,7 +12,7 @@ To get started, check out <http://foundation.zurb.com/docs>
 
 To get going with Foundation you can:
 
-  * [Download the latest release](http://foundation.zurb.com/develop/download.html)
+  * [Download the latest release](http://foundation.zurb.com/cdn/releases/foundation-latest.zip)
   * [Install with Bower](http://bower.io): `bower install zurb/bower-foundation`
 
 ## Documentation

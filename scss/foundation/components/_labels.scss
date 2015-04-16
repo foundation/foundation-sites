@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import 'global';
+@import "global";
 
 //
 // @variables
@@ -25,15 +25,15 @@ $label-font-family: $body-font-family !default;
 //
 // We use this mixin to create a default label base.
 @mixin label-base {
-  display: inline-block;
-  font-family: $label-font-family;
   font-weight: $label-font-weight;
-  line-height: 1;
-  margin-bottom: auto;
-  position: relative;
+  font-family: $label-font-family;
   text-align: center;
   text-decoration: none;
+  line-height: 1;
   white-space: nowrap;
+  display: inline-block;
+  position: relative;
+  margin-bottom: auto;
 }
 
 // @mixins
@@ -62,13 +62,19 @@ $label-font-family: $body-font-family !default;
     background-color: $bg;
 
     // We control the text color for you based on the background color.
-    @if $bg-lightness < 70% { color: $label-font-color-alt; }
-    @else { color: $label-font-color; }
+    @if $bg-lightness < 70% {
+      color: $label-font-color-alt;
+    } @else {
+      color: $label-font-color;
+    }
   }
 
   // We use this to control the radius on labels.
-  @if $radius == true { @include radius($label-radius); }
-  @else if $radius { @include radius($radius); }
+  @if $radius == true {
+    @include radius($label-radius);
+  } @else if $radius {
+    @include radius($radius);
+  }
 
 }
 

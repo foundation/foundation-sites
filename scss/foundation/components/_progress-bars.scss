@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import 'global';
+@import "global";
 
 //
 // @variables
@@ -34,10 +34,10 @@ $progress-meter-alert-color: $alert-color !default;
 // We use this to set up the progress bar container
 @mixin progress-container {
   background-color: $progress-bar-color;
-  border: $progress-bar-border-size $progress-bar-border-style $progress-bar-border-color;
   height: $progress-bar-height;
-  margin-bottom: $progress-bar-margin-bottom;
+  border: $progress-bar-border-size $progress-bar-border-style $progress-bar-border-color;
   padding: $progress-bar-pad;
+  margin-bottom: $progress-bar-margin-bottom;
 }
 
 // @mixins
@@ -45,8 +45,8 @@ $progress-meter-alert-color: $alert-color !default;
 // $bg - Default: $progress-meter-color || $primary-color
 @mixin progress-meter($bg:$progress-meter-color) {
   background: $bg;
-  display: block;
   height: 100%;
+  display: block;
 }
 
 

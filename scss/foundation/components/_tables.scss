@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import 'global';
+@import "global";
 
 //
 // @name _tables.scss
@@ -62,8 +62,8 @@ $table-margin-bottom: rem-calc(20) !default;
 
 @mixin table {
   background: $table-bg;
-  border: $table-border-style $table-border-size $table-border-color;
   margin-bottom: $table-margin-bottom;
+  border: $table-border-style $table-border-size $table-border-color;
   table-layout: $table-layout;
 
   caption {
@@ -81,10 +81,10 @@ $table-margin-bottom: rem-calc(20) !default;
     tr {
       th,
       td {
-        color: $table-head-font-color;
+        padding: $table-head-padding;
         font-size: $table-head-font-size;
         font-weight: $table-head-font-weight;
-        padding: $table-head-padding;
+        color: $table-head-font-color;
       }
     }
   }
@@ -95,10 +95,10 @@ $table-margin-bottom: rem-calc(20) !default;
     tr {
       th,
       td {
-        color: $table-foot-font-color;
+        padding: $table-foot-padding;
         font-size: $table-foot-font-size;
         font-weight: $table-foot-font-weight;
-        padding: $table-foot-padding;
+        color: $table-foot-font-color;
       }
     }
   }
@@ -106,9 +106,9 @@ $table-margin-bottom: rem-calc(20) !default;
   tr {
     th,
     td {
-      color: $table-row-font-color;
-      font-size: $table-row-font-size;
       padding: $table-row-padding;
+      font-size: $table-row-font-size;
+      color: $table-row-font-color;
       text-align: $default-float;
     }
 

@@ -55,7 +55,7 @@
 // $rem-base: 16px;
 
 // Allows the use of rem-calc() or lower-bound() in your settings
-@import 'foundation/functions';
+@import "foundation/functions";
 
 // The default font-size is set to 100% of the browser style sheet (usually 16px)
 // for compatibility with browser-based text zoom or user-set defaults.
@@ -152,10 +152,10 @@ $include-html-global-classes: $include-html-classes;
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
 // $small-range: (0em, 40em);
-// $medium-range: (40.0625em, 64em);
-// $large-range: (64.0625em, 90em);
-// $xlarge-range: (90.0625em, 120em);
-// $xxlarge-range: (120.0625em, 99999999em);
+// $medium-range: (40.063em, 64em);
+// $large-range: (64.063em, 90em);
+// $xlarge-range: (90.063em, 120em);
+// $xxlarge-range: (120.063em, 99999999em);
 
 // $screen: "only screen";
 
@@ -652,7 +652,7 @@ $include-html-global-classes: $include-html-classes;
 // $input-disabled-bg: $gainsboro;
 // $input-disabled-cursor: $cursor-default-value;
 // $input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
-// $input-include-glowing-effect: false;
+// $input-include-glowing-effect: true;
 
 // We use these to style the fieldset border and spacing.
 // $fieldset-border-style: solid;
@@ -691,10 +691,6 @@ $include-html-global-classes: $include-html-classes;
 // We use this to style the glowing effect of inputs when focused
 // $glowing-effect-fade-time: .45s;
 // $glowing-effect-color: $input-focus-border-color;
-
-// We use this to style the transition when inputs are focused and when the glowing effect is disabled.
-// $input-transition-fade-time: 0.15s;
-// $input-transition-fade-timing-function: linear;
 
 // Select variables
 // $select-bg-color: $ghost;
@@ -987,7 +983,8 @@ $include-html-global-classes: $include-html-classes;
 // $callout-panel-bg: scale-color($primary-color, $lightness: 94%);
 
 // We use this % to control how much we darken things on hover
-// $panel-border-color: scale-color($panel-bg, $lightness: -11%);
+// $panel-function-factor: -11%;
+// $panel-border-color: scale-color($panel-bg, $lightness: $panel-function-factor);
 
 // We use these to set default inner padding and bottom margin
 // $panel-margin-bottom: rem-calc(20);
@@ -1415,7 +1412,7 @@ $include-html-global-classes: $include-html-classes;
 // $topbar-link-font-size: rem-calc(13);
 // $topbar-link-hover-lightness: -10%; // Darken by 10%
 // $topbar-link-bg: $topbar-bg;
-// $topbar-link-bg-hover: $jet;
+// $topbar-link-bg-hover: $oil;
 // $topbar-link-bg-color-hover: $charcoal;
 // $topbar-link-bg-active: $primary-color;
 // $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%);
@@ -1432,7 +1429,7 @@ $include-html-global-classes: $include-html-classes;
 // $topbar-dropdown-link-color: $white;
 // $topbar-dropdown-link-color-hover: $topbar-link-color-hover;
 // $topbar-dropdown-link-bg: $oil;
-// $topbar-dropdown-link-bg-hover: $jet;
+// $topbar-dropdown-link-bg-hover: $oil;
 // $topbar-dropdown-link-weight: $font-weight-normal;
 // $topbar-dropdown-toggle-size: 5px;
 // $topbar-dropdown-toggle-color: $white;

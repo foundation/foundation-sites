@@ -2,9 +2,9 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import 'global';
-@import 'buttons';
-@import 'dropdown-buttons';
+@import "global";
+@import "buttons";
+@import "dropdown-buttons";
 
 //
 // @name _split-buttons.scss
@@ -75,22 +75,22 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
 
     // Styling for the split arrow clickable area
     span {
-      border-#{$default-float}: solid 1px;
       display: block;
       height: 100%;
       position: absolute;
-      top: 0;
       #{$opposite-direction}: 0;
+      top: 0;
+      border-#{$default-float}: solid 1px;
 
       // Building the triangle pip indicator
       &:after {
-        border-style: inset;
-        content: "";
-        display: block;
-        height: 0;
         position: absolute;
-        top: 50%;
+        content: "";
         width: 0;
+        height: 0;
+        display: block;
+        border-style: inset;
+        top: 50%;
 
         #{$default-float}: 50%;
       }
@@ -114,50 +114,44 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
       &:after {
         border-top-style: solid;
         border-width: $split-button-pip-size-tny;
-        margin-#{$default-float}: $split-button-pip-default-float-tny;
         top: 48%;
+        margin-#{$default-float}: $split-button-pip-default-float-tny;
       }
     }
-  }
-
-  // Style of the button and clickable area for small sizes
-  @else if $padding == small {
+  } @else if $padding == small {
+    // Style of the button and clickable area for small sizes
     padding-#{$opposite-direction}: $split-button-padding-sml;
 
     span { width: $split-button-span-width-sml;
       &:after {
         border-top-style: solid;
         border-width: $split-button-pip-size-sml;
-        margin-#{$default-float}: $split-button-pip-default-float-sml;
         top: 48%;
+        margin-#{$default-float}: $split-button-pip-default-float-sml;
       }
     }
-  }
-
-  // Style of the button and clickable area for default (medium) sizes
-  @else if $padding == medium {
+  } @else if $padding == medium {
+    // Style of the button and clickable area for default (medium) sizes
     padding-#{$opposite-direction}: $split-button-padding-med;
 
     span { width: $split-button-span-width-med;
       &:after {
         border-top-style: solid;
         border-width: $split-button-pip-size-med;
-        margin-#{$default-float}: $split-button-pip-default-float-med;
         top: 48%;
+        margin-#{$default-float}: $split-button-pip-default-float-med;
       }
     }
-  }
-
-  // Style of the button and clickable area for large sizes
-  @else if $padding == large {
+  } @else if $padding == large {
+    // Style of the button and clickable area for large sizes
     padding-#{$opposite-direction}: $split-button-padding-lrg;
 
     span { width: $split-button-span-width-lrg;
       &:after {
         border-top-style: solid;
         border-width: $split-button-pip-size-lrg;
-        margin-#{$default-float}: $split-button-pip-default-float-lrg;
         top: 48%;
+        margin-#{$default-float}: $split-button-pip-default-float-lrg;
       }
     }
   }
@@ -190,12 +184,12 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
         span:before{ border-style:none; }
         span:after{ border-style:none; }
         span>i{
+          top: 50%;
           display: block;
+          position: absolute;
           left: 50%;
           margin-left: -0.28889em;
           margin-top: -0.48889em;
-          position: absolute;
-          top: 50%;
         }
       }
     }

@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import 'global';
+@import "global";
 
 //
 // @variables
@@ -46,30 +46,24 @@ $last-child-float: $opposite-direction !default;
 
   // use @include grid-row(nest); to include a nested row
   @if $behavior == nest {
+    width: auto;
     margin: 0 (-($column-gutter/2));
     max-width: none;
-    width: auto;
-  }
-
-  // use @include grid-row(collapse); to collapsed a container row margins
-  @else if $behavior == collapse {
+  } @else if $behavior == collapse {
+    // use @include grid-row(collapse); to collapsed a container row margins
+    width: 100%;
     margin: 0;
     max-width: $row-width;
-    width: 100%;
-  }
-
-  // use @include grid-row(nest-collapse); to collapse outer margins on a nested row
-  @else if $behavior == nest-collapse {
+  } @else if $behavior == nest-collapse {
+    // use @include grid-row(nest-collapse); to collapse outer margins on a nested row
+    width: auto;
     margin: 0;
     max-width: none;
-    width: auto;
-  }
-
-  // use @include grid-row; to use a container row
-  @else {
+  } @else {
+    // use @include grid-row; to use a container row
+    width: 100%;
     margin: 0 auto;
     max-width: $row-width;
-    width: 100%;
   }
 
   // Clearfix for all rows
@@ -107,11 +101,9 @@ $last-child-float: $opposite-direction !default;
   @if $collapse {
     padding-left: 0;
     padding-right: 0;
-  }
-
-  // Gutter padding whenever a column isn't set to collapse
-  // (use $collapse:null to do nothing)
-  @else if $collapse == false {
+  } @else if $collapse == false {
+    // Gutter padding whenever a column isn't set to collapse
+    // (use $collapse:null to do nothing)
     padding-left: ($column-gutter / 2);
     padding-right: ($column-gutter / 2);
   }
@@ -129,9 +121,13 @@ $last-child-float: $opposite-direction !default;
   @if $pull { #{$opposite-direction}: grid-calc($pull, $total-columns); #{$default-float}: auto; }
 
   @if $float {
-    @if $float == left or $float == true { float: $default-float; }
-    @else if $float == right { float: $opposite-direction; }
-    @else { float: none; }
+    @if $float == left or $float == true {
+      float: $default-float;
+    } @else if $float == right {
+      float: $opposite-direction;
+    } @else {
+      float: none;
+    }
   }
 
   // If centered, get rid of float and add appropriate margins
@@ -173,11 +169,11 @@ $last-child-float: $opposite-direction !default;
   }
 
   .#{$size}-reset-order {
-    float: $default-float;
-    left: auto;
     margin-#{$default-float}: 0;
     margin-#{$opposite-direction}: 0;
+    left: auto;
     right: auto;
+    float: $default-float;
   }
 
   .column.#{$size}-centered,
@@ -185,9 +181,9 @@ $last-child-float: $opposite-direction !default;
 
   .column.#{$size}-uncentered,
   .columns.#{$size}-uncentered {
-    float: $default-float;
     margin-#{$default-float}: 0;
     margin-#{$opposite-direction}: 0;
+    float: $default-float;
   }
 
   // Fighting [class*="column"] + [class*="column"]:last-child

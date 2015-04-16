@@ -2,8 +2,8 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import 'global';
-@import 'type';
+@import "global";
+@import "type";
 
 // Off Canvas Tab Bar Variables
 $include-html-off-canvas-classes: $include-html-classes !default;
@@ -104,18 +104,18 @@ $menu-slide: "transform 500ms ease" !default;
 @mixin off-canvas-menu($position) {
   @include kill-flicker;
   * { @include kill-flicker; }
-  background: $off-canvas-bg;
+  width: $off-canvas-width;
+  top: 0;
   bottom: 0;
-  box-sizing: content-box;
-  -webkit-overflow-scrolling: touch;
-  -ms-overflow-style: -ms-autohiding-scrollbar;
+  position: absolute;
   overflow-x: hidden;
   overflow-y: auto;
-  position: absolute;
-  top: 0;
-  transition: transform 500ms ease 0s;
-  width: $off-canvas-width;
+  background: $off-canvas-bg;
   z-index: 1001;
+  box-sizing: content-box;
+  transition: transform 500ms ease 0s;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
 
   @if $position == left {
     @include translate3d(-100%,0,0);
@@ -179,10 +179,10 @@ $menu-slide: "transform 500ms ease" !default;
 // SMALL SECTIONS
 // These are small sections on the left and right that contain the off-canvas toggle buttons;
 @mixin tabbar-small-section($position) {
+  width: $tabbar-icon-width;
   height: $tabbar-height;
   position: absolute;
   top: 0;
-  width: $tabbar-icon-width;
   @if $position == left {
     border-right: $tabbar-left-section-border;
     // box-shadow: 1px 0 0 scale-color($tabbar-bg, $lightness: 13%);
@@ -196,9 +196,9 @@ $menu-slide: "transform 500ms ease" !default;
 }
 
 @mixin tab-bar-section {
-  height: $tabbar-height;
   padding: $tabbar-middle-padding;
   position: absolute;
+  height: $tabbar-height;
   text-align: center;
   top: 0;
     &.left { text-align: left; }
@@ -224,27 +224,27 @@ $menu-slide: "transform 500ms ease" !default;
 // This is the list of links in the off-canvas menu
 @mixin off-canvas-list {
   list-style-type: none;
-  margin:0;
   padding:0;
+  margin:0;
 
   li {
     label {
-      background: $off-canvas-label-bg;
-      border-bottom: $off-canvas-label-border-bottom;
-      border-top: $off-canvas-label-border-top;
-      color: $off-canvas-label-color;
       display: block;
+      padding: $off-canvas-label-padding;
+      color: $off-canvas-label-color;
+      text-transform: $off-canvas-label-text-transform;
       font-size: $off-canvas-label-font-size;
       font-weight: $off-canvas-label-font-weight;
+      background: $off-canvas-label-bg;
+      border-top: $off-canvas-label-border-top;
+      border-bottom: $off-canvas-label-border-bottom;
       margin: $off-canvas-label-margin;
-      padding: $off-canvas-label-padding;
-      text-transform: $off-canvas-label-text-transform;
     }
     a {
-      border-bottom: $off-canvas-link-border-bottom;
-      color: $off-canvas-link-color;
       display: block;
       padding: $off-canvas-link-padding;
+      color: $off-canvas-link-color;
+      border-bottom: $off-canvas-link-border-bottom;
       transition: background 300ms ease;
       &:hover {
         background: $off-canvas-bg-hover;
@@ -260,28 +260,28 @@ $menu-slide: "transform 500ms ease" !default;
 // BACK LINK
 // This is an overlay that, when clicked, will toggle off the off canvas menu
 @mixin back-link {
-  @include kill-flicker;
+    @include kill-flicker;
 
-  box-shadow: $off-canvas-overlay-box-shadow;
-  cursor: $off-canvas-overlay-cursor;
-  transition: $off-canvas-overlay-transition;
+    transition: $off-canvas-overlay-transition;
+    cursor: $off-canvas-overlay-cursor;
+    box-shadow: $off-canvas-overlay-box-shadow;
 
-  // fill the screen
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  background: $off-canvas-overlay-background;
-  bottom: 0;
-  display: block;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: 1002;
+    // fill the screen
+    display: block;
+    position: absolute;
+    background: $off-canvas-overlay-background;
+    top: 0;
+    bottom: 0;
+    left:0;
+    right:0;
+    z-index: 1002;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
 
-  @media #{$medium-up} {
-    &:hover {
-      background: $off-canvas-overlay-background-hover;
+    @media #{$medium-up} {
+      &:hover {
+        background: $off-canvas-overlay-background-hover;
+      }
     }
-  }
 }
 
 //
@@ -290,17 +290,17 @@ $menu-slide: "transform 500ms ease" !default;
 @mixin off-canvas-submenu($position) {
   @include kill-flicker;
   * { @include kill-flicker; }
-  -webkit-overflow-scrolling: touch;
-  background: $off-canvas-bg;
+  width: $off-canvas-width;
+  top: 0;
   bottom: 0;
-  box-sizing: content-box;
+  position: absolute;
   margin: 0;
   overflow-x: hidden;
   overflow-y: auto;
-  position: absolute;
-  top: 0;
-  width: $off-canvas-width;
+  background: $off-canvas-bg;
   z-index: 1002;
+  box-sizing: content-box;
+  -webkit-overflow-scrolling: touch;
   @if $position == left {
     @include translate3d(-100%,0,0);
     left: 0;
@@ -317,20 +317,18 @@ $menu-slide: "transform 500ms ease" !default;
 
   //back button style like label
   .back > a {
-    background: $off-canvas-back-bg;
-    border-bottom: $off-canvas-back-border-bottom;
-    border-top: $off-canvas-back-border-top;
-    color: $off-canvas-label-color;
-    font-weight: $off-canvas-label-font-weight;
     padding: $off-canvas-label-padding;
+    color: $off-canvas-label-color;
     text-transform: $off-canvas-label-text-transform;
-
+    font-weight: $off-canvas-label-font-weight;
+    background: $off-canvas-back-bg;
+    border-top: $off-canvas-back-border-top;
+    border-bottom: $off-canvas-back-border-bottom;
     &:hover {
-      background: $off-canvas-back-hover-bg;
-      border-bottom: $off-canvas-back-hover-border-bottom;
-      border-top: $off-canvas-back-hover-border-top;
+    	background: $off-canvas-back-hover-bg;
+    	border-top: $off-canvas-back-hover-border-top;
+    	border-bottom: $off-canvas-back-hover-border-bottom;
     }
-
     margin: $off-canvas-label-margin;
     @if $position == right {
       @if $text-direction == rtl {
@@ -396,14 +394,14 @@ $menu-slide: "transform 500ms ease" !default;
     // MENU BUTTON
     // This is a little bonus. You don't need it for off canvas to work. Mixins to be written in the future.
     .tab-bar .menu-icon {
-      color: $tabbar-menu-icon-color;
-      display: block;
-      height: $tabbar-menu-icon-height;
-      padding: $tabbar-menu-icon-padding;
-      position: relative;
       text-indent: $tabbar-menu-icon-text-indent;
-      transform: translate3d(0,0,0);
       width: $tabbar-menu-icon-width;
+      height: $tabbar-menu-icon-height;
+      display: block;
+      padding: $tabbar-menu-icon-padding;
+      color: $tabbar-menu-icon-color;
+      position: relative;
+      transform: translate3d(0,0,0);
 
       // @include for the hamburger menu-icon
       //
@@ -483,7 +481,7 @@ $menu-slide: "transform 500ms ease" !default;
       .move-left > .inner-wrap { right: $off-canvas-width; }
       .move-right > .inner-wrap { left: $off-canvas-width; }
     }
-
+    
     .left-submenu {
       @include off-canvas-submenu($position: left);
       &.move-right, &.offcanvas-overlap-right, &.offcanvas-overlap {

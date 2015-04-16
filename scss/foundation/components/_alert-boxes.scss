@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import 'global';
+@import "global";
 
 //
 // Alert Box Variables
@@ -55,11 +55,11 @@ $alert-transition-ease: ease-out !default;
   border-style: $alert-border-style;
   border-width: $alert-border-width;
   display: block;
-  font-size: $alert-font-size;
   font-weight: $alert-font-weight;
   margin-bottom: $alert-bottom-margin;
-  padding: $alert-padding-top $alert-padding-opposite-direction $alert-padding-bottom $alert-padding-default-float;
   position: relative;
+  padding: $alert-padding-top $alert-padding-opposite-direction $alert-padding-bottom $alert-padding-default-float;
+  font-size: $alert-font-size;
   @include single-transition(opacity, $alert-transition-speed, $alert-transition-ease)
 }
 
@@ -76,23 +76,26 @@ $alert-transition-ease: ease-out !default;
   border-color: scale-color($bg, $lightness: $alert-function-factor);
 
   // We control the text color for you based on the background color.
-  @if $bg-lightness > 70% { color: $alert-font-color-alt; }
-  @else                   { color: $alert-font-color; }
+  @if $bg-lightness > 70% {
+    color: $alert-font-color-alt;
+  } @else {
+    color: $alert-font-color;
+  }
 
 }
 
 // We use this to create the close button.
 @mixin alert-close {
-  #{$opposite-direction}: $alert-close-position;
-  background: $alert-close-background;
-  color: $alert-close-color;
   font-size: $alert-close-font-size;
-  line-height: .9;
-  margin-top: -($alert-close-font-size / 2);
-  opacity: $alert-close-opacity;
   padding: $alert-close-padding;
+  line-height: .9;
   position: absolute;
   top: $alert-close-top;
+  margin-top: -($alert-close-font-size / 2);
+  #{$opposite-direction}: $alert-close-position;
+  color: $alert-close-color;
+  opacity: $alert-close-opacity;
+  background: $alert-close-background;
   &:hover,
   &:focus { opacity: $alert-close-opacity-hover; }
 }

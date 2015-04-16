@@ -171,16 +171,17 @@
     },
 
     selector : function ($target) {
-      var dataSelector = $target.attr(this.attr_name()) || $target.attr('data-selector');
+      var id = $target.attr('id'),
+          dataSelector = $target.attr(this.attr_name()) || $target.attr('data-selector');
 
-      if (typeof dataSelector != 'string') {
+      if ((id && id.length < 1 || !id) && typeof dataSelector != 'string') {
         dataSelector = this.random_str(6);
         $target
           .attr('data-selector', dataSelector)
           .attr('aria-describedby', dataSelector);
       }
 
-      return dataSelector;
+      return (id && id.length > 0) ? id : dataSelector;
     },
 
     create : function ($target) {

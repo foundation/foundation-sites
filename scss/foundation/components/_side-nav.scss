@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import 'global';
+@import "global";
 
 //
 // @variables
@@ -40,7 +40,7 @@ $side-nav-heading-text-transform: uppercase !default;
 // We use these to control border styles
 $side-nav-divider-size: 1px !default;
 $side-nav-divider-style: solid !default;
-$side-nav-divider-color: scale-color($white, $lightness: -10%) !default;
+$side-nav-divider-color: scale-color($white, $lightness: 10%) !default;
 
 
 //
@@ -62,20 +62,20 @@ $side-nav-divider-color: scale-color($white, $lightness: -10%) !default;
   $link-color-hover:$side-nav-link-color-hover,
   $link-bg-hover:$side-nav-link-bg-hover) {
   display: block;
-  font-family: $side-nav-font-family;
-  list-style-position: $side-nav-list-position;
-  list-style-type: $side-nav-list-type;
   margin: 0;
   padding: $side-nav-padding;
+  list-style-type: $side-nav-list-type;
+  list-style-position: $side-nav-list-position;
+  font-family: $side-nav-font-family;
 
   li {
+    margin: $side-nav-list-margin;
     font-size: $font-size;
     font-weight: $side-nav-font-weight;
-    margin: $side-nav-list-margin;
 
     a:not(.button) {
-      color: $link-color;
       display: block;
+      color: $link-color;
       margin: $side-nav-link-margin;
       padding: $side-nav-link-padding;
       &:hover,
@@ -90,15 +90,15 @@ $side-nav-divider-color: scale-color($white, $lightness: -10%) !default;
 
     &.active > a:first-child:not(.button) {
       color: $side-nav-link-color-active;
-      font-family: $side-nav-font-family-active;
       font-weight: $side-nav-font-weight-active;
+      font-family: $side-nav-font-family-active;
     }
 
     &.divider {
       border-top: $side-nav-divider-size $side-nav-divider-style;
       height: 0;
-      list-style: none;
       padding: 0;
+      list-style: none;
       border-top-color: $divider-color;
     }
 

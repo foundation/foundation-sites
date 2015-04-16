@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import 'global';
+@import "global";
 
 //
 // Breadcrumb Variables
@@ -41,13 +41,13 @@ $crumb-slash: "/" !default;
 
 // We use this mixin to create a container around our breadcrumbs
 @mixin crumb-container {
+  display: block;
+  padding: $crumb-padding;
+  overflow: hidden;
+  margin-#{$default-float}: 0;
+  list-style: none;
   border-style: $crumb-border-style;
   border-width: $crumb-border-size;
-  display: block;
-  list-style: none;
-  margin-#{$default-float}: 0;
-  overflow: hidden;
-  padding: $crumb-padding;
 
   // We control which background color and border come through.
   background-color: $crumb-bg;
@@ -58,12 +58,12 @@ $crumb-slash: "/" !default;
 @mixin crumbs {
 
   // A normal state will make the links look and act like clickable breadcrumbs.
-  color: $crumb-font-color;
+  margin: 0;
   float: $default-float;
   font-size: $crumb-font-size;
   line-height: $crumb-font-size;
-  margin: 0;
   text-transform: $crumb-font-transform;
+  color: $crumb-font-color;
 
   &:hover a, &:focus a { text-decoration: $crumb-link-decor; }
 
@@ -73,11 +73,11 @@ $crumb-slash: "/" !default;
 
   // Current is for the link of the current page
   &.current {
-    color: $crumb-font-color-current;
     cursor: $cursor-default-value;
+    color: $crumb-font-color-current;
     a {
-      color: $crumb-font-color-current;
       cursor: $cursor-default-value;
+      color: $crumb-font-color-current;
     }
 
     &:hover, &:hover a,
@@ -93,15 +93,15 @@ $crumb-slash: "/" !default;
     &:hover a,
     &:focus,
     a:focus {
+      text-decoration: none;
       color: $crumb-font-color-unavailable;
       cursor: $cursor-disabled-value;
-      text-decoration: none;
     }
   }
 
   &:before {
-    color: $crumb-slash-color;
     content: "#{$crumb-slash}";
+    color: $crumb-slash-color;
     margin: 0 $crumb-side-padding;
     position: relative;
     top: 1px;
