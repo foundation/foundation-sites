@@ -20,7 +20,7 @@ $callout-border-darken: -11% !default;
 
 /// Default bottom margin for callouts.
 /// @type Number
-$callout-margin:0 0 1rem 0 !default;
+$callout-margin: 0 0 1rem 0 !default;
 
 /// Default inner padding for callouts.
 /// @type Number
@@ -30,26 +30,17 @@ $callout-padding: 1rem !default;
 /// @type Color
 $callout-font-color: $body-font-color !default;
 
-/// Default alternate font color for callouts.
+/// Default font color for callouts, if the callout has a dark background.
 /// @type Color
 $callout-font-color-alt: $body-background !default;
 
-/// Default color for callout links.
-/// @type Color
-$callout-callout-link-color: $primary-color !default;
-
-/// Default color for callout links on hover.
-/// @type Color
-$callout-callout-link-color-hover: scale-color($callout-callout-link-color, $lightness: -14%) !default;
-
-/// Sets padding and margin for callouts.
-/// @param {Number} $padding [$callout-padding] - Inner padding for callouts.
-/// @param {Number} $margin [$callout-margin] - Margin for callouts.
+/// Adds basic styles for a callout, including padding and margin.
+/// @param {Number} $padding [$callout-padding] - Padding inside the callout.
+/// @param {Number} $margin [$callout-margin] - Margin around the callout.
 @mixin callout-layout(
   $padding: $callout-padding,
   $margin: $callout-margin
   ) {
-  
   margin: $callout-margin;
   padding: $padding;
   position: relative;
@@ -57,52 +48,62 @@ $callout-callout-link-color-hover: scale-color($callout-callout-link-color, $lig
   // Respect the padding, fool.
   > :first-child { margin-top: 0; }
   > :last-child { margin-bottom: 0; }
-
-  // Resets header line-heights for callouts
-  h1, h2, h3, h4, h5, h6 {
-    line-height: 1; margin: $callout-margin / 2;
-    &.subheader { line-height: 1.4; }
-  }
 }
 
-/// Sets styles for callouts
-/// @param {Color} $background [$callout-background] - The background color for callouts.
-/// @param {List} $border [$callout-border] - The border color for callouts.
+/// Adds styles for callouts.
+/// @param {Color} $background [$callout-background] - Background color for the callout.
+/// @param {List} $border [$callout-border] - Border around the callout.
+/// @param {Color} $link-color [false] - Color for links inside the callout. Set to `false` to disable this.
 @mixin callout-style(
   $background: $callout-background, 
-  $border: $callout-border
-  ) {
-
+  $border: $callout-border,
+  $link-color: false
+) {
   $background-lightness: lightness($background);
+  $color: foreground($background, $callout-font-color, $callout-font-color-alt);
+
   border: $border;   
   background: $background;
+  color: $color;
 
-  @if $background-lightness >= 30% { color: $callout-font-color; }
-  @else { color: $callout-font-color-alt; }
+  @if $link-color {
+    a {
+      color: $link-color;
 
-  // Adjusts the font color based on the darkness of the background.
-  @if $background-lightness >= 60% {
-    h1, h2, h3, h4, h5, h6, p, li, dl { color: $callout-font-color; }
-  }
-  @else {
-    h1, h2, h3, h4, h5, h6, p, li, dl { color: $callout-font-color-alt; }
-  }
-
-}
-
-.callout { 
-  @include callout-layout;
-  @include callout-style;
-  @each $name, $color in $foundation-colors {
-    &.#{$name} {
-      @include callout-style( $background: scale-color( $color, $lightness: $callout-background-fade ), $border: 1px solid scale-color( $color, $lightness: $callout-border-darken ));
-      a, button {
-        color: scale-color( $color, $lightness: -10% );
-        &:hover {
-          color: scale-color( $color, $lightness: -30% );
-        }
+      &:hover {
+        color: darken($link-color, 10%);
       }
     }
   }
 }
 
+@mixin callout(
+  $padding: $callout-padding,
+  $margin: $callout-margin,
+  $background: $callout-background, 
+  $border: $callout-border
+) {
+  @include callout-layout($padding, $margin);
+  @include callout-style($background, $border);
+}
+
+@mixin foundation-callout {
+  .callout { 
+    @include callout-layout;
+    @include callout-style;
+
+    @each $name, $color in $foundation-colors {
+      &.#{$name} {
+        $background: scale-color($color, $lightness: $callout-background-fade);
+        $border: 1px solid scale-color($color, $lightness: $callout-border-darken);
+        $link-color: scale-color($color, $lightness: -10%);
+
+        @include callout-style(
+          $background: $background,
+          $border: $border,
+          $link-color: $link-color
+        );
+      }
+    }
+  }
+}
