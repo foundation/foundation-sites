@@ -2,7 +2,6 @@
 /// @group functions
 ////
 
-/// Map Serialize
 /// Converts a Sass map to a URL-encoded string, like this: `key1=value1&key2=value2`. We use this function to encode the media queries in the `$breakpoints` variable, so it can be transferred to our JavaScript for use there.
 ///
 /// @param {map} $map - Map to convert.
@@ -18,7 +17,6 @@
   @return $str;
 }
 
-/// Map Next
 /// Find the next key in a map.
 ///
 /// @param {map} $map - Map to traverse.
