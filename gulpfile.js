@@ -61,6 +61,7 @@ gulp.task('html:map', function() {
     src: 'docs/pages/**/*.md',
     template: 'docs/layout/component.html',
     adapters: ['sass', 'js'],
+    handlebars: require('./lib/handlebars'),
     debug: 'data.json'
   });
 });

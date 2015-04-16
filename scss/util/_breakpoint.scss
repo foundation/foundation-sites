@@ -121,6 +121,7 @@ $breakpoint-classes: (small medium large) !default;
 ///  - If a rem value is passed, the unit will be changed to em.
 ///  - If an em value is passed, the value will be used as-is.
 /// Passing in additional parameters will add additional values to the media query.
+/// @content
 /// @param {Keyword|Number} $values... - Breakpoint name, or px, rem, or em value to process.
 /// @output If the breakpoint is "0px and larger", outputs the content. Otherwise, outputs the content wrapped in a media query.
 @mixin breakpoint($values...) {

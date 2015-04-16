@@ -41,6 +41,7 @@ $exports-used: () !default;
 
 /// Outputs the chunk of content passed if component $name hasn't yet been output.
 /// This prevents code duplication by keeping track of which components have already been output.
+/// @content
 /// @param {string} $name - Name of component to output
 /// @output The content passed, if the component has not yet been exported.
 @mixin export($name) {

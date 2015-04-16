@@ -3,7 +3,7 @@
 ////
 
 /// Change the behavior of columns defined inside this mixin to use a different column count.
-///
+/// @content
 /// @param {Number} $columns - Number of columns to use.
 /// @param {Booleam} $root [false]
 ///   If `false`, selectors inside this mixin will nest inside the parent selector.
@@ -26,7 +26,7 @@
 }
 
 /// Creates a grid row.
-///
+/// @content
 /// @param {Number} $columns [null] - Column count for this row. `null` will use the default column count.
 /// @param {Keywords} $behavior [null]
 ///   Modifications to the default grid styles. `nest` indicates the row will be placed inside another row. `collapse` indicates that the columns inside this row will not have padding. `nest collapse` combines both behaviors.
@@ -73,6 +73,7 @@
 ///   <div class="small-12 columns">
 ///   </div>
 /// </div>
+/// ```
 ///
 /// @param {Number} $width [$grid-row-width] - The maximum width of the column.
 /// @param {Number} $gutter [$grid-column-gutter] - Padding to add to the left and right side.
