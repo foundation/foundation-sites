@@ -2,19 +2,24 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-// Sets the margin for the right side by default, and the left margin if right-to-left direction is used
-$button-bar-margin-opposite: rem-calc(10) !default;
-$button-group-border-width: 1px !default;
-
+/// Margin for button groups.
+/// @type Number
 $buttongroup-margin: 0 1rem 1rem 0;
+
+/// Border between buttons in a button group.
+/// @type Border
 $buttongroup-border: 1px solid $body-background;
+
+/// Selector for the buttons inside a button group.
+/// @type String
 $buttongroup-child-selector: '.button';
+
+/// Maximum number of buttons that can be in an even-width button group.
+/// @type Number
 $buttongroup-expand-max: 6;
 
-//
-// Button Group Mixins
-//
-
+/// Add styles for a button group container.
+/// @param {String} $child-selector [$buttongroup-child-selector] - Selector for the buttons inside a button group.
 @mixin button-group(
   $child-selector: $buttongroup-child-selector
 ) {
@@ -32,6 +37,8 @@ $buttongroup-expand-max: 6;
   }
 }
 
+/// Changes the size of the buttons inside a button group by adjusting the font size of the container.
+/// @param {Keyword} $size [medium] - Size to apply. Must be one of the named sizes in the `$button-sizes` variable.
 @mixin button-group-size(
   $size: medium
 ) {
@@ -39,6 +46,9 @@ $buttongroup-expand-max: 6;
   font-size: $size;
 }
 
+/// Creates a full-width button group, making each button equal width.
+/// @param {Keyword|Number} $count [auto] - Number of buttons inside the button group. Set to `auto` to generate CSS that will account for a variable number of buttons.
+/// @param {String} $selector [$buttongroup-child-selector] - Selector for the buttons inside a button group.
 @mixin button-group-expand(
   $count: auto,
   $selector: $buttongroup-child-selector
