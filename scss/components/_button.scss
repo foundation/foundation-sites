@@ -45,7 +45,7 @@ $button-sizes: (
   small: 0.8,
   medium: 1,
   large: 1.3,
-  ) !default;
+) !default;
 
 /// Defualt font size for button.
 /// @type Number
@@ -189,6 +189,10 @@ $button-opacity-disabled: 0.5 !default;
     display: inline-block;
     margin-left: get-side($button-padding, right);
     vertical-align: middle;
+  }
+
+  &:empty::after {
+    margin-left: 0;
   }
 }
 

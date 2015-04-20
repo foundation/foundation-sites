@@ -6,162 +6,68 @@
 $button-bar-margin-opposite: rem-calc(10) !default;
 $button-group-border-width: 1px !default;
 
+$buttongroup-margin: 0 1rem 1rem 0;
+$buttongroup-border: 1px solid $body-background;
+$buttongroup-child-selector: '.button';
+$buttongroup-expand-max: 6;
+
 //
 // Button Group Mixins
 //
 
-// We use this to add styles for a button group container
-@mixin button-group-container($styles:true, $float:false) {
-  @if $styles {
-    list-style: none;
+@mixin button-group(
+  $child-selector: $buttongroup-child-selector
+) {
+  @include clearfix;
+
+  margin: $buttongroup-margin;
+
+  #{$child-selector} {
+    float: left;
     margin: 0;
-    #{$default-float}: 0;
-    @include clearfix();
-  }
-  @if $float {
-    float: #{$default-float};
-    margin-#{$opposite-direction}: $button-bar-margin-opposite;
-    & div { overflow: hidden; }
+
+    &:not(:last-child) {
+      border-right: $buttongroup-border;
+    }
   }
 }
 
-// We use this to control styles for button groups
-@mixin button-group-style($radius:false, $even:false, $float:false, $orientation:horizontal) {
+@mixin button-group-size(
+  $size: medium
+) {
+  $size: $button-font-size * map-get($button-sizes, $size);
+  font-size: $size;
+}
 
-  > button, .button {
-    border-#{$default-float}: $button-group-border-width solid;
-    border-color: rgba(255, 255, 255, 0.5);
-  }
+@mixin button-group-expand(
+  $count: auto,
+  $selector: $buttongroup-child-selector
+) {
+  margin-right: 0;
 
-  &:first-child {
-    button, .button {
-      border-#{$default-float}: 0;
-    }
-  }
-
-  // We use this to control the flow, or remove those styles completely.
-  @if $float {
-    margin: 0;
-    float: $float;
-    display: list-item;
-    // Make sure the first child doesn't get the negative margin.
-    &:first-child { margin-#{$default-float}: 0; }
-  }
-  @else {
-    margin: 0 -2px;
-    display: inline-block;
-  }
-
-  @if $orientation == vertical {
-    display:block;
-    margin:0;
-    > button, .button {
-      border-top: $button-group-border-width solid;
-      border-color: rgba(255, 255, 255, 0.5);
-      border-left-width: 0;
-      margin:0;
-      display: block;
-    }
-    > button {
-        width: 100%;
-    }
-
-    &:first-child {
-      button, .button {
-        border-top: 0;
+  #{$selector} {
+    @if $count == auto {
+      @for $i from 2 through $buttongroup-expand-max {
+        &:nth-last-child(#{$i}):first-child,
+        &:nth-last-child(#{$i}):first-child ~ #{$selector} {
+          width: percentage(1 / $i);
+        }
       }
     }
-  }
-
-  // We use these to control left and right radius on first/last buttons in the group.
-  @if $radius == true {
-    &,
-    & > a,
-    & > button,
-    & > .button { @include radius(0); }
-    &:first-child,
-    &:first-child > a,
-    &:first-child > button,
-    &:first-child > .button {
-      @if $orientation == vertical {
-        @include side-radius(top, $button-radius);
-      }
-      @else {
-        @include side-radius($default-float, $button-radius);
-      }
+    @else if type-of($count) == 'number' {
+      width: percentage(1 / $count);
     }
-    &:last-child,
-    &:last-child > a,
-    &:last-child > button,
-    &:last-child > .button {
-      @if $orientation == vertical {
-        @include side-radius(bottom, $button-radius);
-      }
-      @else {
-        @include side-radius($opposite-direction, $button-radius);
-      }
-    }
-  }
-  @else if $radius {
-    &,
-    & > a,
-    & > button,
-    & > .button { @include radius(0); }
-    &:first-child,
-    &:first-child > a,
-    &:first-child > button,
-    &:first-child > .button {
-      @if $orientation == vertical {
-        @include side-radius(top, $radius);
-      }
-      @else {
-        @include side-radius($default-float, $radius);
-      }
-    }
-    &:last-child,
-    &:last-child > a,
-    &:last-child > button,
-    &:last-child > .button {
-      @if $orientation == vertical {
-        @include side-radius(bottom, $radius);
-      }
-      @else {
-        @include side-radius($opposite-direction, $radius);
-      }
-    }
-  }
-
-  // We use this to make the buttons even width across their container
-  @if $even {
-    width: percentage((100/$even) / 100);
-    button, .button { width: 100%; }
   }
 }
 
 .button-group {
-  @include button-group-container;
+  @include button-group;
 
-  @for $i from 2 through 8 {
-    &.even-#{$i} li { @include button-group-style($even:$i, $float:null); }
-  }
-  
-  & > li { @include button-group-style(); }
+  &.expand { @include button-group-expand; }
 
-  &.stack {
-    & > li { @include button-group-style($orientation:vertical); float: none; }
-  }
+  &.tiny  { @include button-group-size(tiny); }
+  &.small { @include button-group-size(small); }
+  &.large { @include button-group-size(large); }
 
-  &.stack-for-small {
-    & > li {
-      @include button-group-style($orientation:horizontal);
-      @include breakpoint(small only) {
-        @include button-group-style($orientation:vertical);
-      }
-    }
-  }
-}
-
-.button-bar {
-  @include clearfix;
-  .button-group { @include button-group-container($styles:false, $float:true); }
+  // TODO: coloring classes
 }
