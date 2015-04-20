@@ -72,6 +72,20 @@ Add a dropdown arrow to your button with the `.dropdown` class.
 
 ---
 
+## Button Groups
+
+Use button groups to pair a group of related actions. The buttons are separated by a small border.
+
+```html_example
+<ul class="button-group">
+  <li class="button">One</li>
+  <li class="button">Two</li>
+  <li class="button">Three</li>
+</ul>
+```
+
+---
+
 ## Accessibility
 
 Make sure that the text of the button is descriptive. If for some reason, your button contains no readable text (for example, it's just an &times;), add the attribute `aria-label` to the button to clarify its purpose.
