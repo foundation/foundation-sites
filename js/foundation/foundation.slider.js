@@ -161,7 +161,7 @@
 
       $hidden_inputs.val(value);
       if (settings.trigger_input_change) {
-          $hidden_inputs.trigger('change');
+          $hidden_inputs.trigger('change.fndtn.slider');
       }
 
       if (!$handle[0].hasAttribute('aria-valuemin')) {
