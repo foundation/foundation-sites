@@ -5,11 +5,15 @@
   var menubarPlugins = {
     dropdown: {
       cssClass: 'dropdown',
-      plugin: Foundation._plugins.dropdown || null
+      plugin: Foundation._plugins['dropdown'] || null
     },
     drilldown: {
       cssClass: 'drilldown',
-      plugin: Foundation._plugins.drilldown || null
+      plugin: Foundation._plugins['drilldown'] || null
+    },
+    accordion: {
+      cssClass: 'accordion-menu',
+      plugin: Foundation._plugins['accordion-menu'] || null
     }
   }
 
