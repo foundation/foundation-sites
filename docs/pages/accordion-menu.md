@@ -1,15 +1,7 @@
 ---
 title: Accordion Menu
+js: js/foundation.accordionMenu.js
 ---
-
-<style>
-  .is-accordion-menu {
-
-  }
-  .is-submenu-open {
-
-  }
-</style>
 
 <div class="vertical menu-bar" data-accordion-menu>
   <li class="has-submenu">
@@ -27,6 +19,12 @@ title: Accordion Menu
       <li><a href="#">Item 1C</a></li>
     </ul>
   </li>
-  <li><a href="#">Item 2</a></li>
+  <li class="has-submenu">
+    <a href="#">Item 2</a>
+    <ul class="menu-bar vertical nested" data-submenu>
+      <li><a href="#">Item 2A</a></li>
+      <li><a href="#">Item 2B</a></li>
+    </ul>
+  </li>
   <li><a href="#">Item 3</a></li>
 </div>
