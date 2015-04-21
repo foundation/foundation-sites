@@ -118,43 +118,57 @@ Wrap a group of checkboxes or radio buttons in a `<fieldset>` element, and give 
 
 Sometimes you want a form with labels to the left of your inputs. Piece of cake! You can put the label inside a different column to the left of the input. Then add a class of .right to the label to have it align to the right.
 
-```html_example
+```html
 <form>
   <div class="row">
-    <div class="small-8 columns">
-      <div class="row">
-        <div class="small-3 columns">
-          <label for="right-label" class="right">Label</label>
-        </div>
-        <div class="small-9 columns">
-          <input type="text" id="right-label" placeholder="Right-aligned text input">
-        </div>
-      </div>
+    <div class="small-3 columns">
+      <label for="right-label" class="right">Label</label>
+    </div>
+    <div class="small-9 columns">
+      <input type="text" id="right-label" placeholder="Right-aligned text input">
     </div>
   </div>
 </form>
 ```
+
+<div class="medium-8 column-row">
+  <div class="row">
+    <div class="small-3 columns">
+      <label for="right-label" class="right">Label</label>
+    </div>
+    <div class="small-9 columns">
+      <input type="text" id="right-label" placeholder="Right-aligned text input">
+    </div>
+  </div>
+</div>
 
 ---
 
 Add the `.middle` class to vertically align the label with its input.
 
-```html_example
+```html
 <form>
   <div class="row">
-    <div class="small-8 columns">
-      <div class="row">
-        <div class="small-3 columns">
-          <label for="middle-label" class="right middle">Label</label>
-        </div>
-        <div class="small-9 columns">
-          <input type="text" id="middle-label" placeholder="Right- and middle-aligned text input">
-        </div>
-      </div>
+    <div class="small-3 columns">
+      <label for="middle-label" class="right middle">Label</label>
+    </div>
+    <div class="small-9 columns">
+      <input type="text" id="middle-label" placeholder="Right- and middle-aligned text input">
     </div>
   </div>
 </form>
 ```
+
+<div class="medium-8 column-row">
+  <div class="row">
+    <div class="small-3 columns">
+      <label for="middle-label" class="right middle">Label</label>
+    </div>
+    <div class="small-9 columns">
+      <input type="text" id="middle-label" placeholder="Right- and middle-aligned text input">
+    </div>
+  </div>
+</div>
 
 ---
 
