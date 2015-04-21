@@ -2,6 +2,9 @@
   "name": "zurb-foundation",
   "version": "6.0.0-alpha",
   "main": "js/foundation/foundation.js",
+  "scripts": {
+    "start": "gulp"
+  },
   "dependencies": {
     "jquery": ">= 2.1.0"
   },

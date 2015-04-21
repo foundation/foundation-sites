@@ -4,10 +4,21 @@ description: The badge is a basic component that displays a number. It's useful 
 sass: scss/components/_badge.scss
 ---
 
-## Usage
+## Basics
+
+Add the `.badge` class to an element to create a badge.
 
 ```html_example
 <span class="badge">1</span>
+```
+
+---
+
+## Coloring
+
+Badges can be colored with the same classes used for buttons and other components.
+
+```html_example
 <span class="secondary badge">2</span>
 <span class="success badge">3</span>
 <span class="alert badge">A</span>
@@ -17,6 +28,8 @@ sass: scss/components/_badge.scss
 ---
 
 ### With Icons
+
+An icon can be used in place of text.
 
 ```html_example
 <span class="info badge"><i class="fi-share"></i></span>
