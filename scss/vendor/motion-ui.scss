@@ -1,0 +1,448 @@
+@keyframes shake {
+  0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90% {
+    transform: translateX(7%); }
+
+  5%, 15%, 25%, 35%, 45%, 55%, 65%, 75%, 85%, 95% {
+    transform: translateX(-7%); }
+
+  100% {
+    transform: translateX(0); } }
+
+@keyframes spin-cw {
+  0% {
+    transform: rotate(0deg); }
+
+  100% {
+    transform: rotate(360deg); } }
+
+@keyframes spin-ccw {
+  0% {
+    transform: rotate(0deg); }
+
+  100% {
+    transform: rotate(-360deg); } }
+
+@keyframes wiggle {
+  40%, 50%, 60% {
+    transform: rotate(7deg); }
+
+  35%, 45%, 55%, 65% {
+    transform: rotate(-7deg); }
+
+  0%, 30%, 70%, 100% {
+    transform: rotate(0); } }
+
+/*
+  Transitions
+*/
+.slideInDown.ng-enter, .slideInDown.ng-hide-remove {
+  transition-duration: 500ms;
+  transition-timing-function: ease;
+  transition-delay: 0;
+  transition-property: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateY(-100%); }
+.slideInDown.ng-enter.ng-enter-active, .slideInDown.ng-hide-remove.ng-hide-remove-active {
+  transform: translateX(0) translateY(0); }
+
+.slideInLeft.ng-enter, .slideInLeft.ng-hide-remove {
+  transition-duration: 500ms;
+  transition-timing-function: ease;
+  transition-delay: 0;
+  transition-property: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateX(100%); }
+.slideInLeft.ng-enter.ng-enter-active, .slideInLeft.ng-hide-remove.ng-hide-remove-active {
+  transform: translateX(0) translateY(0); }
+
+.slideInUp.ng-enter, .slideInUp.ng-hide-remove {
+  transition-duration: 500ms;
+  transition-timing-function: ease;
+  transition-delay: 0;
+  transition-property: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateY(100%); }
+.slideInUp.ng-enter.ng-enter-active, .slideInUp.ng-hide-remove.ng-hide-remove-active {
+  transform: translateX(0) translateY(0); }
+
+.slideInRight.ng-enter, .slideInRight.ng-hide-remove {
+  transition-duration: 500ms;
+  transition-timing-function: ease;
+  transition-delay: 0;
+  transition-property: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateX(-100%); }
+.slideInRight.ng-enter.ng-enter-active, .slideInRight.ng-hide-remove.ng-hide-remove-active {
+  transform: translateX(0) translateY(0); }
+
+.slideOutBottom.ng-leave, .slideOutBottom.ng-hide-add {
+  transition-duration: 500ms;
+  transition-timing-function: ease;
+  transition-delay: 0;
+  transition-property: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateX(0) translateY(0); }
+.slideOutBottom.ng-leave.ng-leave-active, .slideOutBottom.ng-hide-add.ng-hide-add-active {
+  transform: translateY(100%); }
+
+.slideOutRight.ng-leave, .slideOutRight.ng-hide-add {
+  transition-duration: 500ms;
+  transition-timing-function: ease;
+  transition-delay: 0;
+  transition-property: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateX(0) translateY(0); }
+.slideOutRight.ng-leave.ng-leave-active, .slideOutRight.ng-hide-add.ng-hide-add-active {
+  transform: translateX(100%); }
+
+.slideOutUp.ng-leave, .slideOutUp.ng-hide-add {
+  transition-duration: 500ms;
+  transition-timing-function: ease;
+  transition-delay: 0;
+  transition-property: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateX(0) translateY(0); }
+.slideOutUp.ng-leave.ng-leave-active, .slideOutUp.ng-hide-add.ng-hide-add-active {
+  transform: translateY(-100%); }
+
+.slideOutLeft.ng-leave, .slideOutLeft.ng-hide-add {
+  transition-duration: 500ms;
+  transition-timing-function: ease;
+  transition-delay: 0;
+  transition-property: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateX(0) translateY(0); }
+.slideOutLeft.ng-leave.ng-leave-active, .slideOutLeft.ng-hide-add.ng-hide-add-active {
+  transform: translateX(-100%); }
+
+.fadeIn.ng-enter, .fadeIn.ng-hide-remove {
+  transition-duration: 500ms;
+  transition-timing-function: ease;
+  transition-delay: 0;
+  transition-property: opacity;
+  opacity: 0; }
+.fadeIn.ng-enter.ng-enter-active, .fadeIn.ng-hide-remove.ng-hide-remove-active {
+  opacity: 1; }
+
+.fadeOut.ng-leave, .fadeOut.ng-hide-add {
+  transition-duration: 500ms;
+  transition-timing-function: ease;
+  transition-delay: 0;
+  transition-property: opacity;
+  opacity: 1; }
+.fadeOut.ng-leave.ng-leave-active, .fadeOut.ng-hide-add.ng-hide-add-active {
+  opacity: 0; }
+
+.hingeInFromTop.ng-enter, .hingeInFromTop.ng-hide-remove {
+  transition-duration: 500ms;
+  transition-timing-function: ease;
+  transition-delay: 0;
+  transition-property: transform, opacity;
+  transform: perspective(2000px) rotateX(-90deg);
+  transform-origin: top;
+  opacity: 0; }
+.hingeInFromTop.ng-enter.ng-enter-active, .hingeInFromTop.ng-hide-remove.ng-hide-remove-active {
+  transform: rotate(0deg);
+  opacity: 1; }
+
+.hingeInFromRight.ng-enter, .hingeInFromRight.ng-hide-remove {
+  transition-duration: 500ms;
+  transition-timing-function: ease;
+  transition-delay: 0;
+  transition-property: transform, opacity;
+  transform: perspective(2000px) rotateY(-90deg);
+  transform-origin: right;
+  opacity: 0; }
+.hingeInFromRight.ng-enter.ng-enter-active, .hingeInFromRight.ng-hide-remove.ng-hide-remove-active {
+  transform: rotate(0deg);
+  opacity: 1; }
+
+.hingeInFromBottom.ng-enter, .hingeInFromBottom.ng-hide-remove {
+  transition-duration: 500ms;
+  transition-timing-function: ease;
+  transition-delay: 0;
+  transition-property: transform, opacity;
+  transform: perspective(2000px) rotateX(90deg);
+  transform-origin: bottom;
+  opacity: 0; }
+.hingeInFromBottom.ng-enter.ng-enter-active, .hingeInFromBottom.ng-hide-remove.ng-hide-remove-active {
+  transform: rotate(0deg);
+  opacity: 1; }
+
+.hingeInFromLeft.ng-enter, .hingeInFromLeft.ng-hide-remove {
+  transition-duration: 500ms;
+  transition-timing-function: ease;
+  transition-delay: 0;
+  transition-property: transform, opacity;
+  transform: perspective(2000px) rotateY(90deg);
+  transform-origin: left;
+  opacity: 0; }
+.hingeInFromLeft.ng-enter.ng-enter-active, .hingeInFromLeft.ng-hide-remove.ng-hide-remove-active {
+  transform: rotate(0deg);
+  opacity: 1; }
+
+.hingeInFromMiddleX.ng-enter, .hingeInFromMiddleX.ng-hide-remove {
+  transition-duration: 500ms;
+  transition-timing-function: ease;
+  transition-delay: 0;
+  transition-property: transform, opacity;
+  transform: perspective(2000px) rotateX(-90deg);
+  transform-origin: center;
+  opacity: 0; }
+.hingeInFromMiddleX.ng-enter.ng-enter-active, .hingeInFromMiddleX.ng-hide-remove.ng-hide-remove-active {
+  transform: rotate(0deg);
+  opacity: 1; }
+
+.hingeInFromMiddleY.ng-enter, .hingeInFromMiddleY.ng-hide-remove {
+  transition-duration: 500ms;
+  transition-timing-function: ease;
+  transition-delay: 0;
+  transition-property: transform, opacity;
+  transform: perspective(2000px) rotateY(-90deg);
+  transform-origin: center;
+  opacity: 0; }
+.hingeInFromMiddleY.ng-enter.ng-enter-active, .hingeInFromMiddleY.ng-hide-remove.ng-hide-remove-active {
+  transform: rotate(0deg);
+  opacity: 1; }
+
+.hingeOutFromTop.ng-leave, .hingeOutFromTop.ng-hide-add {
+  transition-duration: 500ms;
+  transition-timing-function: ease;
+  transition-delay: 0;
+  transition-property: transform, opacity;
+  transform: rotate(0deg);
+  transform-origin: top;
+  opacity: 1; }
+.hingeOutFromTop.ng-leave.ng-leave-active, .hingeOutFromTop.ng-hide-add.ng-hide-add-active {
+  transform: perspective(2000px) rotateX(-90deg);
+  opacity: 0; }
+
+.hingeOutFromRight.ng-leave, .hingeOutFromRight.ng-hide-add {
+  transition-duration: 500ms;
+  transition-timing-function: ease;
+  transition-delay: 0;
+  transition-property: transform, opacity;
+  transform: rotate(0deg);
+  transform-origin: right;
+  opacity: 1; }
+.hingeOutFromRight.ng-leave.ng-leave-active, .hingeOutFromRight.ng-hide-add.ng-hide-add-active {
+  transform: perspective(2000px) rotateY(-90deg);
+  opacity: 0; }
+
+.hingeOutFromBottom.ng-leave, .hingeOutFromBottom.ng-hide-add {
+  transition-duration: 500ms;
+  transition-timing-function: ease;
+  transition-delay: 0;
+  transition-property: transform, opacity;
+  transform: rotate(0deg);
+  transform-origin: bottom;
+  opacity: 1; }
+.hingeOutFromBottom.ng-leave.ng-leave-active, .hingeOutFromBottom.ng-hide-add.ng-hide-add-active {
+  transform: perspective(2000px) rotateX(90deg);
+  opacity: 0; }
+
+.hingeOutFromLeft.ng-leave, .hingeOutFromLeft.ng-hide-add {
+  transition-duration: 500ms;
+  transition-timing-function: ease;
+  transition-delay: 0;
+  transition-property: transform, opacity;
+  transform: rotate(0deg);
+  transform-origin: left;
+  opacity: 1; }
+.hingeOutFromLeft.ng-leave.ng-leave-active, .hingeOutFromLeft.ng-hide-add.ng-hide-add-active {
+  transform: perspective(2000px) rotateY(90deg);
+  opacity: 0; }
+
+.hingeOutFromMiddleX.ng-leave, .hingeOutFromMiddleX.ng-hide-add {
+  transition-duration: 500ms;
+  transition-timing-function: ease;
+  transition-delay: 0;
+  transition-property: transform, opacity;
+  transform: rotate(0deg);
+  transform-origin: center;
+  opacity: 1; }
+.hingeOutFromMiddleX.ng-leave.ng-leave-active, .hingeOutFromMiddleX.ng-hide-add.ng-hide-add-active {
+  transform: perspective(2000px) rotateX(-90deg);
+  opacity: 0; }
+
+.hingeOutFromMiddleY.ng-leave, .hingeOutFromMiddleY.ng-hide-add {
+  transition-duration: 500ms;
+  transition-timing-function: ease;
+  transition-delay: 0;
+  transition-property: transform, opacity;
+  transform: rotate(0deg);
+  transform-origin: center;
+  opacity: 1; }
+.hingeOutFromMiddleY.ng-leave.ng-leave-active, .hingeOutFromMiddleY.ng-hide-add.ng-hide-add-active {
+  transform: perspective(2000px) rotateY(-90deg);
+  opacity: 0; }
+
+.zoomIn.ng-enter, .zoomIn.ng-hide-remove {
+  transition-duration: 500ms;
+  transition-timing-function: ease;
+  transition-delay: 0;
+  transition-property: transform, property;
+  transform: scale(1.5);
+  opacity: 0; }
+.zoomIn.ng-enter.ng-enter-active, .zoomIn.ng-hide-remove.ng-hide-remove-active {
+  transform: scale(1);
+  opacity: 1; }
+
+.zoomOut.ng-leave, .zoomOut.ng-hide-add {
+  transition-duration: 500ms;
+  transition-timing-function: ease;
+  transition-delay: 0;
+  transition-property: transform, property;
+  transform: scale(0.5);
+  opacity: 1; }
+.zoomOut.ng-leave.ng-leave-active, .zoomOut.ng-hide-add.ng-hide-add-active {
+  transform: scale(1);
+  opacity: 0; }
+
+.spinIn.ng-enter, .spinIn.ng-hide-remove {
+  transition-property: transform, opacity;
+  transform: rotate(-270deg);
+  opacity: 0; }
+.spinIn.ng-enter.ng-enter-active, .spinIn.ng-hide-remove.ng-hide-remove-active {
+  transform: rotate(0);
+  opacity: 1; }
+
+.spinOut.ng-leave, .spinOut.ng-hide-add {
+  transition-property: transform, opacity;
+  transform: rotate(0);
+  opacity: 1; }
+.spinOut.ng-leave.ng-leave-active, .spinOut.ng-hide-add.ng-hide-add-active {
+  transform: rotate(270deg);
+  opacity: 0; }
+
+.spinInCCW.ng-enter, .spinInCCW.ng-hide-remove {
+  transition-property: transform, opacity;
+  transform: rotate(270deg);
+  opacity: 0; }
+.spinInCCW.ng-enter.ng-enter-active, .spinInCCW.ng-hide-remove.ng-hide-remove-active {
+  transform: rotate(0);
+  opacity: 1; }
+
+.spinOutCCW.ng-leave, .spinOutCCW.ng-hide-add {
+  transition-property: transform, opacity;
+  transform: rotate(0);
+  opacity: 1; }
+.spinOutCCW.ng-leave.ng-leave-active, .spinOutCCW.ng-hide-add.ng-hide-add-active {
+  transform: rotate(-270deg);
+  opacity: 0; }
+
+/*
+  Transition modifiers
+*/
+.slow {
+  transition-duration: 750ms !important; }
+
+.fast {
+  transition-duration: 250ms !important; }
+
+.linear {
+  transition-timing-function: linear !important; }
+
+.ease {
+  transition-timing-function: ease !important; }
+
+.easeIn {
+  transition-timing-function: ease-in !important; }
+
+.easeOut {
+  transition-timing-function: ease-out !important; }
+
+.easeInOut {
+  transition-timing-function: ease-in-out !important; }
+
+.bounceIn {
+  transition-timing-function: cubic-bezier(0.485, 0.155, 0.24, 1.245) !important; }
+
+.bounceOut {
+  transition-timing-function: cubic-bezier(0.485, 0.155, 0.515, 0.845) !important; }
+
+.bounceInOut {
+  transition-timing-function: cubic-bezier(0.76, -0.245, 0.24, 1.245) !important; }
+
+.delay {
+  transition-delay: 300ms !important; }
+
+.long-delay {
+  transition-delay: 700ms !important; }
+
+/*
+  Animations
+*/
+.shake {
+  animation-name: shake;
+  animation-duration: 500ms;
+  animation-timing-function: ease;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+  animation-delay: 0; }
+
+.spin-cw {
+  animation-name: spin-cw;
+  animation-duration: 500ms;
+  animation-timing-function: ease;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+  animation-delay: 0; }
+
+.spin-ccw {
+  animation-name: spin-ccw;
+  animation-duration: 500ms;
+  animation-timing-function: ease;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+  animation-delay: 0; }
+
+.wiggle {
+  animation-name: wiggle;
+  animation-duration: 500ms;
+  animation-timing-function: ease;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+  animation-delay: 0; }
+
+/*
+  Animation modifiers
+*/
+.shake.infinite, .spin-cw.infinite, .spin-ccw.infinite, .wiggle.infinite {
+  animation-iteration-count: infinite; }
+.shake.linear, .spin-cw.linear, .spin-ccw.linear, .wiggle.linear {
+  animation-timing-function: linear !important; }
+.shake.ease, .spin-cw.ease, .spin-ccw.ease, .wiggle.ease {
+  animation-timing-function: ease !important; }
+.shake.easeIn, .spin-cw.easeIn, .spin-ccw.easeIn, .wiggle.easeIn {
+  animation-timing-function: ease-in !important; }
+.shake.easeOut, .spin-cw.easeOut, .spin-ccw.easeOut, .wiggle.easeOut {
+  animation-timing-function: ease-out !important; }
+.shake.easeInOut, .spin-cw.easeInOut, .spin-ccw.easeInOut, .wiggle.easeInOut {
+  animation-timing-function: ease-in-out !important; }
+.shake.bounceIn, .spin-cw.bounceIn, .spin-ccw.bounceIn, .wiggle.bounceIn {
+  animation-timing-function: cubic-bezier(0.485, 0.155, 0.24, 1.245) !important; }
+.shake.bounceOut, .spin-cw.bounceOut, .spin-ccw.bounceOut, .wiggle.bounceOut {
+  animation-timing-function: cubic-bezier(0.485, 0.155, 0.515, 0.845) !important; }
+.shake.bounceInOut, .spin-cw.bounceInOut, .spin-ccw.bounceInOut, .wiggle.bounceInOut {
+  animation-timing-function: cubic-bezier(0.76, -0.245, 0.24, 1.245) !important; }
+.shake.slow, .spin-cw.slow, .spin-ccw.slow, .wiggle.slow {
+  animation-duration: 750ms !important; }
+.shake.fast, .spin-cw.fast, .spin-ccw.fast, .wiggle.fast {
+  animation-duration: 250ms !important; }
+.shake.delay, .spin-cw.delay, .spin-ccw.delay, .wiggle.delay {
+  animation-delay: 300ms !important; }
+.shake.long-delay, .spin-cw.long-delay, .spin-ccw.long-delay, .wiggle.long-delay {
+  animation-delay: 700ms !important; }
+
+.stagger {
+  transition-delay: 150ms;
+  transition-duration: 0; }
+
+.stort-stagger {
+  transition-delay: 150ms;
+  transition-duration: 0; }
+
+.long-stagger {
+  transition-delay: 150ms;
+  transition-duration: 0; }

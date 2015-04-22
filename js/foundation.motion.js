@@ -10,12 +10,12 @@
     'otransitionend', 'transitionend'
   ];
 
-  function animate(isIn, element, animation) {
+  function animate(isIn, element, animation, cb) {
     element = $(element);
 
     if (!element.length) return;
 
-    reset(element);
+    reset();
 
     var initClass = isIn ? initClasses[0] : initClasses[1];
     var activeClass = isIn ? activeClasses[0] : activeClasses[1];
@@ -41,6 +41,7 @@
       reset();
       element[0].style.transitionDuration = '';
       if (!isIn) element.hide(0);
+      if (cb) cb();
     });
 
     function reflow() {
@@ -53,12 +54,12 @@
     }
   }
 
-  motion.animateIn = function(element, animation) { 
-    animate(true, element, animation);
+  motion.animateIn = function(element, animation, cb) { 
+    animate(true, element, animation, cb);
   }
 
-  motion.animateOut = function(element, animation) {
-    animate(false, element, animation);
+  motion.animateOut = function(element, animation, cb) {
+    animate(false, element, animation, cb);
   }
 
   Foundation.Motion = motion;
