@@ -239,12 +239,14 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 // We use this mixin to create postfix label styles
 // $bg - Default:$input-prefix-bg || scale-color($white, $lightness: -5%) !default;
 // $is-button - Toggle position settings if prefix is a button. Default: false
-@mixin postfix($bg:$input-prefix-bg, $border:$input-prefix-border-color, $is-button:false) {
+@mixin postfix($bg:$input-prefix-bg, $border-left-hidden:false, $border:$input-prefix-border-color, $is-button:false) {
 
   @if $bg {
     $bg-lightness: lightness($bg);
     background: $bg;
-    border-#{$default-float}: none;
+    @if $border-left-hidden {
+      border-#{$default-float}: none;
+    }
 
     // Control the font color based on background brightness
     @if $bg-lightness > 70%  or $bg == yellow { color: $input-prefix-font-color; }
