@@ -1,99 +1,230 @@
-ul.pagination {
+////
+/// @group pagination
+////
+/*
+/// Default bottom margin of the media object.
+/// @type {Number|List}
+$pagination-margin-bottom: 1rem !default;
+
+/// Default left & right padding of the media item.
+/// @type {Number|List}
+$pagination-padding: 1rem !default;
+
+/// Default media title heading padding of the media item.
+/// @type {Number|List}
+$pagination-padding: 0 !default;
+
+/// Default media object image width on small. Set to 'auto' for original width.
+/// @type {Number|List}
+$pagination: 100% !default;
+
+/// Default media object image margin bottom on small.
+/// @type {Number|List}
+$pagination: 1rem !default;
+*/
+
+
+
+
+
+// We use these to control the pagination container
+$pagination-height: rem-calc(24) !default;
+$pagination-margin: rem-calc(-5) !default;
+
+// We use these to set the list-item properties
+$pagination-li-float: left !default;
+$pagination-li-height: rem-calc(24) !default;
+$pagination-li-font-color: #999999 !default;
+$pagination-li-font-size: rem-calc(14) !default;
+$pagination-li-margin: rem-calc(5) !default;
+
+// We use these for the pagination anchor links
+$pagination-link-padding: rem-calc(1 10 1) !default;
+$pagination-font-color: #999999 !default;
+$pagination-link-active-bg: scale-color(#fff, $lightness: -10%) !default;
+
+// We use these for disabled anchor links
+$pagination-disabled-cursor: not-allowed !default;
+$pagination-disabled-font-color: $pagination-font-color !default;
+$pagination-disabled-background: transparent !default;
+
+// We use these for currently selected anchor links
+$pagination-active-background: $primary-color !default;
+$pagination-active-font-color: #fff !default;
+$pagination-active-font-weight: regular !default;
+$pagination-active-cursor: default !default;
+
+@mixin pagination-container($center:false) {
+  @if $center { text-align: center; }
+}
+
+@mixin pagination-unavailable-item {
+  a, button {
+    cursor: $pagination-disabled-cursor;
+    color: $pagination-disabled-font-color;
+  }
+
+  &:hover a,
+  & a:focus,
+  &:hover button,
+  & button:focus { 
+    background: $pagination-disabled-background; 
+  }
+}
+
+@mixin pagination-current-item($has-anchor: true) {
+  @if $has-anchor {
+    a, button {
+      background: $pagination-active-background;
+      color: $pagination-active-font-color;
+      cursor: $pagination-active-cursor;
+      font-weight: $pagination-active-font-weight;
+
+      &:hover,
+      &:focus { background: $pagination-active-background; }
+    }
+  } @else {
+    background: $pagination-active-background;
+    color: $pagination-active-font-color;
+    cursor: $pagination-active-cursor;
+    font-weight: $pagination-active-font-weight;
+    height: auto;
+    padding: $pagination-link-padding;
+    @include radius;
+
+    &:hover,
+    &:focus { background: $pagination-active-background; }
+  }
+}
+
+
+.pagination {
   display: block;
   margin-left: -0.3125rem;
   min-height: 1.5rem; 
-}
 
-ul.pagination li:hover a,
-ul.pagination li a:focus, 
-ul.pagination li:hover button,
-ul.pagination li button:focus {
-  background: #e6e6e6; 
-}
-
-ul.pagination li a, ul.pagination li button {
-  border-radius: 3px;
-  transition: background-color 300ms ease-out;
-  background: none;
-  color: #999999;
-  display: block;
-  font-size: 1em;
-  font-weight: normal;
-  line-height: inherit;
-  padding: 0.0625rem 0.625rem 0.0625rem; 
-}
-
-ul.pagination li {
-  display: none; 
-}
-
-ul.pagination li:last-child {
-  display: inline-block;
-}
-
-ul.pagination li:first-child {
-  display:inline-block;
+  li {
+    display: none;
+    &:last-child, &:first-child {
+      display: inline-block;
+    }
+    a, button {
+      border-radius: 3px;
+      transition: background-color 300ms ease-out;
+      background: none;
+      color: #999999;
+      display: block;
+      font-size: 1em;
+      font-weight: normal;
+      line-height: inherit;
+      padding: 0.0625rem 0.625rem 0.0625rem; 
+    }
+    &:hover a,
+    a:focus, 
+    &:hover button,
+    button:focus {
+      background: #e6e6e6; 
+    }
+    [aria-label="previous"] { 
+      &:before {
+        color: #999999;
+        content: "⇐";
+        position: relative;
+        display: inline-block;
+        margin: 0 0.75rem; 
+      }
+    }
+    [aria-label="next"] { 
+      &:after {
+        color: #999999;
+        content: "⇒";
+        position: relative;
+        display: inline-block;
+        margin: 0 0.75rem;
+      }
+    }
+  }
+  .ellipsis:after {
+    color: #999999;
+    content: "…";
+    position: relative;
+    display: inline-block;
+    margin: 0 0.75rem;
+  }
 }
 
 .pagination-centered {
   text-align: center; 
-}
 
-ul.pagination-centered li {
-  display: none; 
-}
-
-ul.pagination-centered ul.pagination li:first-child {
-  display:inline-block;
-  width: 100%;
-  a {
-    display: block;
-    width: 100%;
-    padding-left: 150px;
+  li {
+    display: none;
+    &:last-child, &:first-child {
+      display: inline-block;
+    }
   }
 }
 
-ul.pagination-centered ul.pagination li:last-child {
-  display: inline-block;
-}
-
-@include breakpoint(medium) {
-
-  ul.pagination li {
-    color: #222222;
-    font-size: 0.875rem;
-    height: 1.5rem;
-    margin-left: 0.3125rem; 
+  ul.pagination-centered ul.pagination li:first-child {
+    display:inline-block;
   }
 
-  ul.pagination li.disabled a, ul.pagination li.disabled button {
-    cursor: not-allowed;
-    color: #999999; 
-  }
-
-  ul.pagination li.disabled:hover a, ul.pagination li.disabled a:focus, ul.pagination li.disabled:hover button, ul.pagination li.disabled button:focus {
-    background: transparent; 
-  }
-
-  ul.pagination li.is-active a, ul.pagination li.is-active button {
-    background: #008CBA;
-    color: #FFFFFF;
-    cursor: default;
-    font-weight: bold; 
-  }
-
-  ul.pagination li.is-active a:hover, ul.pagination li.is-active a:focus, ul.pagination li.is-active button:hover, ul.pagination li.is-active button:focus {
-    background: #008CBA; 
-  }
-
-  ul.pagination li {
-    display: block;
-    float: left; 
-  }
-
-  .pagination-centered ul.pagination li {
+  ul.pagination-centered ul.pagination li:last-child {
     display: inline-block;
-    float: none; 
   }
-}
+
+
+  /* Accessibility - hides the arrow */
+  [aria-label="pagination"] [aria-hidden="true"]:before {
+    content: "⇐"; }
+
+  /* Accessibility - hides the arrow */
+  [aria-label="pagination"] [aria-hidden="true"]:after {
+    content: "⇒"; }
+
+  [aria-label="pagination"] [aria-hidden="true"]:after {
+    content: "…"; }
+
+  @include breakpoint(medium) {
+
+    ul.pagination li {
+      color: #222222;
+      font-size: 0.875rem;
+      height: 1.5rem;
+      margin-left: 0.3125rem; 
+    }
+
+    ul.pagination li.disabled a, ul.pagination li.disabled button {
+      cursor: not-allowed;
+      color: #999999; 
+    }
+
+    ul.pagination li.disabled:hover a, ul.pagination li.disabled a:focus, ul.pagination li.disabled:hover button, ul.pagination li.disabled button:focus {
+      background: transparent; 
+    }
+
+    ul.pagination li.is-active a, ul.pagination li.is-active button {
+      background: #008CBA;
+      color: #FFFFFF;
+      cursor: default;
+      font-weight: bold; 
+    }
+
+    ul.pagination li.is-active a:hover, ul.pagination li.is-active a:focus, ul.pagination li.is-active button:hover, ul.pagination li.is-active button:focus {
+      background: #008CBA; 
+    }
+
+    ul.pagination li {
+      display: block;
+      float: left; 
+    }
+
+    .pagination-centered ul.pagination li {
+      display: inline-block;
+      float: none; 
+    }
+  }
+
+
+
+
 

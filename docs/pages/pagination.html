@@ -1,19 +1,25 @@
 
+---
+title: Pagination
+description: Pagination is a type of navigation that lets users tap through a series of related pages. Moving between pages has become less common with the advent of longer pages and AJAX loading, but if you need pagination, Foundation has you covered.
+sass: 
+  - scss/components/_pagination.scss
+---
 
-<h1>Pagination</h1>
-<hr>
 
-<nav role="menu" aria-label="pagination">
+
+
+<nav role="navigation" aria-label="pagination">
 	<ul class="pagination">
-	  <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span> Previous</a></li>
+	  <li class="disabled"><a href="#" aria-label="previous">Previous</a></li>
 	  <li class="is-active"><a href="#" aria-label="Page 1, current page">1</a></li>
 	  <li><a href="#" aria-label="Page 2">2</a></li>
 	  <li><a href="#" aria-label="Page 3">3</a></li>
 	  <li><a href="#" aria-label="Page 4">4</a></li>
-	  <li class="disabled"><span aria-hidden="true">&hellip;</span></li>
+	  <li class="disabled ellipsis"></li>
 	  <li><a href="#" aria-label="Page 12">12</a></li>
 	  <li><a href="#" aria-label="Page 13">13</a></li>
-	  <li class=""><a href="#" aria-label="next">Next <span aria-hidden="true">&raquo;</span></a></li>
+	  <li><a href="#" aria-label="next">Next</a></li>
 	</ul>
 </nav>
 
@@ -21,16 +27,16 @@
 <h3>Centered</h3>
 <hr>
 
-<nav role="menu" aria-label="pagination" class="pagination-centered">
+<nav role="navigation" aria-label="pagination" class="pagination-centered">
 	<ul class="pagination">
-	  <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span> Previous</a></li>
+	  <li class="disabled"><a href="#" aria-label="previous">Previous</a></li>
 	  <li class="is-active"><a href="#" aria-label="Page 1, current page">1</a></li>
 	  <li><a href="#" aria-label="Page 2">2</a></li>
 	  <li><a href="#" aria-label="Page 3">3</a></li>
 	  <li><a href="#" aria-label="Page 4">4</a></li>
-	  <li class="disabled"><span aria-hidden="true">&hellip;</span></li>
+	  <li class="disabled ellipsis"></li>
 	  <li><a href="#" aria-label="Page 12">12</a></li>
 	  <li><a href="#" aria-label="Page 13">13</a></li>
-	  <li class=""><a href="#" aria-label="next">Next</a></li>
+	  <li><a href="#" aria-label="next">Next</a></li>
 	</ul>
 </nav>

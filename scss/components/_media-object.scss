@@ -1,39 +1,49 @@
+////
+/// @group media-object
+////
+
+/// Default bottom margin of the media object.
+/// @type {Number|List}
+$media-object-margin-bottom: 1rem !default;
+
+/// Default left & right padding of the media item.
+/// @type {Number|List}
+$media-item-padding: 1rem !default;
+
+/// Default media title heading padding of the media item.
+/// @type {Number|List}
+$media-title-padding: 0 !default;
+
+/// Default media object image width on small. Set to 'auto' for original width.
+/// @type {Number|List}
+$media-object-stack-img-width: 100% !default;
+
+/// Default media object image margin bottom on small.
+/// @type {Number|List}
+$media-object-stack-img-margin: 1rem !default;
+
+/// Generates the base styles for a media object.
 @mixin foundation-media-object {
   .media-object {
-    &:not(:last-child) {
-      margin-bottom: 1rem;
+    &:not(:last-of-type) {
+      margin-bottom: $media-object-margin-bottom;
     }
     display: block;
-    img {
-      max-width: none;
-    }
     .media-item {
       display: table-cell;
       vertical-align: top;
       &:last-child {
-        padding-left: 1rem;
+        padding-left: $media-item-padding;
       }
       &:first-child {
-        padding-right: 1rem;
-      }
-      @include breakpoint(small only) {
-      .stack-for-small {
-        
-          display: block;
-          bottom: 3px solid red;
-        }
+        padding-right: $media-item-padding;
       }
     }
     .media-content {
       display: table-cell;
       vertical-align: top;
       .media-title {
-        padding-top: 0;
-      }
-      @include breakpoint(small only) {
-      .stack-for-small {
-          display: block;
-        }
+        padding: $media-title-padding;
       }
     }
     .middle {
@@ -42,7 +52,20 @@
     .bottom {
       vertical-align: bottom;
       // adjust for bottom margin on media-object
-      padding-bottom: 1rem;
+      padding-bottom: $media-object-margin-bottom;
+    }
+    &.stack-for-small {
+      .media-item, .media-content {
+        @include breakpoint(small only) {
+          display: block;
+          padding: 0;
+          img {
+            width: $media-object-stack-img-width;
+            margin-bottom: $media-object-stack-img-margin;
+          }
+        }
+      }
     }
   }
 }
+
