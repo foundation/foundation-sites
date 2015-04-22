@@ -1,4 +1,24 @@
-<h2>Drilldown</h2>
+---
+title: Drilldown
+js: js/foundation.drilldown.js
+---
+
+## Basics
+
+Drilldowns use the standard [menu bar](menu-bar.html) syntax. Add the attribute `data-drilldown` to the root `<ul>`, and `data-submenu` to each nested menu.
+
+```html
+<ul class="vertical menu-bar" data-drilldown>
+  <li>
+    <a href="#">Item 1</a>
+    <ul class="vertical menu-bar" data-submenu>
+      <!-- ... -->
+    </ul>
+  </li>
+  <li><a href="#">Item 2</a></li>
+  <li><a href="#">Item 3</a></li>
+</ul>
+```
 
 <ul class="vertical menu-bar" data-drilldown style="width: 300px;" id="m1">
   <li>

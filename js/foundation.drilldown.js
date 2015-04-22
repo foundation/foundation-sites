@@ -24,6 +24,11 @@
   }
 
   Drilldown.defaults = {
+    /**
+     * HTML to use for the back button at the top of each sub-menu.
+     * @option
+     * @sample '<li class="js-drilldown-back"><a>Back</a></li>'
+     */
     backButton: '<li class="js-drilldown-back"><a>Back</a></li>'
   };
 
