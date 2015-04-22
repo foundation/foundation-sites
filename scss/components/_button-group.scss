@@ -26,10 +26,12 @@ $buttongroup-expand-max: 6;
   @include clearfix;
 
   margin: $buttongroup-margin;
+  font-size: $button-font-size;
 
   #{$child-selector} {
     float: left;
     margin: 0;
+    font-size: inherit;
 
     &:not(:last-child) {
       border-right: $buttongroup-border;
