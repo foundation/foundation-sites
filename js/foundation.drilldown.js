@@ -33,7 +33,7 @@
      * @private
      */
     _init: function() {
-      this.$container = $('<div class="js-drilldown"></div>');
+      this.$container = $('<div class="is-drilldown"></div>');
       this.$container.css('width', this.$element.css('width'));
       this.$element.wrap(this.$container);
       this._prepareMenu(this.$element, true);
@@ -64,7 +64,7 @@
 
         // If it exists...
         if ($submenu.length) {
-          $submenu.addClass('js-drilldown-sub');
+          $submenu.addClass('is-drilldown-sub');
 
           // Create a trigger to move down the menu
           $(this).children('a').click(function() {
@@ -84,14 +84,18 @@
      * @param {jQuery} $target - Sub menu to activate.
      */
     forward: function($target) {
-      $target.addClass('js-drilldown-active');
-      this.$currentMenu = $target;
+      var _this = this;
 
-      /**
-       * Fires when the menu is done moving forwards.
-       * @event Drilldown#forward
-       */
-      this.$element.trigger('forward.zf.drilldown', [this.$currentMenu]);
+      Foundation.requestAnimationFrame(function() {
+        $target.addClass('is-active');
+        _this.$currentMenu = $target;
+
+        /**
+         * Fires when the menu is done moving forwards.
+         * @event Drilldown#forward
+         */
+        _this.$element.trigger('forward.zf.drilldown', [_this.$currentMenu]);
+      });
     },
 
     /**
@@ -99,14 +103,18 @@
      * @fires Drilldown#backward
      */
     backward: function() {
-      this.$currentMenu.removeClass('js-drilldown-active');
-      this.$currentMenu = this.$currentMenu.parents('[data-drilldown], [data-submenu]');
+      var _this = this;
 
-      /**
-       * Fires when the menu is done moving backwards.
-       * @event Drilldown#backward
-       */
-      this.$element.trigger('backward.zf.drilldown', [this.$currentMenu]);
+      Foundation.requestAnimationFrame(function() {
+        _this.$currentMenu.removeClass('is-active');
+        _this.$currentMenu = _this.$currentMenu.parents('[data-drilldown], [data-submenu]');
+
+        /**
+         * Fires when the menu is done moving backwards.
+         * @event Drilldown#backward
+         */
+        _this.$element.trigger('backward.zf.drilldown', [_this.$currentMenu]);
+      });
     },
 
     /**
@@ -114,9 +122,9 @@
      * @param {Function} cb - Callback to run when the plugin is done being destroyed.
      */
     destroy: function(cb) {
-      this.$element.find('[data-submenu]').removeClass('js-drilldown-sub');
-      this.$currentMenu.removeClass('js-drilldown-active');
-      this.$element.find('.js-drilldown-back').remove();
+      this.$element.find('[data-submenu]').removeClass('is-drilldown-sub');
+      this.$currentMenu.removeClass('is-active');
+      this.$element.find('.is-drilldown-back').remove();
       this.$element.removeData('zf-plugin');
       this.$element.unwrap();
 

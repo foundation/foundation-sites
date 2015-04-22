@@ -1,6 +1,7 @@
 ---
 title: Accordion Menu
 js: js/foundation.accordionMenu.js
+description: Change a basic vertical menu bar into a expandable accordion menu with the Accordion Menu plugin.
 ---
 
 <div class="vertical menu-bar" data-accordion-menu>

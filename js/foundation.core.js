@@ -1,15 +1,41 @@
 !function($) {
-  // Polyfill to get the name of a function in IE9
   "use strict";
-  if (Function.prototype.name === undefined && Object.defineProperty !== undefined) {
-    Object.defineProperty(Function.prototype, 'name', {
-      get: function() {
-        var funcNameRegex = /function\s([^(]{1,})\(/;
-        var results = (funcNameRegex).exec((this).toString());
-        return (results && results.length > 1) ? results[1].trim() : "";
-      },
-      set: function(value) {}
-    });
+
+  // Polyfill for requestAnimationFrame
+  (function() {
+    if (!Date.now)
+      Date.now = function() { return new Date().getTime(); };
+      
+    var vendors = ['webkit', 'moz'];
+    for (var i = 0; i < vendors.length && !window.requestAnimationFrame; ++i) {
+        var vp = vendors[i];
+        window.requestAnimationFrame = window[vp+'RequestAnimationFrame'];
+        window.cancelAnimationFrame = (window[vp+'CancelAnimationFrame']
+                                   || window[vp+'CancelRequestAnimationFrame']);
+    }
+    if (/iP(ad|hone|od).*OS 6/.test(window.navigator.userAgent)
+      || !window.requestAnimationFrame || !window.cancelAnimationFrame) {
+      var lastTime = 0;
+      window.requestAnimationFrame = function(callback) {
+          var now = Date.now();
+          var nextTime = Math.max(lastTime + 16, now);
+          return setTimeout(function() { callback(lastTime = nextTime); },
+                            nextTime - now);
+      };
+      window.cancelAnimationFrame = clearTimeout;
+    }
+  })();
+
+  // Polyfill to get the name of a function in IE9
+  var functionName = function(fn) {
+    if (Function.prototype.name === undefined) {
+      var funcNameRegex = /function\s([^(]{1,})\(/;
+      var results = (funcNameRegex).exec((fn).toString());
+      return (results && results.length > 1) ? results[1].trim() : "";
+    }
+    else {
+      return fn.prototype.constructor.name;
+    }
   }
 
   // Global Foundation object
@@ -32,7 +58,7 @@
      */
     plugin: function(name, plugin) {
       // Add to the Foundation object
-      this[plugin.prototype.constructor.name] = plugin;
+      this[functionName(plugin)] = plugin;
       // Add to the plugins list (for reflowing)
       this._plugins[name] = plugin;
     },
@@ -92,6 +118,7 @@
         });
       });
     },
+
     /**
      * Executes a function a max of once every n milliseconds. Returns a function with throttling applied.
      * @param {Function} func - Function to be throttled.
@@ -111,6 +138,7 @@
         }
       };
     },
+
     /**
      * Generate a unique 16-character id to assign to an element to account for multiple instances of a plugin
      */
@@ -161,6 +189,10 @@
           });
         }
       });
+    },
+
+    requestAnimationFrame: function(fn) {
+      window.requestAnimationFrame(fn);
     }
   };
 
