@@ -93,12 +93,12 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
 // Accessibility mixins for hiding and showing the menu dropdown items
 @mixin topbar-hide-dropdown {
   // Makes an element visually hidden by default, but visible when focused.
-  display: block;
+  @include display(block);
   @include element-invisible();
 }
 
 @mixin topbar-show-dropdown {
-  display: block;
+  @include display(block);
   @include element-invisible-off();
   position: absolute !important; // Reset the position from static to absolute
 }
@@ -167,10 +167,10 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
       .row { max-width: none; }
 
       form,
-      input, 
+      input,
       select { margin-bottom: 0; }
 
-      input, 
+      input,
       select {
         font-size: $topbar-button-font-size;
         height: $topbar-input-height;
@@ -212,7 +212,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
 
           a {
             color: $topbar-link-color;
-            display: block;
+            @include display(block);
             font-weight: $topbar-title-weight;
             padding: 0 $topbar-link-padding;
             width: 75%;
@@ -228,7 +228,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
 
         a {
           color: $topbar-link-color;
-          display: block;
+          @include display(block);
           font-size: $topbar-menu-link-font-size;
           font-weight: $topbar-menu-link-weight;
           height: $topbar-height;
@@ -300,7 +300,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
       @include single-transition($default-float, $topbar-transition-speed);
 
       ul {
-        display: block;
+        @include display(block);
         font-size: $rem-base;
         height: auto;
         margin: 0;
@@ -320,7 +320,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
         background: $topbar-dropdown-bg;
         > a {
           color: $topbar-link-color;
-          display: block;
+          @include display(block);
           font-family: $topbar-link-font-family;
           font-size: $topbar-link-font-size;
           font-weight: $topbar-link-weight;
@@ -401,7 +401,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
             width: 100%;
           }
           > a:after {
-            display: none;
+            @include display(none);
           }
         }
       }
@@ -435,7 +435,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
             a {
               color: $topbar-link-color;
               // line-height: ($topbar-height / 2);
-              display: block;
+              @include display(block);
               &:hover { background:none; }
             }
           }
@@ -454,7 +454,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
       }
     }
 
-    .js-generated { display: block; }
+    .js-generated { @include display(block); }
 
 
     // Top Bar styles intended for screen sizes above the breakpoint.
@@ -464,7 +464,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
         @include clearfix;
         overflow: visible;
 
-        .toggle-topbar { display: none; }
+        .toggle-topbar { @include display(none); }
 
         .title-area { float: $default-float; }
         .name h1 a,
@@ -498,13 +498,13 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
         #{$default-float}: 0 !important;
 
         ul {
-          display: inline;
+          @include display(inline);
           height: auto !important;
           width: auto;
 
           li {
             float: $default-float;
-            .js-generated { display: none; }
+            .js-generated { @include display(none); }
           }
         }
 

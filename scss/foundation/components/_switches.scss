@@ -59,7 +59,7 @@ $switch-active-color: $primary-color !default;
     background: $switch-bg;
     color: transparent;
     cursor: pointer;
-    display: block;
+    @include display(block);
     margin-bottom: ($switch-height-med / 2);
     position: relative;
     text-indent: 100%;
@@ -88,7 +88,7 @@ $switch-active-color: $primary-color !default;
   label:after {
     background: $switch-paddle-bg;
     content: "";
-    display: block;
+    @include display(block);
     height: $switch-height-med - .5rem;
     left: .25rem;
     position: absolute;

@@ -44,7 +44,7 @@ $inline-list-children-display: block !default;
     float: $default-float;
     list-style: none;
     margin-#{$default-float}: $inline-list-default-float-list-margin;
-    > * { display: $inline-list-children-display; }
+    > * { @include display($inline-list-children-display); }
   }
 }
 

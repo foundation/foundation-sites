@@ -402,7 +402,7 @@ $align-class-breakpoints:
       border-#{$default-float}: $blockquote-border;
 
       cite {
-        display: block;
+        @include display(block);
         font-size: $blockquote-cite-font-size;
         color: $blockquote-cite-font-color;
         &:before {
@@ -423,14 +423,14 @@ $align-class-breakpoints:
 
     /* Microformats */
     .vcard {
-      display: inline-block;
+      @include display(inline-block);
       margin: $microformat-margin;
       border: $microformat-border-width $microformat-border-style $microformat-border-color;
       padding: $microformat-padding;
 
       li {
         margin: 0;
-        display: block;
+        @include display(block);
       }
       .fn {
         font-weight: $microformat-fullname-font-weight;

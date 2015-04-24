@@ -39,7 +39,7 @@ $block-grid-media-queries: true !default;
   $base-style:true) {
 
   @if $base-style {
-    display: block;
+    @include display(block);
     padding: 0;
     @if $align-block-grid-to-grid {
       margin: 0;
@@ -49,7 +49,7 @@ $block-grid-media-queries: true !default;
     @include clearfix;
 
     > li {
-      display: block;
+      @include display(block);
       float: $default-float;
       height: auto;
       @if $include-spacing {

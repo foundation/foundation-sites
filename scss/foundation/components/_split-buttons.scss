@@ -76,7 +76,7 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
     // Styling for the split arrow clickable area
     span {
       border-#{$default-float}: solid 1px;
-      display: block;
+      @include display(block);
       height: 100%;
       position: absolute;
       top: 0;
@@ -86,7 +86,7 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
       &:after {
         border-style: inset;
         content: "";
-        display: block;
+        @include display(block);
         height: 0;
         position: absolute;
         top: 50%;
@@ -190,7 +190,7 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
         span:before{ border-style:none; }
         span:after{ border-style:none; }
         span>i{
-          display: block;
+          @include display(block);
           left: 50%;
           margin-left: -0.28889em;
           margin-top: -0.48889em;

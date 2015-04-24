@@ -38,12 +38,12 @@ $icon-bar-disabled-cursor: $cursor-disabled-value !default;
 // We use this mixin to create the base styles for our Icon bar element.
 //
 @mixin icon-bar-base() {
-  display: inline-block;
+  @include display(inline-block);
   font-size: 0;
   width: 100%;
 
   > * {
-    display: block;
+    @include display(block);
     float: left;
     font-size: $icon-bar-font-size;
     margin: 0 auto;
@@ -52,7 +52,7 @@ $icon-bar-disabled-cursor: $cursor-disabled-value !default;
     width: 25%;
 
     i, img {
-      display: block;
+      @include display(block);
       margin: 0 auto;
 
       & + label {
@@ -74,7 +74,7 @@ $icon-bar-disabled-cursor: $cursor-disabled-value !default;
   &.label-right > * {
 
     i, img {
-      display: inline-block;
+      @include display(inline-block);
       margin: 0 .0625rem 0 0;
 
       & + label {
@@ -82,7 +82,7 @@ $icon-bar-disabled-cursor: $cursor-disabled-value !default;
       }
     }
 
-    label { display: inline-block; }
+    label { @include display(inline-block); }
   }
 
   &.vertical.label-right > * {

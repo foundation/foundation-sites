@@ -83,7 +83,7 @@ $button-disabled-cursor: $cursor-default-value !default;
     text-align: $button-font-align;
     text-decoration: none;
   }
-  @if $display { display: $display; }
+  @if $display { @include display($display); }
 }
 
 // @MIXIN

@@ -41,7 +41,7 @@ $thumb-transition-speed: 200ms !default;
   $box-shadow-hover:$thumb-box-shadow-hover) {
   border: $thumb-border-style $border-width $thumb-border-color;
   box-shadow: $box-shadow;
-  display: inline-block;
+  @include display(inline-block);
   line-height: 0;
   max-width: 100%;
 

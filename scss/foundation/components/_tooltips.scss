@@ -54,7 +54,7 @@ $tooltip-max-width: 300px !default;
     .tooltip {
       background: $tooltip-bg;
       color: $tooltip-font-color;
-      display: none;
+      @include display(none);
       font-size: $tooltip-font-size;
       font-weight: $tooltip-font-weight;
       line-height: $tooltip-line-height;
@@ -68,7 +68,7 @@ $tooltip-max-width: 300px !default;
       > .nub {
         border-color: transparent transparent $tooltip-bg transparent;
         border: solid $tooltip-pip-size;
-        display: block;
+        @include display(block);
         height: 0;
         pointer-events: none;
         position: absolute;
@@ -100,7 +100,7 @@ $tooltip-max-width: 300px !default;
 
     .tap-to-close {
       color: $tooltip-close-font-color;
-      display: block;
+      @include display(block);
       font-size: $tooltip-close-font-size;
       font-weight: $tooltip-close-font-weight;
     }

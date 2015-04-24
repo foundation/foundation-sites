@@ -45,13 +45,13 @@ $joyride-screenfill: rgba(0,0,0,0.5) !default;
   @if $include-html-joyride-classes {
 
     /* Foundation Joyride */
-    .joyride-list { display: none; }
+    .joyride-list { @include display(none); }
 
     /* Default styles for the container */
     .joyride-tip-guide {
       background: $joyride-tip-bg;
       color: $joyride-tip-font-color;
-      display: none;
+      @include display(none);
       font-family: inherit;
       font-weight: $font-weight-normal;
       position: absolute;
@@ -80,7 +80,7 @@ $joyride-screenfill: rgba(0,0,0,0.5) !default;
     .joyride-tip-guide {
       .joyride-nub {
         border: $joyride-tip-nub-size solid $joyride-tip-bg;
-        display: block;
+        @include display(block);
         height: 0;
         position: absolute;
         width: 0;
@@ -136,7 +136,7 @@ $joyride-screenfill: rgba(0,0,0,0.5) !default;
     }
     .joyride-timer-indicator {
       background: $joyride-tip-timer-color;
-      display: block;
+      @include display(block);
       height: inherit;
       width: 0;
     }
@@ -158,7 +158,7 @@ $joyride-screenfill: rgba(0,0,0,0.5) !default;
     .joyride-modal-bg {
       background: $joyride-screenfill;
       cursor: $cursor-pointer-value;
-      display: none;
+      @include display(none);
       height: 100%;
       position: fixed;
       top: 0;

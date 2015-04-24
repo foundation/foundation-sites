@@ -93,7 +93,7 @@ $base-line-height: 1.5 !default;
 @mixin css-triangle($triangle-size, $triangle-color, $triangle-direction) {
   border: inset $triangle-size;
   content: "";
-  display: block;
+  @include display(block);
   height: 0;
   width: 0;
   @if ($triangle-direction == top) {
@@ -128,7 +128,7 @@ $base-line-height: 1.5 !default;
 @mixin hamburger($width, $left, $top, $thickness, $gap, $color, $hover-color, $offcanvas) {
   span::after {
     content: "";
-    display: block;
+    @include display(block);
     height: 0;
     position: absolute;
 
@@ -218,6 +218,18 @@ $base-line-height: 1.5 !default;
   width: auto;
   overflow: visible;
   clip: auto;
+}
+
+// @mixins
+//
+// Make sure that the .hide class works everywhere
+@mixin display($display: block) {
+  display: $display;
+  @if ($display != none) {
+    &.hide {
+      display: none;
+    }
+  }
 }
 
 $white         : #FFFFFF !default;
@@ -481,7 +493,7 @@ $cursor-text-value: text !default;
 
     // Get rid of gap under images by making them display: inline-block; by default
     img {
-      display: inline-block;
+      @include display(inline-block);
       vertical-align: middle;
     }
 

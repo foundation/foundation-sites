@@ -58,11 +58,11 @@ $range-slider-disabled-cursor: $cursor-disabled-value !default;
   -ms-touch-action: none;
   touch-action: none;
   @if $vertical == true {
-    display: inline-block;
+    @include display(inline-block);
     height: $range-slider-vertical-bar-height;
     width: $range-slider-vertical-bar-width;
   } @else {
-    display: block;
+    @include display(block);
     height: $range-slider-bar-height;
     width: $range-slider-bar-width;
   }
@@ -91,7 +91,7 @@ $range-slider-disabled-cursor: $cursor-disabled-value !default;
 @mixin range-slider-handle-base() {
   border: $range-slider-handle-border-width $range-slider-handle-border-style $range-slider-handle-border-color;
   cursor: $range-slider-handle-cursor;
-  display: inline-block;
+  @include display(inline-block);
   height: $range-slider-handle-height;
   position: absolute;
   top: $range-slider-handle-position-top;
@@ -165,7 +165,7 @@ $range-slider-disabled-cursor: $cursor-disabled-value !default;
       background: $range-slider-active-segment-bg-color;
       border-bottom-left-radius: inherit;
       border-top-left-radius: inherit;
-      display: inline-block;
+      @include display(inline-block);
       height: $range-slider-bar-height - rem-calc((strip-unit($range-slider-bar-border-width) * 2));
       position: absolute;
     }

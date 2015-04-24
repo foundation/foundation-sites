@@ -54,7 +54,7 @@ $alert-transition-ease: ease-out !default;
 @mixin alert-base {
   border-style: $alert-border-style;
   border-width: $alert-border-width;
-  display: block;
+  @include display(block);
   font-size: $alert-font-size;
   font-weight: $alert-font-weight;
   margin-bottom: $alert-bottom-margin;
