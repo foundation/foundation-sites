@@ -76,7 +76,6 @@
             ignore_media_query = true;
 
         if (media_query) {
-          console.log("YEAH QUERY");
           media_query = 'is_' + media_query.replace(/-/g, '_');
           if (Foundation.utils.hasOwnProperty(media_query)) {
             ignore_media_query = false;
