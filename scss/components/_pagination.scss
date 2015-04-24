@@ -23,7 +23,7 @@ $pagination: 100% !default;
 $pagination: 1rem !default;
 */
 
-
+@import 'global';
 
 
 
@@ -32,8 +32,7 @@ $pagination-height: rem-calc(24) !default;
 $pagination-margin: rem-calc(-5) !default;
 
 // We use these to set the list-item properties
-$pagination-li-float: left !default;
-$pagination-li-height: rem-calc(24) !default;
+$pagination-li-height: 1.5rem !default;
 $pagination-li-font-color: #999999 !default;
 $pagination-li-font-size: rem-calc(14) !default;
 $pagination-li-margin: rem-calc(5) !default;
@@ -104,10 +103,16 @@ $pagination-active-cursor: default !default;
   min-height: 1.5rem; 
 
   li {
+    color: #222222;
+    font-size: 0.875rem;
+    height: $pagination-li-height;
+    margin-left: 0.3125rem; 
     display: none;
+
     &:last-child, &:first-child {
       display: inline-block;
     }
+
     a, button {
       border-radius: 3px;
       transition: background-color 300ms ease-out;
@@ -119,12 +124,14 @@ $pagination-active-cursor: default !default;
       line-height: inherit;
       padding: 0.0625rem 0.625rem 0.0625rem; 
     }
+
     &:hover a,
     a:focus, 
     &:hover button,
     button:focus {
       background: #e6e6e6; 
     }
+
     [aria-label="previous"] { 
       &:before {
         color: #999999;
@@ -134,6 +141,7 @@ $pagination-active-cursor: default !default;
         margin: 0 0.75rem; 
       }
     }
+
     [aria-label="next"] { 
       &:after {
         color: #999999;
@@ -144,6 +152,7 @@ $pagination-active-cursor: default !default;
       }
     }
   }
+
   .ellipsis:after {
     color: #999999;
     content: "…";
@@ -151,80 +160,79 @@ $pagination-active-cursor: default !default;
     display: inline-block;
     margin: 0 0.75rem;
   }
+
+  @include breakpoint(medium) {
+
+    li {
+      display: inline-block;
+      float: left;
+      color: #222222;
+      font-size: 0.875rem;
+      height: 1.5rem;
+      margin-left: 0.3125rem;
+
+      &.disabled {
+
+        a ,button {
+        cursor: not-allowed;
+        color: #999999;
+
+          &:focus {
+            background: transparent; 
+          }
+        }
+
+        &:hover {
+
+          a, button {
+            background: transparent; 
+          }
+        } 
+      } 
+
+      &.is-active {
+
+        a, button {
+          background: $primary-color;
+          color: #FFFFFF;
+          cursor: default;
+          font-weight: bold;
+        }
+      }
+    }
+  }
 }
+
 
 .pagination-centered {
   text-align: center; 
 
   li {
+    float: none;
     display: none;
+
     &:last-child, &:first-child {
       display: inline-block;
     }
   }
-}
-
-  ul.pagination-centered ul.pagination li:first-child {
-    display:inline-block;
-  }
-
-  ul.pagination-centered ul.pagination li:last-child {
-    display: inline-block;
-  }
-
-
-  /* Accessibility - hides the arrow */
-  [aria-label="pagination"] [aria-hidden="true"]:before {
-    content: "⇐"; }
-
-  /* Accessibility - hides the arrow */
-  [aria-label="pagination"] [aria-hidden="true"]:after {
-    content: "⇒"; }
-
-  [aria-label="pagination"] [aria-hidden="true"]:after {
-    content: "…"; }
 
   @include breakpoint(medium) {
-
-    ul.pagination li {
-      color: #222222;
-      font-size: 0.875rem;
-      height: 1.5rem;
-      margin-left: 0.3125rem; 
-    }
-
-    ul.pagination li.disabled a, ul.pagination li.disabled button {
-      cursor: not-allowed;
-      color: #999999; 
-    }
-
-    ul.pagination li.disabled:hover a, ul.pagination li.disabled a:focus, ul.pagination li.disabled:hover button, ul.pagination li.disabled button:focus {
-      background: transparent; 
-    }
-
-    ul.pagination li.is-active a, ul.pagination li.is-active button {
-      background: #008CBA;
-      color: #FFFFFF;
-      cursor: default;
-      font-weight: bold; 
-    }
-
-    ul.pagination li.is-active a:hover, ul.pagination li.is-active a:focus, ul.pagination li.is-active button:hover, ul.pagination li.is-active button:focus {
-      background: #008CBA; 
-    }
-
-    ul.pagination li {
-      display: block;
-      float: left; 
-    }
-
-    .pagination-centered ul.pagination li {
+    
+    li {
       display: inline-block;
-      float: none; 
     }
+
   }
+}
 
+/* Accessibility - hides the arrow */
+[aria-label="pagination"] [aria-hidden="true"]:before {
+  content: "⇐"; }
 
+/* Accessibility - hides the arrow */
+[aria-label="pagination"] [aria-hidden="true"]:after {
+  content: "⇒"; }
 
-
+[aria-label="pagination"] [aria-hidden="true"]:after {
+  content: "…"; }
 
