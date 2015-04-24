@@ -484,5 +484,9 @@ $visibility-breakpoint-queries:
       td.show-for-print { display: table-cell !important; }
       th.show-for-print { display: table-cell !important; }
     }
+
+    @media not print{
+      .show-for-print { display: none !important; }
+    }
   }
 }
