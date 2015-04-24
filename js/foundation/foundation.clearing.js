@@ -11,7 +11,9 @@
         viewing : '<a href="#" class="clearing-close">&times;</a>' +
           '<div class="visible-img" style="display: none"><div class="clearing-touch-label"></div><img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt="" />' +
           '<p class="clearing-caption"></p><a href="#" class="clearing-main-prev"><span></span></a>' +
-          '<a href="#" class="clearing-main-next"><span></span></a></div>'
+          '<a href="#" class="clearing-main-next"><span></span></a></div>' +
+          '<img class="clearing-preload-next" style="display: none" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt="" />' +
+          '<img class="clearing-preload-prev" style="display: none" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt="" />'
       },
 
       // comma delimited list of selectors that, on click, will close clearing,
@@ -201,7 +203,8 @@
           visible_image = self.S('.visible-img', container),
           image = self.S('img', visible_image).not($image),
           label = self.S('.clearing-touch-label', container),
-          error = false;
+          error = false,
+          loaded = {};
 
       // Event to disable scrolling on touch devices when Clearing is activated
       $('body').on('touchmove', function (e) {
@@ -246,9 +249,17 @@
       if (!this.locked()) {
         visible_image.trigger('open.fndtn.clearing');
         // set the image to the selected thumbnail
-        image
-          .attr('src', this.load($image))
-          .css('visibility', 'hidden');
+        loaded = this.load($image);
+        if (loaded.interchange) {
+          image
+            .attr('data-interchange', loaded.interchange)
+            .foundation('interchange', 'reflow');
+        } else {
+          image
+            .attr('src', loaded.src)
+            .attr('data-interchange', '');
+        }
+        image.css('visibility', 'hidden');
 
         startLoad.call(this);
       }
@@ -382,37 +393,55 @@
     // image loading and preloading
 
     load : function ($image) {
-      var href;
+      var href,
+          interchange,
+          closest_a;
 
       if ($image[0].nodeName === 'A') {
         href = $image.attr('href');
+        interchange = $image.data('clearing-interchange');
       } else {
-        href = $image.closest('a').attr('href');
+        closest_a = $image.closest('a');
+        href = closest_a.attr('href');
+        interchange = closest_a.data('clearing-interchange');
       }
 
       this.preload($image);
 
-      if (href) {
-        return href;
+      return {
+        'src': href ? href : $image.attr('src'),
+        'interchange': href ? interchange : $image.data('clearing-interchange')
       }
-      return $image.attr('src');
     },
 
     preload : function ($image) {
       this
-        .img($image.closest('li').next())
-        .img($image.closest('li').prev());
+        .img($image.closest('li').next(), 'next')
+        .img($image.closest('li').prev(), 'prev');
     },
 
-    img : function (img) {
+    img : function (img, sibling_type) {
       if (img.length) {
-        var new_img = new Image(),
-            new_a = this.S('a', img);
+        var preload_img = $('.clearing-preload-' + sibling_type),
+            new_a = this.S('a', img),
+            src,
+            interchange,
+            image;
 
         if (new_a.length) {
-          new_img.src = new_a.attr('href');
+          src = new_a.attr('href');
+          interchange = new_a.data('clearing-interchange');
         } else {
-          new_img.src = this.S('img', img).attr('src');
+          image = this.S('img', img);
+          src = image.attr('src');
+          interchange = image.data('clearing-interchange');
+        }
+
+        if (interchange) {
+          preload_img.attr('data-interchange', interchange);
+        } else {
+          preload_img.attr('src', src);
+          preload_img.attr('data-interchange', '');
         }
       }
       return this;
