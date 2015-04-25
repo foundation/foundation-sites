@@ -134,24 +134,9 @@ $modules: () !default;
   @return $remValues;
 }
 
-// OLD EM CALC
-// Deprecated: We'll drop support for this in 5.1.0, use rem-calc()
-@function emCalc($values) {
-  @return rem-calc($values);
-}
 
-// OLD EM CALC
-// Deprecated: We'll drop support for this in 5.1.0, use rem-calc()
+
 @function em-calc($values) {
-  @return rem-calc($values);
-}
-
-
-// CALC EMs for BREAKPOINTS
-// This function only exists, because media queries have some difficulties to
-// work with REMs. Once these difficulties are removed,
-// bp-em-calc will be deprecated
-@function bp-em-calc($values) {
   $remValues: rem-calc($values);
 
   $max: length($remValues);
@@ -163,4 +148,11 @@ $modules: () !default;
     $emValues: append($emValues, strip-unit(nth($remValues, $i)) * 1em);
   }
   @return $emValues;
+}
+
+
+// OLD EM CALC
+// Deprecated
+@function emCalc($values) {
+  @return em-calc($values);
 }

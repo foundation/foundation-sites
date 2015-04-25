@@ -298,16 +298,16 @@ $column-gutter: rem-calc(30) !default;
 
 // Media Query Ranges
 
-$small-breakpoint:  bp-em-calc(640)  !default;
-$medium-breakpoint: bp-em-calc(1024) !default;
-$large-breakpoint:  bp-em-calc(1440) !default;
-$xlarge-breakpoint: bp-em-calc(1920) !default;
+$small-breakpoint:  em-calc(640)  !default;
+$medium-breakpoint: em-calc(1024) !default;
+$large-breakpoint:  em-calc(1440) !default;
+$xlarge-breakpoint: em-calc(1920) !default;
 
 $small-range:   (0, $small-breakpoint) !default;
-$medium-range:  ($small-breakpoint  + bp-em-calc(1), $medium-breakpoint) !default;
-$large-range:   ($medium-breakpoint + bp-em-calc(1), $large-breakpoint)  !default;
-$xlarge-range:  ($large-breakpoint  + bp-em-calc(1), $xlarge-breakpoint) !default;
-$xxlarge-range: ($xlarge-breakpoint + bp-em-calc(1), bp-em-calc(99999999)) !default;
+$medium-range:  ($small-breakpoint  + em-calc(1), $medium-breakpoint) !default;
+$large-range:   ($medium-breakpoint + em-calc(1), $large-breakpoint)  !default;
+$xlarge-range:  ($large-breakpoint  + em-calc(1), $xlarge-breakpoint) !default;
+$xxlarge-range: ($xlarge-breakpoint + em-calc(1), em-calc(99999999)) !default;
 
 
 $screen: "only screen" !default;
