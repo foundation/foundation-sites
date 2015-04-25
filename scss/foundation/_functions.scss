@@ -134,14 +134,25 @@ $modules: () !default;
   @return $remValues;
 }
 
-// OLD EM CALC
-// Deprecated: We'll drop support for this in 5.1.0, use rem-calc()
-@function emCalc($values) {
-  @return rem-calc($values);
+
+
+@function em-calc($values) {
+  $remValues: rem-calc($values);
+
+  $max: length($remValues);
+
+  @if $max == 1 { @return strip-unit(nth($remValues, 1)) * 1em; }
+
+  $emValues: ();
+  @for $i from 1 through $max {
+    $emValues: append($emValues, strip-unit(nth($remValues, $i)) * 1em);
+  }
+  @return $emValues;
 }
 
+
 // OLD EM CALC
-// Deprecated: We'll drop support for this in 5.1.0, use rem-calc()
-@function em-calc($values) {
-  @return rem-calc($values);
+// Deprecated
+@function emCalc($values) {
+  @return em-calc($values);
 }
