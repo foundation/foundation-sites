@@ -93,13 +93,13 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
 // Accessibility mixins for hiding and showing the menu dropdown items
 @mixin topbar-hide-dropdown {
   // Makes an element visually hidden by default, but visible when focused.
-  display: block;
   @include element-invisible();
+  display: block;
 }
 
 @mixin topbar-show-dropdown {
-  display: block;
   @include element-invisible-off();
+  display: block;
   position: absolute !important; // Reset the position from static to absolute
 }
 
@@ -120,7 +120,9 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
       width: 100%;
       background: $topbar-bg;
 
-      .top-bar { margin-bottom: $topbar-margin-bottom; }
+      .top-bar {
+        margin-bottom: $topbar-margin-bottom;
+      }
     }
 
     // Wrapped around .top-bar to make it stick to the top
@@ -142,6 +144,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
           width: 100%;
           z-index: 99;
         }
+
         // Ensure you can scroll the menu on small screens
         .top-bar-section {
           margin-top: $topbar-height;
@@ -164,11 +167,15 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
         margin-bottom: 0;
       }
 
-      .row { max-width: none; }
+      .row {
+        max-width: none;
+      }
 
       form,
       input, 
-      select { margin-bottom: 0; }
+      select {
+        margin-bottom: 0;
+      }
 
       input, 
       select {
@@ -203,7 +210,6 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
         font-size: $rem-base;
         height: $topbar-height;
         margin: 0;
-        // @if $topbar-menu-icon-position == $default-float {float: $opposite-direction;}
 
         h1, h2, h3, h4, p, span {
           font-size: $topbar-title-font-size;
@@ -244,6 +250,8 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
           top: 50%;
 
           a {
+            @include hamburger(16px, false, 0, 1px, 6px, $topbar-menu-icon-color, "", false);
+
             @if $text-direction == rtl {
               text-indent: -58px;
             }
@@ -252,21 +260,6 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
             line-height: 33px;
             padding: 0 $topbar-link-padding+rem-calc(25) 0 $topbar-link-padding;
             position: relative;
-
-            & {
-              // @include hamburger icon
-              //
-              // We use this to create the icon with three lines aka the hamburger icon, the menu-icon or the navicon
-              // $width - Width of hamburger icon
-              // $left - If false, icon will be centered horizontally || explicitly set value in rem
-              // $top - If false, icon will be centered vertically || explicitly set value in rem
-              // $thickness - thickness of lines in hamburger icon, set value in px
-              // $gap - spacing between the lines in hamburger icon, set value in px
-              // $color - icon color
-              // $hover-color - icon color during hover, here it isn't set b/c it would override $topbar-menu-icon-color-toggled
-              // $offcanvas - Set to false of @include in topbar
-              @include hamburger(16px, false, 0, 1px, 6px, $topbar-menu-icon-color, "", false);
-            }
           }
         }
       }
@@ -276,16 +269,35 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
         background: transparent;
         height: auto;
 
-        .title-area { background: $topbar-bg; }
+        .title-area {
+          background: $topbar-bg;
+        }
 
         .toggle-topbar {
-          a { color: $topbar-menu-link-color-toggled;
-      span::after {
+          a {
+            color: $topbar-menu-link-color-toggled;
+
+            span::after {
               // Shh, don't tell, but box-shadows create the menu icon :)
               // Change the color of the bars when the menu is expanded, using given thickness from hamburger() above
               box-shadow: 0 0 0 1px $topbar-menu-icon-color-toggled,
                           0 7px 0 1px $topbar-menu-icon-color-toggled,
                           0 14px 0 1px $topbar-menu-icon-color-toggled;
+            }
+          }
+        }
+
+        // Fixes an issue with Desktop and Mobile Safari where deeply-nested menus don't appear
+        @media screen and (-webkit-min-device-pixel-ratio:0) {
+          .top-bar-section {
+            .has-dropdown.moved > .dropdown,
+            .dropdown {
+              clip: initial;
+            }
+
+            // This was needed as parent ul's had padding, and the clip: was allowing content to peak through
+            .has-dropdown:not(.moved) > ul {
+              padding: 0;
             }
           }
         }
@@ -318,6 +330,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
 
       ul li {
         background: $topbar-dropdown-bg;
+
         > a {
           color: $topbar-link-color;
           display: block;
@@ -335,6 +348,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
             padding-#{$opposite-direction}: $topbar-link-padding;
             @include button-style($bg:$primary-color);
           }
+
           &.button.secondary { @include button-style($bg:$secondary-color); }
           &.button.success { @include button-style($bg:$success-color); }
           &.button.alert { @include button-style($bg:$alert-color); }
@@ -358,16 +372,18 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
         // Apply the hover link color when it has that class
         &:hover:not(.has-form) > a {
           background-color: $topbar-link-bg-color-hover;
+          color: $topbar-link-color-hover;
+
           @if ($topbar-link-bg-hover) {
             background: $topbar-link-bg-hover;
           }
-          color: $topbar-link-color-hover;
         }
 
         // Apply the active link color when it has that class
         &.active > a {
           background: $topbar-link-bg-active;
           color: $topbar-link-color-active;
+
           &:hover {
             background: $topbar-link-bg-active-hover;
             color: $topbar-link-color-active-hover;
@@ -376,7 +392,9 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
       }
 
       // Add some extra padding for list items contains buttons
-      .has-form { padding: $topbar-link-padding; }
+      .has-form {
+        padding: $topbar-link-padding;
+      }
 
       // Styling for list items that have a dropdown within them.
       .has-dropdown {
@@ -387,6 +405,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
             @if ($topbar-arrows) {
               @include css-triangle($topbar-dropdown-toggle-size, rgba($topbar-dropdown-toggle-color, $topbar-dropdown-toggle-alpha), $default-float);
             }
+
             margin-#{$opposite-direction}: $topbar-link-padding;
             margin-top: -($topbar-dropdown-toggle-size / 2) - 2;
             position: absolute;
@@ -395,11 +414,14 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
           }
         }
 
-        &.moved { position: static;
+        &.moved {
+          position: static;
+
           > .dropdown {
             @include topbar-show-dropdown();
             width: 100%;
           }
+
           > a:after {
             display: none;
           }
@@ -408,11 +430,11 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
 
       // Styling elements inside of dropdowns
       .dropdown {
+        @include topbar-hide-dropdown();
         padding: 0;
         position: absolute;
         top: 0;
         z-index: 99;
-        @include topbar-hide-dropdown();
         #{$default-float}: 100%;
 
         li {
@@ -427,7 +449,8 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
             }
           }
 
-          &.title h5, &.parent-link {
+          &.title h5,
+          &.parent-link {
             // Back Button
             margin-bottom: 0;
             margin-top: 0;
@@ -439,8 +462,15 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
               &:hover { background:none; }
             }
           }
-          &.has-form { padding: 8px $topbar-link-padding; }
-          .button, button { top: auto; }
+
+          &.has-form {
+            padding: 8px $topbar-link-padding;
+          }
+
+          .button,
+          button {
+            top: auto;
+          }
         }
 
         label {
@@ -460,8 +490,8 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
     // Top Bar styles intended for screen sizes above the breakpoint.
     @media #{$topbar-media-query} {
       .top-bar {
-        background: $topbar-bg;
         @include clearfix;
+        background: $topbar-bg;
         overflow: visible;
 
         .toggle-topbar { display: none; }
@@ -484,7 +514,9 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
           top: (($topbar-height - $topbar-input-height) / 2);
         }
 
-        &.expanded { background: $topbar-bg; }
+        &.expanded {
+          background: $topbar-bg;
+        }
       }
 
       .contain-to-grid .top-bar {
@@ -518,6 +550,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
               color: $topbar-link-color-hover;
             }
           }
+
           &:not(.has-form) {
             a:not(.button) {
               background: $topbar-link-bg;
@@ -531,6 +564,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
               }
             }
           }
+
           &.active:not(.has-form) {
             a:not(.button) {
               background: $topbar-link-bg-active;
@@ -546,7 +580,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
         }
 
         .has-dropdown {
-          @if($topbar-arrows) {
+          @if $topbar-arrows {
             > a {
               padding-#{$opposite-direction}: $topbar-link-padding + $topbar-link-dropdown-padding !important;
               &:after {
@@ -568,6 +602,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
               @include topbar-show-dropdown();
             }
           }
+
           > a:focus + .dropdown {
             @include topbar-show-dropdown();
           }
@@ -692,24 +727,11 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
               @include topbar-show-dropdown();
             }
           }
+
           > a:focus + .dropdown {
             @include topbar-show-dropdown();
           }
         }
-      }
-    }
-  }
-  @media screen and (-webkit-min-device-pixel-ratio:0) {
-    .top-bar.expanded .top-bar-section {
-      .has-dropdown.moved > .dropdown {
-        clip:initial;
-      }
-      .dropdown {
-        clip:initial;
-      }
-      // This was needed as parent ul's had padding, which the clip: was allowing content to peak through
-      .has-dropdown:not(.moved) > ul {
-        padding: 0;
       }
     }
   }
