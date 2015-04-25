@@ -151,11 +151,16 @@ $include-html-global-classes: $include-html-classes;
 // d. Media Query Ranges
 // - - - - - - - - - - - - - - - - - - - - - - - - -
 
-// $small-range: (0em, 40em);
-// $medium-range: (40.0625em, 64em);
-// $large-range: (64.0625em, 90em);
-// $xlarge-range: (90.0625em, 120em);
-// $xxlarge-range: (120.0625em, 99999999em);
+// $small-breakpoint:  em-calc(640);
+// $medium-breakpoint: em-calc(1024);
+// $large-breakpoint:  em-calc(1440);
+// $xlarge-breakpoint: em-calc(1920);
+
+// $small-range:   (0, $small-breakpoint);
+// $medium-range:  ($small-breakpoint  + em-calc(1), $medium-breakpoint);
+// $large-range:   ($medium-breakpoint + em-calc(1), $large-breakpoint);
+// $xlarge-range:  ($large-breakpoint  + em-calc(1), $xlarge-breakpoint);
+// $xxlarge-range: ($xlarge-breakpoint + em-calc(1), em-calc(99999999));
 
 // $screen: "only screen";
 
