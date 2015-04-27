@@ -247,10 +247,16 @@
           if (all_valid) {
               this.S(el).removeAttr(this.invalid_attr);
               parent.removeClass('error');
+              if (label.length > 0 && this.settings.error_labels) {
+                label.removeClass(this.settings.error_class).removeAttr('role');
+              }
               $(el).triggerHandler('valid');
           } else {
               this.S(el).attr(this.invalid_attr, '');
               parent.addClass('error');
+              if (label.length > 0 && this.settings.error_labels) {
+                label.addClass(this.settings.error_class).attr('role', 'alert');
+              }
               $(el).triggerHandler('invalid');
           }
         } else {
@@ -263,7 +269,6 @@
           }
 
           el_validations = [el_validations.every(function (valid) {return valid;})];
-
           if (el_validations[0]) {
             this.S(el).removeAttr(this.invalid_attr);
             el.setAttribute('aria-invalid', 'false');
