@@ -23,7 +23,7 @@ module.exports = {
       dest: '<%= paths.dist %>assets/scss/',
       filter: 'isFile'
     },{
-      src: 'bower.json',
+      src: ['bower.json', 'package.json'],
       dest: '<%= paths.dist %>assets/'
     }]
   }
