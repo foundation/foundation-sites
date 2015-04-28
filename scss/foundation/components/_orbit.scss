@@ -197,30 +197,33 @@ $orbit-timer-hide-for-small: true !default;
       }
 
       .orbit-timer {
-        height: 6px;
+        
         position: absolute;
         top: 12px;
+        #{$opposite-direction}: 10px;
+        height: 6px;
         width: 100px;
         z-index: 10;
-        #{$opposite-direction}: 10px;
+        
 
         .orbit-progress {
           @if $orbit-timer-show-progress-bar {
+            height: 3px;
             background-color: $orbit-timer-bg;
             display: block;
-            height: 3px;
+            width: 0;
             position: relative;
             right: 20px;
             top: 5px;
-            width: 0;
+            
           }
         }
 
         // Play button
         & > span {
+          border: solid 4px $white;
           border-bottom: none;
           border-top: none;
-          border: solid 4px $white;
           display: none;
           height: 14px;
           position: absolute;
@@ -232,13 +235,13 @@ $orbit-timer-hide-for-small: true !default;
         // Pause button
         &.paused {
           & > span {
-            border-color: transparent;
-            border-left-color: $white;
-            border-left-style: solid;
-            border: inset 8px;
-            height: 14px;
             top: 0;
             width: 11px;
+            height: 14px;
+            border: inset 8px;
+            border-left-style: solid;
+            border-color: transparent;
+            border-left-color: $white;
             #{$opposite-direction}: -4px;
 
             &.dark {
