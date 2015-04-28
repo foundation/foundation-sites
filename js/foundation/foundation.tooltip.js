@@ -244,7 +244,13 @@
           nub.addClass('rtl');
           left = target.offset().left + target.outerWidth() - tip.outerWidth();
         }
+
         objPos(tip, (target.offset().top + target.outerHeight() + 10), 'auto', 'auto', left);
+        // reset nub from small styles, if they've been applied
+        if (nub.attr('style')) {
+          nub.removeAttr('style');
+        }
+        
         tip.removeClass('tip-override');
         if (classes && classes.indexOf('tip-top') > -1) {
           if (Foundation.rtl) {
