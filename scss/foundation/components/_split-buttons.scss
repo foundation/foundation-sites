@@ -75,23 +75,22 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
 
     // Styling for the split arrow clickable area
     span {
-      border-#{$default-float}: solid 1px;
       display: block;
       height: 100%;
       position: absolute;
-      top: 0;
       #{$opposite-direction}: 0;
+      top: 0;
+      border-#{$default-float}: solid 1px;
 
       // Building the triangle pip indicator
       &:after {
-        border-style: inset;
-        content: "";
-        display: block;
-        height: 0;
         position: absolute;
-        top: 50%;
+        content: "";
         width: 0;
-
+        height: 0;
+        display: block;
+        border-style: inset;
+        top: 50%;
         #{$default-float}: 50%;
       }
 
@@ -173,9 +172,9 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
 
     .split.button { @include split-button;
 
-      &.secondary { @include split-button(false, $split-button-pip-color, $secondary-color, false); }
-      &.alert { @include split-button(false, false, $alert-color, false); }
-      &.success { @include split-button(false, false, $success-color, false); }
+      &.secondary { @include split-button(false, $split-button-pip-color, $split-button-span-border-color, false); }
+      &.alert { @include split-button(false, false, $split-button-span-border-color, false); }
+      &.success { @include split-button(false, false, $split-button-span-border-color, false); }
 
       &.tiny { @include split-button(tiny, false, false, false); }
       &.small { @include split-button(small, false, false, false); }
