@@ -23,6 +23,7 @@ $form-label-small-transform: capitalize !default;
 $form-label-bottom-margin: 0 !default;
 $input-font-family: inherit !default;
 $input-font-color: rgba(0,0,0,0.75) !default;
+$input-placeholder-font-color: #cccccc !default;
 $input-font-size: rem-calc(14) !default;
 $input-bg-color: $white !default;
 $input-focus-bg-color: scale-color($white, $lightness: -2%) !default;
@@ -478,10 +479,28 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
       height: auto;
     }
 
-	/* Not allow resize out of parent */
-	textarea {
-		max-width: 100%;
-	}
+	  /* Not allow resize out of parent */
+	  textarea {
+	    max-width: 100%;
+	  }
+    
+    // style placeholder text cross browser
+    ::-webkit-input-placeholder {
+      color: $input-placeholder-font-color;
+    }
+
+    :-moz-placeholder { /* Firefox 18- */
+       color: $input-placeholder-font-color;  
+    }
+
+    ::-moz-placeholder {  /* Firefox 19+ */
+       color: $input-placeholder-font-color;  
+    }
+
+    :-ms-input-placeholder {  
+       color: $input-placeholder-font-color;  
+    }
+   
 
     /* Add height value for select elements to match text input height */
     select {
