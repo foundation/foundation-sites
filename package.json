@@ -1,6 +1,6 @@
 {
   "name": "foundation-sites",
-  "version": "5.5.1",
+  "version": "5.5.2",
   "main": "js/foundation/foundation.js",
   "devDependencies": {
     "assemble": "~0.4.37",
