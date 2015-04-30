@@ -13,7 +13,8 @@ To get started, check out <http://foundation.zurb.com/docs>
 To get going with Foundation you can:
 
   * [Download the latest release](http://foundation.zurb.com/develop/download.html)
-  * [Install with Bower](http://bower.io): `bower install zurb/bower-foundation`
+  * [Install with Bower](http://bower.io): `bower install foundation`
+  * [Install with npm](http://npmjs.com): `npm install foundation-sites`
 
 ## Documentation
 
