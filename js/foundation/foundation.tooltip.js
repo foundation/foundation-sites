@@ -13,6 +13,8 @@
       touch_close_text : 'Tap To Close',
       disable_for_touch : false,
       hover_delay : 200,
+      fade_in_duration : 150,
+      fade_out_duration : 150,
       show_on : 'all',
       tip_template : function (selector, content) {
         return '<span data-selector="' + selector + '" id="' + selector + '" class="'
@@ -314,12 +316,12 @@
 
       this.reposition($target, $tip, $target.attr('class'));
       $target.addClass('open');
-      $tip.fadeIn(150);
+      $tip.fadeIn(self.settings.fade_in_duration);
     },
 
     hide : function ($target) {
       var $tip = this.getTip($target);
-      $tip.fadeOut(150, function () {
+      $tip.fadeOut(self.settings.fade_out_duration, function () {
         $tip.find('.tap-to-close').remove();
         $tip.off('click.fndtn.tooltip.tapclose MSPointerDown.fndtn.tapclose');
         $target.removeClass('open');
