@@ -62,7 +62,18 @@
       // Add to the plugins list (for reflowing)
       this._plugins[name] = plugin;
     },
-
+    /**
+     * Sets individual configuration for plug in instances.
+     * @param {String} plugin - Formal name of the component.
+     * @param {Object} config - Object that contains configuration settings for each instance of plug ins
+     */
+    setPluginConfig: function(plugin, config) {
+      var uuid = this.generateUuid();
+      // initialize config object
+      this._plugins[plugin].config = {};
+      // set key value pairing of element uuid and specified config
+      this._plugins[plugin].config[uuid] = config;
+    },
     /**
      * Return the instance of a plugin initialized on an element, or `null` if the element has no Foundation plugins.
      * @param {Object} element - CSS selector, DOM element, or jQuery object to check.
