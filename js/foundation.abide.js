@@ -163,6 +163,7 @@
           if (label.hasClass(self.options.errorClass)) {
             label.removeClass(self.options.errorClass);
           }
+          $form.attr('invalid', 'true');
         }
       })
       $(checkInput).each(function() {
@@ -175,10 +176,14 @@
           if (label.hasClass(self.options.errorClass)) {
             label.removeClass(self.options.errorClass);
           }
+          $form.attr('invalid', 'true');
         }
       })
       for (var group in radioGroups) {
         self.validateRadio(group);
+      }
+      if ($form.attr('invalid')) {
+        $form.find('[data-abide-error]').css('display', 'block');
       }
     },
     validateText: function(el) {

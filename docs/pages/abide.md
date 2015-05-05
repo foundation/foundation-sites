@@ -1,6 +1,7 @@
 ---
 title: Abide
 description: Abide is an form validation library that extends the HTML5 validation API with custom validators.
+javascript: js/foundation.abide.js
 ---
 
 ### Abide Demo
@@ -9,6 +10,9 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
 
 ```html_example
 <form data-abide>
+  <div data-abide-error class="alert callout" style="display: none;">
+    <p><i class="fi-alert"></i> There are some errors in your form.</p>
+  </div>
   <div class="row">
     <div class="small-12 columns">
       <label>Input Label
