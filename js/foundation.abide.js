@@ -158,12 +158,12 @@
         var label = $(this).closest('label');
         if (!self.requiredCheck(this) || !self.validateText(this)) {
           label.addClass(self.options.errorClass);
+          $form.attr('invalid', 'true');
         }
         else {
           if (label.hasClass(self.options.errorClass)) {
             label.removeClass(self.options.errorClass);
           }
-          $form.attr('invalid', 'true');
         }
       })
       $(checkInput).each(function() {
@@ -171,12 +171,12 @@
 
         if (!self.requiredCheck(this)) {
           label.addClass(self.options.errorClass);
+          $form.attr('invalid', 'true');
         }
         else {
           if (label.hasClass(self.options.errorClass)) {
             label.removeClass(self.options.errorClass);
           }
-          $form.attr('invalid', 'true');
         }
       })
       for (var group in radioGroups) {
