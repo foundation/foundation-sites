@@ -30,7 +30,8 @@
    */
   Abide.defaults = {
     validateOn: 'fieldChange', // options: fieldChange, manual, submit
-    errorClass: 'is-invalid-label',
+    labelErrorClass: 'is-invalid-label',
+    inputErrorClass: 'is-invalid-input',
     patterns: {
       alpha : /^[a-zA-Z]+$/,
       alpha_numeric : /^[a-zA-Z0-9]+$/,
@@ -157,12 +158,16 @@
       $(textInput).each(function() {
         var label = $(this).closest('label');
         if (!self.requiredCheck(this) || !self.validateText(this)) {
-          label.addClass(self.options.errorClass);
+          // possibly have a method that basically scours for error elements
+          // and adds the appropriate error class to them
+          label.addClass(self.options.labelErrorClass);
+          $(this).addClass(self.options.inputErrorClass);
+          $(this).next('.form-error').addClass('is-visible');
           $form.attr('invalid', 'true');
         }
         else {
-          if (label.hasClass(self.options.errorClass)) {
-            label.removeClass(self.options.errorClass);
+          if (label.hasClass(self.options.labelErrorClass)) {
+            label.removeClass(self.options.labelErrorClass);
           }
         }
       })
@@ -170,12 +175,13 @@
         var label = $(this).next('label');
 
         if (!self.requiredCheck(this)) {
-          label.addClass(self.options.errorClass);
+          label.addClass(self.options.labelErrorClass);
+          $(this).addClass(self.options.inputErrorClass);
           $form.attr('invalid', 'true');
         }
         else {
-          if (label.hasClass(self.options.errorClass)) {
-            label.removeClass(self.options.errorClass);
+          if (label.hasClass(self.options.labelErrorClass)) {
+            label.removeClass(self.options.labelErrorClass);
           }
         }
       })
@@ -228,13 +234,13 @@
 
       if (counter > 0) {
         $(labels).each(function() {
-          $(this).addClass(self.options.errorClass);
+          $(this).addClass(self.options.labelErrorClass);
         });
       }
       else {
         $(labels).each(function() {
-          if ($(this).hasClass(self.options.errorClass)) {
-            $(this).removeClass(self.options.errorClass);
+          if ($(this).hasClass(self.options.labelErrorClass)) {
+            $(this).removeClass(self.options.labelErrorClass);
           }
         });
       }

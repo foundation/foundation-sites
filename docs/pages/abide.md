@@ -17,6 +17,9 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
     <div class="small-12 columns">
       <label>Input Label
         <input type="text" placeholder=".small-12.columns" aria-describedby="exampleHelpText" required pattern="number">
+        <span class="form-error">
+          Yo, you had better fill this out.
+        </span>
       </label>
       <p class="help-text" id="exampleHelpText">Here's how you use this input field!</p>
     </div>
