@@ -10,9 +10,7 @@
    */
   function Toggler(element, options) {
     this.$element = element;
-    this.options = $.extend(Toggler.defaults, options);
-    this.targetClass = '';
-    this.$target = $();
+    this.className = '';
 
     this._init();
     this._events();
@@ -23,30 +21,6 @@
      */
     this.$element.trigger('init.zf.toggler');
   }
-  
-  /**
-   * Default settings for plugin
-   */
-  Toggler.defaults = {
-      /**
-       * Set what class to toggle on which elements. Use the format `.class of .element`. `.element` can be any simple CSS selector, such as `#id`, `.class`, and `[attribute]`.
-       * @option
-       * @sample .is-visible on #dropdown
-       */
-      toggler: '',
-      /**
-       * Set the text to display inside the toggle while the target element *has the class* you set.
-       * @option
-       * @sample Hide dropdown
-       */
-      onText: '',
-      /**
-       * Set the text to display inside the toggle while the target *does not have the class* you set.
-       * @option
-       * @sample Show dropdown
-       */
-      offText: ''
-  };
 
   Toggler.prototype = {
     /**
@@ -55,21 +29,16 @@
      * @private
      */
     _init: function() {
-      // Parse the class and target
-      var input = this.options.toggler.split(' ');
+      // Parse the class
+      var input = this.$element.data('toggler');
 
-      if (input.length === 0) console.warn('You must pass a string of the format ".class on .element" to Toggler.');
-
-      this.targetClass = input[0];
-      if (this.targetClass[0] === '.') this.targetClass = this.targetClass.slice(1);
-
-      this.$target = $(input[input.length - 1]);
-
-      // Set the trigger text based on default state
-      if (this.$target.hasClass(this.targetClass))
-        this.$element.text(this.options.onText);
-      else
-        this.$element.text(this.options.offText);
+      // Allow for a . at the beginning of the string
+      if (input[0] === '.') {
+        this.className = input.slice(1);
+      }
+      else {
+        this.className = input;
+      }
     },
 
     /**
@@ -80,7 +49,8 @@
     _events: function() {
       var _this = this;
 
-      this.$element.on('click.zf.toggler', function() {
+      this.$element.on('toggle.zf.trigger', function() {
+        console.log("Hello");
         _this.toggle();
         return false;
       });
@@ -93,9 +63,10 @@
      * @fires Toggler#off
      */
     toggle: function() {
-      this.$target.toggleClass(this.targetClass);
-      if (this.$target.hasClass(this.targetClass)) {
-        this.$element.text(this.options.onText);
+      this.$element.toggleClass(this.className);
+
+      if (this.$element.hasClass(this.className)) {
+        // this.$element.text(this.options.onText);
         /**
          * Fires if the target element has the class after a toggle.
          * @event Toggler#on
@@ -103,7 +74,7 @@
         this.$element.trigger('on.zf.toggler');
       }
       else {
-        this.$element.text(this.options.offText);
+        // this.$element.text(this.options.offText);
         /**
          * Fires if the target element does not have the class after a toggle.
          * @event Toggler#off

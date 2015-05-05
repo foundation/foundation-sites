@@ -41,7 +41,8 @@ $foundation-version: '6.0.0-alpha';
   'components/callout',
   'components/card',
   'components/table',
-  'components/reveal';
+  'components/reveal',
+  'components/flex-video';
 
 // These styles are applied to <meta> tags, which are read by the Foundation JavaScript
 .foundation-mq {
@@ -63,4 +64,5 @@ $foundation-version: '6.0.0-alpha';
   @include foundation-media-object;
   @include foundation-reveal;
   @include foundation-callout;
+  @include foundation-flex-video;
 }

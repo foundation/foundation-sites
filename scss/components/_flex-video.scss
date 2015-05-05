@@ -1,0 +1,43 @@
+/// Padding above a flex video container.
+/// @type Number
+$flexvideo-padding-top: rem-calc(25) !default;
+
+/// Margin below a flex video container.
+/// @type Number
+$flexvideo-margin-bottom: rem-calc(16) !default;
+
+/// Padding used to create a 4:3 aspect ratio.
+/// @type Number
+$flexvideo-padding-bottom: 67.5% !default;
+
+/// Padding used to create a 16:9 aspect ratio.
+/// @type Number
+$flexvideo-padding-bottom-widescreen: 56.34% !default;
+
+/// Creates a flex video container.
+@mixin flex-video-container {
+  position: relative;
+  padding-top: $flexvideo-padding-top;
+  padding-bottom: $flexvideo-padding-bottom;
+  height: 0;
+  margin-bottom: $flexvideo-margin-bottom;
+  overflow: hidden;
+
+  &.widescreen { padding-bottom: $flexvideo-padding-bottom-widescreen; }
+  &.vimeo { padding-top: 0; }
+
+  iframe,
+  object,
+  embed,
+  video {
+    position: absolute;
+    top: 0;
+    #{$default-float}: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@mixin foundation-flex-video {
+  .flex-video { @include flex-video-container; }
+}
