@@ -1,8 +1,8 @@
 !function(Foundation, $) {
   var motion = {};
 
-  var initClasses   = ['ng-enter', 'ng-leave'];
-  var activeClasses = ['ng-enter-active', 'ng-leave-active'];
+  var initClasses   = ['mui-enter', 'mui-leave'];
+  var activeClasses = ['mui-enter-active', 'mui-leave-active'];
   var events = [
     'webkitAnimationEnd', 'mozAnimationEnd',
     'MSAnimationEnd', 'oanimationend',
@@ -14,8 +14,6 @@
     element = $(element);
 
     if (!element.length) return;
-
-    reset();
 
     var initClass = isIn ? initClasses[0] : initClasses[1];
     var activeClass = isIn ? activeClasses[0] : activeClasses[1];
@@ -49,6 +47,7 @@
     }
 
     function reset() {
+      if (isIn) element.show(0);
       element[0].style.transitionDuration = 0;
       element.removeClass(initClass + ' ' + activeClass + ' ' + animation);
     }

@@ -287,6 +287,7 @@ $abbr-underline: 1px dotted #333 !default;
     color: $anchor-color;
     text-decoration: $anchor-text-decoration;
     line-height: inherit;
+    cursor: pointer;
 
     &:hover,
     &:focus {
