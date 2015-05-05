@@ -52,7 +52,7 @@
     function finish() {
       if (!isIn) element.hide();
       reset();
-      if (cb) cb();
+      if (cb) cb.apply(element);
     }
 
     // Resets transitions and removes motion-specific classes

@@ -9,9 +9,14 @@
 
   $('[data-close]').on('click.zf.trigger', function() {
     var id = $(this).data('close');
-    $('#' + id).triggerHandler('close.zf.trigger', {
-      origin: $(this)
-    });
+    if (id) {
+      $('#' + id).triggerHandler('close.zf.trigger', {
+        origin: $(this)
+      });
+    }
+    else {
+      $(this).trigger('close.zf.trigger');
+    }
   });
 
   $('[data-toggle]').on('click.zf.trigger', function() {
@@ -39,6 +44,15 @@
         $(this).triggerHandler(evt + '.zf.trigger');
       }
     })
+  });
+
+  // [PH]
+  $(document).on('close.zf.trigger', '[data-closable]', function() {
+    var animation = $(this).data('closable') || 'fadeOut';
+
+    Foundation.Motion.animateOut($(this), animation, function() {
+      $(this).trigger('closed.zf');
+    });
   });
 
 }(window.Foundation, window.jQuery)

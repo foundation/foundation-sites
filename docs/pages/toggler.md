@@ -29,3 +29,26 @@ js: js/foundation.toggler.js
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta quas optio alias voluptas nobis iusto mollitia asperiores incidunt reprehenderit doloribus voluptatibus officiis minus, inventore, quasi nisi. Consequuntur, quidem. Sint, dicta?</p>
 </div>
 ```
+
+---
+
+## Mark as Closable
+
+```html_example
+<div class="callout" data-closable>
+  <button class="close-button" data-close>&times;</button>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore praesentium sint alias dolorum qui vel quaerat, libero consequatur non esse asperiores veritatis commodi, odit eum ipsam nemo dicta iste aliquam.</p>
+</div>
+```
+
+---
+
+### With Alternate Animation
+
+```html_example
+<div class="callout" data-closable="slideOutRight">
+  <button class="close-button" data-close>&times;</button>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore praesentium sint alias dolorum qui vel quaerat, libero consequatur non esse asperiores veritatis commodi, odit eum ipsam nemo dicta iste aliquam.</p>
+</div>
+```
+
