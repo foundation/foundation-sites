@@ -1,4 +1,11 @@
-<h2>Equalizer</h2>
+---
+title: Equalizer
+js: js/foundation.equalizer.js
+---
+
+## Basics
+
+---
 <section class="docs-grid">
 <div class="row" data-equalizer="foo">
   <div class="medium-4 columns" >
