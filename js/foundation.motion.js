@@ -3,51 +3,60 @@
 
   var initClasses   = ['mui-enter', 'mui-leave'];
   var activeClasses = ['mui-enter-active', 'mui-leave-active'];
-  var events = [
-    'webkitAnimationEnd', 'mozAnimationEnd',
-    'MSAnimationEnd', 'oanimationend',
-    'animationend', 'webkitTransitionEnd',
-    'otransitionend', 'transitionend'
-  ];
+
+  // Find the right "transitionend" event for this browser
+  var endEvent = (function() {
+    var transitions = {
+      'transition': 'transitionend',
+      'WebkitTransition': 'webkitTransitionEnd',
+      'MozTransition': 'transitionend',
+      'OTransition': 'otransitionend'
+    };
+    var elem = document.createElement('div');
+   
+    for (var t in transitions){
+      if (typeof elem.style[t] !== 'undefined'){
+        return transitions[t];
+      }
+    }
+  })();
 
   function animate(isIn, element, animation, cb) {
-    element = $(element);
+    element = $(element).eq(0);
 
     if (!element.length) return;
 
     var initClass = isIn ? initClasses[0] : initClasses[1];
     var activeClass = isIn ? activeClasses[0] : activeClasses[1];
 
-    // Set up animation
+    // Set up the animation
     reset();
     element.addClass(animation);
     element.css('transition', 'none');  
-    element.addClass(initClass);
-
-    // Force a tick
-    reflow();
+    requestAnimationFrame(function() {
+      element.addClass(initClass);
+      if (isIn) element.show();
+    });
 
     // Start the animation
-    Foundation.requestAnimationFrame(function() {
+    requestAnimationFrame(function() {
+      element[0].offsetWidth;
       element.css('transition', '');
       element.addClass(activeClass);
     });
 
     // Clean up the animation when it finishes
-    element.one(events.join(' '), function() {
-      console.log("Motion done.");
-      reset();
-      element[0].style.transitionDuration = '';
-      if (!isIn) element.hide(0);
-      if (cb) cb();
-    });
+    element.one('transitionend', finish);
 
-    function reflow() {
-      return element[0].offsetWidth;
+    // Hides the element (for out animations), resets the element, and runs a callback
+    function finish() {
+      if (!isIn) element.hide();
+      reset();
+      if (cb) cb();
     }
 
+    // Resets transitions and removes motion-specific classes
     function reset() {
-      if (isIn) element.show(0);
       element[0].style.transitionDuration = 0;
       element.removeClass(initClass + ' ' + activeClass + ' ' + animation);
     }
