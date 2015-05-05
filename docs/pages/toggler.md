@@ -1,16 +1,13 @@
 ---
 title: Toggler
-description: Toggler makes it easy to swap CSS classes on any element on click.
+description: Toggler makes it easy to toggle visibility or CSS on any element with a click.
 js: js/foundation.toggler.js
 ---
 
 ## Toggle a CSS class
 
 ```html_example
-<p><a 
-  data-toggle="menuBar"
-  data-ontext="Un-expand!"
-  data-offtext="Expand!">Expand!</a></p>
+<p><a data-toggle="menuBar">Expand!</a></p>
 
 <ul class="menu-bar" id="menuBar" data-toggler=".expand">
   <li><a href="#">One</a></li>
