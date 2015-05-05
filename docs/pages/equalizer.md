@@ -8,10 +8,9 @@ js: js/foundation.equalizer.js
 ---
 <section class="docs-grid">
 <div class="row" data-equalizer="foo">
-  <div class="medium-4 columns" >
-    <div class="panel" data-equalizer-watch="foo">
+  <div class="medium-4 columns" data-equalizer-watch="foo">
+    <div class="panel" data-equalizer="bar">
     <h3>Parent panel</h3>
-    <div class="row" data-equalizer="bar">
       <div class="panel" data-equalizer-watch="bar">
         <p>Pellentem, feugiat vitae, ultricies eget, tempor sit amet, ante.</p>
       </div>
@@ -21,7 +20,6 @@ js: js/foundation.equalizer.js
       <div class="panel" data-equalizer-watch="bar">
         <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante.</p>
       </div>
-    </div>
     </div>
   </div>
   <div class="medium-4 columns">
