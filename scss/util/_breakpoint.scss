@@ -149,3 +149,13 @@ $breakpoint-classes: (small medium large) !default;
     }
   }
 }
+
+/// CSS Output
+/// Meta styles are included in all builds, as they are a dependancy of the Javascript.
+/// Used to provide media query values for javascript components.
+/// Forward slash placed around everything to convince PhantomJS to read the value.
+
+meta.foundation-mq {
+  display: none;
+  font-family:  "#{map-serialize($breakpoints)}";
+}
