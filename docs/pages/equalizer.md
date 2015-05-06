@@ -45,8 +45,8 @@ js: js/foundation.equalizer.js
     </div>
   </div>
   <div class="medium-4 columns">
-    <div class="panel" data-equalizer-watch>
-      <img src="http://placekitten.com/g/300/300" />
+    <div class="callout panel" data-equalizer-watch>
+      <img src="http://placekitten.com/g/800/600" />
     </div>
   </div>
 </div>

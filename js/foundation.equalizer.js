@@ -62,19 +62,19 @@
 
     $('[' + this.attr + ']').each(function() {
       var $eqParent       = $(this),
-          adjustedHeights;
-
+          adjustedHeights = [];
+      console.log($eqParent.data('equalizer'));
       if ($eqParent.find('img').length) {
-        Foundation.imagesLoaded($eqParent.find('img'), function() {
-          console.log('image callback');
+        var imgLoad = imagesLoaded($eqParent.find('img'));
+        imgLoad.on('always', function() {
           adjustedHeights = self.getHeights($eqParent);
+          self.applyHeight($eqParent, adjustedHeights);   
         });
       }
       else {
         adjustedHeights = self.getHeights($eqParent);
+        self.applyHeight($eqParent, adjustedHeights);
       }
-
-      self.applyHeight($eqParent, adjustedHeights);   
     });
   };
   /**
@@ -87,11 +87,12 @@
     var eqGroupName = $eqParent.data('equalizer'),
         eqGroup     = eqGroupName ? $eqParent.find('[' + this.attr + '-watch="' + eqGroupName + '"]:visible') : $eqParent.find('[' + this.attr + '-watch]:visible'),
         heights;
-    
-    eqGroup.height('inherit');
 
-    heights = eqGroup.map(function () { return $(this).outerHeight(false) }).get();
-    
+    eqGroup.height('inherit');
+    heights = eqGroup.map(function () {
+      // debugger;
+      return $(this).outerHeight(false);
+    }).get();
     return heights;
   };
   /**
