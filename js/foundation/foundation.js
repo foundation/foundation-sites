@@ -10,14 +10,12 @@
   'use strict';
 
   var header_helpers = function (class_array) {
-    var i = class_array.length;
     var head = $('head');
-
-    while (i--) {
-      if (head.has('.' + class_array[i]).length === 0) {
-        head.append('<meta class="' + class_array[i] + '" />');
+    head.prepend($.map(class_array, function (class_name) {
+      if (head.has('.' + class_name).length === 0) {
+        return '<meta class="' + class_name + '" />';
       }
-    }
+    }));
   };
 
   header_helpers([
@@ -290,21 +288,30 @@
     return string;
   }
 
+  function MediaQuery(selector) {
+    this.selector = selector;
+    this.query = '';
+  }
+
+  MediaQuery.prototype.toString = function () {
+    return this.query || (this.query = S(this.selector).css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, ''));
+  };
+
   window.Foundation = {
     name : 'Foundation',
 
     version : '{{VERSION}}',
 
     media_queries : {
-      'small'       : S('.foundation-mq-small').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, ''),
-      'small-only'  : S('.foundation-mq-small-only').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, ''),
-      'medium'      : S('.foundation-mq-medium').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, ''),
-      'medium-only' : S('.foundation-mq-medium-only').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, ''),
-      'large'       : S('.foundation-mq-large').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, ''),
-      'large-only'  : S('.foundation-mq-large-only').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, ''),
-      'xlarge'      : S('.foundation-mq-xlarge').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, ''),
-      'xlarge-only' : S('.foundation-mq-xlarge-only').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, ''),
-      'xxlarge'     : S('.foundation-mq-xxlarge').css('font-family').replace(/^[\/\\'"]+|(;\s?})+|[\/\\'"]+$/g, '')
+      'small'       : new MediaQuery('.foundation-mq-small'),
+      'small-only'  : new MediaQuery('.foundation-mq-small-only'),
+      'medium'      : new MediaQuery('.foundation-mq-medium'),
+      'medium-only' : new MediaQuery('.foundation-mq-medium-only'),
+      'large'       : new MediaQuery('.foundation-mq-large'),
+      'large-only'  : new MediaQuery('.foundation-mq-large-only'),
+      'xlarge'      : new MediaQuery('.foundation-mq-xlarge'),
+      'xlarge-only' : new MediaQuery('.foundation-mq-xlarge-only'),
+      'xxlarge'     : new MediaQuery('.foundation-mq-xxlarge')
     },
 
     stylesheet : $('<style></style>').appendTo('head')[0].sheet,
