@@ -53,6 +53,14 @@
         self._reflow();
       }.bind(this), 50));
   };
+
+  /**
+   * A noop version for the plugin
+   * @private
+   */
+  Equalizer.prototype._killswitch = function() {
+    return;
+  };
   /**
    * Calls necessary functions to update Equalizer upon DOM change
    * @private
@@ -63,7 +71,7 @@
     $('[' + this.attr + ']').each(function() {
       var $eqParent       = $(this),
           adjustedHeights = [];
-      console.log($eqParent.data('equalizer'));
+
       if ($eqParent.find('img').length) {
         var imgLoad = imagesLoaded($eqParent.find('img'));
         imgLoad.on('always', function() {
@@ -89,10 +97,7 @@
         heights;
 
     eqGroup.height('inherit');
-    heights = eqGroup.map(function () {
-      // debugger;
-      return $(this).outerHeight(false);
-    }).get();
+    heights = eqGroup.map(function () { return $(this).outerHeight(false);}).get();
     return heights;
   };
   /**
