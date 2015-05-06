@@ -130,6 +130,19 @@
       });
     },
 
+    MediaQuery: {
+      current: "small",
+      is: function(mq) {
+        console.log(mq);
+        //check if current mq against argument mq
+        // return boolean
+      },
+      atLeast: function(mq) {
+        console.log("i am at least" + mq);
+        // return boolean
+      }
+    },
+
     /**
      * Executes a function a max of once every n milliseconds. Returns a function with throttling applied.
      * @param {Function} func - Function to be throttled.
