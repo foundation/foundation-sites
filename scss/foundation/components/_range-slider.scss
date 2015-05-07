@@ -15,7 +15,7 @@
 
 $include-html-range-slider-classes: $include-html-classes !default;
 
-// These variabels define the slider bar styles
+// These variables define the slider bar styles
 $range-slider-bar-width: 100% !default;
 $range-slider-bar-height: rem-calc(16) !default;
 
@@ -31,7 +31,7 @@ $range-slider-active-segment-bg-color: scale-color($secondary-color, $lightness:
 $range-slider-vertical-bar-width: rem-calc(16) !default;
 $range-slider-vertical-bar-height: rem-calc(200) !default;
 
-// These variabels define the slider handle styles
+// These variables define the slider handle styles
 $range-slider-handle-width: rem-calc(32) !default;
 $range-slider-handle-height: rem-calc(22) !default;
 $range-slider-handle-position-top: rem-calc(-5) !default;
