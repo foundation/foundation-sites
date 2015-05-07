@@ -151,11 +151,28 @@
         }
       },
       is: function(mq) {
-        return window.matchMedia(mqObject[mq]).matches;
+        return window.matchMedia(this.queries[mq]).matches;
       },
       atLeast: function(mq) {
-        console.log("i am at least" + mq);
-        // return boolean
+        var mqObj = this.queries,
+            arr   = [];
+        // prepare to iterate through object in reverse
+        // so we can get the first "true" MQ we hit
+        for (var key in mqObj) {
+          arr.push(key);
+        }
+        // this can be refactored because the same code is used in 'current' method
+        for (var i = arr.length - 1; i >= 0; i--) {
+          var mqName = arr[i];
+          if (mqObj.hasOwnProperty(mqName) && window.matchMedia(mqObj[mqName]).matches) {
+            if (arr.indexOf(mq) < arr.indexOf(mqName)) {
+              return true;
+            }
+            else {
+              return false;
+            }
+          }
+        }
       },
       extractStyle: function() {
         // default set of media queries
