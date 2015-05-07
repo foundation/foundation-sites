@@ -135,14 +135,11 @@
 
     MediaQuery: {
       queries: {},
+      mqNames: [],
       current: function() {
         var mqObj = this.queries,
-            arr   = [];
-        // prepare to iterate through object in reverse
-        // so we can get the first "true" MQ we hit
-        for (var key in mqObj) {
-          arr.push(key);
-        }
+            arr   = this.mqNames;
+
         for (var i = arr.length - 1; i >= 0; i--) {
           var mqName = arr[i];
           if (mqObj.hasOwnProperty(mqName) && window.matchMedia(mqObj[mqName]).matches) {
@@ -154,40 +151,31 @@
         return window.matchMedia(this.queries[mq]).matches;
       },
       atLeast: function(mq) {
-        var mqObj = this.queries,
-            arr   = [];
-        // prepare to iterate through object in reverse
-        // so we can get the first "true" MQ we hit
-        for (var key in mqObj) {
-          arr.push(key);
+        var currentMq = this.current();
+
+        if (this.mqNames.indexOf(mq) < this.mqNames.indexOf(currentMq)) {
+          return true;
         }
-        // this can be refactored because the same code is used in 'current' method
-        for (var i = arr.length - 1; i >= 0; i--) {
-          var mqName = arr[i];
-          if (mqObj.hasOwnProperty(mqName) && window.matchMedia(mqObj[mqName]).matches) {
-            if (arr.indexOf(mq) < arr.indexOf(mqName)) {
-              return true;
-            }
-            else {
-              return false;
-            }
-          }
+        else {
+          return false;
         }
       },
       extractStyle: function() {
-        // default set of media queries
-        var defaultQueries = {
-          'default' : 'only screen',
-          landscape : 'only screen and (orientation: landscape)',
-          portrait : 'only screen and (orientation: portrait)',
-          retina : 'only screen and (-webkit-min-device-pixel-ratio: 2),' +
-            'only screen and (min--moz-device-pixel-ratio: 2),' +
-            'only screen and (-o-min-device-pixel-ratio: 2/1),' +
-            'only screen and (min-device-pixel-ratio: 2),' +
-            'only screen and (min-resolution: 192dpi),' +
-            'only screen and (min-resolution: 2dppx)'
-        },
-        extractedStyles = $('.foundation-mq').css('font-family');
+        var self = this,
+            extractedStyles = $('.foundation-mq').css('font-family'),
+            namedQueries,
+            // default set of media queries
+            defaultQueries = {
+              'default' : 'only screen',
+              landscape : 'only screen and (orientation: landscape)',
+              portrait : 'only screen and (orientation: portrait)',
+              retina : 'only screen and (-webkit-min-device-pixel-ratio: 2),' +
+                'only screen and (min--moz-device-pixel-ratio: 2),' +
+                'only screen and (-o-min-device-pixel-ratio: 2/1),' +
+                'only screen and (min-device-pixel-ratio: 2),' +
+                'only screen and (min-resolution: 192dpi),' +
+                'only screen and (min-resolution: 2dppx)'
+            };
         
         // https://github.com/sindresorhus/query-string
         function parseStyleToObject(str) {
@@ -225,14 +213,21 @@
 
           return styleObject;
         }
-        var namedQueries = parseStyleToObject(extractedStyles);
+        
+        namedQueries = parseStyleToObject(extractedStyles);
         for (var key in namedQueries) {
           namedQueries[key] = 'only screen and (min-width: ' + namedQueries[key].replace('rem', 'em') + ')';
         }
         // extend default queries
-        var namedQueries = $.extend(defaultQueries, namedQueries);
+        namedQueries = $.extend(defaultQueries, namedQueries);
         // assign queries object to parsed styles
-        this.queries = namedQueries;
+        self.queries = namedQueries;
+        // push query names to an array for later comparison
+        // TODO: may have to find a better way of sorting this because
+        // this is very dependent on the order in which breakpoints are listed
+        for (var mqName in namedQueries) {
+          self.mqNames.push(mqName);
+        };
       }
     },
 
