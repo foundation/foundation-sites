@@ -73,8 +73,7 @@
           adjustedHeights = [];
 
       if ($eqParent.find('img').length) {
-        var imgLoad = imagesLoaded($eqParent.find('img'));
-        imgLoad.on('always', function() {
+        Foundation.imagesLoaded($eqParent.find('img'), function() {
           adjustedHeights = self.getHeights($eqParent);
           self.applyHeight($eqParent, adjustedHeights);   
         });
