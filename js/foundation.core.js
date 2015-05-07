@@ -152,16 +152,25 @@
       },
       is: function(mq) {
         return window.matchMedia(mqObject[mq]).matches;
-        //check if current mq against argument mq
-        // return boolean
       },
       atLeast: function(mq) {
         console.log("i am at least" + mq);
         // return boolean
       },
       extractStyle: function() {
-        // set default mqs as well
-        var extractedStyles = $('.foundation-mq').css('font-family');
+        // default set of media queries
+        var defaultQueries = {
+          'default' : 'only screen',
+          landscape : 'only screen and (orientation: landscape)',
+          portrait : 'only screen and (orientation: portrait)',
+          retina : 'only screen and (-webkit-min-device-pixel-ratio: 2),' +
+            'only screen and (min--moz-device-pixel-ratio: 2),' +
+            'only screen and (-o-min-device-pixel-ratio: 2/1),' +
+            'only screen and (min-device-pixel-ratio: 2),' +
+            'only screen and (min-resolution: 192dpi),' +
+            'only screen and (min-resolution: 2dppx)'
+        },
+        extractedStyles = $('.foundation-mq').css('font-family');
         
         // https://github.com/sindresorhus/query-string
         function parseStyleToObject(str) {
@@ -204,7 +213,7 @@
           namedQueries[key] = 'only screen and (min-width: ' + namedQueries[key].replace('rem', 'em') + ')';
         }
         // extend default queries
-
+        var namedQueries = $.extend(defaultQueries, namedQueries);
         // assign queries object to parsed styles
         this.queries = namedQueries;
       }
