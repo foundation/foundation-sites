@@ -9,6 +9,7 @@
 //
 $include-html-grid-classes: $include-html-classes !default;
 $include-xl-html-grid-classes: false !default;
+$include-top-bar-html-grid-classes: false !default;
 
 $row-width: rem-calc(1000) !default;
 $total-columns: 12 !default;
@@ -280,7 +281,14 @@ $last-child-float: $opposite-direction !default;
         }
       }
     }
+  }  
+  
+  @if $include-top-bar-html-grid-classes {
+    @media #{$topbar-media-query} {
+      @include grid-html-classes($size:top-bar-desktop);
+    }
   }
+  
   @if $include-xl-html-grid-classes {
     @media #{$xlarge-up} {
       @include grid-html-classes($size:xlarge);

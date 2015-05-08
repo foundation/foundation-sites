@@ -302,6 +302,9 @@ $medium-breakpoint: em-calc(1024) !default;
 $large-breakpoint:  em-calc(1440) !default;
 $xlarge-breakpoint: em-calc(1920) !default;
 
+// Using rem-calc for the below breakpoint causes issues with top bar
+$topbar-breakpoint: $small-breakpoint  + em-calc(1) !default; // Change to 9999px for always mobile layout
+
 $small-range:   (0, $small-breakpoint) !default;
 $medium-range:  ($small-breakpoint  + em-calc(1), $medium-breakpoint) !default;
 $large-range:   ($medium-breakpoint + em-calc(1), $large-breakpoint)  !default;
@@ -327,6 +330,8 @@ $xlarge-only: "#{$screen} and (min-width:#{lower-bound($xlarge-range)}) and (max
 
 $xxlarge-up: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)})" !default;
 $xxlarge-only: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)}) and (max-width:#{upper-bound($xxlarge-range)})" !default;
+
+$topbar-media-query: "#{$screen} and (min-width:#{lower-bound($topbar-breakpoint)})";
 
 $retina: (
   "#{$screen} and (-webkit-min-device-pixel-ratio: 2)",

@@ -21,14 +21,16 @@ $visibility-breakpoint-sizes:
   medium,
   large,
   xlarge,
-  xxlarge;
+  xxlarge,
+  top-bar-desktop;
 
 $visibility-breakpoint-queries:
   unquote($small-up),
   unquote($medium-up),
   unquote($large-up),
   unquote($xlarge-up),
-  unquote($xxlarge-up);
+  unquote($xxlarge-up),
+  unquote($topbar-media-query);
 
 @mixin visibility-loop {
   @each $current-visibility-breakpoint in $visibility-breakpoint-sizes {
