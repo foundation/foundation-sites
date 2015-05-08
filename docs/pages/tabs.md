@@ -1,6 +1,11 @@
-<h2>Tabs</h2>
+---
+title: Tabs
+description: Tabs are elements that help you organize and navigate multiple documents in a single container. They can be used for switching between items in the container.
+sass: scss/components/_tabs.scss
+---
 
-<h3>Horizontal</h3>
+## Horizontal
+
 <ul class="tabs" data-tab>
   <li class="tab-title is-active"><a href="#panel1">Tab 1</a></li>
   <li class="tab-title"><a href="#panel2">Tab 2</a></li>
@@ -22,7 +27,10 @@
   </div>
 </div>
 
-<h3>Vertical</h3>
+---
+
+## Vertical
+
 <ul class="tabs vertical" data-tab>
   <li class="tab-title is-active"><a href="#panel1">Tab 1</a></li>
   <li class="tab-title"><a href="#panel2">Tab 2</a></li>
