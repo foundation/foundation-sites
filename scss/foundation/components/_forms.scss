@@ -405,7 +405,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
     .postfix { @include prefix-postfix-base; }
 
     /* Adjust padding, alignment and radius if pre/post element is a button */
-    .postfix.button { @include button-size(false, false); @include postfix(false, false, true); }
+    .postfix.button { @include button-size(false, false); @include postfix(false, false, false, true); }
     .prefix.button { @include button-size(false, false); @include prefix(false, false, true); }
 
     .prefix.button.radius { @include radius(0); @include side-radius($default-float, $button-radius); }
