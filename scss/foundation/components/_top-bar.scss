@@ -76,7 +76,7 @@ $topbar-menu-icon-position: $opposite-direction !default; // Change to $default-
 $topbar-transition-speed: 300ms !default;
 // Using rem-calc for the below breakpoint causes issues with top bar
 $topbar-breakpoint: #{lower-bound($medium-range)} !default; // Change to 9999px for always mobile layout
-$topbar-media-query: "#{$screen} and (min-width:#{lower-bound($topbar-breakpoint)})";
+$topbar-media-query: "#{$screen} and (min-width:#{lower-bound($topbar-breakpoint)})" !default;
 
 // Top-bar input styles
 $topbar-input-height: rem-calc(28) !default;
