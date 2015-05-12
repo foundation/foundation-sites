@@ -520,8 +520,8 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
       }
 
       .contain-to-grid .top-bar {
-        margin-bottom: $topbar-margin-bottom;
         margin: 0 auto;
+        margin-bottom: $topbar-margin-bottom;
         max-width: $row-width;
       }
 
