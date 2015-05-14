@@ -95,15 +95,15 @@
           .off('.abide')
           .on('blur.fndtn.abide change.fndtn.abide', function (e) {
               var id = this.getAttribute('id'),
-                  eqTo = form.find('[data-equalto="'+ id +'"]').get(0);
+                  eqTo = form.find('[data-equalto="'+ id +'"]');
             // old settings fallback
             // will be deprecated with F6 release
             if (settings.validate_on_blur && settings.validate_on_blur === true) {
               validate(this, e);
             }
             // checks if there is an equalTo equivilant related by id
-            if(typeof eqTo !== "undefined"){
-              validate(eqTo,e);
+            if(typeof eqTo.get(0) !== "undefined" && eqTo.val().length){
+              validate(eqTo.get(0),e);
             }
             // new settings combining validate options into one setting
             if (settings.validate_on === 'change') {
@@ -119,8 +119,8 @@
               validate(this, e);
             }
             // checks if there is an equalTo equivilant related by id
-            if(typeof eqTo !== "undefined"){
-                validate(eqTo,e);
+            if(typeof eqTo.get(0) !== "undefined" && eqTo.val().length){
+              validate(eqTo.get(0),e);
             }
             // new settings combining validate options into one setting
             if (settings.validate_on === 'tab' && e.which === 9) {
