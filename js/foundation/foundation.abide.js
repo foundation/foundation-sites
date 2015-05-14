@@ -94,10 +94,16 @@
         .find('input, textarea, select').not(":hidden, [data-abide-ignore]")
           .off('.abide')
           .on('blur.fndtn.abide change.fndtn.abide', function (e) {
+              var id = this.getAttribute('id'),
+                  eqTo = form.find('[data-equalto="'+ id +'"]').get(0);
             // old settings fallback
             // will be deprecated with F6 release
             if (settings.validate_on_blur && settings.validate_on_blur === true) {
               validate(this, e);
+            }
+            // checks if there is an equalTo equivilant related by id
+            if(typeof eqTo !== "undefined"){
+              validate(eqTo,e);
             }
             // new settings combining validate options into one setting
             if (settings.validate_on === 'change') {
@@ -105,10 +111,16 @@
             }
           })
           .on('keydown.fndtn.abide', function (e) {
+            var id = this.getAttribute('id'),
+                eqTo = form.find('[data-equalto="'+ id +'"]').get(0);
             // old settings fallback
             // will be deprecated with F6 release
             if (settings.live_validate && settings.live_validate === true && e.which != 9) {
               validate(this, e);
+            }
+            // checks if there is an equalTo equivilant related by id
+            if(typeof eqTo !== "undefined"){
+                validate(eqTo,e);
             }
             // new settings combining validate options into one setting
             if (settings.validate_on === 'tab' && e.which === 9) {
