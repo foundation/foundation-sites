@@ -11,9 +11,9 @@
       validate_on_blur : true,
       // validate_on: 'tab', // tab (when user tabs between fields), change (input changes), manual (call custom events) 
       focus_on_invalid : true,
-      error_labels : true, // labels with a for="inputId" will recieve an `error` class
+      error_labels : true, // labels with a for="inputId" will receive an `error` class
       error_class : 'error',
-      timeout : 1000,
+      timeout : 100,
       patterns : {
         alpha : /^[a-zA-Z]+$/,
         alpha_numeric : /^[a-zA-Z0-9]+$/,
@@ -76,7 +76,6 @@
           self.validate([originalSelf], e);
         }.bind(originalSelf), settings.timeout);
       }
-
 
       form
         .off('.abide')
@@ -320,20 +319,20 @@
           disabled = false;
 
       // Has to count up to make sure the focus gets applied to the top error
-        for (var i=0; i < count; i++) {
-            if( group[i].getAttribute('disabled') ){
-                disabled=true;
-                valid=true;
-            } else {
-                if (group[i].checked){
-                    valid = true;
-                } else {
-                    if( disabled ){
-                        valid = false;
-                    }
-                }
+      for (var i=0; i < count; i++) {
+        if( group[i].getAttribute('disabled') ){
+          disabled=true;
+          valid=true;
+        } else {
+          if (group[i].checked){
+            valid = true;
+          } else {
+            if( disabled ){
+              valid = false;
             }
+          }
         }
+      }
 
       // Has to count up to make sure the focus gets applied to the top error
       for (var i = 0; i < count; i++) {
