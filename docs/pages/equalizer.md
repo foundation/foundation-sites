@@ -33,7 +33,7 @@ js: js/foundation.equalizer.js
     </div>
   </div>
 </div>
-<div class="row" data-equalizer>
+<div class="row" data-equalizer id="test-eq">
   <div class="medium-4 columns" >
     <div class="callout panel" data-equalizer-watch>
       <img src="http://placekitten.com/g/600/300" />

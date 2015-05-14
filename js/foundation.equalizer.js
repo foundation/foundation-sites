@@ -10,14 +10,13 @@
    */
   function Equalizer(element, options) {
     this.$element = element;
-    this.options  = $.extend(Equalizer.defaults, options);
+    this.options  = $.extend(this.defaults, options);
     this.$window  = $(window);
     this.name     = 'equalizer';
     this.attr     = 'data-equalizer';
 
     this._init();
     this._events();
-
     /**
      * Fires when the plugin has been successfuly initialized.
      * @event Equalizer#init
@@ -29,7 +28,8 @@
    * Default settings for plugin
    */
   Equalizer.prototype.defaults = {
-    equalizeOnStack: true
+    equalizeOnStack: true,
+    throttleInterval: 50
   };
 
   /**
@@ -51,7 +51,7 @@
       .off('.equalizer')
       .on('resize.fndtn.equalizer', Foundation.throttle(function () {
         self._reflow();
-      }.bind(this), 50));
+      }, self.options.throttleInterval));
   };
 
   /**
@@ -115,7 +115,7 @@
      * Fires before the heights are applied
      * @event Equalizer#preEqualized
      */
-    $eqParent.trigger('preEqualized.fndtn.equalizer');
+    $eqParent.trigger('preEqualized.zf.Equalizer');
 
     // for now, apply the max height found in the array
     for (var i = 0; i < eqGroup.length; i++) {
@@ -126,7 +126,7 @@
      * Fires when the heights have been applied
      * @event Equalizer#postEqualized
      */
-    $eqParent.trigger('postEqualized.fndtn.equalizer');
+    $eqParent.trigger('postEqualized.zf.Equalizer');
   };
 
   Foundation.plugin('equalizer', Equalizer);
