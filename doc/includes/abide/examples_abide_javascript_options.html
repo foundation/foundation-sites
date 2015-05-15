@@ -2,10 +2,12 @@
 ```javascript
 $(document).foundation({
   abide : {
-    live_validate : true,
-    validate_on_blur : true,
-    focus_on_invalid : true,
+    live_validate : true, // validate the form as you go
+    validate_on_blur : true, // validate whenever you focus/blur on an input field
+    focus_on_invalid : true, // automatically bring the focus to an invalid input field
     error_labels: true, // labels with a for="inputId" will recieve an `error` class
+    // the amount of time Abide will take before it validates the form (in ms). 
+    // smaller time will result in faster validation
     timeout : 1000,
     patterns : {
       alpha: /^[a-zA-Z]+$/,
