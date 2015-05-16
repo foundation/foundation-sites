@@ -41,10 +41,10 @@
               </div>
             </div>
             <div class="large-9 medium-8 columns">
-              <h1 id="{{slugify title}}">{{title}}</h1>
-              {{#markdown}}
-              {{> body}}
-              {{/markdown}}
+
+{{#markdown}}
+{{> body}}
+{{/markdown}}
 
             </div>
           </div>
@@ -73,7 +73,6 @@
       })();
 
       $(document).foundation();
-      $(document).foundation('joyride','start');
       $('#start-jr').on('click', function() {
         $(document).foundation('joyride','start');
       });
