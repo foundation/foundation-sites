@@ -94,6 +94,7 @@
         .find('input, textarea, select')
           .off('.abide')
           .on('blur.fndtn.abide change.fndtn.abide', function (e) {
+            console.log(e);
             self.validateForm(self.$element);
           })
           .on('keydown.fndtn.abide', function (e) {
@@ -147,6 +148,14 @@
           }
       }
     },
+    findLabel: function(el) {
+      if ($(el).next('label').length) {
+        return $(el).next('label');
+      }
+      else {
+        return $(el).closest('label');
+      }
+    },
     validateForm: function($form) {
       var self = this,
           textInput = $form.find('input[type="text"]'),
@@ -156,7 +165,8 @@
 
       // obviously find a better way to do this
       $(textInput).each(function() {
-        var label = $(this).closest('label');
+        var label = self.findLabel($(this));
+        // console.log(label);
         if (!self.requiredCheck(this) || !self.validateText(this)) {
           // possibly have a method that basically scours for error elements
           // and adds the appropriate error class to them
@@ -177,7 +187,7 @@
         }
       })
       $(checkInput).each(function() {
-        var label = $(this).next('label');
+        var label = self.findLabel($(this));
 
         if (!self.requiredCheck(this)) {
           label.addClass(self.options.labelErrorClass);
@@ -193,13 +203,11 @@
       for (var group in radioGroups) {
         self.validateRadio(group);
       }
-      // what are all the things that can go wrong with a form?
-      if ($form.find('.form-error.is-visible').length) {
-        $form.attr('invalid', true);
+      // what are all the things that can go wrong with a form?!
+      if ($form.find('.form-error.is-visible').length || $form.find('.is-invalid-label').length) {
         $form.find('[data-abide-error]').css('display', 'block');  
       }        
       else {
-        $form.attr('invalid', false);
         $form.find('[data-abide-error]').css('display', 'none');  
       }
     },
