@@ -11,6 +11,11 @@
     background: #f9f9f9;
     margin-bottom: 1.5rem;
   }
+
+  .docs-reference & code {
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
 }
 
 // Styles for the copy button shown on every code sample

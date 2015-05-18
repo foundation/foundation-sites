@@ -13,7 +13,7 @@
 {{#if sass}}
 <hr>
 
-<section>
+<section class="docs-reference">
   <h2 class="docs-header">
     {{anchor 'Sass Reference'}}
     Sass Reference
@@ -28,17 +28,20 @@
 
     <p>The default styles of this component can be customized using these Sass variables in your project's <a href="#">settings file</a>.</p>
 
-    <table class="docs-variable-table">
-      <tr><th>Name</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
-      {{#each sass.variable}}
-      <tr>
-        <td><code>${{this.context.name}}</code></td>
-        <td>{{this.type}}</td>
-        <td><code>{{this.context.value}}</code></td>
-        <td>{{md this.description}}</td>
-      </tr>
-      {{/each}}
-    </table>
+    {{#each sass.variable}}
+    <section>
+      <h4>
+        {{anchor this.context.name}}
+        {{this.context.name}}
+      </h4>
+
+      <div class="docs-code">
+        <pre><code>{{writeVariable this}}</code></pre>
+      </div>
+
+      {{md this.description}}
+    </section>
+    {{/each}}
   </section>
 
   {{#if sass.mixin}}
