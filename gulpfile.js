@@ -47,7 +47,7 @@ gulp.task('html', function() {
       }))
     .pipe(mdFilter.restore())
     .pipe(shipyard({
-      layout: 'docs/layout/default.html',
+      layouts: 'docs/layout/',
       partials: 'docs/partials/*.html'
     }))
     .pipe(gulp.dest('dist'));
