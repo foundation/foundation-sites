@@ -27,4 +27,9 @@ $(function() {
       });
     });
   }
+  var counter = 0;
+  $('#test-eq').on('postEqualized.zf.Equalizer', function() {
+    counter++;
+    console.log(counter);
+  })
 });

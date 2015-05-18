@@ -68,6 +68,19 @@
   Equalizer.prototype._reflow = function() {
     var self = this;
 
+    // var $eqParent       = this.$element,
+    //     adjustedHeights = [];
+
+    // if ($eqParent.find('img').length) {
+    //   Foundation.imagesLoaded($eqParent.find('img'), function() {
+    //     adjustedHeights = self.getHeights($eqParent);
+    //     self.applyHeight($eqParent, adjustedHeights);   
+    //   });
+    // }
+    // else {
+    //   adjustedHeights = self.getHeights($eqParent);
+    //   self.applyHeight($eqParent, adjustedHeights);
+    // }
     $('[' + this.attr + ']').each(function() {
       var $eqParent       = $(this),
           adjustedHeights = [];
@@ -97,6 +110,7 @@
 
     eqGroup.height('inherit');
     heights = eqGroup.map(function () { return $(this).outerHeight(false);}).get();
+    console.log(heights);
     return heights;
   };
   /**
@@ -121,7 +135,7 @@
     for (var i = 0; i < eqGroup.length; i++) {
       $(eqGroup[i]).css('height', max);
     }
-
+    console.log(max);
     /**
      * Fires when the heights have been applied
      * @event Equalizer#postEqualized

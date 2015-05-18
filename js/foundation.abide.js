@@ -163,11 +163,16 @@
           label.addClass(self.options.labelErrorClass);
           $(this).addClass(self.options.inputErrorClass);
           $(this).next('.form-error').addClass('is-visible');
-          $form.attr('invalid', 'true');
         }
         else {
           if (label.hasClass(self.options.labelErrorClass)) {
             label.removeClass(self.options.labelErrorClass);
+          }
+          if ($(this).next('.form-error').hasClass('is-visible')) {
+            $(this).next('.form-error').removeClass('is-visible');
+          }
+          if ($(this).hasClass(self.options.inputErrorClass)) {
+            $(this).removeClass(self.options.inputErrorClass);
           }
         }
       })
@@ -188,8 +193,14 @@
       for (var group in radioGroups) {
         self.validateRadio(group);
       }
-      if ($form.attr('invalid')) {
-        $form.find('[data-abide-error]').css('display', 'block');
+      // what are all the things that can go wrong with a form?
+      if ($form.find('.form-error.is-visible').length) {
+        $form.attr('invalid', true);
+        $form.find('[data-abide-error]').css('display', 'block');  
+      }        
+      else {
+        $form.attr('invalid', false);
+        $form.find('[data-abide-error]').css('display', 'none');  
       }
     },
     validateText: function(el) {
