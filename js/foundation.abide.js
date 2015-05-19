@@ -163,6 +163,12 @@
         return $(el).closest('label');
       }
     },
+    addErrorClasses: function() {
+
+    },
+    removeErrorClasses: function() {
+
+    },
     validateInput: function($el, $form) {
       var self = this,
           textInput = $form.find('input[type="text"]'),
@@ -177,6 +183,7 @@
           label.addClass(self.options.labelErrorClass);
           $el.addClass(self.options.inputErrorClass);
           $el.next('.form-error').addClass('is-visible');
+          $el.trigger('invalid.fndtn.abide', $el[0]);
         }
         else {
           if (label.hasClass(self.options.labelErrorClass)) {
@@ -188,6 +195,7 @@
           if ($el.hasClass(self.options.inputErrorClass)) {
             $el.removeClass(self.options.inputErrorClass);
           }
+
         }
       }
       if ($el[0].type === 'radio') {
@@ -206,11 +214,7 @@
           $(label).each(function() {
             $(this).addClass(self.options.labelErrorClass);
           });
-          $el.trigger('invalid.fndtn.abide', {
-            input: $el[0],
-            input_type: $el[0].type,
-            input_response: $el.val()
-          })
+          $el.trigger('invalid.fndtn.abide', $el[0]);
         };
       }
       if ($el[0].type === 'checkbox') {
@@ -369,6 +373,7 @@
       $('.' + self.options.labelErrorClass, $form).not('small').removeClass(self.options.labelErrorClass);
       $('.' + self.options.inputErrorClass, $form).not('small').removeClass(self.options.inputErrorClass);
       $('.form-error.is-visible').removeClass('is-visible');
+      $form.find('[data-abide-error]').css('display', 'none');  
       $(':input', $form).not(':button, :submit, :reset, :hidden, [data-abide-ignore]').val('').removeAttr(invalidAttr);
     }
 
