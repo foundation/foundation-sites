@@ -94,6 +94,9 @@
         .on('reset.fndtn.abide', function(e) {
           self.resetForm($(this));
         })
+        .on('submit.fndtn.abide', function(e) {
+          //self.validateWholeForm;
+        })
         .find('input, textarea, select')
           .off('.abide')
           .on('blur.fndtn.abide change.fndtn.abide', function (e) {
@@ -186,31 +189,29 @@
           }
         }
       }
-
-      // $(checkInput).each(function() {
-      //   var label = self.findLabel($(this));
-
-      //   if (!self.requiredCheck(this)) {
-      //     label.addClass(self.options.labelErrorClass);
-      //     $(this).addClass(self.options.inputErrorClass);
-      //     $form.attr('invalid', 'true');
-      //   }
-      //   else {
-      //     if (label.hasClass(self.options.labelErrorClass)) {
-      //       label.removeClass(self.options.labelErrorClass);
-      //     }
-      //   }
-      // })
-      for (var group in radioGroups) {
-        self.validateRadio(group);
+      if ($el[0].type === 'radio') {
+        self.validateRadio($el.attr('name'));
       }
-      // // what are all the things that can go wrong with a form?!
-      // if ($form.find('.form-error.is-visible').length || $form.find('.is-invalid-label').length) {
-      //   $form.find('[data-abide-error]').css('display', 'block');  
-      // }        
-      // else {
-      //   $form.find('[data-abide-error]').css('display', 'none');  
-      // }
+      if ($el[0].type === 'checkbox') {
+        var label = self.findLabel($el[0]);
+
+        if (!self.requiredCheck($el[0])) {
+          label.addClass(self.options.labelErrorClass);
+          $el.addClass(self.options.inputErrorClass);
+        }
+        else {
+          if (label.hasClass(self.options.labelErrorClass)) {
+            label.removeClass(self.options.labelErrorClass);
+          }
+        }
+      }
+
+      if ($form.find('.form-error.is-visible').length || $form.find('.is-invalid-label').length) {
+        $form.find('[data-abide-error]').css('display', 'block');  
+      }        
+      else {
+        $form.find('[data-abide-error]').css('display', 'none');  
+      }
     },
     validateForm: function($form) {
       var self = this,
@@ -347,7 +348,9 @@
     resetForm : function ($form) {
       var self = this;
       var invalidAttr = 'data-invalid';
+      // remove data attributes
       $('[' + self.invalidAttr + ']', $form).removeAttr(invalidAttr);
+      // remove styles
       $('.' + self.options.labelErrorClass, $form).not('small').removeClass(self.options.labelErrorClass);
       $('.' + self.options.inputErrorClass, $form).not('small').removeClass(self.options.inputErrorClass);
       $('.form-error.is-visible').removeClass('is-visible');
