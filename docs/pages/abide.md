@@ -56,6 +56,14 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
       <input id="checkbox3" type="checkbox"><label for="checkbox3">Checkbox 3</label>
     </fieldset>
   </div>
+  <div class="row">
+    <fieldset class="large-6 columns">
+      <button class="button" type="submit">Submit</button>
+    </fieldset>
+    <fieldset class="large-6 columns">
+      <button class="button" type="reset" value="Reset">Reset</button>
+    </fieldset>
+  </div>
 </form>
 ```
 ---

@@ -91,11 +91,15 @@
 
       this.$element
         .off('.abide')
+        .on('reset.fndtn.abide', function(e) {
+          self.resetForm($(this));
+        })
         .find('input, textarea, select')
           .off('.abide')
           .on('blur.fndtn.abide change.fndtn.abide', function (e) {
-            console.log(e);
-            self.validateForm(self.$element);
+            // console.log($(e.target));
+            self.validateInput($(e.target), self.$element);
+            // self.validateForm(self.$element);
           })
           .on('keydown.fndtn.abide', function (e) {
             // if (settings.live_validate === true && e.which != 9) {
@@ -104,7 +108,7 @@
             //     self.validate([this], e);
             //   }.bind(this), settings.timeout);
             // }
-            self.validateForm(self.$element);
+            // self.validateForm(self.$element);
           });
 
     },
@@ -155,6 +159,58 @@
       else {
         return $(el).closest('label');
       }
+    },
+    validateInput: function($el, $form) {
+      var self = this,
+          textInput = $form.find('input[type="text"]'),
+          checkInput = $form.find('input[type="checkbox"]');
+
+      var radioGroups = self.findRadioGroups($form);
+      // console.log($el);
+      if ($el[0].type === 'text') {
+        var label = self.findLabel($el[0]);
+        if (!self.requiredCheck($el[0]) || !self.validateText($el[0])) {
+          label.addClass(self.options.labelErrorClass);
+          $el.addClass(self.options.inputErrorClass);
+          $el.next('.form-error').addClass('is-visible');
+        }
+        else {
+          if (label.hasClass(self.options.labelErrorClass)) {
+            label.removeClass(self.options.labelErrorClass);
+          }
+          if ($el.next('.form-error').hasClass('is-visible')) {
+            $el.next('.form-error').removeClass('is-visible');
+          }
+          if ($el.hasClass(self.options.inputErrorClass)) {
+            $el.removeClass(self.options.inputErrorClass);
+          }
+        }
+      }
+
+      // $(checkInput).each(function() {
+      //   var label = self.findLabel($(this));
+
+      //   if (!self.requiredCheck(this)) {
+      //     label.addClass(self.options.labelErrorClass);
+      //     $(this).addClass(self.options.inputErrorClass);
+      //     $form.attr('invalid', 'true');
+      //   }
+      //   else {
+      //     if (label.hasClass(self.options.labelErrorClass)) {
+      //       label.removeClass(self.options.labelErrorClass);
+      //     }
+      //   }
+      // })
+      for (var group in radioGroups) {
+        self.validateRadio(group);
+      }
+      // // what are all the things that can go wrong with a form?!
+      // if ($form.find('.form-error.is-visible').length || $form.find('.is-invalid-label').length) {
+      //   $form.find('[data-abide-error]').css('display', 'block');  
+      // }        
+      // else {
+      //   $form.find('[data-abide-error]').css('display', 'none');  
+      // }
     },
     validateForm: function($form) {
       var self = this,
@@ -288,9 +344,16 @@
 
       return radioGroups;
     },
-    resetForm: function(form) {
-      // reset form
+    resetForm : function ($form) {
+      var self = this;
+      var invalidAttr = 'data-invalid';
+      $('[' + self.invalidAttr + ']', $form).removeAttr(invalidAttr);
+      $('.' + self.options.labelErrorClass, $form).not('small').removeClass(self.options.labelErrorClass);
+      $('.' + self.options.inputErrorClass, $form).not('small').removeClass(self.options.inputErrorClass);
+      $('.form-error.is-visible').removeClass('is-visible');
+      $(':input', $form).not(':button, :submit, :reset, :hidden, [data-abide-ignore]').val('').removeAttr(invalidAttr);
     }
+
   };
 
   Foundation.plugin('abide', Abide);
