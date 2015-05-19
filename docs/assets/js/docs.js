@@ -32,4 +32,7 @@ $(function() {
     counter++;
     console.log(counter);
   })
+  $('#pokemonRed').on('invalid.fndtn.abide', function(e, data) {
+    console.log(data);
+  })
 });

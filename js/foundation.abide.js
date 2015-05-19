@@ -166,12 +166,13 @@
     validateInput: function($el, $form) {
       var self = this,
           textInput = $form.find('input[type="text"]'),
-          checkInput = $form.find('input[type="checkbox"]');
+          checkInput = $form.find('input[type="checkbox"]'),
+          label,
+          radioGroupName;
 
-      var radioGroups = self.findRadioGroups($form);
       // console.log($el);
       if ($el[0].type === 'text') {
-        var label = self.findLabel($el[0]);
+        label = self.findLabel($el[0]);
         if (!self.requiredCheck($el[0]) || !self.validateText($el[0])) {
           label.addClass(self.options.labelErrorClass);
           $el.addClass(self.options.inputErrorClass);
@@ -190,10 +191,30 @@
         }
       }
       if ($el[0].type === 'radio') {
-        self.validateRadio($el.attr('name'));
+        radioGroupName = $el.attr('name');
+        label = $el.siblings('label');
+
+        if (self.validateRadio(radioGroupName)) {
+          $(label).each(function() {
+            if ($(this).hasClass(self.options.labelErrorClass)) {
+              $(this).removeClass(self.options.labelErrorClass);
+            }
+          });
+
+        }
+        else {
+          $(label).each(function() {
+            $(this).addClass(self.options.labelErrorClass);
+          });
+          $el.trigger('invalid.fndtn.abide', {
+            input: $el[0],
+            input_type: $el[0].type,
+            input_response: $el.val()
+          })
+        };
       }
       if ($el[0].type === 'checkbox') {
-        var label = self.findLabel($el[0]);
+        label = self.findLabel($el[0]);
 
         if (!self.requiredCheck($el[0])) {
           label.addClass(self.options.labelErrorClass);
@@ -309,16 +330,10 @@
       });
 
       if (counter > 0) {
-        $(labels).each(function() {
-          $(this).addClass(self.options.labelErrorClass);
-        });
+        return false;
       }
       else {
-        $(labels).each(function() {
-          if ($(this).hasClass(self.options.labelErrorClass)) {
-            $(this).removeClass(self.options.labelErrorClass);
-          }
-        });
+        return true;
       }
     },
     // may not need this method?
