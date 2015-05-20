@@ -33,7 +33,7 @@
     labelErrorClass: 'is-invalid-label',
     inputErrorClass: 'is-invalid-input',
     formErrorSelector: '.form-error',
-    formErrorClass: '.is-visible',
+    formErrorClass: 'is-visible',
     patterns: {
       alpha : /^[a-zA-Z]+$/,
       alpha_numeric : /^[a-zA-Z0-9]+$/,
@@ -127,10 +127,10 @@
   Abide.prototype._reflow = function() {
     var self = this;
   };
-  Abide.prototype.requiredCheck = function(el) {
-    switch (el.type) {
+  Abide.prototype.requiredCheck = function($el) {
+    switch ($el[0].type) {
       case 'text':
-        if ($(el).attr('required') && !$(el).val()) {
+        if ($el.attr('required') && !$el.val()) {
           // requirement check does not pass
           return false;
         } else {
@@ -138,40 +138,68 @@
         }
         break;
       case 'checkbox':
-        if ($(el).attr('required') && !$(el).is(':checked')) {
+        if ($el.attr('required') && !$el.is(':checked')) {
           return false;
         } else {
           return true;
         }
         break;
       case 'radio':
-        if ($(el).attr('required') && !$(el).is(':checked')) {
+        if ($el.attr('required') && !$el.is(':checked')) {
           return false;
         } else {
           return true;
         }
         break;
       default: 
-        if ($(el).attr('required') && $(el).is(':empty')) {
+        if ($el.attr('required') && $el.is(':empty')) {
           return false;
         } else {
           return true;
         }
     }
   };
-  Abide.prototype.findLabel = function(el) {
-    if ($(el).next('label').length) {
-      return $(el).next('label');
+  Abide.prototype.findLabel = function($el) {
+    if ($el.next('label').length) {
+      return $el.next('label');
     }
     else {
-      return $(el).closest('label');
+      return $el.closest('label');
     }
   };
-  Abide.prototype.addErrorClasses = function() {
+  Abide.prototype.addErrorClasses = function($el) {
+    var self = this,
+        $label = self.findLabel($el),
+        $formError = $el.next(self.options.formErrorSelector) || $el.find(self.options.formErrorSelector);
 
+    // label
+    if ($label) {
+      $label.addClass(self.options.labelErrorClass);
+    }
+    // form error
+    if ($formError) {
+      console.log($formError);
+      $formError.addClass(self.options.formErrorClass);
+    }
+    // input
+    $el.addClass(self.options.inputErrorClass);
   };
-  Abide.prototype.removeErrorClasses = function() {
-
+  Abide.prototype.removeErrorClasses = function($el) {
+    var self = this,
+        $label = self.findLabel($el),
+        $formError = $el.next(self.options.formErrorSelector) || $el.find(self.options.formErrorSelector);
+    // label
+    if ($label && $label.hasClass(self.options.labelErrorClass)) {
+      $label.removeClass(self.options.labelErrorClass);
+    }
+    // form error
+    if ($formError && $formError.hasClass(self.options.formErrorClass)) {
+      $formError.removeClass(self.options.formErrorClass);
+    }
+    // input
+    if ($el.hasClass(self.options.inputErrorClass)) {
+      $el.removeClass(self.options.inputErrorClass);
+    }
   };
   Abide.prototype.validateInput = function($el, $form) {
     var self = this,
@@ -182,24 +210,13 @@
 
     // console.log($el);
     if ($el[0].type === 'text') {
-      label = self.findLabel($el[0]);
-      if (!self.requiredCheck($el[0]) || !self.validateText($el[0])) {
-        label.addClass(self.options.labelErrorClass);
-        $el.addClass(self.options.inputErrorClass);
-        $el.next('.form-error').addClass('is-visible');
+      if (!self.requiredCheck($el) || !self.validateText($el)) {
+        self.addErrorClasses($el);
         $el.trigger('invalid.fndtn.abide', $el[0]);
       }
       else {
-        if (label.hasClass(self.options.labelErrorClass)) {
-          label.removeClass(self.options.labelErrorClass);
-        }
-        if ($el.next('.form-error').hasClass('is-visible')) {
-          $el.next('.form-error').removeClass('is-visible');
-        }
-        if ($el.hasClass(self.options.inputErrorClass)) {
-          $el.removeClass(self.options.inputErrorClass);
-        }
-
+        self.removeErrorClasses($el);
+        $el.trigger('valid.fndtn.abide', $el[0]);
       }
     }
     if ($el[0].type === 'radio') {
@@ -212,7 +229,6 @@
             $(this).removeClass(self.options.labelErrorClass);
           }
         });
-
       }
       else {
         $(label).each(function() {
@@ -222,16 +238,13 @@
       };
     }
     if ($el[0].type === 'checkbox') {
-      label = self.findLabel($el[0]);
-
-      if (!self.requiredCheck($el[0])) {
-        label.addClass(self.options.labelErrorClass);
-        $el.addClass(self.options.inputErrorClass);
+      if (!self.requiredCheck($el)) {
+        self.addErrorClasses($el);
+        $el.trigger('invalid.fndtn.abide', $el[0]);
       }
       else {
-        if (label.hasClass(self.options.labelErrorClass)) {
-          label.removeClass(self.options.labelErrorClass);
-        }
+        self.removeErrorClasses($el);
+        $el.trigger('valid.fndtn.abide', $el[0]);
       }
     }
 
@@ -290,7 +303,7 @@
     // go through each radio button
     $(':radio[name="' + group + '"]').each(function() {
       // put them through the required checkpoint
-      if (!self.requiredCheck(this)) {
+      if (!self.requiredCheck($(this))) {
         // if at least one doesn't pass, add a tally to the counter
         counter++;
       }
