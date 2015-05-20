@@ -32,7 +32,13 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
     </div>
     <div class="medium-6 columns">
       <label>Input Label
-        <input type="text" placeholder=".medium-6.columns">
+        <select id="select" required>
+          <option value=""></option>
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="mercedes">Mercedes</option>
+          <option value="audi">Audi</option>
+        </select>
       </label>
     </div>
   </div>

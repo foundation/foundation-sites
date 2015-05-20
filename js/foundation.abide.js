@@ -152,7 +152,7 @@
         }
         break;
       default: 
-        if ($el.attr('required') && $el.is(':empty')) {
+        if ($el.attr('required') && (!$el.val() || !$el.val().length || $el.is(':empty'))) {
           return false;
         } else {
           return true;
@@ -178,7 +178,6 @@
     }
     // form error
     if ($formError) {
-      console.log($formError);
       $formError.addClass(self.options.formErrorClass);
     }
     // input
@@ -219,7 +218,7 @@
         $el.trigger('valid.fndtn.abide', $el[0]);
       }
     }
-    if ($el[0].type === 'radio') {
+    else if ($el[0].type === 'radio') {
       radioGroupName = $el.attr('name');
       label = $el.siblings('label');
 
@@ -237,8 +236,18 @@
         $el.trigger('invalid.fndtn.abide', $el[0]);
       };
     }
-    if ($el[0].type === 'checkbox') {
+    else if ($el[0].type === 'checkbox') {
       if (!self.requiredCheck($el)) {
+        self.addErrorClasses($el);
+        $el.trigger('invalid.fndtn.abide', $el[0]);
+      }
+      else {
+        self.removeErrorClasses($el);
+        $el.trigger('valid.fndtn.abide', $el[0]);
+      }
+    }
+    else {
+      if (!self.requiredCheck($el) || !self.validateText($el)) {
         self.addErrorClasses($el);
         $el.trigger('invalid.fndtn.abide', $el[0]);
       }
