@@ -32,6 +32,8 @@
     validateOn: 'fieldChange', // options: fieldChange, manual, submit
     labelErrorClass: 'is-invalid-label',
     inputErrorClass: 'is-invalid-input',
+    formErrorSelector: '.form-error',
+    formErrorClass: '.is-visible',
     patterns: {
       alpha : /^[a-zA-Z]+$/,
       alpha_numeric : /^[a-zA-Z0-9]+$/,
@@ -88,14 +90,15 @@
    */
   Abide.prototype._events = function() {
     var self = this;
-
+    console.log(this.$element);
     this.$element
       .off('.abide')
       .on('reset.fndtn.abide', function(e) {
         self.resetForm($(this));
       })
-      .on('submit.fndtn.abide', function(e) {
-        //self.validateWholeForm;
+      .on('submit', function(e) {
+        e.preventDefault();
+        self.validateForm(self.$element);
       })
       .find('input, textarea, select')
         .off('.abide')
@@ -241,51 +244,16 @@
   };
   Abide.prototype.validateForm = function($form) {
     var self = this,
-        textInput = $form.find('input[type="text"]'),
-        checkInput = $form.find('input[type="checkbox"]');
+        inputs = $form.find('input'),
+        inputCount = $form.find('input').length,
+        counter = 0;
 
-    var radioGroups = self.findRadioGroups($form);
-
-    // obviously find a better way to do this
-    $(textInput).each(function() {
-      var label = self.findLabel($(this));
-      // console.log(label);
-      if (!self.requiredCheck(this) || !self.validateText(this)) {
-        // possibly have a method that basically scours for error elements
-        // and adds the appropriate error class to them
-        label.addClass(self.options.labelErrorClass);
-        $(this).addClass(self.options.inputErrorClass);
-        $(this).next('.form-error').addClass('is-visible');
-      }
-      else {
-        if (label.hasClass(self.options.labelErrorClass)) {
-          label.removeClass(self.options.labelErrorClass);
-        }
-        if ($(this).next('.form-error').hasClass('is-visible')) {
-          $(this).next('.form-error').removeClass('is-visible');
-        }
-        if ($(this).hasClass(self.options.inputErrorClass)) {
-          $(this).removeClass(self.options.inputErrorClass);
-        }
-      }
-    })
-    $(checkInput).each(function() {
-      var label = self.findLabel($(this));
-
-      if (!self.requiredCheck(this)) {
-        label.addClass(self.options.labelErrorClass);
-        $(this).addClass(self.options.inputErrorClass);
-        $form.attr('invalid', 'true');
-      }
-      else {
-        if (label.hasClass(self.options.labelErrorClass)) {
-          label.removeClass(self.options.labelErrorClass);
-        }
-      }
-    })
-    for (var group in radioGroups) {
-      self.validateRadio(group);
+    while (counter < inputCount) {
+      console.log(counter);
+      self.validateInput($(inputs[counter]), $form);
+      counter++;
     }
+
     // what are all the things that can go wrong with a form?!
     if ($form.find('.form-error.is-visible').length || $form.find('.is-invalid-label').length) {
       $form.find('[data-abide-error]').css('display', 'block');  

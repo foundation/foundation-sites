@@ -9,7 +9,7 @@ javascript: js/foundation.abide.js
 These input types create a text field: `text`, `date`, `datetime`, `datetime-local`, `email`, `month`, `number`, `password`, `search`, `tel`, `time`, `url`, and `week`.
 
 ```html_example
-<form data-abide>
+<form data-abide novalidate>
   <div data-abide-error class="alert callout" style="display: none;">
     <p><i class="fi-alert"></i> There are some errors in your form.</p>
   </div>
@@ -58,7 +58,7 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
   </div>
   <div class="row">
     <fieldset class="large-6 columns">
-      <button class="button" type="submit">Submit</button>
+      <button class="button" type="submit" value="Submit">Submit</button>
     </fieldset>
     <fieldset class="large-6 columns">
       <button class="button" type="reset" value="Reset">Reset</button>
