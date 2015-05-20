@@ -96,7 +96,7 @@
       .on('reset.fndtn.abide', function(e) {
         self.resetForm($(this));
       })
-      .on('submit', function(e) {
+      .on('submit.fndtn.abide', function(e) {
         e.preventDefault();
         self.validateForm(self.$element);
       })
@@ -249,7 +249,6 @@
         counter = 0;
 
     while (counter < inputCount) {
-      console.log(counter);
       self.validateInput($(inputs[counter]), $form);
       counter++;
     }
