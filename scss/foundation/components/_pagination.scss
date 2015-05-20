@@ -51,6 +51,7 @@ $pagination-link-current-active-bg: $primary-color !default;
   a, button {
     cursor: $pagination-link-unavailable-cursor;
     color: $pagination-link-unavailable-font-color;
+    pointer-events: none;
   }
   &:hover a,
   & a:focus,
