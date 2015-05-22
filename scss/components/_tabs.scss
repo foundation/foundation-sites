@@ -1,44 +1,44 @@
-// Default margin of the tab bar.
-// @type {Number|List}
+//// Default margin of the tab bar.
+//// @type {Number|List}
 $tab-margin: 0 !default;
 
-// Default background color of a tab bar.
-// @type Color
+/// Default background color of a tab bar.
+/// @type Color
 $tab-background: #eee;
 
-// Default border color of tab content.
-// @type Color
+/// Default border color of tab content.
+/// @type Color
 $tab-border: #eee !default;
 
-// Default text color for items in a menu bar.
-// @type Color
+/// Default text color for items in a menu bar.
+/// @type Color
 $tab-item-color: foreground($tab-background, $primary-color);
 
-// Default background color on hover for items in a menu bar.
+/// Default background color on hover for items in a menu bar.
 $tab-item-background-hover: #fff !default;
 
-// Default padding for items in a menu bar.
-// @type {Number|List}
+/// Default padding for items in a menu bar.
+/// @type {Number|List}
 $tab-item-padding: 1.25rem 1rem !default;
 
-// Maximum number of `expand-n` classes to include in the CSS.
-// @type Number
+/// Maximum number of `expand-n` classes to include in the CSS.
+/// @type Number
 $tab-expand-max: 6 !default;
 
-// Default background color of tab content.
-// @type Color
+/// Default background color of tab content.
+/// @type Color
 $tab-content-background: #fff !default;
 
-// Default border color of tab content.
-// @type Color
+/// Default border color of tab content.
+/// @type Color
 $tab-content-border: #eee !default;
 
-// Default text color for items in a menu bar.
-// @type Color
+/// Default text color for items in a menu bar.
+/// @type Color
 $tab-content-color: foreground($tab-background, $primary-color);
 
-// Default padding for items in a menu bar.
-// @type {Number|List}
+/// Default padding for items in a menu bar.
+/// @type {Number|List}
 $tab-content-padding: 1rem !default;
 
 .tabs {
@@ -61,14 +61,16 @@ $tab-content-padding: 1rem !default;
     width:1.25rem;
     background: linear-gradient(to right, rgba(#eee ,0) 0%, rgba(#eee,1) 100%);
   }
-  // Default
+  /// Default
   > li {
     display: inline-block;
+    font-size: 0;
 
     > a {
       display: block;
       padding: $tab-item-padding;
       line-height: 1;
+      font-size: 12px;
       color: $tab-item-color;
 
       &:hover,
@@ -78,12 +80,12 @@ $tab-content-padding: 1rem !default;
     }
   }
 
-  // Hover/active state
+  /// Hover/active state
   > .is-active > a {
     background: $tab-item-background-hover;
   }
 
-  // Simple
+  /// Simple
   &.simple {
     > li > a {
       padding: 0;
@@ -94,7 +96,7 @@ $tab-content-padding: 1rem !default;
     }
   }
 
-  // Vertical
+  /// Vertical
   &.vertical {
     float: left;
     width: 25%;
@@ -109,7 +111,7 @@ $tab-content-padding: 1rem !default;
     }
   }
 
-  // Primary color
+  /// Primary color
   &.primary {
     background: $primary-color;
 
