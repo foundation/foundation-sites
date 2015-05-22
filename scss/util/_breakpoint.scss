@@ -10,10 +10,10 @@
 /// @type Map
 $breakpoints: (
   small: 0,
-  medium: 640,
-  large: 1200,
-  xlarge: 1440,
-  xxlarge: 1920,
+  medium: 640px,
+  large: 1200px,
+  xlarge: 1440px,
+  xxlarge: 1920px,
 ) !default;
 
 /// All of the names in this list will be output as classes in your CSS, like `.small-12`, `.medium-6`, and so on. Each value in this list must also be in the `$breakpoints` map.
