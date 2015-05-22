@@ -1,26 +1,575 @@
 0 info it worked if it ends with ok
-1 verbose cli [ 'node', '/usr/local/bin/npm', 'start' ]
-2 info using npm@1.3.17
-3 info using node@v0.10.23
-4 verbose run-script [ 'prestart', 'start', 'poststart' ]
-5 info prestart zurb-foundation@6.0.0-alpha
-6 info start zurb-foundation@6.0.0-alpha
-7 verbose unsafe-perm in lifecycle true
-8 info zurb-foundation@6.0.0-alpha Failed to exec start script
-9 error zurb-foundation@6.0.0-alpha start: `gulp`
-9 error Exit status 8
-10 error Failed at the zurb-foundation@6.0.0-alpha start script.
-10 error This is most likely a problem with the zurb-foundation package,
-10 error not with npm itself.
-10 error Tell the author that this fails on your system:
-10 error     gulp
-10 error You can get their info via:
-10 error     npm owner ls zurb-foundation
-10 error There is likely additional logging output above.
-11 error System Darwin 14.1.0
-12 error command "node" "/usr/local/bin/npm" "start"
-13 error cwd /Users/rafibenkual/Sites/foundation-sites-6
-14 error node -v v0.10.23
-15 error npm -v 1.3.17
-16 error code ELIFECYCLE
-17 verbose exit [ 1, true ]
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'update' ]
+2 info using npm@2.7.6
+3 info using node@v0.10.35
+4 silly mapToRegistry name jquery
+5 silly mapToRegistry using default registry
+6 silly mapToRegistry registry https://registry.npmjs.org/
+7 silly mapToRegistry uri https://registry.npmjs.org/jquery
+8 silly mapToRegistry name bootcamp
+9 silly mapToRegistry using default registry
+10 silly mapToRegistry registry https://registry.npmjs.org/
+11 silly mapToRegistry uri https://registry.npmjs.org/bootcamp
+12 silly mapToRegistry name gulp
+13 silly mapToRegistry using default registry
+14 silly mapToRegistry registry https://registry.npmjs.org/
+15 silly mapToRegistry uri https://registry.npmjs.org/gulp
+16 silly mapToRegistry name gulp-cached
+17 silly mapToRegistry using default registry
+18 silly mapToRegistry registry https://registry.npmjs.org/
+19 silly mapToRegistry uri https://registry.npmjs.org/gulp-cached
+20 silly mapToRegistry name gulp-concat
+21 silly mapToRegistry using default registry
+22 silly mapToRegistry registry https://registry.npmjs.org/
+23 silly mapToRegistry uri https://registry.npmjs.org/gulp-concat
+24 silly mapToRegistry name gulp-filter
+25 silly mapToRegistry using default registry
+26 silly mapToRegistry registry https://registry.npmjs.org/
+27 silly mapToRegistry uri https://registry.npmjs.org/gulp-filter
+28 silly mapToRegistry name gulp-jshint
+29 silly mapToRegistry using default registry
+30 silly mapToRegistry registry https://registry.npmjs.org/
+31 silly mapToRegistry uri https://registry.npmjs.org/gulp-jshint
+32 silly mapToRegistry name gulp-load-plugins
+33 silly mapToRegistry using default registry
+34 silly mapToRegistry registry https://registry.npmjs.org/
+35 silly mapToRegistry uri https://registry.npmjs.org/gulp-load-plugins
+36 silly mapToRegistry name gulp-ruby-sass
+37 silly mapToRegistry using default registry
+38 silly mapToRegistry registry https://registry.npmjs.org/
+39 silly mapToRegistry uri https://registry.npmjs.org/gulp-ruby-sass
+40 silly mapToRegistry name gulp-sass
+41 silly mapToRegistry using default registry
+42 silly mapToRegistry registry https://registry.npmjs.org/
+43 silly mapToRegistry uri https://registry.npmjs.org/gulp-sass
+44 silly mapToRegistry name gulp-scss-lint
+45 silly mapToRegistry using default registry
+46 silly mapToRegistry registry https://registry.npmjs.org/
+47 silly mapToRegistry uri https://registry.npmjs.org/gulp-scss-lint
+48 silly mapToRegistry name gulp-uglify
+49 silly mapToRegistry using default registry
+50 silly mapToRegistry registry https://registry.npmjs.org/
+51 silly mapToRegistry uri https://registry.npmjs.org/gulp-uglify
+52 silly mapToRegistry name handlebars
+53 silly mapToRegistry using default registry
+54 silly mapToRegistry registry https://registry.npmjs.org/
+55 silly mapToRegistry uri https://registry.npmjs.org/handlebars
+56 silly mapToRegistry name highlight.js
+57 silly mapToRegistry using default registry
+58 silly mapToRegistry registry https://registry.npmjs.org/
+59 silly mapToRegistry uri https://registry.npmjs.org/highlight.js
+60 silly mapToRegistry name marked
+61 silly mapToRegistry using default registry
+62 silly mapToRegistry registry https://registry.npmjs.org/
+63 silly mapToRegistry uri https://registry.npmjs.org/marked
+64 silly mapToRegistry name rimraf
+65 silly mapToRegistry using default registry
+66 silly mapToRegistry registry https://registry.npmjs.org/
+67 silly mapToRegistry uri https://registry.npmjs.org/rimraf
+68 silly mapToRegistry name supercollider
+69 silly mapToRegistry using default registry
+70 silly mapToRegistry registry https://registry.npmjs.org/
+71 silly mapToRegistry uri https://registry.npmjs.org/supercollider
+72 silly mapToRegistry name zeroclipboard
+73 silly mapToRegistry using default registry
+74 silly mapToRegistry registry https://registry.npmjs.org/
+75 silly mapToRegistry uri https://registry.npmjs.org/zeroclipboard
+76 verbose request uri https://registry.npmjs.org/jquery
+77 verbose request no auth needed
+78 info attempt registry request try #1 at 12:51:32
+79 verbose request id c7f03347ebb4da4d
+80 verbose etag "6B93GS22BGSXC160S34T61DZP"
+81 http request GET https://registry.npmjs.org/jquery
+82 verbose request uri https://registry.npmjs.org/gulp-cached
+83 verbose request no auth needed
+84 info attempt registry request try #1 at 12:51:32
+85 verbose etag "4R0OBRKNCYA568OB29BEL3ESL"
+86 http request GET https://registry.npmjs.org/gulp-cached
+87 verbose request uri https://registry.npmjs.org/bootcamp
+88 verbose request no auth needed
+89 info attempt registry request try #1 at 12:51:32
+90 verbose etag "A0GL8PT7P5OR7GIH2ITBSIM3F"
+91 http request GET https://registry.npmjs.org/bootcamp
+92 verbose request uri https://registry.npmjs.org/gulp-concat
+93 verbose request no auth needed
+94 info attempt registry request try #1 at 12:51:32
+95 verbose etag "9SMS0CL2S1GIV23PZTJ4PMKBS"
+96 http request GET https://registry.npmjs.org/gulp-concat
+97 verbose request uri https://registry.npmjs.org/gulp-jshint
+98 verbose request no auth needed
+99 info attempt registry request try #1 at 12:51:32
+100 verbose etag "CZVU7HGVHC6UEKN7PPX2KA75E"
+101 http request GET https://registry.npmjs.org/gulp-jshint
+102 verbose request uri https://registry.npmjs.org/gulp-ruby-sass
+103 verbose request no auth needed
+104 info attempt registry request try #1 at 12:51:32
+105 verbose etag "E2HPMYZHIDSXN7L703IYXGQQK"
+106 http request GET https://registry.npmjs.org/gulp-ruby-sass
+107 verbose request uri https://registry.npmjs.org/gulp-filter
+108 verbose request no auth needed
+109 info attempt registry request try #1 at 12:51:32
+110 verbose etag "1TOGTY4YNW1SFP5LGCUY2T8XW"
+111 http request GET https://registry.npmjs.org/gulp-filter
+112 verbose request uri https://registry.npmjs.org/gulp-scss-lint
+113 verbose request no auth needed
+114 info attempt registry request try #1 at 12:51:32
+115 verbose etag "FCXQJUQ9FNTSEX4I6H09JB7V"
+116 http request GET https://registry.npmjs.org/gulp-scss-lint
+117 verbose request uri https://registry.npmjs.org/gulp
+118 verbose request no auth needed
+119 info attempt registry request try #1 at 12:51:32
+120 verbose etag "DO9QOICW8EP2FLDB9V21LAGH6"
+121 http request GET https://registry.npmjs.org/gulp
+122 verbose request uri https://registry.npmjs.org/gulp-load-plugins
+123 verbose request no auth needed
+124 info attempt registry request try #1 at 12:51:32
+125 verbose etag "7FCGDN8Q6FWE4O1Z6MFGZNIH1"
+126 http request GET https://registry.npmjs.org/gulp-load-plugins
+127 verbose request uri https://registry.npmjs.org/gulp-uglify
+128 verbose request no auth needed
+129 info attempt registry request try #1 at 12:51:32
+130 verbose etag "CFML3PLT4OYQ4UYGPXDZFXVQ0"
+131 http request GET https://registry.npmjs.org/gulp-uglify
+132 verbose request uri https://registry.npmjs.org/handlebars
+133 verbose request no auth needed
+134 info attempt registry request try #1 at 12:51:32
+135 verbose etag "EE0RVU9HGPW24ODQ8IJJ5T5UV"
+136 http request GET https://registry.npmjs.org/handlebars
+137 verbose request uri https://registry.npmjs.org/gulp-sass
+138 verbose request no auth needed
+139 info attempt registry request try #1 at 12:51:32
+140 verbose etag "98E3DBPCTPP4EIN8RJH8Z1BH2"
+141 http request GET https://registry.npmjs.org/gulp-sass
+142 verbose request uri https://registry.npmjs.org/rimraf
+143 verbose request no auth needed
+144 info attempt registry request try #1 at 12:51:32
+145 verbose etag "DQDTWFNCQ2ICIOV2HL8RRB221"
+146 http request GET https://registry.npmjs.org/rimraf
+147 verbose request uri https://registry.npmjs.org/supercollider
+148 verbose request no auth needed
+149 info attempt registry request try #1 at 12:51:32
+150 verbose etag "8S8JHFQ8ZMX3R8F7LZT3E4Z0N"
+151 http request GET https://registry.npmjs.org/supercollider
+152 verbose request uri https://registry.npmjs.org/marked
+153 verbose request no auth needed
+154 info attempt registry request try #1 at 12:51:32
+155 verbose etag "C345X8GMW8Y9PX3JT4W6C1GQ3"
+156 http request GET https://registry.npmjs.org/marked
+157 verbose request uri https://registry.npmjs.org/highlight.js
+158 verbose request no auth needed
+159 info attempt registry request try #1 at 12:51:32
+160 verbose etag "8VMF6791WFM4ZUK7HKZW8OUU6"
+161 http request GET https://registry.npmjs.org/highlight.js
+162 verbose request uri https://registry.npmjs.org/zeroclipboard
+163 verbose request no auth needed
+164 info attempt registry request try #1 at 12:51:32
+165 verbose etag "4XPGX50LOFOTIUZC1GVDDLCXA"
+166 http request GET https://registry.npmjs.org/zeroclipboard
+167 http 304 https://registry.npmjs.org/gulp-cached
+168 silly get cb [ 304,
+168 silly get   { date: 'Fri, 22 May 2015 19:51:32 GMT',
+168 silly get     via: '1.1 varnish',
+168 silly get     'cache-control': 'max-age=60',
+168 silly get     etag: '"4R0OBRKNCYA568OB29BEL3ESL"',
+168 silly get     age: '0',
+168 silly get     connection: 'keep-alive',
+168 silly get     'x-served-by': 'cache-sjc3129-SJC',
+168 silly get     'x-cache': 'MISS',
+168 silly get     'x-cache-hits': '0',
+168 silly get     'x-timer': 'S1432324292.396493,VS0,VE37',
+168 silly get     vary: 'Accept' } ]
+169 verbose etag https://registry.npmjs.org/gulp-cached from cache
+170 verbose get saving gulp-cached to /Users/tim/.npm/registry.npmjs.org/gulp-cached/.cache.json
+171 http 304 https://registry.npmjs.org/gulp-concat
+172 silly get cb [ 304,
+172 silly get   { date: 'Fri, 22 May 2015 19:51:32 GMT',
+172 silly get     via: '1.1 varnish',
+172 silly get     'cache-control': 'max-age=60',
+172 silly get     etag: '"9SMS0CL2S1GIV23PZTJ4PMKBS"',
+172 silly get     age: '0',
+172 silly get     connection: 'keep-alive',
+172 silly get     'x-served-by': 'cache-sjc3121-SJC',
+172 silly get     'x-cache': 'HIT',
+172 silly get     'x-cache-hits': '1',
+172 silly get     'x-timer': 'S1432324292.401598,VS0,VE36',
+172 silly get     vary: 'Accept' } ]
+173 verbose etag https://registry.npmjs.org/gulp-concat from cache
+174 verbose get saving gulp-concat to /Users/tim/.npm/registry.npmjs.org/gulp-concat/.cache.json
+175 http 304 https://registry.npmjs.org/bootcamp
+176 silly get cb [ 304,
+176 silly get   { date: 'Fri, 22 May 2015 19:51:32 GMT',
+176 silly get     via: '1.1 varnish',
+176 silly get     'cache-control': 'max-age=60',
+176 silly get     etag: '"A0GL8PT7P5OR7GIH2ITBSIM3F"',
+176 silly get     age: '0',
+176 silly get     connection: 'keep-alive',
+176 silly get     'x-served-by': 'cache-sjc3122-SJC',
+176 silly get     'x-cache': 'MISS',
+176 silly get     'x-cache-hits': '0',
+176 silly get     'x-timer': 'S1432324292.395707,VS0,VE69',
+176 silly get     vary: 'Accept' } ]
+177 verbose etag https://registry.npmjs.org/bootcamp from cache
+178 verbose get saving bootcamp to /Users/tim/.npm/registry.npmjs.org/bootcamp/.cache.json
+179 http 304 https://registry.npmjs.org/gulp-ruby-sass
+180 silly get cb [ 304,
+180 silly get   { date: 'Fri, 22 May 2015 19:51:32 GMT',
+180 silly get     via: '1.1 varnish',
+180 silly get     'cache-control': 'max-age=60',
+180 silly get     etag: '"E2HPMYZHIDSXN7L703IYXGQQK"',
+180 silly get     age: '0',
+180 silly get     connection: 'keep-alive',
+180 silly get     'x-served-by': 'cache-sjc3129-SJC',
+180 silly get     'x-cache': 'HIT',
+180 silly get     'x-cache-hits': '1',
+180 silly get     'x-timer': 'S1432324292.452463,VS0,VE37',
+180 silly get     vary: 'Accept' } ]
+181 verbose etag https://registry.npmjs.org/gulp-ruby-sass from cache
+182 verbose get saving gulp-ruby-sass to /Users/tim/.npm/registry.npmjs.org/gulp-ruby-sass/.cache.json
+183 http 304 https://registry.npmjs.org/gulp-jshint
+184 silly get cb [ 304,
+184 silly get   { date: 'Fri, 22 May 2015 19:51:32 GMT',
+184 silly get     via: '1.1 varnish',
+184 silly get     'cache-control': 'max-age=60',
+184 silly get     etag: '"CZVU7HGVHC6UEKN7PPX2KA75E"',
+184 silly get     age: '0',
+184 silly get     connection: 'keep-alive',
+184 silly get     'x-served-by': 'cache-sjc3121-SJC',
+184 silly get     'x-cache': 'HIT',
+184 silly get     'x-cache-hits': '1',
+184 silly get     'x-timer': 'S1432324292.401569,VS0,VE87',
+184 silly get     vary: 'Accept' } ]
+185 verbose etag https://registry.npmjs.org/gulp-jshint from cache
+186 verbose get saving gulp-jshint to /Users/tim/.npm/registry.npmjs.org/gulp-jshint/.cache.json
+187 http 304 https://registry.npmjs.org/gulp
+188 silly get cb [ 304,
+188 silly get   { date: 'Fri, 22 May 2015 19:51:32 GMT',
+188 silly get     via: '1.1 varnish',
+188 silly get     'cache-control': 'max-age=60',
+188 silly get     etag: '"DO9QOICW8EP2FLDB9V21LAGH6"',
+188 silly get     age: '57',
+188 silly get     connection: 'keep-alive',
+188 silly get     'x-served-by': 'cache-sjc3129-SJC',
+188 silly get     'x-cache': 'HIT',
+188 silly get     'x-cache-hits': '1',
+188 silly get     'x-timer': 'S1432324292.503234,VS0,VE0',
+188 silly get     vary: 'Accept' } ]
+189 verbose etag https://registry.npmjs.org/gulp from cache
+190 verbose get saving gulp to /Users/tim/.npm/registry.npmjs.org/gulp/.cache.json
+191 http 304 https://registry.npmjs.org/gulp-load-plugins
+192 silly get cb [ 304,
+192 silly get   { date: 'Fri, 22 May 2015 19:51:32 GMT',
+192 silly get     via: '1.1 varnish',
+192 silly get     'cache-control': 'max-age=60',
+192 silly get     etag: '"7FCGDN8Q6FWE4O1Z6MFGZNIH1"',
+192 silly get     age: '46',
+192 silly get     connection: 'keep-alive',
+192 silly get     'x-served-by': 'cache-sjc3121-SJC',
+192 silly get     'x-cache': 'HIT',
+192 silly get     'x-cache-hits': '1',
+192 silly get     'x-timer': 'S1432324292.507039,VS0,VE0',
+192 silly get     vary: 'Accept' } ]
+193 verbose etag https://registry.npmjs.org/gulp-load-plugins from cache
+194 verbose get saving gulp-load-plugins to /Users/tim/.npm/registry.npmjs.org/gulp-load-plugins/.cache.json
+195 http 304 https://registry.npmjs.org/gulp-uglify
+196 silly get cb [ 304,
+196 silly get   { date: 'Fri, 22 May 2015 19:51:32 GMT',
+196 silly get     via: '1.1 varnish',
+196 silly get     'cache-control': 'max-age=60',
+196 silly get     etag: '"CFML3PLT4OYQ4UYGPXDZFXVQ0"',
+196 silly get     age: '48',
+196 silly get     connection: 'keep-alive',
+196 silly get     'x-served-by': 'cache-sjc3129-SJC',
+196 silly get     'x-cache': 'HIT',
+196 silly get     'x-cache-hits': '1',
+196 silly get     'x-timer': 'S1432324292.519457,VS0,VE0',
+196 silly get     vary: 'Accept' } ]
+197 verbose etag https://registry.npmjs.org/gulp-uglify from cache
+198 verbose get saving gulp-uglify to /Users/tim/.npm/registry.npmjs.org/gulp-uglify/.cache.json
+199 http 304 https://registry.npmjs.org/handlebars
+200 silly get cb [ 304,
+200 silly get   { date: 'Fri, 22 May 2015 19:51:32 GMT',
+200 silly get     via: '1.1 varnish',
+200 silly get     'cache-control': 'max-age=60',
+200 silly get     etag: '"EE0RVU9HGPW24ODQ8IJJ5T5UV"',
+200 silly get     age: '3',
+200 silly get     connection: 'keep-alive',
+200 silly get     'x-served-by': 'cache-sjc3121-SJC',
+200 silly get     'x-cache': 'HIT',
+200 silly get     'x-cache-hits': '1',
+200 silly get     'x-timer': 'S1432324292.522866,VS0,VE1',
+200 silly get     vary: 'Accept' } ]
+201 verbose etag https://registry.npmjs.org/handlebars from cache
+202 verbose get saving handlebars to /Users/tim/.npm/registry.npmjs.org/handlebars/.cache.json
+203 http 304 https://registry.npmjs.org/gulp-sass
+204 silly get cb [ 304,
+204 silly get   { date: 'Fri, 22 May 2015 19:51:32 GMT',
+204 silly get     via: '1.1 varnish',
+204 silly get     'cache-control': 'max-age=60',
+204 silly get     etag: '"98E3DBPCTPP4EIN8RJH8Z1BH2"',
+204 silly get     age: '57',
+204 silly get     connection: 'keep-alive',
+204 silly get     'x-served-by': 'cache-sjc3129-SJC',
+204 silly get     'x-cache': 'HIT',
+204 silly get     'x-cache-hits': '1',
+204 silly get     'x-timer': 'S1432324292.533703,VS0,VE0',
+204 silly get     vary: 'Accept' } ]
+205 verbose etag https://registry.npmjs.org/gulp-sass from cache
+206 verbose get saving gulp-sass to /Users/tim/.npm/registry.npmjs.org/gulp-sass/.cache.json
+207 http 304 https://registry.npmjs.org/gulp-filter
+208 silly get cb [ 304,
+208 silly get   { date: 'Fri, 22 May 2015 19:51:32 GMT',
+208 silly get     via: '1.1 varnish',
+208 silly get     'cache-control': 'max-age=60',
+208 silly get     etag: '"1TOGTY4YNW1SFP5LGCUY2T8XW"',
+208 silly get     age: '0',
+208 silly get     connection: 'keep-alive',
+208 silly get     'x-served-by': 'cache-sjc3121-SJC',
+208 silly get     'x-cache': 'HIT',
+208 silly get     'x-cache-hits': '1',
+208 silly get     'x-timer': 'S1432324292.451468,VS0,VE84',
+208 silly get     vary: 'Accept' } ]
+209 verbose etag https://registry.npmjs.org/gulp-filter from cache
+210 verbose get saving gulp-filter to /Users/tim/.npm/registry.npmjs.org/gulp-filter/.cache.json
+211 http 304 https://registry.npmjs.org/rimraf
+212 silly get cb [ 304,
+212 silly get   { date: 'Fri, 22 May 2015 19:51:32 GMT',
+212 silly get     via: '1.1 varnish',
+212 silly get     'cache-control': 'max-age=60',
+212 silly get     etag: '"DQDTWFNCQ2ICIOV2HL8RRB221"',
+212 silly get     age: '54',
+212 silly get     connection: 'keep-alive',
+212 silly get     'x-served-by': 'cache-sjc3121-SJC',
+212 silly get     'x-cache': 'HIT',
+212 silly get     'x-cache-hits': '3',
+212 silly get     'x-timer': 'S1432324292.537876,VS0,VE0',
+212 silly get     vary: 'Accept' } ]
+213 verbose etag https://registry.npmjs.org/rimraf from cache
+214 verbose get saving rimraf to /Users/tim/.npm/registry.npmjs.org/rimraf/.cache.json
+215 http 304 https://registry.npmjs.org/highlight.js
+216 silly get cb [ 304,
+216 silly get   { date: 'Fri, 22 May 2015 19:51:32 GMT',
+216 silly get     via: '1.1 varnish',
+216 silly get     'cache-control': 'max-age=60',
+216 silly get     etag: '"8VMF6791WFM4ZUK7HKZW8OUU6"',
+216 silly get     age: '1',
+216 silly get     connection: 'keep-alive',
+216 silly get     'x-served-by': 'cache-sjc3121-SJC',
+216 silly get     'x-cache': 'HIT',
+216 silly get     'x-cache-hits': '1',
+216 silly get     'x-timer': 'S1432324292.553501,VS0,VE1',
+216 silly get     vary: 'Accept' } ]
+217 verbose etag https://registry.npmjs.org/highlight.js from cache
+218 verbose get saving highlight.js to /Users/tim/.npm/registry.npmjs.org/highlight.js/.cache.json
+219 http 304 https://registry.npmjs.org/marked
+220 silly get cb [ 304,
+220 silly get   { date: 'Fri, 22 May 2015 19:51:32 GMT',
+220 silly get     via: '1.1 varnish',
+220 silly get     'cache-control': 'max-age=60',
+220 silly get     etag: '"C345X8GMW8Y9PX3JT4W6C1GQ3"',
+220 silly get     age: '22',
+220 silly get     connection: 'keep-alive',
+220 silly get     'x-served-by': 'cache-sjc3121-SJC',
+220 silly get     'x-cache': 'HIT',
+220 silly get     'x-cache-hits': '29',
+220 silly get     'x-timer': 'S1432324292.558673,VS0,VE0',
+220 silly get     vary: 'Accept' } ]
+221 verbose etag https://registry.npmjs.org/marked from cache
+222 verbose get saving marked to /Users/tim/.npm/registry.npmjs.org/marked/.cache.json
+223 http 304 https://registry.npmjs.org/supercollider
+224 silly get cb [ 304,
+224 silly get   { date: 'Fri, 22 May 2015 19:51:32 GMT',
+224 silly get     via: '1.1 varnish',
+224 silly get     'cache-control': 'max-age=60',
+224 silly get     etag: '"8S8JHFQ8ZMX3R8F7LZT3E4Z0N"',
+224 silly get     age: '0',
+224 silly get     connection: 'keep-alive',
+224 silly get     'x-served-by': 'cache-sjc3129-SJC',
+224 silly get     'x-cache': 'MISS',
+224 silly get     'x-cache-hits': '0',
+224 silly get     'x-timer': 'S1432324292.549514,VS0,VE35',
+224 silly get     vary: 'Accept' } ]
+225 verbose etag https://registry.npmjs.org/supercollider from cache
+226 verbose get saving supercollider to /Users/tim/.npm/registry.npmjs.org/supercollider/.cache.json
+227 http 304 https://registry.npmjs.org/gulp-scss-lint
+228 silly get cb [ 304,
+228 silly get   { date: 'Fri, 22 May 2015 19:51:32 GMT',
+228 silly get     via: '1.1 varnish',
+228 silly get     'cache-control': 'max-age=60',
+228 silly get     etag: '"FCXQJUQ9FNTSEX4I6H09JB7V"',
+228 silly get     age: '0',
+228 silly get     connection: 'keep-alive',
+228 silly get     'x-served-by': 'cache-sjc3122-SJC',
+228 silly get     'x-cache': 'MISS',
+228 silly get     'x-cache-hits': '0',
+228 silly get     'x-timer': 'S1432324292.480775,VS0,VE156',
+228 silly get     vary: 'Accept' } ]
+229 verbose etag https://registry.npmjs.org/gulp-scss-lint from cache
+230 verbose get saving gulp-scss-lint to /Users/tim/.npm/registry.npmjs.org/gulp-scss-lint/.cache.json
+231 http 304 https://registry.npmjs.org/zeroclipboard
+232 silly get cb [ 304,
+232 silly get   { date: 'Fri, 22 May 2015 19:51:32 GMT',
+232 silly get     via: '1.1 varnish',
+232 silly get     'cache-control': 'max-age=60',
+232 silly get     etag: '"4XPGX50LOFOTIUZC1GVDDLCXA"',
+232 silly get     age: '0',
+232 silly get     connection: 'keep-alive',
+232 silly get     'x-served-by': 'cache-sjc3121-SJC',
+232 silly get     'x-cache': 'MISS',
+232 silly get     'x-cache-hits': '0',
+232 silly get     'x-timer': 'S1432324292.570818,VS0,VE87',
+232 silly get     vary: 'Accept' } ]
+233 verbose etag https://registry.npmjs.org/zeroclipboard from cache
+234 verbose get saving zeroclipboard to /Users/tim/.npm/registry.npmjs.org/zeroclipboard/.cache.json
+235 http 304 https://registry.npmjs.org/jquery
+236 silly get cb [ 304,
+236 silly get   { date: 'Fri, 22 May 2015 19:51:32 GMT',
+236 silly get     via: '1.1 varnish',
+236 silly get     'cache-control': 'max-age=60',
+236 silly get     etag: '"6B93GS22BGSXC160S34T61DZP"',
+236 silly get     age: '0',
+236 silly get     connection: 'keep-alive',
+236 silly get     'x-served-by': 'cache-sjc3123-SJC',
+236 silly get     'x-cache': 'HIT',
+236 silly get     'x-cache-hits': '1',
+236 silly get     'x-timer': 'S1432324292.395397,VS0,VE341',
+236 silly get     vary: 'Accept' } ]
+237 verbose etag https://registry.npmjs.org/jquery from cache
+238 verbose get saving jquery to /Users/tim/.npm/registry.npmjs.org/jquery/.cache.json
+239 verbose outdated not updating gulp-load-plugins because it's currently at the maximum version that matches its specified semver range
+240 verbose outdated not updating gulp-sass because it's currently at the maximum version that matches its specified semver range
+241 verbose outdated not updating gulp-scss-lint because it's currently at the maximum version that matches its specified semver range
+242 info outdated updating [ [ '/Users/tim/Sites/foundation-sites-6',
+242 info outdated     'shipyard',
+242 info outdated     '0.0.0',
+242 info outdated     'git',
+242 info outdated     'git',
+242 info outdated     'git://github.com/gakimball/shipyard.git' ] ]
+243 verbose install where, what [ '/Users/tim/Sites/foundation-sites-6',
+243 verbose install   [ 'git://github.com/gakimball/shipyard.git' ] ]
+244 verbose install initial load of /Users/tim/Sites/foundation-sites-6/package.json
+245 verbose installManyTop reading scoped package data from /Users/tim/Sites/foundation-sites-6/node_modules/bootcamp/package.json
+246 verbose installManyTop reading scoped package data from /Users/tim/Sites/foundation-sites-6/node_modules/grunt/package.json
+247 verbose installManyTop reading scoped package data from /Users/tim/Sites/foundation-sites-6/node_modules/grunt-contrib-sass/package.json
+248 verbose installManyTop reading scoped package data from /Users/tim/Sites/foundation-sites-6/node_modules/gulp/package.json
+249 verbose installManyTop reading scoped package data from /Users/tim/Sites/foundation-sites-6/node_modules/gulp-cached/package.json
+250 verbose installManyTop reading scoped package data from /Users/tim/Sites/foundation-sites-6/node_modules/gulp-concat/package.json
+251 verbose installManyTop reading scoped package data from /Users/tim/Sites/foundation-sites-6/node_modules/gulp-filter/package.json
+252 verbose installManyTop reading scoped package data from /Users/tim/Sites/foundation-sites-6/node_modules/gulp-jshint/package.json
+253 verbose installManyTop reading scoped package data from /Users/tim/Sites/foundation-sites-6/node_modules/gulp-load-plugins/package.json
+254 verbose installManyTop reading scoped package data from /Users/tim/Sites/foundation-sites-6/node_modules/gulp-ruby-sass/package.json
+255 verbose installManyTop reading scoped package data from /Users/tim/Sites/foundation-sites-6/node_modules/gulp-sass/package.json
+256 verbose installManyTop reading scoped package data from /Users/tim/Sites/foundation-sites-6/node_modules/gulp-scss-lint/package.json
+257 verbose installManyTop reading scoped package data from /Users/tim/Sites/foundation-sites-6/node_modules/gulp-uglify/package.json
+258 verbose installManyTop reading scoped package data from /Users/tim/Sites/foundation-sites-6/node_modules/handlebars/package.json
+259 verbose installManyTop reading scoped package data from /Users/tim/Sites/foundation-sites-6/node_modules/highlight.js/package.json
+260 verbose installManyTop reading scoped package data from /Users/tim/Sites/foundation-sites-6/node_modules/jquery/package.json
+261 verbose installManyTop reading scoped package data from /Users/tim/Sites/foundation-sites-6/node_modules/marked/package.json
+262 verbose installManyTop reading scoped package data from /Users/tim/Sites/foundation-sites-6/node_modules/rimraf/package.json
+263 verbose installManyTop reading scoped package data from /Users/tim/Sites/foundation-sites-6/node_modules/run-sequence/package.json
+264 verbose installManyTop reading scoped package data from /Users/tim/Sites/foundation-sites-6/node_modules/shipyard/package.json
+265 verbose installManyTop reading scoped package data from /Users/tim/Sites/foundation-sites-6/node_modules/supercollider/package.json
+266 verbose installManyTop reading scoped package data from /Users/tim/Sites/foundation-sites-6/node_modules/zeroclipboard/package.json
+267 verbose readDependencies loading dependencies from /Users/tim/Sites/foundation-sites-6/package.json
+268 silly cache add args [ 'git://github.com/gakimball/shipyard.git', null ]
+269 verbose cache add spec git://github.com/gakimball/shipyard.git
+270 silly cache add parsed spec { raw: 'git://github.com/gakimball/shipyard.git',
+270 silly cache add   scope: null,
+270 silly cache add   name: null,
+270 silly cache add   rawSpec: 'git://github.com/gakimball/shipyard.git',
+270 silly cache add   spec: 'git+ssh://git@github.com/gakimball/shipyard.git',
+270 silly cache add   type: 'hosted',
+270 silly cache add   hosted:
+270 silly cache add    { type: 'github',
+270 silly cache add      ssh: 'git@github.com:gakimball/shipyard.git',
+270 silly cache add      sshUrl: 'git+ssh://git@github.com/gakimball/shipyard.git',
+270 silly cache add      httpsUrl: 'https://github.com/gakimball/shipyard.git',
+270 silly cache add      directUrl: 'https://raw.githubusercontent.com/gakimball/shipyard/master/package.json' } }
+271 info maybeGithub Attempting git://github.com/gakimball/shipyard.git from git://github.com/gakimball/shipyard.git
+272 verbose addRemoteGit git-github-com-gakimball-shipyard-git-f8c14711 not in flight; caching
+273 info git [ 'config', '--get', 'remote.origin.url' ]
+274 verbose addRemoteGit remote.origin.url: git://github.com/gakimball/shipyard.git
+275 verbose addRemoteGit updating existing cached remote /Users/tim/.npm/_git-remotes/git-github-com-gakimball-shipyard-git-f8c14711
+276 info git [ 'fetch', '-a', 'origin' ]
+277 verbose addRemoteGit git fetch -a origin (git://github.com/gakimball/shipyard.git)
+278 verbose addRemoteGit set permissions on /Users/tim/.npm/_git-remotes/git-github-com-gakimball-shipyard-git-f8c14711
+279 verbose addRemoteGit original treeish: master
+280 info git [ 'rev-list', '-n1', 'master' ]
+281 silly addRemoteGit resolved treeish: 92e9502a6e5179532b31f483e3df6b1c56ce6757
+282 verbose addRemoteGit resolved Git URL: git://github.com/gakimball/shipyard.git#92e9502a6e5179532b31f483e3df6b1c56ce6757
+283 silly addRemoteGit Git working directory: /var/folders/08/5sy0f7750sz2psvt29gshppr0000gn/T/npm-1263-2742eb99/git-cache-d69885241deb/92e9502a6e5179532b31f483e3df6b1c56ce6757
+284 info git [ 'clone',
+284 info git   '/Users/tim/.npm/_git-remotes/git-github-com-gakimball-shipyard-git-f8c14711',
+284 info git   '/var/folders/08/5sy0f7750sz2psvt29gshppr0000gn/T/npm-1263-2742eb99/git-cache-d69885241deb/92e9502a6e5179532b31f483e3df6b1c56ce6757' ]
+285 verbose addRemoteGit clone Cloning into '/var/folders/08/5sy0f7750sz2psvt29gshppr0000gn/T/npm-1263-2742eb99/git-cache-d69885241deb/92e9502a6e5179532b31f483e3df6b1c56ce6757'...
+285 verbose addRemoteGit done.
+286 info git [ 'checkout', '92e9502a6e5179532b31f483e3df6b1c56ce6757' ]
+287 verbose addRemoteGit checkout Note: checking out '92e9502a6e5179532b31f483e3df6b1c56ce6757'.
+287 verbose addRemoteGit
+287 verbose addRemoteGit You are in 'detached HEAD' state. You can look around, make experimental
+287 verbose addRemoteGit changes and commit them, and you can discard any commits you make in this
+287 verbose addRemoteGit state without impacting any branches by performing another checkout.
+287 verbose addRemoteGit
+287 verbose addRemoteGit If you want to create a new branch to retain commits you create, you may
+287 verbose addRemoteGit do so (now or later) by using -b with the checkout command again. Example:
+287 verbose addRemoteGit
+287 verbose addRemoteGit   git checkout -b new_branch_name
+287 verbose addRemoteGit
+287 verbose addRemoteGit HEAD is now at 92e9502... Add support for importing Handlebars helpers
+288 verbose addLocalDirectory /Users/tim/.npm/shipyard/0.0.0/package.tgz not in flight; packing
+289 verbose tar pack [ '/Users/tim/.npm/shipyard/0.0.0/package.tgz',
+289 verbose tar pack   '/var/folders/08/5sy0f7750sz2psvt29gshppr0000gn/T/npm-1263-2742eb99/git-cache-d69885241deb/92e9502a6e5179532b31f483e3df6b1c56ce6757' ]
+290 verbose tarball /Users/tim/.npm/shipyard/0.0.0/package.tgz
+291 verbose folder /var/folders/08/5sy0f7750sz2psvt29gshppr0000gn/T/npm-1263-2742eb99/git-cache-d69885241deb/92e9502a6e5179532b31f483e3df6b1c56ce6757
+292 verbose addLocalTarball adding from inside cache /Users/tim/.npm/shipyard/0.0.0/package.tgz
+293 verbose addRemoteGit data._resolved: git://github.com/gakimball/shipyard.git#92e9502a6e5179532b31f483e3df6b1c56ce6757
+294 silly addRemoteGit data._from: git://github.com/gakimball/shipyard.git
+295 silly cache afterAdd shipyard@0.0.0
+296 verbose afterAdd /Users/tim/.npm/shipyard/0.0.0/package/package.json not in flight; writing
+297 verbose afterAdd /Users/tim/.npm/shipyard/0.0.0/package/package.json written
+298 silly install resolved [ { name: 'shipyard',
+298 silly install resolved     version: '0.0.0',
+298 silly install resolved     description: 'A super tiny static site generator.',
+298 silly install resolved     main: 'index.js',
+298 silly install resolved     scripts: { test: 'cd test && gulp' },
+298 silly install resolved     author: { name: 'Geoff Kimball', email: 'geoff@zurb.com' },
+298 silly install resolved     license: 'MIT',
+298 silly install resolved     dependencies:
+298 silly install resolved      { 'front-matter': '^0.2.1',
+298 silly install resolved        glob: '^4.4.0',
+298 silly install resolved        handlebars: '^3.0.0',
+298 silly install resolved        'js-yaml': '^3.3.0',
+298 silly install resolved        through2: '^0.6.5' },
+298 silly install resolved     devDependencies: { gulp: '^3.8.11' },
+298 silly install resolved     gitHead: '92e9502a6e5179532b31f483e3df6b1c56ce6757',
+298 silly install resolved     readme: '# Shipyard\n\nA super tiny (<2KB) static site generator for use with Gulp. It compiles a series of HTML *pages* using a common *layout*. These pages can also include *partials*, or external *data* as JSON or YAML.\n\n## Usage\n\n```js\nvar gulp = require(\'gulp\');\nvar shipyard = require(\'shipyard\');\n\ngulp.task(\'default\', function() {\n  gulp.src(\'pages/**/*.html\')\n    .pipe(shipyard({\n      layouts: \'layouts/\',\n      partials: \'partials/**/*.html\'\n    }))\n    .pipe(gulp.dest(\'build\'));\n});\n```\n\n## Options\n\n### `layouts`\n\nA string containing the path to a directory containing layouts. One layout must be named `default.html`. To use a layout other than the default on a specific page, override it in the Front Matter of the page.\n\n```html\n---\nlayout: post\n---\n\n<!-- Uses layouts/post.html as the template -->\n```\n\n### `partials`\n\nA string containing a [glob](https://github.com/isaacs/node-glob) of files to use as partials. Each will be registered as a Handlebars partial which can be accessed using the base name of the file.\n\n```html\n<!-- Renders partials/header.html -->\n{{> header}}\n```\n\n### `data`\n\nA string containing a glob of files to be used as data, which is passed in to every page. Data can be formatted as JSON or YAML. Within a template, the data is stored within a variable with the same name as the file it came from.\n\nData can also be inserted into the page itself with a Front Matter template at the top of the file.\n\nLastly, the reserved `page` variable is added to every page template as it renders. It contains the name of the page being rendered, without the extension.\n',
+298 silly install resolved     readmeFilename: 'readme.md',
+298 silly install resolved     _id: 'shipyard@0.0.0',
+298 silly install resolved     _shasum: 'bc98a3ea2d6b9bae5362c1aa82834a02d617e93a',
+298 silly install resolved     _from: 'git://github.com/gakimball/shipyard.git',
+298 silly install resolved     _resolved: 'git://github.com/gakimball/shipyard.git#92e9502a6e5179532b31f483e3df6b1c56ce6757',
+298 silly install resolved     _fromGithub: true } ]
+299 info install shipyard@0.0.0 into /Users/tim/Sites/foundation-sites-6
+300 info installOne shipyard@0.0.0
+301 verbose installOne of shipyard to /Users/tim/Sites/foundation-sites-6 not in flight; installing
+302 warn locking Error: EACCES, open '/Users/tim/.npm/_locks/shipyard-7b04d8ff6ca46f5e.lock'
+302 warn locking  /Users/tim/.npm/_locks/shipyard-7b04d8ff6ca46f5e.lock failed { [Error: EACCES, open '/Users/tim/.npm/_locks/shipyard-7b04d8ff6ca46f5e.lock']
+302 warn locking   errno: 3,
+302 warn locking   code: 'EACCES',
+302 warn locking   path: '/Users/tim/.npm/_locks/shipyard-7b04d8ff6ca46f5e.lock' }
+303 verbose stack Error: Attempt to unlock /Users/tim/Sites/foundation-sites-6/node_modules/shipyard, which hasn't been locked
+303 verbose stack     at unlock (/usr/local/lib/node_modules/npm/lib/utils/locker.js:66:11)
+303 verbose stack     at cb (/usr/local/lib/node_modules/npm/lib/install.js:1013:5)
+303 verbose stack     at /usr/local/lib/node_modules/npm/lib/install.js:1017:20
+303 verbose stack     at /usr/local/lib/node_modules/npm/lib/utils/locker.js:40:9
+303 verbose stack     at cb (/usr/local/lib/node_modules/npm/node_modules/lockfile/lockfile.js:149:38)
+303 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/lockfile/lockfile.js:177:38
+303 verbose stack     at Object.oncomplete (fs.js:108:15)
+304 verbose cwd /Users/tim/Sites/foundation-sites-6
+305 error Darwin 14.3.0
+306 error argv "node" "/usr/local/bin/npm" "update"
+307 error node v0.10.35
+308 error npm  v2.7.6
+309 error Attempt to unlock /Users/tim/Sites/foundation-sites-6/node_modules/shipyard, which hasn't been locked
+310 error If you need help, you may report this error at:
+310 error     <https://github.com/npm/npm/issues>
+311 verbose exit [ 1, true ]

@@ -1,6 +1,6 @@
 ---
 title: Switch
-description: Now you can tell your users to "flip the switch" or "switch off".
+description: Now you can tell your users to flip the switch or switch off.
 ---
 
 ## Basics
