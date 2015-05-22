@@ -1,8 +1,12 @@
 $menu-width: 300px;
 
+body {
+  overflow-x: hidden;
+}
+
 //Container
 .container {
-  overflow-x: hidden; // prevents horizontal scroll from showing during off-canvas nav transitions  
+ // prevents horizontal scroll from showing during off-canvas nav transitions  
 }
 
 // Nav Menu (Default: off-canvas)
@@ -14,8 +18,8 @@ $menu-width: 300px;
   width: $menu-width;
   min-height: 100%;
   transition: all .5s ease;
+  background: red;
   &.is-active {
-    transform: translate3d(0,0,0);
   }
 }
 
