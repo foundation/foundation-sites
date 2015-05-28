@@ -212,10 +212,8 @@ $menubar-expand-max: 6 !default;
   &.expand {
     @include menu-bar-expand;
 
-    > li {
-      &:first-child:last-child {
-        width: 100%;
-      }
+    > li:first-child:last-child {
+      width: 100%;
     }
   }
 

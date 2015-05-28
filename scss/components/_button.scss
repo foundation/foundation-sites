@@ -113,8 +113,7 @@ $button-opacity-disabled: 0.5 !default;
   $color: $button-font-color,
   $style: $button-fill,
   $btngroup: false
-  ){
-
+) {
   @if $style == hollow {
     border: 1px solid $background;
     background: transparent;
@@ -179,7 +178,7 @@ $button-opacity-disabled: 0.5 !default;
 /// @param {Number} $offset [$button-padding] - Distance between the arrow and the text of the button. Defaults to whatever the right padding of a button is.
 @mixin button-dropdown(
   $size: 0.4em,
-  $color: white,
+  $color: #fff,
   $offset: get-side($button-padding, right)
 ) {
   &::after {
@@ -210,7 +209,7 @@ $button-opacity-disabled: 0.5 !default;
   $background-hover: $button-background-hover,
   $color: $button-font-color,
   $style: $button-fill
-  ) {
+) {
   @extend %button;
   @include button-size($size);
   @include button-expand($expand);
@@ -228,11 +227,11 @@ $button-opacity-disabled: 0.5 !default;
   @each $name, $color in $foundation-colors {
     // Getting those fancy-pants colors.
     &.#{$name} {
-      @include button-style( 
-        $background: scale-color( $color, $lightness: 25% ),
-        $border: 1px solid scale-color( $color, $lightness: 25% ),
-        $background-hover: scale-color( $color, $lightness: -30% )
-      );
+      $background: scale-color($color, $lightness: 25%);
+      $background-hover: scale-color($color, $lightness: -30%);
+      $border: 1px solid scale-color($color, $lightness: 25%);
+
+      @include button-style($background, $background-hover, $border);
     }
   }
   
@@ -250,8 +249,9 @@ $button-opacity-disabled: 0.5 !default;
 
   &.disabled { @include button-disabled; }
 
-  &.dropdown { @include button-dropdown; }
-  &.dropdown.expand {
+  &.dropdown {
+    @include button-dropdown;
+
     &::after {
       float: right;
       top: 0.4em; // Magic number

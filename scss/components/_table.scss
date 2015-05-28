@@ -120,7 +120,10 @@ $table-margin-bottom: rem-calc(20) !default;
   tfoot tr td,
   tbody tr th,
   tbody tr td,
-  tr td { display: $table-display; line-height: $table-line-height; }
+  tr td {
+    display: $table-display;
+    line-height: $table-line-height;
+  }
 }
 
 table {

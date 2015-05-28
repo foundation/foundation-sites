@@ -1,10 +1,10 @@
 /// Default border around thumbnail images.
 /// @type Border
-$thumbnail-border: solid 4px #FFFFFF !default;
+$thumbnail-border: solid 4px #fff !default;
 
 /// Default box shadow under thumbnail images.
 /// @type Shadow
-$thumbnail-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2) !default;
+$thumbnail-shadow: 0 0 0 1px rgba(#000, 0.2) !default;
 
 /// Default box shadow under thumbnail images.
 /// @type Shadow
@@ -23,7 +23,8 @@ $thumbnail-transition: box-shadow 200ms ease-out !default;
   max-width: 100%;
   transition: $thumbnail-transition;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     box-shadow: $thumbnail-shadow-hover; 
   }
 }

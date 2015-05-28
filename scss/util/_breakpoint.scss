@@ -1,4 +1,4 @@
-@import "util/map";
+@import 'util/map';
 
 ////
 /// @group breakpoints
@@ -129,11 +129,11 @@ $breakpoint-classes: (small medium large) !default;
 
   // Iterate through each parameter given
   @each $value in $values {
-    $newBp: breakpoint($value);
+    $new-bp: breakpoint($value);
 
     // Only append to the media query if the function returned a value
-    @if $newBp != '' {
-      $str: $str + ' and ' + $newBp;
+    @if $new-bp != '' {
+      $str: $str + ' and ' + $new-bp;
     }
   }
 
