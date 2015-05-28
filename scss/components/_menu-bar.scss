@@ -209,7 +209,7 @@ $menubar-expand-max: 6 !default;
   }
 
   // Even-width
-  &.expand {
+  &.expanded {
     @include menu-bar-expand;
 
     > li:first-child:last-child {

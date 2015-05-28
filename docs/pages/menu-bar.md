@@ -38,22 +38,22 @@ By default, each item in the menu bar aligns to the left. They can also be align
 
 ---
 
-Items can also be set to expand out and take up an even amount of space, with the `.expand` class. Thanks to the magic of CSS, the items will automatically size themselves equally depending on how many are inside the menu.
+Items can also be set to expand out and take up an even amount of space, with the `.expanded` class. Thanks to the magic of CSS, the items will automatically size themselves equally depending on how many are inside the menu.
 
 ```html_example
-<ul class="menu-bar expand">
+<ul class="menu-bar expanded">
   <li><a href="#">One</a></li>
   <li><a href="#">Two</a></li>
 </ul>
 ```
 
-<ul class="menu-bar expand">
+<ul class="menu-bar expanded">
   <li><a href="#">One</a></li>
   <li><a href="#">Two</a></li>
   <li><a href="#">Three</a></li>
 </ul>
 
-<ul class="menu-bar expand">
+<ul class="menu-bar expanded">
   <li><a href="#">One</a></li>
   <li><a href="#">Two</a></li>
   <li><a href="#">Three</a></li>
