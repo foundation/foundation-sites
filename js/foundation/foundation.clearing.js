@@ -10,7 +10,7 @@
       templates : {
         viewing : '<a href="#" class="clearing-close">&times;</a>' +
           '<div class="visible-img" style="display: none"><div class="clearing-touch-label"></div><img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt="" />' +
-          '<p class="clearing-caption"></p><a href="#" class="clearing-main-prev"><span></span></a>' +
+          '<div class="clearing-caption"></div><a href="#" class="clearing-main-prev"><span></span></a>' +
           '<a href="#" class="clearing-main-next"><span></span></a></div>' +
           '<img class="clearing-preload-next" style="display: none" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt="" />' +
           '<img class="clearing-preload-prev" style="display: none" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt="" />'
@@ -237,7 +237,7 @@
         container.addClass('clearing-container');
         visible_image.show();
         this.fix_height(target)
-          .caption(self.S('.clearing-caption', visible_image), self.S('img', target))
+          .caption(self.S('.clearing-caption', visible_image), self.S('.clearing-data-caption', target))
           .center_and_label(image, label)
           .shift(current, target, function () {
             target.closest('li').siblings().removeClass('visible');
@@ -449,12 +449,10 @@
 
     // image caption
 
-    caption : function (container, $image) {
-      var caption = $image.attr('data-caption');
-
-      if (caption) {
+    caption : function (container, caption) {
+      if (caption.length != 0) {
         container
-          .html(caption)
+          .html(caption.html())
           .show();
       } else {
         container
