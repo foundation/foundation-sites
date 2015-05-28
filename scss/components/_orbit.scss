@@ -1,0 +1,25 @@
+.orbit-slides-container {
+  list-style: none;
+  margin: 0;
+  position: relative;
+}
+
+.orbit-image {
+  max-width: 100%;
+  width: 100%;
+  margin:0;
+}
+
+.orbit-caption {
+  position: absolute;
+  bottom: 0;
+  padding: 10px;
+  background-color: rgba(0,0,0,0.7);
+  color: white;
+  width: 100%;
+}
+
+.orbit-controls {
+
+}
+

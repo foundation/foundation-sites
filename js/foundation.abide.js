@@ -90,7 +90,6 @@
    */
   Abide.prototype._events = function() {
     var self = this;
-    console.log(this.$element);
     this.$element
       .off('.abide')
       .on('reset.fndtn.abide', function(e) {
@@ -228,6 +227,7 @@
             $(this).removeClass(self.options.labelErrorClass);
           }
         });
+        $el.trigger('valid.fndtn.abide', $el[0]);
       }
       else {
         $(label).each(function() {
@@ -255,13 +255,6 @@
         self.removeErrorClasses($el);
         $el.trigger('valid.fndtn.abide', $el[0]);
       }
-    }
-
-    if ($form.find('.form-error.is-visible').length || $form.find('.is-invalid-label').length) {
-      $form.find('[data-abide-error]').css('display', 'block');  
-    }        
-    else {
-      $form.find('[data-abide-error]').css('display', 'none');  
     }
   };
   Abide.prototype.validateForm = function($form) {
