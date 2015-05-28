@@ -50,7 +50,6 @@
       var _this = this;
 
       this.$element.on('toggle.zf.trigger', function() {
-        console.log("Hello");
         _this.toggle();
         return false;
       });

@@ -117,4 +117,10 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+// Vertical centering mixin
+@mixin v-align-middle {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%);
 }

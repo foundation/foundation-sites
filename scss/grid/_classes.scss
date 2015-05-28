@@ -118,6 +118,7 @@
   }
 
   .column {
+    // scss-lint:disable PlaceholderInExtend
     @extend .columns;
   }
 }
