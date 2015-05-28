@@ -5,22 +5,32 @@
 <div class="row">
   <div class="small-12 columns">
 
-    <div class="orbit-container">
-      <div class="orbit-control orbit-previous">&#9664;</div>
-      
+    <div class="orbit" role="region" aria-label="Favorite Nicolas Cage Pictures">
+      <button class="orbit-control orbit-previous" href="#" aria-label="previous"><span class="show-for-sr">Previous Slide</span>&#9664;</button>
+      <button class="orbit-control orbit-next" href="#" aria-label="next"><span class="show-for-sr">Next Slide</span>&#9654;</button>
+
       <ul class="orbit-slides-container">
         <li class="active">
-        <figure class="orbit-image">
-            <img class="orbit-image" src="http://placecage.com/700/300" alt="">
+          <figure class="orbit-figure">
+            <img class="orbit-image" src="http://placecage.com/800/300" alt="Intropsective Cage">
+            <figcaption class="orbit-caption">
+              Here's the caption for for the first slide.
+            </figcaption>
           </figure>
-          <figcaption class="orbit-caption">
-            Here's the caption for for the first slide.
-          </figcaption>
         </li>
       </ul>
-
-      <div class="orbit-control orbit-next">&#9654;</div>
+      <nav class="orbit-bullets-container">        
+        <ul class="orbit-bullets">
+          <li class="is-active"></li>
+          <li><a href="#"></a></li>
+          <li><a href="#"></a></li>
+          <li><a href="#"></a></li>
+          <li><a href="#"></a></li>
+          <li><a href="#"></a></li>
+        </ul>
+      </nav>
     </div>
 
-  </div>
+<!-- ask team how to handle pause, on focused? -->
+</div>
 </div>

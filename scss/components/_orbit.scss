@@ -1,25 +1,75 @@
+@import "global";
+$bullet-active-color: scale-color($secondary-color, $lightness: -10%);
+
+.orbit {
+  position: relative;
+}
+
 .orbit-slides-container {
   list-style: none;
   margin: 0;
   position: relative;
 }
 
+.orbit-figure {
+  margin: 0;
+}
+
 .orbit-image {
+  margin:0;
   max-width: 100%;
   width: 100%;
-  margin:0;
 }
 
 .orbit-caption {
+  color: white;
+  background-color: rgba(0,0,0,0.4);
+  padding: 0.5rem;
+  width: 100%;
   position: absolute;
   bottom: 0;
-  padding: 10px;
-  background-color: rgba(0,0,0,0.7);
-  color: white;
-  width: 100%;
 }
 
-.orbit-controls {
+.orbit-control {
+  @include v-align-middle;
+  position: absolute;
+  z-index: 10;
+  color: white;
+  padding: 1rem;
+  &:hover, &:active, &:focus {
+    color: white;
+    background-color: rgba(0,0,0,0.1);
+  }
 
+}
+
+.orbit-previous {
+  left: 0;
+}
+
+.orbit-next {
+  left: auto;
+  right: 0;
+}
+
+.orbit-bullets-container { 
+  text-align: center;
+}
+
+.orbit-bullets {
+  top: 0.2rem;
+  position: relative;
+  li {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: $secondary-color;
+    cursor: pointer;
+    margin: 0.1rem;
+    &.is-active {
+      background-color: $bullet-active-color;
+    }
+  }
 }
 
