@@ -110,3 +110,10 @@
   overflow: visible;
   clip: auto;
 }
+
+// Vertical centering mixin
+@mixin v-align-middle {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%);
+}
