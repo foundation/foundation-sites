@@ -30,7 +30,7 @@ $bullet-active-color: scale-color($secondary-color, $lightness: -10%);
   bottom: 0;
 }
 
-.orbit-control {
+.orbit-control { 
   @include v-align-middle;
   position: absolute;
   z-index: 10;

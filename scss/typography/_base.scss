@@ -111,6 +111,10 @@ $anchor-text-decoration: none !default;
 /// @type String
 $anchor-text-decoration-hover: none !default;
 
+/// Maximum width of a divider.
+/// @type Number
+$hr-width: $global-width !default;
+
 /// Default border for a divider.
 /// @type List
 $hr-border: 1px solid #ddd;
@@ -304,6 +308,7 @@ $abbr-underline: 1px dotted #333 !default;
 
   // Horizontal rule
   hr {
+    max-width: $hr-width;
     height: 0;
     border-top: 0;
     border-bottom: $hr-border;
@@ -320,6 +325,7 @@ $abbr-underline: 1px dotted #333 !default;
     list-style-position: $list-style-position;
   }
   
+  // List items
   li {
     font-size: inherit;
   }
