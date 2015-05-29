@@ -5,23 +5,27 @@ $tab-margin: 0 !default;
 
 /// Default background color of a tab bar.
 /// @type Color
-$tab-background: #eee;
+$tab-background: $white;
+
+/// active background color of a tab bar.
+/// @type Color
+$tab-background-active: $light-gray;
 
 /// Default border color of tab content.
 /// @type Color
-$tab-border: #eee !default;
+$tab-border: $light-gray !default;
 
 /// Default text color for items in a menu bar.
 /// @type Color
 $tab-item-color: foreground($tab-background, $primary-color);
 
 /// Default background color on hover for items in a menu bar.
-$tab-item-background-hover: #fff !default;
+$tab-item-background-hover: $white !default;
 
 /// Default padding for items in a menu bar.
 
 /// @type Number|List
-$tab-item-padding: 1.25rem 1rem !default;
+$tab-item-padding: 1.25rem 1.5rem !default;
 
 /// Maximum number of `expand-n` classes to include in the CSS.
 /// @type Number
@@ -29,11 +33,11 @@ $tab-expand-max: 6 !default;
 
 /// Default background color of tab content.
 /// @type Color
-$tab-content-background: #fff !default;
+$tab-content-background: $white !default;
 
 /// Default border color of tab content.
 /// @type Color
-$tab-content-border: #eee !default;
+$tab-content-border: $light-gray !default;
 
 /// Default text color of tab content.
 /// @type Color
@@ -46,27 +50,14 @@ $tab-content-padding: 1rem !default;
 .tabs {
   margin: $tab-margin;
   list-style-type: none;
-  overflow-x: scroll;
-  -webkit-overflow-scrolling: touch;
-  white-space: nowrap;
   position: relative;
   background: $tab-background;
   border: 1px solid $tab-content-border;
-  border-bottom: none;
-  
-  &:after {
-    content:'';
-    position: absolute;
-    right: 0;
-    top:0;
-    height: 56px;
-    width:1.25rem;
-    background: linear-gradient(to right, rgba(#eee ,0) 0%, rgba(#eee,1) 100%);
-  }
+  @include clearfix;
+
   /// Default
   > li {
-    display: inline-block;
-    font-size: 0;
+    float: left;
 
     > a {
       display: block;
@@ -77,14 +68,14 @@ $tab-content-padding: 1rem !default;
 
       &:hover,
       &:focus {
-        background: $tab-item-background-hover;
+        background: $tab-background-active;
       }
     }
-  }
+  } 
 
   /// Hover/active state
   > .is-active > a {
-    background: $tab-item-background-hover;
+    background: $tab-background-active;
   }
 
   /// Simple
@@ -100,10 +91,6 @@ $tab-content-padding: 1rem !default;
 
   /// Vertical
   &.vertical {
-    float: left;
-    width: 25%;
-    margin-right: 1rem;
-
     > li {
       width: 100%;
       float: none;
@@ -134,23 +121,18 @@ $tab-content-padding: 1rem !default;
   border: 1px solid $tab-content-border;
   border-top: none;
 
-  .content {
-    height: 0;
-    opacity: 0;
-    transition: all 0.5s ease;
+  &.vertical {
+    border: 1px solid $tab-content-border;
+    border-left: none;
+  }
 
+  .content {
+    display: none;
+    padding: $tab-content-padding;
+    
     &.is-active {
-      padding: $tab-content-padding;
-      height: auto;
-      opacity: 1;
+      display: block;
     }
   }
-}
 
-.vertical + .tabs-content {
-  border: 0;
-
-  .content.is-active {
-    padding-top: 0;
-  }
 }
