@@ -129,3 +129,21 @@ $table-margin-bottom: rem-calc(20) !default;
 table {
   @include table;
 }
+
+.stack {
+  @include breakpoint(medium down) {
+    thead {
+      display: none;
+    }
+
+    tr,th,td {
+      display: block;
+    }
+    td {
+      border-top: none;
+    }
+    tr td:first-child {
+      border-top: 0 solid #ddd;
+    }
+  }
+}
