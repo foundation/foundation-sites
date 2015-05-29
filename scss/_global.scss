@@ -36,6 +36,26 @@ $success-color: #43AC6A !default;
 /// @type Color
 $warning-color: #f08a24 !default;
 
+/// Color used for light gray ui items within Foundation
+/// @type Color
+$light-gray: #f1f1f1 !default;
+
+/// Color used for medium gray ui items within Foundation
+/// @type Color
+$medium-gray: #cacaca !default;
+
+/// Color used for dark gray ui items within Foundation
+/// @type Color
+$dark-gray: #8a8a8a !default;
+
+/// Color used for black ui items within Foundation
+/// @type Color
+$black: #0a0a0a !default;
+
+/// Color used for white ui items within Foundation
+/// @type Color
+$white: #fefefe !default;
+
 /// Background color of the body.
 /// @type Color
 $body-background: #fff !default;
