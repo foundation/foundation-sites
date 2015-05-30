@@ -24,7 +24,7 @@ $bullet-active-color: scale-color($secondary-color, $lightness: -10%);
 .orbit-caption {
   color: white;
   background-color: rgba(0,0,0,0.4);
-  padding: 0.5rem;
+  padding: 1rem;
   width: 100%;
   position: absolute;
   bottom: 0;
@@ -38,9 +38,8 @@ $bullet-active-color: scale-color($secondary-color, $lightness: -10%);
   padding: 1rem;
   &:hover, &:active, &:focus {
     color: white;
-    background-color: rgba(0,0,0,0.1);
+    background-color: rgba(0,0,0,0.5);
   }
-
 }
 
 .orbit-previous {
@@ -52,20 +51,15 @@ $bullet-active-color: scale-color($secondary-color, $lightness: -10%);
   right: 0;
 }
 
-.orbit-bullets-container { 
-  text-align: center;
-}
-
-.orbit-bullets {
-  top: 0.2rem;
+.orbit-bullets-container {
+  top: 0.8rem;
   position: relative;
-  li {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
+  text-align: center;
+  button {
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     background-color: $secondary-color;
-    cursor: pointer;
     margin: 0.1rem;
     &.is-active {
       background-color: $bullet-active-color;
