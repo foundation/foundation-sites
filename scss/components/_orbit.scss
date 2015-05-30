@@ -1,5 +1,44 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
 @import "global";
-$bullet-active-color: scale-color($secondary-color, $lightness: -10%);
+
+/// Default color for Orbit's bullets.
+/// @type Color
+$orbit-bullet-background: $secondary-color !default;
+
+/// Default active color for Orbit's bullets.
+/// @type Color
+$orbit-bullet-background-active: scale-color($orbit-bullet-background, $lightness: -10%) !default;
+
+/// Default diameter for Orbit's bullets.
+/// @type Number
+$orbit-bullet-diameter: 20px !default;
+
+/// Default margin between Orbit's bullets.
+/// @type Number
+$orbit-bullet-margin: 0.1rem !default;
+
+/// Default distance from slide slide region for Orbit's bullets.
+/// @type Number
+$orbit-bullet-top: 0.8rem !default;
+
+/// Default background color for Orbit's caption.
+/// @type Color
+$orbit-caption-background: rgba($black, 0.5) !default;
+
+/// Default padding for Orbit's caption.
+/// @type Number
+$orbit-caption-padding: 1rem !default;
+
+/// Default background color for Orbit's controls when hovered.
+/// @type Color
+$orbit-control-background-hover: rgba($black, 0.5) !default;
+
+/// Default padding for Orbit's controls.
+/// @type Number
+$orbit-control-padding: 1rem !default;
 
 .orbit {
   position: relative;
@@ -22,9 +61,9 @@ $bullet-active-color: scale-color($secondary-color, $lightness: -10%);
 }
 
 .orbit-caption {
-  color: white;
-  background-color: rgba(0,0,0,0.4);
-  padding: 1rem;
+  background-color: $orbit-caption-background;
+  color: foreground($orbit-caption-background);
+  padding: $orbit-caption-padding;
   width: 100%;
   position: absolute;
   bottom: 0;
@@ -34,11 +73,10 @@ $bullet-active-color: scale-color($secondary-color, $lightness: -10%);
   @include v-align-middle;
   position: absolute;
   z-index: 10;
-  color: white;
-  padding: 1rem;
+  color: $white;
+  padding: $orbit-control-padding;
   &:hover, &:active, &:focus {
-    color: white;
-    background-color: rgba(0,0,0,0.5);
+    background-color: $orbit-control-background-hover;
   }
 }
 
@@ -52,18 +90,20 @@ $bullet-active-color: scale-color($secondary-color, $lightness: -10%);
 }
 
 .orbit-bullets-container {
-  top: 0.8rem;
+  top: $orbit-bullet-top;
   position: relative;
   text-align: center;
   button {
-    width: 20px;
-    height: 20px;
+    width: $orbit-bullet-diameter;
+    height: $orbit-bullet-diameter;
     border-radius: 50%;
-    background-color: $secondary-color;
-    margin: 0.1rem;
+    background-color: $orbit-bullet-background;
+    margin: $orbit-bullet-margin;
+    &:hover {
+      background-color: $orbit-bullet-background-active;
+    }
     &.is-active {
-      background-color: $bullet-active-color;
+      background-color: $orbit-bullet-background-active;
     }
   }
 }
-

@@ -1,7 +1,7 @@
 ---
 title: Orbit Slider
 description: The slider you want, the slider you need.
-sass: scss/components/_slider.scss
+sass: scss/components/_orbit.scss
 ---
 
 ## Basic Orbit Slider
