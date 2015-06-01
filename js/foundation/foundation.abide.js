@@ -7,12 +7,14 @@
     version : '{{VERSION}}',
 
     settings : {
-      live_validate : true,
-      validate_on_blur : true,
+      live_validate : true, // validate the form as you go
+      validate_on_blur : true, // validate whenever you focus/blur on an input field
       // validate_on: 'tab', // tab (when user tabs between fields), change (input changes), manual (call custom events) 
-      focus_on_invalid : true,
+      focus_on_invalid : true, // automatically bring the focus to an invalid input field
       error_labels : true, // labels with a for="inputId" will recieve an `error` class
-      error_class : 'error',
+      error_class : 'error', // labels with a for="inputId" will recieve an `error` class
+      // the amount of time Abide will take before it validates the form (in ms). 
+      // smaller time will result in faster validation
       timeout : 1000,
       patterns : {
         alpha : /^[a-zA-Z]+$/,
@@ -299,6 +301,7 @@
         }
         validations = validations.concat(el_validations);
       }
+
       return validations;
     },
 

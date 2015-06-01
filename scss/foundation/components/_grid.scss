@@ -129,7 +129,7 @@ $last-child-float: $opposite-direction !default;
   @if $push { #{$default-float}: grid-calc($push, $total-columns); #{$opposite-direction}: auto; }
   @if $pull { #{$opposite-direction}: grid-calc($pull, $total-columns); #{$default-float}: auto; }
 
-  @if $float {
+  @if $float and $last-column == false {
     @if $float == left or $float == true { float: $default-float; }
     @else if $float == right { float: $opposite-direction; }
     @else { float: none; }
