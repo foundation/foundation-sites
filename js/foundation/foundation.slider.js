@@ -72,10 +72,9 @@
 
         if (settings.display_selector != '') {
           $(settings.display_selector).each(function(){
-            if (this.hasOwnProperty('value')) {
+            if ($(this).attr('value')) {
               $(this).change(function(){
-                // is there a better way to do this?
-                slider.foundation("slider", "set_value", $(this).val());
+                self.set_value($(this).val());
               });
             }
           });
