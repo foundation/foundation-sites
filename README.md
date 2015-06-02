@@ -30,6 +30,7 @@ cd foundation
 npm install -g grunt-cli bower
 npm install
 bower install
+bundle install
 ```
 
 Then just run `grunt build` and the documentation will be compiled:
