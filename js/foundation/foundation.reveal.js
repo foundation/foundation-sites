@@ -68,7 +68,7 @@
         });
 
       S(document)
-        .on('click.fndtn.reveal', this.close_targets(), function (e) {
+        .on('click.fndtn.reveal keydown.fndtn.reveal', this.close_targets(), function (e) {
           e.preventDefault();
           if (!self.locked) {
             var settings = S('[' + self.attr_name() + '].open').data(self.attr_name(true) + '-init') || self.settings,
@@ -333,7 +333,8 @@
                 context.locked = false;
                 el.trigger('opened.fndtn.reveal');
               })
-              .addClass('open');
+              .addClass('open')
+              .focus();
           }, settings.animation_speed / 2);
         }
 
@@ -348,7 +349,8 @@
                 context.locked = false;
                 el.trigger('opened.fndtn.reveal');
               })
-              .addClass('open');
+              .addClass('open')
+              .focus();
           }, settings.animation_speed / 2);
         }
 
@@ -364,7 +366,7 @@
 
       this.locked = false;
 
-      return el.show();
+      return el.show().focus();
     },
 
     to_back : function(el) {

@@ -7,13 +7,13 @@
   <p>Reveal makes these very easy to summon and dismiss. The close button is simply an anchor with a unicode character icon and a class of <code>close-reveal-modal</code>. Clicking anywhere outside the modal will also dismiss it.</p>
   <p>Finally, if your modal summons another Reveal modal, the plugin will handle that for you gracefully.</p>
   <p><a href="#" data-reveal-id="secondModal" class="secondary button">Second Modal...</a></p>
-  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+  <a class="close-reveal-modal" aria-label="Close" role="button" tabindex="0">&#215;</a>
 </div>
 
 <div id="secondModal" class="reveal-modal" data-reveal aria-labelledby="secondModalTitle" aria-hidden="true" role="dialog">
   <h2 id="secondModalTitle">This is a second modal.</h2>
   <p>See? It just slides into place after the other first modal. Very handy when you need subsequent dialogs, or when a modal option impacts or requires another decision.</p>
-  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+  <a class="close-reveal-modal" aria-label="Close" role="button" tabindex="0">&#215;</a>
 </div>
 
 <div id="videoModal" class="reveal-modal large" data-reveal aria-labelledby="videoModalTitle" aria-hidden="true" role="dialog">
@@ -22,6 +22,6 @@
     <iframe width="1280" height="720" src="//www.youtube-nocookie.com/embed/wnXCopXXblE?rel=0" frameborder="0" allowfullscreen></iframe>
   </div>
 
-  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+  <a class="close-reveal-modal" aria-label="Close" role="button" tabindex="0">&#215;</a>
 </div>
 <!-- Reveal Modals end -->

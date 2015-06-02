@@ -14,15 +14,15 @@ $('#myModal').foundation('reveal', 'close');
 <p>Or you can call one right after the other:</p>
 {{#markdown}}
 ```html
-<div class='reveal-modal' id='first-modal' data-reveal>
+<div class="reveal-modal" id="first-modal" data-reveal>
     I'm the firstborn!
-    <a class='open-second'>Click me!</a>
+    <a class="open-second" aria-haspopup="true" role="button" tabindex="0">Click me!</a>
   </div>
-  <div class='reveal-modal' id='second-modal' data-reveal>
+  <div class="reveal-modal" id="second-modal" data-reveal>
     I'm the secondborn!
-    <a class='close'>Close modal</a>
+    <a class="close" role="button" role="button" tabindex="0">Close modal</a>
   </div>
-  <a class='open-first'>Click me!</a>
+  <a class="open-first" aria-haspopup="true" role="button" tabindex="0">Click me!</a>
 ```
 {{/markdown}}
 
