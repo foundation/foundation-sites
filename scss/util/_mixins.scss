@@ -111,7 +111,7 @@
   clip: auto;
 }
 
-//Vertically centers using the transform property.
+/// Vertically centers using the transform property.
 @mixin vertical-center {
   position: absolute;
   top: 50%;
@@ -119,7 +119,7 @@
   transform: translate(-50%, -50%);
 }
 
-// Vertical centering mixin
+/// Vertical centering mixin
 @mixin v-align-middle {
   position: absolute;
   top: 50%;

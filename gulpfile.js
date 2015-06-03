@@ -93,8 +93,11 @@ gulp.task('sass:settings', function() {
     output: './scss/_settings.scss',
     groups: {
       undefined: 'The Rest',
-      grid: 'The Grid',
+      abide: 'Abide',
       breakpoints: 'Breakpoints',
+      global: 'Global',
+      grid: 'The Grid',
+      forms: 'Forms',
       functions: 'Functions',
       'media-object': 'Media Object',
       'menu-bar': 'Menu Bar',

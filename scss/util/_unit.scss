@@ -6,6 +6,7 @@
 
 /// Defines the base font size of the page, which is the value `1rem` is equal to.
 /// @type Number
+/// @group global
 $rem-base: 16px !default;
 
 /// Removes the unit (e.g. px, em, rem) from a value, returning the number only.
