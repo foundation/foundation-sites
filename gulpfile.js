@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
+var settingsParser = require('foundation-settings-parser');
 var shipyard = require('shipyard');
 var supercollider = require('supercollider').init;
 var rimraf = require('rimraf');
@@ -83,6 +84,25 @@ gulp.task('sass:docs', function() {
       errLogToConsole: true
     }))
     .pipe(gulp.dest('dist/assets/css'));
+});
+
+// Generates a settings file
+gulp.task('sass:settings', function() {
+  var options = {
+    title: 'Foundation for Sites Settings',
+    output: './scss/_settings.scss',
+    groups: {
+      undefined: 'The Rest',
+      grid: 'The Grid',
+      breakpoints: 'Breakpoints',
+      functions: 'Functions',
+      'media-object': 'Media Object',
+      'menu-bar': 'Menu Bar',
+      pagination: 'Pagination'
+    }
+  }
+
+  settingsParser(['./scss'], options);
 });
 
 // Compiles JavaScript into a single file

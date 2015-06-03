@@ -10,6 +10,8 @@
   },
   "devDependencies": {
     "bootcamp": "^1.1.7",
+    "foundation-settings-parser": "git://github.com/zurb/foundation-settings-parser.git#v1",
+    "glob": "^5.0.10",
     "gulp": "^3.8.10",
     "gulp-cached": "^1.0.4",
     "gulp-concat": "^2.4.3",
