@@ -22,9 +22,8 @@ $tab-item-color: foreground($tab-background, $primary-color);
 /// Default background color on hover for items in a menu bar.
 $tab-item-background-hover: $white !default;
 
-/// Default padding for items in a menu bar.
-
-/// @type Number|List
+/// Default padding of a a tab item.
+/// @type Number | List
 $tab-item-padding: 1.25rem 1.5rem !default;
 
 /// Maximum number of `expand-n` classes to include in the CSS.
@@ -44,16 +43,16 @@ $tab-content-border: $light-gray !default;
 $tab-content-color: foreground($tab-background, $primary-color);
 
 /// Default padding for tab content.
-/// @type Number|List
+/// @type Number | List
 $tab-content-padding: 1rem !default;
 
 .tabs {
+  @include clearfix;
   margin: $tab-margin;
   list-style-type: none;
   position: relative;
   background: $tab-background;
   border: 1px solid $tab-content-border;
-  @include clearfix;
 
   /// Default
   > li {
@@ -119,11 +118,11 @@ $tab-content-padding: 1rem !default;
   background: $tab-content-background;
   transition: all 0.5s ease;
   border: 1px solid $tab-content-border;
-  border-top: none;
+  border-top: 0;
 
   &.vertical {
     border: 1px solid $tab-content-border;
-    border-left: none;
+    border-left: 0;
   }
 
   .content {
@@ -134,5 +133,4 @@ $tab-content-padding: 1rem !default;
       display: block;
     }
   }
-
 }

@@ -9,9 +9,8 @@ $accordion-item-color: foreground($accordion-background, $primary-color);
 /// Default background color on hover for items in a menu bar.
 $accordion-item-background-hover: $light-gray !default;
 
-/// Default padding for items in a menu bar.
-
-/// @type Number|List
+/// Default padding of an accordion item.
+/// @type Number | List
 $accordion-item-padding: 1.25rem 1rem !default;
 
 /// Default background color of tab content.
@@ -27,7 +26,7 @@ $accordion-content-border: $light-gray !default;
 $accordion-content-color: foreground($accordion-background, $primary-color);
 
 /// Default padding for tab content.
-/// @type Number|List
+/// @type Number | List
 $accordion-content-padding: 1rem !default;
 
 .accordion {
@@ -35,13 +34,15 @@ $accordion-content-padding: 1rem !default;
   background: $accordion-background;
   border: 1px solid $accordion-content-border;
   margin-left: 0;
-  /// Default
+
+  // Default
   > li {
     .content {
       padding: $accordion-item-padding;
       display: none;
       border-bottom: 1px solid $accordion-content-border; 
     }
+
     > a {
       display: block;
       padding: $accordion-item-padding;
@@ -49,12 +50,17 @@ $accordion-content-padding: 1rem !default;
       font-size: 12px;
       color: $accordion-item-color;
       position: relative;
-      border-bottom: 1px solid $accordion-content-border; 
-      &:last-child {border-bottom: 0 solid $accordion-content-border; }
+      border-bottom: 1px solid $accordion-content-border;
+
+      &:last-child {
+        border-bottom: 0 solid $accordion-content-border;
+      }
+
       &:hover,
       &:focus {
         background: $accordion-item-background-hover;
       }
+      
       &::before {
         content:'+';
         position: absolute;
@@ -64,6 +70,7 @@ $accordion-content-padding: 1rem !default;
         font-size: .9rem;
       }
     }
+
     &:last-child a {
       border-bottom: 0 solid $accordion-content-border;
     }
@@ -74,8 +81,10 @@ $accordion-content-padding: 1rem !default;
     .content {
       display: block;
     }
+
     > a {
       background: $accordion-item-background-hover;
+
       &::before {
         content:'-';
       }

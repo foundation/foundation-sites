@@ -4,14 +4,9 @@
 
 @import "global";
 
-//
-// @name _tables.scss
-// @dependencies _global.scss
-//
-
-//
-// @variables
-//
+////
+/// @group table
+////
 
 // These control the background color for the table and even rows
 $table-bg: #fff !default;
@@ -53,17 +48,14 @@ $table-layout: auto !default;
 $table-display: table-cell !default;
 $table-margin-bottom: rem-calc(20) !default;
 
-
-//
-// @mixins
-//
-
+/// Adds styles for a table. Always apply this to a `<table>` element.
 @mixin table {
   background: $table-bg;
   margin-bottom: $table-margin-bottom;
   border: $table-border-style $table-border-size $table-border-color;
   table-layout: $table-layout;
 
+  // Caption
   caption {
     background: $table-caption-bg;
     color: $table-caption-font-color;
@@ -73,6 +65,7 @@ $table-margin-bottom: rem-calc(20) !default;
     }
   }
 
+  // Table head
   thead {
     background: $table-head-bg;
 
@@ -87,6 +80,7 @@ $table-margin-bottom: rem-calc(20) !default;
     }
   }
 
+  // Table footer
   tfoot {
     background: $table-foot-bg;
 
@@ -101,6 +95,7 @@ $table-margin-bottom: rem-calc(20) !default;
     }
   }
 
+  // Table rows
   tr {
     th,
     td {
@@ -110,11 +105,13 @@ $table-margin-bottom: rem-calc(20) !default;
       text-align: $default-float;
     }
 
+    // Even-numbered table rows
     &.even,
     &.alt,
     &:nth-of-type(even) { background: $table-even-row-bg; }
   }
 
+  // Table header cells and cells
   thead tr th,
   tfoot tr th,
   tfoot tr td,
@@ -126,24 +123,31 @@ $table-margin-bottom: rem-calc(20) !default;
   }
 }
 
+/// Adds styles for a stacked table. Useful for small-screen layouts.
+@mixin table-stacked {
+  thead {
+    display: none;
+  }
+
+  tr,th,td {
+    display: block;
+  }
+
+  td {
+    border-top: 0;
+  }
+
+  tr td:first-child {
+    border-top: 0 solid #ddd;
+  }
+}
+
 table {
   @include table;
 }
 
-.stack {
+table.stack {
   @include breakpoint(medium down) {
-    thead {
-      display: none;
-    }
-
-    tr,th,td {
-      display: block;
-    }
-    td {
-      border-top: none;
-    }
-    tr td:first-child {
-      border-top: 0 solid #ddd;
-    }
+    @include table-stacked;
   }
 }
