@@ -172,6 +172,7 @@ $button-group-border-width: 1px !default;
           @include button-group-style($orientation:horizontal);
           @media #{$small-only} {
             @include button-group-style($orientation:vertical);
+            width: 100%;
           }
         }
       }
