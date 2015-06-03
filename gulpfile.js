@@ -1,5 +1,5 @@
-var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
+var gulp = require('gulp');
 var settingsParser = require('foundation-settings-parser');
 var shipyard = require('shipyard');
 var supercollider = require('supercollider').init;
@@ -83,6 +83,14 @@ gulp.task('sass:docs', function() {
       includePaths: files.sassPaths,
       errLogToConsole: true
     }))
+    .pipe(gulp.dest('dist/assets/css'));
+});
+
+// Generates RTL CSS
+gulp.task('sass:rtl', ['sass'], function() {
+  gulp.src('dist/assets/css/docs.css')
+    .pipe($.rtlcss())
+    .pipe($.rename('foundation.rtl.css'))
     .pipe(gulp.dest('dist/assets/css'));
 });
 
