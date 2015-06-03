@@ -74,7 +74,7 @@
     @extend %show-for-sr;
   }
   
-  // Only display the element when its focused
+  // Only display the element when it's focused
   .show-on-focus {
     @extend %show-for-sr;
     
@@ -84,7 +84,6 @@
     }
   }
   
-
   // Orientation visibility classes
   @each $orientation in (portrait, landscape) {
     @include breakpoint($orientation) {

@@ -6,9 +6,6 @@
 /// @group global
 ////
 
-// Temporary!
-// scss-lint:disable all
-
 /// Global width of your site. Used by the grid to determine row width.
 $global-width: rem-calc(1000) !default;
 
@@ -186,6 +183,7 @@ $info-color: #a0d3e8 !default;
   }
 
   // Styles Google Maps embeds properly
+  // scss-lint:disable IdSelector
   #map_canvas,
   .map_canvas {
     img,
@@ -198,7 +196,7 @@ $info-color: #a0d3e8 !default;
   // Reset button styles
   button {
     -webkit-appearance: none;
-       -moz-appearance: none;
+    -moz-appearance: none;
     background: transparent;
     padding: 0;
     border: 0;
