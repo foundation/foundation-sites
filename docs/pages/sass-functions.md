@@ -6,3 +6,33 @@ sass:
   - '!scss/util/_breakpoint.scss'
   - '!scss/util/_mixins.scss'
 ---
+
+## Importing
+
+All of Foundation's Sass utilities are in the folder `scss/util`, and broken up into multiple files by category. You can import every utility file at once using this line of code:
+
+```scss
+@import 'util/util';
+```
+
+Or, utilities can be imported individually.
+
+```scss
+// Color manipulation
+@import 'util/color';
+
+// Image generation
+@import 'util/image';
+
+// Map manipulation
+@import 'util/map';
+
+// Selector generation
+@import 'util/selector';
+
+// Unit manipulation and conversion
+@import 'util/unit';
+
+// Value checking and extraction
+@import 'util/value';
+```
