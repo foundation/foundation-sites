@@ -179,7 +179,7 @@
             // the user would get continually redirected to the default hash.
             var default_hash = settings.scroll_to_content ? self.default_tab_hashes[0] : 'fndtn-' + self.default_tab_hashes[0].replace('#', '');
 
-            if (hash !== default_hash) {
+            if (hash !== default_hash || window.location.hash) {
               window.location.hash = hash;
             }
           };
