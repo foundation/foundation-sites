@@ -12,7 +12,7 @@ $reveal-width: 80% !default;
 
 /// Default maximum width of a modal.
 /// @type Number
-$reveal-max-width: $grid-row-width !default;
+$reveal-max-width: $global-width !default;
 
 /// Offset from the top of the window when a modal is added.
 /// @type Number
@@ -90,21 +90,18 @@ $reveal-overlay-background: rgba(#000, 0.45) !default;
   $max-width: $reveal-max-width
 ) {
   @include breakpoint(medium) {
-    left: auto;
-    right: auto;
+    @extend %reveal-centered;
     width: $width;
     max-width: $max-width;
-    margin: 0 auto;
   }
 }
 
 /// Creates a full-screen modal, which stretches the full width and height of the window.
 @mixin reveal-modal-fullscreen {
   // scss-lint:disable DuplicateProperty
-
-  @include reveal-modal-width(100%);
   top: 0;
   left: 0;
+  width: 100%;
   height: 100%;
   height: 100vh;
   min-height: 100vh;
@@ -125,6 +122,16 @@ $reveal-overlay-background: rgba(#000, 0.45) !default;
     // Remove padding
     &.collapse {
       padding: 0;
+    }
+
+    // Placeholder selector for medium-and-up modals
+    // Prevents duplicate CSS when defining multiple Reveal sizes
+    @include breakpoint(medium) {
+      %reveal-centered {
+        left: auto;
+        right: auto;
+        margin: 0 auto;
+      }
     }
 
     // Sizing classes
