@@ -182,10 +182,11 @@ $info-color: #a0d3e8 !default;
     width: 100%;
   }
 
-  // Styles Google Maps embeds properly
+  // Styles Google Maps and MapQuest embeds properly
   // scss-lint:disable IdSelector
   #map_canvas,
-  .map_canvas {
+  .map_canvas,
+  .mqa-display {
     img,
     embed,
     object {
@@ -193,7 +194,7 @@ $info-color: #a0d3e8 !default;
     }
   }
 
-  // Reset button styles
+  // Reset <button> styles created by most browsers
   button {
     -webkit-appearance: none;
     -moz-appearance: none;
