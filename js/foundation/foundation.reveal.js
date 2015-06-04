@@ -240,6 +240,20 @@
           $.ajax(ajax_settings);
         }
       }
+
+      // trap the focus within the modal while tabbing
+      self.S(modal).on('keydown', function(e) {
+        var visibleFocusableElements = modal.find('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]').filter(':visible');
+        if (e.keyCode === 9) { // tab is pressed
+          if (e.shiftKey && self.S(modal).find(':focus').is(visibleFocusableElements.eq(0))) { // left modal downwards, setting focus to first element
+            visibleFocusableElements.eq(-1).focus();
+            e.preventDefault();
+          } else if (!e.shiftKey && self.S(modal).find(':focus').is(visibleFocusableElements.eq(-1))) { // left modal downwards, setting focus to first element
+            visibleFocusableElements.eq(0).focus();
+            e.preventDefault();
+          }
+        }
+      });
       self.S(window).trigger('resize');
     },
 
