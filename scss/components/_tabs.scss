@@ -50,7 +50,6 @@ $tab-content-padding: 1rem !default;
   @include clearfix;
   margin: $tab-margin;
   list-style-type: none;
-  position: relative;
   background: $tab-background;
   border: 1px solid $tab-content-border;
 
@@ -91,11 +90,9 @@ $tab-content-padding: 1rem !default;
   /// Vertical
   &.vertical {
     > li {
-      width: 100%;
+      width: auto;
       float: none;
       display: block;
-      white-space: normal;
-      overflow-x: auto;
     }
   }
 
