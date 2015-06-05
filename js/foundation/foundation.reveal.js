@@ -243,7 +243,10 @@
 
       // trap the focus within the modal while tabbing
       self.S(modal).on('keydown', function(e) {
-        var visibleFocusableElements = modal.find('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]').filter(':visible');
+        var visibleFocusableElements = modal.find('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]').filter(function() {
+          if (!$(this).is(':visible') || $(this).attr('tabindex') < 0) return false; //only have visible elements and those that have a tabindex greater or equal 0
+          return true;
+        });
         if (e.keyCode === 9) { // tab is pressed
           if (e.shiftKey && self.S(modal).find(':focus').is(visibleFocusableElements.eq(0))) { // left modal downwards, setting focus to first element
             visibleFocusableElements.eq(-1).focus();
