@@ -25,10 +25,10 @@
     content: attr(title);
     left: 0;
     top: 5px;
-    margin-top: 1.5em;
+    margin-top: 1.5rem;
     padding: 5px 15px;
     white-space: pre-wrap;
-    width: 10rem;
+    width: 12rem;
   }
 
   &:hover:before, &:hover:after {
@@ -38,4 +38,20 @@
   &:hover {
     cursor: help;
   }
+
+
+  // tip-toppery
+
+  &.tip-top:after {
+    margin-top: -3rem;
+  }
+
+  &.tip-top:before {
+    border-bottom: none;
+    border-top: .6em solid $black;
+    margin-top: -0.9rem;
+
+  }
+  
+
 }
