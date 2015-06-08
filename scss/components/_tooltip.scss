@@ -1,2 +1,41 @@
 .has-tip {
+  border-bottom: dotted 1px #CCCCCC;
+  font-weight: bold;
+  position: relative;
+  
+  &:before, &:after {
+    display: none;
+    position: absolute;
+    top: 0;
+  }
+
+  &:before {
+    border-bottom: .6em solid $black;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    content: "";
+    left: 20px;
+    top: 5px;
+    margin-top: 1em;
+  }
+
+  &:after {
+    background-color: $black;
+    color: $white;
+    content: attr(title);
+    left: 0;
+    top: 5px;
+    margin-top: 1.5em;
+    padding: 5px 15px;
+    white-space: pre-wrap;
+    width: 10rem;
+  }
+
+  &:hover:before, &:hover:after {
+    display: block;
+  }
+
+  &:hover {
+    cursor: help;
+  }
 }

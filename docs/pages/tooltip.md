@@ -7,4 +7,4 @@ title: Tooltips
 
 <hr>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore quo quae nam autem, ducimus animi voluptas enim alias. <span data-tooltip aria-haspopup="true" class="has-tip" title="Tooltips are awesome, you should totally use them!">Tool tips? More like Cool Tips!</span> Et adipisci fuga commodi, animi asperiores ullam quae. Repellendus quasi sunt molestiae!</p>
+<p>Lorem ipsum dolor sit amet. <span data-tooltip aria-haspopup="true" class="has-tip" title="DO IT! JUST DO IT!">Tool tips? More like Cool Tips!</span> Et adipisci fuga commodi, animi asperiores ullam quae. Repellendus quasi sunt molestiae!</p>
