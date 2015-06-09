@@ -2,33 +2,26 @@
   border-bottom: dotted 1px #CCCCCC;
   font-weight: bold;
   position: relative;
+  display: inline-block;
   
   &:before, &:after {
     display: none;
     position: absolute;
     top: 0;
-  }
-
-  &:before {
-    border-bottom: .6em solid $black;
-    border-left: 7px solid transparent;
-    border-right: 7px solid transparent;
-    content: "";
-    left: 20px;
-    top: 5px;
-    margin-top: 1em;
+    z-index: 10;
   }
 
   &:after {
     background-color: $black;
     color: $white;
     content: attr(title);
-    left: 0;
     top: 5px;
-    margin-top: 1.5rem;
-    padding: 5px 15px;
-    white-space: pre-wrap;
-    width: 12rem;
+    margin-top: 1.3rem;
+    min-width: 250px;
+    max-width: 450px;
+    opacity: 0.9;
+    padding: 10px 10px;
+    font-size: 14px;
   }
 
   &:hover:before, &:hover:after {
@@ -39,19 +32,27 @@
     cursor: help;
   }
 
-
-  // tip-toppery
-
   &.tip-top:after {
-    margin-top: -3rem;
+    top: auto; 
+    bottom: 0;
+    margin-bottom: 1.3rem;
   }
 
-  &.tip-top:before {
-    border-bottom: none;
-    border-top: .6em solid $black;
-    margin-top: -0.9rem;
-
+  &.tip-left:after, &.tip-right:after {
+    bottom: auto;
+    margin: 0;
+    top: 50%;
+    transform: translateY(-50%);
   }
-  
+
+  &.tip-right:after {
+    left: calc(100% + 5px);
+    right: auto;
+  }
+
+  &.tip-left:after {
+    left: auto;
+    right: calc(100% + 5px);
+  }
 
 }
