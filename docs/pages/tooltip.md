@@ -6,7 +6,7 @@ title: Tooltips
 
 <hr>
 
-<p><span data-tooltip aria-haspopup="true" class="has-tip" title="Yesterday you said tomorrow. So just do it! Make your dreams come true. Just do it.">Get the power. Get the power.</span></p>
+<p><span data-tooltip aria-haspopup="true" class="has-tip" title="Yesterday you said tomorrow. So just do it! Make your dreams come true. Just do it." data-thumb="http://placehold.it/200x200">Get the power. Get the power.</span></p>
 
 <p><span data-tooltip aria-haspopup="true" class="has-tip tip-top" title="Yesterday you said tomorrow. So just do it! Make your dreams come true. Just do it.">Get the power. Top.</span></p>
 

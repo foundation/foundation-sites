@@ -3,11 +3,14 @@
   font-weight: bold;
   position: relative;
   display: inline-block;
-  
+
+  //using psuedo elements keeps tooltips lightweight, however limits styling of the tool tip content to only be text. Do we want to take an apporach to addimages as well?
   &:before, &:after {
     display: none;
     position: absolute;
     top: 0;
+
+    // Another opportunity for z-index variables
     z-index: 10;
   }
 
@@ -15,12 +18,16 @@
     background-color: $black;
     color: $white;
     content: attr(title);
-    top: 5px;
     margin-top: 1.3rem;
-    min-width: 250px;
-    max-width: 450px;
     opacity: 0.9;
     padding: 10px 10px;
+    top: 5px;
+
+    // Variables for width of tooltip
+    min-width: 250px;
+    max-width: 450px;
+
+    //smaller type for tooltip
     font-size: 14px;
   }
 
@@ -33,15 +40,15 @@
   }
 
   &.tip-top:after {
-    top: auto; 
     bottom: 0;
+    top: auto; 
     margin-bottom: 1.3rem;
   }
 
   &.tip-left:after, &.tip-right:after {
     bottom: auto;
-    margin: 0;
     top: 50%;
+    margin: 0;
     transform: translateY(-50%);
   }
 
