@@ -41,6 +41,7 @@ $visibility-breakpoint-queries:
     $visibility-table-list: ();
     $visibility-table-header-group-list: ();
     $visibility-table-row-group-list: ();
+    $visibility-table-footer-group-list: ();
     $visibility-table-row-list: ();
     $visibility-table-cell-list: ();
 
@@ -68,6 +69,9 @@ $visibility-breakpoint-queries:
         ), comma);
         $visibility-table-row-group-list: append($visibility-table-row-group-list, unquote(
           'tbody.hide-for-#{$visibility-comparison-breakpoint}-only, tbody.show-for-#{$visibility-comparison-breakpoint}-up'
+        ), comma);
+        $visibility-table-footer-group-list: append($visibility-table-footer-group-list, unquote(
+          'tfoot.hide-for-#{$visibility-comparison-breakpoint}-only, tfoot.show-for-#{$visibility-comparison-breakpoint}-up'
         ), comma);
         $visibility-table-row-list: append($visibility-table-row-list, unquote(
           'tr.hide-for-#{$visibility-comparison-breakpoint}-only, tr.show-for-#{$visibility-comparison-breakpoint}-up'
@@ -101,6 +105,9 @@ $visibility-breakpoint-queries:
           $visibility-table-row-group-list: append($visibility-table-row-group-list, unquote(
             'tbody.hide-for-#{$visibility-comparison-breakpoint}, tbody.hide-for-#{$visibility-comparison-breakpoint}-down'
           ), comma);
+          $visibility-table-footer-group-list: append($visibility-table-footer-group-list, unquote(
+            'tfoot.hide-for-#{$visibility-comparison-breakpoint}, tfoot.hide-for-#{$visibility-comparison-breakpoint}-down'
+          ), comma);
           $visibility-table-row-list: append($visibility-table-row-list, unquote(
             'tr.hide-for-#{$visibility-comparison-breakpoint}, tr.hide-for-#{$visibility-comparison-breakpoint}-down'
           ), comma);
@@ -132,6 +139,9 @@ $visibility-breakpoint-queries:
         ), comma);
         $visibility-table-row-group-list: append($visibility-table-row-group-list, unquote(
           'tbody.hide-for-#{$visibility-comparison-breakpoint}-only, tbody.hide-for-#{$visibility-comparison-breakpoint}-up'
+        ), comma);
+        $visibility-table-footer-group-list: append($visibility-table-footer-group-list, unquote(
+          'tfoot.hide-for-#{$visibility-comparison-breakpoint}-only, tfoot.hide-for-#{$visibility-comparison-breakpoint}-up'
         ), comma);
         $visibility-table-row-list: append($visibility-table-row-list, unquote(
           'tr.hide-for-#{$visibility-comparison-breakpoint}-only, tr.hide-for-#{$visibility-comparison-breakpoint}-up'
@@ -165,6 +175,9 @@ $visibility-breakpoint-queries:
           $visibility-table-row-group-list: append($visibility-table-row-group-list, unquote(
             'tbody.hide-for-#{$visibility-comparison-breakpoint}, tbody.show-for-#{$visibility-comparison-breakpoint}-down'
           ), comma);
+          $visibility-table-footer-group-list: append($visibility-table-footer-group-list, unquote(
+            'tfoot.hide-for-#{$visibility-comparison-breakpoint}, tfoot.show-for-#{$visibility-comparison-breakpoint}-down'
+          ), comma);
           $visibility-table-row-list: append($visibility-table-row-list, unquote(
             'tr.hide-for-#{$visibility-comparison-breakpoint}, tr.show-for-#{$visibility-comparison-breakpoint}-down'
           ), comma);
@@ -197,6 +210,9 @@ $visibility-breakpoint-queries:
         $visibility-table-row-group-list: append($visibility-table-row-group-list, unquote(
           'tbody.show-for-#{$visibility-comparison-breakpoint}-only, tbody.show-for-#{$visibility-comparison-breakpoint}-up'
         ), comma);
+        $visibility-table-footer-group-list: append($visibility-table-footer-group-list, unquote(
+          'tfoot.show-for-#{$visibility-comparison-breakpoint}-only, tfoot.show-for-#{$visibility-comparison-breakpoint}-up'
+        ), comma);
         $visibility-table-row-list: append($visibility-table-row-list, unquote(
           'tr.show-for-#{$visibility-comparison-breakpoint}-only, tr.show-for-#{$visibility-comparison-breakpoint}-up'
         ), comma);
@@ -228,6 +244,9 @@ $visibility-breakpoint-queries:
           ), comma);
           $visibility-table-row-group-list: append($visibility-table-row-group-list, unquote(
             'tbody.show-for-#{$visibility-comparison-breakpoint}, tbody.show-for-#{$visibility-comparison-breakpoint}-down'
+          ), comma);
+          $visibility-table-footer-group-list: append($visibility-table-footer-group-list, unquote(
+            'tfoot.show-for-#{$visibility-comparison-breakpoint}, tfoot.show-for-#{$visibility-comparison-breakpoint}-down'
           ), comma);
           $visibility-table-row-list: append($visibility-table-row-list, unquote(
             'tr.show-for-#{$visibility-comparison-breakpoint}, tr.show-for-#{$visibility-comparison-breakpoint}-down'
@@ -265,6 +284,9 @@ $visibility-breakpoint-queries:
         #{$visibility-table-row-group-list} {
           display: table-row-group !important;
         }
+        #{$visibility-table-footer-group-list} {
+          display: table-footer-group !important;
+        }
         #{$visibility-table-row-list} {
           display: table-row;
         }
@@ -300,6 +322,10 @@ $visibility-breakpoint-queries:
     &.hide-for-landscape,
     &.show-for-portrait { display: table-row-group !important; }
   }
+  tfoot {
+    &.hide-for-landscape,
+    &.show-for-portrait { display: table-footer-group !important; }
+  }
   tr {
     &.hide-for-landscape,
     &.show-for-portrait { display: table-row !important; }
@@ -328,6 +354,10 @@ $visibility-breakpoint-queries:
     tbody {
       &.show-for-landscape,
       &.hide-for-portrait { display: table-row-group !important; }
+    }
+    tfoot {
+      &.show-for-landscape,
+      &.hide-for-portrait { display: table-footer-group !important; }
     }
     tr {
       &.show-for-landscape,
@@ -359,6 +389,10 @@ $visibility-breakpoint-queries:
       &.show-for-portrait,
       &.hide-for-landscape { display: table-row-group !important; }
     }
+    tfoot {
+      &.show-for-portrait,
+      &.hide-for-landscape { display: table-footer-group !important; }
+    }
     tr {
       &.show-for-portrait,
       &.hide-for-landscape { display: table-row !important; }
@@ -383,6 +417,8 @@ $visibility-breakpoint-queries:
   .touch thead.show-for-touch { display: table-header-group !important; }
   tbody.hide-for-touch { display: table-row-group !important; }
   .touch tbody.show-for-touch { display: table-row-group !important; }
+  tfoot.hide-for-touch { display: table-footer-group !important; }
+  .touch tfoot.show-for-touch { display: table-footer-group !important; }
   tr.hide-for-touch { display: table-row !important; }
   .touch tr.show-for-touch { display: table-row !important; }
   td.hide-for-touch { display: table-cell !important; }
@@ -425,6 +461,7 @@ $visibility-breakpoint-queries:
         table.show-for-print { display: table !important; }
         thead.show-for-print { display: table-header-group !important; }
         tbody.show-for-print { display: table-row-group !important; }
+        tfoot.show-for-print { display: table-footer-group !important; }
         tr.show-for-print { display: table-row !important; }
         td.show-for-print { display: table-cell !important; }
         th.show-for-print { display: table-cell !important; }
@@ -447,6 +484,7 @@ $visibility-breakpoint-queries:
         }
 
         thead { display: table-header-group; /* h5bp.com/t */ }
+        tfoot { display: table-footer-group; }
 
         tr,
         img { page-break-inside: avoid; }
@@ -480,6 +518,7 @@ $visibility-breakpoint-queries:
       table.show-for-print { display: table !important; }
       thead.show-for-print { display: table-header-group !important; }
       tbody.show-for-print { display: table-row-group !important; }
+      tfoot.show-for-print { display: table-footer-group !important; }
       tr.show-for-print { display: table-row !important; }
       td.show-for-print { display: table-cell !important; }
       th.show-for-print { display: table-cell !important; }
