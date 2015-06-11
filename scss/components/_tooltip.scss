@@ -1,10 +1,21 @@
 @import "global";
 
-//small med large widths
+$tooltip-distance: 1.3rem;
+$tooltip-body-distance: calc(100% + #{$tooltip-distance});
+$tooltip-background-color: $black;
+$tooltip-padding: 0.75rem;
+$tooltip-font-size: 0.75rem;
+$tooltip-min-width: 10rem;
+
+$pip-width: 0.75rem;
+$pip-inset: 0.25rem;
+
+//include small med large widths
+//need mobile styles
 
 //Width of tooltip is dictated by the width of the span. 
 //This works fine for positioning to the top and bottom of the span,
-//however, when pushing to left
+//however, when pushing to left shrinks
 
 .has-tip {
   border-bottom: dotted 1px #CCCCCC;
@@ -12,20 +23,33 @@
   position: relative;
   display: inline-block;
 
+  &:hover {
+    cursor: help;
+  }
+
   &:before, &:after {
-    display: none;
     position: absolute;
     top: 0;
-    // Another opportunity for z-index variables
     z-index: 10;
   }
 
-
   &:before {
-    @include css-triangle(10px, red, bottom);
+    @include css-triangle($pip-width, $tooltip-background-color, bottom);
     display: none;
-    //only for regular tooltip
-    top: 8px;
+    top: $tooltip-distance;
+    left: $pip-inset;
+  }
+
+  &:after {
+    background-color: $tooltip-background-color;
+    color: $white;
+    content: attr(title);
+    font-size: $tooltip-font-size;
+    margin-top: $tooltip-distance;
+    padding: $tooltip-padding;
+    top: $tooltip-distance;
+    width: auto;
+    min-width: $tooltip-min-width;
   }
 
   //including the radius class
@@ -34,60 +58,55 @@
       border-radius: $global-radius;
     }
   }
-
-  &:after {
-    display: none;
-    background-color: $black;
-    color: $white;
-    content: attr(title);
-    margin-top: 1.3rem;
-    opacity: 0.9;
-    padding: 10px 10px;
-    top: 5px;
-
-    // // Variables for width of tooltip
-    width: auto;
-    min-width: 150px;
-
-    //smaller type for tooltip
-    font-size: 14px;
-  }
-
-  &:hover:before, &:hover:after,
-  &:focus:before, &:focus:after {
-    display: block;
-  }
-
-  &:hover {
-    cursor: help;
-  }
-
-  &.tip-top:after {
-    bottom: 0;
-    top: auto; 
-    margin-bottom: 1.3rem;
-  }
-
-  &.tip-left:after, &.tip-right:after {
-    bottom: auto;
-    top: 50%;
-    margin: 0;
-    transform: translateY(-50%);
-  }
-
-  &.tip-right:after {
-    left: calc(100% + 5px);
-    right: auto;
-  }
-
-  &.tip-left:after {
-    left: auto;
-    right: calc(100% + 5px);
-  }
-
 }
 
-.has-tip:after {
-  background-color: salmon;
-  border: 1px solid red;
+
+
+.tip-top:before {
+ @include css-triangle($pip-width, $tooltip-background-color, top);
+ top: -$tooltip-distance;
+}
+
+.tip-top:after {
+  bottom: $tooltip-distance;
+  top: auto; 
+  margin-bottom: $tooltip-distance;
+}
+
+.tip-left:after, .tip-right:after {
+  @include v-align-middle;
+  bottom: auto; 
+}
+
+.tip-right:before {
+  @include css-triangle($pip-width, $tooltip-background-color, right);
+  @include v-align-middle;
+  left: auto;
+  right: -$tooltip-distance;
+}
+
+.tip-right:after {
+  left: $tooltip-body-distance;
+  right: auto;
+}
+
+.tip-left:before {
+  @include css-triangle($pip-width, $tooltip-background-color, left);
+  @include v-align-middle;
+  left: -$tooltip-distance;
+}
+
+.tip-left:after {
+  left: auto;
+  right: $tooltip-body-distance;
+}
+
+//makes sure the hover displays don't get overridden
+.has-tip:before, .has-tip:after {
+  display: none;
+}
+
+.has-tip:hover:before, .has-tip:hover:after,
+.has-tip:focus:before, .has-tip:focus:after {
+  display: block;
 }
