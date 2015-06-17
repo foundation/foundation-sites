@@ -63,25 +63,32 @@
     },
 
     is_sticky : function (topbar, topbarContainer, settings) {
-      var sticky     = topbarContainer.hasClass(settings.sticky_class);
-      var smallMatch = matchMedia(Foundation.media_queries.small).matches;
-      var medMatch   = matchMedia(Foundation.media_queries.medium).matches;
-      var lrgMatch   = matchMedia(Foundation.media_queries.large).matches;
-
-      if (sticky && settings.sticky_on === 'all') {
-        return true;
+      var sticky = topbarContainer.hasClass(settings.sticky_class);
+      
+      if(sticky) {
+        //If the menu can't fit on the screen it can't be sticky, otherwise you can't scroll through it
+        if(topbarContainer.height() > $(window).height()) {
+          return false;
+        } else {
+          if (settings.sticky_on === 'all') {
+            return true;
+          }
+          if (settings.sticky_on.indexOf('topbar') !== -1 && this.breakpoint()) {
+            return true;
+          }
+          if (settings.sticky_on.indexOf('small') !== -1 && this.small() && !this.medium() && !this.large()) {
+            return true;
+          }
+          if (settings.sticky_on.indexOf('medium') !== -1 && this.medium() && !this.large()) {
+            return true;
+          }
+          if (settings.sticky_on.indexOf('large') !== -1 && this.large()) {
+            return true;
+          }
+        }
       }
-      if (sticky && this.small() && settings.sticky_on.indexOf('small') !== -1) {
-        if (smallMatch && !medMatch && !lrgMatch) { return true; }
-      }
-      if (sticky && this.medium() && settings.sticky_on.indexOf('medium') !== -1) {
-        if (smallMatch && medMatch && !lrgMatch) { return true; }
-      }
-      if (sticky && this.large() && settings.sticky_on.indexOf('large') !== -1) {
-        if (smallMatch && medMatch && lrgMatch) { return true; }
-      }
-
-       return false;
+      
+      return false;
     },
 
     toggle : function (toggleEl) {
