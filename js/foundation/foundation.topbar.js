@@ -69,22 +69,21 @@
         //If the menu can't fit on the screen it can't be sticky, otherwise you can't scroll through it
         if(topbarContainer.height() > $(window).height()) {
           return false;
-        } else {
-          if (settings.sticky_on === 'all') {
-            return true;
-          }
-          if (settings.sticky_on.indexOf('topbar') !== -1 && this.breakpoint()) {
-            return true;
-          }
-          if (settings.sticky_on.indexOf('small') !== -1 && this.small() && !this.medium() && !this.large()) {
-            return true;
-          }
-          if (settings.sticky_on.indexOf('medium') !== -1 && this.medium() && !this.large()) {
-            return true;
-          }
-          if (settings.sticky_on.indexOf('large') !== -1 && this.large()) {
-            return true;
-          }
+        }
+        if (settings.sticky_on === 'all') {
+          return true;
+        }
+        if (settings.sticky_on.indexOf('topbar') !== -1 && this.breakpoint()) {
+          return true;
+        }
+        if (settings.sticky_on.indexOf('small') !== -1 && this.small() && !this.medium() && !this.large()) {
+          return true;
+        }
+        if (settings.sticky_on.indexOf('medium') !== -1 && this.medium() && !this.large()) {
+          return true;
+        }
+        if (settings.sticky_on.indexOf('large') !== -1 && this.large()) {
+          return true;
         }
       }
       
