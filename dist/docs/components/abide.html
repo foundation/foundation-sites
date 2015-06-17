@@ -1,0 +1,962 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Abide Validation | Foundation Docs</title>
+    <link rel="icon" href="../assets/img/icons/favicon.ico" type="image/x-icon">
+    <!-- For third-generation iPad with high-resolution Retina display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/img/icons/apple-touch-icon-144x144-precomposed.png">
+    <!-- For iPhone with high-resolution Retina display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/img/icons/apple-touch-icon-114x114-precomposed.png">
+    <!-- For first- and second-generation iPad: -->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/img/icons/apple-touch-icon-72x72-precomposed.png">
+    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <link rel="apple-touch-icon-precomposed" href="../assets/img/icons/apple-touch-icon-precomposed.png">
+
+    <meta name="description" content="Documentation and reference library for ZURB Foundation. JavaScript, CSS, components, grid and more.">
+    <meta name="author" content="ZURB, inc. ZURB network also includes zurb.com">
+    <meta name="copyright" content="ZURB, inc. Copyright (c) 2014">
+
+    <link href="../assets/css/docs.css" rel="stylesheet" />
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet" />
+    <script src="../assets/js/modernizr.js"></script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+         
+ 
+
+<!-- <nav class="tab-bar show-for-small">
+  <a class="off-canvas-left-toggle menu-icon ">
+    <span></span>
+  </a>  
+</nav> -->
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="http://foundation.zurb.com/">Foundation</a></h1>
+    </li>
+  </ul>
+
+  <section class="top-bar-section">
+    <ul class="right">
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="http://foundation.zurb.com/learn/features.html" class="">Learn</a>
+        <ul class="dropdown">
+          <li><a href="http://foundation.zurb.com/learn/features.html">Features</a></li>
+          <li><a href="http://foundation.zurb.com/learn/faq.html">FAQ</a></li>
+          <li><a href="http://foundation.zurb.com/learn/case-washington-post.html">Case Studies</a></li>
+          <li><a href="http://foundation.zurb.com/learn/website-examples.html">Website Examples</a></li>
+          <li><a href="http://foundation.zurb.com/learn/video-started-with-foundation.html">Videos</a></li>
+          <li><a href="http://foundation.zurb.com/learn/training.html">Training</a></li>
+          <li><a href="http://foundation.zurb.com/learn/about.html">About</a></li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="http://foundation.zurb.com/templates.html" class="">Develop</a>
+        <ul class="dropdown">
+          <li><a href="http://foundation.zurb.com/templates.html">Add-ons</a></li>
+          <li><a href="http://foundation.zurb.com/docs">Docs</a></li>
+          <li><a href="http://foundation.zurb.com/develop/download.html">Download</a></li>
+          <li><a href="http://foundation.zurb.com/develop/contribute.html">Contribute</a></li>
+          <li><a href="http://foundation.zurb.com/develop/resources.html">Resources</a></li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="http://foundation.zurb.com/support/support.html" class="">Support</a>
+        <ul class="dropdown">
+          <li><a href="http://foundation.zurb.com/support/support.html">Support Channels</a></li>
+          <li><a href="http://foundation.zurb.com/forum">Foundation Forum</a></li>
+          <li><a href="http://foundation.zurb.com/support/images-and-badges.html">Images &amp; Badges</a></li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="../../business/services.html" class="">Business</a>
+        <ul class="dropdown">
+          <li><a href="../../business/services.html">Services</a></li>
+          <li><a href="../../business/certification.html">Certification</a></li>
+          <li><a href="../../business/business-support.html">Business Support</a></li>
+          <li><a href="../../business/engineering-studios.html">Engineering Studios</a></li>
+          <li><a href="../../business/training.html">Business Training</a></li>
+          <li><a href="../../business/design-apps.html">Design Apps</a></li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li>
+        <a href="http://foundation.zurb.com/docs" class="">Docs</a>
+      </li>
+      <li class="divider"></li>
+      <li class="has-form">
+        <a href="http://foundation.zurb.com/docs" class="small button">Getting Started</a>
+    </ul>
+  </section>
+</nav>
+        <nav class="tab-bar show-for-small">
+  <a class="left-off-canvas-toggle menu-icon">
+    <span>Foundation</span>
+  </a>
+</nav>
+
+<aside class="marketing-left-off-canvas-menu">
+
+  <ul class="off-canvas-list">
+    <li><label class="first">Foundation</label></li>
+    <li><a href="http://foundation.zurb.com">Home</a></li>
+  </ul>
+
+  <hr>
+
+  <ul class="off-canvas-list">
+      <li><label>Setup</label></li>
+
+      <li><a href="../index.html" data-search="">Getting Started</a></li>
+      <li><a href="../css.html" data-search="Styles">CSS</a></li>
+      <li><a href="../sass.html" data-search="Sass">Sass</a></li>      
+      <li><a href="../sass-files.html" data-search="Sass,Sass - What You Get, How to Use Sass">Sass Files</a></li>
+      <li><a href="../using-sass.html" data-search="Sass,Sass - What You Get, How to Use Sass">Using Sass</a></li>
+      <li><a href="../applications.html" data-search="Rails,Gem">Applications</a></li>
+      <li><a href="../javascript.html" data-search="">Javascript</a></li>
+      <li><a href="global.html" data-search="Global Styles,Global Mixins,Global Variables,Useful HTML Classes">Global Styles</a></li>
+      <li><a href="kitchen_sink.html" data-search="">Kitchen Sink</a></li>
+      <li><a href="../upgrading.html" data-search="Migration">Upgrading</a></li>
+
+      <li class="divider"></li>
+      <li><label>Structure</label></li>
+      <li><a href="../media-queries.html" data-search="Breakpoints">Media Queries</a></li>
+      <li><a href="visibility.html" data-search="">Visibility</a></li>
+      <li><a href="grid.html" data-search="">Grid</a></li>
+      <li><a href="block_grid.html" data-search="">Block Grid</a></li>
+      <li><a href="interchange.html" data-search="Responsive Images">Interchange Responsive Content <span class="label">JS</span></a></li>
+      <li><a href="../utility-classes.html" data-search="">Utility Classes</a></li>
+      <li><a href="../javascript-utilities.html" data-search="">Javascript Utilities</a></li>
+      <li><a href="rtl.html" data-search="RTL">Right-to-Left Support</a></li>
+
+      <li class="divider"></li>
+      <li><label>Navigation</label></li>
+      <li><a href="offcanvas.html" data-search="Off Canvas">Off-canvas <span class="label">JS</span></a></li>
+      <li><a href="topbar.html" data-search="Nav Bar,Navigation,Sticky">Top Bar <span class="label">JS</span></a></li>
+      <li><a href="icon-bar.html" data-search="">Icon Bar</a></li>
+      <li><a href="sidenav.html" data-search="">Side Nav</a></li>
+      <li><a href="magellan.html" data-search="Scrollspy">Magellan Sticky Nav <span class="label">JS</span></a></li>
+      <li><a href="subnav.html" data-search="">Sub Nav</a></li>
+      <li><a href="breadcrumbs.html" data-search="Navigation Path,Cookie Crumb">Breadcrumbs</a></li>
+      <li><a href="pagination.html" data-search="">Pagination</a></li>
+
+      <li class="divider"></li>
+      <li><label>Media</label></li>
+      <li><a href="orbit.html" data-search="Carousel,Slider,Slideshow">Orbit Slider <span class="label">JS</span></a></li>
+      <li><a href="thumbnails.html" data-search="Images">Thumbnails</a></li>
+      <li><a href="clearing.html" data-search="Responsive Lightbox,Lightbox">Clearing Lightbox <span class="label">JS</span></a></li>
+      <li><a href="flex_video.html" data-search="Responsive Video">Flex Video</a></li>
+
+      <li class="divider"></li>
+      <li><label>Forms</label></li>
+      <li><a href="forms.html" data-search="">Forms</a></li>
+      <li><a href="switch.html" data-search="">Switches</a></li>
+      <li><a href="range_slider.html" data-search="Range Slider">Sliders <span class="label">JS</span></a></li>
+      <li><a href="abide.html" data-search="Form Validation,Field Validation">Abide Validation <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li><label>Buttons</label></li>
+      <li><a href="buttons.html" data-search="">Buttons</a></li>
+      <li><a href="button_groups.html" data-search="Button Bar">Button Groups</a></li>
+      <li><a href="split_buttons.html" data-search="">Split Buttons <span class="label">JS</span></a></li>
+      <li><a href="dropdown_buttons.html" data-search="">Dropdown Buttons <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li><label>Typography</label></li>
+      <li><a href="typography.html" data-search="Typography,Type-setting,Composition">Type</a></li>
+      <li><a href="inline_lists.html" data-search="Lists">Inline Lists</a></li>
+      <li><a href="labels.html" data-search="Tags">Labels</a></li>
+      <li><a href="keystrokes.html" data-search="">Keystrokes</a></li>
+
+      <li class="divider"></li>
+      <li class="heading"><label>Callouts &amp; Prompts</label></li>
+      <li><a href="reveal.html" data-search="Modal">Reveal Modal <span class="label">JS</span></a></li>
+      <li><a href="alert_boxes.html" data-search="Error,Success,Warning">Alerts <span class="label">JS</span></a></li>
+      <li><a href="panels.html" data-search="Wells">Panels</a></li>
+      <li><a href="tooltips.html" data-search="Popover">Tooltips <span class="label">JS</span></a></li>
+      <li><a href="joyride.html" data-search="Tooltip Tour,Guider,Tooltip Walk-through">Joyride <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li><label>Content</label></li>
+      <li><a href="dropdown.html" data-search="">Dropdowns <span class="label">JS</span></a></li>
+      <li><a href="pricing_tables.html" data-search="">Pricing Tables</a></li>
+      <li><a href="progress_bars.html" data-search="">Progress Bars</a></li>
+      <li><a href="tables.html" data-search="">Tables</a></li>
+      <li><a href="accordion.html" data-search="">Accordion <span class="label">JS</span></a></li>
+      <li><a href="tabs.html" data-search="">Tabs <span class="label">JS</span></a></li>
+      <li><a href="equalizer.html" data-search="">Equalizer <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li><label>Support</label></li>
+
+      <li><a href="../changelog.html" data-search="">Changelog</a></li>
+      <li><a href="../compatibility.html" data-search="">Compatibility</a></li>
+
+      <li class="divider"></li>
+      <li class="heading"><label>Older Docs</label></li>
+      <li><a href="/docs/v/4.3.2/" data-search="">Foundation 4</a></li>
+      <li><a href="/docs/v/3.2.5/" data-search="">Foundation 3</a></li>
+      <li><a href="/docs/v/2.2.1/" data-search="">Foundation 2</a></li>
+    </ul>
+
+    <hr>
+
+    <div class="zurb-links">
+    <ul class="top">
+      <li class="logo"><a href="http://zurb.com"></a></li>
+      <li><a href="http://zurb.com/about">About</a></li>
+      <li><a href="http://zurb.com/blog">Blog</a></li>
+      <li><a href="http://zurb.com/contact">Contact</a></li>
+    </ul>
+    <ul class="pillars">
+      <li>
+        <a href="http://www.zurb.com/studios" class="footer-link-block services">
+          <span class="title">Studios</span>
+          <span>Helping startups win since '98.</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://foundation.zurb.com/" class="footer-link-block foundation">
+          <span class="title">Foundation</span>
+          <span>World's most advanced responsive framework.</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://zurb.com/notable" class="footer-link-block apps">
+          <span class="title">Notable</span>
+          <span>Tools to rapidly prototype and iterate.</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://zurb.com/university" class="footer-link-block expo">
+          <span class="title">University</span>
+          <span>Online training for smarter product design.</span>
+        </a>
+      </li>
+    </ul>
+</div>
+
+</aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section role="main" class="scroll-container">
+
+          <div class="row">
+            <div class="large-3 medium-4 columns">
+              <div class="hide-for-small">
+                <div class="sidebar">
+  <h5>Foundation Documentation</h5>
+  <form>
+    <!--  <label>Search Documentation</label> -->
+    <input tabindex="1" id="autocomplete" type="search" placeholder="Search Docs: e.g. forms">
+  </form>
+
+  <a href="/develop/download.html" class="download button expand">Download Foundation</a>
+
+  <nav>
+    <ul class="side-nav">
+      <li class="heading">Setup</li>
+
+      <li><a href="../index.html" data-search="">Getting Started</a></li>
+      <li><a href="../css.html" data-search="Styles">CSS</a></li>
+      <li><a href="../sass.html" data-search="Sass">Sass</a></li>
+      <li><a href="../sass-files.html" data-search="Sass,Sass - What You Get, How to Use Sass">Sass Files</a></li>
+      <li><a href="../using-sass.html" data-search="Sass,Sass - What You Get, How to Use Sass">Using Sass</a></li>
+      <li><a href="../applications.html" data-search="Rails,Gem">Applications</a></li>
+      <li><a href="../javascript.html" data-search="">JavaScript</a></li>
+      <li><a href="global.html" data-search="Global Styles,Global Mixins,Global Variables,Useful HTML Classes">Global Styles</a></li>
+      <li><a href="kitchen_sink.html" data-search="">Kitchen Sink</a></li>
+      <li><a href="../accessibility.html" data-search="accessibility">Accessibility</a></li>
+      <li><a href="../upgrading.html" data-search="Migration">Upgrading</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Structure</li>
+      <li><a href="../media-queries.html" data-search="Breakpoints">Media Queries</a></li>
+      <li><a href="visibility.html" data-search="">Visibility</a></li>
+      <li><a href="grid.html" data-search="">Grid</a></li>
+      <li><a href="block_grid.html" data-search="">Block Grid</a></li>
+      <li><a href="interchange.html" data-search="Responsive Images">Interchange Responsive Content <span class="label">JS</span></a></li>
+      <li><a href="../utility-classes.html" data-search="">Utility Classes</a></li>
+      <li><a href="../javascript-utilities.html" data-search="">Javascript Utilities</a></li>
+      <li><a href="rtl.html" data-search="RTL">Right-to-Left Support</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Navigation</li>
+      <li><a href="offcanvas.html" data-search="Off Canvas">Off-canvas <span class="label">JS</span></a></li>
+      <li><a href="topbar.html" data-search="Nav Bar,Navigation,Sticky">Top Bar <span class="label">JS</span></a></li>
+      <li><a href="icon-bar.html" data-search="">Icon Bar</a></li>
+      <li><a href="sidenav.html" data-search="">Side Nav</a></li>
+      <li><a href="magellan.html" data-search="Scrollspy">Magellan Sticky Nav <span class="label">JS</span></a></li>
+      <li><a href="subnav.html" data-search="">Sub Nav</a></li>
+      <li><a href="breadcrumbs.html" data-search="Navigation Path,Cookie Crumb">Breadcrumbs</a></li>
+      <li><a href="pagination.html" data-search="">Pagination</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Media</li>
+      <li><a href="orbit.html" data-search="Carousel,Slider,Slideshow">Orbit Slider <span class="label">JS</span></a></li>
+      <li><a href="thumbnails.html" data-search="Images">Thumbnails</a></li>
+      <li><a href="clearing.html" data-search="Responsive Lightbox,Lightbox">Clearing Lightbox <span class="label">JS</span></a></li>
+      <li><a href="flex_video.html" data-search="Responsive Video">Flex Video</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Forms</li>
+      <li><a href="forms.html" data-search="">Forms</a></li>
+      <li><a href="switch.html" data-search="">Switches</a></li>
+      <li><a href="range_slider.html" data-search="Range Slider">Range Sliders <span class="label">JS</span></a></li>
+      <li><a href="abide.html" data-search="Form Validation,Field Validation">Abide Validation <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Buttons</li>
+      <li><a href="buttons.html" data-search="">Buttons</a></li>
+      <li><a href="button_groups.html" data-search="Button Bar">Button Groups</a></li>
+      <li><a href="split_buttons.html" data-search="">Split Buttons <span class="label">JS</span></a></li>
+      <li><a href="dropdown_buttons.html" data-search="">Dropdown Buttons <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Typography</li>
+      <li><a href="typography.html" data-search="Typography,Type-setting,Composition">Type</a></li>
+      <li><a href="inline_lists.html" data-search="Lists">Inline Lists</a></li>
+      <li><a href="labels.html" data-search="Tags">Labels</a></li>
+      <li><a href="keystrokes.html" data-search="">Keystrokes</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Callouts &amp; Prompts</li>
+      <li><a href="reveal.html" data-search="Modal">Reveal Modal <span class="label">JS</span></a></li>
+      <li><a href="alert_boxes.html" data-search="Error,Success,Warning">Alerts <span class="label">JS</span></a></li>
+      <li><a href="panels.html" data-search="Wells">Panels</a></li>
+      <li><a href="tooltips.html" data-search="Popover">Tooltips <span class="label">JS</span></a></li>
+      <li><a href="joyride.html" data-search="Tooltip Tour,Guider,Tooltip Walk-through">Joyride <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Content</li>
+      <li><a href="dropdown.html" data-search="">Dropdowns <span class="label">JS</span></a></li>
+      <li><a href="pricing_tables.html" data-search="">Pricing Tables</a></li>
+      <li><a href="progress_bars.html" data-search="">Progress Bars</a></li>
+      <li><a href="tables.html" data-search="">Tables</a></li>
+      <li><a href="accordion.html" data-search="">Accordion <span class="label">JS</span></a></li>
+      <li><a href="tabs.html" data-search="">Tabs <span class="label">JS</span></a></li>
+      <li><a href="equalizer.html" data-search="">Equalizer <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Support</li>
+
+      <li><a href="../changelog.html" data-search="">Changelog</a></li>
+      <li><a href="../compatibility.html" data-search="">Compatibility</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Older Docs</li>
+      <li><a href="/docs/v/4.3.2/" data-search="">Foundation 4</a></li>
+      <li><a href="/docs/v/3.2.5/" data-search="">Foundation 3</a></li>
+      <li><a href="/docs/v/2.2.1/" data-search="">Foundation 2</a></li>
+
+    </ul>
+  </nav>
+
+
+  <section id="jobs">
+    <h5>Get a job, nerd!</h5>
+    <script type="text/javascript" src="http://www.zurb.com/jobs/widgets/jobs.js?limit=3"></script>
+    <p class="via">via <a href="http://www.zurb.com/jobs">Job Board from ZURB</a></p>
+  </section>
+
+</div>
+              </div>
+            </div>
+            <div class="large-9 medium-8 columns">
+              <h1 id="abide-validation">Abide Validation</h1>
+              <h3 class="subheader">Abide is an HTML5 form validation library that supports the native API by using patterns and required attributes.</h3>
+
+<hr>
+<form data-abide id="testForm">
+  <fieldset>
+    <legend>Fieldset</legend>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <label for="password">Password <small>required</small>
+          <input type="password" id="password" placeholder="LittleW0men." name="password" required>
+        </label>
+        <small class="error">Passwords must be at least 8 characters with 1 capital letter, 1 number, and one special character.</small>
+      </div>
+      <div class="large-12 columns">
+        <label for="confirmPassword">Confirm Password <small>required</small>
+          <input type="password" id="confirmPassword" placeholder="LittleW0men." name="confirmPassword" required data-equalto="password">
+        </label>
+        <small class="error">Passwords must match.</small>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-4 columns">
+        <label for="email">Email
+          <input type="email" id="email" placeholder="foundation@zurb.com">
+        </label>
+        <small class="error">Valid email required.</small>
+      </div>
+      <div class="large-4 columns">
+        <label for="url">URL <small>required</small>
+          <input type="url" id="url" placeholder="http://zurb.com" required>
+        </label>
+        <small class="error">Valid URL required.</small>
+      </div>
+      <div class="large-4 columns">
+        <div class="row collapse">
+          <label for="customDropdown1">Hardest to find in grocery <small>required</small>
+            <select id="customDropdown1" class="medium" required>
+              <option value="">Select grocery item</option>
+              <option value="first">Green Chilies</option>
+              <option value="second">Raisins</option>
+              <option value="third">Panko bread crumbs</option>
+              <option value="fourth">Assistance</option>
+            </select>
+          </label>
+          <small class="error">Broke.</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <hr>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-6 columns">
+        <label for="radio1"><input name="radioButtons" type="radio" id="radio1" required> Radio Button 1</label>
+        <label for="radio2"><input name="radioButtons" type="radio" id="radio2" required> Radio Button 2</label>
+        <label for="radio3"><input name="radioButtons" type="radio" id="radio3" required> Radio Button 3</label>
+      </div>
+      <div class="large-6 columns">
+        <label for="checkbox1"><input type="checkbox" id="checkbox1" required> Label for Checkbox</label>
+        <label for="checkbox2"><input type="checkbox" id="checkbox2" CHECKED required> Label for Checkbox</label>
+        <label for="checkbox3"><input type="checkbox" CHECKED id="checkbox3" required> Label for Checkbox</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <hr>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <label for="remarks">Closing Remarks</label>
+        <textarea id="remarks" name="remarks" placeholder="Leave your remarks here."></textarea>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 columns">
+        <button type="submit" class="medium button green">Submit</button>
+      </div>
+    </div>
+        <div class="row">
+      <div class="large-12 columns">
+        <button type="reset" class="medium button green">Reset</button>
+      </div>
+    </div>
+
+  </fieldset>
+</form>
+
+<hr>
+<h2 id="setting-up-validation">Setting Up Validation</h2>
+<p>To enable validation with Abide, add the <code>data-abide</code> attribute to your <code>form</code> element. Then add the <code>required</code> attribute to each input that you want to require. Additionaly, you can define a <code>pattern</code> to define restraints on what users can input.</p>
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">form</span> <span class="attribute">data-abide</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"name-field"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">label</span>&gt;</span>Your name <span class="tag">&lt;<span class="title">small</span>&gt;</span>required<span class="tag">&lt;/<span class="title">small</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">required</span> <span class="attribute">pattern</span>=<span class="value">"[a-zA-Z]+"</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">label</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">small</span> <span class="attribute">class</span>=<span class="value">"error"</span>&gt;</span>Name is required and must be a string.<span class="tag">&lt;/<span class="title">small</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"email-field"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">label</span>&gt;</span>Email <span class="tag">&lt;<span class="title">small</span>&gt;</span>required<span class="tag">&lt;/<span class="title">small</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"email"</span> <span class="attribute">required</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">label</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">small</span> <span class="attribute">class</span>=<span class="value">"error"</span>&gt;</span>An email address is required.<span class="tag">&lt;/<span class="title">small</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">button</span> <span class="attribute">type</span>=<span class="value">"submit"</span>&gt;</span>Submit<span class="tag">&lt;/<span class="title">button</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">form</span>&gt;</span></div></code></pre>
+
+
+<hr>
+<h2 id="predefined-patterns">Predefined Patterns</h2>
+<p>Abide has several patterns common validation patterns built into the library:</p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Valid Example or Format</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>alpha</td>
+      <td>Foundation</td>
+    </tr>
+    <tr>
+      <td>alpha_numeric</td>
+      <td>A1Sauce</td>
+    </tr>
+    <tr>
+      <td>integer</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <td>number</td>
+      <td>2937</td>
+    </tr>
+    <tr>
+      <td>card</td>
+      <td>visa, amex, mastercard</td>
+    </tr>
+    <tr>
+      <td>cvv</td>
+      <td>384 or 3284</td>
+    </tr>
+    <tr>
+      <td>email</td>
+      <td>foundation@zurb.com</td>
+    </tr>
+    <tr>
+      <td>url</td>
+      <td><a href="http://zurb.com">http://zurb.com</a></td>
+    </tr>
+    <tr>
+      <td>domain</td>
+      <td>zurb.com</td>
+    </tr>
+    <tr>
+      <td>datetime</td>
+      <td>YYYY-MM-DDThh:mm:ssTZD</td>
+    </tr>
+    <tr>
+      <td>date</td>
+      <td>YYYY-MM-DD</td>
+    </tr>
+    <tr>
+      <td>time</td>
+      <td>HH:MM:SS</td>
+    </tr>
+    <tr>
+      <td>dateISO</td>
+      <td>not sure yet</td>
+    </tr>
+    <tr>
+      <td>month_day_year</td>
+      <td>MM/DD/YYYY</td>
+    </tr>
+    <tr>
+      <td>color</td>
+      <td>#FFF or #FFFFFF</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<p>You can also use these patterns by setting the input&#39;s type to the name of the pattern instead of using the pattern attribute:</p>
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"email"</span> <span class="attribute">required</span>&gt;</span>
+<span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"url"</span>&gt;</span></div></code></pre>
+
+
+<p>There is a good list of valid HTML5 input types on the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input">Mozilla Developer Network</a>. Try avoiding patterns defined by type that do not match the specification.</p>
+<p>You can use the following shortcut for named patterns that aren&#39;t valid input types:</p>
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">pattern</span>=<span class="value">"integer"</span>&gt;</span></div></code></pre>
+
+
+<hr>
+<h2 id="custom-named-patterns">Custom Named Patterns</h2>
+<p>By overriding Abide during Foundation initilization, you can define your own custom patterns or override the default patterns to validate against.</p>
+<pre><code class="language-javascript"><div class="code-container">$(document)
+  .foundation({
+    abide : {
+      patterns: {
+        dashes_only: <span class="regexp">/^[0-9-]*$/</span>,
+        ip_address: <span class="regexp">/^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$/</span>
+      }
+    }
+  });</div></code></pre>
+
+
+<p>You can then use these custom patterns like you would the predefined patterns in your markup:</p>
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">form</span> <span class="attribute">class</span>=<span class="value">"custom"</span> <span class="attribute">data-abide</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">label</span>&gt;</span>Serial Number
+    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">pattern</span>=<span class="value">"dashes_only"</span> <span class="attribute">required</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">label</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">form</span>&gt;</span></div></code></pre>
+
+
+<hr>
+<h2 id="equal-to">Equal To</h2>
+<p>To add a confirmation field, you can define the <code>data-equalto</code> attribute.</p>
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">form</span> <span class="attribute">data-abide</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"password-field"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">label</span>&gt;</span>Password <span class="tag">&lt;<span class="title">small</span>&gt;</span>required<span class="tag">&lt;/<span class="title">small</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"password"</span> <span class="attribute">id</span>=<span class="value">"password"</span> <span class="attribute">required</span> <span class="attribute">pattern</span>=<span class="value">"[a-zA-Z]+"</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">label</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">small</span> <span class="attribute">class</span>=<span class="value">"error"</span>&gt;</span>Your password must match the requirements<span class="tag">&lt;/<span class="title">small</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"password-confirmation-field"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">label</span>&gt;</span>Confirm Password <span class="tag">&lt;<span class="title">small</span>&gt;</span>required<span class="tag">&lt;/<span class="title">small</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"password"</span> <span class="attribute">required</span> <span class="attribute">pattern</span>=<span class="value">"[a-zA-Z]+"</span> <span class="attribute">data-equalto</span>=<span class="value">"password"</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">label</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">small</span> <span class="attribute">class</span>=<span class="value">"error"</span>&gt;</span>The password did not match<span class="tag">&lt;/<span class="title">small</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">button</span> <span class="attribute">type</span>=<span class="value">"submit"</span>&gt;</span>Submit<span class="tag">&lt;/<span class="title">button</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">form</span>&gt;</span></div></code></pre>
+
+
+
+<hr>
+<h2 id="error-messages">Error Messages</h2>
+<p>To display an error message for your invalid form element, include a <code>small</code> tag with an <code>error</code> class as a sibling of your input.</p>
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"input-wrapper"</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">label</span>&gt;</span>Email Address <span class="tag">&lt;<span class="title">small</span>&gt;</span>required<span class="tag">&lt;/<span class="title">small</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"email"</span> <span class="attribute">required</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">label</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">small</span> <span class="attribute">class</span>=<span class="value">"error"</span>&gt;</span>A valid email address is required.<span class="tag">&lt;/<span class="title">small</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span></div></code></pre>
+
+
+<p>We have wrapped our input in a div in the example above. This div will receive an <code>error</code> class when the input is invalid. This class will show our error message and style the label and input accordingly.</p>
+<p>Invalid inputs inherit a <code>data-invalid</code> attribute.</p>
+<hr>
+<h2 id="events">Events</h2>
+<p>If a submit event is fired, a <code>valid.fndtn.abide</code> event is triggered when the form is valid and an <code>invalid.fndtn.abide</code> event is triggered when the form is invalid.</p>
+<div class="panel">
+  <p><strong>Deprecation Notice</strong></p>
+  <p>Previous versions of the abide plugin emitted un-namespaced <code>valid</code> and <code>invalid</code> events, however, these have been replaced by the namespaced <code>valid.fndtn.abide</code> and <code>invalid.fndtn.abide</code> events. The un-namespaced events have been fully deprecated.</p>
+</div>
+
+<p>You can bind to these events and fire your own callback:</p>
+<pre><code class="language-javascript"><div class="code-container">$(<span class="string">'#myForm'</span>)
+  .on(<span class="string">'invalid.fndtn.abide'</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+    <span class="keyword">var</span> invalid_fields = $(<span class="keyword">this</span>).find(<span class="string">'[data-invalid]'</span>);
+    console.log(invalid_fields);
+  })
+  .on(<span class="string">'valid.fndtn.abide'</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+    console.log(<span class="string">'valid!'</span>);
+  });</div></code></pre>
+
+
+
+<p>To handle the <code>submit</code> event yourself, use <code>data-abide=&quot;ajax&quot;</code> instead of <code>data-abide</code> inside the <code>form</code> tag.</p>
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">form</span> <span class="attribute">data-abide</span>=<span class="value">"ajax"</span> <span class="attribute">id</span>=<span class="value">"myform"</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"name-field"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">label</span>&gt;</span>Your name <span class="tag">&lt;<span class="title">small</span>&gt;</span>required<span class="tag">&lt;/<span class="title">small</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">name</span>=<span class="value">"users_name"</span> <span class="attribute">required</span> <span class="attribute">pattern</span>=<span class="value">"[a-zA-Z]+"</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">label</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">small</span> <span class="attribute">class</span>=<span class="value">"error"</span>&gt;</span>Name is required and must be a string.<span class="tag">&lt;/<span class="title">small</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">button</span> <span class="attribute">type</span>=<span class="value">"submit"</span>&gt;</span>Submit<span class="tag">&lt;/<span class="title">button</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">form</span>&gt;</span></div></code></pre>
+<pre><code class="language-javascript"><div class="code-container">$(<span class="string">'#myform'</span>).on(<span class="string">'valid.fndtn.abide'</span>, <span class="keyword">function</span>() {
+  <span class="comment">// Handle the submission of the form</span>
+});</div></code></pre>
+
+
+
+<hr>
+<h2 id="custom-validators">Custom Validators</h2>
+<p><code>equalTo</code> is actually an example of a built-in validator. To get an idea of how validators work, check out the implementation of <code>equalTo</code>:</p>
+<pre><code class="language-javascript"><div class="code-container">equalTo: <span class="keyword">function</span>(el, required, parent) {
+  <span class="keyword">var</span> from  = document.getElementById(el.getAttribute(<span class="keyword">this</span>.add_namespace(<span class="string">'data-equalto'</span>))).value,
+      to    = el.value,
+      valid = (from === to);
+
+  <span class="keyword">return</span> valid;
+}</div></code></pre>
+
+
+<p>Your function will be passed three arguments: <code>el</code>, <code>required</code>, and <code>parent</code>. These are the elements being validated, whether or not it was marked as required, and the parent of the element being validated, respectively.
+Your function should return <code>true</code> if the element is valid, or <code>false</code> if it is invalid. You can define your custom validators and pass them into abide options when initializing foundation. See the Configuration section for more details on defining custom validators.</p>
+<p>Suppose you&#39;ve defined a custom validator <code>diceRoll</code> which randomly marks your element as valid or invalid. You would use it like so:</p>
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">data-abide-validator</span>=<span class="value">"diceRoll"</span>&gt;</span></div></code></pre>
+
+
+
+<p>Additionally, if you are using a custom validator and specify an input type or a pattern on the input, Abide will check both when validating the input. The following will check your input value against the built in email pattern as well as your isAllowed custom validator function:</p>
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"email"</span> <span class="attribute">data-abide-validator</span>=<span class="value">"isAllowed"</span>&gt;</span></div></code></pre>
+
+
+<p>You can also use multiple custom validators if you wish by separating the names of the custom validators with a space. The input, however, must pass ALL validations in order for the input to be considered valid. The example below would only be valid if the the outcome of <code>diceRoll</code> is true AND the input is within the array of accepted inputs of <code>isAllowed</code>.</p>
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"email"</span> <span class="attribute">data-abide-validator</span>=<span class="value">"diceRoll isAllowed"</span>&gt;</span></div></code></pre>
+
+
+
+<hr>
+<h2 id="accessibility">Accessibility</h2>
+<p>For the most part, Abide is accessible on its own. Our JavaScript will add the attribute <code>aria-invalid</code> to any form fields deemed invalid. However, to properly connect errors to form fields, you&#39;ll need to do a little extra work. The error&#39;s container should have a unique ID, which our JavaScript will use to bind the error message to its input if there&#39;s an error.</p>
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">form</span> <span class="attribute">data-abide</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"name-field"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">label</span> <span class="attribute">for</span>=<span class="value">"input-example"</span>&gt;</span>Your name <span class="tag">&lt;<span class="title">small</span>&gt;</span>required<span class="tag">&lt;/<span class="title">small</span>&gt;</span><span class="tag">&lt;/<span class="title">label</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">input</span> <span class="attribute">id</span>=<span class="value">"input-example"</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">required</span> <span class="attribute">pattern</span>=<span class="value">"[a-zA-Z]+"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">small</span> <span class="attribute">class</span>=<span class="value">"error"</span>&gt;</span>Name is required and must be a string.<span class="tag">&lt;/<span class="title">small</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">form</span>&gt;</span></div></code></pre>
+<hr>
+<h3 id="adding-new-abide-content-after-page-load">Adding New Abide Content After Page Load</h3>
+<p>If you add new content after the page has been loaded, you will need to reinitialize the Foundation JavaScript by running the following:</p>
+<pre><code class="language-javascript"><div class="code-container">$(document).foundation(<span class="string">'abide'</span>, <span class="string">'reflow'</span>);</div></code></pre>
+
+
+<p>Reflow will make Foundation check the DOM for any elements and re-apply any listeners to them.</p>
+<hr>
+<h2 id="using-the-javascript">Using the Javascript</h2>
+<div class="panel">
+  Before you can use Abide you&#39;ll want to verify that jQuery and <code>foundation.js</code> are available on your page. You can refer to the <a href="../javascript.html">Javascript documentation</a> on setting that up.
+</div>
+
+<p>Just add <code>foundation.abide.js</code> AFTER the <code>foundation.js</code> file. Your markup should look something like this:</p>
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">body</span>&gt;</span>
+
+  ...
+
+  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/foundation/foundation.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/foundation/foundation.abide.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+  <span class="comment">&lt;!-- Other JS plugins can be included here --&gt;</span>
+
+  <span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript">
+    $(document).foundation();
+  </span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+
+<span class="tag">&lt;/<span class="title">body</span>&gt;</span></div></code></pre>
+
+
+
+<p>Required Foundation Library: <code>foundation.abide.js</code></p>
+<h3 id="optional-javascript-configuration">Optional Javascript Configuration</h3>
+<pre><code class="language-javascript"><div class="code-container">$(document).foundation({
+  abide : {
+    live_validate : <span class="literal">true</span>, <span class="comment">// validate the form as you go</span>
+    validate_on_blur : <span class="literal">true</span>, <span class="comment">// validate whenever you focus/blur on an input field</span>
+    focus_on_invalid : <span class="literal">true</span>, <span class="comment">// automatically bring the focus to an invalid input field</span>
+    error_labels: <span class="literal">true</span>, <span class="comment">// labels with a for="inputId" will recieve an `error` class</span>
+    <span class="comment">// the amount of time Abide will take before it validates the form (in ms). </span>
+    <span class="comment">// smaller time will result in faster validation</span>
+    timeout : <span class="number">1000</span>,
+    patterns : {
+      alpha: <span class="regexp">/^[a-zA-Z]+$/</span>,
+        alpha_numeric : <span class="regexp">/^[a-zA-Z0-9]+$/</span>,
+        integer: <span class="regexp">/^[-+]?\d+$/</span>,
+        number: <span class="regexp">/^[-+]?[1-9]\d*$/</span>,
+
+        <span class="comment">// amex, visa, diners</span>
+        card : <span class="regexp">/^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/</span>,
+        cvv : <span class="regexp">/^([0-9]){3,4}$/</span>,
+
+        <span class="comment">// http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#valid-e-mail-address</span>
+        email : <span class="regexp">/^[a-zA-Z0-9.!#$%&amp;'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/</span>,
+
+        url: <span class="regexp">/(https?|ftp|file|ssh):\/\/(((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&amp;'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-zA-Z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-zA-Z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-zA-Z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-zA-Z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-zA-Z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-zA-Z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&amp;'\(\)\*\+,;=]|:|@)+(\/(([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&amp;'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&amp;'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&amp;'\(\)\*\+,;=]|:|@)|\/|\?)*)?/</span>,
+        <span class="comment">// abc.de</span>
+        domain: <span class="regexp">/^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}$/</span>,
+
+        datetime: <span class="regexp">/([0-2][0-9]{3})\-([0-1][0-9])\-([0-3][0-9])T([0-5][0-9])\:([0-5][0-9])\:([0-5][0-9])(Z|([\-\+]([0-1][0-9])\:00))/</span>,
+        <span class="comment">// YYYY-MM-DD</span>
+        date: <span class="regexp">/(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))/</span>,
+        <span class="comment">// HH:MM:SS</span>
+        time : <span class="regexp">/(0[0-9]|1[0-9]|2[0-3])(:[0-5][0-9]){2}/</span>,
+        dateISO: <span class="regexp">/\d{4}[\/\-]\d{1,2}[\/\-]\d{1,2}/</span>,
+        <span class="comment">// MM/DD/YYYY</span>
+        month_day_year : <span class="regexp">/(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d/</span>,
+
+        <span class="comment">// #FFF or #FFFFFF</span>
+        color: <span class="regexp">/^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/</span>
+    },
+    validators: {
+      diceRoll: <span class="keyword">function</span>(el, required, parent) {
+        <span class="keyword">var</span> possibilities = [<span class="literal">true</span>, <span class="literal">false</span>];
+        <span class="keyword">return</span> possibilities[Math.round(Math.random())];
+      },
+      isAllowed: <span class="keyword">function</span>(el, required, parent) {
+        <span class="keyword">var</span> possibilities = [<span class="string">'a@zurb.com'</span>, <span class="string">'b.zurb.com'</span>];
+        <span class="keyword">return</span> possibilities.indexOf(el.val) &gt; -<span class="number">1</span>;
+      }
+    }
+  }
+});</div></code></pre>
+
+
+
+<hr>
+
+            </div>
+          </div>
+          <section id="courses-banner-large">
+  <div class="row">
+    <div class="large-5 medium-5 columns banner-image">
+      <img src="http://foundation.zurb.com/assets/img/responsive-banner-main.svg" alt="responsive design">
+    </div>
+    <div class="large-7 medium-7 columns banner-info">
+      <h3>Get a running start with Foundation</h3>
+      <p>Learn the fundamentals of the world's most advanced responsive framework in our <strong>Intro to Foundation class.</strong> You'll learn from the creators themselves on how to use Foundation and jumpstart your next project. <a href="http://zurb.com/university/courses" class="inline-hide">Learn more about classes »</a></p>
+      <a href="http://zurb.com/university/foundation-intro?utm_source=Foundation%20Docs&utm_medium=Large%20Banner&utm_campaign=Intro%20to%20Foundation" class="button">Learn More</a>
+      <a href="http://zurb.com/university/courses" class="learn-more hide-for-medium-up">Learn more about classes »</a>
+    </div>
+  </div>
+</section>
+          <div id="newsletter">
+  <div class="row">
+    <div class="medium-8 columns">
+      <h5>Stay on top of what&rsquo;s happening in <a href="http://zurb.com/responsive">responsive design</a>.</h5>
+      <p>Sign up to receive monthly Responsive Reading highlights. <a href="http://zurb.com/responsive/reading">Read Last Month's Edition &raquo;</a></p>
+    </div>
+    <div class="medium-4 columns">
+      <form action="http://zurb.createsend.com/t/y/s/xlitlu/" method="post" id="subForm">
+        <div class="row collapse margintop-20px">
+          <div class="small-8 medium-8 columns">
+            <input id="fieldEmail" name="cm-xlitlu-xlitlu" type="email" placeholder="signup@example.com">
+          </div>
+          <div class="small-4 medium-4 columns">
+            <input type="submit" href="#" class="postfix button" value="Sign Up">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="zurb-footer-top bg-fblue">
+  <div class="row property">
+    <div class="medium-4 columns">
+      <div class="property-info">
+        <h3>Foundation for Sites</h3>
+        <p>Foundation is a responsive front-end framework made by <a href="http://zurb.com">ZURB</a>, a product design company in Campbell, CA. This framework is the result of building web products &amp; services since 1998.
+        </p>
+      </div>
+    </div>
+
+    <div class="medium-8 columns">
+      <div class="row collapse">
+        <div class="medium-4 columns">
+          <div class="learn-links">
+            <h4 class="hide-for-small">Want more?</h4>
+            <ul>
+              <li><a href="http://foundation.zurb.com/apps">Foundation for Apps</a></li>
+              <li><a href="http://zurb.com/ink/">Ink Responsive Emails</a></li>
+              <li><a href="http://zurb.com/notable">Notable Design Apps</a></li>
+              <li><a href="http://zurb.com/university/courses">Training</a></li>
+              <li><a href="http://zurb.com/library">Design Resources</a></li>
+            </ul>
+          </div>
+        </div>
+          <div class="medium-4 columns">
+            <div class="support-links">
+            <h4 class="hide-for-small">Talk to us</h4>
+            <p>Tweet us at <br> <a href="https://twitter.com/zurbfoundation">@ZURBfoundation</a></p>
+            <p><a href="http://foundation.zurb.com/business/business-support.html">Business Support</a></p>
+            <p>Or check our <a href="http://foundation.zurb.com/support/support.html">support page</a></p>
+            </div>
+          </div>
+        <div class="medium-4 columns">
+          <div class="connect-links">
+            <h4 class="hide-for-small">Stay Updated</h4>
+            <p>Keep up with the latest on Foundation. Find us on <a href="https://github.com/zurb/foundation">Github</a>.</p>
+            <a href="http://zurb.com/news" class="small button">Stay Connected</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row global">
+    <div class="medium-3 small-6 columns">
+      <a href="http://zurb.com/studios" class="footer-link-block services">
+        <span class="title">Studios</span>
+        <span>Helping more than 200 startups succeed since 1998.</span>
+      </a>
+    </div>
+    <div class="medium-3 small-6 columns">
+      <a href="http://foundation.zurb.com/" class="footer-link-block foundation">
+        <span class="title">Foundation</span>
+        <span>The most advanced front-end framework in the world.</span>
+      </a>
+    </div>
+    <div class="medium-3 small-6 columns">
+      <a href="http://zurb.com/notable" class="footer-link-block apps">
+        <span class="title">Notable Design Apps</span>
+        <span>Prototype, iterate and collect feedback on your products.</span>
+      </a>
+    </div>
+    <div class="medium-3 small-6 columns">
+      <a href="http://zurb.com/university" class="footer-link-block expo">
+        <span class="title">University</span>
+        <span>Ideas, thoughts and design resources shared with you.</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="zurb-footer-bottom">
+  <div class="row">
+    <div class="medium-4 medium-4 push-8 columns">
+      <ul class="home-social">
+          <li><a href="http://www.twitter.com/ZURB" class="twitter"></a></li>
+          <li><a href="http://www.facebook.com/ZURB" class="facebook"></a></li>
+          <li><a href="http://zurb.com/contact" class="mail"></a></li>
+        </ul>
+     </div>
+     <div class="medium-8 medium-8 pull-4 columns">
+        <a href="http://www.zurb.com" class="zurb-logo regular"></a>
+        <ul class="zurb-links">
+          <li><a href="http://zurb.com/about">About</a></li>
+          <li><a href="http://zurb.com/blog">Blog</a></li>
+          <li><a href="http://zurb.com/news">News<span class="show-for-medium-up"> &amp; Events</span></a></li>
+          <li><a href="http://zurb.com/contact">Contact</a></li>
+          <li><a href="http://zurb.com/sitemap">Sitemap</a></li>
+       </ul>
+       <p class="copyright">&copy; 1998&dash;2015 ZURB, Inc. All rights reserved.</p>
+    </div>
+  </div>
+</div>
+
+        </section>
+
+      </div>
+    </div>
+
+    <script src="../assets/js/templates.js"></script>
+    <script src="../assets/js/all.js"></script>
+    <script>
+      var _gaq = _gaq || [];
+      _gaq.push(
+        ['_setAccount', 'UA-2195009-2'],
+        ['_trackPageview'],
+        ['b._setAccount', 'UA-2195009-27'],
+        ['b._trackPageview']
+      );
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <script>
+      $(document).foundation().foundation('joyride', 'start');
+    </script>
+  </body>
+  
+
+</html>
+
+
