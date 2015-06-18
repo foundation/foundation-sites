@@ -6,7 +6,7 @@
 /// @access private
 @mixin foundation-grid-classes(
   $row: 'row',
-  $column: 'columns',
+  $column: 'column',
   $column-row: 'column-row',
   $push: 'push',
   $pull: 'pull',
@@ -117,8 +117,10 @@
     }
   }
 
-  .column {
-    // scss-lint:disable PlaceholderInExtend
-    @extend .columns;
+  @if $column == 'column' {
+    .columns {
+      // scss-lint:disable PlaceholderInExtend
+      @extend .column;
+    }
   }
 }
