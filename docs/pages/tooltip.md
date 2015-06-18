@@ -1,10 +1,8 @@
 ---
 title: Tooltips
+description: Tooltips? More like <em>Cooltips</em>. But really though, tooltips are nifty for displaying extended information for a term or action on a page.
+sass: scss/components/_tooltip.scss
 ---
-
-<h3 class="subheader">Tooltips are a quick way to provide extended information on a term or action on a page.</h3>
-
-<hr>
 
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure veritatis doloribus unde facilis impedit culpa mollitia velit, dolor, reiciendis doloremque repellendus voluptatem similique molestias neque accusantium qui ipsam odio deleniti.<span data-tooltip aria-haspopup="true" class="has-tip radius" title="Yesterday you said tomorrow. So just do it! Make your dreams come true. Just do it." data-thumb="http://placehold.it/200x200" tabindex=1>Get the power. Get the power.</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur aliquam necessitatibus repellat nam sed magnam sapiente provident, iste harum asperiores excepturi fuga, corrupti neque. Unde at, nobis. Error, cum, nostrum!</p>
 

@@ -1,18 +1,43 @@
 @import "global";
 
-$tooltip-distance: 12.3rem;
+/// Default distance of the tooltip from the span.
+/// @type Number
+$tooltip-distance: 1.3rem;
+
+/// Default margin of the tooltip body from the span. This is used for spacing the pip and body.
+/// @type Number
 $tooltip-body-margin: 1.3rem;
+
+/// Default distance of the tooltip body. This is relative to just the body. If you want to move the entire tooltip, use $tooltip-distance.
+/// @type Number
 $tooltip-body-distance: calc(100% + #{$tooltip-distance});
+
+/// Default color of the tooltip background.
+/// @type Color
 $tooltip-background-color: $black;
+
+/// Default padding of the tooltip background.
+/// @type Number
 $tooltip-padding: 0.75rem;
+
+/// Default font size of the tooltip text. By default, we recommend a smaller font size than the body copy.
+/// @type Number
 $tooltip-font-size: 0.75rem;
+
+/// Default minimum width for tooltips.
+/// @type Number
 $tooltip-min-width: 10rem;
 
+/// Default pip width for tooltips.
+/// @type Number
 $tooltip-pip-width: 0.75rem;
-$tooltip-pip-inset: 0.25rem;
+
+/// Default pip offset for tooltips. This controls how far the pip is indented from the left edge of the tooltip.
+/// @type Number
+$tooltip-pip-offset: 1.25rem;
 
 
-.has-tip {
+%has-tip {
   border-bottom: dotted 1px #CCCCCC;
   font-weight: bold;
   position: relative;
@@ -32,7 +57,7 @@ $tooltip-pip-inset: 0.25rem;
     @include css-triangle($tooltip-pip-width, $tooltip-background-color, bottom);
     display: none;
     top: $tooltip-distance;
-    left: $tooltip-pip-inset;
+    left: $tooltip-pip-offset;
   } 
 
   &:after {
@@ -54,53 +79,74 @@ $tooltip-pip-inset: 0.25rem;
   }
 }
 
-
-
-.tip-top:before {
- @include css-triangle($tooltip-pip-width, $tooltip-background-color, top);
- top: -$tooltip-distance;
+%tip-top {
+  &:before {
+   @include css-triangle($tooltip-pip-width, $tooltip-background-color, top);
+   top: -$tooltip-distance;
+ }
+ 
+  &:after {
+    bottom: $tooltip-distance;
+    top: auto; 
+    margin-bottom: $tooltip-body-margin;
+  }
 }
 
-.tip-top:after {
-  bottom: $tooltip-distance;
-  top: auto; 
-  margin-bottom: $tooltip-body- margin;
+%tip-left {
+  &:before {
+    @include css-triangle($tooltip-pip-width, $tooltip-background-color, left);
+    @include v-align-middle;
+    left: -$tooltip-distance;
+  }
+
+  &:after {
+    @include v-align-middle;
+    bottom: auto;
+    left: auto;
+    right: $tooltip-body-distance; 
+  }
 }
 
-.tip-left:after, .tip-right:after {
-  @include v-align-middle;
-  bottom: auto; 
+%tip-right {
+  &:before {
+    @include css-triangle($tooltip-pip-width, $tooltip-background-color, right);
+    @include v-align-middle;
+    left: auto;
+    right: -$tooltip-distance;
+  }
+
+  &:after {
+    @include v-align-middle;
+    bottom: auto;
+    left: $tooltip-body-distance;
+    right: auto; 
+  }
 }
 
-.tip-right:before {
-  @include css-triangle($tooltip-pip-width, $tooltip-background-color, right);
-  @include v-align-middle;
-  left: auto;
-  right: -$tooltip-distance;
+//makes sure the hover display property doesn't get overridden
+%has-tip {
+  &:before, &:after {
+    display: none;
+  }
+
+  &:hover:before, &:hover:after,
+  &:focus:before, &:focus:after{
+    display: block;
+  }
 }
 
-.tip-right:after {
-  left: $tooltip-body-distance;
-  right: auto;
+.has-tip {
+  @extend %has-tip;
 }
 
-.tip-left:before {
-  @include css-triangle($tooltip-pip-width, $tooltip-background-color, left);
-  @include v-align-middle;
-  left: -$tooltip-distance;
+.tip-top {
+  @extend %tip-top;
 }
 
-.tip-left:after {
-  left: auto;
-  right: $tooltip-body-distance;
+.tip-left{
+  @extend %tip-left;
 }
 
-//makes sure the hover displays don't get overridden
-.has-tip:before, .has-tip:after {
-  display: none;
-}
-
-.has-tip:hover:before, .has-tip:hover:after,
-.has-tip:focus:before, .has-tip:focus:after {
-  display: block;
+.tip-right{
+  @extend %tip-right;
 }
