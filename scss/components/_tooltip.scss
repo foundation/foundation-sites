@@ -64,7 +64,7 @@ $tooltip-pip-inset: 0.25rem;
 .tip-top:after {
   bottom: $tooltip-distance;
   top: auto; 
-  margin-bottom: $tooltip-body- margin;
+  margin-bottom: $tooltip-body-margin;
 }
 
 .tip-left:after, .tip-right:after {
