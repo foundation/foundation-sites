@@ -14,7 +14,7 @@ $orbit-bullet-background-active: scale-color($orbit-bullet-background, $lightnes
 
 /// Default diameter for Orbit's bullets.
 /// @type Number
-$orbit-bullet-diameter: 20px !default;
+$orbit-bullet-diameter: 1.2rem !default;
 
 /// Default margin between Orbit's bullets.
 /// @type Number
@@ -40,27 +40,27 @@ $orbit-control-background-hover: rgba($black, 0.5) !default;
 /// @type Number
 $orbit-control-padding: 1rem !default;
 
-.orbit {
+%orbit {
   position: relative;
 }
 
-.orbit-slides-container {
+%orbit-slides-container {
   list-style: none;
   margin: 0;
   position: relative;
 }
 
-.orbit-figure {
+%orbit-figure {
   margin: 0;
 }
 
-.orbit-image {
+%orbit-image {
   margin:0;
   max-width: 100%;
   width: 100%;
 }
 
-.orbit-caption {
+%orbit-caption {
   background-color: $orbit-caption-background;
   color: foreground($orbit-caption-background);
   padding: $orbit-caption-padding;
@@ -69,7 +69,7 @@ $orbit-control-padding: 1rem !default;
   bottom: 0;
 }
 
-.orbit-control { 
+%orbit-control { 
   @include v-align-middle;
   position: absolute;
   z-index: 10;
@@ -80,30 +80,71 @@ $orbit-control-padding: 1rem !default;
   }
 }
 
-.orbit-previous {
+%orbit-previous {
   left: 0;
 }
 
-.orbit-next {
+%orbit-next {
   left: auto;
   right: 0;
 }
 
-.orbit-bullets-container {
+%orbit-bullets-container {
   top: $orbit-bullet-top;
   position: relative;
   text-align: center;
-  button {
+ 
+ button {
     width: $orbit-bullet-diameter;
     height: $orbit-bullet-diameter;
     border-radius: 50%;
     background-color: $orbit-bullet-background;
     margin: $orbit-bullet-margin;
+    
     &:hover {
       background-color: $orbit-bullet-background-active;
     }
+    
     &.is-active {
       background-color: $orbit-bullet-background-active;
     }
   }
 }
+
+.orbit {
+  @extend %orbit;
+}
+
+.orbit-slides-container {
+  @extend %orbit-slides-container
+}
+
+.orbit-figure {
+  @extend %orbit-figure;
+}
+
+.orbit-image {
+  @extend %orbit-image;
+}
+
+.orbit-caption {
+  @extend %orbit-caption;
+}
+
+.orbit-control { 
+  @extend %orbit-control;
+}
+
+.orbit-previous {
+  @extend %orbit-previous;
+}
+
+.orbit-next {
+  @extend %orbit-next;
+}
+
+.orbit-bullets-container {
+  @extend %orbit-bullets-container;
+}
+
+

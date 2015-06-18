@@ -1,21 +1,16 @@
 @import "global";
 
-$tooltip-distance: 1.3rem;
+$tooltip-distance: 12.3rem;
+$tooltip-body-margin: 1.3rem;
 $tooltip-body-distance: calc(100% + #{$tooltip-distance});
 $tooltip-background-color: $black;
 $tooltip-padding: 0.75rem;
 $tooltip-font-size: 0.75rem;
 $tooltip-min-width: 10rem;
 
-$pip-width: 0.75rem;
-$pip-inset: 0.25rem;
+$tooltip-pip-width: 0.75rem;
+$tooltip-pip-inset: 0.25rem;
 
-//include small med large widths
-//need mobile styles
-
-//Width of tooltip is dictated by the width of the span. 
-//This works fine for positioning to the top and bottom of the span,
-//however, when pushing to left shrinks
 
 .has-tip {
   border-bottom: dotted 1px #CCCCCC;
@@ -34,25 +29,24 @@ $pip-inset: 0.25rem;
   }
 
   &:before {
-    @include css-triangle($pip-width, $tooltip-background-color, bottom);
+    @include css-triangle($tooltip-pip-width, $tooltip-background-color, bottom);
     display: none;
     top: $tooltip-distance;
-    left: $pip-inset;
-  }
+    left: $tooltip-pip-inset;
+  } 
 
   &:after {
     background-color: $tooltip-background-color;
     color: $white;
     content: attr(title);
     font-size: $tooltip-font-size;
-    margin-top: $tooltip-distance;
+    margin-top: $tooltip-body-margin;
     padding: $tooltip-padding;
     top: $tooltip-distance;
     width: auto;
     min-width: $tooltip-min-width;
   }
 
-  //including the radius class
   &.radius {
     &:after {
       border-radius: $global-radius;
@@ -63,14 +57,14 @@ $pip-inset: 0.25rem;
 
 
 .tip-top:before {
- @include css-triangle($pip-width, $tooltip-background-color, top);
+ @include css-triangle($tooltip-pip-width, $tooltip-background-color, top);
  top: -$tooltip-distance;
 }
 
 .tip-top:after {
   bottom: $tooltip-distance;
   top: auto; 
-  margin-bottom: $tooltip-distance;
+  margin-bottom: $tooltip-body- margin;
 }
 
 .tip-left:after, .tip-right:after {
@@ -79,7 +73,7 @@ $pip-inset: 0.25rem;
 }
 
 .tip-right:before {
-  @include css-triangle($pip-width, $tooltip-background-color, right);
+  @include css-triangle($tooltip-pip-width, $tooltip-background-color, right);
   @include v-align-middle;
   left: auto;
   right: -$tooltip-distance;
@@ -91,7 +85,7 @@ $pip-inset: 0.25rem;
 }
 
 .tip-left:before {
-  @include css-triangle($pip-width, $tooltip-background-color, left);
+  @include css-triangle($tooltip-pip-width, $tooltip-background-color, left);
   @include v-align-middle;
   left: -$tooltip-distance;
 }
