@@ -7,7 +7,7 @@
 /// @param {String} $selector ['.column, .columns'] - Selector(s) to use for child elements.
 @mixin grid-layout(
   $n,
-  $selector: '.columns'
+  $selector: '.column'
 ) {
   #{$selector} {
     width: percentage(1/$n);
