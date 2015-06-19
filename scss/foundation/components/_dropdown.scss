@@ -215,8 +215,6 @@ $f-dropdown-radius: $global-radius !default;
   &:hover,
   &:focus { background: $f-dropdown-list-hover-bg; }
 
-  &.radius { @include radius($f-dropdown-radius); }
-
   a {
     display: block;
     padding: $f-dropdown-list-padding;
@@ -248,6 +246,9 @@ $f-dropdown-radius: $global-radius !default;
 
       // You can also put custom content in these dropdowns
       &.content { @include dropdown-container(content, $triangle:false); }
+
+      // Radius of Dropdown
+      &.radius { @include radius($f-dropdown-radius); }
 
       // Sizes
       &.tiny    { max-width: 200px; }
