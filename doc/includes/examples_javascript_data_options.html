@@ -1,7 +1,7 @@
 <table class="plugin-options">
   <tbody>
     <tr>
-      <td rowspan="4">Abide</td>
+      <td rowspan="5">Abide</td>
       <td>live_validate</td>
       <td>true</td>
     </tr>
@@ -22,18 +22,34 @@
       <td>1000</td>
     </tr>
     <tr>
-      <td rowspan="2">Accordion</td>
+      <td rowspan="4">Accordion</td>
+      <td>content_class</td>
+      <td>'content'</td>
+    </tr>
+    <tr>
       <td>active_class</td>
       <td>'active'</td>
+    </tr>
+    <tr>
+      <td>multi_expand</td>
+      <td>false</td>
     </tr>
     <tr>
       <td>toggleable</td>
       <td>true</td>
     </tr>
     <tr>
-      <td rowspan="2">Clearing</td>
+      <td rowspan="4">Clearing</td>
       <td>close_selectors</td>
       <td>'.clearing-close'</td>
+    </tr>
+    <tr>
+      <td>open_selectors</td>
+      <td>''</td>
+    </tr>
+    <tr>
+      <td>skip_selector</td>
+      <td>''</td>
     </tr>
     <tr>
       <td>touch_label</td>
@@ -54,12 +70,16 @@
       <td>'interchange'</td>
     </tr>
     <tr>
-      <td rowspan="20">Joyride</td>
+      <td rowspan="22">Joyride</td>
       <td>expose</td>
       <td>false</td>
     </tr>
     <tr>
       <td>modal</td>
+      <td>true</td>
+    </tr>
+    <tr>
+      <td>keyboard</td>
       <td>true</td>
     </tr>
     <tr>
@@ -92,6 +112,10 @@
     </tr>
     <tr>
       <td>next_button</td>
+      <td>true</td>
+    </tr>
+    <tr>
+      <td>prev_button</td>
       <td>true</td>
     </tr>
     <tr>
@@ -135,7 +159,7 @@
       <td>''</td>
     </tr>
     <tr>
-      <td rowspan="4">Magellan</td>
+      <td rowspan="6">Magellan</td>
       <td>active_class</td>
       <td>'active'</td>
     </tr>
@@ -152,12 +176,24 @@
       <td>50</td>
     </tr>
     <tr>
-      <td rowspan="1">OffCanvas</td>
-      <td>close_on_click</td>
+      <td>fixed_top</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>offset_by_height</td>
       <td>true</td>
     </tr>
     <tr>
-      <td rowspan="29">Orbit</td>
+      <td rowspan="2">OffCanvas</td>
+      <td>open_method</td>
+      <td>'move'</td>
+    </tr>
+    <tr>
+      <td>close_on_click</td>
+      <td>false</td>
+    </tr>
+    <tr>
+      <td rowspan="31">Orbit</td>
       <td>animation</td>
       <td>'slide'</td>
     </tr>
@@ -172,6 +208,10 @@
     <tr>
       <td>resume_on_mouseout</td>
       <td>false</td>
+    </tr>
+    <tr>
+      <td>next_on_click</td>
+      <td>true</td>
     </tr>
     <tr>
       <td>animation_speed</td>
@@ -226,6 +266,10 @@
       <td>'orbit-slides-container'</td>
     </tr>
     <tr>
+      <td>preloader_class</td>
+      <td>'preloader'</td>
+    </tr>
+    <tr>
       <td>slide_selector</td>
       <td>'*'</td>
     </tr>
@@ -274,7 +318,7 @@
       <td>true</td>
     </tr>
     <tr>
-      <td rowspan="8">Reveal</td>
+      <td rowspan="9">Reveal</td>
       <td>animation</td>
       <td>'fadeAndPop'</td>
     </tr>
@@ -295,6 +339,10 @@
       <td>'close-reveal-modal'</td>
     </tr>
     <tr>
+      <td>multiple_opened</td>
+      <td>false</td>
+    </tr>
+    <tr>
       <td>bg_class</td>
       <td>'reveal-modal-bg'</td>
     </tr>
@@ -307,7 +355,7 @@
       <td>$('.reveal-modal-bg')</td>
     </tr>
     <tr>
-      <td rowspan="3">Sliders</td>
+      <td rowspan="6">Sliders</td>
       <td>start</td>
       <td>0</td>
     </tr>
@@ -320,6 +368,18 @@
       <td>1</td>
     </tr>
     <tr>
+      <td>initial</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>vertical</td>
+      <td>true</td>
+    </tr>
+    <tr>
+      <td>display_selector</td>
+      <td>'#sliderOutput'</td>
+    </tr>
+    <tr>
       <td rowspan="2">Tab</td>
       <td>active_class</td>
       <td>'active'</td>
@@ -329,7 +389,11 @@
       <td>false</td>
     </tr>
     <tr>
-      <td rowspan="6">Tooltip</td>
+      <td rowspan="7">Tooltip</td>
+      <td>selector</td>
+      <td>'.has-tip'</td>
+    </tr>
+    <tr>
       <td>additional_inheritable_classes</td>
       <td>[]</td>
     </tr>
