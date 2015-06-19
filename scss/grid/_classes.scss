@@ -16,6 +16,7 @@
   $uncollapse: 'uncollapse',
   $offset: 'offset',
   $end: 'end',
+  $full-width: 'full-width',
   $breakpoints: $breakpoint-classes
 ) {
   // Row
@@ -48,6 +49,11 @@
           > .#{$column} { @include grid-col-uncollapse; }
         }
       }
+    }
+
+    // Full-width
+    &.#{$full-width} {
+      max-width: none;
     }
   }
 
