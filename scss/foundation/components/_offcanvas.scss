@@ -96,7 +96,6 @@ $menu-slide: "transform 500ms ease" !default;
   -webkit-transform: translate3d($tx, $ty, $tz);
      -moz-transform: translate3d($tx, $ty, $tz);
       -ms-transform: translate($tx, $ty);
-      -ms-transform: translate3d($tx, $ty, $tz);
        -o-transform: translate3d($tx, $ty, $tz);
           transform: translate3d($tx, $ty, $tz)
 }
