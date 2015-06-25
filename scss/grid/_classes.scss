@@ -16,7 +16,7 @@
   $uncollapse: 'uncollapse',
   $offset: 'offset',
   $end: 'end',
-  $full-width: 'full-width',
+  $expanded: 'expanded',
   $breakpoints: $breakpoint-classes
 ) {
   // Row
@@ -51,8 +51,8 @@
       }
     }
 
-    // Full-width
-    &.#{$full-width} {
+    // Expanded (full-width) row
+    &.#{$expanded} {
       max-width: none;
     }
   }
