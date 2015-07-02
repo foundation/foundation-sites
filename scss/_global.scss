@@ -7,6 +7,7 @@
 ////
 
 /// Global width of your site. Used by the grid to determine row width.
+/// @type Number
 $global-width: rem-calc(1000) !default;
 
 /// Font size attribute applied to `<html>` and `<body>`. We use 100% by default so the value is inherited from the user's browser settings.
