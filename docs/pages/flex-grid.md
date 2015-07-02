@@ -1,10 +1,10 @@
 ---
 title: Flex Grid
-description: New in Foundation 6 is a Flexbox-powered grid, which you can use alongside the traditional float grid.
+description: New in Foundation 6 is a Flexbox-powered grid, which you can use instead of the traditional float grid.
 sass: scss/grid/_flex-grid.scss
 ---
 
-The flex grid works very similarly to the standard float grid, but includes a number of useful features only possible with flexbox.
+The flex grid works very similarly to the standard float grid, but includes a number of useful features only possible with flexbox, like horizontal and vertical alignment, automatic sizing, and easier source ordering.
 
 ---
 
@@ -14,18 +14,33 @@ The flex grid is only supported in Chrome, Firefox, Safari 6+, IE10+, and iOS 7+
 
 ---
 
+## Importing
+
+The flex grid is not enabled by default. To use the default CSS, add the export mixin for the flex grid, and remove the default grid.
+
+```scss
+@import 'foundation';
+
+// @include foundation-grid-classes;
+@include foundation-flex-grid-classes;
+```
+
+The standard grid and flex grid use the same classes, namely `.row` and `.column`, and don't play nice together. If you want to use both in the same page, we recommend using the Sass mixins for each grid, instead of the default CSS.
+
+---
+
 ## Basics
 
-The structure of the flex grid is identical to that of the float grid. Rows use the class `.flex-row`, and columns use the class `.flex-column`. Basic percentage-based sizing can be done using the same grid classes you're used to: `.small-6`, `.medium-12`, and so on.
+The structure of the flex grid is identical to that of the float grid. Rows use the class `.row`, and columns use the class `.column`. Basic percentage-based sizing can also be done using the same grid classes you're used to: `.small-6`, `.medium-12`, and so on.
 
 ```html_example
-<div class="flex-row">
-  <div class="small-6 flex-column">6 columns</div>
-  <div class="small-6 flex-column">6 columns</div>
+<div class="row">
+  <div class="small-6 columns">6 columns</div>
+  <div class="small-6 columns">6 columns</div>
 </div>
-<div class="flex-row">
-  <div class="medium-6 large-4 flex-column">12/6/4 columns</div>
-  <div class="medium-6 large-8 flex-column">12/6/6 columns</div>
+<div class="row">
+  <div class="medium-6 large-4 columns">12/6/4 columns</div>
+  <div class="medium-6 large-8 columns">12/6/6 columns</div>
 </div>
 ```
 
@@ -36,9 +51,9 @@ The structure of the flex grid is identical to that of the float grid. Rows use 
 If no sizing class is added to the column, it will simply expand to fill the leftover space. We call this an *expand behavior*.
 
 ```html_example
-<div class="flex-row">
-  <div class="small-4 flex-column">4 columns</div>
-  <div class="flex-column">Whatever's left!</div>
+<div class="row">
+  <div class="small-4 columns">4 columns</div>
+  <div class="columns">Whatever's left!</div>
 </div>
 ```
 
@@ -47,10 +62,10 @@ If no sizing class is added to the column, it will simply expand to fill the lef
 Multiple expanding columns will share the leftover space equally.
 
 ```html_example
-<div class="flex-row">
-  <div class="small-4 flex-column">4 columns</div>
-  <div class="flex-column">Whatever's left!</div>
-  <div class="flex-column">Whatever's left!</div>
+<div class="row">
+  <div class="small-4 columns">4 columns</div>
+  <div class="columns">Whatever's left!</div>
+  <div class="columns">Whatever's left!</div>
 </div>
 ```
 
@@ -59,9 +74,9 @@ Multiple expanding columns will share the leftover space equally.
 A column can also be made to *shrink*, by adding the `.shrink` class. This means it will only take up the horizontal space its contents need.
 
 ```html_example
-<div class="flex-row">
-  <div class="shrink flex-column">Shrink!</div>
-  <div class="flex-column">Expand!</div>
+<div class="row">
+  <div class="shrink columns">Shrink!</div>
+  <div class="columns">Expand!</div>
 </div>
 ```
 
@@ -74,13 +89,13 @@ Columns in a flex grid will not wrap if not given an explicit size&mdash;this is
 To switch back to the expand behavior from a percentage or shrink behavior, use the classes `.medium-expand` or `.large-expand`. In the below example, the columns stack on small screens, and become even-width on large screens.
 
 ```html_example
-<div class="flex-row">
-  <div class="small-12 large-expand flex-column">One</div>
-  <div class="small-12 large-expand flex-column">Two</div>
-  <div class="small-12 large-expand flex-column">Three</div>
-  <div class="small-12 large-expand flex-column">Four</div>
-  <div class="small-12 large-expand flex-column">Five</div>
-  <div class="small-12 large-expand flex-column">Six</div>
+<div class="row">
+  <div class="small-12 large-expand columns">One</div>
+  <div class="small-12 large-expand columns">Two</div>
+  <div class="small-12 large-expand columns">Three</div>
+  <div class="small-12 large-expand columns">Four</div>
+  <div class="small-12 large-expand columns">Five</div>
+  <div class="small-12 large-expand columns">Six</div>
 </div>
 ```
 
@@ -91,13 +106,13 @@ To switch back to the expand behavior from a percentage or shrink behavior, use 
 We have a few shorthand classes for the above behavior. Use the `.[size]-unstack` classes to stack all columns in the row by default, and then unstack them on a larger screen size, making each one equal-width.
 
 ```html_example
-<div class="flex-row medium-unstack">
-  <div class="flex-column">One</div>
-  <div class="flex-column">Two</div>
-  <div class="flex-column">Three</div>
-  <div class="flex-column">Four</div>
-  <div class="flex-column">Five</div>
-  <div class="flex-column">Six</div>
+<div class="row medium-unstack">
+  <div class="columns">One</div>
+  <div class="columns">Two</div>
+  <div class="columns">Three</div>
+  <div class="columns">Four</div>
+  <div class="columns">Five</div>
+  <div class="columns">Six</div>
 </div>
 ```
 
@@ -120,11 +135,11 @@ Columns within a row will be sorted by their `order` property. Lower numbers are
 We have a set of classes that make it easy to setup source ordering in your HTML. They also come in responsive flavors, allowing you to reorder a grid on different screen sizes.
 
 ```html_example
-<div class="flex-row">
-  <div class="flex-column order-2 medium-order-1">
+<div class="row">
+  <div class="column order-2 medium-order-1">
     This column will come second on small, and first on medium and larger.
   </div>
-  <div class="flex-column order-2 medium-order-1">
+  <div class="column order-2 medium-order-1">
     This column will come first on small, and second on medium and larger.
   </div>
 </div>
@@ -141,48 +156,48 @@ Columns in the flex grid can be aligned across the horizontal or vertical axis.
 Columns can be aligned the same way you would align text in a paragraph. By default, all columns align to the left (or the right in RTL), but this can be overridden with by adding the `.align-[dir]` class to the flex row.
 
 ```html
-<div class="flex-row">
-  <div class="flex-column small-4">Aligned to</div>
-  <div class="flex-column small-4">the left</div>
+<div class="row">
+  <div class="column small-4">Aligned to</div>
+  <div class="column small-4">the left</div>
 </div>
-<div class="flex-row align-right">
-  <div class="flex-column small-4">Aligned to</div>
-  <div class="flex-column small-4">the right</div>
+<div class="row align-right">
+  <div class="column small-4">Aligned to</div>
+  <div class="column small-4">the right</div>
 </div>
-<div class="flex-row align-center">
-  <div class="flex-column small-4">Aligned to</div>
-  <div class="flex-column small-4">the middle</div>
+<div class="row align-center">
+  <div class="column small-4">Aligned to</div>
+  <div class="column small-4">the middle</div>
 </div>
-<div class="flex-row align-justify">
-  <div class="flex-column small-4">Aligned to</div>
-  <div class="flex-column small-4">the edges</div>
+<div class="row align-justify">
+  <div class="column small-4">Aligned to</div>
+  <div class="column small-4">the edges</div>
 </div>
-<div class="flex-row align-spaced">
-  <div class="flex-column small-4">Aligned to</div>
-  <div class="flex-column small-4">...?</div>
+<div class="row align-spaced">
+  <div class="column small-4">Aligned to</div>
+  <div class="column small-4">...?</div>
 </div>
 ```
 
 <div class="text-center">
-  <div class="flex-row">
-    <div class="flex-column small-4">Aligned to</div>
-    <div class="flex-column small-4">the left</div>
+  <div class="row">
+    <div class="column small-4">Aligned to</div>
+    <div class="column small-4">the left</div>
   </div>
-  <div class="flex-row align-right">
-    <div class="flex-column small-4">Aligned to</div>
-    <div class="flex-column small-4">the right</div>
+  <div class="row align-right">
+    <div class="column small-4">Aligned to</div>
+    <div class="column small-4">the right</div>
   </div>
-  <div class="flex-row align-center">
-    <div class="flex-column small-4">Aligned to</div>
-    <div class="flex-column small-4">the middle</div>
+  <div class="row align-center">
+    <div class="column small-4">Aligned to</div>
+    <div class="column small-4">the middle</div>
   </div>
-  <div class="flex-row align-justify">
-    <div class="flex-column small-4">Aligned to</div>
-    <div class="flex-column small-4">the edges</div>
+  <div class="row align-justify">
+    <div class="column small-4">Aligned to</div>
+    <div class="column small-4">the edges</div>
   </div>
-  <div class="flex-row align-spaced">
-    <div class="flex-column small-4">Aligned to</div>
-    <div class="flex-column small-4">the space around</div>
+  <div class="row align-spaced">
+    <div class="column small-4">Aligned to</div>
+    <div class="column small-4">the space around</div>
   </div>
 </div>
 
@@ -203,16 +218,16 @@ Your options for vertical alignment are `top`, `middle`, `bottom`, and `stretch`
 Applying a vertical alignment class to the flex row will affect every column directly inside it.
 
 ```html_example
-<div class="flex-row align-middle">
-  <div class="flex-column">I'm in the middle!</div>
-  <div class="flex-column">I am as well, but I have so much text I take up more space! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis facere ducimus earum minus, inventore, ratione doloremque deserunt neque perspiciatis accusamus explicabo soluta, quod provident distinctio aliquam omnis? Labore, ullam possimus.</div>
+<div class="row align-middle">
+  <div class="columns">I'm in the middle!</div>
+  <div class="columns">I am as well, but I have so much text I take up more space! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis facere ducimus earum minus, inventore, ratione doloremque deserunt neque perspiciatis accusamus explicabo soluta, quod provident distinctio aliquam omnis? Labore, ullam possimus.</div>
 </div>
 ```
 
 ```html_example
-<div class="flex-row align-stretch">
-  <div class="flex-column">These colums have the same height.</div>
-  <div class="flex-column">That's right, equal-height columns are possible with Flexbox too! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, tempora. Impedit eius officia possimus laudantium? Molestiae eaque, sapiente atque doloremque placeat! In sint, fugiat saepe sunt dolore tempore amet cupiditate.</div>
+<div class="row align-stretch">
+  <div class="columns">These colums have the same height.</div>
+  <div class="columns">That's right, equal-height columns are possible with Flexbox too! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, tempora. Impedit eius officia possimus laudantium? Molestiae eaque, sapiente atque doloremque placeat! In sint, fugiat saepe sunt dolore tempore amet cupiditate.</div>
 </div>
 ```
 
@@ -221,9 +236,9 @@ Applying a vertical alignment class to the flex row will affect every column dir
 The same alignment classes can also be applied to individual columns.
 
 ```html_example
-<div class="flex-row">
-  <div class="flex-column align-bottom">Align bottom</div>
-  <div class="flex-column align-middle">Align middle</div>
-  <div class="flex-column align-top">Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?</div>
+<div class="row">
+  <div class="column align-bottom">Align bottom</div>
+  <div class="column align-middle">Align middle</div>
+  <div class="column align-top">Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?</div>
 </div>
 ```

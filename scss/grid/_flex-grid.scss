@@ -73,20 +73,24 @@
 
 @mixin foundation-flex-grid-classes {
   // Row
-  .flex-row {
+  .row {
     @include flex-grid-row;
 
     // Nesting behavior
-    .row &,
-    .flex-row &,
+    & &,
     .column-row & {
       @include flex-grid-row(nest, $base: false);
     }
   }
 
   // Column
-  .flex-column {
+  %flex-column {
     @include flex-grid-column;
+  }
+  
+  .column,
+  .columns {
+    @extend %flex-column;
   }
 
   // Sizing (percentage)
@@ -119,8 +123,8 @@
   // Auto-stacking/unstacking
   @each $size in $breakpoint-classes {
     @if $size != small {
-      .flex-row.#{$size}-unstack {
-        > .flex-column {
+      .row.#{$size}-unstack {
+        .column {
           flex: flex-grid-column(100%);
 
           @include breakpoint($size) {
@@ -142,28 +146,30 @@
     }
   }
 
-  // Alignment
+  // Horizontal alignment using justify-content
   @each $hdir, $prop in (
     'right': flex-end,
     'center': center,
     'justify': space-between,
     'spaced': space-around,
   ) {
-    .flex-row.align-#{$hdir} {
+    .row.align-#{$hdir} {
       justify-content: $prop;
     }
   }
+
+  // Horizontal alignment using align-items and align-self
   @each $vdir, $prop in (
     'top': flex-start,
     'bottom': flex-end,
     'middle': center,
     'stretch': stretch,
   ) {
-    .flex-row.align-#{$vdir} {
+    .row.align-#{$vdir} {
       align-items: $prop;
     }
     
-    .flex-column.align-#{$vdir} {
+    .column.align-#{$vdir} {
       align-self: $prop;
     }
   }

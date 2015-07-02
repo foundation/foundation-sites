@@ -48,7 +48,9 @@
 // - - - - - - - - - - - - - - -
 
 #docs-flex-grid {
-  .flex-row {
+  @include foundation-flex-grid-classes;
+  
+  .row {
     background: #f9f9f9;
     font-size: 11px;
     margin-bottom: 10px;
@@ -57,14 +59,19 @@
     margin-left: 0;
     margin-right: 0;
     margin-bottom: 1.5rem;
+  }
 
-    .flex-column {
-      &:nth-child(odd) {
-        background: #eee;
-      }
-      &:nth-child(even) {
-        background: #ddd;
-      }
+  .column,
+  .columns {
+    float: none;
+    width: auto;
+    margin-right: -1px; // Not sure why this has to be here
+
+    &:nth-child(odd) {
+      background: #eee;
+    }
+    &:nth-child(even) {
+      background: #ddd;
     }
   }
 }
