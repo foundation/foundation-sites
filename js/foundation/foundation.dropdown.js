@@ -293,15 +293,17 @@
           }
 
           //miss right
-          if (t.offset().left + this.outerWidth() > t.offset().left + actualMarginWidth && t.offset().left - actualMarginWidth > this.outerWidth()) {
+          if (p.left + t.offset().left + this.outerWidth() + t.outerWidth() > window.innerWidth) {
             p.missRight = true;
-            p.missLeft = false;
           }
 
           //miss left
-          if (t.offset().left - this.outerWidth() <= 0) {
+          if (p.left + t.offset().left - this.outerWidth() <= 0) {
             p.missLeft = true;
-            p.missRight = false;
+          }
+        
+          if (Foundation.rtl == true) {
+            p.left -= this.outerWidth() - t.outerWidth();
           }
         }
 
@@ -319,17 +321,14 @@
           this.removeClass('drop-top');
         }
 
-        if (p.missRight == true) {
-          p.left = p.left - this.outerWidth() + t.outerWidth();
+        if (p.missRight == true && p.missLeft == false && Foundation.rtl == false) {
+          p.left -= this.outerWidth() - t.outerWidth();
+        } else if (p.missRight == false && p.missLeft == true && Foundation.rtl == true) {
+          p.left += this.outerWidth() - t.outerWidth();
         }
 
         if (t.outerWidth() < this.outerWidth() || self.small() || this.hasClass(s.mega_menu)) {
           self.adjust_pip(this, t, s, p);
-        }
-
-        if (Foundation.rtl) {
-          return {left : p.left - this.outerWidth() + t.outerWidth(),
-            top : p.top - this.outerHeight()};
         }
 
         return {left : p.left, top : p.top - this.outerHeight()};
@@ -339,55 +338,67 @@
         var self = Foundation.libs.dropdown,
             p = self.dirs._base.call(this, t, s);
 
-        if (p.missRight == true) {
-          p.left = p.left - this.outerWidth() + t.outerWidth();
+        if (p.missRight == true && p.missLeft == false && Foundation.rtl == false) {
+          p.left -= this.outerWidth() - t.outerWidth();
+        } else if (p.missRight == false && p.missLeft == true && Foundation.rtl == true) {
+          p.left += this.outerWidth() - t.outerWidth();
         }
 
         if (t.outerWidth() < this.outerWidth() || self.small() || this.hasClass(s.mega_menu)) {
           self.adjust_pip(this, t, s, p);
-        }
-
-        if (self.rtl) {
-          return {left : p.left - this.outerWidth() + t.outerWidth(), top : p.top + t.outerHeight()};
         }
 
         return {left : p.left, top : p.top + t.outerHeight()};
       },
 
       left : function (t, s) {
-        var p = Foundation.libs.dropdown.dirs._base.call(this, t, s);
-
-        this.addClass('drop-left');
+        var self = Foundation.libs.dropdown,
+            p = self.dirs._base.call(this, t, s);
 
         if (p.missLeft == true) {
-          p.left =  p.left + this.outerWidth();
-          p.top = p.top + t.outerHeight();
-          this.removeClass('drop-left');
+          // fallback to bottom
+          return self.dirs.bottom.call(this, t, s);
         }
+        
+        this.addClass('drop-left');
+        p.triggeredLeft = true;
 
-        return {left : p.left - this.outerWidth(), top : p.top};
-      },
-
-      right : function (t, s) {
-        var p = Foundation.libs.dropdown.dirs._base.call(this, t, s);
-
-        this.addClass('drop-right');
-
-        if (p.missRight == true) {
-          p.left = p.left - this.outerWidth();
-          p.top = p.top + t.outerHeight();
-          this.removeClass('drop-right');
+        if (Foundation.rtl == true) {
+          p.left -= t.outerWidth();
         } else {
-          p.triggeredRight = true;
+          p.left -= this.outerWidth();
         }
-
-        var self = Foundation.libs.dropdown;
 
         if (t.outerWidth() < this.outerWidth() || self.small() || this.hasClass(s.mega_menu)) {
           self.adjust_pip(this, t, s, p);
         }
 
-        return {left : p.left + t.outerWidth(), top : p.top};
+        return {left : p.left, top : p.top};
+      },
+
+      right : function (t, s) {
+        var self = Foundation.libs.dropdown,
+            p = self.dirs._base.call(this, t, s);
+
+        if (p.missRight == true) {
+          // fallback to bottom
+          return self.dirs.bottom.call(this, t, s);
+        }
+
+        this.addClass('drop-right');
+        p.triggeredRight = true;
+        
+        if (Foundation.rtl == true) {
+          p.left += this.outerWidth();
+        } else {
+          p.left += t.outerWidth();
+        }
+
+        if (t.outerWidth() < this.outerWidth() || self.small() || this.hasClass(s.mega_menu)) {
+          self.adjust_pip(this, t, s, p);
+        }
+
+        return {left : p.left, top : p.top};
       }
     },
 
@@ -407,23 +418,27 @@
       //default
       var sel_before = '.f-dropdown.open:before',
           sel_after  = '.f-dropdown.open:after',
-          css_before = 'left: ' + pip_offset_base + 'px;',
-          css_after  = 'left: ' + (pip_offset_base - 1) + 'px;';
-
-      if (position.missRight == true) {
+          direction = Foundation.rtl ? 'right' : 'left',
+          css_before = direction + ': ' + pip_offset_base + 'px;',
+          css_after  = direction + ': ' + (pip_offset_base - 1) + 'px;';
+      
+      if ((position.missRight == true && Foundation.rtl == false) ||
+          (position.missLeft == true && Foundation.rtl == true)) {
         pip_offset_base = dropdown.outerWidth() - 23;
-        sel_before = '.f-dropdown.open:before',
-        sel_after  = '.f-dropdown.open:after',
-        css_before = 'left: ' + pip_offset_base + 'px;',
-        css_after  = 'left: ' + (pip_offset_base - 1) + 'px;';
+        css_before = direction + ': ' + pip_offset_base + 'px;',
+        css_after  = direction + ': ' + (pip_offset_base - 1) + 'px;';
       }
 
       //just a case where right is fired, but its not missing right
       if (position.triggeredRight == true) {
-        sel_before = '.f-dropdown.open:before',
-        sel_after  = '.f-dropdown.open:after',
         css_before = 'left:-12px;',
         css_after  = 'left:-14px;';
+      }
+        
+      //just a case where left is fired, but its not missing left
+      if (position.triggeredLeft == true) {
+        css_before = 'right:-12px;',
+        css_after  = 'right:-14px;';
       }
 
       if (sheet.insertRule) {
