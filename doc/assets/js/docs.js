@@ -94,3 +94,21 @@ if ($('[data-forum-posts]').length > 0) {
     success: cb
   });
 }
+
+// Fetch BuildingBlocks
+if ($('[data-building-blocks]').length > 0) {
+  var cb = function(data) {
+    var html = '';
+    $.each(data, function(idx, el) {
+      html += JST['doc/templates/building_block.html'](el);
+    });
+    $('[data-building-blocks]').each(function() {
+      $(this).html(html);
+    });
+  };
+  $.ajax({
+    url:'http://library.notable.dev/library/api/building_blocks/type/' + $("#component-name").attr("name") + ".json",
+    dataType:'json',
+    success: cb
+  });
+}
