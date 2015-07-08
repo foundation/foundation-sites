@@ -10,7 +10,7 @@
    */
   function Drilldown(element, options) {
     this.$element = element;
-    this.options = $.extend(Drilldown.defaults, options || {});
+    this.options = $.extend(this.defaults, options || {});
     this.$container = $();
     this.$currentMenu = this.$element;
 
@@ -23,7 +23,7 @@
     this.$element.trigger('init.zf.drilldown');
   }
 
-  Drilldown.defaults = {
+  Drilldown.prototype.defaults = {
     /**
      * HTML to use for the back button at the top of each sub-menu.
      * @option

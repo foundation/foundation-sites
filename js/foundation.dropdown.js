@@ -10,7 +10,7 @@
    */
   function Dropdown(element, options) {
     this.$element = element;
-    this.options = $.extend(Dropdown.defaults, options || {});
+    this.options = $.extend(this.defaults, options || {});
 
     this.$openMenu = $();
 
