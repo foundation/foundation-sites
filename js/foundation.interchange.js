@@ -82,6 +82,11 @@
       }
     });
   };
+  /**
+   * Checks the Interchange element for the provided media query + content pairings
+   * @param {Object} element - jQuery object that is an Interchange instance
+   * @returns {Array} scenarios - Array of objects that have 'mq' and 'path' keys with corresponding keys
+   */
   Interchange.prototype.mapMqContent = function($element) {
     var self      = this,
         initData  = $element.data(self.name),
@@ -115,16 +120,33 @@
     
     return scenarios;
   };
+  /**
+   * Caches a particular Interchange instance and its media query mappings to allow for multiple instances of Interchange per page
+   * @param {Object} element - jQuery object that is an Interchange instance
+   */
   Interchange.prototype.cacheInterchangeInstance = function($element) {
     this.cache[$element.data('uuid')] = this.mapMqContent($element);
   };
+  /**
+   * Checks whether or not the window fits the provided media query rule
+   * @param {String} mq - A media query rule
+   * @returns {Boolean} using the matchMedia helper function, will return t/f depending whether or not the window is on the current MQ
+   */
   Interchange.prototype.checkMq = function(mq) {
     return window.matchMedia(mq).matches;
   };
+  /**
+   * Changes the src attribute of the Interchange object to a new path, then runs the callback function
+   * @param {Object} element - jQuery object that is an Interchange instance
+   * @param {String} path - A path specified to a desired asset
+   * @param {Object} cb - A callback function to be executed on src change
+   * @event Interchange#srcChange
+   */
   Interchange.prototype.setSrc = function($element, path, cb) {
-    console.log($element.data('uuid'));
-    console.log(path);
-    $element.attr('src', path);
+    $element.attr('src', path).load(function() {
+      cb();
+      this.$element.trigger('srcChange.zf.interchange');
+    })
   };
 
   Foundation.plugin('interchange', Interchange);
