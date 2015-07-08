@@ -26,63 +26,61 @@
   /**
    * Default settings for plugin
    */
-  Dropdown.defaults = {
+  Dropdown.prototype.defaults = {
     toggleOn: 'both' 
   };
 
-  Dropdown.prototype = {
-    _init: function() {
-      this._prepareMenu(this.$element);
-    },
+  Dropdown.prototype._init = function() {
+    this._prepareMenu(this.$element);
+  };
 
-    _prepareMenu: function($elem) {
-      var _this = this;
+  Dropdown.prototype._prepareMenu = function($elem) {
+    var _this = this;
 
-      $elem.children('li').each(function() {
-        var $submenu = $(this).children('[data-submenu]');
+    $elem.children('li').each(function() {
+      var $submenu = $(this).children('[data-submenu]');
 
-        if ($submenu.length) {
-          $submenu.addClass('js-dropdown-nohover');
+      if ($submenu.length) {
+        $submenu.addClass('js-dropdown-nohover');
 
-          $(this).children('a').on('click.zf.dropdown', function(event) {
-            event.stopPropagation();
+        $(this).children('a').on('click.zf.dropdown', function(event) {
+          event.stopPropagation();
 
-            _this.toggleMenu($submenu);
+          _this.toggleMenu($submenu);
 
-            return false;
-          }).on('mouseenter.zf.dropdown', function(event) {
-            event.stopPropagation();
-            event.preventDefault();
-          });
+          return false;
+        }).on('mouseenter.zf.dropdown', function(event) {
+          event.stopPropagation();
+          event.preventDefault();
+        });
 
-          _this._prepareMenu($submenu);
-        }
-      });
-    },
-
-    toggleMenu: function($target) {
-      if ($target.is(this.$openMenu)) {
-        this.$openMenu.removeClass('js-dropdown-active');
+        _this._prepareMenu($submenu);
       }
-      else {
-        this.$openMenu.removeClass('js-dropdown-active');
-        $target.addClass('js-dropdown-active');
-        this.$openMenu = $target;
-      }
-    },
+    });
+  };
 
-    destroy: function() {
-      this.$element.find('li').each(function() {
-        $(this)
-          .children('[data-submenu]')
-            .removeClass('js-dropdown-nohover')
-            .end()
-          .children('a')
-            .off('.zf.dropdown');
-      });
+  Dropdown.prototype.toggleMenu= function($target) {
+    if ($target.is(this.$openMenu)) {
       this.$openMenu.removeClass('js-dropdown-active');
-      this.$element.removeData('zf-plugin');
     }
+    else {
+      this.$openMenu.removeClass('js-dropdown-active');
+      $target.addClass('js-dropdown-active');
+      this.$openMenu = $target;
+    }
+  };
+
+  Dropdown.prototype.destroy = function() {
+    this.$element.find('li').each(function() {
+      $(this)
+        .children('[data-submenu]')
+          .removeClass('js-dropdown-nohover')
+          .end()
+        .children('a')
+          .off('.zf.dropdown');
+    });
+    this.$openMenu.removeClass('js-dropdown-active');
+    this.$element.removeData('zf-plugin');
   };
 
   Foundation.plugin('dropdown', Dropdown);
