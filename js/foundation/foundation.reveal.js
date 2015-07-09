@@ -1,6 +1,8 @@
 ;(function ($, window, document, undefined) {
   'use strict';
 
+  var openModals = [];
+
   Foundation.libs.reveal = {
     name : 'reveal',
 
@@ -188,16 +190,25 @@
           };
         }
 
-        if (typeof ajax_settings === 'undefined' || !ajax_settings.url) {
-          if (open_modal.length > 0) {
-            if (settings.multiple_opened) {
+        function openModal() {
+          if(open_modal.length > 0) {
+            if(settings.multiple_opened) {
               self.to_back(open_modal);
             } else {
               self.hide(open_modal, settings.css.close);
             }
           }
 
-          this.show(modal, settings.css.open);
+          // bl: add the open_modal that isn't already in the background to the openModals array
+          if(settings.multiple_opened) {
+            openModals.push(modal);
+          }
+
+          self.show(modal, settings.css.open);
+        }
+
+        if (typeof ajax_settings === 'undefined' || !ajax_settings.url) {
+          openModal();
         } else {
           var old_success = typeof ajax_settings.success !== 'undefined' ? ajax_settings.success : null;
           $.extend(ajax_settings, {
@@ -218,14 +229,7 @@
               self.S(modal).foundation('section', 'reflow');
               self.S(modal).children().foundation();
 
-              if (open_modal.length > 0) {
-                if (settings.multiple_opened) {
-                  self.to_back(open_modal);
-                } else {
-                  self.hide(open_modal, settings.css.close);
-                }
-              }
-              self.show(modal, settings.css.open);
+              openModal();
             }
           });
 
@@ -264,7 +268,10 @@
 
         if (settings.multiple_opened) {
           self.hide(modal, settings.css.close, settings);
-          self.to_front($($.makeArray(open_modals).reverse()[1]));
+          openModals.pop();
+          if(openModals.length>0) {
+            self.to_front(openModals[openModals.length - 1]);
+          }
         } else {
           self.hide(open_modals, settings.css.close, settings);
         }
