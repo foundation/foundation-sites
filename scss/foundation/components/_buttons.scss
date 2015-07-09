@@ -116,8 +116,8 @@ $button-disabled-cursor: $cursor-default-value !default;
       padding-bottom:0;
       padding-top:0;
     }
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: $button-med;
+    padding-right: $button-med;
     width: 100%;
   }
 }
@@ -226,7 +226,7 @@ $button-disabled-cursor: $cursor-default-value !default;
       &.large  { @include button-size($padding:$button-lrg); }
       &.small  { @include button-size($padding:$button-sml); }
       &.tiny   { @include button-size($padding:$button-tny); }
-      &.expand { @include button-size($padding:null, $full-width:true); }
+      &.expand { @include button-size($full-width:true); }
 
       &.left-align  { text-align: left; text-indent: rem-calc(12); }
       &.right-align { text-align: right; padding-right: rem-calc(12); }
