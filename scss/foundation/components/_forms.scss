@@ -279,8 +279,8 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
   legend {
     background: $legend-bg;
     font-weight: $legend-font-weight;
-    margin-#{$default-float}: rem-calc(-3);
     margin: 0;
+    margin-#{$default-float}: rem-calc(-3);
     padding: $legend-padding;
   }
 }
