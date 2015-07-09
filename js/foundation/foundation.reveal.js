@@ -190,7 +190,7 @@
           };
         }
 
-        function openModal() {
+        var openModal = function() {
           if(open_modal.length > 0) {
             if(settings.multiple_opened) {
               self.to_back(open_modal);
@@ -205,7 +205,7 @@
           }
 
           self.show(modal, settings.css.open);
-        }
+        };
 
         if (typeof ajax_settings === 'undefined' || !ajax_settings.url) {
           openModal();
