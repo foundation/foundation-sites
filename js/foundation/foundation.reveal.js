@@ -267,8 +267,24 @@
         }
 
         if (settings.multiple_opened) {
+          var isCurrent = modal.is(':not(.toback)');
           self.hide(modal, settings.css.close, settings);
-          openModals.pop();
+          if(isCurrent) {
+            // remove the last modal since it is now closed
+            openModals.pop();
+          } else {
+            // if this isn't the current modal, then find it in the array and remove it
+            openModals = $.grep(openModals, function(elt) {
+              var isThis = elt[0]===modal[0];
+              if(isThis) {
+                // since it's not currently in the front, put it in the front now that it is hidden
+                // so that if it's re-opened, it won't be .toback
+                self.to_front(modal);
+              }
+              return !isThis;
+            });
+          }
+          // finally, show the next modal in the stack, if there is one
           if(openModals.length>0) {
             self.to_front(openModals[openModals.length - 1]);
           }
