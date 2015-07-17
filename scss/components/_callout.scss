@@ -12,11 +12,7 @@ $callout-background-fade: 74% !default;
 
 /// Defualt border style for callouts.
 /// @type List
-$callout-border: 1px solid scale-color($callout-background, $lightness: -15%) !default;
-
-/// Default darken value for callout borders.
-/// @type Number
-$callout-border-darken: -11% !default;
+$callout-border: 1px solid rgba(#000, 0.25) !default;
 
 /// Default bottom margin for callouts.
 /// @type Number
@@ -34,15 +30,15 @@ $callout-font-color: $body-font-color !default;
 /// @type Color
 $callout-font-color-alt: $body-background !default;
 
+/// Color links to match the color of the callout.
+/// @type Boolean
+$callout-link-tint: true;
+
 /// Adds basic styles for a callout, including padding and margin.
-/// @param {Number} $padding [$callout-padding] - Padding inside the callout.
-/// @param {Number} $margin [$callout-margin] - Margin around the callout.
-@mixin callout-layout(
-  $padding: $callout-padding,
-  $margin: $callout-margin
-  ) {
+@mixin callout-base() {
   margin: $callout-margin;
-  padding: $padding;
+  padding: $callout-padding;
+  border: $callout-border;
   position: relative;
 
   // Respect the padding, fool.
@@ -50,23 +46,15 @@ $callout-font-color-alt: $body-background !default;
   > :last-child { margin-bottom: 0; }
 }
 
-/// Adds styles for callouts.
-/// @param {Color} $background [$callout-background] - Background color for the callout.
-/// @param {List} $border [$callout-border] - Border around the callout.
-/// @param {Color} $link-color [false] - Color for links inside the callout. Set to `false` to disable this.
-@mixin callout-style(
-  $background: $callout-background, 
-  $border: $callout-border,
-  $link-color: false
-) {
-  $background-lightness: lightness($background);
-  $color: foreground($background, $callout-font-color, $callout-font-color-alt);
+/// Generate quick styles for a callout using a single color as a baseline.
+/// @param {Color} $color [$callout-background] - Color to use.
+@mixin callout-style($color: $callout-background) {
+  $background: scale-color($color, $lightness: $callout-background-fade);
+  $link-color: scale-color($color, $lightness: -10%);
 
-  border: $border;   
   background: $background;
-  color: $color;
 
-  @if $link-color {
+  @if $callout-link-tint {
     a {
       color: $link-color;
 
@@ -77,32 +65,18 @@ $callout-font-color-alt: $body-background !default;
   }
 }
 
-@mixin callout(
-  $padding: $callout-padding,
-  $margin: $callout-margin,
-  $background: $callout-background, 
-  $border: $callout-border
-) {
-  @include callout-layout($padding, $margin);
-  @include callout-style($background, $border);
+@mixin callout($color: $callout-background) {
+  @include callout-base;
+  @include callout-style($color);
 }
 
 @mixin foundation-callout {
   .callout { 
-    @include callout-layout;
-    @include callout-style;
+    @include callout;
 
     @each $name, $color in $foundation-colors {
       &.#{$name} {
-        $background: scale-color($color, $lightness: $callout-background-fade);
-        $border: 1px solid scale-color($color, $lightness: $callout-border-darken);
-        $link-color: scale-color($color, $lightness: -10%);
-
-        @include callout-style(
-          $background: $background,
-          $border: $border,
-          $link-color: $link-color
-        );
+        @include callout-style($color);
       }
     }
   }
