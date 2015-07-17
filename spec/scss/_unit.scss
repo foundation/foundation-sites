@@ -15,18 +15,6 @@
   }
 }
 
-@include describe("Turn to Degrees") {
-  @include it("converts a turn value to the equivalent in degrees") {
-    $halfTurn:   turn-to-deg(0.5turn);
-    $fullTurn:   turn-to-deg(1turn);
-    $doubleTurn: turn-to-deg(2turn);
-
-    @include should(expect($halfTurn), to(be(180deg)));
-    @include should(expect($fullTurn), to(be(360deg)));
-    @include should(expect($doubleTurn), to(be(720deg)));
-  }
-}
-
 @include describe("Convert to Rem") {
   @include it("converts a unit to the equivalent in rems") {
     $actual: rem-calc(32, 16);
