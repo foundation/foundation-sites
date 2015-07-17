@@ -31,63 +31,67 @@
   }
 }
 
-/// Creates a three-line menu icon, affectionately referred to as the "hamburger icon".
-/// @param {Number} $width - Width of the icon, in rem units.
-/// @param {Number|Boolean} $left - Left offset of the icon. Set to `false` to center the icon horizontally.
-/// @param {Number|Boolean} $top - Top offset of the icon. Set to `false` to center the icon vertically.
-/// @param {Number} $thickness - Height of each line in the icon.
-/// @param {Number} $gap - Amount of space between each line.
-/// @param {Color} $color - Color of the lines.
-/// @param {Color} $hover-color - Color of the lines on hover.
+/// Creates a menu icon with a set width, height, number of bars, and colors. The mixin uses the height of the icon and the weight of the bars to determine spacing. <div class="docs-example-burger"></div>
+/// @param {Color} $color - Color to use for the icon.
+/// @param {Color} $color-hover - Color to use when the icon is hovered over.
+/// @param {Number} $width - Width of the icon.
+/// @param {Number} $height - Height of the icon.
+/// @param {Number} $weight - Height of individual bars in the icon.
+/// @param {Number} $bars - Number of bars in the icon.
 @mixin hamburger(
-  $width,
-  $left,
-  $top,
-  $thickness,
-  $gap,
-  $color,
-  $hover-color,
-  $offcanvas
+  $color: black,
+  $color-hover: #666,
+  $width: 30px,
+  $height: 23px,
+  $weight: 4px,
+  $bars: 3
 ) {
-  span::after {
+  // box-shadow CSS output
+  $shadow: ();
+  $hover-shadow: ();
+
+  // Spacing between bars is calculated based on the total height of the icon and the weight of each bar
+  $spacing: floor(($height - ($weight * $bars)) / ($bars - 1));
+
+  // Icon container
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  width: $width;
+  height: $height;
+
+  // Icon bars
+  &::after {
     content: '';
     position: absolute;
     display: block;
-    height: 0;
+    width: 100%;
+    height: $weight;
+    background: $color;
 
-    @if $offcanvas {
-      @if $top {
-        top: $top;
-      }
-      @else {
-        top: 50%;
-        margin-top: -$width/2;
-      }
-      @if $left {
-        left: $left;
-      }
-      @else {
-        left: ($tabbar-menu-icon-width - $width)/2;
-      }
-    }
-    @else {
-      top: 50%;
-      margin-top: -$width/2;
-      #{$opposite-direction}: $topbar-link-padding;
+    @for $i from 2 through $bars {
+      $offset: ($weight + $spacing) * ($i - 1);
+      $shadow: append($shadow, 0 $offset 0 $color, comma);
     }
 
-    box-shadow: 
-      0 0 0 $thickness $color,
-      0 $gap + $thickness 0 $thickness $color,
-      0 (2 * $gap + 2 * $thickness) 0 $thickness $color;
-    width: $width;
+    box-shadow: $shadow;
   }
 
-  span:hover::after {
-    box-shadow: 
-      0 0 0 $thickness $hover-color,
-      0 $gap + $thickness 0 $thickness $hover-color,
-      0 (2 * $gap + 2 * $thickness) 0 $thickness $hover-color;
+  /*
+    Hover state
+  */
+  @if $color-hover {
+    // Generate CSS
+    @for $i from 2 through $bars {
+      $offset: ($weight + $spacing) * ($i - 1);
+      $hover-shadow: append($hover-shadow, 0 $offset 0 $color-hover, comma);
+    }
+
+    &:hover::after {
+      background: $color-hover;
+      box-shadow: $hover-shadow;
+    }
   }
 }
 

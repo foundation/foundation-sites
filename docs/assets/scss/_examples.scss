@@ -86,3 +86,10 @@
   max-width: none;
   margin-bottom: 1rem;
 }
+
+// Menu Icon
+// - - - - - - - - - - - - - - -
+
+.docs-example-burger {
+  @include hamburger;
+}
