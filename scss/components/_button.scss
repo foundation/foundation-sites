@@ -64,6 +64,7 @@ $button-opacity-disabled: 0.5 !default;
   -webkit-appearance: none;
   transition: all 0.25s ease-out;
   vertical-align: middle;
+  border: 1px solid transparent;
 
   padding: $button-padding;
   margin: $button-margin;
@@ -109,7 +110,6 @@ $button-opacity-disabled: 0.5 !default;
 @mixin button-style(
   $background: $button-background,
   $background-hover: $button-background-hover,
-  $border: $button-border,
   $color: $button-font-color,
   $style: $button-fill,
   $btngroup: false
@@ -120,7 +120,7 @@ $button-opacity-disabled: 0.5 !default;
     color: $background;
 
     &:hover, &:focus {
-      $background-hover: smart-scale($background, 25%);
+      $background-hover: scale-color($background, $lightness: -40%);
       border-color: $background-hover;
       background: transparent;
       color: $background-hover;
@@ -134,7 +134,7 @@ $button-opacity-disabled: 0.5 !default;
     }
 
     @if $background-hover == auto {
-      $background-hover: smart-scale($background, 20%);
+      $background-hover: scale-color($background, $lightness: -20%);
     }
 
     @if lightness($background) >= 70% {
@@ -146,13 +146,8 @@ $button-opacity-disabled: 0.5 !default;
     background: $background;
     color: $color;
 
-    @if hasvalue($border) {
-      border: $border;
-    }
-
     &:hover, &:focus {
       background: $background-hover;
-      border-color: $background-hover;
       color: $color;
     }
   }
@@ -227,11 +222,7 @@ $button-opacity-disabled: 0.5 !default;
   @each $name, $color in $foundation-colors {
     // Getting those fancy-pants colors.
     &.#{$name} {
-      $background: scale-color($color, $lightness: 25%);
-      $background-hover: scale-color($color, $lightness: -30%);
-      $border: 1px solid scale-color($color, $lightness: 25%);
-
-      @include button-style($background, $background-hover, $border);
+      @include button-style($color, auto);
     }
   }
   
