@@ -37,7 +37,7 @@ $accordion-content-padding: 1rem !default;
   margin-left: 0;
 
   // Default
-  > li {
+  > .accordion-item {
     .content {
       padding: $accordion-item-padding;
       display: none;
