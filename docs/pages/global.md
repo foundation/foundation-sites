@@ -18,10 +18,49 @@ All interactive elements in Foundation, such as links and buttons, use the same 
 
 Many components can also be colored with four other colors: secondary, alert, success, and warning. Use these colors to give more context to UI elements and actions.
 
+<div class="row small-up-1 medium-up-3 large-up-5">
+  <div class="column">
+    <div class="docs-color-block">
+      <div class="docs-color-block-primary"></div>
+      <p>Primary</p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="docs-color-block">
+      <div class="docs-color-block-secondary"></div>
+      <p>Secondary</p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="docs-color-block">
+      <div class="docs-color-block-success"></div>
+      <p>Success</p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="docs-color-block">
+      <div class="docs-color-block-warning"></div>
+      <p>Warning</p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="docs-color-block">
+      <div class="docs-color-block-alert"></div>
+      <p>Alert</p>
+    </div>
+  </div>
+</div>
+
+---
+
+To color a component, add the name of the color as a class.
+
 ```html_example
 <button class="button">Primary Action</button>
 <button class="secondary button">Secondary Action</button>
 ```
+
+---
 
 ```html_example
 <div class="success callout">

@@ -20,33 +20,33 @@ $global-lineheight: 1.5 !default;
 
 /// Primary color for interactive components like links and buttons.
 /// @type Color
-$primary-color: #2199E8 !default;
+$primary-color: #2199e8 !default;
 
 /// Secondary color, used with components that support the `.secondary` class.
 /// @type Color
-$secondary-color: #e7e7e7 !default;
+$secondary-color: #777 !default;
+
+/// Color to indicate a positive status or action, used with the `.success` class.
+/// @type Color
+$success-color: #49cf7b !default;
+
+/// Color to indicate a caution status or action, used with the `.warning` class.
+/// @type Color
+$warning-color: #ffae00 !default;
 
 /// Color to indicate a negative status or action, used with the `.alert` class.
 /// @type Color
 $alert-color: #f04124 !default;
 
-/// Color to indicate a positive status or action, used with the `.success` class.
-/// @type Color
-$success-color: #43AC6A !default;
-
-/// Color to indicate a caution status or action, used with the `.warning` class.
-/// @type Color
-$warning-color: #f08a24 !default;
-
-/// Color used for light gray ui items within Foundation
+/// Color used for light gray UI items within Foundation.
 /// @type Color
 $light-gray: #f3f3f3 !default;
 
-/// Color used for medium gray ui items within Foundation
+/// Color used for medium gray UI items within Foundation.
 /// @type Color
 $medium-gray: #cacaca !default;
 
-/// Color used for dark gray ui items within Foundation
+/// Color used for dark gray UI items within Foundation.
 /// @type Color
 $dark-gray: #8a8a8a !default;
 
@@ -114,8 +114,8 @@ $opposite-direction: right;
 $foundation-colors: (
   primary: $primary-color,
   secondary: $secondary-color,
-  alert: $alert-color,
   success: $success-color,
+  alert: $alert-color,
   warning: $warning-color,
 );
 
