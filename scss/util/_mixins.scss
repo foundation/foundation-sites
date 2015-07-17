@@ -1,42 +1,54 @@
 /// Creates a CSS triangle, which can be used for dropdown arrows, popup tails, and more. Use this mixin inside a `&::before` or `&::after` selector, to attach the triangle to an existing element.
-///
 /// @param {number} $triangle-size - Width of the triangle.
 /// @param {color} $triangle-color - Color of the triangle.
 /// @param {keyword} $triangle-direction - Direction the triangle points. Can be `top`, `right`, `bottom`, or `left`.
-@mixin css-triangle($triangle-size, $triangle-color, $triangle-direction) {
+@mixin css-triangle(
+  $triangle-size,
+  $triangle-color,
+  $triangle-direction
+) {
   content: '';
   display: block;
   width: 0;
   height: 0;
   border: inset $triangle-size;
-  @if ($triangle-direction == top) {
+
+  @if ($triangle-direction == down) {
     border-color: $triangle-color transparent transparent;
     border-top-style: solid;
   }
-  @if ($triangle-direction == bottom) {
+  @if ($triangle-direction == up) {
     border-color: transparent transparent $triangle-color;
     border-bottom-style: solid;
   }
-  @if ($triangle-direction == left) {
+  @if ($triangle-direction == right) {
     border-color: transparent transparent transparent $triangle-color;
     border-left-style: solid;
   }
-  @if ($triangle-direction == right) {
+  @if ($triangle-direction == left) {
     border-color: transparent $triangle-color transparent transparent;
     border-right-style: solid;
   }
 }
 
 /// Creates a three-line menu icon, affectionately referred to as the "hamburger icon".
-///
-/// @param {number} $width - Width of the icon, in rem units.
-/// @param {number|boolean} $left - Left offset of the icon. Set to `false` to center the icon horizontally.
-/// @param {number|boolean} $top - Top offset of the icon. Set to `false` to center the icon vertically.
-/// @param {number} $thickness - Height of each line in the icon.
-/// @param {number} $gap - Amount of space between each line.
-/// @param {color} $color - Color of the lines.
-/// @param {color} $hover-color - Color of the lines on hover.
-@mixin hamburger($width, $left, $top, $thickness, $gap, $color, $hover-color, $offcanvas) {
+/// @param {Number} $width - Width of the icon, in rem units.
+/// @param {Number|Boolean} $left - Left offset of the icon. Set to `false` to center the icon horizontally.
+/// @param {Number|Boolean} $top - Top offset of the icon. Set to `false` to center the icon vertically.
+/// @param {Number} $thickness - Height of each line in the icon.
+/// @param {Number} $gap - Amount of space between each line.
+/// @param {Color} $color - Color of the lines.
+/// @param {Color} $hover-color - Color of the lines on hover.
+@mixin hamburger(
+  $width,
+  $left,
+  $top,
+  $thickness,
+  $gap,
+  $color,
+  $hover-color,
+  $offcanvas
+) {
   span::after {
     content: '';
     position: absolute;
@@ -71,7 +83,7 @@
     width: $width;
   }
 
-  span:hover:after {
+  span:hover::after {
     box-shadow: 
       0 0 0 $thickness $hover-color,
       0 $gap + $thickness 0 $thickness $hover-color,
@@ -79,7 +91,7 @@
   }
 }
 
-/// Uses the micro clearfix hack popularized by Nicolas Gallagher. Include this mixin on a container if its children are all floated, to give the container a proper height.
+/// Applies the micro clearfix hack popularized by Nicolas Gallagher. Include this mixin on a container if its children are all floated, to give the container a proper height.
 /// @link http://nicolasgallagher.com/micro-clearfix-hack/
 @mixin clearfix {
   &:before, &:after {
@@ -111,7 +123,7 @@
   clip: auto;
 }
 
-/// Vertically centers using the transform property.
+/// Vertically and horizontally centers an element using `transform`.
 @mixin vertical-center {
   position: absolute;
   top: 50%;
@@ -119,7 +131,7 @@
   transform: translate(-50%, -50%);
 }
 
-/// Vertical centering mixin
+/// Vertically centers an element using `transform`.
 @mixin v-align-middle {
   position: absolute;
   top: 50%;

@@ -182,7 +182,7 @@ $button-opacity-disabled: 0.5 !default;
   $offset: get-side($button-padding, right)
 ) {
   &::after {
-    @include css-triangle($size, $color, top);
+    @include css-triangle($size, $color, down);
     position: relative;
     top: ($size / 2); // Magic number?
     display: inline-block;
