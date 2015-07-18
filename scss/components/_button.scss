@@ -53,7 +53,7 @@ $button-font-size: 0.9rem !default;
 
 /// Defualt opacity for a disabled button.
 /// @type List
-$button-opacity-disabled: 0.5 !default;
+$button-opacity-disabled: 0.25 !default;
 
 %button {
   display: inline-block;
@@ -214,10 +214,10 @@ $button-opacity-disabled: 0.5 !default;
 .button {
   @include button;
 
-  &.tiny   { @include button-size(tiny); }
-  &.small  { @include button-size(small); }
-  &.large  { @include button-size(large); }
-  &.expand { @include button-expand; }
+  &.tiny     { @include button-size(tiny); }
+  &.small    { @include button-size(small); }
+  &.large    { @include button-size(large); }
+  &.expanded { @include button-expand; }
 
   @each $name, $color in $foundation-colors {
     // Getting those fancy-pants colors.

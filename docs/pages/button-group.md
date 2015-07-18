@@ -34,10 +34,10 @@ Button groups can be sized with the same classes as standard buttons: `.tiny`, `
 
 ## Even-width Group
 
-Add the `.expand` class to the container to make a full-width button group. Each item will automatically size itself based on how many buttons there are, up to a maximum of six.
+Add the `.expanded` class to the container to make a full-width button group. Each item will automatically size itself based on how many buttons there are, up to a maximum of six.
 
 ```html_example
-<div class="expand button-group">
+<div class="expanded button-group">
   <a class="button">Expanded</a>
   <a class="button">Button</a>
   <a class="button">Group</a>
