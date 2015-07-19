@@ -112,11 +112,11 @@
 
         var norm = self.normalized_value(pct, settings.start, settings.end, settings.step, settings.precision);
 
-        self.set_ui($handle, norm);
+        self.set_ui($handle, norm, true);
       });
     },
 
-    set_ui : function ($handle, value) {
+    set_ui : function ($handle, value, firechange) {
       var settings = $.data($handle[0], 'settings'),
           handle_l = $.data($handle[0], 'handle_l'),
           bar_l = $.data($handle[0], 'bar_l'),
@@ -139,12 +139,17 @@
         $handle.siblings('.range-slider-active-segment').css('width', progress_bar_length + '%');
       }
 
-      $handle_parent.attr(this.attr_name(), value).trigger('change.fndtn.slider');
-
-      $hidden_inputs.val(value);
-      if (settings.trigger_input_change) {
-          $hidden_inputs.trigger('change');
+      $handle_parent.attr(this.attr_name(), value);
+      
+      if (firechange){
+        $handle_parent.trigger('change.fndtn.slider');
+        
+        $hidden_inputs.val(value);
+        if (settings.trigger_input_change) {
+            $hidden_inputs.trigger('change');
+        }  
       }
+      
 
       if (!$handle[0].hasAttribute('aria-valuemin')) {
         $handle.attr({
@@ -230,7 +235,7 @@
       var settings = $.data($ele.children('.range-slider-handle')[0], 'settings'),
           initial = ((typeof settings.initial == 'number' && !isNaN(settings.initial)) ? settings.initial : Math.floor((settings.end - settings.start) * 0.5 / settings.step) * settings.step + settings.start),
           $handle = $ele.children('.range-slider-handle');
-      this.set_ui($handle, initial);
+      this.set_ui($handle, initial, false);
     },
 
     set_value : function (value) {
@@ -252,7 +257,7 @@
         self.initialize_settings(handle);
 
         if (val) {
-          self.set_ui($(handle), parseFloat(val));
+          self.set_ui($(handle), parseFloat(val), false);
         } else {
           self.set_initial_position($(this));
         }
