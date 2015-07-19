@@ -258,7 +258,6 @@
       if (!!$(this.scope).attr(self.attr_name())) {
         $(this.scope).attr(self.attr_name(), value);
       }
-      self.reflow();
     },
 
     reflow : function () {
