@@ -23,7 +23,6 @@
     init : function (scope, method, options) {
       Foundation.inherit(this, 'throttle');
       this.bindings(method, options);
-      this.reflow();
     },
 
     events : function () {
