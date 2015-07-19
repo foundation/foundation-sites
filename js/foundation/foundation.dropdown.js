@@ -258,7 +258,7 @@
     // `this` is the dropdown
     dirs : {
       // Calculate target offset
-      _base : function (t) {
+      _base : function (t, s) {
         var o_p = this.offsetParent(),
             o = o_p.offset(),
             p = t.offset();
@@ -284,7 +284,7 @@
         var actualMarginWidth = (window.innerWidth - actualBodyWidth) / 2;
         var actualBoundary = actualBodyWidth;
 
-        if (!this.hasClass('mega')) {
+        if (!this.hasClass('mega') && !s.ignore_repositioning) {
           //miss top
           if (t.offset().top <= this.outerHeight()) {
             p.missTop = true;
@@ -310,7 +310,7 @@
 
       top : function (t, s) {
         var self = Foundation.libs.dropdown,
-            p = self.dirs._base.call(this, t);
+            p = self.dirs._base.call(this, t, s);
 
         this.addClass('drop-top');
 
@@ -337,7 +337,7 @@
 
       bottom : function (t, s) {
         var self = Foundation.libs.dropdown,
-            p = self.dirs._base.call(this, t);
+            p = self.dirs._base.call(this, t, s);
 
         if (p.missRight == true) {
           p.left = p.left - this.outerWidth() + t.outerWidth();
@@ -355,7 +355,7 @@
       },
 
       left : function (t, s) {
-        var p = Foundation.libs.dropdown.dirs._base.call(this, t);
+        var p = Foundation.libs.dropdown.dirs._base.call(this, t, s);
 
         this.addClass('drop-left');
 
@@ -369,7 +369,7 @@
       },
 
       right : function (t, s) {
-        var p = Foundation.libs.dropdown.dirs._base.call(this, t);
+        var p = Foundation.libs.dropdown.dirs._base.call(this, t, s);
 
         this.addClass('drop-right');
 

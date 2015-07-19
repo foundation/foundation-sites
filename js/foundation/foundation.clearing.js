@@ -453,9 +453,9 @@
       var caption = $image.attr('data-caption');
 
       if (caption) {
-        container
-          .html(caption)
-          .show();
+      	var containerPlain = container.get(0);
+      	containerPlain.innerHTML = caption;
+        container.show();
       } else {
         container
           .text('')

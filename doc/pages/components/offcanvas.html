@@ -92,7 +92,7 @@ Include `.exit-off-canvas` to provide a way back to the main page. This is an ov
 
 ## Advanced
 
-Using our pre-built components, you can create an awesome off-canvas menu right out of the box.
+Using our pre-built components, you can create an awesome off-canvas menu right out of the box. You can specify `right-off-canvas-toggle` or `left-off-canvas-toggle` and/or `left-off-canvas-menu` and `right-off-canvas-menu`.
 
 <div class="row">
   <div class="large-6 columns">
@@ -104,6 +104,31 @@ Using our pre-built components, you can create an awesome off-canvas menu right 
   {{> examples_offcanvas_multiple_rendered}}
   </div>
 </div>
+
+<!-- hide until 5.5.3 is out
+
+### Off-canvas from any direction
+
+In addition to left and right off-canvas menus, you can also have top or bottom off-canvas's as well. Notice, the menu icons are still either left or right, but the off-canvas can be set to `top-off-canvas-menu` and/or `bottom-off-canvas-menu`.
+  
+<div class="row">
+  <div class="large-6 columns">
+  <h4>HTML</h4>
+  {{#markdown}}
+  ```html
+  {{> examples_offcanvas_top-bottom}}
+  ```
+  {{/markdown}}
+  </div>
+  <div class="large-6 columns">
+  <h4>Rendered HTML</h4>
+  {{> examples_offcanvas_top-bottom}}
+  </div>
+</div>
+
+<small>Note: Top and Bottom not currently compatible with multi-level off-canvas. A pull request would really help here.</small>
+
+-->
 
 ### Tab Bar Container
 
