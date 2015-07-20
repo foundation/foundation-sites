@@ -23,7 +23,6 @@
     init : function (scope, method, options) {
       Foundation.inherit(this, 'throttle');
       this.bindings(method, options);
-      this.reflow();
     },
 
     events : function () {
@@ -73,9 +72,9 @@
         if (settings.display_selector != '') {
           $(settings.display_selector).each(function(){
             if ($(this).attr('value')) {
-              $(this).change(function(){
-                self.set_value($(this).val());
-              });
+            	$(this).off('change').on('change', function () {
+            		slider.foundation("slider", "set_value", $(this).val());
+            	});
             }
           });
         }
@@ -129,11 +128,11 @@
 
         var norm = self.normalized_value(pct, settings.start, settings.end, settings.step, settings.precision);
 
-        self.set_ui($handle, norm);
+        self.set_ui($handle, norm, true);
       });
     },
 
-    set_ui : function ($handle, value) {
+    set_ui : function ($handle, value,  firechange) {
       var settings = $.data($handle[0], 'settings'),
           handle_l = $.data($handle[0], 'handle_l'),
           bar_l = $.data($handle[0], 'bar_l'),
@@ -155,12 +154,17 @@
       } else {
         $handle.siblings('.range-slider-active-segment').css('width', progress_bar_length + '%');
       }
-
-      $handle_parent.attr(this.attr_name(), value).trigger('change.fndtn.slider');
-
-      $hidden_inputs.val(value);
-      if (settings.trigger_input_change) {
-          $hidden_inputs.trigger('change.fndtn.slider');
+      
+      $handle_parent.attr(this.attr_name(), value);
+      
+      if (firechange){
+    	  
+	      $handle_parent.trigger('change.fndtn.slider');
+	
+	      $hidden_inputs.val(value);
+	      if (settings.trigger_input_change) {
+	          $hidden_inputs.trigger('change.fndtn.slider');
+	      }
       }
 
       if (!$handle[0].hasAttribute('aria-valuemin')) {
@@ -247,7 +251,7 @@
       var settings = $.data($ele.children('.range-slider-handle')[0], 'settings'),
           initial = ((typeof settings.initial == 'number' && !isNaN(settings.initial)) ? settings.initial : Math.floor((settings.end - settings.start) * 0.5 / settings.step) * settings.step + settings.start),
           $handle = $ele.children('.range-slider-handle');
-      this.set_ui($handle, initial);
+      this.set_ui($handle, initial, false);
     },
 
     set_value : function (value) {
@@ -258,22 +262,28 @@
       if (!!$(this.scope).attr(self.attr_name())) {
         $(this.scope).attr(self.attr_name(), value);
       }
-      self.reflow();
+      self.refresh(this.scope, true);
     },
 
     reflow : function () {
       var self = this;
+      
       self.S('[' + this.attr_name() + ']').each(function () {
-        var handle = $(this).children('.range-slider-handle')[0],
-            val = $(this).attr(self.attr_name());
-        self.initialize_settings(handle);
-
-        if (val) {
-          self.set_ui($(handle), parseFloat(val));
-        } else {
-          self.set_initial_position($(this));
-        }
+    	  self.refresh(this, false);
       });
+    },
+    
+    refresh : function (value, firechange) {
+    	var self = this;
+      var handle = $(value).children('.range-slider-handle')[0],
+ 	       	   val = $(value).attr(self.attr_name());
+        
+  		self.initialize_settings(handle);
+  		if (val) {
+  		  self.set_ui($(handle), parseFloat(val), firechange);
+  		} else {
+  		  self.set_initial_position($(value));
+  		}    	
     }
   };
 
