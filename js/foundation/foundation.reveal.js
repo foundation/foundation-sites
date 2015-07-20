@@ -341,6 +341,7 @@
         var animData = getAnimationData(settings.animation);
         if (!animData.animate) {
           this.locked = false;
+          css.top = $(window).scrollTop() + el.data('css-top') + 'px';
         }
         if (animData.pop) {
           css.top = $(window).scrollTop() - el.data('offset') + 'px';
