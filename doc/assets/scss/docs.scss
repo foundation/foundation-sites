@@ -1100,3 +1100,26 @@ border: 5px solid red;
 .row.collapse.margintop-20px{
   margin-top:20px;
 }
+
+// building blocks styles
+
+.building-blocks-section {
+  padding: 0.75rem 0 3rem 0;
+
+  .building-blocks-header {
+    margin-bottom: 2.5rem;
+  }
+}
+
+.building-block-item {
+  padding: 0.5rem 0;
+  text-align: center;
+  border: 3px solid $secondary-color;
+  min-height: 14rem;
+  overflow: hidden;
+  margin-bottom: 1rem;
+
+  .building-block-item-header {
+    margin-bottom: 2rem;
+  }
+}
