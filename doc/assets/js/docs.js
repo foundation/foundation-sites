@@ -105,6 +105,9 @@ if ($('[data-building-blocks]').length > 0) {
     $('[data-building-blocks]').each(function() {
       $(this).html(html);
     });
+    if ($('.building-block-item').length === 0) {
+      $('.building-blocks-section').hide();
+    };
   };
   $.ajax({
     url:'http://zurb.com/library/api/building_blocks/type/' + $("#component-name").attr("name") + ".json",
