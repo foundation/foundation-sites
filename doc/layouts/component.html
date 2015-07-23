@@ -47,7 +47,7 @@
                 {{> body }}
 
                 {{> building_blocks }}
-                
+
               {{/markdown}}
             </div>
           </div>
@@ -77,6 +77,15 @@
     </script>
     <script>
       $(document).foundation().foundation('joyride', 'start');
+    </script>
+    <script>
+      $( document ).ready(function() {
+        if ($('.building-block-item').length === 0) {
+          $('section.building-blocks-section').hide();
+        } else {
+          $('section.building-blocks-section').show();
+        }
+      });
     </script>
   </body>
 
