@@ -63,6 +63,7 @@ $stat-font-size: 2.5rem !default;
 
   // Use to remove the bullets from an unordered list
   .no-bullet {
+    margin-left: 0;
     list-style: none;
   }
 

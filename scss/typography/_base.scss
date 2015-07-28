@@ -346,6 +346,7 @@ $abbr-underline: 1px dotted #333 !default;
     & & {
       margin-#{$default-float}: $list-nested-side-margin;
       margin-bottom: 0;
+      list-style-type: inherit;
     }
   }
 
