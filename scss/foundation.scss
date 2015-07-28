@@ -46,7 +46,8 @@ $foundation-version: '6.0.0-alpha';
   'components/flex-video',
   'components/switch',
   'components/orbit',
-  'components/tooltip';
+  'components/tooltip',
+  'components/progress-bar';
 
 
 // These styles are applied to <meta> tags, which are read by the Foundation JavaScript
@@ -69,4 +70,5 @@ $foundation-version: '6.0.0-alpha';
   @include foundation-reveal;
   @include foundation-callout;
   @include foundation-flex-video;
+  @include foundation-progress-bar;
 }
