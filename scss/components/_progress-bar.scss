@@ -12,9 +12,10 @@ $progress-background: #eee !default;
 
 /// Bottom margin of a progress bar.
 /// @type Number
-$progress-margin-bottom: rem-calc(16) !default;
+$progress-margin-bottom: $global-margin !default;
 
 /// Default color of a progress bar's meter.
+/// @type Color
 $progress-meter-background: $primary-color !default;
 
 /// Adds styles for a progress bar container.
