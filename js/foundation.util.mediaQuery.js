@@ -24,7 +24,7 @@ var MediaQuery = {
    * @returns {Boolean} `true` if the breakpoint matches, `false` if not.
    */
   is: function(size) {
-    return size === this._current;
+    return size === this.current;
   },
 
   /**

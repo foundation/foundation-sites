@@ -53,7 +53,9 @@ $breakpoint-classes: (small medium large xlarge);
 
 ---
 
-## The Breakpoint Mixin
+## Sass
+
+### The Breakpoint Mixin
 
 Our `breakpoint()` mixin makes it easy to write media queries. You can use the named breakpoints, or a custom pixel, rem, or em value.
 
@@ -116,7 +118,7 @@ Lastly, there are three special media queries that are not width-based: `portrai
 
 ---
 
-## Breakpoint Function
+### Breakpoint Function
 
 The functionality of the `breakpoint()` mixin comes from an internal function, also called `breakpoint()`. If you want to create your own media queries, you can use the `breakpoint()` function to access the logic of the mixin directly.
 
@@ -124,4 +126,45 @@ The functionality of the `breakpoint()` mixin comes from an internal function, a
 @media screen and #{breakpoint(medium)} {
   // Medium and up styles
 }
+```
+
+---
+
+## JavaScript
+
+### Working with Media Queries
+
+The Foundation JavaScript includes a set of helper functions for working with media queries. They're all on the `Foundation.MediaQuery` object.
+
+Get the name of the current breakpoint with `MediaQuery.current`.
+
+```js
+Foundation.MediaQuery.current // => 'small', 'medium', etc.
+```
+
+To see if the screen is currently a certain breakpoint or larger, use `MediaQuery.atLeast`.
+
+```js
+if (Foundation.MediaQuery.atLeast('medium')) {
+  // True if medium or large
+  // False if small
+}
+```
+
+To get the media query of a breakpoint, use `MediaQuery.get`.
+
+```js
+Foundation.MediaQuery.get('medium') // => only screen and (min-width: 640px)
+```
+
+---
+
+### Watching for Breakpoint Changes
+
+The media query helper broadcasts an event on the window every time the breakpoint changes. We use this internally with plugins like Interchange to detect a shift in breakpoint. You can also subscribe to the event yourself.
+
+```js
+$(window).on('changed.zf.mediaquery', function(event, name) {
+  // name is the name of the breakpoint
+});
 ```
