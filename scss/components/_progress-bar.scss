@@ -2,40 +2,35 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
-
-//
-// @variables
-//
-
-// We use this to set the progress bar height
+/// Height of a progress bar.
+/// @type Number
 $progress-height: rem-calc(25) !default;
+
+/// Background color of a progress bar.
+/// @type Color
 $progress-background: #eee !default;
 
-// We use these to control the margin & padding
+/// Bottom margin of a progress bar.
+/// @type Number
 $progress-margin-bottom: rem-calc(16) !default;
 
-// We use these to set the meter colors
+/// Default color of a progress bar's meter.
 $progress-meter-background: $primary-color !default;
 
-// @mixins
-//
-// We use this to set up the progress bar container
+/// Adds styles for a progress bar container.
 @mixin progress-container {
   background-color: $progress-background;
   height: $progress-height;
   margin-bottom: $progress-margin-bottom;
 }
 
-// @mixins
-//
-// $bg - Default: $progress-meter-background || $primary-color
-@mixin progress-meter($background: $progress-meter-background) {
+/// Adds styles for the inner meter of a progress bar.
+@mixin progress-meter {
   display: block;
   width: 0%;
   height: 100%;
   float: left;
-  background-color: $background;
+  background-color: $progress-meter-background;
 }
 
 @mixin foundation-progress-bar {
@@ -51,7 +46,7 @@ $progress-meter-background: $primary-color !default;
       }
     }
 
-    // Meter
+    // Progress bar meter
     .progress-meter {
       @include progress-meter;
 
