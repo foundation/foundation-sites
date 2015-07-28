@@ -14,23 +14,27 @@ var defaultQueries = {
 };
 
 var MediaQuery = {
-  queries: {},
-  mqNames: [],
+  queries: [],
+  _current: '',
 
   current: function() {
-    var mqObj = this.queries;
-    var arr   = this.mqNames;
+    var matched;
 
-    for (var i = arr.length - 1; i >= 0; i--) {
-      var mqName = arr[i];
-      if (mqObj.hasOwnProperty(mqName) && window.matchMedia(mqObj[mqName]).matches) {
-        return mqName;
+    for (var i in this.queries) {
+      var query = this.queries[i];
+
+      if (window.matchMedia(query.value).matches) {
+        matched = query;
       }
     }
+
+    return matched.name;
   },
 
   is: function(mq) {
-    return window.matchMedia(this.queries[mq]).matches;
+    if (typeof this.queries[mq] === undefined) return false;
+
+    return window.matchMedia(this.queries[mq].value).matches;
   },
 
   atLeast: function(mq) {
@@ -44,25 +48,25 @@ var MediaQuery = {
     }
   },
 
-  init: function() {
+  _init: function() {
     var self = this;
     var extractedStyles = $('.foundation-mq').css('font-family');
     var namedQueries;
     
     namedQueries = parseStyleToObject(extractedStyles);
+
+    console.log(namedQueries);
+
+    // TODO: The Sass should convert values to em before spitting them out here
     for (var key in namedQueries) {
-      namedQueries[key] = 'only screen and (min-width: ' + namedQueries[key].replace('rem', 'em') + ')';
+      self.queries.push({
+        name: key,
+        value: 'only screen and (min-width: ' + namedQueries[key].replace('rem', 'em') + ')'
+      })
     }
-    // extend default queries
-    namedQueries = $.extend(defaultQueries, namedQueries);
-    // assign queries object to parsed styles
-    self.queries = namedQueries;
-    // push query names to an array for later comparison
-    // TODO: may have to find a better way of sorting this because
-    // this is very dependent on the order in which breakpoints are listed
-    for (var mqName in namedQueries) {
-      self.mqNames.push(mqName);
-    };
+
+    // Extend default queries
+    // namedQueries = $.extend(defaultQueries, namedQueries);
   }
 }
 

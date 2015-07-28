@@ -211,7 +211,7 @@
 
     if (type === 'undefined') {
       Foundation.reflow(this);
-      Foundation.MediaQuery.init();
+      Foundation.MediaQuery._init();
     } else if (type === 'object') {
       // Set plugin settings
       Foundation.reflow(this);
