@@ -27,7 +27,7 @@ var MediaQuery = {
     var query = this.get(size);
 
     if (query) {
-      return window.matchMedia(this.get(size)).matches;
+      return window.matchMedia(query).matches;
     }
 
     return false;
@@ -59,8 +59,6 @@ var MediaQuery = {
     var namedQueries;
     
     namedQueries = parseStyleToObject(extractedStyles);
-
-    console.log(namedQueries);
 
     // TODO: The Sass should convert values to em before spitting them out here
     for (var key in namedQueries) {
