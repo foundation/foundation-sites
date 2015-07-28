@@ -18,16 +18,6 @@ var MediaQuery = {
   current: '',
 
   /**
-   * Checks if the screen matches a breakpoint *exactly*.
-   * @function
-   * @param {String} size - Name of the breakpoint to check.
-   * @returns {Boolean} `true` if the breakpoint matches, `false` if not.
-   */
-  is: function(size) {
-    return size === this.current;
-  },
-
-  /**
    * Checks if the screen is at least as wide as a breakpoint.
    * @function
    * @param {String} size - Name of the breakpoint to check.
@@ -121,7 +111,7 @@ var MediaQuery = {
 
       if (newSize !== _this.current) {
         // Broadcast the media query change on the window
-        $(window).trigger('changed.zf.mediaquery', [newSize]);
+        $(window).trigger('changed.zf.mediaquery', [newSize, _this.current]);
 
         // Change the current media query
         _this.current = newSize;

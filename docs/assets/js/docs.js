@@ -1,7 +1,7 @@
 $(document).foundation();
 
-$(window).on('changed.zf.mediaquery', function(e, size) {
-  console.log('Media query changed to ' + size);
+$(window).on('changed.zf.mediaquery', function(e, size, prev) {
+  console.log('Media query changed to ' + size + ' from ' + prev);
 });
 
 $(function() {
