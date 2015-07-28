@@ -18,34 +18,31 @@ var MediaQuery = {
   _current: '',
 
   current: function() {
-    var matched;
+    return this._current;
+  },
 
+  is: function(size) {
+    return size === this._current;
+  },
+
+  // TODO: Probably don't need a window.matchMedia call here
+  atLeast: function(size) {
+    var query = this.get(size);
+
+    if (query) {
+      return window.matchMedia(this.get(size)).matches;
+    }
+
+    return false;
+  },
+
+  get: function(size) {
     for (var i in this.queries) {
       var query = this.queries[i];
-
-      if (window.matchMedia(query.value).matches) {
-        matched = query;
-      }
+      if (size === query.name) return query.value;
     }
 
-    return matched.name;
-  },
-
-  is: function(mq) {
-    if (typeof this.queries[mq] === undefined) return false;
-
-    return window.matchMedia(this.queries[mq].value).matches;
-  },
-
-  atLeast: function(mq) {
-    var currentMq = this.current();
-
-    if (this.mqNames.indexOf(mq) < this.mqNames.indexOf(currentMq)) {
-      return true;
-    }
-    else {
-      return false;
-    }
+    return null;
   },
 
   _init: function() {
@@ -65,8 +62,36 @@ var MediaQuery = {
       })
     }
 
+    this._current = this._getCurrentSize();
+
+    this._watcher();
+
     // Extend default queries
     // namedQueries = $.extend(defaultQueries, namedQueries);
+  },
+
+  _getCurrentSize: function() {
+    var matched;
+
+    for (var i in this.queries) {
+      var query = this.queries[i];
+
+      if (window.matchMedia(query.value).matches) {
+        matched = query;
+      }
+    }
+
+    return matched.name;
+  },
+
+  _watcher: function() {
+    var _this = this;
+
+    $(window).on('resize.zf.mediaquery', function() {
+      var newSize = _this._getCurrentSize();
+      if (_this._current != newSize) console.log("Media query changed to " + newSize);
+      _this._current = newSize;
+    });
   }
 }
 
