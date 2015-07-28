@@ -7,7 +7,7 @@
 /// @param {Keyword|List} $behavior [null]
 ///   Modifications to the default grid styles. `nest` indicates the row will be placed inside another row. `collapse` indicates that the columns inside this row will not have padding. `nest collapse` combines both behaviors.
 /// @param {Number} $width [$grid-row-width] - Maximum width of the row.
-/// @param {Number} $width [null] - Number of columns to use for this row. If set to `null` (the default), the global column count will be used.
+/// @param {Number} $columns [null] - Number of columns to use for this row. If set to `null` (the default), the global column count will be used.
 /// @param {Boolean} $base [true] - Set to `false` to prevent basic styles from being output. Useful if you're calling this mixin on the same element twice, as it prevents duplicate CSS output.
 @mixin flex-grid-row(
   $behavior: null,

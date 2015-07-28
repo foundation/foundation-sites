@@ -24,10 +24,6 @@ $button-background: $primary-color !default;
 /// @type Color
 $button-background-hover: scale-color($button-background, $lightness: -15%) !default;
 
-/// Defualt border style for button-border.
-/// @type List
-$button-border: 1px solid $button-background !default;
-
 /// Defualt font color for button.
 /// @type List
 $button-font-color: #fff !default;
@@ -59,7 +55,6 @@ $button-opacity-disabled: 0.25 !default;
 
 @mixin button-base {
   display: inline-block;
-  border: $button-border;
   text-align: center;
   line-height: 1;
   cursor: pointer;
@@ -111,51 +106,51 @@ $button-opacity-disabled: 0.25 !default;
 /// Sets the visual style of a button.
 /// @param {Color} $background [$button-background] - Background color of the button.
 /// @param {Color} $background-hover [$button-background-hover] - Background color of the button on hover. Set to `auto` to have the mixin automatically generate a hover color.
-/// @param {Border} $border [$button-border] - Border around the button.
 /// @param {Color} $color [$button-font-color] - Text color of the button. Set to `auto` to automatically generate a color based on the background color.
-/// @param {Keyword} $style [solid] - Set to `hollow` to create a hollow button. The color defined in `$background` will be used as the primary color of the button.
 @mixin button-style(
   $background: $button-background,
   $background-hover: $button-background-hover,
-  $color: $button-font-color,
-  $style: $button-fill
+  $color: $button-font-color
 ) {
-  @if $style == hollow {
-    border: 1px solid $background;
-    background: transparent;
-    color: $background;
-
-    &:hover, &:focus {
-      $background-hover: scale-color($background, $lightness: -40%);
-      border-color: $background-hover;
-      background: transparent;
-      color: $background-hover;
-    }
+  @if $color == auto {
+    $color: isitlight($background);
   }
-  
-  // Solid fill is the default
-  @else {
-    @if $color == auto {
-      $color: isitlight($background);
-    }
 
-    @if $background-hover == auto {
-      $background-hover: scale-color($background, $lightness: -20%);
-    }
+  @if $background-hover == auto {
+    $background-hover: scale-color($background, $lightness: -20%);
+  }
 
-    @if lightness($background) >= 70% {
-      $color: $button-font-color-alt;
-    } @else {
-      $color: $button-font-color;
-    }
+  @if lightness($background) >= 70% {
+    $color: $button-font-color-alt;
+  } @else {
+    $color: $button-font-color;
+  }
 
-    background: $background;
+  background: $background;
+  color: $color;
+
+  &:hover, &:focus {
+    background: $background-hover;
     color: $color;
+  }
+}
 
-    &:hover, &:focus {
-      background: $background-hover;
-      color: $color;
-    }
+@mixin button-hollow {
+  &,
+  &:hover {
+    background: transparent;
+  }
+}
+
+@mixin button-hollow-style($color: $primary-color) {
+  $color-hover: scale-color($color, $lightness: -50%);
+
+  border: 1px solid $color;
+  color: $color;
+
+  &:hover, &:focus {
+    border-color: $color-hover;
+    color: $color-hover;
   }
 }
 
@@ -206,7 +201,14 @@ $button-opacity-disabled: 0.25 !default;
 ) {
   @include button-base;
   @include button-size($size);
-  @include button-style($background, $background-hover, $color, $style);
+  
+  @if $style == solid {
+    @include button-style($background, $background-hover, $color);
+  }
+  @else if $style == hollow {
+    @include button-hollow;
+    @include button-hollow-style($background);
+  }
 
   @if $expand {
     @include button-expand;
@@ -232,11 +234,12 @@ $button-opacity-disabled: 0.25 !default;
   // Hollow style
   @if $button-fill != hollow {
     &.hollow {
-      @include button-style($style: hollow);
+      @include button-hollow;
+      @include button-hollow-style;
 
       @each $name, $color in $foundation-colors {
         &.#{$name} {
-          @include button-style($color, $style: hollow); 
+          @include button-hollow-style($color); 
         }
       }
     }

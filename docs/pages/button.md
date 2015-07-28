@@ -67,7 +67,7 @@ Add a dropdown arrow to your button with the `.dropdown` class.
 <button class="small dropdown button">Dropdown Button</button>
 <button class="dropdown button">Dropdown Button</button>
 <button class="large dropdown button">Dropdown Button</button>
-<button class="expand dropdown button">Dropdown Button</button>
+<button class="expanded dropdown button">Dropdown Button</button>
 ```
 
 ---
