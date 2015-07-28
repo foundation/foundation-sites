@@ -15,17 +15,24 @@ var defaultQueries = {
 
 var MediaQuery = {
   queries: [],
-  _current: '',
+  current: '',
 
-  current: function() {
-    return this._current;
-  },
-
+  /**
+   * Checks if the screen matches a breakpoint *exactly*.
+   * @function
+   * @param {String} size - Name of the breakpoint to check.
+   * @returns {Boolean} `true` if the breakpoint matches, `false` if not.
+   */
   is: function(size) {
     return size === this._current;
   },
 
-  // TODO: Probably don't need a window.matchMedia call here
+  /**
+   * Checks if the screen is at least as wide as a breakpoint.
+   * @function
+   * @param {String} size - Name of the breakpoint to check.
+   * @returns {Boolean} `true` if the breakpoint matches, `false` if it's smaller.
+   */
   atLeast: function(size) {
     var query = this.get(size);
 
@@ -36,6 +43,12 @@ var MediaQuery = {
     return false;
   },
 
+  /**
+   * Gets the media query of a breakpoint.
+   * @function
+   * @param {String} size - Name of the breakpoint to get.
+   * @returns {String|null} - The media query of the breakpoint, or `null` if the breakpoint doesn't exist.
+   */
   get: function(size) {
     for (var i in this.queries) {
       var query = this.queries[i];
@@ -45,6 +58,11 @@ var MediaQuery = {
     return null;
   },
 
+  /**
+   * Initializes the media query helper, by extracting the breakpoint list from the CSS and activating the breakpoint watcher.
+   * @function
+   * @private
+   */
   _init: function() {
     var self = this;
     var extractedStyles = $('.foundation-mq').css('font-family');
@@ -62,7 +80,7 @@ var MediaQuery = {
       })
     }
 
-    this._current = this._getCurrentSize();
+    this.current = this._getCurrentSize();
 
     this._watcher();
 
@@ -70,6 +88,12 @@ var MediaQuery = {
     // namedQueries = $.extend(defaultQueries, namedQueries);
   },
 
+  /**
+   * Gets the current breakpoint name by testing every breakpoint and returning the last one to match (the biggest one).
+   * @function
+   * @private
+   * @returns {String} Name of the current breakpoint.
+   */
   _getCurrentSize: function() {
     var matched;
 
@@ -84,13 +108,24 @@ var MediaQuery = {
     return matched.name;
   },
 
+  /**
+   * Activates the breakpoint watcher, which fires an event on the window whenever the breakpoint changes.
+   * @function
+   * @private
+   */
   _watcher: function() {
     var _this = this;
 
     $(window).on('resize.zf.mediaquery', function() {
       var newSize = _this._getCurrentSize();
-      if (_this._current != newSize) console.log("Media query changed to " + newSize);
-      _this._current = newSize;
+
+      if (newSize !== _this.current) {
+        // Broadcast the media query change on the window
+        $(window).trigger('changed.zf.mediaquery', [newSize]);
+
+        // Change the current media query
+        _this.current = newSize;
+      }
     });
   }
 }
