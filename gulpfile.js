@@ -75,6 +75,9 @@ gulp.task('sass:foundation', function() {
       includePaths: files.sassPaths,
       errLogToConsole: true
     }))
+    .pipe($.autoprefixer({
+      browsers: ['last 2 versions', 'ie >= 9']
+    }))
     .pipe(gulp.dest('dist/assets/css'));
 });
 gulp.task('sass:docs', function() {
@@ -82,6 +85,9 @@ gulp.task('sass:docs', function() {
     .pipe($.sass({
       includePaths: files.sassPaths,
       errLogToConsole: true
+    }))
+    .pipe($.autoprefixer({
+      browsers: ['last 2 versions', 'ie >= 9']
     }))
     .pipe(gulp.dest('dist/assets/css'));
 });

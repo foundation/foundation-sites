@@ -28,6 +28,7 @@ node_modules
 pkg
 rdoc
 spec/reports
+npm-debug.log
 
 test/
 test/.sass-cache/*
