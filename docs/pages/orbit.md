@@ -16,7 +16,6 @@ sass: scss/components/_orbit.scss
       <figcaption class="orbit-caption">Woah. Nicolas Cage.</figcaption>
     </li>
   </ul>
-
   <nav class="orbit-bullets-container">        
    <button class="is-active"></button>
    <button></button>
@@ -36,7 +35,6 @@ sass: scss/components/_orbit.scss
       <figcaption class="orbit-caption">Woah. Nicolas Cage.</figcaption>
     </li>
   </ul>
-
   <nav class="orbit-bullets-container">        
    <button class="is-active"></button>
    <button></button>
