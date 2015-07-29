@@ -4,7 +4,7 @@
 
 /// Margin for button groups.
 /// @type Number
-$buttongroup-margin: 0 1rem 1rem 0;
+$buttongroup-margin: 1rem;
 
 /// Margin between buttons in a button group.
 /// @type Border
@@ -25,7 +25,7 @@ $buttongroup-expand-max: 6;
 ) {
   @include clearfix;
 
-  margin: $buttongroup-margin;
+  margin-bottom: $buttongroup-margin;
   font-size: $button-font-size;
 
   #{$child-selector} {
@@ -34,7 +34,7 @@ $buttongroup-expand-max: 6;
     font-size: inherit;
 
     &:not(:last-child) {
-      margin-right: $buttongroup-spacing;
+      border-right: $buttongroup-spacing solid $body-background;
     }
   }
 }
@@ -55,8 +55,6 @@ $buttongroup-expand-max: 6;
   $count: auto,
   $selector: $buttongroup-child-selector
 ) {
-  margin-right: 0;
-
   #{$selector} {
     @if $count == auto {
       @for $i from 2 through $buttongroup-expand-max {
@@ -72,15 +70,57 @@ $buttongroup-expand-max: 6;
   }
 }
 
-.button-group {
-  @include button-group;
+/// Stacks the buttons in a button group.
+/// @param {String} $selector [$buttongroup-child-selector] - Selector for the buttons inside the button group.
+@mixin button-group-stack(
+  $selector: $buttongroup-child-selector
+) {
+  #{$selector} {
+    width: 100%;
+    border-right: 0;
+  }
+}
 
-  &.expanded { @include button-group-expand; }
+/// Un-stacks the buttons in a button group.
+/// @param {String} $selector [$buttongroup-child-selector] - Selector for the buttons inside the button group.
+@mixin button-group-unstack(
+  $selector: $buttongroup-child-selector
+) {
+  #{$selector} {
+    width: auto;
 
-  &.tiny  { @include button-group-size(tiny); }
-  &.small { @include button-group-size(small); }
-  &.large { @include button-group-size(large); }
+    &:not(:last-child) {
+      border-right: $buttongroup-spacing solid $body-background;
+    }
+  }
+}
 
-  // TODO: Add coloring classes
-  // TODO: Add stack classes
+@mixin foundation-button-group {
+  .button-group {
+    @include button-group;
+
+    // Sizes
+    &.tiny  { @include button-group-size(tiny); }
+    &.small { @include button-group-size(small); }
+    &.large { @include button-group-size(large); }
+    &.expanded { @include button-group-expand; }
+
+    // Colors
+    @each $name, $color in $foundation-colors {
+      &.#{$name} #{$buttongroup-child-selector} {
+        @include button-style($color);
+      }
+    }
+    
+    &.stacked,
+    &.stacked-for-small {
+      @include button-group-stack;
+    }
+
+    &.stacked-for-small {
+      @include breakpoint(medium) {
+        @include button-group-unstack;
+      }
+    }
+  }
 }

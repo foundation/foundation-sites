@@ -32,6 +32,32 @@ Button groups can be sized with the same classes as standard buttons: `.tiny`, `
 
 ---
 
+## Coloring
+
+Buttons within a button group can be colored individually with the `.secondary`, `.success`, `.warning`, and `.alert` classes.
+
+```html_example
+<div class="button-group">
+  <a class="button">View</a>
+  <a class="secondary button">Edit</a>
+  <a class="secondary button">Share</a>
+  <a class="alert button">Delete</a>
+</div>
+```
+
+The entire group can also be colored using the same classes.
+
+```html_example
+<div class="secondary button-group">
+  <a class="button">Harder</a>
+  <a class="button">Better</a>
+  <a class="button">Faster</a>
+  <a class="button">Stronger</a>
+</div>
+```
+
+---
+
 ## Even-width Group
 
 Add the `.expanded` class to the container to make a full-width button group. Each item will automatically size itself based on how many buttons there are, up to a maximum of six.
@@ -41,6 +67,22 @@ Add the `.expanded` class to the container to make a full-width button group. Ea
   <a class="button">Expanded</a>
   <a class="button">Button</a>
   <a class="button">Group</a>
+</div>
+```
+
+---
+
+## Stacking
+
+A button group can be made vertical with the `.stacked` class. Or, you can use `.stacked-for-small` to only stack a button group on small screens.
+
+```html_example
+<div class="stacked-for-small button-group">
+  <a class="button">How</a>
+  <a class="button">Low</a>
+  <a class="button">Can</a>
+  <a class="button">You</a>
+  <a class="button">Go</a>
 </div>
 ```
 
