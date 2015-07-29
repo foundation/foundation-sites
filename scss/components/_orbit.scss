@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 /// Default color for Orbit's bullets.
 /// @type Color
@@ -63,7 +63,7 @@ $orbit-control-z-index: 10 !default;
 }
 
 %orbit-image {
-  margin:0;
+  margin: 0;
   max-width: 100%;
   width: 100%;
 }
@@ -78,12 +78,12 @@ $orbit-control-z-index: 10 !default;
   margin-bottom: 0;
 }
 
-%orbit-control { 
+%orbit-control {
   @include v-align-middle;
-  position: absolute;
   z-index: $orbit-control-z-index;
   color: $white;
   padding: $orbit-control-padding;
+
   &:hover, &:active, &:focus {
     background-color: $orbit-control-background-hover;
   }
@@ -103,18 +103,18 @@ $orbit-control-z-index: 10 !default;
   margin-bottom: $orbit-bullet-margin-bottom;
   position: relative;
   text-align: center;
- 
- button {
+
+  button {
     width: $orbit-bullet-diameter;
     height: $orbit-bullet-diameter;
     background-color: $orbit-bullet-background;
     border-radius: 50%;
     margin: $orbit-bullet-margin;
-    
+
     &:hover {
       background-color: $orbit-bullet-background-active;
     }
-    
+
     &.is-active {
       background-color: $orbit-bullet-background-active;
     }
@@ -126,7 +126,7 @@ $orbit-control-z-index: 10 !default;
 }
 
 .orbit-slides-container {
-  @extend %orbit-slides-container
+  @extend %orbit-slides-container;
 }
 
 .orbit-figure {
@@ -141,7 +141,7 @@ $orbit-control-z-index: 10 !default;
   @extend %orbit-caption;
 }
 
-.orbit-control { 
+.orbit-control {
   @extend %orbit-control;
 }
 
