@@ -10,17 +10,33 @@
     <link href="assets/css/docs.css" rel="stylesheet" />
     <link href="//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
   </head>
-  <body>
-    <div class="column-row" style="max-width: none;">
-      <h1 class="docs-site-title">Foundation for Sites 6.0.0 <em>Alpha</em></h1>
+  <body class="reveal-for-large off-canvas-overlap" data-toggler=".is-off-canvas-open" id="body">
+
+    <div class="off-canvas">
+      <ul class="vertical menu-bar">
+        <li><a href="#">Foundation</a></li>
+        <li><a href="#">Dot</a></li>
+        <li><a href="#">ZURB</a></li>
+        <li><a href="#">Com</a></li>
+        <li><a href="#">Slash</a></li>
+        <li><a href="#">Sites</a></li>
+      </ul>
     </div>
 
-    <div class="row" style="max-width: none;">
-      <div class="medium-8 large-9 medium-push-4 large-push-3 columns">
-{{> body}}
+    <div class="main-content">
+      <button class="js-off-canvas-exit" data-toggle="body"></button>
+
+      <div class="column-row" style="max-width: none;">
+        <h1 class="docs-site-title">Foundation for Sites 6.0.0 <em>Alpha</em></h1>
       </div>
-      <div class="medium-4 large-3 medium-pull-8 large-pull-9 columns">
-        {{> component-list}}
+
+      <div class="row" style="max-width: none;">
+        <div class="medium-8 large-9 medium-push-4 large-push-3 columns">
+{{> body}}
+        </div>
+        <div class="medium-4 large-3 medium-pull-8 large-pull-9 columns">
+          {{> component-list}}
+        </div>
       </div>
     </div>
 
