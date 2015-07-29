@@ -13,4 +13,8 @@
   td:first-child code {
     font-weight: bold;
   }
+
+  td > p:last-child {
+    margin-bottom: 0;
+  }
 }
