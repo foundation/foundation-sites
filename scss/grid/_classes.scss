@@ -6,7 +6,7 @@
 /// @access private
 @mixin foundation-grid-classes(
   $row: 'row',
-  $column: 'columns',
+  $column: 'column',
   $column-row: 'column-row',
   $push: 'push',
   $pull: 'pull',
@@ -16,6 +16,7 @@
   $uncollapse: 'uncollapse',
   $offset: 'offset',
   $end: 'end',
+  $expanded: 'expanded',
   $breakpoints: $breakpoint-classes
 ) {
   // Row
@@ -48,6 +49,11 @@
           > .#{$column} { @include grid-col-uncollapse; }
         }
       }
+    }
+
+    // Expanded (full-width) row
+    &.#{$expanded} {
+      max-width: none;
     }
   }
 
@@ -117,8 +123,10 @@
     }
   }
 
-  .column {
-    // scss-lint:disable PlaceholderInExtend
-    @extend .columns;
+  @if $column == 'column' {
+    .columns {
+      // scss-lint:disable PlaceholderInExtend
+      @extend .column;
+    }
   }
 }

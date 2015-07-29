@@ -10,7 +10,7 @@
    */
   function AccordionMenu(element, options) {
     this.$element = element;
-    this.options = $.extend(AccordionMenu.defaults, options || {});
+    this.options = $.extend(this.defaults, options || {});
 
     this.$activeMenu = $();
 

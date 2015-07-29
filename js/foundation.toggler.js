@@ -22,73 +22,71 @@
     this.$element.trigger('init.zf.toggler');
   }
 
-  Toggler.prototype = {
-    /**
-     * Initializes the Toggler plugin by parsing the target element and class from `options.toggle`.
-     * @function
-     * @private
-     */
-    _init: function() {
-      // Parse the class
-      var input = this.$element.data('toggler');
+  /**
+   * Initializes the Toggler plugin by parsing the target element and class from `options.toggle`.
+   * @function
+   * @private
+   */
+  Toggler.prototype._init = function() {
+    // Parse the class
+    var input = this.$element.data('toggler');
 
-      // Allow for a . at the beginning of the string
-      if (input[0] === '.') {
-        this.className = input.slice(1);
-      }
-      else {
-        this.className = input;
-      }
-    },
-
-    /**
-     * Initializes events for the toggle trigger.
-     * @function
-     * @private
-     */
-    _events: function() {
-      var _this = this;
-
-      this.$element.on('toggle.zf.trigger', function() {
-        _this.toggle();
-        return false;
-      });
-    },
-
-    /**
-     * Toggles the target class on the target element. An event is fired from the original trigger depending on if the resultant state was "on" or "off".
-     * @function
-     * @fires Toggler#on
-     * @fires Toggler#off
-     */
-    toggle: function() {
-      this.$element.toggleClass(this.className);
-
-      if (this.$element.hasClass(this.className)) {
-        // this.$element.text(this.options.onText);
-        /**
-         * Fires if the target element has the class after a toggle.
-         * @event Toggler#on
-         */
-        this.$element.trigger('on.zf.toggler');
-      }
-      else {
-        // this.$element.text(this.options.offText);
-        /**
-         * Fires if the target element does not have the class after a toggle.
-         * @event Toggler#off
-         */
-        this.$element.trigger('off.zf.toggler');
-      }
-    },
-
-    /**
-     * Destroys the instance of Toggler on the element.
-     * @function
-     */
-    destroy: function() {
-      this.$element.off('.zf.toggler');
+    // Allow for a . at the beginning of the string
+    if (input[0] === '.') {
+      this.className = input.slice(1);
     }
+    else {
+      this.className = input;
+    }
+  };
+
+  /**
+   * Initializes events for the toggle trigger.
+   * @function
+   * @private
+   */
+  Toggler.prototype._events = function() {
+    var _this = this;
+
+    this.$element.on('toggle.zf.trigger', function() {
+      _this.toggle();
+      return false;
+    });
+  };
+
+  /**
+   * Toggles the target class on the target element. An event is fired from the original trigger depending on if the resultant state was "on" or "off".
+   * @function
+   * @fires Toggler#on
+   * @fires Toggler#off
+   */
+  Toggler.prototype.toggle = function() {
+    this.$element.toggleClass(this.className);
+
+    if (this.$element.hasClass(this.className)) {
+      // this.$element.text(this.options.onText);
+      /**
+       * Fires if the target element has the class after a toggle.
+       * @event Toggler#on
+       */
+      this.$element.trigger('on.zf.toggler');
+    }
+    else {
+      // this.$element.text(this.options.offText);
+      /**
+       * Fires if the target element does not have the class after a toggle.
+       * @event Toggler#off
+       */
+      this.$element.trigger('off.zf.toggler');
+    }
+  };
+
+  /**
+   * Destroys the instance of Toggler on the element.
+   * @function
+   */
+  Toggler.prototype.destroy= function() {
+    this.$element.off('.zf.toggler');
   };
 
   Foundation.plugin('toggler', Toggler);

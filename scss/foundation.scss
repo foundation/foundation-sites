@@ -62,7 +62,6 @@ $foundation-version: '6.0.0-alpha';
   @include foundation-global-styles;
   @include foundation-grid-classes;
   @include foundation-utilities;
-  @include foundation-flex-grid-classes;
   @include foundation-forms;
   @include foundation-typography;
   @include foundation-visibility-classes;
@@ -71,4 +70,5 @@ $foundation-version: '6.0.0-alpha';
   @include foundation-reveal;
   @include foundation-callout;
   @include foundation-flex-video;
+  @include foundation-progress-bar;
 }

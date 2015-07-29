@@ -3,9 +3,11 @@
 $closebutton-position: right top !default;
 
 /// Right (or left) offset for a close button.
+/// @type Number
 $closebutton-offset-horizontal: 1rem !default;
 
 /// Top (or bottom) offset for a close button.
+/// @type Number
 $closebutton-offset-vertical: 0.5rem !default;
 
 /// Default font size of the close button.

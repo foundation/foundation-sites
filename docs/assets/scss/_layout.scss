@@ -22,13 +22,18 @@
     font-weight: bold;
     font-size: 60%;
   }
+
+  a {
+    font-size: .85rem;
+    padding: .3rem;
+  }
 }
   .docs-menu-title {
     text-transform: uppercase;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: #666;
     font-weight: bold;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.2rem;
 
     &:not(:first-of-type) {
       margin-top: 1rem;

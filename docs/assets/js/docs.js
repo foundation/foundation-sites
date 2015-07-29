@@ -1,5 +1,9 @@
 $(document).foundation();
 
+$(window).on('changed.zf.mediaquery', function(e, size, prev) {
+  console.log('Media query changed to ' + size + ' from ' + prev);
+});
+
 $(function() {
   if (!ZeroClipboard.isFlashUnusable()) {
     var $buttonTemplate = $('<button class="docs-code-copy">Copy</button>');

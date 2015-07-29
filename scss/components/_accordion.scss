@@ -7,6 +7,7 @@ $accordion-background: $white;
 $accordion-item-color: foreground($accordion-background, $primary-color);
 
 /// Default background color on hover for items in a menu bar.
+/// @type Color
 $accordion-item-background-hover: $light-gray !default;
 
 /// Default padding of an accordion item.
@@ -36,7 +37,7 @@ $accordion-content-padding: 1rem !default;
   margin-left: 0;
 
   // Default
-  > li {
+  > .accordion-item {
     .content {
       padding: $accordion-item-padding;
       display: none;

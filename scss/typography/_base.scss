@@ -171,36 +171,36 @@ $blockquote-padding: rem-calc(9 20 0 19) !default;
 /// @type List
 $blockquote-border: 1px solid #ddd !default;
 
-// Font size for `<cite>` elements.
-// @type Number
+/// Font size for `<cite>` elements.
+/// @type Number
 $cite-font-size: rem-calc(13) !default;
 
-// Text color for `<cite>` elements.
-// @type Color
+/// Text color for `<cite>` elements.
+/// @type Color
 $cite-color: #666 !default;
 
-// Font family for `<kbd>` elements.
-// @type String | List
+/// Font family for `<kbd>` elements.
+/// @type String | List
 $keystroke-font: $font-family-monospace !default;
 
-// Text color for `<kbd>` elements.
-// @type Color
+/// Text color for `<kbd>` elements.
+/// @type Color
 $keystroke-color: #222 !default;
 
-// Background color for `<kbd>` elements.
-// @type Color
+/// Background color for `<kbd>` elements.
+/// @type Color
 $keystroke-background: #e6e6e6 !default;
 
-// Padding for `<kbd>` elements.
-// @type Number | List
+/// Padding for `<kbd>` elements.
+/// @type Number | List
 $keystroke-padding: rem-calc(2 4 0) !default;
 
-// Border radius for `<kbd>` elements.
-// @type Number | List
+/// Border radius for `<kbd>` elements.
+/// @type Number | List
 $keystroke-radius: $global-radius !default;
 
-// Bottom border style for `<abbr>` and `<acronym>` elements.
-// @type List
+/// Bottom border style for `<abbr>` and `<acronym>` elements.
+/// @type List
 $abbr-underline: 1px dotted #333 !default;
 
 @mixin foundation-typography-base {
@@ -346,6 +346,7 @@ $abbr-underline: 1px dotted #333 !default;
     & & {
       margin-#{$default-float}: $list-nested-side-margin;
       margin-bottom: 0;
+      list-style-type: inherit;
     }
   }
 

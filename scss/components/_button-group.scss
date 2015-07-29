@@ -75,11 +75,12 @@ $buttongroup-expand-max: 6;
 .button-group {
   @include button-group;
 
-  &.expand { @include button-group-expand; }
+  &.expanded { @include button-group-expand; }
 
   &.tiny  { @include button-group-size(tiny); }
   &.small { @include button-group-size(small); }
   &.large { @include button-group-size(large); }
 
-  // TODO: coloring classes
+  // TODO: Add coloring classes
+  // TODO: Add stack classes
 }

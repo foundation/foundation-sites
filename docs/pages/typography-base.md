@@ -8,7 +8,7 @@ sass:
 
 ## Paragraphs
 
-This is a paragraph. Paragraphs are preset with a font size, line height and spacing to match the overall vertical rhythm. To show what a paragraph looks like this needs a little more content&mdash;so, did you know that there are storms occurring on Jupiter that are larger than the Earth? Pretty cool. Wrap <code>&lt;strong&gt;</code> around type to **make it bold!** You can also use <code>&lt;em&gt;</code> to *italicize your words*.
+This is a paragraph. Paragraphs are preset with a font size, line height and spacing to match the overall vertical rhythm. To show what a paragraph looks like this needs a little more content&mdash;so, did you know that there are storms occurring on Jupiter that are larger than the Earth? Pretty cool. Wrap `<strong>` around type to **make it bold!** You can also use `<em>` to *italicize your words*.
 
 ```html
 <p>This is a paragraph. Paragraphs are preset with a font size, line height and spacing to match the overall vertical rhythm. To show what a paragraph looks like this needs a little more content so, did you know that there are storms occurring on Jupiter that are larger than the Earth? Pretty cool. Wrap strong around type to <strong>make it bold!</strong>. You can also use em to <em>italicize your words</em>.</p>
@@ -136,7 +136,7 @@ Sometimes other people say smart things, and you may want to mention those thing
 
 ## Abbreviations and Acronyms
 
-Use the `<abbr>` and `<acronym>` tags to annotate a shortened term. These elements must always have a `title` attribute which clarified the full term.
+Use the `<abbr>` and `<acronym>` tags to annotate a shortened term. These elements must always have a `title` attribute which clarifies the full term.
 
 What's the difference between an abbreviation and an acronym? An abbreviation is a shortened spelling of a word, while an acronym is a set of initials that represent a longer word or phrase.
 
@@ -188,7 +188,7 @@ Google Chrome's Accessibility Tools also have a contrast checker. By selecting a
 
 ### Type Size
 
-When possible, use the `rem` and `em` units to size everything. Not just font size, but also padding, margins, and any length value. This ensures that your design scales up and down uniformily if the user changes their browser's text size.
+When possible, use the `rem` and `em` units to size everything. Not just font size, but also padding, margins, and any length value. This ensures that your design scales up and down uniformly if the user changes their browser's text size.
 
 We use the `rem` unit nearly everywhere in Foundation, and we wrote a Sass function to make it a little easier. The `rem-calc()` function can take in one or more pixel values and convert them to a proper `rem` value.
 
@@ -222,7 +222,7 @@ Foundation includes print styles developed by HTML5 Boilerplate to give you some
 
 - Clearing out backgrounds, box shadows and text shadows
 - Appending link URLs after the anchor text
-- Bordering blockquotes and pre elements
+- Adding borders to `<blockquote>` and `<pre>` elements
 - Page cleanup and window minimization
 
 On top of that, Foundation includes a couple of simple classes you can use to control elements printing, or not printing. Simply attach `.show-for-print` to an element to only show when printing, and `.hide-for-print` to hide something when printing.

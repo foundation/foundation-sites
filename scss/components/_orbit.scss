@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 /// Default color for Orbit's bullets.
 /// @type Color
@@ -10,7 +10,7 @@ $orbit-bullet-background: $secondary-color !default;
 
 /// Default active color for Orbit's bullets.
 /// @type Color
-$orbit-bullet-background-active: scale-color($orbit-bullet-background, $lightness: -10%) !default;
+$orbit-bullet-background-active: scale-color($orbit-bullet-background, $lightness: -30%) !default;
 
 /// Default diameter for Orbit's bullets.
 /// @type Number
@@ -20,9 +20,13 @@ $orbit-bullet-diameter: 1.2rem !default;
 /// @type Number
 $orbit-bullet-margin: 0.1rem !default;
 
-/// Default distance from slide slide region for Orbit's bullets.
+/// Default distance from slide region for Orbit's bullets.
 /// @type Number
-$orbit-bullet-top: 0.8rem !default;
+$orbit-bullet-margin-top: 0.8rem !default;
+
+/// Default bottom margin from Orbit's bullets to whatever content may lurk below it.
+/// @type Number
+$orbit-bullet-margin-bottom: 0.8rem !default;
 
 /// Default background color for Orbit's caption.
 /// @type Color
@@ -40,71 +44,77 @@ $orbit-control-background-hover: rgba($black, 0.5) !default;
 /// @type Number
 $orbit-control-padding: 1rem !default;
 
-%orbit {
+/// Default z-index for Orbit's controls.
+/// @type Number
+$orbit-control-z-index: 10 !default;
+
+@mixin orbit {
   position: relative;
 }
 
-%orbit-slides-container {
+@mixin orbit-container {
   list-style: none;
   margin: 0;
   position: relative;
 }
 
-%orbit-figure {
+@mixin orbit-figure {
   margin: 0;
 }
 
-%orbit-image {
-  margin:0;
+@mixin orbit-image {
+  margin: 0;
   max-width: 100%;
   width: 100%;
 }
 
-%orbit-caption {
+@mixin orbit-caption {
   background-color: $orbit-caption-background;
   color: foreground($orbit-caption-background);
   padding: $orbit-caption-padding;
   width: 100%;
   position: absolute;
   bottom: 0;
+  margin-bottom: 0;
 }
 
-%orbit-control { 
+@mixin orbit-control {
   @include v-align-middle;
-  position: absolute;
-  z-index: 10;
+  z-index: $orbit-control-z-index;
   color: $white;
   padding: $orbit-control-padding;
+
   &:hover, &:active, &:focus {
     background-color: $orbit-control-background-hover;
   }
 }
 
-%orbit-previous {
+@mixin orbit-previous {
   left: 0;
 }
 
-%orbit-next {
+@mixin orbit-next {
   left: auto;
   right: 0;
 }
 
-%orbit-bullets-container {
-  top: $orbit-bullet-top;
+@mixin orbit-bullets-container {
+  margin-top: $orbit-bullet-margin-top;
+  margin-bottom: $orbit-bullet-margin-bottom;
   position: relative;
   text-align: center;
- 
- button {
+
+  button {
     width: $orbit-bullet-diameter;
     height: $orbit-bullet-diameter;
-    border-radius: 50%;
     background-color: $orbit-bullet-background;
+    border-radius: 50%;
     margin: $orbit-bullet-margin;
-    
+
     &:hover {
       background-color: $orbit-bullet-background-active;
     }
-    
+
     &.is-active {
       background-color: $orbit-bullet-background-active;
     }
@@ -112,39 +122,39 @@ $orbit-control-padding: 1rem !default;
 }
 
 .orbit {
-  @extend %orbit;
+  @include orbit;
 }
 
-.orbit-slides-container {
-  @extend %orbit-slides-container
+.orbit-container {
+  @include orbit-container;
 }
 
 .orbit-figure {
-  @extend %orbit-figure;
+  @include orbit-figure;
 }
 
 .orbit-image {
-  @extend %orbit-image;
+  @include orbit-image;
 }
 
 .orbit-caption {
-  @extend %orbit-caption;
+  @include orbit-caption;
 }
 
-.orbit-control { 
-  @extend %orbit-control;
+.orbit-control {
+  @include orbit-control;
 }
 
 .orbit-previous {
-  @extend %orbit-previous;
+  @include orbit-previous;
 }
 
 .orbit-next {
-  @extend %orbit-next;
+  @include orbit-next;
 }
 
 .orbit-bullets-container {
-  @extend %orbit-bullets-container;
+  @include orbit-bullets-container;
 }
 
 
