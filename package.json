@@ -13,6 +13,7 @@
     "foundation-settings-parser": "git://github.com/zurb/foundation-settings-parser.git#v1",
     "glob": "^5.0.10",
     "gulp": "^3.8.10",
+    "gulp-autoprefixer": "^2.3.1",
     "gulp-cached": "^1.0.4",
     "gulp-concat": "^2.4.3",
     "gulp-filter": "^2.0.2",
