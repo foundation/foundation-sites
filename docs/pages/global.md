@@ -49,7 +49,38 @@ Many components can also be colored with four other colors: secondary, alert, su
       <p>Alert</p>
     </div>
   </div>
+  <div class="column">
+    <div class="docs-color-block">
+      <div class="docs-color-block-white"></div>
+      <p>White</p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="docs-color-block">
+      <div class="docs-color-block-light-gray"></div>
+      <p>Light Gray</p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="docs-color-block">
+      <div class="docs-color-block-medium-gray"></div>
+      <p>Medium Gray</p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="docs-color-block">
+      <div class="docs-color-block-dark-gray"></div>
+      <p>Dark Gray</p>
+    </div>
+  </div>
+  <div class="column">
+    <div class="docs-color-block">
+      <div class="docs-color-block-black"></div>
+      <p>Black</p>
+    </div>
+  </div>
 </div>
+
 
 ---
 
