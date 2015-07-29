@@ -77,6 +77,10 @@ $body-antialiased: true !default;
 /// @type Keyword
 $text-direction: ltr !default;
 
+/// Global value used for margin on components.
+/// @type Number
+$global-margin: 1rem !default;
+
 /// Global value used for padding on components.
 /// @type Number
 $global-padding: 1rem !default;

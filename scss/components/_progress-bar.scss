@@ -1,0 +1,122 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+@import 'global';
+
+/// Global value used for margin on components.
+/// @type Number
+$progress-bar-height: 1.6rem !default;
+
+/// Default background color of the progress bar container.
+/// @type Color
+$progress-bar-background: $secondary-color !default;
+
+/// Default background color of the progress bar meter.
+/// @type Color
+$progress-bar-meter-background: $primary-color !default;
+
+/// Default color of the progress bar outer border.
+/// @type Color
+$progress-bar-border-color: $white !default;
+
+
+
+.progress-bar {
+  background-color: $progress-bar-background;
+  border: 1px solid $progress-bar-border-color;
+  height: $progress-bar-height;
+  margin-bottom: $global-margin;
+  padding: 0.125rem; 
+}
+
+.progress-bar .progress-bar-meter {
+  background-color: $progress-bar-meter-background;
+  display: block;
+  height: 100%; 
+  position: relative;
+}
+
+.progress-bar.secondary .progress-bar-meter {
+  background: #e7e7e7;
+  display: block;
+  height: 100%; 
+}
+
+.progress-bar.success .progress-bar-meter {
+  background: #43AC6A;
+  display: block;
+  height: 100%; 
+}
+
+.progress-bar.alert .progress-bar-meter {
+  background: #f04124;
+  display: block;
+  height: 100%; 
+}
+
+.progress-bar.radius {
+  border-radius: 3px; 
+}
+
+.progress-bar.radius .progress-bar-meter {
+  border-radius: 2px; 
+}
+
+.progress-bar.round {
+  border-radius: 1000px; 
+}
+
+.progress-bar.round .progress-bar-meter {
+  border-radius: 999px; 
+}
+
+
+.progress-bar-text {
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  margin:0;
+  font-size: 0.875rem;
+  color: #fff;
+  white-space: nowrap;
+}
+
+// We use this to set the progress bar height
+$progress-bar-height: rem-calc(25) !default;
+$progress-bar-color: $vapor !default;
+
+// We use these to control the border styles
+$progress-bar-border-color: scale-color($white, $lightness: 20%) !default;
+$progress-bar-border-size: 1px !default;
+$progress-bar-border-style: solid !default;
+$progress-bar-border-radius: $global-radius !default;
+
+// We use these to control the margin & padding
+$progress-bar-pad: rem-calc(2) !default;
+$progress-bar-margin-bottom: rem-calc(10) !default;
+
+// We use these to set the meter colors
+$progress-meter-color: $primary-color !default;
+$progress-meter-secondary-color: $secondary-color !default;
+$progress-meter-success-color: $success-color !default;
+$progress-meter-alert-color: $alert-color !default;
+
+
+
+
+
+/*
+Progress Bar Accessibility
+
+The `progressbar` role attribute intends to tell that the element is a progressbar element. See more: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_progressbar_role.
+
+The `aria-value*` attributes are accessibility-related attributes determining the minimum value, maximum value and current value of the progress bar.
+
+The `class` attribute is meant to style the element and to target it with JavaScript.
+
+The inner content is not meant to be displayed, but serves as accessibility secondary content for screen readers or so.
+*/
+
+// https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_progressbar_role
