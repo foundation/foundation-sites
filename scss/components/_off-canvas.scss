@@ -1,56 +1,70 @@
-$menu-width: 300px;
+$menu-width: 250px;
 
 body {
+  height: 100%;
   overflow-x: hidden;
 }
 
-//Container
-.container {
- // prevents horizontal scroll from showing during off-canvas nav transitions  
+.off-canvas-overlap {
+  &.is-off-canvas-open .main-content {
+    transform: none;
+  }
 }
 
 // Nav Menu (Default: off-canvas)
 .off-canvas {
-  position: fixed; // used absolute positioning rather than negative margin to keep nav inside the container block
+  position: absolute;
   top: 0;
   left: 0;
-  transform: translate3d(-$menu-width,0,0);
   width: $menu-width;
   min-height: 100%;
-  transition: all .5s ease;
-  background: red;
-  &.is-active {
+  background: white;
+  transform: translateX(-$menu-width);
+  transition: transform 0.5s ease;
+  z-index: 1000;
+}
+
+.main-content {
+  transition: transform 0.5s ease;
+}
+
+.is-off-canvas-open {
+  backface-visibility: hidden; // Triggers hardware acceleration
+
+  .off-canvas {
+    transform: translate3d(0, 0, 0);
+  }
+
+  .main-content {
+    transform: translateX($menu-width);
   }
 }
 
-.container {
-  &.off-canvas-is-active {
-    transform: translate3d($menu-width,0,0);
-  }
-}
+@each $name, $value in $breakpoint-classes {
+  .reveal-for-#{$name} {
+    @include breakpoint($name) {
+      .off-canvas {
+        transform: none;
+        transition: none;
+      }
 
-// Off-Canvas Menu Transitions
-// If browser supports 3d transformations and transitions, use a nice sliding effect
-@include breakpoint(medium) {
-  .csstransforms3d.csstransitions {
-    .off-canvas,
-    [role="banner"],
-    [role="main"],
-    [role="navigation"] {
-      left: 0;
-      transform: translate3d(-100%,0,0); 
-    }
-    .active-nav [role="navigation"] {
-      transform: translate3d(0,0,0);  
-    }
-    
-    //Position banner and main
-    .active-nav {
-      [role="banner"],
-      [role="main"] {
-        margin-left: 0;
-        transform: translate3d($menu-width,0,0);
+      .main-content {
+        padding-left: $menu-width;
+        transform: none;
       }
     }
+  }
+}
+
+.js-off-canvas-exit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+
+  .is-off-canvas-open & {
+    display: block;
   }
 }

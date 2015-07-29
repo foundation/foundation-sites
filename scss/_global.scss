@@ -138,10 +138,8 @@ $cursor-text-value: text !default;
 $info-color: #a0d3e8 !default;
 
 @mixin foundation-global-styles {
-  // Must be height: 100% for off-canvas to work
   html,
   body {
-    height: 100%;
     font-size: $global-font-size;
     box-sizing: border-box;
   }

@@ -62,6 +62,8 @@ $foundation-version: '6.0.0-alpha';
   @include foundation-global-styles;
   @include foundation-grid-classes;
   @include foundation-utilities;
+  @include foundation-button;
+  @include foundation-button-group;
   @include foundation-forms;
   @include foundation-typography;
   @include foundation-visibility-classes;
