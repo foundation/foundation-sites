@@ -6,9 +6,9 @@
 /// @type Number
 $buttongroup-margin: 0 1rem 1rem 0;
 
-/// Border between buttons in a button group.
+/// Margin between buttons in a button group.
 /// @type Border
-$buttongroup-border: 1px solid $body-background;
+$buttongroup-spacing: 1px;
 
 /// Selector for the buttons inside a button group.
 /// @type String
@@ -34,7 +34,7 @@ $buttongroup-expand-max: 6;
     font-size: inherit;
 
     &:not(:last-child) {
-      border-right: $buttongroup-border;
+      margin-right: $buttongroup-spacing;
     }
   }
 }
