@@ -5,47 +5,13 @@
 
 @import 'global';
 
-// We use this to set the progress bar height
-$progress-bar-height: rem-calc(25) !default;
-$progress-bar-color: $vapor !default;
-
-// We use these to control the border styles
-$progress-bar-border-color: scale-color($white, $lightness: 20%) !default;
-$progress-bar-border-size: 1px !default;
-$progress-bar-border-style: solid !default;
-$progress-bar-border-radius: $global-radius !default;
-
-// We use these to control the margin & padding
-$progress-bar-pad: rem-calc(2) !default;
-$progress-bar-margin-bottom: rem-calc(10) !default;
-
-// We use these to set the meter colors
-$progress-meter-color: $primary-color !default;
-$progress-meter-secondary-color: $secondary-color !default;
-$progress-meter-success-color: $success-color !default;
-$progress-meter-alert-color: $alert-color !default;
-
-/*
-Progress Bar Accessibility
-
-The `progressbar` role attribute intends to tell that the element is a progressbar element. See more: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_progressbar_role.
-
-The `aria-value*` attributes are accessibility-related attributes determining the minimum value, maximum value and current value of the progress bar.
-
-The `class` attribute is meant to style the element and to target it with JavaScript.
-
-The inner content is not meant to be displayed, but serves as accessibility secondary content for screen readers or so.
-*/
-
-// https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_progressbar_role
-
 /// Height of a progress bar.
 /// @type Number
-$progress-height: rem-calc(16) !default;
+$progress-height: 1rem !default;
 
 /// Background color of a progress bar.
 /// @type Color
-$progress-background: #eee !default;
+$progress-background: $light-gray !default;
 
 /// Bottom margin of a progress bar.
 /// @type Number
@@ -64,11 +30,24 @@ $progress-meter-background: $primary-color !default;
 
 /// Adds styles for the inner meter of a progress bar.
 @mixin progress-meter {
+  position: relative;
   display: block;
   width: 0%;
   height: 100%;
-  float: left;
   background-color: $progress-meter-background;
+}
+
+/// Adds styles for text in the progress meter.
+@mixin progress-meter-text {
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  margin:0;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: #fff;
+  white-space: nowrap;
 }
 
 @mixin foundation-progress-bar {
@@ -87,23 +66,13 @@ $progress-meter-background: $primary-color !default;
     // Progress bar meter
     .progress-meter {
       @include progress-meter;
-
-      @each $name, $color in $foundation-colors {
-        &.#{$name} {
-          background-color: $color;
-        }
+      }
+      // Progress bar meter text
+      .progress-meter-text {
+        @include progress-meter-text;
       }
     }
   }
 }
 
-.progress-bar-text {
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  margin:0;
-  font-size: 0.875rem;
-  color: #fff;
-  white-space: nowrap;
-}
+
