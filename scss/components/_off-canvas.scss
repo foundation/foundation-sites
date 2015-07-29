@@ -1,7 +1,21 @@
+/// Width of an off-canvas menu.
+/// @type Number
 $offcanvas-width: 250px;
+
+/// Background color of an off-canvas menu.
+/// @type Color
 $offcanvas-background: white;
+
+/// Z-index of an off-canvas menu.
+/// @type Number
 $offcanvas-zindex: 1000;
+
+/// Length of the animation on an off-canvas menu.
+/// @type Number
 $offcanvas-transition-length: 0.5s;
+
+/// Timing function of the animation on an off-canvas menu.
+/// @type Keyword
 $offcanvas-transition-timing: ease;
 
 // Extra properties needed on <body> to make off-canvas work
