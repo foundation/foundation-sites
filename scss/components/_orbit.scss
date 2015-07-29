@@ -48,27 +48,27 @@ $orbit-control-padding: 1rem !default;
 /// @type Number
 $orbit-control-z-index: 10 !default;
 
-%orbit {
+@mixin orbit {
   position: relative;
 }
 
-%orbit-slides-container {
+@mixin orbit-container {
   list-style: none;
   margin: 0;
   position: relative;
 }
 
-%orbit-figure {
+@mixin orbit-figure {
   margin: 0;
 }
 
-%orbit-image {
+@mixin orbit-image {
   margin: 0;
   max-width: 100%;
   width: 100%;
 }
 
-%orbit-caption {
+@mixin orbit-caption {
   background-color: $orbit-caption-background;
   color: foreground($orbit-caption-background);
   padding: $orbit-caption-padding;
@@ -78,7 +78,7 @@ $orbit-control-z-index: 10 !default;
   margin-bottom: 0;
 }
 
-%orbit-control {
+@mixin orbit-control {
   @include v-align-middle;
   z-index: $orbit-control-z-index;
   color: $white;
@@ -89,16 +89,16 @@ $orbit-control-z-index: 10 !default;
   }
 }
 
-%orbit-previous {
+@mixin orbit-previous {
   left: 0;
 }
 
-%orbit-next {
+@mixin orbit-next {
   left: auto;
   right: 0;
 }
 
-%orbit-bullets-container {
+@mixin orbit-bullets-container {
   margin-top: $orbit-bullet-margin-top;
   margin-bottom: $orbit-bullet-margin-bottom;
   position: relative;
@@ -122,39 +122,39 @@ $orbit-control-z-index: 10 !default;
 }
 
 .orbit {
-  @extend %orbit;
+  @include orbit;
 }
 
-.orbit-slides-container {
-  @extend %orbit-slides-container;
+.orbit-container {
+  @include orbit-container;
 }
 
 .orbit-figure {
-  @extend %orbit-figure;
+  @include orbit-figure;
 }
 
 .orbit-image {
-  @extend %orbit-image;
+  @include orbit-image;
 }
 
 .orbit-caption {
-  @extend %orbit-caption;
+  @include orbit-caption;
 }
 
 .orbit-control {
-  @extend %orbit-control;
+  @include orbit-control;
 }
 
 .orbit-previous {
-  @extend %orbit-previous;
+  @include orbit-previous;
 }
 
 .orbit-next {
-  @extend %orbit-next;
+  @include orbit-next;
 }
 
 .orbit-bullets-container {
-  @extend %orbit-bullets-container;
+  @include orbit-bullets-container;
 }
 
 
