@@ -381,7 +381,7 @@
     $(':input', $form).not(':button, :submit, :reset, :hidden, [data-abide-ignore]').val('').removeAttr(invalidAttr);
   };
 
-  Foundation.plugin('abide', Abide);
+  Foundation.plugin(Abide);
 
   // Exports for AMD/Browserify
   if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')

@@ -83,5 +83,5 @@
     this.$element.removeData('zf-plugin');
   };
 
-  Foundation.plugin('dropdown', Dropdown);
+  Foundation.plugin(Dropdown);
 }(Foundation, jQuery);

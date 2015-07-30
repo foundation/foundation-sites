@@ -114,6 +114,6 @@ OffCanvas.prototype.toggle = function() {
   }
 }
 
-Foundation.plugin('off-canvas', OffCanvas);
+Foundation.plugin(OffCanvas);
 
 }(jQuery, Foundation)

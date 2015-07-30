@@ -137,5 +137,5 @@
     }
   };
 
-  Foundation.plugin('drilldown', Drilldown);
+  Foundation.plugin(Drilldown);
 }(Foundation, jQuery);

@@ -89,7 +89,7 @@
     this.$element.off('.zf.toggler');
   };
 
-  Foundation.plugin('toggler', Toggler);
+  Foundation.plugin(Toggler);
 
   // Exports for AMD/Browserify
   if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')

@@ -130,6 +130,6 @@
     $(window).off('.zf.menubar');
   }
 
-  Foundation.plugin('menubar', MenuBar);
+  Foundation.plugin(MenuBar);
 
 }(Foundation, jQuery)

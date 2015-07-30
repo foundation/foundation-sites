@@ -143,7 +143,7 @@
     $eqParent.trigger('postEqualized.zf.Equalizer');
   };
 
-  Foundation.plugin('equalizer', Equalizer);
+  Foundation.plugin(Equalizer);
 
   // Exports for AMD/Browserify
   if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')

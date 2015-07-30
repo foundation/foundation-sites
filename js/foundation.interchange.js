@@ -149,7 +149,7 @@
     })
   };
 
-  Foundation.plugin('interchange', Interchange);
+  Foundation.plugin(Interchange);
 
   // Exports for AMD/Browserify
   if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')

@@ -117,7 +117,7 @@
     })
   };
 
-  Foundation.plugin('magellan', Magellan);
+  Foundation.plugin(Magellan);
 
   // Exports for AMD/Browserify
   if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')
