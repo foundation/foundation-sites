@@ -59,14 +59,14 @@ $switch-transition: all 0.25s ease-out !default;
 // spans outside the label
 // use ~ to select
 
-@mixin switch {
+.switch {
   border: none;
   margin-bottom: $switch-bottom-margin;
   outline: 0;
   padding: 0;
   position: relative;
   user-select: none;
-//size mixin
+//size mixin , width height padding font-size - width height /2
   &.tiny .switch-handle {
       height: 1.5rem;
       width: 3rem; 
@@ -76,7 +76,7 @@ $switch-transition: all 0.25s ease-out !default;
       width: 1rem; 
     }
 
-    .switch-text {
+    %switch-text {
       font-size: rem-calc(10);
     }
   }
@@ -90,7 +90,7 @@ $switch-transition: all 0.25s ease-out !default;
       width: 1.25rem; 
     }
 
-    .switch-text {
+    %switch-text {
       font-size: rem-calc(12);
     }
   }
@@ -104,7 +104,7 @@ $switch-transition: all 0.25s ease-out !default;
       width: 2rem; 
     }
 
-    .switch-text {
+    %switch-text {
       font-size: rem-calc(16);
     }
   }
@@ -184,7 +184,7 @@ $switch-transition: all 0.25s ease-out !default;
 
 
 
-.switch-text {
+%switch-text {
   position: absolute;
   padding: 0;
   top: 50%;
@@ -195,13 +195,13 @@ $switch-transition: all 0.25s ease-out !default;
 }
 
 .switch-active {
-  @extend .switch-text;
+  @extend %switch-text;
   left: -90%;
   display: none;
 }
 
 .switch-disabled {
-  @extend .switch-text;
+  @extend %switch-text;
   right: 15%;
 }
 
