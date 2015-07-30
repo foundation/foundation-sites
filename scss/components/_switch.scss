@@ -1,16 +1,20 @@
-@import 'global';
-
 // Foundation by ZURB
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
+////
+/// @group switch
+////
+
+@import 'global';
+
 /// Default background color for the switch container and paddle.
 /// @type Color
-$switch-paddle-bg: #fff !default;
+$switch-paddle-bg: $white !default;
 
 /// Default background color of a switch.
 /// @type Color
-$switch-bg: $secondary-color !default;
+$switch-bg: $medium-gray !default;
 
 /// Default background active color of a switch.
 /// @type Color
@@ -32,16 +36,21 @@ $switch-height-small: 1.75rem !default;
 /// @type Number
 $switch-height-large: 2.5rem !default;
 
+/// Default border radius of the switch
+/// @type Number
+$switch-radius: 0;
+
+/// Default border radius of the switch label
+/// @type Number
+$switch-handle-radius: 0;
+
 /// Default border around a modal.
 /// @type Number
-$switch-bottom-margin: 1rem !default;
+$switch-bottom-margin: $global-margin !default;
 
 /// Default switch transition.
 /// @type Number
-$switch-paddle-transition: .15s ease-out !default;
-
-
-// https://ghinda.net/css-toggle-switch/
+$switch-transition: all 0.25s ease-out !default;
 
 // remove radius round classes
 // make them variables
@@ -52,181 +61,162 @@ $switch-paddle-transition: .15s ease-out !default;
 
 .switch {
   border: none;
-  margin-bottom: 1.5rem;
+  margin-bottom: $switch-bottom-margin;
   outline: 0;
   padding: 0;
   position: relative;
-  user-select: none; 
+  user-select: none;
+
+  &.tiny .switch-handle {
+      height: 1.5rem;
+      width: 3rem; 
+
+    &:after {
+      height: 1rem;
+      width: 1rem; 
+    }
+
+    .switch-text {
+      font-size: rem-calc(10);
+    }
+  }
+
+  &.small .switch-handle {
+    height: 1.75rem;
+    width: 3.5rem; 
+
+    &:after {
+      height: 1.25rem;
+      width: 1.25rem; 
+    }
+
+    .switch-text {
+      font-size: rem-calc(12);
+    }
+  }
+
+  &.large .switch-handle {
+    height: 2.5rem;
+    width: 5rem; 
+
+    &:after {
+      height: 2rem;
+      width: 2rem; 
+    }
+
+    .switch-text {
+      font-size: rem-calc(16);
+    }
+  }
+
+  &.tiny .switch-input:checked ~ .switch-handle:after {
+    left: 1.75rem; 
+  }
+
+  &.small .switch-input:checked ~ .switch-handle:after {
+    left: 2rem; 
+  }
+
+  &.large .switch-input:checked ~ .switch-handle:after {
+    left: 2.75rem;
+  } 
 }
 
-.switch label {
-  background: #DDDDDD;
-  color: transparent;
-  cursor: pointer;
+.switch-handle {
+  background: $switch-bg;
+  cursor: $cursor-pointer-value;
   display: block;
-  margin-bottom: 1rem;
+  margin-bottom: $global-margin;
   position: relative;
   text-indent: 100%;
   width: 4rem;
-  height: 2rem;
-  transition: left 0.15s ease-out; 
+  height: $switch-height;
+  transition: $switch-transition;
+  border-radius: $switch-radius;
+
+  &:after {
+    background: $switch-paddle-bg;
+    content: "";
+    display: block;
+    position: absolute;
+    height: 1.5rem;
+    left: 0.25rem;
+    top: 0.25rem;
+    width: 1.5rem;
+    transition: $switch-transition;
+    transform: translate3d(0, 0, 0); 
+  }  
 }
 
-.switch input {
-  left: 10px;
+.switch-input {
   opacity: 0;
-  padding: 0;
   position: absolute;
-  top: 9px; 
 }
 
-.switch input + label {
+.switch-input ~ .switch-handle {
   margin-left: 0;
   margin-right: 0; 
 }
 
-.switch label:after {
-  background: #FFFFFF;
-  content: "";
-  display: block;
-  height: 1.5rem;
-  left: .25rem;
-  position: absolute;
-  top: .25rem;
-  width: 1.5rem;
-  transition: left 0.15s ease-out;
-  transform: translate3d(0, 0, 0); 
-}
+.switch-input:checked ~ .switch-handle {
+  background: $switch-active-color; 
 
-.switch input:checked + label {
-  background: #008CBA; 
-}
-
-.switch input:checked + label:after {
-  left: 2.25rem; 
-}
-
-.switch label {
-  height: 2rem;
-  width: 4rem; 
-}
-
-.switch label:after {
-  height: 1.5rem;
-  width: 1.5rem; 
-}
-
-.switch input:checked + label:after {
-  left: 2.25rem; 
-}
-
-.switch label {
-  color: transparent;
-  background: #DDDDDD; 
-}
-
-.switch label:after {
-  background: #FFFFFF; 
-}
-
-.switch input:checked + label {
-  background: #008CBA; 
+  &:after {
+    left: 2.25rem; 
+  }
 }
 
 .switch-text {
   position: absolute;
-  top: 5px;
-  color: #fff;
+  padding: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: $white;
   font-weight: bold;
-  font-size: 0.875em;
+  font-size: rem-calc(14);
 }
 
-.switch-text-on {
+.switch-active {
   @extend .switch-text;
-  left: -55px;
+  left: -90%;
   display: none;
 }
 
-.switch-text-off {
+.switch-disabled {
   @extend .switch-text;
-  left: -25px;
+  right: 15%;
 }
 
-.switch input[type=checkbox]:checked + label .switch-text-on {
+.switch-input:checked ~ .switch-handle .switch-active {
   display: block;
 } 
 
-.switch input[type=checkbox]:checked + label .switch-text-off {
+.switch-input:checked ~ .switch-handle .switch-disabled {
   display: none;
 }
 
-.switch.large label {
-  height: 2.5rem;
-  width: 5rem; 
-}
-
-.switch.large label:after {
-  height: 2rem;
-  width: 2rem; 
-}
-
-.switch.large input:checked + label:after {
-  left: 2.75rem; 
-}
-
-.switch.small label {
-  height: 1.75rem;
-  width: 3.5rem; 
-}
-
-.switch.small label:after {
-  height: 1.25rem;
-  width: 1.25rem; 
-}
-
-.switch.small input:checked + label:after {
-  left: 2rem; 
-}
-
-.switch.tiny label {
-  height: 1.5rem;
-  width: 3rem; 
-}
-
-.switch.tiny label:after {
-  height: 1rem;
-  width: 1rem; 
-}
-
-.switch.tiny input:checked + label:after {
-  left: 1.75rem; 
-}
-
-.switch.radius label {
-  border-radius: 4px; 
-}
-
-.switch.radius label:after {
-  border-radius: 3px; 
-}
-
-.switch.round {
-  border-radius: 1000px; 
-}
-
-.switch.round label {
-  border-radius: 2rem; 
-}
-
-.switch.round label:after {
-  border-radius: 2rem; 
-}
-
-.switch input:focus + label {
+// This styles the outline on focus for accessibility
+.switch-input:focus ~ .switch-handle {
   outline: thin dotted #333;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
   overflow: hidden;
 }
-        
+  
+/*      
+.switch {
+  @include switch;
+  @include switch-handle;
+
+  @each $name, $color in $foundation-colors {
+    @if $name != primary {
+      &.#{$name} {
+        background: $color;
+        color: foreground($color);
+      }
+    }
+  }
+}
+*/
+
 

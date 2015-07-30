@@ -98,7 +98,7 @@ $table-row-font-color: $black !default;
 
 /// Defualt line height for table rows.
 /// @type Number
-$table-line-height: rem-calc(18) !default;
+$table-line-height: $global-lineheight !default;
 
 /// Defualt layout for tables.
 /// @type Keyword

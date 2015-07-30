@@ -11,7 +11,7 @@ $progress-height: 1rem !default;
 
 /// Background color of a progress bar.
 /// @type Color
-$progress-background: $light-gray !default;
+$progress-background: $medium-gray !default;
 
 /// Bottom margin of a progress bar.
 /// @type Number
@@ -66,7 +66,7 @@ $progress-meter-background: $primary-color !default;
     // Progress bar meter
     .progress-meter {
       @include progress-meter;
-      }
+      
       // Progress bar meter text
       .progress-meter-text {
         @include progress-meter-text;
