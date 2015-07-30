@@ -8,25 +8,13 @@
 /// @group table
 ////
 
-/// Defualt background color for table.
-/// @type Color
-$table-bg: $white !default;
-
 /// Defualt background color for even rows.
 /// @type Color
 $table-even-row-bg: $light-gray !default;
 
-/// Defualt fill for table border.
+/// Defualt style for table border.
 /// @type Keyword
-$table-border-style: solid !default;
-
-/// Defualt width for table border.
-/// @type Number
-$table-border-size: 1px !default;
-
-/// Defualt color for table border.
-/// @type Color
-$table-border-color: $medium-gray !default;
+$table-border: 1px solid $medium-gray !default;
 
 /// Defualt color for header background.
 /// @type Color
@@ -40,9 +28,6 @@ $table-head-font-size: rem-calc(14) !default;
 /// @type Color
 $table-head-font-color: $black !default;
 
-/// Defualt font weight for header.
-/// @type Number
-$table-head-font-weight: $global-weight-bold !default;
 
 /// Defualt padding for header.
 /// @type Number
@@ -60,9 +45,6 @@ $table-foot-font-size: $table-head-font-size !default;
 /// @type Color
 $table-foot-font-color: $table-head-font-color !default;
 
-/// Defualt font weight for header.
-/// @type Number
-$table-foot-font-weight: $table-head-font-weight !default;
 
 /// Defualt padding for footer.
 /// @type Number
@@ -80,9 +62,6 @@ $table-caption-font-color: $table-head-font-color !default;
 /// @type Number
 $table-caption-font-size: rem-calc(16) !default;
 
-/// Defualt font weight for caption.
-/// @type Keyword
-$table-caption-font-weight: bold !default;
 
 /// Defualt padding for table rows.
 /// @type Number
@@ -114,9 +93,9 @@ $table-margin-bottom: rem-calc(20) !default;
 
 /// Adds styles for a table. Always apply this to a `<table>` element.
 @mixin table {
-  background: $table-bg;
+  background: $body-background;
   margin-bottom: $table-margin-bottom;
-  border: $table-border-style $table-border-size $table-border-color;
+  border: $table-border;
   table-layout: $table-layout;
 
   // Caption
@@ -125,7 +104,7 @@ $table-margin-bottom: rem-calc(20) !default;
     color: $table-caption-font-color;
     font: {
       size: $table-caption-font-size;
-      weight: $table-caption-font-weight;
+      weight: $global-weight-bold;
     }
   }
 
@@ -138,7 +117,7 @@ $table-margin-bottom: rem-calc(20) !default;
       td {
         padding: $table-head-padding;
         font-size: $table-head-font-size;
-        font-weight: $table-head-font-weight;
+        font-weight: $global-weight-bold;
         color: $table-head-font-color;
       }
     }
@@ -153,7 +132,7 @@ $table-margin-bottom: rem-calc(20) !default;
       td {
         padding: $table-foot-padding;
         font-size: $table-foot-font-size;
-        font-weight: $table-foot-font-weight;
+        font-weight: $global-weight-bold;
         color: $table-foot-font-color;
       }
     }
