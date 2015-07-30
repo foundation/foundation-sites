@@ -59,14 +59,14 @@ $switch-transition: all 0.25s ease-out !default;
 // spans outside the label
 // use ~ to select
 
-.switch {
+@mixin switch {
   border: none;
   margin-bottom: $switch-bottom-margin;
   outline: 0;
   padding: 0;
   position: relative;
   user-select: none;
-
+//size mixin
   &.tiny .switch-handle {
       height: 1.5rem;
       width: 3rem; 
@@ -151,20 +151,38 @@ $switch-transition: all 0.25s ease-out !default;
 .switch-input {
   opacity: 0;
   position: absolute;
-}
 
-.switch-input ~ .switch-handle {
-  margin-left: 0;
-  margin-right: 0; 
-}
-
-.switch-input:checked ~ .switch-handle {
-  background: $switch-active-color; 
-
-  &:after {
-    left: 2.25rem; 
+  & ~ .switch-handle {
+    margin-left: 0;
+    margin-right: 0; 
   }
+
+  &:checked ~ .switch-handle {
+    background: $switch-active-color; 
+
+    &:after {
+      left: 2.25rem; 
+    }
+  }
+  &:checked ~ .switch-handle .switch-active {
+    display: block;
+  }
+
+  &:checked ~ .switch-handle .switch-disabled {
+    display: none;
+  }
+
+// This styles the outline on focus for accessibility
+  &:focus ~ .switch-handle {
+    outline: thin dotted #333;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+    overflow: hidden;
+  } 
 }
+
+
+
 
 .switch-text {
   position: absolute;
@@ -187,36 +205,10 @@ $switch-transition: all 0.25s ease-out !default;
   right: 15%;
 }
 
-.switch-input:checked ~ .switch-handle .switch-active {
-  display: block;
-} 
 
-.switch-input:checked ~ .switch-handle .switch-disabled {
-  display: none;
-}
 
-// This styles the outline on focus for accessibility
-.switch-input:focus ~ .switch-handle {
-  outline: thin dotted #333;
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
-  overflow: hidden;
-}
-  
-/*      
-.switch {
-  @include switch;
-  @include switch-handle;
 
-  @each $name, $color in $foundation-colors {
-    @if $name != primary {
-      &.#{$name} {
-        background: $color;
-        color: foreground($color);
-      }
-    }
-  }
-}
-*/
+
+
 
 
