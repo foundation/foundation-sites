@@ -185,6 +185,8 @@ $button-opacity-disabled: 0.25 !default;
 
   &:empty::after {
     margin-left: 0;
+    float: none;
+    top: 0.2em;
   }
 }
 
