@@ -111,5 +111,5 @@
     this.$element.trigger('destroyed.zf.accordionMenu');
   }
 
-  Foundation.plugin('accordion-menu', AccordionMenu);
+  Foundation.plugin(AccordionMenu);
 }(jQuery)

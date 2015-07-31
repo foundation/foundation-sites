@@ -43,7 +43,7 @@
   Reveal.prototype._init = function() {
   };
 
-  Foundation.plugin('reveal', Reveal);
+  Foundation.plugin(Reveal);
 
   // Exports for AMD/Browserify
   if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')
