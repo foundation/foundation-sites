@@ -8,161 +8,69 @@
 /// @group table
 ////
 
-/// Defualt background color for even rows.
+/// Defualt background color for striped rows.
 /// @type Color
-$table-even-row-bg: $light-gray !default;
-
-/// Defualt style for table border.
-/// @type Keyword
-$table-border: 1px solid $medium-gray !default;
+$table-striped-bg: $light-gray !default;
 
 /// Defualt color for header background.
 /// @type Color
-$table-head-bg: $light-gray !default;
-
-/// Defualt font size for header.
-/// @type Number
-$table-head-font-size: rem-calc(14) !default;
-
-/// Defualt font color for header.
-/// @type Color
-$table-head-font-color: $black !default;
-
-
-/// Defualt padding for header.
-/// @type Number
-$table-head-padding: rem-calc(8 10 10) !default;
+$table-head-bg: $table-striped-bg !default;
 
 /// Defualt color for footer background.
 /// @type Color
-$table-foot-bg: $table-head-bg !default;
+$table-foot-bg: $table-striped-bg !default;
 
-/// Defualt font size for header.
+/// Defualt style for table border.
+/// @type List
+$table-border: 1px solid $medium-gray !default;
+
+/// Defualt padding for table.
 /// @type Number
-$table-foot-font-size: $table-head-font-size !default;
+$table-padding: rem-calc(8 10 10) !default;
 
 /// Defualt font color for header.
 /// @type Color
-$table-foot-font-color: $table-head-font-color !default;
-
-
-/// Defualt padding for footer.
-/// @type Number
-$table-foot-padding: $table-head-padding !default;
-
-/// Defualt color for background of caption.
-/// @type Color
-$table-caption-bg: transparent !default;
-
-/// Defualt font color for caption.
-/// @type Color
-$table-caption-font-color: $table-head-font-color !default;
-
-/// Defualt font size for caption.
-/// @type Number
-$table-caption-font-size: rem-calc(16) !default;
-
+$table-head-font-color: $body-font-color !default;
 
 /// Defualt padding for table rows.
 /// @type Number
 $table-row-padding: rem-calc(9 10) !default;
 
-/// Defualt font size for table rows.
-/// @type Number
-$table-row-font-size: rem-calc(14) !default;
-
 /// Defualt font color for table rows.
 /// @type Color
 $table-row-font-color: $black !default;
 
-/// Defualt line height for table rows.
-/// @type Number
-$table-line-height: $global-lineheight !default;
-
-/// Defualt layout for tables.
-/// @type Keyword
-$table-layout: auto !default;
-
-/// Defualt display for tables.
-/// @type Keyword
-$table-display: table-cell !default;
-
-/// Defualt margin for tables.
-/// @type Number
-$table-margin-bottom: rem-calc(20) !default;
-
-/// Adds styles for a table. Always apply this to a `<table>` element.
 @mixin table {
-  background: $body-background;
-  margin-bottom: $table-margin-bottom;
-  border: $table-border;
-  table-layout: $table-layout;
-
+  margin-bottom: $global-margin;
+  thead, tbody, tfoot {
+    border: $table-border;
+  }
   // Caption
   caption {
-    background: $table-caption-bg;
-    color: $table-caption-font-color;
-    font: {
-      size: $table-caption-font-size;
-      weight: $global-weight-bold;
-    }
+    font-weight: $global-weight-bold;
+    padding: $table-padding;
   }
-
-  // Table head
-  thead {
+  // Table head and foot
+  thead, tfoot {
     background: $table-head-bg;
-
     tr {
       th,
       td {
-        padding: $table-head-padding;
-        font-size: $table-head-font-size;
+        padding: $table-padding;
         font-weight: $global-weight-bold;
-        color: $table-head-font-color;
+        text-align: left;
       }
     }
   }
-
-  // Table footer
-  tfoot {
-    background: $table-foot-bg;
-
-    tr {
-      th,
-      td {
-        padding: $table-foot-padding;
-        font-size: $table-foot-font-size;
-        font-weight: $global-weight-bold;
-        color: $table-foot-font-color;
-      }
-    }
-  }
-
   // Table rows
   tr {
-    th,
-    td {
-      padding: $table-row-padding;
-      font-size: $table-row-font-size;
-      color: $table-row-font-color;
-      text-align: $default-float;
+    th, td {
+      padding: $table-padding;
     }
-
-    // Even-numbered table rows
+    // Stripe it up yo.
     &.even,
     &.alt,
-    &:nth-of-type(even) { background: $table-even-row-bg; }
-  }
-
-  // Table header cells and cells
-  thead tr th,
-  tfoot tr th,
-  tfoot tr td,
-  tbody tr th,
-  tbody tr td,
-  tr td {
-    display: $table-display;
-    line-height: $table-line-height;
+    &:nth-of-type(even) { background: $table-striped-bg; }
   }
 }
 
@@ -173,12 +81,12 @@ $table-margin-bottom: rem-calc(20) !default;
 }
 
 /// Adds styles for a stacked table. Useful for small-screen layouts.
-@mixin table-stacked {
-  thead {
+@mixin stack-for-small {
+  thead, tfoot {
     display: none;
   }
 
-  tr,th,td {
+  tr, th, td {
     display: block;
   }
 
@@ -191,14 +99,13 @@ $table-margin-bottom: rem-calc(20) !default;
   }
 }
 
-
 table {
   @include table;
 }
 
-table.stack {
+table.stack-for-small {
   @include breakpoint(medium down) {
-    @include table-stacked;
+    @include stack-for-small;
   }
 }
 
