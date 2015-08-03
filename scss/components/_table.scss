@@ -8,9 +8,25 @@
 /// @group table
 ////
 
+/// Defualt style for table border.
+/// @type List
+$table-border: 1px solid $medium-gray !default;
+
+/// Defualt padding for table.
+/// @type Number
+$table-padding: rem-calc(8 10 10) !default;
+
 /// Defualt background color for striped rows.
 /// @type Color
 $table-striped-bg: $light-gray !default;
+
+/// Defualt value for showing the stripe on even rows of the tables, excluding the header and footer.
+/// @type Boolean
+$show-stripe-on-even: true;
+
+/// Defualt value for showing the stripe on odd rows of the tables, excluding the header and footer.
+/// @type Boolean
+$show-stripe-on-odd: false;
 
 /// Defualt color for header background.
 /// @type Color
@@ -20,42 +36,35 @@ $table-head-bg: $table-striped-bg !default;
 /// @type Color
 $table-foot-bg: $table-striped-bg !default;
 
-/// Defualt style for table border.
-/// @type List
-$table-border: 1px solid $medium-gray !default;
-
-/// Defualt padding for table.
-/// @type Number
-$table-padding: rem-calc(8 10 10) !default;
-
 /// Defualt font color for header.
 /// @type Color
 $table-head-font-color: $body-font-color !default;
 
-/// Defualt padding for table rows.
-/// @type Number
-$table-row-padding: rem-calc(9 10) !default;
+/// Defualt value for showing the header when using stacked tables.
+/// @type Boolean
+$show-header-for-stacked: true;
 
-/// Defualt font color for table rows.
-/// @type Color
-$table-row-font-color: $black !default;
-
-@mixin table {
+/// Adds the general styles for tables.
+/// @param {Boolean} $even [$show-stripe-on-even] - Adds stripes to the even rows, excluding the header and footer, when true.
+/// @param {Boolean} $odd [$show-stripe-on-odd] - Adds stripes to the odd rows, excluding the header and footer, when true.
+@mixin table($even: $show-stripe-on-even, $odd: $show-stripe-on-odd) {
   margin-bottom: $global-margin;
+  
   thead, tbody, tfoot {
     border: $table-border;
   }
+  
   // Caption
   caption {
     font-weight: $global-weight-bold;
     padding: $table-padding;
   }
+  
   // Table head and foot
   thead, tfoot {
     background: $table-head-bg;
     tr {
-      th,
-      td {
+      th, td {
         padding: $table-padding;
         font-weight: $global-weight-bold;
         text-align: left;
@@ -68,12 +77,27 @@ $table-row-font-color: $black !default;
       padding: $table-padding;
     }
     // Stripe it up yo.
-    &.even,
-    &.alt,
-    &:nth-of-type(even) { background: $table-striped-bg; }
+    @if($even and $odd) {
+      &.even, 
+      &.odd,
+      &.alt,
+      &:nth-of-type(even),
+      &:nth-of-type(odd){ background: $table-striped-bg; }
+    }
+    @elseif($even) {
+      &.even,
+      &.alt,
+      &:nth-of-type(even) { background: $table-striped-bg; }
+    }
+    @elseif($odd) {
+      &.odd,
+      &.alt,
+      &:nth-of-type(odd) { background: $table-striped-bg; }
+    }
   }
 }
 
+/// Adds the ability to horizontally scroll the table for small screens
 @mixin table-scroll {
   width: 100%;
   overflow-y: scroll;
@@ -81,8 +105,27 @@ $table-row-font-color: $black !default;
 }
 
 /// Adds styles for a stacked table. Useful for small-screen layouts.
-@mixin stack-for-small {
-  thead, tfoot {
+/// @param {Boolean} $header [$show-header-for-stacked] - Show the first <th> of header when stacked.
+@mixin stack-for-small($header: $show-header-for-stacked) {
+
+  @if ($header) {
+    thead {
+      th:first-child {
+        display: block !important;
+      }
+      th {
+        display: none;
+      }
+    }
+  }
+
+  @else {
+    thead { 
+      display: none;
+    }
+  }
+
+  tfoot{
     display: none;
   }
 

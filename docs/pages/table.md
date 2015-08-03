@@ -47,30 +47,30 @@ sass: scss/components/_table.scss
 <table class="stack-for-small">
   <thead>
     <tr>
-      <th width="200">Table Header</th>
-      <th>Table Header</th>
-      <th width="150">Table Header</th>
-      <th width="150">Table Header</th>
+      <th>Cookies</th>
+      <th>Taste</th>
+      <th>Calories</th>
+      <th>Overall</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>Content Goes Here</td>
-      <td>This is longer content Donec id elit non mi porta gravida at eget metus.</td>
-      <td>Content Goes Here</td>
-      <td>Content Goes Here</td>
+      <td>Chocolate Chip</td>
+      <td>Tastey</td>
+      <td>120cal</td>
+      <td>7.5/10</td>
     </tr>
     <tr>
-      <td>Content Goes Here</td>
-      <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
-      <td>Content Goes Here</td>
-      <td>Content Goes Here</td>
+      <td>Snickerdoodle</td>
+      <td>Delicious</td>
+      <td>95cal</td>
+      <td>8/10</td>
     </tr>
     <tr>
-      <td>Content Goes Here</td>
-      <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
-      <td>Content Goes Here</td>
-      <td>Content Goes Here</td>
+      <td>Oatmeal Raisin</td>
+      <td>Superb</td>
+      <td>10cal</td>
+      <td>11/10</td>
     </tr>
   </tbody>
 </table>
@@ -85,7 +85,7 @@ sass: scss/components/_table.scss
   <caption class="text-left">Wowzers! This table can scroll!</caption>
   <thead>
     <tr>
-      <th style="display:block; width:400px;">This is the description!</th>
+      <th>This is the description!</th>
       <th>One</th>
       <th>Two</th>
       <th>Three</th>
