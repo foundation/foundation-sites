@@ -157,18 +157,4 @@ $orbit-control-z-index: 10 !default;
   @include orbit-bullets-container;
 }
 
-.custom-orbit {
-  background-color: $light-gray;
-  width: 80%;
-  margin: 0 auto;
-  padding: 10px;
-}
-
-.custom-arrow {
-  color: $primary-color;
-  &:hover, &:active, &:focus {
-    background-color: $light-gray;
-  }
-}
-
 
