@@ -166,6 +166,11 @@ $table-margin-bottom: rem-calc(20) !default;
   }
 }
 
+@mixin table-scroll {
+  width: 100%;
+  overflow-y: scroll;
+}
+
 /// Adds styles for a stacked table. Useful for small-screen layouts.
 @mixin table-stacked {
   thead {
@@ -185,6 +190,7 @@ $table-margin-bottom: rem-calc(20) !default;
   }
 }
 
+
 table {
   @include table;
 }
@@ -192,5 +198,12 @@ table {
 table.stack {
   @include breakpoint(medium down) {
     @include table-stacked;
+  }
+}
+
+.table-scroll {
+  @include table-scroll;
+  table {
+    table-layout: fixed;
   }
 }

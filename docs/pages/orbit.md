@@ -17,7 +17,11 @@ sass: scss/components/_orbit.scss
     </li>
   </ul>
   <nav class="orbit-bullets-container">        
-   <button class="is-active"></button>
+   <button class="is-active"></button> 
+<!-- 
+   ask about aria label
+
+    -->
    <button></button>
    <button></button>
    <button></button>
