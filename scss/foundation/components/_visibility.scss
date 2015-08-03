@@ -21,16 +21,14 @@ $visibility-breakpoint-sizes:
   medium,
   large,
   xlarge,
-  xxlarge,
-  top-bar-desktop;
+  xxlarge;
 
 $visibility-breakpoint-queries:
   unquote($small-up),
   unquote($medium-up),
   unquote($large-up),
   unquote($xlarge-up),
-  unquote($xxlarge-up),
-  unquote($topbar-media-query);
+  unquote($xxlarge-up);
 
 @mixin visibility-loop {
   @each $current-visibility-breakpoint in $visibility-breakpoint-sizes {
@@ -282,6 +280,14 @@ $visibility-breakpoint-queries:
   @if $include-html-visibility-classes != false {
 
   @include visibility-loop;
+  
+  /* Top Bar */
+  .show-for-top-bar-desktop  { display: none !important; }
+  
+  @media #{$topbar-media-query} {
+    .hide-for-top-bar-desktop  { display: none !important; }
+    .show-for-top-bar-desktop  { display: inherit !important; }
+  }
 
   /* Orientation targeting */
   .show-for-landscape,
