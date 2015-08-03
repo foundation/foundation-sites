@@ -169,6 +169,7 @@ $table-margin-bottom: rem-calc(20) !default;
 @mixin table-scroll {
   width: 100%;
   overflow-y: scroll;
+  display: block;
 }
 
 /// Adds styles for a stacked table. Useful for small-screen layouts.
@@ -203,7 +204,4 @@ table.stack {
 
 .table-scroll {
   @include table-scroll;
-  table {
-    table-layout: fixed;
-  }
 }

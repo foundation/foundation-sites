@@ -81,8 +81,8 @@ sass: scss/components/_table.scss
 ## Scroll Table
 
 ```html_example
-<div class="table-scroll">
-  <table>
+<div class="">
+  <table class="table-scroll">
     <thead>
       <tr>
         <th>Table Header</th>
