@@ -81,7 +81,6 @@ sass: scss/components/_table.scss
 ## Scroll Table
 
 ```html_example
-<div class="">
   <table class="table-scroll">
     <thead>
       <tr>
@@ -152,6 +151,4 @@ sass: scss/components/_table.scss
       </tr>
     </tbody>
   </table>
-</div>
-
 ```
