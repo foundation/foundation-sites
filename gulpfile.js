@@ -19,6 +19,7 @@ var files = {
   ],
   javascript: [
     'node_modules/jquery/dist/jquery.js',
+    'bower_components/typeahead.js/dist/typeahead.bundle.js',
     'js/foundation.core.js',
     'js/foundation.util.*.js',
     'js/*.js'
@@ -70,6 +71,9 @@ gulp.task('html:reset', function() {
 gulp.task('html:map', ['html'], function(cb) {
   rimraf.sync('./_debug.json');
   require('fs').writeFile('./_debug.json', JSON.stringify(supercollider.tree, null, '  '), cb);
+});
+gulp.task('html:search', ['html:map'], function(cb) {
+  require('./lib/buildSearch')(supercollider.tree, cb);
 });
 
 // Compiles Sass files into CSS

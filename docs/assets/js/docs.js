@@ -61,4 +61,27 @@ $(function() {
       $('.docs-building-blocks').hide(0);
     }
   }
+
+  $('[data-docs-search]').typeahead({
+    highlight: false
+  }, {
+    source: function(q, s, a) {
+      $.getJSON('./data/search.json', function(data, status) {
+        a(data.filter(function(elem, i, arr) {
+          return elem.name.indexOf(q) > -1 || elem.name.replace('-', ' ').indexOf(q) > -1;
+        }));
+      });
+    },
+    display: function(item) {
+      return item.name;
+    },
+    templates: {
+      notFound: function(query) {
+        return '<div class="tt-empty">No results for "' + query.query + '".</div>';
+      },
+      suggestion: function(item) {
+        return '<div><span class="name">' + item.name + '</span> <span class="desc">' + item.description + '</span></div>';
+      }
+    }
+  });
 });
