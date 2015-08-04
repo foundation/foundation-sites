@@ -4,7 +4,7 @@
 
 /// Default background color of a modal.
 /// @type Color
-$reveal-background: #fff !default;
+$reveal-background: $white !default;
 
 /// Default width of a modal, with no class applied.
 /// @type Number
@@ -24,11 +24,7 @@ $reveal-padding: $global-padding !default;
 
 /// Default border around a modal.
 /// @type Number
-$reveal-border: 1px solid #ccc !default;
-
-/// Default box shadow under a modal.
-/// @type Number
-$reveal-shadow: 0 0 10px rgba(#000, 0.4) !default;
+$reveal-border: 1px solid $medium-gray !default;
 
 /// z-index for modals. The overlay uses this value, while the modal itself uses this value plus one.
 /// @type Number
@@ -36,13 +32,11 @@ $reveal-zindex: 1005;
 
 /// Background color of modal overlays.
 /// @type Color
-$reveal-overlay-background: rgba(#000, 0.45) !default;
+$reveal-overlay-background: rgba($black, 0.45) !default;
 
 /// Adds styles for a modal overlay.
 /// @param {Color} $background [$reveal-overlay-background] - Background color of the overlay.
-@mixin reveal-overlay(
-  $background: $reveal-overlay-background
-) {
+@mixin reveal-overlay {
   display: none;
   position: fixed;
   top: 0;
@@ -50,7 +44,7 @@ $reveal-overlay-background: rgba(#000, 0.45) !default;
   left: 0;
   right: 0;
   z-index: $reveal-zindex;
-  background: $background;
+  background: $reveal-background;
 }
 
 /// Adds base styles for a modal.
@@ -64,7 +58,6 @@ $reveal-overlay-background: rgba(#000, 0.45) !default;
   min-height: 100vh;
   padding: $reveal-padding;
   border: $reveal-border;
-  box-shadow: $reveal-shadow;
 
   @include breakpoint(medium) {
     min-height: 0;

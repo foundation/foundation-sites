@@ -1,14 +1,14 @@
 /// Default border around thumbnail images.
 /// @type Border
-$thumbnail-border: solid 4px #fff !default;
+$thumbnail-border: solid 4px $white !default;
 
 /// Default box shadow under thumbnail images.
 /// @type Shadow
-$thumbnail-shadow: 0 0 0 1px rgba(#000, 0.2) !default;
+$thumbnail-shadow: 0 0 0 1px rgba($black, 0.2) !default;
 
 /// Default box shadow under thumbnail images.
 /// @type Shadow
-$thumbnail-shadow-hover: 0 0 6px 1px rgba(0, 140, 186, 0.5) !default;
+$thumbnail-shadow-hover: 0 0 6px 1px rgba($primary-color, 0.5) !default;
 
 /// Transition proprties for thumbnail images.
 /// @type Transition

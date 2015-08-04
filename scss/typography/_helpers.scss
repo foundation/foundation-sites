@@ -12,7 +12,7 @@ $subheader-lineheight: 1.4 !default;
 
 /// Default font color for subheaders.
 /// @type Color
-$subheader-color: scale-color($header-color, $lightness: 35%) !default;
+$subheader-color: $dark-gray !default;
 
 /// Default font weight for subheaders.
 /// @type String
@@ -20,11 +20,11 @@ $subheader-font-weight: $global-weight-normal !default;
 
 /// Default top margin for subhheaders.
 /// @type Number
-$subheader-margin-top: .2rem !default;
+$subheader-margin-top: 0.2rem !default;
 
 /// Default bottom margin for subheaders.
 /// @type Number
-$subheader-margin-bottom: .5rem !default;
+$subheader-margin-bottom: 0.5rem !default;
 
 /// Default font size for statistic numbers.
 /// @type Number

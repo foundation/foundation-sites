@@ -20,11 +20,11 @@ $closebutton-lineheight: 1 !default;
 
 /// Default color of the close button.
 /// @type Color
-$closebutton-color: #999 !default;
+$closebutton-color: $dark-gray !default;
 
 /// Default color of the close button when being hovered on.
 /// @type Color
-$closebutton-color-hover: #333 !default;
+$closebutton-color-hover: $black !default;
 
 /// Extends the CSS for a close button, using the styles in the settings variables.
 %close-button {

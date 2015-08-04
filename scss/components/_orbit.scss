@@ -6,11 +6,11 @@
 
 /// Default color for Orbit's bullets.
 /// @type Color
-$orbit-bullet-background: $secondary-color !default;
+$orbit-bullet-background: $medium-gray !default;
 
 /// Default active color for Orbit's bullets.
 /// @type Color
-$orbit-bullet-background-active: scale-color($orbit-bullet-background, $lightness: -30%) !default;
+$orbit-bullet-background-active: $dark-gray !default;
 
 /// Default diameter for Orbit's bullets.
 /// @type Number
