@@ -4,10 +4,12 @@ description: Tabs are elements that help you organize and navigate multiple docu
 sass: scss/components/_tabs.scss
 ---
 
-## Horizontal
+## Basics
 
-```html_example
-<ul class="tabs" data-tab>
+There are two pieces to a tabbed interface: the tabs themselves, and the content for each tab. The tabs are an element with the class `.tabs`, and each item has the class `.tab-title`. Each tab contains a link to a tab. The `href` of each link should match the ID of a tab.
+
+```html
+<ul class="tabs" data-tabs id="example-tabs">
   <li class="tab-title is-active"><a href="#panel1">Tab 1</a></li>
   <li class="tab-title"><a href="#panel2">Tab 2</a></li>
   <li class="tab-title"><a href="#panel3">Tab 3</a></li>
@@ -15,7 +17,12 @@ sass: scss/components/_tabs.scss
   <li class="tab-title"><a href="#panel3">Tab 5</a></li>
   <li class="tab-title"><a href="#panel4">Tab 6</a></li>
 </ul>
-<div class="tabs-content">
+```
+
+The tab content container has the class `.tabs-content`, while each section has the class `.content`. Each content pane also has a unique ID, which is targeted by a link in the tabstrip.
+
+```html
+<div class="tabs-content" data-tabs-content="example-tabs">
   <div class="content is-active" id="panel1">
     <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
     <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
@@ -29,9 +36,35 @@ sass: scss/components/_tabs.scss
 </div>
 ```
 
+Put it all together, and we get this:
+
+<ul class="tabs" data-tabs id="example-tabs">
+  <li class="tab-title is-active"><a href="#panel1">Tab 1</a></li>
+  <li class="tab-title"><a href="#panel2">Tab 2</a></li>
+  <li class="tab-title"><a href="#panel3">Tab 3</a></li>
+  <li class="tab-title"><a href="#panel4">Tab 4</a></li>
+  <li class="tab-title"><a href="#panel3">Tab 5</a></li>
+  <li class="tab-title"><a href="#panel4">Tab 6</a></li>
+</ul>
+
+<div class="tabs-content" data-tabs-content="example-tabs">
+  <div class="content is-active" id="panel1">
+    <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
+    <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
+    <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
+  </div>
+  <div class="content" id="panel2">
+    <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
+    <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
+    <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
+  </div>
+</div>
+
 ---
 
-## Vertical
+## Vertical Tabs
+
+Add the `.vertical` class to a tabstrip to stack tabs vertically. You can also place the tabstrip and the tab contents in a grid to make them sit side-by-side.
 
 ```html_example
 <div class="row collapse">
