@@ -1,112 +1,88 @@
-@keyframes shake {
-  0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90% {
-    transform: translateX(7%); }
-  5%, 15%, 25%, 35%, 45%, 55%, 65%, 75%, 85%, 95% {
-    transform: translateX(-7%); }
-  100% {
-    transform: translateX(0); } }
-@keyframes spin-cw {
-  0% {
-    transform: rotate(0deg); }
-  100% {
-    transform: rotate(360deg); } }
-@keyframes spin-ccw {
-  0% {
-    transform: rotate(0deg); }
-  100% {
-    transform: rotate(-360deg); } }
-@keyframes wiggle {
-  40%, 50%, 60% {
-    transform: rotate(7deg); }
-  35%, 45%, 55%, 65% {
-    transform: rotate(-7deg); }
-  0%, 30%, 70%, 100% {
-    transform: rotate(0); } }
 .slideInDown.mui-enter {
   transition-duration: 500ms;
   transition-timing-function: linear;
+  transform: translateY(-100%);
   transition-property: transform, opacity;
-  backface-visibility: hidden;
-  transform: translateY(-100%); }
+  backface-visibility: hidden; }
 .slideInDown.mui-enter.mui-enter-active {
-  transform: translateX(0) translateY(0); }
+  transform: translateY(0); }
 
 .slideInLeft.mui-enter {
   transition-duration: 500ms;
   transition-timing-function: linear;
+  transform: translateX(-100%);
   transition-property: transform, opacity;
-  backface-visibility: hidden;
-  transform: translateX(100%); }
+  backface-visibility: hidden; }
 .slideInLeft.mui-enter.mui-enter-active {
-  transform: translateX(0) translateY(0); }
+  transform: translateX(0); }
 
 .slideInUp.mui-enter {
   transition-duration: 500ms;
   transition-timing-function: linear;
+  transform: translateY(100%);
   transition-property: transform, opacity;
-  backface-visibility: hidden;
-  transform: translateY(100%); }
+  backface-visibility: hidden; }
 .slideInUp.mui-enter.mui-enter-active {
-  transform: translateX(0) translateY(0); }
+  transform: translateY(0); }
 
 .slideInRight.mui-enter {
   transition-duration: 500ms;
   transition-timing-function: linear;
+  transform: translateX(100%);
   transition-property: transform, opacity;
-  backface-visibility: hidden;
-  transform: translateX(-100%); }
+  backface-visibility: hidden; }
 .slideInRight.mui-enter.mui-enter-active {
-  transform: translateX(0) translateY(0); }
+  transform: translateX(0); }
 
 .slideOutDown.mui-leave {
   transition-duration: 500ms;
   transition-timing-function: linear;
+  transform: translateY(0);
   transition-property: transform, opacity;
-  backface-visibility: hidden;
-  transform: translateX(0) translateY(0); }
+  backface-visibility: hidden; }
 .slideOutDown.mui-leave.mui-leave-active {
-  transform: translateY(100%); }
+  transform: translateY(-100%); }
 
 .slideOutRight.mui-leave {
   transition-duration: 500ms;
   transition-timing-function: linear;
+  transform: translateX(0);
   transition-property: transform, opacity;
-  backface-visibility: hidden;
-  transform: translateX(0) translateY(0); }
+  backface-visibility: hidden; }
 .slideOutRight.mui-leave.mui-leave-active {
   transform: translateX(100%); }
 
 .slideOutUp.mui-leave {
   transition-duration: 500ms;
   transition-timing-function: linear;
+  transform: translateY(0);
   transition-property: transform, opacity;
-  backface-visibility: hidden;
-  transform: translateX(0) translateY(0); }
+  backface-visibility: hidden; }
 .slideOutUp.mui-leave.mui-leave-active {
   transform: translateY(-100%); }
 
 .slideOutLeft.mui-leave {
   transition-duration: 500ms;
   transition-timing-function: linear;
+  transform: translateX(0);
   transition-property: transform, opacity;
-  backface-visibility: hidden;
-  transform: translateX(0) translateY(0); }
+  backface-visibility: hidden; }
 .slideOutLeft.mui-leave.mui-leave-active {
   transform: translateX(-100%); }
 
 .fadeIn.mui-enter {
   transition-duration: 500ms;
   transition-timing-function: linear;
-  transition-property: opacity;
-  opacity: 0; }
+  opacity: 0;
+  transition-property: opacity; }
 .fadeIn.mui-enter.mui-enter-active {
   opacity: 1; }
 
 .fadeOut.mui-leave {
   transition-duration: 500ms;
   transition-timing-function: linear;
-  transition-property: opacity;
-  opacity: 1; }
+  opacity: 1;
+  transition-property: opacity; }
 .fadeOut.mui-leave.mui-leave-active {
   opacity: 0; }
 
@@ -242,24 +218,44 @@
   transform: perspective(2000px) rotateY(-90deg);
   opacity: 0; }
 
-.zoomIn.mui-enter {
+.scaleInUp.mui-enter {
+  transition-duration: 500ms;
+  transition-timing-function: linear;
+  transition-property: transform, property;
+  transform: scale(0.5);
+  opacity: 0; }
+.scaleInUp.mui-enter.mui-enter-active {
+  transform: scale(1);
+  opacity: 1; }
+
+.scaleInDown.mui-enter {
   transition-duration: 500ms;
   transition-timing-function: linear;
   transition-property: transform, property;
   transform: scale(1.5);
   opacity: 0; }
-.zoomIn.mui-enter.mui-enter-active {
+.scaleInDown.mui-enter.mui-enter-active {
   transform: scale(1);
   opacity: 1; }
 
-.zoomOut.mui-leave {
+.scaleOutUp.mui-leave {
   transition-duration: 500ms;
   transition-timing-function: linear;
   transition-property: transform, property;
-  transform: scale(0.5);
-  opacity: 1; }
-.zoomOut.mui-leave.mui-leave-active {
   transform: scale(1);
+  opacity: 1; }
+.scaleOutUp.mui-leave.mui-leave-active {
+  transform: scale(1.5);
+  opacity: 0; }
+
+.scaleOutDown.mui-leave {
+  transition-duration: 500ms;
+  transition-timing-function: linear;
+  transition-property: transform, property;
+  transform: scale(1);
+  opacity: 1; }
+.scaleOutDown.mui-leave.mui-leave-active {
+  transform: scale(0.5);
   opacity: 0; }
 
 .spinIn.mui-enter {
@@ -338,104 +334,51 @@
 .long-delay {
   transition-delay: 700ms !important; }
 
-.shake {
-  animation-name: shake;
-  animation-duration: 500ms;
-  animation-timing-function: linear;
-  backface-visibility: hidden;
-  transform: translate3d(0, 0, 0);
-  animation-delay: 0;
-  animation-iteration-count: 0; }
-
-.spin-cw {
-  animation-name: spin-cw;
-  animation-duration: 500ms;
-  animation-timing-function: linear;
-  backface-visibility: hidden;
-  transform: translate3d(0, 0, 0);
-  animation-delay: 0;
-  animation-iteration-count: 0; }
-
-.spin-ccw {
-  animation-name: spin-ccw;
-  animation-duration: 500ms;
-  animation-timing-function: linear;
-  backface-visibility: hidden;
-  transform: translate3d(0, 0, 0);
-  animation-delay: 0;
-  animation-iteration-count: 0; }
-
-.wiggle {
-  animation-name: wiggle;
-  animation-duration: 500ms;
-  animation-timing-function: linear;
-  backface-visibility: hidden;
-  transform: translate3d(0, 0, 0);
-  animation-delay: 0;
-  animation-iteration-count: 0; }
-
-.shake.infinite,
-.spin-cw.infinite,
-.spin-ccw.infinite,
-.wiggle.infinite {
+@keyframes shake-7 {
+  0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90% {
+    transform: translateX(7%); }
+  5%, 15%, 25%, 35%, 45%, 55%, 65%, 75%, 85%, 95% {
+    transform: translateX(-7%); } }
+@keyframes spin-cw-360deg {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+@keyframes spin-ccw--360deg {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(-360deg); } }
+@keyframes wiggle-7deg {
+  40%, 50%, 60% {
+    transform: rotate(7deg); }
+  35%, 45%, 55%, 65% {
+    transform: rotate(-7deg); }
+  0%, 30%, 70%, 100% {
+    transform: rotate(0); } }
+.mui-animate.infinite {
   animation-iteration-count: infinite; }
-.shake.slow,
-.spin-cw.slow,
-.spin-ccw.slow,
-.wiggle.slow {
+.mui-animate.slow {
   transition-duration: 750ms !important; }
-.shake.fast,
-.spin-cw.fast,
-.spin-ccw.fast,
-.wiggle.fast {
+.mui-animate.fast {
   transition-duration: 250ms !important; }
-.shake.linear,
-.spin-cw.linear,
-.spin-ccw.linear,
-.wiggle.linear {
+.mui-animate.linear {
   transition-timing-function: linear !important; }
-.shake.ease,
-.spin-cw.ease,
-.spin-ccw.ease,
-.wiggle.ease {
+.mui-animate.ease {
   transition-timing-function: ease !important; }
-.shake.easeIn,
-.spin-cw.easeIn,
-.spin-ccw.easeIn,
-.wiggle.easeIn {
+.mui-animate.easeIn {
   transition-timing-function: ease-in !important; }
-.shake.easeOut,
-.spin-cw.easeOut,
-.spin-ccw.easeOut,
-.wiggle.easeOut {
+.mui-animate.easeOut {
   transition-timing-function: ease-out !important; }
-.shake.easeInOut,
-.spin-cw.easeInOut,
-.spin-ccw.easeInOut,
-.wiggle.easeInOut {
+.mui-animate.easeInOut {
   transition-timing-function: ease-in-out !important; }
-.shake.bounceIn,
-.spin-cw.bounceIn,
-.spin-ccw.bounceIn,
-.wiggle.bounceIn {
+.mui-animate.bounceIn {
   transition-timing-function: cubic-bezier(0.485, 0.155, 0.24, 1.245) !important; }
-.shake.bounceOut,
-.spin-cw.bounceOut,
-.spin-ccw.bounceOut,
-.wiggle.bounceOut {
+.mui-animate.bounceOut {
   transition-timing-function: cubic-bezier(0.485, 0.155, 0.515, 0.845) !important; }
-.shake.bounceInOut,
-.spin-cw.bounceInOut,
-.spin-ccw.bounceInOut,
-.wiggle.bounceInOut {
+.mui-animate.bounceInOut {
   transition-timing-function: cubic-bezier(0.76, -0.245, 0.24, 1.245) !important; }
-.shake.short-delay,
-.spin-cw.short-delay,
-.spin-ccw.short-delay,
-.wiggle.short-delay {
+.mui-animate.short-delay {
   transition-timing-function: 300ms !important; }
-.shake.long-delay,
-.spin-cw.long-delay,
-.spin-ccw.long-delay,
-.wiggle.long-delay {
+.mui-animate.long-delay {
   transition-timing-function: 700ms !important; }

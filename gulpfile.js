@@ -14,6 +14,7 @@ var files = {
     '!scss/components_old/**/*.scss'
   ],
   javascript: [
+    'node_modules/jquery/dist/jquery.js',
     'js/foundation.core.js',
     'js/*.js'
   ],
@@ -72,9 +73,8 @@ gulp.task('sass', ['sass:foundation', 'sass:docs']);
 gulp.task('sass:foundation', function() {
   return gulp.src(files.sassSrc)
     .pipe($.sass({
-      includePaths: files.sassPaths,
-      errLogToConsole: true
-    }))
+      includePaths: files.sassPaths
+    }).on('error', $.sass.logError))
     .pipe($.autoprefixer({
       browsers: ['last 2 versions', 'ie >= 9']
     }))
@@ -83,9 +83,8 @@ gulp.task('sass:foundation', function() {
 gulp.task('sass:docs', function() {
   return gulp.src('docs/assets/scss/docs.scss')
     .pipe($.sass({
-      includePaths: files.sassPaths,
-      errLogToConsole: true
-    }))
+      includePaths: files.sassPaths
+    }).on('error', $.sass.logError))
     .pipe($.autoprefixer({
       browsers: ['last 2 versions', 'ie >= 9']
     }))
