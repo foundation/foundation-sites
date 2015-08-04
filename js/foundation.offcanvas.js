@@ -67,7 +67,7 @@ OffCanvas.prototype._events = function() {
   });
 
   if (this.$exiter) {
-    this.$exiter.click(this.close.bind(this));
+    this.$exiter.on('click.zf.offcanvas', this.close.bind(this));
   }
 }
 
