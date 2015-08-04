@@ -53,30 +53,7 @@ $tab-content-padding: 1rem !default;
   background: $tab-background;
   border: 1px solid $tab-content-border;
 
-  /// Default
-  > li {
-    float: left;
-
-    > a {
-      display: block;
-      padding: $tab-item-padding;
-      line-height: 1;
-      font-size: 12px;
-      color: $tab-item-color;
-
-      &:hover,
-      &:focus {
-        background: $tab-background-active;
-      }
-    }
-  } 
-
-  /// Hover/active state
-  > .is-active > a {
-    background: $tab-background-active;
-  }
-
-  /// Simple
+  // Simple
   &.simple {
     > li > a {
       padding: 0;
@@ -87,7 +64,7 @@ $tab-content-padding: 1rem !default;
     }
   }
 
-  /// Vertical
+  // Vertical
   &.vertical {
     > li {
       width: auto;
@@ -96,7 +73,7 @@ $tab-content-padding: 1rem !default;
     }
   }
 
-  /// Primary color
+  // Primary color
   &.primary {
     background: $primary-color;
 
@@ -111,6 +88,24 @@ $tab-content-padding: 1rem !default;
   }
 }
 
+.tabs-title {
+  float: left;
+
+  > a {
+    display: block;
+    padding: $tab-item-padding;
+    line-height: 1;
+    font-size: 12px;
+    color: $tab-item-color;
+
+    &:hover,
+    &:focus,
+    &[aria-selected="true"] {
+      background: $tab-background-active;
+    }
+  }
+} 
+
 .tabs-content {
   background: $tab-content-background;
   transition: all 0.5s ease;
@@ -121,13 +116,13 @@ $tab-content-padding: 1rem !default;
     border: 1px solid $tab-content-border;
     border-left: 0;
   }
+}
 
-  .content {
-    display: none;
-    padding: $tab-content-padding;
-    
-    &.is-active {
-      display: block;
-    }
+.tabs-panel {
+  display: none;
+  padding: $tab-content-padding;
+  
+  &.is-active {
+    display: block;
   }
 }
