@@ -49,7 +49,7 @@ If you're interested in sizing type using the same modular scale, our `font-size
 
 This creates one `font-size` declaration for each breakpoint.
 
-```css
+```scss
 .heading {
   font-size: 1.067rem;
 

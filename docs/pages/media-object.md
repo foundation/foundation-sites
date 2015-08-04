@@ -1,11 +1,10 @@
 ---
-title: Media-Object
-description: Media Objects are super useful componets for displaying an item, usually an image, alongside some content, usually text. You could put lists, grids, or even other media objects inside.
-sass: 
-  - scss/components/_media-object.scss
+title: Media Object
+description: Media objects are super useful componets for displaying an item, usually an image, alongside some content, usually text. You could put lists, grids, or even other media objects inside.
+sass: scss/components/_media-object.scss
 ---
 
-### Media-item on the left
+### Media item on the left
 
 ```html_example
 <div class="media-object">
@@ -22,7 +21,7 @@ sass:
 </div>
 ```
 
-### Media-item on the right
+### Media item on the right
 
 ```html_example
 <div class="media-object">
@@ -39,7 +38,7 @@ sass:
 ```
 ---
 
-### Vertically aligning media-items
+### Vertically aligning media items
 
 By adding a class of `middle` or `bottom`, you can align the item in media item to the middle or bottom of the media-object.
 
@@ -72,9 +71,9 @@ By adding a class of `middle` or `bottom`, you can align the item in media item 
 ```
 ---
 
-### Responsive: stack-for-small
+### Stack on Small
 
-By adding the `stack-for-small` class, you can make your media object responsive. Images will get a width of 100%, but you can change that.
+By adding the `.stack-for-small` class, you can make your media object responsive. Images will get a width of 100%, but you can change that.
 
 ```html_example
 <div class="media-object stack-for-small">
@@ -106,7 +105,7 @@ By nesting a media object into the media-content section, you can easily indent 
   <div class="media-content">
     <h4 class="media-title">I'm First!</h4>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro at, tenetur cum beatae excepturi id ipsa? Esse dolor laboriosam itaque ea nesciunt, earum, ipsum commodi beatae velit id enim repellat.</p>
-    <!-- nested media object goes here -->
+    <!-- Nested media object goes here -->
     <div class="media-object">
       <div class="media-item">
         <a href="#">
@@ -124,9 +123,9 @@ By nesting a media object into the media-content section, you can easily indent 
 
 ---
 
-### Other uses
+### Other Uses
 
-It's a versatile component which can be used on many ways.
+It's a versatile component which can be used in many ways.
 
 <div class="row">
   <div class="medium-6 columns">
