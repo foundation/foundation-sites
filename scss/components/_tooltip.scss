@@ -54,7 +54,7 @@ $tooltip-pip-offset: 1.25rem;
   }
 
   &:before {
-    @include css-triangle($tooltip-pip-width, $tooltip-background-color, bottom);
+    @include css-triangle($tooltip-pip-width, $tooltip-background-color, up);
     display: none;
     top: $tooltip-distance;
     left: $tooltip-pip-offset;
@@ -81,7 +81,7 @@ $tooltip-pip-offset: 1.25rem;
 
 %tip-top {
   &:before {
-   @include css-triangle($tooltip-pip-width, $tooltip-background-color, top);
+   @include css-triangle($tooltip-pip-width, $tooltip-background-color, down);
    top: -$tooltip-distance;
  }
  
@@ -94,7 +94,7 @@ $tooltip-pip-offset: 1.25rem;
 
 %tip-left {
   &:before {
-    @include css-triangle($tooltip-pip-width, $tooltip-background-color, left);
+    @include css-triangle($tooltip-pip-width, $tooltip-background-color, right);
     @include v-align-middle;
     left: -$tooltip-distance;
   }
@@ -109,7 +109,7 @@ $tooltip-pip-offset: 1.25rem;
 
 %tip-right {
   &:before {
-    @include css-triangle($tooltip-pip-width, $tooltip-background-color, right);
+    @include css-triangle($tooltip-pip-width, $tooltip-background-color, left);
     @include v-align-middle;
     left: auto;
     right: -$tooltip-distance;
