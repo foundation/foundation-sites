@@ -173,62 +173,64 @@ $menubar-expand-max: 6 !default;
   }
 }
 
-.menu-bar {
-  @include menu-bar-base;
-  @include menu-bar-icons;
+@mixin foundation-menu-bar {
+  .menu-bar {
+    @include menu-bar-base;
+    @include menu-bar-icons;
 
-  // Orientation
-  @include menu-bar-direction(horizontal);
+    // Orientation
+    @include menu-bar-direction(horizontal);
 
-  &.vertical {
-    @include menu-bar-direction(vertical);
-  }
+    &.vertical {
+      @include menu-bar-direction(vertical);
+    }
 
-  @each $size in $breakpoint-classes {
-    @if $size != small {
-      &.#{$size}-horizontal {
-        @include menu-bar-direction(horizontal);
+    @each $size in $breakpoint-classes {
+      @if $size != small {
+        &.#{$size}-horizontal {
+          @include menu-bar-direction(horizontal);
+        }
+
+        &.#{$size}-vertical {
+          @include menu-bar-direction(vertical);
+        }
       }
+    }
 
-      &.#{$size}-vertical {
-        @include menu-bar-direction(vertical);
+    // Simple
+    &.simple {
+      @include menu-bar-simple;
+    }
+
+    // Align right
+    &.align-right {
+      > li {
+        float: right;
       }
     }
-  }
 
-  // Simple
-  &.simple {
-    @include menu-bar-simple;
-  }
+    // Even-width
+    &.expanded {
+      @include menu-bar-expand;
 
-  // Align right
-  &.align-right {
-    > li {
-      float: right;
+      > li:first-child:last-child {
+        width: 100%;
+      }
     }
-  }
 
-  // Even-width
-  &.expanded {
-    @include menu-bar-expand;
-
-    > li:first-child:last-child {
-      width: 100%;
+    // Primary color
+    &.primary {
+      @include menu-bar-style;
     }
-  }
 
-  // Primary color
-  &.primary {
-    @include menu-bar-style;
-  }
+    // Vertical icons
+    &.icon-top {
+      @include menu-bar-icons(top, $base: false);
+    }
 
-  // Vertical icons
-  &.icon-top {
-    @include menu-bar-icons(top, $base: false);
-  }
-
-  // Nesting
-  &.nested {
-    @include menu-bar-nested;
+    // Nesting
+    &.nested {
+      @include menu-bar-nested;
+    }
   }
 }

@@ -74,4 +74,9 @@ $foundation-version: '6.0.0-alpha';
   @include foundation-flex-video;
   @include foundation-progress-bar;
   @include foundation-off-canvas;
+  @include foundation-label;
+  @include foundation-badge;
+  @include foundation-card;
+  @include foundation-menu-bar;
+  @include foundation-orbit;
 }

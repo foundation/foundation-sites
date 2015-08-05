@@ -24,17 +24,19 @@ $label-padding: 0.33333rem 0.5rem !default;
   cursor: default;
 }
 
-.label {
-  @include label;
+@mixin foundation-label {
+  .label {
+    @include label;
 
-  background: $label-background;
-  color: $label-color;
+    background: $label-background;
+    color: $label-color;
 
-  @each $name, $color in $foundation-colors {
-    @if $name != primary {
-      &.#{$name} {
-        background: $color;
-        color: foreground($color);
+    @each $name, $color in $foundation-colors {
+      @if $name != primary {
+        &.#{$name} {
+          background: $color;
+          color: foreground($color);
+        }
       }
     }
   }

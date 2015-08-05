@@ -28,17 +28,19 @@ $badge-font-size: 0.8rem !default;
   border-radius: 50%;
 }
 
-.badge {
-  @include badge;
+@mixin foundation-badge {
+  .badge {
+    @include badge;
 
-  background: $badge-background;
-  color: $badge-color;
+    background: $badge-background;
+    color: $badge-color;
 
-  @each $name, $color in $foundation-colors {
-    @if $name != primary {
-      &.#{$name} {
-        background: $color;
-        color: foreground($color);
+    @each $name, $color in $foundation-colors {
+      @if $name != primary {
+        &.#{$name} {
+          background: $color;
+          color: foreground($color);
+        }
       }
     }
   }

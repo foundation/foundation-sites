@@ -41,7 +41,7 @@ $card-margin: 0.5rem !default;
   $shadow: $card-shadow,
   $padding: $card-padding,
   $margin: $card-margin
-  ) {
+) {
   border: $border;
   margin-bottom: $margin;
   background: $background;
@@ -66,38 +66,38 @@ $card-margin: 0.5rem !default;
 @mixin card-divider(
   $background: $card-divider-background,
   $padding: $card-padding
-  ) {
+) {
   background: $background;
   padding: $padding;
 }
 
 @mixin card-section(
   $padding: $card-padding
-  ) {
+) {
   padding: $padding;
 }
 
-.card {
-  @include card-container;
-  @each $name, $color in $foundation-colors {
-    &.#{$name} {
-      @include card-container(
-        $background: $color,
-        $border: 0
-        );
-      .card-divider {
-        @include card-divider(
-          $background: smart-scale($color, 7%)
-          );
+@mixin foundation-card {
+  .card {
+    @include card-container;
+
+    @each $name, $color in $foundation-colors {
+      &.#{$name} {
+        // TODO: Cut down on duplicate CSS generated here
+        @include card-container($background: $color, $border: 0);
+
+        .card-divider {
+          @include card-divider($background: smart-scale($color, 7%));
+        }
       }
     }
   }
-}
 
-.card-divider {
-  @include card-divider;
-}
+  .card-divider {
+    @include card-divider;
+  }
 
-.card-section {
-  @include card-section;
+  .card-section {
+    @include card-section;
+  }
 }

@@ -65,6 +65,8 @@ $callout-link-tint: true;
   }
 }
 
+/// Adds styles for a callout.
+/// @param {Color} $color [$callout-background] - Color to use.
 @mixin callout($color: $callout-background) {
   @include callout-base;
   @include callout-style($color);

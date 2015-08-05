@@ -44,7 +44,7 @@ $closebutton-color-hover: $black !default;
   }
 }
 
-@mixin foundation-close-button() {
+@mixin foundation-close-button {
   .close-button {
     @extend %close-button;
   }

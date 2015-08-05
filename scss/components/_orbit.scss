@@ -121,40 +121,40 @@ $orbit-control-z-index: 10 !default;
   }
 }
 
-.orbit {
-  @include orbit;
+@mixin foundation-orbit {
+  .orbit {
+    @include orbit;
+  }
+
+  .orbit-container {
+    @include orbit-container;
+  }
+
+  .orbit-figure {
+    @include orbit-figure;
+  }
+
+  .orbit-image {
+    @include orbit-image;
+  }
+
+  .orbit-caption {
+    @include orbit-caption;
+  }
+
+  .orbit-control {
+    @include orbit-control;
+  }
+
+  .orbit-previous {
+    @include orbit-previous;
+  }
+
+  .orbit-next {
+    @include orbit-next;
+  }
+
+  .orbit-bullets-container {
+    @include orbit-bullets-container;
+  }
 }
-
-.orbit-container {
-  @include orbit-container;
-}
-
-.orbit-figure {
-  @include orbit-figure;
-}
-
-.orbit-image {
-  @include orbit-image;
-}
-
-.orbit-caption {
-  @include orbit-caption;
-}
-
-.orbit-control {
-  @include orbit-control;
-}
-
-.orbit-previous {
-  @include orbit-previous;
-}
-
-.orbit-next {
-  @include orbit-next;
-}
-
-.orbit-bullets-container {
-  @include orbit-bullets-container;
-}
-
-
