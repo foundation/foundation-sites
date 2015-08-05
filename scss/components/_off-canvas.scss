@@ -87,6 +87,8 @@ $offcanvas-transition-timing: ease;
 }
 
 @mixin foundation-off-canvas {
+  @include off-canvas-basics;
+  
   // Off-canvas container
   .off-canvas {
     @include off-canvas;
