@@ -31,7 +31,7 @@
     "marked": "^0.3.3",
     "rimraf": "^2.3.2",
     "shipyard": "git://github.com/gakimball/shipyard.git",
-    "supercollider": "^0.1.0",
+    "supercollider": "^0.1.1",
     "zeroclipboard": "^2.2.0"
   },
   "repository": {

@@ -18,23 +18,19 @@ $table-padding: rem-calc(8 10 10) !default;
 
 /// Defualt background color for striped rows.
 /// @type Color
-$table-striped-bg: $light-gray !default;
+$table-striped-background: $light-gray !default;
 
-/// Defualt value for showing the stripe on even rows of the tables, excluding the header and footer.
-/// @type Boolean
-$show-stripe-on-even: true;
-
-/// Defualt value for showing the stripe on odd rows of the tables, excluding the header and footer.
-/// @type Boolean
-$show-stripe-on-odd: false;
+/// Defualt value for showing the stripe on rows of the tables, excluding the header and footer If even, the even rows will have a background color. If odd, the odd rows will have a background color. If empty, or anyother value, the table rows will have no striping.
+/// @type Keyoword
+$table-stripe: even !default;
 
 /// Defualt color for header background.
 /// @type Color
-$table-head-bg: $table-striped-bg !default;
+$table-head-background: $medium-gray !default;
 
 /// Defualt color for footer background.
 /// @type Color
-$table-foot-bg: $table-striped-bg !default;
+$table-foot-background: $medium-gray !default;
 
 /// Defualt font color for header.
 /// @type Color
@@ -45,59 +41,59 @@ $table-head-font-color: $body-font-color !default;
 $show-header-for-stacked: true;
 
 /// Adds the general styles for tables.
-/// @param {Boolean} $even [$show-stripe-on-even] - Adds stripes to the even rows, excluding the header and footer, when true.
-/// @param {Boolean} $odd [$show-stripe-on-odd] - Adds stripes to the odd rows, excluding the header and footer, when true.
-@mixin table($even: $show-stripe-on-even, $odd: $show-stripe-on-odd) {
+
+@mixin table($stripe: $table-stripe) {
   margin-bottom: $global-margin;
-  
-  thead, tbody, tfoot {
+
+  thead,
+  tbody,
+  tfoot {
     border: $table-border;
   }
-  
+
   // Caption
   caption {
     font-weight: $global-weight-bold;
     padding: $table-padding;
   }
-  
   // Table head and foot
-  thead, tfoot {
-    background: $table-head-bg;
+  thead,
+  tfoot {
+    background: $table-head-background;
+    color: $table-head-font-color;
+
     tr {
-      th, td {
+      background: transparent;
+
+      th,
+      td {
         padding: $table-padding;
-        font-weight: $global-weight-bold;
+        font-weight: $global-weight-normal;
         text-align: left;
       }
     }
   }
   // Table rows
-  tr {
-    th, td {
-      padding: $table-padding;
-    }
-    // Stripe it up yo.
-    @if($even and $odd) {
-      &.even, 
-      &.odd,
-      &.alt,
-      &:nth-of-type(even),
-      &:nth-of-type(odd){ background: $table-striped-bg; }
-    }
-    @elseif($even) {
-      &.even,
-      &.alt,
-      &:nth-of-type(even) { background: $table-striped-bg; }
-    }
-    @elseif($odd) {
-      &.odd,
-      &.alt,
-      &:nth-of-type(odd) { background: $table-striped-bg; }
+  tbody {
+    tr {
+      th,
+      td { padding: $table-padding; }
+      // Stripe it up yo.
+      @if($stripe == even) {
+        &.even,
+        &.alt,
+        &:nth-of-type(even) { background: $table-striped-background; }
+      }
+      @elseif($stripe == odd) {
+        &.odd,
+        &.alt,
+        &:nth-of-type(odd) { background: $table-striped-background; }
+      }
     }
   }
 }
 
-/// Adds the ability to horizontally scroll the table for small screens
+/// Adds the ability to horizontally scroll the table when the content overflows horizontally.
 @mixin table-scroll {
   width: 100%;
   overflow-y: scroll;
@@ -113,6 +109,7 @@ $show-header-for-stacked: true;
       th:first-child {
         display: block !important;
       }
+
       th {
         display: none;
       }
@@ -120,16 +117,18 @@ $show-header-for-stacked: true;
   }
 
   @else {
-    thead { 
+    thead {
       display: none;
     }
   }
 
-  tfoot{
+  tfoot {
     display: none;
   }
 
-  tr, th, td {
+  tr,
+  th,
+  td {
     display: block;
   }
 
@@ -138,14 +137,14 @@ $show-header-for-stacked: true;
   }
 
   tr td:first-child {
-    border-top: 0 solid #ddd;
+    border-top: 0;
   }
 }
 
 table {
-  @include table;
+  @include table();
 }
-
+// scss-lint:disable MergeableSelector, QualifyingElement
 table.stack-for-small {
   @include breakpoint(medium down) {
     @include stack-for-small;
