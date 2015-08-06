@@ -41,21 +41,47 @@ $pagination: 1rem !default;
     }
   }
 
-  // Link
+  // Page links
   a,
   button {
     color: $black;
     display: block;
-    font-size: 1em;
     font-weight: normal;
     padding: rem-calc(3 10);
 
     &:hover {
-      background: #e6e6e6;
+      background: $light-gray;
     }
   }
 
-  // Previous link
+  // Current page
+  .current {
+    a,
+    button {
+      background: $primary-color;
+      color: $white;
+      cursor: default;
+      font-weight: bold;
+    }
+  }
+
+  // Disabled item
+  .disabled {
+    a,
+    button {
+      color: $medium-gray;
+      cursor: default;
+    }
+
+    &:hover {
+      a,
+      button {
+        background: transparent; 
+      }
+    } 
+  }
+
+  // Previous page
   [aria-label="previous"] { 
     &::before {
       content: "«";
@@ -64,7 +90,7 @@ $pagination: 1rem !default;
     }
   }
 
-  // Next link
+  // Next page
   [aria-label="next"] { 
     &::after {
       content: "»";
@@ -86,38 +112,6 @@ $pagination: 1rem !default;
   @include breakpoint(medium) {
     li {
       display: inline-block;
-      color: #222222;
-      font-size: 0.875rem;
-      height: 1.5rem;
-
-      &.disabled {
-        a,
-        button {
-          color: #999999;
-          cursor: default;
-
-          &:focus {
-            background: transparent; 
-          }
-        }
-
-        &:hover {
-          a,
-          button {
-            background: transparent; 
-          }
-        } 
-      } 
-
-      &.is-active {
-        a,
-        button {
-          background: $primary-color;
-          color: #FFFFFF;
-          cursor: default;
-          font-weight: bold;
-        }
-      }
     }
   }
 }
@@ -128,12 +122,12 @@ $pagination: 1rem !default;
 
 /* Accessibility - hides the arrow */
 [aria-label="pagination"] [aria-hidden="true"]:before {
-  content: "⇐";
+  content: "«";
 }
 
 /* Accessibility - hides the arrow */
 [aria-label="pagination"] [aria-hidden="true"]:after {
-  content: "⇒";
+  content: "»";
 }
 
 [aria-label="pagination"] [aria-hidden="true"]:after {
