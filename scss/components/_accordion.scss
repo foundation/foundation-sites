@@ -79,10 +79,6 @@ $accordion-content-padding: 1rem !default;
 
   /// Hover/active state
   > .is-active {
-    .content {
-      display: block;
-    }
-
     > a {
       background: $accordion-item-background-hover;
 
