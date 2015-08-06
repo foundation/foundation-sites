@@ -16,6 +16,7 @@ var files = {
   javascript: [
     'node_modules/jquery/dist/jquery.js',
     'js/foundation.core.js',
+    'js/foundation.util.*.js',
     'js/*.js'
   ],
   docsJavascript: [
