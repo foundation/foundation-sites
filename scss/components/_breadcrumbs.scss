@@ -2,36 +2,76 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-.breadcrumbs {
-  list-style: none;
-  margin-left: 0;
+////
+/// @group breadcrumbs
+////
 
+/// Margin around a breadcrumbs container.
+/// @type Number
+$breadcrumbs-margin: 0 0 $global-margin 0;
+
+/// If `true`, adds a slash between breadcrumb links.
+/// @type Boolean
+$breadcrumbs-slash: true;
+
+/// Font size of breadcrum links.
+/// @type Number
+$breadcrumbs-item-font-size: rem-calc(11);
+
+/// Color of breadcrum links.
+/// @type Color
+$breadcrumbs-item-color: $primary-color;
+
+/// Color of the active breadcrumb link.
+/// @type Color
+$breadcrumbs-item-color-current: $black;
+
+/// Opacity of disabled breadcrumb links.
+/// @type Number
+$breadcrumbs-item-opacity-disabled: 0.25;
+
+/// If `true`, makes breadcrumb links uppercase.
+/// @type Boolean
+$breadcrumbs-item-uppercase: true;
+
+// Breadcrumbs container
+.breadcrumbs {
+  @include clearfix;
+  list-style: none;
+  margin: $breadcrumbs-margin;
+
+  // Item wrapper
   li {
     float: left;
 
-    &:not(:last-child)::after {
-      color: #AAAAAA;
-      content: "/";
-      margin: 0 0.75rem;
-      position: relative;
-      top: 1px;
+    @if $breadcrumbs-slash {
+      &:not(:last-child)::after {
+        color: $medium-gray;
+        content: "/";
+        margin: 0 0.75rem;
+        position: relative;
+        top: 1px;
+      }
     }
   }
 
+  // Page links
   a {
-    color: $primary-color;
-    font-size: 0.6875rem;
-    line-height: 0.6875rem;
-    margin: 0;
-    text-transform: uppercase;
+    color: $breadcrumbs-item-color;
+    font-size: $breadcrumbs-item-font-size;
+    
+    @if $breadcrumbs-item-uppercase {
+      text-transform: uppercase;
+    }
 
     &:hover {
       text-decoration: underline;
     }
   }
 
+  // Current page
   .current a {
-    color: $dark-gray;
+    color: $breadcrumbs-item-color-current;
     cursor: default;
 
     &:hover {
@@ -39,15 +79,18 @@
     }
   }
 
+  // Disabled page links
   .disabled a {
-    opacity: 0.25;
+    opacity: $breadcrumbs-item-opacity-disabled;
     cursor: default;
-    text-decoration: none;
     pointer-events: none;
+
+    &:hover {
+      text-decoration: none;
+    }
   }
 }
 
-/* Accessibility - hides the forward slash */
+// Accessibility - hides the forward slash
 // [aria-label="breadcrumbs"] [aria-hidden="true"]:after {
   // content: "/"; }
-
