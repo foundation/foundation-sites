@@ -10,10 +10,6 @@
 /// @type Number
 $breadcrumbs-margin: 0 0 $global-margin 0;
 
-/// If `true`, adds a slash between breadcrumb links.
-/// @type Boolean
-$breadcrumbs-slash: true;
-
 /// Font size of breadcrum links.
 /// @type Number
 $breadcrumbs-item-font-size: rem-calc(11);
@@ -26,6 +22,10 @@ $breadcrumbs-item-color: $primary-color;
 /// @type Color
 $breadcrumbs-item-color-current: $black;
 
+/// Margin between breadcrumb items.
+/// @type Number
+$breadcrumbs-item-margin: 0.75rem;
+
 /// Opacity of disabled breadcrumb links.
 /// @type Number
 $breadcrumbs-item-opacity-disabled: 0.25;
@@ -34,8 +34,12 @@ $breadcrumbs-item-opacity-disabled: 0.25;
 /// @type Boolean
 $breadcrumbs-item-uppercase: true;
 
+/// If `true`, adds a slash between breadcrumb links.
+/// @type Boolean
+$breadcrumbs-item-slash: true;
+
 // Breadcrumbs container
-.breadcrumbs {
+@mixin breadcrumbs-container {
   @include clearfix;
   list-style: none;
   margin: $breadcrumbs-margin;
@@ -44,14 +48,17 @@ $breadcrumbs-item-uppercase: true;
   li {
     float: left;
 
-    @if $breadcrumbs-slash {
+    @if $breadcrumbs-item-slash {
       &:not(:last-child)::after {
         color: $medium-gray;
         content: "/";
-        margin: 0 0.75rem;
+        margin: 0 $breadcrumbs-item-margin;
         position: relative;
         top: 1px;
       }
+    }
+    @else {
+      margin-right: $breadcrumbs-item-margin;
     }
   }
 
@@ -68,25 +75,39 @@ $breadcrumbs-item-uppercase: true;
       text-decoration: underline;
     }
   }
+}
 
-  // Current page
-  .current a {
-    color: $breadcrumbs-item-color-current;
-    cursor: default;
+// Current page
+@mixin breadcrumbs-item-current {
+  color: $breadcrumbs-item-color-current;
+  cursor: default;
 
-    &:hover {
-      text-decoration: none;
-    }
+  &:hover {
+    text-decoration: none;
   }
+}
 
-  // Disabled page links
-  .disabled a {
-    opacity: $breadcrumbs-item-opacity-disabled;
-    cursor: default;
-    pointer-events: none;
+// Disabled page links
+@mixin breadcrumbs-item-disabled {
+  opacity: $breadcrumbs-item-opacity-disabled;
+  cursor: default;
+  pointer-events: none;
 
-    &:hover {
-      text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+@mixin foundation-breadcrumbs {
+  .breadcrumbs {
+    @include breadcrumbs-container;
+
+    .current a {
+      @include breadcrumbs-item-current;
+    }
+
+    .disabled a {
+      @include breadcrumbs-item-disabled;
     }
   }
 }
