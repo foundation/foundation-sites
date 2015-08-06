@@ -1,52 +1,14 @@
 !function($) {
-  "use strict";
 
-// Polyfill for requestAnimationFrame
-(function() {
-  if (!Date.now)
-    Date.now = function() { return new Date().getTime(); };
-    
-  var vendors = ['webkit', 'moz'];
-  for (var i = 0; i < vendors.length && !window.requestAnimationFrame; ++i) {
-      var vp = vendors[i];
-      window.requestAnimationFrame = window[vp+'RequestAnimationFrame'];
-      window.cancelAnimationFrame = (window[vp+'CancelAnimationFrame']
-                                 || window[vp+'CancelRequestAnimationFrame']);
-  }
-  if (/iP(ad|hone|od).*OS 6/.test(window.navigator.userAgent)
-    || !window.requestAnimationFrame || !window.cancelAnimationFrame) {
-    var lastTime = 0;
-    window.requestAnimationFrame = function(callback) {
-        var now = Date.now();
-        var nextTime = Math.max(lastTime + 16, now);
-        return setTimeout(function() { callback(lastTime = nextTime); },
-                          nextTime - now);
-    };
-    window.cancelAnimationFrame = clearTimeout;
-  }
-})();
+"use strict";
 
-// Polyfill to get the name of a function in IE9
-var functionName = function(fn) {
-  if (Function.prototype.name === undefined) {
-    var funcNameRegex = /function\s([^(]{1,})\(/;
-    var results = (funcNameRegex).exec((fn).toString());
-    return (results && results.length > 1) ? results[1].trim() : "";
-  }
-  else {
-    return fn.prototype.constructor.name;
-  }
-}
-
-// Convert PascalCase to kebab-case
-// Thank you: http://stackoverflow.com/a/8955580
-var hyphenate = function(str) {
-  return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
-}
+var FOUNDATION_VERSION = '6.0.0-alpha';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
 var Foundation = {
+  version: FOUNDATION_VERSION,
+
   /**
    * Stores initialized plugins.
    */
@@ -238,5 +200,48 @@ var foundation = function(method) {
 
 window.Foundation = Foundation;
 $.fn.foundation = foundation;
+
+// Polyfill for requestAnimationFrame
+(function() {
+  if (!Date.now)
+    Date.now = function() { return new Date().getTime(); };
+    
+  var vendors = ['webkit', 'moz'];
+  for (var i = 0; i < vendors.length && !window.requestAnimationFrame; ++i) {
+      var vp = vendors[i];
+      window.requestAnimationFrame = window[vp+'RequestAnimationFrame'];
+      window.cancelAnimationFrame = (window[vp+'CancelAnimationFrame']
+                                 || window[vp+'CancelRequestAnimationFrame']);
+  }
+  if (/iP(ad|hone|od).*OS 6/.test(window.navigator.userAgent)
+    || !window.requestAnimationFrame || !window.cancelAnimationFrame) {
+    var lastTime = 0;
+    window.requestAnimationFrame = function(callback) {
+        var now = Date.now();
+        var nextTime = Math.max(lastTime + 16, now);
+        return setTimeout(function() { callback(lastTime = nextTime); },
+                          nextTime - now);
+    };
+    window.cancelAnimationFrame = clearTimeout;
+  }
+})();
+
+// Polyfill to get the name of a function in IE9
+function functionName(fn) {
+  if (Function.prototype.name === undefined) {
+    var funcNameRegex = /function\s([^(]{1,})\(/;
+    var results = (funcNameRegex).exec((fn).toString());
+    return (results && results.length > 1) ? results[1].trim() : "";
+  }
+  else {
+    return fn.prototype.constructor.name;
+  }
+}
+
+// Convert PascalCase to kebab-case
+// Thank you: http://stackoverflow.com/a/8955580
+function hyphenate(str) {
+  return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+}
 
 }(jQuery);

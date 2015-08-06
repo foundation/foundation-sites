@@ -54,9 +54,6 @@ $foundation-version: '6.0.0-alpha';
 .foundation-mq {
   font-family: "#{map-serialize($breakpoints)}";
 }
-.foundation-version {
-  font-family: "#{$foundation-version}";
-}
 
 @mixin foundation-everything {
   @include foundation-global-styles;
