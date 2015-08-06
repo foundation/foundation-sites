@@ -37,7 +37,7 @@ $font-family-monospace: Consolas, "Liberation Mono", Courier, monospace !default
 
 /// Color of headers.
 /// @type Color
-$header-color: #222 !default;
+$header-color: $black !default;
 
 /// Line height of headers.
 /// @type Number
@@ -57,7 +57,7 @@ $small-font-size: 80% !default;
 
 /// Color of `<small>` elements when placed inside headers.
 /// @type Color
-$header-small-font-color: #666 !default;
+$header-small-font-color: $medium-gray !default;
 
 /// Line height of text inside `<p>` elements.
 /// @type Number
@@ -73,7 +73,7 @@ $paragraph-text-rendering: optimizeLegibility !default;
 
 /// Text color of code samples.
 /// @type Color
-$code-color: #333 !default;
+$code-color: $black !default;
 
 /// Font family of code samples.
 /// @type String | List
@@ -85,11 +85,11 @@ $code-font-weight: $global-weight-normal !default;
 
 /// Background color of code samples.
 /// @type Color
-$code-background: #eee !default;
+$code-background: $light-gray !default;
 
 /// Border around code samples.
 /// @type List
-$code-border: 1px solid #ccc !default;
+$code-border: 1px solid $medium-gray !default;
 
 /// Padding around text of code samples.
 /// @type Number | List
@@ -117,7 +117,7 @@ $hr-width: $global-width !default;
 
 /// Default border for a divider.
 /// @type List
-$hr-border: 1px solid #ddd;
+$hr-border: 1px solid $medium-gray;
 
 /// Default margin for a divider.
 /// @type Number | List
@@ -161,7 +161,7 @@ $defnlist-term-margin-bottom: 0.3rem !default;
 
 /// Text color of `<blockquote>` elements.
 /// @type Color
-$blockquote-color: #666 !default;
+$blockquote-color: $dark-gray !default;
 
 /// Padding inside a `<blockquote>` element.
 /// @type Number | List
@@ -169,7 +169,7 @@ $blockquote-padding: rem-calc(9 20 0 19) !default;
 
 /// Side border for `<blockquote>` elements.
 /// @type List
-$blockquote-border: 1px solid #ddd !default;
+$blockquote-border: 1px solid $medium-gray !default;
 
 /// Font size for `<cite>` elements.
 /// @type Number
@@ -177,7 +177,7 @@ $cite-font-size: rem-calc(13) !default;
 
 /// Text color for `<cite>` elements.
 /// @type Color
-$cite-color: #666 !default;
+$cite-color: $dark-gray !default;
 
 /// Font family for `<kbd>` elements.
 /// @type String | List
@@ -185,11 +185,11 @@ $keystroke-font: $font-family-monospace !default;
 
 /// Text color for `<kbd>` elements.
 /// @type Color
-$keystroke-color: #222 !default;
+$keystroke-color: $black !default;
 
 /// Background color for `<kbd>` elements.
 /// @type Color
-$keystroke-background: #e6e6e6 !default;
+$keystroke-background: $light-gray !default;
 
 /// Padding for `<kbd>` elements.
 /// @type Number | List
@@ -201,7 +201,7 @@ $keystroke-radius: $global-radius !default;
 
 /// Bottom border style for `<abbr>` and `<acronym>` elements.
 /// @type List
-$abbr-underline: 1px dotted #333 !default;
+$abbr-underline: 1px dotted $black !default;
 
 @mixin foundation-typography-base {
   // Typography resets

@@ -60,11 +60,11 @@ $white: #fefefe !default;
 
 /// Background color of the body.
 /// @type Color
-$body-background: #fff !default;
+$body-background: $white !default;
 
 /// Text color of the body.
 /// @type Color
-$body-font-color: #222 !default;
+$body-font-color: $black !default;
 
 /// Font stack of the body.
 /// @type List
