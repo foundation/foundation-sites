@@ -5,12 +5,12 @@ sass: scss/components/_breadcrumbs.scss
 ---
 
 ```html_example
-<nav aria-label="breadcrumb" role="navigation">
+<nav aria-label="Breadcrumbs" role="navigation">
   <ul class="breadcrumbs">
     <li><a href="#">Home</a></li>
     <li><a href="#">Features</a></li>
     <li class="disabled"><a href="#">Gene Splicing</a></li>
-    <li class="is-active"><a href="#">Cloning</a></li>
+    <li class="current"><a href="#">Cloning</a></li>
   </ul>
 </nav>
 ```
