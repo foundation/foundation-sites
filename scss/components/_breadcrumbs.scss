@@ -38,7 +38,7 @@ $breadcrumbs-item-uppercase: true;
 /// @type Boolean
 $breadcrumbs-item-slash: true;
 
-// Breadcrumbs container
+/// Adds styles for a breadcrumbs container, along with the styles for the `<li>` and `<a>` elements inside of it.
 @mixin breadcrumbs-container {
   @include clearfix;
   list-style: none;
@@ -77,7 +77,7 @@ $breadcrumbs-item-slash: true;
   }
 }
 
-// Current page
+/// Adds styles for a breadcrumb link that represents the current page. Apply this to an `<a>` element.
 @mixin breadcrumbs-item-current {
   color: $breadcrumbs-item-color-current;
   cursor: default;
@@ -87,7 +87,7 @@ $breadcrumbs-item-slash: true;
   }
 }
 
-// Disabled page links
+/// Adds styles for a disabled breadcrumb item. Apply this to an `<a>` element.
 @mixin breadcrumbs-item-disabled {
   opacity: $breadcrumbs-item-opacity-disabled;
   cursor: default;
