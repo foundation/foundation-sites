@@ -1,14 +1,12 @@
-
 ---
 title: Pagination
-description: Pagination is a type of navigation that lets users tap through a series of related pages. Moving between pages has become less common with the advent of longer pages and AJAX loading, but if you need pagination, Foundation has you covered.
-sass: 
-  - scss/components/_pagination.scss
+description: Pagination is a type of navigation that lets users click through pages of search results, products, or other related items.
+sass: scss/components/_pagination.scss
 ---
 
+## Basics
 
-
-
+```html_example
 <nav role="navigation" aria-label="pagination">
 	<ul class="pagination">
 	  <li class="disabled"><a href="#" aria-label="previous">Previous</a></li>
@@ -22,11 +20,13 @@ sass:
 	  <li><a href="#" aria-label="next">Next</a></li>
 	</ul>
 </nav>
+```
 
-<br>
-<h3>Centered</h3>
-<hr>
+---
 
+## Centered
+
+```html_example
 <nav role="navigation" aria-label="pagination" class="pagination-centered">
 	<ul class="pagination">
 	  <li class="disabled"><a href="#" aria-label="previous">Previous</a></li>
@@ -40,3 +40,4 @@ sass:
 	  <li><a href="#" aria-label="next">Next</a></li>
 	</ul>
 </nav>
+```

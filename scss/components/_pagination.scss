@@ -23,159 +23,78 @@ $pagination: 100% !default;
 $pagination: 1rem !default;
 */
 
-@import 'global';
-
-
-
-// We use these to control the pagination container
-$pagination-height: rem-calc(24) !default;
-$pagination-margin: rem-calc(-5) !default;
-
-// We use these to set the list-item properties
-$pagination-li-height: 1.5rem !default;
-$pagination-li-font-color: #999999 !default;
-$pagination-li-font-size: rem-calc(14) !default;
-$pagination-li-margin: rem-calc(5) !default;
-
-// We use these for the pagination anchor links
-$pagination-link-padding: rem-calc(1 10 1) !default;
-$pagination-font-color: #999999 !default;
-$pagination-link-active-bg: scale-color(#fff, $lightness: -10%) !default;
-
-// We use these for disabled anchor links
-$pagination-disabled-cursor: not-allowed !default;
-$pagination-disabled-font-color: $pagination-font-color !default;
-$pagination-disabled-background: transparent !default;
-
-// We use these for currently selected anchor links
-$pagination-active-background: $primary-color !default;
-$pagination-active-font-color: #fff !default;
-$pagination-active-font-weight: regular !default;
-$pagination-active-cursor: default !default;
-
-@mixin pagination-container($center:false) {
-  @if $center { text-align: center; }
-}
-
-@mixin pagination-unavailable-item {
-  a, button {
-    cursor: $pagination-disabled-cursor;
-    color: $pagination-disabled-font-color;
-  }
-
-  &:hover a,
-  & a:focus,
-  &:hover button,
-  & button:focus { 
-    background: $pagination-disabled-background; 
-  }
-}
-
-@mixin pagination-current-item($has-anchor: true) {
-  @if $has-anchor {
-    a, button {
-      background: $pagination-active-background;
-      color: $pagination-active-font-color;
-      cursor: $pagination-active-cursor;
-      font-weight: $pagination-active-font-weight;
-
-      &:hover,
-      &:focus { background: $pagination-active-background; }
-    }
-  } @else {
-    background: $pagination-active-background;
-    color: $pagination-active-font-color;
-    cursor: $pagination-active-cursor;
-    font-weight: $pagination-active-font-weight;
-    height: auto;
-    padding: $pagination-link-padding;
-    @include radius;
-
-    &:hover,
-    &:focus { background: $pagination-active-background; }
-  }
-}
-
-
+// Container
 .pagination {
+  @include clearfix;
   display: block;
-  margin-left: -0.3125rem;
-  min-height: 1.5rem; 
+  margin-left: 0;
 
+  // List item
   li {
-    color: #222222;
-    font-size: 0.875rem;
-    height: $pagination-li-height;
-    margin-left: 0.3125rem; 
+    font-size: rem-calc(14);
+    margin-right: rem-calc(1);
     display: none;
 
-    &:last-child, &:first-child {
+    &:last-child,
+    &:first-child {
       display: inline-block;
-    }
-
-    a, button {
-      border-radius: 3px;
-      transition: background-color 300ms ease-out;
-      background: none;
-      color: #999999;
-      display: block;
-      font-size: 1em;
-      font-weight: normal;
-      line-height: inherit;
-      padding: 0.0625rem 0.625rem 0.0625rem; 
-    }
-
-    &:hover a,
-    a:focus, 
-    &:hover button,
-    button:focus {
-      background: #e6e6e6; 
-    }
-
-    [aria-label="previous"] { 
-      &:before {
-        color: #999999;
-        content: "⇐";
-        position: relative;
-        display: inline-block;
-        margin: 0 0.75rem; 
-      }
-    }
-
-    [aria-label="next"] { 
-      &:after {
-        color: #999999;
-        content: "⇒";
-        position: relative;
-        display: inline-block;
-        margin: 0 0.75rem;
-      }
     }
   }
 
-  .ellipsis:after {
+  // Link
+  a,
+  button {
+    color: $black;
+    display: block;
+    font-size: 1em;
+    font-weight: normal;
+    padding: rem-calc(3 10);
+
+    &:hover {
+      background: #e6e6e6;
+    }
+  }
+
+  // Previous link
+  [aria-label="previous"] { 
+    &::before {
+      content: "«";
+      display: inline-block;
+      margin-right: 0.75rem; 
+    }
+  }
+
+  // Next link
+  [aria-label="next"] { 
+    &::after {
+      content: "»";
+      display: inline-block;
+      margin-left: 0.75rem;
+    }
+  }
+
+  // Ellipsis
+  .ellipsis::after {
     color: #999999;
     content: "…";
     position: relative;
     display: inline-block;
-    margin: 0 0.75rem;
+    padding: rem-calc(2 10);
   }
 
+  // Styles for larger screens
   @include breakpoint(medium) {
-
     li {
       display: inline-block;
-      float: left;
       color: #222222;
       font-size: 0.875rem;
       height: 1.5rem;
-      margin-left: 0.3125rem;
 
       &.disabled {
-
-        a ,button {
-        cursor: not-allowed;
-        color: #999999;
+        a,
+        button {
+          color: #999999;
+          cursor: default;
 
           &:focus {
             background: transparent; 
@@ -183,16 +102,16 @@ $pagination-active-cursor: default !default;
         }
 
         &:hover {
-
-          a, button {
+          a,
+          button {
             background: transparent; 
           }
         } 
       } 
 
       &.is-active {
-
-        a, button {
+        a,
+        button {
           background: $primary-color;
           color: #FFFFFF;
           cursor: default;
@@ -203,36 +122,20 @@ $pagination-active-cursor: default !default;
   }
 }
 
-
 .pagination-centered {
-  text-align: center; 
-
-  li {
-    float: none;
-    display: none;
-
-    &:last-child, &:first-child {
-      display: inline-block;
-    }
-  }
-
-  @include breakpoint(medium) {
-    
-    li {
-      display: inline-block;
-    }
-
-  }
+  text-align: center;
 }
 
 /* Accessibility - hides the arrow */
 [aria-label="pagination"] [aria-hidden="true"]:before {
-  content: "⇐"; }
+  content: "⇐";
+}
 
 /* Accessibility - hides the arrow */
 [aria-label="pagination"] [aria-hidden="true"]:after {
-  content: "⇒"; }
+  content: "⇒";
+}
 
 [aria-label="pagination"] [aria-hidden="true"]:after {
-  content: "…"; }
-
+  content: "…";
+}
