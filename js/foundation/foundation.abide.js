@@ -16,6 +16,9 @@
       // the amount of time Abide will take before it validates the form (in ms). 
       // smaller time will result in faster validation
       timeout : 1000,
+	  scroll_disable : false,
+	  scroll_offset : 0,
+	  scroll_media : /iPad|iPhone|Android|BlackBerry|Windows Phone|webOS/i,
       patterns : {
         alpha : /^[a-zA-Z]+$/,
         alpha_numeric : /^[a-zA-Z0-9]+$/,
@@ -122,11 +125,13 @@
             }
           })
           .on('focus', function (e) {
-            if (navigator.userAgent.match(/iPad|iPhone|Android|BlackBerry|Windows Phone|webOS/i)) {
-              $('html, body').animate({
-                  scrollTop: $(e.target).offset().top
-              }, 100);
-            } 
+            // Check if scroll is enabled via the settings and if the user agent matches the media regex
+			if (!settings.scroll_disable && navigator.userAgent.match(settings.scroll_media)) {
+			  // Scroll to element and add the offset - default 0
+			  $('html, body').animate({
+			    scrollTop: $(e.target).offset().top - settings.scroll_offset
+			  }, 100);
+			}
           });
     },
 
