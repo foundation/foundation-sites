@@ -68,7 +68,7 @@ $show-header-for-stacked: true;
       th,
       td {
         padding: $table-padding;
-        font-weight: $global-weight-normal;
+        font-weight: $global-weight-bold;
         text-align: left;
       }
     }
@@ -101,7 +101,7 @@ $show-header-for-stacked: true;
 }
 
 /// Adds styles for a stacked table. Useful for small-screen layouts.
-/// @param {Boolean} $header [$show-header-for-stacked] - Show the first <th> of header when stacked.
+/// @param {Boolean} $header [$show-header-for-stacked] - Show the first th of header when stacked.
 @mixin stack-for-small($header: $show-header-for-stacked) {
 
   @if ($header) {
