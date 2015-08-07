@@ -66,8 +66,8 @@ $tooltip-max-width: 300px !default;
       #{$default-float}: 50%;
 
       > .nub {
-        border-color: transparent transparent $tooltip-bg transparent;
         border: solid $tooltip-pip-size;
+        border-color: transparent transparent $tooltip-bg transparent;
         display: block;
         height: 0;
         pointer-events: none;
