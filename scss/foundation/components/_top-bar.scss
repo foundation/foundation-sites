@@ -435,8 +435,6 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
         top: 0;
         z-index: 99;
         #{$default-float}: 100%;
-        
-        background: $topbar-dropdown-bg;
 
         li {
           height: auto;
@@ -632,6 +630,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
         }
 
         .dropdown {
+          background: $topbar-dropdown-bg;
           #{$default-float}: 0;
           min-width: 100%;
           top: auto;
