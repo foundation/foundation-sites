@@ -329,7 +329,6 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
       }
 
       ul li {
-        background: $topbar-dropdown-bg;
 
         > a {
           color: $topbar-link-color;
@@ -436,6 +435,8 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
         top: 0;
         z-index: 99;
         #{$default-float}: 100%;
+        
+        background: $topbar-dropdown-bg;
 
         li {
           height: auto;
