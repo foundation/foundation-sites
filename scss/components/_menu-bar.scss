@@ -235,4 +235,27 @@ $menubar-expand-max: 6 !default;
       @include menu-bar-nested;
     }
   }
+
+  // A simple component to create side-by-side menus
+  .menu-group {
+    .input-group {
+      display: inline-table;
+      width: 300px;
+    }
+
+    .menu-group-left {
+      float: left;
+    }
+
+    .menu-group-right {
+      float: right
+    }
+
+    @include breakpoint(small only) {
+      .menu-group-left,
+      .menu-group-right {
+        float: none;
+      }
+    }
+  }
 }

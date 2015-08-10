@@ -23,17 +23,3 @@
 .menu-icon {
   @include hamburger($color: white, $color-hover: $medium-gray);
 }
-
-.menu-group {
-  .input-group {
-    display: inline-table;
-    width: 300px;
-  }
-
-  @include breakpoint(small only) {
-    .float-left,
-    .float-right {
-      float: none !important;
-    }
-  }
-}

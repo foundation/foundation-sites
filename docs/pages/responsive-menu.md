@@ -1,6 +1,10 @@
 ---
 title: Responsive Menu Bar
 description: Our three menu bar patterns form like Voltron into one responsive menu bar plugin, which allows you to switch between patterns at different screen sizes.
+sass: scss/components/tab-bar.scss
+js:
+  - ./js/foundation.menuBar.js
+  - ./js/foundation.tabBar.js
 ---
 
 ## Basics
@@ -75,7 +79,7 @@ By default, the tab bar will be visible on small screens, and the menu bar hides
 </div>
 
 <div class="clearfix menu-group" id="example-menu">
-  <div class="float-left">
+  <div class="menu-group-left">
     <ul class="vertical medium-horizontal menu-bar">
       <li><a href="#">Item 1</a></li>
       <li><a href="#">Item 2</a></li>
@@ -84,7 +88,7 @@ By default, the tab bar will be visible on small screens, and the menu bar hides
       <li><a href="#">Item 5</a></li>
     </ul>
   </div>
-  <div class="float-right">
+  <div class="menu-group-right">
     <div class="input-group">
       <input class="input-group-field" type="url">
       <a class="input-group-button button">Search</a>
