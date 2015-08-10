@@ -76,6 +76,7 @@ $menubar-expand-max: 6 !default;
 @mixin menu-bar-direction($dir: horizontal) {
   @if $dir == horizontal {
     > li {
+      width: auto;
       float: left;
     }
   }
@@ -186,12 +187,14 @@ $menubar-expand-max: 6 !default;
 
     @each $size in $breakpoint-classes {
       @if $size != small {
-        &.#{$size}-horizontal {
-          @include menu-bar-direction(horizontal);
-        }
+        @include breakpoint($size) {
+          &.#{$size}-horizontal {
+            @include menu-bar-direction(horizontal);
+          }
 
-        &.#{$size}-vertical {
-          @include menu-bar-direction(vertical);
+          &.#{$size}-vertical {
+            @include menu-bar-direction(vertical);
+          }
         }
       }
     }

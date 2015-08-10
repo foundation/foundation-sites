@@ -1,0 +1,39 @@
+////
+/// @group tab-bar
+////
+
+.tab-bar {
+  @include clearfix;
+  background: $black;
+  color: $white;
+  padding: 0.5rem;
+
+  .menu-icon {
+    margin-left: 0.25rem;
+    margin-right: 0.5rem;
+  }
+}
+
+.tab-bar-title {
+  font-weight: bold;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.menu-icon {
+  @include hamburger($color: white, $color-hover: $medium-gray);
+}
+
+.menu-group {
+  .input-group {
+    display: inline-table;
+    width: 300px;
+  }
+
+  @include breakpoint(small only) {
+    .float-left,
+    .float-right {
+      float: none !important;
+    }
+  }
+}

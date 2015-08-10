@@ -3,7 +3,34 @@ title: Responsive Menu Bar
 description: It's great.
 ---
 
-<ul class="vertical menu-bar" data-menubar="drilldown medium-dropdown" style="width: 300px;">
+```html_example
+<div class="tab-bar" data-tab-bar="example-menu" data-hidefor="medium">
+  <button class="menu-icon" type="button" data-toggle></button>
+  <div class="tab-bar-title">Menu</div>
+</div>
+
+<div class="clearfix menu-group" id="example-menu">
+  <div class="float-left">
+    <ul class="vertical medium-horizontal menu-bar">
+      <li><a href="#">Item 1</a></li>
+      <li><a href="#">Item 2</a></li>
+      <li><a href="#">Item 3</a></li>
+      <li><a href="#">Item 4</a></li>
+      <li><a href="#">Item 5</a></li>
+    </ul>
+  </div>
+  <div class="float-right">
+    <div class="input-group">
+      <input class="input-group-field" type="url">
+      <a class="input-group-button button">Search</a>
+    </div>
+  </div>
+</div>
+```
+
+---
+
+<!-- <ul class="vertical menu-bar" data-menu-bar="drilldown medium-dropdown" style="width: 300px;">
   <li class="has-submenu">
     <a href="#">Item 1</a>
     <ul class="vertical submenu menu-bar" data-submenu id="m2">
@@ -43,4 +70,4 @@ description: It's great.
       <li><a href="#">Item 3E</a></li>
     </ul>
   </li>
-</ul>
+</ul> -->
