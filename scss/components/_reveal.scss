@@ -136,10 +136,5 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
     &.full {
       @include reveal-modal-fullscreen;
     }
-    
-    // Modals pushed to back
-    &.to-back {
-      z-index: $reveal-zindex - 2;
-    }
   }
 }
