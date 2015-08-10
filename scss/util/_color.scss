@@ -29,7 +29,7 @@
 /// @param {percentage} $threshold - Threshold of lightness to check against.
 ///
 /// @returns {Color} A scaled color.
-@function smart-scale($color, $scale: 5%, $threshold: 60%) {
+@function smart-scale($color, $scale: 5%, $threshold: 40%) {
   @if lightness($color) > $threshold {
     $scale: -$scale;
   }

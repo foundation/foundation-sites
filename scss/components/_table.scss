@@ -8,9 +8,15 @@
 /// @group table
 ////
 
+/// Defualt color for table background.
+/// @type Color
+$table-background-color: white  !default;
+
+$table-color-scale: 10% !default;
+
 /// Defualt style for table border.
 /// @type List
-$table-border: 1px solid $medium-gray !default;
+$table-border: 1px solid smart-scale($table-background-color, $table-color-scale) !default;
 
 /// Defualt padding for table.
 /// @type Number
@@ -18,7 +24,7 @@ $table-padding: rem-calc(8 10 10) !default;
 
 /// Defualt background color for striped rows.
 /// @type Color
-$table-striped-background: $light-gray !default;
+$table-striped-background: smart-scale($table-background-color, $table-color-scale) !default;
 
 /// Defualt value for showing the stripe on rows of the tables, excluding the header and footer If even, the even rows will have a background color. If odd, the odd rows will have a background color. If empty, or anyother value, the table rows will have no striping.
 /// @type Keyoword
@@ -26,11 +32,11 @@ $table-stripe: even !default;
 
 /// Defualt color for header background.
 /// @type Color
-$table-head-background: $medium-gray !default;
+$table-head-background: smart-scale($table-background-color, $table-color-scale) !default;
 
 /// Defualt color for footer background.
 /// @type Color
-$table-foot-background: $medium-gray !default;
+$table-foot-background: smart-scale($table-background-color, $table-color-scale) !default;
 
 /// Defualt font color for header.
 /// @type Color
@@ -38,7 +44,7 @@ $table-head-font-color: $body-font-color !default;
 
 /// Defualt value for showing the header when using stacked tables.
 /// @type Boolean
-$show-header-for-stacked: true;
+$show-header-for-stacked: false;
 
 /// Adds the general styles for tables.
 
@@ -49,6 +55,7 @@ $show-header-for-stacked: true;
   tbody,
   tfoot {
     border: $table-border;
+    background-color: $table-background-color;
   }
 
   // Caption
@@ -76,19 +83,31 @@ $show-header-for-stacked: true;
   // Table rows
   tbody {
     tr {
-      th,
-      td { padding: $table-padding; }
-      // Stripe it up yo.
+      &:hover {
+        background-color: smart-scale( $table-background-color, 5%);
+      }
+
       @if($stripe == even) {
         &.even,
         &.alt,
         &:nth-of-type(even) { background: $table-striped-background; }
+        &:hover:nth-of-type(even){
+        background: smart-scale( $table-striped-background, 5%);
+        }
       }
+
       @elseif($stripe == odd) {
         &.odd,
         &.alt,
         &:nth-of-type(odd) { background: $table-striped-background; }
+        &:hover:nth-of-type(odd){
+        background: smart-scale( $table-striped-background, 5%);
+        }
       }
+
+      th,
+      td { padding: $table-padding; }
+      // Stripe it up yo.
     }
   }
 }

@@ -1,65 +1,81 @@
-
-
 .range-slider {
-  border: 1px solid #DDDDDD;
-  margin: 1.25rem 0;
+  background: $secondary-color;
   position: relative;
-  -ms-touch-action: none;
-  touch-action: none;
   display: block;
-  height: 1rem;
   width: 100%;
-  background: #FAFAFA; }
-  .range-slider.vertical-range {
-    border: 1px solid #DDDDDD;
-    margin: 1.25rem 0;
-    position: relative;
-    -ms-touch-action: none;
-    touch-action: none;
-    display: inline-block;
-    height: 12.5rem;
-    width: 1rem; }
-    .range-slider.vertical-range .range-slider-handle {
-      bottom: -10.5rem;
-      margin-left: -0.5rem;
-      margin-top: 0;
-      position: absolute; }
-    .range-slider.vertical-range .range-slider-active-segment {
-      bottom: 0;
-      height: auto;
-      width: 0.875rem; }
-  .range-slider.radius {
-    background: #FAFAFA;
-    border-radius: 3px; }
-    .range-slider.radius .range-slider-handle {
-      background: #008CBA;
-      border-radius: 3px; }
-      .range-slider.radius .range-slider-handle:hover {
-        background: #007ba4; }
-  .range-slider.round {
-    background: #FAFAFA;
-    border-radius: 1000px; }
-    .range-slider.round .range-slider-handle {
-      background: #008CBA;
-      border-radius: 1000px; }
-      .range-slider.round .range-slider-handle:hover {
-        background: #007ba4; }
-  .range-slider.disabled, .range-slider[disabled] {
-    background: #FAFAFA;
-    cursor: not-allowed;
-    opacity: 0.7; }
-    .range-slider.disabled .range-slider-handle, .range-slider[disabled] .range-slider-handle {
-      background: #008CBA;
-      cursor: default;
-      opacity: 0.7; }
-      .range-slider.disabled .range-slider-handle:hover, .range-slider[disabled] .range-slider-handle:hover {
-        background: #007ba4; }
+  height: 1rem;
+  margin: 1.25rem 0; 
+  touch-action: none;
+}
+.range-slider.vertical-range {
+  display: inline-block;
+  height: 12.5rem;
+  width: 1rem; 
+}
+
+.range-slider.vertical-range .range-slider-handle {
+  bottom: -10.5rem;
+  margin-left: -0.5rem;
+  margin-top: 0;
+  position: absolute; 
+}
+
+.range-slider.vertical-range .range-slider-active-segment {
+  bottom: 0;
+  height: auto;
+  width: 0.875rem; 
+}
+
+.range-slider.radius {
+  background: #FAFAFA;
+  border-radius: 3px; 
+}
+
+.range-slider.radius .range-slider-handle {
+  background: #008CBA;
+  border-radius: 3px; 
+}
+
+.range-slider.radius .range-slider-handle:hover {
+  background: #007ba4; 
+}
+
+.range-slider.round {
+  background: #FAFAFA;
+  border-radius: 1000px; 
+}
+
+.range-slider.round .range-slider-handle {
+  background: #008CBA;
+  border-radius: 1000px; 
+}
+
+.range-slider.round .range-slider-handle:hover {
+  background: #007ba4; 
+}
+
+.range-slider.disabled, .range-slider[disabled] {
+  background: #FAFAFA;
+  cursor: not-allowed;
+  opacity: 0.7; 
+}
+
+.range-slider.disabled .range-slider-handle, .range-slider[disabled] .range-slider-handle {
+  background: #008CBA;
+  cursor: default;
+  opacity: 0.7; 
+}
+
+.range-slider.disabled .range-slider-handle:hover, .range-slider[disabled] .range-slider-handle:hover {
+  background: #007ba4; 
+}
 
 .range-slider-active-segment {
   background: #e5e5e5;
   display: inline-block;
   height: 0.875rem;
-  position: absolute; }
+  position: absolute; 
+}
 
 .range-slider-handle {
   border: 1px solid none;
@@ -72,6 +88,9 @@
   z-index: 1;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
-  background: #008CBA; }
-  .range-slider-handle:hover {
-    background: #007ba4; }
+  background: #008CBA; 
+}
+
+.range-slider-handle:hover {
+  background: #007ba4; 
+}
