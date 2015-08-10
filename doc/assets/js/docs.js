@@ -110,8 +110,8 @@ if ($('[data-building-blocks]').length > 0) {
     };
   };
   $.ajax({
-    url:'http://zurb.com/library/api/building_blocks/type/' + $("#component-name").attr("name") + ".json",
-    dataType:'json',
+    url:'http://zurb.com/library/api/building_blocks/type/' + $("#component-name").attr("name"),
+    dataType:'jsonp',
     success: cb
   });
 }
