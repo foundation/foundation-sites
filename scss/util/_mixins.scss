@@ -47,11 +47,11 @@
 /// @param {Number} $weight - Height of individual bars in the icon.
 /// @param {Number} $bars - Number of bars in the icon.
 @mixin hamburger(
-  $color: $black,
-  $color-hover: $dark-gray,
-  $width: 30px,
-  $height: 23px,
-  $weight: 4px,
+  $color: black,
+  $color-hover: #666,
+  $width: 20px,
+  $height: 16px,
+  $weight: 2px,
   $bars: 3
 ) {
   // box-shadow CSS output
@@ -77,6 +77,8 @@
     width: 100%;
     height: $weight;
     background: $color;
+    top: 0;
+    left: 0;
 
     @for $i from 2 through $bars {
       $offset: ($weight + $spacing) * ($i - 1);
