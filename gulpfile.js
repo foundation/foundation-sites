@@ -2,7 +2,7 @@ var $ = require('gulp-load-plugins')();
 var gulp = require('gulp');
 var settingsParser = require('foundation-settings-parser');
 var shipyard = require('shipyard');
-var supercollider = require('supercollider').init;
+var supercollider = require('supercollider');
 var rimraf = require('rimraf');
 
 var files = {
@@ -40,10 +40,10 @@ gulp.task('copy', function() {
 gulp.task('html', function() {
   var mdFilter = $.filter(['*.md']);
 
-  gulp.src('docs/pages/**/*')
+  return gulp.src('docs/pages/**/*')
     .pipe($.cached('docs'))
     .pipe(mdFilter)
-      .pipe(supercollider({
+      .pipe(supercollider.init({
         template: 'docs/layout/component.html',
         adapters: ['sass', 'js'],
         handlebars: require('./lib/handlebars')
@@ -59,14 +59,9 @@ gulp.task('html:reset', function() {
   delete $.cached.caches['docs'];
   gulp.run('html');
 });
-gulp.task('html:map', function() {
-  supercollider({
-    src: 'docs/pages/**/*.md',
-    template: 'docs/layout/component.html',
-    adapters: ['sass', 'js'],
-    handlebars: require('./lib/handlebars'),
-    debug: 'data.json'
-  });
+gulp.task('html:map', ['html'], function(cb) {
+  rimraf.sync('./_debug.json');
+  require('fs').writeFile('./_debug.json', JSON.stringify(supercollider.tree, null, '  '), cb);
 });
 
 // Compiles Sass files into CSS

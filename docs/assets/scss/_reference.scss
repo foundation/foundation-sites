@@ -2,7 +2,23 @@
 
 .docs-variable-table {
   width: 100%;
+  border: 0;
+
+  thead {
+    border: 0;
+    background: transparent;
+    border-bottom: 2px solid $medium-gray;
+
+    th {
+      text-align: left;
+    }
+  }
+
+  tbody {
+    border: 0;
+  }
   
+  // Reset code styles to look like plain text
   code {
     background: transparent;
     color: #222;
@@ -10,11 +26,22 @@
     padding: 0;
   }
 
-  td:first-child code {
-    font-weight: bold;
+  // Make the first column's text bold, and don't wrap text
+  td:first-child {
+    white-space: nowrap;
+
+    code {
+      font-weight: bold;
+    }
   }
 
+  // Don't add margin to Markdown-formatted text
   td > p:last-child {
     margin-bottom: 0;
+  }
+
+  // For when a cell has the text "None" and no actual value
+  code > span {
+    font-family: $body-font-family;
   }
 }
