@@ -287,6 +287,12 @@ $visibility-breakpoint-queries:
   @media #{$topbar-media-query} {
     .hide-for-top-bar-desktop  { display: none !important; }
     .show-for-top-bar-desktop  { display: inherit !important; }
+    table.show-for-top-bar-desktop { display: table !important; }
+    thead.show-for-top-bar-desktop { display: table-header-group !important; }
+    tbody.show-for-top-bar-desktop { display: table-row-group !important; }
+    tr.show-for-top-bar-desktop { display: table-row !important; }
+    td.show-for-top-bar-desktop { display: table-cell !important; }
+    th.show-for-top-bar-desktop { display: table-cell !important; }
   }
 
   /* Orientation targeting */
