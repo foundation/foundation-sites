@@ -46,60 +46,54 @@ $tooltip-pip-offset: 1.25rem;
   &:hover {
     cursor: help;
   }
-
-  &:before, &:after {
-    position: absolute;
-    top: 0;
-    z-index: 10;
-  }
-
-  &:before {
-    @include css-triangle($tooltip-pip-width, $tooltip-background-color, up);
-    display: none;
-    top: $tooltip-distance;
-    left: $tooltip-pip-offset;
-  } 
-
-  &:after {
-    background-color: $tooltip-background-color;
-    color: $white;
-    content: attr(title);
-    font-size: $tooltip-font-size;
-    margin-top: $tooltip-body-margin;
-    padding: $tooltip-padding;
-    top: $tooltip-distance;
-    width: auto;
-    min-width: $tooltip-min-width;
-  }
-
-  &.radius {
-    &:after {
-      border-radius: $global-radius;
-    }
-  }
 }
 
-%tip-top {
-  &:before {
+
+.pip, .tip-content {
+  position: absolute;
+  top: 0;
+  z-index: 10;
+}
+
+.pip {
+  @include css-triangle($tooltip-pip-width, $tooltip-background-color, up);
+  top: $tooltip-distance;
+  left: $tooltip-pip-offset;
+} 
+
+.tip-content {
+  background-color: $tooltip-background-color;
+  color: $white;
+  content: attr(title);
+  font-size: $tooltip-font-size;
+  margin-top: $tooltip-body-margin;
+  padding: $tooltip-padding;
+  top: $tooltip-distance;
+  width: auto;
+  min-width: $tooltip-min-width;
+}
+
+.top {
+  &.pip {
    @include css-triangle($tooltip-pip-width, $tooltip-background-color, down);
    top: -$tooltip-distance;
  }
  
-  &:after {
+  &.tip-content {
     bottom: $tooltip-distance;
     top: auto; 
     margin-bottom: $tooltip-body-margin;
   }
 }
 
-%tip-left {
-  &:before {
+.left {
+  &.pip {
     @include css-triangle($tooltip-pip-width, $tooltip-background-color, right);
     @include v-align-middle;
     left: -$tooltip-distance;
   }
 
-  &:after {
+  &.tip-content {
     @include v-align-middle;
     bottom: auto;
     left: auto;
@@ -107,15 +101,15 @@ $tooltip-pip-offset: 1.25rem;
   }
 }
 
-%tip-right {
-  &:before {
+.right {
+  &.pip {
     @include css-triangle($tooltip-pip-width, $tooltip-background-color, left);
     @include v-align-middle;
     left: auto;
     right: -$tooltip-distance;
   }
 
-  &:after {
+  &.tip-content {
     @include v-align-middle;
     bottom: auto;
     left: $tooltip-body-distance;
@@ -124,16 +118,6 @@ $tooltip-pip-offset: 1.25rem;
 }
 
 //makes sure the hover display property doesn't get overridden
-%has-tip {
-  &:before, &:after {
-    display: none;
-  }
-
-  &:hover:before, &:hover:after,
-  &:focus:before, &:focus:after{
-    display: block;
-  }
-}
 
 .has-tip {
   @extend %has-tip;
