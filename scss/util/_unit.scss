@@ -46,3 +46,14 @@ $rem-base: 16px !default;
   
   @return $rem-values;
 }
+
+// Converts a unitless, pixel, or rem value to em, for use in breakpoints.
+@function -zf-bp-to-em($value) {
+  // Pixel and unitless values are converted to rems
+  @if unit($value) == 'px' or unit($value) == '' {
+    $value: rem-calc($value);
+  }
+
+  // Then the value is converted to ems
+  @return strip-unit($value) * 1em;
+}

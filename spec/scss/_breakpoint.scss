@@ -3,10 +3,8 @@
 
 @include describe("Breakpoint") {
   @include it("converts a named breakpoint to an em value") {
-    $medium: strip-unit(map-get($breakpoints, medium));
-
     $actual: breakpoint(medium);
-    $expected: '(min-width: #{$medium}em)';
+    $expected: '(min-width: 40em)';
 
     @include should(expect($actual), to(be($expected)));
   }
@@ -19,20 +17,15 @@
   }
 
   @include it("creates an only range out of a named breakpoint") {
-    $medium: strip-unit(map-get($breakpoints, medium)) * 1em;
-    $large: strip-unit(map-get($breakpoints, large) - (1/16)) * 1em;
-
     $actual: breakpoint(medium only);
-    $expected: '(min-width: #{$medium}) and (max-width: #{$large})';
+    $expected: '(min-width: 40em) and (max-width: 63.9375em)';
 
     @include should(expect($actual), to(be($expected)));
   }
 
   @include it("creates a down range out of a named breakpoint") {
-    $medium: strip-unit(map-get($breakpoints, medium) - (1/16)) * 1em;
-
     $actual: breakpoint(medium down);
-    $expected: '(max-width: #{$medium})';
+    $expected: '(max-width: 39.9375em)';
 
     @include should(expect($actual), to(be($expected)));
   }

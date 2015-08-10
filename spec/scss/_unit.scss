@@ -32,3 +32,12 @@
     @include should(expect($actual), to(be($expected)));
   }
 }
+
+@include describe("Breakpoint to Em") {
+  @include it("converts a unitless, pixel, or rem value to em") {
+    @include should(expect(-zf-bp-to-em(16)), to(be(1em)));
+    @include should(expect(-zf-bp-to-em(16px)), to(be(1em)));
+    @include should(expect(-zf-bp-to-em(1rem)), to(be(1em)));
+    @include should(expect(-zf-bp-to-em(1em)), to(be(1em)));
+  }
+}

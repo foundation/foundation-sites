@@ -52,7 +52,7 @@ $breakpoint-classes: (small medium large) !default;
           $bp-max: null;
         }
         @else {
-          $bp-max: $next-bp - (1/16);
+          $bp-max: $next-bp;
         }
       }
 
@@ -64,16 +64,10 @@ $breakpoint-classes: (small medium large) !default;
     }
   }
 
-  // Pixel and unitless values are converted to rems
-  @if unit($bp) == 'px' or unit($bp) == '' {
-    $bp: rem-calc($bp);
-  }
-
-  // Finally, the value is converted to ems
-  $bp: strip-unit($bp) * 1em;
-
+  // Convert any pixel, rem, or unitless value to em
+  $bp: -zf-bp-to-em($bp);
   @if $bp-max {
-    $bp-max: strip-unit($bp-max) * 1em;
+    $bp-max: -zf-bp-to-em($bp-max) - (1/16);
   }
 
   // Skip media query creation if the input is "0 up" or "0 down"
