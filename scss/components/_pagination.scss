@@ -1,135 +1,155 @@
 ////
 /// @group pagination
 ////
-/*
+
+/// Font size of pagination items.
+/// @type Number
+$pagination-font-size: rem-calc(14);
+
 /// Default bottom margin of the media object.
-/// @type {Number|List}
-$pagination-margin-bottom: 1rem !default;
+/// @type Number
+$pagination-margin-bottom: $global-margin !default;
 
-/// Default left & right padding of the media item.
-/// @type {Number|List}
-$pagination-padding: 1rem !default;
+/// Text color of pagination items.
+/// @type Color
+$pagination-item-color: $black;
 
-/// Default media title heading padding of the media item.
-/// @type {Number|List}
-$pagination-padding: 0 !default;
+/// Padding inside of pagination items.
+/// @type Number
+$pagination-item-padding: rem-calc(3 10);
 
-/// Default media object image width on small. Set to 'auto' for original width.
-/// @type {Number|List}
-$pagination: 100% !default;
+/// Right margin to separate pagination items.
+/// @type Number
+$pagination-item-spacing: rem-calc(1);
 
-/// Default media object image margin bottom on small.
-/// @type {Number|List}
-$pagination: 1rem !default;
-*/
+/// Background color of pagination items on hover.
+/// @type Color
+$pagination-item-background-hover: $light-gray;
 
-// Container
-.pagination {
+/// Text color of the pagination item for the current page.
+/// @type Color
+$pagination-item-color-current: foreground($pagination-item-background-current);
+
+/// Background color of pagination item for the current page.
+/// @type Color
+$pagination-item-background-current: $primary-color;
+
+/// Text color of a disabled pagination item.
+/// @type Color
+$pagination-item-color-disabled: $medium-gray;
+
+/// Color of the ellipsis in a pagination menu.
+/// @type Color
+$pagination-ellipsis-color: $medium-gray;
+
+/// If `false`, don't display page number links on mobile, only next/previous links.
+/// @type Boolean
+$pagination-mobile-items: false;
+
+/// If `true`, arrows are added to the next and previous links of pagination.
+/// @type Boolean
+$pagination-arrows: true;
+
+/// Adds styles for a pagination container. Apply this to a `<ul>`.
+@mixin pagination-container {
   @include clearfix;
-  display: block;
   margin-left: 0;
+  margin-bottom: $pagination-margin-bottom;
 
   // List item
   li {
-    font-size: rem-calc(14);
-    margin-right: rem-calc(1);
+    font-size: $pagination-font-size;
+    margin-right: $pagination-item-spacing;
     display: none;
 
-    &:last-child,
-    &:first-child {
-      display: inline-block;
+    @if not $pagination-mobile-items {
+      &:last-child,
+      &:first-child {
+        display: inline-block;
+      }
+
+      @include breakpoint(medium) {
+        display: inline-block;
+      }
     }
   }
 
   // Page links
   a,
   button {
-    color: $black;
+    color: $pagination-item-color;
     display: block;
-    font-weight: normal;
-    padding: rem-calc(3 10);
+    padding: $pagination-item-padding;
 
     &:hover {
-      background: $light-gray;
+      background: $pagination-item-background-hover;
     }
   }
 
-  // Current page
-  .current {
-    a,
-    button {
-      background: $primary-color;
-      color: $white;
-      cursor: default;
-      font-weight: bold;
+  // Symbols
+  @if $pagination-arrows {
+    [aria-label="previous"] { 
+      &::before {
+        content: "«";
+        display: inline-block;
+        margin-right: 0.75rem; 
+      }
+    }
+
+    [aria-label="next"] { 
+      &::after {
+        content: "»";
+        display: inline-block;
+        margin-left: 0.75rem;
+      }
     }
   }
+}
 
-  // Disabled item
-  .disabled {
-    a,
-    button {
-      color: $medium-gray;
-      cursor: default;
-    }
+/// Adds styles for the current pagination item. Apply this to an `<a>`.
+@mixin pagination-item-current {
+  background: $pagination-item-background-current;
+  color: $pagination-item-color-current;
+  cursor: default;
+}
 
-    &:hover {
+/// Adds styles for a disabled pagination item. Apply this to an `<a>`.
+@mixin pagination-item-disabled {
+  color: $pagination-item-color-disabled;
+  cursor: default;
+
+  &:hover {
+    background: transparent;
+  }
+}
+
+/// Adds styles for an ellipsis for use in a pagination list.
+@mixin pagination-ellipsis {
+  content: "…";
+  padding: $pagination-item-padding;
+  color: $pagination-ellipsis-color;
+}
+
+@mixin foundation-pagination {
+  .pagination {
+    @include pagination-container;
+
+    .current {
       a,
       button {
-        background: transparent; 
+        @include pagination-item-current;
       }
-    } 
-  }
+    }
 
-  // Previous page
-  [aria-label="previous"] { 
-    &::before {
-      content: "«";
-      display: inline-block;
-      margin-right: 0.75rem; 
+    .disabled {
+      a,
+      button {
+        @include pagination-item-disabled;
+      }
+    }
+
+    .ellipsis::after {
+      @include pagination-ellipsis;
     }
   }
-
-  // Next page
-  [aria-label="next"] { 
-    &::after {
-      content: "»";
-      display: inline-block;
-      margin-left: 0.75rem;
-    }
-  }
-
-  // Ellipsis
-  .ellipsis::after {
-    color: #999999;
-    content: "…";
-    position: relative;
-    display: inline-block;
-    padding: rem-calc(2 10);
-  }
-
-  // Styles for larger screens
-  @include breakpoint(medium) {
-    li {
-      display: inline-block;
-    }
-  }
-}
-
-.pagination-centered {
-  text-align: center;
-}
-
-/* Accessibility - hides the arrow */
-[aria-label="pagination"] [aria-hidden="true"]:before {
-  content: "«";
-}
-
-/* Accessibility - hides the arrow */
-[aria-label="pagination"] [aria-hidden="true"]:after {
-  content: "»";
-}
-
-[aria-label="pagination"] [aria-hidden="true"]:after {
-  content: "…";
 }
