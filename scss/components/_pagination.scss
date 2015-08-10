@@ -26,13 +26,13 @@ $pagination-item-spacing: rem-calc(1);
 /// @type Color
 $pagination-item-background-hover: $light-gray;
 
-/// Text color of the pagination item for the current page.
-/// @type Color
-$pagination-item-color-current: foreground($pagination-item-background-current);
-
 /// Background color of pagination item for the current page.
 /// @type Color
 $pagination-item-background-current: $primary-color;
+
+/// Text color of the pagination item for the current page.
+/// @type Color
+$pagination-item-color-current: foreground($pagination-item-background-current);
 
 /// Text color of a disabled pagination item.
 /// @type Color
