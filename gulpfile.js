@@ -6,6 +6,10 @@ var supercollider = require('supercollider');
 var rimraf = require('rimraf');
 
 var files = {
+  assetPaths: [
+    'docs/assets/**/*',
+    '!docs/assets/{js|scss}/**/*'
+  ],
   sassSrc: 'scss/foundation.scss',
   sassPaths: ['scss'],
   sassTestPaths: [
@@ -32,7 +36,10 @@ gulp.task('clean', function() {
 
 // Copies static assets
 gulp.task('copy', function() {
-  gulp.src('node_modules/zeroclipboard/dist/ZeroClipboard.swf')
+  gulp.src(files.assetPaths)
+    .pipe(gulp.dest('dist/assets'));
+
+  return gulp.src('node_modules/zeroclipboard/dist/ZeroClipboard.swf')
     .pipe(gulp.dest('dist/assets/js'));
 });
 
