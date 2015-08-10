@@ -370,12 +370,12 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 }
 
 // We use this mixin to turn on/off HTML5 number spinners
-@mixin html5number($browser, $on:true) {
-  @if $on==false {
-      @if $browser==webkit {
+@mixin html5number($browser, $on: true) {
+  @if $on == false {
+      @if $browser == webkit {
         -webkit-appearance: none;
         margin: 0;
-      } @else if $browser==moz {
+      } @else if $browser == moz {
         -moz-appearance: textfield;
       }
   }
