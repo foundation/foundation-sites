@@ -44,4 +44,13 @@
   code > span {
     font-family: $body-font-family;
   }
+
+  // Prevent hover state
+  tbody tr:hover {
+    background: transparent;
+  }
+
+  tbody tr:nth-of-type(even):hover {
+    background: $light-gray;
+  }
 }
