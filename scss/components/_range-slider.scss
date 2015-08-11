@@ -1,10 +1,9 @@
 $slider-height: 1rem;
-$slider-handle-height: 2rem;
-$slider-handle-width: 2rem;
+$slider-handle-height: 1.75rem;
+$slider-handle-width: 1.75rem;
 $slider-handle-color: $primary-color;
 $slider-disabled-fade: 80%;
 $slider-fill-color: $medium-gray;
-
 $vertical-slider-width: 1rem;
 
 .slider {
@@ -48,7 +47,9 @@ $vertical-slider-width: 1rem;
   }
 
   .slider-handle {
+    cursor: not-allowed;
     background: scale-color($slider-handle-color, $lightness: $slider-disabled-fade);
+    
     &:hover {
       background: scale-color($slider-handle-color, $lightness: $slider-disabled-fade);  
     }
@@ -59,19 +60,17 @@ $vertical-slider-width: 1rem;
   display: inline-block;
   height: 12.5rem;
   width: $vertical-slider-width; 
+  margin: 0 1.25rem;
 
   .slider-fill {
-    bottom: 0;
-    height: auto;
-    width: 0.875rem; 
+    top: 0;
+    width: $vertical-slider-width; 
   }
 
-  .slider-handle {
-    bottom: -10.5rem;
-    margin-left: -0.5rem;
-    margin-top: 0;
-    position: absolute; 
+  .slider-handle { 
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
   }
 }
-
-
