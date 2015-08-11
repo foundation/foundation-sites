@@ -3,23 +3,23 @@
 ////
 
 /// Default bottom margin of the media object.
-/// @type {Number|List}
+/// @type Number
 $media-object-margin-bottom: 1rem !default;
 
 /// Default left & right padding of the media item.
-/// @type {Number|List}
+/// @type Number
 $media-item-padding: 1rem !default;
 
 /// Default media title heading padding of the media item.
-/// @type {Number|List}
+/// @type Number
 $media-title-padding: 0 !default;
 
 /// Default media object image width on small. Set to 'auto' for original width.
-/// @type {Number|List}
+/// @type Number
 $media-object-stack-img-width: 100% !default;
 
 /// Default media object image margin bottom on small.
-/// @type {Number|List}
+/// @type Number
 $media-object-stack-img-margin: 1rem !default;
 
 /// Generates the base styles for a media object.

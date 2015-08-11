@@ -1,9 +1,9 @@
 ---
-title: Utility Classes
-description: Foundation includes a handful of helpful utility classes to add certain behaviors to your elements.
+title: Float Classes
+description: Foundation includes a handful of helpful float classes to add common positioning behaviors to elements.
 ---
 
-## Float Classes
+## Float Left/Right
 
 You can change the float behavior of an element by adding the `.float-left` or `.float-right` classes to an element. To clear floats, add the class `.clearfix` to the parent element.
 

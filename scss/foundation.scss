@@ -21,7 +21,7 @@ $foundation-version: '6.0.0-alpha';
   'typography/typography',
   'grid/grid',
   'forms/forms',
-  'components/utility',
+  'components/float',
   'components/visibility',
   'components/accordion',
   'components/button',
@@ -58,7 +58,7 @@ $foundation-version: '6.0.0-alpha';
 @mixin foundation-everything {
   @include foundation-global-styles;
   @include foundation-grid-classes;
-  @include foundation-utilities;
+  @include foundation-float-classes;
   @include foundation-button;
   @include foundation-button-group;
   @include foundation-forms;

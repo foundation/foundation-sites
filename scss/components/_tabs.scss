@@ -1,6 +1,6 @@
 
 /// Default margin of the tab bar.
-/// @type Number|List
+/// @type Number
 $tab-margin: 0 !default;
 
 /// Default background color of a tab bar.
@@ -23,7 +23,7 @@ $tab-item-color: foreground($tab-background, $primary-color);
 $tab-item-background-hover: $white !default;
 
 /// Default padding of a a tab item.
-/// @type Number | List
+/// @type Number
 $tab-item-padding: 1.25rem 1.5rem !default;
 
 /// Maximum number of `expand-n` classes to include in the CSS.

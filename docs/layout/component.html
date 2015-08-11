@@ -26,15 +26,17 @@
       Variables
     </h3>
 
-    <p>The default styles of this component can be customized using these Sass variables in your project's <a href="#">settings file</a>.</p>
+    <p>The default styles of this component can be customized using these Sass variables in your project's <a href="sass.html#the-settings-file">settings file</a>.</p>
 
     <table class="docs-variable-table">
-      <tr><th>Name</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+      <thead>
+        <tr><th>Name</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+      </thead>
       {{#each sass.variable}}
       <tr>
-        <td><code>${{this.context.name}}</code></td>
-        <td>{{this.type}}</td>
-        <td><code>{{this.context.value}}</code></td>
+        <td class="name"><code>${{this.context.name}}</code></td>
+        <td>{{writeTypes this.type}}</td>
+        <td><code>{{writeValue this.context.value}}</code></td>
         <td>{{md this.description}}</td>
       </tr>
       {{/each}}
@@ -71,12 +73,14 @@
 
       {{#if this.parameter}}
       <table class="docs-variable-table">
-        <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        <thead>
+          <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        </thead>
         {{#each this.parameter}}
         <tr>
           <td><code>${{this.name}}</code></td>
-          <td>{{this.type}}</td>
-          <td><code>{{this.default}}</code></td>
+          <td>{{writeTypes this.type}}</td>
+          <td><code>{{writeValue this.default}}</code></td>
           <td>{{md this.description}}</td>
         </tr>
         {{/each}}
@@ -118,12 +122,14 @@
 
       {{#if this.parameter}}
       <table class="docs-variable-table">
-        <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        <thead>
+          <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        </thead>
         {{#each this.parameter}}
         <tr>
           <td><code>${{this.name}}</code></td>
-          <td>{{this.type}}</td>
-          <td><code>{{this.default}}</code></td>
+          <td>{{writeTypes this.type}}</td>
+          <td><code>{{writeValue this.default}}</code></td>
           <td>{{md this.description}}</td>
         </tr>
         {{/each}}
@@ -162,7 +168,9 @@
     {{/if}}
     {{#if this.params}}
     <table class="docs-variable-table">
-      <tr><th>Name</th><th>Type</th><th>Description</th></tr>
+      <thead>
+        <tr><th>Name</th><th>Type</th><th>Description</th></tr>
+      </thead>
       {{#each this.params}}
       <tr>
         <td><code>{{this.name}}</code></td>
@@ -185,7 +193,9 @@
     </h3>
     <p>Use these options to customize an instance of {{title}}. Plugin options can be set as individual data attributes, one combined <code>data-options</code> attribute, or as an object passed to the plugin's constructor. <a href="#">Learn more about how JavaScript plugins are initialized.</a></p>
     <table class="docs-variable-table">
-      <tr><th>Name</th><th>Description</th><th>Example</th></tr>
+      <thead>
+        <tr><th>Name</th><th>Description</th><th>Example</th></tr>
+      </thead>
       {{#each js.member}}
       <tr>
         <td>{{this.name}}</td>
@@ -207,7 +217,9 @@
     </h3>
     <p>These events will fire from any element with a {{title}} plugin attached.</p>
     <table class="docs-variable-table">
-      <tr><th>Name</th><th>Description</th></tr>
+      <thead>
+        <tr><th>Name</th><th>Description</th></tr>
+      </thead>
       {{#each js.event}}
         <tr>
           <td>{{this.name}}.zf.{{../title}}</td>
@@ -240,7 +252,9 @@
       {{/if}}
       {{#if this.params}}
       <table class="docs-variable-table">
-        <tr><th>Name</th><th>Type</th><th>Description</th></tr>
+        <thead>
+          <tr><th>Name</th><th>Type</th><th>Description</th></tr>
+        </thead>
         {{#each this.params}}
         <tr>
           <td><code>{{this.name}}</code></td>
