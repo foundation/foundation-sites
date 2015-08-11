@@ -36,7 +36,7 @@
     var tabIndex = 1;
 
     this.$element.attr({'role': 'tablist'})
-    .find('[data-tabs] > .tab-title > a')
+    .find('.tabs > .tab-title > a')
     .each(function(){
       var $tabLink = $(this),
           isActive = $tabLink.parent().hasClass('is-active'),

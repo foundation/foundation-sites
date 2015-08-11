@@ -4,7 +4,18 @@ description: Tooltips? More like <em>Cooltips</em>. But really though, tooltips 
 sass: scss/components/_tooltip.scss
 ---
 
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure veritatis doloribus unde facilis impedit culpa mollitia velit, dolor, reiciendis doloremque repellendus voluptatem similique molestias neque accusantium qui ipsam odio deleniti.<span data-tooltip aria-haspopup="true" class="has-tip" title="Yesterday you said tomorrow. So just do it! Make your dreams come true. Just do it." tabindex=1><span class="pip"></span><span class="tip-content">Yesterday you said tomorrow. So just do it! Make your dreams come true. Just do it.</span>Get the power. Get the power.</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur aliquam necessitatibus repellat nam sed magnam sapiente provident, iste harum asperiores excepturi fuga, corrupti neque. Unde at, nobis. Error, cum, nostrum!</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure veritatis doloribus unde facilis impedit culpa mollitia velit, dolor, reiciendis doloremque repellendus voluptatem similique molestias neque accusantium qui ipsam odio deleniti.
+  <span data-tooltip aria-haspopup="true" class="has-tip" title="Yesterday you said tomorrow. So just do it! Make your dreams come true. Just do it." tabindex=1>
+    <span class="pip"></span>
+
+    <span class="tip-content">
+      Yesterday you said tomorrow. So just do it! Make your dreams come true. Just do it.
+    </span>
+
+    Get the power. Get the power.
+
+  </span>
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur aliquam necessitatibus repellat nam sed magnam sapiente provident, iste harum asperiores excepturi fuga, corrupti neque. Unde at, nobis. Error, cum, nostrum!</p>
 
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui aperiam dolorum sunt eos voluptate maiores officia hic distinctio nostrum est doloremque soluta mollitia voluptatem, ipsam dolore ad, rerum commodi sit!<span data-tooltip aria-haspopup="true" class="has-tip tip-top" title="Yesterday you said tomorrow. So just do it! Make your dreams come true. Just do it." tabindex=2><span class="top pip"></span><span class="top tip-content">Yesterday you said tomorrow. So just do it! Make your dreams come true. Just do it.</span>Get the power. Top.</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quos maxime, dolorum harum doloribus modi nesciunt, sunt, animi deserunt alias, pariatur. Blanditiis iste consectetur, distinctio labore aut amet, accusantium iure!</p>
 
