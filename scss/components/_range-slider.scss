@@ -1,13 +1,14 @@
 $slider-height: 1rem;
 $slider-handle-height: 1.75rem;
-$slider-handle-width: 1.75rem;
-$slider-handle-color: $primary-color;
+$slider-handle-width: 1rem;
+$slider-handle-color: $medium-gray;
 $slider-disabled-fade: 80%;
-$slider-fill-color: $medium-gray;
+$slider-fill-color: $primary-color;
 $vertical-slider-width: 1rem;
+$slider-background-color: $secondary-color;
 
 .slider {
-  background: $dark-gray;
+  background: $slider-background-color;
   position: relative;
   display: block;
   width: 100%;
@@ -72,5 +73,7 @@ $vertical-slider-width: 1rem;
     left: 50%;
     transform: translateX(-50%);
     top: 0;
+    height: $slider-handle-width;
+    width: $slider-handle-height;
   }
 }
