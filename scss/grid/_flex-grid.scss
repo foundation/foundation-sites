@@ -71,7 +71,7 @@
   }
 }
 
-@mixin foundation-flex-grid-classes {
+@mixin foundation-flex-grid {
   // Row
   .row {
     @include flex-grid-row;

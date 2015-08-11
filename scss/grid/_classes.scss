@@ -4,7 +4,7 @@
 
 /// Outputs CSS classes for the grid.
 /// @access private
-@mixin foundation-grid-classes(
+@mixin foundation-grid(
   $row: 'row',
   $column: 'column',
   $column-row: 'column-row',

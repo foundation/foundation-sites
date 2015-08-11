@@ -29,6 +29,8 @@ $thumbnail-transition: box-shadow 200ms ease-out !default;
   }
 }
 
-.thumbnail {
-  @include thumbnail;
+@mixin foundation-thumbnail {
+  .thumbnail {
+    @include thumbnail;
+  }
 }

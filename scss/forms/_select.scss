@@ -51,7 +51,6 @@ $select-triangle-color: #333 !default;
 @mixin foundation-form-select {
   select {
     @include form-select;
-
     -webkit-appearance: none;
     -moz-appearance: none;
 

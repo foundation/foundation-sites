@@ -21,8 +21,8 @@ The flex grid is not enabled by default. To use the default CSS, add the export 
 ```scss
 @import 'foundation';
 
-// @include foundation-grid-classes;
-@include foundation-flex-grid-classes;
+// @include foundation-grid;
+@include foundation-flex-grid;
 ```
 
 The standard grid and flex grid use the same classes, namely `.row` and `.column`, and don't play nice together. If you want to use both in the same page, we recommend using the Sass mixins for each grid, instead of the default CSS.

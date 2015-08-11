@@ -48,7 +48,7 @@
 // - - - - - - - - - - - - - - -
 
 #docs-flex-grid {
-  @include foundation-flex-grid-classes;
+  @include foundation-flex-grid;
   
   .row {
     background: #f9f9f9;

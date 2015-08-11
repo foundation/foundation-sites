@@ -18,37 +18,37 @@ $foundation-version: '6.0.0-alpha';
 
 // Components
 @import
-  'typography/typography',
   'grid/grid',
+  'typography/typography',
   'forms/forms',
-  'components/float',
   'components/visibility',
-  'components/accordion',
+  'components/float',
   'components/button',
   'components/button-group',
-  'components/close-button',
-  'components/media-object',
-  'components/menu-bar',
-  'components/tabs',
-  'components/dropdown',
-  'components/drilldown',
-  'components/label',
+
+  'components/accordion',
   'components/badge',
-  'components/pagination',
-  'components/off-canvas',
   'components/breadcrumbs',
-  'components/thumbnail',
-  'components/range-slider',
   'components/callout',
   'components/card',
-  'components/table',
-  'components/reveal',
+  'components/close-button',
+  'components/drilldown',
+  'components/dropdown',
   'components/flex-video',
-  'components/switch',
+  'components/label',
+  'components/media-object',
+  'components/menu-bar',
+  'components/off-canvas',
   'components/orbit',
-  'components/tooltip',
-  'components/progress-bar';
-
+  'components/pagination',
+  'components/progress-bar',
+  'components/range-slider',
+  'components/reveal',
+  'components/switch',
+  'components/table',
+  'components/tabs',
+  'components/thumbnail',
+  'components/tooltip';
 
 // These styles are applied to <meta> tags, which are read by the Foundation JavaScript
 .foundation-mq {
@@ -57,25 +57,34 @@ $foundation-version: '6.0.0-alpha';
 
 @mixin foundation-everything {
   @include foundation-global-styles;
-  @include foundation-grid-classes;
+  @include foundation-grid;
+  @include foundation-typography;
+  @include foundation-forms;
+  @include foundation-visibility-classes;
   @include foundation-float-classes;
   @include foundation-button;
   @include foundation-button-group;
-  @include foundation-forms;
-  @include foundation-typography;
-  @include foundation-visibility-classes;
-  @include foundation-close-button;
-  @include foundation-media-object;
-  @include foundation-reveal;
-  @include foundation-callout;
-  @include foundation-flex-video;
-  @include foundation-progress-bar;
-  @include foundation-off-canvas;
-  @include foundation-label;
+  // @include foundation-accordion
   @include foundation-badge;
-  @include foundation-card;
-  @include foundation-menu-bar;
-  @include foundation-orbit;
   @include foundation-breadcrumbs;
+  @include foundation-callout;
+  @include foundation-card;
+  @include foundation-close-button;
+  // @include foundation-drilldown
+  // @include foundation-dropdown-menu
+  @include foundation-flex-video;
+  @include foundation-label;
+  @include foundation-media-object;
+  @include foundation-menu-bar;
+  @include foundation-off-canvas;
+  @include foundation-orbit;
   @include foundation-pagination;
+  @include foundation-progress-bar;
+  // @include foundation-range-slider;
+  @include foundation-reveal;
+  // @include foundation-switch;
+  // @include foundation-table;
+  // @include foundation-tabs;
+  @include foundation-thumbnail;
+  // @include foundation-tooltip;
 }
