@@ -24,11 +24,21 @@
     </div>
 
     <div class="main-content" data-off-canvas-content>
-      <div class="column-row" style="max-width: none;">
-        <h1 class="docs-site-title">Foundation for Sites 6.0.0 <em>Alpha</em></h1>
+      <div class="expanded column-row docs-header">
+        <h1 class="docs-site-title"><a href="index.html">Foundation for Sites 6.0.0 <em>Alpha</em></a></h1>
+        <button type="button" class="docs-header-link" data-toggle="docs-versions-menu">Older Versions</button>
+
+        <div class="docs-versions-menu hide" id="docs-versions-menu" data-toggler=".hide">
+          <ul class="menu-bar vertical">
+            <li><a href="http://foundation.zurb.com/sites/docs/v5">Foundation 5</a></li>
+            <li><a href="http://foundation.zurb.com/sites/docs/v4">Foundation 4</a></li>
+            <li><a href="http://foundation.zurb.com/sites/docs/v3">Foundation 3</a></li>
+            <li><a href="http://foundation.zurb.com/sites/docs/v2">Foundation 2</a></li>
+          </ul>
+        </div>
       </div>
 
-      <div class="row" style="max-width: none;">
+      <div class="expanded row">
         <div class="medium-8 large-9 medium-push-4 large-push-3 columns">
 {{> body}}
         </div>
