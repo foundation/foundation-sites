@@ -1,11 +1,11 @@
 // Every heading has a hidden icon with a link to the anchor for that section.
 
 // The heading itself needs position: relative to make the positioning work
-.docs-header {
+.docs-heading {
   position: relative;
 }
 
-.docs-header-icon {
+.docs-heading-icon {
   display: none;
   position: absolute;
   right: 100%;
@@ -23,7 +23,7 @@
 
   // When the title or the icon itself is hovered on, display the icon
   &:hover,
-  .docs-header:hover & {
+  .docs-heading:hover & {
     display: block;
   }
 

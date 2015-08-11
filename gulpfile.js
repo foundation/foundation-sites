@@ -53,6 +53,7 @@ gulp.task('html', function() {
       .pipe(supercollider.init({
         template: 'docs/layout/component.html',
         adapters: ['sass', 'js'],
+        marked: require('./lib/marked'),
         handlebars: require('./lib/handlebars')
       }))
     .pipe(mdFilter.restore())
