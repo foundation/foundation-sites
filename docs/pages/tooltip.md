@@ -5,7 +5,7 @@ sass: scss/components/_tooltip.scss
 ---
 
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure veritatis doloribus unde facilis impedit culpa mollitia velit, dolor, reiciendis doloremque repellendus voluptatem similique molestias neque accusantium qui ipsam odio deleniti.
-  <span data-tooltip aria-haspopup="true" class="has-tip" title="Yesterday you said tomorrow. So just do it! Make your dreams come true. Just do it." tabindex=1>
+  <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover='false' title="Yesterday you said tomorrow. So just do it! Make your dreams come true. Just do it." tabindex=1>
     <span class="pip"></span>
 
     <span class="tip-content">

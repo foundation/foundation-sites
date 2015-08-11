@@ -4,9 +4,12 @@
     this.$element = element;
     this.options = $.extend(this.defaults, options || {});
     // this.$parent = this.$element.parent();
+    this.$tipBody = [this.$element.find('.tip-content'), this.$element.find('.pip')];
     this.$content = this.$element.find('.tip-content');
     this.$pip = this.$element.find('.pip');
+    this.isActive = false;
     this._init();
+
   }
   Tooltip.prototype.defaults = {
     disableForTouch: false,
@@ -21,47 +24,76 @@
   //   return '<span class="tip-content right" role="tooltip" aria-describedby="' + this.$element.attr('id') + '"aria-hidden="true">' + this.$element.attr('title') + '</span>'
   // };
   Tooltip.prototype._init = function(){
-    console.log('pip',this.$pip, 'content', this.$content);
     this.$content.hide();
     this.$pip.hide();
     // var tipbody = this.options.template || this.buildTemplate();
     //
     // this.$element.append(tipbody);
     this._events();
-    // // console.log(this.$element.attr('id'));
     // // Foundation.imNotTouchingYou.checkWidth($(tipbody), this.$parent);
-    //
+  };
+  Tooltip.prototype._show = function(){
+    Foundation.ImNotTouchingYou.checkWidth(this.$content);
+    this.isActive = true;
+    this.$content.stop().fadeIn(this.options.fadeInDuration);
+    this.$pip.stop().fadeIn(this.options.fadeInDuration);
+
+  };
+  Tooltip.prototype._hide = function(){
+    this.$content.stop().fadeOut(this.options.fadeOutDuration);
+    this.$pip.stop().fadeOut(this.options.fadeOutDuration);
+    this.isActive = false;
   };
 
   Tooltip.prototype._events = function($tipRoot){
     var _this = this;
+    var isClick = false;
+    var isFocus = false;
+
     if(!this.options.disableHover){
+
       this.$element.on('mouseenter', function(e){
-        setTimeout(function(){
-          _this.$content.fadeIn(_this.options.fadeInDuration);
-          _this.$pip.fadeIn(_this.options.fadeInDuration);
-        }, _this.options.hoverDelay);
-      });
-      this.$element.on('mouseleave', function(e){
-        _this.$content.fadeOut(_this.options.fadeOutDuration);
-        _this.$pip.fadeOut(_this.options.fadeOutDuration);
+        if(!_this.isActive){
+          setTimeout(function(){
+            _this._show();
+          }, _this.options.hoverDelay);
+        }
+      })
+        .on('mouseleave', function(e){
+          _this._hide();
       });
     }
-    this.$element.on('click.zf.tooltip', function(e){
-      e.preventDefault();
-      _this.$content.fadeToggle(_this.options.fadeInDuration);
-      _this.$pip.fadeToggle(_this.options.fadeInDuration);
+
+    this.$element.mousedown(function(e){
+      isClick = true;
+      if(isClick && _this.isActive){
+        _this._hide();
+        isClick = false;
+      }else if(isFocus){
+        _this._show();
+      }
+    }).focus(function(e){
+      isFocus = true;
+      if(isClick && _this.isActive){
+        _this._hide();
+      }else{
+        _this._show();
+      }
+      isClick = false;
+    }).focusout(function(e){
+      isFocus = false;
+      _this._hide();
     });
-    this.$element.on('focus', function(e){
-      e.preventDefault();
-      _this.$content.fadeIn(_this.options.fadeInDuration);
-      _this.$pip.fadeIn(_this.options.fadeInDuration);
-    });
-    this.$element.on('focusout', function(e){
-      e.preventDefault();
-      _this.$content.fadeOut(_this.options.fadeOutDuration);
-      _this.$pip.fadeOut(_this.options.fadeOutDuration);
-    });
+    // this.$element.on('click.zf.tooltip', function(e){
+    //   e.stopPropagation();
+    //   _this.isActive ? _this._hide() : _this._show();
+    // })
+    //   .on('focus', function(e){
+    //     _this._show();
+    // })
+    //   .on('focusout', function(e){
+    //     _this._hide();
+    // });
   };
   Foundation.plugin(Tooltip);
 }(jQuery, window, window.Foundation);
