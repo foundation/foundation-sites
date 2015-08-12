@@ -53,6 +53,7 @@
     if(!this.options.disableHover){
 
       this.$element.on('mouseenter', function(e){
+        e.stopPropagation();
         if(!_this.isActive){
           setTimeout(function(){
             _this._show();
@@ -60,6 +61,7 @@
         }
       })
         .on('mouseleave', function(e){
+          e.stopPropagation();
           _this._hide();
       });
     }
