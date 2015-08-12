@@ -18,6 +18,32 @@
   }
 }
 
+.docs-code .bash {
+  border: 0;
+  background: #333;
+  color: white;
+  border-radius: 4px;
+  position: relative;
+  padding-top: 2rem;
+
+  &::before {
+    content: '$ ';
+    color: #ccc;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1.25rem;
+    background: #777;
+    border-radius: 4px 4px 0 0;
+  }
+}
+
 // Styles for the copy button shown on every code sample
 .docs-code-copy {
   position: absolute;
