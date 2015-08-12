@@ -2,6 +2,12 @@
 title: Menu Bar
 description: Our flexible menu bar component makes it easy to build many common navigation patterns, all with the same markup.
 sass: scss/components/_menu-bar.scss
+tags:
+  - navigation
+  - side nav
+  - sub nav
+  - icon bar
+  - top bar
 ---
 
 The menu bar is a flexible, all-purpose component for navigation. It replaces Foundation 5's inline list, side nav, sub nav, and icon bar, unifying them into one component.

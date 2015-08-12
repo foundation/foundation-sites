@@ -2,6 +2,8 @@
 title: Magellan
 description: Magellan allows you to create navigation that tracks the active section of a page your user is in. Pair it with our Sticky plugin to create a fixed navigation element.
 js: js/foundation.magellan.js
+tags:
+  - navigation
 ---
 
 <nav data-magellan>

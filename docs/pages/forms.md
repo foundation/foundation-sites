@@ -2,6 +2,11 @@
 title: Forms
 description: We set out to create an easy, powerful and versatile form layout system. A combination of form styles and the Foundation grid means you can do almost anything.
 sass: scss/forms/*.scss
+tags:
+  - input
+  - select
+  - radio
+  - checkbox
 ---
 
 ## Form Basics

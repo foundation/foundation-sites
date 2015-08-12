@@ -2,6 +2,9 @@
 title: Orbit Slider
 description: The slider you want, the slider you need.
 sass: scss/components/_orbit.scss
+tags:
+  - slider
+  - carousel
 ---
 
 ## Basic Orbit Slider

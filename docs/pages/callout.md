@@ -2,6 +2,9 @@
 title: Callout
 description: Callouts combine panels and alerts from Foundation 5 into one generic container component.
 sass: scss/components/_callout.scss
+tags:
+  - panel
+  - alert
 ---
 
 ## Basics

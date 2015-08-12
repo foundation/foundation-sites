@@ -73,7 +73,9 @@ $(function() {
       $.getJSON('./data/search.json', function(data, status) {
         async(data.filter(function(elem, i, arr) {
           var name = elem.name.toLowerCase();
-          return name.indexOf(query) > -1 || name.replace('-', ' ').indexOf(query) > -1;
+          var terms = [name, name.replace('-', '')].concat(elem.tags || []);
+          for (var i in terms) if (terms[i].indexOf(query) > -1) return true;
+          return false;
         }));
       });
     },

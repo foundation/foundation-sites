@@ -4,6 +4,11 @@ description: Our helper classes allow you to scaffold certain typographic styles
 sass:
   - scss/typography/_helpers.scss
   - scss/typography/_alignment.scss
+tags:
+  - alignment
+  - subheader
+  - lead
+  - statistic
 ---
 
 ## Text Alignment

@@ -4,6 +4,16 @@ description: Typography in Foundation 5 is meant to make your life easier by pro
 sass:
   - scss/typography/_base.scss
   - scss/typography/_print.scss
+tags:
+  - paragraph
+  - heading
+  - link
+  - definition
+  - blockquote
+  - abbreviation
+  - acronym
+  - code
+  - keystroke
 ---
 
 ## Paragraphs
