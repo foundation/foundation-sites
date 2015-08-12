@@ -35,6 +35,11 @@
     }
   }
 
+  // Don't let key/value pairs in a Sass map wrap
+  .map {
+    white-space: nowrap;
+  }
+
   // Don't add margin to Markdown-formatted text
   td > p:last-child {
     margin-bottom: 0;

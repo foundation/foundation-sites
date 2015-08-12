@@ -29,8 +29,8 @@
       {{#each sass.variable}}
       <tr>
         <td class="name"><code>${{this.context.name}}</code></td>
-        <td>{{writeTypes this.type}}</td>
-        <td><code>{{writeValue this.context.value}}</code></td>
+        <td>{{sassTypes this.type}}</td>
+        <td class="{{toLower this.type}}"><code>{{sassValue this.context.value}}</code></td>
         <td>{{md this.description}}</td>
       </tr>
       {{/each}}
@@ -67,8 +67,8 @@
         {{#each this.parameter}}
         <tr>
           <td><code>${{this.name}}</code></td>
-          <td>{{writeTypes this.type}}</td>
-          <td><code>{{writeValue this.default}}</code></td>
+          <td>{{sassTypes this.type}}</td>
+          <td><code>{{sassValue this.default}}</code></td>
           <td>{{md this.description}}</td>
         </tr>
         {{/each}}
@@ -110,8 +110,8 @@
         {{#each this.parameter}}
         <tr>
           <td><code>${{this.name}}</code></td>
-          <td>{{writeTypes this.type}}</td>
-          <td><code>{{writeValue this.default}}</code></td>
+          <td>{{sassTypes this.type}}</td>
+          <td><code>{{sassValue this.default}}</code></td>
           <td>{{md this.description}}</td>
         </tr>
         {{/each}}
