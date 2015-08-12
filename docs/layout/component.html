@@ -14,17 +14,11 @@
 <hr>
 
 <section>
-  <h2 class="docs-header">
-    {{anchor 'Sass Reference'}}
-    Sass Reference
-  </h2>
+  {{#heading 2}}Sass Reference{{/heading}}
 
   {{#if sass.variable}}
   <section>
-    <h3 class="docs-header">
-      {{anchor 'Variables'}}
-      Variables
-    </h3>
+    {{#heading 3 'sass-variables'}}Variables{{/heading}}
 
     <p>The default styles of this component can be customized using these Sass variables in your project's <a href="sass.html#the-settings-file">settings file</a>.</p>
 
@@ -51,19 +45,13 @@
 
   {{#if sass.mixin}}
   <section>
-    <h3 class="docs-header">
-      {{anchor 'Mixins'}}
-      Mixins
-    </h3>
+    {{#heading 3 'sass-mixins'}}Mixins{{/heading}}
 
     <p>We use these mixins to build the final CSS output of this component. You can use the mixins yourself to build your own class structure out of our components.</p>
 
     {{#each sass.mixin}}
     <section>
-      <h4 class="docs-header">
-        {{anchor this.context.name}}
-        {{this.context.name}}
-      </h4>
+      {{#heading 4}}{{this.context.name}}{{/heading}}
 
       <div class="docs-code">
         <pre><code>{{writeMixin this}}</code></pre>
@@ -102,17 +90,11 @@
 
   {{#if sass.function}}
   <section>
-    <h3 class="docs-header">
-      {{anchor 'Functions'}}
-      Functions
-    </h3>
+    {{#heading 3 'sass-functions'}}Functions{{/heading}}
 
     {{#each sass.function}}
     <section>
-      <h4 class="docs-header">
-        {{anchor this.context.name}}
-        {{this.context.name}}
-      </h4>
+      {{#heading 4}}{{this.context.name}}{{/heading}}
 
       <div class="docs-code">
         <pre><code>{{writeFunction this}}</code></pre>
@@ -149,14 +131,11 @@
 
 {{#if js}}
 <section>
-  <h2>
-    {{anchor 'JavaScript Reference'}}
-    JavaScript Reference
-  </h2>
+  {{#heading 2}}JavaScript Reference{{/heading}}
 
   {{#each js.class}}
   <section>
-    <h3>Foundation.{{this.name}}</h3>
+    {{#heading 3 'js-class'}}Foundation.{{this.name}}{{/heading}}
     {{md this.description}}
     <div class="docs-code"><pre><code>var elem = new Foundation.{{this.name}}(element, options);</code></pre></div>
     {{#if this.fires}}
@@ -187,10 +166,8 @@
 
   {{#if js.member}}
   <section>
-    <h3>
-      {{anchor 'Plugin Options'}}
-      Plugin Options
-    </h3>
+    {{#heading 3 'js-options'}}Plugin Options{{/heading}}
+
     <p>Use these options to customize an instance of {{title}}. Plugin options can be set as individual data attributes, one combined <code>data-options</code> attribute, or as an object passed to the plugin's constructor. <a href="#">Learn more about how JavaScript plugins are initialized.</a></p>
     <table class="docs-variable-table">
       <thead>
@@ -211,10 +188,7 @@
 
   {{#if js.event}}
   <section>
-    <h3>
-      {{anchor 'Events'}}
-      Events
-    </h3>
+    {{#heading 3 'js-events'}}Events{{/heading}}
     <p>These events will fire from any element with a {{title}} plugin attached.</p>
     <table class="docs-variable-table">
       <thead>
@@ -234,10 +208,7 @@
 
   {{#if js.function}}
   <section>
-    <h3>
-      {{anchor 'Functions'}}
-      Functions
-    </h3>
+    {{#heading 3 'js-functions'}}Functions{{/heading}}
 
     {{#each js.function}}
     <section>
@@ -275,10 +246,7 @@
 <hr>
 
 <section class="docs-building-blocks">
-  <h2>
-    {{anchor 'Building Blocks'}}
-    Building Blocks Using {{ title }}
-  </h2>
+  {{#heading 2 'building-blocks'}}Building Blocks using {{title}}{{/heading}}
 
   <p><a href="http://zurb.com/building-blocks">Building Blocks</a> is a ZURB-curated resource with useful code snippets that use Foundation components. Here are a few for this component:</p>
 

@@ -1,0 +1,80 @@
+.twitter-typeahead {
+  display: block !important;
+  position: relative;
+  margin-top: $grid-column-gutter;
+
+  &::before {
+    content: "\f16c";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0.6rem;
+    z-index: 1;
+    font-family: 'foundation-icons';
+    font-size: 1.6rem;
+    color: $primary-color;
+  }
+}
+
+.tt-input,
+.tt-hint {
+  right: 0;
+  padding-left: 2.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.tt-menu {
+  background: white;
+  width: 100%;
+  border: 1px solid #ccc;
+}
+
+.tt-suggestion {
+  @include clearfix;
+  padding: 1rem;
+
+  &:hover,
+  &.tt-cursor {
+    background: $primary-color;
+    color: #fff;
+    cursor: pointer;
+
+    .meta {
+      color: #fff;
+    }
+  }
+
+  .name {
+    font-weight: bold;
+    float: left;
+    width: 40%;
+  }
+
+  .meta {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: $dark-gray;
+    margin-left: 0.5rem;
+  }
+
+  .desc {
+    float: left;
+    width: 60%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.tt-empty {
+  padding: 1rem;
+
+  &:before {
+    content: ':(';
+    font-weight: bold;
+    font-size: 2rem;
+    color: #999;
+    margin-left: 1rem;
+    margin-right: 2rem;
+  }
+}

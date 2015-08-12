@@ -15,5 +15,8 @@
   "dependencies": {
     "jquery": ">= 2.1.0"
   },
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "typeahead.js": "~0.11.1"
+  }
 }
