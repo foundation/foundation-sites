@@ -4,8 +4,6 @@
     this.$element = element;
     this.options = $.extend(this.defaults, options || {});
     // this.$parent = this.$element.parent();
-    this.$tipBody = this.$element.find('.tip-content').find('.pip').addBack();
-    console.log(this.$tipBody);
     this.$content = this.$element.find('.tip-content');
     this.$pip = this.$element.find('.pip');
     this.isActive = false;
@@ -17,7 +15,7 @@
     hoverDelay: 200,
     fadeInDuration: 150,
     fadeOutDuration: 150,
-    disableHover: false
+    disableHover: true
     // showOn: 'all'
     // template: this.buildTemplate()
   };
@@ -34,6 +32,7 @@
     // // Foundation.imNotTouchingYou.checkWidth($(tipbody), this.$parent);
   };
   Tooltip.prototype._show = function(){
+    console.log('outerHeight',this.$content.outerHeight());
     Foundation.ImNotTouchingYou.checkWidth(this.$content);
     this.isActive = true;
     this.$content.stop().fadeIn(this.options.fadeInDuration);
