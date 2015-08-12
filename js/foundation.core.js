@@ -154,7 +154,7 @@ var Foundation = {
     if (unloaded === 0) {
       callback();
     }
-    
+
     var singleImageLoaded = function() {
       unloaded--;
       if (unloaded === 0) {
@@ -205,7 +205,7 @@ $.fn.foundation = foundation;
 (function() {
   if (!Date.now)
     Date.now = function() { return new Date().getTime(); };
-    
+
   var vendors = ['webkit', 'moz'];
   for (var i = 0; i < vendors.length && !window.requestAnimationFrame; ++i) {
       var vp = vendors[i];

@@ -4,7 +4,8 @@
     this.$element = element;
     this.options = $.extend(this.defaults, options || {});
     // this.$parent = this.$element.parent();
-    this.$tipBody = [this.$element.find('.tip-content'), this.$element.find('.pip')];
+    this.$tipBody = this.$element.find('.tip-content').find('.pip').addBack();
+    console.log(this.$tipBody);
     this.$content = this.$element.find('.tip-content');
     this.$pip = this.$element.find('.pip');
     this.isActive = false;

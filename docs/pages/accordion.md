@@ -10,7 +10,7 @@ sass: scss/components/_accordion.scss
 
 
 ```html_example
-<ul class="accordion" data-accordion role="tablist">
+<ul class="accordion" data-accordion data-options-multiexpand='true' role="tablist">
   <li class="accordion-item is-active">
     <a href="#panel1d" role="tab" class='accordion-title' id="panel1d-heading" aria-controls="panel1d">Accordion 1</a>
     <div id="panel1d" class="content" role="tabpanel" data-tab-content aria-labelledby="panel1d-heading">
