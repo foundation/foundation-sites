@@ -135,7 +135,7 @@
 
   {{#each js.class}}
   <section>
-    {{#heading 3}}Foundation.{{this.name}}{{/heading}}
+    {{#heading 3 'js-class'}}Foundation.{{this.name}}{{/heading}}
     {{md this.description}}
     <div class="docs-code"><pre><code>var elem = new Foundation.{{this.name}}(element, options);</code></pre></div>
     {{#if this.fires}}
@@ -166,7 +166,7 @@
 
   {{#if js.member}}
   <section>
-    {{#heading 3 'javascript-plugin-options'}}Plugin Options{{/heading}}
+    {{#heading 3 'js-options'}}Plugin Options{{/heading}}
 
     <p>Use these options to customize an instance of {{title}}. Plugin options can be set as individual data attributes, one combined <code>data-options</code> attribute, or as an object passed to the plugin's constructor. <a href="#">Learn more about how JavaScript plugins are initialized.</a></p>
     <table class="docs-variable-table">
@@ -188,7 +188,7 @@
 
   {{#if js.event}}
   <section>
-    {{#heading 3 'javascript-events'}}Events{{/heading}}
+    {{#heading 3 'js-events'}}Events{{/heading}}
     <p>These events will fire from any element with a {{title}} plugin attached.</p>
     <table class="docs-variable-table">
       <thead>
@@ -208,7 +208,7 @@
 
   {{#if js.function}}
   <section>
-    {{#heading 3 'javascript-functions'}}Functions{{/heading}}
+    {{#heading 3 'js-functions'}}Functions{{/heading}}
 
     {{#each js.function}}
     <section>
