@@ -71,6 +71,9 @@ gulp.task('html:reset', function() {
 gulp.task('html:search', ['html'], function(cb) {
   require('./lib/buildSearch')(supercollider.tree, cb);
 });
+gulp.task('html:debug', ['html'], function(cb) {
+  require('fs').writeFile('./_debug.json', JSON.stringify(supercollider.tree, null, '  '), cb);
+});
 
 // Compiles Sass files into CSS
 gulp.task('sass', ['sass:foundation', 'sass:docs']);

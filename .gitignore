@@ -29,6 +29,7 @@ pkg
 rdoc
 spec/reports
 npm-debug.log
+_debug.json
 
 test/
 test/.sass-cache/*
