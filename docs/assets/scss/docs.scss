@@ -3,7 +3,9 @@
 @include foundation-everything;
 
 @import "typography";
-@import "layout";
+@import "header";
+@import "navigation";
+@import "page";
 @import "anchor";
 @import "code";
 @import "reference";

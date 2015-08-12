@@ -1,0 +1,34 @@
+// Component navigation menu seen on every page.
+
+.docs-menu.menu-bar {
+  margin-top: 0.5rem;
+
+  li small {
+    color: #999;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 60%;
+  }
+
+  a {
+    font-size: .85rem;
+    padding: .5rem 1rem;
+  }
+}
+
+.docs-menu-title {
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  color: #666;
+  font-weight: bold;
+  margin-bottom: 0.2rem;
+
+  &:not(:first-of-type) {
+    margin-top: 1rem;
+  }
+}
+
+.docs-menu-ph {
+  opacity: 0.5;
+  pointer-events: none;
+}
