@@ -62,13 +62,18 @@ $(function() {
     }
   }
 
+  // Search
   $('[data-docs-search]').typeahead({
     highlight: false
   }, {
-    source: function(q, s, a) {
+    limit: 10,
+    source: function(query, sync, async) {
+      query = query.toLowerCase();
+
       $.getJSON('./data/search.json', function(data, status) {
-        a(data.filter(function(elem, i, arr) {
-          return elem.name.indexOf(q) > -1 || elem.name.replace('-', ' ').indexOf(q) > -1;
+        async(data.filter(function(elem, i, arr) {
+          var name = elem.name.toLowerCase();
+          return name.indexOf(query) > -1 || name.replace('-', ' ').indexOf(query) > -1;
         }));
       });
     },
@@ -80,8 +85,12 @@ $(function() {
         return '<div class="tt-empty">No results for "' + query.query + '".</div>';
       },
       suggestion: function(item) {
-        return '<div><span class="name">' + item.name + '</span> <span class="desc">' + item.description + '</span></div>';
+        return '<div><span class="name">' + item.name + '<span class="meta">' + item.type + '</span></span> <span class="desc">' + item.description + '</span></div>';
       }
     }
+  });
+
+  $('[data-docs-search]').on('typeahead:select', function(e, sel) {
+    window.location.href = sel.link;
   });
 });

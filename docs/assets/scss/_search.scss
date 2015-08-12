@@ -38,17 +38,28 @@
     background: $primary-color;
     color: #fff;
     cursor: pointer;
+
+    .meta {
+      color: #fff;
+    }
   }
 
   .name {
     font-weight: bold;
     float: left;
-    width: 30%;
+    width: 40%;
+  }
+
+  .meta {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: $dark-gray;
+    margin-left: 0.5rem;
   }
 
   .desc {
     float: left;
-    width: 70%;
+    width: 60%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
