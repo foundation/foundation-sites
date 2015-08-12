@@ -1,6 +1,7 @@
 .twitter-typeahead {
   display: block !important;
   position: relative;
+  margin-top: $grid-column-gutter;
 
   &::before {
     content: "\f16c";
@@ -19,6 +20,7 @@
 .tt-hint {
   right: 0;
   padding-left: 2.4rem;
+  margin-bottom: 0.5rem;
 }
 
 .tt-menu {

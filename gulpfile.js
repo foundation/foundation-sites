@@ -68,11 +68,7 @@ gulp.task('html:reset', function() {
   delete $.cached.caches['docs'];
   gulp.run('html');
 });
-gulp.task('html:map', ['html'], function(cb) {
-  rimraf.sync('./_debug.json');
-  require('fs').writeFile('./_debug.json', JSON.stringify(supercollider.tree, null, '  '), cb);
-});
-gulp.task('html:search', ['html:map'], function(cb) {
+gulp.task('html:search', ['html'], function(cb) {
   require('./lib/buildSearch')(supercollider.tree, cb);
 });
 
@@ -171,7 +167,7 @@ gulp.task('test', function() {
     });
 })
 
-gulp.task('build', ['clean', 'copy', 'html', 'sass', 'javascript']);
+gulp.task('build', ['clean', 'copy', 'html', 'html:search', 'sass', 'javascript']);
 
 // Runs all of the above tasks and then waits for files to change
 gulp.task('default', ['build'], function() {
