@@ -2,8 +2,10 @@
   function ImNotTouchingYou(){}
 
   ImNotTouchingYou.checkWidth = function(element, parent){
+
     var offset = element.offset().top - $(document).scrollTop();
     console.log(offset);
+
   };
 
   Foundation.ImNotTouchingYou = ImNotTouchingYou;

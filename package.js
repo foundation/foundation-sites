@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'zurb:foundation',
+  name: 'zurb:foundation-sites',
   summary: 'The most advanced responsive front-end framework in the world.',
   version: '6.0.0-alpha',
   git: 'https://github.com/zurb/foundation.git'

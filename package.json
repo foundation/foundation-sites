@@ -1,5 +1,5 @@
 {
-  "name": "zurb-foundation",
+  "name": "foundation-sites",
   "version": "6.0.0-alpha",
   "main": "js/foundation/foundation.js",
   "scripts": {

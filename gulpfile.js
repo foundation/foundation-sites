@@ -8,7 +8,7 @@ var rimraf = require('rimraf');
 var files = {
   assetPaths: [
     'docs/assets/**/*',
-    '!docs/assets/{js|scss}/**/*'
+    '!docs/assets/{js,scss}/**/*'
   ],
   sassSrc: 'scss/foundation.scss',
   sassPaths: ['scss'],
