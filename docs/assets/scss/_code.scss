@@ -1,6 +1,5 @@
 // Styles for code examples are here.
 
-// Container class for code samples
 .docs-code, pre {
   position: relative;
 
@@ -15,6 +14,17 @@
   .docs-reference & code {
     padding: 0.75rem;
     margin-bottom: 0.75rem;
+  }
+}
+
+.docs-code.kitchen-sink {
+  border: $code-border;
+  max-height: 300px;
+  overflow-y: scroll;
+  margin-bottom: 1rem;
+
+  code {
+    border: 0;
   }
 }
 
@@ -59,6 +69,12 @@
   &.zeroclipboard-is-hover {
     background: scale-color($primary-color, $lightness: -5%);
   }
+}
+
+.docs-code-toggle {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
 }
 
 // github.com style for highlight.js
