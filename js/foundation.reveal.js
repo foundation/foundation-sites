@@ -23,7 +23,7 @@
      */
     this.$element.trigger('init.zf.reveal');
   }
-  
+
   /**
    * Default settings for plugin
    */
@@ -41,6 +41,18 @@
    * @private
    */
   Reveal.prototype._init = function() {
+    console.log(this.$element.attr('id'));
+    this.$element.hide();
+  };
+  Reveal.prototype._events = function(){
+    var _this = this,
+        anchor = $(document).find('[data-open="' + this.$element.attr('id') + '"]');
+
+    anchor.on('click.zf.reveal', function(e){
+      e.preventDefault();
+      //need to make this selectable.
+      _this.$element.fadeIn('fast')
+    });
   };
 
   Foundation.plugin(Reveal);
