@@ -36,14 +36,11 @@
       {{/each}}
     </table>
   </section>
-
-  {{#if sass.mixin}}
-    <hr>
-  {{/if}}
-
   {{/if}}
 
   {{#if sass.mixin}}
+  <hr>
+
   <section>
     {{#heading 3 'sass-mixins'}}Mixins{{/heading}}
 
@@ -84,11 +81,9 @@
   </section>
   {{/if}}
 
-  {{#if sass.mixin}}{{#if sass.function}}
-    <hr>
-  {{/if}}{{/if}}
-
   {{#if sass.function}}
+  <hr>
+
   <section>
     {{#heading 3 'sass-functions'}}Functions{{/heading}}
 
@@ -122,22 +117,23 @@
   </section>
   {{/if}}
 
-  {{#if js}}
-  <hr>
-  {{/if}}
-
 </section>
 {{/if}}
 
 {{#if js}}
+<hr>
+
 <section>
   {{#heading 2}}JavaScript Reference{{/heading}}
 
   {{#each js.class}}
   <section>
     {{#heading 3 'js-class'}}Foundation.{{this.name}}{{/heading}}
+
     {{md this.description}}
+
     <div class="docs-code"><pre><code>var elem = new Foundation.{{this.name}}(element, options);</code></pre></div>
+
     {{#if this.fires}}
       <p><strong>Fires these events:</strong>
       {{#each this.fires}}
@@ -145,6 +141,7 @@
       {{/each}}
       </p>
     {{/if}}
+
     {{#if this.params}}
     <table class="docs-variable-table">
       <thead>
@@ -169,6 +166,7 @@
     {{#heading 3 'js-options'}}Plugin Options{{/heading}}
 
     <p>Use these options to customize an instance of {{title}}. Plugin options can be set as individual data attributes, one combined <code>data-options</code> attribute, or as an object passed to the plugin's constructor. <a href="#">Learn more about how JavaScript plugins are initialized.</a></p>
+
     <table class="docs-variable-table">
       <thead>
         <tr><th>Name</th><th>Description</th><th>Example</th></tr>
@@ -189,7 +187,9 @@
   {{#if js.event}}
   <section>
     {{#heading 3 'js-events'}}Events{{/heading}}
+
     <p>These events will fire from any element with a {{title}} plugin attached.</p>
+
     <table class="docs-variable-table">
       <thead>
         <tr><th>Name</th><th>Description</th></tr>
@@ -212,8 +212,10 @@
 
     {{#each js.function}}
     <section>
-      <h4>{{../js.class.0.name}}.{{this.name}}</h4>
+      {{#heading 4 'js-class'}}{{../../js.class.0.name}}.{{this.name}}{{/heading}}
+
       {{md this.description}}
+
       {{#if this.fires}}
         <p><strong>Fires these events:</strong>
         {{#each this.fires}}
@@ -221,6 +223,7 @@
         {{/each}}
         </p>
       {{/if}}
+
       {{#if this.params}}
       <table class="docs-variable-table">
         <thead>
