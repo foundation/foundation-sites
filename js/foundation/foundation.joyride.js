@@ -323,8 +323,8 @@
 
           this.settings.tip_settings.tip_location_pattern = this.settings.tip_location_patterns[this.settings.tip_settings.tip_location];
 
-          // scroll and hide bg if not modal
-          if (!/body/i.test(this.settings.$target.selector)) {
+          // scroll and hide bg if not modal and not expose
+          if (!/body/i.test(this.settings.$target.selector) && !this.settings.expose) {
             var joyridemodalbg = $('.joyride-modal-bg');
             if (/pop/i.test(this.settings.tipAnimation)) {
                 joyridemodalbg.hide();
