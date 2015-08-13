@@ -1,16 +1,15 @@
-!function($, window, Foundation){
+!function($, document, Foundation){
   'use strict';
   function Tooltip(element, options){
     this.$element = element;
     this.options = $.extend({}, this.defaults, options || {});
-    // this.$parent = this.$element.parent();
     this.isActive = false;
     this._init();
-
+    console.log(options);
   }
 
   Tooltip.prototype.defaults = {
-    disableForTouch: false,
+    disableForTouch: true,
     hoverDelay: 200,
     fadeInDuration: 150,
     fadeOutDuration: 150,
@@ -21,15 +20,26 @@
     showOn: 'all',
     template: '',
     tipText: '',
-    touchCloseText: 'Tap to close.'
+    touchCloseText: 'Tap to close.',
+    clickOpen: false
   };
 
   Tooltip.prototype._init = function(){
     this.template = this.template ? this.template : this.buildTemplate();
-
-    this.$element.append(this.template).attr('title', '');
+    this.$element.append(this.template);
+    this.$element.attr('title', '')
+    // this.$element.append(this.template).attr('title', '');
 
     this._events();
+  };
+  Tooltip.prototype.buildTemplate = function(){
+    this.options.templateClasses = this.options.tooltipClass + (this.getPositionClass() || '');
+
+    return $('<div></div>').addClass(this.options.templateClasses).attr({
+      'role': 'tooltip',
+      'aria-hidden': true,
+      'data-is-active': false
+    }).text(this.$element.attr('title')).hide();
   };
 
   Tooltip.prototype.getPositionClass = function(){
@@ -37,29 +47,8 @@
     for(var tag in dataTags){
       if(tag === 'position'){
         return ' ' + dataTags[tag];
-      }else{
-        return '';
       }
     }
-  };
-
-  Tooltip.prototype.buildTemplate = function(){
-    var dataTags = this.$element.data(),
-        position = '',
-        key;
-    for(key in dataTags){
-      if(key === 'position'){
-        position = ' ' + dataTags[key];
-      }
-    }
-    this.options.templateClasses = this.options.tooltipClass + this.getPositionClass();
-    // this.options.templateClasses = this.options.tooltipClass + position;
-    console.log(this.options.templateClasses);
-    return $('<div></div>').addClass(this.options.templateClasses).attr({
-      'role': 'tooltip',
-      'aria-hidden': true,
-      'data-is-active': false
-    }).text(this.$element.attr('title')).hide();
   };
 
   Tooltip.prototype.hideAll = function(){
@@ -70,7 +59,13 @@
   };
 
   Tooltip.prototype._show = function(){
+    var _this = this;
     this.hideAll();
+
+    if(this.options.showOn !== 'all' && !Foundation.MediaQuery.atLeast(this.options.showOn)){
+      console.log('wrong size');
+      return;
+    }
 
     Foundation.ImNotTouchingYou(this.template);
 
@@ -78,8 +73,10 @@
       'data-is-active': true,
       'aria-hidden': false
     });
-
-    this.template.stop().fadeIn(this.options.fadeInDuration);
+    this.template.stop().fadeIn(this.options.fadeInDuration, function(){
+      _this.isActive = true;
+      console.log(_this);
+    });
   };
 
   Tooltip.prototype._hide = function(){
@@ -98,23 +95,31 @@
 
     if(!this.options.disableHover){
 
-      this.$element.on('mouseenter.zf.tooltip', function(e){
+      this.$element
+      .on('mouseenter.zf.tooltip', function(e){
         if(!_this.isActive){
           _this.timeout = setTimeout(function(){
             _this._show();
           }, _this.options.hoverDelay);
         }
       })
-        .on('mouseleave.zf.tooltip', function(e){
-          clearTimeout(_this.timeout);
-          e.stopPropagation();
-          if(!isFocus){
-            _this._hide();
-          }
+      .on('mouseleave.zf.tooltip', function(e){
+        clearTimeout(_this.timeout);
+        if(!isFocus || (!isClick && _this.options.clickOpen)){
+          _this._hide();
+        }
       });
     }
 
-    this.$element.on('click.zf.tooltip', function(e){
+    if(!this.options.disableForTouch){
+      this.$element
+      .on('tap.zf.tooltip touchend.zf.tooltip', function(e){
+        _this.isActive ? _this._hide() : _this._show();
+      });
+    }
+
+    this.$element
+    .on('click.zf.tooltip', function(e){
       isClick = true;
       if(isClick && _this.isActive){
         _this._hide();
@@ -122,29 +127,23 @@
       }else if(isFocus){
         _this._show();
       }
-    }).on('focus.zf.tooltip', function(e){
+    })
+
+    .on('focus.zf.tooltip', function(e){
       isFocus = true;
       if(isClick && _this.isActive){
-        // _this._hide();
         return;
       }else{
         _this._show();
       }
       isClick = false;
-    }).on('focusout.zf.tooltip', function(e){
+    })
+
+    .on('focusout.zf.tooltip', function(e){
       isFocus = false;
       _this._hide();
     });
-    // this.$element.on('click.zf.tooltip', function(e){
-    //   e.stopPropagation();
-    //   _this.isActive ? _this._hide() : _this._show();
-    // })
-    //   .on('focus', function(e){
-    //     _this._show();
-    // })
-    //   .on('focusout', function(e){
-    //     _this._hide();
-    // });
   };
+
   Foundation.plugin(Tooltip);
-}(jQuery, window, window.Foundation);
+}(jQuery, window.document, window.Foundation);

@@ -5,7 +5,7 @@ sass: scss/components/_tooltip.scss
 ---
 
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure veritatis doloribus unde facilis impedit culpa mollitia velit, dolor, reiciendis doloremque repellendus voluptatem similique molestias neque accusantium qui ipsam odio deleniti.
-  <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover='false' tabindex=1 title="Check me out, I'm a super cool tooltip!">Get the power. Get the power.
+  <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover='false' data-show-on='large' tabindex=1 title="Check me out, I'm a super cool tooltip!">Get the power. Get the power.
   </span>
 
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
