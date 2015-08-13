@@ -41,34 +41,34 @@ $tooltip-pip-offset: 1.25rem;
   display: inline-block;
   
   &:before {
-    @include css-triangle($tooltip-pip-width, $tooltip-background-color, down);
-    top: 100%;
+    @include css-triangle($tooltip-pip-width, $tooltip-background-color, up);
+    bottom: 100%;
     position: absolute;
   }
 }
 
 .tooltip.top {
   &:before {
-    @include css-triangle($tooltip-pip-width, $tooltip-background-color, up);
-    top: auto;
-    bottom: 100%;
-    position: absolute;
-  }
-}
-
-.tooltip.right {
-  &:before {
-    @include css-triangle($tooltip-pip-width, $tooltip-background-color, right);
-    top: auto;
-    left: 100%;
+    @include css-triangle($tooltip-pip-width, $tooltip-background-color, down);
+    top: 100%;
+    bottom: auto;
     position: absolute;
   }
 }
 
 .tooltip.left {
   &:before {
+    @include css-triangle($tooltip-pip-width, $tooltip-background-color, right);
+    bottom: auto;
+    left: 100%;
+    position: absolute;
+  }
+}
+
+.tooltip.right {
+  &:before {
     @include css-triangle($tooltip-pip-width, $tooltip-background-color, left);
-    top: auto;
+    bottom: auto;
     right: 100%;
     position: absolute;
   }
