@@ -26,6 +26,7 @@ var files = {
   ],
   docsJavascript: [
     'node_modules/zeroclipboard/dist/ZeroClipboard.js',
+    'docs/assets/js/docs.*.js',
     'docs/assets/js/docs.js'
   ]
 }

@@ -3,7 +3,11 @@
 @include foundation-everything;
 
 @import "typography";
-@import "layout";
+@import "header";
+@import "footer";
+@import "navigation";
+@import "newsletter";
+@import "page";
 @import "anchor";
 @import "code";
 @import "reference";
