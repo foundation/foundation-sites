@@ -5,20 +5,24 @@ sass: scss/components/_tooltip.scss
 ---
 
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure veritatis doloribus unde facilis impedit culpa mollitia velit, dolor, reiciendis doloremque repellendus voluptatem similique molestias neque accusantium qui ipsam odio deleniti.
-  <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover='false' title="Yesterday you said tomorrow. So just do it! Make your dreams come true. Just do it." tabindex=1>
-    <span class="pip"></span>
+  <div data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover='false' tabindex=1>Get the power. Get the power.
+  </div>
 
-    <span class="tip-content">
-      Yesterday you said tomorrow. So just do it! Make your dreams come true. Just do it.
-    </span>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur aliquam necessitatibus repellat nam sed magnam sapiente provident, iste harum asperiores excepturi fuga, corrupti neque. Unde at, nobis. Error, cum, nostrum!
+</p>
 
-    Get the power. Get the power.
 
-  </span>
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur aliquam necessitatibus repellat nam sed magnam sapiente provident, iste harum asperiores excepturi fuga, corrupti neque. Unde at, nobis. Error, cum, nostrum!</p>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui aperiam dolorum sunt eos voluptate maiores officia hic distinctio nostrum est doloremque soluta mollitia voluptatem, ipsam dolore ad, rerum commodi sit!<span data-tooltip aria-haspopup="true" class="has-tip tip-top" title="Yesterday you said tomorrow. So just do it! Make your dreams come true. Just do it." tabindex=2><span class="top pip"></span><span class="top tip-content">Yesterday you said tomorrow. So just do it! Make your dreams come true. Just do it.</span>Get the power. Top.</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quos maxime, dolorum harum doloribus modi nesciunt, sunt, animi deserunt alias, pariatur. Blanditiis iste consectetur, distinctio labore aut amet, accusantium iure!</p>
-
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis eum assumenda omnis deleniti. Omnis consequuntur numquam est distinctio. Molestias maxime incidunt reprehenderit nemo debitis illo iste quasi facere minima nam.<span data-tooltip aria-haspopup="true" class="has-tip tip-right" title="Yesterday you said tomorrow. So just do it! Make your dreams come true. Just do it." tabindex=3><span class="right pip"></span><span class="right tip-content">Yesterday you said tomorrow. So just do it! Make your dreams come true. Just do it.</span>Get the power. Right.</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa magni sequi, facere officia, expedita ullam hic velit fugit ducimus nobis autem labore nisi suscipit odit, blanditiis voluptas assumenda. Illo, vel.</p>
-
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam tenetur sapiente aperiam ipsum expedita accusantium inventore eveniet ut necessitatibus error? Eaque blanditiis nesciunt voluptate adipisci labore quae voluptatibus nam repellendus.<span data-tooltip aria-haspopup="true" class="has-tip tip-left" title="Yo yo yo yo. Yo yo yo yo. Yo yo yo yo. Yo yo yo yo. Yo yo yo yo. Yo yo yo yo." tabindex=4><span class="left pip"></span><span class="left tip-content">Yo yo yo yo. Yo yo yo yo. Yo yo yo yo. Yo yo yo yo. Yo yo yo yo. Yo yo yo yo.</span>This is a left tip. Left.</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit placeat, aliquid voluptatibus ab distinctio suscipit porro voluptates non quos officia quidem, excepturi nulla mollitia quisquam eaque, cumque voluptas delectus? Dolorum!</p>
+<div class="tooltip">Stuff</div>
+<br/>
+<br/>
+<br/>
+<div class="tooltip top">Stuff yo yo yoy yo <br/> yo yoy o</div>
+<br/>
+<br/>
+<br/>
+<div class="tooltip right">Stuff</div>
+<br/>
+<br/>
+<br/>
+<div class="tooltip left">Stuff</div>
