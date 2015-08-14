@@ -26,6 +26,7 @@
 
   Tooltip.prototype._init = function(){
     this.template = this.template ? this.template : this.buildTemplate();
+    // $this.append(this.template);
     this.$element.append(this.template);
     this.$element.attr('title', '')
     // this.$element.append(this.template).attr('title', '');
@@ -43,23 +44,18 @@
   };
 
   Tooltip.prototype.getPositionClass = function(){
-    var dataTags = this.$element.data();
-    for(var tag in dataTags){
-      if(tag === 'position'){
-        return ' ' + dataTags[tag];
-      }
-    }
-  };
-
-  Tooltip.prototype.hideAll = function(){
-    var _this = this;
-    $(document).find('[data-is-active]', this.tooltipClass).each(function(){
-      $(this).fadeOut(_this.options.fadeOutDuration);
-    });
+    var position = this.$element.data('position');
+    return position ? ' ' + position : '';
+    // for(var tag in position){
+    //   if(tag === 'position'){
+    //     return ' ' + position[tag];
+    //   }
+    // }
   };
 
   Tooltip.prototype._show = function(){
     var _this = this;
+    console.log(this.options);
     this.hideAll();
 
     if(this.options.showOn !== 'all' && !Foundation.MediaQuery.atLeast(this.options.showOn)){
@@ -75,7 +71,13 @@
     });
     this.template.stop().fadeIn(this.options.fadeInDuration, function(){
       _this.isActive = true;
-      console.log(_this);
+    });
+  };
+
+  Tooltip.prototype.hideAll = function(){
+    var _this = this;
+    $(document).find('[data-is-active]', this.tooltipClass).each(function(){
+      $(this).fadeOut(_this.options.fadeOutDuration);
     });
   };
 
@@ -120,11 +122,11 @@
 
     this.$element
     .on('click.zf.tooltip', function(e){
-      isClick = true;
       if(isClick && _this.isActive){
         _this._hide();
         isClick = false;
       }else if(isFocus){
+        isClick = true;
         _this._show();
       }
     })

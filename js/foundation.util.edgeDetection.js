@@ -2,7 +2,7 @@
   function ImNotTouchingYou(element, parent){
     var dims = getDimensions(element);
 
-    console.log(dims.offset.left + dims.parentDims.width + dims.width > dims.windowDims.width);
+    // console.log(dims.offset.left + dims.parentDims.width + dims.width > dims.windowDims.width);
 
     if(element.hasClass('right')){
       if(dims.offset.left + dims.parentDims.width + dims.width > dims.windowDims.width){
