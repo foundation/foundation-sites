@@ -4,41 +4,49 @@
     this.$element = element;
     this.options = $.extend({}, this.defaults, options || {});
     this.isActive = false;
+    this.isClick = false;
     this._init();
     console.log(options);
   }
+
 
   Tooltip.prototype.defaults = {
     disableForTouch: false,
     hoverDelay: 200,
     fadeInDuration: 150,
     fadeOutDuration: 150,
-    disableHover: true,
+    disableHover: false,
     templateClasses: '',
     tooltipClass: 'tooltip',
     showOn: 'all',
     template: '',
     tipText: '',
     touchCloseText: 'Tap to close.',
-    clickOpen: false
+    clickOpen: true
   };
 
   Tooltip.prototype._init = function(){
-    this.template = this.template ? this.template : this.buildTemplate();
-    // $this.append(this.template);
+    var elemId = this.$element.attr('aria-describedby') ? this.$element.attr('aria-describedby') : randomIdGen(6);
+    this.template = this.template ? this.template : this.buildTemplate(elemId);
     this.$element.append(this.template);
-    this.$element.attr('title', '')
+    this.$element.attr({'title': '', 'aria-describedby': elemId})
     // this.$element.append(this.template).attr('title', '');
-
+    console.log(elemId);
     this._events();
   };
-  Tooltip.prototype.buildTemplate = function(){
+
+  function randomIdGen(length){
+    return Math.round((Math.pow(36, length + 1) - Math.random() * Math.pow(36, length))).toString(36).slice(1);
+  }
+
+  Tooltip.prototype.buildTemplate = function(id){
     this.options.templateClasses = this.options.tooltipClass + (this.getPositionClass() || '');
 
     return $('<div></div>').addClass(this.options.templateClasses).attr({
       'role': 'tooltip',
       'aria-hidden': true,
-      'data-is-active': false
+      'data-is-active': false,
+      'id': id
     }).text(this.$element.attr('title')).hide();
   };
 
@@ -59,9 +67,11 @@
 
     this.hideAll();
 
-
-    Foundation.ImNotTouchingYou(this.template, direction, param);
-    console.log(Foundation.ImNotTouchingYou(this.template, direction, param));
+    var clear = Foundation.ImNotTouchingYou(this.template, direction, param);
+    console.log(clear);
+    if(!clear){
+      this.clearEdge();
+    }
 
     this.template.attr({
       'data-is-active': true,
@@ -70,6 +80,10 @@
     this.template.stop().fadeIn(this.options.fadeInDuration, function(){
       _this.isActive = true;
     });
+  };
+
+  Tooltip.prototype.clearEdge = function(){
+
   };
 
   Tooltip.prototype.hideAll = function(){
@@ -83,18 +97,23 @@
   };
 
   Tooltip.prototype._hide = function(){
-    this.template.stop().fadeOut(this.options.fadeOutDuration).attr({
+    var _this = this;
+    this.template.stop().attr({
       'aria-hidden': true,
       'data-is-active': false
+    }).fadeOut(this.options.fadeOutDuration, function(){
+      _this.isActive = false;
+      _this.isClick = false;
     });
-
-    this.isActive = false;
   };
 
   Tooltip.prototype._events = function($tipRoot){
     var _this = this;
-    var isClick = false;
     var isFocus = false;
+    // setInterval(function(){
+    //   console.log('active', _this.isActive, '\nclick', _this.isClick, '\nfocus', isFocus);
+    // }, 1500);
+
 
     if(!this.options.disableHover){
 
@@ -108,7 +127,7 @@
       })
       .on('mouseleave.zf.tooltip', function(e){
         clearTimeout(_this.timeout);
-        if(!isFocus || (!isClick && _this.options.clickOpen)){
+        if(!isFocus || (!_this.isClick && _this.options.clickOpen)){
           _this._hide();
         }
       });
@@ -122,31 +141,32 @@
     }
 
     this.$element
-    .on('click.zf.tooltip', function(e){
-      if(isClick && _this.isActive){
-        _this._hide();
-        isClick = false;
-      }else if(isFocus){
-        isClick = true;
-        if(_this.options.clickOpen){
-          _this._show();
-        }
-      }
+    .on('mousedown.zf.tooltip', function(e){
+      _this.isActive ? _this._hide() : _this._show();
+      // e.stopPropagation();
+      // if(_this.isActive && isFocus && !_this.isClick){
+      //   _this._hide();
+      // }
+      // if(_this.options.clickOpen){
+      //   isFocus = true;
+      //   _this._show();
+      // }
+      _this.isClick = true;
     });
 
     this.$element
     .on('focus.zf.tooltip', function(e){
       isFocus = true;
-      if((isClick && _this.isActive) || (!_this.options.clickOpen && isClick)){
+      if(_this.isClick){
         return;
       }else{
         _this._show();
       }
-      isClick = false;
     })
 
     .on('focusout.zf.tooltip', function(e){
       isFocus = false;
+      _this.isClick = false;
       _this._hide();
     });
   };
