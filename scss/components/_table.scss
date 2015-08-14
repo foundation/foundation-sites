@@ -32,7 +32,7 @@ $table-stripe: even !default;
 
 /// Defualt color for header background.
 /// @type Color
-$table-head-background: smart-scale($table-background-color, $table-color-scale) !default;
+$table-head-background: smart-scale($table-background-color, $table-color-scale / 2) !default;
 
 /// Defualt color for footer background.
 /// @type Color
@@ -84,7 +84,7 @@ $show-header-for-stacked: false;
   tbody {
     tr {
       &:hover {
-        background-color: smart-scale( $table-background-color, 5%);
+        background-color: smart-scale( $table-background-color, 2%);
       }
 
       @if($stripe == even) {
@@ -92,7 +92,7 @@ $show-header-for-stacked: false;
         &.alt,
         &:nth-of-type(even) { background: $table-striped-background; }
         &:hover:nth-of-type(even){
-        background: smart-scale( $table-striped-background, 5%);
+        background: smart-scale( $table-striped-background, 2%);
         }
       }
 
@@ -101,7 +101,7 @@ $show-header-for-stacked: false;
         &.alt,
         &:nth-of-type(odd) { background: $table-striped-background; }
         &:hover:nth-of-type(odd){
-        background: smart-scale( $table-striped-background, 5%);
+        background: smart-scale( $table-striped-background, 2%);
         }
       }
 
@@ -114,9 +114,9 @@ $show-header-for-stacked: false;
 
 /// Adds the ability to horizontally scroll the table when the content overflows horizontally.
 @mixin table-scroll {
-  width: 100%;
-  overflow-y: scroll;
-  display: block;
+    display: block;
+    width: 100%;
+    overflow-y: scroll;
 }
 
 /// Adds styles for a stacked table. Useful for small-screen layouts.

@@ -1,11 +1,11 @@
-$slider-height: 1rem;
-$slider-handle-height: 1.75rem;
-$slider-handle-width: 1rem;
-$slider-handle-color: $medium-gray;
-$slider-disabled-fade: 80%;
-$slider-fill-color: $primary-color;
-$vertical-slider-width: 1rem;
-$slider-background-color: $secondary-color;
+$slider-height: 0.5rem;
+$slider-handle-height: 1.2rem;
+$slider-handle-width: 1.8rem;
+$slider-handle-color: $primary-color;
+$slider-disabled-fade: 60%;
+$slider-fill-color: $medium-gray;
+$vertical-slider-width: 0.5rem;
+$slider-background-color: $light-gray;
 
 .slider {
   background: $slider-background-color;
@@ -41,19 +41,15 @@ $slider-background-color: $secondary-color;
 
 .slider.disabled, .slider[disabled] {
   cursor: not-allowed;
-  background: scale-color($dark-gray, $lightness: $slider-disabled-fade);
+  opacity: 1 - ($slider-disabled-fade / 100%);
   
   .slider-fill {
-    background: scale-color($slider-fill-color, $lightness: $slider-disabled-fade);
+    opacity: 1 - ($slider-disabled-fade / 100%);
   }
 
   .slider-handle {
     cursor: not-allowed;
     background: scale-color($slider-handle-color, $lightness: $slider-disabled-fade);
-    
-    &:hover {
-      background: scale-color($slider-handle-color, $lightness: $slider-disabled-fade);  
-    }
   }
 }
 
