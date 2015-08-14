@@ -45,6 +45,8 @@ $tooltip-pip-offset: 1.25rem;
     @include css-triangle($tooltip-pip-width, $tooltip-background-color, up);
     bottom: 100%;
     position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 
@@ -61,6 +63,8 @@ $tooltip-pip-offset: 1.25rem;
     @include css-triangle($tooltip-pip-width, $tooltip-background-color, right);
     bottom: auto;
     left: 100%;
+    top: 50%;
+    transform: translateY(-50%); 
   }
 }
 
@@ -69,6 +73,9 @@ $tooltip-pip-offset: 1.25rem;
     @include css-triangle($tooltip-pip-width, $tooltip-background-color, left);
     bottom: auto;
     right: 100%;
+    left: auto;
+    top: 50%;
+    transform: translateY(-50%); 
   }
 }
 
