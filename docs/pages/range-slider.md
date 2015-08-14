@@ -9,30 +9,30 @@ sass:
 
 ```html_example
 <div class="slider" data-slider>
-  <span class="slider-handle" style="left: 25%;" role="slider" tabindex="0"></span>
-  <span class="slider-fill" style="width: 25%;"></span>
+  <span class="slider-handle"  data-slider-handle style="transform: translate(100px, -50%);" role="slider" tabindex="1"></span>
+  <span class="slider-fill" data-slider-fill style="width: 100px;"></span>
   <input type="hidden">
 </div>
 <div class="slider disabled" data-slider>
-<span class="slider-handle" style="left: 25%;" role="slider" tabindex="0"></span>
-  <span class="slider-fill" style="width: 25%;"></span>
+<span class="slider-handle" data-slider-handle style="transform: translate(100px, -50%);" role="slider" tabindex="2"></span>
+  <span class="slider-fill" style="width: 100px;"></span>
   <input type="hidden">
 </div>
 <div class="slider" data-slider>
-  <span class="slider-handle" style="left: 10%;" role="slider" tabindex="0"></span>
-  <span class="slider-fill" style="left: 10%; width: 25%;"></span>
-  <span class="slider-handle" style="left: 35%;" role="slider" tabindex="0"></span>
+  <span class="slider-handle" data-slider-handle style="transform: translate(100px, -50%);" role="slider" tabindex="3"></span>
+  <span class="slider-fill" style="left: 100px; width: 100px;"></span>
+  <span class="slider-handle" data-slider-handle style="transform: translate(200px, -50%);" role="slider" tabindex="4"></span>
   <input type="hidden">
 </div>
 <div class="slider vertical" data-slider>
-  <span class="slider-handle" style="top: 25%;"role="slider" tabindex="0"></span>
-  <span class="slider-fill" style="height: 25%;"></span>
+  <span class="slider-handle" data-slider-handle style="transform: translate( -50%, 100px);" role="slider" tabindex="5"></span>
+  <span class="slider-fill" style="height: 100px"></span>
   <input type="hidden">
 </div>
 <div class="slider vertical" data-slider>
-  <span class="slider-handle" style="top: 10%;"role="slider" tabindex="0"></span>
-  <span class="slider-fill" style="top: 10%; height: 50%;"></span>
-  <span class="slider-handle" style="top: 60%;"role="slider" tabindex="0"></span>
+  <span class="slider-handle" data-slider-handle style="transform: translate( -50%, 50px);" role="slider" tabindex="6"></span>
+  <span class="slider-fill" style="top: 50px; height: 100px"></span>
+  <span class="slider-handle" data-slider-handle style="transform: translate( -50%, 150px);" role="slider" tabindex="7"></span>
   <input type="hidden">
 </div>
 ```

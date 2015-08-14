@@ -1,8 +1,8 @@
 $slider-height: 0.5rem;
-$slider-handle-height: 1.2rem;
-$slider-handle-width: 1.8rem;
+$slider-handle-height: 1.4rem;
+$slider-handle-width: 1.4rem;
 $slider-handle-color: $primary-color;
-$slider-disabled-fade: 60%;
+$slider-disabled-fade: 0.5;
 $slider-fill-color: $medium-gray;
 $vertical-slider-width: 0.5rem;
 $slider-background-color: $light-gray;
@@ -41,15 +41,15 @@ $slider-background-color: $light-gray;
 
 .slider.disabled, .slider[disabled] {
   cursor: not-allowed;
-  opacity: 1 - ($slider-disabled-fade / 100%);
+  opacity: $slider-disabled-fade;
   
   .slider-fill {
-    opacity: 1 - ($slider-disabled-fade / 100%);
+    opacity: $slider-disabled-fade;
   }
 
   .slider-handle {
     cursor: not-allowed;
-    background: scale-color($slider-handle-color, $lightness: $slider-disabled-fade);
+    background: scale-color($slider-handle-color, $lightness: percentage(1 - $slider-disabled-fade));
   }
 }
 

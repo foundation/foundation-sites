@@ -39,10 +39,9 @@ $tooltip-pip-offset: 1.25rem;
   padding: $tooltip-padding;
   position: absolute;
   z-index: 10;
-  display: inline-block;
   top: calc(100% + #{$tooltip-pip-height});
   
-  &:before {
+  &::before {
     @include css-triangle($tooltip-pip-width, $tooltip-background-color, up);
     bottom: 100%;
     position: absolute;
@@ -50,29 +49,26 @@ $tooltip-pip-offset: 1.25rem;
 }
 
 .tooltip.top {
-  &:before {
+  &::before {
     @include css-triangle($tooltip-pip-width, $tooltip-background-color, down);
     top: 100%;
     bottom: auto;
-    position: absolute;
   }
 }
 
 .tooltip.left {
-  &:before {
+  &::before {
     @include css-triangle($tooltip-pip-width, $tooltip-background-color, right);
     bottom: auto;
     left: 100%;
-    position: absolute;
   }
 }
 
 .tooltip.right {
-  &:before {
+  &::before {
     @include css-triangle($tooltip-pip-width, $tooltip-background-color, left);
     bottom: auto;
     right: 100%;
-    position: absolute;
   }
 }
 
