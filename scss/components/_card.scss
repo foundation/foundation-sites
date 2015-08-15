@@ -50,8 +50,12 @@ $card-margin: 0.5rem !default;
   overflow: hidden;
 
   $background-lightness: lightness($background);
-  @if $background-lightness >= 60% { color: $card-font-color; }
-  @else { color: $card-font-color-alt; }
+  @if $background-lightness >= 60% {
+    color: $card-font-color;
+  }
+  @else {
+    color: $card-font-color-alt;
+  }
 
   h1, h2, h3, h4, h5, h6 {
     color: inherit;

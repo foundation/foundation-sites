@@ -8,7 +8,7 @@ $offcanvas-width: 250px;
 
 /// Background color of an off-canvas menu.
 /// @type Color
-$offcanvas-background: white;
+$offcanvas-background: $white;
 
 /// Z-index of an off-canvas menu.
 /// @type Number
@@ -82,7 +82,7 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5);
 @mixin main-content {
   background: $body-background;
   transition: transform $offcanvas-transition-length $offcanvas-transition-timing;
-  
+
   @if hasvalue($maincontent-shadow) {
     box-shadow: $maincontent-shadow;
   }
@@ -107,7 +107,7 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5);
 
 @mixin foundation-off-canvas {
   @include off-canvas-basics;
-  
+
   // Off-canvas container
   .off-canvas {
     @include off-canvas;

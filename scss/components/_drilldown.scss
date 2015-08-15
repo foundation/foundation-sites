@@ -8,7 +8,7 @@
   top: 0;
   left: 100%;
   width: 100%;
-  background: white;
+  background: $white;
   transition: transform 0.15s linear;
 
   &.is-active {
@@ -16,6 +16,5 @@
   }
 }
 
-.js-drilldown-back {
-
-}
+// .js-drilldown-back {
+// }

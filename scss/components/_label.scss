@@ -17,7 +17,7 @@ $label-padding: 0.33333rem 0.5rem !default;
 /// Generates base styles for a label.
 @mixin label {
   display: inline-block;
-  padding: $label-padding; 
+  padding: $label-padding;
   font-size: $label-font-size;
   line-height: 1;
   white-space: nowrap;

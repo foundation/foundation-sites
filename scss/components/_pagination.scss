@@ -88,17 +88,17 @@ $pagination-arrows: true;
 
   // Symbols
   @if $pagination-arrows {
-    [aria-label="previous"] { 
+    [aria-label="previous"] {
       &::before {
-        content: "«";
+        content: '«';
         display: inline-block;
-        margin-right: 0.75rem; 
+        margin-right: 0.75rem;
       }
     }
 
-    [aria-label="next"] { 
+    [aria-label="next"] {
       &::after {
-        content: "»";
+        content: '»';
         display: inline-block;
         margin-left: 0.75rem;
       }
@@ -125,7 +125,7 @@ $pagination-arrows: true;
 
 /// Adds styles for an ellipsis for use in a pagination list.
 @mixin pagination-ellipsis {
-  content: "…";
+  content: '…';
   padding: $pagination-item-padding;
   color: $pagination-ellipsis-color;
 }

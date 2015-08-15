@@ -13,7 +13,7 @@ $slider-background-color: $light-gray;
   display: block;
   width: 100%;
   height: $slider-height;
-  margin: 1.25rem 0; 
+  margin: 1.25rem 0;
   touch-action: none;
 }
 
@@ -21,21 +21,21 @@ $slider-background-color: $light-gray;
   background: $slider-fill-color;
   display: inline-block;
   height: $slider-height;
-  position: absolute; 
+  position: absolute;
 }
 
 .slider-handle {
-  background: $slider-handle-color; 
+  @include v-align-middle;
+  background: $slider-handle-color;
   cursor: pointer;
   display: inline-block;
   z-index: 1;
   height: $slider-handle-height;
   width: $slider-handle-width;
-  @include v-align-middle;
   touch-action: manipulation;
 
   &:hover {
-    background: scale-color($slider-handle-color, $lightness: -15%); 
+    background: scale-color($slider-handle-color, $lightness: -15%);
   }
 }
 

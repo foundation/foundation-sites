@@ -4,7 +4,7 @@
 
 /// Default border around custom fieldsets.
 /// @type Border
-$fieldset-border: 1px solid #ddd !default;
+$fieldset-border: 1px solid $medium-gray !default;
 
 /// Default padding inside custom fieldsets.
 /// @type Number

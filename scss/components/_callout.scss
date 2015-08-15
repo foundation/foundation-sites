@@ -42,8 +42,13 @@ $callout-link-tint: true;
   position: relative;
 
   // Respect the padding, fool.
-  > :first-child { margin-top: 0; }
-  > :last-child { margin-bottom: 0; }
+  > :first-child {
+    margin-top: 0;
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
 }
 
 /// Generate quick styles for a callout using a single color as a baseline.
@@ -73,7 +78,7 @@ $callout-link-tint: true;
 }
 
 @mixin foundation-callout {
-  .callout { 
+  .callout {
     @include callout;
 
     @each $name, $color in $foundation-colors {

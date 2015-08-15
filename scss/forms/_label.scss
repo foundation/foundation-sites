@@ -4,7 +4,7 @@
 
 /// Color for form labels.
 /// @type Color
-$form-label-color: #4d4d4d !default;
+$form-label-color: $black !default;
 
 /// Font size for form labels.
 /// @type Number
@@ -34,7 +34,7 @@ $form-label-line-height: 1.8 !default;
 
 @mixin form-label-middle {
   $input-border-width: get-border-value($input-border, width);
-  margin: 0 0 $form-spacing 0;
+  margin: 0 0 $form-spacing;
   padding: ($form-spacing / 2 + rem-calc($input-border-width)) 0;
 }
 

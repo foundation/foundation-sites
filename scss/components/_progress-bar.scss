@@ -38,14 +38,14 @@ $progress-meter-background: $primary-color !default;
 
 /// Adds styles for text in the progress meter.
 @mixin progress-meter-text {
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  margin:0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
   font-size: 0.75rem;
   font-weight: bold;
-  color: #fff;
+  color: $white;
   white-space: nowrap;
 }
 
@@ -62,7 +62,7 @@ $progress-meter-background: $primary-color !default;
       }
     }
   }
-  
+
   // Progress bar meter
   .progress-meter {
     @include progress-meter;
