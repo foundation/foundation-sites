@@ -25,7 +25,7 @@
 
   @include it("creates a down range out of a named breakpoint") {
     $actual: breakpoint(medium down);
-    $expected: '(max-width: 39.9375em)';
+    $expected: '(max-width: 63.9375em)';
 
     @include should(expect($actual), to(be($expected)));
   }
