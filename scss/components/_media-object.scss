@@ -25,40 +25,46 @@ $media-object-stack-img-margin: 1rem !default;
 /// Generates the base styles for a media object.
 @mixin foundation-media-object {
   .media-object {
-    &:not(:last-of-type) {
-      margin-bottom: $media-object-margin-bottom;
-    }
+    margin-bottom: $media-object-margin-bottom;
     display: block;
+
     .media-item {
       display: table-cell;
       vertical-align: top;
+
       &:last-child {
         padding-left: $media-item-padding;
       }
+
       &:first-child {
         padding-right: $media-item-padding;
       }
     }
+
     .media-content {
       display: table-cell;
       vertical-align: top;
+
       .media-title {
         padding: $media-title-padding;
       }
     }
+
     .middle {
       vertical-align: middle;
     }
+
     .bottom {
       vertical-align: bottom;
-      // adjust for bottom margin on media-object
       padding-bottom: $media-object-margin-bottom;
     }
+
     &.stack-for-small {
       .media-item, .media-content {
         @include breakpoint(small only) {
           display: block;
           padding: 0;
+
           img {
             width: $media-object-stack-img-width;
             margin-bottom: $media-object-stack-img-margin;

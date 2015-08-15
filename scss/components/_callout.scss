@@ -52,7 +52,7 @@ $callout-link-tint: true;
   $background: scale-color($color, $lightness: $callout-background-fade);
   $link-color: scale-color($color, $lightness: -10%);
 
-  background: $background;
+  background-color: $background;
 
   @if $callout-link-tint {
     a {
