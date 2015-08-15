@@ -32,6 +32,7 @@ $('[data-docs-search]')
   .typeahead({ highlight: false }, source)
   .on('typeahead:select', function(e, sel) {
     window.location.href = sel.link;
-  });
+  })
+  .focus();
 
 }()
