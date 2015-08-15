@@ -5,6 +5,15 @@ var shipyard = require('shipyard');
 var supercollider = require('supercollider');
 var rimraf = require('rimraf');
 
+// Official Foundation for Sites compatibility
+var COMPATIBILITY = [
+  'last 2 versions',
+  'ie >= 9',
+  'ios >= 7',
+  'and_chr >= 2.1',
+  'ie_mob >= 7'
+];
+
 var files = {
   assetPaths: [
     'docs/assets/**/*',
@@ -94,7 +103,7 @@ gulp.task('sass:docs', function() {
       includePaths: files.sassPaths
     }).on('error', $.sass.logError))
     .pipe($.autoprefixer({
-      browsers: ['last 2 versions', 'ie >= 9']
+      browsers: COMPATIBILITY
     }))
     .pipe(gulp.dest('dist/assets/css'));
 });
