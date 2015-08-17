@@ -6,6 +6,7 @@ sass:
 ---
 
 ## Basic Table
+No bells or whistles here, just a straight up table for all of your basic table needs.
 
 ```html_example
 <table>
@@ -42,10 +43,48 @@ sass:
 
 ---
 
-## Stacked Table
+## Hover Table
+Need to spiff up the table just a tad? Just add the class <code>hover</code> lightly darken the table rows on hover.
 
 ```html_example
-<table class="stack-for-small">
+<table class="hover">
+  <thead>
+    <tr>
+      <th width="200">Table Header</th>
+      <th>Table Header</th>
+      <th width="150">Table Header</th>
+      <th width="150">Table Header</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Content Goes Here</td>
+      <td>This is longer content Donec id elit non mi porta gravida at eget metus.</td>
+      <td>Content Goes Here</td>
+      <td>Content Goes Here</td>
+    </tr>
+    <tr>
+      <td>Content Goes Here</td>
+      <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+      <td>Content Goes Here</td>
+      <td>Content Goes Here</td>
+    </tr>
+    <tr>
+      <td>Content Goes Here</td>
+      <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+      <td>Content Goes Here</td>
+      <td>Content Goes Here</td>
+    </tr>
+  </tbody>
+</table>
+```
+
+---
+## Stacked Table
+Sometimes you just need to stack a table. Just add the class <code>stack</code> to your table.
+
+```html_example
+<table class="stack">
   <thead>
     <tr>
       <th>Cookies</th>
@@ -80,10 +119,10 @@ sass:
 ---
 
 ## Scroll Table
+Got a lot of tubular tabular data? Add the class <code>scroll</code> to your table to enable horizontal scrolling to your table!
 
 ```html_example
-<table class="table-scroll">
-  <caption class="text-left">Wowzers! This table can scroll!</caption>
+<table class="scroll">
   <thead>
     <tr>
       <th>This is the description!</th>
@@ -115,7 +154,7 @@ sass:
       <td>Awesome</td>
       <td>Beast</td>
       <td>Dope</td>
-      <td>Amazeballs</td>
+      <td>Tubular</td>
     </tr>
     <tr>
       <td>These are some words that people use to describe other web frameworks.</td>
@@ -150,7 +189,7 @@ sass:
   </tbody>
   <tfoot>
     <tr>
-      <td>Hey dude. Here's a footer.</td>
+      <td>Here's a footer, just in case</td>
       <td></td>
       <td></td>
       <td></td>

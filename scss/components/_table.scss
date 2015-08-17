@@ -10,8 +10,10 @@
 
 /// Defualt color for table background.
 /// @type Color
-$table-background-color: white  !default;
+$table-background-color: $white  !default;
 
+/// Defualt scale for darkening the striped table rows and the table border.
+/// @type Number
 $table-color-scale: 5% !default;
 
 /// Defualt style for table border.
@@ -21,6 +23,18 @@ $table-border: 1px solid smart-scale($table-background-color, $table-color-scale
 /// Defualt padding for table.
 /// @type Number
 $table-padding: rem-calc(8 10 10) !default;
+
+/// Defualt scale for darkening the table rows on hover.
+/// @type Number
+$table-hover-scale: 2% !default;
+
+/// Defualt color of standard rows on hover.
+/// @type List
+$table-row-hover: darken($table-background-color, $table-hover-scale) !default;
+
+/// Defualt color of striped rows on hover.
+/// @type List
+$table-row-stripe-hover: darken($table-background-color, $table-color-scale + $table-hover-scale) !default;
 
 /// Defualt background color for striped rows.
 /// @type Color
@@ -47,7 +61,7 @@ $table-head-font-color: $body-font-color !default;
 $show-header-for-stacked: false;
 
 /// Adds the general styles for tables.
-
+/// @param {Keyword} $stripe [$table-stripe] - Uses kewords even, odd, or none to darken rows of the table. The defualt value is even.
 @mixin table($stripe: $table-stripe) {
   margin-bottom: $global-margin;
 
@@ -63,6 +77,7 @@ $show-header-for-stacked: false;
     font-weight: $global-weight-bold;
     padding: $table-padding;
   }
+
   // Table head and foot
   thead,
   tfoot {
@@ -80,43 +95,63 @@ $show-header-for-stacked: false;
       }
     }
   }
+
   // Table rows
   tbody {
     tr {
-      &:hover {
-        background-color: smart-scale( $table-background-color, 2%);
-      }
 
+      // If stripe is set to even, darken the even rows.
       @if($stripe == even) {
-        &.even,
-        &.alt,
-        &:nth-of-type(even) { background: $table-striped-background; }
-        &:hover:nth-of-type(even){
-        background: smart-scale( $table-striped-background, 2%);
+        &:nth-of-type(even) {
+          background: $table-striped-background;
         }
       }
 
+      // If stripe is set to odd, darken the odd rows.
       @elseif($stripe == odd) {
-        &.odd,
-        &.alt,
-        &:nth-of-type(odd) { background: $table-striped-background; }
-        &:hover:nth-of-type(odd){
-        background: smart-scale( $table-striped-background, 2%);
+        &:nth-of-type(odd) {
+          background: $table-striped-background;
         }
       }
 
       th,
-      td { padding: $table-padding; }
-      // Stripe it up yo.
+      td {
+        padding: $table-padding;
+      }
     }
   }
 }
 
 /// Adds the ability to horizontally scroll the table when the content overflows horizontally.
 @mixin table-scroll {
-    display: block;
-    width: 100%;
-    overflow-y: scroll;
+  display: block;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+/// Slightly darkens the table rows on hover.
+@mixin table-hover {
+  tr {
+
+    //Darkens the non-striped table rows on hover.
+    &:hover {
+      background-color: $table-row-hover;
+    }
+
+    //Darkens the even striped table rows.
+    @if($table-stripe == even) {
+      &:nth-of-type(even):hover {
+        background: $table-row-stripe-hover;
+      }
+    }
+
+    //Darkens the odd striped table rows.
+    @elseif($table-stripe == odd) {
+      &:nth-of-type(odd):hover {
+        background: $table-row-stripe-hover;
+      }
+    }
+  }
 }
 
 /// Adds styles for a stacked table. Useful for small-screen layouts.
@@ -126,7 +161,7 @@ $show-header-for-stacked: false;
   @if ($header) {
     thead {
       th:first-child {
-        display: block !important;
+        display: block;
       }
 
       th {
@@ -163,13 +198,20 @@ $show-header-for-stacked: false;
 table {
   @include table();
 }
+
 // scss-lint:disable MergeableSelector, QualifyingElement
-table.stack-for-small {
+table.stack {
   @include breakpoint(medium down) {
     @include stack-for-small;
   }
 }
 
-.table-scroll {
+// scss-lint:disable MergeableSelector, QualifyingElement
+table.scroll {
   @include table-scroll;
+}
+
+// scss-lint:disable MergeableSelector, QualifyingElement
+table.hover {
+  @include table-hover;
 }
