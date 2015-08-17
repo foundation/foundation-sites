@@ -39,7 +39,7 @@
 ) {
   $behavior: -zf-get-options($behavior, nest collapse);
   $margin: auto;
-  
+
   @if map-get($behavior, nest) {
     $margin: -$grid-column-gutter;
 
@@ -55,7 +55,7 @@
     left: $margin;
     right: $margin;
   };
-  
+
   @if $columns != null {
     @include grid-context($columns) {
       @content;

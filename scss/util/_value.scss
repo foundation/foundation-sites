@@ -101,6 +101,7 @@
       @return nth($val, -1);
     }
     @else {
+      // scss-lint:disable ColorVariable
       @return #000;
     }
   }
@@ -167,13 +168,13 @@
   @if type-of($opts) != 'list' {
     $opts: ($opts);
   }
-  
+
   $map: ();
   @each $keyword in $seeking {
     $val: if(index($opts, $keyword) != null, true, false);
     $item: ($keyword: $val);
     $map: map-merge($map, $item);
   }
-  
+
   @return $map;
 }

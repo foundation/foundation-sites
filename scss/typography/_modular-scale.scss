@@ -31,7 +31,7 @@ $ms-intervals: (
       @if $breakpoint == default {
         font-size: $font-size;
       }
-      
+
       // For all other sizes, a media query is inserted
       @else {
         @include breakpoint($breakpoint) {

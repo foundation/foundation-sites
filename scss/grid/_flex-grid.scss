@@ -87,7 +87,7 @@
   %flex-column {
     @include flex-grid-column;
   }
-  
+
   .column,
   .columns {
     @extend %flex-column;
@@ -168,7 +168,7 @@
     .row.align-#{$vdir} {
       align-items: $prop;
     }
-    
+
     .column.align-#{$vdir} {
       align-self: $prop;
     }

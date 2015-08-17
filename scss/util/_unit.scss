@@ -43,7 +43,7 @@ $rem-base: 16px !default;
   @for $i from 1 through $max {
     $rem-values: append($rem-values, convert-to-rem(nth($values, $i), $base-value));
   }
-  
+
   @return $rem-values;
 }
 

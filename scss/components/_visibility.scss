@@ -3,6 +3,7 @@
 /// @param {Keyword} $prop [block] - The `display` property to use to un-hide the element.
 @mixin show-for($size, $prop: block) {
   display: none !important;
+
   @include breakpoint($size) {
     display: $prop !important;
   }
@@ -13,6 +14,7 @@
 /// @param {Keyword} $prop [block] - The `display` property to use to un-hide the element.
 @mixin show-for-only($size, $prop: block) {
   display: none !important;
+
   @include breakpoint($size only) {
     display: $prop !important;
   }
@@ -39,6 +41,7 @@
   .hide {
     display: none !important;
   }
+
   .invisible {
     visibility: hidden !important;
   }
@@ -73,17 +76,17 @@
   .show-for-sr {
     @extend %show-for-sr;
   }
-  
+
   // Only display the element when it's focused
   .show-on-focus {
     @extend %show-for-sr;
-    
+
     &:active,
     &:focus {
       @include element-invisible-off;
     }
   }
-  
+
   // Orientation visibility classes
   @each $orientation in (portrait, landscape) {
     @include breakpoint($orientation) {

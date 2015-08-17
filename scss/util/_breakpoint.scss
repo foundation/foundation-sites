@@ -93,7 +93,8 @@ $breakpoint-classes: (small medium large) !default;
       // For named breakpoints, subtract the breakpoint value by one "pixel", or 1/16em.
       @if $named {
         $max: $bp-max;
-      } @else {
+      }
+      @else {
         $max: $bp;
       }
 

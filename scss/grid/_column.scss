@@ -13,7 +13,7 @@
 /// @return {Number} A calculated percentage value.
 @function grid-column($columns) {
   $width: 0%;
-  
+
   // Parsing percents, decimals, and column counts
   @if type-of($columns) == 'number' {
     @if unit($columns) == '%' {
@@ -39,7 +39,7 @@
   @else {
     @error 'Wrong syntax for grid-column(). Use a number, decimal, percentage, or "n of n".';
   }
-  
+
   @return $width;
 }
 
