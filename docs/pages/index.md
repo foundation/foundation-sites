@@ -87,7 +87,7 @@ Get to know the pieces of Foundation.
       <ul>
         <li><a href="menu-bar.html">Menu Bar</a></li>
         <li><a href="drilldown.html">Drilldown</a></li>
-        <li><a href="dropdown.html">Dropdown</a></li>
+        <li><a href="dropdown-menu.html">Dropdown Menu</a></li>
         <li><a href="accordion-menu.html">Accordion Menu</a></li>
         <li><a href="responsive-menu.html">Responsive Menu</a></li>
         <li><a href="breadcrumbs.html">Breadcrumbs</a></li>

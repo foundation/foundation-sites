@@ -1,3 +1,11 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group functions
+////
+
 /// Creates a CSS triangle, which can be used for dropdown arrows, dropdown pips, and more. Use this mixin inside a `&::before` or `&::after` selector, to attach the triangle to an existing element.
 /// @param {Number} $triangle-size - Width of the triangle.
 /// @param {Color} $triangle-color - Color of the triangle.
@@ -94,7 +102,7 @@
 }
 
 /// Applies the micro clearfix hack popularized by Nicolas Gallagher. Include this mixin on a container if its children are all floated, to give the container a proper height.
-/// @link http://nicolasgallagher.com/micro-clearfix-hack/
+/// @link http://nicolasgallagher.com/micro-clearfix-hack/ Micro Clearfix Hack
 @mixin clearfix {
   &::before,
   &::after {
@@ -109,7 +117,7 @@
 
 /// Adds CSS for a "quantity query" selector that automatically sizes elements based on how many there are inside a container.
 /// @param {Number} $max - Maximum number of items to detect. The higher this number is, the more CSS that's required to cover each number of items.
-/// @link http://alistapart.com/article/quantity-queries-for-css
+/// @link http://alistapart.com/article/quantity-queries-for-css Quantity Queries for CSS
 @mixin auto-width($max) {
   @for $i from 2 through $max {
     &:nth-last-child(#{$i}):first-child,
@@ -120,7 +128,7 @@
 }
 
 /// Makes an element visually hidden, but still accessible to keyboards and assistive devices.
-/// @link http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+/// @link http://snook.ca/archives/html_and_css/hiding-content-for-accessibility Hiding Content for Accessibility
 @mixin element-invisible {
   position: absolute !important;
   width: 1px;

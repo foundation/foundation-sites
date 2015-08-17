@@ -1,3 +1,11 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group visibility
+////
+
 /// Hide an element by default, only displaying it above a certain screen size. Normally `display: block` is used to un-hide the element, but you can change this if you're working with an element that's inline, table-based, etc.
 /// @param {Keyword} $size - Breakpoint name or screen width to use.
 /// @param {Keyword} $prop [block] - The `display` property to use to un-hide the element.
