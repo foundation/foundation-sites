@@ -1,7 +1,7 @@
 ---
 title: Dropdown Menus
 description: Dropdowns. Or ups, rights, and lefts; horizontal or vertical. Your call! Dropdowns are a great way to add content to an element without taking up a bunch of space in your view.
-sass: scss/components/_dropdown.scss
+sass: scss/components/_dropdown-menu.scss
 ---
 
 ## Horizontal
