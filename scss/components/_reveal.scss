@@ -79,7 +79,8 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
 /// @param {Number} $width - Width of the modal. Generally a percentage.
 /// @param {Number} $max-width [$reveal-max-width] - Maximum width of the modal.
 @mixin reveal-modal-width(
-  $width: $reveal-width
+  $width: $reveal-width,
+  $max-width: $reveal-max-width
 ) {
   @include breakpoint(medium) {
     @extend %reveal-centered;

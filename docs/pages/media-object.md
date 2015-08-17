@@ -4,86 +4,57 @@ description: Media objects are super useful componets for displaying an item, us
 sass: scss/components/_media-object.scss
 ---
 
-### Media item on the left
+## Basics
+
+A media object is a container with the class `.media-object`, and two or three sections with the class `.media-object-section`.
 
 ```html_example
 <div class="media-object">
-  <div class="media-item">
-    <a href="#">
-      <img src= "http://placeimg.com/200/200/people">
-    </a>
+  <div class="media-object-section">
+    <img src= "http://placeimg.com/200/200/people">
   </div>
-  <div class="media-content">
-    <h4 class="media-title">Dreams feel real while we're in them.</h4>
+  <div class="media-object-section">
+    <h4>Dreams feel real while we're in them.</h4>
     <p>I'm going to improvise. Listen, there's something you should know about me... about inception. An idea is like a virus, resilient, highly contagious. The smallest seed of an idea can grow. It can grow to define or destroy you.</p>
-    <p>So, once we've made the plant, how do we go out? Hope you have something more elegant in mind than shooting me in the head? A kick. What's a kick? This, Ariadne, would be a kick.</p>
   </div>
 </div>
 ```
 
-### Media item on the right
-
-```html_example
-<div class="media-object">
-  <div class="media-content">
-    <h4 class="media-title">Why is it so important to dream?</h4>
-    <p>What is the most resilient parasite? Bacteria? A virus? An intestinal worm? An idea. Resilient... highly contagious. Once an idea has taken hold of the brain it's almost impossible to eradicate. An idea that is fully formed - fully understood - that sticks; right in there somewhere.</p>
-  </div>
-  <div class="media-item">
-    <a href="#">
-      <img src= "http://placeimg.com/200/200/people">
-    </a>
-  </div>
-</div>
-```
 ---
 
-### Vertically aligning media items
+## Section Alignment
 
-By adding a class of `middle` or `bottom`, you can align the item in media item to the middle or bottom of the media-object.
+Each section aligns to the top by default, but individual sections can also be middle- or bottom-aligned with the `.middle` and `.bottom` classes.
 
 ```html_example
 <div class="media-object">
-  <div class="media-item middle">
-    <a href="#">
-      <img src= "http://placeimg.com/200/200/people">
-    </a>
+  <div class="media-object-section middle">
+    <img src= "http://placeimg.com/200/200/people">
   </div>
-  <div class="media-content">
-    <h4 class="media-title">My thing is aligned in the middle</h4>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus excepturi sunt vitae odio voluptates. Dicta voluptatibus natus minus, incidunt facere, suscipit vel aut vero, ex veniam consequuntur dolores quam autem.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus excepturi sunt vitae odio voluptates. Dicta voluptatibus natus minus, incidunt facere, suscipit vel aut vero, ex veniam consequuntur dolores quam autem.</p>
+  <div class="media-object-section">
+    <h4>Why is it so important to dream?</h4>
+    <p>So, once we've made the plant, how do we go out? Hope you have something more elegant in mind than shooting me in the head? A kick. What's a kick? This, Ariadne, would be a kick.</p>
+    <p>What is the most resilient parasite? Bacteria? A virus? An intestinal worm? An idea. Resilient... highly contagious. Once an idea has taken hold of the brain it's almost impossible to eradicate. An idea that is fully formed - fully understood - that sticks; right in there somewhere.</p>
   </div>
-</div>
-
-<div class="media-object">
-  <div class="media-item bottom">
-    <a href="#">
-      <img src= "http://placeimg.com/200/200/people">
-    </a>
-  </div>
-  <div class="media-content">
-    <h4 class="media-title">Mine is at the bottom</h4>
-    <p>If Strike Isn't Settled Quickly, It May Last a While. Red Tape Holds Up New Bridges. Drunk Gets Nine Months in Violin Case. Astronaut Takes Blame for Gas in Spacecraft. Stolen Painting Found by Tree.</p>
-    <p>Couple Lost in Corn Maze Call 911. Two Sisters Reunited After 18 Years at Checkout Counter. Man Struck By Lightning Faces Battery Charge. Enraged Cow Injures Farmer With Ax. Typhoon Rips Through Cemetery; Hundreds Dead.</p>
+  <div class="media-object-section bottom">
+    <img src= "http://placeimg.com/200/200/people">
   </div>
 </div>
 ```
+
 ---
 
 ### Stack on Small
 
-By adding the `.stack-for-small` class, you can make your media object responsive. Images will get a width of 100%, but you can change that.
+By adding the `.stack-for-small` class, you can make your media object responsive. Images will get a width of 100%, but this can be changed.
 
 ```html_example
 <div class="media-object stack-for-small">
-  <div class="media-item">
-    <a href="#">
-      <img src= "http://placeimg.com/600/200/people">
-    </a>
+  <div class="media-object-section">
+    <img src= "http://placeimg.com/400/200/people">
   </div>
-  <div class="media-content">
-    <h4 class="media-title">I Can Stack.</h4>
+  <div class="media-object-section">
+    <h4>I Can Stack.</h4>
     <p>Shrink the browser width to see me stack. I do tricks for dog treats, but I'm not a dog.</p>
   </div>
 </div>
@@ -91,78 +62,72 @@ By adding the `.stack-for-small` class, you can make your media object responsiv
 
 ---
 
-### Nested Media Objects
+### Nesting Media Objects
 
-By nesting a media object into the media-content section, you can easily indent it. This is great for comment strings.
+By nesting a media object into the media-object-section section, you can easily indent it. This is great for comment strings.
 
 ```html_example
 <div class="media-object">
-  <div class="media-item">
-    <a href="#">
-      <img src= "http://placeimg.com/200/200/people">
-    </a>
+  <div class="media-object-section">
+    <img src= "http://placeimg.com/200/200/people">
   </div>
-  <div class="media-content">
-    <h4 class="media-title">I'm First!</h4>
+  <div class="media-object-section">
+    <h4>I'm First!</h4>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro at, tenetur cum beatae excepturi id ipsa? Esse dolor laboriosam itaque ea nesciunt, earum, ipsum commodi beatae velit id enim repellat.</p>
-    <!-- Nested media object goes here -->
+    <!-- Nested media object starts here -->
     <div class="media-object">
-      <div class="media-item">
-        <a href="#">
-          <img src= "http://placeimg.com/200/200/people">
-        </a>
+      <div class="media-object-section">
+        <img src= "http://placeimg.com/200/200/people">
       </div>
-      <div class="media-content">
-        <h4 class="media-title">Nested</h4>
+      <div class="media-object-section">
+        <h4>I'm Second!</h4>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas magni, quam mollitia voluptatum in, animi suscipit tempora ea consequuntur non nulla vitae doloremque. Eius rerum, cum earum quae eveniet odio.</p>
       </div>
     </div>
+    <!-- And ends here -->
   </div>
 </div>
 ```
 
 ---
 
-### Other Uses
+## Other Uses
 
-It's a versatile component which can be used in many ways.
+The media object is a versatile component which can be used in many ways.
 
-<div class="row">
-  <div class="medium-6 columns">
+<div class="row small-up-1 large-up-2">
+  <div class="column">
     <div class="media-object">
-      <div class="media-item">
+      <div class="media-object-section">
         <a href="#" class="button">Button</a>
         <form>
           <input id="checkbox1" type="checkbox">
         </form>
       </div>
-      <div class="media-content">
-        <h4 class="media-title">Button and checkbox</h4>
+      <div class="media-object-section">
+        <h4>Button and checkbox</h4>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus excepturi sunt vitae odio voluptates. Dicta voluptatibus natus minus, incidunt facere, suscipit vel aut vero, ex veniam consequuntur dolores quam autem.</p>
       </div>
     </div>
   </div>
-  <div class="medium-6 columns">
+  <div class="column">
     <div class="media-object">
-      <div class="media-item">
+      <div class="media-object-section">
         <i class="fi-comments" style="font-size: 32px"></i>
       </div>
-      <div class="media-content">
-        <h4 class="media-title">With Foundicons!</h4>
+      <div class="media-object-section">
+        <h4>With Foundicons!</h4>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus excepturi sunt vitae odio voluptates. Dicta voluptatibus natus minus, incidunt facere, suscipit vel aut vero, ex veniam consequuntur dolores quam autem.</p>
       </div>
     </div>
   </div>
-</div>
-<br>
-<div class="row">
-  <div class="medium-6 columns">
+  <div class="column">
     <div class="media-object">
-      <div class="media-item">
+      <div class="media-object-section">
         <img src= "http://placeimg.com/200/200/people">
       </div>
-      <div class="media-content">
-        <h4 class="media-title">I like to comment on things!</h4>
+      <div class="media-object-section">
+        <h4>I like to comment on things!</h4>
         <form>
           <label>
             <textarea placeholder="comment"></textarea>
@@ -171,13 +136,13 @@ It's a versatile component which can be used in many ways.
       </div>
     </div>
   </div>
-  <div class="medium-6 columns">
+  <div class="column">
     <div class="media-object callout secondary">
-      <div class="media-item">
+      <div class="media-object-section">
         <i class="fi-comments" style="font-size: 32px"></i>
       </div>
-      <div class="media-content middle">
-        <h4 class="media-title">In a Callout</h4>
+      <div class="media-object-section middle">
+        <h4>In a Callout</h4>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus excepturi sunt vitae odio voluptates. Dicta voluptatibus natus minus, incidunt facere.</p>
       </div>
     </div>
