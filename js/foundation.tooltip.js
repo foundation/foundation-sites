@@ -1,12 +1,12 @@
 !function($, document, Foundation){
   'use strict';
+  var c = console;
   function Tooltip(element, options){
     this.$element = element;
     this.options = $.extend({}, this.defaults, options || {});
     this.isActive = false;
     this.isClick = false;
     this._init();
-    console.log(options);
   }
 
 
@@ -31,7 +31,7 @@
     this.$element.append(this.template);
     this.$element.attr({'title': '', 'aria-describedby': elemId})
     // this.$element.append(this.template).attr('title', '');
-    console.log(elemId);
+    // console.log(elemId);
     this._events();
   };
 
@@ -42,12 +42,27 @@
   Tooltip.prototype.buildTemplate = function(id){
     this.options.templateClasses = this.options.tooltipClass + (this.getPositionClass() || '');
 
-    return $('<div></div>').addClass(this.options.templateClasses).attr({
+    // return
+    var $template =  $('<div></div>').addClass(this.options.templateClasses).attr({
       'role': 'tooltip',
       'aria-hidden': true,
       'data-is-active': false,
       'id': id
-    }).text(this.$element.attr('title')).hide();
+    }).text(this.$element.attr('title'));
+    //.hide();
+
+    //experimental
+    var prevCss = $template.attr('style');
+    console.log('previous css',prevCss)
+    $template.css({
+      position: 'absolute',
+      visibility: 'hidden',
+      display: 'block'
+    });
+    var dims = {width: $template.outerWidth(), height: $template.outerHeight()};
+    console.log(dims);
+    return $template.attr('style', prevCss ? prevCss : '').hide();
+    //.hide();
   };
 
   Tooltip.prototype.getPositionClass = function(){
@@ -67,9 +82,9 @@
 
     this.hideAll();
 
-    var clear = Foundation.ImNotTouchingYou(this.template, direction, param);
-    console.log(clear);
-    if(!clear){
+    var isNotClear = Foundation.ImNotTouchingYou(this.template, direction, param);
+     console.log(isNotClear);
+    if(isNotClear){
       this.clearEdge();
     }
 
@@ -77,23 +92,75 @@
       'data-is-active': true,
       'aria-hidden': false
     });
-    this.template.stop().fadeIn(this.options.fadeInDuration, function(){
+    console.log(this.setPosition());
+    this.template.stop().css(this.setPosition()).fadeIn(this.options.fadeInDuration, function(){
       _this.isActive = true;
     });
   };
 
   Tooltip.prototype.clearEdge = function(){
+    var dirClass = this.template.attr('class').match(/top|right|left/g),
+          dirClass = dirClass ? dirClass[0] : '';
+    if(!dirClass){
+      this.template.addClass('top');
+    }else if(dirClass === 'left'){
+      this.template.removeClass('left').addClass('right');
+    }else if(dirClass === 'right'){
+      this.template.removeClass('right').addClass('left');
+    }else{
+      this.template.removeClass('top');
+    }
+  };
+
+  Tooltip.prototype.setPosition = function(){
+    var dir = this.template.attr('class').match(/top|right|left/g);
+    dir = dir ? dir[0] : null;
+    var elemHeight = Math.floor(this.$element.outerHeight());
+
+    // console.log('elem height',elemHeight, '\ntip height', this.template.outerHeight());
+    var vSize = Math.floor(this.template.outerHeight() / this.$element.outerHeight());
+    var hSize = Math.floor(this.template.outerWidth() / this.$element.outerWidth());
+    switch(dir){
+      case 'top':
+        return {'top': (Math.floor(-(100 * (vSize + 1)))).toString() + '%'};
+      break;
+      case 'left':
+      return {'left': '-420%', 'top': '-35%'};
+        // return {'left': (Math.floor(-(100 *(hSize + 1.25)))).toString() + '%',
+      /*'top': (Math.floor(0 - (elemHeight / 2))).toString() + '%'*/
+                // 'top': '-' + elemHeight / 4 + 'px'};
+      break;
+      case 'right':
+      return { 'left': '120%', 'top': '-262.5%'};
+        // return {'left': (Math.floor(100 *(hSize + 1.25))).toString() + '%', 'top': /*(Math.floor(elemHeight / 2)).toString() + '%'*/'-' + elemHeight * 2.5 + 'px'}
+      default:
+        return {};
+
+    }
 
   };
 
   Tooltip.prototype.hideAll = function(){
     var _this = this;
+
     $('[data-is-active]', this.tooltipClass).each(function(){
-      $(this).fadeOut(_this.options.fadeOutDuration);
+      Tooltip._hide(_this.template, _this);
+      // this._hide();
+      // $(this).fadeOut(_this.options.fadeOutDuration);
     });
     // $(document).find('[data-is-active]', this.tooltipClass).each(function(){
     //   $(this).fadeOut(_this.options.fadeOutDuration);
     // });
+  };
+
+  Tooltip._hide = function($elem, _this){
+    $elem.stop().attr({
+      'aria-hidden': true,
+      'data-is-active': false
+    }).fadeOut(_this.options.fadeOutDuration, function(){
+      _this.isActive = false;
+      _this.isClick = false;
+    });
   };
 
   Tooltip.prototype._hide = function(){
@@ -107,8 +174,9 @@
     });
   };
 
-  Tooltip.prototype._events = function($tipRoot){
+  Tooltip.prototype._events = function(){
     var _this = this;
+    var $template = this.template;
     var isFocus = false;
     // setInterval(function(){
     //   console.log('active', _this.isActive, '\nclick', _this.isClick, '\nfocus', isFocus);
@@ -128,7 +196,8 @@
       .on('mouseleave.zf.tooltip', function(e){
         clearTimeout(_this.timeout);
         if(!isFocus || (!_this.isClick && _this.options.clickOpen)){
-          _this._hide();
+          // _this._hide();
+          Tooltip._hide($template, _this);
         }
       });
     }

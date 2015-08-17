@@ -46,6 +46,15 @@ Like with `.show`, these classes also have `-only` versions.
 <p class="hide-for-large-only">You are <em>definitely not</em> on a large screen.</p>
 ```
 
+### Generic Hide Classes
+
+And if you really just need something hidden no matter what, there are classes for that as well. The `.hide` and `.invisibile` classes respectively set `display: none` and `visibility: hidden` on an element.
+
+```html
+<p class="hide">Can't touch this.</p>
+<p class="invisible">Can sort of touch this.</p>
+```
+
 ---
 
 ## Orientation Detection
