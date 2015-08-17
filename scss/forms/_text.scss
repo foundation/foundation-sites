@@ -4,7 +4,7 @@
 
 /// Font color of text inputs.
 /// @type Color
-$input-color: #676767 !default;
+$input-color: $dark-gray !default;
 
 /// Font family of text inputs.
 /// @type Font
@@ -16,31 +16,31 @@ $input-font-size: rem-calc(16) !default;
 
 /// Background color of text inputs.
 /// @type Color
-$input-background: #fff !default;
+$input-background: $white !default;
 
 /// Background color of focused of text inputs.
 /// @type Color
-$input-background-focus: #fafafa !default;
+$input-background-focus: $white !default;
 
 /// Background color of disabled text inputs.
 /// @type Color
-$input-background-disabled: #ddd !default;
+$input-background-disabled: $light-gray !default;
 
 /// Border around text inputs.
 /// @type Border
-$input-border: 1px solid #ccc !default;
+$input-border: 1px solid $medium-gray !default;
 
 /// Border around focused text inputs.
 /// @type Color
-$input-border-focus: 1px solid #999 !default;
+$input-border-focus: 1px solid $dark-gray !default;
 
 /// Box shadow inside text inputs when not focused.
 /// @type Shadow
-$input-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1) !default;
+$input-shadow: inset 0 1px 2px rgba($black, 0.1) !default;
 
 /// Box shadow outside text inputs when focused.
 /// @type Shadow
-$input-shadow-focus: 0 0 5px #999 !default;
+$input-shadow-focus: 0 0 5px $medium-gray !default;
 
 /// Border radius around text inputs.
 /// @type Number
@@ -52,7 +52,7 @@ $input-cursor-disabled: $cursor-default-value !default;
 
 /// Properties to transition on text inputs.
 /// @type Transition
-$input-transition: box-shadow 0.5s, border-color 0.5s ease-in-out !default;
+$input-transition: box-shadow 0.5s, border-color 0.25s ease-in-out !default;
 
 /// Enables the up/down buttons that Chrome and Firefox add to `<input type="number">` elements.
 /// @type Boolean
@@ -60,7 +60,7 @@ $input-number-spinners: true !default;
 
 @mixin form-element {
   $height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
-  
+
   display: block;
   box-sizing: border-box;
   width: 100%;
@@ -68,7 +68,7 @@ $input-number-spinners: true !default;
   padding: $form-spacing / 2;
   border: $input-border;
   margin: 0 0 $form-spacing;
-  
+
   font-family: $input-font-family;
   font-size: $input-font-size;
   color: $input-color;

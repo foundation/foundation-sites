@@ -7,7 +7,7 @@
 @mixin grid-column-position($position) {
   @if type-of($position) == 'number' {
     $offset: percentage($position / $grid-column-count);
-    
+
     position: relative;
     left: $offset;
   }

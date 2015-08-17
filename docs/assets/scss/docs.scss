@@ -16,3 +16,13 @@
 @import "index";
 @import "building-blocks";
 @import "search";
+
+.docs-component {
+  .callout {
+    border-left-width: 10px;
+
+    &.primary { border-left-color: $primary-color; }
+    &.warning { border-left-color: $warning-color; }
+    &.alert   { border-left-color: $alert-color; }
+  }
+}

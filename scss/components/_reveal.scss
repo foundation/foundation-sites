@@ -8,7 +8,7 @@ $reveal-background: $white !default;
 
 /// Default width of a modal, with no class applied.
 /// @type Number
-$reveal-width: 80% !default;
+$reveal-width: 600px !default;
 
 /// Default maximum width of a modal.
 /// @type Number
@@ -79,8 +79,7 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
 /// @param {Number} $width - Width of the modal. Generally a percentage.
 /// @param {Number} $max-width [$reveal-max-width] - Maximum width of the modal.
 @mixin reveal-modal-width(
-  $width,
-  $max-width: $reveal-max-width
+  $width: $reveal-width
 ) {
   @include breakpoint(medium) {
     @extend %reveal-centered;
@@ -111,6 +110,7 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   // Modal container
   .reveal {
     @include reveal-modal-base;
+    @include reveal-modal-width($reveal-width);
 
     // Remove padding
     &.collapse {

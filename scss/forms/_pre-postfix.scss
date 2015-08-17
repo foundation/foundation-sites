@@ -4,15 +4,15 @@
 
 /// Color of labels prefixed to an input.
 /// @type Color
-$input-prefix-color: #333 !default;
+$input-prefix-color: $black !default;
 
 /// Background color of labels prefixed to an input.
 /// @type Color
-$input-prefix-background: #f2f2f2 !default;
+$input-prefix-background: $light-gray !default;
 
 /// Border around labels prefixed to an input.
 /// @type Border
-$input-prefix-border: 1px solid #ccc;
+$input-prefix-border: 1px solid $medium-gray;
 
 @mixin foundation-form-prepostfix {
   .input-group {
@@ -40,6 +40,7 @@ $input-prefix-border: 1px solid #ccc;
       &:first-child {
         border-right: 0;
       }
+
       &:last-child {
         border-left: 0;
       }

@@ -3,6 +3,7 @@
     .text-#{$align} {
       text-align: $align;
     }
+
     @each $size in $breakpoint-classes {
       @include breakpoint($size) {
         @if $size != 'small' {
