@@ -2,15 +2,15 @@
 
 @include describe("Foreground") {
   @include it("returns black if the input color is light") {
-    $actual: foreground(#fff);
-    $expected: #000;
+    $actual: foreground($white);
+    $expected: $black;
 
     @include should(expect($actual), to(be($expected)));
   }
 
   @include it("returns white if the input color is dark") {
-    $actual: foreground(#000);
-    $expected: #fff;
+    $actual: foreground($black);
+    $expected: $white;
 
     @include should(expect($actual), to(be($expected)));
   }
@@ -18,7 +18,7 @@
 
 @include describe("Smart Scale") {
   @include it("darkens a light color") {
-    $color: #fff;
+    $color: $white;
     $scale: 5%;
     $threshold: 60%;
 
@@ -28,7 +28,7 @@
     @include should(expect($actual), to(be($expected)));
   }
   @include it("lightens a dark color") {
-    $color: #000;
+    $color: $black;
     $scale: 5%;
     $threshold: 60%;
 
