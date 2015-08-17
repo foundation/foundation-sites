@@ -10,12 +10,14 @@ $tooltip-padding: 0.75rem;
 
 /// Default font size of the tooltip text. By default, we recommend a smaller font size than the body copy.
 /// @type Number
-$tooltip-font-size: 0.75rem;
+$tooltip-font-size: $small-font-size;
 
 /// Default pip width for tooltips.
 /// @type Number
 $tooltip-pip-width: 0.75rem;
 
+/// Default pip height for tooltips. This is helpful for calculating the distance of the tooltip from the tooltip word.
+/// @type Number
 $tooltip-pip-height: $tooltip-pip-width * 0.866;
 
 /// Default pip offset for tooltips. This controls how far the pip is indented from the left edge of the tooltip.
