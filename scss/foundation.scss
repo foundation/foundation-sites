@@ -52,7 +52,7 @@ $foundation-version: '6.0.0-alpha';
 
 // These styles are applied to <meta> tags, which are read by the Foundation JavaScript
 .foundation-mq {
-  font-family: "#{map-serialize($breakpoints)}";
+  font-family: "#{-zf-bp-serialize($breakpoints)}";
 }
 
 @mixin foundation-everything {

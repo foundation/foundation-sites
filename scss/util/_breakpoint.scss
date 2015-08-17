@@ -1,5 +1,3 @@
-@import 'util/map';
-
 ////
 /// @group breakpoints
 ////
@@ -46,7 +44,7 @@ $breakpoint-classes: (small medium large) !default;
   @if type-of($bp) == 'string' {
     @if map-has-key($breakpoints, $bp) {
       @if $dir == 'only' or $dir == 'down' {
-        $next-bp: map-next($breakpoints, $bp);
+        $next-bp: -zf-map-next($breakpoints, $bp);
 
         @if $next-bp == null {
           $bp-max: null;
@@ -142,5 +140,50 @@ $breakpoint-classes: (small medium large) !default;
     @media #{$str} {
       @content;
     }
+  }
+}
+
+/// Convers the breakpoints map to a URL-encoded string, like this: `key1=value1&key2=value2`. The value is then dropped into the CSS for a special `<meta>` tag, which is read by the Foundation JavaScript. This is how we transfer values from Sass to JavaScript, so they can be defined in one place.
+/// @access private
+/// @param {Map} $map - Map to convert.
+/// @returns {String} A string containing the map's contents.
+@function -zf-bp-serialize($map) {
+  $str: '';
+  @each $key, $value in $map {
+    $str: $str + $key + '=' + -zf-bp-to-em($value) + '&';
+  }
+  $str: str-slice($str, 1, -2);
+
+  @return $str;
+}
+
+/// Find the next key in a map.
+/// @access private
+/// @param {Map} $map - Map to traverse.
+/// @param {Mixed} $key - Key to use as a starting point.
+/// @returns {Mixed} The value for the key after `$key`, if `$key` was found. If `$key` was not found, or `$key` was the last value in the map, returns `null`.
+@function -zf-map-next($map, $key) {
+  // Store the values of the map as a list, so we can access them with nth
+  $values: map-values($map);
+
+  // Ghetto for loop
+  $i: 1;
+  $found: false;
+  @each $val in map-keys($map) {
+    @if $found == false {
+      @if ($key == $val) {
+        $found: true;
+      }
+      $i: $i + 1;
+    }
+  }
+
+  // If the key doesn't exist, or it's the last key in the map, return null
+  @if $i > length($map) {
+    @return null;
+  }
+  // Otherwise, return the value
+  @else {
+    @return nth($values, $i);
   }
 }
