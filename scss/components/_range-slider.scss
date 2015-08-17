@@ -1,11 +1,45 @@
-$slider-height: 0.5rem;
-$slider-handle-height: 1.4rem;
-$slider-handle-width: 1.4rem;
-$slider-handle-color: $primary-color;
-$slider-disabled-fade: 0.5;
-$slider-fill-color: $medium-gray;
-$vertical-slider-width: 0.5rem;
-$slider-background-color: $light-gray;
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+@import 'global';
+
+////
+/// @group table
+////
+
+/// Defualt height of the slider.
+/// @type Number
+$slider-height: 0.5rem !default;
+
+/// Default slider width of a vertical slider.
+/// @type Number
+$vertical-slider-width: $slider-height !default;
+
+/// Default height of the handle of the slider.
+/// @type Number
+$slider-handle-height: 1.4rem !default;
+
+/// Defualt width of the handle of the slider.
+/// @type Number
+$slider-handle-width: 1.4rem !default;
+
+/// Defualt color of the handle for the slider.
+/// @type Color
+$slider-handle-color: $primary-color !default;
+
+/// Defualt fade amount of a disabled slider.
+/// @type Number
+$slider-disabled-fade: 0.5 !default;
+
+/// Defualt color of the active fill color of the slider.
+/// @type Color
+$slider-fill-color: $medium-gray !default;
+
+
+/// Default background color of the slider's track.
+/// @type Color
+$slider-background-color: $light-gray !default;
 
 .slider {
   background: $slider-background-color;
