@@ -10,11 +10,10 @@ $slider-background-color: $light-gray;
 .slider {
   background: $slider-background-color;
   position: relative;
-  display: block;
-  width: 100%;
   height: $slider-height;
-  margin: 1.25rem 0; 
-  touch-action: none;
+  margin-top: 1.25rem; 
+  margin-bottom: 1.25rem;
+ // touch-action: none;
 }
 
 .slider-fill {
@@ -43,13 +42,9 @@ $slider-background-color: $light-gray;
   cursor: not-allowed;
   opacity: $slider-disabled-fade;
   
-  .slider-fill {
-    opacity: $slider-disabled-fade;
-  }
 
   .slider-handle {
     cursor: not-allowed;
-    background: scale-color($slider-handle-color, $lightness: percentage(1 - $slider-disabled-fade));
   }
 }
 

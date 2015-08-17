@@ -15,6 +15,7 @@ $tooltip-font-size: 0.75rem;
 /// Default pip width for tooltips.
 /// @type Number
 $tooltip-pip-width: 0.75rem;
+
 $tooltip-pip-height: $tooltip-pip-width * 0.866;
 
 /// Default pip offset for tooltips. This controls how far the pip is indented from the left edge of the tooltip.
@@ -72,8 +73,8 @@ $tooltip-pip-offset: 1.25rem;
   &::before {
     @include css-triangle($tooltip-pip-width, $tooltip-background-color, left);
     bottom: auto;
-    right: 100%;
     left: auto;
+    right: 100%;
     top: 50%;
     transform: translateY(-50%); 
   }
