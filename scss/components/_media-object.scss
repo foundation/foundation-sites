@@ -2,67 +2,65 @@
 /// @group media-object
 ////
 
-/// Default bottom margin of the media object.
+/// Bottom margin of a media object.
 /// @type Number
-$media-object-margin-bottom: 1rem !default;
+$mediaobject-margin-bottom: $global-margin !default;
 
-/// Default left & right padding of the media item.
+/// Left and right padding on sections within a media object.
 /// @type Number
-$media-item-padding: 1rem !default;
+$mediaobject-section-padding: $global-padding !default;
 
-/// Default media title heading padding of the media item.
+/// With of images within a media object, when the object is stacked vertically. Set to 'auto' to use the image's natural width.
 /// @type Number
-$media-title-padding: 0 !default;
+$mediaobject-image-width-stacked: 100% !default;
 
-/// Default media object image width on small. Set to 'auto' for original width.
-/// @type Number
-$media-object-stack-img-width: 100% !default;
+/// Adds styles for a media object container.
+@mixin media-object-container {
+  margin-bottom: $mediaobject-margin-bottom;
+  display: block;
+}
 
-/// Default media object image margin bottom on small.
-/// @type Number
-$media-object-stack-img-margin: 1rem !default;
+/// Adds styles for sections within a media object.
+/// @param {Number} $padding [$mediaobject-section-padding] - Padding between sections.
+@mixin media-object-section($padding: $mediaobject-section-padding) {
+  display: table-cell;
+  vertical-align: top;
 
-/// Generates the base styles for a media object.
+  &:first-child {
+    padding-right: $padding;
+  }
+
+  &:last-child:not(+ &:first-child) {
+    padding-left: $padding;
+  }
+}
+
+/// Adds styles to stack sections of a media object. Apply this to the section elements, not the container.
+@mixin media-object-stack {
+  display: block;
+  padding: 0;
+  padding-bottom: $mediaobject-section-padding;
+
+  img {
+    width: $mediaobject-image-width-stacked;
+  }
+}
+
 @mixin foundation-media-object {
   .media-object {
-    margin-bottom: $media-object-margin-bottom;
-    display: block;
+    @include media-object-container;
 
-    .middle {
-      vertical-align: middle;
-    }
-
-    .bottom {
-      vertical-align: bottom;
-      padding-bottom: $media-object-margin-bottom;
-    }
-
-    &.stack-for-small {
-      .media-item, .media-content {
-        @include breakpoint(small only) {
-          display: block;
-          padding: 0;
-
-          img {
-            width: $media-object-stack-img-width;
-            margin-bottom: $media-object-stack-img-margin;
-          }
-        }
+    &.stack-for-small .media-object-section {
+      @include breakpoint(small only) {
+        @include media-object-stack;
       }
     }
   }
 
   .media-object-section {
-    display: table-cell;
-    vertical-align: top;
+    @include media-object-section;
 
-    &:first-child {
-      padding-right: $media-item-padding;
-    }
-
-    &:last-child:not(+ &:first-child) {
-      padding-left: $media-item-padding;
-    }
+    &.middle { vertical-align: middle; }
+    &.bottom { vertical-align: bottom; }
   }
 }
-
