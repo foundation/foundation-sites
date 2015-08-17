@@ -59,12 +59,7 @@ $menubar-expand-max: 6 !default;
 @mixin menu-bar-expand($count: auto) {
   > li {
     @if $count == auto {
-      @for $i from 2 through $menubar-expand-max {
-        &:nth-last-child(#{$i}):first-child,
-        &:nth-last-child(#{$i}):first-child ~ li {
-          width: percentage(1 / $i);
-        }
-      }
+      @include auto-width($menubar-expand-max);
     }
     @else if type-of($count) == 'number' {
       width: percentage(1 / $count);

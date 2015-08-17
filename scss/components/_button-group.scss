@@ -57,12 +57,7 @@ $buttongroup-expand-max: 6;
 ) {
   #{$selector} {
     @if $count == auto {
-      @for $i from 2 through $buttongroup-expand-max {
-        &:nth-last-child(#{$i}):first-child,
-        &:nth-last-child(#{$i}):first-child ~ #{$selector} {
-          width: percentage(1 / $i);
-        }
-      }
+      @include auto-width($buttongroup-expand-max);
     }
     @else if type-of($count) == 'number' {
       width: percentage(1 / $count);
