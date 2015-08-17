@@ -43,6 +43,7 @@ $tooltip-pip-offset: 1.25rem;
   position: absolute;
   z-index: 10;
   top: calc(100% + #{$tooltip-pip-height});
+  max-width: 150px !important;
   
   &::before {
     @include css-triangle($tooltip-pip-width, $tooltip-background-color, up);
