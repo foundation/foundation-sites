@@ -1,10 +1,10 @@
 !function($, Foundation, window){
   function ImNotTouchingYou(element, direction, param, parent){
     var dims = getDimensions(element);
-    console.log(dims);
-    // return (dims.offset[direction] + dims.parentDims[param] + dims[param] > dims.windowDims[param]);
+    console.log('dims total', dims.offset[direction] + dims.parentDims[param] + dims[param], 'window', dims.windowDims[param]);
+    return (dims.offset[direction] + dims.parentDims[param] + dims[param] > dims.windowDims[param]);
     //experimental
-    return (dims.parentDims[param] + dims[param] > dims.windowDims[param]);
+    // return (dims.parentDims[param] + dims[param] > dims.windowDims[param]);
   }
 
   function getDimensions(element){

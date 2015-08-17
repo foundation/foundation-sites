@@ -82,7 +82,7 @@
       .slideDown(this.options.slideSpeed)
       .parent().addClass(firstTime ? '' : 'is-active');
 
-    Foundation.reflow();
+    Foundation.reflow(this.$element, 'accordion');
     /**
      * Fires when the tab is done opening.
      * @event Accordion#down

@@ -26,8 +26,9 @@
   };
 
   Tooltip.prototype._init = function(){
-    var elemId = this.$element.attr('aria-describedby') ? this.$element.attr('aria-describedby') : randomIdGen(6);
-    this.template = this.template ? this.template : this.buildTemplate(elemId);
+    var elemId = this.$element.attr('aria-describedby') || randomIdGen(6);
+    // this.template = this.template ? this.template : this.buildTemplate(elemId);
+    this.template = this.template || this.buildTemplate(elemId);
     this.$element.append(this.template);
     this.$element.attr({'title': '', 'aria-describedby': elemId})
     // this.$element.append(this.template).attr('title', '');
@@ -40,44 +41,49 @@
   }
 
   Tooltip.prototype.buildTemplate = function(id){
-    this.options.templateClasses = this.options.tooltipClass + (this.getPositionClass() || '');
+    this.options.templateClasses = this.options.tooltipClass + this.getPositionClass();
 
     // return
     var $template =  $('<div></div>').addClass(this.options.templateClasses).attr({
       'role': 'tooltip',
       'aria-hidden': true,
       'data-is-active': false,
+      'data-is-focus': false,
       'id': id
     }).text(this.$element.attr('title'));
     //.hide();
 
     //experimental
     var prevCss = $template.attr('style');
-    console.log('previous css',prevCss)
+
     $template.css({
       position: 'absolute',
       visibility: 'hidden',
       display: 'block'
     });
-    var dims = {width: $template.outerWidth(), height: $template.outerHeight()};
-    console.log(dims);
+    // var dims = {width: $template.outerWidth(), height: $template.outerHeight()};
+    // console.log(dims);
     return $template.attr('style', prevCss ? prevCss : '').hide();
     //.hide();
   };
 
   Tooltip.prototype.getPositionClass = function(){
     var position = this.$element.data('position');
-    return position ? ' ' + position : '';
+    // this.posClass = ' ' + position || '';
+    this.posClass = position ? position : '';
+    // return position ? ' ' + position : '';
+    return this.posClass;
   };
 
   Tooltip.prototype._show = function(){
+    c.log(this.options.showOn);
     if(this.options.showOn !== 'all' && !Foundation.MediaQuery.atLeast(this.options.showOn)){
       return;
     }
 
     var _this = this,
         dir = this.template.attr('class').match(/top|right|left/g),
-        direction = dir ? dir[0] : 'top',
+        direction = dir ? (dir[0] === ('left' || 'right') ? 'left' : 'top') : 'top',
         param = (direction === 'top') ? 'height' : 'width';
 
     this.hideAll();
@@ -171,17 +177,13 @@
     }).fadeOut(this.options.fadeOutDuration, function(){
       _this.isActive = false;
       _this.isClick = false;
-    });
+    }).attr('class', '').addClass(_this.options.templateClasses);
   };
 
   Tooltip.prototype._events = function(){
     var _this = this;
     var $template = this.template;
     var isFocus = false;
-    // setInterval(function(){
-    //   console.log('active', _this.isActive, '\nclick', _this.isClick, '\nfocus', isFocus);
-    // }, 1500);
-
 
     if(!this.options.disableHover){
 
@@ -196,8 +198,8 @@
       .on('mouseleave.zf.tooltip', function(e){
         clearTimeout(_this.timeout);
         if(!isFocus || (!_this.isClick && _this.options.clickOpen)){
-          // _this._hide();
-          Tooltip._hide($template, _this);
+          _this._hide();
+          // Tooltip._hide($template, _this);
         }
       });
     }
