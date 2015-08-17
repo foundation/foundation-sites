@@ -60,11 +60,10 @@ var MediaQuery = {
     
     namedQueries = parseStyleToObject(extractedStyles);
 
-    // TODO: The Sass should convert values to em before spitting them out here
     for (var key in namedQueries) {
       self.queries.push({
         name: key,
-        value: 'only screen and (min-width: ' + namedQueries[key].replace('rem', 'em') + ')'
+        value: 'only screen and (min-width: ' + namedQueries[key] + ')'
       })
     }
 
