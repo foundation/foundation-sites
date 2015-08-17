@@ -58,12 +58,6 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   min-height: 100vh;
   padding: $reveal-padding;
   border: $reveal-border;
-<<<<<<< Updated upstream
-=======
-  box-shadow: $reveal-shadow;
-  background: white;
-  margin: 0 auto;
->>>>>>> Stashed changes
 
   @include breakpoint(medium) {
     min-height: 0;
@@ -88,13 +82,9 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   $width: $reveal-width
 ) {
   @include breakpoint(medium) {
-<<<<<<< Updated upstream
     @extend %reveal-centered;
     width: $width;
     max-width: $max-width;
-=======
-    width: $width;
->>>>>>> Stashed changes
   }
 }
 
