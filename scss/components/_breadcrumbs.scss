@@ -47,6 +47,13 @@ $breadcrumbs-item-slash: true;
   // Item wrapper
   li {
     float: left;
+    color: $breadcrumbs-item-color-current;
+    font-size: $breadcrumbs-item-font-size;
+    cursor: default;
+
+    @if $breadcrumbs-item-uppercase {
+      text-transform: uppercase;
+    }
 
     @if $breadcrumbs-item-slash {
       &:not(:last-child)::after {
@@ -65,11 +72,6 @@ $breadcrumbs-item-slash: true;
   // Page links
   a {
     color: $breadcrumbs-item-color;
-    font-size: $breadcrumbs-item-font-size;
-
-    @if $breadcrumbs-item-uppercase {
-      text-transform: uppercase;
-    }
 
     &:hover {
       text-decoration: underline;
@@ -77,37 +79,12 @@ $breadcrumbs-item-slash: true;
   }
 }
 
-/// Adds styles for a breadcrumb link that represents the current page. Apply this to an `<a>` element.
-@mixin breadcrumbs-item-current {
-  color: $breadcrumbs-item-color-current;
-  cursor: default;
-
-  &:hover {
-    text-decoration: none;
-  }
-}
-
-/// Adds styles for a disabled breadcrumb item. Apply this to an `<a>` element.
-@mixin breadcrumbs-item-disabled {
-  opacity: $breadcrumbs-item-opacity-disabled;
-  cursor: default;
-  pointer-events: none;
-
-  &:hover {
-    text-decoration: none;
-  }
-}
-
 @mixin foundation-breadcrumbs {
   .breadcrumbs {
     @include breadcrumbs-container;
 
-    .current a {
-      @include breadcrumbs-item-current;
-    }
-
-    .disabled a {
-      @include breadcrumbs-item-disabled;
+    .disabled {
+      opacity: $breadcrumbs-item-opacity-disabled;
     }
   }
 }
