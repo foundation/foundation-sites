@@ -37,7 +37,7 @@
   {{/if}}
 
   {{#if sass.mixin}}
-  <hr>
+  {{#unless sass.variable}}<hr>{{/unless}}
 
   <section>
     {{#heading 3 'sass-mixins'}}Mixins{{/heading}}
@@ -53,6 +53,8 @@
       </div>
 
       {{md this.description}}
+
+      {{externalLink this.link}}
 
       {{#if this.parameter}}
       <table class="docs-variable-table">
@@ -70,6 +72,8 @@
       </table>
       {{/if}}
     </section>
+
+    {{#unless @last}}<hr>{{/unless}}
 
     {{#if sass.function}}
       <hr>
@@ -95,6 +99,8 @@
 
       {{md this.description}}
 
+      {{externalLink this.link}}
+
       {{#if this.parameter}}
       <table class="docs-variable-table">
         <thead>
@@ -111,6 +117,8 @@
       </table>
       {{/if}}
     </section>
+
+    {{#unless @last}}<hr>{{/unless}}
     {{/each}}
   </section>
   {{/if}}
@@ -236,6 +244,8 @@
         {{/each}}
       </table>
       {{/if}}
+
+      {{#unless @last}}<hr>{{/unless}}
     </section>
     {{/each}}
   </section>
