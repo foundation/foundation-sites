@@ -11,6 +11,7 @@
   function Accordion(element, options){
     this.$element = element;
     this.options = $.extend(this.defaults, options || {});
+    console.log(element, options);
 
     this._init();
     this._events();
@@ -36,6 +37,7 @@
     var $initActive = this.$element.find('.is-active').children('[data-tab-content]');
     if($initActive){
       this.down($initActive, true);
+      return;
     }
   };
 
@@ -45,8 +47,10 @@
    */
   Accordion.prototype._events = function() {
     var _this = this;
-
-    this.$element.find('li').each(function() {
+    var listies = this.$element.find('li');
+    console.log(listies);
+    $.each(listies, function() {
+    // this.$element.find('li').each(function() {
       var $tabContent = $(this).children('[data-tab-content]');
       if ($tabContent.length) {
         $(this).children('a').on('click.zf.accordion', function(e) {
@@ -82,7 +86,9 @@
       .slideDown(this.options.slideSpeed)
       .parent().addClass(firstTime ? '' : 'is-active');
 
-    Foundation.reflow(this.$element, 'accordion');
+    if(!firstTime){
+      Foundation.reflow(this.$element, 'accordion');
+    }
     /**
      * Fires when the tab is done opening.
      * @event Accordion#down
