@@ -31,7 +31,7 @@ $tooltip-pip-height: $tooltip-pip-width * 0.866;
 $tooltip-pip-offset: 1.25rem;
 
 @mixin has-tip {
-  border-bottom: dotted 1px #ccc;
+  border-bottom: dotted 1px $dark-gray;
   font-weight: bold;
   position: relative;
   display: inline-block;
@@ -50,7 +50,7 @@ $tooltip-pip-offset: 1.25rem;
   z-index: 10;
   top: calc(100% + #{$tooltip-pip-height});
   max-width: 150px !important;
-  
+
   &::before {
     @include css-triangle($tooltip-pip-width, $tooltip-background-color, up);
     bottom: 100%;
@@ -58,6 +58,7 @@ $tooltip-pip-offset: 1.25rem;
     left: 50%;
     transform: translateX(-50%);
   }
+  
   &.top {
     &::before {
       @include css-triangle($tooltip-pip-width, $tooltip-background-color, down);
@@ -72,7 +73,7 @@ $tooltip-pip-offset: 1.25rem;
       bottom: auto;
       left: 100%;
       top: 50%;
-      transform: translateY(-50%); 
+      transform: translateY(-50%);
     }
   }
 
@@ -83,7 +84,7 @@ $tooltip-pip-offset: 1.25rem;
       left: auto;
       right: 100%;
       top: 50%;
-      transform: translateY(-50%); 
+      transform: translateY(-50%);
     }
   }
 }
