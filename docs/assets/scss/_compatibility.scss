@@ -1,0 +1,40 @@
+.docs-compat-table {
+  width: 100%;
+  background: transparent;
+  margin-bottom: 2rem;
+
+  tbody {
+    border-color: $medium-gray;
+  }
+
+  tr {
+    border-bottom: 1px solid $medium-gray;
+  }
+
+  tr,
+  tr:nth-child(even) {
+    background: transparent;
+  }
+
+  tr:nth-child(even) td:first-child {
+    background: $light-gray;
+  }
+
+  td:first-child {
+    border-right: 1px solid $medium-gray;
+  }
+
+  .works {
+    background: rgba($success-color, 0.15);
+    color: $success-color;
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-align: center;
+
+    &::before {
+      display: inline-block;
+      content: '✔';
+      margin-right: 0.5rem;
+    }
+  }
+}
