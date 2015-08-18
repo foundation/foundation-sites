@@ -11,7 +11,6 @@
   function Accordion(element, options){
     this.$element = element;
     this.options = $.extend(this.defaults, options || {});
-    console.log(element, options);
 
     this._init();
     this._events();
@@ -47,10 +46,8 @@
    */
   Accordion.prototype._events = function() {
     var _this = this;
-    var listies = this.$element.find('li');
-    console.log(listies);
-    $.each(listies, function() {
-    // this.$element.find('li').each(function() {
+
+    this.$element.find('li').each(function() {
       var $tabContent = $(this).children('[data-tab-content]');
       if ($tabContent.length) {
         $(this).children('a').on('click.zf.accordion', function(e) {

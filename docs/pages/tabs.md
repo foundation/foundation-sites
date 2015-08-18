@@ -10,12 +10,8 @@ There are two pieces to a tabbed interface: the tabs themselves, and the content
 
 ```html
 <ul class="tabs" data-tabs id="example-tabs">
-  <li class="tabs-title"><a href="#panel1" aria-selected="true">Tab 1</a></li>
+  <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Tab 1</a></li>
   <li class="tabs-title"><a href="#panel2">Tab 2</a></li>
-  <li class="tabs-title"><a href="#panel3">Tab 3</a></li>
-  <li class="tabs-title"><a href="#panel4">Tab 4</a></li>
-  <li class="tabs-title"><a href="#panel3">Tab 5</a></li>
-  <li class="tabs-title"><a href="#panel4">Tab 6</a></li>
 </ul>
 ```
 
@@ -25,12 +21,8 @@ The tab content container has the class `.tabs-content`, while each section has 
 <div class="tabs-content" data-tabs-content="example-tabs">
   <div class="tabs-panel is-active" id="panel1">
     <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
-    <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
-    <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
   </div>
   <div class="tabs-panel" id="panel2">
-    <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
-    <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
     <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
   </div>
 </div>
@@ -39,24 +31,32 @@ The tab content container has the class `.tabs-content`, while each section has 
 Put it all together, and we get this:
 
 <ul class="tabs" data-tabs id="example-tabs">
-  <li class="tabs-title"><a href="#panel1" aria-selected="true">Tab 1</a></li>
+  <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Tab 1</a></li>
   <li class="tabs-title"><a href="#panel2">Tab 2</a></li>
   <li class="tabs-title"><a href="#panel3">Tab 3</a></li>
   <li class="tabs-title"><a href="#panel4">Tab 4</a></li>
-  <li class="tabs-title"><a href="#panel3">Tab 5</a></li>
-  <li class="tabs-title"><a href="#panel4">Tab 6</a></li>
+  <li class="tabs-title"><a href="#panel5">Tab 5</a></li>
+  <li class="tabs-title"><a href="#panel6">Tab 6</a></li>
 </ul>
 
 <div class="tabs-content" data-tabs-content="example-tabs">
   <div class="tabs-panel is-active" id="panel1">
-    <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
-    <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
-    <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
+    <p>Check me out! I'm a super cool Tab panel with text content!</p>
   </div>
   <div class="tabs-panel" id="panel2">
-    <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
-    <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
-    <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
+    <img src="http://placehold.it/350x150">
+  </div>
+  <div class="tabs-panel" id="panel3">
+    <p>Check me out! I'm a super cool Tab panel with text content!</p>
+  </div>
+  <div class="tabs-panel" id="panel4">
+    <img src="http://placehold.it/350x150">
+  </div>
+  <div class="tabs-panel" id="panel5">
+    <p>Check me out! I'm a super cool Tab panel with text content!</p>
+  </div>
+  <div class="tabs-panel" id="panel6">
+    <img src="http://placehold.it/350x150">
   </div>
 </div>
 
@@ -69,26 +69,34 @@ Add the `.vertical` class to a tabstrip to stack tabs vertically. You can also p
 ```html_example
 <div class="row collapse">
   <div class="medium-3 columns">
-    <ul class="tabs vertical" data-tab>
-      <li class="tabs-title"><a href="#panel1" aria-selected="true">Tab 1</a></li>
-      <li class="tabs-title"><a href="#panel2">Tab 2</a></li>
-      <li class="tabs-title"><a href="#panel3">Tab 3</a></li>
-      <li class="tabs-title"><a href="#panel4">Tab 4</a></li>
-      <li class="tabs-title"><a href="#panel3">Tab 5</a></li>
-      <li class="tabs-title"><a href="#panel4">Tab 6</a></li>
+    <ul class="tabs vertical" data-tabs>
+      <li class="tabs-title is-active"><a href="#panel1v" aria-selected="true">Tab 1</a></li>
+      <li class="tabs-title"><a href="#panel2v">Tab 2</a></li>
+      <li class="tabs-title"><a href="#panel3v">Tab 3</a></li>
+      <li class="tabs-title"><a href="#panel4v">Tab 4</a></li>
+      <li class="tabs-title"><a href="#panel3v">Tab 5</a></li>
+      <li class="tabs-title"><a href="#panel4v">Tab 6</a></li>
     </ul>
     </div>
     <div class="medium-9 columns">
-    <div class="tabs-content vertical">
-      <div class="tabs-panel is-active" id="panel1">
-        <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
-        <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
+    <div class="tabs-content vertical" data-tabs-content>
+      <div class="tabs-panel is-active" id="panel1v">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+      <div class="tabs-panel" id="panel2v">
         <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
       </div>
-      <div class="tabs-panel" id="panel2">
-        <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
-        <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
-        <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
+      <div class="tabs-panel" id="panel3v">
+        <img src="http://placehold.it/350x150">
+      </div>
+      <div class="tabs-panel" id="panel4v">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+      <div class="tabs-panel" id="panel5v">
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+      <div class="tabs-panel" id="panel6v">
+        <img src="http://placehold.it/350x150">
       </div>
     </div>
   </div>
