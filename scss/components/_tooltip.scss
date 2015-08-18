@@ -30,7 +30,7 @@ $tooltip-pip-height: $tooltip-pip-width * 0.866;
 /// @type Number
 $tooltip-pip-offset: 1.25rem;
 
-%has-tip {
+@mixin has-tip {
   border-bottom: dotted 1px #ccc;
   font-weight: bold;
   position: relative;
@@ -90,5 +90,5 @@ $tooltip-pip-offset: 1.25rem;
 }
 
 .has-tip {
-  @extend %has-tip;
+  @include has-tip;
 }
