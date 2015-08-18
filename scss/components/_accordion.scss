@@ -49,7 +49,7 @@ $accordion-content-padding: 1rem !default;
     .content {
       padding: $accordion-item-padding;
       display: none;
-      border-bottom: 1px solid $accordion-content-border; 
+      border-bottom: 1px solid $accordion-content-border;
     }
 
     > a {
@@ -69,14 +69,14 @@ $accordion-content-padding: 1rem !default;
       &:focus {
         background: $accordion-item-background-hover;
       }
-      
+
       &::before {
-        content:'+';
+        content: '+';
         position: absolute;
         right: 1rem;
         top: 50%;
-        margin-top: -.5rem;
-        font-size: .9rem;
+        margin-top: -0.5rem;
+        font-size: 0.9rem;
       }
     }
 
@@ -91,7 +91,7 @@ $accordion-content-padding: 1rem !default;
       background: $accordion-item-background-hover;
 
       &::before {
-        content:'-';
+        content: '-';
       }
     }
   }
