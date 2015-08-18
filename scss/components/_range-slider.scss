@@ -41,15 +41,17 @@ $slider-fill-color: $medium-gray !default;
 /// @type Color
 $slider-background-color: $light-gray !default;
 
+/// Adds the general styles for sliders.
 @mixin slider {
   background: $slider-background-color;
   position: relative;
   height: $slider-height;
   margin-top: 1.25rem; 
-  margin-bottom: 1.25rem;
+  margin-bottom: 2.25rem;
  // touch-action: none;
 }
 
+/// Adds the general styles for active fill for sliders.
  @mixin slider-fill {
   background: $slider-fill-color;
   display: inline-block;
@@ -57,6 +59,7 @@ $slider-background-color: $light-gray !default;
   position: absolute;
 }
 
+/// Adds the general styles for the slider handles.
 @mixin slider-handle {
   @include v-align-middle;
   background: $slider-handle-color;
