@@ -60,7 +60,7 @@ $switch-transition: all 0.25s ease-out !default;
 // use ~ to select
 
 .switch {
-  border: none;
+  border: 0;
   margin-bottom: $switch-bottom-margin;
   outline: 0;
   padding: 0;
@@ -68,12 +68,12 @@ $switch-transition: all 0.25s ease-out !default;
   user-select: none;
 //size mixin , width height padding font-size - width height /2
   &.tiny .switch-handle {
-      height: 1.5rem;
-      width: 3rem; 
+    height: 1.5rem;
+    width: 3rem;
 
     &:after {
       height: 1rem;
-      width: 1rem; 
+      width: 1rem;
     }
 
     %switch-text {
@@ -83,11 +83,11 @@ $switch-transition: all 0.25s ease-out !default;
 
   &.small .switch-handle {
     height: 1.75rem;
-    width: 3.5rem; 
+    width: 3.5rem;
 
     &:after {
       height: 1.25rem;
-      width: 1.25rem; 
+      width: 1.25rem;
     }
 
     %switch-text {
@@ -97,11 +97,11 @@ $switch-transition: all 0.25s ease-out !default;
 
   &.large .switch-handle {
     height: 2.5rem;
-    width: 5rem; 
+    width: 5rem;
 
     &:after {
       height: 2rem;
-      width: 2rem; 
+      width: 2rem;
     }
 
     %switch-text {
@@ -110,16 +110,16 @@ $switch-transition: all 0.25s ease-out !default;
   }
 
   &.tiny .switch-input:checked ~ .switch-handle:after {
-    left: 1.75rem; 
+    left: 1.75rem;
   }
 
   &.small .switch-input:checked ~ .switch-handle:after {
-    left: 2rem; 
+    left: 2rem;
   }
 
   &.large .switch-input:checked ~ .switch-handle:after {
     left: 2.75rem;
-  } 
+  }
 }
 
 .switch-handle {
@@ -136,7 +136,7 @@ $switch-transition: all 0.25s ease-out !default;
 
   &:after {
     background: $switch-paddle-bg;
-    content: "";
+    content: '';
     display: block;
     position: absolute;
     height: 1.5rem;
@@ -144,8 +144,8 @@ $switch-transition: all 0.25s ease-out !default;
     top: 0.25rem;
     width: 1.5rem;
     transition: $switch-transition;
-    transform: translate3d(0, 0, 0); 
-  }  
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 .switch-input {
@@ -154,16 +154,17 @@ $switch-transition: all 0.25s ease-out !default;
 
   & ~ .switch-handle {
     margin-left: 0;
-    margin-right: 0; 
+    margin-right: 0;
   }
 
   &:checked ~ .switch-handle {
-    background: $switch-active-color; 
+    background: $switch-active-color;
 
     &:after {
-      left: 2.25rem; 
+      left: 2.25rem;
     }
   }
+  
   &:checked ~ .switch-handle .switch-active {
     display: block;
   }
@@ -178,11 +179,8 @@ $switch-transition: all 0.25s ease-out !default;
     outline: 5px auto -webkit-focus-ring-color;
     outline-offset: -2px;
     overflow: hidden;
-  } 
+  }
 }
-
-
-
 
 %switch-text {
   position: absolute;
@@ -204,11 +202,3 @@ $switch-transition: all 0.25s ease-out !default;
   @extend %switch-text;
   right: 15%;
 }
-
-
-
-
-
-
-
-

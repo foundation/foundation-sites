@@ -1,9 +1,7 @@
 ---
 title: Switch
 description: Now you can tell your users to flip the switch or switch off.
-sass:
-  - scss/components/_switch.scss
-
+sass: scss/components/_switch.scss
 ---
 
 ## Basics

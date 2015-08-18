@@ -111,7 +111,7 @@ $tab-content-padding: 1rem !default;
       background: $tab-background-active;
     }
   }
-} 
+}
 
 .tabs-content {
   background: $tab-content-background;
@@ -128,7 +128,7 @@ $tab-content-padding: 1rem !default;
 .tabs-panel {
   display: none;
   padding: $tab-content-padding;
-  
+
   &.is-active {
     display: block;
   }

@@ -31,7 +31,7 @@ $tooltip-pip-height: $tooltip-pip-width * 0.866;
 $tooltip-pip-offset: 1.25rem;
 
 @mixin has-tip {
-  border-bottom: dotted 1px #ccc;
+  border-bottom: dotted 1px $dark-gray;
   font-weight: bold;
   position: relative;
   display: inline-block;
@@ -41,7 +41,7 @@ $tooltip-pip-offset: 1.25rem;
   }
 }
 
-.tooltip {
+@mixin tooltip {
   background-color: $tooltip-background-color;
   color: $white;
   font-size: $tooltip-font-size;
@@ -49,8 +49,8 @@ $tooltip-pip-offset: 1.25rem;
   position: absolute;
   z-index: 10;
   top: calc(100% + #{$tooltip-pip-height});
-  max-width: 150px !important;
-  
+  max-width: 10rem !important;
+
   &::before {
     @include css-triangle($tooltip-pip-width, $tooltip-background-color, up);
     bottom: 100%;
@@ -58,37 +58,41 @@ $tooltip-pip-offset: 1.25rem;
     left: 50%;
     transform: translateX(-50%);
   }
-}
 
-.tooltip.top {
-  &::before {
-    @include css-triangle($tooltip-pip-width, $tooltip-background-color, down);
-    top: 100%;
-    bottom: auto;
+  &.top {
+    &::before {
+      @include css-triangle($tooltip-pip-width, $tooltip-background-color, down);
+      top: 100%;
+      bottom: auto;
+    }
   }
-}
 
-.tooltip.left {
-  &::before {
-    @include css-triangle($tooltip-pip-width, $tooltip-background-color, right);
-    bottom: auto;
-    left: 100%;
-    top: 50%;
-    transform: translateY(-50%); 
+  &.left {
+    &::before {
+      @include css-triangle($tooltip-pip-width, $tooltip-background-color, right);
+      bottom: auto;
+      left: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
   }
-}
 
-.tooltip.right {
-  &::before {
-    @include css-triangle($tooltip-pip-width, $tooltip-background-color, left);
-    bottom: auto;
-    left: auto;
-    right: 100%;
-    top: 50%;
-    transform: translateY(-50%); 
+  &.right {
+    &::before {
+      @include css-triangle($tooltip-pip-width, $tooltip-background-color, left);
+      bottom: auto;
+      left: auto;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
   }
 }
 
 .has-tip {
   @include has-tip;
+}
+
+.tooltip {
+  @include tooltip;
 }
