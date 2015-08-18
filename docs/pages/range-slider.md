@@ -17,7 +17,7 @@ It's got a handle and an active fill, what more do you need?
 ---
 
 ## Two-Handled Range Slider
-Oh... You might need two handles? We got you covered. Hook it up with another <code>slider-handle</code> span.
+Oh... You might need two handles? Don't fret. We got you covered. Hook it up with another <code>slider-handle</code> span.
 ```html_example
 <div class="slider" data-slider>
   <span class="slider-handle" data-slider-handle style="transform: translate(100px, -50%);" role="slider" tabindex="3"></span>
