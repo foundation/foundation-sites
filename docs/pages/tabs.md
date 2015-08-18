@@ -69,7 +69,7 @@ Add the `.vertical` class to a tabstrip to stack tabs vertically. You can also p
 ```html_example
 <div class="row collapse">
   <div class="medium-3 columns">
-    <ul class="tabs vertical" data-tabs>
+    <ul class="tabs vertical" id="example-vert-tabs" data-tabs>
       <li class="tabs-title is-active"><a href="#panel1v" aria-selected="true">Tab 1</a></li>
       <li class="tabs-title"><a href="#panel2v">Tab 2</a></li>
       <li class="tabs-title"><a href="#panel3v">Tab 3</a></li>
@@ -79,7 +79,7 @@ Add the `.vertical` class to a tabstrip to stack tabs vertically. You can also p
     </ul>
     </div>
     <div class="medium-9 columns">
-    <div class="tabs-content vertical" data-tabs-content>
+    <div class="tabs-content vertical" data-tabs-content="example-vert-tabs">
       <div class="tabs-panel is-active" id="panel1v">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
       </div>

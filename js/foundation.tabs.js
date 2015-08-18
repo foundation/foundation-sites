@@ -11,7 +11,7 @@
   function Tabs(element, options){
     this.$element = element;
     this.options = $.extend({}, this.defaults, options || {});
-    console.log('element', this.$element);
+    // console.log('element', this.$element);
     this._init();
     /**
      * Fires when the plugin has been successfuly initialized.
@@ -23,7 +23,8 @@
   Tabs.prototype.defaults = {
     deepLinking: false,
     scrollToContent: false,
-    autoFocus: true
+    autoFocus: true,
+    wrapOnKeys: true
   };
 
   /**
@@ -37,19 +38,22 @@
     this.$tabTitles.each(function(){
       var $link = $(this).find('a'),
           isActive = $(this).hasClass('is-active'),
-          hash = $link.attr('href'),
+          hash = $link.attr('href').slice(1),
+          linkId = hash + '-label',
           $tabContent = $(hash);
       $(this).attr({'role': 'presentation'})/*.addClass(isActive ? 'is-active ': '')*/;
       $link.attr({
         'role': 'tab',
         'aria-controls': hash,
         'tabindex': $link.attr('tabindex') || tabIndex,
-        'aria-selected': isActive
+        'aria-selected': isActive,
+        'id': linkId
       });
 
       $tabContent.attr({
         'role': 'tabpanel',
-        'aria-hidden': !isActive
+        'aria-hidden': !isActive,
+        'aria-labelledby': linkId
       });
       if(isActive && _this.options.autoFocus){
         // console.log('focused', this);
@@ -130,48 +134,46 @@
 
   Tabs.prototype._addKeyupHandler = function(/*$tabLink, $tabContent*/){
     var _this = this;
-    var $firstTab = _this.$element.find('.tabs-title:first-child');
-    var $lastTab = _this.$element.find('.tabs-title:last-child');
+    var $firstTab = _this.$element.find('li:first-of-type');
+    var $lastTab = _this.$element.find('li:last-of-type');
 
     this.$tabTitles.on('keyup.zf.tabs', function(e){
       e.stopPropagation();
       e.preventDefault();
-      // if($(this).hasClass('is-active')){
-      //   return;
-      // }
-      var $tabTitle = $(this);
-      console.log(this,'\n', $(this))
-      // console.log('first', $firstTab, '\nlast', $lastTab, '\ntitle', $tabTitle);
-      var $prev = $tabTitle.prev(),
-          $next = $tabTitle.next(),
-          $target,
-          $targetContent;
-      // console.log($prev);
+      var $tabTitle = $(this),
+          $prev = $tabTitle.prev(),
+          $next = $tabTitle.next();
+      if(checkClass($prev) || checkClass($next)){
+        return;
+      }
+      if(_this.options.wrapOnKeys){
+        $prev = $prev.length ? $prev : $lastTab;
+        $next = $next.length ? $next : $firstTab;
+        if(checkClass($prev) || checkClass($next)){
+          return;
+        }
+      }
+      console.log('next', $next)
       switch (e.which) {
 
         case 32://return or spacebar
         case 13:
           $tabTitle.focus();
-          _this._handleTabChange($tabTitle, $tabContent);
+          _this._handleTabChange($tabTitle);
           break;
 
         case 37://left or up
         case 38:
           if(checkClass($prev)){ return; }
-          $target = $prev;
-          // $targetContent = $($target.attr('href'));
           $prev.focus();
-          _this._handleTabChange($prev, $targetContent)
+          _this._handleTabChange($prev)
           break;
 
         case 39://right or down
         case 40:
           if(checkClass($next)){ return; }
-
-          $target = $next
-          $targetContent = $($target.attr('href'));
           $next.focus();
-          _this._handleTabChange($next, $targetContent)
+          _this._handleTabChange($next)
           break;
 
         default:
@@ -179,6 +181,7 @@
       }
     });
   };
+
   function checkClass($elem){
     return $elem.hasClass('is-active');
   }
