@@ -46,13 +46,13 @@ $slider-background-color: $light-gray !default;
   background: $slider-background-color;
   position: relative;
   height: $slider-height;
-  margin-top: 1.25rem; 
+  margin-top: 1.25rem;
   margin-bottom: 2.25rem;
  // touch-action: none;
 }
 
 /// Adds the general styles for active fill for sliders.
- @mixin slider-fill {
+@mixin slider-fill {
   background: $slider-fill-color;
   display: inline-block;
   height: $slider-height;
@@ -85,8 +85,9 @@ $slider-background-color: $light-gray !default;
 
 .slider {
   @include slider;
-  
-  &.disabled, &.slider[disabled] {
+
+  &.disabled,
+  &.slider[disabled] {
     cursor: not-allowed;
     opacity: $slider-disabled-fade;
 
@@ -98,15 +99,15 @@ $slider-background-color: $light-gray !default;
   &.vertical {
     display: inline-block;
     height: 12.5rem;
-    width: $vertical-slider-width; 
+    width: $vertical-slider-width;
     margin: 0 1.25rem;
 
     .slider-fill {
       top: 0;
-      width: $vertical-slider-width; 
+      width: $vertical-slider-width;
     }
 
-    .slider-handle { 
+    .slider-handle {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
