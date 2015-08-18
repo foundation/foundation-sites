@@ -9,9 +9,7 @@ var rimraf = require('rimraf');
 var COMPATIBILITY = [
   'last 2 versions',
   'ie >= 9',
-  'ios >= 7',
-  'and_chr >= 2.1',
-  'ie_mob >= 7'
+  'and_chr >= 2.3'
 ];
 
 var files = {

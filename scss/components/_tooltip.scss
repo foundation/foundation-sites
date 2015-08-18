@@ -1,4 +1,10 @@
-@import "global";
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group tooltip
+////
 
 /// Default color of the tooltip background.
 /// @type Color
@@ -24,7 +30,7 @@ $tooltip-pip-height: $tooltip-pip-width * 0.866;
 /// @type Number
 $tooltip-pip-offset: 1.25rem;
 
-%has-tip {
+@mixin has-tip {
   border-bottom: dotted 1px #ccc;
   font-weight: bold;
   position: relative;
@@ -84,5 +90,5 @@ $tooltip-pip-offset: 1.25rem;
 }
 
 .has-tip {
-  @extend %has-tip;
+  @include has-tip;
 }
