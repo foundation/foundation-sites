@@ -6,15 +6,16 @@
     //experimental
     // return (dims.parentDims[param] + dims[param] > dims.windowDims[param]);
   }
-
+  //changing parent offset location, fix in tooltip position.
   function getDimensions(element){
     return {
       width: element.outerWidth(),
       height: element.outerHeight(),
-      offset: element.parent().offset(),
+      offset: element.offset(),
       parentDims: {
         width: element.parent().outerWidth(),
-        height: element.parent().outerHeight()
+        height: element.parent().outerHeight(),
+        offset: element.parent().offset()
       },
       windowDims: {
         width: $(window).width(),
@@ -24,4 +25,5 @@
   }
 
   Foundation.ImNotTouchingYou = ImNotTouchingYou;
+  Foundation.GetDimensions = getDimensions;
 }(jQuery, window.Foundation, window);
