@@ -11,7 +11,7 @@
   function Tabs(element, options){
     this.$element = element;
     this.options = $.extend({}, this.defaults, options || {});
-
+    console.log('element', this.$element);
     this._init();
     /**
      * Fires when the plugin has been successfuly initialized.
@@ -52,7 +52,7 @@
         'aria-hidden': !isActive
       });
       if(isActive && _this.options.autoFocus){
-        console.log('focused', this);
+        // console.log('focused', this);
         $link.focus();
       }
       tabIndex++
@@ -91,7 +91,7 @@
    * @private
    */
    Tabs.prototype._events = function($tabLink, $tabContent){
-    // this._addKeyupHandler($tabLink, $tabContent);
+    this._addKeyupHandler($tabLink, $tabContent);
     this._addClickHandler($tabLink, $tabContent);
   };
 
@@ -126,35 +126,52 @@
    * Adds keyboard event handlers for items within the tabs.
    * @private
    */
-  Tabs.prototype._addKeyupHandler = function($tabLink, $tabContent){
+
+
+  Tabs.prototype._addKeyupHandler = function(/*$tabLink, $tabContent*/){
     var _this = this;
+    var $firstTab = _this.$element.find('.tabs-title:first-child');
+    var $lastTab = _this.$element.find('.tabs-title:last-child');
 
-    $tabLink.on('keyup.zf.tabs', function(e){
-
-      var $prev = $tabLink.parent('.tab-title').prev().find('[role="tab"]'),
-          $next = $tabLink.parent('.tab-title').next().find('[role="tab"]'),
+    this.$tabTitles.on('keyup.zf.tabs', function(e){
+      e.stopPropagation();
+      e.preventDefault();
+      // if($(this).hasClass('is-active')){
+      //   return;
+      // }
+      var $tabTitle = $(this);
+      console.log(this,'\n', $(this))
+      // console.log('first', $firstTab, '\nlast', $lastTab, '\ntitle', $tabTitle);
+      var $prev = $tabTitle.prev(),
+          $next = $tabTitle.next(),
           $target,
           $targetContent;
-      console.log($prev);
+      // console.log($prev);
       switch (e.which) {
 
         case 32://return or spacebar
         case 13:
-          _this._handleTabChange($tabLink, $tabContent);
+          $tabTitle.focus();
+          _this._handleTabChange($tabTitle, $tabContent);
           break;
 
         case 37://left or up
         case 38:
+          if(checkClass($prev)){ return; }
           $target = $prev;
-          $targetContent = $($target.attr('href'));
-          _this._handleTabChange($target, $targetContent)
+          // $targetContent = $($target.attr('href'));
+          $prev.focus();
+          _this._handleTabChange($prev, $targetContent)
           break;
 
         case 39://right or down
         case 40:
+          if(checkClass($next)){ return; }
+
           $target = $next
           $targetContent = $($target.attr('href'));
-          _this._handleTabChange($target, $targetContent)
+          $next.focus();
+          _this._handleTabChange($next, $targetContent)
           break;
 
         default:
@@ -162,6 +179,46 @@
       }
     });
   };
+  function checkClass($elem){
+    return $elem.hasClass('is-active');
+  }
+  //old and broken :(
+  // Tabs.prototype._addKeyupHandler = function($tabLink, $tabContent){
+  //   var _this = this;
+  //
+  //   $tabLink.on('keyup.zf.tabs', function(e){
+  //
+  //     var $prev = $tabLink.parent('.tab-title').prev().find('[role="tab"]'),
+  //         $next = $tabLink.parent('.tab-title').next().find('[role="tab"]'),
+  //         $target,
+  //         $targetContent;
+  //     console.log($prev);
+  //     switch (e.which) {
+  //
+  //       case 32://return or spacebar
+  //       case 13:
+  //         _this._handleTabChange($tabLink, $tabContent);
+  //         break;
+  //
+  //       case 37://left or up
+  //       case 38:
+  //         $target = $prev;
+  //         $targetContent = $($target.attr('href'));
+  //         _this._handleTabChange($target, $targetContent)
+  //         break;
+  //
+  //       case 39://right or down
+  //       case 40:
+  //         $target = $next
+  //         $targetContent = $($target.attr('href'));
+  //         _this._handleTabChange($target, $targetContent)
+  //         break;
+  //
+  //       default:
+  //         return;
+  //     }
+  //   });
+  // };
 
   /**
    * Opens the tab `$targetContent` defined by `$target`.
