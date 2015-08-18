@@ -1,3 +1,14 @@
+/*
+ * Foundation Grid Balancer
+ * http://tangerineindustries.com
+ * Copyright 2015, Corey Snyder
+ * Free to use under the MIT license.
+ * http://www.opensource.org/licenses/mit-license.php
+ 
+ * To use apply data attribute "data-balancer" to any <ul> block grid.
+ * Respects classed media queries
+ * respectSiblingWidth: false = full width <li>
+*/
 ;(function ($, window, document, undefined) {
   'use strict';
 
