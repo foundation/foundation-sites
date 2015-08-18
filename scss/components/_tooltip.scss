@@ -41,7 +41,7 @@ $tooltip-pip-offset: 1.25rem;
   }
 }
 
-.tooltip {
+@mixin tooltip {
   background-color: $tooltip-background-color;
   color: $white;
   font-size: $tooltip-font-size;
@@ -91,4 +91,8 @@ $tooltip-pip-offset: 1.25rem;
 
 .has-tip {
   @include has-tip;
+}
+
+.tooltip {
+  @include tooltip;
 }

@@ -75,7 +75,6 @@ $slider-background-color: $light-gray !default;
 .slider.disabled, .slider[disabled] {
   cursor: not-allowed;
   opacity: $slider-disabled-fade;
-  
 
   .slider-handle {
     cursor: not-allowed;
@@ -102,3 +101,4 @@ $slider-background-color: $light-gray !default;
     width: $slider-handle-height;
   }
 }
+
