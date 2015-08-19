@@ -46,6 +46,16 @@ In the below example, we've applied `data-interchange` to a `<div>` instead of a
 
 ---
 
+## Use with Background Images
+
+When using Interchange on a non-`<img>` element, you can pass in an image path instead of an HTML path, and the element's `background-image` property will be set to the path of the matching rule.
+
+```html
+<div data-interchange="[assets/img/interchange/small.jpg, default], [assets/img/interchange/medium.jpg, medium], [assets/img/interchange/large.jpg, large]"></div>
+```
+
+---
+
 ## Named Media Queries
 
 Interchange supports named queries as shorthands for full CSS media queries. Any breakpoint defined in the `$breakpoints` variable in your Sass will work, along with a few other keywords, most notably `default`, which just means "anything". [Learn more about changing the default breakpoints.](media-queries.html)

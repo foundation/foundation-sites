@@ -1,5 +1,3 @@
-// TODO: support background images
-
 !function(Foundation, $) {
   'use strict';
 
@@ -138,6 +136,10 @@
         _this.$element.trigger('replaced.zf.interchange');
         _this.currentPath = path;
       });
+    }
+    // Replacing background images
+    else if (path.match(/\.(gif|jpg|jpeg|tiff|png)([?#].*)?/i)) {
+      this.$element.css({ 'background-image': 'url('+path+')' });
     }
     // Replacing HTML
     else {
