@@ -2,17 +2,13 @@
   
   $('[data-open]').on('click.zf.trigger', function() {
     var id = $(this).data('open');
-    $('#' + id).triggerHandler('open.zf.trigger', {
-      origin: $(this)
-    });
+    $('#' + id).triggerHandler('open.zf.trigger', [$(this)]);
   });
 
   $('[data-close]').on('click.zf.trigger', function() {
     var id = $(this).data('close');
     if (id) {
-      $('#' + id).triggerHandler('close.zf.trigger', {
-        origin: $(this)
-      });
+      $('#' + id).triggerHandler('close.zf.trigger', [$(this)]);
     }
     else {
       $(this).trigger('close.zf.trigger');
@@ -21,9 +17,7 @@
 
   $('[data-toggle]').on('click.zf.trigger', function() {
     var id = $(this).data('toggle');
-    $('#' + id).triggerHandler('toggle.zf.trigger', {
-      origin: $(this)
-    });
+    $('#' + id).triggerHandler('toggle.zf.trigger', [$(this)]);
   });
 
   // [PH]
