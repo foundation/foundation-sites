@@ -46,7 +46,7 @@ In the below example, we've applied `data-interchange` to a `<div>` instead of a
 
 ---
 
-## Named Breakpoints
+## Named Media Queries
 
 Interchange supports named queries as shorthands for full CSS media queries. Any breakpoint defined in the `$breakpoints` variable in your Sass will work, along with a few other keywords, most notably `default`, which just means "anything". [Learn more about changing the default breakpoints.](media-queries.html)
 
@@ -61,3 +61,9 @@ xxlarge    | `only screen and (min-width: 90em)`
 portrait   | `screen and (orientation: portrait)`
 landscape  | `screen and (orientation: landscape)`
 retina     | `only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx)`
+
+To add your own named media queries, add them as properties to `Foundation.Interchange.SPECIAL_QUERIES`.
+
+```js
+Foundation.Interchange.SPECIAL_QUERIES['square'] = 'screen and (aspect-ratio: 1/1)';
+```

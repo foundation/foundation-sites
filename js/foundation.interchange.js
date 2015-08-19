@@ -1,4 +1,3 @@
-// TODO: prevent replacing from happening on every resize
 // TODO: support background images
 
 !function(Foundation, $) {
@@ -15,7 +14,7 @@
     this.$element = element;
     this.options = $.extend({}, this.defaults, options);
     this.rules = [];
-    this.currentRule = null;
+    this.currentPath = '';
 
     this._init();
     this._events();
@@ -126,15 +125,18 @@
    * Update the `src` property of an image, or change the HTML of a container, to the specified path.
    * @function
    * @param {String} path - Path to the image or HTML partial.
-   * @event Interchange#replaced
+   * @fires Interchange#replaced
    */
   Interchange.prototype.replace = function(path) {
+    if (this.currentPath === path) return;
+
     var _this = this;
 
     // Replacing images
     if (this.$element[0].nodeName === 'IMG') {
       this.$element.attr('src', path).load(function() {
         _this.$element.trigger('replaced.zf.interchange');
+        _this.currentPath = path;
       });
     }
     // Replacing HTML
@@ -142,6 +144,7 @@
       $.get(path, function(response) {
         _this.$element.html(response);
         _this.$element.trigger('replaced.zf.interchange');
+        _this.currentPath = path;
       });
     }
   }
