@@ -28,32 +28,25 @@
    */
   Interchange.prototype.defaults = {
     equalizeOnStack: true
-  };
+  }
 
   /**
    * Initializes the Interchange plugin and calls functions to get interchange functioning on load.
    * @private
    */
   Interchange.prototype._init = function() {
-    var instanceId = Foundation.generateUuid();
-    this.$element.data('uuid', instanceId);
-    this.$element.attr('data-uuid', instanceId);
-    this.cacheInterchangeInstance(this.$element);
     this._generateRules();
     this._reflow();
-  };
+  }
 
   /**
    * Initializes events for Interchange.
    * @private
    */
   Interchange.prototype._events = function() {
-    var self = this;
+    $(window).on('resize.fndtn.interchange', Foundation.throttle(this._reflow.bind(this), 50));
+  }
 
-    $(window)
-      .off('.interchange')
-      .on('changed.zf.mediaquery', this._reflow.bind(this));
-  };
   /**
    * Calls necessary functions to update Interchange upon DOM change
    * @private
@@ -61,6 +54,7 @@
   Interchange.prototype._reflow = function() {
     var match;
 
+    // Iterate through each rule, but only save the last match
     for (var i in this.rules) {
       var rule = this.rules[i];
 
@@ -72,7 +66,8 @@
     if (match) {
       this.setSrc(this.$element, match.path, function() {});
     }
-  };
+  }
+
   /**
    * Checks the Interchange element for the provided media query + content pairings
    * @param {Object} element - jQuery object that is an Interchange instance
@@ -92,37 +87,21 @@
     }
 
     this.rules = rulesList;
-  };
-  /**
-   * Caches a particular Interchange instance and its media query mappings to allow for multiple instances of Interchange per page
-   * @param {Object} element - jQuery object that is an Interchange instance
-   */
-  Interchange.prototype.cacheInterchangeInstance = function($element) {
-    // this.cache[$element.data('uuid')] = this._generateRules();
-  };
-  /**
-   * Checks whether or not the window fits the provided media query rule
-   * @param {String} mq - A media query rule
-   * @returns {Boolean} using the matchMedia helper function, will return t/f depending whether or not the window is on the current MQ
-   */
-  Interchange.prototype.checkMq = function(mq) {
-    return window.matchMedia(mq).matches;
-  };
+  }
+
   /**
    * Changes the src attribute of the Interchange object to a new path, then runs the callback function
    * @param {Object} element - jQuery object that is an Interchange instance
    * @param {String} path - A path specified to a desired asset
-   * @param {Object} cb - A callback function to be executed on src change
    * @event Interchange#srcChange
    */
-  Interchange.prototype.setSrc = function($element, path, cb) {
+  Interchange.prototype.setSrc = function($element, path) {
     var _this = this;
 
     $element.attr('src', path).load(function() {
-      cb();
       _this.$element.trigger('srcChange.zf.interchange');
     })
-  };
+  }
 
   Foundation.plugin(Interchange);
 
