@@ -3,7 +3,7 @@
     var dims = getDimensions(element);
     console.log('element offset', dims.offset[direction], '\nparent dim', dims.parentDims[param], '\nele dim',dims[param], '\nwindow dim', dims.windowDims[param], '\nwindow offset', dims.windowDims.offset);
     return parent ?
-      (dims.offset[direction] + dims.parentDims[param] + dims[param] > dims.windowDims[param]) :
+      (dims.offset[direction] + dims[param] >= dims.windowDims[param] + dims.windowDims.offset) :
       (direction === 'top' ? (dims.offset[direction] >= dims.windowDims.offset) : '');
     //experimental
     // return (dims.parentDims[param] + dims[param] > dims.windowDims[param]);

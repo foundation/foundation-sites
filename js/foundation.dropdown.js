@@ -34,6 +34,7 @@
   Dropdown.prototype.getPositionClass = function(){
     var position = this.$element.attr('class').match(/top|left|right/g);
         position = position ? position[0] : '';
+    this.options.positionClass += position;
     return position;
   };
   Dropdown.prototype.setPosition = function(){
@@ -49,14 +50,15 @@
     if(!Foundation.ImNotTouchingYou(this.$element, direction, param, false)){
       if(position === 'top'){
         this.$element.removeClass('top');
+        this.classChanged = true;
         this.setPosition();
       }else if(!position){
         this.$element.addClass('top');
         this.setPosition();
       }
     }
-    console.log('clear?',Foundation.ImNotTouchingYou(this.$element, direction, param, false));
-
+    // console.log('clear?',Foundation.ImNotTouchingYou(this.$element, direction, param, false));
+    console.log($eleDims.offset[direction] + $eleDims[param] >= $eleDims.windowDims[param] + $eleDims.windowDims.offset);
     function getOffsets(){
       switch(position){
         case 'top':
@@ -105,8 +107,15 @@
       .attr('aria-hidden', 'false');
   };
   Dropdown.prototype.close = function(){
+    console.log('changed', this.classChanged);
     this.$element.removeClass(this.options.activeClass)
       .attr('aria-hidden', 'true');
+    if(this.classChanged){
+      this.$element.attr('class', '')
+      .addClass(this.options.dropdownClass)
+      .addClass(this.options.positionClass);
+      this.classChanged = false;
+    }
   };
   Dropdown.prototype.toggle = function(){
     if(this.$element.hasClass(this.options.activeClass)){
