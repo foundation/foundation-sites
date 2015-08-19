@@ -186,8 +186,8 @@ var foundation = function(method) {
   var type = typeof method;
 
   if (type === 'undefined') {
-    Foundation.reflow(this);
     Foundation.MediaQuery._init();
+    Foundation.reflow(this);
   } else if (type === 'object') {
     // Set plugin settings
     Foundation.reflow(this);

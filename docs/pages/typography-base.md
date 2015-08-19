@@ -65,7 +65,7 @@ Links are very standard, and the [color is preset](http://www.youtube.com/watch?
 
 Use dividers to separate sections of a page.
 
-```html_example
+```html
 <hr>
 ```
 

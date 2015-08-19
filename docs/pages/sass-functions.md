@@ -21,12 +21,6 @@ Or, utilities can be imported individually.
 // Color manipulation
 @import 'util/color';
 
-// Image generation
-@import 'util/image';
-
-// Map manipulation
-@import 'util/map';
-
 // Selector generation
 @import 'util/selector';
 
@@ -36,3 +30,7 @@ Or, utilities can be imported individually.
 // Value checking and extraction
 @import 'util/value';
 ```
+
+<div class="callout warning">
+  <p>Variables, functions, or mixins prefixed with <code>-zf-</code> are considered private, which means they could change, break, or disappear without warning. We recommend sticking to only the public API, which is documented below.</p>
+</div>

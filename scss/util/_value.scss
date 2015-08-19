@@ -84,74 +84,6 @@
     color: #000,
   );
   @return map-get($defaults, $elem);
- }
-
-/// Given shadow value `$val`, find a specific element of the shadow, which is $elem. The possible values for $elem are `x`, `y`, `size`, `spread`, `color`, and `inset`.
-/// @param {List} $val - Shadow value to find a value in.
-/// @param {Keyword} $elem - Shadow component to extract.
-/// @returns {Mixed} If the value exists, returns the value. If the value is not set, returns false. If `$elem` is `inset`, returns true, otherwise false.
-@function get-shadow-value($val, $elem) {
-  // Return "none" if there's no shadow
-  @if $val == none {
-    @return none;
-  }
-
-  // Inset and color are always at the beginning and end
-  @if $elem == inset {
-    @return nth($val, 1) == inset;
-  }
-  @if $elem == color {
-    @if type-of(nth($val, -1)) == color {
-      @return nth($val, -1);
-    }
-    @else {
-      // scss-lint:disable ColorVariable
-      @return #000;
-    }
-  }
-
-  // The rest of the values are located perilously in the middle
-  $values: ();
-  @each $v in $val {
-    @if type-of($v) == 'number' {
-      $values: append($values, $v);
-    }
-  }
-  @if $elem == x {
-    @if length($values) >= 1 {
-      @return nth($values, 1);
-    }
-    @else {
-      @return 0;
-    }
-  }
-  @else if $elem == y {
-    @if length($values) >= 2 {
-      @return nth($values, 2);
-    }
-    @else {
-      @return 0;
-    }
-  }
-  @else if $elem == size {
-    @if length($values) >= 3 {
-      @return nth($values, 3);
-    }
-    @else {
-      @return 0;
-    }
-  }
-  @else if $elem == spread {
-    @if length($values) >= 4 {
-      @return nth($values, 4);
-    }
-    @else {
-      @return 0;
-    }
-  }
-  @else {
-    @return false;
-  }
 }
 
 /// Calculates x^y, where x is `$base` and y is `$power`.
@@ -163,6 +95,7 @@
   @return $base * pow($base, $power - 1);
 }
 
+// TODO: Remove this (it's used by the grid but is overkill)
 /// Given a user-defined list of keywords and a list of possible keywords, find the ones that were passed in.
 /// @param {List} $opts - List of values to find keywords in.
 /// @param {List} $seeking - List of all possible keywords.
