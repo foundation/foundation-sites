@@ -4,7 +4,9 @@ description: Interchange uses media queries to dynamically load responsive conte
 js: js/foundation.interchange.js
 ---
 
-<img data-interchange="[assets/img/interchange/small.jpg, (min-width: 0px)], [assets/img/interchange/medium.jpg, (min-width: 600px)], [assets/img/interchange/large.jpg, (min-width: 1024px)]">
+<img data-interchange="[assets/img/interchange/small.jpg, default], [assets/img/interchange/medium.jpg, medium], [assets/img/interchange/large.jpg, large]">
+
+---
 
 ## Use with Images
 
@@ -13,7 +15,7 @@ Bandwidth is precious on mobile networks, so it helps to serve users on smaller 
 In the above example, we have three different sizes of image: one for small screens, one for medium, and one for large. Use the below format to set up a responsive image. The image will change automatically as the browser resizes.
 
 ```html
-<img data-interchange="[assets/img/interchange/small.jpg, (min-width: 0px)], [assets/img/interchange/medium.jpg, (min-width: 640px)], [assets/img/interchange/large.jpg, (min-width: 1024px)]">
+<img data-interchange="[assets/img/interchange/small.jpg, (default)], [assets/img/interchange/medium.jpg, medium], [assets/img/interchange/large.jpg, large]">
 ```
 
 The image set is a comma-separated list of items with this format:
@@ -21,6 +23,12 @@ The image set is a comma-separated list of items with this format:
 ```
 [image_path, media_query]
 ```
+
+`image_path` can be a relative or absolute path. `media_query` can be any CSS media query, or a Foundation breakpoint&mdash;see [Named Breakpoints](#named-breakpoints) below.
+
+<div class="callout primary">
+  <p>Interchange evaluates rules in order, and the last rule to match will be used. For this reason, you should order your rules from smallest screen to largest screen.</p>
+</div>
 
 ---
 
@@ -31,7 +39,25 @@ Interchange can also swap in and out entire chunks of HTML. This allows you to l
 In the below example, we've applied `data-interchange` to a `<div>` instead of an `<img>` element, and the paths are to HTML files instead of images.
 
 ```html
-<div data-interchange="[assets/partials/interchange-default.html, (min-width: 0px)], [assets/partials/interchange-medium.html, (min-width: 640px)], [assets/partials/interchange-large.html, (min-width: 1024px)]"></div>
+<div data-interchange="[assets/partials/interchange-default.html, default], [assets/partials/interchange-medium.html, medium], [assets/partials/interchange-large.html, large]"></div>
 ```
 
-<div id="docs-example-interchange" data-interchange="[assets/partials/interchange-default.html, (min-width: 0px)], [assets/partials/interchange-medium.html, (min-width: 640px)], [assets/partials/interchange-large.html, (min-width: 1024px)]"></div>
+<div id="docs-example-interchange" data-interchange="[assets/partials/interchange-default.html, default], [assets/partials/interchange-medium.html, medium], [assets/partials/interchange-large.html, large]"></div>
+
+---
+
+## Named Breakpoints
+
+Interchange supports named queries as shorthands for full CSS media queries. Any breakpoint defined in the `$breakpoints` variable in your Sass will work, along with a few other keywords, most notably `default`, which just means "anything". [Learn more about changing the default breakpoints.](media-queries.html)
+
+Query Name | Media Query
+-----------|------------
+default    | `screen`
+small      | `screen and (min-width: 0em)`
+medium     | `only screen and (min-width: 40em)`
+large      | `only screen and (min-width: 64em)`
+xlarge     | `only screen and (min-width: 75em)`
+xxlarge    | `only screen and (min-width: 90em)`
+portrait   | `screen and (orientation: portrait)`
+landscape  | `screen and (orientation: landscape)`
+retina     | `only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx)`

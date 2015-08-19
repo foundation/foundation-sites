@@ -1,3 +1,6 @@
+// TODO: prevent replacing from happening on every resize
+// TODO: support background images
+
 !function(Foundation, $) {
   'use strict';
 
@@ -10,8 +13,9 @@
    */
   function Interchange(element, options) {
     this.$element = element;
-    this.options  = $.extend({}, this.defaults, options);
-    this.rules    = [];
+    this.options = $.extend({}, this.defaults, options);
+    this.rules = [];
+    this.currentRule = null;
 
     this._init();
     this._events();
@@ -26,21 +30,29 @@
   /**
    * Default settings for plugin
    */
-  Interchange.prototype.defaults = {
-    equalizeOnStack: true
+  Interchange.prototype.defaults = {}
+
+  Interchange.SPECIAL_QUERIES = {
+    'default': 'screen',
+    'landscape': 'screen and (orientation: landscape)',
+    'portrait': 'screen and (orientation: portrait)',
+    'retina': 'only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx)'
   }
 
   /**
    * Initializes the Interchange plugin and calls functions to get interchange functioning on load.
+   * @function
    * @private
    */
   Interchange.prototype._init = function() {
+    this._addBreakpoints();
     this._generateRules();
     this._reflow();
   }
 
   /**
    * Initializes events for Interchange.
+   * @function
    * @private
    */
   Interchange.prototype._events = function() {
@@ -49,6 +61,7 @@
 
   /**
    * Calls necessary functions to update Interchange upon DOM change
+   * @function
    * @private
    */
   Interchange.prototype._reflow = function() {
@@ -64,12 +77,26 @@
     }
 
     if (match) {
-      this.replace(this.$element, match.path, function() {});
+      this.replace(match.path);
+    }
+  }
+
+  /**
+   * Gets the Foundation breakpoints and adds them to the Interchange.SPECIAL_QUERIES object.
+   * @function
+   * @private
+   */
+  Interchange.prototype._addBreakpoints = function() {
+    for (var i in Foundation.MediaQuery.queries) {
+      var query = Foundation.MediaQuery.queries[i];
+      Interchange.SPECIAL_QUERIES[query.name] = query.value;
     }
   }
 
   /**
    * Checks the Interchange element for the provided media query + content pairings
+   * @function
+   * @private
    * @param {Object} element - jQuery object that is an Interchange instance
    * @returns {Array} scenarios - Array of objects that have 'mq' and 'path' keys with corresponding keys
    */
@@ -79,10 +106,16 @@
 
     for (var i in rules) {
       var rule = rules[i].slice(1, -1).split(', ');
+      var path = rule.slice(0, -1).join('');
+      var query = rule[rule.length - 1];
+
+      if (Interchange.SPECIAL_QUERIES[query]) {
+        query = Interchange.SPECIAL_QUERIES[query];
+      }
 
       rulesList.push({
-        path: rule.slice(0, -1).join(''),
-        query: rule[rule.length - 1]
+        path: path,
+        query: query
       });
     }
 
@@ -90,22 +123,24 @@
   }
 
   /**
-   * Changes the src attribute of the Interchange object to a new path, then runs the callback function
-   * @param {Object} element - jQuery object that is an Interchange instance
-   * @param {String} path - A path specified to a desired asset
+   * Update the `src` property of an image, or change the HTML of a container, to the specified path.
+   * @function
+   * @param {String} path - Path to the image or HTML partial.
    * @event Interchange#replaced
    */
-  Interchange.prototype.replace = function($element, path) {
+  Interchange.prototype.replace = function(path) {
     var _this = this;
 
-    if ($element[0].nodeName === 'IMG') {
-      $element.attr('src', path).load(function() {
+    // Replacing images
+    if (this.$element[0].nodeName === 'IMG') {
+      this.$element.attr('src', path).load(function() {
         _this.$element.trigger('replaced.zf.interchange');
       });
     }
+    // Replacing HTML
     else {
       $.get(path, function(response) {
-        $element.html(response);
+        _this.$element.html(response);
         _this.$element.trigger('replaced.zf.interchange');
       });
     }
