@@ -10,11 +10,8 @@
    */
   function Interchange(element, options) {
     this.$element = element;
-    this.options  = $.extend(this.defaults, options);
-    this.$window  = $(window);
-    this.name     = 'interchange';
-    this.attr     = 'data-interchange';
-    this.cache    = {};
+    this.options  = $.extend({}, this.defaults, options);
+    this.rules    = [];
 
     this._init();
     this._events();
@@ -42,6 +39,7 @@
     this.$element.data('uuid', instanceId);
     this.$element.attr('data-uuid', instanceId);
     this.cacheInterchangeInstance(this.$element);
+    this._generateRules();
     this._reflow();
   };
 
@@ -52,80 +50,55 @@
   Interchange.prototype._events = function() {
     var self = this;
 
-    this.$window
+    $(window)
       .off('.interchange')
-      .on('resize.fndtn.interchange', Foundation.throttle(function () {
-        self._reflow();
-      }.bind(this), 50));
+      .on('changed.zf.mediaquery', this._reflow.bind(this));
   };
   /**
    * Calls necessary functions to update Interchange upon DOM change
    * @private
    */
   Interchange.prototype._reflow = function() {
-    var self = this;
-    var elementScenarios;
-    console.log("REFLOW");
-    console.log(self.cache);
-    $('[' + this.attr + ']').each(function() {
-      // var instanceId = $(this).data('uuid');
-      console.log($(this).data('uuid'));
-      if (self.cache) {
-        elementScenarios = self.cache;
-        for (var i = elementScenarios.length - 1; i >= 0; i--) {
-          if (self.checkMq(elementScenarios[i].mq)) {
-            // var $targetInterchange = $('[data-uuid=' + instanceId + ']');
-            self.setSrc(self.$element, elementScenarios[i].path);
-            return;
-          }
-        }
+    var match;
+
+    for (var i in this.rules) {
+      var rule = this.rules[i];
+
+      if (window.matchMedia(rule.query).matches) {
+        match = rule;
       }
-    });
+    }
+
+    if (match) {
+      this.setSrc(this.$element, match.path, function() {});
+    }
   };
   /**
    * Checks the Interchange element for the provided media query + content pairings
    * @param {Object} element - jQuery object that is an Interchange instance
    * @returns {Array} scenarios - Array of objects that have 'mq' and 'path' keys with corresponding keys
    */
-  Interchange.prototype.mapMqContent = function($element) {
-    var self      = this,
-        initData  = $element.data(self.name),
-        mqMatch   = /\((.*?)\)/g,
-        pathMatch = /\[(.+?)\,\s/g,
-        scenarios = [],
-        mqArr     = [],
-        pathArr   = [],
-        pathTmp;
+  Interchange.prototype._generateRules = function() {
+    var rulesList = [];
+    var rules = this.$element.data('interchange').match(/\[.*?\]/g);
 
-    initData.split(',');
-    mqArr = initData.match(mqMatch);
+    for (var i in rules) {
+      var rule = rules[i].slice(1, -1).split(', ');
 
-    // weird little loop to get the stuff INSIDE regex
-    while (pathTmp = pathMatch.exec(initData)) {
-      pathArr.push(pathTmp[1]);
+      rulesList.push({
+        path: rule.slice(0, -1).join(''),
+        query: rule[rule.length - 1]
+      });
     }
 
-    if (mqArr.length === pathArr.length) {
-      for (var i = 0; i < mqArr.length; i++) {
-        scenarios.push({
-          'mq': mqArr[i],
-          'path': pathArr[i]
-        });
-      }
-    }
-    else {
-      // this is a case that we'll have to account for, however. like same path for multiple scenarios.
-      throw "Not 1:1 match";
-    }
-    
-    return scenarios;
+    this.rules = rulesList;
   };
   /**
    * Caches a particular Interchange instance and its media query mappings to allow for multiple instances of Interchange per page
    * @param {Object} element - jQuery object that is an Interchange instance
    */
   Interchange.prototype.cacheInterchangeInstance = function($element) {
-    this.cache[$element.data('uuid')] = this.mapMqContent($element);
+    // this.cache[$element.data('uuid')] = this._generateRules();
   };
   /**
    * Checks whether or not the window fits the provided media query rule
@@ -143,9 +116,11 @@
    * @event Interchange#srcChange
    */
   Interchange.prototype.setSrc = function($element, path, cb) {
+    var _this = this;
+
     $element.attr('src', path).load(function() {
       cb();
-      this.$element.trigger('srcChange.zf.interchange');
+      _this.$element.trigger('srcChange.zf.interchange');
     })
   };
 
