@@ -1,8 +1,10 @@
 !function($, Foundation, window){
   function ImNotTouchingYou(element, direction, param, parent){
     var dims = getDimensions(element);
-    console.log('dims total', dims.offset[direction] + dims.parentDims[param] + dims[param], 'window', dims.windowDims[param]);
-    return (dims.offset[direction] + dims.parentDims[param] + dims[param] > dims.windowDims[param]);
+    console.log('element offset', dims.offset[direction], '\nparent dim', dims.parentDims[param], '\nele dim',dims[param], '\nwindow dim', dims.windowDims[param], '\nwindow offset', dims.windowDims.offset);
+    return parent ?
+      (dims.offset[direction] + dims.parentDims[param] + dims[param] > dims.windowDims[param]) :
+      (direction === 'top' ? (dims.offset[direction] >= dims.windowDims.offset) : '');
     //experimental
     // return (dims.parentDims[param] + dims[param] > dims.windowDims[param]);
   }
@@ -19,7 +21,8 @@
       },
       windowDims: {
         width: $(window).width(),
-        height: $(window).height()
+        height: $(window).height(),
+        offset: $(window).scrollTop()
       }
     };
   }
