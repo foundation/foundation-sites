@@ -141,7 +141,7 @@ OffCanvas.prototype.toggle = function(event, trigger) {
 }
 
 /**
- * Handle keyboard input when detected. When the escape key is pressed, the off-canvas menu closes, and focus is restored to the element that opened the menu.
+ * Handles keyboard input when detected. When the escape key is pressed, the off-canvas menu closes, and focus is restored to the element that opened the menu.
  * @function
  * @private
  */
