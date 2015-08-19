@@ -64,7 +64,7 @@
     }
 
     if (match) {
-      this.setSrc(this.$element, match.path, function() {});
+      this.replace(this.$element, match.path, function() {});
     }
   }
 
@@ -93,14 +93,22 @@
    * Changes the src attribute of the Interchange object to a new path, then runs the callback function
    * @param {Object} element - jQuery object that is an Interchange instance
    * @param {String} path - A path specified to a desired asset
-   * @event Interchange#srcChange
+   * @event Interchange#replaced
    */
-  Interchange.prototype.setSrc = function($element, path) {
+  Interchange.prototype.replace = function($element, path) {
     var _this = this;
 
-    $element.attr('src', path).load(function() {
-      _this.$element.trigger('srcChange.zf.interchange');
-    })
+    if ($element[0].nodeName === 'IMG') {
+      $element.attr('src', path).load(function() {
+        _this.$element.trigger('replaced.zf.interchange');
+      });
+    }
+    else {
+      $.get(path, function(response) {
+        $element.html(response);
+        _this.$element.trigger('replaced.zf.interchange');
+      });
+    }
   }
 
   Foundation.plugin(Interchange);
