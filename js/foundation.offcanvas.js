@@ -47,8 +47,16 @@ OffCanvas.prototype.defaults = {
  * @private
  */
 OffCanvas.prototype._init = function() {
+  var id = this.$element.attr('id');
+
   this.$element.attr('aria-hidden', 'true');
 
+  // Find triggers that affect this element and add aria-expanded to them
+  $(document)
+    .find('[data-open="'+id+'"], [data-close="'+id+'"], [data-toggle="'+id+'"]')
+    .attr('aria-expanded', 'false');
+
+  // Add a close trigger over the body if necessary
   if (this.options.closeOnClick) {
     var exiter = document.createElement('div');
     exiter.setAttribute('class', 'js-off-canvas-exit');
