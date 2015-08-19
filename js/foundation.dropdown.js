@@ -15,65 +15,96 @@
     vOffset: 1,
     hOffset: 1,
     positionClass: ''
-    // defaultAction: 'toggle'
   };
+
   Dropdown.prototype._init = function(){
     var $id = this.$element.attr('id');
 
     this.$anchor = $('[data-toggle="' + $id + '"]') || $('[data-open="' + $id + '"]');
     this.$anchor.attr({'aria-controls': $id, 'data-is-focus': 'false'});
-    this.options.positionClass = this.getPositionClass();
-    // console.log(this.options.positionClass);
-    // console.log($('[data-toggle="' + this.$element.attr('id') + '"]'));
 
+    this.options.positionClass = this.getPositionClass();
     this.$element.attr({
       'aria-hidden': 'true'
-    });
+    }).hide();
+
     this._events();
   };
+
   Dropdown.prototype.getPositionClass = function(){
     var position = this.$element.attr('class').match(/top|left|right/g);
         position = position ? position[0] : '';
-    this.options.positionClass += position;
     return position;
   };
-  Dropdown.prototype.setPosition = function(){
-    var position = this.$element.attr('class').match(/top|left|right/g),
-        $eleDims = Foundation.GetDimensions(this.$element),
-        $anchorDims = Foundation.GetDimensions(this.$anchor),
-        _this = this;
-    position = position ? position[0] : '';
+  Dropdown.prototype.reposition = function(){
+    var positions = ['bottom', 'top', 'left', 'right'],
+        usedPositions = [],
+        position = this.getPositionClass();
 
-
-    var direction = position ? (position === ('left' || 'right') ? 'left' : 'top') : 'top',
-        param = (direction === 'top') ? 'height' : 'width';
-    // console.log('dir', direction, '\nparam', param);
-
-    this.$element.offset(getOffsets());
-
-    console.log('clear',Foundation.ImNotTouchingYou(this.$element, direction, param, false))
-
-
-    if(!Foundation.ImNotTouchingYou(this.$element, direction, param, false)){
-      if(position === 'top'){
-        this.$element.removeClass('top');
-      }else if(!position){
-        this.$element.addClass('top');
-      }else if(position === 'left'){
-        this.$element.removeClass('left')
-            .addClass('right');
-      }else if(position === 'right'){
-        this.$element.removeClass('right')
-            .addClass('left');
-      }
+    if(!position && usedPositions.indexOf('bottom') < 0){
+      this.$element.addClass('top');
+      usedPositions.push('bottom');
       this.classChanged = true;
       this.setPosition();
     }
 
+    if(usedPositions.indexOf(position) < 0){
+      if(position === 'left'){
+        this.$element.removeClass('left')
+            .addClass('right');
+        usedPositions.push('left');
+      }else if(position === 'right'){
+        this.$element.removeClass('right')
+            .addClass('left');
+        usedPositions.push('right');
+      }else if(position === 'top'){
+        this.$element.removeClass('top');
+        usedPositions.push('top')
+      }
+    }else{
+      this.$element.removeClass(position);
+    }
+    this.classChanged = true;
+    this.setPosition();
+  };
 
-    // console.log('clear?',Foundation.ImNotTouchingYou(this.$element, direction, param, false));
-    // console.log($eleDims.offset[direction] + $eleDims[param] >= $eleDims.windowDims[param] + $eleDims.windowDims.offset[direction]);
+  Dropdown.prototype.setPosition = function(){
+    var position = this.getPositionClass(),
+        $eleDims = Foundation.GetDimensions(this.$element),
+        $anchorDims = Foundation.GetDimensions(this.$anchor),
+        _this = this,
+        direction = (position === 'left' ? 'left' : ((position === 'right') ? 'left' : 'top')),
+        param = (direction === 'top') ? 'height' : 'width',
+        offset = (param === 'height') ? this.options.vOffset : this.options.hOffset,
+        counter = 3;
 
+    this.$element.offset(getOffsets());
+
+    while(counter && !Foundation.ImNotTouchingYou(this.$element, direction, param, position, offset, this.$anchor)){
+      this.reposition();
+      console.log('try:', counter);
+      --counter
+    }
+
+    // if(!counter){
+    //   //set to default down position
+    // }
+
+    // if(!Foundation.ImNotTouchingYou(this.$element, direction, param, position, offset, this.$anchor)){
+    //   if(position === 'top'){
+    //     this.$element.removeClass('top');
+    //   }else if(!position){
+    //     this.$element.addClass('top');
+    //   }else if(position === 'left'){
+    //     this.$element.removeClass('left')
+    //         .addClass('right');
+    //   }else if(position === 'right'){
+    //     this.$element.removeClass('right')
+    //         .addClass('left');
+    //   }
+    //   this.classChanged = true;
+    //   this.setPosition();
+    // }
 
     function getOffsets(){
       switch(position){
@@ -102,9 +133,6 @@
           };
       }
     }
-    // console.log('element', ele, '\nanchor', par);
-    // console.log('w',this.$element.outerWidth(), '\nh', this.$element.outerHeight());
-    // console.log('w',this.$anchor.outerWidth(), '\nh', this.$anchor.outerHeight(), '\noffset', this.$anchor.offset());
   };
 
   Dropdown.prototype._events = function(){
@@ -114,24 +142,36 @@
       'close.zf.trigger': this.close.bind(this),
       'toggle.zf.trigger': this.toggle.bind(this)
     });
+    if(!this.options.disableHover){
+      this.$anchor.on('mouseenter.zf.dropdown mouseleave.zf.dropdown', this.toggle.bind(this));
+    }
   };
-  Dropdown.prototype.open = function(){
 
+  Dropdown.prototype.open = function(){
+    this.$element.show();
     this.setPosition();
     this.$element.addClass(this.options.activeClass)
-      .attr('aria-hidden', 'false');
+        .attr('aria-hidden', 'false');
   };
+
   Dropdown.prototype.close = function(){
-    // console.log('changed', this.classChanged);
     this.$element.removeClass(this.options.activeClass)
-      .attr('aria-hidden', 'true');
+        .attr('aria-hidden', 'true');
+
     if(this.classChanged){
-      this.$element.attr('class', '')
-      .addClass(this.options.dropdownClass)
-      .addClass(this.options.positionClass);
+      var curPositionClass = this.getPositionClass();
+
+      if(curPositionClass){
+        this.$element.removeClass(curPositionClass);
+      }
+
+      this.$element.addClass(this.options.positionClass)
+          .hide();
+
       this.classChanged = false;
     }
   };
+
   Dropdown.prototype.toggle = function(){
     if(this.$element.hasClass(this.options.activeClass)){
       this.close();

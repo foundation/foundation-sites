@@ -31,7 +31,7 @@
    * Initializes the tabs by showing and focusing (if autoFocus=true) the preset active tab.
    * @private
    */
-  Tabs.prototype._init = function() {
+  Tabs.prototype._init = function(){
     var _this = this,
         tabIndex = 1;
     this.$tabTitles = this.$element.find('.tabs-title');
@@ -189,7 +189,8 @@
    */
   Tabs.prototype.destroy = function() {
     this.$element.find('.tabs-title').css('display', 'none').end().find('.tabs-panel').css('display', 'none');
-    this.$element.find('tabs-titles').off('click.zf.tabs keyup.zf.tabs');
+    this.$element.find('.tabs-titles').off('click.zf.tabs keyup.zf.tabs');
+    this.$element.find('.tabs-titles').off('zf.tabs');
 
     /**
      * Fires when the plugin has been destroyed.
