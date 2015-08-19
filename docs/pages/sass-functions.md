@@ -21,9 +21,6 @@ Or, utilities can be imported individually.
 // Color manipulation
 @import 'util/color';
 
-// Image generation
-@import 'util/image';
-
 // Selector generation
 @import 'util/selector';
 
