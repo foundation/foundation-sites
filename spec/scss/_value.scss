@@ -98,36 +98,4 @@
   }
 }
 
-@include describe("Get Shadow Value") {
-  @include it("returns the right value of a shadow property") {
-    $value:  inset 1px 2px 3px 4px black;
-    $inset:  get-shadow-value($value, inset);
-    $xValue: get-shadow-value($value, x);
-    $yValue: get-shadow-value($value, y);
-    $size:   get-shadow-value($value, size);
-    $spread: get-shadow-value($value, spread);
-    $color:  get-shadow-value($value, color);
-
-    @include should(expect($inset), to(be(true)));
-    @include should(expect($xValue), to(be(1px)));
-    @include should(expect($yValue), to(be(2px)));
-    @include should(expect($size), to(be(3px)));
-    @include should(expect($spread), to(be(4px)));
-    @include should(expect($color), to(be(black)));
-  }
-  @include it("returns a default value if a property is missing") {
-    $noInset:  get-shadow-value(1px 2px 3px 4px black, inset);
-    $noXValue: get-shadow-value(black, x);
-    $noYValue: get-shadow-value(1px black, y);
-    $noSize:   get-shadow-value(1px 2px black, size);
-    $noSpread: get-shadow-value(1px 2px 3px black, spread);
-    $noColor:  get-shadow-value(1px 2px, color);
-
-    @include should(expect($noInset), to(be(false)));
-    @include should(expect($noXValue), to(be(0)));
-    @include should(expect($noYValue), to(be(0)));
-    @include should(expect($noSize), to(be(0)));
-    @include should(expect($noSpread), to(be(0)));
-    @include should(expect($noColor), to(be(black)));
-  }
-}
+// TODO: Add spec for pow()

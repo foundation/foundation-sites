@@ -17,7 +17,7 @@
 
 @include describe("Convert to Rem") {
   @include it("converts a unit to the equivalent in rems") {
-    $actual: rem-calc(32, 16);
+    $actual: -zf-to-rem(32, 16);
     $expected: 2rem;
 
     @include should(expect($actual), to(be($expected)));
