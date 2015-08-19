@@ -43,4 +43,76 @@ Much like with baseball pitchers, you want a solid mix. It's as simple as adding
 <div class="dropdown-pane right" id="example-dropdown4" data-dropdown>
   Just some junk that needs to be said. Or not. Your choice.
 </div>
+
+
+<a class='button' data-toggle="example-dropdown3a">Toggle &raquo;</a>
+
+<div class="dropdown-pane left" id="example-dropdown3a" data-dropdown>
+  Just some junk that needs to be said. Or not. Your choice.
+</div>
+
+<a class='button' data-toggle="example-dropdown3s">Toggle &raquo;</a>
+
+<div class="dropdown-pane left" id="example-dropdown3s" data-dropdown>
+  Just some junk that needs to be said. Or not. Your choice.
+</div>
+
+<a class='button' data-toggle="example-dropdown3d">Toggle &raquo;</a>
+
+<div class="dropdown-pane left" id="example-dropdown3d" data-dropdown>
+  Just some junk that needs to be said. Or not. Your choice.
+</div>
+```
+## Plain Jane
+By default, dropdowns are exactly that, horizontally oriented below the parent element, anchored to the bottom-left corner.
+
+```html_example
+<a class='button' data-toggle="example-dropdown5">Toggle &raquo;</a>
+
+<div class="dropdown-pane" id="example-dropdown5" data-dropdown>
+  Just some junk that needs to be said. Or not. Your choice.
+</div>
+```
+## Plain Jane
+By default, dropdowns are exactly that, horizontally oriented below the parent element, anchored to the bottom-left corner.
+
+```html_example
+<a class='button' data-toggle="example-dropdown6">Toggle &raquo;</a>
+
+<div class="dropdown-pane" id="example-dropdown6" data-dropdown>
+  Just some junk that needs to be said. Or not. Your choice.
+</div>
+```
+
+## Plain Jane
+By default, dropdowns are exactly that, horizontally oriented below the parent element, anchored to the bottom-left corner.
+
+```html_example
+<a class='button' data-toggle="example-dropdown7">Toggle &raquo;</a>
+
+<div class="dropdown-pane" id="example-dropdown7" data-dropdown>
+  Just some junk that needs to be said. Or not. Your choice.
+</div>
+```
+
+## Plain Jane
+By default, dropdowns are exactly that, horizontally oriented below the parent element, anchored to the bottom-left corner.
+
+```html_example
+<a class='button' data-toggle="example-dropdown8">Toggle &raquo;</a>
+
+<div class="dropdown-pane" id="example-dropdown8" data-dropdown>
+  Just some junk that needs to be said. Or not. Your choice.
+</div>
+```
+
+## Plain Jane
+By default, dropdowns are exactly that, horizontally oriented below the parent element, anchored to the bottom-left corner.
+
+```html_example
+<a class='button' data-toggle="example-dropdown9">Toggle &raquo;</a>
+
+<div class="dropdown-pane" id="example-dropdown9" data-dropdown>
+  Just some junk that needs to be said. Or not. Your choice.
+</div>
 ```

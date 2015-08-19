@@ -23,7 +23,7 @@
     this.$anchor = $('[data-toggle="' + $id + '"]') || $('[data-open="' + $id + '"]');
     this.$anchor.attr({'aria-controls': $id, 'data-is-focus': 'false'});
     this.options.positionClass = this.getPositionClass();
-    console.log(this.options.positionClass);
+    // console.log(this.options.positionClass);
     // console.log($('[data-toggle="' + this.$element.attr('id') + '"]'));
 
     this.$element.attr({
@@ -43,31 +43,45 @@
         $anchorDims = Foundation.GetDimensions(this.$anchor),
         _this = this;
     position = position ? position[0] : '';
+
+
     var direction = position ? (position === ('left' || 'right') ? 'left' : 'top') : 'top',
         param = (direction === 'top') ? 'height' : 'width';
-    console.log('dir', direction, '\nparam', param);
+    // console.log('dir', direction, '\nparam', param);
+
     this.$element.offset(getOffsets());
+
+    console.log('clear',Foundation.ImNotTouchingYou(this.$element, direction, param, false))
+
+
     if(!Foundation.ImNotTouchingYou(this.$element, direction, param, false)){
       if(position === 'top'){
         this.$element.removeClass('top');
-        this.classChanged = true;
-        this.setPosition();
       }else if(!position){
         this.$element.addClass('top');
-        this.setPosition();
+      }else if(position === 'left'){
+        this.$element.removeClass('left')
+            .addClass('right');
+      }else if(position === 'right'){
+        this.$element.removeClass('right')
+            .addClass('left');
       }
+      this.classChanged = true;
+      this.setPosition();
     }
+
+
     // console.log('clear?',Foundation.ImNotTouchingYou(this.$element, direction, param, false));
-    console.log($eleDims.offset[direction] + $eleDims[param] >= $eleDims.windowDims[param] + $eleDims.windowDims.offset);
+    // console.log($eleDims.offset[direction] + $eleDims[param] >= $eleDims.windowDims[param] + $eleDims.windowDims.offset[direction]);
+
+
     function getOffsets(){
       switch(position){
         case 'top':
-          // if($eleDims.offset.top >= $eleDims.windowDims.offset){
-          //   _this.$element.removeClass('top');
-          //   _this.setPosition();
-          //   return false;
-          // }
-          return {left: $anchorDims.offset.left, top: $anchorDims.offset.top - ($eleDims.height + _this.options.vOffset)};
+          return {
+            left: $anchorDims.offset.left,
+            top: $anchorDims.offset.top - ($eleDims.height + _this.options.vOffset)
+          };
           break;
         case 'left':
           return {
@@ -92,6 +106,7 @@
     // console.log('w',this.$element.outerWidth(), '\nh', this.$element.outerHeight());
     // console.log('w',this.$anchor.outerWidth(), '\nh', this.$anchor.outerHeight(), '\noffset', this.$anchor.offset());
   };
+
   Dropdown.prototype._events = function(){
     // console.log('events activate!')
     this.$element.on({
@@ -107,7 +122,7 @@
       .attr('aria-hidden', 'false');
   };
   Dropdown.prototype.close = function(){
-    console.log('changed', this.classChanged);
+    // console.log('changed', this.classChanged);
     this.$element.removeClass(this.options.activeClass)
       .attr('aria-hidden', 'true');
     if(this.classChanged){
