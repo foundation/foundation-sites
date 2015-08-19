@@ -13,6 +13,8 @@ function OffCanvas(element, options) {
   this.$element = element;
   this.options = $.extend(this.defaults, options);
 
+  this.$lastTrigger = $();
+
   this._init();
   this._events();
 
@@ -45,6 +47,8 @@ OffCanvas.prototype.defaults = {
  * @private
  */
 OffCanvas.prototype._init = function() {
+  this.$element.attr('aria-hidden', 'true');
+
   if (this.options.closeOnClick) {
     var exiter = document.createElement('div');
     exiter.setAttribute('class', 'js-off-canvas-exit');
@@ -63,7 +67,8 @@ OffCanvas.prototype._events = function() {
   this.$element.on({
     'open.zf.trigger': this.open.bind(this),
     'close.zf.trigger': this.close.bind(this),
-    'toggle.zf.trigger': this.toggle.bind(this)
+    'toggle.zf.trigger': this.toggle.bind(this),
+    'keydown.zf.offcanvas': this._handleKeyboard.bind(this)
   });
 
   if (this.$exiter) {
@@ -76,14 +81,22 @@ OffCanvas.prototype._events = function() {
  * @function
  * @fires OffCanvas#opened
  */
-OffCanvas.prototype.open = function() {
+OffCanvas.prototype.open = function(event, trigger) {
+  if (this.$element.hasClass(this.options.activeClass)) return;
+
   /**
    * Fires when the off-canvas menu opens.
    * @event OffCanvas#opened
    */
   this.$element
     .addClass(this.options.activeClass)
+    .attr('aria-hidden', 'false')
+    .find('a, button').eq(0).focus().end().end()
     .trigger('opened.zf.offcanvas');
+
+  if (trigger) {
+    this.$lastTrigger = trigger.attr('aria-expanded', 'true');
+  }
 }
 
 /**
@@ -92,26 +105,45 @@ OffCanvas.prototype.open = function() {
  * @fires OffCanvas#closed
  */
 OffCanvas.prototype.close = function() {
+  if (!this.$element.hasClass(this.options.activeClass)) return;
+
   /**
    * Fires when the off-canvas menu opens.
    * @event OffCanvas#closed
    */
   this.$element
     .removeClass(this.options.activeClass)
+    .attr('aria-hidden', 'true')
     .trigger('closed.zf.offcanvas');
+
+  this.$lastTrigger.attr('aria-expanded', 'false');
 }
 
 /**
  * Toggles the off-canvas menu open or closed.
  * @function
  */
-OffCanvas.prototype.toggle = function() {
+OffCanvas.prototype.toggle = function(event, trigger) {
   if (this.$element.hasClass(this.options.activeClass)) {
-    this.close();
+    this.close(event, trigger);
   }
   else {
-    this.open();
+    this.open(event, trigger);
   }
+}
+
+/**
+ * Handle keyboard input when detected. When the escape key is pressed, the off-canvas menu closes, and focus is restored to the element that opened the menu.
+ * @function
+ * @private
+ */
+OffCanvas.prototype._handleKeyboard = function(event) {
+  if (event.which !== 27) return;
+
+  event.stopPropagation();
+  event.preventDefault();
+  this.close();
+  this.$lastTrigger.focus();
 }
 
 Foundation.plugin(OffCanvas);

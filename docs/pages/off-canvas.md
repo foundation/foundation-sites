@@ -7,7 +7,7 @@ tags:
   - navigation
 ---
 
-<a class="button" data-toggle="body">Toggle Off-canvas</a>
+<button class="button" type="button" data-toggle="body">Toggle Off-canvas</button>
  
 ## Setup
  
