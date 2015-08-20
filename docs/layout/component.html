@@ -6,6 +6,28 @@
 
 <hr>
 
+{{!-- Start container for docs and table of contents --}}
+<div class="row">
+
+{{!-- Start container for table of contents --}}
+<nav>
+  <div class="large-3 large-push-9 columns">
+    <ul class="vertical menu-bar docs-menu" data-docs-toc>
+      <li class="docs-menu-title">On this page:</li>
+    </ul>
+    <ul class="vertical menu-bar docs-menu">
+      <li class="docs-menu-title">Contribute:</li>
+      <li><a href="{{ editLink fileName }}">Edit this Page</a></li>
+      <li><a href="{{ issueLink title }}">Report a Bug</a></li>
+      {{ sourceLink _adapterData }}
+    </ul>
+  </div>
+</nav>
+{{!-- End container for table of contents --}}
+
+{{!-- Start container for docs --}}
+<div class="large-9 large-pull-3 columns">
+
 {{ docs }}
 
 {{#if sass}}
@@ -37,7 +59,7 @@
   {{/if}}
 
   {{#if sass.mixin}}
-  {{#unless sass.variable}}<hr>{{/unless}}
+  {{#if sass.variable}}<hr>{{/if}}
 
   <section>
     {{#heading 3 'sass-mixins'}}Mixins{{/heading}}
@@ -45,8 +67,16 @@
     <p>We use these mixins to build the final CSS output of this component. You can use the mixins yourself to build your own class structure out of our components.</p>
 
     {{#each sass.mixin}}
-    <section>
+    <section {{#if this.deprecated }}class="docs-deprecated"{{/if}}>
       {{#heading 4}}{{this.context.name}}{{/heading}}
+
+      {{#if this.since}}
+        <p class="docs-notice-added">Added in {{this.since.0.version}}</p>
+      {{/if}}
+
+      {{#if this.deprecated}}
+        <p class="docs-notice-deprecated">Deprecated in {{this.deprecated}}</p>
+      {{/if}}
 
       <div class="docs-code">
         <pre><code>{{writeMixin this}}</code></pre>
@@ -90,8 +120,16 @@
     {{#heading 3 'sass-functions'}}Functions{{/heading}}
 
     {{#each sass.function}}
-    <section>
+    <section {{#if this.deprecated }}class="docs-deprecated"{{/if}}>
       {{#heading 4}}{{this.context.name}}{{/heading}}
+
+      {{#if this.since}}
+        <p class="docs-notice-added">Added in {{this.since.0.version}}</p>
+      {{/if}}
+
+      {{#if this.deprecated}}
+        <p class="docs-notice-deprecated">Deprecated in {{this.deprecated.version}}</p>
+      {{/if}}
 
       <div class="docs-code">
         <pre><code>{{writeFunction this}}</code></pre>
@@ -266,5 +304,11 @@
   </div>
 </section>
 {{/if}}
+
+</div>
+{{!-- End container for docs --}}
+
+</div>
+{{!-- End container for docs and table of contents --}}
 
 </article>
