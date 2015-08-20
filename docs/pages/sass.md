@@ -84,6 +84,10 @@ Every component includes a set of variables that modify core structural or visua
 
 To change a setting, find the variable you're looking for, uncomment it by removing the slashes (//) at the start of the line, and change the value. Uncommenting signifies that you want the value to change, and also functions as a handy visual aid to see which defaults you're overriding.
 
+<div class="callout warning">
+  <p>Once you've set up a new project, your settings file can't be automatically updated when new versions change, add, or remove variables. Keep tabs on new <a href="https://github.com/zurb/foundation/releases">Foundation releases</a> so you know when things change.</p>
+</div>
+
 Here's an example set of settings variables. These change the default styling of [buttons](button.html):
 
 ```scss

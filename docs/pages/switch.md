@@ -15,11 +15,15 @@ Add the `.switch` class to an element to create a switch.
 </div> 
 ```
 
+<div class="callout warning">
+  <p>Make sure the HTML of the switch goes in the order you see above&mdash;<code>&lt;input&gt;</code>, then <code>&lt;label&gt;</code></p>
+</div>
+
 ---
 
 ### Radio Switch
 
-Radio switches let a user select <u>ONE</u> of a limited number of choices:
+Radio switches let a user select *one* of a limited number of choices:
 
 ```html_example
 <div class="switch small">
@@ -40,7 +44,7 @@ Radio switches let a user select <u>ONE</u> of a limited number of choices:
 
 ---
 
-### Switch Sizing
+### Sizing Classes
 
 Add `.tiny`, `.small`, `.large`, to change the switch size. The default size needs no sizing class.
 
@@ -69,7 +73,7 @@ Large Switch
 
 ---
 
-### With text inside
+### With Text Inside
 
 ```html_example
 <div class="switch large">
