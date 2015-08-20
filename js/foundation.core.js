@@ -178,6 +178,8 @@ var Foundation = {
   }
 };
 
+// TODO: consider not making this a jQuery function
+// TODO: need way to reflow vs. re-initialize
 /**
  * The Foundation jQuery method.
  * @param {String|Array} method - An action to perform on the current jQuery object.
@@ -189,7 +191,6 @@ var foundation = function(method) {
     Foundation.MediaQuery._init();
     Foundation.reflow(this);
   } else if (type === 'object') {
-    // Set plugin settings
     Foundation.reflow(this);
   } else if (type === 'string' || type === 'array') {
     Foundation.reflow(this, method);
