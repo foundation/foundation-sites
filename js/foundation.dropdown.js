@@ -10,7 +10,7 @@
   Dropdown.prototype.defaults = {
     activeClass: 'open',
     hoverDelay: 250,
-    disableHover: false,
+    disableHover: true,
     dropdownClass: 'dropdown-pane',
     vOffset: 1,
     hOffset: 1,
@@ -24,6 +24,8 @@
     this.$anchor.attr({'aria-controls': $id, 'data-is-focus': 'false'});
 
     this.options.positionClass = this.getPositionClass();
+    this.counter = 4;
+    this.usedPositions = [];
     this.$element.attr({
       'aria-hidden': 'true'
     }).hide();
@@ -36,36 +38,61 @@
         position = position ? position[0] : '';
     return position;
   };
+
   Dropdown.prototype.reposition = function(){
     var positions = ['bottom', 'top', 'left', 'right'],
-        usedPositions = [],
         position = this.getPositionClass();
 
-    if(!position && usedPositions.indexOf('bottom') < 0){
-      this.$element.addClass('top');
-      usedPositions.push('bottom');
-      this.classChanged = true;
-      this.setPosition();
+    if(((this.usedPositions.indexOf('left') > -1) || (this.usedPositions.indexOf('right') > -1)) && (position === 'left' || 'right')){
+      console.log('yippee');
+      this.$element.removeClass(position)
+          .addClass('top');
+
     }
 
-    if(usedPositions.indexOf(position) < 0){
+    if(!position && this.usedPositions.indexOf('bottom') < 0){
+      this.$element.addClass('top');
+      this.usedPositions.push('bottom');
+
+    }else if(this.usedPositions.indexOf(position) < 0){
       if(position === 'left'){
+
         this.$element.removeClass('left')
             .addClass('right');
-        usedPositions.push('left');
+        this.usedPositions.push('left');
+
       }else if(position === 'right'){
+
         this.$element.removeClass('right')
             .addClass('left');
-        usedPositions.push('right');
+        this.usedPositions.push('right');
+
       }else if(position === 'top'){
+
         this.$element.removeClass('top');
-        usedPositions.push('top')
+        this.usedPositions.push('top')
       }
+
+    }
+    // else if(this.usedPositions.indexOf('left') > -1 && this.usedPositions.indexOf('right') > -1){
+    //   this.$element.removeClass(position)
+    //       .addClass('top');
+    //
+    // }
+    else if(this.usedPositions.indexOf('top') > -1 && this.usedPositions.indexOf('bottom') > -1){
+
+      if(position){
+        this.$element.removeClass(position);
+      }
+      this.$element.addClass('left');
+
     }else{
       this.$element.removeClass(position);
     }
     this.classChanged = true;
-    this.setPosition();
+    this.counter--;
+    console.log('attempting to move ' + this.counter, '\nused positions', this.usedPositions);
+    // this.setPosition();
   };
 
   Dropdown.prototype.setPosition = function(){
@@ -75,19 +102,20 @@
         _this = this,
         direction = (position === 'left' ? 'left' : ((position === 'right') ? 'left' : 'top')),
         param = (direction === 'top') ? 'height' : 'width',
-        offset = (param === 'height') ? this.options.vOffset : this.options.hOffset,
-        counter = 3;
+        offset = (param === 'height') ? this.options.vOffset : this.options.hOffset;
 
     this.$element.offset(getOffsets());
 
-    while(counter && !Foundation.ImNotTouchingYou(this.$element, direction, param, position, offset, this.$anchor)){
+    while(!Foundation.ImNotTouchingYou(this.$element, direction, param, position, offset, this.$anchor && this.counter)){
       this.reposition();
-      console.log('try:', counter);
-      --counter
+      this.setPosition();
     }
 
-    // if(!counter){
+    // if(!this.counter){
     //   //set to default down position
+    //   this.$element.removeClass(position);
+    //   this.classChanged = true;
+    //   this.setPosition();
     // }
 
     // if(!Foundation.ImNotTouchingYou(this.$element, direction, param, position, offset, this.$anchor)){
@@ -169,6 +197,8 @@
           .hide();
 
       this.classChanged = false;
+      this.counter = 4;
+      this.usedPositions.length = 0;
     }
   };
 
