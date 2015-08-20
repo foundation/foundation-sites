@@ -15,6 +15,12 @@
     <ul class="vertical menu-bar docs-menu" data-docs-toc>
       <li class="docs-menu-title">On this page:</li>
     </ul>
+    <ul class="vertical menu-bar docs-menu">
+      <li class="docs-menu-title">Contribute:</li>
+      <li><a href="{{ editLink fileName }}">Edit this Page</a></li>
+      <li><a href="{{ issueLink title }}">Report a Bug</a></li>
+      {{ sourceLink _adapterData }}
+    </ul>
   </div>
 </nav>
 {{!-- End container for table of contents --}}
