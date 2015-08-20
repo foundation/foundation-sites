@@ -1,5 +1,5 @@
 !function(Foundation, $) {
-  
+  console.log($('[data-yeti-box]'));
   $('[data-open]').on('click.zf.trigger', function() {
     var id = $(this).data('open');
     $('#' + id).triggerHandler('open.zf.trigger', [$(this)]);
@@ -19,6 +19,19 @@
     var id = $(this).data('toggle');
     $('#' + id).triggerHandler('toggle.zf.trigger', [$(this)]);
   });
+
+
+//chris's testing things----------------
+  $(document).on('init.zf.dropdown init.zf.tooltip', function(e){
+    var plugin = e.namespace.split('.')[0];
+    console.log('some stuff', plugin);
+    $('[data-yeti-box]').on('click.zf.trigger', '[data-' + plugin + ']', function(){
+      var id = $(this).data('yeti-box');
+      console.log(this);
+      $('#' + id).trigger('closeme.zf.trigger', $(this)/*, [id, $(this)]*/);
+    });
+  })
+// ------------------------------------
 
   // [PH]
   $('[data-toggler-animate]').each(function() {

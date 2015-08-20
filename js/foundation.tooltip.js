@@ -15,7 +15,7 @@
     hoverDelay: 200,
     fadeInDuration: 150,
     fadeOutDuration: 150,
-    disableHover: false,
+    disableHover: true,
     templateClasses: '',
     tooltipClass: 'tooltip',
     showOn: 'all',
@@ -30,10 +30,11 @@
     // this.template = this.template ? this.template : this.buildTemplate(elemId);
     this.template = this.template || this.buildTemplate(elemId);
     this.$element.append(this.template);
-    this.$element.attr({'title': '', 'aria-describedby': elemId})
+    this.$element.attr({'title': '', 'aria-describedby': elemId, 'data-yeti-box': elemId});
     // this.$element.append(this.template).attr('title', '');
     // console.log(elemId);
     this._events();
+    this.$element.trigger('init.zf.tooltip');
   };
 
   function randomIdGen(length){
@@ -76,7 +77,7 @@
   };
 
   Tooltip.prototype._show = function(){
-    c.log(this.options.showOn);
+    // c.log(this.options.showOn);
     if(this.options.showOn !== 'all' && !Foundation.MediaQuery.atLeast(this.options.showOn)){
       return;
     }
@@ -89,7 +90,7 @@
     this.hideAll();
 
     var isNotClear = Foundation.ImNotTouchingYou(this.template, direction, param);
-     console.log(isNotClear);
+    //  console.log(isNotClear);
     if(isNotClear){
       this.clearEdge();
     }
@@ -98,7 +99,7 @@
       'data-is-active': true,
       'aria-hidden': false
     });
-    console.log(this.setPosition());
+    // console.log(this.setPosition());
     this.template.stop().css(this.setPosition()).fadeIn(this.options.fadeInDuration, function(){
       _this.isActive = true;
     });

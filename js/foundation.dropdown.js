@@ -1,6 +1,15 @@
 !function($, Foundation){
   'use strict';
 
+/*
+NEEDS:
+  to add event emitter to close all other open dropdowns
+  aria testing
+  add global event listener for dropdowns, tooltips, modals, and whatever else will need to close all other items
+
+*/
+
+
   function Dropdown(element, options){
     this.$element = element;
     this.options = $.extend({}, this.defaults, options || {});
@@ -21,16 +30,17 @@
     var $id = this.$element.attr('id');
 
     this.$anchor = $('[data-toggle="' + $id + '"]') || $('[data-open="' + $id + '"]');
-    this.$anchor.attr({'aria-controls': $id, 'data-is-focus': 'false'});
+    this.$anchor.attr({'aria-controls': $id, 'data-is-focus': 'false', 'data-yeti-box': $id});
 
     this.options.positionClass = this.getPositionClass();
     this.counter = 4;
     this.usedPositions = [];
     this.$element.attr({
       'aria-hidden': 'true'
+      // 'data-yeti-box': $id
     }).hide();
-
     this._events();
+    this.$element.trigger('init.zf.dropdown');
   };
 
   Dropdown.prototype.getPositionClass = function(){
@@ -40,8 +50,6 @@
   };
 
   Dropdown.prototype.reposition = function(position){
-    var positions = ['bottom', 'top', 'left', 'right'];
-        // position = this.getPositionClass();
     this.usedPositions.push(position ? position : 'bottom');
 
     //default, try switching to opposite side
@@ -74,8 +82,6 @@
     }
     this.classChanged = true;
     this.counter--;
-    console.log('attempting to move ' + this.counter, '\nused positions', this.usedPositions);
-    // this.setPosition();
   };
 
   Dropdown.prototype.setPosition = function(){
@@ -87,83 +93,66 @@
         param = (direction === 'top') ? 'height' : 'width',
         offset = (param === 'height') ? this.options.vOffset : this.options.hOffset;
 
-
-    console.log($eleDims.width >= $eleDims.windowDims.width);
-    if($eleDims.width >= $eleDims.windowDims.width){
+    // console.log($eleDims.width >= $eleDims.windowDims.width);
+    if(($eleDims.width >= $eleDims.windowDims.width) || (!this.counter && !Foundation.ImNotTouchingYou(this.$element))){
       console.log('shit');
       return null;
     }
 
-
-    this.$element.offset(getOffsets());
+    // this.$element.offset(getOffsets());
+    this.$element.offset(Foundation.GetOffsets(this.$element, this.$anchor, position, this.options.vOffset, this.options.hOffset));
 
     while(!Foundation.ImNotTouchingYou(this.$element) && this.counter){
       this.reposition(position);
       this.setPosition();
     }
     //break this into own method! Pass position as arg so it can have non-classes sent instead.
-    function getOffsets(){
-      switch(position){
-        case 'top':
-          return {
-            left: $anchorDims.offset.left,
-            top: $anchorDims.offset.top - ($eleDims.height + _this.options.vOffset)
-          };
-          break;
-        case 'left':
-          return {
-            left: $anchorDims.offset.left - ($eleDims.width + _this.options.hOffset),
-            top: $anchorDims.offset.top
-          };
-          break;
-        case 'right':
-          return {
-            left: $anchorDims.offset.left + $anchorDims.width + _this.options.hOffset + 1,
-            top: $anchorDims.offset.top
-          };
-          break;
-        default:
-          return {
-            left: $anchorDims.offset.left,
-            top: $anchorDims.offset.top + $anchorDims.height + _this.options.vOffset
-          };
-      }
-    }
   };
 
   Dropdown.prototype._events = function(){
-    // console.log('events activate!')
+    var _this = this;
     this.$element.on({
       'open.zf.trigger': this.open.bind(this),
       'close.zf.trigger': this.close.bind(this),
-      'toggle.zf.trigger': this.toggle.bind(this)
+      'toggle.zf.trigger': this.toggle.bind(this),
+      'closeme.zf.trigger': this.close.bind(this)
     });
     if(!this.options.disableHover){
-      this.$anchor.on('mouseenter.zf.dropdown mouseleave.zf.dropdown', this.toggle.bind(this));
+      clearTimeout(_this.timeout);
+      this.$anchor.on('mouseenter.zf.dropdown mouseleave.zf.dropdown', function(){
+        _this.timeOut = setTimeout(function(){
+          _this.toggle();
+        }, _this.options.hoverDelay);
+      });
     }
   };
 
   Dropdown.prototype.open = function(){
+    // $(document).trigger('click.zf.trigger'/*, $('[data-yeti-box]')*/);
+    // this.$element.trigger('closeme.zf.dropdown');
+    var _this = this;
     this.$element.show();
-    this.setPosition();
     this.$element.addClass(this.options.activeClass)
         .attr('aria-hidden', 'false');
+    this.setPosition();
   };
 
+
   Dropdown.prototype.close = function(){
+    console.log('closing time!');
+    if(!this.$element.hasClass(this.options.activeClass)){
+      return false;
+    }
     this.$element.removeClass(this.options.activeClass)
         .attr('aria-hidden', 'true');
 
     if(this.classChanged){
       var curPositionClass = this.getPositionClass();
-
       if(curPositionClass){
         this.$element.removeClass(curPositionClass);
       }
-
       this.$element.addClass(this.options.positionClass)
           .hide();
-
       this.classChanged = false;
       this.counter = 4;
       this.usedPositions.length = 0;
