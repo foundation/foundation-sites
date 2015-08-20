@@ -1,0 +1,23 @@
+.docs-notice-added {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-weight: bold;
+  color: $warning-color;
+  font-size: 0.8rem;
+  line-height: 2.8; // Aligns the text with the section title
+}
+
+.docs-notice-deprecated {
+  @extend .docs-notice-added;
+  color: $alert-color;
+}
+
+.docs-deprecated {
+  opacity: 0.25;
+  transition: opacity 0.1s ease-out;
+
+  &:hover {
+    opacity: 1;
+  }
+}

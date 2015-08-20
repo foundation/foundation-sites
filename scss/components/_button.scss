@@ -57,6 +57,7 @@ $button-font-size: 0.9rem !default;
 /// @type List
 $button-opacity-disabled: 0.25 !default;
 
+// TODO: Document button-base() mixin
 @mixin button-base {
   display: inline-block;
   text-align: center;

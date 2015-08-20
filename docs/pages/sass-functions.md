@@ -32,5 +32,5 @@ Or, utilities can be imported individually.
 ```
 
 <div class="callout warning">
-  <p>Variables, functions, or mixins prefixed with <code>-zf-</code> are considered private, which means they could change, break, or disappear without warning. We recommend sticking to only the public API, which is documented below.</p>
+  <p>Variables, functions, or mixins prefixed with <code>-zf-</code> are considered part of the internal API, which means they could change, break, or disappear without warning. We recommend sticking to only the public API, which is documented below.</p>
 </div>
