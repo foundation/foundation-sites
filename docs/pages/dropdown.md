@@ -25,6 +25,12 @@ Not the popcorn, just a drop-up, if you will. Just add the class <code>top</code
 <div class="dropdown-pane top" id="example-dropdown2" data-dropdown>
   Just some junk that needs to be said. Or not. Your choice.
 </div>
+
+<a class='button' data-toggle="example-dropdown22">Toggle &raquo;</a>
+
+<div class="dropdown-pane top" id="example-dropdown22" data-dropdown>
+  Just some junk that needs to be said. Or not. Your choice.
+</div>
 ```
 
 

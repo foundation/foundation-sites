@@ -1,5 +1,5 @@
 !function($, Foundation, window){
-  function ImNotTouchingYou(element, direction, param, position, offset, anchor, hasParent){
+  function ImNotTouchingYou(element/*, direction, param, position, offset, anchor, hasParent*/){
     /* the element is the element be checked for clearance
        direction is either *top* or *left* based on available offset functions
        param is either *height* or *width* based on available height/width functions
@@ -11,45 +11,8 @@
         left   = (eleDims.offset.left >= eleDims.windowDims.offset.left),
         right  = (eleDims.offset.left + eleDims.width <= eleDims.windowDims.width),
         allDirs = [bottom, top, left, right];
-        // anchorDims = anchor.length && (position === 'right') ? getDimensions(anchor) : null;
-    //returns a boolean flag if the element is clearing the body's width or height
-    // console.log(anchorDims);
-    var result = allDirs.map(function(e){
-      console.log(e);
-      return e ? true : NaN;
-    }).reduce(function(acc, cur){
-      return acc === cur;
-    }, true);
-    console.log('bottom', bottom, 'top', top, 'left', left, 'right', right, 'all', allDirs, 'result',result);
-    console.log(eleDims.offset.left, eleDims.windowDims.offset.left);
-    return result;
 
-
-
-    // return allDirs.reduce(function(acc, cur){
-    //   return acc === cur;
-    // }, true);
-    /*the code below only works one direction at a time, attempting to consolidate into one value*/
-    // if(hasParent){
-    //   return (eleDims.offset[direction] + eleDims[param] >= eleDims.windowDims[param] + eleDims.windowDims.offset[direction]);
-    // }else{
-    //   switch(position){
-    //     case 'top':
-    //       return (eleDims.offset[direction] >= eleDims.windowDims.offset[direction]);
-    //       break;
-    //
-    //     case 'left':
-    //       return (eleDims.offset[direction] >= eleDims.windowDims.offset[direction]);
-    //       break;
-    //
-    //     case 'right':
-    //       return (eleDims.offset[direction] + eleDims[param] <= eleDims.windowDims[param]);
-    //       break;
-    //
-    //     default:
-    //       return (eleDims.offset[direction] + eleDims[param] <= eleDims.windowDims[param] + eleDims.windowDims.offset[direction]);
-    //   }
-    // }
+    return allDirs.indexOf(false) === -1;
   }
   //changing parent offset location, fix in tooltip position.
   function getDimensions(element){

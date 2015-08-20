@@ -39,54 +39,37 @@
     return position;
   };
 
-  Dropdown.prototype.reposition = function(){
-    var positions = ['bottom', 'top', 'left', 'right'],
-        position = this.getPositionClass();
+  Dropdown.prototype.reposition = function(position){
+    var positions = ['bottom', 'top', 'left', 'right'];
+        // position = this.getPositionClass();
+    this.usedPositions.push(position ? position : 'bottom');
 
-    if(((this.usedPositions.indexOf('left') > -1) || (this.usedPositions.indexOf('right') > -1)) && (position === 'left' || 'right')){
-      console.log('yippee');
-      this.$element.removeClass(position)
-          .addClass('top');
-
-    }
-
-    if(!position && this.usedPositions.indexOf('bottom') < 0){
+    //default, try switching to opposite side
+    if(!position && (this.usedPositions.indexOf('top') < 0)){
       this.$element.addClass('top');
-      this.usedPositions.push('bottom');
-
-    }else if(this.usedPositions.indexOf(position) < 0){
-      if(position === 'left'){
-
-        this.$element.removeClass('left')
-            .addClass('right');
-        this.usedPositions.push('left');
-
-      }else if(position === 'right'){
-
-        this.$element.removeClass('right')
-            .addClass('left');
-        this.usedPositions.push('right');
-
-      }else if(position === 'top'){
-
-        this.$element.removeClass('top');
-        this.usedPositions.push('top')
-      }
-
+    }else if(position === 'top' && (this.usedPositions.indexOf('bottom') < 0)){
+      this.$element.removeClass(position);
+    }else if(position === 'left' && (this.usedPositions.indexOf('right') < 0)){
+      this.$element.removeClass(position)
+          .addClass('right');
+    }else if(position === 'right' && (this.usedPositions.indexOf('left') < 0)){
+      this.$element.removeClass(position)
+          .addClass('left');
     }
-    // else if(this.usedPositions.indexOf('left') > -1 && this.usedPositions.indexOf('right') > -1){
-    //   this.$element.removeClass(position)
-    //       .addClass('top');
-    //
-    // }
-    else if(this.usedPositions.indexOf('top') > -1 && this.usedPositions.indexOf('bottom') > -1){
 
-      if(position){
-        this.$element.removeClass(position);
-      }
+    //if default change didn't work, try bottom or left first
+    else if(!position && (this.usedPositions.indexOf('top') > -1) && (this.usedPositions.indexOf('left') < 0)){
       this.$element.addClass('left');
-
-    }else{
+    }else if(position === 'top' && (this.usedPositions.indexOf('bottom') > -1) && (this.usedPositions.indexOf('left') < 0)){
+      this.$element.removeClass(position)
+          .addClass('left');
+    }else if(position === 'left' && (this.usedPositions.indexOf('right') > -1) && (this.usedPositions.indexOf('bottom') < 0)){
+      this.$element.removeClass(position);
+    }else if(position === 'right' && (this.usedPositions.indexOf('left') > -1) && (this.usedPositions.indexOf('bottom') < 0)){
+      this.$element.removeClass(position);
+    }
+    //if nothing cleared, set to bottom
+    else{
       this.$element.removeClass(position);
     }
     this.classChanged = true;
@@ -104,36 +87,21 @@
         param = (direction === 'top') ? 'height' : 'width',
         offset = (param === 'height') ? this.options.vOffset : this.options.hOffset;
 
-    this.$element.offset(getOffsets());
 
-    while(!Foundation.ImNotTouchingYou(this.$element, direction, param, position, offset, this.$anchor && this.counter)){
-      this.reposition();
-      this.setPosition();
+    console.log($eleDims.width >= $eleDims.windowDims.width);
+    if($eleDims.width >= $eleDims.windowDims.width){
+      console.log('shit');
+      return null;
     }
 
-    // if(!this.counter){
-    //   //set to default down position
-    //   this.$element.removeClass(position);
-    //   this.classChanged = true;
-    //   this.setPosition();
-    // }
 
-    // if(!Foundation.ImNotTouchingYou(this.$element, direction, param, position, offset, this.$anchor)){
-    //   if(position === 'top'){
-    //     this.$element.removeClass('top');
-    //   }else if(!position){
-    //     this.$element.addClass('top');
-    //   }else if(position === 'left'){
-    //     this.$element.removeClass('left')
-    //         .addClass('right');
-    //   }else if(position === 'right'){
-    //     this.$element.removeClass('right')
-    //         .addClass('left');
-    //   }
-    //   this.classChanged = true;
-    //   this.setPosition();
-    // }
+    this.$element.offset(getOffsets());
 
+    while(!Foundation.ImNotTouchingYou(this.$element) && this.counter){
+      this.reposition(position);
+      this.setPosition();
+    }
+    //break this into own method! Pass position as arg so it can have non-classes sent instead.
     function getOffsets(){
       switch(position){
         case 'top':
