@@ -1,8 +1,7 @@
 ---
 title: Range Slider
 description: This handy lil slider is perfect for setting specific values within a range.
-sass:
-- scss/components/_range-slider.scss
+sass: scss/components/_range-slider.scss
 ---
 
 ## Basic Range Slider
