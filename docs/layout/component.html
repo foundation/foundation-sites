@@ -6,6 +6,22 @@
 
 <hr>
 
+{{!-- Start container for docs and table of contents --}}
+<div class="row">
+
+{{!-- Start container for table of contents --}}
+<nav>
+  <div class="large-3 large-push-9 columns">
+    <ul class="vertical menu-bar docs-menu" data-docs-toc>
+      <li class="docs-menu-title">On this page:</li>
+    </ul>
+  </div>
+</nav>
+{{!-- End container for table of contents --}}
+
+{{!-- Start container for docs --}}
+<div class="large-9 large-pull-3 columns">
+
 {{ docs }}
 
 {{#if sass}}
@@ -266,5 +282,11 @@
   </div>
 </section>
 {{/if}}
+
+</div>
+{{!-- End container for docs --}}
+
+</div>
+{{!-- End container for docs and table of contents --}}
 
 </article>
