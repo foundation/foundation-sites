@@ -2,16 +2,17 @@
 title: Reveal
 description: Modal dialogs, or pop-up windows, are handy for prototyping and production. Foundation includes Reveal our jQuery modal plugin, to make this easy for you.
 sass: scss/components/_reveal.scss
+js: js/foundation.reveal.js
 tags:
   - modal
 ---
 
-<div class="reveal-overlay" style="display: block;">
+<!-- <div class="reveal-overlay" style="display: block;">
   <div class="reveal" style="display: block;">
     <h1>Test Modal</h1>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit consequuntur, soluta dolorum eos cum beatae velit et praesentium, quidem laborum distinctio earum ipsa nesciunt fugiat. Commodi, obcaecati vitae ipsum error.</p>
   </div>
-</div>
+</div> -->
 
 ## Basics
 
@@ -79,4 +80,3 @@ To remove the overlay, add the attribute `data-overlay="false"` to the modal.
 ---
 
 ## Accessibility
-

@@ -249,6 +249,7 @@
         if(_this.isClick){
           return false;
         }else{
+          // $(window)
           _this._show();
         }
       })
