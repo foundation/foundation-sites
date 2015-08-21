@@ -3,7 +3,6 @@
 .twitter-typeahead {
   display: block !important;
   position: relative;
-  margin-top: $grid-column-gutter;
 
   &::before {
     content: "\f16c";
@@ -23,6 +22,16 @@
   right: 0;
   padding-left: 2.4rem;
   margin-bottom: 0.5rem;
+  box-shadow: none;
+  border-width: 0 0 1px 0;
+
+  &:hover {
+    box-shadow: none;
+  }
+
+  &:focus {
+    border-width: 0 0 1px 0;
+  }
 }
 
 .tt-menu {

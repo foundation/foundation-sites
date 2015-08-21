@@ -1,0 +1,36 @@
+.docs-topbar {
+  background: #333;
+  font-size: rem-calc(13);
+  font-weight: bold;
+
+  .menu-bar a {
+    height: 45px;
+    line-height: 45px;
+    color: white;
+    padding-top: 0;
+    padding-bottom: 0;
+
+    &:hover,
+    &:focus {
+      background: #222;
+    }
+  }
+
+  .menu-bar:first-child {
+    border-right: 1px solid #4e4e4e;
+  }
+
+  .menu-bar:last-child {
+    border-left: 1px solid #4e4e4e;
+  }
+
+  .menu-bar {
+    li:not(:last-child) {
+      border-right: 1px solid #4e4e4e;
+    }
+  }
+
+  .docs-menu-title {
+    margin: 0;
+  }
+}

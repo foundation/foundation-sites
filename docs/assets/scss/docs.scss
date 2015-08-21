@@ -18,6 +18,14 @@
 @import 'search';
 @import 'compatibility';
 @import 'notices';
+@import 'topbar';
+
+.menu-group {
+  @include clearfix;
+
+  ul:first-child { float: left; }
+  ul:last-child  { float: right; }
+}
 
 // .docs-component {
 //   .callout {
