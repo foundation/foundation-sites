@@ -16,6 +16,8 @@ Aside from accessibility features that has been built into Foundation's componen
 - **Don't rely on purely visual cues.** The content of a page should make sense even if page is being read to the user, or if the user is colorblind and can't make use of color-based labeling.
 - **Make everything usable on a keyboard and mouse.** Lucky for you, all of our components work with keyboards, mice, and touch screens out of the box.
 
+---
+
 ## Types of Disabilities
 
 ### Visual
@@ -33,6 +35,8 @@ More complex components like menus, tabs, or sliders can also typically be used 
 ### Auditory
 
 If your site has video, provide captions so that users who are deaf or hard-of-hearing can properly view the content.
+
+---
 
 ## Learn More
 

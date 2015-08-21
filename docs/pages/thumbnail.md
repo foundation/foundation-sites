@@ -4,19 +4,20 @@ description: If you're going to use an image as an anchor, we've got you covered
 sass: scss/components/_thumbnail.scss
 ---
 
-```html_example
+The `.thumbnail` class can be applied directly to an `<img>` element, or an `<a>` that wraps it. Make sure the `<img>` has an `alt` attribute that describes the contents of the image.
+
+```html
+<img class="thumbnail" src="assets/img/thumbnail/01.jpg" alt="Photo of Uranus.">
+```
+
 <div class="row">
   <div class="small-4 columns">
-    <a class="thumbnail" aria-label="Thumbnail" href="https://unsplash.imgix.net/reserve/QTrNn7DETWGsjyS5L2n5__MG_8345.jpg?fit=crop&fm=jpg&h=700&q=75&w=1050">
-    <img aria-hidden="true" src="https://unsplash.imgix.net/reserve/QTrNn7DETWGsjyS5L2n5__MG_8345.jpg?fit=crop&fm=jpg&h=700&q=75&w=1050" alt="woman in desert"></a>
+    <img class="thumbnail" src="assets/img/thumbnail/01.jpg" alt="Photo of Uranus.">
   </div>
   <div class="small-4 columns">
-    <a class="thumbnail" aria-label="Thumbnail image" href="https://unsplash.imgix.net/photo-1423439793616-f2aa4356b37e?fit=crop&fm=jpg&h=600&q=75&w=1050">
-    <img aria-hidden="true" src="https://unsplash.imgix.net/photo-1423439793616-f2aa4356b37e?fit=crop&fm=jpg&h=600&q=75&w=1050" alt="old blue van"></a>
+    <img class="thumbnail" src="assets/img/thumbnail/02.jpg" alt="Photo of Neptune.">
   </div>
   <div class="small-4 columns">
-    <a class="thumbnail" aria-label="Thumbnail image" href="https://ununsplash.imgix.net/photo-1421284621639-884f4129b61d?fit=crop&fm=jpg&h=700&q=75&w=1050">
-    <img aria-hidden="true" src="https://ununsplash.imgix.net/photo-1421284621639-884f4129b61d?fit=crop&fm=jpg&h=700&q=75&w=1050" alt="palm trees"></a>
+    <img class="thumbnail" src="assets/img/thumbnail/03.jpg" alt="Photo of Pluto.">
   </div>
 </div>
-```
