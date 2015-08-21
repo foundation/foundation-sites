@@ -1,13 +1,55 @@
-.dropdown-pane {
-  width: 400px;
-  padding: 1rem;
-  border: 1px solid $medium-gray;
-  position: absolute;
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group dropdown
+////
+
+/// Defualt padding for dropdown.
+/// @type List
+$dropdown-padding: 1rem !default;
+
+/// Defualt border for dropdown.
+/// @type List
+$dropdown-border: 1px solid $medium-gray !default;
+
+/// Defualt font size for dropdown.
+/// @type List
+$dropdown-font-size: 16rem !default;
+
+/// Defualt width for dropdown.
+/// @type Number
+$dropdown-width: 300px;
+
+/// Defualt sizes for dropdown.
+/// @type Map
+$dropdown-sizes: (
+  tiny: 100px,
+  small: 200px,
+  large: 400px,
+) !default;
+
+/// Applies styles for a basic dropdown.
+@mixin dropdown {
   background-color: $body-background;
-  z-index: 10;
+  border: $dropdown-border;
   display: block;
+  padding: $dropdown-padding;
+  position: absolute;
   visibility: hidden;
+  width: 300px;
+  z-index: 10;
+  @each $name, $size in $dropdown-sizes {
+    &.#{$name} {
+      width: $size;
+    }
+  }
+  &.is-open {
+    visibility: visible;
+  }
 }
-.dropdown-pane.open {
-  visibility: visible;
+
+.dropdown-pane {
+  @include dropdown;
 }
