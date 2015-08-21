@@ -4,6 +4,7 @@
   margin-top: 0.5rem;
   background: #fafafa;
   padding-top: 1rem;
+  padding-bottom: 1rem;
 
   li small {
     color: #999;
@@ -44,4 +45,13 @@
 .docs-menu-ph {
   opacity: 0.5;
   pointer-events: none;
+}
+
+.docs-sub-menu {
+  font-size: 0.85rem;
+  margin-top: 1rem;
+
+  .docs-menu-title {
+
+  }
 }

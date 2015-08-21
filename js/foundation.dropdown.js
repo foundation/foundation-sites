@@ -51,7 +51,7 @@ NEEDS:
 
   Dropdown.prototype.reposition = function(position){
     this.usedPositions.push(position ? position : 'bottom');
-
+    console.log(this.counter);
     //default, try switching to opposite side
     if(!position && (this.usedPositions.indexOf('top') < 0)){
       this.$element.addClass('top');
@@ -95,8 +95,12 @@ NEEDS:
 
     // console.log($eleDims.width >= $eleDims.windowDims.width);
     if(($eleDims.width >= $eleDims.windowDims.width) || (!this.counter && !Foundation.ImNotTouchingYou(this.$element))){
-      console.log('poo');
-      return null;
+      console.log(Foundation.GetOffsets(this.$element, this.$anchor, 'center bottom', this.options.vOffset, this.options.hOffset, true));
+      this.$element.offset(Foundation.GetOffsets(this.$element, this.$anchor, 'center bottom', this.options.vOffset, this.options.hOffset, true)).css({
+        'width': $eleDims.windowDims.width - (this.options.hOffset * 2),
+        'height': 'auto',
+      });
+      return false;
     }
 
     this.$element.offset(Foundation.GetOffsets(this.$element, this.$anchor, position, this.options.vOffset, this.options.hOffset));
@@ -133,11 +137,14 @@ NEEDS:
     this.setPosition();
     this.$element.addClass(this.options.activeClass)
         .attr('aria-hidden', 'false');
+
+    //why does this not work correctly for this plugin?
+    // Foundation.reflow(this.$element, 'dropdown');
+    Foundation.reflow();
   };
 
 
   Dropdown.prototype.close = function(){
-    console.log('closing time!');
     if(!this.$element.hasClass(this.options.activeClass)){
       return false;
     }

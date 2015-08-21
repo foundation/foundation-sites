@@ -33,7 +33,7 @@
     };
   }
 
-  function GetOffsets(element, anchor, position, vOffset, hOffset){
+  function GetOffsets(element, anchor, position, vOffset, hOffset, isOverflow){
     console.log(position);
     var $eleDims = GetDimensions(element),
         $anchorDims = GetDimensions(anchor);
@@ -63,8 +63,10 @@
         };
         break;
       case 'center bottom':
+        console.log($anchorDims, isOverflow);
         return {
-          left: ($anchorDims.offset.left + ($anchorDims.width / 2)) - ($eleDims.width / 2),
+          left: isOverflow ? hOffset : (($anchorDims.offset.left + ($anchorDims.width / 2)) - ($eleDims.width / 2)),
+          // left: (($anchorDims.offset.left + ($anchorDims.width / 2)) - ($eleDims.width / 2)) || 0,
           top: $anchorDims.offset.top + $anchorDims.height + vOffset
         };
         break;

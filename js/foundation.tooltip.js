@@ -120,8 +120,11 @@
         _this = this;
 
     if(($tipDims.width >= $tipDims.windowDims.width) || (!this.counter && !Foundation.ImNotTouchingYou(this.template))){
-      console.log('poo');
-      return null;
+      this.$element.offset(Foundation.GetOffsets(this.template, this.$element, 'center bottom', this.options.vOffset, this.options.hOffset, true)).css({
+        'width': $eleDims.windowDims.width - (this.options.hOffset * 2),
+        'height': 'auto'
+      });
+      return false;
     }
 
     this.template.offset(Foundation.GetOffsets(this.template, this.$element,'center ' + (position || 'bottom'), this.options.vOffset, this.options.hOffset));
@@ -249,6 +252,7 @@
         if(_this.isClick){
           return false;
         }else{
+          // $(window)
           _this._show();
         }
       })

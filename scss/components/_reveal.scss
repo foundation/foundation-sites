@@ -47,7 +47,8 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: $reveal-zindex;
+  z-index: 10;
+  // z-index: $reveal-zindex;
   background: $reveal-background;
 }
 
