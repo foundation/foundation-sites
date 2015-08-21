@@ -42,7 +42,7 @@ $dropdown-sizes: (
   z-index: 10;
   @each $name, $size in $dropdown-sizes {
     &.#{$name} {
-      width: $size; 
+      width: $size;
     }
   }
   &.is-open {
