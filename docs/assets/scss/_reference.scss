@@ -1,6 +1,10 @@
 // Styles for the Sass and JavaScript reference sections.
 
 .docs-variable-table {
+  @include breakpoint(medium down) {
+    @include table-stack;
+  }
+  
   width: 100%;
   border: 0;
 

@@ -43,7 +43,7 @@ No bells or whistles here, just a straight up table for all of your basic table 
 ---
 
 ## Hover Table
-Need to spiff up the table just a tad? Just add the class <code>hover</code> lightly darken the table rows on hover.
+Need to spiff up the table just a tad? Just add the class <code>.hover</code> lightly darken the table rows on hover.
 
 ```html_example
 <table class="hover">
@@ -80,7 +80,7 @@ Need to spiff up the table just a tad? Just add the class <code>hover</code> lig
 
 ---
 ## Stacked Table
-Sometimes you just need to stack a table. Just add the class <code>stack</code> to your table.
+Sometimes you just need to stack a table. Just add the class <code>.stack</code> to your table.
 
 ```html_example
 <table class="stack">
@@ -118,7 +118,7 @@ Sometimes you just need to stack a table. Just add the class <code>stack</code> 
 ---
 
 ## Scroll Table
-Got a lot of tubular tabular data? Add the class <code>scroll</code> to your table to enable horizontal scrolling to your table!
+Got a lot of tubular tabular data? Add the class <code>.scroll</code> to your table to enable horizontal scrolling to your table!
 
 ```html_example
 <table class="scroll">

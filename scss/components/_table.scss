@@ -158,7 +158,7 @@ $show-header-for-stacked: false;
 
 /// Adds styles for a stacked table. Useful for small-screen layouts.
 /// @param {Boolean} $header [$show-header-for-stacked] - Show the first th of header when stacked.
-@mixin stack-for-small($header: $show-header-for-stacked) {
+@mixin table-stack($header: $show-header-for-stacked) {
   @if $header {
     thead {
       th:first-child {
@@ -197,7 +197,7 @@ $show-header-for-stacked: false;
 
   table.stack {
     @include breakpoint(medium down) {
-      @include stack-for-small;
+      @include table-stack;
     }
   }
 
