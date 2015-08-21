@@ -1,5 +1,4 @@
 !function(Foundation, $) {
-  console.log($('[data-yeti-box]'));
   $('[data-open]').on('click.zf.trigger', function() {
     var id = $(this).data('open');
     $('#' + id).triggerHandler('open.zf.trigger', [$(this)]);
@@ -24,7 +23,7 @@
 //chris's testing things----------------
   $(document).on('init.zf.dropdown init.zf.tooltip', function(e){
     var plugin = e.namespace.split('.')[0];
-    console.log('some stuff', plugin);
+    // console.log('some stuff', plugin);
     $('[data-yeti-box]').on('click.zf.trigger', '[data-' + plugin + ']', function(){
       var id = $(this).data('yeti-box');
       console.log(this);

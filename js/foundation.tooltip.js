@@ -1,6 +1,6 @@
 !function($, document, Foundation){
   'use strict';
-  var c = console;
+
   function Tooltip(element, options){
     this.$element = element;
     this.options = $.extend({}, this.defaults, options || {});
@@ -8,7 +8,6 @@
     this.isClick = false;
     this._init();
   }
-
 
   Tooltip.prototype.defaults = {
     disableForTouch: false,
@@ -22,153 +21,165 @@
     template: '',
     tipText: '',
     touchCloseText: 'Tap to close.',
-    clickOpen: true
+    clickOpen: true,
+    appendTo: 'body',
+    positionClass: '',
+    vOffset: 10,
+    hOffset: 12
   };
 
   Tooltip.prototype._init = function(){
     var elemId = this.$element.attr('aria-describedby') || randomIdGen(6);
-    // this.template = this.template ? this.template : this.buildTemplate(elemId);
+
+    this.options.positionClass = this.getPositionClass(this.$element);
+    this.options.tipText = this.$element.attr('title');
     this.template = this.template || this.buildTemplate(elemId);
-    this.$element.append(this.template);
-    this.$element.attr({'title': '', 'aria-describedby': elemId, 'data-yeti-box': elemId});
-    // this.$element.append(this.template).attr('title', '');
-    // console.log(elemId);
+
+    this.template.appendTo(this.options.appendTo)
+        .text(this.options.tipText)
+        .hide();
+
+    this.$element.attr({
+      'title': '',
+      'aria-describedby': elemId,
+      'data-yeti-box': elemId,
+      'data-toggle': elemId
+    });
+
+    //helper variables to track movement on collisions
+    this.usedPositions = [];
+    this.counter = 4;
+    this.classChanged = false;
+
     this._events();
+
     this.$element.trigger('init.zf.tooltip');
   };
 
-  function randomIdGen(length){
-    return Math.round((Math.pow(36, length + 1) - Math.random() * Math.pow(36, length))).toString(36).slice(1);
-  }
+  Tooltip.prototype.getPositionClass = function(element){
+    var position = element.attr('class').match(/top|left|right/g);
+        position = position ? position[0] : '';
+    return position;
+  };
 
   Tooltip.prototype.buildTemplate = function(id){
-    this.options.templateClasses = this.options.tooltipClass + this.getPositionClass();
-
-    // return
-    var $template =  $('<div></div>').addClass(this.options.templateClasses).attr({
+    var templateClasses = (this.options.tooltipClass + ' ' + this.options.positionClass).trim();
+    var $template =  $('<div></div>').addClass(templateClasses).attr({
       'role': 'tooltip',
       'aria-hidden': true,
       'data-is-active': false,
       'data-is-focus': false,
       'id': id
-    }).text(this.$element.attr('title'));
-    //.hide();
-
-    //experimental
-    var prevCss = $template.attr('style');
-
-    $template.css({
-      position: 'absolute',
-      visibility: 'hidden',
-      display: 'block'
     });
-    // var dims = {width: $template.outerWidth(), height: $template.outerHeight()};
-    // console.log(dims);
-    return $template.attr('style', prevCss ? prevCss : '').hide();
-    //.hide();
+    return $template;
   };
 
-  Tooltip.prototype.getPositionClass = function(){
-    var position = this.$element.data('position');
-    // this.posClass = ' ' + position || '';
-    this.posClass = position ? position : '';
-    // return position ? ' ' + position : '';
-    return this.posClass;
+  Tooltip.prototype.reposition = function(position){
+    this.usedPositions.push(position ? position : 'bottom');
+
+    //default, try switching to opposite side
+    if(!position && (this.usedPositions.indexOf('top') < 0)){
+      this.template.addClass('top');
+    }else if(position === 'top' && (this.usedPositions.indexOf('bottom') < 0)){
+      this.template.removeClass(position);
+    }else if(position === 'left' && (this.usedPositions.indexOf('right') < 0)){
+      this.template.removeClass(position)
+          .addClass('right');
+    }else if(position === 'right' && (this.usedPositions.indexOf('left') < 0)){
+      this.template.removeClass(position)
+          .addClass('left');
+    }
+
+    //if default change didn't work, try bottom or left first
+    else if(!position && (this.usedPositions.indexOf('top') > -1) && (this.usedPositions.indexOf('left') < 0)){
+      this.template.addClass('left');
+    }else if(position === 'top' && (this.usedPositions.indexOf('bottom') > -1) && (this.usedPositions.indexOf('left') < 0)){
+      this.template.removeClass(position)
+          .addClass('left');
+    }else if(position === 'left' && (this.usedPositions.indexOf('right') > -1) && (this.usedPositions.indexOf('bottom') < 0)){
+      this.template.removeClass(position);
+    }else if(position === 'right' && (this.usedPositions.indexOf('left') > -1) && (this.usedPositions.indexOf('bottom') < 0)){
+      this.template.removeClass(position);
+    }
+    //if nothing cleared, set to bottom
+    else{
+      this.template.removeClass(position);
+    }
+    this.classChanged = true;
+    this.counter--;
+
+  };
+
+  Tooltip.prototype.setPosition = function(){
+    var position = this.getPositionClass(this.template),
+        $tipDims = Foundation.GetDimensions(this.template),
+        $anchorDims = Foundation.GetDimensions(this.$element),
+        direction = (position === 'left' ? 'left' : ((position === 'right') ? 'left' : 'top')),
+        param = (direction === 'top') ? 'height' : 'width',
+        offset = (param === 'height') ? this.options.vOffset : this.options.hOffset,
+        _this = this;
+
+    if(($tipDims.width >= $tipDims.windowDims.width) || (!this.counter && !Foundation.ImNotTouchingYou(this.template))){
+      console.log('poo');
+      return null;
+    }
+
+    this.template.offset(Foundation.GetOffsets(this.template, this.$element,'center ' + (position || 'bottom'), this.options.vOffset, this.options.hOffset));
+
+    while(!Foundation.ImNotTouchingYou(this.template) && this.counter){
+      this.reposition(position);
+      this.setPosition();
+    }
   };
 
   Tooltip.prototype._show = function(){
-    // c.log(this.options.showOn);
     if(this.options.showOn !== 'all' && !Foundation.MediaQuery.atLeast(this.options.showOn)){
-      return;
+      console.log('too small1');
+      return false;
     }
 
-    var _this = this,
-        dir = this.template.attr('class').match(/top|right|left/g),
-        direction = dir ? (dir[0] === ('left' || 'right') ? 'left' : 'top') : 'top',
-        param = (direction === 'top') ? 'height' : 'width';
+    var _this = this;
+    this.template.css('visibility', 'hidden').show();
+    this.setPosition();
 
-    this.hideAll();
+    // this.hideAll();
 
-    var isNotClear = Foundation.ImNotTouchingYou(this.template, direction, param);
-    //  console.log(isNotClear);
-    if(isNotClear){
-      this.clearEdge();
-    }
 
     this.template.attr({
       'data-is-active': true,
       'aria-hidden': false
     });
+    _this.isActive = true;
     // console.log(this.setPosition());
-    this.template.stop().css(this.setPosition()).fadeIn(this.options.fadeInDuration, function(){
-      _this.isActive = true;
+    this.template.stop().css('visibility', '').hide().fadeIn(this.options.fadeInDuration, function(){
+      //maybe do stuff?
     });
   };
 
-  Tooltip.prototype.clearEdge = function(){
-    var dirClass = this.template.attr('class').match(/top|right|left/g),
-          dirClass = dirClass ? dirClass[0] : '';
-    if(!dirClass){
-      this.template.addClass('top');
-    }else if(dirClass === 'left'){
-      this.template.removeClass('left').addClass('right');
-    }else if(dirClass === 'right'){
-      this.template.removeClass('right').addClass('left');
-    }else{
-      this.template.removeClass('top');
-    }
-  };
 
-  Tooltip.prototype.setPosition = function(){
-    var dir = this.template.attr('class').match(/top|right|left/g);
-    dir = dir ? dir[0] : null;
-    var elemHeight = Math.floor(this.$element.outerHeight());
 
-    // console.log('elem height',elemHeight, '\ntip height', this.template.outerHeight());
-    var vSize = Math.floor(this.template.outerHeight() / this.$element.outerHeight());
-    var hSize = Math.floor(this.template.outerWidth() / this.$element.outerWidth());
-    switch(dir){
-      case 'top':
-        return {'top': (Math.floor(-(100 * (vSize + 1)))).toString() + '%'};
-      break;
-      case 'left':
-      return {'left': '-420%', 'top': '-35%'};
-        // return {'left': (Math.floor(-(100 *(hSize + 1.25)))).toString() + '%',
-      /*'top': (Math.floor(0 - (elemHeight / 2))).toString() + '%'*/
-                // 'top': '-' + elemHeight / 4 + 'px'};
-      break;
-      case 'right':
-      return { 'left': '120%', 'top': '-262.5%'};
-        // return {'left': (Math.floor(100 *(hSize + 1.25))).toString() + '%', 'top': /*(Math.floor(elemHeight / 2)).toString() + '%'*/'-' + elemHeight * 2.5 + 'px'}
-      default:
-        return {};
-
-    }
-
-  };
-
-  Tooltip.prototype.hideAll = function(){
-    var _this = this;
-
-    $('[data-is-active]', this.tooltipClass).each(function(){
-      Tooltip._hide(_this.template, _this);
-      // this._hide();
-      // $(this).fadeOut(_this.options.fadeOutDuration);
-    });
-    // $(document).find('[data-is-active]', this.tooltipClass).each(function(){
-    //   $(this).fadeOut(_this.options.fadeOutDuration);
-    // });
-  };
-
-  Tooltip._hide = function($elem, _this){
-    $elem.stop().attr({
-      'aria-hidden': true,
-      'data-is-active': false
-    }).fadeOut(_this.options.fadeOutDuration, function(){
-      _this.isActive = false;
-      _this.isClick = false;
-    });
-  };
+  // Tooltip.prototype.hideAll = function(){
+  //   var _this = this;
+  //
+  //   $('[data-is-active]', this.tooltipClass).each(function(){
+  //     Tooltip._hide(_this.template, _this);
+  //     // this._hide();
+  //     // $(this).fadeOut(_this.options.fadeOutDuration);
+  //   });
+  //   // $(document).find('[data-is-active]', this.tooltipClass).each(function(){
+  //   //   $(this).fadeOut(_this.options.fadeOutDuration);
+  //   // });
+  // };
+  //
+  // Tooltip._hide = function($elem, _this){
+  //   $elem.stop().attr({
+  //     'aria-hidden': true,
+  //     'data-is-active': false
+  //   }).fadeOut(_this.options.fadeOutDuration, function(){
+  //     _this.isActive = false;
+  //     _this.isClick = false;
+  //   });
+  // };
 
   Tooltip.prototype._hide = function(){
     var _this = this;
@@ -178,7 +189,13 @@
     }).fadeOut(this.options.fadeOutDuration, function(){
       _this.isActive = false;
       _this.isClick = false;
-    }).attr('class', '').addClass(_this.options.templateClasses);
+      if(_this.classChanged){
+        _this.template
+             .removeClass(_this.getPositionClass(_this.template))
+             .addClass(_this.options.positionClass);
+      }
+    });
+
   };
 
   Tooltip.prototype._events = function(){
@@ -212,36 +229,47 @@
       });
     }
 
-    this.$element
-    .on('mousedown.zf.tooltip', function(e){
-      _this.isActive ? _this._hide() : _this._show();
-      // e.stopPropagation();
-      // if(_this.isActive && isFocus && !_this.isClick){
-      //   _this._hide();
-      // }
-      // if(_this.options.clickOpen){
-      //   isFocus = true;
-      //   _this._show();
-      // }
-      _this.isClick = true;
-    });
+    this.$element.on('toggle.zf.trigger', this.toggle.bind(this))
+                                                  // .on('mousedown.zf.tooltip', function(e){
+                                                  //   _this.isActive ? _this._hide() : _this._show();
+                                                  //   // e.stopPropagation();
+                                                  //   // if(_this.isActive && isFocus && !_this.isClick){
+                                                  //   //   _this._hide();
+                                                  //   // }
+                                                  //   // if(_this.options.clickOpen){
+                                                  //   //   isFocus = true;
+                                                  //   //   _this._show();
+                                                  //   // }
+                                                  //   _this.isClick = true;
+                                                  // });
 
     this.$element
-    .on('focus.zf.tooltip', function(e){
-      isFocus = true;
-      if(_this.isClick){
-        return;
-      }else{
-        _this._show();
-      }
-    })
+      .on('focus.zf.tooltip', function(e){
+        isFocus = true;
+        if(_this.isClick){
+          return false;
+        }else{
+          _this._show();
+        }
+      })
 
-    .on('focusout.zf.tooltip', function(e){
-      isFocus = false;
-      _this.isClick = false;
-      _this._hide();
-    });
+      .on('focusout.zf.tooltip', function(e){
+        isFocus = false;
+        _this.isClick = false;
+        _this._hide();
+      });
   };
+  Tooltip.prototype.toggle = function(){
+    if(this.isActive){
+      this._hide();
+    }else{
+      this._show();
+    }
+  };
+
+  function randomIdGen(length){
+    return Math.round((Math.pow(36, length + 1) - Math.random() * Math.pow(36, length))).toString(36).slice(1);
+  }
 
   Foundation.plugin(Tooltip);
 }(jQuery, window.document, window.Foundation);

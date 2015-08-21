@@ -34,6 +34,7 @@
   }
 
   function GetOffsets(element, anchor, position, vOffset, hOffset){
+    console.log(position);
     var $eleDims = GetDimensions(element),
         $anchorDims = GetDimensions(anchor);
     switch(position){
@@ -68,10 +69,16 @@
         };
         break;
       case 'center left':
-        return {};
+        return {
+          left: $anchorDims.offset.left - ($eleDims.width + hOffset),
+          top: ($anchorDims.offset.top + ($anchorDims.height / 2)) - ($eleDims.height / 2)
+        };
         break;
       case 'center right':
-        return {};
+        return {
+          left: $anchorDims.offset.left + $anchorDims.width + hOffset + 1,
+          top: ($anchorDims.offset.top + ($anchorDims.height / 2)) - ($eleDims.height / 2)
+        };
         break;
       case 'center':
         return {

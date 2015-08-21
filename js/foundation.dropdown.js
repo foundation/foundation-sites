@@ -95,18 +95,16 @@ NEEDS:
 
     // console.log($eleDims.width >= $eleDims.windowDims.width);
     if(($eleDims.width >= $eleDims.windowDims.width) || (!this.counter && !Foundation.ImNotTouchingYou(this.$element))){
-      console.log('shit');
+      console.log('poo');
       return null;
     }
 
-    // this.$element.offset(getOffsets());
     this.$element.offset(Foundation.GetOffsets(this.$element, this.$anchor, position, this.options.vOffset, this.options.hOffset));
 
     while(!Foundation.ImNotTouchingYou(this.$element) && this.counter){
       this.reposition(position);
       this.setPosition();
     }
-    //break this into own method! Pass position as arg so it can have non-classes sent instead.
   };
 
   Dropdown.prototype._events = function(){
@@ -132,9 +130,9 @@ NEEDS:
     // this.$element.trigger('closeme.zf.dropdown');
     var _this = this;
     this.$element.show();
+    this.setPosition();
     this.$element.addClass(this.options.activeClass)
         .attr('aria-hidden', 'false');
-    this.setPosition();
   };
 
 
