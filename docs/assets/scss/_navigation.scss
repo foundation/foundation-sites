@@ -2,29 +2,42 @@
 
 .docs-menu.menu-bar {
   margin-top: 0.5rem;
+  background: #fafafa;
+  padding-top: 1rem;
 
   li small {
     color: #999;
     text-transform: uppercase;
     font-weight: bold;
     font-size: 60%;
+    display: block;
+    margin-top: 5px;
   }
 
   a {
     font-size: .85rem;
-    padding: .5rem 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+
+    &:hover {
+      background: rgba(#000, 0.05);
+    }
   }
 }
 
 .docs-menu-title {
   text-transform: uppercase;
-  font-size: 0.85rem;
-  color: #666;
+  font-size: 0.75rem;
+  color: #999;
   font-weight: bold;
-  margin-bottom: 0.2rem;
+  line-height: 1;
+  padding-left: 0.9rem;
+  margin-bottom: 0.5rem;
 
   &:not(:first-of-type) {
     margin-top: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e9e9e9;
   }
 }
 
