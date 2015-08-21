@@ -2,13 +2,15 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
+// scss-lint:disable MergeableSelector, QualifyingElement
+
 ////
 /// @group table
 ////
 
 /// Defualt color for table background.
 /// @type Color
-$table-background-color: $white  !default;
+$table-background: $white  !default;
 
 /// Defualt scale for darkening the striped table rows and the table border.
 /// @type Number
@@ -16,7 +18,7 @@ $table-color-scale: 5% !default;
 
 /// Defualt style for table border.
 /// @type List
-$table-border: 1px solid smart-scale($table-background-color, $table-color-scale) !default;
+$table-border: 1px solid smart-scale($table-background, $table-color-scale) !default;
 
 /// Defualt padding for table.
 /// @type Number
@@ -28,15 +30,15 @@ $table-hover-scale: 2% !default;
 
 /// Defualt color of standard rows on hover.
 /// @type List
-$table-row-hover: darken($table-background-color, $table-hover-scale) !default;
+$table-row-hover: darken($table-background, $table-hover-scale) !default;
 
 /// Defualt color of striped rows on hover.
 /// @type List
-$table-row-stripe-hover: darken($table-background-color, $table-color-scale + $table-hover-scale) !default;
+$table-row-stripe-hover: darken($table-background, $table-color-scale + $table-hover-scale) !default;
 
 /// Defualt background color for striped rows.
 /// @type Color
-$table-striped-background: smart-scale($table-background-color, $table-color-scale) !default;
+$table-striped-background: smart-scale($table-background, $table-color-scale) !default;
 
 /// Defualt value for showing the stripe on rows of the tables, excluding the header and footer If even, the even rows will have a background color. If odd, the odd rows will have a background color. If empty, or anyother value, the table rows will have no striping.
 /// @type Keyoword
@@ -44,11 +46,11 @@ $table-stripe: even !default;
 
 /// Defualt color for header background.
 /// @type Color
-$table-head-background: smart-scale($table-background-color, $table-color-scale / 2) !default;
+$table-head-background: smart-scale($table-background, $table-color-scale / 2) !default;
 
 /// Defualt color for footer background.
 /// @type Color
-$table-foot-background: smart-scale($table-background-color, $table-color-scale) !default;
+$table-foot-background: smart-scale($table-background, $table-color-scale) !default;
 
 /// Defualt font color for header.
 /// @type Color
@@ -63,28 +65,32 @@ $show-header-for-stacked: false;
 @mixin table($stripe: $table-stripe) {
   margin-bottom: $global-margin;
 
-  thead,
-  tbody,
-  tfoot {
-    border: $table-border;
-    background-color: $table-background-color;
-  }
+  @at-root {
+    thead,
+    tbody,
+    tfoot {
+      border: $table-border;
+      background-color: $table-background;
+    }
 
-  // Caption
-  caption {
-    font-weight: $global-weight-bold;
-    padding: $table-padding;
-  }
+    // Caption
+    caption {
+      font-weight: $global-weight-bold;
+      padding: $table-padding;
+    }
 
-  // Table head and foot
-  thead,
-  tfoot {
-    background: $table-head-background;
-    color: $table-head-font-color;
+    // Table head and foot
+    thead,
+    tfoot {
+      background: $table-head-background;
+      color: $table-head-font-color;
 
-    tr {
-      background: transparent;
+      // Rows within head and foot
+      tr {
+        background: transparent;
+      }
 
+      // Cells within head and foot
       th,
       td {
         padding: $table-padding;
@@ -92,23 +98,22 @@ $show-header-for-stacked: false;
         text-align: left;
       }
     }
-  }
 
-  // Table rows
-  tbody {
-    tr {
-
-      // If stripe is set to even, darken the even rows.
-      @if($stripe == even) {
-        &:nth-of-type(even) {
-          background: $table-striped-background;
+    // Table rows
+    tbody {
+      tr {
+        // If stripe is set to even, darken the even rows.
+        @if $stripe == even {
+          &:nth-child(even) {
+            background-color: $table-striped-background;
+          }
         }
-      }
 
-      // If stripe is set to odd, darken the odd rows.
-      @elseif($stripe == odd) {
-        &:nth-of-type(odd) {
-          background: $table-striped-background;
+        // If stripe is set to odd, darken the odd rows.
+        @else if $stripe == odd {
+          &:nth-child(odd) {
+            background-color: $table-striped-background;
+          }
         }
       }
 
@@ -130,7 +135,6 @@ $show-header-for-stacked: false;
 /// Slightly darkens the table rows on hover.
 @mixin table-hover {
   tr {
-
     //Darkens the non-striped table rows on hover.
     &:hover {
       background-color: $table-row-hover;
@@ -139,14 +143,14 @@ $show-header-for-stacked: false;
     //Darkens the even striped table rows.
     @if($table-stripe == even) {
       &:nth-of-type(even):hover {
-        background: $table-row-stripe-hover;
+        background-color: $table-row-stripe-hover;
       }
     }
 
     //Darkens the odd striped table rows.
     @elseif($table-stripe == odd) {
       &:nth-of-type(odd):hover {
-        background: $table-row-stripe-hover;
+        background-color: $table-row-stripe-hover;
       }
     }
   }
@@ -155,7 +159,7 @@ $show-header-for-stacked: false;
 /// Adds styles for a stacked table. Useful for small-screen layouts.
 /// @param {Boolean} $header [$show-header-for-stacked] - Show the first th of header when stacked.
 @mixin stack-for-small($header: $show-header-for-stacked) {
-  @if ($header) {
+  @if $header {
     thead {
       th:first-child {
         display: block;
@@ -165,9 +169,7 @@ $show-header-for-stacked: false;
         display: none;
       }
     }
-  }
-
-  @else {
+  } @else {
     thead {
       display: none;
     }
@@ -186,30 +188,23 @@ $show-header-for-stacked: false;
   td {
     border-top: 0;
   }
-
-  tr td:first-child {
-    border-top: 0;
-  }
 }
 
 @mixin foundation-table {
   table {
-    @include table();
+    @include table;
   }
 
-  // scss-lint:disable MergeableSelector, QualifyingElement
   table.stack {
     @include breakpoint(medium down) {
       @include stack-for-small;
     }
   }
 
-  // scss-lint:disable MergeableSelector, QualifyingElement
   table.scroll {
     @include table-scroll;
   }
 
-  // scss-lint:disable MergeableSelector, QualifyingElement
   table.hover {
     @include table-hover;
   }
