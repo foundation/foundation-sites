@@ -7,6 +7,7 @@
   $('[data-close]').on('click.zf.trigger', function() {
     var id = $(this).data('close');
     if (id) {
+    console.log($('#'+id));
       $('#' + id).triggerHandler('close.zf.trigger', [$(this)]);
     }
     else {

@@ -52,7 +52,7 @@
         break;
       case 'right':
         return {
-          left: $anchorDims.offset.left + $anchorDims.width + hOffset + 1,
+          left: $anchorDims.offset.left + $anchorDims.width + hOffset,
           top: $anchorDims.offset.top
         };
         break;
@@ -63,10 +63,8 @@
         };
         break;
       case 'center bottom':
-        console.log($anchorDims, isOverflow);
         return {
           left: isOverflow ? hOffset : (($anchorDims.offset.left + ($anchorDims.width / 2)) - ($eleDims.width / 2)),
-          // left: (($anchorDims.offset.left + ($anchorDims.width / 2)) - ($eleDims.width / 2)) || 0,
           top: $anchorDims.offset.top + $anchorDims.height + vOffset
         };
         break;

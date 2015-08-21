@@ -137,9 +137,11 @@ NEEDS:
     this.setPosition();
     this.$element.addClass(this.options.activeClass)
         .attr('aria-hidden', 'false');
+    this.$anchor.addClass('hover');
 
     //why does this not work correctly for this plugin?
     // Foundation.reflow(this.$element, 'dropdown');
+    // this.$element.foundation();
     Foundation.reflow();
   };
 

@@ -33,7 +33,7 @@
 
     this.options.positionClass = this.getPositionClass(this.$element);
     this.options.tipText = this.$element.attr('title');
-    this.template = this.template || this.buildTemplate(elemId);
+    this.template = $(this.options.template) || this.buildTemplate(elemId);
 
     this.template.appendTo(this.options.appendTo)
         .text(this.options.tipText)

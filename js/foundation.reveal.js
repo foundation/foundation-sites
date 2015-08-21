@@ -17,17 +17,37 @@
     animationIn: 'fadeIn',
     animationOut: 'fadeOut',
     animationInDelay: 250,
-    animationOutDelay: 250
-
+    animationOutDelay: 250,
+    closeOnClick: true,
+    closeOnEsc: true,
+    multiOpened: false,
+    appendTo: 'body',
+    closeBtn: true,
+    closeBtnTemplate: ''
   };
 
   Reveal.prototype._init = function() {
     this.id = this.$element.attr('id');
     this.$anchor = $('[data-open=' + this.id + ']') || $('[data-toggle=' + this.id + ']');
     this.$anchor.attr({'data-close': this.id});
-    // this.$anchor.data('close', this.id);
+    if(this.options.closeBtn){
+      this.$closeBtn = this.makeButton(this.id);
+      this.$element.append(this.$closeBtn);
+    }
     this.$element.hide();
     this._events();
+  };
+  Reveal.prototype.makeButton = function(id){
+    var btn = $('<div></div>').css({
+      display: 'block',
+      content: 'U+2573',
+      // top: '.5em',
+      width: '2em',
+      height: '2em',
+      float: 'right',
+      'z-index': 15
+    }).addClass('whatever');
+    return btn;
   };
   Reveal.prototype._events = function(){
     var _this = this;
@@ -47,7 +67,8 @@
   };
   Reveal.prototype.open = function(){
     this.isActive = true;
-    this.$element.fadeIn(this.options.animationInDelay);
+    // this.$element.fadeIn(this.options.animationInDelay);
+    this.$element[this.options.animationIn](this.options.animationInDelay);
     console.log('opening')
   };
   Reveal.prototype.close = function(){
