@@ -4,6 +4,8 @@ description: Create powerful multi-device layouts quickly and easily with the de
 sass: 
   - scss/grid/*.scss
   - '!scss/grid/_flex-grid.scss'
+tags:
+  - block grid
 ---
 
 ## Basics

@@ -2,6 +2,7 @@
 title: Dropdown
 description: Dropdowns are little happy sprites to add content to the view without taking up a lot of space.
 sass: scss/components/_dropdown.scss
+js: js/foundation.dropdown.js
 ---
 
 ## Plain Jane
