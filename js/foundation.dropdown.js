@@ -17,7 +17,7 @@ NEEDS:
   }
 
   Dropdown.prototype.defaults = {
-    activeClass: 'open',
+    activeClass: 'is-open',
     hoverDelay: 250,
     disableHover: true,
     dropdownClass: 'dropdown-pane',
@@ -51,7 +51,6 @@ NEEDS:
 
   Dropdown.prototype.reposition = function(position){
     this.usedPositions.push(position ? position : 'bottom');
-    console.log(this.counter);
     //default, try switching to opposite side
     if(!position && (this.usedPositions.indexOf('top') < 0)){
       this.$element.addClass('top');
@@ -95,7 +94,6 @@ NEEDS:
 
     // console.log($eleDims.width >= $eleDims.windowDims.width);
     if(($eleDims.width >= $eleDims.windowDims.width) || (!this.counter && !Foundation.ImNotTouchingYou(this.$element))){
-      console.log(Foundation.GetOffsets(this.$element, this.$anchor, 'center bottom', this.options.vOffset, this.options.hOffset, true));
       this.$element.offset(Foundation.GetOffsets(this.$element, this.$anchor, 'center bottom', this.options.vOffset, this.options.hOffset, true)).css({
         'width': $eleDims.windowDims.width - (this.options.hOffset * 2),
         'height': 'auto',
@@ -119,6 +117,9 @@ NEEDS:
       'toggle.zf.trigger': this.toggle.bind(this),
       'closeme.zf.trigger': this.close.bind(this)
     });
+    this.$element.on('close.zf.trigger', function(){
+      console.log('hello', this);
+    });
     if(!this.options.disableHover){
       clearTimeout(_this.timeout);
       this.$anchor.on('mouseenter.zf.dropdown mouseleave.zf.dropdown', function(){
@@ -131,7 +132,7 @@ NEEDS:
 
   Dropdown.prototype.open = function(){
     // $(document).trigger('click.zf.trigger'/*, $('[data-yeti-box]')*/);
-    // this.$element.trigger('closeme.zf.dropdown');
+    this.$element.trigger('closeme.zf.dropdown', this.$element.attr('id'));
     var _this = this;
     this.$element.show();
     this.setPosition();

@@ -22,15 +22,25 @@
 
 
 //chris's testing things----------------
-  $(document).on('init.zf.dropdown init.zf.tooltip', function(e){
+  // $(document).on('init.zf.dropdown init.zf.tooltip', function(e){
+  //   var plugin = e.namespace.split('.')[0];
+  //   // console.log('some stuff', plugin);
+  //   $('[data-yeti-box]').on('click.zf.trigger', '[data-' + plugin + ']', function(){
+  //     var id = $(this).data('yeti-box');
+  //     console.log(this);
+  //     $('#' + id).trigger('closeme.zf.trigger', $(this)/*, [id, $(this)]*/);
+  //   });
+  // })
+  $(window).on('closeme.zf.dropdown closeme.zf.tooltip', function(e, p1){
     var plugin = e.namespace.split('.')[0];
-    // console.log('some stuff', plugin);
-    $('[data-yeti-box]').on('click.zf.trigger', '[data-' + plugin + ']', function(){
-      var id = $(this).data('yeti-box');
-      console.log(this);
-      $('#' + id).trigger('closeme.zf.trigger', $(this)/*, [id, $(this)]*/);
+    var things = $('[data-' + plugin + ']').not('[data-yeti-box=' + p1 + ']');
+    things.each(function(){
+      $(this).triggerHandler('close.zf.trigger', [$(this)]);
+      console.log('yeah, boooiiiii!!!', this);
+
     });
-  })
+  });
+
 // ------------------------------------
 
   // [PH]

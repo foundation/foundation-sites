@@ -33,7 +33,7 @@
 
     this.options.positionClass = this.getPositionClass(this.$element);
     this.options.tipText = this.$element.attr('title');
-    this.template = $(this.options.template) || this.buildTemplate(elemId);
+    this.template = this.options.template ? $(this.options.template) : this.buildTemplate(elemId);
 
     this.template.appendTo(this.options.appendTo)
         .text(this.options.tipText)
@@ -43,7 +43,7 @@
       'title': '',
       'aria-describedby': elemId,
       'data-yeti-box': elemId,
-      'data-toggle': elemId
+      'data-toggle': elemId,
     });
 
     //helper variables to track movement on collisions
@@ -145,7 +145,7 @@
     this.template.css('visibility', 'hidden').show();
     this.setPosition();
 
-    // this.hideAll();
+    this.$element.trigger('closeme.zf.tooltip', this.template.attr('id'));
 
 
     this.template.attr({
@@ -154,7 +154,7 @@
     });
     _this.isActive = true;
     // console.log(this.setPosition());
-    this.template.stop().css('visibility', '').hide().fadeIn(this.options.fadeInDuration, function(){
+    this.template.stop().hide().css('visibility', '').fadeIn(this.options.fadeInDuration, function(){
       //maybe do stuff?
     });
   };
