@@ -21,7 +21,7 @@ A modal is just an empty container, so you can put any kind of content inside it
 ```html_example
 <p><a data-open="exampleModal1">Click me for a modal</a></p>
 
-<div class="reveal docs-example-modal" id="exampleModal1" data-reveal>
+<div class="reveal" id="exampleModal1" data-reveal>
   <h1>Awesome. I Have It.</h1>
   <p class="lead">Your couch. It is mine.</p>
   <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>

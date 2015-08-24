@@ -8,17 +8,17 @@ Embedded videos won't maintain their aspect ratio as the width of the screen cha
 
 ```html_example
 <div class="flex-video">
-  <iframe width="420" height="315" src="//www.youtube.com/embed/V9gkYw35Vws" frameborder="0" allowfullscreen></iframe>
+  <iframe width="420" height="315" src="https://www.youtube.com/embed/V9gkYw35Vws" frameborder="0" allowfullscreen></iframe>
 </div>
 ```
 
 ---
 
-The default ratio is 4:3. Add the `.widescreen` class to change it to `16:9`.
+The default ratio is 4:3. Add the `.widescreen` class to change it to 16:9.
 
 ```html_example
 <div class="flex-video widescreen">
-  <iframe width="420" height="315" src="//www.youtube.com/embed/aiBt44rrslw" frameborder="0" allowfullscreen></iframe>
+  <iframe width="420" height="315" src="https://www.youtube.com/embed/aiBt44rrslw" frameborder="0" allowfullscreen></iframe>
 </div>
 ```
 
