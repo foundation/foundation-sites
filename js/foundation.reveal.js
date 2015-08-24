@@ -28,6 +28,7 @@
 
   Reveal.prototype._init = function() {
     this.id = this.$element.attr('id');
+    console.log(this.id);
     this.$anchor = $('[data-open=' + this.id + ']') || $('[data-toggle=' + this.id + ']');
     this.$anchor.attr({'data-close': this.id});
     if(this.options.closeBtn){

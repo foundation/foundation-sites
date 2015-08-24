@@ -35,7 +35,7 @@ A modal is just an empty container, so you can put any kind of content inside it
 On small screens, a modal is always 100% of the width of the screen. On medium-sized screens and larger, the width changes to 80%. This width can be overridden by adding a sizing class.
 
 ```html_example
-<p><a data-open="exampleModal2">Click me for a tiny modal</a></p>
+<p><a data-open="exampleModal2" aria-controls='exampleModal2'>Click me for a tiny modal</a></p>
 
 <div class="tiny reveal" id="exampleModal2" data-reveal>
   <p>OH I'M SO TIIINY</p>
@@ -70,9 +70,9 @@ A full-screen modal is 100% of the width *and* height of the window. Add the `.f
 To remove the overlay, add the attribute `data-overlay="false"` to the modal.
 
 ```html_example
-<p><a data-open="exampleModal3">Click me for an overlay-lacking modal</a></p>
+<p><a data-open="exampleModal4">Click me for an overlay-lacking modal</a></p>
 
-<div class="reveal" id="exampleModal3" data-reveal data-overlay="false">
+<div class="reveal" id="exampleModal4" data-reveal data-overlay="false">
   <p>I feel so free!</p>
 </div>
 ```

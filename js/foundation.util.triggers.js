@@ -31,13 +31,11 @@
   //     $('#' + id).trigger('closeme.zf.trigger', $(this)/*, [id, $(this)]*/);
   //   });
   // })
-  $(window).on('closeme.zf.dropdown closeme.zf.tooltip', function(e, p1){
+  $(window).on('closeme.zf.dropdown closeme.zf.tooltip closeme.zf.reveal', function(e, pluginId){
     var plugin = e.namespace.split('.')[0];
-    var things = $('[data-' + plugin + ']').not('[data-yeti-box=' + p1 + ']');
-    things.each(function(){
+    var plugins = $('[data-' + plugin + ']').not('[data-yeti-box=' + pluginId + ']');
+    plugins.each(function(){
       $(this).triggerHandler('close.zf.trigger', [$(this)]);
-      console.log('yeah, boooiiiii!!!', this);
-
     });
   });
 

@@ -14,7 +14,7 @@
     hoverDelay: 200,
     fadeInDuration: 150,
     fadeOutDuration: 150,
-    disableHover: true,
+    disableHover: false,
     templateClasses: '',
     tooltipClass: 'tooltip',
     showOn: 'all',
@@ -220,7 +220,6 @@
         clearTimeout(_this.timeout);
         if(!isFocus || (!_this.isClick && _this.options.clickOpen)){
           _this._hide();
-          // Tooltip._hide($template, _this);
         }
       });
     }
@@ -232,7 +231,10 @@
       });
     }
 
-    this.$element.on('toggle.zf.trigger', this.toggle.bind(this))
+    this.$element.on({
+      'toggle.zf.trigger': this.toggle.bind(this),
+      'close.zf.trigger': this._hide.bind(this)
+    });
                                                   // .on('mousedown.zf.tooltip', function(e){
                                                   //   _this.isActive ? _this._hide() : _this._show();
                                                   //   // e.stopPropagation();
