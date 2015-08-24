@@ -47,22 +47,19 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 10;
-  // z-index: $reveal-zindex;
-  background: $reveal-background;
+  z-index: $reveal-zindex;
+  background-color: $reveal-overlay-background;
+  overflow-y: scroll;
 }
 
 /// Adds base styles for a modal.
 @mixin reveal-modal-base {
   display: none;
-  position: absolute;
-  top: 0;
-  #{$default-float}: 0;
   z-index: $reveal-zindex + 1;
-  width: 100%;
-  min-height: 100vh;
   padding: $reveal-padding;
   border: $reveal-border;
+  margin: 100px auto 0 100px;
+  background-color: $reveal-background;
 
   @include breakpoint(medium) {
     min-height: 0;
@@ -143,4 +140,8 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
       @include reveal-modal-fullscreen;
     }
   }
+}
+
+body.is-reveal-open {
+  overflow: hidden;
 }
