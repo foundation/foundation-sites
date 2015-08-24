@@ -12,7 +12,7 @@ var endEvent = (function() {
     'OTransition': 'otransitionend'
   };
   var elem = document.createElement('div');
- 
+
   for (var t in transitions){
     if (typeof elem.style[t] !== 'undefined'){
       return transitions[t];
@@ -31,7 +31,7 @@ function animate(isIn, element, animation, cb) {
   // Set up the animation
   reset();
   element.addClass(animation);
-  element.css('transition', 'none');  
+  element.css('transition', 'none');
   requestAnimationFrame(function() {
     element.addClass(initClass);
     if (isIn) element.show();
@@ -62,7 +62,7 @@ function animate(isIn, element, animation, cb) {
 }
 
 var Motion = {
-  animateIn: function(element, animation, cb) { 
+  animateIn: function(element, animation, cb) {
     animate(true, element, animation, cb);
   },
 

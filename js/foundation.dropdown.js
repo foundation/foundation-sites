@@ -36,8 +36,8 @@ NEEDS:
     this.counter = 4;
     this.usedPositions = [];
     this.$element.attr({
-      'aria-hidden': 'true'
-      // 'data-yeti-box': $id
+      'aria-hidden': 'true',
+      'data-yeti-box': $id
     }).hide();
     this._events();
     this.$element.trigger('init.zf.dropdown');

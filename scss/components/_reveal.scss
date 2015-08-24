@@ -58,7 +58,8 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   z-index: $reveal-zindex + 1;
   padding: $reveal-padding;
   border: $reveal-border;
-  margin: 100px auto 0 100px;
+  // margin: 100px auto 0 100px;
+  margin: 100px auto 0 auto;
   background-color: $reveal-background;
 
   @include breakpoint(medium) {
@@ -114,7 +115,8 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   .reveal {
     @include reveal-modal-base;
     @include reveal-modal-width($reveal-width);
-
+    position: absolute;
+    overflow-y: scroll;
     // Remove padding
     &.collapse {
       padding: 0;
