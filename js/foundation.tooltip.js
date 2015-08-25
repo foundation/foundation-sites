@@ -159,31 +159,6 @@
     });
   };
 
-
-
-  // Tooltip.prototype.hideAll = function(){
-  //   var _this = this;
-  //
-  //   $('[data-is-active]', this.tooltipClass).each(function(){
-  //     Tooltip._hide(_this.template, _this);
-  //     // this._hide();
-  //     // $(this).fadeOut(_this.options.fadeOutDuration);
-  //   });
-  //   // $(document).find('[data-is-active]', this.tooltipClass).each(function(){
-  //   //   $(this).fadeOut(_this.options.fadeOutDuration);
-  //   // });
-  // };
-  //
-  // Tooltip._hide = function($elem, _this){
-  //   $elem.stop().attr({
-  //     'aria-hidden': true,
-  //     'data-is-active': false
-  //   }).fadeOut(_this.options.fadeOutDuration, function(){
-  //     _this.isActive = false;
-  //     _this.isClick = false;
-  //   });
-  // };
-
   Tooltip.prototype._hide = function(){
     var _this = this;
     this.template.stop().attr({

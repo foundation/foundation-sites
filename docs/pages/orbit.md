@@ -2,6 +2,7 @@
 title: Orbit Slider
 description: The slider you want, the slider you need.
 sass: scss/components/_orbit.scss
+js: js/foundation.orbit.js
 tags:
   - slider
   - carousel
@@ -18,9 +19,13 @@ tags:
       <img class="orbit-image" src="http://placecage.com/800/500" alt="Intropsective Cage">
       <figcaption class="orbit-caption">Woah. Nicolas Cage.</figcaption>
     </li>
+    <!-- <li class="">
+      <img class="orbit-image" src="http://placecage.com/800/500" alt="Intropsective Cage">
+      <figcaption class="orbit-caption">Woah. Nicolas Cage.</figcaption>
+    </li> -->
   </ul>
-  <nav class="orbit-bullets-container">        
-   <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button> 
+  <nav class="orbit-bullets-container">
+   <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
    <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
    <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
    <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
@@ -41,8 +46,8 @@ tags:
       </div>
     </li>
   </ul>
-  <nav class="orbit-bullets-container">        
-   <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button> 
+  <nav class="orbit-bullets-container">
+   <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
    <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
    <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
    <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>

@@ -7,7 +7,7 @@
   $('[data-close]').on('click.zf.trigger', function() {
     var id = $(this).data('close');
     if (id) {
-    console.log($('#'+id));
+    // console.log($('#'+id));
       $('#' + id).triggerHandler('close.zf.trigger', [$(this)]);
     }
     else {
@@ -22,15 +22,6 @@
 
 
 //chris's testing things----------------
-  // $(document).on('init.zf.dropdown init.zf.tooltip', function(e){
-  //   var plugin = e.namespace.split('.')[0];
-  //   // console.log('some stuff', plugin);
-  //   $('[data-yeti-box]').on('click.zf.trigger', '[data-' + plugin + ']', function(){
-  //     var id = $(this).data('yeti-box');
-  //     console.log(this);
-  //     $('#' + id).trigger('closeme.zf.trigger', $(this)/*, [id, $(this)]*/);
-  //   });
-  // })
   $(window).on('closeme.zf.dropdown closeme.zf.tooltip closeme.zf.reveal', function(e, pluginId){
     var plugin = e.namespace.split('.')[0];
     var plugins = $('[data-' + plugin + ']').not('[data-yeti-box=' + pluginId + ']');
@@ -38,7 +29,6 @@
       $(this).triggerHandler('close.zf.trigger', [$(this)]);
     });
   });
-
 // ------------------------------------
 
   // [PH]

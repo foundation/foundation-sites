@@ -1,14 +1,28 @@
 !function($, Foundation, window){
-  function ImNotTouchingYou(element){
-    // the element is the element be checked for clearance
-    var eleDims = GetDimensions(element),
-        bottom = (eleDims.offset.top + eleDims.height <= eleDims.windowDims.height + eleDims.windowDims.offset.top),
-        top    = (eleDims.offset.top >= eleDims.windowDims.offset.top),
-        left   = (eleDims.offset.left >= eleDims.windowDims.offset.left),
-        right  = (eleDims.offset.left + eleDims.width <= eleDims.windowDims.width),
-        allDirs = [bottom, top, left, right];
+  function ImNotTouchingYou(element, parent){
+    // the element is the jQuery element be checked for clearance
+    var eleDims = GetDimensions(element);
 
-    return allDirs.indexOf(false) === -1;
+    //********something to work on in the future*******
+    // if(parent){
+    //   var parDims = GetDimensions(parent),
+    //       bottom = (eleDims.offset.top + eleDims.height <= eleDims.windowDims.height + eleDims.windowDims.offset.top),
+    //       top    = (eleDims.offset.top >= eleDims.windowDims.offset.top),
+    //       left   = (eleDims.offset.left >= eleDims.windowDims.offset.left),
+    //       right  = (eleDims.offset.left + eleDims.width <= eleDims.windowDims.width),
+    //       allDirs = [bottom, top, left, right];
+    //
+    //   return allDirs.indexOf(false) === -1;
+    // }else{
+      var bottom = (eleDims.offset.top + eleDims.height <= eleDims.windowDims.height + eleDims.windowDims.offset.top),
+          top    = (eleDims.offset.top >= eleDims.windowDims.offset.top),
+          left   = (eleDims.offset.left >= eleDims.windowDims.offset.left),
+          right  = (eleDims.offset.left + eleDims.width <= eleDims.windowDims.width),
+          allDirs = [bottom, top, left, right];
+
+      return allDirs.indexOf(false) === -1;
+
+    // }
   }
 
   function GetDimensions(element){
@@ -34,7 +48,7 @@
   }
 
   function GetOffsets(element, anchor, position, vOffset, hOffset, isOverflow){
-    console.log(position);
+    // console.log(position);
     var $eleDims = GetDimensions(element),
         $anchorDims = anchor ? GetDimensions(anchor) : null;
     switch(position){
@@ -92,9 +106,10 @@
           top: $eleDims.windowDims.offset.top + vOffset
         };
       case 'reveal full':
+      // console.log($eleDims.windowDims.offset.left,$eleDims.windowDims.offset.top);
         return {
-          left: 0,
-          top: $eleDims.windowDims.offset.top
+          left: $eleDims.windowDims.offset.left,
+          top: $eleDims.windowDims.offset.top,
         };
         break;
       default:
