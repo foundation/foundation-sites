@@ -91,6 +91,11 @@
           left: ($eleDims.windowDims.width - $eleDims.width) / 2,
           top: $eleDims.windowDims.offset.top + vOffset
         };
+      case 'reveal full':
+        return {
+          left: 0,
+          top: $eleDims.windowDims.offset.top
+        };
         break;
       default:
         return {
