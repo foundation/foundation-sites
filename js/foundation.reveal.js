@@ -1,13 +1,15 @@
 !function(Foundation, $) {
   'use strict';
-  $('[data-close=exampleModal1]').click(function(){
-    console.log('wtf mate');
-  })
+
   function Reveal(element, options) {
     this.$element = element;
-    this.options = $.extend({}, this.defaults, options);
-    var userOptions = this.$element.data();
-    console.log(Array.prototype.map.call(userOptions, function(e){return e;}));
+    this.options = $.extend({}, this.defaults, this.$element.data());
+    var bool = this.$element.attr('id') === 'exampleModal1'
+    if(bool){
+      console.log('default options',this.defaults);
+      console.log('userset options',this.options);
+
+    }
     // this.targetClass = '';
     // this.$target = $();
 
