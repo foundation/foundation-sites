@@ -10,13 +10,13 @@ NEEDS:
 */
 
 
-  function Dropdown(element, options){
+  function Dropdown(element){
     this.$element = element;
-    this.options = $.extend({}, this.defaults, options || {});
+    this.options = $.extend({}, Dropdown.defaults, this.$element.data());
     this._init();
   }
 
-  Dropdown.prototype.defaults = {
+  Dropdown.defaults = {
     activeClass: 'is-open',
     hoverDelay: 250,
     disableHover: true,

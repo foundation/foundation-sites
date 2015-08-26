@@ -74,8 +74,8 @@ var Foundation = {
         // Take every setting in the plugin's options variable, and look for a data attribute that matches
         // So data-thing plugin.options.thing
         var options = {};
-        // console.log(plugin.prototype.defaults);
-        // for (var prop in plugin.prototype.defaults) {
+        // console.log(plugin.defaults);
+        // for (var prop in plugin.defaults) {
         //   var dataOption = $(this).data(prop.toLowerCase());
         //     // console.log(prop, options[prop], dataOption);
         //   if (typeof dataOption !== 'undefined')
@@ -84,7 +84,7 @@ var Foundation = {
 
         // Initialize the plugin with the found options, and drop it in the "data-zf-plugin" attribute so it can be fetched later
         $(this).data('zf-plugin', new plugin($(this), options));
-        */
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
       });
     });
   }

@@ -8,10 +8,10 @@
    * @param {jQuery} element - jQuery object to make into a dropdown menu.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  function DropdownMenu(element, options) {
+  function DropdownMenu(element) {
     console.log('loading');
     this.$element = element;
-    this.options = $.extend({}, this.defaults, options || {});
+    this.options = $.extend({}, DropdownMenu.defaults, this.$element.data());
 
     this.$openMenu = $();
     this._init();
@@ -26,7 +26,7 @@
   /**
    * Default settings for plugin
    */
-  DropdownMenu.prototype.defaults = {
+  DropdownMenu.defaults = {
     toggleOn: 'both',
     closeOnClick: true,
     disableHover: false,

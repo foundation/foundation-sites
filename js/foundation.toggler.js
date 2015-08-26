@@ -8,7 +8,7 @@
    * @param {Object} element - jQuery object to add the trigger to.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  function Toggler(element, options) {
+  function Toggler(element) {
     this.$element = element;
     this.className = '';
 

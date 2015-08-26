@@ -8,9 +8,9 @@
    * @param {Object} element - jQuery object to add the trigger to.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  function Abide(element, options) {
+  function Abide(element) {
     this.$element = element;
-    this.options  = $.extend(this.defaults, options);
+    this.options  = $.extend({}, Abide.defaults, options);
     this.$window  = $(window);
     this.name     = 'Abide';
     this.attr     = 'data-abide';
@@ -28,7 +28,7 @@
   /**
    * Default settings for plugin
    */
-  Abide.prototype.defaults = {
+  Abide.defaults = {
     validateOn: 'fieldChange', // options: fieldChange, manual, submit
     labelErrorClass: 'is-invalid-label',
     inputErrorClass: 'is-invalid-input',
@@ -155,7 +155,7 @@
           return true;
         }
         break;
-      default: 
+      default:
         if ($el.attr('required') && (!$el.val() || !$el.val().length || $el.is(':empty'))) {
           return false;
         } else {
@@ -298,10 +298,10 @@
 
     // what are all the things that can go wrong with a form?
     if ($form.find('.form-error.is-visible').length || $form.find('.is-invalid-label').length) {
-      $form.find('[data-abide-error]').css('display', 'block');  
-    }        
+      $form.find('[data-abide-error]').css('display', 'block');
+    }
     else {
-      $form.find('[data-abide-error]').css('display', 'none');  
+      $form.find('[data-abide-error]').css('display', 'none');
     }
   };
   /**
@@ -328,7 +328,7 @@
       }
       else {
         return false;
-      } 
+      }
     }
   };
   /**
@@ -377,7 +377,7 @@
     $('.' + self.options.labelErrorClass, $form).not('small').removeClass(self.options.labelErrorClass);
     $('.' + self.options.inputErrorClass, $form).not('small').removeClass(self.options.inputErrorClass);
     $('.form-error.is-visible').removeClass('is-visible');
-    $form.find('[data-abide-error]').css('display', 'none');  
+    $form.find('[data-abide-error]').css('display', 'none');
     $(':input', $form).not(':button, :submit, :reset, :hidden, [data-abide-ignore]').val('').removeAttr(invalidAttr);
   };
 

@@ -8,9 +8,9 @@
    * @param {jQuery} element - jQuery object to make into a drilldown menu.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  function Drilldown(element, options) {
+  function Drilldown(element) {
     this.$element = element;
-    this.options = $.extend(this.defaults, options || {});
+    this.options = $.extend({}, Drilldown.defaults, this.$element.data());
     this.$container = $();
     this.$currentMenu = this.$element;
 
@@ -23,7 +23,7 @@
     this.$element.trigger('init.zf.drilldown');
   }
 
-  Drilldown.prototype.defaults = {
+  Drilldown.defaults = {
     /**
      * HTML to use for the back button at the top of each sub-menu.
      * @option

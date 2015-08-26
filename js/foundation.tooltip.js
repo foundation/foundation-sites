@@ -1,15 +1,15 @@
 !function($, document, Foundation){
   'use strict';
 
-  function Tooltip(element, options){
+  function Tooltip(element){
     this.$element = element;
-    this.options = $.extend({}, this.defaults, options || {});
+    this.options = $.extend({}, Tooltip.defaults, this.$element.data());
     this.isActive = false;
     this.isClick = false;
     this._init();
   }
 
-  Tooltip.prototype.defaults = {
+  Tooltip.defaults = {
     disableForTouch: false,
     hoverDelay: 200,
     fadeInDuration: 150,

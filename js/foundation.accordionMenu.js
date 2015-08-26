@@ -8,9 +8,9 @@
    * @param {jQuery} element - jQuery object to make into an accordion menu.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  function AccordionMenu(element, options) {
+  function AccordionMenu(element) {
     this.$element = element;
-    this.options = $.extend(this.defaults, options || {});
+    this.options = $.extend({}, AccordionMenu.defaults, this.$element.data());
 
     this.$activeMenu = $();
 
@@ -24,7 +24,7 @@
     this.$element.trigger('init.zf.accordionMenu');
   }
 
-  AccordionMenu.prototype.defaults = {
+  AccordionMenu.defaults = {
     slideSpeed: 250
   }
 

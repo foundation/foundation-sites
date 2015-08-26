@@ -30,7 +30,7 @@
    * @param {jQuery} element - jQuery object to make into a dropdown menu.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  function MenuBar(element, options) {
+  function MenuBar(element) {
     this.$element = $(element);
     this.rules = this.$element.data('menubar');
     this.currentMq = null;
@@ -47,7 +47,7 @@
      this.$element.trigger('init.zf.menubar');
   }
 
-  MenuBar.prototype.defaults = {};
+  MenuBar.defaults = {};
 
   /**
    * Initializes the menu bar by parsing the classes from the 'data-menubar' attribute on the element.

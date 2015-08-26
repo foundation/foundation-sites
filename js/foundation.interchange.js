@@ -8,9 +8,9 @@
    * @param {Object} element - jQuery object to add the trigger to.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  function Interchange(element, options) {
+  function Interchange(element) {
     this.$element = element;
-    this.options = $.extend({}, this.defaults, options);
+    this.options = $.extend({}, Interchange.defaults, options);
     this.rules = [];
     this.currentPath = '';
 
@@ -27,7 +27,7 @@
   /**
    * Default settings for plugin
    */
-  Interchange.prototype.defaults = {}
+  Interchange.defaults = {}
 
   Interchange.SPECIAL_QUERIES = {
     'default': 'screen',

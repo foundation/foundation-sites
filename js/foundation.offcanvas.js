@@ -9,9 +9,9 @@
  * @param {Object} element - jQuery object to initialize.
  * @param {Object} options - Overrides to the default plugin settings.
  */
-function OffCanvas(element, options) {
+function OffCanvas(element) {
   this.$element = element;
-  this.options = $.extend(this.defaults, options);
+  this.options = $.extend({}, OffCanvas.defaults, options);
 
   this.$lastTrigger = $();
 
@@ -25,7 +25,7 @@ function OffCanvas(element, options) {
   this.$element.trigger('init.zf.offcanvas');
 }
 
-OffCanvas.prototype.defaults = {
+OffCanvas.defaults = {
   /**
    * Allow the user to click outside of the menu to close it.
    * @option

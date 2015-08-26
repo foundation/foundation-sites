@@ -8,9 +8,9 @@
    * @param {Object} element - jQuery object to add the trigger to.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  function Equalizer(element, options) {
+  function Equalizer(element) {
     this.$element = element;
-    this.options  = $.extend({}, this.defaults, options);
+    this.options  = $.extend({}, Equalizer.defaults, options);
     this.$window  = $(window);
     this.name     = 'equalizer';
     this.attr     = 'data-equalizer';
@@ -27,7 +27,7 @@
   /**
    * Default settings for plugin
    */
-  Equalizer.prototype.defaults = {
+  Equalizer.defaults = {
     equalizeOnStack: true,
     throttleInterval: 50
   };
@@ -75,7 +75,7 @@
       if ($eqParent.find('img').length) {
         onImagesLoaded($eqParent.find('img'), function() {
           adjustedHeights = self.getHeights($eqParent);
-          self.applyHeight($eqParent, adjustedHeights);   
+          self.applyHeight($eqParent, adjustedHeights);
         });
       }
       else {

@@ -8,9 +8,9 @@
    * @param {jQuery} element - jQuery object to make into an accordion.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  function Accordion(element, options){
+  function Accordion(element){
     this.$element = element;
-    this.options = $.extend(this.defaults, options || {});
+    this.options = $.extend({}, Accordion.defaults, this.$element.data());
 
     this._init();
     this._events();
@@ -22,7 +22,7 @@
     this.$element.trigger('init.zf.accordion');
   }
 
-  Accordion.prototype.defaults = {
+  Accordion.defaults = {
     slideSpeed: 250,
     multiExpand: false,
     allowAllClosed: false

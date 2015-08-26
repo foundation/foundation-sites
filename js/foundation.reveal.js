@@ -1,12 +1,12 @@
 !function(Foundation, $) {
   'use strict';
 
-  function Reveal(element, options) {
+  function Reveal(element) {
     this.$element = element;
-    this.options = $.extend({}, this.defaults, this.$element.data());
+    this.options = $.extend({}, Reveal.defaults, this.$element.data());
     var bool = this.$element.attr('id') === 'exampleModal1'
     if(bool){
-      console.log('default options',this.defaults);
+      console.log('default options',Reveal.defaults);
       console.log('userset options',this.options);
 
     }
@@ -19,7 +19,7 @@
     this.$element.trigger('init.zf.reveal');
   }
 
-  Reveal.prototype.defaults = {
+  Reveal.defaults = {
     animationIn: 'fadeIn',
     animationOut: 'fadeOut',
     animationInDelay: 250,

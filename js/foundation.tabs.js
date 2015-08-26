@@ -8,9 +8,9 @@
    * @param {jQuery} element - jQuery object to make into tabs.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  function Tabs(element, options){
+  function Tabs(element){
     this.$element = element;
-    this.options = $.extend({}, this.defaults, options || {});
+    this.options = $.extend({}, Tabs.defaults, this.$element.data());
 
     this._init();
     /**
@@ -20,7 +20,7 @@
     this.$element.trigger('init.zf.tabs');
   }
 
-  Tabs.prototype.defaults = {
+  Tabs.defaults = {
     deepLinking: false,
     scrollToContent: false,
     autoFocus: true,

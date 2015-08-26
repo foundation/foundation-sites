@@ -8,9 +8,9 @@
    * @param {Object} element - jQuery object to add the trigger to.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  function Magellan(element, options) {
+  function Magellan(element) {
     this.$element = element;
-    this.options  = $.extend(this.defaults, options);
+    this.options  = $.extend({}, Magellan.defaults, options);
     this.$window  = $(window);
     this.name     = 'magellan';
     this.attr     = 'data-magellan';
@@ -29,7 +29,7 @@
   /**
    * Default settings for plugin
    */
-  Magellan.prototype.defaults = {
+  Magellan.defaults = {
     animationDuration: 500,
     animationEasing: 'linear',
     threshold: null,

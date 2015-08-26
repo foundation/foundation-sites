@@ -1,12 +1,12 @@
 !function($, Foundation){
   'use strict';
-  function Orbit(element, options){
+  function Orbit(element){
     this.$element = element;
-    this.options = $.extend({}, this.defaults, options || {});
+    this.options = $.extend({}, Orbit.defaults, this.$element.data());
 
     this._init();
   }
-  Orbit.prototype.defaults = {
+  Orbit.defaults = {
     bullets: true,
     navButtons: true,
     animation: 'slide',
