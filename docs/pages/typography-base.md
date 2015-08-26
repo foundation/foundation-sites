@@ -20,6 +20,10 @@ tags:
 
 This is a paragraph. Paragraphs are preset with a font size, line height and spacing to match the overall vertical rhythm. To show what a paragraph looks like this needs a little more content&mdash;so, did you know that there are storms occurring on Jupiter that are larger than the Earth? Pretty cool. Wrap `<strong>` around type to **make it bold!** You can also use `<em>` to *italicize your words*.
 
+<div class="callout primary">
+  <p>If the emphasis of a phrase is important, don't make the emphasis purely visual&mdash;use the `<em>` or `<strong>` tags to mark it as well. Both of these tags have built-in styles, but there's no harm in adding additional styles in specific contexts.</p>
+</div>
+
 ```html
 <p>This is a paragraph. Paragraphs are preset with a font size, line height and spacing to match the overall vertical rhythm. To show what a paragraph looks like this needs a little more content so, did you know that there are storms occurring on Jupiter that are larger than the Earth? Pretty cool. Wrap strong around type to <strong>make it bold!</strong>. You can also use em to <em>italicize your words</em>.</p>
 ```
@@ -28,7 +32,11 @@ This is a paragraph. Paragraphs are preset with a font size, line height and spa
 
 ## Heading
 
-Foundation includes styles for all of the headings elements&mdash;they're balanced and sized along a modular scale.
+Foundation includes styles for all headings&mdash;they're balanced and sized along a modular scale.
+
+<div class="callout primary">
+  <p>Avoid skipping heading levels when structuring your document, as it confuses screen readers. For example, after using an <code>&lt;h2&gt;</code> in your code, the next heading used should be either <code>&lt;h2&gt;</code> or <code>&lt;h3&gt;</code>. If you need a heading to look bigger or smaller to match a specific style, use CSS to override the default size.</p>
+</div>
 
 ```html_example
 <h1>h1. This is a very large header.</h1>
@@ -53,10 +61,14 @@ By inserting a `<small>` element into a header Foundation will scale the header 
 
 ## Links
 
-Links are very standard, and the [color is preset](http://www.youtube.com/watch?v=zT2aVoUkSDg) to the Foundation primary color. To make links screen reader-friendly, avoid using vague words like "here" within link text.
+Links are very standard, and the color is preset to the Foundation primary color. <a href="global.html">Learn more about Foundation's global colors.</a>
+
+<div class="callout">
+  <p>To make links screen reader-friendly, avoid using vague words like "here" within link text. The text of the link itself should adequately describe where the link goes.</p>
+</div>
 
 ```html
-<p>Links are very standard, and the <a href="http://www.youtube.com/watch?v=zT2aVoUkSDg">color is preset</a> to the Foundation primary color.</p>
+<p>Links are very standard, and the color is preset to the Foundation primary color. <a href="global.html">Learn more about Foundation's global colors.</a></p>
 ```
 
 ---
@@ -188,19 +200,23 @@ Prefer using actual text over text inside a graphic. Assistive technologies can'
 <img src="assets/img/buy-now.jpg" alt="Buy now">
 ```
 
+---
+
 ### Contrast
 
 The contrast between the color of an element's text and its background should be high enough that low-vision users can read it. There are no automated tools that can effectively check this for you, but if you aren't sure about a specific color combination, you can run it through one of many color contrast checkers, such as [WebAIM's color contrast checker](http://webaim.org/resources/contrastchecker/).
 
-Google Chrome's Accessibility Tools also have a contrast checker. By selecting an element in the inspector, you can see if the contrast meets the minimum standards.
+Google Chrome's [Accessibility Developer Tools](https://chrome.google.com/webstore/detail/accessibility-developer-t/fpkknkljclfencbdbgkenhalefipecmb?hl=en) also includes a contrast checker. By selecting an element in the inspector, you can see if the contrast meets the minimum standards.
 
-*Image of inspector with contrast viewer*
+<img class="thumbnail" src="assets/img/a11y/chrome-a11y-inspector.jpg" alt="Screenshot of Google Chrome's Accessibility Tools">
+
+---
 
 ### Type Size
 
 When possible, use the `rem` and `em` units to size everything. Not just font size, but also padding, margins, and any length value. This ensures that your design scales up and down uniformly if the user changes their browser's text size.
 
-We use the `rem` unit nearly everywhere in Foundation, and we wrote a Sass function to make it a little easier. The `rem-calc()` function can take in one or more pixel values and convert them to a proper `rem` value.
+We use the `rem` unit nearly everywhere in Foundation, and even wrote a Sass function to make it a little easier. The `rem-calc()` function can take one or more pixel values and convert them to proper `rem` values.
 
 ```scss
 .element {
@@ -209,13 +225,7 @@ We use the `rem` unit nearly everywhere in Foundation, and we wrote a Sass funct
 }
 ```
 
-### Heading Order
-
-The first heading on a page should be an `<h1>`. Most often, this is the title of the site or page. From there, follow headings in order, from `<h2>` to `<h3>` on down. Lastly, don't skip heading levels. If you need a heading to look bigger or smaller to match a specific style, use CSS to override the default size.
-
-### Emphasis
-
-If the emphasis of a phrase is important, don't make the emphasis purely visual&mdash;use the `<em>` or `<strong>` tags to mark it as well. Both of these tags have built-in styles, but there's no harm in adding additional styles in specific contexts.
+---
 
 ### More Resources
 

@@ -7,3 +7,13 @@
 .docs-component section {
   position: relative;
 }
+
+.docs-component .thumbnail {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.docs-component .callout code {
+  background: rgba($code-background, 0.5);
+}
