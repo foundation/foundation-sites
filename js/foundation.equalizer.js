@@ -49,7 +49,7 @@
 
     this.$window
       .off('.equalizer')
-      .on('resize.fndtn.equalizer', Foundation.throttle(function () {
+      .on('resize.fndtn.equalizer', Foundation.util.throttle(function () {
         self._reflow();
       }, self.options.throttleInterval));
   };
@@ -68,25 +68,12 @@
   Equalizer.prototype._reflow = function() {
     var self = this;
 
-    // var $eqParent       = this.$element,
-    //     adjustedHeights = [];
-
-    // if ($eqParent.find('img').length) {
-    //   Foundation.imagesLoaded($eqParent.find('img'), function() {
-    //     adjustedHeights = self.getHeights($eqParent);
-    //     self.applyHeight($eqParent, adjustedHeights);   
-    //   });
-    // }
-    // else {
-    //   adjustedHeights = self.getHeights($eqParent);
-    //   self.applyHeight($eqParent, adjustedHeights);
-    // }
     $('[' + this.attr + ']').each(function() {
       var $eqParent       = $(this),
           adjustedHeights = [];
 
       if ($eqParent.find('img').length) {
-        Foundation.imagesLoaded($eqParent.find('img'), function() {
+        onImagesLoaded($eqParent.find('img'), function() {
           adjustedHeights = self.getHeights($eqParent);
           self.applyHeight($eqParent, adjustedHeights);   
         });
@@ -152,5 +139,40 @@
     define(['foundation'], function() {
       return Equalizer;
     });
+
+  /**
+   * Runs a callback function when images are fully loaded.
+   * @param {Object} images - Image(s) to check if loaded.
+   * @param {Func} callback - Function to execute when image is fully loaded.
+   */
+  function onImagesLoaded(images, callback) {
+    var self = this,
+        unloaded = images.length;
+
+    if (unloaded === 0) {
+      callback();
+    }
+
+    var singleImageLoaded = function() {
+      unloaded--;
+      if (unloaded === 0) {
+        callback();
+      }
+    }
+
+    images.each(function() {
+      if (this.complete) {
+        singleImageLoaded();
+      }
+      else if (typeof this.naturalWidth !== 'undefined' && this.naturalWidth > 0) {
+        singleImageLoaded();
+      }
+      else {
+        $(this).one('load', function() {
+          singleImageLoaded();
+        });
+      }
+    });
+  }
 
 }(Foundation, jQuery);
