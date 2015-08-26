@@ -5,7 +5,9 @@
   })
   function Reveal(element, options) {
     this.$element = element;
-    this.options = $.extend(this.defaults, options);
+    this.options = $.extend({}, this.defaults, options);
+    var userOptions = this.$element.data();
+    console.log(Array.prototype.map.call(userOptions, function(e){return e;}));
     // this.targetClass = '';
     // this.$target = $();
 
@@ -35,9 +37,25 @@
   function randomIdGen(length){
     return Math.round((Math.pow(36, length + 1) - Math.random() * Math.pow(36, length))).toString(36).slice(1);
   }
+  // function hyphenate(str) {
+  //   return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+  // }
+
+  Reveal.prototype._init = function(){
+    // console.log(this.$element.data());
+    var opts = this.$element.data();
+    var optsArr = [];
+    for(var o in opts){
+      if(opts[o] === ''){
+        delete opts[o];
+      }
+    }
+    // console.log($.extend(this.options, opts));
 
 
-  Reveal.prototype._init = function() {
+
+
+
     var anchorId = randomIdGen(6);
     this.id = this.$element.attr('id');
     this.$anchor = $('[data-open=' + this.id + ']') || $('[data-toggle=' + this.id + ']');
@@ -199,7 +217,7 @@
           }
         });
         // .scrollTop(0);
-    console.log(this.$overlay.css('background-color'));
+    // console.log(this.$overlay.css('background-color'));
     $('body').addClass('is-reveal-open');
     // Foundation.reflow();
     $.fn.foundation();
@@ -220,7 +238,7 @@
     }
 
     $('body').removeClass('is-reveal-open').attr({'aria-hidden': false});
-    console.log(this.$overlay.css('background-color'));
+    // console.log(this.$overlay.css('background-color'));
     // console.log('closing');
   };
   Reveal.prototype.toggle = function(){
