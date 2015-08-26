@@ -4,6 +4,7 @@ var settingsParser = require('foundation-settings-parser');
 var shipyard = require('shipyard');
 var supercollider = require('supercollider');
 var rimraf = require('rimraf');
+var browser = require('browser-sync');
 
 // Official Foundation for Sites compatibility
 var COMPATIBILITY = [
@@ -159,7 +160,7 @@ gulp.task('lint:sass', function() {
 });
 gulp.task('lint:javascript', function() {
   $.jshint.lookup = false;
-  
+
   return gulp.src('js/*.js')
     .pipe($.jshint('./config/.jshintConfig'))
     .pipe($.jshint.reporter('default'));
@@ -181,11 +182,15 @@ gulp.task('test', function() {
 gulp.task('build', ['clean', 'copy', 'html', 'html:search', 'sass', 'javascript']);
 
 // Runs all of the above tasks and then waits for files to change
-gulp.task('default', ['build'], function() {
-  gulp.watch('docs/**/*', ['html']);
-  gulp.watch('docs/layout/*.html', ['html:reset']);
-  gulp.watch('scss/**/*', ['sass']);
-  gulp.watch('docs/assets/scss/**/*', ['sass:docs'])
-  gulp.watch('js/**/*', ['javascript:foundation']);
-  gulp.watch('docs/assets/js/**/*', ['javascript:docs']);
+gulp.task('default', ['serve'], function() {
+  gulp.watch('docs/**/*', ['html', browser.reload]);
+  gulp.watch('docs/layout/*.html', ['html:reset', browser.reload]);
+  gulp.watch('scss/**/*', ['sass', browser.reload]);
+  gulp.watch('docs/assets/scss/**/*', ['sass:docs', browser.reload]);
+  gulp.watch('js/**/*', ['javascript:foundation', browser.reload]);
+  gulp.watch('docs/assets/js/**/*', ['javascript:docs', browser.reload]);
+});
+// Starts a BrowerSync instance
+gulp.task('serve', ['build'], function(){
+  browser.init({server: './dist'});
 });

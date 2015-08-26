@@ -11,8 +11,8 @@
  */
 function OffCanvas(element) {
   this.$element = element;
-  this.options = $.extend({}, OffCanvas.defaults, options);
-
+  this.options = $.extend({}, OffCanvas.defaults, this.$element.data());
+console.log(this.$element);
   this.$lastTrigger = $();
 
   this._init();
@@ -90,6 +90,7 @@ OffCanvas.prototype._events = function() {
  * @fires OffCanvas#opened
  */
 OffCanvas.prototype.open = function(event, trigger) {
+  console.log(this.options);
   if (this.$element.hasClass(this.options.activeClass)) return;
 
   /**
