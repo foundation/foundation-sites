@@ -471,7 +471,7 @@
           target = current[direction]();
 
       // Check for skip selector.
-      if (this.settings.skip_selector && target.find(this.settings.skip_selector).length != 0) {
+      while (this.settings.skip_selector && target.find(this.settings.skip_selector).length != 0) {
         target = target[direction]();
       }
 
