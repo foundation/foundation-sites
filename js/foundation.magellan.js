@@ -52,10 +52,10 @@
 
     this.$window
       .off('.magellan')
-      .on('resize.fndtn.magellan', Foundation.throttle(function () {
+      .on('resize.fndtn.magellan', Foundation.util.throttle(function () {
         self._reflow();
       }.bind(this), 50))
-      .on('scroll.fndtn.magellan', Foundation.throttle(function(e) {
+      .on('scroll.fndtn.magellan', Foundation.util.throttle(function(e) {
         e.preventDefault();
         self.updateActiveClass();
       }, 100));

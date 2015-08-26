@@ -37,27 +37,6 @@ var Foundation = {
   },
 
   /**
-   * Sets individual configuration for plug in instances.
-   * @param {String} plugin - Formal name of the component.
-   * @param {Object} config - Object that contains configuration settings for each instance of plug ins
-   */
-  setPluginConfig: function(plugin, config) {
-    var uuid = this.generateUuid();
-    // initialize config object
-    this._plugins[plugin].config = {};
-    // set key value pairing of element uuid and specified config
-    this._plugins[plugin].config[uuid] = config;
-  },
-
-  /**
-   * Return the instance of a plugin initialized on an element, or `null` if the element has no Foundation plugins.
-   * @param {Object} element - CSS selector, DOM element, or jQuery object to check.
-   */
-  getPlugin: function(element) {
-    return $(element).eq(0).data('zf-plugin') || null;
-  },
-
-  /**
    * Initialize plugins on any elements within `elem` (and `elem` itself) that aren't already initialized.
    * @param {Object} elem - jQuery object containing the element to check inside. Also checks the element itself, unless it's the `document` object.
    * @param {String|Array} plugins - A list of plugins to initialize. Leave this out to initialize everything.
@@ -103,13 +82,10 @@ var Foundation = {
         $(this).data('zf-plugin', new plugin($(this), options));
       });
     });
-  },
+  }
+}
 
-  /**
-   * Executes a function a max of once every n milliseconds. Returns a function with throttling applied.
-   * @param {Function} func - Function to be throttled.
-   * @param {Integer} delay - A list of plugins to initialize. Leave this out to initialize everything.
-   */
+Foundation.util = {
   throttle: function (func, delay) {
     var timer = null;
 
@@ -123,60 +99,8 @@ var Foundation = {
         }, delay);
       }
     };
-  },
-
-  /**
-   * Generate a unique 16-character id to assign to an element to account for multiple instances of a plugin
-   */
-  generateUuid: function() {
-    var uuid = '';
-
-    do {
-      uuid += 'zf-uuid-';
-      for (var i=0; i<16; i++) {
-        uuid += Math.floor(Math.random()*16).toString(16);
-      }
-    } while(!this._uuids.indexOf(uuid));
-
-    this._uuids.push(uuid);
-    return uuid;
-  },
-
-  /**
-   * Performs a callback function when an images are fully loaded.
-   * @param {Object} images - Image(s) to check if loaded.
-   * @param {Func} callback - Function to execute when image is fully loaded.
-   */
-  imagesLoaded: function (images, callback) {
-    var self = this,
-        unloaded = images.length;
-
-    if (unloaded === 0) {
-      callback();
-    }
-
-    var singleImageLoaded = function() {
-      unloaded--;
-      if (unloaded === 0) {
-        callback();
-      }
-    }
-
-    images.each(function() {
-      if (this.complete) {
-        singleImageLoaded();
-      }
-      else if (typeof this.naturalWidth !== 'undefined' && this.naturalWidth > 0) {
-        singleImageLoaded();
-      }
-      else {
-        $(this).one('load', function() {
-          singleImageLoaded();
-        });
-      }
-    });
   }
-};
+}
 
 // TODO: consider not making this a jQuery function
 // TODO: need way to reflow vs. re-initialize

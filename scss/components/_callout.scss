@@ -8,15 +8,15 @@
 
 /// Defualt background color.
 /// @type Color
-$callout-background: #fff !default;
+$callout-background: $white !default;
 
 /// Default fade value for callout backgrounds.
 /// @type Number
-$callout-background-fade: 74% !default;
+$callout-background-fade: 85% !default;
 
 /// Defualt border style for callouts.
 /// @type List
-$callout-border: 1px solid rgba(#000, 0.25) !default;
+$callout-border: 1px solid rgba($black, 0.25) !default;
 
 /// Default bottom margin for callouts.
 /// @type Number
@@ -55,7 +55,7 @@ $callout-link-tint: true;
   }
 }
 
-/// Generate quick styles for a callout using a single color as a baseline.
+/// Generate quick styles for a callout using a single color as a baseline. If `$callout-link-tint` is enabled, links within colored panels will be a darker version of the background.
 /// @param {Color} $color [$callout-background] - Color to use.
 @mixin callout-style($color: $callout-background) {
   $background: scale-color($color, $lightness: $callout-background-fade);
@@ -63,12 +63,12 @@ $callout-link-tint: true;
 
   background-color: $background;
 
-  @if $callout-link-tint {
+  @if $callout-link-tint and hue($background) > 0deg {
     a {
       color: $link-color;
 
       &:hover {
-        color: darken($link-color, 10%);
+        color: darken($link-color, 20%);
       }
     }
   }

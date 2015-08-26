@@ -53,7 +53,7 @@
    * @private
    */
   Interchange.prototype._events = function() {
-    $(window).on('resize.fndtn.interchange', Foundation.throttle(this._reflow.bind(this), 50));
+    $(window).on('resize.fndtn.interchange', Foundation.util.throttle(this._reflow.bind(this), 50));
   }
 
   /**
