@@ -25,7 +25,7 @@ Aside from accessibility features that has been built into Foundation's componen
 
 ### Tab-index
 
-<p>Tab index lets users move forward and backward through the links and form elements on a page. But you can make anything "tabbable" with the tabindex attribute. 
+<p>Tab index lets users move forward and backward through the links and form elements on a page. But you can make anything "tabbable" with the tabindex attribute.
 
 {{#markdown}}
 ```html
@@ -44,7 +44,7 @@ Aside from accessibility features that has been built into Foundation's componen
 
 ###  How to Test a Website’s Keyboard Accessibility
 
-<p>On a desktop or laptop in Firefox, IE, Chrome, or Safari, 
+<p>On a desktop or laptop in Firefox, IE, Chrome, or Safari,
 click into the browser address bar.</p>
 
 <p>Take your hand off your mouse and use only your keyboard.
@@ -81,11 +81,11 @@ Using the Tab button, navigate until you’ve reached the link below. (You can u
 		overflow:hidden;
 	}
 
-	#skip a:focus { 
-		position:static; 
-		width:auto; 
-		height:auto; 
-	} 
+	#skip a:focus {
+		position:static;
+		width:auto;
+		height:auto;
+	}
 ```
 {{/markdown}}
  </div>
@@ -103,23 +103,26 @@ Using the Tab button, navigate until you’ve reached the link below. (You can u
 
 <div class="row">
 	<div class="medium-6 columns">
-	<h4>Additional resources</h4>
-		<ul class="side-nav" role="navigation" title="Link List">
-			<li role="menuitem"><a href="http://www.w3.org/TR/UNDERSTANDING-WCAG20/">WCAG 2.0 Guide</a></li>
-			<li role="menuitem"><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">MDN accessibility documentation</a></li>
-			<li role="menuitem"><a href="http://achecker.ca/checker/index.php">AChecker Web Accessibility Checker</a></li>
-			<li role="menuitem"><a href="http://www.w3.org/WAI/intro/accessibility.php">w3.org Introduction to Accessibility</a></li>
-			<li role="menuitem"><a href="http://www.section508.gov/">Section 508 Government Requirements</a></li>
-			<li role="menuitem"><a href="http://webaim.org/">Accessibilty Certification and Training</a></li>
+	<h4 id="label-additional-resources">Additional resources</h4>
+		<ul class="side-nav" aria-labelledby="label-additional-resources">
+			<li><a href="http://www.w3.org/TR/UNDERSTANDING-WCAG20/">WCAG 2.0 Guide</a></li>
+			<li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">MDN accessibility documentation</a></li>
+			<li><a href="http://achecker.ca/checker/index.php">AChecker Web Accessibility Checker</a></li>
+			<li><a href="http://www.w3.org/WAI/intro/accessibility.php">w3.org Introduction to Accessibility</a></li>
+			<li><a href="http://www.section508.gov/">Section 508 Government Requirements</a></li>
+			<li><a href="http://webaim.org/">Accessibilty Certification and Training</a></li>
+			<li><a href="http://a11yproject.com/">A community-driven effort to make web accessibility easier</a></li>
 		</ul>
 	</div>
 	<div class="medium-6 columns">
-	<h4>Tools</h4>
-		<ul class="side-nav" role="navigation" title="Link List">
-			<li role="menuitem"><a href="http://www.chromevox.com/">Chromevox screnreader plugin for Chrome</a></li>
-			<li role="menuitem"><a href="http://www.freedomscientific.com/Products/Blindness/Jaws">Jaws screnreader plugin for Windows</a></li>
-			<li role="menuitem"><a href="https://github.com/squizlabs/HTML_CodeSniffer">"HTML Codesniffer" bookmarklet for identifying accessibility issues</a></li>
-			<li role="menuitem"><a href="http://webaim.org/">Accessibilty Certification and Training</a></li>
+	<h4 id="label-tools">Tools</h4>
+		<ul class="side-nav" aria-labelledby="label-tools">
+			<li><a href="http://www.chromevox.com/">Chromevox screenreader plugin for Chrome</a></li>
+			<li><a href="http://www.freedomscientific.com/Products/Blindness/Jaws">Jaws screnreader plugin for Windows</a></li>
+			<li><a href="https://github.com/squizlabs/HTML_CodeSniffer">"HTML Codesniffer" bookmarklet for identifying accessibility issues</a></li>
+			<li><a href="http://webaim.org/">Accessibilty Certification and Training</a></li>
+			<li><a href="http://wave.webaim.org/extension/">WAVE Chrome Extension</a></li>
+			<li><a href="http://www.tenon.io/">Tenon.io - Free Online Accessiblity Testing</a></li>
 		</ul>
 	</div>
 </div>

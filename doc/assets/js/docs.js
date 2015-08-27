@@ -94,3 +94,24 @@ if ($('[data-forum-posts]').length > 0) {
     success: cb
   });
 }
+
+// Fetch BuildingBlocks
+if ($('[data-building-blocks]').length > 0) {
+  var cb = function(data) {
+    var html = '';
+    $.each(data, function(idx, el) {
+      html += JST['doc/templates/building_block.html'](el);
+    });
+    $('[data-building-blocks]').each(function() {
+      $(this).html(html);
+    });
+    if ($('.building-block-item').length === 0) {
+      $('.building-blocks-section').hide();
+    };
+  };
+  $.ajax({
+    url:'http://zurb.com/library/api/building_blocks/type/' + $("#component-name").attr("name"),
+    dataType:'jsonp',
+    success: cb
+  });
+}
