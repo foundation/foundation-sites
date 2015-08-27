@@ -4,17 +4,8 @@
   function Reveal(element) {
     this.$element = element;
     this.options = $.extend({}, Reveal.defaults, this.$element.data());
-    var bool = this.$element.attr('id') === 'exampleModal1'
-    if(bool){
-      console.log('default options',Reveal.defaults);
-      console.log('userset options',this.options);
-
-    }
-    // this.targetClass = '';
-    // this.$target = $();
 
     this._init();
-    // console.log(this.$element);
 
     this.$element.trigger('init.zf.reveal');
   }
@@ -39,25 +30,8 @@
   function randomIdGen(length){
     return Math.round((Math.pow(36, length + 1) - Math.random() * Math.pow(36, length))).toString(36).slice(1);
   }
-  // function hyphenate(str) {
-  //   return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
-  // }
 
   Reveal.prototype._init = function(){
-    // console.log(this.$element.data());
-    var opts = this.$element.data();
-    var optsArr = [];
-    for(var o in opts){
-      if(opts[o] === ''){
-        delete opts[o];
-      }
-    }
-    // console.log($.extend(this.options, opts));
-
-
-
-
-
     var anchorId = randomIdGen(6);
     this.id = this.$element.attr('id');
     this.$anchor = $('[data-open=' + this.id + ']') || $('[data-toggle=' + this.id + ']');
@@ -67,7 +41,7 @@
       'id': anchorId
     });
     this.options.fullScreen = this.$element.hasClass('full');
-    if(this.options.overlay){
+    if(this.options.overlay && !this.options.fullScreen){
       this.$overlay = this.makeOverlay(this.id);
     }
     this.$element.attr({
@@ -76,11 +50,9 @@
       'aria-labelledby': anchorId
       })
     this.options.vOffset = this.options.fullScreen ? 0 : Number(this.$element.css('margin-top').split('px')[0]);
-
-
-    // if(this.$element.hasClass('full')){
-    //   // console.log(this.$element);
-    // }
+    if(this.options.fullScreen){
+      this.options.overlay = false;
+    }
     if(this.options.closeBtn || this.options.fullScreen){
       this.$closeBtn = this.makeButton(this.id);
       this.$element.append(this.$closeBtn);
@@ -90,12 +62,13 @@
 
   //overlay and button elements to be added to the body/modal
   Reveal.prototype.makeOverlay = function(id){
-    var $overlay = $('<div></div>').addClass('reveal-overlay').appendTo('body');
+    var $overlay = $('<div></div>')
+                    .addClass('reveal-overlay')
+                    .attr({'tabindex': -1, 'aria-hidden': true})
+                    .appendTo('body');
     if(this.options.closeOnClick){
       $overlay.attr({
-        'data-close': id,
-        'tabindex': -1,
-        'aria-hidden': true
+        'data-close': id
       });
     }
     return $overlay;
@@ -124,40 +97,36 @@
     }
   };
 
-  Reveal.prototype.bodyClickClose = function(){
+  Reveal.prototype._addGlobalClickHandler = function(){
     var _this = this;
-    var allButModal = $('body > *').not('#' + this.id + ', ' + this.id + ' > *');
-    // var allButModal = $(window)/*.not('#' + this.id)*/;
-    // console.log($('#' + this.id + ', ' + this.id + ' > *'));
-    // allButModal.on('click.zf.reveal', this.close.bind(this));
-    allButModal.on('click.zf.reveal', function(e){
+    this.$element.on('click.zf.reveal', function(e){
       e.preventDefault();
-      e.stopPropagation();
+      return false;
+    });
+    $('body').on('click.zf.reveal', function(e){
       _this.close();
     });
-    this.$element.off('click.zf.reveal');
-
   };
 
-  Reveal.prototype.escClose = function(){
+  Reveal.prototype._addKeyHandler = function(){
     var _this = this;
     $(window).on('keyup.zf.reveal', function(e){
-      // console.log(e.which);
       e.preventDefault();
       e.stopPropagation();
       if(e.which === 27){
         _this.close();
       }
+      return false;
     });
   };
 
   //open and close function
   Reveal.prototype.open = function(){
+    this.$element.trigger('closeme.zf.reveal', this.id);
     var _this = this;
     this.isActive = true;
     var dims = Foundation.GetDimensions(this.$element);
     var checkMe = this.$element.hasClass('full') ? 'reveal full' : (dims.height >= (0.5 * dims.windowDims.height)) ? 'reveal' : 'center';
-    // console.log(Foundation.MediaQuery.atLeast('medium'));
     this.$element
         .css({'visibility': 'hidden'})
         .show()
@@ -172,13 +141,14 @@
           });
     }else if(!Foundation.MediaQuery.atLeast('medium')){
       this.$element
-          .offset({
-          'top': dims.windowDims.offset.top + this.options.vOffset,
-          'left': this.options.hOffset + 1
-          })
           .css({
             'width': dims.windowDims.width - (this.options.hOffset + 2)
           })
+          .offset(Foundation.GetOffsets(this.$element, null, 'center', this.options.vOffset, this.options.hOffset));
+          // .offset({
+          // 'top': dims.windowDims.offset.top + this.options.vOffset,
+          // 'left': this.options.hOffset + 1
+          // })
     }else{
       this.$element
           .offset(Foundation.GetOffsets(this.$element, null, checkMe, this.options.vOffset))
@@ -191,15 +161,9 @@
       $('body').attr({'aria-hidden': true});
     }
     this.$element
-        // .css({'visibility': 'hidden'})
-        // .show()
-        // .scrollTop(0)
-        // .offset(Foundation.GetOffsets(this.$element, null, checkMe, this.options.vOffset))
         .hide()
         .css({
           'visibility': ''
-        //   'max-height': dims.windowDims.height - (this.options.vOffset),
-        //   'width': this.$element.hasClass('full') ? dims.windowDims.width : ''
         })
         .fadeIn('fast', function(){
           _this.$element.attr({'aria-hidden': false})
@@ -210,24 +174,19 @@
           }
 
           if(!_this.options.overlay && _this.options.closeOnClick){
-            _this.bodyClickClose();
+            _this._addGlobalClickHandler();
           }
-
-
           if(_this.options.closeOnEsc){
-            _this.escClose();
+            _this._addKeyHandler();
           }
         });
-        // .scrollTop(0);
-    // console.log(this.$overlay.css('background-color'));
     $('body').addClass('is-reveal-open');
-    // Foundation.reflow();
-    $.fn.foundation();
+    Foundation.reflow();
+    // $.fn.foundation();
   };
   Reveal.prototype.close = function(){
-
     this.isActive = false;
-    this.$element.fadeOut(this.options.animationOutDelay).attr({'aria-hidden': true});
+    this.$element.fadeOut(this.options.animationOutDelay).attr({'aria-hidden': true}).css({'height': '', 'width': ''});
     if(this.options.overlay){
       this.$overlay.fadeOut(this.options.animationOutDelay).attr({'aria-hidden': true});
     }
@@ -235,8 +194,7 @@
       $(window).off('keyup.zf.reveal');
     }
     if(!this.options.overlay && this.options.closeOnClick){
-      var allButModal = $('*').not('#' + this.id);
-      allButModal.off('click.zf.reveal');
+      $('body').off('click.zf.reveal');
     }
 
     $('body').removeClass('is-reveal-open').attr({'aria-hidden': false});

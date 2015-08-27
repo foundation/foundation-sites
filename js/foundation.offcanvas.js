@@ -12,7 +12,6 @@
 function OffCanvas(element) {
   this.$element = element;
   this.options = $.extend({}, OffCanvas.defaults, this.$element.data());
-console.log(this.$element);
   this.$lastTrigger = $();
 
   this._init();

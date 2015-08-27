@@ -106,7 +106,6 @@
           top: $eleDims.windowDims.offset.top + vOffset
         };
       case 'reveal full':
-      // console.log($eleDims.windowDims.offset.left,$eleDims.windowDims.offset.top);
         return {
           left: $eleDims.windowDims.offset.left,
           top: $eleDims.windowDims.offset.top,
