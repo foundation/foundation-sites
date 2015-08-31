@@ -285,6 +285,9 @@
         var actualBoundary = actualBodyWidth;
 
         if (!this.hasClass('mega') && !s.ignore_repositioning) {
+		  var outerWidth = this.outerWidth();
+		  var o_left = t.offset().left;
+		  
           //miss top
           if (t.offset().top <= this.outerHeight()) {
             p.missTop = true;
@@ -293,13 +296,13 @@
           }
 
           //miss right
-          if (t.offset().left + this.outerWidth() > t.offset().left + actualMarginWidth && t.offset().left - actualMarginWidth > this.outerWidth()) {
+          if (o_left + outerWidth > o_left + actualMarginWidth && o_left - actualMarginWidth > outerWidth) {
             p.missRight = true;
             p.missLeft = false;
           }
 
           //miss left
-          if (t.offset().left - this.outerWidth() <= 0) {
+          if (o_left - outerWidth <= 0) {
             p.missLeft = true;
             p.missRight = false;
           }
