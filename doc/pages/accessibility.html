@@ -23,25 +23,6 @@ Aside from accessibility features that has been built into Foundation's componen
 
 <p>The most common impairments for web users are those with problems seeing, hearing or a physical inability to use a mouse. For that reason, the site must be navigatable by keyboard. Most commonly the tab key is used to tab through the content. For a vision impaired person will have a <a href="http://en.wikipedia.org/wiki/Screen_reader">screenreader</a> installed that reads the content out loud. We used <a href="http://www.chromevox.com/">Chromevox</a> to test with. You can find a list of popular screen readers below in the resource list.</p>
 
-### Tab-index
-
-<p>Tab index lets users move forward and backward through the links and form elements on a page. But you can make anything "tabbable" with the tabindex attribute.
-
-{{#markdown}}
-```html
-<h2 tabindex="1">…</h2>
-
-<article tabindex="2">…</article>
-
-<ul tabindex="3">…</ul>
-```
-{{/markdown}}
-
-<p>As the numbers suggest, tapping on the tab key takes users through anything with the tabindex attribute in order. In HTML5, you can use it on any element. That means you can set priorities quickly. Want to help people get past the same tedious navigation they get on every page? Use tabindex to put navigation last.</p>
-
-<p><strong>Tip:</strong> When starting out use sets of 10: tabindex="10", tabindex="20", tabindex="30". If you decide to rearrange the order — say, put the third item between the first and second — you don't have to rearrange everything. Just make it tabindex="15".</p>
-
-
 ###  How to Test a Website’s Keyboard Accessibility
 
 <p>On a desktop or laptop in Firefox, IE, Chrome, or Safari,
