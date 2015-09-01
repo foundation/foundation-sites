@@ -144,6 +144,12 @@
         if (typeof target.selector !== 'undefined') {
           // Find the named node; only use the first one found, since the rest of the code assumes there's only one node
           modal = self.S('#' + target.data(self.data_attr('reveal-id'))).first();
+
+          // If the modal is opened from a dropdown, close the dropdown
+          var $dropdown = target.parents('ul.f-open-dropdown');
+          if ($dropdown.length > 0) {
+              $dropdown.foundation('dropdown', 'close', $dropdown);
+          }
         } else {
           modal = self.S(this.scope);
 
