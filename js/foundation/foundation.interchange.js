@@ -48,7 +48,7 @@
           //   console.log($(this).html(), a, b, c);
           // });
 
-          if (el !== null && /IMG/.test(el[0].nodeName)) {
+          if (el !== null && el.length > 0 && /IMG/.test(el[0].nodeName)) {
             var orig_path = $.each(el, function(){this.src = path;});
             // var orig_path = el[0].src;
 
