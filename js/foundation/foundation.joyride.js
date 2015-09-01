@@ -12,7 +12,7 @@
       expose                   : false,     // turn on or off the expose feature
       modal                    : true,      // Whether to cover page with modal during the tour
       keyboard                 : true,      // enable left, right and esc keystrokes
-      tip_location             : 'bottom',  // 'top' or 'bottom' in relation to parent
+      tip_location             : 'bottom',  // 'top', 'bottom', 'left' or 'right' in relation to parent
       nub_position             : 'auto',    // override on a per tooltip bases
       scroll_speed             : 1500,      // Page scrolling speed in milliseconds, 0 = no scroll animation
       scroll_animation         : 'linear',  // supports 'swing' and 'linear', extend with jQuery UI.
@@ -323,8 +323,8 @@
 
           this.settings.tip_settings.tip_location_pattern = this.settings.tip_location_patterns[this.settings.tip_settings.tip_location];
 
-          // scroll and hide bg if not modal
-          if (!/body/i.test(this.settings.$target.selector)) {
+          // scroll and hide bg if not modal and not expose
+          if (!/body/i.test(this.settings.$target.selector) && !this.settings.expose) {
             var joyridemodalbg = $('.joyride-modal-bg');
             if (/pop/i.test(this.settings.tipAnimation)) {
                 joyridemodalbg.hide();
