@@ -72,6 +72,11 @@ $block-grid-media-queries: true !default;
         @include block-grid-aligned($per-row, $spacing);
       }
     }
+    @for $i from 1 through $per-row {
+      .block-#{($i)} {
+        width: (100%*$i)/$per-row;
+      }
+    }
   }
 }
 
