@@ -63,7 +63,7 @@
           }
 
           if (settings.is_hover) {
-            if(!dropdown.is('.open')) {
+            if(!dropdown.hasClass('open')) {
               self.open.apply(self, [dropdown, target]);
             }
           }
