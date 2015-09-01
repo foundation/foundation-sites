@@ -52,7 +52,8 @@
             target = $this;
           } else {
             dropdown = $this;
-            target = S('[' + self.attr_name() + '="' + dropdown.attr('id') + '"]');
+            var currentTarget = dropdown.data('target');
+            target = currentTarget ? S(currentTarget) : S('[' + self.attr_name() + '="' + dropdown.attr('id') + '"]');
           }
 
           var settings = target.data(self.attr_name(true) + '-init') || self.settings;
@@ -62,7 +63,9 @@
           }
 
           if (settings.is_hover) {
-            self.open.apply(self, [dropdown, target]);
+            if(!dropdown.hasClass('open')) {
+              self.open.apply(self, [dropdown, target]);
+            }
           }
         })
         .on('mouseleave.fndtn.dropdown', '[' + this.attr_name() + '], [' + this.attr_name() + '-content]', function (e) {
