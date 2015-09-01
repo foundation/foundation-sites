@@ -220,6 +220,11 @@ $(document).foundation({
       timer: true, // Does the slider have a timer active? Setting to false disables the timer.
       variable_height: false, // Does the slider have variable height content?
       swipe: true,
+      full_height : false, // Take all window height
+      full_height_top_offset : 0, // Add padding at top
+      full_height_bottom_offset : 0, // Add padding at bottom
+      full_height_adjust : 0, // Add or remove size
+      full_height_max : 0, // Limit the maximum size
       before_slide_change: noop, // Execute a function before the slide changes
       after_slide_change: noop // Execute a function after the slide changes
   }

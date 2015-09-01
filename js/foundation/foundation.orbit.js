@@ -186,13 +186,46 @@
 
     self.compute_dimensions = function () {
       var current = $(self.slides().get(idx));
-      var h = current.outerHeight();
-      if (!settings.variable_height) {
+
+      if (!settings.full_height) {
+        var h = current.outerHeight();
+        if (!settings.variable_height) {
+          self.slides().each(function(){
+            if ($(this).outerHeight() > h) { h = $(this).outerHeight(); }
+          });
+        }
+        slides_container.height(h);        
+      } else {
+        var window_height = window.innerHeight - settings.full_height_adjust;
+        var height_max = settings.full_height_max;
+        if (height_max > 0) {
+          if (window_height > height_max) {
+            window_height = height_max;    
+          }
+        }
+        var h = current.innerHeight();
+        var top_offset = settings.full_height_top_offset;
+        var bottom_offset = settings.full_height_bottom_offset;
+        var offset = top_offset + bottom_offset;
+
         self.slides().each(function(){
-          if ($(this).outerHeight() > h) { h = $(this).outerHeight(); }
+          var height = $(this).height();
+          var half_padding = ((window_height - height) - offset) / 2;
+          if (half_padding < 0) {
+            half_padding = 0;
+          }
+          $(this).context.style.paddingTop = (top_offset + half_padding) + "px";
+          $(this).context.style.paddingBottom = (bottom_offset + half_padding) + "px";
+          height = height - offset;
+          if (height > h) { h = height }
         });
+
+        if (h < window_height) {
+          slides_container.height(window_height);
+        } else {
+          slides_container.height(h);
+        }
       }
-      slides_container.height(h);
     };
 
     self.create_timer = function () {
@@ -441,6 +474,11 @@
       timer : true,
       variable_height : false,
       swipe : true,
+      full_height : false,
+      full_height_top_offset : 0,
+      full_height_bottom_offset : 0,
+      full_height_adjust : 0,
+      full_height_max : 0,
       before_slide_change : noop,
       after_slide_change : noop
     },
