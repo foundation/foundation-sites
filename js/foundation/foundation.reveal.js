@@ -376,6 +376,11 @@
           }, settings.animation_speed / 2);
         }
 
+        if (!animData.animate) {
+          el.css('top', $(window).scrollTop() + el.data('css-top') + 'px');
+          el.css('opacity', 1);
+        }
+
         return el.css(css).show().css({opacity : 1}).addClass('open').trigger('opened.fndtn.reveal');
       }
 
