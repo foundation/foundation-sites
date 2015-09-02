@@ -180,6 +180,10 @@ gulp.task('test', function() {
 })
 
 gulp.task('build', ['clean', 'copy', 'html', 'html:search', 'sass', 'javascript']);
+// Starts a BrowerSync instance
+gulp.task('serve', ['build'], function(){
+  browser.init({server: './dist'});
+});
 
 // Runs all of the above tasks and then waits for files to change
 gulp.task('default', ['serve'], function() {
@@ -189,8 +193,4 @@ gulp.task('default', ['serve'], function() {
   gulp.watch('docs/assets/scss/**/*', ['sass:docs', browser.reload]);
   gulp.watch('js/**/*', ['javascript:foundation', browser.reload]);
   gulp.watch('docs/assets/js/**/*', ['javascript:docs', browser.reload]);
-});
-// Starts a BrowerSync instance
-gulp.task('serve', ['build'], function(){
-  browser.init({server: './dist'});
 });

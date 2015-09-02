@@ -6,7 +6,6 @@
    * @class
    * @fires Accordion#init
    * @param {jQuery} element - jQuery object to make into an accordion.
-   * @param {Object} options - Overrides to the default plugin settings.
    */
   function Accordion(element){
     this.$element = element;

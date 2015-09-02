@@ -175,7 +175,7 @@
       .attr({'aria-hidden': 'false'});
 
     /**
-     * Fires when the plugin has successfuly changed tabs.
+     * Fires when the plugin has successfully changed tabs.
      * @event Tabs#change
      */
     this.$element.trigger('change.zf.tabs', [$target]);
