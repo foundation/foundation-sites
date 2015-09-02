@@ -4,10 +4,10 @@
   function Reveal(element) {
     this.$element = element;
     this.options = $.extend({}, Reveal.defaults, this.$element.data());
-    if(this.options.animationIn){
-      console.log(this.$element.data());
-      console.log(this.options.animationIn, this.options.animationOut);
-    }
+    // if(this.options.animationIn){
+    //   console.log(this.$element.data());
+    //   console.log(this.options.animationIn, this.options.animationOut);
+    // }
     this._init();
 
     this.$element.trigger('init.zf.reveal');
@@ -27,7 +27,8 @@
     hOffset: 0,
     fullScreen: false,
     btmOffsetPct: 10,
-    closeText: '✖',
+    closeBtnText: '<i class="fi-x"></i>',
+    closeText: 'Click to close.',
     overlay: true
   };
   function randomIdGen(length){
@@ -37,10 +38,8 @@
   Reveal.prototype._init = function(){
     var anchorId = randomIdGen(6);
 
-    //************ better check for animation **************
-    // this.hasAnimation = this.$element.data('toggler-animate');
-    // console.log(this.hasAnimation);
     this.id = this.$element.attr('id');
+
     this.$anchor = $('[data-open=' + this.id + ']') || $('[data-toggle=' + this.id + ']');
 
     this.$anchor.attr({
@@ -90,11 +89,11 @@
     return $overlay;
   };
   Reveal.prototype.makeButton = function(id){
-    var btn = $('<a><i class="fi-x"></i></a>')
+    var btn = $('<a>' + this.options.closeBtnText + '</a>')
               .addClass('close-button')
               .attr({
                 'data-toggle': this.id,
-                'title': 'Close.',
+                'title': this.options.closeText,
                 'aria-controls': this.id,
                 'aria-hidden': true
               });
@@ -118,56 +117,10 @@
     if(this.$closeBtn){
       this.$closeBtn.on('click.zf.reveal', this.close.bind(this));
     }
-    // $(window).on('resize.zf.reveal', function(){
-    //   Foundation.util.throttle(checkStuff, 250);
-    //   // var timer = setTimeout(function(){
-    //   //   console.log(Foundation.MediaQuery.atLeast('medium'));
-    //   // }, 250);
-    // });
-  // function checkStuff(){
-  //   // $(window).on('resize.zf.whatever', function(){
-  //     console.log(Foundation.MediaQuery.atLeast('medium'));
-  //   // });
-  // }
   };
 
-  Reveal.prototype._addGlobalClickHandler = function(){
-    var _this = this;
-    this.$element.on('click.zf.reveal', function(e){
-      e.preventDefault();
-      return false;
-    });
-    $('body').on('click.zf.reveal', function(e){
-      _this.close();
-    });
-  };
 
-  Reveal.prototype._addKeyHandler = function(){
-    var _this = this;
-    $(window).on('keyup.zf.reveal', function(e){
-      e.preventDefault();
-      e.stopPropagation();
-      if(e.which === 27){
-        _this.close();
-      }
-    });
-  };
-
-  //open and close functions
-  Reveal.prototype.open = function(){
-    var _this = this;
-
-    //global event emitter to close any other open modals
-    this.$element.trigger('closeme.zf.reveal', this.id);
-
-    this.isActive = true;
-
-    //make element invisible, but remove display: none so we can get size and positioning
-    this.$element
-        .css({'visibility': 'hidden'})
-        .show()
-        .scrollTop(0);
-
+  Reveal.prototype._setPosition = function(cb){
     var eleDims = Foundation.GetDimensions(this.$element);
     var elePos = this.options.fullScreen ? 'reveal full' : (eleDims.height >= (0.5 * eleDims.windowDims.height)) ? 'reveal' : 'center';
 
@@ -197,70 +150,180 @@
             'max-height': eleDims.windowDims.height - (this.options.vOffset * (this.options.btmOffsetPct / 100 + 1))
           });
     }
+
+    cb();
+  };
+  //open and close functions
+  Reveal.prototype.open = function(){
+    var _this = this;
+    this.isActive = true;
+
+
+    //make element invisible, but remove display: none so we can get size and positioning
+    this.$element
+        .css({'visibility': 'hidden'})
+        .show()
+        .scrollTop(0);
+
+
+    this._setPosition(function(){
+      _this.$element.hide()
+                   .css({'visibility': ''})
+                   .trigger('closeme.zf.reveal', _this.id);
+    //global event emitter to close any other open modals
+    // _this.$element.trigger('closeme.zf.reveal', _this.id);
+
+      if(_this.options.animationIn){
+        _this.animationShow();
+      }else{
+        _this.noAnimationShow();
+      }
+    });
+
     //display: none and remove visiblity attr before animation.
-    this.$element.hide()
-                 .css({'visibility': ''})
-
-    if(this.options.animationIn){
-      this.animateIn();
-    }else{
-      this.noAnimationShow()
-    }
-
+    // this.$element.hide()
+    //              .css({'visibility': ''})
+    //
+    // if(this.options.animationIn){
+    //   this.animateIn();
+    // }else{
+    //   this.noAnimationShow()
+    // }
+    //
     //bring in the overlay first
-    if(this.options.overlay){
-      this.$overlay.fadeIn(_this.options.animationInDelay).attr({'aria-hidden': false});
-      $('body').attr({'aria-hidden': true});
-    }
-    if(this.options.animationIn){
-      this.timer = setTimeout(function(){
-        Foundation.Motion.animateIn(_this.$element, _this.options.animationIn, function(){
-          clearTimeout(_this.timer);
-        });
-      }, 0);
-    }else{
-      this.$element
-          .fadeIn('fast', function(){
-            _this.$element.attr({'aria-hidden': false});
-          });
-    }
-    this._extraHandlers();
-    $('body').addClass('is-reveal-open');
+    // if(this.options.overlay){
+    //   this.$overlay.fadeIn(_this.options.animationInDelay).attr({'aria-hidden': false});
+    //   $('body').attr({'aria-hidden': true});
+    // }
+    // if(this.options.animationIn){
+    //   this.timer = setTimeout(function(){
+    //     Foundation.Motion.animateIn(_this.$element, _this.options.animationIn, function(){
+    //       clearTimeout(_this.timer);
+    //     });
+    //   }, 0);
+    // }else{
+    //   this.$element
+    //       .fadeIn('fast', function(){
+    //         _this.$element.attr({'aria-hidden': false});
+    //       });
+    // }
+    setTimeout(function(){
+      _this._extraHandlers();
+    }, 0);
+    this.$element.attr({'aria-hidden': false});
+    $('body').addClass('is-reveal-open')
+             .attr({'aria-hidden': (this.options.overlay || this.options.fullScreen) ? true : false});
+    // this._extraHandlers();
     Foundation.reflow();
     // $.fn.foundation();
   };
+  Reveal.prototype.noAnimationShow = function(){
+    var _this = this;
+    if(this.options.overlay){
+      this.$overlay.show(0, function(){
+        _this.$element.show('fast', function(){
+          _this.$element.trigger('open.zf.reveal');
+        });
+      });
+    }else{
+      // this.$element.show();
+      // this.$element.css('display', 'block');
+      // debugger;
+      this.$element.show('fast', function(){
+        _this.$element.trigger('open.zf.reveal');
+      });
+    }
+  };
+
+  Reveal.prototype.animationShow = function(){
+    var _this = this;
+    if(this.options.overlay){
+      Foundation.Motion.animateIn(this.$overlay, 'fadeIn', function(){
+        Foundation.Motion.animateIn(_this.$element, _this.options.animationIn, function(){
+          _this.$element.trigger('open.zf.reveal');
+        });
+      });
+    }else{
+      Foundation.Motion.animateIn(this.$element, this.options.animationIn, function(){
+        _this.$element.trigger('open.zf.reveal');
+      });
+    }
+  };
+  Reveal.prototype.noAnimationClose = function(){
+    console.log('closing w/o anim');
+    var _this = this;
+    this.$element.hide('fast', function(){
+      console.log('closed w/o anim');
+      if(_this.options.overlay){
+        _this.$overlay.hide(0, function(){
+        });
+      }
+    });
+  };
+
+  Reveal.prototype.animationClose = function(){
+    var _this = this;
+    Foundation.Motion.animateOut(this.$element, this.options.animationOut, function(){
+      if(_this.options.overlay){
+        Foundation.Motion.animateOut(_this.$overlay, 'fadeOut', function(){
+          console.log('all done closing sir');
+        });
+      }
+    });
+  };
 
   Reveal.prototype._extraHandlers = function(){
+    var _this = this;
     if(!this.options.overlay && this.options.closeOnClick){
-      this._addGlobalClickHandler();
+      this.$element.on('click.zf.reveal', function(e){
+        e.preventDefault();
+        return false;
+      });
+      $('body').on('click.zf.reveal', function(e){
+        // if(_this.isActive){
+          _this.close();
+        // }
+        // return false;
+      });
     }
+
     if(this.options.closeOnEsc){
-      this._addKeyHandler();
+      $(window).on('keyup.zf.reveal', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        if(e.which === 27){
+          _this.close();
+        }
+      });
     }
-  }
+  };
 
   Reveal.prototype.close = function(){
+    if(!this.isActive){
+      return false;
+    }
     var _this = this;
-    this.isActive = false;
 
     if(this.options.animationOut){
-      clearTimeout(this.timer);
-      this.timer = setTimeout(function(){
-        Foundation.Motion.animateOut(_this.$element, _this.options.animationOut, function(){
-          console.log('closing', this);
-          clearTimeout(_this.timer);
-        });
-      }, this.options.animationOutDelay);
+      this.animationClose();
     }else{
-      this.$element.fadeOut(this.options.animationOutDelay).attr({'aria-hidden': true}).css({'height': '', 'width': ''});
+      this.noAnimationClose();
     }
+
+    // if(this.options.animationOut){
+    //   clearTimeout(this.timer);
+    //   this.timer = setTimeout(function(){
+    //     Foundation.Motion.animateOut(_this.$element, _this.options.animationOut, function(){
+    //       clearTimeout(_this.timer);
+    //     });
+    //   }, this.options.animationOutDelay);
+    // }else{
+    //   this.$element.fadeOut(this.options.animationOutDelay).attr({'aria-hidden': true}).css({'height': '', 'width': ''});
+    // }
 
 
 
     //conditionals to remove extra event listeners added on open
-    if(this.options.overlay){
-      this.$overlay.fadeOut(this.options.animationOutDelay).attr({'aria-hidden': true});
-    }
     if(this.options.closeOnEsc){
       $(window).off('keyup.zf.reveal');
     }
@@ -277,6 +340,9 @@
     }
 
     $('body').removeClass('is-reveal-open').attr({'aria-hidden': false});
+
+    this.isActive = false;
+    this.$element.trigger('close.zf.reveal');
   };
 
 
