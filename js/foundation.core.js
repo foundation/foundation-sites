@@ -84,8 +84,7 @@ Foundation.util = {
       if (timer === null) {
         timer = setTimeout(function () {
           func.apply(context, args);
-          func.call(context, args);
-          // timer = null;
+          timer = null;
         }, delay);
       }
     };
