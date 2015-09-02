@@ -30,6 +30,7 @@
   Toggler.prototype._init = function() {
     // Parse the class
     var input = this.$element.data('toggler');
+    // console.log(this.$element.data('toggler'));
 
     // Allow for a . at the beginning of the string
     if (input[0] === '.') {

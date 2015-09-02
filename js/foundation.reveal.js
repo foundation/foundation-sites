@@ -4,15 +4,18 @@
   function Reveal(element) {
     this.$element = element;
     this.options = $.extend({}, Reveal.defaults, this.$element.data());
-
+    if(this.options.animationIn){
+      console.log(this.$element.data());
+      console.log(this.options.animationIn, this.options.animationOut);
+    }
     this._init();
 
     this.$element.trigger('init.zf.reveal');
   }
 
   Reveal.defaults = {
-    animationIn: 'fadeIn',
-    animationOut: 'fadeOut',
+    animationIn: '',
+    animationOut: '',
     animationInDelay: 250,
     animationOutDelay: 250,
     closeOnClick: true,
@@ -33,30 +36,43 @@
 
   Reveal.prototype._init = function(){
     var anchorId = randomIdGen(6);
+
+    //************ better check for animation **************
+    // this.hasAnimation = this.$element.data('toggler-animate');
+    // console.log(this.hasAnimation);
     this.id = this.$element.attr('id');
     this.$anchor = $('[data-open=' + this.id + ']') || $('[data-toggle=' + this.id + ']');
+
     this.$anchor.attr({
       'data-close': this.id,
       'aria-controls': this.id,
       'id': anchorId
     });
+
     this.options.fullScreen = this.$element.hasClass('full');
-    if(this.options.overlay && !this.options.fullScreen){
-      this.$overlay = this.makeOverlay(this.id);
-    }
-    this.$element.attr({
-      'role': 'dialog',
-      'aria-hidden': true,
-      'aria-labelledby': anchorId
-      })
-    this.options.vOffset = this.options.fullScreen ? 0 : Number(this.$element.css('margin-top').split('px')[0]);
     if(this.options.fullScreen){
       this.options.overlay = false;
     }
+
+    if(this.options.overlay){
+      this.$overlay = this.makeOverlay(this.id);
+    }
+
+    this.$element.attr({
+        'role': 'dialog',
+        'aria-hidden': true,
+        'aria-labelledby': anchorId,
+        'data-yeti-box': this.id
+    });
+
     if(this.options.closeBtn || this.options.fullScreen){
       this.$closeBtn = this.makeButton(this.id);
       this.$element.append(this.$closeBtn);
     }
+
+    this.options.height = this.$element.outerHeight();
+    this.options.width = this.$element.outerWidth();
+
     this._events();
   };
 
@@ -74,9 +90,14 @@
     return $overlay;
   };
   Reveal.prototype.makeButton = function(id){
-    var btn = $('<a>' + this.options.closeText + '</a>')
+    var btn = $('<a><i class="fi-x"></i></a>')
               .addClass('close-button')
-              .attr({'data-close': this.id});
+              .attr({
+                'data-toggle': this.id,
+                'title': 'Close.',
+                'aria-controls': this.id,
+                'aria-hidden': true
+              });
     return btn;
   };
 
@@ -84,17 +105,30 @@
   //event listeners and additional triggers that need to be managed
   Reveal.prototype._events = function(){
     var _this = this;
+
     this.$element.on({
       'open.zf.trigger': this.open.bind(this),
       'close.zf.trigger': this.close.bind(this),
       'toggle.zf.trigger': this.toggle.bind(this)
     });
+
     if(this.options.closeOnClick && this.options.overlay){
       this.$overlay.on('click.zf.reveal', this.close.bind(this));
     }
     if(this.$closeBtn){
       this.$closeBtn.on('click.zf.reveal', this.close.bind(this));
     }
+    // $(window).on('resize.zf.reveal', function(){
+    //   Foundation.util.throttle(checkStuff, 250);
+    //   // var timer = setTimeout(function(){
+    //   //   console.log(Foundation.MediaQuery.atLeast('medium'));
+    //   // }, 250);
+    // });
+  // function checkStuff(){
+  //   // $(window).on('resize.zf.whatever', function(){
+  //     console.log(Foundation.MediaQuery.atLeast('medium'));
+  //   // });
+  // }
   };
 
   Reveal.prototype._addGlobalClickHandler = function(){
@@ -116,77 +150,114 @@
       if(e.which === 27){
         _this.close();
       }
-      return false;
     });
   };
 
-  //open and close function
+  //open and close functions
   Reveal.prototype.open = function(){
-    this.$element.trigger('closeme.zf.reveal', this.id);
     var _this = this;
+
+    //global event emitter to close any other open modals
+    this.$element.trigger('closeme.zf.reveal', this.id);
+
     this.isActive = true;
-    var dims = Foundation.GetDimensions(this.$element);
-    var checkMe = this.$element.hasClass('full') ? 'reveal full' : (dims.height >= (0.5 * dims.windowDims.height)) ? 'reveal' : 'center';
+
+    //make element invisible, but remove display: none so we can get size and positioning
     this.$element
         .css({'visibility': 'hidden'})
         .show()
         .scrollTop(0);
 
-    if(checkMe === 'reveal full'){
+    var eleDims = Foundation.GetDimensions(this.$element);
+    var elePos = this.options.fullScreen ? 'reveal full' : (eleDims.height >= (0.5 * eleDims.windowDims.height)) ? 'reveal' : 'center';
+
+
+    if(elePos === 'reveal full'){
+      //set to full height/width
       this.$element
-          .offset(Foundation.GetOffsets(this.$element, null, checkMe, this.options.vOffset))
+          .offset(Foundation.GetOffsets(this.$element, null, elePos, this.options.vOffset))
           .css({
-            'height': dims.windowDims.height,
-            'width': dims.windowDims.width
+            'height': eleDims.windowDims.height,
+            'width': eleDims.windowDims.width
           });
     }else if(!Foundation.MediaQuery.atLeast('medium')){
+      //if smaller than medium, resize to 100% width minus any custom L/R margin
       this.$element
           .css({
-            'width': dims.windowDims.width - (this.options.hOffset + 2)
+            'width': eleDims.windowDims.width - (this.options.hOffset * 2)
           })
           .offset(Foundation.GetOffsets(this.$element, null, 'center', this.options.vOffset, this.options.hOffset));
-          // .offset({
-          // 'top': dims.windowDims.offset.top + this.options.vOffset,
-          // 'left': this.options.hOffset + 1
-          // })
+      //flag a boolean so we can reset the size after the element is closed.
+      this.changedSize = true;
     }else{
       this.$element
-          .offset(Foundation.GetOffsets(this.$element, null, checkMe, this.options.vOffset))
+          .offset(Foundation.GetOffsets(this.$element, null, elePos, this.options.vOffset))
+          //the max height based on a percentage of vertical offset plus vertical offset
           .css({
-            'max-height': dims.windowDims.height - (this.options.vOffset * (this.options.btmOffsetPct / 100 + 1))
+            'max-height': eleDims.windowDims.height - (this.options.vOffset * (this.options.btmOffsetPct / 100 + 1))
           });
     }
-    if(_this.options.overlay){
-      _this.$overlay.fadeIn('fast').attr({'aria-hidden': false});
+    //display: none and remove visiblity attr before animation.
+    this.$element.hide()
+                 .css({'visibility': ''})
+
+    if(this.options.animationIn){
+      this.animateIn();
+    }else{
+      this.noAnimationShow()
+    }
+
+    //bring in the overlay first
+    if(this.options.overlay){
+      this.$overlay.fadeIn(_this.options.animationInDelay).attr({'aria-hidden': false});
       $('body').attr({'aria-hidden': true});
     }
-    this.$element
-        .hide()
-        .css({
-          'visibility': ''
-        })
-        .fadeIn('fast', function(){
-          _this.$element.attr({'aria-hidden': false})
-
-          //conditionals for user updated settings
-          if(_this.$element.hasClass('full')){
-            // console.log(this.$element.offset(), this.options.vOffset);
-          }
-
-          if(!_this.options.overlay && _this.options.closeOnClick){
-            _this._addGlobalClickHandler();
-          }
-          if(_this.options.closeOnEsc){
-            _this._addKeyHandler();
-          }
+    if(this.options.animationIn){
+      this.timer = setTimeout(function(){
+        Foundation.Motion.animateIn(_this.$element, _this.options.animationIn, function(){
+          clearTimeout(_this.timer);
         });
+      }, 0);
+    }else{
+      this.$element
+          .fadeIn('fast', function(){
+            _this.$element.attr({'aria-hidden': false});
+          });
+    }
+    this._extraHandlers();
     $('body').addClass('is-reveal-open');
     Foundation.reflow();
     // $.fn.foundation();
   };
+
+  Reveal.prototype._extraHandlers = function(){
+    if(!this.options.overlay && this.options.closeOnClick){
+      this._addGlobalClickHandler();
+    }
+    if(this.options.closeOnEsc){
+      this._addKeyHandler();
+    }
+  }
+
   Reveal.prototype.close = function(){
+    var _this = this;
     this.isActive = false;
-    this.$element.fadeOut(this.options.animationOutDelay).attr({'aria-hidden': true}).css({'height': '', 'width': ''});
+
+    if(this.options.animationOut){
+      clearTimeout(this.timer);
+      this.timer = setTimeout(function(){
+        Foundation.Motion.animateOut(_this.$element, _this.options.animationOut, function(){
+          console.log('closing', this);
+          clearTimeout(_this.timer);
+        });
+      }, this.options.animationOutDelay);
+    }else{
+      this.$element.fadeOut(this.options.animationOutDelay).attr({'aria-hidden': true}).css({'height': '', 'width': ''});
+    }
+
+
+
+    //conditionals to remove extra event listeners added on open
     if(this.options.overlay){
       this.$overlay.fadeOut(this.options.animationOutDelay).attr({'aria-hidden': true});
     }
@@ -197,12 +268,19 @@
       $('body').off('click.zf.reveal');
     }
 
+    //if the modal changed size, reset it
+    if(this.changedSize){
+      this.$element.css({
+        'height': this.options.height,
+        'width': this.options.width
+      });
+    }
+
     $('body').removeClass('is-reveal-open').attr({'aria-hidden': false});
-    // console.log(this.$overlay.css('background-color'));
-    // console.log('closing');
   };
+
+
   Reveal.prototype.toggle = function(){
-    // console.log('toggling');
     if(this.isActive){
       this.close();
     }else{

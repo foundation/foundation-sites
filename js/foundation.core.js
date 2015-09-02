@@ -42,7 +42,6 @@ var Foundation = {
    * @param {String|Array} plugins - A list of plugins to initialize. Leave this out to initialize everything.
    */
   reflow: function(elem, plugins) {
-    console.log('reflowing');
     // If plugins is undefined, just grab everything
     if (typeof plugins === 'undefined') {
       plugins = Object.keys(this._plugins);
@@ -101,7 +100,8 @@ Foundation.util = {
       if (timer === null) {
         timer = setTimeout(function () {
           func.apply(context, args);
-          timer = null;
+          func.call(context, args);
+          // timer = null;
         }, delay);
       }
     };

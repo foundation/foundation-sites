@@ -29,6 +29,12 @@
       $(this).triggerHandler('close.zf.trigger', [$(this)]);
     });
   });
+
+  //trying to reposition elements on resize
+  // $(window).on('resize.zf.what', function(e){
+  //   console.log($('[data-reveal] > [aria-hidden=false]'))
+  //   Foundation.reflow();
+  // });
 // ------------------------------------
 
   // [PH]

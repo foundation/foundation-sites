@@ -21,7 +21,7 @@ A modal is just an empty container, so you can put any kind of content inside it
 ```html_example
 <p><a data-toggle="exampleModal1">Click me for a modal</a></p>
 
-<div class="reveal" id="exampleModal1" data-reveal data-close-on-click='true' data-close-on-esc='true', data-animation-in-delay='777' data-multi-opened='true' data-overlay='false'>
+<div class="reveal" id="exampleModal1" data-reveal data-close-on-click='true' data-animation-in='hingeInFromTop' data-animation-out='hingeOutFromBottom'>
   <h1>Awesome. I Have It.</h1>
   <p class="lead">Your couch. It is mine.</p>
   <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
@@ -29,6 +29,7 @@ A modal is just an empty container, so you can put any kind of content inside it
 ```
 
 ---
+
 ## Modals in Modals!
 
 A modal is just an empty container, until you put another modal in it, then the party starts
@@ -36,13 +37,30 @@ A modal is just an empty container, until you put another modal in it, then the 
 ```html_example
 <p><a data-toggle="exampleModal11">Click me for a modal</a></p>
 
-<div class="reveal" id="exampleModal11" data-reveal data-close-on-click='true' data-close-on-esc='true'>
+<div class="reveal" id="exampleModal11" data-reveal>
   <h1>Awesome!</h1>
   <p class="lead">I have another modal inside of me!</p>
   <a class='button' data-toggle='exampleModal111'>Click me for another modal!</a>
 </div>
 <div class='reveal' id='exampleModal111' data-reveal data-close-btn='false'>
   <h2>ANOTHER MODAL!!!</h2>
+</div>
+```
+
+---
+
+## Video
+
+A modal is just an empty container, so you can put any kind of content inside it, from text to forms to a whole grid.
+
+```html_example
+<p><a data-toggle="exampleModal12">Click me for a modal</a></p>
+
+<div class="reveal" id="exampleModal12" data-reveal data-animation-in='spinIn' data-animation-out='spinOut'>
+  <h2 id="videoModalTitle">This modal has video</h2>
+  <div class="flex-video widescreen vimeo">
+    <iframe width="1280" height="720" src="//www.youtube-nocookie.com/embed/wnXCopXXblE?rel=0" frameborder="0" allowfullscreen></iframe>
+  </div>
 </div>
 ```
 
@@ -56,7 +74,7 @@ On small screens, a modal is always 100% of the width of the screen. On medium-s
 ```html_example
 <p><a data-toggle="exampleModal2" aria-controls='exampleModal2'>Click me for a tiny modal</a></p>
 
-<div class="tiny reveal" id="exampleModal2" data-reveal>
+<div class="tiny reveal" id="exampleModal2" data-reveal data-animation-in='slideInRight' data-animation-out='slideOutLeft'>
   <p>OH I'M SO TIIINY</p>
 </div>
 ```
