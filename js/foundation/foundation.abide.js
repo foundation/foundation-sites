@@ -12,8 +12,8 @@
       // validate_on: 'tab', // tab (when user tabs between fields), change (input changes), manual (call custom events)
 
       focus_on_invalid : true, // automatically bring the focus to an invalid input field
-      error_labels : true, // labels with a for="inputId" will recieve an `error` class
-      error_class : 'error', // labels with a for="inputId" will recieve an `error` class
+      error_labels : true, // labels with a for="inputId" will receive an `error` class
+      error_class : 'error', // labels with a for="inputId" will receive an `error` class
       // the amount of time Abide will take before it validates the form (in ms).
       // smaller time will result in faster validation
       timeout : 1000,
