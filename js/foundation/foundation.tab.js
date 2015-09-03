@@ -36,13 +36,13 @@
           S = this.S;
 
       var usual_tab_behavior =  function (e, target) {
-          var settings = S(target).closest('[' + self.attr_name() + ']').data(self.attr_name(true) + '-init');
-          if (!settings.is_hover || Modernizr.touch) {
-            e.preventDefault();
-            e.stopPropagation();
-            self.toggle_active_tab(S(target).parent());
-          }
-        };
+        var settings = S(target).closest('[' + self.attr_name() + ']').data(self.attr_name(true) + '-init');
+        if (!settings.is_hover || Modernizr.touch) {
+          e.preventDefault();
+          e.stopPropagation();
+          self.toggle_active_tab(S(target).parent());
+        }
+      };
 
       S(this.scope)
         .off('.tab')
