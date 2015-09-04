@@ -10,8 +10,9 @@
 <div class="row">
 
 {{!-- Start container for table of contents --}}
-<nav>
-  <div class="large-3 large-push-9 columns">
+<nav class="large-3 large-push-9 columns">
+  <button aria-hidden="true" class="hide-for-large small secondary button" data-toggle="docsTOC">Show Table of Contents</button>
+  <div class="docs-toc hide" id="docsTOC" data-toggler=".hide">
     <ul class="vertical menu-bar docs-sub-menu" data-docs-toc>
       <li class="docs-menu-title">On this page:</li>
     </ul>
