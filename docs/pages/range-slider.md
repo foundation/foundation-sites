@@ -2,6 +2,7 @@
 title: Range Slider
 description: This handy lil slider is perfect for setting specific values within a range.
 sass: scss/components/_range-slider.scss
+js: js/foundation.range-slider.js
 ---
 
 ## Basics
@@ -9,9 +10,9 @@ sass: scss/components/_range-slider.scss
 It's got a handle and an active fill, what more do you need?
 
 ```html_example
-<div class="slider" data-slider>
-  <span class="slider-handle"  data-slider-handle style="transform: translate(100px, -50%);" role="slider" tabindex="1"></span>
-  <span class="slider-fill" data-slider-fill style="width: 100px;"></span>
+<div class="slider" data-slider data-initial-start='50'>
+  <span class="slider-handle"  data-slider-handle role="slider" tabindex="1"></span>
+  <span class="slider-fill" data-slider-fill></span>
   <input type="hidden">
 </div>
 ```
