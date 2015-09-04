@@ -16,6 +16,12 @@
     }
   }
 
+  // ZURB logo
+  .menu-bar img {
+    position: relative;
+    top: -2px;
+  }
+
   .menu-bar:first-child {
     border-right: 1px solid #4e4e4e;
   }
