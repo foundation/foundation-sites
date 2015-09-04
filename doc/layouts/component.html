@@ -26,7 +26,6 @@
   </head>
   <body class="antialiased hide-extras">
 
-    
     <div class="marketing off-canvas-wrap" data-offcanvas>
       <div class="inner-wrap">
 
@@ -43,8 +42,12 @@
             </div>
             <div class="large-9 medium-8 columns">
               <h1 id="{{slugify title}}">{{title}}</h1>
+              <div id="component-name" name="{{title}}"></div>
               {{#markdown}}
-                {{> body}}
+                {{> body }}
+
+                {{> building_blocks }}
+
               {{/markdown}}
             </div>
           </div>
@@ -76,8 +79,5 @@
       $(document).foundation().foundation('joyride', 'start');
     </script>
   </body>
-  
 
 </html>
-
-

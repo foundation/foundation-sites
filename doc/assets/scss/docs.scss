@@ -17,6 +17,44 @@
 
 
 
+/* WIRED AD */
+a#wiredBanner {
+  display:block;
+  position: relative;
+  height:85px;
+  width:100%; 
+  background: #723279; /* Old browsers */
+  background: -moz-linear-gradient(left,  #723279 0%, #572a7a 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,#723279), color-stop(100%,#572a7a)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left,  #723279 0%,#572a7a 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left,  #723279 0%,#572a7a 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left,  #723279 0%,#572a7a 100%); /* IE10+ */
+  background: linear-gradient(to right,  #723279 0%,#572a7a 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#723279', endColorstr='#572a7a',GradientType=1 ); /* IE6-9 */
+
+  span { 
+    border-bottom: #fff 4px dashed;
+    width: 36%;
+    position: absolute;
+    bottom: 25px;  
+    &.left-side { left: 0; }
+    &.right-side { right: 0; }
+    @media only screen and (max-width: 1000px) { width: 30%; }
+    @media only screen and (max-width: 675px) { width: 16%; }
+  }
+
+  .info { position: absolute; width: 250px; z-index: 20; top: 15px; left: 0; right: 0; margin-left: auto; margin-right: auto; }
+  .truck {     
+    width: 150px;
+    height: 60px;
+    background: url("http://zurb.com/assets/wired-cart.svg") center center no-repeat;
+    z-index: 25;
+    background-size: 48%;
+    position: absolute;
+    bottom: 3px; 
+  }
+}
+
 
 .row {
   max-width: rem-calc(1440);
@@ -413,7 +451,6 @@ footer { margin-top: 45px; }
   abbr,
   acronym {
     text-transform: uppercase;
-    font-size: 90%;
     color: $body-font-color;
     border-bottom: $acronym-underline;
     cursor: $cursor-help-value;
@@ -1100,3 +1137,28 @@ border: 5px solid red;
 .row.collapse.margintop-20px{
   margin-top:20px;
 }
+
+// building blocks styles
+
+.building-blocks-section {
+  padding: 0.75rem 0 3rem 0;
+
+  .building-blocks-header {
+    margin-bottom: 2.5rem;
+  }
+}
+
+.building-block-item {
+  padding: 0.5rem 0;
+  text-align: center;
+  border: 3px solid $secondary-color;
+  min-height: 14rem;
+  overflow: hidden;
+  margin-bottom: 1rem;
+
+  .building-block-item-header {
+    margin-bottom: 2rem;
+  }
+}
+
+

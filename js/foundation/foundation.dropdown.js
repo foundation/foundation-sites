@@ -274,36 +274,31 @@
 
         //lets see if the panel will be off the screen
         //get the actual width of the page and store it
-        var actualBodyWidth;
-        if (document.getElementsByClassName('row')[0]) {
-          actualBodyWidth = document.getElementsByClassName('row')[0].clientWidth;
-        } else {
-          actualBodyWidth = window.innerWidth;
-        }
-
-        var actualMarginWidth = (window.innerWidth - actualBodyWidth) / 2;
-        var actualBoundary = actualBodyWidth;
-
+        var windowWidth = window.innerWidth;
+        
         if (!this.hasClass('mega') && !s.ignore_repositioning) {
+          var outerWidth = this.outerWidth();
+          var o_left = t.offset().left;
+          var t_outerWidth = t.outerWidth();
+		  
           //miss top
           if (t.offset().top <= this.outerHeight()) {
             p.missTop = true;
-            actualBoundary = window.innerWidth - actualMarginWidth;
             p.leftRightFlag = true;
           }
 
           //miss right
-          if (p.left + t.offset().left + this.outerWidth() + t.outerWidth() > window.innerWidth) {
+          if (p.left + o_left + outerWidth + t_outerWidth > windowWidth) {
             p.missRight = true;
           }
 
           //miss left
-          if (p.left + t.offset().left - this.outerWidth() <= 0) {
+          if (p.left + o_left - outerWidth <= 0) {
             p.missLeft = true;
           }
         
           if (Foundation.rtl == true) {
-            p.left -= this.outerWidth() - t.outerWidth();
+            p.left -= outerWidth - t_outerWidth;
           }
         }
 
@@ -422,11 +417,12 @@
           css_before = direction + ': ' + pip_offset_base + 'px;',
           css_after  = direction + ': ' + (pip_offset_base - 1) + 'px;';
       
-      if ((position.missRight == true && Foundation.rtl == false) ||
-          (position.missLeft == true && Foundation.rtl == true)) {
-        pip_offset_base = dropdown.outerWidth() - 23;
-        css_before = direction + ': ' + pip_offset_base + 'px;',
-        css_after  = direction + ': ' + (pip_offset_base - 1) + 'px;';
+      if (this.small()) {
+      } else if ((position.missRight == true && Foundation.rtl == false) ||
+                 (position.missLeft == true && Foundation.rtl == true)) {
+          pip_offset_base = dropdown.outerWidth() - 23;
+          css_before = direction + ': ' + pip_offset_base + 'px;',
+          css_after  = direction + ': ' + (pip_offset_base - 1) + 'px;';
       }
 
       //just a case where right is fired, but its not missing right
