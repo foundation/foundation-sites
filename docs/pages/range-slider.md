@@ -49,7 +49,7 @@ U can't touch this. Need to disable a slider? Just add a `disabled` class to the
 
 ## Two Handles
 
-Oh... You might need two handles? Don't fret. We got you covered. Hook it up with another `.slider-handle` span. This works for horizontal and vertical sliders!
+Oh... You might need two handles? Don't fret. We got you covered. Hook it up with another `.slider-handle` span and `input` field. This works for horizontal and vertical sliders! Please note that our JavaScript will assign `id`'s for input fields, unless you do so yourself. If you choose not to, handles and inputs will be matched in the order they are in the dom tree.
 
 ```html_example
 <div class="slider" data-slider>
@@ -57,5 +57,22 @@ Oh... You might need two handles? Don't fret. We got you covered. Hook it up wit
   <span class="slider-fill" style="left: 100px; width: 100px;"></span>
   <span class="slider-handle" data-slider-handle style="transform: translate(200px, -50%);" role="slider" tabindex="4"></span>
   <input type="hidden">
+  <input type="hidden">
+</div>
+```
+
+---
+
+## Data binding
+
+Wait, you want a visible input AND a slider? You're crazy, but ok. Change the value of either and see the other match it. Note that you have to set an `id` for the `input` and add the `aria-controls='idOfInput'` to the slider handle.
+
+```html_example
+<div class="slider small-11 columns" data-slider data-initial-start='50' >
+  <span class="slider-handle"  data-slider-handle role="slider" tabindex="1" aria-controls='sliderOutput1'></span>
+  <span class="slider-fill" data-slider-fill></span>
+</div>
+<div class='small-1 columns'>
+  <input type="number" id='sliderOutput1'>
 </div>
 ```
