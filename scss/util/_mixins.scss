@@ -135,11 +135,12 @@
 
 /// Adds CSS for a "quantity query" selector that automatically sizes elements based on how many there are inside a container.
 /// @param {Number} $max - Maximum number of items to detect. The higher this number is, the more CSS that's required to cover each number of items.
+/// @param {Keyword} $elem [li] - Tag to use for sibling selectors.
 /// @link http://alistapart.com/article/quantity-queries-for-css Quantity Queries for CSS
-@mixin auto-width($max) {
+@mixin auto-width($max, $elem: li) {
   @for $i from 2 through $max {
     &:nth-last-child(#{$i}):first-child,
-    &:nth-last-child(#{$i}):first-child ~ li {
+    &:nth-last-child(#{$i}):first-child ~ #{$elem} {
       width: percentage(1 / $i);
     }
   }

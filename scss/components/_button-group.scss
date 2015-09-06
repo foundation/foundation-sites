@@ -43,15 +43,6 @@ $buttongroup-expand-max: 6;
   }
 }
 
-/// Changes the size of the buttons inside a button group by adjusting the font size of the container.
-/// @param {Keyword} $size [medium] - Size to apply. Must be one of the named sizes in the `$button-sizes` variable.
-@mixin button-group-size(
-  $size: medium
-) {
-  $size: $button-font-size * map-get($button-sizes, $size);
-  font-size: $size;
-}
-
 /// Creates a full-width button group, making each button equal width.
 /// @param {Keyword|Number} $count [auto] - Number of buttons inside the button group. Set to `auto` to generate CSS that will account for a variable number of buttons.
 /// @param {String} $selector [$buttongroup-child-selector] - Selector for the buttons inside a button group.
@@ -61,7 +52,7 @@ $buttongroup-expand-max: 6;
 ) {
   #{$selector} {
     @if $count == auto {
-      @include auto-width($buttongroup-expand-max);
+      @include auto-width($buttongroup-expand-max, a);
     }
     @else if type-of($count) == 'number' {
       width: percentage(1 / $count);
@@ -99,15 +90,15 @@ $buttongroup-expand-max: 6;
     @include button-group;
 
     // Sizes
-    &.tiny  { @include button-group-size(tiny); }
-    &.small { @include button-group-size(small); }
-    &.large { @include button-group-size(large); }
+    &.tiny     { font-size: map-get($button-sizes, tiny); }
+    &.small    { font-size: map-get($button-sizes, small); }
+    &.large    { font-size: map-get($button-sizes, large); }
     &.expanded { @include button-group-expand; }
 
     // Colors
     @each $name, $color in $foundation-colors {
       &.#{$name} #{$buttongroup-child-selector} {
-        @include button-style($color);
+        @include button-style($color, auto, auto);
       }
     }
 

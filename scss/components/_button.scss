@@ -40,18 +40,14 @@ $button-font-color-alt: #000 !default;
 /// @type Number
 $button-radius: 0 !default;
 
-/// Defualt sizes for button.
+/// Sizes for buttons.
 /// @type Map
 $button-sizes: (
-  tiny: 0.7,
-  small: 0.8,
-  medium: 1,
-  large: 1.3,
+  tiny: 0.6rem,
+  small: 0.75rem,
+  default: 0.9rem,
+  large: 1.25rem,
 ) !default;
-
-/// Defualt font size for button.
-/// @type Number
-$button-font-size: 0.9rem !default;
 
 /// Defualt opacity for a disabled button.
 /// @type List
@@ -70,25 +66,10 @@ $button-opacity-disabled: 0.25 !default;
 
   padding: $button-padding;
   margin: $button-margin;
-  font-size: $button-font-size;
+  font-size: map-get($button-sizes, default);
 
   @if hasvalue($button-radius) {
     border-radius: $button-radius;
-  }
-}
-
-/// Sets the size of a button.
-/// @param {Keyword} $size [medium] - Size of the button. This should be a named size from the `$button-sizes` variable in your settings file.
-/// @param {Boolean} $expand [false] - Set to `true` to make the button full-width.
-@mixin button-size($size: medium, $expand: false) {
-  $size: $button-font-size * map-get($button-sizes, $size);
-
-  @if $size != $button-font-size {
-    font-size: $size;
-  }
-
-  @if $expand {
-    @include button-expand;
   }
 }
 
@@ -193,14 +174,12 @@ $button-opacity-disabled: 0.25 !default;
 }
 
 /// Adds all styles for a button. For more granular control over styles, use the individual button mixins.
-/// @param {Keyword} $size [medium] - Size of the button. This should be a named size from the `$button-sizes` variable in your settings file.
 /// @param {Boolean} $expand [false] - Set to `true` to make the button full-width.
 /// @param {Color} $background [$button-background] - Background color of the button.
 /// @param {Color} $background-hover [$button-background-hover] - Background color of the button on hover. Set to `auto` to have the mixin automatically generate a hover color.
 /// @param {Color} $color [$button-font-color] - Text color of the button. Set to `auto` to automatically generate a color based on the background color.
 /// @param {Keyword} $style [solid] - Set to `hollow` to create a hollow button. The color defined in `$background` will be used as the primary color of the button.
 @mixin button(
-  $size: medium,
   $expand: false,
   $background: $button-background,
   $background-hover: $button-background-hover,
@@ -208,7 +187,6 @@ $button-opacity-disabled: 0.25 !default;
   $style: $button-fill
 ) {
   @include button-base;
-  @include button-size($size);
 
   @if $style == solid {
     @include button-style($background, $background-hover, $color);
@@ -228,9 +206,9 @@ $button-opacity-disabled: 0.25 !default;
     @include button;
 
     // Sizes
-    &.tiny     { @include button-size(tiny); }
-    &.small    { @include button-size(small); }
-    &.large    { @include button-size(large); }
+    &.tiny     { font-size: map-get($button-sizes, tiny); }
+    &.small    { font-size: map-get($button-sizes, small); }
+    &.large    { font-size: map-get($button-sizes, large); }
     &.expanded { @include button-expand; }
 
     // Colors
