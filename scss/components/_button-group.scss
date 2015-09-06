@@ -28,9 +28,8 @@ $buttongroup-expand-max: 6;
   $child-selector: $buttongroup-child-selector
 ) {
   @include clearfix;
-
   margin-bottom: $buttongroup-margin;
-  font-size: $button-font-size;
+  font-size: map-get($button-sizes, default);
 
   #{$child-selector} {
     float: left;
@@ -52,7 +51,7 @@ $buttongroup-expand-max: 6;
 ) {
   #{$selector} {
     @if $count == auto {
-      @include auto-width($buttongroup-expand-max, a);
+      @include auto-width($buttongroup-expand-max, $selector);
     }
     @else if type-of($count) == 'number' {
       width: percentage(1 / $count);
