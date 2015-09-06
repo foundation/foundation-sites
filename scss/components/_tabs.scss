@@ -53,83 +53,85 @@ $tab-content-color: foreground($tab-background, $primary-color);
 /// @type Number | List
 $tab-content-padding: 1rem !default;
 
-.tabs {
-  @include clearfix;
-  margin: $tab-margin;
-  list-style-type: none;
-  background: $tab-background;
-  border: 1px solid $tab-content-border;
+@mixin foundation-tabs {
+  .tabs {
+    @include clearfix;
+    margin: $tab-margin;
+    list-style-type: none;
+    background: $tab-background;
+    border: 1px solid $tab-content-border;
 
-  // Simple
-  &.simple {
-    > li > a {
-      padding: 0;
+    // Simple
+    &.simple {
+      > li > a {
+        padding: 0;
 
-      &:hover {
-        background: transparent;
+        &:hover {
+          background: transparent;
+        }
+      }
+    }
+
+    // Vertical
+    &.vertical {
+      > li {
+        width: auto;
+        float: none;
+        display: block;
+      }
+    }
+
+    // Primary color
+    &.primary {
+      background: $primary-color;
+
+      > li > a {
+        color: foreground($primary-color);
+
+        &:hover,
+        &:focus {
+          background: smart-scale($primary-color);
+        }
       }
     }
   }
 
-  // Vertical
-  &.vertical {
-    > li {
-      width: auto;
-      float: none;
+  .tabs-title {
+    float: left;
+
+    > a {
       display: block;
-    }
-  }
-
-  // Primary color
-  &.primary {
-    background: $primary-color;
-
-    > li > a {
-      color: foreground($primary-color);
+      padding: $tab-item-padding;
+      line-height: 1;
+      font-size: 12px;
+      color: $tab-item-color;
 
       &:hover,
-      &:focus {
-        background: smart-scale($primary-color);
+      &:focus,
+      &[aria-selected="true"] {
+        background: $tab-background-active;
       }
     }
   }
-}
 
-.tabs-title {
-  float: left;
+  .tabs-content {
+    background: $tab-content-background;
+    transition: all 0.5s ease;
+    border: 1px solid $tab-content-border;
+    border-top: 0;
 
-  > a {
-    display: block;
-    padding: $tab-item-padding;
-    line-height: 1;
-    font-size: 12px;
-    color: $tab-item-color;
-
-    &:hover,
-    &:focus,
-    &[aria-selected="true"] {
-      background: $tab-background-active;
+    &.vertical {
+      border: 1px solid $tab-content-border;
+      border-left: 0;
     }
   }
-}
 
-.tabs-content {
-  background: $tab-content-background;
-  transition: all 0.5s ease;
-  border: 1px solid $tab-content-border;
-  border-top: 0;
+  .tabs-panel {
+    display: none;
+    padding: $tab-content-padding;
 
-  &.vertical {
-    border: 1px solid $tab-content-border;
-    border-left: 0;
-  }
-}
-
-.tabs-panel {
-  display: none;
-  padding: $tab-content-padding;
-
-  &.is-active {
-    display: block;
+    &.is-active {
+      display: block;
+    }
   }
 }
