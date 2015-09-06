@@ -6,30 +6,30 @@
 /// @group visibility
 ////
 
-/// Hide an element by default, only displaying it above a certain screen size. Normally `display: block` is used to un-hide the element, but you can change this if you're working with an element that's inline, table-based, etc.
-/// @param {Keyword} $size - Breakpoint name or screen width to use.
-/// @param {Keyword} $prop [block] - The `display` property to use to un-hide the element.
-@mixin show-for($size, $prop: block) {
-  display: none !important;
+/// Hide an element by default, only displaying it above a certain screen size.
+/// @param {Keyword} $size - Breakpoint to use. **Must be a breakpoint defined in `$breakpoints`.**
+@mixin show-for($size) {
+  $size: map-get($breakpoints, $size);
+  $size: -zf-bp-to-em($size) - (1/16);
 
-  @include breakpoint($size) {
-    display: $prop !important;
+  @include breakpoint($size down) {
+    display: none !important;
   }
 }
 
-/// Hide an element by default, only displaying it within a certain breakpoint. Normally `display: block` is used to un-hide the element, but you can change this if you're working with an element that's inline, table-based, etc.
-/// @param {Keyword} $size - Breakpoint name to use.
-/// @param {Keyword} $prop [block] - The `display` property to use to un-hide the element.
-@mixin show-for-only($size, $prop: block) {
-  display: none !important;
+/// Hide an element by default, only displaying it within a certain breakpoint.
+/// @param {Keyword} $size - Breakpoint to use. **Must be a breakpoint defined in `$breakpoints`.**
+@mixin show-for-only($size) {
+  $lower-bound: -zf-bp-to-em(map-get($breakpoints, $size)) - (1/16);
+  $upper-bound: -zf-bp-to-em(-zf-map-next($breakpoints, $size));
 
-  @include breakpoint($size only) {
-    display: $prop !important;
+  @media screen and (max-width: $lower-bound), screen and (min-width: $upper-bound) {
+    display: none !important;
   }
 }
 
 /// Show an element by default, and hide it above a certain screen size.
-/// @param {Keyword} $size - Breakpoint name or screen width to use.
+/// @param {Keyword} $size - Breakpoint to use. **Must be a breakpoint defined in `$breakpoints`.**
 @mixin hide-for($size) {
   @include breakpoint($size) {
     display: none !important;
@@ -37,7 +37,7 @@
 }
 
 /// Show an element by default, and hide it above a certain screen size.
-/// @param {Keyword} $size - Breakpoint name or screen width to use.
+/// @param {Keyword} $size - Breakpoint to use. **Must be a breakpoint defined in `$breakpoints`.**
 @mixin hide-for-only($size) {
   @include breakpoint($size only) {
     display: none !important;
@@ -51,7 +51,7 @@
   }
 
   .invisible {
-    visibility: hidden !important;
+    visibility: hidden;
   }
 
   // Responsive visibility classes
@@ -75,20 +75,15 @@
     }
   }
 
-  %show-for-sr {
-    @include element-invisible;
-  }
-
   // Screen reader visibility classes
   // Need a "hide-for-sr" class? Add aria-hidden="true" to the element
-  .show-for-sr {
-    @extend %show-for-sr;
+  .show-for-sr,
+  .show-on-focus {
+    @include element-invisible;
   }
 
   // Only display the element when it's focused
   .show-on-focus {
-    @extend %show-for-sr;
-
     &:active,
     &:focus {
       @include element-invisible-off;

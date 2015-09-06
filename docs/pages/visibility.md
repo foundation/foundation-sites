@@ -7,6 +7,10 @@ tags:
   - show
 ---
 
+<div class="callout primary">
+  <p>Visibility classes use `!important` to ensure they aren't overriden by more specific selectors. This is the only component in the framework that uses `!important`.</p>
+</div>
+
 ## Show by Screen Size
 
 In this example, we use the `.show` visibility classes to show certain strings of text based on the device on which users view a page. If their browser meets the class's conditions, the element will be shown. If not, it will be hidden.
@@ -19,7 +23,7 @@ In this example, we use the `.show` visibility classes to show certain strings o
 
 These classes automatically hide the element on screen sizes *below* what's specified in the class. So `.show-for-medium` will hide the element on small, and show it on medium and larger.
 
-A separate set of classes allow you to show content *only* on a certain screen size. Just add `-only` to the end of the class.
+A separate set of classes allow you to show content *only* on a certain screen size. Just add `-only` to the end of the class. (Don't see any text below the code sample? You must be on an *extra* large screen.)
 
 ```html_example
 <p class="show-for-small-only">You are <em>definitely</em> on a small screen.</p>
