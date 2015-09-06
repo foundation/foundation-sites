@@ -59,6 +59,12 @@
     margin-left: 0;
     margin-right: 0;
     margin-bottom: 1.5rem;
+
+    // Disable clearfix
+    &::before,
+    &::after {
+      display: none;
+    }
   }
 
   .column,

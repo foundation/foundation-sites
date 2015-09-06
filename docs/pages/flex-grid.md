@@ -25,7 +25,9 @@ The flex grid is not enabled by default. To use the default CSS, add the export 
 @include foundation-flex-grid;
 ```
 
-The standard grid and flex grid use the same classes, namely `.row` and `.column`, and don't play nice together. If you want to use both in the same page, we recommend using the Sass mixins for each grid, instead of the default CSS.
+<div class="callout primary">
+  <p>The standard grid and flex grid use the same classes, namely <code>.row</code> and <code>.column</code>, and don't play nice together. If you want to use both in the same project, we recommend using the Sass mixins for each grid, instead of the default CSS.</p>
+</div>
 
 ---
 
@@ -118,38 +120,9 @@ We have a few shorthand classes for the above behavior. Use the `.[size]-unstack
 
 ---
 
-## Source Ordering
-
-Flexbox supports source ordering, making it easy to rearrange columns on different screen sizes without wierd relative positioning tricks.
-
-The CSS property is easy enough to remember.
-
-```scss
-.element {
-  order: 1;
-}
-```
-
-Columns within a row will be sorted by their `order` property. Lower numbers are placed first. If multiple columns have the same number, they're sorted in the order they appear in the HTML.
-
-We have a set of classes that make it easy to setup source ordering in your HTML. They also come in responsive flavors, allowing you to reorder a grid on different screen sizes.
-
-```html_example
-<div class="row">
-  <div class="column order-2 medium-order-1">
-    This column will come second on small, and first on medium and larger.
-  </div>
-  <div class="column order-2 medium-order-1">
-    This column will come first on small, and second on medium and larger.
-  </div>
-</div>
-```
-
----
-
 ## Column Alignment
 
-Columns in the flex grid can be aligned across the horizontal or vertical axis.
+Columns in a flex grid can be aligned across the horizontal or vertical axis of their parent row.
 
 ### Horizontal Alignment
 
@@ -174,30 +147,32 @@ Columns can be aligned the same way you would align text in a paragraph. By defa
 </div>
 <div class="row align-spaced">
   <div class="column small-4">Aligned to</div>
-  <div class="column small-4">...?</div>
+  <div class="column small-4">the space around</div>
 </div>
 ```
 
-<div class="text-center">
-  <div class="row">
-    <div class="column small-4">Aligned to</div>
-    <div class="column small-4">the left</div>
-  </div>
-  <div class="row align-right">
-    <div class="column small-4">Aligned to</div>
-    <div class="column small-4">the right</div>
-  </div>
-  <div class="row align-center">
-    <div class="column small-4">Aligned to</div>
-    <div class="column small-4">the middle</div>
-  </div>
-  <div class="row align-justify">
-    <div class="column small-4">Aligned to</div>
-    <div class="column small-4">the edges</div>
-  </div>
-  <div class="row align-spaced">
-    <div class="column small-4">Aligned to</div>
-    <div class="column small-4">the space around</div>
+<div class="docs-code-live">
+  <div class="text-center">
+    <div class="row">
+      <div class="column small-4">Aligned to</div>
+      <div class="column small-4">the left</div>
+    </div>
+    <div class="row align-right">
+      <div class="column small-4">Aligned to</div>
+      <div class="column small-4">the right</div>
+    </div>
+    <div class="row align-center">
+      <div class="column small-4">Aligned to</div>
+      <div class="column small-4">the middle</div>
+    </div>
+    <div class="row align-justify">
+      <div class="column small-4">Aligned to</div>
+      <div class="column small-4">the edges</div>
+    </div>
+    <div class="row align-spaced">
+      <div class="column small-4">Aligned to</div>
+      <div class="column small-4">the space around</div>
+    </div>
   </div>
 </div>
 
@@ -240,5 +215,34 @@ The same alignment classes can also be applied to individual columns.
   <div class="column align-bottom">Align bottom</div>
   <div class="column align-middle">Align middle</div>
   <div class="column align-top">Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?</div>
+</div>
+```
+
+---
+
+## Source Ordering
+
+Flexbox supports source ordering, making it easy to rearrange columns on different screen sizes without weird relative positioning tricks.
+
+The CSS property is easy enough to remember.
+
+```scss
+.element {
+  order: 1;
+}
+```
+
+Columns within a row will be sorted by their `order` property. Lower numbers are placed first. If multiple columns have the same number, they're sorted in the order they appear in the HTML.
+
+We have a set of classes that make it easy to setup source ordering in your HTML. They also come in responsive flavors, allowing you to reorder a grid on different screen sizes.
+
+```html_example
+<div class="row">
+  <div class="column order-2 medium-order-1">
+    This column will come second on small, and first on medium and larger.
+  </div>
+  <div class="column order-2 medium-order-1">
+    This column will come first on small, and second on medium and larger.
+  </div>
 </div>
 ```
