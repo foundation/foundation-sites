@@ -1,6 +1,6 @@
 var $ = require('gulp-load-plugins')();
 var gulp = require('gulp');
-var settingsParser = require('foundation-settings-parser');
+var octophant = require('octophant');
 var shipyard = require('shipyard');
 var supercollider = require('supercollider');
 var rimraf = require('rimraf');
@@ -121,20 +121,13 @@ gulp.task('sass:settings', function() {
     title: 'Foundation for Sites Settings',
     output: './scss/_settings.scss',
     groups: {
-      undefined: 'The Rest',
-      abide: 'Abide',
-      breakpoints: 'Breakpoints',
-      global: 'Global',
-      grid: 'The Grid',
-      forms: 'Forms',
-      functions: 'Functions',
-      'media-object': 'Media Object',
-      'menu-bar': 'Menu Bar',
-      pagination: 'Pagination'
+      'grid': 'The Grid',
+      'off-canvas': 'Off-canvas',
+      'typography-base': 'Base Typography'
     }
   }
 
-  settingsParser(['./scss'], options);
+  octophant(['./scss'], options);
 });
 
 // Compiles JavaScript into a single file
