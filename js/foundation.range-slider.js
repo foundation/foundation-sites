@@ -37,7 +37,7 @@
     this.options.disabled = this.$element.hasClass('disabled');
     this.options.steps = (this.options.end - this.options.start) / this.options.step;
 
-    this.$fill = this.$element.find('.slider-fill');
+    this.$fill = this.$element.find('.slider-fill').css('max-width', '0');
     this.$handle = $(handles[0]);
     this.$input = inputs[0] ? $(inputs[0]) : $('#' + this.$handle.attr('aria-controls'));
 
@@ -54,7 +54,6 @@
       this.$input2.attr(this._setInputAttr(ariaId2, true));
       this._events(this.$handle2);
     }
-    this._events(this.$handle);
 
     // if(this.options.initial){
     //   // startPoint = (this.options.initial / this.options.end).toFixed(2).split('.')[1] + '%';
@@ -68,8 +67,8 @@
     //   startPoint = 0;
     //   this.$handle.css('left', startPoint);
     // }
-    // console.log(this.$handle, this.$handle2);
-    // this.$handle.css({'left': 250});
+
+    //*********this is in case we go to static, absolute positions instead of dynamic positioning********
     // this.setSteps(function(){
     //   _this._events();
     //   var initStart = _this.options.positions[_this.options.initialStart - 1] || null;
@@ -78,6 +77,7 @@
     //     _this._setHandle(initStart, initEnd);
     //   }
     // });
+    this._events(this.$handle);
   };
 
   Slider.prototype._setInputAttr = function(id, second){
@@ -97,6 +97,8 @@
       'aria-orientation': this.options.vertical ? 'vertical' : 'horizontal'
     };
   };
+
+  //***********the other part of absolute positions*************
   // Slider.prototype.setSteps = function(cb){
   //   var posChange = this.$element.outerWidth() / this.options.steps;
   //   var counter = 0
@@ -120,51 +122,25 @@
     this.$element.off().on('click.zf.slider touchend.zf.slider', function(e){
       offset = e['offset' + (vertical ? 'Y' : 'X')];
       _this.clickSetHandle(offset);
-      // _this._setFill(offset);
+      _this._setFill(offset);
     });
 
-    // $handle.on('mousedown.zf.slider touchstart.zf.slider', function(e){
-    //   e.preventDefault();
-    //   e.stopPropagation();
-    //   _this.$handle.off('mouseenter mouseleave');
-    //   $('body').on('mousemove.zf.slider touchmove.zf.slider', function(e){
-    //     e.preventDefault();
-    //     e.stopPropagation();
-    //     timer = setTimeout(function(){
-    //       console.log(e);
-    //       offset = e['offset' + (vertical ? 'Y' : 'X')];
-    //       _this._setHandle(offset);
-    //       _this._setFill(offset);
-    //     }, 100);
-    //   })
-    //   $('body').on('mouseup.zf.slider touchend.zf.slider', function(e){
-    //     e.preventDefault();
-    //     e.stopPropagation();
-    //     offset = e['offset' + (vertical ? 'Y' : 'X')];
-    //     _this._setHandle(offset);
-    //     _this._setFill(offset);
-    //     $('body').off('mouseup.zf.slider touchend.zf.slider mousemove.zf.slider touchmove.zf.slider');
-    //   })/*.on('mousemove.zf.slider touchmove.zf.slider', function(e){
-    //     e.preventDefault();
-    //     e.stopPropagation();
-    //     timer = setTimeout(function(){
-    //       offset = e['offset' + (vertical ? 'Y' : 'X')];
-    //       _this._setHandle(offset);
-    //       _this._setFill(offset);
-    //     }, 100);
-    //   })*/;
-    //
-    // });
   };
   Slider.prototype.clickSetHandle = function(location){
+    // console.log(((location / this.$element.outerWidth()).toFixed(2) * 1) + 1);
+    console.log(Math.percent(location, this.$element.outerWidth(), 2));
     var translate = this.options.vertical ?
                         '-50%, ' + (location - this.$handle.outerHeight() / 2) + 'px' :
                         (location - this.$handle.outerWidth() / 2) + 'px, -50%';
     this.$handle.css({
       'transition': 'all .25s ease',
       'transform': 'translate(' + translate + ')'
-
     });
+    this._setFill(location);
+    // this.$fill.css({
+    //   'transition': 'all .25s ease',
+    //   'width': '50%'
+    // });
   };
   // Slider.prototype._setHandle = function(lowPos, highPos){
   //   lowPos = lowPos.toFixed(2);
@@ -210,9 +186,20 @@
     this.calculateValue(location);
   };
   Slider.prototype._setFill = function(location){
-    var maxDim = this.options.vertical ? this.$element.outerHeight() : this.$element.outerWidth();
+    // console.log(location);
+    // var v = this.options.vertical
+    // var maxDim = v ? this.$element.outerHeight() : this.$element.outerWidth();
+    // var dim = location > maxDim ? maxDim : location;
+    // var max = 'max-' + (v ? 'height' : 'width');
+    // var xy = v ? 'Y' : 'X';
+    // this.$fill.css({
+    //   'width': '',
+    //   'transition': max + ' 25s ease',
+    //   max: dim + 'px'
+    //   // 'min-width': dim + 'px'
+    // })
     // location = location >= this.$element['outer' + this.options.vertical ? 'Height' : 'Width']() ? this.$element['outer' + this.options.vertical ? 'Height' : 'Width']() : location;
-    this.$fill[this.options.vertical ? 'height' : 'width'](location);
+    // this.$fill[this.options.vertical ? 'height' : 'width'](location);
   };
   Slider.prototype.calculateValue = function(location){
     var val = Math.round((location / this.$element.outerWidth()) * this.options.end);
@@ -220,6 +207,9 @@
     // console.log(this.$input.val(), 'slider val');
   };
   Foundation.plugin(Slider);
+  Math.percent = function(frac, num, dec){
+    return Number((frac / num).toFixed(dec).split('.')[1]);
+  };
   $.fn.hasAttr = function(name) {
      return this.attr(name) !== undefined;
   };
