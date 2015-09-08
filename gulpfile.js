@@ -1,6 +1,6 @@
 var $ = require('gulp-load-plugins')();
 var gulp = require('gulp');
-var octophant = require('octophant');
+var octophant = require('foundation-settings-parser');
 var shipyard = require('shipyard');
 var supercollider = require('supercollider');
 var rimraf = require('rimraf');
