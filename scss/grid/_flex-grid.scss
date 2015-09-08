@@ -69,9 +69,12 @@
   $gutter: $grid-column-gutter
 ) {
   flex: flex-grid-column($columns);
-  padding: {
-    left: $gutter;
-    right: $gutter;
+  padding-left: $gutter;
+  padding-right: $gutter;
+
+  // max-width fixes IE 10/11 not respecting the flex-basis property
+  @if $columns != null and $columns != shrink {
+    max-width: grid-column($columns);
   }
 }
 
@@ -103,6 +106,7 @@
       @for $i from 1 through $grid-column-count {
         .#{$size}-#{$i} {
           flex: flex-grid-column($i);
+          max-width: grid-column($i);
         }
       }
     }

@@ -23,14 +23,14 @@
   padding-left: 2.4rem;
   margin-bottom: 0.5rem;
   box-shadow: none;
-  border-width: 0 0 1px 0;
+  border-width: 1px 0;
 
   &:hover {
     box-shadow: none;
   }
 
   &:focus {
-    border-width: 0 0 1px 0;
+    border-width: 1px 0;
   }
 }
 

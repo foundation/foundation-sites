@@ -38,60 +38,62 @@ $accordion-content-color: foreground($accordion-background, $primary-color);
 /// @type Number | List
 $accordion-content-padding: 1rem !default;
 
-.accordion {
-  list-style-type: none;
-  background: $accordion-background;
-  border: 1px solid $accordion-content-border;
-  margin-left: 0;
+@mixin foundation-accordion {
+  .accordion {
+    list-style-type: none;
+    background: $accordion-background;
+    border: 1px solid $accordion-content-border;
+    margin-left: 0;
 
-  // Default
-  > .accordion-item {
-    .content {
-      padding: $accordion-item-padding;
-      display: none;
-      border-bottom: 1px solid $accordion-content-border;
-    }
+    // Default
+    > .accordion-item {
+      .content {
+        padding: $accordion-item-padding;
+        display: none;
+        border-bottom: 1px solid $accordion-content-border;
+      }
 
-    > a {
-      display: block;
-      padding: $accordion-item-padding;
-      line-height: 1;
-      font-size: 12px;
-      color: $accordion-item-color;
-      position: relative;
-      border-bottom: 1px solid $accordion-content-border;
+      > a {
+        display: block;
+        padding: $accordion-item-padding;
+        line-height: 1;
+        font-size: 12px;
+        color: $accordion-item-color;
+        position: relative;
+        border-bottom: 1px solid $accordion-content-border;
 
-      &:last-child {
+        &:last-child {
+          border-bottom: 0 solid $accordion-content-border;
+        }
+
+        &:hover,
+        &:focus {
+          background: $accordion-item-background-hover;
+        }
+
+        &::before {
+          content: '+';
+          position: absolute;
+          right: 1rem;
+          top: 50%;
+          margin-top: -0.5rem;
+          font-size: 0.9rem;
+        }
+      }
+
+      &:last-child a {
         border-bottom: 0 solid $accordion-content-border;
       }
+    }
 
-      &:hover,
-      &:focus {
+    /// Hover/active state
+    > .is-active {
+      > a {
         background: $accordion-item-background-hover;
-      }
 
-      &::before {
-        content: '+';
-        position: absolute;
-        right: 1rem;
-        top: 50%;
-        margin-top: -0.5rem;
-        font-size: 0.9rem;
-      }
-    }
-
-    &:last-child a {
-      border-bottom: 0 solid $accordion-content-border;
-    }
-  }
-
-  /// Hover/active state
-  > .is-active {
-    > a {
-      background: $accordion-item-background-hover;
-
-      &::before {
-        content: '-';
+        &::before {
+          content: '-';
+        }
       }
     }
   }

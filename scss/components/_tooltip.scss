@@ -90,10 +90,12 @@ $tooltip-pip-offset: 1.25rem;
   }
 }
 
-.has-tip {
-  @include has-tip;
-}
+@mixin foundation-tooltip {
+  .has-tip {
+    @include has-tip;
+  }
 
-.tooltip {
-  @include tooltip;
+  .tooltip {
+    @include tooltip;
+  }
 }

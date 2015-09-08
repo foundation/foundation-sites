@@ -3,8 +3,6 @@
 .docs-header {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-  background: $primary-color;
-  color: $white;
 }
 
 .docs-site-title {
@@ -15,16 +13,17 @@
   margin-right: 1rem;
 
   a {
-    color: $white;
+    color: $black;
 
     &:hover {
-      opacity: 0.75;
+      color: $primary-color;
     }
   }
 
   em {
     font-style: normal;
-    opacity: 0.75;
+    font-weight: normal;
+    color: $dark-gray;
   }
 }
 
