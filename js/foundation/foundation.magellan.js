@@ -59,11 +59,10 @@
               'scrollTop' : scroll_top
             }, settings.duration, settings.easing, function () {
               if (history.pushState) {
-                        history.pushState(null, null, anchor.pathname + '#' + hash);
+                history.pushState(null, null, anchor.pathname + anchor.search + '#' + hash);
+              } else {
+                location.hash = anchor.pathname + anchor.search + '#' + hash;
               }
-                    else {
-                        location.hash = anchor.pathname + '#' + hash;
-                    }
             });
           }
         })
