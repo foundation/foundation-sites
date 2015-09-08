@@ -2,10 +2,6 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-////
-/// @group visibility
-////
-
 /// Hide an element by default, only displaying it above a certain screen size.
 /// @param {Keyword} $size - Breakpoint to use. **Must be a breakpoint defined in `$breakpoints`.**
 @mixin show-for($size) {
