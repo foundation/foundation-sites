@@ -51,19 +51,12 @@ A progress bar can be styled with the `.success`, `.warning`, and `.alert` color
 
 ### Progress Bar with Text
 
-You can add text to a progress bar meter. 
+You can add text inside the meter of a progress bar. Make sure the text you use in the meter is also used in the `aria-valuetext` attribute.
 
-<small>Note: Percentages are easy to fit, but make sure your longer text can fit in the meter if it's set to a lower value.</small>
-
+```html_example
 <div class="progress" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuetext="25 percent" aria-valuemax="100">
-  <span class="progress-meter" style="width:25%">
+  <span class="progress-meter" style="width: 25%">
     <p class="progress-meter-text">25%</p>
   </span>
 </div>
-
-<div class="progress" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuetext="Step 3: Shipping Info" aria-valuemax="100">
-  <span class="progress-meter" style="width:75%">
-    <p class="progress-meter-text">Step 2: Shipping Info</p>
-  </span>
-</div>
-
+```
