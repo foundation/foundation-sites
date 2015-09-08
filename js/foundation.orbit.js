@@ -35,7 +35,7 @@
       // console.log(this);
       if($(this).hasClass('orbit-next')){
         // curSlide = _this.$element.find('li.active');
-        console.log(slide.offset());
+        // console.log(slide.offset());
         Foundation.Motion.animateOut(curSlide, 'slideOutLeft', function(){
           console.log('animation away');
         });
@@ -47,14 +47,14 @@
         //   'left': slide.offset().left + slide.outerWidth()
         // }).addClass('active');
       }
-      else{
-        Foundation.Motion.animateOut(curSlide, 'slideOutRight', function(){
-          console.log('');
-        });
-        Foundation.Motion.animateIn(curSlide.prev(), 'slideInLeft', function(){
-
-        });
-      }
+      // else{
+      //   Foundation.Motion.animateOut(curSlide, 'slideOutRight', function(){
+      //     console.log('');
+      //   });
+      //   Foundation.Motion.animateIn(curSlide.prev(), 'slideInLeft', function(){
+      //
+      //   });
+      // }
     })
     // controls.each(function(){
     //   var $this = this;

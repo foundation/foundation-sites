@@ -22,8 +22,9 @@
     positions: [],
     doubleSided: false,
     steps: 100,
-    decimal: 0
+    decimal: 2
   };
+
   function randomIdGen(length){
     return Math.round((Math.pow(36, length + 1) - Math.random() * Math.pow(36, length))).toString(36).slice(1);
   }
@@ -123,6 +124,25 @@
       offset = e['offset' + (vertical ? 'Y' : 'X')];
       _this.clickSetHandle(offset);
       _this._setFill(offset);
+      Foundation.reflow(_this.$element, 'slider');
+    });
+    this.$handle.on('mousedown.zf.slider touchstart.zf.slider', function(e){
+      $('body').on('mousemove.zf.slider touchmove.zf.slider', function(e){
+        _this.$handle.on('hover.zf.slider', function(e){
+          e.preventDefault();
+          _this.$handle.off('hover').css('transition', 'none');
+          return false;
+        });
+        timer = setTimeout(function(){
+          offset = e['page' + (vertical ? 'Y' : 'X')] - _this.$element.offset()[vertical ? 'top' : 'left'];
+          _this._setHandle(offset);
+        }, 150);
+      }).on('mouseup.zf.slider touchend.zf.slider', function(e){
+        _this._setHandle(offset);
+        // clearTimeout(timer);
+        $('body').off('mousemove.zf.slider touchmove.zf.slider mouseup.zf.slider touchend.zf.slider');
+        Foundation.reflow(_this.$element, 'slider');
+      });
     });
 
   };
@@ -160,13 +180,17 @@
   //   // this._setFill();
   // };
   Slider.prototype._setHandle = function(location){
+    // var translate = this.options.vertical ?
+    //                     '-50%, ' + (location - this.$handle.outerHeight() / 2) + 'px' :
+    //                     (location - this.$handle.outerWidth() / 2) + 'px, -50%';
     var translate = this.options.vertical ?
-                        '-50%, ' + (location - this.$handle.outerHeight() / 2) + 'px' :
-                        (location - this.$handle.outerWidth() / 2) + 'px, -50%';
+    '-50% ' + ((location - this.$handle.outerHeight() / 2) / this.$element.outerHeight()).toFixed(this.options.decimal) * 100 + '%' :
+    ((location - this.$handle.outerWidth() / 2) / this.$element.outerWidth()).toFixed(this.options.decimal) * 100 + '% -50%'
+    console.log(translate);
     var css = {
       'transition': 'all 0s ease',
-      '-webkit-transform': 'translate3d(' + translate +', 0)',
-      'transform': 'translate3d(' + translate + ', 0)',
+      // '-webkit-transform': 'translate3d(' + translate +', 0)',
+      'transform': 'translate(' + translate + ')'
     }
     this.$handle.css(css);
     // var translate = this.options.vertical ? (location - this.$handle.outerHeight() / 2) + 'px' : (location - this.$handle.outerWidth() / 2) + 'px',
@@ -184,6 +208,8 @@
     //   // 'transform': 'translate(' + translate + ')'
     // })
     this.calculateValue(location);
+
+    // Foundation.reflow(this.$element, 'slider');
   };
   Slider.prototype._setFill = function(location){
     // console.log(location);
@@ -208,7 +234,7 @@
   };
   Foundation.plugin(Slider);
   Math.percent = function(frac, num, dec){
-    return Number((frac / num).toFixed(dec).split('.')[1]);
+    return Number(((frac / num) * 100).toFixed(dec));
   };
   $.fn.hasAttr = function(name) {
      return this.attr(name) !== undefined;
