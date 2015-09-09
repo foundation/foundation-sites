@@ -13,7 +13,7 @@
     end: 100,
     // min: start,
     // max: end,
-    step: 1,
+    step: 5,
     initialStart: null,
     initialEnd: null,
     binding: false,
@@ -161,10 +161,18 @@
         //check for closest handle
       }else{
         offsetPct = percent(eleXY, eleDim, this.options.decimal);
-        translate = vertical ? '-50%, ' + offsetPct + '%' : offsetPct + '%, -50%'
+        var pxByPct = Math.round(eleDim * (offsetPct / 100));
+        // var something = percent(this.options.steps, eleDim, this.options.decimal);
+        var pxByStep = (eleDim - this.$handle.outerWidth()) / this.options.steps;
+        var check = pxByPct > pxByStep;
+        var steps = Math.round((pxByPct / pxByStep))
+        var stepsPx = Math.round(steps * pxByStep);
+        // var step = stepsPx >= eleDim ? 
+        translate = vertical ? '-50%, ' + stepsPx + 'px' : stepsPx + 'px, -50%';
+
         // this.setHandle(a,b);
-        this.$handle.css('transform', 'translate: ' + translate);
-        console.log(offsetPct);
+        this.$handle.css('transform', 'translate(' + translate + ')');
+        console.log('pxByStep',pxByStep,'pxByPct', pxByPct, steps);
 
       }
     }else{
