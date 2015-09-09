@@ -57,7 +57,7 @@
     //   var initStart = _this.options.positions[_this.options.initialStart - 1] || null;
     //   var initEnd = _this.options.initialEnd ? _this.options.position[_this.options.initialEnd - 1] : null;
     //   if(initStart || initEnd){
-    //     _this._setHandle(initStart, initEnd);
+    //     _this._handleEvent(initStart, initEnd);
     //   }
     // });
     this._events(this.$handle);
@@ -116,8 +116,8 @@
     this.$element.off('click.zf.slider').on('click.zf.slider', function(e){
       console.log(_this.$element.data('dragging'));
       if(_this.$element.data('dragging')){ return false; }
-      _this._setHandle(e);
-    });//need to check for closest handle on 2-handle sliders in _setHandle()
+      _this._handleEvent(e);
+    });//need to check for closest handle on 2-handle sliders in _handleEvent()
 
     if(this.options.draggable){
       $handle
@@ -128,10 +128,10 @@
 
           $body.on('mousemove.zf.slider touchmove.zf.slider', function(e){
             timer = setTimeout(function(){
-              _this._setHandle(e, curHandle);
+              _this._handleEvent(e, curHandle);
             }, _this.options.dragDelay);
           }).on('mouseup.zf.slider touchend.zf.slider', function(e){
-            _this._setHandle(e, curHandle);
+            _this._handleEvent(e, curHandle);
             clearTimeout(timer);
             Foundation.reflow(_this.$element, 'slider');
             $body.off('mousemove.zf.slider touchmove.zf.slider mouseup.zf.slider touchend.zf.slider');
@@ -140,14 +140,31 @@
     }
 
   };
-  Slider.prototype._setHandle = function(event, $handle){
-    // console.log(event, '\n', $handle);
+  Slider.prototype._handleEvent = function(event, $handle){
+    event.preventDefault();
+    var _this = this,
+        vertical = this.options.vertical,
+        pageXY = vertical ? event.pageY : event.pageX,
+        eleXY = vertical ? event.offsetY : event.offsetX,
+        handleDim = $handle ? vertical ? $handle.outerHeight() : $handle.outerWidth() : null,
+        eleDim = vertical ? this.$element.outerHeight() : this.$element.outerWidth(),
+        offsetPx = ((pageXY - eleDim) - (handleDim / 2)),
+        offsetPct = percent(eleXY, eleDim, this.options.decimal),
+        translate;
+    // console.log(offsetPct);
+
+
+
     if(!$handle){
       if(this.options.doubleSided){
         console.log('two sided click');
         //check for closest handle
       }else{
-        console.log('one handle click');
+        offsetPct = percent(eleXY, eleDim, this.options.decimal);
+        translate = vertical ? '-50%, ' + offsetPct + '%' : offsetPct + '%, -50%'
+        // this.setHandle(a,b);
+        this.$handle.css('transform', 'translate: ' + translate);
+        console.log(offsetPct);
 
       }
     }else{
