@@ -40,6 +40,11 @@ $slider-fill-color: $medium-gray !default;
 /// @type Color
 $slider-background-color: $light-gray !default;
 
+///Chris's additions*****
+
+$slider-handle-transition-time: 0.25s !default;
+$slider-handle-transition: ease-in-out !default;
+///end Chris's additions****
 /// Adds the general styles for sliders.
 @mixin slider {
   background: $slider-background-color;
@@ -68,7 +73,18 @@ $slider-background-color: $light-gray !default;
   height: $slider-handle-height;
   width: $slider-handle-width;
   touch-action: manipulation;
-
+  //chris's addition
+  -webkit-transition: transform $slider-handle-transition-time $slider-handle-transition;
+  -moz-transition: transform $slider-handle-transition-time $slider-handle-transition;
+  -o-transition: transform $slider-handle-transition-time $slider-handle-transition;
+  transition: transform $slider-handle-transition-time $slider-handle-transition;
+  &.dragging {
+    -webkit-transition: none;
+    -moz-transition: none;
+    -o-transition: none;
+    transition: none;
+  }
+  //end chris's addition
   &:hover {
     background: scale-color($slider-handle-color, $lightness: -15%);
   }

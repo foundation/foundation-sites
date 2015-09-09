@@ -46,9 +46,19 @@
     this.$input = inputs[0] ? $(inputs[0]) : $('#' + this.$handle.attr('aria-controls'));
 
     ariaId = this.$input.hasAttr('id') ? this.$input.attr('id') : randomIdGen(6);
-    this.$handle.attr(this._setHandleAttr(ariaId))
-    this.$input.attr(this._setInputAttr(ariaId))
+    this.$handle.attr(this._setHandleAttr(ariaId));
+    this.$input.attr(this._setInputAttr(ariaId));
 
+    this._events(this.$handle);
+    if(handles[1]){
+      this.$handle2 = $(handles[1]);
+      this.$input2 = inputs[1] ? $(inputs[1]) : $('#' + this.$handle2.attr('aria-controls'));
+      var ariaId2 = this.$input2.hasAttr('id') ? this.$input2.attr('id') : randomIdGen(6);
+      this.options.doubleSided = true;
+      this.$handle2.attr(this._setHandleAttr(ariaId2, true));
+      this.$input2.attr(this._setInputAttr(ariaId2, true));
+      this._events(this.$handle2);
+    }
 
 
     //*********this is in case we go to static, absolute positions instead of dynamic positioning********
@@ -60,16 +70,6 @@
     //     _this._handleEvent(initStart, initEnd);
     //   }
     // });
-    this._events(this.$handle);
-    if(handles[1]){
-      this.$handle2 = $(handles[1]);
-      this.$input2 = inputs[1] ? $(inputs[1]) : $('#' + this.$handle2.attr('aria-controls'));
-      var ariaId2 = this.$input2.hasAttr('id') ? this.$input2.attr('id') : randomIdGen(6);
-      this.options.doubleSided = true;
-      this.$handle2.attr(this._setHandleAttr(ariaId2, true));
-      this.$input2.attr(this._setInputAttr(ariaId2, true));
-      this._events(this.$handle2);
-    }
   };
 
   Slider.prototype._setInputAttr = function(id, second){
@@ -123,6 +123,7 @@
       $handle
         .off('mousedown.zf.slider touchstart.zf.slider')
         .on('mousedown.zf.slider touchstart.zf.slider', function(e){
+          $handle.toggleClass('dragging')
           _this.$element.data('dragging', true);
           curHandle = $(e.currentTarget);
 
@@ -144,39 +145,40 @@
     event.preventDefault();
     var _this = this,
         vertical = this.options.vertical,
+        param = vertical ? 'outerHeight' : 'outerWidth',
+        direction = vertical ? 'top' : 'left',
         pageXY = vertical ? event.pageY : event.pageX,
-        eleXY = vertical ? event.offsetY : event.offsetX,
-        handleDim = $handle ? vertical ? $handle.outerHeight() : $handle.outerWidth() : null,
-        eleDim = vertical ? this.$element.outerHeight() : this.$element.outerWidth(),
-        offsetPx = ((pageXY - eleDim) - (handleDim / 2)),
-        offsetPct = percent(eleXY, eleDim, this.options.decimal),
+        barXY = vertical ? event.offsetY : event.offsetX,
+        handleDim = $handle ? $handle[param]() : null,
+        eleDim = this.$element[param](),
+        // offsetPx = ((pageXY - eleDim) - (handleDim / 2)),
+        offsetPct = percent(barXY, eleDim, this.options.decimal),
+        pxByPct = eleDim * (offsetPct / 100),
         translate;
-    // console.log(offsetPct);
-
+    console.log(pxByPct);
 
 
     if(!$handle){
       if(this.options.doubleSided){
-        console.log('two sided click');
+        var firstHndlPos = absPosition(this.$handle, direction, barXY, param),
+            secndHndlPos = absPosition(this.$handle2, direction, barXY, param),
+            curHandle = firstHndlPos <= secndHndlPos ? this.$handle : this.$handle2;
+        console.log(barXY, firstHndlPos, secndHndlPos, curHandle);
         //check for closest handle
       }else{
-        offsetPct = percent(eleXY, eleDim, this.options.decimal);
-        var pxByPct = Math.round(eleDim * (offsetPct / 100));
-        // var something = percent(this.options.steps, eleDim, this.options.decimal);
-        var pxByStep = (eleDim - this.$handle.outerWidth()) / this.options.steps;
-        var check = pxByPct > pxByStep;
-        var steps = Math.round((pxByPct / pxByStep))
+        // var pxByPct = Math.round(eleDim * (offsetPct / 100));
+        var pxByStep = (eleDim - this.$handle[param]()) / this.options.steps;
+        var steps = Math.round((pxByPct / pxByStep));
+        steps = steps > this.options.steps ? this.options.steps : steps < 0 ? 0 : steps;
         var stepsPx = Math.round(steps * pxByStep);
-        // var step = stepsPx >= eleDim ? 
         translate = vertical ? '-50%, ' + stepsPx + 'px' : stepsPx + 'px, -50%';
+        this.$input.val(steps / this.options.steps * this.options.end)
+        console.log(this.$input.val());
 
-        // this.setHandle(a,b);
-        this.$handle.css('transform', 'translate(' + translate + ')');
-        console.log('pxByStep',pxByStep,'pxByPct', pxByPct, steps);
-
+        this.setHandle(stepsPx, this.$handle, vertical);
       }
     }else{
-      this.$element.data('dragging', true);
+      $handle.toggleClass('dragging');
       console.log('dragging something');
       // this.$element.data('dragging', false);
     }
@@ -195,6 +197,13 @@
     // this.$handle.css(css);
     // this.calculateValue(location);
     //
+  };
+  Slider.prototype.setVal = function(){
+
+  };
+  Slider.prototype.setHandle = function(translatePx, $handle, vertical){
+    var translate = vertical ? '-50%, ' + translatePx + 'px' : translatePx + 'px, -50%';
+    $handle.css('transform', 'translate(' + translate + ')')
   };
   Slider.prototype._setFill = function(location){
     // console.log(location);
@@ -218,6 +227,9 @@
   };
   Foundation.plugin(Slider);
 
+  function absPosition($handle, dir, clickPos, param){
+    return Math.abs(($handle.position()[dir] + ($handle[param]() / 2)) - clickPos);
+  }
 
   function percent(frac, num, dec){
     return Number(((frac / num) * 100).toFixed(dec));
