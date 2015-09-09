@@ -25,7 +25,7 @@
     doubleSided: false,
     steps: 100,
     decimal: 2,
-    dragDelay: 200
+    dragDelay: 250
   };
 
   function randomIdGen(length){
@@ -54,6 +54,7 @@
       this.$handle2 = $(handles[1]);
       this.$input2 = inputs[1] ? $(inputs[1]) : $('#' + this.$handle2.attr('aria-controls'));
       var ariaId2 = this.$input2.hasAttr('id') ? this.$input2.attr('id') : randomIdGen(6);
+      var handleId2 = this.$handle2.hasAttr('id') ? this.$handle2.attr('id') : randomIdGen(6);
       this.options.doubleSided = true;
       this.$handle2.attr(this._setHandleAttr(ariaId2, true));
       this.$input2.attr(this._setInputAttr(ariaId2, true));
@@ -79,9 +80,9 @@
     };
   };
 
-  Slider.prototype._setHandleAttr = function(id, second){
+  Slider.prototype._setHandleAttr = function(id, second, handleId){
     return {
-      'id': randomIdGen(6),
+      'id': handleId,
       'role': 'slider',
       'aria-controls': id,
       'aria-valuemax': this.options.end,
@@ -114,7 +115,6 @@
         timer;
     if(this.options.clickSelect){
       this.$element.off('click.zf.slider').on('click.zf.slider', function(e){
-        console.log(_this.$element.data('dragging'));
         if(_this.$element.data('dragging')){ return false; }
         _this._handleEvent(e);
       });//need to check for closest handle on 2-handle sliders in _handleEvent()
@@ -124,7 +124,7 @@
       $handle
         .off('mousedown.zf.slider touchstart.zf.slider')
         .on('mousedown.zf.slider touchstart.zf.slider', function(e){
-          $handle.toggleClass('dragging')
+          $handle.addClass('dragging');
           _this.$element.data('dragging', true);
           curHandle = $(e.currentTarget);
 
@@ -135,6 +135,11 @@
           }).on('mouseup.zf.slider touchend.zf.slider', function(e){
             _this._handleEvent(e, curHandle);
             clearTimeout(timer);
+            _this.$element.on('transitionend.zf.slider', function(){
+              $handle.removeClass('dragging')
+              _this.$element.data('dragging', false);
+              console.log('whats up?');
+            });
             Foundation.reflow(_this.$element, 'slider');
             $body.off('mousemove.zf.slider touchmove.zf.slider mouseup.zf.slider touchend.zf.slider');
           });
@@ -149,11 +154,12 @@
         param = vertical ? 'outerHeight' : 'outerWidth',
         direction = vertical ? 'top' : 'left',
         pageXY = vertical ? event.pageY : event.pageX,
-        barXY = vertical ? event.offsetY : event.offsetX,
-        handleDim = $handle ? $handle[param]() : null,
+        // barXY = vertical ? event.offsetY : event.offsetX,
+        barXY = Math.abs(this.$element.offset()[direction] -  pageXY),
+        // handleDim = $handle ? $handle[param]() : null,
         eleDim = this.$element[param](),
-        offsetPx = ((pageXY - eleDim) - (handleDim / 2)),
-        offsetPxPct = percent(offsetPx, eleDim, this.options.decimal),
+        //  offsetPx = ((pageXY - eleDim) - (handleDim / 2)),
+        // offsetPxPct = percent(offsetPx, eleDim, this.options.decimal),
         offsetPct = percent(barXY, eleDim, this.options.decimal),
         pxByPct = eleDim * (offsetPct / 100),
         pxByStep = (eleDim - this.$handle[param]()) / this.options.steps,
@@ -161,7 +167,8 @@
         steps = attemptedSteps > this.options.steps ? this.options.steps : attemptedSteps < 0 ? 0 : attemptedSteps,
         stepsPx = Math.round(steps * pxByStep),
         translate;
-    console.log(pageXY, barXY, offsetPx);
+    // console.log(pageXY, barXY, offsetPx);
+    console.log(Math.abs(this.$element.offset().left -  pageXY), pageXY, barXY);
     // console.log(offsetPx, offsetPxPct, offsetPct);
 
 
@@ -189,7 +196,9 @@
       }
     }else{
       // $handle.toggleClass('dragging');
-      this.setHandle(stepsPx, $handle, vertical);
+      this.setHandle(stepsPx, $handle, vertical, function(){
+        // $handle.removeClass('dragging');
+      });
       // console.log('dragging something');
       this.$element.data('dragging', false);
     }
