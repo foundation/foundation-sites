@@ -11,6 +11,8 @@
   Slider.defaults = {
     start: 0,
     end: 100,
+    // min: start,
+    // max: end,
     step: 1,
     initialStart: null,
     initialEnd: null,
@@ -22,7 +24,8 @@
     positions: [],
     doubleSided: false,
     steps: 100,
-    decimal: 2
+    decimal: 2,
+    dragDelay: 200
   };
 
   function randomIdGen(length){
@@ -46,28 +49,7 @@
     this.$handle.attr(this._setHandleAttr(ariaId))
     this.$input.attr(this._setInputAttr(ariaId))
 
-    if(handles[1]){
-      this.$handle2 = $(handles[1]);
-      this.$input2 = inputs[1] ? $(inputs[1]) : $('#' + this.$handle2.attr('aria-controls'));
-      var ariaId2 = this.$input2.hasAttr('id') ? this.$input2.attr('id') : randomIdGen(6);
-      this.options.doubleSided = true;
-      this.$handle2.attr(this._setHandleAttr(ariaId2, true));
-      this.$input2.attr(this._setInputAttr(ariaId2, true));
-      this._events(this.$handle2);
-    }
 
-    // if(this.options.initial){
-    //   // startPoint = (this.options.initial / this.options.end).toFixed(2).split('.')[1] + '%';
-    //   startPoint = (((this.options.initial / this.options.end).toFixed(2) * this.$element.outerWidth()) - this.$handle.outerWidth() / 2) + 'px';
-    //   this.$handle.css('transform', 'translate('+ startPoint + ', -50%)');
-    //   this.$fill.width(startPoint);
-    //   // console.log(((this.$element.outerWidth()) - Math.round(this.$handle.outerWidth() / 2)) / 2 );
-    //   // console.log(Foundation.GetDimensions(this.$handle) , '\n', startPoint);
-    //
-    // }else{
-    //   startPoint = 0;
-    //   this.$handle.css('left', startPoint);
-    // }
 
     //*********this is in case we go to static, absolute positions instead of dynamic positioning********
     // this.setSteps(function(){
@@ -79,6 +61,15 @@
     //   }
     // });
     this._events(this.$handle);
+    if(handles[1]){
+      this.$handle2 = $(handles[1]);
+      this.$input2 = inputs[1] ? $(inputs[1]) : $('#' + this.$handle2.attr('aria-controls'));
+      var ariaId2 = this.$input2.hasAttr('id') ? this.$input2.attr('id') : randomIdGen(6);
+      this.options.doubleSided = true;
+      this.$handle2.attr(this._setHandleAttr(ariaId2, true));
+      this.$input2.attr(this._setInputAttr(ariaId2, true));
+      this._events(this.$handle2);
+    }
   };
 
   Slider.prototype._setInputAttr = function(id, second){
@@ -90,6 +81,7 @@
 
   Slider.prototype._setHandleAttr = function(id, second){
     return {
+      'id': randomIdGen(6),
       'role': 'slider',
       'aria-controls': id,
       'aria-valuemax': this.options.end,
@@ -117,99 +109,67 @@
   Slider.prototype._events = function($handle){
     if(this.options.disabled){ return false; }
     var _this = this,
-        vertical = this.options.vertical,
-        offset,
+        $body = $('body'),
+        curHandle,
         timer;
-    this.$element.off().on('click.zf.slider touchend.zf.slider', function(e){
-      offset = e['offset' + (vertical ? 'Y' : 'X')];
-      _this.clickSetHandle(offset);
-      _this._setFill(offset);
-      Foundation.reflow(_this.$element, 'slider');
-    });
-    this.$handle.on('mousedown.zf.slider touchstart.zf.slider', function(e){
-      $('body').on('mousemove.zf.slider touchmove.zf.slider', function(e){
-        _this.$handle.on('hover.zf.slider', function(e){
-          e.preventDefault();
-          _this.$handle.off('hover').css('transition', 'none');
-          return false;
-        });
-        timer = setTimeout(function(){
-          offset = e['page' + (vertical ? 'Y' : 'X')] - _this.$element.offset()[vertical ? 'top' : 'left'];
-          _this._setHandle(offset);
-        }, 150);
-      }).on('mouseup.zf.slider touchend.zf.slider', function(e){
-        _this._setHandle(offset);
-        // clearTimeout(timer);
-        $('body').off('mousemove.zf.slider touchmove.zf.slider mouseup.zf.slider touchend.zf.slider');
-        Foundation.reflow(_this.$element, 'slider');
+
+    this.$element.off('click.zf.slider').on('click.zf.slider', function(e){
+      console.log(_this.$element.data('dragging'));
+      if(_this.$element.data('dragging')){ return false; }
+      _this._setHandle(e);
+    });//need to check for closest handle on 2-handle sliders in _setHandle()
+
+    if(this.options.draggable){
+      $handle
+        .off('mousedown.zf.slider touchstart.zf.slider')
+        .on('mousedown.zf.slider touchstart.zf.slider', function(e){
+          _this.$element.data('dragging', true);
+          curHandle = $(e.currentTarget);
+
+          $body.on('mousemove.zf.slider touchmove.zf.slider', function(e){
+            timer = setTimeout(function(){
+              _this._setHandle(e, curHandle);
+            }, _this.options.dragDelay);
+          }).on('mouseup.zf.slider touchend.zf.slider', function(e){
+            _this._setHandle(e, curHandle);
+            clearTimeout(timer);
+            Foundation.reflow(_this.$element, 'slider');
+            $body.off('mousemove.zf.slider touchmove.zf.slider mouseup.zf.slider touchend.zf.slider');
+          });
       });
-    });
-
-  };
-  Slider.prototype.clickSetHandle = function(location){
-    // console.log(((location / this.$element.outerWidth()).toFixed(2) * 1) + 1);
-    console.log(Math.percent(location, this.$element.outerWidth(), 2));
-    var translate = this.options.vertical ?
-                        '-50%, ' + (location - this.$handle.outerHeight() / 2) + 'px' :
-                        (location - this.$handle.outerWidth() / 2) + 'px, -50%';
-    this.$handle.css({
-      'transition': 'all .25s ease',
-      'transform': 'translate(' + translate + ')'
-    });
-    this._setFill(location);
-    // this.$fill.css({
-    //   'transition': 'all .25s ease',
-    //   'width': '50%'
-    // });
-  };
-  // Slider.prototype._setHandle = function(lowPos, highPos){
-  //   lowPos = lowPos.toFixed(2);
-  //   var transLow = lowPos ? this.options.vertical ? '-50%,' + lowPos + 'px': lowPos + 'px, -50%' : this.options.vertical ? '-50%, 0px' : '0px, -50%';
-  //   var transHigh = (highPos && this.options.doubleSided) ? this.options.vertical ? '-50%,' + highPos + 'px': highPos + 'px, -50%' : this.options.vertical ? '-50%, 0px' : '0px, -50%';
-  //   console.log(transLow);
-  //   this.$handle.css({
-  //     'transform': 'translate(' + transLow + ')',
-  //     '-webkit-transform': 'translate(' + transLow + ')'
-  //   });
-  //   if(this.options.doubleSided){
-  //     this.$handle2.css({
-  //       'transform': 'translate(' + transHigh + ')',
-  //       '-webkit-transform': 'translate(' + transHigh + ')'
-  //     });
-  //   }
-  //   // this._setFill();
-  // };
-  Slider.prototype._setHandle = function(location){
-    // var translate = this.options.vertical ?
-    //                     '-50%, ' + (location - this.$handle.outerHeight() / 2) + 'px' :
-    //                     (location - this.$handle.outerWidth() / 2) + 'px, -50%';
-    var translate = this.options.vertical ?
-    '-50% ' + ((location - this.$handle.outerHeight() / 2) / this.$element.outerHeight()).toFixed(this.options.decimal) * 100 + '%' :
-    ((location - this.$handle.outerWidth() / 2) / this.$element.outerWidth()).toFixed(this.options.decimal) * 100 + '% -50%'
-    console.log(translate);
-    var css = {
-      'transition': 'all 0s ease',
-      // '-webkit-transform': 'translate3d(' + translate +', 0)',
-      'transform': 'translate(' + translate + ')'
     }
-    this.$handle.css(css);
-    // var translate = this.options.vertical ? (location - this.$handle.outerHeight() / 2) + 'px' : (location - this.$handle.outerWidth() / 2) + 'px',
-        // orientation = this.options.vertical ? 'translateY' : 'translateX';
-    // this.$handle.css({
-    //   // 'transform': orientation + '(' + translate + ')'
-    //   // '-webkit-transform': 'translateZ(0)',
-    //   // 'transform': 'translateZ(0)',
-    //   'transition': 'all 0s ease',
-    //   '-webkit-transform': 'translate3d(' + translate +', 0)',
-    //   'transform': 'translate3d(' + translate + ', 0)',
-    //   'filter': 'blur(0)',
-    //   '-webkit-filter': 'blur(0)'
-    //   // '-webkit-transform': 'translate(' + translate +')',
-    //   // 'transform': 'translate(' + translate + ')'
-    // })
-    this.calculateValue(location);
 
-    // Foundation.reflow(this.$element, 'slider');
+  };
+  Slider.prototype._setHandle = function(event, $handle){
+    // console.log(event, '\n', $handle);
+    if(!$handle){
+      if(this.options.doubleSided){
+        console.log('two sided click');
+        //check for closest handle
+      }else{
+        console.log('one handle click');
+
+      }
+    }else{
+      this.$element.data('dragging', true);
+      console.log('dragging something');
+      // this.$element.data('dragging', false);
+    }
+    // // var translate = this.options.vertical ?
+    // //                     '-50%, ' + (location - this.$handle.outerHeight() / 2) + 'px' :
+    // //                     (location - this.$handle.outerWidth() / 2) + 'px, -50%';
+    // var translate = this.options.vertical ?
+    // '-50% ' + ((location - this.$handle.outerHeight() / 2) / this.$element.outerHeight()).toFixed(this.options.decimal) * 100 + '%' :
+    // ((location - this.$handle.outerWidth() / 2) / this.$element.outerWidth()).toFixed(this.options.decimal) * 100 + '% -50%'
+    // console.log(translate);
+    // var css = {
+    //   'transition': 'all 0s ease',
+    //   // '-webkit-transform': 'translate3d(' + translate +', 0)',
+    //   'transform': 'translate(' + translate + ')'
+    // }
+    // this.$handle.css(css);
+    // this.calculateValue(location);
+    //
   };
   Slider.prototype._setFill = function(location){
     // console.log(location);
@@ -230,10 +190,11 @@
   Slider.prototype.calculateValue = function(location){
     var val = Math.round((location / this.$element.outerWidth()) * this.options.end);
     this.$input.val(val);
-    // console.log(this.$input.val(), 'slider val');
   };
   Foundation.plugin(Slider);
-  Math.percent = function(frac, num, dec){
+
+
+  function percent(frac, num, dec){
     return Number(((frac / num) * 100).toFixed(dec));
   };
   $.fn.hasAttr = function(name) {
