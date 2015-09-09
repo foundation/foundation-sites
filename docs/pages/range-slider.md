@@ -31,6 +31,17 @@ Let's get vertical. Just add a `vertical` class to `slider` `<div>`.
 </div>
 ```
 
+
+
+<!-- ```html_example
+<div class="slider vertical" data-slider>
+  <span class="slider-handle" data-slider-handle style="transform: translate( -50%, 100px);" role="slider" tabindex="5" aria-controls='vertSlideOutput'></span>
+  <span class="slider-fill" style="height: 100px"></span>
+</div>
+
+<input type='number' id='vertSlideOutput'>
+``` -->
+
 ---
 
 ## Disabled

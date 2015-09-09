@@ -30,7 +30,7 @@ $slider-handle-color: $primary-color !default;
 
 /// Defualt fade amount of a disabled slider.
 /// @type Number
-$slider-disabled-fade: 0.5 !default;
+$slider-disabled-fade: 0.25s !default;
 
 /// Defualt color of the active fill color of the slider.
 /// @type Color
@@ -42,7 +42,7 @@ $slider-background-color: $light-gray !default;
 
 ///Chris's additions*****
 
-$slider-handle-transition-time: 0.25s !default;
+$slider-handle-transition-time: 0.5s !default;
 $slider-handle-transition: ease-in-out !default;
 ///end Chris's additions****
 /// Adds the general styles for sliders.

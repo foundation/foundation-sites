@@ -21,7 +21,7 @@
     vertical: false,
     draggable: true,
     disabled: false,
-    positions: [],
+    // positions: [],
     doubleSided: false,
     steps: 100,
     decimal: 2,
@@ -112,12 +112,13 @@
         $body = $('body'),
         curHandle,
         timer;
-
-    this.$element.off('click.zf.slider').on('click.zf.slider', function(e){
-      console.log(_this.$element.data('dragging'));
-      if(_this.$element.data('dragging')){ return false; }
-      _this._handleEvent(e);
-    });//need to check for closest handle on 2-handle sliders in _handleEvent()
+    if(this.options.clickSelect){
+      this.$element.off('click.zf.slider').on('click.zf.slider', function(e){
+        console.log(_this.$element.data('dragging'));
+        if(_this.$element.data('dragging')){ return false; }
+        _this._handleEvent(e);
+      });//need to check for closest handle on 2-handle sliders in _handleEvent()
+    }
 
     if(this.options.draggable){
       $handle
@@ -151,11 +152,17 @@
         barXY = vertical ? event.offsetY : event.offsetX,
         handleDim = $handle ? $handle[param]() : null,
         eleDim = this.$element[param](),
-        // offsetPx = ((pageXY - eleDim) - (handleDim / 2)),
+        offsetPx = ((pageXY - eleDim) - (handleDim / 2)),
+        offsetPxPct = percent(offsetPx, eleDim, this.options.decimal),
         offsetPct = percent(barXY, eleDim, this.options.decimal),
         pxByPct = eleDim * (offsetPct / 100),
+        pxByStep = (eleDim - this.$handle[param]()) / this.options.steps,
+        attemptedSteps = Math.round((pxByPct / pxByStep)),
+        steps = attemptedSteps > this.options.steps ? this.options.steps : attemptedSteps < 0 ? 0 : attemptedSteps,
+        stepsPx = Math.round(steps * pxByStep),
         translate;
-    console.log(pxByPct);
+    console.log(pageXY, barXY, offsetPx);
+    // console.log(offsetPx, offsetPxPct, offsetPct);
 
 
     if(!$handle){
@@ -163,24 +170,28 @@
         var firstHndlPos = absPosition(this.$handle, direction, barXY, param),
             secndHndlPos = absPosition(this.$handle2, direction, barXY, param),
             curHandle = firstHndlPos <= secndHndlPos ? this.$handle : this.$handle2;
-        console.log(barXY, firstHndlPos, secndHndlPos, curHandle);
+        this.setHandle(stepsPx, curHandle, vertical, function(){
+          // console.log('moving finished');
+        });
+        // console.log(barXY, firstHndlPos, secndHndlPos, curHandle);
         //check for closest handle
       }else{
         // var pxByPct = Math.round(eleDim * (offsetPct / 100));
-        var pxByStep = (eleDim - this.$handle[param]()) / this.options.steps;
-        var steps = Math.round((pxByPct / pxByStep));
-        steps = steps > this.options.steps ? this.options.steps : steps < 0 ? 0 : steps;
-        var stepsPx = Math.round(steps * pxByStep);
-        translate = vertical ? '-50%, ' + stepsPx + 'px' : stepsPx + 'px, -50%';
+        // var pxByStep = (eleDim - this.$handle[param]()) / this.options.steps;
+        // var steps = Math.round((pxByPct / pxByStep));
+        // steps = steps > this.options.steps ? this.options.steps : steps < 0 ? 0 : steps;
+        // var stepsPx = Math.round(steps * pxByStep);
+        // translate = vertical ? '-50%, ' + stepsPx + 'px' : stepsPx + 'px, -50%';
         this.$input.val(steps / this.options.steps * this.options.end)
-        console.log(this.$input.val());
+        // console.log(this.$input.val());
 
         this.setHandle(stepsPx, this.$handle, vertical);
       }
     }else{
-      $handle.toggleClass('dragging');
-      console.log('dragging something');
-      // this.$element.data('dragging', false);
+      // $handle.toggleClass('dragging');
+      this.setHandle(stepsPx, $handle, vertical);
+      // console.log('dragging something');
+      this.$element.data('dragging', false);
     }
     // // var translate = this.options.vertical ?
     // //                     '-50%, ' + (location - this.$handle.outerHeight() / 2) + 'px' :
@@ -201,9 +212,10 @@
   Slider.prototype.setVal = function(){
 
   };
-  Slider.prototype.setHandle = function(translatePx, $handle, vertical){
+  Slider.prototype.setHandle = function(translatePx, $handle, vertical, cb){
     var translate = vertical ? '-50%, ' + translatePx + 'px' : translatePx + 'px, -50%';
-    $handle.css('transform', 'translate(' + translate + ')')
+    $handle.css('transform', 'translate(' + translate + ')');
+    if(cb) cb();
   };
   Slider.prototype._setFill = function(location){
     // console.log(location);
