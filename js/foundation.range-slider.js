@@ -13,7 +13,7 @@
     end: 100,
     // min: start,
     // max: end,
-    step: 5,
+    step: 20,
     initialStart: null,
     initialEnd: null,
     binding: false,
@@ -125,6 +125,7 @@
         .off('mousedown.zf.slider touchstart.zf.slider')
         .on('mousedown.zf.slider touchstart.zf.slider', function(e){
           $handle.addClass('dragging');
+          _this.$fill.addClass('dragging');
           _this.$element.data('dragging', true);
           curHandle = $(e.currentTarget);
 
@@ -136,11 +137,12 @@
             _this._handleEvent(e, curHandle);
             clearTimeout(timer);
             _this.$element.on('transitionend.zf.slider', function(){
-              $handle.removeClass('dragging')
+              $handle.removeClass('dragging');
+              _this.$fill.removeClass('dragging');
               _this.$element.data('dragging', false);
-              console.log('whats up?');
             });
             Foundation.reflow(_this.$element, 'slider');
+            // console.log(_this.$input.val());
             $body.off('mousemove.zf.slider touchmove.zf.slider mouseup.zf.slider touchend.zf.slider');
           });
       });
@@ -154,12 +156,8 @@
         param = vertical ? 'outerHeight' : 'outerWidth',
         direction = vertical ? 'top' : 'left',
         pageXY = vertical ? event.pageY : event.pageX,
-        // barXY = vertical ? event.offsetY : event.offsetX,
         barXY = Math.abs(this.$element.offset()[direction] -  pageXY),
-        // handleDim = $handle ? $handle[param]() : null,
         eleDim = this.$element[param](),
-        //  offsetPx = ((pageXY - eleDim) - (handleDim / 2)),
-        // offsetPxPct = percent(offsetPx, eleDim, this.options.decimal),
         offsetPct = percent(barXY, eleDim, this.options.decimal),
         pxByPct = eleDim * (offsetPct / 100),
         pxByStep = (eleDim - this.$handle[param]()) / this.options.steps,
@@ -167,10 +165,6 @@
         steps = attemptedSteps > this.options.steps ? this.options.steps : attemptedSteps < 0 ? 0 : attemptedSteps,
         stepsPx = Math.round(steps * pxByStep),
         translate;
-    // console.log(pageXY, barXY, offsetPx);
-    console.log(Math.abs(this.$element.offset().left -  pageXY), pageXY, barXY);
-    // console.log(offsetPx, offsetPxPct, offsetPct);
-
 
     if(!$handle){
       if(this.options.doubleSided){
@@ -178,69 +172,35 @@
             secndHndlPos = absPosition(this.$handle2, direction, barXY, param),
             curHandle = firstHndlPos <= secndHndlPos ? this.$handle : this.$handle2;
         this.setHandle(stepsPx, curHandle, vertical, function(){
-          // console.log('moving finished');
         });
-        // console.log(barXY, firstHndlPos, secndHndlPos, curHandle);
-        //check for closest handle
       }else{
-        // var pxByPct = Math.round(eleDim * (offsetPct / 100));
-        // var pxByStep = (eleDim - this.$handle[param]()) / this.options.steps;
-        // var steps = Math.round((pxByPct / pxByStep));
-        // steps = steps > this.options.steps ? this.options.steps : steps < 0 ? 0 : steps;
-        // var stepsPx = Math.round(steps * pxByStep);
-        // translate = vertical ? '-50%, ' + stepsPx + 'px' : stepsPx + 'px, -50%';
-        this.$input.val(steps / this.options.steps * this.options.end)
-        // console.log(this.$input.val());
+        // var $input =
 
+        // this.$input.val(steps / this.options.steps * this.options.end)
         this.setHandle(stepsPx, this.$handle, vertical);
       }
     }else{
-      // $handle.toggleClass('dragging');
       this.setHandle(stepsPx, $handle, vertical, function(){
-        // $handle.removeClass('dragging');
       });
-      // console.log('dragging something');
       this.$element.data('dragging', false);
     }
-    // // var translate = this.options.vertical ?
-    // //                     '-50%, ' + (location - this.$handle.outerHeight() / 2) + 'px' :
-    // //                     (location - this.$handle.outerWidth() / 2) + 'px, -50%';
-    // var translate = this.options.vertical ?
-    // '-50% ' + ((location - this.$handle.outerHeight() / 2) / this.$element.outerHeight()).toFixed(this.options.decimal) * 100 + '%' :
-    // ((location - this.$handle.outerWidth() / 2) / this.$element.outerWidth()).toFixed(this.options.decimal) * 100 + '% -50%'
-    // console.log(translate);
-    // var css = {
-    //   'transition': 'all 0s ease',
-    //   // '-webkit-transform': 'translate3d(' + translate +', 0)',
-    //   'transform': 'translate(' + translate + ')'
-    // }
-    // this.$handle.css(css);
-    // this.calculateValue(location);
-    //
+    this._setFill(steps);
+    this.setVal(steps);
   };
-  Slider.prototype.setVal = function(){
-
+  Slider.prototype.setVal = function(steps){
+    // console.log(Math.round(steps / this.options.steps * this.options.end));
+    this.$input.val(Math.round(steps / this.options.steps * this.options.end));
   };
   Slider.prototype.setHandle = function(translatePx, $handle, vertical, cb){
     var translate = vertical ? '-50%, ' + translatePx + 'px' : translatePx + 'px, -50%';
     $handle.css('transform', 'translate(' + translate + ')');
     if(cb) cb();
   };
-  Slider.prototype._setFill = function(location){
-    // console.log(location);
-    // var v = this.options.vertical
-    // var maxDim = v ? this.$element.outerHeight() : this.$element.outerWidth();
-    // var dim = location > maxDim ? maxDim : location;
-    // var max = 'max-' + (v ? 'height' : 'width');
-    // var xy = v ? 'Y' : 'X';
-    // this.$fill.css({
-    //   'width': '',
-    //   'transition': max + ' 25s ease',
-    //   max: dim + 'px'
-    //   // 'min-width': dim + 'px'
-    // })
-    // location = location >= this.$element['outer' + this.options.vertical ? 'Height' : 'Width']() ? this.$element['outer' + this.options.vertical ? 'Height' : 'Width']() : location;
-    // this.$fill[this.options.vertical ? 'height' : 'width'](location);
+  Slider.prototype._setFill = function(steps){
+    console.log(Math.round(steps / this.options.steps * this.options.end));
+    // this.$fill.css('t')
+    this.$fill.css({'max-width': Math.round(steps / this.options.steps * this.options.end) + '%', 'width': Math.round(steps / this.options.steps * this.options.end) + '%'});
+    console.log(this.$fill.css('max-width'));
   };
   Slider.prototype.calculateValue = function(location){
     var val = Math.round((location / this.$element.outerWidth()) * this.options.end);

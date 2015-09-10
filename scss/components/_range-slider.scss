@@ -61,6 +61,17 @@ $slider-handle-transition: ease-in-out !default;
   display: inline-block;
   height: $slider-height;
   position: absolute;
+  //chris addition
+  -webkit-transition: all $slider-handle-transition-time $slider-handle-transition;
+  -moz-transition: all $slider-handle-transition-time $slider-handle-transition;
+  -o-transition: all $slider-handle-transition-time $slider-handle-transition;
+  transition: all $slider-handle-transition-time $slider-handle-transition;
+  &.dragging {
+    -webkit-transition: none;
+    -moz-transition: none;
+    -o-transition: none;
+    transition: none;
+  }
 }
 
 /// Adds the general styles for the slider handles.
