@@ -40,11 +40,18 @@ $slider-fill-color: $medium-gray !default;
 /// @type Color
 $slider-background-color: $light-gray !default;
 
-///Chris's additions*****
+//Chris's additions*****
 
-$slider-handle-transition-time: 0.5s !default;
-$slider-handle-transition: ease-in-out !default;
-///end Chris's additions****
+/// Default time to move slider handle and fill
+/// @type Number
+$slider-transition-time: 0.25s !default;
+
+/// Default transition animation for handle and fill
+/// @type Transition
+$slider-transition: ease-in-out !default;
+
+//end Chris's additions****
+
 /// Adds the general styles for sliders.
 @mixin slider {
   background: $slider-background-color;
@@ -62,10 +69,10 @@ $slider-handle-transition: ease-in-out !default;
   height: $slider-height;
   position: absolute;
   //chris addition
-  -webkit-transition: all $slider-handle-transition-time $slider-handle-transition;
-  -moz-transition: all $slider-handle-transition-time $slider-handle-transition;
-  -o-transition: all $slider-handle-transition-time $slider-handle-transition;
-  transition: all $slider-handle-transition-time $slider-handle-transition;
+  -webkit-transition: all $slider-transition-time $slider-transition;
+  -moz-transition: all $slider-transition-time $slider-transition;
+  -o-transition: all $slider-transition-time $slider-transition;
+  transition: all $slider-transition-time $slider-transition;
   &.dragging {
     -webkit-transition: none;
     -moz-transition: none;
@@ -85,10 +92,11 @@ $slider-handle-transition: ease-in-out !default;
   width: $slider-handle-width;
   touch-action: manipulation;
   //chris's addition
-  -webkit-transition: transform $slider-handle-transition-time $slider-handle-transition;
-  -moz-transition: transform $slider-handle-transition-time $slider-handle-transition;
-  -o-transition: transform $slider-handle-transition-time $slider-handle-transition;
-  transition: transform $slider-handle-transition-time $slider-handle-transition;
+  position: absolute;
+  -webkit-transition: transform $slider-transition-time $slider-transition;
+  -moz-transition: transform $slider-transition-time $slider-transition;
+  -o-transition: transform $slider-transition-time $slider-transition;
+  transition: transform $slider-transition-time $slider-transition;
   &.dragging {
     -webkit-transition: none;
     -moz-transition: none;

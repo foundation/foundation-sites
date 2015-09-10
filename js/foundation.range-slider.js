@@ -13,7 +13,7 @@
     end: 100,
     // min: start,
     // max: end,
-    step: 20,
+    step: 1,
     initialStart: null,
     initialEnd: null,
     binding: false,
@@ -117,7 +117,7 @@
       this.$element.off('click.zf.slider').on('click.zf.slider', function(e){
         if(_this.$element.data('dragging')){ return false; }
         _this._handleEvent(e);
-      });//need to check for closest handle on 2-handle sliders in _handleEvent()
+      });
     }
 
     if(this.options.draggable){
@@ -180,27 +180,49 @@
         this.setHandle(stepsPx, this.$handle, vertical);
       }
     }else{
-      this.setHandle(stepsPx, $handle, vertical, function(){
+      this.setHandle(stepsPx, $handle, vertical, steps, function(){
       });
       this.$element.data('dragging', false);
     }
-    this._setFill(steps);
+    this._setFill(steps, stepsPx);
     this.setVal(steps);
   };
   Slider.prototype.setVal = function(steps){
     // console.log(Math.round(steps / this.options.steps * this.options.end));
     this.$input.val(Math.round(steps / this.options.steps * this.options.end));
   };
-  Slider.prototype.setHandle = function(translatePx, $handle, vertical, cb){
-    var translate = vertical ? '-50%, ' + translatePx + 'px' : translatePx + 'px, -50%';
+  Slider.prototype.setHandle = function(translatePx, $handle, vertical, steps, cb){
+    var pct = percent(translatePx, vertical ? $handle.outerHeight() : $handle.outerWidth(), this.options.decimal) + '%';
+
+    // var translate = vertical ? '-50%, ' + translatePx + 'px' : translatePx + 'px, -50%';
+    var translate = vertical ? '-50%, ' + pct : pct + ', -50%';
     $handle.css('transform', 'translate(' + translate + ')');
-    if(cb) cb();
+    // if(cb) cb();
+    // this.$handle.offset({'left': Math.round(steps / this.options.steps * this.options.end) + '%', 'height': '-50%'});
   };
-  Slider.prototype._setFill = function(steps){
-    console.log(Math.round(steps / this.options.steps * this.options.end));
+  Slider.prototype._setFill = function(steps, px){
+    // console.log(Math.round(steps / this.options.steps * this.options.end));
     // this.$fill.css('t')
-    this.$fill.css({'max-width': Math.round(steps / this.options.steps * this.options.end) + '%', 'width': Math.round(steps / this.options.steps * this.options.end) + '%'});
-    console.log(this.$fill.css('max-width'));
+    if(!this.options.doubleSided){
+      this.$fill.css({'max-width': Math.round(steps / this.options.steps * this.options.end) + '%', 'width': Math.round(steps / this.options.steps * this.options.end) + '%'});
+    }else{
+      var something = Math.min(Math.abs(px - this.$handle.position().left), Math.abs(px - this.$handle2.position().left))
+      var which = Math.abs(px - this.$handle.position().left) < Math.abs(px - this.$handle2.position().left) ? this.$handle : this.$handle2;
+      var bool = Math.abs(px - this.$handle.position().left) < Math.abs(px - this.$handle2.position().left);
+      var half = this.$handle.outerWidth() / 2;
+      // console.log(this.$handle.position(), this.$handle2.position(), px + 'px', something, bool);
+      if(bool){
+        // console.log('left handle');
+        //change offset left/top
+        console.log(px - this.$handle2.position().left + half + 'px');
+        this.$fill.css({'left': px + half + 'px', 'max-width': this.$handle2.position().left + half + 'px', 'width': Math.abs(px - this.$handle2.position().left) - half + 'px'});
+      }else{
+        // change max width/height
+        this.$fill.css({'max-width': px + half + 'px', 'width': px - this.$handle.position().left + half, 'left': this.$handle.position().left + half});
+      }
+      // this.$fill.
+    }
+    // console.log(this.$fill.css('max-width'));
   };
   Slider.prototype.calculateValue = function(location){
     var val = Math.round((location / this.$element.outerWidth()) * this.options.end);

@@ -79,9 +79,11 @@ Oh... You might need two handles? Don't fret. We got you covered. Hook it up wit
 Wait, you want a visible input AND a slider? You're crazy, but ok. Change the value of either and see the other match it. Note that you have to set an `id` for the `input` and add the `aria-controls='idOfInput'` to the slider handle.
 
 ```html_example
-<div class="slider small-10 columns" data-slider data-initial-start='50' >
+<div class='small-10 columns'>
+<div class="slider" data-slider data-initial-start='50' >
   <span class="slider-handle"  data-slider-handle role="slider" tabindex="1" aria-controls='sliderOutput1'></span>
   <span class="slider-fill" data-slider-fill></span>
+</div>
 </div>
 <div class='small-2 columns'>
   <input type="number" id='sliderOutput1'>
