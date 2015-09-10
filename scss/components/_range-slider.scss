@@ -8,7 +8,7 @@
 /// @group table
 ////
 
-/// Defualt height of the slider.
+/// Default height of the slider.
 /// @type Number
 $slider-height: 0.5rem !default;
 
@@ -20,19 +20,19 @@ $vertical-slider-width: $slider-height !default;
 /// @type Number
 $slider-handle-height: 1.4rem !default;
 
-/// Defualt width of the handle of the slider.
+/// Default width of the handle of the slider.
 /// @type Number
 $slider-handle-width: 1.4rem !default;
 
-/// Defualt color of the handle for the slider.
+/// Default color of the handle for the slider.
 /// @type Color
 $slider-handle-color: $primary-color !default;
 
-/// Defualt fade amount of a disabled slider.
+/// Default fade amount of a disabled slider.
 /// @type Number
 $slider-disabled-fade: 0.25s !default;
 
-/// Defualt color of the active fill color of the slider.
+/// Default color of the active fill color of the slider.
 /// @type Color
 $slider-fill-color: $medium-gray !default;
 
@@ -44,7 +44,7 @@ $slider-background-color: $light-gray !default;
 
 /// Default time to move slider handle and fill
 /// @type Number
-$slider-transition-time: 0.25s !default;
+$slider-transition-time: 0s !default;
 
 /// Default transition animation for handle and fill
 /// @type Transition

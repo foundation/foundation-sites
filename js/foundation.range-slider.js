@@ -60,17 +60,6 @@
       this.$input2.attr(this._setInputAttr(ariaId2, true));
       this._events(this.$handle2);
     }
-
-
-    //*********this is in case we go to static, absolute positions instead of dynamic positioning********
-    // this.setSteps(function(){
-    //   _this._events();
-    //   var initStart = _this.options.positions[_this.options.initialStart - 1] || null;
-    //   var initEnd = _this.options.initialEnd ? _this.options.position[_this.options.initialEnd - 1] : null;
-    //   if(initStart || initEnd){
-    //     _this._handleEvent(initStart, initEnd);
-    //   }
-    // });
   };
 
   Slider.prototype._setInputAttr = function(id, second){
@@ -91,21 +80,6 @@
       'aria-orientation': this.options.vertical ? 'vertical' : 'horizontal'
     };
   };
-
-  //***********the other part of absolute positions*************
-  // Slider.prototype.setSteps = function(cb){
-  //   var posChange = this.$element.outerWidth() / this.options.steps;
-  //   var counter = 0
-  //   while(counter < this.options.steps){
-  //     if(counter){
-  //       this.options.positions.push(this.options.positions[counter - 1] + posChange);
-  //     }else{
-  //       this.options.positions.push(posChange);
-  //     }
-  //     counter++;
-  //   }
-  //   cb();
-  // };
 
   Slider.prototype._events = function($handle){
     if(this.options.disabled){ return false; }
@@ -136,14 +110,18 @@
           }).on('mouseup.zf.slider touchend.zf.slider', function(e){
             _this._handleEvent(e, curHandle);
             clearTimeout(timer);
-            _this.$element.on('transitionend.zf.slider', function(){
-              $handle.removeClass('dragging');
-              _this.$fill.removeClass('dragging');
-              _this.$element.data('dragging', false);
+            $body.on('transitionend', function(){
+              console.log('ending yo');
             });
+            $handle.removeClass('dragging');
+            _this.$fill.removeClass('dragging');
+            _this.$element.data('dragging', false);
             Foundation.reflow(_this.$element, 'slider');
             // console.log(_this.$input.val());
             $body.off('mousemove.zf.slider touchmove.zf.slider mouseup.zf.slider touchend.zf.slider');
+          })
+          $(document).on('animationend', function(){
+            console.log('yo');
           });
       });
     }
@@ -193,40 +171,36 @@
   };
   Slider.prototype.setHandle = function(translatePx, $handle, vertical, steps, cb){
     var pct = percent(translatePx, vertical ? $handle.outerHeight() : $handle.outerWidth(), this.options.decimal) + '%';
-
-    // var translate = vertical ? '-50%, ' + translatePx + 'px' : translatePx + 'px, -50%';
     var translate = vertical ? '-50%, ' + pct : pct + ', -50%';
+
     $handle.css('transform', 'translate(' + translate + ')');
-    // if(cb) cb();
-    // this.$handle.offset({'left': Math.round(steps / this.options.steps * this.options.end) + '%', 'height': '-50%'});
   };
   Slider.prototype._setFill = function(steps, px){
-    // console.log(Math.round(steps / this.options.steps * this.options.end));
-    // this.$fill.css('t')
     if(!this.options.doubleSided){
+
       this.$fill.css({'max-width': Math.round(steps / this.options.steps * this.options.end) + '%', 'width': Math.round(steps / this.options.steps * this.options.end) + '%'});
+
     }else{
-      var something = Math.min(Math.abs(px - this.$handle.position().left), Math.abs(px - this.$handle2.position().left))
-      var which = Math.abs(px - this.$handle.position().left) < Math.abs(px - this.$handle2.position().left) ? this.$handle : this.$handle2;
-      var bool = Math.abs(px - this.$handle.position().left) < Math.abs(px - this.$handle2.position().left);
+      // var which = Math.abs(px - this.$handle.position().left) < Math.abs(px - this.$handle2.position().left) ? this.$handle : this.$handle2;
+      var isFirstHndl = Math.abs(px - this.$handle.position().left) < Math.abs(px - this.$handle2.position().left);
       var half = this.$handle.outerWidth() / 2;
       // console.log(this.$handle.position(), this.$handle2.position(), px + 'px', something, bool);
-      if(bool){
-        // console.log('left handle');
+      if(isFirstHndl){
         //change offset left/top
-        console.log(px - this.$handle2.position().left + half + 'px');
-        this.$fill.css({'left': px + half + 'px', 'max-width': this.$handle2.position().left + half + 'px', 'width': Math.abs(px - this.$handle2.position().left) - half + 'px'});
+        this.$fill.css({'left': Math.round(px + half) + 'px',
+                        'max-width': Math.round(this.$handle2.position().left + half) + 'px',
+                        'width': Math.round(Math.abs(px - this.$handle2.position().left) - half) + 'px'});
       }else{
         // change max width/height
-        this.$fill.css({'max-width': px + half + 'px', 'width': px - this.$handle.position().left + half, 'left': this.$handle.position().left + half});
+        this.$fill.css({'max-width': Math.round(px + half) + 'px',
+                        'width': Math.round(px - this.$handle.position().left + half),
+                        'left': Math.round(this.$handle.position().left + half)});
       }
-      // this.$fill.
     }
-    // console.log(this.$fill.css('max-width'));
   };
-  Slider.prototype.calculateValue = function(location){
-    var val = Math.round((location / this.$element.outerWidth()) * this.options.end);
-    this.$input.val(val);
+  Slider.prototype.calculateValue = function(steps, $input){
+    // var val = Math.round((location / this.$element.outerWidth()) * this.options.end);
+    // this.$input.val(val);
   };
   Foundation.plugin(Slider);
 
@@ -242,36 +216,27 @@
   };
 }(jQuery, window.Foundation);
 
-//   $.fn.draggable = function(){
-//     var $this = this,
-//     ns = 'draggable_'+(Math.random()+'').replace('.',''),
-//     mm = 'mousemove.'+ns,
-//     mu = 'mouseup.'+ns,
-//     $w = $(window),
-//     isFixed = ($this.css('position') === 'fixed'),
-//     adjX = 0, adjY = 0;
-//     console.log(mu);
-//     $this.mousedown(function(ev){
-//       console.log(ev);
-//         var pos = $this.offset();
-//         if (isFixed) {
-//             adjX = $w.scrollLeft(); adjY = $w.scrollTop();
-//         }
-//         var ox = (ev.pageX - pos.left), oy = (ev.pageY - pos.top);
-//         $this.data(ns,{ x : ox, y: oy });
-//         $w.on(mm, function(ev){
-//             ev.preventDefault();
-//             ev.stopPropagation();
-//             if (isFixed) {
-//                 adjX = $w.scrollLeft(); adjY = $w.scrollTop();
-//             }
-//             var offset = $this.data(ns);
-//             $this.css({left: ev.pageX - adjX - offset.x, top: ev.pageY - adjY - offset.y});
-//         });
-//         $w.on(mu, function(){
-//             $w.off(mm + ' ' + mu).removeData(ns);
-//         });
-//     });
-//
-//     return this;
+//*********this is in case we go to static, absolute positions instead of dynamic positioning********
+// this.setSteps(function(){
+//   _this._events();
+//   var initStart = _this.options.positions[_this.options.initialStart - 1] || null;
+//   var initEnd = _this.options.initialEnd ? _this.options.position[_this.options.initialEnd - 1] : null;
+//   if(initStart || initEnd){
+//     _this._handleEvent(initStart, initEnd);
+//   }
+// });
+
+//***********the other part of absolute positions*************
+// Slider.prototype.setSteps = function(cb){
+//   var posChange = this.$element.outerWidth() / this.options.steps;
+//   var counter = 0
+//   while(counter < this.options.steps){
+//     if(counter){
+//       this.options.positions.push(this.options.positions[counter - 1] + posChange);
+//     }else{
+//       this.options.positions.push(posChange);
+//     }
+//     counter++;
+//   }
+//   cb();
 // };
