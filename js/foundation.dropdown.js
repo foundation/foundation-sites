@@ -3,10 +3,7 @@
 
 /*
 NEEDS:
-  to add event emitter to close all other open dropdowns
   aria testing
-  add global event listener for dropdowns, tooltips, modals, and whatever else will need to close all other items
-
 */
 
 

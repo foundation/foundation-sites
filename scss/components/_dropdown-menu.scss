@@ -18,8 +18,11 @@
     }
   }
 
-  &.vertical > li > .submenu {
-    top: 0;
-    left: 100%;
+  &.vertical{
+    width: 100px;
+    & > li .submenu {
+      top: 0;
+      left: 100%;
+    }
   }
 }

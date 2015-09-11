@@ -87,6 +87,12 @@
         $body = $('body'),
         curHandle,
         timer;
+    $(window).on('resize.zf.slider', function(){
+      setTimeout(function(){
+        _this.setHandles();
+
+      }, 100)
+    });
     if(this.options.clickSelect){
       this.$element.off('click.zf.slider').on('click.zf.slider', function(e){
         if(_this.$element.data('dragging')){ return false; }
@@ -142,18 +148,19 @@
         attemptedSteps = Math.round((pxByPct / pxByStep)),
         steps = attemptedSteps > this.options.steps ? this.options.steps : attemptedSteps < 0 ? 0 : attemptedSteps,
         stepsPx = Math.round(steps * pxByStep),
+        curHandle,
         translate;
 
     if(!$handle){
       if(this.options.doubleSided){
         var firstHndlPos = absPosition(this.$handle, direction, barXY, param),
-            secndHndlPos = absPosition(this.$handle2, direction, barXY, param),
+            secndHndlPos = absPosition(this.$handle2, direction, barXY, param);
             curHandle = firstHndlPos <= secndHndlPos ? this.$handle : this.$handle2;
         this.setHandle(stepsPx, curHandle, vertical, function(){
         });
       }else{
         // var $input =
-
+        curHandle = this.$handle;
         // this.$input.val(steps / this.options.steps * this.options.end)
         this.setHandle(stepsPx, this.$handle, vertical);
       }
@@ -162,7 +169,7 @@
       });
       this.$element.data('dragging', false);
     }
-    this._setFill(steps, stepsPx);
+    this._setFill(steps, stepsPx, curHandle);
     this.setVal(steps);
   };
   Slider.prototype.setVal = function(steps){
@@ -175,10 +182,22 @@
 
     $handle.css('transform', 'translate(' + translate + ')');
   };
+  Slider.prototype.setHandles = function(){
+    if(this.options.doubleSided){
+
+    }
+    var width = 0;
+    while(!width){
+      width = this.$fill.outerWidth();
+    }
+    console.log('something to check',this.$fill.outerWidth(), this.$element.offset().left);
+    this.$handle.offset({'left': this.$fill.outerWidth() + 'px', 'top': '-50%'});
+  };
   Slider.prototype._setFill = function(steps, px){
     if(!this.options.doubleSided){
 
       this.$fill.css({'max-width': Math.round(steps / this.options.steps * this.options.end) + '%', 'width': Math.round(steps / this.options.steps * this.options.end) + '%'});
+
 
     }else{
       // var which = Math.abs(px - this.$handle.position().left) < Math.abs(px - this.$handle2.position().left) ? this.$handle : this.$handle2;

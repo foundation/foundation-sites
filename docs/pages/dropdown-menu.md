@@ -1,17 +1,24 @@
 ---
 title: Dropdown Menus
-description: Dropdowns. Or ups, rights, and lefts; horizontal or vertical. Your call! Dropdowns are a great way to add content to an element without taking up a bunch of space in your view.
+description: Change a basic menu bar into an expandable dropdown menu with the Dropdown Menu plugin.
 sass: scss/components/_dropdown-menu.scss
 ---
 
 ## Horizontal
 By default, dropdowns are exactly that, horizontally oriented below the parent element, opened by a click or tap.
 
-```html_example
+
 <ul class="dropdown menu-bar" data-dropdown-menu>
   <li class="has-submenu">
     <a href="#">Item 1 &raquo;</a>
     <ul class="submenu vertical menu-bar" data-submenu>
+      <li class='has-submenu'>
+        <a href='#'> Item 1 sub &raquo;</a>
+        <ul class='submenu vertical menu-bar' data-submenu>
+          <li><a href='#'>Item 1 subA</a></li>
+          <li><a href='#'>Item 1 subB</a></li>
+        </ul>
+      </li>
       <li><a href="#">Item 1A Loooong</a></li>
       <li><a href="#">Item 1B</a></li>
     </ul>
@@ -31,7 +38,7 @@ By default, dropdowns are exactly that, horizontally oriented below the parent e
     </ul>
   </li>
 </ul>
-```
+
 
 ---
 
@@ -39,8 +46,8 @@ By default, dropdowns are exactly that, horizontally oriented below the parent e
 Same functionality, different orientation.
 
 
-```html_example
-<ul class="dropdown vertical menu-bar" style="width: 100px;" data-dropdown-menu>
+
+<ul class="dropdown vertical menu-bar" data-dropdown-menu>
   <li class="has-submenu">
     <a href="#">Item 1 &raquo;</a>
     <ul class="submenu vertical menu-bar" data-submenu>
@@ -63,4 +70,3 @@ Same functionality, different orientation.
     </ul>
   </li>
 </ul>
-```

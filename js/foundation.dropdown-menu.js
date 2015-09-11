@@ -35,12 +35,12 @@
   };
 
   DropdownMenu.prototype._init = function() {
-    // this._prepareMenu(this.$element);
-    var _this = this;
-    this.$element.find('.has-submenu').each(function(){
-      var $elem = $(this);
-      _this._events($elem);
-    })
+    this._prepareMenu(this.$element);
+    // var _this = this;
+    // this.$element.find('.has-submenu').each(function(){
+    //   var $elem = $(this);
+    //   _this._events($elem);
+    // })
   };
 
   DropdownMenu.prototype._events = function($elem){
@@ -102,35 +102,35 @@
   };
 
   Foundation.plugin(DropdownMenu);
-  // DropdownMenu.prototype._prepareMenu = function($elem) {
-  //   var _this = this;
-  //
-  //   $elem.children('li').each(function() {
-  //     var $submenu = $(this).children('[data-submenu]');
-  //
-  //     if ($submenu.length) {
-  //       if(!_this.options.toggleOn === 'both' || 'hover'){
-  //         $submenu.addClass('js-dropdown-nohover');
-  //       }
-  //
-  //       $(this).children('a').on('click.zf.dropdown', function(event) {
-  //         event.stopPropagation();
-  //
-  //         _this.toggleMenu($submenu);
-  //
-  //         return false;
-  //       }).on('mouseenter.zf.dropdown', function(event) {
-  //         event.stopPropagation();
-  //         event.preventDefault();
-  //         _this.toggleMenu($submenu);
-  //       });
-  //       // .on('mouseleave.zf.dropdown', function(event){
-  //       //   event.stopPropagation();
-  //       //   _this.toggleMenu($submenu);
-  //       // });
-  //
-  //       _this._prepareMenu($submenu);
-  //     }
-  //   });
-  // };
+  DropdownMenu.prototype._prepareMenu = function($elem) {
+    var _this = this;
+
+    $elem.children('li').each(function() {
+      var $submenu = $(this).children('[data-submenu]');
+
+      if ($submenu.length) {
+        if(!_this.options.toggleOn === 'both' || 'hover'){
+          $submenu.addClass('js-dropdown-nohover');
+        }
+
+        $(this).children('a').on('click.zf.dropdown', function(event) {
+          event.stopPropagation();
+
+          _this.toggleMenu($submenu);
+
+          return false;
+        }).on('mouseenter.zf.dropdown', function(event) {
+          event.stopPropagation();
+          event.preventDefault();
+          _this.toggleMenu($submenu);
+        });
+        // .on('mouseleave.zf.dropdown', function(event){
+        //   event.stopPropagation();
+        //   _this.toggleMenu($submenu);
+        // });
+
+        _this._prepareMenu($submenu);
+      }
+    });
+  };
 }(Foundation, jQuery);

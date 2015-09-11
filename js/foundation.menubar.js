@@ -117,7 +117,7 @@
     this.$element.addClass(this.rules[matchedMq].cssClass);
 
     // Create an instance of the new plugin
-    if (this.currentPlugin) this.currentPlugin.destroy();    
+    if (this.currentPlugin) this.currentPlugin.destroy();
     this.currentPlugin = new this.rules[matchedMq].plugin(this.$element, {});
   }
 
@@ -129,7 +129,7 @@
     this.currentPlugin.destroy();
     $(window).off('.zf.menubar');
   }
-
+  // MenuBar.prototype.DropdownMenu = Foundation.DropdownMenu;
   Foundation.plugin(MenuBar);
 
 }(Foundation, jQuery)

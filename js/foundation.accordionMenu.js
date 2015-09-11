@@ -34,7 +34,7 @@
    */
   AccordionMenu.prototype._init = function() {
     this.$element.find('[data-submenu]').slideUp(0);
-  }
+  };
 
   /**
    * Adds event handlers for items within the menu.
@@ -49,6 +49,7 @@
       if ($submenu.length) {
         $(this).children('a').on('click.zf.accordionMenu', function(e) {
           e.preventDefault();
+          console.log("why isn't this working");
 
           if (!$submenu.is(':hidden')) {
             _this.up($submenu);
@@ -59,7 +60,7 @@
         });
       }
     });
-  }
+  };
 
   /**
    * Opens the sub-menu defined by `$target`.
@@ -77,7 +78,7 @@
      * @event AccordionMenu#down
      */
     this.$element.trigger('down.zf.accordionMenu', [$target]);
-  }
+  };
 
   /**
    * Closes the sub-menu defined by `$target`. All sub-menus inside the target will be closed as well.
@@ -94,7 +95,7 @@
      * @event AccordionMenu#up
      */
     this.$element.trigger('up.zf.accordionMenu', [$target]);
-  }
+  };
 
   /**
    * Destroys an instance of accordion menu.
@@ -109,7 +110,7 @@
      * @event AccordionMenu#destroy
      */
     this.$element.trigger('destroyed.zf.accordionMenu');
-  }
+  };
 
   Foundation.plugin(AccordionMenu);
 }(jQuery)
