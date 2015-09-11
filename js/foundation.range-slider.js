@@ -41,7 +41,7 @@
     this.options.disabled = this.$element.hasClass('disabled');
     this.options.steps = (this.options.end - this.options.start) / this.options.step;
 
-    this.$fill = this.$element.find('.slider-fill').css('max-width', '0');
+    this.$fill = this.$element.find('.slider-fill');
     this.$handle = $(handles[0]);
     this.$input = inputs[0] ? $(inputs[0]) : $('#' + this.$handle.attr('aria-controls'));
 
@@ -89,9 +89,9 @@
         timer;
     $(window).on('resize.zf.slider', function(){
       setTimeout(function(){
-        _this.setHandles();
+        _this._resetHandles();
 
-      }, 100)
+      }, 300)
     });
     if(this.options.clickSelect){
       this.$element.off('click.zf.slider').on('click.zf.slider', function(e){
@@ -99,6 +99,9 @@
         _this._handleEvent(e);
       });
     }
+    this.$element.on('transitionend', function(){
+      console.log('yo');
+    });
 
     if(this.options.draggable){
       $handle
@@ -116,9 +119,6 @@
           }).on('mouseup.zf.slider touchend.zf.slider', function(e){
             _this._handleEvent(e, curHandle);
             clearTimeout(timer);
-            $body.on('transitionend', function(){
-              console.log('ending yo');
-            });
             $handle.removeClass('dragging');
             _this.$fill.removeClass('dragging');
             _this.$element.data('dragging', false);
@@ -126,9 +126,6 @@
             // console.log(_this.$input.val());
             $body.off('mousemove.zf.slider touchmove.zf.slider mouseup.zf.slider touchend.zf.slider');
           })
-          $(document).on('animationend', function(){
-            console.log('yo');
-          });
       });
     }
 
@@ -182,45 +179,49 @@
 
     $handle.css('transform', 'translate(' + translate + ')');
   };
-  Slider.prototype.setHandles = function(){
+  Slider.prototype._resetHandles = function(){
     if(this.options.doubleSided){
+      //move both
+    }
 
-    }
-    var width = 0;
-    while(!width){
-      width = this.$fill.outerWidth();
-    }
-    console.log('something to check',this.$fill.outerWidth(), this.$element.offset().left);
-    this.$handle.offset({'left': this.$fill.outerWidth() + 'px', 'top': '-50%'});
   };
   Slider.prototype._setFill = function(steps, px){
+    var vertical = this.options.vertical;
+    var param = vertical ? 'outerHeight' : 'outerWidth';
+    var dir = vertical ? 'top' : 'left';
+    var max = vertical ? 'max-height' : 'max-width';
+    var dim = vertical ? 'height' : 'width';
+    var css = {};
+    var dimPct;
+
     if(!this.options.doubleSided){
-
-      this.$fill.css({'max-width': Math.round(steps / this.options.steps * this.options.end) + '%', 'width': Math.round(steps / this.options.steps * this.options.end) + '%'});
-
+      dimPct = percent(steps, this.options.steps, this.options.decimal) + '%';
+      css[max] = dimPct; css[dim] = dimPct;
 
     }else{
-      // var which = Math.abs(px - this.$handle.position().left) < Math.abs(px - this.$handle2.position().left) ? this.$handle : this.$handle2;
-      var isFirstHndl = Math.abs(px - this.$handle.position().left) < Math.abs(px - this.$handle2.position().left);
-      var half = this.$handle.outerWidth() / 2;
-      // console.log(this.$handle.position(), this.$handle2.position(), px + 'px', something, bool);
+      var isFirstHndl = Math.abs(px - this.$handle.position()[dir]) < Math.abs(px - this.$handle2.position()[dir]);
+      var half = this.$handle[param]() / 2;
+
       if(isFirstHndl){
         //change offset left/top
-        this.$fill.css({'left': Math.round(px + half) + 'px',
-                        'max-width': Math.round(this.$handle2.position().left + half) + 'px',
-                        'width': Math.round(Math.abs(px - this.$handle2.position().left) - half) + 'px'});
+        dimPct = percent(((this.$handle2.position()[dir] + half) - px), this.$element[param](), this.options.decimal) + '%';
+        css[dir] = percent((px + half), this.$element[param](), this.options.decimal) + '%';
+        css[max] = dimPct; css[dim] = dimPct;
+
       }else{
         // change max width/height
-        this.$fill.css({'max-width': Math.round(px + half) + 'px',
-                        'width': Math.round(px - this.$handle.position().left + half),
-                        'left': Math.round(this.$handle.position().left + half)});
+        dimPct = percent(((-this.$handle.position()[dir] + half) + px), this.$element[param](), this.options.decimal) + '%';
+        css[dir] = percent(this.$handle.position()[dir] + half, this.$element.outerWidth(), this.options.decimal) + '%';
+        css[max] = dimPct; css[dim] = dimPct;
       }
     }
+    this.$fill.css(css);
   };
   Slider.prototype.calculateValue = function(steps, $input){
     // var val = Math.round((location / this.$element.outerWidth()) * this.options.end);
     // this.$input.val(val);
   };
+
   Foundation.plugin(Slider);
 
   function absPosition($handle, dir, clickPos, param){
@@ -229,7 +230,8 @@
 
   function percent(frac, num, dec){
     return Number(((frac / num) * 100).toFixed(dec));
-  };
+  }
+
   $.fn.hasAttr = function(name) {
      return this.attr(name) !== undefined;
   };
