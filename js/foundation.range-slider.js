@@ -28,9 +28,6 @@
     dragDelay: 250
   };
 
-  function randomIdGen(length){
-    return Math.round((Math.pow(36, length + 1) - Math.random() * Math.pow(36, length))).toString(36).slice(1);
-  }
   Slider.prototype._init = function(){
     var handles = this.$element.find('[data-slider-handle]'),
         inputs = this.$element.find('input'),
@@ -48,6 +45,8 @@
     ariaId = this.$input.hasAttr('id') ? this.$input.attr('id') : randomIdGen(6);
     this.$handle.attr(this._setHandleAttr(ariaId));
     this.$input.attr(this._setInputAttr(ariaId));
+    this.handlePos = percent((this.options.initialStart ? this.options.initialStart : this.options.start), this.options.end, this.options.decimal) + '%';
+    // console.log(this.handlePos);
 
     this._events(this.$handle);
     if(handles[1]){
@@ -58,8 +57,10 @@
       this.options.doubleSided = true;
       this.$handle2.attr(this._setHandleAttr(ariaId2, true));
       this.$input2.attr(this._setInputAttr(ariaId2, true));
+      this.handle2Pos = percent((this.options.initialEnd ? this.options.initialEnd : this.options.end), this.options.end, this.options.decimal) + '%';
       this._events(this.$handle2);
     }
+    this._setFill(null, null, true);
   };
 
   Slider.prototype._setInputAttr = function(id, second){
@@ -90,7 +91,6 @@
     $(window).on('resize.zf.slider', function(){
       setTimeout(function(){
         _this._resetHandles();
-
       }, 300)
     });
     if(this.options.clickSelect){
@@ -99,8 +99,12 @@
         _this._handleEvent(e);
       });
     }
-    this.$element.on('transitionend', function(){
-      console.log('yo');
+    $handle.on('transitionend.zf.slider', function(){
+      console.log('something');
+      _this.$element.attr('data-dragging', false);
+      _this.$fill.removeClass('dragging');
+      console.log('something else');
+      $handle.removeClass('dragging');
     });
 
     if(this.options.draggable){
@@ -109,7 +113,7 @@
         .on('mousedown.zf.slider touchstart.zf.slider', function(e){
           $handle.addClass('dragging');
           _this.$fill.addClass('dragging');
-          _this.$element.data('dragging', true);
+          _this.$element.attr('data-dragging', true);
           curHandle = $(e.currentTarget);
 
           $body.on('mousemove.zf.slider touchmove.zf.slider', function(e){
@@ -119,11 +123,7 @@
           }).on('mouseup.zf.slider touchend.zf.slider', function(e){
             _this._handleEvent(e, curHandle);
             clearTimeout(timer);
-            $handle.removeClass('dragging');
-            _this.$fill.removeClass('dragging');
-            _this.$element.data('dragging', false);
-            Foundation.reflow(_this.$element, 'slider');
-            // console.log(_this.$input.val());
+            // Foundation.reflow(_this.$element, 'slider');
             $body.off('mousemove.zf.slider touchmove.zf.slider mouseup.zf.slider touchend.zf.slider');
           })
       });
@@ -153,24 +153,19 @@
         var firstHndlPos = absPosition(this.$handle, direction, barXY, param),
             secndHndlPos = absPosition(this.$handle2, direction, barXY, param);
             curHandle = firstHndlPos <= secndHndlPos ? this.$handle : this.$handle2;
-        this.setHandle(stepsPx, curHandle, vertical, function(){
-        });
+
       }else{
-        // var $input =
         curHandle = this.$handle;
-        // this.$input.val(steps / this.options.steps * this.options.end)
-        this.setHandle(stepsPx, this.$handle, vertical);
       }
+
     }else{
-      this.setHandle(stepsPx, $handle, vertical, steps, function(){
-      });
-      this.$element.data('dragging', false);
+      curHandle = $handle;
     }
-    this._setFill(steps, stepsPx, curHandle);
+    this.setHandle(stepsPx, curHandle, vertical)
+    this._setFill(steps, stepsPx);
     this.setVal(steps);
   };
   Slider.prototype.setVal = function(steps){
-    // console.log(Math.round(steps / this.options.steps * this.options.end));
     this.$input.val(Math.round(steps / this.options.steps * this.options.end));
   };
   Slider.prototype.setHandle = function(translatePx, $handle, vertical, steps, cb){
@@ -181,11 +176,12 @@
   };
   Slider.prototype._resetHandles = function(){
     if(this.options.doubleSided){
+    console.log(this.handlePos, this.handle2Pos);
       //move both
     }
-
+    var left = (this.$fill.offset().left + this.$fill.width()) - (this.$handle.outerWidth() / 2);
   };
-  Slider.prototype._setFill = function(steps, px){
+  Slider.prototype._setFill = function(steps, px, isInit){
     var vertical = this.options.vertical;
     var param = vertical ? 'outerHeight' : 'outerWidth';
     var dir = vertical ? 'top' : 'left';
@@ -193,11 +189,23 @@
     var dim = vertical ? 'height' : 'width';
     var css = {};
     var dimPct;
-
+    if(isInit){
+      if(!this.options.doubleSided){
+        css[max] = this.handlePos;
+        css[dim] = this.handlePos;
+      }else{
+        css[max] = this.handle2Pos;
+        css[dim] = ((this.handle2Pos.split('%')[0] * 1) - (this.handlePos.split('%')[0] * 1)) + '%';
+        css[dir] = this.handlePos;
+        console.log(css[dim]);
+      }
+      this.$fill.css(css);
+      return;
+    }
     if(!this.options.doubleSided){
       dimPct = percent(steps, this.options.steps, this.options.decimal) + '%';
       css[max] = dimPct; css[dim] = dimPct;
-
+      this.handlePos = dimPct;
     }else{
       var isFirstHndl = Math.abs(px - this.$handle.position()[dir]) < Math.abs(px - this.$handle2.position()[dir]);
       var half = this.$handle[param]() / 2;
@@ -214,6 +222,8 @@
         css[dir] = percent(this.$handle.position()[dir] + half, this.$element.outerWidth(), this.options.decimal) + '%';
         css[max] = dimPct; css[dim] = dimPct;
       }
+      this.handlePos = css[dir];
+      this.handle2Pos = css[max];
     }
     this.$fill.css(css);
   };
@@ -230,6 +240,10 @@
 
   function percent(frac, num, dec){
     return Number(((frac / num) * 100).toFixed(dec));
+  }
+
+  function randomIdGen(length){
+    return Math.round((Math.pow(36, length + 1) - Math.random() * Math.pow(36, length))).toString(36).slice(1);
   }
 
   $.fn.hasAttr = function(name) {

@@ -69,14 +69,8 @@ $slider-transition: ease-in-out !default;
   height: $slider-height;
   position: absolute;
   //chris addition
-  -webkit-transition: all $slider-transition-time $slider-transition;
-  -moz-transition: all $slider-transition-time $slider-transition;
-  -o-transition: all $slider-transition-time $slider-transition;
   transition: all $slider-transition-time $slider-transition;
   &.dragging {
-    -webkit-transition: none;
-    -moz-transition: none;
-    -o-transition: none;
     transition: none;
   }
 }
@@ -93,15 +87,9 @@ $slider-transition: ease-in-out !default;
   touch-action: manipulation;
   //chris's addition
   position: absolute;
-  -webkit-transition: transform $slider-transition-time $slider-transition;
-  -moz-transition: transform $slider-transition-time $slider-transition;
-  -o-transition: transform $slider-transition-time $slider-transition;
   transition: transform $slider-transition-time $slider-transition;
   &.dragging {
-    -webkit-transition: none;
-    -moz-transition: none;
-    -o-transition: none;
-    transition: none;
+    transition: all 0s ease;
   }
   //end chris's addition
   &:hover {
