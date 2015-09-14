@@ -30,7 +30,7 @@ This is a paragraph. Paragraphs are preset with a font size, line height and spa
 
 ---
 
-## Heading
+## Header
 
 Foundation includes styles for all headings&mdash;they're balanced and sized along a modular scale.
 
@@ -46,6 +46,21 @@ Foundation includes styles for all headings&mdash;they're balanced and sized alo
 <h5>h5. This is a small header.</h5>
 <h6>h6. This is a tiny header.</h6>
 ```
+
+---
+
+### Header Sizes
+
+The framework includes two typographic scales&mdash;one uses a narrow range of sizes for small- and medium-sized screens, and the other uses a wider range of sizes for large-sized screens. You can change these scales, or add new ones for other breakpoints, by editing the `$header-sizes` map in your project's <a href="sass.html#the-settings-file">Settings File</a>.
+
+Header  | Default | Large and up
+--------|---------|-------------
+`<h1>`  | 24px    | 48px
+`<h2>`  | 20px    | 40px 
+`<h3>`  | 19px    | 31px
+`<h4>`  | 18px    | 25px
+`<h5>`  | 17px    | 20px
+`<h6>`  | 16px    | 16px
 
 ---
 
