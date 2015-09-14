@@ -29,8 +29,7 @@ describe('reveal:', function() {
     it('is able to display the modal', function() {
       $(document).foundation();
 
-      $('#reveal1link').click();
-      //$('#reveal1').foundation('reveal', 'open');
+      $('#reveal1').foundation('reveal', 'open');
 
       expect($('#reveal1').hasClass('open')).toBe(true);
       expect($('#reveal2').hasClass('open')).toBe(false);
@@ -38,12 +37,17 @@ describe('reveal:', function() {
       expect($('#reveal4').hasClass('open')).toBe(false);
     });
     
-    it('closes an open modal when the document is clicked elsewhere', function() {
+    it('is able to close the modal', function() {
       $(document).foundation();
+
+      $('#reveal1').foundation('reveal', 'open');
+
+      expect($('#reveal1').hasClass('open')).toBe(true);
+      expect($('#reveal2').hasClass('open')).toBe(false);
+      expect($('#reveal3').hasClass('open')).toBe(false);
+      expect($('#reveal4').hasClass('open')).toBe(false);
       
-      //$('#reveal1').foundation('reveal', 'open');
-      $('#reveal1link').click();
-      $('body').click();
+      $('#reveal1').foundation('reveal', 'close');
       
       expect($('#reveal1').hasClass('open')).toBe(false);
       expect($('#reveal2').hasClass('open')).toBe(false);
