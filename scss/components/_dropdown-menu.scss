@@ -11,17 +11,15 @@
     left: 100%;
     width: auto;
     white-space: nowrap;
-
-    background: RGBA(230, 229, 228, 1);
     border: thin solid blue;
-    // background: $body-background;
+    background: $body-background;
     z-index: 1;
 
-    > li{
+    > li {
       width: 100%;
     }
 
-    &.right{
+    &.right {
       left: auto;
       right: 100%;
     }
@@ -30,9 +28,37 @@
       top: 100%;
       left: 0;
       right: auto;
+      &.right{
+        left: auto;
+        right: 0;
+      }
     }
+
 //**************
 
+
+    &:not(.js-dropdown-nohover) > .has-submenu:hover > &,
+    &.js-dropdown-active {
+      display: block;
+    }
+  }
+  &.vertical.align-right {
+    float: right;
+  }
+  &.vertical {
+    width: 100px;
+
+    & > li .submenu {
+      top: 0;
+      left: 100%;
+      &.right {
+        left: auto;
+        right: 100%;
+      }
+    }
+  }
+
+}
   // .submenu {
   //   display: none;
   //   position: absolute;
@@ -41,19 +67,4 @@
   //   white-space: nowrap;
   //   background: $body-background;
   //   z-index: 1;
-
-    &:not(.js-dropdown-nohover) > .has-submenu:hover > &,
-    &.js-dropdown-active {
-      display: block;
-    }
-  }
-
-  &.vertical{
-    width: 100px;
-    & > li .submenu {
-      top: 0;
-      left: 100%;
-    }
-  }
-}
 //need settings for right-aligned dd as well
