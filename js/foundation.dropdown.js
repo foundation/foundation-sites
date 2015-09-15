@@ -150,7 +150,7 @@ NEEDS:
     }
     this.$element.removeClass(this.options.activeClass)
         .attr('aria-hidden', 'true');
-
+    this.$anchor.removeClass('hover');
     if(this.classChanged){
       var curPositionClass = this.getPositionClass();
       if(curPositionClass){
