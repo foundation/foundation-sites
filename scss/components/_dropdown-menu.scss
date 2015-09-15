@@ -11,18 +11,25 @@
     left: 100%;
     width: auto;
     white-space: nowrap;
+
     background: RGBA(230, 229, 228, 1);
-    border: 1px solid blue;
+    border: thin solid blue;
     // background: $body-background;
     z-index: 1;
 
+    > li{
+      width: 100%;
+    }
+
     &.right{
-      
+      left: auto;
+      right: 100%;
     }
 
     &.first-sub {
       top: 100%;
       left: 0;
+      right: auto;
     }
 //**************
 
