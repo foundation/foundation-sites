@@ -1175,3 +1175,78 @@ border: 5px solid red;
 }
 
 
+.top-bar.docs-bar { height: 45px !important; }
+
+.top-bar.docs-bar .name h1 {
+  padding: 0;
+  margin-left: 20px; 
+}
+.top-bar.docs-bar .name h1 img {
+  margin-top: -2px; 
+  display: inline-block !important;
+  vertical-align: middle !important;
+}
+.top-bar.docs-bar .name h1 a {
+  opacity: 0.75;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+  font-family: "Proxima Nova", "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-weight: bold;
+  font-size: 22px !important;
+  line-height: 45px;
+  padding: 0;
+  text-rendering: auto; 
+  span { font-size: 17px !important; line-height: 0 !important; margin-left: 1px; }
+}
+.top-bar.docs-bar .name h1 a:hover {
+  opacity: 1; 
+}
+
+.top-bar.docs-bar .top-bar-section > ul > .divider, .top-bar-section > ul > [role="separator"] {
+  border-right: solid 1px #4e4e4e;
+  border-bottom: none;
+  border-top: none;
+  clear: none;
+  height: 45px;
+  width: 0;
+}
+.top-bar.docs-bar .top-bar-section ul li > a:not(.button) {
+  font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !important;
+  font-weight: bold;
+  padding: 0 15px;
+  line-height: 45px;
+}
+
+.top-bar.docs-bar .top-bar-section .dropdown li a {
+  font-weight: normal !important;
+}
+.top-bar.docs-bar .top-bar-section .has-form {
+  padding: 0 15px !important;
+  height: 45px;
+  line-height: 45px;
+  a { line-height: 47px; }
+}
+
+.top-bar.docs-bar .top-bar-section ul li > a.button {
+  font-size: 0.8125rem;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid;
+  background-color: #008CBA;
+  border-color: #007095;
+  color: #FFFFFF;
+  border-style: solid;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: bold;
+  line-height: normal;
+  margin: 0 0 1.25rem;
+  text-decoration: none;
+  text-align: center;
+  -webkit-appearance: none;
+  border-color: #007095;
+  transition: background-color 300ms ease-out;
+}
