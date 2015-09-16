@@ -1,5 +1,5 @@
 !function($, Foundation, window){
-  function ImNotTouchingYou(element, parent){
+  function ImNotTouchingYou(element, parent, lrOnly, tbOnly){
     // the element is the jQuery element be checked for clearance
     var eleDims = GetDimensions(element);
 
@@ -19,7 +19,8 @@
           left   = (eleDims.offset.left >= eleDims.windowDims.offset.left),
           right  = (eleDims.offset.left + eleDims.width <= eleDims.windowDims.width),
           allDirs = [bottom, top, left, right];
-
+      if(lrOnly){ return left === right === true; }
+      if(tbOnly){ return top === bottom === true; }
       return allDirs.indexOf(false) === -1;
 
     // }
