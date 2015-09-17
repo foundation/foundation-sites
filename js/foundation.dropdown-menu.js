@@ -35,11 +35,13 @@
     closingTime: 500,
     keyboardAccess: true,
     wrapOnKeys: true,
-    alignment: 'left'
+    alignment: 'left',
+    vertical: false
   };
 
   DropdownMenu.prototype._init = function() {
     this.$element.attr('role', 'menubar');
+    this.options.vertical = this.$element.hasClass('vertical');
     this._prepareMenu(this.$element);
     this._addTopLevelKeyHandler();
   };
@@ -60,13 +62,14 @@
       var $tab = $(this);
       $tab.attr({
         'role': 'menuitem',
-        'tabindex': 0,
+        'tabindex': -100,
         'title': $tab.children('a:first-child').text()/*.match(/\w/ig).join('')*/
       });//maybe add a more specific regex to match alphanumeric characters and join them appropriately
       if($tab.children('[data-submenu]')){
         $tab.attr('aria-haspopup', true);
       }
     });
+    this.$tabs[0].setAttribute('tabindex', 0);
 
     this.$submenus.each(function(){
       var $sub = $(this);
@@ -139,16 +142,26 @@
   };
   DropdownMenu.prototype._addTopLevelKeyHandler = function(){
     var _this = this,
+        vertical = this.options.vertical,
         $firstItem = this.$element.children('li:first-of-type'),
         $lastItem = this.$element.children('li:last-of-type');
-    this.$tabs.on('keyup.zf.dropdownmenu', function(e){
-      e.preventDefault();
-      e.stopPropagation();
+    this.$tabs.on('focus.zf.dropdownmenu', function(){
+      // console.log('what?', this);
+      _this._show($(this));
+    }).on('focusout.zf.dropdownmenu', function(e){
+      console.log('au revoir');
+      _this._hide($(this))
+    });
+    this.$tabs.on('keydown.zf.dropdownmenu', function(e){
+      if (e.which !== 9) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      console.log(e.which);
 
       var $tabTitle = $(this),
           $prev = $tabTitle.prev(),
           $next = $tabTitle.next();
-
       if(_this.options.wrapOnKeys){
         $prev = $prev.length ? $prev : $lastItem;
         $next = $next.length ? $next : $firstItem;
@@ -161,23 +174,38 @@
 
         case 32://return or spacebar
         case 13:
-          $tabTitle.focus();
-          _this._hideOthers($tabTitle);
+          console.log($tabTitle.find('ul.submenu > li:first-of-type'));
+          $tabTitle.find('[role="menuitem"]:first-of-type').addClass('is-active').focus().select();
+          // _this._hideOthers($tabTitle);
           _this._show($tabTitle);
           break;
 
-        case 37://left or up
-        case 38:
+        case 40: //down
+          break;
+        case 38://up
+          break;
+
+        case 37://left
+        if(vertical){
+          break;
+        }
           $prev.focus();
-          _this._hideOthers($prev);
+          // _this._hideOthers($prev);
+          _this._show($prev);
           break;
-
-        case 39://right or down
-        case 40:
+        case 39://right
+        if(vertical){
+          break;
+        }
           $next.focus();
-          _this._hideOthers($next);
+          // _this._hideOthers($next);
+          _this._show($next);
           break;
 
+        case 27://esc
+          _this._hideAll();
+          $tabTitle.blur();
+          break;
         default:
           return;
       }
@@ -216,11 +244,16 @@
     }
       $sub.css('visibility', '');
   };
+
   DropdownMenu.prototype._hide = function($elem){
     this._hideSome($elem);
   };
   DropdownMenu.prototype._hideSome = function($elems){
     if($elems.length){
+      // if($elems.hasClass('first-sub')){
+      //   console.log('true');
+      //   $elems.blur();
+      // }
       $elems.removeClass('is-active').data('isClick', false)
 
             .find('.is-active').removeClass('is-active').data('isClick', false).end()
