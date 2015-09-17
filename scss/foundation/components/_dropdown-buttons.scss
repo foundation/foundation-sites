@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 //
 // @variables
@@ -13,6 +13,7 @@ $include-html-button-classes: $include-html-classes !default;
 $dropdown-button-pip-color: $white !default;
 $dropdown-button-pip-color-alt: $oil !default;
 
+// We use these to set the size of the pip in dropdown buttons
 $button-pip-tny: rem-calc(6) !default;
 $button-pip-sml: rem-calc(7) !default;
 $button-pip-med: rem-calc(9) !default;
@@ -22,25 +23,25 @@ $button-pip-lrg: rem-calc(11) !default;
 $dropdown-button-padding-tny: $button-pip-tny * 7 !default;
 $dropdown-button-pip-size-tny: $button-pip-tny !default;
 $dropdown-button-pip-opposite-tny: $button-pip-tny * 3 !default;
-$dropdown-button-pip-top-tny: -$button-pip-tny / 2 + rem-calc(1) !default;
+$dropdown-button-pip-top-tny: (-$button-pip-tny / 2) + rem-calc(1) !default;
 
 // We use these to style small dropdown buttons
 $dropdown-button-padding-sml: $button-pip-sml * 7 !default;
 $dropdown-button-pip-size-sml: $button-pip-sml !default;
 $dropdown-button-pip-opposite-sml: $button-pip-sml * 3 !default;
-$dropdown-button-pip-top-sml: -$button-pip-sml / 2 + rem-calc(1) !default;
+$dropdown-button-pip-top-sml: (-$button-pip-sml / 2) + rem-calc(1) !default;
 
 // We use these to style medium dropdown buttons
 $dropdown-button-padding-med: $button-pip-med * 6 + rem-calc(3) !default;
 $dropdown-button-pip-size-med: $button-pip-med - rem-calc(3) !default;
 $dropdown-button-pip-opposite-med: $button-pip-med * 2.5 !default;
-$dropdown-button-pip-top-med: -$button-pip-med / 2 + rem-calc(2) !default;
+$dropdown-button-pip-top-med: (-$button-pip-med / 2) + rem-calc(2) !default;
 
 // We use these to style large dropdown buttons
 $dropdown-button-padding-lrg: $button-pip-lrg * 5 + rem-calc(3) !default;
 $dropdown-button-pip-size-lrg: $button-pip-lrg - rem-calc(6) !default;
 $dropdown-button-pip-opposite-lrg: $button-pip-lrg * 2.5 !default;
-$dropdown-button-pip-top-lrg: -$button-pip-lrg / 2 + rem-calc(3) !default;
+$dropdown-button-pip-top-lrg: (-$button-pip-lrg / 2) + rem-calc(3) !default;
 
 // @mixins
 //
@@ -52,23 +53,22 @@ $dropdown-button-pip-top-lrg: -$button-pip-lrg / 2 + rem-calc(3) !default;
 // $pip-color - Color of the little triangle that points to the dropdown. Default: $white.
 // $base-style - Add in base-styles. This can be set to false. Default:true
 
-@mixin dropdown-button($padding:medium, $pip-color:$white, $base-style:true) {
+@mixin dropdown-button($padding:medium, $pip-color:$dropdown-button-pip-color, $base-style:true) {
 
   // We add in base styles, but they can be negated by setting to 'false'.
   @if $base-style {
     position: relative;
-    outline: none;
 
     // This creates the base styles for the triangle pip
     &::after {
-      position: absolute;
-      content: "";
-      width: 0;
-      height: 0;
-      display: block;
-      border-style: solid;
       border-color: $dropdown-button-pip-color transparent transparent transparent;
+      border-style: solid;
+      content: "";
+      display: block;
+      height: 0;
+      position: absolute;
       top: 50%;
+      width: 0;
     }
   }
 
@@ -121,9 +121,9 @@ $dropdown-button-pip-top-lrg: -$button-pip-lrg / 2 + rem-calc(3) !default;
 @include exports("dropdown-button") {
   @if $include-html-button-classes {
     .dropdown.button, button.dropdown { @include dropdown-button;
-      &.tiny { @include dropdown-button(tiny,$base-style:false); }
-      &.small { @include dropdown-button(small,$base-style:false); }
-      &.large { @include dropdown-button(large,$base-style:false); }
+      &.tiny { @include dropdown-button(tiny, $base-style:false); }
+      &.small { @include dropdown-button(small, $base-style:false); }
+      &.large { @include dropdown-button(large, $base-style:false); }
       &.secondary:after { border-color: $dropdown-button-pip-color-alt transparent transparent transparent; }
     }
   }

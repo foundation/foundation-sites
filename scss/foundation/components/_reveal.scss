@@ -2,8 +2,8 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
-@import "grid";
+@import 'global';
+@import 'grid';
 
 //
 // @name _reveal.scss
@@ -21,13 +21,13 @@ $reveal-modal-bg: $white !default;
 $reveal-position-top: rem-calc(100) !default;
 $reveal-default-width: 80% !default;
 $reveal-max-width: $row-width !default;
-$reveal-modal-padding: rem-calc(20) !default;
+$reveal-modal-padding: rem-calc(30) !default;
 $reveal-box-shadow: 0 0 10px rgba($black,.4) !default;
 
 // We use these to style the reveal close button
 $reveal-close-font-size: rem-calc(40) !default;
-$reveal-close-top: rem-calc(8) !default;
-$reveal-close-side: rem-calc(11) !default;
+$reveal-close-top: rem-calc(10) !default;
+$reveal-close-side: rem-calc(22) !default;
 $reveal-close-color: $base !default;
 $reveal-close-weight: $font-weight-bold !default;
 
@@ -43,21 +43,25 @@ $reveal-border-color: $steel !default;
 $reveal-modal-class: "reveal-modal" !default;
 $close-reveal-modal-class: "close-reveal-modal" !default;
 
+// Set base z-index
+$z-index-base: 1005;
+
 //
 // @mixins
 //
 
 // We use this to create the reveal background overlay styles
 @mixin reveal-bg( $include-z-index-value: true ) {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  // position: absolute; // allows modal background to extend beyond window position
   background: $reveal-overlay-bg-old; // Autoprefixer should be used to avoid such variables needed when Foundation for Sites can do so in the near future.
   background: $reveal-overlay-bg;
-  z-index: if( $include-z-index-value, 1004, auto );
+  bottom: 0;
   display: none;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: if( $include-z-index-value, $z-index-base - 1, auto );
   #{$default-float}: 0;
 }
 
@@ -68,13 +72,13 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
 //
 @mixin reveal-modal-base( $base-style: true, $width:$reveal-default-width, $max-width:$reveal-max-width, $border-radius: $reveal-radius) {
   @if $base-style {
-    visibility: hidden;
+    border-radius: $border-radius;
     display: none;
     position: absolute;
-    z-index: 1005;
-    width: 100vw;
     top:0;
-    border-radius: $border-radius;
+    visibility: hidden;
+    width: 100%;
+    z-index: $z-index-base;
     #{$default-float}: 0;
 
     @media #{$small-only} {
@@ -85,18 +89,18 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
     .column, .columns { min-width: 0; }
 
     // Get rid of margin from first and last element inside modal
-    & > :first-child { margin-top: 0; }
+    > :first-child { margin-top: 0; }
 
-    & > :last-child { margin-bottom: 0; }
+    > :last-child { margin-bottom: 0; }
   }
 
   @if $width {
     @media #{$medium-up} {
-      width: $width;
-      max-width: $max-width;
       left: 0;
-      right: 0;
       margin: 0 auto;
+      max-width: $max-width;
+      right: 0;
+      width: $width;
     }
   }
 }
@@ -148,14 +152,14 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
 //
 // $color - Default: $reveal-close-color || $base
 @mixin reveal-close($color:$reveal-close-color) {
+  color: $color;
+  cursor: $cursor-pointer-value;
   font-size: $reveal-close-font-size;
+  font-weight: $reveal-close-weight;
   line-height: 1;
   position: absolute;
   top: $reveal-close-top;
   #{$opposite-direction}: $reveal-close-side;
-  color: $color;
-  font-weight: $reveal-close-weight;
-  cursor: $cursor-pointer-value;
 }
 
 @include exports("reveal") {
@@ -174,7 +178,6 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
         $radius:false,
         $top-offset:$reveal-position-top
       );
-      @include reveal-modal-style($padding:$reveal-modal-padding * 1.5);
 
       &.radius { @include reveal-modal-style($radius:true); }
       &.round  { @include reveal-modal-style($radius:$reveal-round); }
@@ -185,38 +188,22 @@ $close-reveal-modal-class: "close-reveal-modal" !default;
       &.large { @include reveal-modal-base(false, 70%); }
       &.xlarge { @include reveal-modal-base(false, 95%); }
       &.full {
-        @include reveal-modal-base(false, 100vw);
-        top:0;
-        left:0;
-        height:100%;
+        @include reveal-modal-base(false, 100%);
         height: 100vh;
-        min-height:100vh;
-        max-width: none !important;
+        height:100%;
+        left:0;
         margin-left: 0 !important;
+        max-width: none !important;
+        min-height:100vh;
+        top:0;
+      }
+
+      // Modals pushed to back
+      &.toback {
+        z-index: $z-index-base - 2;
       }
 
       .#{$close-reveal-modal-class} { @include reveal-close; }
-    }
-
-    dialog {
-      @extend .#{$reveal-modal-class};
-      display: none;
-
-      &::backdrop, & + .backdrop {
-        @include reveal-bg(false);
-      }
-
-      &[open]{
-        display: block;
-      }
-    }
-
-    // Reveal Print Styles: It should be invisible, adds no value being printed.
-    @media print {
-      dialog, .#{$reveal-modal-class} { 
-        display: none;
-        background: $white !important;
-      }
     }
   }
 }

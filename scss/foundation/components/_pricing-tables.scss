@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 //
 // @variables
@@ -75,12 +75,12 @@ $price-cta-padding: rem-calc(20 20 0) !default;
 // We use this mixin to create the pricing table title styles
 @mixin pricing-table-title {
   background-color: $price-title-bg;
+  color: $price-title-color;
+  font-family: $price-title-font-family;
+  font-size: $price-title-size;
+  font-weight: $price-title-weight;
   padding: $price-title-padding;
   text-align: $price-title-align;
-  color: $price-title-color;
-  font-weight: $price-title-weight;
-  font-size: $price-title-size;
-  font-family: $price-title-font-family;
 }
 
 // @mixins
@@ -88,12 +88,12 @@ $price-cta-padding: rem-calc(20 20 0) !default;
 // We use this mixin to control the pricing table price styles
 @mixin pricing-table-price {
   background-color: $price-money-bg;
+  color: $price-money-color;
+  font-family: $price-money-font-family;
+  font-size: $price-money-size;
+  font-weight: $price-money-weight;
   padding: $price-money-padding;
   text-align: $price-money-align;
-  color: $price-money-color;
-  font-weight: $price-money-weight;
-  font-size: $price-money-size;
-  font-family: $price-money-font-family;
 }
 
 // @mixins
@@ -101,13 +101,13 @@ $price-cta-padding: rem-calc(20 20 0) !default;
 // We use this mixin to create the description styles for the pricing table
 @mixin pricing-table-description {
   background-color: $price-bg;
-  padding: $price-desc-padding;
-  text-align: $price-desc-align;
+  border-bottom: $price-desc-bottom-border;
   color: $price-desc-color;
   font-size: $price-desc-font-size;
   font-weight: $price-desc-weight;
   line-height: $price-desc-line-height;
-  border-bottom: $price-desc-bottom-border;
+  padding: $price-desc-padding;
+  text-align: $price-desc-align;
 }
 
 // @mixins
@@ -115,12 +115,12 @@ $price-cta-padding: rem-calc(20 20 0) !default;
 // We use this mixin to style the bullet items in the pricing table
 @mixin pricing-table-bullet {
   background-color: $price-bg;
-  padding: $price-item-padding;
-  text-align: $price-item-align;
+  border-bottom: $price-item-bottom-border;
   color: $price-item-color;
   font-size: $price-item-font-size;
   font-weight: $price-item-weight;
-  border-bottom: $price-item-bottom-border;
+  padding: $price-item-padding;
+  text-align: $price-item-align;
 }
 
 // @mixins
@@ -128,8 +128,8 @@ $price-cta-padding: rem-calc(20 20 0) !default;
 // We use this mixin to style the CTA area of the pricing tables
 @mixin pricing-table-cta {
   background-color: $price-cta-bg;
-  text-align: $price-cta-align;
   padding: $price-cta-padding;
+  text-align: $price-cta-align;
 }
 
 @include exports("pricing-table") {

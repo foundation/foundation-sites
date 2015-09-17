@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 //
 // @name _sub-nav.scss
@@ -59,10 +59,10 @@ $sub-nav-item-divider-margin: rem-calc(12) !default;
   $active-bg: $sub-nav-active-bg,
   $active-bg-hover: $sub-nav-active-bg-hover) {
   display: block;
-  width: auto;
+  margin: $sub-nav-list-margin;
   overflow: hidden;
-  margin-bottom: $sub-nav-list-margin;
   padding-top: $sub-nav-list-padding-top;
+  width: auto;
 
   dt {
     text-transform: uppercase;
@@ -71,19 +71,19 @@ $sub-nav-item-divider-margin: rem-calc(12) !default;
   dt,
   dd,
   li {
+    color: $font-color;
     float: $default-float;
-    display: inline;
+    font-family: $sub-nav-font-family;
+    font-size: $font-size;
+    font-weight: $sub-nav-font-weight;
     margin-#{$default-float}: rem-calc(16);
     margin-bottom: 0;
-    font-family: $sub-nav-font-family;
-    font-weight: $sub-nav-font-weight;
-    font-size: $font-size;
-    color: $font-color;
 
     a {
-      text-decoration: $sub-nav-text-decoration;
       color: $sub-nav-font-color;
       padding: $sub-nav-padding;
+      text-decoration: $sub-nav-text-decoration;
+
       &:hover {
         color: $sub-nav-font-color-hover;
       }
@@ -91,15 +91,17 @@ $sub-nav-item-divider-margin: rem-calc(12) !default;
 
     &.active a {
       @include radius($sub-nav-border-radius);
-      font-weight: $sub-nav-active-font-weight;
       background: $active-bg;
-      padding: $sub-nav-active-padding;
-      cursor: $sub-nav-active-cursor;
       color: $sub-nav-active-color;
+      cursor: $sub-nav-active-cursor;
+      font-weight: $sub-nav-active-font-weight;
+      padding: $sub-nav-active-padding;
+
       &:hover {
         background: $active-bg-hover;
       }
     }
+
     @if $sub-nav-item-divider != "" {
       margin-#{$default-float}: 0;
 

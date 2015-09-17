@@ -1,9 +1,7 @@
 {
   "name": "foundation",
-  "version": "{{VERSION}}",
   "main": [
-    "css/foundation.css",
-    "css/foundation.css.map",
+    "scss/foundation.scss",
     "js/foundation.js"
   ],
   "ignore": [

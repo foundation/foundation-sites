@@ -2,14 +2,14 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 $include-html-type-classes: $include-html-classes !default;
 
 // We use these to control header font styles
 $header-font-family: $body-font-family !default;
 $header-font-weight: $font-weight-normal !default;
-$header-font-style: $font-weight-normal !default;
+$header-font-style: normal !default;
 $header-font-color: $jet !default;
 $header-line-height: 1.4 !default;
 $header-top-margin: .2rem !default;
@@ -216,8 +216,8 @@ $align-class-breakpoints:
     /* Default Link Styles */
     a {
       color: $anchor-font-color;
-      text-decoration: $anchor-text-decoration;
       line-height: inherit;
+      text-decoration: $anchor-text-decoration;
 
       &:hover,
       &:focus {
@@ -233,8 +233,8 @@ $align-class-breakpoints:
     /* Default paragraph styles */
     p {
       font-family: $paragraph-font-family;
-      font-weight: $paragraph-font-weight;
       font-size: $paragraph-font-size;
+      font-weight: $paragraph-font-weight;
       line-height: $paragraph-line-height;
       margin-bottom: $paragraph-margin-bottom;
       text-rendering: $paragraph-text-rendering;
@@ -243,25 +243,25 @@ $align-class-breakpoints:
 
       & aside {
         font-size: $paragraph-aside-font-size;
-        line-height: $paragraph-aside-line-height;
         font-style: $paragraph-aside-font-style;
+        line-height: $paragraph-aside-line-height;
       }
     }
 
     /* Default header styles */
     h1, h2, h3, h4, h5, h6 {
-      font-family: $header-font-family;
-      font-weight: $header-font-weight;
-      font-style: $header-font-style;
       color: $header-font-color;
-      text-rendering: $header-text-rendering;
-      margin-top: $header-top-margin;
-      margin-bottom: $header-bottom-margin;
+      font-family: $header-font-family;
+      font-style: $header-font-style;
+      font-weight: $header-font-weight;
       line-height: $header-line-height;
+      margin-bottom: $header-bottom-margin;
+      margin-top: $header-top-margin;
+      text-rendering: $header-text-rendering;
 
       small {
-        font-size: $small-font-size;
         color: $small-font-color;
+        font-size: $small-font-size;
         line-height: 0;
       }
     }
@@ -279,8 +279,8 @@ $align-class-breakpoints:
       border: $hr-border-style $hr-border-color;
       border-width: $hr-border-width 0 0;
       clear: both;
-      margin: $hr-margin 0 ($hr-margin - rem-calc($hr-border-width));
       height: 0;
+      margin: $hr-margin 0 ($hr-margin - rem-calc($hr-border-width));
     }
 
     /* Helpful Typography Defaults */
@@ -302,13 +302,13 @@ $align-class-breakpoints:
     }
 
     code {
+      background-color: $code-background-color;
+      border-color: $code-border-color;
+      border-style: $code-border-style;
+      border-width: $code-border-size;
+      color: $code-color;
       font-family: $code-font-family;
       font-weight: $code-font-weight;
-      color: $code-color;
-      background-color: $code-background-color;
-      border-width: $code-border-size;
-      border-style: $code-border-style;
-      border-color: $code-border-color;
       padding: $code-padding;
     }
 
@@ -316,26 +316,15 @@ $align-class-breakpoints:
     ul,
     ol,
     dl {
+      font-family: $list-font-family;
       font-size: $list-font-size;
       line-height: $list-line-height;
-      margin-bottom: $list-margin-bottom;
       list-style-position: $list-style-position;
-      font-family: $list-font-family;
+      margin-bottom: $list-margin-bottom;
     }
 
     ul {
       margin-#{$default-float}: $list-side-margin;
-      &.no-bullet {
-        margin-#{$default-float}: $list-side-margin-no-bullet;
-        li {
-          ul,
-          ol {
-            margin-#{$default-float}: $list-nested-margin;
-            margin-bottom: 0;
-            list-style: none;
-          }
-        }
-      }
     }
 
     /* Unordered Lists */
@@ -356,7 +345,6 @@ $align-class-breakpoints:
       &.square { list-style-type: square; margin-#{$default-float}: $list-side-margin;}
       &.circle { list-style-type: circle; margin-#{$default-float}: $list-side-margin;}
       &.disc { list-style-type: disc; margin-#{$default-float}: $list-side-margin;}
-      &.no-bullet { list-style: none; }
     }
 
     /* Ordered Lists */
@@ -367,6 +355,21 @@ $align-class-breakpoints:
         ol {
           margin-#{$default-float}: $list-nested-margin;
           margin-bottom: 0;
+        }
+      }
+    }
+
+    // Lists without bullets
+    .no-bullet {
+      list-style-type: none;
+      margin-#{$default-float}: $list-side-margin-no-bullet;
+      
+      li {
+        ul,
+        ol {
+          margin-#{$default-float}: $list-nested-margin;
+          margin-bottom: 0;
+          list-style: none;
         }
       }
     }
@@ -452,7 +455,7 @@ $align-class-breakpoints:
 
 
     @media #{$medium-up} {
-      h1,h2,h3,h4,h5,h6 { line-height: $header-line-height; }
+      h1, h2, h3, h4, h5, h6 { line-height: $header-line-height; }
       h1 { font-size: $h1-font-size; }
       h2 { font-size: $h2-font-size; }
       h3 { font-size: $h3-font-size; }
@@ -460,66 +463,5 @@ $align-class-breakpoints:
       h5 { font-size: $h5-font-size; }
       h6 { font-size: $h6-font-size; }
     }
-
-    // Only include these styles if you want them.
-    @if $include-print-styles {
-      /*
-       * Print styles.
-       *
-       * Inlined to avoid required HTTP connection: www.phpied.com/delay-loading-your-print-css/
-       * Credit to Paul Irish and HTML5 Boilerplate (html5boilerplate.com)
-      */
-      .print-only { display: none !important; }
-      @media print {
-        * {
-          background: transparent !important;
-          color: $black !important; /* Black prints faster: h5bp.com/s */
-          box-shadow: none !important;
-          text-shadow: none !important;
-        }
-
-        a,
-        a:visited { text-decoration: underline;}
-        a[href]:after { content: " (" attr(href) ")"; }
-
-        abbr[title]:after { content: " (" attr(title) ")"; }
-
-        // Don't show links for images, or javascript/internal links
-        .ir a:after,
-        a[href^="javascript:"]:after,
-        a[href^="#"]:after { content: ""; }
-
-        pre,
-        blockquote {
-          border: 1px solid $aluminum;
-          page-break-inside: avoid;
-        }
-
-        thead { display: table-header-group; /* h5bp.com/t */ }
-
-        tr,
-        img { page-break-inside: avoid; }
-
-        img { max-width: 100% !important; }
-
-        @page { margin: 0.5cm; }
-
-        p,
-        h2,
-        h3 {
-          orphans: 3;
-          widows: 3;
-        }
-
-        h2,
-        h3 { page-break-after: avoid; }
-
-        .hide-on-print { display: none !important; }
-        .print-only { display: block !important; }
-        .hide-for-print { display: none !important; }
-        .show-for-print { display: inherit !important; }
-      }
-    }
-
   }
 }

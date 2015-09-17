@@ -4,19 +4,21 @@
   Foundation.libs.clearing = {
     name : 'clearing',
 
-    version: '{{VERSION}}',
+    version : '{{VERSION}}',
 
     settings : {
       templates : {
         viewing : '<a href="#" class="clearing-close">&times;</a>' +
           '<div class="visible-img" style="display: none"><div class="clearing-touch-label"></div><img src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt="" />' +
           '<p class="clearing-caption"></p><a href="#" class="clearing-main-prev"><span></span></a>' +
-          '<a href="#" class="clearing-main-next"><span></span></a></div>'
+          '<a href="#" class="clearing-main-next"><span></span></a></div>' +
+          '<img class="clearing-preload-next" style="display: none" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt="" />' +
+          '<img class="clearing-preload-prev" style="display: none" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" alt="" />'
       },
 
       // comma delimited list of selectors that, on click, will close clearing,
       // add 'div.clearing-blackout, div.visible-img' to close on background click
-      close_selectors : '.clearing-close, div.clearing-blackout', 
+      close_selectors : '.clearing-close, div.clearing-blackout',
 
       // Default to the entire li element.
       open_selectors : '',
@@ -26,7 +28,7 @@
 
       touch_label : '',
 
-      // event initializers and locks
+      // event initializer and locks
       init : false,
       locked : false
     },
@@ -107,23 +109,27 @@
       S = self.S;
 
       S(this.scope)
-        .on('touchstart.fndtn.clearing', '.visible-img', function(e) {
+        .on('touchstart.fndtn.clearing', '.visible-img', function (e) {
           if (!e.touches) { e = e.originalEvent; }
           var data = {
-                start_page_x: e.touches[0].pageX,
-                start_page_y: e.touches[0].pageY,
-                start_time: (new Date()).getTime(),
-                delta_x: 0,
-                is_scrolling: undefined
+                start_page_x : e.touches[0].pageX,
+                start_page_y : e.touches[0].pageY,
+                start_time : (new Date()).getTime(),
+                delta_x : 0,
+                is_scrolling : undefined
               };
 
           S(this).data('swipe-transition', data);
           e.stopPropagation();
         })
-        .on('touchmove.fndtn.clearing', '.visible-img', function(e) {
-          if (!e.touches) { e = e.originalEvent; }
+        .on('touchmove.fndtn.clearing', '.visible-img', function (e) {
+          if (!e.touches) {
+            e = e.originalEvent;
+          }
           // Ignore pinch/zoom events
-          if(e.touches.length > 1 || e.scale && e.scale !== 1) return;
+          if (e.touches.length > 1 || e.scale && e.scale !== 1) {
+            return;
+          }
 
           var data = S(this).data('swipe-transition');
 
@@ -148,7 +154,7 @@
             self.nav(e, direction);
           }
         })
-        .on('touchend.fndtn.clearing', '.visible-img', function(e) {
+        .on('touchend.fndtn.clearing', '.visible-img', function (e) {
           S(this).data('swipe-transition', {});
           e.stopPropagation();
         });
@@ -160,7 +166,7 @@
       if ($el.parent().hasClass('carousel')) {
         return;
       }
-      
+
       $el.after('<div id="foundationClearingHolder"></div>');
 
       var grid = $el.detach(),
@@ -171,12 +177,12 @@
       } else {
         grid_outerHTML = grid[0].outerHTML;
       }
-      
+
       var holder = this.S('#foundationClearingHolder'),
           settings = $el.data(this.attr_name(true) + '-init'),
           data = {
-            grid: '<div class="carousel">' + grid_outerHTML + '</div>',
-            viewing: settings.templates.viewing
+            grid : '<div class="carousel">' + grid_outerHTML + '</div>',
+            viewing : settings.templates.viewing
           },
           wrapper = '<div class="clearing-assembled"><div>' + data.viewing +
             data.grid + '</div></div>',
@@ -197,10 +203,11 @@
           visible_image = self.S('.visible-img', container),
           image = self.S('img', visible_image).not($image),
           label = self.S('.clearing-touch-label', container),
-          error = false;
+          error = false,
+          loaded = {};
 
       // Event to disable scrolling on touch devices when Clearing is activated
-      $('body').on('touchmove',function(e){
+      $('body').on('touchmove', function (e) {
         e.preventDefault();
       });
 
@@ -223,6 +230,7 @@
       function cb (image) {
         var $image = $(image);
         $image.css('visibility', 'visible');
+        $image.trigger('imageVisible');
         // toggle the gallery
         body.css('overflow', 'hidden');
         root.addClass('clearing-blackout');
@@ -241,9 +249,17 @@
       if (!this.locked()) {
         visible_image.trigger('open.fndtn.clearing');
         // set the image to the selected thumbnail
-        image
-          .attr('src', this.load($image))
-          .css('visibility', 'hidden');
+        loaded = this.load($image);
+        if (loaded.interchange) {
+          image
+            .attr('data-interchange', loaded.interchange)
+            .foundation('interchange', 'reflow');
+        } else {
+          image
+            .attr('src', loaded.src)
+            .attr('data-interchange', '');
+        }
+        image.css('visibility', 'hidden');
 
         startLoad.call(this);
       }
@@ -272,7 +288,7 @@
           .removeClass('clearing-blackout');
         container.removeClass('clearing-container');
         visible_image.hide();
-        visible_image.trigger('closed.fndtn.clearing');        
+        visible_image.trigger('closed.fndtn.clearing');
       }
 
       // Event to re-enable scrolling on touch devices
@@ -291,9 +307,15 @@
           PREV_KEY = this.rtl ? 39 : 37,
           ESC_KEY = 27;
 
-      if (e.which === NEXT_KEY) this.go(clearing, 'next');
-      if (e.which === PREV_KEY) this.go(clearing, 'prev');
-      if (e.which === ESC_KEY) this.S('a.clearing-close').trigger('click').trigger('click.fndtn.clearing');
+      if (e.which === NEXT_KEY) {
+        this.go(clearing, 'next');
+      }
+      if (e.which === PREV_KEY) {
+        this.go(clearing, 'prev');
+      }
+      if (e.which === ESC_KEY) {
+        this.S('a.clearing-close').trigger('click.fndtn.clearing');
+      }
     },
 
     nav : function (e, direction) {
@@ -352,34 +374,18 @@
     },
 
     center_and_label : function (target, label) {
-      if (!this.rtl) {
-        target.css({
-          marginLeft : -(target.outerWidth() / 2),
-          marginTop : -(target.outerHeight() / 2)
+      if (!this.rtl && label.length > 0) {
+        label.css({
+          marginLeft : -(label.outerWidth() / 2),
+          marginTop : -(target.outerHeight() / 2)-label.outerHeight()-10
         });
-
-        if (label.length > 0) {
-          label.css({
-            marginLeft : -(label.outerWidth() / 2),
-            marginTop : -(target.outerHeight() / 2)-label.outerHeight()-10
-          });
-        }
       } else {
-        target.css({
-          marginRight : -(target.outerWidth() / 2),
-          marginTop : -(target.outerHeight() / 2),
+        label.css({
+          marginRight : -(label.outerWidth() / 2),
+          marginTop : -(target.outerHeight() / 2)-label.outerHeight()-10,
           left: 'auto',
           right: '50%'
         });
-
-        if (label.length > 0) {
-          label.css({
-            marginRight : -(label.outerWidth() / 2),
-            marginTop : -(target.outerHeight() / 2)-label.outerHeight()-10,
-            left: 'auto',
-            right: '50%'
-          });
-        }
       }
       return this;
     },
@@ -387,35 +393,55 @@
     // image loading and preloading
 
     load : function ($image) {
-      var href;
+      var href,
+          interchange,
+          closest_a;
 
-      if ($image[0].nodeName === "A") {
+      if ($image[0].nodeName === 'A') {
         href = $image.attr('href');
+        interchange = $image.data('clearing-interchange');
       } else {
-        href = $image.parent().attr('href');
+        closest_a = $image.closest('a');
+        href = closest_a.attr('href');
+        interchange = closest_a.data('clearing-interchange');
       }
 
       this.preload($image);
 
-      if (href) return href;
-      return $image.attr('src');
+      return {
+        'src': href ? href : $image.attr('src'),
+        'interchange': href ? interchange : $image.data('clearing-interchange')
+      }
     },
 
     preload : function ($image) {
       this
-        .img($image.closest('li').next())
-        .img($image.closest('li').prev());
+        .img($image.closest('li').next(), 'next')
+        .img($image.closest('li').prev(), 'prev');
     },
 
-    img : function (img) {
+    img : function (img, sibling_type) {
       if (img.length) {
-        var new_img = new Image(),
-            new_a = this.S('a', img);
+        var preload_img = $('.clearing-preload-' + sibling_type),
+            new_a = this.S('a', img),
+            src,
+            interchange,
+            image;
 
         if (new_a.length) {
-          new_img.src = new_a.attr('href');
+          src = new_a.attr('href');
+          interchange = new_a.data('clearing-interchange');
         } else {
-          new_img.src = this.S('img', img).attr('src');
+          image = this.S('img', img);
+          src = image.attr('src');
+          interchange = image.data('clearing-interchange');
+        }
+
+        if (interchange) {
+          preload_img.attr('data-interchange', interchange);
+        } else {
+          preload_img.attr('src', src);
+          preload_img.attr('data-interchange', '');
         }
       }
       return this;
@@ -427,16 +453,16 @@
       var caption = $image.attr('data-caption');
 
       if (caption) {
-        container
-          .html(caption)
-          .show();
+      	var containerPlain = container.get(0);
+      	containerPlain.innerHTML = caption;
+        container.show();
       } else {
         container
           .text('')
           .hide();
       }
       return this;
-    }, 
+    },
 
     // directional methods
 
@@ -451,7 +477,7 @@
 
       if (target.length) {
         this.S('img', target)
-          .trigger('click', [current, target]).trigger('click.fndtn.clearing', [current, target])
+          .trigger('click.fndtn.clearing', [current, target])
           .trigger('change.fndtn.clearing');
       }
     },
@@ -470,7 +496,7 @@
       // we use jQuery animate instead of CSS transitions because we
       // need a callback to unlock the next animation
       // needs support for RTL **
-      if (target.index() !== old_index && !/skip/.test(direction)){
+      if (target.index() !== old_index && !/skip/.test(direction)) {
         if (/left/.test(direction)) {
           this.lock();
           dir_obj[dir] = left + width;
@@ -526,7 +552,9 @@
 
     adjacent : function (current_index, target_index) {
       for (var i = target_index + 1; i >= target_index - 1; i--) {
-        if (i === current_index) return true;
+        if (i === current_index) {
+          return true;
+        }
       }
       return false;
     },

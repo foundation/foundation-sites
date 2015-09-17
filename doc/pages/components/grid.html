@@ -1,5 +1,6 @@
 ---
 title: Grid
+layout: component.html
 ---
 
 <h3 class="subheader">Create powerful multi-device layouts quickly and easily with the default 12-column, nest-able Foundation grid. If you're familiar with grid systems, you'll feel right at home. If not, you'll learn quickly.</h3>
@@ -21,6 +22,7 @@ Start by adding an element with a class of `row`. This will create a horizontal 
 {{> examples_grid_rendered}}
 
 ***
+
 ### Small Grid
 
 Small grids expand to large screens easier than large grids cram into small screens.
@@ -86,6 +88,22 @@ In order to work around browsers' different rounding behaviors, Foundation will 
 <h4>Rendered HTML</h4>
 
 {{> examples_grid_end_rendered}}
+
+***
+
+### Collapse/Uncollapse Rows
+
+The `collapse` class lets you remove column gutters (padding).
+
+There are times when you won't want each media query to be collapsed or uncollapsed. In this case, use the media query size you want and collapse or uncollapse and add that to your `row` element. Example shows no gutter at small media size and then adds the gutter to columns at medium.
+
+<h4>HTML</h4>
+
+{{> examples_grid_row_collapse}}
+
+<h4>Rendered HTML</h4>
+
+{{> examples_grid_row_collapse_rendered}}
 
 ***
 

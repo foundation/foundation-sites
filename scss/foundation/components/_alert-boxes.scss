@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 //
 // Alert Box Variables
@@ -35,9 +35,9 @@ $alert-close-color: $oil !default;
 $alert-close-top: 50% !default;
 $alert-close-position: rem-calc(4) !default;
 $alert-close-font-size: rem-calc(22) !default;
-$alert-close-opacity: 0.3 !default;
-$alert-close-opacity-hover: 0.5 !default;
-$alert-close-padding: 9px 6px 4px !default;
+$alert-close-opacity: .3 !default;
+$alert-close-opacity-hover: .5 !default;
+$alert-close-padding: 0 6px 4px !default;
 $alert-close-background: inherit !default;
 
 // We use this to control border radius
@@ -55,11 +55,11 @@ $alert-transition-ease: ease-out !default;
   border-style: $alert-border-style;
   border-width: $alert-border-width;
   display: block;
+  font-size: $alert-font-size;
   font-weight: $alert-font-weight;
   margin-bottom: $alert-bottom-margin;
-  position: relative;
   padding: $alert-padding-top $alert-padding-opposite-direction $alert-padding-bottom $alert-padding-default-float;
-  font-size: $alert-font-size;
+  position: relative;
   @include single-transition(opacity, $alert-transition-speed, $alert-transition-ease)
 }
 
@@ -83,16 +83,16 @@ $alert-transition-ease: ease-out !default;
 
 // We use this to create the close button.
 @mixin alert-close {
+  #{$opposite-direction}: $alert-close-position;
+  background: $alert-close-background;
+  color: $alert-close-color;
   font-size: $alert-close-font-size;
+  line-height: .9;
+  margin-top: -($alert-close-font-size / 2);
+  opacity: $alert-close-opacity;
   padding: $alert-close-padding;
-  line-height: 0;
   position: absolute;
   top: $alert-close-top;
-  margin-top: -($alert-close-font-size / 2);
-  #{$opposite-direction}: $alert-close-position;
-  color: $alert-close-color;
-  opacity: $alert-close-opacity;
-  background: $alert-close-background;
   &:hover,
   &:focus { opacity: $alert-close-opacity-hover; }
 }

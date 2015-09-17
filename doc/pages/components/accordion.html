@@ -1,5 +1,6 @@
 ---
 title: Accordion
+layout: component.html
 ---
 
 <h3 class="subheader">Accordions are elements used to expand and collapse content that is broken into logical sections, much like tabs.</h3>
@@ -25,11 +26,11 @@ You can create an accordion using minimal markup like so:
   </div>
   <div class="large-6 columns">
     <h4>Rendered HTML</h4>
-    {{> examples_accordion_basic}}
+    {{> examples_accordion_basic_rendered}}
   </div>
 </div>
 
-<div class="panel"><p>Note: Accordion used to require ```<dl>``` and ```<dd>``` markup. It now works with ```<ul>```'s and ```<li>```'s as well.</p></div>
+<div class="panel"><p>Note: Accordion used to require ```<dl>``` and ```<dd>``` markup. It now works with ```<ul>```'s and ```<li>```'s as well. You need v5.5+ to use the newer markup.</p></div>
 
 ***
 
@@ -49,6 +50,27 @@ You can name the accordion so that it can be spread across different parent cont
   <div class="large-6 columns">
     <h4>Rendered HTML</h4>
     {{> examples_accordion_grid}}
+  </div>
+</div>
+
+***
+
+## Accessibility
+
+For accessible accordions use the markup below, which adds a some of ARIA attributes and roles. Some attributes are automatically added and toggled by the JavaScript.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+{{> examples_accordion_aria}}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    {{> examples_accordion_aria}}
   </div>
 </div>
 
@@ -126,12 +148,32 @@ $(document).foundation({
     // specify the class used for active (or open) accordion panels
     active_class: 'active',
     // allow multiple accordion panels to be active at the same time
-    multi_expand: false,
+    multi_expand: true,
     // allow accordion panels to be closed by clicking on their headers
     // setting to false only closes accordion panels when another is opened
     toggleable: true
   }
 });
+```
+{{/markdown}}
+
+***
+
+### Adding New Accordion Content After Page Load
+
+If you add new content after the page has been loaded, you will need to reinitialize the Foundation JavaScript by running the following:
+
+{{#markdown}}
+```javascript
+$(document).foundation(); 
+```
+{{/markdown}}
+
+Reflow will make Foundation check the DOM for any elements and re-apply any listeners to them.
+
+{{#markdown}}
+```javascript
+$(document).foundation('accordion', 'reflow');
 ```
 {{/markdown}}
 

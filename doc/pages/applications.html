@@ -54,7 +54,13 @@ $(document).foundation();
 ```
 ### Configure Asset pipeline
 
-Add Modernizr to precompiled assets for production in `config/environments/production.rb`:
+Add Modernizr to precompiled assets for production in `config/initializers/assets.rb`:
+
+```ruby
+Rails.application.config.assets.precompile += %w( vendor/modernizr.js )
+```
+
+For Rails version < 4.2.0, add Modernizr in `config/environments/production.rb`:
 
 ```ruby
 config.assets.precompile += %w( vendor/modernizr.js )

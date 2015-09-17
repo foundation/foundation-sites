@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 //
 // @variables
@@ -22,7 +22,7 @@ $side-nav-list-margin: rem-calc(0 0 7 0) !default;
 $side-nav-link-color: $primary-color !default;
 $side-nav-link-color-active: scale-color($side-nav-link-color, $lightness: 30%) !default;
 $side-nav-link-color-hover: scale-color($side-nav-link-color, $lightness: 30%) !default;
-$side-nav-link-bg-hover: hsla(0, 0, 0, 0.025) !default;
+$side-nav-link-bg-hover: hsla(0, 0, 0, .025) !default;
 $side-nav-link-margin: 0 !default;
 $side-nav-link-padding: rem-calc(7 14) !default;
 $side-nav-font-size: rem-calc(14) !default;
@@ -40,7 +40,7 @@ $side-nav-heading-text-transform: uppercase !default;
 // We use these to control border styles
 $side-nav-divider-size: 1px !default;
 $side-nav-divider-style: solid !default;
-$side-nav-divider-color: scale-color($white, $lightness: 10%) !default;
+$side-nav-divider-color: scale-color($white, $lightness: -10%) !default;
 
 
 //
@@ -58,23 +58,24 @@ $side-nav-divider-color: scale-color($white, $lightness: 10%) !default;
   $divider-color:$side-nav-divider-color,
   $font-size:$side-nav-font-size,
   $link-color:$side-nav-link-color,
+  $link-color-active:$side-nav-link-color-active,
   $link-color-hover:$side-nav-link-color-hover,
   $link-bg-hover:$side-nav-link-bg-hover) {
   display: block;
+  font-family: $side-nav-font-family;
+  list-style-position: $side-nav-list-position;
+  list-style-type: $side-nav-list-type;
   margin: 0;
   padding: $side-nav-padding;
-  list-style-type: $side-nav-list-type;
-  list-style-position: $side-nav-list-position;
-  font-family: $side-nav-font-family;
 
   li {
-    margin: $side-nav-list-margin;
     font-size: $font-size;
     font-weight: $side-nav-font-weight;
+    margin: $side-nav-list-margin;
 
     a:not(.button) {
-      display: block;
       color: $link-color;
+      display: block;
       margin: $side-nav-link-margin;
       padding: $side-nav-link-padding;
       &:hover,
@@ -82,19 +83,22 @@ $side-nav-divider-color: scale-color($white, $lightness: 10%) !default;
         background: $link-bg-hover;
         color: $link-color-hover;
       }
+      &:active {
+        color: $link-color-active;
+      }
     }
 
     &.active > a:first-child:not(.button) {
       color: $side-nav-link-color-active;
-      font-weight: $side-nav-font-weight-active;
       font-family: $side-nav-font-family-active;
+      font-weight: $side-nav-font-weight-active;
     }
 
     &.divider {
       border-top: $side-nav-divider-size $side-nav-divider-style;
       height: 0;
-      padding: 0;
       list-style: none;
+      padding: 0;
       border-top-color: $divider-color;
     }
 
@@ -111,6 +115,6 @@ $side-nav-divider-color: scale-color($white, $lightness: 10%) !default;
 
 @include exports("side-nav") {
   @if $include-html-nav-classes {
-    .side-nav { @include side-nav; }
+    .side-nav {@include side-nav;}
   }
 }

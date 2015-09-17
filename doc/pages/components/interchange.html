@@ -1,5 +1,6 @@
 ---
 title: Interchange
+layout: component.html
 ---
 
 <h3 class="subheader">Interchange uses media queries to dynamically load responsive content that is appropriate for different users' browsers.</h3>
@@ -116,6 +117,14 @@ If you add new content after the page has been loaded, you will need to reinitia
 {{#markdown}}
 ```javascript
 $(document).foundation(); 
+```
+{{/markdown}}
+
+Reflow will make Foundation check the DOM for any elements and re-apply any listeners to them.
+
+{{#markdown}}
+```javascript
+$(document).foundation('interchange', 'reflow');
 ```
 {{/markdown}}
 

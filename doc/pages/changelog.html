@@ -2,7 +2,7 @@
 title: Changelog
 ---
 
-<h3 class="subheader">Here's a summary of all of our releases of Foundation so far.</h3>
+<h3 class="subheader">Foundation is moving fast and this is the place to keep up with the releases. Here's a summary of all of our releases of Foundation for Sites.</h3>
 
 ***
 
@@ -24,6 +24,106 @@ title: Changelog
 		<a href="/forum"><img src="http://foundation.zurb.com/assets/img/support/foundation-forum.svg"></a>
 	</div>
 </div>
+
+<div class="newsletter-foundation panel callout">
+  <div class="row">
+    <div class="medium-8 columns">
+      <h5>Stay on top of what&rsquo;s happening in Foundation!</h5>
+      <p>Sign up to receive the monthly Foundation News for the latest stories, code snippets, and resources.</p>
+    </div>
+    <div class="medium-4 columns">
+      <form action="http://zurb.createsend.com/t/y/s/msuyr/" method="post" id="subForm">
+        <div class="row collapse margintop-20px">
+          <div class="small-8 medium-8 columns">
+            <input id="fieldEmail" type="email" name="cm-msuyr-msuyr" placeholder="signup@example.com">
+          </div>
+          <div class="small-4 medium-4 columns">
+            <input type="submit" href="#" class="postfix button" value="Sign Up">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+### 5.5.2 - April 30th, 2015
+
+* Accessibility updates 
+  - New visibility classes for accessibility - [7bb9efc](https://github.com/zurb/foundation/commit/7bb9efc5216840a81487a41f6ffd85c284a2c543)
+  - Focus ability added to Reveal modal - [9b942bd](https://github.com/zurb/foundation/commit/9b942bdc4d4191c2c224cce3f588e0dbc2f7290e)
+  - Improves Reveal Modal markup for accessibility - [ed2f57a](https://github.com/zurb/foundation/commit/ed2f57a81396b935df48531a902732c0eec110ec)
+  - Fix the 'aria-expanded' in multi-buttons scenario - [4fe1071](https://github.com/zurb/foundation/commit/4fe1071689175b5cb22a2faada18edf5db2f028e)
+  - Improvements to Accordion - [642e0f9](https://github.com/zurb/foundation/commit/642e0f9180320d1277d4a296a3a88fd7e30300f2)
+
+
+* Workflow improvements
+  - Updates the Grunt file: sets the key paths as variables, which are then available for use in the tasks. This helps with a few things including:
+    - reusable configs across different projects
+    - git history is cleaner with modular approach
+    - easier to avoid merge conflicts
+      - Commit - [3a4d44d](https://github.com/zurb/foundation/commit/3a4d44d007fdf5b24eff3c89a953ebe07075b10e)
+  - Distribute on NPM - [Foundation-Sites](https://www.npmjs.com/package/foundation-sites)
+  - Added Grunt task to minify CSS - [d163f4b](https://github.com/zurb/foundation/commit/5deab70eac43cf143e6b9702b0bf7448e6f0460b)
+
+
+  * Adds Retina media queries - [71c7a49](https://github.com/zurb/foundation/commit/71c7a49ef34ee1329603b556b191272f68223906)
+  * Making the breakpoints more specific (Chrome rounding issue) - [2f2021a](https://github.com/zurb/foundation/commit/2f2021ac47365e22b34bd5488e2471eaf84c9a12)
+  * Improvment to Reveal Modal positioning with vertical scroll - [5dbc404](https://github.com/zurb/foundation/commit/5dbc404377e1df7add64222c30fa22a95eb9dc67)
+  * Allows Ajax content to be replaced in open Reveal Modal - [94db26f](https://github.com/zurb/foundation/commit/94db26f26f330edd8530de2840da8b285a8215d4)
+  * Equalizer can now be nested! Crazy! - [f9b987c](https://github.com/zurb/foundation/commit/f9b987c92c01f4cfd092466dfbcb13974d14dce7)
+  * Equalizer is now responsive - equalize on small, medium, large - [3bcaa8e](https://github.com/zurb/foundation/commit/3bcaa8ec0edd8d516db87652f270b9f305bc3bd8)
+  * Interchange works with Ajax content - [d096fab](https://github.com/zurb/foundation/commit/d096fab56ab59a98cf4944768537e20210f61ec1)
+  * Fix for Interchange custom queries - [89a156b](https://github.com/zurb/foundation/commit/89a156b8544639a879a9e1649b329b14328801e6)
+  * Interchange and Clearing now play well - [2ab7fa9](https://github.com/zurb/foundation/commit/2ab7fa93e44eb222eed9a7cc902ffbebd3f20957)
+  * Fix for topbar parent link showing on medium - [5122552](https://github.com/zurb/foundation/commit/5122552427663297d654835798357e53ce1721d2)
+  * Abide updates:
+    - Abide can now have multiple custom validators - [d4e1046](https://github.com/zurb/foundation/commit/d4e1046f71c5a24ee6d1191bfb275013b00807b6)
+    - All validation must pass - [17c0347](https://github.com/zurb/foundation/commit/17c0347e35fe14914ca897fd3a8b622b62a0a833)
+    - Abide now can be reset for all error fields - [b6e3c36](https://github.com/zurb/foundation/commit/b6e3c36552036ac227810a873696e6e6d14985a6)
+    - Fix for Reflow method on Abide validation - [fb92e42](https://github.com/zurb/foundation/commit/fb92e427d2c1ad12e6b13013a8c3eede02a50fe1)
+    - Fix for Abide validations triggering twice - [9a08080](https://github.com/zurb/foundation/commit/9a08080ef959a9e53736eeb8538aaf3407515648)
+    - Validation for Radio and Checkbox groups - [adf3fbf](https://github.com/zurb/foundation/commit/adf3fbfd24b16512c1575f4e082246ba24f68946)
+  * Tons of code cleanup and formatting improvements (listing a few here):
+    - [c65a8e9](https://github.com/zurb/foundation/commit/c65a8e9e1f422b48ce7be9665292e848b188c293)
+    - [d12b455](https://github.com/zurb/foundation/commit/d12b4553bafdf3866742ce54d4618da802ca1239)
+    - [d12b456](https://github.com/zurb/foundation/commit/71d9af40a309e609b48ec0b8d2c9c4a16f00ddd6)
+  
+This is a huge release and thanks to everyone who contributed! You can check out all 383 commits by clicking the link [here](https://github.com/zurb/foundation/compare/v5.5.1...v5.5.2).
+
+***
+
+### 5.5.1 - January 29th, 2015
+
+  * Fixes for Dropdown plugin - better callback handling - [16ac158](https://github.com/zurb/foundation/commit/16ac15803a6681af4a9889b721b18cdb00a50b1a)
+  * Better spacing between links in top-bar - [37eb359 ](https://github.com/zurb/foundation/commit/37eb359d2fa4a423044e53969faa4b983f4e46a2)
+  * Dropdowns, including top-bar dropdowns now close when a link is clicked as a default. Good for SPA's - [6a130ad](https://github.com/zurb/foundation/commit/8563604b8fcf1292956bc4a08677ef3a3fa7c79f)
+  * Added ability to customize split button pip - [e21b093](https://github.com/zurb/foundation/commit/e21b093e04289756676ab61733025d433cd5f862)
+  * Tabs with deep linking 
+   - Fix destination when clicking browser back button - [1c73d3f](https://github.com/zurb/foundation/commit/789c6b1324dfa352f96e2324674117caef919b69)
+   - Fixes for overall functionality - [d18dc77](https://github.com/zurb/foundation/commit/d18dc77a13244d1d07f1c00af072303cfd8d11a1)
+  * Updates to Interchange 
+   - better callback handling - [5c9cd52](https://github.com/zurb/foundation/commit/5c9cd528f4934d48f0f0e07d35111911a12d955f)
+   - Works with URL's containing parenthesis [9df15c0 ](https://github.com/zurb/foundation/commit/9df15c02a904cc78c6db04e925d159245e365172)
+  * You can now collapse/uncollapse (remove/add padding) columns based on media queries - [5d2b9fb](https://github.com/zurb/foundation/commit/5d2b9fb0f05d082ef4c7c0209dec7182b3e532ff)
+  * Add seven-up (and eight-up) support to icon-bar - [a0e8634](https://github.com/zurb/foundation/commit/a0e86342741f7926715431ebdc6ecbf2bdfdcbb8)
+  * Adds support for multiple open Reveal modals - [23c5684](https://github.com/zurb/foundation/commit/23c568406728987d04e1fd672b8064f657515b23)
+  * Fix for Clearing initial image load issue in Firefox and Safari - [e7a3816](https://github.com/zurb/foundation/commit/e7a38167e4848b95e5520ea06e3bd5d37770234a)
+  
+  Whew! This is just the start. You can check out all 139 commits by clicking the link [here](https://github.com/zurb/foundation/compare/v5.5.0...v5.5.1).
+
+### 5.5- December 12th, 2014
+
+  **Foundation is now compatible with Sass 3.4! Note: this removes Sass 3.2 compatability.</a>** - [4d54d0c](https://github.com/zurb/foundation/commit/4d54d0c0851faa02b500c0707241424d27a9b26e)
+  * Dropdowns now better respect the viewport boundaries - [513044e](https://github.com/zurb/foundation/pull/5986)
+  * Split buttons can now have two diffent JS events - [9f0b4b9](https://github.com/zurb/foundation/commit/9f0b4b9d3705835b012dc62c74b71a7160344509)
+  * Dropdowns now close when a link is clicked as a default. Good for SPA's - [6a130ad](https://github.com/zurb/foundation/commit/8563604b8fcf1292956bc4a08677ef3a3fa7c79f)
+  * Accordion can now use `<ul>`'s and `<li>` instead of `<dl>` and `<dt>`'s - [18cef99](https://github.com/zurb/foundation/pull/5884)
+  * Fix callout panel link colors - [1c73d3f](https://github.com/zurb/foundation/commit/459568fdc140cc6742b118fd2406f4979671ab6b)
+  * New top-bar coloring variables - [0cd83ab](https://github.com/zurb/foundation/commit/e29c0fd581c9dc79a7b29058f2aa8a0cab9b23c3)
+  * New icon-bar hover coloring variables - [759f3df](https://github.com/zurb/foundation/commit/759f3dff9ea87b54b1cee09a8c19f8e69f67a01f)
+  * Add validate_on_blur option to abide - [674fc9e](https://github.com/zurb/foundation/commit/674fc9ecbfd303cff1f8e7b0e55cac5cb538336a)
+  
+  And there's seriously tons more! We're running out of room here but you can check out all 189 commits by clicking the link [here](https://github.com/zurb/foundation/compare/v5.4.7...v5.5.0).
 
 ### 5.4.7- October 24, 2014
 

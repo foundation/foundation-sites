@@ -1,5 +1,6 @@
 ---
 title: Icon Bar
+layout: component.html
 ---
 
 <h3 class="subheader">An Icon Bar provides a menu to quickly navigate an app. Use the Icon Bar horizontally or vertically, with the labels below the icons or to the right. Have it your way.</h3>
@@ -12,7 +13,7 @@ title: Icon Bar
 
 <h3>Basic</h3>
 
-You can create an Icon Bar using minimal markup. Specifying the number of items `one-up` through `six-up` will ensure the items are evenly spaced.
+You can create an Icon Bar using minimal markup. Specifying the number of items `one-up` through `eight-up` will ensure the items are evenly spaced.
 
 <div class="row">
   <div class="large-6 columns">
@@ -29,7 +30,7 @@ You can create an Icon Bar using minimal markup. Specifying the number of items 
 
 <h3>Vertical Icon Bar</h3>
 
-It's easy. Just add a class of `.vertical` to make the Icon Bar stack up. For an Icon bar that's horizontal on small screens but vertical on larger use '.medium-vertical' and 'large-vertical' to utilize those breakpoints. 
+It's easy. Just add a class of `.vertical` to make the Icon Bar stack up. For an Icon bar that's horizontal on small screens but vertical on larger use '.medium-vertical' and 'large-vertical' to utilize those breakpoints.
 
 <div class="row">
   <div class="large-6 columns">
@@ -63,6 +64,8 @@ Instead of images you can use Icon Fonts. This will help you change the colors a
 
 The default orientation for the labels are on the bottom. By adding a class of `.label-right` you can have the label on the right and icon on the left.
 
+Add the class `.disabled` to an icon bar `.item` to give it a faded appearance and disable hover effects.
+
 ***
 
 ## Accessibility
@@ -88,7 +91,7 @@ For icon bars without text labels, add `aria-label` to each item, with a value r
 
 ***
 
-## Customize with Sass 
+## Customize with Sass
 
 Icon Bar can be easily customized using our provided Sass variables.
 
@@ -113,6 +116,7 @@ $icon-bar-image-width: 1.875rem;
 $icon-bar-image-height: 1.875rem;
 $icon-bar-active-color: $primary-color;
 $icon-bar-item-padding: 1.25rem;
+$icon-bar-disabled-opacity: 0.7
 ```
 {{/markdown}}
   </div>
@@ -134,7 +138,7 @@ You can use the `icon-bar()` mixin to create your own icon-bar, like so:
 
 {{#markdown}}
 ```html
-<div class="my-custom-class"> </div> 
+<div class="my-custom-class"> </div>
 ```
 {{/markdown}}
 
@@ -145,7 +149,7 @@ You can further customize your icon bar using the provided options in the `icon 
 ```scss
 .my-custom-class {
 @include icon-bar(
-  
+
   // Set the background color of the icon bar. Default: $icon-bar-bg.
   $bar-bg: $icon-bar-bg,
   //  Set the font color of the icon bar. Default: $icon-bar-font-color.
@@ -167,7 +171,10 @@ You can further customize your icon bar using the provided options in the `icon 
   // Set the height of images within the icon bar. Default: $icon-bar-image-height
   $image-height,
   // Assign whether or not base styles usually associated with the icon bar to appear the way it usually does should be included. Default: true.
-  $base-style: true
+  $base-style: true,
+  // Allow disabled icons. Default: false.
+  // If enabled add class disabled.
+  $disabled: false
   );
 }
 

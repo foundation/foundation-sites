@@ -1,5 +1,6 @@
 ---
 title: Reveal Modal
+layout: component.html
 ---
 
 <h3 class="subheader">Modal dialogs, or pop-up windows, are handy for prototyping and production. Foundation includes Reveal our jQuery modal plugin, to make this easy for you.</h3>
@@ -25,7 +26,7 @@ You can create a reveal modal using minimal markup. The anchor tag with the reve
 
 <h2>Intermediate</h2>
 
-You can create a reveal modal with another inside it. You can even put a video into a reveal.
+You can create a reveal modal with another inside it. Setting `reveal.multiple_opened` to `true` will not close previously opened reveal modals. You can even put a video into a reveal.
 
 <div class="row">
   <div class="large-8 columns">
@@ -99,7 +100,7 @@ There are a series of events that you can bind to for triggering callbacks:
 
 <div class="panel">
   <p><strong>Deprecation Notice</strong></p>
-  <p>Previous versions of the reveal plugin emitted un-namespaced `open`, `opened`, `close` and `closed` events, however, these have been replaced by the namespaced `open.fndtn.reveal`, `opened.fndtn.reveal`, `close.fndtn.reveal` and `closed.fndtn.reveal` events. The un-namespaced events will be fully deprecated when Foundation 5.4 is released.</p>
+  <p>Previous versions of the reveal plugin emitted un-namespaced `open`, `opened`, `close` and `closed` events, however, these have been replaced by the namespaced `open.fndtn.reveal`, `opened.fndtn.reveal`, `close.fndtn.reveal` and `closed.fndtn.reveal` events. The un-namespaced events have been fully deprecated.</p>
 </div>
 
 ```js
@@ -124,7 +125,7 @@ $(document).on('closed.fndtn.reveal', '[data-reveal]', function () {
 
 ## Accessibility
 
-<p class="panel">This component is not yet accessible. Stay tuned for updates in future releases.</p>
+<p class="panel">This component is not yet fully accessible. While it is usable via the keyboard, it has to be checked if additional ARIA attributes can enhance the components accessibility.</p>
 
 ***
 
@@ -231,12 +232,32 @@ $(document).on('closed.fndtn.reveal', '[data-reveal]', function () {
 
 <h5>Optional Javascript Configuration</h5>
 
-<p>Reveal options can only be passed in during initialization at this time. However, you can bind to the <i>open</i>, <i>opened</i>, <i>close</i>, and <i>closed</i> events.</p>
+<p>Reveal options can only be passed in during initialization at this time. However, you can bind to the <i>open</i>, <i>opened</i>, <i>close</i>, and <i>closed</i> events.</p> You can also specify an AJAX error callback with the option <i>on_ajax_error</i>.
 
 {{> examples_reveal_javascript_options}}
 
 
 <hr />
+
+### Adding New Reveal Content After Page Load
+
+If you add new content after the page has been loaded, you will need to reinitialize the Foundation JavaScript by running the following:
+
+{{#markdown}}
+```javascript
+$(document).foundation();
+```
+{{/markdown}}
+
+Reflow will make Foundation check the DOM for any elements and re-apply any listeners to them.
+
+{{#markdown}}
+```javascript
+$(document).foundation('reveal', 'reflow');
+```
+{{/markdown}}
+
+***
 
 <h5>Sass Errors?</h5>
 

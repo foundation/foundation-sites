@@ -1,5 +1,6 @@
 ---
 title: Alerts
+layout: component.html
 ---
 
 <h3 class="subheader">Alerts are handy elements you can drop into a form or inline on a page to communicate success, warnings, failure or just information. They'll conform to 100% of the container width you put them in.</h3>
@@ -258,44 +259,39 @@ It's easy to configure alert boxes using our provided Javascript. You can use wi
 
 <h2>Binding to Events</h2>
 
-The last thing you can do with alerts is listen for events and respond accordingly.
-```js
-$(document).foundation();
-```
-
-<h3>Basic</h3>
-
-This example lets notifies us when users close an alert box.
+You can also listen for a event that fires when an alert box is closed.
 
 <h4>JS</h4>
 
 {{#markdown}}
 ```js
-$(document).on('close.fndtn.alert-box', function(event) {
-  console.info('An alert box has been closed!');
-});
-```
-{{/markdown}}
-
-<h3>Advanced</h3>
-
-We can respond to all the possible events.
-
-<h4>JS</h4>
-
-{{#markdown}}
-```js
-$(document).on('open.fndtn.alert-box', function(event) {
-  console.info('An alert box has been opened!');
-});
-
-$(document).on('close.fndtn.alert-box', function(event) {
+$(document).on('close.fndtn.alert', function(event) {
   console.info('An alert box has been closed!');
 });
 ```
 {{/markdown}}
 
 <hr>
+
+### Adding New Alert Content After Page Load
+
+If you add new content after the page has been loaded, you will need to reinitialize the Foundation JavaScript by running the following:
+
+{{#markdown}}
+```javascript
+$(document).foundation(); 
+```
+{{/markdown}}
+
+Reflow will make Foundation check the DOM for any elements and re-apply any listeners to them.
+
+{{#markdown}}
+```javascript
+$(document).foundation('alert', 'reflow');
+```
+{{/markdown}}
+
+***
 
 <h3>Sass Errors?</h3>
 
