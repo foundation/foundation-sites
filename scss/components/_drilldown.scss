@@ -1,18 +1,30 @@
 .is-drilldown {
   position: relative;
   overflow: hidden;
+  border: thin solid blue;
+  // & li{
+  //   border: thin solid pink;
+  // }
 }
 
 .is-drilldown-sub {
   position: absolute;
+  // display: none;
+  z-index: -1;
   top: 0;
   left: 100%;
   width: 100%;
   background: $white;
-  transition: transform 0.15s linear;
+  transition: transform .15s linear;
+  // transform: translateX(100%);
 
   &.is-active {
+    display: block;
+    z-index: 1;
     transform: translateX(-100%);
+  }
+  &.is-closing {
+    transform: translateX(100%);
   }
 }
 
