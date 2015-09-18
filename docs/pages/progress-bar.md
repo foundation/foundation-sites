@@ -11,10 +11,11 @@ A progress bar has two elements: the container `.progress`, and the meter `.prog
 - `aria-valuemin`: Minimum value.
 - `aria-valuemax`: Maximum value.
 - `aria-valuenow`: Current value.
-- `aria-valuetext`: A human-readable version of `aria-valuenow`.
+
+If the value of the progress bar is not numeric, also add the attribute `aria-valuetext`, which should include a human-readable version of the bar's value.
 
 ```html_example
-<div class="progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuetext="0 percent" aria-valuemax="100">
+<div class="progress" role="progressbar" tabindex="0" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
   <div class="progress-meter"></div>
 </div>
 ```
@@ -22,7 +23,7 @@ A progress bar has two elements: the container `.progress`, and the meter `.prog
 Add a `width` CSS property to the inner meter to fill the progress bar.
 
 ```html_example
-<div class="progress" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuetext="50 percent" aria-valuemax="100">
+<div class="progress" role="progressbar" tabindex="0" aria-valuenow="50" aria-valuemin="0" aria-valuetext="50 percent" aria-valuemax="100">
   <div class="progress-meter" style="width: 50%"></div>
 </div>
 ```
@@ -34,7 +35,7 @@ Add a `width` CSS property to the inner meter to fill the progress bar.
 A progress bar can be styled with the `.success`, `.warning`, and `.alert` colors.
 
 ```html_example
-<div class="success progress" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuetext="25 percent" aria-valuemax="100">
+<div class="success progress" role="progressbar" tabindex="0" aria-valuenow="25" aria-valuemin="0" aria-valuetext="25 percent" aria-valuemax="100">
   <div class="progress-meter" style="width: 25%"></div>
 </div>
 
@@ -49,12 +50,12 @@ A progress bar can be styled with the `.success`, `.warning`, and `.alert` color
 
 ---
 
-### Progress Bar with Text
+## With Text
 
 You can add text inside the meter of a progress bar. Make sure the text you use in the meter is also used in the `aria-valuetext` attribute.
 
 ```html_example
-<div class="progress" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuetext="25 percent" aria-valuemax="100">
+<div class="progress" role="progressbar" tabindex="0" aria-valuenow="20" aria-valuemin="0" aria-valuetext="25 percent" aria-valuemax="100">
   <span class="progress-meter" style="width: 25%">
     <p class="progress-meter-text">25%</p>
   </span>
