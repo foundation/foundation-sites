@@ -19,7 +19,6 @@
 //   - Blockquotes <blockquote>
 //   - Code blocks <code>
 //   - Abbreviations <abbr>
-//   - Acronyms <acronym>
 //   - Citations <cite>
 //   - Keystrokes <kbd>
 
@@ -224,7 +223,7 @@ $keystroke-padding: rem-calc(2 4 0) !default;
 /// @type Number | List
 $keystroke-radius: $global-radius !default;
 
-/// Bottom border style for `<abbr>` and `<acronym>` elements.
+/// Bottom border style for `<abbr>` elements.
 /// @type List
 $abbr-underline: 1px dotted $black !default;
 
@@ -409,9 +408,8 @@ $abbr-underline: 1px dotted $black !default;
     }
   }
 
-  // Abbreviations and acronyms
-  abbr,
-  acronym {
+  // Abbreviations
+  abbr {
     color: $body-font-color;
     cursor: $cursor-help-value;
     border-bottom: $abbr-underline;
