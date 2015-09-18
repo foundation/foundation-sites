@@ -18,7 +18,7 @@ tags:
 
 ## Paragraphs
 
-This is a paragraph. Paragraphs are preset with a font size, line height and spacing to match the overall vertical rhythm. To show what a paragraph looks like this needs a little more content&mdash;so, did you know that there are storms occurring on Jupiter that are larger than the Earth? Pretty cool. Wrap `<strong>` around type to **make it bold!** You can also use `<em>` to *italicize your words*.
+This is a paragraph. Paragraphs are preset with a font size, line height and spacing to match the overall vertical rhythm. To show what a paragraph looks like this needs a little more content&mdash;so, did you know that there are storms occurring on Jupiter that are larger than the Earth? Pretty cool. Use the `<strong>` and `<em>` tags to denote text that should be displayed or read with emphasis. Browsers will bold and italizie them, while screen readers will read the words with *emphasis*.
 
 <div class="callout primary">
   <p>If the emphasis of a phrase is important, don't make the emphasis purely visual&mdash;use the `<em>` or `<strong>` tags to mark it as well. Both of these tags have built-in styles, but there's no harm in adding additional styles in specific contexts.</p>
@@ -30,7 +30,7 @@ This is a paragraph. Paragraphs are preset with a font size, line height and spa
 
 ---
 
-## Heading
+## Header
 
 Foundation includes styles for all headings&mdash;they're balanced and sized along a modular scale.
 
@@ -49,6 +49,21 @@ Foundation includes styles for all headings&mdash;they're balanced and sized alo
 
 ---
 
+### Header Sizes
+
+The framework includes two typographic scales&mdash;one uses a narrow range of sizes for small- and medium-sized screens, and the other uses a wider range of sizes for large-sized screens. You can change these scales, or add new ones for other breakpoints, by editing the `$header-sizes` map in your project's <a href="sass.html#the-settings-file">Settings File</a>.
+
+Header  | Default | Large and up
+--------|---------|-------------
+`<h1>`  | 24px    | 48px
+`<h2>`  | 20px    | 40px 
+`<h3>`  | 19px    | 31px
+`<h4>`  | 18px    | 25px
+`<h5>`  | 17px    | 20px
+`<h6>`  | 16px    | 16px
+
+---
+
 ### Small Header Segments
 
 By inserting a `<small>` element into a header Foundation will scale the header font size down for an inline element, allowing you to use this for subtitles or other secondary header text.
@@ -64,7 +79,7 @@ By inserting a `<small>` element into a header Foundation will scale the header 
 Links are very standard, and the color is preset to the Foundation primary color. <a href="global.html">Learn more about Foundation's global colors.</a>
 
 <div class="callout">
-  <p>To make links screen reader-friendly, avoid using vague words like "here" within link text. The text of the link itself should adequately describe where the link goes.</p>
+  <p>To make links screen reader-friendly, avoid using vague words like "here" or "read more" within link text. The text of the link itself should adequately describe where the link goes.</p>
 </div>
 
 ```html
@@ -75,7 +90,7 @@ Links are very standard, and the color is preset to the Foundation primary color
 
 ## Dividers
 
-Use dividers to separate sections of a page.
+Use dividers to define thematic breaks between paragraphs. To denote the end of one section of a page and the start of another, it's better to use the `<section>` tag.
 
 ```html
 <hr>
@@ -130,7 +145,7 @@ Use an `<ol>` when creating a list where the order of the items is important, li
 
 ## Definition Lists
 
-A definition list is meant to display name-value pairs, like metadata or a dictionary definition. Each term (`<dt>`) is paired with one or more definitions (`<dd>`)
+A definition list (`<dl>`) is used to display name-value pairs, like metadata or a dictionary definition. Each term (`<dt>`) is paired with one or more definitions (`<dd>`).
 
 ```html_example
 <dl>
@@ -138,6 +153,7 @@ A definition list is meant to display name-value pairs, like metadata or a dicti
   <dd>The indefinite continued progress of existence and events in the past, present, and future regarded as a whole.</dd>
   <dt>Space</dt>
   <dd>A continuous area or expanse that is free, available, or unoccupied.</dd>
+  <dd>The dimensions of height, depth, and width within which all things exist and move.</dd>
 </dl>
 ```
 
@@ -156,14 +172,12 @@ Sometimes other people say smart things, and you may want to mention those thing
 
 ---
 
-## Abbreviations and Acronyms
+## Abbreviations
 
-Use the `<abbr>` and `<acronym>` tags to annotate a shortened term. These elements must always have a `title` attribute which clarifies the full term.
-
-What's the difference between an abbreviation and an acronym? An abbreviation is a shortened spelling of a word, while an acronym is a set of initials that represent a longer word or phrase.
+Use the `<abbr>` tag to annotate a shortened term. Abbreviations must always have a `title` attribute which clarifies the full term.
 
 ```html_example
-<p>In my dream last night, I saw <acronym title="John Ronald Reuel">J. R. R.</acronym> Tolkien and George <acronym title="Raymond Richard">R. R.</acronym> Martin hanging out on Sunset <abbr title="Boulevard">Blvd</abbr>.</p>
+<p>In my dream last night, I saw <abbr title="John Ronald Reuel">J. R. R.</abbr> Tolkien and George <abbr title="Raymond Richard">R. R.</abbr> Martin hanging out on Sunset <abbr title="Boulevard">Blvd</abbr>.</p>
 ```
 
 ---
@@ -204,7 +218,7 @@ Prefer using actual text over text inside a graphic. Assistive technologies can'
 
 ### Contrast
 
-The contrast between the color of an element's text and its background should be high enough that low-vision users can read it. There are no automated tools that can effectively check this for you, but if you aren't sure about a specific color combination, you can run it through one of many color contrast checkers, such as [WebAIM's color contrast checker](http://webaim.org/resources/contrastchecker/).
+The contrast between the color of an element's text and its background should be high enough that low-vision users can read it. **The minimum recommended contrast ratio is 4.5:1.** There are no automated tools that can effectively check this for you, but if you aren't sure about a specific color combination, you can run it through one of many color contrast checkers, such as [WebAIM's color contrast checker](http://webaim.org/resources/contrastchecker/).
 
 Google Chrome's [Accessibility Developer Tools](https://chrome.google.com/webstore/detail/accessibility-developer-t/fpkknkljclfencbdbgkenhalefipecmb?hl=en) also includes a contrast checker. By selecting an element in the inspector, you can see if the contrast meets the minimum standards.
 
@@ -214,7 +228,7 @@ Google Chrome's [Accessibility Developer Tools](https://chrome.google.com/websto
 
 ### Type Size
 
-When possible, use the `rem` and `em` units to size everything. Not just font size, but also padding, margins, and any length value. This ensures that your design scales up and down uniformly if the user changes their browser's text size.
+When possible, use the `rem` and `em` units to size everything. Not just font size, but also padding, margins, and any length value. This ensures that your design scales up and down uniformly if the user changes their browser's text size. It's common for vision-impaired users to resize their browser up to 200% zoom.
 
 We use the `rem` unit nearly everywhere in Foundation, and even wrote a Sass function to make it a little easier. The `rem-calc()` function can take one or more pixel values and convert them to proper `rem` values.
 

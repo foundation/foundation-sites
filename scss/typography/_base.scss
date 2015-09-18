@@ -19,7 +19,6 @@
 //   - Blockquotes <blockquote>
 //   - Code blocks <code>
 //   - Abbreviations <abbr>
-//   - Acronyms <acronym>
 //   - Citations <cite>
 //   - Keystrokes <kbd>
 
@@ -38,6 +37,27 @@ $header-font-style: normal !default;
 /// Font stack used for elements that use monospaced type, such as code samples
 /// @type String | List
 $font-family-monospace: Consolas, "Liberation Mono", Courier, monospace !default;
+
+/// Sizes of headings at various screen sizes. Each key is a breakpoint, and each value is a map of heading sizes.
+/// @type Map
+$header-sizes: (
+  small: (
+    'h1': 24,
+    'h2': 20,
+    'h3': 19,
+    'h4': 18,
+    'h5': 17,
+    'h6': 16,
+  ),
+  medium: (
+    'h1': 48,
+    'h2': 40,
+    'h3': 31,
+    'h4': 25,
+    'h5': 20,
+    'h6': 16,
+  ),
+);
 
 /// Color of headers.
 /// @type Color
@@ -203,7 +223,7 @@ $keystroke-padding: rem-calc(2 4 0) !default;
 /// @type Number | List
 $keystroke-radius: $global-radius !default;
 
-/// Bottom border style for `<abbr>` and `<acronym>` elements.
+/// Bottom border style for `<abbr>` elements.
 /// @type List
 $abbr-underline: 1px dotted $black !default;
 
@@ -283,12 +303,13 @@ $abbr-underline: 1px dotted $black !default;
   }
 
   // Heading sizes
-  h1 { @include font-size(5); }
-  h2 { @include font-size(4); }
-  h3 { @include font-size(3); }
-  h4 { @include font-size(2); }
-  h5 { @include font-size(1); }
-  h6 { @include font-size(0); }
+  @each $size, $headers in $header-sizes {
+    @include breakpoint($size) {
+      @each $header, $font-size in $headers {
+        #{$header} { font-size: rem-calc($font-size); }
+      }
+    }
+  }
 
   // Links
   a {
@@ -387,9 +408,8 @@ $abbr-underline: 1px dotted $black !default;
     }
   }
 
-  // Abbreviations and acronyms
-  abbr,
-  acronym {
+  // Abbreviations
+  abbr {
     color: $body-font-color;
     cursor: $cursor-help-value;
     border-bottom: $abbr-underline;
