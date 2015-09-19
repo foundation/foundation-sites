@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 //
 // Breadcrumb Variables
@@ -34,6 +34,7 @@ $crumb-link-decor: underline !default;
 // We use these to control the slash between breadcrumbs
 $crumb-slash-color: $base !default;
 $crumb-slash: "/" !default;
+$crumb-slash-position: 1px !default;
 
 //
 // Breadcrumb Mixins
@@ -41,13 +42,13 @@ $crumb-slash: "/" !default;
 
 // We use this mixin to create a container around our breadcrumbs
 @mixin crumb-container {
-  display: block;
-  padding: $crumb-padding;
-  overflow: hidden;
-  margin-#{$default-float}: 0;
-  list-style: none;
   border-style: $crumb-border-style;
   border-width: $crumb-border-size;
+  display: block;
+  list-style: none;
+  margin-#{$default-float}: 0;
+  overflow: hidden;
+  padding: $crumb-padding;
 
   // We control which background color and border come through.
   background-color: $crumb-bg;
@@ -58,12 +59,12 @@ $crumb-slash: "/" !default;
 @mixin crumbs {
 
   // A normal state will make the links look and act like clickable breadcrumbs.
-  margin: 0;
+  color: $crumb-font-color;
   float: $default-float;
   font-size: $crumb-font-size;
   line-height: $crumb-font-size;
+  margin: 0;
   text-transform: $crumb-font-transform;
-  color: $crumb-font-color;
 
   &:hover a, &:focus a { text-decoration: $crumb-link-decor; }
 
@@ -73,11 +74,11 @@ $crumb-slash: "/" !default;
 
   // Current is for the link of the current page
   &.current {
-    cursor: $cursor-default-value;
     color: $crumb-font-color-current;
+    cursor: $cursor-default-value;
     a {
-      cursor: $cursor-default-value;
       color: $crumb-font-color-current;
+      cursor: $cursor-default-value;
     }
 
     &:hover, &:hover a,
@@ -93,18 +94,18 @@ $crumb-slash: "/" !default;
     &:hover a,
     &:focus,
     a:focus {
-      text-decoration: none;
       color: $crumb-font-color-unavailable;
       cursor: $cursor-disabled-value;
+      text-decoration: none;
     }
   }
 
   &:before {
-    content: "#{$crumb-slash}";
     color: $crumb-slash-color;
+    content: "#{$crumb-slash}";
     margin: 0 $crumb-side-padding;
     position: relative;
-    top: 1px;
+    top: $crumb-slash-position;
   }
 
   &:first-child:before {
@@ -119,14 +120,13 @@ $crumb-slash: "/" !default;
       @include crumb-container;
       @include radius($crumb-radius);
 
-      &>* {
+      > * {
         @include crumbs;
       }
     }
+    /* Accessibility - hides the forward slash */
+    [aria-label="breadcrumbs"] [aria-hidden="true"]:after {
+      content: "/";
+    }
   }
 }
-
-/* Accessibility - hides the forward slash */
-[aria-label="breadcrumbs"] [aria-hidden="true"]:after {
-  content: "/";
-  }

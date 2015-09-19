@@ -1,5 +1,6 @@
 ---
 title: Magellan
+layout: component.html
 ---
 
 <h3 class="subheader">Magellan is a style-agnostic plugin that lets you give your site sticky navigation. This fixed-position navigation helps users keep track of where they are on a page without scrolling.</h3>
@@ -10,8 +11,9 @@ title: Magellan
 
 ***
 
-<a name="arrival"></a>
+
 <h3 data-magellan-destination="arrival">Arrival</h3>
+<a name="arrival"></a>
 
 You can create the fixed navigation structure for Magellan using minimal markup.
 
@@ -19,12 +21,12 @@ You can create the fixed navigation structure for Magellan using minimal markup.
 
 {{> examples_magellan_basic_rendered}}
 
-<p>The <a href="subnav.html">sub nav</a> is currently the only component compatible with Magellan.</p>
 
 ***
 
-<a name="destination"></a>
+
 <h3 data-magellan-destination="destination">Destination</h3>
+<a name="destination"></a>
 
 You can create the destination structure for Magellan using minimal markup.
 
@@ -38,8 +40,9 @@ You can create the destination structure for Magellan using minimal markup.
 
 ***
 
-<a name="js"></a>
+
 <h3 data-magellan-destination="js">Configure with JS</h3>
+<a name="js"></a>
 
 It's easy to configure Magellan using our provided Javascript. You can use with data-attributes or plain old Javascript. Make sure `jquery.js`, `foundation.js`, and `foundation.magellan.js` have been included on your page before continuing. For example, add the following before the closing `<body>` tag:
 

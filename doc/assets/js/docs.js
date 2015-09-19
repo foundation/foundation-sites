@@ -10,7 +10,7 @@ function pushSearchTerm(searchTerm, data) {
 
     unique_search_terms[searchTerm] = true
   }
-}
+};
 
 $("[data-search]")
   .each(function() {
@@ -39,7 +39,7 @@ $('#autocomplete').autocomplete({
 $('input, textarea').placeholder();
 
 $('#interchangeMarkup').on('replace', function () {
-  $.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyASm3CwaK9qtcZEWYa-iQwHaGi3gcosAJc&sensor=false&callback=initializeMaps");
+  $.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyBOVwxUM9akvFrSWmmb2iKc7Fe0vjRBY7c&sensor=false&callback=initializeMaps");
 });
 
 function initializeMaps() {
@@ -90,6 +90,27 @@ if ($('[data-forum-posts]').length > 0) {
   };
   $.ajax({
     url:'http://foundation.zurb.com/forum/api/v1/posts.json',
+    dataType:'jsonp',
+    success: cb
+  });
+}
+
+// Fetch BuildingBlocks
+if ($('[data-building-blocks]').length > 0) {
+  var cb = function(data) {
+    var html = '';
+    $.each(data, function(idx, el) {
+      html += JST['doc/templates/building_block.html'](el);
+    });
+    $('[data-building-blocks]').each(function() {
+      $(this).html(html);
+    });
+    if ($('.building-block-item').length === 0) {
+      $('.building-blocks-section').hide();
+    };
+  };
+  $.ajax({
+    url:'http://zurb.com/library/api/building_blocks/type/' + $("#component-name").attr("name"),
     dataType:'jsonp',
     success: cb
   });

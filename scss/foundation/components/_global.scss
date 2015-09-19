@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "../functions";
+@import '../functions';
 //
 // Foundation Variables
 //
@@ -70,9 +70,76 @@ $base-line-height: 1.5 !default;
 // We use this to add transitions to elements
 // $property - Default: all, Options: http://www.w3.org/TR/css3-transitions/#animatable-properties
 // $speed - Default: 300ms
-// $ease - Default:ease-out, Options: http://css-tricks.com/almanac/properties/t/transition-timing-function/
+// $ease - Default: ease-out, Options: http://css-tricks.com/almanac/properties/t/transition-timing-function/
 @mixin single-transition($property:all, $speed:300ms, $ease:ease-out) {
-  transition: $property $speed $ease;
+  @include transition($property, $speed, $ease);
+}
+
+// @mixins
+//
+// We use this to add single or multiple transitions to elements
+// $property - Default: all, Options: http://www.w3.org/TR/css3-transitions/#animatable-properties
+// $speed - Default: 300ms
+// $ease - Default: ease-out, Options: http://css-tricks.com/almanac/properties/t/transition-timing-function/
+// $delay - Default: null (0s)
+@mixin transition($property:all, $speed:300ms, $ease:ease-out, $delay:null) {
+  $transition: none;
+
+  @if length($property) > 1 {
+
+    @each $transition_list in $property {
+
+      @for $i from 1 through length($transition_list) {
+
+        @if $i == 1 {
+          $_property: nth($transition_list, $i);
+        }
+
+        @if length($transition_list) > 1 {
+          @if $i == 2 {
+            $_speed: nth($transition_list, $i);
+          }
+        } @else {
+          $_speed: $speed;
+        }
+
+        @if length($transition_list) > 2 {
+          @if $i == 3 {
+            $_ease: nth($transition_list, $i);
+          }
+        } @else {
+          $_ease: $ease;
+        }
+
+        @if length($transition_list) > 3 {
+          @if $i == 4 {
+            $_delay: nth($transition_list, $i);
+          }
+        } @else {
+          $_delay: $delay;
+        }
+      }
+
+      @if $transition == none {
+        $transition: $_property $_speed $_ease $_delay;
+      } @else {
+        $transition: $transition, $_property $_speed $_ease $_delay;
+      }
+    }
+  }
+  @else {
+
+    @each $prop in $property {
+
+      @if $transition == none {
+        $transition: $prop $speed $ease $delay;
+      } @else {
+        $transition: $transition, $prop $speed $ease $delay;
+      }
+    }
+  }
+
+  transition: $transition;
 }
 
 // @mixins
@@ -91,11 +158,11 @@ $base-line-height: 1.5 !default;
 // $triangle-color - Used to set border-color which makes up triangle. No default
 // $triangle-direction - Used to determine which direction triangle points. Options: top, bottom, left, right
 @mixin css-triangle($triangle-size, $triangle-color, $triangle-direction) {
+  border: inset $triangle-size;
   content: "";
   display: block;
-  width: 0;
   height: 0;
-  border: inset $triangle-size;
+  width: 0;
   @if ($triangle-direction == top) {
     border-color: $triangle-color transparent transparent transparent;
     border-top-style: solid;
@@ -128,9 +195,9 @@ $base-line-height: 1.5 !default;
 @mixin hamburger($width, $left, $top, $thickness, $gap, $color, $hover-color, $offcanvas) {
   span::after {
     content: "";
-    position: absolute;
     display: block;
     height: 0;
+    position: absolute;
 
     @if $offcanvas {
       @if $top {
@@ -148,8 +215,8 @@ $base-line-height: 1.5 !default;
       }
     }
     @else {
-      top: 50%;
       margin-top: -($width/2);
+      top: 50%;
       #{$opposite-direction}: $topbar-link-padding;
     }
 
@@ -183,8 +250,8 @@ $base-line-height: 1.5 !default;
   transition: box-shadow $fade-time, border-color $fade-time ease-in-out;
 
   &:#{$selector} {
-    box-shadow: 0 0 5px $glowing-effect-color;
     border-color: $glowing-effect-color;
+    box-shadow: 0 0 5px $glowing-effect-color;
   }
 }
 
@@ -194,7 +261,7 @@ $base-line-height: 1.5 !default;
 // $horizontal: Default: 0
 // $vertical: Default: 0
 @mixin translate2d($horizontal:0, $vertical:0) {
-  transform: translate($horizontal,$vertical)
+  transform: translate($horizontal, $vertical)
 }
 
 // @mixins
@@ -202,11 +269,11 @@ $base-line-height: 1.5 !default;
 // Makes an element visually hidden, but accessible.
 // @see http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
 @mixin element-invisible {
-  position: absolute !important;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
   clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute !important;
+  width: 1px;
 }
 
 // @mixins
@@ -291,17 +358,22 @@ $shiny-edge-active-color: rgba(#000, .2) !default;
 // We use this to control whether or not CSS classes come through in the gem files.
 $include-html-classes: true !default;
 $include-print-styles: true !default;
+$include-js-meta-styles: true !default; // Warning! Meta styles are a dependancy of the Javascript.
 $include-html-global-classes: $include-html-classes !default;
 
 $column-gutter: rem-calc(30) !default;
 
 // Media Query Ranges
-$small-range: (0, 40em) !default;
-$medium-range: (40.063em, 64em) !default;
-$large-range: (64.063em, 90em) !default;
-$xlarge-range: (90.063em, 120em) !default;
-$xxlarge-range: (120.063em, 99999999em) !default;
+$small-breakpoint:  em-calc(640)  !default;
+$medium-breakpoint: em-calc(1024) !default;
+$large-breakpoint:  em-calc(1440) !default;
+$xlarge-breakpoint: em-calc(1920) !default;
 
+$small-range:   (0, $small-breakpoint) !default;
+$medium-range:  ($small-breakpoint  + em-calc(1), $medium-breakpoint) !default;
+$large-range:   ($medium-breakpoint + em-calc(1), $large-breakpoint)  !default;
+$xlarge-range:  ($large-breakpoint  + em-calc(1), $xlarge-breakpoint) !default;
+$xxlarge-range: ($xlarge-breakpoint + em-calc(1), em-calc(99999999)) !default;
 
 $screen: "only screen" !default;
 
@@ -323,8 +395,17 @@ $xlarge-only: "#{$screen} and (min-width:#{lower-bound($xlarge-range)}) and (max
 $xxlarge-up: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)})" !default;
 $xxlarge-only: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)}) and (max-width:#{upper-bound($xxlarge-range)})" !default;
 
+$retina: (
+  "#{$screen} and (-webkit-min-device-pixel-ratio: 2)",
+  "#{$screen} and (min--moz-device-pixel-ratio: 2)",
+  "#{$screen} and (-o-min-device-pixel-ratio: 2/1)",
+  "#{$screen} and (min-device-pixel-ratio: 2)",
+  "#{$screen} and (min-resolution: 192dpi)",
+  "#{$screen} and (min-resolution: 2dppx)"
+);
+
 // Legacy
-$small: $medium-up;
+$small: $small-up;
 $medium: $medium-up;
 $large: $large-up;
 
@@ -341,61 +422,65 @@ $cursor-text-value: text !default;
 
 @include exports("global") {
 
-  // Meta styles are included in all builds, as they are a dependancy of the Javascript.
+  // Meta styles are a dependancy of the Javascript.
   // Used to provide media query values for javascript components.
   // Forward slash placed around everything to convince PhantomJS to read the value.
 
-  meta.foundation-version {
-    font-family: "/{{VERSION}}/";
-  }
+  @if $include-js-meta-styles {
 
-  meta.foundation-mq-small {
-    font-family: "/" + unquote($small-up) + "/";
-    width: lower-bound($small-range);
-  }
+    meta.foundation-version {
+      font-family: "/{{VERSION}}/";
+    }
 
-  meta.foundation-mq-small-only {
-    font-family: "/" + unquote($small-only) + "/";
-    width: lower-bound($small-range);
-  }
+    meta.foundation-mq-small {
+      font-family: "/" + unquote($small-up) + "/";
+      width: lower-bound($small-range);
+    }
 
-  meta.foundation-mq-medium {
-    font-family: "/" + unquote($medium-up) + "/";
-    width: lower-bound($medium-range);
-  }
+    meta.foundation-mq-small-only {
+      font-family: "/" + unquote($small-only) + "/";
+      width: lower-bound($small-range);
+    }
 
-  meta.foundation-mq-medium-only {
-    font-family: "/" + unquote($medium-only) + "/";
-    width: lower-bound($medium-range);
-  }
+    meta.foundation-mq-medium {
+      font-family: "/" + unquote($medium-up) + "/";
+      width: lower-bound($medium-range);
+    }
 
-  meta.foundation-mq-large {
-    font-family: "/" + unquote($large-up) + "/";
-    width: lower-bound($large-range);
-  }
+    meta.foundation-mq-medium-only {
+      font-family: "/" + unquote($medium-only) + "/";
+      width: lower-bound($medium-range);
+    }
 
-  meta.foundation-mq-large-only {
-    font-family: "/" + unquote($large-only) + "/";
-    width: lower-bound($large-range);
-  }
+    meta.foundation-mq-large {
+      font-family: "/" + unquote($large-up) + "/";
+      width: lower-bound($large-range);
+    }
 
-  meta.foundation-mq-xlarge {
-    font-family: "/" + unquote($xlarge-up) + "/";
-    width: lower-bound($xlarge-range);
-  }
+    meta.foundation-mq-large-only {
+      font-family: "/" + unquote($large-only) + "/";
+      width: lower-bound($large-range);
+    }
 
-  meta.foundation-mq-xlarge-only {
-    font-family: "/" + unquote($xlarge-only) + "/";
-    width: lower-bound($xlarge-range);
-  }
+    meta.foundation-mq-xlarge {
+      font-family: "/" + unquote($xlarge-up) + "/";
+      width: lower-bound($xlarge-range);
+    }
 
-  meta.foundation-mq-xxlarge {
-    font-family: "/" + unquote($xxlarge-up) + "/";
-    width: lower-bound($xxlarge-range);
-  }
+    meta.foundation-mq-xlarge-only {
+      font-family: "/" + unquote($xlarge-only) + "/";
+      width: lower-bound($xlarge-range);
+    }
 
-  meta.foundation-data-attribute-namespace {
-    font-family: #{$namespace};
+    meta.foundation-mq-xxlarge {
+      font-family: "/" + unquote($xxlarge-up) + "/";
+      width: lower-bound($xxlarge-range);
+    }
+
+    meta.foundation-data-attribute-namespace {
+      font-family: #{$namespace};
+    }
+
   }
 
   @if $include-html-global-classes {
@@ -417,14 +502,14 @@ $cursor-text-value: text !default;
     body {
       background: $body-bg;
       color: $body-font-color;
-      padding: 0;
-      margin: 0;
-      font-family: $body-font-family;
-      font-weight: $body-font-weight;
-      font-style: $body-font-style;
-      line-height: $base-line-height; // Set to $base-line-height to take on browser default of 150%
-      position: relative;
       cursor: $cursor-auto-value;
+      font-family: $body-font-family;
+      font-style: $body-font-style;
+      font-weight: $body-font-weight;
+      line-height: $base-line-height; // Set to $base-line-height to take on browser default of 150%
+      margin: 0;
+      padding: 0;
+      position: relative;
     }
 
   a:hover { cursor: $cursor-pointer-value; }
@@ -435,7 +520,8 @@ $cursor-text-value: text !default;
     img { -ms-interpolation-mode: bicubic; }
 
     #map_canvas,
-    .map_canvas {
+    .map_canvas,
+    .mqa-display {
       img,
       embed,
       object { max-width: none !important;
@@ -450,7 +536,6 @@ $cursor-text-value: text !default;
     // Hide visually and from screen readers
     .hide {
       display: none;
-      visibility: hidden;
     }
 
     // Hide visually and from screen readers, but maintain layout

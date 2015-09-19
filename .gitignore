@@ -6,6 +6,8 @@
 *.ruby-version
 *.scssc
 *.sublime-*
+*.swp
+*.swo
 .bundle
 .config
 .grunt
@@ -49,3 +51,4 @@ tmp
 
 pizza/
 docs/*
+npm-debug.log

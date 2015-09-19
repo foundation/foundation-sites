@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 //
 // @name _range-slider.scss
@@ -15,7 +15,7 @@
 
 $include-html-range-slider-classes: $include-html-classes !default;
 
-// These variabels define the slider bar styles
+// These variables define the slider bar styles
 $range-slider-bar-width: 100% !default;
 $range-slider-bar-height: rem-calc(16) !default;
 
@@ -31,7 +31,7 @@ $range-slider-active-segment-bg-color: scale-color($secondary-color, $lightness:
 $range-slider-vertical-bar-width: rem-calc(16) !default;
 $range-slider-vertical-bar-height: rem-calc(200) !default;
 
-// These variabels define the slider handle styles
+// These variables define the slider handle styles
 $range-slider-handle-width: rem-calc(32) !default;
 $range-slider-handle-height: rem-calc(22) !default;
 $range-slider-handle-position-top: rem-calc(-5) !default;
@@ -44,7 +44,7 @@ $range-slider-handle-round: $global-rounded !default;
 $range-slider-handle-bg-hover-color: scale-color($primary-color, $lightness: -12%) !default;
 $range-slider-handle-cursor: pointer !default;
 
-$range-slider-disabled-opacity: 0.7 !default;
+$range-slider-disabled-opacity: .7 !default;
 $range-slider-disabled-cursor: $cursor-disabled-value !default;
 
 //
@@ -52,18 +52,19 @@ $range-slider-disabled-cursor: $cursor-disabled-value !default;
 //
 
 @mixin range-slider-bar-base($vertical: false) {
-  display: block;
-  position: relative;
-  width: $range-slider-bar-width;
-  height: $range-slider-bar-height;
   border: $range-slider-bar-border-width $range-slider-bar-border-style $range-slider-bar-border-color;
   margin: rem-calc(20 0);
+  position: relative;
   -ms-touch-action: none;
   touch-action: none;
   @if $vertical == true {
     display: inline-block;
-    width: $range-slider-vertical-bar-width;
     height: $range-slider-vertical-bar-height;
+    width: $range-slider-vertical-bar-width;
+  } @else {
+    display: block;
+    height: $range-slider-bar-height;
+    width: $range-slider-bar-width;
   }
 }
 @mixin range-slider-bar-style(
@@ -88,19 +89,20 @@ $range-slider-disabled-cursor: $cursor-disabled-value !default;
 }
 
 @mixin range-slider-handle-base() {
-  display: inline-block;
-  position: absolute;
-  z-index: 1;
-  top: $range-slider-handle-position-top;
-  width: $range-slider-handle-width;
-  height: $range-slider-handle-height;
   border: $range-slider-handle-border-width $range-slider-handle-border-style $range-slider-handle-border-color;
   cursor: $range-slider-handle-cursor;
+  display: inline-block;
+  height: $range-slider-handle-height;
+  position: absolute;
+  top: $range-slider-handle-position-top;
+  width: $range-slider-handle-width;
+  z-index: 1;
 
   // This removes the 300ms touch delay on Windows 8
   -ms-touch-action: manipulation;
-      touch-action: manipulation;
+  touch-action: manipulation;
 }
+
 @mixin range-slider-handle-style(
   $bg: true,
   $radius: false,
@@ -117,6 +119,7 @@ $range-slider-disabled-cursor: $cursor-disabled-value !default;
     background: $range-slider-handle-bg-hover-color;
   }
 }
+
 @mixin range-slider-handle() {
   @include range-slider-handle-base;
   @include range-slider-handle-style;
@@ -131,15 +134,18 @@ $range-slider-disabled-cursor: $cursor-disabled-value !default;
       &.vertical-range {
         @include range-slider-bar-base($vertical: true);
         .range-slider-handle {
-          margin-top: 0;
-          margin-#{$default-float}: -($range-slider-handle-width / 4);
-          position: absolute;
           bottom: -($range-slider-vertical-bar-height - $range-slider-handle-width);
+          margin-#{$default-float}: -($range-slider-handle-width / 4);
+          margin-top: 0;
+          position: absolute;
         }
         .range-slider-active-segment {
-          width: $range-slider-bar-height - rem-calc((strip-unit($range-slider-bar-border-width) * 2));
-          height: auto;
+          border-bottom-left-radius: inherit;
+          border-bottom-right-radius: inherit;
+          border-top-left-radius: initial;
           bottom: 0;
+          height: auto;
+          width: $range-slider-bar-height - rem-calc((strip-unit($range-slider-bar-border-width) * 2));
         }
       }
       &.radius {
@@ -156,10 +162,12 @@ $range-slider-disabled-cursor: $cursor-disabled-value !default;
       }
     }
     .range-slider-active-segment {
-      display: inline-block;
-      position: absolute;
-      height: $range-slider-bar-height - rem-calc((strip-unit($range-slider-bar-border-width) * 2));
       background: $range-slider-active-segment-bg-color;
+      border-bottom-left-radius: inherit;
+      border-top-left-radius: inherit;
+      display: inline-block;
+      height: $range-slider-bar-height - rem-calc((strip-unit($range-slider-bar-border-width) * 2));
+      position: absolute;
     }
     .range-slider-handle {
       @include range-slider-handle-base;

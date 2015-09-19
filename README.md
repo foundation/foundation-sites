@@ -12,8 +12,9 @@ To get started, check out <http://foundation.zurb.com/docs>
 
 To get going with Foundation you can:
 
-  * [Download the latest release](http://foundation.zurb.com/cdn/releases/foundation-latest.zip)
-  * [Install with Bower](http://bower.io): `bower install zurb/bower-foundation`
+  * [Download the latest release](http://foundation.zurb.com/develop/download.html)
+  * [Install with Bower](http://bower.io): `bower install foundation`
+  * [Install with npm](http://npmjs.com): `npm install foundation-sites`
 
 ## Documentation
 
@@ -29,6 +30,7 @@ cd foundation
 npm install -g grunt-cli bower
 npm install
 bower install
+bundle install
 ```
 
 Then just run `grunt build` and the documentation will be compiled:
@@ -41,4 +43,4 @@ foundation/
 │       └── ...
 ```
 
-Copyright (c) 2014 ZURB, inc.
+Copyright (c) 2015 ZURB, inc.

@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 //
 // @variables
@@ -53,23 +53,22 @@ $dropdown-button-pip-top-lrg: (-$button-pip-lrg / 2) + rem-calc(3) !default;
 // $pip-color - Color of the little triangle that points to the dropdown. Default: $white.
 // $base-style - Add in base-styles. This can be set to false. Default:true
 
-@mixin dropdown-button($padding:medium, $pip-color:$white, $base-style:true) {
+@mixin dropdown-button($padding:medium, $pip-color:$dropdown-button-pip-color, $base-style:true) {
 
   // We add in base styles, but they can be negated by setting to 'false'.
   @if $base-style {
     position: relative;
-    outline: none;
 
     // This creates the base styles for the triangle pip
     &::after {
-      position: absolute;
-      content: "";
-      width: 0;
-      height: 0;
-      display: block;
-      border-style: solid;
       border-color: $dropdown-button-pip-color transparent transparent transparent;
+      border-style: solid;
+      content: "";
+      display: block;
+      height: 0;
+      position: absolute;
       top: 50%;
+      width: 0;
     }
   }
 
@@ -122,9 +121,9 @@ $dropdown-button-pip-top-lrg: (-$button-pip-lrg / 2) + rem-calc(3) !default;
 @include exports("dropdown-button") {
   @if $include-html-button-classes {
     .dropdown.button, button.dropdown { @include dropdown-button;
-      &.tiny { @include dropdown-button(tiny,$base-style:false); }
-      &.small { @include dropdown-button(small,$base-style:false); }
-      &.large { @include dropdown-button(large,$base-style:false); }
+      &.tiny { @include dropdown-button(tiny, $base-style:false); }
+      &.small { @include dropdown-button(small, $base-style:false); }
+      &.large { @include dropdown-button(large, $base-style:false); }
       &.secondary:after { border-color: $dropdown-button-pip-color-alt transparent transparent transparent; }
     }
   }

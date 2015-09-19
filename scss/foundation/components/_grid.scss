@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 //
 // @variables
@@ -29,7 +29,9 @@ $last-child-float: $opposite-direction !default;
 // $colNumber - Found in settings file
 // $totalColumns - Found in settings file
 @function grid-calc($colNumber, $totalColumns) {
-  @return percentage(($colNumber / $totalColumns));
+  $result: percentage(($colNumber / $totalColumns));
+  @if $result == 0% { $result: 0; }
+  @return $result;
 }
 
 //
@@ -44,36 +46,30 @@ $last-child-float: $opposite-direction !default;
 
   // use @include grid-row(nest); to include a nested row
   @if $behavior == nest {
-    width: auto;
-    margin-#{$default-float}: -($column-gutter/2);
-    margin-#{$opposite-direction}: -($column-gutter/2);
-    margin-top: 0;
-    margin-bottom: 0;
+    margin: 0 (-($column-gutter/2));
     max-width: none;
+    width: auto;
   }
 
   // use @include grid-row(collapse); to collapsed a container row margins
   @else if $behavior == collapse {
-    width: 100%;
     margin: 0;
     max-width: $row-width;
+    width: 100%;
   }
 
   // use @include grid-row(nest-collapse); to collapse outer margins on a nested row
   @else if $behavior == nest-collapse {
-    width: auto;
     margin: 0;
     max-width: none;
+    width: auto;
   }
 
   // use @include grid-row; to use a container row
   @else {
-    width: 100%;
-    margin-#{$default-float}: auto;
-    margin-#{$opposite-direction}: auto;
-    margin-top: 0;
-    margin-bottom: 0;
+    margin: 0 auto;
     max-width: $row-width;
+    width: 100%;
   }
 
   // Clearfix for all rows
@@ -132,7 +128,7 @@ $last-child-float: $opposite-direction !default;
   @if $push { #{$default-float}: grid-calc($push, $total-columns); #{$opposite-direction}: auto; }
   @if $pull { #{$opposite-direction}: grid-calc($pull, $total-columns); #{$default-float}: auto; }
 
-  @if $float {
+  @if $float and $last-column == false {
     @if $float == left or $float == true { float: $default-float; }
     @else if $float == right { float: $opposite-direction; }
     @else { float: none; }
@@ -169,19 +165,19 @@ $last-child-float: $opposite-direction !default;
 
 
   @for $i from 1 through $total-columns {
-    .#{$size}-#{$i} { @include grid-column($columns:$i,$collapse:null,$float:false); }
+    .#{$size}-#{$i} { @include grid-column($columns:$i, $collapse:null, $float:false); }
   }
 
   @for $i from 0 through $total-columns - 1 {
-    .#{$size}-offset-#{$i} { @include grid-column($offset:$i, $collapse:null,$float:false); }
+    .#{$size}-offset-#{$i} { @include grid-column($offset:$i, $collapse:null, $float:false); }
   }
 
   .#{$size}-reset-order {
+    float: $default-float;
+    left: auto;
     margin-#{$default-float}: 0;
     margin-#{$opposite-direction}: 0;
-    left: auto;
     right: auto;
-    float: $default-float;
   }
 
   .column.#{$size}-centered,
@@ -189,9 +185,9 @@ $last-child-float: $opposite-direction !default;
 
   .column.#{$size}-uncentered,
   .columns.#{$size}-uncentered {
+    float: $default-float;
     margin-#{$default-float}: 0;
     margin-#{$opposite-direction}: 0;
-    float: $default-float;
   }
 
   // Fighting [class*="column"] + [class*="column"]:last-child
@@ -211,20 +207,20 @@ $last-child-float: $opposite-direction !default;
     float: $opposite-direction;
   }
 
-	.row {
-		&.#{$size}-collapse {
-			> .column,
-			> .columns { @include grid-column($collapse:true, $float:false); }
+  .row {
+    &.#{$size}-collapse {
+      > .column,
+      > .columns { @include grid-column($collapse:true, $float:false); }
 
-			.row {margin-left:0; margin-right:0;}
-		}
-		&.#{$size}-uncollapse {
-			> .column,
-			> .columns {
-				@include grid-column;
-			}
-		}
-	}
+      .row {margin-left:0; margin-right:0;}
+    }
+    &.#{$size}-uncollapse {
+      > .column,
+      > .columns {
+        @include grid-column;
+      }
+    }
+  }
 }
 
 @include exports("grid") {
@@ -247,8 +243,15 @@ $last-child-float: $opposite-direction !default;
     .column,
     .columns { @include grid-column($columns:$total-columns); }
 
-    [class*="column"] + [class*="column"]:last-child { float: $last-child-float; }
-    [class*="column"] + [class*="column"].end { float: $default-float; }
+    .column,
+    .columns {
+      & + &:last-child {
+        float: $last-child-float;
+      }
+      & + &.end {
+        float: $default-float;
+      }
+    }
 
     @media #{$small-up} {
       @include grid-html-classes($size:small);

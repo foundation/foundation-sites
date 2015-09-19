@@ -131,11 +131,10 @@ Compass/Libsass
 <div class="row">
   <div class="large-5 columns path-container two-paths">
     <h4>Creating a Compass Project</h4>
-    <p class="panel">Until all Sass library's can catch up to Sass 3.4, Foundation will be on Sass 3.2. This means if you have upgraded to Sass 3.4+ and Compass 1.0+ the commands to compile a Compass project have changed slightly. See below...</p>
     <div class="path-item">
       <div class="circlenumber">
         <h3>1</h3>
-      </div><p>If it's not installed yet, you can install it using the following command:</p>
+      </div><p>If it's not installed already, you can install Compass using the following command:</p>
       <p class="panel">gem install compass</p>
     </div>
     <div class="path-item">
@@ -156,8 +155,9 @@ Compass/Libsass
       <div class="circlenumber">
         <h3>4</h3>
       </div>
+      <p>Bundler is used to ensure all the correct libraries are used. If you don't have it, run `gem install bundler`</p>
+      <p>Then run <span class="panel">bundle</span> (only once per project)</p>
       <p>Be sure to run compass watch in order to make changes.</p>
-      <p><span class="panel">bundle</span> (only once per project)</p>
       <p class="panel">bundle exec compass watch</p>
     </div>
   </div>
@@ -289,6 +289,50 @@ Upgrade Manually
       <p>This will create a directory called bower_components/ in your project. Foundation's Sass and JavaScript files will be placed in the bower_components/foundation folder.</p>
     </div>
     <p><a href="{{rel 'sass-files.html'}}">Check out what you get with the Sass download package. →</a></p>
+  </div>
+</div>
+
+<hr class="dashed">
+
+<div class="row">
+  <div class="small-12 path-container columns">
+    <h3>Build Using a Task Runner</h3>
+    <p>Using Bower and a task runner like Grunt or Gulp, you can add our Sass files to your build process.</p>
+    <div class="row path-item">
+      <div class="circlenumber">
+        <h3>1</h3>
+      </div>
+      <p>In a project with an existing <code>bower.json</code>, add Foundation to your bower components:</p>
+      <p class="panel">bower install foundation --save</p>
+    </div>
+    <div class="row path-item">
+      <div class="circlenumber">
+        <h3>2</h3>
+      </div>
+      <p>Next, add <code>bower_components/foundation/scss</code> to your Sass compiler's import paths. The exact setting you need to change will depend on the plugin you're using. For example, this is how to add Foundation to a Grunt task using <code>grunt-contrib-sass</code>:</p>
+      <p class="panel">
+        sass: {<br>
+        &nbsp;&nbsp;dist: {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;options: {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;style: 'expanded'<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>loadPath: ['bower_components/foundation/scss']</strong><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;},<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;files: {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'main.css': 'main.scss',<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'widgets.css': 'widgets.scss'<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+        &nbsp;&nbsp;}<br>
+        }
+      </p>
+      <p>This configuration will work for `gulp-sass`:</p>
+      <p class="panel">
+        gulp.src('./scss/*.scss')<br>
+        &nbsp;&nbsp;.pipe(sass({<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<strong>includePaths: ['bower_components/foundation/scss']</strong><br>
+        &nbsp;&nbsp;}))<br>
+        &nbsp;&nbsp;.pipe(gulp.dest('./css'));
+      </p>
+    </div>
   </div>
 </div>
 

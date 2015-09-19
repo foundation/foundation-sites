@@ -1,5 +1,6 @@
 ---
 title: Range Sliders
+layout: component.html
 ---
 
 <h3 class="subheader">This handy slider will allow you to drag a handle to select a specific value from a range.</h3>
@@ -137,6 +138,45 @@ You can use the `display_selector` data option to pass in an element (or input) 
   </div>
 </div>
 
+### With Input
+
+If you use the `display_selector` data option to pass in an input, your users can use the input and their changes will be reflected on the slider.
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+<div class="row">
+  <div class="small-10 columns">
+    <div class="range-slider" data-slider data-options="display_selector: #days-off-count; initial: 28;">
+      <span class="range-slider-handle" role="slider" tabindex="0"></span>
+      <span class="range-slider-active-segment"></span>
+    </div>
+  </div>
+  <div class="small-2 columns">
+    <input type="number" id="days-off-count" value="28" />
+  </div>
+</div>
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    <div class="row">
+      <div class="small-10 columns">
+        <div class="range-slider" data-slider data-options="display_selector: #days-off-count; initial: 28;">
+          <span class="range-slider-handle" role="slider" tabindex="0"></span>
+          <span class="range-slider-active-segment"></span>
+        </div>
+      </div>
+      <div class="small-2 columns">
+        <input type="number" id="days-off-count" value="28" />
+      </div>
+    </div>
+  </div>
+</div>
+
 ***
 
 <h2>Advanced</h2>
@@ -178,7 +218,7 @@ You can add a border radius to the range slider by adding the `radius` class to 
       <span class="range-slider-handle" role="slider" tabindex="0"></span>
       <span class="range-slider-active-segment"></span>
       <input type="hidden">
-    </div> 
+    </div>
     <br><br>
     <div class="range-slider round" data-slider>
       <span class="range-slider-handle" role="slider" tabindex="0"></span>
@@ -266,7 +306,7 @@ There are two ways to bind to callbacks in your sliders.
 
 <div class="panel">
   <p><strong>Deprecation Notice</strong></p>
-  <p>Previous versions of the slider plugin emitted an un-namespaced `change` event, however, this has been replaced by the namespaced `change.fndtn.slider` event. The un-namespaced event will be fully deprecated when Foundation 5.4 is released.</p>
+  <p>Previous versions of the slider plugin emitted an un-namespaced `change` event, however, this has been replaced by the namespaced `change.fndtn.slider` event. The un-namespaced event have been fully deprecated.</p>
 </div>
 
 <div class="row">
@@ -317,7 +357,7 @@ To set a slider's value, call the `foundation` function on the slider and pass i
 {{#markdown}}
 ```js
 var new_value = 3;
-$('slider').foundation('slider', 'set_value', new_value);
+$('.range-slider').foundation('slider', 'set_value', new_value);
 ```
 {{/markdown}}
 
@@ -383,7 +423,7 @@ If you add new content after the page has been loaded, you will need to reinitia
 
 {{#markdown}}
 ```javascript
-$(document).foundation(); 
+$(document).foundation();
 ```
 {{/markdown}}
 

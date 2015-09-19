@@ -7,7 +7,7 @@
     version : '{{VERSION}}',
 
     settings : {
-      callback: function (){}
+      callback : function () {}
     },
 
     init : function (scope, method, options) {
@@ -25,13 +25,13 @@
         e.preventDefault();
         if (Modernizr.csstransitions) {
           alertBox.addClass('alert-close');
-          alertBox.on('transitionend webkitTransitionEnd oTransitionEnd', function(e) {
-            S(this).trigger('close').trigger('close.fndtn.alert').remove();
+          alertBox.on('transitionend webkitTransitionEnd oTransitionEnd', function (e) {
+            S(this).trigger('close.fndtn.alert').remove();
             settings.callback();
           });
         } else {
           alertBox.fadeOut(300, function () {
-            S(this).trigger('close').trigger('close.fndtn.alert').remove();
+            S(this).trigger('close.fndtn.alert').remove();
             settings.callback();
           });
         }
