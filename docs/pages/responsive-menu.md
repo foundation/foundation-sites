@@ -73,7 +73,7 @@ To set it up, first give your menu a unique ID. (You don't even need to use menu
 By default, the tab bar will be visible on small screens, and the menu bar hides. At the medium breakpoint, the tab bar disappears, and the menu is always visible. This breakpoint can be changed with the `data-hidefor` attribute in HTML, or the `hideFor` setting in JavaScript.
 
 ```html_example
-<div class="tab-bar" data-tab-bar="example-menu" data-hidefor="medium">
+<div class="tab-bar" data-tab-bar="example-menu" data-hide-for="medium">
   <button class="menu-icon" type="button" data-toggle></button>
   <div class="tab-bar-title">Menu</div>
 </div>

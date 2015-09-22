@@ -11,7 +11,7 @@
  */
 function TabBar(element, options) {
   this.$element = $(element);
-  this.options = $.extend(this.defaults, options);
+  this.options = $.extend({}, TabBar.defaults, options);
 
   this._init();
   this._events();
@@ -68,6 +68,7 @@ TabBar.prototype._events = function() {
  * @private
  */
 TabBar.prototype._update = function() {
+  debugger;
   // Mobile
   if (!Foundation.MediaQuery.atLeast(this.options.hideFor)) {
     this.$element.show();
