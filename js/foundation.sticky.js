@@ -1,4 +1,4 @@
-!function(){
+!function($, Foundation, window){
   'use strict';
 
   function Sticky(element){
@@ -13,7 +13,9 @@
     stickTo: 'top',
     breakAt: '',
     stickAt: '',
-    debounce: 150
+    debounce: 150,
+    marginTop: 1,
+    marginBottom: 1
   };
   Sticky.prototype._init = function(){
     var _this = this;
@@ -28,56 +30,66 @@
     this.setBreakPoints();
 
     this._events();
-
-    $(window).on('scroll', function(e){
-      setTimeout(function(){
-        var scroll = $(window).scrollTop();
-        // if(scroll >= _this.$anchorDims.offset.top){
-        //   _this.$element.addClass('stuck top').removeClass('anchored bottom').css('top', 0);
-        // }
-        if(scroll + _this.$element.height() >= _this.$anchorDims.offset.top + _this.$anchorDims.height){
-          _this.$element.removeClass('stuck').addClass('anchored bottom')
-          .css('top', 1064 - 213 + 'px');
-          // .css({'top': _this.$anchorDims.height + _this.$anchorDims.offset.top - size.height * 2});
-        }
-        if(scroll <= _this.$anchorDims.offset.top){
-          _this.$element.addClass('anchored top').removeClass('stuck');
-        }
-      }, 150);
-    });
   };
+
   Sticky.prototype._events = function(){
     var _this = this;
     $(window).on('scroll.zf.sticky', function(e){
       _this.timer = setTimeout(function(){
         var scroll = $(window).scrollTop();
-        console.log(scroll);
-        if(scroll >= _this.start){
-          _this.$element.addClass('stuck top').removeClass('anchored bottom')/*.css('top', 0)*/;
+        if(_this.options.stickTo === 'bottom'){
+          console.log(_this.start);
+          if(scroll + _this.$anchorDims.windowDims.height >= _this.start){
+          // if(scroll + _this.$anchorDims.windowDims.height >= _this.$anchorDims.offset.top + _this.$elemDims.height + (_this.options.marginBottom * _this.fontSize)){
+            _this.$element.addClass('stuck bottom').removeClass('anchored top').css({'marginBottom': _this.options.marginBottom + 'em', 'bottom': 0})
+          }
         }
-        // if(scroll){}
+        else if(_this.options.stickTo === 'top'){
+          if(scroll >= _this.start && scroll <= _this.end){//in between breakpoints, sticky top
+              _this.$element.addClass('stuck top').removeClass('anchored bottom').css({'marginTop': _this.options.marginTop + 'em', 'top': 0});
+          }
+        }
+        else{
+          //stick to top on scrolldown, stick to bottom on scrollup from bottom
+        }
+
+        if(scroll <= _this.start){//start at page load, + what to do when scrolling to top
+          _this.$element.addClass('anchored top').removeClass('stuck').css('marginTop', _this.options.marginTop + 'em');
+        }
+
+        if(scroll >= _this.end){//bottom edge and stop
+          _this.$element.removeClass('stuck top')
+                .addClass('anchored bottom')
+                .css({
+                  'marginTop': 0,
+                  'top': _this.end - (_this.$container.offset().top) + (_this.options.marginBottom * _this.fontSize) + 'px'
+                });
+                // console.log('end', _this.end, 'height', _this.$elemDims.height, '\ntotal', (_this.end - _this.$elemDims.height) - 32);
+        }
       }, _this.options.debounce)
     });
   };
 
   //*********************************************************************
   Sticky.prototype.setBreakPoints = function(){
-    var styles = window.getComputedStyle(this.$element[0], null);
-    this.start = this.$anchorDims.offset.top - parseFloat(styles.marginTop.split('px'));
-    this.end = this.options.breakAt ? '' : this.$anchorDims.offset.top + this.$anchorDims.height;
-    console.log(this.start, this.end);
+    this.fontSize = parseInt(window.getComputedStyle(document.getElementsByTagName('body')[0], null).fontSize.split('px'));
+    this.styles = window.getComputedStyle(this.$element[0], null);
+    this.start = this.options.stickTo === 'bottom' ? this.$anchorDims.offset.top + this.$elemDims.height + (this.options.marginBottom * this.fontSize) : this.$anchorDims.offset.top - (this.options.marginTop * this.fontSize);
+    // this.start = this.$anchorDims.offset.top - parseFloat(this.styles.marginTop.split('px'));
+    this.end = this.options.breakAt ? '' : this.$anchorDims.offset.top + this.$anchorDims.height  - (this.options.marginBottom * this.fontSize) - (this.options.marginTop * this.fontSize) - this.$elemDims.height;
+    console.log('start',this.start, 'end',this.end);
   };
   Sticky.prototype.getDimensions = function(){
     this.$elemDims = Foundation.GetDimensions(this.$element);
     this.$anchorDims = Foundation.GetDimensions(this.$anchor);
   };
   Sticky.prototype.setElementAttr = function(){
-    this.$element.offset({'top': this.$container.offset().top})
-        .css({'max-width': this.$elemDims.width, 'min-height': this.$elemDims.height});
+    this.$element/*.offset({'top': this.$container.offset().top})*/
+        .css({'max-width': this.$elemDims.width/*, 'min-height': this.$elemDims.height*/});
   };
   Sticky.prototype.setContainerSize = function(){
     this.$container.css({'min-height': this.$elemDims.height});
   };
   //*********************************************************************
   Foundation.plugin(Sticky);
-}(jQuery, window.Foundation);
+}(jQuery, window.Foundation, window);

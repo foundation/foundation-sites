@@ -3,18 +3,20 @@
 .sticky{
   position: static;
   z-index: 0;
+  // margin-top: 1em;
   &.stuck{
     position: fixed !important;
     z-index: 5;
+
     &.top{
       top: 0;
-      bottom: auto;
-      margin-top: 1em;
+      // bottom: auto;
+      // margin-top: 1em !important;
     }
     &.bottom{
-      top: auto;
+      // top: auto;
       bottom: 0;
-      margin-bottom: 1em;
+      // margin-bottom: 1em;
     }
   }
   &.anchored{
@@ -22,9 +24,9 @@
     left: auto;
     right: auto;
     &.bottom{
-      top: auto;
+      // top: 150%;
       bottom: 0;
-      margin-bottom: 1em;
+      // margin-bottom: 1em;
     }
   }
 }
