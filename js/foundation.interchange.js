@@ -8,7 +8,7 @@
    * @param {Object} element - jQuery object to add the trigger to.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  function Interchange(element) {
+  function Interchange(element, options) {
     this.$element = element;
     this.options = $.extend({}, Interchange.defaults, options);
     this.rules = [];
@@ -30,7 +30,6 @@
   Interchange.defaults = {}
 
   Interchange.SPECIAL_QUERIES = {
-    'default': 'screen',
     'landscape': 'screen and (orientation: landscape)',
     'portrait': 'screen and (orientation: portrait)',
     'retina': 'only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx)'
