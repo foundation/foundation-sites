@@ -1,0 +1,36 @@
+@import 'global';
+
+.sticky{
+  position: static;
+  z-index: 0;
+  &.stuck{
+    position: fixed !important;
+    z-index: 5;
+    &.top{
+      top: 0;
+      bottom: auto;
+      margin-top: 1em;
+    }
+    &.bottom{
+      top: auto;
+      bottom: 0;
+      margin-bottom: 1em;
+    }
+  }
+  &.anchored{
+    position: absolute;
+    left: auto;
+    right: auto;
+    &.bottom{
+      top: auto;
+      bottom: 0;
+      margin-bottom: 1em;
+    }
+  }
+}
+.sticky-container{
+  position: relative;
+  // &.right{
+  //   left: 100%;
+  // }
+}

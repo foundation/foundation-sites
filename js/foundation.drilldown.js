@@ -25,7 +25,9 @@
   };
   Drilldown.prototype._prepareMenu = function(){
     var _this = this;
-    this._menuLinkEvents();
+    if(!this.options.holdOpen){
+      this._menuLinkEvents();
+    }
     console.log(this.$submenuAnchors);
     this.$submenuAnchors.each(function(){
       var $sub = $(this);
@@ -43,7 +45,7 @@
       $menu.prepend(_this.options.backButton);
       _this._back($menu);
     });
-    this.$wrapper = $(this.options.wrapper).addClass('is-drilldown').css({'height': this.getMaxHeight(), 'width': this.$menuItems[0].getBoundingClientRect().width});
+    this.$wrapper = $(this.options.wrapper).addClass('is-drilldown').css(this.getMaxHeight());
     this.$element.wrap(this.$wrapper);
 
   };
@@ -100,19 +102,20 @@
       });
   };
   Drilldown.prototype._show = function($elem){
-    console.log('ping me bro');
-    $elem.children('.is-drilldown-sub').addClass('is-active');
+
+    $elem.children('[data-submenu]').addClass('is-active');
   };
   Drilldown.prototype.getMaxHeight = function(){
-    var max = 0;
+    var max = 0, result = {};
     this.$submenus.each(function(){
       var thing = $(this).children('li').length;
       max = thing > max ? thing : max;
     });
     // console.log('1',this.$menuItems[0].getBoundingClientRect().height);
-    max = max * this.$menuItems[0].getBoundingClientRect().height + 'px';
-    // console.log('2',max);
-    return max;
+    result.height = max * this.$menuItems[0].getBoundingClientRect().height + 'px';
+    result.width = this.$menuItems[0].getBoundingClientRect().width + 'px';
+    console.log('2',result);
+    return result;
   };
   Foundation.plugin(Drilldown);
 }(jQuery, window.Foundation);
