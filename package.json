@@ -11,7 +11,6 @@
   "devDependencies": {
     "bootcamp": "^1.1.7",
     "browser-sync": "^2.8.2",
-    "foundation-settings-parser": "git://github.com/zurb/foundation-settings-parser.git#v1",
     "gulp": "^3.8.10",
     "gulp-autoprefixer": "^2.3.1",
     "gulp-cached": "^1.0.4",
@@ -29,6 +28,7 @@
     "highlight.js": "^8.5.0",
     "marked": "^0.3.3",
     "multiline": "^1.0.2",
+    "octophant": "^0.2.0",
     "rimraf": "^2.3.2",
     "shipyard": "git://github.com/gakimball/shipyard.git",
     "string-template": "^0.2.1",
