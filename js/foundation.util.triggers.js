@@ -1,10 +1,10 @@
 !function(Foundation, $) {
-  $('[data-open]').on('click.zf.trigger', function() {
+  $(document).on('click.zf.trigger', '[data-open]', function() {
     var id = $(this).data('open');
     $('#' + id).triggerHandler('open.zf.trigger', [$(this)]);
   });
 
-  $('[data-close]').on('click.zf.trigger', function() {
+  $(document).on('click.zf.trigger', '[data-close]', function() {
     var id = $(this).data('close');
     if (id) {
     // console.log($('#'+id));
@@ -15,7 +15,7 @@
     }
   });
 
-  $('[data-toggle]').on('click.zf.trigger', function() {
+  $(document).on('click.zf.trigger', '[data-toggle]', function() {
     var id = $(this).data('toggle');
     $('#' + id).triggerHandler('toggle.zf.trigger', [$(this)]);
   });

@@ -4,7 +4,7 @@ description: Interchange uses media queries to dynamically load responsive conte
 js: js/foundation.interchange.js
 ---
 
-<img data-interchange="[assets/img/interchange/small.jpg, default], [assets/img/interchange/medium.jpg, medium], [assets/img/interchange/large.jpg, large]">
+<img data-interchange="[assets/img/interchange/small.jpg, small], [assets/img/interchange/medium.jpg, medium], [assets/img/interchange/large.jpg, large]">
 
 ---
 
@@ -15,7 +15,7 @@ Bandwidth is precious on mobile networks, so it helps to serve users on smaller 
 In the above example, we have three different sizes of image: one for small screens, one for medium, and one for large. Use the below format to set up a responsive image. The image will change automatically as the browser resizes.
 
 ```html
-<img data-interchange="[assets/img/interchange/small.jpg, (default)], [assets/img/interchange/medium.jpg, medium], [assets/img/interchange/large.jpg, large]">
+<img data-interchange="[assets/img/interchange/small.jpg, (small)], [assets/img/interchange/medium.jpg, medium], [assets/img/interchange/large.jpg, large]">
 ```
 
 The image set is a comma-separated list of items with this format:
@@ -39,10 +39,10 @@ Interchange can also swap in and out entire chunks of HTML. This allows you to l
 In the below example, we've applied `data-interchange` to a `<div>` instead of an `<img>` element, and the paths are to HTML files instead of images.
 
 ```html
-<div data-interchange="[assets/partials/interchange-default.html, default], [assets/partials/interchange-medium.html, medium], [assets/partials/interchange-large.html, large]"></div>
+<div data-interchange="[assets/partials/interchange-default.html, small], [assets/partials/interchange-medium.html, medium], [assets/partials/interchange-large.html, large]"></div>
 ```
 
-<div id="docs-example-interchange" data-interchange="[assets/partials/interchange-default.html, default], [assets/partials/interchange-medium.html, medium], [assets/partials/interchange-large.html, large]"></div>
+<div id="docs-example-interchange" data-interchange="[assets/partials/interchange-default.html, small], [assets/partials/interchange-medium.html, medium], [assets/partials/interchange-large.html, large]"></div>
 
 ---
 
@@ -51,18 +51,17 @@ In the below example, we've applied `data-interchange` to a `<div>` instead of a
 When using Interchange on a non-`<img>` element, you can pass in an image path instead of an HTML path, and the element's `background-image` property will be set to the path of the matching rule.
 
 ```html
-<div data-interchange="[assets/img/interchange/small.jpg, default], [assets/img/interchange/medium.jpg, medium], [assets/img/interchange/large.jpg, large]"></div>
+<div data-interchange="[assets/img/interchange/small.jpg, small], [assets/img/interchange/medium.jpg, medium], [assets/img/interchange/large.jpg, large]"></div>
 ```
 
 ---
 
 ## Named Media Queries
 
-Interchange supports named queries as shorthands for full CSS media queries. Any breakpoint defined in the `$breakpoints` variable in your Sass will work, along with a few other keywords, most notably `default`, which just means "anything". [Learn more about changing the default breakpoints.](media-queries.html)
+Interchange supports named queries as shorthands for full CSS media queries. Any breakpoint defined in the `$breakpoints` variable in your Sass will work, along with a few other keywords. [Learn more about changing the default breakpoints.](media-queries.html)
 
 Query Name | Media Query
 -----------|------------
-default    | `screen`
 small      | `screen and (min-width: 0em)`
 medium     | `only screen and (min-width: 40em)`
 large      | `only screen and (min-width: 64em)`

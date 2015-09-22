@@ -32,13 +32,12 @@
    */
   function MenuBar(element) {
     this.$element = $(element);
-    this.rules = this.$element.data('menubar');
+    this.rules = this.$element.data('menu-bar');
     this.currentMq = null;
     this.currentPlugin = null;
 
     this._init();
     this._events();
-    this._checkMediaQueries();
 
     /**
      * Fires when the plugin has been successfuly initialized.
@@ -72,6 +71,10 @@
     }
 
     this.rules = rulesTree;
+
+    if (!$.isEmptyObject(rulesTree)) {
+      this._checkMediaQueries();
+    }
   };
 
   /**
