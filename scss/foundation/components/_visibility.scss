@@ -30,6 +30,9 @@ $visibility-breakpoint-queries:
   unquote($xlarge-up),
   unquote($xxlarge-up);
 
+//Controls the margin when printing your website.
+$print-margin: 0.34in;
+
 @mixin visibility-loop {
   @each $current-visibility-breakpoint in $visibility-breakpoint-sizes {
     $visibility-inherit-list: ();
@@ -457,7 +460,7 @@ $visibility-breakpoint-queries:
 
         img { max-width: 100% !important; }
 
-        @page { margin: .5cm; }
+        @page { margin: $print-margin }
 
         p,
         h2,
