@@ -19,6 +19,7 @@ var COMPATIBILITY = [
 var files = {
   assets: [
     'docs/assets/**/*',
+    'node_modules/zeroclipboard/dist/ZeroClipboard.swf',
     '!docs/assets/{js,scss}',
     '!docs/assets/{js,scss}/**/*'
   ],

@@ -1,6 +1,10 @@
 // Adds a copy button to all code examples in the docs.
 
 !function() {
+
+ZeroClipboard.config({
+  swfPath: 'assets/ZeroClipboard.swf'
+});
   
 if (!ZeroClipboard.isFlashUnusable()) {
   var $buttonTemplate = $('<button class="docs-code-copy">Copy</button>');
