@@ -56,10 +56,10 @@ a#notice {
     h5 { color: #ffffff; }
     @media only screen and (max-width: 675px) { width: 100%; padding: 0 15px 20px 15px; position: relative; }
   }
-  .plane {     
+  .graphic {     
     width: 150px;
     height: 60px; 
-    background: url("../img/icons/plane.svg") center center no-repeat;
+    background: url("../img/spaceship.svg") center center no-repeat;
     z-index: 25;
     background-size: 100%;
     position: absolute;

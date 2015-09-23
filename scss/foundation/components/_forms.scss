@@ -45,7 +45,6 @@ $fieldset-padding: rem-calc(20) !default;
 $fieldset-margin: rem-calc(18 0) !default;
 
 // We use these to style the legends when you use them
-$legend-bg: $white !default;
 $legend-font-weight: $font-weight-bold !default;
 $legend-padding: rem-calc(0 3) !default;
 
@@ -277,7 +276,6 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 
   // and legend styles
   legend {
-    background: $legend-bg;
     font-weight: $legend-font-weight;
     margin: 0;
     margin-#{$default-float}: rem-calc(-3);
