@@ -16,6 +16,7 @@ var COMPATIBILITY = [
 var files = {
   assetPaths: [
     'docs/assets/**/*',
+    '!docs/assets/{js,scss}',
     '!docs/assets/{js,scss}/**/*'
   ],
   sassSrc: 'scss/foundation.scss',
@@ -26,14 +27,16 @@ var files = {
     '!scss/components_old/**/*.scss'
   ],
   javascript: [
-    'node_modules/jquery/dist/jquery.js',
-    'bower_components/typeahead.js/dist/typeahead.bundle.js',
     'js/foundation.core.js',
     'js/foundation.util.*.js',
     'js/*.js'
   ],
+  javascriptDeps: [
+    'node_modules/jquery/dist/jquery.js'
+  ],
   docsJavascript: [
     'node_modules/zeroclipboard/dist/ZeroClipboard.js',
+    'bower_components/typeahead.js/dist/typeahead.bundle.js',
     'docs/assets/js/docs.*.js',
     'docs/assets/js/docs.js'
   ]
@@ -48,9 +51,6 @@ gulp.task('clean', function() {
 gulp.task('copy', function() {
   gulp.src(files.assetPaths)
     .pipe(gulp.dest('dist/assets'));
-
-  return gulp.src('node_modules/zeroclipboard/dist/ZeroClipboard.swf')
-    .pipe(gulp.dest('dist/assets/js'));
 });
 
 // Assembles the layout, pages, and partials in the docs folder
@@ -131,10 +131,15 @@ gulp.task('sass:settings', function() {
 });
 
 // Compiles JavaScript into a single file
-gulp.task('javascript', ['javascript:foundation', 'javascript:docs'])
+gulp.task('javascript', ['javascript:foundation', 'javascript:deps', 'javascript:docs'])
 gulp.task('javascript:foundation', function() {
   return gulp.src(files.javascript)
     .pipe($.concat('foundation.js'))
+    .pipe(gulp.dest('dist/assets/js'));
+});
+gulp.task('javascript:deps', function() {
+  return gulp.src(files.javascriptDeps)
+    .pipe($.concat('vendor.js'))
     .pipe(gulp.dest('dist/assets/js'));
 });
 gulp.task('javascript:docs', function() {
