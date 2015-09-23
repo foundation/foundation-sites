@@ -95,11 +95,12 @@ $card-margin: 0.5rem !default;
 
     @each $name, $color in $foundation-colors {
       &.#{$name} {
-        // TODO: Cut down on duplicate CSS generated here
-        @include card-container($background: $color, $border: 0);
+        background-color: $color;
+        border-width: 0;
+        color: foreground($color);
 
         .card-divider {
-          @include card-divider($background: smart-scale($color, 7%));
+          @include card-divider($background: smart-scale($color, 15%));
         }
       }
     }
