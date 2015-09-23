@@ -19,7 +19,6 @@
     "gulp-jshint": "^1.9.2",
     "gulp-load-plugins": "^0.8.0",
     "gulp-rename": "^1.2.2",
-    "gulp-rtlcss": "^0.1.4",
     "gulp-ruby-sass": "^1.0.0-alpha.3",
     "gulp-sass": "^2.0.4",
     "gulp-scss-lint": "^0.2.2",

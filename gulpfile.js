@@ -107,14 +107,6 @@ gulp.task('sass:docs', function() {
     .pipe(gulp.dest('dist/assets/css'));
 });
 
-// Generates RTL CSS
-gulp.task('sass:rtl', ['sass'], function() {
-  gulp.src('dist/assets/css/docs.css')
-    .pipe($.rtlcss())
-    .pipe($.rename('foundation.rtl.css'))
-    .pipe(gulp.dest('dist/assets/css'));
-});
-
 // Generates a settings file
 gulp.task('sass:settings', function() {
   var options = {
