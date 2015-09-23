@@ -10,6 +10,10 @@
 /// @type Color
 $accordion-background: $white;
 
+/// If `true`, adds plus and minus icons to the side of each accordion title.
+/// @type Boolean
+$accordion-plusminus: true;
+
 /// Default text color for items in a menu bar.
 /// @type Color
 $accordion-item-color: foreground($accordion-background, $primary-color);
@@ -28,7 +32,7 @@ $accordion-content-background: $white !default;
 
 /// Default border color of tab content.
 /// @type Color
-$accordion-content-border: $light-gray !default;
+$accordion-content-border: 1px solid $light-gray !default;
 
 /// Default text color of tab content.
 /// @type Color
@@ -38,53 +42,54 @@ $accordion-content-color: foreground($accordion-background, $primary-color);
 /// @type Number | List
 $accordion-content-padding: 1rem !default;
 
+/// Adds styles for an accordion container. Apply this to the same element that gets `data-accordion`.
 @mixin accordion-container {
   list-style-type: none;
   background: $accordion-background;
-  border: 1px solid $accordion-content-border;
+  border: $accordion-content-border;
   margin-left: 0;
 }
 
+/// Adds styles for the title of an accordion item. Apply this to the link within an accordion item.
 @mixin accordion-title {
   display: block;
   padding: $accordion-item-padding;
   line-height: 1;
-  font-size: 12px;
+  font-size: rem-calc(12);
   color: $accordion-item-color;
   position: relative;
-  border-bottom: 1px solid $accordion-content-border;
-
-  &:last-child {
-    border-bottom: 0 solid $accordion-content-border;
-  }
+  border-bottom: $accordion-content-border;
 
   &:hover,
   &:focus {
-    background: $accordion-item-background-hover;
+    background-color: $accordion-item-background-hover;
   }
 
-  &::before {
-    content: '+';
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    margin-top: -0.5rem;
-    font-size: 0.9rem;
-  }
-
+  // Remove the border on the last title
   :last-child > & {
     border-bottom-width: 0;
   }
 
-  .is-active > &::before {
-    content: '–';
+  @if $accordion-plusminus {
+    &::before {
+      content: '+';
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      margin-top: -0.5rem;
+    }
+
+    .is-active > &::before {
+      content: '–';
+    }
   }
 }
 
+/// Adds styles for accordion content. Apply this to the content pane below an accordion item's title.
 @mixin accordion-content {
   padding: $accordion-item-padding;
   display: none;
-  border-bottom: 1px solid $accordion-content-border;
+  border-bottom: $accordion-content-border;
 }
 
 @mixin foundation-accordion {
