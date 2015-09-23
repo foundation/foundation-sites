@@ -26,10 +26,6 @@ $card-divider-background: $light-gray !default;
 /// @type List
 $card-border: 1px solid $light-gray !default;
 
-/// Defualt border radius.
-/// @type Number
-$card-radius: $global-radius !default;
-
 /// Default card shadow.
 /// @type List
 $card-shadow: 0 1px 2px rgba($black, 0.25) !default;
@@ -42,18 +38,20 @@ $card-padding: $global-padding !default;
 /// @type number
 $card-margin: 0.5rem !default;
 
+/// Adds styles for a card container.
+/// @param {Color} $background - Background color of the card.
+/// @param {Border} $border - Border around the card.
+/// @param {Shadow} $shadow - Box shadow under the card.
+/// @param {Number} $margin - Bottom margin of the card.
 @mixin card-container(
   $background: $card-background,
   $border: $card-border,
-  $radius: $card-radius,
   $shadow: $card-shadow,
-  $padding: $card-padding,
   $margin: $card-margin
 ) {
   border: $border;
   margin-bottom: $margin;
   background: $background;
-  border-radius: $radius;
   box-shadow: $shadow;
   overflow: hidden;
 
@@ -75,6 +73,7 @@ $card-margin: 0.5rem !default;
 
 }
 
+/// Adds styles for a card divider.
 @mixin card-divider(
   $background: $card-divider-background,
   $padding: $card-padding
@@ -83,6 +82,7 @@ $card-margin: 0.5rem !default;
   padding: $padding;
 }
 
+/// Adds styles for a card section.
 @mixin card-section(
   $padding: $card-padding
 ) {
