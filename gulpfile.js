@@ -1,6 +1,9 @@
 var $ = require('gulp-load-plugins')();
+var fs = require('fs');
 var gulp = require('gulp');
 var octophant = require('octophant');
+var Parker = require('parker/lib/Parker');
+var prettyJSON = require('prettyjson');
 var shipyard = require('shipyard');
 var supercollider = require('supercollider');
 var rimraf = require('rimraf');
@@ -19,8 +22,9 @@ var files = {
     '!docs/assets/{js,scss}',
     '!docs/assets/{js,scss}/**/*'
   ],
-  sassSrc: 'scss/foundation.scss',
-  sassPaths: ['scss'],
+  sassPaths: [
+    'scss'
+  ],
   sassTestPaths: [
     'scss/**/*.scss',
     '!scss/vendor/**/*.scss',
@@ -87,7 +91,7 @@ gulp.task('html:debug', ['html'], function(cb) {
 // Compiles Sass files into CSS
 gulp.task('sass', ['sass:foundation', 'sass:docs']);
 gulp.task('sass:foundation', function() {
-  return gulp.src(files.sassSrc)
+  return gulp.src('./foundation-sites.scss')
     .pipe($.sass({
       includePaths: files.sassPaths
     }).on('error', $.sass.logError))
@@ -105,6 +109,16 @@ gulp.task('sass:docs', function() {
       browsers: COMPATIBILITY
     }))
     .pipe(gulp.dest('dist/assets/css'));
+});
+
+// Audits CSS filesize, selector count, specificity, etc.
+gulp.task('sass:audit', ['sass:foundation'], function(cb) {
+  fs.readFile('./dist/assets/css/foundation-sites.css', function(err, data) {
+    var parker = new Parker(require('parker/metrics/All'));
+    var results = parker.run(data.toString());
+    console.log(prettyJSON.render(results));
+    cb();
+  });
 });
 
 // Generates a settings file
