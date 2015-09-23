@@ -4,8 +4,9 @@
   function Sticky(element){
     this.$element = element;
     this.options = $.extend({}, Sticky.defaults, this.$element.data());
-
-    this._init();
+    if(Foundation.MediaQuery.atLeast(this.options.stickyOn)){
+      this._init();
+    }
   }
   Sticky.defaults = {
     stickToWindow: false,
@@ -15,15 +16,18 @@
     stickAt: '',
     debounce: 150,
     marginTop: 1,
-    marginBottom: 1
+    marginBottom: 1,
+    stickyOn: 'medium'
   };
   Sticky.prototype._init = function(){
     var _this = this;
 
-    this.$container = this.$element.parents('[data-sticky-container]') || this.$element.wrap($(this.options.container));
+    this.$container = this.$element.parents('[data-sticky-container]').length ? this.$element.parents('[data-sticky-container]') : $(this.options.container);
+    this.$element.addClass('sticky');
+    // this.$element.wrap(this.$container);
     this.$container.addClass('sticky-container');
-    this.$anchor = $(this.options.stickAt) || $(window);
-
+    this.$anchor = $(this.options.stickAt).length ? $(this.options.stickAt) : $('body');
+    console.log(this.$anchor);
     this.getDimensions();
     this.setContainerSize();
     this.setElementAttr();
@@ -33,18 +37,21 @@
   };
 
   Sticky.prototype._events = function(){
-    var _this = this;
-    $(window).on('resize.zf.sticky', function(e){
+    var _this = this,
+        $window = $(window);
+
+    $window.on('resize.zf.sticky', function(e){
+      e.stopPropagation();
       setTimeout(function(){
         _this.doThings();
-      }, 100)
+      }, 1000)
     });
-    $(window).on('scroll.zf.sticky', function(e){
+    $window.on('scroll.zf.sticky', function(e){
+      e.stopPropagation();
       _this.timer = setTimeout(function(){
-        var scroll = $(window).scrollTop();
+        var scroll = $window.scrollTop();
 
         if(_this.options.stickTo === 'bottom'){
-          console.log('check',(scroll + _this.$anchorDims.windowDims.height >= _this.start), 'check this', (scroll + _this.$elemDims.windowDims.height <= _this.end), 'and this', _this.$element.offset().top + _this.$elemDims.height >= _this.end);
           if((scroll + _this.$anchorDims.windowDims.height >= _this.start) && (scroll + _this.$elemDims.windowDims.height <= _this.end)){//between bottom & top breakpoint
             _this.$element.removeClass('anchored').addClass('stuck bottom').css({'marginBottom': _this.options.marginBottom + 'em', 'bottom': 0, 'top': 'auto'})
           }
@@ -64,7 +71,6 @@
 
         else if(_this.options.stickTo === 'top'){
           if(scroll >= _this.start && scroll <= _this.end){//in between breakpoints, sticky top
-            console.log(_this.start, scroll);
               _this.$element.addClass('stuck top').removeClass('anchored bottom').css({'marginTop': _this.options.marginTop + 'em', 'top': 0});
           }
           if(scroll <= _this.start){//start at page load, + what to do when scrolling to top
@@ -83,7 +89,7 @@
 
 
         else{//both top & bottom sticky
-          //stick to top on scrolldown, stick to bottom on scrollup from bottom
+          //stick to top on scrolldown from top, stick to bottom on scrollup from bottom
         }
 
 
@@ -111,6 +117,7 @@
     console.log('start',this.start, 'end',this.end);
   };
   Sticky.prototype.getDimensions = function(){
+    this.$element.css({'max-width': '', 'max-height': ''});
     this.$elemDims = Foundation.GetDimensions(this.$element);
     this.$anchorDims = Foundation.GetDimensions(this.$anchor);
   };
