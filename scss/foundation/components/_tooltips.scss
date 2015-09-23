@@ -74,11 +74,11 @@ $tooltip-max-width: 300px !default;
         position: absolute;
         top: -($tooltip-pip-size * 2);
         width: 0;
-        #{$default-float}: $tooltip-pip-size;
+        left: $tooltip-pip-size;
 
         &.rtl {
           left: auto;
-          #{$opposite-direction}: $tooltip-pip-size;
+          right: $tooltip-pip-size;
         }
       }
 

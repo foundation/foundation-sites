@@ -234,8 +234,6 @@
         }).end();
       };
 
-      objPos(tip, (target.offset().top + target.outerHeight() + 10), 'auto', 'auto', target.offset().left);
-
       if (this.small()) {
         objPos(tip, (target.offset().top + target.outerHeight() + 10), 'auto', 'auto', 12.5, $(this.scope).width());
         tip.addClass('tip-override');
