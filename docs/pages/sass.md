@@ -24,13 +24,13 @@ To get the proper browser support, use these Autoprefixer settings:
 
 ```js
 autoprefixer({
-  browsers: ['last 2 versions', 'ie >= 9']
+  browsers: ['last 2 versions', 'ie >= 9', 'and_chr >= 2.3']
 });
 ```
 
 ---
 
-## Using the Framework
+## Loading the Framework
 
 If you're using Yeti Launch or the CLI to create a project, the Sass compilation process is already set up for you. If not, you can compile our Sass files yourself, or drop in a pre-built CSS file.
 
@@ -64,7 +64,13 @@ If you're using Compass, open your project's `config.rb` and add the import path
 add_import_path "node_modules/foundation-sites/scss"
 ```
 
-### Using the CSS File
+Finally, add an `@import` statement to the top of your primary Sass file. Refer to [Adjusting CSS Output][#adjusting-css-output] below to learn how to control the CSS output of the framework.
+
+```scss
+@import 'foundation';
+```
+
+### Using Compiled CSS
 
 The Foundation for Sites npm and Bower packages include pre-compiled CSS files, in minified (compressed) and unminified flavors. If you're interested in editing the framework CSS directly, use the unminified file. For production, use the minified version.
 
@@ -72,6 +78,31 @@ The Foundation for Sites npm and Bower packages include pre-compiled CSS files, 
 <link rel="stylesheet" href="node_modules/foundation-sites/dist/css/foundation-sites.css">
  
 <link rel="stylesheet" href="node_modules/foundation-sites/dist/css/foundation-sites.min.css">
+```
+
+---
+
+## Adjusting CSS Output
+
+Foundation outputs many classes for its various components. These help developers get up and running quickly. However, when you move to production, you may wish to build your grid semantically, replace our pre-built classes with your own, or remove components entirely.
+
+Each component has an **export mixin** which prints out the CSS for that component. If you're cool with having everything, you just need one line of code:
+
+```scss
+@include foundation-everything;
+```
+
+Our [starter projects](starter-projects.html) include the full list of imports, making it easy to comment out the components you don't need.
+
+```scss
+@import 'foundation';
+
+@include foundation-global-styles;
+@include foundation-grid;
+@include foundation-typography;
+@include foundation-button;
+@include foundation-forms;
+// And so on...
 ```
 
 ---
