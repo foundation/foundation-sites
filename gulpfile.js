@@ -1,13 +1,13 @@
 var $ = require('gulp-load-plugins')();
+var browser = require('browser-sync');
 var fs = require('fs');
 var gulp = require('gulp');
 var octophant = require('octophant');
 var Parker = require('parker/lib/Parker');
 var prettyJSON = require('prettyjson');
+var rimraf = require('rimraf');
 var shipyard = require('shipyard');
 var supercollider = require('supercollider');
-var rimraf = require('rimraf');
-var browser = require('browser-sync');
 
 // Official Foundation for Sites compatibility
 var COMPATIBILITY = [
