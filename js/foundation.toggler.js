@@ -10,6 +10,7 @@
    */
   function Toggler(element) {
     this.$element = element;
+    this.options = $.extend({}, Toggler.defaults, element.data());
     this.className = '';
 
     this._init();
@@ -22,22 +23,34 @@
     this.$element.trigger('init.zf.toggler');
   }
 
+  Toggler.defaults = {
+    animate: false
+  }
+
   /**
-   * Initializes the Toggler plugin by parsing the target element and class from `options.toggle`.
+   * Initializes the Toggler plugin by parsing the toggle class from data-toggler, or animation classes from data-animate.
    * @function
    * @private
    */
   Toggler.prototype._init = function() {
-    // Parse the class
-    var input = this.$element.data('toggler');
-    // console.log(this.$element.data('toggler'));
+    // Parse animation classes if they were set
+    if (this.options.animate) {
+      var input = this.options.animate.split(' ');
 
-    // Allow for a . at the beginning of the string
-    if (input[0] === '.') {
-      this.className = input.slice(1);
+      this.animationIn = input[0];
+      this.animationOut = input[1] || null;
     }
+    // Otherwise, parse toggle class
     else {
-      this.className = input;
+      var input = this.$element.data('toggler');
+
+      // Allow for a . at the beginning of the string
+      if (input[0] === '.') {
+        this.className = input.slice(1);
+      }
+      else {
+        this.className = input;
+      }
     }
   };
 
@@ -62,10 +75,18 @@
    * @fires Toggler#off
    */
   Toggler.prototype.toggle = function() {
+    if (!this.options.animate) {
+      this._toggleClass();
+    }
+    else {
+      this._toggleAnimate();
+    }
+  };
+
+  Toggler.prototype._toggleClass = function() {
     this.$element.toggleClass(this.className);
 
     if (this.$element.hasClass(this.className)) {
-      // this.$element.text(this.options.onText);
       /**
        * Fires if the target element has the class after a toggle.
        * @event Toggler#on
@@ -73,14 +94,26 @@
       this.$element.trigger('on.zf.toggler');
     }
     else {
-      // this.$element.text(this.options.offText);
       /**
        * Fires if the target element does not have the class after a toggle.
        * @event Toggler#off
        */
       this.$element.trigger('off.zf.toggler');
     }
-  };
+  }
+
+  Toggler.prototype._toggleAnimate = function() {
+    if (this.$element.is(':hidden')) {
+      Foundation.Motion.animateIn(this.$element, this.animationIn, function() {
+        this.trigger('on.zf.toggler');
+      });
+    }
+    else {
+      Foundation.Motion.animateOut(this.$element, this.animationOut, function() {
+        this.trigger('off.zf.toggler');
+      });
+    }
+  }
 
   /**
    * Destroys the instance of Toggler on the element.

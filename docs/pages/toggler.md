@@ -43,7 +43,7 @@ Instead of `data-toggler`, add the attribute `data-toggler-animate`. The value o
 ```html_example
 <p><a data-toggle="panel">Toggle Panel</a></p>
 
-<div class="callout" id="panel" data-toggler-animate="hingeInFromTop spinOut">
+<div class="callout" id="panel" data-toggler data-animate="hingeInFromTop spinOut">
   <h4>Hello!</h4>
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta quas optio alias voluptas nobis iusto mollitia asperiores incidunt reprehenderit doloribus voluptatibus officiis minus, inventore, quasi nisi. Consequuntur, quidem. Sint, dicta?</p>
 </div>
