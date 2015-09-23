@@ -11,12 +11,7 @@ tags:
 
 ## Form Basics
 
-Creating a form in Foundation is designed to be easy but extremely flexible. Forms are built with a combination of standard form elements, as well as the Grid (rows and columns).
-
-Form elements in Foundation are styled based on their type attribute rather than a class, and can be sized in a couple of ways:
-
-- You can size inputs using column sizes, like `.large-6`, `.small-6`.
-- You can create row elements inside your form and use columns for the form, including inputs, labels and more. Rows inside a form inherit some special padding to even up input spacing.
+Creating a form in Foundation is designed to be easy but extremely flexible. Forms are built with a combination of standard form elements, as well as grid rows and columns.
 
 ---
 
@@ -26,14 +21,6 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
 
 ```html_example
 <form>
-  <div class="row">
-    <div class="small-12 columns">
-      <label>Input Label
-        <input type="text" placeholder=".small-12.columns" aria-describedby="exampleHelpText">
-      </label>
-      <p class="help-text" id="exampleHelpText">Here's how you use this input field!</p>
-    </div>
-  </div>
   <div class="row">
     <div class="medium-6 columns">
       <label>Input Label
@@ -119,6 +106,19 @@ Wrap a group of checkboxes or radio buttons in a `<fieldset>` element, and give 
 
 ---
 
+## Help Text
+
+Place help text below a field to clarify it's purpose. Whenever you use help text, give the text a unique ID, and add the attribute `aria-describedby` to the input.
+
+```html_example
+<label>Password
+  <input type="password" aria-describedby="passwordHelpText">
+</label>
+<p class="help-text" id="passwordHelpText">Your password must have at least 10 characters, a number, and an Emoji.</p>
+```
+
+---
+
 ## Label Positioning
 
 Sometimes you want a form with labels to the left of your inputs. Piece of cake! You can put the label inside a different column to the left of the input. Then add a class of .right to the label to have it align to the right.
@@ -195,47 +195,7 @@ To attach extra text or controls to the left or right of an input field, wrap th
 
 ---
 
-## Accessibility
-
-For the most part, if you stick to standard HTML input types and label them properly, you won't need to worry too much about accessibility. Here are some things to keep in mind.
-
-### Label Inputs
-
-We recommend nesting your inputs inside of their labels, which removes the need to connect them using the `for` attribute.
-
-```html
-<label>
-  Name
-  <input type="text" name="name">
-</label>
-```
-
-If you need your labels and inputs to be separated, make sure the two are connected so screen readers will know (and to keep the labels clickable!).
-
-```html
-<label for="name">Name</label>
-<input type="text" name="name" id="name">
-```
-
-If an input field doesn't have a label, add the attribute `aria-label` to the input to clarify its purpose.
-
-```html
-<input type="text" name="name" aria-label="Name">
-```
-
-### Label Help Text
-
-If an input has some sort of help text distinct from the label, it should be connected to the input it describes using the attribute `aria-describedby`.
-
-```html
-<label>
-  Name
-  <input type="text" name="name" aria-describedby="nameHelpText">
-</label>
-<p id="nameHelpText">Enter your name.</p>
-```
-
-### Label Custom Controls
+## Custom Controls
 
 Custom form controls, like date pickers, range sliders, or switches need some extra attention to be made accessible. Our custom inputs, such as the range slider and switch, do most of this work for you.
 
