@@ -27,7 +27,9 @@
   /**
    * Default settings for plugin
    */
-  Interchange.defaults = {}
+  Interchange.defaults = {
+    rules: null
+  }
 
   Interchange.SPECIAL_QUERIES = {
     'landscape': 'screen and (orientation: landscape)',
@@ -98,7 +100,14 @@
    */
   Interchange.prototype._generateRules = function() {
     var rulesList = [];
-    var rules = this.$element.data('interchange').match(/\[.*?\]/g);
+    var rules;
+
+    if (this.options.rules) {
+      rules = this.options.rules;
+    }
+    else {
+      rules = this.$element.data('interchange').match(/\[.*?\]/g);
+    }
 
     for (var i in rules) {
       var rule = rules[i].slice(1, -1).split(', ');
