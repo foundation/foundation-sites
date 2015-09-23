@@ -34,9 +34,9 @@ $callout-font-color: $body-font-color !default;
 /// @type Color
 $callout-font-color-alt: $body-background !default;
 
-/// Color links to match the color of the callout.
-/// @type Boolean
-$callout-link-tint: true;
+/// Amount to tint links used within colored panels. Set to `false` to disable this feature.
+/// @type Number | Boolean
+$callout-link-tint: 30%;
 
 /// Adds basic styles for a callout, including padding and margin.
 @mixin callout-base() {
@@ -59,7 +59,7 @@ $callout-link-tint: true;
 /// @param {Color} $color [$callout-background] - Color to use.
 @mixin callout-style($color: $callout-background) {
   $background: scale-color($color, $lightness: $callout-background-fade);
-  $link-color: scale-color($color, $lightness: -10%);
+  $link-color: scale-color($color, $lightness: -$callout-link-tint);
 
   background-color: $background;
 
@@ -68,7 +68,7 @@ $callout-link-tint: true;
       color: $link-color;
 
       &:hover {
-        color: darken($link-color, 20%);
+        color: darken($link-color, 15%);
       }
     }
   }
