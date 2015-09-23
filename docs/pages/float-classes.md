@@ -21,5 +21,5 @@ You can change the float behavior of an element by adding the `.float-left` or `
 Okay, it's not *really* a float, but you can add the `.float-center` class to an element to engage the automatic margin centering trick. Note that this will only work on elements with an absolute width, which means not a percentage or `auto` width.
 
 ```html_example
-<img src="//placehold.it/400x300" class="float-center">
+<img src="assets/img/voyager.jpg" class="float-center">
 ```
