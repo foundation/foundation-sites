@@ -14,7 +14,7 @@ var COMPATIBILITY = [
 ];
 
 var files = {
-  assetPaths: [
+  assets: [
     'docs/assets/**/*',
     '!docs/assets/{js,scss}',
     '!docs/assets/{js,scss}/**/*'
@@ -49,7 +49,7 @@ gulp.task('clean', function() {
 
 // Copies static assets
 gulp.task('copy', function() {
-  gulp.src(files.assetPaths)
+  gulp.src(files.assets)
     .pipe(gulp.dest('dist/assets'));
 });
 

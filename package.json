@@ -29,9 +29,9 @@
     "multiline": "^1.0.2",
     "octophant": "^0.2.0",
     "rimraf": "^2.3.2",
-    "shipyard": "git://github.com/gakimball/shipyard.git",
+    "shipyard": "gakimball/shipyard",
     "string-template": "^0.2.1",
-    "supercollider": "git://github.com/gakimball/supercollider.git",
+    "supercollider": "gakimball/supercollider",
     "zeroclipboard": "^2.2.0"
   },
   "repository": {
