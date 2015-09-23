@@ -44,7 +44,7 @@ $pagination-item-color-disabled: $medium-gray;
 
 /// Color of the ellipsis in a pagination menu.
 /// @type Color
-$pagination-ellipsis-color: $medium-gray;
+$pagination-ellipsis-color: $black;
 
 /// If `false`, don't display page number links on mobile, only next/previous links.
 /// @type Boolean
@@ -112,6 +112,7 @@ $pagination-arrows: true;
 
 /// Adds styles for the current pagination item. Apply this to an `<a>`.
 @mixin pagination-item-current {
+  padding: $pagination-item-padding;
   background: $pagination-item-background-current;
   color: $pagination-item-color-current;
   cursor: default;
@@ -119,6 +120,7 @@ $pagination-arrows: true;
 
 /// Adds styles for a disabled pagination item. Apply this to an `<a>`.
 @mixin pagination-item-disabled {
+  padding: $pagination-item-padding;
   color: $pagination-item-color-disabled;
   cursor: default;
 
@@ -139,17 +141,11 @@ $pagination-arrows: true;
     @include pagination-container;
 
     .current {
-      a,
-      button {
-        @include pagination-item-current;
-      }
+      @include pagination-item-current;
     }
 
     .disabled {
-      a,
-      button {
-        @include pagination-item-disabled;
-      }
+      @include pagination-item-disabled;
     }
 
     .ellipsis::after {

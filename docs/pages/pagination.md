@@ -8,17 +8,21 @@ sass: scss/components/_pagination.scss
 
 A pagination list is just a `<ul>` with the class `.pagination`, and a series of `<li>`/`<a>` pairs. Add the class `.current` to an `<li>` to mark the current page, or `.disabled` to add disabled styles to a link.
 
+Note that the container has the attributes `role="navigation"` and `aria-label="Pagination"`. These explain the purpose of the component to assistive technologies.
+
+Extra text is also added to the "Next" and "Previous" links to further aid screen readers. In the below example, users reading the page will just see "Next" and "Previous", but screen readers will read it as "Next page" and "Previous page".
+
 ```html_example
 <ul class="pagination" role="navigation" aria-label="Pagination">
-  <li class="disabled"><a href="#" aria-label="Previous page">Previous</a></li>
-  <li class="current"><a href="#" aria-label="Page 1, current page">1</a></li>
+  <li class="disabled">Previous <span class="show-for-sr">page</span></li>
+  <li class="current">1</li>
   <li><a href="#" aria-label="Page 2">2</a></li>
   <li><a href="#" aria-label="Page 3">3</a></li>
   <li><a href="#" aria-label="Page 4">4</a></li>
-  <li class="disabled ellipsis"></li>
+  <li class="ellipsis" aria-hidden="true"></li>
   <li><a href="#" aria-label="Page 12">12</a></li>
   <li><a href="#" aria-label="Page 13">13</a></li>
-  <li><a href="#" aria-label="Next page">Next</a></li>
+  <li><a href="#" aria-label="Next page">Next <span class="show-for-sr">page</span></a></li>
 </ul>
 ```
 
@@ -30,12 +34,12 @@ The items in a pagination list are `display: inline-block`, which makes centerin
 
 ```html_example
 <ul class="pagination text-center" role="navigation" aria-label="Pagination">
-  <li class="disabled"><a href="#" aria-label="Previous page">Previous</a></li>
-  <li class="current"><a href="#" aria-label="Page 1, current page">1</a></li>
+  <li class="disabled">Previous</li>
+  <li class="current">1</li>
   <li><a href="#" aria-label="Page 2">2</a></li>
   <li><a href="#" aria-label="Page 3">3</a></li>
   <li><a href="#" aria-label="Page 4">4</a></li>
-  <li class="disabled ellipsis"></li>
+  <li class="ellipsis"></li>
   <li><a href="#" aria-label="Page 12">12</a></li>
   <li><a href="#" aria-label="Page 13">13</a></li>
   <li><a href="#" aria-label="Next page">Next</a></li>
