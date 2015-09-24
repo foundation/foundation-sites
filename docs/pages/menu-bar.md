@@ -98,21 +98,6 @@ Add the `.simple` class to a menu bar to remove the padding and color change. Th
 
 ---
 
-## Colored Style
-
-Add the `.primary` class to a menu bar to give it color. The color used is the `$primary-color` variable in the settings file.
-
-```html_example
-<ul class="menu-bar primary">
-  <li><a href="#">One</a></li>
-  <li><a href="#">Two</a></li>
-  <li><a href="#">Three</a></li>
-  <li><a href="#">Four</a></li>
-</ul>
-```
-
----
-
 ## Nested Style
 
 Add a new menu bar inside the `<li>` of a menu bar and add the class `.nested` to create a nested menu bar. The nested menu bar has extra padding on the inside.

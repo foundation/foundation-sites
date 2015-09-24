@@ -108,20 +108,6 @@ $menubar-expand-max: 6 !default;
   }
 }
 
-/// Changes the default colors of a menu bar.
-@mixin menu-bar-style {
-  background: $primary-color;
-
-  > li > a {
-    color: foreground($primary-color);
-
-    &:hover,
-    &:focus {
-      background: smart-scale($primary-color);
-    }
-  }
-}
-
 /// Adds support for icons to menu bar items.
 /// @param {Keyword} $position [side] - Positioning for icons. Can be `side` (left, or right on RTL) or `top`.
 /// @param {Boolean} $base [true] - Set to `false` to prevent the shared CSS between side- and top-aligned icons from being printed. Set this to `false` if you're calling the mixin multiple times on the same element.
@@ -206,11 +192,6 @@ $menubar-expand-max: 6 !default;
       > li:first-child:last-child {
         width: 100%;
       }
-    }
-
-    // Primary color
-    &.primary {
-      @include menu-bar-style;
     }
 
     // Vertical icons
