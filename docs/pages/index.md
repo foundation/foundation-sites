@@ -1,6 +1,9 @@
 ---
 title: Foundation for Sites
 description: We built Foundation for Sites to be the most advanced responsive front-end framework in the world.
+tags:
+  - index
+  - home
 ---
 
 ## Installing
@@ -56,7 +59,7 @@ Get to know the pieces of Foundation.
         <li><a href="grid.html">Grid</a></li>
         <li><a href="flex-grid.html">Flex Grid</a></li>
         <li><a href="forms.html">Forms</a></li>
-        <li><a href="visibility.html">Visibility</a></li>
+        <li><a href="visibility.html">Visibility Classes</a></li>
         <li><a href="float-classes.html">Float Classes</a></li>
       </ul>
     </section>
@@ -66,7 +69,6 @@ Get to know the pieces of Foundation.
       <ul>
         <li><a href="base-typography.html">Base Styles</a></li>
         <li><a href="typography-helpers.html">Helper Classes</a></li>
-        <li><a href="modular-scale.html">Modular Scale</a></li>
       </ul>
     </section>
 
@@ -75,8 +77,8 @@ Get to know the pieces of Foundation.
       <ul>
         <li><a href="button.html">Button</a></li>
         <li><a href="button-group.html">Button Group</a></li>
-        <li><a href="range-slider.html">Range Slider</a></li>
         <li><a href="close-button.html">Close Button</a></li>
+        <li><a href="range-slider.html">Range Slider</a></li>
         <li><a href="switch.html">Switch</a></li>
       </ul>
     </section>
@@ -85,28 +87,30 @@ Get to know the pieces of Foundation.
     <section>
       <h4>Navigation</h4>
       <ul>
-        <li><a href="menu-bar.html">Menu Bar</a></li>
-        <li><a href="drilldown.html">Drilldown</a></li>
-        <li><a href="dropdown-menu.html">Dropdown Menu</a></li>
         <li><a href="accordion-menu.html">Accordion Menu</a></li>
-        <li><a href="responsive-menu.html">Responsive Menu</a></li>
         <li><a href="breadcrumbs.html">Breadcrumbs</a></li>
-        <li><a href="pagination.html">Pagination</a></li>
+        <li><a href="drilldown-menu.html">Drilldown Menu</a></li>
+        <li><a href="dropdown-menu.html">Dropdown Menu</a></li>
         <li><a href="magellan.html">Magellan</a></li>
+        <li><a href="menu-bar.html">Menu Bar</a></li>
+        <li><a href="pagination.html">Pagination</a></li>
+        <li><a href="responsive-menu.html">Responsive Menu</a></li>
+        <li><a href="top-bar.html">Top Bar</a></li>
       </ul>
     </section>
 
     <section>
       <h4>Containers</h4>
       <ul>
-        <li><a href="media-object.html">Media Object</a></li>
+        <li><a href="accordion.html">Accordion</a></li>
         <li><a href="callout.html">Callout</a></li>
         <li><a href="card.html">Card</a></li>
-        <li><a href="reveal.html">Reveal</a></li>
+        <li><a href="dropdown.html">Dropdown</a></li>
+        <li><a href="media-object.html">Media Object</a></li>
         <li><a href="off-canvas.html">Off-canvas</a></li>
-        <li><a href="tabs.html">Tabs</a></li>
-        <li><a href="accordion.html">Accordion</a></li>
+        <li><a href="reveal.html">Reveal</a></li>
         <li><a href="table.html">Table</a></li>
+        <li><a href="tabs.html">Tabs</a></li>
       </ul>
     </section>
   </div>
@@ -114,12 +118,13 @@ Get to know the pieces of Foundation.
     <section>
       <h4>Media</h4>
       <ul>
-        <li><a href="label.html">Label</a></li>
         <li><a href="badge.html">Badge</a></li>
+        <li><a href="flex-video.html">Flex Video</a></li>
+        <li><a href="label.html">Label</a></li>
+        <li><a href="orbit.html">Orbit</a></li>
+        <li><a href="progress-bar.html">Progress Bar</a></li>
         <li><a href="thumbnail.html">Thumbnail</a></li>
         <li><a href="tooltip.html">Tooltip</a></li>
-        <li><a href="flex-video.html">Flex Video</a></li>
-        <li><a href="orbit.html">Orbit</a></li>
       </ul>
     </section>
 
@@ -127,9 +132,9 @@ Get to know the pieces of Foundation.
       <h4>Plugins</h4>
       <ul>
         <li><a href="abide.html">Abide</a></li>
-        <li><a href="toggler.html">Toggler</a></li>
         <li><a href="equalizer.html">Equalier</a></li>
         <li><a href="interchange.html">Interchange</a></li>
+        <li><a href="toggler.html">Toggler</a></li>
         <li><a href="sticky.html">Sticky</a></li>
       </ul>
     </section>

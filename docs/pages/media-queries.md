@@ -2,6 +2,7 @@
 title: Media Queries
 description: CSS media queries allow us to adjust the display and orientation of content at different screen sizes.
 sass: scss/util/_breakpoint.scss
+js: js/foundation.util.mediaQuery.js
 tags:
   - breakpoints
 ---

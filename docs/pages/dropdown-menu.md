@@ -2,6 +2,7 @@
 title: Dropdown Menus
 description: Change a basic menu bar into an expandable dropdown menu with the Dropdown Menu plugin.
 sass: scss/components/_dropdown-menu.scss
+js: js/dropdownMenu.js
 ---
 
 ## Horizontal

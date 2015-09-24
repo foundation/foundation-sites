@@ -142,7 +142,7 @@ $button-opacity-disabled: 0.25 !default;
 /// Adds disabled styles to a button by fading the element, reseting the cursor, and disabling pointer events.
 @mixin button-disabled {
   opacity: $button-opacity-disabled;
-  cursor: default;
+  cursor: not-allowed;
   pointer-events: none;
 }
 

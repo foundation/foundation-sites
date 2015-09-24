@@ -1,0 +1,49 @@
+@mixin foundation-top-bar {
+  // A simple component to create side-by-side menus
+  .top-bar {
+    @include clearfix;
+    background: #eee;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+
+    &.primary {
+      &, ul {
+        background: $primary-color;
+      }
+
+      a {
+        color: foreground($primary-color);
+      }
+    }
+
+    &.dark {
+      &, ul {
+        background: #333;
+      }
+
+      a {
+        color: #fff;
+      }
+    }
+
+    .top-bar-left {
+      float: left;
+    }
+
+    .top-bar-right {
+      float: right
+    }
+
+    @include breakpoint(small only) {
+      .top-bar-left,
+      .top-bar-right {
+        float: none;
+      }
+    }
+
+    input {
+      width: 200px;
+      margin-right: 1rem;
+    }
+  }
+}
