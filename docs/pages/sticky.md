@@ -7,7 +7,15 @@ js: js/foundation.sticky.js
 
 ## Basics
 
-Add the `.sticky` class to an element to create something that sticks.
+Add the `.sticky` class and `[data-sticky]` to an element to create something that sticks. Sticky elements must be wrapped in a container, which will determine your sizing and grid layout, with `[data-sticky-container]`.
+
+```html
+<div class='columns small-6 right' data-sticky-container>
+  <div class="sticky" data-sticky>
+    <img src='/assets/img/interchange/small.jpg'>
+  </div>
+</div>
+```
 
 <!-- ```html_example -->
 <div class='row'>
@@ -33,6 +41,12 @@ Add the `.sticky` class to an element to create something that sticks.
     </div>
   </div>
 </div>
+
+## Advanced
+
+You can add anchors to stick to with `data` attributes and `id`'s, such as: `[data-stick-at='#example2']`. If you want a stopping point other than the bottom of the `stick-at` anchor, use `[data-break-at='#some-other-id']` to set a separate break point.
+You can also choose the sticking point, top, bottom, or both. Elements with `[data-stick-to='both']` will stick to the top of the window on scroll down, and if the lower break point is reached, stick to the bottom of the window on scroll up.
+
 <div class='row'>
   <div class='columns small-12'>
     <div class='columns small-6' id='example2'>

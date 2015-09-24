@@ -1,4 +1,14 @@
 !function($, Foundation, window){
+  /**
+   * Compares the dimensions of an element to a container and determines collision events with container.
+   * @function
+   * @param {jQuery} element - jQuery object to test for collisions.
+   * @param {jQuery} parent - jQuery object to use as bounding container.
+   * @param {Boolean} lrOnly - set to true to check left and right values only.
+   * @param {Boolean} tbOnly - set to true to check top and bottom values only.
+   * @returns {Boolean} - true if collision free, false if a collision in any direction.
+   * TODO - add/finish the method for using a parent as a bounding container.
+   */
   function ImNotTouchingYou(element, parent, lrOnly, tbOnly){
     // the element is the jQuery element be checked for clearance
     var eleDims = GetDimensions(element);
@@ -26,6 +36,13 @@
     // }
   }
 
+  /**
+   * Uses jQuery methods to return an object of dimension values.
+   * @function
+   * @param {jQuery} element - jQuery object for which to get the dimensions.
+   * @returns {Object} - nested object of integer pixel values
+   * TODO - if element is window, return only those values.
+   */
   function GetDimensions(element){
     var $window = $(window);
     return {
@@ -47,7 +64,18 @@
       }
     };
   }
-
+  /**
+   * Returns an object of top and left integer pixel values for dynamically rendered elements,
+   * such as: Tooltip, Reveal, and Dropdown
+   * @function
+   * @param {jQuery} element - jQuery object for the element being positioned.
+   * @param {jQuery} anchor - jQuery object for the element's anchor point.
+   * @param {String} position - a string relating to the desired position of the element, relative to it's anchor
+   * @param {Number} vOffset - integer pixel value of desired vertical separation between anchor and element.
+   * @param {Number} hOffset - integer pixel value of desired horizontal separation between anchor and element.
+   * @param {Boolean} isOverflow - if a collision event is detected, sets to true to default the element to full width - any desired offset.
+   * TODO alter/rewrite to work with `em` values as well/instead of pixels
+   */
   function GetOffsets(element, anchor, position, vOffset, hOffset, isOverflow){
     // console.log(position);
     var $eleDims = GetDimensions(element),

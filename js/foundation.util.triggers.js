@@ -34,6 +34,9 @@
 
 
 //chris's testing things----------------
+  /**
+   * TODO put into public function, to add to user plugin creation api.
+   */
   $(window).on('closeme.zf.dropdown closeme.zf.tooltip closeme.zf.reveal', function(e, pluginId){
     var plugin = e.namespace.split('.')[0];
     var plugins = $('[data-' + plugin + ']').not('[data-yeti-box=' + pluginId + ']');
@@ -44,11 +47,40 @@
 
   //trying to reposition elements on resize
   //********* only fires when all other scripts have loaded *********
+  /**
+   * Fires once after all other scripts have loaded
+   * @function
+   * @private
+   */
   $(window).load(function(){
-    var plugins = Foundation._plugins;
-    var pluginsToWatch = ['accordion-menu', 'drilldown', 'dropdown-menu', 'dropdown', 'slider', 'reveal', 'sticky', 'tooltip'];
-    var counter = pluginsToWatch.length;
-    var watching = false
+    checkWatchers(null);
+  });
+
+  /**
+   * Checks the global Foundation object for instantiated plugins.
+   * @function
+   * @param {String|Array} plugs - Name or array of names of plugins the user would like to add to the list of plugins to watch on window resize
+   * @throws Plugin#error
+   */
+  function checkWatchers(plugs) {
+    var plugins = Foundation._plugins,
+        pluginsToWatch = ['accordion-menu', 'drilldown', 'dropdown-menu', 'dropdown', 'slider', 'reveal', 'sticky', 'tooltip'];
+    if(plugs){
+      if(typeof plugs === 'array' && typeof plugs[0] === 'string'){
+        pluginsToWatch = pluginsToWatch.concat(plugs);
+      }else if(typeof plugs === 'string'){
+        pluginsToWatch.push(plugs)
+      }else{
+        /**
+         * Logs error if plugs is not a string or array.
+         * @event Plugin#error
+         */
+        console.error('Plugin names must be strings');
+      }
+    }
+    var counter = pluginsToWatch.length,
+        watching = false;
+
     while(counter){
       if(plugins[pluginsToWatch[counter - 1]]){
         watching = true;
@@ -57,31 +89,32 @@
       }
       --counter;
       if(!counter && watching){
-        resizeHandler(pluginsToWatch);
+        resizeListener(pluginsToWatch);
       }
     }
-  });
+  }
 
   //******** only fires this function once on load, if there's something to watch ********
-  function resizeHandler(plugins){
-    var timer, nodes, i, len;
+  function resizeListener(){
+    var timer, i, len,
+        nodes = $('[data-resize]');
 
-    nodes = $('[data-resize]');
-    $(window).on('resize.zf.trigger', function(e){
-      if(timer){ clearTimeout(timer); }
+    $(window).off('resize.zf.trigger')
+      .on('resize.zf.trigger', function(e){
+        if(timer){ clearTimeout(timer); }
 
-      timer = setTimeout(function(){
+        timer = setTimeout(function(){
 
-        for(i = 0, len = nodes.length; i < len; i++){
-          var $elem = $(nodes[i])
-          $elem.triggerHandler('resizeme.zf.trigger', [$elem]);
-        }
-      }, 150);//default time to emit resize event, make configurable? change for mobile?*******
+          for(i = 0, len = nodes.length; i < len; i++){
+            var $elem = $(nodes[i])
+            $elem.triggerHandler('resizeme.zf.trigger', [$elem]);
+          }
+        }, 150);//default time to emit resize event, make configurable? change for mobile?*******
     });
   }
 // ------------------------------------
 
   // [PH]
-
+Foundation.CheckWatchers = checkWatchers;
 
 }(window.Foundation, window.jQuery)
