@@ -16,15 +16,15 @@ $badge-color: foreground($badge-background) !default;
 
 /// Default padding inside badges.
 /// @type Number
-$badge-padding: 0.5em !default;
+$badge-padding: 0.3em !default;
 
 /// Minimum width of a badge.
 /// @type Number
-$badge-minwidth: 2.4em !default;
+$badge-minwidth: 2.1em !default;
 
 /// Default font size for badges.
 /// @type Number
-$badge-font-size: 0.8rem !default;
+$badge-font-size: 0.6rem !default;
 
 /// Generates the base styles for a badge.
 @mixin badge {
