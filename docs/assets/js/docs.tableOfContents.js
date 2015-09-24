@@ -12,4 +12,8 @@ $h2s.each(function() {
   $toc.append('<li><a href="'+anchor+'">'+text+'</a></li>');
 });
 
+if ($toc.length) {
+  new Foundation.Magellan($toc, {});
+}
+
 }()
