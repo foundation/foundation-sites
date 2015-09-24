@@ -65,4 +65,9 @@
     display: block !important;
     border-bottom: 0;
   }
+
+  .active {
+    background: $primary-color;
+    color: white;
+  }
 }

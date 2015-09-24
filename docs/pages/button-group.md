@@ -94,9 +94,13 @@ A button group can be made vertical with the `.stacked` class. Or, you can use `
 
 To build a split button, just create a button group with two buttons.
 
+To create a button with only an arrow, add the class `.arrow-only`. Note that the button still needs a label for screen readers, which can be embedded inside the button with a `.show-for-sr` element. In the example below, an assistive device will read the arrow button as "Show menu".
+
 ```html_example
 <div class="button-group">
   <a class="button">Primary Action</a>
-  <a class="dropdown button"></a>
+  <a class="dropdown button arrow-only">
+    <span class="show-for-sr">Show menu</span>
+  </a>
 </div>
 ```

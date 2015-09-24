@@ -12,6 +12,7 @@
 .idea
 .sass-cache/*
 .yardoc
+_build
 
 bower_components
 bundle

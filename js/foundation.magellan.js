@@ -8,7 +8,7 @@
    * @param {Object} element - jQuery object to add the trigger to.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  function Magellan(element) {
+  function Magellan(element, options) {
     this.$element = element;
     this.options  = $.extend({}, Magellan.defaults, options);
     this.$window  = $(window);

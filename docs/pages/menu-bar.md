@@ -98,21 +98,6 @@ Add the `.simple` class to a menu bar to remove the padding and color change. Th
 
 ---
 
-## Colored Style
-
-Add the `.primary` class to a menu bar to give it color. The color used is the `$primary-color` variable in the settings file.
-
-```html_example
-<ul class="menu-bar primary">
-  <li><a href="#">One</a></li>
-  <li><a href="#">Two</a></li>
-  <li><a href="#">Three</a></li>
-  <li><a href="#">Four</a></li>
-</ul>
-```
-
----
-
 ## Nested Style
 
 Add a new menu bar inside the `<li>` of a menu bar and add the class `.nested` to create a nested menu bar. The nested menu bar has extra padding on the inside.
@@ -161,3 +146,78 @@ Add the class `.icon-top` to the menu bar to orient icons above the text.
   <li><a href="#"><i class="fi-list"></i> <span>Four</span></a></li>
 </ul>
 ```
+
+---
+
+## Nav Wrapper
+
+```html_example
+<div class="nav">
+  <div class="nav-left">
+    <ul class="dropdown menu-bar" data-dropdown-menu>
+      <li class="has-submenu">
+        <a href="#">One</a>
+        <ul class="submenu menu-bar vertical" data-submenu>
+          <li><a href="#">One</a></li>
+          <li><a href="#">Two</a></li>
+          <li><a href="#">Three</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Two</a></li>
+      <li><a href="#">Three</a></li>
+    </ul>
+  </div>
+  <div class="nav-right">
+    <ul class="menu-bar">
+      <li><input type="search" placeholder="Search"></li>
+      <li><button type="button" class="button">Search</button></li>
+    </ul>
+  </div>
+</div>
+```
+
+<div class="primary nav">
+  <div class="nav-left">
+    <ul class="dropdown menu-bar" data-dropdown-menu>
+      <li class="has-submenu">
+        <a href="#">One</a>
+        <ul class="submenu menu-bar vertical" data-submenu>
+          <li><a href="#">One</a></li>
+          <li><a href="#">Two</a></li>
+          <li><a href="#">Three</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Two</a></li>
+      <li><a href="#">Three</a></li>
+    </ul>
+  </div>
+  <div class="nav-right">
+    <ul class="menu-bar">
+      <li><input type="search" placeholder="Search"></li>
+      <li><button type="button" class="secondary button">Search</button></li>
+    </ul>
+  </div>
+</div>
+
+<div class="dark nav">
+  <div class="nav-left">
+    <ul class="dropdown menu-bar" data-dropdown-menu>
+      <li class="has-submenu">
+        <a href="#">One</a>
+        <ul class="submenu menu-bar vertical" data-submenu>
+          <li><a href="#">One</a></li>
+          <li><a href="#">Two</a></li>
+          <li><a href="#">Three</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Two</a></li>
+      <li><a href="#">Three</a></li>
+    </ul>
+  </div>
+  <div class="nav-right">
+    <ul class="menu-bar">
+      <li><input type="search" placeholder="Search"></li>
+      <li><button type="button" class="hollow button">Search</button></li>
+    </ul>
+  </div>
+</div>

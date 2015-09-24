@@ -133,6 +133,11 @@ $input-number-spinners: true !default;
     -moz-appearance: none;
   }
 
+  // Reset Normalize setting content-box to search elements
+  input[type="search"] {
+    box-sizing: border-box;
+  }
+
   // Number input styles
   [type='number'] {
     @if not($input-number-spinners) {
