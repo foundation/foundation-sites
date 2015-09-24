@@ -1,6 +1,9 @@
 ---
 title: Foundation for Sites
 description: We built Foundation for Sites to be the most advanced responsive front-end framework in the world.
+tags:
+  - index
+  - home
 ---
 
 ## Installing
@@ -92,6 +95,7 @@ Get to know the pieces of Foundation.
         <li><a href="menu-bar.html">Menu Bar</a></li>
         <li><a href="pagination.html">Pagination</a></li>
         <li><a href="responsive-menu.html">Responsive Menu</a></li>
+        <li><a href="top-bar.html">Top Bar</a></li>
       </ul>
     </section>
 
