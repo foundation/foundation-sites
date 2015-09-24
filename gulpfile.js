@@ -99,6 +99,7 @@ gulp.task('sass:foundation', function() {
     .pipe($.autoprefixer({
       browsers: ['last 2 versions', 'ie >= 9']
     }))
+    .pipe($.rename('foundation.css'))
     .pipe(gulp.dest('_build/assets/css'));
 });
 gulp.task('sass:docs', function() {
@@ -186,8 +187,22 @@ gulp.task('test', function() {
 
 // Deployment
 gulp.task('dist', ['deploy:dist']);
-gulp.task('deploy:dist', function() {
+gulp.task('deploy:dist', ['sass:foundation', 'javascript:foundation'], function() {
+  var cssFilter = $.filter(['*.css']);
+  var jsFilter  = $.filter(['*.js']);
 
+  return gulp.src(['./_build/assets/css/foundation.css', '_build/assets/js/foundation.js'])
+    .pipe(cssFilter)
+      .pipe(gulp.dest('./dist'))
+      .pipe($.minifyCss())
+      .pipe($.rename('foundation.min.css'))
+      .pipe(gulp.dest('./dist'))
+    .pipe(cssFilter.restore())
+    .pipe(jsFilter)
+      .pipe(gulp.dest('./dist'))
+      .pipe($.uglify())
+      .pipe($.rename('foundation.min.js'))
+      .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('build', ['clean', 'copy', 'html', 'html:search', 'sass', 'javascript']);

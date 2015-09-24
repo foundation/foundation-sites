@@ -18,6 +18,7 @@
     "gulp-filter": "^2.0.2",
     "gulp-jshint": "^1.9.2",
     "gulp-load-plugins": "^0.8.0",
+    "gulp-minify-css": "^1.2.1",
     "gulp-rename": "^1.2.2",
     "gulp-ruby-sass": "^1.0.0-alpha.3",
     "gulp-sass": "^2.0.4",
