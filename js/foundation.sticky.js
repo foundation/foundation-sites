@@ -2,6 +2,9 @@
   'use strict';
 
   function Sticky(element){
+
+
+
     this.$element = element;
     this.options = $.extend({}, Sticky.defaults, this.$element.data());
     if(Foundation.MediaQuery.atLeast(this.options.stickyOn)){
@@ -17,7 +20,8 @@
     debounce: 150,
     marginTop: 1,
     marginBottom: 1,
-    stickyOn: 'medium'
+    stickyOn: 'medium',
+    watchResize: true
   };
   Sticky.prototype._init = function(){
     var _this = this;
@@ -27,7 +31,12 @@
     // this.$element.wrap(this.$container);
     this.$container.addClass('sticky-container');
     this.$anchor = $(this.options.stickAt).length ? $(this.options.stickAt) : $('body');
-    console.log(this.$anchor);
+    if(this.options.watchResize){
+      this.$element.attr('data-resize', Foundation.GetYoDigits(6, 'sticky'));
+      // this.$element.data('resize', Foundation.GetYoDigits(6, 'sticky'));
+      // console.log($('[data-resize]'));
+    }
+
     this.getDimensions();
     this.setContainerSize();
     this.setElementAttr();
@@ -35,17 +44,14 @@
 
     this._events();
   };
-
+  Sticky.prototype.check = function(){
+    console.log('checked');
+  };
   Sticky.prototype._events = function(){
     var _this = this,
         $window = $(window);
+    this.$element.on('resizeme.zf.trigger', this.doThings.bind(this));
 
-    $window.on('resize.zf.sticky', function(e){
-      e.stopPropagation();
-      setTimeout(function(){
-        _this.doThings();
-      }, 1000)
-    });
     $window.on('scroll.zf.sticky', function(e){
       e.stopPropagation();
       _this.timer = setTimeout(function(){
@@ -105,16 +111,14 @@
     this.setBreakPoints();
   };
   Sticky.prototype.setBreakPoints = function(){
-    this.fontSize = parseInt(window.getComputedStyle(document.getElementsByTagName('body')[0], null).fontSize.split('px'));
+    this.fontSize = parseInt(window.getComputedStyle(document.getElementsByTagName('body')[0], null).fontSize.split('px'), 10);
     this.styles = window.getComputedStyle(this.$element[0], null);
     this.start = this.options.stickTo === 'bottom' ? this.$anchorDims.offset.top + this.$elemDims.height + (this.options.marginBottom * this.fontSize) : this.$anchorDims.offset.top - (this.options.marginTop * this.fontSize);
     // this.start = this.$anchorDims.offset.top - parseFloat(this.styles.marginTop.split('px'));
     this.end = this.options.breakAt ? '' : this.$anchorDims.offset.top + this.$anchorDims.height  - (this.options.marginBottom * this.fontSize) - (this.options.marginTop * this.fontSize) - this.$elemDims.height;
     if(this.options.stickTo === 'bottom'){
       this.end = this.$anchorDims.offset.top + this.$anchorDims.height + (this.options.marginBottom * this.fontSize);
-      console.log(this.$anchorDims.offset.top + this.$anchorDims.height/* - ((this.options.marginBottom * this.fontSize) + this.$elemDims.height)*/);
     }
-    console.log('start',this.start, 'end',this.end);
   };
   Sticky.prototype.getDimensions = function(){
     this.$element.css({'max-width': '', 'max-height': ''});

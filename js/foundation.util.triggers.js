@@ -6,7 +6,7 @@
   });
 
   // Elements with [data-close] will close a plugin that supports it when clicked.
-  // If used without an value on [data-open], the event will bubble, allowing it to close a parent component.
+  // If used without a value on [data-open], the event will bubble, allowing it to close a parent component.
   $(document).on('click.zf.trigger', '[data-close]', function() {
     var id = $(this).data('close');
     if (id) {
@@ -43,13 +43,45 @@
   });
 
   //trying to reposition elements on resize
-  // $(window).on('resize.zf.what', function(e){
-  //   console.log($('[data-reveal] > [aria-hidden=false]'))
-  //   Foundation.reflow();
-  // });
+  //********* only fires when all other scripts have loaded *********
+  $(window).load(function(){
+    var plugins = Foundation._plugins;
+    var pluginsToWatch = ['accordion-menu', 'drilldown', 'dropdown-menu', 'dropdown', 'slider', 'reveal', 'sticky', 'tooltip'];
+    var counter = pluginsToWatch.length;
+    var watching = false
+    while(counter){
+      if(plugins[pluginsToWatch[counter - 1]]){
+        watching = true;
+      }else{
+        pluginsToWatch.splice(counter - 1, 1);
+      }
+      --counter;
+      if(!counter && watching){
+        resizeHandler(pluginsToWatch);
+      }
+    }
+  });
+
+  //******** only fires this function once on load, if there's something to watch ********
+  function resizeHandler(plugins){
+    var timer, nodes, i, len;
+
+    nodes = $('[data-resize]');
+    $(window).on('resize.zf.trigger', function(e){
+      if(timer){ clearTimeout(timer); }
+
+      timer = setTimeout(function(){
+
+        for(i = 0, len = nodes.length; i < len; i++){
+          var $elem = $(nodes[i])
+          $elem.triggerHandler('resizeme.zf.trigger', [$elem]);
+        }
+      }, 150);//default time to emit resize event, make configurable? change for mobile?*******
+    });
+  }
 // ------------------------------------
 
   // [PH]
-  
+
 
 }(window.Foundation, window.jQuery)
