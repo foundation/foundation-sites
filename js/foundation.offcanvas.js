@@ -30,14 +30,7 @@ OffCanvas.defaults = {
    * @option
    * @example true
    */
-  closeOnClick: true,
-
-  /**
-   * CSS class to use when the off-canvas menu is open.
-   * @option
-   * @example 'is-off-canvas-open'
-   */
-  activeClass: 'is-off-canvas-open'
+  closeOnClick: true
 }
 
 /**
@@ -89,15 +82,14 @@ OffCanvas.prototype._events = function() {
  * @fires OffCanvas#opened
  */
 OffCanvas.prototype.open = function(event, trigger) {
-  console.log(this.options);
-  if (this.$element.hasClass(this.options.activeClass)) return;
+  if (this.$element.hasClass('is-open')) return;
 
   /**
    * Fires when the off-canvas menu opens.
    * @event OffCanvas#opened
    */
   this.$element
-    .addClass(this.options.activeClass)
+    .addClass('is-open')
     .attr('aria-hidden', 'false')
     .find('a, button').eq(0).focus().end().end()
     .trigger('opened.zf.offcanvas');
@@ -113,14 +105,14 @@ OffCanvas.prototype.open = function(event, trigger) {
  * @fires OffCanvas#closed
  */
 OffCanvas.prototype.close = function() {
-  if (!this.$element.hasClass(this.options.activeClass)) return;
+  if (!this.$element.hasClass('is-open')) return;
 
   /**
    * Fires when the off-canvas menu opens.
    * @event OffCanvas#closed
    */
   this.$element
-    .removeClass(this.options.activeClass)
+    .removeClass('is-open')
     .attr('aria-hidden', 'true')
     .trigger('closed.zf.offcanvas');
 
@@ -132,7 +124,7 @@ OffCanvas.prototype.close = function() {
  * @function
  */
 OffCanvas.prototype.toggle = function(event, trigger) {
-  if (this.$element.hasClass(this.options.activeClass)) {
+  if (this.$element.hasClass('is-open')) {
     this.close(event, trigger);
   }
   else {
