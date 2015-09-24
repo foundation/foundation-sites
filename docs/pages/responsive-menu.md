@@ -1,9 +1,8 @@
 ---
 title: Responsive Menu Bar
 description: Our three menu bar patterns form like Voltron into one responsive menu bar plugin, which allows you to switch between patterns at different screen sizes.
-sass: scss/components/tab-bar.scss
 js:
-  - ./js/foundation.menuBar.js
+  - ./js/foundation.menubar.js
   - ./js/foundation.tabBar.js
 ---
 

@@ -1,8 +1,8 @@
 ---
 title: Drilldown Menu
-js: js/foundation.drilldown.js
+description: Drilldown is one of Foundation's three menu patterns, which converts a series of nested lists into a vertical drilldown menu.
 scss: scss/components/_drilldown.scss
-js: js/foundation.drilldownMenu.js
+js: js/foundation.drilldown.js
 ---
 
 ## Basics

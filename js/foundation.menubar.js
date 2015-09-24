@@ -5,7 +5,7 @@
   var menubarPlugins = {
     dropdown: {
       cssClass: 'dropdown',
-      plugin: Foundation._plugins['dropdown'] || null
+      plugin: Foundation._plugins['dropdown-menu'] || null
     },
     drilldown: {
       cssClass: 'drilldown',
@@ -24,9 +24,9 @@
   }
 
   /**
-   * Creates a new instance of Dropdown.
+   * Creates a new instance of a responsive menu.
    * @class
-   * @fires Dropdown#init
+   * @fires MenuBar#init
    * @param {jQuery} element - jQuery object to make into a dropdown menu.
    * @param {Object} options - Overrides to the default plugin settings.
    */
@@ -41,7 +41,7 @@
 
     /**
      * Fires when the plugin has been successfuly initialized.
-     * @event Drilldown#init
+     * @event MenuBar#init
      */
      this.$element.trigger('init.zf.menubar');
   }
