@@ -169,8 +169,15 @@ Add the class `.icon-top` to the menu bar to orient icons above the text.
 ```html_example
 <div class="nav">
   <div class="nav-left">
-    <ul class="menu-bar">
-      <li><a href="#">One</a></li>
+    <ul class="dropdown menu-bar" data-dropdown-menu>
+      <li class="has-submenu">
+        <a href="#">One</a>
+        <ul class="submenu menu-bar vertical" data-submenu>
+          <li><a href="#">One</a></li>
+          <li><a href="#">Two</a></li>
+          <li><a href="#">Three</a></li>
+        </ul>
+      </li>
       <li><a href="#">Two</a></li>
       <li><a href="#">Three</a></li>
     </ul>
