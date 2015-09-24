@@ -7,7 +7,7 @@ Requires NodeJS to be installed on your machine. Works with 0.10, 0.12, and 4.1!
 ```bash
 git clone https://github.com/zurb/foundation-sites-6.git
 cd foundation-sites-6
-npm install
+npm install && bower install
 npm start
 ```
 
