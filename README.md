@@ -2,11 +2,13 @@
 
 This is the supremely in-development version of Foundation for Sites 6.0.
 
+Requires NodeJS to be installed on your machine. Works with 0.10, 0.12, and 4.1!
+
 ```bash
 git clone https://github.com/zurb/foundation-sites-6.git
 cd foundation-sites-6
-npm i
-gulp
+npm install
+npm start
 ```
 
 ## Folder structure
