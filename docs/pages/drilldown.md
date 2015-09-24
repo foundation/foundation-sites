@@ -2,6 +2,7 @@
 title: Drilldown Menu
 js: js/foundation.drilldown.js
 scss: scss/components/_drilldown.scss
+js: js/foundation.drilldownMenu.js
 ---
 
 ## Basics
