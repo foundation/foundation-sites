@@ -41,9 +41,9 @@
   margin-left: grid-column($n);
 }
 
-/// Align a column at the end of the row instead of the beginning.
+/// Disable the default behavior of the last column in a row aligning to the opposite edge.
 @mixin grid-column-end() {
-  float: right;
+  float: left;
 }
 
 /// Shorthand for `grid-column-position()`.

@@ -58,11 +58,14 @@
   @if ($columns <= $grid-column-count) {
     @include grid-column-size($columns);
   }
+
   float: left;
-  padding: {
-    left: $gutter;
-    right: $gutter;
-  };
+  padding-left: $gutter;
+  padding-right: $gutter;
+
+  &:last-child {
+    float: right;
+  }
 }
 
 /// Shorthand for `grid-col()`.
