@@ -190,3 +190,49 @@ Add the class `.icon-top` to the menu bar to orient icons above the text.
   </div>
 </div>
 ```
+
+<div class="primary nav">
+  <div class="nav-left">
+    <ul class="dropdown menu-bar" data-dropdown-menu>
+      <li class="has-submenu">
+        <a href="#">One</a>
+        <ul class="submenu menu-bar vertical" data-submenu>
+          <li><a href="#">One</a></li>
+          <li><a href="#">Two</a></li>
+          <li><a href="#">Three</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Two</a></li>
+      <li><a href="#">Three</a></li>
+    </ul>
+  </div>
+  <div class="nav-right">
+    <ul class="menu-bar">
+      <li><input type="search" placeholder="Search"></li>
+      <li><button type="button" class="secondary button">Search</button></li>
+    </ul>
+  </div>
+</div>
+
+<div class="dark nav">
+  <div class="nav-left">
+    <ul class="dropdown menu-bar" data-dropdown-menu>
+      <li class="has-submenu">
+        <a href="#">One</a>
+        <ul class="submenu menu-bar vertical" data-submenu>
+          <li><a href="#">One</a></li>
+          <li><a href="#">Two</a></li>
+          <li><a href="#">Three</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Two</a></li>
+      <li><a href="#">Three</a></li>
+    </ul>
+  </div>
+  <div class="nav-right">
+    <ul class="menu-bar">
+      <li><input type="search" placeholder="Search"></li>
+      <li><button type="button" class="hollow button">Search</button></li>
+    </ul>
+  </div>
+</div>

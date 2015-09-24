@@ -229,6 +229,27 @@ $menubar-expand-max: 6 !default;
     @include clearfix;
     background: #eee;
     padding: 0.5rem;
+    margin-bottom: 1rem;
+
+    &.primary {
+      &, ul {
+        background: $primary-color;
+      }
+
+      a {
+        color: foreground($primary-color);
+      }
+    }
+
+    &.dark {
+      &, ul {
+        background: #333;
+      }
+
+      a {
+        color: #fff;
+      }
+    }
 
     .nav-left {
       float: left;
