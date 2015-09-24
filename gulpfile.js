@@ -49,13 +49,13 @@ var files = {
 
 // Erases the dist folder
 gulp.task('clean', function() {
-  rimraf.sync('dist');
+  rimraf.sync('_build');
 });
 
 // Copies static assets
 gulp.task('copy', function() {
   gulp.src(files.assets)
-    .pipe(gulp.dest('dist/assets'));
+    .pipe(gulp.dest('_build/assets'));
 });
 
 // Assembles the layout, pages, and partials in the docs folder
@@ -76,7 +76,7 @@ gulp.task('html', function() {
       layouts: 'docs/layout/',
       partials: 'docs/partials/*.html'
     }))
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('_build'));
 });
 gulp.task('html:reset', function() {
   delete $.cached.caches['docs'];
@@ -99,7 +99,7 @@ gulp.task('sass:foundation', function() {
     .pipe($.autoprefixer({
       browsers: ['last 2 versions', 'ie >= 9']
     }))
-    .pipe(gulp.dest('dist/assets/css'));
+    .pipe(gulp.dest('_build/assets/css'));
 });
 gulp.task('sass:docs', function() {
   return gulp.src('docs/assets/scss/docs.scss')
@@ -109,12 +109,12 @@ gulp.task('sass:docs', function() {
     .pipe($.autoprefixer({
       browsers: COMPATIBILITY
     }))
-    .pipe(gulp.dest('dist/assets/css'));
+    .pipe(gulp.dest('_build/assets/css'));
 });
 
 // Audits CSS filesize, selector count, specificity, etc.
 gulp.task('sass:audit', ['sass:foundation'], function(cb) {
-  fs.readFile('./dist/assets/css/foundation-sites.css', function(err, data) {
+  fs.readFile('./_build/assets/css/foundation-sites.css', function(err, data) {
     var parker = new Parker(require('parker/metrics/All'));
     var results = parker.run(data.toString());
     console.log(prettyJSON.render(results));
@@ -142,17 +142,17 @@ gulp.task('javascript', ['javascript:foundation', 'javascript:deps', 'javascript
 gulp.task('javascript:foundation', function() {
   return gulp.src(files.javascript)
     .pipe($.concat('foundation.js'))
-    .pipe(gulp.dest('dist/assets/js'));
+    .pipe(gulp.dest('_build/assets/js'));
 });
 gulp.task('javascript:deps', function() {
   return gulp.src(files.javascriptDeps)
     .pipe($.concat('vendor.js'))
-    .pipe(gulp.dest('dist/assets/js'));
+    .pipe(gulp.dest('_build/assets/js'));
 });
 gulp.task('javascript:docs', function() {
   return gulp.src(files.docsJavascript)
     .pipe($.concat('docs.js'))
-    .pipe(gulp.dest('dist/assets/js'));
+    .pipe(gulp.dest('_build/assets/js'));
 });
 
 // Lints Sass and JavaScript files for formatting issues
@@ -182,12 +182,18 @@ gulp.task('test', function() {
     .on('data', function(data) {
       console.log(data.contents.toString());
     });
-})
+});
+
+// Deployment
+gulp.task('dist', ['deploy:dist']);
+gulp.task('deploy:dist', function() {
+
+});
 
 gulp.task('build', ['clean', 'copy', 'html', 'html:search', 'sass', 'javascript']);
 // Starts a BrowerSync instance
 gulp.task('serve', ['build'], function(){
-  browser.init({server: './dist'});
+  browser.init({server: './_build'});
 });
 
 // Runs all of the above tasks and then waits for files to change
