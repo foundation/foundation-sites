@@ -2,7 +2,7 @@
 
 This is the supremely in-development version of Foundation for Sites 6.0.
 
-Requires NodeJS to be installed on your machine. Works with 0.10, 0.12, and 4.1!
+Requires NodeJS to be installed on your machine. Works with 0.10, 0.12, and 4.1! **Note that parts of our build process will break with NPM 3, due to the changes in how packages are installed.**
 
 ```bash
 git clone https://github.com/zurb/foundation-sites-6.git
