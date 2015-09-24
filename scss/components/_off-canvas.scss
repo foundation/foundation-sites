@@ -34,6 +34,9 @@ $offcanvas-transition-timing: ease;
 /// @type Color
 $offcanvas-exit-background: rgba($white, 0.25);
 
+/// CSS class used for the main content area. The off-canvas mixins use this to target the page body.
+$maincontent-class: 'main-content';
+
 /// Box shadow to place under the main content area. This shadow overlaps the off-canvas menus.
 /// @type Shadow
 $maincontent-shadow: 0 0 10px rgba($black, 0.5);
@@ -70,19 +73,57 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5);
 }
 
 /// Adds basic styles for an off-canvas menu.
-@mixin off-canvas {
+@mixin off-canvas-base {
   position: if($offcanvas-fixed, fixed, absolute);
-  top: 0;
-  left: 0;
-  width: $offcanvas-width;
-  min-height: 100%;
   background: $offcanvas-width;
-  transform: translateX(-$offcanvas-width);
   transition: transform $offcanvas-transition-length $offcanvas-transition-timing;
   z-index: $offcanvas-zindex;
+  backface-visibility: hidden;
 
   .is-off-canvas-open & {
     transform: translate3d(0, 0, 0);
+  }
+}
+
+@mixin off-canvas-position(
+  $position: left,
+  $size: $offcanvas-width,
+  $fixed: false
+) {
+  $y: top;
+  $x: left;
+  $transform: translateX(-100%);
+
+  @if $position == right {
+    $x: right;
+    $transform: translateX(100%);
+  }
+  @else if $position == top {
+    $transform: translateY(-100%);
+  }
+  @else if $position == bottom {
+    $y: bottom;
+    $transform: translateY(100%);
+  }
+
+  #{$y}: 0;
+  #{$x}: 0;
+  transform: $transform;
+  
+  @if $position == left or $position == right {
+    width: $size;
+    min-height: 100%;
+  }
+  @else {
+    width: 100%;
+    height: $size;
+  }
+
+  &.is-open ~ .#{$maincontent-class} {
+    @if $position == left        { transform: translateX($size); }
+    @else if $position == right  { transform: translateX(-$size); }
+    @else if $position == top    { transform: translateY($size); }
+    @else if $position == bottom { transform: translateY(-$size); }
   }
 }
 
@@ -93,10 +134,6 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5);
 
   @if hasvalue($maincontent-shadow) {
     box-shadow: $maincontent-shadow;
-  }
-
-  .is-off-canvas-open & {
-    transform: translateX($offcanvas-width);
   }
 }
 
@@ -118,7 +155,12 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5);
 
   // Off-canvas container
   .off-canvas {
-    @include off-canvas;
+    @include off-canvas-base;
+    
+    &.position-left   { @include off-canvas-position(left); }
+    &.position-right  { @include off-canvas-position(right); }
+    &.position-top    { @include off-canvas-position(top); }
+    &.position-bottom { @include off-canvas-position(bottom); }
   }
 
   // Container for page content
