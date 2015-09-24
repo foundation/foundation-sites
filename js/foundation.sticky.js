@@ -1,16 +1,27 @@
 !function($, Foundation, window){
   'use strict';
 
+  /**
+   * Creates a new instance of a sticky thing.
+   * @class
+   * @fires Sticky#init
+   * @param {jQuery} element - jQuery object to make sticky.
+   */
   function Sticky(element){
-
-
-
     this.$element = element;
     this.options = $.extend({}, Sticky.defaults, this.$element.data());
     if(Foundation.MediaQuery.atLeast(this.options.stickyOn)){
       this._init();
     }
+
+    /**
+     * Fires when the plugin has been successfuly initialized.
+     * @event Sticky#init
+     */
+    this.$element.trigger('init.zf.sticky');
   }
+
+
   Sticky.defaults = {
     stickToWindow: false,
     container: '<div></div>',
@@ -23,6 +34,11 @@
     stickyOn: 'medium',
     watchResize: true
   };
+
+  /**
+   * Initializes the sticky element by adding classes, getting/setting dimensions, breakpoints and attributes
+   * @private
+   */
   Sticky.prototype._init = function(){
     var _this = this;
 
@@ -44,9 +60,12 @@
 
     this._events();
   };
-  Sticky.prototype.check = function(){
-    console.log('checked');
-  };
+
+  /**
+   * Adds event handlers for the scrolling element.
+   * TODO set this within the Foundation.util.triggers api so there's only one global listener
+   * @private
+   */
   Sticky.prototype._events = function(){
     var _this = this,
         $window = $(window);
@@ -93,7 +112,10 @@
           }
         }
 
-
+        /**
+         * TODO break these different scroll options into separate methods
+         * TODO create sticky-at='both' method
+         */
         else{//both top & bottom sticky
           //stick to top on scrolldown from top, stick to bottom on scrollup from bottom
         }
@@ -104,12 +126,20 @@
   };
 
   //*********************************************************************
+  /**
+   * Fires several functions after resize events and on _init
+   * @private
+   */
   Sticky.prototype.doThings = function(){
     this.getDimensions();
     this.setContainerSize();
     this.setElementAttr();
     this.setBreakPoints();
   };
+  /**
+   * Sets top and bottom break points for sticky element.
+   * @private
+   */
   Sticky.prototype.setBreakPoints = function(){
     this.fontSize = parseInt(window.getComputedStyle(document.getElementsByTagName('body')[0], null).fontSize.split('px'), 10);
     this.styles = window.getComputedStyle(this.$element[0], null);
@@ -120,15 +150,27 @@
       this.end = this.$anchorDims.offset.top + this.$anchorDims.height + (this.options.marginBottom * this.fontSize);
     }
   };
+  /**
+   * Gets the dimensions for the sticky element and it's anchor
+   * @private
+   */
   Sticky.prototype.getDimensions = function(){
     this.$element.css({'max-width': '', 'max-height': ''});
     this.$elemDims = Foundation.GetDimensions(this.$element);
     this.$anchorDims = Foundation.GetDimensions(this.$anchor);
   };
+  /**
+   * Sets the sticky element's max-width to prevent resize on position: fixed;
+   * @private
+   */
   Sticky.prototype.setElementAttr = function(){
     this.$element/*.offset({'top': this.$container.offset().top})*/
         .css({'max-width': this.$elemDims.width/*, 'min-height': this.$elemDims.height*/});
   };
+  /**
+   * Sets the sticky element's container min-height to match that of the element's height to prevent alignment issues on position: fixed;
+   * @private
+   */
   Sticky.prototype.setContainerSize = function(){
     this.$container.css({'min-height': this.$elemDims.height});
   };
