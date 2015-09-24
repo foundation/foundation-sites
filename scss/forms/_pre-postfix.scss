@@ -16,7 +16,10 @@ $input-prefix-background: $light-gray !default;
 
 /// Border around labels prefixed to an input.
 /// @type Border
-$input-prefix-border: 1px solid $medium-gray;
+$input-prefix-border: 1px solid $medium-gray !default;
+
+/// Left/right padding of an pre/postfixed input label
+$input-prefix-padding: 1rem !default;
 
 @mixin foundation-form-prepostfix {
   .input-group {
@@ -34,8 +37,9 @@ $input-prefix-border: 1px solid $medium-gray;
   .input-group-label {
     @extend %input-group-child;
     text-align: center;
+    width: 1%;
     height: 100%;
-    padding: 0;
+    padding: 0 $input-prefix-padding;
     background: $input-prefix-background;
     color: $input-prefix-color;
     border: $input-prefix-border;
@@ -58,7 +62,9 @@ $input-prefix-border: 1px solid $medium-gray;
   .input-group-button {
     @extend %input-group-child;
     height: 100%;
-    padding: 0;
+    padding-top: 0;
+    padding-bottom: 0;
     text-align: center;
+    width: 1%;
   }
 }
