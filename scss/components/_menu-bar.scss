@@ -10,17 +10,6 @@
 /// @type Number
 $menubar-margin: 0 !default;
 
-/// Default background color of a menu bar.
-/// @type Color
-$menubar-background: transparent;
-
-/// Default text color for items in a menu bar.
-/// @type Color
-$menubar-item-color: foreground($menubar-background, $primary-color);
-
-/// Default background color on hover for items in a menu bar.
-$menubar-item-background-hover: #eee !default;
-
 /// Default padding for items in a menu bar.
 /// @type Number
 $menubar-item-padding: 0.7rem 1rem !default;
@@ -39,28 +28,33 @@ $menubar-expand-max: 6 !default;
   margin: $menubar-margin;
   list-style-type: none;
 
-  // Hover/active state
-  > .is-active > a {
-    background: $menubar-item-background-hover;
+  // List items are table cell to allow for vertical alignment
+  > li {
+    display: table-cell;
+    vertical-align: middle;
   }
 
-  // Default
+  // Reset line height to make the height of the overall item easier to calculate
   > li > a {
     display: block;
     padding: $menubar-item-padding;
     line-height: 1;
-    color: $menubar-item-color;
+  }
 
-    &:hover,
-    &:focus {
-      background: $menubar-item-background-hover;
-    }
+  // Reset styles of inner elements
+  input,
+  a,
+  button {
+    margin-bottom: 0;
   }
 }
 
 /// Expands the items of a menu bar, so each item is the same width.
 /// @param {Keyword|Number} $count [auto] - Number of items in the menu bar. You can hardcode a number, or use `auto` to generate CSS that will adapt to the number of items inside the menu.
 @mixin menu-bar-expand($count: auto) {
+  display: table;
+  width: 100%;
+
   > li {
     @if $count == auto {
       @include auto-width($menubar-expand-max);
@@ -76,14 +70,12 @@ $menubar-expand-max: 6 !default;
 @mixin menu-bar-direction($dir: horizontal) {
   @if $dir == horizontal {
     > li {
-      width: auto;
-      float: left;
+      display: table-cell;
     }
   }
   @else if $dir == vertical {
     > li {
-      width: 100%;
-      float: none;
+      display: block;
     }
   }
   @else {
@@ -93,13 +85,9 @@ $menubar-expand-max: 6 !default;
 
 /// Creates a simple menu bar, which has no padding or hover state.
 @mixin menu-bar-simple {
-  > li > a {
+  a {
     padding: 0;
     margin-right: get-side($menubar-item-padding, right);
-
-    &:hover {
-      background: transparent;
-    }
   }
 }
 
@@ -237,25 +225,29 @@ $menubar-expand-max: 6 !default;
   }
 
   // A simple component to create side-by-side menus
-  .menu-group {
-    .input-group {
-      display: inline-table;
-      width: 300px;
-    }
+  .nav {
+    @include clearfix;
+    background: #eee;
+    padding: 0.5rem;
 
-    .menu-group-left {
+    .nav-left {
       float: left;
     }
 
-    .menu-group-right {
+    .nav-right {
       float: right
     }
 
     @include breakpoint(small only) {
-      .menu-group-left,
-      .menu-group-right {
+      .nav-left,
+      .nav-right {
         float: none;
       }
+    }
+
+    input {
+      width: 200px;
+      margin-right: 1rem;
     }
   }
 }
