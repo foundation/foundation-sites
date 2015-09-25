@@ -7,6 +7,13 @@ tags:
   - navigation
 ---
 
+<div class="callout alert">
+  <h4>Known Issues</h4>
+  <ul>
+    <li>The right off-canvas menu jitters when it opens.</li>
+  </ul>
+</div>
+
 <button class="button" type="button" data-toggle="offCanvasLeft">Toggle Off-canvas</button>
  
 ## Setup
