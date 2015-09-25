@@ -20,7 +20,7 @@ $offcanvas-background: $white;
 
 /// Z-index of an off-canvas menu.
 /// @type Number
-$offcanvas-zindex: 1000;
+$offcanvas-zindex: -1;
 
 /// Length of the animation on an off-canvas menu.
 /// @type Number
@@ -70,7 +70,7 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5);
 /// Adds basic styles for an off-canvas menu.
 @mixin off-canvas-base {
   position: if($offcanvas-fixed, fixed, absolute);
-  background: $offcanvas-width;
+  background: $offcanvas-background;
   transition: transform $offcanvas-transition-length $offcanvas-transition-timing;
   z-index: $offcanvas-zindex;
   backface-visibility: hidden;
@@ -96,10 +96,6 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5);
   @else if $position == top {
     $transform: translateY(-100%);
   }
-  @else if $position == bottom {
-    $y: bottom;
-    $transform: translateY(100%);
-  }
 
   #{$y}: 0;
   #{$x}: 0;
@@ -118,7 +114,6 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5);
     @if $position == left        { transform: translateX($size); }
     @else if $position == right  { transform: translateX(-$size); }
     @else if $position == top    { transform: translateY($size); }
-    @else if $position == bottom { transform: translateY(-$size); }
   }
 }
 
@@ -156,7 +151,6 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5);
     &.position-left   { @include off-canvas-position(left); }
     &.position-right  { @include off-canvas-position(right); }
     &.position-top    { @include off-canvas-position(top); }
-    &.position-bottom { @include off-canvas-position(bottom); }
   }
 
   // Container for page content
