@@ -16,3 +16,7 @@ The button is also labeled with `aria-label` to clarify what the button's purpos
   <p>You can so totally close this!</p>
 </div>
 ```
+
+<div class="callout primary">
+  <p>The close button on its own doesn't close elements, but you can use it with <a href="toggler.html">Toggler</a>, <a href="reveal.html">Reveal</a>, <a href="off-canvas.html">Off-canvas</a>, and other plugins that have open and close behaviors.</p>
+</div>
