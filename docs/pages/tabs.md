@@ -4,6 +4,16 @@ description: Tabs are elements that help you organize and navigate multiple docu
 sass: scss/components/_tabs.scss
 ---
 
+
+<div class="alert callout">
+  <h5>Known Issues</h5>
+  <ul>
+    <li>Option: set `.tabs-content` container to fixed height and width based on largest interior element to prevent resizing on content open?</li>
+  </ul>
+</div>
+
+
+
 ## Basics
 
 There are two pieces to a tabbed interface: the tabs themselves, and the content for each tab. The tabs are an element with the class `.tabs`, and each item has the class `.tabs-title`. Each tab contains a link to a tab. The `href` of each link should match the ID of a tab.

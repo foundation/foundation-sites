@@ -49,7 +49,8 @@
     this.$element.find('li').each(function() {
       var $tabContent = $(this).children('[data-tab-content]');
       if ($tabContent.length) {
-        $(this).children('a').on('click.zf.accordion', function(e) {
+        $(this).on('click.zf.accordion', function(e) {
+        // $(this).children('a').on('click.zf.accordion', function(e) {
           e.preventDefault();
           if ($tabContent.parent().hasClass('is-active')) {
             if(_this.options.allowAllClosed || $tabContent.parent().siblings().hasClass('is-active')){
@@ -84,7 +85,7 @@
 
     if(!firstTime){
       console.log('reflowing yo!');
-      Foundation.reflow(this.$element, 'accordion');
+      // Foundation.reflow(this.$element, 'accordion');
     }
     /**
      * Fires when the tab is done opening.

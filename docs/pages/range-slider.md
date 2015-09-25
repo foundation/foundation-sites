@@ -5,6 +5,25 @@ sass: scss/components/_range-slider.scss
 js: js/foundation.range-slider.js
 ---
 
+
+<div class="alert callout">
+  <h5>Known Issues</h5>
+  <ul>
+    <li>Needs method for initial handle positioning.</li>
+    <li>Needs accessibility compliant keyboard access bindings.</li>
+    <li>Strange bug when click event is exactly halfway between left and right handles, fill bar flows to the left.</li>
+    <li>Needs resize event handler, and handles positioned by percentage.</li>
+    <li>Vertical orientation isn't smooth on Windows Phone.</li>
+    <li>Two-handled sliders not working in Firefox.</li>
+    <li>Data-binding not yet implemented fully.</li>
+    <li>iOS Safari leaves strange artifacts of handles on reposition.</li>
+    <li>Android 4.4 browser transitions not working, handles are snapping to location.</li>
+    <li>Postioning of single handles not quite correct on Firefox, it leaves a small gap between the fill and handle.</li>
+
+  </ul>
+</div>
+
+
 ## Basics
 
 It's got a handle and an active fill, what more do you need?

@@ -5,6 +5,14 @@ sass: scss/components/_dropdown.scss
 js: js/foundation.dropdown.js
 ---
 
+
+<div class="alert callout">
+  <h5>Known Issues</h5>
+  <ul>
+    <li>Needs event listener for `resizeme.zf.trigger` for positioning on screen resize events.</li>
+</div>
+
+
 ## Plain Jane
 By default, dropdowns are exactly that, horizontally oriented below the parent element, anchored to the bottom-left corner.
 

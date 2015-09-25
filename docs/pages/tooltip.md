@@ -5,6 +5,21 @@ sass: scss/components/_tooltip.scss
 js: js/foundation.tooltip.js
 ---
 
+
+<div class="alert callout">
+  <h5>Known Issues</h5>
+  <ul>
+    <li>Needs event listener for `resizeme.zf.trigger` to recalculate position and sizing on resize events.</li>
+    <li>Broken on small screens / mobile touch events.</li>
+    <li>Inconsistent hover effects on Firefox.</li>
+    <li>Broken on Android 4.4 browser and iOS devices w/ Safari.</li>
+    <li>Broken on Mac OSX Safari on small mq.</li>
+
+  </ul>
+</div>
+
+
+
 ## Basic Tooltip
 By default, a tooltip appears below the the definition on hover.
 

@@ -41,7 +41,6 @@
     });
     this.$submenus.each(function(){
       var $menu = $(this);
-      console.log($menu);
       $menu.prepend(_this.options.backButton);
       _this._back($menu);
     });
@@ -52,14 +51,14 @@
   Drilldown.prototype._events = function($elem){
     var _this = this;
 
-    $elem.off('mouseup.zf.drilldown tap.zf.drilldown touchend.zf.drilldown')
+    $elem/*.off('mouseup.zf.drilldown tap.zf.drilldown touchend.zf.drilldown')*/
     .on('mouseup.zf.drilldown tap.zf.drilldown touchend.zf.drilldown', function(e){
+      e.preventDefault();
+      e.stopPropagation();
       console.log(e);
       if(e.target !== e.currentTarget.firstElementChild){
         return false;
       }
-      e.preventDefault();
-      e.stopPropagation();
       _this._show($elem);
 
       if(_this.options.closeOnClick){
@@ -108,8 +107,8 @@
   Drilldown.prototype.getMaxHeight = function(){
     var max = 0, result = {};
     this.$submenus.each(function(){
-      var thing = $(this).children('li').length;
-      max = thing > max ? thing : max;
+      var numOfElems = $(this).children('li').length;
+      max = numOfElems > max ? numOfElems : max;
     });
     // console.log('1',this.$menuItems[0].getBoundingClientRect().height);
     result.height = max * this.$menuItems[0].getBoundingClientRect().height + 'px';

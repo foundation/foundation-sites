@@ -7,6 +7,18 @@ tags:
   - modal
 ---
 
+
+<div class="alert callout">
+  <h5>Known Issues</h5>
+  <ul>
+    <li>Instead of each modal getting it’s own background, maybe generate one for the whole page if a modal is detected?</li>
+    <li>Needs accessibility compliant keyboard access bindings.</li>
+    <li>`.close-button` not closing modal.</li>
+    <li>Double `click` events being fired on modals lacking an overlay, including full-screen, preventing the modal from opening.</li>
+  </ul>
+</div>
+
+
 ## Basics
 
 A modal is just an empty container, so you can put any kind of content inside it, from text to forms to a whole grid.

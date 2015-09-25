@@ -8,6 +8,15 @@ tags:
   - carousel
 ---
 
+
+<div class="alert callout">
+  <h5>Known Issues</h5>
+  <ul>
+    <li>Not implemented yet.</li>
+ </ul>
+</div>
+
+
 ## Basic Orbit Slider
 
 ```html_example

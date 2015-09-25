@@ -1,9 +1,20 @@
 ---
-title: Accordions
+title: Accordion
 description: Accordions are elements that help you organize and navigate multiple documents in a single container. They can be used for switching between items in the container.
 sass: scss/components/_accordion.scss
 js: js/foundation.accordion.js
 ---
+
+
+<div class="alert callout">
+  <h5>Known Issues</h5>
+  <ul>
+    <li>If `Foundation.reflow()` is called on a click event, it animates multiple times.</li>
+    <li>Needs accessibility compliant keyboard access bindings.</li>
+  </ul>
+</div>
+
+
 
 ## Basics
 

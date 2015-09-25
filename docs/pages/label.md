@@ -4,6 +4,16 @@ description: Labels are useful inline styles that can be dropped into body copy 
 sass: scss/components/_label.scss
 ---
 
+
+<div class="alert callout">
+  <h5>Known Issues</h5>
+  <ul>
+    <li>Icons are not vertically aligned with text.</li>
+  </ul>
+</div>
+
+
+
 ## Basics
 
 Add the `.label` class to an element to create a label.

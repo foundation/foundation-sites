@@ -3,6 +3,12 @@ title: Pagination
 description: Pagination is a type of navigation that lets users click through pages of search results, products, or other related items.
 sass: scss/components/_pagination.scss
 ---
+<div class="alert callout">
+  <h5>Known Issues</h5>
+  <ul>
+    <li>When unstacking, partially unstacks.</li>
+  </ul>
+</div>
 
 ## Basics
 

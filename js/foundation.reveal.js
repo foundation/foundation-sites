@@ -23,8 +23,8 @@
   Reveal.defaults = {
     animationIn: '',
     animationOut: '',
-    showDelay: 250,
-    hideDelay: 250,
+    showDelay: 0,
+    hideDelay: 0,
     closeOnClick: true,
     closeOnEsc: true,
     multiOpened: false,
@@ -134,7 +134,7 @@
       this.$overlay.on('click.zf.reveal', this.close.bind(this));
     }
     if(this.$closeBtn){
-      this.$closeBtn.on('click.zf.reveal', this.close.bind(this));
+      this.$closeBtn.on('click.zf.reveal mouseup.zf.reveal tap.zf.reveal touchend.zf.reveal', this.close.bind(this));
     }
   };
   /**
