@@ -1,0 +1,1326 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta class="foundation-mq">
+    <title>Foundation for Sites 6.0.0</title>
+
+    <link href="assets/css/docs.css" rel="stylesheet" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
+  </head>
+  <body data-off-canvas id="body">
+
+    <div class="off-canvas">
+      <ul class="vertical menu-bar">
+        <li><a href="#">Foundation</a></li>
+        <li><a href="#">Dot</a></li>
+        <li><a href="#">ZURB</a></li>
+        <li><a href="#">Com</a></li>
+        <li><a href="#">Slash</a></li>
+        <li><a href="#">Sites</a></li>
+      </ul>
+    </div>
+
+    <div class="main-content" data-off-canvas-content>
+      <div class="menu-group docs-topbar">
+        <ul class="menu-bar">
+          <li class="docs-topbar-title"><a href="#" data-open="body"><img src="assets/img/zurb-logo.svg" alt="ZURB"> Foundation</a></li>
+        </ul>
+        <ul class="menu-bar">
+          <li><a href="#">Learn</a></li>
+          <li><a href="#">Develop</a></li>
+          <li><a href="#">Support</a></li>
+          <li><a href="#">Business</a></li>
+          <li><a href="#">Docs</a></li>
+        </ul>
+      </div>
+
+      <div class="expanded column-row docs-header">
+        <h1 class="docs-site-title"><a href="index.html">Foundation for Sites Documentation <em>Version 6.0.0-alpha</em></a></h1>
+      </div>
+
+      <input type="text" class="docs-search" data-docs-search placeholder="Find a page, component, variable, mixin, function...">
+
+      <div class="expanded row">
+        <div class="medium-9 large-10 medium-push-3 large-push-2 columns">
+<article class="docs-component" id="docs-the-grid">
+
+<h1 class="docs-page-title">The Grid</h1>
+
+<p class="lead docs-page-lead">Create powerful multi-device layouts quickly and easily with the default 12-column, nestable Foundation grid. If you're familiar with grid systems, you'll feel right at home. If not, you'll learn quickly.</p>
+
+<hr>
+
+<div class="row">
+
+<nav class="large-3 large-push-9 columns">
+  <button aria-hidden="true" class="hide-for-large small secondary button" data-toggle="docsTOC">Show Table of Contents</button>
+  <div class="docs-toc hide" id="docsTOC" data-toggler=".hide">
+    <ul class="vertical menu-bar docs-sub-menu" data-docs-toc>
+      <li class="docs-menu-title">On this page:</li>
+    </ul>
+    <ul class="vertical menu-bar docs-sub-menu">
+      <li class="docs-menu-title">Contribute:</li>
+      <li><a href="https://github.com/zurb/foundation-sites-6/edit/master/docs/pages/grid.md">Edit this Page</a></li>
+      <li><a href="https://github.com/zurb/foundation-sites-6/issues/new?title=%5BThe%20Grid%5D%20Issue%20Name&body=**How%20can%20we%20reproduce%20this%20bug%3F**%0A%0A1.%20Step%20one%0A2.%20Step%20two%0A3.%20Step%20three%0A%0A**What%20did%20you%20expect%20to%20happen%3F**%0A%0A**What%20happened%20instead%3F**%0A%0A**Test%20case**%0A%0AGive%20us%20a%20link%20to%20a%20%5BCodePen%5D(http%3A%2F%2Fcodepen.io)%20or%20%5BJSFiddle%5D(http%3A%2F%2Fjsfiddle.net)%20that%20recreates%20the%20issue.">Report a Bug</a></li>
+      <li><a href="https://github.com/zurb/foundation-sites-6/tree/master/scss/grid/">View Source</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="large-9 large-pull-3 columns">
+
+<h2 id="basics" class="docs-heading"><a class="docs-heading-icon" href="#basics"></a>Basics</h2><p>Start by adding an element with a class of <code>.row</code>. This will create a horizontal block to contain vertical columns. Then add elements with a <code>.column</code> class within that row. You can use <code>.column</code> or <code>.columns</code>&mdash;the only difference is grammar. Specify the widths of each column with the <code>.small-#</code>, <code>.medium-#</code>, and <code>.large-#</code> classes.</p>
+<p><strong>Foundation is mobile-first.</strong> Code for small screens first, and larger devices will inherit those styles. Customize for larger screens as necessary.</p>
+<div class="docs-code" data-docs-code><pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"small-2 large-4 columns"</span>&gt;</span><span class="hljs-comment">&lt;!-- ... --&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"small-4 large-4 columns"</span>&gt;</span><span class="hljs-comment">&lt;!-- ... --&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"small-6 large-4 columns"</span>&gt;</span><span class="hljs-comment">&lt;!-- ... --&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"large-3 columns"</span>&gt;</span><span class="hljs-comment">&lt;!-- ... --&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"large-6 columns"</span>&gt;</span><span class="hljs-comment">&lt;!-- ... --&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"large-3 columns"</span>&gt;</span><span class="hljs-comment">&lt;!-- ... --&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"small-6 large-2 columns"</span>&gt;</span><span class="hljs-comment">&lt;!-- ... --&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"small-6 large-8 columns"</span>&gt;</span><span class="hljs-comment">&lt;!-- ... --&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"small-12 large-2 columns"</span>&gt;</span><span class="hljs-comment">&lt;!-- ... --&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"small-3 columns"</span>&gt;</span><span class="hljs-comment">&lt;!-- ... --&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"small-9 columns"</span>&gt;</span><span class="hljs-comment">&lt;!-- ... --&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"large-4 columns"</span>&gt;</span><span class="hljs-comment">&lt;!-- ... --&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"large-8 columns"</span>&gt;</span><span class="hljs-comment">&lt;!-- ... --&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"small-6 large-5 columns"</span>&gt;</span><span class="hljs-comment">&lt;!-- ... --&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"small-6 large-7 columns"</span>&gt;</span><span class="hljs-comment">&lt;!-- ... --&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"large-6 columns"</span>&gt;</span><span class="hljs-comment">&lt;!-- ... --&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"large-6 columns"</span>&gt;</span><span class="hljs-comment">&lt;!-- ... --&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre></div><div class="row display">
+  <div class="small-2 large-4 columns"><span class="hide-for-large">2</span><span class="show-for-large">4</span></div>
+  <div class="small-4 large-4 columns">4</div>
+  <div class="small-6 large-4 columns"><span class="hide-for-large">6</span><span class="show-for-large">4</span></div>
+</div>
+<div class="row display">
+  <div class="large-3 columns"><span class="hide-for-large">full</span><span class="show-for-large">3</span></div>
+  <div class="large-6 columns"><span class="hide-for-large">full</span><span class="show-for-large">6</span></div>
+  <div class="large-3 columns"><span class="hide-for-large">full</span><span class="show-for-large">3</span></div>
+</div>
+<div class="row display">
+  <div class="small-6 large-2 columns"><span class="hide-for-large">6</span><span class="show-for-large">2</span></div>
+  <div class="small-6 large-8 columns"><span class="hide-for-large">6</span><span class="show-for-large">8</span></div>
+  <div class="small-12 large-2 columns"><span class="hide-for-large">full</span><span class="show-for-large">2</span></div>
+</div>
+<div class="row display">
+  <div class="small-3 columns">3</div>
+  <div class="small-9 columns">9</div>
+</div>
+<div class="row display">
+  <div class="large-4 columns"><span class="hide-for-large">full</span><span class="show-for-large">4</span></div>
+  <div class="large-8 columns"><span class="hide-for-large">full</span><span class="show-for-large">8</span></div>
+</div>
+<div class="row display">
+  <div class="small-6 large-5 columns"><span class="hide-for-large">6</span><span class="show-for-large">5</span></div>
+  <div class="small-6 large-7 columns"><span class="hide-for-large">6</span><span class="show-for-large">7</span></div>
+</div>
+<div class="row display">
+  <div class="large-6 columns"><span class="hide-for-large">full</span><span class="show-for-large">6</span></div>
+  <div class="large-6 columns"><span class="hide-for-large">full</span><span class="show-for-large">6</span></div>
+</div>
+
+<hr>
+<h3 id="small-grids" class="docs-heading"><a class="docs-heading-icon" href="#small-grids"></a>Small Grids</h3><p>Small grids expand to large screens easier than large grids cram into small screens.</p>
+<div class="docs-code" data-docs-code><pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"small-2 columns"</span>&gt;</span>2 columns<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"small-10 columns"</span>&gt;</span>10 columns<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"small-3 columns"</span>&gt;</span>3 columns<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"small-9 columns"</span>&gt;</span>9 columns<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre></div><div class="row display">
+  <div class="small-2 columns">2 columns</div>
+  <div class="small-10 columns">10 columns</div>
+</div>
+<div class="row display">
+  <div class="small-3 columns">3 columns</div>
+  <div class="small-9 columns">9 columns</div>
+</div>
+
+<hr>
+<h3 id="medium-grid" class="docs-heading"><a class="docs-heading-icon" href="#medium-grid"></a>Medium Grid</h3><p>Medium sized screens will inherit styles from small, unless you specify a different layout using the medium grid classes.</p>
+<div class="docs-code" data-docs-code><pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"medium-2 columns"</span>&gt;</span>2 columns<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"medium-10 columns"</span>&gt;</span>10 columns<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"medium-3 columns"</span>&gt;</span>3 columns<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"medium-9 columns"</span>&gt;</span>9 columns<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre></div><div class="row display">
+  <div class="medium-2 columns">2 columns</div>
+  <div class="medium-10 columns">10 columns</div>
+</div>
+<div class="row display">
+  <div class="medium-3 columns">3 columns</div>
+  <div class="medium-9 columns">9 columns</div>
+</div>
+
+<hr>
+<h2 id="advanced" class="docs-heading"><a class="docs-heading-icon" href="#advanced"></a>Advanced</h2><h3 id="nesting" class="docs-heading"><a class="docs-heading-icon" href="#nesting"></a>Nesting</h3><p>You can nest the grids indefinitely, though at a certain point it will get absurd.</p>
+<div class="docs-code" data-docs-code><pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"small-8 columns"</span>&gt;</span>8
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"small-8 columns"</span>&gt;</span>8 Nested
+        <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"small-8 columns"</span>&gt;</span>8 Nested Again<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"small-4 columns"</span>&gt;</span>4<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"small-4 columns"</span>&gt;</span>4<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"small-4 columns"</span>&gt;</span>4<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre></div><div class="row display">
+  <div class="small-8 columns">8
+    <div class="row">
+      <div class="small-8 columns">8 Nested
+        <div class="row">
+          <div class="small-8 columns">8 Nested Again</div>
+          <div class="small-4 columns">4</div>
+        </div>
+      </div>
+      <div class="small-4 columns">4</div>
+    </div>
+  </div>
+  <div class="small-4 columns">4</div>
+</div>
+
+<hr>
+<h3 id="offsets" class="docs-heading"><a class="docs-heading-icon" href="#offsets"></a>Offsets</h3><p>Move blocks up to 11 columns to the right by using classes like <code>.large-offset-1</code> and <code>.small-offset-3</code>.</p>
+<div class="docs-code" data-docs-code><pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"large-1 columns"</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"large-11 columns"</span>&gt;</span>11<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"large-1 columns"</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"large-10 large-offset-1 columns"</span>&gt;</span>10, offset 1<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"large-1 columns"</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"large-9 large-offset-2 columns"</span>&gt;</span>9, offset 2<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"large-1 columns"</span>&gt;</span>1<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"large-8 large-offset-3 columns"</span>&gt;</span>8, offset 3<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre></div><div class="row display">
+  <div class="large-1 columns">1</div>
+  <div class="large-11 columns">11</div>
+</div>
+<div class="row display">
+  <div class="large-1 columns">1</div>
+  <div class="large-10 large-offset-1 columns">10, offset 1</div>
+</div>
+<div class="row display">
+  <div class="large-1 columns">1</div>
+  <div class="large-9 large-offset-2 columns">9, offset 2</div>
+</div>
+<div class="row display">
+  <div class="large-1 columns">1</div>
+  <div class="large-8 large-offset-3 columns">8, offset 3</div>
+</div>
+
+<hr>
+<h3 id="incomplete-rows" class="docs-heading"><a class="docs-heading-icon" href="#incomplete-rows"></a>Incomplete Rows</h3><p>In order to work around browsers&#39; different rounding behaviors, Foundation will float the last column in a row to the right so the edge aligns. If your row doesn&#39;t have a count that adds up to 12 columns, you can tag the last column with a class of end in order to override that behavior.</p>
+<div class="docs-code" data-docs-code><pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"medium-3 columns"</span>&gt;</span>3<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"medium-3 columns"</span>&gt;</span>3<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"medium-3 columns"</span>&gt;</span>3<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"medium-3 columns"</span>&gt;</span>3<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"medium-3 columns"</span>&gt;</span>3<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"medium-3 columns end"</span>&gt;</span>3 end<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre></div><div class="row display-end">
+  <div class="medium-3 columns">3</div>
+  <div class="medium-3 columns">3</div>
+  <div class="medium-3 columns">3</div>
+</div>
+<div class="row display-end">
+  <div class="medium-3 columns">3</div>
+  <div class="medium-3 columns">3</div>
+  <div class="medium-3 columns end">3 end</div>
+</div>
+
+<hr>
+<h3 id="collapse-uncollapse-rows" class="docs-heading"><a class="docs-heading-icon" href="#collapse-uncollapse-rows"></a>Collapse/Uncollapse Rows</h3><p>The <code>.collapse</code> class lets you remove column gutters (padding).</p>
+<p>There are times when you won&#39;t want each media query to be collapsed or uncollapsed. In this case, use the media query size you want and collapse or uncollapse and add that to your row element. Example shows no gutter at small media size and then adds the gutter to columns at medium.</p>
+<div class="docs-code" data-docs-code><pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row medium-uncollapse large-collapse"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"small-6 columns"</span>&gt;</span>
+    Removes gutter at large media query
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"small-6 columns"</span>&gt;</span>
+    Removes gutter at large media query
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre></div><p class="lead">Scale the browser down to a medium size to see the difference.</p>
+
+<div class="row medium-uncollapse large-collapse">
+  <div class="small-6 columns">
+    <div class="panel">
+      <p class="show-for-medium-only">On a medium screen, I have gutters!</p>
+      <p class="show-for-large-up">On a large screen, I have no gutters!</p>
+    </div>
+  </div>
+  <div class="small-6 columns">
+    <div class="panel">
+      <p class="show-for-medium-only">On a medium screen, I have gutters!</p>
+      <p class="show-for-large-up">On a large screen, I have no gutters!</p>
+    </div>
+  </div>
+</div>
+
+<hr>
+<h3 id="centered-columns" class="docs-heading"><a class="docs-heading-icon" href="#centered-columns"></a>Centered Columns</h3><p>Center your columns by adding a class of <code>.small-centered</code> to your column. Large will inherit small centering by default, but you can also center solely on large by applying a <code>.large-centered</code> class. To uncenter on large screens, use <code>.large-uncentered</code>.</p>
+<div class="docs-code" data-docs-code><pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"small-3 small-centered columns"</span>&gt;</span>3 centered<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"small-6 large-centered columns"</span>&gt;</span>6 centered<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"small-9 small-centered large-uncentered columns"</span>&gt;</span>9 centered<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"small-11 small-centered columns"</span>&gt;</span>11 centered<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre></div><div class="row display">
+  <div class="small-3 small-centered columns">3 centered</div>
+</div>
+<div class="row display">
+  <div class="small-6 large-centered columns">6 centered, large</div>
+</div>
+<div class="row display">
+  <div class="small-9 small-centered large-uncentered columns">9 centered small</div>
+</div>
+<div class="row display">
+  <div class="small-11 small-centered columns">11 centered</div>
+</div>
+
+<hr>
+<h3 id="source-ordering" class="docs-heading"><a class="docs-heading-icon" href="#source-ordering"></a>Source Ordering</h3><p>Using these source ordering classes, you can shift columns around between our breakpoints. This means if you place sub-navigation below main content on small displays, you have the option to position the sub-navigation on either the left or right of the page for large displays. Prefix push/pull with the size of the device you want to apply the styles to. <code>.medium-push-#</code>, <code>.large-push-#</code> is the syntax you&#39;ll use. Use large-reset-order to reset pushed or pulled columns to their original position on large screens.</p>
+<div class="docs-code" data-docs-code><pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"small-10 small-push-2 columns"</span>&gt;</span>10<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"small-2 small-pull-10 columns"</span>&gt;</span>2, last<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"large-9 large-push-3 columns"</span>&gt;</span>9<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"large-3 large-pull-9 columns"</span>&gt;</span>3, last<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"large-8 large-push-4 columns"</span>&gt;</span>8<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"large-4 large-pull-8 columns"</span>&gt;</span>4, last<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"small-5 small-push-7 medium-7 medium-push-5 columns"</span>&gt;</span>7<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"small-7 small-pull-5 medium-5 medium-pull-7 columns"</span>&gt;</span>5, last<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"medium-6 medium-push-6 columns"</span>&gt;</span>6<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"medium-6 medium-pull-6 columns"</span>&gt;</span>6, last<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre></div><div class="row display">
+  <div class="small-10 small-push-2 columns">10</div>
+  <div class="small-2 small-pull-10 columns">2, last</div>
+</div>
+<div class="row display">
+  <div class="large-9 large-push-3 columns">9</div>
+  <div class="large-3 large-pull-9 columns">3, last</div>
+</div>
+<div class="row display">
+  <div class="large-8 large-push-4 columns">8</div>
+  <div class="large-4 large-pull-8 columns">4, last</div>
+</div>
+<div class="row display">
+  <div class="small-5 small-push-7 medium-7 medium-push-5 columns">7</div>
+  <div class="small-7 small-pull-5 medium-5 medium-pull-7 columns">5, last</div>
+</div>
+<div class="row display">
+  <div class="medium-6 medium-push-6 columns">6</div>
+  <div class="medium-6 medium-pull-6 columns">6, last</div>
+</div>
+
+<hr>
+<h3 id="block-grids" class="docs-heading"><a class="docs-heading-icon" href="#block-grids"></a>Block Grids</h3><p>The block grid from Foundation 5 has been merged into the main grid. Add a class of the format <code>[size]-up-[n]</code> to change the size of all columns within the row.</p>
+<div class="docs-code" data-docs-code><pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row small-up-1 medium-up-2 large-up-4"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"column"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">img</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"//placehold.it/300x300"</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"thumbnail"</span> <span class="hljs-attribute">alt</span>=<span class="hljs-value">""</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"column"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">img</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"//placehold.it/300x300"</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"thumbnail"</span> <span class="hljs-attribute">alt</span>=<span class="hljs-value">""</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"column"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">img</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"//placehold.it/300x300"</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"thumbnail"</span> <span class="hljs-attribute">alt</span>=<span class="hljs-value">""</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"column"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">img</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"//placehold.it/300x300"</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"thumbnail"</span> <span class="hljs-attribute">alt</span>=<span class="hljs-value">""</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"column"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">img</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"//placehold.it/300x300"</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"thumbnail"</span> <span class="hljs-attribute">alt</span>=<span class="hljs-value">""</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"column"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">img</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"//placehold.it/300x300"</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"thumbnail"</span> <span class="hljs-attribute">alt</span>=<span class="hljs-value">""</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre></div>
+
+<div class="docs-code-live"><div class="row small-up-1 medium-up-2 large-up-4">
+  <div class="column">
+    <img src="//placehold.it/300x300" class="thumbnail" alt="">
+  </div>
+  <div class="column">
+    <img src="//placehold.it/300x300" class="thumbnail" alt="">
+  </div>
+  <div class="column">
+    <img src="//placehold.it/300x300" class="thumbnail" alt="">
+  </div>
+  <div class="column">
+    <img src="//placehold.it/300x300" class="thumbnail" alt="">
+  </div>
+  <div class="column">
+    <img src="//placehold.it/300x300" class="thumbnail" alt="">
+  </div>
+  <div class="column">
+    <img src="//placehold.it/300x300" class="thumbnail" alt="">
+  </div>
+</div></div><hr>
+<h2 id="building-semantically" class="docs-heading"><a class="docs-heading-icon" href="#building-semantically"></a>Building Semantically</h2><p>Our grid CSS is generated with a powerful set of Sass mixins, which you can use in your own code to build a semantic grid.</p>
+<h3 id="rows" class="docs-heading"><a class="docs-heading-icon" href="#rows"></a>Rows</h3><p>Use the <code>grid-row()</code> mixin to create a row.</p>
+<div class="docs-code" data-docs-code><pre><code class="scss"><span class="hljs-class">.container</span> {
+  <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-row</span>;</span>
+}</code></pre></div><hr>
+<h3 id="columns" class="docs-heading"><a class="docs-heading-icon" href="#columns"></a>Columns</h3><p>Use the <code>grid-column()</code> mixin to create a row. There are a number of ways to define the width of the column.</p>
+<div class="docs-code" data-docs-code><pre><code class="scss"><span class="hljs-class">.main-content</span> {
+  <span class="hljs-comment">// Use the full column count (100%)</span>
+  <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-column</span>;</span>
+
+  <span class="hljs-comment">// Use a column count (33%);</span>
+  <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-column</span>(<span class="hljs-number">4</span>);</span>
+
+  <span class="hljs-comment">// Use a percentage (15%)</span>
+  <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-column</span>(<span class="hljs-number">15%</span>);</span>
+
+  <span class="hljs-comment">// Use a custom fraction (20%)</span>
+  <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-column</span>(<span class="hljs-number">1</span><span class="hljs-preprocessor"> of</span><span class="hljs-preprocessor"> 5</span>);</span>
+}</code></pre></div><p>The grid column calculator can also be accessed as a function. This gives you the percentage value, without any of the grid column CSS.</p>
+<div class="docs-code" data-docs-code><pre><code class="scss"><span class="hljs-class">.main-content</span> {
+  <span class="hljs-attribute">width</span><span class="hljs-value">: <span class="hljs-function">grid-column</span>(<span class="hljs-number">1</span> of <span class="hljs-number">7</span>);</span>
+}</code></pre></div><hr>
+<h3 id="multiple-grids" class="docs-heading"><a class="docs-heading-icon" href="#multiple-grids"></a>Multiple Grids</h3><p>By default, all grids use the number of columns set by the <code>$grid-column-count</code> variable. However, this can be selectively overridden within an instance of a row.</p>
+<p>In this example, the grid is 16 columns instead of the normal 12. Any references to column math inside the mixin will use the new column count. </p>
+<div class="docs-code" data-docs-code><pre><code class="scss"><span class="hljs-class">.container</span> {
+  <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-row</span>(<span class="hljs-number">16</span>) {</span>
+    <span class="hljs-class">.main-content</span> {
+      <span class="hljs-comment">// 5/16 = 31.25%</span>
+      <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-column</span>(<span class="hljs-number">5</span>);</span>
+    }
+
+    <span class="hljs-class">.sidebar</span> {
+      <span class="hljs-comment">// 11/16 = 68.75%</span>
+      <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-column</span>(<span class="hljs-number">11</span>);</span>
+    }
+  }
+}</code></pre></div><p>You can also temporarily change the grid context without outputting any row CSS, by using the <code>grid-context()</code> mixin.</p>
+<div class="docs-code" data-docs-code><pre><code class="scss"><span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-context</span>(<span class="hljs-number">7</span>) {</span>
+  <span class="hljs-class">.sidebar</span> {
+    <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-column</span>(<span class="hljs-number">4</span>);</span>
+  }
+}</code></pre></div><p>Every other grid feature, from sizing to offsets to source ordering, can also be accessed with a mixin. Pair them with the <code>breakpoint()</code> mixin to make your grid responsive.</p>
+<p>Refer to the Sass documentation below to learn how each mixin works.</p>
+<div class="docs-code" data-docs-code><pre><code class="scss"><span class="hljs-class">.main-content</span> {
+  <span class="hljs-comment">// The mixins have shorthands, too!</span>
+  <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-col</span>;</span>
+
+  <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> breakpoint</span>(medium) {</span>
+    <span class="hljs-comment">// Changes size only</span>
+    <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-col-size</span>(<span class="hljs-number">8</span>);</span>
+
+    <span class="hljs-comment">// Changes position only</span>
+    <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-col-pos</span>(<span class="hljs-number">4</span>);</span>
+  }
+}</code></pre></div>
+
+<hr>
+
+<section>
+  <h2 id="sass-reference" class="docs-heading"><a class="docs-heading-icon" href="#sass-reference"></a>Sass Reference</h2>
+
+  <section>
+    <h3 id="sass-variables" class="docs-heading"><a class="docs-heading-icon" href="#sass-variables"></a>Variables</h3>
+
+    <p>The default styles of this component can be customized using these Sass variables in your project's <a href="sass.html#the-settings-file">settings file</a>.</p>
+
+    <table class="docs-variable-table">
+      <thead>
+        <tr><th>Name</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+      </thead>
+      <tr>
+        <td class="name"><code>$grid-row-width</code></td>
+        <td>Number</td>
+        <td class="number"><code>$global-width</code></td>
+        <td><p>The maximum width of a row.</p>
+</td>
+      </tr>
+      <tr>
+        <td class="name"><code>$grid-column-count</code></td>
+        <td>Number</td>
+        <td class="number"><code>12</code></td>
+        <td><p>The default column count of a grid. Changing this value affects the logic of the grid mixins, and the number of CSS classes output.</p>
+</td>
+      </tr>
+      <tr>
+        <td class="name"><code>$grid-column-gutter</code></td>
+        <td>Number</td>
+        <td class="number"><code>1.875rem / 2</code></td>
+        <td><p>The amount of space between columns.</p>
+</td>
+      </tr>
+    </table>
+  </section>
+
+  <hr>
+
+  <section>
+    <h3 id="sass-mixins" class="docs-heading"><a class="docs-heading-icon" href="#sass-mixins"></a>Mixins</h3>
+
+    <p>We use these mixins to build the final CSS output of this component. You can use the mixins yourself to build your own class structure out of our components.</p>
+
+    <section >
+      <h4 id="foundation-grid" class="docs-heading"><a class="docs-heading-icon" href="#foundation-grid"></a>foundation-grid</h4>
+
+
+
+      <div class="docs-code">
+        <pre><code><span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> foundation-grid</span>;</span></code></pre>
+      </div>
+
+      <p>Outputs CSS classes for the grid.</p>
+
+
+      
+
+    </section>
+
+    <hr>
+
+
+    <section >
+      <h4 id="grid-column" class="docs-heading"><a class="docs-heading-icon" href="#grid-column"></a>grid-column</h4>
+
+
+
+      <div class="docs-code">
+        <pre><code><span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-column</span>(<span class="hljs-variable">$columns</span>, <span class="hljs-variable">$gutter</span>);</span></code></pre>
+      </div>
+
+      <p>Creates a grid column.</p>
+
+
+      
+
+      <table class="docs-variable-table">
+        <thead>
+          <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        </thead>
+        <tr>
+          <td><code>$columns</code></td>
+          <td>Mixed</td>
+          <td><code>$grid-column-count</code></td>
+          <td><p>Width of the column. Refer to the <code>grid-column()</code> function to see possible values.</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$gutter</code></td>
+          <td>Number</td>
+          <td><code>$grid-column-gutter</code></td>
+          <td><p>Width of the gutters on either side of the column.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+
+    <hr>
+
+
+    <section >
+      <h4 id="grid-col" class="docs-heading"><a class="docs-heading-icon" href="#grid-col"></a>grid-col</h4>
+
+
+
+      <div class="docs-code">
+        <pre><code><span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-col</span>;</span></code></pre>
+      </div>
+
+      <p>Shorthand for <code>grid-col()</code>.</p>
+
+
+      
+
+    </section>
+
+    <hr>
+
+
+    <section >
+      <h4 id="grid-column-collapse" class="docs-heading"><a class="docs-heading-icon" href="#grid-column-collapse"></a>grid-column-collapse</h4>
+
+
+
+      <div class="docs-code">
+        <pre><code><span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-column-collapse</span>;</span></code></pre>
+      </div>
+
+      <p>Collapse the gutters on a column by removing the padding.</p>
+
+
+      
+
+    </section>
+
+    <hr>
+
+
+    <section >
+      <h4 id="grid-column-uncollapse" class="docs-heading"><a class="docs-heading-icon" href="#grid-column-uncollapse"></a>grid-column-uncollapse</h4>
+
+
+
+      <div class="docs-code">
+        <pre><code><span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-column-uncollapse</span>;</span></code></pre>
+      </div>
+
+      <p>Un-collapse the gutters on a column by re-adding the padding.</p>
+
+
+      
+
+    </section>
+
+    <hr>
+
+
+    <section >
+      <h4 id="grid-col-collapse" class="docs-heading"><a class="docs-heading-icon" href="#grid-col-collapse"></a>grid-col-collapse</h4>
+
+
+
+      <div class="docs-code">
+        <pre><code><span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-col-collapse</span>;</span></code></pre>
+      </div>
+
+      <p>Shorthand for <code>grid-column-collapse()</code>.</p>
+
+
+      
+
+    </section>
+
+    <hr>
+
+
+    <section >
+      <h4 id="grid-col-uncollapse" class="docs-heading"><a class="docs-heading-icon" href="#grid-col-uncollapse"></a>grid-col-uncollapse</h4>
+
+
+
+      <div class="docs-code">
+        <pre><code><span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-col-uncollapse</span>;</span></code></pre>
+      </div>
+
+      <p>Shorthand for <code>grid-column-uncollapse()</code>.</p>
+
+
+      
+
+    </section>
+
+    <hr>
+
+
+    <section >
+      <h4 id="grid-layout" class="docs-heading"><a class="docs-heading-icon" href="#grid-layout"></a>grid-layout</h4>
+
+
+
+      <div class="docs-code">
+        <pre><code><span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-layout</span>(<span class="hljs-variable">$n</span>, <span class="hljs-variable">$selector</span>);</span></code></pre>
+      </div>
+
+      <p>Sizes child elements so that <code>$n</code> number of items appear on each row.</p>
+
+
+      
+
+      <table class="docs-variable-table">
+        <thead>
+          <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        </thead>
+        <tr>
+          <td><code>$n</code></td>
+          <td>Number</td>
+          <td><code><span style="color: #999;">None</span></code></td>
+          <td><p>Number of elements to display per row.</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$selector</code></td>
+          <td>String</td>
+          <td><code>'.column, .columns'</code></td>
+          <td><p>Selector(s) to use for child elements.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+
+    <hr>
+
+
+    <section >
+      <h4 id="grid-column-position" class="docs-heading"><a class="docs-heading-icon" href="#grid-column-position"></a>grid-column-position</h4>
+
+
+
+      <div class="docs-code">
+        <pre><code><span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-column-position</span>(<span class="hljs-variable">$position</span>);</span></code></pre>
+      </div>
+
+      <p>Reposition a column.</p>
+
+
+      
+
+      <table class="docs-variable-table">
+        <thead>
+          <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        </thead>
+        <tr>
+          <td><code>$position</code></td>
+          <td>Number</td>
+          <td><code><span style="color: #999;">None</span></code></td>
+          <td><p>Direction and amount to move. The column will move equal to the width of the column count specified. A positive number will push the column to the right, while a negative number will pull it to the left.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+
+    <hr>
+
+
+    <section >
+      <h4 id="grid-column-unposition" class="docs-heading"><a class="docs-heading-icon" href="#grid-column-unposition"></a>grid-column-unposition</h4>
+
+
+
+      <div class="docs-code">
+        <pre><code><span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-column-unposition</span>;</span></code></pre>
+      </div>
+
+      <p>Reset a position definition.</p>
+
+
+      
+
+    </section>
+
+    <hr>
+
+
+    <section >
+      <h4 id="grid-column-offset" class="docs-heading"><a class="docs-heading-icon" href="#grid-column-offset"></a>grid-column-offset</h4>
+
+
+
+      <div class="docs-code">
+        <pre><code><span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-column-offset</span>(<span class="hljs-variable">$n</span>);</span></code></pre>
+      </div>
+
+      <p>Offsets a column to the right by <code>$n</code> columns.</p>
+
+
+      
+
+      <table class="docs-variable-table">
+        <thead>
+          <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        </thead>
+        <tr>
+          <td><code>$n</code></td>
+          <td>Number or List</td>
+          <td><code><span style="color: #999;">None</span></code></td>
+          <td><p>Width to offset by. You can pass in any value accepted by the <code>grid-column()</code> mixin, such as <code>6</code>, <code>50%</code>, or <code>1 of 2</code>.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+
+    <hr>
+
+
+    <section >
+      <h4 id="grid-column-end" class="docs-heading"><a class="docs-heading-icon" href="#grid-column-end"></a>grid-column-end</h4>
+
+
+
+      <div class="docs-code">
+        <pre><code><span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-column-end</span>;</span></code></pre>
+      </div>
+
+      <p>Align a column at the end of the row instead of the beginning.</p>
+
+
+      
+
+    </section>
+
+    <hr>
+
+
+    <section >
+      <h4 id="grid-col-pos" class="docs-heading"><a class="docs-heading-icon" href="#grid-col-pos"></a>grid-col-pos</h4>
+
+
+
+      <div class="docs-code">
+        <pre><code><span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-col-pos</span>;</span></code></pre>
+      </div>
+
+      <p>Shorthand for <code>grid-column-position()</code>.</p>
+
+
+      
+
+    </section>
+
+    <hr>
+
+
+    <section >
+      <h4 id="grid-col-unpos" class="docs-heading"><a class="docs-heading-icon" href="#grid-col-unpos"></a>grid-col-unpos</h4>
+
+
+
+      <div class="docs-code">
+        <pre><code><span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-col-unpos</span>;</span></code></pre>
+      </div>
+
+      <p>Shorthand for <code>grid-column-unposition()</code>.</p>
+
+
+      
+
+    </section>
+
+    <hr>
+
+
+    <section >
+      <h4 id="grid-col-off" class="docs-heading"><a class="docs-heading-icon" href="#grid-col-off"></a>grid-col-off</h4>
+
+
+
+      <div class="docs-code">
+        <pre><code><span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-col-off</span>;</span></code></pre>
+      </div>
+
+      <p>Shorthand for <code>grid-column-offset()</code>.</p>
+
+
+      
+
+    </section>
+
+    <hr>
+
+
+    <section >
+      <h4 id="grid-col-end" class="docs-heading"><a class="docs-heading-icon" href="#grid-col-end"></a>grid-col-end</h4>
+
+
+
+      <div class="docs-code">
+        <pre><code><span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-col-end</span>;</span></code></pre>
+      </div>
+
+      <p>Shorthand for <code>grid-column-end()</code>.</p>
+
+
+      
+
+    </section>
+
+    <hr>
+
+
+    <section >
+      <h4 id="grid-context" class="docs-heading"><a class="docs-heading-icon" href="#grid-context"></a>grid-context</h4>
+
+
+
+      <div class="docs-code">
+        <pre><code><span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-context</span>(<span class="hljs-variable">$columns</span>, <span class="hljs-variable">$root</span>) {</span> }</code></pre>
+      </div>
+
+      <p>Change the behavior of columns defined inside this mixin to use a different column count.</p>
+
+
+      
+
+      <table class="docs-variable-table">
+        <thead>
+          <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        </thead>
+        <tr>
+          <td><code>$columns</code></td>
+          <td>Number</td>
+          <td><code><span style="color: #999;">None</span></code></td>
+          <td><p>Number of columns to use.</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$root</code></td>
+          <td>Booleam</td>
+          <td><code>false</code></td>
+          <td><p>If <code>false</code>, selectors inside this mixin will nest inside the parent selector.
+  If <code>tru</code>, selectors will not nest.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+
+    <hr>
+
+
+    <section >
+      <h4 id="grid-row" class="docs-heading"><a class="docs-heading-icon" href="#grid-row"></a>grid-row</h4>
+
+
+
+      <div class="docs-code">
+        <pre><code><span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-row</span>(<span class="hljs-variable">$columns</span>, <span class="hljs-variable">$behavior</span>, <span class="hljs-variable">$width</span>) {</span> }</code></pre>
+      </div>
+
+      <p>Creates a grid row.</p>
+
+
+      
+
+      <table class="docs-variable-table">
+        <thead>
+          <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        </thead>
+        <tr>
+          <td><code>$columns</code></td>
+          <td>Number</td>
+          <td><code>null</code></td>
+          <td><p>Column count for this row. <code>null</code> will use the default column count.</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$behavior</code></td>
+          <td>Keywords</td>
+          <td><code>null</code></td>
+          <td><p>Modifications to the default grid styles. <code>nest</code> indicates the row will be placed inside another row. <code>collapse</code> indicates that the columns inside this row will not have padding. <code>nest collapse</code> combines both behaviors.</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$width</code></td>
+          <td>Number</td>
+          <td><code>$grid-row-width</code></td>
+          <td><p>Maximum width of the row.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+
+    <hr>
+
+
+    <section >
+      <h4 id="grid-column-row" class="docs-heading"><a class="docs-heading-icon" href="#grid-column-row"></a>grid-column-row</h4>
+
+
+
+      <div class="docs-code">
+        <pre><code><span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-column-row</span>(<span class="hljs-variable">$width</span>, <span class="hljs-variable">$gutter</span>);</span></code></pre>
+      </div>
+
+      <p>Creates a full-width column with proper gutters. Meant to be a replacement for:</p>
+<pre><code class="lang-html">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;small-12 columns&quot;&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+
+      
+
+      <table class="docs-variable-table">
+        <thead>
+          <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        </thead>
+        <tr>
+          <td><code>$width</code></td>
+          <td>Number</td>
+          <td><code>$grid-row-width</code></td>
+          <td><p>The maximum width of the column.</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$gutter</code></td>
+          <td>Number</td>
+          <td><code>$grid-column-gutter</code></td>
+          <td><p>Padding to add to the left and right side.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+
+    <hr>
+
+
+    <section >
+      <h4 id="grid-column-size" class="docs-heading"><a class="docs-heading-icon" href="#grid-column-size"></a>grid-column-size</h4>
+
+
+
+      <div class="docs-code">
+        <pre><code><span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-column-size</span>(<span class="hljs-variable">$width</span>);</span></code></pre>
+      </div>
+
+      <p>Set the width of a grid column.</p>
+
+
+      
+
+      <table class="docs-variable-table">
+        <thead>
+          <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        </thead>
+        <tr>
+          <td><code>$width</code></td>
+          <td>Number or List</td>
+          <td><code>$grid-column-count</code></td>
+          <td><p>Width to make the column. You can pass in any value accepted by the <code>grid-column()</code> function, such as <code>6</code>, <code>50%</code>, or <code>1 of 2</code>.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+
+    <hr>
+
+
+    <section >
+      <h4 id="grid-col-size" class="docs-heading"><a class="docs-heading-icon" href="#grid-col-size"></a>grid-col-size</h4>
+
+
+
+      <div class="docs-code">
+        <pre><code><span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> grid-col-size</span>;</span></code></pre>
+      </div>
+
+      <p>Shorthand for <code>grid-column-size()</code>.</p>
+
+
+      
+
+    </section>
+
+    
+
+
+  </section>
+
+  <hr>
+
+  <section>
+    <h3 id="sass-functions" class="docs-heading"><a class="docs-heading-icon" href="#sass-functions"></a>Functions</h3>
+
+    <section >
+      <h4 id="grid-column" class="docs-heading"><a class="docs-heading-icon" href="#grid-column"></a>grid-column</h4>
+
+
+
+      <div class="docs-code">
+        <pre><code><span class="hljs-function">grid-column</span>(<span class="hljs-variable">$columns</span>)</code></pre>
+      </div>
+
+      <p>Calculates the width of a column based on a number of factors.</p>
+
+
+      
+
+      <table class="docs-variable-table">
+        <thead>
+          <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        </thead>
+        <tr>
+          <td><code>$columns</code></td>
+          <td>Number or List</td>
+          <td><code><span style="color: #999;">None</span></code></td>
+          <td><p>Width of the column. Accepts multiple values:</p>
+<ul>
+<li>A percentage value will make the column that exact size.</li>
+<li>A single digit will make the column span that number of columns wide, taking into account the column count of the parent row.</li>
+<li>A string of the format &quot;x of y&quot; will make a column that is <em>x</em> columns wide, assuming <em>y</em> total columns for the parent.</li>
+</ul>
+</td>
+        </tr>
+      </table>
+    </section>
+
+    <hr>
+    <section >
+      <h4 id="grid-col" class="docs-heading"><a class="docs-heading-icon" href="#grid-col"></a>grid-col</h4>
+
+
+
+      <div class="docs-code">
+        <pre><code><span class="hljs-function">grid-col</span>()</code></pre>
+      </div>
+
+      <p>Shorthand for <code>grid-col()</code>.</p>
+
+
+      
+
+    </section>
+
+    
+  </section>
+
+</section>
+
+
+<hr>
+
+<section class="docs-building-blocks">
+  <h2 id="building-blocks" class="docs-heading"><a class="docs-heading-icon" href="#building-blocks"></a>Building Blocks</h2>
+
+  <p><a href="http://zurb.com/building-blocks">Building Blocks</a> is a ZURB-curated resource with useful code snippets that use Foundation components. Here are a few for this component:</p>
+
+  <div class="row up-1 medium-up-2 large-up-3" data-building-blocks>
+
+  </div>
+</section>
+
+</div>
+
+</div>
+
+</article>
+
+        </div>
+        <div class="medium-3 large-2 medium-pull-9 large-pull-10 columns">
+          <ul class="vertical menu-bar docs-menu">
+            <li class="docs-menu-title">Getting Started</li>
+            <li><a href="installation.html">Installation</a></li>
+            <li><a href="starter-projects.html">Starter Projects</a></li>
+            <li><a href="compatibility.html">Compatibility</a></li>
+            <li><a href="accessibility.html">Accessibility</a></li>
+            <li><a href="kitchen-sink.html">Kitchen Sink</a></li>
+          
+            <li class="docs-menu-title">General</li>
+            <li><a href="global.html">Global Styles</a></li>
+            <li><a href="rtl.html">Right-to-Left Support</a></li>
+            <li><a href="sass.html">Sass</a></li>
+            <li><a href="javascript.html">JavaScript</a></li>
+            <li><a href="media-queries.html">Media Queries</a></li>
+            <li><a href="grid.html">Grid</a></li>
+            <li><a href="flex-grid.html">Flex Grid</a></li>
+            <li><a href="forms.html">Forms</a></li>
+            <li><a href="visibility.html">Visibility Classes</a></li>
+            <li><a href="float-classes.html">Float Classes</a></li>
+          
+            <li class="docs-menu-title">Typography</li>
+            <li><a href="typography-base.html">Base Styles</a></li>
+            <li><a href="typography-helpers.html">Helper Classes</a></li>
+          
+            <li class="docs-menu-title">Controls</li>
+            <li><a href="button.html">Button</a></li>
+            <li><a href="button-group.html">Button Group</a></li>
+            <li><a href="close-button.html">Close Button</a></li>
+            <li><a href="range-slider.html">Range Slider</a></li>
+            <li><a href="switch.html">Switch</a></li>
+          
+            <li class="docs-menu-title">Navigation</li>
+            <li><a href="accordion-menu.html">Accordion Menu</a></li>
+            <li><a href="breadcrumbs.html">Breadcrumbs</a></li>
+            <li><a href="drilldown.html">Drilldown</a></li>
+            <li><a href="dropdown-menu.html">Dropdown Menu</a></li>
+            <li><a href="magellan.html">Magellan</a></li>
+            <li><a href="menu-bar.html">Menu Bar</a></li>
+            <li><a href="pagination.html">Pagination</a></li>
+            <li><a href="responsive-menu.html">Responsive Menu</a></li>
+          
+            <li class="docs-menu-title">Containers</li>
+            <li><a href="accordion.html">Accordion</a></li>
+            <li><a href="callout.html">Callout</a></li>
+            <li><a href="card.html">Card</a></li>
+            <li><a href="dropdown.html">Dropdown</a></li>
+            <li><a href="media-object.html">Media Object</a></li>
+            <li><a href="off-canvas.html">Off-canvas</a></li>
+            <li><a href="reveal.html">Reveal <small>Modal</small></a></li>
+            <li><a href="table.html">Table</a></li>
+            <li><a href="tabs.html">Tabs</a></li>
+          
+            <li class="docs-menu-title">Media</li>
+            <li><a href="badge.html">Badge</a></li>
+            <li><a href="flex-video.html">Flex Video</a></li>
+            <li><a href="label.html">Label</a></li>
+            <li><a href="orbit.html">Orbit <small>Carousel</small></a></li>
+            <li><a href="progress-bar.html">Progress Bar</a></li>
+            <li><a href="thumbnail.html">Thumbnail</a></li>
+            <li><a href="tooltip.html">Tooltip</a></li>
+          
+            <li class="docs-menu-title">Plugins</li>
+            <li><a href="abide.html">Abide <small>Form Validation</small></a></li>
+            <li><a href="equalizer.html">Equalizer <small>Column Alignment</small></a></li>
+            <li><a href="interchange.html">Interchange <small>Responsive Content</small></a></li>
+            <li><a href="toggler.html">Toggler <small>CSS Helper</small></a></li>
+            <li class="docs-menu-ph"><a href="sticky.html">Sticky <small>Header/Sidebar</small></a></li>
+          
+            <li class="docs-menu-title">Sass</li>
+            <li><a href="sass-functions.html">Functions</a></li>
+            <li><a href="sass-mixins.html">Mixins</a></li>
+          
+            <li class="docs-menu-title">Older Versions</li>
+            <li><a href="http://foundation.zurb.com/sites/docs/v/5.5.3">Foundation 5</a></li>
+            <li><a href="http://foundation.zurb.com/sites/docs/v/4.3.2">Foundation 4</a></li>
+            <li><a href="http://foundation.zurb.com/sites/docs/v/3.2.5">Foundation 4</a></li>
+            <li><a href="http://foundation.zurb.com/sites/docs/v/2.2.1">Foundation 2</a></li>
+          </ul>
+          
+        </div>
+      </div>
+
+      <div class="docs-newsletter">
+        <div class="row">
+          <div class="medium-8 columns">
+            <h5>Stay on top of what&rsquo;s happening in <a href="http://zurb.com/responsive">responsive design</a>.</h5>
+            <p>Sign up to receive monthly Responsive Reading highlights. <a href="http://zurb.com/responsive/reading">Read Last Month's Edition &raquo;</a></p>
+          </div>
+          <div class="medium-4 columns">
+            <form action="http://zurb.createsend.com/t/y/s/xlitlu/" method="post" id="subForm">
+              <div class="row collapse margintop-20px">
+                <div class="small-8 medium-8 columns">
+                  <input id="fieldEmail" name="cm-xlitlu-xlitlu" type="email" placeholder="signup@example.com">
+                </div>
+                <div class="small-4 medium-4 columns">
+                  <input type="submit" href="#" class="postfix button" value="Sign Up">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+      <div class="zurb-footer-top bg-fblue">
+        <div class="row property">
+          <div class="medium-4 columns">
+            <div class="property-info">
+              <h3>Foundation for Sites</h3>
+              <p>Foundation is a responsive front-end framework made by <a href="http://zurb.com">ZURB</a>, a product design company in Campbell, CA. This framework is the result of building web products &amp; services since 1998.
+              </p>
+            </div>
+          </div>
+      
+          <div class="medium-8 columns">
+            <div class="row collapse">
+              <div class="medium-4 columns">
+                <div class="learn-links">
+                  <h4 class="hide-for-small">Want more?</h4>
+                  <ul>
+                    <li><a href="http://foundation.zurb.com/apps">Foundation for Apps</a></li>
+                    <li><a href="http://zurb.com/ink/">Ink Responsive Emails</a></li>
+                    <li><a href="http://zurb.com/notable">Notable Design Apps</a></li>
+                    <li><a href="http://zurb.com/university/courses">Training</a></li>
+                    <li><a href="http://zurb.com/library">Design Resources</a></li>
+                  </ul>
+                </div>
+              </div>
+                <div class="medium-4 columns">
+                  <div class="support-links">
+                  <h4 class="hide-for-small">Talk to us</h4>
+                  <p>Tweet us at <br> <a href="https://twitter.com/zurbfoundation">@ZURBfoundation</a></p>
+                  <p><a href="http://foundation.zurb.com/business/business-support.html">Business Support</a></p>
+                  <p>Or check our <a href="http://foundation.zurb.com/support/support.html">support page</a></p>
+                  </div>
+                </div>
+              <div class="medium-4 columns">
+                <div class="connect-links">
+                  <h4 class="hide-for-small">Stay Updated</h4>
+                  <p>Keep up with the latest on Foundation. Find us on <a href="https://github.com/zurb/foundation">Github</a>.</p>
+                  <a href="http://zurb.com/news" class="small button">Stay Connected</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row global">
+          <div class="medium-3 small-6 columns">
+            <a href="http://zurb.com/studios" class="footer-link-block services">
+              <span class="title">Studios</span>
+              <span>Helping more than 200 startups succeed since 1998.</span>
+            </a>
+          </div>
+          <div class="medium-3 small-6 columns">
+            <a href="http://foundation.zurb.com/" class="footer-link-block foundation">
+              <span class="title">Foundation</span>
+              <span>The most advanced front-end framework in the world.</span>
+            </a>
+          </div>
+          <div class="medium-3 small-6 columns">
+            <a href="http://zurb.com/notable" class="footer-link-block apps">
+              <span class="title">Notable Design Apps</span>
+              <span>Prototype, iterate and collect feedback on your products.</span>
+            </a>
+          </div>
+          <div class="medium-3 small-6 columns">
+            <a href="http://zurb.com/university" class="footer-link-block expo">
+              <span class="title">University</span>
+              <span>Ideas, thoughts and design resources shared with you.</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="zurb-footer-bottom">
+        <div class="row">
+          <div class="medium-4 medium-push-8 columns">
+            <ul class="home-social">
+                <li><a href="http://www.twitter.com/ZURB" class="twitter"></a></li>
+                <li><a href="http://www.facebook.com/ZURB" class="facebook"></a></li>
+                <li><a href="http://zurb.com/contact" class="mail"></a></li>
+              </ul>
+           </div>
+           <div class="medium-8 medium-pull-4 columns">
+              <a href="http://www.zurb.com" class="zurb-logo regular"></a>
+              <ul class="zurb-links">
+                <li><a href="http://zurb.com/about">About</a></li>
+                <li><a href="http://zurb.com/blog">Blog</a></li>
+                <li><a href="http://zurb.com/news">News<span class="show-for-medium-up"> &amp; Events</span></a></li>
+                <li><a href="http://zurb.com/contact">Contact</a></li>
+                <li><a href="http://zurb.com/sitemap">Sitemap</a></li>
+             </ul>
+             <p class="copyright">&copy; 1998&dash;2015 ZURB, Inc. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/js/foundation.js"></script>
+    <script src="assets/js/docs.js"></script>
+  </body>
+</html>

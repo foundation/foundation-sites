@@ -1,0 +1,407 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta class="foundation-mq">
+    <title>Foundation for Sites 6.0.0</title>
+
+    <link href="assets/css/docs.css" rel="stylesheet" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
+  </head>
+  <body data-off-canvas id="body">
+
+    <div class="off-canvas">
+      <ul class="vertical menu-bar">
+        <li><a href="#">Foundation</a></li>
+        <li><a href="#">Dot</a></li>
+        <li><a href="#">ZURB</a></li>
+        <li><a href="#">Com</a></li>
+        <li><a href="#">Slash</a></li>
+        <li><a href="#">Sites</a></li>
+      </ul>
+    </div>
+
+    <div class="main-content" data-off-canvas-content>
+      <div class="menu-group docs-topbar">
+        <ul class="menu-bar">
+          <li class="docs-topbar-title"><a href="#" data-open="body"><img src="assets/img/zurb-logo.svg" alt="ZURB"> Foundation</a></li>
+        </ul>
+        <ul class="menu-bar">
+          <li><a href="#">Learn</a></li>
+          <li><a href="#">Develop</a></li>
+          <li><a href="#">Support</a></li>
+          <li><a href="#">Business</a></li>
+          <li><a href="#">Docs</a></li>
+        </ul>
+      </div>
+
+      <div class="expanded column-row docs-header">
+        <h1 class="docs-site-title"><a href="index.html">Foundation for Sites Documentation <em>Version 6.0.0-alpha</em></a></h1>
+      </div>
+
+      <input type="text" class="docs-search" data-docs-search placeholder="Find a page, component, variable, mixin, function...">
+
+      <div class="expanded row">
+        <div class="medium-9 large-10 medium-push-3 large-push-2 columns">
+<article class="docs-component" id="docs-tooltips">
+
+<h1 class="docs-page-title">Tooltips</h1>
+
+<p class="lead docs-page-lead">Tooltips? More like <em>Cooltips</em>. But really though, tooltips are nifty for displaying extended information for a term or action on a page.</p>
+
+<hr>
+
+<div class="row">
+
+<nav class="large-3 large-push-9 columns">
+  <button aria-hidden="true" class="hide-for-large small secondary button" data-toggle="docsTOC">Show Table of Contents</button>
+  <div class="docs-toc hide" id="docsTOC" data-toggler=".hide">
+    <ul class="vertical menu-bar docs-sub-menu" data-docs-toc>
+      <li class="docs-menu-title">On this page:</li>
+    </ul>
+    <ul class="vertical menu-bar docs-sub-menu">
+      <li class="docs-menu-title">Contribute:</li>
+      <li><a href="https://github.com/zurb/foundation-sites-6/edit/master/docs/pages/tooltip.md">Edit this Page</a></li>
+      <li><a href="https://github.com/zurb/foundation-sites-6/issues/new?title=%5BTooltips%5D%20Issue%20Name&body=**How%20can%20we%20reproduce%20this%20bug%3F**%0A%0A1.%20Step%20one%0A2.%20Step%20two%0A3.%20Step%20three%0A%0A**What%20did%20you%20expect%20to%20happen%3F**%0A%0A**What%20happened%20instead%3F**%0A%0A**Test%20case**%0A%0AGive%20us%20a%20link%20to%20a%20%5BCodePen%5D(http%3A%2F%2Fcodepen.io)%20or%20%5BJSFiddle%5D(http%3A%2F%2Fjsfiddle.net)%20that%20recreates%20the%20issue.">Report a Bug</a></li>
+      <li><a href="https://github.com/zurb/foundation-sites-6/tree/master/scss/components/_tooltip.scss">View Source</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="large-9 large-pull-3 columns">
+
+<h2 id="basic-tooltip" class="docs-heading"><a class="docs-heading-icon" href="#basic-tooltip"></a>Basic Tooltip</h2><p>By default, a tooltip appears below the the definition on hover.</p>
+<div class="docs-code" data-docs-code><pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>
+The <span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">data-tooltip</span> <span class="hljs-attribute">aria-haspopup</span>=<span class="hljs-value">"true"</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"has-tip"</span> <span class="hljs-attribute">data-disable-hover</span>=<span class="hljs-value">'false'</span> <span class="hljs-attribute">data-show-on</span>=<span class="hljs-value">'large'</span> <span class="hljs-attribute">tabindex</span>=<span class="hljs-value">1</span> <span class="hljs-attribute">title</span>=<span class="hljs-value">"Fancy word for a beetle."</span>&gt;</span>scarabaeus<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span> hung quite clear of any branches, and, if allowed to fall, would have fallen at our feet. Legrand immediately took the scythe, and cleared with it a circular space, three or four yards in diameter, just beneath the insect, and, having accomplished this, ordered Jupiter to let go the string and come down from the tree.
+<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span></code></pre></div>
+
+<div class="docs-code-live"><p>
+The <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover='false' data-show-on='large' tabindex=1 title="Fancy word for a beetle.">scarabaeus</span> hung quite clear of any branches, and, if allowed to fall, would have fallen at our feet. Legrand immediately took the scythe, and cleared with it a circular space, three or four yards in diameter, just beneath the insect, and, having accomplished this, ordered Jupiter to let go the string and come down from the tree.
+</p></div><hr>
+<h2 id="tooltip-top" class="docs-heading"><a class="docs-heading-icon" href="#tooltip-top"></a>Tooltip Top</h2><p>To get a tip-top top tooltip (lol), just add the class <code>top</code> the <code>span</code> tag.</p>
+<div class="docs-code" data-docs-code><pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>
+...clearing away the brambles with the
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">data-tooltip</span> <span class="hljs-attribute">aria-haspopup</span>=<span class="hljs-value">"true"</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"has-tip top"</span> <span class="hljs-attribute">data-disable-hover</span>=<span class="hljs-value">'false'</span> <span class="hljs-attribute">data-show-on</span>=<span class="hljs-value">'large'</span> <span class="hljs-attribute">tabindex</span>=<span class="hljs-value">2</span> <span class="hljs-attribute">title</span>=<span class="hljs-value">"A tool used for cutting crops."</span>&gt;</span>scythe.<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+At the spot thus attained a second peg was driven, and about this, as a centre, a rude circle, about four feet in diameter, described. Taking now a spade himself, and giving one to Jupiter and one to me, Legrand begged us to set about one to digging as quickly as possible. 
+<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span></code></pre></div>
+
+<div class="docs-code-live"><p>
+...clearing away the brambles with the
+<span data-tooltip aria-haspopup="true" class="has-tip top" data-disable-hover='false' data-show-on='large' tabindex=2 title="A tool used for cutting crops.">scythe.</span>
+At the spot thus attained a second peg was driven, and about this, as a centre, a rude circle, about four feet in diameter, described. Taking now a spade himself, and giving one to Jupiter and one to me, Legrand begged us to set about one to digging as quickly as possible. 
+</p></div><hr>
+<h2 id="tooltip-right-and-left" class="docs-heading"><a class="docs-heading-icon" href="#tooltip-right-and-left"></a>Tooltip Right and Left</h2><p>You can also position the tooltips to the right and left of the word by adding the classes <code>right</code> and <code>left</code> to <code>span</code> tag.</p>
+<div class="docs-code" data-docs-code><pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>
+To speak the truth, I had no especial relish for such amusement at any time, and, at that particular moment, would most willingly have declined it; for the night was coming on, and I felt much fatigued with the exercise already taken; but I saw no mode of escape, and was fearful of disturbing my poor friend's equanimity by a refusal. Could I have depended, indeed, upon Jupiter's aid, I would have had no hesitation in attempting to get the 
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">data-tooltip</span> <span class="hljs-attribute">aria-haspopup</span>=<span class="hljs-value">"true"</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"has-tip right"</span> <span class="hljs-attribute">data-disable-hover</span>=<span class="hljs-value">'false'</span> <span class="hljs-attribute">data-show-on</span>=<span class="hljs-value">'large'</span> <span class="hljs-attribute">tabindex</span>=<span class="hljs-value">3</span> <span class="hljs-attribute">title</span>=<span class="hljs-value">"Someone not using Foundation."</span>&gt;</span>lunatic<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span> 
+home by force; but I was too well assured of the old negro's disposition, to hope that he would assist me, under any circumstances, in a personal contest with his master. I made no doubt that the latter had been infected with some of the innumerable Southern superstitions about money buried, and that his phantasy had received confirmation by the finding of the scarabaeus, or, perhaps, by Jupiter's obstinacy in maintaining it to be "a bug of real gold." A mind disposed to lunacy would readily be led away by such suggestions -especially if chiming in with favorite preconceived ideas -and then I called to mind the poor fellow's speech about the beetle's being "the 
+<span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">data-tooltip</span> <span class="hljs-attribute">aria-haspopup</span>=<span class="hljs-value">"true"</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"has-tip left"</span> <span class="hljs-attribute">data-disable-hover</span>=<span class="hljs-value">'false'</span> <span class="hljs-attribute">data-show-on</span>=<span class="hljs-value">'large'</span> <span class="hljs-attribute">tabindex</span>=<span class="hljs-value">4</span> <span class="hljs-attribute">title</span>=<span class="hljs-value">"Sometimes referred to as a homepage."</span>&gt;</span>index<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span> 
+of his fortune." Upon the whole, I was sadly vexed and puzzled, but, at length, I concluded to make a virtue of necessity -to dig with a good will, and thus the sooner to convince the visionary, by ocular demonstration, of the fallacy of the opinions he entertained. <span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span></code></pre></div>
+
+<div class="docs-code-live"><p>
+To speak the truth, I had no especial relish for such amusement at any time, and, at that particular moment, would most willingly have declined it; for the night was coming on, and I felt much fatigued with the exercise already taken; but I saw no mode of escape, and was fearful of disturbing my poor friend's equanimity by a refusal. Could I have depended, indeed, upon Jupiter's aid, I would have had no hesitation in attempting to get the 
+<span data-tooltip aria-haspopup="true" class="has-tip right" data-disable-hover='false' data-show-on='large' tabindex=3 title="Someone not using Foundation.">lunatic</span> 
+home by force; but I was too well assured of the old negro's disposition, to hope that he would assist me, under any circumstances, in a personal contest with his master. I made no doubt that the latter had been infected with some of the innumerable Southern superstitions about money buried, and that his phantasy had received confirmation by the finding of the scarabaeus, or, perhaps, by Jupiter's obstinacy in maintaining it to be "a bug of real gold." A mind disposed to lunacy would readily be led away by such suggestions -especially if chiming in with favorite preconceived ideas -and then I called to mind the poor fellow's speech about the beetle's being "the 
+<span data-tooltip aria-haspopup="true" class="has-tip left" data-disable-hover='false' data-show-on='large' tabindex=4 title="Sometimes referred to as a homepage.">index</span> 
+of his fortune." Upon the whole, I was sadly vexed and puzzled, but, at length, I concluded to make a virtue of necessity -to dig with a good will, and thus the sooner to convince the visionary, by ocular demonstration, of the fallacy of the opinions he entertained. </p></div><div class="tooltip">Fancy word for a beetle.</div>
+<br/>
+<br/>
+<br/>
+<div class="tooltip top">A tool used for cutting crops.</div>
+<br/>
+<br/>
+<br/>
+<div class="tooltip right">Someone not using Foundation.</div>
+<br/>
+<br/>
+<br/>
+<div class="tooltip left">Sometimes referred to as a homepage.</div>
+
+
+<hr>
+
+<section>
+  <h2 id="sass-reference" class="docs-heading"><a class="docs-heading-icon" href="#sass-reference"></a>Sass Reference</h2>
+
+  <section>
+    <h3 id="sass-variables" class="docs-heading"><a class="docs-heading-icon" href="#sass-variables"></a>Variables</h3>
+
+    <p>The default styles of this component can be customized using these Sass variables in your project's <a href="sass.html#the-settings-file">settings file</a>.</p>
+
+    <table class="docs-variable-table">
+      <thead>
+        <tr><th>Name</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+      </thead>
+      <tr>
+        <td class="name"><code>$tooltip-background-color</code></td>
+        <td>Color</td>
+        <td class="color"><code>$black</code></td>
+        <td><p>Default color of the tooltip background.</p>
+</td>
+      </tr>
+      <tr>
+        <td class="name"><code>$tooltip-padding</code></td>
+        <td>Number</td>
+        <td class="number"><code>0.75rem</code></td>
+        <td><p>Default padding of the tooltip background.</p>
+</td>
+      </tr>
+      <tr>
+        <td class="name"><code>$tooltip-font-size</code></td>
+        <td>Number</td>
+        <td class="number"><code>$small-font-size</code></td>
+        <td><p>Default font size of the tooltip text. By default, we recommend a smaller font size than the body copy.</p>
+</td>
+      </tr>
+      <tr>
+        <td class="name"><code>$tooltip-pip-width</code></td>
+        <td>Number</td>
+        <td class="number"><code>0.75rem</code></td>
+        <td><p>Default pip width for tooltips.</p>
+</td>
+      </tr>
+      <tr>
+        <td class="name"><code>$tooltip-pip-height</code></td>
+        <td>Number</td>
+        <td class="number"><code>$tooltip-pip-width * 0.866</code></td>
+        <td><p>Default pip height for tooltips. This is helpful for calculating the distance of the tooltip from the tooltip word.</p>
+</td>
+      </tr>
+      <tr>
+        <td class="name"><code>$tooltip-pip-offset</code></td>
+        <td>Number</td>
+        <td class="number"><code>1.25rem</code></td>
+        <td><p>Default pip offset for tooltips. This controls how far the pip is indented from the left edge of the tooltip.</p>
+</td>
+      </tr>
+    </table>
+  </section>
+
+
+
+</section>
+
+
+<hr>
+
+<section class="docs-building-blocks">
+  <h2 id="building-blocks" class="docs-heading"><a class="docs-heading-icon" href="#building-blocks"></a>Building Blocks</h2>
+
+  <p><a href="http://zurb.com/building-blocks">Building Blocks</a> is a ZURB-curated resource with useful code snippets that use Foundation components. Here are a few for this component:</p>
+
+  <div class="row up-1 medium-up-2 large-up-3" data-building-blocks>
+
+  </div>
+</section>
+
+</div>
+
+</div>
+
+</article>
+
+        </div>
+        <div class="medium-3 large-2 medium-pull-9 large-pull-10 columns">
+          <ul class="vertical menu-bar docs-menu">
+            <li class="docs-menu-title">Getting Started</li>
+            <li><a href="installation.html">Installation</a></li>
+            <li><a href="starter-projects.html">Starter Projects</a></li>
+            <li><a href="compatibility.html">Compatibility</a></li>
+            <li><a href="accessibility.html">Accessibility</a></li>
+            <li><a href="kitchen-sink.html">Kitchen Sink</a></li>
+          
+            <li class="docs-menu-title">General</li>
+            <li><a href="global.html">Global Styles</a></li>
+            <li><a href="rtl.html">Right-to-Left Support</a></li>
+            <li><a href="sass.html">Sass</a></li>
+            <li><a href="javascript.html">JavaScript</a></li>
+            <li><a href="media-queries.html">Media Queries</a></li>
+            <li><a href="grid.html">Grid</a></li>
+            <li><a href="flex-grid.html">Flex Grid</a></li>
+            <li><a href="forms.html">Forms</a></li>
+            <li><a href="visibility.html">Visibility Classes</a></li>
+            <li><a href="float-classes.html">Float Classes</a></li>
+          
+            <li class="docs-menu-title">Typography</li>
+            <li><a href="typography-base.html">Base Styles</a></li>
+            <li><a href="typography-helpers.html">Helper Classes</a></li>
+          
+            <li class="docs-menu-title">Controls</li>
+            <li><a href="button.html">Button</a></li>
+            <li><a href="button-group.html">Button Group</a></li>
+            <li><a href="close-button.html">Close Button</a></li>
+            <li><a href="range-slider.html">Range Slider</a></li>
+            <li><a href="switch.html">Switch</a></li>
+          
+            <li class="docs-menu-title">Navigation</li>
+            <li><a href="accordion-menu.html">Accordion Menu</a></li>
+            <li><a href="breadcrumbs.html">Breadcrumbs</a></li>
+            <li><a href="drilldown.html">Drilldown</a></li>
+            <li><a href="dropdown-menu.html">Dropdown Menu</a></li>
+            <li><a href="magellan.html">Magellan</a></li>
+            <li><a href="menu-bar.html">Menu Bar</a></li>
+            <li><a href="pagination.html">Pagination</a></li>
+            <li><a href="responsive-menu.html">Responsive Menu</a></li>
+          
+            <li class="docs-menu-title">Containers</li>
+            <li><a href="accordion.html">Accordion</a></li>
+            <li><a href="callout.html">Callout</a></li>
+            <li><a href="card.html">Card</a></li>
+            <li><a href="dropdown.html">Dropdown</a></li>
+            <li><a href="media-object.html">Media Object</a></li>
+            <li><a href="off-canvas.html">Off-canvas</a></li>
+            <li><a href="reveal.html">Reveal <small>Modal</small></a></li>
+            <li><a href="table.html">Table</a></li>
+            <li><a href="tabs.html">Tabs</a></li>
+          
+            <li class="docs-menu-title">Media</li>
+            <li><a href="badge.html">Badge</a></li>
+            <li><a href="flex-video.html">Flex Video</a></li>
+            <li><a href="label.html">Label</a></li>
+            <li><a href="orbit.html">Orbit <small>Carousel</small></a></li>
+            <li><a href="progress-bar.html">Progress Bar</a></li>
+            <li><a href="thumbnail.html">Thumbnail</a></li>
+            <li><a href="tooltip.html">Tooltip</a></li>
+          
+            <li class="docs-menu-title">Plugins</li>
+            <li><a href="abide.html">Abide <small>Form Validation</small></a></li>
+            <li><a href="equalizer.html">Equalizer <small>Column Alignment</small></a></li>
+            <li><a href="interchange.html">Interchange <small>Responsive Content</small></a></li>
+            <li><a href="toggler.html">Toggler <small>CSS Helper</small></a></li>
+            <li class="docs-menu-ph"><a href="sticky.html">Sticky <small>Header/Sidebar</small></a></li>
+          
+            <li class="docs-menu-title">Sass</li>
+            <li><a href="sass-functions.html">Functions</a></li>
+            <li><a href="sass-mixins.html">Mixins</a></li>
+          
+            <li class="docs-menu-title">Older Versions</li>
+            <li><a href="http://foundation.zurb.com/sites/docs/v/5.5.3">Foundation 5</a></li>
+            <li><a href="http://foundation.zurb.com/sites/docs/v/4.3.2">Foundation 4</a></li>
+            <li><a href="http://foundation.zurb.com/sites/docs/v/3.2.5">Foundation 4</a></li>
+            <li><a href="http://foundation.zurb.com/sites/docs/v/2.2.1">Foundation 2</a></li>
+          </ul>
+          
+        </div>
+      </div>
+
+      <div class="docs-newsletter">
+        <div class="row">
+          <div class="medium-8 columns">
+            <h5>Stay on top of what&rsquo;s happening in <a href="http://zurb.com/responsive">responsive design</a>.</h5>
+            <p>Sign up to receive monthly Responsive Reading highlights. <a href="http://zurb.com/responsive/reading">Read Last Month's Edition &raquo;</a></p>
+          </div>
+          <div class="medium-4 columns">
+            <form action="http://zurb.createsend.com/t/y/s/xlitlu/" method="post" id="subForm">
+              <div class="row collapse margintop-20px">
+                <div class="small-8 medium-8 columns">
+                  <input id="fieldEmail" name="cm-xlitlu-xlitlu" type="email" placeholder="signup@example.com">
+                </div>
+                <div class="small-4 medium-4 columns">
+                  <input type="submit" href="#" class="postfix button" value="Sign Up">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+      <div class="zurb-footer-top bg-fblue">
+        <div class="row property">
+          <div class="medium-4 columns">
+            <div class="property-info">
+              <h3>Foundation for Sites</h3>
+              <p>Foundation is a responsive front-end framework made by <a href="http://zurb.com">ZURB</a>, a product design company in Campbell, CA. This framework is the result of building web products &amp; services since 1998.
+              </p>
+            </div>
+          </div>
+      
+          <div class="medium-8 columns">
+            <div class="row collapse">
+              <div class="medium-4 columns">
+                <div class="learn-links">
+                  <h4 class="hide-for-small">Want more?</h4>
+                  <ul>
+                    <li><a href="http://foundation.zurb.com/apps">Foundation for Apps</a></li>
+                    <li><a href="http://zurb.com/ink/">Ink Responsive Emails</a></li>
+                    <li><a href="http://zurb.com/notable">Notable Design Apps</a></li>
+                    <li><a href="http://zurb.com/university/courses">Training</a></li>
+                    <li><a href="http://zurb.com/library">Design Resources</a></li>
+                  </ul>
+                </div>
+              </div>
+                <div class="medium-4 columns">
+                  <div class="support-links">
+                  <h4 class="hide-for-small">Talk to us</h4>
+                  <p>Tweet us at <br> <a href="https://twitter.com/zurbfoundation">@ZURBfoundation</a></p>
+                  <p><a href="http://foundation.zurb.com/business/business-support.html">Business Support</a></p>
+                  <p>Or check our <a href="http://foundation.zurb.com/support/support.html">support page</a></p>
+                  </div>
+                </div>
+              <div class="medium-4 columns">
+                <div class="connect-links">
+                  <h4 class="hide-for-small">Stay Updated</h4>
+                  <p>Keep up with the latest on Foundation. Find us on <a href="https://github.com/zurb/foundation">Github</a>.</p>
+                  <a href="http://zurb.com/news" class="small button">Stay Connected</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row global">
+          <div class="medium-3 small-6 columns">
+            <a href="http://zurb.com/studios" class="footer-link-block services">
+              <span class="title">Studios</span>
+              <span>Helping more than 200 startups succeed since 1998.</span>
+            </a>
+          </div>
+          <div class="medium-3 small-6 columns">
+            <a href="http://foundation.zurb.com/" class="footer-link-block foundation">
+              <span class="title">Foundation</span>
+              <span>The most advanced front-end framework in the world.</span>
+            </a>
+          </div>
+          <div class="medium-3 small-6 columns">
+            <a href="http://zurb.com/notable" class="footer-link-block apps">
+              <span class="title">Notable Design Apps</span>
+              <span>Prototype, iterate and collect feedback on your products.</span>
+            </a>
+          </div>
+          <div class="medium-3 small-6 columns">
+            <a href="http://zurb.com/university" class="footer-link-block expo">
+              <span class="title">University</span>
+              <span>Ideas, thoughts and design resources shared with you.</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="zurb-footer-bottom">
+        <div class="row">
+          <div class="medium-4 medium-push-8 columns">
+            <ul class="home-social">
+                <li><a href="http://www.twitter.com/ZURB" class="twitter"></a></li>
+                <li><a href="http://www.facebook.com/ZURB" class="facebook"></a></li>
+                <li><a href="http://zurb.com/contact" class="mail"></a></li>
+              </ul>
+           </div>
+           <div class="medium-8 medium-pull-4 columns">
+              <a href="http://www.zurb.com" class="zurb-logo regular"></a>
+              <ul class="zurb-links">
+                <li><a href="http://zurb.com/about">About</a></li>
+                <li><a href="http://zurb.com/blog">Blog</a></li>
+                <li><a href="http://zurb.com/news">News<span class="show-for-medium-up"> &amp; Events</span></a></li>
+                <li><a href="http://zurb.com/contact">Contact</a></li>
+                <li><a href="http://zurb.com/sitemap">Sitemap</a></li>
+             </ul>
+             <p class="copyright">&copy; 1998&dash;2015 ZURB, Inc. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/js/foundation.js"></script>
+    <script src="assets/js/docs.js"></script>
+  </body>
+</html>

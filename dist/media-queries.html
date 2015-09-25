@@ -1,0 +1,556 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta class="foundation-mq">
+    <title>Foundation for Sites 6.0.0</title>
+
+    <link href="assets/css/docs.css" rel="stylesheet" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
+  </head>
+  <body data-off-canvas id="body">
+
+    <div class="off-canvas">
+      <ul class="vertical menu-bar">
+        <li><a href="#">Foundation</a></li>
+        <li><a href="#">Dot</a></li>
+        <li><a href="#">ZURB</a></li>
+        <li><a href="#">Com</a></li>
+        <li><a href="#">Slash</a></li>
+        <li><a href="#">Sites</a></li>
+      </ul>
+    </div>
+
+    <div class="main-content" data-off-canvas-content>
+      <div class="menu-group docs-topbar">
+        <ul class="menu-bar">
+          <li class="docs-topbar-title"><a href="#" data-open="body"><img src="assets/img/zurb-logo.svg" alt="ZURB"> Foundation</a></li>
+        </ul>
+        <ul class="menu-bar">
+          <li><a href="#">Learn</a></li>
+          <li><a href="#">Develop</a></li>
+          <li><a href="#">Support</a></li>
+          <li><a href="#">Business</a></li>
+          <li><a href="#">Docs</a></li>
+        </ul>
+      </div>
+
+      <div class="expanded column-row docs-header">
+        <h1 class="docs-site-title"><a href="index.html">Foundation for Sites Documentation <em>Version 6.0.0-alpha</em></a></h1>
+      </div>
+
+      <input type="text" class="docs-search" data-docs-search placeholder="Find a page, component, variable, mixin, function...">
+
+      <div class="expanded row">
+        <div class="medium-9 large-10 medium-push-3 large-push-2 columns">
+<article class="docs-component" id="docs-media-queries">
+
+<h1 class="docs-page-title">Media Queries</h1>
+
+<p class="lead docs-page-lead">CSS media queries allow us to adjust the display and orientation of content at different screen sizes.</p>
+
+<hr>
+
+<div class="row">
+
+<nav class="large-3 large-push-9 columns">
+  <button aria-hidden="true" class="hide-for-large small secondary button" data-toggle="docsTOC">Show Table of Contents</button>
+  <div class="docs-toc hide" id="docsTOC" data-toggler=".hide">
+    <ul class="vertical menu-bar docs-sub-menu" data-docs-toc>
+      <li class="docs-menu-title">On this page:</li>
+    </ul>
+    <ul class="vertical menu-bar docs-sub-menu">
+      <li class="docs-menu-title">Contribute:</li>
+      <li><a href="https://github.com/zurb/foundation-sites-6/edit/master/docs/pages/media-queries.md">Edit this Page</a></li>
+      <li><a href="https://github.com/zurb/foundation-sites-6/issues/new?title=%5BMedia%20Queries%5D%20Issue%20Name&body=**How%20can%20we%20reproduce%20this%20bug%3F**%0A%0A1.%20Step%20one%0A2.%20Step%20two%0A3.%20Step%20three%0A%0A**What%20did%20you%20expect%20to%20happen%3F**%0A%0A**What%20happened%20instead%3F**%0A%0A**Test%20case**%0A%0AGive%20us%20a%20link%20to%20a%20%5BCodePen%5D(http%3A%2F%2Fcodepen.io)%20or%20%5BJSFiddle%5D(http%3A%2F%2Fjsfiddle.net)%20that%20recreates%20the%20issue.">Report a Bug</a></li>
+      <li><a href="https://github.com/zurb/foundation-sites-6/tree/master/scss/util/_breakpoint.scss">View Source</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="large-9 large-pull-3 columns">
+
+<h2 id="default-media-queries" class="docs-heading"><a class="docs-heading-icon" href="#default-media-queries"></a>Default Media Queries</h2><p>Foundation for Sites has three core breakpoint ranges.</p>
+<ul>
+<li><strong>Small:</strong> any screen.</li>
+<li><strong>Medium:</strong> any screen 640 pixels or wider.</li>
+<li><strong>Large:</strong> any screen 1024 pixels or wider.</li>
+</ul>
+<p>Many components can be modified at different screen sizes using special <em>breakpoint classes</em>. The grid is the most obvious example. In the code below, the left-hand column is six columns wide on small screens, hence <code>.small-6</code>. On medium-sized screens, the class <code>.medium-4</code> overrides the small style, changing the column to be four wide.</p>
+<div class="docs-code" data-docs-code><pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"row"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"small-6 medium-4 columns"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"small-6 medium-8 columns"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span></code></pre></div><hr>
+<h2 id="changing-the-breakpoints" class="docs-heading"><a class="docs-heading-icon" href="#changing-the-breakpoints"></a>Changing the Breakpoints</h2><p>If you&#39;re using the Sass version of Foundation, the default breakpoints can be changed. The names of the breakpoints, and their widths, are stored in a <code>$breakpoints</code> variable in the settings file.</p>
+<div class="docs-code" data-docs-code><pre><code class="scss"><span class="hljs-variable">$breakpoints</span><span class="hljs-value">: (
+  small: <span class="hljs-function">rem-calc</span>(<span class="hljs-number">0</span>),
+  medium: <span class="hljs-function">rem-calc</span>(<span class="hljs-number">640</span>),
+  large: <span class="hljs-function">rem-calc</span>(<span class="hljs-number">1024</span>),
+  xlarge: <span class="hljs-function">rem-calc</span>(<span class="hljs-number">1200</span>),
+  xxlarge: <span class="hljs-function">rem-calc</span>(<span class="hljs-number">1440</span>),
+);</span></code></pre></div><p>Changing the widths of any of the breakpoints is as easy as changing the pixel values in this map. Note that here there are two extra breakpoints: <code>xlarge</code> and <code>xxlarge</code>. We don&#39;t use these for any components, and also don&#39;t output any CSS classes that use them by default.</p>
+<p>You can change that by modifying the <code>$breakpoint-classes</code> variable in your settings file. This is a list of breakpoint names. Adding or removing names from the list will change the CSS class output. It looks like this by default:</p>
+<div class="docs-code" data-docs-code><pre><code class="scss"><span class="hljs-variable">$breakpoint-classes</span><span class="hljs-value">: (small medium large);</span></code></pre></div><p>For example, to get <code>.xlarge</code> classes in your CSS, for use in the grid, menu bar, and more, just add it to the end of the list:</p>
+<div class="docs-code" data-docs-code><pre><code class="scss"><span class="hljs-variable">$breakpoint-classes</span><span class="hljs-value">: (small medium large xlarge);</span></code></pre></div><hr>
+<h2 id="sass" class="docs-heading"><a class="docs-heading-icon" href="#sass"></a>Sass</h2><h3 id="the-breakpoint-mixin" class="docs-heading"><a class="docs-heading-icon" href="#the-breakpoint-mixin"></a>The Breakpoint Mixin</h3><p>Our <code>breakpoint()</code> mixin makes it easy to write media queries. You can use the named breakpoints, or a custom pixel, rem, or em value.</p>
+<p>To use the mixin, call it with <code>@include</code>, and then include the CSS content you want inside the curly braces.</p>
+<div class="docs-code" data-docs-code><pre><code class="scss"><span class="hljs-class">.element</span> {
+  <span class="hljs-comment">// Only affects medium screens and larger</span>
+  <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> breakpoint</span>(medium) {</span>
+    <span class="hljs-comment">// All CSS in here goes inside the media query</span>
+  }
+}</code></pre></div><p>The behavior of the media query can be changed by adding the keyword <code>down</code> or <code>only</code> after the breakpoint value, separated by a space.</p>
+<div class="docs-code" data-docs-code><pre><code class="scss"><span class="hljs-class">.element</span> {
+  <span class="hljs-comment">// Only affects medium screens and smaller</span>
+  <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> breakpoint</span>(medium<span class="hljs-preprocessor"> down</span>) {</span> }
+  <span class="hljs-comment">// Only affects medium screens, not small or large</span>
+  <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> breakpoint</span>(medium<span class="hljs-preprocessor"> only</span>) {</span> }
+}</code></pre></div><p>It&#39;s also possible to pass in custom values. You can enter a pixel, rem, or em value&mdash;all values are converted to em at the end.</p>
+<div class="docs-code" data-docs-code><pre><code class="scss"><span class="hljs-class">.element</span> {
+  <span class="hljs-comment">// Converted to 20em</span>
+  <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> breakpoint</span>(<span class="hljs-number">320px</span>) {</span> }
+  <span class="hljs-comment">// Unitless values are assumed to be pixels</span>
+  <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> breakpoint</span>(<span class="hljs-number">320</span>) {</span> }
+  <span class="hljs-comment">// Converted to 40em</span>
+  <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> breakpoint</span>(<span class="hljs-number">40rem</span>) {</span> }
+}</code></pre></div><p>The <code>breakpoint()</code> mixin accepts multiple parameters, allowing you to chain media queries. You can even mix preset breakpoints with custom ones.</p>
+<div class="docs-code" data-docs-code><pre><code class="scss"><span class="hljs-class">.element</span> {
+  <span class="hljs-comment">// Create a custom range</span>
+  <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> breakpoint</span>(medium,<span class="hljs-preprocessor"> 1000px</span><span class="hljs-preprocessor"> down</span>) {</span> }
+}</code></pre></div><p>Lastly, there are three special media queries that are not width-based: <code>portrait</code>, <code>landscape</code>, and <code>retina</code>. Using these keywords with the <code>breakpoint()</code> mixin will output a media query for device orientation or pixel density, rather than screen width.</p>
+<div class="docs-code" data-docs-code><pre><code class="scss"><span class="hljs-class">.element</span> {
+  <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> breakpoint</span>(landscape) {</span>
+    <span class="hljs-comment">// CSS for landscape-oriented devices only</span>
+  }
+  <span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> breakpoint</span>(retina) {</span>
+    <span class="hljs-comment">// CSS for high-resolution displays only</span>
+  }
+}</code></pre></div><hr>
+<h3 id="breakpoint-function" class="docs-heading"><a class="docs-heading-icon" href="#breakpoint-function"></a>Breakpoint Function</h3><p>The functionality of the <code>breakpoint()</code> mixin comes from an internal function, also called <code>breakpoint()</code>. If you want to create your own media queries, you can use the <code>breakpoint()</code> function to access the logic of the mixin directly.</p>
+<div class="docs-code" data-docs-code><pre><code class="scss"><span class="hljs-at_rule">@<span class="hljs-keyword">media</span><span class="hljs-preprocessor"> screen</span><span class="hljs-preprocessor"> and</span> #{</span><span class="hljs-function">breakpoint</span>(<span class="hljs-value">medium</span>)} {
+  <span class="hljs-comment">// Medium and up styles</span>
+}</code></pre></div><hr>
+<h2 id="javascript" class="docs-heading"><a class="docs-heading-icon" href="#javascript"></a>JavaScript</h2><h3 id="working-with-media-queries" class="docs-heading"><a class="docs-heading-icon" href="#working-with-media-queries"></a>Working with Media Queries</h3><p>The Foundation JavaScript includes a set of helper functions for working with media queries. They&#39;re all on the <code>Foundation.MediaQuery</code> object.</p>
+<p>Get the name of the current breakpoint with <code>MediaQuery.current</code>.</p>
+<div class="docs-code" data-docs-code><pre><code class="js">Foundation.MediaQuery.current <span class="hljs-comment">// =&gt; 'small', 'medium', etc.</span></code></pre></div><p>To see if the screen is currently a certain breakpoint or larger, use <code>MediaQuery.atLeast</code>.</p>
+<div class="docs-code" data-docs-code><pre><code class="js"><span class="hljs-keyword">if</span> (Foundation.MediaQuery.atLeast(<span class="hljs-string">'medium'</span>)) {
+  <span class="hljs-comment">// True if medium or large</span>
+  <span class="hljs-comment">// False if small</span>
+}</code></pre></div><p>To get the media query of a breakpoint, use <code>MediaQuery.get</code>.</p>
+<div class="docs-code" data-docs-code><pre><code class="js">Foundation.MediaQuery.get(<span class="hljs-string">'medium'</span>) <span class="hljs-comment">// =&gt; only screen and (min-width: 640px)</span></code></pre></div><hr>
+<h3 id="watching-for-breakpoint-changes" class="docs-heading"><a class="docs-heading-icon" href="#watching-for-breakpoint-changes"></a>Watching for Breakpoint Changes</h3><p>The media query helper broadcasts an event on the window every time the breakpoint changes. We use this internally with plugins like Interchange to detect a shift in breakpoint. You can also subscribe to the event yourself.</p>
+<div class="docs-code" data-docs-code><pre><code class="js">$(<span class="hljs-built_in">window</span>).on(<span class="hljs-string">'changed.zf.mediaquery'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event, name</span>) </span>{
+  <span class="hljs-comment">// name is the name of the breakpoint</span>
+});</code></pre></div>
+
+<hr>
+
+<section>
+  <h2 id="sass-reference" class="docs-heading"><a class="docs-heading-icon" href="#sass-reference"></a>Sass Reference</h2>
+
+  <section>
+    <h3 id="sass-variables" class="docs-heading"><a class="docs-heading-icon" href="#sass-variables"></a>Variables</h3>
+
+    <p>The default styles of this component can be customized using these Sass variables in your project's <a href="sass.html#the-settings-file">settings file</a>.</p>
+
+    <table class="docs-variable-table">
+      <thead>
+        <tr><th>Name</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+      </thead>
+      <tr>
+        <td class="name"><code>$breakpoints</code></td>
+        <td>Map</td>
+        <td class="map"><code>
+  small: 0<br>
+  medium: 640px<br>
+  large: 1024px<br>
+  xlarge: 1200px<br>
+  xxlarge: 1440px<br>
+</code></td>
+        <td><p>A list of named breakpoints. You can use these with the <code>breakpoint()</code> mixin to quickly create media queries.</p>
+</td>
+      </tr>
+      <tr>
+        <td class="name"><code>$breakpoint-classes</code></td>
+        <td>List</td>
+        <td class="list"><code>small medium large</code></td>
+        <td><p>All of the names in this list will be output as classes in your CSS, like <code>.small-12</code>, <code>.medium-6</code>, and so on. Each value in this list must also be in the <code>$breakpoints</code> map.</p>
+</td>
+      </tr>
+    </table>
+  </section>
+
+  <hr>
+
+  <section>
+    <h3 id="sass-mixins" class="docs-heading"><a class="docs-heading-icon" href="#sass-mixins"></a>Mixins</h3>
+
+    <p>We use these mixins to build the final CSS output of this component. You can use the mixins yourself to build your own class structure out of our components.</p>
+
+    <section >
+      <h4 id="breakpoint" class="docs-heading"><a class="docs-heading-icon" href="#breakpoint"></a>breakpoint</h4>
+
+
+
+      <div class="docs-code">
+        <pre><code><span class="hljs-at_rule">@<span class="hljs-keyword">include</span><span class="hljs-preprocessor"> breakpoint</span>(<span class="hljs-variable">$values</span>...) {</span> }</code></pre>
+      </div>
+
+      <p>Wraps a media query around the content you put inside the mixin. This mixin accepts a number of values:</p>
+<ul>
+<li>If a string is passed, the mixin will look for it in the <code>$breakpoints</code> map, and use a media query there.</li>
+<li>If a pixel value is passed, it will be converted to an em value using <code>$rem-base</code>.</li>
+<li>If a rem value is passed, the unit will be changed to em.</li>
+<li>If an em value is passed, the value will be used as-is.
+Passing in additional parameters will add additional values to the media query.</li>
+</ul>
+
+
+      
+
+      <table class="docs-variable-table">
+        <thead>
+          <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        </thead>
+        <tr>
+          <td><code>$values...</code></td>
+          <td>Keyword or Number</td>
+          <td><code><span style="color: #999;">None</span></code></td>
+          <td><p>Breakpoint name, or px, rem, or em value to process.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+
+    
+
+
+  </section>
+
+  <hr>
+
+  <section>
+    <h3 id="sass-functions" class="docs-heading"><a class="docs-heading-icon" href="#sass-functions"></a>Functions</h3>
+
+    <section >
+      <h4 id="breakpoint" class="docs-heading"><a class="docs-heading-icon" href="#breakpoint"></a>breakpoint</h4>
+
+
+
+      <div class="docs-code">
+        <pre><code><span class="hljs-function">breakpoint</span>(<span class="hljs-variable">$val</span>)</code></pre>
+      </div>
+
+      <p>Generates a media query string matching the input value. Refer to the documentation for the <code>breakpoint()</code> mixin to see what the possible inputs are.</p>
+
+
+      
+
+      <table class="docs-variable-table">
+        <thead>
+          <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        </thead>
+        <tr>
+          <td><code>$val</code></td>
+          <td>Keyword or Number</td>
+          <td><code><span style="color: #999;">None</span></code></td>
+          <td><p>Breakpoint name, or px, rem, or em value to process.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+
+    <hr>
+    <section >
+      <h4 id="-zf-bp-serialize" class="docs-heading"><a class="docs-heading-icon" href="#-zf-bp-serialize"></a>-zf-bp-serialize</h4>
+
+
+
+      <div class="docs-code">
+        <pre><code><span class="hljs-function">-zf-bp-serialize</span>(<span class="hljs-variable">$map</span>)</code></pre>
+      </div>
+
+      <p>Convers the breakpoints map to a URL-encoded string, like this: <code>key1=value1&amp;key2=value2</code>. The value is then dropped into the CSS for a special <code>&lt;meta&gt;</code> tag, which is read by the Foundation JavaScript. This is how we transfer values from Sass to JavaScript, so they can be defined in one place.</p>
+
+
+      
+
+      <table class="docs-variable-table">
+        <thead>
+          <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        </thead>
+        <tr>
+          <td><code>$map</code></td>
+          <td>Map</td>
+          <td><code><span style="color: #999;">None</span></code></td>
+          <td><p>Map to convert.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+
+    <hr>
+    <section >
+      <h4 id="-zf-map-next" class="docs-heading"><a class="docs-heading-icon" href="#-zf-map-next"></a>-zf-map-next</h4>
+
+
+
+      <div class="docs-code">
+        <pre><code><span class="hljs-function">-zf-map-next</span>(<span class="hljs-variable">$map</span>, <span class="hljs-variable">$key</span>)</code></pre>
+      </div>
+
+      <p>Find the next key in a map.</p>
+
+
+      
+
+      <table class="docs-variable-table">
+        <thead>
+          <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        </thead>
+        <tr>
+          <td><code>$map</code></td>
+          <td>Map</td>
+          <td><code><span style="color: #999;">None</span></code></td>
+          <td><p>Map to traverse.</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$key</code></td>
+          <td>Mixed</td>
+          <td><code><span style="color: #999;">None</span></code></td>
+          <td><p>Key to use as a starting point.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+
+    
+  </section>
+
+</section>
+
+
+<hr>
+
+<section class="docs-building-blocks">
+  <h2 id="building-blocks" class="docs-heading"><a class="docs-heading-icon" href="#building-blocks"></a>Building Blocks</h2>
+
+  <p><a href="http://zurb.com/building-blocks">Building Blocks</a> is a ZURB-curated resource with useful code snippets that use Foundation components. Here are a few for this component:</p>
+
+  <div class="row up-1 medium-up-2 large-up-3" data-building-blocks>
+
+  </div>
+</section>
+
+</div>
+
+</div>
+
+</article>
+
+        </div>
+        <div class="medium-3 large-2 medium-pull-9 large-pull-10 columns">
+          <ul class="vertical menu-bar docs-menu">
+            <li class="docs-menu-title">Getting Started</li>
+            <li><a href="installation.html">Installation</a></li>
+            <li><a href="starter-projects.html">Starter Projects</a></li>
+            <li><a href="compatibility.html">Compatibility</a></li>
+            <li><a href="accessibility.html">Accessibility</a></li>
+            <li><a href="kitchen-sink.html">Kitchen Sink</a></li>
+          
+            <li class="docs-menu-title">General</li>
+            <li><a href="global.html">Global Styles</a></li>
+            <li><a href="rtl.html">Right-to-Left Support</a></li>
+            <li><a href="sass.html">Sass</a></li>
+            <li><a href="javascript.html">JavaScript</a></li>
+            <li><a href="media-queries.html">Media Queries</a></li>
+            <li><a href="grid.html">Grid</a></li>
+            <li><a href="flex-grid.html">Flex Grid</a></li>
+            <li><a href="forms.html">Forms</a></li>
+            <li><a href="visibility.html">Visibility Classes</a></li>
+            <li><a href="float-classes.html">Float Classes</a></li>
+          
+            <li class="docs-menu-title">Typography</li>
+            <li><a href="typography-base.html">Base Styles</a></li>
+            <li><a href="typography-helpers.html">Helper Classes</a></li>
+          
+            <li class="docs-menu-title">Controls</li>
+            <li><a href="button.html">Button</a></li>
+            <li><a href="button-group.html">Button Group</a></li>
+            <li><a href="close-button.html">Close Button</a></li>
+            <li><a href="range-slider.html">Range Slider</a></li>
+            <li><a href="switch.html">Switch</a></li>
+          
+            <li class="docs-menu-title">Navigation</li>
+            <li><a href="accordion-menu.html">Accordion Menu</a></li>
+            <li><a href="breadcrumbs.html">Breadcrumbs</a></li>
+            <li><a href="drilldown.html">Drilldown</a></li>
+            <li><a href="dropdown-menu.html">Dropdown Menu</a></li>
+            <li><a href="magellan.html">Magellan</a></li>
+            <li><a href="menu-bar.html">Menu Bar</a></li>
+            <li><a href="pagination.html">Pagination</a></li>
+            <li><a href="responsive-menu.html">Responsive Menu</a></li>
+          
+            <li class="docs-menu-title">Containers</li>
+            <li><a href="accordion.html">Accordion</a></li>
+            <li><a href="callout.html">Callout</a></li>
+            <li><a href="card.html">Card</a></li>
+            <li><a href="dropdown.html">Dropdown</a></li>
+            <li><a href="media-object.html">Media Object</a></li>
+            <li><a href="off-canvas.html">Off-canvas</a></li>
+            <li><a href="reveal.html">Reveal <small>Modal</small></a></li>
+            <li><a href="table.html">Table</a></li>
+            <li><a href="tabs.html">Tabs</a></li>
+          
+            <li class="docs-menu-title">Media</li>
+            <li><a href="badge.html">Badge</a></li>
+            <li><a href="flex-video.html">Flex Video</a></li>
+            <li><a href="label.html">Label</a></li>
+            <li><a href="orbit.html">Orbit <small>Carousel</small></a></li>
+            <li><a href="progress-bar.html">Progress Bar</a></li>
+            <li><a href="thumbnail.html">Thumbnail</a></li>
+            <li><a href="tooltip.html">Tooltip</a></li>
+          
+            <li class="docs-menu-title">Plugins</li>
+            <li><a href="abide.html">Abide <small>Form Validation</small></a></li>
+            <li><a href="equalizer.html">Equalizer <small>Column Alignment</small></a></li>
+            <li><a href="interchange.html">Interchange <small>Responsive Content</small></a></li>
+            <li><a href="toggler.html">Toggler <small>CSS Helper</small></a></li>
+            <li class="docs-menu-ph"><a href="sticky.html">Sticky <small>Header/Sidebar</small></a></li>
+          
+            <li class="docs-menu-title">Sass</li>
+            <li><a href="sass-functions.html">Functions</a></li>
+            <li><a href="sass-mixins.html">Mixins</a></li>
+          
+            <li class="docs-menu-title">Older Versions</li>
+            <li><a href="http://foundation.zurb.com/sites/docs/v/5.5.3">Foundation 5</a></li>
+            <li><a href="http://foundation.zurb.com/sites/docs/v/4.3.2">Foundation 4</a></li>
+            <li><a href="http://foundation.zurb.com/sites/docs/v/3.2.5">Foundation 4</a></li>
+            <li><a href="http://foundation.zurb.com/sites/docs/v/2.2.1">Foundation 2</a></li>
+          </ul>
+          
+        </div>
+      </div>
+
+      <div class="docs-newsletter">
+        <div class="row">
+          <div class="medium-8 columns">
+            <h5>Stay on top of what&rsquo;s happening in <a href="http://zurb.com/responsive">responsive design</a>.</h5>
+            <p>Sign up to receive monthly Responsive Reading highlights. <a href="http://zurb.com/responsive/reading">Read Last Month's Edition &raquo;</a></p>
+          </div>
+          <div class="medium-4 columns">
+            <form action="http://zurb.createsend.com/t/y/s/xlitlu/" method="post" id="subForm">
+              <div class="row collapse margintop-20px">
+                <div class="small-8 medium-8 columns">
+                  <input id="fieldEmail" name="cm-xlitlu-xlitlu" type="email" placeholder="signup@example.com">
+                </div>
+                <div class="small-4 medium-4 columns">
+                  <input type="submit" href="#" class="postfix button" value="Sign Up">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+      <div class="zurb-footer-top bg-fblue">
+        <div class="row property">
+          <div class="medium-4 columns">
+            <div class="property-info">
+              <h3>Foundation for Sites</h3>
+              <p>Foundation is a responsive front-end framework made by <a href="http://zurb.com">ZURB</a>, a product design company in Campbell, CA. This framework is the result of building web products &amp; services since 1998.
+              </p>
+            </div>
+          </div>
+      
+          <div class="medium-8 columns">
+            <div class="row collapse">
+              <div class="medium-4 columns">
+                <div class="learn-links">
+                  <h4 class="hide-for-small">Want more?</h4>
+                  <ul>
+                    <li><a href="http://foundation.zurb.com/apps">Foundation for Apps</a></li>
+                    <li><a href="http://zurb.com/ink/">Ink Responsive Emails</a></li>
+                    <li><a href="http://zurb.com/notable">Notable Design Apps</a></li>
+                    <li><a href="http://zurb.com/university/courses">Training</a></li>
+                    <li><a href="http://zurb.com/library">Design Resources</a></li>
+                  </ul>
+                </div>
+              </div>
+                <div class="medium-4 columns">
+                  <div class="support-links">
+                  <h4 class="hide-for-small">Talk to us</h4>
+                  <p>Tweet us at <br> <a href="https://twitter.com/zurbfoundation">@ZURBfoundation</a></p>
+                  <p><a href="http://foundation.zurb.com/business/business-support.html">Business Support</a></p>
+                  <p>Or check our <a href="http://foundation.zurb.com/support/support.html">support page</a></p>
+                  </div>
+                </div>
+              <div class="medium-4 columns">
+                <div class="connect-links">
+                  <h4 class="hide-for-small">Stay Updated</h4>
+                  <p>Keep up with the latest on Foundation. Find us on <a href="https://github.com/zurb/foundation">Github</a>.</p>
+                  <a href="http://zurb.com/news" class="small button">Stay Connected</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row global">
+          <div class="medium-3 small-6 columns">
+            <a href="http://zurb.com/studios" class="footer-link-block services">
+              <span class="title">Studios</span>
+              <span>Helping more than 200 startups succeed since 1998.</span>
+            </a>
+          </div>
+          <div class="medium-3 small-6 columns">
+            <a href="http://foundation.zurb.com/" class="footer-link-block foundation">
+              <span class="title">Foundation</span>
+              <span>The most advanced front-end framework in the world.</span>
+            </a>
+          </div>
+          <div class="medium-3 small-6 columns">
+            <a href="http://zurb.com/notable" class="footer-link-block apps">
+              <span class="title">Notable Design Apps</span>
+              <span>Prototype, iterate and collect feedback on your products.</span>
+            </a>
+          </div>
+          <div class="medium-3 small-6 columns">
+            <a href="http://zurb.com/university" class="footer-link-block expo">
+              <span class="title">University</span>
+              <span>Ideas, thoughts and design resources shared with you.</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="zurb-footer-bottom">
+        <div class="row">
+          <div class="medium-4 medium-push-8 columns">
+            <ul class="home-social">
+                <li><a href="http://www.twitter.com/ZURB" class="twitter"></a></li>
+                <li><a href="http://www.facebook.com/ZURB" class="facebook"></a></li>
+                <li><a href="http://zurb.com/contact" class="mail"></a></li>
+              </ul>
+           </div>
+           <div class="medium-8 medium-pull-4 columns">
+              <a href="http://www.zurb.com" class="zurb-logo regular"></a>
+              <ul class="zurb-links">
+                <li><a href="http://zurb.com/about">About</a></li>
+                <li><a href="http://zurb.com/blog">Blog</a></li>
+                <li><a href="http://zurb.com/news">News<span class="show-for-medium-up"> &amp; Events</span></a></li>
+                <li><a href="http://zurb.com/contact">Contact</a></li>
+                <li><a href="http://zurb.com/sitemap">Sitemap</a></li>
+             </ul>
+             <p class="copyright">&copy; 1998&dash;2015 ZURB, Inc. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/js/foundation.js"></script>
+    <script src="assets/js/docs.js"></script>
+  </body>
+</html>
