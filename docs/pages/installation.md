@@ -13,6 +13,10 @@ Yeti Launch is our Mac app for quickly spinning up blank projects for any of the
 
 Not a fan of GUIs? The Node-powered Foundation CLI can install the same templae projects for you. Install it with npm:
 
+<div class="callout alert">
+  <p>As Foundation for Sites is in alpha, the CLI doesn't yet support this framework.</p>
+</div>
+
 ```bash
 npm install --global foundation-cli
 ```
