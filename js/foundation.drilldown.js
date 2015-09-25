@@ -30,7 +30,9 @@
     }
     console.log(this.$submenuAnchors);
     this.$submenuAnchors.each(function(){
+      // this.removeAttribute('href');
       var $sub = $(this);
+      $sub.find('a')[0].removeAttribute('href');
       $sub.children('[data-submenu]')
           .attr({
             'aria-hidden': true,
@@ -53,7 +55,7 @@
 
     $elem/*.off('mouseup.zf.drilldown tap.zf.drilldown touchend.zf.drilldown')*/
     .on('mouseup.zf.drilldown tap.zf.drilldown touchend.zf.drilldown', function(e){
-      e.preventDefault();
+      // e.preventDefault();
       e.stopPropagation();
       console.log(e);
       if(e.target !== e.currentTarget.firstElementChild){
@@ -113,7 +115,7 @@
     // console.log('1',this.$menuItems[0].getBoundingClientRect().height);
     result.height = max * this.$menuItems[0].getBoundingClientRect().height + 'px';
     result.width = this.$menuItems[0].getBoundingClientRect().width + 'px';
-    console.log('2',result);
+    
     return result;
   };
   Foundation.plugin(Drilldown);

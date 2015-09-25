@@ -23,7 +23,7 @@ By default, dropdowns are exactly that, horizontally oriented below the parent e
 
 <ul class="dropdown menu-bar" data-dropdown-menu>
   <li class="has-submenu">
-    <a href="#">Item 1 &raquo;</a>
+    <a>Item 1 &raquo;</a>
     <ul class="submenu menu-bar" data-submenu>
       <li><a href="#">Item 1A Loooong</a></li>
       <li class='has-submenu'>

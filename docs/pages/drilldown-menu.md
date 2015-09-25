@@ -9,7 +9,7 @@ js: js/foundation.drilldown.js
 <div class="alert callout">
   <h5>Known Issues</h5>
   <ul>
-    <li>`<li>`'s with submenus need to have default prevented, which is in place, but is not working.</li>
+    <li>`<li>`'s with submenus need to have default prevented, which is in place, but is not working. Temporary fix by removing `href` from `a`'s with submenus.</li>
     <li>Needs accessibility compliant keyboard access bindings.</li>
     <li>Needs an option and method for breadcrumbing?</li>
     <li>Destroy method needs to be more robust.</li>
