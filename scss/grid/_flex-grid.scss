@@ -34,10 +34,8 @@
     flex-flow: row wrap;
   }
 
-  margin: {
-    left: $margin;
-    right: $margin;
-  };
+  margin-left: $margin;
+  margin-right: $margin;
 
   @if $columns != null {
     @include grid-context($columns, $root) {
@@ -51,7 +49,7 @@
 ///   - `shrink` will make the column contract, so it only takes up the horizontal space it needs.
 /// @param {Mixed} $columns [null] - Width of the column.
 @function flex-grid-column($columns: null) {
-  $flex: 1 1 0;
+  $flex: 1 1 0px;
   @if $columns == shrink {
     $flex: 0 0 auto;
   }
