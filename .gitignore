@@ -17,7 +17,6 @@ _build
 bower_components
 bundle
 build/*
-dist
 /docs2/public/*
 _yardoc
 coverage
