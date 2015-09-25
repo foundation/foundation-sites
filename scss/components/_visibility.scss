@@ -86,16 +86,30 @@
     }
   }
 
-  // Orientation visibility classes
-  @each $orientation in (portrait, landscape) {
-    @include breakpoint($orientation) {
-      .hide-for-#{$orientation} {
-        display: none !important;
-      }
+  // Landscape and portrait visibility
+  .show-for-landscape,
+  .hide-for-portrait {
+    display: block !important;
 
-      .show-for-#{$orientation} {
-        display: block !important;
-      }
+    @include breakpoint(landscape) {
+      display: block !important;
+    }
+
+    @include breakpoint(portrait) {
+      display: none !important;
+    }
+  }
+
+  .hide-for-landscape,
+  .show-for-portrait {
+    display: none !important;
+
+    @include breakpoint(landscape) {
+      display: none !important;
+    }
+
+    @include breakpoint(portrait) {
+      display: block !important;
     }
   }
 }

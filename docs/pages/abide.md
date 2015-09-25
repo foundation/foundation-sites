@@ -8,13 +8,9 @@ tags:
 ---
 
 
-<div class="alert callout">
-  <h5>Known Issues</h5>
-  <ul>
-    <li>Not yet connected.</li>
-  </ul>
+<div class="callout alert">
+  <p>Abide is not fully implemented yet, so these demos aren't functioning quite right.</p>
 </div>
-
 
 
 ### Abide Demo

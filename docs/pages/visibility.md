@@ -7,11 +7,6 @@ tags:
   - show
 ---
 
-<div class="callout alert">
-  <h5>Known Issues</h5>
-  <p>Touch and orientation classes are currently not working while we work on Modernizer 3 Integration.</p>
-</div>
-
 <div class="callout primary">
   <p>Visibility classes use `!important` to ensure they aren't overriden by more specific selectors. This is the only component in the framework that uses `!important`.</p>
 </div>
