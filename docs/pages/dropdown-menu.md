@@ -9,7 +9,6 @@ js: js/dropdownMenu.js
 <div class="alert callout">
   <h5>Known Issues</h5>
   <ul>
-    <li>Cascading positioning for submenus is broken for all browsers.</li>
     <li>Needs accessibility compliant keyboard access bindings.</li>
     <li>Destroy method needs to be more robust.</li>
     <li>Needs background color.</li>

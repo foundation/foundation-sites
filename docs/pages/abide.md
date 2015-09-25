@@ -7,6 +7,16 @@ tags:
   - validation
 ---
 
+
+<div class="alert callout">
+  <h5>Known Issues</h5>
+  <ul>
+    <li>Not yet connected.</li>
+  </ul>
+</div>
+
+
+
 ### Abide Demo
 
 These input types create a text field: `text`, `date`, `datetime`, `datetime-local`, `email`, `month`, `number`, `password`, `search`, `tel`, `time`, `url`, and `week`.

@@ -83,7 +83,7 @@
             'aria-hidden': true,
             'tabindex': -1,
             'role': 'menu'
-          });
+          }).addClass('vertical');
       _this._events($sub);
     });
   };
