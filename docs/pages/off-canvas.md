@@ -17,7 +17,7 @@ Along with the menu, the main content of your page will be housed in its own con
 
 ```html
 <body>
-  <div class="off-canvas position-left" id="offCanvas" data-off-canvas></div>
+  <div class="off-canvas position-left" id="offCanvas" data-off-canvas data-position="left"></div>
   <div class="main-content" data-off-canvas-content></div>
 </body>
 ```

@@ -30,7 +30,9 @@ OffCanvas.defaults = {
    * @option
    * @example true
    */
-  closeOnClick: true
+  closeOnClick: true,
+
+  position: 'left'
 }
 
 /**
@@ -95,7 +97,7 @@ OffCanvas.prototype.open = function(event, trigger) {
    * @event OffCanvas#opened
    */
   requestAnimationFrame(function() {
-    $('body').addClass('is-off-canvas-open');
+    $('body').addClass('is-off-canvas-open is-open-'+_this.options.position);
 
     _this.$element
       .addClass('is-open')
@@ -124,7 +126,7 @@ OffCanvas.prototype.close = function() {
    * @event OffCanvas#closed
    */
   requestAnimationFrame(function() {
-    $('body').removeClass('is-off-canvas-open');
+    $('body').removeClass('is-off-canvas-open is-open-'+_this.options.position);
 
     _this.$element
       .removeClass('is-open')
