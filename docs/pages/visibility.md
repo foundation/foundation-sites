@@ -44,8 +44,10 @@ This example shows the opposite: It uses the `.hide` visibility classes to state
 
 ```html_example
 <p class="hide-for-medium">You are <em>not</em> on a medium screen or larger.</p>
-<p class="hide-for-large">You are <em>not</em> on a small screen or larger.</p>
+<p class="hide-for-large">You are <em>not</em> on a large screen or larger.</p>
 ```
+
+<p class="show-for-large">If you're reading this, you're on a large screen, and can't see either of the above examples.</p>
 
 Like with `.show`, these classes also have `-only` versions.
 
