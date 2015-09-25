@@ -5,6 +5,13 @@ sass: scss/components/_tooltip.scss
 js: js/foundation.tooltip.js
 ---
 
+<div class="callout alert">
+  <h5>Known Issues</h5>
+  <ul>
+    <li>The position of a tooltip will not recalculate when the screen is resized.</li>
+  </ul>
+</div>
+
 ## Basic Tooltip
 By default, a tooltip appears below the the definition on hover.
 
