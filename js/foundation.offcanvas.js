@@ -32,12 +32,7 @@ OffCanvas.defaults = {
    */
   closeOnClick: true,
 
-  /**
-   * CSS class to use when the off-canvas menu is open.
-   * @option
-   * @example 'is-off-canvas-open'
-   */
-  activeClass: 'is-off-canvas-open'
+  position: 'left'
 }
 
 /**
@@ -56,7 +51,7 @@ OffCanvas.prototype._init = function() {
     .attr('aria-expanded', 'false');
 
   // Add a close trigger over the body if necessary
-  if (this.options.closeOnClick) {
+  if (this.options.closeOnClick && !$('.js-off-canvas-exit').length) {
     var exiter = document.createElement('div');
     exiter.setAttribute('class', 'js-off-canvas-exit');
     $('[data-off-canvas-content]').append(exiter);
@@ -78,8 +73,12 @@ OffCanvas.prototype._events = function() {
     'keydown.zf.offcanvas': this._handleKeyboard.bind(this)
   });
 
+  $(window).on('close.zf.offcanvas', this.close.bind(this));
+
   if (this.$exiter) {
-    this.$exiter.on('click.zf.offcanvas', this.close.bind(this));
+    this.$exiter.on('click.zf.offcanvas', function() {
+      $(window).trigger('close.zf.offcanvas');
+    });
   }
 }
 
@@ -89,18 +88,23 @@ OffCanvas.prototype._events = function() {
  * @fires OffCanvas#opened
  */
 OffCanvas.prototype.open = function(event, trigger) {
-  console.log(this.options);
-  if (this.$element.hasClass(this.options.activeClass)) return;
+  if (this.$element.hasClass('is-open')) return;
+
+  var _this = this;
 
   /**
    * Fires when the off-canvas menu opens.
    * @event OffCanvas#opened
    */
-  this.$element
-    .addClass(this.options.activeClass)
-    .attr('aria-hidden', 'false')
-    .find('a, button').eq(0).focus().end().end()
-    .trigger('opened.zf.offcanvas');
+  requestAnimationFrame(function() {
+    $('body').addClass('is-off-canvas-open is-open-'+_this.options.position);
+
+    _this.$element
+      .addClass('is-open')
+      .attr('aria-hidden', 'false')
+      .find('a, button').eq(0).focus().end().end()
+      .trigger('opened.zf.offcanvas');
+  });
 
   if (trigger) {
     this.$lastTrigger = trigger.attr('aria-expanded', 'true');
@@ -113,16 +117,22 @@ OffCanvas.prototype.open = function(event, trigger) {
  * @fires OffCanvas#closed
  */
 OffCanvas.prototype.close = function() {
-  if (!this.$element.hasClass(this.options.activeClass)) return;
+  if (!this.$element.hasClass('is-open')) return;
+
+  var _this = this;
 
   /**
    * Fires when the off-canvas menu opens.
    * @event OffCanvas#closed
    */
-  this.$element
-    .removeClass(this.options.activeClass)
-    .attr('aria-hidden', 'true')
-    .trigger('closed.zf.offcanvas');
+  requestAnimationFrame(function() {
+    $('body').removeClass('is-off-canvas-open is-open-'+_this.options.position);
+
+    _this.$element
+      .removeClass('is-open')
+      .attr('aria-hidden', 'true')
+      .trigger('closed.zf.offcanvas');
+  });
 
   this.$lastTrigger.attr('aria-expanded', 'false');
 }
@@ -132,7 +142,7 @@ OffCanvas.prototype.close = function() {
  * @function
  */
 OffCanvas.prototype.toggle = function(event, trigger) {
-  if (this.$element.hasClass(this.options.activeClass)) {
+  if (this.$element.hasClass('is-open')) {
     this.close(event, trigger);
   }
   else {

@@ -16,6 +16,10 @@ tags:
   <p>Visibility classes use `!important` to ensure they aren't overriden by more specific selectors. This is the only component in the framework that uses `!important`.</p>
 </div>
 
+<div class="callout primary">
+  <p>There are no classes to detect touchscreen devices, as both desktop and mobile browsers inconsistently report touch support. Learn more here: <a href="http://www.stucox.com/blog/you-cant-detect-a-touchscreen/">You Can't Detect a Touchscreen</a></p>
+</div>
+
 ## Show by Screen Size
 
 In this example, we use the `.show` visibility classes to show certain strings of text based on the device on which users view a page. If their browser meets the class's conditions, the element will be shown. If not, it will be hidden.
@@ -44,8 +48,10 @@ This example shows the opposite: It uses the `.hide` visibility classes to state
 
 ```html_example
 <p class="hide-for-medium">You are <em>not</em> on a medium screen or larger.</p>
-<p class="hide-for-large">You are <em>not</em> on a small screen or larger.</p>
+<p class="hide-for-large">You are <em>not</em> on a large screen or larger.</p>
 ```
+
+<p class="show-for-large">If you're reading this, you're on a large screen, and can't see either of the above examples.</p>
 
 Like with `.show`, these classes also have `-only` versions.
 
@@ -73,17 +79,6 @@ This straightforward example shows how two strings of text determine whether or 
 ```html_example
 <p class="show-for-landscape">You are in landscape orientation.</p>
 <p class="show-for-portrait">You are in portrait orientation.</p>
-```
-
----
-
-## Touch Detection
-
-There are also visibility classes to hide or show content based on whether a device supports touch. We use the Modernizr JavaScript library to detech a touch device.
-
-```html_example
-<p class="show-for-touch">You are on a touch-enabled device.</p>
-<p class="hide-for-touch">You are not on a touch-enabled device.</p>
 ```
 
 ---

@@ -6,6 +6,10 @@ js:
   - ./js/foundation.tabBar.js
 ---
 
+<div class="callout alert">
+  <p>These patterns haven't been finalized yet, but we're collecting feedback on GitHub about them.</p>
+</div>
+
 ## Basics
 
 The menu bar has some responsive CSS classes built in, which allow you to re-orient a menu on different screen sizes.
