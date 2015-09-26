@@ -36,4 +36,4 @@ npm start
   - `scss/vendor`: third-party libraries.
   - `_global.scss`: global variables and styles.
 - `docs_old/`: Foundation 5 documentation.
-- `spec/`: Foundaion 5 unit tests.
+- `spec/`: Foundation 5 unit tests.
