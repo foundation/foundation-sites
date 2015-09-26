@@ -2,9 +2,12 @@
   // A simple component to create side-by-side menus
   .top-bar {
     @include clearfix;
-    background: #eee;
     padding: 0.5rem;
     margin-bottom: 1rem;
+
+    &, ul {
+      background: #eee;
+    }
 
     &.primary {
       &, ul {
