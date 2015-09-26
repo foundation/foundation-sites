@@ -30,7 +30,6 @@ $foundation-version: '6.0.0-alpha.1';
   'components/badge',
   'components/breadcrumbs',
   'components/callout',
-  'components/card',
   'components/close-button',
   'components/drilldown',
   'components/dropdown-menu',
@@ -72,7 +71,6 @@ $foundation-version: '6.0.0-alpha.1';
   @include foundation-breadcrumbs;
   @include foundation-button-group;
   @include foundation-callout;
-  @include foundation-card;
   @include foundation-close-button;
   // @include foundation-drilldown
   // @include foundation-dropdown-menu
