@@ -52,11 +52,11 @@
       // this.$element.data('resize', Foundation.GetYoDigits(6, 'sticky'));
       // console.log($('[data-resize]'));
     }
-
-    this.getDimensions();
-    this.setContainerSize();
-    this.setElementAttr();
-    this.setBreakPoints();
+    this._setSizes();
+    // this.setElementAttr();
+    // this.getDimensions();
+    // this.setContainerSize();
+    // this.setBreakPoints();
 
     this._events();
   };
@@ -69,7 +69,7 @@
   Sticky.prototype._events = function(){
     var _this = this,
         $window = $(window);
-    this.$element.on('resizeme.zf.trigger', this.doThings.bind(this));
+    this.$element.on('resizeme.zf.trigger', this._setSizes.bind(this));
 
     $window.on('scroll.zf.sticky', function(e){
       e.stopPropagation();
@@ -78,7 +78,7 @@
 
         if(_this.options.stickTo === 'bottom'){
           if((scroll + _this.$anchorDims.windowDims.height >= _this.start) && (scroll + _this.$elemDims.windowDims.height <= _this.end)){//between bottom & top breakpoint
-            _this.$element.removeClass('anchored').addClass('stuck bottom').css({'marginBottom': _this.options.marginBottom + 'em', 'bottom': 0, 'top': 'auto'})
+            _this.stickToBottom();
           }
 
           if(_this.$element.offset().top + _this.$elemDims.height + (_this.options.marginBottom * _this.fontSize) >= _this.end){//hits bottom breakpoint
@@ -96,18 +96,13 @@
 
         else if(_this.options.stickTo === 'top'){
           if(scroll >= _this.start && scroll <= _this.end){//in between breakpoints, sticky top
-              _this.$element.addClass('stuck top').removeClass('anchored bottom').css({'marginTop': _this.options.marginTop + 'em', 'top': 0});
+            _this.stickToTop()
           }
           if(scroll <= _this.start){//start at page load, + what to do when scrolling to top
-            _this.$element.addClass('anchored top').removeClass('stuck').css('marginTop', 0)/*.css('marginTop', _this.options.marginTop + 'em')*/;
+            _this.anchorToTop();
           }
           if(scroll >= _this.end){//bottom edge and stop
-            _this.$element.removeClass('stuck top')
-                  .addClass('anchored bottom')
-                  .css({
-                    'marginTop': 0,
-                    'top': _this.end - (_this.$container.offset().top) + (_this.options.marginBottom * _this.fontSize) + 'px'
-                  });
+            _this.anchorToBottom();
                   // console.log('end', _this.end, 'height', _this.$elemDims.height, '\ntotal', (_this.end - _this.$elemDims.height) - 32);
           }
         }
@@ -124,17 +119,36 @@
       }, _this.options.debounce)
     });
   };
-
+  Sticky.prototype.stickToBottom = function(){
+    this.$element.removeClass('anchored').addClass('stuck bottom').css({'marginBottom':this.options.marginBottom + 'em', 'bottom': 0, 'top': 'auto'})
+  };
+  Sticky.prototype.stickToTop = function(){
+    this.$element.addClass('stuck top').removeClass('anchored bottom').css({'marginTop': this.options.marginTop + 'em', 'top': 0});
+  };
+  Sticky.prototype.anchorToBottom = function(){
+    this.$element.removeClass('stuck top')
+          .addClass('anchored bottom')
+          .css({
+            'marginTop': 0,
+            'top': this.end - (this.$container.offset().top) + (this.options.marginBottom * this.fontSize) + 'px'
+          });
+  };
+  Sticky.prototype.anchorToTop = function(){
+    this.$element.addClass('anchored top').removeClass('stuck bottom').css({'margin-top': 0});
+  };
   //*********************************************************************
   /**
    * Fires several functions after resize events and on _init
    * @private
    */
-  Sticky.prototype.doThings = function(){
-    this.getDimensions();
-    this.setContainerSize();
-    this.setElementAttr();
-    this.setBreakPoints();
+
+  Sticky.prototype._setSizes = function(){
+    var _this = this;
+    this.setElementAttr(function(){
+      _this.getDimensions();
+      _this.setContainerSize();
+      _this.setBreakPoints();
+    });
   };
   /**
    * Sets top and bottom break points for sticky element.
@@ -149,13 +163,14 @@
     if(this.options.stickTo === 'bottom'){
       this.end = this.$anchorDims.offset.top + this.$anchorDims.height + (this.options.marginBottom * this.fontSize);
     }
+    console.log('start', this.start, 'end', this.end);
   };
   /**
    * Gets the dimensions for the sticky element and it's anchor
    * @private
    */
   Sticky.prototype.getDimensions = function(){
-    this.$element.css({'max-width': '', 'max-height': ''});
+    // this.$element.css({'max-width': '', 'max-height': ''});
     this.$elemDims = Foundation.GetDimensions(this.$element);
     this.$anchorDims = Foundation.GetDimensions(this.$anchor);
   };
@@ -163,9 +178,10 @@
    * Sets the sticky element's max-width to prevent resize on position: fixed;
    * @private
    */
-  Sticky.prototype.setElementAttr = function(){
-    this.$element/*.offset({'top': this.$container.offset().top})*/
-        .css({'max-width': this.$elemDims.width/*, 'min-height': this.$elemDims.height*/});
+  Sticky.prototype.setElementAttr = function(cb){
+    console.log('container width',this.$container.width());
+    this.$element.css({'max-width': this.$container.width()});
+    cb();
   };
   /**
    * Sets the sticky element's container min-height to match that of the element's height to prevent alignment issues on position: fixed;

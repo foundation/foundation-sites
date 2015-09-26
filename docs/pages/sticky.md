@@ -9,7 +9,7 @@ js: js/foundation.sticky.js
 <div class="alert callout">
   <h5>Known Issues</h5>
   <ul>
-    <li>Elements with dimensions greater than currently allowed by the grid or other sizing classes will go to full dimensions if a resize event happens while the element is `position: fixed;`</li>
+    <li>Sticky elements do not vertically position properly after a screen resize if at `position: fixed;` during resize.</li>
     <li>Needs method for elements to be sticky on the top of the viewport when scrolling down, and if the lower breakpoint is reached, stick to bottom on scroll up.</li>
     <li>Needs event listener for `Foundation.MediaQuery` events to pause/disable sticky elements at chosen breakpoints.</li>
     <li>Needs more general testing to ensure elements are only sticky when they should be. Reacts strangely to resize events.</li>
@@ -60,7 +60,7 @@ Add the `.sticky` class and `[data-sticky]` to an element to create something th
 You can add anchors to stick to with `data` attributes and `id`'s, such as: `[data-stick-at='#example2']`. If you want a stopping point other than the bottom of the `stick-at` anchor, use `[data-break-at='#some-other-id']` to set a separate break point.
 You can also choose the sticking point, top, bottom, or both. Elements with `[data-stick-to='both']` will stick to the top of the window on scroll down, and if the lower break point is reached, stick to the bottom of the window on scroll up.
 
-<div class='row'>
+<!-- <div class='row'>
   <div class='columns small-12'>
     <div class='columns small-6' id='example2'>
       <p>
@@ -82,5 +82,5 @@ You can also choose the sticking point, top, bottom, or both. Elements with `[da
       </div>
     </div>
   </div>
-</div>
+</div> -->
 <!-- ``` -->
