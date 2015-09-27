@@ -2,7 +2,13 @@
 
 This is the supremely in-development version of Foundation for Sites 6.0.
 
+## Requirements
+
 Requires NodeJS to be installed on your machine. Works with 0.10, 0.12, and 4.1! **Note that parts of our build process will break with NPM 3, due to the changes in how packages are installed.**
+
+The Sass is compiled using libsass, which requires the GCC to be installed on your machine. Windows users can install it through [MinGW](http://www.mingw.org/), and Mac users can install it through the [Xcode Command-line Tools](http://osxdaily.com/2014/02/12/install-command-line-tools-mac-os-x/).
+
+## Setup
 
 ```bash
 git clone https://github.com/zurb/foundation-sites-6.git
