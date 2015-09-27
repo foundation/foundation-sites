@@ -3,7 +3,8 @@
   "version": "6.0.0-alpha.1",
   "main": "js/foundation/foundation.js",
   "scripts": {
-    "start": "gulp"
+    "start": "gulp",
+    "test": "gulp test"
   },
   "dependencies": {
     "jquery": "^2.1.0"

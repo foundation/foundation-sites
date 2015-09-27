@@ -1,0 +1,33 @@
+@import 'grid/grid';
+
+@include describe('Grid Column') {
+  @include it('converts a numeric value to a percentage') {
+    @include should(expect(grid-column(50%)), to(be(50%)));
+    @include should(expect(grid-column(6)), to(be(50%)));
+    @include should(expect(grid-column(0.5)), to(be(50%)));
+  }
+
+  @include it('converts the expression x of y to a percentage') {
+    @include should(expect(grid-column(5 of 10)), to(be(50%)));
+  }
+}
+
+@include describe('Flex Grid Column') {
+  @include it('defaults to generating an expanding flex property') {
+    @include should(expect(flex-grid-column()), to(be(1 1 0px)));
+  }
+
+  @include it('converts the keyword shrink to a shrinking flex property') {
+    @include should(expect(flex-grid-column(shrink)), to(be(0 0 auto)));
+  }
+
+  @include it('converts a numeric value to a percentage-based flex property') {
+    @include should(expect(flex-grid-column(50%)), to(be(0 0 50%)));
+    @include should(expect(flex-grid-column(6)), to(be(0 0 50%)));
+    @include should(expect(flex-grid-column(0.5)), to(be(0 0 50%)));
+  }
+
+  @include it('converts the expression x of y to a percentage-based flex property') {
+    @include should(expect(flex-grid-column(5 of 10)), to(be(0 0 50%)));
+  }
+}
