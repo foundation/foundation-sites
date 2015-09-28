@@ -63,7 +63,8 @@
         'role': 'dialog',
         'aria-hidden': true,
         'aria-labelledby': anchorId,
-        'data-yeti-box': this.id
+        'data-yeti-box': this.id,
+        'data-resize': this.id
     });
 
 
@@ -100,7 +101,12 @@
     this.$element.on({
       'open.zf.trigger': this.open.bind(this),
       'close.zf.trigger': this.close.bind(this),
-      'toggle.zf.trigger': this.toggle.bind(this)
+      'toggle.zf.trigger': this.toggle.bind(this),
+      'resizeme.zf.trigger': function(){
+        if(_this.$element.is(':visible')){
+          _this._setPosition(function(){});
+        }
+      }
     });
 
     if(this.options.closeOnClick && this.options.overlay){
@@ -113,6 +119,7 @@
    * @private
    */
   Reveal.prototype._setPosition = function(cb){
+    console.log('resizing');
     var eleDims = Foundation.GetDimensions(this.$element);
     var elePos = this.options.fullScreen ? 'reveal full' : (eleDims.height >= (0.5 * eleDims.windowDims.height)) ? 'reveal' : 'center';
 
