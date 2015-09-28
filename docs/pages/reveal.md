@@ -13,6 +13,7 @@ tags:
   <ul>
     <li>Instead of each modal getting it’s own background, maybe generate one for the whole page if a modal is detected?</li>
     <li>Needs accessibility compliant keyboard access bindings.</li>
+    <li>Sometimes click events are firing on the anchor in Firefox w/o clicking.</li>
   </ul>
 </div>
 
@@ -116,7 +117,7 @@ A full-screen modal is 100% of the width *and* height of the window. Add the `.f
 
 <div class="full reveal" id="exampleModal3" data-reveal>
   <p>OH I'M SO FUUUUL</p>
-  <img src="http://placecage.com/1440/720" alt="Intropsective Cage">
+  <img src="http://placekitten.com/1920/1280" alt="Intropsective Cage">
 </div>
 ```
 

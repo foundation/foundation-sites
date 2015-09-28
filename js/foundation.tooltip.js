@@ -60,6 +60,7 @@
       'aria-describedby': elemId,
       'data-yeti-box': elemId,
       'data-toggle': elemId,
+      'data-resize': elemId
     });
 
     //helper variables to track movement on collisions
@@ -270,18 +271,6 @@
       'toggle.zf.trigger': this.toggle.bind(this),
       'close.zf.trigger': this._hide.bind(this)
     });
-                                                  // .on('mousedown.zf.tooltip', function(e){
-                                                  //   _this.isActive ? _this._hide() : _this._show();
-                                                  //   // e.stopPropagation();
-                                                  //   // if(_this.isActive && isFocus && !_this.isClick){
-                                                  //   //   _this._hide();
-                                                  //   // }
-                                                  //   // if(_this.options.clickOpen){
-                                                  //   //   isFocus = true;
-                                                  //   //   _this._show();
-                                                  //   // }
-                                                  //   _this.isClick = true;
-                                                  // });
 
     this.$element
       .on('focus.zf.tooltip', function(e){
@@ -298,6 +287,10 @@
         isFocus = false;
         _this.isClick = false;
         _this._hide();
+      })
+
+      .on('resizeme.zf.trigger', function(){
+        _this.setPosition();
       });
   };
   /**
