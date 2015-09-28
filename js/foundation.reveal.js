@@ -53,7 +53,6 @@
       'aria-haspopup': true,
       'tabindex': this.options.keyboardAccess ? 0 : -1
     });
-    console.log('anchor',this.$anchor);
     this.options.fullScreen = this.$element.hasClass('full');
     if(this.options.fullScreen){
       this.options.overlay = false;
@@ -102,8 +101,8 @@
     var _this = this;
 
     this.$element.on({
-      'open.zf.trigger': this.open.bind(this),
-      'close.zf.trigger': this.close.bind(this),
+      'open.zf.trigger': this._open.bind(this),
+      'close.zf.trigger': this._close.bind(this),
       'toggle.zf.trigger': this.toggle.bind(this),
       'resizeme.zf.trigger': function(){
         if(_this.$element.is(':visible')){
@@ -114,17 +113,16 @@
 
     if(this.options.keyboardAccess){
       this.$anchor.on('keydown.zf.reveal', function(e){
-        console.log('keys', e.which === (32 || 13));
-        if(e.which === (13 || 32)){
+        if(e.which === 13 || e.which === 32){
           e.stopPropagation();
           e.preventDefault();
-          _this.open();
+          _this._open();
         }
       });
     }
 
     if(this.options.closeOnClick && this.options.overlay){
-      this.$overlay.on('click.zf.reveal', this.close.bind(this));
+      this.$overlay.on('click.zf.reveal', this._close.bind(this));
     }
   };
   /**
@@ -170,7 +168,7 @@
    * @fires Reveal#closeAll
    * @fires Reveal#open
    */
-  Reveal.prototype.open = function(){
+  Reveal.prototype._open = function(){
     var _this = this;
     this.isActive = true;
     //make element invisible, but remove display: none so we can get size and positioning
@@ -235,11 +233,11 @@
     var _this = this;
     if(!this.options.overlay && this.options.closeOnClick){
       this.$element.on('click.zf.reveal', function(e){
-        e.preventDefault();
+        // e.preventDefault();
         return false;
       });
       $('body').on('click.zf.reveal', function(e){
-          _this.close();
+          _this._close();
       });
     }
     if(this.options.closeOnEsc){
@@ -247,7 +245,7 @@
         e.preventDefault();
         e.stopPropagation();
         if(e.which === 27){
-          _this.close();
+          _this._close();
         }
       });
     }
@@ -257,7 +255,7 @@
    * Closes the modal
    * @fires Reveal#close
    */
-  Reveal.prototype.close = function(){
+  Reveal.prototype._close = function(){
     if(!this.isActive){
       return false;
     }
@@ -306,9 +304,9 @@
 
   Reveal.prototype.toggle = function(){
     if(this.isActive){
-      this.close();
+      this._close();
     }else{
-      this.open();
+      this._open();
     }
   };
 
