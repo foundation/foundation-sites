@@ -261,6 +261,14 @@
             .find('.js-dropdown-active').removeClass('js-dropdown-active')
                                         .attr('aria-hidden', true);
       $elems.parent('.has-submenu').removeClass('is-active');
+      if(this.changed){
+        //remove position class
+        if(this.options.alignment === 'left'){
+          $elems.find('.right').removeClass('right');
+        }else{
+          $elems.find('[data-submenu]').addClass('right');
+        }
+      }
     }
   };
   DropdownMenu.prototype._hideOthers = function($elem){
