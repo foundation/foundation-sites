@@ -98,23 +98,25 @@
   function resizeListener(){
     var timer, i, len,
         nodes = $('[data-resize]');
+    if(nodes.length){
+      $(window).off('resize.zf.trigger')
+        .on('resize.zf.trigger', function(e){
+          if(timer){ clearTimeout(timer); }
 
-    $(window).off('resize.zf.trigger')
-      .on('resize.zf.trigger', function(e){
-        if(timer){ clearTimeout(timer); }
+          timer = setTimeout(function(){
 
-        timer = setTimeout(function(){
-
-          for(i = 0, len = nodes.length; i < len; i++){
-            var $elem = $(nodes[i])
-            $elem.triggerHandler('resizeme.zf.trigger', [$elem]);
-          }
-        }, 150);//default time to emit resize event, make configurable? change for mobile?*******
-    });
+            for(i = 0, len = nodes.length; i < len; i++){
+              var $elem = $(nodes[i])
+              $elem.triggerHandler('resizeme.zf.trigger', [$elem]);
+            }
+          }, 150);//default time to emit resize event, make configurable? change for mobile?*******
+      });
+    }
   }
 // ------------------------------------
 
   // [PH]
 Foundation.CheckWatchers = checkWatchers;
+Foundation.IHearYou = resizeListener;
 
 }(window.Foundation, window.jQuery)

@@ -13,8 +13,6 @@ tags:
   <ul>
     <li>Instead of each modal getting it’s own background, maybe generate one for the whole page if a modal is detected?</li>
     <li>Needs accessibility compliant keyboard access bindings.</li>
-    <li>`.close-button` not closing modal.</li>
-    <li>Double `click` events being fired on modals lacking an overlay, including full-screen, preventing the modal from opening.</li>
   </ul>
 </div>
 
