@@ -10,11 +10,11 @@ $foundation-version: '6.0.0-alpha.1';
 @import 'vendor/normalize';
 @import 'vendor/motion-ui'; // [PH]
 
-// Global variables and styles
-@import 'global';
-
 // Sass utilities
 @import 'util/util';
+
+// Global variables and styles
+@import 'global';
 
 // Components
 @import

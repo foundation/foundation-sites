@@ -25,7 +25,7 @@
     doubleSided: false,
     steps: 100,
     decimal: 2,
-    dragDelay: 250
+    dragDelay: 0
   };
 
   Slider.prototype._init = function(){

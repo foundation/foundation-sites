@@ -28,37 +28,29 @@
     closeOnClick: true,
     closeOnEsc: true,
     multiOpened: false,
-    closeBtn: true,
-    closeBtnTemplate: '',
     vOffset: 100,
     hOffset: 0,
     fullScreen: false,
     btmOffsetPct: 10,
-    closeBtnText: '<i class="fi-x"></i>',
-    closeText: 'Click to close.',
     overlay: true
   };
-
-  function randomIdGen(length){
-    return Math.round((Math.pow(36, length + 1) - Math.random() * Math.pow(36, length))).toString(36).slice(1);
-  }
 
   /**
    * Initializes the modal by adding the overlay and close buttons, (if selected).
    * @private
    */
   Reveal.prototype._init = function(){
-    var anchorId = randomIdGen(6);
+    var anchorId = Foundation.GetYoDigits(6, 'reveal');
 
     this.id = this.$element.attr('id');
 
-    this.$anchor = $('[data-open=' + this.id + ']') || $('[data-toggle=' + this.id + ']');
+    this.$anchor = $('[data-open="' + this.id + '"]').length ? $('[data-open="' + this.id + '"]') : $('[data-toggle="' + this.id + '"]');
     this.$anchor.attr({
-      'data-close': this.id,
+      // 'data-close': this.id,
       'aria-controls': this.id,
       'id': anchorId
     });
-
+    console.log('anchor',this.$anchor);
     this.options.fullScreen = this.$element.hasClass('full');
     if(this.options.fullScreen){
       this.options.overlay = false;
@@ -74,10 +66,6 @@
         'data-yeti-box': this.id
     });
 
-    if(this.options.closeBtn || this.options.fullScreen){
-      this.$closeBtn = this._makeButton();
-      this.$element.append(this.$closeBtn);
-    }
 
     this.options.height = this.$element.outerHeight();
     this.options.width = this.$element.outerWidth();
@@ -103,21 +91,6 @@
   };
 
   /**
-   * Creates a button to display in the top-right corner of the modal.
-   * @private
-   */
-  Reveal.prototype._makeButton = function(){
-    var btn = $('<a>' + this.options.closeBtnText + '</a>')
-              .addClass('close-button')
-              .attr({
-                'data-toggle': this.id,
-                'title': this.options.closeText,
-                'aria-controls': this.id,
-                'aria-hidden': true
-              });
-    return btn;
-  };
-  /**
    * Adds event handlers for the modal.
    * @private
    */
@@ -132,9 +105,6 @@
 
     if(this.options.closeOnClick && this.options.overlay){
       this.$overlay.on('click.zf.reveal', this.close.bind(this));
-    }
-    if(this.$closeBtn){
-      this.$closeBtn.on('click.zf.reveal mouseup.zf.reveal tap.zf.reveal touchend.zf.reveal', this.close.bind(this));
     }
   };
   /**

@@ -13,8 +13,6 @@ tags:
   <ul>
     <li>Instead of each modal getting it’s own background, maybe generate one for the whole page if a modal is detected?</li>
     <li>Needs accessibility compliant keyboard access bindings.</li>
-    <li>`.close-button` not closing modal.</li>
-    <li>Double `click` events being fired on modals lacking an overlay, including full-screen, preventing the modal from opening.</li>
   </ul>
 </div>
 
@@ -24,7 +22,7 @@ tags:
 A modal is just an empty container, so you can put any kind of content inside it, from text to forms to a whole grid.
 
 ```html_example
-<p><a data-toggle="exampleModal1">Click me for a modal</a></p>
+<p><a data-open="exampleModal1">Click me for a modal</a></p>
 
 <div class="reveal" id="exampleModal1" data-reveal>
   <h1>Awesome. I Have It.</h1>
@@ -114,7 +112,7 @@ These sizing classes are built-in, but currently inaccurate. They need to be sta
 A full-screen modal is 100% of the width *and* height of the window. Add the `.full` class to make it go.
 
 ```html_example
-<p><a data-open="exampleModal3">Click me for a full-screen modal</a></p>
+<p><a data-toggle="exampleModal3">Click me for a full-screen modal</a></p>
 
 <div class="full reveal" id="exampleModal3" data-reveal>
   <p>OH I'M SO FUUUUL</p>
@@ -129,7 +127,7 @@ A full-screen modal is 100% of the width *and* height of the window. Add the `.f
 To remove the overlay, add the attribute `data-overlay="false"` to the modal.
 
 ```html_example
-<p><a data-open="exampleModal4">Click me for an overlay-lacking modal</a></p>
+<p><a data-toggle="exampleModal4">Click me for an overlay-lacking modal</a></p>
 
 <div class="reveal" id="exampleModal4" data-reveal data-overlay="false">
   <p>I feel so free!</p>
