@@ -32,7 +32,8 @@
     hOffset: 0,
     fullScreen: false,
     btmOffsetPct: 10,
-    overlay: true
+    overlay: true,
+    keyboardAccess: true
   };
 
   /**
@@ -48,7 +49,9 @@
     this.$anchor.attr({
       // 'data-close': this.id,
       'aria-controls': this.id,
-      'id': anchorId
+      'id': anchorId,
+      'aria-haspopup': true,
+      'tabindex': this.options.keyboardAccess ? 0 : -1
     });
     console.log('anchor',this.$anchor);
     this.options.fullScreen = this.$element.hasClass('full');
@@ -109,6 +112,17 @@
       }
     });
 
+    if(this.options.keyboardAccess){
+      this.$anchor.on('keydown.zf.reveal', function(e){
+        console.log('keys', e.which === (32 || 13));
+        if(e.which === (13 || 32)){
+          e.stopPropagation();
+          e.preventDefault();
+          _this.open();
+        }
+      });
+    }
+
     if(this.options.closeOnClick && this.options.overlay){
       this.$overlay.on('click.zf.reveal', this.close.bind(this));
     }
@@ -119,7 +133,6 @@
    * @private
    */
   Reveal.prototype._setPosition = function(cb){
-    console.log('resizing');
     var eleDims = Foundation.GetDimensions(this.$element);
     var elePos = this.options.fullScreen ? 'reveal full' : (eleDims.height >= (0.5 * eleDims.windowDims.height)) ? 'reveal' : 'center';
 
