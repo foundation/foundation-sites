@@ -5,37 +5,23 @@ sass: scss/components/_tooltip.scss
 js: js/foundation.tooltip.js
 ---
 
-<<<<<<< HEAD
 
 <div class="alert callout">
   <h5>Known Issues</h5>
   <ul>
-    <li>Needs event listener for `resizeme.zf.trigger` to recalculate position and sizing on resize events.</li>
-    <li>Broken on small screens / mobile touch events.</li>
     <li>Inconsistent hover effects on Firefox.</li>
+    <li>Anchor `<span>` sometimes repositions incorrectly to far left of screen on tooltip open.</li>
     <li>Broken on Android 4.4 browser and iOS devices w/ Safari.</li>
-    <li>Broken on Mac OSX Safari on small mq.</li>
-
   </ul>
 </div>
 
 
-
-=======
-<div class="callout alert">
-  <h5>Known Issues</h5>
-  <ul>
-    <li>The position of a tooltip will not recalculate when the screen is resized.</li>
-  </ul>
-</div>
-
->>>>>>> c21b77c2e5a9cccb965cb14a4e057e33d2fcc99d
 ## Basic Tooltip
 By default, a tooltip appears below the the definition on hover.
 
 ```html_example
 <p>
-The <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover='false' data-show-on='large' tabindex=1 title="Fancy word for a beetle.">scarabaeus</span> hung quite clear of any branches, and, if allowed to fall, would have fallen at our feet. Legrand immediately took the scythe, and cleared with it a circular space, three or four yards in diameter, just beneath the insect, and, having accomplished this, ordered Jupiter to let go the string and come down from the tree.
+The <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover='false' tabindex=1 title="Fancy word for a beetle.">scarabaeus</span> hung quite clear of any branches, and, if allowed to fall, would have fallen at our feet. Legrand immediately took the scythe, and cleared with it a circular space, three or four yards in diameter, just beneath the insect, and, having accomplished this, ordered Jupiter to let go the string and come down from the tree.
 </p>
 ```
 
@@ -47,7 +33,7 @@ To get a tip-top top tooltip (lol), just add the class <code>top</code> the <cod
 ```html_example
 <p>
 ...clearing away the brambles with the
-<span data-tooltip aria-haspopup="true" class="has-tip top" data-disable-hover='false' data-show-on='large' tabindex=2 title="A tool used for cutting crops.">scythe.</span>
+<span data-tooltip aria-haspopup="true" class="has-tip top" data-disable-hover='false' tabindex=2 title="A tool used for cutting crops.">scythe.</span>
 At the spot thus attained a second peg was driven, and about this, as a centre, a rude circle, about four feet in diameter, described. Taking now a spade himself, and giving one to Jupiter and one to me, Legrand begged us to set about one to digging as quickly as possible.
 </p>
 ```
@@ -60,22 +46,8 @@ You can also position the tooltips to the right and left of the word by adding t
 ```html_example
 <p>
 To speak the truth, I had no especial relish for such amusement at any time, and, at that particular moment, would most willingly have declined it; for the night was coming on, and I felt much fatigued with the exercise already taken; but I saw no mode of escape, and was fearful of disturbing my poor friend's equanimity by a refusal. Could I have depended, indeed, upon Jupiter's aid, I would have had no hesitation in attempting to get the
-<span data-tooltip aria-haspopup="true" class="has-tip right" data-disable-hover='false' data-show-on='large' tabindex=3 title="Someone not using Foundation.">lunatic</span>
+<span data-tooltip aria-haspopup="true" class="has-tip right" data-disable-hover='false' tabindex=3 title="Someone not using Foundation.">lunatic</span>
 home by force; but I was too well assured of the old negro's disposition, to hope that he would assist me, under any circumstances, in a personal contest with his master. I made no doubt that the latter had been infected with some of the innumerable Southern superstitions about money buried, and that his phantasy had received confirmation by the finding of the scarabaeus, or, perhaps, by Jupiter's obstinacy in maintaining it to be "a bug of real gold." A mind disposed to lunacy would readily be led away by such suggestions -especially if chiming in with favorite preconceived ideas -and then I called to mind the poor fellow's speech about the beetle's being "the
-<span data-tooltip aria-haspopup="true" class="has-tip left" data-disable-hover='false' data-show-on='large' tabindex=4 title="Sometimes referred to as a homepage.">index</span>
+<span data-tooltip aria-haspopup="true" class="has-tip left" data-disable-hover='false' tabindex=4 title="Sometimes referred to as a homepage.">index</span>
 of his fortune." Upon the whole, I was sadly vexed and puzzled, but, at length, I concluded to make a virtue of necessity -to dig with a good will, and thus the sooner to convince the visionary, by ocular demonstration, of the fallacy of the opinions he entertained. </p>
 ```
-
-<div class="tooltip">Fancy word for a beetle.</div>
-<br/>
-<br/>
-<br/>
-<div class="tooltip top">A tool used for cutting crops.</div>
-<br/>
-<br/>
-<br/>
-<div class="tooltip right">Someone not using Foundation.</div>
-<br/>
-<br/>
-<br/>
-<div class="tooltip left">Sometimes referred to as a homepage.</div>
