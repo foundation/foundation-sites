@@ -407,20 +407,22 @@ $print-margin: 0.34in;
   }
 
   /* Print visibility */
-  .print-only { display: none !important; }
-  .show-for-print { display: none !important; }
-  @media print {
-    .print-only { display: block !important; }
-    .show-for-print { display: block !important; }
-    .hide-for-print { display: none !important; }
-    .hide-on-print { display: none !important; }
+  @if $include-print-styles {
+    .print-only { display: none !important; }
+    .show-for-print { display: none !important; }
+    @media print {
+      .print-only { display: block !important; }
+      .show-for-print { display: block !important; }
+      .hide-for-print { display: none !important; }
+      .hide-on-print { display: none !important; }
 
-    table.show-for-print { display: table !important; }
-    thead.show-for-print { display: table-header-group !important; }
-    tbody.show-for-print { display: table-row-group !important; }
-    tr.show-for-print { display: table-row !important; }
-    td.show-for-print { display: table-cell !important; }
-    th.show-for-print { display: table-cell !important; }
+      table.show-for-print { display: table !important; }
+      thead.show-for-print { display: table-header-group !important; }
+      tbody.show-for-print { display: table-row-group !important; }
+      tr.show-for-print { display: table-row !important; }
+      td.show-for-print { display: table-cell !important; }
+      th.show-for-print { display: table-cell !important; }
+    }
   }
   }
 }
