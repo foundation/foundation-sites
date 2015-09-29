@@ -35,7 +35,7 @@
     "prettyjson": "^1.1.3",
     "require-dir": "^0.3.0",
     "rimraf": "^2.3.2",
-    "shipyard": "gakimball/shipyard",
+    "panini": "0.1.0",
     "string-template": "^0.2.1",
     "supercollider": "gakimball/supercollider",
     "zeroclipboard": "^2.2.0"

@@ -3,7 +3,7 @@ var cached = require('gulp-cached');
 var supercollider = require('supercollider');
 var filter = require('gulp-filter');
 var buildSearch = require('../lib/buildSearch');
-var shipyard = require('shipyard');
+var panini = require('panini');
 
 // Assembles the layout, pages, and partials in the docs folder
 gulp.task('docs', function() {
@@ -19,7 +19,7 @@ gulp.task('docs', function() {
         handlebars: require('../lib/handlebars')
       }))
     .pipe(mdFilter.restore())
-    .pipe(shipyard({
+    .pipe(panini({
       layouts: 'docs/layout/',
       partials: 'docs/partials/*.html'
     }))
