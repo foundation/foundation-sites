@@ -408,10 +408,11 @@ $print-margin: 0.34in;
 
   /* Print visibility */
   .print-only { display: none !important; }
+  .show-for-print { display: none !important; }
   @media print {
     .print-only { display: block !important; }
-    .show-for-print { display: block; }
-    .hide-for-print { display: none; }
+    .show-for-print { display: block !important; }
+    .hide-for-print { display: none !important; }
     .hide-on-print { display: none !important; }
 
     table.show-for-print { display: table !important; }
