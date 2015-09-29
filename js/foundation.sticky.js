@@ -163,7 +163,7 @@
     if(this.options.stickTo === 'bottom'){
       this.end = this.$anchorDims.offset.top + this.$anchorDims.height + (this.options.marginBottom * this.fontSize);
     }
-    console.log('start', this.start, 'end', this.end);
+    // console.log('start', this.start, 'end', this.end);
   };
   /**
    * Gets the dimensions for the sticky element and it's anchor
@@ -179,7 +179,7 @@
    * @private
    */
   Sticky.prototype.setElementAttr = function(cb){
-    console.log('container width',this.$container.width());
+    // console.log('container width',this.$container.width());
     this.$element.css({'max-width': this.$container.width()});
     cb();
   };

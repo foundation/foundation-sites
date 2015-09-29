@@ -62,7 +62,7 @@
       var $tab = $(this);
       $tab.attr({
         'role': 'menuitem',
-        'tabindex': -100,
+        'tabindex': -1,
         'title': $tab.children('a:first-child').text()/*.match(/\w/ig).join('')*/
       });//maybe add a more specific regex to match alphanumeric characters and join them appropriately
       if($tab.children('[data-submenu]')){
@@ -141,75 +141,76 @@
     }
   };
   DropdownMenu.prototype._addTopLevelKeyHandler = function(){
-    var _this = this,
-        vertical = this.options.vertical,
-        $firstItem = this.$element.children('li:first-of-type'),
-        $lastItem = this.$element.children('li:last-of-type');
-    this.$tabs.on('focus.zf.dropdownmenu', function(){
-      // console.log('what?', this);
-      _this._show($(this));
-    }).on('focusout.zf.dropdownmenu', function(e){
-      console.log('au revoir');
-      _this._hide($(this))
-    });
-    this.$tabs.on('keydown.zf.dropdownmenu', function(e){
-      if (e.which !== 9) {
-        e.preventDefault();
-        e.stopPropagation();
-      }
-      console.log(e.which);
-
-      var $tabTitle = $(this),
-          $prev = $tabTitle.prev(),
-          $next = $tabTitle.next();
-      if(_this.options.wrapOnKeys){
-        $prev = $prev.length ? $prev : $lastItem;
-        $next = $next.length ? $next : $firstItem;
-      }
-      if(checkClass($prev) || checkClass($next)){
-        return;
-      }
-
-      switch (e.which) {
-
-        case 32://return or spacebar
-        case 13:
-          console.log($tabTitle.find('ul.submenu > li:first-of-type'));
-          $tabTitle.find('[role="menuitem"]:first-of-type').addClass('is-active').focus().select();
-          // _this._hideOthers($tabTitle);
-          _this._show($tabTitle);
-          break;
-
-        case 40: //down
-          break;
-        case 38://up
-          break;
-
-        case 37://left
-        if(vertical){
-          break;
-        }
-          $prev.focus();
-          // _this._hideOthers($prev);
-          _this._show($prev);
-          break;
-        case 39://right
-        if(vertical){
-          break;
-        }
-          $next.focus();
-          // _this._hideOthers($next);
-          _this._show($next);
-          break;
-
-        case 27://esc
-          _this._hideAll();
-          $tabTitle.blur();
-          break;
-        default:
-          return;
-      }
-    });
+    Foundation.KeyboardAccess(this);
+    // var _this = this,
+    //     vertical = this.options.vertical,
+    //     $firstItem = this.$element.children('li:first-of-type'),
+    //     $lastItem = this.$element.children('li:last-of-type');
+    // this.$tabs.on('focus.zf.dropdownmenu', function(){
+    //   // console.log('what?', this);
+    //   _this._show($(this));
+    // }).on('focusout.zf.dropdownmenu', function(e){
+    //   console.log('au revoir');
+    //   _this._hide($(this))
+    // });
+    // this.$tabs.on('keydown.zf.dropdownmenu', function(e){
+    //   if (e.which !== 9) {
+    //     e.preventDefault();
+    //     e.stopPropagation();
+    //   }
+    //   console.log(e.which);
+    //
+    //   var $tabTitle = $(this),
+    //       $prev = $tabTitle.prev(),
+    //       $next = $tabTitle.next();
+    //   if(_this.options.wrapOnKeys){
+    //     $prev = $prev.length ? $prev : $lastItem;
+    //     $next = $next.length ? $next : $firstItem;
+    //   }
+    //   if(checkClass($prev) || checkClass($next)){
+    //     return;
+    //   }
+    //
+    //   switch (e.which) {
+    //
+    //     case 32://return or spacebar
+    //     case 13:
+    //       console.log($tabTitle.find('ul.submenu > li:first-of-type'));
+    //       $tabTitle.find('[role="menuitem"]:first-of-type').addClass('is-active').focus().select();
+    //       // _this._hideOthers($tabTitle);
+    //       _this._show($tabTitle);
+    //       break;
+    //
+    //     case 40: //down
+    //       break;
+    //     case 38://up
+    //       break;
+    //
+    //     case 37://left
+    //     if(vertical){
+    //       break;
+    //     }
+    //       $prev.focus();
+    //       // _this._hideOthers($prev);
+    //       _this._show($prev);
+    //       break;
+    //     case 39://right
+    //     if(vertical){
+    //       break;
+    //     }
+    //       $next.focus();
+    //       // _this._hideOthers($next);
+    //       _this._show($next);
+    //       break;
+    //
+    //     case 27://esc
+    //       _this._hideAll();
+    //       $tabTitle.blur();
+    //       break;
+    //     default:
+    //       return;
+    //   }
+    // });
   };
 
   DropdownMenu.prototype._addKeyupHandler = function($elem){
