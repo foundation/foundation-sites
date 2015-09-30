@@ -238,11 +238,11 @@ We have a set of classes that make it easy to setup source ordering in your HTML
 
 ```html_example
 <div class="row">
-  <div class="column order-2 medium-order-1">
-    This column will come second on small, and first on medium and larger.
+  <div class="column order-1 medium-order-2">
+    This column will come first on small, and second on medium and larger.
   </div>
   <div class="column order-2 medium-order-1">
-    This column will come first on small, and second on medium and larger.
+    This column will come second on small, and first on medium and larger.
   </div>
 </div>
 ```
