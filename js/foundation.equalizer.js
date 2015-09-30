@@ -10,7 +10,7 @@
    */
   function Equalizer(element) {
     this.$element = element;
-    this.options  = $.extend({}, Equalizer.defaults, options);
+    this.options  = $.extend({}, Equalizer.defaults, this.$element.data());
     this.$window  = $(window);
     this.name     = 'equalizer';
     this.attr     = 'data-equalizer';
