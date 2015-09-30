@@ -91,9 +91,7 @@
   DropdownMenu.prototype._events = function($elem){
     var _this = this;
 
-    this.$element.on('focusout.zf.dropdownmenu', function(){
-      _this._hideAll();
-    });
+
     // if(this.options.keyboardAccess){
     //   this._addKeyupHandler($elem);
     // }
