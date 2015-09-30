@@ -1,299 +1,273 @@
-.slideInDown.mui-enter {
+.slideInDown.mui-enter, .slideInLeft.mui-enter, .slideInUp.mui-enter, .slideInRight.mui-enter, .slideOutDown.mui-leave, .slideOutRight.mui-leave, .slideOutUp.mui-leave, .slideOutLeft.mui-leave, .fadeIn.mui-enter, .fadeOut.mui-leave, .hingeInFromTop.mui-enter, .hingeInFromRight.mui-enter, .hingeInFromBottom.mui-enter, .hingeInFromLeft.mui-enter, .hingeInFromMiddleX.mui-enter, .hingeInFromMiddleY.mui-enter, .hingeOutFromTop.mui-leave, .hingeOutFromRight.mui-leave, .hingeOutFromBottom.mui-leave, .hingeOutFromLeft.mui-leave, .hingeOutFromMiddleX.mui-leave, .hingeOutFromMiddleY.mui-leave, .scaleInUp.mui-enter, .scaleInDown.mui-enter, .scaleOutUp.mui-leave, .scaleOutDown.mui-leave, .spinIn.mui-enter, .spinOut.mui-leave, .spinInCCW.mui-enter, .spinOutCCW.mui-leave {
   transition-duration: 500ms;
-  transition-timing-function: linear;
+  transition-timing-function: linear; }
+
+.slideInDown.mui-enter {
   transform: translateY(-100%);
   transition-property: transform, opacity;
   backface-visibility: hidden; }
+
 .slideInDown.mui-enter.mui-enter-active {
   transform: translateY(0); }
 
 .slideInLeft.mui-enter {
-  transition-duration: 500ms;
-  transition-timing-function: linear;
   transform: translateX(-100%);
   transition-property: transform, opacity;
   backface-visibility: hidden; }
+
 .slideInLeft.mui-enter.mui-enter-active {
   transform: translateX(0); }
 
 .slideInUp.mui-enter {
-  transition-duration: 500ms;
-  transition-timing-function: linear;
   transform: translateY(100%);
   transition-property: transform, opacity;
   backface-visibility: hidden; }
+
 .slideInUp.mui-enter.mui-enter-active {
   transform: translateY(0); }
 
 .slideInRight.mui-enter {
-  transition-duration: 500ms;
-  transition-timing-function: linear;
   transform: translateX(100%);
   transition-property: transform, opacity;
   backface-visibility: hidden; }
+
 .slideInRight.mui-enter.mui-enter-active {
   transform: translateX(0); }
 
 .slideOutDown.mui-leave {
-  transition-duration: 500ms;
-  transition-timing-function: linear;
   transform: translateY(0);
   transition-property: transform, opacity;
   backface-visibility: hidden; }
+
 .slideOutDown.mui-leave.mui-leave-active {
   transform: translateY(-100%); }
 
 .slideOutRight.mui-leave {
-  transition-duration: 500ms;
-  transition-timing-function: linear;
   transform: translateX(0);
   transition-property: transform, opacity;
   backface-visibility: hidden; }
+
 .slideOutRight.mui-leave.mui-leave-active {
   transform: translateX(100%); }
 
 .slideOutUp.mui-leave {
-  transition-duration: 500ms;
-  transition-timing-function: linear;
   transform: translateY(0);
   transition-property: transform, opacity;
   backface-visibility: hidden; }
+
 .slideOutUp.mui-leave.mui-leave-active {
   transform: translateY(-100%); }
 
 .slideOutLeft.mui-leave {
-  transition-duration: 500ms;
-  transition-timing-function: linear;
   transform: translateX(0);
   transition-property: transform, opacity;
   backface-visibility: hidden; }
+
 .slideOutLeft.mui-leave.mui-leave-active {
   transform: translateX(-100%); }
 
 .fadeIn.mui-enter {
-  transition-duration: 500ms;
-  transition-timing-function: linear;
   opacity: 0;
   transition-property: opacity; }
+
 .fadeIn.mui-enter.mui-enter-active {
   opacity: 1; }
 
 .fadeOut.mui-leave {
-  transition-duration: 500ms;
-  transition-timing-function: linear;
   opacity: 1;
   transition-property: opacity; }
+
 .fadeOut.mui-leave.mui-leave-active {
   opacity: 0; }
 
 .hingeInFromTop.mui-enter {
-  transition-duration: 500ms;
-  transition-timing-function: linear;
-  transition-property: transform, opacity;
   transform: perspective(2000px) rotateX(-90deg);
   transform-origin: top;
+  transition-property: transform, opacity;
   opacity: 0; }
+
 .hingeInFromTop.mui-enter.mui-enter-active {
-  transform: rotate(0deg);
+  transform: perspective(2000px) rotate(0deg);
   opacity: 1; }
 
 .hingeInFromRight.mui-enter {
-  transition-duration: 500ms;
-  transition-timing-function: linear;
-  transition-property: transform, opacity;
   transform: perspective(2000px) rotateY(-90deg);
   transform-origin: right;
+  transition-property: transform, opacity;
   opacity: 0; }
+
 .hingeInFromRight.mui-enter.mui-enter-active {
-  transform: rotate(0deg);
+  transform: perspective(2000px) rotate(0deg);
   opacity: 1; }
 
 .hingeInFromBottom.mui-enter {
-  transition-duration: 500ms;
-  transition-timing-function: linear;
-  transition-property: transform, opacity;
   transform: perspective(2000px) rotateX(90deg);
   transform-origin: bottom;
+  transition-property: transform, opacity;
   opacity: 0; }
+
 .hingeInFromBottom.mui-enter.mui-enter-active {
-  transform: rotate(0deg);
+  transform: perspective(2000px) rotate(0deg);
   opacity: 1; }
 
 .hingeInFromLeft.mui-enter {
-  transition-duration: 500ms;
-  transition-timing-function: linear;
-  transition-property: transform, opacity;
   transform: perspective(2000px) rotateY(90deg);
   transform-origin: left;
+  transition-property: transform, opacity;
   opacity: 0; }
+
 .hingeInFromLeft.mui-enter.mui-enter-active {
-  transform: rotate(0deg);
+  transform: perspective(2000px) rotate(0deg);
   opacity: 1; }
 
 .hingeInFromMiddleX.mui-enter {
-  transition-duration: 500ms;
-  transition-timing-function: linear;
-  transition-property: transform, opacity;
   transform: perspective(2000px) rotateX(-90deg);
   transform-origin: center;
+  transition-property: transform, opacity;
   opacity: 0; }
+
 .hingeInFromMiddleX.mui-enter.mui-enter-active {
-  transform: rotate(0deg);
+  transform: perspective(2000px) rotate(0deg);
   opacity: 1; }
 
 .hingeInFromMiddleY.mui-enter {
-  transition-duration: 500ms;
-  transition-timing-function: linear;
-  transition-property: transform, opacity;
   transform: perspective(2000px) rotateY(-90deg);
   transform-origin: center;
+  transition-property: transform, opacity;
   opacity: 0; }
+
 .hingeInFromMiddleY.mui-enter.mui-enter-active {
-  transform: rotate(0deg);
+  transform: perspective(2000px) rotate(0deg);
   opacity: 1; }
 
 .hingeOutFromTop.mui-leave {
-  transition-duration: 500ms;
-  transition-timing-function: linear;
-  transition-property: transform, opacity;
-  transform: rotate(0deg);
+  transform: perspective(2000px) rotate(0deg);
   transform-origin: top;
+  transition-property: transform, opacity;
   opacity: 1; }
+
 .hingeOutFromTop.mui-leave.mui-leave-active {
   transform: perspective(2000px) rotateX(-90deg);
   opacity: 0; }
 
 .hingeOutFromRight.mui-leave {
-  transition-duration: 500ms;
-  transition-timing-function: linear;
-  transition-property: transform, opacity;
-  transform: rotate(0deg);
+  transform: perspective(2000px) rotate(0deg);
   transform-origin: right;
+  transition-property: transform, opacity;
   opacity: 1; }
+
 .hingeOutFromRight.mui-leave.mui-leave-active {
   transform: perspective(2000px) rotateY(-90deg);
   opacity: 0; }
 
 .hingeOutFromBottom.mui-leave {
-  transition-duration: 500ms;
-  transition-timing-function: linear;
-  transition-property: transform, opacity;
-  transform: rotate(0deg);
+  transform: perspective(2000px) rotate(0deg);
   transform-origin: bottom;
+  transition-property: transform, opacity;
   opacity: 1; }
+
 .hingeOutFromBottom.mui-leave.mui-leave-active {
   transform: perspective(2000px) rotateX(90deg);
   opacity: 0; }
 
 .hingeOutFromLeft.mui-leave {
-  transition-duration: 500ms;
-  transition-timing-function: linear;
-  transition-property: transform, opacity;
-  transform: rotate(0deg);
+  transform: perspective(2000px) rotate(0deg);
   transform-origin: left;
+  transition-property: transform, opacity;
   opacity: 1; }
+
 .hingeOutFromLeft.mui-leave.mui-leave-active {
   transform: perspective(2000px) rotateY(90deg);
   opacity: 0; }
 
 .hingeOutFromMiddleX.mui-leave {
-  transition-duration: 500ms;
-  transition-timing-function: linear;
-  transition-property: transform, opacity;
-  transform: rotate(0deg);
+  transform: perspective(2000px) rotate(0deg);
   transform-origin: center;
+  transition-property: transform, opacity;
   opacity: 1; }
+
 .hingeOutFromMiddleX.mui-leave.mui-leave-active {
   transform: perspective(2000px) rotateX(-90deg);
   opacity: 0; }
 
 .hingeOutFromMiddleY.mui-leave {
-  transition-duration: 500ms;
-  transition-timing-function: linear;
-  transition-property: transform, opacity;
-  transform: rotate(0deg);
+  transform: perspective(2000px) rotate(0deg);
   transform-origin: center;
+  transition-property: transform, opacity;
   opacity: 1; }
+
 .hingeOutFromMiddleY.mui-leave.mui-leave-active {
   transform: perspective(2000px) rotateY(-90deg);
   opacity: 0; }
 
 .scaleInUp.mui-enter {
-  transition-duration: 500ms;
-  transition-timing-function: linear;
-  transition-property: transform, property;
   transform: scale(0.5);
+  transition-property: transform, opacity;
   opacity: 0; }
+
 .scaleInUp.mui-enter.mui-enter-active {
   transform: scale(1);
   opacity: 1; }
 
 .scaleInDown.mui-enter {
-  transition-duration: 500ms;
-  transition-timing-function: linear;
-  transition-property: transform, property;
   transform: scale(1.5);
+  transition-property: transform, opacity;
   opacity: 0; }
+
 .scaleInDown.mui-enter.mui-enter-active {
   transform: scale(1);
   opacity: 1; }
 
 .scaleOutUp.mui-leave {
-  transition-duration: 500ms;
-  transition-timing-function: linear;
-  transition-property: transform, property;
   transform: scale(1);
+  transition-property: transform, opacity;
   opacity: 1; }
+
 .scaleOutUp.mui-leave.mui-leave-active {
   transform: scale(1.5);
   opacity: 0; }
 
 .scaleOutDown.mui-leave {
-  transition-duration: 500ms;
-  transition-timing-function: linear;
-  transition-property: transform, property;
   transform: scale(1);
+  transition-property: transform, opacity;
   opacity: 1; }
+
 .scaleOutDown.mui-leave.mui-leave-active {
   transform: scale(0.5);
   opacity: 0; }
 
 .spinIn.mui-enter {
-  transition-duration: 500ms;
-  transition-timing-function: linear;
-  transition-property: transform, opacity;
   transform: rotate(-270deg);
+  transition-property: transform, opacity;
   opacity: 0; }
+
 .spinIn.mui-enter.mui-enter-active {
   transform: rotate(0);
   opacity: 1; }
 
 .spinOut.mui-leave {
-  transition-duration: 500ms;
-  transition-timing-function: linear;
-  transition-property: transform, opacity;
   transform: rotate(0);
+  transition-property: transform, opacity;
   opacity: 1; }
+
 .spinOut.mui-leave.mui-leave-active {
   transform: rotate(270deg);
   opacity: 0; }
 
 .spinInCCW.mui-enter {
-  transition-duration: 500ms;
-  transition-timing-function: linear;
-  transition-property: transform, opacity;
   transform: rotate(270deg);
+  transition-property: transform, opacity;
   opacity: 0; }
+
 .spinInCCW.mui-enter.mui-enter-active {
   transform: rotate(0);
   opacity: 1; }
 
 .spinOutCCW.mui-leave {
-  transition-duration: 500ms;
-  transition-timing-function: linear;
-  transition-property: transform, opacity;
   transform: rotate(0);
+  transition-property: transform, opacity;
   opacity: 1; }
+
 .spinOutCCW.mui-leave.mui-leave-active {
   transform: rotate(-270deg);
   opacity: 0; }
@@ -334,51 +308,79 @@
 .long-delay {
   transition-delay: 700ms !important; }
 
+.shake {
+  animation-name: "shake-7"; }
+
 @keyframes shake-7 {
-  0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90% {
+  "0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%" {
     transform: translateX(7%); }
-  5%, 15%, 25%, 35%, 45%, 55%, 65%, 75%, 85%, 95% {
+  "5%, 15%, 25%, 35%, 45%, 55%, 65%, 75%, 85%, 95%" {
     transform: translateX(-7%); } }
-@keyframes spin-cw-360deg {
-  0% {
-    transform: rotate(0deg); }
-  100% {
-    transform: rotate(360deg); } }
-@keyframes spin-ccw--360deg {
-  0% {
-    transform: rotate(0deg); }
-  100% {
-    transform: rotate(-360deg); } }
-@keyframes wiggle-7deg {
-  40%, 50%, 60% {
-    transform: rotate(7deg); }
-  35%, 45%, 55%, 65% {
-    transform: rotate(-7deg); }
-  0%, 30%, 70%, 100% {
+
+.spin-cw {
+  animation-name: "spin-cw-270deg"; }
+
+@keyframes spin-cw-270deg {
+  "0%" {
+    transform: rotate(-270deg); }
+  "100%" {
     transform: rotate(0); } }
-.mui-animate.infinite {
+
+.spin-ccw {
+  animation-name: "spin-cw-270deg"; }
+
+@keyframes spin-cw-270deg {
+  "0%" {
+    transform: rotate(0); }
+  "100%" {
+    transform: rotate(270deg); } }
+
+.wiggle {
+  animation-name: "wiggle-7deg"; }
+
+@keyframes wiggle-7deg {
+  "40%, 50%, 60%" {
+    transform: rotate(7deg); }
+  "35%, 45%, 55%, 65%" {
+    transform: rotate(-7deg); }
+  "0%, 30%, 70%, 100%" {
+    transform: rotate(0); } }
+
+.infinite {
   animation-iteration-count: infinite; }
-.mui-animate.slow {
-  transition-duration: 750ms !important; }
-.mui-animate.fast {
-  transition-duration: 250ms !important; }
-.mui-animate.linear {
-  transition-timing-function: linear !important; }
-.mui-animate.ease {
-  transition-timing-function: ease !important; }
-.mui-animate.easeIn {
-  transition-timing-function: ease-in !important; }
-.mui-animate.easeOut {
-  transition-timing-function: ease-out !important; }
-.mui-animate.easeInOut {
-  transition-timing-function: ease-in-out !important; }
-.mui-animate.bounceIn {
-  transition-timing-function: cubic-bezier(0.485, 0.155, 0.24, 1.245) !important; }
-.mui-animate.bounceOut {
-  transition-timing-function: cubic-bezier(0.485, 0.155, 0.515, 0.845) !important; }
-.mui-animate.bounceInOut {
-  transition-timing-function: cubic-bezier(0.76, -0.245, 0.24, 1.245) !important; }
-.mui-animate.short-delay {
-  transition-timing-function: 300ms !important; }
-.mui-animate.long-delay {
-  transition-timing-function: 700ms !important; }
+
+.slow {
+  animation-duration: 750ms !important; }
+
+.fast {
+  animation-duration: 250ms !important; }
+
+.linear {
+  animation-timing-function: linear !important; }
+
+.ease {
+  animation-timing-function: ease !important; }
+
+.easeIn {
+  animation-timing-function: ease-in !important; }
+
+.easeOut {
+  animation-timing-function: ease-out !important; }
+
+.easeInOut {
+  animation-timing-function: ease-in-out !important; }
+
+.bounceIn {
+  animation-timing-function: cubic-bezier(0.485, 0.155, 0.24, 1.245) !important; }
+
+.bounceOut {
+  animation-timing-function: cubic-bezier(0.485, 0.155, 0.515, 0.845) !important; }
+
+.bounceInOut {
+  animation-timing-function: cubic-bezier(0.76, -0.245, 0.24, 1.245) !important; }
+
+.short-delay {
+  animation-delay: 300ms !important; }
+
+.long-delay {
+  animation-delay: 700ms !important; }
