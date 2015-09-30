@@ -12,77 +12,86 @@
         rightRE = /right/g,
         usedKeys = [9, 13, 27, 32, 37, 38, 38, 40];
 
-    console.log(mbType);
+
+    var thing = mb.$menuItems.has('.submenu')
+
+
+    console.log(thing);
     // mb.$menuItems.on('focusin.zf.menubar', function(){
     //   console.log($(this));
     //   mb._show($(this));
     // });
-    mb.$menuItems.on('keyup.zf.menubar', function(e){
-                                                    /**
-                                                     needs to check for arrow keys and respond appropriately including wrap, see photo
-                                                     if `esc`, close all open Menus
-                                                     return clicks the link if no sub-menu, otherwise opens/closes sub-menu
-                                                     tab is cool where it is
-                                                     */
-      var hasSub = subRE.test(e.target.className),// || subRE.test(e.target.parentNode.className),
-          subIsVert = vertRE.test(e.target.className),
-          isRight = rightRE.test(e.target.parentNode.parentNode.className),
-          $parent;
-                                                                    // if(e.target.tagName.toLowerCase() === 'a'){
-                                                                    //   $parent = $(e.target.parentNode);
-      console.log('target',e.currentTarget,'this', this);                                                        // }
-      if(usedKeys.indexOf(e.keyCode) > -1){
-        if(e.keyCode === (13 || 32) && !hasSub){
-          return;
-        }else{
-          e.preventDefault();
-        }
-      mb._hideOthers($(this));
-      }
-      if(hasSub){
-        console.log('woot, I have a sub');
-        mb._show($(this));
-      }
-      // if(e.target.className.test(/has-submenu/g)){
-      //   console.log('woot');
-      //   // e.preventDefault();
-      // }
-      //*********current comments pertain to dropdowns, needs expansion for drilldowns and accordions********
-      switch(e.keyCode){
-        case 13://return
-        //open/close current menu/submenu, or, carry out default action.
-        break;
-        case 39://right arrow
-        //if horizontal, move right and select sibling menu element & wrap to left at end
-        //if vertical and oriented ltr, select first-child menu item, if rtl return to parent menu item and close submenu
-        break;
-        case 37://left arrow
-        //if horizontal, move left and select sibling menu element & wrap to right at end
-        //if vertical and oriented rtl, select first-child menu item, if ltr return to parent menu item and close submenu
-        break;
-        case 38://up arrow
-        //if horizontal, close open menu
-        //if vertical, select next sibling menu item, open if has-submenu, or wrap to bottom menu item
-        break;
-        case 40://down arrow
-        //if horizontal, select first menu item and open if has-submenu
-        //if vertical, select next sibling menu item, open if has-submenu, or wrap to top menu item
-        break;
-        case 32://spacebar
-        //open/close or activate normally
-        break;
-        case 27://escape
-        mb._hideAll();
-        break;
-        case 9://tab
-        //select next child, or if target has submenu select its first child. if last child of current menu, close that menu and return to previous depth, selecting the next element in line.
-        break;
-        default://do nothing
-        return;
-      }
 
-    });
-
+    //****************************************************************
+    //****************************************************************
+    //****************************************************************
+    // mb.$menuItems.on('keyup.zf.menubar', function(e){
+    //                                                 /**
+    //                                                  needs to check for arrow keys and respond appropriately including wrap, see photo
+    //                                                  if `esc`, close all open Menus
+    //                                                  return clicks the link if no sub-menu, otherwise opens/closes sub-menu
+    //                                                  tab is cool where it is
+    //                                                  */
+    //   var hasSub = subRE.test(e.target.className),// || subRE.test(e.target.parentNode.className),
+    //       subIsVert = vertRE.test(e.target.className),
+    //       isRight = rightRE.test(e.target.parentNode.parentNode.className),
+    //       $parent;
+    //                                                                 // if(e.target.tagName.toLowerCase() === 'a'){
+    //                                                                 //   $parent = $(e.target.parentNode);
+    //   if(usedKeys.indexOf(e.keyCode) > -1){
+    //     if(e.keyCode === (13 || 32) && !hasSub){
+    //       return;
+    //     }else{
+    //       e.preventDefault();
+    //     }
+    //   mb._hideOthers($(this));
+    //   }
+    //   if(hasSub){
+    //     console.log('woot, I have a sub');
+    //     mb._show($(this));
+    //   }
+    //   // if(e.target.className.test(/has-submenu/g)){
+    //   //   console.log('woot');
+    //   //   // e.preventDefault();
+    //   // }
+    //   //*********current comments pertain to dropdowns, needs expansion for drilldowns and accordions********
+    //   switch(e.keyCode){
+    //     case 13://return
+    //     //open/close current menu/submenu, or, carry out default action.
+    //     break;
+    //     case 39://right arrow
+    //     //if horizontal, move right and select sibling menu element & wrap to left at end
+    //     //if vertical and oriented ltr, select first-child menu item, if rtl return to parent menu item and close submenu
+    //     break;
+    //     case 37://left arrow
+    //     //if horizontal, move left and select sibling menu element & wrap to right at end
+    //     //if vertical and oriented rtl, select first-child menu item, if ltr return to parent menu item and close submenu
+    //     break;
+    //     case 38://up arrow
+    //     //if horizontal, close open menu
+    //     //if vertical, select next sibling menu item, open if has-submenu, or wrap to bottom menu item
+    //     break;
+    //     case 40://down arrow
+    //     //if horizontal, select first menu item and open if has-submenu
+    //     //if vertical, select next sibling menu item, open if has-submenu, or wrap to top menu item
+    //     break;
+    //     case 32://spacebar
+    //     //open/close or activate normally
+    //     break;
+    //     case 27://escape
+    //     mb._hideAll();
+    //     break;
+    //     case 9://tab
+    //     //select next child, or if target has submenu select its first child. if last child of current menu, close that menu and return to previous depth, selecting the next element in line.
+    //     break;
+    //     default://do nothing
+    //     return;
+    //   }
+    //
+    // });
+//*******************************************************************
+//*******************************************************************
+//*******************************************************************
 
     // mb.$submenus.on('focusin.zf.menubar', function(e){
     //   // mb._show($(this));
