@@ -33,7 +33,7 @@
    * @private
    */
   AccordionMenu.prototype._init = function() {
-    this.$element.find('[data-submenu]').slideUp(0);
+    this.$element.find('[data-submenu]').slideUp(0).find('a')//.css('padding-left', '1rem');
   };
 
   /**

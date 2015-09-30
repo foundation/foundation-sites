@@ -4,7 +4,8 @@
   "main": "js/foundation/foundation.js",
   "scripts": {
     "start": "gulp",
-    "test": "gulp test"
+    "test": "gulp test",
+    "testbed": "cd testing && gulp"
   },
   "dependencies": {
     "jquery": "^2.1.0"
@@ -30,12 +31,13 @@
     "marked": "^0.3.3",
     "multiline": "^1.0.2",
     "octophant": "^0.2.0",
+    "panini": "0.1.0",
     "parker": "0.0.9",
     "pretty-print": "^1.0.0",
     "prettyjson": "^1.1.3",
     "require-dir": "^0.3.0",
     "rimraf": "^2.3.2",
-    "shipyard": "gakimball/shipyard",
+    "run-sequence": "^1.1.4",
     "string-template": "^0.2.1",
     "supercollider": "gakimball/supercollider",
     "zeroclipboard": "^2.2.0"
