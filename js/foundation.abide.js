@@ -10,7 +10,7 @@
    */
   function Abide(element) {
     this.$element = element;
-    this.options  = $.extend({}, Abide.defaults, options);
+    this.options  = $.extend({}, Abide.defaults, this.$element.data());
     this.$window  = $(window);
     this.name     = 'Abide';
     this.attr     = 'data-abide';

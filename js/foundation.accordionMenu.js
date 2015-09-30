@@ -42,7 +42,7 @@
    */
   AccordionMenu.prototype._events = function() {
     var _this = this;
-
+    
     this.$element.find('li').each(function() {
       var $submenu = $(this).children('[data-submenu]');
 

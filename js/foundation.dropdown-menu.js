@@ -51,8 +51,8 @@
     this.$tabs = this.$element.children('li.has-submenu');
     this.$tabs.children('[data-submenu]').addClass('first-sub');
     this.$submenus = this.$element.find('li.has-submenu');
-    this.$menuItems = this.$element.find('li').attr('role', 'menuitem');
-
+    this.$menuItems = this.$element.find('li').attr({'role': 'menuitem', 'tabindex': 0});
+    this.$menuItems.children('a').attr('tabindex', -1);
     if(this.$element.hasClass('align-right')){
       this.options.alignment = 'right';
       this.$submenus.addClass('right');
@@ -62,14 +62,14 @@
       var $tab = $(this);
       $tab.attr({
         'role': 'menuitem',
-        'tabindex': -1,
+        'tabindex': 0,
         'title': $tab.children('a:first-child').text()/*.match(/\w/ig).join('')*/
-      });//maybe add a more specific regex to match alphanumeric characters and join them appropriately
+      }).children('a').attr('tabindex', -1);//maybe add a more specific regex to match alphanumeric characters and join them appropriately
       if($tab.children('[data-submenu]')){
         $tab.attr('aria-haspopup', true);
       }
     });
-    this.$tabs[0].setAttribute('tabindex', 0);
+    // this.$tabs[0].setAttribute('tabindex', 0);
 
     this.$submenus.each(function(){
       var $sub = $(this);
@@ -91,9 +91,10 @@
   DropdownMenu.prototype._events = function($elem){
     var _this = this;
 
-    if(this.options.keyboardAccess){
-      this._addKeyupHandler($elem);
-    }
+
+    // if(this.options.keyboardAccess){
+    //   this._addKeyupHandler($elem);
+    // }
 
     if(this.options.clickOpen){
       $elem.on('click.zf.dropdownmenu tap.zf.dropdownmenu touchend.zf.dropdownmenu', function(e){
