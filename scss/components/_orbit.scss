@@ -127,6 +127,14 @@ $orbit-control-z-index: 10 !default;
   .orbit {
     @include orbit;
   }
+  //more of chris testing things ***********
+  .wrapper {
+    overflow: hidden;
+  }
+  li {
+    display: block;
+  }
+  //****************************************
 
   .orbit-container {
     @include orbit-container;

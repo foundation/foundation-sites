@@ -28,7 +28,7 @@
     if(!this.options.holdOpen){
       this._menuLinkEvents();
     }
-    console.log(this.$submenuAnchors);
+    // console.log(this.$submenuAnchors);
     this.$submenuAnchors.each(function(){
       // this.removeAttribute('href');
       var $sub = $(this);
@@ -115,7 +115,7 @@
     // console.log('1',this.$menuItems[0].getBoundingClientRect().height);
     result.height = max * this.$menuItems[0].getBoundingClientRect().height + 'px';
     result.width = this.$menuItems[0].getBoundingClientRect().width + 'px';
-    
+
     return result;
   };
   Foundation.plugin(Drilldown);
