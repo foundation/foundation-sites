@@ -131,7 +131,7 @@ Get to know the pieces of Foundation.
       <h4>Plugins</h4>
       <ul>
         <li><a href="abide.html">Abide</a></li>
-        <li><a href="equalizer.html">Equalier</a></li>
+        <li><a href="equalizer.html">Equalizer</a></li>
         <li><a href="interchange.html">Interchange</a></li>
         <li><a href="toggler.html">Toggler</a></li>
         <li><a href="sticky.html">Sticky</a></li>

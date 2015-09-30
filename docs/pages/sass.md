@@ -76,7 +76,7 @@ The Foundation for Sites npm and Bower packages include pre-compiled CSS files, 
 
 ```html
 <link rel="stylesheet" href="node_modules/foundation-sites/dist/css/foundation-sites.css">
- 
+
 <link rel="stylesheet" href="node_modules/foundation-sites/dist/css/foundation-sites.min.css">
 ```
 
@@ -122,31 +122,31 @@ To change a setting, find the variable you're looking for, uncomment it by remov
 Here's an example set of settings variables. These change the default styling of [buttons](button.html):
 
 ```scss
-// Defualt padding for button.
+// Default padding for button.
 $button-padding: 0.85em 1em !default;
 
-// Defualt margin for button.
+// Default margin for button.
 $button-margin: 0 $global-padding $global-padding 0 !default;
 
-// Defualt fill for button. Is either solid or hollow.
+// Default fill for button. Is either solid or hollow.
 $button-fill: solid !default;
 
-// Defualt margin for button.
+// Default background color for button.
 $button-background: $primary-color !default;
 
-// Defualt margin for button.
+// Default hover background color for button.
 $button-background-hover: scale-color($button-background, $lightness: -15%) !default;
 
-// Defualt font color for button.
+// Default font color for button.
 $button-font-color: #fff !default;
 
-// Defualt alternative font color for button.
+// Default alternative font color for button.
 $button-font-color-alt: #000 !default;
 
-// Defualt radius for button.
+// Default radius for button.
 $button-radius: 0 !default;
 
-// Defualt sizes for button.
+// Default sizes for button.
 $button-sizes: (
   tiny: 0.7,
   small: 0.8,
@@ -154,9 +154,9 @@ $button-sizes: (
   large: 1.3,
 ) !default;
 
-// Defualt font size for button.
+// Default font size for button.
 $button-font-size: 0.9rem !default;
 
-// Defualt opacity for a disabled button.
+// Default opacity for a disabled button.
 $button-opacity-disabled: 0.25 !default;
 ```

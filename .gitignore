@@ -48,6 +48,7 @@ test/scss/output-test
 test/tmp
 test/version_tmp
 tmp
+testing/_build
 
 pizza/
 data.json

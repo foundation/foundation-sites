@@ -17,6 +17,10 @@ npm install && bower install
 npm start
 ```
 
+## Local Testing
+
+`npm start` will compile the documentation. For this testing period, we've created a small testbed to experiment with components. You can find the assets under the `testing/` folder. To use the testbed, run `npm run testbed` after installing the needed dependencies.
+
 ## Folder structure
 
 - `_build/`: compiled HTML, CSS, and JavaScript. *Don't edit these files directly, as they will be overridden!*

@@ -42,7 +42,7 @@
     this.$handle = $(handles[0]);
     this.$input = inputs[0] ? $(inputs[0]) : $('#' + this.$handle.attr('aria-controls'));
 
-    ariaId = this.$input.hasAttr('id') ? this.$input.attr('id') : randomIdGen(6);
+    ariaId = this.$input.hasAttr('id') ? this.$input.attr('id') : Foundation.GetYoDigits(6, 'slider');
     this.$handle.attr(this._setHandleAttr(ariaId));
     this.$input.attr(this._setInputAttr(ariaId));
     this.handlePos = percent((this.options.initialStart ? this.options.initialStart : this.options.start), this.options.end, this.options.decimal) + '%';
