@@ -99,34 +99,38 @@
     }
     if(this.options.bullets){
       this.$bullets.on('click.zf.orbit touchend.zf.orbit', function(){
-        // $(this).find()
-        // console.log($(_this.$slides[$(this).data('slide')]));
-        var idx = $(this).data('slide');
-        var ltr = idx > _this.$slides.index($('.active'));
-        var $slide = $(_this.$slides[idx]);
-        console.log(ltr);
-        _this.changeSlide(ltr, $slide);
+        if(/active/g.test(this.className)){ return false; }//if this is active, kick out of function.
+        var idx = $(this).data('slide'),
+            ltr = idx > _this.$slides.index($('.active')),
+            $slide = _this.$slides.eq(idx);
+            // $slide = $(_this.$slides[idx]);
+
+        _this.changeSlide(ltr, $slide, idx);
       });
     }
   };
-  Orbit.prototype.changeSlide = function(isLTR, chosenSlide){
+  Orbit.prototype.changeSlide = function(isLTR, chosenSlide, idx){
     var $curSlide = this.$element.find('.orbit-slide.active');
 
     if(/mui/g.test($curSlide[0].className)){ return false; }//if the slide is currently animating, kick out of the function
     // console.log(this.$slides.index($curSlide));
     var $firstSlide = this.$slides.first(),
         $lastSlide = this.$slides.last(),
-
-        $nextSlide = (this.options.infiniteWrap ? $curSlide.next('.orbit-slide').length ? $curSlide.next('.orbit-slide') : $firstSlide : $curSlide.next('.orbit-slide')),
-
-        $prevSlide = (this.options.infiniteWrap ? $curSlide.prev('.orbit-slide').length ? $curSlide.prev('.orbit-slide') : $lastSlide : $curSlide.prev('.orbit-slide')),
-
         dirIn = isLTR ? 'Right' : 'Left',
         dirOut = isLTR ? 'Left' : 'Right',
-        $newSlide = isLTR ? $nextSlide : $prevSlide;
-    if(chosenSlide){ $newSlide = chosenSlide; }
+        $newSlide;
 
+    if(!chosenSlide){
+      $newSlide = isLTR ?
+                    (this.options.infiniteWrap ? $curSlide.next('.orbit-slide').length ? $curSlide.next('.orbit-slide') : $firstSlide : $curSlide.next('.orbit-slide'))//pick next slide
+                    :
+                    (this.options.infiniteWrap ? $curSlide.prev('.orbit-slide').length ? $curSlide.prev('.orbit-slide') : $lastSlide : $curSlide.prev('.orbit-slide'));//pick prev slide
+    }else{
+      $newSlide = chosenSlide;
+    }
     if($newSlide.length){
+      idx = idx || this.$slides.index($newSlide);
+      this._updateBullets(idx);
 
       Foundation.Motion.animateIn(
         $newSlide.addClass('active').css({'position': 'absolute', 'top': 0}),
@@ -145,7 +149,12 @@
         });
     }
   };
-
+  Orbit.prototype._updateBullets = function(idx){
+    var $oldBullet = this.$element.find('.orbit-bullets-container > .is-active').removeClass('is-active').blur(),
+        span = $oldBullet.find('span:last').detach(),
+        // $newBullet = $(this.$bullets[idx]).addClass('is-active').append(span);
+        $newBullet = this.$bullets.eq(idx).addClass('is-active').append(span);
+  };
 
   // Orbit.prototype._nextSlide = function(curSlide, newSlide){
   //   Foundation.Motion.animateOut(
