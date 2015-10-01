@@ -217,7 +217,7 @@
       width = target.data('width');
       nub = tip.children('.nub');
       nubHeight = nub.outerHeight();
-      nubWidth = nub.outerHeight();
+      nubWidth = nub.outerWidth();
 
       if (this.small()) {
         tip.css({'width' : '100%'});
