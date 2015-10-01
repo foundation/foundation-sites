@@ -58,6 +58,9 @@ $orbit-control-z-index: 10 !default;
   list-style: none;
   margin: 0;
   position: relative;
+  //******************
+  overflow: hidden;
+  //******************
 }
 
 @mixin orbit-figure {
@@ -128,11 +131,16 @@ $orbit-control-z-index: 10 !default;
     @include orbit;
   }
   //more of chris testing things ***********
-  .wrapper {
-    overflow: hidden;
+  // .wrapper {
+  //   overflow: hidden;
+  // }
+  .active {
+    display: block;
   }
   li {
-    display: block;
+    // display: table-cell;
+    width: 100%;
+
   }
   //****************************************
 
