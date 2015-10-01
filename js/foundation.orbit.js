@@ -3,7 +3,7 @@
   function Orbit(element){
     this.$element = element;
     this.options = $.extend({}, Orbit.defaults, this.$element.data());
-    // console.log(this.$element);
+
     this._init();
   }
   Orbit.defaults = {
@@ -13,18 +13,14 @@
     animOutToRight: 'slideOutRight',
     animInFromLeft: 'slideInLeft',
     animOutToLeft: 'slideOutLeft',
-    timer: true,
+    autoPlay: true,
     timerDelay: 5000,
-    animationSpeed: 500,
     infiniteWrap: true,
     swipe: true,
     fixedHeight: true,
-    // slideNumber: true,
     pauseOnHover: true,
-    nextOnClick: true
-    // expandOnClick: false,
-    // wrapper: '<div></div>'
-
+    nextOnClick: true,
+    accessible: true
   };
   Orbit.prototype._init = function(){
     this.$wrapper = this.$element.find('.orbit-container');
@@ -32,6 +28,17 @@
 
     this._prepareForOrbit();
     this._events();
+    if(this.options.autoPlay){
+      this.geoSync();
+    }
+  };
+  Orbit.prototype.geoSync = function(){
+    console.log('called');
+    var _this = this;
+    this.interval = setInterval(function(){
+      _this.changeSlide(true);
+      console.log(_this.interval);
+    }, _this.options.timerDelay);
   };
   Orbit.prototype._prepareForOrbit = function(){
     var _this = this;
@@ -60,35 +67,19 @@
   Orbit.prototype.setSlideHeight = function(height){
     var counter = 0;
     this.$slides.each(function(){
-      $(this).css('height', height);
+      $(this).css('max-height', height);
     });
   };
   Orbit.prototype._events = function(){
     var _this = this;
     var controls = this.$element.find('.orbit-control');
-    // var firstSlide = this.$slides.first();
-    // var lastSlide = this.$slides.last();
-
-    // var curSlide, nextSlide, prevSlide;
-    controls.on('click.zf.orbit', function(){
-      // curSlide = _this.$element.find('li.active');
-
-      // if(curSlide[0].className.match(/mui/g)){
-      //   return false;
-      // }
-
-      // nextSlide = curSlide.next('li').length ? curSlide.next('li') : firstSlide;
-      // prevSlide = curSlide.prev('li').length ? curSlide.prev('li') : lastSlide;
-      // console.log(this);
+    controls.on('click.zf.orbit touchend.zf.orbit ', function(){
       if($(this).hasClass('orbit-next')){
         _this.changeSlide(true);
-        // _this._nextSlide(curSlide, nextSlide);
-      }
-      else{
+      }else{
         _this.changeSlide(false);
-        // _this._prevSlide(curSlide, prevSlide);
       }
-    })
+    });
   };
   Orbit.prototype.changeSlide = function(isLTR){
     var $curSlide = this.$element.find('.orbit-slide.active');
