@@ -9,7 +9,10 @@
   Orbit.defaults = {
     bullets: true,
     navButtons: true,
-    animation: 'slide',
+    animInFromRight: 'slideInRight',
+    animOutToRight: 'slideOutRight',
+    animInFromLeft: 'slideInLeft',
+    animOutToLeft: 'slideOutLeft',
     timer: true,
     timerDelay: 5000,
     animationSpeed: 500,
@@ -24,119 +27,132 @@
 
   };
   Orbit.prototype._init = function(){
-    var _this = this;
-
-    this.$slides = this.$element.find('.orbit-container > li');
     this.$wrapper = this.$element.find('.orbit-container');
-    this.setWrapperHeight(function(max){
-      // _this.setSlideHeight(max);
+    this.$slides = this.$element.find('.orbit-slide');
 
-    });
-    var a = this.$slides.not('.active');
-    // var b = this.$element.find('.active');
-    // a.css('visibility', 'hidden');
-    // a.offset({'top': b.offset().top}).hide();
+    this._prepareForOrbit();
     this._events();
   };
+  Orbit.prototype._prepareForOrbit = function(){
+    var _this = this;
+    this.setWrapperHeight(function(max){
+      _this.setSlideHeight(max);
+    });
+  }
   Orbit.prototype.setWrapperHeight = function(cb){
     var max = 0, temp, counter = 0;
 
     this.$slides.each(function(){
       console.log($(this));
-      // temp = this.getBoundingClientRect().height;
-      temp = $(this).outerHeight();
+      temp = this.getBoundingClientRect().height;
+      // temp = $(this).outerHeight();
       if(counter){ $(this).css({'position': 'relative', 'display': 'none'}); }
       console.log(temp);
       max = temp > max ? temp : max;
       counter++;
     });
-    this.$wrapper.css({'max-height': max/*, 'height': max*/});
 
-    if(counter === this.$slides.length){ cb(max); }
+    if(counter === this.$slides.length){
+      this.$wrapper.css({'height': max});
+      cb(max);
+    }
+  };
+  Orbit.prototype.setSlideHeight = function(height){
+    var counter = 0;
+    this.$slides.each(function(){
+      $(this).css('height', height);
+    });
   };
   Orbit.prototype._events = function(){
     var _this = this;
     var controls = this.$element.find('.orbit-control');
-    var firstSlide = this.$slides.first();
-    var lastSlide = this.$slides.last();
-    console.log(lastSlide);
+    // var firstSlide = this.$slides.first();
+    // var lastSlide = this.$slides.last();
 
-    var curSlide, nextSlide, prevSlide;
-    controls.on('click', function(){
-      curSlide = _this.$element.find('li.active');
-      nextSlide = curSlide.next('li').length ? curSlide.next('li') : firstSlide;
-      prevSlide = curSlide.prev('li').length ? curSlide.prev('li') : lastSlide;
+    // var curSlide, nextSlide, prevSlide;
+    controls.on('click.zf.orbit', function(){
+      // curSlide = _this.$element.find('li.active');
+
+      // if(curSlide[0].className.match(/mui/g)){
+      //   return false;
+      // }
+
+      // nextSlide = curSlide.next('li').length ? curSlide.next('li') : firstSlide;
+      // prevSlide = curSlide.prev('li').length ? curSlide.prev('li') : lastSlide;
       // console.log(this);
       if($(this).hasClass('orbit-next')){
-
-        Foundation.Motion.animateOut(
-          curSlide.removeClass('active'),
-          'slideOutLeft',
-          function(){
-            //do stuff?
-        });
-          // nextSlide.addClass('active').css({'position': 'absolute', 'top': 0});
-        Foundation.Motion.animateIn(
-          nextSlide.addClass('active').css({'position': 'absolute', 'top': 0}),
-          'slideInRight',
-          function(){
-            nextSlide.css({'position': 'relative', 'display': 'block'});
-        });
+        _this.changeSlide(true);
+        // _this._nextSlide(curSlide, nextSlide);
       }
       else{
-        // _this._changeSlide(curSlide, prevSlide, 'right');
-
-        Foundation.Motion.animateOut(
-          curSlide.removeClass('active'),
-          'slideOutRight',
-          function(){
-
-        });
-        Foundation.Motion.animateIn(
-          prevSlide.addClass('active').css({'position': 'absolute', 'top': 0}),
-          'slideInLeft',
-          function(){
-            prevSlide.css({'position': 'relative', 'display': 'block'});
-        });
+        _this.changeSlide(false);
+        // _this._prevSlide(curSlide, prevSlide);
       }
     })
-    // controls.each(function(){
-    //   var $this = this;
-    //   this.on('click.zf.orbit', function(){
-    //     if($this.hasClass('orbit-next')){
-    //       console.log(_this.$element.find('li.active').next());
-    //     }
-    //   })
-    // })
   };
-  // Orbit.prototype.setSlideHeight = function(height){
-  //   var counter = 0;
-  //   this.$slides.each(function(){
-  //     if(counter){
-  //       console.log('yo');
-  //       $(this).offset('top', -(counter * height));
-  //     }else{
-  //       console.log('first');
-  //     }
-  //   })
+  Orbit.prototype.changeSlide = function(isLTR){
+    var $curSlide = this.$element.find('.orbit-slide.active');
+
+    if(/mui/g.test($curSlide[0].className)){ return false; }//if the slide is currently animating, kick out of the function
+
+    var $firstSlide = this.$slides.first(),
+        $lastSlide = this.$slides.last(),
+
+        $nextSlide = (this.options.infiniteWrap ? $curSlide.next('.orbit-slide').length ? $curSlide.next('.orbit-slide') : $firstSlide : $curSlide.next('.orbit-slide')),
+
+        $prevSlide = (this.options.infiniteWrap ? $curSlide.prev('.orbit-slide').length ? $curSlide.prev('.orbit-slide') : $lastSlide : $curSlide.prev('.orbit-slide')),
+
+        dirIn = isLTR ? 'Right' : 'Left',
+        dirOut = isLTR ? 'Left' : 'Right',
+        $newSlide = isLTR ? $nextSlide : $prevSlide;
+
+    if($newSlide.length){
+      Foundation.Motion.animateIn(
+        $newSlide.addClass('active').css({'position': 'absolute', 'top': 0}),
+        this.options['animInFrom' + dirIn],
+        function(){
+          $newSlide.css({'position': 'relative', 'display': 'block'});
+        });
+      Foundation.Motion.animateOut(
+        $curSlide.removeClass('active'),
+        this.options['animOutTo' + dirOut],
+        function(){
+          //do stuff?
+        });
+    }
+  };
+
+
+  // Orbit.prototype._nextSlide = function(curSlide, newSlide){
+  //   Foundation.Motion.animateOut(
+  //     curSlide.removeClass('active'),
+  //     this.options.animOutToLeft,
+  //     function(){
+  //       //do stuff?
+  //   });
+  //   Foundation.Motion.animateIn(
+  //     newSlide.addClass('active').css({'position': 'absolute', 'top': 0}),
+  //     this.options.animInFromRight,
+  //     function(){
+  //       newSlide.css({'position': 'relative', 'display': 'block'});
+  //   });
+  //
   // };
-  Orbit.prototype._changeSlide = function(curSlide, newSlide, dir){
-    // if(dir === 'left'){
-    //   curSlide.css({
-    //     transform: 'translateX(-100%)'
-    //   }).removeClass('active');
-    //   newSlide.show().css({
-    //     transform: 'translateX(0)'
-    //   }).addClass('active');
-    // }else{
-    //   curSlide.css({
-    //     transform: 'translateX(100%)'
-    //   }).removeClass('active');
-    //   newSlide.show().css({
-    //     transform: 'translateX(0)'
-    //   }).addClass('active');
-    // }
-  };
+  // Orbit.prototype._prevSlide = function(curSlide, newSlide){
+  //   Foundation.Motion.animateOut(
+  //     curSlide.removeClass('active'),
+  //     this.options.animOutToRight,
+  //     function(){
+  //       //do stuff?
+  //   });
+  //   Foundation.Motion.animateIn(
+  //     newSlide.addClass('active').css({'position': 'absolute', 'top': 0}),
+  //     this.options.animInFromLeft,
+  //     function(){
+  //       newSlide.css({'position': 'relative', 'display': 'block'});
+  //   });
+  //
+  // };
   Orbit.prototype.registerBullets = function(){
 
   };
