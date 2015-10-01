@@ -48,6 +48,8 @@ tags:
   <nav class="orbit-bullets-container">
    <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
    <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
+   <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
+   <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
  </nav>
 </div>
 <!-- ``` -->
