@@ -13,7 +13,6 @@ tags:
   <h5>Known Issues</h5>
   <ul>
     <li>Images sometimes vanish from the view/script, throwing errors and breaking things.</li>
-    <li>Needs a `pause` method for autoPlay.</li>
     <li>Needs a new `swipe` event, probably a `$.fn` event that can be used elsewhere as well.</li>
  </ul>
 </div>

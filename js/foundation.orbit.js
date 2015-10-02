@@ -5,6 +5,8 @@
     this.options = $.extend({}, Orbit.defaults, this.$element.data());
 
     this._init();
+
+    this.$element.trigger('init.zf.orbit');
   }
   Orbit.defaults = {
     bullets: true,
@@ -17,15 +19,14 @@
     timerDelay: 5000,
     infiniteWrap: true,
     swipe: true,
-    pauseOnHover: true,//need to figure this out...
-    nextOnClick: true,
+    pauseOnHover: true,
     accessible: true
   };
   Orbit.prototype._init = function(){
     this.$wrapper = this.$element.find('.orbit-container');
     this.$slides = this.$element.find('.orbit-slide');
 
-    this._prepareForOrbit();
+    this._prepareForOrbit();//hehe
 
     if(this.options.bullets){
       this.loadBullets();
@@ -38,10 +39,7 @@
     }
   };
   Orbit.prototype.loadBullets = function(){
-    var _this = this;
     this.$bullets = this.$element.find('.orbit-bullets-container > button');
-
-
   };
   Orbit.prototype.geoSync = function(){
     var _this = this;
@@ -101,10 +99,21 @@
     }
     //***************************************
 
-    if(this.options.autoPlay && this.options.pauseOnHover){
-      this.$element.on('mouseenter.zf.orbit')
+    if(this.options.autoPlay){
+      this.$slides.on('click.zf.orbit', function(){
+        _this.$element.data('clickedOn', _this.$element.data('clickedOn') ? false : true);
+        _this.timer[_this.$element.data('clickedOn') ? 'pause' : 'start']();
+      });
+      if(this.options.pauseOnHover){
+        this.$element.on('mouseenter.zf.orbit', function(){
+          _this.timer.pause();
+        }).on('mouseleave.zf.orbit', function(){
+          if(!_this.$element.data('clickedOn')){
+            _this.timer.start();
+          }
+        });
+      }
     }
-
 
     if(this.options.navButtons){
       var $controls = this.$element.find('.orbit-control');
@@ -135,28 +144,30 @@
     }
   };
   Orbit.prototype.changeSlide = function(isLTR, chosenSlide, idx){
-    var $curSlide = this.$element.find('.orbit-slide.active'),
-        _this = this;
+    var $curSlide = this.$element.find('.orbit-slide.active');
 
     if(/mui/g.test($curSlide[0].className)){ return false; }//if the slide is currently animating, kick out of the function
-    // console.log(this.$slides.index($curSlide));
+
     var $firstSlide = this.$slides.first(),
         $lastSlide = this.$slides.last(),
         dirIn = isLTR ? 'Right' : 'Left',
         dirOut = isLTR ? 'Left' : 'Right',
+        _this = this,
         $newSlide;
 
-    if(!chosenSlide){
-      $newSlide = isLTR ?
-                    (this.options.infiniteWrap ? $curSlide.next('.orbit-slide').length ? $curSlide.next('.orbit-slide') : $firstSlide : $curSlide.next('.orbit-slide'))//pick next slide
+    if(!chosenSlide){//most of the time, this will be auto played or clicked from the navButtons.
+      $newSlide = isLTR ? //if wrapping enabled, check to see if there is a `next` or `prev` sibling, if not, select the first or last slide to fill in. if wrapping not enabled, attempt to select `next` or `prev`, if there's nothing there, the function will kick out on next step. CRAZY NESTED TERNARIES!!!!!
+                    (this.options.infiniteWrap ? $curSlide.next('.orbit-slide').length ? $curSlide.next('.orbit-slide') : $firstSlide : $curSlide.next('.orbit-slide'))//pick next slide if moving left to right
                     :
-                    (this.options.infiniteWrap ? $curSlide.prev('.orbit-slide').length ? $curSlide.prev('.orbit-slide') : $lastSlide : $curSlide.prev('.orbit-slide'));//pick prev slide
+                    (this.options.infiniteWrap ? $curSlide.prev('.orbit-slide').length ? $curSlide.prev('.orbit-slide') : $lastSlide : $curSlide.prev('.orbit-slide'));//pick prev slide if moving right to left
     }else{
       $newSlide = chosenSlide;
     }
     if($newSlide.length){
-      idx = idx || this.$slides.index($newSlide);
-      this._updateBullets(idx);
+      if(this.options.bullets){
+        idx = idx || this.$slides.index($newSlide);//grab index to update bullets
+        this._updateBullets(idx);
+      }
 
       Foundation.Motion.animateIn(
         $newSlide.addClass('active').css({'position': 'absolute', 'top': 0}),
@@ -180,6 +191,12 @@
     var $oldBullet = this.$element.find('.orbit-bullets-container > .is-active').removeClass('is-active').blur(),
         span = $oldBullet.find('span:last').detach(),
         $newBullet = this.$bullets.eq(idx).addClass('is-active').append(span);
+  };
+
+  Orbit.prototype.destroy = function(){
+    delete this.$element.timer;
+    this.$element.off('.zf.orbit').find('*').off('.zf.orbit').end().hide();
+    this.$element.trigger('destroyed.zf.orbit');
   };
 
   Foundation.plugin(Orbit);
