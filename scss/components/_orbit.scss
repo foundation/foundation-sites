@@ -54,10 +54,18 @@ $orbit-control-z-index: 10 !default;
   position: relative;
 }
 
+@mixin orbit-slide {
+  width: 100%;
+  max-height: 100%;
+}
+
 @mixin orbit-container {
   list-style: none;
   margin: 0;
   position: relative;
+  //******************
+  overflow: hidden;
+  //******************
 }
 
 @mixin orbit-figure {
@@ -128,14 +136,10 @@ $orbit-control-z-index: 10 !default;
     @include orbit;
   }
   //more of chris testing things ***********
-  .wrapper {
-    overflow: hidden;
-  }
-  li {
-    display: block;
+  .orbit-slide {
+    @include orbit-slide;
   }
   //****************************************
-
   .orbit-container {
     @include orbit-container;
   }
