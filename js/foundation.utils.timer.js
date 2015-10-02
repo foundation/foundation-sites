@@ -1,0 +1,41 @@
+!function($, Foundation){
+
+  /******************************************************************
+  /** A very simple timer for animated elements within Foundation. **
+  /** Feel free to add features, comments, or use case examples.   **
+  /*****************************************************************/
+
+  function Timer(elem, options, cb){
+    var _this = this,
+        duration = options.duration,//options is an object for easyily adding features later.
+        remain = -1,
+        start,
+        timer;
+
+    this.reset = function(){
+        remain = -1;
+        clearTimeout(timer);
+        this.start();
+    };
+    this.start = function(){
+      // if(!elem.data('paused')){ return false; }//maybe implement this sanity check if used for other things.
+      remain = remain < 0 ? duration : remain;
+      elem.data('paused', false);
+      start = Date.now();
+      timer = setTimeout(function(){
+        _this.reset();//rerun the timer.
+        cb();
+      }, remain);
+    };
+    this.pause = function(){
+      //if(elem.data('paused')){ return false; }//maybe implement this sanity check if used for other things.
+      clearTimeout(timer);
+      elem.data('paused', true);
+      var end = Date.now();
+      remain = remain - (end - start);
+    };
+  }
+
+  Foundation.Timer = Timer;
+
+}(jQuery, window.Foundation);
