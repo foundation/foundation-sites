@@ -52,8 +52,8 @@
     if(handles[1]){
       this.$handle2 = $(handles[1]);
       this.$input2 = inputs[1] ? $(inputs[1]) : $('#' + this.$handle2.attr('aria-controls'));
-      var ariaId2 = this.$input2.hasAttr('id') ? this.$input2.attr('id') : randomIdGen(6);
-      var handleId2 = this.$handle2.hasAttr('id') ? this.$handle2.attr('id') : randomIdGen(6);
+      var ariaId2 = this.$input2.hasAttr('id') ? this.$input2.attr('id') : Foundation.GetYoDigits(6, 'slider');
+      var handleId2 = this.$handle2.hasAttr('id') ? this.$handle2.attr('id') : Foundation.GetYoDigits(6, 'slider');
       this.options.doubleSided = true;
       this.$handle2.attr(this._setHandleAttr(ariaId2, true));
       this.$input2.attr(this._setInputAttr(ariaId2, true));
@@ -240,10 +240,6 @@
 
   function percent(frac, num, dec){
     return Number(((frac / num) * 100).toFixed(dec));
-  }
-
-  function randomIdGen(length){
-    return Math.round((Math.pow(36, length + 1) - Math.random() * Math.pow(36, length))).toString(36).slice(1);
   }
 
   $.fn.hasAttr = function(name) {
