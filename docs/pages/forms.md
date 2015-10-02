@@ -136,7 +136,7 @@ Sometimes you want a form with labels to the left of your inputs. Piece of cake!
 </form>
 ```
 
-<div class="medium-8 column-row">
+<div class="medium-8 column row">
   <div class="row">
     <div class="small-3 columns">
       <label for="right-label" class="right">Label</label>
@@ -164,7 +164,7 @@ Add the `.middle` class to vertically align the label with its input.
 </form>
 ```
 
-<div class="medium-8 column-row">
+<div class="medium-8 column row">
   <div class="row">
     <div class="small-3 columns">
       <label for="middle-label" class="right middle">Label</label>

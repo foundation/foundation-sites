@@ -33,8 +33,7 @@
     }
 
     // Nesting
-    & &,
-    .#{$column-row} & {
+    & & {
       @include grid-row($behavior: nest, $cf: false);
 
       &.#{$collapse} {
@@ -71,12 +70,8 @@
   }
 
   // Column row
-  .#{$column-row} {
-    @include grid-column-row;
-
-    .#{$row} {
-      @include grid-row($behavior: nest, $cf: false);
-    }
+  .#{$column}.#{$row} {
+    float: none;
   }
 
   @each $size in $breakpoints {
