@@ -45,7 +45,7 @@
    * @private
    */
   Tooltip.prototype._init = function(){
-    var elemId = this.$element.attr('aria-describedby') || randomIdGen(6);
+    var elemId = this.$element.attr('aria-describedby') || Foundation.GetYoDigits(6, 'tooltip');
 
     this.options.positionClass = this.getPositionClass(this.$element);
     this.options.tipText = this.$element.attr('title');
@@ -304,13 +304,7 @@
       this._show();
     }
   };
-  /**
-   * TODO use Foundation.GetYoDigits() instead.
-   */
-  function randomIdGen(length){
-    return Math.round((Math.pow(36, length + 1) - Math.random() * Math.pow(36, length))).toString(36).slice(1);
-  }
-
+  
   /**
    * TODO create destroy method
    * TODO utilize resize event trigger
