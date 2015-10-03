@@ -13,6 +13,8 @@ tags:
   <h5>Known Issues</h5>
   <ul>
     <li>Images sometimes vanish from the view/script, throwing errors and breaking things.</li>
+    <li>Images sometimes animate in from the wrong side... for no good reason.</li>
+    <li>Maybe needs to wait for images to load fully before calculating height. Occasionally loads in at caption height instead of full slide height because the images haven't loaded yet.</li>
     <li>Needs a new `swipe` event, probably a `$.fn` event that can be used elsewhere as well.</li>
  </ul>
 </div>
