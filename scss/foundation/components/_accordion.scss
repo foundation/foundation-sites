@@ -132,6 +132,7 @@ $accordion-content-active-bg-color: $white !default;
     .accordion {
       @include clearfix;
       margin-bottom: 0;
+      margin-left: 0;
       .accordion-navigation, dd {
         display: block;
         margin-bottom: 0 !important;

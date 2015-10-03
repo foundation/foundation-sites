@@ -52,7 +52,7 @@ $tabs-vertical-navigation-margin-bottom: 1.25rem !default;
           }
         }
 
-        &.active a {
+        &.active > a {
           background-color: $tabs-navigation-active-bg-color;
           color: $tabs-navigation-active-font-color;
         }

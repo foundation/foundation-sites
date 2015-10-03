@@ -10,7 +10,7 @@
       start : 0,
       end : 100,
       step : 1,
-      precision : null,
+      precision : 2,
       initial : null,
       display_selector : '',
       vertical : false,
@@ -53,6 +53,22 @@
           }
         })
         .on('mouseup.fndtn.slider touchend.fndtn.slider pointerup.fndtn.slider', function (e) {
+          if(!self.cache.active) {
+            // if the user has just clicked into the slider without starting to drag the handle
+            var slider = $(e.target).attr('role') === 'slider' ? $(e.target) : $(e.target).closest('.range-slider').find("[role='slider']");
+            if (slider.length) {
+              self.set_active_slider(slider);
+              if ($.data(self.cache.active[0], 'settings').vertical) {
+                var scroll_offset = 0;
+                if (!e.pageY) {
+                  scroll_offset = window.scrollY;
+                }
+                self.calculate_position(self.cache.active, self.get_cursor_position(e, 'y') + scroll_offset);
+              } else {
+                self.calculate_position(self.cache.active, self.get_cursor_position(e, 'x'));
+              }
+            }
+          }
           self.remove_active_slider();
         })
         .on('change.fndtn.slider', function (e) {
@@ -73,8 +89,8 @@
         if (settings.display_selector != '') {
           $(settings.display_selector).each(function(){
             if ($(this).attr('value')) {
-              $(this).change(function(){
-                self.set_value($(this).val());
+              $(this).off('change').on('change', function () {
+                slider.foundation("slider", "set_value", $(this).val());
               });
             }
           });

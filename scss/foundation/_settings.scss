@@ -6,7 +6,7 @@
 
 // Table of Contents
 // Foundation Settings
-//
+
 // a. Base
 // b. Grid
 // c. Global
@@ -432,6 +432,7 @@ $include-html-global-classes: $include-html-classes;
 // We use these to control the slash between breadcrumbs
 // $crumb-slash-color: $base;
 // $crumb-slash: "/";
+// $crumb-slash-position: 1px;
 
 // 05. Buttons
 // - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -648,6 +649,7 @@ $include-html-global-classes: $include-html-classes;
 // $input-font-family: inherit;
 // $input-font-color: rgba(0,0,0,0.75);
 // $input-font-size: rem-calc(14);
+// $input-placeholder-font-color: #cccccc;
 // $input-bg-color: $white;
 // $input-focus-bg-color: scale-color($white, $lightness: -2%);
 // $input-border-color: scale-color($white, $lightness: -20%);
