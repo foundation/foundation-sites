@@ -17,7 +17,7 @@
     default_tab_hashes : [],
 
     init : function (scope, method, options) {
-      var self = this,
+      var self = this, 
           S = this.S;
 
   	  // Store the default active tabs which will be referenced when the
