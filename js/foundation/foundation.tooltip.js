@@ -210,14 +210,14 @@
     },
 
     reposition : function (target, tip, classes) {
-      var width, nub, nubHeight, nubWidth, column, objPos;
+      var width, nub, nubHeight, nubWidth, objPos;
 
       tip.css('visibility', 'hidden').show();
 
       width = target.data('width');
       nub = tip.children('.nub');
       nubHeight = nub.outerHeight();
-      nubWidth = nub.outerHeight();
+      nubWidth = nub.outerWidth();
 
       if (this.small()) {
         tip.css({'width' : '100%'});
