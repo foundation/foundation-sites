@@ -38,7 +38,8 @@ $slider-fill-color: $medium-gray !default;
 /// @type Color
 $slider-background-color: $light-gray !default;
 
-//Chris's additions*****
+//Chris's additions******************************
+//***********************************************
 
 /// Default time to move slider handle and fill
 /// @type Number
@@ -48,7 +49,7 @@ $slider-transition-time: 0.2s !default;
 /// @type Transition
 $slider-transition: ease-in-out !default;
 
-//end Chris's additions****
+//end Chris's additions**************************
 
 /// Adds the general styles for sliders.
 @mixin slider {
@@ -66,11 +67,12 @@ $slider-transition: ease-in-out !default;
   display: inline-block;
   height: $slider-height;
   position: absolute;
-  //chris addition
+  //chris addition************************************
   transition: all $slider-transition-time $slider-transition;
   &.dragging {
     transition: none;
   }
+  //**************************************************
 }
 
 /// Adds the general styles for the slider handles.
@@ -83,13 +85,20 @@ $slider-transition: ease-in-out !default;
   height: $slider-handle-height;
   width: $slider-handle-width;
   touch-action: manipulation;
-  //chris's addition
-  position: absolute;
-  transition: transform $slider-transition-time $slider-transition;
+  //chris's addition******************************************
+  position: relative;
+  left: 0;
+  // transition-property: left, top;
+  transition: left, top, 2s ease, linear;
+  // transition: left, top .25s, .25s linear, linear;
+  // transition: top 5s linear;
+  // transition-duration: $slider-transition-time;
+  // transition-duration: 5s, 5s;
+  // transition: transform $slider-transition-time $slider-transition;
   &.dragging {
     transition: all 0s ease;
   }
-  //end chris's addition
+  //end chris's addition**************************************
   &:hover {
     background: scale-color($slider-handle-color, $lightness: -15%);
   }

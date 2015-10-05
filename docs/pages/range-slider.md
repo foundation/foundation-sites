@@ -44,8 +44,8 @@ Let's get vertical. Just add a `vertical` class to `slider` `<div>`.
 
 ```html_example
 <div class="slider vertical" data-slider data-initial-start='25'>
-  <span class="slider-handle" data-slider-handle style="transform: translate( -50%, 100px);" role="slider" tabindex="5"></span>
-  <span class="slider-fill" style="height: 100px"></span>
+  <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
+  <span class="slider-fill" data-slider-fill></span>
   <input type="hidden">
 </div>
 ```
@@ -68,11 +68,11 @@ Let's get vertical. Just add a `vertical` class to `slider` `<div>`.
 U can't touch this. Need to disable a slider? Just add a `disabled` class to the `slider` `<div>`.
 
 ```html_example
-<div class="slider disabled" data-slider data-initial-start='33'>
-<span class="slider-handle" data-slider-handle role="slider" tabindex="2"></span>
-  <span class="slider-fill" style="width: 100px;"></span>
+<!-- <div class="slider disabled" data-slider data-initial-start='33'>
+<span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
+  <span class="slider-fill" data-slider-fill></span>
   <input type="hidden">
-</div>
+</div> -->
 ```
 
 ---
@@ -82,13 +82,13 @@ U can't touch this. Need to disable a slider? Just add a `disabled` class to the
 Oh... You might need two handles? Don't fret. We got you covered. Hook it up with another `.slider-handle` span and `input` field. This works for horizontal and vertical sliders! Please note that our JavaScript will assign `id`'s for input fields, unless you do so yourself. If you choose not to, handles and inputs will be matched in the order they are in the dom tree.
 
 ```html_example
-<div class="slider" data-slider data-initial-start='25' data-initial-end='75'>
-  <span class="slider-handle" data-slider-handle role="slider" tabindex="3"></span>
-  <span class="slider-fill"></span>
-  <span class="slider-handle" style="transform: translate(200px, -50%);" data-slider-handle role="slider" tabindex="4"></span>
+<!-- <div class="slider" data-slider data-initial-start='25' data-initial-end='75'>
+  <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
+  <span class="slider-fill" data-slider-fill></span>
+  <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
   <input type="hidden">
   <input type="hidden">
-</div>
+</div> -->
 ```
 
 <!-- <div class="slider" data-slider>
@@ -108,7 +108,7 @@ Oh... You might need two handles? Don't fret. We got you covered. Hook it up wit
 Wait, you want a visible input AND a slider? You're crazy, but ok. Change the value of either and see the other match it. Note that you have to set an `id` for the `input` and add the `aria-controls='idOfInput'` to the slider handle.
 
 ```html_example
-<div class='small-10 columns'>
+<!-- <div class='small-10 columns'>
 <div class="slider" data-slider data-initial-start='50' >
   <span class="slider-handle"  data-slider-handle role="slider" tabindex="1" aria-controls='sliderOutput1'></span>
   <span class="slider-fill" data-slider-fill></span>
@@ -116,5 +116,5 @@ Wait, you want a visible input AND a slider? You're crazy, but ok. Change the va
 </div>
 <div class='small-2 columns'>
   <input type="number" id='sliderOutput1'>
-</div>
+</div> -->
 ```
