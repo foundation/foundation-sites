@@ -82,13 +82,13 @@ U can't touch this. Need to disable a slider? Just add a `disabled` class to the
 Oh... You might need two handles? Don't fret. We got you covered. Hook it up with another `.slider-handle` span and `input` field. This works for horizontal and vertical sliders! Please note that our JavaScript will assign `id`'s for input fields, unless you do so yourself. If you choose not to, handles and inputs will be matched in the order they are in the dom tree.
 
 ```html_example
-<!-- <div class="slider" data-slider data-initial-start='25' data-initial-end='75'>
+<div class="slider" data-slider data-initial-start='25' data-initial-end='75'>
   <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
   <span class="slider-fill" data-slider-fill></span>
   <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
   <input type="hidden">
   <input type="hidden">
-</div> -->
+</div>
 ```
 
 <!-- <div class="slider" data-slider>

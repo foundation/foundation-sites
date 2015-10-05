@@ -68,7 +68,11 @@ $slider-transition: ease-in-out !default;
   height: $slider-height;
   position: absolute;
   //chris addition************************************
-  transition: all $slider-transition-time $slider-transition;
+  // transition: all $slider-transition-time $slider-transition;
+  transition: width 5s;
+  left: 0;
+  top: 0;
+
   &.dragging {
     transition: none;
   }
@@ -86,10 +90,10 @@ $slider-transition: ease-in-out !default;
   width: $slider-handle-width;
   touch-action: manipulation;
   //chris's addition******************************************
-  position: relative;
+  position: absolute;
   left: 0;
   // transition-property: left, top;
-  transition: left, top, 2s ease, linear;
+  transition: left, top, 5s ease;
   // transition: left, top .25s, .25s linear, linear;
   // transition: top 5s linear;
   // transition-duration: $slider-transition-time;

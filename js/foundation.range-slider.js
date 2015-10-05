@@ -35,57 +35,68 @@
     this.options.disabled = this.$element.hasClass('disabled');
     this.$handle = handles.eq(0);
     this.$input = inputs.length ? inputs.eq(0) : $('#' + this.$handle.attr('aria-controls'));
-    this.$fill = this.$element.find('[data-slider-fill]');
+    this.$fill = this.$element.find('[data-slider-fill]').css('width', 0);
 
     this._setHandlePos(this.$handle, this.options.initialStart);
 
+    if(handles[1]){
+      this.options.doubleSided = true;
+      this.$handle2 = handles.eq(1);
+      this.$input2 = inputs.length ? inputs.eq(1) : $('#' + this.$handle2.attr('aria-controls'));
 
+      this._setHandlePos(this.$handle2, this.options.initialEnd);
+    }
+
+    this.$element.trigger('init.zf.slider');
   };
   Slider.prototype._setHandlePos = function($hndl, location){
     var _this = this,
         vert = this.options.vertical,
         hOrW = vert ? 'height' : 'width',
         lOrT = vert ? 'top' : 'left',
-        halfOfHandle = Number($hndl[0].getBoundingClientRect()[hOrW].toFixed(this.options.decimal)),
-        // pctOfFill = this._calcPos(location),
-        pctOfFill = percent(location, this.options.end, this.options.decimal),
-        elemDim = Number(this.$element[0].getBoundingClientRect()[hOrW].toFixed(this.options.decimal)),
-        pxToMove = (elemDim - halfOfHandle) * pctOfFill ,
+        halfOfHandle = $hndl[0].getBoundingClientRect()[hOrW] / 2,
+        elemDim = this.$element[0].getBoundingClientRect()[hOrW],
+        // halfOfHandle = Number($hndl[0].getBoundingClientRect()[hOrW].toFixed(this.options.decimal)),
+        // elemDim = Number(this.$element[0].getBoundingClientRect()[hOrW].toFixed(this.options.decimal)),
+        pctOfBar = percent(location, this.options.end, this.options.decimal),
+        pxToMove = (elemDim - halfOfHandle) * pctOfBar,
         movement = (percent(pxToMove, elemDim, this.options.decimal) * 100).toFixed(this.options.decimal),
         anim;
-
+        console.log(pctOfBar, pxToMove, movement, halfOfHandle / elemDim);
 
     !function move(){
-      console.log(_this.animComplete);
+      // console.log(_this.animComplete);
       if(!_this.animComplete){
         anim = window.requestAnimationFrame(move, $hndl[0]);
       }
       $hndl.css(lOrT, movement + '%');
+      _this.$fill.css(hOrW, pctOfBar * 100 + '%');
     }();
-    this.$element.on('transitionend.zf.slider', function(){
+    this.$element.one('transitionend.zf.slider', function(){
       _this.animComplete = true;
       window.cancelAnimationFrame(anim);
-      _this.$element.off('transitionend.zf.slider');
-      console.log('done moving');
+      console.log('done');
+      _this.$element.off('transitionend.zf.slider')
+                    .trigger('moved.zf.slider');
     });
-    // console.log(elemDim);
   };
 
-  Slider.prototype._calcPos = function(location, cb){
-    var _this = this,
-        pct = percent(location, this.options.end, this.options.decimal);
-    return pct;
-    // cb(pct);
-  };
+  // Slider.prototype._calcPos = function(location, cb){
+  //   var _this = this,
+  //       pct = percent(location, this.options.end, this.options.decimal);
+  //   return pct;
+  //   // cb(pct);
+  // };
 
   Slider.prototype._events = function(){
+
   };
 
   Foundation.plugin(Slider);
 
-  function absPosition($handle, dir, clickPos, param){
-    return Math.abs(($handle.position()[dir] + ($handle[param]() / 2)) - clickPos);
-  }
+  // function absPosition($handle, dir, clickPos, param){
+  //   return Math.abs(($handle.position()[dir] + ($handle[param]() / 2)) - clickPos);
+  // }
 
   function percent(frac, num, dec){
     // return Number(((frac / num) * 100).toFixed(dec));
