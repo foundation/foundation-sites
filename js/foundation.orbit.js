@@ -245,7 +245,7 @@
 //**and try to improve if possible**
 //**********************************
 (function( $, window, undefined ) {
-  console.log(this);
+  
 	var $document = $( document ),
 		// supportTouch = $.mobile.support.touch,
 		touchStartEvent = 'touchstart'//supportTouch ? "touchstart" : "mousedown",

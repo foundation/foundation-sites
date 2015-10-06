@@ -38,7 +38,8 @@ $slider-fill-color: $medium-gray !default;
 /// @type Color
 $slider-background-color: $light-gray !default;
 
-//Chris's additions*****
+//Chris's additions******************************
+//***********************************************
 
 /// Default time to move slider handle and fill
 /// @type Number
@@ -48,7 +49,7 @@ $slider-transition-time: 0.2s !default;
 /// @type Transition
 $slider-transition: ease-in-out !default;
 
-//end Chris's additions****
+//end Chris's additions**************************
 
 /// Adds the general styles for sliders.
 @mixin slider {
@@ -66,11 +67,18 @@ $slider-transition: ease-in-out !default;
   display: inline-block;
   height: $slider-height;
   position: absolute;
-  //chris addition
+  //chris addition************************************
+  //********this all needs to be cleaned up
   transition: all $slider-transition-time $slider-transition;
+  // transition: all .25s linear;
+  // transition: width height 2s linear;
+  left: 0;
+  top: 0;
+
   &.dragging {
-    transition: none;
+    transition: all 0s linear;
   }
+  //**************************************************
 }
 
 /// Adds the general styles for the slider handles.
@@ -83,13 +91,20 @@ $slider-transition: ease-in-out !default;
   height: $slider-handle-height;
   width: $slider-handle-width;
   touch-action: manipulation;
-  //chris's addition
+  //chris's addition******************************************
   position: absolute;
-  transition: transform $slider-transition-time $slider-transition;
+  left: 0;
+  // transition-property: left, top;
+  // transition: all .25s linear;
+  // transition: left, top .25s, .25s linear, linear;
+  // transition: top 5s linear;
+  // transition-duration: $slider-transition-time;
+  // transition-duration: 5s, 5s;
+  transition: all $slider-transition-time $slider-transition;
   &.dragging {
-    transition: all 0s ease;
+    transition: all 0s linear;
   }
-  //end chris's addition
+  //end chris's addition**************************************
   &:hover {
     background: scale-color($slider-handle-color, $lightness: -15%);
   }
