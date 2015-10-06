@@ -29,7 +29,7 @@ js: js/foundation.range-slider.js
 It's got a handle and an active fill, what more do you need?
 
 ```html_example
-<div class="slider" data-slider data-initial-start='50'>
+<div class="slider" data-slider data-initial-start='50' data-end='200'>
   <span class="slider-handle"  data-slider-handle role="slider" tabindex="1"></span>
   <span class="slider-fill" data-slider-fill></span>
   <input type="hidden">
@@ -68,7 +68,7 @@ Let's get vertical. Just add a `vertical` class to `slider` `<div>`.
 U can't touch this. Need to disable a slider? Just add a `disabled` class to the `slider` `<div>`.
 
 ```html_example
-<!-- <div class="slider disabled" data-slider data-initial-start='33'>
+<!-- <div class="slider disabled" data-slider data-initial-start='78'>
 <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
   <span class="slider-fill" data-slider-fill></span>
   <input type="hidden">
