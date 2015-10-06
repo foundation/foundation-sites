@@ -65,11 +65,20 @@
         location = Number(location.toFixed(this.options.decimal)),
         anim;
         // console.log(pctOfBar, pxToMove, movement, halfOfHandle / elemDim);
-    console.log(pctOfBar, movement, location);
+    // console.log(pctOfBar, movement, location);
     !function move(){
       if(!_this.animComplete){
         anim = window.requestAnimationFrame(move, $hndl[0]);
       }
+      // else{
+      //   if(cb){
+      //     $hndl.removeClass('dragging');
+      //     _this.$fill.removeClass('dragging');
+      //     _this.$element.data('dragging', false);
+      //     cb();
+      //   }
+      //   _this.animComplete = true;
+      // }
       console.log(_this.animComplete);
       $hndl.css(lOrT, movement + '%');
       _this.$fill.css(hOrW, pctOfBar * 100 + '%');
@@ -77,8 +86,7 @@
     this.$element.one('transitionend.zf.slider', function(){
       _this.animComplete = true;
       window.cancelAnimationFrame(anim);
-      console.log('movement over');
-      if(cb){ cb(); }
+      console.log(_this.animComplete);
       _this.$element.off('transitionend.zf.slider')
                     .trigger('moved.zf.slider');
     });
@@ -132,7 +140,6 @@
 
     if(this.options.clickSelect){
       this.$element.off('click.zf.slider').on('click.zf.slider', function(e){
-        console.log('blah');
         if(_this.$element.data('dragging')){ return false; }
 
         _this.animComplete = false;
