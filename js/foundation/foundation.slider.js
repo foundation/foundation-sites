@@ -28,7 +28,6 @@
 
     events : function () {
       var self = this;
-
       $(this.scope)
         .off('.slider')
         .on('mousedown.fndtn.slider touchstart.fndtn.slider pointerdown.fndtn.slider',
@@ -56,7 +55,8 @@
           if(!self.cache.active) {
             // if the user has just clicked into the slider without starting to drag the handle
             var slider = $(e.target).attr('role') === 'slider' ? $(e.target) : $(e.target).closest('.range-slider').find("[role='slider']");
-            if (slider.length) {
+
+            if (slider.length && (!slider.parent().hasClass('disabled') && !slider.parent().attr('disabled'))) {
               self.set_active_slider(slider);
               if ($.data(self.cache.active[0], 'settings').vertical) {
                 var scroll_offset = 0;
