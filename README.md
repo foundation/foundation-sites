@@ -25,7 +25,7 @@ npm start
 
 ## Folder structure
 
-- `_build/`: compiled HTML, CSS, and JavaScript. *Don't edit these files directly, as they will be overridden!*
+- `_build/`: compiled HTML, CSS, and JavaScript. *Don't edit these files directly, as they will be overwritten!*
 - `config/`: configuration files for our linters.
 - `dist/`: compiled CSS and JavaScript files for the current release.
 - `docs/`: documentation source.
