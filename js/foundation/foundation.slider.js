@@ -55,7 +55,7 @@
           if(!self.cache.active) {
             // if the user has just clicked into the slider without starting to drag the handle
             var slider = $(e.target).attr('role') === 'slider' ? $(e.target) : $(e.target).closest('.range-slider').find("[role='slider']");
-            console.log(slider.parent().attr('disabled'));
+
             if (slider.length && (!slider.parent().hasClass('disabled') && !slider.parent().attr('disabled'))) {
               self.set_active_slider(slider);
               if ($.data(self.cache.active[0], 'settings').vertical) {
