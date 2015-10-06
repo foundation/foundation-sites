@@ -25,7 +25,8 @@
     doubleSided: false,
     steps: 100,
     decimal: 2,
-    dragDelay: 0
+    dragDelay: 0,
+    moveTime: 200
   };
 
   Slider.prototype._init = function(){
@@ -63,13 +64,38 @@
         pxToMove = (elemDim - halfOfHandle) * pctOfBar,
         movement = (percent(pxToMove, elemDim/*, this.options.decimal*/) * 100).toFixed(this.options.decimal),
         location = Number(location.toFixed(this.options.decimal)),
-        anim;
+        anim, start = null;
         // console.log(pctOfBar, pxToMove, movement, halfOfHandle / elemDim);
     // console.log(pctOfBar, movement, location);
-    !function move(){
-      if(!_this.animComplete){
+    this.$element.one('transitionend.zf.slider', function(){
+      _this.animComplete = true;
+      window.cancelAnimationFrame(anim);
+      console.log(_this.animComplete);
+      _this.$element.off('transitionend.zf.slider')
+                    .trigger('moved.zf.slider');
+    });
+    !function move(ts){
+      if(!start){ start = ts; }
+      var prog = ts - start;
+
+      $hndl.css(lOrT, movement + '%');
+      _this.$fill.css(hOrW, pctOfBar * 100 + '%');
+
+      if(prog < _this.options.moveTime){
         anim = window.requestAnimationFrame(move, $hndl[0]);
       }
+
+
+
+
+      if(_this.animComplete){
+        window.cancelAnimationFrame(anim);
+      }
+      // else{
+      //   anim = window.requestAnimationFrame(move, $hndl[0]);
+      // }
+      // $hndl.css(lOrT, movement + '%');
+      // _this.$fill.css(hOrW, pctOfBar * 100 + '%');
       // else{
       //   if(cb){
       //     $hndl.removeClass('dragging');
@@ -80,16 +106,7 @@
       //   _this.animComplete = true;
       // }
       console.log(_this.animComplete);
-      $hndl.css(lOrT, movement + '%');
-      _this.$fill.css(hOrW, pctOfBar * 100 + '%');
     }();
-    this.$element.one('transitionend.zf.slider', function(){
-      _this.animComplete = true;
-      window.cancelAnimationFrame(anim);
-      console.log(_this.animComplete);
-      _this.$element.off('transitionend.zf.slider')
-                    .trigger('moved.zf.slider');
-    });
   };
 
   // Slider.prototype._calcPos = function(location, cb){
@@ -125,11 +142,7 @@
         // steps = attemptedSteps > this.options.steps ? this.options.steps : attemptedSteps < 0 ? 0 : attemptedSteps,
         // stepsPx = Math.round(steps * pxByStep);
         // console.log('eleDim', eleDim, 'offsetPct', offsetPct, 'thing', thing);
-    this._setHandlePos($handle, thing, function(){
-      $handle.removeClass('dragging');
-      _this.$fill.removeClass('dragging');
-      _this.$element.data('dragging', false);
-    });
+    this._setHandlePos($handle, thing);
   }
   Slider.prototype._events = function($handle){
     if(this.options.disabled){ return false; }
@@ -150,7 +163,10 @@
     }
 
 
-
+    //*****************************************************
+    //** needs 1-to-1 dragging for moving handles around **
+    //** any mega jQuery experts out there who can help? **
+    //*****************************************************
     if(this.options.draggable){
       var curHandle,
           timer,
@@ -159,21 +175,36 @@
       $handle
         .off('mousedown.zf.slider touchstart.zf.slider')
         .on('mousedown.zf.slider touchstart.zf.slider', function(e){
+          //if touch, preventDefault?
+          // if(/touch/g.test(e.type)){
+          //   e.preventDefault();
+          // }
+          // console.log(/touch/g.test(e.type));
           $handle.addClass('dragging');
           _this.$fill.addClass('dragging');
           _this.$element.attr('data-dragging', true);
+          _this.animComplete = false;
           curHandle = $(e.currentTarget);
 
           $body.on('mousemove.zf.slider touchmove.zf.slider', function(e){
+            // if(/touch/g.test(e.type)){
+            //   e.preventDefault();
+            // }
             timer = setTimeout(function(){
               _this._handleEvent(e, curHandle);
             }, _this.options.dragDelay);
           }).on('mouseup.zf.slider touchend.zf.slider', function(e){
-            _this._handleEvent(e, curHandle);
             clearTimeout(timer);
+            _this.animComplete = true;
+            _this._handleEvent(e, curHandle);
+            $handle.removeClass('dragging');
+            _this.$fill.removeClass('dragging');
+            _this.$element.data('dragging', false);
             // Foundation.reflow(_this.$element, 'slider');
             $body.off('mousemove.zf.slider touchmove.zf.slider mouseup.zf.slider touchend.zf.slider');
           })
+      }).on('transitionend.zf.slider', function(){
+        console.log('transitions over, go home');
       });
     }
 

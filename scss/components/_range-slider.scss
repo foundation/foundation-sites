@@ -69,14 +69,14 @@ $slider-transition: ease-in-out !default;
   position: absolute;
   //chris addition************************************
   //********this all needs to be cleaned up
-  // transition: all $slider-transition-time $slider-transition;
-  transition: all .25s linear;
+  transition: all $slider-transition-time $slider-transition;
+  // transition: all .25s linear;
   // transition: width height 2s linear;
   left: 0;
   top: 0;
 
   &.dragging {
-    transition: none;
+    transition: all 0s linear;
   }
   //**************************************************
 }
@@ -95,12 +95,12 @@ $slider-transition: ease-in-out !default;
   position: absolute;
   left: 0;
   // transition-property: left, top;
-  transition: all .25s linear;
+  // transition: all .25s linear;
   // transition: left, top .25s, .25s linear, linear;
   // transition: top 5s linear;
   // transition-duration: $slider-transition-time;
   // transition-duration: 5s, 5s;
-  // transition: transform $slider-transition-time $slider-transition;
+  transition: all $slider-transition-time $slider-transition;
   &.dragging {
     transition: all 0s linear;
   }
