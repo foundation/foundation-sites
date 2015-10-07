@@ -42,7 +42,7 @@
     this._setInitAttr(0)
     this._events(this.$handle);
 
-    if(this.handles[1]){
+    if(this.handles[1]){ //need to create array of inputs if they are visible
       this.options.doubleSided = true;
       this.$handle2 = this.handles.eq(1);
       this.$input2 = this.inputs.length ? this.inputs.eq(1) : $('#' + this.$handle2.attr('aria-controls'));
@@ -67,16 +67,41 @@
         pxToMove = (elemDim - halfOfHandle) * pctOfBar,
         movement = (percent(pxToMove, elemDim) * 100).toFixed(this.options.decimal),
         location = Number(location.toFixed(this.options.decimal)),
-        anim, prog, start = null;
+        anim, prog, start = null, css = {};
 
     this._setValues($hndl, location);
+    console.log(pctOfBar);
+
+    if(this.options.doubleSided){//update to calculate based on values set to respective inputs??
+      var isLeftHndl = this.handles.index($hndl) === 0,
+          dim,
+          idx = this.handles.index($hndl);
+          // console.log(this.inputs.eq(idx).val());
+
+      if(isLeftHndl){
+        css[lOrT] = pctOfBar * 100 + '%';//
+        dim = ((percent(this.$handle2.position()[lOrT] + halfOfHandle, elemDim) - parseFloat(pctOfBar)) * 100).toFixed(this.options.decimal) + '%';
+        // dim = ((percent(this.$handle2.position()[lOrT] + halfOfHandle, elemDim) - parseFloat(pctOfBar)) * 100);
+        css['min-' + hOrW] = dim;
+        // console.log(this.$handle2.position()[lOrT], halfOfHandle, elemDim, pctOfBar, dim);
+      }else{
+        // dim = ((parseFloat(pctOfBar) - (percent(this.$handle.position()[lOrT] - halfOfHandle, elemDim))) * 100).toFixed(this.options.decimal) + '%';
+        dim = ((parseFloat(pctOfBar) - (percent(this.$handle.position()[lOrT] - halfOfHandle, elemDim))) * 100);
+        dim = (dim > 100 ? 100 : dim.toFixed(this.options.decimal)) + '%';
+        // console.log(dim);
+        css['min-' + hOrW] = dim;
+      }
+      // fillOffset = this.handles.eq(0).offset()[lOrT] + halfOfHandle;
+      // var fillWidth = this.handles.eq(1).offset()[lOrT] + halfOfHandle;
+      // console.log('offset', fillOffset, 'width', fillWidth);
+    }
 
 
     this.$element.off('transitionend.zf.slider')
                  .one('transitionend.zf.slider', function(){
                     _this.animComplete = true;
                     window.cancelAnimationFrame(anim);
-                    console.log(_this.animComplete);
+                    // console.log(_this.animComplete);
                     _this.$element.trigger('moved.zf.slider');
     });
 
@@ -84,7 +109,11 @@
       if(!start){ start = ts; }
       prog = ts - start;
       $hndl.css(lOrT, movement + '%');
-      _this.$fill.css(hOrW, pctOfBar * 100 + '%');
+      if(!_this.options.doubleSided){
+        _this.$fill.css(hOrW, pctOfBar * 100 + '%');
+      }else{
+        _this.$fill.css(css);
+      }
 
       if(prog < _this.options.moveTime){
         anim = window.requestAnimationFrame(move, $hndl[0]);
@@ -127,12 +156,15 @@
         param = vertical ? 'height' : 'width',
         direction = vertical ? 'top' : 'left',
         pageXY = vertical ? e.pageY : e.pageX,
+        halfOfHandle = this.$handle[0].getBoundingClientRect()[param] / 2,
+        barDim = this.$element[0].getBoundingClientRect()[param],
         barOffset = (this.$element.offset()[direction] -  pageXY),
-        barXY = barOffset > 0 ? 0 : Math.abs(barOffset),//check for upper bound as well
+        barXY = barOffset > 0 ? 0 : (barOffset - halfOfHandle) < -barDim ? barDim : Math.abs(barOffset),//check for upper bound as well
+        // barXY = barOffset > 0 ? 0 : Math.abs(barOffset),//check for upper bound as well
         eleDim = this.$element[0].getBoundingClientRect()[param],
         offsetPct = percent(barXY, eleDim),
         value = (this.options.end - this.options.start) * offsetPct;
-        // console.log(pageXY, barOffset, barXY);
+        console.log((barOffset - halfOfHandle), -barDim, 'xy',barXY);
     if(!$handle){
       //figure out which handle it is.
       var firstHndlPos = absPosition(this.$handle, direction, barXY, param),
