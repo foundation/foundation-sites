@@ -67,16 +67,37 @@
         pxToMove = (elemDim - halfOfHandle) * pctOfBar,
         movement = (percent(pxToMove, elemDim) * 100).toFixed(this.options.decimal),
         location = Number(location.toFixed(this.options.decimal)),
-        anim, prog, start = null;
+        anim, prog, start = null, css = {};
 
     this._setValues($hndl, location);
+
+    if(this.options.doubleSided){//updated to calculate based on values set to respective inputs??
+      var isLeftHndl = this.handles.index($hndl) === 0,
+          dim;
+
+      if(isLeftHndl){
+        css[lOrT] = pctOfBar * 100 + '%';//
+        dim = ((percent(this.$handle2.position()[lOrT] - halfOfHandle, elemDim) - parseFloat(pctOfBar)) * 100).toFixed(this.options.decimal) + '%';
+        css['max-' + hOrW] = dim;
+        css['min-' + hOrW] = dim;
+        console.log(this.$handle2.position()[lOrT], halfOfHandle, elemDim, pctOfBar, dim);
+      }else{
+        dim = ((parseFloat(pctOfBar) - (percent(this.$handle.position()[lOrT] - halfOfHandle, elemDim))) * 100).toFixed(this.options.decimal) + '%';
+        console.log(dim);
+        css['max-' + hOrW] = dim;
+        css['min-' + hOrW] = dim;
+      }
+      // fillOffset = this.handles.eq(0).offset()[lOrT] + halfOfHandle;
+      // var fillWidth = this.handles.eq(1).offset()[lOrT] + halfOfHandle;
+      // console.log('offset', fillOffset, 'width', fillWidth);
+    }
 
 
     this.$element.off('transitionend.zf.slider')
                  .one('transitionend.zf.slider', function(){
                     _this.animComplete = true;
                     window.cancelAnimationFrame(anim);
-                    console.log(_this.animComplete);
+                    // console.log(_this.animComplete);
                     _this.$element.trigger('moved.zf.slider');
     });
 
@@ -84,7 +105,11 @@
       if(!start){ start = ts; }
       prog = ts - start;
       $hndl.css(lOrT, movement + '%');
-      _this.$fill.css(hOrW, pctOfBar * 100 + '%');
+      if(!_this.options.doubleSided){
+        _this.$fill.css(hOrW, pctOfBar * 100 + '%');
+      }else{
+        _this.$fill.css(css);
+      }
 
       if(prog < _this.options.moveTime){
         anim = window.requestAnimationFrame(move, $hndl[0]);
