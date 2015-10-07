@@ -117,6 +117,7 @@
           curHandle = $(e.currentTarget);
 
           $body.on('mousemove.zf.slider touchmove.zf.slider', function(e){
+            if(/touch/g.test(e.type)){ console.log(e.type);}
             timer = setTimeout(function(){
               _this._handleEvent(e, curHandle);
             }, _this.options.dragDelay);

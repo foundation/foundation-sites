@@ -151,6 +151,7 @@
 
   Slider.prototype._handleEvent = function(e, $handle){
     e.preventDefault();
+    if(/touchmove/g.test(e.type)){ console.log(e.originalEvent.touches[0]); }
     var _this = this,
         vertical = this.options.vertical,
         param = vertical ? 'height' : 'width',
@@ -159,12 +160,12 @@
         halfOfHandle = this.$handle[0].getBoundingClientRect()[param] / 2,
         barDim = this.$element[0].getBoundingClientRect()[param],
         barOffset = (this.$element.offset()[direction] -  pageXY),
-        barXY = barOffset > 0 ? 0 : (barOffset - halfOfHandle) < -barDim ? barDim : Math.abs(barOffset),//check for upper bound as well
+        barXY = barOffset > 0 ? 0 : (barOffset - halfOfHandle) < -barDim ? barDim : Math.abs(barOffset),
         // barXY = barOffset > 0 ? 0 : Math.abs(barOffset),//check for upper bound as well
         eleDim = this.$element[0].getBoundingClientRect()[param],
         offsetPct = percent(barXY, eleDim),
         value = (this.options.end - this.options.start) * offsetPct;
-        console.log((barOffset - halfOfHandle), -barDim, 'xy',barXY);
+        // console.log((barOffset - halfOfHandle), -barDim, 'xy',barXY);
     if(!$handle){
       //figure out which handle it is.
       var firstHndlPos = absPosition(this.$handle, direction, barXY, param),
@@ -176,6 +177,7 @@
 
   Slider.prototype._events = function($handle){
     if(this.options.disabled){ return false; }
+    this.$handle.addTouch();
 
     var _this = this,
         curHandle,
@@ -205,7 +207,8 @@
 
       $handle
         .off('mousedown.zf.slider touchstart.zf.slider')
-        .on('mousedown.zf.slider touchstart.zf.slider', function(e){
+        .on('mousedown.zf.slider', function(e){
+        // .on('mousedown.zf.slider touchstart.zf.slider', function(e){
           //if touch, preventDefault?
           // if(/touch/g.test(e.type)){
           //   e.preventDefault();
@@ -217,14 +220,16 @@
           _this.animComplete = false;
           curHandle = $(e.currentTarget);
 
-          $body.on('mousemove.zf.slider touchmove.zf.slider', function(e){
+          $body.on('mousemove.zf.slider', function(e){
+          // $body.on('mousemove.zf.slider touchmove.zf.slider', function(e){
             // if(/touch/g.test(e.type)){
             //   e.preventDefault();
             // }
             timer = setTimeout(function(){
               _this._handleEvent(e, curHandle);
             }, _this.options.dragDelay);
-          }).on('mouseup.zf.slider touchend.zf.slider', function(e){
+          }).on('mouseup.zf.slider', function(e){
+          // }).on('mouseup.zf.slider touchend.zf.slider', function(e){
             clearTimeout(timer);
             _this.animComplete = true;
             _this._handleEvent(e, curHandle);
@@ -276,3 +281,47 @@
 //   }
 //   cb();
 // };
+!function(){
+  $.fn.addTouch = function(){
+    this.each(function(i,el){
+      $(el).bind('touchstart touchmove touchend touchcancel',function(){
+        //we pass the original event object because the jQuery event
+        //object is normalized to w3c specs and does not provide the TouchList
+        handleTouch(event);
+      });
+    });
+
+    var handleTouch = function(event){
+      var touches = event.changedTouches,
+          first = touches[0],
+          eventTypes = {
+            touchstart: 'mousedown',
+            touchmove: 'mousemove',
+            touchend: 'mouseup'
+          },
+          type = eventTypes[event.type];
+          if(type === 'mousemove'){ event.preventDefault(); }
+      // switch(event.type){
+      //   case 'touchstart':
+      //     type = 'mousedown';
+      //     break;
+      //
+      //   case 'touchmove':
+      //     type = 'mousemove';
+      //     event.preventDefault();
+      //     break;
+      //
+      //   case 'touchend':
+      //     type = 'mouseup';
+      //     break;
+      //
+      //   default:
+      //     return;
+      // }
+
+      var simulatedEvent = document.createEvent('MouseEvent');
+      simulatedEvent.initMouseEvent(type, true, true, window, 1, first.screenX, first.screenY, first.clientX, first.clientY, false, false, false, false, 0/*left*/, null);
+      first.target.dispatchEvent(simulatedEvent);
+    };
+  };
+}();
