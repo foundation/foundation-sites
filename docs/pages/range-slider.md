@@ -11,14 +11,10 @@ js: js/foundation.range-slider.js
   <ul>
     <li>Needs method for initial handle positioning.</li>
     <li>Needs accessibility compliant keyboard access bindings.</li>
-    <li>Strange bug when click event is exactly halfway between left and right handles, fill bar flows to the left.</li>
-    <li>Needs resize event handler, and handles positioned by percentage.</li>
     <li>Vertical orientation isn't smooth on Windows Phone.</li>
     <li>Two-handled sliders not working in Firefox.</li>
-    <li>Data-binding not yet implemented fully.</li>
-    <li>iOS Safari leaves strange artifacts of handles on reposition.</li>
-    <li>Android 4.4 browser transitions not working, handles are snapping to location.</li>
-    <li>Postioning of single handles not quite correct on Firefox, it leaves a small gap between the fill and handle.</li>
+    <li>Needs better method of resizing fill bar on right-handle selection for two handled sliders. It behaves poorly</li>
+    <li>Needs method to prevent handles from crossing one another on two-handled sliders.</li>
 
   </ul>
 </div>
@@ -108,7 +104,7 @@ Oh... You might need two handles? Don't fret. We got you covered. Hook it up wit
 Wait, you want a visible input AND a slider? You're crazy, but ok. Change the value of either and see the other match it. Note that you have to set an `id` for the `input` and add the `aria-controls='idOfInput'` to the slider handle.
 
 ```html_example
-<!-- <div class='small-10 columns'>
+<div class='small-10 columns'>
 <div class="slider" data-slider data-initial-start='50' >
   <span class="slider-handle"  data-slider-handle role="slider" tabindex="1" aria-controls='sliderOutput1'></span>
   <span class="slider-fill" data-slider-fill></span>
@@ -116,5 +112,5 @@ Wait, you want a visible input AND a slider? You're crazy, but ok. Change the va
 </div>
 <div class='small-2 columns'>
   <input type="number" id='sliderOutput1'>
-</div> -->
+</div>
 ```
