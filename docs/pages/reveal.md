@@ -29,6 +29,7 @@ A modal is just an empty container, so you can put any kind of content inside it
   <h1>Awesome. I Have It.</h1>
   <p class="lead">Your couch. It is mine.</p>
   <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
+  <p><a href="#" class="button">I am a link within the modal.</a><a href="#" class="button secondary">I am another link within the modal.</a></p>
 </div>
 ```
 
