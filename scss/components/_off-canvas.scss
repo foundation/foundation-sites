@@ -154,7 +154,7 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5);
   // Off-canvas container
   .off-canvas {
     @include off-canvas-base;
-    
+
     &.position-left   { @include off-canvas-position(left); }
     &.position-right  { @include off-canvas-position(right); }
     &.position-top    { @include off-canvas-position(top); }

@@ -11,11 +11,13 @@ tags:
   <h4>Known Issues</h4>
   <ul>
     <li>The right off-canvas menu jitters when it opens.</li>
+    <li>The right off-canvas menu is not properly hiding on mobile on init.</li>
+    <li>Menus should not force a `scrollTop()`?</li>
   </ul>
 </div>
 
 <button class="button" type="button" data-toggle="offCanvasLeft">Toggle Off-canvas</button>
- 
+
 ## Setup
 
 Create an off-canvas menu with the class `.off-canvas` and the attribute `data-off-canvas`. The menu also needs a positioning class, which can be `.position-left`, `.position-right`, or `.position-top`. Make sure the off-cavnas also has a unique ID so it can be targeted.
