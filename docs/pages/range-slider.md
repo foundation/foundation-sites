@@ -13,8 +13,6 @@ js: js/foundation.range-slider.js
     <li>Needs accessibility compliant keyboard access bindings.</li>
     <li>Vertical orientation isn't smooth on Windows Phone.</li>
     <li>Two-handled sliders not working in Firefox.</li>
-    <li>Android 4.4 browser transitions not working, handles are snapping to location.</li>
-    <li>Postioning of single handles not quite correct on Firefox, it leaves a small gap between the fill and handle.</li>
     <li>Needs better method of resizing fill bar on right-handle selection for two handled sliders. It behaves poorly</li>
     <li>Needs method to prevent handles from crossing one another on two-handled sliders.</li>
 
