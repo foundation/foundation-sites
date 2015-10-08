@@ -215,8 +215,7 @@
       this.clear_idx();
 
 
-
-      if (this.small()) {
+if (this.small()) {
         var p = this.dirs.bottom.call(dropdown, target, settings);
 
         dropdown.attr('style', '').removeClass('drop-left drop-right drop-top').css({
@@ -271,7 +270,7 @@
         p.missTop = false;
         p.missLeft = false;
         p.leftRightFlag = false;
-
+		
         //lets see if the panel will be off the screen
         //get the actual width of the page and store it
         var actualBodyWidth;
@@ -286,6 +285,7 @@
         var actualMarginWidth = (windowWidth - actualBodyWidth) / 2;
         var actualBoundary = actualBodyWidth;
 
+		
         if (!this.hasClass('mega') && !s.ignore_repositioning) {
           var outerWidth = this.outerWidth();
           var o_left = t.offset().left;
@@ -298,15 +298,13 @@
           }
 
           //miss right
-          if (o_left + outerWidth > o_left + actualMarginWidth && o_left - actualMarginWidth > outerWidth) {
+          if (o_left + outerWidth > o_left + actualMarginWidth && o_left - actualMarginWidth > outerWidth - o_left) {
             p.missRight = true;
-            p.missLeft = false;
           }
-
+		  
           //miss left
           if (o_left - outerWidth <= 0) {
             p.missLeft = true;
-            p.missRight = false;
           }
         }
 
@@ -361,6 +359,7 @@
 
       left : function (t, s) {
         var p = Foundation.libs.dropdown.dirs._base.call(this, t, s);
+		var self = Foundation.libs.dropdown;
 
         this.addClass('drop-left');
 
@@ -369,28 +368,43 @@
           p.top = p.top + t.outerHeight();
           this.removeClass('drop-left');
         }
+		
+		if (p.missRight == true && p.missLeft == true) {
+			p.left = p.left - t.outerWidth();
+			
+			this.removeClass('drop-left');
+			self.adjust_pip(this,t,s,p);
+		}
 
         return {left : p.left - this.outerWidth(), top : p.top};
       },
 
       right : function (t, s) {
         var p = Foundation.libs.dropdown.dirs._base.call(this, t, s);
+		var self = Foundation.libs.dropdown;
 
         this.addClass('drop-right');
 
         if (p.missRight == true) {
-          p.left = p.left - this.outerWidth();
-          p.top = p.top + t.outerHeight();
-          this.removeClass('drop-right');
-        } else {
-          p.triggeredRight = true;
-        }
-
-        var self = Foundation.libs.dropdown;
-
-        if (t.outerWidth() < this.outerWidth() || self.small() || this.hasClass(s.mega_menu)) {
-          self.adjust_pip(this, t, s, p);
-        }
+			p.left = p.left - this.outerWidth();
+			p.top = p.top + t.outerHeight();
+			this.removeClass('drop-right');
+		} else {
+			p.triggeredRight = true;
+		}
+		
+		if (p.missLeft == true && p.missRight == false && p.leftRightFlag == false) {
+			p.left = p.left - t.outerWidth();
+			p.top = p.top + t.outerHeight();
+			this.removeClass('drop-right');
+			p.triggeredRight = false;
+			self.adjust_pip(this,t,s,p);
+		}
+        
+		
+		if (t.outerWidth() < this.outerWidth() || self.small() || this.hasClass(s.mega_menu)) {
+		  self.adjust_pip(this,t,s,p);
+		}
 
         return {left : p.left + t.outerWidth(), top : p.top};
       }
