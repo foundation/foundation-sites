@@ -99,3 +99,10 @@
 .docs-example-burger {
   @include hamburger;
 }
+
+// Off-canvas
+// - - - - - - - - - - - - - - -
+
+body > .off-canvas {
+  padding-top: 2rem;
+}
