@@ -35,6 +35,22 @@ In the below example, our top bar includes a [dropdown menu](dropdown-menu.html)
 </div>
 ```
 
+## Coloring
+
+Top Bar includes two alternate coloring styles: `.primary`, which uses your design's [primary color](global-styles.html#colors), and `.dark`, which uses a dark gray. (This color can be changed with the `$topbar-background-dark` Sass variable.)
+
+The background color of the top bar cascades to any menus nested inside of it.
+
+```html
+<div class="primary top-bar">
+  <!-- ... -->
+</div>
+
+<div class="dark top-bar">
+  <!-- ... -->
+</div>
+```
+
 <div class="primary top-bar">
   <div class="top-bar-left">
     <ul class="dropdown menu-bar" data-dropdown-menu>
