@@ -69,6 +69,7 @@ $slider-transition: ease-in-out !default;
   position: absolute;
   //chris addition************************************
   //********this all needs to be cleaned up
+  max-width: 100%;
   transition: all $slider-transition-time $slider-transition;
   // transition: all .25s linear;
   // transition: width height 2s linear;
@@ -141,6 +142,9 @@ $slider-transition: ease-in-out !default;
       .slider-fill {
         top: 0;
         width: $vertical-slider-width;
+        //*****************************
+        max-height: 100%;
+        //*****************************
       }
 
       .slider-handle {
