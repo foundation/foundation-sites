@@ -16,7 +16,6 @@
 .yardoc
 
 bower_components
-dist
 /docs2/public/*
 vendor
 _yardoc
