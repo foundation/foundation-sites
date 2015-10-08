@@ -13,6 +13,8 @@ tags:
     <li>The right off-canvas menu jitters when it opens.</li>
     <li>The right off-canvas menu is not properly hiding on mobile on init.</li>
     <li>Menus should not force a `scrollTop()`?</li>
+    <li>Inactive menus should be <code>display: none;</code> so they can't be focused.</li>
+    <li>Permanent reveal on larger screens is not working properly.</li>
   </ul>
 </div>
 
