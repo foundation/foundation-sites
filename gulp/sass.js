@@ -7,7 +7,10 @@ var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var rename = require('gulp-rename');
 
-var PATHS = ['scss'];
+var PATHS = [
+  'scss',
+  'node_modules/motion-ui/src'
+];
 
 var COMPATIBILITY = [
   'last 2 versions',
