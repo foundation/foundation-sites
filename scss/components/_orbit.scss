@@ -48,24 +48,25 @@ $orbit-control-padding: 1rem !default;
 
 /// Default z-index for Orbit's controls.
 /// @type Number
-$orbit-control-z-index: 10 !default;
+$orbit-control-zindex: 10 !default;
 
-@mixin orbit {
+/// Adds styles for the outer Orbit wrapper. These styles are used on the `.orbit` class.
+@mixin orbit-wrapper {
   position: relative;
 }
 
+/// Adds styles for the inner Orbit slide container. These styles are used on the `.orbit-container` class.
+@mixin orbit-container {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  list-style: none;
+}
+
+/// Adds styles for the individual slides of an Orbit slider. These styles are used on the `.orbit-slide` class.
 @mixin orbit-slide {
   width: 100%;
   max-height: 100%;
-}
-
-@mixin orbit-container {
-  list-style: none;
-  margin: 0;
-  position: relative;
-  //******************
-  overflow: hidden;
-  //******************
 }
 
 @mixin orbit-figure {
@@ -74,52 +75,59 @@ $orbit-control-z-index: 10 !default;
 
 @mixin orbit-image {
   margin: 0;
-  max-width: 100%;
   width: 100%;
+  max-width: 100%;
 }
 
+/// Adds styles for an orbit slide caption. These styles are used on the `.orbit-caption` class.
 @mixin orbit-caption {
-  background-color: $orbit-caption-background;
-  color: foreground($orbit-caption-background);
-  padding: $orbit-caption-padding;
-  width: 100%;
   position: absolute;
   bottom: 0;
+  width: 100%;
+  padding: $orbit-caption-padding;
   margin-bottom: 0;
+  color: foreground($orbit-caption-background);
+  background-color: $orbit-caption-background;
 }
 
+/// Adds base styles for the next/previous buttons in an Orbit slider. These styles are shared between the `.orbit-next` and `.orbit-previous` classes in the default CSS.
 @mixin orbit-control {
   @include v-align-middle;
-  z-index: $orbit-control-z-index;
-  color: $white;
+  z-index: $orbit-control-zindex;
   padding: $orbit-control-padding;
+  color: $white;
 
-  &:hover, &:active, &:focus {
+  &:hover,
+  &:active,
+  &:focus {
     background-color: $orbit-control-background-hover;
   }
 }
 
+/// Adds styles for the Orbit previous button. These styles are used on the `.orbit-previous` class.
 @mixin orbit-previous {
   left: 0;
 }
 
+/// Adds styles for the Orbit next button. These styles are used on the `.orbit-next` class.
 @mixin orbit-next {
   left: auto;
   right: 0;
 }
 
+/// Adds styles for a container of Orbit bullets. /// Adds styles for the Orbit previous button. These styles are used on the `.orbit-bullets-container` class.
 @mixin orbit-bullets-container {
+  position: relative;
   margin-top: $orbit-bullet-margin-top;
   margin-bottom: $orbit-bullet-margin-bottom;
-  position: relative;
   text-align: center;
 
   button {
     width: $orbit-bullet-diameter;
     height: $orbit-bullet-diameter;
+    margin: $orbit-bullet-margin;
     background-color: $orbit-bullet-background;
     border-radius: 50%;
-    margin: $orbit-bullet-margin;
 
     &:hover {
       background-color: $orbit-bullet-background-active;
@@ -133,15 +141,15 @@ $orbit-control-z-index: 10 !default;
 
 @mixin foundation-orbit {
   .orbit {
-    @include orbit;
+    @include orbit-wrapper;
   }
-  //more of chris testing things ***********
-  .orbit-slide {
-    @include orbit-slide;
-  }
-  //****************************************
+
   .orbit-container {
     @include orbit-container;
+  }
+
+  .orbit-slide {
+    @include orbit-slide;
   }
 
   .orbit-figure {
