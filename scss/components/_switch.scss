@@ -68,59 +68,17 @@ $switch-paddle-transition: all 0.25s ease-out !default;
     color: $white;
     font-weight: bold;
     font-size: rem-calc(14);
+  }
 
-  //size mixin , width height padding font-size - width height /2
-    &.tiny .switch-paddle {
-      height: 1.5rem;
-      width: 3rem;
-      font-size: rem-calc(10);
-
-      &:after {
-        height: 1rem;
-        width: 1rem;
-      }
-    }
-
-    &.small .switch-paddle {
-      height: 1.75rem;
-      width: 3.5rem;
-      font-size: rem-calc(12);
-
-      &:after {
-        height: 1.25rem;
-        width: 1.25rem;
-      }
-    }
-
-    &.large .switch-paddle {
-      height: 2.5rem;
-      width: 5rem;
-      font-size: rem-calc(16);
-
-      &:after {
-        height: 2rem;
-        width: 2rem;
-      }
-    }
-
-    &.tiny .switch-input:checked ~ .switch-paddle:after {
-      left: 1.75rem;
-    }
-
-    &.small .switch-input:checked ~ .switch-paddle:after {
-      left: 2rem;
-    }
-
-    &.large .switch-input:checked ~ .switch-paddle:after {
-      left: 2.75rem;
-    }
+  .switch-input {
+    opacity: 0;
+    position: absolute;
   }
 
   .switch-paddle {
     background: $switch-background;
     cursor: $cursor-pointer-value;
     display: block;
-    margin-bottom: $global-margin;
     position: relative;
     text-indent: 100%;
     width: 4rem;
@@ -130,7 +88,12 @@ $switch-paddle-transition: all 0.25s ease-out !default;
     color: inherit;
     font-weight: inherit;
 
-    &:after {
+    // Needed to override specificity
+    input + & {
+      margin: 0;
+    }
+
+    &::after {
       background: $switch-paddle-background;
       content: '';
       display: block;
@@ -142,35 +105,17 @@ $switch-paddle-transition: all 0.25s ease-out !default;
       transition: $switch-paddle-transition;
       transform: translate3d(0, 0, 0);
     }
-  }
 
-  .switch-input {
-    opacity: 0;
-    position: absolute;
-
-    & ~ .switch-paddle {
-      margin-left: 0;
-      margin-right: 0;
-    }
-
-    &:checked ~ .switch-paddle {
+    input:checked ~ & {
       background: $switch-background-active;
 
-      &:after {
+      &::after {
         left: 2.25rem;
       }
     }
-    
-    &:checked ~ .switch-paddle .switch-active {
-      display: block;
-    }
 
-    &:checked ~ .switch-paddle .switch-disabled {
-      display: none;
-    }
-
-  // This styles the outline on focus for accessibility
-    &:focus ~ .switch-paddle {
+    // This styles the outline on focus for accessibility
+    input:focus ~ & {
       outline: thin dotted #333;
       outline: 5px auto -webkit-focus-ring-color;
       outline-offset: -2px;
@@ -189,10 +134,68 @@ $switch-paddle-transition: all 0.25s ease-out !default;
     @extend %switch-text;
     left: -90%;
     display: none;
+
+    input:checked + label > & {
+      display: block;
+    }
   }
 
   .switch-disabled {
     @extend %switch-text;
     right: 15%;
+
+    input:checked + label > & {
+      display: none;
+    }
+  }
+
+  .switch.tiny {
+    .switch-paddle {
+      height: 1.5rem;
+      width: 3rem;
+      font-size: rem-calc(10);
+
+      &::after {
+        height: 1rem;
+        width: 1rem;
+      }
+    }
+    .switch-input:checked ~ .switch-paddle:after {
+      left: 1.75rem;
+    }
+  }
+
+  .switch.small {
+    .switch-paddle {
+      height: 1.75rem;
+      width: 3.5rem;
+      font-size: rem-calc(12);
+
+      &::after {
+        height: 1.25rem;
+        width: 1.25rem;
+      }
+    }
+
+    .switch-input:checked ~ .switch-paddle:after {
+      left: 2rem;
+    }
+  }
+
+  .switch.large {
+    .switch-paddle {
+      height: 2.5rem;
+      width: 5rem;
+      font-size: rem-calc(16);
+
+      &::after {
+        height: 2rem;
+        width: 2rem;
+      }
+    }
+
+    .switch-input:checked ~ .switch-paddle:after {
+      left: 2.75rem;
+    }
   }
 }
