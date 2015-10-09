@@ -54,8 +54,8 @@
       }
 
       if (settings.navigation_arrows) {
-        container.append($('<a href="#"><span></span></a>').addClass(settings.prev_class));
-        container.append($('<a href="#"><span></span></a>').addClass(settings.next_class));
+        container.append($('<a href="#" title="'+settings.prev_text+'"><span></span></a>').addClass(settings.prev_class).append('<span class="visuallyhidden">'+settings.prev_text+'</span>'));
+        container.append($('<a href="#" title="'+settings.next_text+'"><span></span></a>').addClass(settings.next_class).append('<span class="visuallyhidden">'+settings.next_text+'</span>'));
       }
 
       if (settings.timer) {
@@ -442,7 +442,9 @@
       variable_height : false,
       swipe : true,
       before_slide_change : noop,
-      after_slide_change : noop
+      after_slide_change : noop,
+      prev_text: 'Previous slide',
+      next_text: 'Next slide'
     },
 
     init : function (scope, method, options) {

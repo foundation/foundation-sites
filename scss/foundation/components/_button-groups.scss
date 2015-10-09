@@ -60,6 +60,7 @@ $button-group-border-width: 1px !default;
   }
   @else {
     $button-group-display: inline-block;
+    float: $default-float;
     $button-group-margin: 0 -2px;
   }
 
