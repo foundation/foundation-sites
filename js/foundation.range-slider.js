@@ -78,6 +78,10 @@
         location = location > 0 ? parseFloat(location.toFixed(this.options.decimal)) : 0,
         anim, prog, start = null, css = {};
 
+    // prevent slider from running out of bounds
+    if (location < _this.options.start) location = _this.options.start;
+    else if (location > _this.options.end) location = _this.options.end;
+
     this._setValues($hndl, location);
 
     if(this.options.doubleSided){//update to calculate based on values set to respective inputs??
@@ -126,7 +130,29 @@
 
   window.requestAnimationFrame(move);
   };
+  Slider.prototype._setInitAttr = function(idx){
+    var id = this.inputs.eq(idx).attr('id') || Foundation.GetYoDigits(6, 'slider');
+    this.inputs.eq(idx).attr({
+      'id': id,
+      'max': this.options.end,
+      'min': this.options.start
 
+    });
+    this.handles.eq(idx).attr({
+      'role': 'slider',
+      'aria-controls': id,
+      'aria-valuemax': this.options.end,
+      'aria-valuemin': this.options.start,
+      'aria-orientation': this.options.vertical ? 'vertical' : 'horizontal',
+      'tabindex': 0
+    });
+  };
+  Slider.prototype._setValues = function($handle, val){
+    var _this = this,
+        idx = this.options.doubleSided ? this.handles.index($handle) : 0;
+    this.inputs.eq(idx).val(val);
+    $handle.attr('aria-valuenow', val);
+  };
   Slider.prototype._handleEvent = function(e, $handle, val){
     if(!val){//click or drag events
       e.preventDefault();
@@ -233,6 +259,22 @@
           })
       });
     }
+    $handle.on('keydown.zf.slider', function(e){
+      var keyCode = e.keyCode || e.which,
+        idx = _this.options.doubleSided ? this.handles.index($(this)) : 0,
+        oldValue = Number(_this.inputs.eq(idx).val()),
+        newValue;
+      if (keyCode === 37 || keyCode === 40) { // left or down arrow
+        e.preventDefault();
+        newValue = oldValue - _this.options.step;
+      } else if (keyCode === 38 || keyCode === 39) { // up or right arrow
+        e.preventDefault();
+        newValue = oldValue + _this.options.step;
+      } else { // do nothing special if another key has been pressed
+        return;
+      }
+      _this._setHandlePos($(this), newValue);
+    });
 
   };
   Slider.prototype._setInitAttr = function(idx){

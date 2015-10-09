@@ -211,15 +211,14 @@
       }
     });
 
+
     // handle accessibility
-    this.$element.attr({'aria-hidden': false}).attr('tabindex', -1).focus();
-
-
+    this.$element.attr({'aria-hidden': false}).attr('tabindex', -1).focus()
     /**
      * Fires when the modal has successfully opened.
      * @event Reveal#open
      */
-    this.$element.trigger('open.zf.reveal');
+                 .trigger('open.zf.reveal');
 
     $('body').addClass('is-reveal-open')
              .attr({'aria-hidden': (this.options.overlay || this.options.fullScreen) ? true : false});
@@ -271,7 +270,7 @@
           e.preventDefault();
         } else if (visibleFocusableElements.length === 0) { // no focusable elements inside the modal at all, prevent tabbing in general
           e.preventDefault();
-        } 
+        }
       }
     });
 
@@ -310,7 +309,7 @@
       $('body').off('click.zf.reveal');
     }
     this.$element.off('keydown.zf.reveal');
-    
+
     //if the modal changed size, reset it
     if(this.changedSize){
       this.$element.css({
