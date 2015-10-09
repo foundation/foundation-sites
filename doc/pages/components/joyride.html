@@ -1,5 +1,6 @@
 ---
 title: Joyride
+layout: component.html
 ---
 
 <h3 class="subheader">Joyride gives users a tour of your site or app when they visit.</h3>
@@ -72,6 +73,26 @@ You can either set these options in a `data-options` attribute in the markup, `d
 {{> examples_joyride_tour_stop}}
 
 <hr/>
+
+### Adding New Content After Page Load
+
+If you add new content after the page has been loaded, you will need to reinitialize the Foundation JavaScript by running the following:
+
+{{#markdown}}
+```javascript
+$(document).foundation(); 
+```
+{{/markdown}}
+
+Reflow will make Foundation check the DOM for any elements and re-apply any listeners to them.
+
+{{#markdown}}
+```javascript
+$(document).foundation('joyride', 'reflow');
+```
+{{/markdown}}
+
+***
 
 ### Sass Errors?
 

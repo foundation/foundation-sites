@@ -4,7 +4,7 @@
 
 //Foundation Libraries
 @import 
-  "scss/foundation/settings",
+  "foundation/settings",
   "foundation";
 
 //Marketing Site Common Library
@@ -17,6 +17,57 @@
 
 
 
+/* Banner for announcements */
+a#notice {
+  display:block;
+  position: relative;
+  min-height:65px;
+  width:100%; 
+  background: #41BDCF; /* Old browsers */
+  background: -moz-linear-gradient(left,  #41BDCF 0%, #128CA5 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,#41BDCF), color-stop(100%,#128CA5)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left,  #41BDCF 0%,#128CA5 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left,  #41BDCF 0%,#128CA5 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left,  #41BDCF 0%,#128CA5 100%); /* IE10+ */
+  background: linear-gradient(to right,  #41BDCF 0%,#128CA5 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#41BDCF', endColorstr='#128CA5',GradientType=1 ); /* IE6-9 */
+  @media only screen and (max-width: 675px) { margin-top: -3px; }
+
+  span { 
+    border-bottom: #fff 4px dashed;
+    width: 36%;
+    position: absolute;
+    bottom: 25px;  
+    &.left-side { left: 0; }
+    &.right-side { right: 0; }
+    @media only screen and (max-width: 1000px) { width: 30%; }
+    @media only screen and (max-width: 675px) { width: 16%; }
+  }
+
+  .info {
+    left: 0;
+    right: 0;
+    top: 15px;
+    z-index: 20;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    h5 { color: #ffffff; }
+    @media only screen and (max-width: 675px) { width: 100%; padding: 0 15px 20px 15px; position: relative; }
+  }
+  .graphic {     
+    width: 150px;
+    height: 60px; 
+    background: url("../img/yeti-ruby.png") center center no-repeat;
+    z-index: 25;
+    background-size: 100%;
+    position: absolute;
+    bottom: 0;
+    @media only screen and (max-width: 1100px) { width: 100px;}
+    @media only screen and (max-width: 740px) { display: none !important; }
+  }
+}
 
 .row {
   max-width: rem-calc(1440);
@@ -147,9 +198,9 @@ table.plugin-options {
 
 // Modified Panel
 .easel {
-  @include panel($bg:$panel-bg-color);
-  @include border(solid, 1px, darken($panel-bg-color, 6%));
+  @include panel($bg: $panel-bg-color);
   @include radius();
+  border: 1px solid darken($panel-bg-color, 6%);
 }
 
 // 12 column grid mixin (would be cool to implement with mixins where possible)
@@ -176,7 +227,7 @@ table.plugin-options {
 .options-bg {
   padding: 18px;
   background-color: darken($panel-bg-color, 0%);
-  @include border(solid, 1px, darken($panel-bg-color, 4%));
+  border: 1px solid darken($panel-bg-color, 4%);
   border-radius: 4px;
   ul {
     margin-#{$default-float}: 20px;
@@ -187,9 +238,6 @@ table.plugin-options {
 pre { margin-bottom: 15px;
   code {
     .code-container {
-      //@include border(solid, 1px, darken($panel-bg-color, 4%));
-      //border-radius: 3px;
-      //background-color: darken($panel-bg-color, 2%);
       margin: 10px 0px;
       padding: 5px;
       overflow-x: auto;
@@ -274,7 +322,7 @@ footer { margin-top: 45px; }
     margin-bottom: $paragraph-margin-bottom;
     text-rendering: $paragraph-text-rendering;
 
-    &.lead { @extend %lead; }
+    &.lead { @include lead; }
 
     & aside {
       font-size: $paragraph-aside-font-size;
@@ -416,7 +464,6 @@ footer { margin-top: 45px; }
   abbr,
   acronym {
     text-transform: uppercase;
-    font-size: 90%;
     color: $body-font-color;
     border-bottom: $acronym-underline;
     cursor: $cursor-help-value;
@@ -549,7 +596,7 @@ $custom-active-bg:darken($custom-link-color, 5%);
 // .docs-wrap { margin-top: 30px; }
 .docs-wrap .inner-wrap { background: #efefef; }
 .docs-wrap .main-section { padding: 0 20px 0 20px; }
-.main-section { @extend %kill-flicker; }
+.main-section { @include kill-flicker; }
 .doc-oc-list { background: $off-canvas-bg; }
 
 // Make sure topbar dropdowns are above tab bar.
@@ -1070,4 +1117,136 @@ img.round-margin {
   margin-bottom: 20px;
 }
 
+.panel.callout-warning {
+background: #fff;
+border: 5px solid red;
+}
 
+.button.floor {
+  position:relative;
+  margin-top:20%;
+}
+
+.left-off-canvas-menu {
+  transform: translate3d(-100.5%, 0, 0);
+}
+
+.newsletter-foundation { 
+  border: 2px solid #085a78;
+  h5 { font-size: 20px;font-family: "Helvetica Neue", "Helvetica", Arial, Verdana, sans-serif;
+  font-weight: 400; margin-bottom: 0px; margin-top: 10px; color: #222; line-height: 24px; }
+  p { clear: both; font-size: 13px; padding-top: 2px; color: #222; }
+  a { color: #222; }
+  .margintop-20px{
+    margin-top:20px;
+  }
+  .row.collapse form {
+    input[type="text"] { font-size: 17px; font-weight: 200; color: #999; border: 0; }
+    .button { border: 0; box-shadow: none; background: #257696; }
+    .button:hover { background: #1b566d; }
+  }
+}
+
+.row.collapse.margintop-20px{
+  margin-top:20px;
+}
+
+// building blocks styles
+
+.building-blocks-section {
+  padding: 0.75rem 0 3rem 0;
+
+  .building-blocks-header {
+    margin-bottom: 2.5rem;
+  }
+}
+
+.building-block-item {
+  padding: 0.5rem 0;
+  text-align: center;
+  border: 3px solid $secondary-color;
+  min-height: 14rem;
+  overflow: hidden;
+  margin-bottom: 1rem;
+
+  .building-block-item-header {
+    margin-bottom: 2rem;
+  }
+}
+
+
+.top-bar.docs-bar { height: 45px !important; }
+
+.top-bar.docs-bar .name h1 {
+  padding: 0;
+  margin-left: 20px; 
+}
+.top-bar.docs-bar .name h1 img {
+  margin-top: -2px; 
+  display: inline-block !important;
+  vertical-align: middle !important;
+}
+.top-bar.docs-bar .name h1 a {
+  opacity: 0.75;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+  font-family: "Proxima Nova", "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-weight: bold;
+  font-size: 22px !important;
+  line-height: 45px;
+  padding: 0;
+  text-rendering: auto; 
+  span { font-size: 17px !important; line-height: 0 !important; margin-left: 0px; }
+}
+.top-bar.docs-bar .name h1 a:hover {
+  opacity: 1; 
+}
+
+.top-bar.docs-bar .top-bar-section > ul > .divider, .top-bar-section > ul > [role="separator"] {
+  border-right: solid 1px #4e4e4e;
+  border-bottom: none;
+  border-top: none;
+  clear: none;
+  height: 45px;
+  width: 0;
+}
+.top-bar.docs-bar .top-bar-section ul li > a:not(.button) {
+  font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !important;
+  font-weight: bold;
+  padding: 0 15px;
+  line-height: 45px;
+}
+
+.top-bar.docs-bar .top-bar-section .dropdown li a {
+  font-weight: normal !important;
+}
+.top-bar.docs-bar .top-bar-section .has-form {
+  padding: 0 15px !important;
+  height: 45px;
+  line-height: 45px;
+  a { line-height: 47px; }
+}
+
+.top-bar.docs-bar .top-bar-section ul li > a.button {
+  font-size: 0.8125rem;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid;
+  background-color: #008CBA;
+  border-color: #007095;
+  color: #FFFFFF;
+  border-style: solid;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: bold;
+  line-height: normal;
+  margin: 0 0 1.25rem;
+  text-decoration: none;
+  text-align: center;
+  -webkit-appearance: none;
+  border-color: #007095;
+  transition: background-color 300ms ease-out;
+}

@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 //
 // @variables
@@ -32,19 +32,20 @@ $inline-list-children-display: block !default;
 //
 // We use this mixin to create inline lists
 @mixin inline-list {
-  margin: $inline-list-top-margin auto $inline-list-bottom-margin auto;
+  list-style: none;
+  margin-top: $inline-list-top-margin;
+  margin-bottom: $inline-list-bottom-margin;
   margin-#{$default-float}: $inline-list-default-float-margin;
   margin-#{$opposite-direction}: $inline-list-opposite-margin;
-  padding: $inline-list-padding;
-  list-style: none;
   overflow: $inline-list-overflow;
+  padding: $inline-list-padding;
 
-  & > li {
-    list-style: none;
-    float: $default-float;
-    margin-#{$default-float}: $inline-list-default-float-list-margin;
+  > li {
     display: $inline-list-display;
-    &>* { display: $inline-list-children-display; }
+    float: $default-float;
+    list-style: none;
+    margin-#{$default-float}: $inline-list-default-float-list-margin;
+    > * { display: $inline-list-children-display; }
   }
 }
 

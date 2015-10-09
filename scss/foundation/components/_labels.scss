@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 //
 // @variables
@@ -10,7 +10,7 @@
 $include-html-label-classes: $include-html-classes !default;
 
 // We use these to style the labels
-$label-padding: rem-calc(4 8 6) !default;
+$label-padding: rem-calc(4 8 4) !default;
 $label-radius: $global-radius !default;
 
 // We use these to style the label text
@@ -25,21 +25,21 @@ $label-font-family: $body-font-family !default;
 //
 // We use this mixin to create a default label base.
 @mixin label-base {
-  font-weight: $label-font-weight;
+  display: inline-block;
   font-family: $label-font-family;
+  font-weight: $label-font-weight;
+  line-height: 1;
+  margin-bottom: auto;
+  position: relative;
   text-align: center;
   text-decoration: none;
-  line-height: 1;
   white-space: nowrap;
-  display: inline-block;
-  position: relative;
-  margin-bottom: inherit;
 }
 
 // @mixins
 //
 // We use this mixin to add label size styles.
-// $padding - Used to determine label padding. Default: $label-padding || rem-calc(3 10 4) !default
+// $padding - Used to determine label padding. Default: $label-padding || rem-calc(4 8 4) !default
 // $text-size - Used to determine label text-size. Default: $text-size found in settings
 @mixin label-size($padding:$label-padding, $text-size:$label-font-sizing) {
   @if $padding { padding: $padding; }
@@ -100,6 +100,7 @@ $label-font-family: $body-font-family !default;
       &.warning   { @include label-style($warning-color); }
       &.success   { @include label-style($success-color); }
       &.secondary { @include label-style($secondary-color); }
+      &.info      { @include label-style($info-color); }
     }
   }
 }

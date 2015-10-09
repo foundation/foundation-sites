@@ -9,10 +9,12 @@
     settings : {
       additional_inheritable_classes : [],
       tooltip_class : '.tooltip',
-      append_to: 'body',
-      touch_close_text: 'Tap To Close',
-      disable_for_touch: false,
-      hover_delay: 200,
+      append_to : 'body',
+      touch_close_text : 'Tap To Close',
+      disable_for_touch : false,
+      hover_delay : 200,
+      fade_in_duration : 150,
+      fade_out_duration : 150,
       show_on : 'all',
       tip_template : function (selector, content) {
         return '<span data-selector="' + selector + '" id="' + selector + '" class="'
@@ -28,7 +30,7 @@
       this.bindings(method, options);
     },
 
-    should_show: function (target, tip) {
+    should_show : function (target, tip) {
       var settings = $.extend({}, this.settings, this.data_options(target));
 
       if (settings.show_on === 'all') {
@@ -57,6 +59,31 @@
 
       self.create(this.S(instance));
 
+      function _startShow(elt, $this, immediate) {
+        if (elt.timer) {
+          return;
+        }
+
+        if (immediate) {
+          elt.timer = null;
+          self.showTip($this);
+        } else {
+          elt.timer = setTimeout(function () {
+            elt.timer = null;
+            self.showTip($this);
+          }.bind(elt), self.settings.hover_delay);
+        }
+      }
+
+      function _startHide(elt, $this) {
+        if (elt.timer) {
+          clearTimeout(elt.timer);
+          elt.timer = null;
+        }
+
+        self.hide($this);
+      }
+
       $(this.scope)
         .off('.tooltip')
         .on('mouseenter.fndtn.tooltip mouseleave.fndtn.tooltip touchstart.fndtn.tooltip MSPointerDown.fndtn.tooltip',
@@ -69,46 +96,54 @@
             return false;
           }
 
-          if (/mouse/i.test(e.type) && self.ie_touch(e)) return false;
-
+          if (/mouse/i.test(e.type) && self.ie_touch(e)) {
+            return false;
+          }
+          
           if ($this.hasClass('open')) {
-            if (Modernizr.touch && /touchstart|MSPointerDown/i.test(e.type)) e.preventDefault();
+            if (Modernizr.touch && /touchstart|MSPointerDown/i.test(e.type)) {
+              e.preventDefault();
+            }
             self.hide($this);
           } else {
             if (settings.disable_for_touch && Modernizr.touch && /touchstart|MSPointerDown/i.test(e.type)) {
               return;
-            } else if(!settings.disable_for_touch && Modernizr.touch && /touchstart|MSPointerDown/i.test(e.type)) {
+            } else if (!settings.disable_for_touch && Modernizr.touch && /touchstart|MSPointerDown/i.test(e.type)) {
               e.preventDefault();
               S(settings.tooltip_class + '.open').hide();
               is_touch = true;
+              // close other open tooltips on touch
+              if ($('.open[' + self.attr_name() + ']').length > 0) {
+               var prevOpen = S($('.open[' + self.attr_name() + ']')[0]);
+               self.hide(prevOpen);
+              }
             }
 
             if (/enter|over/i.test(e.type)) {
-              this.timer = setTimeout(function () {
-                var tip = self.showTip($this);
-              }.bind(this), self.settings.hover_delay);
+              _startShow(this, $this);
+
             } else if (e.type === 'mouseout' || e.type === 'mouseleave') {
-              clearTimeout(this.timer);
-              self.hide($this);
+              _startHide(this, $this);
             } else {
-              self.showTip($this);
+              _startShow(this, $this, true);
             }
           }
         })
         .on('mouseleave.fndtn.tooltip touchstart.fndtn.tooltip MSPointerDown.fndtn.tooltip', '[' + this.attr_name() + '].open', function (e) {
-          if (/mouse/i.test(e.type) && self.ie_touch(e)) return false;
-
-          if($(this).data('tooltip-open-event-type') == 'touch' && e.type == 'mouseleave') {
-            return;
+          if (/mouse/i.test(e.type) && self.ie_touch(e)) {
+            return false;
           }
-          else if($(this).data('tooltip-open-event-type') == 'mouse' && /MSPointerDown|touchstart/i.test(e.type)) {
+
+          if ($(this).data('tooltip-open-event-type') == 'touch' && e.type == 'mouseleave') {
+            return;
+          } else if ($(this).data('tooltip-open-event-type') == 'mouse' && /MSPointerDown|touchstart/i.test(e.type)) {
             self.convert_to_touch($(this));
           } else {
-            self.hide($(this));
+            _startHide(this, $(this));
           }
         })
         .on('DOMNodeRemoved DOMAttrModified', '[' + this.attr_name() + ']:not(a)', function (e) {
-          self.hide(S(this));
+          _startHide(this, S(this));
         });
     },
 
@@ -119,7 +154,7 @@
 
     showTip : function ($target) {
       var $tip = this.getTip($target);
-      if (this.should_show($target, $tip)){
+      if (this.should_show($target, $tip)) {
         return this.show($target);
       }
       return;
@@ -138,17 +173,16 @@
     },
 
     selector : function ($target) {
-      var id = $target.attr('id'),
-          dataSelector = $target.attr(this.attr_name()) || $target.attr('data-selector');
+      var dataSelector = $target.attr(this.attr_name()) || $target.attr('data-selector');
 
-      if ((id && id.length < 1 || !id) && typeof dataSelector != 'string') {
+      if (typeof dataSelector != 'string') {
         dataSelector = this.random_str(6);
         $target
           .attr('data-selector', dataSelector)
           .attr('aria-describedby', dataSelector);
       }
 
-      return (id && id.length > 0) ? id : dataSelector;
+      return dataSelector;
     },
 
     create : function ($target) {
@@ -166,27 +200,27 @@
       $tip.addClass(classes).appendTo(settings.append_to);
 
       if (Modernizr.touch) {
-        $tip.append('<span class="tap-to-close">'+settings.touch_close_text+'</span>');
-        $tip.on('touchstart.fndtn.tooltip MSPointerDown.fndtn.tooltip', function(e) {
+        $tip.append('<span class="tap-to-close">' + settings.touch_close_text + '</span>');
+        $tip.on('touchstart.fndtn.tooltip MSPointerDown.fndtn.tooltip', function (e) {
           self.hide($target);
         });
       }
 
-      $target.removeAttr('title').attr('title','');
+      $target.removeAttr('title').attr('title', '');
     },
 
     reposition : function (target, tip, classes) {
-      var width, nub, nubHeight, nubWidth, column, objPos;
+      var width, nub, nubHeight, nubWidth, objPos;
 
       tip.css('visibility', 'hidden').show();
 
       width = target.data('width');
       nub = tip.children('.nub');
       nubHeight = nub.outerHeight();
-      nubWidth = nub.outerHeight();
+      nubWidth = nub.outerWidth();
 
       if (this.small()) {
-        tip.css({'width' : '100%' });
+        tip.css({'width' : '100%'});
       } else {
         tip.css({'width' : (width) ? width : 'auto'});
       }
@@ -199,31 +233,46 @@
           'right' : (right) ? right : 'auto'
         }).end();
       };
+      
+      var o_top = target.offset().top;
+      var o_left = target.offset().left;
+      var outerHeight = target.outerHeight();
 
-      objPos(tip, (target.offset().top + target.outerHeight() + 10), 'auto', 'auto', target.offset().left);
+      objPos(tip, (o_top + outerHeight + 10), 'auto', 'auto', o_left);
 
       if (this.small()) {
-        objPos(tip, (target.offset().top + target.outerHeight() + 10), 'auto', 'auto', 12.5, $(this.scope).width());
+        objPos(tip, (o_top + outerHeight + 10), 'auto', 'auto', 12.5, $(this.scope).width());
         tip.addClass('tip-override');
-        objPos(nub, -nubHeight, 'auto', 'auto', target.offset().left);
+        objPos(nub, -nubHeight, 'auto', 'auto', o_left);
       } else {
-        var left = target.offset().left;
+        
         if (Foundation.rtl) {
           nub.addClass('rtl');
-          left = target.offset().left + target.outerWidth() - tip.outerWidth();
+          o_left = o_left + target.outerWidth() - tip.outerWidth();
         }
-        objPos(tip, (target.offset().top + target.outerHeight() + 10), 'auto', 'auto', left);
+
+        objPos(tip, (o_top + outerHeight + 10), 'auto', 'auto', o_left);
+        // reset nub from small styles, if they've been applied
+        if (nub.attr('style')) {
+          nub.removeAttr('style');
+        }
+        
         tip.removeClass('tip-override');
+        
+        var tip_outerHeight = tip.outerHeight();
+        
         if (classes && classes.indexOf('tip-top') > -1) {
-          if (Foundation.rtl) nub.addClass('rtl');
-          objPos(tip, (target.offset().top - tip.outerHeight()), 'auto', 'auto', left)
+          if (Foundation.rtl) {
+            nub.addClass('rtl');
+          }
+          objPos(tip, (o_top - tip_outerHeight), 'auto', 'auto', o_left)
             .removeClass('tip-override');
         } else if (classes && classes.indexOf('tip-left') > -1) {
-          objPos(tip, (target.offset().top + (target.outerHeight() / 2) - (tip.outerHeight() / 2)), 'auto', 'auto', (target.offset().left - tip.outerWidth() - nubHeight))
+          objPos(tip, (o_top + (outerHeight / 2) - (tip_outerHeight / 2)), 'auto', 'auto', (o_left - tip.outerWidth() - nubHeight))
             .removeClass('tip-override');
           nub.removeClass('rtl');
         } else if (classes && classes.indexOf('tip-right') > -1) {
-          objPos(tip, (target.offset().top + (target.outerHeight() / 2) - (tip.outerHeight() / 2)), 'auto', 'auto', (target.offset().left + target.outerWidth() + nubHeight))
+          objPos(tip, (o_top + (outerHeight / 2) - (tip_outerHeight / 2)), 'auto', 'auto', (o_left + target.outerWidth() + nubHeight))
             .removeClass('tip-override');
           nub.removeClass('rtl');
         }
@@ -250,14 +299,14 @@
       return $.trim(filtered);
     },
 
-    convert_to_touch : function($target) {
+    convert_to_touch : function ($target) {
       var self = this,
           $tip = self.getTip($target),
           settings = $.extend({}, self.settings, self.data_options($target));
 
       if ($tip.find('.tap-to-close').length === 0) {
-        $tip.append('<span class="tap-to-close">'+settings.touch_close_text+'</span>');
-        $tip.on('click.fndtn.tooltip.tapclose touchstart.fndtn.tooltip.tapclose MSPointerDown.fndtn.tooltip.tapclose', function(e) {
+        $tip.append('<span class="tap-to-close">' + settings.touch_close_text + '</span>');
+        $tip.on('click.fndtn.tooltip.tapclose touchstart.fndtn.tooltip.tapclose MSPointerDown.fndtn.tooltip.tapclose', function (e) {
           self.hide($target);
         });
       }
@@ -267,20 +316,19 @@
 
     show : function ($target) {
       var $tip = this.getTip($target);
-
       if ($target.data('tooltip-open-event-type') == 'touch') {
         this.convert_to_touch($target);
       }
 
       this.reposition($target, $tip, $target.attr('class'));
       $target.addClass('open');
-      $tip.fadeIn(150);
+      $tip.fadeIn(this.settings.fade_in_duration);
     },
 
     hide : function ($target) {
       var $tip = this.getTip($target);
 
-      $tip.fadeOut(150, function() {
+      $tip.fadeOut(this.settings.fade_out_duration, function () {
         $tip.find('.tap-to-close').remove();
         $tip.off('click.fndtn.tooltip.tapclose MSPointerDown.fndtn.tapclose');
         $target.removeClass('open');

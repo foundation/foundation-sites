@@ -1,5 +1,6 @@
 ---
 title: Dropdown Buttons
+layout: component.html
 ---
 
 <h3 class="subheader">Dropdown buttons are elements that, when tapped, reveal additional content. We've simplified our dropdown buttons by getting rid of the dedicated ones associated with the various buttons styles. Instead, you'll use our [new dropdown plugin]({{relative absolute 'dist/docs/components/dropdown.html'}}) to attach a dropdown to the button style of your choice.</h3>
@@ -33,32 +34,13 @@ You can create a dropdown using minimal markup.
 
 <h2>Advanced</h2>
 
-Additional classes can be added to your dropdown buttons to change their appearance.
+Additional classes can be added to your dropdown buttons to change their appearance and behavior.
 
-<div class="row">
-  <div class="large-6 columns">
-    <h4>HTML</h4>
-{{#markdown}}
-```html
-<button data-dropdown="drop" aria-controls="drop", aria-expanded="false" class="large alert round button dropdown">Dropdown Button</button><br>
-<ul id="drop" data-dropdown-content class="f-dropdown" role="menu", aria-hidden="false" tabindex="-1">
-  <li><a href="#">This is a link</a></li>
-  <li><a href="#">This is another</a></li>
-  <li><a href="#">Yet another</a></li>
-</ul>
-```
-{{/markdown}}
-  </div>
-  <div class="large-6 columns">
-    <h4>Rendered HTML</h4>
-    <button data-dropdown="dropE" aria-controls="dropE", aria-expanded="false" class="large alert round button dropdown">Dropdown Button</button><br>
-    <ul id="dropE" data-dropdown-content class="f-dropdown" role="menu" aria-hidden="false" tabindex="-1">
-      <li><a href="#">This is a link</a></li>
-      <li><a href="#">This is another</a></li>
-      <li><a href="#">Yet another</a></li>
-    </ul>
-  </div>
-</div>
+{{> examples_dropdown_advanced}}
+
+Disabled dropdown buttons will not open when tapped:
+
+{{> examples_dropdown_disabled}}
 
 ***
 

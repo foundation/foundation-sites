@@ -1,5 +1,6 @@
 ---
 title: Clearing
+layout: component.html
 ---
 
 <h3 class="subheader">Since we didn't intend Orbit to handle variable-height content, we decided to create a plugin that would. Clearing makes it easy to create responsive lightboxes with any size image.</h3>
@@ -23,6 +24,18 @@ Once you get your JS hooked up, you'll need to add `data-clearing` to your list 
 ### Styling the List
 
 We're using the `.th` class from Foundation to style the thumbnails in the Clearing example at the top of the page. You can also use `@include thumb;` in SCSS to use those same styles.
+
+***
+
+## Using Responsive Images
+
+To use responsive images add `data-clearing-interchange` to your links:
+
+<h4>HTML</h4>
+
+{{> examples_clearing_interchange_rendered}}
+
+The rules for the interchange list are the same as described in the [Interchange documentation]({{rel 'components/interchange.html'}}#using-interchange-with-images).
 
 ***
 
@@ -91,12 +104,12 @@ Clearing supports `data-options` on-the-fly configuration:
 Clearing supports several javascript events that you can listen to:
 
 <ul>
-  <li><code>open.clearing.fndtn</code> before a thumbnail is expanded</li>
-  <li><code>opened.clearing.fndtn</code> after the large image has opened</li>
-  <li><code>close.clearing.fndtn</code> before the large image is closed</li>
-  <li><code>closed.clearing.fndtn</code> after the large image has closed</li>
-  <li><code>change.clearing.fndtn</code> when the large image changes</li>
-  <li><code>resized.clearing.fndtn</code> after the large image is resized, before it becomes visible</li>
+  <li><code>open.fndtn.clearing</code> before a thumbnail is expanded</li>
+  <li><code>opened.fndtn.clearing</code> after the large image has opened</li>
+  <li><code>close.fndtn.clearing</code> before the large image is closed</li>
+  <li><code>closed.fndtn.clearing</code> after the large image has closed</li>
+  <li><code>change.fndtn.clearing</code> when the large image changes</li>
+  <li><code>resized.fndtn.clearing</code> after the large image is resized, before it becomes visible</li>
 </ul>
 
 <p>Here is an example of binding to the open event.</p>
@@ -104,6 +117,26 @@ Clearing supports several javascript events that you can listen to:
 <h4>JS</h4>
 
 {{> examples_clearing_events}}
+
+***
+
+### Adding New Clearing Content After Page Load
+
+If you add new content after the page has been loaded, you will need to reinitialize the Foundation JavaScript by running the following:
+
+{{#markdown}}
+```javascript
+$(document).foundation(); 
+```
+{{/markdown}}
+
+Reflow will make Foundation check the DOM for any elements and re-apply any listeners to them.
+
+{{#markdown}}
+```javascript
+$(document).foundation('clearing', 'reflow');
+```
+{{/markdown}}
 
 ***
 

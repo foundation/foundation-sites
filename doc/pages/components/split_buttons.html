@@ -1,8 +1,9 @@
 ---
 title: Split Buttons
+layout: component.html
 ---
 
-<h3 class="subheader">We've simplified our split downdrop buttons by removing the dedicated ones associated with a style of button. Instead, you'll use our [new dropdown plugin]({{relative absolute 'dist/docs/components/dropdown.html'}}) to attach a split button to the button style of your choice.</h3>
+<h3 class="subheader">We've simplified our split dropdown buttons by removing the dedicated ones associated with a style of button. Instead, you'll use our [new dropdown plugin]({{relative absolute 'dist/docs/components/dropdown.html'}}) to attach a split button to the button style of your choice.</h3>
 
 ***
 
@@ -45,6 +46,23 @@ Additional classes can be added to your split buttons to change its appearance.
   <div class="large-6 columns">
     <h4>HTML Rendered</h4>
 {{> examples_split_button_advanced}}
+  </div>
+</div>
+
+***
+
+<h2>Custom Pip</h2>
+
+If you desire to use your own pip in the split button, the `no-pip` class will remove ours and allow you to place any icon inside of the pip span
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{> examples_split_button_custom_pip_rendered}}
+  </div>
+  <div class="large-6 columns">
+    <h4>HTML Rendered</h4>
+{{> examples_split_button_custom_pip}}
   </div>
 </div>
 

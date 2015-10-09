@@ -107,6 +107,8 @@ How to Install
       <p class="panel">gem install foundation</p>    
       <p class="subheader note"><strong>Note:</strong> If you run into permission errors running these commands in the CLI, you can add the word 'sudo' before the line inside the interface:</p>
       <p class="panel">sudo npm install -g bower grunt-cli <br> sudo gem install foundation</p>  
+      <p class="subheader note">If you use <a href="https://github.com/sstephenson/rbenv">rbenv</a>, rehash your shims after installing:</p>
+      <p class="panel">rbenv rehash</p>
     </div>
   </div>
 </div>
@@ -132,7 +134,7 @@ Compass/Libsass
     <div class="path-item">
       <div class="circlenumber">
         <h3>1</h3>
-      </div><p>If it's not installed yet, you can install it using the following command:</p>
+      </div><p>If it's not installed already, you can install Compass using the following command:</p>
       <p class="panel">gem install compass</p>
     </div>
     <div class="path-item">
@@ -153,11 +155,12 @@ Compass/Libsass
       <div class="circlenumber">
         <h3>4</h3>
       </div>
+      <p>Bundler is used to ensure all the correct libraries are used. If you don't have it, run `gem install bundler`</p>
+      <p>Then run <span class="panel">bundle</span> (only once per project)</p>
       <p>Be sure to run compass watch in order to make changes.</p>
-      <p class="panel">compass watch</p>
+      <p class="panel">bundle exec compass watch</p>
     </div>
   </div>
-
 
   <div class="large-5 large-pull-1 columns path-container two-paths">
     <hr class="dashed hide-for-large-up">
@@ -243,7 +246,7 @@ Manually
     <h2 data-magellan-destination="nocli"><a name="nocli"></a>Install Foundation Manually</h2>
     <h2 class="subheader">You can download our SCSS files and get set up to harness the power of Foundation without the CLI if you want. Here's how:</h2>
     <ul>
-      <li>First you will need to clone or download the <a href="https://github.com/zurb/foundation/archive/master.zip">master zip of the Foundation Compass Template</a> from Github. This will be the root of your project.</li>
+      <li>First you will need to clone or download the <a href="https://github.com/zurb/foundation-compass-template">master zip of the Foundation Compass Template</a> from Github. This will be the root of your project.</li>
       <li>Then you will create a directory called bower_components.</li>
       <li>The next step is to clone or download the master zip of the <a href="https://github.com/zurb/bower-foundation">bower-foundation</a> repo in that directory.</li>
       <li>Then rename this directory to "foundation"</li>
@@ -275,17 +278,61 @@ Upgrade Manually
         <h3>1</h3>
       </div>
       <p>First, you need create a file named bower.json in the root of your Compass project. This should contain the following:</p>
-      <p class="panel">{<br>&nbsp; &nbsp; "name": "PROJECT_NAME",<br>&nbsp; &nbsp; "dependencies": {<br>&nbsp;  &nbsp; &nbsp; &nbsp;"foundation": "~5.1.0"<br>&nbsp; &nbsp;  }<br>}
+      <p class="panel">{<br>&nbsp; &nbsp; "name": "PROJECT_NAME",<br>&nbsp; &nbsp; "dependencies": {<br>&nbsp;  &nbsp; &nbsp; &nbsp;"foundation": "~5.4.7"<br>&nbsp; &nbsp;  }<br>}
     </div>
     <div class="row path-item">
       <div class="circlenumber">
         <h3>2</h3>
       </div>
-      <p>Next you will run bower install.</p> 
-      <p class="panel">bower install</p>
+      <p>Next you will run bower update.</p> 
+      <p class="panel">bower update</p>
       <p>This will create a directory called bower_components/ in your project. Foundation's Sass and JavaScript files will be placed in the bower_components/foundation folder.</p>
     </div>
     <p><a href="{{rel 'sass-files.html'}}">Check out what you get with the Sass download package. →</a></p>
+  </div>
+</div>
+
+<hr class="dashed">
+
+<div class="row">
+  <div class="small-12 path-container columns">
+    <h3>Build Using a Task Runner</h3>
+    <p>Using Bower and a task runner like Grunt or Gulp, you can add our Sass files to your build process.</p>
+    <div class="row path-item">
+      <div class="circlenumber">
+        <h3>1</h3>
+      </div>
+      <p>In a project with an existing <code>bower.json</code>, add Foundation to your bower components:</p>
+      <p class="panel">bower install foundation --save</p>
+    </div>
+    <div class="row path-item">
+      <div class="circlenumber">
+        <h3>2</h3>
+      </div>
+      <p>Next, add <code>bower_components/foundation/scss</code> to your Sass compiler's import paths. The exact setting you need to change will depend on the plugin you're using. For example, this is how to add Foundation to a Grunt task using <code>grunt-contrib-sass</code>:</p>
+      <p class="panel">
+        sass: {<br>
+        &nbsp;&nbsp;dist: {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;options: {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;style: 'expanded'<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>loadPath: ['bower_components/foundation/scss']</strong><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;},<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;files: {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'main.css': 'main.scss',<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'widgets.css': 'widgets.scss'<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+        &nbsp;&nbsp;}<br>
+        }
+      </p>
+      <p>This configuration will work for `gulp-sass`:</p>
+      <p class="panel">
+        gulp.src('./scss/*.scss')<br>
+        &nbsp;&nbsp;.pipe(sass({<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<strong>includePaths: ['bower_components/foundation/scss']</strong><br>
+        &nbsp;&nbsp;}))<br>
+        &nbsp;&nbsp;.pipe(gulp.dest('./css'));
+      </p>
+    </div>
   </div>
 </div>
 

@@ -1,13 +1,14 @@
 {
   "name": "foundation",
-  "version": "5.4.3",
   "main": [
-    "css/foundation.css",
+    "scss/foundation.scss",
     "js/foundation.js"
+  ],
+  "ignore": [
   ],
   "dependencies": {
     "jquery": ">= 2.1.0",
-    "modernizr": ">= 2.7.2",
+    "modernizr": "2.8.3",
     "fastclick": ">=0.6.11",
     "jquery.cookie": "~1.4.0",
     "jquery-placeholder": "~2.0.7"

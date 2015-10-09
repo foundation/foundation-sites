@@ -1,8 +1,9 @@
 ---
 title: Tooltips
+layout: component.html
 ---
 
-<h3 class="subheader">Tooltips are a quick way to provide <a data-tooltip aria-haspopup="true" class="has-tip" title="Tooltips are awesome, you should totally use them!">extended information</a> on a term or action on a page.</h3>
+<h3 class="subheader">Tooltips are a quick way to provide <span data-tooltip aria-haspopup="true" class="has-tip" title="Tooltips are awesome, you should totally use them!">extended information</span> on a term or action on a page.</h3>
 
 ***
 
@@ -35,7 +36,7 @@ Additional classes can be added to your tooltips to change its appearance.
 
 {{#markdown}}
 ```html
-<span data-tooltip aria-haspopup="true" data-options="disable_for_touch:true" class="has-tip [tip-top tip-bottom tip-left tip-right] [radius round]" title="Tooltips are awesome, you should totally use them!">extended information</span>
+<span data-tooltip aria-haspopup="true" class="has-tip [tip-top tip-bottom tip-left tip-right] [radius round]" title="Tooltips are awesome, you should totally use them!">extended information</span>
 ```
 {{/markdown}}
 
@@ -110,11 +111,13 @@ It's easy to configure tooltips using our Javascript. You can use data-attribute
 
 Using data-attributes is the preferred method of making changes to our Javascript.
 
+You will find all the data-options here: <a href="http://foundation.zurb.com/docs/javascript.html">JavaScript Data Options</a>
+
 <h4>HTML</h4>
 
 {{#markdown}}
 ```html
-<span data-tooltip aria-haspopup="true" class="has-tip" title="Tooltips are awesome, you should totally use them!">...</span>
+<span data-tooltip data-options="hover_delay: 50;" class="has-tip" title="Tooltips are awesome, you should totally use them!">...</span>
 ```
 {{/markdown}}
 
@@ -140,6 +143,26 @@ $(document).foundation({
     }
   }
 });
+```
+{{/markdown}}
+
+***
+
+### Adding New Tooltip Content After Page Load
+
+If you add new content after the page has been loaded, you will need to reinitialize the Foundation JavaScript by running the following:
+
+{{#markdown}}
+```javascript
+$(document).foundation(); 
+```
+{{/markdown}}
+
+Reflow will make Foundation check the DOM for any elements and re-apply any listeners to them.
+
+{{#markdown}}
+```javascript
+$(document).foundation('tooltip', 'reflow');
 ```
 {{/markdown}}
 

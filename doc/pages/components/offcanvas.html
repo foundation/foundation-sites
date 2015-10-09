@@ -1,6 +1,7 @@
 ---
-title: Off Canvas
+title: Off-canvas
 meta: Off-canvas navigation
+layout: component.html
 ---
 
 <h3 class="subheader">Off-canvas menus are positioned outside of the viewport and slide in when activated. Setting up an off-canvas layout in Foundation is super easy.</h3>
@@ -26,7 +27,7 @@ You can create a basic, <strong>unstyled</strong> off-canvas menu with just a li
   </div>
 </div>
 
-The basics of Off Canvas are pretty simple. The off-canvas layout is wrapped in `.off-canvas-wrap`. Next comes `.inner-wrap`. You also need to include the menu itself, which is `.left-off-canvas-menu` or `.right-off-canvas-menu`. You need a corresponding target for your off-canvas menu, either `.left-off-canvas-toggle` or `.right-off-canvas-toggle`. Finally, be sure to include `.exit-off-canvas` so your users can get back to the main page!
+The basics of off-canvas are pretty simple. The off-canvas layout is wrapped in `.off-canvas-wrap`. Next comes `.inner-wrap`. You also need to include the menu itself, which is `.left-off-canvas-menu` or `.right-off-canvas-menu`. You need a corresponding target for your off-canvas menu, either `.left-off-canvas-toggle` or `.right-off-canvas-toggle`. Finally, be sure to include `.exit-off-canvas` so your users can get back to the main page!
 
 ### Off-Canvas Wrap
 
@@ -92,7 +93,7 @@ Include `.exit-off-canvas` to provide a way back to the main page. This is an ov
 
 ## Advanced
 
-Using our pre-built components, you can create an awesome off-canvas menu right out of the box.
+Using our pre-built components, you can create an awesome off-canvas menu right out of the box. You can specify `right-off-canvas-toggle` or `left-off-canvas-toggle` and/or `left-off-canvas-menu` and `right-off-canvas-menu`.
 
 <div class="row">
   <div class="large-6 columns">
@@ -104,6 +105,27 @@ Using our pre-built components, you can create an awesome off-canvas menu right 
   {{> examples_offcanvas_multiple_rendered}}
   </div>
 </div>
+
+### Off-canvas from any direction
+
+In addition to left and right off-canvas menus, you can also have top or bottom off-canvas's as well. Notice, the menu icons are still either left or right, but the off-canvas can be set to `top-off-canvas-menu` and/or `bottom-off-canvas-menu`.
+  
+<div class="row">
+  <div class="large-6 columns">
+  <h4>HTML</h4>
+  {{#markdown}}
+  ```html
+  {{> examples_offcanvas_top-bottom}}
+  ```
+  {{/markdown}}
+  </div>
+  <div class="large-6 columns">
+  <h4>Rendered HTML</h4>
+  {{> examples_offcanvas_top-bottom}}
+  </div>
+</div>
+
+<small>Note: Top and Bottom not currently compatible with multi-level off-canvas. A pull request would really help here.</small>
 
 ### Tab Bar Container
 
@@ -155,10 +177,10 @@ Now put it all together...
 
 <nav class="tab-bar">
   <div class="left-small">
-    <a href="#idOfLeftMenu" aria-controls="idOfLeftMenu"  role="button" aria-expanded="false" class="left-off-canvas-toggle menu-icon" ><span></span></a>
+    <a href="#idOfLeftMenu" aria-controls="idOfLeftMenu"  role="button" aria-expanded="false" class="menu-icon" ><span></span></a>
   </div>
   <div class="right-small">
-    <a href="#idOfRightMenu" aria-controls="idOfRightMenu" role="button" aria-expanded="false" class="right-off-canvas-toggle menu-icon" ><span></span></a>
+    <a href="#idOfRightMenu" aria-controls="idOfRightMenu" role="button" aria-expanded="false" class="menu-icon" ><span></span></a>
   </div>
 </nav>
 
@@ -201,25 +223,25 @@ Add a class of `.left`, `.right`, or `.middle` depending on which space you want
 </nav>
 
 <nav class="tab-bar">
-  <div class="left tab-bar-section"><!-- I stretch all the way to the left --></div>
+  <div class="right tab-bar-section"><!-- I stretch all the way to the left --></div>
   <div class="right-small"></div>
 </nav>
 ```
 
 <nav class="tab-bar">
-  <div class="left-small"><a class=" menu-icon" ><span></span></a></div>
-  <div class="right tab-bar-section"><h1>Left Section</h1></div>
+  <div class="right-small"><a class="menu-icon" ><span></span></a></div>
+  <div class="left tab-bar-section"><h1>Left Section</h1></div>
 </nav>
 &nbsp;
 <nav class="tab-bar">
-  <div class="left-small"><a class=" menu-icon" ><span></span></a></div>
+  <div class="left-small"><a class="menu-icon" ><span></span></a></div>
   <section class="middle tab-bar-section"><h1>Middle Section</h1></section>
   <div class="right-small"><a class=" menu-icon" ><span></span></a></div>
 </nav>
 &nbsp;
 <nav class="tab-bar">
-  <section class="left tab-bar-section"><h1>Right Section</h1></section>
-  <div class="right-small"><a class=" menu-icon" ><span></span></a></div>
+  <section class="right tab-bar-section"><h1>Right Section</h1></section>
+  <div class="left-small"><a class="menu-icon"><span></span></a></div>
 </nav>
 
 &nbsp;
@@ -343,7 +365,7 @@ There are a series of events that you can bind to for triggering callbacks:
 
 <div class="panel">
   <p><strong>Deprecation Notice</strong></p>
-  <p>Previous versions of the offcanvas plugin emitted un-namespaced `open` and `close` events, however, these have been replaced by the namespaced `open.fndtn.offcanvas` and `close.fndtn.offcanvas` events. The un-namespaced events will be fully deprecated when Foundation 5.4 is released.</p>
+  <p>Previous versions of the off-canvas plugin emitted un-namespaced `open` and `close` events, however, these have been replaced by the namespaced `open.fndtn.offcanvas` and `close.fndtn.offcanvas` events. The un-namespaced events have been fully deprecated.</p>
 </div>
 
 ```js
@@ -380,6 +402,26 @@ $('.off-canvas-wrap').foundation('offcanvas', 'hide', 'move-right');
 $('.off-canvas-wrap').foundation('offcanvas', 'toggle', 'move-right');
 
 ```
+
+***
+
+### Adding Off-canvas After Page Load
+
+If you add new content after the page has been loaded, you will need to reinitialize the Foundation JavaScript by running the following:
+
+{{#markdown}}
+```javascript
+$(document).foundation();
+```
+{{/markdown}}
+
+Reflow will make Foundation check the DOM for any elements and re-apply any listeners to them.
+
+{{#markdown}}
+```javascript
+$(document).foundation('offcanvas', 'reflow');
+```
+{{/markdown}}
 
 ***
 

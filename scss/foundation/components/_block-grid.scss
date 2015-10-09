@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 //
 // Block Grid Variables
@@ -30,6 +30,7 @@ $block-grid-media-queries: true !default;
 //
 // $per-row - # of items to display per row. Default: false.
 // $spacing - # of ems to use as padding on each block item. Default: rem-calc(20).
+// $include-spacing - Adds padding to our list item. Default: true.
 // $base-style - Apply a base style to block grid. Default: true.
 @mixin block-grid(
   $per-row:false,
@@ -47,10 +48,10 @@ $block-grid-media-queries: true !default;
     }
     @include clearfix;
 
-    &>li {
+    > li {
       display: block;
-      height: auto;
       float: $default-float;
+      height: auto;
       @if $include-spacing {
         padding: 0 ($spacing/2) $spacing;
       }
@@ -58,12 +59,12 @@ $block-grid-media-queries: true !default;
   }
 
   @if $per-row {
-    &>li {
-      width: 100%/$per-row;
+    > li {
+      list-style: none;
       @if $include-spacing {
         padding: 0 ($spacing/2) $spacing;
       }
-      list-style: none;
+      width: 100%/$per-row;
 
       &:nth-of-type(1n) { clear: none; }
       &:nth-of-type(#{$per-row}n+1) { clear: both; }
@@ -92,10 +93,10 @@ $block-grid-media-queries: true !default;
 // Generate presentational markup for block grid.
 //
 // $size - Name of class to use, i.e. "large" will generate .large-block-grid-1, .large-block-grid-2, etc.
-@mixin block-grid-html-classes($size,$include-spacing) {
+@mixin block-grid-html-classes($size, $include-spacing) {
   @for $i from 1 through $block-grid-elements {
     .#{$size}-block-grid-#{($i)} {
-      @include block-grid($i,$block-grid-default-spacing,$include-spacing,false);
+      @include block-grid($i, $block-grid-default-spacing, $include-spacing, false);
     }
   }
 }
@@ -107,24 +108,24 @@ $block-grid-media-queries: true !default;
 
     @if $block-grid-media-queries {
       @media #{$small-up} {
-        @include block-grid-html-classes($size:small,$include-spacing:false);
+        @include block-grid-html-classes($size:small, $include-spacing:false);
       }
 
       @media #{$medium-up} {
-        @include block-grid-html-classes($size:medium,$include-spacing:false);
+        @include block-grid-html-classes($size:medium, $include-spacing:false);
       }
 
       @media #{$large-up} {
-        @include block-grid-html-classes($size:large,$include-spacing:false);
+        @include block-grid-html-classes($size:large, $include-spacing:false);
       }
 
       @if $include-xl-html-block-grid-classes {
         @media #{$xlarge-up} {
-          @include block-grid-html-classes($size:xlarge,$include-spacing:false);
+          @include block-grid-html-classes($size:xlarge, $include-spacing:false);
         }
 
         @media #{$xxlarge-up} {
-          @include block-grid-html-classes($size:xxlarge,$include-spacing:false);
+          @include block-grid-html-classes($size:xxlarge, $include-spacing:false);
         }
       }
     }

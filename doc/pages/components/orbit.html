@@ -1,5 +1,6 @@
 ---
 title: Orbit
+layout: component.html
 ---
 
 <h3 class="subheader">Orbit is an easy, powerful, responsive image slider that allows users to swipe on touch-enabled devices.</h3>
@@ -206,7 +207,7 @@ $(document).foundation({
       timer_paused_class: 'paused', // Class name given to the paused button
       timer_progress_class: 'orbit-progress', // Class name given to the progress bar
       slides_container_class: 'orbit-slides-container', // Class name given to the slide container
-      preloader_class: 'preloader', // Class given to the perloader
+      preloader_class: 'preloader', // Class given to the preloader
       slide_selector: 'li', // Default is '*' which selects all children under the container
       bullets_container_class: 'orbit-bullets',
       bullets_active_class: 'active', // Class name given to the active bullet
@@ -220,7 +221,9 @@ $(document).foundation({
       variable_height: false, // Does the slider have variable height content?
       swipe: true,
       before_slide_change: noop, // Execute a function before the slide changes
-      after_slide_change: noop // Execute a function after the slide changes
+      after_slide_change: noop, // Execute a function after the slide changes
+      prev_text: 'Previous slide', // (Title) text for arrow to previous slide
+      next_text: 'Next slide' // (Title) text for arrow to next slide
   }
 });
 ```
@@ -321,6 +324,26 @@ $("#featured1").on("timer-stopped.fndtn.orbit", function(event, orbit) {
   console.info("timer stopped");
 });
 ```
+
+***
+
+### Adding New Content After Page Load
+
+If you add new content after the page has been loaded, you will need to reinitialize the Foundation JavaScript by running the following:
+
+{{#markdown}}
+```javascript
+$(document).foundation(); 
+```
+{{/markdown}}
+
+Reflow will make Foundation check the DOM for any elements and re-apply any listeners to them.
+
+{{#markdown}}
+```javascript
+$(document).foundation('orbit', 'reflow');
+```
+{{/markdown}}
 
 ***
 

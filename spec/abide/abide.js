@@ -24,13 +24,30 @@ describe('abide:', function() {
       expect($('input[name="user_email"]')).not.toHaveData('invalid');
     });
 
+    it('should skip validation when there are no validatable fields', function() {
+      $(document).foundation();
+
+      $('input[name="user_name"]').val('Name').hide();
+      $('input[name="user_email"]').val('user@email.com').hide();
+
+      $('form').submit();
+
+      expect('valid.fndtn.abide').not.toHaveBeenTriggeredOn('form');
+      expect('valid').not.toHaveBeenTriggeredOn('input[name="user_name"]');
+      expect('valid').not.toHaveBeenTriggeredOn('input[name="user_email"]');
+      expect('invalid.fndtn.abide').not.toHaveBeenTriggeredOn('form');
+      expect('invalid').not.toHaveBeenTriggeredOn('input[name="user_name"]');
+      expect('invalid').not.toHaveBeenTriggeredOn('input[name="user_email"]');
+
+      $('input[name="user_name"]').show();
+      $('input[name="user_email"]').show();
+    });
+
     it('should trigger correct events for all required fields', function() {
       $(document).foundation();
 
-      var settings = Foundation.libs.abide.settings;
-
-      spyOnEvent('form', 'invalid');
-      spyOnEvent('form', 'valid');
+      spyOnEvent('form', 'invalid.fndtn.abide');
+      spyOnEvent('form', 'valid.fndtn.abide');
 
       spyOnEvent('input[name="user_name"]', 'invalid');
       spyOnEvent('input[name="user_name"]', 'valid');
@@ -40,11 +57,11 @@ describe('abide:', function() {
 
       $('form').submit();
 
-      expect('valid').not.toHaveBeenTriggeredOn('form');
+      expect('valid.fndtn.abide').not.toHaveBeenTriggeredOn('form');
       expect('valid').not.toHaveBeenTriggeredOn('input[name="user_name"]');
-      expect('valid').not.toHaveBeenTriggeredOn('input[name="user_email"]');      
+      expect('valid').not.toHaveBeenTriggeredOn('input[name="user_email"]');
 
-      expect('invalid').toHaveBeenTriggeredOn('form');
+      expect('invalid.fndtn.abide').toHaveBeenTriggeredOn('form');
       expect('invalid').toHaveBeenTriggeredOn('input[name="user_name"]');
       expect('invalid').toHaveBeenTriggeredOn('input[name="user_email"]');
     });
@@ -67,8 +84,8 @@ describe('abide:', function() {
     it('should pass validation when all fields are filled out correctly', function() {
       $(document).foundation();
 
-      spyOnEvent('form', 'invalid');
-      spyOnEvent('form', 'valid');
+      spyOnEvent('form', 'invalid.fndtn.abide');
+      spyOnEvent('form', 'valid.fndtn.abide');
 
       spyOnEvent('input[name="user_name"]', 'invalid');
       spyOnEvent('input[name="user_name"]', 'valid');
@@ -81,14 +98,41 @@ describe('abide:', function() {
 
       $('form').submit();
 
-      expect('valid').toHaveBeenTriggeredOn('form');
+      expect('valid.fndtn.abide').toHaveBeenTriggeredOn('form');
       expect('valid').toHaveBeenTriggeredOn('input[name="user_name"]');
-      expect('valid').toHaveBeenTriggeredOn('input[name="user_email"]');      
+      expect('valid').toHaveBeenTriggeredOn('input[name="user_email"]');
 
-      expect('invalid').not.toHaveBeenTriggeredOn('form');
+      expect('invalid.fndtn.abide').not.toHaveBeenTriggeredOn('form');
       expect('invalid').not.toHaveBeenTriggeredOn('input[name="user_name"]');
       expect('invalid').not.toHaveBeenTriggeredOn('input[name="user_email"]');
     });
+
+    it('should not validate on blur or change events when validate_on_blur is false', function() {
+      $(document).foundation({
+        abide: {
+          validate_on_blur: false
+        }
+      });
+
+      $('input[name="user_name"]').blur();
+
+      expect($('input[name="user_name"]')).not.toHaveData('invalid');
+    });
+
+    it('should not focus hidden fields that are not required', function() {
+      $(document).foundation();
+      hidden_element = 'input[name="utf8"]';
+      first_element = 'input[name="user_name"]';
+
+      spyOnEvent(hidden_element, 'focus');
+      spyOnEvent(first_element, 'focus');
+
+      $('form').submit();
+
+      expect('focus').not.toHaveBeenTriggeredOn(hidden_element);
+      expect('focus').toHaveBeenTriggeredOn(first_element);
+    });
+
   });
 
   describe('advanced validation', function() {
@@ -119,12 +163,12 @@ describe('abide:', function() {
 
       $('input[name="user_password_confirmation"]').val("foobarbaz");
       // now they're equal
-      spyOnEvent('form', 'invalid');
-      spyOnEvent('form', 'valid');
+      spyOnEvent('form', 'invalid.fndtn.abide');
+      spyOnEvent('form', 'valid.fndtn.abide');
 
       $('form').submit();
 
-      expect('valid').toHaveBeenTriggeredOn('form');
+      expect('valid.fndtn.abide').toHaveBeenTriggeredOn('form');
       expect($('input[name="user_password"]')).not.toHaveAttr('data-invalid');
       expect($('input[name="user_password_confirmation"]')).not.toHaveAttr('data-invalid');
     });
@@ -152,22 +196,22 @@ describe('abide:', function() {
 
       $('form').submit();
 
-      var invalid_fields = $('form').find('[data-invalid]');
+      //var invalid_fields = $('form').find('[data-invalid]');
       // includes other fields with validators
-      expect(invalid_fields.length).toBe(3);
-      expect($('input[name="user_end_num"]')).toHaveAttr('data-invalid');
+      //expect(invalid_fields.length).toBe(3);
+      //expect($('input[name="user_end_num"]')).toHaveAttr('data-invalid');
 
       expect($('input[name="user_start_num"]')).not.toHaveAttr('data-invalid');
       expect($('input[name="user_end_num"]')).toHaveAttr('data-invalid');
 
       // valid now
       $('input[name="user_end_num"]').val("12");
-      spyOnEvent('form', 'invalid');
-      spyOnEvent('form', 'valid');
+      spyOnEvent('form', 'invalid.fndtn.abide');
+      spyOnEvent('form', 'valid.fndtn.abide');
 
       $('form').submit();
 
-      expect('valid').toHaveBeenTriggeredOn('form');
+      expect('valid.fndtn.abide').toHaveBeenTriggeredOn('form');
       expect($('input[name="user_start_num"]')).not.toHaveAttr('data-invalid');
       expect($('input[name="user_end_num"]')).not.toHaveAttr('data-invalid');
     });
