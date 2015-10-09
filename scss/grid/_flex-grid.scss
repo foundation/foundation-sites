@@ -76,6 +76,12 @@
   }
 }
 
+/// Changes the source order of a flex grid column. Columns with lower numbers appear first in the layout.
+/// @param {Number} $order [0] - Order number to apply.
+@mixin flex-grid-order($order: 0) {
+  order: $order;
+}
+
 @mixin foundation-flex-grid {
   // Row
   .row {
@@ -146,7 +152,7 @@
     @include breakpoint($size) {
       @for $i from 1 through 6 {
         .#{$size}-order-#{$i} {
-          order: $i;
+          @include flex-grid-order($i);
         }
       }
     }
