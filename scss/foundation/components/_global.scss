@@ -224,10 +224,18 @@ $base-line-height: 1.5 !default;
       0 0 0 $thickness $color,
       0 $gap + $thickness 0 $thickness $color,
       0 (2 * $gap + 2*$thickness) 0 $thickness $color;
+    -webkit-box-shadow:
+      0 0 0 $thickness $color,
+      0 $gap + $thickness 0 $thickness $color,
+      0 (2 * $gap + 2*$thickness) 0 $thickness $color;
     width: $width;
   }
   span:hover:after {
     box-shadow:
+      0 0 0 $thickness $hover-color,
+      0 $gap + $thickness 0 $thickness $hover-color,
+      0 (2 * $gap + 2*$thickness) 0 $thickness $hover-color;
+    -webkit-box-shadow:
       0 0 0 $thickness $hover-color,
       0 $gap + $thickness 0 $thickness $hover-color,
       0 (2 * $gap + 2*$thickness) 0 $thickness $hover-color;
