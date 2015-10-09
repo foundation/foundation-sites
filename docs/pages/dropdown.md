@@ -9,6 +9,11 @@ js: js/foundation.dropdown.js
   <h5>Known Issues</h5>
   <ul>
     <li>Needs event listener for `resizeme.zf.trigger` for positioning on screen resize events.</li>
+  </ul>
+</div>
+
+<div class="primary callout">
+  <p>You might be looking for <a href="dropdown-menu.html">dropdown menus</a>, which are a separate plugin.</p>
 </div>
 
 ## Basics
