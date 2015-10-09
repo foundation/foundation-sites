@@ -215,7 +215,7 @@ $switch-paddle-transition: all 0.25s ease-out !default;
   }
 
   // Inactive label text styles
-  .switch-disabled {
+  .switch-inactive {
     @extend %switch-text;
     @include switch-text-inactive;
   }

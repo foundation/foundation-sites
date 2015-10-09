@@ -71,7 +71,7 @@ Use the classes `.tiny`, `.small`, or `.large` to change the switch size.
 
 ## Text Labels
 
-You can place active and inactive text inside of a switch. The active text (`.switch-active`) only displays when the switch is on, and the inactive text (`.switch-disabled`) only displays when the switch is off.
+You can place active and inactive text inside of a switch. The active text (`.switch-active`) only displays when the switch is on, and the inactive text (`.switch-inactive`) only displays when the switch is off.
 
 Active/inactive text goes inside of the switch's `<label>`.
 
@@ -85,7 +85,7 @@ Active/inactive text goes inside of the switch's `<label>`.
   <input class="switch-input" id="yes-no" type="checkbox" name="exampleSwitch">
   <label class="switch-paddle" for="yes-no">
     <span class="switch-active">Yes</span>
-    <span class="switch-disabled">No</span>
+    <span class="switch-inactive">No</span>
   </label>
 </div>
 ```
