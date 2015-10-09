@@ -6,23 +6,23 @@
 /// @group dropdown
 ////
 
-/// Defualt padding for dropdown.
+/// Padding for dropdown panes.
 /// @type List
 $dropdown-padding: 1rem !default;
 
-/// Defualt border for dropdown.
+/// Border for dropdown panes.
 /// @type List
 $dropdown-border: 1px solid $medium-gray !default;
 
-/// Defualt font size for dropdown.
+/// Font size for dropdown panes.
 /// @type List
 $dropdown-font-size: 16rem !default;
 
-/// Defualt width for dropdown.
+/// Width for dropdown panes.
 /// @type Number
-$dropdown-width: 300px;
+$dropdown-width: 300px !default;
 
-/// Defualt sizes for dropdown.
+/// Sizes for dropdown panes. Each size is a CSS class you can apply.
 /// @type Map
 $dropdown-sizes: (
   tiny: 100px,
@@ -31,7 +31,7 @@ $dropdown-sizes: (
 ) !default;
 
 /// Applies styles for a basic dropdown.
-@mixin dropdown {
+@mixin dropdown-container {
   background-color: $body-background;
   border: $dropdown-border;
   display: block;
@@ -40,16 +40,20 @@ $dropdown-sizes: (
   visibility: hidden;
   width: 300px;
   z-index: 10;
-  @each $name, $size in $dropdown-sizes {
-    &.#{$name} {
-      width: $size;
-    }
-  }
+
   &.is-open {
     visibility: visible;
   }
 }
 
-.dropdown-pane {
-  @include dropdown;
+@mixin foundation-dropdown {
+  .dropdown-pane {
+    @include dropdown-container;
+  }
+
+  @each $name, $size in $dropdown-sizes {
+    .dropdown-pane.#{$name} {
+      width: $size;
+    }
+  }
 }
