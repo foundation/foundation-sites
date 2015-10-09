@@ -50,11 +50,9 @@ $switch-paddle-radius: 0;
 /// @type Number
 $switch-paddle-transition: all 0.25s ease-out !default;
 
-// remove radius round classes
 // make them variables
 // ask about accessibility on label
 // change class name for text
-// spans outside the label
 // use ~ to select
 
 @mixin foundation-switch {
@@ -65,46 +63,43 @@ $switch-paddle-transition: all 0.25s ease-out !default;
     padding: 0;
     position: relative;
     user-select: none;
+
+    // These properties cascade down to the switch text
+    color: $white;
+    font-weight: bold;
+    font-size: rem-calc(14);
+
   //size mixin , width height padding font-size - width height /2
     &.tiny .switch-paddle {
       height: 1.5rem;
       width: 3rem;
+      font-size: rem-calc(10);
 
       &:after {
         height: 1rem;
         width: 1rem;
-      }
-
-      %switch-text {
-        font-size: rem-calc(10);
       }
     }
 
     &.small .switch-paddle {
       height: 1.75rem;
       width: 3.5rem;
+      font-size: rem-calc(12);
 
       &:after {
         height: 1.25rem;
         width: 1.25rem;
-      }
-
-      %switch-text {
-        font-size: rem-calc(12);
       }
     }
 
     &.large .switch-paddle {
       height: 2.5rem;
       width: 5rem;
+      font-size: rem-calc(16);
 
       &:after {
         height: 2rem;
         width: 2rem;
-      }
-
-      %switch-text {
-        font-size: rem-calc(16);
       }
     }
 
@@ -132,6 +127,8 @@ $switch-paddle-transition: all 0.25s ease-out !default;
     height: $switch-height;
     transition: $switch-paddle-transition;
     border-radius: $switch-radius;
+    color: inherit;
+    font-weight: inherit;
 
     &:after {
       background: $switch-paddle-background;
@@ -186,9 +183,6 @@ $switch-paddle-transition: all 0.25s ease-out !default;
     padding: 0;
     top: 50%;
     transform: translateY(-50%);
-    color: $white;
-    font-weight: bold;
-    font-size: rem-calc(14);
   }
 
   .switch-active {

@@ -76,8 +76,8 @@ Large Switch
 ### With Text Inside
 
 ```html_example
+<p>Do you like me?</p>
 <div class="switch large">
-  <p>Do you like me?</p>
   <input class="switch-input" id="yes-no" type="checkbox" name="exampleSwitch">
   <label class="switch-paddle" for="yes-no">
     <span class="switch-active">Yes</span>
@@ -85,8 +85,8 @@ Large Switch
   </label>
 </div>
 
+<p>Do you like me now?</p>
 <div class="switch">
-  <p>Do you like me now?</p>
   <input class="switch-input" id="ex-2" type="checkbox" name="exampleSwitch">
   <label class="switch-paddle" for="ex-2">
     <span class="switch-active">Yes</span>
@@ -94,8 +94,8 @@ Large Switch
   </label>
 </div>
 
+<p>Turn me on?</p>
 <div class="switch small">
-  <p>Turn me on?</p>
   <input class="switch-input" id="ex-3" type="checkbox" name="exampleSwitch">
   <label class="switch-paddle" for="ex-3">
     <span class="switch-active">On</span>
@@ -103,8 +103,8 @@ Large Switch
   </label>
 </div>
 
+<p>How about now?</p>
 <div class="switch tiny">
-  <p>How about now?</p>
   <input class="switch-input" id="ex-4" type="checkbox" name="exampleSwitch">
   <label class="switch-paddle" for="ex-4">
     <span class="switch-active" aria-hidden="true">Yes</span>
