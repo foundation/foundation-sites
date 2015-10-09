@@ -48,7 +48,6 @@
       $link.attr({
         'role': 'tab',
         'aria-controls': hash,
-        'tabindex': $link.attr('tabindex') || tabIndex,
         'aria-selected': isActive,
         'id': linkId
       });
