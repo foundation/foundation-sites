@@ -66,7 +66,7 @@ $switch-paddle-transition: all 0.25s ease-out !default;
     position: relative;
     user-select: none;
   //size mixin , width height padding font-size - width height /2
-    &.tiny .switch-handle {
+    &.tiny .switch-paddle {
       height: 1.5rem;
       width: 3rem;
 
@@ -80,7 +80,7 @@ $switch-paddle-transition: all 0.25s ease-out !default;
       }
     }
 
-    &.small .switch-handle {
+    &.small .switch-paddle {
       height: 1.75rem;
       width: 3.5rem;
 
@@ -94,7 +94,7 @@ $switch-paddle-transition: all 0.25s ease-out !default;
       }
     }
 
-    &.large .switch-handle {
+    &.large .switch-paddle {
       height: 2.5rem;
       width: 5rem;
 
@@ -108,20 +108,20 @@ $switch-paddle-transition: all 0.25s ease-out !default;
       }
     }
 
-    &.tiny .switch-input:checked ~ .switch-handle:after {
+    &.tiny .switch-input:checked ~ .switch-paddle:after {
       left: 1.75rem;
     }
 
-    &.small .switch-input:checked ~ .switch-handle:after {
+    &.small .switch-input:checked ~ .switch-paddle:after {
       left: 2rem;
     }
 
-    &.large .switch-input:checked ~ .switch-handle:after {
+    &.large .switch-input:checked ~ .switch-paddle:after {
       left: 2.75rem;
     }
   }
 
-  .switch-handle {
+  .switch-paddle {
     background: $switch-background;
     cursor: $cursor-pointer-value;
     display: block;
@@ -151,12 +151,12 @@ $switch-paddle-transition: all 0.25s ease-out !default;
     opacity: 0;
     position: absolute;
 
-    & ~ .switch-handle {
+    & ~ .switch-paddle {
       margin-left: 0;
       margin-right: 0;
     }
 
-    &:checked ~ .switch-handle {
+    &:checked ~ .switch-paddle {
       background: $switch-background-active;
 
       &:after {
@@ -164,16 +164,16 @@ $switch-paddle-transition: all 0.25s ease-out !default;
       }
     }
     
-    &:checked ~ .switch-handle .switch-active {
+    &:checked ~ .switch-paddle .switch-active {
       display: block;
     }
 
-    &:checked ~ .switch-handle .switch-disabled {
+    &:checked ~ .switch-paddle .switch-disabled {
       display: none;
     }
 
   // This styles the outline on focus for accessibility
-    &:focus ~ .switch-handle {
+    &:focus ~ .switch-paddle {
       outline: thin dotted #333;
       outline: 5px auto -webkit-focus-ring-color;
       outline-offset: -2px;
