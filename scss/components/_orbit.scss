@@ -115,8 +115,8 @@ $orbit-control-zindex: 10 !default;
   right: 0;
 }
 
-/// Adds styles for a container of Orbit bullets. /// Adds styles for the Orbit previous button. These styles are used on the `.orbit-bullets-container` class.
-@mixin orbit-bullets-container {
+/// Adds styles for a container of Orbit bullets. /// Adds styles for the Orbit previous button. These styles are used on the `.orbit-bullets` class.
+@mixin orbit-bullets {
   position: relative;
   margin-top: $orbit-bullet-margin-top;
   margin-bottom: $orbit-bullet-margin-bottom;
@@ -164,19 +164,21 @@ $orbit-control-zindex: 10 !default;
     @include orbit-caption;
   }
 
-  .orbit-control {
+  %orbit-control {
     @include orbit-control;
   }
 
   .orbit-previous {
+    @extend %orbit-control;
     @include orbit-previous;
   }
 
   .orbit-next {
+    @extend %orbit-control;
     @include orbit-next;
   }
 
-  .orbit-bullets-container {
-    @include orbit-bullets-container;
+  .orbit-bullets {
+    @include orbit-bullets;
   }
 }

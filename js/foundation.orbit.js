@@ -39,7 +39,7 @@
     }
   };
   Orbit.prototype.loadBullets = function(){
-    this.$bullets = this.$element.find('.orbit-bullets-container > button');
+    this.$bullets = this.$element.find('.orbit-bullets > button');
   };
   Orbit.prototype.geoSync = function(){
     var _this = this;
@@ -118,7 +118,7 @@
     }
 
     if(this.options.navButtons){
-      var $controls = this.$element.find('.orbit-control');
+      var $controls = this.$element.find('.orbit-next, .orbit-previous');
       if(this.options.accessible){
         $controls.attr('tabindex', -1);
         //also need to handle enter/return and spacebar key presses
@@ -190,7 +190,7 @@
     }
   };
   Orbit.prototype._updateBullets = function(idx){
-    var $oldBullet = this.$element.find('.orbit-bullets-container > .is-active').removeClass('is-active').blur(),
+    var $oldBullet = this.$element.find('.orbit-bullets > .is-active').removeClass('is-active').blur(),
         span = $oldBullet.find('span:last').detach(),
         $newBullet = this.$bullets.eq(idx).addClass('is-active').append(span);
   };
