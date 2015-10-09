@@ -206,8 +206,8 @@
           //   e.preventDefault();
           // }
 
-          $handle.addClass('dragging');
-          _this.$fill.addClass('dragging');
+          $handle.addClass('is-dragging');
+          _this.$fill.addClass('is-dragging');
           _this.$element.attr('data-dragging', true);
           _this.animComplete = false;
           curHandle = $(e.currentTarget);
@@ -225,8 +225,8 @@
             clearTimeout(timer);
             _this.animComplete = true;
             _this._handleEvent(e, curHandle);
-            $handle.removeClass('dragging');
-            _this.$fill.removeClass('dragging');
+            $handle.removeClass('is-dragging');
+            _this.$fill.removeClass('is-dragging');
             _this.$element.data('dragging', false);
             // Foundation.reflow(_this.$element, 'slider');
             $body.off('mousemove.zf.slider mouseup.zf.slider');

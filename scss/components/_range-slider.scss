@@ -12,7 +12,15 @@ $slider-height: 0.5rem !default;
 
 /// Default slider width of a vertical slider.
 /// @type Number
-$vertical-slider-width: $slider-height !default;
+$slider-width-vertical: $slider-height !default;
+
+/// Default background color of the slider's track.
+/// @type Color
+$slider-background: $light-gray !default;
+
+/// Default color of the active fill color of the slider.
+/// @type Color
+$slider-fill-background: $medium-gray !default;
 
 /// Default height of the handle of the slider.
 /// @type Number
@@ -24,109 +32,72 @@ $slider-handle-width: 1.4rem !default;
 
 /// Default color of the handle for the slider.
 /// @type Color
-$slider-handle-color: $primary-color !default;
+$slider-handle-background: $primary-color !default;
 
 /// Default fade amount of a disabled slider.
 /// @type Number
-$slider-disabled-fade: 0.25s !default;
+$slider-opacity-disabled: 0.25s !default;
 
-/// Default color of the active fill color of the slider.
-/// @type Color
-$slider-fill-color: $medium-gray !default;
-
-/// Default background color of the slider's track.
-/// @type Color
-$slider-background-color: $light-gray !default;
-
-//Chris's additions******************************
-//***********************************************
-
-/// Default time to move slider handle and fill
-/// @type Number
-$slider-transition-time: 0.2s !default;
-
-/// Default transition animation for handle and fill
+/// Transition properties to apply to the slider handle and fill.
 /// @type Transition
-$slider-transition: ease-in-out !default;
-
-//end Chris's additions**************************
+$slider-transition: all 0.2s ease-in-out !default;
 
 /// Adds the general styles for sliders.
-@mixin slider {
-  background: $slider-background-color;
+@mixin slider-container {
   position: relative;
   height: $slider-height;
   margin-top: 1.25rem;
   margin-bottom: 2.25rem;
- // touch-action: none;
+  background-color: $slider-background;
 }
 
 /// Adds the general styles for active fill for sliders.
 @mixin slider-fill {
-  background: $slider-fill-color;
-  display: inline-block;
-  height: $slider-height;
   position: absolute;
-  //chris addition************************************
-  //********this all needs to be cleaned up
-  max-width: 100%;
-  transition: all $slider-transition-time $slider-transition;
-  // transition: all .25s linear;
-  // transition: width height 2s linear;
-  left: 0;
   top: 0;
+  left: 0;
+  display: inline-block;
+  max-width: 100%;
+  height: $slider-height;
+  background-color: $slider-fill-background;
+  transition: $slider-transition;
 
-  &.dragging {
+  &.is-dragging {
     transition: all 0s linear;
   }
-  //**************************************************
 }
 
 /// Adds the general styles for the slider handles.
 @mixin slider-handle {
   @include v-align-middle;
-  background: $slider-handle-color;
-  cursor: pointer;
-  display: inline-block;
-  z-index: 1;
-  height: $slider-handle-height;
-  width: $slider-handle-width;
-  touch-action: manipulation;
-  //chris's addition******************************************
   position: absolute;
   left: 0;
-  // transition-property: left, top;
-  // transition: all .25s linear;
-  // transition: left, top .25s, .25s linear, linear;
-  // transition: top 5s linear;
-  // transition-duration: $slider-transition-time;
-  // transition-duration: 5s, 5s;
-  transition: all $slider-transition-time $slider-transition;
-  &.dragging {
+  z-index: 1;
+  display: inline-block;
+  width: $slider-handle-width;
+  height: $slider-handle-height;
+  background-color: $slider-handle-background;
+  transition: $slider-transition;
+  cursor: pointer;
+  touch-action: manipulation;
+
+  &.is-dragging {
     transition: all 0s linear;
   }
-  //end chris's addition**************************************
+
   &:hover {
-    background: scale-color($slider-handle-color, $lightness: -15%);
+    background-color: scale-color($slider-handle-background, $lightness: -15%);
   }
 }
 
 @mixin foundation-slider {
-  .slider-fill {
-    @include slider-fill;
-  }
-
-  .slider-handle {
-    @include slider-handle;
-  }
-
   .slider {
-    @include slider;
+    @include slider-container;
 
     &.disabled,
     &.slider[disabled] {
+      opacity: $slider-opacity-disabled;
       cursor: not-allowed;
-      opacity: $slider-disabled-fade;
 
       .slider-handle {
         cursor: not-allowed;
@@ -135,26 +106,32 @@ $slider-transition: ease-in-out !default;
 
     &.vertical {
       display: inline-block;
+      width: $slider-width-vertical;
       height: 12.5rem;
-      width: $vertical-slider-width;
       margin: 0 1.25rem;
 
       .slider-fill {
         top: 0;
-        width: $vertical-slider-width;
-        //*****************************
+        width: $slider-width-vertical;
         max-height: 100%;
-        //*****************************
       }
 
       .slider-handle {
         position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
         top: 0;
-        height: $slider-handle-width;
+        left: 50%;
         width: $slider-handle-height;
+        height: $slider-handle-width;
+        transform: translateX(-50%);
       }
     }
+  }
+
+  .slider-fill {
+    @include slider-fill;
+  }
+
+  .slider-handle {
+    @include slider-handle;
   }
 }
