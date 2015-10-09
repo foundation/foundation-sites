@@ -6,49 +6,49 @@
 /// @group switch
 ////
 
-/// Default background color for the switch container and paddle.
+/// Background color of a switch.
 /// @type Color
-$switch-paddle-bg: $white !default;
+$switch-background: $medium-gray !default;
 
-/// Default background color of a switch.
+/// Background active color of a switch.
 /// @type Color
-$switch-bg: $medium-gray !default;
+$switch-background-active: $primary-color !default;
 
-/// Default background active color of a switch.
-/// @type Color
-$switch-active-color: $primary-color !default;
-
-/// Default height of a switch, with no class applied.
+/// Height of a switch, with no class applied.
 /// @type Number
 $switch-height: 2rem !default;
 
-/// Default height of a switch with .tiny class.
+/// Height of a switch with .tiny class.
 /// @type Number
 $switch-height-tiny: 1.5rem !default;
 
-/// Default height of a switch with .small class.
+/// Height of a switch with .small class.
 /// @type Number
 $switch-height-small: 1.75rem !default;
 
-/// Default height of a switch with .large class.
+/// Height of a switch with .large class.
 /// @type Number
 $switch-height-large: 2.5rem !default;
 
-/// Default border radius of the switch
+/// Border radius of the switch
 /// @type Number
 $switch-radius: 0;
 
-/// Default border radius of the switch label
+/// border around a modal.
 /// @type Number
-$switch-handle-radius: 0;
+$switch-margin: $global-margin !default;
 
-/// Default border around a modal.
-/// @type Number
-$switch-bottom-margin: $global-margin !default;
+/// Background color for the switch container and paddle.
+/// @type Color
+$switch-paddle-background: $white !default;
 
-/// Default switch transition.
+/// border radius of the switch paddle
 /// @type Number
-$switch-transition: all 0.25s ease-out !default;
+$switch-paddle-radius: 0;
+
+/// switch transition.
+/// @type Number
+$switch-paddle-transition: all 0.25s ease-out !default;
 
 // remove radius round classes
 // make them variables
@@ -60,7 +60,7 @@ $switch-transition: all 0.25s ease-out !default;
 @mixin foundation-switch {
   .switch {
     border: 0;
-    margin-bottom: $switch-bottom-margin;
+    margin-bottom: $switch-margin;
     outline: 0;
     padding: 0;
     position: relative;
@@ -122,7 +122,7 @@ $switch-transition: all 0.25s ease-out !default;
   }
 
   .switch-handle {
-    background: $switch-bg;
+    background: $switch-background;
     cursor: $cursor-pointer-value;
     display: block;
     margin-bottom: $global-margin;
@@ -130,11 +130,11 @@ $switch-transition: all 0.25s ease-out !default;
     text-indent: 100%;
     width: 4rem;
     height: $switch-height;
-    transition: $switch-transition;
+    transition: $switch-paddle-transition;
     border-radius: $switch-radius;
 
     &:after {
-      background: $switch-paddle-bg;
+      background: $switch-paddle-background;
       content: '';
       display: block;
       position: absolute;
@@ -142,7 +142,7 @@ $switch-transition: all 0.25s ease-out !default;
       left: 0.25rem;
       top: 0.25rem;
       width: 1.5rem;
-      transition: $switch-transition;
+      transition: $switch-paddle-transition;
       transform: translate3d(0, 0, 0);
     }
   }
@@ -157,7 +157,7 @@ $switch-transition: all 0.25s ease-out !default;
     }
 
     &:checked ~ .switch-handle {
-      background: $switch-active-color;
+      background: $switch-background-active;
 
       &:after {
         left: 2.25rem;
