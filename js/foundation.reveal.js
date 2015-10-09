@@ -210,35 +210,12 @@
         }
       }
     });
-
-    // handle accessibility
-    this.$element.attr({'aria-hidden': false}).attr('tabindex', -1).focus().on('keydown.zf.reveal', function(e) {
-
-      // lock focus within modal while tabbing
-      var visibleFocusableElements = $(this).find('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]').filter(function() {
-        if (!$(this).is(':visible') || $(this).attr('tabindex') < 0) return false; //only have visible elements and those that have a tabindex greater or equal 0
-        return true;
-      });
-      var keyCode = e.keyCode || e.which;
-      if (keyCode === 9) { // tab is pressed
-        if (e.shiftKey && $(this).find(':focus').is(visibleFocusableElements.eq(0))) { // left modal downwards, setting focus to first element
-          visibleFocusableElements.eq(-1).focus();
-          e.preventDefault();
-        } else if (!e.shiftKey && $(this).find(':focus').is(visibleFocusableElements.eq(-1))) { // left modal downwards, setting focus to first element
-          visibleFocusableElements.eq(0).focus();
-          e.preventDefault();
-        } else if (visibleFocusableElements.length === 0) { // no focusable elements inside the modal at all, prevent tabbing in general
-          e.preventDefault();
-        }
-      }
-    });
-
-
+    this.$element.attr({'aria-hidden': false})
     /**
      * Fires when the modal has successfully opened.
      * @event Reveal#open
      */
-    this.$element.trigger('open.zf.reveal');
+                 .trigger('open.zf.reveal');
 
     $('body').addClass('is-reveal-open')
              .attr({'aria-hidden': (this.options.overlay || this.options.fullScreen) ? true : false});
