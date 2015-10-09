@@ -64,11 +64,11 @@ Let's get vertical. Just add a `vertical` class to `slider` `<div>`.
 U can't touch this. Need to disable a slider? Just add a `disabled` class to the `slider` `<div>`.
 
 ```html_example
-<!-- <div class="slider disabled" data-slider data-initial-start='78'>
-<span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
+<div class="slider disabled" data-slider data-initial-start='78'>
+  <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
   <span class="slider-fill" data-slider-fill></span>
   <input type="hidden">
-</div> -->
+</div>
 ```
 
 ---
