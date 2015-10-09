@@ -72,7 +72,6 @@
       S(document)
         .on('click.fndtn.reveal', this.close_targets(), function (e) {
           e.preventDefault();
-
           if (!self.locked) {
             var settings = S('[' + self.attr_name() + '].open').data(self.attr_name(true) + '-init') || self.settings,
                 bg_clicked = S(e.target)[0] === S('.' + settings.bg_class)[0];
@@ -244,23 +243,6 @@
           $.ajax(ajax_settings);
         }
       }
-
-      // trap the focus within the modal while tabbing
-      self.S(modal).on('keydown', function(e) {
-        var visibleFocusableElements = modal.find('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]').filter(function() {
-          if (!$(this).is(':visible') || $(this).attr('tabindex') < 0) return false; //only have visible elements and those that have a tabindex greater or equal 0
-          return true;
-        });
-        if (e.keyCode === 9) { // tab is pressed
-          if (e.shiftKey && self.S(modal).find(':focus').is(visibleFocusableElements.eq(0))) { // left modal downwards, setting focus to first element
-            visibleFocusableElements.eq(-1).focus();
-            e.preventDefault();
-          } else if (!e.shiftKey && self.S(modal).find(':focus').is(visibleFocusableElements.eq(-1))) { // left modal downwards, setting focus to first element
-            visibleFocusableElements.eq(0).focus();
-            e.preventDefault();
-          }
-        }
-      });
       self.S(window).trigger('resize');
     },
 
@@ -374,8 +356,7 @@
                 context.locked = false;
                 el.trigger('opened.fndtn.reveal');
               })
-              .addClass('open')
-              .focus();
+              .addClass('open');
           }, settings.animation_speed / 2);
         }
 
@@ -391,8 +372,7 @@
                 context.locked = false;
                 el.trigger('opened.fndtn.reveal');
               })
-              .addClass('open')
-              .focus();
+              .addClass('open');
           }, settings.animation_speed / 2);
         }
 
@@ -408,7 +388,7 @@
 
       this.locked = false;
 
-      return el.show().focus();
+      return el.show();
     },
 
     to_back : function(el) {
