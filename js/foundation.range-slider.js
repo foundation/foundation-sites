@@ -69,6 +69,10 @@
         location = Number(location.toFixed(this.options.decimal)),
         anim, prog, start = null;
 
+    // prevent slider from running out of bounds
+    if (location < _this.options.start) location = _this.options.start;
+    else if (location > _this.options.end) location = _this.options.end;
+
     this._setValues($hndl, location);
 
 
@@ -205,16 +209,21 @@
           })
       });
     }
-
     $handle.on('keydown.zf.slider', function(e){
-      var keyCode = e.keyCode || e.which;
+      var keyCode = e.keyCode || e.which,
+        idx = _this.options.doubleSided ? this.handles.index($(this)) : 0,
+        oldValue = Number(_this.inputs.eq(idx).val()),
+        newValue;
       if (keyCode === 37 || keyCode === 40) { // left or down arrow
         e.preventDefault();
-        console.log('Decrease!');
+        newValue = oldValue - _this.options.step;
       } else if (keyCode === 38 || keyCode === 39) { // up or right arrow
         e.preventDefault();
-        console.log('Increase!');
+        newValue = oldValue + _this.options.step;
+      } else { // do nothing special if another key has been pressed
+        return;
       }
+      _this._setHandlePos($(this), newValue);
     });
 
   };
