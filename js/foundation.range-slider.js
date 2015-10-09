@@ -109,7 +109,8 @@
       'aria-controls': id,
       'aria-valuemax': this.options.end,
       'aria-valuemin': this.options.start,
-      'aria-orientation': this.options.vertical ? 'vertical' : 'horizontal'
+      'aria-orientation': this.options.vertical ? 'vertical' : 'horizontal',
+      'tabindex': 0
     });
   };
   Slider.prototype._setValues = function($handle, val){
@@ -204,6 +205,17 @@
           })
       });
     }
+
+    $handle.on('keydown.zf.slider', function(e){
+      var keyCode = e.keyCode || e.which;
+      if (keyCode === 37 || keyCode === 40) { // left or down arrow
+        e.preventDefault();
+        console.log('Decrease!');
+      } else if (keyCode === 38 || keyCode === 39) { // up or right arrow
+        e.preventDefault();
+        console.log('Increase!');
+      }
+    });
 
   };
 
