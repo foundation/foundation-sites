@@ -136,15 +136,14 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5);
 }
 
 /// Adds styles that reveal an off-canvas menu.
-@mixin off-canvas-reveal {
-  .off-canvas {
-    transform: none;
-    transition: none;
-  }
+/// @param {Keyword} $position [left] - Position of the off-canvas menu being revealed.
+@mixin off-canvas-reveal(
+  $position: left
+) {
+  #{$position}: 0;
 
-  .main-content {
-    padding-left: $offcanvas-size;
-    transform: none;
+  & ~ .#{$maincontent-class} {
+    margin-#{$position}: $offcanvas-size;
   }
 }
 
@@ -167,9 +166,14 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5);
 
   // Reveal off-canvas menu on larger screens
   @each $name, $value in $breakpoint-classes {
-    .reveal-for-#{$name} {
+    @if $name != small {
       @include breakpoint($name) {
-        @include off-canvas-reveal;
+        .position-left.reveal-for-#{$name} {
+          @include off-canvas-reveal(left);
+        }
+        .position-right.reveal-for-#{$name} {
+          @include off-canvas-reveal(right);
+        }
       }
     }
   }
