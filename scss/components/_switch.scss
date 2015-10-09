@@ -42,9 +42,13 @@ $switch-margin: $global-margin !default;
 /// @type Color
 $switch-paddle-background: $white !default;
 
+/// Spacing between a switch paddle and the edge of the body.
+/// @type Number
+$switch-paddle-offset: 0.25rem !default;
+
 /// border radius of the switch paddle
 /// @type Number
-$switch-paddle-radius: 0;
+$switch-paddle-radius: 0 !default;
 
 /// switch transition.
 /// @type Number
@@ -184,41 +188,48 @@ $switch-paddle-transition: all 0.25s ease-out !default;
 }
 
 @mixin foundation-switch {
+  // Container class
   .switch {
     @include switch-container;
   }
 
+  // <input> element
   .switch-input {
     @include switch-input;
   }
 
+  // <label> element
   .switch-paddle {
     @include switch-paddle;
   }
 
+  // Base label text styles
   %switch-text {
     @include switch-text;
   }
 
+  // Active label text styles
   .switch-active {
     @extend %switch-text;
     @include switch-text-active;
   }
 
+  // Inactive label text styles
   .switch-disabled {
     @extend %switch-text;
     @include switch-text-inactive;
   }
 
+  // Switch sizes
   .switch.tiny {
-    @include switch-size(rem-calc(10), 3rem, 1.5rem, 1rem, 0.25rem);
+    @include switch-size(rem-calc(10), 3rem, $switch-height-tiny, 1rem, $switch-paddle-offset);
   }
 
   .switch.small {
-    @include switch-size(rem-calc(12), 3.5rem, 1.75rem, 1.25rem, 0.25rem);
+    @include switch-size(rem-calc(12), 3.5rem, $switch-height-small, 1.25rem, $switch-paddle-offset);
   }
 
   .switch.large {
-    @include switch-size(rem-calc(16), 5rem, 2.5rem, 2rem, 0.25rem);
+    @include switch-size(rem-calc(16), 5rem, $switch-height-large, 2rem, $switch-paddle-offset);
   }
 }
