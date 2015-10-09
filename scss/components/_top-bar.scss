@@ -38,13 +38,15 @@ $topbar-input-width: 200px;
 }
 
 @mixin foundation-top-bar {
-  // A simple component to create side-by-side menus
+  // Top bar container
   .top-bar {
     @include top-bar-container;
   }
 
+  // Coloring classes
   .top-bar.primary {
-    &, ul {
+    &,
+    ul {
       background-color: $primary-color;
     }
 
@@ -54,7 +56,8 @@ $topbar-input-width: 200px;
   }
 
   .top-bar.dark {
-    &, ul {
+    &,
+    ul {
       background-color: $topbar-background-dark;
     }
 
@@ -63,18 +66,15 @@ $topbar-input-width: 200px;
     }
   }
 
-  .top-bar-left {
-    float: left;
-  }
+  // Sub-sections
+  // Stack on small screens
+  @include breakpoint(medium) {
+    .top-bar-left {
+      float: left;
+    }
 
-  .top-bar-right {
-    float: right
-  }
-
-  @include breakpoint(small only) {
-    .top-bar-left,
     .top-bar-right {
-      float: none;
+      float: right
     }
   }
 }
