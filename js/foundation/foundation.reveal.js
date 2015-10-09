@@ -19,6 +19,7 @@
       multiple_opened : false,
       bg_class : 'reveal-modal-bg',
       root_element : 'body',
+      no_scroll: true,
       open : function(){},
       opened : function(){},
       close : function(){},
@@ -171,6 +172,14 @@
 
         modal.attr('tabindex','0').attr('aria-hidden','false');
 
+        if(settings.no_scroll){//added 10/9/15, prevents annoying scroll positioning bug with position: absolute; reveals
+          var $body = $('body');
+          $body.on('open.fndtn.reveal', function(){
+            $body.css('overflow', 'hidden')
+                 .off('open.fndtn.reveal');
+          });
+        }
+
         this.key_up_on(modal);    // PATCH #3: turning on key up capture only when a reveal window is open
 
         // Prevent namespace event from triggering twice
@@ -179,6 +188,7 @@
         });
 
         modal.on('open.fndtn.reveal').trigger('open.fndtn.reveal');
+
 
         if (open_modal.length < 1) {
           this.toggle_bg(modal, true);
@@ -255,6 +265,14 @@
       if (open_modals.length > 0) {
 
         modal.removeAttr('tabindex','0').attr('aria-hidden','true');
+
+        if(settings.no_scroll){//added 10/9/15, prevents annoying scroll positioning bug with position: absolute; reveals
+          var $body = $('body');
+          $body.on('close.fndtn.reveal', function(){
+            $body.css('overflow', 'auto')
+                 .off('close.fndtn.reveal');
+          });
+        }
 
         this.locked = true;
         this.key_up_off(modal);   // PATCH #3: turning on key up capture only when a reveal window is open
