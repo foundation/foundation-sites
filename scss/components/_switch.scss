@@ -57,10 +57,8 @@ $switch-paddle-transition: all 0.25s ease-out !default;
 
 @mixin foundation-switch {
   .switch {
-    border: 0;
     margin-bottom: $switch-margin;
     outline: 0;
-    padding: 0;
     position: relative;
     user-select: none;
 
@@ -77,10 +75,9 @@ $switch-paddle-transition: all 0.25s ease-out !default;
 
   .switch-paddle {
     background: $switch-background;
-    cursor: $cursor-pointer-value;
+    cursor: pointer;
     display: block;
     position: relative;
-    text-indent: 100%;
     width: 4rem;
     height: $switch-height;
     transition: $switch-paddle-transition;
@@ -125,7 +122,6 @@ $switch-paddle-transition: all 0.25s ease-out !default;
 
   %switch-text {
     position: absolute;
-    padding: 0;
     top: 50%;
     transform: translateY(-50%);
   }
