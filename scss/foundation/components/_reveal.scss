@@ -30,9 +30,6 @@ $reveal-close-top: rem-calc(10) !default;
 $reveal-close-side: rem-calc(22) !default;
 $reveal-close-color: $base !default;
 $reveal-close-weight: $font-weight-bold !default;
-$reveal-close-padding: 0 !default;
-$reveal-close-background-color: transparent !default;
-$reveal-close-border: none !default;
 
 // We use this to set the default radius used throughout the core.
 $reveal-radius: $global-radius !default;
@@ -165,9 +162,6 @@ $z-index-base: 1005;
   line-height: 1;
   position: absolute;
   top: $reveal-close-top;
-  padding: $reveal-close-padding;
-  background-color: $reveal-close-background-color;
-  border: $reveal-close-border;
   #{$opposite-direction}: $reveal-close-side;
 }
 
@@ -212,9 +206,7 @@ $z-index-base: 1005;
         z-index: $z-index-base - 2;
       }
 
-      .#{$close-reveal-modal-class} { 
-          @include reveal-close; 
-      }
+      .#{$close-reveal-modal-class} { @include reveal-close; }
     }
   }
 }
