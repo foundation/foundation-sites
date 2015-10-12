@@ -1468,6 +1468,11 @@ $include-html-global-classes: $include-html-classes;
 // Using rem-calc for the below breakpoint causes issues with top bar
 // $topbar-breakpoint: #{lower-bound($medium-range)}; // Change to 9999px for always mobile layout
 // $topbar-media-query: "#{$screen} and (min-width:#{lower-bound($topbar-breakpoint)})";
+// Adding extra parameters equivalent of the {size}-up / {size}-only parameters from _globals.scss
+// this is very helpful in casees where the topbar breakpoint is != medium-range
+// $topbar-range:   (0, $topbar-breakpoint) !default;
+// $topbar-up: $screen !default;
+// $topbar-only: "#{$screen} and (max-width: #{upper-bound($topbar-range)})" !default;
 
 // Top-bar input styles
 // $topbar-input-height: rem-calc(28);
