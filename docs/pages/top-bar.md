@@ -79,7 +79,7 @@ The background color of the top bar cascades to any menus nested inside of it.
 <div class="dark top-bar">
   <div class="top-bar-left">
     <ul class="dropdown menu-bar" data-dropdown-menu>
-      <li class="menu-bar-text">Site Title</li>
+      <li class="menu-bar-text"><img src="assets/img/zurb-logo.svg" alt="ZURB"></li>
       <li class="has-submenu">
         <a href="#">One</a>
         <ul class="submenu menu-bar vertical" data-submenu>

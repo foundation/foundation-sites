@@ -24,7 +24,6 @@ $menubar-expand-max: 6 !default;
 
 /// Creates the base styles for a menu bar.
 @mixin menu-bar-base {
-  @include clearfix;
   margin: $menubar-margin;
   list-style-type: none;
 
