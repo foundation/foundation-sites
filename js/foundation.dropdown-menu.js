@@ -95,6 +95,10 @@
     // if(this.options.keyboardAccess){
     //   this._addKeyupHandler($elem);
     // }
+    $elem.on('keydown.zf.dropdownmenu', function(e){
+      var thing = Foundation.MenuKey(e, $elem, _this);
+      console.log(thing, $elem);
+    })
 
     if(this.options.clickOpen){
       $elem.on('click.zf.dropdownmenu tap.zf.dropdownmenu touchend.zf.dropdownmenu', function(e){

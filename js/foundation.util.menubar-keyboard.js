@@ -1,6 +1,9 @@
 !function($, Foundation){
   'use strict';
 
+  function MenuKey(e, $elem, mb){
+    return e.which;
+  }
   function KeyboardAccess(menuBar){
     var mb = menuBar,
         vertical = mb.options.vertical,
@@ -14,7 +17,6 @@
 
 
     var thing = mb.$menuItems.has('.submenu')
-
 
     console.log(thing);
     // mb.$menuItems.on('focusin.zf.menubar', function(){
@@ -173,6 +175,6 @@
     return $elem.hasClass('is-active');
   }
 
-
+  Foundation.MenuKey = MenuKey;
   Foundation.KeyboardAccess = KeyboardAccess;
 }(jQuery, window.Foundation);
