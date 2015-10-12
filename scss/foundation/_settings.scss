@@ -78,6 +78,7 @@ $include-html-global-classes: $include-html-classes;
 
 // $include-html-grid-classes: $include-html-classes;
 // $include-xl-html-grid-classes: false;
+// $include-top-bar-html-grid-classes: false;
 
 // $row-width: rem-calc(1000);
 // $total-columns: 12;
@@ -1466,7 +1467,7 @@ $include-html-global-classes: $include-html-classes;
 // Transitions and breakpoint styles
 // $topbar-transition-speed: 300ms;
 // Using rem-calc for the below breakpoint causes issues with top bar
-// $topbar-breakpoint: #{lower-bound($medium-range)}; // Change to 9999px for always mobile layout
+// $topbar-breakpoint: $small-breakpoint  + em-calc(1); // Change to 9999px for always mobile layout
 // $topbar-media-query: "#{$screen} and (min-width:#{lower-bound($topbar-breakpoint)})";
 
 // Top-bar input styles
