@@ -49,6 +49,8 @@ $topbar-input-width: 200px;
 
   // Coloring classes
   .top-bar.primary {
+    color: foreground($primary-color);
+
     &,
     ul {
       background-color: $primary-color;
@@ -60,6 +62,8 @@ $topbar-input-width: 200px;
   }
 
   .top-bar.dark {
+    color: foreground($primary-color);
+    
     &,
     ul {
       background-color: $topbar-background-dark;

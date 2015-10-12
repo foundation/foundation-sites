@@ -14,6 +14,7 @@ In the below example, our top bar includes a [dropdown menu](dropdown-menu.html)
 <div class="top-bar">
   <div class="top-bar-left">
     <ul class="dropdown menu-bar" data-dropdown-menu>
+      <li class="menu-bar-text">Site Title</li>
       <li class="has-submenu">
         <a href="#">One</a>
         <ul class="submenu menu-bar vertical" data-submenu>
@@ -54,6 +55,7 @@ The background color of the top bar cascades to any menus nested inside of it.
 <div class="primary top-bar">
   <div class="top-bar-left">
     <ul class="dropdown menu-bar" data-dropdown-menu>
+      <li class="menu-bar-text">Site Title</li>
       <li class="has-submenu">
         <a href="#">One</a>
         <ul class="submenu menu-bar vertical" data-submenu>
@@ -77,6 +79,7 @@ The background color of the top bar cascades to any menus nested inside of it.
 <div class="dark top-bar">
   <div class="top-bar-left">
     <ul class="dropdown menu-bar" data-dropdown-menu>
+      <li class="menu-bar-text">Site Title</li>
       <li class="has-submenu">
         <a href="#">One</a>
         <ul class="submenu menu-bar vertical" data-submenu>

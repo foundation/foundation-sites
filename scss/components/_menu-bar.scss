@@ -23,7 +23,7 @@ $menubar-icon-spacing: 0.25rem !default;
 $menubar-expand-max: 6 !default;
 
 /// Creates the base styles for a menu bar.
-@mixin menu-bar-base() {
+@mixin menu-bar-base {
   @include clearfix;
   margin: $menubar-margin;
   list-style-type: none;
@@ -147,6 +147,13 @@ $menubar-expand-max: 6 !default;
   }
 }
 
+@mixin menu-bar-text {
+  font-weight: bold;
+  color: inherit;
+  line-height: 1;
+  padding: $menubar-item-padding;
+}
+
 @mixin foundation-menu-bar {
   .menu-bar {
     @include menu-bar-base;
@@ -203,5 +210,9 @@ $menubar-expand-max: 6 !default;
     &.nested {
       @include menu-bar-nested;
     }
+  }
+
+  .menu-bar-text {
+    @include menu-bar-text;
   }
 }
