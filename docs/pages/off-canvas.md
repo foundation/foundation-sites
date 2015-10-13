@@ -60,19 +60,6 @@ Because there are three positioning options for off-canvas menus, your design ca
 
 ---
 
-## Overlay Style
-
-Add the class `.off-canvas-overlay` to the `<body>` to make the off-canvas overlay your page's content, instead of pushing it over.
-
-```html
-<body data-off-canvas class="off-canvas-overlay">
-  <div class="off-canvas"></div>
-  <div class="main-content" data-off-canvas-content></div>
-</body>
-```
-
----
-
 ## Reveal on Larger Screens
 
 The left- and right-hand off-canvas panes can be set to be persistent on larger screens. Add the class `.reveal-for-medium` or `.reveal-for-large` to the off-canvas menu.
