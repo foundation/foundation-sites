@@ -51,9 +51,13 @@
         case 39://right
           if(!isVert){
             mb[fns.show](next);
-          }else if(!isRight){
-            //hide open sub
+          }else{
+            isRight ? mb[fns.hide]($elem) : mb[fns.show]($elem);
           }
+          // else if(!isRight){
+          //   mb[fns.hide]($parent);
+          //   //hide open sub
+          // }else if(is)
           break;
 
         case 40://down

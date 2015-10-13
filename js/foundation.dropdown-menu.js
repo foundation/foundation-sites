@@ -86,38 +86,126 @@
           }).addClass('vertical');
       _this._events($sub);
     });
+    this._keys();
   };
+  DropdownMenu.prototype._handleKeys = function(e, elem){
+    var usedKeys = [9, 13, 27, 32, 37, 38, 39, 40],
+        key = e.which;
 
+    e.stopImmediatePropagation();
+
+    if(usedKeys.indexOf(key) < 0){ return; }
+    if(key !== 9){
+      if((key === 13 || key === 32) && !$(elem).hasClass('has-submenu')){ return; }//if it's a normal link, don't prevent default on return, just move on.
+
+      e.preventDefault();
+      // console.log('prevented', key);
+
+      if(key === 27){ this._hideAll(); }
+
+      else if(key === 13 || key === 32){ this._show($(elem)); }
+
+      else{//direction keys... the gnarly bit.
+        var $elem = $(elem),
+            isTop = this.$tabs.index($elem) > -1,
+            isVert = isTop ? this.options.vertical : $elem.parent('[data-submenu]').hasClass('vertical'),
+            isRight = this.options.alignment === 'right',
+            $siblings = $elem.siblings('[role="menuitem"]'),
+            first = $siblings.eq(0),
+            last = $siblings.eq(-1),
+            next = $elem.next().length ? $elem.next() : first,
+            prev = $elem.prev().length ? $elem.prev() : last,
+            // child = $elem.hasClass('has-submenu') ? $elem.find('[role="menuitem"]:first-of-type') : undefined;
+            child, parent;
+        console.log(isVert, elem);
+        if(key === 37){
+          if(isVert){
+            if(isRight){
+
+            }else{
+              if(isTop){ return; }
+              parent = $elem.parentsUntil('.has-submenu').parent('[role="menuitem"]').focus();
+              console.log(parent);
+              this._hide(parent);
+            }
+          }else{
+              child = prev.find('[role="menuitem"]:first-of-type');
+              if(child.length){
+                this._show(prev);
+              }else{
+                this._hideOthers(prev);
+              }
+              prev.focus();
+            }
+        }
+        else if(key === 38){
+          console.log('up');
+        }
+        else if(key === 39){
+          if(isVert){
+            if(isRight){
+
+            }else{
+
+            }
+          }else{
+            if(isRight){
+
+            }else{
+              child = next.find('[role="menuitem"]:first-of-type');
+              if(child.length){
+                this._show(next);
+              }else{
+                this._hideOthers(next);
+              }
+              next.focus();
+            }
+          }
+          console.log('right');
+        }
+        else{
+          console.log('down');
+        }//40/down
+      }
+    }
+
+  };
+  DropdownMenu.prototype._keys = function(){
+    var _this = this;
+    this.$menuItems.off('keydown.zf.dropdownmenu').on('keydown.zf.dropdownmenu', function(e){
+      _this._handleKeys(e, this);
+    })
+  }
   DropdownMenu.prototype._events = function($elem){
-    var _this = this,
-        fns = {
-          show: '_show',
-          hide: '_hide',
-          hideAll: '_hideAll',
-          toggle: '_toggle'
-        },
-        isVert, isRight, first, last, next, prev, child;
-
+    var _this = this;
+        // fns = {
+        //   show: '_show',
+        //   hide: '_hide',
+        //   hideAll: '_hideAll',
+        //   toggle: '_toggle'
+        // },
+        // isVert, isRight, first, last, next, prev, child;
 
     // if(this.options.keyboardAccess){
     //   this._addKeyupHandler($elem);
     // }
-    this.$menuItems.on('keydown.zf.dropdownmenu', function(e){
-      console.log('this', $(this));
-      var $elm = $(this)
-      var $parent = $elm.parent('li.has-submenu');
-      $parent = $parent.length ? $parent : _this.$element;
-      isVert = $elm.hasClass('vertical') || $elm.parent('[data-submenu]').hasClass('vertical');
-      isRight = $elm.hasClass('right');
-      first = $parent.children('li:first-of-type');
-      last = $parent.children('li:last-of-type');
-      next = $elm.next().length ? $elm.next() : first;
-      prev = $elm.prev().length ? $elm.prev() : last;
-      child = $elm.children('[data-submenu]').length ? $elm.children('[data-submenu]').find('li').eq(0) : null
-      console.log(isVert);
-      Foundation.MenuKey(e, $elm, _this, isVert, isRight, first, last, next, prev, $parent, child, fns);
+    // this.$menuItems.off('keydown.zf.dropdownmenu').on('keydown.zf.dropdownmenu', function(e){
+    //   _this._handleKeys(e, this);
+      // console.log('this', $(this));
+      // var $elm = $(this)
+      // var $parent = $elm.parent('li.has-submenu');
+      // $parent = $parent.length ? $parent : _this.$element;
+      // isVert = $elm.hasClass('vertical') || $elm.parent('[data-submenu]').hasClass('vertical');
+      // isRight = $elm.hasClass('right');
+      // first = $parent.children('li:first-of-type');
+      // last = $parent.children('li:last-of-type');
+      // next = $elm.next().length ? $elm.next() : first;
+      // prev = $elm.prev().length ? $elm.prev() : last;
+      // child = $elm.children('[data-submenu]').length ? $elm.children('[data-submenu]').find('li').eq(0) : null
+      // console.log(isVert);
+      // Foundation.MenuKey(e, $elm, _this, isVert, isRight, first, last, next, prev, $parent, child, fns);
       // console.log('elem', $elm, 'first', first, 'last', last, 'right', isRight, 'vert', isVert);
-    })
+    // });
 
     if(this.options.clickOpen){
       $elem.on('click.zf.dropdownmenu tap.zf.dropdownmenu touchend.zf.dropdownmenu', function(e){
