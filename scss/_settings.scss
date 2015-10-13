@@ -30,8 +30,9 @@
 //  25. Tabs
 //  26. Thumbnail
 //  27. Tooltip
-//  28. Base Typography
-//  29. Typography Helpers
+//  28. Top Bar
+//  29. Base Typography
+//  30. Typography Helpers
 
 // Abide
 // -----
@@ -262,7 +263,6 @@
 // Off-canvas
 // ----------
 
-// $offcanvas-fixed: false;
 // $offcanvas-size: 250px;
 // $offcanvas-background: $white;
 // $offcanvas-zindex: -1;
@@ -285,7 +285,7 @@
 // $orbit-caption-padding: 1rem;
 // $orbit-control-background-hover: rgba($black, 0.5);
 // $orbit-control-padding: 1rem;
-// $orbit-control-z-index: 10;
+// $orbit-control-zindex: 10;
 
 // Pagination
 // ----------
@@ -326,31 +326,31 @@
 // Switch
 // ------
 
-// $switch-paddle-bg: $white;
-// $switch-bg: $medium-gray;
-// $switch-active-color: $primary-color;
+// $switch-background: $medium-gray;
+// $switch-background-active: $primary-color;
 // $switch-height: 2rem;
 // $switch-height-tiny: 1.5rem;
 // $switch-height-small: 1.75rem;
 // $switch-height-large: 2.5rem;
 // $switch-radius: 0;
-// $switch-handle-radius: 0;
-// $switch-bottom-margin: $global-margin;
-// $switch-transition: all 0.25s ease-out;
+// $switch-margin: $global-margin;
+// $switch-paddle-background: $white;
+// $switch-paddle-offset: 0.25rem;
+// $switch-paddle-radius: 0;
+// $switch-paddle-transition: all 0.25s ease-out;
 
 // Table
 // -----
 
 // $slider-height: 0.5rem;
-// $vertical-slider-width: $slider-height;
+// $slider-width-vertical: $slider-height;
+// $slider-background: $light-gray;
+// $slider-fill-background: $medium-gray;
 // $slider-handle-height: 1.4rem;
 // $slider-handle-width: 1.4rem;
-// $slider-handle-color: $primary-color;
-// $slider-disabled-fade: 0.25s;
-// $slider-fill-color: $medium-gray;
-// $slider-background-color: $light-gray;
-// $slider-transition-time: 0.2s;
-// $slider-transition: ease-in-out;
+// $slider-handle-background: $primary-color;
+// $slider-opacity-disabled: 0.25;
+// $slider-transition: all 0.2s ease-in-out;
 // $table-background: $white;
 // $table-color-scale: 5%;
 // $table-border: 1px solid smart-scale($table-background, $table-color-scale);
@@ -398,6 +398,15 @@
 // $tooltip-pip-width: 0.75rem;
 // $tooltip-pip-height: $tooltip-pip-width * 0.866;
 // $tooltip-pip-offset: 1.25rem;
+
+// Top Bar
+// -------
+
+// $topbar-padding: 0.5rem;
+// $topbar-margin: 1rem;
+// $topbar-background: #eee;
+// $topbar-background-dark: #333;
+// $topbar-input-width: 200px;
 
 // Base Typography
 // ---------------
