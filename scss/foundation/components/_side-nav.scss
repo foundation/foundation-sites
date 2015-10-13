@@ -89,7 +89,7 @@ $side-nav-divider-color: scale-color($white, $lightness: -10%) !default;
     }
 
     &.active > a:first-child:not(.button) {
-      color: $side-nav-link-color-active;
+      color: $link-color-active;
       font-family: $side-nav-font-family-active;
       font-weight: $side-nav-font-weight-active;
     }
