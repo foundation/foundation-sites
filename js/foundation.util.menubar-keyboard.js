@@ -1,7 +1,29 @@
 !function($, Foundation){
   'use strict';
+  var usedKeys = [9, 13, 27, 32, 37, 38, 38, 40];
 
-  function MenuKey(e, $elem, mb){
+  function MenuKey(e, $elem, mb, isVert, isRight, first, last, next, prev, $parent, fns, toggle){
+    console.log(toggle);
+    if(usedKeys.indexOf(e.which) > -1){
+      if(e.which !== 9){
+        e.preventDefault();
+      }
+      switch (e.which) {
+        case 13:
+          // toggle($elem);
+          // fns.show($elem);
+          mb[fns.toggle]($elem);
+          break;
+        case 27:
+          mb[fns.hideAll]($elem);
+          break;
+        default:
+
+      }
+      //do stuff
+    }else{
+      return;
+    }
     return e.which;
   }
   function KeyboardAccess(menuBar){

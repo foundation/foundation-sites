@@ -43,7 +43,7 @@
     this.$element.attr('role', 'menubar');
     this.options.vertical = this.$element.hasClass('vertical');
     this._prepareMenu(this.$element);
-    this._addTopLevelKeyHandler();
+    // this._addTopLevelKeyHandler();
   };
 
   DropdownMenu.prototype._prepareMenu = function(){
@@ -89,15 +89,31 @@
   };
 
   DropdownMenu.prototype._events = function($elem){
-    var _this = this;
+    var _this = this,
+        fns = {
+          show: '_show',
+          hide: '_hide',
+          hideAll: '_hideAll',
+          toggle: '_toggle'
+        },
+        isVert, isRight, first, last, next, prev;
 
 
     // if(this.options.keyboardAccess){
     //   this._addKeyupHandler($elem);
     // }
     $elem.on('keydown.zf.dropdownmenu', function(e){
-      var thing = Foundation.MenuKey(e, $elem, _this);
-      console.log(thing, $elem);
+      var $parent = $elem.parent('li.has-submenu');
+      $parent = $parent.length ? $parent : _this.$element;
+      isVert = $elem.hasClass('vertical');
+      isRight = $elem.hasClass('right');
+      first = $parent.children('li:first-of-type');
+      last = $parent.children('li:last-of-type');
+      next = $elem.next().length ? $elem.next() : first;
+      prev = $elem.prev().length ? $elem.prev() : last;
+
+      Foundation.MenuKey(e, $elem, _this, isVert, isRight, first, last, next, prev, $parent, fns, _this._toggle);
+      // console.log('elem', $elem, 'first', first, 'last', last, 'right', isRight, 'vert', isVert);
     })
 
     if(this.options.clickOpen){
@@ -145,82 +161,16 @@
       });
     }
   };
-  DropdownMenu.prototype._addTopLevelKeyHandler = function(){
-    Foundation.KeyboardAccess(this);
-    // var _this = this,
-    //     vertical = this.options.vertical,
-    //     $firstItem = this.$element.children('li:first-of-type'),
-    //     $lastItem = this.$element.children('li:last-of-type');
-    // this.$tabs.on('focus.zf.dropdownmenu', function(){
-    //   // console.log('what?', this);
-    //   _this._show($(this));
-    // }).on('focusout.zf.dropdownmenu', function(e){
-    //   console.log('au revoir');
-    //   _this._hide($(this))
-    // });
-    // this.$tabs.on('keydown.zf.dropdownmenu', function(e){
-    //   if (e.which !== 9) {
-    //     e.preventDefault();
-    //     e.stopPropagation();
-    //   }
-    //   console.log(e.which);
-    //
-    //   var $tabTitle = $(this),
-    //       $prev = $tabTitle.prev(),
-    //       $next = $tabTitle.next();
-    //   if(_this.options.wrapOnKeys){
-    //     $prev = $prev.length ? $prev : $lastItem;
-    //     $next = $next.length ? $next : $firstItem;
-    //   }
-    //   if(checkClass($prev) || checkClass($next)){
-    //     return;
-    //   }
-    //
-    //   switch (e.which) {
-    //
-    //     case 32://return or spacebar
-    //     case 13:
-    //       console.log($tabTitle.find('ul.submenu > li:first-of-type'));
-    //       $tabTitle.find('[role="menuitem"]:first-of-type').addClass('is-active').focus().select();
-    //       // _this._hideOthers($tabTitle);
-    //       _this._show($tabTitle);
-    //       break;
-    //
-    //     case 40: //down
-    //       break;
-    //     case 38://up
-    //       break;
-    //
-    //     case 37://left
-    //     if(vertical){
-    //       break;
-    //     }
-    //       $prev.focus();
-    //       // _this._hideOthers($prev);
-    //       _this._show($prev);
-    //       break;
-    //     case 39://right
-    //     if(vertical){
-    //       break;
-    //     }
-    //       $next.focus();
-    //       // _this._hideOthers($next);
-    //       _this._show($next);
-    //       break;
-    //
-    //     case 27://esc
-    //       _this._hideAll();
-    //       $tabTitle.blur();
-    //       break;
-    //     default:
-    //       return;
-    //   }
-    // });
-  };
 
-  DropdownMenu.prototype._addKeyupHandler = function($elem){
-
-
+  DropdownMenu.prototype._toggle = function($elem){
+    var _this = this;
+    console.log($elem);
+    if($elem.hasClass('is-active')){
+      _this._hide($elem);
+    }else{
+      console.log('this',this);
+      this._show($elem);
+    }
   };
   DropdownMenu.prototype._addBodyHandler = function(){
     var $body = $('body'),
@@ -232,6 +182,7 @@
   };
 //show & hide stuff @private
   DropdownMenu.prototype._show = function($elem){
+    console.log('showing some stuff', this);
     var $sub = $elem.children('[data-submenu]:first-of-type');
     $elem.addClass('is-active');
     $sub.css('visibility', 'hidden').addClass('js-dropdown-active')
@@ -299,3 +250,83 @@
   }
 
 }(Foundation, jQuery);
+
+
+
+// DropdownMenu.prototype._addTopLevelKeyHandler = function(){
+//   // Foundation.KeyboardAccess(this);
+//   // var _this = this,
+//   //     vertical = this.options.vertical,
+//   //     $firstItem = this.$element.children('li:first-of-type'),
+//   //     $lastItem = this.$element.children('li:last-of-type');
+//   // this.$tabs.on('focus.zf.dropdownmenu', function(){
+//   //   // console.log('what?', this);
+//   //   _this._show($(this));
+//   // }).on('focusout.zf.dropdownmenu', function(e){
+//   //   console.log('au revoir');
+//   //   _this._hide($(this))
+//   // });
+//   // this.$tabs.on('keydown.zf.dropdownmenu', function(e){
+//   //   if (e.which !== 9) {
+//   //     e.preventDefault();
+//   //     e.stopPropagation();
+//   //   }
+//   //   console.log(e.which);
+//   //
+//   //   var $tabTitle = $(this),
+//   //       $prev = $tabTitle.prev(),
+//   //       $next = $tabTitle.next();
+//   //   if(_this.options.wrapOnKeys){
+//   //     $prev = $prev.length ? $prev : $lastItem;
+//   //     $next = $next.length ? $next : $firstItem;
+//   //   }
+//   //   if(checkClass($prev) || checkClass($next)){
+//   //     return;
+//   //   }
+//   //
+//   //   switch (e.which) {
+//   //
+//   //     case 32://return or spacebar
+//   //     case 13:
+//   //       console.log($tabTitle.find('ul.submenu > li:first-of-type'));
+//   //       $tabTitle.find('[role="menuitem"]:first-of-type').addClass('is-active').focus().select();
+//   //       // _this._hideOthers($tabTitle);
+//   //       _this._show($tabTitle);
+//   //       break;
+//   //
+//   //     case 40: //down
+//   //       break;
+//   //     case 38://up
+//   //       break;
+//   //
+//   //     case 37://left
+//   //     if(vertical){
+//   //       break;
+//   //     }
+//   //       $prev.focus();
+//   //       // _this._hideOthers($prev);
+//   //       _this._show($prev);
+//   //       break;
+//   //     case 39://right
+//   //     if(vertical){
+//   //       break;
+//   //     }
+//   //       $next.focus();
+//   //       // _this._hideOthers($next);
+//   //       _this._show($next);
+//   //       break;
+//   //
+//   //     case 27://esc
+//   //       _this._hideAll();
+//   //       $tabTitle.blur();
+//   //       break;
+//   //     default:
+//   //       return;
+//   //   }
+//   // });
+// };
+//
+// DropdownMenu.prototype._addKeyupHandler = function($elem){
+//
+//
+// };
