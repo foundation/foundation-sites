@@ -99,11 +99,11 @@
       if((key === 13 || key === 32) && !$(elem).hasClass('has-submenu')){ return; }//if it's a normal link, don't prevent default on return, just move on.
 
       e.preventDefault();
-      // console.log('prevented', key);
 
-      if(key === 27){ this._hideAll(); }
 
-      else if(key === 13 || key === 32){ this._show($(elem)); }
+      if(key === 27){ this._hideAll(); }//esc hide everything
+
+      else if(key === 13 || key === 32){ this._show($(elem)); }//enter/return or spacebar, show the thing
 
       else{//direction keys... the gnarly bit.
         var $elem = $(elem),
@@ -115,56 +115,83 @@
             last = $siblings.eq(-1),
             next = $elem.next().length ? $elem.next() : first,
             prev = $elem.prev().length ? $elem.prev() : last,
-            // child = $elem.hasClass('has-submenu') ? $elem.find('[role="menuitem"]:first-of-type') : undefined;
             child, parent;
-        console.log(isVert, elem);
+
         if(key === 37){
+          // console.log('left');
           if(isVert){
             if(isRight){
-
+              child = $elem.find('[role="menuitem"]').eq(0);
+              if(!child.length){ return; }//if no submenu, return
+              this._show($elem);
+              child.focus();
             }else{
-              if(isTop){ return; }
+              if(isTop){ this._hide($elem); return; }//if a top level menuitem, there's no where to go, hide the open menu and return
               parent = $elem.parentsUntil('.has-submenu').parent('[role="menuitem"]').focus();
-              console.log(parent);
               this._hide(parent);
             }
           }else{
-              child = prev.find('[role="menuitem"]:first-of-type');
-              if(child.length){
-                this._show(prev);
-              }else{
-                this._hideOthers(prev);
-              }
-              prev.focus();
+            child = prev.find('[role="menuitem"]').eq(0);
+            if(child.length){
+              this._show(prev);
+            }else{
+              this._hideOthers(prev);
             }
-        }
-        else if(key === 38){
-          console.log('up');
+            prev.focus();
+          }
         }
         else if(key === 39){
+          // console.log('right');
           if(isVert){
             if(isRight){
-
+              if(isTop){ this._hide($elem); return; }//if a top level menuitem, there's no where to go, hide the open menu and return
+              parent = $elem.parentsUntil('.has-submenu').parent('[role="menuitem"]').focus();
+              this._hide(parent);
             }else{
-
+              child = $elem.find('[role="menuitem"]').eq(0);
+              if(!child.length){ return; }//if no submenu, return
+              this._show($elem);
+              child.focus();
             }
           }else{
-            if(isRight){
-
+            child = next.find('[role="menuitem"]');
+            if(child.length){
+              this._show(next);
             }else{
-              child = next.find('[role="menuitem"]:first-of-type');
-              if(child.length){
-                this._show(next);
-              }else{
-                this._hideOthers(next);
-              }
-              next.focus();
+              this._hideOthers(next);
             }
+            next.focus();
           }
-          console.log('right');
+        }
+        else if(key === 38){
+          // console.log('up');
+          if(isVert){
+            child = prev.find('[role="menuitem"]');
+            if(child.length){
+              this._show(prev);
+            }else{
+              this._hideOthers(prev);
+            }
+            prev.focus();
+          }
         }
         else{
-          console.log('down');
+          // console.log('down');
+          if(isVert){
+            child = next.find('[role="menuitem"]');
+            if(child.length){
+              this._show(next);
+            }else{
+              this._hideOthers(next);
+            }
+            next.focus();
+          }else{
+            child = $elem.find('[role="menuitem"]').eq(0);
+            if(child.length){
+              this._show($elem);
+              child.focus();
+            }
+          }
         }//40/down
       }
     }
@@ -174,38 +201,17 @@
     var _this = this;
     this.$menuItems.off('keydown.zf.dropdownmenu').on('keydown.zf.dropdownmenu', function(e){
       _this._handleKeys(e, this);
-    })
+    });
+    // .on('focusin.zf.dropdownmenu', function(e){
+    //   var $elem = $(this),
+    //       child = $elem.find('[role="menuitem"]');
+    //       if(child.length){
+    //         _this._show($elem);
+    //       }
+    // });
   }
   DropdownMenu.prototype._events = function($elem){
     var _this = this;
-        // fns = {
-        //   show: '_show',
-        //   hide: '_hide',
-        //   hideAll: '_hideAll',
-        //   toggle: '_toggle'
-        // },
-        // isVert, isRight, first, last, next, prev, child;
-
-    // if(this.options.keyboardAccess){
-    //   this._addKeyupHandler($elem);
-    // }
-    // this.$menuItems.off('keydown.zf.dropdownmenu').on('keydown.zf.dropdownmenu', function(e){
-    //   _this._handleKeys(e, this);
-      // console.log('this', $(this));
-      // var $elm = $(this)
-      // var $parent = $elm.parent('li.has-submenu');
-      // $parent = $parent.length ? $parent : _this.$element;
-      // isVert = $elm.hasClass('vertical') || $elm.parent('[data-submenu]').hasClass('vertical');
-      // isRight = $elm.hasClass('right');
-      // first = $parent.children('li:first-of-type');
-      // last = $parent.children('li:last-of-type');
-      // next = $elm.next().length ? $elm.next() : first;
-      // prev = $elm.prev().length ? $elm.prev() : last;
-      // child = $elm.children('[data-submenu]').length ? $elm.children('[data-submenu]').find('li').eq(0) : null
-      // console.log(isVert);
-      // Foundation.MenuKey(e, $elm, _this, isVert, isRight, first, last, next, prev, $parent, child, fns);
-      // console.log('elem', $elm, 'first', first, 'last', last, 'right', isRight, 'vert', isVert);
-    // });
 
     if(this.options.clickOpen){
       $elem.on('click.zf.dropdownmenu tap.zf.dropdownmenu touchend.zf.dropdownmenu', function(e){
@@ -343,83 +349,3 @@
   }
 
 }(Foundation, jQuery);
-
-
-
-// DropdownMenu.prototype._addTopLevelKeyHandler = function(){
-//   // Foundation.KeyboardAccess(this);
-//   // var _this = this,
-//   //     vertical = this.options.vertical,
-//   //     $firstItem = this.$element.children('li:first-of-type'),
-//   //     $lastItem = this.$element.children('li:last-of-type');
-//   // this.$tabs.on('focus.zf.dropdownmenu', function(){
-//   //   // console.log('what?', this);
-//   //   _this._show($(this));
-//   // }).on('focusout.zf.dropdownmenu', function(e){
-//   //   console.log('au revoir');
-//   //   _this._hide($(this))
-//   // });
-//   // this.$tabs.on('keydown.zf.dropdownmenu', function(e){
-//   //   if (e.which !== 9) {
-//   //     e.preventDefault();
-//   //     e.stopPropagation();
-//   //   }
-//   //   console.log(e.which);
-//   //
-//   //   var $tabTitle = $(this),
-//   //       $prev = $tabTitle.prev(),
-//   //       $next = $tabTitle.next();
-//   //   if(_this.options.wrapOnKeys){
-//   //     $prev = $prev.length ? $prev : $lastItem;
-//   //     $next = $next.length ? $next : $firstItem;
-//   //   }
-//   //   if(checkClass($prev) || checkClass($next)){
-//   //     return;
-//   //   }
-//   //
-//   //   switch (e.which) {
-//   //
-//   //     case 32://return or spacebar
-//   //     case 13:
-//   //       console.log($tabTitle.find('ul.submenu > li:first-of-type'));
-//   //       $tabTitle.find('[role="menuitem"]:first-of-type').addClass('is-active').focus().select();
-//   //       // _this._hideOthers($tabTitle);
-//   //       _this._show($tabTitle);
-//   //       break;
-//   //
-//   //     case 40: //down
-//   //       break;
-//   //     case 38://up
-//   //       break;
-//   //
-//   //     case 37://left
-//   //     if(vertical){
-//   //       break;
-//   //     }
-//   //       $prev.focus();
-//   //       // _this._hideOthers($prev);
-//   //       _this._show($prev);
-//   //       break;
-//   //     case 39://right
-//   //     if(vertical){
-//   //       break;
-//   //     }
-//   //       $next.focus();
-//   //       // _this._hideOthers($next);
-//   //       _this._show($next);
-//   //       break;
-//   //
-//   //     case 27://esc
-//   //       _this._hideAll();
-//   //       $tabTitle.blur();
-//   //       break;
-//   //     default:
-//   //       return;
-//   //   }
-//   // });
-// };
-//
-// DropdownMenu.prototype._addKeyupHandler = function($elem){
-//
-//
-// };
