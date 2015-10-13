@@ -29,7 +29,8 @@
         var accordion = S(this).closest('[' + self.attr_name() + ']'),
             groupSelector = self.attr_name() + '=' + accordion.attr(self.attr_name()),
             settings = accordion.data(self.attr_name(true) + '-init') || self.settings,
-            target = S('#' + this.href.split('#')[1]),
+            contentAttr = S(this).context.attributes['data-content'],
+            target = S('#' + (contentAttr ? contentAttr.value : this.href.split('#')[1])),
             aunts = $('> dd, > li', accordion),
             siblings = aunts.children('.' + settings.content_class),
             active_content = siblings.filter('.' + settings.active_class);
