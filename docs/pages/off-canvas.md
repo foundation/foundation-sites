@@ -12,9 +12,8 @@ tags:
   <ul>
     <li>The right off-canvas menu jitters when it opens.</li>
     <li>The right off-canvas menu is not properly hiding on mobile on init.</li>
-    <li>Menus should not force a `scrollTop()`?</li>
-    <li>Inactive menus should be <code>display: none;</code> so they can't be focused.</li>
-    <li>Permanent reveal on larger screens is not working properly.</li>
+    <li>Menus should not force a <code>scrollTop()</code>?</li>
+    <li>Open menus should trap focus.</li>
   </ul>
 </div>
 
@@ -71,3 +70,23 @@ Add the class `.off-canvas-overlay` to the `<body>` to make the off-canvas overl
   <div class="main-content" data-off-canvas-content></div>
 </body>
 ```
+
+---
+
+## Reveal on Larger Screens
+
+The left- and right-hand off-canvas panes can be set to be persistent on larger screens. Add the class `.reveal-for-medium` or `.reveal-for-large` to the off-canvas menu.
+
+The main content area (`.main-content`) will be padded to the left or right equal to the width of the container.
+
+<div class="warning callout">
+  <p>The slide in/out of the plugin still works when these classes are active. If you use this feature on a larger screen, be sure to hide any click triggers on those larger breakpoints as well. Foundation's <a href="visibility.html">visibility classes</a> can help you with that.</p>
+</div>
+
+```html
+<div class="off-canvas position-left reveal-for-large" data-off-canvas>
+  <!-- ... -->
+</div>
+```
+
+<button type="button" class="button" data-docs-example-ofc>Toggle Reveal Class</button>
