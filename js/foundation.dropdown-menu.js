@@ -96,24 +96,27 @@
           hideAll: '_hideAll',
           toggle: '_toggle'
         },
-        isVert, isRight, first, last, next, prev;
+        isVert, isRight, first, last, next, prev, child;
 
 
     // if(this.options.keyboardAccess){
     //   this._addKeyupHandler($elem);
     // }
-    $elem.on('keydown.zf.dropdownmenu', function(e){
-      var $parent = $elem.parent('li.has-submenu');
+    this.$menuItems.on('keydown.zf.dropdownmenu', function(e){
+      console.log('this', $(this));
+      var $elm = $(this)
+      var $parent = $elm.parent('li.has-submenu');
       $parent = $parent.length ? $parent : _this.$element;
-      isVert = $elem.hasClass('vertical');
-      isRight = $elem.hasClass('right');
+      isVert = $elm.hasClass('vertical') || $elm.parent('[data-submenu]').hasClass('vertical');
+      isRight = $elm.hasClass('right');
       first = $parent.children('li:first-of-type');
       last = $parent.children('li:last-of-type');
-      next = $elem.next().length ? $elem.next() : first;
-      prev = $elem.prev().length ? $elem.prev() : last;
-
-      Foundation.MenuKey(e, $elem, _this, isVert, isRight, first, last, next, prev, $parent, fns, _this._toggle);
-      // console.log('elem', $elem, 'first', first, 'last', last, 'right', isRight, 'vert', isVert);
+      next = $elm.next().length ? $elm.next() : first;
+      prev = $elm.prev().length ? $elm.prev() : last;
+      child = $elm.children('[data-submenu]').length ? $elm.children('[data-submenu]').find('li').eq(0) : null
+      console.log(isVert);
+      Foundation.MenuKey(e, $elm, _this, isVert, isRight, first, last, next, prev, $parent, child, fns);
+      // console.log('elem', $elm, 'first', first, 'last', last, 'right', isRight, 'vert', isVert);
     })
 
     if(this.options.clickOpen){
@@ -164,11 +167,11 @@
 
   DropdownMenu.prototype._toggle = function($elem){
     var _this = this;
-    console.log($elem);
+    // console.log($elem);
     if($elem.hasClass('is-active')){
       _this._hide($elem);
     }else{
-      console.log('this',this);
+      // console.log('this',this);
       this._show($elem);
     }
   };
@@ -182,7 +185,9 @@
   };
 //show & hide stuff @private
   DropdownMenu.prototype._show = function($elem){
-    console.log('showing some stuff', this);
+    this._hideOthers($elem);
+    $elem.focus();
+    // console.log('showing some stuff', $elem.find('li:first-child'));
     var $sub = $elem.children('[data-submenu]:first-of-type');
     $elem.addClass('is-active');
     $sub.css('visibility', 'hidden').addClass('js-dropdown-active')

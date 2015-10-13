@@ -1,24 +1,73 @@
 !function($, Foundation){
   'use strict';
-  var usedKeys = [9, 13, 27, 32, 37, 38, 38, 40];
+  var usedKeys = [9, 13, 27, 32, 37, 38, 39, 40];
 
-  function MenuKey(e, $elem, mb, isVert, isRight, first, last, next, prev, $parent, fns, toggle){
-    console.log(toggle);
+  function MenuKey(e, $elem, mb, isVert, isRight, first, last, next, prev, $parent, child, fns){
+    e.stopImmediatePropagation();
+
+    /*******************************************
+    e - event passes back from the menubar calling this.
+    $elem - jQuery element that was the target
+    mb - the complete menu bar Object
+    isVert - boolean passed back, refers to the specific element, not the menubar as a whole
+    isRight - boolean, refers to the specific element, not the menubar as a whole
+    first - jQuery element, first menu item in the current submenu
+    last - jQuery element, last menu item in the current submenu
+    next - jQuery element, next item in the current submenu
+    prev - jQuery element, previous item in the current submenu
+    $parent - jQuery element, current menu item's parent /w class `has-submenu`
+    child - jQuery element, current menu item's child submenu or `null`
+    fns - standard Object, with strings of the menubars open, close, and toggle functions.
+    *******************************************/
     if(usedKeys.indexOf(e.which) > -1){
       if(e.which !== 9){
         e.preventDefault();
       }
       switch (e.which) {
-        case 13:
-          // toggle($elem);
-          // fns.show($elem);
+
+        case 13://return/enter
+        case 32://drunk Mark Watney
           mb[fns.toggle]($elem);
           break;
-        case 27:
+
+        case 27://esc
           mb[fns.hideAll]($elem);
           break;
-        default:
 
+        case 37://left
+          if(!isVert){
+            mb[fns.show](prev); //prev.focus();
+          }else if(isRight && child){
+            mb[fns.show](child);
+          }else{
+            mb[fns.hide]($parent);
+          }
+          // isVert ? isRight ? mb[fns.show]($elem.children('[data-submenu]:first-of-type')) : mb[fns.hide]($elem) : mb[fns.show](prev);
+          break;
+
+        case 38://up
+          break;
+
+        case 39://right
+          if(!isVert){
+            mb[fns.show](next);
+          }else if(!isRight){
+            //hide open sub
+          }
+          break;
+
+        case 40://down
+          if(!isVert){
+            mb[fns.show]($elem);
+            if(child){ child.focus(); }
+          }else{
+            next.focus();
+            if(next.hasClass('has-submenu')){ mb[fns.show](next); }
+          }
+          break;
+
+        default:
+          return;
       }
       //do stuff
     }else{
@@ -26,21 +75,21 @@
     }
     return e.which;
   }
-  function KeyboardAccess(menuBar){
-    var mb = menuBar,
-        vertical = mb.options.vertical,
-        $firstItem = mb.$element.children('li:first-of-type'),
-        $lastItem = mb.$element.children('li:last-of-type'),
-        mbType = Object.keys(mb.$element.data()).join(' ').match(/dropdownMenu|drilldown|accordionMenu/g)[0],
-        subRE = /has-submenu/g,
-        vertRE = /vertical/g,
-        rightRE = /right/g,
-        usedKeys = [9, 13, 27, 32, 37, 38, 38, 40];
-
-
-    var thing = mb.$menuItems.has('.submenu')
-
-    console.log(thing);
+  // function KeyboardAccess(menuBar){
+  //   var mb = menuBar,
+  //       vertical = mb.options.vertical,
+  //       $firstItem = mb.$element.children('li:first-of-type'),
+  //       $lastItem = mb.$element.children('li:last-of-type'),
+  //       mbType = Object.keys(mb.$element.data()).join(' ').match(/dropdownMenu|drilldown|accordionMenu/g)[0],
+  //       subRE = /has-submenu/g,
+  //       vertRE = /vertical/g,
+  //       rightRE = /right/g,
+  //       usedKeys = [9, 13, 27, 32, 37, 38, 38, 40];
+  //
+  //
+  //   var thing = mb.$menuItems.has('.submenu')
+  //
+  //   console.log(thing);
     // mb.$menuItems.on('focusin.zf.menubar', function(){
     //   console.log($(this));
     //   mb._show($(this));
@@ -192,11 +241,11 @@
     //   }
     // });
     //
-  }
+  // }
   function checkActive($elem){
     return $elem.hasClass('is-active');
   }
 
   Foundation.MenuKey = MenuKey;
-  Foundation.KeyboardAccess = KeyboardAccess;
+  // Foundation.KeyboardAccess = KeyboardAccess;
 }(jQuery, window.Foundation);
