@@ -1,6 +1,8 @@
 @import 'foundation';
+@import 'motion-ui';
 
 @include foundation-everything;
+@include motion-ui-transitions;
 
 @import 'typography';
 @import 'header';

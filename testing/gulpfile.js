@@ -35,7 +35,7 @@ gulp.task('javascript', function() {
     '../js/foundation.core.js',
     '../js/foundation.util.*.js',
     '../js/*.js',
-    './js/**/*.js'  
+    './js/**/*.js'
   ])
     .pipe($.concat('app.js'))
     .pipe(gulp.dest('./_build/js'));

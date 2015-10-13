@@ -1,6 +1,7 @@
 ---
 title: Top Bar
 description: The new top bar is a simpler wrapper around our flexible menu components.
+sass: ./scss/components/_top-bar.scss
 ---
 
 ## Basics
@@ -13,6 +14,7 @@ In the below example, our top bar includes a [dropdown menu](dropdown-menu.html)
 <div class="top-bar">
   <div class="top-bar-left">
     <ul class="dropdown menu-bar" data-dropdown-menu>
+      <li class="menu-bar-text">Site Title</li>
       <li class="has-submenu">
         <a href="#">One</a>
         <ul class="submenu menu-bar vertical" data-submenu>
@@ -34,9 +36,26 @@ In the below example, our top bar includes a [dropdown menu](dropdown-menu.html)
 </div>
 ```
 
+## Coloring
+
+Top Bar includes two alternate coloring styles: `.primary`, which uses your design's [primary color](global-styles.html#colors), and `.dark`, which uses a dark gray. (This color can be changed with the `$topbar-background-dark` Sass variable.)
+
+The background color of the top bar cascades to any menus nested inside of it.
+
+```html
+<div class="primary top-bar">
+  <!-- ... -->
+</div>
+
+<div class="dark top-bar">
+  <!-- ... -->
+</div>
+```
+
 <div class="primary top-bar">
   <div class="top-bar-left">
     <ul class="dropdown menu-bar" data-dropdown-menu>
+      <li class="menu-bar-text">Site Title</li>
       <li class="has-submenu">
         <a href="#">One</a>
         <ul class="submenu menu-bar vertical" data-submenu>
@@ -60,6 +79,7 @@ In the below example, our top bar includes a [dropdown menu](dropdown-menu.html)
 <div class="dark top-bar">
   <div class="top-bar-left">
     <ul class="dropdown menu-bar" data-dropdown-menu>
+      <li class="menu-bar-text"><img src="assets/img/zurb-logo.svg" alt="ZURB"></li>
       <li class="has-submenu">
         <a href="#">One</a>
         <ul class="submenu menu-bar vertical" data-submenu>

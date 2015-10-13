@@ -1,4 +1,4 @@
-// Foundation by ZURB
+// Foundation for Sites by ZURB
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
@@ -8,7 +8,6 @@ $foundation-version: '6.0.0-alpha.1';
 
 // Third-party libraries
 @import 'vendor/normalize';
-@import 'vendor/motion-ui'; // [PH]
 
 // Sass utilities
 @import 'util/util';
@@ -72,7 +71,8 @@ $foundation-version: '6.0.0-alpha.1';
   @include foundation-button-group;
   @include foundation-callout;
   @include foundation-close-button;
-  // @include foundation-drilldown
+  @include foundation-drilldown-menu;
+  @include foundation-dropdown;
   // @include foundation-dropdown-menu
   @include foundation-flex-video;
   @include foundation-label;

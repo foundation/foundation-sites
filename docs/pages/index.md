@@ -33,7 +33,7 @@ Get to know the pieces of Foundation.
   </a></div>
   <div class="column"><a href="rtl.html">
     <strong>Right-to-Left Support</strong>
-    <p>Getting Foundaiton working with RTL languages.</p>
+    <p>Getting Foundation working with RTL languages.</p>
   </a></div>
   <div class="column"><a href="sass.html">
     <strong>Sass</strong>

@@ -48,7 +48,8 @@ OffCanvas.prototype._init = function() {
   // Find triggers that affect this element and add aria-expanded to them
   $(document)
     .find('[data-open="'+id+'"], [data-close="'+id+'"], [data-toggle="'+id+'"]')
-    .attr('aria-expanded', 'false');
+    .attr('aria-expanded', 'false')
+    .attr('aria-controls', id);
 
   // Add a close trigger over the body if necessary
   if (this.options.closeOnClick && !$('.js-off-canvas-exit').length) {

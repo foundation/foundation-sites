@@ -80,7 +80,7 @@ Need to spiff up the table just a tad? Just add the class <code>.hover</code> li
 
 ---
 ## Stacked Table
-Sometimes you just need to stack a table. Just add the class <code>.x`stack</code> to your table.
+Sometimes you just need to stack a table. Just add the class <code>.stack</code> to your table.
 
 ```html_example
 <table class="stack">

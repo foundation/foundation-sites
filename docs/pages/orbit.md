@@ -8,7 +8,6 @@ tags:
   - carousel
 ---
 
-
 <div class="alert callout">
   <h5>Known Issues</h5>
   <ul>
@@ -27,8 +26,8 @@ tags:
 <!-- <div class="orbit-container" style='z-index: 5;'>
   <ul> -->
   <ul class="orbit-container">
-    <button class="orbit-control orbit-previous" aria-label="previous"><span class="show-for-sr">Previous Slide</span>&#9664;</button>
-    <button class="orbit-control orbit-next" aria-label="next"><span class="show-for-sr">Next Slide</span>&#9654;</button>
+    <button class="orbit-previous" aria-label="previous"><span class="show-for-sr">Previous Slide</span>&#9664;</button>
+    <button class="orbit-next" aria-label="next"><span class="show-for-sr">Next Slide</span>&#9654;</button>
     <li class="active orbit-slide">
       <img class="orbit-image" src="/assets/img/interchange/small.jpg" alt="Space">
       <figcaption class="orbit-caption">Space, the final frontier.</figcaption>
@@ -47,8 +46,7 @@ tags:
     </li>
   </ul>
 <!-- </div> -->
-
-  <nav class="orbit-bullets-container">
+  <nav class="orbit-bullets">
    <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
    <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
    <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
@@ -60,8 +58,8 @@ tags:
 ```html_example
 <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
   <ul class="orbit-container">
-    <button class="orbit-control orbit-previous" aria-label="previous"><span class="show-for-sr">Previous Slide</span>&#9664;</button>
-    <button class="orbit-control orbit-next" aria-label="next"><span class="show-for-sr">Next Slide</span>&#9654;</button>
+    <button class="orbit-previous" aria-label="previous"><span class="show-for-sr">Previous Slide</span>&#9664;</button>
+    <button class="orbit-next" aria-label="next"><span class="show-for-sr">Next Slide</span>&#9654;</button>
     <li class="active orbit-slide">
       <div>
         <h3 class="text-center">You can also throw some text in here!</h3>
@@ -91,7 +89,7 @@ tags:
       </div>
     </li>
   </ul>
-  <nav class="orbit-bullets-container">
+  <nav class="orbit-bullets">
    <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
    <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
    <button data-slide="2"><span class="show-for-sr">Third slide details.</span></button>
