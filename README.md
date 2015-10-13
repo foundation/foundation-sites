@@ -15,6 +15,7 @@ The Sass is compiled using libsass, which requires the GCC to be installed on yo
 ```bash
 git clone https://github.com/zurb/foundation-sites-6.git
 cd foundation-sites-6
+npm install -g bower
 npm install && bower install
 npm start
 ```
