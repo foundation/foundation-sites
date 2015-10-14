@@ -270,12 +270,14 @@
       Foundation.handleKey(e, _this, {
         decrease: function() {
           newValue = oldValue - _this.options.step;
-        }, increase: function() {
+        },
+        increase: function() {
           newValue = oldValue + _this.options.step;
         },
         decrease_fast: function() {
           newValue = oldValue - _this.options.step * 10;
-        }, increase_fast: function() {
+        },
+        increase_fast: function() {
           newValue = oldValue + _this.options.step * 10;
         }
       });
