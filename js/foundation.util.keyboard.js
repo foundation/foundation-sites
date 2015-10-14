@@ -27,7 +27,7 @@
    * @return String key - String that represents the key pressed
    */
   var parseKey = function(event) {
-    return keyCodes[event.which];
+    return keyCodes[event.which || event.keyCode];
   };
   Foundation.parseKey = parseKey;
 
@@ -70,11 +70,9 @@
     if (typeof commandList.ltr === 'undefined') { // this component does not differentiate between ltr and rtl
         cmds = commandList; // use plain list
     } else { // merge ltr and rtl: if document is rtl, rtl overwrites ltr and vice versa
-        if (isRtl()) cmds = $.extend(commandList.ltr, commandList.rtl, true);
-        else cmds = $.extend(commandList.rtl, commandList.ltr, true);
-        
+        if (isRtl()) cmds = $.extend({}, commandList.ltr, commandList.rtl);
+        else cmds = $.extend({}, commandList.rtl, commandList.ltr);        
     }
-    console.log(cmds);
     
     var command = cmds[keyCode];
 
