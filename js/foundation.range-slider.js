@@ -261,7 +261,7 @@
     }
     $handle.on('keydown.zf.slider', function(e){
       var keyCode = e.keyCode || e.which,
-        idx = _this.options.doubleSided ? this.handles.index($(this)) : 0,
+        idx = _this.options.doubleSided ? _this.handles.index($(this)) : 0,
         oldValue = Number(_this.inputs.eq(idx).val()),
         newValue;
       if (keyCode === 37 || keyCode === 40) { // left or down arrow
