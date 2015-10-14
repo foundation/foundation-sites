@@ -34,14 +34,16 @@
     hoverDelay: 150,
     closingTime: 500,
     keyboardAccess: true,
-    wrapOnKeys: true,
+    // wrapOnKeys: true,
     alignment: 'left',
-    vertical: false
+    vertical: false,
+    vertClass: 'vertical',
+    rightClass: 'align-right'
   };
 
   DropdownMenu.prototype._init = function() {
     this.$element.attr('role', 'menubar');
-    this.options.vertical = this.$element.hasClass('vertical');
+    this.options.vertical = this.$element.hasClass(this.options.vertClass);
     this._prepareMenu(this.$element);
     // this._addTopLevelKeyHandler();
   };
@@ -53,9 +55,14 @@
     this.$submenus = this.$element.find('li.has-submenu');
     this.$menuItems = this.$element.find('li').attr({'role': 'menuitem', 'tabindex': 0});
     this.$menuItems.children('a').attr('tabindex', -1);
-    if(this.$element.hasClass('align-right')){
+    if(this.$element.hasClass(this.options.rightClass)){
       this.options.alignment = 'right';
-      this.$submenus.addClass('right');
+      this.$submenus.addClass('right-arrow');
+    }else{
+      this.$submenus.addClass('left-arrow');
+    }
+    if(!this.options.vertical){
+      this.$tabs.removeClass('right-arrow left-arrow').addClass('down-arrow');
     }
 
     this.$tabs.each(function(){
@@ -74,8 +81,8 @@
     this.$submenus.each(function(){
       var $sub = $(this);
 
-      if(_this.$element.hasClass('align-right')){
-        $sub.children('[data-submenu]').addClass('right');
+      if(_this.options.alignment === 'right'){
+        $sub.children('[data-submenu]').addClass('right-arrow');
       }
 
       $sub.children('[data-submenu]')
@@ -141,7 +148,7 @@
           }
         }
         else if(key === 39){
-          // console.log('right');
+          // console.log('right-arrow');
           if(isVert){
             if(isRight){
               if(isTop){ this._hide($elem); return; }//if a top level menuitem, there's no where to go, hide the open menu and return
@@ -292,9 +299,9 @@
     var clear = Foundation.ImNotTouchingYou($sub, null, true);
     if(!clear){
       if(this.options.alignment === 'left'){
-        $sub.addClass('right');
+        $sub.removeClass('left-arrow').addClass('right-arrow');
       }else{
-        $sub.removeClass('right');
+        $sub.removeClass('right-arrow').addClass('left-arrow');
       }
       this.changed = true;
     }
@@ -320,9 +327,9 @@
       if(this.changed){
         //remove position class
         if(this.options.alignment === 'left'){
-          $elems.find('.right').removeClass('right');
+          $elems.find('.right-arrow').removeClass('right-arrow').addClass('left-arrow');
         }else{
-          $elems.find('[data-submenu]').addClass('right');
+          $elems.find('.left-arrow').removeClass('left-arrow').addClass('right-arrow');
         }
       }
     }

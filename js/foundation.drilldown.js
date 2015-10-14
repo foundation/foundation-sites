@@ -15,7 +15,7 @@
   Drilldown.prototype._init = function(){
     this.$submenuAnchors = this.$element.find('li.has-submenu');
     this.$submenus = this.$submenuAnchors.children('[data-submenu]').addClass('is-drilldown-sub')/*.wrap($(this.options.wrapper).addClass('is-drilldown-sub'))*/;
-    // this.$rootMenus = this.$element.children('[data-submenu]').addClass('first-sub');
+    // this.$rootElems = this.$element.children('[data-submenu]')/*.addClass('first-sub')*/;
     this.$menuItems = this.$element.find('li').not('.js-drilldown-back').attr('role', 'menuitem');
     // this.$submenus;
 
@@ -36,7 +36,7 @@
       $sub.children('[data-submenu]')
           .attr({
             'aria-hidden': true,
-            'tabindex': -1,
+            'tabindex': 0,
             'role': 'menu'
           });
       _this._events($sub);
@@ -57,7 +57,7 @@
     .on('mouseup.zf.drilldown tap.zf.drilldown touchend.zf.drilldown', function(e){
       // e.preventDefault();
       e.stopPropagation();
-      console.log(e);
+
       if(e.target !== e.currentTarget.firstElementChild){
         return false;
       }
@@ -72,9 +72,15 @@
           $body.off('.zf.drilldown');
         });
       }
+    }).on('focus.zf.drilldown', function(){
+      _this._show($elem);
+    });
+    $elem.find('.js-drilldown-back').eq(0).on('mouseup.zf.drilldown tap.zf.drilldown touchend.zf.drilldown', function(e){
+      //do stuff
     });
   };
   Drilldown.prototype._hideAll = function(){
+    console.log('hiding');
     this.$element.find('.is-drilldown-sub.is-active').addClass('is-closing')
         .on('transitionend.zf.drilldown', function(e){
           $(this).removeClass('is-active is-closing').off('transitionend.zf.drilldown');
@@ -82,6 +88,7 @@
         });
   };
   Drilldown.prototype._back = function($elem){
+    console.log('going back', $elem);
     $elem.off('mouseup.zf.drilldown tap.zf.drilldown touchend.zf.drilldown');
     $elem.children('.js-drilldown-back')
         .on('mouseup.zf.drilldown tap.zf.drilldown touchend.zf.drilldown', function(e){
@@ -103,7 +110,7 @@
       });
   };
   Drilldown.prototype._show = function($elem){
-
+    console.log('showing');
     $elem.children('[data-submenu]').addClass('is-active');
   };
   Drilldown.prototype.getMaxHeight = function(){

@@ -20,6 +20,12 @@ var Foundation = {
   _uuids: [],
 
   /**
+   * Returns a boolean for RTL support
+   */
+  rtl: function(){
+    return $('html').attr('dir') === 'rtl';
+  },
+  /**
    * Defines a Foundation plugin, adding it to the `Foundation` namespace and the list of plugins to initialize when reflowing.
    * @param {Object} plugin - The constructor of the plugin.
    */
