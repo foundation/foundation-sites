@@ -27,7 +27,11 @@
    * @return String key - String that represents the key pressed
    */
   var parseKey = function(event) {
-    return keyCodes[event.which || event.keyCode];
+    var key = keyCodes[event.which || event.keyCode];
+    if (event.shiftKey) key = 'SHIFT_' + key;
+    if (event.ctrlKey) key = 'CTRL_' + key;
+    if (event.altKey) key = 'ALT_' + key;
+    return key;
   };
   Foundation.parseKey = parseKey;
 
@@ -39,7 +43,9 @@
           'ARROW_RIGHT': 'increase',
           'ARROW_UP': 'increase',
           'ARROW_DOWN': 'decrease',
-          'ARROW_LEFT': 'decrease'
+          'ARROW_LEFT': 'decrease',
+          'SHIFT_ARROW_RIGHT': 'increase_fast',
+          'SHIFT_ARROW_LEFT': 'decrease_fast'
         },
         'rtl': {
           'ARROW_LEFT': 'increase',
@@ -48,7 +54,9 @@
     },
     'Reveal': {
       'ENTER': 'open',
-      'ESCAPE': 'close'
+      'ESCAPE': 'close',
+      'TAB': 'tab_forwards',
+      'SHIFT_TAB': 'tab_backwards'
     }
   };
 
