@@ -5,6 +5,15 @@ var filter = require('gulp-filter');
 var buildSearch = require('../lib/buildSearch');
 var panini = require('panini');
 
+supercollider
+  .config({
+    template: 'docs/layout/component.html',
+    marked: require('../lib/marked'),
+    handlebars: require('../lib/handlebars')
+  })
+  .adapter('sass')
+  .adapter('js');
+
 // Assembles the layout, pages, and partials in the docs folder
 gulp.task('docs', function() {
   var mdFilter = filter(['*.md']);
@@ -12,12 +21,7 @@ gulp.task('docs', function() {
   return gulp.src('docs/pages/**/*')
     .pipe(cached('docs'))
     .pipe(mdFilter)
-      .pipe(supercollider.init({
-        template: 'docs/layout/component.html',
-        adapters: ['sass', 'js'],
-        marked: require('../lib/marked'),
-        handlebars: require('../lib/handlebars')
-      }))
+      .pipe(supercollider.init())
     .pipe(mdFilter.restore())
     .pipe(panini({
       layouts: 'docs/layout/',

@@ -43,7 +43,7 @@
     this.$element.attr('role', 'menubar');
     this.options.vertical = this.$element.hasClass('vertical');
     this._prepareMenu(this.$element);
-    this._addTopLevelKeyHandler();
+    // this._addTopLevelKeyHandler();
   };
 
   DropdownMenu.prototype._prepareMenu = function(){
@@ -86,19 +86,132 @@
           }).addClass('vertical');
       _this._events($sub);
     });
+    this._keys();
   };
+  DropdownMenu.prototype._handleKeys = function(e, elem){
+    var usedKeys = [9, 13, 27, 32, 37, 38, 39, 40],
+        key = e.which;
 
+    e.stopImmediatePropagation();
+
+    if(usedKeys.indexOf(key) < 0){ return; }
+    if(key !== 9){
+      if((key === 13 || key === 32) && !$(elem).hasClass('has-submenu')){ return; }//if it's a normal link, don't prevent default on return, just move on.
+
+      e.preventDefault();
+
+
+      if(key === 27){ this._hideAll(); }//esc hide everything
+
+      else if(key === 13 || key === 32){ this._show($(elem)); }//enter/return or spacebar, show the thing
+
+      else{//direction keys... the gnarly bit.
+        var $elem = $(elem),
+            isTop = this.$tabs.index($elem) > -1,
+            isVert = isTop ? this.options.vertical : $elem.parent('[data-submenu]').hasClass('vertical'),
+            isRight = this.options.alignment === 'right',
+            $siblings = $elem.siblings('[role="menuitem"]'),
+            first = $siblings.eq(0),
+            last = $siblings.eq(-1),
+            next = $elem.next().length ? $elem.next() : first,
+            prev = $elem.prev().length ? $elem.prev() : last,
+            child, parent;
+
+        if(key === 37){
+          // console.log('left');
+          if(isVert){
+            if(isRight){
+              child = $elem.find('[role="menuitem"]').eq(0);
+              if(!child.length){ return; }//if no submenu, return
+              this._show($elem);
+              child.focus();
+            }else{
+              if(isTop){ this._hide($elem); return; }//if a top level menuitem, there's no where to go, hide the open menu and return
+              parent = $elem.parentsUntil('.has-submenu').parent('[role="menuitem"]').focus();
+              this._hide(parent);
+            }
+          }else{
+            child = prev.find('[role="menuitem"]').eq(0);
+            if(child.length){
+              this._show(prev);
+            }else{
+              this._hideOthers(prev);
+            }
+            prev.focus();
+          }
+        }
+        else if(key === 39){
+          // console.log('right');
+          if(isVert){
+            if(isRight){
+              if(isTop){ this._hide($elem); return; }//if a top level menuitem, there's no where to go, hide the open menu and return
+              parent = $elem.parentsUntil('.has-submenu').parent('[role="menuitem"]').focus();
+              this._hide(parent);
+            }else{
+              child = $elem.find('[role="menuitem"]').eq(0);
+              if(!child.length){ return; }//if no submenu, return
+              this._show($elem);
+              child.focus();
+            }
+          }else{
+            child = next.find('[role="menuitem"]');
+            if(child.length){
+              this._show(next);
+            }else{
+              this._hideOthers(next);
+            }
+            next.focus();
+          }
+        }
+        else if(key === 38){
+          // console.log('up');
+          if(isVert){
+            child = prev.find('[role="menuitem"]');
+            if(child.length){
+              this._show(prev);
+            }else{
+              this._hideOthers(prev);
+            }
+            prev.focus();
+          }
+        }
+        else{
+          // console.log('down');
+          if(isVert){
+            child = next.find('[role="menuitem"]');
+            if(child.length){
+              this._show(next);
+            }else{
+              this._hideOthers(next);
+            }
+            next.focus();
+          }else{
+            child = $elem.find('[role="menuitem"]').eq(0);
+            if(child.length){
+              this._show($elem);
+              child.focus();
+            }
+          }
+        }//40/down
+      }
+    }
+
+  };
+  DropdownMenu.prototype._keys = function(){
+    var _this = this;
+    this.$menuItems.off('keydown.zf.dropdownmenu').on('keydown.zf.dropdownmenu', function(e){
+      _this._handleKeys(e, this);
+    });
+    // .on('focusin.zf.dropdownmenu', function(e){
+    //   var $elem = $(this),
+    //       child = $elem.find('[role="menuitem"]');
+    //       if(child.length){
+    //         _this._show($elem);
+    //       }
+    // });
+  }
   DropdownMenu.prototype._events = function($elem){
     var _this = this;
-
-
-    // if(this.options.keyboardAccess){
-    //   this._addKeyupHandler($elem);
-    // }
-    $elem.on('keydown.zf.dropdownmenu', function(e){
-      var thing = Foundation.MenuKey(e, $elem, _this);
-      console.log(thing, $elem);
-    })
 
     if(this.options.clickOpen){
       $elem.on('click.zf.dropdownmenu tap.zf.dropdownmenu touchend.zf.dropdownmenu', function(e){
@@ -145,82 +258,16 @@
       });
     }
   };
-  DropdownMenu.prototype._addTopLevelKeyHandler = function(){
-    Foundation.KeyboardAccess(this);
-    // var _this = this,
-    //     vertical = this.options.vertical,
-    //     $firstItem = this.$element.children('li:first-of-type'),
-    //     $lastItem = this.$element.children('li:last-of-type');
-    // this.$tabs.on('focus.zf.dropdownmenu', function(){
-    //   // console.log('what?', this);
-    //   _this._show($(this));
-    // }).on('focusout.zf.dropdownmenu', function(e){
-    //   console.log('au revoir');
-    //   _this._hide($(this))
-    // });
-    // this.$tabs.on('keydown.zf.dropdownmenu', function(e){
-    //   if (e.which !== 9) {
-    //     e.preventDefault();
-    //     e.stopPropagation();
-    //   }
-    //   console.log(e.which);
-    //
-    //   var $tabTitle = $(this),
-    //       $prev = $tabTitle.prev(),
-    //       $next = $tabTitle.next();
-    //   if(_this.options.wrapOnKeys){
-    //     $prev = $prev.length ? $prev : $lastItem;
-    //     $next = $next.length ? $next : $firstItem;
-    //   }
-    //   if(checkClass($prev) || checkClass($next)){
-    //     return;
-    //   }
-    //
-    //   switch (e.which) {
-    //
-    //     case 32://return or spacebar
-    //     case 13:
-    //       console.log($tabTitle.find('ul.submenu > li:first-of-type'));
-    //       $tabTitle.find('[role="menuitem"]:first-of-type').addClass('is-active').focus().select();
-    //       // _this._hideOthers($tabTitle);
-    //       _this._show($tabTitle);
-    //       break;
-    //
-    //     case 40: //down
-    //       break;
-    //     case 38://up
-    //       break;
-    //
-    //     case 37://left
-    //     if(vertical){
-    //       break;
-    //     }
-    //       $prev.focus();
-    //       // _this._hideOthers($prev);
-    //       _this._show($prev);
-    //       break;
-    //     case 39://right
-    //     if(vertical){
-    //       break;
-    //     }
-    //       $next.focus();
-    //       // _this._hideOthers($next);
-    //       _this._show($next);
-    //       break;
-    //
-    //     case 27://esc
-    //       _this._hideAll();
-    //       $tabTitle.blur();
-    //       break;
-    //     default:
-    //       return;
-    //   }
-    // });
-  };
 
-  DropdownMenu.prototype._addKeyupHandler = function($elem){
-
-
+  DropdownMenu.prototype._toggle = function($elem){
+    var _this = this;
+    // console.log($elem);
+    if($elem.hasClass('is-active')){
+      _this._hide($elem);
+    }else{
+      // console.log('this',this);
+      this._show($elem);
+    }
   };
   DropdownMenu.prototype._addBodyHandler = function(){
     var $body = $('body'),
@@ -232,6 +279,9 @@
   };
 //show & hide stuff @private
   DropdownMenu.prototype._show = function($elem){
+    this._hideOthers($elem);
+    $elem.focus();
+    // console.log('showing some stuff', $elem.find('li:first-child'));
     var $sub = $elem.children('[data-submenu]:first-of-type');
     $elem.addClass('is-active');
     $sub.css('visibility', 'hidden').addClass('js-dropdown-active')
