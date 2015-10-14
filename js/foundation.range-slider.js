@@ -264,16 +264,25 @@
         idx = _this.options.doubleSided ? this.handles.index($(this)) : 0,
         oldValue = Number(_this.inputs.eq(idx).val()),
         newValue;
-      if (keyCode === 37 || keyCode === 40) { // left or down arrow
+
+      var _$handle = $(this);
+      // test with new key util
+      Foundation.handleKey(e, _this, {
+        decrease: function() {
+          newValue = oldValue - _this.options.step;
+        }, increase: function() {
+          newValue = oldValue + _this.options.step;
+        },
+        decrease_fast: function() {
+          newValue = oldValue - _this.options.step * 10;
+        }, increase_fast: function() {
+          newValue = oldValue + _this.options.step * 10;
+        }
+      });
+      if (newValue) { // if pressed key has special function, update value
         e.preventDefault();
-        newValue = oldValue - _this.options.step;
-      } else if (keyCode === 38 || keyCode === 39) { // up or right arrow
-        e.preventDefault();
-        newValue = oldValue + _this.options.step;
-      } else { // do nothing special if another key has been pressed
-        return;
+        _this._setHandlePos(_$handle, newValue);
       }
-      _this._setHandlePos($(this), newValue);
     });
 
   };
