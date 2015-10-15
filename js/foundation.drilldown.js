@@ -10,7 +10,8 @@
     backButton: '<li class="js-drilldown-back"><a>Back</a></li>',
     wrapper: '<div></div>',
     closeOnClick: true,
-    holdOpen: false
+    holdOpen: false,
+    maxWidth: 200
   };
   Drilldown.prototype._init = function(){
     this.$submenuAnchors = this.$element.find('li.has-submenu');
@@ -55,6 +56,7 @@
 
     $elem/*.off('mouseup.zf.drilldown tap.zf.drilldown touchend.zf.drilldown')*/
     .on('mouseup.zf.drilldown tap.zf.drilldown touchend.zf.drilldown', function(e){
+      console.log('mouse event');
       // e.preventDefault();
       e.stopPropagation();
 
@@ -73,16 +75,19 @@
         });
       }
     }).on('focus.zf.drilldown', function(){
+      console.log('something');
       _this._show($elem);
     });
     $elem.find('.js-drilldown-back').eq(0).on('mouseup.zf.drilldown tap.zf.drilldown touchend.zf.drilldown', function(e){
       //do stuff
+      console.log('back button');
     });
   };
   Drilldown.prototype._hideAll = function(){
     console.log('hiding');
     this.$element.find('.is-drilldown-sub.is-active').addClass('is-closing')
         .on('transitionend.zf.drilldown', function(e){
+          console.log('transitionend');
           $(this).removeClass('is-active is-closing').off('transitionend.zf.drilldown');
 
         });
@@ -92,8 +97,10 @@
     $elem.off('mouseup.zf.drilldown tap.zf.drilldown touchend.zf.drilldown');
     $elem.children('.js-drilldown-back')
         .on('mouseup.zf.drilldown tap.zf.drilldown touchend.zf.drilldown', function(e){
+          console.log('mouseup on back');
           $elem.addClass('is-closing').on('transitionend.zf.drilldown', function(e){
             // e.stopImmediatePropagation();
+            console.log('different transitionend');
             $elem.removeClass('is-active is-closing').off('transitionend.zf.drilldown');
           });
         });
@@ -103,6 +110,7 @@
     this.$menuItems.not('.has-submenu')
         .off('mouseup.zf.drilldown tap.zf.drilldown touchend.zf.drilldown')
         .on('mouseup.zf.drilldown tap.zf.drilldown touchend.zf.drilldown', function(e){
+          console.log('random link mouse event');
           e.stopImmediatePropagation();
           setTimeout(function(){
             _this._hideAll();
@@ -121,7 +129,8 @@
     });
     // console.log('1',this.$menuItems[0].getBoundingClientRect().height);
     result.height = max * this.$menuItems[0].getBoundingClientRect().height + 'px';
-    result.width = this.$menuItems[0].getBoundingClientRect().width + 'px';
+    // result.width = this.$menuItems[0].getBoundingClientRect().width + 'px';
+    result.width = this.options.maxWidth;
 
     return result;
   };

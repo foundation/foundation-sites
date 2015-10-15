@@ -12,7 +12,7 @@
     this.$element = element;
     this.options = $.extend({}, AccordionMenu.defaults, this.$element.data());
 
-    this.$activeMenu = $();
+    // this.$activeMenu = $();
 
     this._init();
     this._events();
@@ -25,7 +25,10 @@
   }
 
   AccordionMenu.defaults = {
-    slideSpeed: 250
+    slideSpeed: 250,
+    wrapOnKeys: false,
+    multiOpen: true,
+
   }
 
   /**
@@ -33,7 +36,40 @@
    * @private
    */
   AccordionMenu.prototype._init = function() {
-    this.$element.find('[data-submenu]').slideUp(0).find('a')//.css('padding-left', '1rem');
+    this.$element.find('[data-submenu]').not('.is-active').slideUp(0);//.find('a').css('padding-left', '1rem');
+    this.$element.attr({
+      'role': 'tablist',
+      'multiselectable': this.options.multiOpen
+    });
+
+    this.$menuLinks = this.$element.find('.has-submenu');
+    this.$menuLinks.each(function(){
+      var linkId = this.id || Foundation.GetYoDigits(6, 'acc-menu-link'),
+          $elem = $(this),
+          $sub = $elem.children('[data-submenu]'),
+          subId = $sub[0].id || Foundation.GetYoDigits(6, 'acc-menu'),
+          isActive = $sub.hasClass('is-active');
+      $elem.attr({
+        'aria-controls': subId,
+        'aria-expanded': isActive,
+        'aria-selected': false,
+        'role': 'tab',
+        'id': linkId
+      });
+      $sub.attr({
+        'aria-labelledby': linkId,
+        'aria-hidden': !isActive,
+        'role': 'tabpanel',
+        'id': subId
+      });
+    });
+    var initPanes = this.$element.find('.is-active');
+    if(initPanes.length){
+      var _this = this;
+      initPanes.each(function(){
+        _this.down($(this));
+      });
+    }
   };
 
   /**
@@ -41,38 +77,93 @@
    * @private
    */
   AccordionMenu.prototype._events = function() {
-    var _this = this;
-    
+    var _this = this,
+        usedKeys = [13, 27, 32, 35, 36, 37, 38, 39, 40];
+
     this.$element.find('li').each(function() {
       var $submenu = $(this).children('[data-submenu]');
 
       if ($submenu.length) {
         $(this).children('a').on('click.zf.accordionMenu', function(e) {
           e.preventDefault();
-          console.log("why isn't this working");
 
-          if (!$submenu.is(':hidden')) {
-            _this.up($submenu);
-          }
-          else {
-            _this.down($submenu);
-          }
+          _this.toggle($submenu);
         });
       }
-    });
-  };
+    }).on('keydown.zf.accordionmenu', function(e){
+        var key = e.which;
+        console.log(key);
+        if(usedKeys.indexOf(key) < 0){ return; }
+        e.stopPropagation();
 
+        if((key === 13 || key === 32) && !$(this).children('[data-submenu]').length){ return; }//don't prevent default interaction of return or space on standard links
+        e.preventDefault();
+        if(key === 27){ _this.hideAll(); }
+
+        var $elem = $(this),
+            $menu = $elem.children('[data-submenu]');
+
+          if(/(13)|(32)/.test(key)){
+          // if(key === 13 || key === 32){
+            $elem.children('a').focusin();
+            console.log($elem);
+            _this.toggle($menu);
+          }
+          else if(/(37)|(38)/.test(key)){//left
+            console.log('up or left');
+          }
+          // else if(key === 38){//up
+          //
+          // }
+          else if(key === 39){//right
+
+          }else if(key === 40){//down
+
+          }else if(key === 35){//end
+
+          }else{
+
+          }
+
+          // switch (key) {
+          //   case 13:
+          //     _this.toggle($menu);
+          //     break;
+          //   default:
+          //
+          // }
+
+
+        // console.log('event',e.which, this.style);
+      }).attr('tabindex', 0);
+  };
+  AccordionMenu.prototype.hideAll = function(){
+    console.log('called');
+    this.$element.find('[data-submenu]').slideUp(this.options.slideSpeed);
+  };
+  AccordionMenu.prototype.toggle = function($target){
+    if (!$target.is(':hidden')) {
+      this.up($target);
+    }
+    else {
+      this.down($target);
+    }
+  };
   /**
    * Opens the sub-menu defined by `$target`.
    * @param {jQuery} $target - Sub-menu to open.
    * @fires AccordionMenu#down
    */
   AccordionMenu.prototype.down = function($target) {
+    var _this = this;
     $target
       .parentsUntil(this.$element, '[data-submenu]')
-      .addBack()
-        .slideDown(this.options.slideSpeed);
-
+      .addBack();
+      window.requestAnimationFrame(function(){
+        $target.slideDown(_this.options.slideSpeed).promise().done(function(){
+          $target.siblings('a').focus();
+        });
+      });
     /**
      * Fires when the menu is done collapsing up.
      * @event AccordionMenu#down

@@ -1,5 +1,6 @@
 ---
 title: Accordion Menu
+sass: scss/components/_accordion-menu.scss
 js: js/foundation.accordionMenu.js
 description: Change a basic vertical menu bar into a expandable accordion menu with the Accordion Menu plugin.
 ---
@@ -19,7 +20,7 @@ description: Change a basic vertical menu bar into a expandable accordion menu w
 <div class="vertical menu-bar" data-accordion-menu>
   <li class="has-submenu">
     <a href="#">Item 1</a>
-    <ul class="menu-bar vertical nested" data-submenu>
+    <ul class="menu-bar vertical nested is-active" data-submenu>
       <li class="has-submenu">
         <a href="#">Item 1A</a>
         <ul class="menu-bar vertical nested" data-submenu>
