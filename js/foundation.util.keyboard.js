@@ -61,8 +61,28 @@
       'ENTER': 'open',
       'SPACE': 'open',
       'ESCAPE': 'close',
-      'TAB': 'tab_forwards',
-      'SHIFT_TAB': 'tab_backwards'
+      'TAB': 'tab_forward',
+      'SHIFT_TAB': 'tab_backward'
+    },
+    'Tabs': {
+      'ENTER': 'open',
+      'SPACE': 'open',
+      'ARROW_RIGHT': 'next',
+      'ARROW_UP': 'previous',
+      'ARROW_DOWN': 'next',
+      'ARROW_LEFT': 'previous',
+      'TAB': 'next',
+      'SHIFT_TAB': 'previous'
+    },
+    'Orbit': {
+        'ltr': {
+          'ARROW_RIGHT': 'next',
+          'ARROW_LEFT': 'previous'
+        },
+        'rtl': {
+          'ARROW_LEFT': 'next',
+          'ARROW_RIGHT': 'previous'
+        }
     }
   };
 
@@ -90,10 +110,17 @@
     }
     command = cmds[keyCode];
 
-    // execute function with context of the component if exists
+    
     fn = functions[command];
-    if (fn) {
+    if (fn && typeof fn === 'function') { // execute function with context of the component if exists
         fn.apply(component);
+        if (functions.handled || typeof functions.handled === 'function') { // execute function when event was handled
+            functions.handled.apply(component);
+        }
+    } else {
+        if (functions.unhandled || typeof functions.unhandled === 'function') { // execute function when event was not handled
+            functions.unhandled.apply(component);
+        }
     }
   };
   Foundation.handleKey = handleKey;

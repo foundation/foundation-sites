@@ -260,13 +260,13 @@
       });
     }
     $handle.on('keydown.zf.slider', function(e){
-      var keyCode = e.keyCode || e.which,
-        idx = _this.options.doubleSided ? _this.handles.index($(this)) : 0,
+      var idx = _this.options.doubleSided ? _this.handles.index($(this)) : 0,
         oldValue = Number(_this.inputs.eq(idx).val()),
         newValue;
 
       var _$handle = $(this);
-      // test with new key util
+
+      // handle keyboard event with keyboard util
       Foundation.handleKey(e, _this, {
         decrease: function() {
           newValue = oldValue - _this.options.step;
@@ -279,12 +279,16 @@
         },
         increase_fast: function() {
           newValue = oldValue + _this.options.step * 10;
+        },
+        handled: function() { // only set handle pos when event was handled specially
+          e.preventDefault();
+          _this._setHandlePos(_$handle, newValue);
         }
       });
-      if (newValue) { // if pressed key has special function, update value
+      /*if (newValue) { // if pressed key has special function, update value
         e.preventDefault();
         _this._setHandlePos(_$handle, newValue);
-      }
+      }*/
     });
 
   };
