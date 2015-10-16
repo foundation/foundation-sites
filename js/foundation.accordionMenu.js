@@ -196,7 +196,7 @@
    * Destroys an instance of accordion menu.
    * @fires AccordionMenu#destroyed
    */
-  AccordionMenu.prototype.destroy = function() {
+  AccordionMenu.prototype.destroy = function(){
     this.$element.find('[data-submenu]').slideDown(0).css('display', '');
     this.$element.find('a').off('click.zf.accordionMenu');
 

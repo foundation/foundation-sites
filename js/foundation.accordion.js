@@ -84,7 +84,7 @@
       .parent().addClass(firstTime ? '' : 'is-active');
 
     if(!firstTime){
-      console.log('reflowing yo!');
+      // console.log('reflowing yo!');
       // Foundation.reflow(this.$element, 'accordion');
     }
     /**

@@ -7,8 +7,8 @@
 
   function Timer(elem, options, cb){
     var _this = this,
-        duration = options.duration,//options is an object for easyily adding features later.
-        nameSpace = Object.keys(elem.data())[0],
+        duration = options.duration,//options is an object for easily adding features later.
+        nameSpace = Object.keys(elem.data())[0] || 'timer',
         remain = -1,
         start,
         timer;
