@@ -144,6 +144,8 @@ $menubar-expand-max: 6 !default;
   color: inherit;
   line-height: 1;
   padding: $menubar-item-padding;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 @mixin foundation-menu-bar {
