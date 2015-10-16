@@ -32,7 +32,7 @@ $legend-padding: rem-calc(0 3) !default;
     background: $body-background;
     padding: $legend-padding;
     margin: 0;
-    margin-#{$default-float}: rem-calc(-3);
+    margin-#{$global-left}: rem-calc(-3);
   }
 }
 

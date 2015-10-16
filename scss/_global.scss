@@ -110,13 +110,12 @@ $global-rounded: 1000px !default;
 /// @type String | Boolean
 $global-namespace: false !default;
 
-// Reverse text direction if needed
-$default-float: left;
-$opposite-direction: right;
-@if $text-direction == rtl {
-  $default-float: right;
-  $opposite-direction: left;
-}
+/// Sets the text direction of the CSS. Can be either `ltr` or `rtl`.
+$global-text-direction: ltr;
+
+// Text direction variables used internally
+$global-left: if($global-text-direction == rtl, right, left);
+$global-right: if($global-text-direction == rtl, left, right);
 
 // Internal map used to iterate through colors, to generate CSS classes with less code
 $foundation-colors: (
