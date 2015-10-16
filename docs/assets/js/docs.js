@@ -11,3 +11,7 @@ $(function() {
     console.log(data);
   });
 });
+
+$(function() {
+  $('[data-docs-version]').text('v' + Foundation.version);
+});
