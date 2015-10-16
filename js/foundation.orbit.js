@@ -91,11 +91,11 @@
     if(this.options.swipe){
       this.$slides.on('swipeleft', function(e){
         e.preventDefault();
-        _this.timer.reset();
+        _this.timer.restart();
         _this.changeSlide(true);
       }).on('swiperight', function(e){
         e.preventDefault();
-        _this.timer.reset();
+        _this.timer.restart();
         _this.changeSlide(false);
       });
     }
@@ -126,10 +126,10 @@
       $controls.on('click.zf.orbit touchend.zf.orbit', function(){
         if($(this).hasClass('orbit-next')){
           _this.changeSlide(true);
-          _this.timer.reset();
+          _this.timer.restart();
         }else{
           _this.changeSlide(false);
-          _this.timer.reset();
+          _this.timer.restart();
         }
       });
     }
@@ -245,7 +245,7 @@
 //**and try to improve if possible**
 //**********************************
 (function( $, window, undefined ) {
-  
+
 	var $document = $( document ),
 		// supportTouch = $.mobile.support.touch,
 		touchStartEvent = 'touchstart'//supportTouch ? "touchstart" : "mousedown",

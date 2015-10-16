@@ -13,7 +13,7 @@
         start,
         timer;
 
-    this.reset = function(){
+    this.restart = function(){
         remain = -1;
         clearTimeout(timer);
         this.start();
@@ -25,7 +25,7 @@
       elem.data('paused', false);
       start = Date.now();
       timer = setTimeout(function(){
-        _this.reset();//rerun the timer.
+        _this.restart();//rerun the timer.
         cb();
       }, remain);
       elem.trigger('timerstart.zf.' + nameSpace);
