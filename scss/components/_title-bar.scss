@@ -25,6 +25,7 @@
 
   .title-bar-right {
     float: right;
+    text-align: right;
   }
 
   .title-bar-title {
@@ -35,5 +36,9 @@
 
   .menu-icon {
     @include hamburger($color: white, $color-hover: $medium-gray);
+  }
+
+  .menu-icon.dark {
+    @include hamburger;
   }
 }
