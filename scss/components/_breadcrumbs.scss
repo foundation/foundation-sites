@@ -22,13 +22,13 @@ $breadcrumbs-item-color: $primary-color;
 /// @type Color
 $breadcrumbs-item-color-current: $black;
 
+/// Opacity of disabled breadcrumb links.
+/// @type Number
+$breadcrumbs-item-color-disabled: $medium-gray;
+
 /// Margin between breadcrumb items.
 /// @type Number
 $breadcrumbs-item-margin: 0.75rem;
-
-/// Opacity of disabled breadcrumb links.
-/// @type Number
-$breadcrumbs-item-opacity-disabled: 0.25;
 
 /// If `true`, makes breadcrumb links uppercase.
 /// @type Boolean
@@ -85,7 +85,7 @@ $breadcrumbs-item-slash: true;
     @include breadcrumbs-container;
 
     .disabled {
-      opacity: $breadcrumbs-item-opacity-disabled;
+      color: $breadcrumbs-item-color-disabled;
     }
   }
 }
