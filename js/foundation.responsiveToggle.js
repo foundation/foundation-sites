@@ -5,25 +5,25 @@
 /**
  * Creates a new instance of Tab Bar.
  * @class
- * @fires TabBar#init
+ * @fires ResponsiveToggle#init
  * @param {jQuery} element - jQuery object to attach tab bar functionality to.
  * @param {Object} options - Overrides to the default plugin settings.
  */
-function TabBar(element, options) {
+function ResponsiveToggle(element, options) {
   this.$element = $(element);
-  this.options = $.extend({}, TabBar.defaults, options);
+  this.options = $.extend({}, ResponsiveToggle.defaults, options);
 
   this._init();
   this._events();
 
   /**
    * Fires when the plugin has been successfully initialized.
-   * @event TabBar#init
+   * @event ResponsiveToggle#init
    */
-  this.$element.trigger('init.zf.tabbar');
+  this.$element.trigger('init.zf.ResponsiveToggle');
 }
 
-TabBar.defaults = {
+ResponsiveToggle.defaults = {
   /**
    * The breakpoint after which the menu is always shown, and the tab bar is hidden.
    * @option
@@ -37,8 +37,8 @@ TabBar.defaults = {
  * @function
  * @private
  */
-TabBar.prototype._init = function() {
-  var targetID = this.$element.data('tab-bar');
+ResponsiveToggle.prototype._init = function() {
+  var targetID = this.$element.data('responsive-toggle');
   if (!targetID) {
     console.error('Your tab bar needs an ID of a menu bar as the value of data-tab-bar.');
   }
@@ -54,12 +54,12 @@ TabBar.prototype._init = function() {
  * @function
  * @private
  */
-TabBar.prototype._events = function() {
+ResponsiveToggle.prototype._events = function() {
   var _this = this;
 
   $(window).on('changed.zf.mediaquery', this._update.bind(this));
 
-  this.$toggler.on('click.zf.tabbar', this.toggleMenu.bind(this));
+  this.$toggler.on('click.zf.responsiveToggle', this.toggleMenu.bind(this));
 }
 
 /**
@@ -67,7 +67,7 @@ TabBar.prototype._events = function() {
  * @function
  * @private
  */
-TabBar.prototype._update = function() {
+ResponsiveToggle.prototype._update = function() {
   debugger;
   // Mobile
   if (!Foundation.MediaQuery.atLeast(this.options.hideFor)) {
@@ -85,20 +85,20 @@ TabBar.prototype._update = function() {
 /**
  * Toggles the element attached to the tab bar. The toggle only happens if the screen is small enough to allow it.
  * @function
- * @fires TabBar#toggled
+ * @fires ResponsiveToggle#toggled
  */
-TabBar.prototype.toggleMenu = function() {
+ResponsiveToggle.prototype.toggleMenu = function() {
   if (!Foundation.MediaQuery.atLeast(this.options.hideFor)) {
     this.$targetMenu.toggle(0);
 
     /**
      * Fires when the element attached to the tab bar toggles.
-     * @event TabBar#toggled
+     * @event ResponsiveToggle#toggled
      */
-    this.$element.trigger('toggled.zf.tabbar');
+    this.$element.trigger('toggled.zf.responsiveToggle');
   }
 }
 
-Foundation.plugin(TabBar);
+Foundation.plugin(ResponsiveToggle);
 
 }(jQuery, Foundation)

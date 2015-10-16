@@ -1,16 +1,16 @@
 ---
-title: Responsive Menu Bar
+title: Responsive Navigation
 description: Our three menu bar patterns form like Voltron into one responsive menu bar plugin, which allows you to switch between patterns at different screen sizes.
 js:
   - ./js/foundation.menubar.js
-  - ./js/foundation.tabBar.js
+  - ./js/foundation.responsiveToggle.js
 ---
 
 <div class="callout alert">
   <p>These patterns haven't been finalized yet, but we're collecting feedback on GitHub about them.</p>
 </div>
 
-## Basics
+## Responsive Menu Bar
 
 The menu bar has some responsive CSS classes built in, which allow you to re-orient a menu on different screen sizes.
 
@@ -67,16 +67,20 @@ For example, a drilldown menu works well on mobile, but on larger screens, you m
 
 ---
 
-## Tab Bar
+## Responsive Toggle
 
 In Foundation 5, the top bar combined this menu toggling concept into one plugin. We now have a separate, optional component you can use in tandem with the responsive plugin. It's called the tab bar, and it allows you to quickly setup a menu toggle on mobile. The tab bar hides itself on larger screens.
 
-To set it up, first give your menu a unique ID. (You don't even need to use menu bar! Any element will work.) Next, add a tab bar with the class `.title-bar` and the attribute `data-tab-bar`. The value of `data-tab-bar` should be the ID of the menu you're toggling.
+To set it up, first give your menu a unique ID. (You don't even need to use menu bar! Any element will work.) Next, add a tab bar with the class `.title-bar` and the attribute `data-responsive-toggle`. The value of `data-responsive-toggle` should be the ID of the menu you're toggling.
 
 By default, the tab bar will be visible on small screens, and the menu bar hides. At the medium breakpoint, the tab bar disappears, and the menu is always visible. This breakpoint can be changed with the `data-hidefor` attribute in HTML, or the `hideFor` setting in JavaScript.
 
+<div class="primary callout show-for-medium">
+  <p>Scale your browser down to see the toggle happen.</p>
+</div>
+
 ```html_example
-<div class="title-bar" data-tab-bar="example-menu" data-hide-for="medium">
+<div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
   <button class="menu-icon" type="button" data-toggle></button>
   <div class="title-bar-title">Menu</div>
 </div>
