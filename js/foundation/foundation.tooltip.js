@@ -27,6 +27,7 @@
 
     init : function (scope, method, options) {
       Foundation.inherit(this, 'random_str');
+      this.reflow();
       this.bindings(method, options);
     },
 
@@ -53,6 +54,13 @@
       return matchMedia(Foundation.media_queries['large']).matches;
     },
 
+    hover_delay: function($target, value) {
+      if (typeof value !== 'undefined') {
+        $target.data('hover_delay', Number(value));
+      }
+      return $target.data('hover_delay');
+    },
+
     events : function (instance) {
       var self = this,
           S = self.S;
@@ -71,7 +79,7 @@
           elt.timer = setTimeout(function () {
             elt.timer = null;
             self.showTip($this);
-          }.bind(elt), self.settings.hover_delay);
+          }.bind(elt), self.hover_delay($this));
         }
       }
 
@@ -343,6 +351,13 @@
       }).remove();
     },
 
-    reflow : function () {}
+    reflow : function () {
+      var self = this;
+      self.S('[' + this.attr_name() + ']').each(function () {
+        var target = $(this);
+        var settings = $.extend({}, self.settings, self.data_options(target));
+        self.hover_delay(target, settings.hover_delay);
+      });
+    }
   };
 }(jQuery, window, window.document));
