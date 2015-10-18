@@ -303,12 +303,21 @@
 
       if (isTab) {
         if (_this.options.vertical) { // vertical menu
-          $.extend(functions, {
-            down: nextSibling,
-            up: prevSibling,
-            next: openSub,
-            previous: closeSub,
-          });
+          if (_this.options.alignment === 'left') { // left aligned
+            $.extend(functions, {
+              down: nextSibling,
+              up: prevSibling,
+              next: openSub,
+              previous: closeSub,
+            });
+          } else { // right aligned
+            $.extend(functions, {
+              down: nextSibling,
+              up: prevSibling,
+              next: closeSub,
+              previous: openSub,
+            }); 
+          }
         } else { // horizontal menu
           $.extend(functions, {
             next: nextSibling,
