@@ -199,9 +199,9 @@
   };
   DropdownMenu.prototype._keys = function(){
     var _this = this;
-    this.$menuItems.off('keydown.zf.dropdownmenu').on('keydown.zf.dropdownmenu', function(e){
+    /*this.$menuItems.off('keydown.zf.dropdownmenu').on('keydown.zf.dropdownmenu', function(e){
       _this._handleKeys(e, this);
-    });
+    });*/
     // .on('focusin.zf.dropdownmenu', function(e){
     //   var $elem = $(this),
     //       child = $elem.find('[role="menuitem"]');
@@ -257,6 +257,85 @@
         }
       });
     }
+
+    this.$menuItems.on('keydown.zf.dropdownmenu', function(e){
+      var $element = $(this),
+        $tabs = _this.$element.children('li'),
+        isTab = $element.is($tabs),
+        $elements = isTab ? $tabs : $element.parents('li').first().add($element.parent('ul').children('li')),
+        $prevElement, 
+        $nextElement;
+
+      console.log('Is tab:', this, isTab);
+      $elements.each(function(i) {
+        if ($(this).is($element)) {
+          $prevElement = $elements.eq(i-1);
+          $nextElement = $elements.eq(i+1);
+          return;
+        }
+      });
+      var nextSibling = function() {
+        if (!$element.is(':last-child')) $nextElement.focus();
+      }, prevSibling = function() {
+        $prevElement.focus();
+      }, openSub = function() {
+        if ($element.has('ul').length) {
+          _this._show($element);
+          $element.find('li').first().focus();
+        }
+      }, closeSub = function() {
+        //if ($element.is(':first-child')) {
+          $element.parents('li').first().focus();
+          _this._hide($element.parents('li').first());
+        //}
+      };
+      var functions = {
+        open: openSub,
+        close: function() {
+          _this._hideAll();
+          _this.$menuItems.first().focus(); // focus to first element
+        },
+        handled: function() {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+        }
+      };
+
+      if (isTab) {
+        if (_this.options.vertical) { // vertical menu
+          $.extend(functions, {
+            down: nextSibling,
+            up: prevSibling,
+            next: openSub,
+            previous: closeSub,
+          });
+        } else { // horizontal menu
+          $.extend(functions, {
+            next: nextSibling,
+            previous: prevSibling,
+            down: openSub,
+            up: closeSub,
+          });
+        }
+      } else { // not tabs -> one sub
+        if (_this.options.alignment === 'left') { // left aligned
+          $.extend(functions, {
+            next: openSub,
+            previous: closeSub,
+            down: nextSibling,
+            up: prevSibling
+          });
+        } else { // right aligned
+          $.extend(functions, {
+            next: closeSub,
+            previous: openSub,
+            down: nextSibling,
+            up: prevSibling
+          });
+        }
+      }
+      Foundation.handleKey(e, _this, functions);
+    });
   };
 
   DropdownMenu.prototype._toggle = function($elem){
