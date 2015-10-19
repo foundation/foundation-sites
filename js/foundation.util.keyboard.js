@@ -115,11 +115,11 @@
         cmds = commandList; // use plain list
     } else { // merge ltr and rtl: if document is rtl, rtl overwrites ltr and vice versa
         if (isRtl()) cmds = $.extend({}, commandList.ltr, commandList.rtl);
-        else cmds = $.extend({}, commandList.rtl, commandList.ltr);        
+        else cmds = $.extend({}, commandList.rtl, commandList.ltr);
     }
     command = cmds[keyCode];
 
-    
+
     fn = functions[command];
     if (fn && typeof fn === 'function') { // execute function with context of the component if exists
         fn.apply(component);
