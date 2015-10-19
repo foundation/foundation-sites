@@ -44,7 +44,7 @@
   DropdownMenu.prototype._init = function() {
     this.$element.attr('role', 'menubar');
     this.options.vertical = this.$element.hasClass(this.options.vertClass);
-    this._prepareMenu(this.$element);
+    this._prepareMenu();
     // this._addTopLevelKeyHandler();
   };
 
@@ -93,130 +93,128 @@
           }).addClass('vertical');
       _this._events($sub);
     });
-    this._keys();
   };
-  DropdownMenu.prototype._handleKeys = function(e, elem){
-    var usedKeys = [9, 13, 27, 32, 37, 38, 39, 40],
-        key = e.which;
-
-    e.stopImmediatePropagation();
-
-    if(usedKeys.indexOf(key) < 0){ return; }
-    if(key !== 9){
-      if((key === 13 || key === 32) && !$(elem).hasClass('has-submenu')){ return; }//if it's a normal link, don't prevent default on return, just move on.
-
-      e.preventDefault();
 
 
-      if(key === 27){ this._hideAll(); }//esc hide everything
+//     e.stopImmediatePropagation();
+//
+//     if(usedKeys.indexOf(key) < 0){ return; }
+//     if(key !== 9){
+//       if((key === 13 || key === 32) && !$(elem).hasClass('has-submenu')){ return; }//if it's a normal link, don't prevent default on return, just move on.
+//
+//       e.preventDefault();
+//
+//
+//       if(key === 27){ this._hideAll(); }//esc hide everything
+//
+//       else if(key === 13 || key === 32){ this._show($(elem)); }//enter/return or spacebar, show the thing
+//
+//       else{//direction keys... the gnarly bit.
+//         var $elem = $(elem),
+//             isTop = this.$tabs.index($elem) > -1,
+//             isVert = isTop ? this.options.vertical : $elem.parent('[data-submenu]').hasClass('vertical'),
+//             isRight = this.options.alignment === 'right',
+//             $siblings = $elem.siblings('[role="menuitem"]'),
+//             first = $siblings.eq(0),
+//             last = $siblings.eq(-1),
+//             next = $elem.next().length ? $elem.next() : first,
+//             prev = $elem.prev().length ? $elem.prev() : last,
+//             child, parent;
+//
+//         if(key === 37){
+//           // console.log('left');
+//           if(isVert){
+//             if(isRight){
+//               child = $elem.find('[role="menuitem"]').eq(0);
+//               if(!child.length){ return; }//if no submenu, return
+//               this._show($elem);
+//               child.focus();
+//             }else{
+//               if(isTop){ this._hide($elem); return; }//if a top level menuitem, there's no where to go, hide the open menu and return
+//               parent = $elem.parentsUntil('.has-submenu').parent('[role="menuitem"]').focus();
+//               this._hide(parent);
+//             }
+//           }else{
+//             child = prev.find('[role="menuitem"]').eq(0);
+//             if(child.length){
+//               this._show(prev);
+//             }else{
+//               this._hideOthers(prev);
+//             }
+//             prev.focus();
+//           }
+//         }
+//         else if(key === 39){
+//           // console.log('right-arrow');
+//           if(isVert){
+//             if(isRight){
+//               if(isTop){ this._hide($elem); return; }//if a top level menuitem, there's no where to go, hide the open menu and return
+//               parent = $elem.parentsUntil('.has-submenu').parent('[role="menuitem"]').focus();
+//               this._hide(parent);
+//             }else{
+//               child = $elem.find('[role="menuitem"]').eq(0);
+//               if(!child.length){ return; }//if no submenu, return
+//               this._show($elem);
+//               child.focus();
+//             }
+//           }else{
+//             child = next.find('[role="menuitem"]');
+//             if(child.length){
+//               this._show(next);
+//             }else{
+//               this._hideOthers(next);
+//             }
+//             next.focus();
+//           }
+//         }
+//         else if(key === 38){
+//           // console.log('up');
+//           if(isVert){
+//             child = prev.find('[role="menuitem"]');
+//             if(child.length){
+//               this._show(prev);
+//             }else{
+//               this._hideOthers(prev);
+//             }
+//             prev.focus();
+//           }
+//         }
+//         else{
+//           // console.log('down');
+//           if(isVert){
+//             child = next.find('[role="menuitem"]');
+//             if(child.length){
+//               this._show(next);
+//             }else{
+//               this._hideOthers(next);
+//             }
+//             next.focus();
+//           }else{
+//             child = $elem.find('[role="menuitem"]').eq(0);
+//             if(child.length){
+//               this._show($elem);
+//               child.focus();
+//             }
+//           }
+//         }//40/down
+//       }
+//     }
+//
+//   };
+//   DropdownMenu.prototype._keys = function(){
+//     var _this = this;
+//     this.$menuItems.off('keydown.zf.dropdownmenu').on('keydown.zf.dropdownmenu', function(e){
+//       _this._handleKeys(e, this);
+//     });
+//     // .on('focusin.zf.dropdownmenu', function(e){
+//     //   var $elem = $(this),
+//     //       child = $elem.find('[role="menuitem"]');
+//     //       if(child.length){
+//     //         _this._show($elem);
+//     //       }
+//     // });
+//   }
 
-      else if(key === 13 || key === 32){ this._show($(elem)); }//enter/return or spacebar, show the thing
-
-      else{//direction keys... the gnarly bit.
-        var $elem = $(elem),
-            isTop = this.$tabs.index($elem) > -1,
-            isVert = isTop ? this.options.vertical : $elem.parent('[data-submenu]').hasClass('vertical'),
-            isRight = this.options.alignment === 'right',
-            $siblings = $elem.siblings('[role="menuitem"]'),
-            first = $siblings.eq(0),
-            last = $siblings.eq(-1),
-            next = $elem.next().length ? $elem.next() : first,
-            prev = $elem.prev().length ? $elem.prev() : last,
-            child, parent;
-
-        if(key === 37){
-          // console.log('left');
-          if(isVert){
-            if(isRight){
-              child = $elem.find('[role="menuitem"]').eq(0);
-              if(!child.length){ return; }//if no submenu, return
-              this._show($elem);
-              child.focus();
-            }else{
-              if(isTop){ this._hide($elem); return; }//if a top level menuitem, there's no where to go, hide the open menu and return
-              parent = $elem.parentsUntil('.has-submenu').parent('[role="menuitem"]').focus();
-              this._hide(parent);
-            }
-          }else{
-            child = prev.find('[role="menuitem"]').eq(0);
-            if(child.length){
-              this._show(prev);
-            }else{
-              this._hideOthers(prev);
-            }
-            prev.focus();
-          }
-        }
-        else if(key === 39){
-          // console.log('right-arrow');
-          if(isVert){
-            if(isRight){
-              if(isTop){ this._hide($elem); return; }//if a top level menuitem, there's no where to go, hide the open menu and return
-              parent = $elem.parentsUntil('.has-submenu').parent('[role="menuitem"]').focus();
-              this._hide(parent);
-            }else{
-              child = $elem.find('[role="menuitem"]').eq(0);
-              if(!child.length){ return; }//if no submenu, return
-              this._show($elem);
-              child.focus();
-            }
-          }else{
-            child = next.find('[role="menuitem"]');
-            if(child.length){
-              this._show(next);
-            }else{
-              this._hideOthers(next);
-            }
-            next.focus();
-          }
-        }
-        else if(key === 38){
-          // console.log('up');
-          if(isVert){
-            child = prev.find('[role="menuitem"]');
-            if(child.length){
-              this._show(prev);
-            }else{
-              this._hideOthers(prev);
-            }
-            prev.focus();
-          }
-        }
-        else{
-          // console.log('down');
-          if(isVert){
-            child = next.find('[role="menuitem"]');
-            if(child.length){
-              this._show(next);
-            }else{
-              this._hideOthers(next);
-            }
-            next.focus();
-          }else{
-            child = $elem.find('[role="menuitem"]').eq(0);
-            if(child.length){
-              this._show($elem);
-              child.focus();
-            }
-          }
-        }//40/down
-      }
-    }
-
-  };
-  DropdownMenu.prototype._keys = function(){
-    var _this = this;
-    this.$menuItems.off('keydown.zf.dropdownmenu').on('keydown.zf.dropdownmenu', function(e){
-      _this._handleKeys(e, this);
-    });
-    // .on('focusin.zf.dropdownmenu', function(e){
-    //   var $elem = $(this),
-    //       child = $elem.find('[role="menuitem"]');
-    //       if(child.length){
-    //         _this._show($elem);
-    //       }
-    // });
-  }
   DropdownMenu.prototype._events = function($elem){
     var _this = this;
 
@@ -264,6 +262,95 @@
         }
       });
     }
+
+    if (this.options.keyboardAccess) {
+      this.$menuItems.on('keydown.zf.dropdownmenu', function(e){
+        var $element = $(this),
+            $tabs = _this.$element.children('li'),
+            isTab = $element.is($tabs),
+            $elements = isTab ? $tabs : $element.parents('li').first().add($element.parent('ul').children('li')),
+            $prevElement,
+            $nextElement;
+
+        $elements.each(function(i) {
+          if ($(this).is($element)) {
+            $prevElement = $elements.eq(i-1);
+            $nextElement = $elements.eq(i+1);
+            return;
+          }
+        });
+        var nextSibling = function() {
+          if (!$element.is(':last-child')) $nextElement.focus();
+        }, prevSibling = function() {
+          $prevElement.focus();
+        }, openSub = function() {
+          if ($element.has('ul').length) {
+            _this._show($element);
+            $element.find('li').first().focus();
+          }
+        }, closeSub = function() {
+          //if ($element.is(':first-child')) {
+            $element.parents('li').first().focus();
+            _this._hide($element.parents('li').first());
+          //}
+        };
+        var functions = {
+          open: openSub,
+          close: function() {
+            _this._hideAll();
+            _this.$menuItems.first().focus(); // focus to first element
+          },
+          handled: function() {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+          }
+        };
+
+        if (isTab) {
+          if (_this.options.vertical) { // vertical menu
+            if (_this.options.alignment === 'left') { // left aligned
+              $.extend(functions, {
+                down: nextSibling,
+                up: prevSibling,
+                next: openSub,
+                previous: closeSub,
+              });
+            } else { // right aligned
+              $.extend(functions, {
+                down: nextSibling,
+                up: prevSibling,
+                next: closeSub,
+                previous: openSub,
+              });
+            }
+          } else { // horizontal menu
+            $.extend(functions, {
+              next: nextSibling,
+              previous: prevSibling,
+              down: openSub,
+              up: closeSub,
+            });
+          }
+        } else { // not tabs -> one sub
+          if (_this.options.alignment === 'left') { // left aligned
+            $.extend(functions, {
+              next: openSub,
+              previous: closeSub,
+              down: nextSibling,
+              up: prevSibling
+            });
+          } else { // right aligned
+            $.extend(functions, {
+              next: closeSub,
+              previous: openSub,
+              down: nextSibling,
+              up: prevSibling
+            });
+          }
+        }
+        Foundation.handleKey(e, _this, functions);
+      });
+    } // end if keyboardAccess
   };
 
   DropdownMenu.prototype._toggle = function($elem){
