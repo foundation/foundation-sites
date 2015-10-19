@@ -37,6 +37,10 @@
     if(this.options.autoPlay){
       this.geoSync();
     }
+
+    if (this.options.accessible) {
+      this.$wrapper.attr('tabindex', 0);
+    }
   };
   Orbit.prototype.loadBullets = function(){
     this.$bullets = this.$element.find('.orbit-bullets > button');
@@ -144,6 +148,23 @@
         _this.changeSlide(ltr, $slide, idx);
       });
     }
+
+
+    this.$wrapper.on('keydown.zf.orbit', function(e){
+      var _$handle = $(this);
+
+      // handle keyboard event with keyboard util
+      Foundation.handleKey(e, _this, {
+        next: function() {
+          _this.timer.reset();
+          _this.changeSlide(true);        
+        },
+        previous: function() {
+          _this.timer.reset();
+          _this.changeSlide(false);
+        }
+      });
+    });
   };
   Orbit.prototype.changeSlide = function(isLTR, chosenSlide, idx){
     var $curSlide = this.$element.find('.orbit-slide.active');

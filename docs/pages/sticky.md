@@ -5,7 +5,6 @@ sass: scss/components/_sticky.scss
 js: js/foundation.sticky.js
 ---
 
-
 <div class="alert callout">
   <h5>Known Issues</h5>
   <ul>
@@ -16,24 +15,22 @@ js: js/foundation.sticky.js
   </ul>
 </div>
 
-
-
 ## Basics
 
 Add the `.sticky` class and `[data-sticky]` to an element to create something that sticks. Sticky elements must be wrapped in a container, which will determine your sizing and grid layout, with `[data-sticky-container]`.
 
 ```html
-<div class='columns small-6 right' data-sticky-container>
+<div class="columns small-6 right" data-sticky-container>
   <div class="sticky" data-sticky>
-    <img src='/assets/img/interchange/small.jpg'>
+    <img src="/assets/img/interchange/small.jpg">
   </div>
 </div>
 ```
 
 <!-- ```html_example -->
-<div class='row'>
-  <div class='columns small-12'>
-    <div class='columns small-6' id='example1'>
+<div class="row">
+  <div class="columns small-12">
+    <div class="columns small-6" id="example1">
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
@@ -47,9 +44,9 @@ Add the `.sticky` class and `[data-sticky]` to an element to create something th
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
     </div>
-    <div class='columns small-6 right' data-sticky-container>
-      <div class="sticky" data-sticky data-stick-at='#example1'>
-        <img src='/assets/img/interchange/small.jpg'>
+    <div class="columns small-6 right" data-sticky-container>
+      <div class="sticky" data-sticky data-stick-at="#example1">
+        <img src="/assets/img/interchange/small.jpg">
       </div>
     </div>
   </div>

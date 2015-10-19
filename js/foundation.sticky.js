@@ -82,7 +82,7 @@
           }
 
           if(_this.$element.offset().top + _this.$elemDims.height + (_this.options.marginBottom * _this.fontSize) >= _this.end){//hits bottom breakpoint
-            _this.$element.removeClass('stuck').addClass('anchored')
+            _this.$element.removeClass('is-stuck').addClass('is-anchored')
             .css({
               'marginBottom': 0,
               'top':(_this.$anchorDims.height  - _this.$elemDims.height)
@@ -90,7 +90,7 @@
           }
 
           if(scroll + _this.$anchorDims.windowDims.height <= _this.start){
-            _this.$element.addClass('anchored bottom').removeClass('stuck').css('marginBottom', 0);
+            _this.$element.addClass('is-anchored is-at-bottom').removeClass('is-stuck').css('marginBottom', 0);
           }
         }
 
@@ -120,21 +120,21 @@
     });
   };
   Sticky.prototype.stickToBottom = function(){
-    this.$element.removeClass('anchored').addClass('stuck bottom').css({'marginBottom':this.options.marginBottom + 'em', 'bottom': 0, 'top': 'auto'})
+    this.$element.removeClass('is-anchored').addClass('is-stuck is-at-bottom').css({'marginBottom':this.options.marginBottom + 'em', 'bottom': 0, 'top': 'auto'})
   };
   Sticky.prototype.stickToTop = function(){
-    this.$element.addClass('stuck top').removeClass('anchored bottom').css({'marginTop': this.options.marginTop + 'em', 'top': 0});
+    this.$element.addClass('is-stuck is-at-top').removeClass('is-anchored is-at-bottom').css({'marginTop': this.options.marginTop + 'em', 'top': 0});
   };
   Sticky.prototype.anchorToBottom = function(){
-    this.$element.removeClass('stuck top')
-          .addClass('anchored bottom')
+    this.$element.removeClass('is-stuck is-at-top')
+          .addClass('is-anchored is-at-bottom')
           .css({
             'marginTop': 0,
             'top': this.end - (this.$container.offset().top) + (this.options.marginBottom * this.fontSize) + 'px'
           });
   };
   Sticky.prototype.anchorToTop = function(){
-    this.$element.addClass('anchored top').removeClass('stuck bottom').css({'margin-top': 0});
+    this.$element.addClass('is-anchored is-at-top').removeClass('is-stuck is-at-bottom').css({'margin-top': 0});
   };
   //*********************************************************************
   /**

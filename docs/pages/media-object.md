@@ -4,16 +4,6 @@ description: Media objects are super useful componets for displaying an item, us
 sass: scss/components/_media-object.scss
 ---
 
-
-<div class="alert callout">
-  <h5>Known Issues</h5>
-  <ul>
-    <li>`stack-for-small` is stacking on large.</li>
-  </ul>
-</div>
-
-
-
 ## Basics
 
 A media object is a container with the class `.media-object`, and two or three sections with the class `.media-object-section`.
