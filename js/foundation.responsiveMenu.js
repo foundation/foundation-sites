@@ -99,8 +99,8 @@
     var matchedMq, _this = this;
 
     // Iterate through each rule and find the last matching rule
-    $.each(this.rules, function(key, value) {
-      if (window.matchMedia(phMedia[key]).matches && key !== _this.currentMq) {
+    $.each(this.rules, function(key) {
+      if (Foundation.MediaQuery.atLeast(key)) {
         matchedMq = key;
       }
     });
