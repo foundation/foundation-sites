@@ -113,7 +113,7 @@ $global-namespace: false !default;
 /// Sets the text direction of the CSS. Can be either `ltr` or `rtl`.
 $global-text-direction: ltr;
 
-// Text direction variables used internally
+// Internal variables used for text direction
 $global-left: if($global-text-direction == rtl, right, left);
 $global-right: if($global-text-direction == rtl, left, right);
 
@@ -125,16 +125,6 @@ $foundation-colors: (
   alert: $alert-color,
   warning: $warning-color,
 );
-
-// The go-away list
-$cursor-auto-value: auto !default;
-$cursor-crosshair-value: crosshair !default;
-$cursor-default-value: default !default;
-$cursor-disabled-value: not-allowed !default;
-$cursor-pointer-value: pointer !default;
-$cursor-help-value: help !default;
-$cursor-text-value: text !default;
-$info-color: #a0d3e8 !default;
 
 @mixin foundation-global-styles {
   html,
