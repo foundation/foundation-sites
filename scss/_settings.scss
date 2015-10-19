@@ -19,7 +19,7 @@
 //  14. The Grid
 //  15. Label
 //  16. Media Object
-//  17. Menu Bar
+//  17. Menu
 //  18. Off-canvas
 //  19. Orbit
 //  20. Pagination
@@ -74,8 +74,8 @@
 // $breadcrumbs-item-font-size: rem-calc(11);
 // $breadcrumbs-item-color: $primary-color;
 // $breadcrumbs-item-color-current: $black;
+// $breadcrumbs-item-color-disabled: $medium-gray;
 // $breadcrumbs-item-margin: 0.75rem;
-// $breadcrumbs-item-opacity-disabled: 0.25;
 // $breadcrumbs-item-uppercase: true;
 // $breadcrumbs-item-slash: true;
 
@@ -84,7 +84,7 @@
 
 // $breakpoints: (
 //   small: 0,
-//   medium: 640px,
+//   medium: 512px,
 //   large: 1024px,
 //   xlarge: 1200px,
 //   xxlarge: 1440px,
@@ -195,14 +195,14 @@
 // $input-shadow: inset 0 1px 2px rgba($black, 0.1);
 // $input-shadow-focus: 0 0 5px $medium-gray;
 // $input-radius: 0;
-// $input-cursor-disabled: $cursor-default-value;
+// $input-cursor-disabled: default;
 // $input-transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
 // $input-number-spinners: true;
 
 // Global
 // ------
 
-// $global-width: rem-calc(1000);
+// $global-width: rem-calc(1200);
 // $global-font-size: 100%;
 // $global-lineheight: 1.5;
 // $primary-color: #2199e8;
@@ -228,6 +228,7 @@
 // $global-radius: 3px;
 // $global-rounded: 1000px;
 // $global-namespace: false;
+// $global-text-direction: ltr;
 // $rem-base: 16px;
 
 // The Grid
@@ -252,13 +253,14 @@
 // $mediaobject-section-padding: $global-padding;
 // $mediaobject-image-width-stacked: 100%;
 
-// Menu Bar
-// --------
+// Menu
+// ----
 
-// $menubar-margin: 0;
-// $menubar-item-padding: 0.7rem 1rem;
-// $menubar-icon-spacing: 0.25rem;
-// $menubar-expand-max: 6;
+// $menu-margin: 0;
+// $menu-margin-nested: 1rem;
+// $menu-item-padding: 0.7rem 1rem;
+// $menu-icon-spacing: 0.25rem;
+// $menu-expand-max: 6;
 
 // Off-canvas
 // ----------

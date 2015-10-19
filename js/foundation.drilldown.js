@@ -174,7 +174,7 @@
 //
 //   Drilldown.prototype = {
 //     /**
-//      * Initializes the Drilldown by creating a container to wrap the menu bar in, and initializing all submenus.
+//      * Initializes the Drilldown by creating a container to wrap the Menu in, and initializing all submenus.
 //      * @private
 //      */
 //     _init: function() {
@@ -186,7 +186,7 @@
 //     },
 //
 //     /**
-//      * Scans a menu bar for any sub menu bars inside of it. This is a recursive function, so when a sub menu is found, this method will be called on that sub menu.
+//      * Scans a Menu for any sub Menus inside of it. This is a recursive function, so when a sub menu is found, this method will be called on that sub menu.
 //      * @private
 //      * @param {jQuery} $elem - Menu to scan for sub menus.
 //      * @param {Boolean} root - If true, the menu being scanned is at the root level.

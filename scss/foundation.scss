@@ -36,7 +36,7 @@ $foundation-version: '6.0.0-alpha.1';
   'components/flex-video',
   'components/label',
   'components/media-object',
-  'components/menu-bar',
+  'components/menu',
   'components/off-canvas',
   'components/orbit',
   'components/pagination',
@@ -77,7 +77,7 @@ $foundation-version: '6.0.0-alpha.1';
   @include foundation-flex-video;
   @include foundation-label;
   @include foundation-media-object;
-  @include foundation-menu-bar;
+  @include foundation-menu;
   @include foundation-off-canvas;
   @include foundation-orbit;
   @include foundation-pagination;

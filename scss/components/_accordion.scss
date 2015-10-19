@@ -14,11 +14,11 @@ $accordion-background: $white;
 /// @type Boolean
 $accordion-plusminus: true;
 
-/// Default text color for items in a menu bar.
+/// Default text color for items in a Menu.
 /// @type Color
 $accordion-item-color: foreground($accordion-background, $primary-color);
 
-/// Default background color on hover for items in a menu bar.
+/// Default background color on hover for items in a Menu.
 /// @type Color
 $accordion-item-background-hover: $light-gray !default;
 
