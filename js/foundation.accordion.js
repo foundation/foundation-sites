@@ -48,6 +48,7 @@
 
     this.$element.find('li').each(function() {
       var $tabContent = $(this).children('[data-tab-content]');
+      var $elem = $(this);
       if ($tabContent.length) {
         $(this).on('click.zf.accordion', function(e) {
         // $(this).children('a').on('click.zf.accordion', function(e) {
@@ -60,11 +61,27 @@
           else {
             _this.down($tabContent);
           }
+        }).on('keydown.zf.accordion', function(e){
+          e.preventDefault();
+          e.stopPropagation();
+          Foundation.handleKey(e, _this, {
+            toggle: function() {
+              _this.toggle($tabContent);
+            }
+          });
         });
       }
     });
   };
-
+  Accordion.prototype.toggle = function($target){
+    if($target.parent().hasClass('is-active')){
+      if(this.options.allowAllClosed || $target.parent().siblings().hasClass('is-active')){
+        this.up($target);
+      }else{ return; }
+    }else{
+      this.down($target);
+    }
+  };
   /**
    * Opens the accordion tab defined by `$target`.
    * @param {jQuery} $target - Accordion tab to open.

@@ -1,3 +1,4 @@
+//big thanks to Owlbertz
 !function($, Foundation){
   'use strict';
 
@@ -71,8 +72,8 @@
       'ARROW_UP': 'previous',
       'ARROW_DOWN': 'next',
       'ARROW_LEFT': 'previous',
-      'TAB': 'next',
-      'SHIFT_TAB': 'previous'
+      // 'TAB': 'next',
+      // 'SHIFT_TAB': 'previous'
     },
     'Orbit': {
         'ltr': {
@@ -83,6 +84,13 @@
           'ARROW_LEFT': 'next',
           'ARROW_RIGHT': 'previous'
         }
+    },
+    'Accordion': {
+      'ENTER': 'toggle',
+      'SPACE': 'toggle',
+      'ARROW_DOWN': 'next',
+      'ARROW_UP': 'prev'
+
     }
   };
 
@@ -106,11 +114,11 @@
         cmds = commandList; // use plain list
     } else { // merge ltr and rtl: if document is rtl, rtl overwrites ltr and vice versa
         if (isRtl()) cmds = $.extend({}, commandList.ltr, commandList.rtl);
-        else cmds = $.extend({}, commandList.rtl, commandList.ltr);        
+        else cmds = $.extend({}, commandList.rtl, commandList.ltr);
     }
     command = cmds[keyCode];
 
-    
+
     fn = functions[command];
     if (fn && typeof fn === 'function') { // execute function with context of the component if exists
         fn.apply(component);

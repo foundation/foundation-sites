@@ -115,7 +115,7 @@
           return;
         }
       }
-      
+
       // handle keyboard event with keyboard util
       Foundation.handleKey(e, _this, {
         open: function() {

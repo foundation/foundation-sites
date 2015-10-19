@@ -41,6 +41,6 @@
     };
   }
 
-  Foundation.Timer = Timer;
+  Foundation.NanuNanu = Timer;
 
 }(jQuery, window.Foundation);
