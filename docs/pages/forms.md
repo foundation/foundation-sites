@@ -203,9 +203,9 @@ Custom inputs with labels or help text need the attributes `aria-labelledby` and
 
 ```html
 <label id="ageLabel">Age</label>
-<div class="range-slider" data-slider>
-  <span class="range-slider-handle" role="slider" aria-labelledby="ageLabel" aria-describedby="ageHelpText"></span>
-  <span class="range-slider-active-segment"></span>
+<div class="slider" aria-labelledby="ageLabel" aria-describedby="ageHelpText" data-slider data-initial-start='50' data-end='200'>
+  <span class="slider-handle"  data-slider-handle role="slider" tabindex="1"></span>
+  <span class="slider-fill" data-slider-fill></span>
   <input type="hidden">
 </div>
 <p id="ageHelpText">How old are you?</p>

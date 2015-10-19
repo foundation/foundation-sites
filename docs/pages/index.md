@@ -78,7 +78,7 @@ Get to know the pieces of Foundation.
         <li><a href="button.html">Button</a></li>
         <li><a href="button-group.html">Button Group</a></li>
         <li><a href="close-button.html">Close Button</a></li>
-        <li><a href="range-slider.html">Range Slider</a></li>
+        <li><a href="slider.html">Slider</a></li>
         <li><a href="switch.html">Switch</a></li>
       </ul>
     </section>

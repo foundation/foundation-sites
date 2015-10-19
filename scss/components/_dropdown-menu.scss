@@ -6,14 +6,23 @@
   .has-submenu {
     position: relative;
 
-    &.is-down-arrow > a {
-
+    a::after {
+      float: right;
+      margin-top: 3px;
+      margin-left: 10px;
     }
-    &.is-right-arrow > a {
 
+    &.is-down-arrow > a::after {
+      @include css-triangle(5px, $anchor-color, down);
     }
-    &.is-left-arrow > a {
-
+    &.is-right-arrow > a::after {
+      @include css-triangle(5px, $anchor-color, left);
+      float: left;
+      margin-left: 0;
+      margin-right: 10px;
+    }
+    &.is-left-arrow > a::after {
+      @include css-triangle(5px, $anchor-color, right);
     }
   }
 //Chris's amendments *******
