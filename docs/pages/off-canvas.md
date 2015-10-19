@@ -60,6 +60,24 @@ Because there are three positioning options for off-canvas menus, your design ca
 
 ---
 
+## Title Bar
+
+If you need a simple title bar to toggle the off-canvas, `.title-bar` is here to help. It supports left and right-aligned sections.
+
+```html_example
+<div class="title-bar">
+  <div class="title-bar-left">
+    <button class="menu-icon" type="button" data-open="offCanvasLeft"></button>
+    <span class="title-bar-title">Foundation</span>
+  </div>
+  <div class="title-bar-right">
+    <button class="menu-icon" type="button" data-open="offCanvasRight"></button>
+  </div>
+</div>
+```
+
+---
+
 ## Reveal on Larger Screens
 
 The left- and right-hand off-canvas panes can be set to be persistent on larger screens. Add the class `.reveal-for-medium` or `.reveal-for-large` to the off-canvas menu.

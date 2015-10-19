@@ -358,18 +358,18 @@ $abbr-underline: 1px dotted $black !default;
   // Unordered lists
   ul {
     list-style-type: $list-style-type;
-    margin-#{$default-float}: $list-side-margin;
+    margin-#{$global-left}: $list-side-margin;
   }
 
   // Ordered lists
   ol {
-    margin-#{$default-float}: $list-side-margin;
+    margin-#{$global-left}: $list-side-margin;
   }
 
   // Nested unordered/ordered lists
   ul, ol {
     & & {
-      margin-#{$default-float}: $list-nested-side-margin;
+      margin-#{$global-left}: $list-nested-side-margin;
       margin-bottom: 0;
       list-style-type: inherit;
     }
@@ -389,7 +389,7 @@ $abbr-underline: 1px dotted $black !default;
   blockquote {
     margin: 0 0 $paragraph-margin-bottom;
     padding: $blockquote-padding;
-    border-#{$default-float}: $blockquote-border;
+    border-#{$global-left}: $blockquote-border;
 
     &, p {
       line-height: $paragraph-lineheight;

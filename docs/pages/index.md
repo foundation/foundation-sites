@@ -87,6 +87,7 @@ Get to know the pieces of Foundation.
     <section>
       <h4>Navigation</h4>
       <ul>
+        <li><a href="navigation.html">Overview</a></li>
         <li><a href="accordion-menu.html">Accordion Menu</a></li>
         <li><a href="breadcrumbs.html">Breadcrumbs</a></li>
         <li><a href="drilldown-menu.html">Drilldown Menu</a></li>
@@ -94,7 +95,7 @@ Get to know the pieces of Foundation.
         <li><a href="magellan.html">Magellan</a></li>
         <li><a href="menu-bar.html">Menu Bar</a></li>
         <li><a href="pagination.html">Pagination</a></li>
-        <li><a href="responsive-menu.html">Responsive Menu</a></li>
+        <li><a href="responsive-navigation.html">Responsive Navigation</a></li>
         <li><a href="top-bar.html">Top Bar</a></li>
       </ul>
     </section>

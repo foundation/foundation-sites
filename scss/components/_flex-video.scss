@@ -47,7 +47,7 @@ $flexvideo-ratio-widescreen: 16 by 9 !default;
   video {
     position: absolute;
     top: 0;
-    #{$default-float}: 0;
+    #{$global-left}: 0;
     width: 100%;
     height: 100%;
   }

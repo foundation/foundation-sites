@@ -8,11 +8,11 @@
     content: "\f16c";
     display: block;
     position: absolute;
-    top: 0;
-    left: 0.6rem;
+    top: 0.2rem;
+    left: 0.9rem;
     z-index: 1;
     font-family: 'foundation-icons';
-    font-size: 1.6rem;
+    font-size: 1.75rem;
     color: $primary-color;
   }
 }
@@ -20,10 +20,13 @@
 .tt-input,
 .tt-hint {
   right: 0;
-  padding-left: 2.4rem;
+  padding-left: 3rem;
   margin-bottom: 0.5rem;
   box-shadow: none;
   border-width: 1px 0;
+  font-size: 1.3rem;
+  height: 3rem;
+  font-weight: 300;
 
   &:hover {
     box-shadow: none;

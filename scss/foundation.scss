@@ -47,7 +47,7 @@ $foundation-version: '6.0.0-alpha.1';
   'components/sticky',
   'components/table',
   'components/tabs',
-  'components/tab-bar',
+  'components/title-bar',
   'components/top-bar',
   'components/thumbnail',
   'components/tooltip';
@@ -89,6 +89,7 @@ $foundation-version: '6.0.0-alpha.1';
   @include foundation-table;
   @include foundation-tabs;
   @include foundation-thumbnail;
+  @include foundation-title-bar;
   @include foundation-tooltip;
   @include foundation-top-bar;
 }
