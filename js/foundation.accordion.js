@@ -88,6 +88,7 @@
    * @fires Accordion#down
    */
   Accordion.prototype.down = function($target, firstTime) {
+    var _this = this;
     if(!this.options.multiExpand && !firstTime){
       var $currentActive = this.$element.find('.is-active').children('[data-tab-content]');
       if($currentActive){
@@ -97,8 +98,12 @@
     $target
       .parent('[data-tab-content]')
       .addBack()
-      .slideDown(this.options.slideSpeed)
+      // .slideDown(this.options.slideSpeed)
       .parent().addClass(firstTime ? '' : 'is-active');
+
+    Foundation.Move(_this.options.slideSpeed, $target, function(){
+      $target.slideDown(_this.options.slideSpeed);
+    });
 
     if(!firstTime){
       // console.log('reflowing yo!');
@@ -117,16 +122,22 @@
    * @fires Accordion#up
    */
   Accordion.prototype.up = function($target) {
-    var $aunts = $target.parent().siblings();
+    var $aunts = $target.parent().siblings(),
+        _this = this;
     var canClose = this.options.multiExpand ? $aunts.hasClass('is-active') : $target.parent().hasClass('is-active');
 
     if(!this.options.allowAllClosed && !canClose){
       return;
     }
-    $target.slideUp(this.options.slideSpeed, function() {
-      $target.find('[data-tab-content]').slideUp(0);
-    })
-      .parent().removeClass('is-active');
+    $target.find('[data-tab-content]').slideUp(0);
+
+    Foundation.Move(this.options.slideSpeed, $target, function(){
+      $target.slideUp(_this.options.slideSpeed)
+    });
+    // $target.slideUp(this.options.slideSpeed, function() {
+    //   $target.find('[data-tab-content]').slideUp(0);
+    // })
+    $target.parent().removeClass('is-active');
 
     /**
      * Fires when the tab is done collapsing up.
