@@ -101,17 +101,16 @@
       }
     }
 
-
-    this.$element.off('transitionend.zf.slider')
-                 .one('transitionend.zf.slider', function(){
+    // this.$element.one('finished.zf.animate', function(e){
+    //   console.log('something.doo', e);
+    // })
+    this.$element.off('finished.zf.animate')
+                 .on('finished.zf.animate', function(){
+                   console.log('done');
                     _this.animComplete = true;
-                    window.cancelAnimationFrame(anim);
                     _this.$element.trigger('moved.zf.slider');
     });
-
-    function move(ts){//recursive function for animating handle movement.
-      if(!start){ start = ts; }
-      prog = ts - start;
+    Foundation.Move(_this.options.moveTime, $hndl, function(){
       $hndl.css(lOrT, movement + '%');
       if(!_this.options.doubleSided){
 
@@ -119,16 +118,27 @@
       }else{
         _this.$fill.css(css);
       }
-
-      if(prog < _this.options.moveTime){
-        anim = window.requestAnimationFrame(move, $hndl[0]);
-      }
-      else{
-        window.cancelAnimationFrame(anim);
-      }
-    };
-
-  window.requestAnimationFrame(move);
+    });
+  //   function move(ts){//recursive function for animating handle movement.
+  //     if(!start){ start = ts; }
+  //     prog = ts - start;
+  //     $hndl.css(lOrT, movement + '%');
+  //     if(!_this.options.doubleSided){
+  //
+  //       _this.$fill.css(hOrW, pctOfBar * 100 + '%');
+  //     }else{
+  //       _this.$fill.css(css);
+  //     }
+  //
+  //     if(prog < _this.options.moveTime){
+  //       anim = window.requestAnimationFrame(move, $hndl[0]);
+  //     }
+  //     else{
+  //       window.cancelAnimationFrame(anim);
+  //     }
+  //   };
+  //
+  // window.requestAnimationFrame(move);
   };
   Slider.prototype._setInitAttr = function(idx){
     var id = this.inputs.eq(idx).attr('id') || Foundation.GetYoDigits(6, 'slider');
