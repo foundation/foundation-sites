@@ -411,7 +411,7 @@ $abbr-underline: 1px dotted $black !default;
   // Abbreviations
   abbr {
     color: $body-font-color;
-    cursor: $cursor-help-value;
+    cursor: help;
     border-bottom: $abbr-underline;
   }
 

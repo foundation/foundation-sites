@@ -52,7 +52,7 @@ $input-radius: 0 !default;
 
 /// Cursor to use when hovering over a disabled text input.
 /// @type Cursor
-$input-cursor-disabled: $cursor-default-value !default;
+$input-cursor-disabled: default !default;
 
 /// Properties to transition on text inputs.
 /// @type Transition
