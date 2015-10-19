@@ -3,32 +3,32 @@
 // Licensed under MIT Open Source
 
 ////
-/// @group menu-bar
+/// @group menu
 ////
 
-/// Margin of a menu bar.
+/// Margin of a menu.
 /// @type Number
-$menubar-margin: 0 !default;
+$menu-margin: 0 !default;
 
-/// Left-hand margin of a nested menu bar.
+/// Left-hand margin of a nested menu.
 /// @type Number
-$menubar-margin-nested: 1rem !default;
+$menu-margin-nested: 1rem !default;
 
-/// Padding for items in a menu bar.
+/// Padding for items in a menu.
 /// @type Number
-$menubar-item-padding: 0.7rem 1rem !default;
+$menu-item-padding: 0.7rem 1rem !default;
 
-/// Spacing between an icon and text in a menu bar item.
+/// Spacing between an icon and text in a menu item.
 /// @type Number
-$menubar-icon-spacing: 0.25rem !default;
+$menu-icon-spacing: 0.25rem !default;
 
 /// Maximum number of `expand-n` classes to include in the CSS.
 /// @type Number
-$menubar-expand-max: 6 !default;
+$menu-expand-max: 6 !default;
 
-/// Creates the base styles for a menu bar.
-@mixin menu-bar-base {
-  margin: $menubar-margin;
+/// Creates the base styles for a Menu.
+@mixin menu-base {
+  margin: $menu-margin;
   list-style-type: none;
 
   // List items are table cell to allow for vertical alignment
@@ -40,7 +40,7 @@ $menubar-expand-max: 6 !default;
   // Reset line height to make the height of the overall item easier to calculate
   > li > a {
     display: block;
-    padding: $menubar-item-padding;
+    padding: $menu-item-padding;
     line-height: 1;
   }
 
@@ -52,15 +52,15 @@ $menubar-expand-max: 6 !default;
   }
 }
 
-/// Expands the items of a menu bar, so each item is the same width.
-/// @param {Keyword|Number} $count [auto] - Number of items in the menu bar. You can hardcode a number, or use `auto` to generate CSS that will adapt to the number of items inside the menu.
-@mixin menu-bar-expand($count: auto) {
+/// Expands the items of a Menu, so each item is the same width.
+/// @param {Keyword|Number} $count [auto] - Number of items in the Menu. You can hardcode a number, or use `auto` to generate CSS that will adapt to the number of items inside the menu.
+@mixin menu-expand($count: auto) {
   display: table;
   width: 100%;
 
   > li {
     @if $count == auto {
-      @include auto-width($menubar-expand-max);
+      @include auto-width($menu-expand-max);
     }
     @else if type-of($count) == 'number' {
       width: percentage(1 / $count);
@@ -68,9 +68,9 @@ $menubar-expand-max: 6 !default;
   }
 }
 
-/// Sets the direction of a menu bar.
-/// @param {Keyword} $dir [horizontal] - Direction of the menu bar. Can be `horizontal` or `vertical`.
-@mixin menu-bar-direction($dir: horizontal) {
+/// Sets the direction of a Menu.
+/// @param {Keyword} $dir [horizontal] - Direction of the Menu. Can be `horizontal` or `vertical`.
+@mixin menu-direction($dir: horizontal) {
   @if $dir == horizontal {
     > li {
       display: table-cell;
@@ -82,28 +82,28 @@ $menubar-expand-max: 6 !default;
     }
   }
   @else {
-    @warn 'The direction used for menu-bar-direction() must be horizontal or vertical.';
+    @warn 'The direction used for menu-direction() must be horizontal or vertical.';
   }
 }
 
-/// Creates a simple menu bar, which has no padding or hover state.
-@mixin menu-bar-simple {
+/// Creates a simple Menu, which has no padding or hover state.
+@mixin menu-simple {
   a {
     padding: 0;
-    margin-right: get-side($menubar-item-padding, right);
+    margin-right: get-side($menu-item-padding, right);
   }
 }
 
-/// Adds styles for a nested menu bar, by adding `margin-left` to the menu.
+/// Adds styles for a nested Menu, by adding `margin-left` to the menu.
 /// @param {Keyword|Number} $padding [auto] - Length of the margin.
-@mixin menu-bar-nested($margin: $menubar-margin-nested) {
+@mixin menu-nested($margin: $menu-margin-nested) {
   margin-left: $margin;
 }
 
-/// Adds support for icons to menu bar items.
+/// Adds support for icons to Menu items.
 /// @param {Keyword} $position [side] - Positioning for icons. Can be `side` (left, or right on RTL) or `top`.
 /// @param {Boolean} $base [true] - Set to `false` to prevent the shared CSS between side- and top-aligned icons from being printed. Set this to `false` if you're calling the mixin multiple times on the same element.
-@mixin menu-bar-icons($position: side, $base: true) {
+@mixin menu-icons($position: side, $base: true) {
   @if $base {
     > li > a, {
       > img,
@@ -122,7 +122,7 @@ $menubar-expand-max: 6 !default;
       > img,
       > i {
         display: inline-block;
-        margin-right: $menubar-icon-spacing;
+        margin-right: $menu-icon-spacing;
       }
     }
   }
@@ -133,42 +133,42 @@ $menubar-expand-max: 6 !default;
       > img,
       > i {
         display: block;
-        margin: 0 auto $menubar-icon-spacing;
+        margin: 0 auto $menu-icon-spacing;
       }
     }
   }
 }
 
-@mixin menu-bar-text {
+@mixin menu-text {
   font-weight: bold;
   color: inherit;
   line-height: 1;
-  padding: $menubar-item-padding;
+  padding: $menu-item-padding;
   padding-top: 0;
   padding-bottom: 0;
 }
 
-@mixin foundation-menu-bar {
-  .menu-bar {
-    @include menu-bar-base;
-    @include menu-bar-icons;
+@mixin foundation-menu {
+  .menu {
+    @include menu-base;
+    @include menu-icons;
 
     // Orientation
-    @include menu-bar-direction(horizontal);
+    @include menu-direction(horizontal);
 
     &.vertical {
-      @include menu-bar-direction(vertical);
+      @include menu-direction(vertical);
     }
 
     @each $size in $breakpoint-classes {
       @if $size != small {
         @include breakpoint($size) {
           &.#{$size}-horizontal {
-            @include menu-bar-direction(horizontal);
+            @include menu-direction(horizontal);
           }
 
           &.#{$size}-vertical {
-            @include menu-bar-direction(vertical);
+            @include menu-direction(vertical);
           }
         }
       }
@@ -176,7 +176,7 @@ $menubar-expand-max: 6 !default;
 
     // Simple
     &.simple {
-      @include menu-bar-simple;
+      @include menu-simple;
     }
 
     // Align right
@@ -188,7 +188,7 @@ $menubar-expand-max: 6 !default;
 
     // Even-width
     &.expanded {
-      @include menu-bar-expand;
+      @include menu-expand;
 
       > li:first-child:last-child {
         width: 100%;
@@ -197,16 +197,16 @@ $menubar-expand-max: 6 !default;
 
     // Vertical icons
     &.icon-top {
-      @include menu-bar-icons(top, $base: false);
+      @include menu-icons(top, $base: false);
     }
 
     // Nesting
     &.nested {
-      @include menu-bar-nested;
+      @include menu-nested;
     }
   }
 
-  .menu-bar-text {
-    @include menu-bar-text;
+  .menu-text {
+    @include menu-text;
   }
 }

@@ -3,16 +3,16 @@ title: Navigation
 description: Foundation is bundled with many simple navigation patterns, which can be combined to form more complex, robust responsive navigation solutions.
 ---
 
-## Basics: Menu Bar
+## Basics: Menu
 
-The menu bar is an all-purpose navigation component. It can be aligned horizontally or vertically, can be nested, and supports icons. [Learn more about the menu bar.](menu-bar.html)
+The Menu is an all-purpose navigation component. It can be aligned horizontally or vertically, can be nested, and supports icons. [Learn more about the Menu.](menu.html)
 
 All menus use the `ul > li > a` pattern. The markup is a little strict, but this makes it easy to attach a navigation plugin to any menu, as you'll see below.
 
-Here's a basic menu bar.
+Here's a basic Menu.
 
 ```html_example
-<ul class="menu-bar">
+<ul class="menu">
   <li><a href="#">Item One</a></li>
   <li><a href="#">Item Two</a></li>
   <li><a href="#">Item Three</a></li>
@@ -24,10 +24,10 @@ Here's a basic menu bar.
 To nest menus, add a new `<ul>` inside of an `<li>`, *after* the `<a>` inside.
 
 ```html
-<ul class="menu-bar">
+<ul class="menu">
   <li>
     <a href="#">Item One</a>
-    <ul class="menu-bar">
+    <ul class="menu">
       <li><a href="#">Item One-one</a></li>
     </ul>
   </li>
@@ -44,15 +44,15 @@ Top bar is a simple wrapper around these menu patterns. It supports a left-hand 
 
 <div class="top-bar">
   <div class="top-bar-left">
-    <ul class="dropdown menu-bar" data-dropdown-menu>
-      <li class="menu-bar-text">Site Title</li>
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li class="menu-text">Site Title</li>
       <li><a href="#">One</a></li>
       <li><a href="#">Two</a></li>
       <li><a href="#">Three</a></li>
     </ul>
   </div>
   <div class="top-bar-right">
-    <ul class="menu-bar">
+    <ul class="menu">
       <li><input type="search" placeholder="Search"></li>
       <li><button type="button" class="button">Search</button></li>
     </ul>
@@ -63,32 +63,32 @@ Top bar is a simple wrapper around these menu patterns. It supports a left-hand 
 
 ## Menu Plugins
 
-The basic menu bar can be enhanced with one of three **menu bar plugins**. All three use the exact same markup to create a different style of multi-tier navigation.
+The basic Menu can be enhanced with one of three **Menu plugins**. All three use the exact same markup to create a different style of multi-tier navigation.
 
 ### Dropdown Menu
 
 The dropdown menu plugin (`data-dropdown-menu`) converts a nested menu into a series of dropdown menus. The nested menus can be opened through hover, click, or keyboard. [Learn more about the dropdown menu.](dropdown-menu.html)
 
-<ul class="dropdown menu-bar" data-dropdown-menu>
+<ul class="dropdown menu" data-dropdown-menu>
   <li class="has-submenu">
     <a>Item 1 &raquo;</a>
-    <ul class="submenu menu-bar" data-submenu>
+    <ul class="submenu menu" data-submenu>
       <li><a href="#">Item 1A Loooong</a></li>
       <li class='has-submenu'>
         <a href='#'> Item 1 sub &raquo;</a>
-        <ul class='submenu menu-bar' data-submenu>
+        <ul class='submenu menu' data-submenu>
           <li><a href='#'>Item 1 subA</a></li>
           <li><a href='#'>Item 1 subB</a></li>
           <li class='has-submenu'>
             <a href='#'> Item 1 sub &raquo;</a>
-            <ul class='submenu menu-bar' data-submenu>
+            <ul class='submenu menu' data-submenu>
               <li><a href='#'>Item 1 subA</a></li>
               <li><a href='#'>Item 1 subB</a></li>
             </ul>
           </li>
           <li class='has-submenu'>
             <a href='#'> Item 1 sub &raquo;</a>
-            <ul class='submenu menu-bar' data-submenu>
+            <ul class='submenu menu' data-submenu>
               <li><a href='#'>Item 1 subA</a></li>
               <li><a href='#'>Item 1 subB</a></li>
             </ul>
@@ -101,14 +101,14 @@ The dropdown menu plugin (`data-dropdown-menu`) converts a nested menu into a se
   </li>
   <li class="has-submenu">
     <a href="#">Item 2 &raquo;</a>
-    <ul class="submenu menu-bar" data-submenu>
+    <ul class="submenu menu" data-submenu>
       <li><a href="#">Item 2A</a></li>
       <li><a href="#">Item 2B</a></li>
     </ul>
   </li>
   <li class="has-submenu">
     <a href="#">Item 3 &raquo;</a>
-    <ul class="submenu menu-bar" data-submenu>
+    <ul class="submenu menu" data-submenu>
       <li><a href="#">Item 3A</a></li>
       <li><a href="#">Item 3B</a></li>
     </ul>
@@ -122,13 +122,13 @@ The dropdown menu plugin (`data-dropdown-menu`) converts a nested menu into a se
 
 The drilldown menu plugin (`data-drilldown`) converts a nested menu into a series of sliding menus. Clicking an item slides the next level menu into view. [Learn more about the drilldown menu.](drilldown-menu.html)
 
-<ul class="vertical menu-bar" data-drilldown style="width: 300px;" id="m1">
+<ul class="vertical menu" data-drilldown style="width: 300px;" id="m1">
   <li class='has-submenu'>
     <a href="#">Item 1</a>
-    <ul class="vertical menu-bar" data-submenu id="m2">
+    <ul class="vertical menu" data-submenu id="m2">
       <li class='has-submenu'>
         <a href="#">Item 1A</a>
-        <ul class="vertical menu-bar" data-submenu id="m3">
+        <ul class="vertical menu" data-submenu id="m3">
           <li><a href="#">Item 1Aa</a></li>
           <li><a href="#">Item 1Ba</a></li>
           <li><a href="#">Item 1Ca</a></li>
@@ -144,7 +144,7 @@ The drilldown menu plugin (`data-drilldown`) converts a nested menu into a serie
   </li>
   <li class='has-submenu'>
     <a href="#">Item 2</a>
-    <ul class="vertical menu-bar" data-submenu>
+    <ul class="vertical menu" data-submenu>
       <li><a href="#">Item 2A</a></li>
       <li><a href="#">Item 2B</a></li>
       <li><a href="#">Item 2C</a></li>
@@ -154,7 +154,7 @@ The drilldown menu plugin (`data-drilldown`) converts a nested menu into a serie
   </li>
   <li class='has-submenu'>
     <a href="#">Item 3</a>
-    <ul class="vertical menu-bar" data-submenu>
+    <ul class="vertical menu" data-submenu>
       <li><a href="#">Item 3A</a></li>
       <li><a href="#">Item 3B</a></li>
       <li><a href="#">Item 3C</a></li>
@@ -171,13 +171,13 @@ The drilldown menu plugin (`data-drilldown`) converts a nested menu into a serie
 
 The accordion menu plugin (`data-accordion-menu`) converts a nested menu into a series of collapsed accordions. Clicking an item slides down the nested menu. [Learn more about the accordion menu.](accordion-menu.html)
 
-<div class="vertical menu-bar" data-accordion-menu>
+<div class="vertical menu" data-accordion-menu>
   <li class="has-submenu">
     <a href="#">Item 1</a>
-    <ul class="menu-bar vertical nested is-active" data-submenu>
+    <ul class="menu vertical nested is-active" data-submenu>
       <li class="has-submenu">
         <a href="#">Item 1A</a>
-        <ul class="menu-bar vertical nested" data-submenu>
+        <ul class="menu vertical nested" data-submenu>
           <li><a href="#">Item 1Ai</a></li>
           <li><a href="#">Item 1Aii</a></li>
           <li><a href="#">Item 1Aiii</a></li>
@@ -189,7 +189,7 @@ The accordion menu plugin (`data-accordion-menu`) converts a nested menu into a 
   </li>
   <li class="has-submenu">
     <a href="#">Item 2</a>
-    <ul class="menu-bar vertical nested" data-submenu>
+    <ul class="menu vertical nested" data-submenu>
       <li><a href="#">Item 2A</a></li>
       <li><a href="#">Item 2B</a></li>
     </ul>
@@ -203,15 +203,15 @@ The accordion menu plugin (`data-accordion-menu`) converts a nested menu into a 
 
 Each of the above three patterns has a use in a specific context. But some patterns only work at certain screen sizes. For example, dropdown menus don't work as well on smaller screens, but the same navigation items might work better as a drilldown or an accordion menu at that screen size.
 
-Our responsive menu plugin (`data-menu-bar`) allows you to take a menu bar, and assign different navigation patterns to it at different screen sizes. In the below example, a drilldown menu changes to a dropdown menu at larger screen sizes. [Learn more about the responsive menu bar plugin.](responsive-navigation.html#responsive-menu-bar)
+Our responsive menu plugin (`data-responsive-menu`) allows you to take a Menu, and assign different navigation patterns to it at different screen sizes. In the below example, a drilldown menu changes to a dropdown menu at larger screen sizes. [Learn more about the responsive Menu plugin.](responsive-navigation.html#responsive-menu)
 
-<ul class="vertical menu-bar" data-menu-bar="drilldown medium-dropdown" style="width: 300px;">
+<ul class="vertical menu" data-responsive-menu="drilldown medium-dropdown" style="width: 300px;">
   <li class="has-submenu">
     <a href="#">Item 1</a>
-    <ul class="vertical submenu menu-bar" data-submenu id="m2">
+    <ul class="vertical submenu menu" data-submenu id="m2">
       <li class="has-submenu">
         <a href="#">Item 1A</a>
-        <ul class="vertical submenu menu-bar" data-submenu id="m3">
+        <ul class="vertical submenu menu" data-submenu id="m3">
           <li><a href="#">Item 1A</a></li>
           <li><a href="#">Item 1B</a></li>
           <li><a href="#">Item 1C</a></li>
@@ -224,14 +224,14 @@ Our responsive menu plugin (`data-menu-bar`) allows you to take a menu bar, and 
   </li>
   <li class="has-submenu">
     <a href="#">Item 2</a>
-    <ul class="vertical submenu menu-bar" data-submenu>
+    <ul class="vertical submenu menu" data-submenu>
       <li><a href="#">Item 2A</a></li>
       <li><a href="#">Item 2B</a></li>
     </ul>
   </li>
   <li class="has-submenu">
     <a href="#">Item 3</a>
-    <ul class="vertical submenu menu-bar" data-submenu>
+    <ul class="vertical submenu menu" data-submenu>
       <li><a href="#">Item 3A</a></li>
       <li><a href="#">Item 3B</a></li>
     </ul>
@@ -251,11 +251,11 @@ To see the below example in action, scale your browser down. The top bar will be
 
 <div class="top-bar" id="example-menu">
   <div class="top-bar-left">
-    <ul class="dropdown menu-bar" data-dropdown-menu>
-      <li class="menu-bar-text">Site Title</li>
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li class="menu-text">Site Title</li>
       <li class="has-submenu">
         <a href="#">One</a>
-        <ul class="submenu menu-bar vertical" data-submenu>
+        <ul class="submenu menu vertical" data-submenu>
           <li><a href="#">One</a></li>
           <li><a href="#">Two</a></li>
           <li><a href="#">Three</a></li>
@@ -266,7 +266,7 @@ To see the below example in action, scale your browser down. The top bar will be
     </ul>
   </div>
   <div class="top-bar-right">
-    <ul class="menu-bar">
+    <ul class="menu">
       <li><input type="search" placeholder="Search"></li>
       <li><button type="button" class="button">Search</button></li>
     </ul>

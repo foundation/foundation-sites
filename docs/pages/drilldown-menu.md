@@ -19,16 +19,16 @@ js: js/foundation.drilldown.js
 
 ## Basics
 
-Drilldowns use the standard [menu bar](menu-bar.html) syntax. Add the attribute `data-drilldown` to the root `<ul>`, and `data-submenu` to each nested menu.
+Drilldowns use the standard [Menu](menu.html) syntax. Add the attribute `data-drilldown` to the root `<ul>`, and `data-submenu` to each nested menu.
 
 
-<ul class="vertical menu-bar" data-drilldown style="width: 300px;" id="m1">
+<ul class="vertical menu" data-drilldown style="width: 300px;" id="m1">
   <li class='has-submenu'>
     <a href="#">Item 1</a>
-    <ul class="vertical menu-bar" data-submenu id="m2">
+    <ul class="vertical menu" data-submenu id="m2">
       <li class='has-submenu'>
         <a href="#">Item 1A</a>
-        <ul class="vertical menu-bar" data-submenu id="m3">
+        <ul class="vertical menu" data-submenu id="m3">
           <li><a href="#">Item 1Aa</a></li>
           <li><a href="#">Item 1Ba</a></li>
           <li><a href="#">Item 1Ca</a></li>
@@ -44,7 +44,7 @@ Drilldowns use the standard [menu bar](menu-bar.html) syntax. Add the attribute 
   </li>
   <li class='has-submenu'>
     <a href="#">Item 2</a>
-    <ul class="vertical menu-bar" data-submenu>
+    <ul class="vertical menu" data-submenu>
       <li><a href="#">Item 2A</a></li>
       <li><a href="#">Item 2B</a></li>
       <li><a href="#">Item 2C</a></li>
@@ -54,7 +54,7 @@ Drilldowns use the standard [menu bar](menu-bar.html) syntax. Add the attribute 
   </li>
   <li class='has-submenu'>
     <a href="#">Item 3</a>
-    <ul class="vertical menu-bar" data-submenu>
+    <ul class="vertical menu" data-submenu>
       <li><a href="#">Item 3A</a></li>
       <li><a href="#">Item 3B</a></li>
       <li><a href="#">Item 3C</a></li>

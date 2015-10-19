@@ -48,7 +48,7 @@ You can change that by modifying the `$breakpoint-classes` variable in your sett
 $breakpoint-classes: (small medium large);
 ```
 
-For example, to get `.xlarge` classes in your CSS, for use in the grid, menu bar, and more, just add it to the end of the list:
+For example, to get `.xlarge` classes in your CSS, for use in the grid, Menu, and more, just add it to the end of the list:
 
 ```scss
 $breakpoint-classes: (small medium large xlarge);

@@ -9,7 +9,7 @@ js: js/foundation.toggler.js
 To setup a class toggle, start by adding the attribute `data-toggler` to an element. The value of `data-toggler` is the class you want to toggle. Also give the element a unique ID so it can be targeted.
 
 ```html
-<ul class="menu-bar" id="menuBar" data-toggler=".expanded">
+<ul class="menu" id="menuBar" data-toggler=".expanded">
   <li><a href="#">One</a></li>
   <li><a href="#">Two</a></li>
   <li><a href="#">Three</a></li>
@@ -25,7 +25,7 @@ Then, add `data-toggle` to any element, with the ID of the target as the value o
 
 <p><a data-toggle="menuBar">Expand!</a></p>
 
-<ul class="menu-bar" id="menuBar" data-toggler=".expanded">
+<ul class="menu" id="menuBar" data-toggler=".expanded">
   <li><a href="#">One</a></li>
   <li><a href="#">Two</a></li>
   <li><a href="#">Three</a></li>

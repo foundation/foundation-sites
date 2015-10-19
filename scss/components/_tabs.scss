@@ -22,11 +22,11 @@ $tab-background-active: $light-gray;
 /// @type Color
 $tab-border: $light-gray !default;
 
-/// Default text color for items in a menu bar.
+/// Default text color for items in a Menu.
 /// @type Color
 $tab-item-color: foreground($tab-background, $primary-color);
 
-/// Default background color on hover for items in a menu bar.
+/// Default background color on hover for items in a Menu.
 $tab-item-background-hover: $white !default;
 
 /// Default padding of a a tab item.
