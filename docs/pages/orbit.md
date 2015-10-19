@@ -3,6 +3,7 @@ title: Orbit Slider
 description: The slider you want, the slider you need.
 sass: scss/components/_orbit.scss
 js: js/foundation.orbit.js
+mui: true
 tags:
   - slider
   - carousel
