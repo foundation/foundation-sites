@@ -6,13 +6,13 @@
   .has-submenu {
     position: relative;
 
-    &.down-arrow > a {
+    &.is-down-arrow > a {
 
     }
-    &.right-arrow > a {
+    &.is-right-arrow > a {
 
     }
-    &.left-arrow > a {
+    &.is-left-arrow > a {
 
     }
   }
@@ -32,7 +32,7 @@
       width: 100%;
     }
 
-    &.right-arrow {
+    &.is-right-arrow {
       left: auto;
       right: 100%;
     }
@@ -41,7 +41,7 @@
       top: 100%;
       left: 0;
       right: auto;
-      &.right-arrow{
+      &.is-right-arrow{
         left: auto;
         right: 0;
       }
@@ -64,7 +64,7 @@
     & > li .submenu {
       top: 0;
       left: 100%;
-      &.right-arrow {
+      &.is-right-arrow {
         left: auto;
         right: 100%;
       }
