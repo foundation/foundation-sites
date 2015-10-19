@@ -243,7 +243,7 @@
           _this._close();
       });
     }
-    if(this.options.closeOnEsc){
+    /*if(this.options.closeOnEsc){
       $(window).on('keyup.zf.reveal', function(e){
         e.preventDefault();
         e.stopPropagation();
@@ -251,7 +251,7 @@
           _this._close();
         }
       });
-    }
+    }*/
 
     // lock focus within modal while tabbing
     this.$element.on('keydown.zf.reveal', function(e) {
@@ -260,7 +260,34 @@
         if (!$(this).is(':visible') || $(this).attr('tabindex') < 0) return false; //only have visible elements and those that have a tabindex greater or equal 0
         return true;
       });
-      var keyCode = e.keyCode || e.which;
+      // handle keyboard event with keyboard util
+      Foundation.handleKey(e, _this, {
+        tab_forward: function() {
+          if (this.$element.find(':focus').is(visibleFocusableElements.eq(-1))) { // left modal downwards, setting focus to first element
+            visibleFocusableElements.eq(0).focus();
+            e.preventDefault();
+          }
+        },
+        tab_backward: function() {
+          if (this.$element.find(':focus').is(visibleFocusableElements.eq(0)) || this.$element.is(':focus')) { // left modal upwards, setting focus to last element
+            visibleFocusableElements.eq(-1).focus();
+            e.preventDefault();
+          }
+        },
+        open: function() {
+          this._open();
+        },
+        close: function() {
+          if (this.options.closeOnEsc) {
+            this._close();
+          }
+        }
+      });
+      if (visibleFocusableElements.length === 0) { // no focusable elements inside the modal at all, prevent tabbing in general
+        e.preventDefault();
+      }
+
+      /*var keyCode = e.keyCode || e.which;
       if (keyCode === 9) { // tab is pressed
         if (e.shiftKey && ($(this).find(':focus').is(visibleFocusableElements.eq(0)) || $(this).is(':focus'))) { // left modal upwards, setting focus to last element
           visibleFocusableElements.eq(-1).focus();
@@ -271,7 +298,7 @@
         } else if (visibleFocusableElements.length === 0) { // no focusable elements inside the modal at all, prevent tabbing in general
           e.preventDefault();
         }
-      }
+      }*/
     });
 
   };

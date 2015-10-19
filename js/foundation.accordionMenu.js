@@ -162,7 +162,7 @@
       .addBack();
       window.requestAnimationFrame(function(){
         $target.slideDown(_this.options.slideSpeed).promise().done(function(){
-          $target.siblings('a').eq(0).focus();
+          // $target.siblings('a').eq(0).focus();
         });
       });
     if(!this.options.multiOpen){
