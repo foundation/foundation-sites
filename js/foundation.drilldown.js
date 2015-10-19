@@ -55,9 +55,9 @@
     var _this = this;
 
     $elem/*.off('mouseup.zf.drilldown tap.zf.drilldown touchend.zf.drilldown')*/
-    .on('mouseup.zf.drilldown tap.zf.drilldown touchend.zf.drilldown', function(e){
-      console.log('mouse event');
-      // e.preventDefault();
+    .on('mousedown.zf.drilldown tap.zf.drilldown touchend.zf.drilldown', function(e){
+      // console.log('mouse event', $elem);
+      e.preventDefault();
       e.stopPropagation();
 
       if(e.target !== e.currentTarget.firstElementChild){
@@ -67,40 +67,37 @@
 
       if(_this.options.closeOnClick){
         var $body = $('body').not(_this.$wrapper);
-        $body.off('.zf.drilldown').on('mouseup.zf.drilldown tap.zf.drilldown touchend.zf.drilldown', function(e){
-          console.log('body mouseup');
+        $body.off('.zf.drilldown').on('mousedown.zf.drilldown tap.zf.drilldown touchend.zf.drilldown', function(e){
+          // console.log('body mouseup');
           e.preventDefault();
           _this._hideAll();
           $body.off('.zf.drilldown');
         });
       }
     }).on('focus.zf.drilldown', function(){
-      console.log('something');
+      // console.log('something');
       _this._show($elem);
     });
-    $elem.find('.js-drilldown-back').eq(0).on('mouseup.zf.drilldown tap.zf.drilldown touchend.zf.drilldown', function(e){
+    $elem.find('.js-drilldown-back').eq(0).on('mousedown.zf.drilldown tap.zf.drilldown touchend.zf.drilldown', function(e){
       //do stuff
-      console.log('back button');
+      // console.log('back button');
     });
   };
   Drilldown.prototype._hideAll = function(){
-    console.log('hiding');
     this.$element.find('.is-drilldown-sub.is-active').addClass('is-closing')
         .on('transitionend.zf.drilldown', function(e){
-          console.log('transitionend');
+          // console.log('transitionend');
           $(this).removeClass('is-active is-closing').off('transitionend.zf.drilldown');
-
         });
   };
   Drilldown.prototype._back = function($elem){
-    console.log('going back', $elem);
-    $elem.off('mouseup.zf.drilldown tap.zf.drilldown touchend.zf.drilldown');
+    $elem.off('mousedown.zf.drilldown tap.zf.drilldown touchend.zf.drilldown');
     $elem.children('.js-drilldown-back')
-        .on('mouseup.zf.drilldown tap.zf.drilldown touchend.zf.drilldown', function(e){
-          console.log('mouseup on back');
+        .on('mousedown.zf.drilldown tap.zf.drilldown touchend.zf.drilldown', function(e){
+          // console.log('mouseup on back');
           $elem.addClass('is-closing').on('transitionend.zf.drilldown', function(e){
             // e.stopImmediatePropagation();
-            console.log('different transitionend');
+            // console.log('different transitionend');
             $elem.removeClass('is-active is-closing').off('transitionend.zf.drilldown');
           });
         });
@@ -108,9 +105,9 @@
   Drilldown.prototype._menuLinkEvents = function(){
     var _this = this;
     this.$menuItems.not('.has-submenu')
-        .off('mouseup.zf.drilldown tap.zf.drilldown touchend.zf.drilldown')
-        .on('mouseup.zf.drilldown tap.zf.drilldown touchend.zf.drilldown', function(e){
-          console.log('random link mouse event');
+        .off('mousedown.zf.drilldown tap.zf.drilldown touchend.zf.drilldown')
+        .on('mousedown.zf.drilldown tap.zf.drilldown touchend.zf.drilldown', function(e){
+          // console.log('random link mouse event');
           e.stopImmediatePropagation();
           setTimeout(function(){
             _this._hideAll();
@@ -118,7 +115,6 @@
       });
   };
   Drilldown.prototype._show = function($elem){
-    console.log('showing');
     $elem.children('[data-submenu]').addClass('is-active');
   };
   Drilldown.prototype.getMaxHeight = function(){
@@ -133,6 +129,16 @@
     result.width = this.options.maxWidth;
 
     return result;
+  };
+  Drilldown.prototype.destroy = function(){
+    this._hideAll();
+    this.$element.unwrap()
+                 .find('.js-drilldown-back').remove()
+                 .end().find('.is-active, .is-closing, .is-drilldown-sub').removeClass('is-active is-closing is-drilldown-sub')
+                 .end().find('[data-submenu]').removeAttr('aria-hidden tabindex role')
+                 .off('.zf.drilldown').end().off('zf.drilldown');
+
+    this.$element.trigger('destroyed.zf.drilldown');
   };
   Foundation.plugin(Drilldown);
 }(jQuery, window.Foundation);
