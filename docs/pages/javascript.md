@@ -7,7 +7,7 @@ description: Our JavaScript is easy to set up and only requires jQuery to get go
 
 You can get the Foundation JavaScript files from a ZIP download, package manager, or CDN. Check out the [Installation](installation.html) page to learn more.
 
-Once you have the files, add links to jQuery and Foundation as `<script>` tags at the bottom of your page, below the closing `<body>` tag.
+Once you have the files, add links to jQuery and Foundation as `<script>` tags at the bottom of your page, just before the closing `<body>` tag.
 
 ```html
 <script src="js/jquery.min.js"></script>
