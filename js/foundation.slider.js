@@ -1,3 +1,11 @@
+/**
+ * Slider module.
+ * @module foundation.slider
+ * @requires foundation.util.animationFrame
+ * @requires foundation.util.randomId
+ * @requires foundation.util.triggers
+ * @requires foundation.util.keyboard
+ */
 !function($, Foundation){
   'use strict';
 
@@ -21,7 +29,6 @@
     vertical: false,
     draggable: true,
     disabled: false,
-
     doubleSided: false,
     steps: 100,
     decimal: 2,
@@ -46,7 +53,7 @@
     this._setHandlePos(this.$handle, this.options.initialStart);
     this._setInitAttr(0)
     this._events(this.$handle);
-    if(this.handles[1]){ //need to create array of inputs if they are visible
+    if(this.handles[1]){
       this.options.doubleSided = true;
       this.$handle2 = this.handles.eq(1);
       this.$input2 = this.inputs.length ? this.inputs.eq(1) : $('#' + this.$handle2.attr('aria-controls'));
@@ -65,7 +72,23 @@
 
   Slider.prototype._setHandlePos = function($hndl, location, cb){//location is a number value between the `start` and `end` values of the slider bar.
   //might need to alter that slightly for bars that will have odd number selections.
-  location = parseFloat(location);//on input change events, convert string to number...grumble.
+
+    location = parseFloat(location);//on input change events, convert string to number...grumble.
+    // prevent slider from running out of bounds
+    if(location < this.options.start){ location = this.options.start; }
+    else if(location > this.options.end){ location = this.options.end; }
+
+    if(this.options.doubleSided){
+      if(this.handles.index($hndl) === 0){
+        var h2Val = parseFloat(this.$handle2.attr('aria-valuenow'));
+        location = location >= h2Val ? h2Val - this.options.step : location;
+      }else{
+        var h1Val = parseFloat(this.$handle.attr('aria-valuenow'));
+      console.log(h1Val);
+        location = location <= h1Val ? h1Val + this.options.step : location;
+      }
+    }
+
     var _this = this,
         vert = this.options.vertical,
         hOrW = vert ? 'height' : 'width',
@@ -78,9 +101,6 @@
         location = location > 0 ? parseFloat(location.toFixed(this.options.decimal)) : 0,
         anim, prog, start = null, css = {};
 
-    // prevent slider from running out of bounds
-    if (location < _this.options.start) location = _this.options.start;
-    else if (location > _this.options.end) location = _this.options.end;
 
     this._setValues($hndl, location);
 
@@ -101,8 +121,9 @@
       }
     }
 
-    this.$element.off('finished.zf.animate')
-                 .on('finished.zf.animate', function(){
+    this.$element//.off('finished.zf.animate')
+                 .one('finished.zf.animate', function(){
+                   console.log('finished');
                     _this.animComplete = true;
                     _this.$element.trigger('moved.zf.slider');
                 });
@@ -284,7 +305,6 @@
       'id': id,
       'max': this.options.end,
       'min': this.options.start
-
     });
     this.handles.eq(idx).attr({
       'role': 'slider',
