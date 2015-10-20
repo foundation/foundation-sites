@@ -179,6 +179,36 @@
 <section>
   {{#heading 2}}JavaScript Reference{{/heading}}
 
+  {{#if js.module}}{{#with js.module.[0]}}
+  <section>
+    {{#heading 3 'js-module'}}Initializing{{/heading}}
+
+    <p>The file <code>{{meta.filename}}</code> must be included in your JavaScript to use this plugin, along with <code>foundation.core.js</code>.{{#if requires}} <strong>This plugin also requires these utility libraries:</strong>{{/if}}</p>
+
+    {{#if requires}}{{#each requires}}
+    <ul>
+      <li><code>{{jsModuleName this}}</code></li>
+    </ul>
+    {{/each}}{{/if}}
+
+    <p>To import as an AMD module (for use with <a href="http://requirejs.org/">RequireJS</a>):</p>
+
+<div class="docs-code"><pre><code>define(['{{memberof}}.{{name}}'], function({{name}}) {
+
+});</code></pre></div>
+
+    <p>To import as a CommonJS module (for use with <a href="http://browserify.org/">Browserify</a> or <a href="https://webpack.github.io/">Webpack</a>):</p>
+
+    <div class="docs-code"><pre><code>var {{name}} = require('{{memberof}}.{{name}}');</code></pre></div>
+
+    <p>Note that when importing plugins with module loaders, the plugins are not initialized by default. They must be manually registered with Foundation, like this:</p>
+
+    <div class="docs-code"><pre><code>var {{name}} = require('{{memberof}}.{{name}}');
+
+Foundation.plugin({{name}});</code></pre></div>
+  </section>
+  {{/with}}{{/if}}
+
   {{#each js.class}}
   <section>
     {{#heading 3 'js-class'}}Foundation.{{this.name}}{{/heading}}

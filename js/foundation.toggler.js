@@ -1,3 +1,9 @@
+/**
+ * Toggler module.
+ * @module foundation.toggler
+ * @requires foundation.util.motion
+ */
+
 !function(Foundation, $) {
   'use strict';
 
