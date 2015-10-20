@@ -100,6 +100,7 @@
   };
 
   Toggler.prototype._toggleClass = function() {
+    var _this = this;
     this.$element.toggleClass(this.className);
 
     if (this.$element.hasClass(this.className)) {
