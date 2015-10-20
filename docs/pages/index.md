@@ -82,6 +82,14 @@ Get to know the pieces of Foundation.
         <li><a href="switch.html">Switch</a></li>
       </ul>
     </section>
+
+    <section>
+      <h4>Libraries</h4>
+      <ul>
+        <li><a href="motion-ui.html">Motion UI</a></li>
+        <li><a href="panini.html">Panini</a></li>
+      </ul>
+    </section>
   </div>
   <div class="column">
     <section>
