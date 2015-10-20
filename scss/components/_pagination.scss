@@ -65,6 +65,7 @@ $pagination-arrows: true;
     font-size: $pagination-font-size;
     margin-right: $pagination-item-spacing;
     display: none;
+    border-radius: $global-radius;
 
     @if not $pagination-mobile-items {
       &:last-child,
@@ -84,6 +85,7 @@ $pagination-arrows: true;
     color: $pagination-item-color;
     display: block;
     padding: $pagination-item-padding;
+    border-radius: $global-radius;
 
     &:hover {
       background: $pagination-item-background-hover;
