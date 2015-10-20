@@ -30,6 +30,7 @@ $label-padding: 0.33333rem 0.5rem !default;
   line-height: 1;
   white-space: nowrap;
   cursor: default;
+  border-radius: $global-radius;
 }
 
 @mixin foundation-label {
