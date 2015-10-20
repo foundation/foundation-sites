@@ -294,7 +294,7 @@ Foundation.plugin({{name}});</code></pre></div>
 
     {{#each js.function}}
     <section>
-      {{#heading 4 'js-class'}}{{../../js.class.0.name}}.{{this.name}}{{/heading}}
+      {{#heading 4 this.name}}{{../../js.class.0.name}}.{{this.name}}{{/heading}}
 
       {{md this.description}}
 
