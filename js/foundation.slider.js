@@ -45,6 +45,8 @@
     this.$input = this.inputs.length ? this.inputs.eq(0) : $('#' + this.$handle.attr('aria-controls'));
     this.$fill = this.$element.find('[data-slider-fill]').css(this.options.vertical ? 'height' : 'width', 0);
 
+    var isDbl = false,
+        _this = this;
 
     if(!this.inputs.length){
       this.inputs = $().add(this.$input);
@@ -52,7 +54,6 @@
     }
     this._setInitAttr(0);
     this._events(this.$handle);
-    this._setHandlePos(this.$handle, this.options.initialStart);
 
     if(this.handles[1]){
       this.options.doubleSided = true;
@@ -62,26 +63,35 @@
       if(!this.inputs[1]){
         this.inputs = this.inputs.add(this.$input2);
       }
+      isDbl = true;
 
-      this._setHandlePos(this.$handle2, this.options.initialEnd);
+      this._setHandlePos(this.$handle, this.options.initialStart, 'wtf', function(){
+
+        _this._setHandlePos(_this.$handle2, _this.options.initialEnd);
+      });
       this._setInitAttr(1);
       this._events(this.$handle2);
     }
 
+    if(!isDbl){
+
+      this._setHandlePos(this.$handle, this.options.initialStart);
+    }
 
     this.$element.trigger('init.zf.slider');
   };
 
-  Slider.prototype._setHandlePos = function($hndl, location, cb){//location is a number value between the `start` and `end` values of the slider bar.
+  Slider.prototype._setHandlePos = function($hndl, location, str, cb){//location is a number value between the `start` and `end` values of the slider bar.
   //might need to alter that slightly for bars that will have odd number selections.
-
+    // console.log(str, cb);
     location = parseFloat(location);//on input change events, convert string to number...grumble.
     // prevent slider from running out of bounds
     if(location < this.options.start){ location = this.options.start; }
     else if(location > this.options.end){ location = this.options.end; }
 
-    var isDbl = this.options.doubleSided;
-    console.log(isDbl);
+    var isDbl = this.options.doubleSided,
+        callback = cb || null;
+
     if(isDbl){
       if(this.handles.index($hndl) === 0){
         var h2Val = parseFloat(this.$handle2.attr('aria-valuenow'));
@@ -115,20 +125,22 @@
 
       if(isLeftHndl){
         css[lOrT] = (pctOfBar > 0 ? pctOfBar * 100 : 0) + '%';//
-        dim = ((percent(this.$handle2.position()[lOrT] + halfOfHandle, elemDim) - parseFloat(pctOfBar)) * 100).toFixed(this.options.decimal) + '%';
+        dim = /*Math.abs*/((percent(this.$handle2.position()[lOrT] + halfOfHandle, elemDim) - parseFloat(pctOfBar)) * 100).toFixed(this.options.decimal) + '%';
         console.log('left handle', dim);
         css['min-' + hOrW] = dim;
+        if(cb && typeof cb === 'function'){ ;cb(); }
       }else{
         // dim = ((parseFloat(pctOfBar) - (percent(this.$handle.position()[lOrT] - halfOfHandle, elemDim))) * 100);
         // dim = (dim > 100 ? 100 : dim.toFixed(this.options.decimal)) + '%';
+        // console.log('location',location, 'left hndl left', this.handles.eq(0)[0].style.left);
         location = (location < 100 ? location : 100) - parseFloat(this.$handle[0].style.left);
+        // console.log('location',location);
         css['min-' + hOrW] = location + '%';
-        console.log('location',location);
       }
     }
 
+                  //  console.log('finished with movement', callback);
     this.$element.one('finished.zf.animate', function(){
-                   console.log('finished with movement');
                     _this.animComplete = true;
                     _this.$element.trigger('moved.zf.slider');
                 });
@@ -163,7 +175,7 @@
   Slider.prototype._setValues = function($handle, val){
     var _this = this,
         idx = this.options.doubleSided ? this.handles.index($handle) : 0;
-    console.log('index of handle',idx);
+    // console.log('index of handle',idx);
     this.inputs.eq(idx).val(val);
     $handle.attr('aria-valuenow', val);
   };
