@@ -7,7 +7,6 @@
 ////
 
 /// Creates a container for a flex grid row.
-///
 /// @param {Keyword|List} $behavior [null]
 ///   Modifications to the default grid styles. `nest` indicates the row will be placed inside another row. `collapse` indicates that the columns inside this row will not have padding. `nest collapse` combines both behaviors.
 /// @param {Number} $width [$grid-row-width] - Maximum width of the row.
