@@ -45,14 +45,14 @@
     this.$input = this.inputs.length ? this.inputs.eq(0) : $('#' + this.$handle.attr('aria-controls'));
     this.$fill = this.$element.find('[data-slider-fill]').css(this.options.vertical ? 'height' : 'width', 0);
 
+    this._setInitAttr(0);
+    this._events(this.$handle);
+
     if(!this.inputs.length){
       this.inputs = $().add(this.$input);
       this.options.binding = true;
     }
 
-    this._setHandlePos(this.$handle, this.options.initialStart);
-    this._setInitAttr(0)
-    this._events(this.$handle);
     if(this.handles[1]){
       this.options.doubleSided = true;
       this.$handle2 = this.handles.eq(1);
@@ -67,6 +67,8 @@
       this._events(this.$handle2);
     }
 
+    this._setHandlePos(this.$handle, this.options.initialStart);
+
     this.$element.trigger('init.zf.slider');
   };
 
@@ -78,13 +80,15 @@
     if(location < this.options.start){ location = this.options.start; }
     else if(location > this.options.end){ location = this.options.end; }
 
-    if(this.options.doubleSided){
+    var isDbl = this.options.doubleSided;
+    if(isDbl){
       if(this.handles.index($hndl) === 0){
         var h2Val = parseFloat(this.$handle2.attr('aria-valuenow'));
+        console.log(h2Val);
         location = location >= h2Val ? h2Val - this.options.step : location;
       }else{
         var h1Val = parseFloat(this.$handle.attr('aria-valuenow'));
-      console.log(h1Val);
+      console.log(this.$handle.attr('aria-valuenow'));
         location = location <= h1Val ? h1Val + this.options.step : location;
       }
     }
@@ -115,9 +119,13 @@
         dim = ((percent(this.$handle2.position()[lOrT] + halfOfHandle, elemDim) - parseFloat(pctOfBar)) * 100).toFixed(this.options.decimal) + '%';
         css['min-' + hOrW] = dim;
       }else{
-        dim = ((parseFloat(pctOfBar) - (percent(this.$handle.position()[lOrT] - halfOfHandle, elemDim))) * 100);
-        dim = (dim > 100 ? 100 : dim.toFixed(this.options.decimal)) + '%';
-        css['min-' + hOrW] = (location < 100 ? location : 100) + '%';
+        // dim = ((parseFloat(pctOfBar) - (percent(this.$handle.position()[lOrT] - halfOfHandle, elemDim))) * 100);
+        // dim = (dim > 100 ? 100 : dim.toFixed(this.options.decimal)) + '%';
+        location = (location < 100 ? location : 100) - parseFloat(this.$handle[0].style.left);
+        css['min-' + hOrW] = location + '%';
+        // css['min-' + hOrW] = (location < 100 ? location - parseFloat(this.$handle[0].style.left) : 100) + '%';
+        console.log('left this much', parseFloat(this.$handle[0].style.left));
+        console.log(css);
       }
     }
 
@@ -150,6 +158,7 @@
       'aria-controls': id,
       'aria-valuemax': this.options.end,
       'aria-valuemin': this.options.start,
+      'aria-valuenow': idx === 0 ? this.options.initialStart : this.options.initialEnd,
       'aria-orientation': this.options.vertical ? 'vertical' : 'horizontal',
       'tabindex': 0
     });
@@ -219,11 +228,6 @@
       });
     }
 
-    //*****************************************************
-    //** needs 1-to-1 dragging for moving handles around **
-    //** any mega jQuery experts out there who can help? **
-    //**method added for this, needs permission of author**
-    //*****************************************************
     if(this.options.draggable){
       this.handles.addTouch();
       var curHandle,
@@ -233,11 +237,7 @@
       $handle
         .off('mousedown.zf.slider touchstart.zf.slider')
         .on('mousedown.zf.slider', function(e){
-        // .on('mousedown.zf.slider touchstart.zf.slider', function(e){
-          //if touch, preventDefault?
-          // if(/touch/g.test(e.type)){
-          //   e.preventDefault();
-          // }
+          e.preventDefault();
 
           $handle.addClass('is-dragging');
           _this.$fill.addClass('is-dragging');
@@ -246,16 +246,14 @@
           curHandle = $(e.currentTarget);
 
           $body.on('mousemove.zf.slider', function(e){
-          // $body.on('mousemove.zf.slider touchmove.zf.slider', function(e){
-            // if(/touch/g.test(e.type)){
-            //   e.preventDefault();
-            // }
+            e.preventDefault();
+
             timer = setTimeout(function(){
               _this._handleEvent(e, curHandle);
             }, _this.options.dragDelay);
           }).on('mouseup.zf.slider', function(e){
-          // }).on('mouseup.zf.slider touchend.zf.slider', function(e){
             clearTimeout(timer);
+
             _this.animComplete = true;
             _this._handleEvent(e, curHandle);
             $handle.removeClass('is-dragging');
@@ -299,21 +297,21 @@
     });
 
   };
-  Slider.prototype._setInitAttr = function(idx){
-    var id = this.inputs.eq(idx).attr('id') || Foundation.GetYoDigits(6, 'slider');
-    this.inputs.eq(idx).attr({
-      'id': id,
-      'max': this.options.end,
-      'min': this.options.start
-    });
-    this.handles.eq(idx).attr({
-      'role': 'slider',
-      'aria-controls': id,
-      'aria-valuemax': this.options.end,
-      'aria-valuemin': this.options.start,
-      'aria-orientation': this.options.vertical ? 'vertical' : 'horizontal'
-    });
-  };
+  // Slider.prototype._setInitAttr = function(idx){
+  //   var id = this.inputs.eq(idx).attr('id') || Foundation.GetYoDigits(6, 'slider');
+  //   this.inputs.eq(idx).attr({
+  //     'id': id,
+  //     'max': this.options.end,
+  //     'min': this.options.start
+  //   });
+  //   this.handles.eq(idx).attr({
+  //     'role': 'slider',
+  //     'aria-controls': id,
+  //     'aria-valuemax': this.options.end,
+  //     'aria-valuemin': this.options.start,
+  //     'aria-orientation': this.options.vertical ? 'vertical' : 'horizontal'
+  //   });
+  // };
   Slider.prototype._setValues = function($handle, val){
     var _this = this,
         idx = this.options.doubleSided ? this.handles.index($handle) : 0;
@@ -382,7 +380,7 @@
             mouseup: function(){}
           },
           type = eventTypes[event.type];
-          eventTypes[type]();
+          // eventTypes[type]();
 
       var simulatedEvent = document.createEvent('MouseEvent');
       simulatedEvent.initMouseEvent(type, true, true, window, 1, first.screenX, first.screenY, first.clientX, first.clientY, false, false, false, false, 0/*left*/, null);
