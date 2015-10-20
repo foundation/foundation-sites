@@ -45,13 +45,14 @@
     this.$input = this.inputs.length ? this.inputs.eq(0) : $('#' + this.$handle.attr('aria-controls'));
     this.$fill = this.$element.find('[data-slider-fill]').css(this.options.vertical ? 'height' : 'width', 0);
 
-    this._setInitAttr(0);
-    this._events(this.$handle);
 
     if(!this.inputs.length){
       this.inputs = $().add(this.$input);
       this.options.binding = true;
     }
+    this._setInitAttr(0);
+    this._events(this.$handle);
+    this._setHandlePos(this.$handle, this.options.initialStart);
 
     if(this.handles[1]){
       this.options.doubleSided = true;
@@ -67,7 +68,6 @@
       this._events(this.$handle2);
     }
 
-    this._setHandlePos(this.$handle, this.options.initialStart);
 
     this.$element.trigger('init.zf.slider');
   };
@@ -81,14 +81,13 @@
     else if(location > this.options.end){ location = this.options.end; }
 
     var isDbl = this.options.doubleSided;
+    console.log(isDbl);
     if(isDbl){
       if(this.handles.index($hndl) === 0){
         var h2Val = parseFloat(this.$handle2.attr('aria-valuenow'));
-        console.log(h2Val);
         location = location >= h2Val ? h2Val - this.options.step : location;
       }else{
         var h1Val = parseFloat(this.$handle.attr('aria-valuenow'));
-      console.log(this.$handle.attr('aria-valuenow'));
         location = location <= h1Val ? h1Val + this.options.step : location;
       }
     }
@@ -117,21 +116,19 @@
       if(isLeftHndl){
         css[lOrT] = (pctOfBar > 0 ? pctOfBar * 100 : 0) + '%';//
         dim = ((percent(this.$handle2.position()[lOrT] + halfOfHandle, elemDim) - parseFloat(pctOfBar)) * 100).toFixed(this.options.decimal) + '%';
+        console.log('left handle', dim);
         css['min-' + hOrW] = dim;
       }else{
         // dim = ((parseFloat(pctOfBar) - (percent(this.$handle.position()[lOrT] - halfOfHandle, elemDim))) * 100);
         // dim = (dim > 100 ? 100 : dim.toFixed(this.options.decimal)) + '%';
         location = (location < 100 ? location : 100) - parseFloat(this.$handle[0].style.left);
         css['min-' + hOrW] = location + '%';
-        // css['min-' + hOrW] = (location < 100 ? location - parseFloat(this.$handle[0].style.left) : 100) + '%';
-        console.log('left this much', parseFloat(this.$handle[0].style.left));
-        console.log(css);
+        console.log('location',location);
       }
     }
 
-    this.$element//.off('finished.zf.animate')
-                 .one('finished.zf.animate', function(){
-                   console.log('finished');
+    this.$element.one('finished.zf.animate', function(){
+                   console.log('finished with movement');
                     _this.animComplete = true;
                     _this.$element.trigger('moved.zf.slider');
                 });
@@ -166,6 +163,7 @@
   Slider.prototype._setValues = function($handle, val){
     var _this = this,
         idx = this.options.doubleSided ? this.handles.index($handle) : 0;
+    console.log('index of handle',idx);
     this.inputs.eq(idx).val(val);
     $handle.attr('aria-valuenow', val);
   };
@@ -208,7 +206,6 @@
 
     if(this.options.binding){
       this.inputs.on('change.zf.slider', function(e){
-        console.log('something');
         var idx = _this.inputs.index($(this));
         _this._handleEvent(e, _this.handles.eq(idx), $(this).val());
       });
@@ -312,12 +309,12 @@
   //     'aria-orientation': this.options.vertical ? 'vertical' : 'horizontal'
   //   });
   // };
-  Slider.prototype._setValues = function($handle, val){
-    var _this = this,
-        idx = this.options.doubleSided ? this.handles.index($handle) : 0;
-    this.inputs.eq(idx).val(val);
-    $handle.attr('aria-valuenow', val);
-  };
+  // Slider.prototype._setValues = function($handle, val){
+  //   var _this = this,
+  //       idx = this.options.doubleSided ? this.handles.index($handle) : 0;
+  //   this.inputs.eq(idx).val(val);
+  //   $handle.attr('aria-valuenow', val);
+  // };
 
   Foundation.plugin(Slider);
 
@@ -372,12 +369,13 @@
           eventTypes = {
             touchstart: 'mousedown',
             touchmove: 'mousemove',
-            touchend: 'mouseup',
-            mousemove: function(){
-              event.preventDefault();
-            },
-            mousedown: function(){},
-            mouseup: function(){}
+            touchend: 'mouseup'
+            // touchend: 'mouseup',
+            // mousemove: function(){
+            //   event.preventDefault();
+            // },
+            // mousedown: function(){},
+            // mouseup: function(){}
           },
           type = eventTypes[event.type];
           // eventTypes[type]();

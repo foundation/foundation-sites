@@ -142,7 +142,7 @@
             'height': eleDims.windowDims.height,
             'width': eleDims.windowDims.width
           });
-    }else if(!Foundation.MediaQuery.atLeast('medium')){
+    }else if(!Foundation.MediaQuery.atLeast('medium') || !Foundation.ImNotTouchingYou(this.$element, null, true, false)){
       //if smaller than medium, resize to 100% width minus any custom L/R margin
       this.$element
           .css({
