@@ -16,6 +16,7 @@
 }
 
 /// Shorthand for `grid-column-size()`.
+/// @alias grid-column-size
 @mixin grid-col-size(
   $columns: $grid-column-count
 ) {
