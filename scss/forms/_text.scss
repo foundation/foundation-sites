@@ -46,10 +46,6 @@ $input-shadow: inset 0 1px 2px rgba($black, 0.1) !default;
 /// @type Shadow
 $input-shadow-focus: 0 0 5px $medium-gray !default;
 
-/// Border radius around text inputs.
-/// @type Number
-$input-radius: 0 !default;
-
 /// Cursor to use when hovering over a disabled text input.
 /// @type Cursor
 $input-cursor-disabled: default !default;
@@ -78,7 +74,7 @@ $input-number-spinners: true !default;
   color: $input-color;
   background-color: $input-background;
   box-shadow: $input-shadow;
-  border-radius: $input-radius;
+  border-radius: $global-radius;
 
   @if hasvalue($input-transition) {
     transition: $input-transition;
@@ -128,7 +124,7 @@ $input-number-spinners: true !default;
   // Reset styles on button-like inputs
   [type="submit"],
   [type="button"] {
-    border-radius: 0;
+    border-radius: $global-radius;
     -webkit-appearance: none;
     -moz-appearance: none;
   }
