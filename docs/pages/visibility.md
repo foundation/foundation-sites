@@ -103,16 +103,16 @@ To hide text from assistive technology, while still keeping it visible, add the 
 
 If your site has a lot of navigation, a screen reader will have to read through the entire navigation to get to your site's content. To remedy this, you can add a *skip link* at the very top of your page, which will send the user farther down the page, past the navigation when clicked on.
 
-Use the class `.show-on-focus` to hide an element, except when it has focus.
+Use the class `.show-on-focus` to hide an element, except when it has focus. Adding tabindex="0" to the target element makes if focusable.
 
 ```html_example
 <p><a class="show-on-focus" href="#mainContent">Skip to Content</a></p>
 
-<header id="header">
-  
+<header id="header" role="banner">
+
 </header>
 
-<div id="mainContent" role="main">
-  
-</div>
+<main id="mainContent" role="main" tabindex="0">
+
+</main>
 ```
