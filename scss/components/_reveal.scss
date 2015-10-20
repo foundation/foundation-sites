@@ -61,6 +61,7 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   // margin: 100px auto 0 100px;
   margin: 100px auto 0 auto;
   background-color: $reveal-background;
+  border-radius: $global-radius;
 
   @include breakpoint(medium) {
     min-height: 0;
