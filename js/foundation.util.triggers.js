@@ -98,7 +98,7 @@
   }
 
   //******** only fires this function once on load, if there's something to watch ********
-  function resizeListener(){
+  function resizeListener(debounce){
     var timer, i, len,
         nodes = $('[data-resize]');
     if(nodes.length){
@@ -112,7 +112,25 @@
               var $elem = $(nodes[i])
               $elem.triggerHandler('resizeme.zf.trigger', [$elem]);
             }
-          }, 150);//default time to emit resize event, make configurable? change for mobile?*******
+          }, debounce || 150);//default time to emit resize event
+      });
+    }
+  }
+  function scrollListener(debounce){
+    var timer, i, len,
+        nodes = $('[data-scroll]');
+    if(nodes.length){
+      $(window).off('scroll.zf.trigger')
+        .on('scroll.zf.trigger', function(e){
+          if(timer){ clearTimeout(timer); }
+
+          timer = setTimeout(function(){
+
+            for(i = 0, len = nodes.length; i < len; i++){
+              var $elem = $(nodes[i])
+              $elem.triggerHandler('scrollme.zf.trigger', [$elem]);
+            }
+          }, debounce || 150);//default time to emit scroll event
       });
     }
   }
@@ -121,5 +139,6 @@
   // [PH]
 Foundation.CheckWatchers = checkWatchers;
 Foundation.IHearYou = resizeListener;
+Foundation.ISeeYou = scrollListener;
 
 }(window.Foundation, window.jQuery)
