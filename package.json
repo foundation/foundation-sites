@@ -29,7 +29,7 @@
     "handlebars": "^3.0.1",
     "highlight.js": "^8.5.0",
     "marked": "^0.3.3",
-    "motion-ui": "^1.0.0",
+    "motion-ui": "^1.0.2",
     "multiline": "^1.0.2",
     "octophant": "^0.2.0",
     "panini": "0.1.0",

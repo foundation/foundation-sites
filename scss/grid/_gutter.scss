@@ -19,11 +19,13 @@
 }
 
 /// Shorthand for `grid-column-collapse()`.
+/// @alias grid-column-collapse
 @mixin grid-col-collapse() {
   @include grid-column-collapse;
 }
 
 /// Shorthand for `grid-column-uncollapse()`.
+/// @alias grid-column-uncollapse
 @mixin grid-col-uncollapse() {
   @include grid-column-uncollapse;
 }

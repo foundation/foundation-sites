@@ -35,7 +35,7 @@ $select-triangle-color: #333 !default;
     background-repeat: no-repeat;
   }
 
-  border-radius: $select-radius;
+  border-radius: $global-radius;
 
   // Disabled state
   &:disabled {
