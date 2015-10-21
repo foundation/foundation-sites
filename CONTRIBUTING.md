@@ -12,7 +12,7 @@ compass create -r zurb-foundation --using foundation
 
 ## Development
 
-Want to test out the Compass templates.  Don't recompile the gem every time, use `bundler` like so:
+Want to test out the Compass templates?  Don't recompile the gem every time, use `bundler` like so:
 
 ```bash
 mkdir demo1
