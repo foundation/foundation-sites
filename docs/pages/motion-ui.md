@@ -1,6 +1,9 @@
 ---
 title: Motion UI
 description: A Sass library for creating flexible UI transitions and animations.
+library:
+  github: https://github.com/zurb/motion-ui
+  docs: https://github.com/zurb/motion-ui/tree/master/docs
 ---
 
 Motion UI is a standalone library that powers the transition effects used in a number of Foundation components, including [Toggler](toggler.html), [Reveal](reveal.html), and [Orbit](orbit.html). The transitions are powered by special transition classes that the Motion UI Sass creates. For example, here are two instances of Toggler&mdash;one using fade classes (`.fadeIn` and `.fadeOut`), and one using slide classes (`.slideInDown` and `.slideOutUp`).
