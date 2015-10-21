@@ -148,16 +148,21 @@
       });
     }
 
-    this.$wrapper.on('keydown.zf.orbit', function(e){
+    this.$wrapper.add(this.$bullets).on('keydown.zf.orbit', function(e){
       // handle keyboard event with keyboard util
       Foundation.handleKey(e, _this, {
         next: function() {
           _this.timer.restart();
-          _this.changeSlide(true);        
+          _this.changeSlide(true);
         },
         previous: function() {
           _this.timer.restart();
           _this.changeSlide(false);
+        },
+        handled: function() { // if bullet is focused, make sure focus moves
+          if ($(e.target).is(_this.$bullets)) {
+            _this.$bullets.filter('.is-active').focus();
+          }
         }
       });
     });
