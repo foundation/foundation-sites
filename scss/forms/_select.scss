@@ -10,10 +10,6 @@
 /// @type Color
 $select-background: #fafafa !default;
 
-/// Border radius around select menus.
-/// @type Number
-$select-radius: $input-radius !default;
-
 /// Color of the dropdown triangle inside select menus. Set to `transparent` to remove it entirely.
 /// @type Color
 $select-triangle-color: #333 !default;
@@ -24,6 +20,7 @@ $select-triangle-color: #333 !default;
   height: $height;
   padding: ($form-spacing / 2);
   border: $input-border;
+  border-radius: $global-radius;
 
   font-size: $input-font-size;
   font-family: $input-font-family;

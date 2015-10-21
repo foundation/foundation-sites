@@ -30,6 +30,7 @@ $thumbnail-transition: box-shadow 200ms ease-out !default;
   line-height: 0;
   max-width: 100%;
   transition: $thumbnail-transition;
+  border-radius: $global-radius;
 
   &:hover,
   &:focus {

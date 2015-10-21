@@ -98,7 +98,7 @@ $global-weight-normal: normal !default;
 /// @type Keyword | Number
 $global-weight-bold: bold !default;
 
-/// Global value used for elements that have a border radius.
+/// Global value used for all elements that have a border radius.
 /// @type Number
 $global-radius: 3px !default;
 
@@ -171,11 +171,13 @@ $foundation-colors: (
   textarea {
     height: auto;
     min-height: 50px;
+    border-radius: $global-radius;
   }
 
   // Make select elements are 100% width by default
   select {
     width: 100%;
+    border-radius: $global-radius;
   }
 
   // Styles Google Maps and MapQuest embeds properly
@@ -197,6 +199,7 @@ $foundation-colors: (
     background: transparent;
     padding: 0;
     border: 0;
+    border-radius: $global-radius;
     line-height: 1;
   }
 }

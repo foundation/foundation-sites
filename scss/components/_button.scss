@@ -34,10 +34,6 @@ $button-font-color: #fff !default;
 /// @type List
 $button-font-color-alt: #000 !default;
 
-/// Defualt radius for button.
-/// @type Number
-$button-radius: 0 !default;
-
 /// Sizes for buttons.
 /// @type Map
 $button-sizes: (
@@ -61,14 +57,11 @@ $button-opacity-disabled: 0.25 !default;
   transition: all 0.25s ease-out;
   vertical-align: middle;
   border: 1px solid transparent;
+  border-radius: $global-radius;
 
   padding: $button-padding;
   margin: $button-margin;
   font-size: map-get($button-sizes, default);
-
-  @if hasvalue($button-radius) {
-    border-radius: $button-radius;
-  }
 }
 
 /// Expands a button to make it full-width.

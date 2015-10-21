@@ -43,6 +43,7 @@ $callout-link-tint: 30%;
   margin: $callout-margin;
   padding: $callout-padding;
   border: $callout-border;
+  border-radius: $global-radius;
   position: relative;
 
   // Respect the padding, fool.

@@ -47,6 +47,7 @@ $accordion-content-padding: 1rem !default;
   list-style-type: none;
   background: $accordion-background;
   border: $accordion-content-border;
+  border-radius: $global-radius;
   margin-left: 0;
 }
 
