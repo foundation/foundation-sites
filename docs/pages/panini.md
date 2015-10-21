@@ -10,7 +10,7 @@ library:
 
 If you've ever created a static site, maybe you had five pages that all shared the same header and footer. You create your first page, and then copy and paste the common elements to the next page. But now if you need to make a change to the header, the change has to be made across multiple files.
 
-Panini is a flat file compiler that uses the concepts of templates, pages, and partials&mdash;powered by the Handlebars templating language&mdash;to streamline the process of creating static prototypes.
+Panini is a flat file compiler that uses the concepts of templates, pages, and partials&mdash;powered by the [Handlebars](http://handlebarsjs.com/) templating language&mdash;to streamline the process of creating static prototypes.
 
 Our [prototyping template](starter-projects.html) uses Panini, along with a host of other tools for processing Sass, JavaScript, and images, to make creating static prototypes easy. It's already been configured to utilize all of the features below, but if you want to learn the specifics of how to configure the library, head over to the [Panini GitHub page](https://github.com/zurb/panini).
 
