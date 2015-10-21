@@ -37,16 +37,8 @@
 
 
 //chris's testing things----------------
-  /**
-   * TODO put into public function, to add to user plugin creation api.
-   */
-  $(window).on('closeme.zf.dropdown closeme.zf.tooltip closeme.zf.reveal', function(e, pluginId){
-    var plugin = e.namespace.split('.')[0];
-    var plugins = $('[data-' + plugin + ']').not('[data-yeti-box=' + pluginId + ']');
-    plugins.each(function(){
-      $(this).triggerHandler('close.zf.trigger', [$(this)]);
-    });
-  });
+
+
 
   //trying to reposition elements on resize
   //********* only fires when all other scripts have loaded *********
@@ -56,7 +48,10 @@
    * @private
    */
   $(window).load(function(){
-    checkWatchers(null);
+    // checkWatchers(null);
+    resizeListener();
+    scrollListener();
+    closemeListener();
   });
 
   /**
@@ -65,39 +60,69 @@
    * @param {String|Array} plugs - Name or array of names of plugins the user would like to add to the list of plugins to watch on window resize
    * @throws Plugin#error
    */
-  function checkWatchers(plugs) {
-    var plugins = Foundation._plugins,
-        pluginsToWatch = ['accordion-menu', 'drilldown', 'dropdown-menu', 'dropdown', 'slider', 'reveal', 'sticky', 'tooltip'];
-    if(plugs){
-      if(typeof plugs === 'array' && typeof plugs[0] === 'string'){
-        pluginsToWatch = pluginsToWatch.concat(plugs);
-      }else if(typeof plugs === 'string'){
-        pluginsToWatch.push(plugs)
+  // function checkWatchers(plugs) {
+  //   var plugins = Foundation._plugins,
+  //       pluginsToWatch = ['accordion-menu', 'drilldown', 'dropdown-menu', 'dropdown', 'slider', 'reveal', 'sticky', 'tooltip'];
+  //   if(plugs){
+  //     if(typeof plugs === 'array' && typeof plugs[0] === 'string'){
+  //       pluginsToWatch = pluginsToWatch.concat(plugs);
+  //     }else if(typeof plugs === 'string'){
+  //       pluginsToWatch.push(plugs)
+  //     }else{
+  //       /**
+  //        * Logs error if plugs is not a string or array.
+  //        * @event Plugin#error
+  //        */
+  //       console.error('Plugin names must be strings');
+  //     }
+  //   }
+  //   var counter = pluginsToWatch.length,
+  //       watching = false;
+  //
+  //   while(counter){
+  //     if(plugins[pluginsToWatch[counter - 1]]){
+  //       watching = true;
+  //     }else{
+  //       pluginsToWatch.splice(counter - 1, 1);
+  //     }
+  //     --counter;
+  //     if(!counter && watching){
+  //       resizeListener(pluginsToWatch);
+  //     }
+  //   }
+  // }
+
+  //******** only fires this function once on load, if there's something to watch ********
+  function closemeListener(pluginName){
+    var yetiBoxes = $('[data-yeti-box]'),
+    plugNames = ['dropdown', 'tooltip', 'orbit'];
+
+    if(pluginName){
+      if(typeof pluginName === 'string'){
+        plugNames.push(pluginName);
+      }else if(typeof pluginName === 'object' && typeof pluginName[0] === 'string'){
+        plugNames.concat(pluginName);
       }else{
-        /**
-         * Logs error if plugs is not a string or array.
-         * @event Plugin#error
-         */
         console.error('Plugin names must be strings');
       }
     }
-    var counter = pluginsToWatch.length,
-        watching = false;
+    if(yetiBoxes.length){
+      var listeners = plugNames.map(function(name){
+        return 'closeme.zf.' + name;
+      }).join(' ');
 
-    while(counter){
-      if(plugins[pluginsToWatch[counter - 1]]){
-        watching = true;
-      }else{
-        pluginsToWatch.splice(counter - 1, 1);
-      }
-      --counter;
-      if(!counter && watching){
-        resizeListener(pluginsToWatch);
-      }
+      $(window).on(listeners, function(e, pluginId){
+        var plugin = e.namespace.split('.')[0];
+        var plugins = $('[data-' + plugin + ']').not('[data-yeti-box=' + pluginId + ']');
+
+        plugins.each(function(){
+          var _this = $(this);
+          _this.triggerHandler('close.zf.trigger', [_this]);
+        });
+
+      });
     }
   }
-
-  //******** only fires this function once on load, if there's something to watch ********
   function resizeListener(debounce){
     var timer, i, len,
         nodes = $('[data-resize]');
@@ -137,8 +162,9 @@
 // ------------------------------------
 
   // [PH]
-Foundation.CheckWatchers = checkWatchers;
+// Foundation.CheckWatchers = checkWatchers;
 Foundation.IHearYou = resizeListener;
 Foundation.ISeeYou = scrollListener;
+Foundation.IFeelYou = closemeListener;
 
 }(window.Foundation, window.jQuery)
