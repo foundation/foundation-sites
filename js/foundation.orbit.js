@@ -37,6 +37,9 @@
     if(this.options.autoPlay){
       this.geoSync();
     }
+    if (this.options.accessible) { // allow wrapper to be focusable to enable arrow navigation
+      this.$wrapper.attr('tabindex', 0);
+    }
   };
   Orbit.prototype.loadBullets = function(){
     this.$bullets = this.$element.find('.orbit-bullets > button');
@@ -144,6 +147,26 @@
         _this.changeSlide(ltr, $slide, idx);
       });
     }
+
+    this.$wrapper.add(this.$bullets).on('keydown.zf.orbit', function(e){
+      // handle keyboard event with keyboard util
+      Foundation.handleKey(e, _this, {
+        next: function() {
+          _this.timer.restart();
+          _this.changeSlide(true);
+        },
+        previous: function() {
+          _this.timer.restart();
+          _this.changeSlide(false);
+        },
+        handled: function() { // if bullet is focused, make sure focus moves
+          if ($(e.target).is(_this.$bullets)) {
+            _this.$bullets.filter('.is-active').focus();
+          }
+        }
+      });
+    });
+
   };
   Orbit.prototype.changeSlide = function(isLTR, chosenSlide, idx){
     var $curSlide = this.$element.find('.orbit-slide.active');
