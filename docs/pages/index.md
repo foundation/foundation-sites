@@ -96,15 +96,15 @@ Get to know the pieces of Foundation.
       <h4>Navigation</h4>
       <ul>
         <li><a href="navigation.html">Overview</a></li>
-        <li><a href="accordion-menu.html">Accordion Menu</a></li>
-        <li><a href="breadcrumbs.html">Breadcrumbs</a></li>
-        <li><a href="drilldown-menu.html">Drilldown Menu</a></li>
-        <li><a href="dropdown-menu.html">Dropdown Menu</a></li>
-        <li><a href="magellan.html">Magellan</a></li>
         <li><a href="menu.html">Menu</a></li>
-        <li><a href="pagination.html">Pagination</a></li>
-        <li><a href="responsive-navigation.html">Responsive Navigation</a></li>
+        <li><a href="dropdown-menu.html">Dropdown Menu</a></li>
+        <li><a href="drilldown-menu.html">Drilldown Menu</a></li>
+        <li><a href="accordion-menu.html">Accordion Menu</a></li>
         <li><a href="top-bar.html">Top Bar</a></li>
+        <li><a href="responsive-navigation.html">Responsive Navigation</a></li>
+        <li><a href="magellan.html">Magellan</a></li>
+        <li><a href="pagination.html">Pagination</a></li>
+        <li><a href="breadcrumbs.html">Breadcrumbs</a></li>
       </ul>
     </section>
 
