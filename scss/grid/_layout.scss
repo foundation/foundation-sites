@@ -15,7 +15,7 @@
 ) {
   #{$selector} {
     width: percentage(1/$n);
-    float: left;
+    float: $global-left;
 
     &:nth-of-type(1n) {
       clear: none;

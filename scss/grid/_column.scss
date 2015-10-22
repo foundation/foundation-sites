@@ -61,7 +61,7 @@
     @include grid-column-size($columns);
   }
 
-  float: left;
+  float: $global-left;
   padding-left: $gutter;
   padding-right: $gutter;
 
