@@ -37,12 +37,6 @@ $select-triangle-color: #333 !default;
     background-position: $global-right ($form-spacing / 2) center;
     background-repeat: no-repeat;
   }
-
-<<<<<<< HEAD
-  border-radius: $global-radius;
-
-=======
->>>>>>> origin/develop
   // Disabled state
   &:disabled {
     background-color: $input-background-disabled;
