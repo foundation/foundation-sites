@@ -71,4 +71,10 @@
     background: $primary-color;
     color: white;
   }
+
+  .docs-sub-menu:first-child .docs-menu-title {
+    margin-top: 0;
+    border-top: 0;
+    padding-top: 0;
+  }
 }

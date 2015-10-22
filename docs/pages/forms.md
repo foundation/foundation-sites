@@ -121,13 +121,17 @@ Place help text below a field to clarify it's purpose. Whenever you use help tex
 
 ## Label Positioning
 
-Sometimes you want a form with labels to the left of your inputs. Piece of cake! You can put the label inside a different column to the left of the input. Then add a class of .right to the label to have it align to the right.
+Sometimes you want a form with labels to the left of your inputs. Piece of cake! You can put the label inside a different column to the left of the input. Then use the class `.float-right` (or add `text-align: right` yourself) to realign the label.
+
+<div class="warning callout">
+  <p>In a <a href="rtl.html">right-to-left</a> environment, use <code>.float-left</code> instead.</p>
+</div>
 
 ```html
 <form>
   <div class="row">
     <div class="small-3 columns">
-      <label for="right-label" class="right">Label</label>
+      <label for="right-label" class="text-right">Label</label>
     </div>
     <div class="small-9 columns">
       <input type="text" id="right-label" placeholder="Right-aligned text input">
@@ -139,7 +143,7 @@ Sometimes you want a form with labels to the left of your inputs. Piece of cake!
 <div class="medium-8 column row">
   <div class="row">
     <div class="small-3 columns">
-      <label for="right-label" class="right">Label</label>
+      <label for="right-label" class="text-right">Label</label>
     </div>
     <div class="small-9 columns">
       <input type="text" id="right-label" placeholder="Right-aligned text input">
@@ -155,7 +159,7 @@ Add the `.middle` class to vertically align the label with its input.
 <form>
   <div class="row">
     <div class="small-3 columns">
-      <label for="middle-label" class="right middle">Label</label>
+      <label for="middle-label" class="text-right middle">Label</label>
     </div>
     <div class="small-9 columns">
       <input type="text" id="middle-label" placeholder="Right- and middle-aligned text input">
@@ -167,7 +171,7 @@ Add the `.middle` class to vertically align the label with its input.
 <div class="medium-8 column row">
   <div class="row">
     <div class="small-3 columns">
-      <label for="middle-label" class="right middle">Label</label>
+      <label for="middle-label" class="text-right middle">Label</label>
     </div>
     <div class="small-9 columns">
       <input type="text" id="middle-label" placeholder="Right- and middle-aligned text input">

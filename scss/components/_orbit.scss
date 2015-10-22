@@ -106,13 +106,13 @@ $orbit-control-zindex: 10 !default;
 
 /// Adds styles for the Orbit previous button. These styles are used on the `.orbit-previous` class.
 @mixin orbit-previous {
-  left: 0;
+  #{$global-left}: 0;
 }
 
 /// Adds styles for the Orbit next button. These styles are used on the `.orbit-next` class.
 @mixin orbit-next {
-  left: auto;
-  right: 0;
+  #{$global-left}: auto;
+  #{$global-right}: 0;
 }
 
 /// Adds styles for a container of Orbit bullets. /// Adds styles for the Orbit previous button. These styles are used on the `.orbit-bullets` class.

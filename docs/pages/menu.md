@@ -1,6 +1,6 @@
 ---
 title: Menu
-description: Our flexible Menu component makes it easy to build many common navigation patterns, all with the same markup.
+description: Our flexible menu component makes it easy to build many common navigation patterns, all with the same markup.
 sass: scss/components/_menu.scss
 tags:
   - navigation
@@ -10,13 +10,13 @@ tags:
   - top bar
 ---
 
-The Menu is a flexible, all-purpose component for navigation. It replaces Foundation 5's inline list, side nav, sub nav, and icon bar, unifying them into one component.
+The menu is a flexible, all-purpose component for navigation. It replaces Foundation 5's inline list, side nav, sub nav, and icon bar, unifying them into one component.
 
 ---
 
 ## Basic Menu
 
-All versions of the Menu are a `<ul>` filled with `<li>` elements containing links. By default, a Menu is horizontally oriented.
+All versions of the menu are a `<ul>` filled with `<li>` elements containing links. By default, a Menu is horizontally oriented.
 
 ```html_example
 <ul class="menu">
@@ -31,7 +31,11 @@ All versions of the Menu are a `<ul>` filled with `<li>` elements containing lin
 
 ## Item Alignment
 
-By default, each item in the Menu aligns to the left. They can also be aligned to the right with the `.align-right` class.
+By default, each item in the menu aligns to the left. They can also be aligned to the right with the `.align-right` class.
+
+<div class="warning callout">
+  <p>In a <a href="rtl.html">right-to-left</a> environment, items align to the right by default, and the class <code>.align-left</code> can be used to reverse direction.</p>
+</div>
 
 ```html_example
 <ul class="menu align-right">
@@ -100,7 +104,7 @@ Add the `.simple` class to a Menu to remove the padding and color change. This s
 
 ## Nested Style
 
-Add a new Menu inside the `<li>` of a Menu and add the class `.nested` to create a nested Menu. The nested Menu has extra padding on the inside.
+Add a new menu inside the `<li>` of a Menu and add the class `.nested` to create a nested menu. The nested Menu has extra padding on the inside.
 
 ```html_example
 <ul class="vertical menu">

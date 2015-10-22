@@ -31,11 +31,6 @@ $form-label-line-height: 1.8 !default;
   color: $form-label-color;
 }
 
-@mixin form-label-right {
-  float: none;
-  text-align: right;
-}
-
 @mixin form-label-middle {
   $input-border-width: get-border-value($input-border, width);
   margin: 0 0 $form-spacing;
@@ -45,10 +40,6 @@ $form-label-line-height: 1.8 !default;
 @mixin foundation-form-label {
   label {
     @include form-label;
-
-    &.right {
-      @include form-label-right;
-    }
 
     &.middle {
       @include form-label-middle;

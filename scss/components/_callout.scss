@@ -75,6 +75,14 @@ $callout-link-tint: 30%;
   }
 }
 
+@mixin callout-size($padding) {
+  padding-top: $padding;
+  padding-right: $padding;
+  padding-bottom: $padding;
+  padding-left: $padding;
+}
+
+
 /// Adds styles for a callout.
 /// @param {Color} $color [$callout-background] - Color to use.
 @mixin callout($color: $callout-background) {
@@ -90,6 +98,14 @@ $callout-link-tint: 30%;
       &.#{$name} {
         @include callout-style($color);
       }
+    }
+
+    &.small {
+      @include callout-size(.5rem);
+    }
+
+    &.large {
+      @include callout-size(3rem);
     }
   }
 }

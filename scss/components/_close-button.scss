@@ -8,7 +8,7 @@
 
 /// Default position of the close button. The first value should be `right` or `left`, and the second value should be `top` or `bottom`.
 /// @type List
-$closebutton-position: right top !default;
+$closebutton-position: $global-right top !default;
 
 /// Right (or left) offset for a close button.
 /// @type Number

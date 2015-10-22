@@ -90,14 +90,14 @@ $menu-expand-max: 6 !default;
 @mixin menu-simple {
   a {
     padding: 0;
-    margin-right: get-side($menu-item-padding, right);
+    margin-#{$global-right}: get-side($menu-item-padding, $global-right);
   }
 }
 
 /// Adds styles for a nested Menu, by adding `margin-left` to the menu.
 /// @param {Keyword|Number} $padding [auto] - Length of the margin.
 @mixin menu-nested($margin: $menu-margin-nested) {
-  margin-left: $margin;
+  margin-#{$global-left}: $margin;
 }
 
 /// Adds support for icons to Menu items.
@@ -122,7 +122,7 @@ $menu-expand-max: 6 !default;
       > img,
       > i {
         display: inline-block;
-        margin-right: $menu-icon-spacing;
+        margin-#{$global-right}: $menu-icon-spacing;
       }
     }
   }
@@ -180,9 +180,9 @@ $menu-expand-max: 6 !default;
     }
 
     // Align right
-    &.align-right {
+    &.align-#{$global-right} {
       > li {
-        float: right;
+        float: $global-right;
       }
     }
 

@@ -96,7 +96,7 @@ $show-header-for-stacked: false;
       td {
         padding: $table-padding;
         font-weight: $global-weight-bold;
-        text-align: left;
+        text-align: #{$global-left};
       }
     }
 

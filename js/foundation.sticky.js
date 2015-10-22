@@ -1,3 +1,8 @@
+/*********************************
+** TODO: Change to one global scroll event
+** create emCalc function to make scalability a thing...
+** fix the resize problem...
+*********************************/
 !function($, Foundation, window){
   'use strict';
 
@@ -72,6 +77,7 @@
     this.$element.on('resizeme.zf.trigger', this._setSizes.bind(this));
 
     $window.on('scroll.zf.sticky', function(e){
+
       e.stopPropagation();
       _this.timer = setTimeout(function(){
         var scroll = $window.scrollTop();
@@ -148,16 +154,21 @@
       _this.getDimensions();
       _this.setContainerSize();
       _this.setBreakPoints();
+      // _this.$element.trigger('scroll.zf.sticky');
     });
   };
+  // function emCalc(elem, px){
+  //   return parseInt(window.getComputedStyle(elem, null).fontSize.split('px'), 10) * px;
+  // }
   /**
    * Sets top and bottom break points for sticky element.
    * @private
    */
   Sticky.prototype.setBreakPoints = function(){
     this.fontSize = parseInt(window.getComputedStyle(document.getElementsByTagName('body')[0], null).fontSize.split('px'), 10);
-    this.styles = window.getComputedStyle(this.$element[0], null);
+    // this.styles = window.getComputedStyle(this.$element[0], null);
     this.start = this.options.stickTo === 'bottom' ? this.$anchorDims.offset.top + this.$elemDims.height + (this.options.marginBottom * this.fontSize) : this.$anchorDims.offset.top - (this.options.marginTop * this.fontSize);
+    // console.log(this.styles);
     // this.start = this.$anchorDims.offset.top - parseFloat(this.styles.marginTop.split('px'));
     this.end = this.options.breakAt ? '' : this.$anchorDims.offset.top + this.$anchorDims.height  - (this.options.marginBottom * this.fontSize) - (this.options.marginTop * this.fontSize) - this.$elemDims.height;
     if(this.options.stickTo === 'bottom'){

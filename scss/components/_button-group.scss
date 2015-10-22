@@ -32,12 +32,12 @@ $buttongroup-expand-max: 6;
   font-size: map-get($button-sizes, default);
 
   #{$child-selector} {
-    float: left;
+    float: #{$global-left};
     margin: 0;
     font-size: inherit;
 
     &:not(:last-child) {
-      border-right: $buttongroup-spacing solid $body-background;
+      border-#{$global-right}: $buttongroup-spacing solid $body-background;
     }
   }
 }
@@ -66,7 +66,7 @@ $buttongroup-expand-max: 6;
 ) {
   #{$selector} {
     width: 100%;
-    border-right: 0;
+    border-#{$global-right}: 0;
   }
 }
 
@@ -79,7 +79,7 @@ $buttongroup-expand-max: 6;
     width: auto;
 
     &:not(:last-child) {
-      border-right: $buttongroup-spacing solid $body-background;
+      border-#{$global-right}: $buttongroup-spacing solid $body-background;
     }
   }
 }

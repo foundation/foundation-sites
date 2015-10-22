@@ -12,7 +12,7 @@ $button-padding: 0.85em 1em !default;
 
 /// Defualt margin for button.
 /// @type List
-$button-margin: 0 $global-padding $global-padding 0 !default;
+$button-margin: 0 $global-margin $global-margin 0 !default;
 
 /// Defualt fill for button. Is either solid or hollow.
 /// @type Keyword
@@ -46,6 +46,11 @@ $button-sizes: (
 /// Defualt opacity for a disabled button.
 /// @type List
 $button-opacity-disabled: 0.25 !default;
+
+// Internal: flip from margin-right to margin-left for defaults
+@if $global-text-direction == 'rtl' {
+  $button-margin: 0 0 $global-margin $global-margin;
+}
 
 // TODO: Document button-base() mixin
 @mixin button-base {
@@ -151,10 +156,9 @@ $button-opacity-disabled: 0.25 !default;
   &::after {
     @include css-triangle($size, $color, down);
     position: relative;
-    top: ($size / 2); // Magic number?
-    display: inline-block;
-    margin-left: get-side($button-padding, right);
-    vertical-align: middle;
+    top: 0.4em; // Aligns the arrow with the text of the button
+    float: #{$global-right};
+    margin-#{$global-left}: get-side($button-padding, right);
   }
 }
 
@@ -225,17 +229,11 @@ $button-opacity-disabled: 0.25 !default;
     // Dropdown arrow
     &.dropdown {
       @include button-dropdown;
-
-      &::after {
-        float: right;
-        // Aligns the arrow with the text of the button
-        top: 0.4em;
-      }
     }
 
     // Button with dropdown arrow only
     &.arrow-only::after {
-      margin-left: 0;
+      margin-#{$global-left}: 0;
       float: none;
       top: 0.2em;
     }

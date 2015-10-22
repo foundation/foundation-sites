@@ -57,13 +57,13 @@ $pagination-arrows: true;
 /// Adds styles for a pagination container. Apply this to a `<ul>`.
 @mixin pagination-container {
   @include clearfix;
-  margin-left: 0;
+  margin-#{$global-left}: 0;
   margin-bottom: $pagination-margin-bottom;
 
   // List item
   li {
     font-size: $pagination-font-size;
-    margin-right: $pagination-item-spacing;
+    margin-#{$global-right}: $pagination-item-spacing;
     display: none;
     border-radius: $global-radius;
 
@@ -98,7 +98,7 @@ $pagination-arrows: true;
       &::before {
         content: '«';
         display: inline-block;
-        margin-right: 0.75rem;
+        margin-#{$global-right}: 0.75rem;
       }
     }
 
@@ -106,7 +106,7 @@ $pagination-arrows: true;
       &::after {
         content: '»';
         display: inline-block;
-        margin-left: 0.75rem;
+        margin-#{$global-left}: 0.75rem;
       }
     }
   }
