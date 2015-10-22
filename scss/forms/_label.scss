@@ -33,7 +33,7 @@ $form-label-line-height: 1.8 !default;
 
 @mixin form-label-right {
   float: none;
-  text-align: right;
+  text-align: $global-right;
 }
 
 @mixin form-label-middle {
@@ -46,7 +46,7 @@ $form-label-line-height: 1.8 !default;
   label {
     @include form-label;
 
-    &.right {
+    &.#{$global-right} {
       @include form-label-right;
     }
 

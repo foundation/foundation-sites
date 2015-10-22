@@ -21,21 +21,22 @@ $select-triangle-color: #333 !default;
   padding: ($form-spacing / 2);
   border: $input-border;
   border-radius: $global-radius;
-
+  margin: 0 0 $form-spacing;
   font-size: $input-font-size;
   font-family: $input-font-family;
   line-height: normal;
   color: $input-color;
   background-color: $select-background;
+  border-radius: $global-radius;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 
   @if $select-triangle-color != transparent {
     @include background-triangle($select-triangle-color);
     background-size: 9px 6px;
-    background-position: right ($form-spacing / 2) center;
+    background-position: $global-right ($form-spacing / 2) center;
     background-repeat: no-repeat;
   }
-
-  border-radius: $global-radius;
 
   // Disabled state
   &:disabled {
@@ -47,16 +48,14 @@ $select-triangle-color: #333 !default;
   &::-ms-expand {
     display: none;
   }
+
+  &[multiple] {
+    height: auto;
+  }
 }
 
 @mixin foundation-form-select {
   select {
     @include form-select;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-
-    &[multiple] {
-      height: auto;
-    }
   }
 }
