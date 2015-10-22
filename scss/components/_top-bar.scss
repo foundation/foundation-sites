@@ -38,7 +38,7 @@ $topbar-input-width: 200px;
 
   input {
     width: $topbar-input-width;
-    margin-right: 1rem;
+    margin-#{$global-right}: 1rem;
   }
 }
 
