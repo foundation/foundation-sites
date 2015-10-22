@@ -14,8 +14,8 @@
     padding: 0.5rem;
 
     .menu-icon {
-      margin-left: 0.25rem;
-      margin-right: 0.5rem;
+      margin-#{$global-left}: 0.25rem;
+      margin-#{$global-right}: 0.5rem;
     }
   }
 
