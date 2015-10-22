@@ -97,7 +97,7 @@ $tab-content-padding: 1rem !default;
   }
 
   .tabs-title {
-    float: left;
+    float: #{$global-left};
 
     > a {
       display: block;
@@ -122,7 +122,7 @@ $tab-content-padding: 1rem !default;
 
     &.vertical {
       border: 1px solid $tab-content-border;
-      border-left: 0;
+      border-#{$global-left}: 0;
     }
   }
 
