@@ -101,7 +101,7 @@ $crumb-slash-position: 1px !default;
     }
   }
 
-  &:before {
+  &:after {
     color: $crumb-slash-color;
     content: "#{$crumb-slash}";
     margin: 0 $crumb-side-padding;
@@ -109,7 +109,7 @@ $crumb-slash-position: 1px !default;
     top: $crumb-slash-position;
   }
 
-  &:first-child:before {
+  &:last-child:after {
     content: " ";
     margin: 0;
   }
@@ -125,8 +125,8 @@ $crumb-slash-position: 1px !default;
         @include crumbs;
       }
     }
-    /* Accessibility - hides the forward slash */
-    [aria-label="breadcrumbs"] [aria-hidden="true"]:after {
+    /* Accessibility - hides the backward slash */
+    [aria-label="breadcrumbs"] [aria-hidden="true"]:before {
       content: "/";
     }
   }
