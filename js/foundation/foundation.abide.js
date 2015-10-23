@@ -16,6 +16,7 @@
       error_class : 'error', // labels with a for="inputId" will receive an `error` class
       // the amount of time Abide will take before it validates the form (in ms).
       // smaller time will result in faster validation
+      element_filter: ':hidden, [data-abide-ignore]',
       timeout : 1000,
       patterns : {
         alpha : /^[a-zA-Z]+$/,
@@ -36,7 +37,7 @@
         domain : /^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,8}$/,
 
         datetime : /^([0-2][0-9]{3})\-([0-1][0-9])\-([0-3][0-9])T([0-5][0-9])\:([0-5][0-9])\:([0-5][0-9])(Z|([\-\+]([0-1][0-9])\:00))$/,
-        // YYYY-MM-DD
+        // YYYY-MM'DD
         date : /(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))$/,
         // HH:MM:SS
         time : /^(0[0-9]|1[0-9]|2[0-3])(:[0-5][0-9]){2}$/,
@@ -84,7 +85,7 @@
         .off('.abide')
         .on('submit.fndtn.abide', function (e) {
           var is_ajax = /ajax/i.test(self.S(this).attr(self.attr_name()));
-          return self.validate(self.S(this).find('input, textarea, select').not(":hidden, [data-abide-ignore]").get(), e, is_ajax);
+          return self.validate(self.S(this).find('input, textarea, select').not(settings.element_filter).get(), e, is_ajax);
         })
         .on('validate.fndtn.abide', function (e) {
           if (settings.validate_on === 'manual') {
@@ -94,7 +95,7 @@
         .on('reset', function (e) {
           return self.reset($(this), e);
         })
-        .find('input, textarea, select').not(":hidden, [data-abide-ignore]")
+        .find('input, textarea, select').not(settings.element_filter)
           .off('.abide')
           .on('blur.fndtn.abide change.fndtn.abide', function (e) {
               var id = this.getAttribute('id'),
@@ -148,7 +149,7 @@
 
       $('[' + self.invalid_attr + ']', form).removeAttr(self.invalid_attr);
       $('.' + self.settings.error_class, form).not('small').removeClass(self.settings.error_class);
-      $(':input', form).not(':button, :submit, :reset, :hidden, [data-abide-ignore]').val('').removeAttr(self.invalid_attr);
+      $(':input', form).not(':button, :submit, :reset').not(settings.element_filter).val('').removeAttr(self.invalid_attr);
     },
 
     validate : function (els, e, is_ajax) {
