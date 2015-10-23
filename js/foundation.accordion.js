@@ -62,11 +62,21 @@
             _this.down($tabContent);
           }
         }).on('keydown.zf.accordion', function(e){
-          e.preventDefault();
-          e.stopPropagation();
           Foundation.handleKey(e, _this, {
             toggle: function() {
               _this.toggle($tabContent);
+            },
+            next: function() {
+              console.log( $tabContent.parent(),$tabContent.parent().next());
+              $tabContent.parent().next().find('a').focus().trigger('click.zf.accordion');
+            },
+            previous: function() {
+              $tabContent.parent().prev().find('a').focus().trigger('click.zf.accordion');
+
+            },
+            handled: function() {
+              e.preventDefault();
+              e.stopPropagation();
             }
           });
         });

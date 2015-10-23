@@ -95,7 +95,7 @@
       'ENTER': 'toggle',
       'SPACE': 'toggle',
       'ARROW_DOWN': 'next',
-      'ARROW_UP': 'prev'
+      'ARROW_UP': 'previous'
 
     },
     'DropdownMenu': {
