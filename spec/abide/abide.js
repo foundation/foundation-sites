@@ -132,6 +132,28 @@ describe('abide:', function() {
       expect('focus').not.toHaveBeenTriggeredOn(hidden_element);
       expect('focus').toHaveBeenTriggeredOn(first_element);
     });
+    it('should filter and not validate hidden fields by default', function() {
+      $(document).foundation();
+      expect($('input[name="hidden_value"]')).not.toHaveData('invalid');
+
+      $('form').submit();
+
+      expect($('input[name="hidden_value"]')).not.toHaveData('invalid');
+    });
+    it('should validate hidden fields if they are not included in settings.element_filter', function() {
+      $(document).foundation({
+        abide: {
+          settings: {
+            element_filter: '[data-abide-ignore]'
+          }
+        }
+      });
+      expect($('input[name="hidden_value"]')).not.toHaveData('invalid');
+
+      $('form').submit();
+
+      expect($('input[name="hidden_value"]')).toHaveData('invalid');
+    });
 
   });
 
