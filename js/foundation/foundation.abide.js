@@ -16,7 +16,7 @@
       error_class : 'error', // labels with a for="inputId" will receive an `error` class
       // the amount of time Abide will take before it validates the form (in ms).
       // smaller time will result in faster validation
-      element_filter: ':hidden, [data-abide-ignore]',
+      element_filter: ':hidden, [data-abide-ignore]', // specify which fields to ignore validation on
       timeout : 1000,
       patterns : {
         alpha : /^[a-zA-Z]+$/,
