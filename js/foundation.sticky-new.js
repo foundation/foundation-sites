@@ -36,6 +36,7 @@
     // console.log(this.$container.css('border-top-width'), $(document).height());
     this.scrollCount = this.options.checkEvery;
     this.resized = true;
+    this.isStuck = false;
     this._setSizes(function(){
       _this._calc(false);
     });
@@ -80,24 +81,34 @@
 
   Sticky.prototype._calc = function(checkSizes, scroll){
     if(checkSizes){ this._setSizes(); }
+    if(!this.canStick){
+      if(this.isStuck){
+        this._removeSticky(true);
+      }
+      return false;
+    }
     // if(!scroll) console.log($(document.body).scrollTop(), 'top', this.topPoint, 'btm', this.bottomPoint);
     if(!scroll){ scroll = window.scrollY; }
 
     if(scroll >= this.topPoint){
       if(scroll <= this.bottomPoint){
-        if(!this.$element.hasClass('is-stuck')){
+        // if(!this.$element.hasClass('is-stuck')){
+        if(!this.isStuck){
           this._setSticky();
         }
       }else{
-        if(this.$element.hasClass('is-stuck')){
+        if(this.isStuck){
+        // if(this.$element.hasClass('is-stuck')){
           this._removeSticky(false);
         }
       }
     }else{
-      if(this.$element.hasClass('is-stuck')){
+      // if(this.$element.hasClass('is-stuck')){
+      if(this.isStuck){
         this._removeSticky(true);
       }
     }
+    console.log(this.isStuck);
   };
   Sticky.prototype._setSticky = function(){
     var stickTo = this.options.stickTo,
@@ -108,7 +119,7 @@
     css[mrgn] = this.options[mrgn] + 'em';
     css[stickTo] = 0;
     css[notStuckTo] = 'auto';
-
+    this.isStuck = true;
     this.$element.removeClass('is-anchored is-at-' + notStuckTo)
                  .addClass('is-stuck is-at-' + stickTo)
                  .css(css);
@@ -128,6 +139,7 @@
       css[stickTo] = 0;
       css[notStuckTo] = this.anchorHeight - this.$element.height();
     }
+    this.isStuck = false;
     this.$element.removeClass('is-stuck is-at-' + stickTo)
                  .addClass('is-anchored is-at-' + (isTop ? 'top' : 'bottom'))
                  .css(css);
@@ -150,6 +162,8 @@
     this.$container.css({
       height: newContainerHeight
     });
+    this.canStick = Foundation.MediaQuery.atLeast(this.options.stickyOn);
+    console.log(this.canStick, this.options.stickOn);
     this._setBreakPoints(newContainerHeight, function(){
       _this.resized = false;
       if(cb){ cb(); }
@@ -176,7 +190,7 @@
 
     this.topPoint = topPoint;
     this.bottomPoint = bottomPoint;
-    // console.log('top',this.topPoint,'bottom', this.bottomPoint, 'anchor', this.anchorHeight);
+    console.log('top',this.topPoint,'bottom', this.bottomPoint, 'anchor', this.anchorHeight);
 
     cb();
   };
