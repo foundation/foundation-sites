@@ -107,9 +107,9 @@
 /// There are two PNG fallbacks: a black triangle and a white triangle. The one used depends on the lightness of the input color.
 /// @param {Color} $color [$black] - Color to use for the triangle.
 @mixin background-triangle($color: $black) {
-  $color: rgb(red($color), green($color), blue($color));
+  $rgb: 'rgb(#{red($color)}, #{green($color)}, #{blue($color)})';
 
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="32" height="24" viewBox="0 0 32 24"><polygon points="0,0 32,0 16,24" style="fill: #{$color}"></polygon></svg>');
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="32" height="24" viewBox="0 0 32 24"><polygon points="0,0 32,0 16,24" style="fill: #{$rgb}"></polygon></svg>');
 
   @media screen and (min-width:0\0) {
     @if lightness($color) < 50% {

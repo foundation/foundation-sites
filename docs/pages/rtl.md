@@ -28,36 +28,18 @@ View of a [full list of language codes](http://www.loc.gov/standards/iso639-2/ph
 
 ---
 
-## CSS
+## CSS Download
 
-### Pre-built Files
+If you use a CSS version of Foundation (the ones you can find on the [download page](http://foundation.zurb.com/sites/download)), you'll need to create a custom download that includes RTL CSS instead of LTR. Just select "Right-to-left" under the Text Direction section of the customizer.
 
-The Foundation download, Bower package, and npm package include a separate RTL version of the CSS, titled `foundation.rtl.css`. You can drop this into an existing project to enable the RTL version of Foundation.
+---
 
-### Using a Build System
+## Sass Configuration
 
-We use a tool called [RTLCSS](https://github.com/MohammadYounes/rtlcss), a [PostCSS](https://github.com/postcss/postcss) plugin, to help us generate a right-to-left version of the Foundation CSS. If you're using one of our template projects, or using your own build system, you can add it to your build process fairly easily.
+If you're using the Sass version of Foundation, open your project's [settings file](sass.html#the-settings-file) (`settings.scss`) and change this variable in the Global section:
 
-#### Gulp
-
-Our template projects use the [Gulp](http://gulpjs.com) build system. You can add the [gulp-rtlcss](https://github.com/jjlharrison/gulp-rtlcss) plugin to your build process to generate an RTL version of your CSS. Here's what it looks like when using the `sass` task in the basic template's Gulpfile:
-
-```js
-gulp.task('sass', function() {
-  return gulp.src('./scss/app.scss')
-    .pipe($.sass({
-      includePaths: sassPaths,
-      errLogToConsole: true
-    }))
-    .pipe($.autoprefixer({
-      browsers: ['last 2 versions', 'ie >= 9']
-    }))
-    // RTLCSS runs after Sass and Autoprefixer are done
-    .pipe($.rtlcss())
-    .pipe(gulp.dest('./css'));
-});
+```scss
+$global-text-direction: rtl;
 ```
 
-#### Other Build Systems
-
-RTLCSS can also be used standalone or as a command line tool (via [rtlcss](https://github.com/MohammadYounes/rtlcss)), or used with Grunt (via [grunt-rtlcss](https://github.com/MohammadYounes/grunt-rtlcss)).
+This will convert the framework's components to RTL format.
