@@ -122,7 +122,7 @@ $breakpoint-classes: (small medium large) !default;
 /// @param {Keyword|Number} $values... - Breakpoint name, or px, rem, or em value to process.
 /// @output If the breakpoint is "0px and larger", outputs the content. Otherwise, outputs the content wrapped in a media query.
 @mixin breakpoint($values...) {
-  $str: 'screen';
+  $str: '';
 
   // Iterate through each parameter given
   @each $value in $values {
@@ -141,7 +141,7 @@ $breakpoint-classes: (small medium large) !default;
 
   // Otherwise, wrap the content in a media query
   @else {
-    @media #{$str} {
+    @media screen#{$str} {
       @content;
     }
   }
