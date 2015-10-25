@@ -19,6 +19,8 @@ var Foundation = {
    */
   _uuids: [],
 
+  _activePlugins: {},
+
   /**
    * Returns a boolean for RTL support
    */
@@ -40,6 +42,11 @@ var Foundation = {
 
     // Add to the Foundation object and the plugins list (for reflowing)
     this._plugins[attrName] = this[className] = plugin;
+  },
+
+  registerPlugin: function(plugin){
+    this._activePlugins[plugin.uuid] = plugin;
+    return this._activePlugins;
   },
 
   /**

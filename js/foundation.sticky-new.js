@@ -5,6 +5,8 @@
     this.options = $.extend({}, Sticky.defaults, this.$element.data(), options || {});
 
     this._init();
+    this.uuid = Foundation.GetYoDigits(6, 'sticky');
+    Foundation.registerPlugin(this)
   }
   Sticky.defaults = {
     stickToWindow: false,
