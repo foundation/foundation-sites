@@ -81,34 +81,31 @@
 
   Sticky.prototype._calc = function(checkSizes, scroll){
     if(checkSizes){ this._setSizes(); }
+
     if(!this.canStick){
       if(this.isStuck){
         this._removeSticky(true);
       }
       return false;
     }
-    // if(!scroll) console.log($(document.body).scrollTop(), 'top', this.topPoint, 'btm', this.bottomPoint);
+
     if(!scroll){ scroll = window.scrollY; }
 
     if(scroll >= this.topPoint){
       if(scroll <= this.bottomPoint){
-        // if(!this.$element.hasClass('is-stuck')){
         if(!this.isStuck){
           this._setSticky();
         }
       }else{
         if(this.isStuck){
-        // if(this.$element.hasClass('is-stuck')){
           this._removeSticky(false);
         }
       }
     }else{
-      // if(this.$element.hasClass('is-stuck')){
       if(this.isStuck){
         this._removeSticky(true);
       }
     }
-    console.log(this.isStuck);
   };
   Sticky.prototype._setSticky = function(){
     var stickTo = this.options.stickTo,
@@ -163,7 +160,7 @@
       height: newContainerHeight
     });
     this.canStick = Foundation.MediaQuery.atLeast(this.options.stickyOn);
-    console.log(this.canStick, this.options.stickOn);
+
     this._setBreakPoints(newContainerHeight, function(){
       _this.resized = false;
       if(cb){ cb(); }
@@ -192,7 +189,7 @@
     this.bottomPoint = bottomPoint;
     console.log('top',this.topPoint,'bottom', this.bottomPoint, 'anchor', this.anchorHeight);
 
-    cb();
+    if(cb){ cb(); }
   };
 
   function emCalc(em){
