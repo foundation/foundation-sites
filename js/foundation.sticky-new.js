@@ -71,16 +71,16 @@
       }else{
         _this.scrollCount = _this.options.checkEvery;
         // _this._calc(true, e.currentTarget.scrollY);
-        _this._setSizes(function(){
+        // _this._setSizes(function(){
           _this._calc(false, e.currentTarget.scrollY);
-        })
+        // })
       }
     });
   }
 
   Sticky.prototype._calc = function(checkSizes, scroll){
     if(checkSizes){ this._setSizes(); }
-    if(!scroll) console.log($(document.body).scrollTop(), 'top', this.topPoint, 'btm', this.bottomPoint);
+    // if(!scroll) console.log($(document.body).scrollTop(), 'top', this.topPoint, 'btm', this.bottomPoint);
     if(!scroll){ scroll = window.scrollY; }
 
     if(scroll >= this.topPoint){
@@ -134,7 +134,7 @@
   };
 
   Sticky.prototype._setSizes = function(cb){
-    if(!this.resized){ return cb(); }
+    // if(!this.resized){ return cb(); }
     var _this = this,
         newElemWidth = this.$container[0].getBoundingClientRect().width,
         pdng = parseInt(window.getComputedStyle(this.$container[0])['padding-right'], 10);
@@ -143,6 +143,7 @@
     this.$element.css({
       'max-width': newElemWidth - pdng + 'px'
     });
+    // console.log('anchor', this.anchorHeight);
 
     var newContainerHeight = this.$element[0].getBoundingClientRect().height || this.containerHeight;
     this.containerHeight = newContainerHeight;
@@ -159,11 +160,13 @@
     var mTop = emCalc(this.options.marginTop),
         mBtm = emCalc(this.options.marginBottom),
         topPoint = this.$anchor.offset().top,
-        bottomPoint = topPoint + this.$anchor[0].getBoundingClientRect().height,
+        bottomPoint = topPoint + this.anchorHeight,
+        // bottomPoint = topPoint + this.$anchor[0].getBoundingClientRect().height,
         winHeight = window.innerHeight;
     if(this.options.stickTo === 'top'){
       topPoint -= mTop;
-      bottomPoint -= this.$element[0].getBoundingClientRect().height + mTop;
+      bottomPoint -= elemHeight + mTop;
+      // bottomPoint -= this.$element[0].getBoundingClientRect().height + mTop;
     }else if(this.options.stickTo === 'bottom'){
       topPoint -= (winHeight - (elemHeight + mBtm));
       bottomPoint -= (winHeight - mBtm);
@@ -173,7 +176,7 @@
 
     this.topPoint = topPoint;
     this.bottomPoint = bottomPoint;
-    console.log(this.topPoint, this.bottomPoint);
+    // console.log('top',this.topPoint,'bottom', this.bottomPoint, 'anchor', this.anchorHeight);
 
     cb();
   };
