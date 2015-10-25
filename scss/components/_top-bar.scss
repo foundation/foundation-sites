@@ -10,10 +10,6 @@
 /// @type Number
 $topbar-padding: 0.5rem;
 
-/// Bottom margin for the top bar.
-/// @type Number
-$topbar-margin: 1rem;
-
 /// Background color for the top bar. This color also cascades to menus within the top bar.
 /// @type Color
 $topbar-background: #eee;
@@ -30,7 +26,6 @@ $topbar-input-width: 200px;
 @mixin top-bar-container {
   @include clearfix;
   padding: $topbar-padding;
-  margin-bottom: $topbar-margin;
 
   &, ul {
     background-color: $topbar-background;
