@@ -61,7 +61,7 @@
       'data-yeti-box': elemId,
       'data-toggle': elemId,
       'data-resize': elemId
-    });
+    }).addClass('has-tip');
 
     //helper variables to track movement on collisions
     this.usedPositions = [];
@@ -76,7 +76,9 @@
    * @private
    */
   Tooltip.prototype.getPositionClass = function(element){
-    var position = element.attr('class').match(/top|left|right/g);
+    if(!element){ return ''; }
+    // var position = element.attr('class').match(/top|left|right/g);
+    var position = element[0].className.match(/top|left|right/g);
         position = position ? position[0] : '';
     return position;
   };
@@ -154,7 +156,7 @@
     if(($tipDims.width >= $tipDims.windowDims.width) || (!this.counter && !Foundation.ImNotTouchingYou(this.template))){
       this.template.offset(Foundation.GetOffsets(this.template, this.$element, 'center bottom', this.options.vOffset, this.options.hOffset, true)).css({
       // this.$element.offset(Foundation.GetOffsets(this.template, this.$element, 'center bottom', this.options.vOffset, this.options.hOffset, true)).css({
-        'width': $eleDims.windowDims.width - (this.options.hOffset * 2),
+        'width': $anchorDims.windowDims.width - (this.options.hOffset * 2),
         'height': 'auto'
       });
       return false;
@@ -196,7 +198,7 @@
       'aria-hidden': false
     });
     _this.isActive = true;
-
+    // console.log(this.template);
     this.template.stop().hide().css('visibility', '').fadeIn(this.options.fadeInDuration, function(){
       //maybe do stuff?
     });
@@ -213,6 +215,7 @@
    * @private
    */
   Tooltip.prototype._hide = function(){
+    // console.log('hiding', this.$element.data('yeti-box'));
     var _this = this;
     this.template.stop().attr({
       'aria-hidden': true,
@@ -224,6 +227,10 @@
         _this.template
              .removeClass(_this.getPositionClass(_this.template))
              .addClass(_this.options.positionClass);
+
+       _this.usedPositions = [];
+       _this.counter = 4;
+       _this.classChanged = false;
       }
     });
     /**
@@ -260,6 +267,20 @@
         }
       });
     }
+    if(this.options.clickOpen){
+      this.$element.on('mousedown.zf.tooltip', function(e){
+        e.stopImmediatePropagation();
+        if(_this.isClick){
+          _this._hide();
+          // _this.isClick = false;
+        }else{
+          _this.isClick = true;
+          if((_this.options.disableHover || !_this.$element.attr('tabindex')) && !_this.isActive){
+            _this._show();
+          }
+        }
+      });
+    }
 
     if(!this.options.disableForTouch){
       this.$element
@@ -269,13 +290,15 @@
     }
 
     this.$element.on({
-      'toggle.zf.trigger': this.toggle.bind(this),
+      // 'toggle.zf.trigger': this.toggle.bind(this),
+      // 'close.zf.trigger': this._hide.bind(this)
       'close.zf.trigger': this._hide.bind(this)
     });
 
     this.$element
       .on('focus.zf.tooltip', function(e){
         isFocus = true;
+        console.log(_this.isClick);
         if(_this.isClick){
           return false;
         }else{

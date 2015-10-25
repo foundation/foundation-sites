@@ -113,10 +113,11 @@
 
       $(window).off(listeners).on(listeners, function(e, pluginId){
         var plugin = e.namespace.split('.')[0];
-        var plugins = $('[data-' + plugin + ']').not('[data-yeti-box=' + pluginId + ']');
-
+        var plugins = $('[data-' + plugin + ']').not('[data-yeti-box="' + pluginId + '"]');
+        
         plugins.each(function(){
           var _this = $(this);
+          // console.log(_this);
           _this.triggerHandler('close.zf.trigger', [_this]);
         });
 

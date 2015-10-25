@@ -47,7 +47,7 @@
   Sticky.prototype._init = function(){
     var _this = this;
 
-    this.$container = this.$element.parents('[data-sticky-container]').length ? this.$element.parents('[data-sticky-container]') : $(this.options.container);
+    this.$container = this.$element.parent('[data-sticky-container]').length ? this.$element.parent('[data-sticky-container]') : $(this.options.container);
     this.$element.addClass('sticky');
     // this.$element.wrap(this.$container);
     this.$container.addClass('sticky-container');
@@ -202,5 +202,5 @@
     this.$container.css({'min-height': this.$elemDims.height});
   };
   //*********************************************************************
-  Foundation.plugin(Sticky);
+  // Foundation.plugin(Sticky);
 }(jQuery, window.Foundation, window);

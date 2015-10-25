@@ -23,7 +23,7 @@
   Tabs.defaults = {
     deepLinking: false,
     scrollToContent: false,
-    autoFocus: true,
+    autoFocus: false,
     wrapOnKeys: true
   };
 
