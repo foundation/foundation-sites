@@ -19,8 +19,6 @@
   Slider.defaults = {
     start: 0,
     end: 100,
-    // min: start,
-    // max: end,
     step: 1,
     initialStart: 0,
     initialEnd: 100,
@@ -330,15 +328,12 @@
 
   Foundation.plugin(Slider);
 
-  function percent(frac, num, dec){
+  function percent(frac, num){
     return (frac / num);
   }
   function absPosition($handle, dir, clickPos, param){
     return Math.abs(($handle.position()[dir] + ($handle[param]() / 2)) - clickPos);
   }
-  // $.fn.hasAttr = function(name) {
-  //    return this.attr(name) !== undefined;
-  // };
 }(jQuery, window.Foundation);
 
 //*********this is in case we go to static, absolute positions instead of dynamic positioning********

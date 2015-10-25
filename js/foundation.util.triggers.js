@@ -6,7 +6,7 @@
   });
 
   // Elements with [data-close] will close a plugin that supports it when clicked.
-  // If used without a value on [data-open], the event will bubble, allowing it to close a parent component.
+  // If used without a value on [data-close], the event will bubble, allowing it to close a parent component.
   $(document).on('click.zf.trigger', '[data-close]', function() {
     var id = $(this).data('close');
     if (id) {
@@ -95,7 +95,7 @@
   //******** only fires this function once on load, if there's something to watch ********
   function closemeListener(pluginName){
     var yetiBoxes = $('[data-yeti-box]'),
-    plugNames = ['dropdown', 'tooltip', 'orbit'];
+        plugNames = ['dropdown', 'tooltip', 'orbit'];
 
     if(pluginName){
       if(typeof pluginName === 'string'){
@@ -111,7 +111,7 @@
         return 'closeme.zf.' + name;
       }).join(' ');
 
-      $(window).on(listeners, function(e, pluginId){
+      $(window).off(listeners).on(listeners, function(e, pluginId){
         var plugin = e.namespace.split('.')[0];
         var plugins = $('[data-' + plugin + ']').not('[data-yeti-box=' + pluginId + ']');
 
