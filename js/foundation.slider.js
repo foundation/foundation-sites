@@ -63,7 +63,7 @@
       }
       isDbl = true;
 
-      this._setHandlePos(this.$handle, this.options.initialStart, 'wtf', function(){
+      this._setHandlePos(this.$handle, this.options.initialStart, function(){
 
         _this._setHandlePos(_this.$handle2, _this.options.initialEnd);
       });
@@ -79,7 +79,7 @@
     this.$element.trigger('init.zf.slider');
   };
 
-  Slider.prototype._setHandlePos = function($hndl, location, str, cb){//location is a number value between the `start` and `end` values of the slider bar.
+  Slider.prototype._setHandlePos = function($hndl, location, cb){//location is a number value between the `start` and `end` values of the slider bar.
   //might need to alter that slightly for bars that will have odd number selections.
     // console.log(str, cb);
     location = parseFloat(location);//on input change events, convert string to number...grumble.
