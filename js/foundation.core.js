@@ -35,7 +35,6 @@ var Foundation = {
     // Object key to use when adding to global Foundation object
     // Examples: Foundation.Reveal, Foundation.OffCanvas
     var className = functionName(plugin);
-
     // Object key to use when storing the plugin, also used to create the identifying data attribute for the plugin
     // Examples: data-reveal, data-off-canvas
     var attrName  = hyphenate(className);
@@ -45,8 +44,37 @@ var Foundation = {
   },
 
   registerPlugin: function(plugin){
+    var pluginName = functionName(plugin.constructor).toLowerCase();
+
+    plugin.uuid = this.GetYoDigits(6, pluginName);
+    plugin.$element.attr('data-' + pluginName, plugin.uuid);
+
     this._activePlugins[plugin.uuid] = plugin;
     return this._activePlugins;
+  },
+
+  _reflow: function(plugins){
+    var actvPlugins = Object.keys(this._activePlugins);
+    if(!plugins){
+      plugins = actvPlugins;
+    }else if(typeof plugins === 'string'){
+      var namespace = plugins.split('-')[1];
+      if(namespace){
+        this._activePlugins[plugins]._init();
+      }else{
+        namespace = new RegExp(plugins, 'i');
+        console.log(namespace);
+        var _this = this;
+        var arr = actvPlugins.filter(function(p){
+          console.log(namespace.test(p), p);
+          return namespace.test(p);
+        }).forEach(function(p){
+          _this._activePlugins[p]._init();
+        });
+        console.log(arr);
+      }
+    }
+
   },
 
   /**
