@@ -114,7 +114,7 @@
       $(window).off(listeners).on(listeners, function(e, pluginId){
         var plugin = e.namespace.split('.')[0];
         var plugins = $('[data-' + plugin + ']').not('[data-yeti-box="' + pluginId + '"]');
-        
+
         plugins.each(function(){
           var _this = $(this);
           // console.log(_this);
@@ -138,7 +138,7 @@
               var $elem = $(nodes[i])
               $elem.triggerHandler('resizeme.zf.trigger', [$elem]);
             }
-          }, debounce || 150);//default time to emit resize event
+          }, debounce || 10);//default time to emit resize event
       });
     }
   }
