@@ -156,7 +156,7 @@
               var $elem = $(nodes[i])
               $elem.triggerHandler('scrollme.zf.trigger', [$elem]);
             }
-          }, debounce || 150);//default time to emit scroll event
+          }, debounce || 50);//default time to emit scroll event
       });
     }
   }

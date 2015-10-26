@@ -18,7 +18,7 @@
     stickyOn: 'medium',
     stickyClass: 'sticky',
     containerClass: 'sticky-container',
-    checkEvery: 15
+    checkEvery: 25
   };
 
   Sticky.prototype._init = function(){
@@ -33,53 +33,48 @@
     this.$anchor = this.options.stickAt ? $(this.options.stickAt) : $(document.body);
 
     this.$element.addClass(this.options.stickyClass)
-                 .attr({'data-resize': id, 'data-scroll': id});
+                 .attr({'data-resize': id});
 
-    // this.isTop = this.options.stickTo === 'top';
-    // console.log(this.$container.css('border-top-width'), $(document).height());
     this.scrollCount = this.options.checkEvery;
-    this.resized = true;
     this.isStuck = false;
+
     this._setSizes(function(){
       _this._calc(false);
     });
 
-    this._events();
+    this._events(id);
 
   };
-  Sticky.prototype._events = function(){
+  Sticky.prototype._events = function(id){
     var _this = this;
+    id = id.split('-').reverse().join('-');
+    var scrollListener = 'scroll.zf.' + id;
 
     this.$element.off('resizeme.zf.trigger')
                  .on('resizeme.zf.trigger', function(e, el){
-                   console.log('called');
-                   this.resized = true;
-                  //  setTimeout(function(){
                      _this._setSizes(function(){
                        _this._calc(false);
                      });
-                  //  }, 5)
     });
     this.$anchor.off('change.zf.sticky')
                 .on('change.zf.sticky', function(){
-                  _this.resized = true;
                   _this._setSizes(function(){
                     _this._calc(false);
                   });
                 });
 
-    $(window).on('scroll.zf.sticky', function(e){
-      if(_this.scrollCount){
-        _this.scrollCount--;
-        _this._calc(false, e.currentTarget.scrollY);
-      }else{
-        _this.scrollCount = _this.options.checkEvery;
-        // _this._calc(true, e.currentTarget.scrollY);
-        // _this._setSizes(function(){
-          _this._calc(false, e.currentTarget.scrollY);
-        // })
-      }
-    });
+    $(window).off(scrollListener)
+             .on(scrollListener, function(e){
+              if(_this.scrollCount){
+                _this.scrollCount--;
+                _this._calc(false, e.currentTarget.scrollY);
+              }else{
+                _this.scrollCount = _this.options.checkEvery;
+                _this._setSizes(function(){
+                  _this._calc(false, e.currentTarget.scrollY);
+                })
+              }
+             });
   }
 
   Sticky.prototype._calc = function(checkSizes, scroll){
@@ -133,11 +128,11 @@
       css[mrgn] = 0;
 
     if((isTop && !stickToTop) || (stickToTop && !isTop)){
-      css[stickTo] = this.anchorHeight - this.$element.height();
+      css[stickTo] = this.anchorHeight - this.elemHeight;
       css[notStuckTo] = 0;
     }else{
       css[stickTo] = 0;
-      css[notStuckTo] = this.anchorHeight - this.$element.height();
+      css[notStuckTo] = this.anchorHeight - this.elemHeight;
     }
     this.isStuck = false;
     this.$element.removeClass('is-stuck is-at-' + stickTo)
@@ -146,35 +141,39 @@
   };
 
   Sticky.prototype._setSizes = function(cb){
-    // if(!this.resized){ return cb(); }
     var _this = this,
-        // newElemWidth = this.$container[0].getBoundingClientRect().width,
-        newElemWidth = this.$container.width(),
-        pdng = parseInt(this.$container.css('padding-right'));
-        // pdng = parseInt(window.getComputedStyle(this.$container[0])['padding-right'], 10);
+        newElemWidth = this.$container[0].getBoundingClientRect().width,
+        // newElemWidth = this.$container.width(),
+        // pdng = parseInt(this.$container.css('padding-right'));
+        pdng = parseInt(window.getComputedStyle(this.$container[0])['padding-right'], 10);
 
-    this.anchorHeight = this.$anchor.height();
-    // this.anchorHeight = this.$anchor[0].getBoundingClientRect().height;
+    // this.anchorHeight = this.$anchor.height();
+    this.anchorHeight = this.$anchor[0].getBoundingClientRect().height;
     this.$element.css({
       'max-width': newElemWidth - pdng + 'px'
     });
     // console.log('anchor', this.anchorHeight);
 
-    var newContainerHeight = this.$element.height() || this.containerHeight;
-    // var newContainerHeight = this.$element[0].getBoundingClientRect().height || this.containerHeight;
+    // var newContainerHeight = this.$element.height() || this.containerHeight;
+    var newContainerHeight = this.$element[0].getBoundingClientRect().height || this.containerHeight;
     this.containerHeight = newContainerHeight;
     this.$container.css({
       height: newContainerHeight
     });
+    this.elemHeight = newContainerHeight;
     this.canStick = Foundation.MediaQuery.atLeast(this.options.stickyOn);
 
     this._setBreakPoints(newContainerHeight, function(){
-      _this.resized = false;
       if(cb){ cb(); }
     });
 
   };
   Sticky.prototype._setBreakPoints = function(elemHeight, cb){
+    console.log('called _setBreakPoints');
+    if(!this.canStick){
+      if(cb){ cb(); }
+      else{ return false; }
+    }
     var mTop = emCalc(this.options.marginTop),
         mBtm = emCalc(this.options.marginBottom),
         topPoint = this.$anchor.offset().top,
@@ -195,7 +194,7 @@
 
     this.topPoint = topPoint;
     this.bottomPoint = bottomPoint;
-    console.log('top',this.topPoint,'bottom', this.bottomPoint, 'anchor', this.anchorHeight);
+    // console.log('top',this.topPoint,'bottom', this.bottomPoint, 'anchor', this.anchorHeight);
 
     if(cb){ cb(); }
   };
