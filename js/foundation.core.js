@@ -55,23 +55,23 @@ var Foundation = {
 
   _reflow: function(plugins){
     var actvPlugins = Object.keys(this._activePlugins);
+    var _this = this;
     if(!plugins){
-      plugins = actvPlugins;
+      actvPlugins.forEach(function(p){
+        _this._activePlugins[p]._init();
+      });
     }else if(typeof plugins === 'string'){
       var namespace = plugins.split('-')[1];
       if(namespace){
         this._activePlugins[plugins]._init();
       }else{
         namespace = new RegExp(plugins, 'i');
-        console.log(namespace);
-        var _this = this;
-        var arr = actvPlugins.filter(function(p){
-          console.log(namespace.test(p), p);
+
+        actvPlugins.filter(function(p){
           return namespace.test(p);
         }).forEach(function(p){
           _this._activePlugins[p]._init();
         });
-        console.log(arr);
       }
     }
 
