@@ -22,7 +22,6 @@
   };
 
   Sticky.prototype._init = function(){
-    console.log('called');
     var $parent = this.$element.parent('[data-sticky-container]'),
         id = this.$element[0].id || Foundation.GetYoDigits(6, 'sticky'),
         _this = this;
@@ -42,40 +41,54 @@
       _this._calc(false);
     });
 
-    this._events(id);
-
+    this._events(id.split('-').reverse().join('-'));
   };
   Sticky.prototype._events = function(id){
-    var _this = this;
-    id = id.split('-').reverse().join('-');
-    var scrollListener = 'scroll.zf.' + id;
+    var _this = this,
+        scrollListener = 'scroll.zf.' + id;
+
+    if(this.canStick){
+      this.isOn = true;
+      this.$anchor.off('change.zf.sticky')
+                  .on('change.zf.sticky', function(){
+                    _this._setSizes(function(){
+                      _this._calc(false);
+                    });
+                  });
+
+      $(window).off(scrollListener)
+               .on(scrollListener, function(e){
+                if(_this.scrollCount){
+                  _this.scrollCount--;
+                  _this._calc(false, e.currentTarget.scrollY);
+                }else{
+                  _this.scrollCount = _this.options.checkEvery;
+                  _this._setSizes(function(){
+                    _this._calc(false, e.currentTarget.scrollY);
+                  })
+                }
+              });
+    }
 
     this.$element.off('resizeme.zf.trigger')
                  .on('resizeme.zf.trigger', function(e, el){
                      _this._setSizes(function(){
                        _this._calc(false);
+                       if(_this.canStick){
+                         if(!_this.isOn){
+                           _this._events(id);
+                         }
+                       }else if(_this.isOn){
+                         _this._pauseListeners(scrollListener);
+                       }
                      });
     });
-    this.$anchor.off('change.zf.sticky')
-                .on('change.zf.sticky', function(){
-                  _this._setSizes(function(){
-                    _this._calc(false);
-                  });
-                });
-
-    $(window).off(scrollListener)
-             .on(scrollListener, function(e){
-              if(_this.scrollCount){
-                _this.scrollCount--;
-                _this._calc(false, e.currentTarget.scrollY);
-              }else{
-                _this.scrollCount = _this.options.checkEvery;
-                _this._setSizes(function(){
-                  _this._calc(false, e.currentTarget.scrollY);
-                })
-              }
-             });
-  }
+  };
+  Sticky.prototype._pauseListeners = function(scrollListener){
+    this.isOn = false;
+    this.$anchor.off('change.zf.sticky');
+    $(window).off(scrollListener);
+  };
 
   Sticky.prototype._calc = function(checkSizes, scroll){
     if(checkSizes){ this._setSizes(); }
@@ -143,18 +156,13 @@
   Sticky.prototype._setSizes = function(cb){
     var _this = this,
         newElemWidth = this.$container[0].getBoundingClientRect().width,
-        // newElemWidth = this.$container.width(),
-        // pdng = parseInt(this.$container.css('padding-right'));
         pdng = parseInt(window.getComputedStyle(this.$container[0])['padding-right'], 10);
 
-    // this.anchorHeight = this.$anchor.height();
     this.anchorHeight = this.$anchor[0].getBoundingClientRect().height;
     this.$element.css({
       'max-width': newElemWidth - pdng + 'px'
     });
-    // console.log('anchor', this.anchorHeight);
 
-    // var newContainerHeight = this.$element.height() || this.containerHeight;
     var newContainerHeight = this.$element[0].getBoundingClientRect().height || this.containerHeight;
     this.containerHeight = newContainerHeight;
     this.$container.css({
@@ -169,7 +177,6 @@
 
   };
   Sticky.prototype._setBreakPoints = function(elemHeight, cb){
-    console.log('called _setBreakPoints');
     if(!this.canStick){
       if(cb){ cb(); }
       else{ return false; }
@@ -178,13 +185,11 @@
         mBtm = emCalc(this.options.marginBottom),
         topPoint = this.$anchor.offset().top,
         bottomPoint = topPoint + this.anchorHeight,
-        // bottomPoint = topPoint + this.$anchor[0].getBoundingClientRect().height,
         winHeight = window.innerHeight;
+
     if(this.options.stickTo === 'top'){
       topPoint -= mTop;
-
       bottomPoint -= (elemHeight + mTop);
-      // bottomPoint -= this.$element[0].getBoundingClientRect().height + mTop;
     }else if(this.options.stickTo === 'bottom'){
       topPoint -= (winHeight - (elemHeight + mBtm));
       bottomPoint -= (winHeight - mBtm);
@@ -194,7 +199,6 @@
 
     this.topPoint = topPoint;
     this.bottomPoint = bottomPoint;
-    // console.log('top',this.topPoint,'bottom', this.bottomPoint, 'anchor', this.anchorHeight);
 
     if(cb){ cb(); }
   };
