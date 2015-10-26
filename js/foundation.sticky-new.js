@@ -1,5 +1,11 @@
 !function($, Foundation){
   'use strict';
+
+  /**
+   * Creates a new instance of a sticky thing.
+   * @class
+   * @param {jQuery} element - jQuery object to make sticky.
+   */
   function Sticky(element, options){
     this.$element = element;
     this.options = $.extend({}, Sticky.defaults, this.$element.data(), options || {});
@@ -21,11 +27,19 @@
     checkEvery: 25
   };
 
+  /**
+   * Initializes the sticky element by adding classes, getting/setting dimensions, breakpoints and attributes
+   * Also triggered by Foundation._reflow
+   * @private
+   */
   Sticky.prototype._init = function(){
     var $parent = this.$element.parent('[data-sticky-container]'),
         id = this.$element[0].id || Foundation.GetYoDigits(6, 'sticky'),
         _this = this;
-        // _this = this;
+
+    if(!$parent.length){
+      this.wasWrapped = true;
+    }
     this.$container = $parent.length ? $parent : $(this.options.container).wrapInner(this.$element);
     this.$container.addClass(this.options.containerClass);
 
@@ -43,6 +57,12 @@
 
     this._events(id.split('-').reverse().join('-'));
   };
+
+  /**
+   * Adds event handlers for the scrolling element.
+   * @private
+   * @param String {id} - psuedo-random id for unique scroll event listener
+   */
   Sticky.prototype._events = function(id){
     var _this = this,
         scrollListener = 'scroll.zf.' + id;
@@ -84,12 +104,31 @@
                      });
     });
   };
+
+  /**
+   * Removes event handlers for scroll and change events on anchor.
+   * @fires Sticky#pause
+   * @param String {scrollListener} - unique, namespaced scroll listener attached to `window`
+   */
   Sticky.prototype._pauseListeners = function(scrollListener){
     this.isOn = false;
     this.$anchor.off('change.zf.sticky');
     $(window).off(scrollListener);
+
+    /**
+     * Fires when the plugin is paused due to resize event shrinking the view.
+     * @event Sticky#pause
+     * @private
+     */
+     this.$element.trigger('pause.zf.sticky');
   };
 
+  /**
+   * Called on every `scroll` event and on `_init`
+   * fires functions based on booleans and cached values
+   * @param Boolean {checkSizes} - true if plugin should recalculate sizes and breakpoints.
+   * @param Number {scroll} - current scroll position passed from scroll event cb function. If not passed, defaults to `window.scrollY`.
+   */
   Sticky.prototype._calc = function(checkSizes, scroll){
     if(checkSizes){ this._setSizes(); }
 
@@ -118,6 +157,11 @@
       }
     }
   };
+  /**
+   * Causes the $element to become stuck.
+   * Adds `position: fixed;`, and helper classes.
+   * @fires Sticky#stuckto
+   */
   Sticky.prototype._setSticky = function(){
     var stickTo = this.options.stickTo,
         mrgn = stickTo === 'top' ? 'marginTop' : 'marginBottom',
@@ -130,8 +174,22 @@
     this.isStuck = true;
     this.$element.removeClass('is-anchored is-at-' + notStuckTo)
                  .addClass('is-stuck is-at-' + stickTo)
-                 .css(css);
+                 .css(css)
+                 /**
+                  * Fires when the $element has become `position: fixed;`
+                  * Namespaced to `top` or `bottom`.
+                  * @event Sticky#stuckto
+                  */
+                 .trigger('sticky.zf.stuckto:' + stickTo);
   };
+
+  /**
+   * Causes the $element to become unstuck.
+   * Removes `position: fixed;`, and helper classes.
+   * Adds other helper classes.
+   * @param Boolean {isTop} - tells the function if the $element should anchor to the top or bottom of its $anchor element.
+   * @fires Sticky#unstuckfrom
+   */
   Sticky.prototype._removeSticky = function(isTop){
     var stickTo = this.options.stickTo,
         stickToTop = stickTo === 'top',
@@ -150,9 +208,20 @@
     this.isStuck = false;
     this.$element.removeClass('is-stuck is-at-' + stickTo)
                  .addClass('is-anchored is-at-' + (isTop ? 'top' : 'bottom'))
-                 .css(css);
+                 .css(css)
+                 /**
+                  * Fires when the $element has become anchored.
+                  * Namespaced to `top` or `bottom`.
+                  * @event Sticky#unstuckfrom
+                  */
+                 .trigger('sticky.zf.unstuckfrom:' + isTop ? 'top' : 'bottom');
   };
 
+  /**
+   * Sets the $element and $container sizes for plugin.
+   * Calls `_setBreakPoints`.
+   * @param Function {cb} - optional callback function to fire on completion of `_setBreakPoints`.
+   */
   Sticky.prototype._setSizes = function(cb){
     var _this = this,
         newElemWidth = this.$container[0].getBoundingClientRect().width,
@@ -176,6 +245,12 @@
     });
 
   };
+  /**
+   * Sets the upper and lower breakpoints for the element to become sticky/unsticky.
+   * @param Number {elemHeight} - px value for sticky.$element height, calculated by `_setSizes`.
+   * @param Function {cb} - optional callback function to be called on completion.
+   * @private
+   */
   Sticky.prototype._setBreakPoints = function(elemHeight, cb){
     if(!this.canStick){
       if(cb){ cb(); }
@@ -203,6 +278,45 @@
     if(cb){ cb(); }
   };
 
+  /**
+   * Destroys the current sticky element.
+   * Removes event listeners, JS-added css properties and classes, and unwraps the $element if the JS added the $container.
+   * @fires Sticky#destroyed
+   */
+  Sticky.prototype.destroy = function(){
+    this._removeSticky(true);
+
+    this.$element.removeClass(this.options.stickyClass + ' is-anchored is-at-top')
+                 .css({
+                   height: '',
+                   top: '',
+                   bottom: '',
+                   'max-width': ''
+                 })
+                 .off('resizeme.zf.trigger');
+
+    this.$anchor.off('change.zf.sticky');
+    $(window).off('scroll.zf.sticky');
+
+    if(this.wasWrapped){
+      this.$element.unwrap();
+    }else{
+      this.$container.removeClass(this.options.containerClass)
+                     .css({
+                       height: ''
+                     });
+    }
+    // Foundation.unregisterPlugin(this);
+    /**
+     * Fires when the plugin is destroyed.
+     * @event Sticky#destroyed
+     */
+    this.$element.trigger('destroyed.zf.sticky');
+  };
+  /**
+   * Helper function to calculate em values
+   * @param Number {em} - number of em's to calculate into pixels
+   */
   function emCalc(em){
     return parseInt(window.getComputedStyle(document.body, null).fontSize, 10) * em;
   }

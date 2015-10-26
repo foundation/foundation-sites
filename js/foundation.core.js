@@ -47,10 +47,18 @@ var Foundation = {
     var pluginName = functionName(plugin.constructor).toLowerCase();
 
     plugin.uuid = this.GetYoDigits(6, pluginName);
-    plugin.$element.attr('data-' + pluginName, plugin.uuid);
+    plugin.$element.attr('data-' + pluginName, plugin.uuid).trigger('init.zf.' + pluginName);
 
     this._activePlugins[plugin.uuid] = plugin;
-    return this._activePlugins;
+    // return this._activePlugins;
+    return;
+  },
+  unregisterPlugin: function(plugin){
+    var pluginName = functionName(plugin.constructor).toLowerCase();
+
+    delete this._activePlugins[plugin.uuid];
+
+    plugin.$element.trigger('destroyed.zf.' + pluginName);
   },
 
   _reflow: function(plugins){
@@ -63,13 +71,12 @@ var Foundation = {
       });
 
     }else if(typeof plugins === 'string'){
-
       var namespace = plugins.split('-')[1];
+
       if(namespace){
         this._activePlugins[plugins]._init();
 
       }else{
-
         namespace = new RegExp(plugins, 'i');
 
         actvPlugins.filter(function(p){
