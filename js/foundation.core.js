@@ -19,6 +19,8 @@ var Foundation = {
    */
   _uuids: [],
 
+  _activePlugins: {},
+
   /**
    * Returns a boolean for RTL support
    */
@@ -33,13 +35,51 @@ var Foundation = {
     // Object key to use when adding to global Foundation object
     // Examples: Foundation.Reveal, Foundation.OffCanvas
     var className = functionName(plugin);
-
     // Object key to use when storing the plugin, also used to create the identifying data attribute for the plugin
     // Examples: data-reveal, data-off-canvas
     var attrName  = hyphenate(className);
 
     // Add to the Foundation object and the plugins list (for reflowing)
     this._plugins[attrName] = this[className] = plugin;
+  },
+
+  registerPlugin: function(plugin){
+    var pluginName = functionName(plugin.constructor).toLowerCase();
+
+    plugin.uuid = this.GetYoDigits(6, pluginName);
+    plugin.$element.attr('data-' + pluginName, plugin.uuid);
+
+    this._activePlugins[plugin.uuid] = plugin;
+    return this._activePlugins;
+  },
+
+  _reflow: function(plugins){
+    var actvPlugins = Object.keys(this._activePlugins);
+    var _this = this;
+
+    if(!plugins){
+      actvPlugins.forEach(function(p){
+        _this._activePlugins[p]._init();
+      });
+
+    }else if(typeof plugins === 'string'){
+
+      var namespace = plugins.split('-')[1];
+      if(namespace){
+        this._activePlugins[plugins]._init();
+
+      }else{
+
+        namespace = new RegExp(plugins, 'i');
+
+        actvPlugins.filter(function(p){
+          return namespace.test(p);
+        }).forEach(function(p){
+          _this._activePlugins[p]._init();
+        });
+      }
+    }
+
   },
 
   /**

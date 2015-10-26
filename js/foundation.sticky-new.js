@@ -5,6 +5,8 @@
     this.options = $.extend({}, Sticky.defaults, this.$element.data(), options || {});
 
     this._init();
+
+    Foundation.registerPlugin(this);
   }
   Sticky.defaults = {
     stickToWindow: false,
@@ -20,6 +22,7 @@
   };
 
   Sticky.prototype._init = function(){
+    console.log('called');
     var $parent = this.$element.parent('[data-sticky-container]'),
         id = this.$element[0].id || Foundation.GetYoDigits(6, 'sticky'),
         _this = this;
@@ -145,16 +148,20 @@
   Sticky.prototype._setSizes = function(cb){
     // if(!this.resized){ return cb(); }
     var _this = this,
-        newElemWidth = this.$container[0].getBoundingClientRect().width,
-        pdng = parseInt(window.getComputedStyle(this.$container[0])['padding-right'], 10);
+        // newElemWidth = this.$container[0].getBoundingClientRect().width,
+        newElemWidth = this.$container.width(),
+        pdng = parseInt(this.$container.css('padding-right'));
+        // pdng = parseInt(window.getComputedStyle(this.$container[0])['padding-right'], 10);
 
-    this.anchorHeight = this.$anchor[0].getBoundingClientRect().height;
+    this.anchorHeight = this.$anchor.height();
+    // this.anchorHeight = this.$anchor[0].getBoundingClientRect().height;
     this.$element.css({
       'max-width': newElemWidth - pdng + 'px'
     });
     // console.log('anchor', this.anchorHeight);
 
-    var newContainerHeight = this.$element[0].getBoundingClientRect().height || this.containerHeight;
+    var newContainerHeight = this.$element.height() || this.containerHeight;
+    // var newContainerHeight = this.$element[0].getBoundingClientRect().height || this.containerHeight;
     this.containerHeight = newContainerHeight;
     this.$container.css({
       height: newContainerHeight
@@ -176,7 +183,8 @@
         winHeight = window.innerHeight;
     if(this.options.stickTo === 'top'){
       topPoint -= mTop;
-      bottomPoint -= elemHeight + mTop;
+
+      bottomPoint -= (elemHeight + mTop);
       // bottomPoint -= this.$element[0].getBoundingClientRect().height + mTop;
     }else if(this.options.stickTo === 'bottom'){
       topPoint -= (winHeight - (elemHeight + mBtm));
