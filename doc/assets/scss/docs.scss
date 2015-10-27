@@ -20,17 +20,18 @@
 /* Banner for announcements */
 a#notice {
   display:block;
+  overflow: hidden;
   position: relative;
-  min-height:65px;
+  min-height:55px;
   width:100%; 
-  background: #41BDCF; /* Old browsers */
-  background: -moz-linear-gradient(left,  #41BDCF 0%, #128CA5 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%,#41BDCF), color-stop(100%,#128CA5)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(left,  #41BDCF 0%,#128CA5 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(left,  #41BDCF 0%,#128CA5 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(left,  #41BDCF 0%,#128CA5 100%); /* IE10+ */
-  background: linear-gradient(to right,  #41BDCF 0%,#128CA5 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#41BDCF', endColorstr='#128CA5',GradientType=1 ); /* IE6-9 */
+  background: #C9025C; /* Old browsers */
+  background: -moz-linear-gradient(left,  #C9025C 0%, #630030 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,#81CFE0), color-stop(100%,#630030)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left,  #C9025C 0%,#630030 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left,  #C9025C 0%,#630030 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left,  #C9025C 0%,#630030 100%); /* IE10+ */
+  background: linear-gradient(to right,  #C9025C 0%,#630030 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#C9025C', endColorstr='#630030',GradientType=1 ); /* IE6-9 */
   @media only screen and (max-width: 675px) { margin-top: -3px; }
 
   span { 
@@ -57,14 +58,15 @@ a#notice {
     @media only screen and (max-width: 675px) { width: 100%; padding: 0 15px 20px 15px; position: relative; }
   }
   .graphic {     
-    width: 150px;
-    height: 60px; 
-    background: url("../img/spaceship.svg") center center no-repeat;
-    z-index: 25;
-    background-size: 100%;
+    width: 100px;
+    height: 100px; 
+    background: url("../img/yeti-pointing.svg") center center no-repeat;
+    z-index: 9999999;
+    background-size: 60%;
     position: absolute;
-    bottom: 0;
-    @media only screen and (max-width: 1100px) { width: 100px;}
+    bottom: -30px;
+    left: 60px;
+    @media only screen and (max-width: 1100px) { width: 100px; left: 30px;}
     @media only screen and (max-width: 740px) { display: none !important; }
   }
 }
