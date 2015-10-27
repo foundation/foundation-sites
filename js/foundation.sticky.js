@@ -1,206 +1,320 @@
-/*********************************
-** TODO: Change to one global scroll event
-** create emCalc function to make scalability a thing...
-** fix the resize problem...
-*********************************/
-!function($, Foundation, window){
+!function($, Foundation){
   'use strict';
 
   /**
    * Creates a new instance of a sticky thing.
    * @class
-   * @fires Sticky#init
    * @param {jQuery} element - jQuery object to make sticky.
+   * @param {Object} options - options object passed when creating the element programmatically.
    */
-  function Sticky(element){
+  function Sticky(element, options){
     this.$element = element;
-    this.options = $.extend({}, Sticky.defaults, this.$element.data());
-    if(Foundation.MediaQuery.atLeast(this.options.stickyOn)){
-      this._init();
-    }
+    this.options = $.extend({}, Sticky.defaults, this.$element.data(), options || {});
 
-    /**
-     * Fires when the plugin has been successfuly initialized.
-     * @event Sticky#init
-     */
-    this.$element.trigger('init.zf.sticky');
+    this._init();
+
+    Foundation.registerPlugin(this);
   }
-
-
   Sticky.defaults = {
     stickToWindow: false,
-    container: '<div></div>',
+    container: '<div data-sticky-container></div>',
     stickTo: 'top',
-    breakAt: '',
     stickAt: '',
-    debounce: 150,
     marginTop: 1,
     marginBottom: 1,
     stickyOn: 'medium',
-    watchResize: true
+    stickyClass: 'sticky',
+    containerClass: 'sticky-container',
+    checkEvery: 25
   };
 
   /**
    * Initializes the sticky element by adding classes, getting/setting dimensions, breakpoints and attributes
+   * Also triggered by Foundation._reflow
+   * @function
    * @private
    */
   Sticky.prototype._init = function(){
-    var _this = this;
+    var $parent = this.$element.parent('[data-sticky-container]'),
+        id = this.$element[0].id || Foundation.GetYoDigits(6, 'sticky'),
+        _this = this;
 
-    this.$container = this.$element.parent('[data-sticky-container]').length ? this.$element.parent('[data-sticky-container]') : $(this.options.container);
-    this.$element.addClass('sticky');
-    // this.$element.wrap(this.$container);
-    this.$container.addClass('sticky-container');
-    this.$anchor = $(this.options.stickAt).length ? $(this.options.stickAt) : $('body');
-    if(this.options.watchResize){
-      this.$element.attr('data-resize', Foundation.GetYoDigits(6, 'sticky'));
-      // this.$element.data('resize', Foundation.GetYoDigits(6, 'sticky'));
-      // console.log($('[data-resize]'));
+    if(!$parent.length){
+      this.wasWrapped = true;
     }
-    this._setSizes();
-    // this.setElementAttr();
-    // this.getDimensions();
-    // this.setContainerSize();
-    // this.setBreakPoints();
+    this.$container = $parent.length ? $parent : $(this.options.container).wrapInner(this.$element);
+    this.$container.addClass(this.options.containerClass);
 
-    this._events();
+    this.$anchor = this.options.stickAt ? $(this.options.stickAt) : $(document.body);
+
+    this.$element.addClass(this.options.stickyClass)
+                 .attr({'data-resize': id});
+
+    this.scrollCount = this.options.checkEvery;
+    this.isStuck = false;
+
+    this._setSizes(function(){
+      _this._calc(false);
+    });
+
+    this._events(id.split('-').reverse().join('-'));
   };
 
   /**
    * Adds event handlers for the scrolling element.
-   * TODO set this within the Foundation.util.triggers api so there's only one global listener
    * @private
+   * @param {String} id - psuedo-random id for unique scroll event listener.
    */
-  Sticky.prototype._events = function(){
+  Sticky.prototype._events = function(id){
     var _this = this,
-        $window = $(window);
-    this.$element.on('resizeme.zf.trigger', this._setSizes.bind(this));
+        scrollListener = 'scroll.zf.' + id;
 
-    $window.on('scroll.zf.sticky', function(e){
+    if(this.canStick){
+      this.isOn = true;
+      this.$anchor.off('change.zf.sticky')
+                  .on('change.zf.sticky', function(){
+                    _this._setSizes(function(){
+                      _this._calc(false);
+                    });
+                  });
 
-      e.stopPropagation();
-      _this.timer = setTimeout(function(){
-        var scroll = $window.scrollTop();
-
-        if(_this.options.stickTo === 'bottom'){
-          if((scroll + _this.$anchorDims.windowDims.height >= _this.start) && (scroll + _this.$elemDims.windowDims.height <= _this.end)){//between bottom & top breakpoint
-            _this.stickToBottom();
-          }
-
-          if(_this.$element.offset().top + _this.$elemDims.height + (_this.options.marginBottom * _this.fontSize) >= _this.end){//hits bottom breakpoint
-            _this.$element.removeClass('is-stuck').addClass('is-anchored')
-            .css({
-              'marginBottom': 0,
-              'top':(_this.$anchorDims.height  - _this.$elemDims.height)
-            });
-          }
-
-          if(scroll + _this.$anchorDims.windowDims.height <= _this.start){
-            _this.$element.addClass('is-anchored is-at-bottom').removeClass('is-stuck').css('marginBottom', 0);
-          }
-        }
-
-        else if(_this.options.stickTo === 'top'){
-          if(scroll >= _this.start && scroll <= _this.end){//in between breakpoints, sticky top
-            _this.stickToTop()
-          }
-          if(scroll <= _this.start){//start at page load, + what to do when scrolling to top
-            _this.anchorToTop();
-          }
-          if(scroll >= _this.end){//bottom edge and stop
-            _this.anchorToBottom();
-                  // console.log('end', _this.end, 'height', _this.$elemDims.height, '\ntotal', (_this.end - _this.$elemDims.height) - 32);
-          }
-        }
-
-        /**
-         * TODO break these different scroll options into separate methods
-         * TODO create sticky-at='both' method
-         */
-        else{//both top & bottom sticky
-          //stick to top on scrolldown from top, stick to bottom on scrollup from bottom
-        }
-
-
-      }, _this.options.debounce)
-    });
-  };
-  Sticky.prototype.stickToBottom = function(){
-    this.$element.removeClass('is-anchored').addClass('is-stuck is-at-bottom').css({'marginBottom':this.options.marginBottom + 'em', 'bottom': 0, 'top': 'auto'})
-  };
-  Sticky.prototype.stickToTop = function(){
-    this.$element.addClass('is-stuck is-at-top').removeClass('is-anchored is-at-bottom').css({'marginTop': this.options.marginTop + 'em', 'top': 0});
-  };
-  Sticky.prototype.anchorToBottom = function(){
-    this.$element.removeClass('is-stuck is-at-top')
-          .addClass('is-anchored is-at-bottom')
-          .css({
-            'marginTop': 0,
-            'top': this.end - (this.$container.offset().top) + (this.options.marginBottom * this.fontSize) + 'px'
-          });
-  };
-  Sticky.prototype.anchorToTop = function(){
-    this.$element.addClass('is-anchored is-at-top').removeClass('is-stuck is-at-bottom').css({'margin-top': 0});
-  };
-  //*********************************************************************
-  /**
-   * Fires several functions after resize events and on _init
-   * @private
-   */
-
-  Sticky.prototype._setSizes = function(){
-    var _this = this;
-    this.setElementAttr(function(){
-      _this.getDimensions();
-      _this.setContainerSize();
-      _this.setBreakPoints();
-      // _this.$element.trigger('scroll.zf.sticky');
-    });
-  };
-  // function emCalc(elem, px){
-  //   return parseInt(window.getComputedStyle(elem, null).fontSize.split('px'), 10) * px;
-  // }
-  /**
-   * Sets top and bottom break points for sticky element.
-   * @private
-   */
-  Sticky.prototype.setBreakPoints = function(){
-    this.fontSize = parseInt(window.getComputedStyle(document.getElementsByTagName('body')[0], null).fontSize.split('px'), 10);
-    // this.styles = window.getComputedStyle(this.$element[0], null);
-    this.start = this.options.stickTo === 'bottom' ? this.$anchorDims.offset.top + this.$elemDims.height + (this.options.marginBottom * this.fontSize) : this.$anchorDims.offset.top - (this.options.marginTop * this.fontSize);
-    // console.log(this.styles);
-    // this.start = this.$anchorDims.offset.top - parseFloat(this.styles.marginTop.split('px'));
-    this.end = this.options.breakAt ? '' : this.$anchorDims.offset.top + this.$anchorDims.height  - (this.options.marginBottom * this.fontSize) - (this.options.marginTop * this.fontSize) - this.$elemDims.height;
-    if(this.options.stickTo === 'bottom'){
-      this.end = this.$anchorDims.offset.top + this.$anchorDims.height + (this.options.marginBottom * this.fontSize);
+      $(window).off(scrollListener)
+               .on(scrollListener, function(e){
+                if(_this.scrollCount){
+                  _this.scrollCount--;
+                  _this._calc(false, e.currentTarget.scrollY);
+                }else{
+                  _this.scrollCount = _this.options.checkEvery;
+                  _this._setSizes(function(){
+                    _this._calc(false, e.currentTarget.scrollY);
+                  })
+                }
+              });
     }
-    // console.log('start', this.start, 'end', this.end);
+
+    this.$element.off('resizeme.zf.trigger')
+                 .on('resizeme.zf.trigger', function(e, el){
+                     _this._setSizes(function(){
+                       _this._calc(false);
+                       if(_this.canStick){
+                         if(!_this.isOn){
+                           _this._events(id);
+                         }
+                       }else if(_this.isOn){
+                         _this._pauseListeners(scrollListener);
+                       }
+                     });
+    });
+  };
+
+  /**
+   * Removes event handlers for scroll and change events on anchor.
+   * @fires Sticky#pause
+   * @param {String} scrollListener - unique, namespaced scroll listener attached to `window`
+   */
+  Sticky.prototype._pauseListeners = function(scrollListener){
+    this.isOn = false;
+    this.$anchor.off('change.zf.sticky');
+    $(window).off(scrollListener);
+
+    /**
+     * Fires when the plugin is paused due to resize event shrinking the view.
+     * @event Sticky#pause
+     * @private
+     */
+     this.$element.trigger('pause.zf.sticky');
+  };
+
+  /**
+   * Called on every `scroll` event and on `_init`
+   * fires functions based on booleans and cached values
+   * @param {Boolean} checkSizes - true if plugin should recalculate sizes and breakpoints.
+   * @param {Number} scroll - current scroll position passed from scroll event cb function. If not passed, defaults to `window.scrollY`.
+   */
+  Sticky.prototype._calc = function(checkSizes, scroll){
+    if(checkSizes){ this._setSizes(); }
+
+    if(!this.canStick){
+      if(this.isStuck){
+        this._removeSticky(true);
+      }
+      return false;
+    }
+
+    if(!scroll){ scroll = window.scrollY; }
+
+    if(scroll >= this.topPoint){
+      if(scroll <= this.bottomPoint){
+        if(!this.isStuck){
+          this._setSticky();
+        }
+      }else{
+        if(this.isStuck){
+          this._removeSticky(false);
+        }
+      }
+    }else{
+      if(this.isStuck){
+        this._removeSticky(true);
+      }
+    }
   };
   /**
-   * Gets the dimensions for the sticky element and it's anchor
-   * @private
+   * Causes the $element to become stuck.
+   * Adds `position: fixed;`, and helper classes.
+   * @fires Sticky#stuckto
    */
-  Sticky.prototype.getDimensions = function(){
-    // this.$element.css({'max-width': '', 'max-height': ''});
-    this.$elemDims = Foundation.GetDimensions(this.$element);
-    this.$anchorDims = Foundation.GetDimensions(this.$anchor);
+  Sticky.prototype._setSticky = function(){
+    var stickTo = this.options.stickTo,
+        mrgn = stickTo === 'top' ? 'marginTop' : 'marginBottom',
+        notStuckTo = stickTo === 'top' ? 'bottom' : 'top',
+        css = {};
+
+    css[mrgn] = this.options[mrgn] + 'em';
+    css[stickTo] = 0;
+    css[notStuckTo] = 'auto';
+    this.isStuck = true;
+    this.$element.removeClass('is-anchored is-at-' + notStuckTo)
+                 .addClass('is-stuck is-at-' + stickTo)
+                 .css(css)
+                 /**
+                  * Fires when the $element has become `position: fixed;`
+                  * Namespaced to `top` or `bottom`.
+                  * @event Sticky#stuckto
+                  */
+                 .trigger('sticky.zf.stuckto:' + stickTo);
+  };
+
+  /**
+   * Causes the $element to become unstuck.
+   * Removes `position: fixed;`, and helper classes.
+   * Adds other helper classes.
+   * @param {Boolean} isTop - tells the function if the $element should anchor to the top or bottom of its $anchor element.
+   * @fires Sticky#unstuckfrom
+   */
+  Sticky.prototype._removeSticky = function(isTop){
+    var stickTo = this.options.stickTo,
+        stickToTop = stickTo === 'top',
+        css = {}, mrgn, notStuckTo;
+        mrgn = stickToTop ? 'marginTop' : 'marginBottom';
+        notStuckTo = stickToTop ? 'bottom' : 'top';
+      css[mrgn] = 0;
+
+    if((isTop && !stickToTop) || (stickToTop && !isTop)){
+      css[stickTo] = this.anchorHeight - this.elemHeight;
+      css[notStuckTo] = 0;
+    }else{
+      css[stickTo] = 0;
+      css[notStuckTo] = this.anchorHeight - this.elemHeight;
+    }
+    this.isStuck = false;
+    this.$element.removeClass('is-stuck is-at-' + stickTo)
+                 .addClass('is-anchored is-at-' + (isTop ? 'top' : 'bottom'))
+                 .css(css)
+                 /**
+                  * Fires when the $element has become anchored.
+                  * Namespaced to `top` or `bottom`.
+                  * @event Sticky#unstuckfrom
+                  */
+                 .trigger('sticky.zf.unstuckfrom:' + isTop ? 'top' : 'bottom');
+  };
+
+  /**
+   * Sets the $element and $container sizes for plugin.
+   * Calls `_setBreakPoints`.
+   * @param {Function} cb - optional callback function to fire on completion of `_setBreakPoints`.
+   */
+  Sticky.prototype._setSizes = function(cb){
+    var _this = this,
+        newElemWidth = this.$container[0].getBoundingClientRect().width,
+        pdng = parseInt(window.getComputedStyle(this.$container[0])['padding-right'], 10);
+
+    this.anchorHeight = this.$anchor[0].getBoundingClientRect().height;
+    this.$element.css({
+      'max-width': newElemWidth - pdng + 'px'
+    });
+
+    var newContainerHeight = this.$element[0].getBoundingClientRect().height || this.containerHeight;
+    this.containerHeight = newContainerHeight;
+    this.$container.css({
+      height: newContainerHeight
+    });
+    this.elemHeight = newContainerHeight;
+    this.canStick = Foundation.MediaQuery.atLeast(this.options.stickyOn);
+
+    this._setBreakPoints(newContainerHeight, function(){
+      if(cb){ cb(); }
+    });
+
   };
   /**
-   * Sets the sticky element's max-width to prevent resize on position: fixed;
+   * Sets the upper and lower breakpoints for the element to become sticky/unsticky.
+   * @param {Number} elemHeight - px value for sticky.$element height, calculated by `_setSizes`.
+   * @param {Function} cb - optional callback function to be called on completion.
    * @private
    */
-  Sticky.prototype.setElementAttr = function(cb){
-    // console.log('container width',this.$container.width());
-    this.$element.css({'max-width': this.$container.width()});
-    cb();
+  Sticky.prototype._setBreakPoints = function(elemHeight, cb){
+    if(!this.canStick){
+      if(cb){ cb(); }
+      else{ return false; }
+    }
+    var mTop = emCalc(this.options.marginTop),
+        mBtm = emCalc(this.options.marginBottom),
+        topPoint = this.$anchor.offset().top,
+        bottomPoint = topPoint + this.anchorHeight,
+        winHeight = window.innerHeight;
+
+    if(this.options.stickTo === 'top'){
+      topPoint -= mTop;
+      bottomPoint -= (elemHeight + mTop);
+    }else if(this.options.stickTo === 'bottom'){
+      topPoint -= (winHeight - (elemHeight + mBtm));
+      bottomPoint -= (winHeight - mBtm);
+    }else{
+      //this would be the stickTo: both option... tricky
+    }
+
+    this.topPoint = topPoint;
+    this.bottomPoint = bottomPoint;
+
+    if(cb){ cb(); }
+  };
+
+  /**
+   * Destroys the current sticky element.
+   * Removes event listeners, JS-added css properties and classes, and unwraps the $element if the JS added the $container.
+   */
+  Sticky.prototype.destroy = function(){
+    this._removeSticky(true);
+
+    this.$element.removeClass(this.options.stickyClass + ' is-anchored is-at-top')
+                 .css({
+                   height: '',
+                   top: '',
+                   bottom: '',
+                   'max-width': ''
+                 })
+                 .off('resizeme.zf.trigger');
+
+    this.$anchor.off('change.zf.sticky');
+    $(window).off('scroll.zf.sticky');
+
+    if(this.wasWrapped){
+      this.$element.unwrap();
+    }else{
+      this.$container.removeClass(this.options.containerClass)
+                     .css({
+                       height: ''
+                     });
+    }
+    Foundation.unregisterPlugin(this);
   };
   /**
-   * Sets the sticky element's container min-height to match that of the element's height to prevent alignment issues on position: fixed;
-   * @private
+   * Helper function to calculate em values
+   * @param Number {em} - number of em's to calculate into pixels
    */
-  Sticky.prototype.setContainerSize = function(){
-    this.$container.css({'min-height': this.$elemDims.height});
-  };
-  //*********************************************************************
-  // Foundation.plugin(Sticky);
-}(jQuery, window.Foundation, window);
+  function emCalc(em){
+    return parseInt(window.getComputedStyle(document.body, null).fontSize, 10) * em;
+  }
+  Foundation.plugin(Sticky);
+}(jQuery, window.Foundation);
