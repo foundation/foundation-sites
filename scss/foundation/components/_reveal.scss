@@ -163,6 +163,7 @@ $z-index-base: 1005;
   position: absolute;
   top: $reveal-close-top;
   #{$opposite-direction}: $reveal-close-side;
+  text-decoration: none;
 }
 
 @include exports("reveal") {
