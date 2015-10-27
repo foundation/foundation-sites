@@ -50,15 +50,18 @@ var Foundation = {
     plugin.$element.attr('data-' + pluginName, plugin.uuid).trigger('init.zf.' + pluginName);
 
     this._activePlugins[plugin.uuid] = plugin;
-    // return this._activePlugins;
+
     return;
   },
+
   unregisterPlugin: function(plugin){
     var pluginName = functionName(plugin.constructor).toLowerCase();
 
     delete this._activePlugins[plugin.uuid];
 
     plugin.$element.trigger('destroyed.zf.' + pluginName);
+
+    return;
   },
 
   _reflow: function(plugins){
@@ -74,6 +77,7 @@ var Foundation = {
       var namespace = plugins.split('-')[1];
 
       if(namespace){
+
         this._activePlugins[plugins]._init();
 
       }else{
@@ -89,6 +93,17 @@ var Foundation = {
 
   },
 
+  /**
+   * returns a random base-36 uid with namespacing
+   * @function
+   * @param {Number} length - number of random base-36 digits desired. Increase for more random strings.
+   * @param {String} namespace - name of plugin to be incorporated in uid, optional.
+   * @default {String} '' - if no plugin name is provided, nothing is appended to the uid.
+   * @returns {String} - unique id
+   */
+  GetYoDigits: function(length, namespace){
+    return Math.round((Math.pow(36, length + 1) - Math.random() * Math.pow(36, length))).toString(36).slice(1) + (namespace ? '-' + namespace : '');
+  },
   /**
    * Initialize plugins on any elements within `elem` (and `elem` itself) that aren't already initialized.
    * @param {Object} elem - jQuery object containing the element to check inside. Also checks the element itself, unless it's the `document` object.

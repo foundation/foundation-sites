@@ -61,7 +61,7 @@
       this.$submenus.addClass('is-left-arrow');
     }
     if(!this.options.vertical){
-      this.$tabs.removeClass('is-right-arrow is-is-left-arrow').addClass('is-down-arrow');
+      this.$tabs.removeClass('is-right-arrow is-left-arrow').addClass('is-down-arrow');
     }
 
     this.$tabs.each(function(){
@@ -75,7 +75,7 @@
         $tab.attr('aria-haspopup', true);
       }
     });
-    // this.$tabs[0].setAttribute('tabindex', 0);
+    
 
     this.$submenus.each(function(){
       var $sub = $(this);

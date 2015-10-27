@@ -1,0 +1,27 @@
+{
+  "accordion": [
+    "foundation.util.keyboard.js",
+    "foundation.util.motion.js"
+  ],
+  "accordionMenu": [
+    "foundation.util.keyboard.js",
+    "foundation.util.motion.js"
+  ],
+  "drilldown": [
+    "foundation.util.keyboard.js",
+    "foundation.util.motion.js"
+  ],
+  "dropdown-menu": [
+    "foundation.util.keyboard.js",
+    "foundation.util.motion.js",
+    "foundation.util.size-and-collision.js"
+  ],
+  "dropdown": [
+    "foundation.util.keyboard.js",
+    "foundation.util.size-and-collision.js",
+    "foundation.util.triggers.js"
+  ],
+  "equalizer": [
+    "foundation.util.mediaQuery"
+  ]
+}
