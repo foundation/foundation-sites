@@ -1,3 +1,8 @@
+/**
+ * Magellan module.
+ * @module foundation.magellan
+ * @requires foundation.util.animationFrame
+ */
 !function(Foundation, $) {
   'use strict';
 

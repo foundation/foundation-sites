@@ -1,3 +1,9 @@
+/**
+ * OffCanvas module.
+ * @module foundation.offcanvas
+ * @requires foundation.util.triggers
+ * @requires foundation.util.animationFrame
+ */
 !function($, Foundation) {
 
 'use strict';

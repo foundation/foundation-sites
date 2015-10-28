@@ -1,3 +1,9 @@
+/**
+ * Dropdown module.
+ * @module foundation.dropdown
+ * @requires foundation.util.keyboard
+ * @requires foundation.util.size-and-collision
+ */
 !function($, Foundation){
   'use strict';
 
@@ -11,6 +17,8 @@ NEEDS:
     this.$element = element;
     this.options = $.extend({}, Dropdown.defaults, this.$element.data());
     this._init();
+
+    Foundation.registerPlugin(this);
   }
 
   Dropdown.defaults = {
@@ -29,8 +37,9 @@ NEEDS:
     this.$anchor = $('[data-toggle="' + $id + '"]') || $('[data-open="' + $id + '"]');
     this.$anchor.attr({
       'aria-controls': $id,
-      'data-is-focus': 'false',
-      'data-yeti-box': $id
+      'data-is-focus': false,
+      'data-yeti-box': $id,
+      'aria-haspopup': true
       // 'data-resize': $id
     });
 

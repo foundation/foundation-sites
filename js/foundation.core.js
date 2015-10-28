@@ -18,7 +18,9 @@ var Foundation = {
    * Stores generated unique ids for plugin instances
    */
   _uuids: [],
-
+  /**
+   * Stores currently active plugins.
+   */
   _activePlugins: {},
 
   /**
@@ -42,7 +44,13 @@ var Foundation = {
     // Add to the Foundation object and the plugins list (for reflowing)
     this._plugins[attrName] = this[className] = plugin;
   },
-
+  /**
+   * @function
+   * Creates a pointer to an instance of a Plugin within the Foundation._activePlugins object.
+   * Sets the `[data-pluginName="uniqueIdHere"]`, allowing easy access to any plugin's internal methods.
+   * Also fires the initialization event for each plugin, consolidating repeditive code.
+   * @param {Object} plugin - an instance of a plugin, usually `this` in context.
+   */
   registerPlugin: function(plugin){
     var pluginName = functionName(plugin.constructor).toLowerCase();
 
@@ -53,7 +61,12 @@ var Foundation = {
 
     return;
   },
-
+  /**
+   * @function
+   * Removes the pointer for an instance of a Plugin from the Foundation._activePlugins obj.
+   * Also fires the destroyed event for the plugin, consolidating repeditive code.
+   * @param {Object} plugin - an instance of a plugin, usually `this` in context.
+   */
   unregisterPlugin: function(plugin){
     var pluginName = functionName(plugin.constructor).toLowerCase();
 
@@ -64,6 +77,12 @@ var Foundation = {
     return;
   },
 
+  /**
+   * @function
+   * Causes one or more active plugins to reflow, resetting event listeners, recalculating positions, etc.
+   * @param {String} plugins - optional string of an individual plugin key, attained by calling `$(element).data('pluginName')`, or string of a plugin class i.e. `'dropdown'`
+   * @default If no argument is passed, reflow all currently active plugins.
+   */
   _reflow: function(plugins){
     var actvPlugins = Object.keys(this._activePlugins);
     var _this = this;

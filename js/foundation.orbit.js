@@ -1,3 +1,11 @@
+/**
+ * Orbit module.
+ * @module foundation.orbit
+ * @requires foundation.util.keyboard
+ * @requires foundation.util.animationFrame
+ * @requires foundation.util.motion
+ * @requires foundation.util.timer
+ */
 !function($, Foundation){
   'use strict';
   function Orbit(element){

@@ -1,3 +1,8 @@
+/**
+ * Interchange module.
+ * @module foundation.interchange
+ * @requires foundation.util.mediaQuery
+ */
 !function(Foundation, $) {
   'use strict';
 

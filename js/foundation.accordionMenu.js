@@ -1,3 +1,9 @@
+/**
+ * AccordionMenu module.
+ * @module foundation.accordionMenu
+ * @requires foundation.util.keyboard
+ * @requires foundation.util.animationFrame
+ */
 !function($) {
   'use strict';
 

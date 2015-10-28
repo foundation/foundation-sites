@@ -1,3 +1,9 @@
+/**
+ * DropdownMenu module.
+ * @module foundation.dropdown-menu
+ * @requires foundation.util.keyboard
+ * @requires foundation.util.size-and-collision
+ */
 !function(Foundation, $) {
   'use strict';
 
@@ -75,7 +81,7 @@
         $tab.attr('aria-haspopup', true);
       }
     });
-    
+
 
     this.$submenus.each(function(){
       var $sub = $(this);
