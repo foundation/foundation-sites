@@ -1,3 +1,9 @@
+/**
+ * Tooltip module.
+ * @module foundation.tooltip
+ * @requires foundation.util.size-and-collision
+ * @requires foundation.util.triggers
+ */
 !function($, document, Foundation){
   'use strict';
 

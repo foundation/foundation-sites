@@ -1,3 +1,11 @@
+/**
+ * Reveal module.
+ * @module foundation.reveal
+ * @requires foundation.util.keyboard
+ * @requires foundation.util.size-and-collision
+ * @requires foundation.util.triggers
+ * @requires foundation.util.mediaQuery
+ */
 !function(Foundation, $) {
   'use strict';
 

@@ -1,3 +1,8 @@
+/**
+ * ResponsiveToggle module.
+ * @module foundation.responsiveToggle
+ * @requires foundation.util.mediaQuery
+ */
 !function($, Foundation) {
 
 'use strict';

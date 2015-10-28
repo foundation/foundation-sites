@@ -1,3 +1,8 @@
+/**
+ * Tabs module.
+ * @module foundation.tabs
+ * @requires foundation.util.keyboard
+ */
 !function($, Foundation) {
   'use strict';
 

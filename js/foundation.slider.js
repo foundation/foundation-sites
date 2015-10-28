@@ -2,9 +2,9 @@
  * Slider module.
  * @module foundation.slider
  * @requires foundation.util.animationFrame
- * @requires foundation.util.randomId
  * @requires foundation.util.triggers
  * @requires foundation.util.keyboard
+ * @requires foundation.util.addtouch
  */
 !function($, Foundation){
   'use strict';

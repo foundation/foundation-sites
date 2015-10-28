@@ -1,3 +1,8 @@
+/**
+ * Motion module.
+ * @module foundation.motion
+ * @requires foundation.util.animationFrame
+ */
 !function($, Foundation) {
 
 var initClasses   = ['mui-enter', 'mui-leave'];

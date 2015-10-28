@@ -2,7 +2,7 @@
 
   /******************************************************************
   /** A very simple timer for animated elements within Foundation. **
-  /** Feel free to add features, comments, or use case examples.   **
+  /**  Feel free to add features, comments, or use case examples.  **
   /*****************************************************************/
 
   function Timer(elem, options, cb){

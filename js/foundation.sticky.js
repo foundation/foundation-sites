@@ -1,3 +1,9 @@
+/**
+ * Sticky module.
+ * @module foundation.sticky
+ * @requires foundation.util.triggers
+ * @requires foundation.util.mediaQuery
+ */
 !function($, Foundation){
   'use strict';
 

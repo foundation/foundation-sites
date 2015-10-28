@@ -6,6 +6,7 @@
    * @param {jQuery} parent - jQuery object to use as bounding container.
    * @param {Boolean} lrOnly - set to true to check left and right values only.
    * @param {Boolean} tbOnly - set to true to check top and bottom values only.
+   * @default if no parent object passed, detects collisions with `window`.
    * @returns {Boolean} - true if collision free, false if a collision in any direction.
    */
   function ImNotTouchingYou(element, parent, lrOnly, tbOnly){
