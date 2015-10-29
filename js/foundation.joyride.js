@@ -27,6 +27,7 @@
      */
     this.$element.trigger('init.zf.joyride');
   }
+  //Joyride.prototype = Object.create(Foundation.Tooltip.prototype);
 
   Joyride.defaults = {
     autostart: false,
@@ -35,21 +36,16 @@
     closable: true,
     nextText: 'Next',
     prevText: 'Previous',
+    closeText: 'Close',
     showNext: true,
     showPrev: true,
     vOffset: 10,
     hOffset: 10,
-    position: 'center top',
-    template : { // HTML segments for tip layout
-      link          : '<a href="#close" class="joyride-close-tip"><&times;</a>',
-      timer         : '<div class="joyride-timer-indicator-wrap"><span class="joyride-timer-indicator"></span></div>',
-      tip           : '<div class="joyride-tip-guide"><span class="joyride-nub"></span></div>',
-      wrapper       : '<div class="joyride-content-wrapper"></div>',
-      button        : '<a href="#" class="small button joyride-next-tip"></a>',
-      prev_button   : '<a href="#" class="small button joyride-prev-tip"></a>',
-      modal         : '<div class="joyride-modal-bg"></div>',
-      expose        : '<div class="joyride-expose-wrapper"></div>',
-      expose_cover  : '<div class="joyride-expose-cover"></div>'
+    position: 'top center',
+    templates : { // HTML segments for tip layout
+      closeButton   : '<a href="#close" data-joyride-close><span aria-hidden="true">&times</span><span class="show-for-sr"></span></a>',
+      nextButton    : '<button class="small button" data-joyride-next></button>',
+      prevButton    : '<button class="small button" data-joyride-prev></button>',
     }
   };
 
@@ -61,33 +57,32 @@
     var anchorId = Foundation.GetYoDigits(6, 'joyride');
 
     this.id = this.$element.attr('id');
-
+    this.current = 0;
+    this.$tooltips = $([]);
     this.structure = this._parseList();
-    this.$container = this._createMarkup(this.structure);
-    this._render();
+    this._render(this.structure);
     console.log(this);
-
+    
+    this._events();
     if (this.options.autostart) {
       this.start();
     }
-
-    this._events();
   };
 
   /**
-   * Parses the ol of the instance, stored in $element.
+   * Parses the list of the instance, stored in $element.
    * @private
    * @return [Array] structure
    */
   Joyride.prototype._parseList = function(){
-    var $ol = this.$element,
-      structure = [];
+    var structure = [];
       
     this.$element.find('li').each(function(i) {
       var item = $.extend({}, {
         text: $(this).html(),
         class: $(this).attr('class'),
-        $target: $($(this).data('target'))
+        $target: $($(this).data('target')),
+        closable: Joyride.defaults.closable 
       }, $(this).data());
       structure.push(item);
     });
@@ -100,15 +95,28 @@
    * @param [Array] structure the joyride's structure from _parseList
    * @return {Object} markup jQuery representation of the generated markup
    */
-  Joyride.prototype._createMarkup = function(structure) {
-    var $container = $('<div class="joyride-container" />');
-      
+  Joyride.prototype._render = function(structure) {      
     for (var s in structure) {
       var options = $.extend({}, this.options, structure[s]); // if specifc item has config, this should overwrite global settings
-      console.log(options);
 
-      var $item = $('<div class="joyride-item" data-index="'+s+'" data-joyride-for="'+structure[s].target+'" />');
-      $item.html(structure[s].text);
+      var tooltip = new Foundation.Tooltip(structure[s].$target.addClass(options.position));
+      tooltip.$element.off('mouseenter.zf.tooltip mouseleave.zf.tooltip mousedown.zf.tooltip');
+      this.structure[s].tooltip = tooltip;
+      
+
+      //var $item = $('<div class="joyride-item" data-index="'+s+'" data-joyride-for="'+structure[s].target+'" />');
+      var $item = tooltip.template;
+      $item.addClass('joyride')
+      .attr({
+        'data-index': s,
+        'data-joyride-for': structure[s].target
+      })
+      .html(structure[s].text);
+      if (options.keyboardAccess) {
+        $item.attr('tabindex', '-1');
+      }
+
+      this.$tooltips = this.$tooltips.add($item);
 
       // add buttons
       if (
@@ -117,46 +125,21 @@
       ) {
         var $buttons = $('<div />');
         if (structure[s].prevText || (options.showPrev && s > 0)) {
-          $buttons.append('<button class="button joyride-prev" data-joyride-prev>'+(options.prevText)+'</button>');
+          $buttons.append($(this.options.templates.prevButton).text(options.prevText));
         }
         if (structure[s].nextText || (options.showNext && s < structure.length -1)) {
-          $buttons.append('<button class="button joyride-next" data-joyride-next>'+(options.nextText)+'</button>');
+          $buttons.append($(this.options.templates.nextButton).text(options.nextText));
         }
         $item.append($buttons);
       }
 
       // add close button
       if (options.closable) {
-        var $close = $('<a class="close" role="button" href="#" data-joyride-close><span aria-hidden="true">&times</span><span class="show-for-sr">Close</span">');
+        var $close = $(this.options.templates.closeButton);
+        $close.find('.show-for-sr').text(this.options.closeText);
         $item.prepend($close);
       }
-
-      var className = 'top';
-      if (options.position.indexOf('left') !== -1) {
-        className = 'left';
-      } else if (options.position.indexOf('right') !== -1) {
-        className = 'right';
-      } else if (options.position.indexOf('bottom') !== -1) {
-        className = 'bottom';
-      }
-      $item.addClass(className);
-
-      if (options.keyboardAccess) {
-        $item.attr('tabindex', '-1');
-      }
-      $item.appendTo($container);
     }
-
-    return $container;
-  };
-
-  /**
-   * Renders the $container after the $element
-   * @private
-   * @return {Object} jQuery object containing the rendered markup
-   */
-  Joyride.prototype._render = function() {
-    return (this.$element.after(this.$container));
   };
 
   /**
@@ -165,24 +148,12 @@
    * @param {Number} index of the item to be displayed
    */
   Joyride.prototype._showItem = function(index) {
-    var item = this.structure[index] || this.structure[0],
-      bodyRect = document.body.getBoundingClientRect(),
-      elemRect = item.$target[0].getBoundingClientRect(),
-      posY = item.$target.offset().top,
-      posX = item.$target.offset().left,
-      $item = this.$container.find('[data-index="'+index+'"]');
-
-    $item.css('visibility', 'hidden').show()
-      .offset(Foundation.GetOffsets($item, item.$target, this.options.position, this.options.vOffset, this.options.hOffset, true))
-      .css('visibility', '');
-
+    this.structure[index].tooltip._show();
+    // scroll element into view
+    $('html, body').stop().animate({'scrollTop': this.$tooltips.eq(index).offset().top}, this.options.scrollSpeed);
     if (this.options.keyboardAccess) {
-      $item.focus();
+       this.$tooltips.eq(index).focus();
     }
-
-    // scroll to the items position
-    $('html, body').stop().animate({'scrollTop': $item.offset().top}, this.options.scrollSpeed);
-
     this.current = index;
   };
 
@@ -192,20 +163,7 @@
    * @param {Number} index of the item to be hidden
    */
   Joyride.prototype._hideItem = function(index) {
-    var item = this.structure[index] || this.structure[0],
-      $item = this.$container.find('[data-index="'+index+'"]');
-
-    $item.stop().hide().css('visibility', '')
-  };
-
-  /**
-   * Hides all items
-   * @private
-   */
-  Joyride.prototype._hideAll = function() {
-    var $item = this.$container.find('.joyride-item');
-
-    $item.stop().hide().css('visibility', '')
+    this.structure[index].tooltip._hide();
   };
 
   /**
@@ -213,9 +171,8 @@
    * @private
    */
   Joyride.prototype.showNext = function() {
-    var index = this.current;
-    this._hideItem(index);
-    this._showItem(index + 1);
+    this._hideItem(this.current);
+    this._showItem(this.current + 1);
   };
 
   /**
@@ -223,9 +180,8 @@
    * @private
    */
   Joyride.prototype.showPrev = function() {
-    var index = this.current;
-    this._hideItem(index);
-    this._showItem(index - 1);
+    this._hideItem(this.current);
+    this._showItem(this.current - 1);
   };
 
   /**
@@ -245,25 +201,16 @@
   Joyride.prototype._events = function(){
     var _this = this;
 
-    /*this.$element.on({
-      'open.zf.trigger': this._open.bind(this),
-      'close.zf.trigger': this._close.bind(this),
-      'toggle.zf.trigger': this.toggle.bind(this),
-      'resizeme.zf.trigger': function(){
-        if(_this.$element.is(':visible')){
-          _this._setPosition(function(){});
-        }
-      }
-    });*/
-
-    this.$container.on('click.zf.joyride', '[data-joyride-next]', function(e) {
+    this.$tooltips.on('click.zf.joyride', '[data-joyride-next]', function(e) {
       _this.showNext();
     }).on('click.zf.joyride', '[data-joyride-prev]', function(e) {
       _this.showPrev();
     }).on('click.zf.joyride', '[data-joyride-close]', function(e) {
       e.preventDefault();
-      _this._hideAll();
-    }).on('keydown.zf.joyride', '.joyride-item', function(e) {
+      if (_this.structure[_this.current].closable) {
+        _this._hideItem(_this.current);
+      }
+    }).on('keydown.zf.joyride', function(e) {
       var $element = $(this);
       Foundation.handleKey(e, _this, {
         next: function() {
@@ -277,9 +224,12 @@
           }
         },
         close: function() {
-          if ($element.data('closable')) {
-            this._hideAll();
+          if (this.structure[this.current].closable) {
+            this._hideItem(this.current);
           }
+        },
+        handled: function() {
+          e.preventDefault();
         }
       });
     });
@@ -291,7 +241,7 @@
    */
   Joyride.prototype.destroy = function() {
     this.$element.hide();
-    this.$container.hide().remove();
+    this.$tooltips.destroy();
     /**
      * Fires when the plugin has been destroyed.
      * @event Reveal#destroyed
