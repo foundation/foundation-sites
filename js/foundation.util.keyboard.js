@@ -99,14 +99,21 @@
 
     },
     'DropdownMenu': {
-          'ENTER': 'open',
-          'SPACE': 'open',
-          'ARROW_RIGHT': 'next',
-          'ARROW_UP': 'up',
-          'ARROW_DOWN': 'down',
-          'ARROW_LEFT': 'previous',
-          'ESCAPE': 'close'
-        }
+      'ENTER': 'open',
+      'SPACE': 'open',
+      'ARROW_RIGHT': 'next',
+      'ARROW_UP': 'up',
+      'ARROW_DOWN': 'down',
+      'ARROW_LEFT': 'previous',
+      'ESCAPE': 'close'
+    },
+    'Joyride': {
+      'ARROW_RIGHT': 'next',
+      'ARROW_UP': 'previous',
+      'ARROW_DOWN': 'next',
+      'ARROW_LEFT': 'previous',
+      'ESCAPE': 'close'
+    }
   };
 
 
