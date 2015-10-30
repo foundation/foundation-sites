@@ -222,6 +222,7 @@
         this.options['animOutTo' + dirOut],
         function(){
           $curSlide.removeAttr('aria-live');
+          _this.timer.restart();
           //do stuff?
           _this.$element.trigger('slidechange.zf.orbit', [$newSlide]);
         });
