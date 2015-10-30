@@ -14,24 +14,25 @@
    * @class
    * @fires Joyride#init
    * @param {Object} element - jQuery object (ol) to be used as the structure.
+   * @param {Object} options - object to extend the default configuration.
    */
 
-  function Joyride(element) {
+  function Joyride(element, options) {
     this.$element = element;
-    this.options = $.extend({}, Joyride.defaults, this.$element.data());
+    this.options = $.extend({}, Joyride.defaults, this.$element.data(), options || {});
     this._init();
 
+    console.log('Joyride: ', this);
     /**
      * Fires when the plugin has been successfuly initialized.
-     * @event Reveal#init
+     * @event Joyride#init
      */
     this.$element.trigger('init.zf.joyride');
   }
-  //Joyride.prototype = Object.create(Foundation.Tooltip.prototype);
 
   Joyride.defaults = {
     autostart: false,
-    scrollSpeed: 1500,
+    scrollSpeed: 1000,
     keyboardAccess: true,
     closable: true,
     nextText: 'Next',
@@ -40,12 +41,13 @@
     showNext: true,
     showPrev: true,
     vOffset: 10,
-    hOffset: 10,
+    hOffset: 12,
+    scrollOffset: 50,
     position: 'top center',
-    templates : { // HTML segments for tip layout
-      closeButton   : '<a href="#close" data-joyride-close><span aria-hidden="true">&times</span><span class="show-for-sr"></span></a>',
-      nextButton    : '<button class="small button" data-joyride-next></button>',
-      prevButton    : '<button class="small button" data-joyride-prev></button>',
+    templates : { // HTML templates
+      closeButton: '<a href="#close" class="close" data-joyride-close><span aria-hidden="true">&times</span><span class="show-for-sr"></span></a>',
+      nextButton: '<button class="button" data-joyride-next></button>',
+      prevButton: '<button class="button" data-joyride-prev></button>',
     }
   };
 
@@ -54,16 +56,13 @@
    * @private
    */
   Joyride.prototype._init = function(){
-    var anchorId = Foundation.GetYoDigits(6, 'joyride');
-
-    this.id = this.$element.attr('id');
+    this.id = this.$element.attr('id') || Foundation.GetYoDigits(6, 'joyride');
     this.current = 0;
-    this.$tooltips = $([]);
+    this.$tooltips = $([]); // initialize empty collection
     this.structure = this._parseList();
     this._render(this.structure);
-    console.log(this);
-    
     this._events();
+
     if (this.options.autostart) {
       this.start();
     }
@@ -72,15 +71,13 @@
   /**
    * Parses the list of the instance, stored in $element.
    * @private
-   * @return [Array] structure
+   * @return {Array} structure
    */
   Joyride.prototype._parseList = function(){
     var structure = [];
-      
     this.$element.find('li').each(function(i) {
       var item = $.extend({}, {
         text: $(this).html(),
-        class: $(this).attr('class'),
         $target: $($(this).data('target')),
         closable: Joyride.defaults.closable 
       }, $(this).data());
@@ -92,22 +89,27 @@
   /**
    * Creates the markup for the items
    * @private
-   * @param [Array] structure the joyride's structure from _parseList
+   * @param {Array} structure the joyride's structure from _parseList
    * @return {Object} markup jQuery representation of the generated markup
    */
   Joyride.prototype._render = function(structure) {      
     for (var s in structure) {
       var options = $.extend({}, this.options, structure[s]); // if specifc item has config, this should overwrite global settings
 
-      var tooltip = new Foundation.Tooltip(structure[s].$target.addClass(options.position));
-      tooltip.$element.off('mouseenter.zf.tooltip mouseleave.zf.tooltip mousedown.zf.tooltip');
+      var tooltip = new Foundation.Tooltip(structure[s].$target, {
+        positionClass: options.position,
+        disableHover: true,
+        clickOpen: false,
+        tooltipClass: 'tooltip joyride',
+        triggerClass: '',
+        hOffset: this.options.hOffset,
+        vOffset: this.options.vOffset
+      });
       this.structure[s].tooltip = tooltip;
       
 
-      //var $item = $('<div class="joyride-item" data-index="'+s+'" data-joyride-for="'+structure[s].target+'" />');
       var $item = tooltip.template;
-      $item.addClass('joyride')
-      .attr({
+      $item.attr({
         'data-index': s,
         'data-joyride-for': structure[s].target
       })
@@ -123,7 +125,7 @@
         (structure[s].nextText || (options.showNext && s < structure.length -1))
         || (structure[s].prevText || (options.showPrev && s > 0))
       ) {
-        var $buttons = $('<div />');
+        var $buttons = $('<div class="joyride-buttons"/>');
         if (structure[s].prevText || (options.showPrev && s > 0)) {
           $buttons.append($(this.options.templates.prevButton).text(options.prevText));
         }
@@ -149,8 +151,10 @@
    */
   Joyride.prototype._showItem = function(index) {
     this.structure[index].tooltip._show();
-    // scroll element into view
-    $('html, body').stop().animate({'scrollTop': this.$tooltips.eq(index).offset().top}, this.options.scrollSpeed);
+    // scroll element into view 
+    $('html, body').stop().animate({
+      'scrollTop': Math.max(0, this.$tooltips.eq(index).offset().top - this.options.scrollOffset)
+    }, this.options.scrollSpeed);
     if (this.options.keyboardAccess) {
        this.$tooltips.eq(index).focus();
     }
@@ -163,7 +167,18 @@
    * @param {Number} index of the item to be hidden
    */
   Joyride.prototype._hideItem = function(index) {
+    console.log('Hiding', index);
     this.structure[index].tooltip._hide();
+  };
+
+  /**
+   * Hides all items
+   * @private
+   */
+  Joyride.prototype._hideAll = function() {
+    for (var s in this.structure) {
+      this._hideItem(s);
+    }
   };
 
   /**
@@ -187,10 +202,11 @@
   /**
    * Starts the ride
    * @private
-   * @return int index - the index where to start, 0 by default
+   * @return {Number} index - the index where to start, 0 by default
    */
   Joyride.prototype.start = function(index) {
     var index = index || 0;
+    this._hideAll();
     this._showItem(index);
   };
 
@@ -200,6 +216,10 @@
    */
   Joyride.prototype._events = function(){
     var _this = this;
+    $('[data-joyride-start="#'+_this.id+'"]').click(function() {
+      console.log('Starting!');
+      _this.start();
+    });
 
     this.$tooltips.on('click.zf.joyride', '[data-joyride-next]', function(e) {
       _this.showNext();

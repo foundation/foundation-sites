@@ -1,0 +1,40 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+
+////
+/// @group joyride
+////
+
+/// Default background color of the joyride items.
+/// @type Color
+$joyride-background-color: $tooltip-background-color;
+$joyride-padding: $tooltip-padding;
+$joyride-font-size: 100%;
+$joyride-min-width: 300px;
+$joyride-pip-width: $tooltip-pip-width;
+$joyride-pip-height: $joyride-pip-width * 0.866;
+$joyride-pip-offset: $tooltip-pip-offset;
+
+[data-joyride] {
+  display: none;
+}
+
+.joyride {
+  background-color: $joyride-background-color;
+  font-size: $joyride-font-size;
+  min-width: $joyride-min-width;
+
+  .close {
+    float: right;
+  }
+
+  .joyride-buttons {
+    text-align: center;
+  }
+}
+
+[data-joyride] {
+  display: none;
+}
