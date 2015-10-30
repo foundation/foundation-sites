@@ -75,12 +75,10 @@
               _this.toggle($tabContent);
             },
             next: function() {
-              console.log( $tabContent.parent(),$tabContent.parent().next());
               $tabContent.parent().next().find('a').focus().trigger('click.zf.accordion');
             },
             previous: function() {
               $tabContent.parent().prev().find('a').focus().trigger('click.zf.accordion');
-
             },
             handled: function() {
               e.preventDefault();
@@ -109,15 +107,14 @@
     var _this = this;
     if(!this.options.multiExpand && !firstTime){
       var $currentActive = this.$element.find('.is-active').children('[data-tab-content]');
-      if($currentActive){
+      if($currentActive.length){
         this.up($currentActive);
       }
     }
     $target
       .parent('[data-tab-content]')
       .addBack()
-      // .slideDown(this.options.slideSpeed)
-      .parent().addClass(firstTime ? '' : 'is-active');
+      .parent().addClass('is-active');
 
     Foundation.Move(_this.options.slideSpeed, $target, function(){
       $target.slideDown(_this.options.slideSpeed);

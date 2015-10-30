@@ -29,7 +29,11 @@
     deepLinking: false,
     scrollToContent: false,
     autoFocus: false,
-    wrapOnKeys: true
+    wrapOnKeys: true,
+    matchHeight: true,
+    linkClass: 'tabs-title',
+    contentClass: 'tabs-content',
+    panelClass: 'tabs-panel'
   };
 
   /**
@@ -39,16 +43,17 @@
   Tabs.prototype._init = function(){
     var _this = this,
         tabIndex = 1;
-    this.$tabTitles = this.$element.find('.tabs-title');
-
+    this.$tabTitles = this.$element.find('.' + this.options.linkClass);
+    this.$tabContent = $('[data-tabs-content="' + this.$element[0].id + '"]');
     this.$tabTitles.each(function(){
-      var $link = $(this).find('a'),
-          isActive = $(this).hasClass('is-active'),
+      var $elem = $(this),
+          $link = $elem.find('a'),
+          isActive = $elem.hasClass('is-active'),
           hash = $link.attr('href').slice(1),
           linkId = hash + '-label',
           $tabContent = $(hash);
 
-      $(this).attr({'role': 'presentation'});
+      $elem.attr({'role': 'presentation'});
 
       $link.attr({
         'role': 'tab',
@@ -68,7 +73,10 @@
       }
       tabIndex++
     });
-    _this._events();
+    if(this.options.matchHeight){
+      this._setHeight();
+    }
+    this._events();
   };
   /**
    * Adds event handlers for items within the tabs.
@@ -85,14 +93,15 @@
    */
   Tabs.prototype._addClickHandler = function(){
     var _this = this;
-    this.$tabTitles.on('click.zf.tabs', function(e){
-      e.preventDefault();
-      e.stopPropagation();
-      if($(this).hasClass('is-active')){
-        return;
-      }
-      _this._handleTabChange($(this));
-    });
+    this.$tabTitles.off('click.zf.tabs')
+                   .on('click.zf.tabs', function(e){
+                     e.preventDefault();
+                     e.stopPropagation();
+                     if($(this).hasClass('is-active')){
+                       return;
+                     }
+                     _this._handleTabChange($(this));
+                   });
   };
 
   /**
@@ -104,7 +113,7 @@
     var $firstTab = _this.$element.find('li:first-of-type');
     var $lastTab = _this.$element.find('li:last-of-type');
 
-    this.$tabTitles.on('keydown.zf.tabs', function(e){
+    this.$tabTitles.off('keydown.zf.tabs').on('keydown.zf.tabs', function(e){
       e.stopPropagation();
       e.preventDefault();
       var $tabTitle = $(this),
@@ -176,7 +185,14 @@
      */
     this.$element.trigger('change.zf.tabs', [$target]);
     // console.log(this.$element.find('.tabs-title, .tabs-panel'));
-    Foundation.reflow(this.$element, 'tabs');
+    // Foundation.reflow(this.$element, 'tabs');
+  };
+  Tabs.prototype._setHeight = function(){
+    this.$tabContent.find('.' + this.options.panelClass)
+                    .each(function(i, e){
+                      console.log(e);
+                    });
+    console.log(this.$tabContent);
   };
 
   /**
