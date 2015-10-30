@@ -29,7 +29,7 @@ tags:
   <ul class="orbit-container">
     <button class="orbit-previous" aria-label="previous"><span class="show-for-sr">Previous Slide</span>&#9664;</button>
     <button class="orbit-next" aria-label="next"><span class="show-for-sr">Next Slide</span>&#9654;</button>
-    <li class="active orbit-slide">
+    <li class="is-active orbit-slide">
       <img class="orbit-image" src="/assets/img/interchange/small.jpg" alt="Space">
       <figcaption class="orbit-caption">Space, the final frontier.</figcaption>
     </li>
@@ -61,7 +61,7 @@ tags:
   <ul class="orbit-container">
     <button class="orbit-previous" aria-label="previous"><span class="show-for-sr">Previous Slide</span>&#9664;</button>
     <button class="orbit-next" aria-label="next"><span class="show-for-sr">Next Slide</span>&#9654;</button>
-    <li class="active orbit-slide">
+    <li class="is-active orbit-slide">
       <div>
         <h3 class="text-center">You can also throw some text in here!</h3>
         <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde harum rem, beatae ipsa consectetur quisquam. Rerum ratione, delectus atque tempore sed, suscipit ullam, beatae distinctio cupiditate ipsam eligendi tempora expedita.</p>

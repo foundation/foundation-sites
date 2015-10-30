@@ -21,7 +21,7 @@
 
     this.start = function(){
       // if(!elem.data('paused')){ return false; }//maybe implement this sanity check if used for other things.
-      remain = remain < 0 ? duration : remain;
+      remain = remain <= 0 ? duration : remain;
       elem.data('paused', false);
       start = Date.now();
       timer = setTimeout(function(){
