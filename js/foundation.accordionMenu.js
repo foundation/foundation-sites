@@ -14,20 +14,19 @@
    * @param {jQuery} element - jQuery object to make into an accordion menu.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  function AccordionMenu(element) {
+  function AccordionMenu(element, options) {
     this.$element = element;
-    this.options = $.extend({}, AccordionMenu.defaults, this.$element.data());
-
-    // this.$activeMenu = $();
+    this.options = $.extend({}, AccordionMenu.defaults, this.$element.data(), options || {});
 
     this._init();
-    this._events();
+
 
     /**
      * Fires when the plugin has been successfuly initialized.
      * @event AccordionMenu#init
      */
-    this.$element.trigger('init.zf.accordionMenu');
+    // this.$element.trigger('init.zf.accordionMenu');
+    Foundation.registerPlugin(this);
   }
 
   AccordionMenu.defaults = {
@@ -76,6 +75,7 @@
         _this.down($(this));
       });
     }
+    this._events();
   };
 
   /**
@@ -90,7 +90,7 @@
       var $submenu = $(this).children('[data-submenu]');
 
       if ($submenu.length) {
-        $(this).children('a').on('click.zf.accordionMenu', function(e) {
+        $(this).children('a').off('click.zf.accordionmenu').on('click.zf.accordionmenu', function(e) {
           e.preventDefault();
 
           _this.toggle($submenu);
@@ -210,7 +210,8 @@
      * Fires when the plugin has been destroyed.
      * @event AccordionMenu#destroy
      */
-    this.$element.trigger('destroyed.zf.accordionMenu');
+    // this.$element.trigger('destroyed.zf.accordionMenu');
+    Foundation.unregisterPlugin(this);
   };
 
   Foundation.plugin(AccordionMenu);

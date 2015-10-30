@@ -13,18 +13,19 @@
    * @fires Accordion#init
    * @param {jQuery} element - jQuery object to make into an accordion.
    */
-  function Accordion(element){
+  function Accordion(element, options){
     this.$element = element;
-    this.options = $.extend({}, Accordion.defaults, this.$element.data());
+    this.options = $.extend({}, Accordion.defaults, this.$element.data(), options || {});
 
     this._init();
-    this._events();
+
 
     /**
      * Fires when the plugin has been successfuly initialized.
      * @event Accordion#init
      */
-    this.$element.trigger('init.zf.accordion');
+     Foundation.registerPlugin(this);
+    // this.$element.trigger('init.zf.accordion');
   }
 
   Accordion.defaults = {
@@ -41,8 +42,8 @@
     var $initActive = this.$element.find('.is-active').children('[data-tab-content]');
     if($initActive){
       this.down($initActive, true);
-      return;
     }
+    this._events();
   };
 
   /**
@@ -56,7 +57,8 @@
       var $tabContent = $(this).children('[data-tab-content]');
       var $elem = $(this);
       if ($tabContent.length) {
-        $(this).on('click.zf.accordion', function(e) {
+        $(this).off('click.zf.accordion keydown.zf.accordion')
+               .on('click.zf.accordion', function(e) {
         // $(this).children('a').on('click.zf.accordion', function(e) {
           e.preventDefault();
           if ($tabContent.parent().hasClass('is-active')) {
@@ -122,8 +124,8 @@
     });
 
     if(!firstTime){
-      // console.log('reflowing yo!');
-      // Foundation.reflow(this.$element, 'accordion');
+      console.log('reflowing yo!');
+      Foundation._reflow(this.$element.data('accordion'));
     }
     /**
      * Fires when the tab is done opening.
@@ -174,7 +176,8 @@
      * Fires when the plugin has been destroyed.
      * @event Accordion#destroyed
      */
-    this.$element.trigger('destroyed.zf.accordion');
+    // this.$element.trigger('destroyed.zf.accordion');
+    Foundation.unregisterPlugin(this);
   }
 
   Foundation.plugin(Accordion);
