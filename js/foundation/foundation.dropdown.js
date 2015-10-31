@@ -35,7 +35,7 @@
                
           var settings = S(this).data(self.attr_name(true) + '-init') || self.settings;
           
-          if(settings.is_right_click && e.type === "contextmenu")
+          if(settings.is_right_click === true && e.type === "contextmenu")
             e.preventDefault();
           
           if((settings.is_right_click && e.type !== "contextmenu") || 
