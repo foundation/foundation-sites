@@ -35,19 +35,15 @@
                
           var settings = S(this).data(self.attr_name(true) + '-init') || self.settings;
           
-          if(settings.is_right_click === true && e.type === "contextmenu")
-            e.preventDefault();
-          
-          if((settings.is_right_click === true && e.type !== "contextmenu") || 
-              (!settings.is_right_click === true && e.type === "contextmenu"))
-            return;
        
           if (!settings.is_hover || Modernizr.touch || settings.is_right_click) {
             e.preventDefault();
             if (S(this).parent('[data-reveal-id]').length) {
               e.stopPropagation();
             }
-            self.toggle($(this));
+			
+          if((settings.is_right_click && e.type === "contextmenu") || (!settings.is_right_click && e.type !== "contextmenu"))
+                  self.toggle($(this));
           }
         })
         .on('mouseenter.fndtn.dropdown', '[' + this.attr_name() + '], [' + this.attr_name() + '-content]', function (e) {
