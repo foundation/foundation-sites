@@ -38,8 +38,8 @@
           if(settings.is_right_click === true && e.type === "contextmenu")
             e.preventDefault();
           
-          if((settings.is_right_click && e.type !== "contextmenu") || 
-              (!settings.is_right_click && e.type === "contextmenu"))
+          if((settings.is_right_click === true && e.type !== "contextmenu") || 
+              (!settings.is_right_click === true && e.type === "contextmenu"))
             return;
        
           if (!settings.is_hover || Modernizr.touch || settings.is_right_click) {
