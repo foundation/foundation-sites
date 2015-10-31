@@ -18,9 +18,6 @@
       opened : function () {},
       closed : function () {}
     },
-    
-    timer : null,
-    timeout : 500,
 
     init : function (scope, method, options) {
       Foundation.inherit(this, 'throttle');
