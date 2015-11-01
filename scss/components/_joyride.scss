@@ -10,21 +10,35 @@
 /// Default background color of the joyride items.
 /// @type Color
 $joyride-background-color: $tooltip-background-color;
+
+/// Default color of the tooltip font.
+/// @type Color
+$joyride-color: $tooltip-color;
+
+/// Default padding of the joyride background.
+/// @type Number
 $joyride-padding: $tooltip-padding;
+
+/// Default font size for joyride tiems.
+/// @type Number
 $joyride-font-size: 100%;
-$joyride-min-width: 300px;
-$joyride-pip-width: $tooltip-pip-width;
-$joyride-pip-height: $joyride-pip-width * 0.866;
-$joyride-pip-offset: $tooltip-pip-offset;
+
+/// Default min-width of joyride items.
+/// @type Number
+$joyride-min-width: 20rem;
 
 [data-joyride] {
   display: none;
 }
 
-.joyride {
+.tooltip.joyride,
+.reveal.joyride {
   background-color: $joyride-background-color;
+  color: $joyride-color;
   font-size: $joyride-font-size;
   min-width: $joyride-min-width;
+  padding: $joyride-padding;
+
 
   .close {
     float: right;

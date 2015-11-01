@@ -2,9 +2,8 @@
  * Joyride module.
  * @module foundation.joyride
  * @requires foundation.util.keyboard
- * @requires foundation.util.size-and-collision
- * @requires foundation.util.triggers
- * @requires foundation.util.mediaQuery
+ * @requires foundation.Tooltip
+ * @requires foundation.Reveal
  */
 !function(Foundation, $) {
   'use strict';
@@ -13,7 +12,7 @@
    * Creates a new instance of Joyride.
    * @class
    * @fires Joyride#init
-   * @param {Object} element - jQuery object (ol) to be used as the structure.
+   * @param {Object} element - jQuery object (list) to be used as the structure.
    * @param {Object} options - object to extend the default configuration.
    */
 

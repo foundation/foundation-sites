@@ -18,7 +18,6 @@ js: js/foundation.joyride.js
   <h5>Features that may be added</h5>
   <ul>
     <li>Change URL with anchor so you can directly open a specific Joyride item</li>
-    <li>Support for modals</li>
   </ul>
 </div>
 
