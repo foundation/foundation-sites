@@ -41,8 +41,12 @@ You can define your Joyride stops by creating a HTML list and adding the `data-j
     <h3>Third</h3>
     <p>This one isn't closable</p>
   </li>
-  <li data-target="#trigger-start">
+  <li>
     <h3>Fourth</h3>
+    <p>If no target is specified, you create a modal.</p>
+  </li>
+  <li data-target="#trigger-start">
+    <h3>Fifth</h3>
     <p>Your ride ends here!</p>
     <button class="button success" data-joyride-close>OK, thanks!</button>
   </li>

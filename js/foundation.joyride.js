@@ -22,7 +22,6 @@
     this.options = $.extend({}, Joyride.defaults, this.$element.data(), options || {});
     this._init();
 
-    console.log('Joyride: ', this);
     /**
      * Fires when the plugin has been successfuly initialized.
      * @event Joyride#init
@@ -58,7 +57,7 @@
   Joyride.prototype._init = function(){
     this.id = this.$element.attr('id') || Foundation.GetYoDigits(6, 'joyride');
     this.current = 0;
-    this.$tooltips = $([]); // initialize empty collection
+    this.$items = $([]); // initialize empty collection
     this.structure = this._parseList();
     this._render(this.structure);
     this._events();
@@ -79,6 +78,7 @@
       var item = $.extend({}, {
         text: $(this).html(),
         $target: $($(this).data('target')),
+        isModal: !!!$($(this).data('target')).length,
         closable: Joyride.defaults.closable 
       }, $(this).data());
       structure.push(item);
@@ -94,21 +94,27 @@
    */
   Joyride.prototype._render = function(structure) {      
     for (var s in structure) {
-      var options = $.extend({}, this.options, structure[s]); // if specifc item has config, this should overwrite global settings
+      var options = $.extend({}, this.options, structure[s]),// if specifc item has config, this should overwrite global settings
+        $item; 
 
-      var tooltip = new Foundation.Tooltip(structure[s].$target, {
-        positionClass: options.position,
-        disableHover: true,
-        clickOpen: false,
-        tooltipClass: 'tooltip joyride',
-        triggerClass: '',
-        hOffset: this.options.hOffset,
-        vOffset: this.options.vOffset
-      });
-      this.structure[s].tooltip = tooltip;
-      
-
-      var $item = tooltip.template;
+      if (options.$target.length) { // target element exists, create tooltip
+        var tooltip = new Foundation.Tooltip(structure[s].$target, {
+          positionClass: options.position,
+          disableHover: true,
+          clickOpen: false,
+          tooltipClass: 'tooltip joyride',
+          triggerClass: '',
+          hOffset: this.options.hOffset,
+          vOffset: this.options.vOffset
+        });
+        this.structure[s].item = tooltip;
+        $item = tooltip.template;
+        
+      } else { // not target, create modal with Reveal
+        var modal = new Foundation.Reveal($('<div class="reveal joyride"/>').appendTo($('body')));
+        this.structure[s].item = modal;
+        $item = modal.$element;
+      }
       $item.attr({
         'data-index': s,
         'data-joyride-for': structure[s].target
@@ -118,7 +124,7 @@
         $item.attr('tabindex', '-1');
       }
 
-      this.$tooltips = this.$tooltips.add($item);
+      this.$items = this.$items.add($item);
 
       // add buttons
       if (
@@ -150,13 +156,19 @@
    * @param {Number} index of the item to be displayed
    */
   Joyride.prototype._showItem = function(index) {
-    this.structure[index].tooltip._show();
-    // scroll element into view 
-    $('html, body').stop().animate({
-      'scrollTop': Math.max(0, this.$tooltips.eq(index).offset().top - this.options.scrollOffset)
-    }, this.options.scrollSpeed);
+    if (this.structure[index].isModal) {
+      this.structure[index].item._open();
+    } else {
+      this.structure[index].item._show();
+    }
+    // scroll target into view if target exists
+    if (this.structure[index].$target.length) {
+      $('html, body').stop().animate({
+        'scrollTop': Math.max(0, this.$items.eq(index).offset().top - this.options.scrollOffset)
+      }, this.options.scrollSpeed);
+    }
     if (this.options.keyboardAccess) {
-       this.$tooltips.eq(index).focus();
+       this.$items.eq(index).focus();
     }
     this.current = index;
   };
@@ -167,10 +179,12 @@
    * @param {Number} index of the item to be hidden
    */
   Joyride.prototype._hideItem = function(index) {
-    console.log('Hiding', index);
-    this.structure[index].tooltip._hide();
+    if (this.structure[index].isModal) {
+      this.structure[index].item._close();
+    } else {
+      this.structure[index].item._hide();
+    }
   };
-
   /**
    * Hides all items
    * @private
@@ -221,7 +235,7 @@
       _this.start();
     });
 
-    this.$tooltips.on('click.zf.joyride', '[data-joyride-next]', function(e) {
+    this.$items.on('click.zf.joyride', '[data-joyride-next]', function(e) {
       _this.showNext();
     }).on('click.zf.joyride', '[data-joyride-prev]', function(e) {
       _this.showPrev();
@@ -261,7 +275,7 @@
    */
   Joyride.prototype.destroy = function() {
     this.$element.hide();
-    this.$tooltips.destroy();
+    this.$items.destroy();
     /**
      * Fires when the plugin has been destroyed.
      * @event Reveal#destroyed
