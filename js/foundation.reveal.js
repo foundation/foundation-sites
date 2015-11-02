@@ -13,19 +13,21 @@
    * Creates a new instance of Reveal.
    * @class
    * @fires Reveal#init
-   * @param {Object} element - jQuery object to use for the modal.
+   * @param {jQuery} element - jQuery object to use for the modal.
+   * @param {Object} options - optional parameters.
    */
 
-  function Reveal(element) {
+  function Reveal(element, options) {
     this.$element = element;
-    this.options = $.extend({}, Reveal.defaults, this.$element.data());
+    this.options = $.extend({}, Reveal.defaults, this.$element.data(), options || {});
     this._init();
 
-    /**
-     * Fires when the plugin has been successfuly initialized.
-     * @event Reveal#init
-     */
-    this.$element.trigger('init.zf.reveal');
+    Foundation.registerPlugin(this);
+    // /**
+    //  * Fires when the plugin has been successfuly initialized.
+    //  * @event Reveal#init
+    //  */
+    // this.$element.trigger('init.zf.reveal');
   }
 
   Reveal.defaults = {
@@ -383,11 +385,13 @@
     this.$element.hide();
     this.$anchor.off();
 
+    Foundation.unregisterPlugin(this);
+
     /**
      * Fires when the plugin has been destroyed.
      * @event Reveal#destroyed
      */
-    this.$element.trigger('destroyed.zf.reveal');
+    // this.$element.trigger('destroyed.zf.reveal');
   }
 
   Foundation.plugin(Reveal);

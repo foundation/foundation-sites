@@ -6,16 +6,15 @@
  */
 !function($, Foundation){
   'use strict';
-
-/*
-NEEDS:
-  aria testing
-*/
-
-
-  function Dropdown(element){
+  /**
+   * Creates a new instance of a dropdown.
+   * @class
+   * @param {jQuery} element - jQuery object to make into an accordion menu.
+   * @param {Object} options - Overrides to the default plugin settings.
+   */
+  function Dropdown(element, options){
     this.$element = element;
-    this.options = $.extend({}, Dropdown.defaults, this.$element.data());
+    this.options = $.extend({}, Dropdown.defaults, this.$element.data(), options || {});
     this._init();
 
     Foundation.registerPlugin(this);
@@ -30,7 +29,11 @@ NEEDS:
     hOffset: 1,
     positionClass: ''
   };
-
+  /**
+   * Initializes the plugin by setting/checking options and attributes, adding helper variables, and saving the anchor.
+   * @function
+   * @private
+   */
   Dropdown.prototype._init = function(){
     var $id = this.$element.attr('id');
 
@@ -52,15 +55,23 @@ NEEDS:
       'data-resize': $id
     }).hide();
     this._events();
-    this.$element.trigger('init.zf.dropdown');
   };
-
+  /**
+   * Helper function to determine current orientation of dropdown pane.
+   * @function
+   * @returns {String} position - string value of a position class.
+   */
   Dropdown.prototype.getPositionClass = function(){
     var position = this.$element.attr('class').match(/top|left|right/g);
         position = position ? position[0] : '';
     return position;
   };
-
+  /**
+   * Adjusts the dropdown panes orientation by adding/removing positioning classes.
+   * @function
+   * @private
+   * @param {String} position - position class to remove.
+   */
   Dropdown.prototype.reposition = function(position){
     this.usedPositions.push(position ? position : 'bottom');
     //default, try switching to opposite side
@@ -94,7 +105,12 @@ NEEDS:
     this.classChanged = true;
     this.counter--;
   };
-
+  /**
+   * Sets the position and orientation of the dropdown pane, checks for collisions.
+   * Recursively calls itself if a collision is detected, with a new position class.
+   * @function
+   * @private
+   */
   Dropdown.prototype.setPosition = function(){
     var position = this.getPositionClass(),
         $eleDims = Foundation.GetDimensions(this.$element),
@@ -120,7 +136,11 @@ NEEDS:
       this.setPosition();
     }
   };
-
+  /**
+   * Adds event listeners to the element utilizing the triggers utility library.
+   * @function
+   * @private
+   */
   Dropdown.prototype._events = function(){
     var _this = this;
     this.$element.on({
@@ -142,9 +162,17 @@ NEEDS:
       });
     }
   };
-
+  /**
+   * Opens the dropdown pane, and fires a bubbling event to close other dropdowns.
+   * @function
+   * @fires Dropdown#closeme
+   * @fires Dropdown#show
+   */
   Dropdown.prototype.open = function(){
-    // $(document).trigger('click.zf.trigger'/*, $('[data-yeti-box]')*/);
+    /**
+     * Fires to close other open dropdowns
+     * @event Dropdown#closeme
+     */
     this.$element.trigger('closeme.zf.dropdown', this.$element.attr('id'));
     var _this = this;
     this.$element.show();
@@ -152,14 +180,21 @@ NEEDS:
     this.$element.addClass(this.options.activeClass)
         .attr('aria-hidden', 'false');
     this.$anchor.addClass('hover');
-
+    /**
+     * Fires once the dropdown is visible.
+     * @event Dropdown#show
+     */
+     this.$element.trigger('show.zf.dropdown', [this.$element]);
     //why does this not work correctly for this plugin?
     // Foundation.reflow(this.$element, 'dropdown');
-    // this.$element.foundation();
-    Foundation.reflow();
+    // Foundation._reflow();
   };
 
-
+  /**
+   * Closes the open dropdown pane.
+   * @function
+   * @fires Dropdown#hide
+   */
   Dropdown.prototype.close = function(){
     if(!this.$element.hasClass(this.options.activeClass)){
       return false;
@@ -178,9 +213,13 @@ NEEDS:
       this.counter = 4;
       this.usedPositions.length = 0;
     }
+    this.$element.trigger('hide.zf.dropdown', [this.$element]);
     // Foundation.reflow(this.$element, 'dropdown');
   };
-
+  /**
+   * Toggles the dropdown pane's visibility.
+   * @function
+   */
   Dropdown.prototype.toggle = function(){
     if(this.$element.hasClass(this.options.activeClass)){
       this.close();
@@ -188,6 +227,16 @@ NEEDS:
       this.open();
     }
   };
+  /**
+   * Destroys the dropdown.
+   * @function
+   */
+  Dropdown.prototype.destroy = function(){
+    this.$element.off('.zf.trigger').hide();
+    this.$anchor.off('.zf.dropdown');
+
+    Foundation.unregisterPlugin(this);
+  }
 
   Foundation.plugin(Dropdown);
 }(jQuery, window.Foundation);
