@@ -118,9 +118,10 @@ $button-opacity-disabled: 0.25 !default;
   }
 }
 
+/// Removes background fill on hover and focus for hollow buttons.
 @mixin button-hollow {
   &,
-  &:hover {
+  &:hover, &:focus {
     background: transparent;
   }
 }
