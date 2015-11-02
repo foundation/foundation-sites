@@ -73,7 +73,6 @@ ResponsiveToggle.prototype._events = function() {
  * @private
  */
 ResponsiveToggle.prototype._update = function() {
-  debugger;
   // Mobile
   if (!Foundation.MediaQuery.atLeast(this.options.hideFor)) {
     this.$element.show();
