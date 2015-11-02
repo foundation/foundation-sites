@@ -36,8 +36,19 @@
    * @private
    */
   Accordion.prototype._init = function() {
+    this.$element.attr('role', 'tablist');
+    this.$tabs = this.$element.find('li');
+    this.$tabs.each(function(idx, el){
+      var $el = $(el),
+          $content = $el.find('[data-tab-content]'),
+          id = $content[0].id || Foundation.GetYoDigits(6, 'accordion'),
+          linkId = el.id || id + '-label';
+
+      $el.find('a').attr({'aria-controls': id, 'role': 'tab'});
+      $content.attr({'role': 'tabpanel', 'aria-labelledby': linkId})
+    })
     var $initActive = this.$element.find('.is-active').children('[data-tab-content]');
-    if($initActive){
+    if($initActive.length){
       this.down($initActive, true);
     }
     this._events();
