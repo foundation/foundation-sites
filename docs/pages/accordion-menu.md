@@ -8,7 +8,6 @@ description: Change a basic vertical Menu into a expandable accordion menu with 
 <div class="alert callout">
   <h5>Known Issues</h5>
   <ul>
-    <li>Submenus are not cascading properly beyond the first level.</li>
     <li>Needs accessibility compliant keyboard access bindings.</li>
     <li>Destroy method needs to be more robust.</li>
     <li>This and other `MenuBar` variants need to listen for `Foundation.MediaQuery` change events </li>
