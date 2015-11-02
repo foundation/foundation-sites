@@ -18,14 +18,11 @@
     this.options = $.extend({}, Accordion.defaults, this.$element.data(), options || {});
 
     this._init();
-
-
     /**
      * Fires when the plugin has been successfuly initialized.
      * @event Accordion#init
      */
      Foundation.registerPlugin(this);
-    // this.$element.trigger('init.zf.accordion');
   }
 
   Accordion.defaults = {

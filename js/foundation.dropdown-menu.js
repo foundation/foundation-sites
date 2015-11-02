@@ -14,17 +14,18 @@
    * @param {jQuery} element - jQuery object to make into a dropdown menu.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  function DropdownMenu(element) {
+  function DropdownMenu(element, options) {
     this.$element = element;
-    this.options = $.extend({}, DropdownMenu.defaults, this.$element.data());
+    this.options = $.extend({}, DropdownMenu.defaults, this.$element.data(), options || {});
 
     this._init();
 
-    /**
-     * Fires when the plugin has been successfuly initialized.
-     * @event DropdownMenu#init
-     */
-    this.$element.trigger('init.zf.dropdown');
+    Foundation.registerPlugin(this);
+    // /**
+    //  * Fires when the plugin has been successfuly initialized.
+    //  * @event DropdownMenu#init
+    //  */
+    // this.$element.trigger('init.zf.dropdown');
   }
 
   /**
@@ -45,14 +46,22 @@
     vertClass: 'vertical',
     rightClass: 'align-right'
   };
-
+  /**
+   * Initializes the plugin, and calls _prepareMenu
+   * @private
+   * @function
+   */
   DropdownMenu.prototype._init = function() {
     this.$element.attr('role', 'menubar');
     this.options.vertical = this.$element.hasClass(this.options.vertClass);
     this._prepareMenu();
     // this._addTopLevelKeyHandler();
   };
-
+  /**
+   * Prepares the menu by checking alignment and orientation, setting attributes for elements, and creating jQuery collections of elements.
+   * @private
+   * @function
+   */
   DropdownMenu.prototype._prepareMenu = function(){
     var _this = this;
     this.$tabs = this.$element.children('li.has-submenu');
@@ -100,6 +109,12 @@
     });
   };
 
+  /**
+   * Adds event listeners to elements within the menu
+   * @param {jQuery} $elem - the element to attach listeners too.
+   * @private
+   * @function
+   */
   DropdownMenu.prototype._events = function($elem){
     var _this = this;
 
@@ -237,17 +252,24 @@
       });
     } // end if keyboardAccess
   };
-
+  /**
+   * Toggles the current dropdown pane.
+   * @param {jQuery} $elem - the current element with a submenu to toggle.
+   * @function
+   * @private
+   */
   DropdownMenu.prototype._toggle = function($elem){
-    var _this = this;
-    // console.log($elem);
     if($elem.hasClass('is-active')){
-      _this._hide($elem);
+      this._hide($elem);
     }else{
-      // console.log('this',this);
       this._show($elem);
     }
   };
+  /**
+   * Adds an event handler to the body to close any dropdowns on a click.
+   * @function
+   * @private
+   */
   DropdownMenu.prototype._addBodyHandler = function(){
     var $body = $('body'),
         _this = this;
@@ -257,6 +279,13 @@
     })
   };
 //show & hide stuff @private
+  /**
+   * Opens a dropdown pane, and checks for collisions first.
+   * @param {jQuery} $elem - current element with a submenu to show
+   * @function
+   * @private
+   * @fires DropdownMenu#show
+   */
   DropdownMenu.prototype._show = function($elem){
     this._hideOthers($elem);
     $elem.focus();
@@ -271,18 +300,36 @@
     var clear = Foundation.ImNotTouchingYou($sub, null, true);
     if(!clear){
       if(this.options.alignment === 'left'){
-        $sub.removeClass('is-is-left-arrow').addClass('is-right-arrow');
+        $sub.removeClass('is-left-arrow').addClass('is-right-arrow');
       }else{
         $sub.removeClass('is-right-arrow').addClass('is-left-arrow');
       }
       this.changed = true;
     }
-      $sub.css('visibility', '');
+    $sub.css('visibility', '');
+    /**
+     * Fires when the new dropdown pane is visible.
+     * @event DropdownMenu#show
+     */
+    this.$element.trigger('show.zf.dropdownmenu', [$elem]);
   };
-
+  /**
+   * Hides a single, currently open dropdown pane.
+   * @function
+   * @param {jQuery} $elem - element with a submenu to hide
+   * @private
+   */
   DropdownMenu.prototype._hide = function($elem){
     this._hideSome($elem);
   };
+  /**
+   * Hides currently open dropdown panes from a jQuery collection passed by other functions.
+   * Resets the position classes if the element was mutated due to a collision.
+   * @function
+   * @param {jQuery} $elems - element(s) with a submenu to hide
+   * @private
+   * @fires DropdownMenu#hide
+   */
   DropdownMenu.prototype._hideSome = function($elems){
     if($elems.length){
       // if($elems.hasClass('first-sub')){
@@ -304,15 +351,33 @@
           $elems.find('.is-left-arrow').removeClass('is-left-arrow').addClass('is-right-arrow');
         }
       }
+      /**
+       * Fires when the open menus are closed.
+       * @event DropdownMenu#hide
+       */
+      this.$element.trigger('hide.zf.dropdownmenu');
     }
   };
+  /**
+   * Hides a submenu's siblings.
+   * @param {jQuery} $elem - the element that should remain open.
+   * @function
+   * @private
+   */
   DropdownMenu.prototype._hideOthers = function($elem){
     this._hideSome($elem.siblings('.has-submenu.is-active'));
   };
+  /**
+   * Hides everything.
+   * @function
+   */
   DropdownMenu.prototype._hideAll = function(){
     this._hideSome(this.$element);
   };
-//****
+  /**
+   * Destroys the plugin.
+   * @function
+   */
   DropdownMenu.prototype.destroy = function() {
     this._hideAll();
     this.$element
@@ -320,6 +385,8 @@
         .find('li')
         .removeClass('js-dropdown-nohover')
         .off('.zf.dropdownmenu');
+
+    Foundation.unregisterPlugin(this);
   };
   Foundation.plugin(DropdownMenu);
 
