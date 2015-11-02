@@ -34,7 +34,7 @@
   DropdownMenu.defaults = {
     // toggleOn: 'both',
     clickOpen: true,
-    closeOnClick: true,
+    closeOnClick: false,
     disableHover: false,
     autoclose: true,
     hoverDelay: 150,
