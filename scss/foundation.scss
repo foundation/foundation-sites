@@ -48,7 +48,8 @@ $foundation-version: '6.0.0-alpha.1';
   'components/title-bar',
   'components/top-bar',
   'components/thumbnail',
-  'components/tooltip';
+  'components/tooltip',
+  'components/joyride';
 
 // These styles are applied to <meta> tags, which are read by the Foundation JavaScript
 .foundation-mq {
@@ -73,6 +74,7 @@ $foundation-version: '6.0.0-alpha.1';
   @include foundation-dropdown;
   // @include foundation-dropdown-menu
   @include foundation-flex-video;
+  //@include foundation-joyride;
   @include foundation-label;
   @include foundation-media-object;
   @include foundation-menu;

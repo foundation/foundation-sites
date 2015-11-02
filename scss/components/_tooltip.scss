@@ -10,6 +10,10 @@
 /// @type Color
 $tooltip-background-color: $black;
 
+/// Default color of the tooltip font.
+/// @type Color
+$tooltip-color: $white;
+
 /// Default padding of the tooltip background.
 /// @type Number
 $tooltip-padding: 0.75rem;
@@ -43,7 +47,7 @@ $tooltip-pip-offset: 1.25rem;
 
 @mixin tooltip {
   background-color: $tooltip-background-color;
-  color: $white;
+  color: $tooltip-color;
   font-size: $tooltip-font-size;
   padding: $tooltip-padding;
   position: absolute;
