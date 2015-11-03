@@ -8,7 +8,7 @@ js: js/foundation.dropdown.js
 <div class="alert callout">
   <h5>Known Issues</h5>
   <ul>
-    <li>Needs event listener for `resizeme.zf.trigger` for positioning on screen resize events.</li>
+    <li>Sometimes has sizing issues on open.</li>
   </ul>
 </div>
 

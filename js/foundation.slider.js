@@ -39,7 +39,8 @@
     steps: 100,
     decimal: 2,
     dragDelay: 0,
-    moveTime: 200//update this if changing the transition time in the sass
+    moveTime: 200,//update this if changing the transition time in the sass
+    disabledClass: 'disabled'
   };
   /**
    * Initilizes the plugin by reading/setting attributes, creating collections and setting the initial position of the handle(s).
@@ -50,7 +51,7 @@
     this.inputs = this.$element.find('input');
     this.handles = this.$element.find('[data-slider-handle]');
     this.options.vertical = this.$element.hasClass('vertical');
-    this.options.disabled = this.$element.hasClass('disabled');
+    this.options.disabled = this.$element.hasClass(this.options.disabledClass);
     this.$handle = this.handles.eq(0);
     this.$input = this.inputs.length ? this.inputs.eq(0) : $('#' + this.$handle.attr('aria-controls'));
     this.$fill = this.$element.find('[data-slider-fill]').css(this.options.vertical ? 'height' : 'width', 0);
@@ -79,6 +80,7 @@
 
         _this._setHandlePos(_this.$handle2, _this.options.initialEnd);
       });
+      this.$handle.triggerHandler('click.zf.slider');
       this._setInitAttr(1);
       this._events(this.$handle2);
     }
@@ -274,7 +276,7 @@
     if(this.options.clickSelect){
       this.$element.off('click.zf.slider').on('click.zf.slider', function(e){
         if(_this.$element.data('dragging')){ return false; }
-
+        console.log('clicked', e);
         _this.animComplete = false;
         if(_this.options.doubleSided){
           _this._handleEvent(e);

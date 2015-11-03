@@ -62,12 +62,12 @@
   Accordion.prototype._events = function() {
     var _this = this;
 
-    this.$element.find('li').each(function() {
+    this.$tabs.each(function(){
       var $elem = $(this);
       var $tabContent = $elem.children('[data-tab-content]');
       if ($tabContent.length) {
         $elem.off('click.zf.accordion keydown.zf.accordion')
-               .on('click.zf.accordion', function(e) {
+               .on('click.zf.accordion', function(e){
         // $(this).children('a').on('click.zf.accordion', function(e) {
           e.preventDefault();
           if ($elem.hasClass('is-active')) {

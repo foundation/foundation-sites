@@ -9,8 +9,7 @@ js: js/foundation.accordion.js
 <div class="alert callout">
   <h5>Known Issues</h5>
   <ul>
-    <li>If `Foundation.reflow()` is called on a click event, it animates multiple times.</li>
-    <li>Needs accessibility compliant keyboard access bindings.</li>
+    <li>None Currently. File an issue if you see something wrong.</li>
   </ul>
 </div>
 
