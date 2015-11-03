@@ -51,14 +51,16 @@
     this.inputs = this.$element.find('input');
     this.handles = this.$element.find('[data-slider-handle]');
     this.options.vertical = this.$element.hasClass('vertical');
-    this.options.disabled = this.$element.hasClass(this.options.disabledClass);
     this.$handle = this.handles.eq(0);
     this.$input = this.inputs.length ? this.inputs.eq(0) : $('#' + this.$handle.attr('aria-controls'));
     this.$fill = this.$element.find('[data-slider-fill]').css(this.options.vertical ? 'height' : 'width', 0);
 
     var isDbl = false,
         _this = this;
-
+    if(this.options.disabled || this.$element.hasClass(this.options.disabledClass)){
+      this.options.disabled = true;
+      this.$element.addClass(this.options.disabledClass);
+    }
     if(!this.inputs.length){
       this.inputs = $().add(this.$input);
       this.options.binding = true;
