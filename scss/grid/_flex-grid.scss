@@ -22,7 +22,7 @@
   $margin: auto;
 
   @if map-get($behavior, nest) {
-    $margin: -$grid-column-gutter;
+    $margin: rem-calc($grid-column-gutter) / 2 * -1;
   }
   @else {
     max-width: $width;
@@ -49,12 +49,14 @@
 /// @param {Mixed} $columns [null] - Width of the column.
 @function flex-grid-column($columns: null) {
   $flex: 1 1 0px;
+
   @if $columns == shrink {
     $flex: 0 0 auto;
   }
   @else if $columns != null {
     $flex: 0 0 grid-column($columns);
   }
+
   @return $flex;
 }
 
@@ -65,6 +67,8 @@
   $columns: null,
   $gutter: $grid-column-gutter
 ) {
+  $gutter: rem-calc($gutter) / 2;
+
   flex: flex-grid-column($columns);
   padding-left: $gutter;
   padding-right: $gutter;

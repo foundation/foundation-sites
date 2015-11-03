@@ -19,12 +19,14 @@
   // Store the current column count so it can be re-set later
   $old-grid-column-count: $columns;
   $grid-column-count: $columns !global;
+
   @if $root {
     @at-root { @content; }
   }
   @else {
     @content;
   }
+
   // Restore the old column count
   $grid-column-count: $old-grid-column-count !global;
 }
@@ -45,7 +47,7 @@
   $margin: auto;
 
   @if map-get($behavior, nest) {
-    $margin: -$grid-column-gutter;
+    $margin: rem-calc($grid-column-gutter) / 2 * -1;
 
     @if map-get($behavior, collapse) {
       $margin: 0;
@@ -55,18 +57,16 @@
     max-width: $width;
   }
 
-  margin: {
-    left: $margin;
-    right: $margin;
-  };
+  @if $cf {
+    @include clearfix;
+  }
+
+  margin-left: $margin;
+  margin-right: $margin;
 
   @if $columns != null {
     @include grid-context($columns) {
       @content;
     }
-  }
-
-  @if $cf {
-    @include clearfix;
   }
 }

@@ -52,7 +52,7 @@
 /// Creates a grid column.
 ///
 /// @param {Mixed} $columns [$grid-column-count] - Width of the column. Refer to the `grid-column()` function to see possible values.
-/// @param {Number} $gutter [$grid-column-gutter] - Width of the gutters on either side of the column.
+/// @param {Number} $gutter [$grid-column-gutter] - Spacing between columns.
 @mixin grid-column(
   $columns: $grid-column-count,
   $gutter: $grid-column-gutter
@@ -60,6 +60,8 @@
   @if ($columns <= $grid-column-count) {
     @include grid-column-size($columns);
   }
+
+  $gutter: rem-calc($gutter) / 2;
 
   float: $global-left;
   padding-left: $gutter;
