@@ -66,7 +66,7 @@
       var $elem = $(this);
       var $tabContent = $elem.children('[data-tab-content]');
       if ($tabContent.length) {
-        $elem.off('click.zf.accordion keydown.zf.accordion')
+        $elem.children('a').off('click.zf.accordion keydown.zf.accordion')
                .on('click.zf.accordion', function(e){
         // $(this).children('a').on('click.zf.accordion', function(e) {
           e.preventDefault();
