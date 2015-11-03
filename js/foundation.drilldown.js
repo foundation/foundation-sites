@@ -16,6 +16,9 @@
   function Drilldown(element, options){
     this.$element = element;
     this.options = $.extend({}, Drilldown.defaults, this.$element.data(), options || {});
+
+    Foundation.FeatherNest(this.$element, 'drilldown');
+
     this._init();
 
     Foundation.registerPlugin(this);
@@ -23,7 +26,7 @@
   Drilldown.defaults = {
     backButton: '<li class="js-drilldown-back"><a>Back</a></li>',
     wrapper: '<div></div>',
-    closeOnClick: true,
+    closeOnClick: false,
     holdOpen: false,
     maxWidth: 200
   };

@@ -18,6 +18,8 @@
     this.$element = element;
     this.options = $.extend({}, DropdownMenu.defaults, this.$element.data(), options || {});
 
+    Foundation.FeatherNest(this.$element, 'dropdown');
+
     this._init();
 
     Foundation.registerPlugin(this);
@@ -52,7 +54,6 @@
    * @function
    */
   DropdownMenu.prototype._init = function() {
-    this.$element.attr('role', 'menubar');
     this.options.vertical = this.$element.hasClass(this.options.vertClass);
     this._prepareMenu();
     // this._addTopLevelKeyHandler();
