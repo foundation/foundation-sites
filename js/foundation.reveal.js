@@ -200,7 +200,7 @@
       }
       if(_this.options.animationIn){
         if(_this.options.overlay){
-          Foundation.Motion.animateIn(_this.$overlay, 'fadeIn', function(){
+          Foundation.Motion.animateIn(_this.$overlay, 'fade-in', function(){
             Foundation.Motion.animateIn(_this.$element, _this.options.animationIn, function(){
             });
           });
@@ -326,7 +326,7 @@
     if(this.options.animationOut){
       Foundation.Motion.animateOut(this.$element, this.options.animationOut, function(){
         if(_this.options.overlay){
-          Foundation.Motion.animateOut(_this.$overlay, 'fadeOut', function(){
+          Foundation.Motion.animateOut(_this.$overlay, 'fade-out', function(){
           });
         }
       });
