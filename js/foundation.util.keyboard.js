@@ -99,16 +99,26 @@
 
     },
     'DropdownMenu': {
-          'ENTER': 'open',
-          'SPACE': 'open',
-          'ARROW_RIGHT': 'next',
-          'ARROW_UP': 'up',
-          'ARROW_DOWN': 'down',
-          'ARROW_LEFT': 'previous',
-          'ESCAPE': 'close'
-        }
+      'ENTER': 'open',
+      'SPACE': 'open',
+      'ARROW_RIGHT': 'next',
+      'ARROW_UP': 'up',
+      'ARROW_DOWN': 'down',
+      'ARROW_LEFT': 'previous',
+      'ESCAPE': 'close'
+    },
+    'Drilldown': {
+      'ENTER': 'open',
+      'SPACE': 'open',
+      'ARROW_RIGHT': 'next',
+      'ARROW_UP': 'up',
+      'ARROW_DOWN': 'down',
+      'ARROW_LEFT': 'previous',
+      'ESCAPE': 'close',
+      'TAB': 'down',
+      'SHIFT_TAB': 'up'
+    }
   };
-
 
 
   /**
@@ -147,6 +157,8 @@
     }
   };
   Foundation.handleKey = handleKey;
+
+  
 
   /**
    * Returns the component name name
