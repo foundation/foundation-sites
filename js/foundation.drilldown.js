@@ -22,6 +22,17 @@
     this._init();
 
     Foundation.registerPlugin(this);
+    Foundation.registerKeyCommands('Drilldown', {
+      'ENTER': 'open',
+      'SPACE': 'open',
+      'ARROW_RIGHT': 'next',
+      'ARROW_UP': 'up',
+      'ARROW_DOWN': 'down',
+      'ARROW_LEFT': 'previous',
+      'ESCAPE': 'close',
+      'TAB': 'down',
+      'SHIFT_TAB': 'up'
+    });
   }
   Drilldown.defaults = {
     backButton: '<li class="js-drilldown-back" tabindex="0"><a>Back</a></li>',

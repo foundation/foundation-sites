@@ -106,17 +106,6 @@
       'ARROW_DOWN': 'down',
       'ARROW_LEFT': 'previous',
       'ESCAPE': 'close'
-    },
-    'Drilldown': {
-      'ENTER': 'open',
-      'SPACE': 'open',
-      'ARROW_RIGHT': 'next',
-      'ARROW_UP': 'up',
-      'ARROW_DOWN': 'down',
-      'ARROW_LEFT': 'previous',
-      'ESCAPE': 'close',
-      'TAB': 'down',
-      'SHIFT_TAB': 'up'
     }
   };
 
@@ -138,7 +127,7 @@
     if (typeof commandList.ltr === 'undefined') { // this component does not differentiate between ltr and rtl
         cmds = commandList; // use plain list
     } else { // merge ltr and rtl: if document is rtl, rtl overwrites ltr and vice versa
-        if (isRtl()) cmds = $.extend({}, commandList.ltr, commandList.rtl);
+        if (Foundation.isRtl()) cmds = $.extend({}, commandList.ltr, commandList.rtl);
         else cmds = $.extend({}, commandList.rtl, commandList.ltr);
     }
     command = cmds[keyCode];
@@ -158,7 +147,16 @@
   };
   Foundation.handleKey = handleKey;
 
-  
+
+  /**
+   * Returns the component name name
+   * @param {Object} component - Foundation component, e.g. Slider or Reveal
+   * @return String componentName
+   */
+  var registerKeyCommands = function(componentName, cmds) {
+    commands[componentName] = cmds;
+  };
+  Foundation.registerKeyCommands = registerKeyCommands;
 
   /**
    * Returns the component name name
@@ -169,11 +167,4 @@
     return (/function (.+)\(/).exec((component).constructor.toString())[1] || '';
   };
 
-  /**
-   * Checks if the document is rtl directed, based on html-tag's dir-attribute
-   * @return String direction - either 'ltr' or 'rtl'
-   */
-  var isRtl = function() {
-    return $('html').attr('dir') === 'rtl';
-  };
 }(jQuery, window.Foundation);
