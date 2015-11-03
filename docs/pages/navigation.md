@@ -71,26 +71,26 @@ The dropdown menu plugin (`data-dropdown-menu`) converts a nested menu into a se
 
 <ul class="dropdown menu" data-dropdown-menu>
   <li class="has-submenu">
-    <a>Item 1 &raquo;</a>
+    <a>Item 1</a>
     <ul class="submenu menu" data-submenu>
       <li><a href="#">Item 1A Loooong</a></li>
-      <li class='has-submenu'>
-        <a href='#'> Item 1 sub &raquo;</a>
-        <ul class='submenu menu' data-submenu>
-          <li><a href='#'>Item 1 subA</a></li>
-          <li><a href='#'>Item 1 subB</a></li>
-          <li class='has-submenu'>
-            <a href='#'> Item 1 sub &raquo;</a>
-            <ul class='submenu menu' data-submenu>
-              <li><a href='#'>Item 1 subA</a></li>
-              <li><a href='#'>Item 1 subB</a></li>
+      <li class="has-submenu">
+        <a href="#"> Item 1 sub</a>
+        <ul class="submenu menu" data-submenu>
+          <li><a href="#">Item 1 subA</a></li>
+          <li><a href="#">Item 1 subB</a></li>
+          <li class="has-submenu">
+            <a href="#"> Item 1 sub</a>
+            <ul class="submenu menu" data-submenu>
+              <li><a href="#">Item 1 subA</a></li>
+              <li><a href="#">Item 1 subB</a></li>
             </ul>
           </li>
-          <li class='has-submenu'>
-            <a href='#'> Item 1 sub &raquo;</a>
-            <ul class='submenu menu' data-submenu>
-              <li><a href='#'>Item 1 subA</a></li>
-              <li><a href='#'>Item 1 subB</a></li>
+          <li class="has-submenu">
+            <a href="#">Item 1 sub</a>
+            <ul class="submenu menu" data-submenu>
+              <li><a href="#">Item 1 subA</a></li>
+              <li><a href="#">Item 1 subB</a></li>
             </ul>
           </li>
 
@@ -100,20 +100,20 @@ The dropdown menu plugin (`data-dropdown-menu`) converts a nested menu into a se
     </ul>
   </li>
   <li class="has-submenu">
-    <a href="#">Item 2 &raquo;</a>
+    <a href="#">Item 2</a>
     <ul class="submenu menu" data-submenu>
       <li><a href="#">Item 2A</a></li>
       <li><a href="#">Item 2B</a></li>
     </ul>
   </li>
   <li class="has-submenu">
-    <a href="#">Item 3 &raquo;</a>
+    <a href="#">Item 3</a>
     <ul class="submenu menu" data-submenu>
       <li><a href="#">Item 3A</a></li>
       <li><a href="#">Item 3B</a></li>
     </ul>
   </li>
-  <li><a href='#'>Item 4</a></li>
+  <li><a href="#">Item 4</a></li>
 </ul>
 
 ---
@@ -123,10 +123,10 @@ The dropdown menu plugin (`data-dropdown-menu`) converts a nested menu into a se
 The drilldown menu plugin (`data-drilldown`) converts a nested menu into a series of sliding menus. Clicking an item slides the next level menu into view. [Learn more about the drilldown menu.](drilldown-menu.html)
 
 <ul class="vertical menu" data-drilldown style="width: 300px;" id="m1">
-  <li class='has-submenu'>
+  <li class="has-submenu">
     <a href="#">Item 1</a>
     <ul class="vertical menu" data-submenu id="m2">
-      <li class='has-submenu'>
+      <li class="has-submenu">
         <a href="#">Item 1A</a>
         <ul class="vertical menu" data-submenu id="m3">
           <li><a href="#">Item 1Aa</a></li>
@@ -142,7 +142,7 @@ The drilldown menu plugin (`data-drilldown`) converts a nested menu into a serie
       <li><a href="#">Item 1E</a></li>
     </ul>
   </li>
-  <li class='has-submenu'>
+  <li class="has-submenu">
     <a href="#">Item 2</a>
     <ul class="vertical menu" data-submenu>
       <li><a href="#">Item 2A</a></li>
@@ -152,7 +152,7 @@ The drilldown menu plugin (`data-drilldown`) converts a nested menu into a serie
       <li><a href="#">Item 2E</a></li>
     </ul>
   </li>
-  <li class='has-submenu'>
+  <li class="has-submenu">
     <a href="#">Item 3</a>
     <ul class="vertical menu" data-submenu>
       <li><a href="#">Item 3A</a></li>
@@ -162,7 +162,7 @@ The drilldown menu plugin (`data-drilldown`) converts a nested menu into a serie
       <li><a href="#">Item 3E</a></li>
     </ul>
   </li>
-  <li><a href='#'> Item 4</a></li>
+  <li><a href="#"> Item 4</a></li>
 </ul>
 
 ---
