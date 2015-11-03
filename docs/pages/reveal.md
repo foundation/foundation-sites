@@ -12,9 +12,8 @@ tags:
 <div class="alert callout">
   <h5>Known Issues</h5>
   <ul>
-    <li>Instead of each modal getting it’s own background, maybe generate one for the whole page if a modal is detected?</li>
-    <li>Needs accessibility compliant keyboard access bindings.</li>
-    <li>Sometimes click events are firing on the anchor in Firefox w/o clicking.</li>
+    <li><em>Future Feature.</em> Instead of each modal getting it’s own background, maybe generate one for the whole page if a modal is detected?</li>
+    <li>Focus isn't being trapped in Firefox.</li>
   </ul>
 </div>
 

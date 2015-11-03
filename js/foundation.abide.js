@@ -8,9 +8,9 @@
    * @param {Object} element - jQuery object to add the trigger to.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  function Abide(element) {
+  function Abide(element, options) {
     this.$element = element;
-    this.options  = $.extend({}, Abide.defaults, this.$element.data());
+    this.options  = $.extend({}, Abide.defaults, this.$element.data(), options || {});
     this.$window  = $(window);
     this.name     = 'Abide';
     this.attr     = 'data-abide';

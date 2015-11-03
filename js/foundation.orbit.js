@@ -8,9 +8,15 @@
  */
 !function($, Foundation){
   'use strict';
-  function Orbit(element){
+  /**
+   * Creates a new instance of an orbit carousel.
+   * @class
+   * @param {jQuery} element - jQuery object to make into an accordion menu.
+   * @param {Object} options - Overrides to the default plugin settings.
+   */
+  function Orbit(element, options){
     this.$element = element;
-    this.options = $.extend({}, Orbit.defaults, this.$element.data());
+    this.options = $.extend({}, Orbit.defaults, this.$element.data(), options || {});
 
     this._init();
 
@@ -36,6 +42,11 @@
     nextClass: 'orbit-next',
     prevClass: 'orbit-previous'
   };
+  /**
+   * Initializes the plugin by creating jQuery collections, setting attributes, and starting the animation.
+   * @function
+   * @private
+   */
   Orbit.prototype._init = function(){
     this.$wrapper = this.$element.find('.' + this.options.containerClass);
     this.$slides = this.$element.find('.' + this.options.slideClass);
@@ -55,9 +66,18 @@
       this.$wrapper.attr('tabindex', 0);
     }
   };
+  /**
+   * Creates a jQuery collection of bullets, if they are being used.
+   * @function
+   * @private
+   */
   Orbit.prototype.loadBullets = function(){
     this.$bullets = this.$element.find('.' + this.options.boxOfBullets).find('button');
   };
+  /**
+   * Sets a `timer` object on the orbit, and starts the counter for the next slide.
+   * @function
+   */
   Orbit.prototype.geoSync = function(){
     var _this = this;
     this.timer = new Foundation.NanuNanu(
@@ -68,12 +88,23 @@
     });
     this.timer.start();
   };
+  /**
+   * Sets wrapper and slide heights for the orbit.
+   * @function
+   * @private
+   */
   Orbit.prototype._prepareForOrbit = function(){
     var _this = this;
     this.setWrapperHeight(function(max){
       _this.setSlideHeight(max);
     });
-  }
+  };
+  /**
+   * Calulates the height of each slide in the collection, and uses the tallest one for the wrapper height.
+   * @function
+   * @private
+   * @param {Function} cb - a callback function to fire when complete.
+   */
   Orbit.prototype.setWrapperHeight = function(cb){//rewrite this to `for` loop
     var max = 0, temp, counter = 0;
 
@@ -92,11 +123,21 @@
       cb(max);//fire callback with max height dimension.
     }
   };
+  /**
+   * Sets the max-height of each slide.
+   * @function
+   * @private
+   */
   Orbit.prototype.setSlideHeight = function(height){
     this.$slides.each(function(){
       $(this).css('max-height', height);
     });
   };
+  /**
+   * Adds event listeners to basically everything within the element.
+   * @function
+   * @private
+   */
   Orbit.prototype._events = function(){
     var _this = this;
 
@@ -180,8 +221,15 @@
         }
       });
     });
-
   };
+  /**
+   * Changes the current slide to a new one.
+   * @function
+   * @param {Boolean} isLTR - flag if the slide should move left to right.
+   * @param {jQuery} chosenSlide - the jQuery element of the slide to show next, if one is selected.
+   * @param {Number} idx - the index of the new slide in its collection, if one chosen.
+   * @fires Orbit#slidechange
+   */
   Orbit.prototype.changeSlide = function(isLTR, chosenSlide, idx){
     var $curSlide = this.$slides.filter('.is-active').eq(0);
 
@@ -224,21 +272,35 @@
           $curSlide.removeAttr('aria-live');
           _this.timer.restart();
           //do stuff?
+          /**
+           * Triggers when the slide has finished animating in.
+           * @event Orbit#slidechange
+           */
           _this.$element.trigger('slidechange.zf.orbit', [$newSlide]);
         });
     }
   };
+  /**
+   * Updates the active state of the bullets, if displayed.
+   * @function
+   * @private
+   * @param {Number} idx - the index of the current slide.
+   */
   Orbit.prototype._updateBullets = function(idx){
     var $oldBullet = this.$element.find('.' + this.options.boxOfBullets)
                                   .find('.is-active').removeClass('is-active').blur(),
         span = $oldBullet.find('span:last').detach(),
         $newBullet = this.$bullets.eq(idx).addClass('is-active').append(span);
   };
-
+  /**
+   * Destroys the carousel and hides the element.
+   * @function
+   */
   Orbit.prototype.destroy = function(){
     delete this.timer;
     this.$element.off('.zf.orbit').find('*').off('.zf.orbit').end().hide();
-    this.$element.trigger('destroyed.zf.orbit');
+    Foundation.unregisterPlugin(this);
+    // this.$element.trigger('destroyed.zf.orbit');
   };
 
   Foundation.plugin(Orbit);

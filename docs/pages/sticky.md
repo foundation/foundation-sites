@@ -8,10 +8,8 @@ js: js/foundation.sticky.js
 <div class="alert callout">
   <h5>Known Issues</h5>
   <ul>
-    <li>Sticky's `_setSizes` and `_setBreakPoints` methods seemingly returning improper values occasionally on resize events... annoying</li>
     <li><em>Future Feature:</em> Needs method for elements to be sticky on the top of the viewport when scrolling down, and if the lower breakpoint is reached, stick to bottom on scroll up.</li>
     <li>`_setBreakPoints` and `_setSizes` need to be flexible enough to calculate top and bottom breakpoints based on more than one element. Currently only works with a single anchor element, using the offset top (+ anchor height for bottom).</li>
-    <li>Needs more general testing to ensure elements are only sticky when they should be. Reacts strangely to resize events.</li>
   </ul>
 </div>
 
