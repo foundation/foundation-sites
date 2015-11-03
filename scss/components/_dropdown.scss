@@ -22,6 +22,10 @@ $dropdown-font-size: 16rem !default;
 /// @type Number
 $dropdown-width: 300px !default;
 
+/// Border radius dropdown panes.
+/// @type Number
+$dropdown-radius: $global-radius !default;
+
 /// Sizes for dropdown panes. Each size is a CSS class you can apply.
 /// @type Map
 $dropdown-sizes: (
@@ -40,6 +44,7 @@ $dropdown-sizes: (
   visibility: hidden;
   width: 300px;
   z-index: 10;
+  border-radius: $dropdown-radius;
 
   &.is-open {
     visibility: visible;

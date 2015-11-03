@@ -14,6 +14,10 @@ $select-background: #fafafa !default;
 /// @type Color
 $select-triangle-color: #333 !default;
 
+/// Default radius for select menus.
+/// @type Color
+$select-radius: $global-radius !default;
+
 @mixin form-select {
   $height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
 
@@ -27,7 +31,7 @@ $select-triangle-color: #333 !default;
   line-height: normal;
   color: $input-color;
   background-color: $select-background;
-  border-radius: $global-radius;
+  border-radius: $select-radius;
   -webkit-appearance: none;
   -moz-appearance: none;
 

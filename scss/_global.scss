@@ -40,7 +40,7 @@ $alert-color: #ec5840 !default;
 
 /// Color used for light gray UI items within Foundation.
 /// @type Color
-$light-gray: #f3f3f3 !default;
+$light-gray: #e6e6e6 !default;
 
 /// Color used for medium gray UI items within Foundation.
 /// @type Color
@@ -100,7 +100,7 @@ $global-weight-bold: bold !default;
 
 /// Global value used for all elements that have a border radius.
 /// @type Number
-$global-radius: 3px !default;
+$global-radius: 0 !default;
 
 /// Namespace for the data attributes used to initialize Foundation plugins.
 /// @type String | Boolean
