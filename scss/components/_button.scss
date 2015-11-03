@@ -6,33 +6,33 @@
 /// @group button
 ////
 
-/// Defualt padding for button.
+/// Padding inside buttons.
 /// @type List
 $button-padding: 0.85em 1em !default;
 
-/// Defualt margin for button.
+/// Margin around buttons.
 /// @type List
 $button-margin: 0 $global-margin $global-margin 0 !default;
 
-/// Defualt fill for button. Is either solid or hollow.
+/// Default fill for buttons. Can either be `solid` or `hollow`.
 /// @type Keyword
 $button-fill: solid !default;
 
-/// Defualt margin for button.
+/// Default background color for buttons.
 /// @type Color
 $button-background: $primary-color !default;
 
-/// Defualt margin for button.
+/// Background color on hover for buttons.
 /// @type Color
 $button-background-hover: scale-color($button-background, $lightness: -15%) !default;
 
-/// Defualt font color for button.
+/// Font color for buttons.
 /// @type List
-$button-font-color: #fff !default;
+$button-color: #fff !default;
 
-/// Defualt alternative font color for button.
+/// Font color for buttons, if the background is light.
 /// @type List
-$button-font-color-alt: #000 !default;
+$button-color-alt: #000 !default;
 
 /// Sizes for buttons.
 /// @type Map
@@ -43,7 +43,7 @@ $button-sizes: (
   large: 1.25rem,
 ) !default;
 
-/// Defualt opacity for a disabled button.
+/// opacity for a disabled button.
 /// @type List
 $button-opacity-disabled: 0.25 !default;
 
@@ -88,11 +88,11 @@ $button-opacity-disabled: 0.25 !default;
 /// Sets the visual style of a button.
 /// @param {Color} $background [$button-background] - Background color of the button.
 /// @param {Color} $background-hover [$button-background-hover] - Background color of the button on hover. Set to `auto` to have the mixin automatically generate a hover color.
-/// @param {Color} $color [$button-font-color] - Text color of the button. Set to `auto` to automatically generate a color based on the background color.
+/// @param {Color} $color [$button-color] - Text color of the button. Set to `auto` to automatically generate a color based on the background color.
 @mixin button-style(
   $background: $button-background,
   $background-hover: $button-background-hover,
-  $color: $button-font-color
+  $color: $button-color
 ) {
   @if $color == auto {
     $color: isitlight($background);
@@ -103,10 +103,10 @@ $button-opacity-disabled: 0.25 !default;
   }
 
   @if lightness($background) >= 70% {
-    $color: $button-font-color-alt;
+    $color: $button-color-alt;
   }
   @else {
-    $color: $button-font-color;
+    $color: $button-color;
   }
 
   background: $background;
@@ -167,13 +167,13 @@ $button-opacity-disabled: 0.25 !default;
 /// @param {Boolean} $expand [false] - Set to `true` to make the button full-width.
 /// @param {Color} $background [$button-background] - Background color of the button.
 /// @param {Color} $background-hover [$button-background-hover] - Background color of the button on hover. Set to `auto` to have the mixin automatically generate a hover color.
-/// @param {Color} $color [$button-font-color] - Text color of the button. Set to `auto` to automatically generate a color based on the background color.
+/// @param {Color} $color [$button-color] - Text color of the button. Set to `auto` to automatically generate a color based on the background color.
 /// @param {Keyword} $style [solid] - Set to `hollow` to create a hollow button. The color defined in `$background` will be used as the primary color of the button.
 @mixin button(
   $expand: false,
   $background: $button-background,
   $background-hover: $button-background-hover,
-  $color: $button-font-color,
+  $color: $button-color,
   $style: $button-fill
 ) {
   @include button-base;
@@ -203,8 +203,19 @@ $button-opacity-disabled: 0.25 !default;
 
     // Colors
     @each $name, $color in $foundation-colors {
-      &.#{$name} {
-        @include button-style($color, auto);
+      @if $button-fill != hollow {
+        &.#{$name} {
+          @include button-style($color, auto);
+        }
+      }
+      @else {
+        &.#{$name} {
+          @include button-hollow-style($color);
+        }
+
+        &.#{$name}.dropdown::after {
+          border-top-color: $color;
+        }
       }
     }
 
@@ -230,6 +241,12 @@ $button-opacity-disabled: 0.25 !default;
     // Dropdown arrow
     &.dropdown {
       @include button-dropdown;
+
+      @if $button-fill == hollow {
+        &::after {
+          border-top-color: $button-background;
+        }
+      }
     }
 
     // Button with dropdown arrow only

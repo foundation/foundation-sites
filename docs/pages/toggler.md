@@ -44,7 +44,7 @@ Instead of `data-toggler`, add the attribute `data-toggler-animate`. The value o
 ```html_example
 <p><a data-toggle="panel">Toggle Panel</a></p>
 
-<div class="callout" id="panel" data-toggler data-animate="hingeInFromTop spinOut">
+<div class="callout" id="panel" data-toggler data-animate="hinge-in-from-top spin-out">
   <h4>Hello!</h4>
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta quas optio alias voluptas nobis iusto mollitia asperiores incidunt reprehenderit doloribus voluptatibus officiis minus, inventore, quasi nisi. Consequuntur, quidem. Sint, dicta?</p>
 </div>
@@ -70,7 +70,7 @@ To create an element that can be closed once, add the attribute `data-closable`.
 `data-closable` can be configured with a custom exit animation.
 
 ```html_example
-<div class="callout" data-closable="slideOutRight">
+<div class="callout" data-closable="slide-out-right">
   <button class="close-button" data-close>&times;</button>
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore praesentium sint alias dolorum qui vel quaerat, libero consequatur non esse asperiores veritatis commodi, odit eum ipsam nemo dicta iste aliquam.</p>
 </div>

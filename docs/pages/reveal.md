@@ -8,7 +8,6 @@ tags:
   - modal
 ---
 
-
 <div class="alert callout">
   <h5>Known Issues</h5>
   <ul>
@@ -144,7 +143,7 @@ To use animations from the Motion UI library, include the <code>data-animation-i
 ```html_example
 <p><a data-toggle="animatedModal1">Click me for a modal</a></p>
 
-<div class="reveal" id="animatedModal1" data-reveal data-close-on-click='true' data-animation-in='spinIn' data-animation-out='spinOut'>
+<div class="reveal" id="animatedModal1" data-reveal data-close-on-click='true' data-animation-in='spin-in' data-animation-out='spin-out'>
   <h1>Whoa, I'm dizzy!</h1>
   <p class='lead'>There are many options for animating modals, check out the Motion UI library to see them all</p>
 </div>
