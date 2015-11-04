@@ -42,10 +42,11 @@
    * @private
    */
   Tabs.prototype._init = function(){
-    var _this = this,
-        tabIndex = 1;
+    var _this = this;
+
     this.$tabTitles = this.$element.find('.' + this.options.linkClass);
     this.$tabContent = $('[data-tabs-content="' + this.$element[0].id + '"]');
+    
     this.$tabTitles.each(function(){
       var $elem = $(this),
           $link = $elem.find('a'),
@@ -72,7 +73,6 @@
       if(isActive && _this.options.autoFocus){
         $link.focus();
       }
-      tabIndex++
     });
     if(this.options.matchHeight){
       this.setHeight();
