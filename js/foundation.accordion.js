@@ -37,7 +37,7 @@
    */
   Accordion.prototype._init = function() {
     this.$element.attr('role', 'tablist');
-    this.$tabs = this.$element.find('li');
+    this.$tabs = this.$element.children('li');
     this.$tabs.each(function(idx, el){
 
       var $el = $(el),
@@ -45,7 +45,7 @@
           id = $content[0].id || Foundation.GetYoDigits(6, 'accordion'),
           linkId = el.id || id + '-label';
 
-      $el.find('a').attr({
+      $el.find('a:first').attr({
         'aria-controls': id,
         'role': 'tab',
         'id': linkId,

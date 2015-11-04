@@ -44,7 +44,8 @@ Once you put it all together, here's what you get!
   <li class="accordion-item is-active">
     <a href="#" class="accordion-title">Accordion 1</a>
     <div class="accordion-content" data-tab-content >
-      Panel 1. Lorem ipsum dolor
+      <p>Panel 1. Lorem ipsum dolor</p>
+      <a href="#">Nowhere to Go</a>
     </div>
   </li>
   <li class="accordion-item">
