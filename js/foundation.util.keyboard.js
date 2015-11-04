@@ -7,6 +7,7 @@
  ******************************************/
 !function($, Foundation){
   'use strict';
+  Foundation.Keyboard = {};
 
   var keyCodes = {
     9: 'TAB',
@@ -26,7 +27,7 @@
     return k;
   })(keyCodes);
 
-  Foundation.keys = keys;
+  Foundation.Keyboard.keys = keys;
 
   /**
    * Parses the (keyboard) event and returns a String that represents its key
@@ -41,75 +42,11 @@
     if (event.altKey) key = 'ALT_' + key;
     return key;
   };
-  Foundation.parseKey = parseKey;
+  Foundation.Keyboard.parseKey = parseKey;
 
 
   // plain commands per component go here, ltr and rtl are merged based on orientation
-  var commands = {
-    'Slider': {
-        'ltr': {
-          'ARROW_RIGHT': 'increase',
-          'ARROW_UP': 'increase',
-          'ARROW_DOWN': 'decrease',
-          'ARROW_LEFT': 'decrease',
-          'SHIFT_ARROW_RIGHT': 'increase_fast',
-          'SHIFT_ARROW_UP': 'increase_fast',
-          'SHIFT_ARROW_DOWN': 'decrease_fast',
-          'SHIFT_ARROW_LEFT': 'decrease_fast'
-        },
-        'rtl': {
-          'ARROW_LEFT': 'increase',
-          'ARROW_RIGHT': 'decrease',
-          'SHIFT_ARROW_LEFT': 'increase_fast',
-          'SHIFT_ARROW_RIGHT': 'decrease_fast'
-        }
-    },
-    'Reveal': {
-      'ENTER': 'open',
-      'SPACE': 'open',
-      'ESCAPE': 'close',
-      'TAB': 'tab_forward',
-      'SHIFT_TAB': 'tab_backward'
-    },
-    'Tabs': {
-      'ENTER': 'open',
-      'SPACE': 'open',
-      'ARROW_RIGHT': 'next',
-      'ARROW_UP': 'previous',
-      'ARROW_DOWN': 'next',
-      'ARROW_LEFT': 'previous',
-      // 'TAB': 'next',
-      // 'SHIFT_TAB': 'previous'
-    },
-    'Orbit': {
-        'ltr': {
-          'ARROW_RIGHT': 'next',
-          'ARROW_LEFT': 'previous'
-        },
-        'rtl': {
-          'ARROW_LEFT': 'next',
-          'ARROW_RIGHT': 'previous'
-        }
-    },
-    'Accordion': {
-      'ENTER': 'toggle',
-      'SPACE': 'toggle',
-      'ARROW_DOWN': 'next',
-      'ARROW_UP': 'previous'
-
-    },
-    'DropdownMenu': {
-          'ENTER': 'open',
-          'SPACE': 'open',
-          'ARROW_RIGHT': 'next',
-          'ARROW_UP': 'up',
-          'ARROW_DOWN': 'down',
-          'ARROW_LEFT': 'previous',
-          'ESCAPE': 'close'
-        }
-  };
-
-
+  var commands = {};
 
   /**
    * Handles the given (keyboard) event
@@ -128,7 +65,8 @@
     if (typeof commandList.ltr === 'undefined') { // this component does not differentiate between ltr and rtl
         cmds = commandList; // use plain list
     } else { // merge ltr and rtl: if document is rtl, rtl overwrites ltr and vice versa
-        if (isRtl()) cmds = $.extend({}, commandList.ltr, commandList.rtl);
+        if (Foundation.rtl()) cmds = $.extend({}, commandList.ltr, commandList.rtl);
+
         else cmds = $.extend({}, commandList.rtl, commandList.ltr);
     }
     command = cmds[keyCode];
@@ -146,7 +84,20 @@
         }
     }
   };
-  Foundation.handleKey = handleKey;
+  Foundation.Keyboard.handleKey = handleKey;
+
+
+
+  /**
+   * Returns the component name name
+   * @param {Object} component - Foundation component, e.g. Slider or Reveal
+   * @return String componentName
+   */
+
+  var register = function(componentName, cmds) {
+    commands[componentName] = cmds;
+  };
+  Foundation.Keyboard.register = register;
 
   /**
    * Returns the component name name
@@ -157,11 +108,4 @@
     return (/function (.+)\(/).exec((component).constructor.toString())[1] || '';
   };
 
-  /**
-   * Checks if the document is rtl directed, based on html-tag's dir-attribute
-   * @return String direction - either 'ltr' or 'rtl'
-   */
-  var isRtl = function() {
-    return $('html').attr('dir') === 'rtl';
-  };
 }(jQuery, window.Foundation);

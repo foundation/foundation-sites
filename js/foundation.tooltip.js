@@ -12,10 +12,12 @@
    * @class
    * @fires Tooltip#init
    * @param {jQuery} element - jQuery object to attach a tooltip to.
+   * @param {Object} options - object to extend the default configuration.
    */
   function Tooltip(element, options){
     this.$element = element;
     this.options = $.extend({}, Tooltip.defaults, this.$element.data(), options);
+
     this.isActive = false;
     this.isClick = false;
     this._init();
@@ -37,6 +39,7 @@
     disableHover: false,
     templateClasses: '',
     tooltipClass: 'tooltip',
+    triggerClass: 'has-tip',
     showOn: 'all',
     template: '',
     tipText: '',
@@ -69,7 +72,7 @@
       'data-yeti-box': elemId,
       'data-toggle': elemId,
       'data-resize': elemId
-    }).addClass('has-tip');
+    }).addClass(this.triggerClass);
 
     //helper variables to track movement on collisions
     this.usedPositions = [];

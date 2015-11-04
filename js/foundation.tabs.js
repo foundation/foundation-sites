@@ -19,6 +19,16 @@
 
     this._init();
     Foundation.registerPlugin(this);
+    Foundation.Keyboard.register('Tabs', {
+      'ENTER': 'open',
+      'SPACE': 'open',
+      'ARROW_RIGHT': 'next',
+      'ARROW_UP': 'previous',
+      'ARROW_DOWN': 'next',
+      'ARROW_LEFT': 'previous',
+      // 'TAB': 'next',
+      // 'SHIFT_TAB': 'previous'
+    });
     // /**
     //  * Fires when the plugin has been successfuly initialized.
     //  * @event Tabs#init
@@ -120,35 +130,38 @@
     this.$tabTitles.off('keydown.zf.tabs').on('keydown.zf.tabs', function(e){
       e.stopPropagation();
       e.preventDefault();
-      var $tabTitle = $(this),
-          $prev = $tabTitle.prev(),
-          $next = $tabTitle.next();
-      if(checkClass($prev) || checkClass($next)){
-        return;
-      }
-      if(_this.options.wrapOnKeys){
-        $prev = $prev.length ? $prev : $lastTab;
-        $next = $next.length ? $next : $firstTab;
-        if(checkClass($prev) || checkClass($next)){
+
+      var $element = $(this),
+        $elements = $element.parent('ul').children('li'),
+        $prevElement,
+        $nextElement;
+
+      $elements.each(function(i) {
+        if ($(this).is($element)) {
+          if (_this.options.wrapOnKeys) {
+            $prevElement = i === 0 ? $elements.last() : $elements.eq(i-1);
+            $nextElement = i === $elements.length -1 ? $elements.first() : $elements.eq(i+1);
+          } else {
+            $prevElement = $elements.eq(Math.max(0, i-1));
+            $nextElement = $elements.eq(Math.min(i+1, $elements.length-1));
+          }
           return;
         }
-      }
+      });
 
       // handle keyboard event with keyboard util
-      Foundation.handleKey(e, _this, {
+      Foundation.Keyboard.handleKey(e, _this, {
         open: function() {
-          $tabTitle.focus();
-          _this._handleTabChange($tabTitle);
+          $element.find('[role="tab"]').focus();
+          _this._handleTabChange($element);
         },
         previous: function() {
-          if(checkClass($prev)){ return; }
-          $prev.focus();
-          _this._handleTabChange($prev)
+          $prevElement.find('[role="tab"]').focus();
+          _this._handleTabChange($prevElement)
         },
         next: function() {
-          if(checkClass($next)){ return; }
-          $next.focus();
-          _this._handleTabChange($next)
+          $nextElement.find('[role="tab"]').focus();
+          _this._handleTabChange($nextElement)
         }
       });
     });
