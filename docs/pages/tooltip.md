@@ -10,7 +10,6 @@ js: js/foundation.tooltip.js
   <h5>Known Issues</h5>
   <ul>
     <li>Inconsistent hover effects on Firefox.</li>
-    <li>Broken on Android 4.4 browser and iOS devices w/ Safari.</li>
     <li>Inconsitent position correction on collision events.</li>
   </ul>
 </div>

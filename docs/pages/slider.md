@@ -9,9 +9,8 @@ js: js/foundation.slider.js
 <div class="alert callout">
   <h5>Known Issues</h5>
   <ul>
-    <li>Needs method for initial handle positioning.</li>
     <li>Vertical orientation isn't smooth on Windows Phone.</li>
-    <li>Two-handled sliders not working in Firefox.</li>
+    <li>Vertical orientation is inverted. Needs to move up when increasing...</li>
   </ul>
 </div>
 

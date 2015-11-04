@@ -37,13 +37,12 @@
     hideDelay: 0,
     closeOnClick: true,
     closeOnEsc: true,
-    multiOpened: false,
+    multipleOpened: false,
     vOffset: 100,
     hOffset: 0,
     fullScreen: false,
     btmOffsetPct: 10,
-    overlay: true,
-    keyboardAccess: true
+    overlay: true
   };
 
   /**
@@ -51,17 +50,18 @@
    * @private
    */
   Reveal.prototype._init = function(){
-    var anchorId = Foundation.GetYoDigits(6, 'reveal');
-
     this.id = this.$element.attr('id');
 
     this.$anchor = $('[data-open="' + this.id + '"]').length ? $('[data-open="' + this.id + '"]') : $('[data-toggle="' + this.id + '"]');
+
+    var anchorId = this.$anchor[0].id || Foundation.GetYoDigits(6, 'reveal');
+
     this.$anchor.attr({
       // 'data-close': this.id,
       'aria-controls': this.id,
       'id': anchorId,
       'aria-haspopup': true,
-      'tabindex': this.options.keyboardAccess ? 0 : -1
+      'tabindex': 0
     });
     this.options.fullScreen = this.$element.hasClass('full');
     if(this.options.fullScreen){
@@ -121,18 +121,18 @@
       }
     });
 
-    if(this.options.keyboardAccess){
-      this.$anchor.on('keydown.zf.reveal', function(e){
-        if(e.which === 13 || e.which === 32){
-          e.stopPropagation();
-          e.preventDefault();
-          _this._open();
-        }
-      });
-    }
+
+    this.$anchor.on('keydown.zf.reveal', function(e){
+      if(e.which === 13 || e.which === 32){
+        e.stopPropagation();
+        e.preventDefault();
+        _this._open();
+      }
+    });
+
 
     if(this.options.closeOnClick && this.options.overlay){
-      this.$overlay.on('click.zf.reveal', this._close.bind(this));
+      this.$overlay.off('.zf.reveal').on('click.zf.reveal', this._close.bind(this));
     }
   };
   /**
@@ -190,7 +190,7 @@
     this._setPosition(function(){
       _this.$element.hide()
                    .css({'visibility': ''});
-      if(!_this.options.multiOpened){
+      if(!_this.options.multipleOpened){
         /**
          * Fires immediately before the modal opens.
          * Closes any other modals that are currently open
@@ -265,9 +265,9 @@
 
     // lock focus within modal while tabbing
     this.$element.on('keydown.zf.reveal', function(e) {
-
-      var visibleFocusableElements = $(this).find('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]').filter(function() {
-        if (!$(this).is(':visible') || $(this).attr('tabindex') < 0) return false; //only have visible elements and those that have a tabindex greater or equal 0
+      var $modal = $(this)
+      var visibleFocusableElements = $modal.find('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]').filter(function() {
+        if (!$(this).is(':visible') || $(this).attr('tabindex') < 0){ return false; }//only have visible elements and those that have a tabindex greater or equal 0
         return true;
       });
       // handle keyboard event with keyboard util

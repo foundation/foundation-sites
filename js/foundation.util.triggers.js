@@ -95,7 +95,7 @@
   //******** only fires this function once on load, if there's something to watch ********
   function closemeListener(pluginName){
     var yetiBoxes = $('[data-yeti-box]'),
-        plugNames = ['dropdown', 'tooltip', 'orbit'];
+        plugNames = ['dropdown', 'tooltip', 'reveal'];
 
     if(pluginName){
       if(typeof pluginName === 'string'){

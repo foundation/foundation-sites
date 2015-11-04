@@ -18,6 +18,8 @@
     this.$element = element;
     this.options = $.extend({}, AccordionMenu.defaults, this.$element.data(), options || {});
 
+    Foundation.FeatherNest(this.$element, 'accordion');
+
     this._init();
 
 

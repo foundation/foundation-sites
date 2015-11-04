@@ -21,10 +21,8 @@
   }
 
   Dropdown.defaults = {
-    activeClass: 'is-open',
     hoverDelay: 250,
-    disableHover: true,
-    dropdownClass: 'dropdown-pane',
+    hover: false,
     vOffset: 1,
     hOffset: 1,
     positionClass: ''
@@ -53,7 +51,7 @@
       'aria-hidden': 'true',
       'data-yeti-box': $id,
       'data-resize': $id
-    }).hide();
+    });
     this._events();
   };
   /**
@@ -62,7 +60,7 @@
    * @returns {String} position - string value of a position class.
    */
   Dropdown.prototype.getPositionClass = function(){
-    var position = this.$element.attr('class').match(/top|left|right/g);
+    var position = this.$element[0].className.match(/(top|left|right)/g);
         position = position ? position[0] : '';
     return position;
   };
@@ -126,6 +124,7 @@
         'width': $eleDims.windowDims.width - (this.options.hOffset * 2),
         'height': 'auto',
       });
+      this.classChanged = true;
       return false;
     }
 
@@ -147,13 +146,10 @@
       'open.zf.trigger': this.open.bind(this),
       'close.zf.trigger': this.close.bind(this),
       'toggle.zf.trigger': this.toggle.bind(this),
-      // 'closeme.zf.trigger': this.close.bind(this),
       'resizeme.zf.trigger': this.setPosition.bind(this)
     });
-    this.$element.on('close.zf.trigger', function(){
-      console.log('hello', this);
-    });
-    if(!this.options.disableHover){
+
+    if(this.options.hover){
       clearTimeout(_this.timeout);
       this.$anchor.on('mouseenter.zf.dropdown mouseleave.zf.dropdown', function(){
         _this.timeOut = setTimeout(function(){
@@ -177,7 +173,7 @@
     var _this = this;
     this.$element.show();
     this.setPosition();
-    this.$element.addClass(this.options.activeClass)
+    this.$element.addClass('is-open')
         .attr('aria-hidden', 'false');
     this.$anchor.addClass('hover');
     /**
@@ -187,7 +183,7 @@
      this.$element.trigger('show.zf.dropdown', [this.$element]);
     //why does this not work correctly for this plugin?
     // Foundation.reflow(this.$element, 'dropdown');
-    // Foundation._reflow();
+    // Foundation._reflow(this.$element.data('dropdown'));
   };
 
   /**
@@ -196,10 +192,10 @@
    * @fires Dropdown#hide
    */
   Dropdown.prototype.close = function(){
-    if(!this.$element.hasClass(this.options.activeClass)){
+    if(!this.$element.hasClass('is-open')){
       return false;
     }
-    this.$element.removeClass(this.options.activeClass)
+    this.$element.removeClass('is-open')
         .attr('aria-hidden', 'true');
     this.$anchor.removeClass('hover');
     if(this.classChanged){
@@ -208,7 +204,7 @@
         this.$element.removeClass(curPositionClass);
       }
       this.$element.addClass(this.options.positionClass)
-          .hide();
+          .hide().css({height: '', width: ''});
       this.classChanged = false;
       this.counter = 4;
       this.usedPositions.length = 0;
@@ -221,7 +217,7 @@
    * @function
    */
   Dropdown.prototype.toggle = function(){
-    if(this.$element.hasClass(this.options.activeClass)){
+    if(this.$element.hasClass('is-open')){
       this.close();
     }else{
       this.open();

@@ -9,11 +9,9 @@ js: js/foundation.drilldown.js
 <div class="alert callout">
   <h5>Known Issues</h5>
   <ul>
-    <li>`<li>`'s with submenus need to have default prevented, which is in place, but is not working. Temporary fix by removing `href` from `a`'s with submenus.</li>
     <li>Needs accessibility compliant keyboard access bindings.</li>
-    <li>Needs an option and method for breadcrumbing?</li>
-    <li>Destroy method needs to be more robust.</li>
-    <li>This and other `MenuBar` variants need to listen for `Foundation.MediaQuery` change.</li>  </ul>
+    <li>Needs an option and method for breadcrumbing? Feedback request.</li>
+    <li>Needs directional arrows for items with submenus.</li>
 </div>
 
 
@@ -23,12 +21,12 @@ Drilldowns use the standard [Menu](menu.html) syntax. Add the attribute `data-dr
 
 
 <ul class="vertical menu" data-drilldown style="width: 300px;" id="m1">
-  <li class='has-submenu'>
+  <li>
     <a href="#">Item 1</a>
-    <ul class="vertical menu" data-submenu id="m2">
-      <li class='has-submenu'>
+    <ul class="vertical menu" id="m2">
+      <li>
         <a href="#">Item 1A</a>
-        <ul class="vertical menu" data-submenu id="m3">
+        <ul class="vertical menu" id="m3">
           <li><a href="#">Item 1Aa</a></li>
           <li><a href="#">Item 1Ba</a></li>
           <li><a href="#">Item 1Ca</a></li>
@@ -42,9 +40,9 @@ Drilldowns use the standard [Menu](menu.html) syntax. Add the attribute `data-dr
       <li><a href="#">Item 1E</a></li>
     </ul>
   </li>
-  <li class='has-submenu'>
+  <li>
     <a href="#">Item 2</a>
-    <ul class="vertical menu" data-submenu>
+    <ul class="vertical menu">
       <li><a href="#">Item 2A</a></li>
       <li><a href="#">Item 2B</a></li>
       <li><a href="#">Item 2C</a></li>
@@ -52,9 +50,9 @@ Drilldowns use the standard [Menu](menu.html) syntax. Add the attribute `data-dr
       <li><a href="#">Item 2E</a></li>
     </ul>
   </li>
-  <li class='has-submenu'>
+  <li>
     <a href="#">Item 3</a>
-    <ul class="vertical menu" data-submenu>
+    <ul class="vertical menu">
       <li><a href="#">Item 3A</a></li>
       <li><a href="#">Item 3B</a></li>
       <li><a href="#">Item 3C</a></li>

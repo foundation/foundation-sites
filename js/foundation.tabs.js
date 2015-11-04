@@ -18,11 +18,12 @@
     this.options = $.extend({}, Tabs.defaults, this.$element.data());
 
     this._init();
-    /**
-     * Fires when the plugin has been successfuly initialized.
-     * @event Tabs#init
-     */
-    this.$element.trigger('init.zf.tabs');
+    Foundation.registerPlugin(this);
+    // /**
+    //  * Fires when the plugin has been successfuly initialized.
+    //  * @event Tabs#init
+    //  */
+    // this.$element.trigger('init.zf.tabs');
   }
 
   Tabs.defaults = {
@@ -74,7 +75,7 @@
       tabIndex++
     });
     if(this.options.matchHeight){
-      this._setHeight();
+      this.setHeight();
     }
     this._events();
   };
@@ -83,8 +84,11 @@
    * @private
    */
    Tabs.prototype._events = function(){
-    this._addKeyupHandler();
+    this._addKeyHandler();
     this._addClickHandler();
+    if(this.options.matchHeight){
+      $(window).on('changed.zf.mediaquery', this.setHeight.bind(this));
+    }
   };
 
   /**
@@ -108,7 +112,7 @@
    * Adds keyboard event handlers for items within the tabs.
    * @private
    */
-  Tabs.prototype._addKeyupHandler = function(){
+  Tabs.prototype._addKeyHandler = function(){
     var _this = this;
     var $firstTab = _this.$element.find('li:first-of-type');
     var $lastTab = _this.$element.find('li:last-of-type');
@@ -159,13 +163,14 @@
    * @param {jQuery} $target - Tab to open.
    * @param {jQuery} $targetContent - Content pane to open.
    * @fires Tabs#change
+   * @function
    */
   Tabs.prototype._handleTabChange = function($target){
     var $tabLink = $target.find('[role="tab"]'),
         hash = $tabLink.attr('href'),
         $targetContent = $(hash),
 
-        $oldTab = this.$element.find('.tabs-title.is-active')
+        $oldTab = this.$element.find('.' + this.options.linkClass + '.is-active')
                   .removeClass('is-active').find('[role="tab"]')
                   .attr({'aria-selected': 'false'}).attr('href');
 
@@ -187,12 +192,32 @@
     // console.log(this.$element.find('.tabs-title, .tabs-panel'));
     // Foundation.reflow(this.$element, 'tabs');
   };
-  Tabs.prototype._setHeight = function(){
+  /**
+   * Sets the height of each panel to the height of the tallest panel.
+   * If enabled in options, gets called on media query change.
+   * If loading content via external source, can be called directly or with _reflow.
+   * @function
+   */
+  Tabs.prototype.setHeight = function(){
+    var max = 0;
     this.$tabContent.find('.' + this.options.panelClass)
-                    .each(function(i, e){
-                      console.log(e);
-                    });
-    console.log(this.$tabContent);
+                    .css('height', '')
+                    .each(function(){
+                      var panel = $(this),
+                          isActive = panel.hasClass('is-active');
+
+                      if(!isActive){
+                        panel.css({'visibility': 'hidden', 'display': 'block'});
+                      }
+                      var temp = this.getBoundingClientRect().height;
+
+                      if(!isActive){
+                        panel.css({'visibility': '', 'display': ''});
+                      }
+
+                      max = temp > max ? temp : max;
+                    })
+                    .css('height', max + 'px');
   };
 
   /**
@@ -200,15 +225,19 @@
    * @fires Tabs#destroyed
    */
   Tabs.prototype.destroy = function() {
-    this.$element.find('.tabs-title').css('display', 'none').end().find('.tabs-panel').css('display', 'none');
-    this.$element.find('.tabs-titles').off('click.zf.tabs keyup.zf.tabs');
-    this.$element.find('.tabs-titles').off('zf.tabs');
-
-    /**
-     * Fires when the plugin has been destroyed.
-     * @event Tabs#destroyed
-     */
-    this.$element.trigger('destroyed.zf.tabs');
+    this.$element.find('.' + this.options.linkClass)
+                 .off('.zf.tabs').hide().end()
+                 .find('.' + this.options.panelClass)
+                 .hide();
+    if(this.options.matchHeight){
+      $(window).off('changed.zf.mediaquery');
+    }
+    Foundation.unregisterPlugin(this);
+    // /**
+    //  * Fires when the plugin has been destroyed.
+    //  * @event Tabs#destroyed
+    //  */
+    // this.$element.trigger('destroyed.zf.tabs');
   }
 
   Foundation.plugin(Tabs);

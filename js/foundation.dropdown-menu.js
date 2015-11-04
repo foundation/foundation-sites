@@ -18,6 +18,8 @@
     this.$element = element;
     this.options = $.extend({}, DropdownMenu.defaults, this.$element.data(), options || {});
 
+    Foundation.FeatherNest(this.$element, 'dropdown');
+
     this._init();
 
     Foundation.registerPlugin(this);
@@ -39,11 +41,9 @@
     autoclose: true,
     hoverDelay: 150,
     closingTime: 500,
-    keyboardAccess: true,
     // wrapOnKeys: true,
     alignment: 'left',
-    vertical: false,
-    vertClass: 'vertical',
+    verticalClass: 'vertical',
     rightClass: 'align-right'
   };
   /**
@@ -51,9 +51,11 @@
    * @private
    * @function
    */
-  DropdownMenu.prototype._init = function() {
-    this.$element.attr('role', 'menubar');
-    this.options.vertical = this.$element.hasClass(this.options.vertClass);
+  DropdownMenu.prototype._init = function(){
+    if(this.$element.hasClass(this.options.verticalClass)){
+      this.vertical = true;
+    }
+    // this.vertical = this.$element.hasClass(this.options.verticalClass);
     this._prepareMenu();
     // this._addTopLevelKeyHandler();
   };
@@ -75,7 +77,7 @@
     }else{
       this.$submenus.addClass('is-left-arrow');
     }
-    if(!this.options.vertical){
+    if(!this.vertical){
       this.$tabs.removeClass('is-right-arrow is-left-arrow').addClass('is-down-arrow');
     }
 
@@ -120,8 +122,12 @@
 
     if(this.options.clickOpen){
       $elem.on('click.zf.dropdownmenu tap.zf.dropdownmenu touchend.zf.dropdownmenu', function(e){
-        e.preventDefault();
-        e.stopPropagation();
+        if($(e.target).parent('li').hasClass('has-submenu')){
+          e.preventDefault();
+          e.stopPropagation();
+        }else{
+          return;
+        }
 
         if($elem.data('isClick')){
           _this._hide($elem);
@@ -163,94 +169,93 @@
       });
     }
 
-    if (this.options.keyboardAccess) {
-      this.$menuItems.on('keydown.zf.dropdownmenu', function(e){
-        var $element = $(this),
-            $tabs = _this.$element.children('li'),
-            isTab = $element.is($tabs),
-            $elements = isTab ? $tabs : $element.parents('li').first().add($element.parent('ul').children('li')),
-            $prevElement,
-            $nextElement;
+    this.$menuItems.on('keydown.zf.dropdownmenu', function(e){
+      var $element = $(this),
+          $tabs = _this.$element.children('li'),
+          isTab = $element.is($tabs),
+          $elements = isTab ? $tabs : $element.parents('li').first().add($element.parent('ul').children('li')),
+          $prevElement,
+          $nextElement;
 
-        $elements.each(function(i) {
-          if ($(this).is($element)) {
-            $prevElement = $elements.eq(i-1);
-            $nextElement = $elements.eq(i+1);
-            return;
-          }
-        });
-        var nextSibling = function() {
-          if (!$element.is(':last-child')) $nextElement.focus();
-        }, prevSibling = function() {
-          $prevElement.focus();
-        }, openSub = function() {
-          if ($element.has('ul').length) {
-            _this._show($element);
-            $element.find('li').first().focus();
-          }
-        }, closeSub = function() {
-          //if ($element.is(':first-child')) {
-            $element.parents('li').first().focus();
-            _this._hide($element.parents('li').first());
-          //}
-        };
-        var functions = {
-          open: openSub,
-          close: function() {
-            _this._hideAll();
-            _this.$menuItems.first().focus(); // focus to first element
-          },
-          handled: function() {
-            e.preventDefault();
-            e.stopImmediatePropagation();
-          }
-        };
+      $elements.each(function(i) {
+        if ($(this).is($element)) {
+          $prevElement = $elements.eq(i-1);
+          $nextElement = $elements.eq(i+1);
+          return;
+        }
+      });
+      var nextSibling = function() {
+        if (!$element.is(':last-child')) $nextElement.focus();
+      }, prevSibling = function() {
+        $prevElement.focus();
+      }, openSub = function() {
+        if ($element.has('ul').length) {
+          _this._show($element);
+          $element.find('li').first().focus();
+        }
+      }, closeSub = function() {
+        //if ($element.is(':first-child')) {
+          $element.parents('li').first().focus();
+          _this._hide($element.parents('li').first());
+        //}
+      };
+      var functions = {
+        open: openSub,
+        close: function() {
+          _this._hideAll();
+          _this.$menuItems.first().focus(); // focus to first element
+        },
+        handled: function() {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+        }
+      };
 
-        if (isTab) {
-          if (_this.options.vertical) { // vertical menu
-            if (_this.options.alignment === 'left') { // left aligned
-              $.extend(functions, {
-                down: nextSibling,
-                up: prevSibling,
-                next: openSub,
-                previous: closeSub,
-              });
-            } else { // right aligned
-              $.extend(functions, {
-                down: nextSibling,
-                up: prevSibling,
-                next: closeSub,
-                previous: openSub,
-              });
-            }
-          } else { // horizontal menu
-            $.extend(functions, {
-              next: nextSibling,
-              previous: prevSibling,
-              down: openSub,
-              up: closeSub,
-            });
-          }
-        } else { // not tabs -> one sub
+      if (isTab) {
+        if (_this.vertical) { // vertical menu
           if (_this.options.alignment === 'left') { // left aligned
             $.extend(functions, {
+              down: nextSibling,
+              up: prevSibling,
               next: openSub,
               previous: closeSub,
-              down: nextSibling,
-              up: prevSibling
             });
           } else { // right aligned
             $.extend(functions, {
+              down: nextSibling,
+              up: prevSibling,
               next: closeSub,
               previous: openSub,
-              down: nextSibling,
-              up: prevSibling
             });
           }
+        } else { // horizontal menu
+          $.extend(functions, {
+            next: nextSibling,
+            previous: prevSibling,
+            down: openSub,
+            up: closeSub,
+          });
         }
-        Foundation.handleKey(e, _this, functions);
-      });
-    } // end if keyboardAccess
+      } else { // not tabs -> one sub
+        if (_this.options.alignment === 'left') { // left aligned
+          $.extend(functions, {
+            next: openSub,
+            previous: closeSub,
+            down: nextSibling,
+            up: prevSibling
+          });
+        } else { // right aligned
+          $.extend(functions, {
+            next: closeSub,
+            previous: openSub,
+            down: nextSibling,
+            up: prevSibling
+          });
+        }
+      }
+      Foundation.handleKey(e, _this, functions);
+    });
+     // end keyboardAccess
   };
   /**
    * Toggles the current dropdown pane.

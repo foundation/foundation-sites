@@ -36,8 +36,20 @@
    * @private
    */
   Accordion.prototype._init = function() {
+    this.$element.attr('role', 'tablist');
+    this.$tabs = this.$element.find('li');
+    this.$tabs.each(function(idx, el){
+
+      var $el = $(el),
+          $content = $el.find('[data-tab-content]'),
+          id = $content[0].id || Foundation.GetYoDigits(6, 'accordion'),
+          linkId = el.id || id + '-label';
+
+      $el.find('a').attr({'aria-controls': id, 'role': 'tab', 'id': linkId});
+      $content.attr({'role': 'tabpanel', 'aria-labelledby': linkId, 'aria-hidden': true, 'id': id});
+    });
     var $initActive = this.$element.find('.is-active').children('[data-tab-content]');
-    if($initActive){
+    if($initActive.length){
       this.down($initActive, true);
     }
     this._events();
@@ -50,16 +62,16 @@
   Accordion.prototype._events = function() {
     var _this = this;
 
-    this.$element.find('li').each(function() {
-      var $tabContent = $(this).children('[data-tab-content]');
+    this.$tabs.each(function(){
       var $elem = $(this);
+      var $tabContent = $elem.children('[data-tab-content]');
       if ($tabContent.length) {
-        $(this).off('click.zf.accordion keydown.zf.accordion')
-               .on('click.zf.accordion', function(e) {
+        $elem.off('click.zf.accordion keydown.zf.accordion')
+               .on('click.zf.accordion', function(e){
         // $(this).children('a').on('click.zf.accordion', function(e) {
           e.preventDefault();
-          if ($tabContent.parent().hasClass('is-active')) {
-            if(_this.options.allowAllClosed || $tabContent.parent().siblings().hasClass('is-active')){
+          if ($elem.hasClass('is-active')) {
+            if(_this.options.allowAllClosed || $elem.siblings().hasClass('is-active')){
               _this.up($tabContent);
             }
           }
@@ -72,10 +84,10 @@
               _this.toggle($tabContent);
             },
             next: function() {
-              $tabContent.parent().next().find('a').focus().trigger('click.zf.accordion');
+              $elem.next().find('a').focus().trigger('click.zf.accordion');
             },
             previous: function() {
-              $tabContent.parent().prev().find('a').focus().trigger('click.zf.accordion');
+              $elem.prev().find('a').focus().trigger('click.zf.accordion');
             },
             handled: function() {
               e.preventDefault();
@@ -108,7 +120,9 @@
         this.up($currentActive);
       }
     }
+
     $target
+      .attr('aria-hidden', false)
       .parent('[data-tab-content]')
       .addBack()
       .parent().addClass('is-active');
@@ -118,7 +132,6 @@
     });
 
     if(!firstTime){
-      console.log('reflowing yo!');
       Foundation._reflow(this.$element.data('accordion'));
     }
     /**
@@ -141,15 +154,13 @@
     if(!this.options.allowAllClosed && !canClose){
       return;
     }
-    $target.find('[data-tab-content]').slideUp(0);
 
     Foundation.Move(this.options.slideSpeed, $target, function(){
       $target.slideUp(_this.options.slideSpeed)
     });
-    // $target.slideUp(this.options.slideSpeed, function() {
-    //   $target.find('[data-tab-content]').slideUp(0);
-    // })
-    $target.parent().removeClass('is-active');
+
+    $target.attr('aria-hidden', true)
+           .parent().removeClass('is-active');
 
     /**
      * Fires when the tab is done collapsing up.
@@ -164,7 +175,7 @@
    */
   Accordion.prototype.destroy = function() {
     this.$element.find('[data-tab-content]').slideUp(0).css('display', '');
-    this.$element.find('a').off('click.zf.accordion');
+    this.$element.find('a').off('.zf.accordion');
 
     /**
      * Fires when the plugin has been destroyed.
