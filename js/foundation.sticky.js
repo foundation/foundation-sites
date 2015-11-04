@@ -249,6 +249,10 @@
     });
     this.elemHeight = newContainerHeight;
     this.canStick = Foundation.MediaQuery.atLeast(this.options.stickyOn);
+	
+	if (this.isStuck) {
+		this.$element.css({"left":this.$container.offset().left + parseInt(this.$container.css("padding-left"))})
+	}
 
     this._setBreakPoints(newContainerHeight, function(){
       if(cb){ cb(); }
