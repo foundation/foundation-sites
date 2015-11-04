@@ -23,6 +23,13 @@
     this._init();
 
     Foundation.registerPlugin(this);
+    Foundation.Keyboard.register('Reveal', {
+      'ENTER': 'open',
+      'SPACE': 'open',
+      'ESCAPE': 'close',
+      'TAB': 'tab_forward',
+      'SHIFT_TAB': 'tab_backward'
+    });
     // /**
     //  * Fires when the plugin has been successfuly initialized.
     //  * @event Reveal#init
@@ -271,7 +278,7 @@
         return true;
       });
       // handle keyboard event with keyboard util
-      Foundation.handleKey(e, _this, {
+      Foundation.Keyboard.handleKey(e, _this, {
         tab_forward: function() {
           if (this.$element.find(':focus').is(visibleFocusableElements.eq(-1))) { // left modal downwards, setting focus to first element
             visibleFocusableElements.eq(0).focus();
