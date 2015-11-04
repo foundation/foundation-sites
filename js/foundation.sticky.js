@@ -31,7 +31,7 @@
     stickyOn: 'medium',
     stickyClass: 'sticky',
     containerClass: 'sticky-container',
-    checkEvery: 25
+    checkEvery: 50
   };
 
   /**

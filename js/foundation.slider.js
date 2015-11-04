@@ -294,9 +294,9 @@
           $body = $('body');
 
       $handle
-        .off('mousedown.zf.slider touchstart.zf.slider')
+        .off('mousedown.zf.slider touchstart.zf.slider keydown.zf.slider')
         .on('mousedown.zf.slider', function(e){
-          e.preventDefault();
+          // e.preventDefault();
 
           $handle.addClass('is-dragging');
           _this.$fill.addClass('is-dragging');

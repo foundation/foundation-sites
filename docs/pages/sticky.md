@@ -58,18 +58,29 @@ You can also choose the sticking point, top, bottom, or both. Elements with `[da
 <div class='row'>
   <div class='columns small-12'>
     <div class='columns small-6' id='example2'>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
+      <ul class="accordion" data-accordion data-multi-expand='true'>
+        <li class="accordion-item is-active">
+          <a href="#" class="accordion-title">Accordion 1</a>
+          <div class="accordion-content" data-tab-content >
+            <p>Panel 1. Lorem ipsum dolor</p>
+            <a href="#">Nowhere to Go</a>
+          </div>
+        </li>
+        <li class="accordion-item">
+          <a href="#" class="accordion-title">Accordion 2</a>
+          <div class="accordion-content" data-tab-content>
+            <textarea></textarea>
+            <button class="button">I do nothing!</button>
+          </div>
+        </li>
+        <li class="accordion-item">
+          <a href="#" class="accordion-title">Accordion 3</a>
+          <div class="accordion-content" data-tab-content>
+            Pick a date!
+            <input type="date"></input>
+          </div>
+        </li>
+      </ul>
     </div>
     <div class='columns small-6 right' data-sticky-container>
       <div class="sticky" data-sticky data-stick-at='#example2' data-stick-to="bottom">
