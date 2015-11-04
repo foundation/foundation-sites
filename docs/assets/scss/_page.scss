@@ -2,6 +2,8 @@
 
 .docs-page-title {
   margin-top: 0.5rem;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .docs-component section {
@@ -16,4 +18,30 @@
 
 .docs-component .callout code {
   background: rgba($code-background, 0.5);
+}
+
+.docs-js.has-tip {
+  border-bottom: 0;
+}
+
+.docs-js.label {
+  background: #F0DB4F;
+  color: black;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+.docs-mui.label {
+  background: #c6538c;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+.docs-lib.label {
+  margin-left: 10px;
+  vertical-align: middle;
+
+  a {
+    color: white;
+  }
 }

@@ -64,6 +64,7 @@ $show-header-for-stacked: false;
 /// @param {Keyword} $stripe [$table-stripe] - Uses kewords even, odd, or none to darken rows of the table. The defualt value is even.
 @mixin table($stripe: $table-stripe) {
   margin-bottom: $global-margin;
+  border-radius: $global-radius;
 
   @at-root {
     thead,
@@ -95,7 +96,7 @@ $show-header-for-stacked: false;
       td {
         padding: $table-padding;
         font-weight: $global-weight-bold;
-        text-align: left;
+        text-align: #{$global-left};
       }
     }
 

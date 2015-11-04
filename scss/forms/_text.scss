@@ -46,13 +46,9 @@ $input-shadow: inset 0 1px 2px rgba($black, 0.1) !default;
 /// @type Shadow
 $input-shadow-focus: 0 0 5px $medium-gray !default;
 
-/// Border radius around text inputs.
-/// @type Number
-$input-radius: 0 !default;
-
 /// Cursor to use when hovering over a disabled text input.
 /// @type Cursor
-$input-cursor-disabled: $cursor-default-value !default;
+$input-cursor-disabled: default !default;
 
 /// Properties to transition on text inputs.
 /// @type Transition
@@ -61,6 +57,10 @@ $input-transition: box-shadow 0.5s, border-color 0.25s ease-in-out !default;
 /// Enables the up/down buttons that Chrome and Firefox add to `<input type="number">` elements.
 /// @type Boolean
 $input-number-spinners: true !default;
+
+/// Radius for text inputs.
+/// @type Border
+$input-radius: $global-radius !default;
 
 @mixin form-element {
   $height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
@@ -128,7 +128,7 @@ $input-number-spinners: true !default;
   // Reset styles on button-like inputs
   [type="submit"],
   [type="button"] {
-    border-radius: 0;
+    border-radius: $global-radius;
     -webkit-appearance: none;
     -moz-appearance: none;
   }

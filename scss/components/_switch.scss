@@ -32,7 +32,7 @@ $switch-height-large: 2.5rem !default;
 
 /// Border radius of the switch
 /// @type Number
-$switch-radius: 0;
+$switch-radius: $global-radius;
 
 /// border around a modal.
 /// @type Number
@@ -48,7 +48,7 @@ $switch-paddle-offset: 0.25rem !default;
 
 /// border radius of the switch paddle
 /// @type Number
-$switch-paddle-radius: 0 !default;
+$switch-paddle-radius: $global-radius !default;
 
 /// switch transition.
 /// @type Number
@@ -104,7 +104,7 @@ $switch-paddle-transition: all 0.25s ease-out !default;
     display: block;
     position: absolute;
     height: 1.5rem;
-    left: 0.25rem;
+    #{$global-left}: 0.25rem;
     top: 0.25rem;
     width: 1.5rem;
     transition: $switch-paddle-transition;
@@ -116,7 +116,7 @@ $switch-paddle-transition: all 0.25s ease-out !default;
     background: $switch-background-active;
 
     &::after {
-      left: 2.25rem;
+      #{$global-left}: 2.25rem;
     }
   }
 
@@ -138,7 +138,7 @@ $switch-paddle-transition: all 0.25s ease-out !default;
 
 /// Adds styles for the active state text within a switch.
 @mixin switch-text-active {
-  left: 8%;
+  #{$global-left}: 8%;
   display: none;
 
   input:checked + label > & {
@@ -148,7 +148,7 @@ $switch-paddle-transition: all 0.25s ease-out !default;
 
 /// Adds styles for the inactive state text within a switch.
 @mixin switch-text-inactive {
-  right: 15%;
+  #{$global-right}: 15%;
 
   input:checked + label > & {
     display: none;
@@ -183,7 +183,7 @@ $switch-paddle-transition: all 0.25s ease-out !default;
   }
 
   input:checked ~ .switch-paddle:after {
-    left: $paddle-left-active;
+    #{$global-left}: $paddle-left-active;
   }
 }
 

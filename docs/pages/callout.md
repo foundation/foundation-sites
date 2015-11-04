@@ -65,6 +65,26 @@ Callouts can be colored using the `.secondary`, `.primary`, `.success`, `.warnin
 
 ---
 
+## Sizing
+
+Callouts can be sized using the `.small` and `.large` classes. These will affect the padding around content to be smaller and larger respectivly. 
+
+```html_example
+<div class="callout small">
+  <h5>This is a secondary panel</h5>
+  <p>It has an easy to override visual style, and is appropriately subdued.</p>
+  <a href="#">It's dangerous to go alone, take this.</a>
+</div>
+
+<div class="callout large">
+  <h5>This is a secondary panel</h5>
+  <p>It has an easy to override visual style, and is appropriately subdued.</p>
+  <a href="#">It's dangerous to go alone, take this.</a>
+</div>
+```
+
+---
+
 ## Making Closable
 
 Pair the callout with the [Closable plugin](closable.html) to create a dismissable alert box.

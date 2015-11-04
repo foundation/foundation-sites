@@ -2,6 +2,7 @@
 title: Toggler
 description: Toggler makes it easy to toggle CSS or animate any element with a click.
 js: js/foundation.toggler.js
+mui: true
 ---
 
 ## Toggle a CSS class
@@ -9,7 +10,7 @@ js: js/foundation.toggler.js
 To setup a class toggle, start by adding the attribute `data-toggler` to an element. The value of `data-toggler` is the class you want to toggle. Also give the element a unique ID so it can be targeted.
 
 ```html
-<ul class="menu-bar" id="menuBar" data-toggler=".expanded">
+<ul class="menu" id="menuBar" data-toggler=".expanded">
   <li><a href="#">One</a></li>
   <li><a href="#">Two</a></li>
   <li><a href="#">Three</a></li>
@@ -25,7 +26,7 @@ Then, add `data-toggle` to any element, with the ID of the target as the value o
 
 <p><a data-toggle="menuBar">Expand!</a></p>
 
-<ul class="menu-bar" id="menuBar" data-toggler=".expanded">
+<ul class="menu" id="menuBar" data-toggler=".expanded">
   <li><a href="#">One</a></li>
   <li><a href="#">Two</a></li>
   <li><a href="#">Three</a></li>
@@ -43,7 +44,7 @@ Instead of `data-toggler`, add the attribute `data-toggler-animate`. The value o
 ```html_example
 <p><a data-toggle="panel">Toggle Panel</a></p>
 
-<div class="callout" id="panel" data-toggler data-animate="hingeInFromTop spinOut">
+<div class="callout" id="panel" data-toggler data-animate="hinge-in-from-top spin-out">
   <h4>Hello!</h4>
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta quas optio alias voluptas nobis iusto mollitia asperiores incidunt reprehenderit doloribus voluptatibus officiis minus, inventore, quasi nisi. Consequuntur, quidem. Sint, dicta?</p>
 </div>
@@ -69,7 +70,7 @@ To create an element that can be closed once, add the attribute `data-closable`.
 `data-closable` can be configured with a custom exit animation.
 
 ```html_example
-<div class="callout" data-closable="slideOutRight">
+<div class="callout" data-closable="slide-out-right">
   <button class="close-button" data-close>&times;</button>
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore praesentium sint alias dolorum qui vel quaerat, libero consequatur non esse asperiores veritatis commodi, odit eum ipsam nemo dicta iste aliquam.</p>
 </div>

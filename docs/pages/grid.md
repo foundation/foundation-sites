@@ -154,6 +154,8 @@ If you need a full-width column to use as a container, put the `.column` and `.r
   Row column
 </div>
 
+---
+
 ### Nesting
 
 You can nest the grids indefinitely, though at a certain point it will get absurd.

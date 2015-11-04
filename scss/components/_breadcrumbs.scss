@@ -22,13 +22,13 @@ $breadcrumbs-item-color: $primary-color;
 /// @type Color
 $breadcrumbs-item-color-current: $black;
 
+/// Opacity of disabled breadcrumb links.
+/// @type Number
+$breadcrumbs-item-color-disabled: $medium-gray;
+
 /// Margin between breadcrumb items.
 /// @type Number
 $breadcrumbs-item-margin: 0.75rem;
-
-/// Opacity of disabled breadcrumb links.
-/// @type Number
-$breadcrumbs-item-opacity-disabled: 0.25;
 
 /// If `true`, makes breadcrumb links uppercase.
 /// @type Boolean
@@ -46,7 +46,7 @@ $breadcrumbs-item-slash: true;
 
   // Item wrapper
   li {
-    float: left;
+    float: #{$global-left};
     color: $breadcrumbs-item-color-current;
     font-size: $breadcrumbs-item-font-size;
     cursor: default;
@@ -56,9 +56,12 @@ $breadcrumbs-item-slash: true;
     }
 
     @if $breadcrumbs-item-slash {
+      // Need to escape the backslash
+      $slash: if($global-text-direction == 'ltr', '/', '\\');
+
       &:not(:last-child)::after {
         color: $medium-gray;
-        content: '/';
+        content: $slash;
         margin: 0 $breadcrumbs-item-margin;
         position: relative;
         top: 1px;
@@ -66,7 +69,7 @@ $breadcrumbs-item-slash: true;
       }
     }
     @else {
-      margin-right: $breadcrumbs-item-margin;
+      margin-#{$global-right}: $breadcrumbs-item-margin;
     }
   }
 
@@ -85,11 +88,7 @@ $breadcrumbs-item-slash: true;
     @include breadcrumbs-container;
 
     .disabled {
-      opacity: $breadcrumbs-item-opacity-disabled;
+      color: $breadcrumbs-item-color-disabled;
     }
   }
 }
-
-// Accessibility - hides the forward slash
-// [aria-label="breadcrumbs"] [aria-hidden="true"]:after {
-  // content: "/"; }

@@ -6,34 +6,32 @@
    * @param {jQuery} parent - jQuery object to use as bounding container.
    * @param {Boolean} lrOnly - set to true to check left and right values only.
    * @param {Boolean} tbOnly - set to true to check top and bottom values only.
+   * @default if no parent object passed, detects collisions with `window`.
    * @returns {Boolean} - true if collision free, false if a collision in any direction.
-   * TODO - add/finish the method for using a parent as a bounding container.
    */
   function ImNotTouchingYou(element, parent, lrOnly, tbOnly){
-    // the element is the jQuery element be checked for clearance
-    var eleDims = GetDimensions(element);
+    var eleDims = GetDimensions(element),
+        top, bottom, left, right;
 
-    //********something to work on in the future*******
-    // if(parent){
-    //   var parDims = GetDimensions(parent),
-    //       bottom = (eleDims.offset.top + eleDims.height <= eleDims.windowDims.height + eleDims.windowDims.offset.top),
-    //       top    = (eleDims.offset.top >= eleDims.windowDims.offset.top),
-    //       left   = (eleDims.offset.left >= eleDims.windowDims.offset.left),
-    //       right  = (eleDims.offset.left + eleDims.width <= eleDims.windowDims.width),
-    //       allDirs = [bottom, top, left, right];
-    //
-    //   return allDirs.indexOf(false) === -1;
-    // }else{
-      var bottom = (eleDims.offset.top + eleDims.height <= eleDims.windowDims.height + eleDims.windowDims.offset.top),
-          top    = (eleDims.offset.top >= eleDims.windowDims.offset.top),
-          left   = (eleDims.offset.left >= eleDims.windowDims.offset.left),
-          right  = (eleDims.offset.left + eleDims.width <= eleDims.windowDims.width),
-          allDirs = [bottom, top, left, right];
-      if(lrOnly){ return left === right === true; }
-      if(tbOnly){ return top === bottom === true; }
-      return allDirs.indexOf(false) === -1;
+    if(parent){
+      var parDims = GetDimensions(parent);
 
-    // }
+      bottom = (eleDims.offset.top + eleDims.height <= parDims.height + parDims.offset.top);
+      top    = (eleDims.offset.top >= parDims.offset.top);
+      left   = (eleDims.offset.left >= parDims.offset.left);
+      right  = (eleDims.offset.left + eleDims.width <= parDims.width);
+    }else{
+      bottom = (eleDims.offset.top + eleDims.height <= eleDims.windowDims.height + eleDims.windowDims.offset.top);
+      top    = (eleDims.offset.top >= eleDims.windowDims.offset.top);
+      left   = (eleDims.offset.left >= eleDims.windowDims.offset.left);
+      right  = (eleDims.offset.left + eleDims.width <= eleDims.windowDims.width);
+    }
+    var allDirs = [bottom, top, left, right];
+
+    if(lrOnly){ return left === right === true; }
+    if(tbOnly){ return top === bottom === true; }
+
+    return allDirs.indexOf(false) === -1;
   }
 
   /**
@@ -77,7 +75,6 @@
    * TODO alter/rewrite to work with `em` values as well/instead of pixels
    */
   function GetOffsets(element, anchor, position, vOffset, hOffset, isOverflow){
-    // console.log(position);
     var $eleDims = GetDimensions(element),
         $anchorDims = anchor ? GetDimensions(anchor) : null;
     switch(position){

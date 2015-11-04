@@ -6,22 +6,19 @@
 /// @group top-bar
 ////
 
-/// Padding for a top bar.
+/// Padding for the top bar.
 /// @type Number
 $topbar-padding: 0.5rem;
 
-/// Bottom margin for a top bar.
-/// @type Number
-$topbar-margin: 1rem;
-
-/// Background color for a top bar. This color also cascades to menus within the top bar.
+/// Background color for the top bar. This color also cascades to menus within the top bar.
 /// @type Color
 $topbar-background: #eee;
 
-/// Background color for a top bar when using the `.dark` class.
-$topbar-background-dark: #333;
+/// Color for links inside a top bar menu.
+/// @type Color
+$topbar-link-color: #fff;
 
-/// Width of `<input>` elements inside a top bar.
+/// Width of `<input>` elements inside the top bar.
 /// @type Number
 $topbar-input-width: 200px;
 
@@ -29,7 +26,6 @@ $topbar-input-width: 200px;
 @mixin top-bar-container {
   @include clearfix;
   padding: $topbar-padding;
-  margin-bottom: $topbar-margin;
 
   &, ul {
     background-color: $topbar-background;
@@ -37,7 +33,7 @@ $topbar-input-width: 200px;
 
   input {
     width: $topbar-input-width;
-    margin-right: 1rem;
+    margin-#{$global-right}: 1rem;
   }
 }
 
@@ -45,33 +41,6 @@ $topbar-input-width: 200px;
   // Top bar container
   .top-bar {
     @include top-bar-container;
-  }
-
-  // Coloring classes
-  .top-bar.primary {
-    color: foreground($primary-color);
-
-    &,
-    ul {
-      background-color: $primary-color;
-    }
-
-    a {
-      color: foreground($primary-color);
-    }
-  }
-
-  .top-bar.dark {
-    color: foreground($primary-color);
-    
-    &,
-    ul {
-      background-color: $topbar-background-dark;
-    }
-
-    a {
-      color: #fff;
-    }
   }
 
   // Sub-sections

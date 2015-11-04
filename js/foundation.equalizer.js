@@ -8,20 +8,22 @@
    * @param {Object} element - jQuery object to add the trigger to.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  function Equalizer(element) {
+  function Equalizer(element, options) {
     this.$element = element;
-    this.options  = $.extend({}, Equalizer.defaults, this.$element.data());
+    this.options  = $.extend({}, Equalizer.defaults, this.$element.data(), options);
     this.$window  = $(window);
     this.name     = 'equalizer';
     this.attr     = 'data-equalizer';
 
     this._init();
     this._events();
-    /**
-     * Fires when the plugin has been successfuly initialized.
-     * @event Equalizer#init
-     */
-    this.$element.trigger('init.zf.equalizer');
+
+    Foundation.registerPlugin(this);
+    // /**
+    //  * Fires when the plugin has been successfuly initialized.
+    //  * @event Equalizer#init
+    //  */
+    // this.$element.trigger('init.zf.equalizer');
   }
 
   /**

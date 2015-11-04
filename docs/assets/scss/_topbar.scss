@@ -3,7 +3,7 @@
   font-size: rem-calc(13);
   font-weight: bold;
 
-  .menu-bar a {
+  .menu a {
     height: 45px;
     line-height: 45px;
     color: white;
@@ -16,21 +16,25 @@
     }
   }
 
+  .is-active a {
+    background: #222;
+  }
+
   // ZURB logo
-  .menu-bar img {
+  .menu img {
     position: relative;
     top: -2px;
   }
 
-  .menu-bar:first-child {
+  .menu:first-child {
     border-right: 1px solid #4e4e4e;
   }
 
-  .menu-bar:last-child {
+  .menu:last-child {
     border-left: 1px solid #4e4e4e;
   }
 
-  .menu-bar {
+  .menu {
     li:not(:last-child) {
       border-right: 1px solid #4e4e4e;
     }

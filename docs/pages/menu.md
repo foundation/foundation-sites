@@ -1,7 +1,7 @@
 ---
-title: Menu Bar
-description: Our flexible menu bar component makes it easy to build many common navigation patterns, all with the same markup.
-sass: scss/components/_menu-bar.scss
+title: Menu
+description: Our flexible menu component makes it easy to build many common navigation patterns, all with the same markup.
+sass: scss/components/_menu.scss
 tags:
   - navigation
   - side nav
@@ -10,16 +10,16 @@ tags:
   - top bar
 ---
 
-The menu bar is a flexible, all-purpose component for navigation. It replaces Foundation 5's inline list, side nav, sub nav, and icon bar, unifying them into one component.
+The menu is a flexible, all-purpose component for navigation. It replaces Foundation 5's inline list, side nav, sub nav, and icon bar, unifying them into one component.
 
 ---
 
-## Basic Menu Bar
+## Basic Menu
 
-All versions of the menu bar are a `<ul>` filled with `<li>` elements containing links. By default, a menu bar is horizontally oriented.
+All versions of the menu are a `<ul>` filled with `<li>` elements containing links. By default, a Menu is horizontally oriented.
 
 ```html_example
-<ul class="menu-bar">
+<ul class="menu">
   <li><a href="#">One</a></li>
   <li><a href="#">Two</a></li>
   <li><a href="#">Three</a></li>
@@ -31,10 +31,14 @@ All versions of the menu bar are a `<ul>` filled with `<li>` elements containing
 
 ## Item Alignment
 
-By default, each item in the menu bar aligns to the left. They can also be aligned to the right with the `.align-right` class.
+By default, each item in the menu aligns to the left. They can also be aligned to the right with the `.align-right` class.
+
+<div class="warning callout">
+  <p>In a <a href="rtl.html">right-to-left</a> environment, items align to the right by default, and the class <code>.align-left</code> can be used to reverse direction.</p>
+</div>
 
 ```html_example
-<ul class="menu-bar align-right">
+<ul class="menu align-right">
   <li><a href="#">One</a></li>
   <li><a href="#">Two</a></li>
   <li><a href="#">Three</a></li>
@@ -47,19 +51,19 @@ By default, each item in the menu bar aligns to the left. They can also be align
 Items can also be set to expand out and take up an even amount of space, with the `.expanded` class. Thanks to the magic of CSS, the items will automatically size themselves equally depending on how many are inside the menu.
 
 ```html_example
-<ul class="menu-bar expanded">
+<ul class="menu expanded">
   <li><a href="#">One</a></li>
   <li><a href="#">Two</a></li>
 </ul>
 ```
 
-<ul class="menu-bar expanded">
+<ul class="menu expanded">
   <li><a href="#">One</a></li>
   <li><a href="#">Two</a></li>
   <li><a href="#">Three</a></li>
 </ul>
 
-<ul class="menu-bar expanded">
+<ul class="menu expanded">
   <li><a href="#">One</a></li>
   <li><a href="#">Two</a></li>
   <li><a href="#">Three</a></li>
@@ -68,12 +72,12 @@ Items can also be set to expand out and take up an even amount of space, with th
 
 ---
 
-## Vertical Menu Bar
+## Vertical Menu
 
-Add the `.vertical` class to a menu bar to switch its orientation.
+Add the `.vertical` class to a Menu to switch its orientation.
 
 ```html_example
-<ul class="menu-bar vertical">
+<ul class="menu vertical">
   <li><a href="#">One</a></li>
   <li><a href="#">Two</a></li>
   <li><a href="#">Three</a></li>
@@ -85,10 +89,10 @@ Add the `.vertical` class to a menu bar to switch its orientation.
 
 ## Simple Style
 
-Add the `.simple` class to a menu bar to remove the padding and color change. This style imitates the inline list from Foundation 5.
+Add the `.simple` class to a Menu to remove the padding and color change. This style imitates the inline list from Foundation 5.
 
 ```html_example
-<ul class="menu-bar simple">
+<ul class="menu simple">
   <li><a href="#">One</a></li>
   <li><a href="#">Two</a></li>
   <li><a href="#">Three</a></li>
@@ -100,13 +104,13 @@ Add the `.simple` class to a menu bar to remove the padding and color change. Th
 
 ## Nested Style
 
-Add a new menu bar inside the `<li>` of a menu bar and add the class `.nested` to create a nested menu bar. The nested menu bar has extra padding on the inside.
+Add a new menu inside the `<li>` of a Menu and add the class `.nested` to create a nested menu. The nested Menu has extra padding on the inside.
 
 ```html_example
-<ul class="vertical menu-bar">
+<ul class="vertical menu">
   <li>
     <a href="#">One</a>
-    <ul class="nested vertical menu-bar">
+    <ul class="nested vertical menu">
       <li><a href="#">One</a></li>
       <li><a href="#">Two</a></li>
       <li><a href="#">Three</a></li>
@@ -123,10 +127,10 @@ Add a new menu bar inside the `<li>` of a menu bar and add the class `.nested` t
 
 ## Icons
 
-Menu bar items can have icons. Wrap the text of the item in a `<span>`, and then add an `<img>` element before the `<span>`. If you're using the Foundation icon font, the `<img>` will be an `<i>` instead.
+Menu items can have icons. Wrap the text of the item in a `<span>`, and then add an `<img>` element before the `<span>`. If you're using the Foundation icon font, the `<img>` will be an `<i>` instead.
 
 ```html_example
-<ul class="menu-bar">
+<ul class="menu">
   <li><a href="#"><i class="fi-list"></i> <span>One</span></a></li>
   <li><a href="#"><i class="fi-list"></i> <span>Two</span></a></li>
   <li><a href="#"><i class="fi-list"></i> <span>Three</span></a></li>
@@ -136,10 +140,10 @@ Menu bar items can have icons. Wrap the text of the item in a `<span>`, and then
 
 ---
 
-Add the class `.icon-top` to the menu bar to orient icons above the text.
+Add the class `.icon-top` to the Menu to orient icons above the text.
 
 ```html_example
-<ul class="menu-bar icon-top">
+<ul class="menu icon-top">
   <li><a href="#"><i class="fi-list"></i> <span>One</span></a></li>
   <li><a href="#"><i class="fi-list"></i> <span>Two</span></a></li>
   <li><a href="#"><i class="fi-list"></i> <span>Three</span></a></li>

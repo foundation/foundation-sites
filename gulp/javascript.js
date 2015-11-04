@@ -8,7 +8,8 @@ var FOUNDATION = [
 ];
 
 var DEPS = [
-  'node_modules/jquery/dist/jquery.js'
+  'node_modules/jquery/dist/jquery.js',
+  'node_modules/motion-ui/dist/motion-ui.js'
 ];
 
 var DOCS = [

@@ -8,7 +8,7 @@
 
 /// Global width of your site. Used by the grid to determine row width.
 /// @type Number
-$global-width: rem-calc(1000) !default;
+$global-width: rem-calc(1200) !default;
 
 /// Font size attribute applied to `<html>` and `<body>`. We use 100% by default so the value is inherited from the user's browser settings.
 /// @type Number
@@ -40,7 +40,7 @@ $alert-color: #ec5840 !default;
 
 /// Color used for light gray UI items.
 /// @type Color
-$light-gray: #f3f3f3 !default;
+$light-gray: #e6e6e6 !default;
 
 /// Color used for medium gray UI items.
 /// @type Color
@@ -98,25 +98,20 @@ $global-weight-normal: normal !default;
 /// @type Keyword | Number
 $global-weight-bold: bold !default;
 
-/// Global value used for elements that have a border radius.
+/// Global value used for all elements that have a border radius.
 /// @type Number
-$global-radius: 3px !default;
-
-/// Global value used for elements that have a rounded appearance.
-/// @type Number
-$global-rounded: 1000px !default;
+$global-radius: 0 !default;
 
 /// Namespace for the data attributes used to initialize Foundation plugins.
 /// @type String | Boolean
 $global-namespace: false !default;
 
-// Reverse text direction if needed
-$default-float: left;
-$opposite-direction: right;
-@if $text-direction == rtl {
-  $default-float: right;
-  $opposite-direction: left;
-}
+/// Sets the text direction of the CSS. Can be either `ltr` or `rtl`.
+$global-text-direction: ltr;
+
+// Internal variables used for text direction
+$global-left: if($global-text-direction == rtl, right, left);
+$global-right: if($global-text-direction == rtl, left, right);
 
 // Internal map used to iterate through colors, to generate CSS classes with less code
 $foundation-colors: (
@@ -126,16 +121,6 @@ $foundation-colors: (
   alert: $alert-color,
   warning: $warning-color,
 );
-
-// The go-away list
-$cursor-auto-value: auto !default;
-$cursor-crosshair-value: crosshair !default;
-$cursor-default-value: default !default;
-$cursor-disabled-value: not-allowed !default;
-$cursor-pointer-value: pointer !default;
-$cursor-help-value: help !default;
-$cursor-text-value: text !default;
-$info-color: #a0d3e8 !default;
 
 @mixin foundation-global-styles {
   html,
@@ -182,11 +167,13 @@ $info-color: #a0d3e8 !default;
   textarea {
     height: auto;
     min-height: 50px;
+    border-radius: $global-radius;
   }
 
   // Make select elements are 100% width by default
   select {
     width: 100%;
+    border-radius: $global-radius;
   }
 
   // Styles Google Maps and MapQuest embeds properly
@@ -208,6 +195,7 @@ $info-color: #a0d3e8 !default;
     background: transparent;
     padding: 0;
     border: 0;
+    border-radius: $global-radius;
     line-height: 1;
   }
 }

@@ -8,7 +8,7 @@ tags:
 
 ## Installing
 
-There are a number of ways to install Foundation for Sites. If you're just getting started, we recommend downloading Yeti Launch, which allows you to quickly set up starter projects with any Foundation framework. You can also install our Node CLI to do the same thing.
+There are a number of ways to install Foundation for Sites. If you're just getting started, we recommend downloading the Foundation CLI, which allows you to quickly set up starter projects with any Foundation framework.
 
 It's also possible to manually install Foundation for Sites into your project through npm, Bower, Meteor, or Composer.
 
@@ -78,8 +78,16 @@ Get to know the pieces of Foundation.
         <li><a href="button.html">Button</a></li>
         <li><a href="button-group.html">Button Group</a></li>
         <li><a href="close-button.html">Close Button</a></li>
-        <li><a href="range-slider.html">Range Slider</a></li>
+        <li><a href="slider.html">Slider</a></li>
         <li><a href="switch.html">Switch</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h4>Libraries</h4>
+      <ul>
+        <li><a href="motion-ui.html">Motion UI</a></li>
+        <li><a href="panini.html">Panini</a></li>
       </ul>
     </section>
   </div>
@@ -87,15 +95,16 @@ Get to know the pieces of Foundation.
     <section>
       <h4>Navigation</h4>
       <ul>
-        <li><a href="accordion-menu.html">Accordion Menu</a></li>
-        <li><a href="breadcrumbs.html">Breadcrumbs</a></li>
-        <li><a href="drilldown-menu.html">Drilldown Menu</a></li>
+        <li><a href="navigation.html">Overview</a></li>
+        <li><a href="menu.html">Menu</a></li>
         <li><a href="dropdown-menu.html">Dropdown Menu</a></li>
-        <li><a href="magellan.html">Magellan</a></li>
-        <li><a href="menu-bar.html">Menu Bar</a></li>
-        <li><a href="pagination.html">Pagination</a></li>
-        <li><a href="responsive-menu.html">Responsive Menu</a></li>
+        <li><a href="drilldown-menu.html">Drilldown Menu</a></li>
+        <li><a href="accordion-menu.html">Accordion Menu</a></li>
         <li><a href="top-bar.html">Top Bar</a></li>
+        <li><a href="responsive-navigation.html">Responsive Navigation</a></li>
+        <li><a href="magellan.html">Magellan</a></li>
+        <li><a href="pagination.html">Pagination</a></li>
+        <li><a href="breadcrumbs.html">Breadcrumbs</a></li>
       </ul>
     </section>
 

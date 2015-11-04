@@ -71,14 +71,7 @@ $stat-font-size: 2.5rem !default;
 
   // Use to remove the bullets from an unordered list
   .no-bullet {
-    margin-left: 0;
+    margin-#{$global-left}: 0;
     list-style: none;
-  }
-
-  // Font smoothing
-  // Antialiased font smoothing works best for light text on a dark background. Apply to single elements instead of globally to body. Note this only applies to Webkit-based desktop browsers and Firefox 25+ for Mac.
-  .antialiased {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
 }

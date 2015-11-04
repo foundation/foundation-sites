@@ -2,6 +2,16 @@
 
 <h1 class="docs-page-title">{{ title }}</h1>
 
+{{#if js}}
+  <span data-tooltip title="Requires a JavaScript library." class="docs-js label">JavaScript</span>
+{{/if}}
+{{#if mui}}
+  <span data-tooltip title="Supports Motion UI transitions." class="docs-mui label">Motion UI</span>
+{{/if}}
+{{#if library}}
+  <span data-tooltip title="This is an external library." class="docs-lib label"><a href="{{ library.github }}" target="_blank">Library</a></span>
+{{/if}}
+
 <p class="lead docs-page-lead">{{ description }}</p>
 
 <hr>
@@ -9,26 +19,8 @@
 {{!-- Start container for docs and table of contents --}}
 <div class="row">
 
-{{!-- Start container for table of contents --}}
-<div class="large-3 large-push-9 columns" data-sticky-container>
-  <nav class="columns" data-sticky data-stick-at='#docs' data-sticky-on='large'>
-    <div class="docs-toc hide" id="docsTOC" data-toggler=".hide">
-      <ul class="vertical menu-bar docs-sub-menu" data-docs-toc>
-        <li class="docs-menu-title">On this page:</li>
-      </ul>
-      <ul class="vertical menu-bar docs-sub-menu">
-        <li class="docs-menu-title">Contribute:</li>
-        <li><a href="{{ editLink fileName }}">Edit this Page</a></li>
-        <li><a href="{{ issueLink title }}">Report a Bug</a></li>
-        {{ sourceLink _adapterData }}
-      </ul>
-    </div>
-  </nav>
-</div>
-{{!-- End container for table of contents --}}
-
 {{!-- Start container for docs --}}
-<div class="large-9 large-pull-3 columns" id='docs'>
+<div class="large-9 columns" id="docs">
 
 {{ docs }}
 
@@ -68,7 +60,7 @@
 
     <p>We use these mixins to build the final CSS output of this component. You can use the mixins yourself to build your own class structure out of our components.</p>
 
-    {{#each sass.mixin}}
+    {{#each sass.mixin}}{{#filter this}}
     <section {{#if this.deprecated }}class="docs-deprecated"{{/if}}>
       {{#heading 4}}{{this.context.name}}{{/heading}}
 
@@ -85,6 +77,10 @@
       </div>
 
       {{md this.description}}
+
+      {{#if this.aliased}}
+        <p><strong>Aliases:</strong> {{#each this.aliased}}<code>{{this}}()</code>{{/each}}</p>
+      {{/if}}
 
       {{externalLink this.link}}
 
@@ -111,7 +107,7 @@
       <hr>
     {{/if}}
 
-    {{/each}}
+    {{/filter}}{{/each}}
   </section>
   {{/if}}
 
@@ -121,7 +117,7 @@
   <section>
     {{#heading 3 'sass-functions'}}Functions{{/heading}}
 
-    {{#each sass.function}}
+    {{#each sass.function}}{{#filter this}}
     <section {{#if this.deprecated }}class="docs-deprecated"{{/if}}>
       {{#heading 4}}{{this.context.name}}{{/heading}}
 
@@ -159,7 +155,7 @@
     </section>
 
     {{#unless @last}}<hr>{{/unless}}
-    {{/each}}
+    {{/filter}}{{/each}}
   </section>
   {{/if}}
 
@@ -171,6 +167,35 @@
 
 <section>
   {{#heading 2}}JavaScript Reference{{/heading}}
+
+  {{#if js.module}}{{#with js.module.[0]}}
+  <section>
+    {{#heading 3 'js-module'}}Initializing{{/heading}}
+
+    <p>The file <code>{{meta.filename}}</code> must be included in your JavaScript to use this plugin, along with <code>foundation.core.js</code>.{{#if requires}} <strong>This plugin also requires these utility libraries:</strong>{{/if}}</p>
+
+    {{#if requires}}{{#each requires}}
+    <ul>
+      <li><code>{{jsModuleName this}}</code></li>
+    </ul>
+    {{/each}}{{/if}}
+
+    <p>To import as an AMD module (for use with <a href="http://requirejs.org/">RequireJS</a>):</p>
+
+<div class="docs-code"><pre><code>define(['{{memberof}}.{{name}}'], function({{name}}) {
+});</code></pre></div>
+
+    <p>To import as a CommonJS module (for use with <a href="http://browserify.org/">Browserify</a> or <a href="https://webpack.github.io/">Webpack</a>):</p>
+
+    <div class="docs-code"><pre><code>var {{name}} = require('{{memberof}}.{{name}}');</code></pre></div>
+
+    <p>Note that when importing plugins with module loaders, the plugins are not initialized by default. They must be manually registered with Foundation, like this:</p>
+
+    <div class="docs-code"><pre><code>var {{name}} = require('{{memberof}}.{{name}}');
+
+Foundation.plugin({{name}});</code></pre></div>
+  </section>
+  {{/with}}{{/if}}
 
   {{#each js.class}}
   <section>
@@ -258,7 +283,7 @@
 
     {{#each js.function}}
     <section>
-      {{#heading 4 'js-class'}}{{../../js.class.0.name}}.{{this.name}}{{/heading}}
+      {{#heading 4 this.name}}{{../../js.class.0.name}}.{{this.name}}{{/heading}}
 
       {{md this.description}}
 
@@ -301,14 +326,38 @@
 
   <p><a href="http://zurb.com/building-blocks">Building Blocks</a> is a ZURB-curated resource with useful code snippets that use Foundation components. Here are a few for this component:</p>
 
-  <div class="row up-1 medium-up-2 large-up-3" data-building-blocks>
-
+  <div class="warning callout">
+    <p>These are placeholder items. If you have ideas for building blocks for this component, <a href="https://github.com/zurb/foundation-sites-6/issues/118">we're taking ideas on GitHub</a>.</p>
   </div>
+
+  <div data-building-blocks></div>
 </section>
 {{/if}}
 
 </div>
 {{!-- End container for docs --}}
+
+{{!-- Start container for table of contents --}}
+<div class="large-3 columns" data-sticky-container>
+  <nav class="columns" data-sticky data-stick-at='#docs' data-sticky-on='large'>
+    <div class="docs-toc hide" id="docsTOC" data-toggler=".hide">
+      <ul class="vertical menu docs-sub-menu" data-docs-toc>
+        <li class="docs-menu-title">On this page:</li>
+      </ul>
+      <ul class="vertical menu docs-sub-menu">
+        <li class="docs-menu-title">Contribute:</li>
+        <li><a href="{{ editLink fileName }}">Edit this Page</a></li>
+        {{#if library}}
+          <li><a href="{{ library.github }}/issues">Report a Bug</a></li>
+        {{else}}
+          <li><a href="{{ issueLink title }}">Report a Bug</a></li>
+        {{/if}}
+        {{ sourceLink _adapterData }}
+      </ul>
+    </div>
+  </nav>
+</div>
+{{!-- End container for table of contents --}}
 
 </div>
 {{!-- End container for docs and table of contents --}}

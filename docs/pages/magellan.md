@@ -7,7 +7,7 @@ tags:
 ---
 
 <nav data-magellan>
-  <ul class="horizontal menu-bar">
+  <ul class="horizontal menu">
     <li><a href="#setup">Setup</a></li>
     <li><a href="#sticky-navigation">Sticky Navigation</a></li>
     <li><a href="#sass-reference">Sass Reference</a></li>
@@ -17,10 +17,10 @@ tags:
 
 ## Setup
 
-You can use Magellan with any navigation element, like our [menu bar](menu-bar.html) or your own custom component. Just add the attribute `data-magellan` to the container, and links to specific sections of your page. Each section needs a unique ID.
+You can use Magellan with any navigation element, like our [Menu](menu.html) or your own custom component. Just add the attribute `data-magellan` to the container, and links to specific sections of your page. Each section needs a unique ID.
 
 ```html
-<ul class="horizontal menu-bar" data-magellan>
+<ul class="horizontal menu" data-magellan>
   <li><a href="#first">First Arrival</a></li>
   <li><a href="#second">Second Arrival</a></li>
   <li><a href="#third">Third Arrival</a></li>
@@ -38,7 +38,7 @@ You can use Magellan with our Sticky plugin to create a persistent navigation he
 
 ```html
 <div data-sticky="header">
-  <ul class="horizontal menu-bar" data-magellan>
+  <ul class="horizontal menu" data-magellan>
     <li><a href="#first">First Arrival</a></li>
     <li><a href="#second">Second Arrival</a></li>
     <li><a href="#third">Third Arrival</a></li>

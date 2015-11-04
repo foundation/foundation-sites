@@ -19,19 +19,21 @@
 //  14. The Grid
 //  15. Label
 //  16. Media Object
-//  17. Menu Bar
+//  17. Menu
 //  18. Off-canvas
 //  19. Orbit
 //  20. Pagination
 //  21. Progress Bar
 //  22. Reveal
-//  23. Switch
-//  24. Table
-//  25. Tabs
-//  26. Thumbnail
-//  27. Tooltip
-//  28. Base Typography
-//  29. Typography Helpers
+//  23. Slider
+//  24. Switch
+//  25. Table
+//  26. Tabs
+//  27. Thumbnail
+//  28. Tooltip
+//  29. Top Bar
+//  30. Base Typography
+//  31. Typography Helpers
 
 // Abide
 // -----
@@ -73,8 +75,8 @@
 // $breadcrumbs-item-font-size: rem-calc(11);
 // $breadcrumbs-item-color: $primary-color;
 // $breadcrumbs-item-color-current: $black;
+// $breadcrumbs-item-color-disabled: $medium-gray;
 // $breadcrumbs-item-margin: 0.75rem;
-// $breadcrumbs-item-opacity-disabled: 0.25;
 // $breadcrumbs-item-uppercase: true;
 // $breadcrumbs-item-slash: true;
 
@@ -83,7 +85,7 @@
 
 // $breakpoints: (
 //   small: 0,
-//   medium: 640px,
+//   medium: 512px,
 //   large: 1024px,
 //   xlarge: 1200px,
 //   xxlarge: 1440px,
@@ -94,13 +96,12 @@
 // ------
 
 // $button-padding: 0.85em 1em;
-// $button-margin: 0 $global-padding $global-padding 0;
+// $button-margin: 0 $global-margin $global-margin 0;
 // $button-fill: solid;
 // $button-background: $primary-color;
 // $button-background-hover: scale-color($button-background, $lightness: -15%);
 // $button-font-color: #fff;
 // $button-font-color-alt: #000;
-// $button-radius: 0;
 // $button-sizes: (
 //   tiny: 0.6rem,
 //   small: 0.75rem,
@@ -132,7 +133,7 @@
 // Close Button
 // ------------
 
-// $closebutton-position: right top;
+// $closebutton-position: $global-right top;
 // $closebutton-offset-horizontal: 1rem;
 // $closebutton-offset-vertical: 0.5rem;
 // $closebutton-size: 2em;
@@ -181,7 +182,6 @@
 // $form-label-font-weight: $global-weight-normal;
 // $form-label-line-height: 1.8;
 // $select-background: #fafafa;
-// $select-radius: $input-radius;
 // $select-triangle-color: #333;
 // $input-color: $dark-gray;
 // $input-font-family: inherit;
@@ -193,15 +193,14 @@
 // $input-border-focus: 1px solid $dark-gray;
 // $input-shadow: inset 0 1px 2px rgba($black, 0.1);
 // $input-shadow-focus: 0 0 5px $medium-gray;
-// $input-radius: 0;
-// $input-cursor-disabled: $cursor-default-value;
+// $input-cursor-disabled: default;
 // $input-transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
 // $input-number-spinners: true;
 
 // Global
 // ------
 
-// $global-width: rem-calc(1000);
+// $global-width: rem-calc(1200);
 // $global-font-size: 100%;
 // $global-lineheight: 1.5;
 // $primary-color: #2199e8;
@@ -225,8 +224,8 @@
 // $global-weight-normal: normal;
 // $global-weight-bold: bold;
 // $global-radius: 3px;
-// $global-rounded: 1000px;
 // $global-namespace: false;
+// $global-text-direction: ltr;
 // $rem-base: 16px;
 
 // The Grid
@@ -251,18 +250,18 @@
 // $mediaobject-section-padding: $global-padding;
 // $mediaobject-image-width-stacked: 100%;
 
-// Menu Bar
-// --------
+// Menu
+// ----
 
-// $menubar-margin: 0;
-// $menubar-item-padding: 0.7rem 1rem;
-// $menubar-icon-spacing: 0.25rem;
-// $menubar-expand-max: 6;
+// $menu-margin: 0;
+// $menu-margin-nested: 1rem;
+// $menu-item-padding: 0.7rem 1rem;
+// $menu-icon-spacing: 0.25rem;
+// $menu-expand-max: 6;
 
 // Off-canvas
 // ----------
 
-// $offcanvas-fixed: false;
 // $offcanvas-size: 250px;
 // $offcanvas-background: $white;
 // $offcanvas-zindex: -1;
@@ -285,7 +284,7 @@
 // $orbit-caption-padding: 1rem;
 // $orbit-control-background-hover: rgba($black, 0.5);
 // $orbit-control-padding: 1rem;
-// $orbit-control-z-index: 10;
+// $orbit-control-zindex: 10;
 
 // Pagination
 // ----------
@@ -323,34 +322,38 @@
 // $reveal-zindex: 1005;
 // $reveal-overlay-background: rgba($black, 0.45);
 
+// Slider
+// ------
+
+// $slider-height: 0.5rem;
+// $slider-width-vertical: $slider-height;
+// $slider-background: $light-gray;
+// $slider-fill-background: $medium-gray;
+// $slider-handle-height: 1.4rem;
+// $slider-handle-width: 1.4rem;
+// $slider-handle-background: $primary-color;
+// $slider-opacity-disabled: 0.25;
+// $slider-transition: all 0.2s ease-in-out;
+
 // Switch
 // ------
 
-// $switch-paddle-bg: $white;
-// $switch-bg: $medium-gray;
-// $switch-active-color: $primary-color;
+// $switch-background: $medium-gray;
+// $switch-background-active: $primary-color;
 // $switch-height: 2rem;
 // $switch-height-tiny: 1.5rem;
 // $switch-height-small: 1.75rem;
 // $switch-height-large: 2.5rem;
 // $switch-radius: 0;
-// $switch-handle-radius: 0;
-// $switch-bottom-margin: $global-margin;
-// $switch-transition: all 0.25s ease-out;
+// $switch-margin: $global-margin;
+// $switch-paddle-background: $white;
+// $switch-paddle-offset: 0.25rem;
+// $switch-paddle-radius: 0;
+// $switch-paddle-transition: all 0.25s ease-out;
 
 // Table
 // -----
 
-// $slider-height: 0.5rem;
-// $vertical-slider-width: $slider-height;
-// $slider-handle-height: 1.4rem;
-// $slider-handle-width: 1.4rem;
-// $slider-handle-color: $primary-color;
-// $slider-disabled-fade: 0.25s;
-// $slider-fill-color: $medium-gray;
-// $slider-background-color: $light-gray;
-// $slider-transition-time: 0.2s;
-// $slider-transition: ease-in-out;
 // $table-background: $white;
 // $table-color-scale: 5%;
 // $table-border: 1px solid smart-scale($table-background, $table-color-scale);
@@ -385,6 +388,7 @@
 // ---------
 
 // $thumbnail-border: solid 4px $white;
+// $thumbnail-margin-bottom: $global-margin;
 // $thumbnail-shadow: 0 0 0 1px rgba($black, 0.2);
 // $thumbnail-shadow-hover: 0 0 6px 1px rgba($primary-color, 0.5);
 // $thumbnail-transition: box-shadow 200ms ease-out;
@@ -398,6 +402,15 @@
 // $tooltip-pip-width: 0.75rem;
 // $tooltip-pip-height: $tooltip-pip-width * 0.866;
 // $tooltip-pip-offset: 1.25rem;
+
+// Top Bar
+// -------
+
+// $topbar-padding: 0.5rem;
+// $topbar-margin: 1rem;
+// $topbar-background: #eee;
+// $topbar-link-color: #fff;
+// $topbar-input-width: 200px;
 
 // Base Typography
 // ---------------
@@ -424,7 +437,7 @@
 //     'h6': 16,
 //   ),
 // );
-// $header-color: $black;
+// $header-color: inherit;
 // $header-lineheight: 1.4;
 // $header-margin-bottom: 0.5rem;
 // $header-text-rendering: optimizeLegibility;

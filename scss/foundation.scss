@@ -4,8 +4,6 @@
 
 $foundation-version: '6.0.0-alpha.1';
 
-@charset 'UTF-8';
-
 // Third-party libraries
 @import 'vendor/normalize';
 
@@ -24,7 +22,7 @@ $foundation-version: '6.0.0-alpha.1';
   'components/float',
   'components/button',
   'components/button-group',
-
+  'components/accordion-menu',
   'components/accordion',
   'components/badge',
   'components/breadcrumbs',
@@ -36,18 +34,18 @@ $foundation-version: '6.0.0-alpha.1';
   'components/flex-video',
   'components/label',
   'components/media-object',
-  'components/menu-bar',
+  'components/menu',
   'components/off-canvas',
   'components/orbit',
   'components/pagination',
   'components/progress-bar',
-  'components/range-slider',
   'components/reveal',
-  'components/switch',
+  'components/slider',
   'components/sticky',
+  'components/switch',
   'components/table',
   'components/tabs',
-  'components/tab-bar',
+  'components/title-bar',
   'components/top-bar',
   'components/thumbnail',
   'components/tooltip';
@@ -77,17 +75,19 @@ $foundation-version: '6.0.0-alpha.1';
   @include foundation-flex-video;
   @include foundation-label;
   @include foundation-media-object;
-  @include foundation-menu-bar;
+  @include foundation-menu;
   @include foundation-off-canvas;
   @include foundation-orbit;
   @include foundation-pagination;
   @include foundation-progress-bar;
   @include foundation-slider;
+  @include foundation-sticky;
   @include foundation-reveal;
   @include foundation-switch;
   @include foundation-table;
   @include foundation-tabs;
   @include foundation-thumbnail;
+  @include foundation-title-bar;
   @include foundation-tooltip;
   @include foundation-top-bar;
 }

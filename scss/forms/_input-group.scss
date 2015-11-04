@@ -46,11 +46,11 @@ $input-prefix-padding: 1rem !default;
 
     @if hasvalue($input-prefix-border) {
       &:first-child {
-        border-right: 0;
+        border-#{$global-right}: 0;
       }
 
       &:last-child {
-        border-left: 0;
+        border-#{$global-left}: 0;
       }
     }
   }

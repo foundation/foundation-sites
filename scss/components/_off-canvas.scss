@@ -6,10 +6,6 @@
 /// @group off-canvas
 ////
 
-/// If `true`, the off-canvas menu is `position: fixed`. Otherwise, it's `position: absolute`.
-/// @type Boolean
-$offcanvas-fixed: false;
-
 /// Width of an off-canvas menu.
 /// @type Number
 $offcanvas-size: 250px;
@@ -43,10 +39,14 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5);
 
 /// Adds baseline styles for off-canvas. This CSS is required to make the other pieces work.
 @mixin off-canvas-basics {
-  // Extra properties needed on <body> to make off-canvas work
+  // Extra properties needed on <html> and <body> to make off-canvas work
+  html,
+  body {
+    height: 100%;
+  }
+
   body {
     overflow-x: hidden;
-    height: 100%;
     transition: transform $offcanvas-transition-length $offcanvas-transition-timing;
     backface-visibility: hidden;
   }
@@ -67,21 +67,11 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5);
       display: block;
     }
   }
-
-  .is-open-left {
-    transform: translateX($offcanvas-size);
-  }
-  .is-open-right {
-    transform: translateX(-$offcanvas-size);
-  }
-  .is-open-top {
-    transform: translateY($offcanvas-size);
-  }
 }
 
 /// Adds basic styles for an off-canvas menu.
 @mixin off-canvas-base {
-  position: if($offcanvas-fixed, fixed, absolute);
+  position: absolute;
   background: $offcanvas-background;
   z-index: $offcanvas-zindex;
 }
@@ -101,31 +91,23 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5);
     top: 0;
     width: $size;
   }
-  @else if $position == top {
-    left: 0;
-    top: -$size;
-    height: $size;
-    width: 100%;
-  }
 
-  // Currently broken in libsass
-  // @at-root {
-  //   .is-open-#{$position} {
-  //     @if $position == left {
-  //       transform: translateX($size);
-  //     }
-  //     @else if $position == right {
-  //       transform: translateX(-$size);
-  //     }
-  //     @else if $position == top {
-  //       transform: translateY($size);
-  //     }
-  //   }
-  // }
+  // Generates an open state class that matches the width of the menu
+  @at-root {
+    .is-open-#{$position} {
+      @if $position == left {
+        transform: translateX($size);
+      }
+      @else if $position == right {
+        transform: translateX(-$size);
+      }
+    }
+  }
 }
 
 /// Adds styles for the main content wrapper that sits next to the off-canvas.
 @mixin main-content {
+  min-height: 100%;
   background: $body-background;
   transition: transform $offcanvas-transition-length $offcanvas-transition-timing;
   backface-visibility: hidden;
@@ -136,15 +118,14 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5);
 }
 
 /// Adds styles that reveal an off-canvas menu.
-@mixin off-canvas-reveal {
-  .off-canvas {
-    transform: none;
-    transition: none;
-  }
+/// @param {Keyword} $position [left] - Position of the off-canvas menu being revealed.
+@mixin off-canvas-reveal(
+  $position: left
+) {
+  #{$position}: 0;
 
-  .main-content {
-    padding-left: $offcanvas-size;
-    transform: none;
+  & ~ .#{$maincontent-class} {
+    margin-#{$position}: $offcanvas-size;
   }
 }
 
@@ -157,7 +138,6 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5);
 
     &.position-left   { @include off-canvas-position(left); }
     &.position-right  { @include off-canvas-position(right); }
-    &.position-top    { @include off-canvas-position(top); }
   }
 
   // Container for page content
@@ -167,9 +147,14 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5);
 
   // Reveal off-canvas menu on larger screens
   @each $name, $value in $breakpoint-classes {
-    .reveal-for-#{$name} {
+    @if $name != small {
       @include breakpoint($name) {
-        @include off-canvas-reveal;
+        .position-left.reveal-for-#{$name} {
+          @include off-canvas-reveal(left);
+        }
+        .position-right.reveal-for-#{$name} {
+          @include off-canvas-reveal(right);
+        }
       }
     }
   }

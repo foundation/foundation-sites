@@ -34,6 +34,10 @@ $callout-font-color: $body-font-color !default;
 /// @type Color
 $callout-font-color-alt: $body-background !default;
 
+/// Default border radius for callouts.
+/// @type Color
+$callout-radius: $global-radius !default;
+
 /// Amount to tint links used within colored panels. Set to `false` to disable this feature.
 /// @type Number | Boolean
 $callout-link-tint: 30%;
@@ -43,6 +47,7 @@ $callout-link-tint: 30%;
   margin: $callout-margin;
   padding: $callout-padding;
   border: $callout-border;
+  border-radius: $callout-radius;
   position: relative;
 
   // Respect the padding, fool.
@@ -74,6 +79,14 @@ $callout-link-tint: 30%;
   }
 }
 
+@mixin callout-size($padding) {
+  padding-top: $padding;
+  padding-right: $padding;
+  padding-bottom: $padding;
+  padding-left: $padding;
+}
+
+
 /// Adds styles for a callout.
 /// @param {Color} $color [$callout-background] - Color to use.
 @mixin callout($color: $callout-background) {
@@ -89,6 +102,14 @@ $callout-link-tint: 30%;
       &.#{$name} {
         @include callout-style($color);
       }
+    }
+
+    &.small {
+      @include callout-size(.5rem);
+    }
+
+    &.large {
+      @include callout-size(3rem);
     }
   }
 }

@@ -14,11 +14,11 @@ $accordion-background: $white;
 /// @type Boolean
 $accordion-plusminus: true;
 
-/// Default text color for items in a menu bar.
+/// Default text color for items in a Menu.
 /// @type Color
 $accordion-item-color: foreground($accordion-background, $primary-color);
 
-/// Default background color on hover for items in a menu bar.
+/// Default background color on hover for items in a Menu.
 /// @type Color
 $accordion-item-background-hover: $light-gray !default;
 
@@ -47,7 +47,8 @@ $accordion-content-padding: 1rem !default;
   list-style-type: none;
   background: $accordion-background;
   border: $accordion-content-border;
-  margin-left: 0;
+  border-radius: $global-radius;
+  margin-#{$global-left}: 0;
 }
 
 /// Adds styles for the title of an accordion item. Apply this to the link within an accordion item.
@@ -74,7 +75,7 @@ $accordion-content-padding: 1rem !default;
     &::before {
       content: '+';
       position: absolute;
-      right: 1rem;
+      #{$global-right}: 1rem;
       top: 50%;
       margin-top: -0.5rem;
     }

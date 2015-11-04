@@ -3,17 +3,16 @@ title: Reveal
 description: Modal dialogs, or pop-up windows, are handy for prototyping and production. Foundation includes Reveal, our jQuery modal plugin, to make this easy for you.
 sass: scss/components/_reveal.scss
 js: js/foundation.reveal.js
+mui: true
 tags:
   - modal
 ---
 
-
 <div class="alert callout">
   <h5>Known Issues</h5>
   <ul>
-    <li>Instead of each modal getting it’s own background, maybe generate one for the whole page if a modal is detected?</li>
-    <li>Needs accessibility compliant keyboard access bindings.</li>
-    <li>Sometimes click events are firing on the anchor in Firefox w/o clicking.</li>
+    <li><em>Future Feature.</em> Instead of each modal getting it’s own background, maybe generate one for the whole page if a modal is detected?</li>
+    <li>Focus isn't being trapped in Firefox.</li>
   </ul>
 </div>
 
@@ -144,7 +143,7 @@ To use animations from the Motion UI library, include the <code>data-animation-i
 ```html_example
 <p><a data-toggle="animatedModal1">Click me for a modal</a></p>
 
-<div class="reveal" id="animatedModal1" data-reveal data-close-on-click='true' data-animation-in='spinIn' data-animation-out='spinOut'>
+<div class="reveal" id="animatedModal1" data-reveal data-close-on-click='true' data-animation-in='spin-in' data-animation-out='spin-out'>
   <h1>Whoa, I'm dizzy!</h1>
   <p class='lead'>There are many options for animating modals, check out the Motion UI library to see them all</p>
 </div>

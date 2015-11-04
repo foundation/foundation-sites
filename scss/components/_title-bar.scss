@@ -1,0 +1,44 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group title-bar
+////
+
+@mixin foundation-title-bar {
+  .title-bar {
+    @include clearfix;
+    background: $black;
+    color: $white;
+    padding: 0.5rem;
+
+    .menu-icon {
+      margin-#{$global-left}: 0.25rem;
+      margin-#{$global-right}: 0.5rem;
+    }
+  }
+
+  .title-bar-left {
+    float: left;
+  }
+
+  .title-bar-right {
+    float: right;
+    text-align: right;
+  }
+
+  .title-bar-title {
+    font-weight: bold;
+    vertical-align: middle;
+    display: inline-block;
+  }
+
+  .menu-icon {
+    @include hamburger($color: white, $color-hover: $medium-gray);
+  }
+
+  .menu-icon.dark {
+    @include hamburger;
+  }
+}

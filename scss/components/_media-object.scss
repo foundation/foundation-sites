@@ -31,11 +31,11 @@ $mediaobject-image-width-stacked: 100% !default;
   vertical-align: top;
 
   &:first-child {
-    padding-right: $padding;
+    padding-#{$global-right}: $padding;
   }
 
   &:last-child:not(+ &:first-child) {
-    padding-left: $padding;
+    padding-#{$global-left}: $padding;
   }
 }
 

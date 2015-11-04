@@ -48,7 +48,7 @@ You can change that by modifying the `$breakpoint-classes` variable in your sett
 $breakpoint-classes: (small medium large);
 ```
 
-For example, to get `.xlarge` classes in your CSS, for use in the grid, menu bar, and more, just add it to the end of the list:
+For example, to get `.xlarge` classes in your CSS, for use in the grid, Menu, and more, just add it to the end of the list:
 
 ```scss
 $breakpoint-classes: (small medium large xlarge);
@@ -97,15 +97,6 @@ It's also possible to pass in custom values. You can enter a pixel, rem, or em v
 }
 ```
 
-The `breakpoint()` mixin accepts multiple parameters, allowing you to chain media queries. You can even mix preset breakpoints with custom ones.
-
-```scss
-.element {
-  // Create a custom range
-  @include breakpoint(medium, 1000px down) { }
-}
-```
-
 Lastly, there are three special media queries that are not width-based: `portrait`, `landscape`, and `retina`. Using these keywords with the `breakpoint()` mixin will output a media query for device orientation or pixel density, rather than screen width.
 
 ```scss
@@ -123,7 +114,7 @@ Lastly, there are three special media queries that are not width-based: `portrai
 
 ### Breakpoint Function
 
-The functionality of the `breakpoint()` mixin comes from an internal function, also called `breakpoint()`. If you want to create your own media queries, you can use the `breakpoint()` function to access the logic of the mixin directly.
+The functionality of the `breakpoint()` mixin comes from an internal function, also called `breakpoint()`. If you want to write your own media queries, you can use the `breakpoint()` function to access the logic of the mixin directly.
 
 ```scss
 @media screen and #{breakpoint(medium)} {

@@ -7,6 +7,10 @@ description: Foundation includes a handful of helpful float classes to add commo
 
 You can change the float behavior of an element by adding the `.float-left` or `.float-right` classes to an element. To clear floats, add the class `.clearfix` to the parent element.
 
+<div class="warning callout">
+  <p>Float classes don't flip direction in a <a href="rtl.html">right-to-left</a> environment&mdash;<code>left</code> always means left, and <code>right</code> always means right.</p>
+</div>
+
 ```html_example
 <div class="callout clearfix">
   <a class="button float-left">Left</a>

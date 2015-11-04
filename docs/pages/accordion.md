@@ -9,8 +9,7 @@ js: js/foundation.accordion.js
 <div class="alert callout">
   <h5>Known Issues</h5>
   <ul>
-    <li>If `Foundation.reflow()` is called on a click event, it animates multiple times.</li>
-    <li>Needs accessibility compliant keyboard access bindings.</li>
+    <li>None Currently. File an issue if you see something wrong.</li>
   </ul>
 </div>
 
@@ -41,23 +40,26 @@ Each accordion item has the class `.accordion-item`. Inside each item is a title
 
 Once you put it all together, here's what you get!
 
-<ul class="accordion" data-accordion role="tablist">
+<ul class="accordion" data-accordion>
   <li class="accordion-item is-active">
-    <a href="#panel1d" role="tab" class="accordion-title" id="panel1d-heading" aria-controls="panel1d">Accordion 1</a>
-    <div id="panel1d" class="accordion-content" role="tabpanel" data-tab-content aria-labelledby="panel1d-heading">
-      Panel 1. Lorem ipsum dolor
+    <a href="#" class="accordion-title">Accordion 1</a>
+    <div class="accordion-content" data-tab-content >
+      <p>Panel 1. Lorem ipsum dolor</p>
+      <a href="#">Nowhere to Go</a>
     </div>
   </li>
   <li class="accordion-item">
-    <a href="#panel2d"  role="tab" class="accordion-title" id="panel2d-heading" aria-controls="panel2d">Accordion 2</a>
-    <div id="panel2d" class="accordion-content" role="tabpanel" data-tab-content aria-labelledby="panel2d-heading">
-      Panel 2. Lorem ipsum dolor
+    <a href="#" class="accordion-title">Accordion 2</a>
+    <div class="accordion-content" data-tab-content>
+      <textarea></textarea>
+      <button class="button">I do nothing!</button>
     </div>
   </li>
   <li class="accordion-item">
-    <a href="#panel3d" role="tab" class="accordion-title" id="panel3d-heading" aria-controls="panel3d">Accordion 3</a>
-    <div id="panel3d" class="accordion-content" role="tabpanel" data-tab-content aria-labelledby="panel3d-heading">
-      Panel 3. Lorem ipsum dolor
+    <a href="#" class="accordion-title">Accordion 3</a>
+    <div class="accordion-content" data-tab-content>
+      Pick a date!
+      <input type="date"></input>
     </div>
   </li>
 </ul>
@@ -76,22 +78,22 @@ By default, only one pane of an accordion can be open at a time. This can be cha
 </ul>
 ```
 
-<ul class="accordion" data-accordion data-multi-expand="true" role="tablist">
+<ul class="accordion" data-accordion data-multi-expand='true'>
   <li class="accordion-item is-active">
-    <a href="#panel1d" role="tab" class="accordion-title" id="panel1d-heading" aria-controls="panel1d">Accordion 1</a>
-    <div id="panel1d" class="accordion-content" role="tabpanel" data-tab-content aria-labelledby="panel1d-heading">
+    <a href="#" class="accordion-title">Accordion 1</a>
+    <div class="accordion-content" data-tab-content >
       Panel 1. Lorem ipsum dolor
     </div>
   </li>
   <li class="accordion-item">
-    <a href="#panel2d"  role="tab" class="accordion-title" id="panel2d-heading" aria-controls="panel2d">Accordion 2</a>
-    <div id="panel2d" class="accordion-content" role="tabpanel" data-tab-content aria-labelledby="panel2d-heading">
+    <a href="#" class="accordion-title">Accordion 2</a>
+    <div class="accordion-content" data-tab-content>
       Panel 2. Lorem ipsum dolor
     </div>
   </li>
   <li class="accordion-item">
-    <a href="#panel3d" role="tab" class="accordion-title" id="panel3d-heading" aria-controls="panel3d">Accordion 3</a>
-    <div id="panel3d" class="accordion-content" role="tabpanel" data-tab-content aria-labelledby="panel3d-heading">
+    <a href="#" class="accordion-title">Accordion 3</a>
+    <div class="accordion-content" data-tab-content>
       Panel 3. Lorem ipsum dolor
     </div>
   </li>
@@ -109,22 +111,22 @@ By default, at least one pane in an accordion must be open. This can be changed 
 </ul>
 ```
 
-<ul class="accordion" data-accordion data-allow-all-closed="true" role="tablist">
+<ul class="accordion" data-accordion data-allow-all-closed='true'>
   <li class="accordion-item is-active">
-    <a href="#panel1d" role="tab" class="accordion-title" id="panel1d-heading" aria-controls="panel1d">Accordion 1</a>
-    <div id="panel1d" class="accordion-content" role="tabpanel" data-tab-content aria-labelledby="panel1d-heading">
+    <a href="#" class="accordion-title">Accordion 1</a>
+    <div class="accordion-content" data-tab-content >
       Panel 1. Lorem ipsum dolor
     </div>
   </li>
   <li class="accordion-item">
-    <a href="#panel2d"  role="tab" class="accordion-title" id="panel2d-heading" aria-controls="panel2d">Accordion 2</a>
-    <div id="panel2d" class="accordion-content" role="tabpanel" data-tab-content aria-labelledby="panel2d-heading">
+    <a href="#" class="accordion-title">Accordion 2</a>
+    <div class="accordion-content" data-tab-content>
       Panel 2. Lorem ipsum dolor
     </div>
   </li>
   <li class="accordion-item">
-    <a href="#panel3d" role="tab" class="accordion-title" id="panel3d-heading" aria-controls="panel3d">Accordion 3</a>
-    <div id="panel3d" class="accordion-content" role="tabpanel" data-tab-content aria-labelledby="panel3d-heading">
+    <a href="#" class="accordion-title">Accordion 3</a>
+    <div class="accordion-content" data-tab-content>
       Panel 3. Lorem ipsum dolor
     </div>
   </li>

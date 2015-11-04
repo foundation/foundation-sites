@@ -30,6 +30,7 @@
       $width: percentage($columns / $grid-column-count);
     }
   }
+
   // Parsing "n of n" expressions
   @else if type-of($columns) == 'list' {
     @if length($columns) != 3 {
@@ -39,6 +40,7 @@
       $width: percentage(nth($columns, 1) / nth($columns, 3));
     }
   }
+
   // Anything else is incorrect
   @else {
     @error 'Wrong syntax for grid-column(). Use a number, decimal, percentage, or "n of n".';
@@ -50,7 +52,7 @@
 /// Creates a grid column.
 ///
 /// @param {Mixed} $columns [$grid-column-count] - Width of the column. Refer to the `grid-column()` function to see possible values.
-/// @param {Number} $gutter [$grid-column-gutter] - Width of the gutters on either side of the column.
+/// @param {Number} $gutter [$grid-column-gutter] - Spacing between columns.
 @mixin grid-column(
   $columns: $grid-column-count,
   $gutter: $grid-column-gutter
@@ -59,7 +61,9 @@
     @include grid-column-size($columns);
   }
 
-  float: left;
+  $gutter: rem-calc($gutter) / 2;
+
+  float: $global-left;
   padding-left: $gutter;
   padding-right: $gutter;
 
@@ -68,17 +72,41 @@
   }
 }
 
-/// Shorthand for `grid-col()`.
+/// Creates a grid column row. This is the equivalent of adding `.row` and `.column` to the same element.
+/// @param {Number} $gutter [$grid-column-gutter] - Width of the gutters on either side of the column row.
+@mixin grid-column-row(
+  $gutter: $grid-column-gutter
+) {
+  @include grid-row;
+  @include grid-column($gutter: $gutter);
+  
+  &,
+  &:last-child {
+    float: none;
+  }
+}
+
+/// Shorthand for `grid-column()`.
+/// @alias grid-column
 @function grid-col(
   $columns: $grid-column-count
 ) {
   @return grid-column($columns);
 }
 
-/// Shorthand for `grid-col()`.
+/// Shorthand for `grid-column()`.
+/// @alias grid-column
 @mixin grid-col(
   $columns: $grid-column-count,
   $gutter: $grid-column-gutter
 ) {
   @include grid-column($columns, $gutter);
+}
+
+/// Shorthand for `grid-column-row()`.
+/// @alias grid-column-row
+@mixin grid-col-row(
+  $gutter: $grid-column-gutter
+) {
+  @include grid-column-row($gutter);
 }

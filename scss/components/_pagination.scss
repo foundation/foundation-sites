@@ -26,6 +26,10 @@ $pagination-item-padding: rem-calc(3 10);
 /// @type Number
 $pagination-item-spacing: rem-calc(1);
 
+/// Default radius for pagination items.
+/// @type Number
+$pagination-radius: $global-radius;
+
 /// Background color of pagination items on hover.
 /// @type Color
 $pagination-item-background-hover: $light-gray;
@@ -57,14 +61,15 @@ $pagination-arrows: true;
 /// Adds styles for a pagination container. Apply this to a `<ul>`.
 @mixin pagination-container {
   @include clearfix;
-  margin-left: 0;
+  margin-#{$global-left}: 0;
   margin-bottom: $pagination-margin-bottom;
 
   // List item
   li {
     font-size: $pagination-font-size;
-    margin-right: $pagination-item-spacing;
+    margin-#{$global-right}: $pagination-item-spacing;
     display: none;
+    border-radius: $pagination-radius;
 
     @if not $pagination-mobile-items {
       &:last-child,
@@ -84,6 +89,7 @@ $pagination-arrows: true;
     color: $pagination-item-color;
     display: block;
     padding: $pagination-item-padding;
+    border-radius: $global-radius;
 
     &:hover {
       background: $pagination-item-background-hover;
@@ -96,7 +102,7 @@ $pagination-arrows: true;
       &::before {
         content: '«';
         display: inline-block;
-        margin-right: 0.75rem;
+        margin-#{$global-right}: 0.75rem;
       }
     }
 
@@ -104,7 +110,7 @@ $pagination-arrows: true;
       &::after {
         content: '»';
         display: inline-block;
-        margin-left: 0.75rem;
+        margin-#{$global-left}: 0.75rem;
       }
     }
   }

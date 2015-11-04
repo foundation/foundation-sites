@@ -1,30 +1,55 @@
+/**
+ * Orbit module.
+ * @module foundation.orbit
+ * @requires foundation.util.keyboard
+ * @requires foundation.util.animationFrame
+ * @requires foundation.util.motion
+ * @requires foundation.util.timer
+ */
 !function($, Foundation){
   'use strict';
-  function Orbit(element){
+  /**
+   * Creates a new instance of an orbit carousel.
+   * @class
+   * @param {jQuery} element - jQuery object to make into an accordion menu.
+   * @param {Object} options - Overrides to the default plugin settings.
+   */
+  function Orbit(element, options){
     this.$element = element;
-    this.options = $.extend({}, Orbit.defaults, this.$element.data());
+    this.options = $.extend({}, Orbit.defaults, this.$element.data(), options);
 
     this._init();
 
-    this.$element.trigger('init.zf.orbit');
+    Foundation.registerPlugin(this);
+    // this.$element.trigger('init.zf.orbit');
   }
   Orbit.defaults = {
     bullets: true,
     navButtons: true,
-    animInFromRight: 'slideInRight',
-    animOutToRight: 'slideOutRight',
-    animInFromLeft: 'slideInLeft',
-    animOutToLeft: 'slideOutLeft',
+    animInFromRight: 'slide-in-right',
+    animOutToRight: 'slide-out-right',
+    animInFromLeft: 'slide-in-left',
+    animOutToLeft: 'slide-out-left',
     autoPlay: true,
     timerDelay: 5000,
     infiniteWrap: true,
     swipe: true,
     pauseOnHover: true,
-    accessible: true
+    accessible: true,
+    containerClass: 'orbit-container',
+    slideClass: 'orbit-slide',
+    boxOfBullets: 'orbit-bullets',
+    nextClass: 'orbit-next',
+    prevClass: 'orbit-previous'
   };
+  /**
+   * Initializes the plugin by creating jQuery collections, setting attributes, and starting the animation.
+   * @function
+   * @private
+   */
   Orbit.prototype._init = function(){
-    this.$wrapper = this.$element.find('.orbit-container');
-    this.$slides = this.$element.find('.orbit-slide');
+    this.$wrapper = this.$element.find('.' + this.options.containerClass);
+    this.$slides = this.$element.find('.' + this.options.slideClass);
 
     this._prepareForOrbit();//hehe
 
@@ -37,13 +62,25 @@
     if(this.options.autoPlay){
       this.geoSync();
     }
+    if (this.options.accessible) { // allow wrapper to be focusable to enable arrow navigation
+      this.$wrapper.attr('tabindex', 0);
+    }
   };
+  /**
+   * Creates a jQuery collection of bullets, if they are being used.
+   * @function
+   * @private
+   */
   Orbit.prototype.loadBullets = function(){
-    this.$bullets = this.$element.find('.orbit-bullets > button');
+    this.$bullets = this.$element.find('.' + this.options.boxOfBullets).find('button');
   };
+  /**
+   * Sets a `timer` object on the orbit, and starts the counter for the next slide.
+   * @function
+   */
   Orbit.prototype.geoSync = function(){
     var _this = this;
-    this.timer = new Foundation.Timer(
+    this.timer = new Foundation.NanuNanu(
                       this.$element,
                       {duration: this.options.timerDelay},
                       function(){
@@ -51,12 +88,23 @@
     });
     this.timer.start();
   };
+  /**
+   * Sets wrapper and slide heights for the orbit.
+   * @function
+   * @private
+   */
   Orbit.prototype._prepareForOrbit = function(){
     var _this = this;
     this.setWrapperHeight(function(max){
       _this.setSlideHeight(max);
     });
-  }
+  };
+  /**
+   * Calulates the height of each slide in the collection, and uses the tallest one for the wrapper height.
+   * @function
+   * @private
+   * @param {Function} cb - a callback function to fire when complete.
+   */
   Orbit.prototype.setWrapperHeight = function(cb){//rewrite this to `for` loop
     var max = 0, temp, counter = 0;
 
@@ -75,12 +123,21 @@
       cb(max);//fire callback with max height dimension.
     }
   };
+  /**
+   * Sets the max-height of each slide.
+   * @function
+   * @private
+   */
   Orbit.prototype.setSlideHeight = function(height){
-    var counter = 0;
     this.$slides.each(function(){
       $(this).css('max-height', height);
     });
   };
+  /**
+   * Adds event listeners to basically everything within the element.
+   * @function
+   * @private
+   */
   Orbit.prototype._events = function(){
     var _this = this;
 
@@ -89,13 +146,14 @@
     //**see comments below, needs to change**
     //***************************************
     if(this.options.swipe){
-      this.$slides.on('swipeleft', function(e){
+      this.$slides.off('swipeleft.zf.orbit swiperight.zf.orbit')
+      .on('swipeleft.zf.orbit', function(e){
         e.preventDefault();
-        _this.timer.reset();
+        _this.timer.restart();
         _this.changeSlide(true);
-      }).on('swiperight', function(e){
+      }).on('swiperight.zf.orbit', function(e){
         e.preventDefault();
-        _this.timer.reset();
+        _this.timer.restart();
         _this.changeSlide(false);
       });
     }
@@ -118,18 +176,18 @@
     }
 
     if(this.options.navButtons){
-      var $controls = this.$element.find('.orbit-next, .orbit-previous');
+      var $controls = this.$element.find('.' + this.options.nextClass + ', .' + this.options.prevClass);
       if(this.options.accessible){
-        $controls.attr('tabindex', -1);
+        $controls.attr('tabindex', 0);
         //also need to handle enter/return and spacebar key presses
       }
       $controls.on('click.zf.orbit touchend.zf.orbit', function(){
-        if($(this).hasClass('orbit-next')){
+        if($(this).hasClass(_this.options.nextClass)){
           _this.changeSlide(true);
-          _this.timer.reset();
+          _this.timer.restart();
         }else{
           _this.changeSlide(false);
-          _this.timer.reset();
+          _this.timer.restart();
         }
       });
     }
@@ -138,15 +196,43 @@
       this.$bullets.on('click.zf.orbit touchend.zf.orbit', function(){
         if(/is-active/g.test(this.className)){ return false; }//if this is active, kick out of function.
         var idx = $(this).data('slide'),
-            ltr = idx > _this.$slides.index($('.active')),
+            ltr = idx > _this.$slides.index($('.is-active')),
             $slide = _this.$slides.eq(idx);
 
         _this.changeSlide(ltr, $slide, idx);
       });
     }
+
+    this.$wrapper.add(this.$bullets).on('keydown.zf.orbit', function(e){
+      // handle keyboard event with keyboard util
+      Foundation.handleKey(e, _this, {
+        next: function() {
+          _this.timer.restart();
+          _this.changeSlide(true);
+        },
+        previous: function() {
+          _this.timer.restart();
+          _this.changeSlide(false);
+        },
+        handled: function() { // if bullet is focused, make sure focus moves
+          if ($(e.target).is(_this.$bullets)) {
+            _this.$bullets.filter('.is-active').focus();
+          }
+        }
+      });
+    });
   };
+  /**
+   * Changes the current slide to a new one.
+   * @function
+   * @param {Boolean} isLTR - flag if the slide should move left to right.
+   * @param {jQuery} chosenSlide - the jQuery element of the slide to show next, if one is selected.
+   * @param {Number} idx - the index of the new slide in its collection, if one chosen.
+   * @fires Orbit#slidechange
+   */
   Orbit.prototype.changeSlide = function(isLTR, chosenSlide, idx){
-    var $curSlide = this.$element.find('.orbit-slide.active');
+    var $curSlide = this.$slides.filter('.is-active').eq(0);
+
 
     if(/mui/g.test($curSlide[0].className)){ return false; }//if the slide is currently animating, kick out of the function
 
@@ -159,9 +245,9 @@
 
     if(!chosenSlide){//most of the time, this will be auto played or clicked from the navButtons.
       $newSlide = isLTR ? //if wrapping enabled, check to see if there is a `next` or `prev` sibling, if not, select the first or last slide to fill in. if wrapping not enabled, attempt to select `next` or `prev`, if there's nothing there, the function will kick out on next step. CRAZY NESTED TERNARIES!!!!!
-                    (this.options.infiniteWrap ? $curSlide.next('.orbit-slide').length ? $curSlide.next('.orbit-slide') : $firstSlide : $curSlide.next('.orbit-slide'))//pick next slide if moving left to right
+                    (this.options.infiniteWrap ? $curSlide.next('.' + this.options.slideClass).length ? $curSlide.next('.' + this.options.slideClass) : $firstSlide : $curSlide.next('.' + this.options.slideClass))//pick next slide if moving left to right
                     :
-                    (this.options.infiniteWrap ? $curSlide.prev('.orbit-slide').length ? $curSlide.prev('.orbit-slide') : $lastSlide : $curSlide.prev('.orbit-slide'));//pick prev slide if moving right to left
+                    (this.options.infiniteWrap ? $curSlide.prev('.' + this.options.slideClass).length ? $curSlide.prev('.' + this.options.slideClass) : $lastSlide : $curSlide.prev('.' + this.options.slideClass));//pick prev slide if moving right to left
     }else{
       $newSlide = chosenSlide;
     }
@@ -172,7 +258,7 @@
       }
 
       Foundation.Motion.animateIn(
-        $newSlide.addClass('active').css({'position': 'absolute', 'top': 0}),
+        $newSlide.addClass('is-active').css({'position': 'absolute', 'top': 0}),
         this.options['animInFrom' + dirIn],
         function(){
           $newSlide.css({'position': 'relative', 'display': 'block'})
@@ -180,288 +266,43 @@
         });
 
       Foundation.Motion.animateOut(
-        $curSlide.removeClass('active'),
+        $curSlide.removeClass('is-active'),
         this.options['animOutTo' + dirOut],
         function(){
           $curSlide.removeAttr('aria-live');
+          _this.timer.restart();
           //do stuff?
-          _this.$element.trigger('slidechange.zf.orbit');
+          /**
+           * Triggers when the slide has finished animating in.
+           * @event Orbit#slidechange
+           */
+          _this.$element.trigger('slidechange.zf.orbit', [$newSlide]);
         });
     }
   };
+  /**
+   * Updates the active state of the bullets, if displayed.
+   * @function
+   * @private
+   * @param {Number} idx - the index of the current slide.
+   */
   Orbit.prototype._updateBullets = function(idx){
-    var $oldBullet = this.$element.find('.orbit-bullets > .is-active').removeClass('is-active').blur(),
+    var $oldBullet = this.$element.find('.' + this.options.boxOfBullets)
+                                  .find('.is-active').removeClass('is-active').blur(),
         span = $oldBullet.find('span:last').detach(),
         $newBullet = this.$bullets.eq(idx).addClass('is-active').append(span);
   };
-
+  /**
+   * Destroys the carousel and hides the element.
+   * @function
+   */
   Orbit.prototype.destroy = function(){
-    delete this.$element.timer;
+    delete this.timer;
     this.$element.off('.zf.orbit').find('*').off('.zf.orbit').end().hide();
-    this.$element.trigger('destroyed.zf.orbit');
+    Foundation.unregisterPlugin(this);
+    // this.$element.trigger('destroyed.zf.orbit');
   };
 
   Foundation.plugin(Orbit);
 
 }(jQuery, window.Foundation);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//**********************************
-//**From the jQuery Mobile Library**
-//**need to recreate functionality**
-//**and try to improve if possible**
-//**********************************
-(function( $, window, undefined ) {
-  
-	var $document = $( document ),
-		// supportTouch = $.mobile.support.touch,
-		touchStartEvent = 'touchstart'//supportTouch ? "touchstart" : "mousedown",
-		touchStopEvent = 'touchend'//supportTouch ? "touchend" : "mouseup",
-		touchMoveEvent = 'touchmove'//supportTouch ? "touchmove" : "mousemove";
-
-	// setup new event shortcuts
-	$.each( ( "touchstart touchmove touchend " +
-		"swipe swipeleft swiperight" ).split( " " ), function( i, name ) {
-
-		$.fn[ name ] = function( fn ) {
-			return fn ? this.bind( name, fn ) : this.trigger( name );
-		};
-
-		// jQuery < 1.8
-		if ( $.attrFn ) {
-			$.attrFn[ name ] = true;
-		}
-	});
-
-	function triggerCustomEvent( obj, eventType, event, bubble ) {
-		var originalType = event.type;
-		event.type = eventType;
-		if ( bubble ) {
-			$.event.trigger( event, undefined, obj );
-		} else {
-			$.event.dispatch.call( obj, event );
-		}
-		event.type = originalType;
-	}
-
-	// also handles taphold
-
-	// Also handles swipeleft, swiperight
-	$.event.special.swipe = {
-
-		// More than this horizontal displacement, and we will suppress scrolling.
-		scrollSupressionThreshold: 30,
-
-		// More time than this, and it isn't a swipe.
-		durationThreshold: 1000,
-
-		// Swipe horizontal displacement must be more than this.
-		horizontalDistanceThreshold: window.devicePixelRatio >= 2 ? 15 : 30,
-
-		// Swipe vertical displacement must be less than this.
-		verticalDistanceThreshold: window.devicePixelRatio >= 2 ? 15 : 30,
-
-		getLocation: function ( event ) {
-			var winPageX = window.pageXOffset,
-				winPageY = window.pageYOffset,
-				x = event.clientX,
-				y = event.clientY;
-
-			if ( event.pageY === 0 && Math.floor( y ) > Math.floor( event.pageY ) ||
-				event.pageX === 0 && Math.floor( x ) > Math.floor( event.pageX ) ) {
-
-				// iOS4 clientX/clientY have the value that should have been
-				// in pageX/pageY. While pageX/page/ have the value 0
-				x = x - winPageX;
-				y = y - winPageY;
-			} else if ( y < ( event.pageY - winPageY) || x < ( event.pageX - winPageX ) ) {
-
-				// Some Android browsers have totally bogus values for clientX/Y
-				// when scrolling/zooming a page. Detectable since clientX/clientY
-				// should never be smaller than pageX/pageY minus page scroll
-				x = event.pageX - winPageX;
-				y = event.pageY - winPageY;
-			}
-
-			return {
-				x: x,
-				y: y
-			};
-		},
-
-		start: function( event ) {
-			var data = event.originalEvent.touches ?
-					event.originalEvent.touches[ 0 ] : event,
-				location = $.event.special.swipe.getLocation( data );
-			return {
-						time: ( new Date() ).getTime(),
-						coords: [ location.x, location.y ],
-						origin: $( event.target )
-					};
-		},
-
-		stop: function( event ) {
-			var data = event.originalEvent.touches ?
-					event.originalEvent.touches[ 0 ] : event,
-				location = $.event.special.swipe.getLocation( data );
-			return {
-						time: ( new Date() ).getTime(),
-						coords: [ location.x, location.y ]
-					};
-		},
-
-		handleSwipe: function( start, stop, thisObject, origTarget ) {
-			if ( stop.time - start.time < $.event.special.swipe.durationThreshold &&
-				Math.abs( start.coords[ 0 ] - stop.coords[ 0 ] ) > $.event.special.swipe.horizontalDistanceThreshold &&
-				Math.abs( start.coords[ 1 ] - stop.coords[ 1 ] ) < $.event.special.swipe.verticalDistanceThreshold ) {
-				var direction = start.coords[0] > stop.coords[ 0 ] ? "swipeleft" : "swiperight";
-
-				triggerCustomEvent( thisObject, "swipe", $.Event( "swipe", { target: origTarget, swipestart: start, swipestop: stop }), true );
-				triggerCustomEvent( thisObject, direction,$.Event( direction, { target: origTarget, swipestart: start, swipestop: stop } ), true );
-				return true;
-			}
-			return false;
-
-		},
-
-		// This serves as a flag to ensure that at most one swipe event event is
-		// in work at any given time
-		eventInProgress: false,
-
-		setup: function() {
-			var events,
-				thisObject = this,
-				$this = $( thisObject ),
-				context = {};
-
-			// Retrieve the events data for this element and add the swipe context
-			events = $.data( this, "mobile-events" );
-			if ( !events ) {
-				events = { length: 0 };
-				$.data( this, "mobile-events", events );
-			}
-			events.length++;
-			events.swipe = context;
-
-			context.start = function( event ) {
-
-				// Bail if we're already working on a swipe event
-				if ( $.event.special.swipe.eventInProgress ) {
-					return;
-				}
-				$.event.special.swipe.eventInProgress = true;
-
-				var stop,
-					start = $.event.special.swipe.start( event ),
-					origTarget = event.target,
-					emitted = false;
-
-				context.move = function( event ) {
-					if ( !start || event.isDefaultPrevented() ) {
-						return;
-					}
-
-					stop = $.event.special.swipe.stop( event );
-					if ( !emitted ) {
-						emitted = $.event.special.swipe.handleSwipe( start, stop, thisObject, origTarget );
-						if ( emitted ) {
-
-							// Reset the context to make way for the next swipe event
-							$.event.special.swipe.eventInProgress = false;
-						}
-					}
-					// prevent scrolling
-					if ( Math.abs( start.coords[ 0 ] - stop.coords[ 0 ] ) > $.event.special.swipe.scrollSupressionThreshold ) {
-						event.preventDefault();
-					}
-				};
-
-				context.stop = function() {
-						emitted = true;
-
-						// Reset the context to make way for the next swipe event
-						$.event.special.swipe.eventInProgress = false;
-						$document.off( touchMoveEvent, context.move );
-						context.move = null;
-				};
-
-				$document.on( touchMoveEvent, context.move )
-					.one( touchStopEvent, context.stop );
-			};
-			$this.on( touchStartEvent, context.start );
-		},
-
-		teardown: function() {
-			var events, context;
-
-			events = $.data( this, "mobile-events" );
-			if ( events ) {
-				context = events.swipe;
-				delete events.swipe;
-				events.length--;
-				if ( events.length === 0 ) {
-					$.removeData( this, "mobile-events" );
-				}
-			}
-
-			if ( context ) {
-				if ( context.start ) {
-					$( this ).off( touchStartEvent, context.start );
-				}
-				if ( context.move ) {
-					$document.off( touchMoveEvent, context.move );
-				}
-				if ( context.stop ) {
-					$document.off( touchStopEvent, context.stop );
-				}
-			}
-		}
-	};
-	$.each({
-		swipeleft: "swipe.left",
-		swiperight: "swipe.right"
-	}, function( event, sourceEvent ) {
-
-		$.event.special[ event ] = {
-			setup: function() {
-				$( this ).bind( sourceEvent, $.noop );
-			},
-			teardown: function() {
-				$( this ).unbind( sourceEvent );
-			}
-		};
-	});
-})( jQuery, this );

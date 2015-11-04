@@ -1,21 +1,17 @@
 ---
-title: Range Slider
+title: Slider
 description: This handy lil slider is perfect for setting specific values within a range.
-sass: scss/components/_range-slider.scss
-js: js/foundation.range-slider.js
+sass: scss/components/_slider.scss
+js: js/foundation.slider.js
 ---
 
 
 <div class="alert callout">
   <h5>Known Issues</h5>
   <ul>
-    <li>Needs method for initial handle positioning.</li>
-    <li>Needs accessibility compliant keyboard access bindings.</li>
     <li>Vertical orientation isn't smooth on Windows Phone.</li>
-    <li>Two-handled sliders not working in Firefox.</li>
-    <li>Needs better method of resizing fill bar on right-handle selection for two handled sliders. It behaves poorly</li>
-    <li>Needs method to prevent handles from crossing one another on two-handled sliders.</li>
-
+    <li>Needs a way to set fill bar width for two-handles on init.</li>
+    <li>Vertical orientation is inverted. Needs to move up when increasing...</li>
   </ul>
 </div>
 

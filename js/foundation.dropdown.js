@@ -1,51 +1,75 @@
+/**
+ * Dropdown module.
+ * @module foundation.dropdown
+ * @requires foundation.util.keyboard
+ * @requires foundation.util.size-and-collision
+ */
 !function($, Foundation){
   'use strict';
-
-/*
-NEEDS:
-  aria testing
-*/
-
-
-  function Dropdown(element){
+  /**
+   * Creates a new instance of a dropdown.
+   * @class
+   * @param {jQuery} element - jQuery object to make into an accordion menu.
+   * @param {Object} options - Overrides to the default plugin settings.
+   */
+  function Dropdown(element, options){
     this.$element = element;
-    this.options = $.extend({}, Dropdown.defaults, this.$element.data());
+    this.options = $.extend({}, Dropdown.defaults, this.$element.data(), options);
     this._init();
+
+    Foundation.registerPlugin(this);
   }
 
   Dropdown.defaults = {
-    activeClass: 'is-open',
     hoverDelay: 250,
-    disableHover: true,
-    dropdownClass: 'dropdown-pane',
+    hover: false,
     vOffset: 1,
     hOffset: 1,
     positionClass: ''
   };
-
+  /**
+   * Initializes the plugin by setting/checking options and attributes, adding helper variables, and saving the anchor.
+   * @function
+   * @private
+   */
   Dropdown.prototype._init = function(){
     var $id = this.$element.attr('id');
 
     this.$anchor = $('[data-toggle="' + $id + '"]') || $('[data-open="' + $id + '"]');
-    this.$anchor.attr({'aria-controls': $id, 'data-is-focus': 'false', 'data-yeti-box': $id});
+    this.$anchor.attr({
+      'aria-controls': $id,
+      'data-is-focus': false,
+      'data-yeti-box': $id,
+      'aria-haspopup': true
+      // 'data-resize': $id
+    });
 
     this.options.positionClass = this.getPositionClass();
     this.counter = 4;
     this.usedPositions = [];
     this.$element.attr({
       'aria-hidden': 'true',
-      'data-yeti-box': $id
-    }).hide();
+      'data-yeti-box': $id,
+      'data-resize': $id
+    });
     this._events();
-    this.$element.trigger('init.zf.dropdown');
   };
-
+  /**
+   * Helper function to determine current orientation of dropdown pane.
+   * @function
+   * @returns {String} position - string value of a position class.
+   */
   Dropdown.prototype.getPositionClass = function(){
-    var position = this.$element.attr('class').match(/top|left|right/g);
+    var position = this.$element[0].className.match(/(top|left|right)/g);
         position = position ? position[0] : '';
     return position;
   };
-
+  /**
+   * Adjusts the dropdown panes orientation by adding/removing positioning classes.
+   * @function
+   * @private
+   * @param {String} position - position class to remove.
+   */
   Dropdown.prototype.reposition = function(position){
     this.usedPositions.push(position ? position : 'bottom');
     //default, try switching to opposite side
@@ -79,7 +103,12 @@ NEEDS:
     this.classChanged = true;
     this.counter--;
   };
-
+  /**
+   * Sets the position and orientation of the dropdown pane, checks for collisions.
+   * Recursively calls itself if a collision is detected, with a new position class.
+   * @function
+   * @private
+   */
   Dropdown.prototype.setPosition = function(){
     var position = this.getPositionClass(),
         $eleDims = Foundation.GetDimensions(this.$element),
@@ -95,6 +124,7 @@ NEEDS:
         'width': $eleDims.windowDims.width - (this.options.hOffset * 2),
         'height': 'auto',
       });
+      this.classChanged = true;
       return false;
     }
 
@@ -105,19 +135,21 @@ NEEDS:
       this.setPosition();
     }
   };
-
+  /**
+   * Adds event listeners to the element utilizing the triggers utility library.
+   * @function
+   * @private
+   */
   Dropdown.prototype._events = function(){
     var _this = this;
     this.$element.on({
       'open.zf.trigger': this.open.bind(this),
       'close.zf.trigger': this.close.bind(this),
       'toggle.zf.trigger': this.toggle.bind(this),
-      'closeme.zf.trigger': this.close.bind(this)
+      'resizeme.zf.trigger': this.setPosition.bind(this)
     });
-    this.$element.on('close.zf.trigger', function(){
-      console.log('hello', this);
-    });
-    if(!this.options.disableHover){
+
+    if(this.options.hover){
       clearTimeout(_this.timeout);
       this.$anchor.on('mouseenter.zf.dropdown mouseleave.zf.dropdown', function(){
         _this.timeOut = setTimeout(function(){
@@ -126,29 +158,44 @@ NEEDS:
       });
     }
   };
-
+  /**
+   * Opens the dropdown pane, and fires a bubbling event to close other dropdowns.
+   * @function
+   * @fires Dropdown#closeme
+   * @fires Dropdown#show
+   */
   Dropdown.prototype.open = function(){
-    // $(document).trigger('click.zf.trigger'/*, $('[data-yeti-box]')*/);
+    /**
+     * Fires to close other open dropdowns
+     * @event Dropdown#closeme
+     */
     this.$element.trigger('closeme.zf.dropdown', this.$element.attr('id'));
     var _this = this;
     this.$element.show();
     this.setPosition();
-    this.$element.addClass(this.options.activeClass)
+    this.$element.addClass('is-open')
         .attr('aria-hidden', 'false');
     this.$anchor.addClass('hover');
-
+    /**
+     * Fires once the dropdown is visible.
+     * @event Dropdown#show
+     */
+     this.$element.trigger('show.zf.dropdown', [this.$element]);
     //why does this not work correctly for this plugin?
     // Foundation.reflow(this.$element, 'dropdown');
-    // this.$element.foundation();
-    Foundation.reflow();
+    // Foundation._reflow(this.$element.data('dropdown'));
   };
 
-
+  /**
+   * Closes the open dropdown pane.
+   * @function
+   * @fires Dropdown#hide
+   */
   Dropdown.prototype.close = function(){
-    if(!this.$element.hasClass(this.options.activeClass)){
+    if(!this.$element.hasClass('is-open')){
       return false;
     }
-    this.$element.removeClass(this.options.activeClass)
+    this.$element.removeClass('is-open')
         .attr('aria-hidden', 'true');
     this.$anchor.removeClass('hover');
     if(this.classChanged){
@@ -157,20 +204,35 @@ NEEDS:
         this.$element.removeClass(curPositionClass);
       }
       this.$element.addClass(this.options.positionClass)
-          .hide();
+          .hide().css({height: '', width: ''});
       this.classChanged = false;
       this.counter = 4;
       this.usedPositions.length = 0;
     }
+    this.$element.trigger('hide.zf.dropdown', [this.$element]);
+    // Foundation.reflow(this.$element, 'dropdown');
   };
-
+  /**
+   * Toggles the dropdown pane's visibility.
+   * @function
+   */
   Dropdown.prototype.toggle = function(){
-    if(this.$element.hasClass(this.options.activeClass)){
+    if(this.$element.hasClass('is-open')){
       this.close();
     }else{
       this.open();
     }
   };
+  /**
+   * Destroys the dropdown.
+   * @function
+   */
+  Dropdown.prototype.destroy = function(){
+    this.$element.off('.zf.trigger').hide();
+    this.$anchor.off('.zf.dropdown');
+
+    Foundation.unregisterPlugin(this);
+  }
 
   Foundation.plugin(Dropdown);
 }(jQuery, window.Foundation);

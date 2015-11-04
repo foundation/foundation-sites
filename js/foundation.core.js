@@ -18,7 +18,17 @@ var Foundation = {
    * Stores generated unique ids for plugin instances
    */
   _uuids: [],
+  /**
+   * Stores currently active plugins.
+   */
+  _activePlugins: {},
 
+  /**
+   * Returns a boolean for RTL support
+   */
+  rtl: function(){
+    return $('html').attr('dir') === 'rtl';
+  },
   /**
    * Defines a Foundation plugin, adding it to the `Foundation` namespace and the list of plugins to initialize when reflowing.
    * @param {Object} plugin - The constructor of the plugin.
@@ -27,7 +37,6 @@ var Foundation = {
     // Object key to use when adding to global Foundation object
     // Examples: Foundation.Reveal, Foundation.OffCanvas
     var className = functionName(plugin);
-
     // Object key to use when storing the plugin, also used to create the identifying data attribute for the plugin
     // Examples: data-reveal, data-off-canvas
     var attrName  = hyphenate(className);
@@ -35,7 +44,85 @@ var Foundation = {
     // Add to the Foundation object and the plugins list (for reflowing)
     this._plugins[attrName] = this[className] = plugin;
   },
+  /**
+   * @function
+   * Creates a pointer to an instance of a Plugin within the Foundation._activePlugins object.
+   * Sets the `[data-pluginName="uniqueIdHere"]`, allowing easy access to any plugin's internal methods.
+   * Also fires the initialization event for each plugin, consolidating repeditive code.
+   * @param {Object} plugin - an instance of a plugin, usually `this` in context.
+   */
+  registerPlugin: function(plugin){
+    var pluginName = functionName(plugin.constructor).toLowerCase();
 
+    plugin.uuid = this.GetYoDigits(6, pluginName);
+    plugin.$element.attr('data-' + pluginName, plugin.uuid).trigger('init.zf.' + pluginName);
+
+    this._activePlugins[plugin.uuid] = plugin;
+
+    return;
+  },
+  /**
+   * @function
+   * Removes the pointer for an instance of a Plugin from the Foundation._activePlugins obj.
+   * Also fires the destroyed event for the plugin, consolidating repeditive code.
+   * @param {Object} plugin - an instance of a plugin, usually `this` in context.
+   */
+  unregisterPlugin: function(plugin){
+    var pluginName = functionName(plugin.constructor).toLowerCase();
+
+    delete this._activePlugins[plugin.uuid];
+
+    plugin.$element.trigger('destroyed.zf.' + pluginName);
+
+    return;
+  },
+
+  /**
+   * @function
+   * Causes one or more active plugins to reflow, resetting event listeners, recalculating positions, etc.
+   * @param {String} plugins - optional string of an individual plugin key, attained by calling `$(element).data('pluginName')`, or string of a plugin class i.e. `'dropdown'`
+   * @default If no argument is passed, reflow all currently active plugins.
+   */
+  _reflow: function(plugins){
+    var actvPlugins = Object.keys(this._activePlugins);
+    var _this = this;
+
+    if(!plugins){
+      actvPlugins.forEach(function(p){
+        _this._activePlugins[p]._init();
+      });
+
+    }else if(typeof plugins === 'string'){
+      var namespace = plugins.split('-')[1];
+
+      if(namespace){
+
+        this._activePlugins[plugins]._init();
+
+      }else{
+        namespace = new RegExp(plugins, 'i');
+
+        actvPlugins.filter(function(p){
+          return namespace.test(p);
+        }).forEach(function(p){
+          _this._activePlugins[p]._init();
+        });
+      }
+    }
+
+  },
+
+  /**
+   * returns a random base-36 uid with namespacing
+   * @function
+   * @param {Number} length - number of random base-36 digits desired. Increase for more random strings.
+   * @param {String} namespace - name of plugin to be incorporated in uid, optional.
+   * @default {String} '' - if no plugin name is provided, nothing is appended to the uid.
+   * @returns {String} - unique id
+   */
+  GetYoDigits: function(length, namespace){
+    return Math.round((Math.pow(36, length + 1) - Math.random() * Math.pow(36, length))).toString(36).slice(1) + (namespace ? '-' + namespace : '');
+  },
   /**
    * Initialize plugins on any elements within `elem` (and `elem` itself) that aren't already initialized.
    * @param {Object} elem - jQuery object containing the element to check inside. Also checks the element itself, unless it's the `document` object.
