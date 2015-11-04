@@ -15,7 +15,7 @@
    */
   function Sticky(element, options){
     this.$element = element;
-    this.options = $.extend({}, Sticky.defaults, this.$element.data(), options || {});
+    this.options = $.extend({}, Sticky.defaults, this.$element.data(), options);
 
     this._init();
 

@@ -15,7 +15,7 @@
    */
   function Drilldown(element, options){
     this.$element = element;
-    this.options = $.extend({}, Drilldown.defaults, this.$element.data(), options || {});
+    this.options = $.extend({}, Drilldown.defaults, this.$element.data(), options);
 
     Foundation.FeatherNest(this.$element, 'drilldown');
 

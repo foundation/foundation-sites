@@ -16,7 +16,7 @@
    */
   function Orbit(element, options){
     this.$element = element;
-    this.options = $.extend({}, Orbit.defaults, this.$element.data(), options || {});
+    this.options = $.extend({}, Orbit.defaults, this.$element.data(), options);
 
     this._init();
 

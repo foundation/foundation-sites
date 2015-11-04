@@ -14,7 +14,7 @@
    */
   function Dropdown(element, options){
     this.$element = element;
-    this.options = $.extend({}, Dropdown.defaults, this.$element.data(), options || {});
+    this.options = $.extend({}, Dropdown.defaults, this.$element.data(), options);
     this._init();
 
     Foundation.registerPlugin(this);

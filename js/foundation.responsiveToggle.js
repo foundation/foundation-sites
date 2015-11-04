@@ -21,11 +21,12 @@ function ResponsiveToggle(element, options) {
   this._init();
   this._events();
 
-  /**
-   * Fires when the plugin has been successfully initialized.
-   * @event ResponsiveToggle#init
-   */
-  this.$element.trigger('init.zf.ResponsiveToggle');
+  Foundation.registerPlugin(this);
+  // /**
+  //  * Fires when the plugin has been successfully initialized.
+  //  * @event ResponsiveToggle#init
+  //  */
+  // this.$element.trigger('init.zf.ResponsiveToggle');
 }
 
 ResponsiveToggle.defaults = {

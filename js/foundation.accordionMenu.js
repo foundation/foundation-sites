@@ -16,7 +16,7 @@
    */
   function AccordionMenu(element, options) {
     this.$element = element;
-    this.options = $.extend({}, AccordionMenu.defaults, this.$element.data(), options || {});
+    this.options = $.extend({}, AccordionMenu.defaults, this.$element.data(), options);
 
     Foundation.FeatherNest(this.$element, 'accordion');
 

@@ -13,9 +13,9 @@
    * @param {jQuery} element - jQuery object to make into tabs.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  function Tabs(element){
+  function Tabs(element, options){
     this.$element = element;
-    this.options = $.extend({}, Tabs.defaults, this.$element.data());
+    this.options = $.extend({}, Tabs.defaults, this.$element.data(), options);
 
     this._init();
     Foundation.registerPlugin(this);
@@ -46,7 +46,7 @@
 
     this.$tabTitles = this.$element.find('.' + this.options.linkClass);
     this.$tabContent = $('[data-tabs-content="' + this.$element[0].id + '"]');
-    
+
     this.$tabTitles.each(function(){
       var $elem = $(this),
           $link = $elem.find('a'),

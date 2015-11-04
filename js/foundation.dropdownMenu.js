@@ -16,7 +16,7 @@
    */
   function DropdownMenu(element, options) {
     this.$element = element;
-    this.options = $.extend({}, DropdownMenu.defaults, this.$element.data(), options || {});
+    this.options = $.extend({}, DropdownMenu.defaults, this.$element.data(), options);
 
     Foundation.FeatherNest(this.$element, 'dropdown');
 

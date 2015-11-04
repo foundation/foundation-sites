@@ -19,7 +19,7 @@
 
   function Reveal(element, options) {
     this.$element = element;
-    this.options = $.extend({}, Reveal.defaults, this.$element.data(), options || {});
+    this.options = $.extend({}, Reveal.defaults, this.$element.data(), options);
     this._init();
 
     Foundation.registerPlugin(this);

@@ -17,7 +17,7 @@
    */
   function Slider(element, options){
     this.$element = element;
-    this.options = $.extend({}, Slider.defaults, this.$element.data(), options || {});
+    this.options = $.extend({}, Slider.defaults, this.$element.data(), options);
 
     this._init();
 

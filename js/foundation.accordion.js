@@ -15,7 +15,7 @@
    */
   function Accordion(element, options){
     this.$element = element;
-    this.options = $.extend({}, Accordion.defaults, this.$element.data(), options || {});
+    this.options = $.extend({}, Accordion.defaults, this.$element.data(), options);
 
     this._init();
     /**

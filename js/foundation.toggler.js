@@ -14,19 +14,20 @@
    * @param {Object} element - jQuery object to add the trigger to.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  function Toggler(element) {
+  function Toggler(element, options) {
     this.$element = element;
-    this.options = $.extend({}, Toggler.defaults, element.data());
+    this.options = $.extend({}, Toggler.defaults, element.data(), options);
     this.className = '';
 
     this._init();
     this._events();
 
-    /**
-     * Fires when the plugin has been successfuly initialized.
-     * @event Toggler#init
-     */
-    this.$element.trigger('init.zf.toggler');
+    Foundation.registerPlugin(this);
+    // /**
+    //  * Fires when the plugin has been successfuly initialized.
+    //  * @event Toggler#init
+    //  */
+    // this.$element.trigger('init.zf.toggler');
   }
 
   Toggler.defaults = {
