@@ -45,7 +45,13 @@
           id = $content[0].id || Foundation.GetYoDigits(6, 'accordion'),
           linkId = el.id || id + '-label';
 
-      $el.find('a').attr({'aria-controls': id, 'role': 'tab', 'id': linkId});
+      $el.find('a').attr({
+        'aria-controls': id,
+        'role': 'tab',
+        'id': linkId,
+        'aria-expanded': false,
+        'aria-selected': false
+      });
       $content.attr({'role': 'tabpanel', 'aria-labelledby': linkId, 'aria-hidden': true, 'id': id});
     });
     var $initActive = this.$element.find('.is-active').children('[data-tab-content]');
@@ -134,6 +140,10 @@
     if(!firstTime){
       Foundation._reflow(this.$element.data('accordion'));
     }
+    $('#' + $target.attr('aria-labelledby')).attr({
+      'aria-expanded': true,
+      'aria-selected': true
+    })
     /**
      * Fires when the tab is done opening.
      * @event Accordion#down
@@ -161,6 +171,11 @@
 
     $target.attr('aria-hidden', true)
            .parent().removeClass('is-active');
+
+    $('#' + $target.attr('aria-labelledby')).attr({
+     'aria-expanded': false,
+     'aria-selected': false
+    })
 
     /**
      * Fires when the tab is done collapsing up.
