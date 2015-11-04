@@ -34,6 +34,10 @@ $callout-font-color: $body-font-color !default;
 /// @type Color
 $callout-font-color-alt: $body-background !default;
 
+/// Default border radius for callouts.
+/// @type Color
+$callout-radius: $global-radius !default;
+
 /// Amount to tint links used within colored panels. Set to `false` to disable this feature.
 /// @type Number | Boolean
 $callout-link-tint: 30%;
@@ -43,7 +47,7 @@ $callout-link-tint: 30%;
   margin: $callout-margin;
   padding: $callout-padding;
   border: $callout-border;
-  border-radius: $global-radius;
+  border-radius: $callout-radius;
   position: relative;
 
   // Respect the padding, fool.

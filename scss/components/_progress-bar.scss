@@ -22,12 +22,16 @@ $progress-margin-bottom: $global-margin !default;
 /// @type Color
 $progress-meter-background: $primary-color !default;
 
+/// Default radius of a progress bar.
+/// @type Number
+$progress-radius: $global-radius !default;
+
 /// Adds styles for a progress bar container.
 @mixin progress-container {
   background-color: $progress-background;
   height: $progress-height;
   margin-bottom: $progress-margin-bottom;
-  border-radius: $global-radius;
+  border-radius: $progress-radius;
 }
 
 /// Adds styles for the inner meter of a progress bar.

@@ -26,6 +26,10 @@ $pagination-item-padding: rem-calc(3 10);
 /// @type Number
 $pagination-item-spacing: rem-calc(1);
 
+/// Default radius for pagination items.
+/// @type Number
+$pagination-radius: $global-radius;
+
 /// Background color of pagination items on hover.
 /// @type Color
 $pagination-item-background-hover: $light-gray;
@@ -65,7 +69,7 @@ $pagination-arrows: true;
     font-size: $pagination-font-size;
     margin-#{$global-right}: $pagination-item-spacing;
     display: none;
-    border-radius: $global-radius;
+    border-radius: $pagination-radius;
 
     @if not $pagination-mobile-items {
       &:last-child,

@@ -34,6 +34,10 @@ $button-color: #fff !default;
 /// @type List
 $button-color-alt: #000 !default;
 
+/// Border radius for buttons, defaulted to global-radius.
+/// @type Number
+$button-radius: $global-radius !default;
+
 /// Sizes for buttons.
 /// @type Map
 $button-sizes: (
@@ -62,7 +66,7 @@ $button-opacity-disabled: 0.25 !default;
   transition: all 0.25s ease-out;
   vertical-align: middle;
   border: 1px solid transparent;
-  border-radius: $global-radius;
+  border-radius: $button-radius;
 
   padding: $button-padding;
   margin: $button-margin;

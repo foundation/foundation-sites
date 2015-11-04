@@ -58,6 +58,10 @@ $input-transition: box-shadow 0.5s, border-color 0.25s ease-in-out !default;
 /// @type Boolean
 $input-number-spinners: true !default;
 
+/// Radius for text inputs.
+/// @type Border
+$input-radius: $global-radius !default;
+
 @mixin form-element {
   $height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
 
@@ -74,7 +78,7 @@ $input-number-spinners: true !default;
   color: $input-color;
   background-color: $input-background;
   box-shadow: $input-shadow;
-  border-radius: $global-radius;
+  border-radius: $input-radius;
 
   @if hasvalue($input-transition) {
     transition: $input-transition;

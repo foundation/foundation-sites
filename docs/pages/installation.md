@@ -3,15 +3,9 @@ title: Installation
 description: There are many ways to install Foundation, but if you're just getting started, we have a few suggestions.
 ---
 
-## Yeti Launch
+## Command-Line Tool
 
-Yeti Launch is our Mac app for quickly spinning up blank projects for any of the three Foundation frameworks. If you're just getting started with Foundation, we recommend downloading Yeti Launch to get going right away.
-
-<a href="#" class="large button">Download Yeti Launch</a>
-
-### Command-Line Tool
-
-Not a fan of GUIs? The Node-powered Foundation CLI can install the same templae projects for you. Install it with npm:
+The Node-powered Foundation CLI can install the same templae projects for you. Install it with npm:
 
 <div class="callout alert">
   <p>As Foundation for Sites is in alpha, the CLI doesn't yet support this framework.</p>
