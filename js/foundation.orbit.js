@@ -21,6 +21,16 @@
     this._init();
 
     Foundation.registerPlugin(this);
+    Foundation.Keyboard.register('Orbit', {
+        'ltr': {
+          'ARROW_RIGHT': 'next',
+          'ARROW_LEFT': 'previous'
+        },
+        'rtl': {
+          'ARROW_LEFT': 'next',
+          'ARROW_RIGHT': 'previous'
+        }
+    });
     // this.$element.trigger('init.zf.orbit');
   }
   Orbit.defaults = {
@@ -205,7 +215,7 @@
 
     this.$wrapper.add(this.$bullets).on('keydown.zf.orbit', function(e){
       // handle keyboard event with keyboard util
-      Foundation.handleKey(e, _this, {
+      Foundation.Keyboard.handleKey(e, _this, {
         next: function() {
           _this.timer.restart();
           _this.changeSlide(true);

@@ -22,7 +22,13 @@
      * Fires when the plugin has been successfuly initialized.
      * @event Accordion#init
      */
-     Foundation.registerPlugin(this);
+    Foundation.registerPlugin(this);
+    Foundation.Keyboard.register('Accordion', {
+      'ENTER': 'toggle',
+      'SPACE': 'toggle',
+      'ARROW_DOWN': 'next',
+      'ARROW_UP': 'previous'
+    });
   }
 
   Accordion.defaults = {
@@ -79,7 +85,7 @@
             _this.down($tabContent);
           }
         }).on('keydown.zf.accordion', function(e){
-          Foundation.handleKey(e, _this, {
+          Foundation.Keyboard.handleKey(e, _this, {
             toggle: function() {
               _this.toggle($tabContent);
             },
