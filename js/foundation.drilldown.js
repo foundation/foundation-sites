@@ -22,9 +22,20 @@
     this._init();
 
     Foundation.registerPlugin(this);
+    Foundation.registerKeyCommands('Drilldown', {
+      'ENTER': 'open',
+      'SPACE': 'open',
+      'ARROW_RIGHT': 'next',
+      'ARROW_UP': 'up',
+      'ARROW_DOWN': 'down',
+      'ARROW_LEFT': 'previous',
+      'ESCAPE': 'close',
+      'TAB': 'down',
+      'SHIFT_TAB': 'up'
+    });
   }
   Drilldown.defaults = {
-    backButton: '<li class="js-drilldown-back"><a>Back</a></li>',
+    backButton: '<li class="js-drilldown-back" tabindex="0"><a>Back</a></li>',
     wrapper: '<div></div>',
     closeOnClick: false,
     holdOpen: false
@@ -43,6 +54,8 @@
     // console.log(this.$wrapper.outerHeight(), this.$wrapper.css());
     this._prepareMenu();
     // this.getMaxHeight();
+
+    this._keyboardEvents();
   };
   /**
    * prepares drilldown menu by setting attributes to links and elements
@@ -107,15 +120,66 @@
           $body.off('.zf.drilldown');
         });
       }
-    }).on('focus.zf.drilldown', function(){
-      // console.log('something');
-      _this._show($elem);
     });
     $elem.find('.js-drilldown-back').eq(0).on('mousedown.zf.drilldown tap.zf.drilldown touchend.zf.drilldown', function(e){
       //do stuff
       // console.log('back button');
     });
   };
+  Drilldown.prototype._keyboardEvents = function() {
+    var _this = this;
+    this.$menuItems.add(this.$element.find('.js-drilldown-back')).on('keydown.zf.drilldown', function(e){
+      var $element = $(this),
+          $elements = $element.parent('ul').children('li'),
+          $prevElement,
+          $nextElement;
+
+      $elements.each(function(i) {
+        if ($(this).is($element)) {
+          $prevElement = $elements.eq(Math.max(0, i-1));
+          $nextElement = $elements.eq(Math.min(i+1, $elements.length-1));
+          return;
+        }
+      });
+      Foundation.handleKey(e, _this, {
+        next: function() {
+          if ($element.is(_this.$submenuAnchors)) {
+            _this._show($element);
+            setTimeout(function(){$element.find('ul li').filter(_this.$menuItems).first().focus()}, 1);
+          }
+        },
+        previous: function() {
+          _this._hide($element.parent('ul'));
+          setTimeout(function(){$element.parent('ul').parent('li').focus()}, 1);
+        },
+        up: function() {
+          $prevElement.focus();
+        },
+        down: function() {
+          $nextElement.focus();
+        },
+        close: function() {
+          _this._back();
+          //_this.$menuItems.first().focus(); // focus to first element
+        },
+        open: function() {
+          console.log('Open');
+          if (!$element.is(_this.$menuItems)) { // not menu item means back button
+            _this._hide($element.parent('ul'));
+            setTimeout(function(){$element.parent('ul').parent('li').focus()}, 1);
+          } else if ($element.is(_this.$submenuAnchors)) {
+            _this._show($element);
+            setTimeout(function(){$element.find('ul li').filter(_this.$menuItems).first().focus()}, 1);
+          }
+        },
+        handled: function() {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+        }
+      });
+    }); // end keyboardAccess
+  };
+
   /**
    * Closes all open elements, and returns to root menu.
    * @function
@@ -143,19 +207,10 @@
     var _this = this;
     $elem.off('mousedown.zf.drilldown tap.zf.drilldown touchend.zf.drilldown');
     $elem.children('.js-drilldown-back')
-        .on('mousedown.zf.drilldown tap.zf.drilldown touchend.zf.drilldown', function(e){
-          // console.log('mouseup on back');
-          $elem.addClass('is-closing').on('transitionend.zf.drilldown', function(e){
-            // e.stopImmediatePropagation();
-            // console.log('different transitionend');
-            $elem.removeClass('is-active is-closing').off('transitionend.zf.drilldown');
-            /**
-             * Fires when element has closed an open menu.
-             * @event Drilldown#back
-             */
-            _this.$element.trigger('back.zf.drilldown');
-          });
-        });
+      .on('mousedown.zf.drilldown tap.zf.drilldown touchend.zf.drilldown', function(e){
+        // console.log('mouseup on back');
+        _this._hide($elem);
+      });
   };
   /**
    * Adds event listener to menu items w/o submenus to close open menus on click.
@@ -180,9 +235,29 @@
    * @param {jQuery} $elem - the current element with a submenu to open.
    */
   Drilldown.prototype._show = function($elem){
+    console.log('Showing', $elem);
     $elem.children('[data-submenu]').addClass('is-active');
 
     this.$element.trigger('open.zf.drilldown', [$elem]);
+  };
+  /**
+   * Hides a submenu
+   * @function
+   * @fires Drilldown#hide
+   * @param {jQuery} $elem - the current sub-menu to add `back` event.
+   */
+  Drilldown.prototype._hide = function($elem){
+    var _this = this;
+    $elem.addClass('is-closing').on('transitionend.zf.drilldown', function(e){
+      // e.stopImmediatePropagation();
+      // console.log('different transitionend');
+      $elem.removeClass('is-active is-closing').off('transitionend.zf.drilldown');
+      /**
+       * Fires when element has closed an open menu.
+       * @event Drilldown#back
+       */
+      _this.$element.trigger('hide.zf.drilldown');
+    });
   };
   /**
    * Iterates through the nested menus to calculate the min-height, and max-width for the menu.

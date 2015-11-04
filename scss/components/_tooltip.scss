@@ -10,6 +10,10 @@
 /// @type Color
 $tooltip-background-color: $black !default;
 
+/// Default color of the tooltip font.
+/// @type Color
+$tooltip-color: $white;
+
 /// Default padding of the tooltip background.
 /// @type Number
 $tooltip-padding: 0.75rem !default;
@@ -47,7 +51,7 @@ $tooltip-radius: $global-radius !default;
 
 @mixin tooltip {
   background-color: $tooltip-background-color;
-  color: $white;
+  color: $tooltip-color;
   font-size: $tooltip-font-size;
   padding: $tooltip-padding;
   position: absolute;
