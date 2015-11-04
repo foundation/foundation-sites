@@ -27,7 +27,11 @@ In this example, we use the `.show` visibility classes to show certain strings o
 
 These classes automatically hide the element on screen sizes *below* what's specified in the class. So `.show-for-medium` will hide the element on small, and show it on medium and larger.
 
-A separate set of classes allow you to show content *only* on a certain screen size. Just add `-only` to the end of the class. (Don't see any text below the code sample? You must be on an *extra* large screen.)
+A separate set of classes allow you to show content *only* on a certain screen size. Just add `-only` to the end of the class.
+
+<div class="primary callout">
+  <p>Don't see any text below the code sample? You must be on an *extra* large screen.</p>
+</div>
 
 ```html_example
 <p class="show-for-small-only">You are <em>definitely</em> on a small screen.</p>
@@ -95,6 +99,10 @@ To visually hide content, while still allowing assistive technology to read it, 
 
 To hide text from assistive technology, while still keeping it visible, add the attribute `aria-hidden="true"`. This doesn't affect how the element looks, but screen readers will skip over it.
 
+<div class="primary callout">
+  <p>It's usually not a good idea to hide content from screen readers. <code>aria-hidden</code> is best used to mask purely visual elements of a page.</p>
+</div>
+
 ```html_example
 <p aria-hidden="true">This text can be seen, but won't be read by a screen reader.</p>
 ```
@@ -109,10 +117,8 @@ Use the class `.show-on-focus` to hide an element, except when it has focus. Add
 <p><a class="show-on-focus" href="#mainContent">Skip to Content</a></p>
 
 <header id="header" role="banner">
-
 </header>
 
 <main id="mainContent" role="main" tabindex="0">
-
 </main>
 ```
