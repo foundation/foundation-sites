@@ -183,6 +183,7 @@
     this.$element.removeClass('is-anchored is-at-' + notStuckTo)
                  .addClass('is-stuck is-at-' + stickTo)
                  .css(css)
+				 .css("left",this.$container.offset().left + parseInt(this.$container.css("padding-left")))
                  /**
                   * Fires when the $element has become `position: fixed;`
                   * Namespaced to `top` or `bottom`.
@@ -217,6 +218,7 @@
     this.$element.removeClass('is-stuck is-at-' + stickTo)
                  .addClass('is-anchored is-at-' + (isTop ? 'top' : 'bottom'))
                  .css(css)
+				 .css("left","")
                  /**
                   * Fires when the $element has become anchored.
                   * Namespaced to `top` or `bottom`.
