@@ -19,30 +19,8 @@
 {{!-- Start container for docs and table of contents --}}
 <div class="row">
 
-{{!-- Start container for table of contents --}}
-<div class="large-3 large-push-9 columns" data-sticky-container>
-  <nav class="columns" data-sticky data-stick-at='#docs' data-sticky-on='large'>
-    <div class="docs-toc hide" id="docsTOC" data-toggler=".hide">
-      <ul class="vertical menu docs-sub-menu" data-docs-toc>
-        <li class="docs-menu-title">On this page:</li>
-      </ul>
-      <ul class="vertical menu docs-sub-menu">
-        <li class="docs-menu-title">Contribute:</li>
-        <li><a href="{{ editLink fileName }}">Edit this Page</a></li>
-        {{#if library}}
-          <li><a href="{{ library.github }}/issues">Report a Bug</a></li>
-        {{else}}
-          <li><a href="{{ issueLink title }}">Report a Bug</a></li>
-        {{/if}}
-        {{ sourceLink _adapterData }}
-      </ul>
-    </div>
-  </nav>
-</div>
-{{!-- End container for table of contents --}}
-
 {{!-- Start container for docs --}}
-<div class="large-9 large-pull-3 columns" id='docs'>
+<div class="large-9 columns" id="docs">
 
 {{ docs }}
 
@@ -358,6 +336,28 @@ Foundation.plugin({{name}});</code></pre></div>
 
 </div>
 {{!-- End container for docs --}}
+
+{{!-- Start container for table of contents --}}
+<div class="large-3 columns" data-sticky-container>
+  <nav class="columns" data-sticky data-stick-at='#docs' data-sticky-on='large'>
+    <div class="docs-toc hide" id="docsTOC" data-toggler=".hide">
+      <ul class="vertical menu docs-sub-menu" data-docs-toc>
+        <li class="docs-menu-title">On this page:</li>
+      </ul>
+      <ul class="vertical menu docs-sub-menu">
+        <li class="docs-menu-title">Contribute:</li>
+        <li><a href="{{ editLink fileName }}">Edit this Page</a></li>
+        {{#if library}}
+          <li><a href="{{ library.github }}/issues">Report a Bug</a></li>
+        {{else}}
+          <li><a href="{{ issueLink title }}">Report a Bug</a></li>
+        {{/if}}
+        {{ sourceLink _adapterData }}
+      </ul>
+    </div>
+  </nav>
+</div>
+{{!-- End container for table of contents --}}
 
 </div>
 {{!-- End container for docs and table of contents --}}
