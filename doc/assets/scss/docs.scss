@@ -74,6 +74,24 @@ a#notice {
   }
 }
 
+.spaced-divider hr {
+  margin: 0.5rem;
+  border: 1px solid #4e4e4e;
+}
+
+.top-bar-section .dropdown li.title{
+  color: rgba(255,255,255,0.5);
+  padding-top: 10px;
+  padding-left: 15px;
+  font-size: 0.8em;
+//  text-transform: uppercase;
+//  letter-spacing: 2px;
+}
+
+.top-bar-section .divider, .top-bar-section [role="separator"]{
+  border-top: solid 1px #484848;
+}
+
 .row {
   max-width: rem-calc(1440);
   &.display {
