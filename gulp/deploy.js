@@ -23,3 +23,20 @@ gulp.task('deploy:dist', ['sass:foundation', 'javascript:foundation'], function(
       .pipe(rename('foundation.min.js'))
       .pipe(gulp.dest('./dist'));
 });
+gulp.task('deploy:custom', ['sass:foundation', 'javascript:foundation'], function() {
+  var cssFilter = filter(['*.css']);
+  var jsFilter  = filter(['*.js']);
+
+  return gulp.src(['./_build/assets/css/foundation.css', '_build/assets/js/foundation.js'])
+    .pipe(cssFilter)
+      .pipe(gulp.dest('./_build/assets/css'))
+      .pipe(minifyCss())
+      .pipe(rename('foundation.min.css'))
+      .pipe(gulp.dest('./_build/assets/css'))
+    .pipe(cssFilter.restore())
+    .pipe(jsFilter)
+      .pipe(gulp.dest('./_build/assets/js'))
+      .pipe(uglify())
+      .pipe(rename('foundation.min.js'))
+      .pipe(gulp.dest('./_build/assets/js'));
+});
