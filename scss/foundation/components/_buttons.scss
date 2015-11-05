@@ -251,7 +251,7 @@ $button-disabled-cursor: $cursor-default-value !default;
     //firefox 2px fix
     button::-moz-focus-inner {border:0; padding:0;}
 
-    @media #{$medium-up} {
+    @media #{map-get($queries-up, medium)} {
       button, .button {
         @include button-base($style:false, $display:inline-block);
         @include button-size($padding:false, $full-width:false);

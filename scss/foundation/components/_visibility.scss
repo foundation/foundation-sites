@@ -16,19 +16,7 @@ $include-legacy-visibility-classes: true !default;
 // Media Class Names
 //
 // Visibility Breakpoints
-$visibility-breakpoint-sizes:
-  small,
-  medium,
-  large,
-  xlarge,
-  xxlarge;
-
-$visibility-breakpoint-queries:
-  unquote($small-up),
-  unquote($medium-up),
-  unquote($large-up),
-  unquote($xlarge-up),
-  unquote($xxlarge-up);
+$visibility-breakpoint-sizes: map-keys($all-breakpoints);
 
 @mixin visibility-loop {
   @each $current-visibility-breakpoint in $visibility-breakpoint-sizes {
@@ -240,7 +228,7 @@ $visibility-breakpoint-queries:
     }
 
     /* #{$current-visibility-breakpoint} displays */
-    @media #{nth($visibility-breakpoint-queries, index($visibility-breakpoint-sizes, $current-visibility-breakpoint))} {
+    @media #{map-get($queries-up, $current-visibility-breakpoint)} {
       #{$visibility-inherit-list} {
         display: inherit !important;
       }

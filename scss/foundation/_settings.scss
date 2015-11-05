@@ -156,31 +156,10 @@ $include-html-global-classes: $include-html-classes;
 // $large-breakpoint:  em-calc(1440);
 // $xlarge-breakpoint: em-calc(1920);
 
-// $small-range:   (0, $small-breakpoint);
-// $medium-range:  ($small-breakpoint  + em-calc(1), $medium-breakpoint);
-// $large-range:   ($medium-breakpoint + em-calc(1), $large-breakpoint);
-// $xlarge-range:  ($large-breakpoint  + em-calc(1), $xlarge-breakpoint);
-// $xxlarge-range: ($xlarge-breakpoint + em-calc(1), em-calc(99999999));
-
 // $screen: "only screen";
 
 // $landscape: "#{$screen} and (orientation: landscape)";
 // $portrait: "#{$screen} and (orientation: portrait)";
-
-// $small-up: $screen;
-// $small-only: "#{$screen} and (max-width: #{upper-bound($small-range)})";
-
-// $medium-up: "#{$screen} and (min-width:#{lower-bound($medium-range)})";
-// $medium-only: "#{$screen} and (min-width:#{lower-bound($medium-range)}) and (max-width:#{upper-bound($medium-range)})";
-
-// $large-up: "#{$screen} and (min-width:#{lower-bound($large-range)})";
-// $large-only: "#{$screen} and (min-width:#{lower-bound($large-range)}) and (max-width:#{upper-bound($large-range)})";
-
-// $xlarge-up: "#{$screen} and (min-width:#{lower-bound($xlarge-range)})";
-// $xlarge-only: "#{$screen} and (min-width:#{lower-bound($xlarge-range)}) and (max-width:#{upper-bound($xlarge-range)})";
-
-// $xxlarge-up: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)})";
-// $xxlarge-only: "#{$screen} and (min-width:#{lower-bound($xxlarge-range)}) and (max-width:#{upper-bound($xxlarge-range)})";
 
 // $retina: (
 //  "#{$screen} and (-webkit-min-device-pixel-ratio: 2)",
@@ -192,9 +171,9 @@ $include-html-global-classes: $include-html-classes;
 // );
 
 // Legacy
-// $small: $medium-up;
-// $medium: $medium-up;
-// $large: $large-up;
+// $small: map-get($queries-up, small);
+// $medium: map-get($queries-up, medium);
+// $large: map-get($queries-up, large);
 
 // We use this as cursors values for enabling the option of having custom cursors in the whole site's stylesheet
 // $cursor-crosshair-value: crosshair;
@@ -1466,8 +1445,8 @@ $include-html-global-classes: $include-html-classes;
 // Transitions and breakpoint styles
 // $topbar-transition-speed: 300ms;
 // Using rem-calc for the below breakpoint causes issues with top bar
-// $topbar-breakpoint: #{lower-bound($medium-range)}; // Change to 9999px for always mobile layout
-// $topbar-media-query: "#{$screen} and (min-width:#{lower-bound($topbar-breakpoint)})";
+// $topbar-breakpoint: #{nth(map-get($ranges, medium), 1)}; // Change to 9999px for always mobile layout
+// $topbar-media-query: "#{$screen} and (min-width: #{$topbar-breakpoint})";
 
 // Top-bar input styles
 // $topbar-input-height: rem-calc(28);

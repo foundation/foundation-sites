@@ -110,7 +110,7 @@ $tabs-vertical-navigation-margin-bottom: 1.25rem !default;
       }
     }
 
-    @media #{$medium-up} {
+    @media #{map-get($queries-up, medium)} {
       .tabs {
         &.vertical {
           float: $default-float;
