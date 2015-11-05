@@ -106,7 +106,7 @@
     var self = this,
         bind = function(){
           var $this = S(this),
-              should_bind_events = !$this.data(self.attr_name(true) + '-init');
+              should_bind_events = !S(self).data(self.attr_name(true) + '-init');
           $this.data(self.attr_name(true) + '-init', $.extend({}, self.settings, (options || method), self.data_options($this)));
 
           if (should_bind_events) {

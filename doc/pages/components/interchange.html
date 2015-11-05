@@ -8,6 +8,7 @@ layout: component.html
 ***
 
 <img data-interchange="[{{assets}}/img/examples/space-small.jpg, (small)], [{{assets}}/img/examples/space-medium.jpg, (medium)], [{{assets}}/img/examples/space-large.jpg, (large)]">
+
 <noscript><img src="{{assets}}/img/examples/space-default.jpg"></noscript>
 
 ***
@@ -21,7 +22,8 @@ We use the data-interchange attribute on a markup container (probably a div) to 
 <div id="interchangeMarkup" data-interchange="[{{relative absolute 'dist/docs/components/interchange-default.html'}}, (default)], [{{relative absolute 'dist/docs/components/interchange-medium.html'}}, (medium)], [{{relative absolute 'dist/docs/components/interchange-large.html'}}, (large)]">
   <p><img src="{{assets}}/img/examples/map-small.png" /></p>
 </div>
-<div><br></div>
+
+<br>
 
 {{#markdown}}
 ```html
@@ -60,7 +62,7 @@ You should always specify a `default` directive for Interchange.
 
 ### Using Interchange with background-images
 
-When you add a data-interchange attribute containing image paths (.jpg, .jpeg, .png, .gif, .bmp, .tiff), instead of replacing the element content it will set a background-image css property with the corresponding path. 
+When you add a data-interchange attribute containing image paths (.jpg, .jpeg, .png, .gif, .bmp, .tiff), instead of replacing the element content it will set a background-image css property with the corresponding path.
 
 {{#markdown}}
 ```html
@@ -68,7 +70,7 @@ When you add a data-interchange attribute containing image paths (.jpg, .jpeg, .
 ```
 {{/markdown}}
 
-This solution does not support browsers with JavaScript disabled. To add a fallback you can add a default background-image in your css but this can result in loading more than one image on some device.  This method is only switching the background-image on the element. You will need to set the others background properties in your css (background-repeat, background-position, background-size...). 
+This solution does not support browsers with JavaScript disabled. To add a fallback you can add a default background-image in your css but this can result in loading more than one image on some device.  This method is only switching the background-image on the element. You will need to set the others background properties in your css (background-repeat, background-position, background-size...).
 
 
 ***
@@ -116,7 +118,7 @@ If you add new content after the page has been loaded, you will need to reinitia
 
 {{#markdown}}
 ```javascript
-$(document).foundation(); 
+$(document).foundation();
 ```
 {{/markdown}}
 
@@ -143,5 +145,3 @@ Just add `foundation.interchange.js` AFTER the `foundation.js` file. Your markup
 Required Foundation Library: `foundation.interchange.js`
 
 ***
-
-

@@ -45,7 +45,6 @@ $fieldset-padding: rem-calc(20) !default;
 $fieldset-margin: rem-calc(18 0) !default;
 
 // We use these to style the legends when you use them
-$legend-bg: $white !default;
 $legend-font-weight: $font-weight-bold !default;
 $legend-padding: rem-calc(0 3) !default;
 
@@ -136,7 +135,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
   }
   // Basic focus styles
   &:focus {
-    background: $input-focus-bg-color;
+    background-color: $input-focus-bg-color;
     border-color: $input-focus-border-color;
     outline: none;
   }
@@ -181,7 +180,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
   }
   @else if $alignment == inline {
     margin: 0 0 $form-spacing 0;
-    padding: $form-spacing / 2 + rem-calc($input-border-width) 0;
+    line-height: $input-font-size + ($form-spacing * 1.5);
   }
 }
 
@@ -277,7 +276,6 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 
   // and legend styles
   legend {
-    background: $legend-bg;
     font-weight: $legend-font-weight;
     margin: 0;
     margin-#{$default-float}: rem-calc(-3);

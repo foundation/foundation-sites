@@ -38,9 +38,14 @@
       var usual_tab_behavior =  function (e, target) {
         var settings = S(target).closest('[' + self.attr_name() + ']').data(self.attr_name(true) + '-init');
         if (!settings.is_hover || Modernizr.touch) {
-          e.preventDefault();
-          e.stopPropagation();
+          // if user did not pressed tab key, prevent default action
+          var keyCode = e.keyCode || e.which;
+          if (keyCode !== 9) { 
+            e.preventDefault();
+            e.stopPropagation();
+          }
           self.toggle_active_tab(S(target).parent());
+          
         }
       };
 
@@ -48,14 +53,12 @@
         .off('.tab')
         // Key event: focus/tab key
         .on('keydown.fndtn.tab', '[' + this.attr_name() + '] > * > a', function(e) {
-          var el = this;
           var keyCode = e.keyCode || e.which;
-            // if user pressed tab key
-            if (keyCode == 9) { 
-              e.preventDefault();
-              // TODO: Change usual_tab_behavior into accessibility function?
-              usual_tab_behavior(e, el);
-            } 
+          // if user pressed tab key
+          if (keyCode === 13 || keyCode === 32) { // enter or space
+            var el = this;
+            usual_tab_behavior(e, el);
+          } 
         })
         // Click event: tab title
         .on('click.fndtn.tab', '[' + this.attr_name() + '] > * > a', function(e) {
@@ -219,8 +222,8 @@
       tab.addClass(settings.active_class).triggerHandler('opened');
       tab_link.attr({'aria-selected' : 'true',  tabindex : 0});
       siblings.removeClass(settings.active_class)
-      siblings.find('a').attr({'aria-selected' : 'false',  tabindex : -1});
-      target.siblings().removeClass(settings.active_class).attr({'aria-hidden' : 'true',  tabindex : -1});
+      siblings.find('a').attr({'aria-selected' : 'false'/*,  tabindex : -1*/});
+      target.siblings().removeClass(settings.active_class).attr({'aria-hidden' : 'true'/*,  tabindex : -1*/});
       target.addClass(settings.active_class).attr('aria-hidden', 'false').removeAttr('tabindex');
       settings.callback(tab);
       target.triggerHandler('toggled', [target]);

@@ -136,6 +136,9 @@ $z-index-base: 1005;
   @if $box-shadow {
     box-shadow: $reveal-box-shadow;
   }
+  @else{
+       box-shadow: none;
+  }
 
   // We can control how much radius is used on the modal
   @if $radius == true { @include radius($reveal-radius); }
@@ -160,6 +163,7 @@ $z-index-base: 1005;
   position: absolute;
   top: $reveal-close-top;
   #{$opposite-direction}: $reveal-close-side;
+  text-decoration: none;
 }
 
 @include exports("reveal") {

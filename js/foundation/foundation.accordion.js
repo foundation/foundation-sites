@@ -29,7 +29,8 @@
         var accordion = S(this).closest('[' + self.attr_name() + ']'),
             groupSelector = self.attr_name() + '=' + accordion.attr(self.attr_name()),
             settings = accordion.data(self.attr_name(true) + '-init') || self.settings,
-            target = S('#' + this.href.split('#')[1]),
+            contentAttr = S(this).context.attributes['data-content'],
+            target = S('#' + (contentAttr ? contentAttr.value : this.href.split('#')[1])),
             aunts = $('> dd, > li', accordion),
             siblings = aunts.children('.' + settings.content_class),
             active_content = siblings.filter('.' + settings.active_class);
@@ -80,6 +81,43 @@
         $instance.attr('aria-multiselectable','true');
       }
     },
+	
+  	toggle : function(options) {
+  		var options = typeof options !== 'undefined' ? options : {};
+  		var selector = typeof options.selector !== 'undefined' ? options.selector : '';
+  		var toggle_state = typeof options.toggle_state !== 'undefined' ? options.toggle_state : '';
+  		var $accordion = typeof options.$accordion !== 'undefined' ? options.$accordion : this.S(this.scope).closest('[' + this.attr_name() + ']');
+  
+  		var $items = $accordion.find('> dd' + selector + ', > li' + selector);
+  		if ( $items.length < 1 ) {
+  			if ( window.console ) {
+  				console.error('Selection not found.', selector);
+  			}
+  			return false;
+  		}
+  
+  		var S = this.S;
+  		var active_class = this.settings.active_class;
+  		$items.each(function() {
+  			var $item = S(this);
+  			var is_active = $item.hasClass(active_class);
+  			if ( ( is_active && toggle_state === 'close' ) || ( !is_active && toggle_state === 'open' ) || toggle_state === '' ) {
+  				$item.find('> a').trigger('click.fndtn.accordion');
+  			}
+  		});
+  	},
+  
+  	open : function(options) {
+  		var options = typeof options !== 'undefined' ? options : {};
+  		options.toggle_state = 'open';
+  		this.toggle(options);
+  	},
+  
+  	close : function(options) {
+  		var options = typeof options !== 'undefined' ? options : {};
+  		options.toggle_state = 'close';
+  		this.toggle(options);
+  	},	
 
     off : function () {},
 

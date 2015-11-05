@@ -67,22 +67,12 @@ $base-line-height: 1.5 !default;
 
 // @mixins
 //
-// We use this to add transitions to elements
-// $property - Default: all, Options: http://www.w3.org/TR/css3-transitions/#animatable-properties
-// $speed - Default: 300ms
-// $ease - Default: ease-out, Options: http://css-tricks.com/almanac/properties/t/transition-timing-function/
-@mixin single-transition($property:all, $speed:300ms, $ease:ease-out) {
-  @include transition($property, $speed, $ease);
-}
-
-// @mixins
-//
 // We use this to add single or multiple transitions to elements
 // $property - Default: all, Options: http://www.w3.org/TR/css3-transitions/#animatable-properties
 // $speed - Default: 300ms
 // $ease - Default: ease-out, Options: http://css-tricks.com/almanac/properties/t/transition-timing-function/
 // $delay - Default: null (0s)
-@mixin transition($property:all, $speed:300ms, $ease:ease-out, $delay:null) {
+@mixin single-transition($property:all, $speed:300ms, $ease:ease-out, $delay:null) {
   $transition: none;
 
   @if length($property) > 1 {
@@ -224,10 +214,18 @@ $base-line-height: 1.5 !default;
       0 0 0 $thickness $color,
       0 $gap + $thickness 0 $thickness $color,
       0 (2 * $gap + 2*$thickness) 0 $thickness $color;
+    -webkit-box-shadow:
+      0 0 0 $thickness $color,
+      0 $gap + $thickness 0 $thickness $color,
+      0 (2 * $gap + 2*$thickness) 0 $thickness $color;
     width: $width;
   }
   span:hover:after {
     box-shadow:
+      0 0 0 $thickness $hover-color,
+      0 $gap + $thickness 0 $thickness $hover-color,
+      0 (2 * $gap + 2*$thickness) 0 $thickness $hover-color;
+    -webkit-box-shadow:
       0 0 0 $thickness $hover-color,
       0 $gap + $thickness 0 $thickness $hover-color,
       0 (2 * $gap + 2*$thickness) 0 $thickness $hover-color;
