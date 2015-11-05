@@ -292,7 +292,7 @@ $menu-slide: "transform 500ms ease" !default;
   top: 0;
   z-index: 1002;
 
-  @media #{$medium-up} {
+  @media #{map-get($queries-up, medium)} {
     &:hover {
       background: $off-canvas-overlay-background-hover;
     }
@@ -329,7 +329,7 @@ $menu-slide: "transform 500ms ease" !default;
     @include translate3d(0,-100%,0);
     top: 0;
     width: 100%;
-  }  
+  }
   @if $position == bottom {
     @include translate3d(0,100%,0);
     bottom: 0;

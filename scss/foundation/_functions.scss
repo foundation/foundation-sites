@@ -154,3 +154,82 @@ $modules: () !default;
 @function emCalc($values) {
   @return em-calc($values);
 }
+
+
+@function adjacent-breakpoint($breakpoint-name, $direction: 1) {
+  $current-index: index(map-keys($all-breakpoints), $breakpoint-name);
+  $adjacent-index: ($current-index + $direction);
+  $adjacent-name: null;
+  $adjacent-size: null;
+  @if $adjacent-index < 1 or $adjacent-index > length($all-breakpoints) {
+    $adjacent-name: $breakpoint-name;
+    $adjacent-size: map-get($all-breakpoints, $breakpoint-name);
+  } @else {
+    $adjacent-name: nth(map-keys($all-breakpoints), $adjacent-index);
+    $adjacent-size: nth(map-values($all-breakpoints), $adjacent-index);
+  }
+  @return ($adjacent-name: $adjacent-size);
+}
+@function adjacent-breakpoint-size($breakpoint-name, $direction: 1) {
+  $adjacent-breakpoint: adjacent-breakpoint($breakpoint-name, $direction);
+  $adjacent-size: nth(map-values($adjacent-breakpoint), 1);
+  @return $adjacent-size;
+}
+@function adjacent-breakpoint-name($breakpoint-name, $direction: 1) {
+  $adjacent-breakpoint: adjacent-breakpoint($breakpoint-name, $direction);
+  $adjacent-name: nth(map-keys($adjacent-breakpoint), 1);
+  @return $adjacent-name;
+}
+@function prev-breakpoint-size($breakpoint-name) {
+  @return adjacent-breakpoint-size($breakpoint-name, -1);
+}
+@function prev-breakpoint-name($breakpoint-name) {
+  @return adjacent-breakpoint-name($breakpoint-name, -1);
+}
+@function next-breakpoint-size($breakpoint-name) {
+  @return adjacent-breakpoint-size($breakpoint-name, 1);
+}
+@function next-breakpoint-name($breakpoint-name) {
+  @return adjacent-breakpoint-name($breakpoint-name, 1);
+}
+@function breakpoint-range($breakpoint-name) {
+  $breakpoint-size: px-to-em(map-get($all-breakpoints, $breakpoint-name));
+  $next-name: next-breakpoint-name($breakpoint-name);
+  $next-size: next-breakpoint-size($breakpoint-name);
+  @if $next-name == $breakpoint-name {
+    $next-size: (em-to-px($infinity * 1em) + 1px);
+  }
+  $next-size: px-to-em($next-size - 1px);
+  @return ($breakpoint-size, $next-size);
+}
+@function px-to-em($value) {
+  @if is-zero($value) {
+    @return 0;
+  }
+  @if unitless($value) {
+    $value: $value * 1px;
+  }
+  @if unit($value) != 'px' {
+    @return $value;
+  }
+  $em: (round(($value / $rem-base) * 10000) / 10000);
+  @return $em * 1em;
+}
+@function em-to-px($value) {
+  @if is-zero($value) {
+    @return 0;
+  }
+  @if unitless($value) {
+    $value: $value * 1em;
+  }
+  @if unit($value) != 'em' {
+    @return $value;
+  }
+  $px: (($value / 1em) * $rem-base);
+  @return $px;
+}
+@function is-zero($value) {
+  @return
+    type-of($value) == number
+    and strip-unit($value) == 0;
+}

@@ -152,7 +152,7 @@ $clearing-carousel-thumb-active-border: 1px solid rgb(255,255,255) !default;
     }
 
     // Large screen overrides
-    @media #{$medium-up} {
+    @media #{map-get($queries-up, medium)} {
       .clearing-main-prev,
       .clearing-main-next {
         height: 100%;

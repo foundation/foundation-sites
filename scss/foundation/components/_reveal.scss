@@ -81,7 +81,7 @@ $z-index-base: 1005;
     z-index: $z-index-base;
     #{$default-float}: 0;
 
-    @media #{$small-only} {
+    @media #{map-get($queries-only, small)} {
       min-height:100vh;
     }
 
@@ -95,7 +95,7 @@ $z-index-base: 1005;
   }
 
   @if $width {
-    @media #{$medium-up} {
+    @media #{map-get($queries-up, medium)} {
       left: 0;
       margin: 0 auto;
       max-width: $max-width;
@@ -145,7 +145,7 @@ $z-index-base: 1005;
   @else if $radius { @include radius($radius); }
 
   @if $top-offset {
-    @media #{$medium-up} {
+    @media #{map-get($queries-up, medium)} {
       top: $top-offset;
     }
   }

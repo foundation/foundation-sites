@@ -89,7 +89,7 @@ $icon-bar-disabled-cursor: $cursor-disabled-value !default;
     text-align: left;
   }
 
-  &.vertical, &.small-vertical{
+  &.vertical {
     height: 100%;
     width: auto;
 
@@ -100,27 +100,17 @@ $icon-bar-disabled-cursor: $cursor-disabled-value !default;
     }
   }
 
-  &.medium-vertical {
-    @media #{$medium-up} {
-      height: 100%;
-      width: auto;
-
-      .item {
-        float: none;
-        margin: auto;
+  @each $breakpoint in map-keys($regular-breakpoints) {
+    &.#{$breakpoint}-vertical {
+      @media #{map-get($queries-up, $breakpoint)} {
+        height: 100%;
         width: auto;
-      }
-    }
-  }
-  &.large-vertical {
-    @media #{$large-up} {
-      height: 100%;
-      width: auto;
 
-      .item {
-        float: none;
-        margin: auto;
-        width: auto;
+        .item {
+          float: none;
+          margin: auto;
+          width: auto;
+        }
       }
     }
   }
@@ -241,220 +231,36 @@ $icon-bar-disabled-cursor: $cursor-disabled-value !default;
     @include icon-bar-style($bar-bg, $bar-font-color, $bar-font-color-hover, $bar-hover-color, $bar-icon-color, $bar-icon-color-hover, $bar-active-color, $base-style, $disabled);
 
   // Counts
-
-  &.two-up {
-    .item { width: 50%; }
-    &.vertical .item, &.small-vertical .item { width: auto; }
-    &.medium-vertical .item {
-      @media #{$medium-up} {
-        width: auto;
-      }
-    }
-    &.large-vertical .item {
-      @media #{$large-up} {
-        width: auto;
-      }
-    }
-  }
-  &.three-up {
-    .item { width: 33.3333%; }
-    &.vertical .item, &.small-vertical .item { width: auto; }
-    &.medium-vertical .item {
-      @media #{$medium-up} {
-        width: auto;
-      }
-    }
-    &.large-vertical .item {
-      @media #{$large-up} {
-        width: auto;
-      }
-    }
-  }
-  &.four-up {
-    .item { width: 25%; }
-    &.vertical .item, &.small-vertical .item { width: auto; }
-    &.medium-vertical .item {
-      @media #{$medium-up} {
-        width: auto;
-      }
-    }
-    &.large-vertical .item {
-      @media #{$large-up} {
-        width: auto;
-      }
-    }
-  }
-  &.five-up {
-    .item { width: 20%; }
-    &.vertical .item, &.small-vertical .item { width: auto; }
-    &.medium-vertical .item {
-      @media #{$medium-up} {
-        width: auto;
-      }
-    }
-    &.large-vertical .item {
-      @media #{$large-up} {
-        width: auto;
-      }
-    }
-  }
-  &.six-up {
-    .item { width: 16.66667%; }
-    &.vertical .item, &.small-vertical .item { width: auto; }
-    &.medium-vertical .item {
-      @media #{$medium-up} {
-        width: auto;
-      }
-    }
-    &.large-vertical .item {
-      @media #{$large-up} {
-        width: auto;
-      }
-    }
-  }
-  &.seven-up {
-    .item { width: 14.28571%; }
-    &.vertical .item, &.small-vertical .item { width: auto; }
-    &.medium-vertical .item {
-      @media #{$medium-up} {
+  $counts: (
+    two: 2,
+    three: 3,
+    four: 4,
+    five: 5,
+    six: 6,
+    seven: 7,
+    eight: 8,
+  );
+  @each $count in map-keys($counts) {
+    &.#{$count}-up {
+      .item { width: (100% / map-get($counts, $count)); }
+      &.vertical .item { width: auto; }
+      @each $breakpoint in map-keys($regular-breakpoints) {
+        &.#{$breakpoint}-vertical .item {
+          @media #{map-get($queries-up, $breakpoint)} {
             width: auto;
-      }
-    }
-    &.large-vertical .item {
-      @media #{$large-up} {
-         width: auto;
+          }
+        }
       }
     }
   }
-  &.eight-up {
-    .item { width: 12.5%; }
-    &.vertical .item, &.small-vertical .item { width: auto; }
-    &.medium-vertical .item {
-      @media #{$medium-up} {
-            width: auto;
-      }
-    }
-    &.large-vertical .item {
-      @media #{$large-up} {
-         width: auto;
-      }
-    }
-  }
+  
+  
 }
 
 @include exports("icon-bar") {
   @if $include-html-icon-bar-classes {
     .icon-bar {
       @include icon-bar;
-    }
-  }
-}
-
-@if $include-html-icon-bar-classes {
-
-  // toolbar styles
-
-  .icon-bar {
-
-    // Counts
-
-    &.two-up {
-      .item { width: 50%; }
-      &.vertical .item, &.small-vertical .item { width: auto; }
-      &.medium-vertical .item {
-        @media #{$medium-up} {
-          width: auto;
-        }
-      }
-      &.large-vertical .item {
-        @media #{$large-up} {
-          width: auto;
-        }
-      }
-    }
-    &.three-up {
-      .item { width: 33.3333%; }
-      &.vertical .item, &.small-vertical .item { width: auto; }
-      &.medium-vertical .item {
-        @media #{$medium-up} {
-          width: auto;
-        }
-      }
-      &.large-vertical .item {
-        @media #{$large-up} {
-          width: auto;
-        }
-      }
-    }
-    &.four-up {
-      .item { width: 25%; }
-      &.vertical .item, &.small-vertical .item { width: auto; }
-      &.medium-vertical .item {
-        @media #{$medium-up} {
-          width: auto;
-        }
-      }
-      &.large-vertical .item {
-        @media #{$large-up} {
-          width: auto;
-        }
-      }
-    }
-    &.five-up {
-      .item { width: 20%; }
-      &.vertical .item, &.small-vertical .item { width: auto; }
-      &.medium-vertical .item {
-        @media #{$medium-up} {
-          width: auto;
-        }
-      }
-      &.large-vertical .item {
-        @media #{$large-up} {
-          width: auto;
-        }
-      }
-    }
-    &.six-up {
-      .item { width: 16.66667%; }
-      &.vertical .item, &.small-vertical .item { width: auto; }
-      &.medium-vertical .item {
-        @media #{$medium-up} {
-          width: auto;
-        }
-      }
-      &.large-vertical .item {
-        @media #{$large-up} {
-          width: auto;
-        }
-      }
-    }
-    &.seven-up {
-      .item { width: 14.28571%; }
-      &.vertical .item, &.small-vertical .item { width: auto; }
-      &.medium-vertical .item {
-        @media #{$medium-up} {
-              width: auto;
-        }
-      }
-      &.large-vertical .item {
-        @media #{$large-up} {
-           width: auto;
-        }
-      }
-    }
-    &.eight-up {
-      .item { width: 12.5%; }
-      &.vertical .item, &.small-vertical .item { width: auto; }
-      &.medium-vertical .item {
-        @media #{$medium-up} {
-              width: auto;
-        }
-      }
-      &.large-vertical .item {
-        @media #{$large-up} {
-           width: auto;
-        }
-      }
     }
   }
 }

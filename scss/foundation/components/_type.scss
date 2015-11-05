@@ -127,45 +127,33 @@ $microformat-abbr-font-decoration: none !default;
 // Controls the page margin when printing the website
 $print-margin: 0.34in !default;
 
-// Text alignment class names
-$align-class-names:
-  small-only,
-  small,
-  medium-only,
-  medium,
-  large-only,
-  large,
-  xlarge-only,
-  xlarge,
-  xxlarge-only,
-  xxlarge;
+// Text Breakpoints
+$text-breakpoint-sizes: map-keys($all-breakpoints);
 
-// Text alignment breakpoints
-$align-class-breakpoints:
-  $small-only,
-  $small-up,
-  $medium-only,
-  $medium-up,
-  $large-only,
-  $large-up,
-  $xlarge-only,
-  $xlarge-up,
-  $xxlarge-only,
-  $xxlarge-up;
-
-// Generates text align and justify classes
-@mixin align-classes{
-  .text-left    { text-align: left !important; }
-  .text-right   { text-align: right !important; }
-  .text-center  { text-align: center !important; }
-  .text-justify { text-align: justify !important; }
-
-  @for $i from 1 through length($align-class-names) {
-    @media #{(nth($align-class-breakpoints, $i))} {
-      .#{(nth($align-class-names, $i))}-text-left { text-align: left !important; }
-      .#{(nth($align-class-names, $i))}-text-right   { text-align: right !important; }
-      .#{(nth($align-class-names, $i))}-text-center  { text-align: center !important; }
-      .#{(nth($align-class-names, $i))}-text-justify { text-align: justify !important; }
+@mixin text-alignment-loop {
+  $text-alignments: left, right, center, justify;
+  
+  // Global Text Styles
+  @each $alignment in $text-alignments {
+    .text-#{$alignment} {
+      text-align: #{$alignment} !important;
+    }
+  }
+  
+  @each $current-text-breakpoint in $text-breakpoint-sizes {
+    @media #{map-get($queries-only, $current-text-breakpoint)} {
+      @each $alignment in $text-alignments {
+        .#{$current-text-breakpoint}-only-text-#{$alignment} {
+          text-align: #{$alignment} !important;
+        }
+      }
+    }
+    @media #{map-get($queries-up, $current-text-breakpoint)} {
+      @each $alignment in $text-alignments {
+        .#{$current-text-breakpoint}-text-#{$alignment} {
+          text-align: #{$alignment} !important;
+        }
+      }
     }
   }
 }
@@ -190,7 +178,7 @@ $align-class-breakpoints:
 @include exports("type") {
   @if $include-html-type-classes {
     // Responsive Text alignment
-    @include align-classes;
+    @include text-alignment-loop;
 
     /* Typography resets */
     div,
@@ -457,7 +445,7 @@ $align-class-breakpoints:
     }
 
 
-    @media #{$medium-up} {
+    @media #{map-get($queries-up, medium)} {
       h1, h2, h3, h4, h5, h6 { line-height: $header-line-height; }
       h1 { font-size: $h1-font-size; }
       h2 { font-size: $h2-font-size; }

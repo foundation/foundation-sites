@@ -75,8 +75,8 @@ $topbar-menu-icon-position: $opposite-direction !default; // Change to $default-
 // Transitions and breakpoint styles
 $topbar-transition-speed: 300ms !default;
 // Using rem-calc for the below breakpoint causes issues with top bar
-$topbar-breakpoint: #{lower-bound($medium-range)} !default; // Change to 9999px for always mobile layout
-$topbar-media-query: "#{$screen} and (min-width:#{lower-bound($topbar-breakpoint)})" !default;
+$topbar-breakpoint: #{nth(map-get($ranges, medium), 1)} !default; // Change to 9999px for always mobile layout
+$topbar-media-query: "#{$screen} and (min-width: #{$topbar-breakpoint})" !default;
 
 // Top-bar input styles
 $topbar-input-height: rem-calc(28) !default;
@@ -172,12 +172,12 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
       }
 
       form,
-      input, 
+      input,
       select {
         margin-bottom: 0;
       }
 
-      input, 
+      input,
       select {
         font-size: $topbar-button-font-size;
         height: $topbar-input-height;
@@ -194,7 +194,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
         // top: -1px;
 
         // Corrects a slight misalignment when put next to an input field
-        @media #{$small-only} {
+        @media #{map-get($queries-only, small)} {
           position: relative;
           top: -1px;
         }
@@ -518,7 +518,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
         .has-form > button {
           font-size: rem-calc(14);
           height: $topbar-input-height;
-          position: relative; 
+          position: relative;
           top: (($topbar-height - $topbar-input-height) / 2);
         }
 
