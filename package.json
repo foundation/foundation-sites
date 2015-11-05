@@ -8,7 +8,8 @@
     "testbed": "cd testing && gulp"
   },
   "dependencies": {
-    "jquery": "^2.1.0"
+    "jquery": "^2.1.0",
+    "what-input": "^1.1.2"
   },
   "devDependencies": {
     "bootcamp": "^1.1.7",
