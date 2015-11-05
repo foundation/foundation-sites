@@ -275,18 +275,14 @@
   Slider.prototype._events = function($handle){
     if(this.options.disabled){ return false; }
 
-
     var _this = this,
         curHandle,
         timer;
 
-    if(this.options.binding){
       this.inputs.on('change.zf.slider', function(e){
         var idx = _this.inputs.index($(this));
         _this._handleEvent(e, _this.handles.eq(idx), $(this).val());
       });
-    }
-
 
     if(this.options.clickSelect){
       this.$element.off('click.zf.slider').on('click.zf.slider', function(e){
