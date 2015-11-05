@@ -2,95 +2,97 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-.dropdown.menu {
-  .has-submenu {
-    position: relative;
+/// Enables arrows for items with dropdown menus.
+/// @type Boolean
+$dropdownmenu-arrows: true !default;
 
-    a::after {
-      float: right;
-      margin-top: 3px;
-      margin-left: 10px;
-    }
+/// Minimum width of dropdown sub-menus.
+/// @type Length
+$dropdownmenu-min-width: 200px !default;
 
-    &.is-down-arrow > a::after {
-      @include css-triangle(5px, $anchor-color, down);
-    }
-    &.is-right-arrow > a::after {
-      @include css-triangle(5px, $anchor-color, left);
-      float: left;
-      margin-left: 0;
-      margin-right: 10px;
-    }
-    &.is-left-arrow > a::after {
-      @include css-triangle(5px, $anchor-color, right);
-    }
-  }
-//Chris's amendments *******
-  .submenu {
-    //for left aligned menus only
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 100%;
-    min-width: 200px;
-    white-space: nowrap;
-    // border: thin solid blue;
-    z-index: 1;
+@mixin foundation-dropdown-menu {
+  .dropdown.menu {
+    .has-submenu {
+      position: relative;
 
-    > li {
-      width: 100%;
-    }
+      a::after {
+        float: right;
+        margin-top: 3px;
+        margin-left: 10px;
+      }
 
-    &.is-right-arrow {
-      left: auto;
-      right: 100%;
-    }
-
-    &.first-sub {
-      top: 100%;
-      left: 0;
-      right: auto;
-      &.is-right-arrow{
-        left: auto;
-        right: 0;
+      @if $dropdownmenu-arrows {
+        &.is-down-arrow > a::after {
+          @include css-triangle(5px, $anchor-color, down);
+        }
+        &.is-right-arrow > a::after {
+          @include css-triangle(5px, $anchor-color, left);
+          float: left;
+          margin-left: 0;
+          margin-right: 10px;
+        }
+        &.is-left-arrow > a::after {
+          @include css-triangle(5px, $anchor-color, right);
+        }
       }
     }
 
-//**************
-
-
-    &:not(.js-dropdown-nohover) > .has-submenu:hover > &,
-    &.js-dropdown-active {
-      display: block;
-    }
-  }
-  &.vertical.align-right {
-    float: right;
-  }
-  &.vertical {
-    width: 100px;
-
-    & > li .submenu {
+    .submenu {
+      display: none;
+      position: absolute;
       top: 0;
       left: 100%;
+      min-width: $dropdownmenu-min-width;
+      white-space: nowrap;
+      z-index: 1;
+      background: white;
+
+      > li {
+        width: 100%;
+      }
+
       &.is-right-arrow {
         left: auto;
         right: 100%;
       }
+
+      &.first-sub {
+        top: 100%;
+        left: 0;
+        right: auto;
+
+        @if $dropdownmenu-arrows {
+          &.is-right-arrow{
+            left: auto;
+            right: 0;
+          }
+        }
+      }
+
+      &:not(.js-dropdown-nohover) > .has-submenu:hover > &,
+      &.js-dropdown-active {
+        display: block;
+      }
+    }
+
+    &.vertical {
+      width: 100px;
+
+      &.align-right {
+        float: right;
+      }
+
+      > li .submenu {
+        top: 0;
+        left: 100%;
+
+        @if $dropdownmenu-arrows {
+          &.is-right-arrow {
+            left: auto;
+            right: 100%;
+          }
+        }
+      }
     }
   }
-
 }
-
-.submenu {
-  background: white;
-}
-  // .submenu {
-  //   display: none;
-  //   position: absolute;
-  //   top: 100%;
-  //   width: auto;
-  //   white-space: nowrap;
-  //   background: $body-background;
-  //   z-index: 1;
-//need settings for right-aligned dd as well
