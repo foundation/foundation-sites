@@ -35,7 +35,7 @@ It's got a handle and an active fill, what more do you need?
 Let's get vertical. Just add a `vertical` class to `slider` `<div>`.
 
 ```html_example
-<div class="slider vertical" data-slider data-initial-start='25'>
+<div class="slider vertical" data-slider data-initial-start='25' data-end='200'>
   <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
   <span class="slider-fill" data-slider-fill></span>
   <input type="hidden">
