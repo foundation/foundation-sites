@@ -60,8 +60,13 @@
   Orbit.prototype._init = function(){
     this.$wrapper = this.$element.find('.' + this.options.containerClass);
     this.$slides = this.$element.find('.' + this.options.slideClass);
+    var $images = this.$element.find('img');
 
-    this._prepareForOrbit();//hehe
+    if($images.length){
+      Foundation.onImagesLoaded($images, this._prepareForOrbit.bind(this));
+    }else{
+      this._prepareForOrbit();//hehe
+    }
 
     if(this.options.bullets){
       this.loadBullets();
