@@ -58,6 +58,7 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
 
 /// Adds base styles for a modal.
 @mixin reveal-modal-base {
+  @include disable-mouse-outline;
   display: none;
   z-index: $reveal-zindex + 1;
   padding: $reveal-padding;

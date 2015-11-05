@@ -120,12 +120,8 @@ $switch-paddle-transition: all 0.25s ease-out !default;
     }
   }
 
-  // This styles the outline on focus for accessibility
   input:focus ~ & {
-    outline: thin dotted #333;
-    outline: 5px auto -webkit-focus-ring-color;
-    outline-offset: -2px;
-    overflow: hidden;
+    @include disable-mouse-outline;
   }
 }
 
