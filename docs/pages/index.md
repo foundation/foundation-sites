@@ -12,7 +12,7 @@ There are a number of ways to install Foundation for Sites. If you're just getti
 
 It's also possible to manually install Foundation for Sites into your project through npm, Bower, Meteor, or Composer.
 
-<a href="#" class="large button">Install Foundation for Sites</a>
+<a href="installation.html" class="large button">Install Foundation for Sites</a>
 
 ---
 
