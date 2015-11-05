@@ -145,12 +145,18 @@
         next: function() {
           if ($element.is(_this.$submenuAnchors)) {
             _this._show($element);
-            setTimeout(function(){$element.find('ul li').filter(_this.$menuItems).first().focus()}, 1);
+            $element.on('transitionend.zf.drilldown', function(){
+              $element.find('ul li').filter(_this.$menuItems).first().focus();
+            });
           }
         },
         previous: function() {
           _this._hide($element.parent('ul'));
-          setTimeout(function(){$element.parent('ul').parent('li').focus()}, 1);
+          $element.parent('ul').on('transitionend.zf.drilldown', function(){
+            setTimeout(function() {
+              $element.parent('ul').parent('li').focus();
+            }, 1);
+          });
         },
         up: function() {
           $prevElement.focus();
@@ -163,7 +169,6 @@
           //_this.$menuItems.first().focus(); // focus to first element
         },
         open: function() {
-          console.log('Open');
           if (!$element.is(_this.$menuItems)) { // not menu item means back button
             _this._hide($element.parent('ul'));
             setTimeout(function(){$element.parent('ul').parent('li').focus()}, 1);
@@ -235,7 +240,6 @@
    * @param {jQuery} $elem - the current element with a submenu to open.
    */
   Drilldown.prototype._show = function($elem){
-    console.log('Showing', $elem);
     $elem.children('[data-submenu]').addClass('is-active');
 
     this.$element.trigger('open.zf.drilldown', [$elem]);
@@ -244,20 +248,21 @@
    * Hides a submenu
    * @function
    * @fires Drilldown#hide
-   * @param {jQuery} $elem - the current sub-menu to add `back` event.
+   * @param {jQuery} $elem - the current sub-menu to hide.
    */
   Drilldown.prototype._hide = function($elem){
     var _this = this;
-    $elem.addClass('is-closing').on('transitionend.zf.drilldown', function(e){
-      // e.stopImmediatePropagation();
-      // console.log('different transitionend');
-      $elem.removeClass('is-active is-closing').off('transitionend.zf.drilldown');
-      /**
-       * Fires when element has closed an open menu.
-       * @event Drilldown#back
-       */
-      _this.$element.trigger('hide.zf.drilldown');
-    });
+    $elem.addClass('is-closing')
+      .on('transitionend.zf.drilldown', function(e){
+        // console.log('transitionend');
+        $(this).removeClass('is-active is-closing').off('transitionend.zf.drilldown');
+      });
+    /**
+     * Fires when the menu is fully closed.
+     * @event Drilldown#hide
+     */
+    $elem.trigger('hide.zf.drilldown', [$elem]);
+
   };
   /**
    * Iterates through the nested menus to calculate the min-height, and max-width for the menu.
