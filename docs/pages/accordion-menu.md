@@ -13,6 +13,9 @@ description: Change a basic vertical Menu into a expandable accordion menu with 
   </ul>
 </div>
 
+<div class="primary callout">
+  <p>Accordion menus have no custom CSS&mdash;you just need the base Menu CSS.</p>
+</div>
 
 ```html_example
 <div class="vertical menu" data-accordion-menu>
