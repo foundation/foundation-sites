@@ -71,6 +71,7 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5);
 
 /// Adds basic styles for an off-canvas menu.
 @mixin off-canvas-base {
+  @include disable-mouse-outline;
   position: absolute;
   background: $offcanvas-background;
   z-index: $offcanvas-zindex;

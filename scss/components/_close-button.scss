@@ -39,6 +39,7 @@ $closebutton-color-hover: $black !default;
   $x: nth($closebutton-position, 1);
   $y: nth($closebutton-position, 2);
 
+  @include disable-mouse-outline;
   position: absolute;
   color: $closebutton-color;
   #{$x}: $closebutton-offset-horizontal;
