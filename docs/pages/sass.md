@@ -32,7 +32,7 @@ autoprefixer({
 
 ## Loading the Framework
 
-If you're using Yeti Launch or the CLI to create a project, the Sass compilation process is already set up for you. If not, you can compile our Sass files yourself, or drop in a pre-built CSS file.
+If you're using one of our starter projects, the Sass compilation process is already set up for you. If not, you can compile our Sass files yourself, or drop in a pre-built CSS file.
 
 To get started, first install the framework files using Bower or npm.
 
@@ -109,7 +109,7 @@ Our [starter projects](starter-projects.html) include the full list of imports, 
 
 ## The Settings File
 
-All Foundatiion projects include a settings file, named `_settings.scss`. If you're using Yeti Launch or the CLI to create a Foundation for Sites project, you can find the settings file under src/assets/scss/. If you're installing the framework standalone using Bower or npm, there's a settings file included in those packages, which you can move into your own Sass files to work with.
+All Foundatiion projects include a settings file, named `_settings.scss`. If you're using one of our starter projects, you can find the settings file under src/assets/scss/. If you're installing the framework standalone using Bower or npm, there's a settings file included in those packages, which you can move into your own Sass files to work with.
 
 Every component includes a set of variables that modify core structural or visual styles. If there's something you can't customize with a variable, you can just write your own CSS to add it.
 

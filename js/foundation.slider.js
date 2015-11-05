@@ -17,11 +17,29 @@
    */
   function Slider(element, options){
     this.$element = element;
-    this.options = $.extend({}, Slider.defaults, this.$element.data(), options || {});
+    this.options = $.extend({}, Slider.defaults, this.$element.data(), options);
 
     this._init();
 
     Foundation.registerPlugin(this);
+    Foundation.Keyboard.register('Slider', {
+      'ltr': {
+        'ARROW_RIGHT': 'increase',
+        'ARROW_UP': 'increase',
+        'ARROW_DOWN': 'decrease',
+        'ARROW_LEFT': 'decrease',
+        'SHIFT_ARROW_RIGHT': 'increase_fast',
+        'SHIFT_ARROW_UP': 'increase_fast',
+        'SHIFT_ARROW_DOWN': 'decrease_fast',
+        'SHIFT_ARROW_LEFT': 'decrease_fast'
+      },
+      'rtl': {
+        'ARROW_LEFT': 'increase',
+        'ARROW_RIGHT': 'decrease',
+        'SHIFT_ARROW_LEFT': 'increase_fast',
+        'SHIFT_ARROW_RIGHT': 'decrease_fast'
+      }
+    });
   }
 
   Slider.defaults = {
@@ -294,12 +312,11 @@
           $body = $('body');
 
       $handle
-        .off('mousedown.zf.slider touchstart.zf.slider')
+        .off('mousedown.zf.slider touchstart.zf.slider keydown.zf.slider')
         .on('mousedown.zf.slider', function(e){
-          e.preventDefault();
 
           $handle.addClass('is-dragging');
-          _this.$fill.addClass('is-dragging');
+          _this.$fill.addClass('is-dragging');//
           _this.$element.attr('data-dragging', true);
           _this.animComplete = false;
           curHandle = $(e.currentTarget);
@@ -329,9 +346,9 @@
         newValue;
 
       var _$handle = $(this);
-
+      console.log('Handle keydown');
       // handle keyboard event with keyboard util
-      Foundation.handleKey(e, _this, {
+      Foundation.Keyboard.handleKey(e, _this, {
         decrease: function() {
           newValue = oldValue - _this.options.step;
         },

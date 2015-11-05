@@ -24,11 +24,12 @@
     this._init();
     this._events();
 
-    /**
-     * Fires when the plugin has been successfuly initialized.
-     * @event Magellan#init
-     */
-    this.$element.trigger('init.zf.magellan');
+    Foundation.registerPlugin(this);
+    // /**
+    //  * Fires when the plugin has been successfuly initialized.
+    //  * @event Magellan#init
+    //  */
+    // this.$element.trigger('init.zf.magellan');
   };
 
   /**

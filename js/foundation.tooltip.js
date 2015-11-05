@@ -12,19 +12,23 @@
    * @class
    * @fires Tooltip#init
    * @param {jQuery} element - jQuery object to attach a tooltip to.
+   * @param {Object} options - object to extend the default configuration.
    */
-  function Tooltip(element){
+  function Tooltip(element, options){
     this.$element = element;
-    this.options = $.extend({}, Tooltip.defaults, this.$element.data());
+    this.options = $.extend({}, Tooltip.defaults, this.$element.data(), options);
+
     this.isActive = false;
     this.isClick = false;
     this._init();
 
-    /**
-     * Fires when the plugin has been successfully initialized
-     * @event Tooltip#init
-     */
-    this.$element.trigger('init.zf.tooltip');
+    Foundation.registerPlugin(this);
+
+    // /**
+    //  * Fires when the plugin has been successfully initialized
+    //  * @event Tooltip#init
+    //  */
+    // this.$element.trigger('init.zf.tooltip');
   }
 
   Tooltip.defaults = {
@@ -35,6 +39,7 @@
     disableHover: false,
     templateClasses: '',
     tooltipClass: 'tooltip',
+    triggerClass: 'has-tip',
     showOn: 'all',
     template: '',
     tipText: '',
@@ -67,7 +72,7 @@
       'data-yeti-box': elemId,
       'data-toggle': elemId,
       'data-resize': elemId
-    }).addClass('has-tip');
+    }).addClass(this.triggerClass);
 
     //helper variables to track movement on collisions
     this.usedPositions = [];
@@ -334,9 +339,20 @@
       this._show();
     }
   };
+  Tooltip.prototype.destroy = function(){
+    this.$element.attr('title', this.template.text())
+                 .off('.zf.trigger .zf.tootip')
+                 .removeClass('has-tip')
+                 .removeAttr('aria-describedby')
+                 .removeAttr('data-yeti-box')
+                 .removeAttr('data-toggle')
+                 .removeAttr('data-resize');
 
+    this.template.remove();
+
+    Foundation.unregisterPlugin(this);
+  };
   /**
-   * TODO create destroy method
    * TODO utilize resize event trigger
    */
 

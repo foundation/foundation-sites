@@ -48,11 +48,12 @@
     this._init();
     this._events();
 
-    /**
-     * Fires when the plugin has been successfuly initialized.
-     * @event ResponsiveMenu#init
-     */
-     this.$element.trigger('init.zf.ResponsiveMenu');
+    Foundation.registerPlugin(this);
+    // /**
+    //  * Fires when the plugin has been successfuly initialized.
+    //  * @event ResponsiveMenu#init
+    //  */
+    //  this.$element.trigger('init.zf.ResponsiveMenu');
   }
 
   ResponsiveMenu.defaults = {};

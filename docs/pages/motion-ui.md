@@ -6,14 +6,14 @@ library:
   docs: https://github.com/zurb/motion-ui/tree/master/docs
 ---
 
-Motion UI is a standalone library that powers the transition effects used in a number of Foundation components, including [Toggler](toggler.html), [Reveal](reveal.html), and [Orbit](orbit.html). The transitions are powered by special transition classes that the Motion UI Sass creates. For example, here are two instances of Toggler&mdash;one using fade classes (`.fadeIn` and `.fadeOut`), and one using slide classes (`.slideInDown` and `.slideOutUp`).
+Motion UI is a standalone library that powers the transition effects used in a number of Foundation components, including [Toggler](toggler.html), [Reveal](reveal.html), and [Orbit](orbit.html). The transitions are powered by special transition classes that the Motion UI Sass creates. For example, here are two instances of Toggler&mdash;one using fade classes (`.fade-in` and `.fade-out`), and one using slide classes (`.slide-in-down` and `.slide-out-up`).
 
 ```html
-<div data-toggler data-animate="fadeIn fadeOut" class="callout secondary">
+<div data-toggler data-animate="fade-in fade-out" class="callout secondary">
   <p>This panel fades.</p>
 </div>
 
-<div data-toggler data-animate="slideInDown slideOutUp" class="callout secondary">
+<div data-toggler data-animate="slide-in-down slide-out-up" class="callout secondary">
   <p>This panel slides.</p>
 </div>
 ```
@@ -21,12 +21,12 @@ Motion UI is a standalone library that powers the transition effects used in a n
 <button type="button" class="button" data-toggle="motion-example-1">Fade</button><button type="button" class="button" data-toggle="motion-example-2">Slide</button>
 <div class="row">
   <div class="small-6 columns">
-    <div data-toggler data-animate="fadeIn fadeOut" class="callout secondary ease" id="motion-example-1">
+    <div data-toggler data-animate="fade-in fade-out" class="callout secondary ease" id="motion-example-1">
       <p>This panel <strong>fades</strong>.</p>
     </div>
   </div>
   <div class="small-6 columns">
-    <div data-toggler data-animate="slideInDown slideOutUp" class="callout secondary ease" id="motion-example-2">
+    <div data-toggler data-animate="slide-in-down slide-out-up" class="callout secondary ease" id="motion-example-2">
       <p>This panel <strong>slides</strong>.</p>
     </div>
   </div>
@@ -79,44 +79,44 @@ Motion UI includes more than two dozen built-in transition classes. They can be 
 <div>
   <select name="docs-transitions" class="docs-transitions">
     <optgroup label="Slide">
-      <option value="slideInDown">slideInDown</option>
-      <option value="slideInLeft">slideInLeft</option>
-      <option value="slideInUp">slideInUp</option>
-      <option value="slideInRight">slideInRight</option>
-      <option value="slideOutDown">slideOutDown</option>
-      <option value="slideOutLeft">slideOutLeft</option>
-      <option value="slideOutUp">slideOutUp</option>
-      <option value="slideOutRight">slideOutRight</option>
+      <option value="slide-in-down">slide-in-down</option>
+      <option value="slide-in-left">slide-in-left</option>
+      <option value="slide-in-up">slide-in-up</option>
+      <option value="slide-in-right">slide-in-right</option>
+      <option value="slide-out-down">slide-out-down</option>
+      <option value="slide-out-left">slide-out-left</option>
+      <option value="slide-out-up">slide-out-up</option>
+      <option value="slide-out-right">slide-out-right</option>
     </optgroup>
     <optgroup label="Fade">
-      <option value="fadeIn">fadeIn</option>
-      <option value="fadeOut">fadeOut</option>
+      <option value="fade-in">fade-in</option>
+      <option value="fade-out">fade-out</option>
     </optgroup>
     <optgroup label="Hinge">
-      <option value="hingeInFromTop">hingeInFromTop</option>
-      <option value="hingeInFromRight">hingeInFromRight</option>
-      <option value="hingeInFromBottom">hingeInFromBottom</option>
-      <option value="hingeInFromLeft">hingeInFromLeft</option>
-      <option value="hingeInFromMiddleX">hingeInFromMiddleX</option>
-      <option value="hingeInFromMiddleY">hingeInFromMiddleY</option>
-      <option value="hingeOutFromTop">hingeOutFromTop</option>
-      <option value="hingeOutFromRight">hingeOutFromRight</option>
-      <option value="hingeOutFromBottom">hingeOutFromBottom</option>
-      <option value="hingeOutFromLeft">hingeOutFromLeft</option>
-      <option value="hingeOutFromMiddleX">hingeOutFromMiddleX</option>
-      <option value="hingeOutFromMiddleY">hingeOutFromMiddleY</option>
+      <option value="hinge-in-from-top">hinge-in-from-top</option>
+      <option value="hinge-in-from-right">hinge-in-from-right</option>
+      <option value="hinge-in-from-bottom">hinge-in-from-bottom</option>
+      <option value="hinge-in-from-left">hinge-in-from-left</option>
+      <option value="hinge-in-from-middle-x">hinge-in-from-middle-x</option>
+      <option value="hinge-in-from-middle-y">hinge-in-from-middle-y</option>
+      <option value="hinge-out-from-top">hinge-out-from-top</option>
+      <option value="hinge-out-from-right">hinge-out-from-right</option>
+      <option value="hinge-out-from-bottom">hinge-out-from-bottom</option>
+      <option value="hinge-out-from-left">hinge-out-from-left</option>
+      <option value="hinge-out-from-middle-x">hinge-out-from-middle-x</option>
+      <option value="hinge-out-from-middle-y">hinge-out-from-middle-y</option>
     </optgroup>
     <optgroup label="Scale">
-      <option value="scaleInUp">scaleInUp</option>
-      <option value="scaleInDown">scaleInDown</option>
-      <option value="scaleOutUp">scaleOutUp</option>
-      <option value="scaleOutDown">scaleOutDown</option>
+      <option value="scale-in-up">scale-in-up</option>
+      <option value="scale-in-down">scale-in-down</option>
+      <option value="scale-out-up">scale-out-up</option>
+      <option value="scale-out-down">scale-out-down</option>
     </optgroup>
     <optgroup label="Spin">
-      <option value="spinIn">spinIn</option>
-      <option value="spinOut">spinOut</option>
-      <option value="spinInCCW">spinInCCW</option>
-      <option value="spinOutCCW">spinOutCCW</option>
+      <option value="spin-in">spin-in</option>
+      <option value="spin-out">spin-out</option>
+      <option value="spin-in-ccw">spin-in-ccw</option>
+      <option value="spin-out-ccw">spin-out-ccw</option>
     </optgroup>
   </select>
   <img src="assets/img/voyager.jpg" class="docs-transition-demo">

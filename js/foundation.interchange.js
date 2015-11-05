@@ -22,11 +22,12 @@
     this._init();
     this._events();
 
-    /**
-     * Fires when the plugin has been successfuly initialized.
-     * @event Interchange#init
-     */
-    this.$element.trigger('init.zf.interchange');
+    Foundation.registerPlugin(this);
+    // /**
+    //  * Fires when the plugin has been successfuly initialized.
+    //  * @event Interchange#init
+    //  */
+    // this.$element.trigger('init.zf.interchange');
   }
 
   /**

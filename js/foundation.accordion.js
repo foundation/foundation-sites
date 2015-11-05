@@ -15,14 +15,20 @@
    */
   function Accordion(element, options){
     this.$element = element;
-    this.options = $.extend({}, Accordion.defaults, this.$element.data(), options || {});
+    this.options = $.extend({}, Accordion.defaults, this.$element.data(), options);
 
     this._init();
     /**
      * Fires when the plugin has been successfuly initialized.
      * @event Accordion#init
      */
-     Foundation.registerPlugin(this);
+    Foundation.registerPlugin(this);
+    Foundation.Keyboard.register('Accordion', {
+      'ENTER': 'toggle',
+      'SPACE': 'toggle',
+      'ARROW_DOWN': 'next',
+      'ARROW_UP': 'previous'
+    });
   }
 
   Accordion.defaults = {
@@ -37,7 +43,7 @@
    */
   Accordion.prototype._init = function() {
     this.$element.attr('role', 'tablist');
-    this.$tabs = this.$element.find('li');
+    this.$tabs = this.$element.children('li');
     this.$tabs.each(function(idx, el){
 
       var $el = $(el),
@@ -45,7 +51,13 @@
           id = $content[0].id || Foundation.GetYoDigits(6, 'accordion'),
           linkId = el.id || id + '-label';
 
-      $el.find('a').attr({'aria-controls': id, 'role': 'tab', 'id': linkId});
+      $el.find('a:first').attr({
+        'aria-controls': id,
+        'role': 'tab',
+        'id': linkId,
+        'aria-expanded': false,
+        'aria-selected': false
+      });
       $content.attr({'role': 'tabpanel', 'aria-labelledby': linkId, 'aria-hidden': true, 'id': id});
     });
     var $initActive = this.$element.find('.is-active').children('[data-tab-content]');
@@ -66,7 +78,7 @@
       var $elem = $(this);
       var $tabContent = $elem.children('[data-tab-content]');
       if ($tabContent.length) {
-        $elem.off('click.zf.accordion keydown.zf.accordion')
+        $elem.children('a').off('click.zf.accordion keydown.zf.accordion')
                .on('click.zf.accordion', function(e){
         // $(this).children('a').on('click.zf.accordion', function(e) {
           e.preventDefault();
@@ -79,7 +91,7 @@
             _this.down($tabContent);
           }
         }).on('keydown.zf.accordion', function(e){
-          Foundation.handleKey(e, _this, {
+          Foundation.Keyboard.handleKey(e, _this, {
             toggle: function() {
               _this.toggle($tabContent);
             },
@@ -134,6 +146,10 @@
     if(!firstTime){
       Foundation._reflow(this.$element.data('accordion'));
     }
+    $('#' + $target.attr('aria-labelledby')).attr({
+      'aria-expanded': true,
+      'aria-selected': true
+    })
     /**
      * Fires when the tab is done opening.
      * @event Accordion#down
@@ -161,6 +177,11 @@
 
     $target.attr('aria-hidden', true)
            .parent().removeClass('is-active');
+
+    $('#' + $target.attr('aria-labelledby')).attr({
+     'aria-expanded': false,
+     'aria-selected': false
+    })
 
     /**
      * Fires when the tab is done collapsing up.

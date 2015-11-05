@@ -10,6 +10,7 @@ js: js/foundation.slider.js
   <h5>Known Issues</h5>
   <ul>
     <li>Vertical orientation isn't smooth on Windows Phone.</li>
+    <li>Needs a way to set fill bar width for two-handles on init.</li>
     <li>Vertical orientation is inverted. Needs to move up when increasing...</li>
   </ul>
 </div>

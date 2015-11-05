@@ -16,7 +16,7 @@ $grid-column-count: 12 !default;
 
 /// The amount of space between columns.
 /// @type Number
-$grid-column-gutter: 1.875rem / 2 !default;
+$grid-column-gutter: 30px;
 
 @import 'row';
 @import 'column';

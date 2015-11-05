@@ -16,20 +16,30 @@
    */
   function Orbit(element, options){
     this.$element = element;
-    this.options = $.extend({}, Orbit.defaults, this.$element.data(), options || {});
+    this.options = $.extend({}, Orbit.defaults, this.$element.data(), options);
 
     this._init();
 
     Foundation.registerPlugin(this);
+    Foundation.Keyboard.register('Orbit', {
+        'ltr': {
+          'ARROW_RIGHT': 'next',
+          'ARROW_LEFT': 'previous'
+        },
+        'rtl': {
+          'ARROW_LEFT': 'next',
+          'ARROW_RIGHT': 'previous'
+        }
+    });
     // this.$element.trigger('init.zf.orbit');
   }
   Orbit.defaults = {
     bullets: true,
     navButtons: true,
-    animInFromRight: 'slideInRight',
-    animOutToRight: 'slideOutRight',
-    animInFromLeft: 'slideInLeft',
-    animOutToLeft: 'slideOutLeft',
+    animInFromRight: 'slide-in-right',
+    animOutToRight: 'slide-out-right',
+    animInFromLeft: 'slide-in-left',
+    animOutToLeft: 'slide-out-left',
     autoPlay: true,
     timerDelay: 5000,
     infiniteWrap: true,
@@ -205,7 +215,7 @@
 
     this.$wrapper.add(this.$bullets).on('keydown.zf.orbit', function(e){
       // handle keyboard event with keyboard util
-      Foundation.handleKey(e, _this, {
+      Foundation.Keyboard.handleKey(e, _this, {
         next: function() {
           _this.timer.restart();
           _this.changeSlide(true);

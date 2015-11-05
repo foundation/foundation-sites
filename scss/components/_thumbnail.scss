@@ -26,6 +26,10 @@ $thumbnail-shadow-hover: 0 0 6px 1px rgba($primary-color, 0.5) !default;
 /// @type Transition
 $thumbnail-transition: box-shadow 200ms ease-out !default;
 
+/// Default radius for thumbnail images.
+/// @type Number
+$thumbnail-radius: $global-radius !default;
+
 /// Adds thumbnail styles to an element.
 @mixin thumbnail {
   border: $thumbnail-border;
@@ -34,7 +38,7 @@ $thumbnail-transition: box-shadow 200ms ease-out !default;
   line-height: 0;
   max-width: 100%;
   transition: $thumbnail-transition;
-  border-radius: $global-radius;
+  border-radius: $thumbnail-radius;
   margin-bottom: $thumbnail-margin-bottom;
 
   &:hover,

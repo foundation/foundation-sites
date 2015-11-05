@@ -20,7 +20,7 @@ js: js/foundation.drilldown.js
 Drilldowns use the standard [Menu](menu.html) syntax. Add the attribute `data-drilldown` to the root `<ul>`, and `data-submenu` to each nested menu.
 
 
-<ul class="vertical menu" data-drilldown style="width: 300px;" id="m1">
+<ul class="vertical menu" data-drilldown style="width: 200px" id="m1">
   <li>
     <a href="#">Item 1</a>
     <ul class="vertical menu" id="m2">

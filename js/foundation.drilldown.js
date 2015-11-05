@@ -15,7 +15,7 @@
    */
   function Drilldown(element, options){
     this.$element = element;
-    this.options = $.extend({}, Drilldown.defaults, this.$element.data(), options || {});
+    this.options = $.extend({}, Drilldown.defaults, this.$element.data(), options);
 
     Foundation.FeatherNest(this.$element, 'drilldown');
 
@@ -38,8 +38,7 @@
     backButton: '<li class="js-drilldown-back" tabindex="0"><a>Back</a></li>',
     wrapper: '<div></div>',
     closeOnClick: false,
-    holdOpen: false,
-    maxWidth: 200
+    holdOpen: false
   };
   /**
    * Initializes the drilldown by creating jQuery collections of elements
@@ -86,8 +85,8 @@
       $menu.prepend(_this.options.backButton);
       _this._back($menu);
     });
-    this.$wrapper = $(this.options.wrapper).addClass('is-drilldown').css(this.getMaxHeight());
     if(!this.$element.parent().hasClass('is-drilldown')){
+      this.$wrapper = $(this.options.wrapper).addClass('is-drilldown').css(this.getMaxHeight());
       this.$element.wrap(this.$wrapper);
     }
 
@@ -277,10 +276,9 @@
       var numOfElems = $(this).children('li').length;
       max = numOfElems > max ? numOfElems : max;
     });
-    // console.log('1',this.$menuItems[0].getBoundingClientRect().height);
+
     result.height = max * this.$menuItems[0].getBoundingClientRect().height + 'px';
-    // result.width = this.$menuItems[0].getBoundingClientRect().width + 'px';
-    result.width = this.options.maxWidth;
+    result.width = this.$element[0].getBoundingClientRect().width + 'px';
 
     return result;
   };

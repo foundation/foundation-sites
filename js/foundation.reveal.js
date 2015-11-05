@@ -19,10 +19,17 @@
 
   function Reveal(element, options) {
     this.$element = element;
-    this.options = $.extend({}, Reveal.defaults, this.$element.data(), options || {});
+    this.options = $.extend({}, Reveal.defaults, this.$element.data(), options);
     this._init();
 
     Foundation.registerPlugin(this);
+    Foundation.Keyboard.register('Reveal', {
+      'ENTER': 'open',
+      'SPACE': 'open',
+      'ESCAPE': 'close',
+      'TAB': 'tab_forward',
+      'SHIFT_TAB': 'tab_backward'
+    });
     // /**
     //  * Fires when the plugin has been successfuly initialized.
     //  * @event Reveal#init
@@ -200,7 +207,7 @@
       }
       if(_this.options.animationIn){
         if(_this.options.overlay){
-          Foundation.Motion.animateIn(_this.$overlay, 'fadeIn', function(){
+          Foundation.Motion.animateIn(_this.$overlay, 'fade-in', function(){
             Foundation.Motion.animateIn(_this.$element, _this.options.animationIn, function(){
             });
           });
@@ -271,7 +278,7 @@
         return true;
       });
       // handle keyboard event with keyboard util
-      Foundation.handleKey(e, _this, {
+      Foundation.Keyboard.handleKey(e, _this, {
         tab_forward: function() {
           if (this.$element.find(':focus').is(visibleFocusableElements.eq(-1))) { // left modal downwards, setting focus to first element
             visibleFocusableElements.eq(0).focus();
@@ -326,7 +333,7 @@
     if(this.options.animationOut){
       Foundation.Motion.animateOut(this.$element, this.options.animationOut, function(){
         if(_this.options.overlay){
-          Foundation.Motion.animateOut(_this.$overlay, 'fadeOut', function(){
+          Foundation.Motion.animateOut(_this.$overlay, 'fade-out', function(){
           });
         }
       });

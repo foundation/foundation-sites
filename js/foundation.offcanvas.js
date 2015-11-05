@@ -15,19 +15,20 @@
  * @param {Object} element - jQuery object to initialize.
  * @param {Object} options - Overrides to the default plugin settings.
  */
-function OffCanvas(element) {
+function OffCanvas(element, options) {
   this.$element = element;
-  this.options = $.extend({}, OffCanvas.defaults, this.$element.data());
+  this.options = $.extend({}, OffCanvas.defaults, this.$element.data(), options);
   this.$lastTrigger = $();
 
   this._init();
   this._events();
 
-  /**
-   * Fires when the plugin has been successfully initialized.
-   * @event OffCanvas#init
-   */
-  this.$element.trigger('init.zf.offcanvas');
+  Foundation.registerPlugin(this);
+  // /**
+  //  * Fires when the plugin has been successfully initialized.
+  //  * @event OffCanvas#init
+  //  */
+  // this.$element.trigger('init.zf.offcanvas');
 }
 
 OffCanvas.defaults = {

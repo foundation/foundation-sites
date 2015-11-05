@@ -16,13 +16,23 @@
    */
   function DropdownMenu(element, options) {
     this.$element = element;
-    this.options = $.extend({}, DropdownMenu.defaults, this.$element.data(), options || {});
+    this.options = $.extend({}, DropdownMenu.defaults, this.$element.data(), options);
 
     Foundation.FeatherNest(this.$element, 'dropdown');
 
     this._init();
 
     Foundation.registerPlugin(this);
+    Foundation.Keyboard.register('DropdownMenu', {
+      'ENTER': 'open',
+      'SPACE': 'open',
+      'ARROW_RIGHT': 'next',
+      'ARROW_UP': 'up',
+      'ARROW_DOWN': 'down',
+      'ARROW_LEFT': 'previous',
+      'ESCAPE': 'close'
+    });
+
     // /**
     //  * Fires when the plugin has been successfuly initialized.
     //  * @event DropdownMenu#init
@@ -253,7 +263,7 @@
           });
         }
       }
-      Foundation.handleKey(e, _this, functions);
+      Foundation.Keyboard.handleKey(e, _this, functions);
     });
      // end keyboardAccess
   };

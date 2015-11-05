@@ -44,19 +44,22 @@ Once you put it all together, here's what you get!
   <li class="accordion-item is-active">
     <a href="#" class="accordion-title">Accordion 1</a>
     <div class="accordion-content" data-tab-content >
-      Panel 1. Lorem ipsum dolor
+      <p>Panel 1. Lorem ipsum dolor</p>
+      <a href="#">Nowhere to Go</a>
     </div>
   </li>
   <li class="accordion-item">
     <a href="#" class="accordion-title">Accordion 2</a>
     <div class="accordion-content" data-tab-content>
-      Panel 2. Lorem ipsum dolor
+      <textarea></textarea>
+      <button class="button">I do nothing!</button>
     </div>
   </li>
   <li class="accordion-item">
     <a href="#" class="accordion-title">Accordion 3</a>
     <div class="accordion-content" data-tab-content>
-      Panel 3. Lorem ipsum dolor
+      Pick a date!
+      <input type="date"></input>
     </div>
   </li>
 </ul>
