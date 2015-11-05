@@ -6,7 +6,7 @@ var rubySass = require('gulp-ruby-sass');
 gulp.task('test', ['test:sass', 'test:javascript']);
 
 gulp.task('test:sass', function() {
-  return rubySass('./spec/scss/spec.scss', {
+  return rubySass('./test/sass/tests.scss', {
     loadPath: ['scss', 'node_modules/bootcamp/dist'],
     style: 'nested',
     quiet: true

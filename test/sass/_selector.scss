@@ -1,0 +1,12 @@
+@import "util/selector";
+
+@include describe("Text inputs") {
+  @include it("creates a selector out of a list of text input types") {
+    $actual: #{text-inputs(text password)};
+    $expected: '[type="text"], [type="password"]';
+
+    @debug $actual;
+
+    @include should(expect($actual), to(be($expected)));
+  }
+}
