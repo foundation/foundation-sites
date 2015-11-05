@@ -25,7 +25,9 @@
       elem.data('paused', false);
       start = Date.now();
       timer = setTimeout(function(){
-        _this.restart();//rerun the timer.
+        if(options.infinite){
+          _this.restart();//rerun the timer.
+        }
         cb();
       }, remain);
       elem.trigger('timerstart.zf.' + nameSpace);
