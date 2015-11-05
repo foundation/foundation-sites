@@ -78,7 +78,7 @@
         text: $(this).html(),
         $target: $($(this).data('target')),
         isModal: !!!$($(this).data('target')).length,
-        closable: Joyride.defaults.closable 
+        closable: Joyride.defaults.closable
       }, $(this).data());
       structure.push(item);
     });
@@ -91,10 +91,10 @@
    * @param {Array} structure the joyride's structure from _parseList
    * @return {Object} markup jQuery representation of the generated markup
    */
-  Joyride.prototype._render = function(structure) {      
+  Joyride.prototype._render = function(structure) {
     for (var s in structure) {
       var options = $.extend({}, this.options, structure[s]),// if specifc item has config, this should overwrite global settings
-        $item; 
+        $item;
 
       if (options.$target.length) { // target element exists, create tooltip
         var tooltip = new Foundation.Tooltip(structure[s].$target, {
@@ -108,7 +108,7 @@
         });
         this.structure[s].item = tooltip;
         $item = tooltip.template;
-        
+
       } else { // not target, create modal with Reveal
         var modal = new Foundation.Reveal($('<div class="reveal joyride"/>').appendTo($('body')));
         this.structure[s].item = modal;
@@ -248,7 +248,7 @@
       Foundation.handleKey(e, _this, {
         next: function() {
           if ($element.data('index') < _this.structure.length - 1) {
-            this.showNext();  
+            this.showNext();
           }
         },
         previous: function() {
@@ -277,7 +277,7 @@
     this.$items.destroy();
     /**
      * Fires when the plugin has been destroyed.
-     * @event Reveal#destroyed
+     * @event Joyride#destroyed
      */
     this.$element.trigger('destroyed.zf.joyride');
   }

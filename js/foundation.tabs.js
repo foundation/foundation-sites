@@ -85,7 +85,12 @@
       }
     });
     if(this.options.matchHeight){
-      this.setHeight();
+      var $images = this.$tabContent.find('img');
+      if($images.length){
+        Foundation.onImagesLoaded($images, this.setHeight.bind(this));
+      }else{
+        this.setHeight();
+      }
     }
     this._events();
   };

@@ -2,6 +2,7 @@
 
   /******************************************************************
   /** A very simple timer for animated elements within Foundation. **
+  /** Allows your script to pause and restart later with fn call.  **
   /**  Feel free to add features, comments, or use case examples.  **
   /*****************************************************************/
 
