@@ -15,7 +15,7 @@ description: Change a basic vertical Menu into a expandable accordion menu with 
 
 
 ```html_example
-<div class="vertical menu" data-accordion-menu>
+<ul class="vertical menu" data-accordion-menu>
   <li>
     <a href="#">Item 1</a>
     <ul class="menu vertical nested is-active">
@@ -39,5 +39,5 @@ description: Change a basic vertical Menu into a expandable accordion menu with 
     </ul>
   </li>
   <li><a href="#">Item 3</a></li>
-</div>
+</ul>
 ```
