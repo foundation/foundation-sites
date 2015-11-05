@@ -186,6 +186,11 @@ Foundation.util = {
  */
 var foundation = function(method) {
   var type = typeof method;
+  var $meta = $('meta.foundation-mq');
+
+  if(!$meta.length){
+    $('<meta class="foundation-mq">').appendTo(document.head);
+  }
 
   if (type === 'undefined') {
     Foundation.MediaQuery._init();

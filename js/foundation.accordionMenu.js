@@ -119,7 +119,7 @@
         if ($(this).is($element)) {
           $prevElement = $elements.eq(Math.max(0, i-1));
           $nextElement = $elements.eq(Math.min(i+1, $elements.length-1));
-          
+
           if ($(this).children('[data-submenu]:visible').length) { // has open sub menu
             $nextElement = $element.find('li:first-child');
           }
@@ -131,7 +131,7 @@
           if ($(this).is(':last-child')) { // is last element of sub menu
             $nextElement = $element.parents('li').first().next('li');
           }
-          
+
           return;
         }
       });
@@ -170,7 +170,7 @@
           e.stopImmediatePropagation();
         }
       });
-    }).attr('tabindex', 0);
+    })//.attr('tabindex', 0);
   };
   AccordionMenu.prototype.hideAll = function(){
     this.$element.find('[data-submenu]').slideUp(this.options.slideSpeed);
@@ -190,15 +190,20 @@
    */
   AccordionMenu.prototype.down = function($target) {
     var _this = this;
-    $target.addClass('is-active').attr('aria-hidden', false)
+    console.log($target);
+    $target.addClass('is-active').attr({'aria-hidden': false})
       .parent('.has-submenu').attr('aria-expanded', true).end()
       .parentsUntil(this.$element, '[data-submenu]')
-      .addBack();
-      window.requestAnimationFrame(function(){
-        $target.slideDown(_this.options.slideSpeed).promise().done(function(){
-          // $target.siblings('a').eq(0).focus();
-        });
+      // .addBack();
+
+      Foundation.Move(this.options.slideSpeed, $target, function(){
+        $target.slideDown(_this.options.slideSpeed)
       });
+      // window.requestAnimationFrame(function(){
+      //   $target.slideDown(_this.options.slideSpeed).promise().done(function(){
+      //     // $target.siblings('a').eq(0).focus();
+      //   });
+      // });
     if(!this.options.multiOpen){
       this.up(this.$element.find('.is-active').not($target.parentsUntil(this.$element)));
     }
