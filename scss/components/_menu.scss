@@ -33,6 +33,7 @@ $menu-expand-max: 6 !default;
 
   // List items are table cell to allow for vertical alignment
   > li {
+    @include disable-mouse-outline;
     display: table-cell;
     vertical-align: middle;
   }
