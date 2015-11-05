@@ -7,13 +7,13 @@ description: There are many ways to install Foundation, but if you're just getti
 
 The Node-powered Foundation CLI can install the same templae projects for you. Install it with npm:
 
-<div class="callout alert">
-  <p>As Foundation for Sites is in alpha, the CLI doesn't yet support this framework.</p>
-</div>
-
 ```bash
-npm install --global foundation-cli
+npm install --global foundation-cli@beta
 ```
+
+<div class="callout alert">
+  <p>Note that we're installing a <code>beta</code> version of the CLI in the above command.</p>
+</div>
 
 Once you've installed the CLI, use the `new` command to start making a new project:
 

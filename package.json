@@ -41,6 +41,7 @@
     "run-sequence": "^1.1.4",
     "string-template": "^0.2.1",
     "supercollider": "^1.0.0",
+    "typeahead.js": "^0.11.1",
     "zeroclipboard": "^2.2.0"
   },
   "repository": {
