@@ -1,8 +1,11 @@
 var gulp = require('gulp');
+var opener = require('opener');
 var rubySass = require('gulp-ruby-sass');
 
 // Runs unit tests
-gulp.task('test', function() {
+gulp.task('test', ['test:sass', 'test:javascript']);
+
+gulp.task('test:sass', function() {
   return rubySass('./spec/scss/spec.scss', {
     loadPath: ['scss', 'node_modules/bootcamp/dist'],
     style: 'nested',
@@ -11,4 +14,9 @@ gulp.task('test', function() {
     .on('data', function(data) {
       console.log(data.contents.toString());
     });
+});
+
+gulp.task('test:javascript', function(cb) {
+  opener('../test/javascript/index.html');
+  cb();
 });
