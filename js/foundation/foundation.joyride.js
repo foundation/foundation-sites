@@ -489,8 +489,6 @@
 
     pos_default : function (init) {
       var $nub = this.settings.$next_tip.find('.joyride-nub'),
-          nub_width = Math.ceil($nub.outerWidth() / 2),
-          nub_height = Math.ceil($nub.outerHeight() / 2),
           toggle = init || false;
 
       // tip must not be "display: none" to calculate position
@@ -498,6 +496,9 @@
         this.settings.$next_tip.css('visibility', 'hidden');
         this.settings.$next_tip.show();
       }
+
+      var nub_width = Math.ceil($nub.outerWidth() / 2),
+          nub_height = Math.ceil($nub.outerHeight() / 2);
 
       if (!/body/i.test(this.settings.$target.selector)) {
         var topAdjustment = this.settings.tip_settings.tipAdjustmentY ? parseInt(this.settings.tip_settings.tipAdjustmentY) : 0,
