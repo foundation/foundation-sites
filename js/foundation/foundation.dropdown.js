@@ -12,12 +12,12 @@
       mega_class : 'mega',
       align : 'bottom',
       is_hover : false,
+      is_right_click: false,
       hover_timeout : 150,
       no_pip : false,
       opened : function () {},
       closed : function () {}
     },
-
     init : function (scope, method, options) {
       Foundation.inherit(this, 'throttle');
 
@@ -30,15 +30,20 @@
           S = self.S;
 
       S(this.scope)
-        .off('.dropdown')
-        .on('click.fndtn.dropdown', '[' + this.attr_name() + ']', function (e) {
+        .off('.dropdown')      
+        .on('click.fndtn.dropdown, contextmenu.fndtn.dropdown', '[' + this.attr_name() + ']', function (e) {  
+               
           var settings = S(this).data(self.attr_name(true) + '-init') || self.settings;
-          if (!settings.is_hover || Modernizr.touch) {
+          
+       
+          if (!settings.is_hover || Modernizr.touch || settings.is_right_click) {
             e.preventDefault();
             if (S(this).parent('[data-reveal-id]').length) {
               e.stopPropagation();
             }
-            self.toggle($(this));
+			
+          if((settings.is_right_click && e.type === "contextmenu") || (!settings.is_right_click && e.type !== "contextmenu"))
+                  self.toggle($(this));
           }
         })
         .on('mouseenter.fndtn.dropdown', '[' + this.attr_name() + '], [' + this.attr_name() + '-content]', function (e) {
