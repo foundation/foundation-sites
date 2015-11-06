@@ -20,7 +20,7 @@ Add the `.sticky` class and `[data-sticky]` to an element to create something th
 ```html
 <div class="columns small-6 right" data-sticky-container>
   <div class="sticky" data-sticky>
-    <img src="/assets/img/interchange/small.jpg">
+    <img src="assets/img/interchange/small.jpg">
   </div>
 </div>
 ```
@@ -44,7 +44,7 @@ Add the `.sticky` class and `[data-sticky]` to an element to create something th
     </div>
     <div class="columns small-6 right" data-sticky-container>
       <div class="sticky" data-sticky data-anchor='#example1'>
-        <img src="/assets/img/interchange/small.jpg">
+        <img src="assets/img/interchange/small.jpg">
       </div>
     </div>
   </div>
@@ -56,7 +56,7 @@ You can also use two anchors, if you please. Using `data-top-anchor='idOfSomethi
 ```html
 <div class="columns small-6 right" data-sticky-container>
   <div class="sticky" data-sticky data-top-anchor='example2' data-btm-anchor='foo:bottom'>
-    <img src="/assets/img/interchange/small.jpg">
+    <img src="assets/img/interchange/small.jpg">
   </div>
 </div>
 ```
@@ -80,7 +80,7 @@ You can also use two anchors, if you please. Using `data-top-anchor='idOfSomethi
     </div>
     <div class='columns small-6 right' data-sticky-container>
       <div class="sticky" data-sticky data-top-anchor='example2:top' data-btm-anchor='foo' data-stick-to="bottom">
-        <img src='/assets/img/interchange/small.jpg'>
+        <img src='assets/img/interchange/small.jpg'>
       </div>
     </div>
   </div>
