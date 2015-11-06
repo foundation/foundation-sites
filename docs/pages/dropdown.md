@@ -23,7 +23,7 @@ To create a dropdown pane, add the class `.dropdown-pane` and the attribute `dat
 To create the dropdown trigger, add `data-toggle` to a `<button>`. The value of `data-toggle` is the ID of the dropdown.
 
 ```html_example
-<button class="button" type="button" aria-haspopup="true" data-toggle="example-dropdown">Toggle Dropdown</button>
+<button class="button" type="button" aria-haspopup="true" aria-expanded="false" data-toggle="example-dropdown">Toggle Dropdown</button>
 
 <div class="dropdown-pane" id="example-dropdown" data-dropdown>
   Just some junk that needs to be said. Or not. Your choice.
