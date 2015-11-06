@@ -119,15 +119,24 @@
 
       $(window).off(scrollListener)
                .on(scrollListener, function(e){
-                if(_this.scrollCount){
-                  _this.scrollCount--;
-                  _this._calc(false, e.currentTarget.scrollY);
-                }else{
-                  _this.scrollCount = _this.options.checkEvery;
-                  _this._setSizes(function(){
-                    _this._calc(false, e.currentTarget.scrollY);
-                  })
-                }
+                 if(_this.scrollCount === 0){
+                   _this.scrollCount = _this.options.checkEvery;
+                   _this._setSizes(function(){
+                     _this._calc(false, e.currentTarget.scrollY);
+                   });
+                 }else{
+                   _this.scrollCount--;
+                   _this._calc(false, e.currentTarget.scrollY);
+                 }
+                // if(_this.scrollCount > 0){
+                //   _this.scrollCount--;
+                //   _this._calc(false, e.currentTarget.scrollY);
+                // }else{
+                //   _this.scrollCount = _this.options.checkEvery;
+                //   _this._setSizes(function(){
+                //     _this._calc(false, e.currentTarget.scrollY);
+                //   })
+                // }
               });
     }
 

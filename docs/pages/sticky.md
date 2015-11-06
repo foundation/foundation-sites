@@ -9,7 +9,7 @@ js: js/foundation.sticky.js
   <h5>Known Issues</h5>
   <ul>
     <li><em>Future Feature:</em> Needs method for elements to be sticky on the top of the viewport when scrolling down, and if the lower breakpoint is reached, stick to bottom on scroll up.</li>
-    <li>`_setBreakPoints` and `_setSizes` need to be flexible enough to calculate top and bottom breakpoints based on more than one element. Currently only works with a single anchor element, using the offset top (+ anchor height for bottom).</li>
+    <li>Seems to have a problem with short elements: < 2x the sticky element's height or so.</li>
   </ul>
 </div>
 
@@ -43,7 +43,7 @@ Add the `.sticky` class and `[data-sticky]` to an element to create something th
       </p>
     </div>
     <div class="columns small-6 right" data-sticky-container>
-      <div class="sticky" data-sticky data-top-anchor='doodle:top' data-btm-anchor='2500'>
+      <div class="sticky" data-sticky data-anchor='#example1'>
         <img src="/assets/img/interchange/small.jpg">
       </div>
     </div>
@@ -52,8 +52,15 @@ Add the `.sticky` class and `[data-sticky]` to an element to create something th
 
 ## Advanced
 
-You can add anchors to stick to with `data` attributes and `id`'s, such as: `[data-stick-at='#example2']`. If you want a stopping point other than the bottom of the `stick-at` anchor, use `[data-break-at='#some-other-id']` to set a separate break point.
-You can also choose the sticking point, top, bottom, or both. Elements with `[data-stick-to='both']` will stick to the top of the window on scroll down, and if the lower break point is reached, stick to the bottom of the window on scroll up.
+You can also use two anchors, if you please. Using `data-top-anchor='idOfSomething'`, `data-btm-anchor='idOfSomething:[top/bottom]'`, or a set pixel number `data-top-anchor='150'`. If you use an element id with no top/bottom specified, it defaults to the top.
+```html
+<div class="columns small-6 right" data-sticky-container>
+  <div class="sticky" data-sticky data-top-anchor='example2' data-btm-anchor='foo:bottom'>
+    <img src="/assets/img/interchange/small.jpg">
+  </div>
+</div>
+```
+
 
 <div class="row">
   <div class="columns small-12">
@@ -64,7 +71,7 @@ You can also choose the sticking point, top, bottom, or both. Elements with `[da
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
-      <p>
+      <p id='foo'>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
       <p>
@@ -72,7 +79,7 @@ You can also choose the sticking point, top, bottom, or both. Elements with `[da
       </p>
     </div>
     <div class='columns small-6 right' data-sticky-container>
-      <div class="sticky" data-sticky data-anchor='#example2' data-stick-to="bottom">
+      <div class="sticky" data-sticky data-top-anchor='example2:top' data-btm-anchor='foo' data-stick-to="bottom">
         <img src='/assets/img/interchange/small.jpg'>
       </div>
     </div>
