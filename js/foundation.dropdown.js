@@ -218,7 +218,9 @@
     this.setPosition();
     this.$element.addClass('is-open')
         .attr('aria-hidden', 'false');
-    this.$anchor.addClass('hover');
+    this.$anchor.addClass('hover')
+      .attr('aria-expanded', 'true');
+      
     /**
      * Fires once the dropdown is visible.
      * @event Dropdown#show
@@ -240,7 +242,8 @@
     }
     this.$element.removeClass('is-open')
         .attr('aria-hidden', 'true');
-    this.$anchor.removeClass('hover');
+    this.$anchor.removeClass('hover')
+      .attr('aria-expanded', 'false');
     if(this.classChanged){
       var curPositionClass = this.getPositionClass();
       if(curPositionClass){
