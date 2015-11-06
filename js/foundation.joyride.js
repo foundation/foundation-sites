@@ -1,3 +1,11 @@
+/*******************************************
+ *                                         *
+ * This Ride was created by Marius Olbertz *
+ * Please thank Marius on GitHub /owlbertz *
+ * or the web http://www.mariusolbertz.de/ *
+ *                                         *
+ ******************************************/
+
 /**
  * Joyride module.
  * @module foundation.joyride

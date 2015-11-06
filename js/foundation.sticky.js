@@ -26,6 +26,8 @@
     container: '<div data-sticky-container></div>',
     stickTo: 'top',
     stickAt: '',
+    topStick: '',
+    bottomStick: '',
     marginTop: 1,
     marginBottom: 1,
     stickyOn: 'medium',
@@ -59,6 +61,7 @@
     this.scrollCount = this.options.checkEvery;
     this.isStuck = false;
 
+
     this._setSizes(function(){
       _this._calc(false);
     });
@@ -72,17 +75,18 @@
    * @param {String} id - psuedo-random id for unique scroll event listener.
    */
   Sticky.prototype._events = function(id){
+    console.log('called');
     var _this = this,
         scrollListener = 'scroll.zf.' + id;
-
+    if(this.isOn){ return; }
     if(this.canStick){
       this.isOn = true;
-      this.$anchor.off('change.zf.sticky')
-                  .on('change.zf.sticky', function(){
-                    _this._setSizes(function(){
-                      _this._calc(false);
-                    });
-                  });
+      // this.$anchor.off('change.zf.sticky')
+      //             .on('change.zf.sticky', function(){
+      //               _this._setSizes(function(){
+      //                 _this._calc(false);
+      //               });
+      //             });
 
       $(window).off(scrollListener)
                .on(scrollListener, function(e){
@@ -120,7 +124,7 @@
    */
   Sticky.prototype._pauseListeners = function(scrollListener){
     this.isOn = false;
-    this.$anchor.off('change.zf.sticky');
+    // this.$anchor.off('change.zf.sticky');
     $(window).off(scrollListener);
 
     /**
