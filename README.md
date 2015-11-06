@@ -1,4 +1,4 @@
-# [Foundation for Sites](http://foundation.zurb.com)
+# [Foundation for Sites](http://foundation.zurb.com) (Public Beta)
 
 This is the supremely in-development version of Foundation for Sites 6.0.
 
