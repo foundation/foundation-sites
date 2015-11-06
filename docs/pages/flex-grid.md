@@ -176,7 +176,7 @@ Columns can be aligned the same way you would align text in a paragraph. By defa
   </div>
 </div>
 
-You might be wondering what the difference between `.align-justify` and `.aligned-spaced` is. A justified grid (`justify-content: space-between`) evenly distributes the space *between* each column. The first and last columns pin to the edge of the grid.
+You might be wondering what the difference between `.align-justify` and `.align-spaced` is. A justified grid (`justify-content: space-between`) evenly distributes the space *between* each column. The first and last columns pin to the edge of the grid.
 
 A spaced grid (`justify-content: space-around`) evenly distributes the space *around* each column. This means there will always be space to the left of the first column, and to the right of the last column.
 
