@@ -39,6 +39,27 @@ describe('tooltip:', function() {
       Foundation.libs.tooltip.showTip($("#tip2"));
     
       expect($("span.tooltip[role='tooltip']").filter(":visible").length).toBe(2);  
-    });     
+    });
+
+    it('reads hover_delay from options', function() {
+      var $el = $('#tip-with-hoverdelay');
+      $el.attr('data-options', 'hover_delay:57');
+      $(document).foundation();
+
+      var delay = Foundation.libs.tooltip.hover_delay($el);
+      expect(delay).toBe(57);
+    });
+
+    it('uses hover_delay from settings if no data options provided', function() {
+      var $el = $('#tip-with-hoverdelay');
+      $(document).foundation({
+        tooltip: {
+          hover_delay: 200
+        }
+      });
+
+      var delay = Foundation.libs.tooltip.hover_delay($el);
+      expect(delay).toBe(200);
+    });
   });
 });
