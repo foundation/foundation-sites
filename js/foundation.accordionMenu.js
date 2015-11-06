@@ -57,7 +57,7 @@
     this.$element.find('[data-submenu]').not('.is-active').slideUp(0);//.find('a').css('padding-left', '1rem');
     this.$element.attr({
       'role': 'tablist',
-      'multiselectable': this.options.multiOpen
+      'aria-multiselectable': this.options.multiOpen
     });
 
     this.$menuLinks = this.$element.find('.has-submenu');
@@ -190,11 +190,10 @@
    */
   AccordionMenu.prototype.down = function($target) {
     var _this = this;
-    console.log($target);
     $target.addClass('is-active').attr({'aria-hidden': false})
       .parent('.has-submenu').attr('aria-expanded', true).end()
-      .parentsUntil(this.$element, '[data-submenu]')
-      // .addBack();
+      .parentsUntil(this.$element, '[data-submenu]');
+      //.addBack();
 
       Foundation.Move(this.options.slideSpeed, $target, function(){
         $target.slideDown(_this.options.slideSpeed)
@@ -205,7 +204,7 @@
       //   });
       // });
     if(!this.options.multiOpen){
-      this.up(this.$element.find('.is-active').not($target.parentsUntil(this.$element)));
+      this.up(this.$element.find('.is-active').not($target));
     }
     /**
      * Fires when the menu is done collapsing up.
