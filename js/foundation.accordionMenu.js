@@ -190,22 +190,17 @@
    */
   AccordionMenu.prototype.down = function($target) {
     var _this = this;
+
+    if(!this.options.multiOpen){
+      this.up(this.$element.find('.is-active').not($target.parentsUntil(this.$element)));
+    }
+
     $target.addClass('is-active').attr({'aria-hidden': false})
-      .parent('.has-submenu').attr('aria-expanded', true).end()
-      .parentsUntil(this.$element, '[data-submenu]');
-      //.addBack();
+      .parent('.has-submenu').attr({'aria-expanded': true, 'aria-selected': true});
 
       Foundation.Move(this.options.slideSpeed, $target, function(){
         $target.slideDown(_this.options.slideSpeed)
       });
-      // window.requestAnimationFrame(function(){
-      //   $target.slideDown(_this.options.slideSpeed).promise().done(function(){
-      //     // $target.siblings('a').eq(0).focus();
-      //   });
-      // });
-    if(!this.options.multiOpen){
-      this.up(this.$element.find('.is-active').not($target));
-    }
     /**
      * Fires when the menu is done collapsing up.
      * @event AccordionMenu#down
@@ -221,7 +216,7 @@
   AccordionMenu.prototype.up = function($target) {
     $target.slideUp(this.options.slideSpeed, function() {
       $target.find('[data-submenu]').slideUp(0).attr('aria-hidden', true);
-    }).attr('aria-hidden', true).parent('.has-submenu').attr('aria-expanded', false);
+    }).attr('aria-hidden', true).parent('.has-submenu').attr({'aria-expanded': false, 'aria-selected': false});
 
     /**
      * Fires when the menu is done collapsing up.
