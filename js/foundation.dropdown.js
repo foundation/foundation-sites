@@ -18,6 +18,13 @@
     this._init();
 
     Foundation.registerPlugin(this);
+    Foundation.Keyboard.register('Dropdown', {
+      'ENTER': 'open',
+      'SPACE': 'open',
+      'ESCAPE': 'close',
+      'TAB': 'tab_forward',
+      'SHIFT_TAB': 'tab_backward'
+    });
   }
 
   Dropdown.defaults = {
@@ -25,7 +32,8 @@
     hover: false,
     vOffset: 1,
     hOffset: 1,
-    positionClass: ''
+    positionClass: '',
+    trapFocus: false
   };
   /**
    * Initializes the plugin by setting/checking options and attributes, adding helper variables, and saving the anchor.
@@ -157,6 +165,41 @@
         }, _this.options.hoverDelay);
       });
     }
+    this.$anchor.add(this.$element).on('keydown.zf.dropdown', function(e) {
+
+      var visibleFocusableElements = Foundation.Keyboard.findFocusable(_this.$element);
+
+      Foundation.Keyboard.handleKey(e, _this, {
+        tab_forward: function() {
+          if (this.$element.find(':focus').is(visibleFocusableElements.eq(-1))) { // left modal downwards, setting focus to first element
+            if (this.options.trapFocus) { // if focus shall be trapped
+              visibleFocusableElements.eq(0).focus();
+              e.preventDefault();
+            } else { // if focus is not trapped, close dropdown on focus out
+              this.close();
+            }
+          }
+        },
+        tab_backward: function() {
+          if (this.$element.find(':focus').is(visibleFocusableElements.eq(0)) || this.$element.is(':focus')) { // left modal upwards, setting focus to last element          
+            if (this.options.trapFocus) { // if focus shall be trapped
+              visibleFocusableElements.eq(-1).focus();
+              e.preventDefault();
+            } else { // if focus is not trapped, close dropdown on focus out
+              this.close();
+            }
+          }
+        },
+        open: function() {
+          _this.open();
+          _this.$element.attr('tabindex', -1).focus();
+        },
+        close: function() {
+          _this.close();
+          _this.$anchor.focus();
+        }
+      });
+    });
   };
   /**
    * Opens the dropdown pane, and fires a bubbling event to close other dropdowns.
