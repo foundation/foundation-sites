@@ -15,10 +15,14 @@ $tabs-navigation-padding: rem-calc(16) !default;
 $tabs-navigation-bg-color: $silver !default;
 $tabs-navigation-active-bg-color: $white !default;
 $tabs-navigation-hover-bg-color: scale-color($tabs-navigation-bg-color, $lightness: -6%) !default;
+$tabs-navigation-disabled-bg-color: $vapor !default;
 $tabs-navigation-font-color: $jet !default;
 $tabs-navigation-active-font-color: $tabs-navigation-font-color !default;
+$tabs-navigation-disabled-font-color: $iron !default;
 $tabs-navigation-font-size: rem-calc(16) !default;
 $tabs-navigation-font-family: $body-font-family !default;
+$tabs-navigation-disabled-cursor: $cursor-disabled-value !default;
+
 
 $tabs-content-margin-bottom: rem-calc(24) !default;
 $tabs-content-padding: ($column-gutter/2) !default;
@@ -55,6 +59,12 @@ $tabs-vertical-navigation-margin-bottom: 1.25rem !default;
         &.active > a {
           background-color: $tabs-navigation-active-bg-color;
           color: $tabs-navigation-active-font-color;
+        }
+
+        &.disabled > a {
+          background-color: $tabs-navigation-disabled-bg-color;
+          color: $tabs-navigation-disabled-font-color;
+          cursor: $tabs-navigation-disabled-cursor;
         }
       }
 
