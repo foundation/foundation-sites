@@ -11,7 +11,8 @@
       before_height_change : $.noop,
       after_height_change : $.noop,
       equalize_on_stack : false,
-      act_on_hidden_el: false
+      act_on_hidden_el: false,
+      label_container: true
     },
 
     init : function (scope, method, options) {
@@ -70,6 +71,16 @@
         var min = Math.min.apply(null, heights);
         vals.css('height', min);
       }
+
+	  if (settings.label_container) {
+        $.each(heights, function(key, val) {
+          if ($(this)[0] !== max) {
+            $(vals[key]).removeClass('taller').addClass('smaller');
+          } else {
+            $(vals[key]).removeClass('smaller').addClass('taller');
+          }
+        });
+      }				
 
       settings.after_height_change();
       equalizer.trigger('after-height-change.fndtn.equalizer');
