@@ -48,7 +48,8 @@ $closebutton-color-hover: $black !default;
   line-height: $closebutton-lineheight;
   cursor: pointer;
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: $closebutton-color-hover;
   }
 }
