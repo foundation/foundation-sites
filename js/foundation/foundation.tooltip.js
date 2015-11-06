@@ -282,8 +282,11 @@
     },
 
     small : function () {
-      return matchMedia(Foundation.media_queries.small).matches &&
-        !matchMedia(Foundation.media_queries.medium).matches;
+      return matchMedia(Foundation.media_queries.small).matches
+         && !matchMedia(Foundation.media_queries.medium).matches
+         && !matchMedia(Foundation.media_queries.large).matches
+         && !matchMedia(Foundation.media_queries.xlarge).matches
+         && !matchMedia(Foundation.media_queries.xxlarge).matches;
     },
 
     inheritable_classes : function ($target) {
