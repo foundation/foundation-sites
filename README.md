@@ -1,6 +1,6 @@
 # [Foundation for Sites](http://foundation.zurb.com) (Public Beta)
 
-This is the supremely in-development version of Foundation for Sites 6.0.
+This is the in-development version of Foundation for Sites 6.0. 
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/zurb/foundation-sites-6?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
