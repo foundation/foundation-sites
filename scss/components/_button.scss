@@ -164,6 +164,7 @@ $button-opacity-disabled: 0.25 !default;
     top: 0.4em; // Aligns the arrow with the text of the button
     float: #{$global-right};
     margin-#{$global-left}: get-side($button-padding, right);
+    display: inline-block;
   }
 }
 
