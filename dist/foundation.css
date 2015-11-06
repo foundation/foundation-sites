@@ -362,80 +362,10 @@ th {
   font-size: 2em;
   line-height: 1;
   cursor: pointer; }
-  .close-button:hover {
+  [data-whatinput="mouse"] .close-button {
+    outline: 0; }
+  .close-button:hover, .close-button:focus {
     color: #0a0a0a; }
-
-.dropdown.menu .has-submenu {
-  position: relative; }
-  .dropdown.menu .has-submenu a::after {
-    float: right;
-    margin-top: 3px;
-    margin-left: 10px; }
-  .dropdown.menu .has-submenu.is-down-arrow > a::after {
-    content: '';
-    display: block;
-    width: 0;
-    height: 0;
-    border: inset 5px;
-    border-color: #2199e8 transparent transparent;
-    border-top-style: solid; }
-  .dropdown.menu .has-submenu.is-right-arrow > a::after {
-    content: '';
-    display: block;
-    width: 0;
-    height: 0;
-    border: inset 5px;
-    border-color: transparent #2199e8 transparent transparent;
-    border-right-style: solid;
-    float: left;
-    margin-left: 0;
-    margin-right: 10px; }
-  .dropdown.menu .has-submenu.is-left-arrow > a::after {
-    content: '';
-    display: block;
-    width: 0;
-    height: 0;
-    border: inset 5px;
-    border-color: transparent transparent transparent #2199e8;
-    border-left-style: solid; }
-
-.dropdown.menu .submenu {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 100%;
-  min-width: 200px;
-  white-space: nowrap;
-  z-index: 1; }
-  .dropdown.menu .submenu > li {
-    width: 100%; }
-  .dropdown.menu .submenu.is-right-arrow {
-    left: auto;
-    right: 100%; }
-  .dropdown.menu .submenu.first-sub {
-    top: 100%;
-    left: 0;
-    right: auto; }
-    .dropdown.menu .submenu.first-sub.is-right-arrow {
-      left: auto;
-      right: 0; }
-  .dropdown.menu .submenu:not(.js-dropdown-nohover) > .has-submenu:hover > .dropdown.menu .submenu, .dropdown.menu .submenu.js-dropdown-active {
-    display: block; }
-
-.dropdown.menu.vertical.align-right {
-  float: right; }
-
-.dropdown.menu.vertical {
-  width: 100px; }
-  .dropdown.menu.vertical > li .submenu {
-    top: 0;
-    left: 100%; }
-    .dropdown.menu.vertical > li .submenu.is-right-arrow {
-      left: auto;
-      right: 100%; }
-
-.submenu {
-  background: white; }
 
 body.is-reveal-open {
   overflow: hidden; }
@@ -1446,6 +1376,8 @@ kbd {
   font-size: 0.9rem;
   background: #2199e8;
   color: #fff; }
+  [data-whatinput="mouse"] .button {
+    outline: 0; }
   .button:hover, .button:focus {
     background: #1583cc;
     color: #fff; }
@@ -2080,6 +2012,75 @@ select {
 .dropdown-pane.large {
   width: 400px; }
 
+.dropdown.menu .has-submenu {
+  position: relative; }
+  .dropdown.menu .has-submenu a::after {
+    float: right;
+    margin-top: 3px;
+    margin-left: 10px; }
+  .dropdown.menu .has-submenu.is-down-arrow > a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border: inset 5px;
+    border-color: #2199e8 transparent transparent;
+    border-top-style: solid; }
+  .dropdown.menu .has-submenu.is-right-arrow > a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border: inset 5px;
+    border-color: transparent #2199e8 transparent transparent;
+    border-right-style: solid;
+    float: left;
+    margin-left: 0;
+    margin-right: 10px; }
+  .dropdown.menu .has-submenu.is-left-arrow > a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border: inset 5px;
+    border-color: transparent transparent transparent #2199e8;
+    border-left-style: solid; }
+
+.dropdown.menu .submenu {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  min-width: 200px;
+  white-space: nowrap;
+  z-index: 1;
+  background: white; }
+  .dropdown.menu .submenu > li {
+    width: 100%; }
+  .dropdown.menu .submenu.is-right-arrow {
+    left: auto;
+    right: 100%; }
+  .dropdown.menu .submenu.first-sub {
+    top: 100%;
+    left: 0;
+    right: auto; }
+    .dropdown.menu .submenu.first-sub.is-right-arrow {
+      left: auto;
+      right: 0; }
+  .dropdown.menu .submenu:not(.js-dropdown-nohover) > .has-submenu:hover > .dropdown.menu .submenu, .dropdown.menu .submenu.js-dropdown-active {
+    display: block; }
+
+.dropdown.menu.vertical {
+  width: 100px; }
+  .dropdown.menu.vertical.align-right {
+    float: right; }
+  .dropdown.menu.vertical > li .submenu {
+    top: 0;
+    left: 100%; }
+    .dropdown.menu.vertical > li .submenu.is-right-arrow {
+      left: auto;
+      right: 100%; }
+
 .flex-video {
   position: relative;
   height: 0;
@@ -2153,6 +2154,8 @@ select {
   .menu > li {
     display: table-cell;
     vertical-align: middle; }
+    [data-whatinput="mouse"] .menu > li {
+      outline: 0; }
   .menu > li > a {
     display: block;
     padding: 0.7rem 1rem;
@@ -2254,6 +2257,8 @@ body {
   position: absolute;
   background: #fefefe;
   z-index: -1; }
+  [data-whatinput="mouse"] .off-canvas {
+    outline: 0; }
   .off-canvas.position-left {
     left: -250px;
     top: 0;
@@ -2339,6 +2344,8 @@ body {
   z-index: 10;
   padding: 1rem;
   color: #fefefe; }
+  [data-whatinput="mouse"] .orbit-previous, [data-whatinput="mouse"] .orbit-next {
+    outline: 0; }
   .orbit-previous:hover, .orbit-next:hover, .orbit-previous:active, .orbit-next:active, .orbit-previous:focus, .orbit-next:focus {
     background-color: rgba(10, 10, 10, 0.5); }
 
@@ -2354,6 +2361,8 @@ body {
   margin-top: 0.8rem;
   margin-bottom: 0.8rem;
   text-align: center; }
+  [data-whatinput="mouse"] .orbit-bullets {
+    outline: 0; }
   .orbit-bullets button {
     width: 1.2rem;
     height: 1.2rem;
@@ -2493,6 +2502,8 @@ body {
   -ms-touch-action: manipulation;
       touch-action: manipulation;
   border-radius: 0; }
+  [data-whatinput="mouse"] .slider-handle {
+    outline: 0; }
   .slider-handle:hover {
     background-color: #1583cc; }
   .slider-handle.is-dragging {
@@ -2507,7 +2518,10 @@ body {
   display: inline-block;
   width: 0.5rem;
   height: 12.5rem;
-  margin: 0 1.25rem; }
+  margin: 0 1.25rem;
+  -webkit-transform: scale(1, -1);
+      -ms-transform: scale(1, -1);
+          transform: scale(1, -1); }
   .slider.vertical .slider-fill {
     top: 0;
     width: 0.5rem;
@@ -2567,6 +2581,8 @@ body {
   border-radius: 0;
   position: absolute;
   overflow-y: scroll; }
+  [data-whatinput="mouse"] .reveal {
+    outline: 0; }
   @media screen and (min-width: 32em) {
     .reveal {
       min-height: 0; } }
@@ -2653,11 +2669,8 @@ body {
     background: #2199e8; }
     input:checked ~ .switch-paddle::after {
       left: 2.25rem; }
-  input:focus ~ .switch-paddle {
-    outline: thin dotted #333;
-    outline: 5px auto -webkit-focus-ring-color;
-    outline-offset: -2px;
-    overflow: hidden; }
+  [data-whatinput="mouse"] input:focus ~ .switch-paddle {
+    outline: 0; }
 
 .switch-active, .switch-inactive {
   position: absolute;
