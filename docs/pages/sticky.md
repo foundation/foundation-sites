@@ -29,7 +29,7 @@ Add the `.sticky` class and `[data-sticky]` to an element to create something th
 <div class="row">
   <div class="columns small-12">
     <div class="columns small-6" id="example1" data-something>
-      <p>
+      <p id="doodle">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
       <p>
@@ -43,7 +43,7 @@ Add the `.sticky` class and `[data-sticky]` to an element to create something th
       </p>
     </div>
     <div class="columns small-6 right" data-sticky-container>
-      <div class="sticky" data-sticky data-stick-at="#example1">
+      <div class="sticky" data-sticky data-top-anchor='doodle:top' data-btm-anchor='2500'>
         <img src="/assets/img/interchange/small.jpg">
       </div>
     </div>
@@ -72,7 +72,7 @@ You can also choose the sticking point, top, bottom, or both. Elements with `[da
       </p>
     </div>
     <div class='columns small-6 right' data-sticky-container>
-      <div class="sticky" data-sticky data-stick-at='#example2' data-stick-to="bottom">
+      <div class="sticky" data-sticky data-anchor='#example2' data-stick-to="bottom">
         <img src='/assets/img/interchange/small.jpg'>
       </div>
     </div>
