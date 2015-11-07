@@ -11,7 +11,7 @@ A media object is a container with the class `.media-object`, and two or three s
 ```html_example
 <div class="media-object">
   <div class="media-object-section">
-    <img src= "http://placeimg.com/200/200/people">
+    <img src= "http://placeimg.com/100/100/people">
   </div>
   <div class="media-object-section">
     <h4>Dreams feel real while we're in them.</h4>
@@ -29,7 +29,7 @@ Each section aligns to the top by default, but individual sections can also be m
 ```html_example
 <div class="media-object">
   <div class="media-object-section middle">
-    <img src= "http://placeimg.com/200/200/people">
+    <img src= "http://placeimg.com/100/100/people">
   </div>
   <div class="media-object-section">
     <h4>Why is it so important to dream?</h4>
@@ -37,7 +37,7 @@ Each section aligns to the top by default, but individual sections can also be m
     <p>What is the most resilient parasite? Bacteria? A virus? An intestinal worm? An idea. Resilient... highly contagious. Once an idea has taken hold of the brain it's almost impossible to eradicate. An idea that is fully formed - fully understood - that sticks; right in there somewhere.</p>
   </div>
   <div class="media-object-section bottom">
-    <img src= "http://placeimg.com/200/200/people">
+    <img src= "http://placeimg.com/100/100/people">
   </div>
 </div>
 ```
@@ -69,7 +69,7 @@ By nesting a media object into the media-object-section section, you can easily 
 ```html_example
 <div class="media-object">
   <div class="media-object-section">
-    <img src= "http://placeimg.com/200/200/people">
+    <img src= "http://placeimg.com/100/100/people">
   </div>
   <div class="media-object-section">
     <h4>I'm First!</h4>
@@ -77,7 +77,7 @@ By nesting a media object into the media-object-section section, you can easily 
     <!-- Nested media object starts here -->
     <div class="media-object">
       <div class="media-object-section">
-        <img src= "http://placeimg.com/200/200/people">
+        <img src= "http://placeimg.com/100/100/people">
       </div>
       <div class="media-object-section">
         <h4>I'm Second!</h4>
@@ -88,63 +88,3 @@ By nesting a media object into the media-object-section section, you can easily 
   </div>
 </div>
 ```
-
----
-
-## Other Uses
-
-The media object is a versatile component which can be used in many ways.
-
-<div class="row small-up-1 large-up-2">
-  <div class="column">
-    <div class="media-object">
-      <div class="media-object-section">
-        <a href="#" class="button">Button</a>
-        <form>
-          <input id="checkbox1" type="checkbox">
-        </form>
-      </div>
-      <div class="media-object-section">
-        <h4>Button and checkbox</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus excepturi sunt vitae odio voluptates. Dicta voluptatibus natus minus, incidunt facere, suscipit vel aut vero, ex veniam consequuntur dolores quam autem.</p>
-      </div>
-    </div>
-  </div>
-  <div class="column">
-    <div class="media-object">
-      <div class="media-object-section">
-        <i class="fi-comments" style="font-size: 32px"></i>
-      </div>
-      <div class="media-object-section">
-        <h4>With Foundicons!</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus excepturi sunt vitae odio voluptates. Dicta voluptatibus natus minus, incidunt facere, suscipit vel aut vero, ex veniam consequuntur dolores quam autem.</p>
-      </div>
-    </div>
-  </div>
-  <div class="column">
-    <div class="media-object">
-      <div class="media-object-section">
-        <img src= "http://placeimg.com/200/200/people">
-      </div>
-      <div class="media-object-section">
-        <h4>I like to comment on things!</h4>
-        <form>
-          <label>
-            <textarea placeholder="comment"></textarea>
-          </label>
-        </form>
-      </div>
-    </div>
-  </div>
-  <div class="column">
-    <div class="media-object callout secondary">
-      <div class="media-object-section">
-        <i class="fi-comments" style="font-size: 32px"></i>
-      </div>
-      <div class="media-object-section middle">
-        <h4>In a Callout</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus excepturi sunt vitae odio voluptates. Dicta voluptatibus natus minus, incidunt facere.</p>
-      </div>
-    </div>
-  </div>
-</div>

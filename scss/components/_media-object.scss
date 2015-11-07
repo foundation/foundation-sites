@@ -54,6 +54,10 @@ $mediaobject-image-width-stacked: 100% !default;
   .media-object {
     @include media-object-container;
 
+    img {
+      max-width: none;
+    }
+
     &.stack-for-small .media-object-section {
       @include breakpoint(small only) {
         @include media-object-stack;
