@@ -105,7 +105,7 @@
    * @return String componentName
    */
   var getComponentName = function(component) {
-    return (/function (.+)\(/).exec((component).constructor.toString())[1] || '';
+    return (/function (\w+)\(/).exec((component).constructor.toString())[1] || '';
   };
 
 }(jQuery, window.Foundation);
