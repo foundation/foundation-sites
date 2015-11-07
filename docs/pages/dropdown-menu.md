@@ -17,7 +17,7 @@ js: js/dropdownMenu.js
 ## Horizontal
 By default, dropdowns are exactly that, horizontally oriented below the parent element, opened by hovering, clicking, or tapping.
 
-
+```html_example
 <ul class="dropdown menu" data-dropdown-menu>
   <li>
     <a>Item 1</a>
@@ -42,7 +42,6 @@ By default, dropdowns are exactly that, horizontally oriented below the parent e
               <li><a href='#'>Item 1 subB</a></li>
             </ul>
           </li>
-
         </ul>
       </li>
       <li><a href="#">Item 1B</a></li>
@@ -64,7 +63,7 @@ By default, dropdowns are exactly that, horizontally oriented below the parent e
   </li>
   <li><a href='#'>Item 4</a></li>
 </ul>
-
+```
 
 
 <ul class="dropdown menu align-right" data-dropdown-menu>
