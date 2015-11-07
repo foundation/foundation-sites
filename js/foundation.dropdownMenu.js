@@ -107,9 +107,9 @@
     this.$submenus.each(function(){
       var $sub = $(this);
 
-      if(_this.options.alignment === 'right'){
-        $sub.children('[data-submenu]').addClass('is-right-arrow');
-      }
+      // if(_this.options.alignment === 'right'){
+      //   $sub.children('[data-submenu]').addClass('is-right-arrow');
+      // }
 
       $sub.children('[data-submenu]')
           .attr({
@@ -131,7 +131,7 @@
     var _this = this;
 
     if(this.options.clickOpen){
-      $elem.on('click.zf.dropdownmenu tap.zf.dropdownmenu touchend.zf.dropdownmenu', function(e){
+      $elem.children('a').on('click.zf.dropdownmenu touchend.zf.dropdownmenu', function(e){
         if($(e.target).parent('li').hasClass('has-submenu')){
           e.preventDefault();
           e.stopPropagation();

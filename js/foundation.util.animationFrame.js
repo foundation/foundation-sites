@@ -1,7 +1,14 @@
 !function($, Foundation, window){
   function Move(duration, elem, fn){
     var anim, prog, start = null, _this = this;
-
+    this.dont = function(){
+      if(anim !== undefined){
+        window.cancelAnimationFrame(anim);
+        duration = 0;
+        return true;
+      }
+      return false;
+    }
     this.do = function(ts){//timestamp returned from requestAnimationFrame
       if(!start){ start = ts; }
       prog = ts - start;
