@@ -40,9 +40,9 @@ Buttons within a button group can be colored individually with the `.secondary`,
 
 ```html_example
 <div class="button-group">
-  <a class="button">View</a>
-  <a class="secondary button">Edit</a>
-  <a class="secondary button">Share</a>
+  <a class="secondary button">View</a>
+  <a class="success button">Edit</a>
+  <a class="warning button">Share</a>
   <a class="alert button">Delete</a>
 </div>
 ```

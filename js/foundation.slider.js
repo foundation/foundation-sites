@@ -180,8 +180,8 @@
                      */
                     _this.$element.trigger('moved.zf.slider', [$hndl]);
                 });
-
-    Foundation.Move(_this.options.moveTime, $hndl, function(){
+    var moveTime = _this.$element.data('dragging') ? 1000/60 : _this.options.moveTime;
+    var move = new Foundation.Move(moveTime, $hndl, function(){
       $hndl.css(lOrT, movement + '%');
       if(!_this.options.doubleSided){
         _this.$fill.css(hOrW, pctOfBar * 100 + '%');
@@ -189,6 +189,7 @@
         _this.$fill.css(css);
       }
     });
+    move.do();
   };
   /**
    * Sets the initial attribute for the slider element.
@@ -285,7 +286,7 @@
       });
 
     if(this.options.clickSelect){
-      this.$element.off('click.zf.slider').on('click.zf.slider', function(e){
+      this.$element.off('mousedown.zf.slider').on('mousedown.zf.slider', function(e){
         if(_this.$element.data('dragging')){ return false; }
         _this.animComplete = false;
         if(_this.options.doubleSided){
@@ -308,7 +309,7 @@
 
           $handle.addClass('is-dragging');
           _this.$fill.addClass('is-dragging');//
-          _this.$element.attr('data-dragging', true);
+          _this.$element.data('dragging', true);
           _this.animComplete = false;
           curHandle = $(e.currentTarget);
 

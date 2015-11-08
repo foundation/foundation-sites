@@ -158,7 +158,8 @@ var Foundation = {
         $(this).data('zf-plugin', new plugin($(this)));
       });
     });
-  }
+  },
+  getFnName: functionName
 }
 
 Foundation.util = {
