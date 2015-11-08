@@ -181,7 +181,7 @@
                     _this.$element.trigger('moved.zf.slider', [$hndl]);
                 });
     var moveTime = _this.$element.data('dragging') ? 1000/60 : _this.options.moveTime;
-    var move = new Foundation.Move(moveTime, $hndl, function(){
+    /*var move = new */Foundation.Move(moveTime, $hndl, function(){
       $hndl.css(lOrT, movement + '%');
       if(!_this.options.doubleSided){
         _this.$fill.css(hOrW, pctOfBar * 100 + '%');
@@ -189,7 +189,7 @@
         _this.$fill.css(css);
       }
     });
-    move.do();
+    // move.do();
   };
   /**
    * Sets the initial attribute for the slider element.
