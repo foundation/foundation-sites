@@ -7,7 +7,7 @@ description: Foundation is written in Sass, which allows us to make the codebase
   <p>Not familiar with Sass? The [official tutorial](http://sass-lang.com/guide) on sass-lang.com is a great place to start.</p>
 </div>
 
-## Compatability
+## Compatibility
 
 <img src="assets/img/logo-sass.svg" alt="Sass logo" class="float-right" style="width: 150px; height: 150px; margin-left: 1rem;">
 
