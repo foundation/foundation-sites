@@ -22,7 +22,7 @@
     this._init();
 
     Foundation.registerPlugin(this);
-    Foundation.registerKeyCommands('Drilldown', {
+    Foundation.Keyboard.register('Drilldown', {
       'ENTER': 'open',
       'SPACE': 'open',
       'ARROW_RIGHT': 'next',
@@ -141,7 +141,7 @@
           return;
         }
       });
-      Foundation.handleKey(e, _this, {
+      Foundation.Keyboard.handleKey(e, _this, {
         next: function() {
           if ($element.is(_this.$submenuAnchors)) {
             _this._show($element);
