@@ -64,7 +64,7 @@ If you're using Compass, open your project's `config.rb` and add the import path
 add_import_path "node_modules/foundation-sites/scss"
 ```
 
-Finally, add an `@import` statement to the top of your primary Sass file. Refer to [Adjusting CSS Output][#adjusting-css-output] below to learn how to control the CSS output of the framework.
+Finally, add an `@import` statement to the top of your primary Sass file. Refer to [Adjusting CSS Output](#adjusting-css-output) below to learn how to control the CSS output of the framework.
 
 ```scss
 @import 'foundation';
