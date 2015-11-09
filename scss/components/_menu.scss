@@ -144,9 +144,9 @@ $menu-expand-max: 6 !default;
   font-weight: bold;
   color: inherit;
   line-height: 1;
-  padding: $menu-item-padding;
   padding-top: 0;
   padding-bottom: 0;
+  padding: $menu-item-padding;
 }
 
 @mixin foundation-menu {

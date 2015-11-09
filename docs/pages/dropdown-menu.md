@@ -39,7 +39,6 @@ By default, dropdowns are exactly that, horizontally oriented below the parent e
             <a href='#'> Item 1 sub</a>
             <ul class='menu'>
               <li><a href='#'>Item 1 subA</a></li>
-              <li><a href='#'>Item 1 subB</a></li>
             </ul>
           </li>
         </ul>
@@ -54,13 +53,7 @@ By default, dropdowns are exactly that, horizontally oriented below the parent e
       <li><a href="#">Item 2B</a></li>
     </ul>
   </li>
-  <li>
-    <a href="#">Item 3</a>
-    <ul class="menu">
-      <li><a href="#">Item 3A</a></li>
-      <li><a href="#">Item 3B</a></li>
-    </ul>
-  </li>
+  <li><a href="#">Item 3</a></li>
   <li><a href='#'>Item 4</a></li>
 </ul>
 ```
