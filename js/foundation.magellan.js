@@ -61,9 +61,10 @@
     this._calcPoints();
     this._events();
 
-    setTimeout(function(){
-    _this.updateActive();
-    },500);
+    $(window).one('load', this.updateActive.bind(this));
+    // setTimeout(function(){
+    // _this.updateActive();
+    // },500);
   };
   Magellan.prototype._calcPoints = function(){
     var _this = this,
@@ -86,49 +87,44 @@
    */
   Magellan.prototype._events = function() {
     var _this = this,
-        $body = $('html, body');
+        $body = $('html, body'),
+        opts = {
+          duration: _this.options.animationDuration,
+          easing:   _this.options.animationEasing
+        };
     this.$element.on({
       'resizeme.zf.trigger': this._reflow.bind(this),
       'scrollme.zf.trigger': this.updateActive.bind(this)
     })
       .on('click.fndtn.magellan', 'a[href^="#"]', function(e) {
         e.preventDefault();
-        // include animation settings
-        // var arrival   = $(this).attr('href'),
-            // console.log(this.getAttribute('href'));
         var arrival   = this.getAttribute('href'),
-            // navOffset = _this.$element.height();
             scrollPos = $(arrival).offset().top - _this.options.threshold;
-
 
         Foundation.Move(_this.options.animationDuration, $body, function(){
           $body.animate({
             scrollTop: scrollPos
-            // scrollTop: $(arrival).offset().top - _this.options.threshold
-          },
-          {
-            duration: _this.options.animationDuration,
-            easing:   _this.options.animationEasing
-            // complete: function(){
-            //   console.log(window.location.hash, arrival);
-            //   window.location.hash = arrival;
-            // }
-          });
-          window.location.hash = arrival;
+          }, opts);
         });
-
       });
   };
   /**
    * Calls necessary functions to update Magellan upon DOM change
    * @private
    */
-  Magellan.prototype._reflow = function() {
+  Magellan.prototype._reflow = function(){
+    this._calcPoints();
+    this.updateActive();
   };
   Magellan.prototype.updateActive = function(evt, elem, scrollPos){
-    var winPos = scrollPos || window.scrollY,
-        // idx = this.$links.index(this.$active),x
-        isDown = this.scrollPos < winPos,
+    var winPos = scrollPos || window.scrollY;
+        // min = winPos > this.options.threshold;
+
+
+    // if(min && Math.abs(winPos - this.scrollPos) < this.options.threshold){ return false;}
+    if(winPos > this.options.threshold > Math.abs(winPos - this.scrollPos)){ console.log('min');return false;}
+
+    var isDown = this.scrollPos < winPos,
         _this = this,
         curVisible = this.points.filter(function(p, i){
 
@@ -138,7 +134,14 @@
 
     this.$active.removeClass(this.options.activeClass);
     this.$active = this.$links.eq(curIdx).addClass(this.options.activeClass);
-    window.location.hash = this.$active[0].getAttribute('href');
+
+    var hash = this.$active[0].getAttribute('href');
+    if(window.history.pushState){
+      window.history.pushState(null, null, hash);
+    }else{
+      window.location.hash = hash;
+    }
+
     this.scrollPos = winPos;
   };
   /**

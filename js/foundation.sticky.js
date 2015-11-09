@@ -64,8 +64,8 @@
       this._parsePoints();
       // console.log(this.points[0]);
     }else{
-    }
       this.$anchor = this.options.anchor ? $(this.options.anchor) : $(document.body);
+    }
 
 
     this._setSizes(function(){
