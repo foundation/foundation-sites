@@ -59,7 +59,7 @@
 
     this.scrollCount = this.options.checkEvery;
     this.isStuck = false;
-    // console.log(this.options.anchor);
+    // console.log(this.options.anchor, this.options.topAnchor);
     if(this.options.topAnchor !== ''){
       this._parsePoints();
       // console.log(this.points[0]);
@@ -95,6 +95,7 @@
     }
       // console.log(breaks);
     this.points = breaks;
+    // console.log(this.points);
     return;
   };
 
@@ -280,8 +281,8 @@
         comp = window.getComputedStyle(this.$container[0]),
         pdng = parseInt(comp['padding-right'], 10);
 
-
-    if(this.$anchor.length){
+    // console.log(this.$anchor);
+    if(this.$anchor && this.$anchor.length){
       this.anchorHeight = this.$anchor[0].getBoundingClientRect().height;
     }else{
       this._parsePoints();
