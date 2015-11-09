@@ -221,11 +221,11 @@
     css[mrgn] = this.options[mrgn] + 'em';
     css[stickTo] = 0;
     css[notStuckTo] = 'auto';
+    css['left'] = this.$container.offset().left + parseInt(window.getComputedStyle(this.$container[0])["padding-left"], 10);
     this.isStuck = true;
     this.$element.removeClass('is-anchored is-at-' + notStuckTo)
                  .addClass('is-stuck is-at-' + stickTo)
                  .css(css)
-				 .css("left",this.$container.offset().left + parseInt(this.$container.css("padding-left")))
                  /**
                   * Fires when the $element has become `position: fixed;`
                   * Namespaced to `top` or `bottom`.
@@ -256,11 +256,11 @@
       css[stickTo] = 0;
       css[notStuckTo] = anchorPt;
     }
+    css['left'] = '';
     this.isStuck = false;
     this.$element.removeClass('is-stuck is-at-' + stickTo)
                  .addClass('is-anchored is-at-' + (isTop ? 'top' : 'bottom'))
                  .css(css)
-				 .css("left","")
                  /**
                   * Fires when the $element has become anchored.
                   * Namespaced to `top` or `bottom`.
@@ -277,7 +277,9 @@
   Sticky.prototype._setSizes = function(cb){
     var _this = this,
         newElemWidth = this.$container[0].getBoundingClientRect().width,
-        pdng = parseInt(window.getComputedStyle(this.$container[0])['padding-right'], 10);
+        comp = window.getComputedStyle(this.$container[0]),
+        pdng = parseInt(comp['padding-right'], 10);
+
 
     if(this.$anchor.length){
       this.anchorHeight = this.$anchor[0].getBoundingClientRect().height;
@@ -296,10 +298,10 @@
     });
     this.elemHeight = newContainerHeight;
     this.canStick = Foundation.MediaQuery.atLeast(this.options.stickyOn);
-	
-	if (this.isStuck) {
-		this.$element.css({"left":this.$container.offset().left + parseInt(this.$container.css("padding-left"))})
-	}
+
+  	if (this.isStuck) {
+  		this.$element.css({"left":this.$container.offset().left + parseInt(comp['padding-left'], 10)})
+  	}
 
     this._setBreakPoints(newContainerHeight, function(){
       if(cb){ cb(); }
