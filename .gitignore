@@ -31,10 +31,6 @@ spec/reports
 npm-debug.log
 _debug.json
 
-test/
-test/.sass-cache/*
-test/css
-test/css/styles.css
 *.orig
 node_modules
 docs/public/*

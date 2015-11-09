@@ -42,7 +42,7 @@ The structure of the flex grid is identical to that of the float grid. Rows use 
 </div>
 <div class="row">
   <div class="medium-6 large-4 columns">12/6/4 columns</div>
-  <div class="medium-6 large-8 columns">12/6/6 columns</div>
+  <div class="medium-6 large-8 columns">12/6/8 columns</div>
 </div>
 ```
 
@@ -176,7 +176,7 @@ Columns can be aligned the same way you would align text in a paragraph. By defa
   </div>
 </div>
 
-You might be wondering what the difference between `.align-justify` and `.aligned-spaced` is. A justified grid (`justify-content: space-between`) evenly distributes the space *between* each column. The first and last columns pin to the edge of the grid.
+You might be wondering what the difference between `.align-justify` and `.align-spaced` is. A justified grid (`justify-content: space-between`) evenly distributes the space *between* each column. The first and last columns pin to the edge of the grid.
 
 A spaced grid (`justify-content: space-around`) evenly distributes the space *around* each column. This means there will always be space to the left of the first column, and to the right of the last column.
 

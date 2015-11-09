@@ -29,6 +29,17 @@
      */
     // this.$element.trigger('init.zf.accordionMenu');
     Foundation.registerPlugin(this);
+    Foundation.Keyboard.register('AccordionMenu', {
+      'ENTER': 'toggle',
+      'SPACE': 'toggle',
+      'ARROW_RIGHT': 'open',
+      'ARROW_UP': 'up',
+      'ARROW_DOWN': 'down',
+      'ARROW_LEFT': 'close',
+      'ESCAPE': 'closeAll',
+      'TAB': 'down',
+      'SHIFT_TAB': 'up'
+    });
   }
 
   AccordionMenu.defaults = {
@@ -46,7 +57,7 @@
     this.$element.find('[data-submenu]').not('.is-active').slideUp(0);//.find('a').css('padding-left', '1rem');
     this.$element.attr({
       'role': 'tablist',
-      'multiselectable': this.options.multiOpen
+      'aria-multiselectable': this.options.multiOpen
     });
 
     this.$menuLinks = this.$element.find('.has-submenu');
@@ -85,8 +96,7 @@
    * @private
    */
   AccordionMenu.prototype._events = function() {
-    var _this = this,
-        usedKeys = [13, 27, 32, 35, 36, 37, 38, 39, 40];
+    var _this = this;
 
     this.$element.find('li').each(function() {
       var $submenu = $(this).children('[data-submenu]');
@@ -99,54 +109,70 @@
         });
       }
     }).on('keydown.zf.accordionmenu', function(e){
-        var key = e.which;
-        console.log(key);
-        if(usedKeys.indexOf(key) < 0){ return; }
-        e.stopPropagation();
+      var $element = $(this),
+          $elements = $element.parent('ul').children('li'),
+          $prevElement,
+          $nextElement,
+          $target = $element.children('[data-submenu]');
 
-        if((key === 13 || key === 32) && !$(this).children('[data-submenu]').length){ return; }//don't prevent default interaction of return or space on standard links
-        e.preventDefault();
-        if(key === 27){ _this.hideAll(); }
+      $elements.each(function(i) {
+        if ($(this).is($element)) {
+          $prevElement = $elements.eq(Math.max(0, i-1));
+          $nextElement = $elements.eq(Math.min(i+1, $elements.length-1));
 
-        var $elem = $(this),
-            $menu = $elem.children('[data-submenu]');
-
-          if(/(13)|(32)/.test(key)){
-          // if(key === 13 || key === 32){
-            $elem.children('a').focusin();
-            console.log($elem);
-            _this.toggle($menu);
+          if ($(this).children('[data-submenu]:visible').length) { // has open sub menu
+            $nextElement = $element.find('li:first-child');
           }
-          else if(/(37)|(38)/.test(key)){//left
-            console.log('up or left');
+          if ($(this).is(':first-child')) { // is first element of sub menu
+            $prevElement = $element.parents('li').first();
+          } else if ($prevElement.children('[data-submenu]:visible').length) { // if previous element has open sub menu
+            $prevElement = $prevElement.find('li:last-child');
           }
-          // else if(key === 38){//up
-          //
-          // }
-          else if(key === 39){//right
-
-          }else if(key === 40){//down
-
-          }else if(key === 35){//end
-
-          }else{
-
+          if ($(this).is(':last-child')) { // is last element of sub menu
+            $nextElement = $element.parents('li').first().next('li');
           }
 
-          // switch (key) {
-          //   case 13:
-          //     _this.toggle($menu);
-          //     break;
-          //   default:
-          //
-          // }
-
-
-        // console.log('event',e.which, this.style);
-      }).attr('tabindex', 0);
+          return;
+        }
+      });
+      Foundation.Keyboard.handleKey(e, _this, {
+        open: function() {
+          if ($target.is(':hidden')) {
+            _this.down($target);
+            $target.find('li').first().focus();
+            console.log($target.find('li').first());
+          }
+        },
+        close: function() {
+          if ($target.length && !$target.is(':hidden')) { // close active sub of this item
+            _this.up($target);
+          } else if ($element.parent('[data-submenu]').length) { // close currently open sub
+            _this.up($element.parent('[data-submenu]'));
+            $element.parents('li').first().focus();
+          }
+        },
+        up: function() {
+          $prevElement.focus();
+        },
+        down: function() {
+          $nextElement.focus();
+        },
+        toggle: function() {
+          if ($element.children('[data-submenu]').length) {
+            _this.toggle($element.children('[data-submenu]'));
+          }
+        },
+        closeAll: function() {
+          _this.hideAll();
+        },
+        handled: function() {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+        }
+      });
+    })//.attr('tabindex', 0);
   };
   AccordionMenu.prototype.hideAll = function(){
-    console.log('called');
     this.$element.find('[data-submenu]').slideUp(this.options.slideSpeed);
   };
   AccordionMenu.prototype.toggle = function($target){
@@ -164,18 +190,17 @@
    */
   AccordionMenu.prototype.down = function($target) {
     var _this = this;
-    $target.addClass('is-active').attr('aria-hidden', false)
-      .parent('.has-submenu').attr('aria-expanded', true).end()
-      .parentsUntil(this.$element, '[data-submenu]')
-      .addBack();
-      window.requestAnimationFrame(function(){
-        $target.slideDown(_this.options.slideSpeed).promise().done(function(){
-          // $target.siblings('a').eq(0).focus();
-        });
-      });
+
     if(!this.options.multiOpen){
       this.up(this.$element.find('.is-active').not($target.parentsUntil(this.$element)));
     }
+
+    $target.addClass('is-active').attr({'aria-hidden': false})
+      .parent('.has-submenu').attr({'aria-expanded': true, 'aria-selected': true});
+
+      Foundation.Move(this.options.slideSpeed, $target, function(){
+        $target.slideDown(_this.options.slideSpeed)
+      });
     /**
      * Fires when the menu is done collapsing up.
      * @event AccordionMenu#down
@@ -191,7 +216,7 @@
   AccordionMenu.prototype.up = function($target) {
     $target.slideUp(this.options.slideSpeed, function() {
       $target.find('[data-submenu]').slideUp(0).attr('aria-hidden', true);
-    }).attr('aria-hidden', true).parent('.has-submenu').attr('aria-expanded', false);
+    }).attr('aria-hidden', true).parent('.has-submenu').attr({'aria-expanded': false, 'aria-selected': false});
 
     /**
      * Fires when the menu is done collapsing up.

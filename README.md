@@ -1,6 +1,6 @@
-# [Foundation for Sites](http://foundation.zurb.com)
+# [Foundation for Sites](http://foundation.zurb.com) (Public Beta)
 
-This is the supremely in-development version of Foundation for Sites 6.0.
+This is the in-development version of Foundation for Sites 6.0. 
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/zurb/foundation-sites-6?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
@@ -15,8 +15,7 @@ The Sass is compiled using libsass, which requires the GCC to be installed on yo
 ```bash
 git clone https://github.com/zurb/foundation-sites-6.git
 cd foundation-sites-6
-npm install -g bower
-npm install && bower install
+npm install
 npm start
 ```
 

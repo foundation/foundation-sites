@@ -72,10 +72,11 @@
 
     $('[' + this.attr + ']').each(function() {
       var $eqParent       = $(this),
-          adjustedHeights = [];
+          adjustedHeights = [],
+          $images = $eqParent.find('img');
 
-      if ($eqParent.find('img').length) {
-        onImagesLoaded($eqParent.find('img'), function() {
+      if ($images.length) {
+        Foundation.onImagesLoaded($images, function() {
           adjustedHeights = self.getHeights($eqParent);
           self.applyHeight($eqParent, adjustedHeights);
         });
@@ -124,7 +125,7 @@
     for (var i = 0; i < eqGroup.length; i++) {
       $(eqGroup[i]).css('height', max);
     }
-    console.log(max);
+    // console.log(max);
     /**
      * Fires when the heights have been applied
      * @event Equalizer#postEqualized
@@ -141,40 +142,5 @@
     define(['foundation'], function() {
       return Equalizer;
     });
-
-  /**
-   * Runs a callback function when images are fully loaded.
-   * @param {Object} images - Image(s) to check if loaded.
-   * @param {Func} callback - Function to execute when image is fully loaded.
-   */
-  function onImagesLoaded(images, callback) {
-    var self = this,
-        unloaded = images.length;
-
-    if (unloaded === 0) {
-      callback();
-    }
-
-    var singleImageLoaded = function() {
-      unloaded--;
-      if (unloaded === 0) {
-        callback();
-      }
-    }
-
-    images.each(function() {
-      if (this.complete) {
-        singleImageLoaded();
-      }
-      else if (typeof this.naturalWidth !== 'undefined' && this.naturalWidth > 0) {
-        singleImageLoaded();
-      }
-      else {
-        $(this).one('load', function() {
-          singleImageLoaded();
-        });
-      }
-    });
-  }
 
 }(Foundation, jQuery);

@@ -148,6 +148,13 @@
   }
 }
 
+/// Removes the focus ring around an element when a mouse input is detected.
+@mixin disable-mouse-outline {
+  [data-whatinput="mouse"] & {
+    outline: 0;
+  }
+}
+
 /// Makes an element visually hidden, but still accessible to keyboards and assistive devices.
 /// @link http://snook.ca/archives/html_and_css/hiding-content-for-accessibility Hiding Content for Accessibility
 @mixin element-invisible {

@@ -25,7 +25,9 @@
     stickToWindow: false,
     container: '<div data-sticky-container></div>',
     stickTo: 'top',
-    stickAt: '',
+    anchor: '',
+    topAnchor: '',
+    btmAnchor: '',
     marginTop: 1,
     marginBottom: 1,
     stickyOn: 'medium',
@@ -51,19 +53,49 @@
     this.$container = $parent.length ? $parent : $(this.options.container).wrapInner(this.$element);
     this.$container.addClass(this.options.containerClass);
 
-    this.$anchor = this.options.stickAt ? $(this.options.stickAt) : $(document.body);
 
     this.$element.addClass(this.options.stickyClass)
                  .attr({'data-resize': id});
 
     this.scrollCount = this.options.checkEvery;
     this.isStuck = false;
+    // console.log(this.options.anchor);
+    if(this.options.topAnchor !== ''){
+      this._parsePoints();
+      // console.log(this.points[0]);
+    }else{
+    }
+      this.$anchor = this.options.anchor ? $(this.options.anchor) : $(document.body);
+
 
     this._setSizes(function(){
       _this._calc(false);
     });
-
     this._events(id.split('-').reverse().join('-'));
+  };
+  Sticky.prototype._parsePoints = function(){
+    var top = this.options.topAnchor,
+        btm = this.options.btmAnchor,
+        pts = [top, btm],
+        breaks = {};
+    for(var i = 0, len = pts.length; i < len && pts[i]; i++){
+      var pt;
+      if(typeof pts[i] === 'number'){
+        pt = pts[i]
+      }else{
+        var place = pts[i].split(':'),
+            anchor = $('#' + place[0]);
+
+        pt = anchor.offset().top;
+        if(place[1] && place[1].toLowerCase() === 'bottom'){
+          pt += anchor[0].getBoundingClientRect().height;
+        }
+      }
+      breaks[i] = pt;
+    }
+      // console.log(breaks);
+    this.points = breaks;
+    return;
   };
 
   /**
@@ -72,29 +104,39 @@
    * @param {String} id - psuedo-random id for unique scroll event listener.
    */
   Sticky.prototype._events = function(id){
+    // console.log('called');
     var _this = this,
         scrollListener = 'scroll.zf.' + id;
-
+    if(this.isOn){ return; }
     if(this.canStick){
       this.isOn = true;
-      this.$anchor.off('change.zf.sticky')
-                  .on('change.zf.sticky', function(){
-                    _this._setSizes(function(){
-                      _this._calc(false);
-                    });
-                  });
+      // this.$anchor.off('change.zf.sticky')
+      //             .on('change.zf.sticky', function(){
+      //               _this._setSizes(function(){
+      //                 _this._calc(false);
+      //               });
+      //             });
 
       $(window).off(scrollListener)
                .on(scrollListener, function(e){
-                if(_this.scrollCount){
-                  _this.scrollCount--;
-                  _this._calc(false, e.currentTarget.scrollY);
-                }else{
-                  _this.scrollCount = _this.options.checkEvery;
-                  _this._setSizes(function(){
-                    _this._calc(false, e.currentTarget.scrollY);
-                  })
-                }
+                 if(_this.scrollCount === 0){
+                   _this.scrollCount = _this.options.checkEvery;
+                   _this._setSizes(function(){
+                     _this._calc(false, e.currentTarget.scrollY);
+                   });
+                 }else{
+                   _this.scrollCount--;
+                   _this._calc(false, e.currentTarget.scrollY);
+                 }
+                // if(_this.scrollCount > 0){
+                //   _this.scrollCount--;
+                //   _this._calc(false, e.currentTarget.scrollY);
+                // }else{
+                //   _this.scrollCount = _this.options.checkEvery;
+                //   _this._setSizes(function(){
+                //     _this._calc(false, e.currentTarget.scrollY);
+                //   })
+                // }
               });
     }
 
@@ -120,7 +162,7 @@
    */
   Sticky.prototype._pauseListeners = function(scrollListener){
     this.isOn = false;
-    this.$anchor.off('change.zf.sticky');
+    // this.$anchor.off('change.zf.sticky');
     $(window).off(scrollListener);
 
     /**
@@ -202,17 +244,17 @@
   Sticky.prototype._removeSticky = function(isTop){
     var stickTo = this.options.stickTo,
         stickToTop = stickTo === 'top',
-        css = {}, mrgn, notStuckTo;
+        css = {}, mrgn, notStuckTo,
+        anchorPt = (this.points ? this.points[1] - this.points[0] : this.anchorHeight) - this.elemHeight;
         mrgn = stickToTop ? 'marginTop' : 'marginBottom';
         notStuckTo = stickToTop ? 'bottom' : 'top';
       css[mrgn] = 0;
-
     if((isTop && !stickToTop) || (stickToTop && !isTop)){
-      css[stickTo] = this.anchorHeight - this.elemHeight;
+      css[stickTo] = anchorPt;
       css[notStuckTo] = 0;
     }else{
       css[stickTo] = 0;
-      css[notStuckTo] = this.anchorHeight - this.elemHeight;
+      css[notStuckTo] = anchorPt;
     }
     this.isStuck = false;
     this.$element.removeClass('is-stuck is-at-' + stickTo)
@@ -237,7 +279,12 @@
         newElemWidth = this.$container[0].getBoundingClientRect().width,
         pdng = parseInt(window.getComputedStyle(this.$container[0])['padding-right'], 10);
 
-    this.anchorHeight = this.$anchor[0].getBoundingClientRect().height;
+    if(this.$anchor.length){
+      this.anchorHeight = this.$anchor[0].getBoundingClientRect().height;
+    }else{
+      this._parsePoints();
+    }
+
     this.$element.css({
       'max-width': newElemWidth - pdng + 'px'
     });
@@ -272,8 +319,10 @@
     }
     var mTop = emCalc(this.options.marginTop),
         mBtm = emCalc(this.options.marginBottom),
-        topPoint = this.$anchor.offset().top,
-        bottomPoint = topPoint + this.anchorHeight,
+        topPoint = this.points ? this.points[0] : this.$anchor.offset().top,
+        bottomPoint = this.points ? this.points[1] : topPoint + this.anchorHeight,
+        // topPoint = this.$anchor.offset().top || this.points[0],
+        // bottomPoint = topPoint + this.anchorHeight || this.points[1],
         winHeight = window.innerHeight;
 
     if(this.options.stickTo === 'top'){

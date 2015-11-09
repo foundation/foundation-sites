@@ -14,42 +14,41 @@ $foundation-version: '6.0.0-alpha.1';
 @import 'global';
 
 // Components
-@import
-  'grid/grid',
-  'typography/typography',
-  'forms/forms',
-  'components/visibility',
-  'components/float',
-  'components/button',
-  'components/button-group',
-  'components/accordion-menu',
-  'components/accordion',
-  'components/badge',
-  'components/breadcrumbs',
-  'components/callout',
-  'components/close-button',
-  'components/drilldown',
-  'components/dropdown-menu',
-  'components/dropdown',
-  'components/flex-video',
-  'components/label',
-  'components/media-object',
-  'components/menu',
-  'components/off-canvas',
-  'components/orbit',
-  'components/pagination',
-  'components/progress-bar',
-  'components/reveal',
-  'components/slider',
-  'components/sticky',
-  'components/switch',
-  'components/table',
-  'components/tabs',
-  'components/title-bar',
-  'components/top-bar',
-  'components/thumbnail',
-  'components/tooltip',
-  'components/joyride';
+@import 'grid/grid';
+@import 'typography/typography';
+@import 'forms/forms';
+@import 'components/visibility';
+@import 'components/float';
+@import 'components/button';
+@import 'components/button-group';
+@import 'components/accordion-menu';
+@import 'components/accordion';
+@import 'components/badge';
+@import 'components/breadcrumbs';
+@import 'components/callout';
+@import 'components/close-button';
+@import 'components/drilldown';
+@import 'components/dropdown-menu';
+@import 'components/dropdown';
+@import 'components/flex-video';
+@import 'components/label';
+@import 'components/media-object';
+@import 'components/menu';
+@import 'components/off-canvas';
+@import 'components/orbit';
+@import 'components/pagination';
+@import 'components/progress-bar';
+@import 'components/reveal';
+@import 'components/slider';
+@import 'components/sticky';
+@import 'components/switch';
+@import 'components/table';
+@import 'components/tabs';
+@import 'components/title-bar';
+@import 'components/top-bar';
+@import 'components/thumbnail';
+@import 'components/tooltip';
+@import 'components/joyride';
 
 // These styles are applied to <meta> tags, which are read by the Foundation JavaScript
 .foundation-mq {
@@ -72,9 +71,9 @@ $foundation-version: '6.0.0-alpha.1';
   @include foundation-close-button;
   @include foundation-drilldown-menu;
   @include foundation-dropdown;
-  // @include foundation-dropdown-menu
+  @include foundation-dropdown-menu;
   @include foundation-flex-video;
-  //@include foundation-joyride;
+  // @include foundation-joyride;
   @include foundation-label;
   @include foundation-media-object;
   @include foundation-menu;

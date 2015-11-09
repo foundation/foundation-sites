@@ -60,8 +60,13 @@
   Orbit.prototype._init = function(){
     this.$wrapper = this.$element.find('.' + this.options.containerClass);
     this.$slides = this.$element.find('.' + this.options.slideClass);
+    var $images = this.$element.find('img');
 
-    this._prepareForOrbit();//hehe
+    if($images.length){
+      Foundation.onImagesLoaded($images, this._prepareForOrbit.bind(this));
+    }else{
+      this._prepareForOrbit();//hehe
+    }
 
     if(this.options.bullets){
       this.loadBullets();
@@ -120,6 +125,7 @@
 
     this.$slides.each(function(){
       temp = this.getBoundingClientRect().height;
+      $(this).attr('data-slide', counter);
 
       if(counter){//if not the first slide, set css position and display property
         $(this).css({'position': 'relative', 'display': 'none'});
@@ -206,7 +212,7 @@
       this.$bullets.on('click.zf.orbit touchend.zf.orbit', function(){
         if(/is-active/g.test(this.className)){ return false; }//if this is active, kick out of function.
         var idx = $(this).data('slide'),
-            ltr = idx > _this.$slides.index($('.is-active')),
+            ltr = idx > _this.$slides.filter('.is-active').data('slide'),
             $slide = _this.$slides.eq(idx);
 
         _this.changeSlide(ltr, $slide, idx);
@@ -266,7 +272,6 @@
         idx = idx || this.$slides.index($newSlide);//grab index to update bullets
         this._updateBullets(idx);
       }
-
       Foundation.Motion.animateIn(
         $newSlide.addClass('is-active').css({'position': 'absolute', 'top': 0}),
         this.options['animInFrom' + dirIn],

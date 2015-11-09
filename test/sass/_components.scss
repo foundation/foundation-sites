@@ -1,0 +1,49 @@
+@import 'components/flex-video';
+@import 'grid/grid';
+
+@include describe('Flex Video') {
+  @include it('creates a percentage value from a ratio') {
+    $actual: flex-video(3 by 4);
+    $expected: 4 / 3 * 100%;
+
+    @include should(expect($actual), to(be($expected)));
+  }
+}
+
+@include describe('Grid Column') {
+  @include it('creates a column width from a column count') {
+    @include should(expect(grid-column(6)), to(be(50%)));
+  }
+
+  @include it('creates a column width from a percentage or decimal value') {
+    @include should(expect(grid-column(0.5)), to(be(50%)));
+    @include should(expect(grid-column(50%)), to(be(50%)));
+  }
+
+  @include it('creates a column width from an x of y value') {
+    @include should(expect(grid-column(1 of 2)), to(be(50%)));
+  }
+}
+
+@include describe('Flex Grid Column') {
+  @include it('creates an expanding flex property when passed no value') {
+    @include should(expect(flex-grid-column()), to(be(1 1 0px)));
+  }
+
+  @include it('creates a shrinking flex property when passed shrink') {
+    @include should(expect(flex-grid-column(shrink)), to(be(0 0 auto)));
+  }
+
+  @include it('creates a fixed flex property from a column count') {
+    @include should(expect(flex-grid-column(6)), to(be(0 0 50%)));
+  }
+
+  @include it('creates a fixed flex property from a percentage or decimal value') {
+    @include should(expect(flex-grid-column(0.5)), to(be(0 0 50%)));
+    @include should(expect(flex-grid-column(50%)), to(be(0 0 50%)));
+  }
+
+  @include it('creates a fixed flex property from an x of y value') {
+    @include should(expect(flex-grid-column(1 of 2)), to(be(0 0 50%)));
+  }
+}

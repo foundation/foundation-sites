@@ -144,7 +144,7 @@
     });
 
     if(!firstTime){
-      Foundation._reflow(this.$element.data('accordion'));
+      Foundation._reflow(this.$element.attr('data-accordion'));
     }
     $('#' + $target.attr('aria-labelledby')).attr({
       'aria-expanded': true,

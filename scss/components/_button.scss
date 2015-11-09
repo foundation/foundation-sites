@@ -58,6 +58,7 @@ $button-opacity-disabled: 0.25 !default;
 
 // TODO: Document button-base() mixin
 @mixin button-base {
+  @include disable-mouse-outline;
   display: inline-block;
   text-align: center;
   line-height: 1;
@@ -67,7 +68,6 @@ $button-opacity-disabled: 0.25 !default;
   vertical-align: middle;
   border: 1px solid transparent;
   border-radius: $button-radius;
-
   padding: $button-padding;
   margin: $button-margin;
   font-size: map-get($button-sizes, default);
@@ -164,6 +164,7 @@ $button-opacity-disabled: 0.25 !default;
     top: 0.4em; // Aligns the arrow with the text of the button
     float: #{$global-right};
     margin-#{$global-left}: get-side($button-padding, right);
+    display: inline-block;
   }
 }
 

@@ -78,6 +78,7 @@ $slider-transition: all 0.2s ease-in-out !default;
 
 /// Adds the general styles for the slider handles.
 @mixin slider-handle {
+  @include disable-mouse-outline;
   @include v-align-middle;
   position: absolute;
   left: 0;
@@ -109,6 +110,7 @@ $slider-transition: all 0.2s ease-in-out !default;
   width: $slider-width-vertical;
   height: 12.5rem;
   margin: 0 1.25rem;
+  transform: scale(1, -1);
 
   .slider-fill {
     top: 0;

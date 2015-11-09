@@ -96,17 +96,17 @@
       }
       isDbl = true;
 
-      this._setHandlePos(this.$handle, this.options.initialStart, function(){
+      this._setHandlePos(this.$handle, this.options.initialStart, true, function(){
 
         _this._setHandlePos(_this.$handle2, _this.options.initialEnd);
       });
-      this.$handle.triggerHandler('click.zf.slider');
+      // this.$handle.triggerHandler('click.zf.slider');
       this._setInitAttr(1);
       this._events(this.$handle2);
     }
 
     if(!isDbl){
-      this._setHandlePos(this.$handle, this.options.initialStart);
+      this._setHandlePos(this.$handle, this.options.initialStart, true);
     }
   };
   /**
@@ -118,7 +118,7 @@
    * @param {Function} cb - callback function to fire on completion.
    * @fires Slider#moved
    */
-  Slider.prototype._setHandlePos = function($hndl, location, cb){
+  Slider.prototype._setHandlePos = function($hndl, location, noInvert, cb){
   //might need to alter that slightly for bars that will have odd number selections.
     // console.log(str, cb);
     location = parseFloat(location);//on input change events, convert string to number...grumble.
@@ -139,6 +139,9 @@
       }
     }
 
+    if(this.options.vertical && !noInvert){
+      location = this.options.end - location;
+    }
     var _this = this,
         vert = this.options.vertical,
         hOrW = vert ? 'height' : 'width',
@@ -151,32 +154,24 @@
         location = location > 0 ? parseFloat(location.toFixed(this.options.decimal)) : 0,
         anim, prog, start = null, css = {};
 
-
     this._setValues($hndl, location);
 
     if(this.options.doubleSided){//update to calculate based on values set to respective inputs??
       var isLeftHndl = this.handles.index($hndl) === 0,
           dim,
           idx = this.handles.index($hndl);
-          // console.log(this.inputs.eq(idx).val());
 
       if(isLeftHndl){
         css[lOrT] = (pctOfBar > 0 ? pctOfBar * 100 : 0) + '%';//
         dim = /*Math.abs*/((percent(this.$handle2.position()[lOrT] + halfOfHandle, elemDim) - parseFloat(pctOfBar)) * 100).toFixed(this.options.decimal) + '%';
-        console.log('left handle', dim);
         css['min-' + hOrW] = dim;
         if(cb && typeof cb === 'function'){ cb(); }
       }else{
-        // dim = ((parseFloat(pctOfBar) - (percent(this.$handle.position()[lOrT] - halfOfHandle, elemDim))) * 100);
-        // dim = (dim > 100 ? 100 : dim.toFixed(this.options.decimal)) + '%';
-        // console.log('location',location, 'left hndl left', this.handles.eq(0)[0].style.left);
-        location = (location < 100 ? location : 100) - parseFloat(this.$handle[0].style.left);
-        // console.log('location',location);
+        location = (location < 100 ? location : 100) - (parseFloat(this.$handle[0].style.left) || this.options.end - location);
         css['min-' + hOrW] = location + '%';
       }
     }
 
-                  //  console.log('finished with movement', callback);
     this.$element.one('finished.zf.animate', function(){
                     _this.animComplete = true;
                     /**
@@ -185,8 +180,8 @@
                      */
                     _this.$element.trigger('moved.zf.slider', [$hndl]);
                 });
-
-    Foundation.Move(_this.options.moveTime, $hndl, function(){
+    var moveTime = _this.$element.data('dragging') ? 1000/60 : _this.options.moveTime;
+    /*var move = new */Foundation.Move(moveTime, $hndl, function(){
       $hndl.css(lOrT, movement + '%');
       if(!_this.options.doubleSided){
         _this.$fill.css(hOrW, pctOfBar * 100 + '%');
@@ -194,6 +189,7 @@
         _this.$fill.css(css);
       }
     });
+    // move.do();
   };
   /**
    * Sets the initial attribute for the slider element.
@@ -227,9 +223,7 @@
    * @param {Number} val - floating point of the new value.
    */
   Slider.prototype._setValues = function($handle, val){
-    var _this = this,
-        idx = this.options.doubleSided ? this.handles.index($handle) : 0;
-    // console.log('index of handle',idx);
+    var idx = this.options.doubleSided ? this.handles.index($handle) : 0;
     this.inputs.eq(idx).val(val);
     $handle.attr('aria-valuenow', val);
   };
@@ -257,7 +251,8 @@
           barXY = barOffset > 0 ? -halfOfHandle : (barOffset - halfOfHandle) < -barDim ? barDim : Math.abs(barOffset),//if the cursor position is less than or greater than the elements bounding coordinates, set coordinates within those bounds
           // eleDim = this.$element[0].getBoundingClientRect()[param],
           offsetPct = percent(barXY, barDim),
-          value = (this.options.end - this.options.start) * offsetPct;
+          value = (this.options.end - this.options.start) * offsetPct,
+          hasVal = false;
 
       if(!$handle){//figure out which handle it is, pass it to the next function.
         var firstHndlPos = absPosition(this.$handle, direction, barXY, param),
@@ -266,10 +261,11 @@
       }
 
     }else{//change event on input
-      var value = val;
+      var value = val,
+          hasVal = true;
     }
 
-    this._setHandlePos($handle, value);
+    this._setHandlePos($handle, value, hasVal);
   };
   /**
    * Adds event listeners to the slider elements.
@@ -280,21 +276,17 @@
   Slider.prototype._events = function($handle){
     if(this.options.disabled){ return false; }
 
-
     var _this = this,
         curHandle,
         timer;
 
-    if(this.options.binding){
       this.inputs.on('change.zf.slider', function(e){
         var idx = _this.inputs.index($(this));
         _this._handleEvent(e, _this.handles.eq(idx), $(this).val());
       });
-    }
-
 
     if(this.options.clickSelect){
-      this.$element.off('click.zf.slider').on('click.zf.slider', function(e){
+      this.$element.off('mousedown.zf.slider').on('mousedown.zf.slider', function(e){
         if(_this.$element.data('dragging')){ return false; }
         _this.animComplete = false;
         if(_this.options.doubleSided){
@@ -317,7 +309,7 @@
 
           $handle.addClass('is-dragging');
           _this.$fill.addClass('is-dragging');//
-          _this.$element.attr('data-dragging', true);
+          _this.$element.data('dragging', true);
           _this.animComplete = false;
           curHandle = $(e.currentTarget);
 
@@ -346,7 +338,7 @@
         newValue;
 
       var _$handle = $(this);
-      console.log('Handle keydown');
+
       // handle keyboard event with keyboard util
       Foundation.Keyboard.handleKey(e, _this, {
         decrease: function() {
@@ -363,7 +355,7 @@
         },
         handled: function() { // only set handle pos when event was handled specially
           e.preventDefault();
-          _this._setHandlePos(_$handle, newValue);
+          _this._setHandlePos(_$handle, newValue, true);
         }
       });
       /*if (newValue) { // if pressed key has special function, update value

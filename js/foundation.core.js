@@ -158,7 +158,8 @@ var Foundation = {
         $(this).data('zf-plugin', new plugin($(this)));
       });
     });
-  }
+  },
+  getFnName: functionName
 }
 
 Foundation.util = {
@@ -186,6 +187,11 @@ Foundation.util = {
  */
 var foundation = function(method) {
   var type = typeof method;
+  var $meta = $('meta.foundation-mq');
+
+  if(!$meta.length){
+    $('<meta class="foundation-mq">').appendTo(document.head);
+  }
 
   if (type === 'undefined') {
     Foundation.MediaQuery._init();
