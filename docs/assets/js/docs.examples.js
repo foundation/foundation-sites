@@ -13,7 +13,7 @@ $('[data-docs-example-series]').click(function() {
 var $transitionDemo = $('.docs-transition-demo');
 $('.docs-transitions').change(function() {
   var value = $(this).val();
-  var method = value.match('In') ? 'animateIn' : 'animateOut';
+  var method = value.match('-in') ? 'animateIn' : 'animateOut';
 
   Foundation.Motion[method]($transitionDemo, value, function() {
     $transitionDemo.show();

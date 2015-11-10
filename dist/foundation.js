@@ -186,6 +186,11 @@ Foundation.util = {
  */
 var foundation = function(method) {
   var type = typeof method;
+  var $meta = $('meta.foundation-mq');
+
+  if(!$meta.length){
+    $('<meta class="foundation-mq">').appendTo(document.head);
+  }
 
   if (type === 'undefined') {
     Foundation.MediaQuery._init();
@@ -694,6 +699,45 @@ Foundation.Motion = Motion;
 
 }(jQuery, Foundation)
 
+!function($, Foundation){
+  'use strict';
+  /**
+   * Runs a callback function when images are fully loaded.
+   * @param {Object} images - Image(s) to check if loaded.
+   * @param {Func} callback - Function to execute when image is fully loaded.
+   */
+  function onImagesLoaded(images, callback) {
+    var self = this,
+        unloaded = images.length;
+
+    if (unloaded === 0) {
+      callback();
+    }
+
+    var singleImageLoaded = function() {
+      unloaded--;
+      if (unloaded === 0) {
+        callback();
+      }
+    }
+
+    images.each(function() {
+      if (this.complete) {
+        singleImageLoaded();
+      }
+      else if (typeof this.naturalWidth !== 'undefined' && this.naturalWidth > 0) {
+        singleImageLoaded();
+      }
+      else {
+        $(this).one('load', function() {
+          singleImageLoaded();
+        });
+      }
+    });
+  }
+  Foundation.onImagesLoaded = onImagesLoaded;
+}(jQuery, window.Foundation);
+
 // !function(){
 //   /**
 //    * returns a random base-36 uid with namespacing
@@ -862,11 +906,92 @@ Foundation.Motion = Motion;
   Foundation.GetOffsets = GetOffsets;
 }(jQuery, window.Foundation, window);
 
+//**************************************************
+//**Work inspired by multiple jquery swipe plugins**
+//**Done by Yohai Ararat ***************************
+//**************************************************
+(function($) {
+
+  $.spotSwipe = {
+    version: '1.0.0',
+    enabled: 'ontouchstart' in document.documentElement,
+    preventDefault: true,
+    moveThreshold: 75,
+    timeThreshold: 200
+  };
+
+  var   startPosX,
+        startPosY,
+        startTime,
+        elapsedTime,
+        isMoving = false;
+
+  function onTouchEnd() {
+    //  alert(this);
+    this.removeEventListener('touchmove', onTouchMove);
+    this.removeEventListener('touchend', onTouchEnd);
+    isMoving = false;
+  }
+
+  function onTouchMove(e) {
+    if ($.spotSwipe.preventDefault) { e.preventDefault(); }
+    if(isMoving) {
+      var x = e.touches[0].pageX;
+      var y = e.touches[0].pageY;
+      var dx = startPosX - x;
+      var dy = startPosY - y;
+      var dir;
+      elapsedTime = new Date().getTime() - startTime;
+      if(Math.abs(dx) >= $.spotSwipe.moveThreshold && elapsedTime <= $.spotSwipe.timeThreshold) {
+        dir = dx > 0 ? 'left' : 'right'
+      }
+      else if(Math.abs(dy) >= $.spotSwipe.moveThreshold && elapsedTime <= $.spotSwipe.timeThreshold) {
+        dir = dy > 0 ? 'down' : 'up'
+      }
+      if(dir) {
+        onTouchEnd.call(this);
+        $(this).trigger('swipe', dir).trigger('swipe' + dir);
+      }
+    }
+  }
+
+  function onTouchStart(e) {
+    if (e.touches.length == 1) {
+      startPosX = e.touches[0].pageX;
+      startPosY = e.touches[0].pageY;
+      isMoving = true;
+      startTime = new Date().getTime()
+      this.addEventListener('touchmove', onTouchMove, false);
+      this.addEventListener('touchend', onTouchEnd, false);
+    }
+  }
+
+  function init() {
+    this.addEventListener && this.addEventListener('touchstart', onTouchStart, false);
+  }
+
+  function teardown() {
+    this.removeEventListener('touchstart', onTouchStart);
+  }
+
+  $.event.special.swipe = { setup: init };
+
+  $.each(['left', 'up', 'down', 'right'], function () {
+    $.event.special['swipe' + this] = { setup: function(){
+      $(this).on('swipe', $.noop);
+    } };
+  });
+})(jQuery);
+
 //**********************************
 //**From the jQuery Mobile Library**
 //**need to recreate functionality**
 //**and try to improve if possible**
 //**********************************
+
+/* Removing the jQuery function ****
+************************************
+
 (function( $, window, undefined ) {
 
 	var $document = $( document ),
@@ -1088,6 +1213,7 @@ Foundation.Motion = Motion;
 		};
 	});
 })( jQuery, this );
+*/
 
 !function(Foundation, $) {
   // Elements with [data-open] will reveal a plugin that supports it when clicked.
@@ -1802,7 +1928,7 @@ Foundation.IFeelYou = closemeListener;
     });
 
     if(!firstTime){
-      Foundation._reflow(this.$element.data('accordion'));
+      Foundation._reflow(this.$element.attr('data-accordion'));
     }
     $('#' + $target.attr('aria-labelledby')).attr({
       'aria-expanded': true,
@@ -1898,6 +2024,17 @@ Foundation.IFeelYou = closemeListener;
      */
     // this.$element.trigger('init.zf.accordionMenu');
     Foundation.registerPlugin(this);
+    Foundation.Keyboard.register('AccordionMenu', {
+      'ENTER': 'toggle',
+      'SPACE': 'toggle',
+      'ARROW_RIGHT': 'open',
+      'ARROW_UP': 'up',
+      'ARROW_DOWN': 'down',
+      'ARROW_LEFT': 'close',
+      'ESCAPE': 'closeAll',
+      'TAB': 'down',
+      'SHIFT_TAB': 'up'
+    });
   }
 
   AccordionMenu.defaults = {
@@ -1915,7 +2052,7 @@ Foundation.IFeelYou = closemeListener;
     this.$element.find('[data-submenu]').not('.is-active').slideUp(0);//.find('a').css('padding-left', '1rem');
     this.$element.attr({
       'role': 'tablist',
-      'multiselectable': this.options.multiOpen
+      'aria-multiselectable': this.options.multiOpen
     });
 
     this.$menuLinks = this.$element.find('.has-submenu');
@@ -1954,8 +2091,7 @@ Foundation.IFeelYou = closemeListener;
    * @private
    */
   AccordionMenu.prototype._events = function() {
-    var _this = this,
-        usedKeys = [13, 27, 32, 35, 36, 37, 38, 39, 40];
+    var _this = this;
 
     this.$element.find('li').each(function() {
       var $submenu = $(this).children('[data-submenu]');
@@ -1968,54 +2104,70 @@ Foundation.IFeelYou = closemeListener;
         });
       }
     }).on('keydown.zf.accordionmenu', function(e){
-        var key = e.which;
-        console.log(key);
-        if(usedKeys.indexOf(key) < 0){ return; }
-        e.stopPropagation();
+      var $element = $(this),
+          $elements = $element.parent('ul').children('li'),
+          $prevElement,
+          $nextElement,
+          $target = $element.children('[data-submenu]');
 
-        if((key === 13 || key === 32) && !$(this).children('[data-submenu]').length){ return; }//don't prevent default interaction of return or space on standard links
-        e.preventDefault();
-        if(key === 27){ _this.hideAll(); }
+      $elements.each(function(i) {
+        if ($(this).is($element)) {
+          $prevElement = $elements.eq(Math.max(0, i-1));
+          $nextElement = $elements.eq(Math.min(i+1, $elements.length-1));
 
-        var $elem = $(this),
-            $menu = $elem.children('[data-submenu]');
-
-          if(/(13)|(32)/.test(key)){
-          // if(key === 13 || key === 32){
-            $elem.children('a').focusin();
-            console.log($elem);
-            _this.toggle($menu);
+          if ($(this).children('[data-submenu]:visible').length) { // has open sub menu
+            $nextElement = $element.find('li:first-child');
           }
-          else if(/(37)|(38)/.test(key)){//left
-            console.log('up or left');
+          if ($(this).is(':first-child')) { // is first element of sub menu
+            $prevElement = $element.parents('li').first();
+          } else if ($prevElement.children('[data-submenu]:visible').length) { // if previous element has open sub menu
+            $prevElement = $prevElement.find('li:last-child');
           }
-          // else if(key === 38){//up
-          //
-          // }
-          else if(key === 39){//right
-
-          }else if(key === 40){//down
-
-          }else if(key === 35){//end
-
-          }else{
-
+          if ($(this).is(':last-child')) { // is last element of sub menu
+            $nextElement = $element.parents('li').first().next('li');
           }
 
-          // switch (key) {
-          //   case 13:
-          //     _this.toggle($menu);
-          //     break;
-          //   default:
-          //
-          // }
-
-
-        // console.log('event',e.which, this.style);
-      }).attr('tabindex', 0);
+          return;
+        }
+      });
+      Foundation.Keyboard.handleKey(e, _this, {
+        open: function() {
+          if ($target.is(':hidden')) {
+            _this.down($target);
+            $target.find('li').first().focus();
+            console.log($target.find('li').first());
+          }
+        },
+        close: function() {
+          if ($target.length && !$target.is(':hidden')) { // close active sub of this item
+            _this.up($target);
+          } else if ($element.parent('[data-submenu]').length) { // close currently open sub
+            _this.up($element.parent('[data-submenu]'));
+            $element.parents('li').first().focus();
+          }
+        },
+        up: function() {
+          $prevElement.focus();
+        },
+        down: function() {
+          $nextElement.focus();
+        },
+        toggle: function() {
+          if ($element.children('[data-submenu]').length) {
+            _this.toggle($element.children('[data-submenu]'));
+          }
+        },
+        closeAll: function() {
+          _this.hideAll();
+        },
+        handled: function() {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+        }
+      });
+    })//.attr('tabindex', 0);
   };
   AccordionMenu.prototype.hideAll = function(){
-    console.log('called');
     this.$element.find('[data-submenu]').slideUp(this.options.slideSpeed);
   };
   AccordionMenu.prototype.toggle = function($target){
@@ -2033,18 +2185,17 @@ Foundation.IFeelYou = closemeListener;
    */
   AccordionMenu.prototype.down = function($target) {
     var _this = this;
-    $target.addClass('is-active').attr('aria-hidden', false)
-      .parent('.has-submenu').attr('aria-expanded', true).end()
-      .parentsUntil(this.$element, '[data-submenu]')
-      .addBack();
-      window.requestAnimationFrame(function(){
-        $target.slideDown(_this.options.slideSpeed).promise().done(function(){
-          // $target.siblings('a').eq(0).focus();
-        });
-      });
+
     if(!this.options.multiOpen){
       this.up(this.$element.find('.is-active').not($target.parentsUntil(this.$element)));
     }
+
+    $target.addClass('is-active').attr({'aria-hidden': false})
+      .parent('.has-submenu').attr({'aria-expanded': true, 'aria-selected': true});
+
+      Foundation.Move(this.options.slideSpeed, $target, function(){
+        $target.slideDown(_this.options.slideSpeed)
+      });
     /**
      * Fires when the menu is done collapsing up.
      * @event AccordionMenu#down
@@ -2060,7 +2211,7 @@ Foundation.IFeelYou = closemeListener;
   AccordionMenu.prototype.up = function($target) {
     $target.slideUp(this.options.slideSpeed, function() {
       $target.find('[data-submenu]').slideUp(0).attr('aria-hidden', true);
-    }).attr('aria-hidden', true).parent('.has-submenu').attr('aria-expanded', false);
+    }).attr('aria-hidden', true).parent('.has-submenu').attr({'aria-expanded': false, 'aria-selected': false});
 
     /**
      * Fires when the menu is done collapsing up.
@@ -2235,12 +2386,18 @@ Foundation.IFeelYou = closemeListener;
         next: function() {
           if ($element.is(_this.$submenuAnchors)) {
             _this._show($element);
-            setTimeout(function(){$element.find('ul li').filter(_this.$menuItems).first().focus()}, 1);
+            $element.on('transitionend.zf.drilldown', function(){
+              $element.find('ul li').filter(_this.$menuItems).first().focus();
+            });
           }
         },
         previous: function() {
           _this._hide($element.parent('ul'));
-          setTimeout(function(){$element.parent('ul').parent('li').focus()}, 1);
+          $element.parent('ul').on('transitionend.zf.drilldown', function(){
+            setTimeout(function() {
+              $element.parent('ul').parent('li').focus();
+            }, 1);
+          });
         },
         up: function() {
           $prevElement.focus();
@@ -2253,7 +2410,6 @@ Foundation.IFeelYou = closemeListener;
           //_this.$menuItems.first().focus(); // focus to first element
         },
         open: function() {
-          console.log('Open');
           if (!$element.is(_this.$menuItems)) { // not menu item means back button
             _this._hide($element.parent('ul'));
             setTimeout(function(){$element.parent('ul').parent('li').focus()}, 1);
@@ -2325,7 +2481,6 @@ Foundation.IFeelYou = closemeListener;
    * @param {jQuery} $elem - the current element with a submenu to open.
    */
   Drilldown.prototype._show = function($elem){
-    console.log('Showing', $elem);
     $elem.children('[data-submenu]').addClass('is-active');
 
     this.$element.trigger('open.zf.drilldown', [$elem]);
@@ -2334,20 +2489,21 @@ Foundation.IFeelYou = closemeListener;
    * Hides a submenu
    * @function
    * @fires Drilldown#hide
-   * @param {jQuery} $elem - the current sub-menu to add `back` event.
+   * @param {jQuery} $elem - the current sub-menu to hide.
    */
   Drilldown.prototype._hide = function($elem){
     var _this = this;
-    $elem.addClass('is-closing').on('transitionend.zf.drilldown', function(e){
-      // e.stopImmediatePropagation();
-      // console.log('different transitionend');
-      $elem.removeClass('is-active is-closing').off('transitionend.zf.drilldown');
-      /**
-       * Fires when element has closed an open menu.
-       * @event Drilldown#back
-       */
-      _this.$element.trigger('hide.zf.drilldown');
-    });
+    $elem.addClass('is-closing')
+      .on('transitionend.zf.drilldown', function(e){
+        // console.log('transitionend');
+        $(this).removeClass('is-active is-closing').off('transitionend.zf.drilldown');
+      });
+    /**
+     * Fires when the menu is fully closed.
+     * @event Drilldown#hide
+     */
+    $elem.trigger('hide.zf.drilldown', [$elem]);
+
   };
   /**
    * Iterates through the nested menus to calculate the min-height, and max-width for the menu.
@@ -3254,10 +3410,11 @@ Foundation.IFeelYou = closemeListener;
 
     $('[' + this.attr + ']').each(function() {
       var $eqParent       = $(this),
-          adjustedHeights = [];
+          adjustedHeights = [],
+          $images = $eqParent.find('img');
 
-      if ($eqParent.find('img').length) {
-        onImagesLoaded($eqParent.find('img'), function() {
+      if ($images.length) {
+        Foundation.onImagesLoaded($images, function() {
           adjustedHeights = self.getHeights($eqParent);
           self.applyHeight($eqParent, adjustedHeights);
         });
@@ -3306,7 +3463,7 @@ Foundation.IFeelYou = closemeListener;
     for (var i = 0; i < eqGroup.length; i++) {
       $(eqGroup[i]).css('height', max);
     }
-    console.log(max);
+    // console.log(max);
     /**
      * Fires when the heights have been applied
      * @event Equalizer#postEqualized
@@ -3323,41 +3480,6 @@ Foundation.IFeelYou = closemeListener;
     define(['foundation'], function() {
       return Equalizer;
     });
-
-  /**
-   * Runs a callback function when images are fully loaded.
-   * @param {Object} images - Image(s) to check if loaded.
-   * @param {Func} callback - Function to execute when image is fully loaded.
-   */
-  function onImagesLoaded(images, callback) {
-    var self = this,
-        unloaded = images.length;
-
-    if (unloaded === 0) {
-      callback();
-    }
-
-    var singleImageLoaded = function() {
-      unloaded--;
-      if (unloaded === 0) {
-        callback();
-      }
-    }
-
-    images.each(function() {
-      if (this.complete) {
-        singleImageLoaded();
-      }
-      else if (typeof this.naturalWidth !== 'undefined' && this.naturalWidth > 0) {
-        singleImageLoaded();
-      }
-      else {
-        $(this).one('load', function() {
-          singleImageLoaded();
-        });
-      }
-    });
-  }
 
 }(Foundation, jQuery);
 
@@ -3540,6 +3662,14 @@ Foundation.IFeelYou = closemeListener;
 
 }(Foundation, jQuery);
 
+/*******************************************
+ *                                         *
+ * This Ride was created by Marius Olbertz *
+ * Please thank Marius on GitHub /owlbertz *
+ * or the web http://www.mariusolbertz.de/ *
+ *                                         *
+ ******************************************/
+
 /**
  * Joyride module.
  * @module foundation.joyride
@@ -3620,7 +3750,7 @@ Foundation.IFeelYou = closemeListener;
         text: $(this).html(),
         $target: $($(this).data('target')),
         isModal: !!!$($(this).data('target')).length,
-        closable: Joyride.defaults.closable 
+        closable: Joyride.defaults.closable
       }, $(this).data());
       structure.push(item);
     });
@@ -3633,10 +3763,10 @@ Foundation.IFeelYou = closemeListener;
    * @param {Array} structure the joyride's structure from _parseList
    * @return {Object} markup jQuery representation of the generated markup
    */
-  Joyride.prototype._render = function(structure) {      
+  Joyride.prototype._render = function(structure) {
     for (var s in structure) {
       var options = $.extend({}, this.options, structure[s]),// if specifc item has config, this should overwrite global settings
-        $item; 
+        $item;
 
       if (options.$target.length) { // target element exists, create tooltip
         var tooltip = new Foundation.Tooltip(structure[s].$target, {
@@ -3650,7 +3780,7 @@ Foundation.IFeelYou = closemeListener;
         });
         this.structure[s].item = tooltip;
         $item = tooltip.template;
-        
+
       } else { // not target, create modal with Reveal
         var modal = new Foundation.Reveal($('<div class="reveal joyride"/>').appendTo($('body')));
         this.structure[s].item = modal;
@@ -3790,7 +3920,7 @@ Foundation.IFeelYou = closemeListener;
       Foundation.handleKey(e, _this, {
         next: function() {
           if ($element.data('index') < _this.structure.length - 1) {
-            this.showNext();  
+            this.showNext();
           }
         },
         previous: function() {
@@ -3819,7 +3949,7 @@ Foundation.IFeelYou = closemeListener;
     this.$items.destroy();
     /**
      * Fires when the plugin has been destroyed.
-     * @event Reveal#destroyed
+     * @event Joyride#destroyed
      */
     this.$element.trigger('destroyed.zf.joyride');
   }
@@ -4213,8 +4343,13 @@ Foundation.plugin(OffCanvas);
   Orbit.prototype._init = function(){
     this.$wrapper = this.$element.find('.' + this.options.containerClass);
     this.$slides = this.$element.find('.' + this.options.slideClass);
+    var $images = this.$element.find('img');
 
-    this._prepareForOrbit();//hehe
+    if($images.length){
+      Foundation.onImagesLoaded($images, this._prepareForOrbit.bind(this));
+    }else{
+      this._prepareForOrbit();//hehe
+    }
 
     if(this.options.bullets){
       this.loadBullets();
@@ -4273,6 +4408,7 @@ Foundation.plugin(OffCanvas);
 
     this.$slides.each(function(){
       temp = this.getBoundingClientRect().height;
+      $(this).attr('data-slide', counter);
 
       if(counter){//if not the first slide, set css position and display property
         $(this).css({'position': 'relative', 'display': 'none'});
@@ -4359,7 +4495,7 @@ Foundation.plugin(OffCanvas);
       this.$bullets.on('click.zf.orbit touchend.zf.orbit', function(){
         if(/is-active/g.test(this.className)){ return false; }//if this is active, kick out of function.
         var idx = $(this).data('slide'),
-            ltr = idx > _this.$slides.index($('.is-active')),
+            ltr = idx > _this.$slides.filter('.is-active').data('slide'),
             $slide = _this.$slides.eq(idx);
 
         _this.changeSlide(ltr, $slide, idx);
@@ -4419,7 +4555,6 @@ Foundation.plugin(OffCanvas);
         idx = idx || this.$slides.index($newSlide);//grab index to update bullets
         this._updateBullets(idx);
       }
-
       Foundation.Motion.animateIn(
         $newSlide.addClass('is-active').css({'position': 'absolute', 'top': 0}),
         this.options['animInFrom' + dirIn],
@@ -4789,18 +4924,22 @@ Foundation.plugin(ResponsiveToggle);
    */
   Reveal.prototype._init = function(){
     this.id = this.$element.attr('id');
+    this.isActive = false;
 
     this.$anchor = $('[data-open="' + this.id + '"]').length ? $('[data-open="' + this.id + '"]') : $('[data-toggle="' + this.id + '"]');
 
-    var anchorId = this.$anchor[0].id || Foundation.GetYoDigits(6, 'reveal');
+    if(this.$anchor.length){
+      var anchorId = this.$anchor[0].id || Foundation.GetYoDigits(6, 'reveal');
 
-    this.$anchor.attr({
-      // 'data-close': this.id,
-      'aria-controls': this.id,
-      'id': anchorId,
-      'aria-haspopup': true,
-      'tabindex': 0
-    });
+      this.$anchor.attr({
+        'aria-controls': this.id,
+        'id': anchorId,
+        'aria-haspopup': true,
+        'tabindex': 0
+      });
+      this.$element.attr({'aria-labelledby': anchorId});
+    }
+
     this.options.fullScreen = this.$element.hasClass('full');
     if(this.options.fullScreen){
       this.options.overlay = false;
@@ -4812,7 +4951,6 @@ Foundation.plugin(ResponsiveToggle);
     this.$element.attr({
         'role': 'dialog',
         'aria-hidden': true,
-        'aria-labelledby': anchorId,
         'data-yeti-box': this.id,
         'data-resize': this.id
     });
@@ -4859,14 +4997,15 @@ Foundation.plugin(ResponsiveToggle);
       }
     });
 
-
-    this.$anchor.on('keydown.zf.reveal', function(e){
-      if(e.which === 13 || e.which === 32){
-        e.stopPropagation();
-        e.preventDefault();
-        _this._open();
-      }
-    });
+    if(this.$anchor.length){
+      this.$anchor.on('keydown.zf.reveal', function(e){
+        if(e.which === 13 || e.which === 32){
+          e.stopPropagation();
+          e.preventDefault();
+          _this._open();
+        }
+      });
+    }
 
 
     if(this.options.closeOnClick && this.options.overlay){
@@ -4982,32 +5121,33 @@ Foundation.plugin(ResponsiveToggle);
    */
   Reveal.prototype._extraHandlers = function(){
     var _this = this;
+    var visibleFocusableElements = this.$element.find('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]').filter(function() {
+      if (!$(this).is(':visible') || $(this).attr('tabindex') < 0){ return false; }//only have visible elements and those that have a tabindex greater or equal 0
+      return true;
+    });
+
     if(!this.options.overlay && this.options.closeOnClick){
-      this.$element.on('click.zf.reveal', function(e){
-        // e.preventDefault();
-        return false;
-      });
       $('body').on('click.zf.reveal', function(e){
           _this._close();
       });
     }
-    /*if(this.options.closeOnEsc){
-      $(window).on('keyup.zf.reveal', function(e){
-        e.preventDefault();
-        e.stopPropagation();
-        if(e.which === 27){
-          _this._close();
+    if(this.options.closeOnEsc){
+      $(window).on('keydown.zf.reveal', function(e){
+        if (visibleFocusableElements.length === 0) { // no focusable elements inside the modal at all, prevent tabbing in general
+          e.preventDefault();
         }
+        Foundation.Keyboard.handleKey(e, _this, {
+          close: function() {
+            if (this.options.closeOnEsc) {
+              this._close();
+            }
+          }
+        });
       });
-    }*/
+    }
 
     // lock focus within modal while tabbing
     this.$element.on('keydown.zf.reveal', function(e) {
-      var $modal = $(this)
-      var visibleFocusableElements = $modal.find('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]').filter(function() {
-        if (!$(this).is(':visible') || $(this).attr('tabindex') < 0){ return false; }//only have visible elements and those that have a tabindex greater or equal 0
-        return true;
-      });
       // handle keyboard event with keyboard util
       Foundation.Keyboard.handleKey(e, _this, {
         tab_forward: function() {
@@ -5034,29 +5174,16 @@ Foundation.plugin(ResponsiveToggle);
       if (visibleFocusableElements.length === 0) { // no focusable elements inside the modal at all, prevent tabbing in general
         e.preventDefault();
       }
-
-      /*var keyCode = e.keyCode || e.which;
-      if (keyCode === 9) { // tab is pressed
-        if (e.shiftKey && ($(this).find(':focus').is(visibleFocusableElements.eq(0)) || $(this).is(':focus'))) { // left modal upwards, setting focus to last element
-          visibleFocusableElements.eq(-1).focus();
-          e.preventDefault();
-        } else if (!e.shiftKey && $(this).find(':focus').is(visibleFocusableElements.eq(-1))) { // left modal downwards, setting focus to first element
-          visibleFocusableElements.eq(0).focus();
-          e.preventDefault();
-        } else if (visibleFocusableElements.length === 0) { // no focusable elements inside the modal at all, prevent tabbing in general
-          e.preventDefault();
-        }
-      }*/
     });
 
   };
 
   /**
    * Closes the modal
-   * @fires Reveal#close
+   * @fires Reveal#closed
    */
   Reveal.prototype._close = function(){
-    if(!this.isActive){
+    if(!this.isActive || !this.$element.is(':visible')){
       return false;
     }
     var _this = this;
@@ -5078,7 +5205,7 @@ Foundation.plugin(ResponsiveToggle);
     }
     //conditionals to remove extra event listeners added on open
     if(this.options.closeOnEsc){
-      $(window).off('keyup.zf.reveal');
+      $(window).off('keydown.zf.reveal');
     }
     if(!this.options.overlay && this.options.closeOnClick){
       $('body').off('click.zf.reveal');
@@ -5093,15 +5220,15 @@ Foundation.plugin(ResponsiveToggle);
       });
     }
 
-    $('body').removeClass('is-reveal-open').attr({'aria-hidden': false});
+    $('body').removeClass('is-reveal-open').attr({'aria-hidden': false, 'tabindex': ''});
 
     this.isActive = false;
     this.$element.attr({'aria-hidden': true})
     /**
      * Fires when the modal is done closing.
-     * @event Reveal#close
+     * @event Reveal#closed
      */
-                 .trigger('close.zf.reveal');
+                 .trigger('closed.zf.reveal');
   };
 
   Reveal.prototype.toggle = function(){
@@ -5242,17 +5369,17 @@ Foundation.plugin(ResponsiveToggle);
       }
       isDbl = true;
 
-      this._setHandlePos(this.$handle, this.options.initialStart, function(){
+      this._setHandlePos(this.$handle, this.options.initialStart, true, function(){
 
         _this._setHandlePos(_this.$handle2, _this.options.initialEnd);
       });
-      this.$handle.triggerHandler('click.zf.slider');
+      // this.$handle.triggerHandler('click.zf.slider');
       this._setInitAttr(1);
       this._events(this.$handle2);
     }
 
     if(!isDbl){
-      this._setHandlePos(this.$handle, this.options.initialStart);
+      this._setHandlePos(this.$handle, this.options.initialStart, true);
     }
   };
   /**
@@ -5264,7 +5391,7 @@ Foundation.plugin(ResponsiveToggle);
    * @param {Function} cb - callback function to fire on completion.
    * @fires Slider#moved
    */
-  Slider.prototype._setHandlePos = function($hndl, location, cb){
+  Slider.prototype._setHandlePos = function($hndl, location, noInvert, cb){
   //might need to alter that slightly for bars that will have odd number selections.
     // console.log(str, cb);
     location = parseFloat(location);//on input change events, convert string to number...grumble.
@@ -5285,6 +5412,9 @@ Foundation.plugin(ResponsiveToggle);
       }
     }
 
+    if(this.options.vertical && !noInvert){
+      location = this.options.end - location;
+    }
     var _this = this,
         vert = this.options.vertical,
         hOrW = vert ? 'height' : 'width',
@@ -5297,32 +5427,24 @@ Foundation.plugin(ResponsiveToggle);
         location = location > 0 ? parseFloat(location.toFixed(this.options.decimal)) : 0,
         anim, prog, start = null, css = {};
 
-
     this._setValues($hndl, location);
 
     if(this.options.doubleSided){//update to calculate based on values set to respective inputs??
       var isLeftHndl = this.handles.index($hndl) === 0,
           dim,
           idx = this.handles.index($hndl);
-          // console.log(this.inputs.eq(idx).val());
 
       if(isLeftHndl){
         css[lOrT] = (pctOfBar > 0 ? pctOfBar * 100 : 0) + '%';//
         dim = /*Math.abs*/((percent(this.$handle2.position()[lOrT] + halfOfHandle, elemDim) - parseFloat(pctOfBar)) * 100).toFixed(this.options.decimal) + '%';
-        console.log('left handle', dim);
         css['min-' + hOrW] = dim;
         if(cb && typeof cb === 'function'){ cb(); }
       }else{
-        // dim = ((parseFloat(pctOfBar) - (percent(this.$handle.position()[lOrT] - halfOfHandle, elemDim))) * 100);
-        // dim = (dim > 100 ? 100 : dim.toFixed(this.options.decimal)) + '%';
-        // console.log('location',location, 'left hndl left', this.handles.eq(0)[0].style.left);
-        location = (location < 100 ? location : 100) - parseFloat(this.$handle[0].style.left);
-        // console.log('location',location);
+        location = (location < 100 ? location : 100) - (parseFloat(this.$handle[0].style.left) || this.options.end - location);
         css['min-' + hOrW] = location + '%';
       }
     }
 
-                  //  console.log('finished with movement', callback);
     this.$element.one('finished.zf.animate', function(){
                     _this.animComplete = true;
                     /**
@@ -5373,9 +5495,7 @@ Foundation.plugin(ResponsiveToggle);
    * @param {Number} val - floating point of the new value.
    */
   Slider.prototype._setValues = function($handle, val){
-    var _this = this,
-        idx = this.options.doubleSided ? this.handles.index($handle) : 0;
-    // console.log('index of handle',idx);
+    var idx = this.options.doubleSided ? this.handles.index($handle) : 0;
     this.inputs.eq(idx).val(val);
     $handle.attr('aria-valuenow', val);
   };
@@ -5403,7 +5523,8 @@ Foundation.plugin(ResponsiveToggle);
           barXY = barOffset > 0 ? -halfOfHandle : (barOffset - halfOfHandle) < -barDim ? barDim : Math.abs(barOffset),//if the cursor position is less than or greater than the elements bounding coordinates, set coordinates within those bounds
           // eleDim = this.$element[0].getBoundingClientRect()[param],
           offsetPct = percent(barXY, barDim),
-          value = (this.options.end - this.options.start) * offsetPct;
+          value = (this.options.end - this.options.start) * offsetPct,
+          hasVal = false;
 
       if(!$handle){//figure out which handle it is, pass it to the next function.
         var firstHndlPos = absPosition(this.$handle, direction, barXY, param),
@@ -5412,10 +5533,11 @@ Foundation.plugin(ResponsiveToggle);
       }
 
     }else{//change event on input
-      var value = val;
+      var value = val,
+          hasVal = true;
     }
 
-    this._setHandlePos($handle, value);
+    this._setHandlePos($handle, value, hasVal);
   };
   /**
    * Adds event listeners to the slider elements.
@@ -5426,18 +5548,14 @@ Foundation.plugin(ResponsiveToggle);
   Slider.prototype._events = function($handle){
     if(this.options.disabled){ return false; }
 
-
     var _this = this,
         curHandle,
         timer;
 
-    if(this.options.binding){
       this.inputs.on('change.zf.slider', function(e){
         var idx = _this.inputs.index($(this));
         _this._handleEvent(e, _this.handles.eq(idx), $(this).val());
       });
-    }
-
 
     if(this.options.clickSelect){
       this.$element.off('click.zf.slider').on('click.zf.slider', function(e){
@@ -5492,7 +5610,7 @@ Foundation.plugin(ResponsiveToggle);
         newValue;
 
       var _$handle = $(this);
-      console.log('Handle keydown');
+
       // handle keyboard event with keyboard util
       Foundation.Keyboard.handleKey(e, _this, {
         decrease: function() {
@@ -5509,7 +5627,7 @@ Foundation.plugin(ResponsiveToggle);
         },
         handled: function() { // only set handle pos when event was handled specially
           e.preventDefault();
-          _this._setHandlePos(_$handle, newValue);
+          _this._setHandlePos(_$handle, newValue, true);
         }
       });
       /*if (newValue) { // if pressed key has special function, update value
@@ -5617,7 +5735,9 @@ Foundation.plugin(ResponsiveToggle);
     stickToWindow: false,
     container: '<div data-sticky-container></div>',
     stickTo: 'top',
-    stickAt: '',
+    anchor: '',
+    topAnchor: '',
+    btmAnchor: '',
     marginTop: 1,
     marginBottom: 1,
     stickyOn: 'medium',
@@ -5643,19 +5763,49 @@ Foundation.plugin(ResponsiveToggle);
     this.$container = $parent.length ? $parent : $(this.options.container).wrapInner(this.$element);
     this.$container.addClass(this.options.containerClass);
 
-    this.$anchor = this.options.stickAt ? $(this.options.stickAt) : $(document.body);
 
     this.$element.addClass(this.options.stickyClass)
                  .attr({'data-resize': id});
 
     this.scrollCount = this.options.checkEvery;
     this.isStuck = false;
+    // console.log(this.options.anchor);
+    if(this.options.topAnchor !== ''){
+      this._parsePoints();
+      // console.log(this.points[0]);
+    }else{
+    }
+      this.$anchor = this.options.anchor ? $(this.options.anchor) : $(document.body);
+
 
     this._setSizes(function(){
       _this._calc(false);
     });
-
     this._events(id.split('-').reverse().join('-'));
+  };
+  Sticky.prototype._parsePoints = function(){
+    var top = this.options.topAnchor,
+        btm = this.options.btmAnchor,
+        pts = [top, btm],
+        breaks = {};
+    for(var i = 0, len = pts.length; i < len && pts[i]; i++){
+      var pt;
+      if(typeof pts[i] === 'number'){
+        pt = pts[i]
+      }else{
+        var place = pts[i].split(':'),
+            anchor = $('#' + place[0]);
+
+        pt = anchor.offset().top;
+        if(place[1] && place[1].toLowerCase() === 'bottom'){
+          pt += anchor[0].getBoundingClientRect().height;
+        }
+      }
+      breaks[i] = pt;
+    }
+      // console.log(breaks);
+    this.points = breaks;
+    return;
   };
 
   /**
@@ -5664,17 +5814,18 @@ Foundation.plugin(ResponsiveToggle);
    * @param {String} id - psuedo-random id for unique scroll event listener.
    */
   Sticky.prototype._events = function(id){
+    // console.log('called');
     var _this = this,
         scrollListener = 'scroll.zf.' + id;
-
+    if(this.isOn){ return; }
     if(this.canStick){
       this.isOn = true;
-      this.$anchor.off('change.zf.sticky')
-                  .on('change.zf.sticky', function(){
-                    _this._setSizes(function(){
-                      _this._calc(false);
-                    });
-                  });
+      // this.$anchor.off('change.zf.sticky')
+      //             .on('change.zf.sticky', function(){
+      //               _this._setSizes(function(){
+      //                 _this._calc(false);
+      //               });
+      //             });
 
       $(window).off(scrollListener)
                .on(scrollListener, function(e){
@@ -5712,7 +5863,7 @@ Foundation.plugin(ResponsiveToggle);
    */
   Sticky.prototype._pauseListeners = function(scrollListener){
     this.isOn = false;
-    this.$anchor.off('change.zf.sticky');
+    // this.$anchor.off('change.zf.sticky');
     $(window).off(scrollListener);
 
     /**
@@ -5793,17 +5944,17 @@ Foundation.plugin(ResponsiveToggle);
   Sticky.prototype._removeSticky = function(isTop){
     var stickTo = this.options.stickTo,
         stickToTop = stickTo === 'top',
-        css = {}, mrgn, notStuckTo;
+        css = {}, mrgn, notStuckTo,
+        anchorPt = (this.points ? this.points[1] - this.points[0] : this.anchorHeight) - this.elemHeight;
         mrgn = stickToTop ? 'marginTop' : 'marginBottom';
         notStuckTo = stickToTop ? 'bottom' : 'top';
       css[mrgn] = 0;
-
     if((isTop && !stickToTop) || (stickToTop && !isTop)){
-      css[stickTo] = this.anchorHeight - this.elemHeight;
+      css[stickTo] = anchorPt;
       css[notStuckTo] = 0;
     }else{
       css[stickTo] = 0;
-      css[notStuckTo] = this.anchorHeight - this.elemHeight;
+      css[notStuckTo] = anchorPt;
     }
     this.isStuck = false;
     this.$element.removeClass('is-stuck is-at-' + stickTo)
@@ -5827,7 +5978,12 @@ Foundation.plugin(ResponsiveToggle);
         newElemWidth = this.$container[0].getBoundingClientRect().width,
         pdng = parseInt(window.getComputedStyle(this.$container[0])['padding-right'], 10);
 
-    this.anchorHeight = this.$anchor[0].getBoundingClientRect().height;
+    if(this.$anchor.length){
+      this.anchorHeight = this.$anchor[0].getBoundingClientRect().height;
+    }else{
+      this._parsePoints();
+    }
+
     this.$element.css({
       'max-width': newElemWidth - pdng + 'px'
     });
@@ -5858,8 +6014,10 @@ Foundation.plugin(ResponsiveToggle);
     }
     var mTop = emCalc(this.options.marginTop),
         mBtm = emCalc(this.options.marginBottom),
-        topPoint = this.$anchor.offset().top,
-        bottomPoint = topPoint + this.anchorHeight,
+        topPoint = this.points ? this.points[0] : this.$anchor.offset().top,
+        bottomPoint = this.points ? this.points[1] : topPoint + this.anchorHeight,
+        // topPoint = this.$anchor.offset().top || this.points[0],
+        // bottomPoint = topPoint + this.anchorHeight || this.points[1],
         winHeight = window.innerHeight;
 
     if(this.options.stickTo === 'top'){
@@ -6004,7 +6162,12 @@ Foundation.plugin(ResponsiveToggle);
       }
     });
     if(this.options.matchHeight){
-      this.setHeight();
+      var $images = this.$tabContent.find('img');
+      if($images.length){
+        Foundation.onImagesLoaded($images, this.setHeight.bind(this));
+      }else{
+        this.setHeight();
+      }
     }
     this._events();
   };
@@ -6710,6 +6873,7 @@ Foundation.plugin(ResponsiveToggle);
 
   /******************************************************************
   /** A very simple timer for animated elements within Foundation. **
+  /** Allows your script to pause and restart later with fn call.  **
   /**  Feel free to add features, comments, or use case examples.  **
   /*****************************************************************/
 
@@ -6733,7 +6897,9 @@ Foundation.plugin(ResponsiveToggle);
       elem.data('paused', false);
       start = Date.now();
       timer = setTimeout(function(){
-        _this.restart();//rerun the timer.
+        if(options.infinite){
+          _this.restart();//rerun the timer.
+        }
         cb();
       }, remain);
       elem.trigger('timerstart.zf.' + nameSpace);
