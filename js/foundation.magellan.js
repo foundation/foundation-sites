@@ -1,7 +1,7 @@
 /**
  * Magellan module.
  * @module foundation.magellan
- * @requires foundation.util.animationFrame
+ // * @requires foundation.util.animationFrame
  */
 !function(Foundation, $) {
   'use strict';
@@ -16,19 +16,10 @@
   function Magellan(element, options) {
     this.$element = element;
     this.options  = $.extend({}, Magellan.defaults, options);
-    // this.$window  = $(window);
-    // this.name     = 'magellan';
-    // this.attr     = 'data-magellan';
-    // this.attrArrival  = 'data-magellan-target';
 
     this._init();
 
     Foundation.registerPlugin(this);
-    // /**
-    //  * Fires when the plugin has been successfuly initialized.
-    //  * @event Magellan#init
-    //  */
-    // this.$element.trigger('init.zf.magellan');
   };
 
   /**
@@ -37,7 +28,7 @@
   Magellan.defaults = {
     animationDuration: 500,
     animationEasing: 'linear',
-    threshold: 150,
+    threshold: 50,
     activeClass: 'active'
   };
 
@@ -58,28 +49,23 @@
     this.$active = $();
     this.scrollPos = window.scrollY;
 
-    this._calcPoints();
     this._events();
-
-    $(window).one('load', this.updateActive.bind(this));
-    // setTimeout(function(){
-    // _this.updateActive();
-    // },500);
   };
   Magellan.prototype._calcPoints = function(){
     var _this = this,
         body = document.body,
         html = document.documentElement;
+
     this.points = [];
     this.winHeight = Math.round(Math.max(window.innerHeight, document.body.clientHeight));
     this.docHeight = Math.round(Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight));
+
     this.$targets.each(function(){
       var $tar = $(this),
-          pt = $tar.offset().top - _this.options.threshold;
+          pt = Math.round($tar.offset().top - _this.options.threshold);
       $tar.targetPoint = pt;
       _this.points.push(pt);
     });
-    // console.log(this.winHeight, this.docHeight);
   };
   /**
    * Initializes events for Magellan.
@@ -92,21 +78,27 @@
           duration: _this.options.animationDuration,
           easing:   _this.options.animationEasing
         };
+
+    $(window).one('load', function(){
+      _this._calcPoints();
+      _this.updateActive();
+    });
+
     this.$element.on({
       'resizeme.zf.trigger': this._reflow.bind(this),
       'scrollme.zf.trigger': this.updateActive.bind(this)
-    })
-      .on('click.fndtn.magellan', 'a[href^="#"]', function(e) {
+    }).on('click.zf.magellan', 'a[href^="#"]', function(e) {
         e.preventDefault();
         var arrival   = this.getAttribute('href'),
-            scrollPos = $(arrival).offset().top - _this.options.threshold;
+            scrollPos = $(arrival).offset().top - _this.options.threshold / 2;
 
-        Foundation.Move(_this.options.animationDuration, $body, function(){
-          $body.animate({
+        // requestAnimationFrame is disabled for this plugin currently
+        // Foundation.Move(_this.options.animationDuration, $body, function(){
+          $body.stop(true).animate({
             scrollTop: scrollPos
           }, opts);
         });
-      });
+      // });
   };
   /**
    * Calls necessary functions to update Magellan upon DOM change
@@ -117,20 +109,19 @@
     this.updateActive();
   };
   Magellan.prototype.updateActive = function(evt, elem, scrollPos){
-    var winPos = scrollPos || window.scrollY;
-        // min = winPos > this.options.threshold;
+    var winPos = scrollPos || window.scrollY,
+        curIdx;
 
-
-    // if(min && Math.abs(winPos - this.scrollPos) < this.options.threshold){ return false;}
-    if(winPos > this.options.threshold > Math.abs(winPos - this.scrollPos)){ console.log('min');return false;}
-
-    var isDown = this.scrollPos < winPos,
-        _this = this,
-        curVisible = this.points.filter(function(p, i){
-
-          return isDown ? p <= winPos : p - _this.options.threshold <= winPos;//&& winPos >= _this.points[i -1] - _this.options.threshold;
-        }),
-        curIdx = curVisible.length ? curVisible.length - 1 : 0;
+    if(winPos + this.winHeight === this.docHeight){ curIdx = this.points.length - 1; }
+    else if(winPos < this.points[0]){ curIdx = 0; }
+    else{
+      var isDown = this.scrollPos < winPos,
+          _this = this,
+          curVisible = this.points.filter(function(p, i){
+            return isDown ? p <= winPos : p - _this.options.threshold <= winPos;//&& winPos >= _this.points[i -1] - _this.options.threshold;
+          });
+      curIdx = curVisible.length ? curVisible.length - 1 : 0;
+    }
 
     this.$active.removeClass(this.options.activeClass);
     this.$active = this.$links.eq(curIdx).addClass(this.options.activeClass);
@@ -144,40 +135,16 @@
 
     this.scrollPos = winPos;
   };
-  /**
-   * Detects the arrival sections and adds the active class to the magellan navigation bar
-   */
-  // Magellan.prototype.updateActiveClass = function() {
-  //   // var windowPosition = this.$window.scrollTop(),
-  //   var windowPosition = window.scrollY,
-  //       arrivals       = $('[' + this.attrArrival + ']'),
-  //       // for sensitivty to trigger the active class, either use the specified
-  //       // threshold amount, or use the height of the nav item plus a little wiggle room
-  //       threshold      = this.options.threshold || this.$element.height() + 50,
-  //       magellanNav    = this.$element,
-  //       _this          = this;
-  //       // console.log(windowPosition);
-  //   if (windowPosition + this.$window.height() === $(document).height()) {
-  //     magellanNav.find('a').removeClass(_this.options.activeClass);
-  //     magellanNav.find('a').last().addClass(_this.options.activeClass);
-  //     return;
-  //   }
-  //   arrivals.each(function() {
-  //     var arrivalTop = $(this).offset().top - threshold,
-  //         arrivalEnd = arrivalTop + $(this).height();
-  //
-  //     if (windowPosition >= arrivalTop && windowPosition <= arrivalEnd) {
-  //       magellanNav.find('a').removeClass(_this.options.activeClass);
-  //
-  //       // this feature causes a bit of jumpiness
-  //       // window.location.hash = $(this).attr('id');
-  //       // find the corresponding hash/id of the section
-  //       var activeTarget = magellanNav.find('a[href=#' + $(this).attr('id') +']');
-  //       activeTarget.addClass(_this.options.activeClass);
-  //     }
-  //   })
-  // };
+  Magellan.prototype.destroy = function(){
+    this.$element.off('.zf.trigger .zf.magellan')
+        .find('.' + this.options.activeClass).removeClass(this.options.activeClass);
 
+    var hash = this.$active[0].getAttribute('href');
+
+    window.location.hash.replace(hash, '');
+
+    Foundation.unregisterPlugin(this);
+  };
   Foundation.plugin(Magellan);
 
   // Exports for AMD/Browserify
