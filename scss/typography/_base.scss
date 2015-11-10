@@ -57,7 +57,7 @@ $header-sizes: (
     'h5': 20,
     'h6': 16,
   ),
-);
+) !default;
 
 /// Color of headers.
 /// @type Color
