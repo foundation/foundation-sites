@@ -149,7 +149,7 @@
     $('#' + $target.attr('aria-labelledby')).attr({
       'aria-expanded': true,
       'aria-selected': true
-    })
+    });
     /**
      * Fires when the tab is done opening.
      * @event Accordion#down
@@ -172,7 +172,7 @@
     }
 
     Foundation.Move(this.options.slideSpeed, $target, function(){
-      $target.slideUp(_this.options.slideSpeed)
+      $target.slideUp(_this.options.slideSpeed);
     });
 
     $target.attr('aria-hidden', true)
@@ -181,7 +181,7 @@
     $('#' + $target.attr('aria-labelledby')).attr({
      'aria-expanded': false,
      'aria-selected': false
-    })
+   });
 
     /**
      * Fires when the tab is done collapsing up.
@@ -204,7 +204,7 @@
      */
     // this.$element.trigger('destroyed.zf.accordion');
     Foundation.unregisterPlugin(this);
-  }
+  };
 
   Foundation.plugin(Accordion);
 }(jQuery);
