@@ -356,6 +356,13 @@
 
     $('body').removeClass('is-reveal-open').attr({'aria-hidden': false, 'tabindex': ''});
 
+    /**
+    * Remove the modal content and then reinjects it
+    * This prevents a running video to keep going in the background
+    */
+    var tmpContent = this.$element.html();
+    this.$element.html( '' ).html( tmpContent );
+
     this.isActive = false;
     this.$element.attr({'aria-hidden': true})
     /**
