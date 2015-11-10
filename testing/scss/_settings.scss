@@ -17,25 +17,30 @@
 //  12. Forms
 //  13. Global
 //  14. The Grid
-//  15. Label
-//  16. Media Object
-//  17. Menu
-//  18. Off-canvas
-//  19. Orbit
-//  20. Pagination
-//  21. Progress Bar
-//  22. Reveal
-//  23. Switch
-//  24. Table
-//  25. Tabs
-//  26. Thumbnail
-//  27. Tooltip
-//  28. Top Bar
-//  29. Base Typography
-//  30. Typography Helpers
+//  15. Joyride
+//  16. Label
+//  17. Media Object
+//  18. Menu
+//  19. Off-canvas
+//  20. Orbit
+//  21. Pagination
+//  22. Progress Bar
+//  23. Reveal
+//  24. Slider
+//  25. Switch
+//  26. Table
+//  27. Tabs
+//  28. Thumbnail
+//  29. Tooltip
+//  30. Top Bar
+//  31. Base Typography
+//  32. Typography Helpers
+//  33. Undefined
 
-// Abide
-// -----
+@import '../../scss/util/util';
+
+// 1. Abide
+// --------
 
 // $abide-inputs: true;
 // $abide-labels: true;
@@ -45,8 +50,8 @@
 // $input-error-font-size: rem-calc(12);
 // $input-error-font-weight: $global-weight-bold;
 
-// Accordion
-// ---------
+// 2. Accordion
+// ------------
 
 // $accordion-background: $white;
 // $accordion-plusminus: true;
@@ -58,8 +63,8 @@
 // $accordion-content-color: foreground($accordion-background, $primary-color);
 // $accordion-content-padding: 1rem;
 
-// Badge
-// -----
+// 3. Badge
+// --------
 
 // $badge-background: $primary-color;
 // $badge-color: foreground($badge-background);
@@ -67,8 +72,8 @@
 // $badge-minwidth: 2.1em;
 // $badge-font-size: 0.6rem;
 
-// Breadcrumbs
-// -----------
+// 4. Breadcrumbs
+// --------------
 
 // $breadcrumbs-margin: 0 0 $global-margin 0;
 // $breadcrumbs-item-font-size: rem-calc(11);
@@ -79,8 +84,8 @@
 // $breadcrumbs-item-uppercase: true;
 // $breadcrumbs-item-slash: true;
 
-// Breakpoints
-// -----------
+// 5. Breakpoints
+// --------------
 
 // $breakpoints: (
 //   small: 0,
@@ -91,17 +96,17 @@
 // );
 // $breakpoint-classes: (small medium large);
 
-// Button
-// ------
+// 6. Button
+// ---------
 
 // $button-padding: 0.85em 1em;
-// $button-margin: 0 $global-padding $global-padding 0;
+// $button-margin: 0 $global-margin $global-margin 0;
 // $button-fill: solid;
 // $button-background: $primary-color;
 // $button-background-hover: scale-color($button-background, $lightness: -15%);
-// $button-font-color: #fff;
-// $button-font-color-alt: #000;
-// $button-radius: 0;
+// $button-color: #fff;
+// $button-color-alt: #000;
+// $button-radius: $global-radius;
 // $button-sizes: (
 //   tiny: 0.6rem,
 //   small: 0.75rem,
@@ -110,16 +115,16 @@
 // );
 // $button-opacity-disabled: 0.25;
 
-// Button Group
-// ------------
+// 7. Button Group
+// ---------------
 
 // $buttongroup-margin: 1rem;
 // $buttongroup-spacing: 1px;
 // $buttongroup-child-selector: '.button';
 // $buttongroup-expand-max: 6;
 
-// Callout
-// -------
+// 8. Callout
+// ----------
 
 // $callout-background: $white;
 // $callout-background-fade: 85%;
@@ -128,12 +133,13 @@
 // $callout-padding: 1rem;
 // $callout-font-color: $body-font-color;
 // $callout-font-color-alt: $body-background;
+// $callout-radius: $global-radius;
 // $callout-link-tint: 30%;
 
-// Close Button
-// ------------
+// 9. Close Button
+// ---------------
 
-// $closebutton-position: right top;
+// $closebutton-position: $global-right top;
 // $closebutton-offset-horizontal: 1rem;
 // $closebutton-offset-vertical: 0.5rem;
 // $closebutton-size: 2em;
@@ -141,29 +147,30 @@
 // $closebutton-color: $dark-gray;
 // $closebutton-color-hover: $black;
 
-// Dropdown
-// --------
+// 10. Dropdown
+// ------------
 
 // $dropdown-padding: 1rem;
 // $dropdown-border: 1px solid $medium-gray;
 // $dropdown-font-size: 16rem;
 // $dropdown-width: 300px;
+// $dropdown-radius: $global-radius;
 // $dropdown-sizes: (
 //   tiny: 100px,
 //   small: 200px,
 //   large: 400px,
 // );
 
-// Flex Video
-// ----------
+// 11. Flex Video
+// --------------
 
 // $flexvideo-padding-top: rem-calc(25);
 // $flexvideo-margin-bottom: rem-calc(16);
 // $flexvideo-ratio: 4 by 3;
 // $flexvideo-ratio-widescreen: 16 by 9;
 
-// Forms
-// -----
+// 12. Forms
+// ---------
 
 // $fieldset-border: 1px solid $medium-gray;
 // $fieldset-padding: rem-calc(20);
@@ -182,8 +189,8 @@
 // $form-label-font-weight: $global-weight-normal;
 // $form-label-line-height: 1.8;
 // $select-background: #fafafa;
-// $select-radius: $input-radius;
 // $select-triangle-color: #333;
+// $select-radius: $global-radius;
 // $input-color: $dark-gray;
 // $input-font-family: inherit;
 // $input-font-size: rem-calc(16);
@@ -194,13 +201,13 @@
 // $input-border-focus: 1px solid $dark-gray;
 // $input-shadow: inset 0 1px 2px rgba($black, 0.1);
 // $input-shadow-focus: 0 0 5px $medium-gray;
-// $input-radius: 0;
 // $input-cursor-disabled: default;
 // $input-transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
 // $input-number-spinners: true;
+// $input-radius: $global-radius;
 
-// Global
-// ------
+// 13. Global
+// ----------
 
 // $global-width: rem-calc(1200);
 // $global-font-size: 100%;
@@ -210,7 +217,7 @@
 // $success-color: #3adb76;
 // $warning-color: #ffae00;
 // $alert-color: #ec5840;
-// $light-gray: #f3f3f3;
+// $light-gray: #e6e6e6;
 // $medium-gray: #cacaca;
 // $dark-gray: #8a8a8a;
 // $black: #0a0a0a;
@@ -225,36 +232,45 @@
 // $global-margin: 1rem;
 // $global-weight-normal: normal;
 // $global-weight-bold: bold;
-// $global-radius: 3px;
-// $global-rounded: 1000px;
+// $global-radius: 0;
 // $global-namespace: false;
 // $global-text-direction: ltr;
 // $rem-base: 16px;
 
-// The Grid
-// --------
+// 14. The Grid
+// ------------
 
 // $grid-row-width: $global-width;
 // $grid-column-count: 12;
-// $grid-column-gutter: 1.875rem / 2;
+// $grid-column-gutter: 30px;
 
-// Label
-// -----
+// 15. Joyride
+// -----------
+
+// $joyride-background-color: $tooltip-background-color;
+// $joyride-color: $tooltip-color;
+// $joyride-padding: $tooltip-padding;
+// $joyride-font-size: 100%;
+// $joyride-min-width: 20rem;
+
+// 16. Label
+// ---------
 
 // $label-background: $primary-color;
 // $label-color: foreground($label-background);
 // $label-font-size: 0.8rem;
 // $label-padding: 0.33333rem 0.5rem;
+// $label-radius: $global-radius;
 
-// Media Object
-// ------------
+// 17. Media Object
+// ----------------
 
 // $mediaobject-margin-bottom: $global-margin;
 // $mediaobject-section-padding: $global-padding;
 // $mediaobject-image-width-stacked: 100%;
 
-// Menu
-// ----
+// 18. Menu
+// --------
 
 // $menu-margin: 0;
 // $menu-margin-nested: 1rem;
@@ -262,8 +278,8 @@
 // $menu-icon-spacing: 0.25rem;
 // $menu-expand-max: 6;
 
-// Off-canvas
-// ----------
+// 19. Off-canvas
+// --------------
 
 // $offcanvas-size: 250px;
 // $offcanvas-background: $white;
@@ -274,8 +290,8 @@
 // $maincontent-class: 'main-content';
 // $maincontent-shadow: 0 0 10px rgba($black, 0.5);
 
-// Orbit
-// -----
+// 20. Orbit
+// ---------
 
 // $orbit-bullet-background: $medium-gray;
 // $orbit-bullet-background-active: $dark-gray;
@@ -289,14 +305,15 @@
 // $orbit-control-padding: 1rem;
 // $orbit-control-zindex: 10;
 
-// Pagination
-// ----------
+// 21. Pagination
+// --------------
 
 // $pagination-font-size: rem-calc(14);
 // $pagination-margin-bottom: $global-margin;
 // $pagination-item-color: $black;
 // $pagination-item-padding: rem-calc(3 10);
 // $pagination-item-spacing: rem-calc(1);
+// $pagination-radius: $global-radius;
 // $pagination-item-background-hover: $light-gray;
 // $pagination-item-background-current: $primary-color;
 // $pagination-item-color-current: foreground($pagination-item-background-current);
@@ -305,16 +322,17 @@
 // $pagination-mobile-items: false;
 // $pagination-arrows: true;
 
-// Progress Bar
-// ------------
+// 22. Progress Bar
+// ----------------
 
 // $progress-height: 1rem;
 // $progress-background: $medium-gray;
 // $progress-margin-bottom: $global-margin;
 // $progress-meter-background: $primary-color;
+// $progress-radius: $global-radius;
 
-// Reveal
-// ------
+// 23. Reveal
+// ----------
 
 // $reveal-background: $white;
 // $reveal-width: 600px;
@@ -322,27 +340,12 @@
 // $reveal-offset: rem-calc(100);
 // $reveal-padding: $global-padding;
 // $reveal-border: 1px solid $medium-gray;
+// $reveal-radius: $global-radius;
 // $reveal-zindex: 1005;
 // $reveal-overlay-background: rgba($black, 0.45);
 
-// Switch
-// ------
-
-// $switch-background: $medium-gray;
-// $switch-background-active: $primary-color;
-// $switch-height: 2rem;
-// $switch-height-tiny: 1.5rem;
-// $switch-height-small: 1.75rem;
-// $switch-height-large: 2.5rem;
-// $switch-radius: 0;
-// $switch-margin: $global-margin;
-// $switch-paddle-background: $white;
-// $switch-paddle-offset: 0.25rem;
-// $switch-paddle-radius: 0;
-// $switch-paddle-transition: all 0.25s ease-out;
-
-// Table
-// -----
+// 24. Slider
+// ----------
 
 // $slider-height: 0.5rem;
 // $slider-width-vertical: $slider-height;
@@ -352,7 +355,28 @@
 // $slider-handle-width: 1.4rem;
 // $slider-handle-background: $primary-color;
 // $slider-opacity-disabled: 0.25;
+// $slider-radius: $global-radius;
 // $slider-transition: all 0.2s ease-in-out;
+
+// 25. Switch
+// ----------
+
+// $switch-background: $medium-gray;
+// $switch-background-active: $primary-color;
+// $switch-height: 2rem;
+// $switch-height-tiny: 1.5rem;
+// $switch-height-small: 1.75rem;
+// $switch-height-large: 2.5rem;
+// $switch-radius: $global-radius;
+// $switch-margin: $global-margin;
+// $switch-paddle-background: $white;
+// $switch-paddle-offset: 0.25rem;
+// $switch-paddle-radius: $global-radius;
+// $switch-paddle-transition: all 0.25s ease-out;
+
+// 26. Table
+// ---------
+
 // $table-background: $white;
 // $table-color-scale: 5%;
 // $table-border: 1px solid smart-scale($table-background, $table-color-scale);
@@ -367,8 +391,8 @@
 // $table-head-font-color: $body-font-color;
 // $show-header-for-stacked: false;
 
-// Tabs
-// ----
+// 27. Tabs
+// --------
 
 // $tab-margin: 0;
 // $tab-background: $white;
@@ -383,35 +407,38 @@
 // $tab-content-color: foreground($tab-background, $primary-color);
 // $tab-content-padding: 1rem;
 
-// Thumbnail
-// ---------
+// 28. Thumbnail
+// -------------
 
 // $thumbnail-border: solid 4px $white;
+// $thumbnail-margin-bottom: $global-margin;
 // $thumbnail-shadow: 0 0 0 1px rgba($black, 0.2);
 // $thumbnail-shadow-hover: 0 0 6px 1px rgba($primary-color, 0.5);
 // $thumbnail-transition: box-shadow 200ms ease-out;
+// $thumbnail-radius: $global-radius;
 
-// Tooltip
-// -------
+// 29. Tooltip
+// -----------
 
 // $tooltip-background-color: $black;
+// $tooltip-color: $white;
 // $tooltip-padding: 0.75rem;
 // $tooltip-font-size: $small-font-size;
 // $tooltip-pip-width: 0.75rem;
 // $tooltip-pip-height: $tooltip-pip-width * 0.866;
 // $tooltip-pip-offset: 1.25rem;
+// $tooltip-radius: $global-radius;
 
-// Top Bar
-// -------
+// 30. Top Bar
+// -----------
 
 // $topbar-padding: 0.5rem;
-// $topbar-margin: 1rem;
 // $topbar-background: #eee;
-// $topbar-background-dark: #333;
+// $topbar-link-color: #fff;
 // $topbar-input-width: 200px;
 
-// Base Typography
-// ---------------
+// 31. Base Typography
+// -------------------
 
 // $header-font-family: $body-font-family;
 // $header-font-weight: $global-weight-normal;
@@ -435,7 +462,7 @@
 //     'h6': 16,
 //   ),
 // );
-// $header-color: $black;
+// $header-color: inherit;
 // $header-lineheight: 1.4;
 // $header-margin-bottom: 0.5rem;
 // $header-text-rendering: optimizeLegibility;
@@ -478,8 +505,8 @@
 // $keystroke-radius: $global-radius;
 // $abbr-underline: 1px dotted $black;
 
-// Typography Helpers
-// ------------------
+// 32. Typography Helpers
+// ----------------------
 
 // $lead-font-size: $global-font-size * 1.25;
 // $lead-lineheight: 1.6;
@@ -489,4 +516,11 @@
 // $subheader-margin-top: 0.2rem;
 // $subheader-margin-bottom: 0.5rem;
 // $stat-font-size: 2.5rem;
+
+// 33. Undefined
+// -------------
+
+// $drilldown-transition: transform 0.15s linear;
+// $dropdownmenu-arrows: true;
+// $dropdownmenu-min-width: 200px;
 
