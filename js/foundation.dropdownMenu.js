@@ -291,7 +291,7 @@
     $body.not(_this.$element).on('click.zf.dropdownmenu tap.zf.dropdownmenu touchend.zf.dropdownmenu', function(e){
       _this._hideAll();
       $body.off('click.zf.dropdownmenu tap.zf.dropdownmenu touchend.zf.dropdownmenu');
-    })
+    });
   };
 //show & hide stuff @private
   /**

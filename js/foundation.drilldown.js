@@ -22,7 +22,7 @@
     this._init();
 
     Foundation.registerPlugin(this);
-    Foundation.registerKeyCommands('Drilldown', {
+    Foundation.Keyboard.register('Drilldown', {
       'ENTER': 'open',
       'SPACE': 'open',
       'ARROW_RIGHT': 'next',
@@ -81,9 +81,12 @@
       _this._events($sub);
     });
     this.$submenus.each(function(){
-      var $menu = $(this);
-      $menu.prepend(_this.options.backButton);
-      _this._back($menu);
+      var $menu = $(this),
+          $back = $menu.find('.js-drilldown-back');
+      if(!$back.length){
+        $menu.prepend(_this.options.backButton);
+        _this._back($menu);
+      }
     });
     if(!this.$element.parent().hasClass('is-drilldown')){
       this.$wrapper = $(this.options.wrapper).addClass('is-drilldown').css(this.getMaxHeight());
@@ -141,7 +144,7 @@
           return;
         }
       });
-      Foundation.handleKey(e, _this, {
+      Foundation.Keyboard.handleKey(e, _this, {
         next: function() {
           if ($element.is(_this.$submenuAnchors)) {
             _this._show($element);
@@ -171,10 +174,10 @@
         open: function() {
           if (!$element.is(_this.$menuItems)) { // not menu item means back button
             _this._hide($element.parent('ul'));
-            setTimeout(function(){$element.parent('ul').parent('li').focus()}, 1);
+            setTimeout(function(){$element.parent('ul').parent('li').focus();}, 1);
           } else if ($element.is(_this.$submenuAnchors)) {
             _this._show($element);
-            setTimeout(function(){$element.find('ul li').filter(_this.$menuItems).first().focus()}, 1);
+            setTimeout(function(){$element.find('ul li').filter(_this.$menuItems).first().focus();}, 1);
           }
         },
         handled: function() {
@@ -230,7 +233,7 @@
           // e.stopImmediatePropagation();
           setTimeout(function(){
             _this._hideAll();
-          }, 0)
+          }, 0);
       });
   };
   /**
@@ -288,6 +291,7 @@
    */
   Drilldown.prototype.destroy = function(){
     this._hideAll();
+    Foundation.BurnNest(this.$element, 'drilldown');
     this.$element.unwrap()
                  .find('.js-drilldown-back').remove()
                  .end().find('.is-active, .is-closing, .is-drilldown-sub').removeClass('is-active is-closing is-drilldown-sub')
