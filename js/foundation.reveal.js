@@ -388,7 +388,7 @@
      * @event Reveal#destroyed
      */
     // this.$element.trigger('destroyed.zf.reveal');
-  }
+  };
 
   Foundation.plugin(Reveal);
 

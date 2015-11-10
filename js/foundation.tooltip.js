@@ -248,7 +248,7 @@
      * fires when the tooltip is hidden
      * @event Tooltip#hide
      */
-    this.$element.trigger('hide.zf.tooltip')
+    this.$element.trigger('hide.zf.tooltip');
   };
 
   /**
@@ -325,7 +325,9 @@
       })
 
       .on('resizeme.zf.trigger', function(){
-        _this.setPosition();
+        if(_this.isActive){
+          _this.setPosition();
+        }
       });
   };
   /**

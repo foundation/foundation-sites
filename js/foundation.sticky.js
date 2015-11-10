@@ -81,7 +81,7 @@
     for(var i = 0, len = pts.length; i < len && pts[i]; i++){
       var pt;
       if(typeof pts[i] === 'number'){
-        pt = pts[i]
+        pt = pts[i];
       }else{
         var place = pts[i].split(':'),
             anchor = $('#' + place[0]);
@@ -276,6 +276,8 @@
    * @param {Function} cb - optional callback function to fire on completion of `_setBreakPoints`.
    */
   Sticky.prototype._setSizes = function(cb){
+    this.canStick = Foundation.MediaQuery.atLeast(this.options.stickyOn);
+    if(!this.canStick){ cb(); }
     var _this = this,
         newElemWidth = this.$container[0].getBoundingClientRect().width,
         comp = window.getComputedStyle(this.$container[0]),
@@ -298,10 +300,9 @@
       height: newContainerHeight
     });
     this.elemHeight = newContainerHeight;
-    this.canStick = Foundation.MediaQuery.atLeast(this.options.stickyOn);
 
   	if (this.isStuck) {
-  		this.$element.css({"left":this.$container.offset().left + parseInt(comp['padding-left'], 10)})
+  		this.$element.css({"left":this.$container.offset().left + parseInt(comp['padding-left'], 10)});
   	}
 
     this._setBreakPoints(newContainerHeight, function(){
