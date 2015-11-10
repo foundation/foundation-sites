@@ -68,7 +68,7 @@
   padding-right: $gutter;
 
   &:last-child {
-    float: right;
+    float: $global-right;
   }
 }
 
