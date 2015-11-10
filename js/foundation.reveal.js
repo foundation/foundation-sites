@@ -74,7 +74,7 @@
       this.$element.attr({'aria-labelledby': anchorId});
     }
 
-    this.options.fullScreen = this.$element.hasClass('full');
+    // this.options.fullScreen = this.$element.hasClass('full');
     if(this.options.fullScreen){
       this.options.overlay = false;
     }
@@ -88,10 +88,6 @@
         'data-yeti-box': this.id,
         'data-resize': this.id
     });
-
-
-    this.options.height = this.$element.outerHeight();
-    this.options.width = this.$element.outerWidth();
 
     this._events();
   };
@@ -174,11 +170,12 @@
       this.changedSize = true;
     }else{
       this.$element
-          .offset(Foundation.GetOffsets(this.$element, null, elePos, this.options.vOffset))
-          //the max height based on a percentage of vertical offset plus vertical offset
           .css({
-            'max-height': eleDims.windowDims.height - (this.options.vOffset * (this.options.btmOffsetPct / 100 + 1))
-          });
+            'max-height': eleDims.windowDims.height - (this.options.vOffset * (this.options.btmOffsetPct / 100 + 1)),
+            'width': ''
+          })
+          .offset(Foundation.GetOffsets(this.$element, null, elePos, this.options.vOffset));
+          //the max height based on a percentage of vertical offset plus vertical offset
     }
 
     cb();
@@ -245,7 +242,7 @@
              .attr({'aria-hidden': (this.options.overlay || this.options.fullScreen) ? true : false});
     setTimeout(function(){
       _this._extraHandlers();
-      Foundation.reflow();
+      // Foundation.reflow();
     }, 0);
   };
 
@@ -349,8 +346,8 @@
     //if the modal changed size, reset it
     if(this.changedSize){
       this.$element.css({
-        'height': this.options.height,
-        'width': this.options.width
+        'height': '',
+        'width': ''
       });
     }
 
