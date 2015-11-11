@@ -1,6 +1,6 @@
 {
   "name": "foundation-sites",
-  "version": "6.0.0-alpha.1",
+  "version": "6.0.0-alpha.2",
   "main": "js/foundation/foundation.js",
   "scripts": {
     "start": "gulp",
