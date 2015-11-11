@@ -67,4 +67,4 @@ By default, all images are copied as-is from `assets/img` to your `dist` folder.
 
 ### BrowserSync
 
-The template creates a [BrowserSync](http://www.browsersync.io/) server, which is at `http://localhost:3000`. Load this URL to see your compiled templates. While the server is running, any time you save a file, any pages you have open will automatically refresh, allowing you to see changes in real-time as you work.
+The template creates a [BrowserSync](http://www.browsersync.io/) server, which is at `http://localhost:8000`. Load this URL to see your compiled templates. While the server is running, any time you save a file, any pages you have open will automatically refresh, allowing you to see changes in real-time as you work.
