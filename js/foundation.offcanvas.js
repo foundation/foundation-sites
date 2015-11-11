@@ -38,9 +38,10 @@ OffCanvas.defaults = {
    * @example true
    */
   closeOnClick: true,
-
-  position: 'left'
-}
+  transitionTime: 0,
+  position: 'left',
+  forceTop: false
+};
 
 /**
  * Initializes the off-canvas wrapper by adding the exit overlay (if needed).
@@ -66,7 +67,10 @@ OffCanvas.prototype._init = function() {
 
     this.$exiter = $(exiter);
   }
-}
+  if(!this.options.transitionTime){
+    this.options.transitionTime = parseFloat(window.getComputedStyle(document.body).transitionDuration, 10);
+  }
+};
 
 /**
  * Adds event handlers to the off-canvas wrapper and the exit overlay.
@@ -88,7 +92,7 @@ OffCanvas.prototype._events = function() {
       $(window).trigger('close.zf.offcanvas');
     });
   }
-}
+};
 
 /**
  * Opens the off-canvas menu.
@@ -97,27 +101,35 @@ OffCanvas.prototype._events = function() {
  */
 OffCanvas.prototype.open = function(event, trigger) {
   if (this.$element.hasClass('is-open')) return;
-
   var _this = this;
-
+  console.log(window.pageYOffset);
+  if(!this.options.forceTop){
+    var scrollPos = parseInt(window.pageYOffset);
+    this.$element.css('top', scrollPos);
+  }
   /**
    * Fires when the off-canvas menu opens.
    * @event OffCanvas#opened
    */
-  requestAnimationFrame(function() {
-    $('body').addClass('is-off-canvas-open is-open-'+_this.options.position);
+  // requestAnimationFrame(function() {
+  Foundation.Move(this.options.transitionTime, _this.$element, function(){
+    $('body').addClass('is-off-canvas-open is-open-'+ _this.options.position);
+    console.log(window.pageYOffset);
 
     _this.$element
       .addClass('is-open')
+      // .css('top', window.scrollY)
       .attr('aria-hidden', 'false')
       .find('a, button').eq(0).focus().end().end()
       .trigger('opened.zf.offcanvas');
+
   });
+  // });
 
   if (trigger) {
     this.$lastTrigger = trigger.attr('aria-expanded', 'true');
   }
-}
+};
 
 /**
  * Closes the off-canvas menu.
@@ -143,7 +155,7 @@ OffCanvas.prototype.close = function() {
   });
 
   this.$lastTrigger.attr('aria-expanded', 'false');
-}
+};
 
 /**
  * Toggles the off-canvas menu open or closed.
@@ -156,7 +168,7 @@ OffCanvas.prototype.toggle = function(event, trigger) {
   else {
     this.open(event, trigger);
   }
-}
+};
 
 /**
  * Handles keyboard input when detected. When the escape key is pressed, the off-canvas menu closes, and focus is restored to the element that opened the menu.
@@ -170,8 +182,8 @@ OffCanvas.prototype._handleKeyboard = function(event) {
   event.preventDefault();
   this.close();
   this.$lastTrigger.focus();
-}
+};
 
 Foundation.plugin(OffCanvas);
 
-}(jQuery, Foundation)
+}(jQuery, Foundation);

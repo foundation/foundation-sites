@@ -20,7 +20,7 @@
     this._init();
 
     Foundation.registerPlugin(this);
-  };
+  }
 
   /**
    * Default settings for plugin
@@ -47,7 +47,7 @@
       'id': id
     });
     this.$active = $();
-    this.scrollPos = window.scrollY;
+    this.scrollPos = parseInt(window.pageYOffset, 10);
 
     this._events();
   };
@@ -109,7 +109,7 @@
     this.updateActive();
   };
   Magellan.prototype.updateActive = function(evt, elem, scrollPos){
-    var winPos = scrollPos || window.scrollY,
+    var winPos = scrollPos || parseInt(window.pageYOffset, 10),
         curIdx;
 
     if(winPos + this.winHeight === this.docHeight){ curIdx = this.points.length - 1; }
