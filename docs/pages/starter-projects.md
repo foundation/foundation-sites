@@ -29,9 +29,9 @@ You can set up an advanced project through the Foundation CLI with this command:
 foundation new --framework sites --template advanced
 ```
 
-It's also possible to download the template files directly from GitHub. Run `npm install` and `bower install` first to set it up, then `npm start` to run it. [Download advanced template](https://github.com/zurb/foundation-ssg/archive/master.zip).
+It's also possible to download the template files directly from GitHub. Run `npm install` and `bower install` first to set it up, then `npm start` to run it. [Download advanced template](https://github.com/zurb/foundation-ssg/archive/master.zip). 
 
-The biggest difference between this and the basic template is the folder structure. In the advanced template, your project has a `src/` folder which contains your source files, and a separate `dist/` folder with your finished website. As you work on your project, Gulp continuously updates your `dist/` folder with new versions of files.
+The biggest difference between this and the basic template is the folder structure. In the advanced template, your project has a `src/` folder which contains your source files, and a separate `dist/` folder with your finished website. As you work on your project, Gulp continuously updates your `dist/` folder with new versions of files. To compile a production build, you will need to install Gulp (`npm install -g gulp`) and then run `gulp build --production`.
 
 Here's an overview of what Gulp does in this project:
 
@@ -67,4 +67,4 @@ By default, all images are copied as-is from `assets/img` to your `dist` folder.
 
 ### BrowserSync
 
-The template creates a [BrowserSync](http://www.browsersync.io/) server, which is at `http://localhost:3000`. Load this URL to see your compiled templates. While the server is running, any time you save a file, any pages you have open will automatically refresh, allowing you to see changes in real-time as you work.
+The template creates a [BrowserSync](http://www.browsersync.io/) server, which is at `http://localhost:8000`. Load this URL to see your compiled templates. While the server is running, any time you save a file, any pages you have open will automatically refresh, allowing you to see changes in real-time as you work.
