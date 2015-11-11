@@ -38,7 +38,8 @@ OffCanvas.defaults = {
   forceTop: false,
   isSticky: true,
   isRevealed: false,
-  revealOn: null
+  revealOn: null,
+  autoFocus: true
 };
 
 /**
@@ -75,8 +76,9 @@ OffCanvas.prototype._init = function() {
     this._setMQChecker();
   }
   if(!this.options.transitionTime){
-    this.options.transitionTime = parseFloat(window.getComputedStyle(document.body).transitionDuration, 10);
+    this.options.transitionTime = parseFloat(window.getComputedStyle(document.body).transitionDuration, 10) * 1000;
   }
+  // console.log(this.options.transitionTime);
 };
 
 /**
@@ -142,7 +144,8 @@ OffCanvas.prototype.reveal = function(isRevealed){
  */
 OffCanvas.prototype.open = function(event, trigger) {
   if (this.$element.hasClass('is-open')) return;
-  var _this = this;
+  var _this = this,
+      $body = $(document.body);
 
   if(!this.options.forceTop){
     var scrollPos = parseInt(window.pageYOffset);
@@ -156,17 +159,12 @@ OffCanvas.prototype.open = function(event, trigger) {
    * @event OffCanvas#opened
    */
   Foundation.Move(this.options.transitionTime, this.$element, function(){
-    $('body').addClass('is-off-canvas-open is-open-'+ _this.options.position);
+    $body.addClass('is-off-canvas-open is-open-'+ _this.options.position);
 
     _this.$element
       .addClass('is-open')
       .attr('aria-hidden', 'false')
-      // .find('a, button').eq(0).focus().end().end()
       .trigger('opened.zf.offcanvas');
-      setTimeout(function(){
-        console.log(_this.$element.find('a, button'));
-        _this.$element.find('a, button').eq(0).focus();
-      }, 10);
 
     if(_this.options.isSticky){
       _this.stick();
@@ -174,6 +172,12 @@ OffCanvas.prototype.open = function(event, trigger) {
   });
   if(trigger){
     this.$lastTrigger = trigger.attr('aria-expanded', 'true');
+  }
+  if(this.options.autoFocus){
+    this.$element.one('finished.zf.animate', function(){
+      _this.$element.find('a, button').eq(0).focus();
+      // console.log('finished');
+    });
   }
 };
 OffCanvas.prototype.stick = function(){
@@ -204,19 +208,20 @@ OffCanvas.prototype.close = function() {
    * @event OffCanvas#closed
    */
    Foundation.Move(this.options.transitionTime, this.$element, function(){
-
     $('body').removeClass('is-off-canvas-open is-open-'+_this.options.position);
 
     _this.$element
       .removeClass('is-open')
       .attr('aria-hidden', 'true')
       .trigger('closed.zf.offcanvas');
-
-    if(_this.options.isSticky || !_this.options.forceTop){
+    // Foundation._reflow();
+  });
+  if(_this.options.isSticky || !_this.options.forceTop){
+    setTimeout(function(){
       _this.$element[0].style.transform = '';
       $(window).off('scroll.zf.offcanvas');
-    }
-  });
+    }, this.options.transitionTime);
+  }
 
   this.$lastTrigger.attr('aria-expanded', 'false');
 };
