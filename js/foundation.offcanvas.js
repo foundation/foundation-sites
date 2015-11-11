@@ -102,7 +102,7 @@ OffCanvas.prototype._events = function() {
 OffCanvas.prototype.open = function(event, trigger) {
   if (this.$element.hasClass('is-open')) return;
   var _this = this;
-  console.log(window.pageYOffset);
+
   if(!this.options.forceTop){
     var scrollPos = parseInt(window.pageYOffset);
     this.$element.css('top', scrollPos);
@@ -111,20 +111,16 @@ OffCanvas.prototype.open = function(event, trigger) {
    * Fires when the off-canvas menu opens.
    * @event OffCanvas#opened
    */
-  // requestAnimationFrame(function() {
   Foundation.Move(this.options.transitionTime, _this.$element, function(){
     $('body').addClass('is-off-canvas-open is-open-'+ _this.options.position);
-    console.log(window.pageYOffset);
 
     _this.$element
       .addClass('is-open')
-      // .css('top', window.scrollY)
       .attr('aria-hidden', 'false')
       .find('a, button').eq(0).focus().end().end()
       .trigger('opened.zf.offcanvas');
 
   });
-  // });
 
   if (trigger) {
     this.$lastTrigger = trigger.attr('aria-expanded', 'true');
