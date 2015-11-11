@@ -24,11 +24,6 @@ function OffCanvas(element, options) {
   this._events();
 
   Foundation.registerPlugin(this);
-  // /**
-  //  * Fires when the plugin has been successfully initialized.
-  //  * @event OffCanvas#init
-  //  */
-  // this.$element.trigger('init.zf.offcanvas');
 }
 
 OffCanvas.defaults = {
@@ -76,7 +71,7 @@ OffCanvas.prototype._init = function() {
   }
   this.options.isRevealed = /(reveal-for-)/g.test(this.$element[0].className);
   if(this.options.isRevealed){
-    this.options.revealOn = this.options.revealOn || this.$element[0].className.match(/(medium|large)/g)[0];
+    this.options.revealOn = this.options.revealOn || this.$element[0].className.match(/(reveal-for-medium|reveal-for-large)/g)[0].split('-')[2];
     this._setMQChecker();
   }
   if(!this.options.transitionTime){
@@ -106,9 +101,38 @@ OffCanvas.prototype._events = function() {
   }
 };
 OffCanvas.prototype._setMQChecker = function(){
-  $(window).on('changed.zf.mediaquery', function(){
+  var _this = this;
 
+  $(window).on('changed.zf.mediaquery', function(){
+    if(Foundation.MediaQuery.atLeast(_this.options.revealOn)){
+      _this.reveal(true);
+    }else{
+      _this.reveal(false);
+    }
+  }).one('load.zf.offcanvas', function(){
+    if(Foundation.MediaQuery.atLeast(_this.options.revealOn)){
+      _this.reveal(true);
+    }
   });
+};
+OffCanvas.prototype.reveal = function(isRevealed){
+  var closer = this.$element.find('[data-close]');
+  if(isRevealed){
+    if(!this.options.forceTop){
+      var scrollPos = parseInt(window.pageYOffset);
+      this.$element[0].style.transform = 'translate(0,' + scrollPos + 'px)';
+    }
+    if(this.options.isSticky){ this.stick(); }
+    if(closer.length){ closer.hide(); }
+  }else{
+    if(this.options.isSticky || !this.options.forceTop){
+      this.$element[0].style.transform = '';
+      $(window).off('scroll.zf.offcanvas');
+    }
+    if(closer.length){
+      closer.show();
+    }
+  }
 };
 
 /**
@@ -123,19 +147,26 @@ OffCanvas.prototype.open = function(event, trigger) {
   if(!this.options.forceTop){
     var scrollPos = parseInt(window.pageYOffset);
     this.$element[0].style.transform = 'translate(0,' + scrollPos + 'px)';
+    if(this.$exiter.length){
+      this.$exiter[0].style.transform = 'translate(0,' + scrollPos + 'px)';
+    }
   }
   /**
    * Fires when the off-canvas menu opens.
    * @event OffCanvas#opened
    */
-  Foundation.Move(this.options.transitionTime, _this.$element, function(){
+  Foundation.Move(this.options.transitionTime, this.$element, function(){
     $('body').addClass('is-off-canvas-open is-open-'+ _this.options.position);
 
     _this.$element
       .addClass('is-open')
       .attr('aria-hidden', 'false')
-      .find('a, button').eq(0).focus().end().end()
+      // .find('a, button').eq(0).focus().end().end()
       .trigger('opened.zf.offcanvas');
+      setTimeout(function(){
+        console.log(_this.$element.find('a, button'));
+        _this.$element.find('a, button').eq(0).focus();
+      }, 10);
 
     if(_this.options.isSticky){
       _this.stick();
@@ -147,13 +178,14 @@ OffCanvas.prototype.open = function(event, trigger) {
 };
 OffCanvas.prototype.stick = function(){
   var elStyle = this.$element[0].style,
-      exitStyle = this.$exiter[0].style || null;
+      exitStyle = this.$exiter[0].style || null,
+      isVis = this.$exiter.is(':visible');
 
 
   $(window).on('scroll.zf.offcanvas', function(){
     var pageY = window.pageYOffset;
     elStyle.transform = 'translate(0,' + pageY + 'px)';
-    if(exitStyle){ exitStyle.transform = 'translate(0,' + pageY + 'px)'; }
+    if(exitStyle && isVis){ exitStyle.transform = 'translate(0,' + pageY + 'px)'; }
   });
   this.$element.trigger('stuck.zf.offcanvas');
 };
@@ -171,7 +203,8 @@ OffCanvas.prototype.close = function() {
    * Fires when the off-canvas menu opens.
    * @event OffCanvas#closed
    */
-  requestAnimationFrame(function() {
+   Foundation.Move(this.options.transitionTime, this.$element, function(){
+
     $('body').removeClass('is-off-canvas-open is-open-'+_this.options.position);
 
     _this.$element
