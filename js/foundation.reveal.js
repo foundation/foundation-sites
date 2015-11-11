@@ -75,7 +75,8 @@
     }
 
     // this.options.fullScreen = this.$element.hasClass('full');
-    if(this.options.fullScreen){
+    if(this.options.fullScreen || this.$element.hasClass('full')){
+      this.options.fullScreen = true;
       this.options.overlay = false;
     }
     if(this.options.overlay){
@@ -152,6 +153,7 @@
     var elePos = this.options.fullScreen ? 'reveal full' : (eleDims.height >= (0.5 * eleDims.windowDims.height)) ? 'reveal' : 'center';
 
     if(elePos === 'reveal full'){
+      console.log('full');
       //set to full height/width
       this.$element
           .offset(Foundation.GetOffsets(this.$element, null, elePos, this.options.vOffset))
@@ -257,8 +259,9 @@
       return true;
     });
 
-    if(!this.options.overlay && this.options.closeOnClick){
+    if(!this.options.overlay && this.options.closeOnClick && !this.options.fullScreen){
       $('body').on('click.zf.reveal', function(e){
+        // if()
           _this._close();
       });
     }
