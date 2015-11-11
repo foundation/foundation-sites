@@ -29,15 +29,27 @@ $dropdownmenu-min-width: 200px !default;
         &.is-down-arrow > a::after {
           @include css-triangle(5px, $anchor-color, down);
         }
-        &.is-right-arrow > a::after {
+        &.is-left-arrow > a::after {
           @include css-triangle(5px, $anchor-color, left);
           float: left;
           margin-left: 0;
           margin-right: 10px;
         }
-        &.is-left-arrow > a::after {
+        &.is-right-arrow > a::after {
           @include css-triangle(5px, $anchor-color, right);
         }
+      }
+
+      &.is-left-arrow.opens-inner .submenu{
+        right: 0;
+        left: auto;
+      }
+      &.is-right-arrow.opens-inner .submenu{
+        left: 0;
+        right: auto;
+      }
+      &.opens-inner .submenu {
+        top: 100%;
       }
     }
 
@@ -55,27 +67,28 @@ $dropdownmenu-min-width: 200px !default;
         width: 100%;
       }
 
-      &.is-right-arrow {
-        left: auto;
-        right: 100%;
-      }
-
       &.first-sub {
         top: 100%;
         left: 0;
         right: auto;
-
-        @if $dropdownmenu-arrows {
-          &.is-right-arrow{
-            left: auto;
-            right: 0;
-          }
-        }
       }
 
       &:not(.js-dropdown-nohover) > .has-submenu:hover > &,
       &.js-dropdown-active {
         display: block;
+      }
+    }
+
+    .has-submenu.opens-left .submenu {
+      left: auto;
+      right: 100%;
+    }
+
+    &.align-right {
+      .submenu.first-sub {
+        top: 100%;
+        left: auto;
+        right: 0;
       }
     }
 
@@ -89,13 +102,6 @@ $dropdownmenu-min-width: 200px !default;
       > li .submenu {
         top: 0;
         left: 100%;
-
-        @if $dropdownmenu-arrows {
-          &.is-right-arrow {
-            left: auto;
-            right: 100%;
-          }
-        }
       }
     }
   }
