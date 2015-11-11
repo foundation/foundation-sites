@@ -10,17 +10,15 @@
       return false;
     };
     this.do = function(ts){//timestamp returned from requestAnimationFrame
-
-      // console.log(prog, duration, start, ts);
       if(!ts || !start){ start = ts = window.performance.now(); }
       prog = ts - start;
+      // console.log(prog, ts, start);
       fn.apply(elem);//call the cb
       if(prog < duration){
         anim = window.requestAnimationFrame(_this.do, elem);
       }else{
         window.cancelAnimationFrame(anim);
-        elem.trigger('finished.zf.animate', [elem])
-            // .triggerHandler('finished.zf.animate', [elem]);
+        elem.trigger('finished.zf.animate', [elem]);
       }
     };
     window.requestAnimationFrame(this.do);

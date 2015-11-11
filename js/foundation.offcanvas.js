@@ -94,12 +94,14 @@ OffCanvas.prototype._events = function() {
     'keydown.zf.offcanvas': this._handleKeyboard.bind(this)
   });
 
-  $(window).on('close.zf.offcanvas', this.close.bind(this));
+  // $(window).on('close.zf.offcanvas', this.close.bind(this));
 
-  if (this.$exiter) {
-    this.$exiter.on('click.zf.offcanvas', function() {
-      $(window).trigger('close.zf.offcanvas');
-    });
+  if (this.$exiter.length) {
+    var _this = this;
+    this.$exiter.on({'click.zf.offcanvas': this.close.bind(this)});
+    // this.$exiter.on('click.zf.offcanvas', function() {
+    //   // $(window).trigger('close.zf.offcanvas', [_this.$element]);
+    // });
   }
 };
 OffCanvas.prototype._setMQChecker = function(){
@@ -143,7 +145,7 @@ OffCanvas.prototype.reveal = function(isRevealed){
  * @fires OffCanvas#opened
  */
 OffCanvas.prototype.open = function(event, trigger) {
-  if (this.$element.hasClass('is-open')) return;
+  if (this.$element.hasClass('is-open')) {console.log('Im open!');return;}
   var _this = this,
       $body = $(document.body);
 
@@ -199,7 +201,7 @@ OffCanvas.prototype.stick = function(){
  * @fires OffCanvas#closed
  */
 OffCanvas.prototype.close = function() {
-  if (!this.$element.hasClass('is-open')) return;
+  if (!this.$element.hasClass('is-open')){console.log('Im not open!'); return;}
 
   var _this = this;
 

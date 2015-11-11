@@ -231,6 +231,12 @@ $.fn.foundation = foundation;
     };
     window.cancelAnimationFrame = clearTimeout;
   }
+  window.performance = (window.performance || {
+    start: Date.now(),
+    now: function(){
+        return Date.now() - this.start;
+    }
+  });
 })();
 
 // Polyfill to get the name of a function in IE9
