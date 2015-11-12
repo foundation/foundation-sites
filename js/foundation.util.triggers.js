@@ -192,10 +192,12 @@
 		function mutationObjectCallback(mutationRecordsList) {	
 			if(timer){ clearTimeout(timer); }
 
-          	timer = setTimeout(function() {
-				for(i = 0, len = nodes.length; i < len; i++){
-				  var $elem = $(nodes[i])
-				  $elem.triggerHandler('mutate.zf.trigger', [$elem]);
+			timer = setTimeout(function() {
+				for (i = 0, len = nodes.length; i < len; i++) {
+					var $elem = $(nodes[i]);
+					observer.disconnect();
+					$elem.triggerHandler('mutate.zf.trigger', [$elem]);
+					observer.observe(target, config);
 				}
 			}, debounce || 50);
 		};
