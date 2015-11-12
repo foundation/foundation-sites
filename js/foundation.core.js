@@ -246,6 +246,9 @@ function functionName(fn) {
     var results = (funcNameRegex).exec((fn).toString());
     return (results && results.length > 1) ? results[1].trim() : "";
   }
+  else if (fn.prototype === undefined) {
+    return fn.constructor.name;
+  }
   else {
     return fn.prototype.constructor.name;
   }

@@ -55,7 +55,7 @@
    * @param {Objects} functions - collection of functions that are to be executed
    */
   var handleKey = function(event, component, functions) {
-    var commandList = commands[getComponentName(component)],
+    var commandList = commands[Foundation.getFnName(component)],
       keyCode = parseKey(event),
       cmds,
       command,
@@ -98,14 +98,4 @@
     commands[componentName] = cmds;
   };
   Foundation.Keyboard.register = register;
-
-  /**
-   * Returns the component name name
-   * @param {Object} component - Foundation component, e.g. Slider or Reveal
-   * @return String componentName
-   */
-  var getComponentName = function(component) {
-    return (/function (.+)\(/).exec((component).constructor.toString())[1] || '';
-  };
-
 }(jQuery, window.Foundation);
