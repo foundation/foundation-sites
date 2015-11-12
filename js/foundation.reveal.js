@@ -149,25 +149,25 @@
    * @private
    */
   Reveal.prototype._setPosition = function(cb){
-    var eleDims = Foundation.GetDimensions(this.$element);
+    var eleDims = Foundation.Box.GetDimensions(this.$element);
     var elePos = this.options.fullScreen ? 'reveal full' : (eleDims.height >= (0.5 * eleDims.windowDims.height)) ? 'reveal' : 'center';
 
     if(elePos === 'reveal full'){
       console.log('full');
       //set to full height/width
       this.$element
-          .offset(Foundation.GetOffsets(this.$element, null, elePos, this.options.vOffset))
+          .offset(Foundation.Box.GetOffsets(this.$element, null, elePos, this.options.vOffset))
           .css({
             'height': eleDims.windowDims.height,
             'width': eleDims.windowDims.width
           });
-    }else if(!Foundation.MediaQuery.atLeast('medium') || !Foundation.ImNotTouchingYou(this.$element, null, true, false)){
+    }else if(!Foundation.MediaQuery.atLeast('medium') || !Foundation.Box.ImNotTouchingYou(this.$element, null, true, false)){
       //if smaller than medium, resize to 100% width minus any custom L/R margin
       this.$element
           .css({
             'width': eleDims.windowDims.width - (this.options.hOffset * 2)
           })
-          .offset(Foundation.GetOffsets(this.$element, null, 'center', this.options.vOffset, this.options.hOffset));
+          .offset(Foundation.Box.GetOffsets(this.$element, null, 'center', this.options.vOffset, this.options.hOffset));
       //flag a boolean so we can reset the size after the element is closed.
       this.changedSize = true;
     }else{
@@ -176,7 +176,7 @@
             'max-height': eleDims.windowDims.height - (this.options.vOffset * (this.options.btmOffsetPct / 100 + 1)),
             'width': ''
           })
-          .offset(Foundation.GetOffsets(this.$element, null, elePos, this.options.vOffset));
+          .offset(Foundation.Box.GetOffsets(this.$element, null, elePos, this.options.vOffset));
           //the max height based on a percentage of vertical offset plus vertical offset
     }
 

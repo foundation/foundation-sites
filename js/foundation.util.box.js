@@ -9,13 +9,14 @@
    * @default if no parent object passed, detects collisions with `window`.
    * @returns {Boolean} - true if collision free, false if a collision in any direction.
    */
-  function ImNotTouchingYou(element, parent, lrOnly, tbOnly){
-    var eleDims = dims(element),
+  var ImNotTouchingYou = function(element, parent, lrOnly, tbOnly){
+    var eleDims = GetDimensions(element),
     // var eleDims = GetDimensions(element),
         top, bottom, left, right;
 
     if(parent){
       // var parDims = GetDimensions(parent);
+      var parDims = GetDimensions(parent);
 
       bottom = (eleDims.offset.top + eleDims.height <= parDims.height + parDims.offset.top);
       top    = (eleDims.offset.top >= parDims.offset.top);
@@ -33,7 +34,7 @@
     if(tbOnly){ return top === bottom === true; }
 
     return allDirs.indexOf(false) === -1;
-  }
+  };
 
   /**
    * Uses jQuery methods to return an object of dimension values.
@@ -42,31 +43,31 @@
    * @returns {Object} - nested object of integer pixel values
    * TODO - if element is window, return only those values.
    */
-  function GetDimensions(element){
-    // dims(element, element[0]);
-    var $window = $(window);
-    var a =  {
-      width: element.outerWidth(),
-      height: element.outerHeight(),
-      offset: element.offset(),
-      parentDims: {
-        width: element.parent().outerWidth(),
-        height: element.parent().outerHeight(),
-        offset: element.parent().offset()
-      },
-      windowDims: {
-        width: $window.width(),
-        height: $window.height(),
-        offset: {
-          top: $window.scrollTop(),
-          left: $window.scrollLeft()
-        }
-      }
-    };
-    // console.log(dims(element), a);
-    return a;
-  }
-  function dims(elem, test){
+  // function GetDimensions(element){
+  //   // GetDimensions(element, element[0]);
+  //   var $window = $(window);
+  //   var a =  {
+  //     width: element.outerWidth(),
+  //     height: element.outerHeight(),
+  //     offset: element.offset(),
+  //     parentDims: {
+  //       width: element.parent().outerWidth(),
+  //       height: element.parent().outerHeight(),
+  //       offset: element.parent().offset()
+  //     },
+  //     windowDims: {
+  //       width: $window.width(),
+  //       height: $window.height(),
+  //       offset: {
+  //         top: $window.scrollTop(),
+  //         left: $window.scrollLeft()
+  //       }
+  //     }
+  //   };
+  //   // console.log(GetDimensions(element), a);
+  //   return a;
+  // }
+  var GetDimensions = function(elem, test){
     elem = elem.length ? elem[0] : elem;
     var rect = elem.getBoundingClientRect(),
         parRect = elem.parentNode.getBoundingClientRect(),
@@ -111,10 +112,10 @@
    * @param {Boolean} isOverflow - if a collision event is detected, sets to true to default the element to full width - any desired offset.
    * TODO alter/rewrite to work with `em` values as well/instead of pixels
    */
-  function GetOffsets(element, anchor, position, vOffset, hOffset, isOverflow){
-    var $eleDims = dims(element),
+  var GetOffsets = function(element, anchor, position, vOffset, hOffset, isOverflow){
+    var $eleDims = GetDimensions(element),
     // var $eleDims = GetDimensions(element),
-        $anchorDims = anchor ? dims(anchor) : null;
+        $anchorDims = anchor ? GetDimensions(anchor) : null;
         // $anchorDims = anchor ? GetDimensions(anchor) : null;
     switch(position){
       case 'top':
@@ -183,8 +184,12 @@
         };
     }
   }
-
-  Foundation.ImNotTouchingYou = ImNotTouchingYou;
-  Foundation.GetDimensions = dims;
-  Foundation.GetOffsets = GetOffsets;
+  Foundation.Box = {
+    ImNotTouchingYou: ImNotTouchingYou,
+    GetDimensions: GetDimensions,
+    GetOffsets: GetOffsets
+  };
+  // Foundation.ImNotTouchingYou = ImNotTouchingYou;
+  // Foundation.GetDimensions = GetDimensions;
+  // Foundation.GetOffsets = GetOffsets;
 }(jQuery, window.Foundation, window);

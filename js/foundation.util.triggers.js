@@ -135,7 +135,7 @@
           timer = setTimeout(function(){
 
             for(i = 0, len = nodes.length; i < len; i++){
-              var $elem = $(nodes[i])
+              var $elem = $(nodes[i]);
               $elem.triggerHandler('resizeme.zf.trigger', [$elem]);
             }
           }, debounce || 10);//default time to emit resize event

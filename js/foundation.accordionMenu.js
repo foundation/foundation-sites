@@ -18,7 +18,7 @@
     this.$element = element;
     this.options = $.extend({}, AccordionMenu.defaults, this.$element.data(), options);
 
-    Foundation.FeatherNest(this.$element, 'accordion');
+    Foundation.Nest.Feather(this.$element, 'accordion');
 
     this._init();
 
@@ -45,9 +45,9 @@
   AccordionMenu.defaults = {
     slideSpeed: 250,
     wrapOnKeys: false,
-    multiOpen: false
+    multiOpen: true
 
-  }
+  };
 
   /**
    * Initializes the accordion menu by hiding all nested menus.
@@ -170,7 +170,7 @@
           e.stopImmediatePropagation();
         }
       });
-    })//.attr('tabindex', 0);
+    });//.attr('tabindex', 0);
   };
   AccordionMenu.prototype.hideAll = function(){
     this.$element.find('[data-submenu]').slideUp(this.options.slideSpeed);
@@ -199,7 +199,7 @@
       .parent('.has-submenu').attr({'aria-expanded': true, 'aria-selected': true});
 
       Foundation.Move(this.options.slideSpeed, $target, function(){
-        $target.slideDown(_this.options.slideSpeed)
+        $target.slideDown(_this.options.slideSpeed);
       });
     /**
      * Fires when the menu is done collapsing up.
@@ -214,9 +214,16 @@
    * @fires AccordionMenu#up
    */
   AccordionMenu.prototype.up = function($target) {
-    $target.slideUp(this.options.slideSpeed, function() {
-      $target.find('[data-submenu]').slideUp(0).attr('aria-hidden', true);
-    }).attr('aria-hidden', true).parent('.has-submenu').attr({'aria-expanded': false, 'aria-selected': false});
+    var _this = this;
+    Foundation.Move(this.options.slideSpeed, $target, function(){
+      $target.slideUp(_this.options.slideSpeed);
+    });
+    $target.find('[data-submenu]').slideUp(0).attr('aria-hidden', true)
+           .attr('aria-hidden', true).parent('.has-submenu')
+           .attr({'aria-expanded': false, 'aria-selected': false});
+    // $target.slideUp(this.options.slideSpeed, function() {
+    //   $target.find('[data-submenu]').slideUp(0).attr('aria-hidden', true);
+    // }).attr('aria-hidden', true).parent('.has-submenu').attr({'aria-expanded': false, 'aria-selected': false});
 
     /**
      * Fires when the menu is done collapsing up.
@@ -242,4 +249,4 @@
   };
 
   Foundation.plugin(AccordionMenu);
-}(jQuery)
+}(jQuery, window.Foundation);

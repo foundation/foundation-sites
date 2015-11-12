@@ -18,7 +18,7 @@
     this.$element = element;
     this.options = $.extend({}, DropdownMenu.defaults, this.$element.data(), options);
 
-    Foundation.FeatherNest(this.$element, 'dropdown');
+    Foundation.Nest.Feather(this.$element, 'dropdown');
 
     this._init();
 
@@ -312,7 +312,7 @@
 
 
     //break this into own function
-    var clear = Foundation.ImNotTouchingYou($sub, null, true);
+    var clear = Foundation.Box.ImNotTouchingYou($sub, null, true);
     if(!clear){
       if(this.options.alignment === 'left'){
         $sub.removeClass('is-left-arrow').addClass('is-right-arrow');
@@ -405,8 +405,8 @@
   };
   Foundation.plugin(DropdownMenu);
 
-  function checkClass($elem){
+  var checkClass = function($elem){
     return $elem.hasClass('is-active');
-  }
+  };
 
 }(Foundation, jQuery);

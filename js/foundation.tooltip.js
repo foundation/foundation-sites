@@ -157,15 +157,15 @@
    */
   Tooltip.prototype.setPosition = function(){
     var position = this.getPositionClass(this.template),
-        $tipDims = Foundation.GetDimensions(this.template),
-        $anchorDims = Foundation.GetDimensions(this.$element),
+        $tipDims = Foundation.Box.GetDimensions(this.template),
+        $anchorDims = Foundation.Box.GetDimensions(this.$element),
         direction = (position === 'left' ? 'left' : ((position === 'right') ? 'left' : 'top')),
         param = (direction === 'top') ? 'height' : 'width',
         offset = (param === 'height') ? this.options.vOffset : this.options.hOffset,
         _this = this;
 
-    if(($tipDims.width >= $tipDims.windowDims.width) || (!this.counter && !Foundation.ImNotTouchingYou(this.template))){
-      this.template.offset(Foundation.GetOffsets(this.template, this.$element, 'center bottom', this.options.vOffset, this.options.hOffset, true)).css({
+    if(($tipDims.width >= $tipDims.windowDims.width) || (!this.counter && !Foundation.Box.ImNotTouchingYou(this.template))){
+      this.template.offset(Foundation.Box.GetOffsets(this.template, this.$element, 'center bottom', this.options.vOffset, this.options.hOffset, true)).css({
       // this.$element.offset(Foundation.GetOffsets(this.template, this.$element, 'center bottom', this.options.vOffset, this.options.hOffset, true)).css({
         'width': $anchorDims.windowDims.width - (this.options.hOffset * 2),
         'height': 'auto'
@@ -173,9 +173,9 @@
       return false;
     }
 
-    this.template.offset(Foundation.GetOffsets(this.template, this.$element,'center ' + (position || 'bottom'), this.options.vOffset, this.options.hOffset));
+    this.template.offset(Foundation.Box.GetOffsets(this.template, this.$element,'center ' + (position || 'bottom'), this.options.vOffset, this.options.hOffset));
 
-    while(!Foundation.ImNotTouchingYou(this.template) && this.counter){
+    while(!Foundation.Box.ImNotTouchingYou(this.template) && this.counter){
       this.reposition(position);
       this.setPosition();
     }

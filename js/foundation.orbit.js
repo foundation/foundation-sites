@@ -95,12 +95,13 @@
    */
   Orbit.prototype.geoSync = function(){
     var _this = this;
-    this.timer = new Foundation.NanuNanu(
+    this.timer = new Foundation.Timer(
                       this.$element,
-                      {duration: this.options.timerDelay},
+                      {duration: this.options.timerDelay,
+                       infinite: false},
                       function(){
                         _this.changeSlide(true);
-    });
+                      });
     this.timer.start();
   };
   /**
@@ -165,11 +166,9 @@
       this.$slides.off('swipeleft.zf.orbit swiperight.zf.orbit')
       .on('swipeleft.zf.orbit', function(e){
         e.preventDefault();
-        _this.timer.restart();
         _this.changeSlide(true);
       }).on('swiperight.zf.orbit', function(e){
         e.preventDefault();
-        _this.timer.restart();
         _this.changeSlide(false);
       });
     }
@@ -193,19 +192,11 @@
 
     if(this.options.navButtons){
       var $controls = this.$element.find('.' + this.options.nextClass + ', .' + this.options.prevClass);
-      if(this.options.accessible){
-        $controls.attr('tabindex', 0);
+      $controls.attr('tabindex', 0)
         //also need to handle enter/return and spacebar key presses
-      }
-      $controls.on('click.zf.orbit touchend.zf.orbit', function(){
-        if($(this).hasClass(_this.options.nextClass)){
-          _this.changeSlide(true);
-          _this.timer.restart();
-        }else{
-          _this.changeSlide(false);
-          _this.timer.restart();
-        }
-      });
+               .on('click.zf.orbit touchend.zf.orbit', function(){
+                 _this.changeSlide($(this).hasClass(_this.options.nextClass));
+               });
     }
 
     if(this.options.bullets){
@@ -223,11 +214,9 @@
       // handle keyboard event with keyboard util
       Foundation.Keyboard.handleKey(e, _this, {
         next: function() {
-          _this.timer.restart();
           _this.changeSlide(true);
         },
         previous: function() {
-          _this.timer.restart();
           _this.changeSlide(false);
         },
         handled: function() { // if bullet is focused, make sure focus moves
@@ -285,7 +274,9 @@
         this.options['animOutTo' + dirOut],
         function(){
           $curSlide.removeAttr('aria-live');
-          _this.timer.restart();
+          if(_this.options.autoPlay){
+            _this.timer.restart();
+          }
           //do stuff?
           /**
            * Triggers when the slide has finished animating in.

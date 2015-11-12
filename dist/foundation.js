@@ -594,7 +594,7 @@ function parseStyleToObject(str) {
 !function($, Foundation){
   'use strict';
 
-  function FeatherNest(menu, type){
+  function Nest.Feather(menu, type){
     menu.attr('role', 'menubar');
     var items = menu.find('li').attr({'role': 'menuitem', 'tabindex': 0}),
         type = type || 'zf',
@@ -614,7 +614,7 @@ function parseStyleToObject(str) {
     });
     return;
   }
-  Foundation.FeatherNest = FeatherNest;
+  Foundation.Nest.Feather = Nest.Feather;
 }(jQuery, window.Foundation);
 
 /**
@@ -2013,7 +2013,7 @@ Foundation.IFeelYou = closemeListener;
     this.$element = element;
     this.options = $.extend({}, AccordionMenu.defaults, this.$element.data(), options);
 
-    Foundation.FeatherNest(this.$element, 'accordion');
+    Foundation.Nest.Feather(this.$element, 'accordion');
 
     this._init();
 
@@ -2258,7 +2258,7 @@ Foundation.IFeelYou = closemeListener;
     this.$element = element;
     this.options = $.extend({}, Drilldown.defaults, this.$element.data(), options);
 
-    Foundation.FeatherNest(this.$element, 'drilldown');
+    Foundation.Nest.Feather(this.$element, 'drilldown');
 
     this._init();
 
@@ -2943,7 +2943,7 @@ Foundation.IFeelYou = closemeListener;
     this.$element = element;
     this.options = $.extend({}, DropdownMenu.defaults, this.$element.data(), options);
 
-    Foundation.FeatherNest(this.$element, 'dropdown');
+    Foundation.Nest.Feather(this.$element, 'dropdown');
 
     this._init();
 
@@ -4378,7 +4378,7 @@ Foundation.plugin(OffCanvas);
    */
   Orbit.prototype.geoSync = function(){
     var _this = this;
-    this.timer = new Foundation.NanuNanu(
+    this.timer = new Foundation.Timer(
                       this.$element,
                       {duration: this.options.timerDelay},
                       function(){
@@ -6915,7 +6915,7 @@ Foundation.plugin(ResponsiveToggle);
     };
   }
 
-  Foundation.NanuNanu = Timer;
+  Foundation.Timer = Timer;
 
 }(jQuery, window.Foundation);
 
