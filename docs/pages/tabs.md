@@ -9,7 +9,7 @@ js: js/foundation.tabs.js
 <div class="alert callout">
   <h5>Known Issues</h5>
   <ul>
-    <li>Option: set `.tabs-content` container to fixed height and width based on largest interior element to prevent resizing on content open?</li>
+    <li>Feedback Request.</li>
   </ul>
 </div>
 

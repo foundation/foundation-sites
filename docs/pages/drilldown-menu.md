@@ -9,7 +9,6 @@ js: js/foundation.drilldown.js
 <div class="alert callout">
   <h5>Known Issues</h5>
   <ul>
-    <li>Needs accessibility compliant keyboard access bindings.</li>
     <li>Needs an option and method for breadcrumbing? Feedback request.</li>
     <li>Needs directional arrows for items with submenus.</li>
 </div>
