@@ -263,7 +263,6 @@
       $('body').on('click.zf.reveal', function(e){
         // if()
           _this._close();
-          console.log('Closing here');
       });
     }
     if(this.options.closeOnEsc){
