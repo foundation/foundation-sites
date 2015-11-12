@@ -52,6 +52,7 @@
     resizeListener();
     scrollListener();
     closemeListener();
+	dommutationobserver();
   });
 
   /**
@@ -160,6 +161,45 @@
       });
     }
   }
+  function dommutationobserver(debounce) {
+		var timer, nodes = $('[data-mutate]');
+	
+		var MutationObserver = (function () {
+			var prefixes = ['WebKit', 'Moz', 'O', 'Ms', '']
+				for (var i=0; i < prefixes.length; i++) {
+					if (prefixes[i] + 'MutationObserver' in window) {
+						 return window[prefixes[i] + 'MutationObserver'];
+					}
+				}
+			return false;
+		}());
+		
+		
+		//check for changes to the DOM
+		var target = document.body;
+		var observer;
+		var config = { attributes: true, childList: true, characterData: true, subtree:true };
+		
+		if (MutationObserver) {
+			// create an observer instance
+			observer = new MutationObserver(mutationObjectCallback);
+		}
+		
+		if (MutationObserver) {
+			observer.observe(target, config);
+		}
+		
+		function mutationObjectCallback(mutationRecordsList) {	
+			if(timer){ clearTimeout(timer); }
+
+          	timer = setTimeout(function() {
+				for(i = 0, len = nodes.length; i < len; i++){
+				  var $elem = $(nodes[i])
+				  $elem.triggerHandler('mutate.zf.trigger', [$elem]);
+				}
+			}, debounce || 50);
+		};
+	}
 // ------------------------------------
 
   // [PH]
@@ -167,5 +207,6 @@
 Foundation.IHearYou = resizeListener;
 Foundation.ISeeYou = scrollListener;
 Foundation.IFeelYou = closemeListener;
+Foundation.IWatchYou = dommutationobserver;
 
 }(window.Foundation, window.jQuery)
