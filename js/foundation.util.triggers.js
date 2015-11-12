@@ -160,7 +160,6 @@
           }, debounce || 50);//default time to emit scroll event
       });
     }
-<<<<<<< HEAD
   }
   function dommutationobserver(debounce) {
 		var timer, nodes = $('[data-mutate]');
@@ -202,9 +201,6 @@
 				}
 			}, debounce || 50);
 		};
-	
-=======
->>>>>>> zurb/develop
   };
 // ------------------------------------
 
