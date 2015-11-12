@@ -40,7 +40,8 @@
       'aria-controls': $id,
       'data-is-focus': false,
       'data-yeti-box': $id,
-      'aria-haspopup': true
+      'aria-haspopup': true,
+      'aria-expanded': false
       // 'data-resize': $id
     });
 
@@ -50,7 +51,8 @@
     this.$element.attr({
       'aria-hidden': 'true',
       'data-yeti-box': $id,
-      'data-resize': $id
+      'data-resize': $id,
+      'aria-labelledby': this.$anchor[0].id || Foundation.GetYoDigits(6, 'dd-anchor')
     });
     this._events();
   };
@@ -110,6 +112,7 @@
    * @private
    */
   Dropdown.prototype.setPosition = function(){
+    if(this.$anchor.attr('aria-expanded') === 'false'){ return false; }
     var position = this.getPositionClass(),
         $eleDims = Foundation.GetDimensions(this.$element),
         $anchorDims = Foundation.GetDimensions(this.$anchor),
@@ -165,17 +168,18 @@
    * @fires Dropdown#show
    */
   Dropdown.prototype.open = function(){
+    // var _this = this;
     /**
      * Fires to close other open dropdowns
      * @event Dropdown#closeme
      */
     this.$element.trigger('closeme.zf.dropdown', this.$element.attr('id'));
-    var _this = this;
-    this.$element.show();
+    this.$anchor.addClass('hover')
+        .attr({'aria-expanded': true});
+    // this.$element/*.show()*/;
     this.setPosition();
     this.$element.addClass('is-open')
-        .attr('aria-hidden', 'false');
-    this.$anchor.addClass('hover');
+        .attr({'aria-hidden': false});
     /**
      * Fires once the dropdown is visible.
      * @event Dropdown#show
@@ -196,15 +200,16 @@
       return false;
     }
     this.$element.removeClass('is-open')
-        .attr('aria-hidden', 'true');
-    this.$anchor.removeClass('hover');
+        .attr({'aria-hidden': true});
+    this.$anchor.removeClass('hover')
+        .attr('aria-expanded', false).focus();
     if(this.classChanged){
       var curPositionClass = this.getPositionClass();
       if(curPositionClass){
         this.$element.removeClass(curPositionClass);
       }
       this.$element.addClass(this.options.positionClass)
-          .hide().css({height: '', width: ''});
+          /*.hide()*/.css({height: '', width: ''});
       this.classChanged = false;
       this.counter = 4;
       this.usedPositions.length = 0;
@@ -232,7 +237,7 @@
     this.$anchor.off('.zf.dropdown');
 
     Foundation.unregisterPlugin(this);
-  }
+  };
 
   Foundation.plugin(Dropdown);
 }(jQuery, window.Foundation);

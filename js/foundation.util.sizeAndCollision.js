@@ -42,6 +42,7 @@
    * TODO - if element is window, return only those values.
    */
   function GetDimensions(element){
+    dims(element, element[0]);
     var $window = $(window);
     return {
       width: element.outerWidth(),
@@ -62,6 +63,13 @@
       }
     };
   }
+  // function dims(elem, test){
+  //   elem = elem.length ? elem[0] : elem;
+  //   var rect = elem.getBoundingClientRect(),
+  //       parRect = elem.parentNode.getBoundingClientRect(),
+  //       winRect = document.body.getBoundingClientRect();
+  //       console.log($(window).height(), winRect.height);
+  // }
   /**
    * Returns an object of top and left integer pixel values for dynamically rendered elements,
    * such as: Tooltip, Reveal, and Dropdown
