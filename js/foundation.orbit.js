@@ -77,7 +77,7 @@
     if(this.options.autoPlay){
       this.geoSync();
     }
-    if (this.options.accessible) { // allow wrapper to be focusable to enable arrow navigation
+    if(this.options.accessible){ // allow wrapper to be focusable to enable arrow navigation
       this.$wrapper.attr('tabindex', 0);
     }
   };
@@ -159,8 +159,8 @@
     var _this = this;
 
     //***************************************
-    //**currently using jQuery Mobile event**
-    //**see comments below, needs to change**
+    //**Now using custom event - thanks to:**
+    //**      Yohai Ararat of Toronto      **
     //***************************************
     if(this.options.swipe){
       this.$slides.off('swipeleft.zf.orbit swiperight.zf.orbit')

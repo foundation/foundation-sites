@@ -39,6 +39,7 @@
     wrapper: '<div></div>',
     closeOnClick: false,
     holdOpen: false
+    // transitionendEvt: Foundation.Prefixer('transitionend')
   };
   /**
    * Initializes the drilldown by creating jQuery collections of elements

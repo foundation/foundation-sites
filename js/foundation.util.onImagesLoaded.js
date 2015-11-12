@@ -5,7 +5,7 @@
    * @param {Object} images - Image(s) to check if loaded.
    * @param {Func} callback - Function to execute when image is fully loaded.
    */
-  function onImagesLoaded(images, callback) {
+  var onImagesLoaded = function(images, callback){
     var self = this,
         unloaded = images.length;
 
@@ -18,7 +18,7 @@
       if (unloaded === 0) {
         callback();
       }
-    }
+    };
 
     images.each(function() {
       if (this.complete) {
@@ -33,6 +33,6 @@
         });
       }
     });
-  }
+  };
   Foundation.onImagesLoaded = onImagesLoaded;
 }(jQuery, window.Foundation);

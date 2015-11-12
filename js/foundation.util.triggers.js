@@ -93,7 +93,7 @@
   // }
 
   //******** only fires this function once on load, if there's something to watch ********
-  function closemeListener(pluginName){
+  var closemeListener = function(pluginName){
     var yetiBoxes = $('[data-yeti-box]'),
         plugNames = ['dropdown', 'tooltip', 'reveal'];
 
@@ -123,8 +123,8 @@
 
       });
     }
-  }
-  function resizeListener(debounce){
+  };
+  var resizeListener = function(debounce){
     var timer, i, len,
         nodes = $('[data-resize]');
     if(nodes.length){
@@ -141,8 +141,8 @@
           }, debounce || 10);//default time to emit resize event
       });
     }
-  }
-  function scrollListener(debounce){
+  };
+  var scrollListener = function(debounce){
     var timer, i, len,
         nodes = $('[data-scroll]');
     if(nodes.length){
@@ -153,13 +153,13 @@
           timer = setTimeout(function(){
 
             for(i = 0, len = nodes.length; i < len; i++){
-              var $elem = $(nodes[i])
+              var $elem = $(nodes[i]);
               $elem.triggerHandler('scrollme.zf.trigger', [$elem, window.scrollY]);
             }
           }, debounce || 50);//default time to emit scroll event
       });
     }
-  }
+  };
 // ------------------------------------
 
   // [PH]
@@ -168,4 +168,4 @@ Foundation.IHearYou = resizeListener;
 Foundation.ISeeYou = scrollListener;
 Foundation.IFeelYou = closemeListener;
 
-}(window.Foundation, window.jQuery)
+}(window.Foundation, window.jQuery);
