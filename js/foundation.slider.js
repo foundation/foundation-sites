@@ -120,7 +120,6 @@
    */
   Slider.prototype._setHandlePos = function($hndl, location, noInvert, cb){
   //might need to alter that slightly for bars that will have odd number selections.
-    // console.log(str, cb);
     location = parseFloat(location);//on input change events, convert string to number...grumble.
     // prevent slider from running out of bounds
     if(location < this.options.start){ location = this.options.start; }

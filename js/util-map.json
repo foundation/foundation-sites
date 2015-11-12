@@ -5,24 +5,28 @@
   ],
   "accordionMenu": [
     "foundation.util.keyboard.js",
-    "foundation.util.animationFrame.js"
+    "foundation.util.animationFrame.js",
+    "foundation.util.nest.js"
   ],
   "drilldown": [
     "foundation.util.keyboard.js",
-    "foundation.util.animationFrame.js"
+    "foundation.util.animationFrame.js",
+    "foundation.util.nest.js"
   ],
-  "dropdown-menu": [
+  "dropdownMenu": [
     "foundation.util.keyboard.js",
     "foundation.util.animationFrame.js",
-    "foundation.util.size-and-collision.js"
+    "foundation.util.box.js",
+    "foundation.util.nest.js"
   ],
   "dropdown": [
     "foundation.util.keyboard.js",
-    "foundation.util.size-and-collision.js",
+    "foundation.util.box.js",
     "foundation.util.triggers.js"
   ],
   "interchange": [
-    "foundation.util.triggers.js"
+    "foundation.util.triggers.js",
+    "foundation.util.onImagesLoaded.js"
   ],
   "magellan": [
     "foundation.util.animationFrame.js"
@@ -35,20 +39,22 @@
     "foundation.util.animationFrame.js",
     "foundation.util.motion.js",
     "foundation.util.timer.js",
-    "foundation.util.keyboard.js"
+    "foundation.util.keyboard.js",
+    "foundation.util.onImagesLoaded.js"
   ],
   "responsiveMenu": [
     "foundation.util.triggers.js",
     "foundation.util.mediaQuery.js",
     "foundation.accordionMenu.js",
     "foundation.drilldown.js",
-    "foundation.dropdown-menu.js"
+    "foundation.dropdownMenu.js",
+    "foundation.util.nest.js"
   ],
   "responsiveToggle": [
     "foundation.util.mediaQuery.js"
   ],
   "reveal": [
-    "foundation.util.size-and-collision.js",
+    "foundation.util.box.js",
     "foundation.util.motion.js",
     "foundation.util.triggers.js",
     "foundation.util.mediaQuery.js",
@@ -64,13 +70,14 @@
     "foundation.util.mediaQuery.js"
   ],
   "tabs": [
-    "foundation.util.keyboard.js"
+    "foundation.util.keyboard.js",
+    "foundation.util.onImagesLoaded.js"
   ],
   "toggler": [
     "foundation.util.motion.js"
   ],
   "tooltip": [
-    "foundation.util.size-and-collision.js",
+    "foundation.util.box.js",
     "foundation.util.triggers.js",
     "foundation.util.mediaQuery.js",
     "foundation.util.animationFrame.js"

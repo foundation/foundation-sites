@@ -17,7 +17,7 @@
     this.$element = element;
     this.options = $.extend({}, Drilldown.defaults, this.$element.data(), options);
 
-    Foundation.FeatherNest(this.$element, 'drilldown');
+    Foundation.Nest.Feather(this.$element, 'drilldown');
 
     this._init();
 
@@ -39,6 +39,7 @@
     wrapper: '<div></div>',
     closeOnClick: false,
     holdOpen: false
+    // transitionendEvt: Foundation.Prefixer('transitionend')
   };
   /**
    * Initializes the drilldown by creating jQuery collections of elements
@@ -291,7 +292,7 @@
    */
   Drilldown.prototype.destroy = function(){
     this._hideAll();
-    Foundation.BurnNest(this.$element, 'drilldown');
+    Foundation.Nest.Burn(this.$element, 'drilldown');
     this.$element.unwrap()
                  .find('.js-drilldown-back').remove()
                  .end().find('.is-active, .is-closing, .is-drilldown-sub').removeClass('is-active is-closing is-drilldown-sub')

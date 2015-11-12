@@ -9,7 +9,7 @@ js: js/foundation.slider.js
 <div class="alert callout">
   <h5>Known Issues</h5>
   <ul>
-    <li>Vertical orientation isn't smooth on Windows Phone.</li>
+    <li>Feedback Requested.</li>
   </ul>
 </div>
 

@@ -114,16 +114,15 @@
   Dropdown.prototype.setPosition = function(){
     if(this.$anchor.attr('aria-expanded') === 'false'){ return false; }
     var position = this.getPositionClass(),
-        $eleDims = Foundation.GetDimensions(this.$element),
-        $anchorDims = Foundation.GetDimensions(this.$anchor),
+        $eleDims = Foundation.Box.GetDimensions(this.$element),
+        $anchorDims = Foundation.Box.GetDimensions(this.$anchor),
         _this = this,
         direction = (position === 'left' ? 'left' : ((position === 'right') ? 'left' : 'top')),
         param = (direction === 'top') ? 'height' : 'width',
         offset = (param === 'height') ? this.options.vOffset : this.options.hOffset;
 
-    // console.log($eleDims.width >= $eleDims.windowDims.width);
-    if(($eleDims.width >= $eleDims.windowDims.width) || (!this.counter && !Foundation.ImNotTouchingYou(this.$element))){
-      this.$element.offset(Foundation.GetOffsets(this.$element, this.$anchor, 'center bottom', this.options.vOffset, this.options.hOffset, true)).css({
+    if(($eleDims.width >= $eleDims.windowDims.width) || (!this.counter && !Foundation.Box.ImNotTouchingYou(this.$element))){
+      this.$element.offset(Foundation.Box.GetOffsets(this.$element, this.$anchor, 'center bottom', this.options.vOffset, this.options.hOffset, true)).css({
         'width': $eleDims.windowDims.width - (this.options.hOffset * 2),
         'height': 'auto',
       });
@@ -131,9 +130,9 @@
       return false;
     }
 
-    this.$element.offset(Foundation.GetOffsets(this.$element, this.$anchor, position, this.options.vOffset, this.options.hOffset));
+    this.$element.offset(Foundation.Box.GetOffsets(this.$element, this.$anchor, position, this.options.vOffset, this.options.hOffset));
 
-    while(!Foundation.ImNotTouchingYou(this.$element) && this.counter){
+    while(!Foundation.Box.ImNotTouchingYou(this.$element) && this.counter){
       this.reposition(position);
       this.setPosition();
     }

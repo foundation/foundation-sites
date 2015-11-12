@@ -1,5 +1,5 @@
 !function($, Foundation, window){
-  function Move(duration, elem, fn){
+   var Move = function(duration, elem, fn){
     var anim, prog, start = null, _this = this;
     this.dont = function(){
       if(anim !== undefined){
@@ -22,6 +22,6 @@
       }
     };
     window.requestAnimationFrame(this.do);
-  }
+  };
   Foundation.Move = Move;
 }(jQuery, window.Foundation, window);

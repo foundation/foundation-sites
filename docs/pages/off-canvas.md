@@ -10,9 +10,7 @@ tags:
 <div class="callout alert">
   <h4>Known Issues</h4>
   <ul>
-    <li>The right off-canvas menu jitters when it opens.</li>
     <li>The right off-canvas menu is not properly hiding on mobile on init.</li>
-    <li>Menus should not force a <code>scrollTop()</code>?</li>
     <li>Open menus should trap focus.</li>
   </ul>
 </div>

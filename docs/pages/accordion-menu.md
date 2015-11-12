@@ -8,7 +8,6 @@ description: Change a basic vertical Menu into a expandable accordion menu with 
 <div class="alert callout">
   <h5>Known Issues</h5>
   <ul>
-    <li>Needs accessibility compliant keyboard access bindings.</li>
     <li>Needs directional arrows.</li>
   </ul>
 </div>

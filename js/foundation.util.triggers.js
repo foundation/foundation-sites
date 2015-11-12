@@ -94,7 +94,7 @@
   // }
 
   //******** only fires this function once on load, if there's something to watch ********
-  function closemeListener(pluginName){
+  var closemeListener = function(pluginName){
     var yetiBoxes = $('[data-yeti-box]'),
         plugNames = ['dropdown', 'tooltip', 'reveal'];
 
@@ -118,14 +118,14 @@
 
         plugins.each(function(){
           var _this = $(this);
-          // console.log(_this);
+        
           _this.triggerHandler('close.zf.trigger', [_this]);
         });
 
       });
     }
-  }
-  function resizeListener(debounce){
+  };
+  var resizeListener = function(debounce){
     var timer, i, len,
         nodes = $('[data-resize]');
     if(nodes.length){
@@ -136,14 +136,14 @@
           timer = setTimeout(function(){
 
             for(i = 0, len = nodes.length; i < len; i++){
-              var $elem = $(nodes[i])
+              var $elem = $(nodes[i]);
               $elem.triggerHandler('resizeme.zf.trigger', [$elem]);
             }
           }, debounce || 10);//default time to emit resize event
       });
     }
-  }
-  function scrollListener(debounce){
+  };
+  var scrollListener = function(debounce){
     var timer, i, len,
         nodes = $('[data-scroll]');
     if(nodes.length){
@@ -154,7 +154,7 @@
           timer = setTimeout(function(){
 
             for(i = 0, len = nodes.length; i < len; i++){
-              var $elem = $(nodes[i])
+              var $elem = $(nodes[i]);
               $elem.triggerHandler('scrollme.zf.trigger', [$elem, window.scrollY]);
             }
           }, debounce || 50);//default time to emit scroll event
@@ -201,7 +201,8 @@
 				}
 			}, debounce || 50);
 		};
-	}
+	
+  };
 // ------------------------------------
 
   // [PH]
@@ -211,4 +212,4 @@ Foundation.ISeeYou = scrollListener;
 Foundation.IFeelYou = closemeListener;
 Foundation.IWatchYou = dommutationobserver;
 
-}(window.Foundation, window.jQuery)
+}(window.Foundation, window.jQuery);
