@@ -207,7 +207,6 @@
      * @event Tabs#change
      */
     this.$element.trigger('change.zf.tabs', [$target]);
-    // console.log(this.$element.find('.tabs-title, .tabs-panel'));
     // Foundation.reflow(this.$element, 'tabs');
   };
   /**

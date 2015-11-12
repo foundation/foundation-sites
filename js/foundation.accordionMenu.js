@@ -140,7 +140,6 @@
           if ($target.is(':hidden')) {
             _this.down($target);
             $target.find('li').first().focus();
-            console.log($target.find('li').first());
           }
         },
         close: function() {

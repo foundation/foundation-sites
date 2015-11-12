@@ -117,7 +117,7 @@
 
         plugins.each(function(){
           var _this = $(this);
-          // console.log(_this);
+        
           _this.triggerHandler('close.zf.trigger', [_this]);
         });
 

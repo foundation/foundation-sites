@@ -102,7 +102,6 @@
       .find('input, textarea, select')
         .off('.abide')
         .on('blur.fndtn.abide change.fndtn.abide', function (e) {
-          // console.log($(e.target));
           if (self.options.validateOn === 'fieldChange') {
             self.validateInput($(e.target), self.$element);
           }

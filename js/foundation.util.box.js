@@ -36,13 +36,13 @@
     return allDirs.indexOf(false) === -1;
   };
 
-  /**
-   * Uses jQuery methods to return an object of dimension values.
-   * @function
-   * @param {jQuery} element - jQuery object for which to get the dimensions.
-   * @returns {Object} - nested object of integer pixel values
-   * TODO - if element is window, return only those values.
-   */
+  // /**
+  //  * Uses jQuery methods to return an object of dimension values.
+  //  * @function
+  //  * @param {jQuery} element - jQuery object for which to get the dimensions.
+  //  * @returns {Object} - nested object of integer pixel values
+  //  * TODO - if element is window, return only those values.
+  //  */
   // function GetDimensions(element){
   //   // GetDimensions(element, element[0]);
   //   var $window = $(window);
@@ -64,9 +64,15 @@
   //       }
   //     }
   //   };
-  //   // console.log(GetDimensions(element), a);
   //   return a;
   // }
+  /**
+   * Uses native methods to return an object of dimension values.
+   * @function
+   * @param {jQuery || HTML} element - jQuery object or DOM element for which to get the dimensions.
+   * @returns {Object} - nested object of integer pixel values
+   * TODO - if element is window, return only those values.
+   */
   var GetDimensions = function(elem, test){
     elem = elem.length ? elem[0] : elem;
     var rect = elem.getBoundingClientRect(),
@@ -99,7 +105,7 @@
         }
       }
     };
-  }
+  };
   /**
    * Returns an object of top and left integer pixel values for dynamically rendered elements,
    * such as: Tooltip, Reveal, and Dropdown
@@ -183,7 +189,7 @@
           top: $anchorDims.offset.top + $anchorDims.height + vOffset
         };
     }
-  }
+  };
   Foundation.Box = {
     ImNotTouchingYou: ImNotTouchingYou,
     GetDimensions: GetDimensions,

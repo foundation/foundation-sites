@@ -134,7 +134,6 @@
     // Create an instance of the new plugin
     if (this.currentPlugin) this.currentPlugin.destroy();
     this.currentPlugin = new this.rules[matchedMq].plugin(this.$element, {});
-    console.log(this.currentPlugin);
   };
 
   /**

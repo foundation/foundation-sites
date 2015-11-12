@@ -78,7 +78,6 @@ OffCanvas.prototype._init = function() {
   if(!this.options.transitionTime){
     this.options.transitionTime = parseFloat(window.getComputedStyle(document.body).transitionDuration, 10) * 1000;
   }
-  // console.log(this.options.transitionTime);
 };
 
 /**
@@ -145,7 +144,7 @@ OffCanvas.prototype.reveal = function(isRevealed){
  * @fires OffCanvas#opened
  */
 OffCanvas.prototype.open = function(event, trigger) {
-  if (this.$element.hasClass('is-open')) {console.log('Im open!');return;}
+  if (this.$element.hasClass('is-open')){ return; }
   var _this = this,
       $body = $(document.body);
 
@@ -178,7 +177,6 @@ OffCanvas.prototype.open = function(event, trigger) {
   if(this.options.autoFocus){
     this.$element.one('finished.zf.animate', function(){
       _this.$element.find('a, button').eq(0).focus();
-      // console.log('finished');
     });
   }
 };
@@ -201,7 +199,7 @@ OffCanvas.prototype.stick = function(){
  * @fires OffCanvas#closed
  */
 OffCanvas.prototype.close = function() {
-  if (!this.$element.hasClass('is-open')){console.log('Im not open!'); return;}
+  if(!this.$element.hasClass('is-open')){ return; }
 
   var _this = this;
 
