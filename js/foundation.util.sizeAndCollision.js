@@ -10,11 +10,12 @@
    * @returns {Boolean} - true if collision free, false if a collision in any direction.
    */
   function ImNotTouchingYou(element, parent, lrOnly, tbOnly){
-    var eleDims = GetDimensions(element),
+    var eleDims = dims(element),
+    // var eleDims = GetDimensions(element),
         top, bottom, left, right;
 
     if(parent){
-      var parDims = GetDimensions(parent);
+      // var parDims = GetDimensions(parent);
 
       bottom = (eleDims.offset.top + eleDims.height <= parDims.height + parDims.offset.top);
       top    = (eleDims.offset.top >= parDims.offset.top);
@@ -42,9 +43,9 @@
    * TODO - if element is window, return only those values.
    */
   function GetDimensions(element){
-    dims(element, element[0]);
+    // dims(element, element[0]);
     var $window = $(window);
-    return {
+    var a =  {
       width: element.outerWidth(),
       height: element.outerHeight(),
       offset: element.offset(),
@@ -62,14 +63,42 @@
         }
       }
     };
+    // console.log(dims(element), a);
+    return a;
   }
-  // function dims(elem, test){
-  //   elem = elem.length ? elem[0] : elem;
-  //   var rect = elem.getBoundingClientRect(),
-  //       parRect = elem.parentNode.getBoundingClientRect(),
-  //       winRect = document.body.getBoundingClientRect();
-  //       console.log($(window).height(), winRect.height);
-  // }
+  function dims(elem, test){
+    elem = elem.length ? elem[0] : elem;
+    var rect = elem.getBoundingClientRect(),
+        parRect = elem.parentNode.getBoundingClientRect(),
+        winRect = document.body.getBoundingClientRect(),
+        winY = window.pageYOffset,
+        winX = window.pageXOffset;
+
+    return {
+      width: rect.width,
+      height: rect.height,
+      offset: {
+        top: rect.top + winY,
+        left: rect.left + winX
+      },
+      parentDims: {
+        width: parRect.width,
+        height: parRect.height,
+        offset: {
+          top: parRect.top + winY,
+          left: parRect.left + winX
+        }
+      },
+      windowDims: {
+        width: winRect.width,
+        height: winRect.height,
+        offset: {
+          top: winY,
+          left: winX
+        }
+      }
+    };
+  }
   /**
    * Returns an object of top and left integer pixel values for dynamically rendered elements,
    * such as: Tooltip, Reveal, and Dropdown
@@ -83,8 +112,10 @@
    * TODO alter/rewrite to work with `em` values as well/instead of pixels
    */
   function GetOffsets(element, anchor, position, vOffset, hOffset, isOverflow){
-    var $eleDims = GetDimensions(element),
-        $anchorDims = anchor ? GetDimensions(anchor) : null;
+    var $eleDims = dims(element),
+    // var $eleDims = GetDimensions(element),
+        $anchorDims = anchor ? dims(anchor) : null;
+        // $anchorDims = anchor ? GetDimensions(anchor) : null;
     switch(position){
       case 'top':
         return {
@@ -154,6 +185,6 @@
   }
 
   Foundation.ImNotTouchingYou = ImNotTouchingYou;
-  Foundation.GetDimensions = GetDimensions;
+  Foundation.GetDimensions = dims;
   Foundation.GetOffsets = GetOffsets;
 }(jQuery, window.Foundation, window);
