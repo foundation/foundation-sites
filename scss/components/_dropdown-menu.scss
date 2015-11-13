@@ -14,6 +14,14 @@ $dropdownmenu-arrows: true !default;
 /// @type Length
 $dropdownmenu-min-width: 200px !default;
 
+/// Background color for dropdowns.
+/// @type Color
+$dropdownmenu-background: $white !default;
+
+/// Border for dropdown panes.
+/// @type List
+$dropdown-border: 1px solid $medium-gray !default;
+
 @mixin foundation-dropdown-menu {
   .dropdown.menu {
     .has-submenu {
@@ -60,7 +68,8 @@ $dropdownmenu-min-width: 200px !default;
       left: 100%;
       min-width: $dropdownmenu-min-width;
       z-index: 1;
-      background: white;
+      background: $dropdownmenu-background;
+      border: $dropdown-border;
 
       > li {
         width: 100%;
