@@ -18,6 +18,13 @@
     this._init();
 
     Foundation.registerPlugin(this);
+    Foundation.Keyboard.register('Dropdown', {
+      'ENTER': 'open',
+      'SPACE': 'open',
+      'ESCAPE': 'close',
+      'TAB': 'tab_forward',
+      'SHIFT_TAB': 'tab_backward'
+    });
   }
 
   Dropdown.defaults = {
@@ -25,7 +32,8 @@
     hover: false,
     vOffset: 1,
     hOffset: 1,
-    positionClass: ''
+    positionClass: '',
+    trapFocus: false
   };
   /**
    * Initializes the plugin by setting/checking options and attributes, adding helper variables, and saving the anchor.
@@ -159,6 +167,41 @@
         }, _this.options.hoverDelay);
       });
     }
+    this.$anchor.add(this.$element).on('keydown.zf.dropdown', function(e) {
+
+      var visibleFocusableElements = Foundation.Keyboard.findFocusable(_this.$element);
+
+      Foundation.Keyboard.handleKey(e, _this, {
+        tab_forward: function() {
+          if (this.$element.find(':focus').is(visibleFocusableElements.eq(-1))) { // left modal downwards, setting focus to first element
+            if (this.options.trapFocus) { // if focus shall be trapped
+              visibleFocusableElements.eq(0).focus();
+              e.preventDefault();
+            } else { // if focus is not trapped, close dropdown on focus out
+              this.close();
+            }
+          }
+        },
+        tab_backward: function() {
+          if (this.$element.find(':focus').is(visibleFocusableElements.eq(0)) || this.$element.is(':focus')) { // left modal upwards, setting focus to last element
+            if (this.options.trapFocus) { // if focus shall be trapped
+              visibleFocusableElements.eq(-1).focus();
+              e.preventDefault();
+            } else { // if focus is not trapped, close dropdown on focus out
+              this.close();
+            }
+          }
+        },
+        open: function() {
+          _this.open();
+          _this.$element.attr('tabindex', -1).focus();
+        },
+        close: function() {
+          _this.close();
+          _this.$anchor.focus();
+        }
+      });
+    });
   };
   /**
    * Opens the dropdown pane, and fires a bubbling event to close other dropdowns.
@@ -179,6 +222,9 @@
     this.setPosition();
     this.$element.addClass('is-open')
         .attr({'aria-hidden': false});
+
+
+
     /**
      * Fires once the dropdown is visible.
      * @event Dropdown#show
@@ -186,7 +232,7 @@
      this.$element.trigger('show.zf.dropdown', [this.$element]);
     //why does this not work correctly for this plugin?
     // Foundation.reflow(this.$element, 'dropdown');
-    // Foundation._reflow(this.$element.data('dropdown'));
+    Foundation._reflow(this.$element.attr('data-dropdown'));
   };
 
   /**
@@ -200,8 +246,10 @@
     }
     this.$element.removeClass('is-open')
         .attr({'aria-hidden': true});
+
     this.$anchor.removeClass('hover')
-        .attr('aria-expanded', false).focus();
+        .attr('aria-expanded', false);
+
     if(this.classChanged){
       var curPositionClass = this.getPositionClass();
       if(curPositionClass){
