@@ -322,7 +322,7 @@
       this.changed = true;
 
       // still not clear, small screen, add inner class
-      clear = Foundation.ImNotTouchingYou($sub, null, true);
+      clear = Foundation.Box.ImNotTouchingYou($sub, null, true);
       if (!clear) {
         $elem.removeClass('opens-left opens-right').addClass('opens-inner');
         this.changed = true;
