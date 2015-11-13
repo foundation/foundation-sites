@@ -282,6 +282,7 @@
 
     // lock focus within modal while tabbing
     this.$element.on('keydown.zf.reveal', function(e) {
+      var $target = $(this);
       // handle keyboard event with keyboard util
       Foundation.Keyboard.handleKey(e, _this, {
         tab_forward: function() {
@@ -297,7 +298,9 @@
           }
         },
         open: function() {
-          this._open();
+          if ($target.is(visibleFocusableElements)) { // dont't trigger if acual element has focus (i.e. inputs, links, ...)
+            this._open();
+          }
         },
         close: function() {
           if (this.options.closeOnEsc) {
