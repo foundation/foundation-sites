@@ -6,14 +6,6 @@ js: js/dropdownMenu.js
 ---
 
 
-<div class="alert callout">
-  <h5>Known Issues</h5>
-  <ul>
-    <li>Needs background color.</li>
-  </ul>
-</div>
-
-
 ## Horizontal
 By default, dropdowns are exactly that, horizontally oriented below the parent element, opened by hovering, clicking, or tapping.
 
