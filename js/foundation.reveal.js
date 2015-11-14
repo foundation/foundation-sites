@@ -49,7 +49,8 @@
     hOffset: 0,
     fullScreen: false,
     btmOffsetPct: 10,
-    overlay: true
+    overlay: true,
+    resetOnClose: false
   };
 
   /**
@@ -358,6 +359,14 @@
     }
 
     $('body').removeClass('is-reveal-open').attr({'aria-hidden': false, 'tabindex': ''});
+
+    /**
+    * Resets the modal content
+    * This prevents a running video to keep going in the background
+    */
+    if(this.options.resetOnClose) {
+      this.$element.html(this.$element.html());
+    }
 
     this.isActive = false;
     this.$element.attr({'aria-hidden': true})
