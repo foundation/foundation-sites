@@ -11,11 +11,9 @@
    */
   var ImNotTouchingYou = function(element, parent, lrOnly, tbOnly){
     var eleDims = GetDimensions(element),
-    // var eleDims = GetDimensions(element),
         top, bottom, left, right;
 
     if(parent){
-      // var parDims = GetDimensions(parent);
       var parDims = GetDimensions(parent);
 
       bottom = (eleDims.offset.top + eleDims.height <= parDims.height + parDims.offset.top);
@@ -36,45 +34,18 @@
     return allDirs.indexOf(false) === -1;
   };
 
-  // /**
-  //  * Uses jQuery methods to return an object of dimension values.
-  //  * @function
-  //  * @param {jQuery} element - jQuery object for which to get the dimensions.
-  //  * @returns {Object} - nested object of integer pixel values
-  //  * TODO - if element is window, return only those values.
-  //  */
-  // function GetDimensions(element){
-  //   // GetDimensions(element, element[0]);
-  //   var $window = $(window);
-  //   var a =  {
-  //     width: element.outerWidth(),
-  //     height: element.outerHeight(),
-  //     offset: element.offset(),
-  //     parentDims: {
-  //       width: element.parent().outerWidth(),
-  //       height: element.parent().outerHeight(),
-  //       offset: element.parent().offset()
-  //     },
-  //     windowDims: {
-  //       width: $window.width(),
-  //       height: $window.height(),
-  //       offset: {
-  //         top: $window.scrollTop(),
-  //         left: $window.scrollLeft()
-  //       }
-  //     }
-  //   };
-  //   return a;
-  // }
   /**
    * Uses native methods to return an object of dimension values.
    * @function
-   * @param {jQuery || HTML} element - jQuery object or DOM element for which to get the dimensions.
+   * @param {jQuery || HTML} element - jQuery object or DOM element for which to get the dimensions. Can be any element other that document or window.
    * @returns {Object} - nested object of integer pixel values
    * TODO - if element is window, return only those values.
    */
   var GetDimensions = function(elem, test){
     elem = elem.length ? elem[0] : elem;
+
+    if(window || document === elem){ throw new Error("I'm sorry, Dave. I'm afraid I can't do that."); }
+
     var rect = elem.getBoundingClientRect(),
         parRect = elem.parentNode.getBoundingClientRect(),
         winRect = document.body.getBoundingClientRect(),
@@ -195,7 +166,4 @@
     GetDimensions: GetDimensions,
     GetOffsets: GetOffsets
   };
-  // Foundation.ImNotTouchingYou = ImNotTouchingYou;
-  // Foundation.GetDimensions = GetDimensions;
-  // Foundation.GetOffsets = GetOffsets;
 }(jQuery, window.Foundation, window);
