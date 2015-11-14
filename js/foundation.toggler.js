@@ -32,7 +32,7 @@
 
   Toggler.defaults = {
     animate: false
-  }
+  };
 
   /**
    * Initializes the Toggler plugin by parsing the toggle class from data-toggler, or animation classes from data-animate.
@@ -40,16 +40,17 @@
    * @private
    */
   Toggler.prototype._init = function() {
+    var input;
     // Parse animation classes if they were set
     if (this.options.animate) {
-      var input = this.options.animate.split(' ');
+      input = this.options.animate.split(' ');
 
       this.animationIn = input[0];
       this.animationOut = input[1] || null;
     }
     // Otherwise, parse toggle class
     else {
-      var input = this.$element.data('toggler');
+      input = this.$element.data('toggler');
 
       // Allow for a . at the beginning of the string
       if (input[0] === '.') {
@@ -120,7 +121,7 @@
     }
 
     _this._updateARIA();
-  }
+  };
 
   Toggler.prototype._toggleAnimate = function() {
     var _this = this;
@@ -137,7 +138,7 @@
         _this._updateARIA();
       });
     }
-  }
+  };
 
   Toggler.prototype._updateARIA = function() {
     if (this.$element.is(':hidden')) {
@@ -146,7 +147,7 @@
     else {
       this.$element.attr('aria-expanded', 'true');
     }
-  }
+  };
 
   /**
    * Destroys the instance of Toggler on the element.
