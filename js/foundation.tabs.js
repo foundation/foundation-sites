@@ -41,7 +41,7 @@
     scrollToContent: false,
     autoFocus: false,
     wrapOnKeys: true,
-    matchHeight: true,
+    matchHeight: false,
     linkClass: 'tabs-title',
     contentClass: 'tabs-content',
     panelClass: 'tabs-panel'
