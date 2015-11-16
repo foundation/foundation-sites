@@ -4,7 +4,7 @@
  * @requires foundation.util.keyboard
  * @requires foundation.util.animationFrame
  */
-!function($) {
+!function($, Foundation) {
   'use strict';
 
   /**
@@ -32,8 +32,23 @@
   }
 
   Accordion.defaults = {
+    /**
+     * Amount of time to animate the opening of an accordion pane.
+     * @option
+     * @example 250
+     */
     slideSpeed: 250,
+    /**
+     * Allow the accordion to have multiple open panes.
+     * @option
+     * @example false
+     */
     multiExpand: false,
+    /**
+     * Allow the accordion to close all panes.
+     * @option
+     * @example false
+     */
     allowAllClosed: false
   };
 
@@ -216,4 +231,4 @@
   };
 
   Foundation.plugin(Accordion);
-}(jQuery);
+}(jQuery, window.Foundation);
