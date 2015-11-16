@@ -52,7 +52,7 @@
     resizeListener();
     scrollListener();
     closemeListener();
-	dommutationobserver();
+	if ($('[data-mutate]').length >= 1) { dommutationobserver(); }
   });
 
   /**
@@ -162,7 +162,9 @@
     }
   }
   function dommutationobserver(debounce) {
-		var timer, nodes = $('[data-mutate]');
+	
+	var timer, 
+		targets = document.querySelectorAll('[data-mutate]');
 	
 		var MutationObserver = (function () {
 			var prefixes = ['WebKit', 'Moz', 'O', 'Ms', '']
@@ -174,34 +176,41 @@
 			return false;
 		}());
 		
-		
-		//check for changes to the DOM
-		var target = document.body;
-		var observer;
-		var config = { attributes: true, childList: true, characterData: true, subtree:true };
-		
-		if (MutationObserver) {
-			// create an observer instance
-			observer = new MutationObserver(mutationObjectCallback);
+				  
+		//for each element that needs to listen for changes, but only listen for a change to data-mutate, this is the trigger
+		for (var i = 0; i <= targets.length-1; i++) {
+			var elementObserver = new MutationObserver(listeningElementsMutation);
+			elementObserver.observe(targets[i], { attributes: true, childList: false, characterData: false, subtree:false, attributeFilter:["data-mutate"]});
 		}
 		
-		if (MutationObserver) {
-			observer.observe(target, config);
-		}
+		//for the body, we need to listen for all changes, or you can target class, and style attributes, furthermore you could case switch based on the callback type
+		var bodyObserver = new MutationObserver(bodyMutation);
+		bodyObserver.observe(document.body, { attributes: true, childList: true, characterData: false, subtree:true});
 		
-		function mutationObjectCallback(mutationRecordsList) {	
-			if(timer){ clearTimeout(timer); }
-
+		
+		//body callback
+		function bodyMutation() {
+			//disconnect the body observer and trigger all listening elements by changing the data-mutate attr, we really don't need to change it, just "hitting" it fires a change
+			if (timer) { clearTimeout(timer); }	
+		
 			timer = setTimeout(function() {
-				for (i = 0, len = nodes.length; i < len; i++) {
-					var $elem = $(nodes[i]);
-					observer.disconnect();
-					$elem.triggerHandler('mutate.zf.trigger', [$elem]);
-					observer.observe(target, config);
-				}
+				bodyObserver.disconnect();
+				$('[data-mutate]').attr('data-mutate',"");
 			}, debounce || 50);
+		}
+		
+		//element callback	
+		function listeningElementsMutation(mutationRecordsList) {
+			
+			//trigger the event handler for the element
+			$(mutationRecordsList[0].target).triggerHandler('mutate.zf.trigger');
+			
+			//if this is the last element to trigger from a listen, reconnect the body listener, this stops infinte loops
+			if ($(mutationRecordsList[0].target).index('[data-mutate]') == targets.length-1) {
+				bodyObserver.observe(document.body, { attributes: true, childList: true, characterData: false, subtree:true});
+			}
 		};
-  };
+	};
 // ------------------------------------
 
   // [PH]
