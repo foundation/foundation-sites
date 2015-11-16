@@ -5,16 +5,6 @@ sass: scss/components/_tabs.scss
 js: js/foundation.tabs.js
 ---
 
-
-<div class="alert callout">
-  <h5>Known Issues</h5>
-  <ul>
-    <li>Feedback Request.</li>
-  </ul>
-</div>
-
-
-
 ## Basics
 
 There are two pieces to a tabbed interface: the tabs themselves, and the content for each tab. The tabs are an element with the class `.tabs`, and each item has the class `.tabs-title`. Each tab contains a link to a tab. The `href` of each link should match the ID of a tab.
@@ -57,7 +47,7 @@ Put it all together, and we get this:
   </div>
   <div class="tabs-panel" id="panel2">
     <p>two</p>
-    <img src="http://placehold.it/350x150">
+    <img class="thumbnail" src="assets/img/rectangle-7.jpg">
   </div>
   <div class="tabs-panel" id="panel3">
     <p>three</p>
@@ -65,7 +55,7 @@ Put it all together, and we get this:
   </div>
   <div class="tabs-panel" id="panel4">
     <p>four</p>
-    <img src="http://placehold.it/350x150">
+    <img class="thumbnail" src="assets/img/rectangle-2.jpg">
   </div>
   <div class="tabs-panel" id="panel5">
     <p>five</p>
@@ -73,7 +63,7 @@ Put it all together, and we get this:
   </div>
   <div class="tabs-panel" id="panel6">
     <p>six</p>
-    <img src="http://placehold.it/350x150">
+    <img class="thumbnail" src="assets/img/rectangle-8.jpg">
   </div>
 </div>
 
@@ -104,7 +94,7 @@ Add the `.vertical` class to a tabstrip to stack tabs vertically. You can also p
         <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
       </div>
       <div class="tabs-panel" id="panel3v">
-        <img src="http://placehold.it/350x150">
+        <img class="thumbnail" src="assets/img/rectangle-3.jpg">
       </div>
       <div class="tabs-panel" id="panel4v">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
@@ -113,7 +103,7 @@ Add the `.vertical` class to a tabstrip to stack tabs vertically. You can also p
         <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       </div>
       <div class="tabs-panel" id="panel6v">
-        <img src="http://placehold.it/350x150">
+        <img class="thumbnail" src="assets/img/rectangle-5.jpg">
       </div>
     </div>
   </div>
