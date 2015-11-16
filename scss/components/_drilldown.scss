@@ -23,6 +23,7 @@ $drilldown-transition: transform 0.15s linear !default;
     top: 0;
     left: 100%;
     z-index: -1;
+    height: 100%;
     width: 100%;
     background: $white;
     transition: $drilldown-transition;
