@@ -33,14 +33,56 @@ OffCanvas.defaults = {
    * @example true
    */
   closeOnClick: true,
+  /**
+   * Amount of time in ms the open and close transition requires. If none selected, pulls from body style.
+   * @option
+   * @example 500
+   */
   transitionTime: 0,
+  /**
+   * Direction the offcanvas opens from. Determines class applied to body.
+   * @option
+   * @example left
+   */
   position: 'left',
+  /**
+   * Force the page to scroll to top on open.
+   * @option
+   * @example false
+   */
   forceTop: false,
+  /**
+   * Allow the offcanvas to be sticky while open. Does nothing if Sass option `$maincontent-prevent-scroll === true`.
+   * Performance in Safari OSX/iOS is not great.
+   * @option
+   * @example false
+   */
   isSticky: false,
+  /**
+   * Allow the offcanvas to remain open for certain breakpoints. Can be used with `isSticky`.
+   * @option
+   * @example false
+   */
   isRevealed: false,
+  /**
+   * Breakpoint at which to reveal. JS will use a RegExp to target standard classes, if changing classnames, pass your class @`revealClass`.
+   * @option
+   * @example reveal-for-large
+   */
   revealOn: null,
+  /**
+   * Force focus to the offcanvas on open. If true, will focus the opening trigger on close.
+   * @option
+   * @example true
+   */
   autoFocus: true,
-  revealClass: 'reveal-for'
+  /**
+   * Class used to force an offcanvas to remain open. Foundation defaults for this are `reveal-for-large` & `reveal-for-medium`.
+   * @option
+   * TODO improve the regex testing for this.
+   * @example reveal-for-large
+   */
+  revealClass: 'reveal-for-'
 };
 
 /**
@@ -101,6 +143,10 @@ OffCanvas.prototype._events = function() {
     this.$exiter.on({'click.zf.offcanvas': this.close.bind(this)});
   }
 };
+/**
+ * Applies event listener for elements that will reveal at certain breakpoints.
+ * @private
+ */
 OffCanvas.prototype._setMQChecker = function(){
   var _this = this;
 
@@ -116,6 +162,11 @@ OffCanvas.prototype._setMQChecker = function(){
     }
   });
 };
+/**
+ * Handles the revealing/hiding the off-canvas at breakpoints, not the same as open.
+ * @param {Boolean} isRevealed - true if element should be revealed.
+ * @function
+ */
 OffCanvas.prototype.reveal = function(isRevealed){
   var closer = this.$element.find('[data-close]');
   if(isRevealed){
@@ -123,7 +174,7 @@ OffCanvas.prototype.reveal = function(isRevealed){
       var scrollPos = parseInt(window.pageYOffset);
       this.$element[0].style.transform = 'translate(0,' + scrollPos + 'px)';
     }
-    if(this.options.isSticky){ this.stick(); }
+    if(this.options.isSticky){ this._stick(); }
     if(closer.length){ closer.hide(); }
   }else{
     if(this.options.isSticky || !this.options.forceTop){
@@ -139,6 +190,8 @@ OffCanvas.prototype.reveal = function(isRevealed){
 /**
  * Opens the off-canvas menu.
  * @function
+ * @param {Object} event - Event object passed from listener.
+ * @param {jQuery} trigger - element that triggered the off-canvas to open.
  * @fires OffCanvas#opened
  */
 OffCanvas.prototype.open = function(event, trigger) {
@@ -166,7 +219,7 @@ OffCanvas.prototype.open = function(event, trigger) {
       .trigger('opened.zf.offcanvas');
 
     if(_this.options.isSticky){
-      _this.stick();
+      _this._stick();
     }
   });
   if(trigger){
@@ -178,7 +231,11 @@ OffCanvas.prototype.open = function(event, trigger) {
     });
   }
 };
-OffCanvas.prototype.stick = function(){
+/**
+ * Allows the offcanvas to appear sticky utilizing translate properties.
+ * @private
+ */
+OffCanvas.prototype._stick = function(){
   var elStyle = this.$element[0].style;
 
   if(this.options.closeOnClick){
@@ -191,7 +248,7 @@ OffCanvas.prototype.stick = function(){
     elStyle.transform = 'translate(0,' + pageY + 'px)';
     if(exitStyle !== undefined){ exitStyle.transform = 'translate(0,' + pageY + 'px)'; }
   });
-  this.$element.trigger('stuck.zf.offcanvas');
+  // this.$element.trigger('stuck.zf.offcanvas');
 };
 /**
  * Closes the off-canvas menu.
@@ -228,6 +285,8 @@ OffCanvas.prototype.close = function() {
 /**
  * Toggles the off-canvas menu open or closed.
  * @function
+ * @param {Object} event - Event object passed from listener.
+ * @param {jQuery} trigger - element that triggered the off-canvas to open.
  */
 OffCanvas.prototype.toggle = function(event, trigger) {
   if (this.$element.hasClass('is-open')) {
@@ -250,6 +309,9 @@ OffCanvas.prototype._handleKeyboard = function(event) {
   event.preventDefault();
   this.close();
   this.$lastTrigger.focus();
+};
+OffCanvas.prototype.destroy = function(){
+  //TODO make this...
 };
 
 Foundation.plugin(OffCanvas);
