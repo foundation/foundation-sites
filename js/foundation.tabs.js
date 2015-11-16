@@ -162,19 +162,16 @@
         },
         previous: function() {
           $prevElement.find('[role="tab"]').focus();
-          _this._handleTabChange($prevElement)
+          _this._handleTabChange($prevElement);
         },
         next: function() {
           $nextElement.find('[role="tab"]').focus();
-          _this._handleTabChange($nextElement)
+          _this._handleTabChange($nextElement);
         }
       });
     });
   };
 
-  function checkClass($elem){
-    return $elem.hasClass('is-active');
-  }
 
   /**
    * Opens the tab `$targetContent` defined by `$target`.
@@ -208,6 +205,22 @@
      */
     this.$element.trigger('change.zf.tabs', [$target]);
     // Foundation.reflow(this.$element, 'tabs');
+  };
+
+  Tabs.prototype.selectTab = function(elem){
+    var idStr;
+    if(typeof elem === 'object'){
+      idStr = elem[0].id;
+    }else{
+      idStr = elem;
+    }
+
+    if(idStr.indexOf('#') < 0){
+      idStr = '#' + idStr;
+    }
+    var $target = this.$tabTitles.find('[href="' + idStr + '"]').parent('.' + this.options.linkClass);
+
+    this._handleTabChange($target);
   };
   /**
    * Sets the height of each panel to the height of the tallest panel.
@@ -255,7 +268,11 @@
     //  * @event Tabs#destroyed
     //  */
     // this.$element.trigger('destroyed.zf.tabs');
-  }
+  };
 
   Foundation.plugin(Tabs);
+
+  function checkClass($elem){
+    return $elem.hasClass('is-active');
+  }
 }(jQuery, window.Foundation);
