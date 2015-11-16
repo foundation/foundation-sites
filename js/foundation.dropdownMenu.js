@@ -368,9 +368,9 @@
       if(this.changed){
         //remove position class
         if(this.options.alignment === 'left'){
-          $elems.find('.opens-right').removeClass('opens-right').addClass('opens-left');
-        }else{
           $elems.find('.opens-left').removeClass('opens-left').addClass('opens-right');
+        }else{
+          $elems.find('.opens-right').removeClass('opens-right').addClass('opens-left');
         }
       }
       /**
@@ -405,9 +405,10 @@
     this.$element
         .removeData('zf-plugin')
         .find('li')
-        .removeClass('js-dropdown-nohover')
-        .off('.zf.dropdownmenu');
-
+        .removeClass('js-dropdown-nohover is-right-arrow is-left-arrow opens-left opens-inner opens-right')
+        .off('.zf.dropdownmenu')
+        .end().find('ul').removeClass('first-sub');
+    Foundation.Nest.Burn(this.$element, 'dropdown');
     Foundation.unregisterPlugin(this);
   };
   Foundation.plugin(DropdownMenu);
