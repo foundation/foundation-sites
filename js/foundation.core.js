@@ -159,8 +159,23 @@ var Foundation = {
       });
     });
   },
-  getFnName: functionName
-}
+  getFnName: functionName,
+  transitionend: (function() {
+    var transitions = {
+      'transition': 'transitionend',
+      'WebkitTransition': 'webkitTransitionEnd',
+      'MozTransition': 'transitionend',
+      'OTransition': 'otransitionend'
+    };
+    var elem = document.createElement('div');
+
+    for (var t in transitions){
+      if (typeof elem.style[t] !== 'undefined'){
+        return transitions[t];
+      }
+    }
+  })()
+};
 
 Foundation.util = {
   throttle: function (func, delay) {
