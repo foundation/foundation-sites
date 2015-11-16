@@ -310,6 +310,10 @@ OffCanvas.prototype._handleKeyboard = function(event) {
   this.close();
   this.$lastTrigger.focus();
 };
+/**
+ * Destroys the offcanvas plugin.
+ * @function
+ */
 OffCanvas.prototype.destroy = function(){
   //TODO make this...
 };
