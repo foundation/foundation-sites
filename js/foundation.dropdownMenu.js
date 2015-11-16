@@ -406,7 +406,7 @@
         .removeData('zf-plugin')
         .find('li')
         .removeClass('js-dropdown-nohover is-right-arrow is-left-arrow opens-left opens-inner opens-right')
-        .off('.zf.dropdownmenu')
+        .add('a').off('.zf.dropdownmenu')
         .end().find('ul').removeClass('first-sub');
     Foundation.Nest.Burn(this.$element, 'dropdown');
     Foundation.unregisterPlugin(this);
