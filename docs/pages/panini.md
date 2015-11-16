@@ -52,9 +52,7 @@ In the prototyping template, these finished files are compiled into a standalone
 
 ---
 
-## Advanced
-
-### Partials
+## Partials
 
 Partials are a feature of Handlebars which allow you to inject HTML anywhere in a page or layout. They're really useful when you need to repeat certain chunks of code throughout your pages, or to keep individual files from getting too cluttered with HTML.
 
@@ -78,17 +76,104 @@ The `{{> }}` syntax tells Handlebars to look for an HTML file with that name, an
 
 ---
 
-### Helpers
+## Page Variables
 
-Document Panini's built-in helpers.
+Pages have a few built-in variables, which can be used within the page template itself, or within a layout or partial being used in tandem with the page.
 
-#### Custom Helpers
+### page
 
-Document how Panini can take in custom helpers.
+Prints the name of the current page, without its original file extension. In the below example, if the page is `index.html`, `{{page}}` will become `index`.
+
+```handlebars
+<p>You are here: {{page}}</p>
+```
+
+### root
+
+Use `{{root}}` before a file path to make sure it works no matter what folder the current page is in.
+
+For example, a path to an external CSS file will need to be different if the current page is at the root level of your site, or in a sub-folder.
+
+Here's how you'd use it with a `<link>` tag:
+
+```handlebars
+<link rel="stylesheet" href="{{root}}assets/css/app.css">
+```
+
+If the page is `index.html`, the path will look like this:
+
+```html
+<link rel="stylesheet" href="assets/css/app.css">
+```
+
+If the page is `folder/page.html`, the path will look like this:
+
+```html
+<link rel="stylesheet" href="../assets/css/app.css">
+```
+
+The `../` is added only on pages in a sub-folder, so the CSS can still be properly loaded.
 
 ---
 
-### Data
+## Helpers
+
+Helpers are special functions that manipulate content on the page. In addition to [Handlebars's built-in helpers](http://handlebarsjs.com/builtin_helpers.html), Panini includes a few custom helpers.
+
+### ifpage
+
+Displays the HTML inside the helper only on specific pages. In the below example, the HTML inside the helper will only show up on the `index.html` page.
+
+```handlebars
+{{#ifpage 'index'}}
+  <p>This is definitely the Index page.</p>
+{{/ifpage}}
+```
+
+You can also check for multiple pages. If *any* name in the list matches the current page, the HTML will appear.
+
+```handlebars
+{{#ifpage 'index' 'about'}}
+  <p>This is definitely either the Index or About page.</p>
+{{/ifpage}}
+```
+
+### unlesspage
+
+The opposite of `#ifpage`, `#unlesspage` will only display the HTML inside of it if the current page is *not* in the parameters.
+
+```handlebars
+{{#unlesspage 'index'}}
+  <p>This is definitely <em>not</em> the Index page.</p>
+{{/unlesspage}}
+```
+
+### repeat
+
+Repeats the content inside of it `n` number of times. Use this to easily print lots of duplicate HTML in a prototype.
+
+```handlebars
+<ul>
+  {{#repeat 5}}
+  <li>Five hundred ninety-nine US dollars</li>
+  {{/repeat}}
+</ul>
+```
+
+### markdown
+
+Converts Markdown into HTML.
+
+```handlebars
+{{#markdown}}
+# Heading 1
+Lorem ipsum [dolor sit amet](http://html5zombo.com), consectetur adipisicing elit. Nam dolor, perferendis. Mollitia aut dolorum, est amet libero eos ad facere pariatur, ullam dolorem similique fugit, debitis impedit, eligendi officiis dolores.
+{{/markdown}}
+```
+
+---
+
+## Custom Data
 
 Custom data can be added to your pages. This data can then be inserted into your HTML through Handlebars. There are two ways to add data to a project.
 
