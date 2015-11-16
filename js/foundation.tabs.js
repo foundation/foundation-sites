@@ -176,7 +176,6 @@
   /**
    * Opens the tab `$targetContent` defined by `$target`.
    * @param {jQuery} $target - Tab to open.
-   * @param {jQuery} $targetContent - Content pane to open.
    * @fires Tabs#change
    * @function
    */
@@ -207,6 +206,11 @@
     // Foundation.reflow(this.$element, 'tabs');
   };
 
+  /**
+   * Public method for selecting a content pane to display.
+   * @param {jQuery | String} elem - jQuery object or string of the id of the pane to display.
+   * @function
+   */
   Tabs.prototype.selectTab = function(elem){
     var idStr;
     if(typeof elem === 'object'){
