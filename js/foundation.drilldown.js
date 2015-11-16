@@ -55,7 +55,6 @@
     // console.log(this.$wrapper.outerHeight(), this.$wrapper.css());
     this._prepareMenu();
     // this.getMaxHeight();
-
     this._keyboardEvents();
   };
   /**
@@ -149,14 +148,14 @@
         next: function() {
           if ($element.is(_this.$submenuAnchors)) {
             _this._show($element);
-            $element.on('transitionend.zf.drilldown', function(){
+            $element.on(Foundation.transitionend + '.zf.drilldown', function(){
               $element.find('ul li').filter(_this.$menuItems).first().focus();
             });
           }
         },
         previous: function() {
           _this._hide($element.parent('ul'));
-          $element.parent('ul').on('transitionend.zf.drilldown', function(){
+          $element.parent('ul').on(Foundation.transitionend + '.zf.drilldown', function(){
             setTimeout(function() {
               $element.parent('ul').parent('li').focus();
             }, 1);
@@ -196,9 +195,9 @@
    */
   Drilldown.prototype._hideAll = function(){
     this.$element.find('.is-drilldown-sub.is-active').addClass('is-closing')
-        .on('transitionend.zf.drilldown', function(e){
-          // console.log('transitionend');
-          $(this).removeClass('is-active is-closing').off('transitionend.zf.drilldown');
+        .on(Foundation.transitionend + '.zf.drilldown', function(e){
+          console.log('transitionend');
+          $(this).removeClass('is-active is-closing').off(Foundation.transitionend + '.zf.drilldown');
         });
         /**
          * Fires when the menu is fully closed.
@@ -257,9 +256,9 @@
   Drilldown.prototype._hide = function($elem){
     var _this = this;
     $elem.addClass('is-closing')
-      .on('transitionend.zf.drilldown', function(e){
+      .on(Foundation.transitionend + '.zf.drilldown', function(e){
         // console.log('transitionend');
-        $(this).removeClass('is-active is-closing').off('transitionend.zf.drilldown');
+        $(this).removeClass('is-active is-closing').off(Foundation.transitionend + '.zf.drilldown');
       });
     /**
      * Fires when the menu is fully closed.
