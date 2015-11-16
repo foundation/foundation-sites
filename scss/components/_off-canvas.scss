@@ -39,7 +39,7 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5);
 
 /// Boolean to prevent scroll on offcanvas open
 /// @type Boolean
-$maincontent-prevent-scroll: false !default;
+$maincontent-prevent-scroll: true !default;
 
 /// Adds baseline styles for off-canvas. This CSS is required to make the other pieces work.
 @mixin off-canvas-basics {

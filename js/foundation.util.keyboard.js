@@ -36,7 +36,7 @@
    * @return String key - String that represents the key pressed
    */
   var parseKey = function(event) {
-    var key = keyCodes[event.which || event.keyCode];
+    var key = keyCodes[event.which || event.keyCode] || String.fromCharCode(event.which).toUpperCase();
     if (event.shiftKey) key = 'SHIFT_' + key;
     if (event.ctrlKey) key = 'CTRL_' + key;
     if (event.altKey) key = 'ALT_' + key;
@@ -55,7 +55,7 @@
    * @param {Objects} functions - collection of functions that are to be executed
    */
   var handleKey = function(event, component, functions) {
-    var commandList = commands[getComponentName(component)],
+    var commandList = commands[Foundation.getFnName(component)],
       keyCode = parseKey(event),
       cmds,
       command,
@@ -86,7 +86,18 @@
   };
   Foundation.Keyboard.handleKey = handleKey;
 
-
+  /**
+   * Finds all focusable elements within the given `$element`
+   * @param {jQuery} $element - jQuery object to search within
+   * @return {jQuery} $focusable - all focusable elements within `$element`
+   */
+  var findFocusable = function($element) {
+    return $element.find('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]').filter(function() {
+      if (!$(this).is(':visible') || $(this).attr('tabindex') < 0) { return false; } //only have visible elements and those that have a tabindex greater or equal 0
+      return true;
+    });
+  };
+  Foundation.Keyboard.findFocusable = findFocusable;
 
   /**
    * Returns the component name name
@@ -98,14 +109,4 @@
     commands[componentName] = cmds;
   };
   Foundation.Keyboard.register = register;
-
-  /**
-   * Returns the component name name
-   * @param {Object} component - Foundation component, e.g. Slider or Reveal
-   * @return String componentName
-   */
-  var getComponentName = function(component) {
-    return (/function (.+)\(/).exec((component).constructor.toString())[1] || '';
-  };
-
 }(jQuery, window.Foundation);

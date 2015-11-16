@@ -145,7 +145,7 @@ $hr-border: 1px solid $medium-gray;
 
 /// Default margin for a divider.
 /// @type Number | List
-$hr-margin: rem-calc(20) 0 !default;
+$hr-margin: rem-calc(20) auto !default;
 
 /// Line height for items in a list.
 /// @type Number

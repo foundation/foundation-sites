@@ -83,12 +83,12 @@
     this.$menuItems.children('a').attr('tabindex', -1);
     if(this.$element.hasClass(this.options.rightClass)){
       this.options.alignment = 'right';
-      this.$submenus.addClass('is-right-arrow');
+      this.$submenus.addClass('is-left-arrow opens-left');
     }else{
-      this.$submenus.addClass('is-left-arrow');
+      this.$submenus.addClass('is-right-arrow opens-right');
     }
     if(!this.vertical){
-      this.$tabs.removeClass('is-right-arrow is-left-arrow').addClass('is-down-arrow');
+      this.$tabs.removeClass('is-right-arrow is-left-arrow opens-left opens-right').addClass('is-down-arrow');
     }
 
     this.$tabs.each(function(){
@@ -315,11 +315,18 @@
     var clear = Foundation.Box.ImNotTouchingYou($sub, null, true);
     if(!clear){
       if(this.options.alignment === 'left'){
-        $sub.removeClass('is-left-arrow').addClass('is-right-arrow');
+        $elem.removeClass('opens-left').addClass('opens-right');
       }else{
-        $sub.removeClass('is-right-arrow').addClass('is-left-arrow');
+        $elem.removeClass('opens-right').addClass('opens-left');
       }
       this.changed = true;
+
+      // still not clear, small screen, add inner class
+      clear = Foundation.Box.ImNotTouchingYou($sub, null, true);
+      if (!clear) {
+        $elem.removeClass('opens-left opens-right').addClass('opens-inner');
+        this.changed = true;
+      }
     }
     $sub.css('visibility', '');
     /**
@@ -351,7 +358,7 @@
       //   console.log('true');
       //   $elems.blur();
       // }
-      $elems.removeClass('is-active').data('isClick', false)
+      $elems.removeClass('is-active opens-inner').data('isClick', false)
 
             .find('.is-active').removeClass('is-active').data('isClick', false).end()
 
@@ -361,9 +368,9 @@
       if(this.changed){
         //remove position class
         if(this.options.alignment === 'left'){
-          $elems.find('.is-right-arrow').removeClass('is-right-arrow').addClass('is-left-arrow');
+          $elems.find('.opens-left').removeClass('opens-left').addClass('opens-right');
         }else{
-          $elems.find('.is-left-arrow').removeClass('is-left-arrow').addClass('is-right-arrow');
+          $elems.find('.opens-right').removeClass('opens-right').addClass('opens-left');
         }
       }
       /**
@@ -398,9 +405,10 @@
     this.$element
         .removeData('zf-plugin')
         .find('li')
-        .removeClass('js-dropdown-nohover')
-        .off('.zf.dropdownmenu');
-
+        .removeClass('js-dropdown-nohover is-right-arrow is-left-arrow opens-left opens-inner opens-right')
+        .off('.zf.dropdownmenu')
+        .end().find('ul').removeClass('first-sub');
+    Foundation.Nest.Burn(this.$element, 'dropdown');
     Foundation.unregisterPlugin(this);
   };
   Foundation.plugin(DropdownMenu);

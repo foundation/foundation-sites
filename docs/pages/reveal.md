@@ -68,7 +68,7 @@ Yep, video too
 ```html_example
 <p><a data-toggle="exampleModal12">Click me for a modal</a></p>
 
-<div class="reveal" id="exampleModal12" data-reveal>
+<div class="reveal" id="exampleModal12" data-reveal data-reset-on-close='true'>
   <h2 id="videoModalTitle">This modal has video</h2>
   <div class="flex-video widescreen vimeo">
     <iframe width="1280" height="720" src="//www.youtube-nocookie.com/embed/wnXCopXXblE?rel=0" frameborder="0" allowfullscreen></iframe>

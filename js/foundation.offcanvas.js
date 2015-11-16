@@ -36,10 +36,11 @@ OffCanvas.defaults = {
   transitionTime: 0,
   position: 'left',
   forceTop: false,
-  isSticky: true,
+  isSticky: false,
   isRevealed: false,
   revealOn: null,
-  autoFocus: true
+  autoFocus: true,
+  revealClass: 'reveal-for'
 };
 
 /**
@@ -70,13 +71,15 @@ OffCanvas.prototype._init = function() {
       this.$exiter = $(exiter);
     }
   }
-  this.options.isRevealed = /(reveal-for-)/g.test(this.$element[0].className);
+
+  this.options.isRevealed = this.options.isRevealed || new RegExp(this.options.revealClass, 'g').test(this.$element[0].className);
+
   if(this.options.isRevealed){
     this.options.revealOn = this.options.revealOn || this.$element[0].className.match(/(reveal-for-medium|reveal-for-large)/g)[0].split('-')[2];
     this._setMQChecker();
   }
   if(!this.options.transitionTime){
-    this.options.transitionTime = parseFloat(window.getComputedStyle(document.body).transitionDuration, 10) * 1000;
+    this.options.transitionTime = parseFloat(window.getComputedStyle(document.body).transitionDuration) * 1000;
   }
 };
 
@@ -93,14 +96,9 @@ OffCanvas.prototype._events = function() {
     'keydown.zf.offcanvas': this._handleKeyboard.bind(this)
   });
 
-  // $(window).on('close.zf.offcanvas', this.close.bind(this));
-
   if (this.$exiter.length) {
     var _this = this;
     this.$exiter.on({'click.zf.offcanvas': this.close.bind(this)});
-    // this.$exiter.on('click.zf.offcanvas', function() {
-    //   // $(window).trigger('close.zf.offcanvas', [_this.$element]);
-    // });
   }
 };
 OffCanvas.prototype._setMQChecker = function(){
@@ -181,15 +179,17 @@ OffCanvas.prototype.open = function(event, trigger) {
   }
 };
 OffCanvas.prototype.stick = function(){
-  var elStyle = this.$element[0].style,
-      exitStyle = this.$exiter[0].style || null,
-      isVis = this.$exiter.is(':visible');
+  var elStyle = this.$element[0].style;
 
+  if(this.options.closeOnClick){
+    var exitStyle = this.$exiter[0].style;
+  }
 
-  $(window).on('scroll.zf.offcanvas', function(){
+  $(window).on('scroll.zf.offcanvas', function(e){
+    console.log(e);
     var pageY = window.pageYOffset;
     elStyle.transform = 'translate(0,' + pageY + 'px)';
-    if(exitStyle && isVis){ exitStyle.transform = 'translate(0,' + pageY + 'px)'; }
+    if(exitStyle !== undefined){ exitStyle.transform = 'translate(0,' + pageY + 'px)'; }
   });
   this.$element.trigger('stuck.zf.offcanvas');
 };
@@ -203,19 +203,18 @@ OffCanvas.prototype.close = function() {
 
   var _this = this;
 
-  /**
-   * Fires when the off-canvas menu opens.
-   * @event OffCanvas#closed
-   */
    Foundation.Move(this.options.transitionTime, this.$element, function(){
     $('body').removeClass('is-off-canvas-open is-open-'+_this.options.position);
 
-    _this.$element
-      .removeClass('is-open')
-      .attr('aria-hidden', 'true')
-      .trigger('closed.zf.offcanvas');
+    _this.$element.removeClass('is-open');
     // Foundation._reflow();
   });
+  this.$element.attr('aria-hidden', 'true')
+    /**
+     * Fires when the off-canvas menu opens.
+     * @event OffCanvas#closed
+     */
+      .trigger('closed.zf.offcanvas');
   if(_this.options.isSticky || !_this.options.forceTop){
     setTimeout(function(){
       _this.$element[0].style.transform = '';

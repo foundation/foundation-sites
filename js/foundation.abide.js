@@ -312,9 +312,9 @@
     var self = this,
         valid = false,
         patternLib = this.options.patterns,
-        inputText = $(el).val(),
+        inputText = $($el).val(),
         // maybe have a different way of parsing this bc people might use type
-        pattern = $(el).attr('pattern');
+        pattern = $($el).attr('pattern');
 
     // if there's no value, then return true
     // since required check has already been done

@@ -122,7 +122,7 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
     @include reveal-modal-base;
     @include reveal-modal-width($reveal-width);
     position: absolute;
-    overflow-y: scroll;
+    overflow-y: auto;
     // Remove padding
     &.collapse {
       padding: 0;

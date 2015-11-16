@@ -49,7 +49,8 @@
     hOffset: 0,
     fullScreen: false,
     btmOffsetPct: 10,
-    overlay: true
+    overlay: true,
+    resetOnClose: false
   };
 
   /**
@@ -282,6 +283,7 @@
 
     // lock focus within modal while tabbing
     this.$element.on('keydown.zf.reveal', function(e) {
+      var $target = $(this);
       // handle keyboard event with keyboard util
       Foundation.Keyboard.handleKey(e, _this, {
         tab_forward: function() {
@@ -297,7 +299,9 @@
           }
         },
         open: function() {
-          this._open();
+          if ($target.is(visibleFocusableElements)) { // dont't trigger if acual element has focus (i.e. inputs, links, ...)
+            this._open();
+          }
         },
         close: function() {
           if (this.options.closeOnEsc) {
@@ -355,6 +359,14 @@
     }
 
     $('body').removeClass('is-reveal-open').attr({'aria-hidden': false, 'tabindex': ''});
+
+    /**
+    * Resets the modal content
+    * This prevents a running video to keep going in the background
+    */
+    if(this.options.resetOnClose) {
+      this.$element.html(this.$element.html());
+    }
 
     this.isActive = false;
     this.$element.attr({'aria-hidden': true})

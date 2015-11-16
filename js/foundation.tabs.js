@@ -41,7 +41,7 @@
     scrollToContent: false,
     autoFocus: false,
     wrapOnKeys: true,
-    matchHeight: true,
+    matchHeight: false,
     linkClass: 'tabs-title',
     contentClass: 'tabs-content',
     panelClass: 'tabs-panel'
@@ -162,24 +162,20 @@
         },
         previous: function() {
           $prevElement.find('[role="tab"]').focus();
-          _this._handleTabChange($prevElement)
+          _this._handleTabChange($prevElement);
         },
         next: function() {
           $nextElement.find('[role="tab"]').focus();
-          _this._handleTabChange($nextElement)
+          _this._handleTabChange($nextElement);
         }
       });
     });
   };
 
-  function checkClass($elem){
-    return $elem.hasClass('is-active');
-  }
 
   /**
    * Opens the tab `$targetContent` defined by `$target`.
    * @param {jQuery} $target - Tab to open.
-   * @param {jQuery} $targetContent - Content pane to open.
    * @fires Tabs#change
    * @function
    */
@@ -208,6 +204,27 @@
      */
     this.$element.trigger('change.zf.tabs', [$target]);
     // Foundation.reflow(this.$element, 'tabs');
+  };
+
+  /**
+   * Public method for selecting a content pane to display.
+   * @param {jQuery | String} elem - jQuery object or string of the id of the pane to display.
+   * @function
+   */
+  Tabs.prototype.selectTab = function(elem){
+    var idStr;
+    if(typeof elem === 'object'){
+      idStr = elem[0].id;
+    }else{
+      idStr = elem;
+    }
+
+    if(idStr.indexOf('#') < 0){
+      idStr = '#' + idStr;
+    }
+    var $target = this.$tabTitles.find('[href="' + idStr + '"]').parent('.' + this.options.linkClass);
+
+    this._handleTabChange($target);
   };
   /**
    * Sets the height of each panel to the height of the tallest panel.
@@ -255,7 +272,11 @@
     //  * @event Tabs#destroyed
     //  */
     // this.$element.trigger('destroyed.zf.tabs');
-  }
+  };
 
   Foundation.plugin(Tabs);
+
+  function checkClass($elem){
+    return $elem.hasClass('is-active');
+  }
 }(jQuery, window.Foundation);

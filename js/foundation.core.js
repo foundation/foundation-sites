@@ -159,8 +159,23 @@ var Foundation = {
       });
     });
   },
-  getFnName: functionName
-}
+  getFnName: functionName,
+  transitionend: (function() {
+    var transitions = {
+      'transition': 'transitionend',
+      'WebkitTransition': 'webkitTransitionEnd',
+      'MozTransition': 'transitionend',
+      'OTransition': 'otransitionend'
+    };
+    var elem = document.createElement('div');
+
+    for (var t in transitions){
+      if (typeof elem.style[t] !== 'undefined'){
+        return transitions[t];
+      }
+    }
+  })()
+};
 
 Foundation.util = {
   throttle: function (func, delay) {
@@ -245,6 +260,9 @@ function functionName(fn) {
     var funcNameRegex = /function\s([^(]{1,})\(/;
     var results = (funcNameRegex).exec((fn).toString());
     return (results && results.length > 1) ? results[1].trim() : "";
+  }
+  else if (fn.prototype === undefined) {
+    return fn.constructor.name;
   }
   else {
     return fn.prototype.constructor.name;
