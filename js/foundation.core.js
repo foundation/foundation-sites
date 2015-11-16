@@ -71,8 +71,7 @@ var Foundation = {
     var pluginName = functionName(plugin.constructor).toLowerCase();
 
     delete this._activePlugins[plugin.uuid];
-
-    plugin.$element.trigger('destroyed.zf.' + pluginName);
+    plugin.$element.removeAttr('data-' + pluginName).trigger('destroyed.zf.' + pluginName);
 
     return;
   },
