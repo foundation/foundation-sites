@@ -52,6 +52,7 @@
     resizeListener();
     scrollListener();
     closemeListener();
+	if ($('[data-mutate]').length >= 1) { dommutationobserver(); }
   });
 
   /**
@@ -159,7 +160,57 @@
           }, debounce || 50);//default time to emit scroll event
       });
     }
-  };
+  }
+  function dommutationobserver(debounce) {
+	
+	var timer, 
+		targets = document.querySelectorAll('[data-mutate]');
+	
+		var MutationObserver = (function () {
+			var prefixes = ['WebKit', 'Moz', 'O', 'Ms', '']
+				for (var i=0; i < prefixes.length; i++) {
+					if (prefixes[i] + 'MutationObserver' in window) {
+						 return window[prefixes[i] + 'MutationObserver'];
+					}
+				}
+			return false;
+		}());
+		
+				  
+		//for each element that needs to listen for changes, but only listen for a change to data-mutate, this is the trigger
+		for (var i = 0; i <= targets.length-1; i++) {
+			var elementObserver = new MutationObserver(listeningElementsMutation);
+			elementObserver.observe(targets[i], { attributes: true, childList: false, characterData: false, subtree:false, attributeFilter:["data-mutate"]});
+		}
+		
+		//for the body, we need to listen for all changes, or you can target class, and style attributes, furthermore you could case switch based on the callback type
+		var bodyObserver = new MutationObserver(bodyMutation);
+		bodyObserver.observe(document.body, { attributes: true, childList: true, characterData: false, subtree:true});
+		
+		
+		//body callback
+		function bodyMutation() {
+			//disconnect the body observer and trigger all listening elements by changing the data-mutate attr, we really don't need to change it, just "hitting" it fires a change
+			if (timer) { clearTimeout(timer); }	
+		
+			timer = setTimeout(function() {
+				bodyObserver.disconnect();
+				$('[data-mutate]').attr('data-mutate',"");
+			}, debounce || 50);
+		}
+		
+		//element callback	
+		function listeningElementsMutation(mutationRecordsList) {
+			
+			//trigger the event handler for the element
+			$(mutationRecordsList[0].target).triggerHandler('mutate.zf.trigger');
+			
+			//if this is the last element to trigger from a listen, reconnect the body listener, this stops infinte loops
+			if ($(mutationRecordsList[0].target).index('[data-mutate]') == targets.length-1) {
+				bodyObserver.observe(document.body, { attributes: true, childList: true, characterData: false, subtree:true});
+			}
+		};
+	};
 // ------------------------------------
 
   // [PH]
@@ -167,5 +218,6 @@
 Foundation.IHearYou = resizeListener;
 Foundation.ISeeYou = scrollListener;
 Foundation.IFeelYou = closemeListener;
+Foundation.IWatchYou = dommutationobserver;
 
 }(window.Foundation, window.jQuery);
