@@ -32,7 +32,7 @@ gulp.task('deploy:custom', ['sass:foundation', 'javascript:foundation'], functio
       .pipe(rename('foundation.min.css'))
       .pipe(gulp.dest('./_build/assets/css'));
 
-  gulp.src('_build/assets/js/foundation.js')
+  return gulp.src('_build/assets/js/foundation.js')
       .pipe(uglify())
       .pipe(rename('foundation.min.js'))
       .pipe(gulp.dest('./_build/assets/js'));
