@@ -24,8 +24,9 @@ gulp.task('docs', function() {
       .pipe(supercollider.init())
     .pipe(mdFilter.restore())
     .pipe(panini({
+      root: 'docs/pages/',
       layouts: 'docs/layout/',
-      partials: 'docs/partials/*.html'
+      partials: 'docs/partials/'
     }))
     .pipe(gulp.dest('_build'));
 });
