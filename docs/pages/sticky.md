@@ -43,7 +43,7 @@ Add the `.sticky` class and `[data-sticky]` to an element to create something th
       </p>
     </div>
     <div class="columns small-6 right" data-sticky-container>
-      <div class="sticky" data-sticky data-anchor='#example1'>
+      <div class="sticky" data-sticky data-anchor='example1'>
         <img class="thumbnail" src="assets/img/rectangle-3.jpg">
       </div>
     </div>

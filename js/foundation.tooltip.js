@@ -40,12 +40,11 @@
     templateClasses: '',
     tooltipClass: 'tooltip',
     triggerClass: 'has-tip',
-    showOn: 'all',
+    showOn: 'small',
     template: '',
     tipText: '',
     touchCloseText: 'Tap to close.',
     clickOpen: true,
-    appendTo: 'body',
     positionClass: '',
     vOffset: 10,
     hOffset: 12
@@ -59,10 +58,10 @@
     var elemId = this.$element.attr('aria-describedby') || Foundation.GetYoDigits(6, 'tooltip');
 
     this.options.positionClass = this.getPositionClass(this.$element);
-    this.options.tipText = this.$element.attr('title');
+    this.options.tipText = this.options.tipText || this.$element.attr('title');
     this.template = this.options.template ? $(this.options.template) : this.buildTemplate(elemId);
 
-    this.template.appendTo(this.options.appendTo)
+    this.template.appendTo(document.body)
         .text(this.options.tipText)
         .hide();
 
@@ -344,7 +343,7 @@
   Tooltip.prototype.destroy = function(){
     this.$element.attr('title', this.template.text())
                  .off('.zf.trigger .zf.tootip')
-                 .removeClass('has-tip')
+                //  .removeClass('has-tip')
                  .removeAttr('aria-describedby')
                  .removeAttr('data-yeti-box')
                  .removeAttr('data-toggle')

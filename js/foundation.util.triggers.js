@@ -25,7 +25,7 @@
 
   // Elements with [data-closable] will respond to close.zf.trigger events.
   $(document).on('close.zf.trigger', '[data-closable]', function() {
-    var animation = $(this).data('closable') || 'fadeOut';
+    var animation = $(this).data('closable') || 'fade-out';
     if(Foundation.Motion){
       Foundation.Motion.animateOut($(this), animation, function() {
         $(this).trigger('closed.zf');
@@ -117,7 +117,7 @@
 
         plugins.each(function(){
           var _this = $(this);
-        
+
           _this.triggerHandler('close.zf.trigger', [_this]);
         });
 

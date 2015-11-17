@@ -37,7 +37,7 @@
   margin-right: $margin;
 
   @if $columns != null {
-    @include grid-context($columns, $root) {
+    @include grid-context($columns, $base) {
       @content;
     }
   }
