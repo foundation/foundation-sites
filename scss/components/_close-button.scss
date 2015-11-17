@@ -34,8 +34,8 @@ $closebutton-color: $dark-gray !default;
 /// @type Color
 $closebutton-color-hover: $black !default;
 
-/// Extends the CSS for a close button, using the styles in the settings variables.
-%close-button {
+/// Adds styles for a close button, using the styles in the settings variables.
+@mixin close-button {
   $x: nth($closebutton-position, 1);
   $y: nth($closebutton-position, 2);
 
@@ -56,6 +56,6 @@ $closebutton-color-hover: $black !default;
 
 @mixin foundation-close-button {
   .close-button {
-    @extend %close-button;
+    @include close-button;
   }
 }
