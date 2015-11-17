@@ -50,12 +50,18 @@ var Foundation = {
    * Sets the `[data-pluginName="uniqueIdHere"]`, allowing easy access to any plugin's internal methods.
    * Also fires the initialization event for each plugin, consolidating repeditive code.
    * @param {Object} plugin - an instance of a plugin, usually `this` in context.
+   * @fires Plugin#init
    */
   registerPlugin: function(plugin){
     var pluginName = functionName(plugin.constructor).toLowerCase();
 
     plugin.uuid = this.GetYoDigits(6, pluginName);
-    plugin.$element.attr('data-' + pluginName, plugin.uuid).trigger('init.zf.' + pluginName);
+    plugin.$element.attr('data-' + pluginName, plugin.uuid)
+          /**
+           * Fires when the plugin has initialized.
+           * @event Plugin#init
+           */
+          .trigger('init.zf.' + pluginName);
 
     this._activePlugins[plugin.uuid] = plugin;
 
@@ -66,20 +72,25 @@ var Foundation = {
    * Removes the pointer for an instance of a Plugin from the Foundation._activePlugins obj.
    * Also fires the destroyed event for the plugin, consolidating repeditive code.
    * @param {Object} plugin - an instance of a plugin, usually `this` in context.
+   * @fires Plugin#destroyed
    */
   unregisterPlugin: function(plugin){
     var pluginName = functionName(plugin.constructor).toLowerCase();
 
     delete this._activePlugins[plugin.uuid];
-
-    plugin.$element.trigger('destroyed.zf.' + pluginName);
+    plugin.$element.removeAttr('data-' + pluginName)
+          /**
+           * Fires when the plugin has been destroyed.
+           * @event Plugin#destroyed
+           */
+          .trigger('destroyed.zf.' + pluginName);
 
     return;
   },
 
   /**
    * @function
-   * Causes one or more active plugins to reflow, resetting event listeners, recalculating positions, etc.
+   * Causes one or more active plugins to re-initialize, resetting event listeners, recalculating positions, etc.
    * @param {String} plugins - optional string of an individual plugin key, attained by calling `$(element).data('pluginName')`, or string of a plugin class i.e. `'dropdown'`
    * @default If no argument is passed, reflow all currently active plugins.
    */
@@ -159,10 +170,32 @@ var Foundation = {
       });
     });
   },
-  getFnName: functionName
-}
+  getFnName: functionName,
+  transitionend: (function() {
+    var transitions = {
+      'transition': 'transitionend',
+      'WebkitTransition': 'webkitTransitionEnd',
+      'MozTransition': 'transitionend',
+      'OTransition': 'otransitionend'
+    };
+    var elem = document.createElement('div');
+
+    for (var t in transitions){
+      if (typeof elem.style[t] !== 'undefined'){
+        return transitions[t];
+      }
+    }
+  })()
+};
 
 Foundation.util = {
+  /**
+   * Function for applying a debounce effect to a function call.
+   * @function
+   * @param {Function} func - Function to be called at end of timeout.
+   * @param {Number} delay - Time in ms to delay the call of `func`.
+   * @returns function
+   */
   throttle: function (func, delay) {
     var timer = null;
 
@@ -177,7 +210,7 @@ Foundation.util = {
       }
     };
   }
-}
+};
 
 // TODO: consider not making this a jQuery function
 // TODO: need way to reflow vs. re-initialize
@@ -186,11 +219,15 @@ Foundation.util = {
  * @param {String|Array} method - An action to perform on the current jQuery object.
  */
 var foundation = function(method) {
-  var type = typeof method;
-  var $meta = $('meta.foundation-mq');
+  var type = typeof method,
+      $meta = $('meta.foundation-mq'),
+      $noJS = $('.no-js');
 
   if(!$meta.length){
     $('<meta class="foundation-mq">').appendTo(document.head);
+  }
+  if($noJS.length){
+    $noJS.removeClass('no-js');
   }
 
   if (type === 'undefined') {
@@ -231,6 +268,9 @@ $.fn.foundation = foundation;
     };
     window.cancelAnimationFrame = clearTimeout;
   }
+  /**
+   * Polyfill for performance.now, required by rAF
+   */
   window.performance = (window.performance || {
     start: Date.now(),
     now: function(){

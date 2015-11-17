@@ -28,11 +28,41 @@
   }
 
   Dropdown.defaults = {
+    /**
+     * Amount of time to delay opening a submenu on hover event.
+     * @option
+     * @example 250
+     */
     hoverDelay: 250,
+    /**
+     * Allow submenus to open on hover events
+     * @option
+     * @example false
+     */
     hover: false,
+    /**
+     * Number of pixels between the dropdown pane and the triggering element on open.
+     * @option
+     * @example 1
+     */
     vOffset: 1,
+    /**
+     * Number of pixels between the dropdown pane and the triggering element on open.
+     * @option
+     * @example 1
+     */
     hOffset: 1,
+    /**
+     * Class applied to adjust open position. JS will test and fill this in.
+     * @option
+     * @example 'top'
+     */
     positionClass: '',
+    /**
+     * Allow the plugin to trap focus to the dropdown pane on open.
+     * @option
+     * @example false
+     */
     trapFocus: false
   };
   /**
@@ -80,7 +110,7 @@
    * @private
    * @param {String} position - position class to remove.
    */
-  Dropdown.prototype.reposition = function(position){
+  Dropdown.prototype._reposition = function(position){
     this.usedPositions.push(position ? position : 'bottom');
     //default, try switching to opposite side
     if(!position && (this.usedPositions.indexOf('top') < 0)){
@@ -119,7 +149,7 @@
    * @function
    * @private
    */
-  Dropdown.prototype.setPosition = function(){
+  Dropdown.prototype._setPosition = function(){
     if(this.$anchor.attr('aria-expanded') === 'false'){ return false; }
     var position = this.getPositionClass(),
         $eleDims = Foundation.Box.GetDimensions(this.$element),
@@ -141,8 +171,8 @@
     this.$element.offset(Foundation.Box.GetOffsets(this.$element, this.$anchor, position, this.options.vOffset, this.options.hOffset));
 
     while(!Foundation.Box.ImNotTouchingYou(this.$element) && this.counter){
-      this.reposition(position);
-      this.setPosition();
+      this._reposition(position);
+      this._setPosition();
     }
   };
   /**
@@ -156,7 +186,7 @@
       'open.zf.trigger': this.open.bind(this),
       'close.zf.trigger': this.close.bind(this),
       'toggle.zf.trigger': this.toggle.bind(this),
-      'resizeme.zf.trigger': this.setPosition.bind(this)
+      'resizeme.zf.trigger': this._setPosition.bind(this)
     });
 
     if(this.options.hover){
@@ -219,7 +249,7 @@
     this.$anchor.addClass('hover')
         .attr({'aria-expanded': true});
     // this.$element/*.show()*/;
-    this.setPosition();
+    this._setPosition();
     this.$element.addClass('is-open')
         .attr({'aria-hidden': false});
 
@@ -232,7 +262,7 @@
      this.$element.trigger('show.zf.dropdown', [this.$element]);
     //why does this not work correctly for this plugin?
     // Foundation.reflow(this.$element, 'dropdown');
-    Foundation._reflow(this.$element.attr('data-dropdown'));
+    // Foundation._reflow(this.$element.attr('data-dropdown'));
   };
 
   /**

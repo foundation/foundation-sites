@@ -11,7 +11,9 @@ A media object is a container with the class `.media-object`, and two or three s
 ```html_example
 <div class="media-object">
   <div class="media-object-section">
-    <img src= "http://placeimg.com/100/100/people">
+    <div class="thumbnail">
+      <img src= "assets/img/avatar-1.jpg">
+    </div>
   </div>
   <div class="media-object-section">
     <h4>Dreams feel real while we're in them.</h4>
@@ -29,7 +31,9 @@ Each section aligns to the top by default, but individual sections can also be m
 ```html_example
 <div class="media-object">
   <div class="media-object-section middle">
-    <img src= "http://placeimg.com/100/100/people">
+    <div class="thumbnail">
+      <img src= "assets/img/avatar-2.jpg">
+    </div>
   </div>
   <div class="media-object-section">
     <h4>Why is it so important to dream?</h4>
@@ -37,7 +41,9 @@ Each section aligns to the top by default, but individual sections can also be m
     <p>What is the most resilient parasite? Bacteria? A virus? An intestinal worm? An idea. Resilient... highly contagious. Once an idea has taken hold of the brain it's almost impossible to eradicate. An idea that is fully formed - fully understood - that sticks; right in there somewhere.</p>
   </div>
   <div class="media-object-section bottom">
-    <img src= "http://placeimg.com/100/100/people">
+    <div class="thumbnail">
+      <img src= "assets/img/avatar-3.jpg">
+    </div>
   </div>
 </div>
 ```
@@ -51,7 +57,9 @@ By adding the `.stack-for-small` class, you can make your media object responsiv
 ```html_example
 <div class="media-object stack-for-small">
   <div class="media-object-section">
-    <img src= "http://placeimg.com/400/200/people">
+    <div class="thumbnail">
+      <img src= "assets/img/rectangle-1.jpg">
+    </div>
   </div>
   <div class="media-object-section">
     <h4>I Can Stack.</h4>
@@ -69,7 +77,9 @@ By nesting a media object into the media-object-section section, you can easily 
 ```html_example
 <div class="media-object">
   <div class="media-object-section">
-    <img src= "http://placeimg.com/100/100/people">
+    <div class="thumbnail">
+      <img src= "assets/img/avatar-1.jpg">
+    </div>
   </div>
   <div class="media-object-section">
     <h4>I'm First!</h4>
@@ -77,7 +87,9 @@ By nesting a media object into the media-object-section section, you can easily 
     <!-- Nested media object starts here -->
     <div class="media-object">
       <div class="media-object-section">
-        <img src= "http://placeimg.com/100/100/people">
+        <div class="thumbnail">
+          <img src= "assets/img/avatar-2.jpg">
+        </div>
       </div>
       <div class="media-object-section">
         <h4>I'm Second!</h4>

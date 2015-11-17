@@ -144,7 +144,6 @@
     this.currentPlugin.destroy();
     $(window).off('.zf.ResponsiveMenu');
   };
-  // ResponsiveMenu.prototype.DropdownMenu = Foundation.DropdownMenu;
   Foundation.plugin(ResponsiveMenu);
 
-}(Foundation, jQuery)
+}(Foundation, jQuery);

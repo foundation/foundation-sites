@@ -4,7 +4,7 @@
  * @requires foundation.util.keyboard
  * @requires foundation.util.animationFrame
  */
-!function($) {
+!function($, Foundation) {
   'use strict';
 
   /**
@@ -32,8 +32,23 @@
   }
 
   Accordion.defaults = {
+    /**
+     * Amount of time to animate the opening of an accordion pane.
+     * @option
+     * @example 250
+     */
     slideSpeed: 250,
+    /**
+     * Allow the accordion to have multiple open panes.
+     * @option
+     * @example false
+     */
     multiExpand: false,
+    /**
+     * Allow the accordion to close all panes.
+     * @option
+     * @example false
+     */
     allowAllClosed: false
   };
 
@@ -110,6 +125,11 @@
       }
     });
   };
+  /**
+   * Toggles the selected content pane's open/close state.
+   * @param {jQuery} $target - jQuery object of the pane to toggle.
+   * @function
+   */
   Accordion.prototype.toggle = function($target){
     if($target.parent().hasClass('is-active')){
       if(this.options.allowAllClosed || $target.parent().siblings().hasClass('is-active')){
@@ -121,8 +141,10 @@
   };
   /**
    * Opens the accordion tab defined by `$target`.
-   * @param {jQuery} $target - Accordion tab to open.
+   * @param {jQuery} $target - Accordion pane to open.
+   * @param {Boolean} firstTime - flag to determine if reflow should happen.
    * @fires Accordion#down
+   * @function
    */
   Accordion.prototype.down = function($target, firstTime) {
     var _this = this;
@@ -161,6 +183,7 @@
    * Closes the tab defined by `$target`.
    * @param {jQuery} $target - Accordion tab to close.
    * @fires Accordion#up
+   * @function
    */
   Accordion.prototype.up = function($target) {
     var $aunts = $target.parent().siblings(),
@@ -193,6 +216,7 @@
   /**
    * Destroys an instance of an accordion.
    * @fires Accordion#destroyed
+   * @function
    */
   Accordion.prototype.destroy = function() {
     this.$element.find('[data-tab-content]').slideUp(0).css('display', '');
@@ -207,4 +231,4 @@
   };
 
   Foundation.plugin(Accordion);
-}(jQuery);
+}(jQuery, window.Foundation);

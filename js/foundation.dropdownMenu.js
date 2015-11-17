@@ -45,15 +45,60 @@
    */
   DropdownMenu.defaults = {
     // toggleOn: 'both',
+    /**
+     * Allow a submenu to open/remain open on parent click event. Allows cursor to move away from menu.
+     * @option
+     * @example true
+     */
     clickOpen: true,
+    /**
+     * Allow clicks on the body to close any open submenus.
+     * @option
+     * @example false
+     */
     closeOnClick: false,
+    /**
+     * Disallows hover events from opening submenus
+     * @option
+     * @example false
+     */
     disableHover: false,
+    /**
+     * Allow a submenu to automatically close on a mouseleave event.
+     * @option
+     * @example true
+     */
     autoclose: true,
+    /**
+     * Amount of time to delay opening a submenu on hover event.
+     * @option
+     * @example 150
+     */
     hoverDelay: 150,
+    /**
+     * Amount of time to delay closing a submenu on a mouseleave event.
+     * @option
+     * @example 500
+     */
     closingTime: 500,
     // wrapOnKeys: true,
+    /**
+     * Position of the menu relative to what direction the submenus should open. Handled by JS.
+     * @option
+     * @example 'left'
+     */
     alignment: 'left',
+    /**
+     * Class applied to vertical oriented menus, Foundation default is `vertical`. Update this if using your own class.
+     * @option
+     * @example 'vertical'
+     */
     verticalClass: 'vertical',
+    /**
+     * Class applied to right-side oriented menus, Foundation default is `align-right`. Update this if using your own class.
+     * @option
+     * @example 'align-right'
+     */
     rightClass: 'align-right'
   };
   /**
@@ -368,9 +413,9 @@
       if(this.changed){
         //remove position class
         if(this.options.alignment === 'left'){
-          $elems.find('.opens-right').removeClass('opens-right').addClass('opens-left');
-        }else{
           $elems.find('.opens-left').removeClass('opens-left').addClass('opens-right');
+        }else{
+          $elems.find('.opens-right').removeClass('opens-right').addClass('opens-left');
         }
       }
       /**
@@ -405,9 +450,10 @@
     this.$element
         .removeData('zf-plugin')
         .find('li')
-        .removeClass('js-dropdown-nohover')
-        .off('.zf.dropdownmenu');
-
+        .removeClass('js-dropdown-nohover is-right-arrow is-left-arrow opens-left opens-inner opens-right')
+        .add('a').off('.zf.dropdownmenu')
+        .end().find('ul').removeClass('first-sub');
+    Foundation.Nest.Burn(this.$element, 'dropdown');
     Foundation.unregisterPlugin(this);
   };
   Foundation.plugin(DropdownMenu);

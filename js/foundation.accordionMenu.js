@@ -43,10 +43,18 @@
   }
 
   AccordionMenu.defaults = {
+    /**
+     * Amount of time to animate the opening of a submenu in ms.
+     * @option
+     * @example 250
+     */
     slideSpeed: 250,
-    wrapOnKeys: false,
+    /**
+     * Allow the menu to have multiple open panes.
+     * @option
+     * @example true
+     */
     multiOpen: true
-
   };
 
   /**
@@ -171,9 +179,18 @@
       });
     });//.attr('tabindex', 0);
   };
+  /**
+   * Closes all panes of the menu.
+   * @function
+   */
   AccordionMenu.prototype.hideAll = function(){
     this.$element.find('[data-submenu]').slideUp(this.options.slideSpeed);
   };
+  /**
+   * Toggles the open/close state of a submenu.
+   * @function
+   * @param {jQuery} $target - the submenu to toggle
+   */
   AccordionMenu.prototype.toggle = function($target){
     if (!$target.is(':hidden')) {
       this.up($target);
@@ -244,6 +261,7 @@
      * @event AccordionMenu#destroy
      */
     // this.$element.trigger('destroyed.zf.accordionMenu');
+    Foundation.Nest.Burn(this.$element, 'accordion');
     Foundation.unregisterPlugin(this);
   };
 

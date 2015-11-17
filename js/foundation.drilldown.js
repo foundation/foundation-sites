@@ -35,11 +35,25 @@
     });
   }
   Drilldown.defaults = {
+    /**
+     * Markup used for JS generated back button. Prepended to submenu lists and deleted on `destroy` method.
+     * @option
+     * @example '<li><a>Back</a></li>'
+     */
     backButton: '<li class="js-drilldown-back" tabindex="0"><a>Back</a></li>',
+    /**
+     * Markup used to wrap drilldown menu. Use a class name for independent styling, or the JS applied class: `is-drilldown`.
+     * @option
+     * @example '<div></div>'
+     */
     wrapper: '<div></div>',
+    /**
+     * Allow the menu to return to root list on body click.
+     * @option
+     * @example false
+     */
     closeOnClick: false,
-    holdOpen: false
-    // transitionendEvt: Foundation.Prefixer('transitionend')
+    // holdOpen: false
   };
   /**
    * Initializes the drilldown by creating jQuery collections of elements
@@ -54,8 +68,7 @@
 
     // console.log(this.$wrapper.outerHeight(), this.$wrapper.css());
     this._prepareMenu();
-    // this.getMaxHeight();
-
+    // this._getMaxDims();
     this._keyboardEvents();
   };
   /**
@@ -67,9 +80,9 @@
    */
   Drilldown.prototype._prepareMenu = function(){
     var _this = this;
-    if(!this.options.holdOpen){
-      this._menuLinkEvents();
-    }
+    // if(!this.options.holdOpen){
+    //   this._menuLinkEvents();
+    // }
     this.$submenuAnchors.each(function(){
       var $sub = $(this);
       $sub.find('a')[0].removeAttribute('href');
@@ -90,7 +103,7 @@
       }
     });
     if(!this.$element.parent().hasClass('is-drilldown')){
-      this.$wrapper = $(this.options.wrapper).addClass('is-drilldown').css(this.getMaxHeight());
+      this.$wrapper = $(this.options.wrapper).addClass('is-drilldown').css(this._getMaxDims());
       this.$element.wrap(this.$wrapper);
     }
 
@@ -130,6 +143,10 @@
       // console.log('back button');
     });
   };
+  /**
+   * Adds keydown event listener to `li`'s in the menu.
+   * @private
+   */
   Drilldown.prototype._keyboardEvents = function() {
     var _this = this;
     this.$menuItems.add(this.$element.find('.js-drilldown-back')).on('keydown.zf.drilldown', function(e){
@@ -149,14 +166,14 @@
         next: function() {
           if ($element.is(_this.$submenuAnchors)) {
             _this._show($element);
-            $element.on('transitionend.zf.drilldown', function(){
+            $element.on(Foundation.transitionend + '.zf.drilldown', function(){
               $element.find('ul li').filter(_this.$menuItems).first().focus();
             });
           }
         },
         previous: function() {
           _this._hide($element.parent('ul'));
-          $element.parent('ul').on('transitionend.zf.drilldown', function(){
+          $element.parent('ul').on(Foundation.transitionend + '.zf.drilldown', function(){
             setTimeout(function() {
               $element.parent('ul').parent('li').focus();
             }, 1);
@@ -196,9 +213,8 @@
    */
   Drilldown.prototype._hideAll = function(){
     this.$element.find('.is-drilldown-sub.is-active').addClass('is-closing')
-        .on('transitionend.zf.drilldown', function(e){
-          // console.log('transitionend');
-          $(this).removeClass('is-active is-closing').off('transitionend.zf.drilldown');
+        .on(Foundation.transitionend + '.zf.drilldown', function(e){
+          $(this).removeClass('is-active is-closing').off(Foundation.transitionend + '.zf.drilldown');
         });
         /**
          * Fires when the menu is fully closed.
@@ -257,12 +273,12 @@
   Drilldown.prototype._hide = function($elem){
     var _this = this;
     $elem.addClass('is-closing')
-      .on('transitionend.zf.drilldown', function(e){
+      .on(Foundation.transitionend + '.zf.drilldown', function(e){
         // console.log('transitionend');
-        $(this).removeClass('is-active is-closing').off('transitionend.zf.drilldown');
+        $(this).removeClass('is-active is-closing').off(Foundation.transitionend + '.zf.drilldown');
       });
     /**
-     * Fires when the menu is fully closed.
+     * Fires when the submenu is has closed.
      * @event Drilldown#hide
      */
     $elem.trigger('hide.zf.drilldown', [$elem]);
@@ -274,9 +290,9 @@
    * @function
    * @private
    */
-  Drilldown.prototype.getMaxHeight = function(){
+  Drilldown.prototype._getMaxDims = function(){
     var max = 0, result = {};
-    this.$submenus.each(function(){
+    this.$submenus.add(this.$element).each(function(){
       var numOfElems = $(this).children('li').length;
       max = numOfElems > max ? numOfElems : max;
     });
@@ -303,147 +319,3 @@
   };
   Foundation.plugin(Drilldown);
 }(jQuery, window.Foundation);
-
-
-// !function(Foundation, $) {
-//   'use strict';
-//
-//   /**
-//    * Creates a new instance of Drilldown.
-//    * @class
-//    * @fires Drilldown#init
-//    * @param {jQuery} element - jQuery object to make into a drilldown menu.
-//    * @param {Object} options - Overrides to the default plugin settings.
-//    */
-//   function Drilldown(element) {
-//     this.$element = element;
-//     this.options = $.extend({}, Drilldown.defaults, this.$element.data());
-//     // this.$container = $();
-//     // this.$currentMenu = this.$element;
-//
-//     this._init();
-//
-//     /**
-//      * Fires when the plugin has been successfuly initialized.
-//      * @event Drilldown#init
-//      */
-//     this.$element.trigger('init.zf.drilldown');
-//   }
-//
-//   Drilldown.defaults = {
-//     /**
-//      * HTML to use for the back button at the top of each sub-menu.
-//      * @option
-//      * @sample '<li class="js-drilldown-back"><a>Back</a></li>'
-//      */
-//     backButton: '<li class="js-drilldown-back"><a>Back</a></li>'
-//   };
-//
-//   Drilldown.prototype = {
-//     /**
-//      * Initializes the Drilldown by creating a container to wrap the Menu in, and initializing all submenus.
-//      * @private
-//      */
-//     _init: function() {
-//       console.log('yo');
-//       this.$container = $('<div class="is-drilldown"></div>');
-//       this.$container.css('width', this.$element.css('width'));
-//       this.$element.wrap(this.$container);
-//       this._prepareMenu(this.$element, true);
-//     },
-//
-//     /**
-//      * Scans a Menu for any sub Menus inside of it. This is a recursive function, so when a sub menu is found, this method will be called on that sub menu.
-//      * @private
-//      * @param {jQuery} $elem - Menu to scan for sub menus.
-//      * @param {Boolean} root - If true, the menu being scanned is at the root level.
-//      */
-//     _prepareMenu: function($elem, root) {
-//       var _this = this;
-//
-//       // Create a trigger to move up the menu. This is not used on the root-level menu, because it doesn't need a back button.
-//       if (!root) {
-//         var $backButton = $(_this.options.backButton);
-//         $backButton.mouseup(function() {
-//           _this.backward();
-//         });
-//         // console.log(_this.options.backButton);
-//         $elem.prepend($backButton);
-//       }
-//
-//       // Look for sub-menus inside the current one
-//       $elem.children('li').each(function() {
-//         var $submenu = $(this).children('[data-submenu]');
-//
-//         // If it exists...
-//         if ($submenu.length) {
-//           $submenu.addClass('is-drilldown-sub');
-//
-//           // Create a trigger to move down the menu
-//           $(this).children('a').mouseup(function() {
-//             _this.forward($submenu);
-//             return false;
-//           });
-//
-//           // We have to go deeper
-//           _this._prepareMenu($submenu, false);
-//         }
-//       });
-//     },
-//
-//     /**
-//      * Moves down the drilldown by activating the menu specified in `$target`.
-//      * @fires Drilldown#forward
-//      * @param {jQuery} $target - Sub menu to activate.
-//      */
-//     forward: function($target) {
-//       var _this = this;
-//
-//       Foundation.requestAnimationFrame(function() {
-//         $target.addClass('is-active');
-//         _this.$currentMenu = $target;
-//
-//         /**
-//          * Fires when the menu is done moving forwards.
-//          * @event Drilldown#forward
-//          */
-//         _this.$element.trigger('forward.zf.drilldown', [_this.$currentMenu]);
-//       });
-//     },
-//
-//     /**
-//      * Moves up the drilldown by deactivating the current menu.
-//      * @fires Drilldown#backward
-//      */
-//     backward: function() {
-//       var _this = this;
-//
-//       Foundation.requestAnimationFrame(function() {
-//         _this.$currentMenu.removeClass('is-active');
-//         _this.$currentMenu = _this.$currentMenu.parents('[data-drilldown], [data-submenu]');
-//
-//         /**
-//          * Fires when the menu is done moving backwards.
-//          * @event Drilldown#backward
-//          */
-//         _this.$element.trigger('backward.zf.drilldown', [_this.$currentMenu]);
-//       });
-//     },
-//
-//     /**
-//      * Destroys an instance of a drilldown. A callback can optionally be run when the process is finished.
-//      * @param {Function} cb - Callback to run when the plugin is done being destroyed.
-//      */
-//     destroy: function(cb) {
-//       this.$element.find('[data-submenu]').removeClass('is-drilldown-sub');
-//       this.$currentMenu.removeClass('is-active');
-//       this.$element.find('.is-drilldown-back').remove();
-//       this.$element.removeData('zf-plugin');
-//       this.$element.unwrap();
-//
-//       if (typeof cb === 'function') cb();
-//     }
-//   };
-//
-//   Foundation.plugin(Drilldown);
-// }(window.Foundation, jQuery);
