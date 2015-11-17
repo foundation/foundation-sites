@@ -3,12 +3,12 @@
 @import "global";
 
 //Foundation Libraries
-@import 
+@import
   "foundation/settings",
   "foundation";
 
 //Marketing Site Common Library
-@import 
+@import
   "code",
   "marketing-off-canvas",
   "footer",
@@ -23,8 +23,8 @@ a#notice {
   overflow: hidden;
   position: relative;
   padding: 1rem 0;
-  width:100%; 
-  background: #C9025C; /* Old browsers */
+  width:100%;
+  // background: #FF6908; /* Old browsers */
   // background: -moz-linear-gradient(left,  #C9025C 0%, #DB0A5B 100%); /* FF3.6+ */
   // background: -webkit-gradient(linear, left top, right top, color-stop(0%,#81CFE0), color-stop(100%,#DB0A5B)); /* Chrome,Safari4+ */
   // background: -webkit-linear-gradient(left,  #C9025C 0%,#DB0A5B 100%); /* Chrome10+,Safari5.1+ */
@@ -32,17 +32,40 @@ a#notice {
   // background: -ms-linear-gradient(left,  #C9025C 0%,#DB0A5B 100%); /* IE10+ */
   // background: linear-gradient(to right,  #C9025C 0%,#DB0A5B 100%); /* W3C */
   // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#C9025C', endColorstr='#DB0A5B',GradientType=1 ); /* IE6-9 */
-  @media only screen and (max-width: 675px) { margin-top: -3px; }
+  background: rgba(15,28,33,1);
+  background: -moz-linear-gradient(top, rgba(15,28,33,1) 0%, rgba(38,54,62,1) 45%, rgba(79,88,99,1) 76%, rgba(198,134,127,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(15,28,33,1)), color-stop(45%, rgba(38,54,62,1)), color-stop(76%, rgba(79,88,99,1)), color-stop(100%, rgba(198,134,127,1)));
+  background: -webkit-linear-gradient(top, rgba(15,28,33,1) 0%, rgba(38,54,62,1) 45%, rgba(79,88,99,1) 76%, rgba(198,134,127,1) 100%);
+  background: -o-linear-gradient(top, rgba(15,28,33,1) 0%, rgba(38,54,62,1) 45%, rgba(79,88,99,1) 76%, rgba(198,134,127,1) 100%);
+  background: -ms-linear-gradient(top, rgba(15,28,33,1) 0%, rgba(38,54,62,1) 45%, rgba(79,88,99,1) 76%, rgba(198,134,127,1) 100%);
+  background: linear-gradient(to bottom, rgba(15,28,33,1) 0%, rgba(38,54,62,1) 45%, rgba(79,88,99,1) 76%, rgba(198,134,127,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0f1c21', endColorstr='#c6867f', GradientType=0 );
+  // span {
+  //   border-bottom: #fff 4px dashed;
+  //   width: 36%;
+  //   position: absolute;
+  //   bottom: 25px;
+  //   &.left-side { left: 0; }
+  //   &.right-side { right: 0; }
+  //   @media only screen and (max-width: 1000px) { width: 30%; }
+  //   @media only screen and (max-width: 675px) { width: 16%; }
+  // }
 
-  span { 
-    border-bottom: #fff 4px dashed;
-    width: 36%;
-    position: absolute;
-    bottom: 25px;  
-    &.left-side { left: 0; }
-    &.right-side { right: 0; }
-    @media only screen and (max-width: 1000px) { width: 30%; }
-    @media only screen and (max-width: 675px) { width: 16%; }
+  .countdown {
+    display: inline;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    margin-left: 3px;
+  }
+
+  .timer-colon {
+    margin: 0px -2px 0px -4px;
+    padding: 0;
+  }
+
+  .timer-hour, .timer-minute, .timer-second {
+    letter-spacing: 2px;
   }
 
   .info {
@@ -56,23 +79,10 @@ a#notice {
     // position: absolute;
     h5 { color: #ffffff; }
     text-align: center;
-    @media only screen and (max-width: 675px) { width: 100%; padding: 0 15px 20px 15px; position: relative; }
-  }
-  .graphic { 
-   /*    
-    width: 100px;
-    height: 100px; 
-    background: url("../img/yeti-pointing.svg") center center no-repeat;
-    z-index: 9999999;
-    background-size: 60%;
-    position: absolute;
-    bottom: -30px;
-    left: 60px;
-    @media only screen and (max-width: 1100px) { width: 100px; left: 30px;}
-    @media only screen and (max-width: 740px) { display: none !important; }
-    */
+    @media only screen and (max-width: 675px) { width: 100%; padding: 0 15px 0px 15px; position: relative; }
   }
 }
+
 
 .spaced-divider hr {
   margin: 0.5rem;
@@ -210,7 +220,7 @@ table.plugin-options {
   tbody {
     td:not([rowspan]) {
       font-family: Consolas, 'Liberation Mono', Courier, monospace;
-    } 
+    }
   }
   thead {
     td:first-child {
@@ -625,7 +635,7 @@ $custom-active-bg:darken($custom-link-color, 5%);
 // Make sure topbar dropdowns are above tab bar.
 .docs-bar ul.dropdown { z-index: 1003; }
 
-// Side nav custom active style 
+// Side nav custom active style
 .sidebar .side-nav li.active > a:first-child {
   font-weight: bold;
   color: lighten(#004054,20%);
@@ -686,7 +696,7 @@ you will need
     font-size: 1.3rem;
     font-weight: normal;
     text-transform: capitalize;
-  } 
+  }
 }
 
 
@@ -702,7 +712,7 @@ images
 
 .flow-chart {
   margin: 10px 10px 15px 0;
-  @media #{$small-only} { 
+  @media #{$small-only} {
     margin:20px;
   }
 }
@@ -734,7 +744,7 @@ padding
 }
 
 .otherapps {
-  margin-bottom: 20px !important; 
+  margin-bottom: 20px !important;
 }
 
 /*------------------------------------
@@ -770,7 +780,7 @@ circles
   height: 35px;
   position: relative;
   margin-top: -5px;
-  margin-right: 18px; 
+  margin-right: 18px;
   margin-bottom: 5px;
   margin-left: 0.83333rem;
   z-index: 2;
@@ -785,16 +795,16 @@ circles
 }
 
 
-@media only screen and (min-width: 0) and (max-width: 64.063em){ 
+@media only screen and (min-width: 0) and (max-width: 64.063em){
   .path-item {
-    padding-left: 0.83333rem; 
+    padding-left: 0.83333rem;
     .circlenumber {
       left: -12px;
     }
   }
 }
 
-@media #{$large-up} { 
+@media #{$large-up} {
   .path-item {
     padding-left: 65px;
     position: relative;
@@ -823,7 +833,7 @@ circles
     font-family: Consolas, 'Liberation Mono', Courier, monospace;
     font-weight: normal;
     padding-left:20px;
-    } 
+    }
   }
 }
 
@@ -1026,7 +1036,7 @@ what you get
     }
   }
   .tabs-content {
-    border-top: 1px solid #ccc; 
+    border-top: 1px solid #ccc;
     margin: 0;
     padding: 1rem;
   }
@@ -1067,7 +1077,7 @@ what you get
 
 // Stlyings for Getting Started Examples
 
-.what-comes-with { 
+.what-comes-with {
   hr {
     margin-top: 3.5rem;
     margin-bottom: 3.5rem;
@@ -1154,7 +1164,7 @@ border: 5px solid red;
   transform: translate3d(-100.5%, 0, 0);
 }
 
-.newsletter-foundation { 
+.newsletter-foundation {
   border: 2px solid #085a78;
   h5 { font-size: 20px;font-family: "Helvetica Neue", "Helvetica", Arial, Verdana, sans-serif;
   font-weight: 400; margin-bottom: 0px; margin-top: 10px; color: #222; line-height: 24px; }
@@ -1202,10 +1212,10 @@ border: 5px solid red;
 
 .top-bar.docs-bar .name h1 {
   padding: 0;
-  margin-left: 20px; 
+  margin-left: 20px;
 }
 .top-bar.docs-bar .name h1 img {
-  margin-top: -2px; 
+  margin-top: -2px;
   display: inline-block !important;
   vertical-align: middle !important;
 }
@@ -1220,11 +1230,11 @@ border: 5px solid red;
   font-size: 22px !important;
   line-height: 45px;
   padding: 0;
-  text-rendering: auto; 
+  text-rendering: auto;
   span { font-size: 17px !important; line-height: 0 !important; margin-left: 0px; }
 }
 .top-bar.docs-bar .name h1 a:hover {
-  opacity: 1; 
+  opacity: 1;
 }
 
 .top-bar.docs-bar .top-bar-section > ul > .divider, .top-bar-section > ul > [role="separator"] {
