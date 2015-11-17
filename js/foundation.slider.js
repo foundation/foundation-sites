@@ -43,21 +43,96 @@
   }
 
   Slider.defaults = {
+    /**
+     * Minimum value for the slider scale.
+     * @option
+     * @example 0
+     */
     start: 0,
+    /**
+     * Maximum value for the slider scale.
+     * @option
+     * @example 100
+     */
     end: 100,
+    /**
+     * Minimum value change per change event. Not Currently Implemented!
+     * @option
+     */
     step: 1,
+    /**
+     * Value at which the handle/input *(left handle/first input)* should be set to on initialization.
+     * @option
+     * @example 0
+     */
     initialStart: 0,
+    /**
+     * Value at which the right handle/second input should be set to on initialization.
+     * @option
+     * @example 100
+     */
     initialEnd: 100,
+    /**
+     * Allows the input to be located outside the container and visible. Set to by the JS
+     * @option
+     * @example false
+     */
     binding: false,
+    /**
+     * Allows the user to click/tap on the slider bar to select a value.
+     * @option
+     * @example true
+     */
     clickSelect: true,
+    /**
+     * Set to true and use the `vertical` class to change alignment to vertical.
+     * @option
+     * @example false
+     */
     vertical: false,
+    /**
+     * Allows the user to drag the slider handle(s) to select a value.
+     * @option
+     * @example true
+     */
     draggable: true,
+    /**
+     * Disables the slider and prevents event listeners from being applied. Double checked by JS with `disabledClass`.
+     * @option
+     * @example false
+     */
     disabled: false,
+    /**
+     * Allows the use of two handles. Double checked by the JS. Changes some logic handling.
+     * @option
+     * @example false
+     */
     doubleSided: false,
-    steps: 100,
+    /**
+     * Potential future feature.
+     */
+    // steps: 100,
+    /**
+     * Number of decimal places the plugin should go to for floating point precision.
+     * @option
+     * @example 2
+     */
     decimal: 2,
-    dragDelay: 0,
+    /**
+     * Time delay for dragged elements.
+     */
+    // dragDelay: 0,
+    /**
+     * Time, in ms, to animate the movement of a slider handle if user clicks/taps on the bar. Needs to be manually set if updating the transition time in the Sass settings.
+     * @option
+     * @example 200
+     */
     moveTime: 200,//update this if changing the transition time in the sass
+    /**
+     * Class applied to disabled sliders.
+     * @option
+     * @example 'disabled'
+     */
     disabledClass: 'disabled'
   };
   /**
@@ -68,7 +143,7 @@
   Slider.prototype._init = function(){
     this.inputs = this.$element.find('input');
     this.handles = this.$element.find('[data-slider-handle]');
-    this.options.vertical = this.$element.hasClass('vertical');
+
     this.$handle = this.handles.eq(0);
     this.$input = this.inputs.length ? this.inputs.eq(0) : $('#' + this.$handle.attr('aria-controls'));
     this.$fill = this.$element.find('[data-slider-fill]').css(this.options.vertical ? 'height' : 'width', 0);
@@ -315,9 +390,9 @@
           $body.on('mousemove.zf.slider', function(e){
             e.preventDefault();
 
-            timer = setTimeout(function(){
+            // timer = setTimeout(function(){
               _this._handleEvent(e, curHandle);
-            }, _this.options.dragDelay);
+            // }, _this.options.dragDelay);
           }).on('mouseup.zf.slider', function(e){
             clearTimeout(timer);
 
