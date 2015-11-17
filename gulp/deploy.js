@@ -27,16 +27,12 @@ gulp.task('deploy:custom', ['sass:foundation', 'javascript:foundation'], functio
   var cssFilter = filter(['*.css']);
   var jsFilter  = filter(['*.js']);
 
-  return gulp.src('./_build/assets/css/foundation.css')
-    .pipe(cssFilter)
-      .pipe(gulp.dest('./_build/assets/css'))
+  gulp.src('./_build/assets/css/foundation.css')
       .pipe(minifyCss())
       .pipe(rename('foundation.min.css'))
       .pipe(gulp.dest('./_build/assets/css'));
 
   return gulp.src('_build/assets/js/foundation.js')
-    .pipe(jsFilter)
-      .pipe(gulp.dest('./_build/assets/js'))
       .pipe(uglify())
       .pipe(rename('foundation.min.js'))
       .pipe(gulp.dest('./_build/assets/js'));
