@@ -67,8 +67,16 @@ gulp.task('sass:settings', function() {
       'grid': 'The Grid',
       'off-canvas': 'Off-canvas',
       'typography-base': 'Base Typography'
-    }
+    },
+    sort: [
+      'global',
+      'breakpoints',
+      'grid',
+      'typography-base',
+      'typography-helpers'
+    ],
+    imports: ['util/util']
   }
 
-  octophant(['./scss'], options);
+  octophant('./scss', options);
 });

@@ -34,7 +34,7 @@
     "mocha": "^2.3.3",
     "motion-ui": "^1.1.0",
     "multiline": "^1.0.2",
-    "octophant": "^0.2.0",
+    "octophant": "^1.0.0",
     "open": "0.0.5",
     "opener": "^1.4.1",
     "panini": "^1.0.0",
