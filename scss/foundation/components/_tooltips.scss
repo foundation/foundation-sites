@@ -66,8 +66,8 @@ $tooltip-max-width: 300px !default;
       #{$default-float}: 50%;
 
       > .nub {
-        border-color: transparent transparent $tooltip-bg transparent;
         border: solid $tooltip-pip-size;
+        border-color: transparent transparent $tooltip-bg transparent;
         display: block;
         height: 0;
         pointer-events: none;
@@ -134,9 +134,18 @@ $tooltip-max-width: 300px !default;
           right: auto;
           top: 50%;
         }
+      }
 
+      .tooltip.tip-override {
+        > .nub {
+          border-color: transparent transparent $tooltip-bg transparent;
+        }
+
+        &.tip-left>.nub,
+        &.tip-right>.nub {
+          margin-top: 0;
+        }
       }
     }
-
   }
 }

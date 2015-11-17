@@ -17,6 +17,80 @@
 
 
 
+/* Banner for announcements */
+a#notice {
+  display:block;
+  overflow: hidden;
+  position: relative;
+  padding: 1rem 0;
+  width:100%; 
+  background: #C9025C; /* Old browsers */
+  // background: -moz-linear-gradient(left,  #C9025C 0%, #DB0A5B 100%); /* FF3.6+ */
+  // background: -webkit-gradient(linear, left top, right top, color-stop(0%,#81CFE0), color-stop(100%,#DB0A5B)); /* Chrome,Safari4+ */
+  // background: -webkit-linear-gradient(left,  #C9025C 0%,#DB0A5B 100%); /* Chrome10+,Safari5.1+ */
+  // background: -o-linear-gradient(left,  #C9025C 0%,#DB0A5B 100%); /* Opera 11.10+ */
+  // background: -ms-linear-gradient(left,  #C9025C 0%,#DB0A5B 100%); /* IE10+ */
+  // background: linear-gradient(to right,  #C9025C 0%,#DB0A5B 100%); /* W3C */
+  // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#C9025C', endColorstr='#DB0A5B',GradientType=1 ); /* IE6-9 */
+  @media only screen and (max-width: 675px) { margin-top: -3px; }
+
+  span { 
+    border-bottom: #fff 4px dashed;
+    width: 36%;
+    position: absolute;
+    bottom: 25px;  
+    &.left-side { left: 0; }
+    &.right-side { right: 0; }
+    @media only screen and (max-width: 1000px) { width: 30%; }
+    @media only screen and (max-width: 675px) { width: 16%; }
+  }
+
+  .info {
+    left: 0;
+    right: 0;
+    // top: 15px;
+    z-index: 20;
+    // width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    // position: absolute;
+    h5 { color: #ffffff; }
+    text-align: center;
+    @media only screen and (max-width: 675px) { width: 100%; padding: 0 15px 20px 15px; position: relative; }
+  }
+  .graphic { 
+   /*    
+    width: 100px;
+    height: 100px; 
+    background: url("../img/yeti-pointing.svg") center center no-repeat;
+    z-index: 9999999;
+    background-size: 60%;
+    position: absolute;
+    bottom: -30px;
+    left: 60px;
+    @media only screen and (max-width: 1100px) { width: 100px; left: 30px;}
+    @media only screen and (max-width: 740px) { display: none !important; }
+    */
+  }
+}
+
+.spaced-divider hr {
+  margin: 0.5rem;
+  border: 1px solid #4e4e4e;
+}
+
+.top-bar-section .dropdown li.title{
+  color: rgba(255,255,255,0.5);
+  padding-top: 10px;
+  padding-left: 15px;
+  font-size: 0.8em;
+//  text-transform: uppercase;
+//  letter-spacing: 2px;
+}
+
+.top-bar-section .divider, .top-bar-section [role="separator"]{
+  border-top: solid 1px #484848;
+}
 
 .row {
   max-width: rem-calc(1440);
@@ -413,7 +487,6 @@ footer { margin-top: 45px; }
   abbr,
   acronym {
     text-transform: uppercase;
-    font-size: 90%;
     color: $body-font-color;
     border-bottom: $acronym-underline;
     cursor: $cursor-help-value;
@@ -1099,4 +1172,104 @@ border: 5px solid red;
 
 .row.collapse.margintop-20px{
   margin-top:20px;
+}
+
+// building blocks styles
+
+.building-blocks-section {
+  padding: 0.75rem 0 3rem 0;
+
+  .building-blocks-header {
+    margin-bottom: 2.5rem;
+  }
+}
+
+.building-block-item {
+  padding: 0.5rem 0;
+  text-align: center;
+  border: 3px solid $secondary-color;
+  min-height: 14rem;
+  overflow: hidden;
+  margin-bottom: 1rem;
+
+  .building-block-item-header {
+    margin-bottom: 2rem;
+  }
+}
+
+
+.top-bar.docs-bar { height: 45px !important; }
+
+.top-bar.docs-bar .name h1 {
+  padding: 0;
+  margin-left: 20px; 
+}
+.top-bar.docs-bar .name h1 img {
+  margin-top: -2px; 
+  display: inline-block !important;
+  vertical-align: middle !important;
+}
+.top-bar.docs-bar .name h1 a {
+  opacity: 0.75;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
+  font-family: "Proxima Nova", "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-weight: bold;
+  font-size: 22px !important;
+  line-height: 45px;
+  padding: 0;
+  text-rendering: auto; 
+  span { font-size: 17px !important; line-height: 0 !important; margin-left: 0px; }
+}
+.top-bar.docs-bar .name h1 a:hover {
+  opacity: 1; 
+}
+
+.top-bar.docs-bar .top-bar-section > ul > .divider, .top-bar-section > ul > [role="separator"] {
+  border-right: solid 1px #4e4e4e;
+  border-bottom: none;
+  border-top: none;
+  clear: none;
+  height: 45px;
+  width: 0;
+}
+.top-bar.docs-bar .top-bar-section ul li > a:not(.button) {
+  font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !important;
+  font-weight: bold;
+  padding: 0 15px;
+  line-height: 45px;
+}
+
+.top-bar.docs-bar .top-bar-section .dropdown li a {
+  font-weight: normal !important;
+}
+.top-bar.docs-bar .top-bar-section .has-form {
+  padding: 0 15px !important;
+  height: 45px;
+  line-height: 45px;
+  a { line-height: 47px; }
+}
+
+.top-bar.docs-bar .top-bar-section ul li > a.button {
+  font-size: 0.8125rem;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid;
+  background-color: #008CBA;
+  border-color: #007095;
+  color: #FFFFFF;
+  border-style: solid;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: bold;
+  line-height: normal;
+  margin: 0 0 1.25rem;
+  text-decoration: none;
+  text-align: center;
+  -webkit-appearance: none;
+  border-color: #007095;
+  transition: background-color 300ms ease-out;
 }

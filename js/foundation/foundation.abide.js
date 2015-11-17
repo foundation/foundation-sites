@@ -9,11 +9,12 @@
     settings : {
       live_validate : true, // validate the form as you go
       validate_on_blur : true, // validate whenever you focus/blur on an input field
-      // validate_on: 'tab', // tab (when user tabs between fields), change (input changes), manual (call custom events) 
+      // validate_on: 'tab', // tab (when user tabs between fields), change (input changes), manual (call custom events)
+
       focus_on_invalid : true, // automatically bring the focus to an invalid input field
-      error_labels : true, // labels with a for="inputId" will recieve an `error` class
-      error_class : 'error', // labels with a for="inputId" will recieve an `error` class
-      // the amount of time Abide will take before it validates the form (in ms). 
+      error_labels : true, // labels with a for="inputId" will receive an `error` class
+      error_class : 'error', // labels with a for="inputId" will receive an `error` class
+      // the amount of time Abide will take before it validates the form (in ms).
       // smaller time will result in faster validation
       timeout : 1000,
       patterns : {
@@ -79,7 +80,6 @@
         }.bind(originalSelf), settings.timeout);
       }
 
-
       form
         .off('.abide')
         .on('submit.fndtn.abide', function (e) {
@@ -92,15 +92,21 @@
           }
         })
         .on('reset', function (e) {
-          return self.reset($(this), e);          
+          return self.reset($(this), e);
         })
         .find('input, textarea, select').not(":hidden, [data-abide-ignore]")
           .off('.abide')
           .on('blur.fndtn.abide change.fndtn.abide', function (e) {
+              var id = this.getAttribute('id'),
+                  eqTo = form.find('[data-equalto="'+ id +'"]');
             // old settings fallback
             // will be deprecated with F6 release
             if (settings.validate_on_blur && settings.validate_on_blur === true) {
               validate(this, e);
+            }
+            // checks if there is an equalTo equivalent related by id
+            if(typeof eqTo.get(0) !== "undefined" && eqTo.val().length){
+              validate(eqTo.get(0),e);
             }
             // new settings combining validate options into one setting
             if (settings.validate_on === 'change') {
@@ -108,10 +114,16 @@
             }
           })
           .on('keydown.fndtn.abide', function (e) {
+            var id = this.getAttribute('id'),
+                eqTo = form.find('[data-equalto="'+ id +'"]');
             // old settings fallback
             // will be deprecated with F6 release
             if (settings.live_validate && settings.live_validate === true && e.which != 9) {
               validate(this, e);
+            }
+            // checks if there is an equalTo equivalent related by id
+            if(typeof eqTo.get(0) !== "undefined" && eqTo.val().length){
+              validate(eqTo.get(0),e);
             }
             // new settings combining validate options into one setting
             if (settings.validate_on === 'tab' && e.which === 9) {
@@ -126,7 +138,7 @@
               $('html, body').animate({
                   scrollTop: $(e.target).offset().top
               }, 100);
-            } 
+            }
           });
     },
 
@@ -205,8 +217,11 @@
     // TODO: Break this up into smaller methods, getting hard to read.
     check_validation_and_apply_styles : function (el_patterns) {
       var i = el_patterns.length,
-          validations = [],
-          form = this.S(el_patterns[0][0]).closest('[data-' + this.attr_name(true) + ']'),
+          validations = [];
+      if (i == 0) {
+        return validations;
+      }
+      var form = this.S(el_patterns[0][0]).closest('[data-' + this.attr_name(true) + ']'),
           settings = form.data(this.attr_name(true) + '-init') || {};
       while (i--) {
         var el = el_patterns[i][0],
@@ -328,20 +343,20 @@
           disabled = false;
 
       // Has to count up to make sure the focus gets applied to the top error
-        for (var i=0; i < count; i++) {
-            if( group[i].getAttribute('disabled') ){
-                disabled=true;
-                valid=true;
-            } else {
-                if (group[i].checked){
-                    valid = true;
-                } else {
-                    if( disabled ){
-                        valid = false;
-                    }
-                }
+      for (var i=0; i < count; i++) {
+        if( group[i].getAttribute('disabled') ){
+          disabled=true;
+          valid=true;
+        } else {
+          if (group[i].checked){
+            valid = true;
+          } else {
+            if( disabled ){
+              valid = false;
             }
+          }
         }
+      }
 
       // Has to count up to make sure the focus gets applied to the top error
       for (var i = 0; i < count; i++) {

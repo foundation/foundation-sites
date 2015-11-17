@@ -329,7 +329,7 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
       }
 
       ul li {
-        background: $topbar-dropdown-bg;
+      background: $topbar-dropdown-bg;
 
         > a {
           color: $topbar-link-color;
@@ -515,9 +515,11 @@ $topbar-dropdown-arrows: true !default; //Set false to remove the \00bb >> text 
         }
 
         .has-form > .button,
-        .has-form > button { 
-          padding-top: rem-calc(5);
-          top: (($topbar-height - $topbar-input-height + rem-calc(-3)) / 2); 
+        .has-form > button {
+          font-size: rem-calc(14);
+          height: $topbar-input-height;
+          position: relative; 
+          top: (($topbar-height - $topbar-input-height) / 2);
         }
 
         &.expanded {

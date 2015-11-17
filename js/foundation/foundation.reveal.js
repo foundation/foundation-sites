@@ -1,6 +1,8 @@
 ;(function ($, window, document, undefined) {
   'use strict';
 
+  var openModals = [];
+
   Foundation.libs.reveal = {
     name : 'reveal',
 
@@ -17,6 +19,7 @@
       multiple_opened : false,
       bg_class : 'reveal-modal-bg',
       root_element : 'body',
+      no_scroll: true,
       open : function(){},
       opened : function(){},
       close : function(){},
@@ -169,6 +172,14 @@
 
         modal.attr('tabindex','0').attr('aria-hidden','false');
 
+        if(settings.no_scroll){//added 10/9/15, prevents annoying scroll positioning bug with position: absolute; reveals
+          var $body = $('body');
+          $body.on('open.fndtn.reveal', function(){
+            $body.css('overflow', 'hidden')
+                 .off('open.fndtn.reveal');
+          });
+        }
+
         this.key_up_on(modal);    // PATCH #3: turning on key up capture only when a reveal window is open
 
         // Prevent namespace event from triggering twice
@@ -177,6 +188,7 @@
         });
 
         modal.on('open.fndtn.reveal').trigger('open.fndtn.reveal');
+
 
         if (open_modal.length < 1) {
           this.toggle_bg(modal, true);
@@ -188,16 +200,25 @@
           };
         }
 
-        if (typeof ajax_settings === 'undefined' || !ajax_settings.url) {
-          if (open_modal.length > 0) {
-            if (settings.multiple_opened) {
+        var openModal = function() {
+          if(open_modal.length > 0) {
+            if(settings.multiple_opened) {
               self.to_back(open_modal);
             } else {
               self.hide(open_modal, settings.css.close);
             }
           }
 
-          this.show(modal, settings.css.open);
+          // bl: add the open_modal that isn't already in the background to the openModals array
+          if(settings.multiple_opened) {
+            openModals.push(modal);
+          }
+
+          self.show(modal, settings.css.open);
+        };
+
+        if (typeof ajax_settings === 'undefined' || !ajax_settings.url) {
+          openModal();
         } else {
           var old_success = typeof ajax_settings.success !== 'undefined' ? ajax_settings.success : null;
           $.extend(ajax_settings, {
@@ -218,14 +239,7 @@
               self.S(modal).foundation('section', 'reflow');
               self.S(modal).children().foundation();
 
-              if (open_modal.length > 0) {
-                if (settings.multiple_opened) {
-                  self.to_back(open_modal);
-                } else {
-                  self.hide(open_modal, settings.css.close);
-                }
-              }
-              self.show(modal, settings.css.open);
+              openModal();
             }
           });
 
@@ -252,6 +266,14 @@
 
         modal.removeAttr('tabindex','0').attr('aria-hidden','true');
 
+        if(settings.no_scroll){//added 10/9/15, prevents annoying scroll positioning bug with position: absolute; reveals
+          var $body = $('body');
+          $body.on('close.fndtn.reveal', function(){
+            $body.css('overflow', 'auto')
+                 .off('close.fndtn.reveal');
+          });
+        }
+
         this.locked = true;
         this.key_up_off(modal);   // PATCH #3: turning on key up capture only when a reveal window is open
 
@@ -263,8 +285,27 @@
         }
 
         if (settings.multiple_opened) {
+          var isCurrent = modal.is(':not(.toback)');
           self.hide(modal, settings.css.close, settings);
-          self.to_front($($.makeArray(open_modals).reverse()[1]));
+          if(isCurrent) {
+            // remove the last modal since it is now closed
+            openModals.pop();
+          } else {
+            // if this isn't the current modal, then find it in the array and remove it
+            openModals = $.grep(openModals, function(elt) {
+              var isThis = elt[0]===modal[0];
+              if(isThis) {
+                // since it's not currently in the front, put it in the front now that it is hidden
+                // so that if it's re-opened, it won't be .toback
+                self.to_front(modal);
+              }
+              return !isThis;
+            });
+          }
+          // finally, show the next modal in the stack, if there is one
+          if(openModals.length>0) {
+            self.to_front(openModals[openModals.length - 1]);
+          }
         } else {
           self.hide(open_modals, settings.css.close, settings);
         }
@@ -337,8 +378,9 @@
           }, settings.animation_speed / 2);
         }
 
+        css.top = $(window).scrollTop() + el.data('css-top') + 'px';
+
         if (animData.fade) {
-          css.top = $(window).scrollTop() + el.data('css-top') + 'px';
           var end_css = {opacity: 1};
 
           return setTimeout(function () {

@@ -1,10 +1,11 @@
 ---
 title: Dropdowns
+layout: component.html
 ---
 
 <h3 class="subheader">We removed the various dropdowns within different UI elements for Foundation 5. Instead, we created a universal dropdown plugin that will attach dropdowns or popovers to whatever element you need.</h3>
 
-***
+---
 
 {{> examples_dropdown_basic}}
 
@@ -67,8 +68,6 @@ Additional classes can be added to your dropdown to change its appearance.
   </div>
 </div>
 
-***
-
 <h3>Directions</h3>
 
 You can now position dropdowns on the top, bottom, left, or right of the target element. The default position is *bottom* and you do not need to change anything to get your tooltip positioned *bottom*.
@@ -92,7 +91,9 @@ To set other alignments, just specify the <code>align</code> property in <code>d
   </div>
 </div>
 
-***
+When the dropdown does not fit in the container, it will automatically be changed to align: bottom.  If this is not the desired behavior, you can override this by specifying the <code>ignore_repositioning</code> property in the <code>data-options</code>.
+
+---
 
 <!-- hide until 5.5.2
 <h3>Pip Alignment</h3>
@@ -140,7 +141,7 @@ For buttons wider than the dropdown, the entire dropdown is centered.
 </div>
 
 
-*** -->
+-->
 
 <h3>Autoclose</h3>
 
@@ -165,7 +166,7 @@ This option is enabled by default, but to disable (keep dropdowns persisting), s
   </div>
 </div>
 
-***
+---
 
 <h3>Hoverable Dropdown</h3>
 
@@ -182,13 +183,13 @@ If you'd rather have your dropdown be accessible by hover, you can add a data-op
   </div>
 </div>
 
-***
+---
 
 <h2>Accessibility</h2>
 
 <p class="panel">This component is not yet accessible. Stay tuned for updates in future releases.</p>
 
-***
+---
 
 <h2>Customize with Sass</h2>
 
@@ -199,7 +200,7 @@ Dropdowns can be easily customized using our Sass variables.
 
 {{> examples_dropdown_variables}}
 
-***
+---
 
 <h2>Semantic Markup With Sass</h2>
 
@@ -258,7 +259,7 @@ You can further customize your dropdowns with the options in the `dropdown-conta
 ```
 {{/markdown}}
 
-***
+---
 
 <h2>Configure With Javascript</h2>
 
@@ -287,7 +288,7 @@ $(document).foundation({
 ```
 {{/markdown}}
 
-***
+---
 
 <h3>Adding New Dropdown Content After Page Load</h3>
 
@@ -307,7 +308,7 @@ $(document).foundation('dropdown', 'reflow');
 ```
 {{/markdown}}
 
-***
+---
 
 <h3>Sass Errors?</h3>
 

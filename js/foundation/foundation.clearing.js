@@ -449,11 +449,21 @@
 
     // image caption
 
+<<<<<<< HEAD
     caption : function (container, caption) {
       if (caption.length != 0) {
         container
           .html(caption.html())
           .show();
+=======
+    caption : function (container, $image) {
+      var caption = $image.attr('data-caption');
+
+      if (caption) {
+      	var containerPlain = container.get(0);
+      	containerPlain.innerHTML = caption;
+        container.show();
+>>>>>>> refs/remotes/zurb/master
       } else {
         container
           .text('')

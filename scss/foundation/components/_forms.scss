@@ -22,8 +22,8 @@ $form-label-font-color: scale-color($black, $lightness: 30%) !default;
 $form-label-small-transform: capitalize !default;
 $form-label-bottom-margin: 0 !default;
 $input-font-family: inherit !default;
-$input-font-color: rgba(0,0,0,0.75) !default;
-$input-placeholder-font-color: $steel !default;
+$input-font-color: $tuatara !default;
+$input-placeholder-font-color: $base !default;
 $input-font-size: rem-calc(14) !default;
 $input-bg-color: $white !default;
 $input-focus-bg-color: scale-color($white, $lightness: -2%) !default;
@@ -45,7 +45,6 @@ $fieldset-padding: rem-calc(20) !default;
 $fieldset-margin: rem-calc(18 0) !default;
 
 // We use these to style the legends when you use them
-$legend-bg: $white !default;
 $legend-font-weight: $font-weight-bold !default;
 $legend-padding: rem-calc(0 3) !default;
 
@@ -136,7 +135,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
   }
   // Basic focus styles
   &:focus {
-    background: $input-focus-bg-color;
+    background-color: $input-focus-bg-color;
     border-color: $input-focus-border-color;
     outline: none;
   }
@@ -181,7 +180,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
   }
   @else if $alignment == inline {
     margin: 0 0 $form-spacing 0;
-    padding: $form-spacing / 2 + rem-calc($input-border-width) 0;
+    line-height: $input-font-size + ($form-spacing * 1.5);
   }
 }
 
@@ -240,7 +239,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 // We use this mixin to create postfix label styles
 // $bg - Default:$input-prefix-bg || scale-color($white, $lightness: -5%) !default;
 // $is-button - Toggle position settings if prefix is a button. Default: false
-@mixin postfix($bg:$input-prefix-bg, $border-left-hidden:false, $border:$input-prefix-border-color, $is-button:false) {
+@mixin postfix($bg:$input-prefix-bg, $border-left-hidden:true, $border:$input-prefix-border-color, $is-button:false) {
 
   @if $bg {
     $bg-lightness: lightness($bg);
@@ -277,10 +276,9 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 
   // and legend styles
   legend {
-    background: $legend-bg;
     font-weight: $legend-font-weight;
-    margin-#{$default-float}: rem-calc(-3);
     margin: 0;
+    margin-#{$default-float}: rem-calc(-3);
     padding: $legend-padding;
   }
 }
@@ -295,7 +293,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 
   // Go back to normal on focus
   &:focus {
-    background: $input-focus-bg-color;
+    background-color: $input-focus-bg-color;
     border-color: $input-focus-border-color;
   }
 }
@@ -340,7 +338,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 
   // The custom arrow has some fake horizontal padding so we can align it
   // from the right side of the element without relying on CSS3
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+);
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMTJweCIgeT0iMHB4IiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIzcHgiIHZpZXdCb3g9IjAgMCA2IDMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDYgMyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gcG9pbnRzPSI1Ljk5MiwwIDIuOTkyLDMgLTAuMDA4LDAgIi8+PC9zdmc+');
 
   // We can safely use leftmost and rightmost now
   background-position: if($text-direction == 'rtl', 0%, 100%) center;
@@ -358,7 +356,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
   padding: ($form-spacing / 2);
   @include radius(0);
   &.radius { @include radius($global-radius); }
-  &:hover {
+  &:focus {
     background-color: $select-hover-bg-color;
     border-color: $input-focus-border-color;
   }
@@ -370,12 +368,12 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
 }
 
 // We use this mixin to turn on/off HTML5 number spinners
-@mixin html5number($browser, $on:true) {
-  @if $on==false {
-      @if $browser==webkit {
+@mixin html5number($browser, $on: true) {
+  @if $on == false {
+      @if $browser == webkit {
         -webkit-appearance: none;
         margin: 0;
-      } @else if $browser==moz {
+      } @else if $browser == moz {
         -moz-appearance: textfield;
       }
   }
@@ -418,7 +416,7 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
     span.postfix, label.postfix { @include postfix(); }
 
     /* We use this to get basic styling on all basic form elements */
-    #{text-inputs(all, 'input')} {
+    input:not([type]), #{text-inputs(all, 'input')} {
       -webkit-appearance: none;
       -moz-appearance: none;
       border-radius: 0;
@@ -479,28 +477,28 @@ $select-hover-bg-color: scale-color($select-bg-color, $lightness: -3%) !default;
       height: auto;
     }
 
-	  /* Not allow resize out of parent */
-	  textarea {
-	    max-width: 100%;
-	  }
-    
+    /* Not allow resize out of parent */
+    textarea {
+      max-width: 100%;
+    }
+
     // style placeholder text cross browser
     ::-webkit-input-placeholder {
       color: $input-placeholder-font-color;
     }
 
     :-moz-placeholder { /* Firefox 18- */
-       color: $input-placeholder-font-color;  
+       color: $input-placeholder-font-color;
     }
 
     ::-moz-placeholder {  /* Firefox 19+ */
-       color: $input-placeholder-font-color;  
+       color: $input-placeholder-font-color;
     }
 
-    :-ms-input-placeholder {  
-       color: $input-placeholder-font-color;  
+    :-ms-input-placeholder {
+       color: $input-placeholder-font-color;
     }
-   
+
 
     /* Add height value for select elements to match text input height */
     select {

@@ -24,6 +24,25 @@ describe('abide:', function() {
       expect($('input[name="user_email"]')).not.toHaveData('invalid');
     });
 
+    it('should skip validation when there are no validatable fields', function() {
+      $(document).foundation();
+
+      $('input[name="user_name"]').val('Name').hide();
+      $('input[name="user_email"]').val('user@email.com').hide();
+
+      $('form').submit();
+
+      expect('valid.fndtn.abide').not.toHaveBeenTriggeredOn('form');
+      expect('valid').not.toHaveBeenTriggeredOn('input[name="user_name"]');
+      expect('valid').not.toHaveBeenTriggeredOn('input[name="user_email"]');
+      expect('invalid.fndtn.abide').not.toHaveBeenTriggeredOn('form');
+      expect('invalid').not.toHaveBeenTriggeredOn('input[name="user_name"]');
+      expect('invalid').not.toHaveBeenTriggeredOn('input[name="user_email"]');
+
+      $('input[name="user_name"]').show();
+      $('input[name="user_email"]').show();
+    });
+
     it('should trigger correct events for all required fields', function() {
       $(document).foundation();
 

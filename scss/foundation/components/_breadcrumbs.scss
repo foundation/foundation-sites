@@ -24,6 +24,7 @@ $crumb-border-color: scale-color($crumb-bg, $lightness: $crumb-function-factor) 
 $crumb-radius: $global-radius !default;
 
 // We use these to set various text styles for breadcrumbs.
+$crumb-line-height: rem-calc(11) !default;
 $crumb-font-size: rem-calc(11) !default;
 $crumb-font-color: $primary-color !default;
 $crumb-font-color-current: $oil !default;
@@ -34,6 +35,7 @@ $crumb-link-decor: underline !default;
 // We use these to control the slash between breadcrumbs
 $crumb-slash-color: $base !default;
 $crumb-slash: "/" !default;
+$crumb-slash-position: 1px !default;
 
 //
 // Breadcrumb Mixins
@@ -61,7 +63,7 @@ $crumb-slash: "/" !default;
   color: $crumb-font-color;
   float: $default-float;
   font-size: $crumb-font-size;
-  line-height: $crumb-font-size;
+  line-height: $crumb-line-height;
   margin: 0;
   text-transform: $crumb-font-transform;
 
@@ -99,15 +101,15 @@ $crumb-slash: "/" !default;
     }
   }
 
-  &:before {
+  &:after {
     color: $crumb-slash-color;
     content: "#{$crumb-slash}";
     margin: 0 $crumb-side-padding;
     position: relative;
-    top: 1px;
+    top: $crumb-slash-position;
   }
 
-  &:first-child:before {
+  &:last-child:after {
     content: " ";
     margin: 0;
   }
@@ -123,8 +125,8 @@ $crumb-slash: "/" !default;
         @include crumbs;
       }
     }
-    /* Accessibility - hides the forward slash */
-    [aria-label="breadcrumbs"] [aria-hidden="true"]:after {
+    /* Accessibility - hides the backward slash */
+    [aria-label="breadcrumbs"] [aria-hidden="true"]:before {
       content: "/";
     }
   }

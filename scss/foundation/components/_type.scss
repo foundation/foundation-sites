@@ -124,6 +124,9 @@ $microformat-abbr-padding: rem-calc(0 1) !default;
 $microformat-abbr-font-weight: $font-weight-bold !default;
 $microformat-abbr-font-decoration: none !default;
 
+// Controls the page margin when printing the website
+$print-margin: 0.34in !default;
+
 // Text alignment class names
 $align-class-names:
   small-only,
@@ -325,17 +328,6 @@ $align-class-breakpoints:
 
     ul {
       margin-#{$default-float}: $list-side-margin;
-      &.no-bullet {
-        margin-#{$default-float}: $list-side-margin-no-bullet;
-        li {
-          ul,
-          ol {
-            margin-#{$default-float}: $list-nested-margin;
-            margin-bottom: 0;
-            list-style: none;
-          }
-        }
-      }
     }
 
     /* Unordered Lists */
@@ -356,7 +348,6 @@ $align-class-breakpoints:
       &.square { list-style-type: square; margin-#{$default-float}: $list-side-margin;}
       &.circle { list-style-type: circle; margin-#{$default-float}: $list-side-margin;}
       &.disc { list-style-type: disc; margin-#{$default-float}: $list-side-margin;}
-      &.no-bullet { list-style: none; }
     }
 
     /* Ordered Lists */
@@ -367,6 +358,21 @@ $align-class-breakpoints:
         ol {
           margin-#{$default-float}: $list-nested-margin;
           margin-bottom: 0;
+        }
+      }
+    }
+
+    // Lists without bullets
+    .no-bullet {
+      list-style-type: none;
+      margin-#{$default-float}: $list-side-margin-no-bullet;
+      
+      li {
+        ul,
+        ol {
+          margin-#{$default-float}: $list-nested-margin;
+          margin-bottom: 0;
+          list-style: none;
         }
       }
     }
@@ -460,5 +466,60 @@ $align-class-breakpoints:
       h5 { font-size: $h5-font-size; }
       h6 { font-size: $h6-font-size; }
     }
+
+    // Only include these styles if you want them.
+    @if $include-print-styles {
+      /*
+       * Print styles.
+       *
+       * Inlined to avoid required HTTP connection: www.phpied.com/delay-loading-your-print-css/
+       * Credit to Paul Irish and HTML5 Boilerplate (html5boilerplate.com)
+      */
+      @media print {
+        * {
+          background: transparent !important;
+          color: $black !important; /* Black prints faster: h5bp.com/s */
+          box-shadow: none !important;
+          text-shadow: none !important;
+        }
+
+        a,
+        a:visited { text-decoration: underline;}
+        a[href]:after { content: " (" attr(href) ")"; }
+
+        abbr[title]:after { content: " (" attr(title) ")"; }
+
+        // Don't show links for images, or javascript/internal links
+        .ir a:after,
+        a[href^="javascript:"]:after,
+        a[href^="#"]:after { content: ""; }
+
+        pre,
+        blockquote {
+          border: 1px solid $aluminum;
+          page-break-inside: avoid;
+        }
+
+        thead { display: table-header-group; /* h5bp.com/t */ }
+
+        tr,
+        img { page-break-inside: avoid; }
+
+        img { max-width: 100% !important; }
+
+        @page { margin: $print-margin; }
+
+        p,
+        h2,
+        h3 {
+          orphans: 3;
+          widows: 3;
+        }
+
+        h2,
+        h3 { page-break-after: avoid; }
+      }
+    }
+
   }
 }

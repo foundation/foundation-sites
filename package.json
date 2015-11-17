@@ -1,10 +1,14 @@
 {
   "name": "foundation-sites",
-  "version": "5.5.2",
+  "version": "5.5.3",
   "main": "js/foundation/foundation.js",
+  "scripts": {
+    "start": "grunt"
+  },
   "devDependencies": {
     "assemble": "~0.4.37",
     "grunt": "~0.4.4",
+    "grunt-cli": "^0.1.13",
     "grunt-contrib-clean": "~0.5.0",
     "grunt-contrib-compress": "~0.7.0",
     "grunt-contrib-concat": "~0.3.0",

@@ -47,6 +47,8 @@ $progress-meter-alert-color: $alert-color !default;
   background: $bg;
   display: block;
   height: 100%;
+  float: left;
+  width: 0%;
 }
 
 
@@ -60,6 +62,10 @@ $progress-meter-alert-color: $alert-color !default;
       // Meter
       .meter {
         @include progress-meter;
+
+        &.secondary { @include progress-meter($bg:$progress-meter-secondary-color); }
+        &.success { @include progress-meter($bg:$progress-meter-success-color); }
+        &.alert { @include progress-meter($bg:$progress-meter-alert-color); }
       }
       &.secondary .meter { @include progress-meter($bg:$progress-meter-secondary-color); }
       &.success .meter { @include progress-meter($bg:$progress-meter-success-color); }
