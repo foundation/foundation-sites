@@ -35,10 +35,10 @@
       var dir;
       elapsedTime = new Date().getTime() - startTime;
       if(Math.abs(dx) >= $.spotSwipe.moveThreshold && elapsedTime <= $.spotSwipe.timeThreshold) {
-        dir = dx > 0 ? 'left' : 'right'
+        dir = dx > 0 ? 'left' : 'right';
       }
       else if(Math.abs(dy) >= $.spotSwipe.moveThreshold && elapsedTime <= $.spotSwipe.timeThreshold) {
-        dir = dy > 0 ? 'down' : 'up'
+        dir = dy > 0 ? 'down' : 'up';
       }
       if(dir) {
         onTouchEnd.call(this);
@@ -52,7 +52,7 @@
       startPosX = e.touches[0].pageX;
       startPosY = e.touches[0].pageY;
       isMoving = true;
-      startTime = new Date().getTime()
+      startTime = new Date().getTime();
       this.addEventListener('touchmove', onTouchMove, false);
       this.addEventListener('touchend', onTouchEnd, false);
     }

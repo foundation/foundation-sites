@@ -1,7 +1,6 @@
 /**
  * Motion module.
  * @module foundation.motion
- * @requires foundation.util.animationFrame
  */
 !function($, Foundation) {
 
@@ -39,7 +38,7 @@ function animate(isIn, element, animation, cb) {
   // });
 
   // Clean up the animation when it finishes
-  element.one(Foundation.transitionend, finish).one('finished.zf.animate', finish);
+  element.one(Foundation.transitionend, finish);//.one('finished.zf.animate', finish);
 
   // Hides the element (for out animations), resets the element, and runs a callback
   function finish() {
