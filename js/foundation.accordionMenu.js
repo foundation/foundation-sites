@@ -2,7 +2,8 @@
  * AccordionMenu module.
  * @module foundation.accordionMenu
  * @requires foundation.util.keyboard
- * @requires foundation.util.animationFrame
+ * @requires foundation.util.motion
+ * @requires foundation.util.nest
  */
 !function($) {
   'use strict';

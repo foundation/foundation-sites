@@ -74,6 +74,36 @@
     } };
   });
 })(jQuery);
+/****************************************************
+ * Method for adding psuedo drag events to elements *
+ ***************************************************/
+!function($){
+  $.fn.addTouch = function(){
+    this.each(function(i,el){
+      $(el).bind('touchstart touchmove touchend touchcancel',function(){
+        //we pass the original event object because the jQuery event
+        //object is normalized to w3c specs and does not provide the TouchList
+        handleTouch(event);
+      });
+    });
+
+    var handleTouch = function(event){
+      var touches = event.changedTouches,
+          first = touches[0],
+          eventTypes = {
+            touchstart: 'mousedown',
+            touchmove: 'mousemove',
+            touchend: 'mouseup'
+          },
+          type = eventTypes[event.type];
+
+      var simulatedEvent = document.createEvent('MouseEvent');
+      simulatedEvent.initMouseEvent(type, true, true, window, 1, first.screenX, first.screenY, first.clientX, first.clientY, false, false, false, false, 0/*left*/, null);
+      first.target.dispatchEvent(simulatedEvent);
+    };
+  };
+}(jQuery);
+
 
 //**********************************
 //**From the jQuery Mobile Library**

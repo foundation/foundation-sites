@@ -620,7 +620,7 @@ function parseStyleToObject(str) {
 /**
  * Motion module.
  * @module foundation.motion
- * @requires foundation.util.animationFrame
+ * @requires foundation.util.motion
  */
 !function($, Foundation) {
 
@@ -1786,7 +1786,7 @@ Foundation.IFeelYou = closemeListener;
  * Accordion module.
  * @module foundation.accordion
  * @requires foundation.util.keyboard
- * @requires foundation.util.animationFrame
+ * @requires foundation.util.motion
  */
 !function($) {
   'use strict';
@@ -1997,7 +1997,7 @@ Foundation.IFeelYou = closemeListener;
  * AccordionMenu module.
  * @module foundation.accordionMenu
  * @requires foundation.util.keyboard
- * @requires foundation.util.animationFrame
+ * @requires foundation.util.motion
  */
 !function($) {
   'use strict';
@@ -2243,7 +2243,7 @@ Foundation.IFeelYou = closemeListener;
  * Drilldown module.
  * @module foundation.drilldown
  * @requires foundation.util.keyboard
- * @requires foundation.util.animationFrame
+ * @requires foundation.util.motion
  */
 !function($, Foundation){
   'use strict';
@@ -2688,7 +2688,7 @@ Foundation.IFeelYou = closemeListener;
  * Dropdown module.
  * @module foundation.dropdown
  * @requires foundation.util.keyboard
- * @requires foundation.util.size-and-collision
+ * @requires foundation.util.box
  */
 !function($, Foundation){
   'use strict';
@@ -2927,7 +2927,7 @@ Foundation.IFeelYou = closemeListener;
  * DropdownMenu module.
  * @module foundation.dropdown-menu
  * @requires foundation.util.keyboard
- * @requires foundation.util.size-and-collision
+ * @requires foundation.util.box
  */
 !function(Foundation, $) {
   'use strict';
@@ -3969,7 +3969,7 @@ Foundation.IFeelYou = closemeListener;
 /**
  * Magellan module.
  * @module foundation.magellan
- * @requires foundation.util.animationFrame
+ * @requires foundation.util.motion
  */
 !function(Foundation, $) {
   'use strict';
@@ -4107,7 +4107,7 @@ Foundation.IFeelYou = closemeListener;
  * OffCanvas module.
  * @module foundation.offcanvas
  * @requires foundation.util.triggers
- * @requires foundation.util.animationFrame
+ * @requires foundation.util.motion
  */
 !function($, Foundation) {
 
@@ -4285,9 +4285,9 @@ Foundation.plugin(OffCanvas);
  * Orbit module.
  * @module foundation.orbit
  * @requires foundation.util.keyboard
- * @requires foundation.util.animationFrame
  * @requires foundation.util.motion
- * @requires foundation.util.timer
+ * @requires foundation.util.motion
+ * @requires foundation.util.timerAndImageLoader
  */
 !function($, Foundation){
   'use strict';
@@ -4868,7 +4868,7 @@ Foundation.plugin(ResponsiveToggle);
  * Reveal module.
  * @module foundation.reveal
  * @requires foundation.util.keyboard
- * @requires foundation.util.size-and-collision
+ * @requires foundation.util.box
  * @requires foundation.util.triggers
  * @requires foundation.util.mediaQuery
  */
@@ -5274,7 +5274,7 @@ Foundation.plugin(ResponsiveToggle);
 /**
  * Slider module.
  * @module foundation.slider
- * @requires foundation.util.animationFrame
+ * @requires foundation.util.motion
  * @requires foundation.util.triggers
  * @requires foundation.util.keyboard
  * @requires foundation.util.addtouch
@@ -6511,7 +6511,7 @@ Foundation.plugin(ResponsiveToggle);
 /**
  * Tooltip module.
  * @module foundation.tooltip
- * @requires foundation.util.size-and-collision
+ * @requires foundation.util.box
  * @requires foundation.util.triggers
  */
 !function($, document, Foundation){

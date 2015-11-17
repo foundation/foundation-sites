@@ -2,6 +2,7 @@
  * Tabs module.
  * @module foundation.tabs
  * @requires foundation.util.keyboard
+ * @requires foundation.util.timerAndImageLoader if tabs contain images
  */
 !function($, Foundation) {
   'use strict';

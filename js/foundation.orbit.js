@@ -2,9 +2,9 @@
  * Orbit module.
  * @module foundation.orbit
  * @requires foundation.util.keyboard
- * @requires foundation.util.animationFrame
  * @requires foundation.util.motion
- * @requires foundation.util.timer
+ * @requires foundation.util.timerAndImageLoader
+ * @requires foundation.util.touch
  */
 !function($, Foundation){
   'use strict';

@@ -2,7 +2,7 @@
  * Accordion module.
  * @module foundation.accordion
  * @requires foundation.util.keyboard
- * @requires foundation.util.animationFrame
+ * @requires foundation.util.motion
  */
 !function($, Foundation) {
   'use strict';
