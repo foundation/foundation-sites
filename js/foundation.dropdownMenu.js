@@ -2,7 +2,8 @@
  * DropdownMenu module.
  * @module foundation.dropdown-menu
  * @requires foundation.util.keyboard
- * @requires foundation.util.size-and-collision
+ * @requires foundation.util.box
+ * @requires foundation.util.nest
  */
 !function(Foundation, $) {
   'use strict';

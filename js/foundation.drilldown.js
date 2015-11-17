@@ -2,7 +2,8 @@
  * Drilldown module.
  * @module foundation.drilldown
  * @requires foundation.util.keyboard
- * @requires foundation.util.animationFrame
+ * @requires foundation.util.motion
+ * @requires foundation.util.nest
  */
 !function($, Foundation){
   'use strict';

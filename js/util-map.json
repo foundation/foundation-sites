@@ -39,7 +39,7 @@
     "foundation.util.motion.js",
     "foundation.util.timerAndImageLoader.js",
     "foundation.util.keyboard.js",
-    "foundation.util.timerAndImageLoader.js"
+    "foundation.util.touch.js"
   ],
   "responsiveMenu": [
     "foundation.util.triggers.js",
@@ -62,7 +62,7 @@
     "foundation.util.triggers.js",
     "foundation.util.motion.js",
     "foundation.util.keyboard.js",
-    "foundation.util.addTouch.js"
+    "foundation.util.touch.js"
   ],
   "sticky": [
     "foundation.util.triggers.js",

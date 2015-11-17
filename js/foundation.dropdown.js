@@ -2,7 +2,7 @@
  * Dropdown module.
  * @module foundation.dropdown
  * @requires foundation.util.keyboard
- * @requires foundation.util.size-and-collision
+ * @requires foundation.util.box
  */
 !function($, Foundation){
   'use strict';

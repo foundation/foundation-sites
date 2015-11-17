@@ -2,6 +2,7 @@
  * Interchange module.
  * @module foundation.interchange
  * @requires foundation.util.mediaQuery
+ * @requires foundation.util.timerAndImageLoader
  */
 !function(Foundation, $) {
   'use strict';

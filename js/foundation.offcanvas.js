@@ -2,7 +2,7 @@
  * OffCanvas module.
  * @module foundation.offcanvas
  * @requires foundation.util.triggers
- * @requires foundation.util.animationFrame
+ * @requires foundation.util.motion
  */
 !function($, Foundation) {
 
