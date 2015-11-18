@@ -36,7 +36,7 @@ tags:
     </li>
     <li class="orbit-slide">
       <img class="orbit-image" src="assets/img/orbit-3.jpg" alt="Space">
-      <figcaption class="orbit-caption">Encapulating</figcaption>
+      <figcaption class="orbit-caption">Encapsulating</figcaption>
     </li>
     <li class="orbit-slide">
       <img class="orbit-image" src="assets/img/orbit-4.jpg" alt="Space">
