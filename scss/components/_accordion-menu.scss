@@ -7,19 +7,22 @@
 $accordionmenu-arrows: true;
 
 @mixin foundation-accordion-menu {
-  [data-accordion-menu] {
-    @if $accordionmenu-arrows {
-      .has-submenu > a {
-        position: relative;
+  @if $accordionmenu-arrows {
+    .is-accordion-submenu-parent > a {
+      position: relative;
 
-        &::after {
-          @include css-triangle(6px, $primary-color, down);
-          position: absolute;
-          top: 50%;
-          margin-top: -6px;
-          right: 1rem;
-        }
+      &::after {
+        @include css-triangle(6px, $primary-color, down);
+        position: absolute;
+        top: 50%;
+        margin-top: -4px;
+        right: 1rem;
       }
+    }
+
+    .is-accordion-submenu-parent[aria-expanded="true"] > a::after {
+      transform-origin: 50% 50%;
+      transform: scaleY(-1);
     }
   }
 }
