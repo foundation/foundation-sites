@@ -25,12 +25,13 @@
     Burn: function(menu, type){
       var items = menu.find('li').removeAttr('tabindex'),
           subMenuClass = 'is-' + type + '-submenu',
-          subItemClass = subMenuClass + '-item';
+          subItemClass = subMenuClass + '-item',
+          hasSubClass = 'is-' + type + '-submenu-parent';
 
       // menu.find('.is-active').removeClass('is-active');
       menu.find('*')
       // menu.find('.' + subMenuClass + ', .' + subItemClass + ', .is-active, .has-submenu, .is-submenu-item, .submenu, [data-submenu]')
-          .removeClass(subMenuClass + ' ' + subItemClass + ' has-submenu is-submenu-item submenu is-active')
+          .removeClass(subMenuClass + ' ' + subItemClass + ' ' + hasSubClass + ' has-submenu is-submenu-item submenu is-active')
           .removeAttr('data-submenu').css('display', '');
 
       // console.log(      menu.find('.' + subMenuClass + ', .' + subItemClass + ', .has-submenu, .is-submenu-item, .submenu, [data-submenu]')
