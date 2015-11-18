@@ -7,7 +7,7 @@ description: Our JavaScript Utility Libraries are easy to use and super helpful.
 
 See our [JavaScript](javascript.html) and [Installation](installation.html) pages on how to install our files in your project.
 
-## Foundation.Box
+## Box
 
 One of the useful libraries is `Foundation.Box`, and it has a couple methods designed to make your life easier. You can pass either jQuery objects or plain JavaScript elements to both.
 
@@ -38,7 +38,7 @@ Also included is the `ImNotTouchingYou` function. It returns a boolean based on 
 var clear = Foundation.Box.ImNotTouchingYou(element [, parent, leftAndRightOnly, topAndBottomOnly]);
 ```
 
-## Foundation.Keyboard
+## Keyboard
 
 Another quite useful library, `Foundation.Keyboard` has several methods to make keyboard event interaction easier for all. Shout out to [Marius Olbertz](http://www.mariusolbertz.de/) of Germany who conceived and coded this library.
 
@@ -69,7 +69,7 @@ Foundation.Keyboard.handleKey(event, this, {
 });
 ```
 
-## Foundation.MediaQuery
+## MediaQuery
 
 The media query library used by Foundation has two publicly accessible functions and two properties:
 ```js
@@ -88,7 +88,7 @@ Also included is an event emitter for breakpoint changes. You can hook into this
 $(window).on('changed.zf.mediaquery', function(event, newSize, oldSize){});
 ```
 
-## Foundation.Motion & Foundation.Move
+## Motion & Move
 
 Two handy utilities, one little file.
 
@@ -101,3 +101,12 @@ Foundation.Move(durationInMS, $element, function(){
 });
 ```
 Your jQuery element will fire `finished.zf.animate` when the animation is complete.
+
+## Timer & Images Loaded
+
+Both functions used by [Orbit](orbit.html) and can be useful elsewhere as well.
+```js
+var timer = new Foundation.Timer($element, {duration: ms, infinite: bool}, callback);
+// includes: timer.start(), timer.pause(), timer.restart()
+```
+Similar to `setInterval`, except you can pause and pick back up where you left off.

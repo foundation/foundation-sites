@@ -22,7 +22,7 @@ Once you have the files, add links to jQuery and Foundation as `<script>` tags a
 
 All of Foundation's plugins ship as individual files, named `foundation.tabs.js`, `foundation.accordion.js`, and so on. These files are also combined into one big file called `foundation.js`, which allows you to get every plugin at once.
 
-If you're only using certain plugins, know that they all require `foundation.core.js` to be loaded *first*. Some plugins also require specific utility libraries that ship with Foundation&mdash;refer to a plugin's documentation to find out which plugins require what.
+If you're only using certain plugins, know that they all require `foundation.core.js` to be loaded *first*. Some plugins also require specific utility libraries that ship with Foundation&mdash;refer to a plugin's documentation to find out which plugins require what, and see the [JavaScript Utilities](javascript-utilities.html) page for more information.
 
 ```html
 <!-- Example of selectively including files -->
