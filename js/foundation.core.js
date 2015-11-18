@@ -247,10 +247,10 @@ var foundation = function(method) {
         });
       }
     }else{//error for no class or no method
-      throw new Error("We're sorry, " + method + " is not an available method for " + (plugClass ? functionName(plugClass) : 'this element') + '.');
+      throw new ReferenceError("We're sorry, '" + method + "' is not an available method for " + (plugClass ? functionName(plugClass) : 'this element') + '.');
     }
   }else{//error for invalid argument type
-    throw new Error("We're sorry, " + type + " is not a valid argument. You must use a string representing the method you wish to invoke.");
+    throw new TypeError("We're sorry, '" + type + "' is not a valid parameter. You must use a string representing the method you wish to invoke.");
   }
   return this;
 };
@@ -260,8 +260,8 @@ $.fn.foundation = foundation;
 
 // Polyfill for requestAnimationFrame
 (function() {
-  if (!Date.now)
-    Date.now = function() { return new Date().getTime(); };
+  if (!Date.now || !window.Date.now)
+    window.Date.now = Date.now = function() { return new Date().getTime(); };
 
   var vendors = ['webkit', 'moz'];
   for (var i = 0; i < vendors.length && !window.requestAnimationFrame; ++i) {
@@ -284,12 +284,18 @@ $.fn.foundation = foundation;
   /**
    * Polyfill for performance.now, required by rAF
    */
-  window.performance = (window.performance || {
-    start: Date.now(),
-    now: function(){
-        return Date.now() - this.start;
-    }
-  });
+  if(!window.performance || !window.performance.now){
+    window.performance = {
+      start: Date.now(),
+      now: function(){ return Date.now() - this.start; }
+    };
+  }
+  // window.performance = (window.performance || {
+  //   start: Date.now(),
+  //   now: function(){
+  //       return Date.now() - this.start;
+  //   }
+  // });
 })();
 
 // Polyfill to get the name of a function in IE9
