@@ -27,20 +27,90 @@
 
   Tooltip.defaults = {
     disableForTouch: false,
+    /**
+     * Time, in ms, before a tooltip should open on hover.
+     * @option
+     * @example 200
+     */
     hoverDelay: 200,
+    /**
+     * Time, in ms, a tooltip should take to fade into view.
+     * @option
+     * @example 150
+     */
     fadeInDuration: 150,
+    /**
+     * Time, in ms, a tooltip should take to fade out of view.
+     * @option
+     * @example 150
+     */
     fadeOutDuration: 150,
+    /**
+     * Disables hover events from opening the tooltip if set to true
+     * @option
+     * @example false
+     */
     disableHover: false,
+    /**
+     * Optional addtional classes to apply to the tooltip template on init.
+     * @option
+     * @example 'my-cool-tip-class'
+     */
     templateClasses: '',
+    /**
+     * Non-optional class added to tooltip templates. Foundation default is 'tooltip'.
+     * @option
+     * @example 'tooltip'
+     */
     tooltipClass: 'tooltip',
+    /**
+     * Class applied to the tooltip anchor element.
+     * @option
+     * @example 'has-tip'
+     */
     triggerClass: 'has-tip',
+    /**
+     * Minimum breakpoint size at which to open the tooltip.
+     * @option
+     * @example 'small'
+     */
     showOn: 'small',
+    /**
+     * Custom template to be used to generate markup for tooltip.
+     * @option
+     * @example '<div class="tooltip"></div>'
+     */
     template: '',
+    /**
+     * Text displayed in the tooltip template on open.
+     * @option
+     * @example 'Some cool space fact here.'
+     */
     tipText: '',
     touchCloseText: 'Tap to close.',
+    /**
+     * Allows the tooltip to remain open if triggered with a click or touch event.
+     * @option
+     * @example true
+     */
     clickOpen: true,
+    /**
+     * Additional positioning classes, set by the JS
+     * @option
+     * @example 'top'
+     */
     positionClass: '',
+    /**
+     * Distance, in pixels, the template should push away from the anchor on the Y axis.
+     * @option
+     * @example 10
+     */
     vOffset: 10,
+    /**
+     * Distance, in pixels, the template should push away from the anchor on the X axis, if aligned to a side.
+     * @option
+     * @example 12
+     */
     hOffset: 12
   };
 
@@ -51,9 +121,9 @@
   Tooltip.prototype._init = function(){
     var elemId = this.$element.attr('aria-describedby') || Foundation.GetYoDigits(6, 'tooltip');
 
-    this.options.positionClass = this.getPositionClass(this.$element);
+    this.options.positionClass = this._getPositionClass(this.$element);
     this.options.tipText = this.options.tipText || this.$element.attr('title');
-    this.template = this.options.template ? $(this.options.template) : this.buildTemplate(elemId);
+    this.template = this.options.template ? $(this.options.template) : this._buildTemplate(elemId);
 
     this.template.appendTo(document.body)
         .text(this.options.tipText)
@@ -79,7 +149,7 @@
    * Grabs the current positioning class, if present, and returns the value or an empty string.
    * @private
    */
-  Tooltip.prototype.getPositionClass = function(element){
+  Tooltip.prototype._getPositionClass = function(element){
     if(!element){ return ''; }
     // var position = element.attr('class').match(/top|left|right/g);
     var position = element[0].className.match(/(top|left|right)/g);
@@ -90,7 +160,7 @@
    * builds the tooltip element, adds attributes, and returns the template.
    * @private
    */
-  Tooltip.prototype.buildTemplate = function(id){
+  Tooltip.prototype._buildTemplate = function(id){
     var templateClasses = (this.options.tooltipClass + ' ' + this.options.positionClass).trim();
     var $template =  $('<div></div>').addClass(templateClasses).attr({
       'role': 'tooltip',
@@ -107,7 +177,7 @@
    * @param {String} position - positioning class to try
    * @private
    */
-  Tooltip.prototype.reposition = function(position){
+  Tooltip.prototype._reposition = function(position){
     this.usedPositions.push(position ? position : 'bottom');
 
     //default, try switching to opposite side
@@ -148,8 +218,8 @@
    * if the tooltip is larger than the screen width, default to full width - any user selected margin
    * @private
    */
-  Tooltip.prototype.setPosition = function(){
-    var position = this.getPositionClass(this.template),
+  Tooltip.prototype._setPosition = function(){
+    var position = this._getPositionClass(this.template),
         $tipDims = Foundation.Box.GetDimensions(this.template),
         $anchorDims = Foundation.Box.GetDimensions(this.$element),
         direction = (position === 'left' ? 'left' : ((position === 'right') ? 'left' : 'top')),
@@ -169,8 +239,8 @@
     this.template.offset(Foundation.Box.GetOffsets(this.template, this.$element,'center ' + (position || 'bottom'), this.options.vOffset, this.options.hOffset));
 
     while(!Foundation.Box.ImNotTouchingYou(this.template) && this.counter){
-      this.reposition(position);
-      this.setPosition();
+      this._reposition(position);
+      this._setPosition();
     }
   };
 
@@ -178,17 +248,17 @@
    * reveals the tooltip, and fires an event to close any other open tooltips on the page
    * @fires Closeme#tooltip
    * @fires Tooltip#show
-   * @private
+   * @function
    */
-  Tooltip.prototype._show = function(){
+  Tooltip.prototype.show = function(){
     if(this.options.showOn !== 'all' && !Foundation.MediaQuery.atLeast(this.options.showOn)){
-      console.error('The screen is too small to display this tooltip');
+      // console.error('The screen is too small to display this tooltip');
       return false;
     }
 
     var _this = this;
     this.template.css('visibility', 'hidden').show();
-    this.setPosition();
+    this._setPosition();
 
     /**
      * Fires to close all other open tooltips on the page
@@ -214,11 +284,11 @@
   };
 
   /**
-   * hides the current tooltip, and resets the positioning class if it was changed due to collision
+   * Hides the current tooltip, and resets the positioning class if it was changed due to collision
    * @fires Tooltip#hide
-   * @private
+   * @function
    */
-  Tooltip.prototype._hide = function(){
+  Tooltip.prototype.hide = function(){
     // console.log('hiding', this.$element.data('yeti-box'));
     var _this = this;
     this.template.stop().attr({
@@ -229,7 +299,7 @@
       _this.isClick = false;
       if(_this.classChanged){
         _this.template
-             .removeClass(_this.getPositionClass(_this.template))
+             .removeClass(_this._getPositionClass(_this.template))
              .addClass(_this.options.positionClass);
 
        _this.usedPositions = [];
@@ -260,14 +330,14 @@
       .on('mouseenter.zf.tooltip', function(e){
         if(!_this.isActive){
           _this.timeout = setTimeout(function(){
-            _this._show();
+            _this.show();
           }, _this.options.hoverDelay);
         }
       })
       .on('mouseleave.zf.tooltip', function(e){
         clearTimeout(_this.timeout);
         if(!isFocus || (!_this.isClick && _this.options.clickOpen)){
-          _this._hide();
+          _this.hide();
         }
       });
     }
@@ -275,12 +345,12 @@
       this.$element.on('mousedown.zf.tooltip', function(e){
         e.stopImmediatePropagation();
         if(_this.isClick){
-          _this._hide();
+          _this.hide();
           // _this.isClick = false;
         }else{
           _this.isClick = true;
           if((_this.options.disableHover || !_this.$element.attr('tabindex')) && !_this.isActive){
-            _this._show();
+            _this.show();
           }
         }
       });
@@ -289,14 +359,14 @@
     if(!this.options.disableForTouch){
       this.$element
       .on('tap.zf.tooltip touchend.zf.tooltip', function(e){
-        _this.isActive ? _this._hide() : _this._show();
+        _this.isActive ? _this.hide() : _this.show();
       });
     }
 
     this.$element.on({
       // 'toggle.zf.trigger': this.toggle.bind(this),
-      // 'close.zf.trigger': this._hide.bind(this)
-      'close.zf.trigger': this._hide.bind(this)
+      // 'close.zf.trigger': this.hide.bind(this)
+      'close.zf.trigger': this.hide.bind(this)
     });
 
     this.$element
@@ -307,33 +377,37 @@
           return false;
         }else{
           // $(window)
-          _this._show();
+          _this.show();
         }
       })
 
       .on('focusout.zf.tooltip', function(e){
         isFocus = false;
         _this.isClick = false;
-        _this._hide();
+        _this.hide();
       })
 
       .on('resizeme.zf.trigger', function(){
         if(_this.isActive){
-          _this.setPosition();
+          _this._setPosition();
         }
       });
   };
   /**
    * adds a toggle method, in addition to the static show() & hide() functions
-   * @private
+   * @function
    */
   Tooltip.prototype.toggle = function(){
     if(this.isActive){
-      this._hide();
+      this.hide();
     }else{
-      this._show();
+      this.show();
     }
   };
+  /**
+   * Destroys an instance of tooltip, removes template element from the view.
+   * @function
+   */
   Tooltip.prototype.destroy = function(){
     this.$element.attr('title', this.template.text())
                  .off('.zf.trigger .zf.tootip')
