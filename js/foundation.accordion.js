@@ -18,10 +18,7 @@
     this.options = $.extend({}, Accordion.defaults, this.$element.data(), options);
 
     this._init();
-    /**
-     * Fires when the plugin has been successfuly initialized.
-     * @event Accordion#init
-     */
+
     Foundation.registerPlugin(this);
     Foundation.Keyboard.register('Accordion', {
       'ENTER': 'toggle',
@@ -222,11 +219,6 @@
     this.$element.find('[data-tab-content]').slideUp(0).css('display', '');
     this.$element.find('a').off('.zf.accordion');
 
-    /**
-     * Fires when the plugin has been destroyed.
-     * @event Accordion#destroyed
-     */
-    // this.$element.trigger('destroyed.zf.accordion');
     Foundation.unregisterPlugin(this);
   };
 

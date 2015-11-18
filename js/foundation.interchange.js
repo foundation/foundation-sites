@@ -170,7 +170,7 @@
    */
   Interchange.prototype.destroy = function(){
     //TODO this.
-  }
+  };
   Foundation.plugin(Interchange);
 
   // Exports for AMD/Browserify

@@ -23,12 +23,6 @@
 
     this._init();
 
-
-    /**
-     * Fires when the plugin has been successfuly initialized.
-     * @event AccordionMenu#init
-     */
-    // this.$element.trigger('init.zf.accordionMenu');
     Foundation.registerPlugin(this);
     Foundation.Keyboard.register('AccordionMenu', {
       'ENTER': 'toggle',
@@ -257,11 +251,6 @@
     this.$element.find('[data-submenu]').slideDown(0).css('display', '');
     this.$element.find('a').off('click.zf.accordionMenu');
 
-    /**
-     * Fires when the plugin has been destroyed.
-     * @event AccordionMenu#destroy
-     */
-    // this.$element.trigger('destroyed.zf.accordionMenu');
     Foundation.Nest.Burn(this.$element, 'accordion');
     Foundation.unregisterPlugin(this);
   };

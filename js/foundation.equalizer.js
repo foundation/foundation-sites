@@ -19,11 +19,6 @@
     this._events();
 
     Foundation.registerPlugin(this);
-    // /**
-    //  * Fires when the plugin has been successfuly initialized.
-    //  * @event Equalizer#init
-    //  */
-    // this.$element.trigger('init.zf.equalizer');
   }
 
   /**

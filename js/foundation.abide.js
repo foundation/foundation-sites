@@ -18,11 +18,7 @@
     this._init();
     this._events();
 
-    /**
-     * Fires when the plugin has been successfuly initialized.
-     * @event Abide#init
-     */
-    this.$element.trigger('init.zf.abide');
+    Foundation.registerPlugin(this);
   }
 
   /**
@@ -378,6 +374,9 @@
     $('.form-error.is-visible').removeClass('is-visible');
     $form.find('[data-abide-error]').css('display', 'none');
     $(':input', $form).not(':button, :submit, :reset, :hidden, [data-abide-ignore]').val('').removeAttr(invalidAttr);
+  };
+  Abide.prototype.destroy = function(){
+    //TODO this...
   };
 
   Foundation.plugin(Abide);

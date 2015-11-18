@@ -49,11 +49,6 @@
     this._events();
 
     Foundation.registerPlugin(this);
-    // /**
-    //  * Fires when the plugin has been successfuly initialized.
-    //  * @event ResponsiveMenu#init
-    //  */
-    //  this.$element.trigger('init.zf.ResponsiveMenu');
   }
 
   ResponsiveMenu.defaults = {};
@@ -143,6 +138,7 @@
   ResponsiveMenu.prototype.destroy = function() {
     this.currentPlugin.destroy();
     $(window).off('.zf.ResponsiveMenu');
+    Foundation.unregisterPlugin(this);
   };
   Foundation.plugin(ResponsiveMenu);
 

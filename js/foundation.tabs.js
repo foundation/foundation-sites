@@ -30,11 +30,6 @@
       // 'TAB': 'next',
       // 'SHIFT_TAB': 'previous'
     });
-    // /**
-    //  * Fires when the plugin has been successfuly initialized.
-    //  * @event Tabs#init
-    //  */
-    // this.$element.trigger('init.zf.tabs');
   }
 
   Tabs.defaults = {
@@ -300,11 +295,6 @@
       $(window).off('changed.zf.mediaquery');
     }
     Foundation.unregisterPlugin(this);
-    // /**
-    //  * Fires when the plugin has been destroyed.
-    //  * @event Tabs#destroyed
-    //  */
-    // this.$element.trigger('destroyed.zf.tabs');
   };
 
   Foundation.plugin(Tabs);

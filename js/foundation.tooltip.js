@@ -23,12 +23,6 @@
     this._init();
 
     Foundation.registerPlugin(this);
-
-    // /**
-    //  * Fires when the plugin has been successfully initialized
-    //  * @event Tooltip#init
-    //  */
-    // this.$element.trigger('init.zf.tooltip');
   }
 
   Tooltip.defaults = {

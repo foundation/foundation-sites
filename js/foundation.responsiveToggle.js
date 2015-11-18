@@ -22,11 +22,6 @@ function ResponsiveToggle(element, options) {
   this._events();
 
   Foundation.registerPlugin(this);
-  // /**
-  //  * Fires when the plugin has been successfully initialized.
-  //  * @event ResponsiveToggle#init
-  //  */
-  // this.$element.trigger('init.zf.ResponsiveToggle');
 }
 
 ResponsiveToggle.defaults = {
@@ -36,7 +31,7 @@ ResponsiveToggle.defaults = {
    * @example 'medium'
    */
   hideFor: 'medium'
-}
+};
 
 /**
  * Initializes the tab bar by finding the target element, toggling element, and running update().
@@ -53,7 +48,7 @@ ResponsiveToggle.prototype._init = function() {
   this.$toggler = this.$element.find('[data-toggle]');
 
   this._update();
-}
+};
 
 /**
  * Adds necessary event handlers for the tab bar to work.
@@ -66,7 +61,7 @@ ResponsiveToggle.prototype._events = function() {
   $(window).on('changed.zf.mediaquery', this._update.bind(this));
 
   this.$toggler.on('click.zf.responsiveToggle', this.toggleMenu.bind(this));
-}
+};
 
 /**
  * Checks the current media query to determine if the tab bar should be visible or hidden.
@@ -85,7 +80,7 @@ ResponsiveToggle.prototype._update = function() {
     this.$element.hide();
     this.$targetMenu.show();
   }
-}
+};
 
 /**
  * Toggles the element attached to the tab bar. The toggle only happens if the screen is small enough to allow it.
@@ -102,8 +97,10 @@ ResponsiveToggle.prototype.toggleMenu = function() {
      */
     this.$element.trigger('toggled.zf.responsiveToggle');
   }
-}
-
+};
+ResponsiveToggle.prototype.destroy = function(){
+  //TODO this...
+};
 Foundation.plugin(ResponsiveToggle);
 
-}(jQuery, Foundation)
+}(jQuery, Foundation);
