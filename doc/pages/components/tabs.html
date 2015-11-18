@@ -36,7 +36,7 @@ You can create a group of horizontal tabs using minimal markup.
   </div>
   <div class="large-6 columns">
     <h4>Rendered HTML</h4>
-{{> examples_tabs_basic}}
+    {{> examples_tabs_basic}}
   </div>
 </div>
 
@@ -59,6 +59,33 @@ You can create a group of vertical tabs using minimal markup. Just adding the cl
 <h4>Rendered HTML</h4>
 
 {{> examples_tabs_vertical_basic}}
+
+<div class="clearfix"></div>
+
+***
+
+### Disabled Tabs
+
+
+For any nav component (tabs or pills), add .disabled for gray links and no hover effects.
+
+You can disable a tab using minimal markup. Just adding the class `disabled` disable the action in the tab.
+
+
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+{{#markdown}}
+```html
+{{> examples_tabs_disabled}}
+```
+{{/markdown}}
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    {{> examples_tabs_disabled}}
+  </div>
+</div>
 
 <div class="clearfix"></div>
 
@@ -156,7 +183,7 @@ If you add new content after the page has been loaded, you will need to reinitia
 
 {{#markdown}}
 ```javascript
-$(document).foundation(); 
+$(document).foundation();
 ```
 {{/markdown}}
 

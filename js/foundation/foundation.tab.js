@@ -40,12 +40,12 @@
         if (!settings.is_hover || Modernizr.touch) {
           // if user did not pressed tab key, prevent default action
           var keyCode = e.keyCode || e.which;
-          if (keyCode !== 9) { 
+          if (keyCode !== 9) {
             e.preventDefault();
             e.stopPropagation();
           }
           self.toggle_active_tab(S(target).parent());
-          
+
         }
       };
 
@@ -58,7 +58,7 @@
           if (keyCode === 13 || keyCode === 32) { // enter or space
             var el = this;
             usual_tab_behavior(e, el);
-          } 
+          }
         })
         // Click event: tab title
         .on('click.fndtn.tab', '[' + this.attr_name() + '] > * > a', function(e) {
@@ -122,6 +122,9 @@
      },
 
     toggle_active_tab : function (tab, location_hash) {
+      if (tab.hasClass("disabled"))
+         return;
+
       var self = this,
           S = self.S,
           tabs = tab.closest('[' + this.attr_name() + ']'),
