@@ -132,6 +132,7 @@ var Foundation = {
    * @returns {String} - unique id
    */
   GetYoDigits: function(length, namespace){
+    length = length || 6;
     return Math.round((Math.pow(36, length + 1) - Math.random() * Math.pow(36, length))).toString(36).slice(1) + (namespace ? '-' + namespace : '');
   },
   /**
