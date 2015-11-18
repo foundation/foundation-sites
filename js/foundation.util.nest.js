@@ -6,13 +6,14 @@
       type = type || 'zf';
       var items = menu.find('li').attr({'role': 'menuitem'}),
           subMenuClass = 'is-' + type + '-submenu',
-          subItemClass = subMenuClass + '-item';
+          subItemClass = subMenuClass + '-item',
+          hasSubClass = 'is-' + type + '-submenu-parent';
 
       items.each(function(){
         var $item = $(this),
             $sub = $item.children('ul');
         if($sub.length){
-          $item.addClass('has-submenu');
+          $item.addClass('has-submenu ' + hasSubClass);
           $sub.addClass('submenu ' + subMenuClass).attr('data-submenu', '');
         }
         if($item.parent('[data-submenu]').length){
