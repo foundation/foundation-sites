@@ -201,7 +201,7 @@
    */
   AccordionMenu.prototype.down = function($target) {
     var _this = this;
-
+    console.log($target);
     if(!this.options.multiOpen){
       this.up(this.$element.find('.is-active').not($target.parentsUntil(this.$element)));
     }
@@ -229,8 +229,9 @@
     Foundation.Move(this.options.slideSpeed, $target, function(){
       $target.slideUp(_this.options.slideSpeed);
     });
-    $target.find('[data-submenu]').slideUp(0).attr('aria-hidden', true)
-           .attr('aria-hidden', true).parent('.has-submenu')
+    $target.attr('aria-hidden', true)
+           .find('[data-submenu]').slideUp(0).attr('aria-hidden', true).end()
+           .parent('.has-submenu')
            .attr({'aria-expanded': false, 'aria-selected': false});
     // $target.slideUp(this.options.slideSpeed, function() {
     //   $target.find('[data-submenu]').slideUp(0).attr('aria-hidden', true);
