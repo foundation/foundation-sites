@@ -8,7 +8,7 @@
 
     settings : {
       index : 0,
-      start_offset : 0,
+      start_offset : false,
       sticky_class : 'sticky',
       custom_back_text : true,
       back_text : 'Back',
@@ -31,6 +31,16 @@
         var topbar = $(this),
             settings = topbar.data(self.attr_name(true) + '-init'),
             section = self.S('section, .top-bar-section', this);
+
+        // set the start_offset to the offset of the topbar to fix the initial-scroll-issue of Google Chrome
+        if (self.settings.start_offset === false) {
+            var tbOffset = topbar.offset();
+            if (typeof tbOffset === 'object' &&
+                typeof  tbOffset.top === 'number') {
+                self.settings.start_offset = tbOffset.top;
+            }
+        }
+
         topbar.data('index', 0);
         var topbarContainer = topbar.parent();
         if (topbarContainer.hasClass('fixed') || self.is_sticky(topbar, topbarContainer, settings) ) {
