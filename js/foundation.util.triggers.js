@@ -49,10 +49,11 @@
    */
   $(window).load(function(){
     // checkWatchers(null);
+    eventsListener();
     resizeListener();
     scrollListener();
+	//domMutationObserver();
     closemeListener();
-	if ($('[data-mutate]').length >= 1) { dommutationobserver(); }
   });
 
   /**
@@ -126,46 +127,72 @@
     }
   };
   var resizeListener = function(debounce){
-    var timer, i, len,
-        nodes = $('[data-resize]');
-    if(nodes.length){
-      $(window).off('resize.zf.trigger')
-        .on('resize.zf.trigger', function(e){
-          if(timer){ clearTimeout(timer); }
-
-          timer = setTimeout(function(){
-
-            for(i = 0, len = nodes.length; i < len; i++){
-              var $elem = $(nodes[i]);
-              $elem.triggerHandler('resizeme.zf.trigger', [$elem]);
-            }
-          }, debounce || 10);//default time to emit resize event
-      });
-    }
+    var timer;
+		
+	$(window).off('resize.zf.trigger')
+		.on('resize.zf.trigger', function(e) {
+			if (timer) { clearTimeout(timer); }
+	
+			timer = setTimeout(function() {
+				//trigger all listening elements and signal a resize event
+				$('[data-resize]').attr('data-events', "resize");
+			}, debounce || 10);//default time to emit resize event
+		});
+		
   };
   var scrollListener = function(debounce){
-    var timer, i, len,
-        nodes = $('[data-scroll]');
-    if(nodes.length){
+    var timer;
+	
       $(window).off('scroll.zf.trigger')
         .on('scroll.zf.trigger', function(e){
           if(timer){ clearTimeout(timer); }
 
           timer = setTimeout(function(){
-
-            for(i = 0, len = nodes.length; i < len; i++){
-              var $elem = $(nodes[i]);
-              $elem.triggerHandler('scrollme.zf.trigger', [$elem, window.scrollY]);
-            }
+			//trigger all listening elements and signal a scroll event  
+            $('[data-scroll]').attr('data-events', "scroll");
           }, debounce || 50);//default time to emit scroll event
       });
-    }
-  }
-  function dommutationobserver(debounce) {
-	
+    
+  };
+  function domMutationObserver(debounce) {
+	// !!! This is coming soon and needs more work; not active  !!! //
 	var timer, 
-		targets = document.querySelectorAll('[data-mutate]');
+		nodes = document.querySelectorAll('[data-mutate]');
+		
+		if (nodes.length) {
+			var MutationObserver = (function () {
+				var prefixes = ['WebKit', 'Moz', 'O', 'Ms', '']
+					for (var i=0; i < prefixes.length; i++) {
+						if (prefixes[i] + 'MutationObserver' in window) {
+							 return window[prefixes[i] + 'MutationObserver'];
+						}
+					}
+				return false;
+			}());
+			
+			
+			//for the body, we need to listen for all changes effecting the style and class attributes
+			var bodyObserver = new MutationObserver(bodyMutation);
+			bodyObserver.observe(document.body, { attributes: true, childList: true, characterData: false, subtree:true, attributeFilter:["style", "class"]});
+			
+			
+			//body callback
+			function bodyMutation(mutate) {
+				//trigger all listening elements and signal a mutation event
+				if (timer) { clearTimeout(timer); }	
+			
+				timer = setTimeout(function() {
+					bodyObserver.disconnect();
+					$('[data-mutate]').attr('data-events',"mutate");
+				}, debounce || 150);
+			}
+		}
+  };
+  var eventsListener = function() {
+	var nodes = document.querySelectorAll('[data-resize], [data-scroll], [data-mutate]');  
 	
+	if (nodes.length) {
+		
 		var MutationObserver = (function () {
 			var prefixes = ['WebKit', 'Moz', 'O', 'Ms', '']
 				for (var i=0; i < prefixes.length; i++) {
@@ -176,41 +203,40 @@
 			return false;
 		}());
 		
-				  
-		//for each element that needs to listen for changes, but only listen for a change to data-mutate, this is the trigger
-		for (var i = 0; i <= targets.length-1; i++) {
+		//for each element that needs to listen for resizing, scrolling, (or coming soon mutation) add a single observer
+		for (var i = 0; i <= nodes.length-1; i++) {
 			var elementObserver = new MutationObserver(listeningElementsMutation);
-			elementObserver.observe(targets[i], { attributes: true, childList: false, characterData: false, subtree:false, attributeFilter:["data-mutate"]});
-		}
-		
-		//for the body, we need to listen for all changes, or you can target class, and style attributes, furthermore you could case switch based on the callback type
-		var bodyObserver = new MutationObserver(bodyMutation);
-		bodyObserver.observe(document.body, { attributes: true, childList: true, characterData: false, subtree:true});
-		
-		
-		//body callback
-		function bodyMutation() {
-			//disconnect the body observer and trigger all listening elements by changing the data-mutate attr, we really don't need to change it, just "hitting" it fires a change
-			if (timer) { clearTimeout(timer); }	
-		
-			timer = setTimeout(function() {
-				bodyObserver.disconnect();
-				$('[data-mutate]').attr('data-mutate',"");
-			}, debounce || 50);
+			elementObserver.observe(nodes[i], { attributes: true, childList: false, characterData: false, subtree:false, attributeFilter:["data-events"]});
 		}
 		
 		//element callback	
 		function listeningElementsMutation(mutationRecordsList) {
+			//trigger the event handler for the element depending on type
+			switch ($(mutationRecordsList[0].target).attr("data-events")) {
 			
-			//trigger the event handler for the element
-			$(mutationRecordsList[0].target).triggerHandler('mutate.zf.trigger');
-			
-			//if this is the last element to trigger from a listen, reconnect the body listener, this stops infinte loops
-			if ($(mutationRecordsList[0].target).index('[data-mutate]') == targets.length-1) {
-				bodyObserver.observe(document.body, { attributes: true, childList: true, characterData: false, subtree:true});
+				case "resize" :
+					$(mutationRecordsList[0].target).triggerHandler('resizeme.zf.trigger', [$(mutationRecordsList[0].target)]);
+					break;
+				
+				case "scroll" :
+					$(mutationRecordsList[0].target).triggerHandler('scrollme.zf.trigger', [$(mutationRecordsList[0].target), window.scrollY]);		
+					break;
+					
+				case "mutate" :
+					$(mutationRecordsList[0].target).triggerHandler('mutate.zf.trigger');
+					
+					//make sure we don't get stuck in an infinite loop from sloppy codeing
+					if ($(mutationRecordsList[0].target).index('[data-mutate]') == $("[data-mutate]").length-1) {
+						domMutationObserver();
+					}
+					break;
+					
+				default :
+					//nothing
 			}
 		};
-	};
+	}
+  };
 // ------------------------------------
 
   // [PH]
@@ -218,6 +244,5 @@
 Foundation.IHearYou = resizeListener;
 Foundation.ISeeYou = scrollListener;
 Foundation.IFeelYou = closemeListener;
-Foundation.IWatchYou = dommutationobserver;
 
 }(window.Foundation, window.jQuery);
