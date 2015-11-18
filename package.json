@@ -5,7 +5,8 @@
   "scripts": {
     "start": "gulp",
     "test": "gulp test",
-    "testbed": "cd testing && gulp"
+    "testbed": "cd testing && gulp",
+    "deploy": "gulp deploy:docs"
   },
   "dependencies": {
     "jquery": "^2.1.0",
@@ -23,7 +24,9 @@
     "gulp-load-plugins": "^0.8.0",
     "gulp-minify-css": "^1.2.1",
     "gulp-plumber": "^1.0.1",
+    "gulp-prompt": "^0.1.2",
     "gulp-rename": "^1.2.2",
+    "gulp-rsync": "0.0.5",
     "gulp-ruby-sass": "^1.0.0-alpha.3",
     "gulp-sass": "^2.1.0",
     "gulp-scss-lint": "^0.2.2",
