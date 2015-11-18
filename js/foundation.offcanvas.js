@@ -47,17 +47,13 @@ OffCanvas.defaults = {
   position: 'left',
   /**
    * Force the page to scroll to top on open.
-   * @option
-   * @example false
    */
-  forceTop: false,
+  forceTop: true,
   /**
    * Allow the offcanvas to be sticky while open. Does nothing if Sass option `$maincontent-prevent-scroll === true`.
    * Performance in Safari OSX/iOS is not great.
-   * @option
-   * @example false
    */
-  isSticky: false,
+  // isSticky: false,
   /**
    * Allow the offcanvas to remain open for certain breakpoints. Can be used with `isSticky`.
    * @option
@@ -168,21 +164,21 @@ OffCanvas.prototype._setMQChecker = function(){
  * @function
  */
 OffCanvas.prototype.reveal = function(isRevealed){
-  var closer = this.$element.find('[data-close]');
+  var $closer = this.$element.find('[data-close]');
   if(isRevealed){
-    if(!this.options.forceTop){
-      var scrollPos = parseInt(window.pageYOffset);
-      this.$element[0].style.transform = 'translate(0,' + scrollPos + 'px)';
-    }
-    if(this.options.isSticky){ this._stick(); }
-    if(closer.length){ closer.hide(); }
+    // if(!this.options.forceTop){
+    //   var scrollPos = parseInt(window.pageYOffset);
+    //   this.$element[0].style.transform = 'translate(0,' + scrollPos + 'px)';
+    // }
+    // if(this.options.isSticky){ this._stick(); }
+    if($closer.length){ $closer.hide(); }
   }else{
-    if(this.options.isSticky || !this.options.forceTop){
-      this.$element[0].style.transform = '';
-      $(window).off('scroll.zf.offcanvas');
-    }
-    if(closer.length){
-      closer.show();
+    // if(this.options.isSticky || !this.options.forceTop){
+    //   this.$element[0].style.transform = '';
+    //   $(window).off('scroll.zf.offcanvas');
+    // }
+    if($closer.length){
+      $closer.show();
     }
   }
 };
@@ -198,14 +194,16 @@ OffCanvas.prototype.open = function(event, trigger) {
   if (this.$element.hasClass('is-open')){ return; }
   var _this = this,
       $body = $(document.body);
+  $('body').scrollTop(0);
+  // window.pageYOffset = 0;
 
-  if(!this.options.forceTop){
-    var scrollPos = parseInt(window.pageYOffset);
-    this.$element[0].style.transform = 'translate(0,' + scrollPos + 'px)';
-    if(this.$exiter.length){
-      this.$exiter[0].style.transform = 'translate(0,' + scrollPos + 'px)';
-    }
-  }
+  // if(!this.options.forceTop){
+  //   var scrollPos = parseInt(window.pageYOffset);
+  //   this.$element[0].style.transform = 'translate(0,' + scrollPos + 'px)';
+  //   if(this.$exiter.length){
+  //     this.$exiter[0].style.transform = 'translate(0,' + scrollPos + 'px)';
+  //   }
+  // }
   /**
    * Fires when the off-canvas menu opens.
    * @event OffCanvas#opened
@@ -218,9 +216,9 @@ OffCanvas.prototype.open = function(event, trigger) {
       .attr('aria-hidden', 'false')
       .trigger('opened.zf.offcanvas');
 
-    if(_this.options.isSticky){
-      _this._stick();
-    }
+    // if(_this.options.isSticky){
+    //   _this._stick();
+    // }
   });
   if(trigger){
     this.$lastTrigger = trigger.attr('aria-expanded', 'true');
@@ -235,21 +233,21 @@ OffCanvas.prototype.open = function(event, trigger) {
  * Allows the offcanvas to appear sticky utilizing translate properties.
  * @private
  */
-OffCanvas.prototype._stick = function(){
-  var elStyle = this.$element[0].style;
-
-  if(this.options.closeOnClick){
-    var exitStyle = this.$exiter[0].style;
-  }
-
-  $(window).on('scroll.zf.offcanvas', function(e){
-    console.log(e);
-    var pageY = window.pageYOffset;
-    elStyle.transform = 'translate(0,' + pageY + 'px)';
-    if(exitStyle !== undefined){ exitStyle.transform = 'translate(0,' + pageY + 'px)'; }
-  });
-  // this.$element.trigger('stuck.zf.offcanvas');
-};
+// OffCanvas.prototype._stick = function(){
+//   var elStyle = this.$element[0].style;
+//
+//   if(this.options.closeOnClick){
+//     var exitStyle = this.$exiter[0].style;
+//   }
+//
+//   $(window).on('scroll.zf.offcanvas', function(e){
+//     console.log(e);
+//     var pageY = window.pageYOffset;
+//     elStyle.transform = 'translate(0,' + pageY + 'px)';
+//     if(exitStyle !== undefined){ exitStyle.transform = 'translate(0,' + pageY + 'px)'; }
+//   });
+//   // this.$element.trigger('stuck.zf.offcanvas');
+// };
 /**
  * Closes the off-canvas menu.
  * @function
@@ -272,12 +270,12 @@ OffCanvas.prototype.close = function() {
      * @event OffCanvas#closed
      */
       .trigger('closed.zf.offcanvas');
-  if(_this.options.isSticky || !_this.options.forceTop){
-    setTimeout(function(){
-      _this.$element[0].style.transform = '';
-      $(window).off('scroll.zf.offcanvas');
-    }, this.options.transitionTime);
-  }
+  // if(_this.options.isSticky || !_this.options.forceTop){
+  //   setTimeout(function(){
+  //     _this.$element[0].style.transform = '';
+  //     $(window).off('scroll.zf.offcanvas');
+  //   }, this.options.transitionTime);
+  // }
 
   this.$lastTrigger.attr('aria-expanded', 'false');
 };
