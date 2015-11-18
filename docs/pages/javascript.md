@@ -112,9 +112,17 @@ var $accordion = new Foundation.Accordion($('#accordion'), {
 });
 ```
 
-Most plugins have a public API that allows you to manipulate it through JavaScript. Refer to a plugin's documentation to learn how it works.
+Most plugins have a public API that allows you to manipulate it through JavaScript. Refer to a plugin's documentation to learn what functions are available. Invoking methods is easy as pie:
 
-<!-- TODO: add plugin API example -->
+```js
+$('#reveal').foundation('open'); //will open a Reveal modal with id `reveal`.
+
+$('[data-tabs]').eq(0).foundation('selectTab', $('#example')); //will change the first Tabs on the page to whatever panel you choose.
+
+$('.tooltip').foundation('destroy'); //will destroy all Tooltips on the page.
+
+```
+You can use any jQuery selector you like, and if the selector encompasses multiple plugins, they will all have the same the chosen method invoked. You pass arguments just like you would any in other JavaScript `function(comma, delimited, so, easy)`. We did make an effort to reduce the number of public methods that require arguments, but check the plugin's page to see if it requires additional information.
 
 <div class="callout warning">
   <p>Plugin methods prefixed with an underscore are considered part of the internal API, which means they could change, break, or disappear without warning. We recommend sticking to only the public API, which is documented on each plugin's page.</p>
