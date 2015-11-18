@@ -19,14 +19,24 @@ tags:
 
 ## Setup
 
-Create an off-canvas menu with the class `.off-canvas` and the attribute `data-off-canvas`. The menu also needs a positioning class, which can be `.position-left` or `.position-right`. Make sure the off-cavnas also has a unique ID so it can be targeted.
+To start, create a wrapper to house your entire page. It has the class `.off-canvas-wrapper` and the attribute `data-off-canvas-wrapper`.
+
+```html
+<body>
+  <div class="off-canvas-wrapper" data-off-canvas-wrapper></div>
+</body>
+```
+
+Inside this wrapper, create an off-canvas menu with the class `.off-canvas` and the attribute `data-off-canvas`. The menu also needs a positioning class, which can be `.position-left` or `.position-right`. Make sure the off-cavnas also has a unique ID so it can be targeted.
 
 Along with the menu, the main content of your page will be housed in its own container with the class `.main-content` and attribute `data-off-canvas`.
 
 ```html
 <body>
-  <div class="off-canvas position-left" id="offCanvas" data-off-canvas data-position="left"></div>
-  <div class="main-content" data-off-canvas-content></div>
+  <div class="off-canvas-wrapper" data-off-canvas-wrapper>
+    <div class="off-canvas position-left" id="offCanvas" data-off-canvas data-position="left"></div>
+    <div class="main-content" data-off-canvas-content></div>
+  </div>
 </body>
 ```
 
@@ -46,9 +56,11 @@ A design can have two menus: one on the left, and one on the right. Be sure that
 
 ```html
 <body>
-  <div class="off-canvas position-left" id="offCanvas" data-off-canvas></div>
-  <div class="off-canvas position-right" id="offCanvas" data-off-canvas></div>
-  <div class="main-content" data-off-canvas-content></div>
+  <div class="off-canvas-wrapper" data-off-canvas-wrapper>
+    <div class="off-canvas position-left" id="offCanvas" data-off-canvas></div>
+    <div class="off-canvas position-right" id="offCanvas" data-off-canvas></div>
+    <div class="main-content" data-off-canvas-content></div>
+  </div>
 </body>
 ```
 

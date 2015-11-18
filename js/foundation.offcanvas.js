@@ -121,7 +121,7 @@ OffCanvas.prototype._init = function() {
     this._setMQChecker();
   }
   if(!this.options.transitionTime){
-    this.options.transitionTime = parseFloat(window.getComputedStyle(document.body).transitionDuration) * 1000;
+    this.options.transitionTime = parseFloat(window.getComputedStyle($('[data-off-canvas-wrapper]')[0]).transitionDuration) * 1000;
   }
 };
 
@@ -211,7 +211,7 @@ OffCanvas.prototype.open = function(event, trigger) {
    * @event OffCanvas#opened
    */
   Foundation.Move(this.options.transitionTime, this.$element, function(){
-    $body.addClass('is-off-canvas-open is-open-'+ _this.options.position);
+    $('[data-off-canvas-wrapper]').addClass('is-off-canvas-open is-open-'+ _this.options.position);
 
     _this.$element
       .addClass('is-open')
@@ -261,7 +261,7 @@ OffCanvas.prototype.close = function() {
   var _this = this;
 
    Foundation.Move(this.options.transitionTime, this.$element, function(){
-    $('body').removeClass('is-off-canvas-open is-open-'+_this.options.position);
+    $('[data-off-canvas-wrapper]').removeClass('is-off-canvas-open is-open-'+_this.options.position);
 
     _this.$element.removeClass('is-open');
     // Foundation._reflow();
