@@ -5,17 +5,12 @@
 @mixin foundation-sticky {
   .sticky-container {
     position: relative;
-
-    // &.right {
-    //   left: 100%;
-    // }
   }
 
   .sticky {
     position: absolute;
     z-index: 0;
     transform: translate3d(0,0,0);
-    // margin-top: 1em;
   }
 
   .sticky.is-stuck {
@@ -24,14 +19,10 @@
 
     &.is-at-top {
       top: 0;
-      // bottom: auto;
-      // margin-top: 1em !important;
     }
 
     &.is-at-bottom {
       bottom: 0;
-      // top: auto;
-      // margin-bottom: 1em;
     }
   }
 
@@ -42,8 +33,6 @@
 
     &.is-at-bottom {
       bottom: 0;
-      // top: 150%;
-      // margin-bottom: 1em;
     }
   }
 }

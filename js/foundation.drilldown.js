@@ -2,7 +2,8 @@
  * Drilldown module.
  * @module foundation.drilldown
  * @requires foundation.util.keyboard
- * @requires foundation.util.animationFrame
+ * @requires foundation.util.motion
+ * @requires foundation.util.nest
  */
 !function($, Foundation){
   'use strict';
@@ -35,11 +36,25 @@
     });
   }
   Drilldown.defaults = {
+    /**
+     * Markup used for JS generated back button. Prepended to submenu lists and deleted on `destroy` method.
+     * @option
+     * @example '<li><a>Back</a></li>'
+     */
     backButton: '<li class="js-drilldown-back" tabindex="0"><a>Back</a></li>',
+    /**
+     * Markup used to wrap drilldown menu. Use a class name for independent styling, or the JS applied class: `is-drilldown`.
+     * @option
+     * @example '<div></div>'
+     */
     wrapper: '<div></div>',
+    /**
+     * Allow the menu to return to root list on body click.
+     * @option
+     * @example false
+     */
     closeOnClick: false,
-    holdOpen: false
-    // transitionendEvt: Foundation.Prefixer('transitionend')
+    // holdOpen: false
   };
   /**
    * Initializes the drilldown by creating jQuery collections of elements
@@ -54,7 +69,7 @@
 
     // console.log(this.$wrapper.outerHeight(), this.$wrapper.css());
     this._prepareMenu();
-    // this.getMaxHeight();
+    // this._getMaxDims();
     this._keyboardEvents();
   };
   /**
@@ -66,9 +81,9 @@
    */
   Drilldown.prototype._prepareMenu = function(){
     var _this = this;
-    if(!this.options.holdOpen){
-      this._menuLinkEvents();
-    }
+    // if(!this.options.holdOpen){
+    //   this._menuLinkEvents();
+    // }
     this.$submenuAnchors.each(function(){
       var $sub = $(this);
       $sub.find('a')[0].removeAttribute('href');
@@ -89,7 +104,7 @@
       }
     });
     if(!this.$element.parent().hasClass('is-drilldown')){
-      this.$wrapper = $(this.options.wrapper).addClass('is-drilldown').css(this.getMaxHeight());
+      this.$wrapper = $(this.options.wrapper).addClass('is-drilldown').css(this._getMaxDims());
       this.$element.wrap(this.$wrapper);
     }
 
@@ -129,6 +144,10 @@
       // console.log('back button');
     });
   };
+  /**
+   * Adds keydown event listener to `li`'s in the menu.
+   * @private
+   */
   Drilldown.prototype._keyboardEvents = function() {
     var _this = this;
     this.$menuItems.add(this.$element.find('.js-drilldown-back')).on('keydown.zf.drilldown', function(e){
@@ -196,7 +215,6 @@
   Drilldown.prototype._hideAll = function(){
     this.$element.find('.is-drilldown-sub.is-active').addClass('is-closing')
         .on(Foundation.transitionend + '.zf.drilldown', function(e){
-          console.log('transitionend');
           $(this).removeClass('is-active is-closing').off(Foundation.transitionend + '.zf.drilldown');
         });
         /**
@@ -261,7 +279,7 @@
         $(this).removeClass('is-active is-closing').off(Foundation.transitionend + '.zf.drilldown');
       });
     /**
-     * Fires when the menu is fully closed.
+     * Fires when the submenu is has closed.
      * @event Drilldown#hide
      */
     $elem.trigger('hide.zf.drilldown', [$elem]);
@@ -273,7 +291,7 @@
    * @function
    * @private
    */
-  Drilldown.prototype.getMaxHeight = function(){
+  Drilldown.prototype._getMaxDims = function(){
     var max = 0, result = {};
     this.$submenus.add(this.$element).each(function(){
       var numOfElems = $(this).children('li').length;

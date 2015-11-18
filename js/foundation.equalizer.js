@@ -19,18 +19,23 @@
     this._events();
 
     Foundation.registerPlugin(this);
-    // /**
-    //  * Fires when the plugin has been successfuly initialized.
-    //  * @event Equalizer#init
-    //  */
-    // this.$element.trigger('init.zf.equalizer');
   }
 
   /**
    * Default settings for plugin
    */
   Equalizer.defaults = {
+    /**
+     * Enable height equalization when stacked on smaller screens.
+     * @option
+     * @example true
+     */
     equalizeOnStack: true,
+    /**
+     * Amount of time, in ms, to debounce the size checking/equalization. Lower times mean smoother transitions/less performance on mobile.
+     * @option
+     * @example 50
+     */
     throttleInterval: 50
   };
 
@@ -93,7 +98,6 @@
    * @returns {Array} heights An array of heights of children within Equalizer container
    */
   Equalizer.prototype.getHeights = function($eqParent) {
-
     var eqGroupName = $eqParent.data('equalizer'),
         eqGroup     = eqGroupName ? $eqParent.find('[' + this.attr + '-watch="' + eqGroupName + '"]:visible') : $eqParent.find('[' + this.attr + '-watch]:visible'),
         heights;
@@ -131,6 +135,13 @@
      * @event Equalizer#postEqualized
      */
     $eqParent.trigger('postEqualized.zf.Equalizer');
+  };
+  /**
+   * Destroys an instance of Equalizer.
+   * @function
+   */
+  Equalizer.prototype.destroy = function(){
+    //TODO this.
   };
 
   Foundation.plugin(Equalizer);

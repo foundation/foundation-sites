@@ -2,6 +2,7 @@
  * Tabs module.
  * @module foundation.tabs
  * @requires foundation.util.keyboard
+ * @requires foundation.util.timerAndImageLoader if tabs contain images
  */
 !function($, Foundation) {
   'use strict';
@@ -29,21 +30,47 @@
       // 'TAB': 'next',
       // 'SHIFT_TAB': 'previous'
     });
-    // /**
-    //  * Fires when the plugin has been successfuly initialized.
-    //  * @event Tabs#init
-    //  */
-    // this.$element.trigger('init.zf.tabs');
   }
 
   Tabs.defaults = {
-    deepLinking: false,
-    scrollToContent: false,
+    // /**
+    //  * Allows the JS to alter the url of the window. Not yet implemented.
+    //  */
+    // deepLinking: false,
+    // /**
+    //  * If deepLinking is enabled, allows the window to scroll to content if window is loaded with a hash including a tab-pane id
+    //  */
+    // scrollToContent: false,
+    /**
+     * Allows the window to scroll to content of active pane on load if set to true.
+     * @option
+     * @example false
+     */
     autoFocus: false,
+    /**
+     * Allows keyboard input to 'wrap' around the tab links.
+     * @option
+     * @example true
+     */
     wrapOnKeys: true,
+    /**
+     * Allows the tab content panes to match heights if set to true.
+     * @option
+     * @example false
+     */
     matchHeight: false,
+    /**
+     * Class applied to `li`'s in tab link list.
+     * @option
+     * @example 'tabs-title'
+     */
     linkClass: 'tabs-title',
-    contentClass: 'tabs-content',
+    // contentClass: 'tabs-content',
+    /**
+     * Class applied to the content containers.
+     * @option
+     * @example 'tabs-panel'
+     */
     panelClass: 'tabs-panel'
   };
 
@@ -87,9 +114,9 @@
     if(this.options.matchHeight){
       var $images = this.$tabContent.find('img');
       if($images.length){
-        Foundation.onImagesLoaded($images, this.setHeight.bind(this));
+        Foundation.onImagesLoaded($images, this._setHeight.bind(this));
       }else{
-        this.setHeight();
+        this._setHeight();
       }
     }
     this._events();
@@ -102,7 +129,7 @@
     this._addKeyHandler();
     this._addClickHandler();
     if(this.options.matchHeight){
-      $(window).on('changed.zf.mediaquery', this.setHeight.bind(this));
+      $(window).on('changed.zf.mediaquery', this._setHeight.bind(this));
     }
   };
 
@@ -231,8 +258,9 @@
    * If enabled in options, gets called on media query change.
    * If loading content via external source, can be called directly or with _reflow.
    * @function
+   * @private
    */
-  Tabs.prototype.setHeight = function(){
+  Tabs.prototype._setHeight = function(){
     var max = 0;
     this.$tabContent.find('.' + this.options.panelClass)
                     .css('height', '')
@@ -267,11 +295,6 @@
       $(window).off('changed.zf.mediaquery');
     }
     Foundation.unregisterPlugin(this);
-    // /**
-    //  * Fires when the plugin has been destroyed.
-    //  * @event Tabs#destroyed
-    //  */
-    // this.$element.trigger('destroyed.zf.tabs');
   };
 
   Foundation.plugin(Tabs);

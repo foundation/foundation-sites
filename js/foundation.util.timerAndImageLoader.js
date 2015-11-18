@@ -1,11 +1,5 @@
 !function($, Foundation){
-
-  /******************************************************************
-  /** A very simple timer for animated elements within Foundation. **
-  /** Allows your script to pause and restart later with fn call.  **
-  /**  Feel free to add features, comments, or use case examples.  **
-  /*****************************************************************/
-
+  'use strict';
   var Timer = function(elem, options, cb){
     var _this = this,
         duration = options.duration,//options is an object for easily adding features later.
@@ -44,7 +38,41 @@
       elem.trigger('timerpaused.zf.' + nameSpace);
     };
   };
+  /**
+   * Runs a callback function when images are fully loaded.
+   * @param {Object} images - Image(s) to check if loaded.
+   * @param {Func} callback - Function to execute when image is fully loaded.
+   */
+  var onImagesLoaded = function(images, callback){
+    var self = this,
+        unloaded = images.length;
+
+    if (unloaded === 0) {
+      callback();
+    }
+
+    var singleImageLoaded = function() {
+      unloaded--;
+      if (unloaded === 0) {
+        callback();
+      }
+    };
+
+    images.each(function() {
+      if (this.complete) {
+        singleImageLoaded();
+      }
+      else if (typeof this.naturalWidth !== 'undefined' && this.naturalWidth > 0) {
+        singleImageLoaded();
+      }
+      else {
+        $(this).one('load', function() {
+          singleImageLoaded();
+        });
+      }
+    });
+  };
 
   Foundation.Timer = Timer;
-
+  Foundation.onImagesLoaded = onImagesLoaded;
 }(jQuery, window.Foundation);

@@ -2,6 +2,7 @@
  * Interchange module.
  * @module foundation.interchange
  * @requires foundation.util.mediaQuery
+ * @requires foundation.util.timerAndImageLoader
  */
 !function(Foundation, $) {
   'use strict';
@@ -29,6 +30,10 @@
    * Default settings for plugin
    */
   Interchange.defaults = {
+    /**
+     * Rules to be applied to Interchange elements. Set with the `data-interchange` array notation.
+     * @option
+     */
     rules: null
   };
 
@@ -159,7 +164,13 @@
       });
     }
   };
-
+  /**
+   * Destroys an instance of interchange.
+   * @function
+   */
+  Interchange.prototype.destroy = function(){
+    //TODO this.
+  };
   Foundation.plugin(Interchange);
 
   // Exports for AMD/Browserify

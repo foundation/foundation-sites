@@ -1,21 +1,21 @@
 {
   "accordion": [
     "foundation.util.keyboard.js",
-    "foundation.util.animationFrame.js"
+    "foundation.util.motion.js"
   ],
   "accordionMenu": [
     "foundation.util.keyboard.js",
-    "foundation.util.animationFrame.js",
+    "foundation.util.motion.js",
     "foundation.util.nest.js"
   ],
   "drilldown": [
     "foundation.util.keyboard.js",
-    "foundation.util.animationFrame.js",
+    "foundation.util.motion.js",
     "foundation.util.nest.js"
   ],
   "dropdownMenu": [
     "foundation.util.keyboard.js",
-    "foundation.util.animationFrame.js",
+    "foundation.util.motion.js",
     "foundation.util.box.js",
     "foundation.util.nest.js"
   ],
@@ -26,21 +26,20 @@
   ],
   "interchange": [
     "foundation.util.triggers.js",
-    "foundation.util.onImagesLoaded.js"
+    "foundation.util.timerAndImageLoader.js"
   ],
   "magellan": [
-    "foundation.util.animationFrame.js"
+    "foundation.util.motion.js"
   ],
   "offcanvas": [
-    "foundation.util.animationFrame.js",
+    "foundation.util.motion.js",
     "foundation.util.triggers.js"
   ],
   "orbit": [
-    "foundation.util.animationFrame.js",
     "foundation.util.motion.js",
-    "foundation.util.timer.js",
+    "foundation.util.timerAndImageLoader.js",
     "foundation.util.keyboard.js",
-    "foundation.util.onImagesLoaded.js"
+    "foundation.util.touch.js"
   ],
   "responsiveMenu": [
     "foundation.util.triggers.js",
@@ -61,9 +60,9 @@
   ],
   "slider": [
     "foundation.util.triggers.js",
-    "foundation.util.animationFrame.js",
+    "foundation.util.motion.js",
     "foundation.util.keyboard.js",
-    "foundation.util.addTouch.js"
+    "foundation.util.touch.js"
   ],
   "sticky": [
     "foundation.util.triggers.js",
@@ -71,7 +70,7 @@
   ],
   "tabs": [
     "foundation.util.keyboard.js",
-    "foundation.util.onImagesLoaded.js"
+    "foundation.util.timerAndImageLoader.js"
   ],
   "toggler": [
     "foundation.util.motion.js"
@@ -80,9 +79,9 @@
     "foundation.util.box.js",
     "foundation.util.triggers.js",
     "foundation.util.mediaQuery.js",
-    "foundation.util.animationFrame.js"
+    "foundation.util.motion.js"
   ],
   "motion-ui": [
-    "foundation.util.animationFrame.js"
+    "foundation.util.motion.js"
   ]
 }

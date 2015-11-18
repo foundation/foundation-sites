@@ -10,6 +10,10 @@
 /// @type Transition
 $drilldown-transition: transform 0.15s linear !default;
 
+/// Adds arrows to drilldown items with submenus, as well as the back button.
+/// @type Boolean
+$drilldown-arrows: true;
+
 @mixin foundation-drilldown-menu {
   // Applied to the Menu container
   .is-drilldown {
@@ -36,6 +40,28 @@ $drilldown-transition: transform 0.15s linear !default;
 
     &.is-closing {
       transform: translateX(100%);
+    }
+  }
+
+  @if $drilldown-arrows {
+    .is-drilldown-submenu-parent > a {
+      position: relative;
+
+      &::after {
+        @include css-triangle(6px, $primary-color, right);
+        position: absolute;
+        top: 50%;
+        margin-top: -6px;
+        right: 1rem;
+      }
+    }
+
+    .js-drilldown-back::before {
+      @include css-triangle(6px, $primary-color, left);
+      float: left;
+      margin-right: 0.75rem; // Creates space between the arrow and the text
+      margin-left: 0.6rem; // Lines the tip of the arrow with the items below
+      margin-top: 14px; // Aligns the arrow with the text
     }
   }
 }

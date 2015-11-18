@@ -22,17 +22,71 @@
     Foundation.registerPlugin(this);
   }
   Sticky.defaults = {
-    stickToWindow: false,
+    /**
+     * Customizable container template. Add your own classes for styling and sizing.
+     * @option
+     * @example '<div data-sticky-container class="small-6 columns"></div>'
+     */
     container: '<div data-sticky-container></div>',
+    /**
+     * Location in the view the element sticks to.
+     * @option
+     * @example 'top'
+     */
     stickTo: 'top',
+    /**
+     * If anchored to a single element, the id of that element.
+     * @option
+     * @example 'exampleId'
+     */
     anchor: '',
+    /**
+     * If using more than one element as anchor points, the id of the top anchor.
+     * @option
+     * @example 'exampleId:top'
+     */
     topAnchor: '',
+    /**
+     * If using more than one element as anchor points, the id of the bottom anchor.
+     * @option
+     * @example 'exampleId:bottom'
+     */
     btmAnchor: '',
+    /**
+     * Margin, in `em`'s to apply to the top of the element when it becomes sticky.
+     * @option
+     * @example 1
+     */
     marginTop: 1,
+    /**
+     * Margin, in `em`'s to apply to the bottom of the element when it becomes sticky.
+     * @option
+     * @example 1
+     */
     marginBottom: 1,
+    /**
+     * Breakpoint string that is the minimum screen size an element should become sticky.
+     * @option
+     * @example 'medium'
+     */
     stickyOn: 'medium',
+    /**
+     * Class applied to sticky element, and removed on destruction. Foundation defaults to `sticky`.
+     * @option
+     * @example 'sticky'
+     */
     stickyClass: 'sticky',
+    /**
+     * Class applied to sticky container. Foundation defaults to `sticky-container`.
+     * @option
+     * @example 'sticky-container'
+     */
     containerClass: 'sticky-container',
+    /**
+     * Number of scroll events between the plugin's recalculating sticky points. Setting it to `0` will cause it to recalc every scroll event, setting it to `-1` will prevent recalc on scroll.
+     * @option
+     * @example 50
+     */
     checkEvery: 50
   };
 
@@ -64,7 +118,7 @@
       this._parsePoints();
       // console.log(this.points[0]);
     }else{
-      this.$anchor = this.options.anchor ? $(this.options.anchor) : $(document.body);
+      this.$anchor = this.options.anchor ? $('#' + this.options.anchor) : $(document.body);
     }
 
 
@@ -73,6 +127,11 @@
     });
     this._events(id.split('-').reverse().join('-'));
   };
+  /**
+   * If using multiple elements as anchors, calculates the top and bottom pixel values the sticky thing should stick and unstick on.
+   * @function
+   * @private
+   */
   Sticky.prototype._parsePoints = function(){
     var top = this.options.topAnchor,
         btm = this.options.btmAnchor,
@@ -129,15 +188,6 @@
                    _this.scrollCount--;
                    _this._calc(false, e.currentTarget.scrollY);
                  }
-                // if(_this.scrollCount > 0){
-                //   _this.scrollCount--;
-                //   _this._calc(false, e.currentTarget.scrollY);
-                // }else{
-                //   _this.scrollCount = _this.options.checkEvery;
-                //   _this._setSizes(function(){
-                //     _this._calc(false, e.currentTarget.scrollY);
-                //   })
-                // }
               });
     }
 
@@ -212,6 +262,8 @@
    * Causes the $element to become stuck.
    * Adds `position: fixed;`, and helper classes.
    * @fires Sticky#stuckto
+   * @function
+   * @private
    */
   Sticky.prototype._setSticky = function(){
     var stickTo = this.options.stickTo,
@@ -241,6 +293,7 @@
    * Adds other helper classes.
    * @param {Boolean} isTop - tells the function if the $element should anchor to the top or bottom of its $anchor element.
    * @fires Sticky#unstuckfrom
+   * @private
    */
   Sticky.prototype._removeSticky = function(isTop){
     var stickTo = this.options.stickTo,
@@ -274,6 +327,7 @@
    * Sets the $element and $container sizes for plugin.
    * Calls `_setBreakPoints`.
    * @param {Function} cb - optional callback function to fire on completion of `_setBreakPoints`.
+   * @private
    */
   Sticky.prototype._setSizes = function(cb){
     this.canStick = Foundation.MediaQuery.atLeast(this.options.stickyOn);
@@ -347,7 +401,9 @@
 
   /**
    * Destroys the current sticky element.
+   * Resets the element to the top position first.
    * Removes event listeners, JS-added css properties and classes, and unwraps the $element if the JS added the $container.
+   * @function
    */
   Sticky.prototype.destroy = function(){
     this._removeSticky(true);

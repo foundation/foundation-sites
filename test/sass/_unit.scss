@@ -24,6 +24,15 @@
   }
 }
 
+@include describe("Convert Rem to Rem") {
+  @include it("keeps rem values the same") {
+    $actual: -zf-to-rem(3rem, 16);
+    $expected: 3rem;
+
+    @include should(expect($actual), to(be($expected)));
+  }
+}
+
 @include describe("Rem Calculator") {
   @include it("converts an arbitrary number of values into rem equivalents") {
     $actual: rem-calc((8 16 32 64), 16);
