@@ -20,6 +20,7 @@
     "grunt-contrib-sass": "~0.8.1",
     "grunt-contrib-uglify": "~0.4.0",
     "grunt-contrib-watch": "~0.6.1",
+    "grunt-dev-update": "^1.4.0",
     "grunt-karma": "~0.6.2",
     "grunt-newer": "~0.7.0",
     "grunt-rsync": "~0.2.1",
