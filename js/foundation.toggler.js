@@ -23,14 +23,14 @@
     this._events();
 
     Foundation.registerPlugin(this);
-    // /**
-    //  * Fires when the plugin has been successfuly initialized.
-    //  * @event Toggler#init
-    //  */
-    // this.$element.trigger('init.zf.toggler');
   }
 
   Toggler.defaults = {
+    /**
+     * Tells the plugin if the element should animated when toggled.
+     * @option
+     * @example false
+     */
     animate: false
   };
 
@@ -155,6 +155,7 @@
    */
   Toggler.prototype.destroy= function() {
     this.$element.off('.zf.toggler');
+    Foundation.unregisterPlugin(this);
   };
 
   Foundation.plugin(Toggler);

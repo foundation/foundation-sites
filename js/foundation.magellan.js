@@ -1,7 +1,6 @@
 /**
  * Magellan module.
  * @module foundation.magellan
- // * @requires foundation.util.animationFrame
  */
 !function(Foundation, $) {
   'use strict';
@@ -26,10 +25,36 @@
    * Default settings for plugin
    */
   Magellan.defaults = {
+    /**
+     * Amount of time, in ms, the animated scrolling should take between locations.
+     * @option
+     * @example 500
+     */
     animationDuration: 500,
+    /**
+     * Animation style to use when scrolling between locations.
+     * @option
+     * @example 'ease-in-out'
+     */
     animationEasing: 'linear',
+    /**
+     * Number of pixels to use as a marker for location changes.
+     * @option
+     * @example 50
+     */
     threshold: 50,
-    activeClass: 'active'
+    /**
+     * Class applied to the active locations link on the magellan container.
+     * @option
+     * @example 'active'
+     */
+    activeClass: 'active',
+    /**
+     * Allows the script to manipulate the url of the current page, and if supported, alter the history.
+     * @option
+     * @example true
+     */
+    deepLinking: false
   };
 
   /**
@@ -51,7 +76,12 @@
 
     this._events();
   };
-  Magellan.prototype._calcPoints = function(){
+  /**
+   * Calculates an array of pixel values that are the demarcation lines between locations on the page.
+   * Can be invoked if new elements are added or the size of a location changes.
+   * @function
+   */
+  Magellan.prototype.calcPoints = function(){
     var _this = this,
         body = document.body,
         html = document.documentElement;
@@ -80,13 +110,13 @@
         };
 
     $(window).one('load', function(){
-      _this._calcPoints();
-      _this.updateActive();
+      _this.calcPoints();
+      _this._updateActive();
     });
 
     this.$element.on({
-      'resizeme.zf.trigger': this._reflow.bind(this),
-      'scrollme.zf.trigger': this.updateActive.bind(this)
+      'resizeme.zf.trigger': this.reflow.bind(this),
+      'scrollme.zf.trigger': this._updateActive.bind(this)
     }).on('click.zf.magellan', 'a[href^="#"]', function(e) {
         e.preventDefault();
         var arrival   = this.getAttribute('href'),
@@ -102,14 +132,20 @@
   };
   /**
    * Calls necessary functions to update Magellan upon DOM change
-   * @private
+   * @function
    */
-  Magellan.prototype._reflow = function(){
-    this._calcPoints();
-    this.updateActive();
+  Magellan.prototype.reflow = function(){
+    this.calcPoints();
+    this._updateActive();
   };
-  Magellan.prototype.updateActive = function(evt, elem, scrollPos){
-    var winPos = scrollPos || parseInt(window.pageYOffset, 10),
+  /**
+   * Updates the visibility of an active location link, and updates the url hash for the page, if deepLinking enabled.
+   * @private
+   * @function
+   * @fires Magellan#update
+   */
+  Magellan.prototype._updateActive = function(/*evt, elem, scrollPos*/){
+    var winPos = /*scrollPos ||*/ parseInt(window.pageYOffset, 10),
         curIdx;
 
     if(winPos + this.winHeight === this.docHeight){ curIdx = this.points.length - 1; }
@@ -126,15 +162,26 @@
     this.$active.removeClass(this.options.activeClass);
     this.$active = this.$links.eq(curIdx).addClass(this.options.activeClass);
 
-    var hash = this.$active[0].getAttribute('href');
-    if(window.history.pushState){
-      window.history.pushState(null, null, hash);
-    }else{
-      window.location.hash = hash;
+    if(this.options.deepLinking){
+      var hash = this.$active[0].getAttribute('href');
+      if(window.history.pushState){
+        window.history.pushState(null, null, hash);
+      }else{
+        window.location.hash = hash;
+      }
     }
 
     this.scrollPos = winPos;
+    /**
+     * Fires when magellan is finished updating to the new active element.
+     * @event Magellan#update
+     */
+    this.$element.trigger('update.zf.magellan', [this.$active]);
   };
+  /**
+   * Destroys an instance of Magellan and resets the url of the window.
+   * @function
+   */
   Magellan.prototype.destroy = function(){
     this.$element.off('.zf.trigger .zf.magellan')
         .find('.' + this.options.activeClass).removeClass(this.options.activeClass);

@@ -50,12 +50,18 @@ var Foundation = {
    * Sets the `[data-pluginName="uniqueIdHere"]`, allowing easy access to any plugin's internal methods.
    * Also fires the initialization event for each plugin, consolidating repeditive code.
    * @param {Object} plugin - an instance of a plugin, usually `this` in context.
+   * @fires Plugin#init
    */
   registerPlugin: function(plugin){
     var pluginName = functionName(plugin.constructor).toLowerCase();
 
     plugin.uuid = this.GetYoDigits(6, pluginName);
-    plugin.$element.attr('data-' + pluginName, plugin.uuid).trigger('init.zf.' + pluginName);
+    plugin.$element.attr('data-' + pluginName, plugin.uuid)
+          /**
+           * Fires when the plugin has initialized.
+           * @event Plugin#init
+           */
+          .trigger('init.zf.' + pluginName);
 
     this._activePlugins[plugin.uuid] = plugin;
 
@@ -66,20 +72,25 @@ var Foundation = {
    * Removes the pointer for an instance of a Plugin from the Foundation._activePlugins obj.
    * Also fires the destroyed event for the plugin, consolidating repeditive code.
    * @param {Object} plugin - an instance of a plugin, usually `this` in context.
+   * @fires Plugin#destroyed
    */
   unregisterPlugin: function(plugin){
     var pluginName = functionName(plugin.constructor).toLowerCase();
 
     delete this._activePlugins[plugin.uuid];
-
-    plugin.$element.trigger('destroyed.zf.' + pluginName);
+    plugin.$element.removeAttr('data-' + pluginName)
+          /**
+           * Fires when the plugin has been destroyed.
+           * @event Plugin#destroyed
+           */
+          .trigger('destroyed.zf.' + pluginName);
 
     return;
   },
 
   /**
    * @function
-   * Causes one or more active plugins to reflow, resetting event listeners, recalculating positions, etc.
+   * Causes one or more active plugins to re-initialize, resetting event listeners, recalculating positions, etc.
    * @param {String} plugins - optional string of an individual plugin key, attained by calling `$(element).data('pluginName')`, or string of a plugin class i.e. `'dropdown'`
    * @default If no argument is passed, reflow all currently active plugins.
    */
@@ -121,6 +132,7 @@ var Foundation = {
    * @returns {String} - unique id
    */
   GetYoDigits: function(length, namespace){
+    length = length || 6;
     return Math.round((Math.pow(36, length + 1) - Math.random() * Math.pow(36, length))).toString(36).slice(1) + (namespace ? '-' + namespace : '');
   },
   /**
@@ -178,6 +190,13 @@ var Foundation = {
 };
 
 Foundation.util = {
+  /**
+   * Function for applying a debounce effect to a function call.
+   * @function
+   * @param {Function} func - Function to be called at end of timeout.
+   * @param {Number} delay - Time in ms to delay the call of `func`.
+   * @returns function
+   */
   throttle: function (func, delay) {
     var timer = null;
 
@@ -192,7 +211,7 @@ Foundation.util = {
       }
     };
   }
-}
+};
 
 // TODO: consider not making this a jQuery function
 // TODO: need way to reflow vs. re-initialize
@@ -201,22 +220,38 @@ Foundation.util = {
  * @param {String|Array} method - An action to perform on the current jQuery object.
  */
 var foundation = function(method) {
-  var type = typeof method;
-  var $meta = $('meta.foundation-mq');
+  var type = typeof method,
+      $meta = $('meta.foundation-mq'),
+      $noJS = $('.no-js');
 
   if(!$meta.length){
     $('<meta class="foundation-mq">').appendTo(document.head);
   }
-
-  if (type === 'undefined') {
-    Foundation.MediaQuery._init();
-    Foundation.reflow(this);
-  } else if (type === 'object') {
-    Foundation.reflow(this);
-  } else if (type === 'string' || type === 'array') {
-    Foundation.reflow(this, method);
+  if($noJS.length){
+    $noJS.removeClass('no-js');
   }
 
+  if(type === 'undefined'){//needs to initialize the Foundation object, or an individual plugin.
+    Foundation.MediaQuery._init();
+    Foundation.reflow(this);
+  }else if(type === 'string'){//an individual method to invoke on a plugin or group of plugins
+    var args = Array.prototype.slice.call(arguments, 1);//collect all the arguments, if necessary
+    var plugClass = this.data('zfPlugin');//determine the class of plugin
+
+    if(plugClass !== undefined && plugClass[method] !== undefined){//make sure both the class and method exist
+      if(this.length === 1){//if there's only one, call it directly.
+          plugClass[method].apply(plugClass, args);
+      }else{
+        this.each(function(i, el){//otherwise loop through the jQuery collection and invoke the method on each
+          plugClass[method].apply($(el).data('zfPlugin'), args);
+        });
+      }
+    }else{//error for no class or no method
+      throw new ReferenceError("We're sorry, '" + method + "' is not an available method for " + (plugClass ? functionName(plugClass) : 'this element') + '.');
+    }
+  }else{//error for invalid argument type
+    throw new TypeError("We're sorry, '" + type + "' is not a valid parameter. You must use a string representing the method you wish to invoke.");
+  }
   return this;
 };
 
@@ -225,8 +260,8 @@ $.fn.foundation = foundation;
 
 // Polyfill for requestAnimationFrame
 (function() {
-  if (!Date.now)
-    Date.now = function() { return new Date().getTime(); };
+  if (!Date.now || !window.Date.now)
+    window.Date.now = Date.now = function() { return new Date().getTime(); };
 
   var vendors = ['webkit', 'moz'];
   for (var i = 0; i < vendors.length && !window.requestAnimationFrame; ++i) {
@@ -246,12 +281,21 @@ $.fn.foundation = foundation;
     };
     window.cancelAnimationFrame = clearTimeout;
   }
-  window.performance = (window.performance || {
-    start: Date.now(),
-    now: function(){
-        return Date.now() - this.start;
-    }
-  });
+  /**
+   * Polyfill for performance.now, required by rAF
+   */
+  if(!window.performance || !window.performance.now){
+    window.performance = {
+      start: Date.now(),
+      now: function(){ return Date.now() - this.start; }
+    };
+  }
+  // window.performance = (window.performance || {
+  //   start: Date.now(),
+  //   now: function(){
+  //       return Date.now() - this.start;
+  //   }
+  // });
 })();
 
 // Polyfill to get the name of a function in IE9

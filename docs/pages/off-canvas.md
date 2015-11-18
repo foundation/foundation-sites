@@ -19,14 +19,30 @@ tags:
 
 ## Setup
 
-Create an off-canvas menu with the class `.off-canvas` and the attribute `data-off-canvas`. The menu also needs a positioning class, which can be `.position-left` or `.position-right`. Make sure the off-cavnas also has a unique ID so it can be targeted.
-
-Along with the menu, the main content of your page will be housed in its own container with the class `.main-content` and attribute `data-off-canvas`.
+To start, create two wrappers to house the page. These are necessary to prevent the off-canvas menus from being visible when they're not open. They also smooth out cross-browser bugs.
+- The outer wrapper has the class `.off-canvas-wrapper`.
+- The inner wrapper has the class `.off-canvas-wrapper-inner` and the attribute `data-off-canvas-wrapper`.
 
 ```html
 <body>
-  <div class="off-canvas position-left" id="offCanvas" data-off-canvas data-position="left"></div>
-  <div class="main-content" data-off-canvas-content></div>
+  <div class="off-canvas-wrapper">
+    <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper></div>
+  </div>
+</body>
+```
+
+Inside these wrapper, create an off-canvas menu with the class `.off-canvas` and the attribute `data-off-canvas`. The menu also needs a positioning class, which can be `.position-left` or `.position-right`. Lastly, make sure the off-cavnas has a unique ID so it can be targeted.
+
+Along with the menu, the main content of your page will be housed in its own container with the class `.off-canvas-content` and attribute `data-off-canvas`.
+
+```html
+<body>
+  <div class="off-canvas-wrapper">
+    <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+      <div class="off-canvas position-left" id="offCanvas" data-off-canvas data-position="left"></div>
+      <div class="off-canvas-content" data-off-canvas-content></div>
+    </div>
+  </div>
 </body>
 ```
 
@@ -46,9 +62,13 @@ A design can have two menus: one on the left, and one on the right. Be sure that
 
 ```html
 <body>
-  <div class="off-canvas position-left" id="offCanvas" data-off-canvas></div>
-  <div class="off-canvas position-right" id="offCanvas" data-off-canvas></div>
-  <div class="main-content" data-off-canvas-content></div>
+  <div class="off-canvas-wrapper">
+    <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+      <div class="off-canvas position-left" id="offCanvas" data-off-canvas></div>
+      <div class="off-canvas position-right" id="offCanvas" data-off-canvas></div>
+      <div class="main-content" data-off-canvas-content></div>
+    </div>
+  </div>
 </body>
 ```
 

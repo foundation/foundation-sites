@@ -2,9 +2,9 @@
  * Accordion module.
  * @module foundation.accordion
  * @requires foundation.util.keyboard
- * @requires foundation.util.animationFrame
+ * @requires foundation.util.motion
  */
-!function($) {
+!function($, Foundation) {
   'use strict';
 
   /**
@@ -18,10 +18,7 @@
     this.options = $.extend({}, Accordion.defaults, this.$element.data(), options);
 
     this._init();
-    /**
-     * Fires when the plugin has been successfuly initialized.
-     * @event Accordion#init
-     */
+
     Foundation.registerPlugin(this);
     Foundation.Keyboard.register('Accordion', {
       'ENTER': 'toggle',
@@ -32,8 +29,23 @@
   }
 
   Accordion.defaults = {
+    /**
+     * Amount of time to animate the opening of an accordion pane.
+     * @option
+     * @example 250
+     */
     slideSpeed: 250,
+    /**
+     * Allow the accordion to have multiple open panes.
+     * @option
+     * @example false
+     */
     multiExpand: false,
+    /**
+     * Allow the accordion to close all panes.
+     * @option
+     * @example false
+     */
     allowAllClosed: false
   };
 
@@ -207,13 +219,8 @@
     this.$element.find('[data-tab-content]').slideUp(0).css('display', '');
     this.$element.find('a').off('.zf.accordion');
 
-    /**
-     * Fires when the plugin has been destroyed.
-     * @event Accordion#destroyed
-     */
-    // this.$element.trigger('destroyed.zf.accordion');
     Foundation.unregisterPlugin(this);
   };
 
   Foundation.plugin(Accordion);
-}(jQuery);
+}(jQuery, window.Foundation);
