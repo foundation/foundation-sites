@@ -48,7 +48,13 @@
      * @option
      * @example 'active'
      */
-    activeClass: 'active'
+    activeClass: 'active',
+    /**
+     * Allows the script to manipulate the url of the current page, and if supported, alter the history.
+     * @option
+     * @example true
+     */
+    deepLinking: false
   };
 
   /**
@@ -133,7 +139,7 @@
     this._updateActive();
   };
   /**
-   * Updates the visibility of an active location link, and updates the url hash for the page.
+   * Updates the visibility of an active location link, and updates the url hash for the page, if deepLinking enabled.
    * @private
    * @function
    * @fires Magellan#update
@@ -156,16 +162,18 @@
     this.$active.removeClass(this.options.activeClass);
     this.$active = this.$links.eq(curIdx).addClass(this.options.activeClass);
 
-    var hash = this.$active[0].getAttribute('href');
-    if(window.history.pushState){
-      window.history.pushState(null, null, hash);
-    }else{
-      window.location.hash = hash;
+    if(this.options.deepLinking){
+      var hash = this.$active[0].getAttribute('href');
+      if(window.history.pushState){
+        window.history.pushState(null, null, hash);
+      }else{
+        window.location.hash = hash;
+      }
     }
 
     this.scrollPos = winPos;
     /**
-     * Fires when magellan is finished updating the to the new active element.
+     * Fires when magellan is finished updating to the new active element.
      * @event Magellan#update
      */
     this.$element.trigger('update.zf.magellan', [this.$active]);
