@@ -377,7 +377,6 @@
       // var curHandle,
       //     timer,
       var $body = $('body');
-
       $handle
         .off('mousedown.zf.slider')
         .on('mousedown.zf.slider', function(e){
@@ -391,11 +390,10 @@
             e.preventDefault();
 
             // timer = setTimeout(function(){
-              _this._handleEvent(e, curHandle);
+            _this._handleEvent(e, curHandle);
             // }, _this.options.dragDelay);
           }).on('mouseup.zf.slider', function(e){
-            clearTimeout(timer);
-
+            // clearTimeout(timer);
             _this.animComplete = true;
             _this._handleEvent(e, curHandle);
             $handle.removeClass('is-dragging');
