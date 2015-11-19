@@ -37,10 +37,6 @@ $maincontent-class: 'off-canvas-content';
 /// @type Shadow
 $maincontent-shadow: 0 0 10px rgba($black, 0.5);
 
-/// Boolean to prevent scroll on offcanvas open
-/// @type Boolean
-$maincontent-prevent-scroll: true !default;
-
 /// Adds baseline styles for off-canvas. This CSS is required to make the other pieces work.
 @mixin off-canvas-basics {
   // Extra properties needed on <html> and <body> to make off-canvas work
@@ -62,12 +58,6 @@ $maincontent-prevent-scroll: true !default;
     position: relative;
     width: 100%;
     transition: transform $offcanvas-transition-length $offcanvas-transition-timing;
-
-    @if $maincontent-prevent-scroll == true {
-      &.is-off-canvas-open {
-        overflow-y: hidden;
-      }
-    }
   }
 
   // Container for page content
