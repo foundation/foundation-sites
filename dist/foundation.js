@@ -2,7 +2,7 @@
 
 "use strict";
 
-var FOUNDATION_VERSION = '6.0.0-alpha.1';
+var FOUNDATION_VERSION = '6.0.0';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
@@ -300,14 +300,34 @@ $.fn.foundation = foundation;
       now: function(){ return Date.now() - this.start; }
     };
   }
-  // window.performance = (window.performance || {
-  //   start: Date.now(),
-  //   now: function(){
-  //       return Date.now() - this.start;
-  //   }
-  // });
 })();
+if (!Function.prototype.bind) {
+  Function.prototype.bind = function(oThis) {
+    if (typeof this !== 'function') {
+      // closest thing possible to the ECMAScript 5
+      // internal IsCallable function
+      throw new TypeError('Function.prototype.bind - what is trying to be bound is not callable');
+    }
 
+    var aArgs   = Array.prototype.slice.call(arguments, 1),
+        fToBind = this,
+        fNOP    = function() {},
+        fBound  = function() {
+          return fToBind.apply(this instanceof fNOP
+                 ? this
+                 : oThis,
+                 aArgs.concat(Array.prototype.slice.call(arguments)));
+        };
+
+    if (this.prototype) {
+      // native functions don't have a prototype
+      fNOP.prototype = this.prototype;
+    }
+    fBound.prototype = new fNOP();
+
+    return fBound;
+  };
+}
 // Polyfill to get the name of a function in IE9
 function functionName(fn) {
   if (Function.prototype.name === undefined) {
@@ -1562,41 +1582,41 @@ Foundation.Motion = Motion;
     if(!MutationObserver){ return false; }
     var nodes = document.querySelectorAll('[data-resize], [data-scroll], [data-mutate]');
 
+    //element callback
+    var listeningElementsMutation = function(mutationRecordsList) {
+      var $target = $(mutationRecordsList[0].target);
+      //trigger the event handler for the element depending on type
+      switch ($target.attr("data-events")) {
+
+        case "resize" :
+        $target.triggerHandler('resizeme.zf.trigger', [$target]);
+        break;
+
+        case "scroll" :
+        $target.triggerHandler('scrollme.zf.trigger', [$target, window.pageYOffset]);
+        break;
+
+        // case "mutate" :
+        // console.log('mutate', $target);
+        // $target.triggerHandler('mutate.zf.trigger');
+        //
+        // //make sure we don't get stuck in an infinite loop from sloppy codeing
+        // if ($target.index('[data-mutate]') == $("[data-mutate]").length-1) {
+        //   domMutationObserver();
+        // }
+        // break;
+
+        default :
+        return false;
+        //nothing
+      }
+    }
+
     if(nodes.length){
       //for each element that needs to listen for resizing, scrolling, (or coming soon mutation) add a single observer
       for (var i = 0; i <= nodes.length-1; i++) {
         var elementObserver = new MutationObserver(listeningElementsMutation);
         elementObserver.observe(nodes[i], { attributes: true, childList: false, characterData: false, subtree:false, attributeFilter:["data-events"]});
-      }
-
-      //element callback
-      function listeningElementsMutation(mutationRecordsList) {
-        var $target = $(mutationRecordsList[0].target);
-        //trigger the event handler for the element depending on type
-        switch ($target.attr("data-events")) {
-
-          case "resize" :
-          $target.triggerHandler('resizeme.zf.trigger', [$target]);
-          break;
-
-          case "scroll" :
-          $target.triggerHandler('scrollme.zf.trigger', [$target, window.pageYOffset]);
-          break;
-
-          // case "mutate" :
-          // console.log('mutate', $target);
-          // $target.triggerHandler('mutate.zf.trigger');
-          //
-          // //make sure we don't get stuck in an infinite loop from sloppy codeing
-          // if ($target.index('[data-mutate]') == $("[data-mutate]").length-1) {
-          //   domMutationObserver();
-          // }
-          // break;
-
-          default :
-          return false;
-          //nothing
-        }
       }
     }
   };
@@ -2560,7 +2580,7 @@ Foundation.Motion = Motion;
     this.$menuItems = this.$element.find('li').not('.js-drilldown-back').attr('role', 'menuitem');
     // this.$submenus;
 
-    // console.log(this.$wrapper.outerHeight(), this.$wrapper.css());
+
     this._prepareMenu();
     // this._getMaxDims();
     this._keyboardEvents();
@@ -2611,11 +2631,10 @@ Foundation.Motion = Motion;
   Drilldown.prototype._events = function($elem){
     var _this = this;
 
-    $elem/*.off('mouseup.zf.drilldown tap.zf.drilldown touchend.zf.drilldown')*/
-    .on('mousedown.zf.drilldown tap.zf.drilldown touchend.zf.drilldown', function(e){
-      // console.log('mouse event', $elem);
+    $elem.off('click.zf.drilldown')
+    .on('click.zf.drilldown', function(e){
+      e.stopImmediatePropagation();
       e.preventDefault();
-      e.stopPropagation();
 
       if(e.target !== e.currentTarget.firstElementChild){
         return false;
@@ -2624,17 +2643,12 @@ Foundation.Motion = Motion;
 
       if(_this.options.closeOnClick){
         var $body = $('body').not(_this.$wrapper);
-        $body.off('.zf.drilldown').on('mousedown.zf.drilldown tap.zf.drilldown touchend.zf.drilldown', function(e){
-          // console.log('body mouseup');
+        $body.off('.zf.drilldown').on('click.zf.drilldown', function(e){
           e.preventDefault();
           _this._hideAll();
           $body.off('.zf.drilldown');
         });
       }
-    });
-    $elem.find('.js-drilldown-back').eq(0).on('mousedown.zf.drilldown tap.zf.drilldown touchend.zf.drilldown', function(e){
-      //do stuff
-      // console.log('back button');
     });
   };
   /**
@@ -2724,9 +2738,10 @@ Foundation.Motion = Motion;
    */
   Drilldown.prototype._back = function($elem){
     var _this = this;
-    $elem.off('mousedown.zf.drilldown tap.zf.drilldown touchend.zf.drilldown');
+    $elem.off('click.zf.drilldown');
     $elem.children('.js-drilldown-back')
-      .on('mousedown.zf.drilldown tap.zf.drilldown touchend.zf.drilldown', function(e){
+      .on('click.zf.drilldown', function(e){
+        e.stopImmediatePropagation();
         // console.log('mouseup on back');
         _this._hide($elem);
       });
@@ -2739,8 +2754,8 @@ Foundation.Motion = Motion;
   Drilldown.prototype._menuLinkEvents = function(){
     var _this = this;
     this.$menuItems.not('.has-submenu')
-        .off('mousedown.zf.drilldown tap.zf.drilldown touchend.zf.drilldown')
-        .on('mousedown.zf.drilldown tap.zf.drilldown touchend.zf.drilldown', function(e){
+        .off('click.zf.drilldown')
+        .on('click.zf.drilldown', function(e){
           // e.stopImmediatePropagation();
           setTimeout(function(){
             _this._hideAll();
@@ -5916,6 +5931,7 @@ Foundation.plugin(ResponsiveToggle);
    * @param {Number} val - floating point number for the new value of the slider.
    */
   Slider.prototype._handleEvent = function(e, $handle, val){
+    var value, hasVal;
     if(!val){//click or drag events
       e.preventDefault();
       var _this = this,
@@ -5928,9 +5944,9 @@ Foundation.plugin(ResponsiveToggle);
           barOffset = (this.$element.offset()[direction] -  pageXY),
           barXY = barOffset > 0 ? -halfOfHandle : (barOffset - halfOfHandle) < -barDim ? barDim : Math.abs(barOffset),//if the cursor position is less than or greater than the elements bounding coordinates, set coordinates within those bounds
           // eleDim = this.$element[0].getBoundingClientRect()[param],
-          offsetPct = percent(barXY, barDim),
-          value = (this.options.end - this.options.start) * offsetPct,
-          hasVal = false;
+          offsetPct = percent(barXY, barDim);
+      value = (this.options.end - this.options.start) * offsetPct;
+      hasVal = false;
 
       if(!$handle){//figure out which handle it is, pass it to the next function.
         var firstHndlPos = absPosition(this.$handle, direction, barXY, param),
@@ -5939,8 +5955,8 @@ Foundation.plugin(ResponsiveToggle);
       }
 
     }else{//change event on input
-      var value = val,
-          hasVal = true;
+      value = val;
+      hasVal = true;
     }
 
     this._setHandlePos($handle, value, hasVal);
@@ -5958,13 +5974,13 @@ Foundation.plugin(ResponsiveToggle);
         curHandle,
         timer;
 
-      this.inputs.on('change.zf.slider', function(e){
+      this.inputs.off('change.zf.slider').on('change.zf.slider', function(e){
         var idx = _this.inputs.index($(this));
         _this._handleEvent(e, _this.handles.eq(idx), $(this).val());
       });
 
     if(this.options.clickSelect){
-      this.$element.off('mousedown.zf.slider').on('mousedown.zf.slider', function(e){
+      this.$element.off('click.zf.slider').on('click.zf.slider', function(e){
         if(_this.$element.data('dragging')){ return false; }
         _this.animComplete = false;
         if(_this.options.doubleSided){
@@ -5977,14 +5993,12 @@ Foundation.plugin(ResponsiveToggle);
 
     if(this.options.draggable){
       this.handles.addTouch();
-      var curHandle,
-          timer,
-          $body = $('body');
-
+      // var curHandle,
+      //     timer,
+      var $body = $('body');
       $handle
-        .off('mousedown.zf.slider touchstart.zf.slider keydown.zf.slider')
+        .off('mousedown.zf.slider')
         .on('mousedown.zf.slider', function(e){
-
           $handle.addClass('is-dragging');
           _this.$fill.addClass('is-dragging');//
           _this.$element.data('dragging', true);
@@ -5995,11 +6009,10 @@ Foundation.plugin(ResponsiveToggle);
             e.preventDefault();
 
             // timer = setTimeout(function(){
-              _this._handleEvent(e, curHandle);
+            _this._handleEvent(e, curHandle);
             // }, _this.options.dragDelay);
           }).on('mouseup.zf.slider', function(e){
-            clearTimeout(timer);
-
+            // clearTimeout(timer);
             _this.animComplete = true;
             _this._handleEvent(e, curHandle);
             $handle.removeClass('is-dragging');
@@ -6007,12 +6020,12 @@ Foundation.plugin(ResponsiveToggle);
             _this.$element.data('dragging', false);
             // Foundation.reflow(_this.$element, 'slider');
             $body.off('mousemove.zf.slider mouseup.zf.slider');
-          })
+          });
       });
     }
-    $handle.on('keydown.zf.slider', function(e){
+    $handle.off('keydown.zf.slider').on('keydown.zf.slider', function(e){
       var idx = _this.options.doubleSided ? _this.handles.index($(this)) : 0,
-        oldValue = Number(_this.inputs.eq(idx).val()),
+        oldValue = parseFloat(_this.inputs.eq(idx).val()),
         newValue;
 
       var _$handle = $(this);
