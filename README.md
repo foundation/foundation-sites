@@ -16,6 +16,7 @@ To get going with Foundation you can:
 
 
   * [Install Yeti Launch](http://foundation.zurb.com/develop/yeti-launch.html): Seriously though, check it out!
+  * [Install the CLI](https://www.npmjs.com/package/foundation-cli): `npm install -g foundation-cli`
   * [Download the latest release](http://foundation.zurb.com/sites/download.html)
   * [Install with Bower](http://bower.io): `bower install foundation-sites`
   * [Install with npm](http://npmjs.com): `npm install foundation-sites`
