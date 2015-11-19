@@ -1,7 +1,10 @@
 {
   "name": "foundation-sites",
   "version": "6.0.0",
-  "main": "js/foundation/foundation.js",
+  "main": "dist/foundation.js",
+  "description": "The most advanced responsive front-end framework in the world.",
+  "author": "ZURB <foundation@zurb.com> (http://foundation.zurb.com)",
+  "homepage": "http://foundation.zurb.com/sites",
   "scripts": {
     "start": "gulp",
     "test": "gulp test",
@@ -12,6 +15,7 @@
     "jquery": "^2.1.0",
     "what-input": "^1.1.2"
   },
+  "license": "MIT",
   "devDependencies": {
     "bootcamp": "^1.1.7",
     "browser-sync": "^2.8.2",
@@ -56,14 +60,12 @@
     "type": "git",
     "url": "https://github.com/zurb/foundation-sites"
   },
+  "bugs": {
+    "url": "https://github.com/zurb/foundation-sites/issues",
+    "email": "foundation@zurb.com"
+  },
   "keywords": [
     "handlebars-helper-rel",
     "handlebars-helper-slugify"
-  ],
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/zurb/foundation-sites/blob/master/LICENSE"
-    }
   ]
 }
