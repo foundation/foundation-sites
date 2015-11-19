@@ -145,9 +145,3 @@ Refer to each plugin's documentation to see a list of events it fires, and when 
 <div class="callout warning">
   <p>Starting with Foundation 6, we removed callbacks as plugin settings. All use of callbacks with plugins should be done as event listeners.</p>
 </div>
-
----
-
-## Module Loader Support
-
-<!-- TODO: JS module loader docs -->

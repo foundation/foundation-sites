@@ -180,20 +180,6 @@
     </ul>
     {{/each}}{{/if}}
 
-    <p>To import as an AMD module (for use with <a href="http://requirejs.org/">RequireJS</a>):</p>
-
-<div class="docs-code"><pre><code>define(['{{memberof}}.{{name}}'], function({{name}}) {
-});</code></pre></div>
-
-    <p>To import as a CommonJS module (for use with <a href="http://browserify.org/">Browserify</a> or <a href="https://webpack.github.io/">Webpack</a>):</p>
-
-    <div class="docs-code"><pre><code>var {{name}} = require('{{memberof}}.{{name}}');</code></pre></div>
-
-    <p>Note that when importing plugins with module loaders, the plugins are not initialized by default. They must be manually registered with Foundation, like this:</p>
-
-    <div class="docs-code"><pre><code>var {{name}} = require('{{memberof}}.{{name}}');
-
-Foundation.plugin({{name}});</code></pre></div>
   </section>
   {{/with}}{{/if}}
 
