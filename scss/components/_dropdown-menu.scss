@@ -34,8 +34,15 @@ $dropdown-border: 1px solid $medium-gray !default;
       }
 
       @if $dropdownmenu-arrows {
+        &.is-down-arrow a {
+          padding-right: 1.5rem;
+          position: relative;
+        }
         &.is-down-arrow > a::after {
           @include css-triangle(5px, $anchor-color, down);
+          position: absolute;
+          top: 12px;
+          right: 5px;
         }
         &.is-left-arrow > a::after {
           @include css-triangle(5px, $anchor-color, left);
