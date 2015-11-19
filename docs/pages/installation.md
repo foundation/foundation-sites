@@ -8,12 +8,8 @@ description: There are many ways to install Foundation, but if you're just getti
 The Node-powered Foundation CLI can install the same template projects for you. Install it with npm:
 
 ```bash
-npm install --global foundation-cli@beta
+npm install --global foundation-cli
 ```
-
-<div class="callout alert">
-  <p>Note that we're installing a <code>beta</code> version of the CLI in the above command.</p>
-</div>
 
 <div class="callout alert">
   <p>If you already have the Foundation 5 CLI on your machine, you will only be able to access one of the commands, depending on how your command line environment is configured.</p>
