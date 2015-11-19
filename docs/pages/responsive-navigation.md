@@ -6,10 +6,6 @@ js:
   - ./js/foundation.responsiveToggle.js
 ---
 
-<div class="callout alert">
-  <p>These patterns haven't been finalized yet, but we're collecting feedback on GitHub about them.</p>
-</div>
-
 ## Responsive Menu
 
 The Menu has some responsive CSS classes built in, which allow you to re-orient a menu on different screen sizes.

@@ -4,13 +4,6 @@ description: Show your progress. A simple way to add progress bars to your layou
 sass: scss/components/_progress-bar.scss
 ---
 
-<div class="callout alert">
-  <h5>Known Issues</h5>
-  <ul>
-    <li>Styles for text inside of the bar are not final.</li>
-  </ul>
-</div>
-
 ## Basics
 
 A progress bar has two elements: the container `.progress`, and the meter `.progress-meter`. The `role` and `aria-` attributes in the code example clarify the status of the bar:

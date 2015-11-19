@@ -5,15 +5,6 @@ sass: scss/components/_slider.scss
 js: js/foundation.slider.js
 ---
 
-
-<div class="alert callout">
-  <h5>Known Issues</h5>
-  <ul>
-    <li>Feedback Requested.</li>
-  </ul>
-</div>
-
-
 ## Basics
 
 It's got a handle and an active fill, what more do you need?

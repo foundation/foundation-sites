@@ -6,15 +6,6 @@ js: js/foundation.tooltip.js
 ---
 
 
-<div class="alert callout">
-  <h5>Known Issues</h5>
-  <ul>
-    <li>Inconsistent hover effects on Firefox.</li>
-    <li>Inconsitent position correction on collision events.</li>
-  </ul>
-</div>
-
-
 ## Basic Tooltip
 By default, a tooltip appears below the the definition on hover.
 

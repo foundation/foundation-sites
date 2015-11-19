@@ -7,14 +7,6 @@ tags:
   - navigation
 ---
 
-<div class="callout alert">
-  <h4>Known Issues</h4>
-  <ul>
-    <li>The right off-canvas menu is not properly hiding on mobile on init.</li>
-    <li>Open menus should trap focus.</li>
-  </ul>
-</div>
-
 <button class="button" type="button" data-toggle="offCanvasLeft">Toggle Off-canvas</button>
 
 ## Setup

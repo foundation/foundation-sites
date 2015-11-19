@@ -8,15 +8,6 @@ tags:
   - modal
 ---
 
-<div class="alert callout">
-  <h5>Known Issues</h5>
-  <ul>
-    <li><em>Future Feature.</em> Instead of each modal getting it’s own background, maybe generate one for the whole page if a modal is detected?</li>
-    <li>Focus isn't being trapped in Firefox.</li>
-  </ul>
-</div>
-
-
 ## Basics
 
 A modal is just an empty container, so you can put any kind of content inside it, from text to forms to a whole grid.
