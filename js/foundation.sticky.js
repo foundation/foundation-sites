@@ -87,7 +87,7 @@
      * @option
      * @example 50
      */
-    checkEvery: 50
+    checkEvery: -1
   };
 
   /**
@@ -182,11 +182,11 @@
                  if(_this.scrollCount === 0){
                    _this.scrollCount = _this.options.checkEvery;
                    _this._setSizes(function(){
-                     _this._calc(false, e.currentTarget.scrollY);
+                     _this._calc(false, window.pageYOffset);
                    });
                  }else{
                    _this.scrollCount--;
-                   _this._calc(false, e.currentTarget.scrollY);
+                   _this._calc(false, window.pageYOffset);
                  }
               });
     }
@@ -228,7 +228,7 @@
    * Called on every `scroll` event and on `_init`
    * fires functions based on booleans and cached values
    * @param {Boolean} checkSizes - true if plugin should recalculate sizes and breakpoints.
-   * @param {Number} scroll - current scroll position passed from scroll event cb function. If not passed, defaults to `window.scrollY`.
+   * @param {Number} scroll - current scroll position passed from scroll event cb function. If not passed, defaults to `window.pageYOffset`.
    */
   Sticky.prototype._calc = function(checkSizes, scroll){
     if(checkSizes){ this._setSizes(); }
@@ -240,7 +240,7 @@
       return false;
     }
 
-    if(!scroll){ scroll = window.scrollY; }
+    if(!scroll){ scroll = window.pageYOffset; }
 
     if(scroll >= this.topPoint){
       if(scroll <= this.bottomPoint){
