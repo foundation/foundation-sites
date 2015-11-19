@@ -177,25 +177,26 @@
     var _this = this;
 
     if(this.options.clickOpen){
-      $elem.children('a').on('click.zf.dropdownmenu touchend.zf.dropdownmenu', function(e){
-        if($(e.target).parent('li').hasClass('has-submenu')){
-          e.preventDefault();
-          e.stopPropagation();
-        }else{
-          return;
-        }
+      $elem.off('click.zf.dropdownmenu')
+          .on('click.zf.dropdownmenu', function(e){
+            if(!$(this).hasClass('is-dropdown-submenu-parent')){ return; }
 
-        if($elem.data('isClick')){
-          _this._hide($elem);
-        }else{
-          _this._hideOthers($elem);
-          _this._show($elem);
-          $elem.data('isClick', true).parentsUntil('[data-dropdown-menu]', '.has-submenu').data('isClick', true);
-          if(_this.options.closeOnClick){
-            _this._addBodyHandler();
-          }
-        }
-      });
+            e.preventDefault();
+            e.stopPropagation();
+
+            if($elem.data('isClick')){
+              _this._hide($elem);
+            }else{
+              _this._hideOthers($elem);
+              _this._show($elem);
+              $elem.data('isClick', true)
+                  .parentsUntil('[data-dropdown-menu]', '.is-dropdown-submenu-parent')
+                  .data('isClick', true);
+              if(_this.options.closeOnClick){
+                _this._addBodyHandler();
+              }
+            }
+          });
     }
 
     if(!this.options.disableHover){
@@ -457,7 +458,7 @@
     Foundation.Nest.Burn(this.$element, 'dropdown');
     Foundation.unregisterPlugin(this);
   };
-  
+
   Foundation.plugin(DropdownMenu, 'DropdownMenu');
 
   var checkClass = function($elem){
