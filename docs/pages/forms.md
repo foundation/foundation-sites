@@ -1,7 +1,9 @@
 ---
 title: Forms
 description: We set out to create an easy, powerful and versatile form layout system. A combination of form styles and the Foundation grid means you can do almost anything.
-sass: scss/forms/*.scss
+sass:
+  - scss/forms/*.scss
+  - '!scss/forms/_error.scss'
 tags:
   - input
   - select
