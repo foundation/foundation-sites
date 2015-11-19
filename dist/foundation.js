@@ -1425,6 +1425,16 @@ Foundation.Motion = Motion;
     }
   });
 
+  var MutationObserver = (function () {
+    var prefixes = ['WebKit', 'Moz', 'O', 'Ms', ''];
+    for (var i=0; i < prefixes.length; i++) {
+      if (prefixes[i] + 'MutationObserver' in window) {
+        return window[prefixes[i] + 'MutationObserver'];
+      }
+    }
+    return false;
+  }());
+
 
   var checkListeners = function(){
     eventsListener();
@@ -1480,7 +1490,13 @@ Foundation.Motion = Motion;
       .on('resize.zf.trigger', function(e) {
         if (timer) { clearTimeout(timer); }
 
-        timer = setTimeout(function() {
+        timer = setTimeout(function(){
+
+          if(!MutationObserver){//fallback for IE 9
+            $nodes.each(function(){
+              $(this).triggerHandler('resizeme.zf.trigger');
+            });
+          }
           //trigger all listening elements and signal a resize event
           $nodes.attr('data-events', "resize");
         }, debounce || 10);//default time to emit resize event
@@ -1496,6 +1512,12 @@ Foundation.Motion = Motion;
         if(timer){ clearTimeout(timer); }
 
         timer = setTimeout(function(){
+
+          if(!MutationObserver){//fallback for IE 9
+            $nodes.each(function(){
+              $(this).triggerHandler('scrollme.zf.trigger');
+            });
+          }
           //trigger all listening elements and signal a scroll event
           $nodes.attr('data-events', "scroll");
         }, debounce || 10);//default time to emit scroll event
@@ -1537,20 +1559,10 @@ Foundation.Motion = Motion;
   //   }
   // }
   var eventsListener = function() {
+    if(!MutationObserver){ return false; }
     var nodes = document.querySelectorAll('[data-resize], [data-scroll], [data-mutate]');
 
-    if (nodes.length) {
-
-      var MutationObserver = (function () {
-        var prefixes = ['WebKit', 'Moz', 'O', 'Ms', ''];
-        for (var i=0; i < prefixes.length; i++) {
-          if (prefixes[i] + 'MutationObserver' in window) {
-            return window[prefixes[i] + 'MutationObserver'];
-          }
-        }
-        return false;
-      }());
-
+    if(nodes.length){
       //for each element that needs to listen for resizing, scrolling, (or coming soon mutation) add a single observer
       for (var i = 0; i <= nodes.length-1; i++) {
         var elementObserver = new MutationObserver(listeningElementsMutation);
@@ -1564,12 +1576,10 @@ Foundation.Motion = Motion;
         switch ($target.attr("data-events")) {
 
           case "resize" :
-          console.log('resizing', $target);
           $target.triggerHandler('resizeme.zf.trigger', [$target]);
           break;
 
           case "scroll" :
-          console.log('scrolling', $target);
           $target.triggerHandler('scrollme.zf.trigger', [$target, window.pageYOffset]);
           break;
 
@@ -6167,7 +6177,7 @@ Foundation.plugin(ResponsiveToggle);
      * @option
      * @example 50
      */
-    checkEvery: 50
+    checkEvery: -1
   };
 
   /**
@@ -6262,11 +6272,11 @@ Foundation.plugin(ResponsiveToggle);
                  if(_this.scrollCount === 0){
                    _this.scrollCount = _this.options.checkEvery;
                    _this._setSizes(function(){
-                     _this._calc(false, e.currentTarget.scrollY);
+                     _this._calc(false, window.pageYOffset);
                    });
                  }else{
                    _this.scrollCount--;
-                   _this._calc(false, e.currentTarget.scrollY);
+                   _this._calc(false, window.pageYOffset);
                  }
               });
     }
@@ -6308,7 +6318,7 @@ Foundation.plugin(ResponsiveToggle);
    * Called on every `scroll` event and on `_init`
    * fires functions based on booleans and cached values
    * @param {Boolean} checkSizes - true if plugin should recalculate sizes and breakpoints.
-   * @param {Number} scroll - current scroll position passed from scroll event cb function. If not passed, defaults to `window.scrollY`.
+   * @param {Number} scroll - current scroll position passed from scroll event cb function. If not passed, defaults to `window.pageYOffset`.
    */
   Sticky.prototype._calc = function(checkSizes, scroll){
     if(checkSizes){ this._setSizes(); }
@@ -6320,7 +6330,7 @@ Foundation.plugin(ResponsiveToggle);
       return false;
     }
 
-    if(!scroll){ scroll = window.scrollY; }
+    if(!scroll){ scroll = window.pageYOffset; }
 
     if(scroll >= this.topPoint){
       if(scroll <= this.bottomPoint){
