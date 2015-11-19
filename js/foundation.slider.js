@@ -312,6 +312,7 @@
    * @param {Number} val - floating point number for the new value of the slider.
    */
   Slider.prototype._handleEvent = function(e, $handle, val){
+    var value, hasVal;
     if(!val){//click or drag events
       e.preventDefault();
       var _this = this,
@@ -324,9 +325,9 @@
           barOffset = (this.$element.offset()[direction] -  pageXY),
           barXY = barOffset > 0 ? -halfOfHandle : (barOffset - halfOfHandle) < -barDim ? barDim : Math.abs(barOffset),//if the cursor position is less than or greater than the elements bounding coordinates, set coordinates within those bounds
           // eleDim = this.$element[0].getBoundingClientRect()[param],
-          offsetPct = percent(barXY, barDim),
-          value = (this.options.end - this.options.start) * offsetPct,
-          hasVal = false;
+          offsetPct = percent(barXY, barDim);
+      value = (this.options.end - this.options.start) * offsetPct;
+      hasVal = false;
 
       if(!$handle){//figure out which handle it is, pass it to the next function.
         var firstHndlPos = absPosition(this.$handle, direction, barXY, param),
@@ -335,8 +336,8 @@
       }
 
     }else{//change event on input
-      var value = val,
-          hasVal = true;
+      value = val;
+      hasVal = true;
     }
 
     this._setHandlePos($handle, value, hasVal);
@@ -354,13 +355,13 @@
         curHandle,
         timer;
 
-      this.inputs.on('change.zf.slider', function(e){
+      this.inputs.off('change.zf.slider').on('change.zf.slider', function(e){
         var idx = _this.inputs.index($(this));
         _this._handleEvent(e, _this.handles.eq(idx), $(this).val());
       });
 
     if(this.options.clickSelect){
-      this.$element.off('mousedown.zf.slider').on('mousedown.zf.slider', function(e){
+      this.$element.off('click.zf.slider').on('click.zf.slider', function(e){
         if(_this.$element.data('dragging')){ return false; }
         _this.animComplete = false;
         if(_this.options.doubleSided){
@@ -373,14 +374,13 @@
 
     if(this.options.draggable){
       this.handles.addTouch();
-      var curHandle,
-          timer,
-          $body = $('body');
+      // var curHandle,
+      //     timer,
+      var $body = $('body');
 
       $handle
-        .off('mousedown.zf.slider touchstart.zf.slider keydown.zf.slider')
+        .off('mousedown.zf.slider')
         .on('mousedown.zf.slider', function(e){
-
           $handle.addClass('is-dragging');
           _this.$fill.addClass('is-dragging');//
           _this.$element.data('dragging', true);
@@ -403,12 +403,12 @@
             _this.$element.data('dragging', false);
             // Foundation.reflow(_this.$element, 'slider');
             $body.off('mousemove.zf.slider mouseup.zf.slider');
-          })
+          });
       });
     }
-    $handle.on('keydown.zf.slider', function(e){
+    $handle.off('keydown.zf.slider').on('keydown.zf.slider', function(e){
       var idx = _this.options.doubleSided ? _this.handles.index($(this)) : 0,
-        oldValue = Number(_this.inputs.eq(idx).val()),
+        oldValue = parseFloat(_this.inputs.eq(idx).val()),
         newValue;
 
       var _$handle = $(this);
