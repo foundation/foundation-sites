@@ -65,8 +65,13 @@ $topbar-hover-color: darken($topbar-background, 20%);
     border: 0;
   }
 
+  .is-down-arrow a {
+    padding-right: 2rem !important;
+  }
+
   .is-down-arrow a::after {
-    margin-top: 20px !important;
+    margin-top: 8px !important;
+    right: 12px !important;
     border-top-color: white !important;
   }
 }
