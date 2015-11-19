@@ -1,5 +1,7 @@
 <article class="docs-component" id="docs-{{escape title}}">
 
+<a href="#docs-menu" class="small secondary expanded button">Jump to Nav</a>
+
 <h1 class="docs-page-title">{{ title }}</h1>
 
 {{#if js}}
@@ -305,9 +307,9 @@
 {{/if}}
 
 {{#if sass}}
-<hr>
+<!-- <hr> -->
 
-<section class="docs-building-blocks">
+<!-- <section class="docs-building-blocks">
   {{#heading 2}}Building Blocks{{/heading}}
 
   <p><a href="http://zurb.com/building-blocks">Building Blocks</a> is a ZURB-curated resource with useful code snippets that use Foundation components. Here are a few for this component:</p>
@@ -317,7 +319,7 @@
   </div>
 
   <div data-building-blocks></div>
-</section>
+</section> -->
 {{/if}}
 
 </div>
@@ -325,8 +327,8 @@
 
 {{!-- Start container for table of contents --}}
 <div class="large-3 columns" data-sticky-container>
-  <nav class="columns" data-sticky data-anchor='docs' data-sticky-on='large'>
-    <div class="docs-toc hide" id="docsTOC" data-toggler=".hide">
+  <nav class="columns" data-sticky data-anchor="docs" data-sticky-on="large">
+    <div class="docs-toc hide" id="docsTOC">
       <ul class="vertical menu docs-sub-menu" data-docs-toc>
         <li class="docs-menu-title">On this page:</li>
       </ul>
