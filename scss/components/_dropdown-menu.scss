@@ -99,18 +99,18 @@ $dropdown-border: 1px solid $medium-gray !default;
         right: 0;
       }
     }
+  }
 
-    &.vertical {
-      width: 100px;
+  .is-dropdown-menu.vertical {
+    width: 100px;
 
-      &.align-right {
-        float: right;
-      }
+    &.align-right {
+      float: right;
+    }
 
-      > li .submenu {
-        top: 0;
-        left: 100%;
-      }
+    > li .submenu {
+      top: 0;
+      left: 100%;
     }
   }
 }
