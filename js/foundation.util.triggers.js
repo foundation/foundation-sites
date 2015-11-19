@@ -120,7 +120,6 @@
     if($nodes.length){
       $(window).off('scroll.zf.trigger')
       .on('scroll.zf.trigger', function(e){
-        console.log('scrolling');
         if(timer){ clearTimeout(timer); }
 
         timer = setTimeout(function(){
@@ -188,12 +187,10 @@
         switch ($target.attr("data-events")) {
 
           case "resize" :
-          console.log('resizing', $target);
           $target.triggerHandler('resizeme.zf.trigger', [$target]);
           break;
 
           case "scroll" :
-          console.log('scrolling', $target);
           $target.triggerHandler('scrollme.zf.trigger', [$target, window.pageYOffset]);
           break;
 
