@@ -447,7 +447,7 @@
      Foundation.unregisterPlugin(this);
    };
 
-  Foundation.plugin(Slider);
+  Foundation.plugin(Slider, 'Slider');
 
   function percent(frac, num){
     return (frac / num);

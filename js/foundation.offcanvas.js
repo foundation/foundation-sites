@@ -316,6 +316,6 @@ OffCanvas.prototype.destroy = function(){
   //TODO make this...
 };
 
-Foundation.plugin(OffCanvas);
+Foundation.plugin(OffCanvas, 'OffCanvas');
 
 }(jQuery, Foundation);

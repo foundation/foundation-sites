@@ -144,7 +144,7 @@
     //TODO this.
   };
 
-  Foundation.plugin(Equalizer);
+  Foundation.plugin(Equalizer, 'Equalizer');
 
   // Exports for AMD/Browserify
   if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')

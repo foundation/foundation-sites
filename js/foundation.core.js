@@ -33,10 +33,10 @@ var Foundation = {
    * Defines a Foundation plugin, adding it to the `Foundation` namespace and the list of plugins to initialize when reflowing.
    * @param {Object} plugin - The constructor of the plugin.
    */
-  plugin: function(plugin) {
+  plugin: function(plugin, name) {
     // Object key to use when adding to global Foundation object
     // Examples: Foundation.Reveal, Foundation.OffCanvas
-    var className = functionName(plugin);
+    var className = (name || functionName(plugin));
     // Object key to use when storing the plugin, also used to create the identifying data attribute for the plugin
     // Examples: data-reveal, data-off-canvas
     var attrName  = hyphenate(className);

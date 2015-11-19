@@ -171,7 +171,7 @@
   Interchange.prototype.destroy = function(){
     //TODO this.
   };
-  Foundation.plugin(Interchange);
+  Foundation.plugin(Interchange, 'Interchange');
 
   // Exports for AMD/Browserify
   if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')

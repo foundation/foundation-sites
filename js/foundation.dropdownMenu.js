@@ -457,7 +457,8 @@
     Foundation.Nest.Burn(this.$element, 'dropdown');
     Foundation.unregisterPlugin(this);
   };
-  Foundation.plugin(DropdownMenu);
+  
+  Foundation.plugin(DropdownMenu, 'DropdownMenu');
 
   var checkClass = function($elem){
     return $elem.hasClass('is-active');

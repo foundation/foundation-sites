@@ -101,6 +101,6 @@ ResponsiveToggle.prototype.toggleMenu = function() {
 ResponsiveToggle.prototype.destroy = function(){
   //TODO this...
 };
-Foundation.plugin(ResponsiveToggle);
+Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
 
 }(jQuery, Foundation);

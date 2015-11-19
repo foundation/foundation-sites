@@ -437,5 +437,5 @@
   function emCalc(em){
     return parseInt(window.getComputedStyle(document.body, null).fontSize, 10) * em;
   }
-  Foundation.plugin(Sticky);
+  Foundation.plugin(Sticky, 'Sticky');
 }(jQuery, window.Foundation);

@@ -297,7 +297,7 @@
     Foundation.unregisterPlugin(this);
   };
 
-  Foundation.plugin(Tabs);
+  Foundation.plugin(Tabs, 'Tabs');
 
   function checkClass($elem){
     return $elem.hasClass('is-active');

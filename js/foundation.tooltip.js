@@ -425,5 +425,5 @@
    * TODO utilize resize event trigger
    */
 
-  Foundation.plugin(Tooltip);
+  Foundation.plugin(Tooltip, 'Tooltip');
 }(jQuery, window.document, window.Foundation);

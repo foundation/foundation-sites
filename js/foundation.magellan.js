@@ -192,7 +192,7 @@
 
     Foundation.unregisterPlugin(this);
   };
-  Foundation.plugin(Magellan);
+  Foundation.plugin(Magellan, 'Magellan');
 
   // Exports for AMD/Browserify
   if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')

@@ -464,7 +464,7 @@
     Foundation.unregisterPlugin(this);
   };
 
-  Foundation.plugin(Reveal);
+  Foundation.plugin(Reveal, 'Reveal');
 
   // Exports for AMD/Browserify
   if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')

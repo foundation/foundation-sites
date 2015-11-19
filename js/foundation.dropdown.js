@@ -316,5 +316,5 @@
     Foundation.unregisterPlugin(this);
   };
 
-  Foundation.plugin(Dropdown);
+  Foundation.plugin(Dropdown, 'Dropdown');
 }(jQuery, window.Foundation);
