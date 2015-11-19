@@ -20,6 +20,7 @@
 
   // Elements with [data-toggle] will toggle a plugin that supports it when clicked.
   $(document).on('click.zf.trigger', '[data-toggle]', function() {
+    alert('sss');
     var id = $(this).data('toggle');
     $('#' + id).triggerHandler('toggle.zf.trigger', [$(this)]);
   });
@@ -173,41 +174,41 @@
     if(!MutationObserver){ return false; }
     var nodes = document.querySelectorAll('[data-resize], [data-scroll], [data-mutate]');
 
+    //element callback
+    var listeningElementsMutation = function(mutationRecordsList) {
+      var $target = $(mutationRecordsList[0].target);
+      //trigger the event handler for the element depending on type
+      switch ($target.attr("data-events")) {
+
+        case "resize" :
+        $target.triggerHandler('resizeme.zf.trigger', [$target]);
+        break;
+
+        case "scroll" :
+        $target.triggerHandler('scrollme.zf.trigger', [$target, window.pageYOffset]);
+        break;
+
+        // case "mutate" :
+        // console.log('mutate', $target);
+        // $target.triggerHandler('mutate.zf.trigger');
+        //
+        // //make sure we don't get stuck in an infinite loop from sloppy codeing
+        // if ($target.index('[data-mutate]') == $("[data-mutate]").length-1) {
+        //   domMutationObserver();
+        // }
+        // break;
+
+        default :
+        return false;
+        //nothing
+      }
+    }
+
     if(nodes.length){
       //for each element that needs to listen for resizing, scrolling, (or coming soon mutation) add a single observer
       for (var i = 0; i <= nodes.length-1; i++) {
         var elementObserver = new MutationObserver(listeningElementsMutation);
         elementObserver.observe(nodes[i], { attributes: true, childList: false, characterData: false, subtree:false, attributeFilter:["data-events"]});
-      }
-
-      //element callback
-      function listeningElementsMutation(mutationRecordsList) {
-        var $target = $(mutationRecordsList[0].target);
-        //trigger the event handler for the element depending on type
-        switch ($target.attr("data-events")) {
-
-          case "resize" :
-          $target.triggerHandler('resizeme.zf.trigger', [$target]);
-          break;
-
-          case "scroll" :
-          $target.triggerHandler('scrollme.zf.trigger', [$target, window.pageYOffset]);
-          break;
-
-          // case "mutate" :
-          // console.log('mutate', $target);
-          // $target.triggerHandler('mutate.zf.trigger');
-          //
-          // //make sure we don't get stuck in an infinite loop from sloppy codeing
-          // if ($target.index('[data-mutate]') == $("[data-mutate]").length-1) {
-          //   domMutationObserver();
-          // }
-          // break;
-
-          default :
-          return false;
-          //nothing
-        }
       }
     }
   };

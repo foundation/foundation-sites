@@ -14,6 +14,7 @@ The Sass is compiled using libsass, which requires the GCC to be installed on yo
 
 To get going with Foundation you can:
 
+
   * [Install Yeti Launch](http://foundation.zurb.com/develop/yetilaunch.html): Seriously though, check it out!
   * [Download the latest release](http://foundation.zurb.com/sites/download.html)
   * [Install with Bower](http://bower.io): `bower install foundation-sites`
