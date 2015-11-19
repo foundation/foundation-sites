@@ -3,9 +3,19 @@ title: Installation
 description: There are many ways to install Foundation, but if you're just getting started, we have a few suggestions.
 ---
 
-## Command-Line Tool
+## Yeti Launch
 
-The Node-powered Foundation CLI can install the same template projects for you. Install it with npm:
+Yeti Launch is our Mac app for quickly spinning up blank projects for any of the three Foundation frameworks. If you're just getting started with Foundation, we recommend downloading Yeti Launch to get going right away.
+
+<a href="http://foundation.zurb.com/develop/yetilaunch" class="large button">Download Yeti Launch</a>
+
+### Command-Line Tool
+
+Not a fan of GUIs? The Node-powered Foundation CLI can install the same templae projects for you. Install it with npm:
+
+<div class="callout alert">
+  <p>As Foundation for Sites is in alpha, the CLI doesn't yet support this framework.</p>
+</div>
 
 ```bash
 npm install --global foundation-cli
@@ -29,7 +39,7 @@ foundation new
 
 If you aren't into Sass, we have a starter template with compiled CSS and JavaScript, as well as a starting `index.html` file for you to hack on. Just unzip and get coding!
 
-<a href="#" class="large button">Download CSS Version</a>
+<a href="http://foundation.zurb.com/sites/download" class="large button">Download CSS Version</a>
 
 ---
 
@@ -40,7 +50,7 @@ Foundation is available on npm, Bower, Meteor, and Composer. The package include
 - npm: `npm install foundation-sites`
 - Bower: `bower install foundation-sites`
 - Meteor: `meteor add zurb:foundation-sites`
-- Composer: `php composer.phar require zurb/foundation-sites`
+- Composer: `php composer.phar require zurb/foundation`
 
 ### Package Contents
 
