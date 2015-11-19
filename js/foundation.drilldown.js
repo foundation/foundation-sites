@@ -274,10 +274,15 @@
   Drilldown.prototype._hide = function($elem){
     var _this = this;
     $elem.addClass('is-closing')
-      .on(Foundation.transitionend + '.zf.drilldown', function(e){
-        // console.log('transitionend');
-        $(this).removeClass('is-active is-closing').off(Foundation.transitionend + '.zf.drilldown');
-      });
+      .one(Foundation.transient(), listen);
+
+    function listen(){
+      $elem.removeClass('is-active is-closing');
+    }
+      // .on(Foundation.transitionend + '.zf.drilldown', function(e){
+      //   // console.log('transitionend');
+      //   $(this).removeClass('is-active is-closing').off(Foundation.transitionend + '.zf.drilldown');
+      // });
     /**
      * Fires when the submenu is has closed.
      * @event Drilldown#hide

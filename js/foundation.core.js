@@ -179,14 +179,43 @@ var Foundation = {
       'MozTransition': 'transitionend',
       'OTransition': 'otransitionend'
     };
-    var elem = document.createElement('div');
+    var elem = document.createElement('div'),
+        end;
 
     for (var t in transitions){
       if (typeof elem.style[t] !== 'undefined'){
-        return transitions[t];
+        end = transitions[t];
       }
     }
-  })()
+    if(!end){
+
+    }
+  })(),
+  transient: function($elem){
+    var transitions = {
+      'transition': 'transitionend',
+      'WebkitTransition': 'webkitTransitionEnd',
+      'MozTransition': 'transitionend',
+      'OTransition': 'otransitionend'
+    };
+    var elem = document.createElement('div'),
+        end;
+
+    for (var t in transitions){
+      if (typeof elem.style[t] !== 'undefined'){
+        end = transitions[t];
+      }
+    }
+    if(end){
+      return end;
+    }else{
+      end = setTimeout(function(){
+        $elem.triggerHandler('transitionend', [$elem]);
+      }, 1);
+      return 'transitionend';
+    }
+
+  }
 };
 
 Foundation.util = {
