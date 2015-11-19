@@ -172,26 +172,7 @@ var Foundation = {
     });
   },
   getFnName: functionName,
-  transitionend: (function() {
-    var transitions = {
-      'transition': 'transitionend',
-      'WebkitTransition': 'webkitTransitionEnd',
-      'MozTransition': 'transitionend',
-      'OTransition': 'otransitionend'
-    };
-    var elem = document.createElement('div'),
-        end;
-
-    for (var t in transitions){
-      if (typeof elem.style[t] !== 'undefined'){
-        end = transitions[t];
-      }
-    }
-    if(!end){
-
-    }
-  })(),
-  transient: function($elem){
+  transitionend: function($elem){
     var transitions = {
       'transition': 'transitionend',
       'WebkitTransition': 'webkitTransitionEnd',
@@ -214,9 +195,9 @@ var Foundation = {
       }, 1);
       return 'transitionend';
     }
-
   }
 };
+
 
 Foundation.util = {
   /**
