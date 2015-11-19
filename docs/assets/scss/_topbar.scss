@@ -11,6 +11,16 @@ $topbar-hover-color: darken($topbar-background, 20%);
   ul:first-child { float: left; }
   ul:last-child  { float: right; }
 
+  .topbar-title > a {
+    font-size: rem-calc(16);
+    opacity: 0.9;
+
+    > img {
+      position: relative;
+      top: -1px;
+    }
+  }
+
   .menu a {
     height: 45px;
     line-height: 45px;
@@ -45,10 +55,6 @@ $topbar-hover-color: darken($topbar-background, 20%);
   .menu img {
     position: relative;
     top: -2px;
-  }
-
-  .menu:first-child {
-    border-right: 1px solid #4e4e4e;
   }
 
   .menu:last-child {
