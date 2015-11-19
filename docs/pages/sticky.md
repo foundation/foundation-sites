@@ -1,7 +1,6 @@
 ---
 title: Sticky
 description: Stick nearly anything, anywhere you like!
-sass: scss/components/_sticky.scss
 js: js/foundation.sticky.js
 ---
 
