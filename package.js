@@ -5,10 +5,12 @@ Package.describe({
   git: 'https://github.com/zurb/foundation-sites.git'
 });
 
+Npm.depends({'what-input': '1.1.2'});
+
 Package.onUse(function(api) {
   api.versionsFrom('1.2.1');
   api.imply('fourseven:scss@3.4.1');
-  api.use(['ecmascript', 'jquery@1.11.4', 'fourseven:scss@3.4.1'], 'client');
+  api.use(['ecmascript', 'jquery@2.1.0', 'fourseven:scss@3.4.1'], 'client');
   api.addFiles([
     'dist/foundation.css',
     'dist/foundation.min.css',
