@@ -20,7 +20,6 @@
 
   // Elements with [data-toggle] will toggle a plugin that supports it when clicked.
   $(document).on('click.zf.trigger', '[data-toggle]', function() {
-    alert('sss');
     var id = $(this).data('toggle');
     $('#' + id).triggerHandler('toggle.zf.trigger', [$(this)]);
   });
