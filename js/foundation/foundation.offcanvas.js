@@ -20,16 +20,22 @@
           S = self.S,
           move_class = '',
           right_postfix = '',
-          left_postfix = '';
+          left_postfix = '',
+          top_postfix = '',
+          bottom_postfix = '';
 
       if (this.settings.open_method === 'move') {
         move_class = 'move-';
         right_postfix = 'right';
         left_postfix = 'left';
+        top_postfix = 'top';
+        bottom_postfix = 'bottom';
       } else if (this.settings.open_method === 'overlap_single') {
         move_class = 'offcanvas-overlap-';
         right_postfix = 'right';
         left_postfix = 'left';
+        top_postfix = 'top';
+        bottom_postfix = 'bottom';
       } else if (this.settings.open_method === 'overlap') {
         move_class = 'offcanvas-overlap';
       }
@@ -58,6 +64,7 @@
           }
           $('.left-off-canvas-toggle').attr('aria-expanded', 'true');
         })
+        //end of left canvas
         .on('click.fndtn.offcanvas', '.right-off-canvas-toggle', function (e) {
           self.click_toggle_class(e, move_class + left_postfix);
           if (self.settings.open_method !== 'overlap') {
@@ -81,6 +88,55 @@
           }
           $('.right-off-canvas-toggle').attr('aria-expanded', 'true');
         })
+        //end of right canvas
+        .on('click.fndtn.offcanvas', '.top-off-canvas-toggle', function (e) {
+          self.click_toggle_class(e, move_class + bottom_postfix);
+          if (self.settings.open_method !== 'overlap') {
+            S('.top-submenu').removeClass(move_class + bottom_postfix);
+          }
+          $('.top-off-canvas-toggle').attr('aria-expanded', 'true');
+        })
+        .on('click.fndtn.offcanvas', '.top-off-canvas-menu a', function (e) {
+          var settings = self.get_settings(e);
+          var parent = S(this).parent();
+
+          if (settings.close_on_click && !parent.hasClass('has-submenu') && !parent.hasClass('back')) {
+            self.hide.call(self, move_class + bottom_postfix, self.get_wrapper(e));
+            parent.parent().removeClass(move_class + bottom_postfix);
+          } else if (S(this).parent().hasClass('has-submenu')) {
+            e.preventDefault();
+            S(this).siblings('.top-submenu').toggleClass(move_class + bottom_postfix);
+          } else if (parent.hasClass('back')) {
+            e.preventDefault();
+            parent.parent().removeClass(move_class + bottom_postfix);
+          }
+          $('.top-off-canvas-toggle').attr('aria-expanded', 'true');
+        })
+        //end of top canvas
+        .on('click.fndtn.offcanvas', '.bottom-off-canvas-toggle', function (e) {
+          self.click_toggle_class(e, move_class + top_postfix);
+          if (self.settings.open_method !== 'overlap') {
+            S('.bottom-submenu').removeClass(move_class + top_postfix);
+          }
+          $('.bottom-off-canvas-toggle').attr('aria-expanded', 'true');
+        })
+        .on('click.fndtn.offcanvas', '.bottom-off-canvas-menu a', function (e) {
+          var settings = self.get_settings(e);
+          var parent = S(this).parent();
+
+          if (settings.close_on_click && !parent.hasClass('has-submenu') && !parent.hasClass('back')) {
+            self.hide.call(self, move_class + top_postfix, self.get_wrapper(e));
+            parent.parent().removeClass(move_class + top_postfix);
+          } else if (S(this).parent().hasClass('has-submenu')) {
+            e.preventDefault();
+            S(this).siblings('.bottom-submenu').toggleClass(move_class + top_postfix);
+          } else if (parent.hasClass('back')) {
+            e.preventDefault();
+            parent.parent().removeClass(move_class + top_postfix);
+          }
+          $('.bottom-off-canvas-toggle').attr('aria-expanded', 'true');
+        })
+        //end of bottom
         .on('click.fndtn.offcanvas', '.exit-off-canvas', function (e) {
           self.click_remove_class(e, move_class + left_postfix);
           S('.right-submenu').removeClass(move_class + left_postfix);
@@ -97,6 +153,23 @@
             self.click_remove_class(e, move_class + right_postfix);
             $('.right-off-canvas-toggle').attr('aria-expanded', 'false');
           }
+        })
+        .on('click.fndtn.offcanvas', '.exit-off-canvas', function (e) {
+          self.click_remove_class(e, move_class + top_postfix);
+          S('.bottom-submenu').removeClass(move_class + top_postfix);
+          if (bottom_postfix) {
+            self.click_remove_class(e, move_class + bottom_postfix);
+            S('.top-submenu').removeClass(move_class + top_postfix);
+          }
+          $('.bottom-off-canvas-toggle').attr('aria-expanded', 'true');
+        })
+        .on('click.fndtn.offcanvas', '.exit-off-canvas', function (e) {
+          self.click_remove_class(e, move_class + top_postfix);
+          $('.top-off-canvas-toggle').attr('aria-expanded', 'false');
+          if (bottom_postfix) {
+            self.click_remove_class(e, move_class + bottom_postfix);
+            $('.bottom-off-canvas-toggle').attr('aria-expanded', 'false');
+          }
         });
     },
 
@@ -111,13 +184,13 @@
 
     show : function (class_name, $off_canvas) {
       $off_canvas = $off_canvas || this.get_wrapper();
-      $off_canvas.trigger('open').trigger('open.fndtn.offcanvas');
+      $off_canvas.trigger('open.fndtn.offcanvas');
       $off_canvas.addClass(class_name);
     },
 
     hide : function (class_name, $off_canvas) {
       $off_canvas = $off_canvas || this.get_wrapper();
-      $off_canvas.trigger('close').trigger('close.fndtn.offcanvas');
+      $off_canvas.trigger('close.fndtn.offcanvas');
       $off_canvas.removeClass(class_name);
     },
 

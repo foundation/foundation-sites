@@ -1,5 +1,6 @@
 ---
 title: Interchange
+layout: component.html
 ---
 
 <h3 class="subheader">Interchange uses media queries to dynamically load responsive content that is appropriate for different users' browsers.</h3>
@@ -20,7 +21,8 @@ We use the data-interchange attribute on a markup container (probably a div) to 
 <div id="interchangeMarkup" data-interchange="[{{relative absolute 'dist/docs/components/interchange-default.html'}}, (default)], [{{relative absolute 'dist/docs/components/interchange-medium.html'}}, (medium)], [{{relative absolute 'dist/docs/components/interchange-large.html'}}, (large)]">
   <p><img src="{{assets}}/img/examples/map-small.png" /></p>
 </div>
-<div><br></div>
+
+<br>
 
 {{#markdown}}
 ```html

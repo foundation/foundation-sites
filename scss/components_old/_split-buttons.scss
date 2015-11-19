@@ -2,9 +2,9 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
-@import "buttons";
-@import "dropdown-buttons";
+@import 'global';
+@import 'buttons';
+@import 'dropdown-buttons';
 
 //
 // @name _split-buttons.scss
@@ -22,6 +22,7 @@ $split-button-function-factor: 10% !default;
 $split-button-pip-color: $white !default;
 $split-button-pip-color-alt: $oil !default;
 $split-button-active-bg-tint: rgba(0,0,0,0.1) !default;
+$split-button-span-border-color: rgba(255,255,255,0.5) !default;
 
 // We use these to control tiny split buttons
 $split-button-padding-tny: $button-pip-tny * 10 !default;
@@ -60,12 +61,12 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
 //
 // $padding - Type of padding to apply. Default: medium. Options: tiny, small, medium, large.
 // $pip-color - Color of the triangle. Default: $split-button-pip-color.
-// $span-border - Border color of button divider. Default: $primary-color.
+// $span-border - Border color of button divider. Default: $split-button-span-border-color.
 // $base-style - Apply base style to split button. Default: true.
 @mixin split-button(
   $padding:medium,
   $pip-color:$split-button-pip-color, 
-  $span-border:$primary-color, 
+  $span-border:$split-button-span-border-color, 
   $base-style:true) {
 
   // With this, we can control whether or not the base styles come through.
@@ -90,7 +91,6 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
         display: block;
         border-style: inset;
         top: 50%;
-
         #{$default-float}: 50%;
       }
 
@@ -101,7 +101,7 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
   // Control the border color for the span area of the split button
   @if $span-border {
     span {
-      border-#{$default-float}-color: rgba(255,255,255,0.5);
+      border-#{$default-float}-color: $span-border;
     }
   }
 
@@ -113,8 +113,8 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
       &:after {
         border-top-style: solid;
         border-width: $split-button-pip-size-tny;
-        top: 48%;
         margin-#{$default-float}: $split-button-pip-default-float-tny;
+        top: 48%;
       }
     }
   }
@@ -127,8 +127,8 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
       &:after {
         border-top-style: solid;
         border-width: $split-button-pip-size-sml;
-        top: 48%;
         margin-#{$default-float}: $split-button-pip-default-float-sml;
+        top: 48%;
       }
     }
   }
@@ -141,8 +141,8 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
       &:after {
         border-top-style: solid;
         border-width: $split-button-pip-size-med;
-        top: 48%;
         margin-#{$default-float}: $split-button-pip-default-float-med;
+        top: 48%;
       }
     }
   }
@@ -155,8 +155,8 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
       &:after {
         border-top-style: solid;
         border-width: $split-button-pip-size-lrg;
-        top: 48%;
         margin-#{$default-float}: $split-button-pip-default-float-lrg;
+        top: 48%;
       }
     }
   }
@@ -172,9 +172,9 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
 
     .split.button { @include split-button;
 
-      &.secondary { @include split-button(false, $split-button-pip-color, $secondary-color, false); }
-      &.alert { @include split-button(false, false, $alert-color, false); }
-      &.success { @include split-button(false, false, $success-color, false); }
+      &.secondary { @include split-button(false, $split-button-pip-color, $split-button-span-border-color, false); }
+      &.alert { @include split-button(false, false, $split-button-span-border-color, false); }
+      &.success { @include split-button(false, false, $split-button-span-border-color, false); }
 
       &.tiny { @include split-button(tiny, false, false, false); }
       &.small { @include split-button(small, false, false, false); }
@@ -189,12 +189,12 @@ $split-button-pip-default-float-lrg: rem-calc(-6) !default;
         span:before{ border-style:none; }
         span:after{ border-style:none; }
         span>i{
-          top: 50%;
           display: block;
-          position: absolute;
           left: 50%;
           margin-left: -0.28889em;
           margin-top: -0.48889em;
+          position: absolute;
+          top: 50%;
         }
       }
     }

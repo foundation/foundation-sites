@@ -2,8 +2,8 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
-@import "grid";
+@import 'global';
+@import 'grid';
 
 //
 // @name _reveal.scss
@@ -21,7 +21,7 @@ $reveal-modal-bg: $white !default;
 $reveal-position-top: rem-calc(100) !default;
 $reveal-default-width: 80% !default;
 $reveal-max-width: $row-width !default;
-$reveal-modal-padding: rem-calc(20) !default;
+$reveal-modal-padding: rem-calc(30) !default;
 $reveal-box-shadow: 0 0 10px rgba($black,.4) !default;
 
 // We use these to style the reveal close button
@@ -52,16 +52,16 @@ $z-index-base: 1005;
 
 // We use this to create the reveal background overlay styles
 @mixin reveal-bg( $include-z-index-value: true ) {
-  position: fixed;
   // position: absolute; // allows modal background to extend beyond window position
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
   background: $reveal-overlay-bg-old; // Autoprefixer should be used to avoid such variables needed when Foundation for Sites can do so in the near future.
   background: $reveal-overlay-bg;
-  z-index: if( $include-z-index-value, $z-index-base - 1, auto );
+  bottom: 0;
   display: none;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: if( $include-z-index-value, $z-index-base - 1, auto );
   #{$default-float}: 0;
 }
 
@@ -72,13 +72,13 @@ $z-index-base: 1005;
 //
 @mixin reveal-modal-base( $base-style: true, $width:$reveal-default-width, $max-width:$reveal-max-width, $border-radius: $reveal-radius) {
   @if $base-style {
-    visibility: hidden;
+    border-radius: $border-radius;
     display: none;
     position: absolute;
-    z-index: $z-index-base;
-    width: 100%;
     top:0;
-    border-radius: $border-radius;
+    visibility: hidden;
+    width: 100%;
+    z-index: $z-index-base;
     #{$default-float}: 0;
 
     @media #{$small-only} {
@@ -89,18 +89,18 @@ $z-index-base: 1005;
     .column, .columns { min-width: 0; }
 
     // Get rid of margin from first and last element inside modal
-    & > :first-child { margin-top: 0; }
+    > :first-child { margin-top: 0; }
 
-    & > :last-child { margin-bottom: 0; }
+    > :last-child { margin-bottom: 0; }
   }
 
   @if $width {
     @media #{$medium-up} {
-      width: $width;
-      max-width: $max-width;
       left: 0;
-      right: 0;
       margin: 0 auto;
+      max-width: $max-width;
+      right: 0;
+      width: $width;
     }
   }
 }
@@ -136,6 +136,9 @@ $z-index-base: 1005;
   @if $box-shadow {
     box-shadow: $reveal-box-shadow;
   }
+  @else{
+       box-shadow: none;
+  }
 
   // We can control how much radius is used on the modal
   @if $radius == true { @include radius($reveal-radius); }
@@ -152,14 +155,14 @@ $z-index-base: 1005;
 //
 // $color - Default: $reveal-close-color || $base
 @mixin reveal-close($color:$reveal-close-color) {
+  color: $color;
+  cursor: $cursor-pointer-value;
   font-size: $reveal-close-font-size;
+  font-weight: $reveal-close-weight;
   line-height: 1;
   position: absolute;
   top: $reveal-close-top;
   #{$opposite-direction}: $reveal-close-side;
-  color: $color;
-  font-weight: $reveal-close-weight;
-  cursor: $cursor-pointer-value;
 }
 
 @include exports("reveal") {
@@ -172,7 +175,7 @@ $z-index-base: 1005;
       @include reveal-modal-base;
       @include reveal-modal-style(
         $bg:$reveal-modal-bg,
-        $padding:$reveal-modal-padding * 1.5,
+        $padding:$reveal-modal-padding,
         $border:true,
         $box-shadow:true,
         $radius:false,
@@ -189,15 +192,15 @@ $z-index-base: 1005;
       &.xlarge { @include reveal-modal-base(false, 95%); }
       &.full {
         @include reveal-modal-base(false, 100%);
-        top:0;
-        left:0;
-        height:100%;
         height: 100vh;
-        min-height:100vh;
-        max-width: none !important;
+        height:100%;
+        left:0;
         margin-left: 0 !important;
+        max-width: none !important;
+        min-height:100vh;
+        top:0;
       }
-      
+
       // Modals pushed to back
       &.toback {
         z-index: $z-index-base - 2;

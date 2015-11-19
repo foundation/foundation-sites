@@ -10,7 +10,7 @@
       start : 0,
       end : 100,
       step : 1,
-      precision : null,
+      precision : 2,
       initial : null,
       display_selector : '',
       vertical : false,
@@ -28,7 +28,6 @@
 
     events : function () {
       var self = this;
-
       $(this.scope)
         .off('.slider')
         .on('mousedown.fndtn.slider touchstart.fndtn.slider pointerdown.fndtn.slider',
@@ -53,6 +52,23 @@
           }
         })
         .on('mouseup.fndtn.slider touchend.fndtn.slider pointerup.fndtn.slider', function (e) {
+          if(!self.cache.active) {
+            // if the user has just clicked into the slider without starting to drag the handle
+            var slider = $(e.target).attr('role') === 'slider' ? $(e.target) : $(e.target).closest('.range-slider').find("[role='slider']");
+
+            if (slider.length && (!slider.parent().hasClass('disabled') && !slider.parent().attr('disabled'))) {
+              self.set_active_slider(slider);
+              if ($.data(self.cache.active[0], 'settings').vertical) {
+                var scroll_offset = 0;
+                if (!e.pageY) {
+                  scroll_offset = window.scrollY;
+                }
+                self.calculate_position(self.cache.active, self.get_cursor_position(e, 'y') + scroll_offset);
+              } else {
+                self.calculate_position(self.cache.active, self.get_cursor_position(e, 'x'));
+              }
+            }
+          }
           self.remove_active_slider();
         })
         .on('change.fndtn.slider', function (e) {
@@ -63,6 +79,23 @@
         .on('resize.fndtn.slider', self.throttle(function (e) {
           self.reflow();
         }, 300));
+
+      // update slider value as users change input value
+      this.S('[' + this.attr_name() + ']').each(function () {
+        var slider = $(this),
+            handle = slider.children('.range-slider-handle')[0],
+            settings = self.initialize_settings(handle);
+
+        if (settings.display_selector != '') {
+          $(settings.display_selector).each(function(){
+            if ($(this).attr('value')) {
+              $(this).off('change').on('change', function () {
+                slider.foundation("slider", "set_value", $(this).val());
+              });
+            }
+          });
+        }
+      });
     },
 
     get_cursor_position : function (e, xy) {
@@ -139,11 +172,11 @@
         $handle.siblings('.range-slider-active-segment').css('width', progress_bar_length + '%');
       }
 
-      $handle_parent.attr(this.attr_name(), value).trigger('change').trigger('change.fndtn.slider');
+      $handle_parent.attr(this.attr_name(), value).trigger('change.fndtn.slider');
 
       $hidden_inputs.val(value);
       if (settings.trigger_input_change) {
-          $hidden_inputs.trigger('change');
+          $hidden_inputs.trigger('change.fndtn.slider');
       }
 
       if (!$handle[0].hasAttribute('aria-valuemin')) {
@@ -156,7 +189,7 @@
 
       if (settings.display_selector != '') {
         $(settings.display_selector).each(function () {
-          if (this.hasOwnProperty('value')) {
+          if (this.hasAttribute('value')) {
             $(this).val(value);
           } else {
             $(this).text(value);
@@ -223,7 +256,7 @@
       }
 
       $.data(handle, 'bar', $(handle).parent());
-      $.data(handle, 'settings', settings);
+      return $.data(handle, 'settings', settings);
     },
 
     set_initial_position : function ($ele) {

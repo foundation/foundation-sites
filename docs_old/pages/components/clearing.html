@@ -1,5 +1,6 @@
 ---
 title: Clearing
+layout: component.html
 ---
 
 <h3 class="subheader">Since we didn't intend Orbit to handle variable-height content, we decided to create a plugin that would. Clearing makes it easy to create responsive lightboxes with any size image.</h3>
@@ -23,6 +24,18 @@ Once you get your JS hooked up, you'll need to add `data-clearing` to your list 
 ### Styling the List
 
 We're using the `.th` class from Foundation to style the thumbnails in the Clearing example at the top of the page. You can also use `@include thumb;` in SCSS to use those same styles.
+
+***
+
+## Using Responsive Images
+
+To use responsive images add `data-clearing-interchange` to your links:
+
+<h4>HTML</h4>
+
+{{> examples_clearing_interchange_rendered}}
+
+The rules for the interchange list are the same as described in the [Interchange documentation]({{rel 'components/interchange.html'}}#using-interchange-with-images).
 
 ***
 

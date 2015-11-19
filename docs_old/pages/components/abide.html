@@ -1,5 +1,6 @@
 ---
 title: Abide Validation
+layout: component.html
 ---
 
 <h3 class="subheader">Abide is an HTML5 form validation library that supports the native API by using patterns and required attributes.</h3>
@@ -83,7 +84,7 @@ If a submit event is fired, a `valid.fndtn.abide` event is triggered when the fo
 
 <div class="panel">
   <p><strong>Deprecation Notice</strong></p>
-  <p>Previous versions of the abide plugin emitted un-namespaced `valid` and `invalid` events, however, these have been replaced by the namespaced `valid.fndtn.abide` and `invalid.fndtn.abide` events. The un-namespaced events will be fully deprecated when Foundation 5.4 is released.</p>
+  <p>Previous versions of the abide plugin emitted un-namespaced `valid` and `invalid` events, however, these have been replaced by the namespaced `valid.fndtn.abide` and `invalid.fndtn.abide` events. The un-namespaced events have been fully deprecated.</p>
 </div>
 
 You can bind to these events and fire your own callback:
@@ -132,6 +133,15 @@ Additionally, if you are using a custom validator and specify an input type or a
 ```
 {{/markdown}}
 
+You can also use multiple custom validators if you wish by separating the names of the custom validators with a space. The input, however, must pass ALL validations in order for the input to be considered valid. The example below would only be valid if the the outcome of `diceRoll` is true AND the input is within the array of accepted inputs of `isAllowed`.
+
+{{#markdown}}
+```html
+<input type="email" data-abide-validator="diceRoll isAllowed">
+```
+{{/markdown}}
+
+
 ***
 
 ## Accessibility
@@ -141,10 +151,9 @@ For the most part, Abide is accessible on its own. Our JavaScript will add the a
 ```html
 <form data-abide>
   <div class="name-field">
-    <label>Your name <small>required</small>
-      <input type="text" required pattern="[a-zA-Z]+">
-    </label>
-    <small class="error" id="nameError">Name is required and must be a string.</small>
+    <label for="input-example">Your name <small>required</small></label>
+      <input id="input-example" type="text" required pattern="[a-zA-Z]+">
+    <small class="error">Name is required and must be a string.</small>
   </div>
 </form>
 ```

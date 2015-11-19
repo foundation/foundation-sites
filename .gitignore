@@ -6,6 +6,8 @@
 *.ruby-version
 *.scssc
 *.sublime-*
+*.swp
+*.swo
 .bundle
 .config
 .grunt
@@ -48,3 +50,5 @@ testing/_build
 
 pizza/
 data.json
+docs/*
+npm-debug.log

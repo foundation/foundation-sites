@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 //
 // @variables
@@ -51,6 +51,7 @@ $pagination-link-current-active-bg: $primary-color !default;
   a, button {
     cursor: $pagination-link-unavailable-cursor;
     color: $pagination-link-unavailable-font-color;
+    pointer-events: none;
   }
   &:hover a,
   & a:focus,
@@ -68,19 +69,19 @@ $pagination-link-current-active-bg: $primary-color !default;
     a, button {
       background: $pagination-link-current-background;
       color: $pagination-link-current-font-color;
-      font-weight: $pagination-link-current-font-weight;
       cursor: $pagination-link-current-cursor;
+      font-weight: $pagination-link-current-font-weight;
 
       &:hover,
       &:focus { background: $pagination-link-current-active-bg; }
     }
   } @else {
-    height: auto;
-    padding: $pagination-link-pad;
     background: $pagination-link-current-background;
     color: $pagination-link-current-font-color;
-    font-weight: $pagination-link-current-font-weight;
     cursor: $pagination-link-current-cursor;
+    font-weight: $pagination-link-current-font-weight;
+    height: auto;
+    padding: $pagination-link-pad;
     @include radius;
 
     &:hover,
@@ -98,25 +99,25 @@ $pagination-link-current-active-bg: $primary-color !default;
 
   @if $base-style {
     display: block;
-    min-height: $pagination-height;
     margin-#{$default-float}: $pagination-margin;
+    min-height: $pagination-height;
 
     li {
-      height: $pagination-li-height;
       color: $pagination-li-font-color;
       font-size: $pagination-li-font-size;
+      height: $pagination-li-height;
       margin-#{$default-float}: $pagination-li-margin;
 
       a, button {
-        display: block;
-        padding: $pagination-link-pad;
-        color: $pagination-link-font-color;
-        background: none;
         @include radius;
-        font-weight: normal;
-        font-size: 1em;
-        line-height: inherit;
         @include single-transition(background-color);
+        background: none;
+        color: $pagination-link-font-color;
+        display: block;
+        font-size: 1em;
+        font-weight: normal;
+        line-height: inherit;
+        padding: $pagination-link-pad;
       }
 
       &:hover a,
@@ -135,11 +136,11 @@ $pagination-link-current-active-bg: $primary-color !default;
   // Left or center align the li elements
   li {
     @if $center {
-      float: none;
       display: inline-block;
+      float: none;
     } @else {
-      float: $pagination-li-float;
       display: block;
+      float: $pagination-li-float;
     }
   }
 }

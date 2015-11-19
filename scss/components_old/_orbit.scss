@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 // @variables
 //
@@ -10,7 +10,7 @@ $include-html-orbit-classes: $include-html-classes !default;
 
 // We use these to control the caption styles
 $orbit-container-bg: none !default;
-$orbit-caption-bg: rgba(51,51,51, 0.8) !default;
+$orbit-caption-bg: rgba(51,51,51, .8) !default;
 $orbit-caption-font-color: $white !default;
 $orbit-caption-font-size: rem-calc(14) !default;
 $orbit-caption-position: "bottom" !default; // Supported values: "bottom", "under"
@@ -51,20 +51,30 @@ $orbit-timer-hide-for-small: true !default;
   @if $include-html-orbit-classes {
 
     @-webkit-keyframes rotate {
-      from { -webkit-transform: rotate(0deg); }
-      to { -webkit-transform: rotate(360deg); }
+      from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      to {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+      }
     }
-    @-moz-keyframes rotate {
-      from { -moz-transform: rotate(0deg); }
-      to { -moz-transform: rotate(360deg); }
-    }
-    @-o-keyframes rotate {
-      from { -o-transform: rotate(0deg); }
-      to { -o-transform: rotate(360deg); }
-    }
+
+
     @keyframes rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+      from {
+          -webkit-transform: rotate(0deg);
+          -moz-transform: rotate(0deg);
+          -ms-transform: rotate(0deg);
+          transform: rotate(0deg);
+      }
+      to {
+          -webkit-transform: rotate(360deg);
+          -moz-transform: rotate(360deg);
+          -ms-transform: rotate(360deg);
+          transform: rotate(360deg);
+      }
     }
 
     /* Orbit Graceful Loading */
@@ -98,30 +108,30 @@ $orbit-timer-hide-for-small: true !default;
 
       // Orbit preloader
       .#{$preloader-class} {
-        display: block;
-        width: 40px;
-        height: 40px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        margin-top: -20px;
-        margin-left: -20px;
-        border: solid 3px;
-        border-color: $charcoal $white;
         @include radius(1000px);
-        animation-name: rotate;
         animation-duration: 1.5s;
         animation-iteration-count: infinite;
+        animation-name: rotate;
         animation-timing-function: linear;
+        border-color: $charcoal $white;
+        border: solid 3px;
+        display: block;
+        height: 40px;
+        left: 50%;
+        margin-left: -20px;
+        margin-top: -20px;
+        position: absolute;
+        top: 50%;
+        width: 40px;
       }
     }
 
 
     .orbit-container {
-      overflow: hidden;
-      width: 100%;
-      position: relative;
       background: $orbit-container-bg;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
 
       .orbit-slides-container {
         list-style: none;
@@ -131,10 +141,14 @@ $orbit-timer-hide-for-small: true !default;
 
         // Prevents images (and captions) from disappearing after first rotation on Chrome for Android
         -webkit-transform: translateZ(0);
+        -moz-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+        -o-transform: translateZ(0);
+        transform: translateZ(0);
 
         img { display: block; max-width: 100%; }
 
-        &>* {
+        > * {
           position: absolute;
           top: 0;
           width: 100%;
@@ -147,48 +161,51 @@ $orbit-timer-hide-for-small: true !default;
 
           &:first-child {
             @if $text-direction == rtl {
-            margin-right: 0;
+              margin-right: 0;
             }
             @else {
-            margin-left: 0;
+              margin-left: 0;
             }
           }
 
           .orbit-caption {
             @if $orbit-caption-position == "bottom" {
-              position: absolute;
               bottom: 0;
+              position: absolute;
             } @else if $orbit-caption-position == "under" {
               position: relative;
             }
 
             background-color: $orbit-caption-bg;
             color: $orbit-caption-font-color;
-            width: 100%;
-            padding: $orbit-caption-padding;
             font-size: $orbit-caption-font-size;
+            padding: $orbit-caption-padding;
+            width: 100%;
           }
         }
       }
 
       .orbit-slide-number {
-        position: absolute;
-        top: 10px;
         #{$default-float}: 10px;
-        font-size: 12px;
-        span { font-weight: 700; padding: $orbit-slide-number-padding;}
-        color: $orbit-slide-number-font-color;
         background: $orbit-slide-number-bg;
+        color: $orbit-slide-number-font-color;
+        font-size: 12px;
+        position: absolute;
+        span { font-weight: 700; padding: $orbit-slide-number-padding;}
+        top: 10px;
         z-index: 10;
       }
 
       .orbit-timer {
+        
         position: absolute;
         top: 12px;
         #{$opposite-direction}: 10px;
         height: 6px;
         width: 100px;
         z-index: 10;
+        
+
         .orbit-progress {
           @if $orbit-timer-show-progress-bar {
             height: 3px;
@@ -198,26 +215,26 @@ $orbit-timer-hide-for-small: true !default;
             position: relative;
             right: 20px;
             top: 5px;
+            
           }
         }
 
         // Play button
         & > span {
+          border: solid 4px $white;
+          border-bottom: none;
+          border-top: none;
           display: none;
+          height: 14px;
           position: absolute;
           top: 0;
-          #{$opposite-direction}: 0;
           width: 11px;
-          height: 14px;
-          border: solid 4px $white;
-          border-top: none;
-          border-bottom: none;
+          #{$opposite-direction}: 0;
         }
 
         // Pause button
         &.paused {
           & > span {
-            #{$opposite-direction}: -4px;
             top: 0;
             width: 11px;
             height: 14px;
@@ -225,6 +242,8 @@ $orbit-timer-hide-for-small: true !default;
             border-left-style: solid;
             border-color: transparent;
             border-left-color: $white;
+            #{$opposite-direction}: -4px;
+
             &.dark {
               border-left-color: $oil;
             }
@@ -239,15 +258,15 @@ $orbit-timer-hide-for-small: true !default;
       // Let's get those controls to be right in the center on each side
       .orbit-prev,
       .orbit-next {
-        position: absolute;
-        top: 45%;
-        margin-top: -25px;
-        width: 36px;
+        background-color: $orbit-nav-bg;
+        color: white;
         height: 60px;
         line-height: 50px;
-        color: white;
-        background-color: $orbit-nav-bg;
+        margin-top: -25px;
+        position: absolute;
         text-indent: -9999px !important;
+        top: 45%;
+        width: 36px;
         z-index: 10;
 
         &:hover {
@@ -255,13 +274,13 @@ $orbit-timer-hide-for-small: true !default;
         }
 
         & > span {
+          border: inset 10px;
+          display: block;
+          height: 0;
+          margin-top: -10px;
           position: absolute;
           top: 50%;
-          margin-top: -10px;
-          display: block;
           width: 0;
-          height: 0;
-          border: inset 10px;
         }
       }
       .orbit-prev { #{$default-float}: 0;
@@ -290,23 +309,24 @@ $orbit-timer-hide-for-small: true !default;
 
     .orbit-bullets-container { text-align: center; }
     .orbit-bullets {
+      display: block;
+      float: none;
       margin: 0 auto 30px auto;
       overflow: hidden;
       position: relative;
-      top: 10px;
-      float: none;
       text-align: center;
-      display: block;
+      top: 10px;
 
       li {
-        cursor:pointer;
-        display: inline-block;
-        width: $orbit-bullet-radius;
-        height: $orbit-bullet-radius;
         background: $orbit-bullet-nav-color;
+        cursor: pointer;
+        display: inline-block;
         // float: $default-float;
         float: none;
+        height: $orbit-bullet-radius;
         margin-#{$opposite-direction}: 6px;
+        width: $orbit-bullet-radius;
+
         @include radius(1000px);
 
         &.active {
@@ -344,9 +364,9 @@ $orbit-timer-hide-for-small: true !default;
       .orbit-stack-on-small {
         .orbit-slides-container {height: auto !important;}
         .orbit-slides-container > * {
+          margin:0  !important;
+          opacity: 1 !important;
           position: relative;
-          margin:0 !important;
-          opacity:1 !important;
         }
 
         .orbit-slide-number {

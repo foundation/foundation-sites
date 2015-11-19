@@ -23,28 +23,9 @@ Aside from accessibility features that has been built into Foundation's componen
 
 <p>The most common impairments for web users are those with problems seeing, hearing or a physical inability to use a mouse. For that reason, the site must be navigatable by keyboard. Most commonly the tab key is used to tab through the content. For a vision impaired person will have a <a href="http://en.wikipedia.org/wiki/Screen_reader">screenreader</a> installed that reads the content out loud. We used <a href="http://www.chromevox.com/">Chromevox</a> to test with. You can find a list of popular screen readers below in the resource list.</p>
 
-### Tab-index
-
-<p>Tab index lets users move forward and backward through the links and form elements on a page. But you can make anything "tabbable" with the tabindex attribute. 
-
-{{#markdown}}
-```html
-<h2 tabindex="1">…</h2>
-
-<article tabindex="2">…</article>
-
-<ul tabindex="3">…</ul>
-```
-{{/markdown}}
-
-<p>As the numbers suggest, tapping on the tab key takes users through anything with the tabindex attribute in order. In HTML5, you can use it on any element. That means you can set priorities quickly. Want to help people get past the same tedious navigation they get on every page? Use tabindex to put navigation last.</p>
-
-<p><strong>Tip:</strong> When starting out use sets of 10: tabindex="10", tabindex="20", tabindex="30". If you decide to rearrange the order — say, put the third item between the first and second — you don't have to rearrange everything. Just make it tabindex="15".</p>
-
-
 ###  How to Test a Website’s Keyboard Accessibility
 
-<p>On a desktop or laptop in Firefox, IE, Chrome, or Safari, 
+<p>On a desktop or laptop in Firefox, IE, Chrome, or Safari,
 click into the browser address bar.</p>
 
 <p>Take your hand off your mouse and use only your keyboard.
@@ -73,7 +54,7 @@ Using the Tab button, navigate until you’ve reached the link below. (You can u
 {{#markdown}}
 ```css
 	#skip a {
-		{position:absolute;
+		position:absolute;
 		left:-10000px;
 		top:auto;
 		width:1px;
@@ -81,11 +62,11 @@ Using the Tab button, navigate until you’ve reached the link below. (You can u
 		overflow:hidden;
 	}
 
-	#skip a:focus { 
-		position:static; 
-		width:auto; 
-		height:auto; 
-	} 
+	#skip a:focus {
+		position:static;
+		width:auto;
+		height:auto;
+	}
 ```
 {{/markdown}}
  </div>
@@ -103,23 +84,26 @@ Using the Tab button, navigate until you’ve reached the link below. (You can u
 
 <div class="row">
 	<div class="medium-6 columns">
-	<h4>Additional resources</h4>
-		<ul class="side-nav" role="navigation" title="Link List">
-			<li role="menuitem"><a href="http://www.w3.org/TR/UNDERSTANDING-WCAG20/">WCAG 2.0 Guide</a></li>
-			<li role="menuitem"><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">MDN accessibility documentation</a></li>
-			<li role="menuitem"><a href="http://achecker.ca/checker/index.php">AChecker Web Accessibility Checker</a></li>
-			<li role="menuitem"><a href="http://www.w3.org/WAI/intro/accessibility.php">w3.org Introduction to Accessibility</a></li>
-			<li role="menuitem"><a href="http://www.section508.gov/">Section 508 Government Requirements</a></li>
-			<li role="menuitem"><a href="http://webaim.org/">Accessibilty Certification and Training</a></li>
+	<h4 id="label-additional-resources">Additional resources</h4>
+		<ul class="side-nav" aria-labelledby="label-additional-resources">
+			<li><a href="http://www.w3.org/TR/UNDERSTANDING-WCAG20/">WCAG 2.0 Guide</a></li>
+			<li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">MDN accessibility documentation</a></li>
+			<li><a href="http://achecker.ca/checker/index.php">AChecker Web Accessibility Checker</a></li>
+			<li><a href="http://www.w3.org/WAI/intro/accessibility.php">w3.org Introduction to Accessibility</a></li>
+			<li><a href="http://www.section508.gov/">Section 508 Government Requirements</a></li>
+			<li><a href="http://webaim.org/">Accessibilty Certification and Training</a></li>
+			<li><a href="http://a11yproject.com/">A community-driven effort to make web accessibility easier</a></li>
 		</ul>
 	</div>
 	<div class="medium-6 columns">
-	<h4>Tools</h4>
-		<ul class="side-nav" role="navigation" title="Link List">
-			<li role="menuitem"><a href="http://www.chromevox.com/">Chromevox screnreader plugin for Chrome</a></li>
-			<li role="menuitem"><a href="http://www.freedomscientific.com/Products/Blindness/Jaws">Jaws screnreader plugin for Windows</a></li>
-			<li role="menuitem"><a href="https://github.com/squizlabs/HTML_CodeSniffer">"HTML Codesniffer" bookmarklet for identifying accessibility issues</a></li>
-			<li role="menuitem"><a href="http://webaim.org/">Accessibilty Certification and Training</a></li>
+	<h4 id="label-tools">Tools</h4>
+		<ul class="side-nav" aria-labelledby="label-tools">
+			<li><a href="http://www.chromevox.com/">Chromevox screenreader plugin for Chrome</a></li>
+			<li><a href="http://www.freedomscientific.com/Products/Blindness/Jaws">Jaws screnreader plugin for Windows</a></li>
+			<li><a href="https://github.com/squizlabs/HTML_CodeSniffer">"HTML Codesniffer" bookmarklet for identifying accessibility issues</a></li>
+			<li><a href="http://webaim.org/">Accessibilty Certification and Training</a></li>
+			<li><a href="http://wave.webaim.org/extension/">WAVE Chrome Extension</a></li>
+			<li><a href="http://www.tenon.io/">Tenon.io - Free Online Accessiblity Testing</a></li>
 		</ul>
 	</div>
 </div>

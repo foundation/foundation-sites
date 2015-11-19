@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 
 // @name
@@ -27,7 +27,7 @@ $icon-bar-active-color: $primary-color !default;
 $icon-bar-item-padding: 1.25rem !default;
 
 // We use this to set default opacity and cursor for disabled icons.
-$icon-bar-disabled-opacity: 0.7 !default;
+$icon-bar-disabled-opacity: .7 !default;
 $icon-bar-disabled-cursor: $cursor-disabled-value !default;
 
 
@@ -38,123 +38,123 @@ $icon-bar-disabled-cursor: $cursor-disabled-value !default;
 // We use this mixin to create the base styles for our Icon bar element.
 //
 @mixin icon-bar-base() {
+  display: inline-block;
+  font-size: 0;
+  width: 100%;
 
- 	width: 100%;
-	font-size: 0;
-	display: inline-block;
+  > * {
+    display: block;
+    float: left;
+    font-size: $icon-bar-font-size;
+    margin: 0 auto;
+    padding: $icon-bar-item-padding;
+    text-align: center;
+    width: 25%;
 
-	& > * {
-		text-align: center;
-		font-size: $icon-bar-font-size;
-		width: 25%;
-		margin: 0 auto;
-		display: block;
-		padding: $icon-bar-item-padding;
-		float: left;
+    i, img {
+      display: block;
+      margin: 0 auto;
 
-		i, img {
-			display: block;
-			margin: 0 auto;
+      & + label {
+        margin-top: .0625rem;
+      }
+    }
 
-			& + label {
-				margin-top: .0625rem;
-			}
-		}
+    i {
+      font-size: $icon-bar-icon-size;
+      vertical-align: middle;
+    }
 
-		i {
-			font-size: $icon-bar-icon-size;
-			vertical-align: middle;
-		}
+    img {
+      height: $icon-bar-image-height;
+      width: $icon-bar-image-width;
+    }
+  }
 
-		img {
-			width: $icon-bar-image-width;
-			height: $icon-bar-image-height;
-		}
-	}
+  &.label-right > * {
 
-	&.label-right > * {
+    i, img {
+      display: inline-block;
+      margin: 0 .0625rem 0 0;
 
-		i, img {
-			margin: 0 .0625rem 0 0;
-			display: inline-block;
+      & + label {
+        margin-top: 0;
+      }
+    }
 
-			& + label {
-				margin-top: 0;
-			}
-		}
+    label { display: inline-block; }
+  }
 
-		label { display: inline-block; }
-	}
+  &.vertical.label-right > * {
+    text-align: left;
+  }
 
-	&.vertical.label-right > * {
-		text-align: left;
-	}
+  &.vertical, &.small-vertical{
+    height: 100%;
+    width: auto;
 
-	&.vertical, &.small-vertical{
-		height: 100%;
-		width: auto;
+    .item {
+      float: none;
+      margin: auto;
+      width: auto;
+    }
+  }
 
-		.item {
-			width: auto;
-			margin: auto;
-			float: none;
-		}
-	}
+  &.medium-vertical {
+    @media #{$medium-up} {
+      height: 100%;
+      width: auto;
 
-	&.medium-vertical {
-		@media #{$medium-up} {
-			height: 100%;
-			width: auto;
+      .item {
+        float: none;
+        margin: auto;
+        width: auto;
+      }
+    }
+  }
+  &.large-vertical {
+    @media #{$large-up} {
+      height: 100%;
+      width: auto;
 
-			.item {
-				width: auto;
-				margin: auto;
-				float: none;
-			}
-		}
-	}
-	&.large-vertical {
-		@media #{$large-up} {
-			height: 100%;
-			width: auto;
-
-			.item {
-				width: auto;
-				margin: auto;
-				float: none;
-			}
-		}
-	}
+      .item {
+        float: none;
+        margin: auto;
+        width: auto;
+      }
+    }
+  }
 }
 
 // We use this mixin to create the size styles for icon bars.
 @mixin icon-bar-size(
-	$padding: $icon-bar-item-padding,
-	$font-size: $icon-bar-font-size,
-	$icon-size: $icon-bar-icon-size,
-	$image-width: $icon-bar-image-width,
-	$image-height: $icon-bar-image-height) {
+  $padding: $icon-bar-item-padding,
+  $font-size: $icon-bar-font-size,
+  $icon-size: $icon-bar-icon-size,
+  $image-width: $icon-bar-image-width,
+  $image-height: $icon-bar-image-height) {
 
-	& > * {
-		font-size: $font-size;
-		padding: $padding;
+  > * {
+    font-size: $font-size;
+    padding: $padding;
 
-		i, img {
+    i, img {
 
-			& + label {
-				margin-top: .0625rem;
-			}
-		}
+      & + label {
+        margin-top: .0625rem;
+        font-size: $font-size;
+      }
+    }
 
-		i {
-			font-size: $icon-size;
-		}
+    i {
+      font-size: $icon-size;
+    }
 
-		img {
-			width: $image-width;
-			height: $image-height;
-		}
-	}
+    img {
+      height: $image-height;
+      width: $image-width;
+    }
+  }
 
 }
 
@@ -169,38 +169,38 @@ $icon-bar-disabled-cursor: $cursor-disabled-value !default;
   $base-style:true,
   $disabled:false) {
 
-	@if $base-style {
+  @if $base-style {
 
-		background: $bar-bg;
+    background: $bar-bg;
 
-		& > * {
-			label { color: $bar-font-color; }
+    > * {
+      label { color: $bar-font-color; }
 
-			i { color: $bar-icon-color; }
-		}
+      i { color: $bar-icon-color; }
+    }
 
-		& > a:hover {
+    > a:hover {
 
-			background: $bar-hover-color;
+      background: $bar-hover-color;
 
-			label { color: $bar-font-color-hover; }
+      label { color: $bar-font-color-hover; }
 
-			i { color: $bar-icon-color-hover; }
-		}
+      i { color: $bar-icon-color-hover; }
+    }
 
-        & > a.active {
+        > a.active {
 
-			background: $bar-active-color;
+      background: $bar-active-color;
 
-			label { color: $bar-font-color-hover; }
+      label { color: $bar-font-color-hover; }
 
-			i { color: $bar-icon-color-hover; }
-		}
-	}
+      i { color: $bar-icon-color-hover; }
+    }
+  }
   @if $disabled {
     .item.disabled {
-      opacity: $icon-bar-disabled-opacity;
       cursor: $icon-bar-disabled-cursor;
+      opacity: $icon-bar-disabled-opacity;
       pointer-events: none;
       >* {
         opacity: $icon-bar-disabled-opacity;
@@ -230,15 +230,116 @@ $icon-bar-disabled-cursor: $cursor-disabled-value !default;
   $bar-icon-color-hover:$icon-bar-icon-color-hover,
   $bar-active-color:$icon-bar-active-color,
   $padding: $icon-bar-item-padding,
-	$font-size: $icon-bar-font-size,
-	$icon-size: $icon-bar-icon-size,
-	$image-width: $icon-bar-image-width,
-	$image-height: $icon-bar-image-height,
+  $font-size: $icon-bar-font-size,
+  $icon-size: $icon-bar-icon-size,
+  $image-width: $icon-bar-image-width,
+  $image-height: $icon-bar-image-height,
   $base-style:true,
   $disabled:true) {
     @include icon-bar-base();
     @include icon-bar-size($padding, $font-size, $icon-size, $image-width, $image-height);
     @include icon-bar-style($bar-bg, $bar-font-color, $bar-font-color-hover, $bar-hover-color, $bar-icon-color, $bar-icon-color-hover, $bar-active-color, $base-style, $disabled);
+
+  // Counts
+
+  &.two-up {
+    .item { width: 50%; }
+    &.vertical .item, &.small-vertical .item { width: auto; }
+    &.medium-vertical .item {
+      @media #{$medium-up} {
+        width: auto;
+      }
+    }
+    &.large-vertical .item {
+      @media #{$large-up} {
+        width: auto;
+      }
+    }
+  }
+  &.three-up {
+    .item { width: 33.3333%; }
+    &.vertical .item, &.small-vertical .item { width: auto; }
+    &.medium-vertical .item {
+      @media #{$medium-up} {
+        width: auto;
+      }
+    }
+    &.large-vertical .item {
+      @media #{$large-up} {
+        width: auto;
+      }
+    }
+  }
+  &.four-up {
+    .item { width: 25%; }
+    &.vertical .item, &.small-vertical .item { width: auto; }
+    &.medium-vertical .item {
+      @media #{$medium-up} {
+        width: auto;
+      }
+    }
+    &.large-vertical .item {
+      @media #{$large-up} {
+        width: auto;
+      }
+    }
+  }
+  &.five-up {
+    .item { width: 20%; }
+    &.vertical .item, &.small-vertical .item { width: auto; }
+    &.medium-vertical .item {
+      @media #{$medium-up} {
+        width: auto;
+      }
+    }
+    &.large-vertical .item {
+      @media #{$large-up} {
+        width: auto;
+      }
+    }
+  }
+  &.six-up {
+    .item { width: 16.66667%; }
+    &.vertical .item, &.small-vertical .item { width: auto; }
+    &.medium-vertical .item {
+      @media #{$medium-up} {
+        width: auto;
+      }
+    }
+    &.large-vertical .item {
+      @media #{$large-up} {
+        width: auto;
+      }
+    }
+  }
+  &.seven-up {
+    .item { width: 14.28571%; }
+    &.vertical .item, &.small-vertical .item { width: auto; }
+    &.medium-vertical .item {
+      @media #{$medium-up} {
+            width: auto;
+      }
+    }
+    &.large-vertical .item {
+      @media #{$large-up} {
+         width: auto;
+      }
+    }
+  }
+  &.eight-up {
+    .item { width: 12.5%; }
+    &.vertical .item, &.small-vertical .item { width: auto; }
+    &.medium-vertical .item {
+      @media #{$medium-up} {
+            width: auto;
+      }
+    }
+    &.large-vertical .item {
+      @media #{$large-up} {
+         width: auto;
+      }
+    }
+  }
 }
 
 @include exports("icon-bar") {
@@ -251,109 +352,109 @@ $icon-bar-disabled-cursor: $cursor-disabled-value !default;
 
 @if $include-html-icon-bar-classes {
 
-	// toolbar styles
+  // toolbar styles
 
-	.icon-bar {
+  .icon-bar {
 
-		// Counts
+    // Counts
 
-		&.two-up {
-			.item { width: 50%; }
-			&.vertical .item, &.small-vertical .item { width: auto; }
-			&.medium-vertical .item {
-				@media #{$medium-up} {
-					width: auto;
-				}
-			}
-			&.large-vertical .item {
-				@media #{$large-up} {
-					width: auto;
-				}
-			}
-		}
-		&.three-up {
-			.item { width: 33.3333%; }
-			&.vertical .item, &.small-vertical .item { width: auto; }
-			&.medium-vertical .item {
-				@media #{$medium-up} {
-					width: auto;
-				}
-			}
-			&.large-vertical .item {
-				@media #{$large-up} {
-					width: auto;
-				}
-			}
-		}
-		&.four-up {
-			.item { width: 25%; }
-			&.vertical .item, &.small-vertical .item { width: auto; }
-			&.medium-vertical .item {
-				@media #{$medium-up} {
-					width: auto;
-				}
-			}
-			&.large-vertical .item {
-				@media #{$large-up} {
-					width: auto;
-				}
-			}
-		}
-		&.five-up {
-			.item { width: 20%; }
-			&.vertical .item, &.small-vertical .item { width: auto; }
-			&.medium-vertical .item {
-				@media #{$medium-up} {
-					width: auto;
-				}
-			}
-			&.large-vertical .item {
-				@media #{$large-up} {
-					width: auto;
-				}
-			}
-		}
-		&.six-up {
-			.item { width: 16.66667%; }
-			&.vertical .item, &.small-vertical .item { width: auto; }
-			&.medium-vertical .item {
-				@media #{$medium-up} {
-					width: auto;
-				}
-			}
-			&.large-vertical .item {
-				@media #{$large-up} {
-					width: auto;
-				}
-			}
-		}
-		&.seven-up {
-  		.item { width: 14.28571%; }
-  		&.vertical .item, &.small-vertical .item { width: auto; }
-  		&.medium-vertical .item {
-    		@media #{$medium-up} {
-        			width: auto;
-    		}
-  		}
-  		&.large-vertical .item {
-      	@media #{$large-up} {
-       		width: auto;
-      	}
-  		}
+    &.two-up {
+      .item { width: 50%; }
+      &.vertical .item, &.small-vertical .item { width: auto; }
+      &.medium-vertical .item {
+        @media #{$medium-up} {
+          width: auto;
+        }
+      }
+      &.large-vertical .item {
+        @media #{$large-up} {
+          width: auto;
+        }
+      }
+    }
+    &.three-up {
+      .item { width: 33.3333%; }
+      &.vertical .item, &.small-vertical .item { width: auto; }
+      &.medium-vertical .item {
+        @media #{$medium-up} {
+          width: auto;
+        }
+      }
+      &.large-vertical .item {
+        @media #{$large-up} {
+          width: auto;
+        }
+      }
+    }
+    &.four-up {
+      .item { width: 25%; }
+      &.vertical .item, &.small-vertical .item { width: auto; }
+      &.medium-vertical .item {
+        @media #{$medium-up} {
+          width: auto;
+        }
+      }
+      &.large-vertical .item {
+        @media #{$large-up} {
+          width: auto;
+        }
+      }
+    }
+    &.five-up {
+      .item { width: 20%; }
+      &.vertical .item, &.small-vertical .item { width: auto; }
+      &.medium-vertical .item {
+        @media #{$medium-up} {
+          width: auto;
+        }
+      }
+      &.large-vertical .item {
+        @media #{$large-up} {
+          width: auto;
+        }
+      }
+    }
+    &.six-up {
+      .item { width: 16.66667%; }
+      &.vertical .item, &.small-vertical .item { width: auto; }
+      &.medium-vertical .item {
+        @media #{$medium-up} {
+          width: auto;
+        }
+      }
+      &.large-vertical .item {
+        @media #{$large-up} {
+          width: auto;
+        }
+      }
+    }
+    &.seven-up {
+      .item { width: 14.28571%; }
+      &.vertical .item, &.small-vertical .item { width: auto; }
+      &.medium-vertical .item {
+        @media #{$medium-up} {
+              width: auto;
+        }
+      }
+      &.large-vertical .item {
+        @media #{$large-up} {
+           width: auto;
+        }
+      }
     }
     &.eight-up {
-  		.item { width: 12.5%; }
-  		&.vertical .item, &.small-vertical .item { width: auto; }
-  		&.medium-vertical .item {
-    		@media #{$medium-up} {
-        			width: auto;
-    		}
-  		}
-  		&.large-vertical .item {
-      	@media #{$large-up} {
-       		width: auto;
-      	}
-  		}
+      .item { width: 12.5%; }
+      &.vertical .item, &.small-vertical .item { width: auto; }
+      &.medium-vertical .item {
+        @media #{$medium-up} {
+              width: auto;
+        }
+      }
+      &.large-vertical .item {
+        @media #{$large-up} {
+           width: auto;
+        }
+      }
     }
-	}
+  }
 }

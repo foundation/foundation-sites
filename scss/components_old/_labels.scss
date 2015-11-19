@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-@import "global";
+@import 'global';
 
 //
 // @variables
@@ -25,15 +25,15 @@ $label-font-family: $body-font-family !default;
 //
 // We use this mixin to create a default label base.
 @mixin label-base {
-  font-weight: $label-font-weight;
+  display: inline-block;
   font-family: $label-font-family;
+  font-weight: $label-font-weight;
+  line-height: 1;
+  margin-bottom: auto;
+  position: relative;
   text-align: center;
   text-decoration: none;
-  line-height: 1;
   white-space: nowrap;
-  display: inline-block;
-  position: relative;
-  margin-bottom: auto;
 }
 
 // @mixins
