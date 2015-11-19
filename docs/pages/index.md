@@ -23,7 +23,7 @@ Get to know the pieces of Foundation.
 ### General
 
 <div class="row up-1 medium-up-2 large-up-3 docs-big-index">
-  <div class="column"><a href="global-styles.html">
+  <div class="column"><a href="global.html">
     <strong>Global Styles</strong>
     <p>Global styles applied by the Foundation framework.</p>
   </a></div>
