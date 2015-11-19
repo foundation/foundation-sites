@@ -1,8 +1,8 @@
 Package.describe({
   name: 'zurb:foundation-sites',
   summary: 'The most advanced responsive front-end framework in the world.',
-  version: '6.0.0-alpha.1',
-  git: 'https://github.com/zurb/foundation.git'
+  version: '6.0.0',
+  git: 'https://github.com/zurb/foundation-sites.git'
 });
 
 Package.onUse(function(api) {

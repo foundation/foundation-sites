@@ -1,6 +1,6 @@
 {
   "name": "foundation-sites",
-  "version": "6.0.0-alpha.2",
+  "version": "6.0.0",
   "main": "js/foundation/foundation.js",
   "scripts": {
     "start": "gulp",
@@ -27,7 +27,7 @@
     "gulp-prompt": "^0.1.2",
     "gulp-rename": "^1.2.2",
     "gulp-rsync": "0.0.5",
-    "gulp-ruby-sass": "^1.0.0-alpha.3",
+    "gulp-ruby-sass": "1.0.0-alpha.3",
     "gulp-sass": "^2.1.0",
     "gulp-scss-lint": "^0.2.2",
     "gulp-uglify": "^1.1.0",
@@ -54,7 +54,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/zurb/foundation"
+    "url": "https://github.com/zurb/foundation-sites"
   },
   "keywords": [
     "handlebars-helper-rel",
@@ -63,7 +63,7 @@
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/zurb/foundation/blob/master/LICENSE"
+      "url": "https://github.com/zurb/foundation-sites/blob/master/LICENSE"
     }
   ]
 }
