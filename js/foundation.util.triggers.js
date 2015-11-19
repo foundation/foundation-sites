@@ -36,6 +36,16 @@
     }
   });
 
+  var MutationObserver = (function () {
+    var prefixes = ['WebKit', 'Moz', 'O', 'Ms', ''];
+    for (var i=0; i < prefixes.length; i++) {
+      if (prefixes[i] + 'MutationObserver' in window) {
+        return window[prefixes[i] + 'MutationObserver'];
+      }
+    }
+    return false;
+  }());
+
 
   var checkListeners = function(){
     eventsListener();
@@ -91,7 +101,13 @@
       .on('resize.zf.trigger', function(e) {
         if (timer) { clearTimeout(timer); }
 
-        timer = setTimeout(function() {
+        timer = setTimeout(function(){
+
+          if(!MutationObserver){//fallback for IE 9
+            $nodes.each(function(){
+              $(this).triggerHandler('resizeme.zf.trigger');
+            });
+          }
           //trigger all listening elements and signal a resize event
           $nodes.attr('data-events', "resize");
         }, debounce || 10);//default time to emit resize event
@@ -104,9 +120,16 @@
     if($nodes.length){
       $(window).off('scroll.zf.trigger')
       .on('scroll.zf.trigger', function(e){
+        console.log('scrolling');
         if(timer){ clearTimeout(timer); }
 
         timer = setTimeout(function(){
+
+          if(!MutationObserver){//fallback for IE 9
+            $nodes.each(function(){
+              $(this).triggerHandler('scrollme.zf.trigger');
+            });
+          }
           //trigger all listening elements and signal a scroll event
           $nodes.attr('data-events', "scroll");
         }, debounce || 10);//default time to emit scroll event
@@ -148,20 +171,10 @@
   //   }
   // }
   var eventsListener = function() {
+    if(!MutationObserver){ return false; }
     var nodes = document.querySelectorAll('[data-resize], [data-scroll], [data-mutate]');
 
-    if (nodes.length) {
-
-      var MutationObserver = (function () {
-        var prefixes = ['WebKit', 'Moz', 'O', 'Ms', ''];
-        for (var i=0; i < prefixes.length; i++) {
-          if (prefixes[i] + 'MutationObserver' in window) {
-            return window[prefixes[i] + 'MutationObserver'];
-          }
-        }
-        return false;
-      }());
-
+    if(nodes.length){
       //for each element that needs to listen for resizing, scrolling, (or coming soon mutation) add a single observer
       for (var i = 0; i <= nodes.length-1; i++) {
         var elementObserver = new MutationObserver(listeningElementsMutation);
