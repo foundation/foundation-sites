@@ -1,0 +1,107 @@
+@import "util/unit";
+@import "util/breakpoint";
+
+@include describe("Breakpoint") {
+  @include it("converts a named breakpoint to an em value") {
+    $actual: breakpoint(medium);
+    $expected: '(min-width: 32em)';
+
+    @include should(expect($actual), to(be($expected)));
+  }
+
+  @include it("converts a pixel or rem breakpoint to em") {
+    $expected: '(min-width: 1em)';
+
+    @include should(expect(breakpoint(16px)), to(be($expected)));
+    @include should(expect(breakpoint(1rem)), to(be($expected)));
+  }
+
+  @include it("creates an only range out of a named breakpoint") {
+    $actual: breakpoint(medium only);
+    $expected: '(min-width: 32em) and (max-width: 63.9375em)';
+
+    @include should(expect($actual), to(be($expected)));
+  }
+
+  @include it("creates a down range out of a named breakpoint") {
+    $actual: breakpoint(medium down);
+    $expected: '(max-width: 63.9375em)';
+
+    @include should(expect($actual), to(be($expected)));
+  }
+
+  @include it("creates a down range out of a pixel, rem or em value") {
+    $expected: '(max-width: 1em)';
+
+    @include should(expect(breakpoint(16px down)), to(be($expected)));
+    @include should(expect(breakpoint(1rem down)), to(be($expected)));
+    @include should(expect(breakpoint(1em down)), to(be($expected)));
+  }
+
+  @include it("returns an empty string for the values zero down or zero up") {
+    $expected: '';
+
+    @include should(expect(breakpoint(small down)), to(be($expected)));
+    @include should(expect(breakpoint(small up)), to(be($expected)));
+    @include should(expect(breakpoint(0 down)), to(be($expected)));
+    @include should(expect(breakpoint(0 up)), to(be($expected)));
+  }
+
+  @include it("creates special media queries for landscape, portrait, and retina") {
+    @include should(expect(breakpoint(landscape)), to(be('(orientation: landscape)')));
+    @include should(expect(breakpoint(portrait)), to(be('(orientation: portrait)')));
+    @include should(expect(breakpoint(retina)), to(be('(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)')));
+  }
+}
+
+@include describe("Map Serialize") {
+  @include it("converts a Sass map into a string") {
+    $input: (
+      small: 1em,
+      medium: 2em,
+      large: 3em,
+    );
+    $actual: -zf-bp-serialize($input);
+    $expected: 'small=1em&medium=2em&large=3em';
+
+    @include should(expect($actual), to(be($expected)));
+  }
+}
+
+@include describe("Map Next") {
+  @include it("returns the next value in a map") {
+    $input: (
+      one: 'One',
+      two: 'Two',
+      three: 'Three',
+    );
+    $actual: -zf-map-next($input, two);
+    $expected: map-get($input, three);
+
+    @include should(expect($actual), to(be($expected)));
+  }
+
+  @include it("returns null if the key is last in the map") {
+    $input: (
+      one: 'One',
+      two: 'Two',
+      three: 'Three',
+    );
+    $actual: -zf-map-next($input, three);
+    $expected: null;
+
+    @include should(expect($actual), to(be($expected)));
+  }
+
+  @include it("returns null if the key is not in the map") {
+    $input: (
+      one: 'One',
+      two: 'Two',
+      three: 'Three',
+    );
+    $actual: -zf-map-next($input, four);
+    $expected: null;
+
+    @include should(expect($actual), to(be($expected)));
+  }
+}

@@ -1,0 +1,156 @@
+$topbar-background: #121212;
+$topbar-hover-color: darken($topbar-background, 20%);
+
+.marketing-topbar {
+  background: $topbar-background;
+  font-size: rem-calc(13);
+  font-weight: bold;
+
+  @include clearfix;
+
+  ul:first-child { float: left; }
+  ul:last-child  { float: right; }
+
+  .menu a {
+    height: 45px;
+    line-height: 45px;
+    color: $light-gray;
+    padding-top: 0;
+    padding-bottom: 0;
+
+    &:hover:not(.button),
+    &:focus {
+      background: darken($topbar-background, 20%);
+    }
+
+    &.button {
+      border-radius: 0;
+      box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    }
+  }
+
+  .title {
+    color: $dark-gray;
+    padding: 10px;
+    padding-left: 15px;
+    font-size: 0.8em;
+    background: lighten($topbar-background, 10%);
+  }
+
+  .is-active a {
+    background: darken($topbar-background, 20%);
+  }
+
+  // ZURB logo
+  .menu img {
+    position: relative;
+    top: -2px;
+  }
+
+  .menu:first-child {
+    border-right: 1px solid #4e4e4e;
+  }
+
+  .menu:last-child {
+    border-left: 1px solid #4e4e4e;
+  }
+
+  .menu {
+    li:not(:last-child) {
+      border-right: 1px solid #4e4e4e;
+    }
+  }
+
+  .dropdown.menu .submenu {
+    border: 0;
+  }
+
+  .is-down-arrow a {
+    padding-right: 2rem !important;
+  }
+
+  .is-down-arrow a::after {
+    margin-top: 8px !important;
+    right: 12px !important;
+    border-top-color: white !important;
+  }
+}
+
+.mobile-ofc {
+  background: $topbar-background;
+  font-size: rem-calc(13);
+  font-weight: bold;
+
+  .menu a {
+    height: 45px;
+    line-height: 45px;
+    color: $light-gray;
+    padding-top: 0;
+    padding-bottom: 0;
+
+    &:hover:not(.button),
+    &:focus {
+      background: darken($topbar-background, 20%);
+    }
+
+    &.button {
+      border-radius: 0;
+      box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    }
+  }
+
+  .title {
+    color: $dark-gray;
+    padding: 10px;
+    padding-left: 15px;
+    font-size: 0.8em;
+    background: lighten($topbar-background, 10%);
+  }
+}
+
+// .docs-topbar {
+//   background: #333;
+//   font-size: rem-calc(13);
+//   font-weight: bold;
+
+//   .menu a {
+//     height: 45px;
+//     line-height: 45px;
+//     color: white;
+//     padding-top: 0;
+//     padding-bottom: 0;
+
+//     &:hover,
+//     &:focus {
+//       background: #222;
+//     }
+//   }
+
+//   .is-active a {
+//     background: #222;
+//   }
+
+//   // ZURB logo
+//   .menu img {
+//     position: relative;
+//     top: -2px;
+//   }
+
+//   .menu:first-child {
+//     border-right: 1px solid #4e4e4e;
+//   }
+
+//   .menu:last-child {
+//     border-left: 1px solid #4e4e4e;
+//   }
+
+//   .menu {
+//     li:not(:last-child) {
+//       border-right: 1px solid #4e4e4e;
+//     }
+//   }
+
+//   .docs-menu-title {
+//     margin: 0;
+//   }
+// }

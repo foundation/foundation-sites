@@ -1,0 +1,74 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group media-object
+////
+
+/// Bottom margin of a media object.
+/// @type Number
+$mediaobject-margin-bottom: $global-margin !default;
+
+/// Left and right padding on sections within a media object.
+/// @type Number
+$mediaobject-section-padding: $global-padding !default;
+
+/// With of images within a media object, when the object is stacked vertically. Set to 'auto' to use the image's natural width.
+/// @type Number
+$mediaobject-image-width-stacked: 100% !default;
+
+/// Adds styles for a media object container.
+@mixin media-object-container {
+  margin-bottom: $mediaobject-margin-bottom;
+  display: block;
+}
+
+/// Adds styles for sections within a media object.
+/// @param {Number} $padding [$mediaobject-section-padding] - Padding between sections.
+@mixin media-object-section($padding: $mediaobject-section-padding) {
+  display: table-cell;
+  vertical-align: top;
+
+  &:first-child {
+    padding-#{$global-right}: $padding;
+  }
+
+  &:last-child:not(+ &:first-child) {
+    padding-#{$global-left}: $padding;
+  }
+}
+
+/// Adds styles to stack sections of a media object. Apply this to the section elements, not the container.
+@mixin media-object-stack {
+  display: block;
+  padding: 0;
+  padding-bottom: $mediaobject-section-padding;
+
+  img {
+    width: $mediaobject-image-width-stacked;
+  }
+}
+
+@mixin foundation-media-object {
+  .media-object {
+    @include media-object-container;
+
+    img {
+      max-width: none;
+    }
+
+    &.stack-for-small .media-object-section {
+      @include breakpoint(small only) {
+        @include media-object-stack;
+      }
+    }
+  }
+
+  .media-object-section {
+    @include media-object-section;
+
+    &.middle { vertical-align: middle; }
+    &.bottom { vertical-align: bottom; }
+  }
+}

@@ -1,0 +1,131 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group grid
+////
+
+/// Outputs CSS classes for the grid.
+/// @access private
+@mixin foundation-grid(
+  $row: 'row',
+  $column: 'column',
+  $column-row: 'column-row',
+  $push: 'push',
+  $pull: 'pull',
+  $center: 'centered',
+  $uncenter: 'uncenter',
+  $collapse: 'collapse',
+  $uncollapse: 'uncollapse',
+  $offset: 'offset',
+  $end: 'end',
+  $expanded: 'expanded',
+  $breakpoints: $breakpoint-classes
+) {
+  // Row
+  .#{$row} {
+    @include grid-row;
+
+    // Collapsing
+    &.#{$collapse} {
+      > .#{$column} { @include grid-col-collapse; }
+    }
+
+    // Nesting
+    & & {
+      @include grid-row($behavior: nest, $cf: false);
+
+      &.#{$collapse} {
+        @include grid-row($behavior: nest collapse, $cf: false);
+      }
+    }
+
+    // Responsive collapsing
+    @each $size in $breakpoint-classes {
+      @include breakpoint($size) {
+        &.#{$size}-#{$collapse} {
+          > .#{$column} { @include grid-col-collapse; }
+        }
+
+        &.#{$size}-#{$uncollapse} {
+          > .#{$column} { @include grid-col-uncollapse; }
+        }
+      }
+    }
+
+    // Expanded (full-width) row
+    &.#{$expanded} {
+      max-width: none;
+    }
+  }
+
+  // Column
+  .#{$column} {
+    @include grid-col;
+
+    &.#{$end} {
+      @include grid-col-end;
+    }
+  }
+
+  // Column row
+  .#{$column}.#{$row} {
+    float: none;
+  }
+
+  @each $size in $breakpoints {
+    @include breakpoint($size) {
+      @for $i from 1 through $grid-column-count {
+        // Column width
+        .#{$size}-#{$i} {
+          @include grid-col-size($i);
+        }
+
+        // Source ordering
+        @if $i < $grid-column-count {
+          .#{$size}-#{$push}-#{$i} {
+            @include grid-col-pos($i);
+          }
+
+          .#{$size}-#{$pull}-#{$i} {
+            @include grid-col-pos(-$i);
+          }
+        }
+
+        // Offsets
+        $o: $i - 1;
+
+        .#{$size}-#{$offset}-#{$o} {
+          @include grid-col-off($o);
+        }
+      }
+
+      // Block grid
+      @for $i from 1 through 6 {
+        .#{$size}-up-#{$i} {
+          @include grid-layout($i);
+        }
+      }
+
+      // Positioning
+      .#{$column}.#{$size}-#{$center} {
+        @include grid-col-pos(center);
+      }
+
+      // Gutter adjustment
+      .#{$size}-#{$uncenter},
+      .#{$size}-#{$push}-0,
+      .#{$size}-#{$pull}-0 {
+        @include grid-col-unpos;
+      }
+    }
+  }
+
+  @if $column == 'column' {
+    .columns {
+      // scss-lint:disable PlaceholderInExtend
+      @extend .column;
+    }
+  }
+}

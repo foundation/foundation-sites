@@ -1,0 +1,190 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group functions
+////
+
+/// Creates a CSS triangle, which can be used for dropdown arrows, dropdown pips, and more. Use this mixin inside a `&::before` or `&::after` selector, to attach the triangle to an existing element.
+/// @param {Number} $triangle-size - Width of the triangle.
+/// @param {Color} $triangle-color - Color of the triangle.
+/// @param {Keyword} $triangle-direction - Direction the triangle points. Can be `top`, `right`, `bottom`, or `left`.
+@mixin css-triangle(
+  $triangle-size,
+  $triangle-color,
+  $triangle-direction
+) {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border: inset $triangle-size;
+
+  @if ($triangle-direction == down) {
+    border-color: $triangle-color transparent transparent;
+    border-top-style: solid;
+  }
+  @if ($triangle-direction == up) {
+    border-color: transparent transparent $triangle-color;
+    border-bottom-style: solid;
+  }
+  @if ($triangle-direction == right) {
+    border-color: transparent transparent transparent $triangle-color;
+    border-left-style: solid;
+  }
+  @if ($triangle-direction == left) {
+    border-color: transparent $triangle-color transparent transparent;
+    border-right-style: solid;
+  }
+}
+
+/// Creates a menu icon with a set width, height, number of bars, and colors. The mixin uses the height of the icon and the weight of the bars to determine spacing. <div class="docs-example-burger"></div>
+/// @param {Color} $color - Color to use for the icon.
+/// @param {Color} $color-hover - Color to use when the icon is hovered over.
+/// @param {Number} $width - Width of the icon.
+/// @param {Number} $height - Height of the icon.
+/// @param {Number} $weight - Height of individual bars in the icon.
+/// @param {Number} $bars - Number of bars in the icon.
+@mixin hamburger(
+  $color: black,
+  $color-hover: #666,
+  $width: 20px,
+  $height: 16px,
+  $weight: 2px,
+  $bars: 3
+) {
+  // box-shadow CSS output
+  $shadow: ();
+  $hover-shadow: ();
+
+  // Spacing between bars is calculated based on the total height of the icon and the weight of each bar
+  $spacing: floor(($height - ($weight * $bars)) / ($bars - 1));
+
+  // Icon container
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  width: $width;
+  height: $height;
+
+  // Icon bars
+  &::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: $weight;
+    background: $color;
+    top: 0;
+    left: 0;
+
+    @for $i from 2 through $bars {
+      $offset: ($weight + $spacing) * ($i - 1);
+      $shadow: append($shadow, 0 $offset 0 $color, comma);
+    }
+
+    box-shadow: $shadow;
+  }
+
+  // Hover state
+  @if $color-hover {
+    // Generate CSS
+    @for $i from 2 through $bars {
+      $offset: ($weight + $spacing) * ($i - 1);
+      $hover-shadow: append($hover-shadow, 0 $offset 0 $color-hover, comma);
+    }
+
+    &:hover::after {
+      background: $color-hover;
+      box-shadow: $hover-shadow;
+    }
+  }
+}
+
+/// Adds a downward-facing triangle as a background image to an element. The image is formatted as an SVG, making it easy to change the color. Because Internet Explorer doesn't support encoded SVGs as background images, a PNG fallback is also included.
+/// There are two PNG fallbacks: a black triangle and a white triangle. The one used depends on the lightness of the input color.
+/// @param {Color} $color [$black] - Color to use for the triangle.
+@mixin background-triangle($color: $black) {
+  $rgb: 'rgb(#{red($color)}, #{green($color)}, #{blue($color)})';
+
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="32" height="24" viewBox="0 0 32 24"><polygon points="0,0 32,0 16,24" style="fill: #{$rgb}"></polygon></svg>');
+
+  @media screen and (min-width:0\0) {
+    @if lightness($color) < 50% {
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAYCAYAAACbU/80AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAIpJREFUeNrEkckNgDAMBBfRkEt0ObRBBdsGXUDgmQfK4XhH2m8czQAAy27R3tsw4Qfe2x8uOO6oYLb6GlOor3GF+swURAOmUJ+RwtEJs9WvTGEYxBXqI1MQAZhCfUQKRzDMVj+TwrAIV6jvSUEkYAr1LSkcyTBb/V+KYfX7xAeusq3sLDtGH3kEGACPWIflNZfhRQAAAABJRU5ErkJggg==');
+    }
+    @else {
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAYCAYAAACbU/80AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMBJREFUeNrEllsOhCAMRVszC9IlzU7KCmVHTJsoMWYMUtpyv9BgbuXQB5ZSdgBYYY4ycgBivk8KYFsQMfMiTTBP4o3nUzCKzOabLJbLy2/g31evGkAginR4/ZegKH5qX3bJCscA3t0x3kgO5tQFyhhFf50xRqFLbyMUNJQzgyjGS/wgCpvKqkRBpuWrE4V9d+1E4dPUXqIg107SQOE/2DRQxMwTDygIInVDET9T3lCoj/6j/VCmGjZOl2lKpZ8AAwDQP7zIimDGFQAAAABJRU5ErkJggg==');
+    }
+  }
+}
+
+/// Applies the micro clearfix hack popularized by Nicolas Gallagher. Include this mixin on a container if its children are all floated, to give the container a proper height.
+/// @link http://nicolasgallagher.com/micro-clearfix-hack/ Micro Clearfix Hack
+@mixin clearfix {
+  &::before,
+  &::after {
+    content: ' ';
+    display: table;
+  }
+
+  &::after {
+    clear: both;
+  }
+}
+
+/// Adds CSS for a "quantity query" selector that automatically sizes elements based on how many there are inside a container.
+/// @param {Number} $max - Maximum number of items to detect. The higher this number is, the more CSS that's required to cover each number of items.
+/// @param {Keyword} $elem [li] - Tag to use for sibling selectors.
+/// @link http://alistapart.com/article/quantity-queries-for-css Quantity Queries for CSS
+@mixin auto-width($max, $elem: li) {
+  @for $i from 2 through $max {
+    &:nth-last-child(#{$i}):first-child,
+    &:nth-last-child(#{$i}):first-child ~ #{$elem} {
+      width: percentage(1 / $i);
+    }
+  }
+}
+
+/// Removes the focus ring around an element when a mouse input is detected.
+@mixin disable-mouse-outline {
+  [data-whatinput="mouse"] & {
+    outline: 0;
+  }
+}
+
+/// Makes an element visually hidden, but still accessible to keyboards and assistive devices.
+/// @link http://snook.ca/archives/html_and_css/hiding-content-for-accessibility Hiding Content for Accessibility
+@mixin element-invisible {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+/// Reverses the CSS output created by the `element-invisible()` mixin.
+@mixin element-invisible-off {
+  position: static !important;
+  height: auto;
+  width: auto;
+  overflow: visible;
+  clip: auto;
+}
+
+/// Vertically and horizontally centers an element using `transform`.
+@mixin vertical-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/// Vertically centers an element using `transform`.
+@mixin v-align-middle {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}

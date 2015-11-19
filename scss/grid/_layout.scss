@@ -1,0 +1,28 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group grid
+////
+
+/// Sizes child elements so that `$n` number of items appear on each row.
+/// @param {Number} $n - Number of elements to display per row.
+/// @param {String} $selector ['.column, .columns'] - Selector(s) to use for child elements.
+@mixin grid-layout(
+  $n,
+  $selector: '.column'
+) {
+  #{$selector} {
+    width: percentage(1/$n);
+    float: $global-left;
+
+    &:nth-of-type(1n) {
+      clear: none;
+    }
+
+    &:nth-of-type(#{$n}n+1) {
+      clear: both;
+    }
+  }
+}

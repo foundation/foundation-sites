@@ -1,0 +1,201 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group global
+////
+
+/// Global width of your site. Used by the grid to determine row width.
+/// @type Number
+$global-width: rem-calc(1200) !default;
+
+/// Font size attribute applied to `<html>` and `<body>`. We use 100% by default so the value is inherited from the user's browser settings.
+/// @type Number
+$global-font-size: 100% !default;
+
+/// Default line height for all type. `$global-lineheight` is 24px while `$global-font-size` is 16px
+/// @type Number
+$global-lineheight: 1.5 !default;
+
+/// Primary color for interactive components like links and buttons.
+/// @type Color
+$primary-color: #2199e8 !default;
+
+/// Secondary color, used with components that support the `.secondary` class.
+/// @type Color
+$secondary-color: #777 !default;
+
+/// Color to indicate a positive status or action, used with the `.success` class.
+/// @type Color
+$success-color: #3adb76 !default;
+
+/// Color to indicate a caution status or action, used with the `.warning` class.
+/// @type Color
+$warning-color: #ffae00 !default;
+
+/// Color to indicate a negative status or action, used with the `.alert` class.
+/// @type Color
+$alert-color: #ec5840 !default;
+
+/// Color used for light gray UI items.
+/// @type Color
+$light-gray: #e6e6e6 !default;
+
+/// Color used for medium gray UI items.
+/// @type Color
+$medium-gray: #cacaca !default;
+
+/// Color used for dark gray UI items.
+/// @type Color
+$dark-gray: #8a8a8a !default;
+
+/// Color used for black ui items.
+/// @type Color
+$black: #0a0a0a !default;
+
+/// Color used for white ui items.
+/// @type Color
+$white: #fefefe !default;
+
+/// Background color of the body.
+/// @type Color
+$body-background: $white !default;
+
+/// Text color of the body.
+/// @type Color
+$body-font-color: $black !default;
+
+/// Font stack of the body.
+/// @type List
+$body-font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif !default;
+
+/// Set to `true` to enable antialiased type, using the `-webkit-font-smoothing` and `-moz-osx-font-smoothing` CSS properties.
+/// @type Boolean
+$body-antialiased: true !default;
+
+/// Text direction for the document. Set to `rtl` to reverse the orientation and direction of all components.
+/// @type Keyword
+$text-direction: ltr !default;
+
+/// Global value used for margin on components.
+/// @type Number
+$global-margin: 1rem !default;
+
+/// Global value used for padding on components.
+/// @type Number
+$global-padding: 1rem !default;
+
+/// Global value used for margin between components.
+/// @type Number
+$global-margin: 1rem !default;
+
+/// Global font weight used for normal type.
+/// @type Keyword | Number
+$global-weight-normal: normal !default;
+
+/// Global font weight used for bold type.
+/// @type Keyword | Number
+$global-weight-bold: bold !default;
+
+/// Global value used for all elements that have a border radius.
+/// @type Number
+$global-radius: 0 !default;
+
+/// Namespace for the data attributes used to initialize Foundation plugins.
+/// @type String | Boolean
+$global-namespace: false !default;
+
+/// Sets the text direction of the CSS. Can be either `ltr` or `rtl`.
+$global-text-direction: ltr !default;
+
+// Internal variables used for text direction
+$global-left: if($global-text-direction == rtl, right, left);
+$global-right: if($global-text-direction == rtl, left, right);
+
+// Internal map used to iterate through colors, to generate CSS classes with less code
+$foundation-colors: (
+  primary: $primary-color,
+  secondary: $secondary-color,
+  success: $success-color,
+  alert: $alert-color,
+  warning: $warning-color,
+);
+
+@mixin foundation-global-styles {
+  html,
+  body {
+    font-size: $global-font-size;
+    box-sizing: border-box;
+  }
+
+  // Set box-sizing globally to handle padding and border widths
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+
+  // Default body styles
+  body {
+    padding: 0;
+    margin: 0;
+    font-family: $body-font-family;
+    font-weight: $global-weight-normal;
+    line-height: $global-lineheight;
+    color: $body-font-color;
+    background: $body-background;
+
+    @if ($body-antialiased) {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  }
+
+  img {
+    // Grid defaults to get images and embeds to work properly
+    max-width: 100%;
+    height: auto;
+    -ms-interpolation-mode: bicubic;
+
+    // Get rid of gap under images by making them display: inline-block; by default
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  // Make sure textarea takes on height automatically
+  textarea {
+    height: auto;
+    min-height: 50px;
+    border-radius: $global-radius;
+  }
+
+  // Make select elements are 100% width by default
+  select {
+    width: 100%;
+    border-radius: $global-radius;
+  }
+
+  // Styles Google Maps and MapQuest embeds properly
+  // scss-lint:disable IdSelector
+  #map_canvas,
+  .map_canvas,
+  .mqa-display {
+    img,
+    embed,
+    object {
+      max-width: none !important;
+    }
+  }
+
+  // Reset <button> styles created by most browsers
+  button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: transparent;
+    padding: 0;
+    border: 0;
+    border-radius: $global-radius;
+    line-height: 1;
+  }
+}

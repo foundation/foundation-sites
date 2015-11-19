@@ -1,0 +1,29 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group grid
+////
+
+/// The maximum width of a row.
+/// @type Number
+$grid-row-width: $global-width !default;
+
+/// The default column count of a grid. Changing this value affects the logic of the grid mixins, and the number of CSS classes output.
+/// @type Number
+$grid-column-count: 12 !default;
+
+/// The amount of space between columns.
+/// @type Number
+$grid-column-gutter: 30px !default;
+
+@import 'row';
+@import 'column';
+@import 'size';
+@import 'position';
+@import 'gutter';
+@import 'classes';
+@import 'layout';
+
+@import 'flex-grid';

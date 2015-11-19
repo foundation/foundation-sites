@@ -1,0 +1,117 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group functions
+////
+
+/// Determine if a value is not falsey, in CSS terms. Falsey values are `null`, `none`, `0` with any unit, or an empty list.
+/// @param $val - Value to check.
+/// @returns {Boolean} `true` if `$val` is not falsey.
+@function hasvalue($val) {
+  @if $val == null or $val == none {
+    @return false;
+  }
+  @if type-of($val) == 'number' and strip-unit($val) == 0 {
+    @return false;
+  }
+  @if type-of($val) == 'list' and length($val) == 0 {
+    @return false;
+  }
+  @return true;
+}
+
+/// Determine a top/right/bottom/right value on a padding, margin, etc. property, no matter how many values were passed in. Use this function if you need to know the specific side of a value, but don't know if the value is using a shorthand format.
+/// @param {List|Number} $val - Value to analyze. Should be a shorthand sizing property, e.g. "1em 2em 1em"
+/// @param {Keyword} $side - Side to return. Should be `top`, `right`, `bottom`, or `left`.
+/// @returns {Number} A single value based on `$val` and `$side`.
+@function get-side($val, $side) {
+  $length: length($val);
+
+  @if $length == 1 {
+    @return $val;
+  }
+  @if $length == 2 {
+    @return map-get((
+      top: nth($val, 1),
+      bottom: nth($val, 1),
+      left: nth($val, 2),
+      right: nth($val, 2),
+    ), $side);
+  }
+  @if $length == 3 {
+    @return map-get((
+      top: nth($val, 1),
+      left: nth($val, 2),
+      right: nth($val, 2),
+      bottom: nth($val, 3),
+    ), $side);
+  }
+  @if $length == 4 {
+    @return map-get((
+      top: nth($val, 1),
+      right: nth($val, 2),
+      bottom: nth($val, 3),
+      left: nth($val, 4),
+    ), $side);
+  }
+}
+
+/// Given border $val, find a specific element of the border, which is $elem. The possible values for $elem are width, style, and color.
+/// @param {List} $val - Border value to find a value in.
+/// @param {Keyword} $elem - Border component to extract.
+/// @returns {Mixed} If the value exists, returns the value. If the value is not in the border definition, the function will return a 0px width, solid style, or black border.
+@function get-border-value($val, $elem) {
+  // Find the width, style, or color and return it
+  @each $v in $val {
+    $type: type-of($v);
+    @if $elem == width and $type == 'number' {
+      @return $v;
+    }
+    @if $elem == style and $type == 'string' {
+      @return $v;
+    }
+    @if $elem == color and $type == 'color' {
+      @return $v;
+    }
+  }
+
+  // Defaults
+  $defaults: (
+    width: 0,
+    style: solid,
+    color: #000,
+  );
+  @return map-get($defaults, $elem);
+}
+
+/// Calculates x^y, where x is `$base` and y is `$power`.
+/// @access private
+/// @param {Number} $base - Base number (x).
+/// @param {Number} $power - Exponent (y).
+@function pow($base, $power) {
+  @if $power == 0 { @return 1; }
+  @return $base * pow($base, $power - 1);
+}
+
+// TODO: Remove this (it's used by the grid but is overkill)
+/// Given a user-defined list of keywords and a list of possible keywords, find the ones that were passed in.
+/// @param {List} $opts - List of values to find keywords in.
+/// @param {List} $seeking - List of all possible keywords.
+/// @access private
+/// @returns {Map} A map of all keywords in $seeking. If a keyword was found in $opts, its value is true, otherwise false.
+@function -zf-get-options($opts, $seeking) {
+  @if type-of($opts) != 'list' {
+    $opts: ($opts);
+  }
+
+  $map: ();
+  @each $keyword in $seeking {
+    $val: if(index($opts, $keyword) != null, true, false);
+    $item: ($keyword: $val);
+    $map: map-merge($map, $item);
+  }
+
+  @return $map;
+}

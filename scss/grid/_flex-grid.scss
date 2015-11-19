@@ -1,0 +1,191 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group flex-grid
+////
+
+/// Creates a container for a flex grid row.
+/// @param {Keyword|List} $behavior [null]
+///   Modifications to the default grid styles. `nest` indicates the row will be placed inside another row. `collapse` indicates that the columns inside this row will not have padding. `nest collapse` combines both behaviors.
+/// @param {Number} $width [$grid-row-width] - Maximum width of the row.
+/// @param {Number} $columns [null] - Number of columns to use for this row. If set to `null` (the default), the global column count will be used.
+/// @param {Boolean} $base [true] - Set to `false` to prevent basic styles from being output. Useful if you're calling this mixin on the same element twice, as it prevents duplicate CSS output.
+@mixin flex-grid-row(
+  $behavior: null,
+  $width: $grid-row-width,
+  $columns: null,
+  $base: true
+) {
+  $behavior: -zf-get-options($behavior, nest collapse);
+  $margin: auto;
+
+  @if map-get($behavior, nest) {
+    $margin: rem-calc($grid-column-gutter) / 2 * -1;
+  }
+  @else {
+    max-width: $width;
+  }
+
+  @if $base {
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+  margin-left: $margin;
+  margin-right: $margin;
+
+  @if $columns != null {
+    @include grid-context($columns, $base) {
+      @content;
+    }
+  }
+}
+
+/// Calculates the `flex` property for a flex grid column. It accepts all of the same values as the basic `grid-column()` function, along with two extras:
+///   - `null` (the default) will make the column expand to fill space.
+///   - `shrink` will make the column contract, so it only takes up the horizontal space it needs.
+/// @param {Mixed} $columns [null] - Width of the column.
+@function flex-grid-column($columns: null) {
+  $flex: 1 1 0px;
+
+  @if $columns == shrink {
+    $flex: 0 0 auto;
+  }
+  @else if $columns != null {
+    $flex: 0 0 grid-column($columns);
+  }
+
+  @return $flex;
+}
+
+/// Creates a column for a flex grid. By default, the column will stretch to the full width of its container, but this can be overridden with sizing classes, or by using the `unstack` class on the parent flex row.
+/// @param {Mixed} $columns [null] - Width of the column. Refer to the `flex-grid-column()` function to see possible values.
+/// @param {Number} $gutter [$grid-column-gutter] - Space between columns, added as a left and right padding.
+@mixin flex-grid-column(
+  $columns: null,
+  $gutter: $grid-column-gutter
+) {
+  $gutter: rem-calc($gutter) / 2;
+
+  flex: flex-grid-column($columns);
+  padding-left: $gutter;
+  padding-right: $gutter;
+
+  // max-width fixes IE 10/11 not respecting the flex-basis property
+  @if $columns != null and $columns != shrink {
+    max-width: grid-column($columns);
+  }
+}
+
+/// Changes the source order of a flex grid column. Columns with lower numbers appear first in the layout.
+/// @param {Number} $order [0] - Order number to apply.
+@mixin flex-grid-order($order: 0) {
+  order: $order;
+}
+
+@mixin foundation-flex-grid {
+  // Row
+  .row {
+    @include flex-grid-row;
+
+    // Nesting behavior
+    & &,
+    .column-row & {
+      @include flex-grid-row(nest, $base: false);
+    }
+  }
+
+  // Column
+  %flex-column {
+    @include flex-grid-column;
+  }
+
+  .column,
+  .columns {
+    @extend %flex-column;
+  }
+
+  // Sizing (percentage)
+  @each $size in $breakpoint-classes {
+    @include breakpoint($size) {
+      @for $i from 1 through $grid-column-count {
+        .#{$size}-#{$i} {
+          flex: flex-grid-column($i);
+          max-width: grid-column($i);
+        }
+      }
+    }
+  }
+
+  // Sizing (expand)
+  @each $size in $breakpoint-classes {
+    @if $size != small {
+      @include breakpoint($size) {
+        .#{$size}-expand {
+          flex: flex-grid-column();
+        }
+      }
+    }
+  }
+
+  // Sizing (shrink)
+  .shrink {
+    flex: flex-grid-column(shrink);
+  }
+
+  // Auto-stacking/unstacking
+  @each $size in $breakpoint-classes {
+    @if $size != small {
+      .row.#{$size}-unstack {
+        .column {
+          flex: flex-grid-column(100%);
+
+          @include breakpoint($size) {
+            flex: flex-grid-column();
+          }
+        }
+      }
+    }
+  }
+
+  // Source ordering
+  @each $size in $breakpoint-classes {
+    @include breakpoint($size) {
+      @for $i from 1 through 6 {
+        .#{$size}-order-#{$i} {
+          @include flex-grid-order($i);
+        }
+      }
+    }
+  }
+
+  // Horizontal alignment using justify-content
+  @each $hdir, $prop in (
+    'right': flex-end,
+    'center': center,
+    'justify': space-between,
+    'spaced': space-around,
+  ) {
+    .row.align-#{$hdir} {
+      justify-content: $prop;
+    }
+  }
+
+  // Horizontal alignment using align-items and align-self
+  @each $vdir, $prop in (
+    'top': flex-start,
+    'bottom': flex-end,
+    'middle': center,
+    'stretch': stretch,
+  ) {
+    .row.align-#{$vdir} {
+      align-items: $prop;
+    }
+
+    .column.align-#{$vdir} {
+      align-self: $prop;
+    }
+  }
+}

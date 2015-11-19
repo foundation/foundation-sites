@@ -1,0 +1,29 @@
+// Color blocks used on the Global Styles page.
+
+.docs-color-block {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+
+  > div:first-child {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 0.5rem;
+  }
+
+  > p {
+    margin: 0;
+  }
+
+  &-primary     { background: $primary-color; }
+  &-secondary   { background: $secondary-color; }
+  &-success     { background: $success-color; }
+  &-warning     { background: $warning-color; }
+  &-alert       { background: $alert-color; }
+  &-white       { background: $white; }
+  &-light-gray  { background: $light-gray; }
+  &-medium-gray { background: $medium-gray; }
+  &-dark-gray   { background: $dark-gray; }
+  &-black       { background: $black; }
+}

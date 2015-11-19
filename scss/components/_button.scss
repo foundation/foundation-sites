@@ -1,0 +1,264 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group button
+////
+
+/// Padding inside buttons.
+/// @type List
+$button-padding: 0.85em 1em !default;
+
+/// Margin around buttons.
+/// @type List
+$button-margin: 0 $global-margin $global-margin 0 !default;
+
+/// Default fill for buttons. Can either be `solid` or `hollow`.
+/// @type Keyword
+$button-fill: solid !default;
+
+/// Default background color for buttons.
+/// @type Color
+$button-background: $primary-color !default;
+
+/// Background color on hover for buttons.
+/// @type Color
+$button-background-hover: scale-color($button-background, $lightness: -15%) !default;
+
+/// Font color for buttons.
+/// @type List
+$button-color: #fff !default;
+
+/// Font color for buttons, if the background is light.
+/// @type List
+$button-color-alt: #000 !default;
+
+/// Border radius for buttons, defaulted to global-radius.
+/// @type Number
+$button-radius: $global-radius !default;
+
+/// Sizes for buttons.
+/// @type Map
+$button-sizes: (
+  tiny: 0.6rem,
+  small: 0.75rem,
+  default: 0.9rem,
+  large: 1.25rem,
+) !default;
+
+/// opacity for a disabled button.
+/// @type List
+$button-opacity-disabled: 0.25 !default;
+
+// Internal: flip from margin-right to margin-left for defaults
+@if $global-text-direction == 'rtl' {
+  $button-margin: 0 0 $global-margin $global-margin;
+}
+
+// TODO: Document button-base() mixin
+@mixin button-base {
+  @include disable-mouse-outline;
+  display: inline-block;
+  text-align: center;
+  line-height: 1;
+  cursor: pointer;
+  -webkit-appearance: none;
+  transition: all 0.25s ease-out;
+  vertical-align: middle;
+  border: 1px solid transparent;
+  border-radius: $button-radius;
+  padding: $button-padding;
+  margin: $button-margin;
+  font-size: map-get($button-sizes, default);
+}
+
+/// Expands a button to make it full-width.
+/// @param {Boolean} $expand [true] - Set to `true` to enable the expand behavior. Set to `false` to reverse this behavior.
+@mixin button-expand($expand: true) {
+  @if $expand {
+    display: block;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  @else {
+    display: inline-block;
+    width: auto;
+    margin: $button-margin;
+  }
+}
+
+/// Sets the visual style of a button.
+/// @param {Color} $background [$button-background] - Background color of the button.
+/// @param {Color} $background-hover [$button-background-hover] - Background color of the button on hover. Set to `auto` to have the mixin automatically generate a hover color.
+/// @param {Color} $color [$button-color] - Text color of the button. Set to `auto` to automatically generate a color based on the background color.
+@mixin button-style(
+  $background: $button-background,
+  $background-hover: $button-background-hover,
+  $color: $button-color
+) {
+  @if $color == auto {
+    $color: isitlight($background);
+  }
+
+  @if $background-hover == auto {
+    $background-hover: scale-color($background, $lightness: -20%);
+  }
+
+  @if lightness($background) >= 70% {
+    $color: $button-color-alt;
+  }
+  @else {
+    $color: $button-color;
+  }
+
+  background: $background;
+  color: $color;
+
+  &:hover, &:focus {
+    background: $background-hover;
+    color: $color;
+  }
+}
+
+/// Removes background fill on hover and focus for hollow buttons.
+@mixin button-hollow {
+  &,
+  &:hover, &:focus {
+    background: transparent;
+  }
+}
+
+@mixin button-hollow-style($color: $primary-color) {
+  $color-hover: scale-color($color, $lightness: -50%);
+
+  border: 1px solid $color;
+  color: $color;
+
+  &:hover, &:focus {
+    border-color: $color-hover;
+    color: $color-hover;
+  }
+}
+
+/// Adds disabled styles to a button by fading the element, reseting the cursor, and disabling pointer events.
+@mixin button-disabled {
+  opacity: $button-opacity-disabled;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/// Adds a dropdown arrow to a button.
+/// @param {Number} $size [0.4em] - Size of the arrow. We recommend using an `em` value so the triangle scales when used inside different sizes of buttons.
+/// @param {Color} $color [white] - Color of the arrow.
+/// @param {Number} $offset [$button-padding] - Distance between the arrow and the text of the button. Defaults to whatever the right padding of a button is.
+@mixin button-dropdown(
+  $size: 0.4em,
+  $color: $white,
+  $offset: get-side($button-padding, right)
+) {
+  &::after {
+    @include css-triangle($size, $color, down);
+    position: relative;
+    top: 0.4em; // Aligns the arrow with the text of the button
+    float: #{$global-right};
+    margin-#{$global-left}: get-side($button-padding, right);
+    display: inline-block;
+  }
+}
+
+/// Adds all styles for a button. For more granular control over styles, use the individual button mixins.
+/// @param {Boolean} $expand [false] - Set to `true` to make the button full-width.
+/// @param {Color} $background [$button-background] - Background color of the button.
+/// @param {Color} $background-hover [$button-background-hover] - Background color of the button on hover. Set to `auto` to have the mixin automatically generate a hover color.
+/// @param {Color} $color [$button-color] - Text color of the button. Set to `auto` to automatically generate a color based on the background color.
+/// @param {Keyword} $style [solid] - Set to `hollow` to create a hollow button. The color defined in `$background` will be used as the primary color of the button.
+@mixin button(
+  $expand: false,
+  $background: $button-background,
+  $background-hover: $button-background-hover,
+  $color: $button-color,
+  $style: $button-fill
+) {
+  @include button-base;
+
+  @if $style == solid {
+    @include button-style($background, $background-hover, $color);
+  }
+  @else if $style == hollow {
+    @include button-hollow;
+    @include button-hollow-style($background);
+  }
+
+  @if $expand {
+    @include button-expand;
+  }
+}
+
+@mixin foundation-button {
+  .button {
+    @include button;
+
+    // Sizes
+    &.tiny     { font-size: map-get($button-sizes, tiny); }
+    &.small    { font-size: map-get($button-sizes, small); }
+    &.large    { font-size: map-get($button-sizes, large); }
+    &.expanded { @include button-expand; }
+
+    // Colors
+    @each $name, $color in $foundation-colors {
+      @if $button-fill != hollow {
+        &.#{$name} {
+          @include button-style($color, auto);
+        }
+      }
+      @else {
+        &.#{$name} {
+          @include button-hollow-style($color);
+        }
+
+        &.#{$name}.dropdown::after {
+          border-top-color: $color;
+        }
+      }
+    }
+
+    // Hollow style
+    @if $button-fill != hollow {
+      &.hollow {
+        @include button-hollow;
+        @include button-hollow-style;
+
+        @each $name, $color in $foundation-colors {
+          &.#{$name} {
+            @include button-hollow-style($color);
+          }
+        }
+      }
+    }
+
+    // Disabled style
+    &.disabled {
+      @include button-disabled;
+    }
+
+    // Dropdown arrow
+    &.dropdown {
+      @include button-dropdown;
+
+      @if $button-fill == hollow {
+        &::after {
+          border-top-color: $button-background;
+        }
+      }
+    }
+
+    // Button with dropdown arrow only
+    &.arrow-only::after {
+      margin-#{$global-left}: 0;
+      float: none;
+      top: 0.2em;
+    }
+  }
+}

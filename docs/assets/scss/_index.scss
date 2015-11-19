@@ -1,0 +1,31 @@
+// Index used on the... index page.
+
+.docs-big-index {
+  .column a {
+    color: $black;
+  }
+  .column strong {
+    color: $primary-color;
+    font-size: 1.25rem;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+  .column a:hover {
+    color: $primary-color;
+
+    strong {
+      color: lighten($primary-color, 10%);
+    }
+  }
+}
+
+.docs-small-index {
+  ul {
+    list-style-type: none;
+    margin-left: 0;
+  }
+
+  li {
+    margin-bottom: 0.25rem;
+  }
+}

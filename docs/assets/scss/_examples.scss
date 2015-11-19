@@ -1,0 +1,137 @@
+// Style overrides for component examples.
+
+// Grid
+// - - - - - - - - - - - - - - -
+
+.row.display {
+  background: #eee;
+  font-size: 11px;
+  margin-bottom: 10px;
+  line-height: 2rem;
+  border: solid 1px #c6c6c6;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+
+  .columns {
+    &:nth-child(2),
+    &.small-centered,
+    &.large-centered {
+      background: darken(#eee, 5%);
+    }
+
+    &.color-end {
+      background: darken(#eee, 10%)
+    }
+  }
+}
+
+.row.display-end {
+  background: #fff;
+  font-size: 11px;
+  margin-bottom: 10px;
+  line-height: 2rem;
+  border: solid 1px #c6c6c6;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+
+  .columns {
+    background: darken(#eee, 5%);
+    border-left: 1px solid #c6c6c6;
+
+    &.color-end {
+      background: darken(#eee, 10%)
+    }
+  }
+}
+
+// Flex Grid
+// - - - - - - - - - - - - - - -
+
+#docs-flex-grid .docs-code-live {
+  @include foundation-flex-grid;
+  
+  .row {
+    background: #f9f9f9;
+    font-size: 11px;
+    margin-bottom: 10px;
+    line-height: 2rem;
+    border: solid 1px #c6c6c6;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 1.5rem;
+
+    // Disable clearfix
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+
+  .column,
+  .columns {
+    float: none;
+    width: auto;
+    margin-right: -1px; // Not sure why this has to be here
+
+    &:nth-child(odd) {
+      background: #eee;
+    }
+    &:nth-child(even) {
+      background: #ddd;
+    }
+  }
+}
+
+// Modal
+// - - - - - - - - - - - - - - -
+
+.docs-example-modal {
+  display: block;
+  position: static;
+  width: 100%;
+  max-width: none;
+  margin-bottom: 1rem;
+}
+
+// Menu Icon
+// - - - - - - - - - - - - - - -
+
+.docs-example-burger {
+  @include hamburger;
+}
+
+// Off-canvas
+// - - - - - - - - - - - - - - -
+
+body > .off-canvas {
+  padding-top: 2rem;
+}
+
+// Motion UI
+// - - - - - - - - - - - - - - -
+
+.docs-transitions {
+  max-width: 400px;
+}
+
+.docs-transition-demo {
+  @include thumbnail;
+  display: block;
+  max-width: 400px;
+  margin: 0 auto;
+  backface-visibility: hidden;
+}
+
+@include mui-series {
+  #series-example-1 {
+    @include mui-queue(0.5s, 0s, fade, slide(in, up));
+  }
+
+  #series-example-2 {
+    @include mui-queue(0.5s, 0.5s, fade, spin);
+  }
+
+  #series-example-3 {
+    @include mui-queue(0.5s, 0s, fade, hinge(in, bottom));
+  }
+}

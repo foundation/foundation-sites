@@ -1,0 +1,32 @@
+// Styles for Building Blocks previews.
+
+.docs-bb {
+  @include grid-row($behavior: nest);
+  margin-bottom: 1rem;
+}
+
+.docs-bb-thumb {
+  @include grid-col(4);
+
+  a {
+    display: block;
+  }
+  
+  img {
+    border: 1px solid $medium-gray;
+
+    &:hover {
+      border-color: $primary-color;
+    }
+  }
+}
+
+.docs-bb-main {
+  @include grid-col(8);
+
+  h3 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+}

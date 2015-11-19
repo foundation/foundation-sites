@@ -1,0 +1,87 @@
+{
+  "accordion": [
+    "foundation.util.keyboard.js",
+    "foundation.util.motion.js"
+  ],
+  "accordionMenu": [
+    "foundation.util.keyboard.js",
+    "foundation.util.motion.js",
+    "foundation.util.nest.js"
+  ],
+  "drilldown": [
+    "foundation.util.keyboard.js",
+    "foundation.util.motion.js",
+    "foundation.util.nest.js"
+  ],
+  "dropdownMenu": [
+    "foundation.util.keyboard.js",
+    "foundation.util.motion.js",
+    "foundation.util.box.js",
+    "foundation.util.nest.js"
+  ],
+  "dropdown": [
+    "foundation.util.keyboard.js",
+    "foundation.util.box.js",
+    "foundation.util.triggers.js"
+  ],
+  "interchange": [
+    "foundation.util.triggers.js",
+    "foundation.util.timerAndImageLoader.js"
+  ],
+  "magellan": [
+    "foundation.util.motion.js"
+  ],
+  "offcanvas": [
+    "foundation.util.motion.js",
+    "foundation.util.triggers.js"
+  ],
+  "orbit": [
+    "foundation.util.motion.js",
+    "foundation.util.timerAndImageLoader.js",
+    "foundation.util.keyboard.js",
+    "foundation.util.touch.js"
+  ],
+  "responsiveMenu": [
+    "foundation.util.triggers.js",
+    "foundation.util.mediaQuery.js",
+    "foundation.accordionMenu.js",
+    "foundation.drilldown.js",
+    "foundation.dropdownMenu.js",
+    "foundation.util.nest.js"
+  ],
+  "responsiveToggle": [
+    "foundation.util.mediaQuery.js"
+  ],
+  "reveal": [
+    "foundation.util.box.js",
+    "foundation.util.motion.js",
+    "foundation.util.triggers.js",
+    "foundation.util.mediaQuery.js",
+  ],
+  "slider": [
+    "foundation.util.triggers.js",
+    "foundation.util.motion.js",
+    "foundation.util.keyboard.js",
+    "foundation.util.touch.js"
+  ],
+  "sticky": [
+    "foundation.util.triggers.js",
+    "foundation.util.mediaQuery.js"
+  ],
+  "tabs": [
+    "foundation.util.keyboard.js",
+    "foundation.util.timerAndImageLoader.js"
+  ],
+  "toggler": [
+    "foundation.util.motion.js"
+  ],
+  "tooltip": [
+    "foundation.util.box.js",
+    "foundation.util.triggers.js",
+    "foundation.util.mediaQuery.js",
+    "foundation.util.motion.js"
+  ],
+  "motion-ui": [
+    "foundation.util.motion.js"
+  ]
+}

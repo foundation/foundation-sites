@@ -1,0 +1,66 @@
+// Styles for the Sass and JavaScript reference sections.
+
+.docs-variable-table {
+  @include breakpoint(medium down) {
+    @include table-stack;
+  }
+  
+  width: 100%;
+  border: 0;
+
+  thead {
+    border: 0;
+    background: transparent;
+    border-bottom: 2px solid $medium-gray;
+
+    th {
+      text-align: left;
+      white-space: nowrap;
+    }
+  }
+
+  tbody {
+    border: 0;
+  }
+  
+  // Reset code styles to look like plain text
+  code {
+    background: transparent;
+    color: #222;
+    border: 0;
+    padding: 0;
+  }
+
+  // Make the first column's text bold, and don't wrap text
+  td:first-child {
+    white-space: nowrap;
+
+    code {
+      font-weight: bold;
+    }
+  }
+
+  // Don't let key/value pairs in a Sass map wrap
+  .map {
+    white-space: nowrap;
+  }
+
+  // Don't add margin to Markdown-formatted text
+  td > p:last-child {
+    margin-bottom: 0;
+  }
+
+  // For when a cell has the text "None" and no actual value
+  code > span {
+    font-family: $body-font-family;
+  }
+
+  // Prevent hover state
+  tbody tr:hover {
+    background: transparent;
+  }
+
+  tbody tr:nth-of-type(even):hover {
+    background: $light-gray;
+  }
+}

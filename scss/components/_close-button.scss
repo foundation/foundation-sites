@@ -1,0 +1,61 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group close-button
+////
+
+/// Default position of the close button. The first value should be `right` or `left`, and the second value should be `top` or `bottom`.
+/// @type List
+$closebutton-position: right top !default;
+
+/// Right (or left) offset for a close button.
+/// @type Number
+$closebutton-offset-horizontal: 1rem !default;
+
+/// Top (or bottom) offset for a close button.
+/// @type Number
+$closebutton-offset-vertical: 0.5rem !default;
+
+/// Default font size of the close button.
+/// @type Number
+$closebutton-size: 2em !default;
+
+/// The line-height of the close button. It affects the spacing of the element.
+/// @type Number
+$closebutton-lineheight: 1 !default;
+
+/// Default color of the close button.
+/// @type Color
+$closebutton-color: $dark-gray !default;
+
+/// Default color of the close button when being hovered on.
+/// @type Color
+$closebutton-color-hover: $black !default;
+
+/// Adds styles for a close button, using the styles in the settings variables.
+@mixin close-button {
+  $x: nth($closebutton-position, 1);
+  $y: nth($closebutton-position, 2);
+
+  @include disable-mouse-outline;
+  position: absolute;
+  color: $closebutton-color;
+  #{$x}: $closebutton-offset-horizontal;
+  #{$y}: $closebutton-offset-vertical;
+  font-size: $closebutton-size;
+  line-height: $closebutton-lineheight;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    color: $closebutton-color-hover;
+  }
+}
+
+@mixin foundation-close-button {
+  .close-button {
+    @include close-button;
+  }
+}

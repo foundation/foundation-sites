@@ -1,0 +1,110 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group tooltip
+////
+
+/// Default color of the tooltip background.
+/// @type Color
+$tooltip-background-color: $black !default;
+
+/// Default color of the tooltip font.
+/// @type Color
+$tooltip-color: $white;
+
+/// Default padding of the tooltip background.
+/// @type Number
+$tooltip-padding: 0.75rem !default;
+
+/// Default font size of the tooltip text. By default, we recommend a smaller font size than the body copy.
+/// @type Number
+$tooltip-font-size: $small-font-size !default;
+
+/// Default pip width for tooltips.
+/// @type Number
+$tooltip-pip-width: 0.75rem !default;
+
+/// Default pip height for tooltips. This is helpful for calculating the distance of the tooltip from the tooltip word.
+/// @type Number
+$tooltip-pip-height: $tooltip-pip-width * 0.866 !default;
+
+/// Default pip offset for tooltips. This controls how far the pip is indented from the left edge of the tooltip.
+/// @type Number
+$tooltip-pip-offset: 1.25rem !default;
+
+/// Default radius for tooltips.
+/// @type Number
+$tooltip-radius: $global-radius !default;
+
+@mixin has-tip {
+  border-bottom: dotted 1px $dark-gray;
+  font-weight: bold;
+  position: relative;
+  display: inline-block;
+
+  &:hover {
+    cursor: help;
+  }
+}
+
+@mixin tooltip {
+  background-color: $tooltip-background-color;
+  color: $tooltip-color;
+  font-size: $tooltip-font-size;
+  padding: $tooltip-padding;
+  position: absolute;
+  z-index: 10;
+  top: calc(100% + #{$tooltip-pip-height});
+  max-width: 10rem !important;
+  border-radius: $tooltip-radius;
+  // visibility: hidden;
+
+  &::before {
+    @include css-triangle($tooltip-pip-width, $tooltip-background-color, up);
+    bottom: 100%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &.top {
+    &::before {
+      @include css-triangle($tooltip-pip-width, $tooltip-background-color, down);
+      top: 100%;
+      bottom: auto;
+    }
+  }
+
+  &.left {
+    &::before {
+      @include css-triangle($tooltip-pip-width, $tooltip-background-color, right);
+      bottom: auto;
+      left: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  &.right {
+    &::before {
+      @include css-triangle($tooltip-pip-width, $tooltip-background-color, left);
+      bottom: auto;
+      left: auto;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+@mixin foundation-tooltip {
+  .has-tip {
+    @include has-tip;
+  }
+
+  .tooltip {
+    @include tooltip;
+  }
+}

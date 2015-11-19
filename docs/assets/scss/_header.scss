@@ -1,0 +1,71 @@
+// Styles specific to the layout of the docs are here.
+
+.docs-header {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  max-width: none;
+}
+
+.docs-site-title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0;
+  display: inline-block;
+  margin-right: 1rem;
+
+  a {
+    color: $black;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
+  em {
+    font-style: normal;
+    font-weight: normal;
+    color: $dark-gray;
+  }
+}
+
+.docs-header-link {
+  position: relative;
+  color: $white;
+  font-weight: bold;
+  padding-right: 16px;
+  font-size: 0.75rem;
+  display: block;
+  margin-top: 0.5rem;
+
+  &::after {
+    @include css-triangle(5px, $white, down);
+    position: absolute;
+    top: 3px;
+    right: 0;
+  }
+
+  &:hover {
+    opacity: 0.75
+  }
+
+  @include breakpoint(medium) {
+    font-size: 1rem;
+    float: right;
+    margin-top: 4px;
+
+    &::after {
+      top: 6px;
+    }
+  }
+}
+
+.docs-versions-menu {
+  background: #fff;
+  width: 200px;
+  box-shadow: 0 2px 10px rgba($black, 0.25);
+  position: absolute;
+  top: 5.3rem;
+  right: 0;
+  z-index: 1;
+}
+  

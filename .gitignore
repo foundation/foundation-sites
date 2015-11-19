@@ -14,11 +14,12 @@
 .idea
 .sass-cache/*
 .yardoc
+_build
 
 bower_components
-dist
+bundle
+build/*
 /docs2/public/*
-vendor
 _yardoc
 coverage
 docs/public/*
@@ -29,11 +30,9 @@ node_modules
 pkg
 rdoc
 spec/reports
+npm-debug.log
+_debug.json
 
-test/
-test/.sass-cache/*
-test/css
-test/css/styles.css
 *.orig
 node_modules
 docs/public/*
@@ -47,8 +46,9 @@ test/scss/output-test
 test/tmp
 test/version_tmp
 tmp
-
+testing/_build
 
 pizza/
+data.json
 docs/*
 npm-debug.log

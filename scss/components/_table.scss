@@ -1,0 +1,212 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+// scss-lint:disable MergeableSelector, QualifyingElement
+
+////
+/// @group table
+////
+
+/// Defualt color for table background.
+/// @type Color
+$table-background: $white  !default;
+
+/// Defualt scale for darkening the striped table rows and the table border.
+/// @type Number
+$table-color-scale: 5% !default;
+
+/// Defualt style for table border.
+/// @type List
+$table-border: 1px solid smart-scale($table-background, $table-color-scale) !default;
+
+/// Defualt padding for table.
+/// @type Number
+$table-padding: rem-calc(8 10 10) !default;
+
+/// Defualt scale for darkening the table rows on hover.
+/// @type Number
+$table-hover-scale: 2% !default;
+
+/// Defualt color of standard rows on hover.
+/// @type List
+$table-row-hover: darken($table-background, $table-hover-scale) !default;
+
+/// Defualt color of striped rows on hover.
+/// @type List
+$table-row-stripe-hover: darken($table-background, $table-color-scale + $table-hover-scale) !default;
+
+/// Defualt background color for striped rows.
+/// @type Color
+$table-striped-background: smart-scale($table-background, $table-color-scale) !default;
+
+/// Defualt value for showing the stripe on rows of the tables, excluding the header and footer If even, the even rows will have a background color. If odd, the odd rows will have a background color. If empty, or anyother value, the table rows will have no striping.
+/// @type Keyoword
+$table-stripe: even !default;
+
+/// Defualt color for header background.
+/// @type Color
+$table-head-background: smart-scale($table-background, $table-color-scale / 2) !default;
+
+/// Defualt color for footer background.
+/// @type Color
+$table-foot-background: smart-scale($table-background, $table-color-scale) !default;
+
+/// Defualt font color for header.
+/// @type Color
+$table-head-font-color: $body-font-color !default;
+
+/// Defualt value for showing the header when using stacked tables.
+/// @type Boolean
+$show-header-for-stacked: false;
+
+/// Adds the general styles for tables.
+/// @param {Keyword} $stripe [$table-stripe] - Uses kewords even, odd, or none to darken rows of the table. The defualt value is even.
+@mixin table($stripe: $table-stripe) {
+  margin-bottom: $global-margin;
+  border-radius: $global-radius;
+
+  @at-root {
+    thead,
+    tbody,
+    tfoot {
+      border: $table-border;
+      background-color: $table-background;
+    }
+
+    // Caption
+    caption {
+      font-weight: $global-weight-bold;
+      padding: $table-padding;
+    }
+
+    // Table head and foot
+    thead,
+    tfoot {
+      background: $table-head-background;
+      color: $table-head-font-color;
+
+      // Rows within head and foot
+      tr {
+        background: transparent;
+      }
+
+      // Cells within head and foot
+      th,
+      td {
+        padding: $table-padding;
+        font-weight: $global-weight-bold;
+        text-align: #{$global-left};
+      }
+    }
+
+    // Table rows
+    tbody {
+      tr {
+        // If stripe is set to even, darken the even rows.
+        @if $stripe == even {
+          &:nth-child(even) {
+            background-color: $table-striped-background;
+          }
+        }
+
+        // If stripe is set to odd, darken the odd rows.
+        @else if $stripe == odd {
+          &:nth-child(odd) {
+            background-color: $table-striped-background;
+          }
+        }
+      }
+
+      th,
+      td {
+        padding: $table-padding;
+      }
+    }
+  }
+}
+
+/// Adds the ability to horizontally scroll the table when the content overflows horizontally.
+@mixin table-scroll {
+  display: block;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+/// Slightly darkens the table rows on hover.
+@mixin table-hover {
+  tr {
+    //Darkens the non-striped table rows on hover.
+    &:hover {
+      background-color: $table-row-hover;
+    }
+
+    //Darkens the even striped table rows.
+    @if($table-stripe == even) {
+      &:nth-of-type(even):hover {
+        background-color: $table-row-stripe-hover;
+      }
+    }
+
+    //Darkens the odd striped table rows.
+    @elseif($table-stripe == odd) {
+      &:nth-of-type(odd):hover {
+        background-color: $table-row-stripe-hover;
+      }
+    }
+  }
+}
+
+/// Adds styles for a stacked table. Useful for small-screen layouts.
+/// @param {Boolean} $header [$show-header-for-stacked] - Show the first th of header when stacked.
+@mixin table-stack($header: $show-header-for-stacked) {
+  @if $header {
+    thead {
+      th:first-child {
+        display: block;
+      }
+
+      th {
+        display: none;
+      }
+    }
+  } @else {
+    thead {
+      display: none;
+    }
+  }
+
+  tfoot {
+    display: none;
+  }
+
+  tr,
+  th,
+  td {
+    display: block;
+  }
+
+  td {
+    border-top: 0;
+  }
+}
+
+@mixin foundation-table {
+  table {
+    @include table;
+  }
+
+  table.stack {
+    @include breakpoint(medium down) {
+      @include table-stack;
+    }
+  }
+
+  table.scroll {
+    @include table-scroll;
+  }
+
+  table.hover {
+    @include table-hover;
+  }
+}

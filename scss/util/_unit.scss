@@ -1,0 +1,69 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group functions
+////
+
+// scss-lint:disable ZeroUnit
+
+/// Defines the base font size of the page, which is the value `1rem` is equal to.
+/// @type Number
+/// @group global
+$rem-base: 16px !default;
+
+/// Removes the unit (e.g. px, em, rem) from a value, returning the number only.
+/// @param {Number} $num - Number to strip unit from.
+/// @returns {Number} The same number, sans unit.
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+/// Converts one or more pixel values into matching rem values.
+/// @param {Number|List} $values - One or more values to convert. Be sure to separate them with spaces and not commas. If you need to convert a comma-separated list, wrap the list in parentheses.
+/// @param {Number} $base [$rem-base] - The base value to use when calculating the `rem`. If you're using Foundation out of the box, this is 16px.
+/// @returns {List} A list of converted values.
+@function rem-calc($values, $base: $rem-base) {
+  $rem-values: ();
+  $count: length($values);
+
+  @if $base == null {
+    $base: $rem-base;
+  }
+
+  @if $count == 1 {
+    @return -zf-to-rem($values, $base);
+  }
+
+  @for $i from 1 through $count {
+    $rem-values: append($rem-values, -zf-to-rem(nth($values, $i), $base));
+  }
+
+  @return $rem-values;
+}
+
+// Converts a unitless, pixel, or rem value to em, for use in breakpoints.
+@function -zf-bp-to-em($value) {
+  // Pixel and unitless values are converted to rems
+  @if unit($value) == 'px' or unit($value) == '' {
+    $value: rem-calc($value);
+  }
+
+  // Then the value is converted to ems
+  @return strip-unit($value) * 1em;
+}
+
+/// Converts a pixel value to matching rem value. *Any* value passed, regardless of unit, is assumed to be a pixel value. By default, the base pixel value used to calculate the rem value is taken from the `$rem-base` variable.
+/// @param {Number} $value - Pixel value to convert.
+/// @returns {Number} A number in rems, calculated based on the given value and the base pixel value. rem values are passed through as is.
+/// @access private
+@function -zf-to-rem($value, $base: $rem-base) {
+  // Calculate rem if units for $value is not rem
+  @if (unit($value) != 'rem') {
+    $value: strip-unit($value) / strip-unit($base) * 1rem;
+  }
+  // Turn 0rem into 0
+  @if ($value == 0rem) { $value: 0; }
+  @return $value;
+}

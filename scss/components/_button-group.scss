@@ -1,0 +1,115 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group button-group
+////
+
+/// Margin for button groups.
+/// @type Number
+$buttongroup-margin: 1rem;
+
+/// Margin between buttons in a button group.
+/// @type Border
+$buttongroup-spacing: 1px;
+
+/// Selector for the buttons inside a button group.
+/// @type String
+$buttongroup-child-selector: '.button';
+
+/// Maximum number of buttons that can be in an even-width button group.
+/// @type Number
+$buttongroup-expand-max: 6;
+
+/// Add styles for a button group container.
+/// @param {String} $child-selector [$buttongroup-child-selector] - Selector for the buttons inside a button group.
+@mixin button-group(
+  $child-selector: $buttongroup-child-selector
+) {
+  @include clearfix;
+  margin-bottom: $buttongroup-margin;
+  font-size: map-get($button-sizes, default);
+
+  #{$child-selector} {
+    float: #{$global-left};
+    margin: 0;
+    font-size: inherit;
+
+    &:not(:last-child) {
+      border-#{$global-right}: $buttongroup-spacing solid $body-background;
+    }
+  }
+}
+
+/// Creates a full-width button group, making each button equal width.
+/// @param {Keyword|Number} $count [auto] - Number of buttons inside the button group. Set to `auto` to generate CSS that will account for a variable number of buttons.
+/// @param {String} $selector [$buttongroup-child-selector] - Selector for the buttons inside a button group.
+@mixin button-group-expand(
+  $count: auto,
+  $selector: $buttongroup-child-selector
+) {
+  #{$selector} {
+    @if $count == auto {
+      @include auto-width($buttongroup-expand-max, $selector);
+    }
+    @else if type-of($count) == 'number' {
+      width: percentage(1 / $count);
+    }
+  }
+}
+
+/// Stacks the buttons in a button group.
+/// @param {String} $selector [$buttongroup-child-selector] - Selector for the buttons inside the button group.
+@mixin button-group-stack(
+  $selector: $buttongroup-child-selector
+) {
+  #{$selector} {
+    width: 100%;
+    border-#{$global-right}: 0;
+  }
+}
+
+/// Un-stacks the buttons in a button group.
+/// @param {String} $selector [$buttongroup-child-selector] - Selector for the buttons inside the button group.
+@mixin button-group-unstack(
+  $selector: $buttongroup-child-selector
+) {
+  #{$selector} {
+    width: auto;
+
+    &:not(:last-child) {
+      border-#{$global-right}: $buttongroup-spacing solid $body-background;
+    }
+  }
+}
+
+@mixin foundation-button-group {
+  .button-group {
+    @include button-group;
+
+    // Sizes
+    &.tiny     { font-size: map-get($button-sizes, tiny); }
+    &.small    { font-size: map-get($button-sizes, small); }
+    &.large    { font-size: map-get($button-sizes, large); }
+    &.expanded { @include button-group-expand; }
+
+    // Colors
+    @each $name, $color in $foundation-colors {
+      &.#{$name} #{$buttongroup-child-selector} {
+        @include button-style($color, auto, auto);
+      }
+    }
+
+    &.stacked,
+    &.stacked-for-small {
+      @include button-group-stack;
+    }
+
+    &.stacked-for-small {
+      @include breakpoint(medium) {
+        @include button-group-unstack;
+      }
+    }
+  }
+}

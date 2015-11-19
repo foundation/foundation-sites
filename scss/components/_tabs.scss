@@ -1,0 +1,137 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group tabs
+////
+
+/// Default margin of the tab bar.
+/// @type Number
+$tab-margin: 0 !default;
+
+/// Default background color of a tab bar.
+/// @type Color
+$tab-background: $white;
+
+/// active background color of a tab bar.
+/// @type Color
+$tab-background-active: $light-gray;
+
+/// Default border color of tab content.
+/// @type Color
+$tab-border: $light-gray !default;
+
+/// Default text color for items in a Menu.
+/// @type Color
+$tab-item-color: foreground($tab-background, $primary-color);
+
+/// Default background color on hover for items in a Menu.
+$tab-item-background-hover: $white !default;
+
+/// Default padding of a a tab item.
+/// @type Number
+$tab-item-padding: 1.25rem 1.5rem !default;
+
+/// Maximum number of `expand-n` classes to include in the CSS.
+/// @type Number
+$tab-expand-max: 6 !default;
+
+/// Default background color of tab content.
+/// @type Color
+$tab-content-background: $white !default;
+
+/// Default border color of tab content.
+/// @type Color
+$tab-content-border: $light-gray !default;
+
+/// Default text color of tab content.
+/// @type Color
+$tab-content-color: foreground($tab-background, $primary-color);
+
+/// Default padding for tab content.
+/// @type Number | List
+$tab-content-padding: 1rem !default;
+
+@mixin foundation-tabs {
+  .tabs {
+    @include clearfix;
+    margin: $tab-margin;
+    list-style-type: none;
+    background: $tab-background;
+    border: 1px solid $tab-content-border;
+
+    // Simple
+    &.simple {
+      > li > a {
+        padding: 0;
+
+        &:hover {
+          background: transparent;
+        }
+      }
+    }
+
+    // Vertical
+    &.vertical {
+      > li {
+        width: auto;
+        float: none;
+        display: block;
+      }
+    }
+
+    // Primary color
+    &.primary {
+      background: $primary-color;
+
+      > li > a {
+        color: foreground($primary-color);
+
+        &:hover,
+        &:focus {
+          background: smart-scale($primary-color);
+        }
+      }
+    }
+  }
+
+  .tabs-title {
+    float: #{$global-left};
+
+    > a {
+      display: block;
+      padding: $tab-item-padding;
+      line-height: 1;
+      font-size: 12px;
+      color: $tab-item-color;
+
+      &:hover,
+      &:focus,
+      &[aria-selected="true"] {
+        background: $tab-background-active;
+      }
+    }
+  }
+
+  .tabs-content {
+    background: $tab-content-background;
+    transition: all 0.5s ease;
+    border: 1px solid $tab-content-border;
+    border-top: 0;
+
+    &.vertical {
+      border: 1px solid $tab-content-border;
+      border-#{$global-left}: 0;
+    }
+  }
+
+  .tabs-panel {
+    display: none;
+    padding: $tab-content-padding;
+
+    &.is-active {
+      display: block;
+    }
+  }
+}
