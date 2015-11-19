@@ -58,6 +58,7 @@ $slider-transition: all 0.2s ease-in-out !default;
   background-color: $slider-background;
   cursor: pointer;
   user-select: none;
+  touch-action: none;
 }
 
 /// Adds the general styles for active fill for sliders.
