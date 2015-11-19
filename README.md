@@ -1,8 +1,8 @@
-# [Foundation for Sites](http://foundation.zurb.com) (Public Beta)
+# [Foundation for Sites](http://foundation.zurb.com) (v6.0)
 
-This is the in-development version of Foundation for Sites 6.0. 
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/zurb/foundation-sites?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/zurb/foundation-sites-6?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+Foundation is the most advanced responsive front-end framework in the world. Quickly go from prototype to production, building sites or apps that work on any kind of device with Foundation. Includes layout constructs, like a fully customizable, responsive grid, commonly used JavaScript plugins, and full A11Y support.
 
 ## Requirements
 
@@ -14,35 +14,35 @@ The Sass is compiled using libsass, which requires the GCC to be installed on yo
 
 To get going with Foundation you can:
 
-  * [Download the latest release](http://foundation.zurb.com/develop/download.html)
-  * [Install with Bower](http://bower.io): `bower install foundation`
+  * [Download the latest release](http://foundation.zurb.com/sites/download.html)
+  * [Install with Bower](http://bower.io): `bower install foundation-sites`
   * [Install with npm](http://npmjs.com): `npm install foundation-sites`
+  * [Install with Atmosphere for Meteor](https://atmospherejs.com): `meteor add zurb:foundation-sites`
+  * [Install with Composer](https://getcomposer.org/): `php composer.phar require zurb/foundation-sites`
 
 ## Documentation
 
-Foundation uses [Assemble.io](http://assemble.io) and [Grunt](http://gruntjs.com/) to generate its [documentation pages](http://foundation.zurb.com/docs). Documentation can also be run from your local computer:
+Foundation uses [Gulp](http://gulpjs.com/) and [SuperCollider](https://www.npmjs.com/package/supercollider) to generate its [documentation pages](http://foundation.zurb.com/sites/docs). Documentation can also be run from your local computer:
 
 ### View documentation locally
 
 You'll want to clone the Foundation repo first and install all the dependencies. You can do this using the following commands:
 
 ```
-git clone git@github.com:zurb/foundation.git
-cd foundation
-npm install -g grunt-cli bower
+git clone git@github.com:zurb/foundation-sites.git
+cd foundation-sites
 npm install
-bower install
-bundle install
 ```
 
-Then just run `grunt build` and the documentation will be compiled:
+Then just run `npm start` and the documentation will be compiled. It will also launch an instance of [BrowserSync](http://www.browsersync.io/) and open a tab in your default browser.
+The file structure:
 
 ```
 foundation/
 ├── dist/
 │   └── ...
-├────── docs/
-│       └── ...
+├── docs/
+│   └── ...
 ```
 
 Copyright (c) 2015 ZURB, inc.
