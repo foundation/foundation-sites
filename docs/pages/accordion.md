@@ -5,16 +5,6 @@ sass: scss/components/_accordion.scss
 js: js/foundation.accordion.js
 ---
 
-
-<div class="alert callout">
-  <h5>Known Issues</h5>
-  <ul>
-    <li>None Currently. File an issue if you see something wrong.</li>
-  </ul>
-</div>
-
-
-
 ## Basics
 
 The container for an accordion needs the class `.accordion`, and the attributes `data-accordion` and `role="tablist"`. Note that in these examples, we use a `<ul>`, but you can use any element you want.

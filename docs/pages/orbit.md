@@ -9,14 +9,6 @@ tags:
   - carousel
 ---
 
-<div class="alert callout">
-  <h5>Known Issues</h5>
-  <ul>
-    <li>Images sometimes vanish from the view/script, throwing errors and breaking things.</li>
- </ul>
-</div>
-
-
 ## Basic Orbit Slider
 
 <!-- ``` -->

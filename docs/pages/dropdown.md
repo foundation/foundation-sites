@@ -5,13 +5,6 @@ sass: scss/components/_dropdown.scss
 js: js/foundation.dropdown.js
 ---
 
-<div class="alert callout">
-  <h5>Known Issues</h5>
-  <ul>
-    <li>Sometimes has sizing issues on open.</li>
-  </ul>
-</div>
-
 <div class="primary callout">
   <p>You might be looking for <a href="dropdown-menu.html">dropdown menus</a>, which are a separate plugin.</p>
 </div>

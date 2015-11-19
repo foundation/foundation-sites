@@ -5,8 +5,8 @@ sass: scss/components/_dropdown-menu.scss
 js: js/dropdownMenu.js
 ---
 
-
 ## Horizontal
+
 By default, dropdowns are exactly that, horizontally oriented below the parent element, opened by hovering, clicking, or tapping.
 
 ```html_example

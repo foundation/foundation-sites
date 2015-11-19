@@ -5,15 +5,6 @@ scss: scss/components/_drilldown.scss
 js: js/foundation.drilldown.js
 ---
 
-
-<div class="alert callout">
-  <h5>Known Issues</h5>
-  <ul>
-    <li>Needs an option and method for breadcrumbing? Feedback request.</li>
-    <li>Needs directional arrows for items with submenus.</li>
-</div>
-
-
 ## Basics
 
 Drilldowns use the standard [Menu](menu.html) syntax. Add the attribute `data-drilldown` to the root `<ul>`, and `data-submenu` to each nested menu.

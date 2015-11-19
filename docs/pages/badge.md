@@ -4,13 +4,6 @@ description: The badge is a basic component that displays a number. It's useful 
 sass: scss/components/_badge.scss
 ---
 
-<div class="callout alert">
-  <h5>Known Issues</h5>
-  <ul>
-    <li>In some browsers, the badge doesn't render as a perfect circle with one character.</li>
-  </ul>
-</div>
-
 ## Basics
 
 Add the `.badge` class to an element to create a badge.

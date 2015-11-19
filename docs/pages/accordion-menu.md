@@ -5,13 +5,6 @@ js: js/foundation.accordionMenu.js
 description: Change a basic vertical Menu into a expandable accordion menu with the Accordion Menu plugin.
 ---
 
-<div class="alert callout">
-  <h5>Known Issues</h5>
-  <ul>
-    <li>Needs directional arrows.</li>
-  </ul>
-</div>
-
 ```html_example
 <ul class="vertical menu" data-accordion-menu>
   <li>

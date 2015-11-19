@@ -5,14 +5,6 @@ sass: scss/components/_sticky.scss
 js: js/foundation.sticky.js
 ---
 
-<div class="alert callout">
-  <h5>Known Issues</h5>
-  <ul>
-    <li><em>Future Feature:</em> Needs method for elements to be sticky on the top of the viewport when scrolling down, and if the lower breakpoint is reached, stick to bottom on scroll up.</li>
-    <li>Seems to have a problem with short elements: < 2x the sticky element's height or so.</li>
-  </ul>
-</div>
-
 ## Basics
 
 Add the `.sticky` class and `[data-sticky]` to an element to create something that sticks. Sticky elements must be wrapped in a container, which will determine your sizing and grid layout, with `[data-sticky-container]`.
