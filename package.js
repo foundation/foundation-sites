@@ -1,19 +1,17 @@
 Package.describe({
   name: 'zurb:foundation-sites',
   summary: 'The most advanced responsive front-end framework in the world.',
-  version: '6.0.0',
-  git: 'https://github.com/zurb/foundation-sites.git'
+  version: '6.0.1',
+  git: 'https://github.com/zurb/foundation-sites.git',
+  documentation: 'meteor-README.md'
 });
 
 Package.onUse(function(api) {
   api.versionsFrom('1.2.1');
   api.imply('fourseven:scss@3.4.1');
   api.use(['ecmascript', 'jquery@1.11.4', 'fourseven:scss@3.4.1'], 'client');
+  api.addFiles('dist/foundation.js', 'client');
   api.addFiles([
-    'dist/foundation.css',
-    'dist/foundation.min.css',
-    'dist/foundation.js',
-    'dist/foundation.min.js',
 
     'scss/foundation.scss',
     'scss/_global.scss',
@@ -32,7 +30,6 @@ Package.onUse(function(api) {
     'scss/components/_dropdown.scss',
     'scss/components/_flex-video.scss',
     'scss/components/_float.scss',
-    'scss/components/_joyride.scss',
     'scss/components/_label.scss',
     'scss/components/_media-object.scss',
     'scss/components/_menu.scss',
@@ -87,5 +84,5 @@ Package.onUse(function(api) {
     'scss/util/_value.scss',
 
     'scss/vendor/normalize.scss',
-  ], 'client');
+  ], 'client', {isImport: true});
 });
