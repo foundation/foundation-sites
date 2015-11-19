@@ -132,6 +132,7 @@ var Foundation = {
    * @returns {String} - unique id
    */
   GetYoDigits: function(length, namespace){
+    length = length || 6;
     return Math.round((Math.pow(36, length + 1) - Math.random() * Math.pow(36, length))).toString(36).slice(1) + (namespace ? '-' + namespace : '');
   },
   /**
@@ -171,22 +172,32 @@ var Foundation = {
     });
   },
   getFnName: functionName,
-  transitionend: (function() {
+  transitionend: function($elem){
     var transitions = {
       'transition': 'transitionend',
       'WebkitTransition': 'webkitTransitionEnd',
       'MozTransition': 'transitionend',
       'OTransition': 'otransitionend'
     };
-    var elem = document.createElement('div');
+    var elem = document.createElement('div'),
+        end;
 
     for (var t in transitions){
       if (typeof elem.style[t] !== 'undefined'){
-        return transitions[t];
+        end = transitions[t];
       }
     }
-  })()
+    if(end){
+      return end;
+    }else{
+      end = setTimeout(function(){
+        $elem.triggerHandler('transitionend', [$elem]);
+      }, 1);
+      return 'transitionend';
+    }
+  }
 };
+
 
 Foundation.util = {
   /**
@@ -246,10 +257,10 @@ var foundation = function(method) {
         });
       }
     }else{//error for no class or no method
-      throw new Error("We're sorry, " + method + " is not an available method for " + (plugClass ? functionName(plugClass) : 'this element') + '.');
+      throw new ReferenceError("We're sorry, '" + method + "' is not an available method for " + (plugClass ? functionName(plugClass) : 'this element') + '.');
     }
   }else{//error for invalid argument type
-    throw new Error("We're sorry, " + type + " is not a valid argument. You must use a string representing the method you wish to invoke.");
+    throw new TypeError("We're sorry, '" + type + "' is not a valid parameter. You must use a string representing the method you wish to invoke.");
   }
   return this;
 };
@@ -259,8 +270,8 @@ $.fn.foundation = foundation;
 
 // Polyfill for requestAnimationFrame
 (function() {
-  if (!Date.now)
-    Date.now = function() { return new Date().getTime(); };
+  if (!Date.now || !window.Date.now)
+    window.Date.now = Date.now = function() { return new Date().getTime(); };
 
   var vendors = ['webkit', 'moz'];
   for (var i = 0; i < vendors.length && !window.requestAnimationFrame; ++i) {
@@ -283,12 +294,18 @@ $.fn.foundation = foundation;
   /**
    * Polyfill for performance.now, required by rAF
    */
-  window.performance = (window.performance || {
-    start: Date.now(),
-    now: function(){
-        return Date.now() - this.start;
-    }
-  });
+  if(!window.performance || !window.performance.now){
+    window.performance = {
+      start: Date.now(),
+      now: function(){ return Date.now() - this.start; }
+    };
+  }
+  // window.performance = (window.performance || {
+  //   start: Date.now(),
+  //   now: function(){
+  //       return Date.now() - this.start;
+  //   }
+  // });
 })();
 
 // Polyfill to get the name of a function in IE9
@@ -848,7 +865,7 @@ function animate(isIn, element, animation, cb) {
   // });
 
   // Clean up the animation when it finishes
-  element.one(Foundation.transitionend, finish);//.one('finished.zf.animate', finish);
+  element.one(Foundation.transitionend(element), finish);//.one('finished.zf.animate', finish);
 
   // Hides the element (for out animations), resets the element, and runs a callback
   function finish() {
@@ -906,13 +923,14 @@ Foundation.Motion = Motion;
       type = type || 'zf';
       var items = menu.find('li').attr({'role': 'menuitem'}),
           subMenuClass = 'is-' + type + '-submenu',
-          subItemClass = subMenuClass + '-item';
+          subItemClass = subMenuClass + '-item',
+          hasSubClass = 'is-' + type + '-submenu-parent';
 
       items.each(function(){
         var $item = $(this),
             $sub = $item.children('ul');
         if($sub.length){
-          $item.addClass('has-submenu');
+          $item.addClass('has-submenu ' + hasSubClass);
           $sub.addClass('submenu ' + subMenuClass).attr('data-submenu', '');
         }
         if($item.parent('[data-submenu]').length){
@@ -924,12 +942,13 @@ Foundation.Motion = Motion;
     Burn: function(menu, type){
       var items = menu.find('li').removeAttr('tabindex'),
           subMenuClass = 'is-' + type + '-submenu',
-          subItemClass = subMenuClass + '-item';
+          subItemClass = subMenuClass + '-item',
+          hasSubClass = 'is-' + type + '-submenu-parent';
 
       // menu.find('.is-active').removeClass('is-active');
       menu.find('*')
       // menu.find('.' + subMenuClass + ', .' + subItemClass + ', .is-active, .has-submenu, .is-submenu-item, .submenu, [data-submenu]')
-          .removeClass(subMenuClass + ' ' + subItemClass + ' has-submenu is-submenu-item submenu is-active')
+          .removeClass(subMenuClass + ' ' + subItemClass + ' ' + hasSubClass + ' has-submenu is-submenu-item submenu is-active')
           .removeAttr('data-submenu').css('display', '');
 
       // console.log(      menu.find('.' + subMenuClass + ', .' + subItemClass + ', .has-submenu, .is-submenu-item, .submenu, [data-submenu]')
@@ -1369,6 +1388,7 @@ Foundation.Motion = Motion;
 */
 
 !function(Foundation, $) {
+  'use strict';
   // Elements with [data-open] will reveal a plugin that supports it when clicked.
   $(document).on('click.zf.trigger', '[data-open]', function() {
     var id = $(this).data('open');
@@ -1406,61 +1426,20 @@ Foundation.Motion = Motion;
   });
 
 
-//chris's testing things----------------
-
-
-
-  //trying to reposition elements on resize
-  //********* only fires when all other scripts have loaded *********
-  /**
-   * Fires once after all other scripts have loaded
-   * @function
-   * @private
-   */
-  $(window).load(function(){
-    // checkWatchers(null);
+  var checkListeners = function(){
+    eventsListener();
     resizeListener();
     scrollListener();
     closemeListener();
-  });
-
+  };
   /**
-   * Checks the global Foundation object for instantiated plugins.
-   * @function
-   * @param {String|Array} plugs - Name or array of names of plugins the user would like to add to the list of plugins to watch on window resize
-   * @throws Plugin#error
-   */
-  // function checkWatchers(plugs) {
-  //   var plugins = Foundation._plugins,
-  //       pluginsToWatch = ['accordion-menu', 'drilldown', 'dropdown-menu', 'dropdown', 'slider', 'reveal', 'sticky', 'tooltip'];
-  //   if(plugs){
-  //     if(typeof plugs === 'array' && typeof plugs[0] === 'string'){
-  //       pluginsToWatch = pluginsToWatch.concat(plugs);
-  //     }else if(typeof plugs === 'string'){
-  //       pluginsToWatch.push(plugs)
-  //     }else{
-  //       /**
-  //        * Logs error if plugs is not a string or array.
-  //        * @event Plugin#error
-  //        */
-  //       console.error('Plugin names must be strings');
-  //     }
-  //   }
-  //   var counter = pluginsToWatch.length,
-  //       watching = false;
-  //
-  //   while(counter){
-  //     if(plugins[pluginsToWatch[counter - 1]]){
-  //       watching = true;
-  //     }else{
-  //       pluginsToWatch.splice(counter - 1, 1);
-  //     }
-  //     --counter;
-  //     if(!counter && watching){
-  //       resizeListener(pluginsToWatch);
-  //     }
-  //   }
-  // }
+  * Fires once after all other scripts have loaded
+  * @function
+  * @private
+  */
+  $(window).load(function(){
+    checkListeners();
+  });
 
   //******** only fires this function once on load, if there's something to watch ********
   var closemeListener = function(pluginName){
@@ -1490,53 +1469,134 @@ Foundation.Motion = Motion;
 
           _this.triggerHandler('close.zf.trigger', [_this]);
         });
-
       });
     }
   };
   var resizeListener = function(debounce){
-    var timer, i, len,
-        nodes = $('[data-resize]');
-    if(nodes.length){
+    var timer,
+        $nodes = $('[data-resize]');
+    if($nodes.length){
       $(window).off('resize.zf.trigger')
-        .on('resize.zf.trigger', function(e){
-          if(timer){ clearTimeout(timer); }
+      .on('resize.zf.trigger', function(e) {
+        if (timer) { clearTimeout(timer); }
 
-          timer = setTimeout(function(){
-
-            for(i = 0, len = nodes.length; i < len; i++){
-              var $elem = $(nodes[i]);
-              $elem.triggerHandler('resizeme.zf.trigger', [$elem]);
-            }
-          }, debounce || 10);//default time to emit resize event
+        timer = setTimeout(function() {
+          //trigger all listening elements and signal a resize event
+          $nodes.attr('data-events', "resize");
+        }, debounce || 10);//default time to emit resize event
       });
     }
   };
   var scrollListener = function(debounce){
-    var timer, i, len,
-        nodes = $('[data-scroll]');
-    if(nodes.length){
+    var timer,
+        $nodes = $('[data-scroll]');
+    if($nodes.length){
       $(window).off('scroll.zf.trigger')
-        .on('scroll.zf.trigger', function(e){
-          if(timer){ clearTimeout(timer); }
+      .on('scroll.zf.trigger', function(e){
+        if(timer){ clearTimeout(timer); }
 
-          timer = setTimeout(function(){
-
-            for(i = 0, len = nodes.length; i < len; i++){
-              var $elem = $(nodes[i]);
-              $elem.triggerHandler('scrollme.zf.trigger', [$elem, window.scrollY]);
-            }
-          }, debounce || 50);//default time to emit scroll event
+        timer = setTimeout(function(){
+          //trigger all listening elements and signal a scroll event
+          $nodes.attr('data-events', "scroll");
+        }, debounce || 10);//default time to emit scroll event
       });
     }
   };
-// ------------------------------------
+  // function domMutationObserver(debounce) {
+  //   // !!! This is coming soon and needs more work; not active  !!! //
+  //   var timer,
+  //   nodes = document.querySelectorAll('[data-mutate]');
+  //   //
+  //   if (nodes.length) {
+  //     // var MutationObserver = (function () {
+  //     //   var prefixes = ['WebKit', 'Moz', 'O', 'Ms', ''];
+  //     //   for (var i=0; i < prefixes.length; i++) {
+  //     //     if (prefixes[i] + 'MutationObserver' in window) {
+  //     //       return window[prefixes[i] + 'MutationObserver'];
+  //     //     }
+  //     //   }
+  //     //   return false;
+  //     // }());
+  //
+  //
+  //     //for the body, we need to listen for all changes effecting the style and class attributes
+  //     var bodyObserver = new MutationObserver(bodyMutation);
+  //     bodyObserver.observe(document.body, { attributes: true, childList: true, characterData: false, subtree:true, attributeFilter:["style", "class"]});
+  //
+  //
+  //     //body callback
+  //     function bodyMutation(mutate) {
+  //       //trigger all listening elements and signal a mutation event
+  //       if (timer) { clearTimeout(timer); }
+  //
+  //       timer = setTimeout(function() {
+  //         bodyObserver.disconnect();
+  //         $('[data-mutate]').attr('data-events',"mutate");
+  //       }, debounce || 150);
+  //     }
+  //   }
+  // }
+  var eventsListener = function() {
+    var nodes = document.querySelectorAll('[data-resize], [data-scroll], [data-mutate]');
+
+    if (nodes.length) {
+
+      var MutationObserver = (function () {
+        var prefixes = ['WebKit', 'Moz', 'O', 'Ms', ''];
+        for (var i=0; i < prefixes.length; i++) {
+          if (prefixes[i] + 'MutationObserver' in window) {
+            return window[prefixes[i] + 'MutationObserver'];
+          }
+        }
+        return false;
+      }());
+
+      //for each element that needs to listen for resizing, scrolling, (or coming soon mutation) add a single observer
+      for (var i = 0; i <= nodes.length-1; i++) {
+        var elementObserver = new MutationObserver(listeningElementsMutation);
+        elementObserver.observe(nodes[i], { attributes: true, childList: false, characterData: false, subtree:false, attributeFilter:["data-events"]});
+      }
+
+      //element callback
+      function listeningElementsMutation(mutationRecordsList) {
+        var $target = $(mutationRecordsList[0].target);
+        //trigger the event handler for the element depending on type
+        switch ($target.attr("data-events")) {
+
+          case "resize" :
+          console.log('resizing', $target);
+          $target.triggerHandler('resizeme.zf.trigger', [$target]);
+          break;
+
+          case "scroll" :
+          console.log('scrolling', $target);
+          $target.triggerHandler('scrollme.zf.trigger', [$target, window.pageYOffset]);
+          break;
+
+          // case "mutate" :
+          // console.log('mutate', $target);
+          // $target.triggerHandler('mutate.zf.trigger');
+          //
+          // //make sure we don't get stuck in an infinite loop from sloppy codeing
+          // if ($target.index('[data-mutate]') == $("[data-mutate]").length-1) {
+          //   domMutationObserver();
+          // }
+          // break;
+
+          default :
+          return false;
+          //nothing
+        }
+      }
+    }
+  };
+  // ------------------------------------
 
   // [PH]
-// Foundation.CheckWatchers = checkWatchers;
-Foundation.IHearYou = resizeListener;
-Foundation.ISeeYou = scrollListener;
-Foundation.IFeelYou = closemeListener;
+  // Foundation.CheckWatchers = checkWatchers;
+  Foundation.IHearYou = checkListeners;
+  // Foundation.ISeeYou = scrollListener;
+  // Foundation.IFeelYou = closemeListener;
 
 }(window.Foundation, window.jQuery);
 
@@ -1560,11 +1620,7 @@ Foundation.IFeelYou = closemeListener;
     this._init();
     this._events();
 
-    /**
-     * Fires when the plugin has been successfuly initialized.
-     * @event Abide#init
-     */
-    this.$element.trigger('init.zf.abide');
+    Foundation.registerPlugin(this);
   }
 
   /**
@@ -1921,6 +1977,9 @@ Foundation.IFeelYou = closemeListener;
     $form.find('[data-abide-error]').css('display', 'none');
     $(':input', $form).not(':button, :submit, :reset, :hidden, [data-abide-ignore]').val('').removeAttr(invalidAttr);
   };
+  Abide.prototype.destroy = function(){
+    //TODO this...
+  };
 
   Foundation.plugin(Abide);
 
@@ -1954,10 +2013,7 @@ Foundation.IFeelYou = closemeListener;
     this.options = $.extend({}, Accordion.defaults, this.$element.data(), options);
 
     this._init();
-    /**
-     * Fires when the plugin has been successfuly initialized.
-     * @event Accordion#init
-     */
+
     Foundation.registerPlugin(this);
     Foundation.Keyboard.register('Accordion', {
       'ENTER': 'toggle',
@@ -2158,11 +2214,6 @@ Foundation.IFeelYou = closemeListener;
     this.$element.find('[data-tab-content]').slideUp(0).css('display', '');
     this.$element.find('a').off('.zf.accordion');
 
-    /**
-     * Fires when the plugin has been destroyed.
-     * @event Accordion#destroyed
-     */
-    // this.$element.trigger('destroyed.zf.accordion');
     Foundation.unregisterPlugin(this);
   };
 
@@ -2194,12 +2245,6 @@ Foundation.IFeelYou = closemeListener;
 
     this._init();
 
-
-    /**
-     * Fires when the plugin has been successfuly initialized.
-     * @event AccordionMenu#init
-     */
-    // this.$element.trigger('init.zf.accordionMenu');
     Foundation.registerPlugin(this);
     Foundation.Keyboard.register('AccordionMenu', {
       'ENTER': 'toggle',
@@ -2378,7 +2423,7 @@ Foundation.IFeelYou = closemeListener;
    */
   AccordionMenu.prototype.down = function($target) {
     var _this = this;
-
+    console.log($target);
     if(!this.options.multiOpen){
       this.up(this.$element.find('.is-active').not($target.parentsUntil(this.$element)));
     }
@@ -2406,8 +2451,9 @@ Foundation.IFeelYou = closemeListener;
     Foundation.Move(this.options.slideSpeed, $target, function(){
       $target.slideUp(_this.options.slideSpeed);
     });
-    $target.find('[data-submenu]').slideUp(0).attr('aria-hidden', true)
-           .attr('aria-hidden', true).parent('.has-submenu')
+    $target.attr('aria-hidden', true)
+           .find('[data-submenu]').slideUp(0).attr('aria-hidden', true).end()
+           .parent('.has-submenu')
            .attr({'aria-expanded': false, 'aria-selected': false});
     // $target.slideUp(this.options.slideSpeed, function() {
     //   $target.find('[data-submenu]').slideUp(0).attr('aria-hidden', true);
@@ -2428,11 +2474,6 @@ Foundation.IFeelYou = closemeListener;
     this.$element.find('[data-submenu]').slideDown(0).css('display', '');
     this.$element.find('a').off('click.zf.accordionMenu');
 
-    /**
-     * Fires when the plugin has been destroyed.
-     * @event AccordionMenu#destroy
-     */
-    // this.$element.trigger('destroyed.zf.accordionMenu');
     Foundation.Nest.Burn(this.$element, 'accordion');
     Foundation.unregisterPlugin(this);
   };
@@ -2609,14 +2650,14 @@ Foundation.IFeelYou = closemeListener;
         next: function() {
           if ($element.is(_this.$submenuAnchors)) {
             _this._show($element);
-            $element.on(Foundation.transitionend + '.zf.drilldown', function(){
+            $element.on(Foundation.transitionend($element), function(){
               $element.find('ul li').filter(_this.$menuItems).first().focus();
             });
           }
         },
         previous: function() {
           _this._hide($element.parent('ul'));
-          $element.parent('ul').on(Foundation.transitionend + '.zf.drilldown', function(){
+          $element.parent('ul').on(Foundation.transitionend($element), function(){
             setTimeout(function() {
               $element.parent('ul').parent('li').focus();
             }, 1);
@@ -2655,10 +2696,10 @@ Foundation.IFeelYou = closemeListener;
    * @fires Drilldown#closed
    */
   Drilldown.prototype._hideAll = function(){
-    this.$element.find('.is-drilldown-sub.is-active').addClass('is-closing')
-        .on(Foundation.transitionend + '.zf.drilldown', function(e){
-          $(this).removeClass('is-active is-closing').off(Foundation.transitionend + '.zf.drilldown');
-        });
+    var $elem = this.$element.find('.is-drilldown-sub.is-active').addClass('is-closing');
+    $elem.one(Foundation.transitionend($elem), function(e){
+      $elem.removeClass('is-active is-closing');
+    });
         /**
          * Fires when the menu is fully closed.
          * @event Drilldown#closed
@@ -2716,10 +2757,9 @@ Foundation.IFeelYou = closemeListener;
   Drilldown.prototype._hide = function($elem){
     var _this = this;
     $elem.addClass('is-closing')
-      .on(Foundation.transitionend + '.zf.drilldown', function(e){
-        // console.log('transitionend');
-        $(this).removeClass('is-active is-closing').off(Foundation.transitionend + '.zf.drilldown');
-      });
+         .one(Foundation.transitionend($elem), function(){
+           $elem.removeClass('is-active is-closing');
+         });
     /**
      * Fires when the submenu is has closed.
      * @event Drilldown#hide
@@ -3572,11 +3612,6 @@ Foundation.IFeelYou = closemeListener;
     this._events();
 
     Foundation.registerPlugin(this);
-    // /**
-    //  * Fires when the plugin has been successfuly initialized.
-    //  * @event Equalizer#init
-    //  */
-    // this.$element.trigger('init.zf.equalizer');
   }
 
   /**
@@ -3886,7 +3921,7 @@ Foundation.IFeelYou = closemeListener;
    */
   Interchange.prototype.destroy = function(){
     //TODO this.
-  }
+  };
   Foundation.plugin(Interchange);
 
   // Exports for AMD/Browserify
@@ -3949,7 +3984,13 @@ Foundation.IFeelYou = closemeListener;
      * @option
      * @example 'active'
      */
-    activeClass: 'active'
+    activeClass: 'active',
+    /**
+     * Allows the script to manipulate the url of the current page, and if supported, alter the history.
+     * @option
+     * @example true
+     */
+    deepLinking: false
   };
 
   /**
@@ -4034,7 +4075,7 @@ Foundation.IFeelYou = closemeListener;
     this._updateActive();
   };
   /**
-   * Updates the visibility of an active location link, and updates the url hash for the page.
+   * Updates the visibility of an active location link, and updates the url hash for the page, if deepLinking enabled.
    * @private
    * @function
    * @fires Magellan#update
@@ -4057,16 +4098,18 @@ Foundation.IFeelYou = closemeListener;
     this.$active.removeClass(this.options.activeClass);
     this.$active = this.$links.eq(curIdx).addClass(this.options.activeClass);
 
-    var hash = this.$active[0].getAttribute('href');
-    if(window.history.pushState){
-      window.history.pushState(null, null, hash);
-    }else{
-      window.location.hash = hash;
+    if(this.options.deepLinking){
+      var hash = this.$active[0].getAttribute('href');
+      if(window.history.pushState){
+        window.history.pushState(null, null, hash);
+      }else{
+        window.location.hash = hash;
+      }
     }
 
     this.scrollPos = winPos;
     /**
-     * Fires when magellan is finished updating the to the new active element.
+     * Fires when magellan is finished updating to the new active element.
      * @event Magellan#update
      */
     this.$element.trigger('update.zf.magellan', [this.$active]);
@@ -4146,17 +4189,13 @@ OffCanvas.defaults = {
   position: 'left',
   /**
    * Force the page to scroll to top on open.
-   * @option
-   * @example false
    */
-  forceTop: false,
+  forceTop: true,
   /**
    * Allow the offcanvas to be sticky while open. Does nothing if Sass option `$maincontent-prevent-scroll === true`.
    * Performance in Safari OSX/iOS is not great.
-   * @option
-   * @example false
    */
-  isSticky: false,
+  // isSticky: false,
   /**
    * Allow the offcanvas to remain open for certain breakpoints. Can be used with `isSticky`.
    * @option
@@ -4220,7 +4259,7 @@ OffCanvas.prototype._init = function() {
     this._setMQChecker();
   }
   if(!this.options.transitionTime){
-    this.options.transitionTime = parseFloat(window.getComputedStyle(document.body).transitionDuration) * 1000;
+    this.options.transitionTime = parseFloat(window.getComputedStyle($('[data-off-canvas-wrapper]')[0]).transitionDuration) * 1000;
   }
 };
 
@@ -4267,21 +4306,21 @@ OffCanvas.prototype._setMQChecker = function(){
  * @function
  */
 OffCanvas.prototype.reveal = function(isRevealed){
-  var closer = this.$element.find('[data-close]');
+  var $closer = this.$element.find('[data-close]');
   if(isRevealed){
-    if(!this.options.forceTop){
-      var scrollPos = parseInt(window.pageYOffset);
-      this.$element[0].style.transform = 'translate(0,' + scrollPos + 'px)';
-    }
-    if(this.options.isSticky){ this._stick(); }
-    if(closer.length){ closer.hide(); }
+    // if(!this.options.forceTop){
+    //   var scrollPos = parseInt(window.pageYOffset);
+    //   this.$element[0].style.transform = 'translate(0,' + scrollPos + 'px)';
+    // }
+    // if(this.options.isSticky){ this._stick(); }
+    if($closer.length){ $closer.hide(); }
   }else{
-    if(this.options.isSticky || !this.options.forceTop){
-      this.$element[0].style.transform = '';
-      $(window).off('scroll.zf.offcanvas');
-    }
-    if(closer.length){
-      closer.show();
+    // if(this.options.isSticky || !this.options.forceTop){
+    //   this.$element[0].style.transform = '';
+    //   $(window).off('scroll.zf.offcanvas');
+    // }
+    if($closer.length){
+      $closer.show();
     }
   }
 };
@@ -4297,14 +4336,16 @@ OffCanvas.prototype.open = function(event, trigger) {
   if (this.$element.hasClass('is-open')){ return; }
   var _this = this,
       $body = $(document.body);
+  $('body').scrollTop(0);
+  // window.pageYOffset = 0;
 
-  if(!this.options.forceTop){
-    var scrollPos = parseInt(window.pageYOffset);
-    this.$element[0].style.transform = 'translate(0,' + scrollPos + 'px)';
-    if(this.$exiter.length){
-      this.$exiter[0].style.transform = 'translate(0,' + scrollPos + 'px)';
-    }
-  }
+  // if(!this.options.forceTop){
+  //   var scrollPos = parseInt(window.pageYOffset);
+  //   this.$element[0].style.transform = 'translate(0,' + scrollPos + 'px)';
+  //   if(this.$exiter.length){
+  //     this.$exiter[0].style.transform = 'translate(0,' + scrollPos + 'px)';
+  //   }
+  // }
   /**
    * Fires when the off-canvas menu opens.
    * @event OffCanvas#opened
@@ -4317,9 +4358,9 @@ OffCanvas.prototype.open = function(event, trigger) {
       .attr('aria-hidden', 'false')
       .trigger('opened.zf.offcanvas');
 
-    if(_this.options.isSticky){
-      _this._stick();
-    }
+    // if(_this.options.isSticky){
+    //   _this._stick();
+    // }
   });
   if(trigger){
     this.$lastTrigger = trigger.attr('aria-expanded', 'true');
@@ -4334,21 +4375,21 @@ OffCanvas.prototype.open = function(event, trigger) {
  * Allows the offcanvas to appear sticky utilizing translate properties.
  * @private
  */
-OffCanvas.prototype._stick = function(){
-  var elStyle = this.$element[0].style;
-
-  if(this.options.closeOnClick){
-    var exitStyle = this.$exiter[0].style;
-  }
-
-  $(window).on('scroll.zf.offcanvas', function(e){
-    console.log(e);
-    var pageY = window.pageYOffset;
-    elStyle.transform = 'translate(0,' + pageY + 'px)';
-    if(exitStyle !== undefined){ exitStyle.transform = 'translate(0,' + pageY + 'px)'; }
-  });
-  // this.$element.trigger('stuck.zf.offcanvas');
-};
+// OffCanvas.prototype._stick = function(){
+//   var elStyle = this.$element[0].style;
+//
+//   if(this.options.closeOnClick){
+//     var exitStyle = this.$exiter[0].style;
+//   }
+//
+//   $(window).on('scroll.zf.offcanvas', function(e){
+//     console.log(e);
+//     var pageY = window.pageYOffset;
+//     elStyle.transform = 'translate(0,' + pageY + 'px)';
+//     if(exitStyle !== undefined){ exitStyle.transform = 'translate(0,' + pageY + 'px)'; }
+//   });
+//   // this.$element.trigger('stuck.zf.offcanvas');
+// };
 /**
  * Closes the off-canvas menu.
  * @function
@@ -4371,12 +4412,12 @@ OffCanvas.prototype.close = function() {
      * @event OffCanvas#closed
      */
       .trigger('closed.zf.offcanvas');
-  if(_this.options.isSticky || !_this.options.forceTop){
-    setTimeout(function(){
-      _this.$element[0].style.transform = '';
-      $(window).off('scroll.zf.offcanvas');
-    }, this.options.transitionTime);
-  }
+  // if(_this.options.isSticky || !_this.options.forceTop){
+  //   setTimeout(function(){
+  //     _this.$element[0].style.transform = '';
+  //     $(window).off('scroll.zf.offcanvas');
+  //   }, this.options.transitionTime);
+  // }
 
   this.$lastTrigger.attr('aria-expanded', 'false');
 };
@@ -4454,25 +4495,110 @@ Foundation.plugin(OffCanvas);
           'ARROW_RIGHT': 'previous'
         }
     });
-    // this.$element.trigger('init.zf.orbit');
   }
   Orbit.defaults = {
+    /**
+     * Tells the JS to loadBullets.
+     * @option
+     * @example true
+     */
     bullets: true,
+    /**
+     * Tells the JS to apply event listeners to nav buttons
+     * @option
+     * @example true
+     */
     navButtons: true,
+    /**
+     * motion-ui animation class to apply
+     * @option
+     * @example 'slide-in-right'
+     */
     animInFromRight: 'slide-in-right',
+    /**
+     * motion-ui animation class to apply
+     * @option
+     * @example 'slide-out-right'
+     */
     animOutToRight: 'slide-out-right',
+    /**
+     * motion-ui animation class to apply
+     * @option
+     * @example 'slide-in-left'
+     *
+     */
     animInFromLeft: 'slide-in-left',
+    /**
+     * motion-ui animation class to apply
+     * @option
+     * @example 'slide-out-left'
+     */
     animOutToLeft: 'slide-out-left',
+    /**
+     * Allows Orbit to automatically animate on page load.
+     * @option
+     * @example true
+     */
     autoPlay: true,
+    /**
+     * Amount of time, in ms, between slide transitions
+     * @option
+     * @example 5000
+     */
     timerDelay: 5000,
+    /**
+     * Allows Orbit to infinitely loop through the slides
+     * @option
+     * @example true
+     */
     infiniteWrap: true,
+    /**
+     * Allows the Orbit slides to bind to swipe events for mobile, requires an additional util library
+     * @option
+     * @example true
+     */
     swipe: true,
+    /**
+     * Allows the timing function to pause animation on hover.
+     * @option
+     * @example true
+     */
     pauseOnHover: true,
+    /**
+     * Allows Orbit to bind keyboard events to the slider, to animate frames with arrow keys
+     * @option
+     * @example true
+     */
     accessible: true,
+    /**
+     * Class applied to the container of Orbit
+     * @option
+     * @example 'orbit-container'
+     */
     containerClass: 'orbit-container',
+    /**
+     * Class applied to individual slides.
+     * @option
+     * @example 'orbit-slide'
+     */
     slideClass: 'orbit-slide',
+    /**
+     * Class applied to the bullet container. You're welcome.
+     * @option
+     * @example 'orbit-bullets'
+     */
     boxOfBullets: 'orbit-bullets',
+    /**
+     * Class applied to the `next` navigation button.
+     * @option
+     * @example 'orbit-next'
+     */
     nextClass: 'orbit-next',
+    /**
+     * Class applied to the `previous` navigation button.
+     * @option
+     * @example 'orbit-previous'
+     */
     prevClass: 'orbit-previous'
   };
   /**
@@ -4492,7 +4618,7 @@ Foundation.plugin(OffCanvas);
     }
 
     if(this.options.bullets){
-      this.loadBullets();
+      this._loadBullets();
     }
 
     this._events();
@@ -4509,7 +4635,7 @@ Foundation.plugin(OffCanvas);
    * @function
    * @private
    */
-  Orbit.prototype.loadBullets = function(){
+  Orbit.prototype._loadBullets = function(){
     this.$bullets = this.$element.find('.' + this.options.boxOfBullets).find('button');
   };
   /**
@@ -4534,8 +4660,8 @@ Foundation.plugin(OffCanvas);
    */
   Orbit.prototype._prepareForOrbit = function(){
     var _this = this;
-    this.setWrapperHeight(function(max){
-      _this.setSlideHeight(max);
+    this._setWrapperHeight(function(max){
+      _this._setSlideHeight(max);
     });
   };
   /**
@@ -4544,7 +4670,7 @@ Foundation.plugin(OffCanvas);
    * @private
    * @param {Function} cb - a callback function to fire when complete.
    */
-  Orbit.prototype.setWrapperHeight = function(cb){//rewrite this to `for` loop
+  Orbit.prototype._setWrapperHeight = function(cb){//rewrite this to `for` loop
     var max = 0, temp, counter = 0;
 
     this.$slides.each(function(){
@@ -4568,7 +4694,7 @@ Foundation.plugin(OffCanvas);
    * @function
    * @private
    */
-  Orbit.prototype.setSlideHeight = function(height){
+  Orbit.prototype._setSlideHeight = function(height){
     this.$slides.each(function(){
       $(this).css('max-height', height);
     });
@@ -4729,7 +4855,6 @@ Foundation.plugin(OffCanvas);
     delete this.timer;
     this.$element.off('.zf.orbit').find('*').off('.zf.orbit').end().hide();
     Foundation.unregisterPlugin(this);
-    // this.$element.trigger('destroyed.zf.orbit');
   };
 
   Foundation.plugin(Orbit);
@@ -4787,11 +4912,6 @@ Foundation.plugin(OffCanvas);
     this._events();
 
     Foundation.registerPlugin(this);
-    // /**
-    //  * Fires when the plugin has been successfuly initialized.
-    //  * @event ResponsiveMenu#init
-    //  */
-    //  this.$element.trigger('init.zf.ResponsiveMenu');
   }
 
   ResponsiveMenu.defaults = {};
@@ -4881,6 +5001,7 @@ Foundation.plugin(OffCanvas);
   ResponsiveMenu.prototype.destroy = function() {
     this.currentPlugin.destroy();
     $(window).off('.zf.ResponsiveMenu');
+    Foundation.unregisterPlugin(this);
   };
   Foundation.plugin(ResponsiveMenu);
 
@@ -4910,11 +5031,6 @@ function ResponsiveToggle(element, options) {
   this._events();
 
   Foundation.registerPlugin(this);
-  // /**
-  //  * Fires when the plugin has been successfully initialized.
-  //  * @event ResponsiveToggle#init
-  //  */
-  // this.$element.trigger('init.zf.ResponsiveToggle');
 }
 
 ResponsiveToggle.defaults = {
@@ -4924,7 +5040,7 @@ ResponsiveToggle.defaults = {
    * @example 'medium'
    */
   hideFor: 'medium'
-}
+};
 
 /**
  * Initializes the tab bar by finding the target element, toggling element, and running update().
@@ -4941,7 +5057,7 @@ ResponsiveToggle.prototype._init = function() {
   this.$toggler = this.$element.find('[data-toggle]');
 
   this._update();
-}
+};
 
 /**
  * Adds necessary event handlers for the tab bar to work.
@@ -4954,7 +5070,7 @@ ResponsiveToggle.prototype._events = function() {
   $(window).on('changed.zf.mediaquery', this._update.bind(this));
 
   this.$toggler.on('click.zf.responsiveToggle', this.toggleMenu.bind(this));
-}
+};
 
 /**
  * Checks the current media query to determine if the tab bar should be visible or hidden.
@@ -4973,7 +5089,7 @@ ResponsiveToggle.prototype._update = function() {
     this.$element.hide();
     this.$targetMenu.show();
   }
-}
+};
 
 /**
  * Toggles the element attached to the tab bar. The toggle only happens if the screen is small enough to allow it.
@@ -4990,11 +5106,13 @@ ResponsiveToggle.prototype.toggleMenu = function() {
      */
     this.$element.trigger('toggled.zf.responsiveToggle');
   }
-}
-
+};
+ResponsiveToggle.prototype.destroy = function(){
+  //TODO this...
+};
 Foundation.plugin(ResponsiveToggle);
 
-}(jQuery, Foundation)
+}(jQuery, Foundation);
 
 /**
  * Reveal module.
@@ -6434,11 +6552,6 @@ Foundation.plugin(ResponsiveToggle);
       // 'TAB': 'next',
       // 'SHIFT_TAB': 'previous'
     });
-    // /**
-    //  * Fires when the plugin has been successfuly initialized.
-    //  * @event Tabs#init
-    //  */
-    // this.$element.trigger('init.zf.tabs');
   }
 
   Tabs.defaults = {
@@ -6704,11 +6817,6 @@ Foundation.plugin(ResponsiveToggle);
       $(window).off('changed.zf.mediaquery');
     }
     Foundation.unregisterPlugin(this);
-    // /**
-    //  * Fires when the plugin has been destroyed.
-    //  * @event Tabs#destroyed
-    //  */
-    // this.$element.trigger('destroyed.zf.tabs');
   };
 
   Foundation.plugin(Tabs);
@@ -6743,14 +6851,14 @@ Foundation.plugin(ResponsiveToggle);
     this._events();
 
     Foundation.registerPlugin(this);
-    // /**
-    //  * Fires when the plugin has been successfuly initialized.
-    //  * @event Toggler#init
-    //  */
-    // this.$element.trigger('init.zf.toggler');
   }
 
   Toggler.defaults = {
+    /**
+     * Tells the plugin if the element should animated when toggled.
+     * @option
+     * @example false
+     */
     animate: false
   };
 
@@ -6875,6 +6983,7 @@ Foundation.plugin(ResponsiveToggle);
    */
   Toggler.prototype.destroy= function() {
     this.$element.off('.zf.toggler');
+    Foundation.unregisterPlugin(this);
   };
 
   Foundation.plugin(Toggler);
@@ -6914,30 +7023,94 @@ Foundation.plugin(ResponsiveToggle);
     this._init();
 
     Foundation.registerPlugin(this);
-
-    // /**
-    //  * Fires when the plugin has been successfully initialized
-    //  * @event Tooltip#init
-    //  */
-    // this.$element.trigger('init.zf.tooltip');
   }
 
   Tooltip.defaults = {
     disableForTouch: false,
+    /**
+     * Time, in ms, before a tooltip should open on hover.
+     * @option
+     * @example 200
+     */
     hoverDelay: 200,
+    /**
+     * Time, in ms, a tooltip should take to fade into view.
+     * @option
+     * @example 150
+     */
     fadeInDuration: 150,
+    /**
+     * Time, in ms, a tooltip should take to fade out of view.
+     * @option
+     * @example 150
+     */
     fadeOutDuration: 150,
+    /**
+     * Disables hover events from opening the tooltip if set to true
+     * @option
+     * @example false
+     */
     disableHover: false,
+    /**
+     * Optional addtional classes to apply to the tooltip template on init.
+     * @option
+     * @example 'my-cool-tip-class'
+     */
     templateClasses: '',
+    /**
+     * Non-optional class added to tooltip templates. Foundation default is 'tooltip'.
+     * @option
+     * @example 'tooltip'
+     */
     tooltipClass: 'tooltip',
+    /**
+     * Class applied to the tooltip anchor element.
+     * @option
+     * @example 'has-tip'
+     */
     triggerClass: 'has-tip',
+    /**
+     * Minimum breakpoint size at which to open the tooltip.
+     * @option
+     * @example 'small'
+     */
     showOn: 'small',
+    /**
+     * Custom template to be used to generate markup for tooltip.
+     * @option
+     * @example '<div class="tooltip"></div>'
+     */
     template: '',
+    /**
+     * Text displayed in the tooltip template on open.
+     * @option
+     * @example 'Some cool space fact here.'
+     */
     tipText: '',
     touchCloseText: 'Tap to close.',
+    /**
+     * Allows the tooltip to remain open if triggered with a click or touch event.
+     * @option
+     * @example true
+     */
     clickOpen: true,
+    /**
+     * Additional positioning classes, set by the JS
+     * @option
+     * @example 'top'
+     */
     positionClass: '',
+    /**
+     * Distance, in pixels, the template should push away from the anchor on the Y axis.
+     * @option
+     * @example 10
+     */
     vOffset: 10,
+    /**
+     * Distance, in pixels, the template should push away from the anchor on the X axis, if aligned to a side.
+     * @option
+     * @example 12
+     */
     hOffset: 12
   };
 
@@ -6948,9 +7121,9 @@ Foundation.plugin(ResponsiveToggle);
   Tooltip.prototype._init = function(){
     var elemId = this.$element.attr('aria-describedby') || Foundation.GetYoDigits(6, 'tooltip');
 
-    this.options.positionClass = this.getPositionClass(this.$element);
+    this.options.positionClass = this._getPositionClass(this.$element);
     this.options.tipText = this.options.tipText || this.$element.attr('title');
-    this.template = this.options.template ? $(this.options.template) : this.buildTemplate(elemId);
+    this.template = this.options.template ? $(this.options.template) : this._buildTemplate(elemId);
 
     this.template.appendTo(document.body)
         .text(this.options.tipText)
@@ -6976,7 +7149,7 @@ Foundation.plugin(ResponsiveToggle);
    * Grabs the current positioning class, if present, and returns the value or an empty string.
    * @private
    */
-  Tooltip.prototype.getPositionClass = function(element){
+  Tooltip.prototype._getPositionClass = function(element){
     if(!element){ return ''; }
     // var position = element.attr('class').match(/top|left|right/g);
     var position = element[0].className.match(/(top|left|right)/g);
@@ -6987,7 +7160,7 @@ Foundation.plugin(ResponsiveToggle);
    * builds the tooltip element, adds attributes, and returns the template.
    * @private
    */
-  Tooltip.prototype.buildTemplate = function(id){
+  Tooltip.prototype._buildTemplate = function(id){
     var templateClasses = (this.options.tooltipClass + ' ' + this.options.positionClass).trim();
     var $template =  $('<div></div>').addClass(templateClasses).attr({
       'role': 'tooltip',
@@ -7004,7 +7177,7 @@ Foundation.plugin(ResponsiveToggle);
    * @param {String} position - positioning class to try
    * @private
    */
-  Tooltip.prototype.reposition = function(position){
+  Tooltip.prototype._reposition = function(position){
     this.usedPositions.push(position ? position : 'bottom');
 
     //default, try switching to opposite side
@@ -7045,8 +7218,8 @@ Foundation.plugin(ResponsiveToggle);
    * if the tooltip is larger than the screen width, default to full width - any user selected margin
    * @private
    */
-  Tooltip.prototype.setPosition = function(){
-    var position = this.getPositionClass(this.template),
+  Tooltip.prototype._setPosition = function(){
+    var position = this._getPositionClass(this.template),
         $tipDims = Foundation.Box.GetDimensions(this.template),
         $anchorDims = Foundation.Box.GetDimensions(this.$element),
         direction = (position === 'left' ? 'left' : ((position === 'right') ? 'left' : 'top')),
@@ -7066,8 +7239,8 @@ Foundation.plugin(ResponsiveToggle);
     this.template.offset(Foundation.Box.GetOffsets(this.template, this.$element,'center ' + (position || 'bottom'), this.options.vOffset, this.options.hOffset));
 
     while(!Foundation.Box.ImNotTouchingYou(this.template) && this.counter){
-      this.reposition(position);
-      this.setPosition();
+      this._reposition(position);
+      this._setPosition();
     }
   };
 
@@ -7075,17 +7248,17 @@ Foundation.plugin(ResponsiveToggle);
    * reveals the tooltip, and fires an event to close any other open tooltips on the page
    * @fires Closeme#tooltip
    * @fires Tooltip#show
-   * @private
+   * @function
    */
-  Tooltip.prototype._show = function(){
+  Tooltip.prototype.show = function(){
     if(this.options.showOn !== 'all' && !Foundation.MediaQuery.atLeast(this.options.showOn)){
-      console.error('The screen is too small to display this tooltip');
+      // console.error('The screen is too small to display this tooltip');
       return false;
     }
 
     var _this = this;
     this.template.css('visibility', 'hidden').show();
-    this.setPosition();
+    this._setPosition();
 
     /**
      * Fires to close all other open tooltips on the page
@@ -7111,11 +7284,11 @@ Foundation.plugin(ResponsiveToggle);
   };
 
   /**
-   * hides the current tooltip, and resets the positioning class if it was changed due to collision
+   * Hides the current tooltip, and resets the positioning class if it was changed due to collision
    * @fires Tooltip#hide
-   * @private
+   * @function
    */
-  Tooltip.prototype._hide = function(){
+  Tooltip.prototype.hide = function(){
     // console.log('hiding', this.$element.data('yeti-box'));
     var _this = this;
     this.template.stop().attr({
@@ -7126,7 +7299,7 @@ Foundation.plugin(ResponsiveToggle);
       _this.isClick = false;
       if(_this.classChanged){
         _this.template
-             .removeClass(_this.getPositionClass(_this.template))
+             .removeClass(_this._getPositionClass(_this.template))
              .addClass(_this.options.positionClass);
 
        _this.usedPositions = [];
@@ -7157,14 +7330,14 @@ Foundation.plugin(ResponsiveToggle);
       .on('mouseenter.zf.tooltip', function(e){
         if(!_this.isActive){
           _this.timeout = setTimeout(function(){
-            _this._show();
+            _this.show();
           }, _this.options.hoverDelay);
         }
       })
       .on('mouseleave.zf.tooltip', function(e){
         clearTimeout(_this.timeout);
         if(!isFocus || (!_this.isClick && _this.options.clickOpen)){
-          _this._hide();
+          _this.hide();
         }
       });
     }
@@ -7172,12 +7345,12 @@ Foundation.plugin(ResponsiveToggle);
       this.$element.on('mousedown.zf.tooltip', function(e){
         e.stopImmediatePropagation();
         if(_this.isClick){
-          _this._hide();
+          _this.hide();
           // _this.isClick = false;
         }else{
           _this.isClick = true;
           if((_this.options.disableHover || !_this.$element.attr('tabindex')) && !_this.isActive){
-            _this._show();
+            _this.show();
           }
         }
       });
@@ -7186,14 +7359,14 @@ Foundation.plugin(ResponsiveToggle);
     if(!this.options.disableForTouch){
       this.$element
       .on('tap.zf.tooltip touchend.zf.tooltip', function(e){
-        _this.isActive ? _this._hide() : _this._show();
+        _this.isActive ? _this.hide() : _this.show();
       });
     }
 
     this.$element.on({
       // 'toggle.zf.trigger': this.toggle.bind(this),
-      // 'close.zf.trigger': this._hide.bind(this)
-      'close.zf.trigger': this._hide.bind(this)
+      // 'close.zf.trigger': this.hide.bind(this)
+      'close.zf.trigger': this.hide.bind(this)
     });
 
     this.$element
@@ -7204,33 +7377,37 @@ Foundation.plugin(ResponsiveToggle);
           return false;
         }else{
           // $(window)
-          _this._show();
+          _this.show();
         }
       })
 
       .on('focusout.zf.tooltip', function(e){
         isFocus = false;
         _this.isClick = false;
-        _this._hide();
+        _this.hide();
       })
 
       .on('resizeme.zf.trigger', function(){
         if(_this.isActive){
-          _this.setPosition();
+          _this._setPosition();
         }
       });
   };
   /**
    * adds a toggle method, in addition to the static show() & hide() functions
-   * @private
+   * @function
    */
   Tooltip.prototype.toggle = function(){
     if(this.isActive){
-      this._hide();
+      this.hide();
     }else{
-      this._show();
+      this.show();
     }
   };
+  /**
+   * Destroys an instance of tooltip, removes template element from the view.
+   * @function
+   */
   Tooltip.prototype.destroy = function(){
     this.$element.attr('title', this.template.text())
                  .off('.zf.trigger .zf.tootip')
