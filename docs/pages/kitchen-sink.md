@@ -281,7 +281,7 @@ description: Everything but.
   <input type="hidden">
 </div>
 
-<div class="slider vertical" data-slider data-initial-start='25'>
+<div class="slider vertical" data-slider data-initial-start='25' data-end='200' data-vertical="true">
   <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
   <span class="slider-fill" data-slider-fill></span>
   <input type="hidden">
