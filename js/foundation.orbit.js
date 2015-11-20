@@ -145,7 +145,12 @@
   Orbit.prototype._init = function(){
     this.$wrapper = this.$element.find('.' + this.options.containerClass);
     this.$slides = this.$element.find('.' + this.options.slideClass);
-    var $images = this.$element.find('img');
+    var $images = this.$element.find('img'),
+        initActive = this.$slides.filter('.is-active');
+
+    if(!initActive.length){
+      this.$slides.eq(0).addClass('is-active');
+    }
 
     if($images.length){
       Foundation.onImagesLoaded($images, this._prepareForOrbit.bind(this));
