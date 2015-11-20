@@ -141,7 +141,7 @@ $hr-width: $global-width !default;
 
 /// Default border for a divider.
 /// @type List
-$hr-border: 1px solid $medium-gray;
+$hr-border: 1px solid $medium-gray !default;
 
 /// Default margin for a divider.
 /// @type Number | List
