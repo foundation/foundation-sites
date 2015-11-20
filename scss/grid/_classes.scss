@@ -102,7 +102,7 @@
       }
 
       // Block grid
-      @for $i from 1 through 6 {
+      @for $i from 1 through $block-grid-max {
         .#{$size}-up-#{$i} {
           @include grid-layout($i);
         }

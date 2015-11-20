@@ -18,6 +18,10 @@ $grid-column-count: 12 !default;
 /// @type Number
 $grid-column-gutter: 30px !default;
 
+/// The highest number of `.x-up` classes available when using the block grid CSS.
+/// @type Number
+$block-grid-max: 6 !default;
+
 @import 'row';
 @import 'column';
 @import 'size';
