@@ -50,5 +50,4 @@ testing/_build
 
 pizza/
 data.json
-docs/*
 npm-debug.log
