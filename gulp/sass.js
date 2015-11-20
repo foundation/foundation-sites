@@ -62,7 +62,7 @@ gulp.task('sass:audit', ['sass:foundation'], function(cb) {
 gulp.task('sass:settings', function() {
   var options = {
     title: 'Foundation for Sites Settings',
-    output: './scss/_settings.scss',
+    output: './scss/settings/_settings.scss',
     groups: {
       'grid': 'The Grid',
       'off-canvas': 'Off-canvas',
