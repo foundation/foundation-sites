@@ -174,14 +174,15 @@
    * @function
    */
   DropdownMenu.prototype._events = function($elem){
-    var _this = this;
-
-    if(this.options.clickOpen || 'ontouchstart' in window){
+    var _this = this,
+        isTouch = window.ontouchstart !== undefined;
+        
+    if(this.options.clickOpen || isTouch){
       $elem.off('click.zf.dropdownmenu')
           .on('click.zf.dropdownmenu', function(e){
             if(!$(this).hasClass('is-dropdown-submenu-parent')){ return; }
-
-
+            var hasClicked = $elem.data('isClick');
+            if(isTouch && hasClicked) return;
             e.preventDefault();
             e.stopPropagation();
 
