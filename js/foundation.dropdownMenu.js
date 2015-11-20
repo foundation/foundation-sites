@@ -142,7 +142,7 @@
       $tab.attr({
         'role': 'menuitem',
         'tabindex': 0,
-        'title': $tab.children('a:first-child').text()/*.match(/\w/ig).join('')*/
+        'aria-label': $tab.children('a:first-child').text()/*.match(/\w/ig).join('')*/
       }).children('a').attr('tabindex', -1);//maybe add a more specific regex to match alphanumeric characters and join them appropriately
       if($tab.children('[data-submenu]')){
         $tab.attr('aria-haspopup', true);
@@ -176,7 +176,7 @@
   DropdownMenu.prototype._events = function($elem){
     var _this = this,
         isTouch = window.ontouchstart !== undefined;
-        
+
     if(this.options.clickOpen || isTouch){
       $elem.off('click.zf.dropdownmenu')
           .on('click.zf.dropdownmenu', function(e){
