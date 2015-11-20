@@ -256,5 +256,5 @@
     Foundation.unregisterPlugin(this);
   };
 
-  Foundation.plugin(AccordionMenu);
+  Foundation.plugin(AccordionMenu, 'AccordionMenu');
 }(jQuery, window.Foundation);

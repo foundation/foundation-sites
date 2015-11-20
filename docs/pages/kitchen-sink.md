@@ -36,7 +36,67 @@ description: Everything but.
 
 ---
 
-## Buttons 
+## Accordion Menu
+
+```html_example
+<ul class="vertical menu" data-accordion-menu>
+  <li>
+    <a href="#">Item 1</a>
+    <ul class="menu vertical nested is-active">
+      <li>
+        <a href="#">Item 1A</a>
+        <ul class="menu vertical nested">
+          <li><a href="#">Item 1Ai</a></li>
+          <li><a href="#">Item 1Aii</a></li>
+          <li><a href="#">Item 1Aiii</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Item 1B</a></li>
+      <li><a href="#">Item 1C</a></li>
+    </ul>
+  </li>
+  <li>
+    <a href="#">Item 2</a>
+    <ul class="menu vertical nested">
+      <li><a href="#">Item 2A</a></li>
+      <li><a href="#">Item 2B</a></li>
+    </ul>
+  </li>
+  <li><a href="#">Item 3</a></li>
+</ul>
+```
+
+---
+
+## Badge
+
+```html_example
+<span class="secondary badge">2</span>
+<span class="success badge">3</span>
+<span class="alert badge">A</span>
+<span class="warning badge">B</span>
+```
+
+---
+
+## Breadcrumbs
+
+```html_example
+<nav aria-label="You are here:" role="navigation">
+  <ul class="breadcrumbs">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Features</a></li>
+    <li class="disabled">Gene Splicing</li>
+    <li>
+      <span class="show-for-sr">Current: </span> Cloning
+    </li>
+  </ul>
+</nav>
+```
+
+---
+
+## Button
 
 ```html_example
 <!-- Anchors (links) -->
@@ -61,24 +121,7 @@ description: Everything but.
 
 ---
 
-## Breadcrumbs 
-
-```html_example
-<nav aria-label="You are here:" role="navigation">
-  <ul class="breadcrumbs">
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Features</a></li>
-    <li class="disabled">Gene Splicing</li>
-    <li>
-      <span class="show-for-sr">Current: </span> Cloning
-    </li>
-  </ul>
-</nav>
-```
-
----
-
-## Callouts
+## Callout
 
 ```html_example
 <div class="callout">
@@ -112,6 +155,144 @@ description: Everything but.
 </div>
 ```
 
+---
+
+## Close Button
+
+```html_example
+<div class="callout">
+  <button class="close-button" aria-label="Close alert" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <p>You can so totally close this!</p>
+</div>
+```
+
+---
+
+## Drilldown Menu
+
+```html_example
+<ul class="vertical menu" data-drilldown style="width: 200px" id="m1">
+  <li>
+    <a href="#">Item 1</a>
+    <ul class="vertical menu" id="m2">
+      <li>
+        <a href="#">Item 1A</a>
+        <ul class="vertical menu" id="m3">
+          <li><a href="#">Item 1Aa</a></li>
+          <li><a href="#">Item 1Ba</a></li>
+          <li><a href="#">Item 1Ca</a></li>
+          <li><a href="#">Item 1Da</a></li>
+          <li><a href="#">Item 1Ea</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Item 1B</a></li>
+      <li><a href="#">Item 1C</a></li>
+      <li><a href="#">Item 1D</a></li>
+      <li><a href="#">Item 1E</a></li>
+    </ul>
+  </li>
+  <li>
+    <a href="#">Item 2</a>
+    <ul class="vertical menu">
+      <li><a href="#">Item 2A</a></li>
+      <li><a href="#">Item 2B</a></li>
+      <li><a href="#">Item 2C</a></li>
+      <li><a href="#">Item 2D</a></li>
+      <li><a href="#">Item 2E</a></li>
+    </ul>
+  </li>
+  <li>
+    <a href="#">Item 3</a>
+    <ul class="vertical menu">
+      <li><a href="#">Item 3A</a></li>
+      <li><a href="#">Item 3B</a></li>
+      <li><a href="#">Item 3C</a></li>
+      <li><a href="#">Item 3D</a></li>
+      <li><a href="#">Item 3E</a></li>
+    </ul>
+  </li>
+  <li><a href='#'> Item 4</a></li>
+</ul>
+```
+
+---
+
+## Dropdown Menu
+
+```html_example
+<ul class="dropdown menu" data-dropdown-menu>
+  <li>
+    <a>Item 1</a>
+    <ul class="menu">
+      <li><a href="#">Item 1A Loooong</a></li>
+      <li>
+        <a href='#'> Item 1 sub</a>
+        <ul class='menu'>
+          <li><a href='#'>Item 1 subA</a></li>
+          <li><a href='#'>Item 1 subB</a></li>
+          <li>
+            <a href='#'> Item 1 sub</a>
+            <ul class='menu'>
+              <li><a href='#'>Item 1 subA</a></li>
+              <li><a href='#'>Item 1 subB</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href='#'> Item 1 sub</a>
+            <ul class='menu'>
+              <li><a href='#'>Item 1 subA</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#">Item 1B</a></li>
+    </ul>
+  </li>
+  <li>
+    <a href="#">Item 2</a>
+    <ul class="menu">
+      <li><a href="#">Item 2A</a></li>
+      <li><a href="#">Item 2B</a></li>
+    </ul>
+  </li>
+  <li><a href="#">Item 3</a></li>
+  <li><a href='#'>Item 4</a></li>
+</ul>
+```
+
+---
+
+## Dropdown Pane
+
+```html_example
+<button class="button" type="button" data-toggle="example-dropdown">Toggle Dropdown</button>
+<div class="dropdown-pane" id="example-dropdown" data-dropdown>
+  Just some junk that needs to be said. Or not. Your choice.
+</div>
+```
+
+---
+
+## Flex Video
+
+```html_example
+<div class="flex-video">
+  <iframe width="420" height="315" src="https://www.youtube.com/embed/V9gkYw35Vws" frameborder="0" allowfullscreen></iframe>
+</div>
+```
+
+---
+
+## Float Classes
+
+```html_example
+<div class="callout clearfix">
+  <a class="button float-left">Left</a>
+  <a class="button float-right">Right</a>
+</div>
+```
 
 ---
 
@@ -167,6 +348,17 @@ description: Everything but.
     <a class="input-group-button button">Submit</a>
   </div>
 </form>
+```
+
+---
+
+## Label
+
+```html_example
+<span class="secondary label">Secondary Label</span>
+<span class="success label">Success Label</span>
+<span class="alert label">Alert Label</span>
+<span class="warning label">Warning Label</span>
 ```
 
 ---
@@ -281,7 +473,7 @@ description: Everything but.
   <input type="hidden">
 </div>
 
-<div class="slider vertical" data-slider data-initial-start='25'>
+<div class="slider vertical" data-slider data-initial-start='25' data-end='200' data-vertical="true">
   <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
   <span class="slider-fill" data-slider-fill></span>
   <input type="hidden">
@@ -320,36 +512,6 @@ description: Everything but.
   <label class="switch-paddle" for="largeSwitch">
     <span class="show-for-sr">Show Large Elephants</span>
   </label>
-</div>
-```
-
----
-
-## Top Bar
-
-```html_example
-<div class="top-bar">
-  <div class="top-bar-left">
-    <ul class="dropdown menu" data-dropdown-menu>
-      <li class="menu-text">Site Title</li>
-      <li class="has-submenu">
-        <a href="#">One</a>
-        <ul class="submenu menu vertical" data-submenu>
-          <li><a href="#">One</a></li>
-          <li><a href="#">Two</a></li>
-          <li><a href="#">Three</a></li>
-        </ul>
-      </li>
-      <li><a href="#">Two</a></li>
-      <li><a href="#">Three</a></li>
-    </ul>
-  </div>
-  <div class="top-bar-right">
-    <ul class="menu">
-      <li><input type="search" placeholder="Search"></li>
-      <li><button type="button" class="button">Search</button></li>
-    </ul>
-  </div>
 </div>
 ```
 
@@ -398,20 +560,108 @@ description: Everything but.
 <ul class="tabs" data-tabs id="example-tabs">
   <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Tab 1</a></li>
   <li class="tabs-title"><a href="#panel2">Tab 2</a></li>
+  <li class="tabs-title"><a href="#panel3">Tab 3</a></li>
+  <li class="tabs-title"><a href="#panel4">Tab 4</a></li>
+  <li class="tabs-title"><a href="#panel5">Tab 5</a></li>
+  <li class="tabs-title"><a href="#panel6">Tab 6</a></li>
 </ul>
+
 <div class="tabs-content" data-tabs-content="example-tabs">
   <div class="tabs-panel is-active" id="panel1">
-    <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
+    <p>one</p>
+    <p>Check me out! I'm a super cool Tab panel with text content!</p>
   </div>
   <div class="tabs-panel" id="panel2">
-    <p>Other tab</p>
+    <p>two</p>
+    <img class="thumbnail" src="assets/img/rectangle-7.jpg">
+  </div>
+  <div class="tabs-panel" id="panel3">
+    <p>three</p>
+    <p>Check me out! I'm a super cool Tab panel with text content!</p>
+  </div>
+  <div class="tabs-panel" id="panel4">
+    <p>four</p>
+    <img class="thumbnail" src="assets/img/rectangle-2.jpg">
+  </div>
+  <div class="tabs-panel" id="panel5">
+    <p>five</p>
+    <p>Check me out! I'm a super cool Tab panel with text content!</p>
+  </div>
+  <div class="tabs-panel" id="panel6">
+    <p>six</p>
+    <img class="thumbnail" src="assets/img/rectangle-8.jpg">
   </div>
 </div>
 ```
+
 ---
 
-## Thumbnails 
+## Thumbnail
 
-```html_example 
-<img class="thumbnail" src="assets/img/thumbnail/01.jpg" alt="Photo of Uranus.">
+```html_example
+<div class="row">
+  <div class="small-4 columns">
+    <img class="thumbnail" src="assets/img/thumbnail/01.jpg" alt="Photo of Uranus.">
+  </div>
+  <div class="small-4 columns">
+    <img class="thumbnail" src="assets/img/thumbnail/02.jpg" alt="Photo of Neptune.">
+  </div>
+  <div class="small-4 columns">
+    <img class="thumbnail" src="assets/img/thumbnail/03.jpg" alt="Photo of Pluto.">
+  </div>
+</div>
+```
+
+---
+
+## Title Bar
+
+```html_example
+<div class="title-bar">
+  <div class="title-bar-left">
+    <button class="menu-icon" type="button"></button>
+    <span class="title-bar-title">Foundation</span>
+  </div>
+  <div class="title-bar-right">
+    <button class="menu-icon" type="button"></button>
+  </div>
+</div>
+```
+
+---
+
+## Tooltip
+
+```html_example
+<p>The <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover='false' tabindex=1 title="Fancy word for a beetle.">scarabaeus</span> hung quite clear of any branches, and, if allowed to fall, would have fallen at our feet. Legrand immediately took the scythe, and cleared with it a circular space, three or four yards in diameter, just beneath the insect, and, having accomplished this, ordered Jupiter to let go the string and come down from the tree.</p>
+```
+
+---
+
+## Top Bar
+
+```html_example
+<div class="top-bar">
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li class="menu-text">Site Title</li>
+      <li class="has-submenu">
+        <a href="#">One</a>
+        <ul class="submenu menu vertical" data-submenu>
+          <li><a href="#">One</a></li>
+          <li><a href="#">Two</a></li>
+          <li><a href="#">Three</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Two</a></li>
+      <li><a href="#">Three</a></li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu">
+      <li><input type="search" placeholder="Search"></li>
+      <li><button type="button" class="button">Search</button></li>
+    </ul>
+  </div>
+</div>
 ```

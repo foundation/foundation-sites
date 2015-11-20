@@ -97,7 +97,8 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5);
   position: absolute;
   background: $offcanvas-background;
   z-index: $offcanvas-zindex;
-  min-height: 100%;
+  max-height: 100%;
+  overflow-y: auto;
   transform: translateX(0px);
 }
 

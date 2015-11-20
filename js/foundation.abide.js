@@ -379,7 +379,7 @@
     //TODO this...
   };
 
-  Foundation.plugin(Abide);
+  Foundation.plugin(Abide, 'Abide');
 
   // Exports for AMD/Browserify
   if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')

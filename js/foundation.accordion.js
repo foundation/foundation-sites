@@ -222,5 +222,5 @@
     Foundation.unregisterPlugin(this);
   };
 
-  Foundation.plugin(Accordion);
+  Foundation.plugin(Accordion, 'Accordion');
 }(jQuery, window.Foundation);

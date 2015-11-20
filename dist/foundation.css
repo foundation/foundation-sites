@@ -1,9 +1,9 @@
 @charset "UTF-8";
-/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Set default font family to sans-serif.
- * 2. Prevent iOS text size adjust after orientation change, without disabling
- *    user zoom.
+ * 2. Prevent iOS and IE text size adjust after device orientation change,
+ *    without disabling user zoom.
  */
 html {
   font-family: sans-serif;
@@ -65,7 +65,7 @@ audio:not([controls]) {
 
 /**
  * Address `[hidden]` styling not present in IE 8/9/10.
- * Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.
+ * Hide the `template` element in IE 8/9/10/11, Safari, and Firefox < 22.
  */
 [hidden],
 template {
@@ -80,7 +80,8 @@ a {
   background-color: transparent; }
 
 /**
- * Improve readability when focused and also mouse hovered in all browsers.
+ * Improve readability of focused elements when they are also in an
+ * active/hover state.
  */
 a:active,
 a:hover {
@@ -292,14 +293,13 @@ input[type="number"]::-webkit-outer-spin-button {
 
 /**
  * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
- * 2. Address `box-sizing` set to `border-box` in Safari and Chrome
- *    (include `-moz` to future-proof).
+ * 2. Address `box-sizing` set to `border-box` in Safari and Chrome.
  */
 input[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
-  /* 2 */
-  box-sizing: content-box; }
+  box-sizing: content-box;
+  /* 2 */ }
 
 /**
  * Remove inner padding and search cancel button in Safari and Chrome on OS X.
@@ -358,7 +358,7 @@ body.is-reveal-open {
   overflow: hidden; }
 
 .foundation-mq {
-  font-family: "small=0em&medium=32em&large=64em&xlarge=75em&xxlarge=90em"; }
+  font-family: "small=0em&medium=40em&large=64em&xlarge=75em&xxlarge=90em"; }
 
 html,
 body {
@@ -441,7 +441,7 @@ button {
   .row.small-uncollapse > .column, .row.small-uncollapse > .columns {
     padding-left: 30px;
     padding-right: 30px; }
-  @media screen and (min-width: 32em) {
+  @media screen and (min-width: 40em) {
     .row.medium-collapse > .column, .row.medium-collapse > .columns {
       padding-left: 0;
       padding-right: 0; }
@@ -463,7 +463,7 @@ button {
   float: left;
   padding-left: 0.9375rem;
   padding-right: 0.9375rem; }
-  .column:last-child, .columns:last-child {
+  .column:last-child:not(:first-child), .columns:last-child:not(:first-child) {
     float: right; }
   .column.end, .end.columns {
     float: left; }
@@ -691,7 +691,7 @@ button {
   margin-left: 0;
   margin-right: 0; }
 
-@media screen and (min-width: 32em) {
+@media screen and (min-width: 40em) {
   .medium-1 {
     width: 8.33333%; }
   .medium-push-1 {
@@ -1110,7 +1110,7 @@ h5 {
 h6 {
   font-size: 1rem; }
 
-@media screen and (min-width: 32em) {
+@media screen and (min-width: 40em) {
   h1 {
     font-size: 3rem; }
   h2 {
@@ -1229,7 +1229,7 @@ kbd {
 .text-left {
   text-align: left; }
 
-@media screen and (min-width: 32em) {
+@media screen and (min-width: 40em) {
   .medium-text-left {
     text-align: left; } }
 
@@ -1240,7 +1240,7 @@ kbd {
 .text-right {
   text-align: right; }
 
-@media screen and (min-width: 32em) {
+@media screen and (min-width: 40em) {
   .medium-text-right {
     text-align: right; } }
 
@@ -1251,7 +1251,7 @@ kbd {
 .text-center {
   text-align: center; }
 
-@media screen and (min-width: 32em) {
+@media screen and (min-width: 40em) {
   .medium-text-center {
     text-align: center; } }
 
@@ -1262,7 +1262,7 @@ kbd {
 .text-justify {
   text-align: justify; }
 
-@media screen and (min-width: 32em) {
+@media screen and (min-width: 40em) {
   .medium-text-justify {
     text-align: justify; } }
 
@@ -1407,8 +1407,8 @@ kbd {
       border: 1px solid #777;
       color: #777; }
       .button.hollow.secondary:hover, .button.hollow.secondary:focus {
-        border-color: #3b3b3b;
-        color: #3b3b3b; }
+        border-color: #3c3c3c;
+        color: #3c3c3c; }
     .button.hollow.success {
       border: 1px solid #3adb76;
       color: #3adb76; }
@@ -1632,27 +1632,27 @@ select {
 .invisible {
   visibility: hidden; }
 
-@media screen and (min-width: 0em) and (max-width: 31.9375em) {
+@media screen and (min-width: 0em) and (max-width: 39.9375em) {
   .hide-for-small-only {
     display: none !important; } }
 
-@media screen and (max-width: -0.0625em), screen and (min-width: 32em) {
+@media screen and (max-width: -0.0625em), screen and (min-width: 40em) {
   .show-for-small-only {
     display: none !important; } }
 
-@media screen and (min-width: 32em) {
+@media screen and (min-width: 40em) {
   .hide-for-medium {
     display: none !important; } }
 
-@media screen and (max-width: 31.9375em) {
+@media screen and (max-width: 39.9375em) {
   .show-for-medium {
     display: none !important; } }
 
-@media screen and (min-width: 32em) and (max-width: 63.9375em) {
+@media screen and (min-width: 40em) and (max-width: 63.9375em) {
   .hide-for-medium-only {
     display: none !important; } }
 
-@media screen and (max-width: 31.9375em), screen and (min-width: 64em) {
+@media screen and (max-width: 39.9375em), screen and (min-width: 64em) {
   .show-for-medium-only {
     display: none !important; } }
 
@@ -1903,7 +1903,7 @@ select {
   .button-group.stacked .button, .button-group.stacked-for-small .button {
     width: 100%;
     border-right: 0; }
-  @media screen and (min-width: 32em) {
+  @media screen and (min-width: 40em) {
     .button-group.stacked-for-small .button {
       width: auto; }
       .button-group.stacked-for-small .button:not(:last-child) {
@@ -2051,6 +2051,9 @@ select {
     float: right;
     margin-top: 3px;
     margin-left: 10px; }
+  .dropdown.menu .has-submenu.is-down-arrow a {
+    padding-right: 1.5rem;
+    position: relative; }
   .dropdown.menu .has-submenu.is-down-arrow > a::after {
     content: '';
     display: block;
@@ -2058,7 +2061,10 @@ select {
     height: 0;
     border: inset 5px;
     border-color: #2199e8 transparent transparent;
-    border-top-style: solid; }
+    border-top-style: solid;
+    position: absolute;
+    top: 12px;
+    right: 5px; }
   .dropdown.menu .has-submenu.is-left-arrow > a::after {
     content: '';
     display: block;
@@ -2114,11 +2120,11 @@ select {
   left: auto;
   right: 0; }
 
-.dropdown.menu.vertical {
+.is-dropdown-menu.vertical {
   width: 100px; }
-  .dropdown.menu.vertical.align-right {
+  .is-dropdown-menu.vertical.align-right {
     float: right; }
-  .dropdown.menu.vertical > li .submenu {
+  .is-dropdown-menu.vertical > li .submenu {
     top: 0;
     left: 100%; }
 
@@ -2171,7 +2177,7 @@ select {
   display: block; }
   .media-object img {
     max-width: none; }
-  @media screen and (min-width: 0em) and (max-width: 31.9375em) {
+  @media screen and (min-width: 0em) and (max-width: 39.9375em) {
     .media-object.stack-for-small .media-object-section {
       display: block;
       padding: 0;
@@ -2220,7 +2226,7 @@ select {
     display: table-cell; }
   .menu.vertical > li {
     display: block; }
-  @media screen and (min-width: 32em) {
+  @media screen and (min-width: 40em) {
     .menu.medium-horizontal > li {
       display: table-cell; }
     .menu.medium-vertical > li {
@@ -2322,7 +2328,8 @@ body {
   position: absolute;
   background: #e6e6e6;
   z-index: -1;
-  min-height: 100%;
+  max-height: 100%;
+  overflow-y: auto;
   -webkit-transform: translateX(0px);
       -ms-transform: translateX(0px);
           transform: translateX(0px); }
@@ -2345,7 +2352,7 @@ body {
           -ms-transform: translateX(-250px);
               transform: translateX(-250px); }
 
-@media screen and (min-width: 32em) {
+@media screen and (min-width: 40em) {
   .position-left.reveal-for-medium {
     left: 0; }
     .position-left.reveal-for-medium ~ .off-canvas-content {
@@ -2449,7 +2456,7 @@ body {
     border-radius: 0; }
     .pagination li:last-child, .pagination li:first-child {
       display: inline-block; }
-    @media screen and (min-width: 32em) {
+    @media screen and (min-width: 40em) {
       .pagination li {
         display: inline-block; } }
   .pagination a,
@@ -2531,7 +2538,9 @@ body {
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
-          user-select: none; }
+          user-select: none;
+  -ms-touch-action: none;
+      touch-action: none; }
 
 .slider-fill {
   position: absolute;
@@ -2643,7 +2652,7 @@ body {
   overflow-y: auto; }
   [data-whatinput="mouse"] .reveal {
     outline: 0; }
-  @media screen and (min-width: 32em) {
+  @media screen and (min-width: 40em) {
     .reveal {
       min-height: 0; } }
   .reveal .column, .reveal .columns,
@@ -2651,26 +2660,26 @@ body {
     min-width: 0; }
   .reveal > :last-child {
     margin-bottom: 0; }
-  @media screen and (min-width: 32em) {
+  @media screen and (min-width: 40em) {
     .reveal {
       width: 600px;
       max-width: 75rem; } }
   .reveal.collapse {
     padding: 0; }
-  @media screen and (min-width: 32em) {
+  @media screen and (min-width: 40em) {
     .reveal .reveal {
       left: auto;
       right: auto;
       margin: 0 auto; } }
-  @media screen and (min-width: 32em) {
+  @media screen and (min-width: 40em) {
     .reveal.tiny {
       width: 30%;
       max-width: 75rem; } }
-  @media screen and (min-width: 32em) {
+  @media screen and (min-width: 40em) {
     .reveal.small {
       width: 50%;
       max-width: 75rem; } }
-  @media screen and (min-width: 32em) {
+  @media screen and (min-width: 40em) {
     .reveal.large {
       width: 90%;
       max-width: 75rem; } }
@@ -3055,7 +3064,7 @@ table.hover tr:nth-of-type(even):hover {
     width: 200px;
     margin-right: 1rem; }
 
-@media screen and (min-width: 32em) {
+@media screen and (min-width: 40em) {
   .top-bar-left {
     float: left; }
   .top-bar-right {

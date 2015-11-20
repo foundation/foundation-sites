@@ -140,6 +140,6 @@
     $(window).off('.zf.ResponsiveMenu');
     Foundation.unregisterPlugin(this);
   };
-  Foundation.plugin(ResponsiveMenu);
+  Foundation.plugin(ResponsiveMenu, 'ResponsiveMenu');
 
 }(Foundation, jQuery);

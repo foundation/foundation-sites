@@ -393,6 +393,6 @@
     Foundation.unregisterPlugin(this);
   };
 
-  Foundation.plugin(Orbit);
+  Foundation.plugin(Orbit, 'Orbit');
 
 }(jQuery, window.Foundation);

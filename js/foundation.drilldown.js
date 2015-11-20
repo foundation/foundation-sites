@@ -312,5 +312,5 @@
 
     Foundation.unregisterPlugin(this);
   };
-  Foundation.plugin(Drilldown);
+  Foundation.plugin(Drilldown, 'Drilldown');
 }(jQuery, window.Foundation);

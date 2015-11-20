@@ -158,7 +158,7 @@
     Foundation.unregisterPlugin(this);
   };
 
-  Foundation.plugin(Toggler);
+  Foundation.plugin(Toggler, 'Toggler');
 
   // Exports for AMD/Browserify
   if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')

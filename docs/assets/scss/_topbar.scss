@@ -11,6 +11,16 @@ $topbar-hover-color: darken($topbar-background, 20%);
   ul:first-child { float: left; }
   ul:last-child  { float: right; }
 
+  .topbar-title > a {
+    font-size: rem-calc(16);
+    opacity: 0.9;
+
+    > img {
+      position: relative;
+      top: -1px;
+    }
+  }
+
   .menu a {
     height: 45px;
     line-height: 45px;
@@ -47,10 +57,6 @@ $topbar-hover-color: darken($topbar-background, 20%);
     top: -2px;
   }
 
-  .menu:first-child {
-    border-right: 1px solid #4e4e4e;
-  }
-
   .menu:last-child {
     border-left: 1px solid #4e4e4e;
   }
@@ -66,13 +72,11 @@ $topbar-hover-color: darken($topbar-background, 20%);
   }
 
   .is-down-arrow a {
-    padding-right: 2rem !important;
+    padding-right: 1rem !important;
   }
 
   .is-down-arrow a::after {
-    margin-top: 8px !important;
-    right: 12px !important;
-    border-top-color: white !important;
+    display: none !important;
   }
 }
 
