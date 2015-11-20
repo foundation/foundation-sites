@@ -8,9 +8,14 @@ tags:
   - modal
 ---
 
+
 ## Basics
 
 A modal is just an empty container, so you can put any kind of content inside it, from text to forms to a whole grid.
+
+<div class="callout primary">
+  <p>Please note that we removed the option for AJAX loaded modals in Foundation 6. We did make it very easy to implement on your own though, check out a sample in the <span><a href="#advanced">Advanced</a></span> section.</p>
+</div>
 
 ```html_example
 <p><a data-open="exampleModal1">Click me for a modal</a></p>
@@ -168,6 +173,19 @@ To use animations from the Motion UI library, include the <code>data-animation-i
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
+```
+
+## Advanced
+
+To use AJAX to load your modal content, use the code snippet below.
+
+```js
+var $modal = $('#modal');
+
+$.ajax({'/url'})
+  .done(function(resp){
+    $modal.html(resp.html).foundation('open');
+});
 ```
 ## Accessibility
 
