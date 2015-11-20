@@ -77,6 +77,10 @@
   font-weight: bold;
 }
 
+.global-zeroclipboard-container {
+  z-index: auto !important;
+}
+
 // github.com style for highlight.js
 // Created by Vasily Polovnyov <vast@whiteants.net>
 .hljs {

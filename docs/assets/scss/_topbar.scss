@@ -5,6 +5,8 @@ $topbar-hover-color: darken($topbar-background, 20%);
   background: $topbar-background;
   font-size: rem-calc(13);
   font-weight: bold;
+  z-index: 2;
+  position: relative;
 
   @include clearfix;
 
