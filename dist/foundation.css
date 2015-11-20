@@ -463,7 +463,7 @@ button {
   float: left;
   padding-left: 0.9375rem;
   padding-right: 0.9375rem; }
-  .column:last-child, .columns:last-child {
+  .column:last-child:not(:first-child), .columns:last-child:not(:first-child) {
     float: right; }
   .column.end, .end.columns {
     float: left; }
@@ -2328,7 +2328,8 @@ body {
   position: absolute;
   background: #e6e6e6;
   z-index: -1;
-  min-height: 100%;
+  max-height: 100%;
+  overflow-y: auto;
   -webkit-transform: translateX(0px);
       -ms-transform: translateX(0px);
           transform: translateX(0px); }

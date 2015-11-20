@@ -1,6 +1,6 @@
 {
   "name": "foundation-sites",
-  "version": "6.0.0-rc.1",
+  "version": "6.0.1",
   "main": [
     "scss/foundation.scss",
     "js/foundation.js"
@@ -12,7 +12,7 @@
     "spec"
   ],
   "dependencies": {
-    "jquery": ">= 2.1.0",
+    "jquery": "~2.1.0",
     "what-input": "~1.1.2"
   }
 }

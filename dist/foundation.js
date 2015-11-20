@@ -2,7 +2,7 @@
 
 "use strict";
 
-var FOUNDATION_VERSION = '6.0.0';
+var FOUNDATION_VERSION = '6.0.1';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
@@ -33,10 +33,10 @@ var Foundation = {
    * Defines a Foundation plugin, adding it to the `Foundation` namespace and the list of plugins to initialize when reflowing.
    * @param {Object} plugin - The constructor of the plugin.
    */
-  plugin: function(plugin) {
+  plugin: function(plugin, name) {
     // Object key to use when adding to global Foundation object
     // Examples: Foundation.Reveal, Foundation.OffCanvas
-    var className = functionName(plugin);
+    var className = (name || functionName(plugin));
     // Object key to use when storing the plugin, also used to create the identifying data attribute for the plugin
     // Examples: data-reveal, data-off-canvas
     var attrName  = hyphenate(className);
@@ -2011,7 +2011,7 @@ Foundation.Motion = Motion;
     //TODO this...
   };
 
-  Foundation.plugin(Abide);
+  Foundation.plugin(Abide, 'Abide');
 
   // Exports for AMD/Browserify
   if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')
@@ -2247,7 +2247,7 @@ Foundation.Motion = Motion;
     Foundation.unregisterPlugin(this);
   };
 
-  Foundation.plugin(Accordion);
+  Foundation.plugin(Accordion, 'Accordion');
 }(jQuery, window.Foundation);
 
 /**
@@ -2508,7 +2508,7 @@ Foundation.Motion = Motion;
     Foundation.unregisterPlugin(this);
   };
 
-  Foundation.plugin(AccordionMenu);
+  Foundation.plugin(AccordionMenu, 'AccordionMenu');
 }(jQuery, window.Foundation);
 
 /**
@@ -2825,7 +2825,7 @@ Foundation.Motion = Motion;
 
     Foundation.unregisterPlugin(this);
   };
-  Foundation.plugin(Drilldown);
+  Foundation.plugin(Drilldown, 'Drilldown');
 }(jQuery, window.Foundation);
 
 /**
@@ -3146,7 +3146,7 @@ Foundation.Motion = Motion;
     Foundation.unregisterPlugin(this);
   };
 
-  Foundation.plugin(Dropdown);
+  Foundation.plugin(Dropdown, 'Dropdown');
 }(jQuery, window.Foundation);
 
 /**
@@ -3328,25 +3328,26 @@ Foundation.Motion = Motion;
     var _this = this;
 
     if(this.options.clickOpen){
-      $elem.children('a').on('click.zf.dropdownmenu touchend.zf.dropdownmenu', function(e){
-        if($(e.target).parent('li').hasClass('has-submenu')){
-          e.preventDefault();
-          e.stopPropagation();
-        }else{
-          return;
-        }
+      $elem.off('click.zf.dropdownmenu')
+          .on('click.zf.dropdownmenu', function(e){
+            if(!$(this).hasClass('is-dropdown-submenu-parent')){ return; }
 
-        if($elem.data('isClick')){
-          _this._hide($elem);
-        }else{
-          _this._hideOthers($elem);
-          _this._show($elem);
-          $elem.data('isClick', true).parentsUntil('[data-dropdown-menu]', '.has-submenu').data('isClick', true);
-          if(_this.options.closeOnClick){
-            _this._addBodyHandler();
-          }
-        }
-      });
+            e.preventDefault();
+            e.stopPropagation();
+
+            if($elem.data('isClick')){
+              _this._hide($elem);
+            }else{
+              _this._hideOthers($elem);
+              _this._show($elem);
+              $elem.data('isClick', true)
+                  .parentsUntil('[data-dropdown-menu]', '.is-dropdown-submenu-parent')
+                  .data('isClick', true);
+              if(_this.options.closeOnClick){
+                _this._addBodyHandler();
+              }
+            }
+          });
     }
 
     if(!this.options.disableHover){
@@ -3608,7 +3609,8 @@ Foundation.Motion = Motion;
     Foundation.Nest.Burn(this.$element, 'dropdown');
     Foundation.unregisterPlugin(this);
   };
-  Foundation.plugin(DropdownMenu);
+
+  Foundation.plugin(DropdownMenu, 'DropdownMenu');
 
   var checkClass = function($elem){
     return $elem.hasClass('is-active');
@@ -3762,7 +3764,7 @@ Foundation.Motion = Motion;
     //TODO this.
   };
 
-  Foundation.plugin(Equalizer);
+  Foundation.plugin(Equalizer, 'Equalizer');
 
   // Exports for AMD/Browserify
   if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')
@@ -3947,7 +3949,7 @@ Foundation.Motion = Motion;
   Interchange.prototype.destroy = function(){
     //TODO this.
   };
-  Foundation.plugin(Interchange);
+  Foundation.plugin(Interchange, 'Interchange');
 
   // Exports for AMD/Browserify
   if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')
@@ -4153,7 +4155,7 @@ Foundation.Motion = Motion;
 
     Foundation.unregisterPlugin(this);
   };
-  Foundation.plugin(Magellan);
+  Foundation.plugin(Magellan, 'Magellan');
 
   // Exports for AMD/Browserify
   if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')
@@ -4483,7 +4485,7 @@ OffCanvas.prototype.destroy = function(){
   //TODO make this...
 };
 
-Foundation.plugin(OffCanvas);
+Foundation.plugin(OffCanvas, 'OffCanvas');
 
 }(jQuery, Foundation);
 
@@ -4882,7 +4884,7 @@ Foundation.plugin(OffCanvas);
     Foundation.unregisterPlugin(this);
   };
 
-  Foundation.plugin(Orbit);
+  Foundation.plugin(Orbit, 'Orbit');
 
 }(jQuery, window.Foundation);
 
@@ -5028,7 +5030,7 @@ Foundation.plugin(OffCanvas);
     $(window).off('.zf.ResponsiveMenu');
     Foundation.unregisterPlugin(this);
   };
-  Foundation.plugin(ResponsiveMenu);
+  Foundation.plugin(ResponsiveMenu, 'ResponsiveMenu');
 
 }(Foundation, jQuery);
 
@@ -5135,7 +5137,7 @@ ResponsiveToggle.prototype.toggleMenu = function() {
 ResponsiveToggle.prototype.destroy = function(){
   //TODO this...
 };
-Foundation.plugin(ResponsiveToggle);
+Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
 
 }(jQuery, Foundation);
 
@@ -5605,7 +5607,7 @@ Foundation.plugin(ResponsiveToggle);
     Foundation.unregisterPlugin(this);
   };
 
-  Foundation.plugin(Reveal);
+  Foundation.plugin(Reveal, 'Reveal');
 
   // Exports for AMD/Browserify
   if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')
@@ -6066,7 +6068,7 @@ Foundation.plugin(ResponsiveToggle);
      Foundation.unregisterPlugin(this);
    };
 
-  Foundation.plugin(Slider);
+  Foundation.plugin(Slider, 'Slider');
 
   function percent(frac, num){
     return (frac / num);
@@ -6540,7 +6542,7 @@ Foundation.plugin(ResponsiveToggle);
   function emCalc(em){
     return parseInt(window.getComputedStyle(document.body, null).fontSize, 10) * em;
   }
-  Foundation.plugin(Sticky);
+  Foundation.plugin(Sticky, 'Sticky');
 }(jQuery, window.Foundation);
 
 /**
@@ -6842,7 +6844,7 @@ Foundation.plugin(ResponsiveToggle);
     Foundation.unregisterPlugin(this);
   };
 
-  Foundation.plugin(Tabs);
+  Foundation.plugin(Tabs, 'Tabs');
 
   function checkClass($elem){
     return $elem.hasClass('is-active');
@@ -7009,7 +7011,7 @@ Foundation.plugin(ResponsiveToggle);
     Foundation.unregisterPlugin(this);
   };
 
-  Foundation.plugin(Toggler);
+  Foundation.plugin(Toggler, 'Toggler');
 
   // Exports for AMD/Browserify
   if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')
@@ -7448,7 +7450,7 @@ Foundation.plugin(ResponsiveToggle);
    * TODO utilize resize event trigger
    */
 
-  Foundation.plugin(Tooltip);
+  Foundation.plugin(Tooltip, 'Tooltip');
 }(jQuery, window.document, window.Foundation);
 
 ;(function(root, factory) {
