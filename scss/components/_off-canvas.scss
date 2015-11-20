@@ -31,7 +31,7 @@ $offcanvas-transition-timing: ease;
 $offcanvas-exit-background: rgba($white, 0.25);
 
 /// CSS class used for the main content area. The off-canvas mixins use this to target the page body.
-$maincontent-class: 'off-canvas-content';
+$maincontent-class: 'main-content';
 
 /// Box shadow to place under the main content area. This shadow overlaps the off-canvas menus.
 /// @type Shadow
@@ -61,7 +61,7 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5);
   }
 
   // Container for page content
-  .off-canvas-content {
+  .main-content {
     min-height: 100%;
     background: $body-background;
     transition: transform $offcanvas-transition-length $offcanvas-transition-timing;

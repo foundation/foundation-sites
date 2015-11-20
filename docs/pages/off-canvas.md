@@ -23,16 +23,16 @@ To start, create two wrappers to house the page. These are necessary to prevent 
 </body>
 ```
 
-Inside these wrapper, create an off-canvas menu with the class `.off-canvas` and the attribute `data-off-canvas`. The menu also needs a positioning class, which can be `.position-left` or `.position-right`. Lastly, make sure the off-cavnas has a unique ID so it can be targeted.
+Inside these wrapper, create an off-canvas menu with the class `.off-canvas` and the attribute `data-off-canvas`. The menu also needs a positioning class, which can be `.position-left` or `.position-right`. Lastly, make sure the off-canvas has a unique ID so it can be targeted.
 
-Along with the menu, the main content of your page will be housed in its own container with the class `.off-canvas-content` and attribute `data-off-canvas`.
+Along with the menu, the main content of your page will be housed in its own container with the class `.main-content` and attribute `data-off-canvas`.
 
 ```html
 <body>
   <div class="off-canvas-wrapper">
     <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
       <div class="off-canvas position-left" id="offCanvas" data-off-canvas data-position="left"></div>
-      <div class="off-canvas-content" data-off-canvas-content></div>
+      <div class="main-content" data-off-canvas-content></div>
     </div>
   </div>
 </body>
