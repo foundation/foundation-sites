@@ -40,7 +40,10 @@
 
 /// Disable the default behavior of the last column in a row aligning to the opposite edge.
 @mixin grid-column-end() {
-  float: $global-left;
+  // This extra specificity is required for the property to be applied
+  &:last-child {
+    float: $global-left;
+  }
 }
 
 /// Shorthand for `grid-column-position()`.
