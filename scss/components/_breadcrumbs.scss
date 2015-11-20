@@ -8,35 +8,35 @@
 
 /// Margin around a breadcrumbs container.
 /// @type Number
-$breadcrumbs-margin: 0 0 $global-margin 0;
+$breadcrumbs-margin: 0 0 $global-margin 0 !default;
 
 /// Font size of breadcrumb links.
 /// @type Number
-$breadcrumbs-item-font-size: rem-calc(11);
+$breadcrumbs-item-font-size: rem-calc(11) !default;
 
 /// Color of breadcrumb links.
 /// @type Color
-$breadcrumbs-item-color: $primary-color;
+$breadcrumbs-item-color: $primary-color !default;
 
 /// Color of the active breadcrumb link.
 /// @type Color
-$breadcrumbs-item-color-current: $black;
+$breadcrumbs-item-color-current: $black !default;
 
 /// Opacity of disabled breadcrumb links.
 /// @type Number
-$breadcrumbs-item-color-disabled: $medium-gray;
+$breadcrumbs-item-color-disabled: $medium-gray !default;
 
 /// Margin between breadcrumb items.
 /// @type Number
-$breadcrumbs-item-margin: 0.75rem;
+$breadcrumbs-item-margin: 0.75rem !default;
 
 /// If `true`, makes breadcrumb links uppercase.
 /// @type Boolean
-$breadcrumbs-item-uppercase: true;
+$breadcrumbs-item-uppercase: true !default;
 
 /// If `true`, adds a slash between breadcrumb links.
 /// @type Boolean
-$breadcrumbs-item-slash: true;
+$breadcrumbs-item-slash: true !default;
 
 /// Adds styles for a breadcrumbs container, along with the styles for the `<li>` and `<a>` elements inside of it.
 @mixin breadcrumbs-container {
