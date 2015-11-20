@@ -67,7 +67,7 @@
   padding-left: $gutter;
   padding-right: $gutter;
 
-  &:last-child:not(:first-child) {
+  &:last-child:not(:first-child):not(.end) {
     float: $global-right;
   }
 }
