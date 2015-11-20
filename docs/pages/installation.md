@@ -11,7 +11,7 @@ Yeti Launch is our Mac app for quickly spinning up blank projects for any of the
 
 ### Command-Line Tool
 
-Not a fan of GUIs? The Node-powered Foundation CLI can install the same templae projects for you. Install it with npm:
+Not a fan of GUIs? The Node-powered Foundation CLI can install the same template projects for you. Install it with npm:
 
 ```bash
 npm install --global foundation-cli
