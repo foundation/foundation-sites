@@ -106,7 +106,7 @@ $menu-expand-max: 6 !default;
 /// @param {Boolean} $base [true] - Set to `false` to prevent the shared CSS between side- and top-aligned icons from being printed. Set this to `false` if you're calling the mixin multiple times on the same element.
 @mixin menu-icons($position: side, $base: true) {
   @if $base {
-    > li > a, {
+    > li > a {
       > img,
       > i {
         vertical-align: middle;
