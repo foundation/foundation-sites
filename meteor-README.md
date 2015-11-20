@@ -66,7 +66,7 @@ Or you can comment out the components you don't need:
 
 ### 3. Overwrite Foundation settings
 
-If you want you can coppy `_settings.scss` file into your project. You can change settings and import it in your main .scss file (in your app):
+If you want you can copy `_settings.scss` file into your project. You can change settings and import it in your main .scss file (in your app):
 
 ```
 @import 'settings'; // example when the _settings.scss file is in the same folder as your main .scss file

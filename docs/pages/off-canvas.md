@@ -50,7 +50,7 @@ To create a click trigger that opens the menu, add the attribute `data-open` or 
 
 ## Multiple Menus
 
-A design can have two menus: one on the left, and one on the right. Be sure that both menus come *before* the `.main-content` wrapper&mdash;this is required for the CSS to apply correctly.
+A design can have two menus: one on the left, and one on the right. Be sure that both menus come *before* the `.off-canvas-content` wrapper&mdash;this is required for the CSS to apply correctly.
 
 ```html
 <body>
@@ -58,7 +58,7 @@ A design can have two menus: one on the left, and one on the right. Be sure that
     <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
       <div class="off-canvas position-left" id="offCanvas" data-off-canvas></div>
       <div class="off-canvas position-right" id="offCanvas" data-off-canvas></div>
-      <div class="main-content" data-off-canvas-content></div>
+      <div class="off-canvas-content" data-off-canvas-content></div>
     </div>
   </div>
 </body>
@@ -91,7 +91,7 @@ If you need a simple title bar to toggle the off-canvas, `.title-bar` is here to
 
 The left- and right-hand off-canvas panes can be set to be persistent on larger screens. Add the class `.reveal-for-medium` or `.reveal-for-large` to the off-canvas menu.
 
-The main content area (`.main-content`) will be padded to the left or right equal to the width of the container.
+The main content area (`.off-canvas-content`) will be padded to the left or right equal to the width of the container.
 
 <div class="warning callout">
   <p>The slide in/out of the plugin still works when these classes are active. If you use this feature on a larger screen, be sure to hide any click triggers on those larger breakpoints as well. Foundation's <a href="visibility.html">visibility classes</a> can help you with that.</p>
