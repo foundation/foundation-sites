@@ -203,22 +203,22 @@
 
     if(!this.options.disableHover){
       //add ability for all menu items to close an open menu on the same level//
-      this.$menuItems.off('mouseenter.zf.dropdownmenu')
-          .on('mouseenter.zf.dropdownmenu', function(e){
-            var $el = $(this);
-            if(!$el.hasClass('is-active')){
-              _this._hideOthers($el);
-            }
-          });
-      //elements with submenus
-      $elem.on('mouseenter.zf.dropdownmenu', function(e){
-        clearTimeout($elem.closeTimer);
-        if(!$elem.hasClass('is-active')){
-          $elem.openTimer = setTimeout(function(){
-              // _this._hideOthers($elem);
-              _this._show($elem);
-          }, _this.options.hoverDelay);
+      this.$menuItems.on('mouseenter.zf.dropdownmenu', function(e){
+        var $el = $(this);
+        if(!$el.hasClass('is-active')){
+          _this._hideOthers($el);
         }
+      });
+      //elements with submenus
+      $elem.off('mouseenter.zf.dropdownmenu')
+        .on('mouseenter.zf.dropdownmenu', function(e){
+          clearTimeout($elem.closeTimer);
+          if(!$elem.hasClass('is-active')){
+            $elem.openTimer = setTimeout(function(){
+                // _this._hideOthers($elem);
+                _this._show($elem);
+            }, _this.options.hoverDelay);
+          }
       }).on('mouseleave.zf.dropdownmenu', function(e){
         if(!$elem.data('isClick') && _this.options.autoclose){
         clearTimeout($elem.openTimer);
