@@ -465,10 +465,10 @@ button {
   padding-right: 0.9375rem; }
   .column:last-child:not(:first-child), .columns:last-child:not(:first-child) {
     float: right; }
-  .column.end, .end.columns {
+  .column.end:last-child, .end.columns:last-child {
     float: left; }
 
-.column.row, .row.columns {
+.column.row.row, .row.row.columns {
   float: none; }
 
 .small-1 {
@@ -638,6 +638,8 @@ button {
     clear: none; }
   .small-up-1 .column:nth-of-type(1n+1), .small-up-1 .columns:nth-of-type(1n+1) {
     clear: both; }
+  .small-up-1 .column:last-child, .small-up-1 .columns:last-child {
+    float: left; }
 
 .small-up-2 .column, .small-up-2 .columns {
   width: 50%;
@@ -646,6 +648,8 @@ button {
     clear: none; }
   .small-up-2 .column:nth-of-type(2n+1), .small-up-2 .columns:nth-of-type(2n+1) {
     clear: both; }
+  .small-up-2 .column:last-child, .small-up-2 .columns:last-child {
+    float: left; }
 
 .small-up-3 .column, .small-up-3 .columns {
   width: 33.33333%;
@@ -654,6 +658,8 @@ button {
     clear: none; }
   .small-up-3 .column:nth-of-type(3n+1), .small-up-3 .columns:nth-of-type(3n+1) {
     clear: both; }
+  .small-up-3 .column:last-child, .small-up-3 .columns:last-child {
+    float: left; }
 
 .small-up-4 .column, .small-up-4 .columns {
   width: 25%;
@@ -662,6 +668,8 @@ button {
     clear: none; }
   .small-up-4 .column:nth-of-type(4n+1), .small-up-4 .columns:nth-of-type(4n+1) {
     clear: both; }
+  .small-up-4 .column:last-child, .small-up-4 .columns:last-child {
+    float: left; }
 
 .small-up-5 .column, .small-up-5 .columns {
   width: 20%;
@@ -670,6 +678,8 @@ button {
     clear: none; }
   .small-up-5 .column:nth-of-type(5n+1), .small-up-5 .columns:nth-of-type(5n+1) {
     clear: both; }
+  .small-up-5 .column:last-child, .small-up-5 .columns:last-child {
+    float: left; }
 
 .small-up-6 .column, .small-up-6 .columns {
   width: 16.66667%;
@@ -678,6 +688,8 @@ button {
     clear: none; }
   .small-up-6 .column:nth-of-type(6n+1), .small-up-6 .columns:nth-of-type(6n+1) {
     clear: both; }
+  .small-up-6 .column:last-child, .small-up-6 .columns:last-child {
+    float: left; }
 
 .column.small-centered, .small-centered.columns {
   float: none;
@@ -813,6 +825,8 @@ button {
       clear: none; }
     .medium-up-1 .column:nth-of-type(1n+1), .medium-up-1 .columns:nth-of-type(1n+1) {
       clear: both; }
+    .medium-up-1 .column:last-child, .medium-up-1 .columns:last-child {
+      float: left; }
   .medium-up-2 .column, .medium-up-2 .columns {
     width: 50%;
     float: left; }
@@ -820,6 +834,8 @@ button {
       clear: none; }
     .medium-up-2 .column:nth-of-type(2n+1), .medium-up-2 .columns:nth-of-type(2n+1) {
       clear: both; }
+    .medium-up-2 .column:last-child, .medium-up-2 .columns:last-child {
+      float: left; }
   .medium-up-3 .column, .medium-up-3 .columns {
     width: 33.33333%;
     float: left; }
@@ -827,6 +843,8 @@ button {
       clear: none; }
     .medium-up-3 .column:nth-of-type(3n+1), .medium-up-3 .columns:nth-of-type(3n+1) {
       clear: both; }
+    .medium-up-3 .column:last-child, .medium-up-3 .columns:last-child {
+      float: left; }
   .medium-up-4 .column, .medium-up-4 .columns {
     width: 25%;
     float: left; }
@@ -834,6 +852,8 @@ button {
       clear: none; }
     .medium-up-4 .column:nth-of-type(4n+1), .medium-up-4 .columns:nth-of-type(4n+1) {
       clear: both; }
+    .medium-up-4 .column:last-child, .medium-up-4 .columns:last-child {
+      float: left; }
   .medium-up-5 .column, .medium-up-5 .columns {
     width: 20%;
     float: left; }
@@ -841,6 +861,8 @@ button {
       clear: none; }
     .medium-up-5 .column:nth-of-type(5n+1), .medium-up-5 .columns:nth-of-type(5n+1) {
       clear: both; }
+    .medium-up-5 .column:last-child, .medium-up-5 .columns:last-child {
+      float: left; }
   .medium-up-6 .column, .medium-up-6 .columns {
     width: 16.66667%;
     float: left; }
@@ -848,6 +870,8 @@ button {
       clear: none; }
     .medium-up-6 .column:nth-of-type(6n+1), .medium-up-6 .columns:nth-of-type(6n+1) {
       clear: both; }
+    .medium-up-6 .column:last-child, .medium-up-6 .columns:last-child {
+      float: left; }
   .column.medium-centered, .medium-centered.columns {
     float: none;
     margin-left: auto;
@@ -981,6 +1005,8 @@ button {
       clear: none; }
     .large-up-1 .column:nth-of-type(1n+1), .large-up-1 .columns:nth-of-type(1n+1) {
       clear: both; }
+    .large-up-1 .column:last-child, .large-up-1 .columns:last-child {
+      float: left; }
   .large-up-2 .column, .large-up-2 .columns {
     width: 50%;
     float: left; }
@@ -988,6 +1014,8 @@ button {
       clear: none; }
     .large-up-2 .column:nth-of-type(2n+1), .large-up-2 .columns:nth-of-type(2n+1) {
       clear: both; }
+    .large-up-2 .column:last-child, .large-up-2 .columns:last-child {
+      float: left; }
   .large-up-3 .column, .large-up-3 .columns {
     width: 33.33333%;
     float: left; }
@@ -995,6 +1023,8 @@ button {
       clear: none; }
     .large-up-3 .column:nth-of-type(3n+1), .large-up-3 .columns:nth-of-type(3n+1) {
       clear: both; }
+    .large-up-3 .column:last-child, .large-up-3 .columns:last-child {
+      float: left; }
   .large-up-4 .column, .large-up-4 .columns {
     width: 25%;
     float: left; }
@@ -1002,6 +1032,8 @@ button {
       clear: none; }
     .large-up-4 .column:nth-of-type(4n+1), .large-up-4 .columns:nth-of-type(4n+1) {
       clear: both; }
+    .large-up-4 .column:last-child, .large-up-4 .columns:last-child {
+      float: left; }
   .large-up-5 .column, .large-up-5 .columns {
     width: 20%;
     float: left; }
@@ -1009,6 +1041,8 @@ button {
       clear: none; }
     .large-up-5 .column:nth-of-type(5n+1), .large-up-5 .columns:nth-of-type(5n+1) {
       clear: both; }
+    .large-up-5 .column:last-child, .large-up-5 .columns:last-child {
+      float: left; }
   .large-up-6 .column, .large-up-6 .columns {
     width: 16.66667%;
     float: left; }
@@ -1016,6 +1050,8 @@ button {
       clear: none; }
     .large-up-6 .column:nth-of-type(6n+1), .large-up-6 .columns:nth-of-type(6n+1) {
       clear: both; }
+    .large-up-6 .column:last-child, .large-up-6 .columns:last-child {
+      float: left; }
   .column.large-centered, .large-centered.columns {
     float: none;
     margin-left: auto;
@@ -1636,7 +1672,7 @@ select {
   .hide-for-small-only {
     display: none !important; } }
 
-@media screen and (max-width: -0.0625em), screen and (min-width: 40em) {
+@media screen and (max-width: 0em), screen and (min-width: 40em) {
   .show-for-small-only {
     display: none !important; } }
 

@@ -2,7 +2,7 @@
 
 "use strict";
 
-var FOUNDATION_VERSION = '6.0.1';
+var FOUNDATION_VERSION = '6.0.2';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
@@ -3020,12 +3020,21 @@ Foundation.Motion = Motion;
     });
 
     if(this.options.hover){
-      clearTimeout(_this.timeout);
-      this.$anchor.on('mouseenter.zf.dropdown mouseleave.zf.dropdown', function(){
-        _this.timeOut = setTimeout(function(){
-          _this.toggle();
-        }, _this.options.hoverDelay);
-      });
+      this.$anchor.off('mouseenter.zf.dropdown mouseleave.zf.dropdown')
+          .on('mouseenter.zf.dropdown', function(){
+            console.log('hover');
+            clearTimeout(_this.timeout);
+            _this.timeOut = setTimeout(function(){
+              _this.open();
+              _this.$anchor.data('hover', true);
+            }, _this.options.hoverDelay);
+          }).on('mouseleave.zf.dropdown', function(){
+            clearTimeout(_this.timeout);
+            _this.timeOut = setTimeout(function(){
+              _this.close();
+              _this.$anchor.data('hover', false);
+            }, _this.options.hoverDelay);
+          });
     }
     this.$anchor.add(this.$element).on('keydown.zf.dropdown', function(e) {
 
@@ -3130,6 +3139,7 @@ Foundation.Motion = Motion;
    */
   Dropdown.prototype.toggle = function(){
     if(this.$element.hasClass('is-open')){
+      if(this.$anchor.data('hover')) return;
       this.close();
     }else{
       this.open();
@@ -3293,7 +3303,7 @@ Foundation.Motion = Motion;
       $tab.attr({
         'role': 'menuitem',
         'tabindex': 0,
-        'title': $tab.children('a:first-child').text()/*.match(/\w/ig).join('')*/
+        'aria-label': $tab.children('a:first-child').text()/*.match(/\w/ig).join('')*/
       }).children('a').attr('tabindex', -1);//maybe add a more specific regex to match alphanumeric characters and join them appropriately
       if($tab.children('[data-submenu]')){
         $tab.attr('aria-haspopup', true);
@@ -3325,17 +3335,19 @@ Foundation.Motion = Motion;
    * @function
    */
   DropdownMenu.prototype._events = function($elem){
-    var _this = this;
+    var _this = this,
+        isTouch = window.ontouchstart !== undefined;
 
-    if(this.options.clickOpen){
+    if(this.options.clickOpen || isTouch){
       $elem.off('click.zf.dropdownmenu')
           .on('click.zf.dropdownmenu', function(e){
             if(!$(this).hasClass('is-dropdown-submenu-parent')){ return; }
-
+            var hasClicked = $elem.data('isClick');
+            if(isTouch && hasClicked) return;
             e.preventDefault();
             e.stopPropagation();
 
-            if($elem.data('isClick')){
+            if(hasClicked){
               _this._hide($elem);
             }else{
               _this._hideOthers($elem);
@@ -3352,12 +3364,13 @@ Foundation.Motion = Motion;
 
     if(!this.options.disableHover){
       //add ability for all menu items to close an open menu on the same level//
-      this.$menuItems.on('mouseenter.zf.dropdownmenu', function(e){
-        var $el = $(this);
-        if(!$el.hasClass('is-active')){
-          _this._hideOthers($el);
-        }
-      });
+      this.$menuItems.off('mouseenter.zf.dropdownmenu')
+          .on('mouseenter.zf.dropdownmenu', function(e){
+            var $el = $(this);
+            if(!$el.hasClass('is-active')){
+              _this._hideOthers($el);
+            }
+          });
       //elements with submenus
       $elem.on('mouseenter.zf.dropdownmenu', function(e){
         clearTimeout($elem.closeTimer);
@@ -4636,7 +4649,12 @@ Foundation.plugin(OffCanvas, 'OffCanvas');
   Orbit.prototype._init = function(){
     this.$wrapper = this.$element.find('.' + this.options.containerClass);
     this.$slides = this.$element.find('.' + this.options.slideClass);
-    var $images = this.$element.find('img');
+    var $images = this.$element.find('img'),
+        initActive = this.$slides.filter('.is-active');
+
+    if(!initActive.length){
+      this.$slides.eq(0).addClass('is-active');
+    }
 
     if($images.length){
       Foundation.onImagesLoaded($images, this._prepareForOrbit.bind(this));
@@ -5052,7 +5070,7 @@ Foundation.plugin(OffCanvas, 'OffCanvas');
  */
 function ResponsiveToggle(element, options) {
   this.$element = $(element);
-  this.options = $.extend({}, ResponsiveToggle.defaults, options);
+  this.options = $.extend({}, ResponsiveToggle.defaults, this.$element.data(), options);
 
   this._init();
   this._events();
@@ -7452,121 +7470,3 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
 
   Foundation.plugin(Tooltip, 'Tooltip');
 }(jQuery, window.document, window.Foundation);
-
-;(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    define(['jquery'], factory);
-  } else if (typeof exports === 'object') {
-    module.exports = factory(require('jquery'));
-  } else {
-    root.MotionUI = factory(root.jQuery);
-  }
-}(this, function($) {
-'use strict';
-
-// Polyfill for requestAnimationFrame
-(function() {
-  if (!Date.now)
-    Date.now = function() { return new Date().getTime(); };
-
-  var vendors = ['webkit', 'moz'];
-  for (var i = 0; i < vendors.length && !window.requestAnimationFrame; ++i) {
-      var vp = vendors[i];
-      window.requestAnimationFrame = window[vp+'RequestAnimationFrame'];
-      window.cancelAnimationFrame = (window[vp+'CancelAnimationFrame']
-                                 || window[vp+'CancelRequestAnimationFrame']);
-  }
-  if (/iP(ad|hone|od).*OS 6/.test(window.navigator.userAgent)
-    || !window.requestAnimationFrame || !window.cancelAnimationFrame) {
-    var lastTime = 0;
-    window.requestAnimationFrame = function(callback) {
-        var now = Date.now();
-        var nextTime = Math.max(lastTime + 16, now);
-        return setTimeout(function() { callback(lastTime = nextTime); },
-                          nextTime - now);
-    };
-    window.cancelAnimationFrame = clearTimeout;
-  }
-})();
-
-var initClasses   = ['mui-enter', 'mui-leave'];
-var activeClasses = ['mui-enter-active', 'mui-leave-active'];
-
-// Find the right "transitionend" event for this browser
-var endEvent = (function() {
-  var transitions = {
-    'transition': 'transitionend',
-    'WebkitTransition': 'webkitTransitionEnd',
-    'MozTransition': 'transitionend',
-    'OTransition': 'otransitionend'
-  }
-  var elem = window.document.createElement('div');
-
-  for (var t in transitions) {
-    if (typeof elem.style[t] !== 'undefined') {
-      return transitions[t];
-    }
-  }
-
-  return null;
-})();
-
-function animate(isIn, element, animation, cb) {
-  element = $(element).eq(0);
-
-  if (!element.length) return;
-
-  if (endEvent === null) {
-    isIn ? element.show() : element.hide();
-    cb();
-    return;
-  }
-
-  var initClass = isIn ? initClasses[0] : initClasses[1];
-  var activeClass = isIn ? activeClasses[0] : activeClasses[1];
-
-  // Set up the animation
-  reset();
-  element.addClass(animation);
-  element.css('transition', 'none');
-  requestAnimationFrame(function() {
-    element.addClass(initClass);
-    if (isIn) element.show();
-  });
-
-  // Start the animation
-  requestAnimationFrame(function() {
-    element[0].offsetWidth;
-    element.css('transition', '');
-    element.addClass(activeClass);
-  });
-
-  // Clean up the animation when it finishes
-  element.one('transitionend', finish);
-
-  // Hides the element (for out animations), resets the element, and runs a callback
-  function finish() {
-    if (!isIn) element.hide();
-    reset();
-    if (cb) cb.apply(element);
-  }
-
-  // Resets transitions and removes motion-specific classes
-  function reset() {
-    element[0].style.transitionDuration = 0;
-    element.removeClass(initClass + ' ' + activeClass + ' ' + animation);
-  }
-}
-
-var MotionUI = {
-  animateIn: function(element, animation, cb) {
-    animate(true, element, animation, cb);
-  },
-
-  animateOut: function(element, animation, cb) {
-    animate(false, element, animation, cb);
-  }
-}
-
-return MotionUI;
-}));
