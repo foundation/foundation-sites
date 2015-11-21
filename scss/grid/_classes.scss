@@ -70,7 +70,8 @@
   }
 
   // Column row
-  .#{$column}.#{$row} {
+  // The double .row class is needed to bump up the specificity
+  .#{$column}.#{$row}.#{$row} {
     float: none;
   }
 

@@ -6,3 +6,10 @@ docs
 gulp
 lib
 spec
+bower.json
+composer.json
+CONTRIBUTING.md
+gulpfile.js
+meteor-README.md
+package.js
+sache.json

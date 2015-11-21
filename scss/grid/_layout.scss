@@ -24,5 +24,9 @@
     &:nth-of-type(#{$n}n+1) {
       clear: both;
     }
+
+    &:last-child {
+      float: left;
+    }
   }
 }

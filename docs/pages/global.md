@@ -101,17 +101,3 @@ To color a component, add the name of the color as a class.
   <p>Error fetching stick.</p>
 </div>
 ```
-
----
-
-## Namespacing
-
-The data attributes used to initialize Foundation plugins can be globally namespaced by setting the `$global-namespace` Sass variable.
-
-```html
-<!-- $global-namespace: false -->
-<div data-reveal></div>
-
-<!-- $global-namespace: 'zf' -->
-<div data-zf-reveal></div>
-```

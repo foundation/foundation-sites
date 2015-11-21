@@ -8,8 +8,16 @@
   "ignore": [
     "config",
     "docs",
+    "gulp",
     "lib",
-    "spec"
+    "test",
+    "composer.json",
+    "CONTRIBUTING.md",
+    "gulpfile.js",
+    "meteor-README.md",
+    "package.js",
+    "package.json",
+    "sache.json"
   ],
   "dependencies": {
     "jquery": "~2.1.0",

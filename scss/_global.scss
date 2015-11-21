@@ -102,10 +102,6 @@ $global-weight-bold: bold !default;
 /// @type Number
 $global-radius: 0 !default;
 
-/// Namespace for the data attributes used to initialize Foundation plugins.
-/// @type String | Boolean
-$global-namespace: false !default;
-
 /// Sets the text direction of the CSS. Can be either `ltr` or `rtl`.
 $global-text-direction: ltr !default;
 
