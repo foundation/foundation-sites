@@ -462,7 +462,7 @@
     Foundation.unregisterPlugin(this);
   };
 
-  Foundation.plugin(DropdownMenu, 'DropdownMenu');
+  // Foundation.plugin(DropdownMenu, 'DropdownMenu');
 
   var checkClass = function($elem){
     return $elem.hasClass('is-active');
