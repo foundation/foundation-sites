@@ -37,7 +37,7 @@ If you're using Yeti Launch or the CLI to create a project, the Sass compilation
 To get started, first install the framework files using Bower or npm.
 
 ```bash
-npm install foundation-save --save
+npm install foundation-sites --save
 ```
 
 ### Compiling Manually
