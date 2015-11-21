@@ -186,7 +186,7 @@
             e.preventDefault();
             e.stopPropagation();
 
-            if($elem.data('isClick')){
+            if(hasClicked){
               _this._hide($elem);
             }else{
               _this._hideOthers($elem);
@@ -203,12 +203,13 @@
 
     if(!this.options.disableHover){
       //add ability for all menu items to close an open menu on the same level//
-      this.$menuItems.on('mouseenter.zf.dropdownmenu', function(e){
-        var $el = $(this);
-        if(!$el.hasClass('is-active')){
-          _this._hideOthers($el);
-        }
-      });
+      this.$menuItems.off('mouseenter.zf.dropdownmenu')
+          .on('mouseenter.zf.dropdownmenu', function(e){
+            var $el = $(this);
+            if(!$el.hasClass('is-active')){
+              _this._hideOthers($el);
+            }
+          });
       //elements with submenus
       $elem.on('mouseenter.zf.dropdownmenu', function(e){
         clearTimeout($elem.closeTimer);
