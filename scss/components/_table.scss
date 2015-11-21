@@ -130,7 +130,7 @@ $show-header-for-stacked: false;
 @mixin table-scroll {
   display: block;
   width: 100%;
-  overflow-y: scroll;
+  overflow-x: scroll;
 }
 
 /// Slightly darkens the table rows on hover.
