@@ -13,8 +13,19 @@
         var $item = $(this),
             $sub = $item.children('ul');
         if($sub.length){
-          $item.addClass('has-submenu ' + hasSubClass);
-          $sub.addClass('submenu ' + subMenuClass).attr('data-submenu', '');
+          $item.addClass('has-submenu ' + hasSubClass)
+               .attr({
+                 'aria-haspopup': true,
+                 'aria-selected': false,
+                 'aria-expanded': false,
+                 'aria-label': $item.children('a:first').text()
+               });
+          $sub.addClass('submenu ' + subMenuClass)
+              .attr({
+                'data-submenu': '',
+                'aria-hidden': true,
+                'role': 'menu'
+              });
         }
         if($item.parent('[data-submenu]').length){
           $item.addClass('is-submenu-item ' + subItemClass);
