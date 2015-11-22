@@ -14,7 +14,7 @@
 ///   - A single digit will make the column span that number of columns wide, taking into account the column count of the parent row.
 ///   - A string of the format "x of y" will make a column that is *x* columns wide, assuming *y* total columns for the parent.
 ///
-/// @return {Number} A calculated percentage value.
+/// @returns {Number} A calculated percentage value.
 @function grid-column($columns) {
   $width: 0%;
 
@@ -73,6 +73,7 @@
 }
 
 /// Creates a grid column row. This is the equivalent of adding `.row` and `.column` to the same element.
+///
 /// @param {Number} $gutter [$grid-column-gutter] - Width of the gutters on either side of the column row.
 @mixin grid-column-row(
   $gutter: $grid-column-gutter
