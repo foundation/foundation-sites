@@ -23,7 +23,7 @@
 }
 
 /// Determine a top/right/bottom/right value on a padding, margin, etc. property, no matter how many values were passed in. Use this function if you need to know the specific side of a value, but don't know if the value is using a shorthand format.
-/// @param {List|Number} $val - Value to analyze. Should be a shorthand sizing property, e.g. "1em 2em 1em"
+/// @param {List|Number} $val - Value to analyze. Should be a shorthand sizing property, e.g. `1em 2em 1em`
 /// @param {Keyword} $side - Side to return. Should be `top`, `right`, `bottom`, or `left`.
 /// @returns {Number} A single value based on `$val` and `$side`.
 @function get-side($val, $side) {

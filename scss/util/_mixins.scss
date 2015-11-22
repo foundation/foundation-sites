@@ -39,7 +39,7 @@
   }
 }
 
-/// Creates a menu icon with a set width, height, number of bars, and colors. The mixin uses the height of the icon and the weight of the bars to determine spacing. <div class="docs-example-burger"></div>
+/// Creates a menu icon with a set width, height, number of bars, and colors. The mixin uses the height of the icon and the weight of the bars to determine spacing. <div class='docs-example-burger'></div>
 /// @param {Color} $color - Color to use for the icon.
 /// @param {Color} $color-hover - Color to use when the icon is hovered over.
 /// @param {Number} $width - Width of the icon.
@@ -109,7 +109,7 @@
 @mixin background-triangle($color: $black) {
   $rgb: 'rgb(#{red($color)}, #{green($color)}, #{blue($color)})';
 
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="32" height="24" viewBox="0 0 32 24"><polygon points="0,0 32,0 16,24" style="fill: #{$rgb}"></polygon></svg>');
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='32' height='24' viewBox='0 0 32 24'><polygon points='0,0 32,0 16,24' style='fill: #{$rgb}'></polygon></svg>');
 
   @media screen and (min-width:0\0) {
     @if lightness($color) < 50% {
@@ -135,7 +135,7 @@
   }
 }
 
-/// Adds CSS for a "quantity query" selector that automatically sizes elements based on how many there are inside a container.
+/// Adds CSS for a “quantity query” selector that automatically sizes elements based on how many there are inside a container.
 /// @param {Number} $max - Maximum number of items to detect. The higher this number is, the more CSS that's required to cover each number of items.
 /// @param {Keyword} $elem [li] - Tag to use for sibling selectors.
 /// @link http://alistapart.com/article/quantity-queries-for-css Quantity Queries for CSS
@@ -150,7 +150,7 @@
 
 /// Removes the focus ring around an element when a mouse input is detected.
 @mixin disable-mouse-outline {
-  [data-whatinput="mouse"] & {
+  [data-whatinput='mouse'] & {
     outline: 0;
   }
 }

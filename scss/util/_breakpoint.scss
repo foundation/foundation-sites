@@ -72,9 +72,9 @@ $breakpoint-classes: (small medium large) !default;
     $bp-max: -zf-bp-to-em($bp-max) - (1/16);
   }
 
-  // Skip media query creation if the input is "0 up" or "0 down"
+  // Skip media query creation if the input is “0 up” or “0 down”
   @if $bp > 0 or $dir == 'only' {
-    // "Only" ranges use the format "(min-width: n) and (max-width: n)"
+    // `only` ranges use the format `(min-width: n) and (max-width: n)`
     @if $dir == 'only' {
       @if $named == true {
         $str: $str + '(min-width: #{$bp})';
@@ -84,15 +84,15 @@ $breakpoint-classes: (small medium large) !default;
         }
       }
       @else {
-        @warn 'Only named media queries can have an "only" range.';
+        @warn 'Only named media queries can have an `only` range.';
       }
     }
 
-    // "Down" ranges use the format "(max-width: n)"
+    // `down` ranges use the format `(max-width: n)`
     @else if $dir == 'down' {
       $max: 0;
 
-      // For named breakpoints, subtract the breakpoint value by one "pixel", or 1/16em.
+      // For named breakpoints, subtract the breakpoint value by one “pixel”, or 1/16em.
       @if $named {
         $max: $bp-max;
       }
@@ -103,7 +103,7 @@ $breakpoint-classes: (small medium large) !default;
       $str: $str + '(max-width: #{$max})';
     }
 
-    // "Up" ranges use the format "(min-width: n)"
+    // `up` ranges use the format `(min-width: n)`
     @else if strip-unit($bp) > 0 {
       $str: $str + '(min-width: #{$bp})';
     }
@@ -119,7 +119,7 @@ $breakpoint-classes: (small medium large) !default;
 ///  - If an em value is passed, the value will be used as-is.
 /// @content
 /// @param {Keyword|Number} $value - Breakpoint name, or px, rem, or em value to process.
-/// @output If the breakpoint is "0px and larger", outputs the content as-is. Otherwise, outputs the content wrapped in a media query.
+/// @output If the breakpoint is “0px and larger”, outputs the content as-is. Otherwise, outputs the content wrapped in a media query.
 @mixin breakpoint($value) {
   $str: breakpoint($value);
 

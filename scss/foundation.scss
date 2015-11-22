@@ -49,7 +49,7 @@
 
 // These styles are applied to <meta> tags, which are read by the Foundation JavaScript
 .foundation-mq {
-  font-family: "#{-zf-bp-serialize($breakpoints)}";
+  font-family: '#{-zf-bp-serialize($breakpoints)}';
 }
 
 @mixin foundation-everything {
