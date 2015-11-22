@@ -140,7 +140,7 @@ $input-radius: $global-radius !default;
 
   // Number input styles
   [type='number'] {
-    @if not($input-number-spinners) {
+    @if not $input-number-spinners {
       -moz-appearance: textfield;
 
       [type='number']::-webkit-inner-spin-button,
