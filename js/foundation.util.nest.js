@@ -8,7 +8,7 @@
           subMenuClass = 'is-' + type + '-submenu',
           subItemClass = subMenuClass + '-item',
           hasSubClass = 'is-' + type + '-submenu-parent';
-
+      menu.find('a:first').attr('tabindex', 0);
       items.each(function(){
         var $item = $(this),
             $sub = $item.children('ul');

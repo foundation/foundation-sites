@@ -24,6 +24,9 @@ $dropdown-border: 1px solid $medium-gray !default;
 
 @mixin foundation-dropdown-menu {
   .dropdown.menu {
+    a {
+      @include disable-mouse-outline;
+    }
     .is-dropdown-submenu-parent {
       position: relative;
 
