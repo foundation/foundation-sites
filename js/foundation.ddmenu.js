@@ -24,6 +24,7 @@
     disableHover: false,
     autoclose: true,
     hoverDelay: 50,
+    clickOpen: true,
     closingTime: 500,
     alignment: 'left',
     closeOnClick: false,
@@ -59,27 +60,31 @@
         delay;
     if(this.options.clickOpen || hasTouch){
       this.$menuItems.on('click.zf.dropdownmenu', function(e){
-        // _this._handleEvent(e, this);
-        var $elem = $(this),
+
+        var $elem = $(e.target).parentsUntil('ul', '.is-dropdown-submenu-parent'),
             hasSub = $elem.hasClass(parClass),
             hasClicked = $elem.data('isClick'),
             $sub = $elem.children('.is-dropdown-submenu');
-
+            console.log('click',$elem,$(this).length );
         if(hasSub){
           if(hasClicked){
+            console.log('has clicked');
             if(hasTouch) return;
-            else _this._hide($sub);
+            else{
+            console.log('else');
+            e.preventDefault();
+            _this._hide($elem);
+            }
           }else{
             e.preventDefault();
             _this._show($elem.children('.is-dropdown-submenu'));
           }
-        }
-        $elem.data('isClick', true);
+        }else{ return; }
+        $elem/*.add($elem.parentsUntil(_this.$element, '.is-dropdown-submenu-parent'))*///.data('isClick', true);
       });
     }
-    if(!this.options.disableHover){
+    if(this.options.disableHover){
       this.$menuItems.on('mouseenter.zf.dropdownmenu', function(e){
-        // _this._handleEvent(e, this);
         var $elem = $(this),
             hasSub = $elem.hasClass(parClass);
 
@@ -145,17 +150,22 @@
       $toClose = this.$tabs.not(function(i, el){
         return i === idx;
       });
-    }else{
+    }else if($elem && $elem.length){
+      $toClose = $elem;
+    }
+    else{
       $toClose = this.$element;
     }
-
     if($toClose.length){
-      $toClose.find('.is-active').attr({
+    // console.log('toclose',$toClose);
+      $toClose.data('isClick', false).find('.is-active').attr({
         'aria-selected': false,
-        'aria-expanded': false
-      }).data('isClick', false).removeClass('is-active')
-      .end()
-      .find('.js-dropdown-active').attr({
+        'aria-expanded': false,
+      }).removeClass('is-active')
+      // .end()
+      // console.log('close',$toClose.data());
+
+      $toClose.find('.js-dropdown-active').attr({
         'aria-hidden': true
       }).removeClass('js-dropdown-active');
     }
