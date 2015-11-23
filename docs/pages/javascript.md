@@ -75,16 +75,10 @@ Foundation.Accordion.defaults.multiExpand = true;
 
 An individual instance of a plugin can also have different settings. These can be set in the HTML or in JavaScript.
 
-In the HTML, each setting can be defined as an individual data attribute.
+In the HTML, each setting can be defined as an individual data attribute. Note that camelCased options are converted to hyphenated words. In the below example, `multiExpand` becomes `data-multi-expand`.
 
 ```html
-<div data-accordion data-slidespeed="500" data-multiexpand="true"></div>
-```
-
-If that's too many attributes for you, they can be combined into one called `data-options`. Write the options as JavaScript-style key-value pairs, separated by semicolons.
-
-```html
-<div data-accordion data-options="slideSpeed: 500; multiExpand: true"></div>
+<div data-accordion data-slidespeed="500" data-multi-expand="true"></div>
 ```
 
 ---
