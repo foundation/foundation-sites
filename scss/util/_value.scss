@@ -6,12 +6,12 @@
 /// @group functions
 ////
 
-/// Determine if a value is not falsey, in CSS terms. Falsey values are `null`, `none`, `0` with any unit, or an empty list.
+/// Determine if a value is not falsey, in CSS terms. Falsey values are `null`, `none`, `0` with any unit, or an empty list. **This function was originally named `hasvalue()`. The old name for the function will be removed in Foundation 6.1.**
 ///
 /// @param {Mixed} $val - Value to check.
 ///
 /// @returns {Boolean} `true` if `$val` is not falsey.
-@function hasvalue($val) {
+@function has-value($val) {
   @if $val == null or $val == none {
     @return false;
   }
@@ -22,6 +22,12 @@
     @return false;
   }
   @return true;
+}
+
+// Remove this in 6.1.
+@function hasvalue($val) {
+  @warn 'The function hasvalue() was renamed to has-value(). The old function name will be removed in Foundation 6.1.';
+  @return has-value($val);
 }
 
 /// Determine a top/right/bottom/right value on a padding, margin, etc. property, no matter how many values were passed in. Use this function if you need to know the specific side of a value, but don't know if the value is using a shorthand format.

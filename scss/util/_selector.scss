@@ -28,7 +28,7 @@
     url
     color;
 
-  @if not hasvalue($types) {
+  @if not has-value($types) {
     $types: $all-types;
   }
 

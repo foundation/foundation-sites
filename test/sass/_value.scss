@@ -2,10 +2,10 @@
 
 @include describe('Has Value') {
   @include it('returns false if the value is not falsey') {
-    $boolean: hasvalue(true);
-    $number:  hasvalue(1px);
-    $color:   hasvalue(#000);
-    $list:    hasvalue(1px solid black);
+    $boolean: has-value(true);
+    $number:  has-value(1px);
+    $color:   has-value(#000);
+    $list:    has-value(1px solid black);
     
     @include should(expect($boolean), to(be(true)));
     @include should(expect($number),  to(be(true)));
@@ -13,10 +13,10 @@
     @include should(expect($list),    to(be(true)));
   }
   @include it('returns false if the value is falsey') {
-    $zero:   hasvalue(0px);
-    $null:   hasvalue(null);
-    $none:   hasvalue(none);
-    $empty:  hasvalue(());
+    $zero:   has-value(0px);
+    $null:   has-value(null);
+    $none:   has-value(none);
+    $empty:  has-value(());
 
     @include should(expect($zero),  to(be(false)));
     @include should(expect($null),  to(be(false)));

@@ -80,7 +80,7 @@ $input-radius: $global-radius !default;
   box-shadow: $input-shadow;
   border-radius: $input-radius;
 
-  @if hasvalue($input-transition) {
+  @if has-value($input-transition) {
     transition: $input-transition;
   }
 
@@ -91,7 +91,7 @@ $input-radius: $global-radius !default;
     outline: none;
     box-shadow: $input-shadow-focus;
 
-    @if hasvalue($input-transition) {
+    @if has-value($input-transition) {
       transition: $input-transition;
     }
   }

@@ -68,7 +68,7 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5);
     backface-visibility: hidden;
     z-index: 1;
 
-    @if hasvalue($maincontent-shadow) {
+    @if has-value($maincontent-shadow) {
       box-shadow: $maincontent-shadow;
     }
   }
