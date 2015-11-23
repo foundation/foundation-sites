@@ -24,7 +24,7 @@
     disableHover: false,
     autoclose: true,
     hoverDelay: 50,
-    clickOpen: true,
+    clickOpen: false,
     closingTime: 500,
     alignment: 'left',
     closeOnClick: false,
@@ -48,7 +48,7 @@
       subs.addClass('is-right-arrow opens-right');
     }
     if(!this.isVert){
-      this.$tabs.removeClass('is-right-arrow is-left-arrow opens-right opens-left')
+      this.$tabs.filter('.is-dropdown-submenu-parent').removeClass('is-right-arrow is-left-arrow opens-right opens-left')
           .addClass('is-down-arrow');
     }
     this._events();
@@ -58,37 +58,46 @@
         hasTouch = window.ontouchstart !== undefined,
         parClass = 'is-dropdown-submenu-parent',
         delay;
+
     if(this.options.clickOpen || hasTouch){
       this.$menuItems.on('click.zf.dropdownmenu', function(e){
 
-        var $elem = $(e.target).parentsUntil('ul', '.is-dropdown-submenu-parent'),
+        var $elem = $(e.target).parentsUntil('ul', '.' + parClass),
             hasSub = $elem.hasClass(parClass),
-            hasClicked = $elem.data('isClick'),
+            isOpen = $elem.attr('aria-expanded') === 'true',
+            hasClicked = $elem.attr('data-is-click') === 'true',
             $sub = $elem.children('.is-dropdown-submenu');
-            console.log('click',$elem,$(this).length );
+            console.log('1-click', $elem, $elem.attr('aria-expanded'));
+
         if(hasSub){
           if(hasClicked){
-            console.log('has clicked');
-            if(hasTouch) return;
+            console.log('2-has clicked');
+            if(hasTouch){ return;}
+
             else{
-            console.log('else');
+            console.log('3-else should close');
+            e.stopImmediatePropagation();
             e.preventDefault();
             _this._hide($elem);
             }
           }else{
+            console.log('4-should open');
+            e.stopImmediatePropagation();
             e.preventDefault();
             _this._show($elem.children('.is-dropdown-submenu'));
+            $elem.add($elem.parentsUntil(_this.$element, '.' + parClass)).attr('data-is-click', true);
           }
-        }else{ return; }
-        $elem/*.add($elem.parentsUntil(_this.$element, '.is-dropdown-submenu-parent'))*///.data('isClick', true);
+        }else{ console.log('5-no child');return; }
       });
     }
-    if(this.options.disableHover){
+
+    if(!this.options.disableHover){
       this.$menuItems.on('mouseenter.zf.dropdownmenu', function(e){
         var $elem = $(this),
             hasSub = $elem.hasClass(parClass);
 
         if(hasSub){
+          console.log('8-should show on hover');
           clearTimeout(delay);
           delay = setTimeout(function(){
             _this._show($elem.children('.is-dropdown-submenu'));
@@ -98,9 +107,10 @@
         var $elem = $(this),
             hasSub = $elem.hasClass(parClass);
         if(hasSub && _this.options.autoclose){
-          if($elem.data('isClick') && _this.options.clickOpen) return;
+          if($elem.attr('data-is-click') === 'true' && _this.options.clickOpen){console.log('6-should not close'); return false;}
           clearTimeout(delay);
           delay = setTimeout(function(){
+            console.log('7-closing anyway...');
             _this._hide();
           }, _this.options.closingTime);
         }
@@ -113,7 +123,7 @@
         hasSub = $elem.hasClass('is-dropdown-submenu-parent'),
         funcs = {
           'click': function(){
-            console.log('click');
+            // console.log('click');
             if(hasSub) evt.preventDefault();
             if($elem.data('isClick')) _this._hide($elem);
             else _this._show($elem.children('.is-dropdown-submenu'));
@@ -138,8 +148,9 @@
     var $sibs = $sub.parent('li.is-dropdown-submenu-parent').siblings('li.is-dropdown-submenu-parent');
 
     this._hide($sibs, idx);
-    $sub.addClass('js-dropdown-active')
-        .parent('li.is-dropdown-submenu-parent').addClass('is-active').data('isActive', true);
+    $sub.addClass('js-dropdown-active').attr({'aria-hidden': false})
+        .parent('li.is-dropdown-submenu-parent').addClass('is-active')
+        .attr({'aria-selected': true, 'aria-expanded': true})//.data('isActive', true);
 
   };
   DropdownMenu.prototype._hide = function($sibs, idx, $elem){
@@ -157,10 +168,11 @@
       $toClose = this.$element;
     }
     if($toClose.length){
-    // console.log('toclose',$toClose);
-      $toClose.data('isClick', false).find('.is-active').attr({
+    // console.log('toclose');
+      $toClose.find('.is-active').add($toClose).data('isClick', false).attr({
         'aria-selected': false,
         'aria-expanded': false,
+        'data-is-click': false
       }).removeClass('is-active')
       // .end()
       // console.log('close',$toClose.data());
