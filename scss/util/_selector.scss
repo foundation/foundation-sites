@@ -33,7 +33,7 @@
   }
 
   @each $type in $types {
-    $return: append($return, unquote('[type="#{$type}"]'), comma);
+    $return: append($return, unquote('[type=\'#{$type}\']'), comma);
   }
 
   @return $return;

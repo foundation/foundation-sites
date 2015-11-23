@@ -25,7 +25,7 @@
 
       a {
         transition: all .25s ease-in-out;
-        font-family: "zurb-logo";
+        font-family: 'zurb-logo';
         font-weight: normal;
         font-size: em-calc(18px);
         padding: 0;
@@ -81,7 +81,7 @@
   .connect-links {
     padding: 50px 0 0 0;
     border-left: 1px solid rgba(255, 255, 255, 0.2);
-    background: url("../img/icons/footer-top-icons.png") no-repeat center 0;
+    background: url('../img/icons/footer-top-icons.png') no-repeat center 0;
     height: 220px;
     margin-bottom: 30px;
 
@@ -129,19 +129,19 @@
       margin: 30px 0 0 0;
 
       &.services {
-        background: url("../img/icons/footer-studios.png") left top no-repeat;
+        background: url('../img/icons/footer-studios.png') left top no-repeat;
       }
 
       &.foundation {
-        background: url("../img/icons/footer-foundation.png") left top no-repeat;
+        background: url('../img/icons/footer-foundation.png') left top no-repeat;
       }
 
       &.apps {
-        background: url("../img/icons/footer-products.png") left top no-repeat;
+        background: url('../img/icons/footer-products.png') left top no-repeat;
       }
 
       &.expo {
-        background: url("../img/icons/footer-expo.png") left top no-repeat;
+        background: url('../img/icons/footer-expo.png') left top no-repeat;
       }
 
       span {
@@ -173,7 +173,7 @@
   .zurb-logo {
     color: #858585;
     font-weight: normal;
-    background: url("../img/icons/footer-icons.png") no-repeat 0 3px;
+    background: url('../img/icons/footer-icons.png') no-repeat 0 3px;
     padding: 23px 0 0 0 !important;
     font-size: em-calc(16px);
     display: inline-block;
@@ -234,7 +234,7 @@
       display: block;
       height: 50px;
       width: 50px;
-      background: url("../img/icons/social.png") no-repeat center 0;
+      background: url('../img/icons/social.png') no-repeat center 0;
 
       &:hover {
         opacity: 0.8;
@@ -407,11 +407,11 @@ only screen and (-o-min-device-pixel-ratio: 2 / 1),
 only screen and (-webkit-min-device-pixel-ratio: 2),
 only screen and (min-device-pixel-ratio: 2) {
   .zurb-footer-top .info-padding {
-    background-image: url("../img/icons/footer-large-icon-retina.png");
+    background-image: url('../img/icons/footer-large-icon-retina.png');
     background-size: 100px 400px;
   }
   .zurb-footer-bottom ul.home-social li a {
-    background-image: url("../img/icons/social-retina.png");
+    background-image: url('../img/icons/social-retina.png');
     background-size: 50px 600px;
   }
   .zurb-footer-top .global .footer-link-block {
@@ -420,31 +420,31 @@ only screen and (min-device-pixel-ratio: 2) {
     margin: 30px 0 0 0;
 
     &.services {
-      background: url("../img/icons/footer-studios-retina.png") left top no-repeat;
+      background: url('../img/icons/footer-studios-retina.png') left top no-repeat;
     }
 
     &.foundation {
-      background-image: url("../img/icons/footer-foundation-retina.png") left top no-repeat;
+      background-image: url('../img/icons/footer-foundation-retina.png') left top no-repeat;
     }
 
     &.apps {
-      background-image: url("../img/icons/footer-products-retina.png") left top no-repeat;
+      background-image: url('../img/icons/footer-products-retina.png') left top no-repeat;
     }
 
     &.expo {
-      background-image: url("../img/icons/footer-expo-retina.png") left top no-repeat;
+      background-image: url('../img/icons/footer-expo-retina.png') left top no-repeat;
     }
   }
 
   .zurb-footer-bottom a.zurb-logo {
-    background-image: url("../img/icons/footer-icons-retina.png");
+    background-image: url('../img/icons/footer-icons-retina.png');
     background-size: 100px 1400px;
   }
 
   .zurb-footer-top .property .learn-links,
   .zurb-footer-top .property .support-links,
   .zurb-footer-top .property .connect-links {
-    background-image: url("../img/icons/footer-top-icons-retina.png");
+    background-image: url('../img/icons/footer-top-icons-retina.png');
     background-size: 100px 1400px;
   }
 }
@@ -455,12 +455,12 @@ only screen and (min-device-pixel-ratio: 2) {
   only screen and (-webkit-min-device-pixel-ratio: 2),
   only screen and (min-device-pixel-ratio: 2) {
   .zurb-footer-top .info-padding {
-    background-image: url("../img/icons/footer-large-icon-retina.png");
+    background-image: url('../img/icons/footer-large-icon-retina.png');
     background-size: 100px 400px;
   }
 
   .zurb-footer-bottom ul.home-social li a {
-    background-image: url("../img/icons/social-retina.png");
+    background-image: url('../img/icons/social-retina.png');
     background-size: 50px 600px;
   }
 
@@ -470,34 +470,34 @@ only screen and (min-device-pixel-ratio: 2) {
     margin: 30px 0 0 0;
 
     &.services {
-      background: url("../img/icons/footer-studios-retina.png") left top no-repeat;
+      background: url('../img/icons/footer-studios-retina.png') left top no-repeat;
       background-size: 30px;
     }
 
     &.foundation {
-      background: url("../img/icons/footer-foundation-retina.png") left top no-repeat;
+      background: url('../img/icons/footer-foundation-retina.png') left top no-repeat;
       background-size: 30px;
     }
 
     &.apps {
-      background: url("../img/icons/footer-products-retina.png") left top no-repeat;
+      background: url('../img/icons/footer-products-retina.png') left top no-repeat;
       background-size: 30px;
     }
 
     &.expo {
-      background: url("../img/icons/footer-expo-retina.png") left top no-repeat;
+      background: url('../img/icons/footer-expo-retina.png') left top no-repeat;
       background-size: 30px;
     }
   }
 
   .zurb-footer-bottom .zurb-logo {
-    background-image: url("../img/icons/footer-icons-retina.png");
+    background-image: url('../img/icons/footer-icons-retina.png');
     background-size: 100px 1400px;
   }
 
   .zurb-footer-top .property .support-links,
   .zurb-footer-top .property .connect-links {
-    background-image: url("../img/icons/footer-top-icons-retina.png");
+    background-image: url('../img/icons/footer-top-icons-retina.png');
     background-size: 100px 1400px;
   }
 }

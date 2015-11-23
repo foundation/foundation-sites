@@ -36,7 +36,7 @@ $header-font-style: normal !default;
 
 /// Font stack used for elements that use monospaced type, such as code samples
 /// @type String | List
-$font-family-monospace: Consolas, "Liberation Mono", Courier, monospace !default;
+$font-family-monospace: Consolas, 'Liberation Mono', Courier, monospace !default;
 
 /// Sizes of headings at various screen sizes. Each key is a breakpoint, and each value is a map of heading sizes.
 /// @type Map
