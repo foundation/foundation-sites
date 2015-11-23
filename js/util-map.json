@@ -56,7 +56,7 @@
     "foundation.util.box.js",
     "foundation.util.motion.js",
     "foundation.util.triggers.js",
-    "foundation.util.mediaQuery.js",
+    "foundation.util.mediaQuery.js"
   ],
   "slider": [
     "foundation.util.triggers.js",

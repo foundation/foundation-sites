@@ -20,7 +20,7 @@ $accordionmenu-arrows: true;
       }
     }
 
-    .is-accordion-submenu-parent[aria-expanded="true"] > a::after {
+    .is-accordion-submenu-parent[aria-expanded='true'] > a::after {
       transform-origin: 50% 50%;
       transform: scaleY(-1);
     }

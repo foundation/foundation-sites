@@ -23,7 +23,8 @@ $breakpoints: (
 $breakpoint-classes: (small medium large) !default;
 
 /// Generates a media query string matching the input value. Refer to the documentation for the `breakpoint()` mixin to see what the possible inputs are.
-/// @param {Keyword|Number} $val - Breakpoint name, or px, rem, or em value to process.
+///
+/// @param {Keyword|Number} $val [small] - Breakpoint name, or px, rem, or em value to process.
 @function breakpoint($val: small) {
   // Size or keyword
   $bp: nth($val, 1);
@@ -72,9 +73,9 @@ $breakpoint-classes: (small medium large) !default;
     $bp-max: -zf-bp-to-em($bp-max) - (1/16);
   }
 
-  // Skip media query creation if the input is "0 up" or "0 down"
+  // Skip media query creation if the input is “0 up” or “0 down”
   @if $bp > 0 or $dir == 'only' {
-    // "Only" ranges use the format "(min-width: n) and (max-width: n)"
+    // `only` ranges use the format `(min-width: n) and (max-width: n)`
     @if $dir == 'only' {
       @if $named == true {
         $str: $str + '(min-width: #{$bp})';
@@ -84,15 +85,15 @@ $breakpoint-classes: (small medium large) !default;
         }
       }
       @else {
-        @warn 'Only named media queries can have an "only" range.';
+        @warn 'Only named media queries can have an `only` range.';
       }
     }
 
-    // "Down" ranges use the format "(max-width: n)"
+    // `down` ranges use the format `(max-width: n)`
     @else if $dir == 'down' {
       $max: 0;
 
-      // For named breakpoints, subtract the breakpoint value by one "pixel", or 1/16em.
+      // For named breakpoints, subtract the breakpoint value by one “pixel”, or 1/16em.
       @if $named {
         $max: $bp-max;
       }
@@ -103,7 +104,7 @@ $breakpoint-classes: (small medium large) !default;
       $str: $str + '(max-width: #{$max})';
     }
 
-    // "Up" ranges use the format "(min-width: n)"
+    // `up` ranges use the format `(min-width: n)`
     @else if strip-unit($bp) > 0 {
       $str: $str + '(min-width: #{$bp})';
     }
@@ -117,8 +118,9 @@ $breakpoint-classes: (small medium large) !default;
 ///  - If a pixel value is passed, it will be converted to an em value using `$rem-base`.
 ///  - If a rem value is passed, the unit will be changed to em.
 ///  - If an em value is passed, the value will be used as-is.
-/// @content
+///
 /// @param {Keyword|Number} $value - Breakpoint name, or px, rem, or em value to process.
+///
 /// @output If the breakpoint is "0px and larger", outputs the content as-is. Otherwise, outputs the content wrapped in a media query.
 @mixin breakpoint($value) {
   $str: breakpoint($value);
@@ -138,7 +140,9 @@ $breakpoint-classes: (small medium large) !default;
 
 /// Convers the breakpoints map to a URL-encoded string, like this: `key1=value1&key2=value2`. The value is then dropped into the CSS for a special `<meta>` tag, which is read by the Foundation JavaScript. This is how we transfer values from Sass to JavaScript, so they can be defined in one place.
 /// @access private
+///
 /// @param {Map} $map - Map to convert.
+///
 /// @returns {String} A string containing the map's contents.
 @function -zf-bp-serialize($map) {
   $str: '';
@@ -152,8 +156,10 @@ $breakpoint-classes: (small medium large) !default;
 
 /// Find the next key in a map.
 /// @access private
+///
 /// @param {Map} $map - Map to traverse.
 /// @param {Mixed} $key - Key to use as a starting point.
+///
 /// @returns {Mixed} The value for the key after `$key`, if `$key` was found. If `$key` was not found, or `$key` was the last value in the map, returns `null`.
 @function -zf-map-next($map, $key) {
   // Store the values of the map as a list, so we can access them with nth
@@ -179,4 +185,9 @@ $breakpoint-classes: (small medium large) !default;
   @else {
     @return nth($values, $i);
   }
+}
+
+// These styles are applied to <meta> tags, which are read by the Foundation JavaScript
+.foundation-mq {
+  font-family: '#{-zf-bp-serialize($breakpoints)}';
 }

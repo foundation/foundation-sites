@@ -54,7 +54,7 @@ $input-cursor-disabled: default !default;
 /// @type Transition
 $input-transition: box-shadow 0.5s, border-color 0.25s ease-in-out !default;
 
-/// Enables the up/down buttons that Chrome and Firefox add to `<input type="number">` elements.
+/// Enables the up/down buttons that Chrome and Firefox add to `<input type='number'>` elements.
 /// @type Boolean
 $input-number-spinners: true !default;
 
@@ -80,7 +80,7 @@ $input-radius: $global-radius !default;
   box-shadow: $input-shadow;
   border-radius: $input-radius;
 
-  @if hasvalue($input-transition) {
+  @if has-value($input-transition) {
     transition: $input-transition;
   }
 
@@ -91,7 +91,7 @@ $input-radius: $global-radius !default;
     outline: none;
     box-shadow: $input-shadow-focus;
 
-    @if hasvalue($input-transition) {
+    @if has-value($input-transition) {
       transition: $input-transition;
     }
   }
@@ -126,21 +126,21 @@ $input-radius: $global-radius !default;
   }
 
   // Reset styles on button-like inputs
-  [type="submit"],
-  [type="button"] {
+  [type='submit'],
+  [type='button'] {
     border-radius: $global-radius;
     -webkit-appearance: none;
     -moz-appearance: none;
   }
 
   // Reset Normalize setting content-box to search elements
-  input[type="search"] {
+  input[type='search'] {
     box-sizing: border-box;
   }
 
   // Number input styles
   [type='number'] {
-    @if not($input-number-spinners) {
+    @if not $input-number-spinners {
       -moz-appearance: textfield;
 
       [type='number']::-webkit-inner-spin-button,

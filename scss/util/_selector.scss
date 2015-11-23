@@ -7,6 +7,7 @@
 ////
 
 /// Generates a selector with every text input type. You can also filter the list to only output a subset of those selectors.
+///
 /// @param {List|Keyword} $types [()] - A list of text input types to use. Leave blank to use all of them.
 @function text-inputs($types: ()) {
   $return: ();
@@ -27,12 +28,12 @@
     url
     color;
 
-  @if not(hasvalue($types)) {
+  @if not has-value($types) {
     $types: $all-types;
   }
 
   @each $type in $types {
-    $return: append($return, unquote('[type="#{$type}"]'), comma);
+    $return: append($return, unquote('[type=\'#{$type}\']'), comma);
   }
 
   @return $return;

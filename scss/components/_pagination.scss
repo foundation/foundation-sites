@@ -98,7 +98,7 @@ $pagination-arrows: true !default;
 
   // Symbols
   @if $pagination-arrows {
-    [aria-label="previous"] {
+    [aria-label='previous'] {
       &::before {
         content: '«';
         display: inline-block;
@@ -106,7 +106,7 @@ $pagination-arrows: true !default;
       }
     }
 
-    [aria-label="next"] {
+    [aria-label='next'] {
       &::after {
         content: '»';
         display: inline-block;

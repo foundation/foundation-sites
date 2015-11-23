@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var cacheBust = require('gulp-cache-bust');
 var cached = require('gulp-cached');
 var supercollider = require('supercollider');
 var buildSearch = require('../lib/buildSearch');
@@ -24,6 +25,7 @@ gulp.task('docs', function() {
       layouts: 'docs/layout/',
       partials: 'docs/partials/'
     }))
+    .pipe(cacheBust())
     .pipe(gulp.dest('_build'));
 });
 

@@ -44,7 +44,7 @@ $input-prefix-padding: 1rem !default;
     color: $input-prefix-color;
     border: $input-prefix-border;
 
-    @if hasvalue($input-prefix-border) {
+    @if has-value($input-prefix-border) {
       &:first-child {
         border-#{$global-right}: 0;
       }

@@ -8,7 +8,7 @@ sass:
 ---
 
 ## Importing
-
+ 
 All of Foundation's Sass utilities are in the folder `scss/util`, and broken up into multiple files by category. You can import every utility file at once using this line of code:
 
 ```scss

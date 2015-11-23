@@ -6,10 +6,12 @@
 /// @group functions
 ////
 
-/// Determine if a value is not falsey, in CSS terms. Falsey values are `null`, `none`, `0` with any unit, or an empty list.
-/// @param $val - Value to check.
+/// Determine if a value is not falsey, in CSS terms. Falsey values are `null`, `none`, `0` with any unit, or an empty list. **This function was originally named `hasvalue()`. The old name for the function will be removed in Foundation 6.1.**
+///
+/// @param {Mixed} $val - Value to check.
+///
 /// @returns {Boolean} `true` if `$val` is not falsey.
-@function hasvalue($val) {
+@function has-value($val) {
   @if $val == null or $val == none {
     @return false;
   }
@@ -22,9 +24,17 @@
   @return true;
 }
 
+// Remove this in 6.1.
+@function hasvalue($val) {
+  @warn 'The function hasvalue() was renamed to has-value(). The old function name will be removed in Foundation 6.1.';
+  @return has-value($val);
+}
+
 /// Determine a top/right/bottom/right value on a padding, margin, etc. property, no matter how many values were passed in. Use this function if you need to know the specific side of a value, but don't know if the value is using a shorthand format.
+///
 /// @param {List|Number} $val - Value to analyze. Should be a shorthand sizing property, e.g. "1em 2em 1em"
 /// @param {Keyword} $side - Side to return. Should be `top`, `right`, `bottom`, or `left`.
+///
 /// @returns {Number} A single value based on `$val` and `$side`.
 @function get-side($val, $side) {
   $length: length($val);
@@ -59,8 +69,10 @@
 }
 
 /// Given border $val, find a specific element of the border, which is $elem. The possible values for $elem are width, style, and color.
+///
 /// @param {List} $val - Border value to find a value in.
 /// @param {Keyword} $elem - Border component to extract.
+///
 /// @returns {Mixed} If the value exists, returns the value. If the value is not in the border definition, the function will return a 0px width, solid style, or black border.
 @function get-border-value($val, $elem) {
   // Find the width, style, or color and return it
@@ -88,6 +100,7 @@
 
 /// Calculates x^y, where x is `$base` and y is `$power`.
 /// @access private
+///
 /// @param {Number} $base - Base number (x).
 /// @param {Number} $power - Exponent (y).
 @function pow($base, $power) {
@@ -97,9 +110,11 @@
 
 // TODO: Remove this (it's used by the grid but is overkill)
 /// Given a user-defined list of keywords and a list of possible keywords, find the ones that were passed in.
+/// @access private
+///
 /// @param {List} $opts - List of values to find keywords in.
 /// @param {List} $seeking - List of all possible keywords.
-/// @access private
+///
 /// @returns {Map} A map of all keywords in $seeking. If a keyword was found in $opts, its value is true, otherwise false.
 @function -zf-get-options($opts, $seeking) {
   @if type-of($opts) != 'list' {

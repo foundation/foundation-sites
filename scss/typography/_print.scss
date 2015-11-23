@@ -32,7 +32,7 @@
     // Display the URL of a link after the text
     a,
     a:visited { text-decoration: underline;}
-    a[href]:after { content: " (" attr(href) ")"; }
+    a[href]:after { content: ' (' attr(href) ')'; }
 
     // Don't display the URL for images or JavaScript/internal links
     .ir a:after,
@@ -40,7 +40,7 @@
     a[href^='#']:after { content: ''; }
 
     // Display what an abbreviation stands for after the text
-    abbr[title]:after { content: " (" attr(title) ")"; }
+    abbr[title]:after { content: ' (' attr(title) ')'; }
 
     // Prevent page breaks in the middle of a blockquote or preformatted text block
     pre,
