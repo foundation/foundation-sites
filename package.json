@@ -21,6 +21,7 @@
     "browser-sync": "^2.8.2",
     "gulp": "^3.8.10",
     "gulp-autoprefixer": "^2.3.1",
+    "gulp-cache-bust": "^1.0.2",
     "gulp-cached": "^1.0.4",
     "gulp-concat": "^2.4.3",
     "gulp-filter": "^2.0.2",
