@@ -7,6 +7,7 @@
 ////
 
 /// Creates a CSS triangle, which can be used for dropdown arrows, dropdown pips, and more. Use this mixin inside a `&::before` or `&::after` selector, to attach the triangle to an existing element.
+///
 /// @param {Number} $triangle-size - Width of the triangle.
 /// @param {Color} $triangle-color - Color of the triangle.
 /// @param {Keyword} $triangle-direction - Direction the triangle points. Can be `top`, `right`, `bottom`, or `left`.
@@ -40,6 +41,7 @@
 }
 
 /// Creates a menu icon with a set width, height, number of bars, and colors. The mixin uses the height of the icon and the weight of the bars to determine spacing. <div class="docs-example-burger"></div>
+///
 /// @param {Color} $color - Color to use for the icon.
 /// @param {Color} $color-hover - Color to use when the icon is hovered over.
 /// @param {Number} $width - Width of the icon.
@@ -105,6 +107,7 @@
 
 /// Adds a downward-facing triangle as a background image to an element. The image is formatted as an SVG, making it easy to change the color. Because Internet Explorer doesn't support encoded SVGs as background images, a PNG fallback is also included.
 /// There are two PNG fallbacks: a black triangle and a white triangle. The one used depends on the lightness of the input color.
+///
 /// @param {Color} $color [$black] - Color to use for the triangle.
 @mixin background-triangle($color: $black) {
   $rgb: 'rgb(#{red($color)}, #{green($color)}, #{blue($color)})';
@@ -136,9 +139,10 @@
 }
 
 /// Adds CSS for a "quantity query" selector that automatically sizes elements based on how many there are inside a container.
+/// @link http://alistapart.com/article/quantity-queries-for-css Quantity Queries for CSS
+///
 /// @param {Number} $max - Maximum number of items to detect. The higher this number is, the more CSS that's required to cover each number of items.
 /// @param {Keyword} $elem [li] - Tag to use for sibling selectors.
-/// @link http://alistapart.com/article/quantity-queries-for-css Quantity Queries for CSS
 @mixin auto-width($max, $elem: li) {
   @for $i from 2 through $max {
     &:nth-last-child(#{$i}):first-child,

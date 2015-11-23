@@ -7,8 +7,9 @@
 ////
 
 /// Sizes child elements so that `$n` number of items appear on each row.
+///
 /// @param {Number} $n - Number of elements to display per row.
-/// @param {String} $selector ['.column, .columns'] - Selector(s) to use for child elements.
+/// @param {String} $selector ['.column'] - Selector(s) to use for child elements.
 @mixin grid-layout(
   $n,
   $selector: '.column'
