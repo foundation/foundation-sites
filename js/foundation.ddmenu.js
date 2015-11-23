@@ -1,6 +1,20 @@
+/**
+ * DropdownMenu module.
+ * @module foundation.dropdown-menu
+ * @requires foundation.util.keyboard
+ * @requires foundation.util.box
+ * @requires foundation.util.nest
+ */
 !function($, Foundation){
   'use strict';
 
+  /**
+   * Creates a new instance of DropdownMenu.
+   * @class
+   * @fires DropdownMenu#init
+   * @param {jQuery} element - jQuery object to make into a dropdown menu.
+   * @param {Object} options - Overrides to the default plugin settings.
+   */
   function DropdownMenu(element, options){
     this.$element = element;
     this.options = $.extend({}, DropdownMenu.defaults, this.$element.data(), options);
@@ -20,18 +34,71 @@
     });
   }
 
+  /**
+   * Default settings for plugin
+   */
   DropdownMenu.defaults = {
+    /**
+     * Disallows hover events from opening submenus
+     * @option
+     * @example false
+     */
     disableHover: false,
+    /**
+     * Allow a submenu to automatically close on a mouseleave event.
+     * @option
+     * @example true
+     */
     autoclose: true,
+    /**
+     * Amount of time to delay opening a submenu on hover event.
+     * @option
+     * @example 150
+     */
     hoverDelay: 50,
+    /**
+     * Allow a submenu to open/remain open on parent click event. Allows cursor to move away from menu.
+     * @option
+     * @example true
+     */
     clickOpen: false,
+    /**
+     * Amount of time to delay closing a submenu on a mouseleave event.
+     * @option
+     * @example 500
+     */
+
     closingTime: 500,
+    /**
+     * Position of the menu relative to what direction the submenus should open. Handled by JS.
+     * @option
+     * @example 'left'
+     */
     alignment: 'left',
+    /**
+     * Allow clicks on the body to close any open submenus.
+     * @option
+     * @example false
+     */
     closeOnClick: false,
+    /**
+     * Class applied to vertical oriented menus, Foundation default is `vertical`. Update this if using your own class.
+     * @option
+     * @example 'vertical'
+     */
     verticalClass: 'vertical',
+    /**
+     * Class applied to right-side oriented menus, Foundation default is `align-right`. Update this if using your own class.
+     * @option
+     * @example 'align-right'
+     */
     rightClass: 'align-right'
   };
-
+  /**
+   * Initializes the plugin, and calls _prepareMenu
+   * @private
+   * @function
+   */
   DropdownMenu.prototype._init = function(){
     var subs = this.$element.find('li.is-dropdown-submenu-parent');
     this.$element.children('.is-dropdown-submenu-parent').children('.is-dropdown-submenu').addClass('first-sub');
@@ -51,8 +118,14 @@
       this.$tabs.filter('.is-dropdown-submenu-parent').removeClass('is-right-arrow is-left-arrow opens-right opens-left')
           .addClass('is-down-arrow');
     }
+    this.changed = false;
     this._events();
   };
+  /**
+   * Adds event listeners to elements within the menu
+   * @private
+   * @function
+   */
   DropdownMenu.prototype._events = function(){
     var _this = this,
         hasTouch = window.ontouchstart !== undefined,
@@ -64,30 +137,25 @@
 
         var $elem = $(e.target).parentsUntil('ul', '.' + parClass),
             hasSub = $elem.hasClass(parClass),
-            // isOpen = $elem.attr('aria-expanded') === 'true',
             hasClicked = $elem.attr('data-is-click') === 'true',
             $sub = $elem.children('.is-dropdown-submenu');
-            console.log('1-click', $elem, $elem.attr('aria-expanded'));
 
         if(hasSub){
           if(hasClicked){
-            console.log('2-has clicked');
             if(hasTouch){ return;}
 
             else{
-            console.log('3-else should close');
             e.stopImmediatePropagation();
             e.preventDefault();
             _this._hide($elem);
             }
           }else{
-            console.log('4-should open');
             e.stopImmediatePropagation();
             e.preventDefault();
             _this._show($elem.children('.is-dropdown-submenu'));
             $elem.add($elem.parentsUntil(_this.$element, '.' + parClass)).attr('data-is-click', true);
           }
-        }else{ console.log('5-no child');return; }
+        }else{ return; }
       });
     }
 
@@ -97,7 +165,6 @@
             hasSub = $elem.hasClass(parClass);
 
         if(hasSub){
-          console.log('8-should show on hover');
           clearTimeout(delay);
           delay = setTimeout(function(){
             _this._show($elem.children('.is-dropdown-submenu'));
@@ -107,10 +174,10 @@
         var $elem = $(this),
             hasSub = $elem.hasClass(parClass);
         if(hasSub && _this.options.autoclose){
-          if($elem.attr('data-is-click') === 'true' && _this.options.clickOpen){console.log('6-should not close'); return false;}
+          if($elem.attr('data-is-click') === 'true' && _this.options.clickOpen){ return false; }
+
           clearTimeout(delay);
           delay = setTimeout(function(){
-            console.log('7-closing anyway...');
             _this._hide($elem);
           }, _this.options.closingTime);
         }
@@ -122,7 +189,7 @@
           $elements = isTab ? _this.$tabs : $element.siblings('li').add($element),
           $prevElement,
           $nextElement;
-          console.log(isTab);
+
       $elements.each(function(i) {
         if ($(this).is($element)) {
           $prevElement = $elements.eq(i-1);
@@ -132,14 +199,11 @@
       });
 
       var nextSibling = function() {
-        console.log('should focus next sibling', $nextElement);
         if (!$element.is(':last-child')) $nextElement.children('a:first').focus();
       }, prevSibling = function() {
-        console.log('should focus prev sibling', $prevElement.children('a'));
         $prevElement.children('a:first').focus();
       }, openSub = function() {
         var $sub = $element.children('ul.is-dropdown-submenu');
-          console.log('should show');
         if($sub.length){
           _this._show($sub);
           $element.find('li > a:first').focus();
@@ -147,7 +211,6 @@
       }, closeSub = function() {
         //if ($element.is(':first-child')) {
         var close = $element.parent('ul').parent('li');
-        console.log('should close a submenu',$element, close);
           close.children('a:first').focus();
           _this._hide(close);
         //}
@@ -210,18 +273,55 @@
 
     });
   };
+  /**
+   * Adds an event handler to the body to close any dropdowns on a click.
+   * @function
+   * @private
+   */
+  DropdownMenu.prototype._addBodyHandler = function(){
+    var $body = $(document.body),
+        _this = this;
+    $body.not(_this.$element).on('click.zf.dropdownmenu', function(e){
+      _this._hide();
+      $body.off('click.zf.dropdownmenu');
+    });
+  };
+  /**
+   * Opens a dropdown pane, and checks for collisions first.
+   * @param {jQuery} $sub - ul element that is a submenu to show
+   * @function
+   * @private
+   * @fires DropdownMenu#show
+   */
   DropdownMenu.prototype._show = function($sub){
     var idx = this.$tabs.index(this.$tabs.filter(function(i, el){
       return $(el).find($sub).length > 0;
     }));
     var $sibs = $sub.parent('li.is-dropdown-submenu-parent').siblings('li.is-dropdown-submenu-parent');
-    console.log($sibs, $sibs.length);
     this._hide($sibs, idx);
-    $sub.addClass('js-dropdown-active').attr({'aria-hidden': false})
+    $sub.css('visibility', 'hidden').addClass('js-dropdown-active').attr({'aria-hidden': false})
         .parent('li.is-dropdown-submenu-parent').addClass('is-active')
         .attr({'aria-selected': true, 'aria-expanded': true});
-
+    var clear = Foundation.Box.ImNotTouchingYou($sub, null, true);
+    if(!clear){
+      var oldClass = this.options.alignment === 'left' ? '-right' : '-left',
+          $parentLi = $sub.parent('.is-dropdown-submenu-parent');
+      $parentLi.removeClass('opens' + oldClass).addClass('opens-' + this.options.alignment);
+      clear = Foundation.Box.ImNotTouchingYou($sub, null, true);
+      if(!clear){
+        $parentLi.removeClass('opens-' + this.options.alignment).addClass('opens-inner');
+      }
+      this.changed = true;
+    }
+    $sub.css('visibility', '');
   };
+  /**
+   * Hides a single, currently open dropdown pane, if passed a parameter, otherwise, hides everything.
+   * @function
+   * @param {jQuery} $elem - element with a submenu to hide
+   * @param {Number} idx - index of the $tabs collection to hide
+   * @private
+   */
   DropdownMenu.prototype._hide = function($elem, idx){
     var $toClose;
     if($elem && $elem.length){
@@ -235,7 +335,7 @@
       $toClose = this.$element;
     }
     var somethingToClose = $toClose.hasClass('is-active') || $toClose.find('.is-active').length > 0;
-    console.log('toclose', somethingToClose);
+
     if(somethingToClose){
       $toClose.find('li.is-active').add($toClose).attr({
         'aria-selected': false,
@@ -243,36 +343,28 @@
         'data-is-click': false
       }).removeClass('is-active');
 
-      // console.log('close',$toClose.data());
-
       $toClose.find('ul.js-dropdown-active').attr({
         'aria-hidden': true
       }).removeClass('js-dropdown-active');
+
+      if(this.changed || $toClose.find('opens-inner').length){
+        var oldClass = this.options.alignment === 'left' ? 'right' : 'left';
+        $toClose.find('li.is-dropdown-submenu-parent').add($toClose)
+                .removeClass('opens-inner opens-' + this.options.alignment)
+                .addClass('opens-' + oldClass);
+        this.changed = false;
+      }
     }
   };
-  DropdownMenu.prototype._handleEvent = function(evt, elem){
-    var $elem = $(elem),
-        _this = this,
-        hasSub = $elem.hasClass('is-dropdown-submenu-parent'),
-        funcs = {
-          'click': function(){
-            // console.log('click');
-            if(hasSub) evt.preventDefault();
-            if($elem.data('isClick')) _this._hide($elem);
-            else _this._show($elem.children('.is-dropdown-submenu'));
-          },
-          'mouseenter': function(){
-            // console.log('mouseenter');
-          }
-        };
-
-      // console.log(evt.type);
-      funcs[evt.type]();
-    // if(hasSub){
-    //   evt.preventDefault();
-    //   _this._show($elem.children('.is-dropdown-submenu'));
-    // }
-
+  /**
+   * Destroys the plugin.
+   * @function
+   */
+  DropdownMenu.prototype.destroy = function(){
+    this.$menuItems.off('.zf.dropdownmenu').removeAttr('data-is-click')
+        .removeClass('is-right-arrow is-left-arrow is-down-arrow opens-right opens-left opens-inner');
+    Foundation.Nest.Burn(this.$element, 'dropdown');
+    Foundation.unregisterPlugin(this);
   };
 
   Foundation.plugin(DropdownMenu, 'DropdownMenu');
