@@ -180,3 +180,8 @@ $breakpoint-classes: (small medium large) !default;
     @return nth($values, $i);
   }
 }
+
+// These styles are applied to <meta> tags, which are read by the Foundation JavaScript
+.foundation-mq {
+  font-family: "#{-zf-bp-serialize($breakpoints)}";
+}
