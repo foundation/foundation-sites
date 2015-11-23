@@ -287,13 +287,13 @@ There are times when you won't want each media query to be collapsed or uncollap
 
 <div class="row medium-uncollapse large-collapse">
   <div class="small-6 columns">
-    <div class="panel">
+    <div class="callout secondary">
       <p class="show-for-medium-only">On a medium screen, I have gutters!</p>
       <p class="show-for-large-up">On a large screen, I have no gutters!</p>
     </div>
   </div>
   <div class="small-6 columns">
-    <div class="panel">
+    <div class="callout secondary">
       <p class="show-for-medium-only">On a medium screen, I have gutters!</p>
       <p class="show-for-large-up">On a large screen, I have no gutters!</p>
     </div>
