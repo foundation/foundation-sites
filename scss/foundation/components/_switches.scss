@@ -97,7 +97,7 @@ $switch-active-color: $primary-color !default;
 
     -webkit-transition: left $transition-speed $transition-ease;
     -moz-transition: left $transition-speed $transition-ease;
-    -o-transition: translate3d(0,0,0);
+    -o-transition: left $transition-speed $transition-ease;
     transition: left $transition-speed $transition-ease;
 
     -webkit-transform: translate3d(0,0,0);
