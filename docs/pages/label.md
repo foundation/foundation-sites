@@ -6,10 +6,19 @@ sass: scss/components/_label.scss
 
 ## Basics
 
-Add the `.label` class to an element to create a label.
+Add the `.label` class to an element to create a label. In the below example, we're using `<span>`, but any tag will work fine.
 
 ```html_example
 <span class="label">Default Label</span>
+```
+
+<br>
+
+A label will typically be describing another element on the page. To bind the two elements together, give the label a unique ID, and reference that ID in an `aria-describedby` attribute on the main element.
+
+```html
+<p aria-describedby="emailLabel">Re: re: re: you won't believe what's in this email!</p>
+<span class="label" id="emailLabel">High Priority<span>
 ```
 
 ---
