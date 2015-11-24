@@ -20,7 +20,7 @@ $dropdownmenu-background: $white !default;
 
 /// Border for dropdown panes.
 /// @type List
-$dropdown-border: 1px solid $medium-gray !default;
+$dropdownmenu-border: 1px solid $medium-gray !default;
 
 @mixin foundation-dropdown-menu {
   .dropdown.menu {
@@ -76,7 +76,7 @@ $dropdown-border: 1px solid $medium-gray !default;
       min-width: $dropdownmenu-min-width;
       z-index: 1;
       background: $dropdownmenu-background;
-      border: $dropdown-border;
+      border: $dropdownmenu-border;
 
       > li {
         width: 100%;
