@@ -335,8 +335,10 @@ $abbr-underline: 1px dotted $black !default;
   hr {
     max-width: $hr-width;
     height: 0;
+    border-right: 0;
     border-top: 0;
     border-bottom: $hr-border;
+    border-left: 0;
     margin: $hr-margin;
     clear: both;
   }
