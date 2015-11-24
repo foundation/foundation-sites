@@ -53,7 +53,7 @@
     /**
      * Amount of time to delay opening a submenu on hover event.
      * @option
-     * @example 150
+     * @example 50
      */
     hoverDelay: 50,
     /**
@@ -77,10 +77,10 @@
     alignment: 'left',
     /**
      * Allow clicks on the body to close any open submenus.
-     * @option
-     * @example false
+     *
+     *
      */
-    closeOnClick: false,
+    // closeOnClick: true,
     /**
      * Class applied to vertical oriented menus, Foundation default is `vertical`. Update this if using your own class.
      * @option
@@ -128,10 +128,10 @@
    */
   DropdownMenu.prototype._events = function(){
     var _this = this,
-        hasTouch = window.ontouchstart !== undefined,
+        hasTouch = 'ontouchstart' in window || window.ontouchstart !== undefined,
         parClass = 'is-dropdown-submenu-parent',
         delay;
-
+        console.log(hasTouch);
     if(this.options.clickOpen || hasTouch){
       this.$menuItems.on('click.zf.dropdownmenu', function(e){
 
@@ -161,6 +161,7 @@
 
     if(!this.options.disableHover){
       this.$menuItems.on('mouseenter.zf.dropdownmenu', function(e){
+        e.stopImmediatePropagation();
         var $elem = $(this),
             hasSub = $elem.hasClass(parClass);
 
@@ -176,7 +177,7 @@
         if(hasSub && _this.options.autoclose){
           if($elem.attr('data-is-click') === 'true' && _this.options.clickOpen){ return false; }
 
-          clearTimeout(delay);
+          // clearTimeout(delay);
           delay = setTimeout(function(){
             _this._hide($elem);
           }, _this.options.closingTime);
@@ -278,14 +279,21 @@
    * @function
    * @private
    */
-  DropdownMenu.prototype._addBodyHandler = function(){
-    var $body = $(document.body),
-        _this = this;
-    $body.not(_this.$element).on('click.zf.dropdownmenu', function(e){
-      _this._hide();
-      $body.off('click.zf.dropdownmenu');
-    });
-  };
+  // DropdownMenu.prototype._addBodyHandler = function(){
+  //   var $body = $(document.body).not(this.$element),
+  //       _this = this;
+  //   $body.off('click.zf.dropdownmenu')
+  //        .on('click.zf.dropdownmenu', function(e){
+  //          console.log('body click');
+  //          var $link = _this.$element.find(e.target);
+  //          if($link.length){
+  //            $link.triggerHandler('click.zf.dropdownmenu', [$link]);
+  //            return false;
+  //          }
+  //          _this._hide();
+  //          $body.off('click.zf.dropdownmenu');
+  //        });
+  // };
   /**
    * Opens a dropdown pane, and checks for collisions first.
    * @param {jQuery} $sub - ul element that is a submenu to show
@@ -314,6 +322,12 @@
       this.changed = true;
     }
     $sub.css('visibility', '');
+    // if(this.options.closeOnClick){ this._addBodyHandler(); }
+    /**
+     * Fires when the new dropdown pane is visible.
+     * @event DropdownMenu#show
+     */
+    this.$element.trigger('show.zf.dropdownmenu', [$sub]);
   };
   /**
    * Hides a single, currently open dropdown pane, if passed a parameter, otherwise, hides everything.
@@ -354,6 +368,11 @@
                 .addClass('opens-' + oldClass);
         this.changed = false;
       }
+      /**
+       * Fires when the open menus are closed.
+       * @event DropdownMenu#hide
+       */
+      this.$element.trigger('hide.zf.dropdownmenu', [$toClose]);
     }
   };
   /**
