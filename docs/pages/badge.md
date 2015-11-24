@@ -29,7 +29,7 @@ Badges can be colored with the same classes used for buttons and other component
 
 ### With Icons
 
-An icon can be used in place of text.
+An icon can be used in place of text. We're using the [Foundation icon font](http://zurb.com/playground/foundation-icon-fonts-3) here, but any icon fonts or image-based icons will work fine.
 
 ```html_example
 <span class="info badge"><i class="fi-share"></i></span>
