@@ -4,7 +4,7 @@
 
 /// Sets if accordion menus have the default arrow styles.
 /// @type Boolean
-$accordionmenu-arrows: true;
+$accordionmenu-arrows: true !default;
 
 @mixin foundation-accordion-menu {
   @if $accordionmenu-arrows {
