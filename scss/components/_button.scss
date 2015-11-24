@@ -53,7 +53,7 @@ $button-opacity-disabled: 0.25 !default;
 
 // Internal: flip from margin-right to margin-left for defaults
 @if $global-text-direction == 'rtl' {
-  $button-margin: 0 0 $global-margin $global-margin;
+  $button-margin: 0 0 $global-margin $global-margin !default;
 }
 
 // TODO: Document button-base() mixin
