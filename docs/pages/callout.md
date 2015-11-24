@@ -87,7 +87,7 @@ Callouts can be sized using the `.small` and `.large` classes. These will affect
 
 ## Making Closable
 
-Pair the callout with the [Closable plugin](closable.html) to create a dismissable alert box.
+Pair the callout with the [Close Button](close-button.html) to create a dismissable alert box.
 
 ```html_example
 <div class="alert callout" data-closable>
