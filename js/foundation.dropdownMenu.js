@@ -180,7 +180,10 @@
     if(this.options.clickOpen || isTouch){
       $elem.off('click.zf.dropdownmenu')
           .on('click.zf.dropdownmenu', function(e){
-            if(!$(this).hasClass('is-dropdown-submenu-parent')){ return; }
+
+            var notRelevant = /^(a|button)$/i.test(e.target.tagName) && ! $(e.target).parent('li').hasClass('is-dropdown-submenu-parent');
+            if (notRelevant) return;
+
             var hasClicked = $elem.data('isClick');
             if(isTouch && hasClicked) return;
             e.preventDefault();
