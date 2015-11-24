@@ -162,12 +162,21 @@ var Foundation = {
 
       // For each plugin found, initialize it
       $elem.each(function() {
+        var $el = $(this),
+            opts = {};
         // Don't double-dip on plugins
-        if ($(this).attr('zf-plugin')) {
+        if ($el.attr('zf-plugin')) {
           console.warn("Tried to initialize "+name+" on an element that already has a Foundation plugin.");
           return;
         }
-        $(this).data('zf-plugin', new plugin($(this)));
+
+        if($el.attr('data-options')){
+          var thing = $el.attr('data-options').split(';').forEach(function(e, i){
+            var opt = e.split(':').map(function(el){ return el.trim(); });
+            if(opt[0]) opts[opt[0]] = parseValue(opt[1]);
+          });
+        }
+        $el.data('zf-plugin', new plugin($(this), opts));
       });
     });
   },
@@ -342,7 +351,12 @@ function functionName(fn) {
     return fn.prototype.constructor.name;
   }
 }
-
+function parseValue(str){
+  if(/true/.test(str)) return true;
+  else if(/false/.test(str)) return false;
+  else if(!isNaN(str * 1)/* && typeof (str * 1) === "number"*/) return parseFloat(str);
+  return str;
+}
 // Convert PascalCase to kebab-case
 // Thank you: http://stackoverflow.com/a/8955580
 function hyphenate(str) {
