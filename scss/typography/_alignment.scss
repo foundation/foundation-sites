@@ -3,19 +3,20 @@
 // Licensed under MIT Open Source
 
 @mixin foundation-text-alignment {
-  @each $align in (left, right, center, justify) {
-    .text-#{$align} {
-      text-align: $align;
-    }
-
     @each $size in $breakpoint-classes {
       @include breakpoint($size) {
-        @if $size != 'small' {
-          .#{$size}-text-#{$align} {
-            text-align: $align;
+        @each $align in (left, right, center, justify) {
+          @if $size != 'small' {
+            .#{$size}-text-#{$align} {
+              text-align: $align;
+            }
+          }
+          @else {            
+            .text-#{$align} {
+              text-align: $align;
+            }
           }
         }
       }
     }
-  }
 }
