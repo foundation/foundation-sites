@@ -6,7 +6,7 @@ sass: scss/components/_breadcrumbs.scss
 
 To make a set of breadcrumb links, just add the class `.breadcrumbs` to a `<ul>`, and then add links instead of `<li>` elements.
 
-The current page doesn't require a link, but you should add some explanatory text for AT that indicates which item is the current page.
+The current page doesn't require a link or a class, but you should add some explanatory text for AT that indicates which item is the current page.
 
 To mark a disabled item, add the class `.disabled` to the `<li>`, and just use plain text instead of a link.
 
