@@ -93,6 +93,10 @@ The left- and right-hand off-canvas panes can be set to be persistent on larger 
 
 The main content area (`.off-canvas-content`) will be padded to the left or right equal to the width of the container.
 
+<div class="callout">
+  <p>The menu will be fixed-position by default, meaning it follows you as you scroll up and down. The menu also gets its own scroll bar if it's taller than the window. To disable these features, set the <code>$offcanvas-fixed-reveal</code> variable to <code>false</code>.</p>
+</div>
+
 <div class="warning callout">
   <p>The slide in/out of the plugin still works when these classes are active. If you use this feature on a larger screen, be sure to hide any click triggers on those larger breakpoints as well. Foundation's <a href="visibility.html">visibility classes</a> can help you with that.</p>
 </div>
