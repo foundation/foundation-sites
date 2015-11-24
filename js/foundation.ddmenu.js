@@ -131,7 +131,7 @@
         hasTouch = 'ontouchstart' in window || window.ontouchstart !== undefined,
         parClass = 'is-dropdown-submenu-parent',
         delay;
-        console.log(hasTouch);
+        
     if(this.options.clickOpen || hasTouch){
       this.$menuItems.on('click.zf.dropdownmenu', function(e){
 
