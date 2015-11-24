@@ -12,7 +12,7 @@ $drilldown-transition: transform 0.15s linear !default;
 
 /// Adds arrows to drilldown items with submenus, as well as the back button.
 /// @type Boolean
-$drilldown-arrows: true;
+$drilldown-arrows: true !default;
 
 @mixin foundation-drilldown-menu {
   // Applied to the Menu container

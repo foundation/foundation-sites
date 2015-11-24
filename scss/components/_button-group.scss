@@ -8,19 +8,19 @@
 
 /// Margin for button groups.
 /// @type Number
-$buttongroup-margin: 1rem;
+$buttongroup-margin: 1rem !default;
 
 /// Margin between buttons in a button group.
 /// @type Border
-$buttongroup-spacing: 1px;
+$buttongroup-spacing: 1px !default;
 
 /// Selector for the buttons inside a button group.
 /// @type String
-$buttongroup-child-selector: '.button';
+$buttongroup-child-selector: '.button' !default;
 
 /// Maximum number of buttons that can be in an even-width button group.
 /// @type Number
-$buttongroup-expand-max: 6;
+$buttongroup-expand-max: 6 !default;
 
 /// Add styles for a button group container.
 /// @param {String} $child-selector [$buttongroup-child-selector] - Selector for the buttons inside a button group.

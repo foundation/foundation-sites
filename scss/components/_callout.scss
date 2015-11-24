@@ -40,7 +40,7 @@ $callout-radius: $global-radius !default;
 
 /// Amount to tint links used within colored panels. Set to `false` to disable this feature.
 /// @type Number | Boolean
-$callout-link-tint: 30%;
+$callout-link-tint: 30% !default;
 
 /// Adds basic styles for a callout, including padding and margin.
 @mixin callout-base() {

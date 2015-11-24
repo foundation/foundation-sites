@@ -32,7 +32,7 @@ $switch-height-large: 2.5rem !default;
 
 /// Border radius of the switch
 /// @type Number
-$switch-radius: $global-radius;
+$switch-radius: $global-radius !default;
 
 /// border around a modal.
 /// @type Number

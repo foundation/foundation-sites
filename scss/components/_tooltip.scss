@@ -12,7 +12,7 @@ $tooltip-background-color: $black !default;
 
 /// Default color of the tooltip font.
 /// @type Color
-$tooltip-color: $white;
+$tooltip-color: $white !default;
 
 /// Default padding of the tooltip background.
 /// @type Number
