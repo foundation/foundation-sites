@@ -87,12 +87,14 @@ Callouts can be sized using the `.small` and `.large` classes. These will affect
 
 ## Making Closable
 
-Pair the callout with the [Close Button](close-button.html) to create a dismissable alert box.
+Pair the callout with the [close button](close-button.html) component and `data-closable` attribute to create a dismissable alert box.
 
 ```html_example
 <div class="alert callout" data-closable>
   <h5>This is Important!</h5>
   <p>But when you're done reading it, click the close button in the corner to dismiss this alert.</p>
-  <button class="close-button" data-close aria-label="Dismiss alert">&times;</button>
+  <button class="close-button" aria-label="Dismiss alert" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
 </div>
 ```
