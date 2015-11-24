@@ -58,7 +58,7 @@ $table-head-font-color: $body-font-color !default;
 
 /// Defualt value for showing the header when using stacked tables.
 /// @type Boolean
-$show-header-for-stacked: false;
+$show-header-for-stacked: false !default;
 
 /// Adds the general styles for tables.
 /// @param {Keyword} $stripe [$table-stripe] - Uses kewords even, odd, or none to darken rows of the table. The defualt value is even.
