@@ -95,25 +95,6 @@ $pagination-arrows: true !default;
       background: $pagination-item-background-hover;
     }
   }
-
-  // Symbols
-  @if $pagination-arrows {
-    [aria-label='previous'] {
-      &::before {
-        content: '«';
-        display: inline-block;
-        margin-#{$global-right}: 0.75rem;
-      }
-    }
-
-    [aria-label='next'] {
-      &::after {
-        content: '»';
-        display: inline-block;
-        margin-#{$global-left}: 0.75rem;
-      }
-    }
-  }
 }
 
 /// Adds styles for the current pagination item. Apply this to an `<a>`.
@@ -156,6 +137,22 @@ $pagination-arrows: true !default;
 
     .ellipsis::after {
       @include pagination-ellipsis;
+    }
+  }
+
+  @if $pagination-arrows {
+    .pagination-previous a::before,
+    .pagination-previous.disabled::before {
+      content: '«';
+      display: inline-block;
+      margin-#{$global-right}: 0.5rem;
+    }
+
+    .pagination-next a::after,
+    .pagination-next.disabled::after {
+      content: '»';
+      display: inline-block;
+      margin-#{$global-left}: 0.5rem;
     }
   }
 }
