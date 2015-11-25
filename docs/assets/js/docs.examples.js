@@ -19,5 +19,11 @@ $('.docs-transitions').change(function() {
     $transitionDemo.show();
   });
 });
+var stickyMag = $('#sticky-magellan');
+stickyMag.on('sticky.zf.stuckto:top', function(){
+  stickyMag.find('nav').addClass('stuck-mag');
+}).on('sticky.zf.unstuckfrom:top', function(e){
+  stickyMag.find('nav').removeClass('stuck-mag');
+});
 
 }();

@@ -31,6 +31,12 @@
   ul:first-child { float: left; }
   ul:last-child  { float: right; }
 }
+.sticky-mag {
+  &.stuck-mag {
+    background-color: white;
+    border-bottom: 2px solid #121212;
+  }
+}
 
 // .docs-component {
 //   .callout {
