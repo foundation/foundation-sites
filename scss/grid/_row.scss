@@ -10,7 +10,7 @@
 /// @content
 ///
 /// @param {Number} $columns - Number of columns to use.
-/// @param {Booleam} $root [false]
+/// @param {Boolean} $root [false]
 ///   If `false`, selectors inside this mixin will nest inside the parent selector.
 ///   If `true`, selectors will not nest.
 @mixin grid-context(
