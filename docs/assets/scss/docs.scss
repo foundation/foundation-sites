@@ -32,8 +32,8 @@
   ul:last-child  { float: right; }
 }
 .sticky-mag {
+  background-color: white;
   &.stuck-mag {
-    background-color: white;
     border-bottom: 2px solid #121212;
   }
 }
