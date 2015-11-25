@@ -3,6 +3,8 @@ title: Slider
 description: This handy lil slider is perfect for setting specific values within a range.
 sass: scss/components/_slider.scss
 js: js/foundation.slider.js
+tags:
+  - range
 ---
 
 ## Basics

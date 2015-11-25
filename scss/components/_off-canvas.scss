@@ -26,6 +26,9 @@ $offcanvas-transition-length: 0.5s !default;
 /// @type Keyword
 $offcanvas-transition-timing: ease !default;
 
+/// If `true`, a revealed off-canvas will be fixed-position, and scroll with the screen.
+$offcanvas-fixed-reveal: true !default;
+
 /// Background color for the overlay that appears when an off-canvas menu is open.
 /// @type Color
 $offcanvas-exit-background: rgba($white, 0.25) !default;
@@ -137,6 +140,11 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5) !default;
   $position: left
 ) {
   #{$position}: 0;
+  z-index: auto;
+
+  @if $offcanvas-fixed-reveal {
+    position: fixed;
+  }
 
   & ~ .#{$maincontent-class} {
     margin-#{$position}: $offcanvas-size;
