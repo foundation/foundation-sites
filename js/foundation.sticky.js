@@ -154,7 +154,6 @@
     }
       // console.log(breaks);
     this.points = breaks;
-    // console.log(this.points);
     return;
   };
 
@@ -298,11 +297,14 @@
   Sticky.prototype._removeSticky = function(isTop){
     var stickTo = this.options.stickTo,
         stickToTop = stickTo === 'top',
-        css = {}, mrgn, notStuckTo,
-        anchorPt = (this.points ? this.points[1] - this.points[0] : this.anchorHeight) - this.elemHeight;
-        mrgn = stickToTop ? 'marginTop' : 'marginBottom';
-        notStuckTo = stickToTop ? 'bottom' : 'top';
-      css[mrgn] = 0;
+        css = {},
+        anchorPt = (this.points ? this.points[1] - this.points[0] : this.anchorHeight) - this.elemHeight,
+        mrgn = stickToTop ? 'marginTop' : 'marginBottom',
+        notStuckTo = stickToTop ? 'bottom' : 'top',
+        topOrBottom = isTop ? 'top' : 'bottom';
+
+    css[mrgn] = 0;
+
     if((isTop && !stickToTop) || (stickToTop && !isTop)){
       css[stickTo] = anchorPt;
       css[notStuckTo] = 0;
@@ -310,17 +312,18 @@
       css[stickTo] = 0;
       css[notStuckTo] = anchorPt;
     }
+    
     css['left'] = '';
     this.isStuck = false;
     this.$element.removeClass('is-stuck is-at-' + stickTo)
-                 .addClass('is-anchored is-at-' + (isTop ? 'top' : 'bottom'))
+                 .addClass('is-anchored is-at-' + topOrBottom)
                  .css(css)
                  /**
                   * Fires when the $element has become anchored.
                   * Namespaced to `top` or `bottom`.
                   * @event Sticky#unstuckfrom
                   */
-                 .trigger('sticky.zf.unstuckfrom:' + isTop ? 'top' : 'bottom');
+                 .trigger('sticky.zf.unstuckfrom:' + topOrBottom);
   };
 
   /**
