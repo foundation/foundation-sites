@@ -2,7 +2,7 @@
 
 "use strict";
 
-var FOUNDATION_VERSION = '6.0.3';
+var FOUNDATION_VERSION = '6.0.4';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify

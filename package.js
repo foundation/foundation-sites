@@ -1,7 +1,7 @@
 Package.describe({
   name: 'zurb:foundation-sites',
   summary: 'The most advanced responsive front-end framework in the world.',
-  version: '6.0.3',
+  version: '6.0.4',
   git: 'https://github.com/zurb/foundation-sites.git',
   documentation: 'meteor-README.md'
 });
