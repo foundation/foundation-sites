@@ -68,6 +68,10 @@ $dropdownmenu-border: 1px solid $medium-gray !default;
       }
     }
 
+    .no-js & ul {
+      display: none;
+    }
+
     .submenu {
       display: none;
       position: absolute;
