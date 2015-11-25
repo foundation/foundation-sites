@@ -41,7 +41,7 @@
      * @option
      * @example '<li><a>Back</a></li>'
      */
-    backButton: '<li class="js-drilldown-back" tabindex="0"><a>Back</a></li>',
+    backButton: '<li class="js-drilldown-back"><a>Back</a></li>',
     /**
      * Markup used to wrap drilldown menu. Use a class name for independent styling, or the JS applied class: `is-drilldown`.
      * @option
@@ -120,12 +120,14 @@
 
     $elem.off('click.zf.drilldown')
     .on('click.zf.drilldown', function(e){
-      e.stopImmediatePropagation();
-      e.preventDefault();
-
-      if(e.target !== e.currentTarget.firstElementChild){
-        return false;
+      if($(e.target).parentsUntil('ul', 'li').hasClass('is-drilldown-submenu-parent')){
+        e.stopImmediatePropagation();
+        e.preventDefault();
       }
+
+      // if(e.target !== e.currentTarget.firstElementChild){
+      //   return false;
+      // }
       _this._show($elem);
 
       if(_this.options.closeOnClick){
