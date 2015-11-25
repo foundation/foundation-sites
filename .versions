@@ -1,0 +1,15 @@
+babel-compiler@5.8.24_1
+babel-runtime@0.1.4
+base64@1.0.4
+caching-compiler@1.0.0
+check@1.1.0
+ecmascript@0.1.6
+ecmascript-runtime@0.2.6
+ejson@1.0.7
+fourseven:scss@3.4.1
+jquery@1.11.4
+meteor@1.1.10
+promise@0.5.1
+random@1.0.5
+underscore@1.0.4
+zurb:foundation-sites@6.0.4
