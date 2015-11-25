@@ -6,17 +6,22 @@ Package.describe({
   documentation: 'meteor-README.md'
 });
 
-Npm.depends({'what-input': '1.1.2'});
+Npm.depends({
+  'motion-ui': '1.1.0'
+});
 
 Package.onUse(function(api) {
   api.versionsFrom('1.2.1');
   api.imply('fourseven:scss@3.4.1');
-  api.use(['ecmascript', 'jquery@2.1.0', 'fourseven:scss@3.4.1'], 'client');
+  api.use(['ecmascript', 'jquery', 'fourseven:scss@3.4.1'], 'client');
+  api.addFiles('.npm/package/node_modules/motion-ui/dist/motion-ui.css', 'client');
+  api.addFiles('.npm/package/node_modules/motion-ui/dist/motion-ui.js', 'client');
+  api.addFiles('dist/foundation.js', 'client');
   api.addFiles([
 
     'scss/foundation.scss',
     'scss/_global.scss',
-    'scss/_settings.scss',
+    'scss/settings/_settings.scss',
 
     'scss/components/_accordion-menu.scss',
     'scss/components/_accordion.scss',
