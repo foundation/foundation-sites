@@ -186,9 +186,10 @@
     this.$element.off('.zf.trigger .zf.magellan')
         .find('.' + this.options.activeClass).removeClass(this.options.activeClass);
 
-    var hash = this.$active[0].getAttribute('href');
-
-    window.location.hash.replace(hash, '');
+    if(this.options.deepLinking){
+      var hash = this.$active[0].getAttribute('href');
+      window.location.hash.replace(hash, '');
+    }
 
     Foundation.unregisterPlugin(this);
   };
