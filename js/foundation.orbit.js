@@ -135,7 +135,13 @@
      * @option
      * @example 'orbit-previous'
      */
-    prevClass: 'orbit-previous'
+    prevClass: 'orbit-previous',
+    /**
+     * Boolean to flag the js to use motion ui classes or not. Default to true for backwards compatability.
+     * @option
+     * @example true
+     */
+    useMUI: true
   };
   /**
    * Initializes the plugin by creating jQuery collections, setting attributes, and starting the animation.
@@ -151,7 +157,9 @@
     if(!initActive.length){
       this.$slides.eq(0).addClass('is-active');
     }
-
+    if(!this.options.useMUI){
+      this.$slides.addClass('no-motionui');
+    }
     if($images.length){
       Foundation.onImagesLoaded($images, this._prepareForOrbit.bind(this));
     }else{
@@ -328,7 +336,6 @@
   Orbit.prototype.changeSlide = function(isLTR, chosenSlide, idx){
     var $curSlide = this.$slides.filter('.is-active').eq(0);
 
-
     if(/mui/g.test($curSlide[0].className)){ return false; }//if the slide is currently animating, kick out of the function
 
     var $firstSlide = this.$slides.first(),
@@ -351,29 +358,38 @@
         idx = idx || this.$slides.index($newSlide);//grab index to update bullets
         this._updateBullets(idx);
       }
-      Foundation.Motion.animateIn(
-        $newSlide.addClass('is-active').css({'position': 'absolute', 'top': 0}),
-        this.options['animInFrom' + dirIn],
-        function(){
-          $newSlide.css({'position': 'relative', 'display': 'block'})
-                   .attr('aria-live', 'polite');
-        });
+      if(this.options.useMUI){
 
-      Foundation.Motion.animateOut(
-        $curSlide.removeClass('is-active'),
-        this.options['animOutTo' + dirOut],
-        function(){
-          $curSlide.removeAttr('aria-live');
-          if(_this.options.autoPlay){
-            _this.timer.restart();
-          }
-          //do stuff?
-          /**
-           * Triggers when the slide has finished animating in.
-           * @event Orbit#slidechange
-           */
-          _this.$element.trigger('slidechange.zf.orbit', [$newSlide]);
-        });
+        Foundation.Motion.animateIn(
+          $newSlide.addClass('is-active').css({'position': 'absolute', 'top': 0}),
+          this.options['animInFrom' + dirIn],
+          function(){
+            $newSlide.css({'position': 'relative', 'display': 'block'})
+                     .attr('aria-live', 'polite');
+          });
+
+        Foundation.Motion.animateOut(
+          $curSlide.removeClass('is-active'),
+          this.options['animOutTo' + dirOut],
+          function(){
+            $curSlide.removeAttr('aria-live');
+            if(_this.options.autoPlay){
+              _this.timer.restart();
+            }
+            //do stuff?
+          });
+      }else{
+        $curSlide.removeClass('is-active is-in').removeAttr('aria-live').hide();
+        $newSlide.addClass('is-active is-in').attr('aria-live', 'polite').show();
+        if(this.options.autoPlay){
+          this.timer.restart();
+        }
+      }
+      /**
+       * Triggers when the slide has finished animating in.
+       * @event Orbit#slidechange
+       */
+      this.$element.trigger('slidechange.zf.orbit', [$newSlide]);
     }
   };
   /**
