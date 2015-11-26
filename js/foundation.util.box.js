@@ -151,7 +151,7 @@
       case 'reveal full':
         return {
           left: $eleDims.windowDims.offset.left,
-          top: $eleDims.windowDims.offset.top,
+          top: $eleDims.windowDims.offset.top
         };
         break;
       default:
