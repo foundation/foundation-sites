@@ -22,11 +22,11 @@
   height: 0;
   border: inset $triangle-size;
 
-  @if ($triangle-direction == down) {
+  @if ($triangle-direction == bottom) {
     border-color: $triangle-color transparent transparent;
     border-top-style: solid;
   }
-  @if ($triangle-direction == up) {
+  @if ($triangle-direction == top) {
     border-color: transparent transparent $triangle-color;
     border-bottom-style: solid;
   }
