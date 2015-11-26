@@ -10,7 +10,7 @@
 ///
 /// @param {Number} $triangle-size - Width of the triangle.
 /// @param {Color} $triangle-color - Color of the triangle.
-/// @param {Keyword} $triangle-direction - Direction the triangle points. Can be `top`, `right`, `bottom`, or `left`.
+/// @param {Keyword} $triangle-direction - Direction the triangle points. Can be `up`, `right`, `down`, or `left`.
 @mixin css-triangle(
   $triangle-size,
   $triangle-color,
