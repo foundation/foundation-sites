@@ -29,6 +29,11 @@ $topbar-input-width: 200px !default;
 
   &, ul {
     background-color: $topbar-background;
+
+    & li > a {
+      color: $topbar-link-color;
+    }
+
   }
 
   input {
