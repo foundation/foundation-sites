@@ -156,7 +156,7 @@
       .attr('aria-hidden', false)
       .parent('[data-tab-content]')
       .addBack()
-      .parent().addClass('is-active');
+      .addClass('is-active');
 
     Foundation.Move(_this.options.slideSpeed, $target, function(){
       $target.slideDown(_this.options.slideSpeed);
