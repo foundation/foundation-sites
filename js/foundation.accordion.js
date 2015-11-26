@@ -55,7 +55,7 @@
    */
   Accordion.prototype._init = function() {
     this.$element.attr('role', 'tablist');
-    this.$tabs = this.$element.children('li');
+    this.$tabs = this.$element.children('.accordion-item');
     this.$tabs.each(function(idx, el){
 
       var $el = $(el),
