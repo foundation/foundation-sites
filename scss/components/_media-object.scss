@@ -27,6 +27,7 @@ $mediaobject-image-width-stacked: 100% !default;
 /// Adds styles for sections within a media object.
 /// @param {Number} $padding [$mediaobject-section-padding] - Padding between sections.
 @mixin media-object-section($padding: $mediaobject-section-padding) {
+  $selector: &;
   display: table-cell;
   vertical-align: top;
 
@@ -34,7 +35,7 @@ $mediaobject-image-width-stacked: 100% !default;
     padding-#{$global-right}: $padding;
   }
 
-  &:last-child:not(+ &:first-child) {
+  &:last-child:not(+ $selector:first-child) {
     padding-#{$global-left}: $padding;
   }
 }
