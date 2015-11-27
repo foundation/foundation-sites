@@ -12,10 +12,11 @@ Once you have the files, add links to jQuery and Foundation as `<script>` tags a
 ```html
 <script src="js/jquery.min.js"></script>
 <script src="js/foundation.min.js"></script>
+<script src="js/foundation.util.mediaQuery.js"></script>
 ```
 
 <div class="callout warning">
-  <p>Make sure Foundation loads <em>after</em> jQuery.</p>
+  <p>Make sure Foundation loads <em>after</em> jQuery, and make sure to include the media query utils.</p>
 </div>
 
 ### File Structure
