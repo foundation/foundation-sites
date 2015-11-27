@@ -71,7 +71,7 @@ Foundation.Keyboard.handleKey(event, this, {
 ```
 
 ## MediaQuery
-`js/foundation.util.mediaquery.js`
+`js/foundation.util.mediaQuery.js`
 
 The media query library used by Foundation has two publicly accessible functions and two properties:
 ```js
