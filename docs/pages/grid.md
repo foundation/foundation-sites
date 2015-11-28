@@ -433,7 +433,7 @@ Use the `grid-row()` mixin to create a row.
 
 ### Columns
 
-Use the `grid-column()` mixin to create a row. There are a number of ways to define the width of the column.
+Use the `grid-column()` mixin to create a column. There are a number of ways to define the width of the column.
 
 ```scss
 .main-content {
