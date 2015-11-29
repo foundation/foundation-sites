@@ -7,6 +7,7 @@ var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var rename = require('gulp-rename');
 var plumber = require('gulp-plumber');
+var sourcemaps = require('gulp-sourcemaps');
 
 var PATHS = [
   'scss',
@@ -25,6 +26,7 @@ gulp.task('sass', ['sass:foundation', 'sass:docs']);
 // Compiles Foundation Sass
 gulp.task('sass:foundation', function() {
   return gulp.src('./foundation-sites.scss')
+    .pipe(sourcemaps.init())
     .pipe(plumber())
     .pipe(sass({
       includePaths: PATHS
@@ -33,18 +35,21 @@ gulp.task('sass:foundation', function() {
       browsers: COMPATIBILITY
     }))
     .pipe(rename('foundation.css'))
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('_build/assets/css'));
 });
 
 // Compiles docs Sass (includes Foundation code also)
 gulp.task('sass:docs', function() {
   return gulp.src('docs/assets/scss/docs.scss')
+    .pipe(sourcemaps.init())
     .pipe(sass({
       includePaths: PATHS
     }).on('error', sass.logError))
     .pipe(autoprefixer({
       browsers: COMPATIBILITY
     }))
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('_build/assets/css'));
 });
 
