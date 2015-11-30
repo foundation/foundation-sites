@@ -14,7 +14,7 @@
   $n,
   $selector: '.column'
 ) {
-  #{$selector} {
+  & > #{$selector} {
     width: percentage(1/$n);
     float: $global-left;
 
