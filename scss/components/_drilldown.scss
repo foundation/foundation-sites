@@ -33,7 +33,7 @@ $drilldown-background: $white !default;
     z-index: -1;
     height: 100%;
     width: 100%;
-    background: $drilldown-sub-background;
+    background: $drilldown-background;
     transition: $drilldown-transition;
 
     &.is-active {
