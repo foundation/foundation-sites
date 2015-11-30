@@ -123,7 +123,7 @@ Place help text below a field to clarify it's purpose. Whenever you use help tex
 
 ## Label Positioning
 
-Sometimes you want a form with labels to the left of your inputs. Piece of cake! You can put the label inside a different column to the left of the input. Then use the class `.float-right` (or add `text-align: right` yourself) to realign the label.
+Sometimes you want a form with labels to the left of your inputs. Piece of cake! You can put the label inside a different column to the left of the input. Then use the class `.text-right` or `.float-right` (or add `text-align: right` yourself) to realign the label.
 
 <div class="warning callout">
   <p>In a <a href="rtl.html">right-to-left</a> environment, use <code>.float-left</code> instead.</p>
