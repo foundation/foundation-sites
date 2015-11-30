@@ -78,7 +78,7 @@ An individual instance of a plugin can also have different settings. These can b
 In the HTML, each setting can be defined as an individual data attribute. Note that camelCased options are converted to hyphenated words. In the below example, `multiExpand` becomes `data-multi-expand`.
 
 ```html
-<div data-accordion data-slidespeed="500" data-multi-expand="true"></div>
+<div data-accordion data-slide-speed="500" data-multi-expand="true"></div>
 ```
 
 ---
