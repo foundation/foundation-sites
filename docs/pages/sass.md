@@ -18,7 +18,7 @@ description: Foundation is written in Sass, which allows us to make the codebase
 
 ### Autoprefixer Required
 
-We don't include vendor prefixes in our Sass files&mdash;instead, we let [Autoprefixer](https://github.com/postcss/autoprefixer) to handle it for us. Our build process uses [gulp-autoprefixer](https://github.com/sindresorhus/gulp-autoprefixer), but there are [other versions](https://github.com/postcss/autoprefixer#usage) that work with Grunt, Rails, Brunch, and more.
+We don't include vendor prefixes in our Sass files&mdash;instead, we let [Autoprefixer](https://github.com/postcss/autoprefixer) handle it for us. Our build process uses [gulp-autoprefixer](https://github.com/sindresorhus/gulp-autoprefixer), but there are [other versions](https://github.com/postcss/autoprefixer#usage) that work with Grunt, Rails, Brunch, and more.
 
 To get the proper browser support, use these Autoprefixer settings:
 
