@@ -53,7 +53,7 @@
      * @option
      * @example false
      */
-    closeOnClick: false,
+    closeOnClick: false
     // holdOpen: false
   };
   /**

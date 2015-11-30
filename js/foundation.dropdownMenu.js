@@ -235,14 +235,14 @@
               down: nextSibling,
               up: prevSibling,
               next: openSub,
-              previous: closeSub,
+              previous: closeSub
             });
           } else { // right aligned
             $.extend(functions, {
               down: nextSibling,
               up: prevSibling,
               next: closeSub,
-              previous: openSub,
+              previous: openSub
             });
           }
         } else { // horizontal menu
@@ -250,7 +250,7 @@
             next: nextSibling,
             previous: prevSibling,
             down: openSub,
-            up: closeSub,
+            up: closeSub
           });
         }
       } else { // not tabs -> one sub

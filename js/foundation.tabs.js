@@ -26,7 +26,7 @@
       'ARROW_RIGHT': 'next',
       'ARROW_UP': 'previous',
       'ARROW_DOWN': 'next',
-      'ARROW_LEFT': 'previous',
+      'ARROW_LEFT': 'previous'
       // 'TAB': 'next',
       // 'SHIFT_TAB': 'previous'
     });
