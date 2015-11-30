@@ -13,10 +13,10 @@ Drilldowns use the standard [Menu](menu.html#nested-style) syntax. Add the attri
 <ul class="vertical menu" data-drilldown style="width: 200px" id="m1">
   <li>
     <a href="#">Item 1</a>
-    <ul class="vertical menu" id="m2">
+    <ul class="vertical menu">
       <li>
         <a href="#">Item 1A</a>
-        <ul class="vertical menu" id="m3">
+        <ul class="vertical menu">
           <li><a href="#">Item 1Aa</a></li>
           <li><a href="#">Item 1Ba</a></li>
           <li><a href="#">Item 1Ca</a></li>
