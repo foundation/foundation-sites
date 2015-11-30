@@ -189,13 +189,15 @@ To attach extra text or controls to the left or right of an input field, wrap th
 
 - `.input-group-field` on the text field.
 - `.input-group-label` on a text label.
-- `.input-group-button` on a button.
+- `.input-group-button` on a button. **Place the button inside this wrapper.**
 
 ```html_example
 <div class="input-group">
   <span class="input-group-label">$</span>
-  <input class="input-group-field" type="url">
-  <a class="input-group-button button">Submit</a>
+  <input class="input-group-field" type="number">
+  <div class="input-group-button">
+    <input type="submit" class="button" value="Submit">
+  </div>
 </div>
 ```
 
