@@ -129,7 +129,7 @@ You can use any jQuery selector you like, and if the selector encompasses multip
 Every plugin fires DOM events when certain functions finish. For example, you can listen for when tabs change, or an off-canvas menu opens, and create a callback to respond to it.
 
 ```js
-$('#tab').on('changed.zf.tabs', function() {
+$('[data-tabs]').on('change.zf.tabs', function() {
   console.log('Those tabs sure did change!');
 });
 ```
