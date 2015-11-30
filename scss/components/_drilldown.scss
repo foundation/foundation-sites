@@ -16,7 +16,7 @@ $drilldown-arrows: true !default;
 
 /// Background color for drilldown submenus.
 /// @type Color
-$drilldown-sub-background: $white !default;
+$drilldown-background: $white !default;
 
 @mixin foundation-drilldown-menu {
   // Applied to the Menu container
