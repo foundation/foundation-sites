@@ -62,7 +62,7 @@ Like with `.show`, these classes also have `-only` versions.
 
 ### Generic Hide Classes
 
-And if you really just need something hidden no matter what, there are classes for that as well. The `.hide` and `.invisibile` classes respectively set `display: none` and `visibility: hidden` on an element. Note that both of these classes hide content from screen readers.
+And if you really just need something hidden no matter what, there are classes for that as well. The `.hide` and `.invisible` classes respectively set `display: none` and `visibility: hidden` on an element. Note that both of these classes hide content from screen readers.
 
 ```html
 <p class="hide">Can't touch this.</p>
