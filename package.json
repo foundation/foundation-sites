@@ -19,6 +19,7 @@
   "devDependencies": {
     "bootcamp": "^1.1.7",
     "browser-sync": "^2.8.2",
+    "gitty": "^3.3.0",
     "gulp": "^3.8.10",
     "gulp-autoprefixer": "^2.3.1",
     "gulp-cache-bust": "^1.0.2",
@@ -31,6 +32,7 @@
     "gulp-plumber": "^1.0.1",
     "gulp-prompt": "^0.1.2",
     "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.4",
     "gulp-rsync": "0.0.5",
     "gulp-ruby-sass": "1.0.0-alpha.3",
     "gulp-sass": "^2.1.0",
