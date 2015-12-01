@@ -332,6 +332,7 @@
           close: function() {
             if (this.options.closeOnEsc) {
               this.close();
+              this.$anchor.focus();
             }
           }
         });
@@ -359,13 +360,18 @@
           }
         },
         open: function() {
-          if ($target.is(_this.focusableElements)) { // dont't trigger if acual element has focus (i.e. inputs, links, ...)
+          if (_this.$element.find(':focus').is(_this.$element.find('[data-close]'))) {
+            setTimeout(function() { // set focus back to anchor if close button has been activated
+              _this.$anchor.focus();
+            }, 1);
+          } else if ($target.is(_this.focusableElements)) { // dont't trigger if acual element has focus (i.e. inputs, links, ...)
             this.open();
           }
         },
         close: function() {
           if (this.options.closeOnEsc) {
             this.close();
+            this.$anchor.focus();
           }
         }
       });
