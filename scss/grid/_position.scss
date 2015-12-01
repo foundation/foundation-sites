@@ -43,7 +43,7 @@
 @mixin grid-column-end() {
   // This extra specificity is required for the property to be applied
   &:last-child {
-    float: $global-left;
+    float: $global-left !important;
   }
 }
 
