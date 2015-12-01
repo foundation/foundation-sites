@@ -57,7 +57,12 @@
   $columns: $grid-column-count,
   $gutter: $grid-column-gutter
 ) {
-  @if ($columns <= $grid-column-count) {
+  @if type_of($columns) == 'list' {
+    @if nth($columns, 1) <= nth($columns, 3) {
+      @include grid-column-size($columns);
+    }
+  }
+  @else if ($columns <= $grid-column-count) {
     @include grid-column-size($columns);
   }
 
@@ -80,7 +85,7 @@
 ) {
   @include grid-row;
   @include grid-column($gutter: $gutter);
-  
+
   &,
   &:last-child {
     float: none;
