@@ -14,7 +14,7 @@ description: Foundation is written in Sass, which allows us to make the codebase
 **Foundation for Sites can be compiled with Ruby Sass and libsass.** We tend to stick to the latest versions of both compilers when possible. Our documentation and starter project are compiled with [node-sass](https://github.com/sass/node-sass), a Node port of libsass. We recommend these versions of either compiler:
 
 - Ruby Sass **3.4+**
-- node-sass **3.0.0+** (libsass **3.2.5**)
+- node-sass **3.4.2+** (libsass **3.3.2**)
 
 ### Autoprefixer Required
 
