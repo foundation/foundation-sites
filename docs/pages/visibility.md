@@ -45,6 +45,10 @@ A separate set of classes allow you to show content *only* on a certain screen s
 
 This example shows the opposite: It uses the `.hide` visibility classes to state which elements should disappear based on the device's screen size.
 
+<div class="primary callout">
+  <p>There's no <code>.hide-for-small</code> class, because that would just permanently hide the element. For that, you can use the plain old <code>.hide</code> class instead.</p>
+</div>
+
 ```html_example
 <p class="hide-for-medium">You are <em>not</em> on a medium screen or larger.</p>
 <p class="hide-for-large">You are <em>not</em> on a large screen or larger.</p>
