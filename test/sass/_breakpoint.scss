@@ -4,7 +4,7 @@
 @include describe('Breakpoint') {
   @include it('converts a named breakpoint to an em value') {
     $actual: breakpoint(medium);
-    $expected: '(min-width: 32em)';
+    $expected: '(min-width: 40em)';
 
     @include should(expect($actual), to(be($expected)));
   }
@@ -18,7 +18,7 @@
 
   @include it('creates an only range out of a named breakpoint') {
     $actual: breakpoint(medium only);
-    $expected: '(min-width: 32em) and (max-width: 63.9375em)';
+    $expected: '(min-width: 40em) and (max-width: 63.9375em)';
 
     @include should(expect($actual), to(be($expected)));
   }
