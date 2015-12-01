@@ -62,14 +62,11 @@
    */
   Drilldown.prototype._init = function(){
     this.$submenuAnchors = this.$element.find('li.has-submenu');
-    this.$submenus = this.$submenuAnchors.children('[data-submenu]').addClass('is-drilldown-sub')/*.wrap($(this.options.wrapper).addClass('is-drilldown-sub'))*/;
-    // this.$rootElems = this.$element.children('[data-submenu]')/*.addClass('first-sub')*/;
+    this.$submenus = this.$submenuAnchors.children('[data-submenu]');
     this.$menuItems = this.$element.find('li:visible').not('.js-drilldown-back').attr('role', 'menuitem');
-    // this.$submenus;
-
 
     this._prepareMenu();
-    // this._getMaxDims();
+    
     this._keyboardEvents();
   };
   /**

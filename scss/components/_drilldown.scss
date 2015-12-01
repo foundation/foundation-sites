@@ -22,7 +22,7 @@ $drilldown-arrows: true !default;
   }
 
   // Applied to nested <ul>s
-  .is-drilldown-sub {
+  .is-drilldown-submenu {
     position: absolute;
     top: 0;
     #{$global-left}: 100%;
