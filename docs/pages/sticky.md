@@ -34,7 +34,7 @@ Add the `.sticky` class and `[data-sticky]` to an element to create something th
       </p>
     </div>
     <div class="columns small-6 right" data-sticky-container>
-      <div class="sticky" data-sticky data-anchor='example1'>
+      <div class="sticky" data-sticky data-anchor="example1">
         <img class="thumbnail" src="assets/img/rectangle-3.jpg">
       </div>
     </div>
@@ -43,10 +43,11 @@ Add the `.sticky` class and `[data-sticky]` to an element to create something th
 
 ## Advanced
 
-You can also use two anchors, if you please. Using `data-top-anchor='idOfSomething'`, `data-btm-anchor='idOfSomething:[top/bottom]'`, or a set pixel number `data-top-anchor='150'`. If you use an element id with no top/bottom specified, it defaults to the top.
+You can also use two anchors, if you please. Using `data-top-anchor="idOfSomething"`, `data-btm-anchor="idOfSomething:[top/bottom]"`, or a set pixel number `data-top-anchor="150"`. If you use an element id with no top/bottom specified, it defaults to the top.
+
 ```html
 <div class="columns small-6 right" data-sticky-container>
-  <div class="sticky" data-sticky data-top-anchor='example2' data-btm-anchor='foo:bottom'>
+  <div class="sticky" data-sticky data-top-anchor="example2" data-btm-anchor="foo:bottom">
     <img class="thumbnail" src="assets/img/rectangle-5.jpg">
   </div>
 </div>
@@ -62,15 +63,15 @@ You can also use two anchors, if you please. Using `data-top-anchor='idOfSomethi
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
-      <p id='foo'>
+      <p id="foo">
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
     </div>
-    <div class='columns small-6 right' data-sticky-container>
-      <div class="sticky" data-sticky data-top-anchor='example2:top' data-btm-anchor='foo' data-stick-to="bottom">
+    <div class="columns small-6 right" data-sticky-container>
+      <div class="sticky" data-sticky data-top-anchor="example2:top" data-btm-anchor="foo" data-stick-to="bottom">
         <img class="thumbnail" src="assets/img/rectangle-5.jpg">
       </div>
     </div>

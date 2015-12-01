@@ -50,5 +50,5 @@ Drilldowns use the standard [Menu](menu.html#nested-style) syntax. Add the attri
       <li><a href="#">Item 3E</a></li>
     </ul>
   </li>
-  <li><a href='#'> Item 4</a></li>
+  <li><a href="#"> Item 4</a></li>
 </ul>
