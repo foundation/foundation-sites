@@ -115,6 +115,11 @@ $foundation-colors: (
 );
 
 @mixin foundation-global-styles {
+  // These styles are applied to a <meta> tag, which is read by the Foundation JavaScript
+  .foundation-mq {
+    font-family: '#{-zf-bp-serialize($breakpoints)}';
+  }
+
   html,
   body {
     font-size: $global-font-size;
