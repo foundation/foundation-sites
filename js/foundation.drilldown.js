@@ -66,7 +66,7 @@
     this.$menuItems = this.$element.find('li:visible').not('.js-drilldown-back').attr('role', 'menuitem');
 
     this._prepareMenu();
-    
+
     this._keyboardEvents();
   };
   /**
@@ -83,7 +83,8 @@
     // }
     this.$submenuAnchors.each(function(){
       var $sub = $(this);
-      $sub.find('a')[0].removeAttribute('href');
+      var $link = $sub.find('a:first');
+      $link.data('savedHref', $link.attr('href')).removeAttr('href');
       $sub.children('[data-submenu]')
           .attr({
             'aria-hidden': true,
@@ -308,7 +309,12 @@
                  .end().find('.is-active, .is-closing, .is-drilldown-sub').removeClass('is-active is-closing is-drilldown-sub')
                  .end().find('[data-submenu]').removeAttr('aria-hidden tabindex role')
                  .off('.zf.drilldown').end().off('zf.drilldown');
-
+    this.$element.find('a').each(function(){
+      var $link = $(this);
+      if($link.data('savedHref')){
+        $link.attr('href', $link.data('savedHref')).removeData('savedHref');
+      }else{ return; }
+    });
     Foundation.unregisterPlugin(this);
   };
   Foundation.plugin(Drilldown, 'Drilldown');
