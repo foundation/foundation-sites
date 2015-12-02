@@ -88,7 +88,7 @@
   }
 
   // Screen reader visibility classes
-  // Need a “hide-for-sr” class? Add aria-hidden='true' to the element
+  // Need a "hide-for-sr" class? Add aria-hidden='true' to the element
   .show-for-sr,
   .show-on-focus {
     @include element-invisible;
