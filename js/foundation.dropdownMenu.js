@@ -45,7 +45,7 @@
      */
     disableHover: false,
     /**
-     * Allow a submenu to automatically close on a mouseleave event.
+     * Allow a submenu to automatically close on a mouseleave event, if not clicked open.
      * @option
      * @example true
      */
@@ -77,10 +77,10 @@
     alignment: 'left',
     /**
      * Allow clicks on the body to close any open submenus.
-     *
-     *
+     * @option
+     * @example true
      */
-    // closeOnClick: true,
+    closeOnClick: true,
     /**
      * Class applied to vertical oriented menus, Foundation default is `vertical`. Update this if using your own class.
      * @option
@@ -92,7 +92,13 @@
      * @option
      * @example 'align-right'
      */
-    rightClass: 'align-right'
+    rightClass: 'align-right',
+    /**
+     * Boolean to force overide the clicking of links to perform default action, on second touch event for mobile.
+     * @option
+     * @example false
+     */
+    forceFollow: true
   };
   /**
    * Initializes the plugin, and calls _prepareMenu
@@ -128,13 +134,12 @@
    */
   DropdownMenu.prototype._events = function(){
     var _this = this,
-        hasTouch = 'ontouchstart' in window || window.ontouchstart !== undefined,
+        hasTouch = 'ontouchstart' in window || (typeof window.ontouchstart !== 'undefined'),
         parClass = 'is-dropdown-submenu-parent',
         delay;
-        
-    if(this.options.clickOpen || hasTouch){
-      this.$menuItems.on('click.zf.dropdownmenu', function(e){
 
+    if(this.options.clickOpen || hasTouch){
+      this.$menuItems.on('click.zf.dropdownmenu touchstart.zf.dropdownmenu', function(e){
         var $elem = $(e.target).parentsUntil('ul', '.' + parClass),
             hasSub = $elem.hasClass(parClass),
             hasClicked = $elem.attr('data-is-click') === 'true',
@@ -142,16 +147,15 @@
 
         if(hasSub){
           if(hasClicked){
-            if(hasTouch){ return;}
-
+            if(!_this.options.closeOnClick || (!_this.options.clickOpen && !hasTouch) || (_this.options.forceFollow && hasTouch)){ return; }
             else{
-            e.stopImmediatePropagation();
-            e.preventDefault();
-            _this._hide($elem);
+              e.stopImmediatePropagation();
+              e.preventDefault();
+              _this._hide($elem);
             }
           }else{
-            e.stopImmediatePropagation();
             e.preventDefault();
+            e.stopImmediatePropagation();
             _this._show($elem.children('.is-dropdown-submenu'));
             $elem.add($elem.parentsUntil(_this.$element, '.' + parClass)).attr('data-is-click', true);
           }
@@ -279,21 +283,18 @@
    * @function
    * @private
    */
-  // DropdownMenu.prototype._addBodyHandler = function(){
-  //   var $body = $(document.body).not(this.$element),
-  //       _this = this;
-  //   $body.off('click.zf.dropdownmenu')
-  //        .on('click.zf.dropdownmenu', function(e){
-  //          console.log('body click');
-  //          var $link = _this.$element.find(e.target);
-  //          if($link.length){
-  //            $link.triggerHandler('click.zf.dropdownmenu', [$link]);
-  //            return false;
-  //          }
-  //          _this._hide();
-  //          $body.off('click.zf.dropdownmenu');
-  //        });
-  // };
+  DropdownMenu.prototype._addBodyHandler = function(){
+    var $body = $(document.body),
+        _this = this;
+    $body.off('mouseup.zf.dropdownmenu touchend.zf.dropdownmenu')
+         .on('mouseup.zf.dropdownmenu touchend.zf.dropdownmenu', function(e){
+           var $link = _this.$element.find(e.target);
+           if($link.length){ return; }
+
+           _this._hide();
+           $body.off('mouseup.zf.dropdownmenu touchend.zf.dropdownmenu');
+         });
+  };
   /**
    * Opens a dropdown pane, and checks for collisions first.
    * @param {jQuery} $sub - ul element that is a submenu to show
@@ -322,7 +323,7 @@
       this.changed = true;
     }
     $sub.css('visibility', '');
-    // if(this.options.closeOnClick){ this._addBodyHandler(); }
+    if(this.options.closeOnClick){ this._addBodyHandler(); }
     /**
      * Fires when the new dropdown pane is visible.
      * @event DropdownMenu#show
