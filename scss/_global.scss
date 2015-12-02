@@ -68,15 +68,11 @@ $body-font-color: $black !default;
 
 /// Font stack of the body.
 /// @type List
-$body-font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif !default;
+$body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif !default;
 
 /// Set to `true` to enable antialiased type, using the `-webkit-font-smoothing` and `-moz-osx-font-smoothing` CSS properties.
 /// @type Boolean
 $body-antialiased: true !default;
-
-/// Text direction for the document. Set to `rtl` to reverse the orientation and direction of all components.
-/// @type Keyword
-$text-direction: ltr !default;
 
 /// Global value used for margin on components.
 /// @type Number
@@ -119,6 +115,11 @@ $foundation-colors: (
 );
 
 @mixin foundation-global-styles {
+  // These styles are applied to a <meta> tag, which is read by the Foundation JavaScript
+  .foundation-mq {
+    font-family: '#{-zf-bp-serialize($breakpoints)}';
+  }
+
   html,
   body {
     font-size: $global-font-size;

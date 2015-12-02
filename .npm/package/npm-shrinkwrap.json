@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "motion-ui": {
+      "version": "1.1.0",
+      "dependencies": {
+        "jquery": {
+          "version": "2.1.4"
+        }
+      }
+    }
+  }
+}

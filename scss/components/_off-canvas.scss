@@ -8,34 +8,37 @@
 
 /// Width of an off-canvas menu.
 /// @type Number
-$offcanvas-size: 250px;
+$offcanvas-size: 250px !default;
 
 /// Background color of an off-canvas menu.
 /// @type Color
-$offcanvas-background: $light-gray;
+$offcanvas-background: $light-gray !default;
 
 /// Z-index of an off-canvas menu.
 /// @type Number
-$offcanvas-zindex: -1;
+$offcanvas-zindex: -1 !default;
 
 /// Length of the animation on an off-canvas menu.
 /// @type Number
-$offcanvas-transition-length: 0.5s;
+$offcanvas-transition-length: 0.5s !default;
 
 /// Timing function of the animation on an off-canvas menu.
 /// @type Keyword
-$offcanvas-transition-timing: ease;
+$offcanvas-transition-timing: ease !default;
+
+/// If `true`, a revealed off-canvas will be fixed-position, and scroll with the screen.
+$offcanvas-fixed-reveal: true !default;
 
 /// Background color for the overlay that appears when an off-canvas menu is open.
 /// @type Color
-$offcanvas-exit-background: rgba($white, 0.25);
+$offcanvas-exit-background: rgba($white, 0.25) !default;
 
 /// CSS class used for the main content area. The off-canvas mixins use this to target the page body.
-$maincontent-class: 'off-canvas-content';
+$maincontent-class: 'off-canvas-content' !default;
 
 /// Box shadow to place under the main content area. This shadow overlaps the off-canvas menus.
 /// @type Shadow
-$maincontent-shadow: 0 0 10px rgba($black, 0.5);
+$maincontent-shadow: 0 0 10px rgba($black, 0.5) !default;
 
 /// Adds baseline styles for off-canvas. This CSS is required to make the other pieces work.
 @mixin off-canvas-basics {
@@ -68,7 +71,7 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5);
     backface-visibility: hidden;
     z-index: 1;
 
-    @if hasvalue($maincontent-shadow) {
+    @if has-value($maincontent-shadow) {
       box-shadow: $maincontent-shadow;
     }
   }
@@ -137,6 +140,11 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5);
   $position: left
 ) {
   #{$position}: 0;
+  z-index: auto;
+
+  @if $offcanvas-fixed-reveal {
+    position: fixed;
+  }
 
   & ~ .#{$maincontent-class} {
     margin-#{$position}: $offcanvas-size;

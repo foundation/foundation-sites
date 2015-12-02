@@ -1,7 +1,9 @@
 ---
 title: Off-canvas
 description: Off-canvas menus are positioned outside of the viewport and slide in when activated. Setting up an off-canvas layout in Foundation is super easy.
-sass: scss/components/_off-canvas.scss
+sass:
+  - scss/components/_off-canvas.scss
+  - scss/components/_title-bar.scss
 js: js/foundation.offcanvas.js
 tags:
   - navigation
@@ -31,7 +33,7 @@ Along with the menu, the main content of your page will be housed in its own con
 <body>
   <div class="off-canvas-wrapper">
     <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
-      <div class="off-canvas position-left" id="offCanvas" data-off-canvas data-position="left"></div>
+      <div class="off-canvas position-left" id="offCanvas" data-off-canvas></div>
       <div class="off-canvas-content" data-off-canvas-content></div>
     </div>
   </div>
@@ -57,7 +59,7 @@ A design can have two menus: one on the left, and one on the right. Be sure that
   <div class="off-canvas-wrapper">
     <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
       <div class="off-canvas position-left" id="offCanvas" data-off-canvas></div>
-      <div class="off-canvas position-right" id="offCanvas" data-off-canvas></div>
+      <div class="off-canvas position-right" id="offCanvas" data-off-canvas data-position="right"></div>
       <div class="off-canvas-content" data-off-canvas-content></div>
     </div>
   </div>
@@ -92,6 +94,10 @@ If you need a simple title bar to toggle the off-canvas, `.title-bar` is here to
 The left- and right-hand off-canvas panes can be set to be persistent on larger screens. Add the class `.reveal-for-medium` or `.reveal-for-large` to the off-canvas menu.
 
 The main content area (`.off-canvas-content`) will be padded to the left or right equal to the width of the container.
+
+<div class="callout">
+  <p>The menu will be fixed-position by default, meaning it follows you as you scroll up and down. The menu also gets its own scroll bar if it's taller than the window. To disable these features, set the <code>$offcanvas-fixed-reveal</code> variable to <code>false</code>.</p>
+</div>
 
 <div class="warning callout">
   <p>The slide in/out of the plugin still works when these classes are active. If you use this feature on a larger screen, be sure to hide any click triggers on those larger breakpoints as well. Foundation's <a href="visibility.html">visibility classes</a> can help you with that.</p>

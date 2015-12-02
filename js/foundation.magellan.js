@@ -14,7 +14,7 @@
    */
   function Magellan(element, options) {
     this.$element = element;
-    this.options  = $.extend({}, Magellan.defaults, options);
+    this.options  = $.extend({}, Magellan.defaults, this.$element.data(), options);
 
     this._init();
 
@@ -54,7 +54,13 @@
      * @option
      * @example true
      */
-    deepLinking: false
+    deepLinking: false,
+    /**
+     * Number of pixels to offset the scroll of the page on item click if using a sticky nav bar.
+     * @option
+     * @example 25
+     */
+    barOffset: 0
   };
 
   /**
@@ -120,7 +126,7 @@
     }).on('click.zf.magellan', 'a[href^="#"]', function(e) {
         e.preventDefault();
         var arrival   = this.getAttribute('href'),
-            scrollPos = $(arrival).offset().top - _this.options.threshold / 2;
+            scrollPos = $(arrival).offset().top - _this.options.threshold / 2 - _this.options.barOffset;
 
         // requestAnimationFrame is disabled for this plugin currently
         // Foundation.Move(_this.options.animationDuration, $body, function(){
@@ -186,9 +192,10 @@
     this.$element.off('.zf.trigger .zf.magellan')
         .find('.' + this.options.activeClass).removeClass(this.options.activeClass);
 
-    var hash = this.$active[0].getAttribute('href');
-
-    window.location.hash.replace(hash, '');
+    if(this.options.deepLinking){
+      var hash = this.$active[0].getAttribute('href');
+      window.location.hash.replace(hash, '');
+    }
 
     Foundation.unregisterPlugin(this);
   };

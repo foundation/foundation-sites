@@ -8,15 +8,15 @@
 
 /// Default background color of an accordion group.
 /// @type Color
-$accordion-background: $white;
+$accordion-background: $white !default;
 
 /// If `true`, adds plus and minus icons to the side of each accordion title.
 /// @type Boolean
-$accordion-plusminus: true;
+$accordion-plusminus: true !default;
 
 /// Default text color for items in a Menu.
 /// @type Color
-$accordion-item-color: foreground($accordion-background, $primary-color);
+$accordion-item-color: foreground($accordion-background, $primary-color) !default;
 
 /// Default background color on hover for items in a Menu.
 /// @type Color
@@ -36,7 +36,7 @@ $accordion-content-border: 1px solid $light-gray !default;
 
 /// Default text color of tab content.
 /// @type Color
-$accordion-content-color: foreground($accordion-background, $primary-color);
+$accordion-content-color: foreground($accordion-background, $primary-color) !default;
 
 /// Default padding for tab content.
 /// @type Number | List

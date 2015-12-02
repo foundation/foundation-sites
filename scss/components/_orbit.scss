@@ -67,6 +67,12 @@ $orbit-control-zindex: 10 !default;
 @mixin orbit-slide {
   width: 100%;
   max-height: 100%;
+  &.no-motionui {
+    &.is-active {
+      top: 0;
+      left: 0;
+    }
+  }
 }
 
 @mixin orbit-figure {
@@ -93,7 +99,7 @@ $orbit-control-zindex: 10 !default;
 /// Adds base styles for the next/previous buttons in an Orbit slider. These styles are shared between the `.orbit-next` and `.orbit-previous` classes in the default CSS.
 @mixin orbit-control {
   @include disable-mouse-outline;
-  @include v-align-middle;
+  @include vertical-center;
   z-index: $orbit-control-zindex;
   padding: $orbit-control-padding;
   color: $white;

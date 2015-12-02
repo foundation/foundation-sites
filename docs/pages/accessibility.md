@@ -40,7 +40,7 @@ If your site has video, provide captions so that users who are deaf or hard-of-h
 
 ## Foundation and Accessibility
 
-All of Foundation's components are keyboard-accessible and screen reader-friendly. All of our code examples include the required accessibility hooks, but there may be instances where you, as the developer, need to fine-tine the specifics of how those hooks are used. Our JavaScript plugins will automatically add many required attributes to the HTML for you. Refer to each component's documentation to learn how to ensure your markup is screen reader-friendly.
+All of Foundation's components are keyboard-accessible and screen reader-friendly. All of our code examples include the required accessibility hooks, but there may be instances where you, as the developer, need to fine-tune the specifics of how those hooks are used. Our JavaScript plugins will automatically add many required attributes to the HTML for you. Refer to each component's documentation to learn how to ensure your markup is screen reader-friendly.
 
 Foundation's CSS makes use of the library [what-input](https://github.com/ten1seven/what-input), which can detect the user's current input device and adjust CSS accordingly. We use it to disable outlines for mouse users, but not keyboard users, who need the outline to know what element on the page has focus.
 
@@ -69,5 +69,7 @@ If you're using the Sass version of Foundation, you can use this mixin to enable
 ### Tools
 
 - [Tenon accessibility checker](https://tenon.io/index.php)
+- [WAVE Chrome plugin - free accessibility checker](http://wave.webaim.org)
 - [ChromeVox screen reader plugin for Chrome](Chromevox screnreader plugin for Chrome)
 - [JAWS screen reader for Windows](http://www.freedomscientific.com/Products/Blindness/Jaws)
+- [NVDA screen reader for Windows - Free](http://www.nvaccess.org/download/)

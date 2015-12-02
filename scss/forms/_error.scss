@@ -35,6 +35,7 @@ $input-error-font-size: rem-calc(12) !default;
 $input-error-font-weight: $global-weight-bold !default;
 
 /// Styles the background and border of an input field to have an error state.
+///
 /// @param {Color} $background [$alert-color] - Color to use for the background and border.
 @mixin form-input-error(
   $background: $alert-color

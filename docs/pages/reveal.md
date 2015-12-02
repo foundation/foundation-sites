@@ -42,12 +42,12 @@ A modal is just an empty container, until you put another modal in it, then the 
 <div class="reveal" id="exampleModal11" data-reveal>
   <h1>Awesome!</h1>
   <p class="lead">I have another modal inside of me!</p>
-  <a class='button' data-toggle='exampleModal111'>Click me for another modal!</a>
+  <a class="button" data-toggle="exampleModal111">Click me for another modal!</a>
   <button class="close-button" data-close aria-label="Close reveal" type="button">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-<div class='reveal' id='exampleModal111' data-reveal>
+<div class="reveal" id="exampleModal111" data-reveal>
   <h2>ANOTHER MODAL!!!</h2>
   <button class="close-button" data-close aria-label="Close reveal" type="button">
     <span aria-hidden="true">&times;</span>
@@ -64,7 +64,7 @@ Yep, video too
 ```html_example
 <p><a data-toggle="exampleModal12">Click me for a modal</a></p>
 
-<div class="reveal" id="exampleModal12" data-reveal data-reset-on-close='true'>
+<div class="reveal" id="exampleModal12" data-reveal data-reset-on-close="true">
   <h2 id="videoModalTitle">This modal has video</h2>
   <div class="flex-video widescreen vimeo">
     <iframe width="1280" height="720" src="//www.youtube-nocookie.com/embed/wnXCopXXblE?rel=0" frameborder="0" allowfullscreen></iframe>
@@ -83,7 +83,7 @@ On small screens, a modal is always 100% of the width of the screen. On medium-s
 
 #### Tiny
 ```html_example
-<p><a data-toggle="exampleModal2" aria-controls='exampleModal2'>Click me for a tiny modal</a></p>
+<p><a data-toggle="exampleModal2" aria-controls="exampleModal2">Click me for a tiny modal</a></p>
 
 <div class="tiny reveal" id="exampleModal2" data-reveal>
   <p>OH I'M SO TIIINY</p>
@@ -166,7 +166,7 @@ To use animations from the Motion UI library, include the <code>data-animation-i
 ```html_example
 <p><a data-toggle="animatedModal1">Click me for a modal</a></p>
 
-<div class="reveal" id="animatedModal1" data-reveal data-close-on-click='true' data-animation-in='spin-in' data-animation-out='spin-out'>
+<div class="reveal" id="animatedModal1" data-reveal data-close-on-click="true" data-animation-in="spin-in" data-animation-out="spin-out">
   <h1>Whoa, I'm dizzy!</h1>
   <p class='lead'>There are many options for animating modals, check out the Motion UI library to see them all</p>
   <button class="close-button" data-close aria-label="Close reveal" type="button">
@@ -187,6 +187,3 @@ $.ajax({'/url'})
     $modal.html(resp.html).foundation('open');
 });
 ```
-## Accessibility
-
-Mostly handled by Foundation JS now...

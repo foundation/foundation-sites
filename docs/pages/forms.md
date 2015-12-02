@@ -108,6 +108,21 @@ Wrap a group of checkboxes or radio buttons in a `<fieldset>` element, and give 
 
 ---
 
+### Fieldset Styles
+
+To encourage their use as an accessibility tool, the `<fieldset>` element is no longer styled by default. Those styles are now contained in the `.fieldset` class.
+
+```html_example
+<fieldset class="fieldset">
+  <legend>Check these out</legend>
+  <input id="checkbox1" type="checkbox"><label for="checkbox1">Checkbox 1</label>
+  <input id="checkbox2" type="checkbox"><label for="checkbox2">Checkbox 2</label>
+  <input id="checkbox3" type="checkbox"><label for="checkbox3">Checkbox 3</label>
+</fieldset>
+```
+
+---
+
 ## Help Text
 
 Place help text below a field to clarify it's purpose. Whenever you use help text, give the text a unique ID, and add the attribute `aria-describedby` to the input.
@@ -123,7 +138,7 @@ Place help text below a field to clarify it's purpose. Whenever you use help tex
 
 ## Label Positioning
 
-Sometimes you want a form with labels to the left of your inputs. Piece of cake! You can put the label inside a different column to the left of the input. Then use the class `.float-right` (or add `text-align: right` yourself) to realign the label.
+Sometimes you want a form with labels to the left of your inputs. Piece of cake! You can put the label inside a different column to the left of the input. Then use the class `.text-right` or `.float-right` (or add `text-align: right` yourself) to realign the label.
 
 <div class="warning callout">
   <p>In a <a href="rtl.html">right-to-left</a> environment, use <code>.float-left</code> instead.</p>
@@ -189,13 +204,15 @@ To attach extra text or controls to the left or right of an input field, wrap th
 
 - `.input-group-field` on the text field.
 - `.input-group-label` on a text label.
-- `.input-group-button` on a button.
+- `.input-group-button` on a button. **Place the button inside this wrapper.**
 
 ```html_example
 <div class="input-group">
   <span class="input-group-label">$</span>
-  <input class="input-group-field" type="url">
-  <a class="input-group-button button">Submit</a>
+  <input class="input-group-field" type="number">
+  <div class="input-group-button">
+    <input type="submit" class="button" value="Submit">
+  </div>
 </div>
 ```
 

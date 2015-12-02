@@ -36,7 +36,7 @@ $reveal-radius: $global-radius !default;
 
 /// z-index for modals. The overlay uses this value, while the modal itself uses this value plus one.
 /// @type Number
-$reveal-zindex: 1005;
+$reveal-zindex: 1005 !default;
 
 /// Background color of modal overlays.
 /// @type Color

@@ -1,5 +1,5 @@
 ---
-title: Orbit Slider
+title: Orbit
 description: The slider you want, the slider you need.
 sass: scss/components/_orbit.scss
 js: js/foundation.orbit.js
@@ -11,10 +11,7 @@ tags:
 
 ## Basic Orbit Slider
 
-<!-- ``` -->
 <div class="orbit" role="region" aria-label="Favorite Nicolas Cage Pictures" data-orbit>
-<!-- <div class="orbit-container" style='z-index: 5;'>
-  <ul> -->
   <ul class="orbit-container">
     <button class="orbit-previous" aria-label="previous"><span class="show-for-sr">Previous Slide</span>&#9664;</button>
     <button class="orbit-next" aria-label="next"><span class="show-for-sr">Next Slide</span>&#9654;</button>
@@ -35,7 +32,6 @@ tags:
       <figcaption class="orbit-caption">Outta This World</figcaption>
     </li>
   </ul>
-<!-- </div> -->
   <nav class="orbit-bullets">
    <button class="is-active" data-slide="0"><span class="show-for-sr">First slide details.</span><span class="show-for-sr">Current Slide</span></button>
    <button data-slide="1"><span class="show-for-sr">Second slide details.</span></button>
@@ -43,7 +39,6 @@ tags:
    <button data-slide="3"><span class="show-for-sr">Fourth slide details.</span></button>
  </nav>
 </div>
-<!-- ``` -->
 
 ```html_example
 <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>

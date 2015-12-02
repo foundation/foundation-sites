@@ -32,7 +32,7 @@ $switch-height-large: 2.5rem !default;
 
 /// Border radius of the switch
 /// @type Number
-$switch-radius: $global-radius;
+$switch-radius: $global-radius !default;
 
 /// border around a modal.
 /// @type Number
@@ -109,6 +109,7 @@ $switch-paddle-transition: all 0.25s ease-out !default;
     width: 1.5rem;
     transition: $switch-paddle-transition;
     transform: translate3d(0, 0, 0);
+    border-radius: $switch-paddle-radius;
   }
 
   // Change the visual style when the switch is active

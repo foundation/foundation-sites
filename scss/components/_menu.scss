@@ -39,7 +39,7 @@ $menu-expand-max: 6 !default;
   }
 
   // Reset line height to make the height of the overall item easier to calculate
-  > li > a {
+  > li:not(.menu-text) > a {
     display: block;
     padding: $menu-item-padding;
     line-height: 1;

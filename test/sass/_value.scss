@@ -1,22 +1,22 @@
-@import "util/value";
+@import 'util/value';
 
-@include describe("Has Value") {
-  @include it("returns false if the value is not falsey") {
-    $boolean: hasvalue(true);
-    $number:  hasvalue(1px);
-    $color:   hasvalue(#000);
-    $list:    hasvalue(1px solid black);
+@include describe('Has Value') {
+  @include it('returns false if the value is not falsey') {
+    $boolean: has-value(true);
+    $number:  has-value(1px);
+    $color:   has-value(#000);
+    $list:    has-value(1px solid black);
     
     @include should(expect($boolean), to(be(true)));
     @include should(expect($number),  to(be(true)));
     @include should(expect($color),   to(be(true)));
     @include should(expect($list),    to(be(true)));
   }
-  @include it("returns false if the value is falsey") {
-    $zero:   hasvalue(0px);
-    $null:   hasvalue(null);
-    $none:   hasvalue(none);
-    $empty:  hasvalue(());
+  @include it('returns false if the value is falsey') {
+    $zero:   has-value(0px);
+    $null:   has-value(null);
+    $none:   has-value(none);
+    $empty:  has-value(());
 
     @include should(expect($zero),  to(be(false)));
     @include should(expect($null),  to(be(false)));
@@ -25,8 +25,8 @@
   }
 }
 
-@include describe("Get Side") {
-  @include it("returns correct sides when given one side value") {
+@include describe('Get Side') {
+  @include it('returns correct sides when given one side value') {
     $value: 1rem;
     $actual: (
       get-side($value, top),
@@ -38,7 +38,7 @@
 
     @include should(expect($actual), to(be($expected)));
   }
-  @include it("returns correct sides when given two side values") {
+  @include it('returns correct sides when given two side values') {
     $value: 1rem 2rem;
     $actual: (
       get-side($value, top),
@@ -50,7 +50,7 @@
 
     @include should(expect($actual), to(be($expected)));
   }
-  @include it("returns correct sides when given three side values") {
+  @include it('returns correct sides when given three side values') {
     $value: 1rem 2rem 3rem;
     $actual: (
       get-side($value, top),
@@ -62,7 +62,7 @@
 
     @include should(expect($actual), to(be($expected)));
   }
-  @include it("returns correct sides when given four side values") {
+  @include it('returns correct sides when given four side values') {
     $value: 1rem 2rem 3rem 4rem;
     $actual: (
       get-side($value, top),
@@ -76,8 +76,8 @@
   }
 }
 
-@include describe("Get Border Value") {
-  @include it("returns the right value of a border property") {
+@include describe('Get Border Value') {
+  @include it('returns the right value of a border property') {
     $value: 10px dashed green;
     $width: get-border-value($value, width);
     $style: get-border-value($value, style);
@@ -87,7 +87,7 @@
     @include should(expect($style), to(be(dashed)));
     @include should(expect($color), to(be(green)));
   }
-  @include it("returns a default value if a property is missing") {
+  @include it('returns a default value if a property is missing') {
     $defaultWidth: get-border-value(solid black, width);
     $defaultStyle: get-border-value(10px black, style);
     $defaultColor: get-border-value(10px solid, color);

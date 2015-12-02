@@ -58,16 +58,14 @@ $black: #0a0a0a;
 $white: #fefefe;
 $body-background: $white;
 $body-font-color: $black;
-$body-font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+$body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
 $body-antialiased: true;
-$text-direction: ltr;
 $global-margin: 1rem;
 $global-padding: 1rem;
 $global-margin: 1rem;
 $global-weight-normal: normal;
 $global-weight-bold: bold;
 $global-radius: 0;
-$global-namespace: false;
 $global-text-direction: ltr;
 $rem-base: 16px;
 
@@ -97,7 +95,7 @@ $block-grid-max: 6;
 $header-font-family: $body-font-family;
 $header-font-weight: $global-weight-normal;
 $header-font-style: normal;
-$font-family-monospace: Consolas, "Liberation Mono", Courier, monospace;
+$font-family-monospace: Consolas, 'Liberation Mono', Courier, monospace;
 $header-sizes: (
   small: (
     'h1': 24,
@@ -298,7 +296,7 @@ $dropdown-sizes: (
 $dropdownmenu-arrows: true;
 $dropdownmenu-min-width: 200px;
 $dropdownmenu-background: $white;
-$dropdown-border: 1px solid $medium-gray;
+$dropdownmenu-border: 1px solid $medium-gray;
 
 // 18. Flex Video
 // --------------
@@ -378,6 +376,7 @@ $offcanvas-background: $light-gray;
 $offcanvas-zindex: -1;
 $offcanvas-transition-length: 0.5s;
 $offcanvas-transition-timing: ease;
+$offcanvas-fixed-reveal: true;
 $offcanvas-exit-background: rgba($white, 0.25);
 $maincontent-class: 'off-canvas-content';
 $maincontent-shadow: 0 0 10px rgba($black, 0.5);

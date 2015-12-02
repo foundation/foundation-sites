@@ -15,7 +15,7 @@ Bandwidth is precious on mobile networks, so it helps to serve users on smaller 
 In the above example, we have three different sizes of image: one for small screens, one for medium, and one for large. Use the below format to set up a responsive image. The image will change automatically as the browser resizes.
 
 ```html
-<img data-interchange="[assets/img/interchange/small.jpg, (small)], [assets/img/interchange/medium.jpg, medium], [assets/img/interchange/large.jpg, large]">
+<img data-interchange="[assets/img/interchange/small.jpg, small], [assets/img/interchange/medium.jpg, medium], [assets/img/interchange/large.jpg, large]">
 ```
 
 The image set is a comma-separated list of items with this format:

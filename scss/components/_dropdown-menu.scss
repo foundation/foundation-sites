@@ -20,11 +20,14 @@ $dropdownmenu-background: $white !default;
 
 /// Border for dropdown panes.
 /// @type List
-$dropdown-border: 1px solid $medium-gray !default;
+$dropdownmenu-border: 1px solid $medium-gray !default;
 
 @mixin foundation-dropdown-menu {
   .dropdown.menu {
-    .has-submenu {
+    a {
+      @include disable-mouse-outline;
+    }
+    .is-dropdown-submenu-parent {
       position: relative;
 
       a::after {
@@ -68,6 +71,10 @@ $dropdown-border: 1px solid $medium-gray !default;
       }
     }
 
+    .no-js & ul {
+      display: none;
+    }
+
     .submenu {
       display: none;
       position: absolute;
@@ -76,7 +83,7 @@ $dropdown-border: 1px solid $medium-gray !default;
       min-width: $dropdownmenu-min-width;
       z-index: 1;
       background: $dropdownmenu-background;
-      border: $dropdown-border;
+      border: $dropdownmenu-border;
 
       > li {
         width: 100%;
@@ -88,13 +95,13 @@ $dropdown-border: 1px solid $medium-gray !default;
         right: auto;
       }
 
-      &:not(.js-dropdown-nohover) > .has-submenu:hover > &,
+      &:not(.js-dropdown-nohover) > .is-dropdown-submenu-parent:hover > &,
       &.js-dropdown-active {
         display: block;
       }
     }
 
-    .has-submenu.opens-left .submenu {
+    .is-dropdown-submenu-parent.opens-left .submenu {
       left: auto;
       right: 100%;
     }
