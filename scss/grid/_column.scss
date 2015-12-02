@@ -64,8 +64,10 @@
   padding-left: $gutter;
   padding-right: $gutter;
 
-  &:last-child:not(:first-child) {
-    float: $global-right;
+  @if $grid-column-align-edge {
+    &:last-child:not(:first-child) {
+      float: $global-right;
+    }
   }
 }
 
