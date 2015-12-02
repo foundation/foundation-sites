@@ -9,6 +9,8 @@ var rsync = require('gulp-rsync');
 var replace = require('gulp-replace');
 var git = require('gitty')('../');
 var octophant = require('octophant');
+var sequence = require('run-sequence');
+var inquirer = require('inquirer');
 
 var VERSIONED_FILES = [
   'bower.json',
@@ -23,17 +25,23 @@ var CURRENT_VERSION = require('../package.json').version;
 var NEXT_VERSION;
 
 gulp.task('deploy', function(cb) {
-  sequence('deploy:version', 'deploy:dist', 'deploy:settings', 'deploy:commit', 'deploy:docs', cb);
+  sequence('deploy:prompt', 'deploy:version', 'deploy:dist', 'deploy:settings', 'deploy:commit', cb);
+});
+
+gulp.task('deploy:prompt', function(cb) {
+  inquirer.prompt([{
+    type: 'input',
+    name: 'version',
+    message: 'What version are we moving to? (Current version is ' + CURRENT_VERSION + ')'
+  }], function(res) {
+    NEXT_VERSION = res.version;
+    cb();
+  });
 });
 
 // Bumps the version number in any file that has one
 gulp.task('deploy:version', function() {
   return gulp.src(VERSIONED_FILES, { base: process.cwd() })
-    .pipe(prompt({
-      type: 'input',
-      name: 'version',
-      message: 'What version are we moving to? (Current version is ' + CURRENT_VERSION + ')'
-    }, setVersionNumber))
     .pipe(replace(CURRENT_VERSION, NEXT_VERSION))
     .pipe(gulp.dest('.'));
 });
@@ -82,10 +90,10 @@ gulp.task('deploy:settings', function(cb) {
 
 // Writes a commit with the changes to the version numbers
 gulp.task('deploy:commit', function(cb) {
-  git.addSync('.');
-  git.commitSync('Bump to version ' + NEW_VERSION);
+  git.commitSync('Bump to version ' + NEW_VERSION, { a: true });
   git.tagSync('v' + NEW_VERSION);
-  git.push('origin', 'develop', cb);
+  // git.push('origin', 'develop', cb);
+  cb();
 });
 
 // Uploads the documentation to the live server
@@ -114,8 +122,3 @@ gulp.task('deploy:custom', ['sass:foundation', 'javascript:foundation'], functio
       .pipe(rename('foundation.min.js'))
       .pipe(gulp.dest('./_build/assets/js'));
 });
-
-// Callback used by Inquirer in the deploy:version task to set the input version number
-function setVersionNumber(res) {
-  NEXT_VERSION = res.version;
-}
