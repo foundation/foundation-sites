@@ -14,6 +14,10 @@ $drilldown-transition: transform 0.15s linear !default;
 /// @type Boolean
 $drilldown-arrows: true !default;
 
+/// Background color for drilldown submenus.
+/// @type Color
+$drilldown-background: $white !default;
+
 @mixin foundation-drilldown-menu {
   // Applied to the Menu container
   .is-drilldown {
@@ -29,7 +33,7 @@ $drilldown-arrows: true !default;
     z-index: -1;
     height: 100%;
     width: 100%;
-    background: $white;
+    background: $drilldown-background;
     transition: $drilldown-transition;
 
     &.is-active {

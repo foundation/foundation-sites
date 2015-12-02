@@ -18,7 +18,7 @@
   $root: false
 ) {
   // Store the current column count so it can be re-set later
-  $old-grid-column-count: $columns;
+  $old-grid-column-count: $grid-column-count;
   $grid-column-count: $columns !global;
 
   @if $root {
