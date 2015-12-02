@@ -14,6 +14,15 @@ It's also possible to manually install Foundation for Sites into your project th
 
 <a href="installation.html" class="large button">Install Foundation for Sites</a>
 
+### Looking for Foundation 5?
+We're still supporting Foundation 5 for those who don't want to take the leap into the future with us. You can view the docs, download a package or visit the Github page.
+
+<div class="button-group">
+  <a href="http://foundation.zurb.com/downloads/foundation-5.5.3.zip" class="button">Download</a>
+  <a href="http://foundation.zurb.com/sites/docs/v/5.5.3" class="button">Docs</a>
+  <a href="https://github.com/zurb/foundation-sites/tree/V5" class="button">GitHub</a>
+</div>
+
 ---
 
 ## What's in the Box?
