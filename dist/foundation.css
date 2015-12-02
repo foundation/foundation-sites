@@ -2885,7 +2885,7 @@ table {
 table.scroll {
   display: block;
   width: 100%;
-  overflow-y: scroll; }
+  overflow-x: scroll; }
 
 table.hover tr:hover {
   background-color: #f9f9f9; }
