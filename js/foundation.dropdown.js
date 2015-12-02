@@ -263,10 +263,12 @@
          _this = this;
      $body.off('click.zf.dropdown')
           .on('click.zf.dropdown', function(e){
-            var $link = _this.$element.find(e.target);
-            if($link.length){
-              $link.triggerHandler('click.zf.dropdown', [$link]);
-              return false;
+            var $target = $(e.target),
+                $parents = $target.parents(),
+                isChild = $parents.filter(_this.$element[0].id).length,
+                inDom = $parents.filter('html').length;
+            if(isChild || !inDom) {
+              return true;
             }
             _this.close();
             $body.off('click.zf.dropdown');
