@@ -90,7 +90,7 @@ gulp.task('deploy:settings', function(cb) {
 
 // Writes a commit with the changes to the version numbers
 gulp.task('deploy:commit', function(cb) {
-  git.commitSync('Bump to version ' + NEXT_VERSION, { a: true });
+  git.commitSync('Bump to version ' + NEXT_VERSION, ['-a']);
   git.tagSync('v' + NEXT_VERSION);
   // git.push('origin', 'develop', cb);
   cb();

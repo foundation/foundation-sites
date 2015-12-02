@@ -35,8 +35,9 @@
 //  30. Table
 //  31. Tabs
 //  32. Thumbnail
-//  33. Tooltip
-//  34. Top Bar
+//  33. Title Bar
+//  34. Tooltip
+//  35. Top Bar
 
 @import 'util/util';
 
@@ -87,7 +88,8 @@ $breakpoint-classes: (small medium large);
 $grid-row-width: $global-width;
 $grid-column-count: 12;
 $grid-column-gutter: 30px;
-$block-grid-max: 6;
+$grid-column-align-edge: true;
+$block-grid-max: 8;
 
 // 4. Base Typography
 // ------------------
@@ -329,7 +331,7 @@ $form-label-line-height: 1.8;
 $select-background: #fafafa;
 $select-triangle-color: #333;
 $select-radius: $global-radius;
-$input-color: $dark-gray;
+$input-color: $black;
 $input-font-family: inherit;
 $input-font-size: rem-calc(16);
 $input-background: $white;
@@ -509,7 +511,18 @@ $thumbnail-shadow-hover: 0 0 6px 1px rgba($primary-color, 0.5);
 $thumbnail-transition: box-shadow 200ms ease-out;
 $thumbnail-radius: $global-radius;
 
-// 33. Tooltip
+// 33. Title Bar
+// -------------
+
+$titlebar-background: $black;
+$titlebar-color: $white;
+$titlebar-padding: 0.5rem;
+$titlebar-text-font-weight: bold;
+$titlebar-icon-color: $white;
+$titlebar-icon-color-hover: $medium-gray;
+$titlebar-icon-spacing: 0.25rem;
+
+// 34. Tooltip
 // -----------
 
 $tooltip-background-color: $black;
@@ -521,7 +534,7 @@ $tooltip-pip-height: $tooltip-pip-width * 0.866;
 $tooltip-pip-offset: 1.25rem;
 $tooltip-radius: $global-radius;
 
-// 34. Top Bar
+// 35. Top Bar
 // -----------
 
 $topbar-padding: 0.5rem;
