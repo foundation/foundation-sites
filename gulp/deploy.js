@@ -13,7 +13,6 @@ var octophant = require('octophant');
 var VERSIONED_FILES = [
   'bower.json',
   'composer.json',
-  'docs/pages/*.md',
   'js/foundation.core.js',
   'meteor-README.md',
   'package.js',
@@ -29,14 +28,14 @@ gulp.task('deploy', function(cb) {
 
 // Bumps the version number in any file that has one
 gulp.task('deploy:version', function() {
-  return gulp.src(VERSIONED_FILES)
+  return gulp.src(VERSIONED_FILES, { base: process.cwd() })
     .pipe(prompt({
       type: 'input',
       name: 'version',
-      message: 'What version are we moving to?'
+      message: 'What version are we moving to? (Current version is ' + CURRENT_VERSION + ')'
     }, setVersionNumber))
     .pipe(replace(CURRENT_VERSION, NEXT_VERSION))
-    .pipe('.');
+    .pipe(gulp.dest('.'));
 });
 
 // Generates compiled CSS and JS files and puts them in the dist/ folder
