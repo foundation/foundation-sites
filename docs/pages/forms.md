@@ -108,6 +108,21 @@ Wrap a group of checkboxes or radio buttons in a `<fieldset>` element, and give 
 
 ---
 
+### Fieldset Styles
+
+To encourage their use as an accessibility tool, the `<fieldset>` element is no longer styled by default. Those styles are now contained in the `.fieldset` class.
+
+```html_example
+<fieldset class="fieldset">
+  <legend>Check these out</legend>
+  <input id="checkbox1" type="checkbox"><label for="checkbox1">Checkbox 1</label>
+  <input id="checkbox2" type="checkbox"><label for="checkbox2">Checkbox 2</label>
+  <input id="checkbox3" type="checkbox"><label for="checkbox3">Checkbox 3</label>
+</fieldset>
+```
+
+---
+
 ## Help Text
 
 Place help text below a field to clarify it's purpose. Whenever you use help text, give the text a unique ID, and add the attribute `aria-describedby` to the input.
