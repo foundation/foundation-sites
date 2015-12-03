@@ -56,12 +56,15 @@ var Foundation = {
     var pluginName = functionName(plugin.constructor).toLowerCase();
 
     plugin.uuid = this.GetYoDigits(6, pluginName);
-    plugin.$element.attr('data-' + pluginName, plugin.uuid)
+    
+    if(!plugin.$element.attr('data-' + pluginName)){
+      plugin.$element.attr('data-' + pluginName, plugin.uuid);
+    }
           /**
            * Fires when the plugin has initialized.
            * @event Plugin#init
            */
-          .trigger('init.zf.' + pluginName);
+    plugin.$element.trigger('init.zf.' + pluginName);
 
     this._activePlugins[plugin.uuid] = plugin;
 
