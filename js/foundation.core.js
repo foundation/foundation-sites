@@ -1,5 +1,4 @@
 !function($) {
-
 "use strict";
 
 var FOUNDATION_VERSION = '6.0.5';
@@ -56,7 +55,7 @@ var Foundation = {
     var pluginName = functionName(plugin.constructor).toLowerCase();
 
     plugin.uuid = this.GetYoDigits(6, pluginName);
-    
+
     if(!plugin.$element.attr('data-' + pluginName)){
       plugin.$element.attr('data-' + pluginName, plugin.uuid);
     }
@@ -144,6 +143,7 @@ var Foundation = {
    * @param {String|Array} plugins - A list of plugins to initialize. Leave this out to initialize everything.
    */
   reflow: function(elem, plugins) {
+
     // If plugins is undefined, just grab everything
     if (typeof plugins === 'undefined') {
       plugins = Object.keys(this._plugins);
@@ -179,7 +179,13 @@ var Foundation = {
             if(opt[0]) opts[opt[0]] = parseValue(opt[1]);
           });
         }
-        $el.data('zf-plugin', new plugin($(this), opts));
+        try{
+          $el.data('zf-plugin', new plugin($(this), opts));
+        }catch(er){
+          console.error(er);
+        }finally{
+          return;
+        }
       });
     });
   },
