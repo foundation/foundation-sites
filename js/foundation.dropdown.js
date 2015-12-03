@@ -263,11 +263,8 @@
          _this = this;
      $body.off('click.zf.dropdown')
           .on('click.zf.dropdown', function(e){
-            var $parents = $(e.target).parents(),
-                isChild = $parents.filter(_this.$element[0].id).length,
-                inDom = $parents.filter('html').length;
-            if(isChild || !inDom) {
-              return true;
+            if(_this.$element.find(e.target).length) {
+              return;
             }
             _this.close();
             $body.off('click.zf.dropdown');
