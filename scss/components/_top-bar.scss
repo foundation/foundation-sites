@@ -40,6 +40,10 @@ $topbar-input-width: 200px !default;
     width: $topbar-input-width;
     margin-#{$global-right}: 1rem;
   }
+  
+  input.button {
+    width:auto;
+  }
 }
 
 @mixin foundation-top-bar {
