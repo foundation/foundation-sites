@@ -13,3 +13,7 @@ gulpfile.js
 meteor-README.md
 package.js
 sache.json
+test
+.editorconfig
+.versions
+scss/settings
