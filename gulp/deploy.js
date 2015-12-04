@@ -15,6 +15,7 @@ var inquirer = require('inquirer');
 var VERSIONED_FILES = [
   'bower.json',
   'composer.json',
+  'scss/foundation.scss',
   'js/foundation.core.js',
   'meteor-README.md',
   'package.js',
