@@ -82,10 +82,6 @@ $global-margin: 1rem !default;
 /// @type Number
 $global-padding: 1rem !default;
 
-/// Global value used for margin between components.
-/// @type Number
-$global-margin: 1rem !default;
-
 /// Global font weight used for normal type.
 /// @type Keyword | Number
 $global-weight-normal: normal !default;
@@ -115,6 +111,11 @@ $foundation-colors: (
 );
 
 @mixin foundation-global-styles {
+  // These styles are applied to a <meta> tag, which is read by the Foundation JavaScript
+  .foundation-mq {
+    font-family: '#{-zf-bp-serialize($breakpoints)}';
+  }
+
   html,
   body {
     font-size: $global-font-size;

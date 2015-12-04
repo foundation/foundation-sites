@@ -104,7 +104,7 @@
 
     eqGroup.height('inherit');
     heights = eqGroup.map(function () { return $(this).outerHeight(false);}).get();
-    console.log(heights);
+    
     return heights;
   };
   /**
@@ -129,7 +129,7 @@
     for (var i = 0; i < eqGroup.length; i++) {
       $(eqGroup[i]).css('height', max);
     }
-    // console.log(max);
+
     /**
      * Fires when the heights have been applied
      * @event Equalizer#postEqualized

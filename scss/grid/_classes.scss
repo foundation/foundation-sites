@@ -64,8 +64,10 @@
   .#{$column} {
     @include grid-col;
 
-    &.#{$end} {
-      @include grid-col-end;
+    @if $grid-column-align-edge {
+      &.#{$end} {
+        @include grid-col-end;
+      }
     }
   }
 

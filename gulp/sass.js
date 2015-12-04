@@ -1,6 +1,5 @@
 var fs = require('fs');
 var gulp = require('gulp');
-var octophant = require('octophant');
 var Parker = require('parker/lib/Parker');
 var prettyJSON = require('prettyjson');
 var sass = require('gulp-sass');
@@ -56,27 +55,4 @@ gulp.task('sass:audit', ['sass:foundation'], function(cb) {
     console.log(prettyJSON.render(results));
     cb();
   });
-});
-
-// Generates a settings file
-gulp.task('sass:settings', function() {
-  var options = {
-    title: 'Foundation for Sites Settings',
-    output: './scss/settings/_settings.scss',
-    groups: {
-      'grid': 'The Grid',
-      'off-canvas': 'Off-canvas',
-      'typography-base': 'Base Typography'
-    },
-    sort: [
-      'global',
-      'breakpoints',
-      'grid',
-      'typography-base',
-      'typography-helpers'
-    ],
-    imports: ['util/util']
-  }
-
-  octophant('./scss', options);
 });

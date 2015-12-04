@@ -78,7 +78,7 @@ An individual instance of a plugin can also have different settings. These can b
 In the HTML, each setting can be defined as an individual data attribute. Note that camelCased options are converted to hyphenated words. In the below example, `multiExpand` becomes `data-multi-expand`.
 
 ```html
-<div data-accordion data-slidespeed="500" data-multi-expand="true"></div>
+<div data-accordion data-slide-speed="500" data-multi-expand="true"></div>
 ```
 
 ---
@@ -129,7 +129,7 @@ You can use any jQuery selector you like, and if the selector encompasses multip
 Every plugin fires DOM events when certain functions finish. For example, you can listen for when tabs change, or an off-canvas menu opens, and create a callback to respond to it.
 
 ```js
-$('#tab').on('changed.zf.tabs', function() {
+$('[data-tabs]').on('change.zf.tabs', function() {
   console.log('Those tabs sure did change!');
 });
 ```

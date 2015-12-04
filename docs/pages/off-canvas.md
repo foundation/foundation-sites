@@ -1,7 +1,9 @@
 ---
 title: Off-canvas
 description: Off-canvas menus are positioned outside of the viewport and slide in when activated. Setting up an off-canvas layout in Foundation is super easy.
-sass: scss/components/_off-canvas.scss
+sass:
+  - scss/components/_off-canvas.scss
+  - scss/components/_title-bar.scss
 js: js/foundation.offcanvas.js
 tags:
   - navigation

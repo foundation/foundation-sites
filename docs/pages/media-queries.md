@@ -32,13 +32,17 @@ If you're using the Sass version of Foundation, the default breakpoints can be c
 
 ```scss
 $breakpoints: (
-  small: rem-calc(0),
-  medium: rem-calc(640),
-  large: rem-calc(1024),
-  xlarge: rem-calc(1200),
-  xxlarge: rem-calc(1440),
+  small: 0px,
+  medium: 640px,
+  large: 1024px,
+  xlarge: 1200px,
+  xxlarge: 1440px,
 );
 ```
+
+<div class="primary callout">
+  <p>Even though the above values are in pixels, they're converted to ems at the end for use in media queries.</p>
+</div>
 
 Changing the widths of any of the breakpoints is as easy as changing the pixel values in this map. Note that here there are two extra breakpoints: `xlarge` and `xxlarge`. We don't use these for any components, and also don't output any CSS classes that use them by default.
 

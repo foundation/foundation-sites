@@ -18,9 +18,16 @@ $grid-column-count: 12 !default;
 /// @type Number
 $grid-column-gutter: 30px !default;
 
+/// If `true`, the last column in a row will align to the opposite edge of the row.
+/// @type Boolean
+$grid-column-align-edge: true !default;
+
+// Internal value to store the end column float direction
+$-zf-end-float: if($grid-column-align-edge, $global-right, $global-left);
+
 /// The highest number of `.x-up` classes available when using the block grid CSS.
 /// @type Number
-$block-grid-max: 6 !default;
+$block-grid-max: 8 !default;
 
 @import 'row';
 @import 'column';

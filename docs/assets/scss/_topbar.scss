@@ -25,10 +25,10 @@ $topbar-hover-color: darken($topbar-background, 20%);
 
   .menu a {
     height: 45px;
-    line-height: 45px;
+    line-height: 45px !important;
     color: $light-gray;
-    padding-top: 0;
-    padding-bottom: 0;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
 
     &:hover:not(.button),
     &:focus {

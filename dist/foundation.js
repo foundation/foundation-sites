@@ -2,7 +2,7 @@
 
 "use strict";
 
-var FOUNDATION_VERSION = '6.0.4';
+var FOUNDATION_VERSION = '6.0.5';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
@@ -56,12 +56,15 @@ var Foundation = {
     var pluginName = functionName(plugin.constructor).toLowerCase();
 
     plugin.uuid = this.GetYoDigits(6, pluginName);
-    plugin.$element.attr('data-' + pluginName, plugin.uuid)
+    
+    if(!plugin.$element.attr('data-' + pluginName)){
+      plugin.$element.attr('data-' + pluginName, plugin.uuid);
+    }
           /**
            * Fires when the plugin has initialized.
            * @event Plugin#init
            */
-          .trigger('init.zf.' + pluginName);
+    plugin.$element.trigger('init.zf.' + pluginName);
 
     this._activePlugins[plugin.uuid] = plugin;
 
@@ -518,7 +521,7 @@ function hyphenate(str) {
       case 'reveal full':
         return {
           left: $eleDims.windowDims.offset.left,
-          top: $eleDims.windowDims.offset.top,
+          top: $eleDims.windowDims.offset.top
         };
         break;
       default:
@@ -2575,15 +2578,15 @@ Foundation.Motion = Motion;
   }
   Drilldown.defaults = {
     /**
-     * Markup used for JS generated back button. Prepended to submenu lists and deleted on `destroy` method.
+     * Markup used for JS generated back button. Prepended to submenu lists and deleted on `destroy` method, 'js-drilldown-back' class required. Remove the backslash (`\`) if copy and pasting.
      * @option
-     * @example '<li><a>Back</a></li>'
+     * @example '<\li><\a>Back<\/a><\/li>'
      */
-    backButton: '<li class="js-drilldown-back" tabindex="0"><a>Back</a></li>',
+    backButton: '<li class="js-drilldown-back"><a>Back</a></li>',
     /**
-     * Markup used to wrap drilldown menu. Use a class name for independent styling, or the JS applied class: `is-drilldown`.
+     * Markup used to wrap drilldown menu. Use a class name for independent styling; the JS applied class: `is-drilldown` is required. Remove the backslash (`\`) if copy and pasting.
      * @option
-     * @example '<div></div>'
+     * @example '<\div class="is-drilldown"><\/div>'
      */
     wrapper: '<div></div>',
     /**
@@ -2591,7 +2594,7 @@ Foundation.Motion = Motion;
      * @option
      * @example false
      */
-    closeOnClick: false,
+    closeOnClick: false
     // holdOpen: false
   };
   /**
@@ -2600,14 +2603,11 @@ Foundation.Motion = Motion;
    */
   Drilldown.prototype._init = function(){
     this.$submenuAnchors = this.$element.find('li.has-submenu');
-    this.$submenus = this.$submenuAnchors.children('[data-submenu]').addClass('is-drilldown-sub')/*.wrap($(this.options.wrapper).addClass('is-drilldown-sub'))*/;
-    // this.$rootElems = this.$element.children('[data-submenu]')/*.addClass('first-sub')*/;
-    this.$menuItems = this.$element.find('li').not('.js-drilldown-back').attr('role', 'menuitem');
-    // this.$submenus;
-
+    this.$submenus = this.$submenuAnchors.children('[data-submenu]');
+    this.$menuItems = this.$element.find('li:visible').not('.js-drilldown-back').attr('role', 'menuitem');
 
     this._prepareMenu();
-    // this._getMaxDims();
+
     this._keyboardEvents();
   };
   /**
@@ -2624,7 +2624,8 @@ Foundation.Motion = Motion;
     // }
     this.$submenuAnchors.each(function(){
       var $sub = $(this);
-      $sub.find('a')[0].removeAttribute('href');
+      var $link = $sub.find('a:first');
+      $link.data('savedHref', $link.attr('href')).removeAttr('href');
       $sub.children('[data-submenu]')
           .attr({
             'aria-hidden': true,
@@ -2658,12 +2659,14 @@ Foundation.Motion = Motion;
 
     $elem.off('click.zf.drilldown')
     .on('click.zf.drilldown', function(e){
-      e.stopImmediatePropagation();
-      e.preventDefault();
-
-      if(e.target !== e.currentTarget.firstElementChild){
-        return false;
+      if($(e.target).parentsUntil('ul', 'li').hasClass('is-drilldown-submenu-parent')){
+        e.stopImmediatePropagation();
+        e.preventDefault();
       }
+
+      // if(e.target !== e.currentTarget.firstElementChild){
+      //   return false;
+      // }
       _this._show($elem);
 
       if(_this.options.closeOnClick){
@@ -2847,7 +2850,12 @@ Foundation.Motion = Motion;
                  .end().find('.is-active, .is-closing, .is-drilldown-sub').removeClass('is-active is-closing is-drilldown-sub')
                  .end().find('[data-submenu]').removeAttr('aria-hidden tabindex role')
                  .off('.zf.drilldown').end().off('zf.drilldown');
-
+    this.$element.find('a').each(function(){
+      var $link = $(this);
+      if($link.data('savedHref')){
+        $link.attr('href', $link.data('savedHref')).removeData('savedHref');
+      }else{ return; }
+    });
     Foundation.unregisterPlugin(this);
   };
   Foundation.plugin(Drilldown, 'Drilldown');
@@ -3023,7 +3031,7 @@ Foundation.Motion = Motion;
     if(($eleDims.width >= $eleDims.windowDims.width) || (!this.counter && !Foundation.Box.ImNotTouchingYou(this.$element))){
       this.$element.offset(Foundation.Box.GetOffsets(this.$element, this.$anchor, 'center bottom', this.options.vOffset, this.options.hOffset, true)).css({
         'width': $eleDims.windowDims.width - (this.options.hOffset * 2),
-        'height': 'auto',
+        'height': 'auto'
       });
       this.classChanged = true;
       return false;
@@ -3242,7 +3250,7 @@ Foundation.Motion = Motion;
      */
     disableHover: false,
     /**
-     * Allow a submenu to automatically close on a mouseleave event.
+     * Allow a submenu to automatically close on a mouseleave event, if not clicked open.
      * @option
      * @example true
      */
@@ -3274,10 +3282,10 @@ Foundation.Motion = Motion;
     alignment: 'left',
     /**
      * Allow clicks on the body to close any open submenus.
-     *
-     *
+     * @option
+     * @example true
      */
-    // closeOnClick: true,
+    closeOnClick: true,
     /**
      * Class applied to vertical oriented menus, Foundation default is `vertical`. Update this if using your own class.
      * @option
@@ -3289,7 +3297,13 @@ Foundation.Motion = Motion;
      * @option
      * @example 'align-right'
      */
-    rightClass: 'align-right'
+    rightClass: 'align-right',
+    /**
+     * Boolean to force overide the clicking of links to perform default action, on second touch event for mobile.
+     * @option
+     * @example false
+     */
+    forceFollow: true
   };
   /**
    * Initializes the plugin, and calls _prepareMenu
@@ -3325,13 +3339,12 @@ Foundation.Motion = Motion;
    */
   DropdownMenu.prototype._events = function(){
     var _this = this,
-        hasTouch = 'ontouchstart' in window || window.ontouchstart !== undefined,
+        hasTouch = 'ontouchstart' in window || (typeof window.ontouchstart !== 'undefined'),
         parClass = 'is-dropdown-submenu-parent',
         delay;
-        
-    if(this.options.clickOpen || hasTouch){
-      this.$menuItems.on('click.zf.dropdownmenu', function(e){
 
+    if(this.options.clickOpen || hasTouch){
+      this.$menuItems.on('click.zf.dropdownmenu touchstart.zf.dropdownmenu', function(e){
         var $elem = $(e.target).parentsUntil('ul', '.' + parClass),
             hasSub = $elem.hasClass(parClass),
             hasClicked = $elem.attr('data-is-click') === 'true',
@@ -3339,16 +3352,15 @@ Foundation.Motion = Motion;
 
         if(hasSub){
           if(hasClicked){
-            if(hasTouch){ return;}
-
+            if(!_this.options.closeOnClick || (!_this.options.clickOpen && !hasTouch) || (_this.options.forceFollow && hasTouch)){ return; }
             else{
-            e.stopImmediatePropagation();
-            e.preventDefault();
-            _this._hide($elem);
+              e.stopImmediatePropagation();
+              e.preventDefault();
+              _this._hide($elem);
             }
           }else{
-            e.stopImmediatePropagation();
             e.preventDefault();
+            e.stopImmediatePropagation();
             _this._show($elem.children('.is-dropdown-submenu'));
             $elem.add($elem.parentsUntil(_this.$element, '.' + parClass)).attr('data-is-click', true);
           }
@@ -3432,14 +3444,14 @@ Foundation.Motion = Motion;
               down: nextSibling,
               up: prevSibling,
               next: openSub,
-              previous: closeSub,
+              previous: closeSub
             });
           } else { // right aligned
             $.extend(functions, {
               down: nextSibling,
               up: prevSibling,
               next: closeSub,
-              previous: openSub,
+              previous: openSub
             });
           }
         } else { // horizontal menu
@@ -3447,7 +3459,7 @@ Foundation.Motion = Motion;
             next: nextSibling,
             previous: prevSibling,
             down: openSub,
-            up: closeSub,
+            up: closeSub
           });
         }
       } else { // not tabs -> one sub
@@ -3476,21 +3488,18 @@ Foundation.Motion = Motion;
    * @function
    * @private
    */
-  // DropdownMenu.prototype._addBodyHandler = function(){
-  //   var $body = $(document.body).not(this.$element),
-  //       _this = this;
-  //   $body.off('click.zf.dropdownmenu')
-  //        .on('click.zf.dropdownmenu', function(e){
-  //          console.log('body click');
-  //          var $link = _this.$element.find(e.target);
-  //          if($link.length){
-  //            $link.triggerHandler('click.zf.dropdownmenu', [$link]);
-  //            return false;
-  //          }
-  //          _this._hide();
-  //          $body.off('click.zf.dropdownmenu');
-  //        });
-  // };
+  DropdownMenu.prototype._addBodyHandler = function(){
+    var $body = $(document.body),
+        _this = this;
+    $body.off('mouseup.zf.dropdownmenu touchend.zf.dropdownmenu')
+         .on('mouseup.zf.dropdownmenu touchend.zf.dropdownmenu', function(e){
+           var $link = _this.$element.find(e.target);
+           if($link.length){ return; }
+
+           _this._hide();
+           $body.off('mouseup.zf.dropdownmenu touchend.zf.dropdownmenu');
+         });
+  };
   /**
    * Opens a dropdown pane, and checks for collisions first.
    * @param {jQuery} $sub - ul element that is a submenu to show
@@ -3519,7 +3528,7 @@ Foundation.Motion = Motion;
       this.changed = true;
     }
     $sub.css('visibility', '');
-    // if(this.options.closeOnClick){ this._addBodyHandler(); }
+    if(this.options.closeOnClick){ this._addBodyHandler(); }
     /**
      * Fires when the new dropdown pane is visible.
      * @event DropdownMenu#show
@@ -3692,7 +3701,7 @@ Foundation.Motion = Motion;
 
     eqGroup.height('inherit');
     heights = eqGroup.map(function () { return $(this).outerHeight(false);}).get();
-    console.log(heights);
+    
     return heights;
   };
   /**
@@ -3717,7 +3726,7 @@ Foundation.Motion = Motion;
     for (var i = 0; i < eqGroup.length; i++) {
       $(eqGroup[i]).css('height', max);
     }
-    // console.log(max);
+
     /**
      * Fires when the heights have been applied
      * @event Equalizer#postEqualized
@@ -3945,7 +3954,7 @@ Foundation.Motion = Motion;
    */
   function Magellan(element, options) {
     this.$element = element;
-    this.options  = $.extend({}, Magellan.defaults, options);
+    this.options  = $.extend({}, Magellan.defaults, this.$element.data(), options);
 
     this._init();
 
@@ -3985,7 +3994,13 @@ Foundation.Motion = Motion;
      * @option
      * @example true
      */
-    deepLinking: false
+    deepLinking: false,
+    /**
+     * Number of pixels to offset the scroll of the page on item click if using a sticky nav bar.
+     * @option
+     * @example 25
+     */
+    barOffset: 0
   };
 
   /**
@@ -4051,7 +4066,7 @@ Foundation.Motion = Motion;
     }).on('click.zf.magellan', 'a[href^="#"]', function(e) {
         e.preventDefault();
         var arrival   = this.getAttribute('href'),
-            scrollPos = $(arrival).offset().top - _this.options.threshold / 2;
+            scrollPos = $(arrival).offset().top - _this.options.threshold / 2 - _this.options.barOffset;
 
         // requestAnimationFrame is disabled for this plugin currently
         // Foundation.Move(_this.options.animationDuration, $body, function(){
@@ -4595,7 +4610,13 @@ Foundation.plugin(OffCanvas, 'OffCanvas');
      * @option
      * @example 'orbit-previous'
      */
-    prevClass: 'orbit-previous'
+    prevClass: 'orbit-previous',
+    /**
+     * Boolean to flag the js to use motion ui classes or not. Default to true for backwards compatability.
+     * @option
+     * @example true
+     */
+    useMUI: true
   };
   /**
    * Initializes the plugin by creating jQuery collections, setting attributes, and starting the animation.
@@ -4611,7 +4632,9 @@ Foundation.plugin(OffCanvas, 'OffCanvas');
     if(!initActive.length){
       this.$slides.eq(0).addClass('is-active');
     }
-
+    if(!this.options.useMUI){
+      this.$slides.addClass('no-motionui');
+    }
     if($images.length){
       Foundation.onImagesLoaded($images, this._prepareForOrbit.bind(this));
     }else{
@@ -4788,7 +4811,6 @@ Foundation.plugin(OffCanvas, 'OffCanvas');
   Orbit.prototype.changeSlide = function(isLTR, chosenSlide, idx){
     var $curSlide = this.$slides.filter('.is-active').eq(0);
 
-
     if(/mui/g.test($curSlide[0].className)){ return false; }//if the slide is currently animating, kick out of the function
 
     var $firstSlide = this.$slides.first(),
@@ -4811,29 +4833,38 @@ Foundation.plugin(OffCanvas, 'OffCanvas');
         idx = idx || this.$slides.index($newSlide);//grab index to update bullets
         this._updateBullets(idx);
       }
-      Foundation.Motion.animateIn(
-        $newSlide.addClass('is-active').css({'position': 'absolute', 'top': 0}),
-        this.options['animInFrom' + dirIn],
-        function(){
-          $newSlide.css({'position': 'relative', 'display': 'block'})
-                   .attr('aria-live', 'polite');
-        });
+      if(this.options.useMUI){
 
-      Foundation.Motion.animateOut(
-        $curSlide.removeClass('is-active'),
-        this.options['animOutTo' + dirOut],
-        function(){
-          $curSlide.removeAttr('aria-live');
-          if(_this.options.autoPlay){
-            _this.timer.restart();
-          }
-          //do stuff?
-          /**
-           * Triggers when the slide has finished animating in.
-           * @event Orbit#slidechange
-           */
-          _this.$element.trigger('slidechange.zf.orbit', [$newSlide]);
-        });
+        Foundation.Motion.animateIn(
+          $newSlide.addClass('is-active').css({'position': 'absolute', 'top': 0}),
+          this.options['animInFrom' + dirIn],
+          function(){
+            $newSlide.css({'position': 'relative', 'display': 'block'})
+                     .attr('aria-live', 'polite');
+          });
+
+        Foundation.Motion.animateOut(
+          $curSlide.removeClass('is-active'),
+          this.options['animOutTo' + dirOut],
+          function(){
+            $curSlide.removeAttr('aria-live');
+            if(_this.options.autoPlay){
+              _this.timer.restart();
+            }
+            //do stuff?
+          });
+      }else{
+        $curSlide.removeClass('is-active is-in').removeAttr('aria-live').hide();
+        $newSlide.addClass('is-active is-in').attr('aria-live', 'polite').show();
+        if(this.options.autoPlay){
+          this.timer.restart();
+        }
+      }
+      /**
+       * Triggers when the slide has finished animating in.
+       * @event Orbit#slidechange
+       */
+      this.$element.trigger('slidechange.zf.orbit', [$newSlide]);
     }
   };
   /**
@@ -5331,7 +5362,6 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
     var elePos = this.options.fullScreen ? 'reveal full' : (eleDims.height >= (0.5 * eleDims.windowDims.height)) ? 'reveal' : 'center';
 
     if(elePos === 'reveal full'){
-      console.log('full');
       //set to full height/width
       this.$element
           .offset(Foundation.Box.GetOffsets(this.$element, null, elePos, this.options.vOffset))
@@ -5391,10 +5421,12 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
         if(_this.options.overlay){
           Foundation.Motion.animateIn(_this.$overlay, 'fade-in', function(){
             Foundation.Motion.animateIn(_this.$element, _this.options.animationIn, function(){
+              _this.focusableElements = Foundation.Keyboard.findFocusable(_this.$element);
             });
           });
         }else{
           Foundation.Motion.animateIn(_this.$element, _this.options.animationIn, function(){
+            _this.focusableElements = Foundation.Keyboard.findFocusable(_this.$element);
           });
         }
       }else{
@@ -5433,10 +5465,7 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
    */
   Reveal.prototype._extraHandlers = function(){
     var _this = this;
-    var visibleFocusableElements = this.$element.find('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]').filter(function() {
-      if (!$(this).is(':visible') || $(this).attr('tabindex') < 0){ return false; }//only have visible elements and those that have a tabindex greater or equal 0
-      return true;
-    });
+    this.focusableElements = Foundation.Keyboard.findFocusable(this.$element);
 
     if(!this.options.overlay && this.options.closeOnClick && !this.options.fullScreen){
       $('body').on('click.zf.reveal', function(e){
@@ -5446,16 +5475,17 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
     }
     if(this.options.closeOnEsc){
       $(window).on('keydown.zf.reveal', function(e){
-        if (visibleFocusableElements.length === 0) { // no focusable elements inside the modal at all, prevent tabbing in general
-          e.preventDefault();
-        }
         Foundation.Keyboard.handleKey(e, _this, {
           close: function() {
             if (this.options.closeOnEsc) {
               this.close();
+              this.$anchor.focus();
             }
           }
         });
+        if (_this.focusableElements.length === 0) { // no focusable elements inside the modal at all, prevent tabbing in general
+          e.preventDefault();
+        }
       });
     }
 
@@ -5465,31 +5495,33 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
       // handle keyboard event with keyboard util
       Foundation.Keyboard.handleKey(e, _this, {
         tab_forward: function() {
-          if (this.$element.find(':focus').is(visibleFocusableElements.eq(-1))) { // left modal downwards, setting focus to first element
-            visibleFocusableElements.eq(0).focus();
+          if (this.$element.find(':focus').is(_this.focusableElements.eq(-1))) { // left modal downwards, setting focus to first element
+            _this.focusableElements.eq(0).focus();
             e.preventDefault();
           }
         },
         tab_backward: function() {
-          if (this.$element.find(':focus').is(visibleFocusableElements.eq(0)) || this.$element.is(':focus')) { // left modal upwards, setting focus to last element
-            visibleFocusableElements.eq(-1).focus();
+          if (this.$element.find(':focus').is(_this.focusableElements.eq(0)) || this.$element.is(':focus')) { // left modal upwards, setting focus to last element
+            _this.focusableElements.eq(-1).focus();
             e.preventDefault();
           }
         },
         open: function() {
-          if ($target.is(visibleFocusableElements)) { // dont't trigger if acual element has focus (i.e. inputs, links, ...)
+          if (_this.$element.find(':focus').is(_this.$element.find('[data-close]'))) {
+            setTimeout(function() { // set focus back to anchor if close button has been activated
+              _this.$anchor.focus();
+            }, 1);
+          } else if ($target.is(_this.focusableElements)) { // dont't trigger if acual element has focus (i.e. inputs, links, ...)
             this.open();
           }
         },
         close: function() {
           if (this.options.closeOnEsc) {
             this.close();
+            this.$anchor.focus();
           }
         }
       });
-      if (visibleFocusableElements.length === 0) { // no focusable elements inside the modal at all, prevent tabbing in general
-        e.preventDefault();
-      }
     });
 
   };
@@ -6550,7 +6582,7 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
       'ARROW_RIGHT': 'next',
       'ARROW_UP': 'previous',
       'ARROW_DOWN': 'next',
-      'ARROW_LEFT': 'previous',
+      'ARROW_LEFT': 'previous'
       // 'TAB': 'next',
       // 'SHIFT_TAB': 'previous'
     });
@@ -6663,8 +6695,8 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
    */
   Tabs.prototype._addClickHandler = function(){
     var _this = this;
-    this.$tabTitles.off('click.zf.tabs')
-                   .on('click.zf.tabs', function(e){
+    this.$element.off('click.zf.tabs')
+                   .on('click.zf.tabs', '.' + this.options.linkClass, function(e){
                      e.preventDefault();
                      e.stopPropagation();
                      if($(this).hasClass('is-active')){
@@ -6684,6 +6716,7 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
     var $lastTab = _this.$element.find('li:last-of-type');
 
     this.$tabTitles.off('keydown.zf.tabs').on('keydown.zf.tabs', function(e){
+      if(e.which === 9) return;
       e.stopPropagation();
       e.preventDefault();
 
@@ -6881,25 +6914,16 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
     // Otherwise, parse toggle class
     else {
       input = this.$element.data('toggler');
-
       // Allow for a . at the beginning of the string
-      if (input[0] === '.') {
-        this.className = input.slice(1);
-      }
-      else {
-        this.className = input;
-      }
+      this.className = input[0] === '.' ? input.slice(1) : input;
     }
 
     // Add ARIA attributes to triggers
     var id = this.$element[0].id;
     $('[data-open="'+id+'"], [data-close="'+id+'"], [data-toggle="'+id+'"]')
       .attr('aria-controls', id);
-
     // If the target is hidden, add aria-hidden
-    if (this.$element.is(':hidden')) {
-      this.$element.attr('aria-expanded', 'false');
-    }
+    this.$element.attr('aria-expanded', this.$element.is(':hidden') ? false : true);
   };
 
   /**
@@ -6908,12 +6932,7 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
    * @private
    */
   Toggler.prototype._events = function() {
-    var _this = this;
-
-    this.$element.on('toggle.zf.trigger', function() {
-      _this.toggle();
-      return false;
-    });
+    this.$element.off('toggle.zf.trigger').on('toggle.zf.trigger', this.toggle.bind(this));
   };
 
   /**
@@ -6923,19 +6942,14 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
    * @fires Toggler#off
    */
   Toggler.prototype.toggle = function() {
-    if (!this.options.animate) {
-      this._toggleClass();
-    }
-    else {
-      this._toggleAnimate();
-    }
+    this[ this.options.animate ? '_toggleAnimate' : '_toggleClass']();
   };
 
   Toggler.prototype._toggleClass = function() {
-    var _this = this;
     this.$element.toggleClass(this.className);
 
-    if (this.$element.hasClass(this.className)) {
+    var isOn = this.$element.hasClass(this.className);
+    if (isOn) {
       /**
        * Fires if the target element has the class after a toggle.
        * @event Toggler#on
@@ -6950,7 +6964,7 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
       this.$element.trigger('off.zf.toggler');
     }
 
-    _this._updateARIA();
+    this._updateARIA(isOn);
   };
 
   Toggler.prototype._toggleAnimate = function() {
@@ -6959,24 +6973,19 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
     if (this.$element.is(':hidden')) {
       Foundation.Motion.animateIn(this.$element, this.animationIn, function() {
         this.trigger('on.zf.toggler');
-        _this._updateARIA();
+        _this._updateARIA(true);
       });
     }
     else {
       Foundation.Motion.animateOut(this.$element, this.animationOut, function() {
         this.trigger('off.zf.toggler');
-        _this._updateARIA();
+        _this._updateARIA(false);
       });
     }
   };
 
-  Toggler.prototype._updateARIA = function() {
-    if (this.$element.is(':hidden')) {
-      this.$element.attr('aria-expanded', 'false');
-    }
-    else {
-      this.$element.attr('aria-expanded', 'true');
-    }
+  Toggler.prototype._updateARIA = function(isOn) {
+    this.$element.attr('aria-expanded', isOn ? true : false);
   };
 
   /**

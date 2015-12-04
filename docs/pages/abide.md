@@ -126,7 +126,7 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
   <label class="is-invalid-label">
     Name
     <!-- Add "is-invalid-input" -->
-    <input type="text is-invalid-input" required aria-invalid aria-describedby="uuid">
+    <input type="text" class="is-invalid-input" required aria-invalid aria-describedby="uuid">
     <!-- Add "is-visible" -->
     <span class="form-error is-visible" id="uuid">This field is required.</span>
   </label>

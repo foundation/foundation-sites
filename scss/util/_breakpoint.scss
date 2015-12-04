@@ -73,7 +73,7 @@ $breakpoint-classes: (small medium large) !default;
     $bp-max: -zf-bp-to-em($bp-max) - (1/16);
   }
 
-  // Skip media query creation if the input is “0 up” or “0 down”
+  // Skip media query creation if the input is "0 up" or "0 down"
   @if $bp > 0 or $dir == 'only' {
     // `only` ranges use the format `(min-width: n) and (max-width: n)`
     @if $dir == 'only' {
@@ -93,7 +93,7 @@ $breakpoint-classes: (small medium large) !default;
     @else if $dir == 'down' {
       $max: 0;
 
-      // For named breakpoints, subtract the breakpoint value by one “pixel”, or 1/16em.
+      // For named breakpoints, subtract the breakpoint value by one "pixel", or 1/16em.
       @if $named {
         $max: $bp-max;
       }
@@ -185,9 +185,4 @@ $breakpoint-classes: (small medium large) !default;
   @else {
     @return nth($values, $i);
   }
-}
-
-// These styles are applied to <meta> tags, which are read by the Foundation JavaScript
-.foundation-mq {
-  font-family: '#{-zf-bp-serialize($breakpoints)}';
 }
