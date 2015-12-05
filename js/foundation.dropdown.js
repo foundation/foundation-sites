@@ -242,8 +242,6 @@
             _this.open();
             _this.$element.attr('tabindex', -1).focus();
             e.preventDefault();
-          } else {
-            console.log($target, _this.$anchor);
           }
         },
         close: function() {
