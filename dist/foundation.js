@@ -1789,6 +1789,12 @@ Foundation.Motion = Motion;
   Abide.prototype.requiredCheck = function($el) {
     switch ($el[0].type) {
       case 'text':
+      case 'email':
+      case 'url':
+      case 'password':
+      case 'number':
+      case 'tel':
+      case 'select-one':
         if ($el.attr('required') && !$el.val()) {
           // requirement check does not pass
           return false;
@@ -1810,6 +1816,15 @@ Foundation.Motion = Motion;
           return true;
         }
         break;
+      case 'select-multiple':
+        var value,
+            counter = $el.find(':checked').length;
+        if (counter) value = $el.val().join();
+        if ($el.attr('required') && (!counter || !value)) {
+          return false;
+        } else {
+          return true;
+        }
       default:
         if ($el.attr('required') && (!$el.val() || !$el.val().length || $el.is(':empty'))) {
           return false;
@@ -1886,7 +1901,17 @@ Foundation.Motion = Motion;
         label,
         radioGroupName;
 
-    if ($el[0].type === 'text') {
+    if ($el[0].type === 'hidden' ||
+        $el[0].type === 'submit' ||
+        $el[0].type === 'reset') {
+      return;
+    }
+    if ($el[0].type === 'text' ||
+        $el[0].type === 'email' ||
+        $el[0].type === 'url' ||
+        $el[0].type === 'tel' ||
+        $el[0].type === 'password' ||
+        $el[0].type === 'number') {
       if (!self.requiredCheck($el) || !self.validateText($el)) {
         self.addErrorClasses($el);
         $el.trigger('invalid.fndtn.abide', $el[0]);
@@ -1925,6 +1950,17 @@ Foundation.Motion = Motion;
         $el.trigger('valid.fndtn.abide', $el[0]);
       }
     }
+    else if ($el[0].type === 'select-one' ||
+             $el[0].type === 'select-multiple') {
+      if (!self.requiredCheck($el)) {
+        self.addErrorClasses($el);
+        $el.trigger('invalid.fndtn.abide', $el[0]);
+      }
+      else {
+        self.removeErrorClasses($el);
+        $el.trigger('valid.fndtn.abide', $el[0]);
+      }
+    }
     else {
       if (!self.requiredCheck($el) || !self.validateText($el)) {
         self.addErrorClasses($el);
@@ -1944,6 +1980,8 @@ Foundation.Motion = Motion;
     var self = this,
         inputs = $form.find('input'),
         inputCount = $form.find('input').length,
+        selects = $form.find('select'),
+        selectCount = $form.find('select').length,
         counter = 0;
 
     while (counter < inputCount) {
@@ -1951,12 +1989,20 @@ Foundation.Motion = Motion;
       counter++;
     }
 
+    counter = 0;
+    while (counter < selectCount) {
+      self.validateInput($(selects[counter]), $form);
+      counter++;
+    }
+
     // what are all the things that can go wrong with a form?
     if ($form.find('.form-error.is-visible').length || $form.find('.is-invalid-label').length) {
       $form.find('[data-abide-error]').css('display', 'block');
+      $form.trigger('form-invalid');
     }
     else {
       $form.find('[data-abide-error]').css('display', 'none');
+      $form.trigger('form-valid');
     }
   };
   /**
@@ -1977,14 +2023,26 @@ Foundation.Motion = Motion;
     if (inputText.length === 0) {
       return true;
     }
-    else {
-      if (inputText.match(patternLib[pattern])) {
-        return true;
-      }
-      else {
-        return false;
+    if (!pattern) {
+      if ($el[0].type === 'email' ||
+          $el[0].type === 'url' ||
+          $el[0].type === 'tel' ||
+          $el[0].type === 'number' ) {
+        pattern = $el[0].type;
       }
     }
+    if (patternLib[pattern] && !inputText.match(patternLib[pattern])) {
+      return false;
+    }
+    var validatorLib = this.options.validators,
+        validator = $($el).attr('data-abide-validator');
+    if (!validator) {
+      return true;
+    }
+    if (!validatorLib[validator]) {
+      return true;
+    }
+    return validatorLib[validator]($el,$el.attr('required'),$el.parent());
   };
   /**
    * Determines whether or a not a radio input is valid based on whether or not it is required and selected
