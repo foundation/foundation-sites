@@ -41,7 +41,7 @@ $dropdown-border: 1px solid $medium-gray !default;
         &.is-down-arrow > a::after {
           @include css-triangle(5px, $anchor-color, down);
           position: absolute;
-          top: rem-calc(2px) + rem-calc(nth($menu-item-padding, 1));
+          top: rem-calc(2px) + rem-calc(get-side($menu-item-padding, top));
           #{$global-right}: 5px;
         }
         &.is-left-arrow > a::after {
