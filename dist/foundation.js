@@ -1728,7 +1728,23 @@ Foundation.Motion = Motion;
             valid = (from === to);
 
         return valid;
+      },
+      // rewrite equal_to to new params, equalTo probably won't work
+      equal_to: function (el, required, parent) {
+        var from_id  = el.attr('data-equal-to'),
+            from = $("#"+from_id).val(),
+            to    = el.val(),
+            valid = (from === to);
+        return valid;
+      },
+      greater_than: function (el, required, parent) {
+        var from_id  = el.attr('data-greater-than'),
+            from = $("#"+from_id).val(),
+            to    = el.val(),
+            valid = (parseInt(from) <= parseInt(to));
+        return valid;
       }
+
     }
   };
 
@@ -1794,6 +1810,10 @@ Foundation.Motion = Motion;
       case 'password':
       case 'number':
       case 'tel':
+      case 'date':
+      case 'time':
+      case 'datetime':
+      case 'color':
       case 'select-one':
         if ($el.attr('required') && !$el.val()) {
           // requirement check does not pass
@@ -1804,6 +1824,13 @@ Foundation.Motion = Motion;
         break;
       case 'checkbox':
         if ($el.attr('required') && !$el.is(':checked')) {
+          return false;
+        }
+        var group = $el.parent().closest('.checkbox-group'),
+            min = group.attr('data-min-required'),
+            counter = group.find(':checked').length;
+        if (group.attr('required') && !min) min = 1;
+        if ((group.attr('required') || min) && counter < min) {
           return false;
         } else {
           return true;
@@ -1910,6 +1937,10 @@ Foundation.Motion = Motion;
         $el[0].type === 'email' ||
         $el[0].type === 'url' ||
         $el[0].type === 'tel' ||
+        $el[0].type === 'date' ||
+        $el[0].type === 'time' ||
+        $el[0].type === 'datetime' ||
+        $el[0].type === 'color' ||
         $el[0].type === 'password' ||
         $el[0].type === 'number') {
       if (!self.requiredCheck($el) || !self.validateText($el)) {
@@ -1941,15 +1972,25 @@ Foundation.Motion = Motion;
       };
     }
     else if ($el[0].type === 'checkbox') {
+      var group = $el.parent().closest('.checkbox-group');
       if (!self.requiredCheck($el)) {
-        self.addErrorClasses($el);
+        if (group) {
+          self.addErrorClasses(group);
+        } else {
+          self.addErrorClasses($el);
+        }
         $el.trigger('invalid.fndtn.abide', $el[0]);
       }
       else {
-        self.removeErrorClasses($el);
+        if (group) {
+          self.removeErrorClasses(group);
+        } else {
+          self.removeErrorClasses($el);
+        }
         $el.trigger('valid.fndtn.abide', $el[0]);
       }
     }
+    // handle select, no validateText needed
     else if ($el[0].type === 'select-one' ||
              $el[0].type === 'select-multiple') {
       if (!self.requiredCheck($el)) {
@@ -2027,6 +2068,10 @@ Foundation.Motion = Motion;
       if ($el[0].type === 'email' ||
           $el[0].type === 'url' ||
           $el[0].type === 'tel' ||
+          $el[0].type === 'date' ||
+          $el[0].type === 'time' ||
+          $el[0].type === 'datetime' ||
+          $el[0].type === 'color' ||
           $el[0].type === 'number' ) {
         pattern = $el[0].type;
       }
@@ -2042,6 +2087,7 @@ Foundation.Motion = Motion;
     if (!validatorLib[validator]) {
       return true;
     }
+    // params uses jquery elements
     return validatorLib[validator]($el,$el.attr('required'),$el.parent());
   };
   /**
