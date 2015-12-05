@@ -263,6 +263,9 @@
          _this = this;
      $body.off('click.zf.dropdown')
           .on('click.zf.dropdown', function(e){
+            if(_this.$anchor.is(e.target) || _this.$anchor.find(e.target).length) {
+              return;
+            }
             if(_this.$element.find(e.target).length) {
               return;
             }
