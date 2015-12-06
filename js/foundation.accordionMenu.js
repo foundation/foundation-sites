@@ -188,19 +188,11 @@
    */
   AccordionMenu.prototype.toggle = function($target){
     var _this = this;
-    var setHideTimeout = function() {
-      $target.data('toggleTimeout', setTimeout(function () {
-        _this.down($target);
-      }, 200));
-    };
-    if (!$target.is(':hidden')) {
-      clearTimeout($target.data('toggleTimeout'));
-      this.up($target);
+    if (!$target.is(':hidden') && !$target.is(':animated')) {
+      _this.up($target);
     }
-    else {
-      if (typeof $target.data('toggleTimeout') !== 'undefined')
-        clearTimeout($target.data('toggleTimeout'));
-      setHideTimeout();
+    else if(!$target.is(':animated')) {
+      _this.down($target);
     }
   };
   /**
