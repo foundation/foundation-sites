@@ -1,6 +1,6 @@
 ---
 title: Dropdown
-description: Dropdown panes are little happy sprites which can be revealed on click or hover.
+description: Dropdown panels are little happy sprites which can be revealed on click or hover.
 sass: scss/components/_dropdown.scss
 js: js/foundation.dropdown.js
 ---
@@ -11,7 +11,7 @@ js: js/foundation.dropdown.js
 
 ## Basics
 
-To create a dropdown pane, add the class `.dropdown-pane` and the attribute `data-dropdown` to an element. Give the dropdown a unique ID as well.
+To create a dropdown panel, add the class `.dropdown-pane` and the attribute `data-dropdown` to an element. Give the dropdown a unique ID as well.
 
 To create the dropdown trigger, add `data-toggle` to a `<button>`. The value of `data-toggle` is the ID of the dropdown.
 
