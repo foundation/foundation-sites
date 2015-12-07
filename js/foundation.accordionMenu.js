@@ -187,12 +187,13 @@
    * @param {jQuery} $target - the submenu to toggle
    */
   AccordionMenu.prototype.toggle = function($target){
-    var _this = this;
-    if (!$target.is(':hidden') && !$target.is(':animated')) {
-      _this.up($target);
-    }
-    else if(!$target.is(':animated')) {
-      _this.down($target);
+    if(!$target.is(':animated')) {
+      if (!$target.is(':hidden')) {
+        this.up($target);
+      }
+      else {
+        this.down($target);
+      }
     }
   };
   /**
