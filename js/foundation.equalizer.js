@@ -57,7 +57,9 @@
     this.$window
       .off('.equalizer')
       .on('resize.fndtn.equalizer', Foundation.util.throttle(function () {
-        self._reflow();
+        $('[' + self.attr + ']').each(function(){
+          $(this).data('zfPlugin')._reflow();
+        });
       }, self.options.throttleInterval));
   };
 
@@ -75,22 +77,20 @@
   Equalizer.prototype._reflow = function() {
     var self = this;
 
-    $('[' + this.attr + ']').each(function() {
-      var $eqParent       = $(this),
-          adjustedHeights = [],
-          $images = $eqParent.find('img');
+    var $eqParent       = this.$element,
+        adjustedHeights = [],
+        $images = $eqParent.find('img');
 
-      if ($images.length) {
-        Foundation.onImagesLoaded($images, function() {
-          adjustedHeights = self.getHeights($eqParent);
-          self.applyHeight($eqParent, adjustedHeights);
-        });
-      }
-      else {
+    if ($images.length) {
+      Foundation.onImagesLoaded($images, function() {
         adjustedHeights = self.getHeights($eqParent);
         self.applyHeight($eqParent, adjustedHeights);
-      }
-    });
+      });
+    }
+    else {
+      adjustedHeights = self.getHeights($eqParent);
+      self.applyHeight($eqParent, adjustedHeights);
+    }
   };
   /**
    * Finds the outer heights of children contained within an Equalizer parent and returns them in an array
@@ -104,7 +104,7 @@
 
     eqGroup.height('inherit');
     heights = eqGroup.map(function () { return $(this).outerHeight(false);}).get();
-    
+
     return heights;
   };
   /**
