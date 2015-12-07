@@ -39,6 +39,20 @@ If you aren't into Sass, we have a starter template with compiled CSS and JavaSc
 
 ---
 
+## CDN Links
+
+The folks at [jsDelivr]() host the compressed Foundation CSS and JavaScript for us. Just drop one of these `<script>` tags into you're HTML and you're set:
+
+```html
+<!-- Compressed CSS -->
+<script src="https://cdn.jsdelivr.net/foundation/6.0.5/foundation.min.css"></script>
+
+<!-- Compressed JavaScript -->
+<script src="https://cdn.jsdelivr.net/foundation/6.0.5/foundation.min.js"></script>
+```
+
+---
+
 ## Package Managers
 
 Foundation is available on npm, Bower, Meteor, and Composer. The package includes all of the source Sass and JavaScript files, as well as compiled CSS and JavaScript, in uncompressed and compressed flavors.

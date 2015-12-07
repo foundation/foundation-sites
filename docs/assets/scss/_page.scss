@@ -10,6 +10,10 @@
   position: relative;
 }
 
+.docs-component hr {
+  max-width: none;
+}
+
 .docs-component .thumbnail {
   margin-left: auto;
   margin-right: auto;
