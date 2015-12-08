@@ -53,7 +53,7 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5) !default;
     overflow-x: hidden;
     position: relative;
     backface-visibility: hidden;
-    -webkit-overflow-scrolling: touch;
+    -webkit-overflow-scrolling: auto;
   }
 
   .off-canvas-wrapper-inner {
