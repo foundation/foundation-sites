@@ -93,7 +93,7 @@ Pair the callout with the [close button](close-button.html) component and `data-
 <div class="alert callout" data-closable>
   <h5>This is Important!</h5>
   <p>But when you're done reading it, click the close button in the corner to dismiss this alert.</p>
-  <button class="close-button" aria-label="Dismiss alert" type="button">
+  <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
