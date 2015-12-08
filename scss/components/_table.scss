@@ -61,67 +61,65 @@ $table-head-font-color: $body-font-color !default;
 $show-header-for-stacked: false !default;
 
 /// Adds the general styles for tables.
-/// @param {Keyword} $stripe [$table-stripe] - Uses kewords even, odd, or none to darken rows of the table. The defualt value is even.
+/// @param {Keyword} $stripe [$table-stripe] - Uses keywords even, odd, or none to darken rows of the table. The default value is even.
 @mixin table($stripe: $table-stripe) {
   margin-bottom: $global-margin;
   border-radius: $global-radius;
 
-  @at-root {
-    thead,
-    tbody,
-    tfoot {
-      border: $table-border;
-      background-color: $table-background;
+  thead,
+  tbody,
+  tfoot {
+    border: $table-border;
+    background-color: $table-background;
+  }
+
+  // Caption
+  caption {
+    font-weight: $global-weight-bold;
+    padding: $table-padding;
+  }
+
+  // Table head and foot
+  thead,
+  tfoot {
+    background: $table-head-background;
+    color: $table-head-font-color;
+
+    // Rows within head and foot
+    tr {
+      background: transparent;
     }
 
-    // Caption
-    caption {
-      font-weight: $global-weight-bold;
+    // Cells within head and foot
+    th,
+    td {
       padding: $table-padding;
+      font-weight: $global-weight-bold;
+      text-align: #{$global-left};
     }
+  }
 
-    // Table head and foot
-    thead,
-    tfoot {
-      background: $table-head-background;
-      color: $table-head-font-color;
-
-      // Rows within head and foot
-      tr {
-        background: transparent;
-      }
-
-      // Cells within head and foot
-      th,
-      td {
-        padding: $table-padding;
-        font-weight: $global-weight-bold;
-        text-align: #{$global-left};
-      }
-    }
-
-    // Table rows
-    tbody {
-      tr {
-        // If stripe is set to even, darken the even rows.
-        @if $stripe == even {
-          &:nth-child(even) {
-            background-color: $table-striped-background;
-          }
-        }
-
-        // If stripe is set to odd, darken the odd rows.
-        @else if $stripe == odd {
-          &:nth-child(odd) {
-            background-color: $table-striped-background;
-          }
+  // Table rows
+  tbody {
+    tr {
+      // If stripe is set to even, darken the even rows.
+      @if $stripe == even {
+        &:nth-child(even) {
+          background-color: $table-striped-background;
         }
       }
 
-      th,
-      td {
-        padding: $table-padding;
+      // If stripe is set to odd, darken the odd rows.
+      @else if $stripe == odd {
+        &:nth-child(odd) {
+          background-color: $table-striped-background;
+        }
       }
+    }
+
+    th,
+    td {
+      padding: $table-padding;
     }
   }
 }
