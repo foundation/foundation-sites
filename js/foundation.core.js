@@ -158,7 +158,7 @@ var Foundation = {
       var plugin = _this._plugins[name];
 
       // Localize the search to all elements inside elem, as well as elem itself, unless elem === document
-      var $elem = $(elem).find('[data-'+name+']').addBack('*');
+      var $elem = $(elem).find('[data-'+name+']').addBack('[data-'+name+']');
 
       // For each plugin found, initialize it
       $elem.each(function() {
