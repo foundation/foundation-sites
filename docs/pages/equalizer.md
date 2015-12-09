@@ -9,7 +9,7 @@ js: js/foundation.equalizer.js
 To set up an Equalizer group, you need a container, which gets the attribute `data-equalizer`, and then a series of child elements, which get the attribute `data-equalizer-watch`. The child elements will all be resized to have the same height.
 
 ```html_example
-<div class="row" data-equalizer id="test-eq">
+<div class="row" data-equalizer data-equalize-on="medium" id="test-eq">
   <div class="medium-4 columns">
     <div class="callout" data-equalizer-watch>
       <img src= "assets/img/square-1.jpg">
@@ -35,7 +35,7 @@ To use one Equalizer inside another, each container needs a unique ID, assigned 
 In the below example, the first set of Equalizer elements have the value `foo`, while the inside elements have the value `bar`.
 
 ```html
-<div class="row" data-equalizer="foo">
+<div class="row" datadata-equalizer="foo">
   <div class="medium-4 columns" data-equalizer-watch="foo">
     <div class="callout" data-equalizer="bar">
       <h3>Parent panel</h3>
@@ -53,9 +53,9 @@ In the below example, the first set of Equalizer elements have the value `foo`, 
 </div>
 ```
 
-<div class="row" data-equalizer="foo">
-  <div class="medium-4 columns" data-equalizer-watch="foo">
-    <div class="callout" data-equalizer="bar">
+<div class="row"  data-equalize-on="medium" data-equalizer="foo">
+  <div class="medium-4 columns" >
+    <div class="callout" data-equalizer-watch="foo" data-equalizer="bar">
       <h3>Parent panel</h3>
       <div class="callout" data-equalizer-watch="bar">
         <p>Pellentem, feugiat vitae, ultricies eget, tempor sit amet, ante.</p>
