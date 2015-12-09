@@ -151,7 +151,7 @@
         }
         break;
       default:
-        if ($el.attr('required') && (!$el.val() || !$el.val().length || $el.is(':empty'))) {
+        if ($el.attr('required') && (!$el.val() || !$el.val().length)) {
           return false;
         } else {
           return true;
@@ -221,8 +221,6 @@
    */
   Abide.prototype.validateInput = function($el, $form) {
     var self = this,
-        textInput = $form.find('input[type="text"]'),
-        checkInput = $form.find('input[type="checkbox"]'),
         label,
         radioGroupName;
 
@@ -282,8 +280,8 @@
    */
   Abide.prototype.validateForm = function($form) {
     var self = this,
-        inputs = $form.find('input'),
-        inputCount = $form.find('input').length,
+        inputs = $form.find('input, textarea, select'),
+        inputCount = inputs.length,
         counter = 0;
 
     while (counter < inputCount) {
@@ -297,6 +295,7 @@
     }
     else {
       $form.find('[data-abide-error]').css('display', 'none');
+      $form[0].submit();
     }
   };
   /**
@@ -309,8 +308,19 @@
         valid = false,
         patternLib = this.options.patterns,
         inputText = $($el).val(),
-        // maybe have a different way of parsing this bc people might use type
-        pattern = $($el).attr('pattern');
+        elTypeProperty = patternLib.hasOwnProperty($el[0].type)?patternLib[$el[0].type]:false,
+        elPattern = $($el).attr('pattern'),
+        elDataPattern = $($el).data('pattern'),
+        pattern = false;
+
+    // maybe have a different way of parsing this bc people might use type
+    if (elDataPattern && elDataPattern.length > 0) {
+      pattern = patternLib.hasOwnProperty(elDataPattern)?patternLib[elDataPattern]:elDataPattern;
+    }else if(elPattern && elPattern.length > 0){
+      pattern = patternLib.hasOwnProperty(elPattern)?patternLib[elPattern]:elPattern;
+    }else if (elTypeProperty) {
+      pattern = elTypeProperty;
+    }
 
     // if there's no value, then return true
     // since required check has already been done
@@ -318,7 +328,7 @@
       return true;
     }
     else {
-      if (inputText.match(patternLib[pattern])) {
+      if ((pattern && inputText.match(pattern)) || !pattern) {
         return true;
       }
       else {
