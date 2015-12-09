@@ -156,6 +156,17 @@ If you need a full-width column to use as a container, put the `.column` and `.r
 
 ---
 
+### Fluid Row
+
+Normally, a row is always 1200 pixels wide. Make a row completely fluid by adding the `.expanded` class.
+
+```html
+<div class="expanded row">
+</div>
+```
+
+---
+
 ### Nesting
 
 You can nest the grids indefinitely, though at a certain point it will get absurd.
