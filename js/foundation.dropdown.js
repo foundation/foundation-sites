@@ -157,6 +157,17 @@
    */
   Dropdown.prototype._setPosition = function(){
     if(this.$anchor.attr('aria-expanded') === 'false'){ return false; }
+
+    if(this.classChanged){
+      var curPositionClass = this.getPositionClass();
+      if(curPositionClass){
+        this.$element.removeClass(curPositionClass);
+      }
+      this.$element.addClass(this.options.positionClass)
+          .css({height: '', width: ''});
+      this.classChanged = false;
+    }
+
     var position = this.getPositionClass(),
         $eleDims = Foundation.Box.GetDimensions(this.$element),
         $anchorDims = Foundation.Box.GetDimensions(this.$anchor),
@@ -165,7 +176,7 @@
         param = (direction === 'top') ? 'height' : 'width',
         offset = (param === 'height') ? this.options.vOffset : this.options.hOffset;
 
-    if(($eleDims.width >= $eleDims.windowDims.width) || (!this.counter && !Foundation.Box.ImNotTouchingYou(this.$element))){
+    if(($eleDims.width >= $eleDims.windowDims.width) || (!this.counter && !Foundation.Box.ImNotTouchingYou(this.$element, null, true, false))){
       this.$element.offset(Foundation.Box.GetOffsets(this.$element, this.$anchor, 'center bottom', this.options.vOffset, this.options.hOffset, true)).css({
         'width': $eleDims.windowDims.width - (this.options.hOffset * 2),
         'height': 'auto'
@@ -266,7 +277,7 @@
     this._setPosition();
     this.$element.addClass('is-open')
         .attr({'aria-hidden': false});
-        
+
     if(this.options.autoFocus){
       var $focusable = Foundation.Keyboard.findFocusable(this.$element);
       if($focusable.length){
