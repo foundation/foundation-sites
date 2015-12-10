@@ -158,16 +158,6 @@
   Dropdown.prototype._setPosition = function(){
     if(this.$anchor.attr('aria-expanded') === 'false'){ return false; }
 
-    if(this.classChanged){
-      var curPositionClass = this.getPositionClass();
-      if(curPositionClass){
-        this.$element.removeClass(curPositionClass);
-      }
-      this.$element.addClass(this.options.positionClass)
-          .css({height: '', width: ''});
-      this.classChanged = false;
-    }
-
     var position = this.getPositionClass(),
         $eleDims = Foundation.Box.GetDimensions(this.$element),
         $anchorDims = Foundation.Box.GetDimensions(this.$anchor),
@@ -193,6 +183,24 @@
     }
   };
   /**
+   * Helper function to reset the position class if it had changed.
+   * @function
+   * @private
+   */
+  Dropdown.prototype._resetPositionClass = function(){
+    if(this.classChanged){
+      var curPositionClass = this.getPositionClass();
+      if(curPositionClass){
+        this.$element.removeClass(curPositionClass);
+      }
+      this.$element.addClass(this.options.positionClass)
+          /*.hide()*/.css({height: '', width: ''});
+      this.classChanged = false;
+      this.counter = 4;
+      this.usedPositions.length = 0;
+    }
+  };
+  /**
    * Adds event listeners to the element utilizing the triggers utility library.
    * @function
    * @private
@@ -203,7 +211,10 @@
       'open.zf.trigger': this.open.bind(this),
       'close.zf.trigger': this.close.bind(this),
       'toggle.zf.trigger': this.toggle.bind(this),
-      'resizeme.zf.trigger': this._setPosition.bind(this)
+      'resizeme.zf.trigger': function(){
+        _this._resetPositionClass();
+        _this._setPosition();
+      }
     });
 
     if(this.options.hover){
@@ -311,17 +322,7 @@
     this.$anchor.removeClass('hover')
         .attr('aria-expanded', false);
 
-    if(this.classChanged){
-      var curPositionClass = this.getPositionClass();
-      if(curPositionClass){
-        this.$element.removeClass(curPositionClass);
-      }
-      this.$element.addClass(this.options.positionClass)
-          /*.hide()*/.css({height: '', width: ''});
-      this.classChanged = false;
-      this.counter = 4;
-      this.usedPositions.length = 0;
-    }
+    this._resetPositionClass();
     this.$element.trigger('hide.zf.dropdown', [this.$element]);
     // Foundation.reflow(this.$element, 'dropdown');
   };
