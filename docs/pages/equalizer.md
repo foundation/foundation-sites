@@ -35,7 +35,7 @@ To use one Equalizer inside another, each container needs a unique ID, assigned 
 In the below example, the first set of Equalizer elements have the value `foo`, while the inside elements have the value `bar`.
 
 ```html
-<div class="row" datadata-equalizer="foo">
+<div class="row" data-equalizer="foo">
   <div class="medium-4 columns" data-equalizer-watch="foo">
     <div class="callout" data-equalizer="bar">
       <h3>Parent panel</h3>
