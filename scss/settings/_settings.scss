@@ -39,13 +39,14 @@
 //  34. Tooltip
 //  35. Top Bar
 
+$global-font-size: 100%;
+$rem-base: 16px;
+
 @import 'util/util';
 
 // 1. Global
 // ---------
-
 $global-width: rem-calc(1200);
-$global-font-size: 100%;
 $global-lineheight: 1.5;
 $primary-color: #2199e8;
 $secondary-color: #777;
@@ -67,7 +68,6 @@ $global-weight-normal: normal;
 $global-weight-bold: bold;
 $global-radius: 0;
 $global-text-direction: ltr;
-$rem-base: 16px;
 
 // 2. Breakpoints
 // --------------
