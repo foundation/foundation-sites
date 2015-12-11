@@ -49,6 +49,7 @@ $callout-link-tint: 30% !default;
   border: $callout-border;
   border-radius: $callout-radius;
   position: relative;
+  color: $callout-font-color;
 
   // Respect the padding, fool.
   > :first-child {
