@@ -182,7 +182,7 @@
       groups[group].push([this.$watched[i],this.$watched[i].offsetHeight]);
     }
 
-    for (var i = 0; i < groups.length; i++) {
+    for (var i = 0, len = groups.length; i < len; i++) {
       var heights = $(groups[i]).map(function () { return this[1]}).get();
       var max         = Math.max.apply(null, heights);
       groups[i].push(max);
@@ -220,20 +220,15 @@
    * @fires Equalizer#postEqualized
    */
   Equalizer.prototype.applyHeightByRow = function(groups){
-    var max;
     /**
      * Fires before the heights are applied
      */
     this.$element.trigger('preEqualized.zf.Equalizer');
-    for (var i = 0; i < groups.length ; i++) {
-      var groupsILength = groups[i].length;
+    for (var i = 0, len = groups.length; i < len ; i++) {
+      var groupsILength = groups[i].length,
           max = groups[i][groupsILength - 1];
-      //max height excluded
       if (groupsILength<=2) {
-        //stacked set to auto
-        for (var j = 0; j < groupsILength ; j++) {
-          $(groups[i][j][0]).css({'height':'auto'});
-        }
+        $(groups[i][0][0]).css({'height':'auto'});
         continue;
       };
       /**
@@ -241,7 +236,7 @@
         * @event Equalizer#preEqualizedRow
         */
       this.$element.trigger('preEqualizedRow.zf.Equalizer');
-      for (var j = 0; j < groupsILength ; j++) {
+      for (var j = 0, lenJ = (groupsILength-1); j < lenJ ; j++) {
         $(groups[i][j][0]).css({'height':max});
       }
       /**
