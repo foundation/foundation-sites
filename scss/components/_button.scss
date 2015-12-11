@@ -239,7 +239,8 @@ $button-opacity-disabled: 0.25 !default;
     }
 
     // Disabled style
-    &.disabled {
+    &.disabled,
+    &[disabled] {
       @include button-disabled;
     }
 
