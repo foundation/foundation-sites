@@ -64,7 +64,8 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5) !default;
   }
 
   // Container for page content
-  .off-canvas-content {
+  .off-canvas-content,
+  .#{$maincontent-class} {
     min-height: 100%;
     background: $body-background;
     transition: transform $offcanvas-transition-length $offcanvas-transition-timing;
