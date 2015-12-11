@@ -45,6 +45,26 @@ If you're using the CSS version of Foundation, use these media queries to imitat
 
 ---
 
+## Upgrading from Foundation 5
+
+In Foundation 5, breakpoints were accessed using a series of Sass variables named `$small-up`, `$small-only`, `$medium-only`, and so on. In Foundation 6, this method of writing media queries has been replaced with a dedicated [breakpoint mixin](#the-breakpoint-mixin), described below. **The legacy variables will be removed in Foundation 6.**
+
+To upgrade your existing media queries, replace rulesets like this:
+
+```scss
+@media #{$medium-only} {
+}
+```
+
+With this:
+
+```scss
+@include breakpoint(medium only) {
+}
+```
+
+---
+
 ## Changing the Breakpoints
 
 If you're using the Sass version of Foundation, the default breakpoints can be changed. The names of the breakpoints, and their widths, are stored in a `$breakpoints` variable in the settings file.
