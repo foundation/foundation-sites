@@ -41,6 +41,12 @@
      */
     hover: false,
     /**
+     * Don't close dropdown when hovering over dropdown pane
+     * @option
+     * @example true
+     */
+    hoverPane: false,
+    /**
      * Number of pixels between the dropdown pane and the triggering element on open.
      * @option
      * @example 1
@@ -199,21 +205,34 @@
       this.$anchor.off('mouseenter.zf.dropdown mouseleave.zf.dropdown')
           .on('mouseenter.zf.dropdown', function(){
             clearTimeout(_this.timeout);
-            _this.timeOut = setTimeout(function(){
+            _this.timeout = setTimeout(function(){
               _this.open();
               _this.$anchor.data('hover', true);
             }, _this.options.hoverDelay);
           }).on('mouseleave.zf.dropdown', function(){
             clearTimeout(_this.timeout);
-            _this.timeOut = setTimeout(function(){
+            _this.timeout = setTimeout(function(){
               _this.close();
               _this.$anchor.data('hover', false);
             }, _this.options.hoverDelay);
           });
+      if(this.options.hoverPane){
+        this.$element.off('mouseenter.zf.dropdown mouseleave.zf.dropdown')
+            .on('mouseenter.zf.dropdown', function(){
+              clearTimeout(_this.timeout);
+            }).on('mouseleave.zf.dropdown', function(){
+              clearTimeout(_this.timeout);
+              _this.timeout = setTimeout(function(){
+                _this.close();
+                _this.$anchor.data('hover', false);
+              }, _this.options.hoverDelay);
+            });
+      }
     }
     this.$anchor.add(this.$element).on('keydown.zf.dropdown', function(e) {
 
-      var visibleFocusableElements = Foundation.Keyboard.findFocusable(_this.$element);
+      var $target = $(this),
+        visibleFocusableElements = Foundation.Keyboard.findFocusable(_this.$element);
 
       Foundation.Keyboard.handleKey(e, _this, {
         tab_forward: function() {
@@ -237,8 +256,11 @@
           }
         },
         open: function() {
-          _this.open();
-          _this.$element.attr('tabindex', -1).focus();
+          if ($target.is(_this.$anchor)) {
+            _this.open();
+            _this.$element.attr('tabindex', -1).focus();
+            e.preventDefault();
+          }
         },
         close: function() {
           _this.close();
@@ -266,7 +288,7 @@
     this._setPosition();
     this.$element.addClass('is-open')
         .attr({'aria-hidden': false});
-        
+
     if(this.options.autoFocus){
       var $focusable = Foundation.Keyboard.findFocusable(this.$element);
       if($focusable.length){

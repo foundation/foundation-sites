@@ -49,6 +49,14 @@
   font-size: 0.75rem;
   margin-bottom: -0.5rem;
   margin-top: -0.4rem;
+
+  .menu & a {
+    margin-left: 6px;
+
+    &:hover {
+      background: transparent;
+    }
+  }
 }
 
 .docs-menu-ph {

@@ -106,7 +106,10 @@ $tab-content-padding: 1rem !default;
       font-size: 12px;
       color: $tab-item-color;
 
-      &:hover,
+      &:hover {
+        background: $tab-item-background-hover;
+      }
+      
       &:focus,
       &[aria-selected='true'] {
         background: $tab-background-active;

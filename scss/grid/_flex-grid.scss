@@ -176,7 +176,7 @@
     }
   }
 
-  // Horizontal alignment using align-items and align-self
+  // Vertical alignment using align-items and align-self
   @each $vdir, $prop in (
     'top': flex-start,
     'bottom': flex-end,

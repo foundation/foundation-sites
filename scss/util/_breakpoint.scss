@@ -186,3 +186,41 @@ $breakpoint-classes: (small medium large) !default;
     @return nth($values, $i);
   }
 }
+
+// Legacy breakpoint variables
+// These will be removed in 6.2
+$small-up: null;
+$small-only: null;
+$medium-up: null;
+$medium-only: null;
+$large-up: null;
+$large-only: null;
+$xlarge-up: null;
+$xlarge-only: null;
+$xxlarge-up: null;
+$xxlarge-only: null;
+
+@if map-has-key($breakpoints, small) {
+  $small-up: screen;
+  $small-only: screen and #{breakpoint(small only)};
+}
+
+@if map-has-key($breakpoints, medium) {
+  $medium-up: screen and #{breakpoint(medium)};
+  $medium-only: screen and #{breakpoint(medium only)};
+}
+
+@if map-has-key($breakpoints, large) {
+  $large-up: screen and #{breakpoint(large)};
+  $large-only: screen and #{breakpoint(large only)};
+}
+
+@if map-has-key($breakpoints, xlarge) {
+  $xlarge-up: screen and #{breakpoint(xlarge)};
+  $xlarge-only: screen and #{breakpoint(xlarge only)};
+}
+
+@if map-has-key($breakpoints, xxlarge) {
+  $xxlarge-up: screen and #{breakpoint(xxlarge)};
+  $xxlarge-only: screen and #{breakpoint(xxlarge only)};
+}

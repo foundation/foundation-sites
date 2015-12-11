@@ -75,6 +75,14 @@
   // The double .row class is needed to bump up the specificity
   .#{$column}.#{$row}.#{$row} {
     float: none;
+
+    // To properly nest a column row, padding and margin is removed
+    .#{$row} & {
+      padding-left: 0;
+      padding-right: 0;
+      margin-left: 0;
+      margin-right: 0;
+    }
   }
 
   @each $size in $breakpoints {

@@ -17,7 +17,13 @@
     "meteor-README.md",
     "package.js",
     "package.json",
-    "sache.json"
+    "sache.json",
+    ".editorconfig",
+    ".npm",
+    ".gitignore",
+    ".npmignore",
+    ".versions",
+    "scss/settings"
   ],
   "dependencies": {
     "jquery": "~2.1.0",

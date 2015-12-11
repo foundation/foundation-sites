@@ -9,7 +9,7 @@ tags:
  
 ## Default Media Queries
 
-Foundation for Sites has three core breakpoint ranges.
+Foundation for Sites has three core breakpoints:
 
 - **Small:** any screen.
 - **Medium:** any screen 640 pixels or wider.
@@ -22,6 +22,45 @@ Many components can be modified at different screen sizes using special *breakpo
   <div class="small-6 medium-4 columns"></div>
   <div class="small-6 medium-8 columns"></div>
 </div>
+```
+
+If you're using the CSS version of Foundation, use these media queries to imitate the three core breakpoints:
+
+```css
+/* Small only */
+@media screen and (max-width: 39.9375em) {}
+
+/* Medium and up */
+@media screen and (min-width: 40em) {}
+
+/* Medium only */
+@media screen and (min-width: 40em) and (max-width: 63.9375em) {}
+
+/* Large and up */
+@media screen and (min-width: 64em) {}
+
+/* Large only */
+@media screen and (min-width: 64em) and (max-width: 74.9375em) {}
+```
+
+---
+
+## Upgrading from Foundation 5
+
+In Foundation 5, breakpoints were accessed using a series of Sass variables named `$small-up`, `$small-only`, `$medium-only`, and so on. In Foundation 6, this method of writing media queries has been replaced with a dedicated [breakpoint mixin](#the-breakpoint-mixin), described below. **The legacy variables will be removed in Foundation 6.**
+
+To upgrade your existing media queries, replace rulesets like this:
+
+```scss
+@media #{$medium-only} {
+}
+```
+
+With this:
+
+```scss
+@include breakpoint(medium only) {
+}
 ```
 
 ---

@@ -156,6 +156,17 @@ If you need a full-width column to use as a container, put the `.column` and `.r
 
 ---
 
+### Fluid Row
+
+Normally, a row is always 1200 pixels wide. Make a row completely fluid by adding the `.expanded` class.
+
+```html
+<div class="expanded row">
+</div>
+```
+
+---
+
 ### Nesting
 
 You can nest the grids indefinitely, though at a certain point it will get absurd.
@@ -304,7 +315,7 @@ There are times when you won't want each media query to be collapsed or uncollap
 
 ### Centered Columns
 
-Center your columns by adding a class of `.small-centered` to your column. Large will inherit small centering by default, but you can also center solely on large by applying a `.large-centered` class. To uncenter on large screens, use `.large-uncentered`.
+Center your columns by adding a class of `.small-centered` to your column. Large will inherit small centering by default, but you can also center solely on large by applying a `.large-centered` class. To uncenter on large screens, use `.large-uncenter`.
 
 ```html
 <div class="row">
@@ -314,7 +325,7 @@ Center your columns by adding a class of `.small-centered` to your column. Large
   <div class="small-6 large-centered columns">6 centered</div>
 </div>
 <div class="row">
-  <div class="small-9 small-centered large-uncentered columns">9 centered</div>
+  <div class="small-9 small-centered large-uncenter columns">9 centered</div>
 </div>
 <div class="row">
   <div class="small-11 small-centered columns">11 centered</div>
@@ -328,7 +339,7 @@ Center your columns by adding a class of `.small-centered` to your column. Large
   <div class="small-6 large-centered columns">6 centered, large</div>
 </div>
 <div class="row display">
-  <div class="small-9 small-centered large-uncentered columns">9 centered small</div>
+  <div class="small-9 small-centered large-uncenter columns">9 centered small</div>
 </div>
 <div class="row display">
   <div class="small-11 small-centered columns">11 centered</div>
@@ -388,7 +399,7 @@ Using these source ordering classes, you can shift columns around between our br
 
 ### Block Grids
 
-The block grid from Foundation 5 has been merged into the main grid. Add a class of the format `[size]-up-[n]` to change the size of all columns within the row.
+The block grid from Foundation 5 has been merged into the main grid. Add a class of the format `[size]-up-[n]` to change the size of all columns within the row. By default, the max number of columns you can use with block grid are 6.
 
 ```html_example
 <div class="row small-up-1 medium-up-2 large-up-4">
