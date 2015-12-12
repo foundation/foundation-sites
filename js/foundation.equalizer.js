@@ -163,9 +163,7 @@
    * @returns {Array} groups - An array of heights of children within Equalizer container grouped by row with element,height and max as last child
    */
   Equalizer.prototype.getHeightsByRow = function(cb) {
-    var eqGroup = this.$watched,
-        firstTopOffset = this.$watched.first().offset().top,
-        lastElTopOffset = firstTopOffset,
+    var lastElTopOffset = this.$watched.first().offset().top,
         groups = [],
         group = 0;
     //group by Row
