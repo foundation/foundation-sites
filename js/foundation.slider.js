@@ -164,7 +164,7 @@
     if(this.handles[1]){
       this.options.doubleSided = true;
       this.$handle2 = this.handles.eq(1);
-      this.$input2 = this.inputs.length ? this.inputs.eq(1) : $('#' + this.$handle2.attr('aria-controls'));
+      this.$input2 = this.inputs.length > 1 ? this.inputs.eq(1) : $('#' + this.$handle2.attr('aria-controls'));
 
       if(!this.inputs[1]){
         this.inputs = this.inputs.add(this.$input2);
@@ -222,7 +222,7 @@
         lOrT = vert ? 'top' : 'left',
         halfOfHandle = $hndl[0].getBoundingClientRect()[hOrW] / 2,
         elemDim = this.$element[0].getBoundingClientRect()[hOrW],
-        pctOfBar = percent(location, this.options.end).toFixed(this.options.decimal),
+        pctOfBar = percent(location, this.options.end).toFixed(2),
         pxToMove = (elemDim - halfOfHandle) * pctOfBar,
         movement = (percent(pxToMove, elemDim) * 100).toFixed(this.options.decimal),
         location = location > 0 ? parseFloat(location.toFixed(this.options.decimal)) : 0,
