@@ -71,8 +71,6 @@ $callout-link-tint: 30% !default;
 
   @if $callout-link-tint and hue($background) > 0deg {
     a {
-      color: $link-color;
-
       &:hover {
         color: darken($link-color, 15%);
       }
