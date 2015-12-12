@@ -18,9 +18,14 @@ $dropdownmenu-min-width: 200px !default;
 /// @type Color
 $dropdownmenu-background: $white !default;
 
-/// Border for dropdown panes.
+/// Border for dropdown sub-menus.
 /// @type List
 $dropdownmenu-border: 1px solid $medium-gray !default;
+
+// Border width for dropdown sub-menus.
+// Used to adjust top margin of a sub-menu if a border is used.
+// @type Length
+$dropdownmenu-border-width: nth($dropdownmenu-border, 1);
 
 @mixin foundation-dropdown-menu {
   .dropdown.menu {
@@ -58,11 +63,11 @@ $dropdownmenu-border: 1px solid $medium-gray !default;
         }
       }
 
-      &.is-left-arrow.opens-inner .submenu{
+      &.is-left-arrow.opens-inner .submenu {
         right: 0;
         left: auto;
       }
-      &.is-right-arrow.opens-inner .submenu{
+      &.is-right-arrow.opens-inner .submenu {
         left: 0;
         right: auto;
       }
@@ -84,6 +89,10 @@ $dropdownmenu-border: 1px solid $medium-gray !default;
       z-index: 1;
       background: $dropdownmenu-background;
       border: $dropdownmenu-border;
+
+      @if (type_of($dropdownmenu-border-width) == 'number') {
+        margin-top: (-$dropdownmenu-border-width);
+      }
 
       > li {
         width: 100%;
