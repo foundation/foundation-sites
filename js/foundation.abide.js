@@ -95,6 +95,9 @@
         e.preventDefault();
         self.validateForm(self.$element);
       })
+      .on('formValid.fndtn.abide',function(e){
+        self.$element[0].submit();
+      })
       .find('input, textarea, select')
         .off('.abide')
         .on('blur.fndtn.abide change.fndtn.abide', function (e) {
@@ -275,8 +278,10 @@
     }
   };
   /**
-   * Goes through a form and if there are any invalid inputs, it will display the form error element
-   * @param {Object} element - jQuery object to validate, should be a form HTML element
+   * Goes through a form and if there are any invalid inputs, it will display the form error element. If valid formValid fired. By default form.submit(); is bind to formValid. You can override formValid by $('[data-abide]').off('formValid').on('formValid.fndtn.abide',function(){...});
+   * @param {Object} element - jQuery object to validate, should be a form HTML element.
+   * @fires Abide#formInvalid
+   * @fires Abide#formValid
    */
   Abide.prototype.validateForm = function($form) {
     var self = this,
@@ -292,10 +297,11 @@
     // what are all the things that can go wrong with a form?
     if ($form.find('.form-error.is-visible').length || $form.find('.is-invalid-label').length) {
       $form.find('[data-abide-error]').css('display', 'block');
+      $form.trigger('formInvalid.fndtn.abide');
     }
     else {
       $form.find('[data-abide-error]').css('display', 'none');
-      $form[0].submit();
+      $form.trigger('formValid.fndtn.abide');
     }
   };
   /**
