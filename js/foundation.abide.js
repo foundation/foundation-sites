@@ -159,7 +159,11 @@
     }
   };
   /**
-   * Checks whether or not a form element has the required attribute and if it's checked or not
+   * Get the first element in this order:
+   * 1. The closest parent ".input-group" class.
+   * 2. The <label> next to the element.
+   * 3. The closest parent <label>
+   *
    * @param {Object} element - jQuery object to check for required attribute
    * @returns {Boolean} Boolean value depends on whether or not attribute is checked or empty
    */
