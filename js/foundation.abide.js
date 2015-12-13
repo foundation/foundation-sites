@@ -293,9 +293,11 @@
     // what are all the things that can go wrong with a form?
     if ($form.find('.form-error.is-visible').length || $form.find('.is-invalid-label').length) {
       $form.find('[data-abide-error]').css('display', 'block');
+      return false;  // don't submit when there are errors
     }
     else {
       $form.find('[data-abide-error]').css('display', 'none');
+      return true;  // ok to submit
     }
   };
   /**
