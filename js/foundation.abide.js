@@ -159,6 +159,31 @@
     }
   };
   /**
+   * Based on $el, get the first element with selector in this order:
+   * 1. The element next to it.
+   * 2. The element inside (is a child of) it.
+   * 3. As its sibling.
+   *
+   * @param {Object} element - jQuery object to use as reference to find the form error selector.
+   * @param {String} selector - jQuery selector to show error message when field doesn't pass validation.
+   * @returns {Object} jQuery object with the selector.
+   */
+  Abide.prototype.findFormError = function($el, selector) {
+    var formError;
+
+    formError = $el.next(selector);
+    if (formError.length) {
+        return formError;
+    }
+
+    formError = $el.find(selector);
+    if (formError.length) {
+        return formError;
+    }
+
+    return $el.parent().find(selector);
+  };
+  /**
    * Get the first element in this order:
    * 1. The closest parent ".input-group" class.
    * 2. The <label> next to the element.
