@@ -68,7 +68,7 @@ $button-opacity-disabled: 0.25 !default;
   vertical-align: middle;
   border: 1px solid transparent;
   border-radius: $button-radius;
-  padding: $button-padding;
+  padding: $button-padding !important;
   margin: $button-margin;
   font-size: map-get($button-sizes, default);
 }
@@ -114,7 +114,7 @@ $button-opacity-disabled: 0.25 !default;
   }
 
   background: $background;
-  color: $color;
+  color: $color !important;
 
   &:hover, &:focus {
     background: $background-hover;
@@ -134,7 +134,7 @@ $button-opacity-disabled: 0.25 !default;
   $color-hover: scale-color($color, $lightness: -50%);
 
   border: 1px solid $color;
-  color: $color;
+  color: $color !important;
 
   &:hover, &:focus {
     border-color: $color-hover;

@@ -32,12 +32,13 @@ $dropdownmenu-border: 1px solid $medium-gray !default;
 
       a::after {
         float: right;
-        margin-top: 3px;
+        margin-top: 7px;
         margin-left: 10px;
       }
 
       @if $dropdownmenu-arrows {
         &.is-down-arrow a {
+          line-height: inherit;
           padding-right: 1.5rem;
           position: relative;
         }
