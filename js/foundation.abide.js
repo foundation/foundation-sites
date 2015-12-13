@@ -208,7 +208,7 @@
   Abide.prototype.addErrorClasses = function($el) {
     var self = this,
         $label = self.findLabel($el),
-        $formError = $el.next(self.options.formErrorSelector) || $el.find(self.options.formErrorSelector);
+        $formError = self.findFormError($el, self.options.formErrorSelector);
 
     // label
     if ($label) {
@@ -228,7 +228,7 @@
   Abide.prototype.removeErrorClasses = function($el) {
     var self = this,
         $label = self.findLabel($el),
-        $formError = $el.next(self.options.formErrorSelector) || $el.find(self.options.formErrorSelector);
+        $formError = self.findFormError($el, self.options.formErrorSelector);
     // label
     if ($label && $label.hasClass(self.options.labelErrorClass)) {
       $label.removeClass(self.options.labelErrorClass);
