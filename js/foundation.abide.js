@@ -92,8 +92,7 @@
         self.resetForm($(this));
       })
       .on('submit.fndtn.abide', function(e) {
-        e.preventDefault();
-        self.validateForm(self.$element);
+        return self.validateForm(self.$element);
       })
       .find('input, textarea, select')
         .off('.abide')
