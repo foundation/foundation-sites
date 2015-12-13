@@ -164,10 +164,11 @@
    * @returns {Boolean} Boolean value depends on whether or not attribute is checked or empty
    */
   Abide.prototype.findLabel = function($el) {
-    if ($el.next('label').length) {
+    if ($el.closest('.input-group').length) {
+      return $el.closest('.input-group');
+    } else if ($el.next('label').length) {
       return $el.next('label');
-    }
-    else {
+    } else if ($el.closest('label').length) {
       return $el.closest('label');
     }
   };
