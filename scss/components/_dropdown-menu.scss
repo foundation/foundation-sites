@@ -31,30 +31,30 @@ $dropdownmenu-border: 1px solid $medium-gray !default;
       position: relative;
 
       a::after {
-        float: right;
+        float: $global-right;
         margin-top: 3px;
-        margin-left: 10px;
+        margin-#{$global-left}: 10px;
       }
 
       @if $dropdownmenu-arrows {
         &.is-down-arrow a {
-          padding-right: 1.5rem;
+          padding-#{$global-right}: 1.5rem;
           position: relative;
         }
         &.is-down-arrow > a::after {
           @include css-triangle(5px, $anchor-color, down);
           position: absolute;
-          top: 12px;
-          right: 5px;
+          top: rem-calc(2px) + rem-calc(get-side($menu-item-padding, top));
+          #{$global-right}: 5px;
         }
         &.is-left-arrow > a::after {
-          @include css-triangle(5px, $anchor-color, left);
+          @include css-triangle(5px, $anchor-color, $global-left);
           float: left;
           margin-left: 0;
           margin-right: 10px;
         }
         &.is-right-arrow > a::after {
-          @include css-triangle(5px, $anchor-color, right);
+          @include css-triangle(5px, $anchor-color, $global-right);
         }
       }
 
