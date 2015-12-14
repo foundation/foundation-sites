@@ -49,6 +49,7 @@ $callout-link-tint: 30% !default;
   border: $callout-border;
   border-radius: $callout-radius;
   position: relative;
+  color: $callout-font-color;
 
   // Respect the padding, fool.
   > :first-child {
@@ -60,23 +61,12 @@ $callout-link-tint: 30% !default;
   }
 }
 
-/// Generate quick styles for a callout using a single color as a baseline. If `$callout-link-tint` is enabled, links within colored panels will be a darker version of the background.
+/// Generate quick styles for a callout using a single color as a baseline.
 /// @param {Color} $color [$callout-background] - Color to use.
 @mixin callout-style($color: $callout-background) {
   $background: scale-color($color, $lightness: $callout-background-fade);
-  $link-color: scale-color($color, $lightness: -$callout-link-tint);
 
   background-color: $background;
-
-  @if $callout-link-tint and hue($background) > 0deg {
-    a {
-      color: $link-color;
-
-      &:hover {
-        color: darken($link-color, 15%);
-      }
-    }
-  }
 }
 
 @mixin callout-size($padding) {

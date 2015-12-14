@@ -49,7 +49,7 @@ Additional classes can be added to your button to change its size and shape.
 Give a button additional meaning by adding a coloring class, or `.disabled` to create a faded appearance.
 
 <div class="primary callout">
-  <p>The <code>.disabled</code> class is a purely visual style, and won't actually disable a control. For <code>&lt;button&gt;</code> elements, you can add the <code>disabled</code> attribute to disable it.</p>
+  <p>The <code>.disabled</code> class is a purely visual style, and won't actually disable a control. For <code>&lt;button&gt;</code> elements, you can add the <code>disabled</code> attribute to disable it. If you want to disable a link, you should add the `aria-disabled` attribute to mark it as disabled for assistive technology.</p>
 </div>
 
 ```html_example

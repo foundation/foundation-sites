@@ -16,7 +16,9 @@ The flex grid is only supported in Chrome, Firefox, Safari 6+, IE10+, iOS 7+, an
 
 ## Importing
 
-The flex grid is not enabled by default. To use the default CSS, add the export mixin for the flex grid, and remove the default grid.
+If you're using the CSS version of Foundation, you'll need to generate a [custom download](http://foundation.zurb.com/sites/download/#customizeFoundation) that replaces the float grid with the flex grid.
+
+If you're using the Sass version of Foundation, remove the CSS export for the float grid, and replace it with the CSS export for the flex grid.
 
 ```scss
 @import 'foundation';
@@ -25,8 +27,12 @@ The flex grid is not enabled by default. To use the default CSS, add the export 
 @include foundation-flex-grid;
 ```
 
-<div class="callout primary">
-  <p>The standard grid and flex grid use the same classes, namely <code>.row</code> and <code>.column</code>, and don't play nice together. If you want to use both in the same project, we recommend using the Sass mixins for each grid, instead of the default CSS.</p>
+<div class="primary callout">
+  <p>The flex grid uses the same settings variables as the float grid to adjust gutter size, column count, and so on. Refer to the <a href="grid.html#sass-variables">Sass variable reference</a> for the default grid to see how the flex grid can be customized.</p>
+</div>
+
+<div class="warning callout">
+  <p>The standard grid and flex grid use some of the same classes, namely <code>.row</code> and <code>.column</code>, and don't play nice together. If you want to use both in the same project, we recommend using the Sass mixins for each grid, instead of the default CSS.</p>
 </div>
 
 ---

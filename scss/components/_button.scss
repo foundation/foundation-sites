@@ -12,7 +12,7 @@ $button-padding: 0.85em 1em !default;
 
 /// Margin around buttons.
 /// @type List
-$button-margin: 0 $global-margin $global-margin 0 !default;
+$button-margin: 0 0 $global-margin 0 !default;
 
 /// Default fill for buttons. Can either be `solid` or `hollow`.
 /// @type Keyword
@@ -239,7 +239,8 @@ $button-opacity-disabled: 0.25 !default;
     }
 
     // Disabled style
-    &.disabled {
+    &.disabled,
+    &[disabled] {
       @include button-disabled;
     }
 

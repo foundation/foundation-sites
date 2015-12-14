@@ -114,6 +114,15 @@ $topbar-hover-color: darken($topbar-background, 20%);
   }
 }
 
+.off-canvas {
+  a.close-button {
+    color: $light-gray;
+  }
+  .close-button:hover, .close-button:focus {
+    color: $light-gray;
+  }
+}
+
 // .docs-topbar {
 //   background: #333;
 //   font-size: rem-calc(13);
