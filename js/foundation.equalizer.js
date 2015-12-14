@@ -28,6 +28,12 @@
      */
     equalizeOnStack: true,
     /**
+     * Enable height equalization row by row.
+     * @option
+     * @example false
+     */
+    equalizeByRow: false,
+    /**
      * String representing the minimum breakpoint size the plugin should equalize heights on.
      * @option
      * @example 'medium'
@@ -125,7 +131,11 @@
         return false;
       }
     }
-    this.getHeights(this.applyHeight.bind(this));
+    if (this.options.equalizeByRow) {
+      this.getHeightsByRow(this.applyHeightByRow.bind(this));
+    }else{
+      this.getHeights(this.applyHeight.bind(this));
+    }
   };
   /**
    * Manually determines if the first 2 elements are *NOT* stacked.
@@ -148,6 +158,36 @@
     cb(heights);
   };
   /**
+   * Finds the outer heights of children contained within an Equalizer parent and returns them in an array
+   * @param {Function} cb - A non-optional callback to return the heights array to.
+   * @returns {Array} groups - An array of heights of children within Equalizer container grouped by row with element,height and max as last child
+   */
+  Equalizer.prototype.getHeightsByRow = function(cb) {
+    var lastElTopOffset = this.$watched.first().offset().top,
+        groups = [],
+        group = 0;
+    //group by Row
+    groups[group] = [];
+    for(var i = 0, len = this.$watched.length; i < len; i++){
+      this.$watched[i].style.height = 'auto';
+      //maybe could use this.$watched[i].offsetTop
+      var elOffsetTop = $(this.$watched[i]).offset().top;
+      if (elOffsetTop!=lastElTopOffset) {
+        group++;
+        groups[group] = [];
+        lastElTopOffset=elOffsetTop;
+      };
+      groups[group].push([this.$watched[i],this.$watched[i].offsetHeight]);
+    }
+
+    for (var i = 0, len = groups.length; i < len; i++) {
+      var heights = $(groups[i]).map(function () { return this[1]}).get();
+      var max         = Math.max.apply(null, heights);
+      groups[i].push(max);
+    }
+    cb(groups);
+  };
+  /**
    * Changes the CSS height property of each child in an Equalizer parent to match the tallest
    * @param {array} heights - An array of heights of children within Equalizer container
    * @fires Equalizer#preEqualized
@@ -166,6 +206,45 @@
     /**
      * Fires when the heights have been applied
      * @event Equalizer#postEqualized
+     */
+     this.$element.trigger('postEqualized.zf.Equalizer');
+  };
+  /**
+   * Changes the CSS height property of each child in an Equalizer parent to match the tallest by row
+   * @param {array} groups - An array of heights of children within Equalizer container grouped by row with element,height and max as last child
+   * @fires Equalizer#preEqualized
+   * @fires Equalizer#preEqualizedRow
+   * @fires Equalizer#postEqualizedRow
+   * @fires Equalizer#postEqualized
+   */
+  Equalizer.prototype.applyHeightByRow = function(groups){
+    /**
+     * Fires before the heights are applied
+     */
+    this.$element.trigger('preEqualized.zf.Equalizer');
+    for (var i = 0, len = groups.length; i < len ; i++) {
+      var groupsILength = groups[i].length,
+          max = groups[i][groupsILength - 1];
+      if (groupsILength<=2) {
+        $(groups[i][0][0]).css({'height':'auto'});
+        continue;
+      };
+      /**
+        * Fires before the heights per row are applied
+        * @event Equalizer#preEqualizedRow
+        */
+      this.$element.trigger('preEqualizedRow.zf.Equalizer');
+      for (var j = 0, lenJ = (groupsILength-1); j < lenJ ; j++) {
+        $(groups[i][j][0]).css({'height':max});
+      }
+      /**
+        * Fires when the heights per row have been applied
+        * @event Equalizer#postEqualizedRow
+        */
+      this.$element.trigger('postEqualizedRow.zf.Equalizer');
+    }
+    /**
+     * Fires when the heights have been applied
      */
      this.$element.trigger('postEqualized.zf.Equalizer');
   };
