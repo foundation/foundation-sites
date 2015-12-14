@@ -40,27 +40,58 @@ $topbar-input-width: 200px !default;
     width: $topbar-input-width;
     margin-#{$global-right}: 1rem;
   }
-  
+
   input.button {
     width:auto;
   }
 }
 
+/// makes sections stacked
+@mixin top-bar-stacked() {
+  .top-bar-right {
+    width: 100%;
+  }
+  .top-bar-left {
+    width: 100%;
+  }
+}
+
+/// unstack sections
+@mixin top-bar-unstack() {
+  .top-bar-right {
+    width: auto;
+  }
+  .top-bar-left {
+    width: auto;
+  }
+}
 @mixin foundation-top-bar {
   // Top bar container
   .top-bar {
     @include top-bar-container;
   }
+  // Stack on medium screens smaller
+  .stacked-for-medium {
+    @include breakpoint(medium down) {
+      @include top-bar-stacked;
+    }
+  }
+  // Stack on small screens
+  .stacked,
+  .stacked-for-small {
+    @include breakpoint(small) {
+      @include top-bar-stacked;
+    }
+    @include breakpoint(medium) {
+      @include top-bar-unstack;
+    }
+  }
 
   // Sub-sections
-  // Stack on small screens
-  @include breakpoint(medium) {
-    .top-bar-left {
-      float: left;
-    }
-
-    .top-bar-right {
-      float: right
-    }
+  .top-bar-left {
+    float: left;
+  }
+  .top-bar-right {
+    float: right;
   }
 }
