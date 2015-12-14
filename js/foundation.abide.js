@@ -151,7 +151,7 @@
         }
         break;
       default:
-        if ($el.attr('required') && (!$el.val() || !$el.val().length || $el.is(':empty'))) {
+        if ($el.attr('required') && (!$el.val() || !$el.val().length)) {
           return false;
         } else {
           return true;
