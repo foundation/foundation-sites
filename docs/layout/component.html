@@ -255,7 +255,7 @@
       </thead>
       {{#each js.event}}
         <tr>
-          <td>{{this.name}}.zf.{{../title}}</td>
+          <td>{{this.name}}.zf.{{toLower ../title}}</td>
           <td>{{this.description}}</td>
         </tr>
       {{/each}}

@@ -210,4 +210,9 @@ $menu-expand-max: 6 !default;
   .menu-text {
     @include menu-text;
   }
+
+  // Prevent FOUC when using the Responsive Menu plugin
+  .no-js [data-responsive-menu] ul {
+    display: none;
+  }
 }

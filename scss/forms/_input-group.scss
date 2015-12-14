@@ -22,10 +22,23 @@ $input-prefix-border: 1px solid $medium-gray !default;
 $input-prefix-padding: 1rem !default;
 
 @mixin foundation-form-prepostfix {
+  $height: ($input-font-size + $form-spacing * 1.5);
+
+
   .input-group {
     display: table;
     width: 100%;
     margin-bottom: $form-spacing;
+
+    & > *:first-child {
+      border-radius: $global-radius 0 0 $global-radius;
+    }
+
+    & > *:last-child {
+      & > * {
+        border-radius: 0 $global-radius $global-radius 0;
+      }
+    }
   }
 
   %input-group-child {
@@ -57,6 +70,8 @@ $input-prefix-padding: 1rem !default;
 
   .input-group-field {
     @extend %input-group-child;
+    border-radius: 0;
+    height: $height;
   }
 
   .input-group-button {

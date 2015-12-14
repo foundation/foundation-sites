@@ -89,6 +89,10 @@ Callouts can be sized using the `.small` and `.large` classes. These will affect
 
 Pair the callout with the [close button](close-button.html) component and `data-closable` attribute to create a dismissable alert box.
 
+<div class="primary callout">
+  <p>Any element can be used as a close trigger, not just close button. Adding the attribute <code>data-close</code> to any element within the callout will turn it into a close trigger.</p>
+</div>
+
 ```html_example
 <div class="alert callout" data-closable>
   <h5>This is Important!</h5>
