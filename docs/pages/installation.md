@@ -45,7 +45,7 @@ The folks at [jsDelivr]() host the compressed Foundation CSS and JavaScript for 
 
 ```html
 <!-- Compressed CSS -->
-<script src="https://cdn.jsdelivr.net/foundation/6.0.5/foundation.min.css"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.0.5/foundation.min.css">
 
 <!-- Compressed JavaScript -->
 <script src="https://cdn.jsdelivr.net/foundation/6.0.5/foundation.min.js"></script>
