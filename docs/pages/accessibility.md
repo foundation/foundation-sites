@@ -12,7 +12,7 @@ Aside from accessibility features that has been built into Foundation's componen
 ## Basic Principles
 
 - **Structure your document properly.** Use the right HTML tags for the job when marking up navigation, lists, links, controls, and so on.
-- **Label everything.** If a control or form element has no text label, add one. Use the `alt` attribute on all images to describe what they are.
+- **Label everything.** If a control or form element has no text label, add one. You can use the [visibility classes](visibility.html#accessibility) to hide labels visually while maintaining accessibility. Use the `alt` attribute on all images to describe what they are.
 - **Don't rely on purely visual cues.** The content of a page should make sense even if page is being read to the user, or if the user is colorblind and can't make use of color-based labeling.
 - **Make everything usable on a keyboard and mouse.** Lucky for you, all of our components work with keyboards, mice, and touch screens out of the box.
 
