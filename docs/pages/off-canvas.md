@@ -62,8 +62,8 @@ A design can have two menus: one on the left, and one on the right. Be sure that
 <body>
   <div class="off-canvas-wrapper">
     <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
-      <div class="off-canvas position-left" id="offCanvas" data-off-canvas></div>
-      <div class="off-canvas position-right" id="offCanvas" data-off-canvas data-position="right"></div>
+      <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas></div>
+      <div class="off-canvas position-right" id="offCanvasRight" data-off-canvas data-position="right"></div>
       <div class="off-canvas-content" data-off-canvas-content></div>
     </div>
   </div>
