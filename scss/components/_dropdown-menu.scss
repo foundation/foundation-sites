@@ -103,7 +103,7 @@ $dropdownmenu-border: 1px solid $medium-gray !default;
 
     .is-dropdown-submenu-parent.opens-left .submenu {
       left: auto;
-      right: 100%;
+      right: 0;
     }
 
     &.align-right {
