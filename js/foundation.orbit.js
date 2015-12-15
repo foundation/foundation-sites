@@ -11,7 +11,7 @@
   /**
    * Creates a new instance of an orbit carousel.
    * @class
-   * @param {jQuery} element - jQuery object to make into an accordion menu.
+   * @param {jQuery} element - jQuery object to make into a Orbit.
    * @param {Object} options - Overrides to the default plugin settings.
    */
   function Orbit(element, options){
