@@ -11,12 +11,12 @@
   function Abide(element, options) {
     this.$element = element;
     this.options  = $.extend({}, Abide.defaults, this.$element.data(), options);
-    this.$window  = $(window);
-    this.name     = 'Abide';
-    this.attr     = 'data-abide';
+    // this.$window  = $(window);
+    // this.name     = 'Abide';
+    // this.attr     = 'data-abide';
 
     this._init();
-    this._events();
+
 
     Foundation.registerPlugin(this);
   }
@@ -30,6 +30,7 @@
     inputErrorClass: 'is-invalid-input',
     formErrorSelector: '.form-error',
     formErrorClass: 'is-visible',
+
     patterns: {
       alpha : /^[a-zA-Z]+$/,
       alpha_numeric : /^[a-zA-Z0-9]+$/,
@@ -61,6 +62,7 @@
       // #FFF or #FFFFFF
       color : /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/
     },
+
     validators: {
       equalTo: function (el, required, parent) {
         var from  = document.getElementById(el.getAttribute(this.add_namespace('data-equalto'))).value,
@@ -77,7 +79,8 @@
    * Initializes the Abide plugin and calls functions to get Abide functioning on load.
    * @private
    */
-  Abide.prototype._init = function() {
+  Abide.prototype._init = function(){
+    this._events();
   };
 
   /**
@@ -129,6 +132,7 @@
    var counter = 0;
   Abide.prototype.requiredCheck = function($el) {
     switch ($el[0].type) {
+
       case 'text':
       case 'password':
         if ($el.attr('required') && !$el.val()) {
@@ -138,13 +142,8 @@
           return true;
         }
         break;
+
       case 'checkbox':
-        // if ($el.attr('required') && !$el.is(':checked')) {
-        //   return false;
-        // } else {
-        //   return true;
-        // }
-        // break;
       case 'radio':
       console.log($el[0].type, counter++);
         if ($el.attr('required') && !$el.is(':checked')) {
@@ -153,6 +152,7 @@
           return true;
         }
         break;
+
       default:
         if ($el.attr('required') && (!$el.val() || !$el.val().length)) {
           return false;
