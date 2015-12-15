@@ -97,6 +97,7 @@
       .find('input, textarea, select')
         .off('.abide')
         .on('blur.fndtn.abide change.fndtn.abide', function (e) {
+          console.log(e);
           if (self.options.validateOn === 'fieldChange') {
             self.validateInput($(e.target), self.$element);
           }
@@ -125,17 +126,11 @@
    * @param {Object} element - jQuery object to check for required attribute
    * @returns {Boolean} Boolean value depends on whether or not attribute is checked or empty
    */
+   var counter = 0;
   Abide.prototype.requiredCheck = function($el) {
     switch ($el[0].type) {
       case 'text':
-        if ($el.attr('required') && !$el.val()) {
-          // requirement check does not pass
-          return false;
-        } else {
-          return true;
-        }
-        break;
-        case 'password':
+      case 'password':
         if ($el.attr('required') && !$el.val()) {
           // requirement check does not pass
           return false;
@@ -144,13 +139,14 @@
         }
         break;
       case 'checkbox':
-        if ($el.attr('required') && !$el.is(':checked')) {
-          return false;
-        } else {
-          return true;
-        }
-        break;
+        // if ($el.attr('required') && !$el.is(':checked')) {
+        //   return false;
+        // } else {
+        //   return true;
+        // }
+        // break;
       case 'radio':
+      console.log($el[0].type, counter++);
         if ($el.attr('required') && !$el.is(':checked')) {
           return false;
         } else {

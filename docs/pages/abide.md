@@ -19,8 +19,17 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
   </div>
   <div class="row">
     <div class="small-12 columns">
-      <label>Input Label
-        <input type="text" placeholder=".small-12.columns" aria-describedby="exampleHelpText" required pattern="number">
+      <label>Number Required
+        <input type="text" placeholder="1234" aria-describedby="exampleHelpText" required pattern="number">
+        <span class="form-error">
+          Yo, you had better fill this out.
+        </span>
+      </label>
+      <p class="help-text" id="exampleHelpText">Here's how you use this input field!</p>
+    </div>
+    <div class="small-12 columns">
+      <label>Password Required
+        <input type="password" placeholder="yeti4preZ" aria-describedby="exampleHelpText" required pattern="password">
         <span class="form-error">
           Yo, you had better fill this out.
         </span>
@@ -30,12 +39,12 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
   </div>
   <div class="row">
     <div class="medium-6 columns">
-      <label>Input Label
-        <input type="text" placeholder=".medium-6.columns" pattern="url">
+      <label>URL Required
+        <input type="text" placeholder="www.google.com" pattern="url">
       </label>
     </div>
     <div class="medium-6 columns">
-      <label>Input Label
+      <label>European Cars, Choose One
         <select id="select" required>
           <option value=""></option>
           <option value="volvo">Volvo</option>
