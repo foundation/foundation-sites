@@ -101,14 +101,20 @@ $buttongroup-expand-max: 6 !default;
       }
     }
 
-    &.stacked,
-    &.stacked-for-small {
+    &.stacked {
       @include button-group-stack;
     }
 
-    &.stacked-for-small {
-      @include breakpoint(medium) {
-        @include button-group-unstack;
+    @each $size in $breakpoint-classes {
+      &.stacked-for-#{$size} {
+        @include breakpoint($size down) {
+          @include button-group-stack;
+        }
+      }
+      &.unstacked-for-#{$size} {
+        @include breakpoint($size up) {
+          @include button-group-unstack;
+        }
       }
     }
   }

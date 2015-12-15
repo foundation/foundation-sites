@@ -76,10 +76,12 @@ Add the `.expanded` class to the container to make a full-width button group. Ea
 
 ## Stacking
 
-A button group can be made vertical with the `.stacked` class. Or, you can use `.stacked-for-small` to only stack a button group on small screens.
+A button group can be made vertical with the `.stacked` class.
+
+You can also stack a button group on particular screen sizes. The `.stacked-for-medium` class will stack a button group on medium screens or smaller. Or use the `.stacked` class in combination with `.unstacked-for-large` to unstack the button group on particular screen sizes. In the example below, the menu is stacked for small and medium screen, but unstacked for large and larger.
 
 ```html_example
-<div class="stacked-for-small button-group">
+<div class="stacked unstacked-for-large button-group">
   <a class="button">How</a>
   <a class="button">Low</a>
   <a class="button">Can</a>
