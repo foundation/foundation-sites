@@ -207,4 +207,4 @@ function parseStyleToObject(str) {
   return styleObject;
 }
 
-}(jQuery, Foundation)
+}(jQuery, Foundation);
