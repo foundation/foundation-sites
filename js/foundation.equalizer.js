@@ -57,18 +57,19 @@
     this.isOn = false;
 
     var imgs = this.$element.find('img');
-
+    var tooSmall;
     if(this.options.equalizeOn){
-      this._checkMQ();
+      tooSmall = this._checkMQ();
       $(window).on('changed.zf.mediaquery', this._checkMQ.bind(this));
     }else{
       this._events();
     }
-
-    if(imgs.length){
-      Foundation.onImagesLoaded(imgs, this._reflow.bind(this));
-    }else{
-      this._reflow();
+    if((tooSmall !== undefined && tooSmall === false) || tooSmall === undefined){
+      if(imgs.length){
+        Foundation.onImagesLoaded(imgs, this._reflow.bind(this));
+      }else{
+        this._reflow();
+      }
     }
 
   };
@@ -78,7 +79,7 @@
    */
   Equalizer.prototype._pauseEvents = function(){
     this.isOn = false;
-    this.$element.off('.zf.Equalizer resizeme.zf.trigger');
+    this.$element.off('.zf.equalizer resizeme.zf.trigger');
   };
   /**
    * Initializes events for Equalizer.
@@ -88,7 +89,7 @@
     var _this = this;
     this._pauseEvents();
     if(this.hasNested){
-      this.$element.on('postEqualized.zf.Equalizer', function(e){
+      this.$element.on('postequalized.zf.equalizer', function(e){
         if(e.target !== _this.$element[0]){ _this._reflow(); }
       });
     }else{
@@ -101,7 +102,8 @@
    * @private
    */
   Equalizer.prototype._checkMQ = function(){
-    if(!Foundation.MediaQuery.atLeast(this.options.equalizeOn)){
+    var tooSmall = !Foundation.MediaQuery.atLeast(this.options.equalizeOn);
+    if(tooSmall){
       if(this.isOn){
         this._pauseEvents();
         this.$watched.css('height', 'auto');
@@ -111,7 +113,7 @@
         this._events();
       }
     }
-    return;
+    return tooSmall;
   }
   /**
    * A noop version for the plugin
@@ -190,38 +192,38 @@
   /**
    * Changes the CSS height property of each child in an Equalizer parent to match the tallest
    * @param {array} heights - An array of heights of children within Equalizer container
-   * @fires Equalizer#preEqualized
-   * @fires Equalizer#postEqualized
+   * @fires Equalizer#preequalized
+   * @fires Equalizer#postequalized
    */
   Equalizer.prototype.applyHeight = function(heights){
     var max = Math.max.apply(null, heights);
     /**
      * Fires before the heights are applied
-     * @event Equalizer#preEqualized
+     * @event Equalizer#preequalized
      */
-    this.$element.trigger('preEqualized.zf.Equalizer');
+    this.$element.trigger('preequalized.zf.equalizer');
 
     this.$watched.css('height', max);
 
     /**
      * Fires when the heights have been applied
-     * @event Equalizer#postEqualized
+     * @event Equalizer#postequalized
      */
-     this.$element.trigger('postEqualized.zf.Equalizer');
+     this.$element.trigger('postequalized.zf.equalizer');
   };
   /**
    * Changes the CSS height property of each child in an Equalizer parent to match the tallest by row
    * @param {array} groups - An array of heights of children within Equalizer container grouped by row with element,height and max as last child
-   * @fires Equalizer#preEqualized
-   * @fires Equalizer#preEqualizedRow
-   * @fires Equalizer#postEqualizedRow
-   * @fires Equalizer#postEqualized
+   * @fires Equalizer#preequalized
+   * @fires Equalizer#preequalizedRow
+   * @fires Equalizer#postequalizedRow
+   * @fires Equalizer#postequalized
    */
   Equalizer.prototype.applyHeightByRow = function(groups){
     /**
      * Fires before the heights are applied
      */
-    this.$element.trigger('preEqualized.zf.Equalizer');
+    this.$element.trigger('preequalized.zf.equalizer');
     for (var i = 0, len = groups.length; i < len ; i++) {
       var groupsILength = groups[i].length,
           max = groups[i][groupsILength - 1];
@@ -231,22 +233,22 @@
       };
       /**
         * Fires before the heights per row are applied
-        * @event Equalizer#preEqualizedRow
+        * @event Equalizer#preequalizedRow
         */
-      this.$element.trigger('preEqualizedRow.zf.Equalizer');
+      this.$element.trigger('preequalizedrow.zf.equalizer');
       for (var j = 0, lenJ = (groupsILength-1); j < lenJ ; j++) {
         $(groups[i][j][0]).css({'height':max});
       }
       /**
         * Fires when the heights per row have been applied
-        * @event Equalizer#postEqualizedRow
+        * @event Equalizer#postequalizedRow
         */
-      this.$element.trigger('postEqualizedRow.zf.Equalizer');
+      this.$element.trigger('postequalizedrow.zf.equalizer');
     }
     /**
      * Fires when the heights have been applied
      */
-     this.$element.trigger('postEqualized.zf.Equalizer');
+     this.$element.trigger('postequalized.zf.equalizer');
   };
   /**
    * Destroys an instance of Equalizer.
