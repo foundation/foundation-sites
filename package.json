@@ -19,6 +19,7 @@
   "devDependencies": {
     "bootcamp": "^1.1.7",
     "browser-sync": "^2.8.2",
+    "foundation-docs": "zurb/foundation-docs",
     "gitty": "^3.3.0",
     "gulp": "^3.8.10",
     "gulp-autoprefixer": "^2.3.1",
