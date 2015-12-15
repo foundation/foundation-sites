@@ -109,6 +109,7 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   min-height: 100vh;
   max-width: none;
   margin-left: 0;
+  border: none;
 }
 
 @mixin foundation-reveal {
