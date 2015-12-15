@@ -268,20 +268,13 @@
     }
     else if ($el[0].type === 'radio') {
       radioGroupName = $el.attr('name');
-      label = $el.siblings('label');
 
       if (self.validateRadio(radioGroupName)) {
-        $(label).each(function() {
-          if ($(this).hasClass(self.options.labelErrorClass)) {
-            $(this).removeClass(self.options.labelErrorClass);
-          }
-        });
+        self.removeErrorClasses($el);
         $el.trigger('valid.fndtn.abide', $el[0]);
       }
       else {
-        $(label).each(function() {
-          $(this).addClass(self.options.labelErrorClass);
-        });
+        self.addErrorClasses($el);
         $el.trigger('invalid.fndtn.abide', $el[0]);
       };
     }
