@@ -32,7 +32,11 @@ $('[data-docs-search]')
   .typeahead({ highlight: false }, source)
   .on('typeahead:select', function(e, sel) {
     window.location.href = sel.link;
-  })
-  .focus();
+  });
+
+// Auto-highlight unless it's a phone
+if (!navigator.userAgent.match(/(iP(hone|ad|od)|Android)/)) {
+  $('[data-docs-search]').focus();
+}
 
 }()
