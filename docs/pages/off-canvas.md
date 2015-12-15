@@ -54,6 +54,10 @@ To create a click trigger that opens the menu, add the attribute `data-open` or 
 
 A design can have two menus: one on the left, and one on the right. Be sure that both menus come *before* the `.off-canvas-content` wrapper&mdash;this is required for the CSS to apply correctly.
 
+<div class="primary callout">
+  <p>When using Foundation in <a href="rtl.html">right-to-left</a> mode, "right" still means right, and "left" still means left.</p>
+</div>
+
 ```html
 <body>
   <div class="off-canvas-wrapper">
