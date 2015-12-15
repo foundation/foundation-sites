@@ -161,13 +161,13 @@
       .addBack()
       .parent().addClass('is-active');
 
-    Foundation.Move(_this.options.slideSpeed, $target, function(){
+    // Foundation.Move(_this.options.slideSpeed, $target, function(){
       $target.slideDown(_this.options.slideSpeed);
-    });
+    // });
 
-    if(!firstTime){
-      Foundation._reflow(this.$element.attr('data-accordion'));
-    }
+    // if(!firstTime){
+    //   Foundation._reflow(this.$element.attr('data-accordion'));
+    // }
     $('#' + $target.attr('aria-labelledby')).attr({
       'aria-expanded': true,
       'aria-selected': true
@@ -194,9 +194,9 @@
       return;
     }
 
-    Foundation.Move(this.options.slideSpeed, $target, function(){
+    // Foundation.Move(this.options.slideSpeed, $target, function(){
       $target.slideUp(_this.options.slideSpeed);
-    });
+    // });
 
     $target.attr('aria-hidden', true)
            .parent().removeClass('is-active');
