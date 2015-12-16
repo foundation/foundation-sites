@@ -66,7 +66,10 @@ $buttongroup-expand-max: 6 !default;
 ) {
   #{$selector} {
     width: 100%;
-    border-#{$global-right}: 0;
+
+    &:not(:last-child) {
+      border-#{$global-right}: $buttongroup-spacing solid;
+    }
   }
 }
 
@@ -96,8 +99,16 @@ $buttongroup-expand-max: 6 !default;
 
     // Colors
     @each $name, $color in $foundation-colors {
-      &.#{$name} #{$buttongroup-child-selector} {
-        @include button-style($color, auto, auto);
+      @if $button-fill != hollow {
+        &.#{$name} #{$buttongroup-child-selector} {
+          @include button-style($color, auto, auto);
+        }
+      }
+      @else {
+        &.#{$name} #{$buttongroup-child-selector} {
+          @include button-hollow;
+          @include button-hollow-style($color);
+        }
       }
     }
 
