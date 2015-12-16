@@ -205,6 +205,13 @@ $button-opacity-disabled: 0.25 !default;
     &.small    { font-size: map-get($button-sizes, small); }
     &.large    { font-size: map-get($button-sizes, large); }
     &.expanded { @include button-expand; }
+    @each $size in $breakpoint-classes {
+      @include breakpoint($size) {
+        &.expanded-for-#{$size} {
+          @include button-expand;
+        }
+      }
+    }
 
     // Colors
     @each $name, $color in $foundation-colors {
