@@ -167,15 +167,45 @@
     }
   };
   /**
-   * Checks whether or not a form element has the required attribute and if it's checked or not
+   * Based on $el, get the first element with selector in this order:
+   * 1. The element next to it.
+   * 2. The element inside (is a child of) it.
+   * 3. As its sibling.
+   *
+   * @param {Object} element - jQuery object to use as reference to find the form error selector.
+   * @param {String} selector - jQuery selector to show error message when field doesn't pass validation.
+   * @returns {Object} jQuery object with the selector.
+   */
+  Abide.prototype.findFormError = function($el, selector) {
+    var formError;
+
+    formError = $el.next(selector);
+    if (formError.length) {
+        return formError;
+    }
+
+    formError = $el.find(selector);
+    if (formError.length) {
+        return formError;
+    }
+
+    return $el.parent().find(selector);
+  };
+  /**
+   * Get the first element in this order:
+   * 1. The closest parent ".input-group" class.
+   * 2. The <label> next to the element.
+   * 3. The closest parent <label>
+   *
    * @param {Object} element - jQuery object to check for required attribute
    * @returns {Boolean} Boolean value depends on whether or not attribute is checked or empty
    */
   Abide.prototype.findLabel = function($el) {
-    if ($el.next('label').length) {
+    if ($el.closest('.input-group').length) {
+      return $el.closest('.input-group');
+    } else if ($el.next('label').length) {
       return $el.next('label');
-    }
-    else {
+    } else if ($el.closest('label').length) {
       return $el.closest('label');
     }
   };
@@ -186,7 +216,7 @@
   Abide.prototype.addErrorClasses = function($el) {
     var self = this,
         $label = self.findLabel($el),
-        $formError = $el.next(self.options.formErrorSelector) || $el.find(self.options.formErrorSelector);
+        $formError = self.findFormError($el, self.options.formErrorSelector);
 
     // label
     if ($label) {
@@ -206,7 +236,7 @@
   Abide.prototype.removeErrorClasses = function($el) {
     var self = this,
         $label = self.findLabel($el),
-        $formError = $el.next(self.options.formErrorSelector) || $el.find(self.options.formErrorSelector);
+        $formError = self.findFormError($el, self.options.formErrorSelector);
     // label
     if ($label && $label.hasClass(self.options.labelErrorClass)) {
       $label.removeClass(self.options.labelErrorClass);
@@ -247,20 +277,13 @@
     }
     else if ($el[0].type === 'radio') {
       radioGroupName = $el.attr('name');
-      label = $el.siblings('label');
 
       if (self.validateRadio(radioGroupName)) {
-        $(label).each(function() {
-          if ($(this).hasClass(self.options.labelErrorClass)) {
-            $(this).removeClass(self.options.labelErrorClass);
-          }
-        });
+        self.removeErrorClasses($el);
         $el.trigger('valid.fndtn.abide', $el[0]);
       }
       else {
-        $(label).each(function() {
-          $(this).addClass(self.options.labelErrorClass);
-        });
+        self.addErrorClasses($el);
         $el.trigger('invalid.fndtn.abide', $el[0]);
       };
     }
