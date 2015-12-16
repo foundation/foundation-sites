@@ -8,7 +8,7 @@
 
 /// Background color for select menus.
 /// @type Color
-$select-background: #fafafa !default;
+$select-background: $white !default;
 
 /// Color of the dropdown triangle inside select menus. Set to `transparent` to remove it entirely.
 /// @type Color
@@ -24,7 +24,6 @@ $select-radius: $global-radius !default;
   height: $height;
   padding: ($form-spacing / 2);
   border: $input-border;
-  border-radius: $global-radius;
   margin: 0 0 $form-spacing;
   font-size: $input-font-size;
   font-family: $input-font-family;
