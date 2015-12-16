@@ -93,7 +93,7 @@ gulp.task('deploy:settings', function(cb) {
 gulp.task('deploy:commit', function(cb) {
   git.commitSync('Bump to version ' + NEXT_VERSION, ['-a']);
   git.tagSync('v' + NEXT_VERSION);
-  // git.push('origin', 'develop', cb);
+  git.push('origin', 'develop', '--tags', cb);
   cb();
 });
 

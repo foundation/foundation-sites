@@ -118,7 +118,7 @@ The `../` is added only on pages in a sub-folder, so the CSS can still be proper
 
 ## Helpers
 
-Helpers are special functions that manipulate content on the page. In addition to [Handlebars's built-in helpers](http://handlebarsjs.com/builtin_helpers.html), Panini includes a few custom helpers.
+Helpers are special functions that manipulate content on the page. In addition to [Handlebars's built-in helpers](http://handlebarsjs.com/builtin_helpers.html), Panini includes a few custom helpers and you can add your own.
 
 ### ifpage
 
@@ -169,6 +169,24 @@ Converts Markdown into HTML.
 # Heading 1
 Lorem ipsum [dolor sit amet](http://html5zombo.com), consectetur adipisicing elit. Nam dolor, perferendis. Mollitia aut dolorum, est amet libero eos ad facere pariatur, ullam dolorem similique fugit, debitis impedit, eligendi officiis dolores.
 {{/markdown}}
+```
+
+### Custom Helpers
+
+If you don't see the right helper, you can write your own. Add a javascript file to 'src/helpers', restart npm, then call it in your templates.
+
+```
+// Example file src/helpers/bold.js
+module.exports = function(options) {
+  // options.fn(this) = Handelbars content between {{#bold}} HERE {{/bold}}
+  var bolder = '<strong>' + options.fn(this) + '</strong>';
+  return bolder;
+}
+```
+Then in your projects call your custom `{{#bold}}` helper
+
+```
+{{#bold}}ideas{{/bold}}
 ```
 
 ---

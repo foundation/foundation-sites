@@ -6,10 +6,6 @@
 /// @group flex-video
 ////
 
-/// Padding above a flex video container.
-/// @type Number
-$flexvideo-padding-top: rem-calc(25) !default;
-
 /// Margin below a flex video container.
 /// @type Number
 $flexvideo-margin-bottom: rem-calc(16) !default;
@@ -36,7 +32,6 @@ $flexvideo-ratio-widescreen: 16 by 9 !default;
 @mixin flex-video($ratio: $flexvideo-ratio) {
   position: relative;
   height: 0;
-  padding-top: $flexvideo-padding-top;
   padding-bottom: flex-video($ratio);
   margin-bottom: $flexvideo-margin-bottom;
   overflow: hidden;

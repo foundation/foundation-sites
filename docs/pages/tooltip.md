@@ -31,7 +31,12 @@ At the spot thus attained a second peg was driven, and about this, as a centre, 
 ---
 
 ## Tooltip Right and Left
-You can also position the tooltips to the right and left of the word by adding the classes <code>right</code> and <code>left</code> to <code>span</code> tag.
+
+You can also position the tooltips to the right and left of the word by adding the classes `.right` or `.left` to the `<span>` element.
+
+<div class="primary callout">
+  <p>When using Foundation in <a href="rtl.html">right-to-left</a> mode, "right" still means right, and "left" still means left.</p>
+</div>
 
 ```html_example
 <p>

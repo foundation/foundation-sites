@@ -224,7 +224,7 @@ $breadcrumbs-item-slash: true;
 // ----------
 
 $button-padding: 0.85em 1em;
-$button-margin: 0 $global-margin $global-margin 0;
+$button-margin: 0 0 $global-margin 0;
 $button-fill: solid;
 $button-background: $primary-color;
 $button-background-hover: scale-color($button-background, $lightness: -15%);
@@ -537,7 +537,7 @@ $tooltip-radius: $global-radius;
 // -----------
 
 $topbar-padding: 0.5rem;
-$topbar-background: #eee;
-$topbar-link-color: #fff;
+$topbar-background: $light-gray;
+$topbar-link-color: $primary-color;
 $topbar-input-width: 200px;
 
