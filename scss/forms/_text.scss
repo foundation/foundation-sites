@@ -87,7 +87,7 @@ $input-radius: $global-radius !default;
   // Focus state
   &:focus {
     border: $input-border-focus;
-    background: $input-background-focus;
+    background-color: $input-background-focus;
     outline: none;
     box-shadow: $input-shadow-focus;
 
