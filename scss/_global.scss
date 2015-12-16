@@ -118,8 +118,7 @@ $foundation-colors: (
     font-family: '#{-zf-bp-serialize($breakpoints)}';
   }
 
-  html,
-  body {
+  html {
     font-size: $global-font-size;
     box-sizing: border-box;
   }

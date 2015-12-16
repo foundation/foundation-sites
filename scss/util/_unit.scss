@@ -52,7 +52,7 @@ $global-font-size: 100% !default;
 @function -zf-bp-to-em($value) {
   // Pixel and unitless values are converted to rems
   @if unit($value) == 'px' or unitless($value) {
-    $value: rem-calc($value);
+    $value: rem-calc($value, $base: 16px);
   }
 
   // Then the value is converted to ems
