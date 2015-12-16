@@ -291,8 +291,8 @@
    */
   Abide.prototype.validateForm = function($form) {
     var self = this,
-        inputs = $form.find('input'),
-        inputCount = $form.find('input').length,
+        inputs = $form.find('input, select, textarea'),
+        inputCount = inputs.length,
         counter = 0;
 
     while (counter < inputCount) {
