@@ -413,7 +413,7 @@
       var _$handle = $(this);
 
       // handle keyboard event with keyboard util
-      Foundation.Keyboard.handleKey(e, _this, {
+      Foundation.Keyboard.handleKey(e, 'Slider', {
         decrease: function() {
           newValue = oldValue - _this.options.step;
         },
