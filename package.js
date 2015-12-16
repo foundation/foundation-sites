@@ -87,8 +87,7 @@ Package.onUse(function(api) {
     'scss/util/_selector.scss',
     'scss/util/_unit.scss',
     'scss/util/_util.scss',
-    'scss/util/_value.scss',
-
-    'scss/vendor/normalize.scss',
+    'scss/util/_value.scss'
+    
   ], 'client', {isImport: true});
 });
