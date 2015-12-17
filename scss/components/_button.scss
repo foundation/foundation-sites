@@ -113,11 +113,11 @@ $button-opacity-disabled: 0.25 !default;
     $color: $button-color;
   }
 
-  background: $background;
+  background-color: $background;
   color: $color;
 
   &:hover, &:focus {
-    background: $background-hover;
+    background-color: $background-hover;
     color: $color;
   }
 }
@@ -126,7 +126,7 @@ $button-opacity-disabled: 0.25 !default;
 @mixin button-hollow {
   &,
   &:hover, &:focus {
-    background: transparent;
+    background-color: transparent;
   }
 }
 

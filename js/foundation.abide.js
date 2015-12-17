@@ -136,6 +136,14 @@
           return true;
         }
         break;
+        case 'password':
+        if ($el.attr('required') && !$el.val()) {
+          // requirement check does not pass
+          return false;
+        } else {
+          return true;
+        }
+        break;
       case 'checkbox':
         if ($el.attr('required') && !$el.is(':checked')) {
           return false;
@@ -222,6 +230,7 @@
   Abide.prototype.validateInput = function($el, $form) {
     var self = this,
         textInput = $form.find('input[type="text"]'),
+        passwordInput = $form.find('input[type="password"]'),
         checkInput = $form.find('input[type="checkbox"]'),
         label,
         radioGroupName;

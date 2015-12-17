@@ -1,4 +1,11 @@
-@charset 'UTF-8';
+// The CSS for the Foundation docs is stored in an external codebase:
+// https://github.com/zurb/foundation-docs
+//
+// You can test Sass changes locally by running these commands:
+//   git clone https://github.com/zurb/foundation-docs
+//   npm link ./foundation-docs
+//
+// Feel free to submit pull requests to foundation-docs like you would Foundation itself!
 
 @import 'foundation';
 @import 'motion-ui';
@@ -6,44 +13,4 @@
 @include foundation-everything;
 @include motion-ui-transitions;
 
-@import 'typography';
-@import 'header';
-@import 'footer';
-@import 'navigation';
-@import 'newsletter';
-@import 'page';
-@import 'anchor';
-@import 'code';
-@import 'reference';
-@import 'examples';
-@import 'color-block';
-@import 'index';
-@import 'building-blocks';
-@import 'search';
-@import 'compatibility';
-@import 'notices';
-@import 'topbar';
-@import 'banner';
-
-.menu-group {
-  @include clearfix;
-
-  ul:first-child { float: left; }
-  ul:last-child  { float: right; }
-}
-.sticky-mag {
-  background-color: white;
-  &.stuck-mag {
-    border-bottom: 2px solid #121212;
-  }
-}
-
-// .docs-component {
-//   .callout {
-//     border-left-width: 10px;
-
-//     &.primary { border-left-color: $primary-color; }
-//     &.warning { border-left-color: $warning-color; }
-//     &.alert   { border-left-color: $alert-color; }
-//   }
-// }
+@import 'foundation-docs';

@@ -1,15 +1,15 @@
-var gulp = require('gulp');
 var cacheBust = require('gulp-cache-bust');
-var supercollider = require('supercollider');
-var buildSearch = require('../lib/buildSearch');
-var panini = require('panini');
+var foundationDocs = require('foundation-docs');
+var gulp = require('gulp');
 var newer = require('gulp-newer');
+var panini = require('panini');
+var supercollider = require('supercollider');
 
 supercollider
   .config({
-    template: 'docs/layout/component.html',
-    marked: require('../lib/marked'),
-    handlebars: require('../lib/handlebars'),
+    template: foundationDocs.componentTemplate,
+    marked: foundationDocs.marked,
+    handlebars: foundationDocs.handlebars,
     keepFm: true
   })
   .adapter('sass')
@@ -47,7 +47,7 @@ gulp.task('docs:all', function() {
 });
 
 gulp.task('docs:search', ['docs'], function(cb) {
-  buildSearch(supercollider.tree, cb);
+  foundationDocs.buildSearch(supercollider.tree, cb);
 });
 
 gulp.task('docs:debug', ['docs'], function(cb) {

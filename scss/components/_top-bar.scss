@@ -40,9 +40,20 @@ $topbar-input-width: 200px !default;
     width: $topbar-input-width;
     margin-#{$global-right}: 1rem;
   }
-  
+
   input.button {
     width:auto;
+  }
+}
+
+/// makes sections stacked
+@mixin top-bar-stacked() {
+  // Sub-sections
+  .top-bar-right {
+    width: 100%;
+  }
+  .top-bar-left {
+    width: 100%;
   }
 }
 
@@ -51,16 +62,24 @@ $topbar-input-width: 200px !default;
   .top-bar {
     @include top-bar-container;
   }
+  // generate classes for stacking on each screen size (defined in $breakpoint-classes)
+  @each $size in $breakpoint-classes {
+    .stacked-for-#{$size} {
+      @include breakpoint($size down) {
+        @include top-bar-stacked;
+      }
+    }
+  }
+  // stack on small screens as default
+  @include breakpoint(small down) {
+    @include top-bar-stacked;
+  }
 
   // Sub-sections
-  // Stack on small screens
-  @include breakpoint(medium) {
-    .top-bar-left {
-      float: left;
-    }
-
-    .top-bar-right {
-      float: right
-    }
+  .top-bar-left {
+    float: left;
+  }
+  .top-bar-right {
+    float: right;
   }
 }
