@@ -246,7 +246,7 @@
   /**
    * Opens the modal controlled by `this.$anchor`, and closes all others by default.
    * @function
-   * @fires Reveal#closeAll
+   * @fires Reveal#closeme
    * @fires Reveal#open
    */
   Reveal.prototype.open = function(){
@@ -265,7 +265,7 @@
         /**
          * Fires immediately before the modal opens.
          * Closes any other modals that are currently open
-         * @event Reveal#closeAll
+         * @event Reveal#closeme
          */
         _this.$element.trigger('closeme.zf.reveal', _this.id);
       }
