@@ -159,6 +159,7 @@
     else {
       $.get(path, function(response) {
         _this.$element.html(response);
+        $(response).foundation();
         _this.$element.trigger('replaced.zf.interchange');
         _this.currentPath = path;
       });
