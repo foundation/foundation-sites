@@ -64,7 +64,7 @@ $button-opacity-disabled: 0.25 !default;
   line-height: 1;
   cursor: pointer;
   -webkit-appearance: none;
-  transition: all 0.25s ease-out;
+  transition: background-color 0.25s ease-out, color 0.25s ease-out;
   vertical-align: middle;
   border: 1px solid transparent;
   border-radius: $button-radius;
