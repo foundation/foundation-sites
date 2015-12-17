@@ -11,12 +11,8 @@
   function Abide(element, options) {
     this.$element = element;
     this.options  = $.extend({}, Abide.defaults, this.$element.data(), options);
-    // this.$window  = $(window);
-    // this.name     = 'Abide';
-    // this.attr     = 'data-abide';
 
     this._init();
-
 
     Foundation.registerPlugin(this);
   }
@@ -65,11 +61,12 @@
 
     validators: {
       equalTo: function (el, required, parent) {
-        var from  = document.getElementById(el.getAttribute(this.add_namespace('data-equalto'))).value,
-            to    = el.value,
-            valid = (from === to);
-
-        return valid;
+        return $('#' + el.attr('data-equalto')).val() === el.val();
+        // var from  = document.getElementById(el.getAttribute('data-equalto')).value,
+        //     to    = el.value,
+        //     valid = (from === to);
+        //
+        // return valid;
       }
     }
   };
@@ -88,6 +85,23 @@
    * @private
    */
   Abide.prototype._events = function() {
+    var _this = this;
+
+    this.$element.off('.abide')
+        .on('reset.zf.abide reset.fndtn.abide', function(e){
+          _this.resetForm($(this));
+        })
+        .on('submit.zf.abide submit.fndtn.abide', function(e){
+
+        })
+
+
+
+
+
+
+
+
     var self = this;
     this.$element
       .off('.abide')
@@ -100,7 +114,7 @@
       .find('input, textarea, select')
         .off('.abide')
         .on('blur.fndtn.abide change.fndtn.abide', function (e) {
-          console.log(e);
+
           if (self.options.validateOn === 'fieldChange') {
             self.validateInput($(e.target), self.$element);
           }
@@ -408,7 +422,7 @@
     //TODO this...
   };
 
-  Foundation.plugin(Abide, 'Abide');
+  // Foundation.plugin(Abide, 'Abide');
 
   // Exports for AMD/Browserify
   if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')
