@@ -15,11 +15,12 @@ var inquirer = require('inquirer');
 var VERSIONED_FILES = [
   'bower.json',
   'composer.json',
-  'scss/foundation.scss',
+  'docs/pages/installation.md',
   'js/foundation.core.js',
   'meteor-README.md',
   'package.js',
-  'package.json'
+  'package.json',
+  'scss/foundation.scss'
 ];
 
 var CURRENT_VERSION = require('../package.json').version;
@@ -93,7 +94,7 @@ gulp.task('deploy:settings', function(cb) {
 gulp.task('deploy:commit', function(cb) {
   git.commitSync('Bump to version ' + NEXT_VERSION, ['-a']);
   git.tagSync('v' + NEXT_VERSION);
-  // git.push('origin', 'develop', cb);
+  git.push('origin', 'develop', '--tags', cb);
   cb();
 });
 

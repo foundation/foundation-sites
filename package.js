@@ -1,7 +1,7 @@
 Package.describe({
   name: 'zurb:foundation-sites',
-  summary: 'The most advanced responsive front-end framework in the world.',
-  version: '6.0.5',
+  summary: 'Foundation 6 - The most advanced responsive front-end framework in the world.',
+  version: '6.0.6',
   git: 'https://github.com/zurb/foundation-sites.git',
   documentation: 'meteor-README.md'
 });
@@ -87,8 +87,7 @@ Package.onUse(function(api) {
     'scss/util/_selector.scss',
     'scss/util/_unit.scss',
     'scss/util/_util.scss',
-    'scss/util/_value.scss',
-
-    'scss/vendor/normalize.scss',
+    'scss/util/_value.scss'
+    
   ], 'client', {isImport: true});
 });

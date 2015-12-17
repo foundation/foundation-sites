@@ -29,7 +29,7 @@
   }
 
   // Restore the old column count
-  $grid-column-count: $old-grid-column-count !global;
+  $grid-column-count: $old-grid-column-count;
 }
 
 /// Creates a grid row.

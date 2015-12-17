@@ -10,7 +10,8 @@ var sourcemaps = require('gulp-sourcemaps');
 
 var PATHS = [
   'scss',
-  'node_modules/motion-ui/src'
+  'node_modules/motion-ui/src',
+  'node_modules/foundation-docs/scss'
 ];
 
 var COMPATIBILITY = [

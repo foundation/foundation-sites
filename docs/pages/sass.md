@@ -38,6 +38,7 @@ To get started, first install the framework files using Bower or npm.
 
 ```bash
 npm install foundation-sites --save
+bower install foundation-sites --save
 ```
 
 ### Compiling Manually
@@ -67,6 +68,13 @@ add_import_path "node_modules/foundation-sites/scss"
 Finally, add an `@import` statement to the top of your primary Sass file. Refer to [Adjusting CSS Output](#adjusting-css-output) below to learn how to control the CSS output of the framework.
 
 ```scss
+@import 'foundation';
+```
+
+You're also going to want a settings file for your project, which will allow you to modify the default styles of Foundation. **[Download the latest settings file here](https://raw.githubusercontent.com/zurb/foundation-sites/master/scss/settings/_settings.scss)**, add it to your project as `_settings.scss`, then import it *before* Foundation itself.
+
+```scss
+@import 'settings';
 @import 'foundation';
 ```
 
