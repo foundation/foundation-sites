@@ -23,7 +23,7 @@ function OffCanvas(element, options) {
   this._init();
   this._events();
 
-  Foundation.registerPlugin(this);
+  Foundation.registerPlugin(this, 'OffCanvas');
 }
 
 OffCanvas.defaults = {

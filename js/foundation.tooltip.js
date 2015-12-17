@@ -22,7 +22,7 @@
     this.isClick = false;
     this._init();
 
-    Foundation.registerPlugin(this);
+    Foundation.registerPlugin(this, 'Tooltip');
   }
 
   Tooltip.defaults = {

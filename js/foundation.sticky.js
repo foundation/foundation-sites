@@ -19,7 +19,7 @@
 
     this._init();
 
-    Foundation.registerPlugin(this);
+    Foundation.registerPlugin(this, 'Sticky');
   }
   Sticky.defaults = {
     /**
@@ -312,7 +312,7 @@
       css[stickTo] = 0;
       css[notStuckTo] = anchorPt;
     }
-    
+
     css['left'] = '';
     this.isStuck = false;
     this.$element.removeClass('is-stuck is-at-' + stickTo)

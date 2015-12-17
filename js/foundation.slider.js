@@ -21,7 +21,7 @@
 
     this._init();
 
-    Foundation.registerPlugin(this);
+    Foundation.registerPlugin(this, 'Slider');
     Foundation.Keyboard.register('Slider', {
       'ltr': {
         'ARROW_RIGHT': 'increase',

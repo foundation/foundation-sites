@@ -22,7 +22,7 @@
 
     this._init();
 
-    Foundation.registerPlugin(this);
+    Foundation.registerPlugin(this, 'Drilldown');
     Foundation.Keyboard.register('Drilldown', {
       'ENTER': 'open',
       'SPACE': 'open',
