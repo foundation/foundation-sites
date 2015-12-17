@@ -274,7 +274,7 @@
           });
         }
       }
-      Foundation.Keyboard.handleKey(e, _this, functions);
+      Foundation.Keyboard.handleKey(e, 'DropdownMenu', functions);
 
     });
   };

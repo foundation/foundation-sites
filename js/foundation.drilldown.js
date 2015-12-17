@@ -157,7 +157,7 @@
           return;
         }
       });
-      Foundation.Keyboard.handleKey(e, _this, {
+      Foundation.Keyboard.handleKey(e, 'Drilldown', {
         next: function() {
           if ($element.is(_this.$submenuAnchors)) {
             _this._show($element);
