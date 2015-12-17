@@ -51,8 +51,8 @@ var Foundation = {
    * @param {Object} plugin - an instance of a plugin, usually `this` in context.
    * @fires Plugin#init
    */
-  registerPlugin: function(plugin){
-    var pluginName = functionName(plugin.constructor).toLowerCase();
+  registerPlugin: function(plugin, name){
+    var pluginName = name ? hyphenate(name) : functionName(plugin.constructor).toLowerCase();
 
     plugin.uuid = this.GetYoDigits(6, pluginName);
 
@@ -80,13 +80,15 @@ var Foundation = {
     var pluginName = functionName(plugin.constructor).toLowerCase();
 
     delete this._activePlugins[plugin.uuid];
-    plugin.$element.removeAttr('data-' + pluginName)
+    plugin.$element.removeAttr('data-' + pluginName).removeData('zf-plugin')
           /**
            * Fires when the plugin has been destroyed.
            * @event Plugin#destroyed
            */
           .trigger('destroyed.zf.' + pluginName);
-
+    for(prop in plugin){
+      plugin[prop] = null;//clean up script to prep for garbage collection.
+    }
     return;
   },
 
@@ -363,7 +365,7 @@ function functionName(fn) {
 function parseValue(str){
   if(/true/.test(str)) return true;
   else if(/false/.test(str)) return false;
-  else if(!isNaN(str * 1)/* && typeof (str * 1) === "number"*/) return parseFloat(str);
+  else if(!isNaN(str * 1)) return parseFloat(str);
   return str;
 }
 // Convert PascalCase to kebab-case
