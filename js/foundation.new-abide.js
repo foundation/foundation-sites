@@ -21,11 +21,42 @@
    * Default settings for plugin
    */
   Abide.defaults = {
-    validateOn: 'fieldChange', // options: fieldChange, manual, submit
+    /**
+     * The default event to validate inputs. Checkboxes and radios validate immediately.
+     * Remove or change this value for manual validation.
+     * @option
+     * @example 'fieldChange'
+     */
+    validateOn: 'fieldChange',
+    /**
+     * Class to be applied to input labels on failed validation.
+     * @option
+     * @example 'is-invalid-label'
+     */
     labelErrorClass: 'is-invalid-label',
+    /**
+     * Class to be applied to inputs on failed validation.
+     * @option
+     * @example 'is-invalid-input'
+     */
     inputErrorClass: 'is-invalid-input',
+    /**
+     * Class selector to use to target Form Errors for show/hide.
+     * @option
+     * @example '.form-error'
+     */
     formErrorSelector: '.form-error',
+    /**
+     * Class added to Form Errors on failed validation.
+     * @option
+     * @example 'is-visible'
+     */
     formErrorClass: 'is-visible',
+    /**
+     * Set to true to validate text inputs on any value change.
+     * @option
+     * @example false
+     */
     liveValidate: false,
 
     patterns: {
@@ -59,7 +90,14 @@
       // #FFF or #FFFFFF
       color : /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/
     },
-
+    /**
+     * Optional validation functions to be used. `equalTo` being the only default included function.
+     * Functions should return only a boolean if the input is valid or not. Functions are given the following arguments:
+     * el : The jQuery element to validate.
+     * required : Boolean value of the required attribute be present or not.
+     * parent : The direct parent of the input.
+     * @option
+     */
     validators: {
       equalTo: function (el, required, parent) {
         return $('#' + el.attr('data-equalto')).val() === el.val();
@@ -73,7 +111,8 @@
    * @private
    */
   Abide.prototype._init = function(){
-    this.$inputs = this.$element.find('input, textarea, select');
+    this.$inputs = this.$element.find('input, textarea, select').not('[data-abide-ignore]');
+
     this._events();
   };
 
@@ -85,22 +124,25 @@
     var _this = this;
 
     this.$element.off('.abide')
-        .on('reset.zf.abide reset.fndtn.abide', function(e){
-          _this.resetForm($(this));
+        .on('reset.zf.abide', function(e){
+          _this.resetForm();
         })
-        .on('submit.zf.abide submit.fndtn.abide', function(e){
-          _this.validateForm();
+        .on('submit.zf.abide', function(e){
+          return _this.validateForm();
         });
 
-    this.$inputs.off('.abide')
-        .on('change.zf.abide', function(e){
-          if(_this.options.validateOn === 'fieldChange') _this.validateInput($(this));
-        });
+    if(this.options.validateOn === 'fieldChange'){
+        this.$inputs.off('change.zf.abide')
+            .on('change.zf.abide', function(e){
+              _this.validateInput($(this));
+            });
+    }
 
     if(this.options.liveValidate){
-      this.$inputs.on('input.zf.abide', function(e){
-        _this.validateInput($(this));
-      });
+      this.$inputs.off('input.zf.abide')
+          .on('input.zf.abide', function(e){
+            _this.validateInput($(this));
+          });
     }
   },
   /**
@@ -108,14 +150,13 @@
    * @private
    */
   Abide.prototype._reflow = function() {
-    var self = this;
+    this._init();
   };
   /**
    * Checks whether or not a form element has the required attribute and if it's checked or not
    * @param {Object} element - jQuery object to check for required attribute
    * @returns {Boolean} Boolean value depends on whether or not attribute is checked or empty
    */
-   var counter = 0;
   Abide.prototype.requiredCheck = function($el) {
     if(!$el.attr('required')) return true;
     var isGood = true;
@@ -128,6 +169,7 @@
 
       case 'select':
       case 'select-one':
+      case 'select-multiple':
         var opt = $el.find('option:selected');
         if(!opt.length || !opt.val()) isGood = false;
         break;
@@ -139,50 +181,81 @@
   };
   /**
    * Based on $el, get the first element with selector in this order:
-   * 1. The element next to it.
-   * 2. The element inside (is a child of) it.
-   * 3. As its sibling.
+   * 1. The element's direct sibling('s).
+   * 3. The element's parent's children.
    *
-   * @param {Object} element - jQuery object to use as reference to find the form error selector.
-   * @param {String} selector - jQuery selector to show error message when field doesn't pass validation.
+   * This allows for multiple form errors per input, though if none are found, no form errors will be shown.
+   *
+   * @param {Object} $el - jQuery object to use as reference to find the form error selector.
    * @returns {Object} jQuery object with the selector.
    */
-  Abide.prototype.findFormError = function($el, selector) {
+  Abide.prototype.findFormError = function($el){
+    var $error = $el.siblings(this.options.formErrorSelector)
+    if(!$error.length){
+      $error = $el.parent().find(this.options.formErrorSelector);
+    }
+    return $error;
   };
   /**
    * Get the first element in this order:
-   * 1. The closest parent ".input-group" class.
-   * 2. The <label> next to the element.
-   * 3. The closest parent <label>
+   * 2. The <label> with the attribute `[for="someInputId"]`
+   * 3. The `.closest()` <label>
    *
-   * @param {Object} element - jQuery object to check for required attribute
+   * @param {Object} $el - jQuery object to check for required attribute
    * @returns {Boolean} Boolean value depends on whether or not attribute is checked or empty
    */
   Abide.prototype.findLabel = function($el) {
+    var $label = this.$element.find('label[for="' + $el[0].id + '"]');
+    if(!$label.length){
+      return $el.closest('label');
+    }
+    return $label;
   };
   /**
    * Adds the CSS error class as specified by the Abide settings to the label, input, and the form
-   * @param {Object} element - jQuery object to add the class to
+   * @param {Object} $el - jQuery object to add the class to
    */
   Abide.prototype.addErrorClasses = function($el){
+    var $label = this.findLabel($el),
+        $formError = this.findFormError($el);
 
+    if($label.length){
+      $label.addClass(this.options.labelErrorClass);
+    }
+    if($formError.length){
+      $formError.addClass(this.options.formErrorClass);
+    }
+    $el.addClass(this.options.inputErrorClass).attr('data-invalid', '');
   };
   /**
    * Removes CSS error class as specified by the Abide settings from the label, input, and the form
-   * @param {Object} element - jQuery object to remove the class from
+   * @param {Object} $el - jQuery object to remove the class from
    */
-  Abide.prototype.removeErrorClasses = function($el) {
+  Abide.prototype.removeErrorClasses = function($el){
+    var $label = this.findLabel($el),
+        $formError = this.findFormError($el);
+
+    if($label.length){
+      $label.removeClass(this.options.labelErrorClass);
+    }
+    if($formError.length){
+      $formError.removeClass(this.options.formErrorClass);
+    }
+    $el.removeClass(this.options.inputErrorClass).removeAttr('data-invalid');
   };
   /**
    * Goes through a form to find inputs and proceeds to validate them in ways specific to their type
    * @fires Abide#invalid
    * @fires Abide#valid
    * @param {Object} element - jQuery object to validate, should be an HTML input
-   * @param {Object} form - jQuery object of the entire form to find the various input elements
+   * @returns {Boolean} goodToGo - If the input is valid or not.
    */
-  Abide.prototype.validateInput = function($el, $form){
+  Abide.prototype.validateInput = function($el){
     var clearRequire = this.requiredCheck($el),
-        validated = true;
+        validated = false,
+        customValidator = true,
+        validator = $el.attr('data-validator'),
+        equalTo = true;
 
     switch ($el[0].type) {
 
@@ -196,23 +269,37 @@
 
       case 'select':
       case 'select-one':
-        console.log('validating selects');
+      case 'select-multiple':
         validated = clearRequire;
         break;
 
       default:
         validated = this.validateText($el);
     }
-    var goodToGo = (clearRequire === validated === true),
+
+    if(validator){ customValidator = this.matchValidation($el, validator, $el.attr('required')); }
+    if($el.attr('data-equalto')){ equalTo = this.options.validators.equalTo($el); }
+
+    var goodToGo = [clearRequire, validated, customValidator, equalTo].indexOf(false) === -1,
         message = (goodToGo ? 'valid' : 'invalid') + '.zf.abide';
-    console.log(goodToGo);
+
     this[goodToGo ? 'removeErrorClasses' : 'addErrorClasses']($el);
+
+    /**
+     * Fires when the input is done checking for validation. Event trigger is either `valid.zf.abide` or `invalid.zf.abide`
+     * Trigger includes the DOM element of the input.
+     * @event Abide#valid
+     * @event Abide#invalid
+     */
     $el.trigger(message, $el[0]);
+
     return goodToGo;
   };
   /**
    * Goes through a form and if there are any invalid inputs, it will display the form error element
-   * @param {Object} element - jQuery object to validate, should be a form HTML element
+   * @returns {Boolean} noError - true if no errors were detected...
+   * @fires Abide#formvalid
+   * @fires Abide#forminvalid
    */
   Abide.prototype.validateForm = function(){
     var acc = [],
@@ -222,19 +309,26 @@
       acc.push(_this.validateInput($(this)));
     });
 
-    hasError = acc.indexOf(false) > -1;
+    var noError = acc.indexOf(false) === -1;
 
-    this.$element.find('[data-abide-error]').css('display', (hasError ? 'block' : 'none'));
+    this.$element.find('[data-abide-error]').css('display', (noError ? 'none' : 'block'))
+        /**
+         * Fires when the form is finished validating. Event trigger is either `formvalid.zf.abide` or `forminvalid.zf.abide`.
+         * Trigger includes the element of the form.
+         * @event Abide#formvalid
+         * @event Abide#forminvalid
+         */
+        .trigger((noError ? 'valid' : 'invalid') + '.zf.abide', [this.$element]);
 
-    return !hasError;
+    return noError;
   };
   /**
-   * Determines whether or a not a text input is valid based on the patterns specified in the attribute
-   * @param {Object} element - jQuery object to validate, should be a text input HTML element
+   * Determines whether or a not a text input is valid based on the pattern specified in the attribute. If no matching pattern is found, returns true.
+   * @param {Object} $el - jQuery object to validate, should be a text input HTML element
+   * @param {String} pattern - string value of one of the RegEx patterns in Abide.options.patterns
    * @returns {Boolean} Boolean value depends on whether or not the input value matches the pattern specified
    */
   Abide.prototype.validateText = function($el, pattern){
-    console.log('validating text', $el);
     pattern = pattern ? pattern : $el.attr('pattern');
     var inputText = $el.val();
 
@@ -244,7 +338,7 @@
   };
   /**
    * Determines whether or a not a radio input is valid based on whether or not it is required and selected
-   * @param {String} group - A string that specifies the name of a radio button group
+   * @param {String} groupName - A string that specifies the name of a radio button group
    * @returns {Boolean} Boolean value depends on whether or not at least one radio input has been selected (if it's required)
    */
   Abide.prototype.validateRadio = function(groupName){
@@ -253,31 +347,62 @@
         _this = this;
 
     $group.each(function(){
-      counter.push(_this.requiredCheck($(this)));
+      var rdio = $(this),
+          clear = _this.requiredCheck(rdio);
+      counter.push(clear);
+      if(clear) _this.removeErrorClasses(rdio);
     });
+
     return counter.indexOf(false) === -1;
   };
-  Abide.prototype.matchValidation = function(val, validation){
-
+  /**
+   * Determines if a selected input passes a custom validation function. Multiple validations can be used, if passed to the element with `data-validator="foo bar baz"` in a space separated listed.
+   * @param {Object} $el - jQuery input element.
+   * @param {String} validators - a string of function names matching functions in the Abide.options.validators object.
+   * @param {Boolean} required - self explanatory?
+   * @returns {Boolean} - true if validations passed.
+   */
+  Abide.prototype.matchValidation = function($el, validators, required){
+    var _this = this;
+    required = required ? true : false;
+    var clear = validators.split(' ').map(function(v){
+      return _this.options.validators[v]($el, required, $el.parent());
+    });
+    return clear.indexOf(false) === -1;
   };
   /**
    * Resets form inputs and styles
-   * @param {Object} $form - A jQuery object that should be an HTML form element
+   * @fires Abide#formreset
    */
-  Abide.prototype.resetForm = function($form) {
-    var self = this;
-    var invalidAttr = 'data-invalid';
-    // remove data attributes
-    $('[' + self.invalidAttr + ']', $form).removeAttr(invalidAttr);
-    // remove styles
-    $('.' + self.options.labelErrorClass, $form).not('small').removeClass(self.options.labelErrorClass);
-    $('.' + self.options.inputErrorClass, $form).not('small').removeClass(self.options.inputErrorClass);
-    $('.form-error.is-visible').removeClass('is-visible');
+  Abide.prototype.resetForm = function() {
+    var $form = this.$element,
+        opts = this.options;
+
+    $('.' + opts.labelErrorClass, $form).not('small').removeClass(opts.labelErrorClass);
+    $('.' + opts.inputErrorClass, $form).not('small').removeClass(opts.inputErrorClass);
+    $(opts.formErrorSelector + '.' + opts.formErrorClass).removeClass(opts.formErrorClass);
     $form.find('[data-abide-error]').css('display', 'none');
-    $(':input', $form).not(':button, :submit, :reset, :hidden, [data-abide-ignore]').val('').removeAttr(invalidAttr);
+    $(':input', $form).not(':button, :submit, :reset, :hidden, [data-abide-ignore]').val('').removeAttr('data-invalid');
+    /**
+     * Fires when the form has been reset.
+     * @event Abide#formreset
+     */
+    $form.trigger('formreset.zf.abide', [$form]);
   };
+  /**
+   * Destroys an instance of Abide.
+   * Removes error styles and classes from elements, without resetting their values.
+   */
   Abide.prototype.destroy = function(){
-    //TODO this...
+    var _this = this;
+    this.$element.off('.abide')
+        .find('[data-abide-error]').css('display', 'none');
+    this.$inputs.off('.abide')
+        .each(function(){
+          _this.removeErrorClasses($(this));
+        });
+
+    Foundation.unregisterPlugin(this);
   };
 
   Foundation.plugin(Abide, 'Abide');
