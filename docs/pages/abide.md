@@ -28,19 +28,37 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
       <p class="help-text" id="exampleHelpText">Here's how you use this input field!</p>
     </div>
     <div class="small-12 columns">
+      <label>Nothing Required!
+        <input type="text" placeholder="Use me, or don't" aria-describedby="exampleHelpTex">
+        <span class="form-error">
+          Yo, you had better fill this out.
+        </span>
+      </label>
+      <p class="help-text" id="exampleHelpTex">This input is ignored by Abide using `data-abide-ignore`</p>
+    </div>
+    <div class="small-12 columns">
       <label>Password Required
-        <input type="password" placeholder="yeti4preZ" aria-describedby="exampleHelpText" required pattern="password">
+        <input type="password" id="password"placeholder="yeti4preZ" aria-describedby="exampleHelpText" required pattern="alpha_numeric">
         <span class="form-error">
           Yo, you had better fill this out.
         </span>
       </label>
       <p class="help-text" id="exampleHelpText">Here's how you use this input field!</p>
     </div>
+    <div class="small-12 columns">
+      <label>Re-enter Password
+        <input type="password" placeholder="yeti4preZ" aria-describedby="exampleHelpText2" required pattern="alpha_numeric" data-equalto="password">
+        <span class="form-error">
+          Hey, passwords are supposed to match!
+        </span>
+      </label>
+      <p class="help-text" id="exampleHelpText2">Here's how you use this input field!</p>
+    </div>
   </div>
   <div class="row">
     <div class="medium-6 columns">
-      <label>URL Required
-        <input type="text" placeholder="www.google.com" pattern="url">
+      <label>URL Pattern, Not Required
+        <input type="text" placeholder="http://www.google.com" pattern="url">
       </label>
     </div>
     <div class="medium-6 columns">
