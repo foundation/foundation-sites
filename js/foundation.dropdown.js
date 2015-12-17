@@ -234,24 +234,24 @@
       var $target = $(this),
         visibleFocusableElements = Foundation.Keyboard.findFocusable(_this.$element);
 
-      Foundation.Keyboard.handleKey(e, _this, {
+      Foundation.Keyboard.handleKey(e, 'Dropdown', {
         tab_forward: function() {
-          if (this.$element.find(':focus').is(visibleFocusableElements.eq(-1))) { // left modal downwards, setting focus to first element
-            if (this.options.trapFocus) { // if focus shall be trapped
+          if (_this.$element.find(':focus').is(visibleFocusableElements.eq(-1))) { // left modal downwards, setting focus to first element
+            if (_this.options.trapFocus) { // if focus shall be trapped
               visibleFocusableElements.eq(0).focus();
               e.preventDefault();
             } else { // if focus is not trapped, close dropdown on focus out
-              this.close();
+              _this.close();
             }
           }
         },
         tab_backward: function() {
-          if (this.$element.find(':focus').is(visibleFocusableElements.eq(0)) || this.$element.is(':focus')) { // left modal upwards, setting focus to last element
-            if (this.options.trapFocus) { // if focus shall be trapped
+          if (_this.$element.find(':focus').is(visibleFocusableElements.eq(0)) || _this.$element.is(':focus')) { // left modal upwards, setting focus to last element
+            if (_this.options.trapFocus) { // if focus shall be trapped
               visibleFocusableElements.eq(-1).focus();
               e.preventDefault();
             } else { // if focus is not trapped, close dropdown on focus out
-              this.close();
+              _this.close();
             }
           }
         },

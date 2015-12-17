@@ -183,7 +183,7 @@
       });
 
       // handle keyboard event with keyboard util
-      Foundation.Keyboard.handleKey(e, _this, {
+      Foundation.Keyboard.handleKey(e, 'Tabs', {
         open: function() {
           $element.find('[role="tab"]').focus();
           _this._handleTabChange($element);
