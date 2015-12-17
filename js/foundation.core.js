@@ -53,19 +53,17 @@ var Foundation = {
    */
   registerPlugin: function(plugin, name){
     var pluginName = name ? hyphenate(name) : functionName(plugin.constructor).toLowerCase();
-
     plugin.uuid = this.GetYoDigits(6, pluginName);
 
-    if(!plugin.$element.attr('data-' + pluginName)){
-      plugin.$element.attr('data-' + pluginName, plugin.uuid);
-    }
+    if(!plugin.$element.attr('data-' + pluginName)){ plugin.$element.attr('data-' + pluginName, plugin.uuid); }
+    if(!plugin.$element.data('zfPlugin')){ plugin.$element.data('zfPlugin', plugin); }
           /**
            * Fires when the plugin has initialized.
            * @event Plugin#init
            */
     plugin.$element.trigger('init.zf.' + pluginName);
 
-    this._activePlugins[plugin.uuid] = plugin;
+    this._uuids.push(plugin.uuid);
 
     return;
   },
@@ -77,16 +75,16 @@ var Foundation = {
    * @fires Plugin#destroyed
    */
   unregisterPlugin: function(plugin){
-    var pluginName = functionName(plugin.constructor).toLowerCase();
+    var pluginName = hyphenate(functionName(plugin.$element.data('zfPlugin').constructor));
 
-    delete this._activePlugins[plugin.uuid];
-    plugin.$element.removeAttr('data-' + pluginName).removeData('zf-plugin')
+    this._uuids.splice(this._uuids.indexOf(plugin.uuid), 1);
+    plugin.$element.removeAttr('data-' + pluginName).removeData('zfPlugin')
           /**
            * Fires when the plugin has been destroyed.
            * @event Plugin#destroyed
            */
           .trigger('destroyed.zf.' + pluginName);
-    for(prop in plugin){
+    for(var prop in plugin){
       plugin[prop] = null;//clean up script to prep for garbage collection.
     }
     return;
@@ -98,33 +96,33 @@ var Foundation = {
    * @param {String} plugins - optional string of an individual plugin key, attained by calling `$(element).data('pluginName')`, or string of a plugin class i.e. `'dropdown'`
    * @default If no argument is passed, reflow all currently active plugins.
    */
-  _reflow: function(plugins){
-    var actvPlugins = Object.keys(this._activePlugins);
-    var _this = this;
-
-    if(!plugins){
-      actvPlugins.forEach(function(p){
-        _this._activePlugins[p]._init();
-      });
-
-    }else if(typeof plugins === 'string'){
-      var namespace = plugins.split('-')[1];
-
-      if(namespace){
-
-        this._activePlugins[plugins]._init();
-
-      }else{
-        namespace = new RegExp(plugins, 'i');
-
-        actvPlugins.filter(function(p){
-          return namespace.test(p);
-        }).forEach(function(p){
-          _this._activePlugins[p]._init();
-        });
-      }
-    }
-
+  reInit: function(plugins){
+    // var actvPlugins = Object.keys(this._activePlugins);
+    // var _this = this;
+    //
+    // if(!plugins){
+    //   actvPlugins.forEach(function(p){
+    //     _this._activePlugins[p]._init();
+    //   });
+    //
+    // }else if(typeof plugins === 'string'){
+    //   var namespace = plugins.split('-')[1];
+    //
+    //   if(namespace){
+    //
+    //     this._activePlugins[plugins]._init();
+    //
+    //   }else{
+    //     namespace = new RegExp(plugins, 'i');
+    //
+    //     actvPlugins.filter(function(p){
+    //       return namespace.test(p);
+    //     }).forEach(function(p){
+    //       _this._activePlugins[p]._init();
+    //     });
+    //   }
+    // }
+    //
   },
 
   /**
@@ -170,7 +168,7 @@ var Foundation = {
         var $el = $(this),
             opts = {};
         // Don't double-dip on plugins
-        if ($el.data('zf-plugin')) {
+        if ($el.data('zfPlugin')) {
           console.warn("Tried to initialize "+name+" on an element that already has a Foundation plugin.");
           return;
         }
@@ -182,7 +180,7 @@ var Foundation = {
           });
         }
         try{
-          $el.data('zf-plugin', new plugin($(this), opts));
+          $el.data('zfPlugin', new plugin($(this), opts));
         }catch(er){
           console.error(er);
         }finally{
