@@ -170,7 +170,8 @@ $show-header-for-stacked: false !default;
         display: none;
       }
     }
-  } @else {
+  }
+  @else {
     thead {
       display: none;
     }
