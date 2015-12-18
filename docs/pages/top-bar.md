@@ -4,6 +4,10 @@ description: The new top bar is a simpler wrapper around our flexible menu compo
 sass: ./scss/components/_top-bar.scss
 ---
 
+<div class="primary callout">
+  <p>The features of Foundation 5's top bar are still around, but they've been reworked into smaller, individual plugins. Check out our page on <a href="responsive-navigation.html">responsive navigation</a> to learn more.</p>
+</div>
+
 ## Basics
 
 A top bar (`.top-bar`) can have two sections: a left-hand section (`.top-bar-left`) and a right-hand section (`.top-bar-right`). On small screens, these sections stack on top of each other.
