@@ -42,7 +42,7 @@ $dropdown-sizes: (
   padding: $dropdown-padding;
   position: absolute;
   visibility: hidden;
-  width: 300px;
+  width: $dropdown-width;
   z-index: 10;
   border-radius: $dropdown-radius;
 
