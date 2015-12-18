@@ -315,7 +315,7 @@ There are times when you won't want each media query to be collapsed or uncollap
 
 ### Centered Columns
 
-Center your columns by adding a class of `.small-centered` to your column. Large will inherit small centering by default, but you can also center solely on large by applying a `.large-centered` class. To uncenter on large screens, use `.large-uncenter`.
+Center your columns by adding a class of `.small-centered` to your column. Large will inherit small centering by default, but you can also center solely on large by applying a `.large-centered` class. To uncenter on large screens, use `.large-uncentered`.
 
 ```html
 <div class="row">
@@ -325,7 +325,7 @@ Center your columns by adding a class of `.small-centered` to your column. Large
   <div class="small-6 large-centered columns">6 centered</div>
 </div>
 <div class="row">
-  <div class="small-9 small-centered large-uncenter columns">9 centered</div>
+  <div class="small-9 small-centered large-uncentered columns">9 centered</div>
 </div>
 <div class="row">
   <div class="small-11 small-centered columns">11 centered</div>
@@ -339,7 +339,7 @@ Center your columns by adding a class of `.small-centered` to your column. Large
   <div class="small-6 large-centered columns">6 centered, large</div>
 </div>
 <div class="row display">
-  <div class="small-9 small-centered large-uncenter columns">9 centered small</div>
+  <div class="small-9 small-centered large-uncentered columns">9 centered small</div>
 </div>
 <div class="row display">
   <div class="small-11 small-centered columns">11 centered</div>
