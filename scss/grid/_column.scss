@@ -61,6 +61,7 @@
 
   @include grid-column-size($columns);
   float: $global-left;
+  min-height: 1px;
   padding-left: $gutter;
   padding-right: $gutter;
 
