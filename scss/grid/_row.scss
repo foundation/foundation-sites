@@ -29,7 +29,7 @@
   }
 
   // Restore the old column count
-  $grid-column-count: $old-grid-column-count !global;
+  $grid-column-count: $old-grid-column-count;
 }
 
 /// Creates a grid row.
@@ -40,17 +40,19 @@
 ///   Modifications to the default grid styles. `nest` indicates the row will be placed inside another row. `collapse` indicates that the columns inside this row will not have padding. `nest collapse` combines both behaviors.
 /// @param {Number} $width [$grid-row-width] - Maximum width of the row.
 /// @param {Boolean} $cf [true] - Whether or not to include a clearfix.
+/// @param {Number} $gutter [$grid-column-gutter] - Gutter to use when inverting margins, in case the row is nested.
 @mixin grid-row(
   $columns: null,
   $behavior: null,
   $width: $grid-row-width,
-  $cf: true
+  $cf: true,
+  $gutter: $grid-column-gutter
 ) {
   $behavior: -zf-get-options($behavior, nest collapse);
   $margin: auto;
 
   @if map-get($behavior, nest) {
-    $margin: rem-calc($grid-column-gutter) / 2 * -1;
+    $margin: rem-calc($gutter) / 2 * -1;
 
     @if map-get($behavior, collapse) {
       $margin: 0;

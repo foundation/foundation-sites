@@ -1,7 +1,7 @@
 !function($) {
 "use strict";
 
-var FOUNDATION_VERSION = '6.0.5';
+var FOUNDATION_VERSION = '6.0.6';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify

@@ -44,8 +44,8 @@
 // 1. Global
 // ---------
 
-$global-width: rem-calc(1200);
 $global-font-size: 100%;
+$global-width: rem-calc(1200);
 $global-lineheight: 1.5;
 $primary-color: #2199e8;
 $secondary-color: #777;
@@ -67,7 +67,6 @@ $global-weight-normal: normal;
 $global-weight-bold: bold;
 $global-radius: 0;
 $global-text-direction: ltr;
-$rem-base: 16px;
 
 // 2. Breakpoints
 // --------------
@@ -224,7 +223,7 @@ $breadcrumbs-item-slash: true;
 // ----------
 
 $button-padding: 0.85em 1em;
-$button-margin: 0 $global-margin $global-margin 0;
+$button-margin: 0 0 $global-margin 0;
 $button-fill: solid;
 $button-background: $primary-color;
 $button-background-hover: scale-color($button-background, $lightness: -15%);
@@ -303,7 +302,6 @@ $dropdownmenu-border: 1px solid $medium-gray;
 // 18. Flex Video
 // --------------
 
-$flexvideo-padding-top: rem-calc(25);
 $flexvideo-margin-bottom: rem-calc(16);
 $flexvideo-ratio: 4 by 3;
 $flexvideo-ratio-widescreen: 16 by 9;
@@ -537,7 +535,7 @@ $tooltip-radius: $global-radius;
 // -----------
 
 $topbar-padding: 0.5rem;
-$topbar-background: #eee;
-$topbar-link-color: #fff;
+$topbar-background: $light-gray;
+$topbar-link-color: $primary-color;
 $topbar-input-width: 200px;
 

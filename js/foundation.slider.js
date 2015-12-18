@@ -241,7 +241,8 @@
         css['min-' + hOrW] = dim;
         if(cb && typeof cb === 'function'){ cb(); }
       }else{
-        location = (location < 100 ? location : 100) - (parseFloat(this.$handle[0].style.left) || this.options.end - location);
+        var handleLeft = parseFloat(this.$handle[0].style.left);
+        location = (location < 100 ? location : 100) - (!isNaN(handleLeft) ? handleLeft : this.options.end - location);
         css['min-' + hOrW] = location + '%';
       }
     }
@@ -412,7 +413,7 @@
       var _$handle = $(this);
 
       // handle keyboard event with keyboard util
-      Foundation.Keyboard.handleKey(e, _this, {
+      Foundation.Keyboard.handleKey(e, 'Slider', {
         decrease: function() {
           newValue = oldValue - _this.options.step;
         },

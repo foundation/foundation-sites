@@ -1,6 +1,6 @@
 {
   "name": "foundation-sites",
-  "version": "6.0.5",
+  "version": "6.0.6",
   "main": "dist/foundation.js",
   "description": "The most advanced responsive front-end framework in the world.",
   "author": "ZURB <foundation@zurb.com> (http://foundation.zurb.com)",
@@ -8,8 +8,7 @@
   "scripts": {
     "start": "gulp",
     "test": "gulp test",
-    "testbed": "cd testing && gulp",
-    "deploy": "gulp deploy:docs"
+    "deploy": "gulp deploy"
   },
   "dependencies": {
     "jquery": "^2.1.0",
@@ -19,6 +18,7 @@
   "devDependencies": {
     "bootcamp": "^1.1.7",
     "browser-sync": "^2.8.2",
+    "foundation-docs": "zurb/foundation-docs",
     "gitty": "^3.3.0",
     "gulp": "^3.8.10",
     "gulp-autoprefixer": "^2.3.1",
@@ -39,13 +39,9 @@
     "gulp-scss-lint": "^0.2.2",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.1.0",
-    "handlebars": "^3.0.1",
-    "highlight.js": "^8.5.0",
     "inquirer": "^0.11.0",
-    "marked": "^0.3.3",
     "mocha": "^2.3.3",
     "motion-ui": "^1.1.0",
-    "multiline": "^1.0.2",
     "octophant": "^1.0.0",
     "open": "0.0.5",
     "opener": "^1.4.1",
@@ -56,7 +52,6 @@
     "require-dir": "^0.3.0",
     "rimraf": "^2.3.2",
     "run-sequence": "^1.1.4",
-    "string-template": "^0.2.1",
     "supercollider": "^1.1.0",
     "typeahead.js": "^0.11.1",
     "zeroclipboard": "^2.2.0"

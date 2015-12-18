@@ -10,7 +10,8 @@ var sourcemaps = require('gulp-sourcemaps');
 
 var PATHS = [
   'scss',
-  'node_modules/motion-ui/src'
+  'node_modules/motion-ui/src',
+  'node_modules/foundation-docs/scss'
 ];
 
 var COMPATIBILITY = [
@@ -24,16 +25,14 @@ gulp.task('sass', ['sass:foundation', 'sass:docs']);
 
 // Compiles Foundation Sass
 gulp.task('sass:foundation', function() {
-  return gulp.src('./foundation-sites.scss')
+  return gulp.src(['assets/*'])
     .pipe(sourcemaps.init())
     .pipe(plumber())
-    .pipe(sass({
-      includePaths: PATHS
-    }).on('error', sass.logError))
+    .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer({
       browsers: COMPATIBILITY
     }))
-    .pipe(rename('foundation.css'))
+    // .pipe(rename('foundation.css'))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('_build/assets/css'));
 });

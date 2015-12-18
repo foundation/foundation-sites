@@ -6,13 +6,17 @@
 /// @type Boolean
 $accordionmenu-arrows: true !default;
 
+/// Sets accordion menu arrow color if arrow is used.
+/// @type Color
+$accordionmenu-arrow-color: $primary-color !default;
+
 @mixin foundation-accordion-menu {
   @if $accordionmenu-arrows {
     .is-accordion-submenu-parent > a {
       position: relative;
 
       &::after {
-        @include css-triangle(6px, $primary-color, down);
+        @include css-triangle(6px, $accordionmenu-arrow-color, down);
         position: absolute;
         top: 50%;
         margin-top: -4px;
