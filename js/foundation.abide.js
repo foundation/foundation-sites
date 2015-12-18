@@ -329,10 +329,11 @@
    * @returns {Boolean} Boolean value depends on whether or not the input value matches the pattern specified
    */
   Abide.prototype.validateText = function($el, pattern){
-    pattern = pattern ? pattern : $el.attr('pattern');
+    // pattern = pattern ? pattern : $el.attr('pattern') ? $el.attr('pattern') : $el.attr('type');
+    pattern = (pattern || $el.attr('pattern') || $el.attr('type'));
     var inputText = $el.val();
 
-    return inputText.length ?
+    return inputText.length ?//if text, check if the pattern exists, if so, test it, if no text or no pattern, return true.
            this.options.patterns.hasOwnProperty(pattern) ? this.options.patterns[pattern].test(inputText) :
            true : true;
   };

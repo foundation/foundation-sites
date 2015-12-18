@@ -29,7 +29,7 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
     </div>
     <div class="small-12 columns">
       <label>Nothing Required!
-        <input type="text" placeholder="Use me, or don't" aria-describedby="exampleHelpTex">
+        <input type="text" placeholder="Use me, or don't" aria-describedby="exampleHelpTex" data-abide-ignore>
         <span class="form-error">
           Yo, you had better fill this out.
         </span>
@@ -38,7 +38,7 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
     </div>
     <div class="small-12 columns">
       <label>Password Required
-        <input type="password" id="password"placeholder="yeti4preZ" aria-describedby="exampleHelpText" required pattern="alpha_numeric">
+        <input type="password" id="password" placeholder="yeti4preZ" aria-describedby="exampleHelpText" required >
         <span class="form-error">
           Yo, you had better fill this out.
         </span>
@@ -58,7 +58,7 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
   <div class="row">
     <div class="medium-6 columns">
       <label>URL Pattern, Not Required
-        <input type="text" placeholder="http://www.google.com" pattern="url">
+        <input type="text" placeholder="http://foundation.zurb.com" pattern="url">
       </label>
     </div>
     <div class="medium-6 columns">
