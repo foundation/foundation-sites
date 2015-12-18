@@ -158,6 +158,19 @@
     }
   }
 
+  // Offsets
+  @each $size in $breakpoint-classes {
+    @include breakpoint($size) {
+      @for $i from 1 through $grid-column-count {
+        $o: $i - 1;
+
+        .#{$size}-offset-#{$o} {
+          @include grid-column-offset($o);
+        }
+      }
+    }
+  }
+
   // Source ordering
   @each $size in $breakpoint-classes {
     @include breakpoint($size) {
