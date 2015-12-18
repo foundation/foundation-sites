@@ -53,88 +53,118 @@ $tab-content-color: foreground($tab-background, $primary-color) !default;
 /// @type Number | List
 $tab-content-padding: 1rem !default;
 
+/// Adds styles for a tab container. Apply this to a `<ul>`.
+@mixin tabs-container {
+  @include clearfix;
+  margin: $tab-margin;
+  list-style-type: none;
+  background: $tab-background;
+  border: 1px solid $tab-content-border;
+}
+
+/// Augments a tab container to have vertical tabs. Use this in conjunction with `tabs-container()`.
+@mixin tabs-container-vertical {
+  > li {
+    width: auto;
+    float: none;
+    display: block;
+  }
+}
+
+/// Adds styles for the links within a tab container. Apply this to the `<li>` elements inside a tab container.
+@mixin tabs-title {
+  float: #{$global-left};
+
+  > a {
+    display: block;
+    padding: $tab-item-padding;
+    line-height: 1;
+    font-size: 12px;
+    color: $tab-item-color;
+
+    &:hover {
+      background: $tab-item-background-hover;
+    }
+    
+    &:focus,
+    &[aria-selected='true'] {
+      background: $tab-background-active;
+    }
+  }
+}
+
+/// Adds styles for the wrapper that surrounds a tab group's content panes.
+@mixin tabs-content {
+  background: $tab-content-background;
+  transition: all 0.5s ease;
+  border: 1px solid $tab-content-border;
+  border-top: 0;
+}
+
+/// Augments a tab content container to have a vertical style, by shifting the border around. Use this in conjunction with `tabs-content()`.
+@mixin tabs-content-vertical {
+  border: 1px solid $tab-content-border;
+  border-#{$global-left}: 0;
+}
+
+/// Adds styles for an individual tab content panel within the tab content container.
+@mixin tabs-panel {
+  display: none;
+  padding: $tab-content-padding;
+
+  &.is-active {
+    display: block;
+  }
+}
+
 @mixin foundation-tabs {
   .tabs {
-    @include clearfix;
-    margin: $tab-margin;
-    list-style-type: none;
-    background: $tab-background;
-    border: 1px solid $tab-content-border;
+    @include tabs-container;
+  }
 
-    // Simple
-    &.simple {
-      > li > a {
-        padding: 0;
+  // Vertical
+  .tabs.vertical {
+    @include tabs-container-vertical; 
+  }
 
-        &:hover {
-          background: transparent;
-        }
+  // Simple
+  .tabs.simple {
+    > li > a {
+      padding: 0;
+
+      &:hover {
+        background: transparent;
       }
     }
+  }
 
-    // Vertical
-    &.vertical {
-      > li {
-        width: auto;
-        float: none;
-        display: block;
-      }
-    }
+  // Primary color
+  .tabs.primary {
+    background: $primary-color;
 
-    // Primary color
-    &.primary {
-      background: $primary-color;
+    > li > a {
+      color: foreground($primary-color);
 
-      > li > a {
-        color: foreground($primary-color);
-
-        &:hover,
-        &:focus {
-          background: smart-scale($primary-color);
-        }
+      &:hover,
+      &:focus {
+        background: smart-scale($primary-color);
       }
     }
   }
 
   .tabs-title {
-    float: #{$global-left};
-
-    > a {
-      display: block;
-      padding: $tab-item-padding;
-      line-height: 1;
-      font-size: 12px;
-      color: $tab-item-color;
-
-      &:hover {
-        background: $tab-item-background-hover;
-      }
-      
-      &:focus,
-      &[aria-selected='true'] {
-        background: $tab-background-active;
-      }
-    }
+    @include tabs-title;
   }
 
   .tabs-content {
-    background: $tab-content-background;
-    transition: all 0.5s ease;
-    border: 1px solid $tab-content-border;
-    border-top: 0;
+    @include tabs-content;
+  }
 
-    &.vertical {
-      border: 1px solid $tab-content-border;
-      border-#{$global-left}: 0;
-    }
+  .tabs-content.vertical {
+    @include tabs-content-vertical;
   }
 
   .tabs-panel {
-    display: none;
-    padding: $tab-content-padding;
-
-    &.is-active {
-      display: block;
-    }
+    @include tabs-panel; 
   }
 }

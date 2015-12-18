@@ -15,7 +15,7 @@
   $push: 'push',
   $pull: 'pull',
   $center: 'centered',
-  $uncenter: 'uncenter',
+  $uncenter: 'uncentered',
   $collapse: 'collapse',
   $uncollapse: 'uncollapse',
   $offset: 'offset',
@@ -120,7 +120,7 @@
       }
 
       // Positioning
-      .#{$column}.#{$size}-#{$center} {
+      .#{$size}-#{$center} {
         @include grid-col-pos(center);
       }
 

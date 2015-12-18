@@ -98,6 +98,11 @@
     .column-row & {
       @include flex-grid-row(nest, $base: false);
     }
+
+    // Expanded row
+    &.expanded {
+      max-width: none;
+    }
   }
 
   // Column

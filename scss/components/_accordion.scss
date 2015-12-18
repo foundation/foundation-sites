@@ -91,6 +91,7 @@ $accordion-content-padding: 1rem !default;
   padding: $accordion-item-padding;
   display: none;
   border-bottom: $accordion-content-border;
+  background-color: $accordion-content-background;
 }
 
 @mixin foundation-accordion {
