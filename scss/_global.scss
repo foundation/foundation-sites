@@ -6,13 +6,13 @@
 /// @group global
 ////
 
-/// Global width of your site. Used by the grid to determine row width.
-/// @type Number
-$global-width: rem-calc(1200) !default;
-
 /// Font size attribute applied to `<html>` and `<body>`. We use 100% by default so the value is inherited from the user's browser settings.
 /// @type Number
 $global-font-size: 100% !default;
+
+/// Global width of your site. Used by the grid to determine row width.
+/// @type Number
+$global-width: rem-calc(1200) !default;
 
 /// Default line height for all type. `$global-lineheight` is 24px while `$global-font-size` is 16px
 /// @type Number
@@ -118,8 +118,7 @@ $foundation-colors: (
     font-family: '#{-zf-bp-serialize($breakpoints)}';
   }
 
-  html,
-  body {
+  html {
     font-size: $global-font-size;
     box-sizing: border-box;
   }

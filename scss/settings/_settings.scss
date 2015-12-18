@@ -44,8 +44,8 @@
 // 1. Global
 // ---------
 
-$global-width: rem-calc(1200);
 $global-font-size: 100%;
+$global-width: rem-calc(1200);
 $global-lineheight: 1.5;
 $primary-color: #2199e8;
 $secondary-color: #777;
@@ -67,7 +67,6 @@ $global-weight-normal: normal;
 $global-weight-bold: bold;
 $global-radius: 0;
 $global-text-direction: ltr;
-$rem-base: 16px;
 
 // 2. Breakpoints
 // --------------
@@ -303,7 +302,6 @@ $dropdownmenu-border: 1px solid $medium-gray;
 // 18. Flex Video
 // --------------
 
-$flexvideo-padding-top: rem-calc(25);
 $flexvideo-margin-bottom: rem-calc(16);
 $flexvideo-ratio: 4 by 3;
 $flexvideo-ratio-widescreen: 16 by 9;
