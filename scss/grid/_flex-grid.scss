@@ -13,17 +13,19 @@
 /// @param {Number} $width [$grid-row-width] - Maximum width of the row.
 /// @param {Number} $columns [null] - Number of columns to use for this row. If set to `null` (the default), the global column count will be used.
 /// @param {Boolean} $base [true] - Set to `false` to prevent basic styles from being output. Useful if you're calling this mixin on the same element twice, as it prevents duplicate CSS output.
+/// @param {Number} $gutter [$grid-column-gutter] - Gutter to use when inverting margins, in case the row is nested.
 @mixin flex-grid-row(
   $behavior: null,
   $width: $grid-row-width,
   $columns: null,
-  $base: true
+  $base: true,
+  $gutter: $grid-column-gutter
 ) {
   $behavior: -zf-get-options($behavior, nest collapse);
   $margin: auto;
 
   @if map-get($behavior, nest) {
-    $margin: rem-calc($grid-column-gutter) / 2 * -1;
+    $margin: rem-calc($gutter) / 2 * -1;
   }
   @else {
     max-width: $width;
