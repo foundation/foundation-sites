@@ -53,88 +53,112 @@ $tab-content-color: foreground($tab-background, $primary-color) !default;
 /// @type Number | List
 $tab-content-padding: 1rem !default;
 
+@mixin tabs-container {
+  @include clearfix;
+  margin: $tab-margin;
+  list-style-type: none;
+  background: $tab-background;
+  border: 1px solid $tab-content-border;
+}
+
+@mixin tabs-container-vertical {
+  > li {
+    width: auto;
+    float: none;
+    display: block;
+  }
+}
+
+@mixin tabs-title {
+  float: #{$global-left};
+
+  > a {
+    display: block;
+    padding: $tab-item-padding;
+    line-height: 1;
+    font-size: 12px;
+    color: $tab-item-color;
+
+    &:hover {
+      background: $tab-item-background-hover;
+    }
+    
+    &:focus,
+    &[aria-selected='true'] {
+      background: $tab-background-active;
+    }
+  }
+}
+
+@mixin tabs-content {
+  background: $tab-content-background;
+  transition: all 0.5s ease;
+  border: 1px solid $tab-content-border;
+  border-top: 0;
+}
+
+@mixin tabs-content-vertical {
+  border: 1px solid $tab-content-border;
+  border-#{$global-left}: 0;
+}
+
+@mixin tabs-panel {
+  display: none;
+  padding: $tab-content-padding;
+
+  &.is-active {
+    display: block;
+  }
+}
+
 @mixin foundation-tabs {
   .tabs {
-    @include clearfix;
-    margin: $tab-margin;
-    list-style-type: none;
-    background: $tab-background;
-    border: 1px solid $tab-content-border;
+    @include tabs-container;
+  }
 
-    // Simple
-    &.simple {
-      > li > a {
-        padding: 0;
+  // Vertical
+  .tabs.vertical {
+    @include tabs-container-vertical; 
+  }
 
-        &:hover {
-          background: transparent;
-        }
+  // Simple
+  .tabs.simple {
+    > li > a {
+      padding: 0;
+
+      &:hover {
+        background: transparent;
       }
     }
+  }
 
-    // Vertical
-    &.vertical {
-      > li {
-        width: auto;
-        float: none;
-        display: block;
-      }
-    }
+  // Primary color
+  .tabs.primary {
+    background: $primary-color;
 
-    // Primary color
-    &.primary {
-      background: $primary-color;
+    > li > a {
+      color: foreground($primary-color);
 
-      > li > a {
-        color: foreground($primary-color);
-
-        &:hover,
-        &:focus {
-          background: smart-scale($primary-color);
-        }
+      &:hover,
+      &:focus {
+        background: smart-scale($primary-color);
       }
     }
   }
 
   .tabs-title {
-    float: #{$global-left};
-
-    > a {
-      display: block;
-      padding: $tab-item-padding;
-      line-height: 1;
-      font-size: 12px;
-      color: $tab-item-color;
-
-      &:hover {
-        background: $tab-item-background-hover;
-      }
-      
-      &:focus,
-      &[aria-selected='true'] {
-        background: $tab-background-active;
-      }
-    }
+    @include tabs-title;
   }
 
   .tabs-content {
-    background: $tab-content-background;
-    transition: all 0.5s ease;
-    border: 1px solid $tab-content-border;
-    border-top: 0;
+    @include tabs-content;
+  }
 
-    &.vertical {
-      border: 1px solid $tab-content-border;
-      border-#{$global-left}: 0;
-    }
+  .tabs-content.vertical {
+    @include tabs-content-vertical;
   }
 
   .tabs-panel {
-    display: none;
-    padding: $tab-content-padding;
-
-    &.is-active {
-      display: block;
-    }
+    @include tabs-panel; 
   }
 }
