@@ -53,6 +53,7 @@ $tab-content-color: foreground($tab-background, $primary-color) !default;
 /// @type Number | List
 $tab-content-padding: 1rem !default;
 
+/// Adds styles for a tab container. Apply this to a `<ul>`.
 @mixin tabs-container {
   @include clearfix;
   margin: $tab-margin;
@@ -61,6 +62,7 @@ $tab-content-padding: 1rem !default;
   border: 1px solid $tab-content-border;
 }
 
+/// Augments a tab container to have vertical tabs. Use this in conjunction with `tabs-container()`.
 @mixin tabs-container-vertical {
   > li {
     width: auto;
@@ -69,6 +71,7 @@ $tab-content-padding: 1rem !default;
   }
 }
 
+/// Adds styles for the links within a tab container. Apply this to the `<li>` elements inside a tab container.
 @mixin tabs-title {
   float: #{$global-left};
 
@@ -90,6 +93,7 @@ $tab-content-padding: 1rem !default;
   }
 }
 
+/// Adds styles for the wrapper that surrounds a tab group's content panes.
 @mixin tabs-content {
   background: $tab-content-background;
   transition: all 0.5s ease;
@@ -97,11 +101,13 @@ $tab-content-padding: 1rem !default;
   border-top: 0;
 }
 
+/// Augments a tab content container to have a vertical style, by shifting the border around. Use this in conjunction with `tabs-content()`.
 @mixin tabs-content-vertical {
   border: 1px solid $tab-content-border;
   border-#{$global-left}: 0;
 }
 
+/// Adds styles for an individual tab content panel within the tab content container.
 @mixin tabs-panel {
   display: none;
   padding: $tab-content-padding;
