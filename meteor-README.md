@@ -4,8 +4,8 @@ Foundation is the most advanced responsive front-end framework in the world. Qui
 
 ## Usage in Meteor
 
-- [Scss guide](#scss-guide)
-- [JavaScript guide](#javascript-guide)
+- [Scss guide](meteor-README.md/#scss-guide)
+- [JavaScript guide](meteor-README.md/#javascript-guide)
 
 
 ## Scss Guide
@@ -142,3 +142,9 @@ Template.myReveal.onDestroyed(function () {
 As you can see it is better to create small templates for plugins and initiate the plugins separately in the `onRendered` lifecycle hook. You should also remember to destroy the plugin using `onDestroyed`lifecycle hook on its template.
 
 You will find more info about particular plugins on its docs page here: [http://foundation.zurb.com/sites/docs/](http://foundation.zurb.com/sites/docs/)
+
+#### Known problems
+
+1. **Conflicts with Meteor events**. 
+Solution: Try to always wrap Foundation's DOM nodes into another ones in your Meteor templates. This applies only to nodes on which are initialized Foundation's JS plugins and which are the first nodes in the Meteor templates with attached custom Meteor events. For more details read the last comments here: [#7248](https://github.com/zurb/foundation-sites/issues/7248)
+

@@ -36,5 +36,3 @@ In the below example, our top bar includes a [dropdown menu](dropdown-menu.html)
 </div>
 ```
 
-<a href="http://universitylessons.createsend1.com/t/ViewEmail/y/8E283BB5CC5D2B81/3FB8633A34470DCCC45D7BC1A387288D" >Learn a Zurb University Lesson about the Topbar</a>
-<a href="http://zurb.com/building-blocks/f6-top-bar">Topbar in Buildingblocks</a>

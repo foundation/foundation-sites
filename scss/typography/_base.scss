@@ -373,7 +373,6 @@ $abbr-underline: 1px dotted $black !default;
     & & {
       margin-#{$global-left}: $list-nested-side-margin;
       margin-bottom: 0;
-      list-style-type: inherit;
     }
   }
 

@@ -64,7 +64,7 @@ $button-opacity-disabled: 0.25 !default;
   line-height: 1;
   cursor: pointer;
   -webkit-appearance: none;
-  transition: all 0.25s ease-out;
+  transition: background-color 0.25s ease-out, color 0.25s ease-out;
   vertical-align: middle;
   border: 1px solid transparent;
   border-radius: $button-radius;
@@ -113,11 +113,11 @@ $button-opacity-disabled: 0.25 !default;
     $color: $button-color;
   }
 
-  background: $background;
+  background-color: $background;
   color: $color;
 
   &:hover, &:focus {
-    background: $background-hover;
+    background-color: $background-hover;
     color: $color;
   }
 }
@@ -126,7 +126,7 @@ $button-opacity-disabled: 0.25 !default;
 @mixin button-hollow {
   &,
   &:hover, &:focus {
-    background: transparent;
+    background-color: transparent;
   }
 }
 

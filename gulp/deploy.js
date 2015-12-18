@@ -15,11 +15,12 @@ var inquirer = require('inquirer');
 var VERSIONED_FILES = [
   'bower.json',
   'composer.json',
-  'scss/foundation.scss',
+  'docs/pages/installation.md',
   'js/foundation.core.js',
   'meteor-README.md',
   'package.js',
-  'package.json'
+  'package.json',
+  'scss/foundation.scss'
 ];
 
 var CURRENT_VERSION = require('../package.json').version;
