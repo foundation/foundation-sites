@@ -23,6 +23,12 @@ var VERSIONED_FILES = [
   'scss/foundation.scss'
 ];
 
+var DIST_FILES = [
+  './_build/assets/css/foundation.css',
+  './_build/assets/css/foundation-flex.css',
+  '_build/assets/js/foundation.js'
+];
+
 var CURRENT_VERSION = require('../package.json').version;
 var NEXT_VERSION;
 
@@ -53,17 +59,17 @@ gulp.task('deploy:dist', ['sass:foundation', 'javascript:foundation'], function(
   var cssFilter = filter(['*.css']);
   var jsFilter  = filter(['*.js']);
 
-  return gulp.src(['./_build/assets/css/foundation.css', '_build/assets/js/foundation.js'])
+  return gulp.src(DIST_FILES)
     .pipe(cssFilter)
       .pipe(gulp.dest('./dist'))
       .pipe(minifyCss())
-      .pipe(rename('foundation.min.css'))
+      .pipe(rename({ suffix: '.min' }))
       .pipe(gulp.dest('./dist'))
     .pipe(cssFilter.restore())
     .pipe(jsFilter)
       .pipe(gulp.dest('./dist'))
       .pipe(uglify())
-      .pipe(rename('foundation.min.js'))
+      .pipe(rename({ suffix: '.min' }))
       .pipe(gulp.dest('./dist'));
 });
 

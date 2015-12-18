@@ -85,7 +85,7 @@ $tab-content-padding: 1rem !default;
     &:hover {
       background: $tab-item-background-hover;
     }
-    
+
     &:focus,
     &[aria-selected='true'] {
       background: $tab-background-active;
@@ -124,7 +124,7 @@ $tab-content-padding: 1rem !default;
 
   // Vertical
   .tabs.vertical {
-    @include tabs-container-vertical; 
+    @include tabs-container-vertical;
   }
 
   // Simple
@@ -165,6 +165,6 @@ $tab-content-padding: 1rem !default;
   }
 
   .tabs-panel {
-    @include tabs-panel; 
+    @include tabs-panel;
   }
 }
