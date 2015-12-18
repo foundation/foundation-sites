@@ -226,6 +226,19 @@ The same alignment classes can also be applied to individual columns.
 
 ---
 
+## Offsets
+
+Offsets work identically to the float grid, by applying `margin-left` to a column.
+
+```html_example
+<div class="row">
+  <div class="small-4 large-offset-2 columns">Offset 2 on large</div>
+  <div class="small-4 columns">4 columns</div>
+</div>
+```
+
+---
+
 ## Source Ordering
 
 Flexbox supports source ordering, making it easy to rearrange columns on different screen sizes without weird relative positioning tricks.
