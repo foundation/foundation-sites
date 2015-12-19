@@ -262,8 +262,8 @@
     switch ($el[0].type) {
 
       case 'radio':
-      case 'checkbox':
 //        validated = this.validateRadio($el.attr('name'));
+      case 'checkbox':
         var group = $el.parent().closest('.'+$el[0].type+'-group');
         if (group.length) {
           validated = group.attr('required') ? group.find(':checked').length > 0 : true;
