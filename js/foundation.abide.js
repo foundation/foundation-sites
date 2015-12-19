@@ -335,7 +335,7 @@
 
     return inputText.length ?//if text, check if the pattern exists, if so, test it, if no text or no pattern, return true.
            this.options.patterns.hasOwnProperty(pattern) ? this.options.patterns[pattern].test(inputText) :
-           true : true;
+           pattern ? new RegExp(pattern).test(inputText) : true : true;
   };
   /**
    * Determines whether or a not a radio input is valid based on whether or not it is required and selected
