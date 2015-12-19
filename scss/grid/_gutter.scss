@@ -7,7 +7,7 @@
 ////
 
 /// Collapse the gutters on a column by removing the padding.
-@mixin grid-column-collapse() {
+@mixin grid-column-collapse {
   padding-left: 0;
   padding-right: 0;
 }
@@ -23,12 +23,12 @@
 
 /// Shorthand for `grid-column-collapse()`.
 /// @alias grid-column-collapse
-@mixin grid-col-collapse() {
+@mixin grid-col-collapse {
   @include grid-column-collapse;
 }
 
 /// Shorthand for `grid-column-uncollapse()`.
 /// @alias grid-column-uncollapse
-@mixin grid-col-uncollapse() {
+@mixin grid-col-uncollapse {
   @include grid-column-uncollapse;
 }
