@@ -103,7 +103,7 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5) !default;
   z-index: $offcanvas-zindex;
   max-height: 100%;
   overflow-y: auto;
-  transform: translateX(0px);
+  transform: translateX(0);
 }
 
 @mixin off-canvas-position(
@@ -170,6 +170,7 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5) !default;
         .position-left.reveal-for-#{$name} {
           @include off-canvas-reveal(left);
         }
+
         .position-right.reveal-for-#{$name} {
           @include off-canvas-reveal(right);
         }

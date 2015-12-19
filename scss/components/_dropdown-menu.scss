@@ -50,18 +50,21 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
           padding-#{$global-right}: 1.5rem;
           position: relative;
         }
+
         &.is-down-arrow > a::after {
           @include css-triangle(5px, $dropdownmenu-arrow-color, down);
           position: absolute;
           top: rem-calc(2px) + rem-calc(get-side($menu-item-padding, top));
           #{$global-right}: 5px;
         }
+
         &.is-left-arrow > a::after {
           @include css-triangle(5px, $dropdownmenu-arrow-color, left);
           float: left;
           margin-left: 0;
           margin-right: 10px;
         }
+
         &.is-right-arrow > a::after {
           @include css-triangle(5px, $dropdownmenu-arrow-color, right);
         }
@@ -71,10 +74,12 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
         right: 0;
         left: auto;
       }
+
       &.is-right-arrow.opens-inner .submenu {
         left: 0;
         right: auto;
       }
+      
       &.opens-inner .submenu {
         top: 100%;
       }
@@ -94,7 +99,7 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
       background: $dropdownmenu-background;
       border: $dropdownmenu-border;
 
-      @if (type_of($dropdownmenu-border-width) == 'number') {
+      @if (type-of($dropdownmenu-border-width) == 'number') {
         margin-top: (-$dropdownmenu-border-width);
       }
 

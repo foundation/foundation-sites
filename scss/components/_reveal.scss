@@ -63,8 +63,7 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   z-index: $reveal-zindex + 1;
   padding: $reveal-padding;
   border: $reveal-border;
-  // margin: 100px auto 0 100px;
-  margin: 100px auto 0 auto;
+  margin: 100px auto 0;
   background-color: $reveal-background;
   border-radius: $reveal-radius;
 
@@ -109,14 +108,14 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   min-height: 100vh;
   max-width: none;
   margin-left: 0;
-  border: none;
+  border: 0;
 }
 
 @mixin foundation-reveal {
   body.is-reveal-open {
     overflow: hidden;
   }
-  
+
   // Overlay
   .reveal-overlay {
     @include reveal-overlay;
@@ -128,6 +127,7 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
     @include reveal-modal-width($reveal-width);
     position: absolute;
     overflow-y: auto;
+
     // Remove padding
     &.collapse {
       padding: 0;
