@@ -256,8 +256,8 @@
         validated = false,
         customValidator = true,
         validator = $el.attr('data-validator'),
-        equalTo = true,
-        elError = $el;
+        elError = $el,
+        equalTo = true;
 
     switch ($el[0].type) {
 
