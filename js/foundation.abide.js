@@ -113,6 +113,7 @@
   Abide.prototype._init = function(){
     this.$inputs = this.$element.find('input, textarea, select').not('[data-abide-ignore]');
 
+    this.radioRequiredGroups();
     this._events();
   };
 
@@ -261,6 +262,7 @@
 
       case 'radio':
         validated = this.validateRadio($el.attr('name'));
+        clearRequire = validated;
         break;
 
       case 'checkbox':
@@ -343,18 +345,23 @@
    * @returns {Boolean} Boolean value depends on whether or not at least one radio input has been selected (if it's required)
    */
   Abide.prototype.validateRadio = function(groupName){
+    if(this.radioRequiredGroups.indexOf(groupName)===-1) return true;
     var $group = this.$element.find(':radio[name="' + groupName + '"]'),
-        counter = [],
-        _this = this;
-
+        labels = [],
+        counter = false,
+        self = this;
     $group.each(function(){
-      var rdio = $(this),
-          clear = _this.requiredCheck(rdio);
-      counter.push(clear);
-      if(clear) _this.removeErrorClasses(rdio);
+      labels.push(self.findLabel($(this)));
+      if(this.checked){
+        counter = true;
+      }
     });
-
-    return counter.indexOf(false) === -1;
+    if (counter) {
+      for(var i = 0, len = labels.length; i < len; i++){
+        self.removeErrorClasses(labels[i]);
+      };
+    };
+    return counter;
   };
   /**
    * Determines if a selected input passes a custom validation function. Multiple validations can be used, if passed to the element with `data-validator="foo bar baz"` in a space separated listed.
@@ -389,6 +396,17 @@
      * @event Abide#formreset
      */
     $form.trigger('formreset.zf.abide', [$form]);
+  };
+  /**
+   * Build radioRequiredGroups for validateRadio required check
+   */
+  Abide.prototype.radioRequiredGroups = function() {
+    var self = this;
+    self.radioRequiredGroups = [];
+
+    self.$inputs.filter(':radio').each(function(){
+      this.required && self.radioRequiredGroups.indexOf(this.name)===-1?self.radioRequiredGroups.push(this.name):false;
+    });
   };
   /**
    * Destroys an instance of Abide.
