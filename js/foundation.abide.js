@@ -163,8 +163,10 @@
     switch ($el[0].type) {
 
       case 'checkbox':
-      case 'radio':
         isGood = $el[0].checked;
+        break;
+      case 'radio':
+//        isGood = $el[0].checked;
         break;
 
       case 'select':
@@ -255,16 +257,21 @@
         validated = false,
         customValidator = true,
         validator = $el.attr('data-validator'),
-        equalTo = true;
+        equalTo = true,
+        elError = $el;
 
     switch ($el[0].type) {
 
       case 'radio':
-        validated = this.validateRadio($el.attr('name'));
-        break;
-
       case 'checkbox':
-        validated = clearRequire;
+//        validated = this.validateRadio($el.attr('name'));
+        var group = $el.parent().closest('.'+$el[0].type+'-group');
+        if (group.length) {
+          validated = group.attr('required') ? group.find(':checked').length > 0 : true;
+          elError = group;
+        } else {
+          validated = clearRequire;
+        }
         break;
 
       case 'select':
@@ -283,7 +290,7 @@
     var goodToGo = [clearRequire, validated, customValidator, equalTo].indexOf(false) === -1,
         message = (goodToGo ? 'valid' : 'invalid') + '.zf.abide';
 
-    this[goodToGo ? 'removeErrorClasses' : 'addErrorClasses']($el);
+    this[goodToGo ? 'removeErrorClasses' : 'addErrorClasses'](elError);
 
     /**
      * Fires when the input is done checking for validation. Event trigger is either `valid.zf.abide` or `invalid.zf.abide`
