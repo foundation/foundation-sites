@@ -134,6 +134,7 @@ $input-radius: $global-radius !default;
   }
 
   // Reset Normalize setting content-box to search elements
+  // scss-lint:disable QualifyingElement
   input[type='search'] {
     box-sizing: border-box;
   }

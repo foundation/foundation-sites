@@ -306,7 +306,9 @@ $abbr-underline: 1px dotted $black !default;
   @each $size, $headers in $header-sizes {
     @include breakpoint($size) {
       @each $header, $font-size in $headers {
-        #{$header} { font-size: rem-calc($font-size); }
+        #{$header} {
+          font-size: rem-calc($font-size);
+        }
       }
     }
   }

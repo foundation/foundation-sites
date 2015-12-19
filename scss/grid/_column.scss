@@ -79,7 +79,7 @@
 ) {
   @include grid-row;
   @include grid-column($gutter: $gutter);
-  
+
   &,
   &:last-child {
     float: none;

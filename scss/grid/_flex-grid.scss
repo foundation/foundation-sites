@@ -105,6 +105,10 @@
     &.expanded {
       max-width: none;
     }
+
+    &.collapse {
+      > .column { @include grid-col-collapse; }
+    }
   }
 
   // Column
@@ -143,6 +147,19 @@
   // Sizing (shrink)
   .shrink {
     flex: flex-grid-column(shrink);
+  }
+
+  // Responsive collapsing
+  @each $size in $breakpoint-classes {
+    @include breakpoint($size) {
+      &.#{$size}-collapse {
+        > .column { @include grid-col-collapse; }
+      }
+
+      &.#{$size}-uncollapse {
+        > .column { @include grid-col-uncollapse; }
+      }
+    }
   }
 
   // Auto-stacking/unstacking
