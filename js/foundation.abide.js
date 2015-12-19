@@ -166,7 +166,6 @@
         isGood = $el[0].checked;
         break;
       case 'radio':
-//        isGood = $el[0].checked;
         break;
 
       case 'select':
