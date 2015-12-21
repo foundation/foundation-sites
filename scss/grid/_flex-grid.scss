@@ -240,7 +240,7 @@ $-zf-flex-align: (
   }
 
   // Horizontal alignment using justify-content
-  @each $hdir, $prop in $-zf-flex-justify {
+  @each $hdir, $prop in map-remove($-zf-flex-justify, left) {
     .row.align-#{$hdir} {
       @include flex-grid-row-align($x: $hdir);
     }
