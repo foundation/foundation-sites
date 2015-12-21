@@ -2,35 +2,36 @@
 
 !function() {
 
-ZeroClipboard.config({
-  swfPath: 'assets/ZeroClipboard.swf'
-});
-  
-if (!ZeroClipboard.isFlashUnusable()) {
-  var $buttonTemplate = $('<button class="docs-code-copy">Copy</button>');
+// Look for code samples and set up a copy button on each
+$('[data-docs-code]').each(function(index, value) {
+  var copyBtnId = 'copy-btn-' + index.toString();
+  var $button = $('<button class="docs-code-copy" id="' + copyBtnId + '">Copy</button>');
 
-  // Look for code samples and set up a copy button on each
-  $('[data-docs-code]').each(function() {
-    var $button = $buttonTemplate.clone();
-    var text = $(this).find('code').text()
-      .replace('&lt;', '<')
-      .replace('&gt;', '>');
+  var text = $(this).find('code').text()
+    .replace('&lt;', '<')
+    .replace('&gt;', '>');
 
-    $(this).prepend($button);
+  $(this).prepend($button);
 
-    var clipboard = new ZeroClipboard($button);
-    clipboard.on('copy', function(event) {
-      clipboard.setData('text/plain', text);
-    });
-
-    // Change the text of the copy button when it's clicked on
-    $button.click(function() {
-      $(this).text('Copied!');
-      window.setTimeout(function() {
-        $button.text('Copy');
-      }, 3000);
-    });
+  var clipboard = new Clipboard('#' + copyBtnId, {
+    text: function() {
+        return text;
+    }
   });
-}
+
+  // Change the text of the copy button when it's clicked on
+  clipboard.on('success', function(event) {
+    $button.text('Copied!');
+    window.setTimeout(function() {
+      $button.text('Copy');
+    }, 3000);
+  });
+
+  // Log errors on copy failure
+  clipboard.on('error', function(event) {
+      console.error('Action:', event.action);
+      console.error('Trigger:', event.trigger);
+  });
+});
 
 }()
