@@ -105,3 +105,29 @@
     @include should(expect($actual), to(be($expected)));
   }
 }
+
+@include describe('Get Breakpoint Value') {
+  $config: (
+    small: 0,
+    large: 1,
+  );
+
+  @include it('given a non-existant breakpoint name, returns null') {
+    $actual: -zf-get-bp-val($config, kittens);
+    $expected: null;
+
+    @include should(expect($actual), to(be($expected)));
+  }
+
+  @include it('given a matching breakpoint, returns the exact value') {
+    $actual: -zf-get-bp-val($config, large);
+    $expected: 1;
+
+    @include should(expect($actual), to(be($expected)));
+  }
+
+  @include it('given a nearby breakpoint, returns the next lowest value') {
+    @include should(expect(-zf-get-bp-val($config, medium)), to(be(0)));
+    @include should(expect(-zf-get-bp-val($config, xlarge)), to(be(1)));
+  }
+}

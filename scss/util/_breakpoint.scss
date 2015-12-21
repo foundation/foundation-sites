@@ -187,6 +187,43 @@ $breakpoint-classes: (small medium large) !default;
   }
 }
 
+/// Get a value for a breakpoint from a responsive config map. If the config map has the key `$value`, the exact breakpoint value is returned. If the config map does *not* have the breakpoint, the value matching the next lowest breakpoint in the config map is returned.
+/// @access private
+///
+/// @param {Map} $map - Input config map.
+/// @param {Keyword} $value - Breakpoint name to use.
+///
+/// @return {Mixed} The corresponding breakpoint value.
+@function -zf-get-bp-val($map, $value) {
+  // Check if the breakpoint name exists globally
+  @if not map-has-key($breakpoints, $value) {
+    @return null;
+  }
+  // Check if the breakpoint name exists in the local config map
+  @else if map-has-key($map, $value) {
+    // If it does, just return the value
+    @return map-get($map, $value);
+  }
+  // Otherwise, find the next lowest breakpoint and return that value
+  @else {
+    $anchor: null;
+    $found: false;
+
+    @each $key, $val in $breakpoints {
+      @if not $found {
+        @if map-has-key($map, $key) {
+          $anchor: $key;
+        }
+        @if $key == $value {
+          $found: true;
+        }
+      }
+    }
+
+    @return map-get($map, $anchor);
+  }
+}
+
 // Legacy breakpoint variables
 // These will be removed in 6.2
 $small-up: null;
