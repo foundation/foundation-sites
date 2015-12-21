@@ -57,7 +57,9 @@
   $columns: $grid-column-count,
   $gutter: $grid-column-gutter
 ) {
-  $gutter: rem-calc($gutter) / 2;
+  @if $gutter {
+    $gutter: rem-calc($gutter) / 2;
+  }
 
   @include grid-column-size($columns);
   float: $global-left;

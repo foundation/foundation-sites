@@ -48,11 +48,21 @@
 
   // Column
   .#{$column} {
-    @include grid-col;
+    @include grid-col($gutter: null);
 
     @if $grid-column-align-edge {
       &.#{$end} {
         @include grid-col-end;
+      }
+    }
+
+    // Responsive gutters
+    @each $breakpoint, $gutter in $grid-column-responsive-gutter {
+      $padding: rem-calc($gutter) / 2;
+      
+      @include breakpoint($breakpoint) {
+        padding-left: $padding;
+        padding-right: $padding;
       }
     }
   }
@@ -110,7 +120,8 @@
     }
 
     &.#{$-zf-size}-#{$uncollapse} {
-      > .#{$column} { @include grid-col-uncollapse; }
+      $gutter: -zf-get-bp-val($grid-column-responsive-gutter, $-zf-size);
+      > .#{$column} { @include grid-col-uncollapse($gutter); }
     }
 
     // Positioning
