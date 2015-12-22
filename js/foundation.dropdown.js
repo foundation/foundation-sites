@@ -17,7 +17,7 @@
     this.options = $.extend({}, Dropdown.defaults, this.$element.data(), options);
     this._init();
 
-    Foundation.registerPlugin(this);
+    Foundation.registerPlugin(this, 'Dropdown');
     Foundation.Keyboard.register('Dropdown', {
       'ENTER': 'open',
       'SPACE': 'open',

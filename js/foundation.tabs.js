@@ -19,7 +19,7 @@
     this.options = $.extend({}, Tabs.defaults, this.$element.data(), options);
 
     this._init();
-    Foundation.registerPlugin(this);
+    Foundation.registerPlugin(this, 'Tabs');
     Foundation.Keyboard.register('Tabs', {
       'ENTER': 'open',
       'SPACE': 'open',

@@ -20,7 +20,7 @@
 
     this._init();
 
-    Foundation.registerPlugin(this);
+    Foundation.registerPlugin(this, 'Orbit');
     Foundation.Keyboard.register('Orbit', {
         'ltr': {
           'ARROW_RIGHT': 'next',
