@@ -277,6 +277,32 @@ In order to work around browsers' different rounding behaviors, Foundation will 
 
 ---
 
+### Responsive Gutters
+
+<div class="warning callout">
+  <p>Responsive gutters were added in <strong>Foundation 6.1.0</strong>. As of this version, it's still possible to use static gutters, or you can upgrade your project to responsive gutters. In Foundation 6.2.0, static gutters will be removed entirely in favor of responsive gutters. Refer to the <a href="https://github.com/zurb/foundation-sites/releases/tag/v6.1.0">Version 6.1.0 changelog</a> for more details on the upgrade process.</p>
+</div>
+
+The grid *gutter*&mdash;the space between two columns in a row, and the space between the edge of a grid and the edge of the page&mdash;is responsive, and becomes wider on larger screens.
+
+Breakpoint | Gutter Size
+-----------|------------
+`small`    | 20px
+`medium`   | 30px
+
+If you're using the Sass version of Foundation, you can change these defaults by editing the `$grid-column-responsive-gutter` variable:
+
+```scss
+$grid-column-responsive-gutter: (
+  small: 20px,
+  medium: 30px,
+);
+```
+
+To add more gutter definitions, add new lines to the map. The breakpoint names used here must match a breakpoint name in your project's `$breakpoints` map.
+
+---
+
 ### Collapse/Uncollapse Rows
 
 The `.collapse` class lets you remove column gutters (padding).

@@ -20,6 +20,7 @@ $grid-column-gutter: null !default;
 
 /// The amount of space between columns at different screen sizes.
 /// @type Map
+/// @since 6.1.0
 $grid-column-responsive-gutter: (
   small: 20px,
   medium: 30px,
