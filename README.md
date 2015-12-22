@@ -21,7 +21,7 @@ To get going with Foundation you can:
   * [Install with Bower](http://bower.io): `bower install foundation-sites`
   * [Install with npm](http://npmjs.com): `npm install foundation-sites`
   * [Install with Atmosphere for Meteor](https://atmospherejs.com): `meteor add zurb:foundation-sites`
-  * [Install with Composer](https://getcomposer.org/): `php composer.phar require zurb/foundation-sites`
+  * [Install with Composer](https://getcomposer.org/): `php composer.phar require zurb/foundation`
 
 ## Documentation
 

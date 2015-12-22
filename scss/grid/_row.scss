@@ -52,26 +52,46 @@
   $margin: auto;
 
   @if map-get($behavior, nest) {
-    $margin: rem-calc($gutter) / 2 * -1;
+    @include grid-row-nest($gutter);
 
     @if map-get($behavior, collapse) {
-      $margin: 0;
+      margin-left: 0;
+      margin-right: 0;
     }
   }
   @else {
     max-width: $width;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   @if $cf {
     @include clearfix;
   }
 
-  margin-left: $margin;
-  margin-right: $margin;
-
   @if $columns != null {
     @include grid-context($columns) {
       @content;
+    }
+  }
+}
+
+/// Inverts the margins of a row to nest it inside of a column.
+///
+/// @param {Map|null} $gutter [null] - Gutter value to use when inverting the margins. Set to `null` to refer to the responsive gutter settings.
+@mixin grid-row-nest($gutter: null) {
+  @if $gutter != null {
+    $margin: rem-calc($gutter) / 2 * -1;
+    margin-left: $margin;
+    margin-right: $margin;
+  }
+  @else {
+    @each $breakpoint, $value in $grid-column-responsive-gutter {
+      $margin: rem-calc($value) / 2 * -1;
+      @include breakpoint($breakpoint) {
+        margin-left: $margin;
+        margin-right: $margin;
+      }
     }
   }
 }
