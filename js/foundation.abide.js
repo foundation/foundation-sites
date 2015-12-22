@@ -111,23 +111,9 @@
    * @private
    */
   Abide.prototype._init = function(){
-    this.$inputs = this.$element.find('input, textarea, select').not('[data-abide-ignore], :radio, :checkbox');
-    this.$ticks = this.$element.find(':radio, :checkbox');
+    this.$inputs = this.$element.find('input, textarea, select').not('[data-abide-ignore]');
 
-    if(this.$ticks.length) this._checkTicks()
-    this.radioRequiredGroups();
     this._events();
-  };
-  Abide.prototype._checkTicks = function(){
-    var names = [];
-    this.$ticks.each(function(){
-      if(this.name && names.indexOf(this.name) === -1) names.push(this.name);
-    })
-    console.log(names);
-    // this.$sets = this.$ticks.map(function(){
-    //   var box = $(this);
-    //   return $('[name=]')
-    // })
   };
 
   /**
@@ -275,7 +261,6 @@
 
       case 'radio':
         validated = this.validateRadio($el.attr('name'));
-        clearRequire = validated;
         break;
 
       case 'checkbox':
@@ -320,12 +305,6 @@
     var acc = [],
         _this = this;
 
-    if(this.$ticks.length){
-      // this.validateTicks();
-      // this.$ticks.each(function(){
-      //   acc.push(_this.validateTicks($(this)));
-      // });
-    }
     this.$inputs.each(function(){
       acc.push(_this.validateInput($(this)));
     });
@@ -339,14 +318,9 @@
          * @event Abide#formvalid
          * @event Abide#forminvalid
          */
-        .trigger((noError ? 'valid' : 'invalid') + '.zf.abide', [this.$element]);
+        .trigger((noError ? 'formvalid' : 'forminvalid') + '.zf.abide', [this.$element]);
 
     return noError;
-  };
-  Abide.prototype.validateTicks = function($el, name){
-    // $el = $el === undefined ? this.$element : $el;
-    // var group = $el.find('[name="'+name+'"]');
-    // if
   };
   /**
    * Determines whether or a not a text input is valid based on the pattern specified in the attribute. If no matching pattern is found, returns true.
@@ -354,38 +328,32 @@
    * @param {String} pattern - string value of one of the RegEx patterns in Abide.options.patterns
    * @returns {Boolean} Boolean value depends on whether or not the input value matches the pattern specified
    */
-  Abide.prototype.validateText = function($el, pattern){
-    // pattern = pattern ? pattern : $el.attr('pattern') ? $el.attr('pattern') : $el.attr('type');
-    pattern = (pattern || $el.attr('pattern') || $el.attr('type'));
-    var inputText = $el.val();
+   Abide.prototype.validateText = function($el, pattern){
+     // pattern = pattern ? pattern : $el.attr('pattern') ? $el.attr('pattern') : $el.attr('type');
+     pattern = (pattern || $el.attr('pattern') || $el.attr('type'));
+     var inputText = $el.val();
 
-    return inputText.length ?//if text, check if the pattern exists, if so, test it, if no text or no pattern, return true.
-           this.options.patterns.hasOwnProperty(pattern) ? this.options.patterns[pattern].test(inputText) :
-           pattern && pattern !== $el.attr('type') ? new RegExp(pattern).test(inputText) : true : true;
-  };
-  /**
+     return inputText.length ?//if text, check if the pattern exists, if so, test it, if no text or no pattern, return true.
+            this.options.patterns.hasOwnProperty(pattern) ? this.options.patterns[pattern].test(inputText) :
+            pattern && pattern !== $el.attr('type') ? new RegExp(pattern).test(inputText) : true : true;
+   };  /**
    * Determines whether or a not a radio input is valid based on whether or not it is required and selected
    * @param {String} groupName - A string that specifies the name of a radio button group
    * @returns {Boolean} Boolean value depends on whether or not at least one radio input has been selected (if it's required)
    */
   Abide.prototype.validateRadio = function(groupName){
-    if(this.radioRequiredGroups.indexOf(groupName) === -1) return true;
     var $group = this.$element.find(':radio[name="' + groupName + '"]'),
-        labels = [],
-        counter = false,
+        counter = [],
         _this = this;
+
     $group.each(function(){
-      labels.push(_this.findLabel($(this)));
-      if(this.checked){
-        counter = true;
-      }
+      var rdio = $(this),
+          clear = _this.requiredCheck(rdio);
+      counter.push(clear);
+      if(clear) _this.removeErrorClasses(rdio);
     });
-    if (counter) {
-      for(var i = 0, len = labels.length; i < len; i++){
-        _this.removeErrorClasses(labels[i]);
-      };
-    };
-    return counter;
+
+    return counter.indexOf(false) === -1;
   };
   /**
    * Determines if a selected input passes a custom validation function. Multiple validations can be used, if passed to the element with `data-validator="foo bar baz"` in a space separated listed.
@@ -420,18 +388,6 @@
      * @event Abide#formreset
      */
     $form.trigger('formreset.zf.abide', [$form]);
-  };
-  /**
-   * Build radioRequiredGroups for validateRadio required check
-   */
-  Abide.prototype.radioRequiredGroups = function() {
-    var _this = this;
-    _this.radioRequiredGroups = [];
-
-    _this.$inputs.filter(':radio').each(function(){
-      console.log(this);
-      this.required && _this.radioRequiredGroups.indexOf(this.name)===-1?_this.radioRequiredGroups.push(this.name):false;
-    });
   };
   /**
    * Destroys an instance of Abide.
