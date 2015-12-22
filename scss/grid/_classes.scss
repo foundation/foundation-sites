@@ -33,10 +33,20 @@
 
     // Nesting
     & & {
-      @include grid-row($behavior: nest, $cf: false);
+      @if $grid-column-gutter == null {
+        @each $breakpoint, $gutter in $grid-column-responsive-gutter {
+          @include breakpoint($breakpoint) {
+            @include grid-row-nest($gutter);
+          }
+        }
+      }
+      @else {
+        @include grid-row-nest($grid-column-gutter);
+      }
 
       &.#{$collapse} {
-        @include grid-row($behavior: nest collapse, $cf: false);
+        margin-left: 0;
+        margin-right: 0;
       }
     }
 
@@ -110,7 +120,13 @@
     }
 
     &.#{$-zf-size}-#{$uncollapse} {
-      > .#{$column} { @include grid-col-uncollapse; }
+      @if $grid-column-gutter {
+        $gutter: $grid-column-gutter;
+      }
+      @else {
+        $gutter: -zf-get-bp-val($grid-column-responsive-gutter, $-zf-size);
+      }
+      > .#{$column} { @include grid-col-uncollapse($gutter); }
     }
 
     // Positioning

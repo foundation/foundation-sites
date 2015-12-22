@@ -29,6 +29,6 @@
 
 /// Shorthand for `grid-column-uncollapse()`.
 /// @alias grid-column-uncollapse
-@mixin grid-col-uncollapse {
-  @include grid-column-uncollapse;
+@mixin grid-col-uncollapse($gutter: $grid-column-gutter) {
+  @include grid-column-uncollapse($gutter);
 }
