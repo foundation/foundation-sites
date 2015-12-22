@@ -7,7 +7,7 @@
   $.spotSwipe = {
     version: '1.0.0',
     enabled: 'ontouchstart' in document.documentElement,
-    preventDefault: true,
+    preventDefault: false,
     moveThreshold: 75,
     timeThreshold: 200
   };
@@ -37,10 +37,11 @@
       if(Math.abs(dx) >= $.spotSwipe.moveThreshold && elapsedTime <= $.spotSwipe.timeThreshold) {
         dir = dx > 0 ? 'left' : 'right';
       }
-      else if(Math.abs(dy) >= $.spotSwipe.moveThreshold && elapsedTime <= $.spotSwipe.timeThreshold) {
-        dir = dy > 0 ? 'down' : 'up';
-      }
+      // else if(Math.abs(dy) >= $.spotSwipe.moveThreshold && elapsedTime <= $.spotSwipe.timeThreshold) {
+      //   dir = dy > 0 ? 'down' : 'up';
+      // }
       if(dir) {
+        e.preventDefault();
         onTouchEnd.call(this);
         $(this).trigger('swipe', dir).trigger('swipe' + dir);
       }

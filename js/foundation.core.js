@@ -96,34 +96,37 @@ var Foundation = {
    * @param {String} plugins - optional string of an individual plugin key, attained by calling `$(element).data('pluginName')`, or string of a plugin class i.e. `'dropdown'`
    * @default If no argument is passed, reflow all currently active plugins.
    */
-  reInit: function(plugins){
-    // var actvPlugins = Object.keys(this._activePlugins);
-    // var _this = this;
-    //
-    // if(!plugins){
-    //   actvPlugins.forEach(function(p){
-    //     _this._activePlugins[p]._init();
-    //   });
-    //
-    // }else if(typeof plugins === 'string'){
-    //   var namespace = plugins.split('-')[1];
-    //
-    //   if(namespace){
-    //
-    //     this._activePlugins[plugins]._init();
-    //
-    //   }else{
-    //     namespace = new RegExp(plugins, 'i');
-    //
-    //     actvPlugins.filter(function(p){
-    //       return namespace.test(p);
-    //     }).forEach(function(p){
-    //       _this._activePlugins[p]._init();
-    //     });
-    //   }
-    // }
-    //
-  },
+   reInit: function(plugins){
+     var isJQ = plugins instanceof $;
+     try{
+       if(isJQ){
+         plugins.each(function(){
+           $(this).data('zfPlugin')._init();
+         });
+       }else{
+         var type = typeof plugins,
+         _this = this,
+         fns = {
+           'object': function(plgs){
+             plgs.forEach(function(p){
+               $('[data-'+ p +']').foundation('_init');
+             });
+           },
+           'string': function(){
+             $('[data-'+ plugins +']').foundation('_init');
+           },
+           'undefined': function(){
+             this['object'](Object.keys(_this._plugins));
+           }
+         };
+         fns[type](plugins);
+       }
+     }catch(err){
+       console.error(err);
+     }finally{
+       return plugins;
+     }
+   },
 
   /**
    * returns a random base-36 uid with namespacing
