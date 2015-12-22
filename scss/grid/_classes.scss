@@ -33,10 +33,20 @@
 
     // Nesting
     & & {
-      @include grid-row($behavior: nest, $cf: false);
+      @if $grid-column-gutter == null {
+        @each $breakpoint, $gutter in $grid-column-responsive-gutter {
+          @include breakpoint($breakpoint) {
+            @include grid-row-nest($gutter);
+          }
+        }
+      }
+      @else {
+        @include grid-row-nest($grid-column-gutter);
+      }
 
       &.#{$collapse} {
-        @include grid-row($behavior: nest collapse, $cf: false);
+        margin-left: 0;
+        margin-right: 0;
       }
     }
 
@@ -48,7 +58,7 @@
 
   // Column
   .#{$column} {
-    @include grid-col($gutter: null);
+    @include grid-col;
 
     @if $grid-column-align-edge {
       &.#{$end} {
@@ -57,12 +67,14 @@
     }
 
     // Responsive gutters
-    @each $breakpoint, $gutter in $grid-column-responsive-gutter {
-      $padding: rem-calc($gutter) / 2;
-      
-      @include breakpoint($breakpoint) {
-        padding-left: $padding;
-        padding-right: $padding;
+    @if $grid-column-gutter == null {
+      @each $breakpoint, $gutter in $grid-column-responsive-gutter {
+        $padding: rem-calc($gutter) / 2;
+        
+        @include breakpoint($breakpoint) {
+          padding-left: $padding;
+          padding-right: $padding;
+        }
       }
     }
   }
@@ -120,7 +132,12 @@
     }
 
     &.#{$-zf-size}-#{$uncollapse} {
-      $gutter: -zf-get-bp-val($grid-column-responsive-gutter, $-zf-size);
+      @if $grid-column-gutter {
+        $gutter: $grid-column-gutter;
+      }
+      @else {
+        $gutter: -zf-get-bp-val($grid-column-responsive-gutter, $-zf-size);
+      }
       > .#{$column} { @include grid-col-uncollapse($gutter); }
     }
 

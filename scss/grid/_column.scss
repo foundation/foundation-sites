@@ -57,7 +57,7 @@
   $columns: $grid-column-count,
   $gutter: $grid-column-gutter
 ) {
-  @if $gutter {
+  @if $gutter != null {
     $gutter: rem-calc($gutter) / 2;
   }
 
