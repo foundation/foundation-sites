@@ -40,19 +40,23 @@ $-zf-flex-align: (
   $margin: auto;
 
   @if map-get($behavior, nest) {
-    $margin: rem-calc($gutter) / 2 * -1;
+    @include grid-row-nest($gutter);
+
+    @if map-get($behavior, collapse) {
+      margin-left: 0;
+      margin-right: 0;
+    }
   }
   @else {
     max-width: $width;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   @if $base {
     display: flex;
     flex-flow: row wrap;
   }
-
-  margin-left: $margin;
-  margin-right: $margin;
 
   @if $columns != null {
     @include grid-context($columns, $base) {
@@ -87,7 +91,9 @@ $-zf-flex-align: (
   $columns: null,
   $gutter: $grid-column-gutter
 ) {
-  $gutter: rem-calc($gutter) / 2;
+  @if $gutter != null {
+    $gutter: rem-calc($gutter) / 2;
+  }
 
   flex: flex-grid-column($columns);
   padding-left: $gutter;
@@ -172,6 +178,18 @@ $-zf-flex-align: (
   // Column
   %flex-column {
     @include flex-grid-column;
+
+    // Responsive gutters
+    @if $grid-column-gutter == null {
+      @each $breakpoint, $gutter in $grid-column-responsive-gutter {
+        $padding: rem-calc($gutter) / 2;
+        
+        @include breakpoint($breakpoint) {
+          padding-left: $padding;
+          padding-right: $padding;
+        }
+      }
+    }
   }
 
   .column,
@@ -229,8 +247,14 @@ $-zf-flex-align: (
       > .column { @include grid-col-collapse; }
     }
 
-    .#{$-zf-size}-uncollapse {
-      > .column { @include grid-col-uncollapse; }
+    &.#{$-zf-size}-uncollapse {
+      @if $grid-column-gutter {
+        $gutter: $grid-column-gutter;
+      }
+      @else {
+        $gutter: -zf-get-bp-val($grid-column-responsive-gutter, $-zf-size);
+      }
+      > .column { @include grid-col-uncollapse($gutter); }
     }
   }
 
