@@ -47,9 +47,14 @@
 @import 'components/thumbnail';
 @import 'components/tooltip';
 
-@mixin foundation-everything {
+@mixin foundation-everything($flex: false) {
   @include foundation-global-styles;
-  @include foundation-grid;
+  @if not $flex {
+    @include foundation-grid;
+  }
+  @else {
+    @include foundation-flex-grid;
+  }
   @include foundation-typography;
   @include foundation-button;
   @include foundation-forms;

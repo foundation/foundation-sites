@@ -130,7 +130,7 @@ $show-header-for-stacked: false !default;
 @mixin table-scroll {
   display: block;
   width: 100%;
-  overflow-y: scroll;
+  overflow-x: auto;
 }
 
 /// Slightly darkens the table rows on hover.
@@ -170,7 +170,8 @@ $show-header-for-stacked: false !default;
         display: none;
       }
     }
-  } @else {
+  }
+  @else {
     thead {
       display: none;
     }

@@ -20,8 +20,7 @@
   $uncollapse: 'uncollapse',
   $offset: 'offset',
   $end: 'end',
-  $expanded: 'expanded',
-  $breakpoints: $breakpoint-classes
+  $expanded: 'expanded'
 ) {
   // Row
   .#{$row} {
@@ -34,23 +33,20 @@
 
     // Nesting
     & & {
-      @include grid-row($behavior: nest, $cf: false);
+      @if $grid-column-gutter == null {
+        @each $breakpoint, $gutter in $grid-column-responsive-gutter {
+          @include breakpoint($breakpoint) {
+            @include grid-row-nest($gutter);
+          }
+        }
+      }
+      @else {
+        @include grid-row-nest($grid-column-gutter);
+      }
 
       &.#{$collapse} {
-        @include grid-row($behavior: nest collapse, $cf: false);
-      }
-    }
-
-    // Responsive collapsing
-    @each $size in $breakpoint-classes {
-      @include breakpoint($size) {
-        &.#{$size}-#{$collapse} {
-          > .#{$column} { @include grid-col-collapse; }
-        }
-
-        &.#{$size}-#{$uncollapse} {
-          > .#{$column} { @include grid-col-uncollapse; }
-        }
+        margin-left: 0;
+        margin-right: 0;
       }
     }
 
@@ -85,51 +81,64 @@
     }
   }
 
-  @each $size in $breakpoints {
-    @include breakpoint($size) {
-      @for $i from 1 through $grid-column-count {
-        // Column width
-        .#{$size}-#{$i} {
-          @include grid-col-size($i);
+  @include -zf-each-breakpoint {
+    @for $i from 1 through $grid-column-count {
+      // Column width
+      .#{$-zf-size}-#{$i} {
+        @include grid-col-size($i);
+      }
+
+      // Source ordering
+      @if $i < $grid-column-count {
+        .#{$-zf-size}-#{$push}-#{$i} {
+          @include grid-col-pos($i);
         }
 
-        // Source ordering
-        @if $i < $grid-column-count {
-          .#{$size}-#{$push}-#{$i} {
-            @include grid-col-pos($i);
-          }
-
-          .#{$size}-#{$pull}-#{$i} {
-            @include grid-col-pos(-$i);
-          }
-        }
-
-        // Offsets
-        $o: $i - 1;
-
-        .#{$size}-#{$offset}-#{$o} {
-          @include grid-col-off($o);
+        .#{$-zf-size}-#{$pull}-#{$i} {
+          @include grid-col-pos(-$i);
         }
       }
 
-      // Block grid
-      @for $i from 1 through $block-grid-max {
-        .#{$size}-up-#{$i} {
-          @include grid-layout($i);
-        }
-      }
+      // Offsets
+      $o: $i - 1;
 
-      // Positioning
-      .#{$size}-#{$center} {
-        @include grid-col-pos(center);
+      .#{$-zf-size}-#{$offset}-#{$o} {
+        @include grid-col-off($o);
       }
+    }
 
-      // Gutter adjustment
-      .#{$size}-#{$uncenter},
-      .#{$size}-#{$push}-0,
-      .#{$size}-#{$pull}-0 {
-        @include grid-col-unpos;
+    // Block grid
+    @for $i from 1 through $block-grid-max {
+      .#{$-zf-size}-up-#{$i} {
+        @include grid-layout($i);
       }
+    }
+
+    // Responsive collapsing
+    &.#{$-zf-size}-#{$collapse} {
+      > .#{$column} { @include grid-col-collapse; }
+    }
+
+    &.#{$-zf-size}-#{$uncollapse} {
+      @if $grid-column-gutter {
+        $gutter: $grid-column-gutter;
+      }
+      @else {
+        $gutter: -zf-get-bp-val($grid-column-responsive-gutter, $-zf-size);
+      }
+      > .#{$column} { @include grid-col-uncollapse($gutter); }
+    }
+
+    // Positioning
+    .#{$-zf-size}-#{$center} {
+      @include grid-col-pos(center);
+    }
+
+    // Gutter adjustment
+    .#{$-zf-size}-#{$uncenter},
+    .#{$-zf-size}-#{$push}-0,
+    .#{$-zf-size}-#{$pull}-0 {
+      @include grid-col-unpos;
     }
   }
 

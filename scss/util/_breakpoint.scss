@@ -73,8 +73,8 @@ $breakpoint-classes: (small medium large) !default;
     $bp-max: -zf-bp-to-em($bp-max) - (1/16);
   }
 
-  // Skip media query creation if the input is "0 up" or "0 down"
-  @if $bp > 0em or $dir == 'only' {
+  // Skip media query creation if the input is "0 up"
+  @if $bp > 0 or $dir == 'only' or $dir == 'down' {
     // `only` ranges use the format `(min-width: n) and (max-width: n)`
     @if $dir == 'only' {
       @if $named == true {
@@ -101,11 +101,14 @@ $breakpoint-classes: (small medium large) !default;
         $max: $bp;
       }
 
-      $str: $str + '(max-width: #{$max})';
+      // Skip media query creation if input value is exactly "0 down" but don't "small down"
+      @if $named or $bp > 0 {
+        $str: $str + '(max-width: #{$max})';
+      }
     }
 
     // `up` ranges use the format `(min-width: n)`
-    @else if $bp > 0em {
+    @else if $bp > 0 {
       $str: $str + '(min-width: #{$bp})';
     }
   }
@@ -184,6 +187,43 @@ $breakpoint-classes: (small medium large) !default;
   // Otherwise, return the value
   @else {
     @return nth($values, $i);
+  }
+}
+
+/// Get a value for a breakpoint from a responsive config map. If the config map has the key `$value`, the exact breakpoint value is returned. If the config map does *not* have the breakpoint, the value matching the next lowest breakpoint in the config map is returned.
+/// @access private
+///
+/// @param {Map} $map - Input config map.
+/// @param {Keyword} $value - Breakpoint name to use.
+///
+/// @return {Mixed} The corresponding breakpoint value.
+@function -zf-get-bp-val($map, $value) {
+  // Check if the breakpoint name exists globally
+  @if not map-has-key($breakpoints, $value) {
+    @return null;
+  }
+  // Check if the breakpoint name exists in the local config map
+  @else if map-has-key($map, $value) {
+    // If it does, just return the value
+    @return map-get($map, $value);
+  }
+  // Otherwise, find the next lowest breakpoint and return that value
+  @else {
+    $anchor: null;
+    $found: false;
+
+    @each $key, $val in $breakpoints {
+      @if not $found {
+        @if map-has-key($map, $key) {
+          $anchor: $key;
+        }
+        @if $key == $value {
+          $found: true;
+        }
+      }
+    }
+
+    @return map-get($map, $anchor);
   }
 }
 
