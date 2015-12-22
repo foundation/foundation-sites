@@ -65,18 +65,6 @@
         @include grid-col-end;
       }
     }
-
-    // Responsive gutters
-    @if $grid-column-gutter == null {
-      @each $breakpoint, $gutter in $grid-column-responsive-gutter {
-        $padding: rem-calc($gutter) / 2;
-        
-        @include breakpoint($breakpoint) {
-          padding-left: $padding;
-          padding-right: $padding;
-        }
-      }
-    }
   }
 
   // Column row

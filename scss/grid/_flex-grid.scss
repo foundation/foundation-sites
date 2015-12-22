@@ -94,6 +94,16 @@ $-zf-flex-align: (
   @if $gutter != null {
     $gutter: rem-calc($gutter) / 2;
   }
+  @else {
+    @each $breakpoint, $gutter in $grid-column-responsive-gutter {
+      $padding: rem-calc($gutter) / 2;
+      
+      @include breakpoint($breakpoint) {
+        padding-left: $padding;
+        padding-right: $padding;
+      }
+    }
+  }
 
   flex: flex-grid-column($columns);
   padding-left: $gutter;
@@ -178,18 +188,6 @@ $-zf-flex-align: (
   // Column
   %flex-column {
     @include flex-grid-column;
-
-    // Responsive gutters
-    @if $grid-column-gutter == null {
-      @each $breakpoint, $gutter in $grid-column-responsive-gutter {
-        $padding: rem-calc($gutter) / 2;
-        
-        @include breakpoint($breakpoint) {
-          padding-left: $padding;
-          padding-right: $padding;
-        }
-      }
-    }
   }
 
   .column,
