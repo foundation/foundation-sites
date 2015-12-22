@@ -225,11 +225,11 @@ $-zf-flex-align: (
     }
 
     // Responsive collapsing
-    &.#{$-zf-size}-collapse {
+    #{if(&, "&", "")}.#{$-zf-size}-collapse {
       > .column { @include grid-col-collapse; }
     }
 
-    &.#{$-zf-size}-uncollapse {
+    #{if(&, "&", "")}.#{$-zf-size}-uncollapse {
       > .column { @include grid-col-uncollapse; }
     }
   }
