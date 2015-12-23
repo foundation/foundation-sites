@@ -95,7 +95,7 @@ $callout-link-tint: 30% !default;
     }
 
     &.small {
-      @include callout-size(.5rem);
+      @include callout-size(0.5rem);
     }
 
     &.large {

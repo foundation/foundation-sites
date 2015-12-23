@@ -30,12 +30,12 @@ $input-prefix-padding: 1rem !default;
     width: 100%;
     margin-bottom: $form-spacing;
 
-    & > *:first-child {
+    > :first-child {
       border-radius: $global-radius 0 0 $global-radius;
     }
 
-    & > *:last-child {
-      & > * {
+    > :last-child {
+      > * {
         border-radius: 0 $global-radius $global-radius 0;
       }
     }

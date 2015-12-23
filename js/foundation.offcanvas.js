@@ -23,7 +23,7 @@ function OffCanvas(element, options) {
   this._init();
   this._events();
 
-  Foundation.registerPlugin(this);
+  Foundation.registerPlugin(this, 'OffCanvas');
 }
 
 OffCanvas.defaults = {
@@ -251,19 +251,19 @@ OffCanvas.prototype.open = function(event, trigger) {
 /**
  * Closes the off-canvas menu.
  * @function
+ * @param {Function} cb - optional cb to fire after closure.
  * @fires OffCanvas#closed
  */
-OffCanvas.prototype.close = function() {
+OffCanvas.prototype.close = function(cb) {
   if(!this.$element.hasClass('is-open')){ return; }
 
   var _this = this;
 
-   Foundation.Move(this.options.transitionTime, this.$element, function(){
-    $('[data-off-canvas-wrapper]').removeClass('is-off-canvas-open is-open-'+_this.options.position);
-
-    _this.$element.removeClass('is-open');
+  //  Foundation.Move(this.options.transitionTime, this.$element, function(){
+  $('[data-off-canvas-wrapper]').removeClass('is-off-canvas-open is-open-' + _this.options.position);
+  _this.$element.removeClass('is-open');
     // Foundation._reflow();
-  });
+  // });
   this.$element.attr('aria-hidden', 'true')
     /**
      * Fires when the off-canvas menu opens.
@@ -278,6 +278,7 @@ OffCanvas.prototype.close = function() {
   // }
 
   this.$lastTrigger.attr('aria-expanded', 'false');
+
 };
 
 /**
@@ -313,7 +314,11 @@ OffCanvas.prototype._handleKeyboard = function(event) {
  * @function
  */
 OffCanvas.prototype.destroy = function(){
-  //TODO make this...
+  this.close();
+  this.$element.off('.zf.trigger .zf.offcanvas');
+  this.$exiter.off('.zf.offcanvas');
+
+  Foundation.unregisterPlugin(this);
 };
 
 Foundation.plugin(OffCanvas, 'OffCanvas');

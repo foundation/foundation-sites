@@ -17,7 +17,7 @@
     this.options = $.extend({}, Dropdown.defaults, this.$element.data(), options);
     this._init();
 
-    Foundation.registerPlugin(this);
+    Foundation.registerPlugin(this, 'Dropdown');
     Foundation.Keyboard.register('Dropdown', {
       'ENTER': 'open',
       'SPACE': 'open',
@@ -75,7 +75,13 @@
      * @option
      * @example true
      */
-    autoFocus: false
+    autoFocus: false,
+    /**
+     * Allows a click on the body to close the dropdown.
+     * @option
+     * @example true
+     */
+    closeOnClick: false
   };
   /**
    * Initializes the plugin by setting/checking options and attributes, adding helper variables, and saving the anchor.
@@ -234,24 +240,24 @@
       var $target = $(this),
         visibleFocusableElements = Foundation.Keyboard.findFocusable(_this.$element);
 
-      Foundation.Keyboard.handleKey(e, _this, {
+      Foundation.Keyboard.handleKey(e, 'Dropdown', {
         tab_forward: function() {
-          if (this.$element.find(':focus').is(visibleFocusableElements.eq(-1))) { // left modal downwards, setting focus to first element
-            if (this.options.trapFocus) { // if focus shall be trapped
+          if (_this.$element.find(':focus').is(visibleFocusableElements.eq(-1))) { // left modal downwards, setting focus to first element
+            if (_this.options.trapFocus) { // if focus shall be trapped
               visibleFocusableElements.eq(0).focus();
               e.preventDefault();
             } else { // if focus is not trapped, close dropdown on focus out
-              this.close();
+              _this.close();
             }
           }
         },
         tab_backward: function() {
-          if (this.$element.find(':focus').is(visibleFocusableElements.eq(0)) || this.$element.is(':focus')) { // left modal upwards, setting focus to last element
-            if (this.options.trapFocus) { // if focus shall be trapped
+          if (_this.$element.find(':focus').is(visibleFocusableElements.eq(0)) || _this.$element.is(':focus')) { // left modal upwards, setting focus to last element
+            if (_this.options.trapFocus) { // if focus shall be trapped
               visibleFocusableElements.eq(-1).focus();
               e.preventDefault();
             } else { // if focus is not trapped, close dropdown on focus out
-              this.close();
+              _this.close();
             }
           }
         },
@@ -268,6 +274,26 @@
         }
       });
     });
+  };
+  /**
+   * Adds an event handler to the body to close any dropdowns on a click.
+   * @function
+   * @private
+   */
+  Dropdown.prototype._addBodyHandler = function(){
+     var $body = $(document.body).not(this.$element),
+         _this = this;
+     $body.off('click.zf.dropdown')
+          .on('click.zf.dropdown', function(e){
+            if(_this.$anchor.is(e.target) || _this.$anchor.find(e.target).length) {
+              return;
+            }
+            if(_this.$element.find(e.target).length) {
+              return;
+            }
+            _this.close();
+            $body.off('click.zf.dropdown');
+          });
   };
   /**
    * Opens the dropdown pane, and fires a bubbling event to close other dropdowns.
@@ -296,6 +322,7 @@
       }
     }
 
+    if(this.options.closeOnClick){ this._addBodyHandler(); }
 
     /**
      * Fires once the dropdown is visible.

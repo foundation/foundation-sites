@@ -10,6 +10,10 @@
 /// @type Boolean
 $dropdownmenu-arrows: true !default;
 
+/// Sets dropdown menu arrow color if arrow is used.
+/// @type Color
+$dropdownmenu-arrow-color: $anchor-color !default;
+
 /// Minimum width of dropdown sub-menus.
 /// @type Length
 $dropdownmenu-min-width: 200px !default;
@@ -18,9 +22,14 @@ $dropdownmenu-min-width: 200px !default;
 /// @type Color
 $dropdownmenu-background: $white !default;
 
-/// Border for dropdown panes.
+/// Border for dropdown sub-menus.
 /// @type List
 $dropdownmenu-border: 1px solid $medium-gray !default;
+
+// Border width for dropdown sub-menus.
+// Used to adjust top margin of a sub-menu if a border is used.
+// @type Length
+$dropdownmenu-border-width: nth($dropdownmenu-border, 1);
 
 @mixin foundation-dropdown-menu {
   .dropdown.menu {
@@ -41,31 +50,36 @@ $dropdownmenu-border: 1px solid $medium-gray !default;
           padding-#{$global-right}: 1.5rem;
           position: relative;
         }
+
         &.is-down-arrow > a::after {
-          @include css-triangle(5px, $anchor-color, down);
+          @include css-triangle(5px, $dropdownmenu-arrow-color, down);
           position: absolute;
           top: rem-calc(2px) + rem-calc(get-side($menu-item-padding, top));
           #{$global-right}: 5px;
         }
+
         &.is-left-arrow > a::after {
-          @include css-triangle(5px, $anchor-color, $global-left);
+          @include css-triangle(5px, $dropdownmenu-arrow-color, left);
           float: left;
           margin-left: 0;
           margin-right: 10px;
         }
+
         &.is-right-arrow > a::after {
-          @include css-triangle(5px, $anchor-color, $global-right);
+          @include css-triangle(5px, $dropdownmenu-arrow-color, right);
         }
       }
 
-      &.is-left-arrow.opens-inner .submenu{
+      &.is-left-arrow.opens-inner .submenu {
         right: 0;
         left: auto;
       }
-      &.is-right-arrow.opens-inner .submenu{
+
+      &.is-right-arrow.opens-inner .submenu {
         left: 0;
         right: auto;
       }
+      
       &.opens-inner .submenu {
         top: 100%;
       }
@@ -84,6 +98,10 @@ $dropdownmenu-border: 1px solid $medium-gray !default;
       z-index: 1;
       background: $dropdownmenu-background;
       border: $dropdownmenu-border;
+
+      @if (type-of($dropdownmenu-border-width) == 'number') {
+        margin-top: (-$dropdownmenu-border-width);
+      }
 
       > li {
         width: 100%;

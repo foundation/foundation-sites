@@ -46,16 +46,20 @@ $buttongroup-expand-max: 6 !default;
 /// @param {Keyword|Number} $count [auto] - Number of buttons inside the button group. Set to `auto` to generate CSS that will account for a variable number of buttons.
 /// @param {String} $selector [$buttongroup-child-selector] - Selector for the buttons inside a button group.
 @mixin button-group-expand(
-  $count: auto,
   $selector: $buttongroup-child-selector
 ) {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+
+  &::before,
+  &::after {
+    display: none;
+  }
+
   #{$selector} {
-    @if $count == auto {
-      @include auto-width($buttongroup-expand-max, $selector);
-    }
-    @else if type-of($count) == 'number' {
-      width: percentage(1 / $count);
-    }
+    display: table-cell;
+    float: none;
   }
 }
 
@@ -66,7 +70,10 @@ $buttongroup-expand-max: 6 !default;
 ) {
   #{$selector} {
     width: 100%;
-    border-#{$global-right}: 0;
+
+    &:not(:last-child) {
+      border-#{$global-right}: $buttongroup-spacing solid;
+    }
   }
 }
 
@@ -96,8 +103,16 @@ $buttongroup-expand-max: 6 !default;
 
     // Colors
     @each $name, $color in $foundation-colors {
-      &.#{$name} #{$buttongroup-child-selector} {
-        @include button-style($color, auto, auto);
+      @if $button-fill != hollow {
+        &.#{$name} #{$buttongroup-child-selector} {
+          @include button-style($color, auto, auto);
+        }
+      }
+      @else {
+        &.#{$name} #{$buttongroup-child-selector} {
+          @include button-hollow;
+          @include button-hollow-style($color);
+        }
       }
     }
 

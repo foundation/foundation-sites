@@ -49,7 +49,7 @@
 /// @param {Number} $weight - Height of individual bars in the icon.
 /// @param {Number} $bars - Number of bars in the icon.
 @mixin hamburger(
-  $color: black,
+  $color: #000,
   $color-hover: #666,
   $width: 20px,
   $height: 16px,
@@ -110,7 +110,7 @@
 ///
 /// @param {Color} $color [$black] - Color to use for the triangle.
 @mixin background-triangle($color: $black) {
-  $rgb: 'rgb(#{red($color)}, #{green($color)}, #{blue($color)})';
+  $rgb: 'rgb%28#{red($color)}, #{green($color)}, #{blue($color)}%29';
 
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="32" height="24" viewBox="0 0 32 24"><polygon points="0,0 32,0 16,24" style="fill: #{$rgb}"></polygon></svg>');
 
@@ -203,8 +203,21 @@
   transform: translate(-50%, -50%);
 }
 
-// Remove in 6.1.
-// Vertically centers an element using `transform`.
-@mixin v-align-middle {
-  @include vertical-center;
+/// Iterates through breakpoints defined in `$breakpoint-classes` and prints the CSS inside the mixin at each breakpoint's media query. Use this with the grid, or any other component that has responsive classes.
+///
+/// @param {Boolean} $small [true] - If `false`, the mixin will skip the `small` breakpoint. Use this with components that don't prefix classes with `small-`, only `medium-` and up.
+@mixin -zf-each-breakpoint($small: true) {
+  $map: $breakpoint-classes;
+
+  @if not $small {
+    $map: map-remove($map, small);
+  }
+
+  @each $size in $map {
+    $-zf-size: $size !global;
+
+    @include breakpoint($size) {
+      @content;
+    }
+  }
 }

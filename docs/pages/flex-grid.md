@@ -226,6 +226,55 @@ The same alignment classes can also be applied to individual columns.
 
 ---
 
+## Collapse/Uncollapse Rows
+
+The `.collapse` class lets you remove column gutters (padding).
+
+There are times when you won't want each media query to be collapsed or uncollapsed. In this case, use the media query size you want and collapse or uncollapse and add that to your row element. Example shows no gutter at small media size and then adds the gutter to columns at medium.
+
+```html
+<div class="row medium-uncollapse large-collapse">
+  <div class="small-6 columns">
+    Removes gutter at large media query
+  </div>
+  <div class="small-6 columns">
+    Removes gutter at large media query
+  </div>
+</div>
+```
+
+<p class="lead">Scale the browser down to a medium size to see the difference.</p>
+
+<div class="row medium-uncollapse large-collapse">
+  <div class="small-6 columns">
+    <div class="callout secondary">
+      <p class="show-for-medium-only">On a medium screen, I have gutters!</p>
+      <p class="show-for-large-up">On a large screen, I have no gutters!</p>
+    </div>
+  </div>
+  <div class="small-6 columns">
+    <div class="callout secondary">
+      <p class="show-for-medium-only">On a medium screen, I have gutters!</p>
+      <p class="show-for-large-up">On a large screen, I have no gutters!</p>
+    </div>
+  </div>
+</div>
+
+---
+
+## Offsets
+
+Offsets work identically to the float grid, by applying `margin-left` to a column.
+
+```html_example
+<div class="row">
+  <div class="small-4 large-offset-2 columns">Offset 2 on large</div>
+  <div class="small-4 columns">4 columns</div>
+</div>
+```
+
+---
+
 ## Source Ordering
 
 Flexbox supports source ordering, making it easy to rearrange columns on different screen sizes without weird relative positioning tricks.

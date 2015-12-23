@@ -22,7 +22,7 @@
     this._init();
     this._events();
 
-    Foundation.registerPlugin(this);
+    Foundation.registerPlugin(this, 'Toggler');
   }
 
   Toggler.defaults = {

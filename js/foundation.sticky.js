@@ -19,7 +19,7 @@
 
     this._init();
 
-    Foundation.registerPlugin(this);
+    Foundation.registerPlugin(this, 'Sticky');
   }
   Sticky.defaults = {
     /**
@@ -92,7 +92,6 @@
 
   /**
    * Initializes the sticky element by adding classes, getting/setting dimensions, breakpoints and attributes
-   * Also triggered by Foundation._reflow
    * @function
    * @private
    */
@@ -165,7 +164,7 @@
   Sticky.prototype._events = function(id){
     // console.log('called');
     var _this = this,
-        scrollListener = 'scroll.zf.' + id;
+        scrollListener = this.scrollListener = 'scroll.zf.' + id;
     if(this.isOn){ return; }
     if(this.canStick){
       this.isOn = true;
@@ -312,7 +311,7 @@
       css[stickTo] = 0;
       css[notStuckTo] = anchorPt;
     }
-    
+
     css['left'] = '';
     this.isStuck = false;
     this.$element.removeClass('is-stuck is-at-' + stickTo)
@@ -421,7 +420,7 @@
                  .off('resizeme.zf.trigger');
 
     this.$anchor.off('change.zf.sticky');
-    $(window).off('scroll.zf.sticky');
+    $(window).off(this.scrollListener);
 
     if(this.wasWrapped){
       this.$element.unwrap();

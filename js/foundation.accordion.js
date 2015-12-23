@@ -19,7 +19,7 @@
 
     this._init();
 
-    Foundation.registerPlugin(this);
+    Foundation.registerPlugin(this, 'Accordion');
     Foundation.Keyboard.register('Accordion', {
       'ENTER': 'toggle',
       'SPACE': 'toggle',
@@ -106,7 +106,7 @@
             _this.down($tabContent);
           }
         }).on('keydown.zf.accordion', function(e){
-          Foundation.Keyboard.handleKey(e, _this, {
+          Foundation.Keyboard.handleKey(e, 'Accordion', {
             toggle: function() {
               _this.toggle($tabContent);
             },

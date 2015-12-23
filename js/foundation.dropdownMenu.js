@@ -22,7 +22,7 @@
     Foundation.Nest.Feather(this.$element, 'dropdown');
     this._init();
 
-    Foundation.registerPlugin(this);
+    Foundation.registerPlugin(this, 'DropdownMenu');
     Foundation.Keyboard.register('DropdownMenu', {
       'ENTER': 'open',
       'SPACE': 'open',
@@ -274,7 +274,7 @@
           });
         }
       }
-      Foundation.Keyboard.handleKey(e, _this, functions);
+      Foundation.Keyboard.handleKey(e, 'DropdownMenu', functions);
 
     });
   };
