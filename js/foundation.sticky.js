@@ -119,7 +119,6 @@
       this._parsePoints();
     }
 
-    console.log(this.points);
     this._setSizes(function(){
       _this._calc(false);
     });
@@ -155,7 +154,7 @@
     }else{
       breaks = {0: 1, 1: document.documentElement.scrollHeight};
     }
-      // console.log(breaks);
+
     this.points = breaks;
     return;
   };
@@ -166,7 +165,6 @@
    * @param {String} id - psuedo-random id for unique scroll event listener.
    */
   Sticky.prototype._events = function(id){
-    // console.log('called');
     var _this = this,
         scrollListener = this.scrollListener = 'scroll.zf.' + id;
     if(this.isOn){ return; }
@@ -208,7 +206,6 @@
    */
   Sticky.prototype._pauseListeners = function(scrollListener){
     this.isOn = false;
-    // this.$anchor.off('change.zf.sticky');
     $(window).off(scrollListener);
 
     /**
@@ -336,7 +333,6 @@
         comp = window.getComputedStyle(this.$container[0]),
         pdng = parseInt(comp['padding-right'], 10);
 
-    // console.log(this.$anchor);
     if(this.$anchor && this.$anchor.length){
       this.anchorHeight = this.$anchor[0].getBoundingClientRect().height;
     }else{
