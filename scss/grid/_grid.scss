@@ -14,9 +14,17 @@ $grid-row-width: $global-width !default;
 /// @type Number
 $grid-column-count: 12 !default;
 
-/// The amount of space between columns.
-/// @type Number
-$grid-column-gutter: 30px !default;
+// The amount of space between columns. Remove this in 6.2.
+// @type Number
+$grid-column-gutter: null !default;
+
+/// The amount of space between columns at different screen sizes.
+/// @type Map
+/// @since 6.1.0
+$grid-column-responsive-gutter: (
+  small: 20px,
+  medium: 30px,
+) !default;
 
 /// If `true`, the last column in a row will align to the opposite edge of the row.
 /// @type Boolean

@@ -22,7 +22,7 @@
     this.isClick = false;
     this._init();
 
-    Foundation.registerPlugin(this);
+    Foundation.registerPlugin(this, 'Tooltip');
   }
 
   Tooltip.defaults = {
@@ -372,7 +372,7 @@
     this.$element
       .on('focus.zf.tooltip', function(e){
         isFocus = true;
-        console.log(_this.isClick);
+        // console.log(_this.isClick);
         if(_this.isClick){
           return false;
         }else{

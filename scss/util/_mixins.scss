@@ -203,8 +203,21 @@
   transform: translate(-50%, -50%);
 }
 
-// Remove in 6.1.
-// Vertically centers an element using `transform`.
-@mixin v-align-middle {
-  @include vertical-center;
+/// Iterates through breakpoints defined in `$breakpoint-classes` and prints the CSS inside the mixin at each breakpoint's media query. Use this with the grid, or any other component that has responsive classes.
+///
+/// @param {Boolean} $small [true] - If `false`, the mixin will skip the `small` breakpoint. Use this with components that don't prefix classes with `small-`, only `medium-` and up.
+@mixin -zf-each-breakpoint($small: true) {
+  $map: $breakpoint-classes;
+
+  @if not $small {
+    $map: map-remove($map, small);
+  }
+
+  @each $size in $map {
+    $-zf-size: $size !global;
+
+    @include breakpoint($size) {
+      @content;
+    }
+  }
 }

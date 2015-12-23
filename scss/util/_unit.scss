@@ -70,11 +70,21 @@ $global-font-size: 100% !default;
 ///
 /// @returns {Number} A number in rems, calculated based on the given value and the base pixel value. rem values are passed through as is.
 @function -zf-to-rem($value, $base: null) {
+  // Check if the value is a number
+  @if type-of($value) != 'number' {
+    @warn inspect($value) + ' was passed to rem-calc(), which is not a number.';
+    @return $value;
+  }
+  
   // Calculate rem if units for $value is not rem
-  @if (unit($value) != 'rem') {
+  @if unit($value) != 'rem' {
     $value: strip-unit($value) / strip-unit($base) * 1rem;
   }
+
   // Turn 0rem into 0
-  @if ($value == 0rem) { $value: 0; }
+  @if $value == 0rem {
+    $value: 0;
+  }
+
   @return $value;
 }

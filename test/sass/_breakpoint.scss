@@ -24,10 +24,15 @@
   }
 
   @include it('creates a down range out of a named breakpoint') {
-    $actual: breakpoint(medium down);
-    $expected: '(max-width: 63.9375em)';
+    $actual_medium: breakpoint(medium down);
+    $expected_medium: '(max-width: 63.9375em)';
 
-    @include should(expect($actual), to(be($expected)));
+    @include should(expect($actual_medium), to(be($expected_medium)));
+
+    $actual_small: breakpoint(small down);
+    $expected_small: '(max-width: 39.9375em)';
+
+    @include should(expect($actual_small), to(be($expected_small)));
   }
 
   @include it('creates a down range out of a pixel, rem or em value') {
@@ -41,7 +46,6 @@
   @include it('returns an empty string for the values zero down or zero up') {
     $expected: '';
 
-    @include should(expect(breakpoint(small down)), to(be($expected)));
     @include should(expect(breakpoint(small up)), to(be($expected)));
     @include should(expect(breakpoint(0 down)), to(be($expected)));
     @include should(expect(breakpoint(0 up)), to(be($expected)));
@@ -103,5 +107,31 @@
     $expected: null;
 
     @include should(expect($actual), to(be($expected)));
+  }
+}
+
+@include describe('Get Breakpoint Value') {
+  $config: (
+    small: 0,
+    large: 1,
+  );
+
+  @include it('given a non-existant breakpoint name, returns null') {
+    $actual: -zf-get-bp-val($config, kittens);
+    $expected: null;
+
+    @include should(expect($actual), to(be($expected)));
+  }
+
+  @include it('given a matching breakpoint, returns the exact value') {
+    $actual: -zf-get-bp-val($config, large);
+    $expected: 1;
+
+    @include should(expect($actual), to(be($expected)));
+  }
+
+  @include it('given a nearby breakpoint, returns the next lowest value') {
+    @include should(expect(-zf-get-bp-val($config, medium)), to(be(0)));
+    @include should(expect(-zf-get-bp-val($config, xlarge)), to(be(1)));
   }
 }

@@ -6,6 +6,21 @@
 /// @group flex-grid
 ////
 
+$-zf-flex-justify: (
+  'left': flex-start,
+  'right': flex-end,
+  'center': center,
+  'justify': space-between,
+  'spaced': space-around,
+);
+
+$-zf-flex-align: (
+  'top': flex-start,
+  'bottom': flex-end,
+  'middle': center,
+  'stretch': stretch,
+);
+
 /// Creates a container for a flex grid row.
 ///
 /// @param {Keyword|List} $behavior [null]
@@ -25,19 +40,23 @@
   $margin: auto;
 
   @if map-get($behavior, nest) {
-    $margin: rem-calc($gutter) / 2 * -1;
+    @include grid-row-nest($gutter);
+
+    @if map-get($behavior, collapse) {
+      margin-left: 0;
+      margin-right: 0;
+    }
   }
   @else {
     max-width: $width;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   @if $base {
     display: flex;
     flex-flow: row wrap;
   }
-
-  margin-left: $margin;
-  margin-right: $margin;
 
   @if $columns != null {
     @include grid-context($columns, $base) {
@@ -72,7 +91,19 @@
   $columns: null,
   $gutter: $grid-column-gutter
 ) {
-  $gutter: rem-calc($gutter) / 2;
+  @if $gutter != null {
+    $gutter: rem-calc($gutter) / 2;
+  }
+  @else {
+    @each $breakpoint, $gutter in $grid-column-responsive-gutter {
+      $padding: rem-calc($gutter) / 2;
+      
+      @include breakpoint($breakpoint) {
+        padding-left: $padding;
+        padding-right: $padding;
+      }
+    }
+  }
 
   flex: flex-grid-column($columns);
   padding-left: $gutter;
@@ -88,6 +119,49 @@
 /// @param {Number} $order [0] - Order number to apply.
 @mixin flex-grid-order($order: 0) {
   order: $order;
+}
+
+/// Horizontally or vertically aligns the columns within a flex row. Apply this mixin to a flex row.
+///
+/// @param {Keyword} $x [null] - Horizontal alignment to use. Can be `left`, `right`, `center`, `justify`, or `spaced`. Or, set it to `null` (the default) to not set horizontal alignment.
+/// @param {Keyword} $y [null] - Vertical alignment to use. Can be `top`, `bottom`, `middle`, or `stretch`. Or, set it to `null` (the default) to not set vertical alignment.
+@mixin flex-grid-row-align($x: null, $y: null) {
+  @if $x {
+    @if map-has-key($-zf-flex-justify, $x) {
+      $x: map-get($-zf-flex-justify, $x);
+    }
+    @else {
+      @warn 'flex-grid-row-align(): #{$x} is not a valid value for horizontal alignment. Use left, right, center, justify, or spaced.'
+    }
+  }
+
+  @if $y {
+    @if map-has-key($-zf-flex-align, $y) {
+      $y: map-get($-zf-flex-align, $y);
+    }
+    @else {
+      @warn 'flex-grid-row-align(): #{$y} is not a valid value for vertical alignment. Use top, bottom, middle, or stretch.'
+    }
+  }
+
+  justify-content: $x;
+  align-items: $y;
+}
+
+/// Vertically align a single column within a flex row. Apply this mixin to a flex column.
+///
+/// @param {Keyword} $y [null] - Vertical alignment to use. Can be `top`, `bottom`, `middle`, or `stretch`. Or, set it to `null` (the default) to not set vertical alignment.
+@mixin flex-grid-column-align($y: null) {
+  @if $y {
+    @if map-has-key($-zf-flex-align, $y) {
+      $y: map-get($-zf-flex-align, $y);
+    }
+    @else {
+      @warn 'flex-grid-column-align(): #{$y} is not a valid value for alignment. Use top, bottom, middle, or stretch.'
+    }
+  }
+
+  align-self: $y;
 }
 
 @mixin foundation-flex-grid {
@@ -112,35 +186,68 @@
   }
 
   // Column
-  %flex-column {
+  .column {
     @include flex-grid-column;
   }
 
-  .column,
-  .columns {
-    @extend %flex-column;
-  }
+  @include -zf-each-breakpoint {
+    @for $i from 1 through $grid-column-count {
+      // Sizing (percentage)
+      .#{$-zf-size}-#{$i} {
+        flex: flex-grid-column($i);
+        max-width: grid-column($i);
+      }
 
-  // Sizing (percentage)
-  @each $size in $breakpoint-classes {
-    @include breakpoint($size) {
-      @for $i from 1 through $grid-column-count {
-        .#{$size}-#{$i} {
-          flex: flex-grid-column($i);
-          max-width: grid-column($i);
-        }
+      // Offsets
+      $o: $i - 1;
+
+      .#{$-zf-size}-offset-#{$o} {
+        @include grid-column-offset($o);
       }
     }
-  }
 
-  // Sizing (expand)
-  @each $size in $breakpoint-classes {
-    @if $size != small {
-      @include breakpoint($size) {
-        .#{$size}-expand {
+    @for $i from 1 through 6 {
+      // Source ordering
+      .#{$-zf-size}-order-#{$i} {
+        @include flex-grid-order($i);
+      }
+    }
+
+    @if $-zf-size != small {
+      // Sizing (expand)
+      @include breakpoint($-zf-size) {
+        .#{$-zf-size}-expand {
           flex: flex-grid-column();
         }
       }
+
+      // Auto-stacking/unstacking
+      @at-root (without: media) {
+        .row.#{$-zf-size}-unstack {
+          .column {
+            flex: flex-grid-column(100%);
+
+            @include breakpoint($-zf-size) {
+              flex: flex-grid-column();
+            }
+          }
+        }
+      }
+    }
+
+    // Responsive collapsing
+    .#{$-zf-size}-collapse {
+      > .column { @include grid-col-collapse; }
+    }
+
+    &.#{$-zf-size}-uncollapse {
+      @if $grid-column-gutter {
+        $gutter: $grid-column-gutter;
+      }
+      @else {
+        $gutter: -zf-get-bp-val($grid-column-responsive-gutter, $-zf-size);
+      }
+      > .column { @include grid-col-uncollapse($gutter); }
     }
   }
 
@@ -149,83 +256,26 @@
     flex: flex-grid-column(shrink);
   }
 
-  // Responsive collapsing
-  @each $size in $breakpoint-classes {
-    @include breakpoint($size) {
-      &.#{$size}-collapse {
-        > .column { @include grid-col-collapse; }
-      }
-
-      &.#{$size}-uncollapse {
-        > .column { @include grid-col-uncollapse; }
-      }
-    }
-  }
-
-  // Auto-stacking/unstacking
-  @each $size in $breakpoint-classes {
-    @if $size != small {
-      .row.#{$size}-unstack {
-        .column {
-          flex: flex-grid-column(100%);
-
-          @include breakpoint($size) {
-            flex: flex-grid-column();
-          }
-        }
-      }
-    }
-  }
-
-  // Offsets
-  @each $size in $breakpoint-classes {
-    @include breakpoint($size) {
-      @for $i from 1 through $grid-column-count {
-        $o: $i - 1;
-
-        .#{$size}-offset-#{$o} {
-          @include grid-column-offset($o);
-        }
-      }
-    }
-  }
-
-  // Source ordering
-  @each $size in $breakpoint-classes {
-    @include breakpoint($size) {
-      @for $i from 1 through 6 {
-        .#{$size}-order-#{$i} {
-          @include flex-grid-order($i);
-        }
-      }
-    }
-  }
-
   // Horizontal alignment using justify-content
-  @each $hdir, $prop in (
-    'right': flex-end,
-    'center': center,
-    'justify': space-between,
-    'spaced': space-around,
-  ) {
+  @each $hdir, $prop in map-remove($-zf-flex-justify, left) {
     .row.align-#{$hdir} {
-      justify-content: $prop;
+      @include flex-grid-row-align($x: $hdir);
     }
   }
 
   // Vertical alignment using align-items and align-self
-  @each $vdir, $prop in (
-    'top': flex-start,
-    'bottom': flex-end,
-    'middle': center,
-    'stretch': stretch,
-  ) {
+  @each $vdir, $prop in $-zf-flex-align {
     .row.align-#{$vdir} {
-      align-items: $prop;
+      @include flex-grid-row-align($y: $vdir);
     }
 
     .column.align-#{$vdir} {
-      align-self: $prop;
+      @include flex-grid-column-align($vdir);
     }
+  }
+
+  .columns {
+    // scss-lint:disable PlaceholderInExtend
+    @extend .column;
   }
 }
