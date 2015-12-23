@@ -78,7 +78,7 @@
     /**
      * Custom template to be used to generate markup for tooltip.
      * @option
-     * @example '<div class="tooltip"></div>'
+     * @example '&lt;div class="tooltip"&gt;&lt;/div&gt;'
      */
     template: '',
     /**
