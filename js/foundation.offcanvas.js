@@ -213,13 +213,15 @@ OffCanvas.prototype.open = function(event, trigger) {
 
     _this.$element
       .addClass('is-open')
-      .attr('aria-hidden', 'false')
-      .trigger('opened.zf.offcanvas');
 
     // if(_this.options.isSticky){
     //   _this._stick();
     // }
   });
+  this.$element.attr('aria-hidden', 'false')
+      .trigger('opened.zf.offcanvas');
+
+      
   if(trigger){
     this.$lastTrigger = trigger.attr('aria-expanded', 'true');
   }
