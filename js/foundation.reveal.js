@@ -128,7 +128,6 @@
 
       this.$anchor.attr({
         'aria-controls': this.id,
-        'id': anchorId,
         'aria-haspopup': true,
         'tabindex': 0
       });
