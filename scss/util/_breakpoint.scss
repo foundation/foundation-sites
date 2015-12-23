@@ -18,6 +18,13 @@ $breakpoints: (
   xxlarge: 1440px,
 ) !default;
 
+@if not map-has-key($breakpoints, small) or not map-has-key($breakpoints, medium) {
+  @error 'Your list of breakpoints (defined in $breakpoints) must include one named "small" and one named "medium".';
+}
+@else if map-get($breakpoints, small) != 0 {
+  @error 'Your "small" breakpoint (defined in $breakpoints) must be set to "0".';
+}
+
 /// All of the names in this list will be output as classes in your CSS, like `.small-12`, `.medium-6`, and so on. Each value in this list must also be in the `$breakpoints` map.
 /// @type List
 $breakpoint-classes: (small medium large) !default;
