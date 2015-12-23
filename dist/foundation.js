@@ -1,7 +1,7 @@
 !function($) {
 "use strict";
 
-var FOUNDATION_VERSION = '6.1.0';
+var FOUNDATION_VERSION = '6.1.1';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
@@ -1984,14 +1984,14 @@ Foundation.Motion = Motion;
 
     var noError = acc.indexOf(false) === -1;
 
-    this.$element.find('[data-abide-error]').css('display', (noError ? 'none' : 'block'))
+    this.$element.find('[data-abide-error]').css('display', (noError ? 'none' : 'block'));
         /**
          * Fires when the form is finished validating. Event trigger is either `formvalid.zf.abide` or `forminvalid.zf.abide`.
          * Trigger includes the element of the form.
          * @event Abide#formvalid
          * @event Abide#forminvalid
          */
-        .trigger((noError ? 'formvalid' : 'forminvalid') + '.zf.abide', [this.$element]);
+    this.$element.trigger((noError ? 'formvalid' : 'forminvalid') + '.zf.abide', [this.$element]);
 
     return noError;
   };
@@ -4025,7 +4025,7 @@ Foundation.Motion = Motion;
    * @private
    */
   Interchange.prototype._events = function() {
-    $(window).on('resize.fndtn.interchange', Foundation.util.throttle(this._reflow.bind(this), 50));
+    $(window).on('resize.zf.interchange', Foundation.util.throttle(this._reflow.bind(this), 50));
   };
 
   /**
@@ -4112,7 +4112,6 @@ Foundation.Motion = Motion;
     // Replacing images
     if (this.$element[0].nodeName === 'IMG') {
       this.$element.attr('src', path).load(function() {
-        _this.$element.trigger('replaced.zf.interchange');
         _this.currentPath = path;
       });
     }
@@ -4125,10 +4124,10 @@ Foundation.Motion = Motion;
       $.get(path, function(response) {
         _this.$element.html(response);
         $(response).foundation();
-        _this.$element.trigger('replaced.zf.interchange');
         _this.currentPath = path;
       });
     }
+    this.$element.trigger('replaced.zf.interchange');
   };
   /**
    * Destroys an instance of interchange.
@@ -4442,7 +4441,13 @@ OffCanvas.defaults = {
    * TODO improve the regex testing for this.
    * @example reveal-for-large
    */
-  revealClass: 'reveal-for-'
+  revealClass: 'reveal-for-',
+  /**
+   * Triggers optional focus trapping when opening an offcanvas. Sets tabindex of [data-off-canvas-content] to -1 for accessibility purposes.
+   * @option
+   * @example true
+   */
+  trapFocus: false
 };
 
 /**
@@ -4491,7 +4496,7 @@ OffCanvas.prototype._init = function() {
  * @private
  */
 OffCanvas.prototype._events = function() {
-  this.$element.on({
+  this.$element.off('.zf.trigger .zf.offcanvas').on({
     'open.zf.trigger': this.open.bind(this),
     'close.zf.trigger': this.close.bind(this),
     'toggle.zf.trigger': this.toggle.bind(this),
@@ -4530,17 +4535,25 @@ OffCanvas.prototype._setMQChecker = function(){
 OffCanvas.prototype.reveal = function(isRevealed){
   var $closer = this.$element.find('[data-close]');
   if(isRevealed){
+    this.close();
+    this.isRevealed = true;
     // if(!this.options.forceTop){
     //   var scrollPos = parseInt(window.pageYOffset);
     //   this.$element[0].style.transform = 'translate(0,' + scrollPos + 'px)';
     // }
     // if(this.options.isSticky){ this._stick(); }
+    this.$element.off('open.zf.trigger toggle.zf.trigger');
     if($closer.length){ $closer.hide(); }
   }else{
+    this.isRevealed = false;
     // if(this.options.isSticky || !this.options.forceTop){
     //   this.$element[0].style.transform = '';
     //   $(window).off('scroll.zf.offcanvas');
     // }
+    this.$element.on({
+      'open.zf.trigger': this.open.bind(this),
+      'toggle.zf.trigger': this.toggle.bind(this)
+    });
     if($closer.length){
       $closer.show();
     }
@@ -4555,7 +4568,7 @@ OffCanvas.prototype.reveal = function(isRevealed){
  * @fires OffCanvas#opened
  */
 OffCanvas.prototype.open = function(event, trigger) {
-  if (this.$element.hasClass('is-open')){ return; }
+  if (this.$element.hasClass('is-open') || this.isRevealed){ return; }
   var _this = this,
       $body = $(document.body);
   $('body').scrollTop(0);
@@ -4577,13 +4590,15 @@ OffCanvas.prototype.open = function(event, trigger) {
 
     _this.$element
       .addClass('is-open')
-      .attr('aria-hidden', 'false')
-      .trigger('opened.zf.offcanvas');
 
     // if(_this.options.isSticky){
     //   _this._stick();
     // }
   });
+  this.$element.attr('aria-hidden', 'false')
+      .trigger('opened.zf.offcanvas');
+
+
   if(trigger){
     this.$lastTrigger = trigger.attr('aria-expanded', 'true');
   }
@@ -4592,6 +4607,32 @@ OffCanvas.prototype.open = function(event, trigger) {
       _this.$element.find('a, button').eq(0).focus();
     });
   }
+  if(this.options.trapFocus){
+    $('[data-off-canvas-content]').attr('tabindex', '-1');
+    this._trapFocus();
+  }
+};
+/**
+ * Traps focus within the offcanvas on open.
+ * @private
+ */
+OffCanvas.prototype._trapFocus = function(){
+  var focusable = Foundation.Keyboard.findFocusable(this.$element),
+      first = focusable.eq(0),
+      last = focusable.eq(-1);
+
+  focusable.off('.zf.offcanvas').on('keydown.zf.offcanvas', function(e){
+    if(e.which === 9 || e.keycode === 9){
+      if(e.target === last[0] && !e.shiftKey){
+        e.preventDefault();
+        first.focus();
+      }
+      if(e.target === first[0] && e.shiftKey){
+        e.preventDefault();
+        last.focus();
+      }
+    }
+  });
 };
 /**
  * Allows the offcanvas to appear sticky utilizing translate properties.
@@ -4619,7 +4660,7 @@ OffCanvas.prototype.open = function(event, trigger) {
  * @fires OffCanvas#closed
  */
 OffCanvas.prototype.close = function(cb) {
-  if(!this.$element.hasClass('is-open')){ return; }
+  if(!this.$element.hasClass('is-open') || this.isRevealed){ return; }
 
   var _this = this;
 
@@ -4642,6 +4683,9 @@ OffCanvas.prototype.close = function(cb) {
   // }
 
   this.$lastTrigger.attr('aria-expanded', 'false');
+  if(this.options.trapFocus){
+    $('[data-off-canvas-content]').removeAttr('tabindex');
+  }
 
 };
 
@@ -6353,7 +6397,7 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
     /**
      * Customizable container template. Add your own classes for styling and sizing.
      * @option
-     * @example '<div data-sticky-container class="small-6 columns"></div>'
+     * @example '&lt;div data-sticky-container class="small-6 columns"&gt;&lt;/div&gt;'
      */
     container: '<div data-sticky-container></div>',
     /**
@@ -6440,14 +6484,12 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
 
     this.scrollCount = this.options.checkEvery;
     this.isStuck = false;
-    // console.log(this.options.anchor, this.options.topAnchor);
-    if(this.options.topAnchor !== ''){
-      this._parsePoints();
-      // console.log(this.points[0]);
-    }else{
-      this.$anchor = this.options.anchor ? $('#' + this.options.anchor) : $(document.body);
-    }
 
+    if(this.options.anchor !== ''){
+      this.$anchor = $('#' + this.options.anchor);
+    }else{
+      this._parsePoints();
+    }
 
     this._setSizes(function(){
       _this._calc(false);
@@ -6464,22 +6506,27 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
         btm = this.options.btmAnchor,
         pts = [top, btm],
         breaks = {};
-    for(var i = 0, len = pts.length; i < len && pts[i]; i++){
-      var pt;
-      if(typeof pts[i] === 'number'){
-        pt = pts[i];
-      }else{
-        var place = pts[i].split(':'),
-            anchor = $('#' + place[0]);
+    if(top && btm){
 
-        pt = anchor.offset().top;
-        if(place[1] && place[1].toLowerCase() === 'bottom'){
-          pt += anchor[0].getBoundingClientRect().height;
+      for(var i = 0, len = pts.length; i < len && pts[i]; i++){
+        var pt;
+        if(typeof pts[i] === 'number'){
+          pt = pts[i];
+        }else{
+          var place = pts[i].split(':'),
+              anchor = $('#' + place[0]);
+
+          pt = anchor.offset().top;
+          if(place[1] && place[1].toLowerCase() === 'bottom'){
+            pt += anchor[0].getBoundingClientRect().height;
+          }
         }
+        breaks[i] = pt;
       }
-      breaks[i] = pt;
+    }else{
+      breaks = {0: 1, 1: document.documentElement.scrollHeight};
     }
-      // console.log(breaks);
+
     this.points = breaks;
     return;
   };
@@ -6490,19 +6537,11 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
    * @param {String} id - psuedo-random id for unique scroll event listener.
    */
   Sticky.prototype._events = function(id){
-    // console.log('called');
     var _this = this,
         scrollListener = this.scrollListener = 'scroll.zf.' + id;
     if(this.isOn){ return; }
     if(this.canStick){
       this.isOn = true;
-      // this.$anchor.off('change.zf.sticky')
-      //             .on('change.zf.sticky', function(){
-      //               _this._setSizes(function(){
-      //                 _this._calc(false);
-      //               });
-      //             });
-
       $(window).off(scrollListener)
                .on(scrollListener, function(e){
                  if(_this.scrollCount === 0){
@@ -6539,7 +6578,6 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
    */
   Sticky.prototype._pauseListeners = function(scrollListener){
     this.isOn = false;
-    // this.$anchor.off('change.zf.sticky');
     $(window).off(scrollListener);
 
     /**
@@ -6667,7 +6705,6 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
         comp = window.getComputedStyle(this.$container[0]),
         pdng = parseInt(comp['padding-right'], 10);
 
-    // console.log(this.$anchor);
     if(this.$anchor && this.$anchor.length){
       this.anchorHeight = this.$anchor[0].getBoundingClientRect().height;
     }else{
@@ -7305,7 +7342,7 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
     /**
      * Custom template to be used to generate markup for tooltip.
      * @option
-     * @example '<div class="tooltip"></div>'
+     * @example '&lt;div class="tooltip"&gt;&lt;/div&gt;'
      */
     template: '',
     /**

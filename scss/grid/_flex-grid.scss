@@ -240,7 +240,7 @@ $-zf-flex-align: (
       > .column { @include grid-col-collapse; }
     }
 
-    &.#{$-zf-size}-uncollapse {
+    .#{$-zf-size}-uncollapse {
       @if $grid-column-gutter {
         $gutter: $grid-column-gutter;
       }
