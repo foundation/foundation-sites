@@ -44,7 +44,7 @@ $label-radius: $global-radius !default;
     background: $label-background;
     color: $label-color;
 
-    @each $name, $color in $foundation-colors {
+    @each $name, $color in $foundation-palette {
       @if $name != primary {
         &.#{$name} {
           background: $color;

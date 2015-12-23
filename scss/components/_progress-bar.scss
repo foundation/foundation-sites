@@ -62,7 +62,7 @@ $progress-radius: $global-radius !default;
   .progress {
     @include progress-container;
 
-    @each $name, $color in $foundation-colors {
+    @each $name, $color in $foundation-palette {
       &.#{$name} {
         .progress-meter {
           background-color: $color;

@@ -102,7 +102,7 @@ $buttongroup-expand-max: 6 !default;
     &.expanded { @include button-group-expand; }
 
     // Colors
-    @each $name, $color in $foundation-colors {
+    @each $name, $color in $foundation-palette {
       @if $button-fill != hollow {
         &.#{$name} #{$buttongroup-child-selector} {
           @include button-style($color, auto, auto);
