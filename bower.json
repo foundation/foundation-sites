@@ -22,8 +22,7 @@
     ".npm",
     ".gitignore",
     ".npmignore",
-    ".versions",
-    "scss/settings"
+    ".versions"
   ],
   "dependencies": {
     "jquery": "~2.1.0",
