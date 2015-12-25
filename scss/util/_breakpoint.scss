@@ -74,7 +74,7 @@ $breakpoint-classes: (small medium large) !default;
   }
 
   // Skip media query creation if the input is "0 up"
-  @if $bp > 0 or $dir == 'only' or $dir == 'down' {
+  @if $bp > 0em or $dir == 'only' or $dir == 'down' {
     // `only` ranges use the format `(min-width: n) and (max-width: n)`
     @if $dir == 'only' {
       @if $named == true {
@@ -102,13 +102,13 @@ $breakpoint-classes: (small medium large) !default;
       }
 
       // Skip media query creation if input value is exactly "0 down" but don't "small down"
-      @if $named or $bp > 0 {
+      @if $named or $bp > 0em {
         $str: $str + '(max-width: #{$max})';
       }
     }
 
     // `up` ranges use the format `(min-width: n)`
-    @else if $bp > 0 {
+    @else if $bp > 0em {
       $str: $str + '(min-width: #{$bp})';
     }
   }

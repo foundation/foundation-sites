@@ -1,6 +1,6 @@
 {
   "name": "foundation-sites",
-  "version": "6.1.0",
+  "version": "6.1.1",
   "main": "dist/foundation.js",
   "description": "The most advanced responsive front-end framework in the world.",
   "author": "ZURB <foundation@zurb.com> (http://foundation.zurb.com)",
@@ -53,7 +53,7 @@
     "require-dir": "^0.3.0",
     "rimraf": "^2.3.2",
     "run-sequence": "^1.1.4",
-    "supercollider": "^1.1.0",
+    "supercollider": "^1.2.0",
     "typeahead.js": "^0.11.1"
   },
   "repository": {

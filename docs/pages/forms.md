@@ -115,9 +115,9 @@ To encourage their use as an accessibility tool, the `<fieldset>` element is no 
 ```html_example
 <fieldset class="fieldset">
   <legend>Check these out</legend>
-  <input id="checkbox1" type="checkbox"><label for="checkbox1">Checkbox 1</label>
-  <input id="checkbox2" type="checkbox"><label for="checkbox2">Checkbox 2</label>
-  <input id="checkbox3" type="checkbox"><label for="checkbox3">Checkbox 3</label>
+  <input id="checkbox12" type="checkbox"><label for="checkbox12">Checkbox 1</label>
+  <input id="checkbox22" type="checkbox"><label for="checkbox22">Checkbox 2</label>
+  <input id="checkbox32" type="checkbox"><label for="checkbox32">Checkbox 3</label>
 </fieldset>
 ```
 

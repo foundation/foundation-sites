@@ -5,6 +5,13 @@ var newer = require('gulp-newer');
 var panini = require('panini');
 var supercollider = require('supercollider');
 
+var PANINI_CONFIG = {
+  root: 'docs/pages/',
+  layouts: 'docs/layout/',
+  partials: 'docs/partials/',
+  helpers: foundationDocs.handlebarsHelpers
+}
+
 supercollider
   .config({
     template: foundationDocs.componentTemplate,
@@ -23,11 +30,7 @@ gulp.task('docs', function() {
       ext: '.html'
     }))
     .pipe(supercollider.init())
-    .pipe(panini({
-      root: 'docs/pages/',
-      layouts: 'docs/layout/',
-      partials: 'docs/partials/'
-    }))
+    .pipe(panini(PANINI_CONFIG))
     .pipe(cacheBust())
     .pipe(gulp.dest('_build'));
 });
@@ -37,11 +40,7 @@ gulp.task('docs:all', function() {
 
   return gulp.src('docs/pages/**/*')
     .pipe(supercollider.init())
-    .pipe(panini({
-      root: 'docs/pages/',
-      layouts: 'docs/layout/',
-      partials: 'docs/partials/'
-    }))
+    .pipe(panini(PANINI_CONFIG))
     .pipe(cacheBust())
     .pipe(gulp.dest('_build'));
 });
