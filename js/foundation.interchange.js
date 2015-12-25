@@ -23,7 +23,7 @@
     this._init();
     this._events();
 
-    Foundation.registerPlugin(this);
+    Foundation.registerPlugin(this, 'Interchange');
   }
 
   /**
@@ -60,7 +60,7 @@
    * @private
    */
   Interchange.prototype._events = function() {
-    $(window).on('resize.fndtn.interchange', Foundation.util.throttle(this._reflow.bind(this), 50));
+    $(window).on('resize.zf.interchange', Foundation.util.throttle(this._reflow.bind(this), 50));
   };
 
   /**
@@ -147,7 +147,6 @@
     // Replacing images
     if (this.$element[0].nodeName === 'IMG') {
       this.$element.attr('src', path).load(function() {
-        _this.$element.trigger('replaced.zf.interchange');
         _this.currentPath = path;
       });
     }
@@ -159,10 +158,11 @@
     else {
       $.get(path, function(response) {
         _this.$element.html(response);
-        _this.$element.trigger('replaced.zf.interchange');
+        $(response).foundation();
         _this.currentPath = path;
       });
     }
+    this.$element.trigger('replaced.zf.interchange');
   };
   /**
    * Destroys an instance of interchange.

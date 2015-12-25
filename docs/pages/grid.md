@@ -249,7 +249,7 @@ Move blocks up to 11 columns to the right by using classes like `.large-offset-1
 
 ### Incomplete Rows
 
-In order to work around browsers' different rounding behaviors, Foundation will float the last column in a row to the right so the edge aligns. If your row doesn't have a count that adds up to 12 columns, you can tag the last column with a class of end in order to override that behavior.
+In order to work around browsers' different rounding behaviors, Foundation will float the last column in a row to the right so the edge aligns. If your row doesn't have a count that adds up to 12 columns, you can tag the last column with a class of `.end` in order to override that behavior.
 
 ```html
 <div class="row">
@@ -274,6 +274,32 @@ In order to work around browsers' different rounding behaviors, Foundation will 
   <div class="medium-3 columns">3</div>
   <div class="medium-3 columns end">3 end</div>
 </div>
+
+---
+
+### Responsive Gutters
+
+<div class="warning callout">
+  <p>Responsive gutters were added in <strong>Foundation 6.1.0</strong>. As of this version, it's still possible to use static gutters, or you can upgrade your project to responsive gutters. In Foundation 6.2.0, static gutters will be removed entirely in favor of responsive gutters. Refer to the <a href="https://github.com/zurb/foundation-sites/releases/tag/v6.1.0">Version 6.1.0 changelog</a> for more details on the upgrade process.</p>
+</div>
+
+The grid *gutter*&mdash;the space between two columns in a row, and the space between the edge of a grid and the edge of the page&mdash;is responsive, and becomes wider on larger screens.
+
+Breakpoint | Gutter Size
+-----------|------------
+`small`    | 20px
+`medium`   | 30px
+
+If you're using the Sass version of Foundation, you can change these defaults by editing the `$grid-column-responsive-gutter` variable:
+
+```scss
+$grid-column-responsive-gutter: (
+  small: 20px,
+  medium: 30px,
+);
+```
+
+To add more gutter definitions, add new lines to the map. The breakpoint names used here must match a breakpoint name in your project's `$breakpoints` map.
 
 ---
 
@@ -299,12 +325,14 @@ There are times when you won't want each media query to be collapsed or uncollap
 <div class="row medium-uncollapse large-collapse">
   <div class="small-6 columns">
     <div class="callout secondary">
+      <p class="show-for-small-only">On a small screen, I have gutters!</p>
       <p class="show-for-medium-only">On a medium screen, I have gutters!</p>
       <p class="show-for-large-up">On a large screen, I have no gutters!</p>
     </div>
   </div>
   <div class="small-6 columns">
     <div class="callout secondary">
+      <p class="show-for-small-only">On a small screen, I have gutters!</p>
       <p class="show-for-medium-only">On a medium screen, I have gutters!</p>
       <p class="show-for-large-up">On a large screen, I have no gutters!</p>
     </div>
@@ -315,7 +343,7 @@ There are times when you won't want each media query to be collapsed or uncollap
 
 ### Centered Columns
 
-Center your columns by adding a class of `.small-centered` to your column. Large will inherit small centering by default, but you can also center solely on large by applying a `.large-centered` class. To uncenter on large screens, use `.large-uncenter`.
+Center your columns by adding a class of `.small-centered` to your column. Large will inherit small centering by default, but you can also center solely on large by applying a `.large-centered` class. To uncenter on large screens, use `.large-uncentered`.
 
 ```html
 <div class="row">
@@ -325,7 +353,7 @@ Center your columns by adding a class of `.small-centered` to your column. Large
   <div class="small-6 large-centered columns">6 centered</div>
 </div>
 <div class="row">
-  <div class="small-9 small-centered large-uncenter columns">9 centered</div>
+  <div class="small-9 small-centered large-uncentered columns">9 centered</div>
 </div>
 <div class="row">
   <div class="small-11 small-centered columns">11 centered</div>
@@ -339,7 +367,7 @@ Center your columns by adding a class of `.small-centered` to your column. Large
   <div class="small-6 large-centered columns">6 centered, large</div>
 </div>
 <div class="row display">
-  <div class="small-9 small-centered large-uncenter columns">9 centered small</div>
+  <div class="small-9 small-centered large-uncentered columns">9 centered small</div>
 </div>
 <div class="row display">
   <div class="small-11 small-centered columns">11 centered</div>

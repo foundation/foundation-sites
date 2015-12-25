@@ -19,13 +19,13 @@
 
     this._init();
 
-    Foundation.registerPlugin(this);
+    Foundation.registerPlugin(this, 'Sticky');
   }
   Sticky.defaults = {
     /**
      * Customizable container template. Add your own classes for styling and sizing.
      * @option
-     * @example '<div data-sticky-container class="small-6 columns"></div>'
+     * @example '&lt;div data-sticky-container class="small-6 columns"&gt;&lt;/div&gt;'
      */
     container: '<div data-sticky-container></div>',
     /**
@@ -92,7 +92,6 @@
 
   /**
    * Initializes the sticky element by adding classes, getting/setting dimensions, breakpoints and attributes
-   * Also triggered by Foundation._reflow
    * @function
    * @private
    */
@@ -113,14 +112,12 @@
 
     this.scrollCount = this.options.checkEvery;
     this.isStuck = false;
-    // console.log(this.options.anchor, this.options.topAnchor);
-    if(this.options.topAnchor !== ''){
-      this._parsePoints();
-      // console.log(this.points[0]);
-    }else{
-      this.$anchor = this.options.anchor ? $('#' + this.options.anchor) : $(document.body);
-    }
 
+    if(this.options.anchor !== ''){
+      this.$anchor = $('#' + this.options.anchor);
+    }else{
+      this._parsePoints();
+    }
 
     this._setSizes(function(){
       _this._calc(false);
@@ -137,22 +134,27 @@
         btm = this.options.btmAnchor,
         pts = [top, btm],
         breaks = {};
-    for(var i = 0, len = pts.length; i < len && pts[i]; i++){
-      var pt;
-      if(typeof pts[i] === 'number'){
-        pt = pts[i];
-      }else{
-        var place = pts[i].split(':'),
-            anchor = $('#' + place[0]);
+    if(top && btm){
 
-        pt = anchor.offset().top;
-        if(place[1] && place[1].toLowerCase() === 'bottom'){
-          pt += anchor[0].getBoundingClientRect().height;
+      for(var i = 0, len = pts.length; i < len && pts[i]; i++){
+        var pt;
+        if(typeof pts[i] === 'number'){
+          pt = pts[i];
+        }else{
+          var place = pts[i].split(':'),
+              anchor = $('#' + place[0]);
+
+          pt = anchor.offset().top;
+          if(place[1] && place[1].toLowerCase() === 'bottom'){
+            pt += anchor[0].getBoundingClientRect().height;
+          }
         }
+        breaks[i] = pt;
       }
-      breaks[i] = pt;
+    }else{
+      breaks = {0: 1, 1: document.documentElement.scrollHeight};
     }
-      // console.log(breaks);
+
     this.points = breaks;
     return;
   };
@@ -163,19 +165,11 @@
    * @param {String} id - psuedo-random id for unique scroll event listener.
    */
   Sticky.prototype._events = function(id){
-    // console.log('called');
     var _this = this,
-        scrollListener = 'scroll.zf.' + id;
+        scrollListener = this.scrollListener = 'scroll.zf.' + id;
     if(this.isOn){ return; }
     if(this.canStick){
       this.isOn = true;
-      // this.$anchor.off('change.zf.sticky')
-      //             .on('change.zf.sticky', function(){
-      //               _this._setSizes(function(){
-      //                 _this._calc(false);
-      //               });
-      //             });
-
       $(window).off(scrollListener)
                .on(scrollListener, function(e){
                  if(_this.scrollCount === 0){
@@ -212,7 +206,6 @@
    */
   Sticky.prototype._pauseListeners = function(scrollListener){
     this.isOn = false;
-    // this.$anchor.off('change.zf.sticky');
     $(window).off(scrollListener);
 
     /**
@@ -312,7 +305,7 @@
       css[stickTo] = 0;
       css[notStuckTo] = anchorPt;
     }
-    
+
     css['left'] = '';
     this.isStuck = false;
     this.$element.removeClass('is-stuck is-at-' + stickTo)
@@ -340,7 +333,6 @@
         comp = window.getComputedStyle(this.$container[0]),
         pdng = parseInt(comp['padding-right'], 10);
 
-    // console.log(this.$anchor);
     if(this.$anchor && this.$anchor.length){
       this.anchorHeight = this.$anchor[0].getBoundingClientRect().height;
     }else{
@@ -421,7 +413,7 @@
                  .off('resizeme.zf.trigger');
 
     this.$anchor.off('change.zf.sticky');
-    $(window).off('scroll.zf.sticky');
+    $(window).off(this.scrollListener);
 
     if(this.wasWrapped){
       this.$element.unwrap();

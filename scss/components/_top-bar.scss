@@ -42,16 +42,17 @@ $topbar-input-width: 200px !default;
   }
 
   input.button {
-    width:auto;
+    width: auto;
   }
 }
 
 /// makes sections stacked
-@mixin top-bar-stacked() {
+@mixin top-bar-stacked {
   // Sub-sections
   .top-bar-right {
     width: 100%;
   }
+
   .top-bar-left {
     width: 100%;
   }
@@ -62,7 +63,8 @@ $topbar-input-width: 200px !default;
   .top-bar {
     @include top-bar-container;
   }
-  // generate classes for stacking on each screen size (defined in $breakpoint-classes)
+
+  // Generate classes for stacking on each screen size (defined in $breakpoint-classes)
   @each $size in $breakpoint-classes {
     .stacked-for-#{$size} {
       @include breakpoint($size down) {
@@ -70,8 +72,9 @@ $topbar-input-width: 200px !default;
       }
     }
   }
-  // stack on small screens as default
-  @include breakpoint(small down) {
+
+  // Stack on small screens as default
+  @include breakpoint(small only) {
     @include top-bar-stacked;
   }
 
@@ -79,6 +82,7 @@ $topbar-input-width: 200px !default;
   .top-bar-left {
     float: left;
   }
+  
   .top-bar-right {
     float: right;
   }

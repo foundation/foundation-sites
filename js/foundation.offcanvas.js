@@ -23,7 +23,7 @@ function OffCanvas(element, options) {
   this._init();
   this._events();
 
-  Foundation.registerPlugin(this);
+  Foundation.registerPlugin(this, 'OffCanvas');
 }
 
 OffCanvas.defaults = {
@@ -78,7 +78,13 @@ OffCanvas.defaults = {
    * TODO improve the regex testing for this.
    * @example reveal-for-large
    */
-  revealClass: 'reveal-for-'
+  revealClass: 'reveal-for-',
+  /**
+   * Triggers optional focus trapping when opening an offcanvas. Sets tabindex of [data-off-canvas-content] to -1 for accessibility purposes.
+   * @option
+   * @example true
+   */
+  trapFocus: false
 };
 
 /**
@@ -127,7 +133,7 @@ OffCanvas.prototype._init = function() {
  * @private
  */
 OffCanvas.prototype._events = function() {
-  this.$element.on({
+  this.$element.off('.zf.trigger .zf.offcanvas').on({
     'open.zf.trigger': this.open.bind(this),
     'close.zf.trigger': this.close.bind(this),
     'toggle.zf.trigger': this.toggle.bind(this),
@@ -166,17 +172,25 @@ OffCanvas.prototype._setMQChecker = function(){
 OffCanvas.prototype.reveal = function(isRevealed){
   var $closer = this.$element.find('[data-close]');
   if(isRevealed){
+    this.close();
+    this.isRevealed = true;
     // if(!this.options.forceTop){
     //   var scrollPos = parseInt(window.pageYOffset);
     //   this.$element[0].style.transform = 'translate(0,' + scrollPos + 'px)';
     // }
     // if(this.options.isSticky){ this._stick(); }
+    this.$element.off('open.zf.trigger toggle.zf.trigger');
     if($closer.length){ $closer.hide(); }
   }else{
+    this.isRevealed = false;
     // if(this.options.isSticky || !this.options.forceTop){
     //   this.$element[0].style.transform = '';
     //   $(window).off('scroll.zf.offcanvas');
     // }
+    this.$element.on({
+      'open.zf.trigger': this.open.bind(this),
+      'toggle.zf.trigger': this.toggle.bind(this)
+    });
     if($closer.length){
       $closer.show();
     }
@@ -191,7 +205,7 @@ OffCanvas.prototype.reveal = function(isRevealed){
  * @fires OffCanvas#opened
  */
 OffCanvas.prototype.open = function(event, trigger) {
-  if (this.$element.hasClass('is-open')){ return; }
+  if (this.$element.hasClass('is-open') || this.isRevealed){ return; }
   var _this = this,
       $body = $(document.body);
   $('body').scrollTop(0);
@@ -213,13 +227,15 @@ OffCanvas.prototype.open = function(event, trigger) {
 
     _this.$element
       .addClass('is-open')
-      .attr('aria-hidden', 'false')
-      .trigger('opened.zf.offcanvas');
 
     // if(_this.options.isSticky){
     //   _this._stick();
     // }
   });
+  this.$element.attr('aria-hidden', 'false')
+      .trigger('opened.zf.offcanvas');
+
+
   if(trigger){
     this.$lastTrigger = trigger.attr('aria-expanded', 'true');
   }
@@ -228,6 +244,32 @@ OffCanvas.prototype.open = function(event, trigger) {
       _this.$element.find('a, button').eq(0).focus();
     });
   }
+  if(this.options.trapFocus){
+    $('[data-off-canvas-content]').attr('tabindex', '-1');
+    this._trapFocus();
+  }
+};
+/**
+ * Traps focus within the offcanvas on open.
+ * @private
+ */
+OffCanvas.prototype._trapFocus = function(){
+  var focusable = Foundation.Keyboard.findFocusable(this.$element),
+      first = focusable.eq(0),
+      last = focusable.eq(-1);
+
+  focusable.off('.zf.offcanvas').on('keydown.zf.offcanvas', function(e){
+    if(e.which === 9 || e.keycode === 9){
+      if(e.target === last[0] && !e.shiftKey){
+        e.preventDefault();
+        first.focus();
+      }
+      if(e.target === first[0] && e.shiftKey){
+        e.preventDefault();
+        last.focus();
+      }
+    }
+  });
 };
 /**
  * Allows the offcanvas to appear sticky utilizing translate properties.
@@ -251,19 +293,19 @@ OffCanvas.prototype.open = function(event, trigger) {
 /**
  * Closes the off-canvas menu.
  * @function
+ * @param {Function} cb - optional cb to fire after closure.
  * @fires OffCanvas#closed
  */
-OffCanvas.prototype.close = function() {
-  if(!this.$element.hasClass('is-open')){ return; }
+OffCanvas.prototype.close = function(cb) {
+  if(!this.$element.hasClass('is-open') || this.isRevealed){ return; }
 
   var _this = this;
 
-   Foundation.Move(this.options.transitionTime, this.$element, function(){
-    $('[data-off-canvas-wrapper]').removeClass('is-off-canvas-open is-open-'+_this.options.position);
-
-    _this.$element.removeClass('is-open');
+  //  Foundation.Move(this.options.transitionTime, this.$element, function(){
+  $('[data-off-canvas-wrapper]').removeClass('is-off-canvas-open is-open-' + _this.options.position);
+  _this.$element.removeClass('is-open');
     // Foundation._reflow();
-  });
+  // });
   this.$element.attr('aria-hidden', 'true')
     /**
      * Fires when the off-canvas menu opens.
@@ -278,6 +320,10 @@ OffCanvas.prototype.close = function() {
   // }
 
   this.$lastTrigger.attr('aria-expanded', 'false');
+  if(this.options.trapFocus){
+    $('[data-off-canvas-content]').removeAttr('tabindex');
+  }
+
 };
 
 /**
@@ -313,7 +359,11 @@ OffCanvas.prototype._handleKeyboard = function(event) {
  * @function
  */
 OffCanvas.prototype.destroy = function(){
-  //TODO make this...
+  this.close();
+  this.$element.off('.zf.trigger .zf.offcanvas');
+  this.$exiter.off('.zf.offcanvas');
+
+  Foundation.unregisterPlugin(this);
 };
 
 Foundation.plugin(OffCanvas, 'OffCanvas');

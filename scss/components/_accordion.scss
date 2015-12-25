@@ -88,9 +88,10 @@ $accordion-content-padding: 1rem !default;
 
 /// Adds styles for accordion content. Apply this to the content pane below an accordion item's title.
 @mixin accordion-content {
-  padding: $accordion-item-padding;
+  padding: $accordion-content-padding;
   display: none;
   border-bottom: $accordion-content-border;
+  background-color: $accordion-content-background;
 }
 
 @mixin foundation-accordion {

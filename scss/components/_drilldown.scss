@@ -14,6 +14,10 @@ $drilldown-transition: transform 0.15s linear !default;
 /// @type Boolean
 $drilldown-arrows: true !default;
 
+/// Sets drilldown arrow color if arrow is used.
+/// @type Color
+$drilldown-arrow-color: $primary-color !default;
+
 /// Background color for drilldown submenus.
 /// @type Color
 $drilldown-background: $white !default;
@@ -52,7 +56,7 @@ $drilldown-background: $white !default;
       position: relative;
 
       &::after {
-        @include css-triangle(6px, $primary-color, $global-right);
+        @include css-triangle(6px, $drilldown-arrow-color, $global-right);
         position: absolute;
         top: 50%;
         margin-top: -6px;
@@ -61,7 +65,7 @@ $drilldown-background: $white !default;
     }
 
     .js-drilldown-back::before {
-      @include css-triangle(6px, $primary-color, $global-left);
+      @include css-triangle(6px, $drilldown-arrow-color, $global-left);
       float: $global-left;
       margin-#{$global-right}: 0.75rem; // Creates space between the arrow and the text
       margin-#{$global-left}: 0.6rem; // Lines the tip of the arrow with the items below

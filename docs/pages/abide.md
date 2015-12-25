@@ -19,23 +19,47 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
   </div>
   <div class="row">
     <div class="small-12 columns">
-      <label>Input Label
-        <input type="text" placeholder=".small-12.columns" aria-describedby="exampleHelpText" required pattern="number">
+      <label>Number Required
+        <input type="text" placeholder="1234" aria-describedby="exampleHelpText" required pattern="number">
         <span class="form-error">
-          Yo, you had better fill this out.
+          Yo, you had better fill this out, it's required.
         </span>
       </label>
       <p class="help-text" id="exampleHelpText">Here's how you use this input field!</p>
     </div>
+    <div class="small-12 columns">
+      <label>Nothing Required!
+        <input type="text" placeholder="Use me, or don't" aria-describedby="exampleHelpTex" data-abide-ignore>
+      </label>
+      <p class="help-text" id="exampleHelpTex">This input is ignored by Abide using `data-abide-ignore`</p>
+    </div>
+    <div class="small-12 columns">
+      <label>Password Required
+        <input type="password" id="password" placeholder="yeti4preZ" aria-describedby="exampleHelpText" required >
+        <span class="form-error">
+          I'm required!
+        </span>
+      </label>
+      <p class="help-text" id="exampleHelpText">Enter a password please.</p>
+    </div>
+    <div class="small-12 columns">
+      <label>Re-enter Password
+        <input type="password" placeholder="yeti4preZ" aria-describedby="exampleHelpText2" required pattern="alpha_numeric" data-equalto="password">
+        <span class="form-error">
+          Hey, passwords are supposed to match!
+        </span>
+      </label>
+      <p class="help-text" id="exampleHelpText2">This field is using the `data-equalto="password"` attribute, causing it to match the password field above.</p>
+    </div>
   </div>
   <div class="row">
     <div class="medium-6 columns">
-      <label>Input Label
-        <input type="text" placeholder=".medium-6.columns" pattern="url">
+      <label>URL Pattern, not required, but throws error if it doesn't match the Regular Expression for a valid URL.
+        <input type="text" placeholder="http://foundation.zurb.com" pattern="url">
       </label>
     </div>
     <div class="medium-6 columns">
-      <label>Input Label
+      <label>European Cars, Choose One, it can't be the blank option.
         <select id="select" required>
           <option value=""></option>
           <option value="volvo">Volvo</option>
@@ -48,13 +72,13 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
   </div>
   <div class="row">
     <fieldset class="large-6 columns">
-      <legend>Choose Your Favorite</legend>
+      <legend>Choose Your Favorite, and this is required, so you have to pick one.</legend>
       <input type="radio" name="pokemon" value="Red" id="pokemonRed"><label for="pokemonRed">Red</label>
       <input type="radio" name="pokemon" value="Blue" id="pokemonBlue" required><label for="pokemonBlue">Blue</label>
       <input type="radio" name="pokemon" value="Yellow" id="pokemonYellow"><label for="pokemonYellow">Yellow</label>
     </fieldset>
     <fieldset class="large-6 columns">
-      <legend>Choose Your Favorite</legend>
+      <legend>Choose Your Favorite - not required, you can leave this one blank.</legend>
       <input type="radio" name="pockets" value="Red" id="pocketsRed"><label for="pocketsRed">Red</label>
       <input type="radio" name="pockets" value="Blue" id="pocketsBlue"><label for="pocketsBlue">Blue</label>
       <input type="radio" name="pockets" value="Yellow" id="pocketsYellow"><label for="pocketsYellow">Yellow</label>
