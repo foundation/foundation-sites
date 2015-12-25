@@ -3,6 +3,99 @@ title: Kitchen Sink
 description: Everything but.
 ---
 
+## Abide
+
+```html_example
+<form data-abide novalidate>
+  <div data-abide-error class="alert callout" style="display: none;">
+    <p><i class="fi-alert"></i> There are some errors in your form.</p>
+  </div>
+  <div class="row">
+    <div class="small-12 columns">
+      <label>Number Required
+        <input type="text" placeholder="1234" aria-describedby="exampleHelpText" required pattern="number">
+        <span class="form-error">
+          Yo, you had better fill this out, it's required.
+        </span>
+      </label>
+      <p class="help-text" id="exampleHelpText">Here's how you use this input field!</p>
+    </div>
+    <div class="small-12 columns">
+      <label>Nothing Required!
+        <input type="text" placeholder="Use me, or don't" aria-describedby="exampleHelpTex" data-abide-ignore>
+      </label>
+      <p class="help-text" id="exampleHelpTex">This input is ignored by Abide using `data-abide-ignore`</p>
+    </div>
+    <div class="small-12 columns">
+      <label>Password Required
+        <input type="password" id="password" placeholder="yeti4preZ" aria-describedby="exampleHelpText" required >
+        <span class="form-error">
+          I'm required!
+        </span>
+      </label>
+      <p class="help-text" id="exampleHelpText">Enter a password please.</p>
+    </div>
+    <div class="small-12 columns">
+      <label>Re-enter Password
+        <input type="password" placeholder="yeti4preZ" aria-describedby="exampleHelpText2" required pattern="alpha_numeric" data-equalto="password">
+        <span class="form-error">
+          Hey, passwords are supposed to match!
+        </span>
+      </label>
+      <p class="help-text" id="exampleHelpText2">This field is using the `data-equalto="password"` attribute, causing it to match the password field above.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-6 columns">
+      <label>URL Pattern, not required, but throws error if it doesn't match the Regular Expression for a valid URL.
+        <input type="text" placeholder="http://foundation.zurb.com" pattern="url">
+      </label>
+    </div>
+    <div class="medium-6 columns">
+      <label>European Cars, Choose One, it can't be the blank option.
+        <select id="select" required>
+          <option value=""></option>
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="mercedes">Mercedes</option>
+          <option value="audi">Audi</option>
+        </select>
+      </label>
+    </div>
+  </div>
+  <div class="row">
+    <fieldset class="large-6 columns">
+      <legend>Choose Your Favorite, and this is required, so you have to pick one.</legend>
+      <input type="radio" name="pokemon" value="Red" id="pokemonRed"><label for="pokemonRed">Red</label>
+      <input type="radio" name="pokemon" value="Blue" id="pokemonBlue" required><label for="pokemonBlue">Blue</label>
+      <input type="radio" name="pokemon" value="Yellow" id="pokemonYellow"><label for="pokemonYellow">Yellow</label>
+    </fieldset>
+    <fieldset class="large-6 columns">
+      <legend>Choose Your Favorite - not required, you can leave this one blank.</legend>
+      <input type="radio" name="pockets" value="Red" id="pocketsRed"><label for="pocketsRed">Red</label>
+      <input type="radio" name="pockets" value="Blue" id="pocketsBlue"><label for="pocketsBlue">Blue</label>
+      <input type="radio" name="pockets" value="Yellow" id="pocketsYellow"><label for="pocketsYellow">Yellow</label>
+    </fieldset>
+    <fieldset class="large-6 columns">
+      <legend>Check these out</legend>
+      <input id="checkbox1" type="checkbox"><label for="checkbox1">Checkbox 1</label>
+      <input id="checkbox2" type="checkbox" required><label for="checkbox2">Checkbox 2</label>
+      <input id="checkbox3" type="checkbox"><label for="checkbox3">Checkbox 3</label>
+    </fieldset>
+  </div>
+  <div class="row">
+    <fieldset class="large-6 columns">
+      <button class="button" type="submit" value="Submit">Submit</button>
+    </fieldset>
+    <fieldset class="large-6 columns">
+      <button class="button" type="reset" value="Reset">Reset</button>
+    </fieldset>
+  </div>
+</form>
+```
+
+---
+
 ## Accordion 
 
 ```html_example
@@ -275,6 +368,30 @@ description: Everything but.
 
 ---
 
+## Equalizer
+
+```html_example
+<div class="row" data-equalizer data-equalize-on="medium" id="test-eq">
+  <div class="medium-4 columns">
+    <div class="callout" data-equalizer-watch>
+      <img src= "assets/img/square-1.jpg">
+    </div>
+  </div>
+  <div class="medium-4 columns">
+    <div class="callout" data-equalizer-watch>
+      <p>Pellentesque habitant morbi tristique senectus et netus et, ante.</p>
+    </div>
+  </div>
+  <div class="medium-4 columns">
+    <div class="callout" data-equalizer-watch>
+      <img src= "assets/img/rectangle-1.jpg">
+    </div>
+  </div>
+</div>
+```
+
+---
+
 ## Flex Video
 
 ```html_example
@@ -348,6 +465,14 @@ description: Everything but.
     <a class="input-group-button button">Submit</a>
   </div>
 </form>
+```
+
+---
+
+## Interchange
+
+```html_example
+<img data-interchange="[assets/img/interchange/small.jpg, small], [assets/img/interchange/medium.jpg, medium], [assets/img/interchange/large.jpg, large]">
 ```
 
 ---
@@ -460,6 +585,94 @@ description: Everything but.
   <li><a href="#" aria-label="Page 13">13</a></li>
   <li><a href="#" aria-label="Next page">Next <span class="show-for-sr">page</span></a></li>
 </ul>
+```
+
+---
+
+## Progress Bar
+
+```html_example
+<div class="success progress" role="progressbar" tabindex="0" aria-valuenow="25" aria-valuemin="0" aria-valuetext="25 percent" aria-valuemax="100">
+  <div class="progress-meter" style="width: 25%">
+    <p class="progress-meter-text">25%</p>
+  </div>
+</div>
+
+<div class="warning progress">
+  <div class="progress-meter" style="width: 50%">
+    <p class="progress-meter-text">50%</p>
+  </div>
+</div>
+
+<div class="alert progress">
+  <div class="progress-meter" style="width: 75%">
+    <p class="progress-meter-text">75%</p>
+  </div>
+</div>
+```
+
+---
+
+## Responsive Menu
+
+```html_example
+<ul class="vertical medium-horizontal menu">
+  <li><a href="#">Item 1</a></li>
+  <li><a href="#">Item 2</a></li>
+  <li><a href="#">Item 3</a></li>
+</ul>
+```
+
+---
+
+## Responsive Toggle
+
+```html_example
+<div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
+  <button class="menu-icon" type="button" data-toggle></button>
+  <div class="title-bar-title">Menu</div>
+</div>
+
+<div class="top-bar" id="example-menu">
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li class="menu-text">Site Title</li>
+      <li class="has-submenu">
+        <a href="#">One</a>
+        <ul class="submenu menu vertical" data-submenu>
+          <li><a href="#">One</a></li>
+          <li><a href="#">Two</a></li>
+          <li><a href="#">Three</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Two</a></li>
+      <li><a href="#">Three</a></li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu">
+      <li><input type="search" placeholder="Search"></li>
+      <li><button type="button" class="button">Search</button></li>
+    </ul>
+  </div>
+</div>
+```
+
+---
+
+## Reveal
+
+```html_example
+<p><a data-open="exampleModal1">Click me for a modal</a></p>
+
+<div class="reveal" id="exampleModal1" data-reveal>
+  <h1>Awesome. I Have It.</h1>
+  <p class="lead">Your couch. It is mine.</p>
+  <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
+  <button class="close-button" data-close aria-label="Close reveal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
 ```
 
 ---
@@ -626,6 +839,21 @@ description: Everything but.
     <button class="menu-icon" type="button"></button>
   </div>
 </div>
+```
+
+---
+
+## Toggler
+
+```html_example
+<p><a data-toggle="menuBar">Expand!</a></p>
+
+<ul class="menu" id="menuBar" data-toggler=".expanded">
+  <li><a href="#">One</a></li>
+  <li><a href="#">Two</a></li>
+  <li><a href="#">Three</a></li>
+  <li><a href="#">Four</a></li>
+</ul>
 ```
 
 ---
