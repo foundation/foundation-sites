@@ -3,13 +3,15 @@
  * @module foundation.dropdown
  * @requires foundation.util.keyboard
  * @requires foundation.util.box
+ * @requires foundation.util.triggers
  */
 !function($, Foundation){
   'use strict';
   /**
    * Creates a new instance of a dropdown.
    * @class
-   * @param {jQuery} element - jQuery object to make into an accordion menu.
+   * @param {jQuery} element - jQuery object to make into a dropdown menu.
+   *        Object should be of the dropdown panel, rather than its anchor.
    * @param {Object} options - Overrides to the default plugin settings.
    */
   function Dropdown(element, options){
