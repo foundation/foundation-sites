@@ -164,7 +164,9 @@ $-zf-flex-align: (
   align-self: $y;
 }
 
-@mixin foundation-flex-grid {
+@mixin foundation-flex-grid(
+  $gutter: $grid-column-gutter
+) {
   // Row
   .row {
     @include flex-grid-row;
