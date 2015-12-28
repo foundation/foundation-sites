@@ -60,12 +60,7 @@ $table-head-font-color: $body-font-color !default;
 /// @type Boolean
 $show-header-for-stacked: false !default;
 
-/// Adds the general styles for tables.
-/// @param {Keyword} $stripe [$table-stripe] - Uses keywords even, odd, or none to darken rows of the table. The default value is even.
-@mixin table($stripe: $table-stripe) {
-  margin-bottom: $global-margin;
-  border-radius: $global-radius;
-
+@mixin -zf-table-children-styles($stripe: $table-stripe) {
   thead,
   tbody,
   tfoot {
@@ -120,6 +115,25 @@ $show-header-for-stacked: false !default;
     th,
     td {
       padding: $table-padding;
+    }
+  }
+}
+
+/// Adds the general styles for tables.
+/// @param {Keyword} $stripe [$table-stripe] - Uses keywords even, odd, or none to darken rows of the table. The default value is even.
+@mixin table(
+  $stripe: $table-stripe,
+  $nest: false
+) {
+  margin-bottom: $global-margin;
+  border-radius: $global-radius;
+
+  @if $nest {
+    @include -zf-table-children-styles($stripe);
+  }
+  @else {
+    @at-root {
+      @include -zf-table-children-styles($stripe);
     }
   }
 }
@@ -189,9 +203,9 @@ $show-header-for-stacked: false !default;
   }
 }
 
-@mixin foundation-table {
+@mixin foundation-table($nest: false) {
   table {
-    @include table;
+    @include table($nest: $nest);
   }
 
   table.stack {
