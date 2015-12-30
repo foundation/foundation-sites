@@ -178,3 +178,19 @@ $(document)
     return false;
   });
   ```
+## Adding Custom Pattern and Validator
+```javascript
+$(document).foundation();
+Foundation.Abide.defaults.patterns['dashes_only'] = /^[0-9-]*$/;
+Foundation.Abide.defaults.validators['greater_than'] =
+function($el,required,parent) {
+  var from = $('#'+$el.attr('data-greater-than')).val(),
+      to = $el.val();
+  return (parseInt(to) > parseInt(from));
+};
+```
+```html
+<input id="phone" type="text" pattern="dashes_only" required >
+<input id="min" type="number" required >
+<input id="max" type="number" data-abide-validator="greater_than" data-greater-than="min" required>
+```
