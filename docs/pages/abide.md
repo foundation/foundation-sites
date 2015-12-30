@@ -160,21 +160,21 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
 ```javascript
 $(document)
   .bind("invalid.zf.abide", function(ev,elem) {
-    console.log("Field "+ev.target.id+" is invalid");
+    console.log("Field id "+ev.target.id+" is invalid");
   })
   .bind("valid.zf.abide", function(ev,elem) {
-    console.log("Field "+elem.attr('name')+" is valid");
+    console.log("Field name "+elem.attr('name')+" is valid");
   })
   .bind("forminvalid.zf.abide", function(ev,form) {
-    console.log("Form "+ev.target.id+" is invalid");
+    console.log("Form id "+ev.target.id+" is invalid");
   })
   .bind("formvalid.zf.abide", function(ev,form) {
-    console.log("Form "+form.attr('id')+" is invalid");
+    console.log("Form id "+form.attr('id')+" is invalid");
     // ajax post form
   })
   .bind("submit", function(ev) {
     ev.preventDefault();
-    console.log("Submit for form "+ev.target.id+" intercepted");
+    console.log("Submit for form id "+ev.target.id+" intercepted");
     return false;
   });
   ```
