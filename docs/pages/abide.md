@@ -189,17 +189,17 @@ $(document)
     ev.preventDefault();
     console.log("Submit for form id "+ev.target.id+" intercepted");
   });
-  // You can bind field or form event selectively
-  $("#foo").bind("invalid.zf.abide", function(ev,el) {
-    alert("Input field foo is invalid");
-  });
-  $("#bar").bind("formvalid.zf.abide", function(ev,frm) {
-    alert("Form is valid, finally!");
-    // do something perhaps
-  });
+// You can bind field or form event selectively
+$("#foo").bind("invalid.zf.abide", function(ev,el) {
+  alert("Input field foo is invalid");
+});
+$("#bar").bind("formvalid.zf.abide", function(ev,frm) {
+  alert("Form is valid, finally!");
+  // do something perhaps
+});
   ```
 ## Adding Custom Pattern and Validator
-* Override supplied patterns and validators before foundation is initialized
+* Override builtin patterns and validators before foundation is initialized
 * Add new patterns and validators before or after foundation is initialized
 
 ```javascript
