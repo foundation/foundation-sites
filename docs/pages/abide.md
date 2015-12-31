@@ -159,19 +159,24 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
 ## Event Listener
 ```javascript
 $(document)
+  // field element is invalid, example here log event target id
   .bind("invalid.zf.abide", function(ev,elem) {
     console.log("Field id "+ev.target.id+" is invalid");
   })
+  // field element is valid, example here log field name attribute
   .bind("valid.zf.abide", function(ev,elem) {
     console.log("Field name "+elem.attr('name')+" is valid");
   })
+  // form validation failed
   .bind("forminvalid.zf.abide", function(ev,form) {
     console.log("Form id "+ev.target.id+" is invalid");
   })
+  // form validation passed, form will submit if submit event not returned false
   .bind("formvalid.zf.abide", function(ev,form) {
     console.log("Form id "+form.attr('id')+" is invalid");
     // ajax post form
   })
+  // to prevent form from submitting upon successful validation
   .bind("submit", function(ev) {
     ev.preventDefault();
     console.log("Submit for form id "+ev.target.id+" intercepted");
