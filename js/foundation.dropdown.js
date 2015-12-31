@@ -91,8 +91,8 @@
   Dropdown.prototype._init = function(){
     var $id = this.$element.attr('id');
 
-    this.$anchor = $('[data-toggle="' + $id + '"]') || $('[data-open="' + $id + '"]');
-    this.$anchor.attr({
+    this.$anchors = $('[data-toggle="' + $id + '"]') || $('[data-open="' + $id + '"]');
+    this.$anchors.attr({
       'aria-controls': $id,
       'data-is-focus': false,
       'data-yeti-box': $id,
@@ -101,16 +101,28 @@
       // 'data-resize': $id
     });
 
+    this._setCurrentAnchor(this.$anchors.first());
+
     this.options.positionClass = this.getPositionClass();
     this.counter = 4;
     this.usedPositions = [];
     this.$element.attr({
       'aria-hidden': 'true',
       'data-yeti-box': $id,
-      'data-resize': $id,
-      'aria-labelledby': this.$anchor[0].id || Foundation.GetYoDigits(6, 'dd-anchor')
+      'data-resize': $id
     });
     this._events();
+  };
+  /**
+   * Helper function to set the current anchor
+   * @function
+   * @private
+   */
+  Dropdown.prototype._setCurrentAnchor = function($anchor){
+      this.$current_anchor = $anchor;
+      this.$element.attr({
+        'aria-labelledby': this.$current_anchor.attr('id') || Foundation.GetYoDigits(6, 'dd-anchor')
+      });
   };
   /**
    * Helper function to determine current orientation of dropdown pane.
@@ -168,17 +180,17 @@
    * @private
    */
   Dropdown.prototype._setPosition = function(){
-    if(this.$anchor.attr('aria-expanded') === 'false'){ return false; }
+    if(this.$current_anchor.attr('aria-expanded') === 'false'){ return false; }
     var position = this.getPositionClass(),
         $eleDims = Foundation.Box.GetDimensions(this.$element),
-        $anchorDims = Foundation.Box.GetDimensions(this.$anchor),
+        $anchorDims = Foundation.Box.GetDimensions(this.$current_anchor),
         _this = this,
         direction = (position === 'left' ? 'left' : ((position === 'right') ? 'left' : 'top')),
         param = (direction === 'top') ? 'height' : 'width',
         offset = (param === 'height') ? this.options.vOffset : this.options.hOffset;
 
     if(($eleDims.width >= $eleDims.windowDims.width) || (!this.counter && !Foundation.Box.ImNotTouchingYou(this.$element))){
-      this.$element.offset(Foundation.Box.GetOffsets(this.$element, this.$anchor, 'center bottom', this.options.vOffset, this.options.hOffset, true)).css({
+      this.$element.offset(Foundation.Box.GetOffsets(this.$element, this.$current_anchor, 'center bottom', this.options.vOffset, this.options.hOffset, true)).css({
         'width': $eleDims.windowDims.width - (this.options.hOffset * 2),
         'height': 'auto'
       });
@@ -186,7 +198,7 @@
       return false;
     }
 
-    this.$element.offset(Foundation.Box.GetOffsets(this.$element, this.$anchor, position, this.options.vOffset, this.options.hOffset));
+    this.$element.offset(Foundation.Box.GetOffsets(this.$element, this.$current_anchor, position, this.options.vOffset, this.options.hOffset));
 
     while(!Foundation.Box.ImNotTouchingYou(this.$element) && this.counter){
       this._reposition(position);
@@ -208,18 +220,18 @@
     });
 
     if(this.options.hover){
-      this.$anchor.off('mouseenter.zf.dropdown mouseleave.zf.dropdown')
-          .on('mouseenter.zf.dropdown', function(){
+      this.$anchors.off('mouseenter.zf.dropdown mouseleave.zf.dropdown')
+          .on('mouseenter.zf.dropdown', function(event){
             clearTimeout(_this.timeout);
             _this.timeout = setTimeout(function(){
-              _this.open();
-              _this.$anchor.data('hover', true);
-            }, _this.options.hoverDelay);
+              _this.open(event, [this]);
+              $(this).data('hover', true);
+            }.bind(this), _this.options.hoverDelay);
           }).on('mouseleave.zf.dropdown', function(){
             clearTimeout(_this.timeout);
             _this.timeout = setTimeout(function(){
               _this.close();
-              _this.$anchor.data('hover', false);
+              _this.$anchors.data('hover', false);
             }, _this.options.hoverDelay);
           });
       if(this.options.hoverPane){
@@ -230,12 +242,12 @@
               clearTimeout(_this.timeout);
               _this.timeout = setTimeout(function(){
                 _this.close();
-                _this.$anchor.data('hover', false);
+                _this.$anchors.data('hover', false);
               }, _this.options.hoverDelay);
             });
       }
     }
-    this.$anchor.add(this.$element).on('keydown.zf.dropdown', function(e) {
+    this.$anchors.add(this.$element).on('keydown.zf.dropdown', function(e) {
 
       var $target = $(this),
         visibleFocusableElements = Foundation.Keyboard.findFocusable(_this.$element);
@@ -262,7 +274,7 @@
           }
         },
         open: function() {
-          if ($target.is(_this.$anchor)) {
+          if ($target.is(_this.$anchors)) {
             _this.open();
             _this.$element.attr('tabindex', -1).focus();
             e.preventDefault();
@@ -270,7 +282,7 @@
         },
         close: function() {
           _this.close();
-          _this.$anchor.focus();
+          _this.$anchors.focus();
         }
       });
     });
@@ -285,7 +297,7 @@
          _this = this;
      $body.off('click.zf.dropdown')
           .on('click.zf.dropdown', function(e){
-            if(_this.$anchor.is(e.target) || _this.$anchor.find(e.target).length) {
+            if(_this.$current_anchor.is(e.target) || _this.$current_anchor.find(e.target).length) {
               return;
             }
             if(_this.$element.find(e.target).length) {
@@ -301,14 +313,15 @@
    * @fires Dropdown#closeme
    * @fires Dropdown#show
    */
-  Dropdown.prototype.open = function(){
+  Dropdown.prototype.open = function(event, togglers){
+    if (togglers) { this._setCurrentAnchor($(togglers).first()); }
     // var _this = this;
     /**
      * Fires to close other open dropdowns
      * @event Dropdown#closeme
      */
     this.$element.trigger('closeme.zf.dropdown', this.$element.attr('id'));
-    this.$anchor.addClass('hover')
+    this.$current_anchor.addClass('hover')
         .attr({'aria-expanded': true});
     // this.$element/*.show()*/;
     this._setPosition();
@@ -346,7 +359,7 @@
     this.$element.removeClass('is-open')
         .attr({'aria-hidden': true});
 
-    this.$anchor.removeClass('hover')
+    this.$anchors.removeClass('hover')
         .attr('aria-expanded', false);
 
     if(this.classChanged){
@@ -367,12 +380,12 @@
    * Toggles the dropdown pane's visibility.
    * @function
    */
-  Dropdown.prototype.toggle = function(){
+  Dropdown.prototype.toggle = function(event, togglers){
     if(this.$element.hasClass('is-open')){
-      if(this.$anchor.data('hover')) return;
+      if(this.$current_anchor.data('hover')) return;
       this.close();
     }else{
-      this.open();
+      this.open(event, togglers);
     }
   };
   /**
@@ -381,7 +394,7 @@
    */
   Dropdown.prototype.destroy = function(){
     this.$element.off('.zf.trigger').hide();
-    this.$anchor.off('.zf.dropdown');
+    this.$anchors.off('.zf.dropdown');
 
     Foundation.unregisterPlugin(this);
   };
