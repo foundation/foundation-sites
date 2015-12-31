@@ -157,38 +157,57 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
 </form>
 ```
 ## Event Listener
+Setup event listener after foundation is initialized (especially for formvalid/forminvalid). Easier to chain via document selector.
+* valid.zf.abide and invalid.zf.abide are field level events, triggered in validateInput function 
+  *   ev.target is the DOM field element, 
+  *   elem is jQuery selector for field element
+* formvalid.zf.abide and forminvalid.zf.abide are form events, triggered in validateForm function
+  *   ev.target is the DOM form element, 
+  *   frm is jQuery selector for form element
+
 ```javascript
 $(document)
-  // field element is invalid, example here log event target id
+  // field element is invalid
   .bind("invalid.zf.abide", function(ev,elem) {
     console.log("Field id "+ev.target.id+" is invalid");
   })
-  // field element is valid, example here log field name attribute
+  // field element is valid
   .bind("valid.zf.abide", function(ev,elem) {
     console.log("Field name "+elem.attr('name')+" is valid");
   })
   // form validation failed
-  .bind("forminvalid.zf.abide", function(ev,form) {
+  .bind("forminvalid.zf.abide", function(ev,frm) {
     console.log("Form id "+ev.target.id+" is invalid");
   })
   // form validation passed, form will submit if submit event not returned false
-  .bind("formvalid.zf.abide", function(ev,form) {
-    console.log("Form id "+form.attr('id')+" is invalid");
-    // ajax post form
+  .bind("formvalid.zf.abide", function(ev,frm) {
+    console.log("Form id "+frm.attr('id')+" is invalid");
+    // ajax post form 
   })
   // to prevent form from submitting upon successful validation
   .bind("submit", function(ev) {
     ev.preventDefault();
     console.log("Submit for form id "+ev.target.id+" intercepted");
-    return false;
+  });
+  // You can bind field or form event selectively
+  $("#foo").bind("invalid.zf.abide", function(ev,el) {
+    alert("Input field foo is invalid");
+  });
+  $("#bar").bind("formvalid.zf.abide", function(ev,frm) {
+    alert("Form is valid, finally!");
+    // do something perhaps
   });
   ```
 ## Adding Custom Pattern and Validator
+* Override supplied patterns and validators before foundation is initialized
+* Add new patterns and validators before or after foundation is initialized
+
 ```javascript
 $(document).foundation();
 Foundation.Abide.defaults.patterns['dashes_only'] = /^[0-9-]*$/;
 Foundation.Abide.defaults.validators['greater_than'] =
 function($el,required,parent) {
+  // parameter 1 is jQuery selector
   var from = $('#'+$el.attr('data-greater-than')).val(),
       to = $el.val();
   return (parseInt(to) > parseInt(from));
