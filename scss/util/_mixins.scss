@@ -48,13 +48,15 @@
 /// @param {Number} $height - Height of the icon.
 /// @param {Number} $weight - Height of individual bars in the icon.
 /// @param {Number} $bars - Number of bars in the icon.
+/// @param {Map} $bar-shifts - Shifts the bar at a particular index.
 @mixin hamburger(
   $color: #000,
   $color-hover: #666,
   $width: 20px,
   $height: 16px,
   $weight: 2px,
-  $bars: 3
+  $bars: 3,
+  $bar-shifts: ()
 ) {
   // box-shadow CSS output
   $shadow: ();
@@ -70,6 +72,33 @@
   cursor: pointer;
   width: $width;
   height: $height;
+  overflow: hidden;
+  
+  // Shifts the first bar and resets following bars back to original location
+  //    Looks for an index of 1 in $bar-shifts, e.g., $bar-shifts: (1:-8px)
+  @if(map-get($bar-shifts, 1) != null) {
+    $first-bar-shift: map-get($bar-shifts, 1);
+    margin-left: $first-bar-shift;
+  } @else {
+    $first-bar-shift: 0;
+  }
+    
+  // Shifts each specified bar in the hamburger.
+  //   Looks for a specified index in $bar-shifts, e.g., $bar-shifts: (6: 16px),
+  //     which would shift the 6th bar 16px to the right.
+  @function bars($shadow, $color) { 
+    @for $i from 2 through $bars {
+      $bar-shift: map-get($bar-shifts, $i);
+      $shift: 0;
+      @if $bar-shift != null {
+        $shift: $bar-shift;
+      }
+      $actual-shift: $shift + ($first-bar-shift * -1);
+      $offset: ($weight + $spacing) * ($i - 1);
+      $shadow: append($shadow, $actual-shift $offset 0 $color, comma);
+    }
+    @return $shadow;
+  }
 
   // Icon bars
   &::after {
@@ -81,26 +110,14 @@
     background: $color;
     top: 0;
     left: 0;
-
-    @for $i from 2 through $bars {
-      $offset: ($weight + $spacing) * ($i - 1);
-      $shadow: append($shadow, 0 $offset 0 $color, comma);
-    }
-
-    box-shadow: $shadow;
+    box-shadow: bars($shadow:$shadow, $color: $color);
   }
 
   // Hover state
   @if $color-hover {
-    // Generate CSS
-    @for $i from 2 through $bars {
-      $offset: ($weight + $spacing) * ($i - 1);
-      $hover-shadow: append($hover-shadow, 0 $offset 0 $color-hover, comma);
-    }
-
     &:hover::after {
       background: $color-hover;
-      box-shadow: $hover-shadow;
+      box-shadow: bars($shadow:$hover-shadow, $color: $color-hover);
     }
   }
 }
