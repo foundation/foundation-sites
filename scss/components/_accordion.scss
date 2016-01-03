@@ -49,6 +49,11 @@ $accordion-content-padding: 1rem !default;
   border: $accordion-content-border;
   border-radius: $global-radius;
   margin-#{$global-left}: 0;
+
+  // Remove the border on the last container
+  :last-child > & {
+    border-bottom-width: 0;
+  }
 }
 
 /// Adds styles for the title of an accordion item. Apply this to the link within an accordion item.
@@ -64,11 +69,6 @@ $accordion-content-padding: 1rem !default;
   &:hover,
   &:focus {
     background-color: $accordion-item-background-hover;
-  }
-
-  // Remove the border on the last title
-  :last-child > & {
-    border-bottom-width: 0;
   }
 
   @if $accordion-plusminus {
