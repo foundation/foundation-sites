@@ -409,7 +409,6 @@
    * @function
    */
   Orbit.prototype.destroy = function(){
-    delete this.timer;
     this.$element.off('.zf.orbit').find('*').off('.zf.orbit').end().hide();
     Foundation.unregisterPlugin(this);
   };
