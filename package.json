@@ -16,6 +16,8 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "babel-core": "^6.3.26",
+    "babel-preset-es2015": "^6.3.13",
     "bootcamp": "^1.1.7",
     "browser-sync": "^2.8.2",
     "clipboard": "^1.5.5",
@@ -23,6 +25,7 @@
     "gitty": "^3.3.0",
     "gulp": "^3.8.10",
     "gulp-autoprefixer": "^2.3.1",
+    "gulp-babel": "^6.1.1",
     "gulp-cache-bust": "^1.0.2",
     "gulp-concat": "^2.4.3",
     "gulp-filter": "^2.0.2",
