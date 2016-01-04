@@ -237,8 +237,8 @@
 
       if(isLeftHndl){
         css[lOrT] = (pctOfBar > 0 ? pctOfBar * 100 : 0) + '%';//
-        dim = /*Math.abs*/((percent(this.$handle2.position()[lOrT] + halfOfHandle, elemDim) - parseFloat(pctOfBar)) * 100).toFixed(this.options.decimal) + '%';
-        css['min-' + hOrW] = dim;
+        dim = ((this.$handle2.attr('aria-valuenow') - this.$handle.attr('aria-valuenow')) / this.options.end) * 100;
+        css['min-' + hOrW] = dim + '%';
         if(cb && typeof cb === 'function'){ cb(); }
       }else{
         var handleLeft = parseFloat(this.$handle[0].style.left);
@@ -328,6 +328,8 @@
           // eleDim = this.$element[0].getBoundingClientRect()[param],
           offsetPct = percent(barXY, barDim);
       value = (this.options.end - this.options.start) * offsetPct;
+      // turn everything around for RTL
+      if (Foundation.rtl() && !this.options.vertical) {value = this.options.end - value;}
       hasVal = false;
 
       if(!$handle){//figure out which handle it is, pass it to the next function.
