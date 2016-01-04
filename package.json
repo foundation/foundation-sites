@@ -17,6 +17,7 @@
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.3.26",
+    "babel-plugin-transform-es2015-modules-umd": "^6.3.13",
     "babel-preset-es2015": "^6.3.13",
     "bootcamp": "^1.1.7",
     "browser-sync": "^2.8.2",
