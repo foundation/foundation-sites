@@ -5,6 +5,13 @@ js: js/foundation.magellan.js
 tags:
   - navigation
 ---
+
+<div class="callout alert">
+  <p>
+    Requires [Motion-UI](https://github.com/zurb/motion-ui).
+  </p>
+</div>
+
 <div data-sticky-container>
   <div class="sticky" id="sticky-magellan" style="width:100%;" data-sticky data-margin-top="0" data-margin-bottom="0" data-top-anchor="setup" data-btm-anchor="destroy:bottom">
     <nav data-magellan class="sticky-mag" data-bar-offset="25">
