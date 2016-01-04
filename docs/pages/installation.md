@@ -51,9 +51,9 @@ bower install
 
 Finally, run `npm start` to run the Sass compiler. It will re-run every time you save a Sass file.
 
-### Zurb Template
+### ZURB Template
 
-To manually set up the Zurb template, first download it with Git:
+To manually set up the ZURB template, first download it with Git:
 
 ```bash
 git clone https://github.com/zurb/foundation-zurb-template projectname
