@@ -7,24 +7,26 @@ js: js/foundation.accordion.js
 
 ## Basics
 
-The container for an accordion needs the class `.accordion`, and the attributes `data-accordion` and `role="tablist"`. Note that in these examples, we use a `<ul>`, but you can use any element you want.
+The container for an accordion needs the class `.accordion`, and the attribute `data-accordion`. Note that in these examples, we use a `<ul>`, but you can use any element you want.
 
 ```html
-<ul class="accordion" data-accordion role="tablist"></ul>
+<ul class="accordion" data-accordion></ul>
 ```
 
-Each accordion item has the class `.accordion-item`. Inside each item is a title (`.accordion-title`) and corresponding content pane (`.accordion-content`). Note the use of the `role` element, as well as several ARIA attributes, in the below example.
+The default class for an accordion section is `.accordion-item`. Inside each section is a title, default `.accordion-title`, and corresponding content pane `.accordion-content`. Please note, the only opinionated component here is the use of an anchor `<a></a>` for the title link, which controls the opening and closing of the pane. You can include your own attributes, or our JavaScript will assign it for you. JS assigned attributes include unique id's, aria attributes, and roles. You do still need to include the `data-tab-content` attribute for your content pane.
 
+Loading a page with an open pane is achieved by adding the `is-active` class to one, (or more, if using the multiExpand option), `.accordion-item` element.
+
+This is the minimum markup for creating an Accordion with Foundation, repeating the `accordion-item`, `accordion-title`, and `accordion-content` elements as many times as you require.
 ```html
-<ul class="accordion" data-accordion role="tablist">
+<ul class="accordion" data-accordion>
   <li class="accordion-item is-active">
-    <!-- The tab title needs role="tab", an href, a unique ID, and aria-controls. -->
-    <a href="#panel1d" role="tab" class="accordion-title" id="panel1d-heading" aria-controls="panel1d">Accordion 1</a>
-    <!-- The content pane needs an ID that matches the above href, role="tabpanel", data-tab-content, and aria-labelledby. -->
-    <div id="panel1d" class="accordion-content" role="tabpanel" data-tab-content aria-labelledby="panel1d-heading">
-      Panel 1. Lorem ipsum dolor
+    <a class="accordion-title">Accordion 1</a>
+    <div class="accordion-content" data-tab-content>
+      I would start in the open state, due to using the `is-active` state class.
     </div>
   </li>
+  <!-- ... -->
 </ul>
 ```
 
@@ -32,21 +34,21 @@ Once you put it all together, here's what you get!
 
 <ul class="accordion" data-accordion>
   <li class="accordion-item is-active">
-    <a href="#" class="accordion-title">Accordion 1</a>
+    <a class="accordion-title">Accordion 1</a>
     <div class="accordion-content" data-tab-content >
       <p>Panel 1. Lorem ipsum dolor</p>
       <a href="#">Nowhere to Go</a>
     </div>
   </li>
   <li class="accordion-item">
-    <a href="#" class="accordion-title">Accordion 2</a>
+    <a class="accordion-title">Accordion 2</a>
     <div class="accordion-content" data-tab-content>
       <textarea></textarea>
       <button class="button">I do nothing!</button>
     </div>
   </li>
   <li class="accordion-item">
-    <a href="#" class="accordion-title">Accordion 3</a>
+    <a class="accordion-title">Accordion 3</a>
     <div class="accordion-content" data-tab-content>
       Pick a date!
       <input type="date"></input>

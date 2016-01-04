@@ -12,6 +12,7 @@
    * @class
    * @fires Accordion#init
    * @param {jQuery} element - jQuery object to make into an accordion.
+   * @param {Object} options - a plain object with settings to override the default options.
    */
   function Accordion(element, options){
     this.$element = element;
