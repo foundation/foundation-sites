@@ -24,7 +24,7 @@ The image set is a comma-separated list of items with this format:
 [image_path, media_query]
 ```
 
-`image_path` can be a relative or absolute path. `media_query` can be any CSS media query, or a Foundation breakpoint&mdash;see [Named Breakpoints](#named-breakpoints) below.
+`image_path` can be a relative or absolute path. `media_query` can be any CSS media query, or a Foundation breakpoint&mdash;see [Named Media Queries](#named-media-queries) below.
 
 <div class="callout primary">
   <p>Interchange evaluates rules in order, and the last rule to match will be used. For this reason, you should order your rules from smallest screen to largest screen.</p>
