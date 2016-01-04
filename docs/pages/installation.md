@@ -31,6 +31,52 @@ foundation new
 
 ---
 
+## Manual Setup
+
+### Basic Template
+
+To manually set up the basic template, first download it with Git:
+
+```bash
+git clone https://github.com/zurb/foundation-sites-template projectname
+```
+
+Then open the folder in your command line, and install the needed dependencies:
+
+```bash
+cd projectname
+npm install
+bower install
+```
+
+Finally, run `npm start` to run the Sass compiler. It will re-run every time you save a Sass file.
+
+### Zurb Template
+
+To manually set up the Zurb template, first download it with Git:
+
+```bash
+git clone https://github.com/zurb/foundation-zurb-template projectname
+```
+
+Then open the folder in your command line, and install the needed dependencies:
+
+```bash
+cd projectname
+npm install
+bower install
+```
+
+Finally, run `npm start` to run Gulp. Your finished site will be created in a folder called `dist`, viewable at this URL:
+
+```
+http://localhost:8000
+```
+
+To create compressed, production-ready assets, run `npm run build`.
+
+---
+
 ## CSS Download
 
 If you aren't into Sass, we have a starter template with compiled CSS and JavaScript, as well as a starting `index.html` file for you to hack on. Just unzip and get coding!
