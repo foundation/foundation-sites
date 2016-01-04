@@ -162,7 +162,13 @@
       .parent().addClass('is-active');
 
     // Foundation.Move(_this.options.slideSpeed, $target, function(){
-      $target.slideDown(_this.options.slideSpeed);
+      $target.slideDown(_this.options.slideSpeed, function () {
+        /**
+         * Fires when the tab is done opening.
+         * @event Accordion#down
+         */
+        _this.$element.trigger('down.zf.accordion', [$target]);
+      });
     // });
 
     // if(!firstTime){
@@ -172,11 +178,6 @@
       'aria-expanded': true,
       'aria-selected': true
     });
-    /**
-     * Fires when the tab is done opening.
-     * @event Accordion#down
-     */
-    this.$element.trigger('down.zf.accordion', [$target]);
   };
 
   /**
@@ -195,7 +196,13 @@
     }
 
     // Foundation.Move(this.options.slideSpeed, $target, function(){
-      $target.slideUp(_this.options.slideSpeed);
+      $target.slideUp(_this.options.slideSpeed, function () {
+        /**
+         * Fires when the tab is done collapsing up.
+         * @event Accordion#up
+         */
+        _this.$element.trigger('up.zf.accordion', [$target]);
+      });
     // });
 
     $target.attr('aria-hidden', true)
@@ -205,12 +212,6 @@
      'aria-expanded': false,
      'aria-selected': false
    });
-
-    /**
-     * Fires when the tab is done collapsing up.
-     * @event Accordion#up
-     */
-    this.$element.trigger('up.zf.accordion', [$target]);
   };
 
   /**

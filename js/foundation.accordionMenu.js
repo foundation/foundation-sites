@@ -212,13 +212,14 @@
       .parent('.has-submenu').attr({'aria-expanded': true, 'aria-selected': true});
 
       Foundation.Move(this.options.slideSpeed, $target, function(){
-        $target.slideDown(_this.options.slideSpeed);
+        $target.slideDown(_this.options.slideSpeed, function () {
+          /**
+           * Fires when the menu is done opening.
+           * @event AccordionMenu#down
+           */
+          _this.$element.trigger('down.zf.accordionMenu', [$target]);
+        });
       });
-    /**
-     * Fires when the menu is done collapsing up.
-     * @event AccordionMenu#down
-     */
-    this.$element.trigger('down.zf.accordionMenu', [$target]);
   };
 
   /**
@@ -229,7 +230,13 @@
   AccordionMenu.prototype.up = function($target) {
     var _this = this;
     Foundation.Move(this.options.slideSpeed, $target, function(){
-      $target.slideUp(_this.options.slideSpeed);
+      $target.slideUp(_this.options.slideSpeed, function () {
+        /**
+         * Fires when the menu is done collapsing up.
+         * @event AccordionMenu#up
+         */
+        _this.$element.trigger('up.zf.accordionMenu', [$target]);
+      });
     });
     $target.attr('aria-hidden', true)
            .find('[data-submenu]').slideUp(0).attr('aria-hidden', true).end()
@@ -238,12 +245,6 @@
     // $target.slideUp(this.options.slideSpeed, function() {
     //   $target.find('[data-submenu]').slideUp(0).attr('aria-hidden', true);
     // }).attr('aria-hidden', true).parent('.has-submenu').attr({'aria-expanded': false, 'aria-selected': false});
-
-    /**
-     * Fires when the menu is done collapsing up.
-     * @event AccordionMenu#up
-     */
-    this.$element.trigger('up.zf.accordionMenu', [$target]);
   };
 
   /**
