@@ -186,13 +186,8 @@ $-zf-flex-align: (
   }
 
   // Column
-  %flex-column {
+  .column {
     @include flex-grid-column;
-  }
-
-  .column,
-  .columns {
-    @extend %flex-column;
   }
 
   @include -zf-each-breakpoint {
@@ -245,7 +240,7 @@ $-zf-flex-align: (
       > .column { @include grid-col-collapse; }
     }
 
-    &.#{$-zf-size}-uncollapse {
+    .#{$-zf-size}-uncollapse {
       @if $grid-column-gutter {
         $gutter: $grid-column-gutter;
       }
@@ -277,5 +272,10 @@ $-zf-flex-align: (
     .column.align-#{$vdir} {
       @include flex-grid-column-align($vdir);
     }
+  }
+
+  .columns {
+    // scss-lint:disable PlaceholderInExtend
+    @extend .column;
   }
 }

@@ -311,14 +311,14 @@
 
     var noError = acc.indexOf(false) === -1;
 
-    this.$element.find('[data-abide-error]').css('display', (noError ? 'none' : 'block'))
+    this.$element.find('[data-abide-error]').css('display', (noError ? 'none' : 'block'));
         /**
          * Fires when the form is finished validating. Event trigger is either `formvalid.zf.abide` or `forminvalid.zf.abide`.
          * Trigger includes the element of the form.
          * @event Abide#formvalid
          * @event Abide#forminvalid
          */
-        .trigger((noError ? 'formvalid' : 'forminvalid') + '.zf.abide', [this.$element]);
+    this.$element.trigger((noError ? 'formvalid' : 'forminvalid') + '.zf.abide', [this.$element]);
 
     return noError;
   };

@@ -115,11 +115,13 @@
     }
 
     // Responsive collapsing
-    &.#{$-zf-size}-#{$collapse} {
+    .#{$-zf-size}-#{$collapse} {
       > .#{$column} { @include grid-col-collapse; }
     }
 
-    &.#{$-zf-size}-#{$uncollapse} {
+    .#{$-zf-size}-#{$uncollapse} {
+      $gutter: null;
+      
       @if $grid-column-gutter {
         $gutter: $grid-column-gutter;
       }
