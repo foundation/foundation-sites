@@ -266,10 +266,10 @@
         // css['min-' + hOrW] = dim + '%';
         if(cb && typeof cb === 'function'){ cb(); }
       }else{
-        var handleLeft = parseFloat(this.$handle[0].style.left);
+        var handlePos = parseFloat(this.$handle[0].style[lOrT]);
         //further revised
-        var thing = movement - (parseFloat(this.$handle[0].style[lOrT]) || this.options.initialStart) + halfOfHandle;
-        location = (location - ((!isNaN(handleLeft) ? handleLeft : this.options.end - location)));
+        var thing = movement - (isNaN(handlePos) ? this.options.initialStart : handlePos) + halfOfHandle;
+        // location = (location - ((!isNaN(handleLeft) ? handleLeft : this.options.end - location)));
         console.log('test',movement, halfOfHandle, thing);
         // movement += halfOfHandle;
         // revised edition
