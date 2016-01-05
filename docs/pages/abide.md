@@ -216,5 +216,5 @@ function($el,required,parent) {
 ```html
 <input id="phone" type="text" pattern="dashes_only" required >
 <input id="min" type="number" required >
-<input id="max" type="number" data-abide-validator="greater_than" data-greater-than="min" required>
+<input id="max" type="number" data-validator="greater_than" data-greater-than="min" required>
 ```
