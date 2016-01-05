@@ -33,7 +33,7 @@ $offcanvas-fixed-reveal: true !default;
 /// @type Color
 $offcanvas-exit-background: rgba($white, 0.25) !default;
 
-/// Height of a top or bottom off-canvas menu.
+/// Height of a vertical off-canvas menu.
 /// @type Number
 $offcanvas-vertical-size: 250px !default;
 
@@ -131,10 +131,6 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5) !default;
     top: -$vertical-size;
     width: 100%;
   }
-  @else if $position == bottom {
-    bottom: -$vertical-size;
-    width: 100%;
-  }
 
   // Generates an open state class that matches the width of the menu
   @at-root {
@@ -147,9 +143,6 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5) !default;
       }
       @else if $position == top {
         transform: translateY($vertical-size);
-      }
-      @else if $position == bottom {
-        transform: translateY(-$vertical-size);
       }
     }
   }
@@ -182,7 +175,6 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5) !default;
     &.position-left   { @include off-canvas-position(left); }
     &.position-right  { @include off-canvas-position(right); }
     &.position-top    { @include off-canvas-position(top); }
-    &.position-bottom { @include off-canvas-position(bottom); }
   }
 
   // Reveal off-canvas menu on larger screens
@@ -197,12 +189,8 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5) !default;
           @include off-canvas-reveal(right);
         }
 
-        .position-right.reveal-for-#{$name} {
+        .position-top.reveal-for-#{$name} {
           @include off-canvas-reveal(top);
-        }
-
-        .position-right.reveal-for-#{$name} {
-          @include off-canvas-reveal(bottom);
         }
       }
     }
