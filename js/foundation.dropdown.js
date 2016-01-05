@@ -142,9 +142,12 @@
     }else if(position === 'right' && (this.usedPositions.indexOf('left') > -1) && (this.usedPositions.indexOf('bottom') < 0)){
       this.$element.removeClass(position);
     }
-    //if nothing cleared, set to bottom
+    //if nothing cleared, set to positionClass otherwise bottom
     else{
       this.$element.removeClass(position);
+      if (this.options.positionClass){
+        this.$element.addClass(this.options.positionClass);
+      }
     }
     this.classChanged = true;
     this.counter--;
