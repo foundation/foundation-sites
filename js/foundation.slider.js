@@ -248,25 +248,32 @@
       var isLeftHndl = this.handles.index($hndl) === 0,
           dim,
           //revised
-          halfOfHandle =  ~~(percent(handleDim/2, elemDim) * 100),
+          halfOfHandle =  ~~(percent(handleDim, elemDim) * 100),
           idx = this.handles.index($hndl);
-          console.log(halfOfHandle);
+          // console.log(halfOfHandle);
       if(isLeftHndl){
-        css[lOrT] = (pctOfBar > 0 ? (pctOfBar * 100) : 0) + '%';//
-        dim = ((this.$handle2.attr('aria-valuenow') - this.$handle.attr('aria-valuenow')) / this.options.end) * 100;
+        var test = halfOfHandle * pctOfBar;
+
+        console.log(test, parseFloat(pctOfBar), percent(handleDim, elemDim));
+        css[lOrT] = movement + '%';//
+        //original
+        // css[lOrT] = (pctOfBar > 0 ? (pctOfBar * 100) : 0) + '%';//
+        dim = percent((this.$handle2.attr('aria-valuenow') - this.$handle.attr('aria-valuenow')), this.options.end) * 100;
+        // dim = ((this.$handle2.attr('aria-valuenow') - this.$handle.attr('aria-valuenow')) / this.options.end) * 100;
         css['min-' + hOrW] = dim + '%';
         if(cb && typeof cb === 'function'){ cb(); }
       }else{
         var handleLeft = parseFloat(this.$handle[0].style.left);
         //further revised
         console.log('loc before math',location);
-        location = location - ((!isNaN(handleLeft) ? handleLeft : this.options.end - location));
-
+        location = (location - ((!isNaN(handleLeft) ? handleLeft : this.options.end - location)));
+        movement += halfOfHandle;
         // revised edition
         // location = (location < this.options.end ? location : this.options.end) - ((!isNaN(handleLeft) ? handleLeft : this.options.end - location));
 
         // original
         // location = (location < 100 ? location : 100) - (!isNaN(handleLeft) ? handleLeft : this.options.end - location);
+        // css['min-' + hOrW] = movement - parseFloat(this.$handle.attr('aria-valuenow')) + halfOfHandle /2 + '%';
         css['min-' + hOrW] = location + '%';
         console.log('loc aftermath, lol',location);
       }
