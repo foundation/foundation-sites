@@ -53,6 +53,7 @@ $breakpoint-classes: (small medium large) !default;
 
         @if $next-bp == null {
           $bp-max: null;
+          @warn 'breakpoint(): the media query "#{$val}" cannot be used because #{$bp} is the largest breakpoint.';
         }
         @else {
           $bp-max: $next-bp;
@@ -262,5 +263,4 @@ $xxlarge-only: null;
 
 @if map-has-key($breakpoints, xxlarge) {
   $xxlarge-up: screen and #{breakpoint(xxlarge)};
-  $xxlarge-only: screen and #{breakpoint(xxlarge only)};
 }
