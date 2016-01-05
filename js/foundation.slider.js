@@ -196,12 +196,13 @@
   Slider.prototype._setHandlePos = function($hndl, location, noInvert, cb){
   //might need to alter that slightly for bars that will have odd number selections.
     location = parseFloat(location);//on input change events, convert string to number...grumble.
-    // prevent slider from running out of bounds
+
+    // prevent slider from running out of bounds, if value exceeds the limits set through options, override the value to min/max
     if(location < this.options.start){ location = this.options.start; }
     else if(location > this.options.end){ location = this.options.end; }
 
     var isDbl = this.options.doubleSided;
-        // callback = cb || null;
+
 
     if(isDbl){ //this block is to prevent 2 handles from crossing eachother. Could/should be improved.
       if(this.handles.index($hndl) === 0){
@@ -213,6 +214,7 @@
       }
     }
 
+    //this is for single-handled vertical sliders, it adjusts the value to account for the slider being "upside-down"
     if(this.options.vertical && !noInvert){
       location = this.options.end - location;
     }
@@ -222,26 +224,15 @@
         vert = this.options.vertical,
         hOrW = vert ? 'height' : 'width',
         lOrT = vert ? 'top' : 'left',
-        //totes new
         handleDim = $hndl[0].getBoundingClientRect()[hOrW],
-        //original -> moved to if/else for double sided logic
-        // halfOfHandle = $hndl[0].getBoundingClientRect()[hOrW] / 2,
         elemDim = this.$element[0].getBoundingClientRect()[hOrW],
 
         pctOfBar = percent(location, this.options.end).toFixed(2),
-        //further revised
         pxToMove = (elemDim - handleDim) * pctOfBar,
-        //revised
-        // pxToMove = (elemDim - halfOfHandle *2) * pctOfBar,
-        //original
-        // pxToMove = (elemDim - halfOfHandle) * pctOfBar,
         movement = (percent(pxToMove, elemDim) * 100).toFixed(this.options.decimal),
-        //revised
         location = parseFloat(location.toFixed(this.options.decimal)),
-        //original
-        // location = location > this.options.start ? parseFloat(location.toFixed(this.options.decimal)) : this.options.start,
-        anim, prog, start = null, css = {};
-        // console.log(halfOfHandle);
+        css = {};
+
     this._setValues($hndl, location);
 
     if(this.options.doubleSided){//update to calculate based on values set to respective inputs??
@@ -250,37 +241,17 @@
           //revised
           halfOfHandle =  ~~(percent(handleDim, elemDim) * 100),
           idx = this.handles.index($hndl);
-          console.log(halfOfHandle);
-      if(isLeftHndl){
-        var test = halfOfHandle * pctOfBar;
 
-        // console.log(test, parseFloat(pctOfBar), percent(handleDim, elemDim));
+      if(isLeftHndl){
         css[lOrT] = movement + '%';//
-        //original
-        // css[lOrT] = (pctOfBar > 0 ? (pctOfBar * 100) : 0) + '%';//
-        dim = percent((this.$handle2.attr('aria-valuenow') - this.$handle.attr('aria-valuenow')), this.options.end) * 100;
-        var thing = parseFloat(this.$handle2[0].style[lOrT]) - movement + halfOfHandle;
-        // console.log(thing, movement);
-        // dim = ((this.$handle2.attr('aria-valuenow') - this.$handle.attr('aria-valuenow')) / this.options.end) * 100;
-        css['min-' + hOrW] = thing + '%';
-        // css['min-' + hOrW] = dim + '%';
-        if(cb && typeof cb === 'function'){ cb(); }
+        dim = parseFloat(this.$handle2[0].style[lOrT]) - movement + halfOfHandle;
+        css['min-' + hOrW] = dim + '%';
+
+        if(cb && typeof cb === 'function'){ cb(); }//this is only needed for the initialization of 2 handled sliders
       }else{
         var handlePos = parseFloat(this.$handle[0].style[lOrT]);
-        //further revised
-        var thing = movement - (isNaN(handlePos) ? this.options.initialStart : handlePos) + halfOfHandle;
-        // location = (location - ((!isNaN(handleLeft) ? handleLeft : this.options.end - location)));
-        console.log('test',movement, halfOfHandle, thing);
-        // movement += halfOfHandle;
-        // revised edition
-        // location = (location < this.options.end ? location : this.options.end) - ((!isNaN(handleLeft) ? handleLeft : this.options.end - location));
-
-        // original
-        // location = (location < 100 ? location : 100) - (!isNaN(handleLeft) ? handleLeft : this.options.end - location);
-        // css['min-' + hOrW] = movement - parseFloat(this.$handle.attr('aria-valuenow')) + halfOfHandle /2 + '%';
-        css['min-' + hOrW] = thing + '%';
-        // css['min-' + hOrW] = location + '%';
-        console.log('loc aftermath, lol',location);
+        dim = movement - (isNaN(handlePos) ? this.options.initialStart : handlePos) + halfOfHandle;
+        css['min-' + hOrW] = dim + '%';
       }
     }
 
@@ -294,7 +265,7 @@
                 });
 
 
-    var moveTime = _this.$element.data('dragging') ? 1000/60 : _this.options.moveTime;
+    var moveTime = this.$element.data('dragging') ? 1000/60 : this.options.moveTime;
 
     Foundation.Move(moveTime, $hndl, function(){
       $hndl.css(lOrT, movement + '%');
@@ -339,7 +310,6 @@
    * @param {Number} val - floating point of the new value.
    */
   Slider.prototype._setValues = function($handle, val){
-    // console.log(val);
     var idx = this.options.doubleSided ? this.handles.index($handle) : 0;
     this.inputs.eq(idx).val(val);
     $handle.attr('aria-valuenow', val);
