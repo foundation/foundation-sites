@@ -453,7 +453,7 @@ description: Everything but.
   </div>
   <div class="row">
     <div class="small-3 columns">
-      <label for="middle-label" class="right middle">Label</label>
+      <label for="middle-label" class="text-right middle">Label</label>
     </div>
     <div class="small-9 columns">
       <input type="text" id="middle-label" placeholder="Right- and middle-aligned text input">

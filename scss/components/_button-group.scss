@@ -43,11 +43,15 @@ $buttongroup-expand-max: 6 !default;
 }
 
 /// Creates a full-width button group, making each button equal width.
-/// @param {Keyword|Number} $count [auto] - Number of buttons inside the button group. Set to `auto` to generate CSS that will account for a variable number of buttons.
 /// @param {String} $selector [$buttongroup-child-selector] - Selector for the buttons inside a button group.
 @mixin button-group-expand(
-  $selector: $buttongroup-child-selector
+  $selector: $buttongroup-child-selector,
+  $count: null
 ) {
+  @if $count != null {
+    @warn 'button-group-expand(): the $count property is no longer needed. This parameter will be removed in Foundation 6.2.';
+  }
+
   display: table;
   table-layout: fixed;
   width: 100%;
