@@ -200,10 +200,10 @@
     if(location < this.options.start){ location = this.options.start; }
     else if(location > this.options.end){ location = this.options.end; }
 
-    var isDbl = this.options.doubleSided,
-        callback = cb || null;
+    var isDbl = this.options.doubleSided;
+        // callback = cb || null;
 
-    if(isDbl){
+    if(isDbl){ //this block is to prevent 2 handles from crossing eachother. Could/should be improved.
       if(this.handles.index($hndl) === 0){
         var h2Val = parseFloat(this.$handle2.attr('aria-valuenow'));
         location = location >= h2Val ? h2Val - this.options.step : location;
@@ -216,34 +216,59 @@
     if(this.options.vertical && !noInvert){
       location = this.options.end - location;
     }
+
+
     var _this = this,
         vert = this.options.vertical,
         hOrW = vert ? 'height' : 'width',
         lOrT = vert ? 'top' : 'left',
-        halfOfHandle = $hndl[0].getBoundingClientRect()[hOrW] / 2,
+        //totes new
+        handleDim = $hndl[0].getBoundingClientRect()[hOrW],
+        //original -> moved to if/else for double sided logic
+        // halfOfHandle = $hndl[0].getBoundingClientRect()[hOrW] / 2,
         elemDim = this.$element[0].getBoundingClientRect()[hOrW],
-        pctOfBar = percent(location, this.options.end).toFixed(2),
-        pxToMove = (elemDim - halfOfHandle) * pctOfBar,
-        movement = (percent(pxToMove, elemDim) * 100).toFixed(this.options.decimal),
-        location = location > 0 ? parseFloat(location.toFixed(this.options.decimal)) : 0,
-        anim, prog, start = null, css = {};
 
+        pctOfBar = percent(location, this.options.end).toFixed(2),
+        //further revised
+        pxToMove = (elemDim - handleDim) * pctOfBar,
+        //revised
+        // pxToMove = (elemDim - halfOfHandle *2) * pctOfBar,
+        //original
+        // pxToMove = (elemDim - halfOfHandle) * pctOfBar,
+        movement = (percent(pxToMove, elemDim) * 100).toFixed(this.options.decimal),
+        //revised
+        location = parseFloat(location.toFixed(this.options.decimal)),
+        //original
+        // location = location > this.options.start ? parseFloat(location.toFixed(this.options.decimal)) : this.options.start,
+        anim, prog, start = null, css = {};
+        // console.log(halfOfHandle);
     this._setValues($hndl, location);
 
     if(this.options.doubleSided){//update to calculate based on values set to respective inputs??
       var isLeftHndl = this.handles.index($hndl) === 0,
           dim,
+          //revised
+          halfOfHandle =  ~~(percent(handleDim/2, elemDim) * 100),
           idx = this.handles.index($hndl);
-
+          console.log(halfOfHandle);
       if(isLeftHndl){
-        css[lOrT] = (pctOfBar > 0 ? pctOfBar * 100 : 0) + '%';//
+        css[lOrT] = (pctOfBar > 0 ? (pctOfBar * 100) : 0) + '%';//
         dim = ((this.$handle2.attr('aria-valuenow') - this.$handle.attr('aria-valuenow')) / this.options.end) * 100;
         css['min-' + hOrW] = dim + '%';
         if(cb && typeof cb === 'function'){ cb(); }
       }else{
         var handleLeft = parseFloat(this.$handle[0].style.left);
-        location = (location < 100 ? location : 100) - (!isNaN(handleLeft) ? handleLeft : this.options.end - location);
+        //further revised
+        console.log('loc before math',location);
+        location = location - ((!isNaN(handleLeft) ? handleLeft : this.options.end - location));
+
+        // revised edition
+        // location = (location < this.options.end ? location : this.options.end) - ((!isNaN(handleLeft) ? handleLeft : this.options.end - location));
+
+        // original
+        // location = (location < 100 ? location : 100) - (!isNaN(handleLeft) ? handleLeft : this.options.end - location);
         css['min-' + hOrW] = location + '%';
+        console.log('loc aftermath, lol',location);
       }
     }
 
@@ -255,16 +280,20 @@
                      */
                     _this.$element.trigger('moved.zf.slider', [$hndl]);
                 });
+
+
     var moveTime = _this.$element.data('dragging') ? 1000/60 : _this.options.moveTime;
-    /*var move = new */Foundation.Move(moveTime, $hndl, function(){
+
+    Foundation.Move(moveTime, $hndl, function(){
       $hndl.css(lOrT, movement + '%');
+
       if(!_this.options.doubleSided){
         _this.$fill.css(hOrW, pctOfBar * 100 + '%');
       }else{
         _this.$fill.css(css);
       }
     });
-    // move.do();
+
   };
   /**
    * Sets the initial attribute for the slider element.
@@ -298,6 +327,7 @@
    * @param {Number} val - floating point of the new value.
    */
   Slider.prototype._setValues = function($handle, val){
+    // console.log(val);
     var idx = this.options.doubleSided ? this.handles.index($handle) : 0;
     this.inputs.eq(idx).val(val);
     $handle.attr('aria-valuenow', val);
