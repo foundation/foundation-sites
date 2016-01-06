@@ -234,7 +234,9 @@ OffCanvas.prototype.open = function(event, trigger) {
   this.$element.attr('aria-hidden', 'false')
       .trigger('opened.zf.offcanvas');
 
-
+  if(this.options.closeOnClick){
+    this.$exiter.addClass('is-visible');
+  }
   if(trigger){
     this.$lastTrigger = trigger.attr('aria-expanded', 'true');
   }
@@ -317,6 +319,9 @@ OffCanvas.prototype.close = function(cb) {
   //     $(window).off('scroll.zf.offcanvas');
   //   }, this.options.transitionTime);
   // }
+  if(this.options.closeOnClick){
+    this.$exiter.removeClass('is-visible');
+  }
 
   this.$lastTrigger.attr('aria-expanded', 'false');
   if(this.options.trapFocus){
