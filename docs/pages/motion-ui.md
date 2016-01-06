@@ -66,6 +66,16 @@ Finally, import the library into your Sass file.
 @import 'motion-ui'
 ```
 
+Or, another way to start using Motion UI is through a CDN.
+
+```html
+<!-- Insert this within your head tag and after foundation.css -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.min.css" />
+
+<!-- Insert this before the closing body tag and after foundation.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.min.js">
+```
+
 ---
 
 ## Built-in Transitions
