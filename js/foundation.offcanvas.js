@@ -140,8 +140,7 @@ OffCanvas.prototype._events = function() {
     'keydown.zf.offcanvas': this._handleKeyboard.bind(this)
   });
 
-  if (this.$exiter.length) {
-    var _this = this;
+  if (this.options.closeOnClick && this.$exiter.length) {
     this.$exiter.on({'click.zf.offcanvas': this.close.bind(this)});
   }
 };
