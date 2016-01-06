@@ -6,9 +6,11 @@ sass: scss/_global.scss
 
 ## Font Sizing
 
-The default font size is set to 100% of the browser style sheet, usually 16 pixels. This ensures compatibility with browser-based text zoom or user-set defaults.
+The default font size is set to 100% of the browser style sheet, usually 16 pixels. This ensures compatibility with browser-based text zoom or user-set defaults. If you're using the Sass version of Foundation, edit the `$global-font-size` variable to change the base font size. This can be a percentage value, or a pixel value.
 
-Since the typical default browser font size is 16 pixels, that makes the calculation for grid size. If you want your base font size to be different and not have it affect the grid breakpoints, set `$rem-base` to `$global-font-size` and make sure `$global-font-size` is a pixel value.
+<div class="alert callout">
+  <p><code>$rem-base</code> was deprecated in version 6.1, in favor of using <code>$global-font-size</code> to define rem calculation.</p>
+</div>
 
 ---
 
