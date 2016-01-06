@@ -32,6 +32,7 @@
 @import 'components/label';
 @import 'components/media-object';
 @import 'components/menu';
+@import 'components/menu-icon';
 @import 'components/off-canvas';
 @import 'components/orbit';
 @import 'components/pagination';
@@ -74,6 +75,7 @@
   @include foundation-label;
   @include foundation-media-object;
   @include foundation-menu;
+  @include foundation-menu-icon;
   @include foundation-off-canvas;
   @include foundation-orbit;
   @include foundation-pagination;

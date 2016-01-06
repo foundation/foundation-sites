@@ -62,7 +62,9 @@ $titlebar-icon-spacing: 0.25rem !default;
     display: inline-block;
   }
 
-  .menu-icon {
-    @include hamburger($color: $titlebar-icon-color, $color-hover: $titlebar-icon-color-hover);
+  // Remove this in 6.3
+  @if not $-zf-menu-icon-imported {
+    @warn 'In Foundation 6.2, a new component mixin was added called "foundation-menu-icon". Add "@import foundation-menu-icon" to the main Sass file of your project to remove this warning.';
+    @include foundation-menu-icon;
   }
 }

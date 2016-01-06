@@ -104,6 +104,9 @@ $success-color: map-get($foundation-palette, success);
 $warning-color: map-get($foundation-palette, warning);
 $alert-color: map-get($foundation-palette, alert);
 
+// Remove this in 6.3
+$-zf-menu-icon-imported: false;
+
 @mixin foundation-global-styles {
   @include -zf-normalize;
 
