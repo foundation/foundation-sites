@@ -63,7 +63,7 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   z-index: $reveal-zindex + 1;
   padding: $reveal-padding;
   border: $reveal-border;
-  margin: 100px auto 0;
+  margin: $reveal-offset auto 0;
   background-color: $reveal-background;
   border-radius: $reveal-radius;
 
