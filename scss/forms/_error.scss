@@ -38,7 +38,7 @@ $input-error-font-weight: $global-weight-bold !default;
 ///
 /// @param {Color} $background [$alert-color] - Color to use for the background and border.
 @mixin form-input-error(
-  $background: $alert-color
+  $background: $input-background-invalid
 ) {
   &:not(:focus) {
     background-color: rgba($background, 0.1);
