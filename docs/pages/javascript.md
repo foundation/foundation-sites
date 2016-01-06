@@ -82,6 +82,12 @@ In the HTML, each setting can be defined as an individual data attribute. Note t
 <div data-accordion data-slide-speed="500" data-multi-expand="true"></div>
 ```
 
+Data options can also be set in bulk on one attribute, `data-options`. Options are written with the format `key: value`, with a semicolon separating each option. The above example can be written using `data-options` like so:
+
+```html
+<div data-accordion data-options="slideSpeed: 500; multiExpand: true"></div>
+```
+
 ---
 
 ## Adding Plugins After Page Load
