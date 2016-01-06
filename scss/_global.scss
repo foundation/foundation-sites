@@ -194,6 +194,15 @@ $foundation-colors: (
     border-radius: $global-radius;
     line-height: 1;
   }
+
+  // Internal classes to show/hide elements in JavaScript
+  .is-visible {
+    display: block !important;
+  }
+
+  .is-hidden {
+    display: none !important;
+  }
 }
 
 /// Loads normalize.css.

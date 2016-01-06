@@ -37,9 +37,11 @@ $select-radius: $global-radius !default;
   @if $select-triangle-color != transparent {
     @include background-triangle($select-triangle-color);
     background-size: 9px 6px;
+    background-position: $global-right center; // Fallback for Android 4.3-
     background-position: $global-right ($form-spacing / 2) center;
     background-repeat: no-repeat;
   }
+
   // Disabled state
   &:disabled {
     background-color: $input-background-disabled;
