@@ -7,7 +7,7 @@ js: js/foundation.tooltip.js
 
 
 ## Basic Tooltip
-By default, a tooltip appears below the the definition on hover.
+By default, a tooltip appears below the defined term on hover.
 
 ```html_example
 <p>
@@ -18,7 +18,7 @@ The <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover='
 ---
 
 ## Tooltip Top
-To get a tip-top top tooltip (lol), just add the class <code>top</code> the <code>span</code> tag.
+To get a tip-top top tooltip (lol), just add the class `.top` the `<span>` element.
 
 ```html_example
 <p>
