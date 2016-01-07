@@ -26,9 +26,7 @@ gulp.task('javascript', ['javascript:foundation', 'javascript:deps', 'javascript
 
 gulp.task('javascript:foundation', function() {
   return gulp.src(FOUNDATION)
-    .pipe(babel({
-      presets: ['es2015']
-    }))
+    .pipe(babel())
     .pipe(concat('foundation.js'))
     .pipe(gulp.dest('_build/assets/js'));
 });
