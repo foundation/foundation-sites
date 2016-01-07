@@ -405,8 +405,7 @@ $visibility-breakpoint-queries:
 
   /* Print visibility */
   @if $include-print-styles {
-    .print-only,
-    .show-for-print { display: none !important; }
+    .print-only { display: none !important; }
     @media print {
       .print-only,
       .show-for-print { display: block !important; }
