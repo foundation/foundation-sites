@@ -214,9 +214,9 @@
 
         $oldTab = this.$element.find('.' + this.options.linkClass + '.is-active')
                   .removeClass('is-active').find('[role="tab"]')
-                  .attr({'aria-selected': 'false'});
+                  .attr({'aria-selected': 'false'}).attr('aria-controls');
 
-    $($oldTab).removeClass('is-active').attr({'aria-hidden': 'true'});
+    $('#'+$oldTab).removeClass('is-active').attr({'aria-hidden': 'true'});
 
     $target.addClass('is-active');
 
