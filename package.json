@@ -19,6 +19,7 @@
     "bootcamp": "^1.1.7",
     "browser-sync": "^2.8.2",
     "clipboard": "^1.5.5",
+    "corejs-typeahead": "corejavascript/typeahead.js",
     "foundation-docs": "zurb/foundation-docs",
     "gitty": "^3.3.0",
     "gulp": "^3.8.10",
@@ -53,8 +54,7 @@
     "require-dir": "^0.3.0",
     "rimraf": "^2.3.2",
     "run-sequence": "^1.1.4",
-    "supercollider": "^1.2.0",
-    "typeahead.js": "^0.11.1"
+    "supercollider": "^1.2.0"
   },
   "repository": {
     "type": "git",
