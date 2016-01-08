@@ -376,7 +376,7 @@
                 this.options['animOutTo' + dirOut],
                 function(){
                   $curSlide.removeAttr('aria-live');
-                  if(_this.options.autoPlay){
+                  if(_this.options.autoPlay && !_this.timer.isPaused){
                     _this.timer.restart();
                   }
                   //do stuff?
@@ -384,7 +384,7 @@
               }else{
                 $curSlide.removeClass('is-active is-in').removeAttr('aria-live').hide();
                 $newSlide.addClass('is-active is-in').attr('aria-live', 'polite').show();
-                if(this.options.autoPlay){
+                if(this.options.autoPlay && !this.timer.isPaused){
                   this.timer.restart();
                 }
               }
