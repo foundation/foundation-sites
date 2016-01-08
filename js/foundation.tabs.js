@@ -90,7 +90,7 @@
           isActive = $elem.hasClass('is-active'),
           hash = $link[0].hash.slice(1),
           linkId = hash + '-label',
-          $tabContent = $(hash);
+          $tabContent = $('#' + hash);
 
       $elem.attr({'role': 'presentation'});
 
@@ -211,7 +211,6 @@
     var $tabLink = $target.find('[role="tab"]'),
         hash = $tabLink[0].hash,
         $targetContent = $(hash),
-
         $oldTab = this.$element.find('.' + this.options.linkClass + '.is-active')
                   .removeClass('is-active').find('[role="tab"]')
                   .attr({'aria-selected': 'false'}).attr('aria-controls');
