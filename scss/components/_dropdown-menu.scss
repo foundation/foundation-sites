@@ -1,0 +1,148 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group dropdown-menu
+////
+
+/// Enables arrows for items with dropdown menus.
+/// @type Boolean
+$dropdownmenu-arrows: true !default;
+
+/// Sets dropdown menu arrow color if arrow is used.
+/// @type Color
+$dropdownmenu-arrow-color: $anchor-color !default;
+
+/// Minimum width of dropdown sub-menus.
+/// @type Length
+$dropdownmenu-min-width: 200px !default;
+
+/// Background color for dropdowns.
+/// @type Color
+$dropdownmenu-background: $white !default;
+
+/// Border for dropdown sub-menus.
+/// @type List
+$dropdownmenu-border: 1px solid $medium-gray !default;
+
+// Border width for dropdown sub-menus.
+// Used to adjust top margin of a sub-menu if a border is used.
+// @type Length
+$dropdownmenu-border-width: nth($dropdownmenu-border, 1);
+
+@mixin foundation-dropdown-menu {
+  .dropdown.menu {
+    a {
+      @include disable-mouse-outline;
+    }
+    .is-dropdown-submenu-parent {
+      position: relative;
+
+      a::after {
+        float: $global-right;
+        margin-top: 3px;
+        margin-#{$global-left}: 10px;
+      }
+
+      @if $dropdownmenu-arrows {
+        &.is-down-arrow a {
+          padding-#{$global-right}: 1.5rem;
+          position: relative;
+        }
+
+        &.is-down-arrow > a::after {
+          @include css-triangle(5px, $dropdownmenu-arrow-color, down);
+          position: absolute;
+          top: rem-calc(2px) + rem-calc(get-side($menu-item-padding, top));
+          #{$global-right}: 5px;
+        }
+
+        &.is-left-arrow > a::after {
+          @include css-triangle(5px, $dropdownmenu-arrow-color, left);
+          float: left;
+          margin-left: 0;
+          margin-right: 10px;
+        }
+
+        &.is-right-arrow > a::after {
+          @include css-triangle(5px, $dropdownmenu-arrow-color, right);
+        }
+      }
+
+      &.is-left-arrow.opens-inner .submenu {
+        right: 0;
+        left: auto;
+      }
+
+      &.is-right-arrow.opens-inner .submenu {
+        left: 0;
+        right: auto;
+      }
+      
+      &.opens-inner .submenu {
+        top: 100%;
+      }
+    }
+
+    .no-js & ul {
+      display: none;
+    }
+
+    .submenu {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 100%;
+      min-width: $dropdownmenu-min-width;
+      z-index: 1;
+      background: $dropdownmenu-background;
+      border: $dropdownmenu-border;
+
+      @if (type-of($dropdownmenu-border-width) == 'number') {
+        margin-top: (-$dropdownmenu-border-width);
+      }
+
+      > li {
+        width: 100%;
+      }
+
+      &.first-sub {
+        top: 100%;
+        left: 0;
+        right: auto;
+      }
+
+      &:not(.js-dropdown-nohover) > .is-dropdown-submenu-parent:hover > &,
+      &.js-dropdown-active {
+        display: block;
+      }
+    }
+
+    .is-dropdown-submenu-parent.opens-left .submenu {
+      left: auto;
+      right: 100%;
+    }
+
+    &.align-right {
+      .submenu.first-sub {
+        top: 100%;
+        left: auto;
+        right: 0;
+      }
+    }
+  }
+
+  .is-dropdown-menu.vertical {
+    width: 100px;
+
+    &.align-right {
+      float: right;
+    }
+
+    > li .submenu {
+      top: 0;
+      left: 100%;
+    }
+  }
+}

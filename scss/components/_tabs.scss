@@ -1,0 +1,170 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group tabs
+////
+
+/// Default margin of the tab bar.
+/// @type Number
+$tab-margin: 0 !default;
+
+/// Default background color of a tab bar.
+/// @type Color
+$tab-background: $white !default;
+
+/// active background color of a tab bar.
+/// @type Color
+$tab-background-active: $light-gray !default;
+
+/// Default border color of tab content.
+/// @type Color
+$tab-border: $light-gray !default;
+
+/// Default text color for items in a Menu.
+/// @type Color
+$tab-item-color: foreground($tab-background, $primary-color) !default;
+
+/// Default background color on hover for items in a Menu.
+$tab-item-background-hover: $white !default;
+
+/// Default padding of a a tab item.
+/// @type Number
+$tab-item-padding: 1.25rem 1.5rem !default;
+
+/// Maximum number of `expand-n` classes to include in the CSS.
+/// @type Number
+$tab-expand-max: 6 !default;
+
+/// Default background color of tab content.
+/// @type Color
+$tab-content-background: $white !default;
+
+/// Default border color of tab content.
+/// @type Color
+$tab-content-border: $light-gray !default;
+
+/// Default text color of tab content.
+/// @type Color
+$tab-content-color: foreground($tab-background, $primary-color) !default;
+
+/// Default padding for tab content.
+/// @type Number | List
+$tab-content-padding: 1rem !default;
+
+/// Adds styles for a tab container. Apply this to a `<ul>`.
+@mixin tabs-container {
+  @include clearfix;
+  margin: $tab-margin;
+  list-style-type: none;
+  background: $tab-background;
+  border: 1px solid $tab-content-border;
+}
+
+/// Augments a tab container to have vertical tabs. Use this in conjunction with `tabs-container()`.
+@mixin tabs-container-vertical {
+  > li {
+    width: auto;
+    float: none;
+    display: block;
+  }
+}
+
+/// Adds styles for the links within a tab container. Apply this to the `<li>` elements inside a tab container.
+@mixin tabs-title {
+  float: #{$global-left};
+
+  > a {
+    display: block;
+    padding: $tab-item-padding;
+    line-height: 1;
+    font-size: 12px;
+    color: $tab-item-color;
+
+    &:hover {
+      background: $tab-item-background-hover;
+    }
+
+    &:focus,
+    &[aria-selected='true'] {
+      background: $tab-background-active;
+    }
+  }
+}
+
+/// Adds styles for the wrapper that surrounds a tab group's content panes.
+@mixin tabs-content {
+  background: $tab-content-background;
+  transition: all 0.5s ease;
+  border: 1px solid $tab-content-border;
+  border-top: 0;
+}
+
+/// Augments a tab content container to have a vertical style, by shifting the border around. Use this in conjunction with `tabs-content()`.
+@mixin tabs-content-vertical {
+  border: 1px solid $tab-content-border;
+  border-#{$global-left}: 0;
+}
+
+/// Adds styles for an individual tab content panel within the tab content container.
+@mixin tabs-panel {
+  display: none;
+  padding: $tab-content-padding;
+
+  &.is-active {
+    display: block;
+  }
+}
+
+@mixin foundation-tabs {
+  .tabs {
+    @include tabs-container;
+  }
+
+  // Vertical
+  .tabs.vertical {
+    @include tabs-container-vertical;
+  }
+
+  // Simple
+  .tabs.simple {
+    > li > a {
+      padding: 0;
+
+      &:hover {
+        background: transparent;
+      }
+    }
+  }
+
+  // Primary color
+  .tabs.primary {
+    background: $primary-color;
+
+    > li > a {
+      color: foreground($primary-color);
+
+      &:hover,
+      &:focus {
+        background: smart-scale($primary-color);
+      }
+    }
+  }
+
+  .tabs-title {
+    @include tabs-title;
+  }
+
+  .tabs-content {
+    @include tabs-content;
+  }
+
+  .tabs-content.vertical {
+    @include tabs-content-vertical;
+  }
+
+  .tabs-panel {
+    @include tabs-panel;
+  }
+}

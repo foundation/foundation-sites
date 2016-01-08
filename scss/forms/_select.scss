@@ -1,0 +1,65 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group forms
+////
+
+/// Background color for select menus.
+/// @type Color
+$select-background: $white !default;
+
+/// Color of the dropdown triangle inside select menus. Set to `transparent` to remove it entirely.
+/// @type Color
+$select-triangle-color: #333 !default;
+
+/// Default radius for select menus.
+/// @type Color
+$select-radius: $global-radius !default;
+
+@mixin form-select {
+  $height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
+
+  height: $height;
+  padding: ($form-spacing / 2);
+  border: $input-border;
+  margin: 0 0 $form-spacing;
+  font-size: $input-font-size;
+  font-family: $input-font-family;
+  line-height: normal;
+  color: $input-color;
+  background-color: $select-background;
+  border-radius: $select-radius;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  @if $select-triangle-color != transparent {
+    @include background-triangle($select-triangle-color);
+    background-size: 9px 6px;
+    background-position: $global-right center;
+    background-origin: content-box;
+    background-repeat: no-repeat;
+  }
+
+  // Disabled state
+  &:disabled {
+    background-color: $input-background-disabled;
+    cursor: $input-cursor-disabled;
+  }
+
+  // Hide the dropdown arrow shown in newer IE versions
+  &::-ms-expand {
+    display: none;
+  }
+
+  &[multiple] {
+    height: auto;
+  }
+}
+
+@mixin foundation-form-select {
+  select {
+    @include form-select;
+  }
+}

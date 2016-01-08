@@ -1,0 +1,52 @@
+@import 'util/unit';
+
+@include describe('Strip Unit') {
+  @include it('strips the unit from a number') {
+    $actual: strip-unit(20px);
+    $expected: 20;
+
+    @include should(expect($actual), to(be($expected)));
+  }
+  @include it('returns the same number when given a unitless value') {
+    $actual: strip-unit(20);
+    $expected: 20;
+
+    @include should(expect($actual), to(be($expected)));
+  }
+}
+
+@include describe('Convert to Rem') {
+  @include it('converts a unit to the equivalent in rems') {
+    $actual: -zf-to-rem(32, 16);
+    $expected: 2rem;
+
+    @include should(expect($actual), to(be($expected)));
+  }
+}
+
+@include describe('Convert Rem to Rem') {
+  @include it('keeps rem values the same') {
+    $actual: -zf-to-rem(3rem, 16);
+    $expected: 3rem;
+
+    @include should(expect($actual), to(be($expected)));
+  }
+}
+
+@include describe('Rem Calculator') {
+  @include it('converts an arbitrary number of values into rem equivalents') {
+    $actual: rem-calc((8 16 32 64), 16);
+    $expected: 0.5rem 1rem 2rem 4rem;
+
+    @include should(expect($actual), to(be($expected)));
+  }
+}
+
+@include describe('Breakpoint to Em') {
+  @include it('converts a unitless, pixel, or rem value to em') {
+    @include should(expect(-zf-bp-to-em(16)), to(be(1em)));
+    @include should(expect(-zf-bp-to-em(16px)), to(be(1em)));
+    @include should(expect(-zf-bp-to-em(1rem)), to(be(1em)));
+    @include should(expect(-zf-bp-to-em(1em)), to(be(1em)));
+  }
+}

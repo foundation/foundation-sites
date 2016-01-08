@@ -1,0 +1,41 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group functions
+////
+
+/// Checks the lightness of `$color`, and if it passes the `$threshold` of lightness, it returns the `$yes` color. Otherwise, it returns the `$no` color. Use this function to dynamically output a foreground color based on a given background color.
+///
+/// @param {Color} $color - Color to check the lightness of.
+/// @param {Color} $yes [$black] - Color to return if `$color` is light.
+/// @param {Color} $no [$white] - Color to return if `$color` is dark.
+/// @param {Percentage} $threshold [60%] - Threshold of lightness to check against.
+///
+/// @returns {Color} The $yes color or $no color.
+@function foreground($color, $yes: $black, $no: $white, $threshold: 60%) {
+  @if $color == transparent {
+    $color: $body-background;
+  }
+  @if (lightness($color) > $threshold) {
+    @return $yes;
+  }
+  @else {
+    @return $no;
+  }
+}
+
+/// Scales a color to be lighter if it's light, or darker if it's dark. Use this function to tint a color appropriate to its lightness.
+///
+/// @param {Color} $color - Color to scale.
+/// @param {Percentage} $scale [5%] - Amount to scale up or down.
+/// @param {Percentage} $threshold [40%] - Threshold of lightness to check against.
+///
+/// @returns {Color} A scaled color.
+@function smart-scale($color, $scale: 5%, $threshold: 40%) {
+  @if lightness($color) > $threshold {
+    $scale: -$scale;
+  }
+  @return scale-color($color, $lightness: $scale);
+}

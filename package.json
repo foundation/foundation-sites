@@ -1,53 +1,71 @@
 {
   "name": "foundation-sites",
-  "version": "5.5.2",
-  "main": "js/foundation/foundation.js",
+  "version": "6.1.1",
+  "main": "dist/foundation.js",
+  "description": "The most advanced responsive front-end framework in the world.",
+  "author": "ZURB <foundation@zurb.com> (http://foundation.zurb.com)",
+  "homepage": "http://foundation.zurb.com/sites",
+  "scripts": {
+    "start": "gulp",
+    "test": "gulp test",
+    "deploy": "gulp deploy"
+  },
+  "dependencies": {
+    "jquery": "^2.1.0",
+    "what-input": "^1.1.2"
+  },
+  "license": "MIT",
   "devDependencies": {
-    "assemble": "~0.4.37",
-    "grunt": "~0.4.4",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-compress": "~0.7.0",
-    "grunt-contrib-concat": "~0.3.0",
-    "grunt-contrib-connect": "~0.7.1",
-    "grunt-contrib-copy": "~0.5.0",
-    "grunt-contrib-cssmin": "^0.12.2",
-    "grunt-contrib-jasmine": "~0.6.3",
-    "grunt-contrib-jst": "~0.5.1",
-    "grunt-contrib-sass": "~0.8.1",
-    "grunt-contrib-uglify": "~0.4.0",
-    "grunt-contrib-watch": "~0.6.1",
-    "grunt-karma": "~0.6.2",
-    "grunt-newer": "~0.7.0",
-    "grunt-rsync": "~0.2.1",
-    "grunt-string-replace": "~0.2.7",
-    "handlebars-helper-rel": "~0.1.2",
-    "handlebars-helper-slugify": "~0.2.0",
-    "highlight.js": "~7.3.0",
-    "jasmine-jquery": "imtapps/node-jasmine-jquery",
-    "karma": "~0.10.4",
-    "karma-browserstack-launcher": "0.0.4",
-    "karma-chrome-launcher": "~0.1.0",
-    "karma-firefox-launcher": "~0.1.0",
-    "karma-html2js-preprocessor": "~0.1.0",
-    "karma-ie-launcher": "~0.1.1",
-    "karma-jasmine": "~0.1.3",
-    "karma-phantomjs-launcher": "~0.1.0",
-    "karma-safari-launcher": "~0.1.1",
-    "karma-script-launcher": "~0.1.0",
-    "load-grunt-config": "~0.16.0"
+    "bootcamp": "^1.1.7",
+    "browser-sync": "^2.8.2",
+    "clipboard": "^1.5.5",
+    "corejs-typeahead": "corejavascript/typeahead.js",
+    "foundation-docs": "zurb/foundation-docs",
+    "gitty": "^3.3.0",
+    "gulp": "^3.8.10",
+    "gulp-autoprefixer": "^2.3.1",
+    "gulp-cache-bust": "^1.0.2",
+    "gulp-concat": "^2.4.3",
+    "gulp-filter": "^2.0.2",
+    "gulp-jshint": "^1.9.2",
+    "gulp-load-plugins": "^0.8.0",
+    "gulp-minify-css": "^1.2.1",
+    "gulp-newer": "^1.1.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-prompt": "^0.1.2",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.4",
+    "gulp-rsync": "0.0.5",
+    "gulp-ruby-sass": "1.0.0-alpha.3",
+    "gulp-sass": "^2.1.0",
+    "gulp-scss-lint": "^0.2.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.1.0",
+    "inquirer": "^0.11.0",
+    "mocha": "^2.3.3",
+    "motion-ui": "^1.1.0",
+    "octophant": "^1.0.0",
+    "open": "0.0.5",
+    "opener": "^1.4.1",
+    "panini": "^1.1.1",
+    "parker": "0.0.9",
+    "pretty-print": "^1.0.0",
+    "prettyjson": "^1.1.3",
+    "require-dir": "^0.3.0",
+    "rimraf": "^2.3.2",
+    "run-sequence": "^1.1.4",
+    "supercollider": "^1.2.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/zurb/foundation"
+    "url": "https://github.com/zurb/foundation-sites"
+  },
+  "bugs": {
+    "url": "https://github.com/zurb/foundation-sites/issues",
+    "email": "foundation@zurb.com"
   },
   "keywords": [
     "handlebars-helper-rel",
     "handlebars-helper-slugify"
-  ],
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/zurb/foundation/blob/master/LICENSE"
-    }
   ]
 }

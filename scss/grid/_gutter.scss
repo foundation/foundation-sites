@@ -1,0 +1,34 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group grid
+////
+
+/// Collapse the gutters on a column by removing the padding.
+@mixin grid-column-collapse {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/// Un-collapse the gutters on a column by re-adding the padding.
+///
+/// @param {Number} $gutter [$grid-column-gutter] - Spacing between columns.
+@mixin grid-column-uncollapse($gutter: $grid-column-gutter) {
+  $gutter: rem-calc($gutter) / 2;
+  padding-left: $gutter;
+  padding-right: $gutter;
+}
+
+/// Shorthand for `grid-column-collapse()`.
+/// @alias grid-column-collapse
+@mixin grid-col-collapse {
+  @include grid-column-collapse;
+}
+
+/// Shorthand for `grid-column-uncollapse()`.
+/// @alias grid-column-uncollapse
+@mixin grid-col-uncollapse($gutter: $grid-column-gutter) {
+  @include grid-column-uncollapse($gutter);
+}

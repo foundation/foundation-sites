@@ -1,0 +1,94 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group breadcrumbs
+////
+
+/// Margin around a breadcrumbs container.
+/// @type Number
+$breadcrumbs-margin: 0 0 $global-margin 0 !default;
+
+/// Font size of breadcrumb links.
+/// @type Number
+$breadcrumbs-item-font-size: rem-calc(11) !default;
+
+/// Color of breadcrumb links.
+/// @type Color
+$breadcrumbs-item-color: $primary-color !default;
+
+/// Color of the active breadcrumb link.
+/// @type Color
+$breadcrumbs-item-color-current: $black !default;
+
+/// Opacity of disabled breadcrumb links.
+/// @type Number
+$breadcrumbs-item-color-disabled: $medium-gray !default;
+
+/// Margin between breadcrumb items.
+/// @type Number
+$breadcrumbs-item-margin: 0.75rem !default;
+
+/// If `true`, makes breadcrumb links uppercase.
+/// @type Boolean
+$breadcrumbs-item-uppercase: true !default;
+
+/// If `true`, adds a slash between breadcrumb links.
+/// @type Boolean
+$breadcrumbs-item-slash: true !default;
+
+/// Adds styles for a breadcrumbs container, along with the styles for the `<li>` and `<a>` elements inside of it.
+@mixin breadcrumbs-container {
+  @include clearfix;
+  list-style: none;
+  margin: $breadcrumbs-margin;
+
+  // Item wrapper
+  li {
+    float: #{$global-left};
+    color: $breadcrumbs-item-color-current;
+    font-size: $breadcrumbs-item-font-size;
+    cursor: default;
+
+    @if $breadcrumbs-item-uppercase {
+      text-transform: uppercase;
+    }
+
+    @if $breadcrumbs-item-slash {
+      // Need to escape the backslash
+      $slash: if($global-text-direction == 'ltr', '/', '\\');
+
+      &:not(:last-child)::after {
+        color: $medium-gray;
+        content: $slash;
+        margin: 0 $breadcrumbs-item-margin;
+        position: relative;
+        top: 1px;
+        opacity: 1;
+      }
+    }
+    @else {
+      margin-#{$global-right}: $breadcrumbs-item-margin;
+    }
+  }
+
+  // Page links
+  a {
+    color: $breadcrumbs-item-color;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+@mixin foundation-breadcrumbs {
+  .breadcrumbs {
+    @include breadcrumbs-container;
+
+    .disabled {
+      color: $breadcrumbs-item-color-disabled;
+    }
+  }
+}

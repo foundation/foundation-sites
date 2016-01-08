@@ -1,21 +1,31 @@
 {
-  "name": "foundation",
+  "name": "foundation-sites",
+  "version": "6.1.1",
   "main": [
     "scss/foundation.scss",
-    "js/foundation.js"
+    "dist/foundation.js"
   ],
   "ignore": [
+    "config",
+    "docs",
+    "gulp",
+    "lib",
+    "test",
+    "composer.json",
+    "CONTRIBUTING.md",
+    "gulpfile.js",
+    "meteor-README.md",
+    "package.js",
+    "package.json",
+    "sache.json",
+    ".editorconfig",
+    ".npm",
+    ".gitignore",
+    ".npmignore",
+    ".versions"
   ],
   "dependencies": {
-    "jquery": ">= 2.1.0",
-    "modernizr": ">= 2.7.2",
-    "fastclick": ">=0.6.11",
-    "jquery.cookie": "~1.4.0",
-    "jquery-placeholder": "~2.0.7"
-  },
-  "devDependencies": {
-    "jquery.autocomplete": "devbridge/jQuery-Autocomplete#1.2.9",
-    "lodash": "~2.4.1"
-  },
-  "private": true
+    "jquery": "~2.1.0",
+    "what-input": "~1.1.2"
+  }
 }

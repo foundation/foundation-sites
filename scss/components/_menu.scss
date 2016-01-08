@@ -1,0 +1,209 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group menu
+////
+
+/// Margin of a menu.
+/// @type Number
+$menu-margin: 0 !default;
+
+/// Left-hand margin of a nested menu.
+/// @type Number
+$menu-margin-nested: 1rem !default;
+
+/// Padding for items in a menu.
+/// @type Number
+$menu-item-padding: 0.7rem 1rem !default;
+
+/// Spacing between an icon and text in a menu item.
+/// @type Number
+$menu-icon-spacing: 0.25rem !default;
+
+/// Maximum number of `expand-n` classes to include in the CSS.
+/// @type Number
+$menu-expand-max: 6 !default;
+
+/// Creates the base styles for a Menu.
+@mixin menu-base {
+  margin: $menu-margin;
+  list-style-type: none;
+
+  // List items are table cell to allow for vertical alignment
+  > li {
+    @include disable-mouse-outline;
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  // Reset line height to make the height of the overall item easier to calculate
+  > li:not(.menu-text) > a {
+    display: block;
+    padding: $menu-item-padding;
+    line-height: 1;
+  }
+
+  // Reset styles of inner elements
+  input,
+  a,
+  button {
+    margin-bottom: 0;
+  }
+}
+
+/// Expands the items of a Menu, so each item is the same width.
+@mixin menu-expand {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+/// Sets the direction of a Menu.
+/// @param {Keyword} $dir [horizontal] - Direction of the Menu. Can be `horizontal` or `vertical`.
+@mixin menu-direction($dir: horizontal) {
+  @if $dir == horizontal {
+    > li {
+      display: table-cell;
+    }
+  }
+  @else if $dir == vertical {
+    > li {
+      display: block;
+    }
+  }
+  @else {
+    @warn 'The direction used for menu-direction() must be horizontal or vertical.';
+  }
+}
+
+/// Creates a simple Menu, which has no padding or hover state.
+@mixin menu-simple {
+  a {
+    padding: 0;
+    margin-#{$global-right}: get-side($menu-item-padding, $global-right);
+  }
+}
+
+/// Adds styles for a nested Menu, by adding `margin-left` to the menu.
+/// @param {Keyword|Number} $padding [auto] - Length of the margin.
+@mixin menu-nested($margin: $menu-margin-nested) {
+  margin-#{$global-left}: $margin;
+}
+
+/// Adds support for icons to Menu items.
+/// @param {Keyword} $position [side] - Positioning for icons. Can be `side` (left, or right on RTL) or `top`.
+/// @param {Boolean} $base [true] - Set to `false` to prevent the shared CSS between side- and top-aligned icons from being printed. Set this to `false` if you're calling the mixin multiple times on the same element.
+@mixin menu-icons($position: side, $base: true) {
+  @if $base {
+    > li > a {
+      > img,
+      > i {
+        vertical-align: middle;
+      }
+
+      > span {
+        vertical-align: middle;
+      }
+    }
+  }
+
+  @if $position == side {
+    > li > a {
+      > img,
+      > i {
+        display: inline-block;
+        margin-#{$global-right}: $menu-icon-spacing;
+      }
+    }
+  }
+  @else if $position == top {
+    > li > a {
+      text-align: center;
+
+      > img,
+      > i {
+        display: block;
+        margin: 0 auto $menu-icon-spacing;
+      }
+    }
+  }
+}
+
+@mixin menu-text {
+  font-weight: bold;
+  color: inherit;
+  line-height: 1;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding: $menu-item-padding;
+}
+
+@mixin foundation-menu {
+  .menu {
+    @include menu-base;
+    @include menu-icons;
+
+    // Orientation
+    @include menu-direction(horizontal);
+
+    &.vertical {
+      @include menu-direction(vertical);
+    }
+
+    @each $size in $breakpoint-classes {
+      @if $size != small {
+        @include breakpoint($size) {
+          &.#{$size}-horizontal {
+            @include menu-direction(horizontal);
+          }
+
+          &.#{$size}-vertical {
+            @include menu-direction(vertical);
+          }
+        }
+      }
+    }
+
+    // Simple
+    &.simple {
+      @include menu-simple;
+    }
+
+    // Align right
+    &.align-#{$global-right} {
+      > li {
+        float: $global-right;
+      }
+    }
+
+    // Even-width
+    &.expanded {
+      @include menu-expand;
+
+      > li:first-child:last-child {
+        width: 100%;
+      }
+    }
+
+    // Vertical icons
+    &.icon-top {
+      @include menu-icons(top, $base: false);
+    }
+
+    // Nesting
+    &.nested {
+      @include menu-nested;
+    }
+  }
+
+  .menu-text {
+    @include menu-text;
+  }
+
+  // Prevent FOUC when using the Responsive Menu plugin
+  .no-js [data-responsive-menu] ul {
+    display: none;
+  }
+}

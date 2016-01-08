@@ -1,0 +1,92 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group forms
+////
+
+/// Color of labels prefixed to an input.
+/// @type Color
+$input-prefix-color: $black !default;
+
+/// Background color of labels prefixed to an input.
+/// @type Color
+$input-prefix-background: $light-gray !default;
+
+/// Border around labels prefixed to an input.
+/// @type Border
+$input-prefix-border: 1px solid $medium-gray !default;
+
+/// Left/right padding of an pre/postfixed input label
+$input-prefix-padding: 1rem !default;
+
+@mixin foundation-form-prepostfix {
+  $height: ($input-font-size + $form-spacing * 1.5);
+
+
+  .input-group {
+    display: table;
+    width: 100%;
+    margin-bottom: $form-spacing;
+
+    > :first-child {
+      border-radius: $global-radius 0 0 $global-radius;
+    }
+
+    > :last-child {
+      > * {
+        border-radius: 0 $global-radius $global-radius 0;
+      }
+    }
+  }
+
+  %input-group-child {
+    display: table-cell;
+    margin: 0;
+    vertical-align: middle;
+  }
+
+  .input-group-label {
+    @extend %input-group-child;
+    text-align: center;
+    width: 1%;
+    height: 100%;
+    padding: 0 $input-prefix-padding;
+    background: $input-prefix-background;
+    color: $input-prefix-color;
+    border: $input-prefix-border;
+    white-space: nowrap;
+
+    @if has-value($input-prefix-border) {
+      &:first-child {
+        border-#{$global-right}: 0;
+      }
+
+      &:last-child {
+        border-#{$global-left}: 0;
+      }
+    }
+  }
+
+  .input-group-field {
+    @extend %input-group-child;
+    border-radius: 0;
+    height: $height;
+  }
+
+  .input-group-button {
+    @extend %input-group-child;
+    height: 100%;
+    padding-top: 0;
+    padding-bottom: 0;
+    text-align: center;
+    width: 1%;
+
+    a,
+    input,
+    button {
+      margin: 0;
+    }
+  }
+}
