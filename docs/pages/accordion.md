@@ -19,37 +19,50 @@ Loading a page with an open pane is achieved by adding the `is-active` class to 
 
 This is the minimum markup for creating an Accordion with Foundation, repeating the `accordion-item`, `accordion-title`, and `accordion-content` elements as many times as you require.
 ```html
-<ul class="accordion" data-accordion>
+<ul class="accordion" data-accordion="">
   <li class="accordion-item is-active">
     <a class="accordion-title">Accordion 1</a>
-    <div class="accordion-content" data-tab-content>
+    <div class="accordion-content" data-tab-content="">
       I would start in the open state, due to using the `is-active` state class.
     </div>
   </li>
   <!-- ... -->
 </ul>
 ```
+###Role/ARIA elements and attributes
 
+Note the use of the role element, as well as several ARIA attributes, in the below example.
+```html
+<ul class="accordion" data-accordion="" role="tablist">
+  <li class="accordion-item is-active">
+    <a href="#" class="accordion-title" id="panel1a-accordion-label" role="tab"   aria-controls="panel1a-accordion" aria-expanded="true" aria-selected="true">Accordion 1</a>
+    <div class="accordion-content" id="panel1a-accordion" role="tabpanel" data-tab-content="" aria-labelledby="panel1a-accordion-label" aria-hidden="false" style="display: block;">
+       I would start in the open state, due to using the `is-active` state class.
+     </div>
+  </li>
+  <!-- ... -->
+</ul>
+```
 Once you put it all together, here's what you get!
 
-<ul class="accordion" data-accordion>
+<ul class="accordion" data-accordion="" role="tablist">
   <li class="accordion-item is-active">
-    <a class="accordion-title">Accordion 1</a>
-    <div class="accordion-content" data-tab-content >
+    <a href="#" class="accordion-title" id="panel1a-accordion-label" role="tab"   aria-controls="panel1a-accordion" aria-expanded="true" aria-selected="true">Accordion 1</a>
+    <div class="accordion-content" id="panel1a-accordion" role="tabpanel" data-tab-content="" aria-labelledby="panel1a-accordion-label" aria-hidden="false" style="display: block;">
       <p>Panel 1. Lorem ipsum dolor</p>
       <a href="#">Nowhere to Go</a>
     </div>
   </li>
   <li class="accordion-item">
-    <a class="accordion-title">Accordion 2</a>
-    <div class="accordion-content" data-tab-content>
+    <a href="#" class="accordion-title" id="panel2a-accordion-label" role="tab"  aria-controls="panel2a-accordion" aria-expanded="false" aria-selected="false">Accordion 2</a>
+    <div class="accordion-content" id="panel2a-accordion" role="tabpanel" data-tab-content="" aria-labelledby="panel2a-accordion-label" aria-hidden="true">
       <textarea></textarea>
       <button class="button">I do nothing!</button>
     </div>
   </li>
   <li class="accordion-item">
-    <a class="accordion-title">Accordion 3</a>
-    <div class="accordion-content" data-tab-content>
+    <a href="#" class="accordion-title" id="panel3a-accordion-label" role="tab"  aria-controls="panel3a-accordion" aria-expanded="false" aria-selected="false">Accordion 3</a>
+    <div class="accordion-content" id="panel3a-accordion" role="tabpanel" data-tab-content="" aria-labelledby="panel3a-accordion-label" aria-hidden="true">
       Pick a date!
       <input type="date"></input>
     </div>
