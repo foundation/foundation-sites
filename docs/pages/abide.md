@@ -168,32 +168,32 @@ Setup event listener after foundation is initialized (especially for formvalid/f
 ```javascript
 $(document)
   // field element is invalid
-  .bind("invalid.zf.abide", function(ev,elem) {
+  .on("invalid.zf.abide", function(ev,elem) {
     console.log("Field id "+ev.target.id+" is invalid");
   })
   // field element is valid
-  .bind("valid.zf.abide", function(ev,elem) {
+  .on("valid.zf.abide", function(ev,elem) {
     console.log("Field name "+elem.attr('name')+" is valid");
   })
   // form validation failed
-  .bind("forminvalid.zf.abide", function(ev,frm) {
+  .on("forminvalid.zf.abide", function(ev,frm) {
     console.log("Form id "+ev.target.id+" is invalid");
   })
   // form validation passed, form will submit if submit event not returned false
-  .bind("formvalid.zf.abide", function(ev,frm) {
+  .on("formvalid.zf.abide", function(ev,frm) {
     console.log("Form id "+frm.attr('id')+" is invalid");
     // ajax post form 
   })
   // to prevent form from submitting upon successful validation
-  .bind("submit", function(ev) {
+  .on("submit", function(ev) {
     ev.preventDefault();
     console.log("Submit for form id "+ev.target.id+" intercepted");
   });
 // You can bind field or form event selectively
-$("#foo").bind("invalid.zf.abide", function(ev,el) {
+$("#foo").on("invalid.zf.abide", function(ev,el) {
   alert("Input field foo is invalid");
 });
-$("#bar").bind("formvalid.zf.abide", function(ev,frm) {
+$("#bar").on("formvalid.zf.abide", function(ev,frm) {
   alert("Form is valid, finally!");
   // do something perhaps
 });
