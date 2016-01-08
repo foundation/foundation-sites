@@ -162,6 +162,11 @@
         _this.currentPath = path;
       });
     }
+
+    /**
+     * Fires when content in an Interchange element is done being loaded.
+     * @event Interchange#replaced
+     */
     this.$element.trigger('replaced.zf.interchange');
   };
   /**
