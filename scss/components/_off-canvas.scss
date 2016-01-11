@@ -60,6 +60,7 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5) !default;
     @include clearfix;
     position: relative;
     width: 100%;
+    min-height: 100%; 
     transition: transform $offcanvas-transition-length $offcanvas-transition-timing;
   }
 
