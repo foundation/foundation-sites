@@ -8,6 +8,8 @@
         start,
         timer;
 
+    this.isPaused = false;
+    
     this.restart = function(){
       remain = -1;
       clearTimeout(timer);
@@ -15,6 +17,7 @@
     };
 
     this.start = function(){
+      this.isPaused = false
       // if(!elem.data('paused')){ return false; }//maybe implement this sanity check if used for other things.
       clearTimeout(timer);
       remain = remain <= 0 ? duration : remain;
@@ -30,6 +33,7 @@
     };
 
     this.pause = function(){
+      this.isPaused = true;
       //if(elem.data('paused')){ return false; }//maybe implement this sanity check if used for other things.
       clearTimeout(timer);
       elem.data('paused', true);

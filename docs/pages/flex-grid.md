@@ -10,7 +10,11 @@ The flex grid works very similarly to the standard float grid, but includes a nu
 
 ## Browser support
 
-The flex grid is only supported in Chrome, Firefox, Safari 6+, IE10+, iOS 7+, and Android 4+. Flexbox is supported in Android 2, but not reliably enough for use with this grid. ([View flexbox browser support.](http://caniuse.com/#feat=flexbox)) We recommend only using the flex grid on projects that can live with purely cutting-edge browser support.
+The flex grid is only supported in Chrome, Firefox, Safari 6+, IE10+, iOS 7+, and Android 4.4+. Flexbox is supported in older versions of Android, but not reliably enough for use with this grid. [View flexbox browser support here.](http://caniuse.com/#feat=flexbox) We recommend only using the flex grid on projects that can live with purely cutting-edge browser support.
+
+<div class="warning callout">
+  <p>In Firefox 43 (the latest version), images in flex columns may overflow their container. To fix this, add a defined <code>width</code> to any images inside a flex column, or use <code>width: 100%</code> for full-bleed images.</p>
+</div>
 
 ---
 

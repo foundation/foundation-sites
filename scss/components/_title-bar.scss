@@ -65,4 +65,8 @@ $titlebar-icon-spacing: 0.25rem !default;
   .menu-icon {
     @include hamburger($color: $titlebar-icon-color, $color-hover: $titlebar-icon-color-hover);
   }
+
+  .menu-icon.dark {
+    @include hamburger;
+  }
 }

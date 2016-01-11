@@ -88,10 +88,6 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5) !default;
     background: $offcanvas-exit-background;
     cursor: pointer;
     transition: background $offcanvas-transition-length $offcanvas-transition-timing;
-
-    .is-off-canvas-open & {
-      display: block;
-    }
   }
 }
 

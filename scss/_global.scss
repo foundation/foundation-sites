@@ -194,6 +194,15 @@ $foundation-colors: (
     border-radius: $global-radius;
     line-height: 1;
   }
+
+  // Internal classes to show/hide elements in JavaScript
+  .is-visible {
+    display: block !important;
+  }
+
+  .is-hidden {
+    display: none !important;
+  }
 }
 
 /// Loads normalize.css.
@@ -572,13 +581,14 @@ $foundation-colors: (
 
   /**
    * Define consistent border, margin, and padding.
+   * [NOTE] We don't enable this ruleset in Foundation, because we want the <fieldset> element to have plain styling.
    */
 
-  fieldset {
+  /* fieldset {
     border: 1px solid #c0c0c0;
     margin: 0 2px;
     padding: 0.35em 0.625em 0.75em;
-  }
+  } */
 
   /**
    * 1. Correct `color` not being inherited in IE 8/9/10/11.

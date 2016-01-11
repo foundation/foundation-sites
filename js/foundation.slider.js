@@ -133,7 +133,8 @@
      * @option
      * @example 'disabled'
      */
-    disabledClass: 'disabled'
+    disabledClass: 'disabled',
+    invertVertical: false
   };
   /**
    * Initilizes the plugin by reading/setting attributes, creating collections and setting the initial position of the handle(s).
@@ -173,7 +174,7 @@
 
       this._setHandlePos(this.$handle, this.options.initialStart, true, function(){
 
-        _this._setHandlePos(_this.$handle2, _this.options.initialEnd);
+        _this._setHandlePos(_this.$handle2, _this.options.initialEnd, true);
       });
       // this.$handle.triggerHandler('click.zf.slider');
       this._setInitAttr(1);
@@ -196,14 +197,14 @@
   Slider.prototype._setHandlePos = function($hndl, location, noInvert, cb){
   //might need to alter that slightly for bars that will have odd number selections.
     location = parseFloat(location);//on input change events, convert string to number...grumble.
-    // prevent slider from running out of bounds
+
+    // prevent slider from running out of bounds, if value exceeds the limits set through options, override the value to min/max
     if(location < this.options.start){ location = this.options.start; }
     else if(location > this.options.end){ location = this.options.end; }
 
-    var isDbl = this.options.doubleSided,
-        callback = cb || null;
+    var isDbl = this.options.doubleSided;
 
-    if(isDbl){
+    if(isDbl){ //this block is to prevent 2 handles from crossing eachother. Could/should be improved.
       if(this.handles.index($hndl) === 0){
         var h2Val = parseFloat(this.$handle2.attr('aria-valuenow'));
         location = location >= h2Val ? h2Val - this.options.step : location;
@@ -213,58 +214,82 @@
       }
     }
 
+    //this is for single-handled vertical sliders, it adjusts the value to account for the slider being "upside-down"
+    //for click and drag events, it's weird due to the scale(-1, 1) css property
     if(this.options.vertical && !noInvert){
       location = this.options.end - location;
     }
+
     var _this = this,
         vert = this.options.vertical,
         hOrW = vert ? 'height' : 'width',
         lOrT = vert ? 'top' : 'left',
-        halfOfHandle = $hndl[0].getBoundingClientRect()[hOrW] / 2,
+        handleDim = $hndl[0].getBoundingClientRect()[hOrW],
         elemDim = this.$element[0].getBoundingClientRect()[hOrW],
+        //percentage of bar min/max value based on click or drag point
         pctOfBar = percent(location, this.options.end).toFixed(2),
-        pxToMove = (elemDim - halfOfHandle) * pctOfBar,
+        //number of actual pixels to shift the handle, based on the percentage obtained above
+        pxToMove = (elemDim - handleDim) * pctOfBar,
+        //percentage of bar to shift the handle
         movement = (percent(pxToMove, elemDim) * 100).toFixed(this.options.decimal),
-        location = location > 0 ? parseFloat(location.toFixed(this.options.decimal)) : 0,
-        anim, prog, start = null, css = {};
+        //fixing the decimal value for the location number, is passed to other methods as a fixed floating-point value
+        location = parseFloat(location.toFixed(this.options.decimal)),
+        // declare empty object for css adjustments, only used with 2 handled-sliders
+        css = {};
 
     this._setValues($hndl, location);
 
-    if(this.options.doubleSided){//update to calculate based on values set to respective inputs??
+    // TODO update to calculate based on values set to respective inputs??
+    if(isDbl){
       var isLeftHndl = this.handles.index($hndl) === 0,
+          //empty variable, will be used for min-height/width for fill bar
           dim,
-          idx = this.handles.index($hndl);
-
+          //percentage w/h of the handle compared to the slider bar
+          handlePct =  ~~(percent(handleDim, elemDim) * 100);
+      //if left handle, the math is slightly different than if it's the right handle, and the left/top property needs to be changed for the fill bar
       if(isLeftHndl){
-        css[lOrT] = (pctOfBar > 0 ? pctOfBar * 100 : 0) + '%';//
-        dim = /*Math.abs*/((percent(this.$handle2.position()[lOrT] + halfOfHandle, elemDim) - parseFloat(pctOfBar)) * 100).toFixed(this.options.decimal) + '%';
-        css['min-' + hOrW] = dim;
-        if(cb && typeof cb === 'function'){ cb(); }
+        //left or top percentage value to apply to the fill bar.
+        css[lOrT] = movement + '%';
+        //calculate the new min-height/width for the fill bar.
+        dim = parseFloat(this.$handle2[0].style[lOrT]) - movement + handlePct;
+        //this callback is necessary to prevent errors and allow the proper placement and initialization of a 2-handled slider
+        //plus, it means we don't care if 'dim' isNaN on init, it won't be in the future.
+        if(cb && typeof cb === 'function'){ cb(); }//this is only needed for the initialization of 2 handled sliders
       }else{
-        var handleLeft = parseFloat(this.$handle[0].style.left);
-        location = (location < 100 ? location : 100) - (!isNaN(handleLeft) ? handleLeft : this.options.end - location);
-        css['min-' + hOrW] = location + '%';
+        //just caching the value of the left/bottom handle's left/top property
+        var handlePos = parseFloat(this.$handle[0].style[lOrT]);
+        //calculate the new min-height/width for the fill bar. Use isNaN to prevent false positives for numbers <= 0
+        //based on the percentage of movement of the handle being manipulated, less the opposing handle's left/top position, plus the percentage w/h of the handle itself
+        dim = movement - (isNaN(handlePos) ? this.options.initialStart : handlePos) + handlePct;
       }
+      // assign the min-height/width to our css object
+      css['min-' + hOrW] = dim + '%';
     }
 
     this.$element.one('finished.zf.animate', function(){
-                    _this.animComplete = true;
                     /**
                      * Fires when the handle is done moving.
                      * @event Slider#moved
                      */
                     _this.$element.trigger('moved.zf.slider', [$hndl]);
                 });
-    var moveTime = _this.$element.data('dragging') ? 1000/60 : _this.options.moveTime;
-    /*var move = new */Foundation.Move(moveTime, $hndl, function(){
+
+    //because we don't know exactly how the handle will be moved, check the amount of time it should take to move.
+    var moveTime = this.$element.data('dragging') ? 1000/60 : this.options.moveTime;
+
+    Foundation.Move(moveTime, $hndl, function(){
+      //adjusting the left/top property of the handle, based on the percentage calculated above
       $hndl.css(lOrT, movement + '%');
+
       if(!_this.options.doubleSided){
+        //if single-handled, a simple method to expand the fill bar
         _this.$fill.css(hOrW, pctOfBar * 100 + '%');
       }else{
+        //otherwise, use the css object we created above
         _this.$fill.css(css);
       }
     });
-    // move.do();
+
   };
   /**
    * Sets the initial attribute for the slider element.
@@ -311,6 +336,7 @@
    * @param {Object} e - the `event` object passed from the listener.
    * @param {jQuery} $handle - the current handle to calculate for, if selected.
    * @param {Number} val - floating point number for the new value of the slider.
+   * TODO clean this up, there's a lot of repeated code between this and the _setHandlePos fn.
    */
   Slider.prototype._handleEvent = function(e, $handle, val){
     var value, hasVal;
@@ -324,10 +350,13 @@
           halfOfHandle = this.$handle[0].getBoundingClientRect()[param] / 2,
           barDim = this.$element[0].getBoundingClientRect()[param],
           barOffset = (this.$element.offset()[direction] -  pageXY),
-          barXY = barOffset > 0 ? -halfOfHandle : (barOffset - halfOfHandle) < -barDim ? barDim : Math.abs(barOffset),//if the cursor position is less than or greater than the elements bounding coordinates, set coordinates within those bounds
-          // eleDim = this.$element[0].getBoundingClientRect()[param],
+          //if the cursor position is less than or greater than the elements bounding coordinates, set coordinates within those bounds
+          barXY = barOffset > 0 ? -halfOfHandle : (barOffset - halfOfHandle) < -barDim ? barDim : Math.abs(barOffset),
           offsetPct = percent(barXY, barDim);
       value = (this.options.end - this.options.start) * offsetPct;
+      // turn everything around for RTL, yay math!
+      if (Foundation.rtl() && !this.options.vertical) {value = this.options.end - value;}
+      //boolean flag for the setHandlePos fn, specifically for vertical sliders
       hasVal = false;
 
       if(!$handle){//figure out which handle it is, pass it to the next function.
@@ -364,7 +393,7 @@
     if(this.options.clickSelect){
       this.$element.off('click.zf.slider').on('click.zf.slider', function(e){
         if(_this.$element.data('dragging')){ return false; }
-        _this.animComplete = false;
+
         if(_this.options.doubleSided){
           _this._handleEvent(e);
         }else{
@@ -375,8 +404,7 @@
 
     if(this.options.draggable){
       this.handles.addTouch();
-      // var curHandle,
-      //     timer,
+
       var $body = $('body');
       $handle
         .off('mousedown.zf.slider')
@@ -384,33 +412,31 @@
           $handle.addClass('is-dragging');
           _this.$fill.addClass('is-dragging');//
           _this.$element.data('dragging', true);
-          _this.animComplete = false;
+
           curHandle = $(e.currentTarget);
 
           $body.on('mousemove.zf.slider', function(e){
             e.preventDefault();
 
-            // timer = setTimeout(function(){
             _this._handleEvent(e, curHandle);
-            // }, _this.options.dragDelay);
+
           }).on('mouseup.zf.slider', function(e){
-            // clearTimeout(timer);
-            _this.animComplete = true;
             _this._handleEvent(e, curHandle);
+
             $handle.removeClass('is-dragging');
             _this.$fill.removeClass('is-dragging');
             _this.$element.data('dragging', false);
-            // Foundation.reflow(_this.$element, 'slider');
+
             $body.off('mousemove.zf.slider mouseup.zf.slider');
           });
       });
     }
     $handle.off('keydown.zf.slider').on('keydown.zf.slider', function(e){
-      var idx = _this.options.doubleSided ? _this.handles.index($(this)) : 0,
-        oldValue = parseFloat(_this.inputs.eq(idx).val()),
-        newValue;
+      var _$handle = $(this),
+          idx = _this.options.doubleSided ? _this.handles.index(_$handle) : 0,
+          oldValue = parseFloat(_this.inputs.eq(idx).val()),
+          newValue;
 
-      var _$handle = $(this);
 
       // handle keyboard event with keyboard util
       Foundation.Keyboard.handleKey(e, 'Slider', {

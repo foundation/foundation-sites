@@ -155,4 +155,9 @@ $slider-transition: all 0.2s ease-in-out !default;
   .slider.vertical {
     @include slider-vertical;
   }
+
+  // RTL support
+  html[dir="rtl"] .slider:not(.vertical){
+    transform: scale(-1, 1);
+  }
 }

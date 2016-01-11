@@ -99,18 +99,11 @@ $button-opacity-disabled: 0.25 !default;
   $color: $button-color
 ) {
   @if $color == auto {
-    $color: isitlight($background);
+    $color: foreground($background);
   }
 
   @if $background-hover == auto {
     $background-hover: scale-color($background, $lightness: -20%);
-  }
-
-  @if lightness($background) >= 70% {
-    $color: $button-color-alt;
-  }
-  @else {
-    $color: $button-color;
   }
 
   background-color: $background;

@@ -291,7 +291,7 @@
      * @event Abide#valid
      * @event Abide#invalid
      */
-    $el.trigger(message, $el[0]);
+    $el.trigger(message, [$el]);
 
     return goodToGo;
   };

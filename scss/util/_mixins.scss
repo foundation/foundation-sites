@@ -25,18 +25,22 @@
   @if ($triangle-direction == down) {
     border-color: $triangle-color transparent transparent;
     border-top-style: solid;
+    border-bottom-width: 0;
   }
   @if ($triangle-direction == up) {
     border-color: transparent transparent $triangle-color;
     border-bottom-style: solid;
+    border-top-width: 0;
   }
   @if ($triangle-direction == right) {
     border-color: transparent transparent transparent $triangle-color;
     border-left-style: solid;
+    border-right-width: 0;
   }
   @if ($triangle-direction == left) {
     border-color: transparent $triangle-color transparent transparent;
     border-right-style: solid;
+    border-left-width: 0;
   }
 }
 
