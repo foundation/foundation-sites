@@ -102,6 +102,19 @@
   @return $base * pow($base, $power - 1);
 }
 
+/// Finds a value in a nested map.
+/// @link https://css-tricks.com/snippets/sass/deep-getset-maps/ Deep Get/Set in Maps
+///
+/// @param {Map} $map - Map to pull a value from.
+/// @param {String} $keys... - Keys to use when looking for a value.
+/// @return The value found in the map.
+@function map-deep-get($map, $keys...) {
+    @each $key in $keys {
+        $map: map-get($map, $key);
+    }
+    @return $map;
+}
+
 // TODO: Remove this (it's used by the grid but is overkill)
 /// Given a user-defined list of keywords and a list of possible keywords, find the ones that were passed in.
 /// @access private

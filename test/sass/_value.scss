@@ -98,4 +98,16 @@
   }
 }
 
+@include describe('Map Deep Get') {
+  @include it('gets a value from a nested map') {
+    $map: (
+      one: (
+        two: 'three',
+      ),
+    );
+
+    @include should(expect(map-deep-get($map, one, two)), to(be('three')));
+  }
+}
+
 // TODO: Add spec for pow()
