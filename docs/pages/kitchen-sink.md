@@ -392,6 +392,30 @@ description: Everything but.
 
 ---
 
+## Flex Grid
+
+```html
+<div class="row">
+  <div class="small-6 columns">6 columns</div>
+  <div class="small-6 columns">6 columns</div>
+</div>
+<div class="row">
+  <div class="medium-6 large-4 columns">12/6/4 columns</div>
+  <div class="medium-6 large-8 columns">12/6/8 columns</div>
+</div>
+```
+
+<div class="row display">
+  <div class="small-6 columns">6 columns</div>
+  <div class="small-6 columns">6 columns</div>
+</div>
+<div class="row display">
+  <div class="medium-6 large-4 columns">12/6/4 columns</div>
+  <div class="medium-6 large-8 columns">12/6/8 columns</div>
+</div>
+
+---
+
 ## Flex Video
 
 ```html_example
@@ -469,6 +493,60 @@ description: Everything but.
 
 ---
 
+## Grid
+
+```html
+<div class="row">
+  <div class="small-2 medium-3 large-4 columns">2/3/4 columns</div>
+  <div class="small-4 medium-3 large-4 columns">4/3/4 columns</div>
+  <div class="small-6 large-4 columns">6/6/4 columns</div>
+</div>
+<div class="row">
+  <div class="large-3 columns">12/12/3 columns</div>
+  <div class="large-6 columns">12/12/6 columns</div>
+  <div class="large-3 columns">12/12/3 columns</div>
+</div>
+<div class="row">
+  <div class="small-6 large-2 columns">6/6/2 columns</div>
+  <div class="small-6 large-8 columns">6/6/8 columns</div>
+  <div class="small-12 large-2 columns">12/12/2 columns</div>
+</div>
+<div class="row">
+  <div class="small-3 columns">3 columns</div>
+  <div class="small-9 columns">9 columns</div>
+</div>
+<div class="row">
+  <div class="medium-8 large-4 columns">12/8/4 columns</div>
+  <div class="medium-4 large-8 columns">12/4/8 columns</div>
+</div>
+```
+
+<div class="row display">
+  <div class="small-2 medium-3 large-4 columns">2/3/4 columns</div>
+  <div class="small-4 medium-3 large-4 columns">4/3/4 columns</div>
+  <div class="small-6 large-4 columns">6/6/4 columns</div>
+</div>
+<div class="row display">
+  <div class="large-3 columns">12/12/3 columns</div>
+  <div class="large-6 columns">12/12/6 columns</div>
+  <div class="large-3 columns">12/12/3 columns</div>
+</div>
+<div class="row display">
+  <div class="small-6 large-2 columns">6/6/2 columns</div>
+  <div class="small-6 large-8 columns">6/6/8 columns</div>
+  <div class="small-12 large-2 columns">12/12/2 columns</div>
+</div>
+<div class="row display">
+  <div class="small-3 columns">3 columns</div>
+  <div class="small-9 columns">9 columns</div>
+</div>
+<div class="row display">
+  <div class="medium-8 large-4 columns">12/8/4 columns</div>
+  <div class="medium-4 large-8 columns">12/4/8 columns</div>
+</div>
+
+---
+
 ## Interchange
 
 ```html_example
@@ -484,6 +562,32 @@ description: Everything but.
 <span class="success label">Success Label</span>
 <span class="alert label">Alert Label</span>
 <span class="warning label">Warning Label</span>
+```
+
+---
+
+## Magellan
+
+```html_example
+<ul class="horizontal menu" data-magellan>
+  <li><a href="#first">First Arrival</a></li>
+  <li><a href="#second">Second Arrival</a></li>
+  <li><a href="#third">Third Arrival</a></li>
+</ul>
+<div class="sections">
+  <section id="first" data-magellan-target="first">
+    <h4>First section</h4>
+    <p>Duis scelerisque ligula ut metus rhoncus scelerisque. Integer ut egestas metus. Nulla facilisi. Aenean luctus magna lobortis ligula rhoncus, sit amet lacinia lorem sagittis. Sed ultrices at metus id aliquet. Vestibulum in condimentum quam, id ornare erat. Vivamus nec justo quis ex fringilla condimentum ac non quam.</p>
+  </section>
+  <section id="second" data-magellan-target="second">
+    <h4>Second section</h4>
+    <p>Sed vulputate, felis interdum molestie viverra, neque urna placerat dui, ac efficitur est magna eu tellus. Nunc sodales consequat eros at bibendum. Vestibulum hendrerit gravida elit non eleifend. Nunc at vehicula ipsum. Vestibulum eu suscipit felis. Proin ipsum felis, consequat congue quam ac, efficitur tincidunt ex. Morbi accumsan sem iaculis nunc malesuada tincidunt.</p>
+  </section>
+  <section id="third" data-magellan-target="third">
+    <h4>Second section</h4>
+    <p>Aliquam orci orci, maximus a pulvinar id, tincidunt a neque. Suspendisse eros diam, finibus et faucibus ac, suscipit feugiat orci. Morbi scelerisque sem id blandit malesuada. Donec suscipit tincidunt dolor in blandit. Nam rhoncus risus vitae lacinia dictum. Cras lobortis, nulla non faucibus mattis, tellus nibh condimentum eros, posuere volutpat arcu risus vel ante. In ut ullamcorper eros, et vestibulum risus. Fusce auctor risus vitae diam viverra tincidunt.</p>
+  </section>
+</div>
 ```
 
 ---
@@ -520,6 +624,32 @@ description: Everything but.
   <li><a href="#"><i class="fi-list"></i> <span>Three</span></a></li>
   <li><a href="#"><i class="fi-list"></i> <span>Four</span></a></li>
 </ul>
+```
+
+---
+
+## Off-canvas
+
+```
+<body>
+  <div class="off-canvas-wrapper">
+    <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+      <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas>
+        <!-- left off-canvas markup -->
+      </div>
+      <div class="off-canvas position-right" id="offCanvasRight" data-off-canvas data-position="right">
+        <!-- right off-canvas markup -->
+      </div>
+      <div class="off-canvas-content" data-off-canvas-content>
+        <!-- page content -->
+      </div>
+    </div>
+  </div>
+</body>
+```
+
+```html_example
+<button type="button" class="button" data-toggle="offCanvasLeft">Open Menu</button>
 ```
 
 ---
@@ -698,6 +828,36 @@ description: Everything but.
   <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
   <input type="hidden">
   <input type="hidden">
+</div>
+```
+
+---
+
+## Sticky
+
+```html_example
+<div class="row">
+  <div class="columns small-12">
+    <div class="columns small-6" id="example1" data-something>
+      <p id="doodle">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+    <div class="columns small-6 right" data-sticky-container>
+      <div class="sticky" data-sticky data-anchor="example1">
+        <img class="thumbnail" src="assets/img/rectangle-3.jpg">
+      </div>
+    </div>
+  </div>
 </div>
 ```
 
