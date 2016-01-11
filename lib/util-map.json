@@ -32,6 +32,7 @@
     "foundation.util.motion.js"
   ],
   "offcanvas": [
+    "foundation.util.mediaQuery.js",
     "foundation.util.motion.js",
     "foundation.util.triggers.js"
   ],

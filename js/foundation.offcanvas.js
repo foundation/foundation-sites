@@ -1,6 +1,7 @@
 /**
  * OffCanvas module.
  * @module foundation.offcanvas
+ * @requires foundation.util.mediaQuery
  * @requires foundation.util.triggers
  * @requires foundation.util.motion
  */
