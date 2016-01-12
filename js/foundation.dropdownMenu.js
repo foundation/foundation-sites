@@ -135,8 +135,7 @@
   DropdownMenu.prototype._events = function(){
     var _this = this,
         hasTouch = 'ontouchstart' in window || (typeof window.ontouchstart !== 'undefined'),
-        parClass = 'is-dropdown-submenu-parent',
-        delay;
+        parClass = 'is-dropdown-submenu-parent';
 
     if(this.options.clickOpen || hasTouch){
       this.$menuItems.on('click.zf.dropdownmenu touchstart.zf.dropdownmenu', function(e){
@@ -170,8 +169,8 @@
             hasSub = $elem.hasClass(parClass);
 
         if(hasSub){
-          clearTimeout(delay);
-          delay = setTimeout(function(){
+          clearTimeout(_this.delay);
+          _this.delay = setTimeout(function(){
             _this._show($elem.children('.is-dropdown-submenu'));
           }, _this.options.hoverDelay);
         }
@@ -181,8 +180,8 @@
         if(hasSub && _this.options.autoclose){
           if($elem.attr('data-is-click') === 'true' && _this.options.clickOpen){ return false; }
 
-          // clearTimeout(delay);
-          delay = setTimeout(function(){
+          clearTimeout(_this.delay);
+          _this.delay = setTimeout(function(){
             _this._hide($elem);
           }, _this.options.closingTime);
         }
