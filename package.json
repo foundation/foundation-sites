@@ -54,6 +54,7 @@
     "require-dir": "^0.3.0",
     "rimraf": "^2.3.2",
     "run-sequence": "^1.1.4",
+    "sass-true": "^2.0.3",
     "supercollider": "^1.2.0"
   },
   "repository": {
