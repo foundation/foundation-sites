@@ -6,21 +6,6 @@
 /// @group flex-grid
 ////
 
-$-zf-flex-justify: (
-  'left': flex-start,
-  'right': flex-end,
-  'center': center,
-  'justify': space-between,
-  'spaced': space-around,
-);
-
-$-zf-flex-align: (
-  'top': flex-start,
-  'bottom': flex-end,
-  'middle': center,
-  'stretch': stretch,
-);
-
 /// Creates a container for a flex grid row.
 ///
 /// @param {Keyword|List} $behavior [null]
@@ -126,42 +111,14 @@ $-zf-flex-align: (
 /// @param {Keyword} $x [null] - Horizontal alignment to use. Can be `left`, `right`, `center`, `justify`, or `spaced`. Or, set it to `null` (the default) to not set horizontal alignment.
 /// @param {Keyword} $y [null] - Vertical alignment to use. Can be `top`, `bottom`, `middle`, or `stretch`. Or, set it to `null` (the default) to not set vertical alignment.
 @mixin flex-grid-row-align($x: null, $y: null) {
-  @if $x {
-    @if map-has-key($-zf-flex-justify, $x) {
-      $x: map-get($-zf-flex-justify, $x);
-    }
-    @else {
-      @warn 'flex-grid-row-align(): #{$x} is not a valid value for horizontal alignment. Use left, right, center, justify, or spaced.'
-    }
-  }
-
-  @if $y {
-    @if map-has-key($-zf-flex-align, $y) {
-      $y: map-get($-zf-flex-align, $y);
-    }
-    @else {
-      @warn 'flex-grid-row-align(): #{$y} is not a valid value for vertical alignment. Use top, bottom, middle, or stretch.'
-    }
-  }
-
-  justify-content: $x;
-  align-items: $y;
+  @include flex-align($x, $y);
 }
 
 /// Vertically align a single column within a flex row. Apply this mixin to a flex column.
 ///
 /// @param {Keyword} $y [null] - Vertical alignment to use. Can be `top`, `bottom`, `middle`, or `stretch`. Or, set it to `null` (the default) to not set vertical alignment.
 @mixin flex-grid-column-align($y: null) {
-  @if $y {
-    @if map-has-key($-zf-flex-align, $y) {
-      $y: map-get($-zf-flex-align, $y);
-    }
-    @else {
-      @warn 'flex-grid-column-align(): #{$y} is not a valid value for alignment. Use top, bottom, middle, or stretch.'
-    }
-  }
-
-  align-self: $y;
+  @include flex-align-self($y);
 }
 
 @mixin foundation-flex-grid {
@@ -256,19 +213,8 @@ $-zf-flex-align: (
     flex: flex-grid-column(shrink);
   }
 
-  // Horizontal alignment using justify-content
-  @each $hdir, $prop in map-remove($-zf-flex-justify, left) {
-    .row.align-#{$hdir} {
-      @include flex-grid-row-align($x: $hdir);
-    }
-  }
-
   // Vertical alignment using align-items and align-self
   @each $vdir, $prop in $-zf-flex-align {
-    .row.align-#{$vdir} {
-      @include flex-grid-row-align($y: $vdir);
-    }
-
     .column.align-#{$vdir} {
       @include flex-grid-column-align($vdir);
     }
