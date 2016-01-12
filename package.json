@@ -16,7 +16,6 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "bootcamp": "^1.1.7",
     "browser-sync": "^2.8.2",
     "clipboard": "^1.5.5",
     "corejs-typeahead": "corejavascript/typeahead.js",
@@ -30,6 +29,7 @@
     "gulp-jshint": "^1.9.2",
     "gulp-load-plugins": "^0.8.0",
     "gulp-minify-css": "^1.2.1",
+    "gulp-mocha": "^2.2.0",
     "gulp-newer": "^1.1.0",
     "gulp-plumber": "^1.0.1",
     "gulp-prompt": "^0.1.2",
