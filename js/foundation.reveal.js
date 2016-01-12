@@ -333,12 +333,16 @@
      */
                  .trigger('open.zf.reveal');
 
-    $('body').addClass('is-reveal-open')
-             .attr({'aria-hidden': (this.options.overlay || this.options.fullScreen) ? true : false});
-    setTimeout(function(){
-      _this._extraHandlers();
-    }, 0);
-  };
+    // Remove class to html - supports mobile better
+    $('html').addClass('is-reveal-open');
+
+    $('body').attr({'aria-hidden': (this.options.overlay || this.options.fullScreen) ? true : false});
+    
+    	setTimeout(function(){
+    		_this._extraHandlers();
+    	}, 0);
+    
+    };
 
   /**
    * Adds extra event handlers for the body and window if necessary.
@@ -449,8 +453,11 @@
         'width': ''
       });
     }
-
-    $('body').removeClass('is-reveal-open').attr({'aria-hidden': false, 'tabindex': ''});
+    
+    // Apply class to html - supports mobile better
+    $('html').removeClass('is-reveal-open');
+    
+    $('body').attr({'aria-hidden': false, 'tabindex': ''});
 
     /**
     * Resets the modal content
