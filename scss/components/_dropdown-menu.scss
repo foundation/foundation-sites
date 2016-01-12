@@ -100,7 +100,9 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
       border: $dropdownmenu-border;
 
       @if (type-of($dropdownmenu-border-width) == 'number') {
-        margin-top: (-$dropdownmenu-border-width);
+        & .submenu {
+          margin-top: (-$dropdownmenu-border-width);
+        }
       }
 
       > li {
