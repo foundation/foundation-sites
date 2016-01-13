@@ -8,6 +8,10 @@ sass: ./scss/components/_top-bar.scss
   <p>The features of Foundation 5's top bar are still around, but they've been reworked into smaller, individual plugins. Check out our page on <a href="responsive-navigation.html">responsive navigation</a> to learn more.</p>
 </div>
 
+<div class="primary callout">
+  <p>This component supports flexbox mode. <a href="#">Learn how to enable flexbox mode</a>.</p>
+</div>
+
 ## Basics
 
 A top bar (`.top-bar`) can have two sections: a left-hand section (`.top-bar-left`) and a right-hand section (`.top-bar-right`). On small screens, these sections stack on top of each other.
