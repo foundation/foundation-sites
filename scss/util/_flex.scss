@@ -60,3 +60,9 @@ $-zf-flex-align: (
 
   align-self: $y;
 }
+
+/// Changes the source order of a flex child. Children with lower numbers appear first in the layout.
+/// @param {Number} $order [0] - Order number to apply.
+@mixin flex-order($order: 0) {
+  order: $order;
+}

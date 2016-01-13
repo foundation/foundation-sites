@@ -18,4 +18,13 @@
       @include flex-align-self($y: $vdir);
     }
   }
+
+  // Source ordering
+  @include -zf-each-breakpoint {
+    @for $i from 1 through 6 {
+      .#{$-zf-size} {
+        @include flex-order($i);
+      }
+    }
+  }
 }
