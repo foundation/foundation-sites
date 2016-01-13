@@ -70,7 +70,7 @@ Get to know the pieces of Foundation.
         <li><a href="forms.html">Forms</a></li>
         <li><a href="visibility.html">Visibility Classes</a></li>
         <li><a href="float-classes.html">Float Classes</a></li>
-        <li><a href="flex-classes.html">Flex Classes</a></li>
+        <li><a href="flex-classes.html">Flexbox</a></li>
       </ul>
     </section>
 

@@ -10,7 +10,7 @@ The flex grid works very similarly to the standard float grid, but includes a nu
 
 ## Browser support
 
-The flex grid is only supported in Chrome, Firefox, Safari 6+, IE10+, iOS 7+, and Android 4+. Flexbox is supported in Android 2, but not reliably enough for use with this grid. ([View flexbox browser support.](http://caniuse.com/#feat=flexbox)) We recommend only using the flex grid on projects that can live with purely cutting-edge browser support.
+The flex grid is only supported in Chrome, Firefox, Safari 6+, IE10+, iOS 7+, and Android 4.4+. Flexbox is supported in Android 2, but not reliably enough for use with this grid. ([View flexbox browser support.](http://caniuse.com/#feat=flexbox)) We recommend only using the flex grid on projects that can live with purely cutting-edge browser support.
 
 ---
 
