@@ -16,14 +16,15 @@ The flex grid is only supported in Chrome, Firefox, Safari 6+, IE10+, iOS 7+, an
 
 ## Importing
 
-If you're using the CSS version of Foundation, you'll need to generate a [custom download](http://foundation.zurb.com/sites/download/#customizeFoundation) that replaces the float grid with the flex grid.
+If you're using the CSS version of Foundation, you can generate a <a href="https://foundation.zurb.com/sites/download">custom download of Foundation</a> with flexbox mode enabled.
 
-If you're using the Sass version of Foundation, remove the CSS export for the float grid, and replace it with the CSS export for the flex grid.
+If you're using the Sass version of Foundation, you can enable a framework-wide flexbox mode, and add exports for the flex grid and flexbox helper classes. [Learn more about enabling flexbox mode.](flexbox.html#enabling-flexbox-mode)
 
 ```scss
 @import 'foundation';
 
 // @include foundation-grid;
+@include foundation-flex-classes;
 @include foundation-flex-grid;
 ```
 

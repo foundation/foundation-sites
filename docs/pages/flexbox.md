@@ -33,7 +33,7 @@ You'll also need to replace the default float grid with the flex grid, which is 
 @include foundation-flex-grid;
 ```
 
-Lastly, you'll also may want to add the include for the flexbox helper classes.
+Lastly, you'll also want to add the include for the flexbox helper classes.
 
 ```scss
 @include foundation-flex-classes;
