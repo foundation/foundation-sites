@@ -496,6 +496,7 @@ $tab-background: $white;
 $tab-background-active: $light-gray;
 $tab-border: $light-gray;
 $tab-item-color: foreground($tab-background, $primary-color);
+$tab-item-color-active: $tab-item-color;
 $tab-item-background-hover: $white;
 $tab-item-padding: 1.25rem 1.5rem;
 $tab-expand-max: 6;
