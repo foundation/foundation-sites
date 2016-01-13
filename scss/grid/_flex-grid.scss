@@ -231,7 +231,7 @@
 
   // Remove this in 6.3
   @if not $-zf-flex-classes-imported {
-    @warn 'In Foundation 6.2, a new component mixin was added called "foundation-flex-classes". Add "@import foundation-flex-classes" to the main Sass file of your project to remove this warning.';
+    @warn 'In Foundation 6.2, a new component mixin was added called "foundation-flex-classes". Add "@import foundation-flex-classes" to the main Sass file of your project, above "@import foundation-flex-grid", to remove this warning.';
     @include foundation-flex-classes;
   }
 }
