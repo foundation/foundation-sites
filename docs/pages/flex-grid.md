@@ -214,13 +214,17 @@ Applying a vertical alignment class to the flex row will affect every column dir
 
 ---
 
-The same alignment classes can also be applied to individual columns.
+Similar alignment classes can also be applied to individual columns, which use the format `.align-self-*` instead of `.align-*`.
+
+<div class="warning callout">
+  <p>In Foundation 6.2, we introduced the <code>.align-self-&ast;</code> classes, which replace the old method of using <code>.align-&ast;</code> classes on columns. The old classes will be removed completely in Foundation 6.3.</p>
+</div>
 
 ```html_example
 <div class="row">
-  <div class="column align-bottom">Align bottom</div>
-  <div class="column align-middle">Align middle</div>
-  <div class="column align-top">Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?</div>
+  <div class="column align-self-bottom">Align bottom</div>
+  <div class="column align-self-middle">Align middle</div>
+  <div class="column align-self-top">Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?</div>
 </div>
 ```
 

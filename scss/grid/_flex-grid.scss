@@ -214,6 +214,7 @@
   }
 
   // Vertical alignment using align-items and align-self
+  // Remove these in 6.3
   @each $vdir, $prop in $-zf-flex-align {
     .column.align-#{$vdir} {
       @include flex-grid-column-align($vdir);
@@ -223,5 +224,11 @@
   .columns {
     // scss-lint:disable PlaceholderInExtend
     @extend .column;
+  }
+
+  // Remove this in 6.3
+  @if not $-zf-flex-classes-imported {
+    @warn 'In Foundation 6.2, a new component mixin was added called "foundation-flex-classes". Add "@import foundation-flex-classes" to the main Sass file of your project to remove this warning.';
+    @include foundation-flex-classes;
   }
 }

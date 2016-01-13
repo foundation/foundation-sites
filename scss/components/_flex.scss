@@ -1,13 +1,21 @@
-// Horizontal alignment using justify-content
-@each $hdir, $prop in map-remove($-zf-flex-justify, left) {
-  .row.align-#{$hdir} {
-    @include flex-align($x: $hdir);
-  }
-}
+@mixin foundation-flex-classes {
+  $-zf-flex-classes-imported: true;
 
-// Vertical alignment using align-items and align-self
-@each $vdir, $prop in $-zf-flex-align {
-  .align-#{$vdir} {
-    @include flex-align($y: $vdir);
+  // Horizontal alignment using justify-content
+  @each $hdir, $prop in map-remove($-zf-flex-justify, left) {
+    .align-#{$hdir} {
+      @include flex-align($x: $hdir);
+    }
+  }
+
+  // Vertical alignment using align-items and align-self
+  @each $vdir, $prop in $-zf-flex-align {
+    .align-#{$vdir} {
+      @include flex-align($y: $vdir);
+    }
+
+    .align-self-#{$vdir} {
+      @include flex-align-self($y: $vdir);
+    }
   }
 }

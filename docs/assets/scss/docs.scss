@@ -11,7 +11,10 @@
 @import 'foundation';
 @import 'motion-ui';
 
+$-zf-flex-classes-imported: true;
+
 @include foundation-everything;
+@include foundation-flex-classes;
 @include motion-ui-transitions;
 
 @import 'foundation-docs';
