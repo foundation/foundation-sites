@@ -114,6 +114,7 @@ $tab-content-padding: 1rem !default;
       &:focus,
       &[aria-selected='true'] {
         background: $tab-background-active;
+        color: $tab-item-color-active;
       }
     }
   }
