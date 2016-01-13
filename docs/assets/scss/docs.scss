@@ -12,6 +12,7 @@
 @import 'motion-ui';
 
 @include foundation-everything;
+@include foundation-range-input;
 @include motion-ui-transitions;
 
 @import 'foundation-docs';

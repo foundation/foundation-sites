@@ -18,6 +18,7 @@ $form-spacing: rem-calc(16) !default;
   'input-group',
   'fieldset',
   'select',
+  'range',
   'error';
 
 @mixin foundation-forms {
