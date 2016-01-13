@@ -26,6 +26,10 @@ $tab-border: $light-gray !default;
 /// @type Color
 $tab-item-color: foreground($tab-background, $primary-color) !default;
 
+/// Default text color for active items in a Menu.
+/// @type Color
+$tab-item-color-active: foreground($tab-background, $primary-color) !default;
+
 /// Default background color on hover for items in a Menu.
 $tab-item-background-hover: $white !default;
 
