@@ -1,12 +1,17 @@
-@import 'util/selector';
+@import "true";
 
-@include describe('Text inputs') {
-  @include it('creates a selector out of a list of text input types') {
-    $actual: #{text-inputs(text password)};
-    $expected: "[type='text'], [type='password']";
+@import '../../scss/util/selector';
 
-    @debug $actual;
+@include test-module('Selector') {
+  
+	@include test('Selector [function]') {
+	  $test: #{text-inputs(text password)};
+	  $expect: "[type='text'], [type='password']";
 
-    @include should(expect($actual), to(be($expected)));
-  }
+	  //@debug $test;
+
+	  @include assert-equal($test, $expect,
+	    'Creates a selector out of a list of text input types');
+	}
+
 }

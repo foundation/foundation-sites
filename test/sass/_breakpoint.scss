@@ -1,137 +1,138 @@
-@import 'util/unit';
-@import 'util/breakpoint';
+@import "true";
 
-@include describe('Breakpoint') {
-  @include it('converts a named breakpoint to an em value') {
-    $actual: breakpoint(medium);
-    $expected: '(min-width: 40em)';
+@import '../../scss/util/unit';
+@import '../../scss/util/breakpoint';
 
-    @include should(expect($actual), to(be($expected)));
+@include test-module('Breakpoint') {
+  
+  @include test('Breakpoint (Named to Em) [function]') {
+    $test: breakpoint(medium);
+    $expect: '(min-width: 40em)';
+
+    @include assert-equal($test, $expect,
+      'Converts a named breakpoint to an em value');
   }
 
-  @include it('converts a pixel or rem breakpoint to em') {
-    $expected: '(min-width: 1em)';
+  @include test('Breakpoint (Rem/Px to Em) [function]') {
+    $expect: '(min-width: 1em)';
 
-    @include should(expect(breakpoint(16px)), to(be($expected)));
-    @include should(expect(breakpoint(1rem)), to(be($expected)));
+    @include assert-equal(breakpoint(16px), $expect,
+      'Converts a pixel breakpoint to em');
+    @include assert-equal(breakpoint(1rem), $expect,
+      'Converts a rem breakpoint to em');
   }
 
-  @include it('creates an only range out of a named breakpoint') {
-    $actual: breakpoint(medium only);
-    $expected: '(min-width: 40em) and (max-width: 63.9375em)';
+  @include test('Breakpoint (Only Range) [function]') {
+    $test: breakpoint(medium only);
+    $expect: '(min-width: 40em) and (max-width: 63.9375em)';
 
-    @include should(expect($actual), to(be($expected)));
+    @include assert-equal($test, $expect,
+      'Creates an only range out of a named breakpoint');
   }
 
-  @include it('creates a down range out of a named breakpoint') {
-    $actual_medium: breakpoint(medium down);
-    $expected_medium: '(max-width: 63.9375em)';
+  @include test('Breakpoint (Named Down Range) [function]') {
+    $test_medium: breakpoint(medium down);
+    $expect_medium: '(max-width: 63.9375em)';
 
-    @include should(expect($actual_medium), to(be($expected_medium)));
+    @include assert-equal($test_medium, $expect_medium,
+      'Creates a down range out of a medium breakpoint');
+    
+    $test_small: breakpoint(small down);
+    $expect_small: '(max-width: 39.9375em)';
 
-    $actual_small: breakpoint(small down);
-    $expected_small: '(max-width: 39.9375em)';
-
-    @include should(expect($actual_small), to(be($expected_small)));
+    @include assert-equal($test_small, $expect_small,
+      'Creates a down range out of a small breakpoint');
   }
 
-  @include it('creates a down range out of a pixel, rem or em value') {
-    $expected: '(max-width: 1em)';
+  @include test('Breakpoint (Value Down Range) [function]') {
+    $expect: '(max-width: 1em)';
 
-    @include should(expect(breakpoint(16px down)), to(be($expected)));
-    @include should(expect(breakpoint(1rem down)), to(be($expected)));
-    @include should(expect(breakpoint(1em down)), to(be($expected)));
+    @include assert-equal(breakpoint(16px down), $expect,
+      'Creates a down range out of a pixel value');
+    @include assert-equal(breakpoint(1rem down), $expect,
+      'Creates a down range out of a rem value');
+    @include assert-equal(breakpoint(1em down), $expect,
+      'Creates a down range out of an em value');
   }
 
-  @include it('returns an empty string for the values zero down or zero up') {
-    $expected: '';
+  @include test('Breakpoint (Empty String) [function]') {
+    $expect: '';
 
-    @include should(expect(breakpoint(small up)), to(be($expected)));
-    @include should(expect(breakpoint(0 down)), to(be($expected)));
-    @include should(expect(breakpoint(0 up)), to(be($expected)));
+    @include assert-equal(breakpoint(small up), $expect,
+      'Returns an empty string for the value small up');
+    @include assert-equal(breakpoint(0 down), $expect,
+      'Returns an empty string for the value 0 down');
+    @include assert-equal(breakpoint(0 up), $expect,
+      'Returns an empty string for the value 0 up');
   }
 
-  @include it('creates special media queries for landscape, portrait, and retina') {
-    @include should(expect(breakpoint(landscape)), to(be('(orientation: landscape)')));
-    @include should(expect(breakpoint(portrait)), to(be('(orientation: portrait)')));
-    @include should(expect(breakpoint(retina)), to(be('(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)')));
+  @include test('Breakpoint (Orientation/Retina) [function]') {
+    @include assert-equal(breakpoint(landscape), '(orientation: landscape)',
+      'Creates special media query for landscape');
+    @include assert-equal(breakpoint(portrait), '(orientation: portrait)',
+      'Creates special media query for portrait');
+    @include assert-equal(breakpoint(retina), '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)',
+      'Creates special media query for retina');
   }
-}
 
-@include describe('Map Serialize') {
-  @include it('converts a Sass map into a string') {
+  @include test('Map Serialize [function]') {
     $input: (
       small: 1em,
       medium: 2em,
       large: 3em,
     );
-    $actual: -zf-bp-serialize($input);
-    $expected: 'small=1em&medium=2em&large=3em';
+    $test: -zf-bp-serialize($input);
+    $expect: 'small=1em&medium=2em&large=3em';
 
-    @include should(expect($actual), to(be($expected)));
+    @include assert-equal($test, $expect,
+      'Converts a Sass map into a string');
   }
-}
 
-@include describe('Map Next') {
-  @include it('returns the next value in a map') {
+  @include test('Map Next [function]') {
     $input: (
       one: 'One',
       two: 'Two',
       three: 'Three',
     );
-    $actual: -zf-map-next($input, two);
-    $expected: map-get($input, three);
+    $test_next: -zf-map-next($input, two);
+    $expect_next: map-get($input, three);
 
-    @include should(expect($actual), to(be($expected)));
+    @include assert-equal($test_next, $expect_next,
+      'Returns the next value in a map');
+    
+    $test_last: -zf-map-next($input, three);
+    $expect_last: null;
+    
+    @include assert-equal($test_last, $expect_last,
+      'Returns null if the key is last in the map');
+
+    $test_null: -zf-map-next($input, four);
+    $expect_null: null;
+
+    @include assert-equal($test_null, $expect_null,
+      'Returns null if the key is not in the map');
   }
 
-  @include it('returns null if the key is last in the map') {
-    $input: (
-      one: 'One',
-      two: 'Two',
-      three: 'Three',
+  @include test('Get Breakpoint Value [function]') {
+    $config: (
+      small: 0,
+      large: 1,
     );
-    $actual: -zf-map-next($input, three);
-    $expected: null;
+    $test_kittens: -zf-get-bp-val($config, kittens);
+    $expect_kittens: null;
 
-    @include should(expect($actual), to(be($expected)));
+    @include assert-equal($test_kittens, $expect_kittens,
+      'Given a non-existant breakpoint name, return null');
+    
+    $test_match: -zf-get-bp-val($config, large);
+    $expect_match: 1;
+
+    @include assert-equal($test_match, $expect_match,
+      'Given a matching breakpoint, returns the exact value');
+    @include assert-equal(-zf-get-bp-val($config, medium), 0,
+      'Given a nearby breakpoint, returns the next lowest value');
+    @include assert-equal(-zf-get-bp-val($config, xlarge), 1,
+      'Given a nearby breakpoint, returns the next lowest value');
   }
 
-  @include it('returns null if the key is not in the map') {
-    $input: (
-      one: 'One',
-      two: 'Two',
-      three: 'Three',
-    );
-    $actual: -zf-map-next($input, four);
-    $expected: null;
-
-    @include should(expect($actual), to(be($expected)));
-  }
-}
-
-@include describe('Get Breakpoint Value') {
-  $config: (
-    small: 0,
-    large: 1,
-  );
-
-  @include it('given a non-existant breakpoint name, returns null') {
-    $actual: -zf-get-bp-val($config, kittens);
-    $expected: null;
-
-    @include should(expect($actual), to(be($expected)));
-  }
-
-  @include it('given a matching breakpoint, returns the exact value') {
-    $actual: -zf-get-bp-val($config, large);
-    $expected: 1;
-
-    @include should(expect($actual), to(be($expected)));
-  }
-
-  @include it('given a nearby breakpoint, returns the next lowest value') {
-    @include should(expect(-zf-get-bp-val($config, medium)), to(be(0)));
-    @include should(expect(-zf-get-bp-val($config, xlarge)), to(be(1)));
-  }
 }

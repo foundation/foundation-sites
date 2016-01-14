@@ -1,49 +1,41 @@
-@import 'components/flex-video';
-@import 'grid/grid';
+@import "true";
 
-@include describe('Flex Video') {
-  @include it('creates a percentage value from a ratio') {
-    $actual: flex-video(3 by 4);
-    $expected: 4 / 3 * 100%;
+@import '../../scss/global';
+@import '../../scss/components/flex-video';
+@import '../../scss/grid/grid';
 
-    @include should(expect($actual), to(be($expected)));
-  }
-}
+@include test-module('Components') {
+  
+  @include test('Flex Video [function]') {
+    $test: flex-video(3 by 4);
+    $expect: 4 / 3 * 100%;
 
-@include describe('Grid Column') {
-  @include it('creates a column width from a column count') {
-    @include should(expect(grid-column(6)), to(be(50%)));
-  }
-
-  @include it('creates a column width from a percentage or decimal value') {
-    @include should(expect(grid-column(0.5)), to(be(50%)));
-    @include should(expect(grid-column(50%)), to(be(50%)));
+    @include assert-equal($test, $expect,
+      'Creates a percentage value from a ratio');
   }
 
-  @include it('creates a column width from an x of y value') {
-    @include should(expect(grid-column(1 of 2)), to(be(50%)));
-  }
-}
-
-@include describe('Flex Grid Column') {
-  @include it('creates an expanding flex property when passed no value') {
-    @include should(expect(flex-grid-column()), to(be(1 1 0px)));
-  }
-
-  @include it('creates a shrinking flex property when passed shrink') {
-    @include should(expect(flex-grid-column(shrink)), to(be(0 0 auto)));
+  @include test('Grid Column [function]') {
+    @include assert-equal(grid-column(6), 50%,
+      'Creates a column width from a column count');
+    @include assert-equal(grid-column(0.5), 50%,
+      'Creates a column width from a decimal value');
+    @include assert-equal(grid-column(50%), 50%,
+      'Creates a column width from a percentage value');
   }
 
-  @include it('creates a fixed flex property from a column count') {
-    @include should(expect(flex-grid-column(6)), to(be(0 0 50%)));
+  @include test('Flex Grid Column [function]') {
+    @include assert-equal(flex-grid-column(), 1 1 0px,
+      'Creates an expanding flex property when passed no value');
+    @include assert-equal(flex-grid-column(shrink), 0 0 auto,
+      'Creates a shrinking flex property when passed shrink');
+    @include assert-equal(flex-grid-column(6), 0 0 50%,
+      'Creates a fixed flex property from a column count');
+    @include assert-equal(flex-grid-column(0.5), 0 0 50%,
+      'Creates a fixed flex property from a decimal value');
+    @include assert-equal(flex-grid-column(50%), 0 0 50%,
+      'Creates a fixed flex property from a percentage value');
+    @include assert-equal(flex-grid-column(1 of 2), 0 0 50%,
+      'Creates a fixed flex property from an x of y value');
   }
 
-  @include it('creates a fixed flex property from a percentage or decimal value') {
-    @include should(expect(flex-grid-column(0.5)), to(be(0 0 50%)));
-    @include should(expect(flex-grid-column(50%)), to(be(0 0 50%)));
-  }
-
-  @include it('creates a fixed flex property from an x of y value') {
-    @include should(expect(flex-grid-column(1 of 2)), to(be(0 0 50%)));
-  }
 }
