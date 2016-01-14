@@ -81,7 +81,7 @@
     /**
      * Allows a click on the body to close the dropdown.
      * @option
-     * @example true
+     * @example false
      */
     closeOnClick: false
   };
