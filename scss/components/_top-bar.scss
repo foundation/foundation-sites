@@ -14,10 +14,6 @@ $topbar-padding: 0.5rem !default;
 /// @type Color
 $topbar-background: $light-gray !default;
 
-/// Color for links inside a top bar menu.
-/// @type Color
-$topbar-link-color: $primary-color !default;
-
 /// Width of `<input>` elements inside the top bar.
 /// @type Number
 $topbar-input-width: 200px !default;
@@ -30,10 +26,6 @@ $topbar-input-width: 200px !default;
   &,
   ul {
     background-color: $topbar-background;
-  }
-
-  a {
-    color: $topbar-link-color;
   }
 
   input {
