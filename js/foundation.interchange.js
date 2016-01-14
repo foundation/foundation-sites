@@ -142,22 +142,26 @@
   Interchange.prototype.replace = function(path) {
     if (this.currentPath === path) return;
 
-    var _this = this;
+    var _this = this,
+        trigger = 'replaced.zf.interchange';
 
     // Replacing images
     if (this.$element[0].nodeName === 'IMG') {
       this.$element.attr('src', path).load(function() {
         _this.currentPath = path;
-      });
+      })
+      .trigger(trigger);
     }
     // Replacing background images
     else if (path.match(/\.(gif|jpg|jpeg|tiff|png)([?#].*)?/i)) {
-      this.$element.css({ 'background-image': 'url('+path+')' });
+      this.$element.css({ 'background-image': 'url('+path+')' })
+          .trigger(trigger);
     }
     // Replacing HTML
     else {
       $.get(path, function(response) {
-        _this.$element.html(response);
+        _this.$element.html(response)
+             .trigger(trigger);
         $(response).foundation();
         _this.currentPath = path;
       });
@@ -167,7 +171,7 @@
      * Fires when content in an Interchange element is done being loaded.
      * @event Interchange#replaced
      */
-    this.$element.trigger('replaced.zf.interchange');
+    // this.$element.trigger('replaced.zf.interchange');
   };
   /**
    * Destroys an instance of interchange.
