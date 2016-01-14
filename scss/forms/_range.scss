@@ -84,12 +84,14 @@ $slider-radius: $global-radius !default;
         border-radius: $slider-radius;
       }
     }
+
     // Firefox
     &::-moz-range-track {
       -moz-appearance: none;
       height: $slider-height;
       background: #ccc;
     }
+    
     &::-moz-range-thumb {
       -moz-appearance: none;
       background: $slider-thumb-color;

@@ -1,0 +1,87 @@
+$meter-height: $progress-height !default;
+$meter-radius: $progress-radius !default;
+$meter-background: $progress-background !default;
+$meter-fill-good: $success-color !default;
+$meter-fill-medium: $warning-color !default;
+$meter-fill-bad: $alert-color !default;
+
+@mixin foundation-meter-element {
+  meter {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    display: block;
+    width: 100%;
+    height: $meter-height;
+    margin-bottom: 1rem;
+
+    @if has-value($meter-radius) {
+      border-radius: $meter-radius;
+    }
+
+    // For Firefox
+    background: $meter-background;
+    border: 0;
+
+    // Chrome/Safari
+    &::-webkit-meter-bar {
+      background: $meter-background;
+
+      @if has-value($meter-radius) {
+        border-radius: $meter-radius;
+      }
+    }
+
+    &::-webkit-meter-inner-element {
+      @if has-value($meter-radius) {
+        border-radius: $meter-radius;
+      }
+    }
+
+    &::-webkit-meter-optimum-value {
+      background: $meter-fill-good;
+
+      @if has-value($meter-radius) {
+        border-radius: $meter-radius;
+      }
+    }
+
+    &::-webkit-meter-suboptimum-value {
+      background: $meter-fill-medium;
+
+      @if has-value($meter-radius) {
+        border-radius: $meter-radius;
+      }
+    }
+
+    &::-webkit-meter-even-less-good-value {
+      background: $meter-fill-bad;
+
+      @if has-value($meter-radius) {
+        border-radius: $meter-radius;
+      }
+    }
+
+    // Firefox
+    background: $meter-background;
+
+    &::-moz-meter-bar {
+      background: $primary-color;
+
+      @if has-value($meter-radius) {
+        border-radius: $meter-radius;
+      }
+    }
+
+    &:-moz-meter-optimum::-moz-meter-bar {
+      background: $meter-fill-good;
+    }
+
+    &:-moz-meter-sub-optimum::-moz-meter-bar {
+      background: $meter-fill-medium;
+    }
+
+    &:-moz-meter-sub-sub-optimum::-moz-meter-bar {
+      background: $meter-fill-bad;
+    }
+  }
+}
