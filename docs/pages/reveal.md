@@ -182,7 +182,7 @@ To use AJAX to load your modal content, use the code snippet below.
 ```js
 var $modal = $('#modal');
 
-$.ajax({'/url'})
+$.ajax('/url')
   .done(function(resp){
     $modal.html(resp.html).foundation('open');
 });
