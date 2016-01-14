@@ -1,7 +1,10 @@
 ---
 title: Progress Bar
 description: Show your progress. A simple way to add progress bars to your layouts. You only need two HTML elements to make them and they're easy to customize.
-sass: scss/components/_progress-bar.scss
+sass:
+  - scss/components/_progress-bar.scss
+  - scss/forms/_progress.scss
+  - scss/forms/_meter.scss
 ---
 
 ## Basics

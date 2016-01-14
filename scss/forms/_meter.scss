@@ -1,8 +1,33 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group meter
+////
+
+/// Height of a `<meter>` element.
+/// @type Length
 $meter-height: $progress-height !default;
+
+/// Border radius of a `<meter>` element.
+/// @type Length
 $meter-radius: $progress-radius !default;
+
+/// Background color of a `<meter>` element.
+/// @type Color
 $meter-background: $progress-background !default;
+
+/// Meter fill for an optimal value in a `<meter>` element.
+/// @type Color
 $meter-fill-good: $success-color !default;
+
+/// Meter fill for an average value in a `<meter>` element.
+/// @type Color
 $meter-fill-medium: $warning-color !default;
+
+/// Meter fill for a suboptimal value in a `<meter>` element.
+/// @type Color
 $meter-fill-bad: $alert-color !default;
 
 @mixin foundation-meter-element {
@@ -51,7 +76,7 @@ $meter-fill-bad: $alert-color !default;
       @if has-value($meter-radius) {
         border-radius: $meter-radius;
       }
-    }
+    }d
 
     &::-webkit-meter-even-less-good-value {
       background: $meter-fill-bad;
