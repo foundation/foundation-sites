@@ -112,8 +112,11 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
 }
 
 @mixin foundation-reveal {
-  body.is-reveal-open {
-    overflow: hidden;
+  html.is-reveal-open,
+  html.is-reveal-open body {
+      height: 100%;
+      overflow: hidden;
+      user-select: none;
   }
 
   // Overlay
