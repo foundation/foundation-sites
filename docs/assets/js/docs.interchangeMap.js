@@ -1,7 +1,16 @@
 !function() {
-
+var loaded = false;
 $('#docs-example-interchange').on('replaced.zf.interchange', function() {
-  $.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyBOVwxUM9akvFrSWmmb2iKc7Fe0vjRBY7c&sensor=false&callback=initializeMaps");
+  if(Foundation.MediaQuery.atLeast('large')){
+    if(!loaded){
+      $.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyBOVwxUM9akvFrSWmmb2iKc7Fe0vjRBY7c&sensor=false&callback=initializeMaps")
+      .done(function(){
+        loaded = true;
+      });
+    }else{
+      window.initializeMaps();
+    }
+  }
 });
 
 window.initializeMaps = function() {
@@ -12,7 +21,7 @@ window.initializeMaps = function() {
     zoom: 11,
 
     // The latitude and longitude to center the map (always required)
-    center: new google.maps.LatLng(40.6700, -73.9400), // New York
+    center: new google.maps.LatLng(37.2845934,-121.951675), // ZURB HQ
 
     // How you would like to style the map.
     // This is where you would paste any style found on Snazzy Maps.
@@ -25,6 +34,12 @@ window.initializeMaps = function() {
 
   // Create the Google Map using out element and options defined above
   var map = new google.maps.Map(mapElement, mapOptions);
-}
+  var markerOptions = {
+    map: map,
+    position: {lat: 37.2845934, lng: -121.951675},
+    title: 'ZURB HQ'
+  };
+  var marker = new google.maps.Marker(markerOptions);
+};
 
-}()
+}();
