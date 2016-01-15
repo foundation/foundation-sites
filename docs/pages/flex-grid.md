@@ -10,20 +10,21 @@ The flex grid works very similarly to the standard float grid, but includes a nu
 
 ## Browser support
 
-The flex grid is only supported in Chrome, Firefox, Safari 6+, IE10+, iOS 7+, and Android 4+. Flexbox is supported in Android 2, but not reliably enough for use with this grid. ([View flexbox browser support.](http://caniuse.com/#feat=flexbox)) We recommend only using the flex grid on projects that can live with purely cutting-edge browser support.
+The flex grid is only supported in Chrome, Firefox, Safari 6+, IE10+, iOS 7+, and Android 4.4+. Flexbox is supported in Android 2, but not reliably enough for use with this grid. ([View flexbox browser support.](http://caniuse.com/#feat=flexbox)) We recommend only using the flex grid on projects that can live with purely cutting-edge browser support.
 
 ---
 
 ## Importing
 
-If you're using the CSS version of Foundation, you'll need to generate a [custom download](http://foundation.zurb.com/sites/download/#customizeFoundation) that replaces the float grid with the flex grid.
+If you're using the CSS version of Foundation, you can generate a <a href="https://foundation.zurb.com/sites/download">custom download of Foundation</a> with flexbox mode enabled.
 
-If you're using the Sass version of Foundation, remove the CSS export for the float grid, and replace it with the CSS export for the flex grid.
+If you're using the Sass version of Foundation, you can enable a framework-wide flexbox mode, and add exports for the flex grid and flexbox helper classes. [Learn more about enabling flexbox mode.](flexbox.html#enabling-flexbox-mode)
 
 ```scss
 @import 'foundation';
 
 // @include foundation-grid;
+@include foundation-flex-classes;
 @include foundation-flex-grid;
 ```
 
@@ -214,13 +215,17 @@ Applying a vertical alignment class to the flex row will affect every column dir
 
 ---
 
-The same alignment classes can also be applied to individual columns.
+Similar alignment classes can also be applied to individual columns, which use the format `.align-self-*` instead of `.align-*`.
+
+<div class="warning callout">
+  <p>In Foundation 6.2, we introduced the <code>.align-self-&ast;</code> classes, which replace the old method of using <code>.align-&ast;</code> classes on columns. The old classes will be removed completely in Foundation 6.3.</p>
+</div>
 
 ```html_example
 <div class="row">
-  <div class="column align-bottom">Align bottom</div>
-  <div class="column align-middle">Align middle</div>
-  <div class="column align-top">Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?</div>
+  <div class="column align-self-bottom">Align bottom</div>
+  <div class="column align-self-middle">Align middle</div>
+  <div class="column align-self-top">Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?</div>
 </div>
 ```
 
