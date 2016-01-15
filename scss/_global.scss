@@ -87,7 +87,12 @@ $global-weight-bold: bold !default;
 $global-radius: 0 !default;
 
 /// Sets the text direction of the CSS. Can be either `ltr` or `rtl`.
+/// @type Keyword
 $global-text-direction: ltr !default;
+
+/// Enables flexbox for components that support it.
+/// @type Boolean
+$global-flexbox: true !default;
 
 @if not map-has-key($foundation-palette, primary) {
   @error 'In $foundation-palette, you must have a color named "primary".';

@@ -6,6 +6,10 @@ tags:
   - split button
 ---
 
+<div class="primary callout">
+  <p>This component supports flexbox mode. <a href="#">Learn how to enable flexbox mode</a>.</p>
+</div>
+
 ## Basics
 
 Add the `.button-group` class to a container, and inside it place any number of buttons. The buttons are separated by a small border.

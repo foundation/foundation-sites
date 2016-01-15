@@ -24,7 +24,16 @@ $topbar-input-width: 200px !default;
 
 /// Adds styles for a top bar container.
 @mixin top-bar-container {
-  @include clearfix;
+  @if $global-flexbox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+  @else {
+    @include clearfix;
+  }
+
   padding: $topbar-padding;
 
   &,
@@ -48,13 +57,24 @@ $topbar-input-width: 200px !default;
 
 /// makes sections stacked
 @mixin top-bar-stacked {
-  // Sub-sections
-  .top-bar-right {
-    width: 100%;
-  }
+  @if $global-flexbox {
+    flex-wrap: wrap;
 
-  .top-bar-left {
-    width: 100%;
+    // Sub-sections
+    .top-bar-right {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+  @else {
+    // Sub-sections
+    .top-bar-right {
+      width: 100%;
+    }
+
+    .top-bar-left {
+      width: 100%;
+    }
   }
 }
 
@@ -79,11 +99,19 @@ $topbar-input-width: 200px !default;
   }
 
   // Sub-sections
-  .top-bar-left {
-    float: left;
+  @if $global-flexbox {
+    .top-bar-left,
+    .top-bar-right {
+      flex: 0 0 auto;
+    }
   }
-  
-  .top-bar-right {
-    float: right;
+  @else {
+    .top-bar-left {
+      float: left;
+    }
+    
+    .top-bar-right {
+      float: right;
+    }
   }
 }

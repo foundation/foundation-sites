@@ -31,13 +31,30 @@ $buttongroup-expand-max: 6 !default;
   margin-bottom: $buttongroup-margin;
   font-size: map-get($button-sizes, default);
 
+  @if $global-flexbox {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: stretch;
+  }
+
   #{$child-selector} {
-    float: #{$global-left};
     margin: 0;
     font-size: inherit;
 
+    @if $global-flexbox {
+      flex: 0 0 auto;
+    }
+    @else {
+      float: #{$global-left};
+    }
+
     &:not(:last-child) {
-      border-#{$global-right}: $buttongroup-spacing solid $body-background;
+      @if $global-flexbox {
+        margin-right: $buttongroup-spacing;
+      }
+      @else {
+        border-#{$global-right}: $buttongroup-spacing solid $body-background;
+      }
     }
   }
 }
@@ -48,18 +65,26 @@ $buttongroup-expand-max: 6 !default;
 @mixin button-group-expand(
   $selector: $buttongroup-child-selector
 ) {
-  display: table;
-  table-layout: fixed;
   width: 100%;
 
-  &::before,
-  &::after {
-    display: none;
+  @if not $global-flexbox {
+    display: table;
+    table-layout: fixed;
+
+    &::before,
+    &::after {
+      display: none;
+    }
   }
 
   #{$selector} {
-    display: table-cell;
-    float: none;
+    @if $global-flexbox {
+      flex: 1 1 0px;
+    }
+    @else {
+      display: table-cell;
+      float: none;
+    }
   }
 }
 
@@ -68,11 +93,25 @@ $buttongroup-expand-max: 6 !default;
 @mixin button-group-stack(
   $selector: $buttongroup-child-selector
 ) {
+  @if $global-flexbox {
+    flex-wrap: wrap;
+  }
+
   #{$selector} {
-    width: 100%;
+    @if $global-flexbox {
+      flex: 0 0 100%;
+    }
+    @else {
+      width: 100%;
+    }
 
     &:not(:last-child) {
-      border-#{$global-right}: $buttongroup-spacing solid;
+      @if $global-flexbox {
+        margin-#{$global-right}: 0;
+      }
+      @else {
+        border-#{$global-right}: $buttongroup-spacing solid;
+      }
     }
   }
 }
@@ -83,10 +122,20 @@ $buttongroup-expand-max: 6 !default;
   $selector: $buttongroup-child-selector
 ) {
   #{$selector} {
-    width: auto;
+    @if $global-flexbox {
+      flex: 1 1 0px;
+    }
+    @else {
+      width: auto;
+    }
 
     &:not(:last-child) {
-      border-#{$global-right}: $buttongroup-spacing solid $body-background;
+      @if $global-flexbox {
+        margin-right: $buttongroup-spacing;
+      }
+      @else {
+        border-#{$global-right}: $buttongroup-spacing solid $body-background;
+      }
     }
   }
 }

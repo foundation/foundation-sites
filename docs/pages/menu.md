@@ -10,6 +10,10 @@ tags:
   - top bar
 ---
 
+<div class="primary callout">
+  <p>This component supports flexbox mode. <a href="#">Learn how to enable flexbox mode</a>.</p>
+</div>
+
 The menu is a flexible, all-purpose component for navigation. It replaces Foundation 5's inline list, side nav, sub nav, and icon bar, unifying them into one component.
 
 ---

@@ -36,10 +36,18 @@ $titlebar-icon-spacing: 0.25rem !default;
 
 @mixin foundation-title-bar {
   .title-bar {
-    @include clearfix;
     background: $titlebar-background;
     color: $titlebar-color;
     padding: $titlebar-padding;
+
+    @if $global-flexbox {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    @else {
+      @include clearfix;
+    }
 
     .menu-icon {
       margin-#{$global-left}: $titlebar-icon-spacing;
@@ -47,13 +55,25 @@ $titlebar-icon-spacing: 0.25rem !default;
     }
   }
 
-  .title-bar-left {
-    float: left;
-  }
+  @if $global-flexbox {
+    .title-bar-left,
+    .title-bar-right {
+      flex: 1 1 0px;
+    }
 
-  .title-bar-right {
-    float: right;
-    text-align: right;
+    .title-bar-right {
+      text-align: right;
+    }
+  }
+  @else {
+    .title-bar-left {
+      float: left;
+    }
+
+    .title-bar-right {
+      float: right;
+      text-align: right;
+    }
   }
 
   .title-bar-title {
