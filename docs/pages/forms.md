@@ -218,6 +218,17 @@ To attach extra text or controls to the left or right of an input field, wrap th
 
 ---
 
+## File Upload Button
+
+Use `<input type="file">` to create a file upload button. For security reasons, most browsers don't let you style file inputs. To work around that, we can style a form label as a button, and point it to the `<input>`. To properly mask the input, the `.show-for-sr` class is added.
+
+```html_example
+<label for="exampleFileUpload" class="button">Upload File</label>
+<input type="file" id="exampleFileUpload" class="show-for-sr">
+```
+
+---
+
 ## Custom Controls
 
 Custom form controls, like date pickers, range sliders, or switches need some extra attention to be made accessible. Our custom inputs, such as the range slider and switch, do most of this work for you.
