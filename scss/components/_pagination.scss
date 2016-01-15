@@ -69,11 +69,13 @@ $pagination-arrows: true !default;
     font-size: $pagination-font-size;
     margin-#{$global-right}: $pagination-item-spacing;
     border-radius: $pagination-radius;
+
     @if $pagination-mobile-items {
       display: inline-block;
     }
-    @if not $pagination-mobile-items {
+    @else {
       display: none;
+      
       &:last-child,
       &:first-child {
         display: inline-block;
