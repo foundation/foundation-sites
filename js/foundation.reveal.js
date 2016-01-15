@@ -421,18 +421,14 @@
     if(this.options.animationOut){
       Foundation.Motion.animateOut(this.$element, this.options.animationOut, function(){
         if(_this.options.overlay){
-          Foundation.Motion.animateOut(_this.$overlay, 'fade-out', function(){
-            finishUp();
-          });
-        }
+          Foundation.Motion.animateOut(_this.$overlay, 'fade-out', finishUp);
+        }else{ finishUp(); }
       });
     }else{
       this.$element.hide(_this.options.hideDelay, function(){
         if(_this.options.overlay){
-          _this.$overlay.hide(0, function(){
-            finishUp();
-          });
-        }
+          _this.$overlay.hide(0, finishUp);
+        }else{ finishUp(); }
       });
     }
     //conditionals to remove extra event listeners added on open
