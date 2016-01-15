@@ -114,13 +114,13 @@ On small screens, a modal is always 100% of the width of the screen. On medium-s
   </button>
 </div>
 ```
-These sizing classes are built-in, but currently inaccurate. They need to be standardized.:
+
+The size of a modal can be changed with these sizing classes:
+
 - `.tiny`: 30% wide
-- `.small`: 40% wide
-- `.medium`: 60% wide
-- `.large`: 80% wide - *default*, if no class is selected, this is the size that gets applied.
-- `.xlarge`: 90% wide
-- `.full`: 100% width *and* height, defaults the <code>escClose</code> option to true, as well as creates a close button.
+- `.small`: 50% wide
+- `.large`: 90% wide
+- `.full`: 100% width *and* height, defaults the `escClose` option to true, as well as creates a close button.
 
 ---
 
