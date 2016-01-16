@@ -353,7 +353,7 @@
           //if the cursor position is less than or greater than the elements bounding coordinates, set coordinates within those bounds
           barXY = barOffset > 0 ? -halfOfHandle : (barOffset - halfOfHandle) < -barDim ? barDim : Math.abs(barOffset),
           offsetPct = percent(barXY, barDim);
-      value = (this.options.end - this.options.start) * offsetPct;
+      value = _this._adjustValue(null, (this.options.end - this.options.start) * offsetPct);
       // turn everything around for RTL, yay math!
       if (Foundation.rtl() && !this.options.vertical) {value = this.options.end - value;}
       //boolean flag for the setHandlePos fn, specifically for vertical sliders
@@ -366,26 +366,34 @@
       }
 
     }else{//change event on input
-      value = val;
+      value = this._adjustValue($handle);
       hasVal = true;
     }
 
     this._setHandlePos($handle, value, hasVal);
   };
 
-  Slider.prototype._adjustValue = function($handle) {
-    /**
-     * Adjustes value for handle in regard to step value. returns adjusted value
-     * @function
-     * @private
-     * @param {jQuery} $handle - the selected handle.
-     */
-    var val = $handle.attr('aria-valuenow'),
+  /**
+   * Adjustes value for handle in regard to step value. returns adjusted value
+   * @function
+   * @private
+   * @param {jQuery} $handle - the selected handle.
+   * @param {Number} value - value to adjust. used if $handle is falsy
+   */
+  Slider.prototype._adjustValue = function($handle, value) {
+    var val,
       step = this.options.step,
       div = parseFloat(step/2),
-      left = val % step,
-      prev_val = val - left,
-      next_val = prev_val + step;
+      left, prev_val, next_val;
+    if(!!$handle) {
+      val = parseFloat($handle.attr('aria-valuenow'));
+    }
+    else {
+      val = value;
+    }
+    left = val % step;
+    prev_val = val - left;
+    next_val = prev_val + step;
     if (left === 0) {
       return;
     }
@@ -444,7 +452,7 @@
             _this._handleEvent(e, curHandle);
 
           }).on('mouseup.zf.slider', function(e){
-            _this._handleEvent(e, curHandle, _this._adjustValue(curHandle));
+            _this._handleEvent(e, curHandle);
 
             $handle.removeClass('is-dragging');
             _this.$fill.removeClass('is-dragging');
