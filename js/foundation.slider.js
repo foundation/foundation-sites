@@ -302,8 +302,8 @@
     this.inputs.eq(idx).attr({
       'id': id,
       'max': this.options.end,
-      'min': this.options.start
-
+      'min': this.options.start,
+      'step': this.options.step
     });
     this.handles.eq(idx).attr({
       'role': 'slider',
@@ -372,6 +372,21 @@
 
     this._setHandlePos($handle, value, hasVal);
   };
+
+  Slider.prototype._adjustHandle = function($handle) {
+    var val = $handle.attr('aria-valuenow'),
+      step = this.options.step,
+      div = parseFloat(step/2),
+      left = val % step,
+      prev_val = val - left,
+      next_val = prev_val + step;
+    if (left === 0) {
+      return;
+    }
+    val = val >= prev_val + div ? next_val : prev_val;
+    return val;
+  };
+
   /**
    * Adds event listeners to the slider elements.
    * @function
@@ -394,10 +409,12 @@
       this.$element.off('click.zf.slider').on('click.zf.slider', function(e){
         if(_this.$element.data('dragging')){ return false; }
 
-        if(_this.options.doubleSided){
-          _this._handleEvent(e);
-        }else{
-          _this._handleEvent(e, _this.$handle);
+        if(!$(e.target).is('[data-slider-handle]')) {
+          if(_this.options.doubleSided){
+            _this._handleEvent(e);
+          }else{
+            _this._handleEvent(e, _this.$handle);
+          }
         }
       });
     }
@@ -421,7 +438,7 @@
             _this._handleEvent(e, curHandle);
 
           }).on('mouseup.zf.slider', function(e){
-            _this._handleEvent(e, curHandle);
+            _this._handleEvent(e, curHandle, _this._adjustHandle(curHandle));
 
             $handle.removeClass('is-dragging');
             _this.$fill.removeClass('is-dragging');
