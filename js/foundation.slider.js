@@ -373,7 +373,13 @@
     this._setHandlePos($handle, value, hasVal);
   };
 
-  Slider.prototype._adjustHandle = function($handle) {
+  Slider.prototype._adjustValue = function($handle) {
+    /**
+     * Adjustes value for handle in regard to step value. returns adjusted value
+     * @function
+     * @private
+     * @param {jQuery} $handle - the selected handle.
+     */
     var val = $handle.attr('aria-valuenow'),
       step = this.options.step,
       div = parseFloat(step/2),
@@ -438,7 +444,7 @@
             _this._handleEvent(e, curHandle);
 
           }).on('mouseup.zf.slider', function(e){
-            _this._handleEvent(e, curHandle, _this._adjustHandle(curHandle));
+            _this._handleEvent(e, curHandle, _this._adjustValue(curHandle));
 
             $handle.removeClass('is-dragging');
             _this.$fill.removeClass('is-dragging');
