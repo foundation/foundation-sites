@@ -96,10 +96,23 @@
             touchmove: 'mousemove',
             touchend: 'mouseup'
           },
-          type = eventTypes[event.type];
+          type = eventTypes[event.type],
+          simulatedEvent
+        ;
 
-      var simulatedEvent = document.createEvent('MouseEvent');
-      simulatedEvent.initMouseEvent(type, true, true, window, 1, first.screenX, first.screenY, first.clientX, first.clientY, false, false, false, false, 0/*left*/, null);
+      if('MouseEvent' in window && typeof window.MouseEvent === 'function') {
+        simulatedEvent = window.MouseEvent(type, {
+          'bubbles': true,
+          'cancelable': true,
+          'screenX': first.screenX,
+          'screenY': first.screenY,
+          'clientX': first.clientX,
+          'clientY': first.clientY
+        });
+      } else {
+        simulatedEvent = document.createEvent('MouseEvent');
+        simulatedEvent.initMouseEvent(type, true, true, window, 1, first.screenX, first.screenY, first.clientX, first.clientY, false, false, false, false, 0/*left*/, null);
+      }
       first.target.dispatchEvent(simulatedEvent);
     };
   };
