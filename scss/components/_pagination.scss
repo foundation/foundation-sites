@@ -75,7 +75,7 @@ $pagination-arrows: true !default;
     }
     @else {
       display: none;
-      
+
       &:last-child,
       &:first-child {
         display: inline-block;

@@ -36,6 +36,7 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
     a {
       @include disable-mouse-outline;
     }
+
     .is-dropdown-submenu-parent {
       position: relative;
 
@@ -79,9 +80,14 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
         left: 0;
         right: auto;
       }
-      
+
       &.opens-inner .submenu {
         top: 100%;
+      }
+
+      &.opens-left .submenu {
+        left: auto;
+        right: 100%;
       }
     }
 
@@ -100,7 +106,7 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
       border: $dropdownmenu-border;
 
       @if (type-of($dropdownmenu-border-width) == 'number') {
-        & .submenu {
+        .submenu {
           margin-top: (-$dropdownmenu-border-width);
         }
       }
@@ -115,15 +121,12 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
         right: auto;
       }
 
+      // [TODO] Cut back specificity
+      // scss-lint:disable SelectorDepth
       &:not(.js-dropdown-nohover) > .is-dropdown-submenu-parent:hover > &,
       &.js-dropdown-active {
         display: block;
       }
-    }
-
-    .is-dropdown-submenu-parent.opens-left .submenu {
-      left: auto;
-      right: 100%;
     }
 
     &.align-right {

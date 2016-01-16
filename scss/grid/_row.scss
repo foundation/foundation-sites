@@ -88,6 +88,7 @@
   @else {
     @each $breakpoint, $value in $grid-column-responsive-gutter {
       $margin: rem-calc($value) / 2 * -1;
+
       @include breakpoint($breakpoint) {
         margin-left: $margin;
         margin-right: $margin;

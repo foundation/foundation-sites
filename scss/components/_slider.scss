@@ -157,7 +157,9 @@ $slider-transition: all 0.2s ease-in-out !default;
   }
 
   // RTL support
-  html[dir="rtl"] .slider:not(.vertical){
-    transform: scale(-1, 1);
+  @if $global-text-direction == rtl {
+    .slider:not(.vertical) {
+      transform: scale(-1, 1);
+    }
   }
 }

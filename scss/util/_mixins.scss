@@ -53,8 +53,8 @@
 /// @param {Number} $weight - Height of individual bars in the icon.
 /// @param {Number} $bars - Number of bars in the icon.
 @mixin hamburger(
-  $color: #000,
-  $color-hover: #666,
+  $color: $black,
+  $color-hover: $medium-gray,
   $width: 20px,
   $height: 16px,
   $weight: 2px,

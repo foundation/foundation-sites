@@ -33,6 +33,7 @@ $topbar-input-width: 200px !default;
     margin-#{$global-right}: 1rem;
   }
 
+  // scss-lint:disable QualifyingElement
   input.button {
     width: auto;
   }
@@ -74,7 +75,7 @@ $topbar-input-width: 200px !default;
   .top-bar-left {
     float: left;
   }
-  
+
   .top-bar-right {
     float: right;
   }

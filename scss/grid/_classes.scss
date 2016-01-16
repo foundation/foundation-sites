@@ -126,7 +126,7 @@
 
     .#{$-zf-size}-#{$uncollapse} {
       $gutter: null;
-      
+
       @if $grid-column-gutter {
         $gutter: $grid-column-gutter;
       }

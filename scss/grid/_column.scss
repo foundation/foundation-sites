@@ -63,7 +63,7 @@
   @else {
     @each $breakpoint, $gutter in $grid-column-responsive-gutter {
       $padding: rem-calc($gutter) / 2;
-      
+
       @include breakpoint($breakpoint) {
         padding-left: $padding;
         padding-right: $padding;

@@ -75,7 +75,7 @@ $global-font-size: 100% !default;
     @warn inspect($value) + ' was passed to rem-calc(), which is not a number.';
     @return $value;
   }
-  
+
   // Calculate rem if units for $value is not rem
   @if unit($value) != 'rem' {
     $value: strip-unit($value) / strip-unit($base) * 1rem;
