@@ -353,7 +353,9 @@
           //if the cursor position is less than or greater than the elements bounding coordinates, set coordinates within those bounds
           barXY = barOffset > 0 ? -halfOfHandle : (barOffset - halfOfHandle) < -barDim ? barDim : Math.abs(barOffset),
           offsetPct = percent(barXY, barDim);
-      value = _this._adjustValue(null, (this.options.end - this.options.start) * offsetPct);
+
+      value = (this.options.end - this.options.start) * offsetPct;
+      value = _this._adjustValue(null, value);
       // turn everything around for RTL, yay math!
       if (Foundation.rtl() && !this.options.vertical) {value = this.options.end - value;}
       //boolean flag for the setHandlePos fn, specifically for vertical sliders
@@ -395,7 +397,7 @@
     prev_val = val - left;
     next_val = prev_val + step;
     if (left === 0) {
-      return;
+      return val;
     }
     val = val >= prev_val + div ? next_val : prev_val;
     return val;
