@@ -149,8 +149,10 @@
       $-zf-size-selector: append($-zf-size-selector, unquote('.#{$-zf-size}-#{$uncollapse}'), 'comma');
     }
 
-    #{$-zf-size-selector} > .#{$column} {
-      @include grid-col-uncollapse($gutter);
+    #{$-zf-size-selector} {
+      > .#{$column} {
+        @include grid-col-uncollapse($gutter);
+      }
     }
 
     // Positioning
