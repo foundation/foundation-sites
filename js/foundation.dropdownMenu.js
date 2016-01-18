@@ -310,7 +310,7 @@
     this._hide($sibs, idx);
     $sub.css('visibility', 'hidden').addClass('js-dropdown-active').attr({'aria-hidden': false})
         .parent('li.is-dropdown-submenu-parent').addClass('is-active')
-        .attr({'aria-selected': true, 'aria-expanded': true});
+        .attr({'aria-expanded': true});
     var clear = Foundation.Box.ImNotTouchingYou($sub, null, true);
     if(!clear){
       var oldClass = this.options.alignment === 'left' ? '-right' : '-left',
@@ -353,7 +353,6 @@
 
     if(somethingToClose){
       $toClose.find('li.is-active').add($toClose).attr({
-        'aria-selected': false,
         'aria-expanded': false,
         'data-is-click': false
       }).removeClass('is-active');
