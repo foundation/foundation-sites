@@ -483,6 +483,12 @@ $align-class-breakpoints:
           text-shadow: none !important;
         }
 
+        // Prevent extra page from being added
+        html,
+        body {
+          height: auto;
+        }
+
         a,
         a:visited { text-decoration: underline;}
         a[href]:after { content: " (" attr(href) ")"; }
