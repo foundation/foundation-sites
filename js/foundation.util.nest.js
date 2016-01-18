@@ -13,10 +13,9 @@
         var $item = $(this),
             $sub = $item.children('ul');
         if($sub.length){
-          $item.addClass('has-submenu ' + hasSubClass)
+          $item.addClass(hasSubClass)
                .attr({
                  'aria-haspopup': true,
-                 'aria-selected': false,
                  'aria-expanded': false,
                  'aria-label': $item.children('a:first').text()
                });
@@ -42,7 +41,7 @@
       // menu.find('.is-active').removeClass('is-active');
       menu.find('*')
       // menu.find('.' + subMenuClass + ', .' + subItemClass + ', .is-active, .has-submenu, .is-submenu-item, .submenu, [data-submenu]')
-          .removeClass(subMenuClass + ' ' + subItemClass + ' ' + hasSubClass + ' has-submenu is-submenu-item submenu is-active')
+          .removeClass(subMenuClass + ' ' + subItemClass + ' ' + hasSubClass + ' is-submenu-item submenu is-active')
           .removeAttr('data-submenu').css('display', '');
 
       // console.log(      menu.find('.' + subMenuClass + ', .' + subItemClass + ', .has-submenu, .is-submenu-item, .submenu, [data-submenu]')
