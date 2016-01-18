@@ -56,7 +56,7 @@ OffCanvas.defaults = {
    */
   // isSticky: false,
   /**
-   * Allow the offcanvas to remain open for certain breakpoints. Can be used with `isSticky`.
+   * Allow the offcanvas to remain open for certain breakpoints.
    * @option
    * @example false
    */
