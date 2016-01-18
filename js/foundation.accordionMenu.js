@@ -105,7 +105,7 @@
       var $submenu = $(this).children('[data-submenu]');
 
       if ($submenu.length) {
-        $(this).children('a').off('click.zf.accordionmenu').on('click.zf.accordionmenu', function(e) {
+        $(this).children('a').off('click.zf.accordionMenu').on('click.zf.accordionMenu', function(e) {
           e.preventDefault();
 
           _this.toggle($submenu);
