@@ -114,7 +114,7 @@
       }
     }
     return tooSmall;
-  }
+  };
   /**
    * A noop version for the plugin
    * @private
@@ -178,14 +178,14 @@
         group++;
         groups[group] = [];
         lastElTopOffset=elOffsetTop;
-      };
+      }
       groups[group].push([this.$watched[i],this.$watched[i].offsetHeight]);
     }
 
-    for (var i = 0, len = groups.length; i < len; i++) {
-      var heights = $(groups[i]).map(function () { return this[1]}).get();
+    for (var j = 0, ln = groups.length; j < ln; j++) {
+      var heights = $(groups[j]).map(function(){ return this[1]; }).get();
       var max         = Math.max.apply(null, heights);
-      groups[i].push(max);
+      groups[j].push(max);
     }
     cb(groups);
   };
@@ -230,7 +230,7 @@
       if (groupsILength<=2) {
         $(groups[i][0][0]).css({'height':'auto'});
         continue;
-      };
+      }
       /**
         * Fires before the heights per row are applied
         * @event Equalizer#preequalizedRow
