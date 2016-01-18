@@ -130,5 +130,16 @@ $buttongroup-expand-max: 6 !default;
         @include button-group-unstack;
       }
     }
+
+    &.stacked-for-small.expanded {
+      @include breakpoint(small only) {
+        display: block;
+
+        #{$buttongroup-child-selector} {
+          display: block;
+          border-right: 0;
+        }
+      }
+    }
   }
 }
