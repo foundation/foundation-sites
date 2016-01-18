@@ -1,5 +1,7 @@
 # [Foundation](http://foundation.zurb.com)
 
+**This package is only for versions 5 and earlier of Foundation. As of version 6, the package has a new name: `foundation-sites`.**
+
 [![Build Status](https://travis-ci.org/zurb/foundation.svg)](https://travis-ci.org/zurb/foundation)
 
 
