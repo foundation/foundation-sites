@@ -207,7 +207,7 @@
    * @fires Drilldown#closed
    */
   Drilldown.prototype._hideAll = function(){
-    var $elem = this.$element.find('.is-drilldown-sub.is-active').addClass('is-closing');
+    var $elem = this.$element.find('.is-drilldown-submenu.is-active').addClass('is-closing');
     $elem.one(Foundation.transitionend($elem), function(e){
       $elem.removeClass('is-active is-closing');
     });
@@ -306,7 +306,7 @@
     Foundation.Nest.Burn(this.$element, 'drilldown');
     this.$element.unwrap()
                  .find('.js-drilldown-back').remove()
-                 .end().find('.is-active, .is-closing, .is-drilldown-sub').removeClass('is-active is-closing is-drilldown-sub')
+                 .end().find('.is-active, .is-closing, .is-drilldown-submenu').removeClass('is-active is-closing is-drilldown-submenu')
                  .end().find('[data-submenu]').removeAttr('aria-hidden tabindex role')
                  .off('.zf.drilldown').end().off('zf.drilldown');
     this.$element.find('a').each(function(){
