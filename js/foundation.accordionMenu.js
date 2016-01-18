@@ -63,7 +63,7 @@
       'aria-multiselectable': this.options.multiOpen
     });
 
-    this.$menuLinks = this.$element.find('.has-submenu');
+    this.$menuLinks = this.$element.find('.is-accordion-submenu-parent');
     this.$menuLinks.each(function(){
       var linkId = this.id || Foundation.GetYoDigits(6, 'acc-menu-link'),
           $elem = $(this),
@@ -209,7 +209,7 @@
     }
 
     $target.addClass('is-active').attr({'aria-hidden': false})
-      .parent('.has-submenu').attr({'aria-expanded': true, 'aria-selected': true});
+      .parent('.is-accordion-submenu-parent').attr({'aria-expanded': true, 'aria-selected': true});
 
       Foundation.Move(this.options.slideSpeed, $target, function(){
         $target.slideDown(_this.options.slideSpeed, function () {
@@ -240,7 +240,7 @@
     });
     $target.attr('aria-hidden', true)
            .find('[data-submenu]').slideUp(0).attr('aria-hidden', true).end()
-           .parent('.has-submenu')
+           .parent('.is-accordion-submenu-parent')
            .attr({'aria-expanded': false, 'aria-selected': false});
     // $target.slideUp(this.options.slideSpeed, function() {
     //   $target.find('[data-submenu]').slideUp(0).attr('aria-hidden', true);

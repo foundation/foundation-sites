@@ -190,7 +190,7 @@
    * @returns {Object} jQuery object with the selector.
    */
   Abide.prototype.findFormError = function($el){
-    var $error = $el.siblings(this.options.formErrorSelector)
+    var $error = $el.siblings(this.options.formErrorSelector);
     if(!$error.length){
       $error = $el.parent().find(this.options.formErrorSelector);
     }

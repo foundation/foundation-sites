@@ -61,7 +61,7 @@
    * @private
    */
   Drilldown.prototype._init = function(){
-    this.$submenuAnchors = this.$element.find('li.has-submenu');
+    this.$submenuAnchors = this.$element.find('li.is-drilldown-submenu-parent');
     this.$submenus = this.$submenuAnchors.children('[data-submenu]');
     this.$menuItems = this.$element.find('li').not('.js-drilldown-back').attr('role', 'menuitem');
 
@@ -240,7 +240,7 @@
    */
   Drilldown.prototype._menuLinkEvents = function(){
     var _this = this;
-    this.$menuItems.not('.has-submenu')
+    this.$menuItems.not('.is-drilldown-submenu-parent')
         .off('click.zf.drilldown')
         .on('click.zf.drilldown', function(e){
           // e.stopImmediatePropagation();

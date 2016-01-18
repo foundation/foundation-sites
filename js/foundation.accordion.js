@@ -57,7 +57,7 @@
   Accordion.prototype._init = function() {
     this.$element.attr('role', 'tablist');
     this.$tabs = this.$element.children('li');
-    if (this.$tabs.length == 0) {
+    if (this.$tabs.length === 0) {
       this.$tabs = this.$element.children('[data-accordion-item]');
     }
     this.$tabs.each(function(idx, el){
