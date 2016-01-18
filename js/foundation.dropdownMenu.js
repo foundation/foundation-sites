@@ -383,6 +383,7 @@
   DropdownMenu.prototype.destroy = function(){
     this.$menuItems.off('.zf.dropdownmenu').removeAttr('data-is-click')
         .removeClass('is-right-arrow is-left-arrow is-down-arrow opens-right opens-left opens-inner');
+    $(document.body).off('.zf.dropdownmenu');
     Foundation.Nest.Burn(this.$element, 'dropdown');
     Foundation.unregisterPlugin(this);
   };
