@@ -28,9 +28,7 @@
 
     // Collapsing
     &.#{$collapse} {
-      > .#{$column} {
-        @include grid-col-collapse;
-      }
+      > .#{$column} { @include grid-col-collapse; }
     }
 
     // Nesting
@@ -41,7 +39,8 @@
             @include grid-row-nest($gutter);
           }
         }
-      } @else {
+      }
+      @else {
         @include grid-row-nest($grid-column-gutter);
       }
 
@@ -117,9 +116,7 @@
 
     // Responsive collapsing
     .#{$-zf-size}-#{$collapse} {
-      > .#{$column} {
-        @include grid-col-collapse;
-      }
+      > .#{$column} { @include grid-col-collapse; }
 
       .#{$row} {
         margin-left: 0;
@@ -149,11 +146,9 @@
       $-zf-size-selector: append($-zf-size-selector, unquote('.#{$-zf-size}-#{$uncollapse}'), 'comma');
     }
 
-    #{$-zf-size-selector} {
-      > .#{$column} {
+    #{$-zf-size-selector} { > .#{$column} {
         @include grid-col-uncollapse($gutter);
-      }
-    }
+      } }
 
     // Positioning
     .#{$-zf-size}-#{$center} {
