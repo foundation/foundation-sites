@@ -12,7 +12,7 @@ $buttongroup-margin: 1rem !default;
 
 /// Margin between buttons in a button group.
 /// @type Border
-$buttongroup-spacing: 1px !default;
+$buttongroup-spacing: 10px !default;
 
 /// Selector for the buttons inside a button group.
 /// @type String
@@ -29,15 +29,17 @@ $buttongroup-expand-max: 6 !default;
 ) {
   @include clearfix;
   margin-bottom: $buttongroup-margin;
-  font-size: map-get($button-sizes, default);
+  font-size: 0;
+  &.tiny #{$child-selector}     { font-size: map-get($button-sizes, tiny); }
+  &.small #{$child-selector}    { font-size: map-get($button-sizes, small); }
+  &.large #{$child-selector}    { font-size: map-get($button-sizes, large); }
 
   #{$child-selector} {
-    float: #{$global-left};
     margin: 0;
-    font-size: inherit;
+    font-size: map-get($button-sizes, default);
 
     &:not(:last-child) {
-      border-#{$global-right}: $buttongroup-spacing solid $body-background;
+      margin-right: $buttongroup-spacing;
     }
   }
 }
@@ -52,18 +54,18 @@ $buttongroup-expand-max: 6 !default;
     @warn 'button-group-expand(): the $count property is no longer needed. This parameter will be removed in Foundation 6.2.';
   }
 
-  display: table;
-  table-layout: fixed;
-  width: 100%;
-
-  &::before,
-  &::after {
-    display: none;
-  }
+  margin-right: -$buttongroup-spacing;
 
   #{$selector} {
-    display: table-cell;
-    float: none;
+    @for $i from 2 through $buttongroup-expand-max {
+      &:first-child:nth-last-child(#{$i}) {
+        &, &:first-child:nth-last-child(#{$i}) ~ #{$selector} {
+          display: inline-block;
+          width: calc( #{percentage(1/$i)} - #{$buttongroup-spacing} );
+          margin-right: $buttongroup-spacing;
+        }
+      }
+    }
   }
 }
 
@@ -76,7 +78,7 @@ $buttongroup-expand-max: 6 !default;
     width: 100%;
 
     &:not(:last-child) {
-      border-#{$global-right}: $buttongroup-spacing solid;
+      margin-right: $buttongroup-spacing;
     }
   }
 }
@@ -90,7 +92,7 @@ $buttongroup-expand-max: 6 !default;
     width: auto;
 
     &:not(:last-child) {
-      border-#{$global-right}: $buttongroup-spacing solid $body-background;
+      margin-right: $buttongroup-spacing;
     }
   }
 }
@@ -99,10 +101,7 @@ $buttongroup-expand-max: 6 !default;
   .button-group {
     @include button-group;
 
-    // Sizes
-    &.tiny     { font-size: map-get($button-sizes, tiny); }
-    &.small    { font-size: map-get($button-sizes, small); }
-    &.large    { font-size: map-get($button-sizes, large); }
+    // Even-width Group
     &.expanded { @include button-group-expand; }
 
     // Colors
@@ -137,7 +136,7 @@ $buttongroup-expand-max: 6 !default;
 
         #{$buttongroup-child-selector} {
           display: block;
-          border-right: 0;
+          margin-right: 0;
         }
       }
     }
