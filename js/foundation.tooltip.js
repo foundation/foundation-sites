@@ -152,7 +152,7 @@
   Tooltip.prototype._getPositionClass = function(element){
     if(!element){ return ''; }
     // var position = element.attr('class').match(/top|left|right/g);
-    var position = element[0].className.match(/(top|left|right)/g);
+    var position = element[0].className.match(/\b(top|left|right)\b/g);
         position = position ? position[0] : '';
     return position;
   };
