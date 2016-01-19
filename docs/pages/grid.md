@@ -498,6 +498,14 @@ The grid column calculator can also be accessed as a function. This gives you th
 }
 ```
 
+To center a column semantically. Use ´grid-column-position(center);´.
+
+```scss
+.centered-column {
+  @include grid-column-position(center);
+}
+```
+
 ---
 
 ### Multiple Grids
