@@ -89,6 +89,7 @@
     style: solid,
     color: #000,
   );
+  
   @return map-get($defaults, $elem);
 }
 
@@ -99,8 +100,8 @@
 /// @param {String} $keys... - Keys to use when looking for a value.
 /// @return The value found in the map.
 @function map-deep-get($map, $keys...) {
-    @each $key in $keys {
-        $map: map-get($map, $key);
-    }
-    @return $map;
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+  @return $map;
 }
