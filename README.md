@@ -6,7 +6,7 @@ Foundation is the most advanced responsive front-end framework in the world. Qui
 
 ## Requirements
 
-Requires NodeJS to be installed on your machine. Works with 0.12 and higher! **Note that parts of our build process will break with NPM 3, due to the changes in how packages are installed.**
+Requires NodeJS to be installed on your machine. Works with version 0.12 and higher!
 
 The Sass is compiled using libsass, which requires the GCC to be installed on your machine. Windows users can install it through [MinGW](http://www.mingw.org/), and Mac users can install it through the [Xcode Command-line Tools](http://osxdaily.com/2014/02/12/install-command-line-tools-mac-os-x/).
 
