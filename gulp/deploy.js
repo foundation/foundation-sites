@@ -1,6 +1,6 @@
 var gulp = require('gulp');
 var filter = require('gulp-filter');
-var minifyCss = require('gulp-minify-css');
+var cssnano = require('gulp-cssnano');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 var confirm = require('gulp-prompt').confirm;
@@ -62,7 +62,7 @@ gulp.task('deploy:dist', ['sass:foundation', 'javascript:foundation'], function(
   return gulp.src(DIST_FILES)
     .pipe(cssFilter)
       .pipe(gulp.dest('./dist'))
-      .pipe(minifyCss())
+      .pipe(cssnano())
       .pipe(rename({ suffix: '.min' }))
       .pipe(gulp.dest('./dist'))
     .pipe(cssFilter.restore())
