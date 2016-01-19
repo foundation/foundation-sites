@@ -1,6 +1,6 @@
 {
   "name": "foundation-sites",
-  "version": "6.1.0",
+  "version": "6.2.0",
   "main": "dist/foundation.js",
   "description": "The most advanced responsive front-end framework in the world.",
   "author": "ZURB <foundation@zurb.com> (http://foundation.zurb.com)",
@@ -11,8 +11,8 @@
     "deploy": "gulp deploy"
   },
   "dependencies": {
-    "jquery": "^2.1.0",
-    "what-input": "^1.1.2"
+    "jquery": "~2.2.0",
+    "what-input": "~1.1.2"
   },
   "license": "MIT",
   "devDependencies": {
