@@ -306,3 +306,21 @@ We have a set of classes that make it easy to setup source ordering in your HTML
   </div>
 </div>
 ```
+
+---
+
+## Block Grids
+
+To define column widths at the row-level, instead of the individual column level, add the class `.[size]-up-[n]` to a row, where `[n]` is the number of columns to display per row, and `[size]` is the breakpoint at which to apply the effect.
+
+<div class="primary callout">
+  <p>A block grid row has the property <code>align-items: stretch</code> by default, meaning the columns in each row are equal height. To change this, change the <code>align-items</code> property of the row, or use one of the <a href="flexbox.html#vertical-alignment">vertical alignment flexbox classes</a>.</p>
+</div>
+
+```html_example
+<div class="row small-up-1 medium-up-2 large-up-3">
+  <div class="column">1 per row on small</div>
+  <div class="column">2 per row on medium</div>
+  <div class="column">3 per row on large</div>
+</div>
+```

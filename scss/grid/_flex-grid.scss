@@ -94,6 +94,24 @@
   }
 }
 
+/// Creates a block grid for a flex grid row.
+///
+/// @param {Number} $n - Number of columns to display on each row.
+/// @param {String} $selector - Selector to use to target columns within the row.
+@mixin flex-grid-layout(
+  $n,
+  $selector: '.column'
+) {
+  flex-wrap: wrap;
+
+  > #{$selector} {
+    $pct: percentage(1/$n);
+
+    flex: 0 0 $pct;
+    max-width: $pct;
+  }
+}
+
 /// Changes the source order of a flex grid column. Columns with lower numbers appear first in the layout.
 /// @param {Number} $order [0] - Order number to apply.
 @mixin flex-grid-order($order: 0) {
@@ -160,10 +178,17 @@
       }
     }
 
+    // Source ordering
     @for $i from 1 through 6 {
-      // Source ordering
-      .#{$-zf-size}-order-#{$i} {
-        @include flex-order($i);
+      .#{$-zf-size}-up-#{$i} {
+        @include flex-grid-layout($i);
+      }
+    }
+
+    // Block grid
+    @for $i from 1 through $block-grid-max {
+      .#{$-zf-size}-up-#{$i} {
+        @include grid-layout($i);
       }
     }
 
