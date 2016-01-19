@@ -99,7 +99,7 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
       display: none;
       position: absolute;
       top: 0;
-      left: 100%;
+      #{$global-left}: 100%;
       min-width: $dropdownmenu-min-width;
       z-index: 1;
       background: $dropdownmenu-background;
@@ -117,8 +117,8 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
 
       &.first-sub {
         top: 100%;
-        left: 0;
-        right: auto;
+        #{$global-left}: 0;
+        #{$global-right}: auto;
       }
 
       // [TODO] Cut back specificity
