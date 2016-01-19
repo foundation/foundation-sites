@@ -53,6 +53,11 @@
     // Expanded (full-width) row
     &.#{$expanded} {
       max-width: none;
+
+      .#{$row} {
+        margin-left: auto;
+        margin-right: auto;
+      }
     }
   }
 
