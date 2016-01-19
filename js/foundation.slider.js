@@ -277,8 +277,8 @@
     this.inputs.eq(idx).attr({
       'id': id,
       'max': this.options.end,
-      'min': this.options.start
-
+      'min': this.options.start,
+      'step': this.options.step
     });
     this.handles.eq(idx).attr({
       'role': 'slider',
@@ -328,6 +328,7 @@
           // eleDim = this.$element[0].getBoundingClientRect()[param],
           offsetPct = percent(barXY, barDim);
       value = (this.options.end - this.options.start) * offsetPct;
+      value = _this._adjustValue(null, value);
       hasVal = false;
 
       if(!$handle){//figure out which handle it is, pass it to the next function.
@@ -337,12 +338,41 @@
       }
 
     }else{//change event on input
-      value = val;
+      value = this._adjustValue($handle);
       hasVal = true;
     }
 
     this._setHandlePos($handle, value, hasVal);
   };
+
+  /**
+   * Adjustes value for handle in regard to step value. returns adjusted value
+   * @function
+   * @private
+   * @param {jQuery} $handle - the selected handle.
+   * @param {Number} value - value to adjust. used if $handle is falsy
+   */
+  Slider.prototype._adjustValue = function($handle, value) {
+    var val,
+      step = this.options.step,
+      div = parseFloat(step/2),
+      left, prev_val, next_val;
+    if(!!$handle) {
+      val = parseFloat($handle.attr('aria-valuenow'));
+    }
+    else {
+      val = value;
+    }
+    left = val % step;
+    prev_val = val - left;
+    next_val = prev_val + step;
+    if (left === 0) {
+      return val;
+    }
+    val = val >= prev_val + div ? next_val : prev_val;
+    return val;
+  };
+
   /**
    * Adds event listeners to the slider elements.
    * @function
@@ -365,10 +395,13 @@
       this.$element.off('click.zf.slider').on('click.zf.slider', function(e){
         if(_this.$element.data('dragging')){ return false; }
         _this.animComplete = false;
-        if(_this.options.doubleSided){
-          _this._handleEvent(e);
-        }else{
-          _this._handleEvent(e, _this.$handle);
+
+        if(!$(e.target).is('[data-slider-handle]')) {
+          if (_this.options.doubleSided) {
+            _this._handleEvent(e);
+          } else {
+            _this._handleEvent(e, _this.$handle);
+          }
         }
       });
     }
