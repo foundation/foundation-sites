@@ -270,6 +270,7 @@ $-zf-flex-align: (
   // Sizing (shrink)
   .shrink {
     flex: flex-grid-column(shrink);
+    max-width: 100%;
   }
 
   // Horizontal alignment using justify-content
