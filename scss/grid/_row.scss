@@ -48,13 +48,12 @@
   $cf: true,
   $gutter: $grid-column-gutter
 ) {
-  $behavior: -zf-get-options($behavior, nest collapse);
   $margin: auto;
 
-  @if map-get($behavior, nest) {
+  @if index($behavior, nest) != null {
     @include grid-row-nest($gutter);
 
-    @if map-get($behavior, collapse) {
+    @if index($behavior, collapse) != null {
       margin-left: 0;
       margin-right: 0;
     }

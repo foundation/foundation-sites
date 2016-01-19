@@ -104,26 +104,3 @@
     }
     @return $map;
 }
-
-// TODO: Remove this (it's used by the grid but is overkill)
-/// Given a user-defined list of keywords and a list of possible keywords, find the ones that were passed in.
-/// @access private
-///
-/// @param {List} $opts - List of values to find keywords in.
-/// @param {List} $seeking - List of all possible keywords.
-///
-/// @returns {Map} A map of all keywords in $seeking. If a keyword was found in $opts, its value is true, otherwise false.
-@function -zf-get-options($opts, $seeking) {
-  @if type-of($opts) != 'list' {
-    $opts: ($opts);
-  }
-
-  $map: ();
-  @each $keyword in $seeking {
-    $val: if(index($opts, $keyword) != null, true, false);
-    $item: ($keyword: $val);
-    $map: map-merge($map, $item);
-  }
-
-  @return $map;
-}
