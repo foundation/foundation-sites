@@ -49,10 +49,8 @@ $progress-radius: $global-radius !default;
 
 /// Adds styles for text in the progress meter.
 @mixin progress-meter-text {
+  @include absolute-center;
   position: absolute;
-  top: 50%;
-  #{$global-left}: 50%;
-  transform: translate(-50%, -50%);
   margin: 0;
   font-size: 0.75rem;
   font-weight: bold;
