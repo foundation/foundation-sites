@@ -89,7 +89,7 @@
           $link = $elem.find('a'),
           isActive = $elem.hasClass('is-active'),
           hash = $link[0].hash.slice(1),
-          linkId = hash + '-label',
+          linkId = $link[0].id ? $link[0].id : hash + '-label',
           $tabContent = $('#' + hash);
 
       $elem.attr({'role': 'presentation'});
