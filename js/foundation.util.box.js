@@ -97,7 +97,7 @@
     switch(position){
       case 'top':
         return {
-          left: $anchorDims.offset.left,
+          left: (Foundation.rtl() ? $anchorDims.offset.left - $eleDims.width + $anchorDims.width : $anchorDims.offset.left),
           top: $anchorDims.offset.top - ($eleDims.height + vOffset)
         };
         break;
@@ -156,7 +156,7 @@
         break;
       default:
         return {
-          left: $anchorDims.offset.left,
+          left: (Foundation.rtl() ? $anchorDims.offset.left - $eleDims.width + $anchorDims.width : $anchorDims.offset.left),
           top: $anchorDims.offset.top + $anchorDims.height + vOffset
         };
     }
