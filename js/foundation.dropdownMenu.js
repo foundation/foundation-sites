@@ -114,7 +114,7 @@
     this.isVert = this.$element.hasClass(this.options.verticalClass);
     this.$tabs.find('ul.is-dropdown-submenu').addClass(this.options.verticalClass);
 
-    if(this.$element.hasClass(this.options.rightClass) || this.options.alignment === 'right'){
+    if(this.$element.hasClass(this.options.rightClass) || this.options.alignment === 'right' || Foundation.rtl()){
       this.options.alignment = 'right';
       subs.addClass('is-left-arrow opens-left');
     }else{
