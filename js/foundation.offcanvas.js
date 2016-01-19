@@ -208,7 +208,9 @@ OffCanvas.prototype.open = function(event, trigger) {
   if (this.$element.hasClass('is-open') || this.isRevealed){ return; }
   var _this = this,
       $body = $(document.body);
-  $('body').scrollTop(0);
+  if(this.options.forceTop){
+    $('body').scrollTop(0);
+  }
   // window.pageYOffset = 0;
 
   // if(!this.options.forceTop){
