@@ -62,11 +62,11 @@ For example, a drilldown menu works well on mobile, but on larger screens, you m
 
 ## Responsive Toggle
 
-In Foundation 5, the top bar combined this menu toggling concept into one plugin. We now have a separate, optional component you can use in tandem with the responsive plugin. It's called the tab bar, and it allows you to quickly setup a menu toggle on mobile. The tab bar hides itself on larger screens.
+In Foundation 5, the top bar combined this menu toggling concept into one plugin. We now have a separate, optional component you can use in tandem with the responsive plugin. It's called the title bar, and it allows you to quickly setup a menu toggle on mobile. The title bar hides itself on larger screens.
 
-To set it up, first give your menu a unique ID. (You don't even need to use Menu! Any element will work.) Next, add a tab bar with the class `.title-bar` and the attribute `data-responsive-toggle`. The value of `data-responsive-toggle` should be the ID of the menu you're toggling.
+To set it up, first give your menu a unique ID. (You don't even need to use Menu! Any element will work.) Next, add a title bar with the class `.title-bar` and the attribute `data-responsive-toggle`. The value of `data-responsive-toggle` should be the ID of the menu you're toggling.
 
-By default, the tab bar will be visible on small screens, and the Menu hides. At the medium breakpoint, the tab bar disappears, and the menu is always visible. This breakpoint can be changed with the `data-hidefor` attribute in HTML, or the `hideFor` setting in JavaScript.
+By default, the title bar will be visible on small screens, and the Menu hides. At the medium breakpoint, the title bar disappears, and the menu is always visible. This breakpoint can be changed with the `data-hidefor` attribute in HTML, or the `hideFor` setting in JavaScript.
 
 <div class="primary callout show-for-medium">
   <p>Scale your browser down to see the toggle happen.</p>
