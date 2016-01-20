@@ -64,7 +64,7 @@ $drilldown-background: $white !default;
       }
     }
 
-    .js-drilldown-back a::before {
+    .js-drilldown-back > a::before {
       @include css-triangle(6px, $drilldown-arrow-color, $global-left);
       border-#{$global-left}-width: 0;
       display: inline-block;
