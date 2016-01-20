@@ -238,9 +238,15 @@
       });
     });
     $target.attr('aria-hidden', true)
-           .find('[data-submenu]').slideUp(0).attr('aria-hidden', true).end()
            .parent('.is-accordion-submenu-parent')
-           .attr({'aria-expanded': false});
+           .attr({'aria-expanded': false});       
+    var $submenu = $target.find('[data-submenu]');   
+    if($submenu.length){
+        $submenu.each(function(){
+            $(this).slideUp(0).attr('aria-hidden', true)
+            .parent('.is-accordion-submenu-parent').attr({'aria-expanded': false})
+        });
+    }
     // $target.slideUp(this.options.slideSpeed, function() {
     //   $target.find('[data-submenu]').slideUp(0).attr('aria-hidden', true);
     // }).attr('aria-hidden', true).parent('.has-submenu').attr({'aria-expanded': false});
