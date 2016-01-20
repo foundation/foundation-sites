@@ -9,7 +9,12 @@ tags:
 
 ## Basics
 
-It's got a handle and an active fill, what more do you need?
+Create a slider by adding the class `.slider` and the attribute `data-slider` to a container element. You should also define both a starting and maximum value for the slider.
+
+Inside the container are three elements:
+- The handle (`.slider-handle`), which the user drags.
+- The fill (`.slider-fill`), which resizes dynamically based on where the handle is.
+- A hidden `<input>`, which is where the value of the slider is stored.
 
 ```html_example
 <div class="slider" data-slider data-initial-start="50" data-end="200">
@@ -23,7 +28,7 @@ It's got a handle and an active fill, what more do you need?
 
 ## Vertical
 
-Let's get vertical. Just add a `vertical` class and `data-vertical="true"` to `slider` `<div>`.
+To get *vertical*, just add a `.vertical` class and `data-vertical="true"` the slider.
 
 ```html_example
 <div class="slider vertical" data-slider data-initial-start="25" data-end="200" data-vertical="true">
@@ -37,7 +42,7 @@ Let's get vertical. Just add a `vertical` class and `data-vertical="true"` to `s
 
 ## Disabled
 
-U can't touch this. Need to disable a slider? Just add a `disabled` class to the `slider` `<div>`.
+Add the class `.disabled` to disable interaction with the slider.
 
 ```html_example
 <div class="slider disabled" data-slider data-initial-start="78">
@@ -51,7 +56,11 @@ U can't touch this. Need to disable a slider? Just add a `disabled` class to the
 
 ## Two Handles
 
-Oh... You might need two handles? Don't fret. We got you covered. Hook it up with another `.slider-handle` span and `input` field. This works for horizontal and vertical sliders! Please note that our JavaScript will assign `id`'s for input fields, unless you do so yourself. If you choose not to, handles and inputs will be matched in the order they are in the dom tree.
+Two-handle sliders can be used to define a range of values, versus a single value. To make a two-handle slider, add a second handle, and a second `<input>`. This works with horizontal and vertical sliders.
+
+You can add IDs to the `<input>`s inside the sliders to make it easier to access the values. If you don't, the plugin will add an ID to each for you.
+
+Note that the first handle manipulates the first `<input>`, while the second handle manipulates the second `<input>`.
 
 ```html_example
 <div class="slider" data-slider data-initial-start="25" data-initial-end="75">
@@ -65,9 +74,11 @@ Oh... You might need two handles? Don't fret. We got you covered. Hook it up wit
 
 ---
 
-## Data binding
+## Data Binding
 
-Wait, you want a visible input AND a slider? You're crazy, but ok. Change the value of either and see the other match it. Note that you have to set an `id` for the `input` and add the `aria-controls="idOfInput"` to the slider handle.
+Data binding allows you to connect the slider to an external `<input>` field. With data binding set up, dragging the handle will change the value inside the text field, and editing the number in the text field will move the slider in real-time.
+
+To set it all up, create an `<input>` with an ID and add `aria-controls="id"` to the slider handle, where `id` is the ID of the `<input>`.
 
 ```html_example
 <div class="small-10 columns">

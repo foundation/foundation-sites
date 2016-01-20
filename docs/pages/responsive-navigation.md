@@ -25,12 +25,12 @@ For example, a drilldown menu works well on mobile, but on larger screens, you m
 
 ```html_example
 <ul class="vertical menu" data-responsive-menu="drilldown medium-dropdown" style="width: 300px;">
-  <li class="has-submenu">
+  <li>
     <a href="#">Item 1</a>
-    <ul class="vertical submenu menu" data-submenu id="m2">
-      <li class="has-submenu">
+    <ul class="vertical menu">
+      <li>
         <a href="#">Item 1A</a>
-        <ul class="vertical submenu menu" data-submenu id="m3">
+        <ul class="vertical menu">
           <li><a href="#">Item 1A</a></li>
           <li><a href="#">Item 1B</a></li>
           <li><a href="#">Item 1C</a></li>
@@ -41,16 +41,16 @@ For example, a drilldown menu works well on mobile, but on larger screens, you m
       <li><a href="#">Item 1B</a></li>
     </ul>
   </li>
-  <li class="has-submenu">
+  <li>
     <a href="#">Item 2</a>
-    <ul class="vertical submenu menu" data-submenu>
+    <ul class="vertical menu"u>
       <li><a href="#">Item 2A</a></li>
       <li><a href="#">Item 2B</a></li>
     </ul>
   </li>
-  <li class="has-submenu">
+  <li>
     <a href="#">Item 3</a>
-    <ul class="vertical submenu menu" data-submenu>
+    <ul class="vertical menu">
       <li><a href="#">Item 3A</a></li>
       <li><a href="#">Item 3B</a></li>
     </ul>
@@ -82,9 +82,9 @@ By default, the title bar will be visible on small screens, and the Menu hides. 
   <div class="top-bar-left">
     <ul class="dropdown menu" data-dropdown-menu>
       <li class="menu-text">Site Title</li>
-      <li class="has-submenu">
+      <li>
         <a href="#">One</a>
-        <ul class="submenu menu vertical" data-submenu>
+        <ul class="menu vertical">
           <li><a href="#">One</a></li>
           <li><a href="#">Two</a></li>
           <li><a href="#">Three</a></li>
