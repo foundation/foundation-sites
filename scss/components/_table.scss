@@ -125,6 +125,7 @@ $show-header-for-stacked: false !default;
   $stripe: $table-stripe,
   $nest: false
 ) {
+  width: 100%;
   margin-bottom: $global-margin;
   border-radius: $global-radius;
 
