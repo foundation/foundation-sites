@@ -313,100 +313,116 @@ if (this.small()) {
 
       top : function (t, s) {
         var self = Foundation.libs.dropdown,
-            p = self.dirs._base.call(this, t, s);
+            p = self.dirs._base.call(this, t, s),
+			tOuterHeight = t.outerHeight(),
+			tOuterWidth = t.outerWidth(),
+			thisOuterHeight = this.outerHeight(),
+			thisOuterWidth = this.outerWidth();
 
         this.addClass('drop-top');
 
-        if (p.missTop == true) {
-          p.top = p.top + t.outerHeight() + this.outerHeight();
+        if (p.missTop === true) {
+          p.top = p.top + tOuterHeight + thisOuterHeight;
           this.removeClass('drop-top');
         }
 
-        if (p.missRight == true) {
-          p.left = p.left - this.outerWidth() + t.outerWidth();
+        if (p.missRight === true) {
+          p.left = p.left - thisOuterWidth + tOuterWidth;
         }
 
-        if (t.outerWidth() < this.outerWidth() || self.small() || this.hasClass(s.mega_menu)) {
+        if (tOuterWidth < thisOuterWidth || self.small() || this.hasClass(s.mega_menu)) {
           self.adjust_pip(this, t, s, p);
         }
 
         if (Foundation.rtl) {
-          return {left : p.left - this.outerWidth() + t.outerWidth(),
-            top : p.top - this.outerHeight()};
+          return {left : p.left - thisOuterWidth + tOuterWidth,
+            top : p.top - thisOuterHeight};
         }
 
-        return {left : p.left, top : p.top - this.outerHeight()};
+        return {left : p.left, top : p.top - thisOuterHeight};
       },
 
       bottom : function (t, s) {
         var self = Foundation.libs.dropdown,
-            p = self.dirs._base.call(this, t, s);
+            p = self.dirs._base.call(this, t, s),
+			tOuterHeight = t.outerHeight(),
+			tOuterWidth = t.outerWidth(),
+			thisOuterHeight = this.outerHeight(),
+			thisOuterWidth = this.outerWidth();
 
-        if (p.missRight == true) {
-          p.left = p.left - this.outerWidth() + t.outerWidth();
+        if (p.missRight === true) {
+          p.left = p.left - thisOuterWidth + tOuterWidth;
         }
 
-        if (t.outerWidth() < this.outerWidth() || self.small() || this.hasClass(s.mega_menu)) {
+        if (tOuterWidth < thisOuterWidth || self.small() || this.hasClass(s.mega_menu)) {
           self.adjust_pip(this, t, s, p);
         }
 
         if (self.rtl) {
-          return {left : p.left - this.outerWidth() + t.outerWidth(), top : p.top + t.outerHeight()};
+          return {left : p.left - thisOuterWidth + tOuterWidth, top : p.top + tOuterHeight};
         }
 
-        return {left : p.left, top : p.top + t.outerHeight()};
+        return {left : p.left, top : p.top + tOuterHeight};
       },
 
       left : function (t, s) {
         var p = Foundation.libs.dropdown.dirs._base.call(this, t, s);
-		var self = Foundation.libs.dropdown;
+		var self = Foundation.libs.dropdown,
+		tOuterHeight = t.outerHeight(),
+		tOuterWidth = t.outerWidth(),
+		thisOuterHeight = this.outerHeight(),
+		thisOuterWidth = this.outerWidth();
 
         this.addClass('drop-left');
 
-        if (p.missLeft == true) {
-          p.left =  p.left + this.outerWidth();
-          p.top = p.top + t.outerHeight();
+        if (p.missLeft === true) {
+          p.left =  p.left + thisOuterWidth;
+          p.top = p.top + tOuterHeight;
           this.removeClass('drop-left');
         }
 		
-		if (p.missRight == true && p.missLeft == true) {
-			p.left = p.left - t.outerWidth();
+		if (p.missRight === true && p.missLeft === true) {
+			p.left = p.left - tOuterWidth;
 			
 			this.removeClass('drop-left');
 			self.adjust_pip(this,t,s,p);
 		}
 
-        return {left : p.left - this.outerWidth(), top : p.top};
+        return {left : p.left - thisOuterWidth, top : p.top};
       },
 
       right : function (t, s) {
         var p = Foundation.libs.dropdown.dirs._base.call(this, t, s);
-		var self = Foundation.libs.dropdown;
+		var self = Foundation.libs.dropdown,
+		tOuterHeight = t.outerHeight(),
+		tOuterWidth = t.outerWidth(),
+		thisOuterHeight = this.outerHeight(),
+		thisOuterWidth = this.outerWidth();
 
         this.addClass('drop-right');
 
-        if (p.missRight == true) {
-			p.left = p.left - this.outerWidth();
-			p.top = p.top + t.outerHeight();
+        if (p.missRight === true) {
+			p.left = p.left - thisOuterWidth;
+			p.top = p.top + tOuterHeight;
 			this.removeClass('drop-right');
 		} else {
 			p.triggeredRight = true;
 		}
 		
-		if (p.missLeft == true && p.missRight == false && p.leftRightFlag == false) {
-			p.left = p.left - t.outerWidth();
-			p.top = p.top + t.outerHeight();
+		if (p.missLeft === true && p.missRight === false && p.leftRightFlag === false) {
+			p.left = p.left - tOuterWidth;
+			p.top = p.top + tOuterHeight;
 			this.removeClass('drop-right');
 			p.triggeredRight = false;
 			self.adjust_pip(this,t,s,p);
 		}
         
 		
-		if (t.outerWidth() < this.outerWidth() || self.small() || this.hasClass(s.mega_menu)) {
+		if (tOuterWidth < thisOuterWidth() || self.small() || this.hasClass(s.mega_menu)) {
 		  self.adjust_pip(this,t,s,p);
 		}
 
-        return {left : p.left + t.outerWidth(), top : p.top};
+        return {left : p.left + tOuterWidth, top : p.top};
       }
     },
 
@@ -429,7 +445,7 @@ if (this.small()) {
           css_before = 'left: ' + pip_offset_base + 'px;',
           css_after  = 'left: ' + (pip_offset_base - 1) + 'px;';
 
-      if (position.missRight == true) {
+      if (position.missRight === true) {
         pip_offset_base = dropdown.outerWidth() - 23;
         sel_before = '.f-dropdown.open:before',
         sel_after  = '.f-dropdown.open:after',
@@ -438,7 +454,7 @@ if (this.small()) {
       }
 
       //just a case where right is fired, but its not missing right
-      if (position.triggeredRight == true) {
+      if (position.triggeredRight === true) {
         sel_before = '.f-dropdown.open:before',
         sel_after  = '.f-dropdown.open:after',
         css_before = 'left:-12px;',
