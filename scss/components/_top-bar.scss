@@ -14,6 +14,10 @@ $topbar-padding: 0.5rem !default;
 /// @type Color
 $topbar-background: $light-gray !default;
 
+/// Spacing for the top bar title.
+/// @type Number
+$topbar-title-spacing: 1rem !default;
+
 /// Width of `<input>` elements inside the top bar.
 /// @type Number
 $topbar-input-width: 200px !default;
@@ -78,7 +82,7 @@ $topbar-input-width: 200px !default;
   // Sub-sections
   .top-bar-title {
     float: left;
-    padding-right: $grid-column-gutter;
+    margin-right: $topbar-title-spacing;
   }
   .top-bar-left {
     float: left;
