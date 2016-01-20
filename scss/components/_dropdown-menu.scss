@@ -36,9 +36,21 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
     a {
       @include disable-mouse-outline;
     }
+    &:not(.vertical) {
 
+    }
     .no-js & ul {
       display: none;
+    }
+
+    &:not(.vertical) {
+      .is-dropdown-submenu {
+        &.first-sub {
+          top: 100%;
+          #{$global-left}: 0;
+          #{$global-right}: auto;
+        }
+      }
     }
 
     &.align-right {
@@ -117,6 +129,7 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
     }
   }
 
+
   .is-dropdown-submenu {
     display: none;
     position: absolute;
@@ -137,11 +150,6 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
       width: 100%;
     }
 
-    &.first-sub {
-      top: 100%;
-      #{$global-left}: 0;
-      #{$global-right}: auto;
-    }
 
     // [TODO] Cut back specificity
     // scss-lint:disable SelectorDepth
