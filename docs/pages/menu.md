@@ -93,7 +93,7 @@ Add the `.simple` class to a Menu to remove the padding and color change. This s
 
 ```html_example
 <ul class="menu simple">
-  <li><a href="#">One</a></li>
+  <li>One</li>
   <li><a href="#">Two</a></li>
   <li><a href="#">Three</a></li>
   <li><a href="#">Four</a></li>

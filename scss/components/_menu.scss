@@ -39,7 +39,7 @@ $menu-expand-max: 6 !default;
   }
 
   // Reset line height to make the height of the overall item easier to calculate
-  > li:not(.menu-text) > a {
+  > li > a {
     display: block;
     padding: $menu-item-padding;
     line-height: 1;
@@ -80,9 +80,14 @@ $menu-expand-max: 6 !default;
 
 /// Creates a simple Menu, which has no padding or hover state.
 @mixin menu-simple {
+  li {
+    line-height: 1;
+    display: inline-block;
+    margin-#{$global-right}: get-side($menu-item-padding, $global-right);
+  }
+
   a {
     padding: 0;
-    margin-#{$global-right}: get-side($menu-item-padding, $global-right);
   }
 }
 
