@@ -64,12 +64,12 @@ $drilldown-background: $white !default;
       }
     }
 
-    .js-drilldown-back::before {
+    .js-drilldown-back > a::before {
       @include css-triangle(6px, $drilldown-arrow-color, $global-left);
-      float: $global-left;
+      border-#{$global-left}-width: 0;
+      display: inline-block;
+      vertical-align: middle;
       margin-#{$global-right}: 0.75rem; // Creates space between the arrow and the text
-      margin-#{$global-left}: 0.6rem; // Lines the tip of the arrow with the items below
-      margin-top: 14px; // Aligns the arrow with the text
     }
   }
 }
