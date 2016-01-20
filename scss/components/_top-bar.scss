@@ -14,6 +14,10 @@ $topbar-padding: 0.5rem !default;
 /// @type Color
 $topbar-background: $light-gray !default;
 
+/// Spacing for the top bar title.
+/// @type Number
+$topbar-title-spacing: 1rem !default;
+
 /// Width of `<input>` elements inside the top bar.
 /// @type Number
 $topbar-input-width: 200px !default;
@@ -42,6 +46,10 @@ $topbar-input-width: 200px !default;
 /// makes sections stacked
 @mixin top-bar-stacked {
   // Sub-sections
+  .top-bar-title {
+    width: 100%;
+  }
+
   .top-bar-right {
     width: 100%;
   }
@@ -72,6 +80,10 @@ $topbar-input-width: 200px !default;
   }
 
   // Sub-sections
+  .top-bar-title {
+    float: left;
+    margin-right: $topbar-title-spacing;
+  }
   .top-bar-left {
     float: left;
   }
