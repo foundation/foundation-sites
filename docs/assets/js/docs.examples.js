@@ -4,6 +4,7 @@
 
 $('[data-docs-example-ofc]').click(function() {
   $('#offCanvasLeft').toggleClass('reveal-for-large');
+  $('.sticky').foundation('_calc', true);
 });
 
 $('[data-docs-example-series]').click(function() {
