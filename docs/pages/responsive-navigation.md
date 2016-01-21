@@ -43,7 +43,7 @@ For example, a drilldown menu works well on mobile, but on larger screens, you m
   </li>
   <li>
     <a href="#">Item 2</a>
-    <ul class="vertical menu"u>
+    <ul class="vertical menu">
       <li><a href="#">Item 2A</a></li>
       <li><a href="#">Item 2B</a></li>
     </ul>
