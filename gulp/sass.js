@@ -53,7 +53,7 @@ gulp.task('sass:docs', function() {
 
 // Audits CSS filesize, selector count, specificity, etc.
 gulp.task('sass:audit', ['sass:foundation'], function(cb) {
-  fs.readFile('./_build/assets/css/foundation-sites.css', function(err, data) {
+  fs.readFile('./_build/assets/css/foundation.css', function(err, data) {
     var parker = new Parker(require('parker/metrics/All'));
     var results = parker.run(data.toString());
     console.log(prettyJSON.render(results));
