@@ -128,7 +128,7 @@ $input-radius: $global-radius !default;
   // Reset styles on button-like inputs
   [type='submit'],
   [type='button'] {
-    border-radius: $global-radius;
+    border-radius: $button-radius;
     -webkit-appearance: none;
     -moz-appearance: none;
   }
