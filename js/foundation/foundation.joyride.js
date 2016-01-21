@@ -668,8 +668,8 @@
       expose.css({
         top : el.offset().top,
         left : el.offset().left,
-        width : el.outerWidth(true),
-        height : el.outerHeight(true)
+        width : el.outerWidth(),
+        height : el.outerHeight()
       });
 
       exposeCover = $(this.settings.template.expose_cover);
@@ -828,9 +828,9 @@
 
     corners : function (el) {
       if (el.length === 0) {
-         return [false, false, false, false];   
+         return [false, false, false, false];
       }
-      
+
       var w = $(window),
           window_half = w.height() / 2,
           //using this to calculate since scroll may not have finished yet.
