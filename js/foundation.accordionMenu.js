@@ -237,13 +237,10 @@
         _this.$element.trigger('up.zf.accordionMenu', [$target]);
       });
     });
-    $target.attr('aria-hidden', true)
-           .find('[data-submenu]').slideUp(0).attr('aria-hidden', true).end()
-           .parent('.is-accordion-submenu-parent')
-           .attr({'aria-expanded': false});
-    // $target.slideUp(this.options.slideSpeed, function() {
-    //   $target.find('[data-submenu]').slideUp(0).attr('aria-hidden', true);
-    // }).attr('aria-hidden', true).parent('.has-submenu').attr({'aria-expanded': false});
+
+    var $menus = $target.find('[data-submenu]').slideUp(0).addBack().attr('aria-hidden', true);
+
+    $menus.parent('.is-accordion-submenu-parent').attr('aria-expanded', false);
   };
 
   /**
