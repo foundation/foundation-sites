@@ -67,7 +67,7 @@ Callouts can be colored using the `.secondary`, `.primary`, `.success`, `.warnin
 
 ## Sizing
 
-Callouts can be sized using the `.small` and `.large` classes. These will affect the padding around content to be smaller and larger respectivly.
+Callouts can be sized using the `.small` and `.large` classes. These will affect the padding around content to be smaller and larger respectively.
 
 ```html_example
 <div class="callout small">
