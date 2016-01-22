@@ -77,4 +77,19 @@ You can also use two anchors, if you please. Using `data-top-anchor="idOfSomethi
     </div>
   </div>
 </div>
+
+## Sticky Navigation
+
+Sometimes you want a sticky nav bar or side nav, this is pretty simple, but does involve an extra step from Foundation 5's `sticky` class addition to Top Bar. The minimum to make a stick nav bar is below, and you can swap out `.title-bar` for another menu component. Please note the style `width:100%`, you can do it inline, or in your style sheets.
+
+```html
+<div data-sticky-container>
+  <div class="title-bar" data-sticky data-options="marginTop:0;" style="width:100%">
+    <div class="title-bar-left"></div>
+    <div class="title-bar-right"></div>
+  </div>
+</div>
+```
+
+<iframe src="./assets/partials/sticky-nav.html" width="100%" height="300px" frameborder="0"></iframe>
 <!-- ``` -->
