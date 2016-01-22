@@ -48,4 +48,4 @@ foundation/
 │   └── ...
 ```
 
-Copyright (c) 2015 ZURB, inc.
+Copyright (c) 2016 ZURB, inc.
