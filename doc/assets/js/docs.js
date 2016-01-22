@@ -135,24 +135,26 @@ function getTimeRemaining(endtime){
 
 function initializeClock(id, endtime){
   var clock = document.getElementById(id);
-  var hoursSpan = clock.querySelector('.hours');
-  var minutesSpan = clock.querySelector('.minutes');
-  var secondsSpan = clock.querySelector('.seconds');
+  if(clock){
+    var hoursSpan = clock.querySelector('.hours');
+    var minutesSpan = clock.querySelector('.minutes');
+    var secondsSpan = clock.querySelector('.seconds');
 
-  function updateClock(){
-    var t = getTimeRemaining(endtime);
+    function updateClock(){
+      var t = getTimeRemaining(endtime);
 
-    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
-    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
-    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+      hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+      minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+      secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
 
-    if(t.total<=0){
-      clearInterval(timeinterval);
+      if(t.total<=0){
+        clearInterval(timeinterval);
+      }
     }
+    
+    updateClock();
+    var timeinterval = setInterval(updateClock,1000);
   }
-
-  updateClock();
-  var timeinterval = setInterval(updateClock,1000);
 }
 
 var deadline = 'Thurs, 19 Nov 2015 10:15:00 PST';
