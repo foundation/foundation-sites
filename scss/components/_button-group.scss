@@ -30,9 +30,6 @@ $buttongroup-expand-max: 6 !default;
   @include clearfix;
   margin-bottom: $buttongroup-margin;
   font-size: 0;
-  &.tiny #{$child-selector}     { font-size: map-get($button-sizes, tiny); }
-  &.small #{$child-selector}    { font-size: map-get($button-sizes, small); }
-  &.large #{$child-selector}    { font-size: map-get($button-sizes, large); }
 
   #{$child-selector} {
     margin: 0;
@@ -100,6 +97,11 @@ $buttongroup-expand-max: 6 !default;
 @mixin foundation-button-group {
   .button-group {
     @include button-group;
+
+    // Sizes
+    @each $size, $value in $button-sizes {
+      &.#{$size} #{$buttongroup-child-selector} { font-size: $value; }
+    }
 
     // Even-width Group
     &.expanded { @include button-group-expand; }
