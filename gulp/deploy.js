@@ -11,6 +11,7 @@ var git = require('gitty')(process.cwd() + '/');
 var octophant = require('octophant');
 var sequence = require('run-sequence');
 var inquirer = require('inquirer');
+var exec = require('child_process').execSync;
 
 var VERSIONED_FILES = [
   'bower.json',
@@ -98,9 +99,9 @@ gulp.task('deploy:settings', function(cb) {
 
 // Writes a commit with the changes to the version numbers
 gulp.task('deploy:commit', function(cb) {
-  git.commitSync('Bump to version ' + NEXT_VERSION, ['-a']);
-  git.tagSync('v' + NEXT_VERSION);
-  git.push('origin', 'develop', '--tags', cb);
+  exec('git commit -am "Bump to version "' + NEXT_VERSION);
+  exec('git tag v' + NEXT_VERSION);
+  exec('git push origin develop --follow-tags');
   cb();
 });
 
