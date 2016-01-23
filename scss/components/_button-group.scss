@@ -99,7 +99,7 @@ $buttongroup-expand-max: 6 !default;
     @include button-group;
 
     // Sizes
-    @each $size, $value in $button-sizes {
+    @each $size, $value in map-remove($button-sizes, default) {
       &.#{$size} #{$buttongroup-child-selector} { font-size: $value; }
     }
 

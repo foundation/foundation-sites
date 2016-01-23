@@ -194,10 +194,9 @@ $button-opacity-disabled: 0.25 !default;
     @include button;
 
     // Sizes
-    &.tiny     { font-size: map-get($button-sizes, tiny); }
-    &.small    { font-size: map-get($button-sizes, small); }
-    &.large    { font-size: map-get($button-sizes, large); }
-    &.expanded { @include button-expand; }
+    @each $size, $value in map-remove($button-sizes, default) {
+      &.#{$size} { font-size: $value; }
+    }
 
     // Colors
     @each $name, $color in $foundation-colors {
