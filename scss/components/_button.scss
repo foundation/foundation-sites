@@ -197,6 +197,7 @@ $button-opacity-disabled: 0.25 !default;
     @each $size, $value in map-remove($button-sizes, default) {
       &.#{$size} { font-size: $value; }
     }
+    &.expanded { @include button-expand; }
 
     // Colors
     @each $name, $color in $foundation-colors {
