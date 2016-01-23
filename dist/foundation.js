@@ -1,7 +1,7 @@
 !function($) {
 "use strict";
 
-var FOUNDATION_VERSION = '6.1.1';
+var FOUNDATION_VERSION = '6.1.2';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
@@ -17,10 +17,6 @@ var Foundation = {
    * Stores generated unique ids for plugin instances
    */
   _uuids: [],
-  /**
-   * Stores currently active plugins.
-   */
-  _activePlugins: {},
 
   /**
    * Returns a boolean for RTL support
@@ -45,10 +41,11 @@ var Foundation = {
   },
   /**
    * @function
-   * Creates a pointer to an instance of a Plugin within the Foundation._activePlugins object.
-   * Sets the `[data-pluginName="uniqueIdHere"]`, allowing easy access to any plugin's internal methods.
+   * Populates the _uuids array with pointers to each individual plugin instance.
+   * Adds the `zfPlugin` data-attribute to programmatically created plugins to allow use of $(selector).foundation(method) calls.
    * Also fires the initialization event for each plugin, consolidating repeditive code.
    * @param {Object} plugin - an instance of a plugin, usually `this` in context.
+   * @param {String} name - the name of the plugin, passed as a camelCased string.
    * @fires Plugin#init
    */
   registerPlugin: function(plugin, name){
@@ -69,7 +66,8 @@ var Foundation = {
   },
   /**
    * @function
-   * Removes the pointer for an instance of a Plugin from the Foundation._activePlugins obj.
+   * Removes the plugins uuid from the _uuids array.
+   * Removes the zfPlugin data attribute, as well as the data-plugin-name attribute.
    * Also fires the destroyed event for the plugin, consolidating repeditive code.
    * @param {Object} plugin - an instance of a plugin, usually `this` in context.
    * @fires Plugin#destroyed
@@ -979,10 +977,9 @@ Foundation.Motion = Motion;
         var $item = $(this),
             $sub = $item.children('ul');
         if($sub.length){
-          $item.addClass('has-submenu ' + hasSubClass)
+          $item.addClass(hasSubClass)
                .attr({
                  'aria-haspopup': true,
-                 'aria-selected': false,
                  'aria-expanded': false,
                  'aria-label': $item.children('a:first').text()
                });
@@ -1008,7 +1005,7 @@ Foundation.Motion = Motion;
       // menu.find('.is-active').removeClass('is-active');
       menu.find('*')
       // menu.find('.' + subMenuClass + ', .' + subItemClass + ', .is-active, .has-submenu, .is-submenu-item, .submenu, [data-submenu]')
-          .removeClass(subMenuClass + ' ' + subItemClass + ' ' + hasSubClass + ' has-submenu is-submenu-item submenu is-active')
+          .removeClass(subMenuClass + ' ' + subItemClass + ' ' + hasSubClass + ' is-submenu-item submenu is-active')
           .removeAttr('data-submenu').css('display', '');
 
       // console.log(      menu.find('.' + subMenuClass + ', .' + subItemClass + ', .has-submenu, .is-submenu-item, .submenu, [data-submenu]')
@@ -1039,6 +1036,8 @@ Foundation.Motion = Motion;
         start,
         timer;
 
+    this.isPaused = false;
+    
     this.restart = function(){
       remain = -1;
       clearTimeout(timer);
@@ -1046,6 +1045,7 @@ Foundation.Motion = Motion;
     };
 
     this.start = function(){
+      this.isPaused = false
       // if(!elem.data('paused')){ return false; }//maybe implement this sanity check if used for other things.
       clearTimeout(timer);
       remain = remain <= 0 ? duration : remain;
@@ -1061,6 +1061,7 @@ Foundation.Motion = Motion;
     };
 
     this.pause = function(){
+      this.isPaused = true;
       //if(elem.data('paused')){ return false; }//maybe implement this sanity check if used for other things.
       clearTimeout(timer);
       elem.data('paused', true);
@@ -1206,10 +1207,23 @@ Foundation.Motion = Motion;
             touchmove: 'mousemove',
             touchend: 'mouseup'
           },
-          type = eventTypes[event.type];
+          type = eventTypes[event.type],
+          simulatedEvent
+        ;
 
-      var simulatedEvent = document.createEvent('MouseEvent');
-      simulatedEvent.initMouseEvent(type, true, true, window, 1, first.screenX, first.screenY, first.clientX, first.clientY, false, false, false, false, 0/*left*/, null);
+      if('MouseEvent' in window && typeof window.MouseEvent === 'function') {
+        simulatedEvent = window.MouseEvent(type, {
+          'bubbles': true,
+          'cancelable': true,
+          'screenX': first.screenX,
+          'screenY': first.screenY,
+          'clientX': first.clientX,
+          'clientY': first.clientY
+        });
+      } else {
+        simulatedEvent = document.createEvent('MouseEvent');
+        simulatedEvent.initMouseEvent(type, true, true, window, 1, first.screenX, first.screenY, first.clientX, first.clientY, false, false, false, false, 0/*left*/, null);
+      }
       first.target.dispatchEvent(simulatedEvent);
     };
   };
@@ -1475,9 +1489,11 @@ Foundation.Motion = Motion;
   });
 
   // Elements with [data-closable] will respond to close.zf.trigger events.
-  $(document).on('close.zf.trigger', '[data-closable]', function() {
-    var animation = $(this).data('closable') || 'fade-out';
-    if(Foundation.Motion){
+  $(document).on('close.zf.trigger', '[data-closable]', function(e){
+    e.stopPropagation();
+    var animation = $(this).data('closable');
+
+    if(animation !== ''){
       Foundation.Motion.animateOut($(this), animation, function() {
         $(this).trigger('closed.zf');
       });
@@ -1863,7 +1879,7 @@ Foundation.Motion = Motion;
    * @returns {Object} jQuery object with the selector.
    */
   Abide.prototype.findFormError = function($el){
-    var $error = $el.siblings(this.options.formErrorSelector)
+    var $error = $el.siblings(this.options.formErrorSelector);
     if(!$error.length){
       $error = $el.parent().find(this.options.formErrorSelector);
     }
@@ -1964,7 +1980,7 @@ Foundation.Motion = Motion;
      * @event Abide#valid
      * @event Abide#invalid
      */
-    $el.trigger(message, $el[0]);
+    $el.trigger(message, [$el]);
 
     return goodToGo;
   };
@@ -2104,6 +2120,7 @@ Foundation.Motion = Motion;
    * @class
    * @fires Accordion#init
    * @param {jQuery} element - jQuery object to make into an accordion.
+   * @param {Object} options - a plain object with settings to override the default options.
    */
   function Accordion(element, options){
     this.$element = element;
@@ -2148,7 +2165,7 @@ Foundation.Motion = Motion;
   Accordion.prototype._init = function() {
     this.$element.attr('role', 'tablist');
     this.$tabs = this.$element.children('li');
-    if (this.$tabs.length == 0) {
+    if (this.$tabs.length === 0) {
       this.$tabs = this.$element.children('[data-accordion-item]');
     }
     this.$tabs.each(function(idx, el){
@@ -2254,7 +2271,13 @@ Foundation.Motion = Motion;
       .parent().addClass('is-active');
 
     // Foundation.Move(_this.options.slideSpeed, $target, function(){
-      $target.slideDown(_this.options.slideSpeed);
+      $target.slideDown(_this.options.slideSpeed, function () {
+        /**
+         * Fires when the tab is done opening.
+         * @event Accordion#down
+         */
+        _this.$element.trigger('down.zf.accordion', [$target]);
+      });
     // });
 
     // if(!firstTime){
@@ -2264,11 +2287,6 @@ Foundation.Motion = Motion;
       'aria-expanded': true,
       'aria-selected': true
     });
-    /**
-     * Fires when the tab is done opening.
-     * @event Accordion#down
-     */
-    this.$element.trigger('down.zf.accordion', [$target]);
   };
 
   /**
@@ -2287,7 +2305,13 @@ Foundation.Motion = Motion;
     }
 
     // Foundation.Move(this.options.slideSpeed, $target, function(){
-      $target.slideUp(_this.options.slideSpeed);
+      $target.slideUp(_this.options.slideSpeed, function () {
+        /**
+         * Fires when the tab is done collapsing up.
+         * @event Accordion#up
+         */
+        _this.$element.trigger('up.zf.accordion', [$target]);
+      });
     // });
 
     $target.attr('aria-hidden', true)
@@ -2297,12 +2321,6 @@ Foundation.Motion = Motion;
      'aria-expanded': false,
      'aria-selected': false
    });
-
-    /**
-     * Fires when the tab is done collapsing up.
-     * @event Accordion#up
-     */
-    this.$element.trigger('up.zf.accordion', [$target]);
   };
 
   /**
@@ -2385,7 +2403,7 @@ Foundation.Motion = Motion;
       'aria-multiselectable': this.options.multiOpen
     });
 
-    this.$menuLinks = this.$element.find('.has-submenu');
+    this.$menuLinks = this.$element.find('.is-accordion-submenu-parent');
     this.$menuLinks.each(function(){
       var linkId = this.id || Foundation.GetYoDigits(6, 'acc-menu-link'),
           $elem = $(this),
@@ -2395,7 +2413,6 @@ Foundation.Motion = Motion;
       $elem.attr({
         'aria-controls': subId,
         'aria-expanded': isActive,
-        'aria-selected': false,
         'role': 'tab',
         'id': linkId
       });
@@ -2427,7 +2444,7 @@ Foundation.Motion = Motion;
       var $submenu = $(this).children('[data-submenu]');
 
       if ($submenu.length) {
-        $(this).children('a').off('click.zf.accordionmenu').on('click.zf.accordionmenu', function(e) {
+        $(this).children('a').off('click.zf.accordionMenu').on('click.zf.accordionMenu', function(e) {
           e.preventDefault();
 
           _this.toggle($submenu);
@@ -2531,16 +2548,17 @@ Foundation.Motion = Motion;
     }
 
     $target.addClass('is-active').attr({'aria-hidden': false})
-      .parent('.has-submenu').attr({'aria-expanded': true, 'aria-selected': true});
+      .parent('.is-accordion-submenu-parent').attr({'aria-expanded': true});
 
       Foundation.Move(this.options.slideSpeed, $target, function(){
-        $target.slideDown(_this.options.slideSpeed);
+        $target.slideDown(_this.options.slideSpeed, function () {
+          /**
+           * Fires when the menu is done opening.
+           * @event AccordionMenu#down
+           */
+          _this.$element.trigger('down.zf.accordionMenu', [$target]);
+        });
       });
-    /**
-     * Fires when the menu is done collapsing up.
-     * @event AccordionMenu#down
-     */
-    this.$element.trigger('down.zf.accordionMenu', [$target]);
   };
 
   /**
@@ -2551,21 +2569,18 @@ Foundation.Motion = Motion;
   AccordionMenu.prototype.up = function($target) {
     var _this = this;
     Foundation.Move(this.options.slideSpeed, $target, function(){
-      $target.slideUp(_this.options.slideSpeed);
+      $target.slideUp(_this.options.slideSpeed, function () {
+        /**
+         * Fires when the menu is done collapsing up.
+         * @event AccordionMenu#up
+         */
+        _this.$element.trigger('up.zf.accordionMenu', [$target]);
+      });
     });
-    $target.attr('aria-hidden', true)
-           .find('[data-submenu]').slideUp(0).attr('aria-hidden', true).end()
-           .parent('.has-submenu')
-           .attr({'aria-expanded': false, 'aria-selected': false});
-    // $target.slideUp(this.options.slideSpeed, function() {
-    //   $target.find('[data-submenu]').slideUp(0).attr('aria-hidden', true);
-    // }).attr('aria-hidden', true).parent('.has-submenu').attr({'aria-expanded': false, 'aria-selected': false});
 
-    /**
-     * Fires when the menu is done collapsing up.
-     * @event AccordionMenu#up
-     */
-    this.$element.trigger('up.zf.accordionMenu', [$target]);
+    var $menus = $target.find('[data-submenu]').slideUp(0).addBack().attr('aria-hidden', true);
+
+    $menus.parent('.is-accordion-submenu-parent').attr('aria-expanded', false);
   };
 
   /**
@@ -2646,7 +2661,7 @@ Foundation.Motion = Motion;
    * @private
    */
   Drilldown.prototype._init = function(){
-    this.$submenuAnchors = this.$element.find('li.has-submenu');
+    this.$submenuAnchors = this.$element.find('li.is-drilldown-submenu-parent');
     this.$submenus = this.$submenuAnchors.children('[data-submenu]');
     this.$menuItems = this.$element.find('li').not('.js-drilldown-back').attr('role', 'menuitem');
 
@@ -2792,7 +2807,7 @@ Foundation.Motion = Motion;
    * @fires Drilldown#closed
    */
   Drilldown.prototype._hideAll = function(){
-    var $elem = this.$element.find('.is-drilldown-sub.is-active').addClass('is-closing');
+    var $elem = this.$element.find('.is-drilldown-submenu.is-active').addClass('is-closing');
     $elem.one(Foundation.transitionend($elem), function(e){
       $elem.removeClass('is-active is-closing');
     });
@@ -2825,7 +2840,7 @@ Foundation.Motion = Motion;
    */
   Drilldown.prototype._menuLinkEvents = function(){
     var _this = this;
-    this.$menuItems.not('.has-submenu')
+    this.$menuItems.not('.is-drilldown-submenu-parent')
         .off('click.zf.drilldown')
         .on('click.zf.drilldown', function(e){
           // e.stopImmediatePropagation();
@@ -2891,7 +2906,7 @@ Foundation.Motion = Motion;
     Foundation.Nest.Burn(this.$element, 'drilldown');
     this.$element.unwrap()
                  .find('.js-drilldown-back').remove()
-                 .end().find('.is-active, .is-closing, .is-drilldown-sub').removeClass('is-active is-closing is-drilldown-sub')
+                 .end().find('.is-active, .is-closing, .is-drilldown-submenu').removeClass('is-active is-closing is-drilldown-submenu')
                  .end().find('[data-submenu]').removeAttr('aria-hidden tabindex role')
                  .off('.zf.drilldown').end().off('zf.drilldown');
     this.$element.find('a').each(function(){
@@ -2910,13 +2925,15 @@ Foundation.Motion = Motion;
  * @module foundation.dropdown
  * @requires foundation.util.keyboard
  * @requires foundation.util.box
+ * @requires foundation.util.triggers
  */
 !function($, Foundation){
   'use strict';
   /**
    * Creates a new instance of a dropdown.
    * @class
-   * @param {jQuery} element - jQuery object to make into an accordion menu.
+   * @param {jQuery} element - jQuery object to make into a dropdown.
+   *        Object should be of the dropdown panel, rather than its anchor.
    * @param {Object} options - Overrides to the default plugin settings.
    */
   function Dropdown(element, options){
@@ -2986,7 +3003,7 @@ Foundation.Motion = Motion;
     /**
      * Allows a click on the body to close the dropdown.
      * @option
-     * @example true
+     * @example false
      */
     closeOnClick: false
   };
@@ -3025,7 +3042,7 @@ Foundation.Motion = Motion;
    * @returns {String} position - string value of a position class.
    */
   Dropdown.prototype.getPositionClass = function(){
-    var position = this.$element[0].className.match(/(top|left|right)/g);
+    var position = this.$element[0].className.match(/\b(top|left|right)\b/g);
         position = position ? position[0] : '';
     return position;
   };
@@ -3412,7 +3429,7 @@ Foundation.Motion = Motion;
     this.isVert = this.$element.hasClass(this.options.verticalClass);
     this.$tabs.find('ul.is-dropdown-submenu').addClass(this.options.verticalClass);
 
-    if(this.$element.hasClass(this.options.rightClass) || this.options.alignment === 'right'){
+    if(this.$element.hasClass(this.options.rightClass) || this.options.alignment === 'right' || Foundation.rtl()){
       this.options.alignment = 'right';
       subs.addClass('is-left-arrow opens-left');
     }else{
@@ -3433,8 +3450,7 @@ Foundation.Motion = Motion;
   DropdownMenu.prototype._events = function(){
     var _this = this,
         hasTouch = 'ontouchstart' in window || (typeof window.ontouchstart !== 'undefined'),
-        parClass = 'is-dropdown-submenu-parent',
-        delay;
+        parClass = 'is-dropdown-submenu-parent';
 
     if(this.options.clickOpen || hasTouch){
       this.$menuItems.on('click.zf.dropdownmenu touchstart.zf.dropdownmenu', function(e){
@@ -3468,8 +3484,8 @@ Foundation.Motion = Motion;
             hasSub = $elem.hasClass(parClass);
 
         if(hasSub){
-          clearTimeout(delay);
-          delay = setTimeout(function(){
+          clearTimeout(_this.delay);
+          _this.delay = setTimeout(function(){
             _this._show($elem.children('.is-dropdown-submenu'));
           }, _this.options.hoverDelay);
         }
@@ -3479,8 +3495,8 @@ Foundation.Motion = Motion;
         if(hasSub && _this.options.autoclose){
           if($elem.attr('data-is-click') === 'true' && _this.options.clickOpen){ return false; }
 
-          // clearTimeout(delay);
-          delay = setTimeout(function(){
+          clearTimeout(_this.delay);
+          _this.delay = setTimeout(function(){
             _this._hide($elem);
           }, _this.options.closingTime);
         }
@@ -3608,7 +3624,7 @@ Foundation.Motion = Motion;
     this._hide($sibs, idx);
     $sub.css('visibility', 'hidden').addClass('js-dropdown-active').attr({'aria-hidden': false})
         .parent('li.is-dropdown-submenu-parent').addClass('is-active')
-        .attr({'aria-selected': true, 'aria-expanded': true});
+        .attr({'aria-expanded': true});
     var clear = Foundation.Box.ImNotTouchingYou($sub, null, true);
     if(!clear){
       var oldClass = this.options.alignment === 'left' ? '-right' : '-left',
@@ -3651,7 +3667,6 @@ Foundation.Motion = Motion;
 
     if(somethingToClose){
       $toClose.find('li.is-active').add($toClose).attr({
-        'aria-selected': false,
         'aria-expanded': false,
         'data-is-click': false
       }).removeClass('is-active');
@@ -3681,6 +3696,7 @@ Foundation.Motion = Motion;
   DropdownMenu.prototype.destroy = function(){
     this.$menuItems.off('.zf.dropdownmenu').removeAttr('data-is-click')
         .removeClass('is-right-arrow is-left-arrow is-down-arrow opens-right opens-left opens-inner');
+    $(document.body).off('.zf.dropdownmenu');
     Foundation.Nest.Burn(this.$element, 'dropdown');
     Foundation.unregisterPlugin(this);
   };
@@ -3804,7 +3820,7 @@ Foundation.Motion = Motion;
       }
     }
     return tooSmall;
-  }
+  };
   /**
    * A noop version for the plugin
    * @private
@@ -3868,14 +3884,14 @@ Foundation.Motion = Motion;
         group++;
         groups[group] = [];
         lastElTopOffset=elOffsetTop;
-      };
+      }
       groups[group].push([this.$watched[i],this.$watched[i].offsetHeight]);
     }
 
-    for (var i = 0, len = groups.length; i < len; i++) {
-      var heights = $(groups[i]).map(function () { return this[1]}).get();
+    for (var j = 0, ln = groups.length; j < ln; j++) {
+      var heights = $(groups[j]).map(function(){ return this[1]; }).get();
       var max         = Math.max.apply(null, heights);
-      groups[i].push(max);
+      groups[j].push(max);
     }
     cb(groups);
   };
@@ -3920,7 +3936,7 @@ Foundation.Motion = Motion;
       if (groupsILength<=2) {
         $(groups[i][0][0]).css({'height':'auto'});
         continue;
-      };
+      }
       /**
         * Fires before the heights per row are applied
         * @event Equalizer#preequalizedRow
@@ -4107,27 +4123,36 @@ Foundation.Motion = Motion;
   Interchange.prototype.replace = function(path) {
     if (this.currentPath === path) return;
 
-    var _this = this;
+    var _this = this,
+        trigger = 'replaced.zf.interchange';
 
     // Replacing images
     if (this.$element[0].nodeName === 'IMG') {
       this.$element.attr('src', path).load(function() {
         _this.currentPath = path;
-      });
+      })
+      .trigger(trigger);
     }
     // Replacing background images
     else if (path.match(/\.(gif|jpg|jpeg|tiff|png)([?#].*)?/i)) {
-      this.$element.css({ 'background-image': 'url('+path+')' });
+      this.$element.css({ 'background-image': 'url('+path+')' })
+          .trigger(trigger);
     }
     // Replacing HTML
     else {
       $.get(path, function(response) {
-        _this.$element.html(response);
+        _this.$element.html(response)
+             .trigger(trigger);
         $(response).foundation();
         _this.currentPath = path;
       });
     }
-    this.$element.trigger('replaced.zf.interchange');
+
+    /**
+     * Fires when content in an Interchange element is done being loaded.
+     * @event Interchange#replaced
+     */
+    // this.$element.trigger('replaced.zf.interchange');
   };
   /**
    * Destroys an instance of interchange.
@@ -4264,8 +4289,12 @@ Foundation.Motion = Motion;
           duration: _this.options.animationDuration,
           easing:   _this.options.animationEasing
         };
-
     $(window).one('load', function(){
+      if(_this.options.deepLinking){
+        if(location.hash){
+          _this.scrollToLoc(location.hash);
+        }
+      }
       _this.calcPoints();
       _this._updateActive();
     });
@@ -4275,16 +4304,26 @@ Foundation.Motion = Motion;
       'scrollme.zf.trigger': this._updateActive.bind(this)
     }).on('click.zf.magellan', 'a[href^="#"]', function(e) {
         e.preventDefault();
-        var arrival   = this.getAttribute('href'),
-            scrollPos = $(arrival).offset().top - _this.options.threshold / 2 - _this.options.barOffset;
+        var arrival   = this.getAttribute('href');
+        _this.scrollToLoc(arrival);
+    });
+  };
+  /**
+   * Function to scroll to a given location on the page.
+   * @param {String} loc - a properly formatted jQuery id selector.
+   * @example '#foo'
+   * @function
+   */
+  Magellan.prototype.scrollToLoc = function(loc){
+    var scrollPos = $(loc).offset().top - this.options.threshold / 2 - this.options.barOffset;
 
-        // requestAnimationFrame is disabled for this plugin currently
-        // Foundation.Move(_this.options.animationDuration, $body, function(){
-          $body.stop(true).animate({
-            scrollTop: scrollPos
-          }, opts);
-        });
-      // });
+    $(document.body).stop(true).animate({
+        scrollTop: scrollPos
+      },
+      {
+        duration: this.options.animationDuration,
+        easiing: this.options.animationEasing
+     });
   };
   /**
    * Calls necessary functions to update Magellan upon DOM change
@@ -4364,6 +4403,7 @@ Foundation.Motion = Motion;
 /**
  * OffCanvas module.
  * @module foundation.offcanvas
+ * @requires foundation.util.mediaQuery
  * @requires foundation.util.triggers
  * @requires foundation.util.motion
  */
@@ -4418,7 +4458,7 @@ OffCanvas.defaults = {
    */
   // isSticky: false,
   /**
-   * Allow the offcanvas to remain open for certain breakpoints. Can be used with `isSticky`.
+   * Allow the offcanvas to remain open for certain breakpoints.
    * @option
    * @example false
    */
@@ -4503,8 +4543,7 @@ OffCanvas.prototype._events = function() {
     'keydown.zf.offcanvas': this._handleKeyboard.bind(this)
   });
 
-  if (this.$exiter.length) {
-    var _this = this;
+  if (this.options.closeOnClick && this.$exiter.length) {
     this.$exiter.on({'click.zf.offcanvas': this.close.bind(this)});
   }
 };
@@ -4598,7 +4637,9 @@ OffCanvas.prototype.open = function(event, trigger) {
   this.$element.attr('aria-hidden', 'false')
       .trigger('opened.zf.offcanvas');
 
-
+  if(this.options.closeOnClick){
+    this.$exiter.addClass('is-visible');
+  }
   if(trigger){
     this.$lastTrigger = trigger.attr('aria-expanded', 'true');
   }
@@ -4681,6 +4722,9 @@ OffCanvas.prototype.close = function(cb) {
   //     $(window).off('scroll.zf.offcanvas');
   //   }, this.options.transitionTime);
   // }
+  if(this.options.closeOnClick){
+    this.$exiter.removeClass('is-visible');
+  }
 
   this.$lastTrigger.attr('aria-expanded', 'false');
   if(this.options.trapFocus){
@@ -4734,21 +4778,21 @@ Foundation.plugin(OffCanvas, 'OffCanvas');
 }(jQuery, Foundation);
 
 /**
- * Orbit module.
- * @module foundation.orbit
- * @requires foundation.util.keyboard
- * @requires foundation.util.motion
- * @requires foundation.util.timerAndImageLoader
- * @requires foundation.util.touch
- */
+* Orbit module.
+* @module foundation.orbit
+* @requires foundation.util.keyboard
+* @requires foundation.util.motion
+* @requires foundation.util.timerAndImageLoader
+* @requires foundation.util.touch
+*/
 !function($, Foundation){
   'use strict';
   /**
-   * Creates a new instance of an orbit carousel.
-   * @class
-   * @param {jQuery} element - jQuery object to make into an Orbit Carousel.
-   * @param {Object} options - Overrides to the default plugin settings.
-   */
+  * Creates a new instance of an orbit carousel.
+  * @class
+  * @param {jQuery} element - jQuery object to make into an Orbit Carousel.
+  * @param {Object} options - Overrides to the default plugin settings.
+  */
   function Orbit(element, options){
     this.$element = element;
     this.options = $.extend({}, Orbit.defaults, this.$element.data(), options);
@@ -4757,137 +4801,137 @@ Foundation.plugin(OffCanvas, 'OffCanvas');
 
     Foundation.registerPlugin(this, 'Orbit');
     Foundation.Keyboard.register('Orbit', {
-        'ltr': {
-          'ARROW_RIGHT': 'next',
-          'ARROW_LEFT': 'previous'
-        },
-        'rtl': {
-          'ARROW_LEFT': 'next',
-          'ARROW_RIGHT': 'previous'
-        }
+      'ltr': {
+        'ARROW_RIGHT': 'next',
+        'ARROW_LEFT': 'previous'
+      },
+      'rtl': {
+        'ARROW_LEFT': 'next',
+        'ARROW_RIGHT': 'previous'
+      }
     });
   }
   Orbit.defaults = {
     /**
-     * Tells the JS to loadBullets.
-     * @option
-     * @example true
-     */
+    * Tells the JS to loadBullets.
+    * @option
+    * @example true
+    */
     bullets: true,
     /**
-     * Tells the JS to apply event listeners to nav buttons
-     * @option
-     * @example true
-     */
+    * Tells the JS to apply event listeners to nav buttons
+    * @option
+    * @example true
+    */
     navButtons: true,
     /**
-     * motion-ui animation class to apply
-     * @option
-     * @example 'slide-in-right'
-     */
+    * motion-ui animation class to apply
+    * @option
+    * @example 'slide-in-right'
+    */
     animInFromRight: 'slide-in-right',
     /**
-     * motion-ui animation class to apply
-     * @option
-     * @example 'slide-out-right'
-     */
+    * motion-ui animation class to apply
+    * @option
+    * @example 'slide-out-right'
+    */
     animOutToRight: 'slide-out-right',
     /**
-     * motion-ui animation class to apply
-     * @option
-     * @example 'slide-in-left'
-     *
-     */
+    * motion-ui animation class to apply
+    * @option
+    * @example 'slide-in-left'
+    *
+    */
     animInFromLeft: 'slide-in-left',
     /**
-     * motion-ui animation class to apply
-     * @option
-     * @example 'slide-out-left'
-     */
+    * motion-ui animation class to apply
+    * @option
+    * @example 'slide-out-left'
+    */
     animOutToLeft: 'slide-out-left',
     /**
-     * Allows Orbit to automatically animate on page load.
-     * @option
-     * @example true
-     */
+    * Allows Orbit to automatically animate on page load.
+    * @option
+    * @example true
+    */
     autoPlay: true,
     /**
-     * Amount of time, in ms, between slide transitions
-     * @option
-     * @example 5000
-     */
+    * Amount of time, in ms, between slide transitions
+    * @option
+    * @example 5000
+    */
     timerDelay: 5000,
     /**
-     * Allows Orbit to infinitely loop through the slides
-     * @option
-     * @example true
-     */
+    * Allows Orbit to infinitely loop through the slides
+    * @option
+    * @example true
+    */
     infiniteWrap: true,
     /**
-     * Allows the Orbit slides to bind to swipe events for mobile, requires an additional util library
-     * @option
-     * @example true
-     */
+    * Allows the Orbit slides to bind to swipe events for mobile, requires an additional util library
+    * @option
+    * @example true
+    */
     swipe: true,
     /**
-     * Allows the timing function to pause animation on hover.
-     * @option
-     * @example true
-     */
+    * Allows the timing function to pause animation on hover.
+    * @option
+    * @example true
+    */
     pauseOnHover: true,
     /**
-     * Allows Orbit to bind keyboard events to the slider, to animate frames with arrow keys
-     * @option
-     * @example true
-     */
+    * Allows Orbit to bind keyboard events to the slider, to animate frames with arrow keys
+    * @option
+    * @example true
+    */
     accessible: true,
     /**
-     * Class applied to the container of Orbit
-     * @option
-     * @example 'orbit-container'
-     */
+    * Class applied to the container of Orbit
+    * @option
+    * @example 'orbit-container'
+    */
     containerClass: 'orbit-container',
     /**
-     * Class applied to individual slides.
-     * @option
-     * @example 'orbit-slide'
-     */
+    * Class applied to individual slides.
+    * @option
+    * @example 'orbit-slide'
+    */
     slideClass: 'orbit-slide',
     /**
-     * Class applied to the bullet container. You're welcome.
-     * @option
-     * @example 'orbit-bullets'
-     */
+    * Class applied to the bullet container. You're welcome.
+    * @option
+    * @example 'orbit-bullets'
+    */
     boxOfBullets: 'orbit-bullets',
     /**
-     * Class applied to the `next` navigation button.
-     * @option
-     * @example 'orbit-next'
-     */
+    * Class applied to the `next` navigation button.
+    * @option
+    * @example 'orbit-next'
+    */
     nextClass: 'orbit-next',
     /**
-     * Class applied to the `previous` navigation button.
-     * @option
-     * @example 'orbit-previous'
-     */
+    * Class applied to the `previous` navigation button.
+    * @option
+    * @example 'orbit-previous'
+    */
     prevClass: 'orbit-previous',
     /**
-     * Boolean to flag the js to use motion ui classes or not. Default to true for backwards compatability.
-     * @option
-     * @example true
-     */
+    * Boolean to flag the js to use motion ui classes or not. Default to true for backwards compatability.
+    * @option
+    * @example true
+    */
     useMUI: true
   };
   /**
-   * Initializes the plugin by creating jQuery collections, setting attributes, and starting the animation.
-   * @function
-   * @private
-   */
+  * Initializes the plugin by creating jQuery collections, setting attributes, and starting the animation.
+  * @function
+  * @private
+  */
   Orbit.prototype._init = function(){
     this.$wrapper = this.$element.find('.' + this.options.containerClass);
     this.$slides = this.$element.find('.' + this.options.slideClass);
     var $images = this.$element.find('img'),
-        initActive = this.$slides.filter('.is-active');
+    initActive = this.$slides.filter('.is-active');
 
     if(!initActive.length){
       this.$slides.eq(0).addClass('is-active');
@@ -4907,7 +4951,7 @@ Foundation.plugin(OffCanvas, 'OffCanvas');
 
     this._events();
 
-    if(this.options.autoPlay){
+    if(this.options.autoPlay && this.$slides.length > 1){
       this.geoSync();
     }
     if(this.options.accessible){ // allow wrapper to be focusable to enable arrow navigation
@@ -4915,243 +4959,245 @@ Foundation.plugin(OffCanvas, 'OffCanvas');
     }
   };
   /**
-   * Creates a jQuery collection of bullets, if they are being used.
-   * @function
-   * @private
-   */
+  * Creates a jQuery collection of bullets, if they are being used.
+  * @function
+  * @private
+  */
   Orbit.prototype._loadBullets = function(){
     this.$bullets = this.$element.find('.' + this.options.boxOfBullets).find('button');
   };
   /**
-   * Sets a `timer` object on the orbit, and starts the counter for the next slide.
-   * @function
-   */
+  * Sets a `timer` object on the orbit, and starts the counter for the next slide.
+  * @function
+  */
   Orbit.prototype.geoSync = function(){
     var _this = this;
     this.timer = new Foundation.Timer(
-                      this.$element,
-                      {duration: this.options.timerDelay,
-                       infinite: false},
-                      function(){
-                        _this.changeSlide(true);
-                      });
-    this.timer.start();
-  };
-  /**
-   * Sets wrapper and slide heights for the orbit.
-   * @function
-   * @private
-   */
-  Orbit.prototype._prepareForOrbit = function(){
-    var _this = this;
-    this._setWrapperHeight(function(max){
-      _this._setSlideHeight(max);
-    });
-  };
-  /**
-   * Calulates the height of each slide in the collection, and uses the tallest one for the wrapper height.
-   * @function
-   * @private
-   * @param {Function} cb - a callback function to fire when complete.
-   */
-  Orbit.prototype._setWrapperHeight = function(cb){//rewrite this to `for` loop
-    var max = 0, temp, counter = 0;
-
-    this.$slides.each(function(){
-      temp = this.getBoundingClientRect().height;
-      $(this).attr('data-slide', counter);
-
-      if(counter){//if not the first slide, set css position and display property
-        $(this).css({'position': 'relative', 'display': 'none'});
-      }
-      max = temp > max ? temp : max;
-      counter++;
-    });
-
-    if(counter === this.$slides.length){
-      this.$wrapper.css({'height': max});//only change the wrapper height property once.
-      cb(max);//fire callback with max height dimension.
-    }
-  };
-  /**
-   * Sets the max-height of each slide.
-   * @function
-   * @private
-   */
-  Orbit.prototype._setSlideHeight = function(height){
-    this.$slides.each(function(){
-      $(this).css('max-height', height);
-    });
-  };
-  /**
-   * Adds event listeners to basically everything within the element.
-   * @function
-   * @private
-   */
-  Orbit.prototype._events = function(){
-    var _this = this;
-
-    //***************************************
-    //**Now using custom event - thanks to:**
-    //**      Yohai Ararat of Toronto      **
-    //***************************************
-    if(this.options.swipe){
-      this.$slides.off('swipeleft.zf.orbit swiperight.zf.orbit')
-      .on('swipeleft.zf.orbit', function(e){
-        e.preventDefault();
-        _this.changeSlide(true);
-      }).on('swiperight.zf.orbit', function(e){
-        e.preventDefault();
-        _this.changeSlide(false);
-      });
-    }
-    //***************************************
-
-    if(this.options.autoPlay){
-      this.$slides.on('click.zf.orbit', function(){
-        _this.$element.data('clickedOn', _this.$element.data('clickedOn') ? false : true);
-        _this.timer[_this.$element.data('clickedOn') ? 'pause' : 'start']();
-      });
-      if(this.options.pauseOnHover){
-        this.$element.on('mouseenter.zf.orbit', function(){
-          _this.timer.pause();
-        }).on('mouseleave.zf.orbit', function(){
-          if(!_this.$element.data('clickedOn')){
-            _this.timer.start();
-          }
-        });
-      }
-    }
-
-    if(this.options.navButtons){
-      var $controls = this.$element.find('.' + this.options.nextClass + ', .' + this.options.prevClass);
-      $controls.attr('tabindex', 0)
-        //also need to handle enter/return and spacebar key presses
-               .on('click.zf.orbit touchend.zf.orbit', function(){
-                 _this.changeSlide($(this).hasClass(_this.options.nextClass));
-               });
-    }
-
-    if(this.options.bullets){
-      this.$bullets.on('click.zf.orbit touchend.zf.orbit', function(){
-        if(/is-active/g.test(this.className)){ return false; }//if this is active, kick out of function.
-        var idx = $(this).data('slide'),
-            ltr = idx > _this.$slides.filter('.is-active').data('slide'),
-            $slide = _this.$slides.eq(idx);
-
-        _this.changeSlide(ltr, $slide, idx);
-      });
-    }
-
-    this.$wrapper.add(this.$bullets).on('keydown.zf.orbit', function(e){
-      // handle keyboard event with keyboard util
-      Foundation.Keyboard.handleKey(e, 'Orbit', {
-        next: function() {
+      this.$element,
+      {duration: this.options.timerDelay,
+        infinite: false},
+        function(){
           _this.changeSlide(true);
-        },
-        previous: function() {
-          _this.changeSlide(false);
-        },
-        handled: function() { // if bullet is focused, make sure focus moves
-          if ($(e.target).is(_this.$bullets)) {
-            _this.$bullets.filter('.is-active').focus();
+        });
+        this.timer.start();
+      };
+      /**
+      * Sets wrapper and slide heights for the orbit.
+      * @function
+      * @private
+      */
+      Orbit.prototype._prepareForOrbit = function(){
+        var _this = this;
+        this._setWrapperHeight(function(max){
+          _this._setSlideHeight(max);
+        });
+      };
+      /**
+      * Calulates the height of each slide in the collection, and uses the tallest one for the wrapper height.
+      * @function
+      * @private
+      * @param {Function} cb - a callback function to fire when complete.
+      */
+      Orbit.prototype._setWrapperHeight = function(cb){//rewrite this to `for` loop
+        var max = 0, temp, counter = 0;
+
+        this.$slides.each(function(){
+          temp = this.getBoundingClientRect().height;
+          $(this).attr('data-slide', counter);
+
+          if(counter){//if not the first slide, set css position and display property
+            $(this).css({'position': 'relative', 'display': 'none'});
           }
+          max = temp > max ? temp : max;
+          counter++;
+        });
+
+        if(counter === this.$slides.length){
+          this.$wrapper.css({'height': max});//only change the wrapper height property once.
+          cb(max);//fire callback with max height dimension.
         }
-      });
-    });
-  };
-  /**
-   * Changes the current slide to a new one.
-   * @function
-   * @param {Boolean} isLTR - flag if the slide should move left to right.
-   * @param {jQuery} chosenSlide - the jQuery element of the slide to show next, if one is selected.
-   * @param {Number} idx - the index of the new slide in its collection, if one chosen.
-   * @fires Orbit#slidechange
-   */
-  Orbit.prototype.changeSlide = function(isLTR, chosenSlide, idx){
-    var $curSlide = this.$slides.filter('.is-active').eq(0);
+      };
+      /**
+      * Sets the max-height of each slide.
+      * @function
+      * @private
+      */
+      Orbit.prototype._setSlideHeight = function(height){
+        this.$slides.each(function(){
+          $(this).css('max-height', height);
+        });
+      };
+      /**
+      * Adds event listeners to basically everything within the element.
+      * @function
+      * @private
+      */
+      Orbit.prototype._events = function(){
+        var _this = this;
 
-    if(/mui/g.test($curSlide[0].className)){ return false; }//if the slide is currently animating, kick out of the function
+        //***************************************
+        //**Now using custom event - thanks to:**
+        //**      Yohai Ararat of Toronto      **
+        //***************************************
+        if(this.$slides.length > 1){
 
-    var $firstSlide = this.$slides.first(),
+          if(this.options.swipe){
+            this.$slides.off('swipeleft.zf.orbit swiperight.zf.orbit')
+            .on('swipeleft.zf.orbit', function(e){
+              e.preventDefault();
+              _this.changeSlide(true);
+            }).on('swiperight.zf.orbit', function(e){
+              e.preventDefault();
+              _this.changeSlide(false);
+            });
+          }
+          //***************************************
+
+          if(this.options.autoPlay){
+            this.$slides.on('click.zf.orbit', function(){
+              _this.$element.data('clickedOn', _this.$element.data('clickedOn') ? false : true);
+              _this.timer[_this.$element.data('clickedOn') ? 'pause' : 'start']();
+            });
+            if(this.options.pauseOnHover){
+              this.$element.on('mouseenter.zf.orbit', function(){
+                _this.timer.pause();
+              }).on('mouseleave.zf.orbit', function(){
+                if(!_this.$element.data('clickedOn')){
+                  _this.timer.start();
+                }
+              });
+            }
+          }
+
+          if(this.options.navButtons){
+            var $controls = this.$element.find('.' + this.options.nextClass + ', .' + this.options.prevClass);
+            $controls.attr('tabindex', 0)
+            //also need to handle enter/return and spacebar key presses
+            .on('click.zf.orbit touchend.zf.orbit', function(){
+              _this.changeSlide($(this).hasClass(_this.options.nextClass));
+            });
+          }
+
+          if(this.options.bullets){
+            this.$bullets.on('click.zf.orbit touchend.zf.orbit', function(){
+              if(/is-active/g.test(this.className)){ return false; }//if this is active, kick out of function.
+              var idx = $(this).data('slide'),
+              ltr = idx > _this.$slides.filter('.is-active').data('slide'),
+              $slide = _this.$slides.eq(idx);
+
+              _this.changeSlide(ltr, $slide, idx);
+            });
+          }
+
+          this.$wrapper.add(this.$bullets).on('keydown.zf.orbit', function(e){
+            // handle keyboard event with keyboard util
+            Foundation.Keyboard.handleKey(e, 'Orbit', {
+              next: function() {
+                _this.changeSlide(true);
+              },
+              previous: function() {
+                _this.changeSlide(false);
+              },
+              handled: function() { // if bullet is focused, make sure focus moves
+                if ($(e.target).is(_this.$bullets)) {
+                  _this.$bullets.filter('.is-active').focus();
+                }
+              }
+            });
+          });
+        }
+      };
+      /**
+      * Changes the current slide to a new one.
+      * @function
+      * @param {Boolean} isLTR - flag if the slide should move left to right.
+      * @param {jQuery} chosenSlide - the jQuery element of the slide to show next, if one is selected.
+      * @param {Number} idx - the index of the new slide in its collection, if one chosen.
+      * @fires Orbit#slidechange
+      */
+      Orbit.prototype.changeSlide = function(isLTR, chosenSlide, idx){
+        var $curSlide = this.$slides.filter('.is-active').eq(0);
+
+        if(/mui/g.test($curSlide[0].className)){ return false; }//if the slide is currently animating, kick out of the function
+
+        var $firstSlide = this.$slides.first(),
         $lastSlide = this.$slides.last(),
         dirIn = isLTR ? 'Right' : 'Left',
         dirOut = isLTR ? 'Left' : 'Right',
         _this = this,
         $newSlide;
 
-    if(!chosenSlide){//most of the time, this will be auto played or clicked from the navButtons.
-      $newSlide = isLTR ? //if wrapping enabled, check to see if there is a `next` or `prev` sibling, if not, select the first or last slide to fill in. if wrapping not enabled, attempt to select `next` or `prev`, if there's nothing there, the function will kick out on next step. CRAZY NESTED TERNARIES!!!!!
-                    (this.options.infiniteWrap ? $curSlide.next('.' + this.options.slideClass).length ? $curSlide.next('.' + this.options.slideClass) : $firstSlide : $curSlide.next('.' + this.options.slideClass))//pick next slide if moving left to right
-                    :
-                    (this.options.infiniteWrap ? $curSlide.prev('.' + this.options.slideClass).length ? $curSlide.prev('.' + this.options.slideClass) : $lastSlide : $curSlide.prev('.' + this.options.slideClass));//pick prev slide if moving right to left
-    }else{
-      $newSlide = chosenSlide;
-    }
-    if($newSlide.length){
-      if(this.options.bullets){
-        idx = idx || this.$slides.index($newSlide);//grab index to update bullets
-        this._updateBullets(idx);
-      }
-      if(this.options.useMUI){
-
-        Foundation.Motion.animateIn(
-          $newSlide.addClass('is-active').css({'position': 'absolute', 'top': 0}),
-          this.options['animInFrom' + dirIn],
-          function(){
-            $newSlide.css({'position': 'relative', 'display': 'block'})
-                     .attr('aria-live', 'polite');
-          });
-
-        Foundation.Motion.animateOut(
-          $curSlide.removeClass('is-active'),
-          this.options['animOutTo' + dirOut],
-          function(){
-            $curSlide.removeAttr('aria-live');
-            if(_this.options.autoPlay){
-              _this.timer.restart();
-            }
-            //do stuff?
-          });
-      }else{
-        $curSlide.removeClass('is-active is-in').removeAttr('aria-live').hide();
-        $newSlide.addClass('is-active is-in').attr('aria-live', 'polite').show();
-        if(this.options.autoPlay){
-          this.timer.restart();
+        if(!chosenSlide){//most of the time, this will be auto played or clicked from the navButtons.
+          $newSlide = isLTR ? //if wrapping enabled, check to see if there is a `next` or `prev` sibling, if not, select the first or last slide to fill in. if wrapping not enabled, attempt to select `next` or `prev`, if there's nothing there, the function will kick out on next step. CRAZY NESTED TERNARIES!!!!!
+          (this.options.infiniteWrap ? $curSlide.next('.' + this.options.slideClass).length ? $curSlide.next('.' + this.options.slideClass) : $firstSlide : $curSlide.next('.' + this.options.slideClass))//pick next slide if moving left to right
+          :
+          (this.options.infiniteWrap ? $curSlide.prev('.' + this.options.slideClass).length ? $curSlide.prev('.' + this.options.slideClass) : $lastSlide : $curSlide.prev('.' + this.options.slideClass));//pick prev slide if moving right to left
+        }else{
+          $newSlide = chosenSlide;
         }
-      }
-      /**
-       * Triggers when the slide has finished animating in.
-       * @event Orbit#slidechange
-       */
-      this.$element.trigger('slidechange.zf.orbit', [$newSlide]);
-    }
-  };
-  /**
-   * Updates the active state of the bullets, if displayed.
-   * @function
-   * @private
-   * @param {Number} idx - the index of the current slide.
-   */
-  Orbit.prototype._updateBullets = function(idx){
-    var $oldBullet = this.$element.find('.' + this.options.boxOfBullets)
-                                  .find('.is-active').removeClass('is-active').blur(),
-        span = $oldBullet.find('span:last').detach(),
-        $newBullet = this.$bullets.eq(idx).addClass('is-active').append(span);
-  };
-  /**
-   * Destroys the carousel and hides the element.
-   * @function
-   */
-  Orbit.prototype.destroy = function(){
-    delete this.timer;
-    this.$element.off('.zf.orbit').find('*').off('.zf.orbit').end().hide();
-    Foundation.unregisterPlugin(this);
-  };
+        if($newSlide.length){
+          if(this.options.bullets){
+            idx = idx || this.$slides.index($newSlide);//grab index to update bullets
+            this._updateBullets(idx);
+          }
+          if(this.options.useMUI){
 
-  Foundation.plugin(Orbit, 'Orbit');
+            Foundation.Motion.animateIn(
+              $newSlide.addClass('is-active').css({'position': 'absolute', 'top': 0}),
+              this.options['animInFrom' + dirIn],
+              function(){
+                $newSlide.css({'position': 'relative', 'display': 'block'})
+                .attr('aria-live', 'polite');
+              });
 
-}(jQuery, window.Foundation);
+              Foundation.Motion.animateOut(
+                $curSlide.removeClass('is-active'),
+                this.options['animOutTo' + dirOut],
+                function(){
+                  $curSlide.removeAttr('aria-live');
+                  if(_this.options.autoPlay && !_this.timer.isPaused){
+                    _this.timer.restart();
+                  }
+                  //do stuff?
+                });
+              }else{
+                $curSlide.removeClass('is-active is-in').removeAttr('aria-live').hide();
+                $newSlide.addClass('is-active is-in').attr('aria-live', 'polite').show();
+                if(this.options.autoPlay && !this.timer.isPaused){
+                  this.timer.restart();
+                }
+              }
+              /**
+              * Triggers when the slide has finished animating in.
+              * @event Orbit#slidechange
+              */
+              this.$element.trigger('slidechange.zf.orbit', [$newSlide]);
+            }
+          };
+          /**
+          * Updates the active state of the bullets, if displayed.
+          * @function
+          * @private
+          * @param {Number} idx - the index of the current slide.
+          */
+          Orbit.prototype._updateBullets = function(idx){
+            var $oldBullet = this.$element.find('.' + this.options.boxOfBullets)
+            .find('.is-active').removeClass('is-active').blur(),
+            span = $oldBullet.find('span:last').detach(),
+            $newBullet = this.$bullets.eq(idx).addClass('is-active').append(span);
+          };
+          /**
+          * Destroys the carousel and hides the element.
+          * @function
+          */
+          Orbit.prototype.destroy = function(){
+            this.$element.off('.zf.orbit').find('*').off('.zf.orbit').end().hide();
+            Foundation.unregisterPlugin(this);
+          };
+
+          Foundation.plugin(Orbit, 'Orbit');
+
+        }(jQuery, window.Foundation);
 
 /**
  * ResponsiveMenu module.
@@ -5179,12 +5225,6 @@ Foundation.plugin(OffCanvas, 'OffCanvas');
       cssClass: 'accordion-menu',
       plugin: Foundation._plugins['accordion-menu'] || null
     }
-  };
-
-  // [PH] Media queries
-  var phMedia = {
-    small: '(min-width: 0px)',
-    medium: '(min-width: 640px)'
   };
 
   /**
@@ -5514,11 +5554,17 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
      */
     overlay: true,
     /**
-     * Allows the modal to remove and reinject markup on close. Should be true if using video elements w/o using provider's api.
+     * Allows the modal to remove and reinject markup on close. Should be true if using video elements w/o using provider's api, otherwise, videos will continue to play in the background.
      * @option
      * @example false
      */
-    resetOnClose: false
+    resetOnClose: false,
+    /**
+     * Allows the modal to alter the url on open/close, and allows the use of the `back` button to close modals. ALSO, allows a modal to auto-maniacally open on page load IF the hash === the modal's user-set id.
+     * @option
+     * @example false
+     */
+    deepLink: false
   };
 
   /**
@@ -5560,6 +5606,9 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
     });
 
     this._events();
+    if(this.options.deepLink && window.location.hash === ( '#' + this.id)){
+      $(window).one('load.zf.reveal', this.open.bind(this));
+    }
   };
 
   /**
@@ -5611,6 +5660,17 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
     if(this.options.closeOnClick && this.options.overlay){
       this.$overlay.off('.zf.reveal').on('click.zf.reveal', this.close.bind(this));
     }
+    if(this.options.deepLink){
+      $(window).on('popstate.zf.reveal:' + this.id, this._handleState.bind(this));
+    }
+  };
+  /**
+   * Handles modal methods on back/forward button clicks or any other event that triggers popstate.
+   * @private
+   */
+  Reveal.prototype._handleState = function(e){
+    if(window.location.hash === ( '#' + this.id) && !this.isActive){ this.open(); }
+    else{ this.close(); }
   };
   /**
    * Sets the position of the modal before opening
@@ -5658,6 +5718,16 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
    * @fires Reveal#open
    */
   Reveal.prototype.open = function(){
+    if(this.options.deepLink){
+      var hash = '#' + this.id;
+
+      if(window.history.pushState){
+        window.history.pushState(null, null, hash);
+      }else{
+        window.location.hash = hash;
+      }
+    }
+
     var _this = this;
     this.isActive = true;
     //make element invisible, but remove display: none so we can get size and positioning
@@ -5715,7 +5785,6 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
              .attr({'aria-hidden': (this.options.overlay || this.options.fullScreen) ? true : false});
     setTimeout(function(){
       _this._extraHandlers();
-      // Foundation.reflow();
     }, 0);
   };
 
@@ -5729,8 +5798,8 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
 
     if(!this.options.overlay && this.options.closeOnClick && !this.options.fullScreen){
       $('body').on('click.zf.reveal', function(e){
-        // if()
-          _this.close();
+        if(e.target === _this.$element[0] || $.contains(_this.$element[0], e.target)){ return; }
+        _this.close();
       });
     }
     if(this.options.closeOnEsc){
@@ -5800,16 +5869,14 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
     if(this.options.animationOut){
       Foundation.Motion.animateOut(this.$element, this.options.animationOut, function(){
         if(_this.options.overlay){
-          Foundation.Motion.animateOut(_this.$overlay, 'fade-out', function(){
-          });
-        }
+          Foundation.Motion.animateOut(_this.$overlay, 'fade-out', finishUp);
+        }else{ finishUp(); }
       });
     }else{
       this.$element.hide(_this.options.hideDelay, function(){
         if(_this.options.overlay){
-          _this.$overlay.hide(0, function(){
-          });
-        }
+          _this.$overlay.hide(0, finishUp);
+        }else{ finishUp(); }
       });
     }
     //conditionals to remove extra event listeners added on open
@@ -5820,16 +5887,23 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
       $('body').off('click.zf.reveal');
     }
     this.$element.off('keydown.zf.reveal');
-
-    //if the modal changed size, reset it
-    if(this.changedSize){
-      this.$element.css({
-        'height': '',
-        'width': ''
-      });
+    function finishUp(){
+      //if the modal changed size, reset it
+      if(_this.changedSize){
+        _this.$element.css({
+          'height': '',
+          'width': ''
+        });
+      }
+      $('body').removeClass('is-reveal-open').attr({'aria-hidden': false, 'tabindex': ''});
+      _this.$element.attr({'aria-hidden': true})
+      /**
+      * Fires when the modal is done closing.
+      * @event Reveal#closed
+      */
+      .trigger('closed.zf.reveal');
     }
 
-    $('body').removeClass('is-reveal-open').attr({'aria-hidden': false, 'tabindex': ''});
 
     /**
     * Resets the modal content
@@ -5840,12 +5914,13 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
     }
 
     this.isActive = false;
-    this.$element.attr({'aria-hidden': true})
-    /**
-     * Fires when the modal is done closing.
-     * @event Reveal#closed
-     */
-                 .trigger('closed.zf.reveal');
+     if(_this.options.deepLink){
+       if(window.history.replaceState){
+         window.history.replaceState("", document.title, window.location.pathname);
+       }else{
+         window.location.hash = '';
+       }
+     }
   };
   /**
    * Toggles the open/closed state of a modal.
@@ -5867,8 +5942,9 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
     if(this.options.overlay){
       this.$overlay.hide().off().remove();
     }
-    this.$element.hide();
-    this.$anchor.off();
+    this.$element.hide().off();
+    this.$anchor.off('.zf');
+    $(window).off('.zf.reveal:' + this.id);
 
     Foundation.unregisterPlugin(this);
   };
@@ -6020,7 +6096,8 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
      * @option
      * @example 'disabled'
      */
-    disabledClass: 'disabled'
+    disabledClass: 'disabled',
+    invertVertical: false
   };
   /**
    * Initilizes the plugin by reading/setting attributes, creating collections and setting the initial position of the handle(s).
@@ -6060,7 +6137,7 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
 
       this._setHandlePos(this.$handle, this.options.initialStart, true, function(){
 
-        _this._setHandlePos(_this.$handle2, _this.options.initialEnd);
+        _this._setHandlePos(_this.$handle2, _this.options.initialEnd, true);
       });
       // this.$handle.triggerHandler('click.zf.slider');
       this._setInitAttr(1);
@@ -6083,14 +6160,14 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
   Slider.prototype._setHandlePos = function($hndl, location, noInvert, cb){
   //might need to alter that slightly for bars that will have odd number selections.
     location = parseFloat(location);//on input change events, convert string to number...grumble.
-    // prevent slider from running out of bounds
+
+    // prevent slider from running out of bounds, if value exceeds the limits set through options, override the value to min/max
     if(location < this.options.start){ location = this.options.start; }
     else if(location > this.options.end){ location = this.options.end; }
 
-    var isDbl = this.options.doubleSided,
-        callback = cb || null;
+    var isDbl = this.options.doubleSided;
 
-    if(isDbl){
+    if(isDbl){ //this block is to prevent 2 handles from crossing eachother. Could/should be improved.
       if(this.handles.index($hndl) === 0){
         var h2Val = parseFloat(this.$handle2.attr('aria-valuenow'));
         location = location >= h2Val ? h2Val - this.options.step : location;
@@ -6100,58 +6177,82 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
       }
     }
 
+    //this is for single-handled vertical sliders, it adjusts the value to account for the slider being "upside-down"
+    //for click and drag events, it's weird due to the scale(-1, 1) css property
     if(this.options.vertical && !noInvert){
       location = this.options.end - location;
     }
+
     var _this = this,
         vert = this.options.vertical,
         hOrW = vert ? 'height' : 'width',
         lOrT = vert ? 'top' : 'left',
-        halfOfHandle = $hndl[0].getBoundingClientRect()[hOrW] / 2,
+        handleDim = $hndl[0].getBoundingClientRect()[hOrW],
         elemDim = this.$element[0].getBoundingClientRect()[hOrW],
+        //percentage of bar min/max value based on click or drag point
         pctOfBar = percent(location, this.options.end).toFixed(2),
-        pxToMove = (elemDim - halfOfHandle) * pctOfBar,
+        //number of actual pixels to shift the handle, based on the percentage obtained above
+        pxToMove = (elemDim - handleDim) * pctOfBar,
+        //percentage of bar to shift the handle
         movement = (percent(pxToMove, elemDim) * 100).toFixed(this.options.decimal),
-        location = location > 0 ? parseFloat(location.toFixed(this.options.decimal)) : 0,
-        anim, prog, start = null, css = {};
+        //fixing the decimal value for the location number, is passed to other methods as a fixed floating-point value
+        location = parseFloat(location.toFixed(this.options.decimal)),
+        // declare empty object for css adjustments, only used with 2 handled-sliders
+        css = {};
 
     this._setValues($hndl, location);
 
-    if(this.options.doubleSided){//update to calculate based on values set to respective inputs??
+    // TODO update to calculate based on values set to respective inputs??
+    if(isDbl){
       var isLeftHndl = this.handles.index($hndl) === 0,
+          //empty variable, will be used for min-height/width for fill bar
           dim,
-          idx = this.handles.index($hndl);
-
+          //percentage w/h of the handle compared to the slider bar
+          handlePct =  ~~(percent(handleDim, elemDim) * 100);
+      //if left handle, the math is slightly different than if it's the right handle, and the left/top property needs to be changed for the fill bar
       if(isLeftHndl){
-        css[lOrT] = (pctOfBar > 0 ? pctOfBar * 100 : 0) + '%';//
-        dim = /*Math.abs*/((percent(this.$handle2.position()[lOrT] + halfOfHandle, elemDim) - parseFloat(pctOfBar)) * 100).toFixed(this.options.decimal) + '%';
-        css['min-' + hOrW] = dim;
-        if(cb && typeof cb === 'function'){ cb(); }
+        //left or top percentage value to apply to the fill bar.
+        css[lOrT] = movement + '%';
+        //calculate the new min-height/width for the fill bar.
+        dim = parseFloat(this.$handle2[0].style[lOrT]) - movement + handlePct;
+        //this callback is necessary to prevent errors and allow the proper placement and initialization of a 2-handled slider
+        //plus, it means we don't care if 'dim' isNaN on init, it won't be in the future.
+        if(cb && typeof cb === 'function'){ cb(); }//this is only needed for the initialization of 2 handled sliders
       }else{
-        var handleLeft = parseFloat(this.$handle[0].style.left);
-        location = (location < 100 ? location : 100) - (!isNaN(handleLeft) ? handleLeft : this.options.end - location);
-        css['min-' + hOrW] = location + '%';
+        //just caching the value of the left/bottom handle's left/top property
+        var handlePos = parseFloat(this.$handle[0].style[lOrT]);
+        //calculate the new min-height/width for the fill bar. Use isNaN to prevent false positives for numbers <= 0
+        //based on the percentage of movement of the handle being manipulated, less the opposing handle's left/top position, plus the percentage w/h of the handle itself
+        dim = movement - (isNaN(handlePos) ? this.options.initialStart : handlePos) + handlePct;
       }
+      // assign the min-height/width to our css object
+      css['min-' + hOrW] = dim + '%';
     }
 
     this.$element.one('finished.zf.animate', function(){
-                    _this.animComplete = true;
                     /**
                      * Fires when the handle is done moving.
                      * @event Slider#moved
                      */
                     _this.$element.trigger('moved.zf.slider', [$hndl]);
                 });
-    var moveTime = _this.$element.data('dragging') ? 1000/60 : _this.options.moveTime;
-    /*var move = new */Foundation.Move(moveTime, $hndl, function(){
+
+    //because we don't know exactly how the handle will be moved, check the amount of time it should take to move.
+    var moveTime = this.$element.data('dragging') ? 1000/60 : this.options.moveTime;
+
+    Foundation.Move(moveTime, $hndl, function(){
+      //adjusting the left/top property of the handle, based on the percentage calculated above
       $hndl.css(lOrT, movement + '%');
+
       if(!_this.options.doubleSided){
+        //if single-handled, a simple method to expand the fill bar
         _this.$fill.css(hOrW, pctOfBar * 100 + '%');
       }else{
+        //otherwise, use the css object we created above
         _this.$fill.css(css);
       }
     });
-    // move.do();
+
   };
   /**
    * Sets the initial attribute for the slider element.
@@ -6198,6 +6299,7 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
    * @param {Object} e - the `event` object passed from the listener.
    * @param {jQuery} $handle - the current handle to calculate for, if selected.
    * @param {Number} val - floating point number for the new value of the slider.
+   * TODO clean this up, there's a lot of repeated code between this and the _setHandlePos fn.
    */
   Slider.prototype._handleEvent = function(e, $handle, val){
     var value, hasVal;
@@ -6211,10 +6313,13 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
           halfOfHandle = this.$handle[0].getBoundingClientRect()[param] / 2,
           barDim = this.$element[0].getBoundingClientRect()[param],
           barOffset = (this.$element.offset()[direction] -  pageXY),
-          barXY = barOffset > 0 ? -halfOfHandle : (barOffset - halfOfHandle) < -barDim ? barDim : Math.abs(barOffset),//if the cursor position is less than or greater than the elements bounding coordinates, set coordinates within those bounds
-          // eleDim = this.$element[0].getBoundingClientRect()[param],
+          //if the cursor position is less than or greater than the elements bounding coordinates, set coordinates within those bounds
+          barXY = barOffset > 0 ? -halfOfHandle : (barOffset - halfOfHandle) < -barDim ? barDim : Math.abs(barOffset),
           offsetPct = percent(barXY, barDim);
       value = (this.options.end - this.options.start) * offsetPct;
+      // turn everything around for RTL, yay math!
+      if (Foundation.rtl() && !this.options.vertical) {value = this.options.end - value;}
+      //boolean flag for the setHandlePos fn, specifically for vertical sliders
       hasVal = false;
 
       if(!$handle){//figure out which handle it is, pass it to the next function.
@@ -6251,7 +6356,7 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
     if(this.options.clickSelect){
       this.$element.off('click.zf.slider').on('click.zf.slider', function(e){
         if(_this.$element.data('dragging')){ return false; }
-        _this.animComplete = false;
+
         if(_this.options.doubleSided){
           _this._handleEvent(e);
         }else{
@@ -6262,8 +6367,7 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
 
     if(this.options.draggable){
       this.handles.addTouch();
-      // var curHandle,
-      //     timer,
+
       var $body = $('body');
       $handle
         .off('mousedown.zf.slider')
@@ -6271,33 +6375,31 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
           $handle.addClass('is-dragging');
           _this.$fill.addClass('is-dragging');//
           _this.$element.data('dragging', true);
-          _this.animComplete = false;
+
           curHandle = $(e.currentTarget);
 
           $body.on('mousemove.zf.slider', function(e){
             e.preventDefault();
 
-            // timer = setTimeout(function(){
             _this._handleEvent(e, curHandle);
-            // }, _this.options.dragDelay);
+
           }).on('mouseup.zf.slider', function(e){
-            // clearTimeout(timer);
-            _this.animComplete = true;
             _this._handleEvent(e, curHandle);
+
             $handle.removeClass('is-dragging');
             _this.$fill.removeClass('is-dragging');
             _this.$element.data('dragging', false);
-            // Foundation.reflow(_this.$element, 'slider');
+
             $body.off('mousemove.zf.slider mouseup.zf.slider');
           });
       });
     }
     $handle.off('keydown.zf.slider').on('keydown.zf.slider', function(e){
-      var idx = _this.options.doubleSided ? _this.handles.index($(this)) : 0,
-        oldValue = parseFloat(_this.inputs.eq(idx).val()),
-        newValue;
+      var _$handle = $(this),
+          idx = _this.options.doubleSided ? _this.handles.index(_$handle) : 0,
+          oldValue = parseFloat(_this.inputs.eq(idx).val()),
+          newValue;
 
-      var _$handle = $(this);
 
       // handle keyboard event with keyboard util
       Foundation.Keyboard.handleKey(e, 'Slider', {
@@ -6897,9 +6999,9 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
       var $elem = $(this),
           $link = $elem.find('a'),
           isActive = $elem.hasClass('is-active'),
-          hash = $link.attr('href').slice(1),
-          linkId = hash + '-label',
-          $tabContent = $(hash);
+          hash = $link[0].hash.slice(1),
+          linkId = $link[0].id ? $link[0].id : hash + '-label',
+          $tabContent = $('#' + hash);
 
       $elem.attr({'role': 'presentation'});
 
@@ -7018,14 +7120,13 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
    */
   Tabs.prototype._handleTabChange = function($target){
     var $tabLink = $target.find('[role="tab"]'),
-        hash = $tabLink.attr('href'),
+        hash = $tabLink[0].hash,
         $targetContent = $(hash),
-
         $oldTab = this.$element.find('.' + this.options.linkClass + '.is-active')
                   .removeClass('is-active').find('[role="tab"]')
-                  .attr({'aria-selected': 'false'}).attr('href');
+                  .attr({'aria-selected': 'false'}).attr('aria-controls');
 
-    $($oldTab).removeClass('is-active').attr({'aria-hidden': 'true'});
+    $('#'+$oldTab).removeClass('is-active').attr({'aria-hidden': 'true'});
 
     $target.addClass('is-active');
 
@@ -7416,7 +7517,7 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
   Tooltip.prototype._getPositionClass = function(element){
     if(!element){ return ''; }
     // var position = element.attr('class').match(/top|left|right/g);
-    var position = element[0].className.match(/(top|left|right)/g);
+    var position = element[0].className.match(/\b(top|left|right)\b/g);
         position = position ? position[0] : '';
     return position;
   };
@@ -7425,7 +7526,7 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
    * @private
    */
   Tooltip.prototype._buildTemplate = function(id){
-    var templateClasses = (this.options.tooltipClass + ' ' + this.options.positionClass).trim();
+    var templateClasses = (this.options.tooltipClass + ' ' + this.options.positionClass + ' ' + this.options.templateClasses).trim();
     var $template =  $('<div></div>').addClass(templateClasses).attr({
       'role': 'tooltip',
       'aria-hidden': true,
@@ -7510,7 +7611,7 @@ Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
 
   /**
    * reveals the tooltip, and fires an event to close any other open tooltips on the page
-   * @fires Closeme#tooltip
+   * @fires Tooltip#closeme
    * @fires Tooltip#show
    * @function
    */
