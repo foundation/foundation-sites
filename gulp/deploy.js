@@ -34,7 +34,7 @@ var CURRENT_VERSION = require('../package.json').version;
 var NEXT_VERSION;
 
 gulp.task('deploy', function(cb) {
-  sequence('deploy:prompt', 'deploy:version', 'deploy:dist', 'deploy:settings', 'deploy:commit', cb);
+  sequence('deploy:prompt', 'deploy:version', 'deploy:dist', 'deploy:settings', 'deploy:commit', 'deploy:templates', cb);
 });
 
 gulp.task('deploy:prompt', function(cb) {
@@ -114,6 +114,24 @@ gulp.task('deploy:docs', ['build'], function() {
       hostname: 'deployer@72.32.134.77',
       destination: '/home/deployer/sites/foundation-sites-6-docs'
     }));
+});
+
+gulp.task('deploy:templates', function() {
+  exec('git clone https://github.com/zurb/foundation-sites-template');
+  exec('cp scss/settings/_settings.scss foundation-sites-template/scss/_settings.scss');
+  exec('cd foundation-sites-template');
+  exec('git commit -am "Update settings file to match Foundation "' + NEXT_VERSION);
+  exec('git push origin master');
+  exec('cd ..');
+  exec('rm -rf foundation-sites-template');
+
+  exec('git clone https://github.com/zurb/foundation-zurb-template');
+  exec('cp scss/settings/_settings.scss foundation-zurb-template/src/assets/scss/_settings.scss');
+  exec('cd foundation-zurb-template');
+  exec('git commit -am "Update settings file to match Foundation "' + NEXT_VERSION);
+  exec('git push origin master');
+  exec('cd ..');
+  exec('rm -rf foundation-zurb-template');
 });
 
 // The Customizer runs this function to generate files it needs
