@@ -57,8 +57,8 @@ gulp.task('deploy:version', function() {
 
 // Generates compiled CSS and JS files and puts them in the dist/ folder
 gulp.task('deploy:dist', ['sass:foundation', 'javascript:foundation'], function() {
-  var cssFilter = filter(['*.css']);
-  var jsFilter  = filter(['*.js']);
+  var cssFilter = filter(['*.css'], { restore: true });
+  var jsFilter  = filter(['*.js'], { restore: true });
 
   return gulp.src(DIST_FILES)
     .pipe(cssFilter)
@@ -66,7 +66,7 @@ gulp.task('deploy:dist', ['sass:foundation', 'javascript:foundation'], function(
       .pipe(cssnano())
       .pipe(rename({ suffix: '.min' }))
       .pipe(gulp.dest('./dist'))
-    .pipe(cssFilter.restore())
+    .pipe(cssFilter.restore)
     .pipe(jsFilter)
       .pipe(gulp.dest('./dist'))
       .pipe(uglify())
@@ -118,9 +118,6 @@ gulp.task('deploy:docs', ['build'], function() {
 
 // The Customizer runs this function to generate files it needs
 gulp.task('deploy:custom', ['sass:foundation', 'javascript:foundation'], function() {
-  var cssFilter = filter(['*.css']);
-  var jsFilter  = filter(['*.js']);
-
   gulp.src('./_build/assets/css/foundation.css')
       .pipe(minifyCss())
       .pipe(rename('foundation.min.css'))
