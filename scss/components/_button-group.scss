@@ -76,7 +76,7 @@ $buttongroup-expand-max: 6 !default;
     width: 100%;
 
     &:not(:last-child) {
-      border-#{$global-right}: $buttongroup-spacing solid;
+      border-#{$global-right}: none;
     }
   }
 }
