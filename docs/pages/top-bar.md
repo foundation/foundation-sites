@@ -51,7 +51,7 @@ You can further divide a top bar into a title area and content area. Use the `.t
   <div class="top-bar-title"></div>
   <div>
     <div class="top-bar-left"></div>
-    <div class="top-bar-left"></div>
+    <div class="top-bar-right"></div>
   </div>
 </div>
 ```
