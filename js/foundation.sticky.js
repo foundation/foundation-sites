@@ -112,17 +112,18 @@
 
     this.scrollCount = this.options.checkEvery;
     this.isStuck = false;
+    $(window).one('load.zf.sticky', function(){
+      if(_this.options.anchor !== ''){
+        _this.$anchor = $('#' + _this.options.anchor);
+      }else{
+        _this._parsePoints();
+      }
 
-    if(this.options.anchor !== ''){
-      this.$anchor = $('#' + this.options.anchor);
-    }else{
-      this._parsePoints();
-    }
-
-    this._setSizes(function(){
-      _this._calc(false);
+      _this._setSizes(function(){
+        _this._calc(false);
+      });
+      _this._events(id.split('-').reverse().join('-'));
     });
-    this._events(id.split('-').reverse().join('-'));
   };
   /**
    * If using multiple elements as anchors, calculates the top and bottom pixel values the sticky thing should stick and unstick on.
