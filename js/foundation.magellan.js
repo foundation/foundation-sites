@@ -142,13 +142,12 @@
   Magellan.prototype.scrollToLoc = function(loc){
     var scrollPos = $(loc).offset().top - this.options.threshold / 2 - this.options.barOffset;
 
-    $(document.body).stop(true).animate({
+    $('html, body').stop(true).animate({
         scrollTop: scrollPos
       },
-      {
-        duration: this.options.animationDuration,
-        easiing: this.options.animationEasing
-     });
+        this.options.animationDuration,
+        this.options.animationEasing
+     );
   };
   /**
    * Calls necessary functions to update Magellan upon DOM change
