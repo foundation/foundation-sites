@@ -1,19 +1,13 @@
 var gulp = require('gulp');
 var opener = require('opener');
-var rubySass = require('gulp-ruby-sass');
+var mocha = require('gulp-mocha');
 
 // Runs unit tests
 gulp.task('test', ['test:sass', 'test:javascript']);
 
 gulp.task('test:sass', function() {
-  return rubySass('./test/sass/tests.scss', {
-    loadPath: ['scss', 'node_modules/bootcamp/dist'],
-    style: 'nested',
-    quiet: true
-  })
-    .on('data', function(data) {
-      console.log(data.contents.toString());
-    });
+  return gulp.src('./test/sass/test_sass.js', { read: false })
+    .pipe(mocha({ reporter: 'nyan' }));
 });
 
 gulp.task('test:javascript', function(cb) {

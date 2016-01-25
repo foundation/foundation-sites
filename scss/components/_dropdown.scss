@@ -16,7 +16,7 @@ $dropdown-border: 1px solid $medium-gray !default;
 
 /// Font size for dropdown panes.
 /// @type List
-$dropdown-font-size: 16rem !default;
+$dropdown-font-size: 1rem !default;
 
 /// Width for dropdown panes.
 /// @type Number
@@ -38,13 +38,14 @@ $dropdown-sizes: (
 @mixin dropdown-container {
   background-color: $body-background;
   border: $dropdown-border;
+  border-radius: $dropdown-radius;
   display: block;
+  font-size: $dropdown-font-size;
   padding: $dropdown-padding;
   position: absolute;
   visibility: hidden;
   width: $dropdown-width;
   z-index: 10;
-  border-radius: $dropdown-radius;
 
   &.is-open {
     visibility: visible;

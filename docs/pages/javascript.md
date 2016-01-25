@@ -82,6 +82,25 @@ In the HTML, each setting can be defined as an individual data attribute. Note t
 <div data-accordion data-slide-speed="500" data-multi-expand="true"></div>
 ```
 
+Data options can also be set in bulk on one attribute, `data-options`. Options are written with the format `key: value;`, with a semicolon separating each option. The above example can be written using `data-options` like so:
+
+```html
+<div data-accordion data-options="slideSpeed: 500; multiExpand: true;"></div>
+```
+
+Setting options with JavaScript involves passing an object into the constructor function, like this:
+
+```js
+var options = {multiExpand: true, allowAllClosed: false};
+var accordion = new Foundation.Accordion($('#some-accordion'), options);
+```
+
+It's worth noting that options passed to plugins via JavaScript take the highest precedence, and will overwrite any default values or options applied via the `data-some-option` tag. This is also how the `data-options="someOption:true; someOtherOption:false"` options are passed into constructor functions. So, if you were to say:
+```html
+<div data-accordion data-slide-speed="500" data-options="slideSpeed:250;">...</div>
+```
+your accordion element would have a slide speed of 250 milliseconds.
+
 ---
 
 ## Adding Plugins After Page Load

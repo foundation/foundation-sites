@@ -46,6 +46,11 @@
     // Expanded (full-width) row
     &.#{$expanded} {
       max-width: none;
+
+      .#{$row} {
+        margin-left: auto;
+        margin-right: auto;
+      }
     }
   }
 
@@ -103,13 +108,18 @@
     // Block grid
     @for $i from 1 through $block-grid-max {
       .#{$-zf-size}-up-#{$i} {
-        @include grid-layout($i);
+        @include grid-layout($i, ".#{$column}");
       }
     }
 
     // Responsive collapsing
     .#{$-zf-size}-#{$collapse} {
       > .#{$column} { @include grid-col-collapse; }
+
+      .#{$row} {
+        margin-left: 0;
+        margin-right: 0;
+      }
     }
 
     .#{$-zf-size}-#{$uncollapse} {

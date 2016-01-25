@@ -40,7 +40,7 @@ You can use Magellan with our Sticky plugin to create a persistent navigation he
 
 ```html
 <div class="large-3 columns" data-sticky-container>
-  <nav class="columns" data-sticky data-anchor="exampleId" data-sticky-on="large">
+  <nav class="columns sticky" data-sticky data-anchor="exampleId" data-sticky-on="large">
     <ul class="vertical menu" data-magellan>
       <li><a href="#first">First Arrival</a></li>
       <li><a href="#second">Second Arrival</a></li>

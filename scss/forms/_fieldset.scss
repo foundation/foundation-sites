@@ -45,6 +45,7 @@ $legend-padding: rem-calc(0 3) !default;
 
   legend {
     margin-bottom: $form-spacing * 0.5;
+    max-width: 100%;
   }
 
   .fieldset {

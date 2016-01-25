@@ -12,6 +12,7 @@
    * @class
    * @fires Accordion#init
    * @param {jQuery} element - jQuery object to make into an accordion.
+   * @param {Object} options - a plain object with settings to override the default options.
    */
   function Accordion(element, options){
     this.$element = element;
@@ -56,7 +57,7 @@
   Accordion.prototype._init = function() {
     this.$element.attr('role', 'tablist');
     this.$tabs = this.$element.children('li');
-    if (this.$tabs.length == 0) {
+    if (this.$tabs.length === 0) {
       this.$tabs = this.$element.children('[data-accordion-item]');
     }
     this.$tabs.each(function(idx, el){
@@ -162,7 +163,13 @@
       .parent().addClass('is-active');
 
     // Foundation.Move(_this.options.slideSpeed, $target, function(){
-      $target.slideDown(_this.options.slideSpeed);
+      $target.slideDown(_this.options.slideSpeed, function () {
+        /**
+         * Fires when the tab is done opening.
+         * @event Accordion#down
+         */
+        _this.$element.trigger('down.zf.accordion', [$target]);
+      });
     // });
 
     // if(!firstTime){
@@ -172,11 +179,6 @@
       'aria-expanded': true,
       'aria-selected': true
     });
-    /**
-     * Fires when the tab is done opening.
-     * @event Accordion#down
-     */
-    this.$element.trigger('down.zf.accordion', [$target]);
   };
 
   /**
@@ -195,7 +197,13 @@
     }
 
     // Foundation.Move(this.options.slideSpeed, $target, function(){
-      $target.slideUp(_this.options.slideSpeed);
+      $target.slideUp(_this.options.slideSpeed, function () {
+        /**
+         * Fires when the tab is done collapsing up.
+         * @event Accordion#up
+         */
+        _this.$element.trigger('up.zf.accordion', [$target]);
+      });
     // });
 
     $target.attr('aria-hidden', true)
@@ -205,12 +213,6 @@
      'aria-expanded': false,
      'aria-selected': false
    });
-
-    /**
-     * Fires when the tab is done collapsing up.
-     * @event Accordion#up
-     */
-    this.$element.trigger('up.zf.accordion', [$target]);
   };
 
   /**

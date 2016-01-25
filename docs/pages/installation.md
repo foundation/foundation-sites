@@ -31,6 +31,52 @@ foundation new
 
 ---
 
+## Manual Setup
+
+### Basic Template
+
+To manually set up the basic template, first download it with Git:
+
+```bash
+git clone https://github.com/zurb/foundation-sites-template projectname
+```
+
+Then open the folder in your command line, and install the needed dependencies:
+
+```bash
+cd projectname
+npm install
+bower install
+```
+
+Finally, run `npm start` to run the Sass compiler. It will re-run every time you save a Sass file.
+
+### ZURB Template
+
+To manually set up the ZURB template, first download it with Git:
+
+```bash
+git clone https://github.com/zurb/foundation-zurb-template projectname
+```
+
+Then open the folder in your command line, and install the needed dependencies:
+
+```bash
+cd projectname
+npm install
+bower install
+```
+
+Finally, run `npm start` to run Gulp. Your finished site will be created in a folder called `dist`, viewable at this URL:
+
+```
+http://localhost:8000
+```
+
+To create compressed, production-ready assets, run `npm run build`.
+
+---
+
 ## CSS Download
 
 If you aren't into Sass, we have a starter template with compiled CSS and JavaScript, as well as a starting `index.html` file for you to hack on. Just unzip and get coding!
@@ -39,16 +85,46 @@ If you aren't into Sass, we have a starter template with compiled CSS and JavaSc
 
 ---
 
+## HTML Starter Template
+Start with this HTML template and adapt it to your needs.
+
+```html
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Foundation Starter Template</title>
+    <link rel="stylesheet" href="css/foundation.css" />
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+    
+    <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/vendor/what-input.min.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+
+  </body>
+</html>
+
+```
+
+---
+
 ## CDN Links
 
-The folks at [jsDelivr](https://www.jsdelivr.com) host the compressed Foundation CSS and JavaScript for us. Just drop one of these `<script>` tags into you're HTML and you're set:
+The folks at [jsDelivr](https://www.jsdelivr.com) host the compressed Foundation CSS and JavaScript for us. Just drop one of these `<script>` tags into your HTML and you're set:
 
 ```html
 <!-- Compressed CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.1.0/foundation.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.1.2/foundation.min.css">
 
 <!-- Compressed JavaScript -->
-<script src="https://cdn.jsdelivr.net/foundation/6.1.0/foundation.min.js"></script>
+<script src="https://cdn.jsdelivr.net/foundation/6.1.2/foundation.min.js"></script>
 ```
 
 ---

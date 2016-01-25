@@ -165,6 +165,14 @@ The functionality of the `breakpoint()` mixin comes from an internal function, a
 }
 ```
 
+This can be used to combine multiple media queries together.
+
+```scss
+@media screen and #{breakpoint(medium)} and #{breakpoint(xlarge down)} {
+  // Medium to extra large styles
+}
+```
+
 ---
 
 ## JavaScript

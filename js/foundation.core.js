@@ -1,7 +1,7 @@
 !function($) {
 "use strict";
 
-var FOUNDATION_VERSION = '6.1.0';
+var FOUNDATION_VERSION = '6.1.2';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
@@ -17,10 +17,6 @@ var Foundation = {
    * Stores generated unique ids for plugin instances
    */
   _uuids: [],
-  /**
-   * Stores currently active plugins.
-   */
-  _activePlugins: {},
 
   /**
    * Returns a boolean for RTL support
@@ -45,10 +41,11 @@ var Foundation = {
   },
   /**
    * @function
-   * Creates a pointer to an instance of a Plugin within the Foundation._activePlugins object.
-   * Sets the `[data-pluginName="uniqueIdHere"]`, allowing easy access to any plugin's internal methods.
+   * Populates the _uuids array with pointers to each individual plugin instance.
+   * Adds the `zfPlugin` data-attribute to programmatically created plugins to allow use of $(selector).foundation(method) calls.
    * Also fires the initialization event for each plugin, consolidating repeditive code.
    * @param {Object} plugin - an instance of a plugin, usually `this` in context.
+   * @param {String} name - the name of the plugin, passed as a camelCased string.
    * @fires Plugin#init
    */
   registerPlugin: function(plugin, name){
@@ -69,7 +66,8 @@ var Foundation = {
   },
   /**
    * @function
-   * Removes the pointer for an instance of a Plugin from the Foundation._activePlugins obj.
+   * Removes the plugins uuid from the _uuids array.
+   * Removes the zfPlugin data attribute, as well as the data-plugin-name attribute.
    * Also fires the destroyed event for the plugin, consolidating repeditive code.
    * @param {Object} plugin - an instance of a plugin, usually `this` in context.
    * @fires Plugin#destroyed

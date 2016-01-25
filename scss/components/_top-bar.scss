@@ -14,9 +14,9 @@ $topbar-padding: 0.5rem !default;
 /// @type Color
 $topbar-background: $light-gray !default;
 
-/// Color for links inside a top bar menu.
-/// @type Color
-$topbar-link-color: $primary-color !default;
+/// Spacing for the top bar title.
+/// @type Number
+$topbar-title-spacing: 1rem !default;
 
 /// Width of `<input>` elements inside the top bar.
 /// @type Number
@@ -41,15 +41,12 @@ $topbar-input-width: 200px !default;
     background-color: $topbar-background;
   }
 
-  a {
-    color: $topbar-link-color;
-  }
-
   input {
     width: $topbar-input-width;
     margin-#{$global-right}: 1rem;
   }
 
+  // scss-lint:disable QualifyingElement
   input.button {
     width: auto;
   }
@@ -61,6 +58,7 @@ $topbar-input-width: 200px !default;
     flex-wrap: wrap;
 
     // Sub-sections
+    .top-bar-left,
     .top-bar-right {
       flex: 0 0 100%;
       max-width: 100%;
@@ -68,11 +66,8 @@ $topbar-input-width: 200px !default;
   }
   @else {
     // Sub-sections
+    .top-bar-left,
     .top-bar-right {
-      width: 100%;
-    }
-
-    .top-bar-left {
       width: 100%;
     }
   }
@@ -100,16 +95,26 @@ $topbar-input-width: 200px !default;
 
   // Sub-sections
   @if $global-flexbox {
+    .top-bar-title {
+      flex: 0 0 auto;
+      margin-right: $topbar-title-spacing;
+    }
+
     .top-bar-left,
     .top-bar-right {
       flex: 0 0 auto;
     }
   }
   @else {
+    .top-bar-title {
+      float: left;
+      margin-right: $topbar-title-spacing;
+    }
+
     .top-bar-left {
       float: left;
     }
-    
+
     .top-bar-right {
       float: right;
     }

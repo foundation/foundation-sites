@@ -6,6 +6,14 @@
 /// @group tooltip
 ////
 
+/// Default font weight of the defined term.
+/// @type Keyword | Number
+$has-tip-font-weight: $global-weight-bold !default;
+
+/// Default border bottom of the defined term.
+/// @type List
+$has-tip-border-bottom: dotted 1px $dark-gray !default;
+
 /// Default color of the tooltip background.
 /// @type Color
 $tooltip-background-color: $black !default;
@@ -39,8 +47,8 @@ $tooltip-pip-offset: 1.25rem !default;
 $tooltip-radius: $global-radius !default;
 
 @mixin has-tip {
-  border-bottom: dotted 1px $dark-gray;
-  font-weight: bold;
+  border-bottom: $has-tip-border-bottom;
+  font-weight: $has-tip-font-weight;
   position: relative;
   display: inline-block;
   cursor: help;

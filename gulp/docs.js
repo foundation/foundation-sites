@@ -32,7 +32,8 @@ gulp.task('docs', function() {
     .pipe(supercollider.init())
     .pipe(panini(PANINI_CONFIG))
     .pipe(cacheBust())
-    .pipe(gulp.dest('_build'));
+    .pipe(gulp.dest('_build'))
+    .on('finish', buildSearch);
 });
 
 gulp.task('docs:all', function() {
@@ -42,12 +43,13 @@ gulp.task('docs:all', function() {
     .pipe(supercollider.init())
     .pipe(panini(PANINI_CONFIG))
     .pipe(cacheBust())
-    .pipe(gulp.dest('_build'));
+    .pipe(gulp.dest('_build'))
+    .on('finish', buildSearch);
 });
 
-gulp.task('docs:search', ['docs'], function(cb) {
-  foundationDocs.buildSearch(supercollider.tree, cb);
-});
+function buildSearch() {
+  foundationDocs.buildSearch(supercollider.tree);
+}
 
 gulp.task('docs:debug', ['docs'], function(cb) {
   var output = JSON.stringify(supercollider.tree, null, '  ');

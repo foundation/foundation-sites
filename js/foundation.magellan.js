@@ -114,8 +114,12 @@
           duration: _this.options.animationDuration,
           easing:   _this.options.animationEasing
         };
-
     $(window).one('load', function(){
+      if(_this.options.deepLinking){
+        if(location.hash){
+          _this.scrollToLoc(location.hash);
+        }
+      }
       _this.calcPoints();
       _this._updateActive();
     });
@@ -125,16 +129,26 @@
       'scrollme.zf.trigger': this._updateActive.bind(this)
     }).on('click.zf.magellan', 'a[href^="#"]', function(e) {
         e.preventDefault();
-        var arrival   = this.getAttribute('href'),
-            scrollPos = $(arrival).offset().top - _this.options.threshold / 2 - _this.options.barOffset;
+        var arrival   = this.getAttribute('href');
+        _this.scrollToLoc(arrival);
+    });
+  };
+  /**
+   * Function to scroll to a given location on the page.
+   * @param {String} loc - a properly formatted jQuery id selector.
+   * @example '#foo'
+   * @function
+   */
+  Magellan.prototype.scrollToLoc = function(loc){
+    var scrollPos = $(loc).offset().top - this.options.threshold / 2 - this.options.barOffset;
 
-        // requestAnimationFrame is disabled for this plugin currently
-        // Foundation.Move(_this.options.animationDuration, $body, function(){
-          $body.stop(true).animate({
-            scrollTop: scrollPos
-          }, opts);
-        });
-      // });
+    $(document.body).stop(true).animate({
+        scrollTop: scrollPos
+      },
+      {
+        duration: this.options.animationDuration,
+        easiing: this.options.animationEasing
+     });
   };
   /**
    * Calls necessary functions to update Magellan upon DOM change

@@ -6,7 +6,7 @@
 /// @group grid
 ////
 
-/// Collapse the gutters on a column by removing the padding.
+/// Collapse the gutters on a column by removing the padding. **Note:** only use this mixin within a breakpoint. To collapse a column's gutters on all screen sizes, use the `$gutter` parameter of the `grid-column()` mixin instead.
 @mixin grid-column-collapse {
   padding-left: 0;
   padding-right: 0;

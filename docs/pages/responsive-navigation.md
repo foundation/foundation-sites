@@ -25,12 +25,12 @@ For example, a drilldown menu works well on mobile, but on larger screens, you m
 
 ```html_example
 <ul class="vertical menu" data-responsive-menu="drilldown medium-dropdown" style="width: 300px;">
-  <li class="has-submenu">
+  <li>
     <a href="#">Item 1</a>
-    <ul class="vertical submenu menu" data-submenu id="m2">
-      <li class="has-submenu">
+    <ul class="vertical menu">
+      <li>
         <a href="#">Item 1A</a>
-        <ul class="vertical submenu menu" data-submenu id="m3">
+        <ul class="vertical menu">
           <li><a href="#">Item 1A</a></li>
           <li><a href="#">Item 1B</a></li>
           <li><a href="#">Item 1C</a></li>
@@ -41,16 +41,16 @@ For example, a drilldown menu works well on mobile, but on larger screens, you m
       <li><a href="#">Item 1B</a></li>
     </ul>
   </li>
-  <li class="has-submenu">
+  <li>
     <a href="#">Item 2</a>
-    <ul class="vertical submenu menu" data-submenu>
+    <ul class="vertical menu">
       <li><a href="#">Item 2A</a></li>
       <li><a href="#">Item 2B</a></li>
     </ul>
   </li>
-  <li class="has-submenu">
+  <li>
     <a href="#">Item 3</a>
-    <ul class="vertical submenu menu" data-submenu>
+    <ul class="vertical menu">
       <li><a href="#">Item 3A</a></li>
       <li><a href="#">Item 3B</a></li>
     </ul>
@@ -62,11 +62,11 @@ For example, a drilldown menu works well on mobile, but on larger screens, you m
 
 ## Responsive Toggle
 
-In Foundation 5, the top bar combined this menu toggling concept into one plugin. We now have a separate, optional component you can use in tandem with the responsive plugin. It's called the tab bar, and it allows you to quickly setup a menu toggle on mobile. The tab bar hides itself on larger screens.
+In Foundation 5, the top bar combined this menu toggling concept into one plugin. We now have a separate, optional component you can use in tandem with the responsive plugin. It's called the title bar, and it allows you to quickly setup a menu toggle on mobile. The title bar hides itself on larger screens.
 
-To set it up, first give your menu a unique ID. (You don't even need to use Menu! Any element will work.) Next, add a tab bar with the class `.title-bar` and the attribute `data-responsive-toggle`. The value of `data-responsive-toggle` should be the ID of the menu you're toggling.
+To set it up, first give your menu a unique ID. (You don't even need to use Menu! Any element will work.) Next, add a title bar with the class `.title-bar` and the attribute `data-responsive-toggle`. The value of `data-responsive-toggle` should be the ID of the menu you're toggling.
 
-By default, the tab bar will be visible on small screens, and the Menu hides. At the medium breakpoint, the tab bar disappears, and the menu is always visible. This breakpoint can be changed with the `data-hidefor` attribute in HTML, or the `hideFor` setting in JavaScript.
+By default, the title bar will be visible on small screens, and the Menu hides. At the medium breakpoint, the title bar disappears, and the menu is always visible. This breakpoint can be changed with the `data-hidefor` attribute in HTML, or the `hideFor` setting in JavaScript.
 
 <div class="primary callout show-for-medium">
   <p>Scale your browser down to see the toggle happen.</p>
@@ -82,9 +82,9 @@ By default, the tab bar will be visible on small screens, and the Menu hides. At
   <div class="top-bar-left">
     <ul class="dropdown menu" data-dropdown-menu>
       <li class="menu-text">Site Title</li>
-      <li class="has-submenu">
+      <li>
         <a href="#">One</a>
-        <ul class="submenu menu vertical" data-submenu>
+        <ul class="menu vertical">
           <li><a href="#">One</a></li>
           <li><a href="#">Two</a></li>
           <li><a href="#">Three</a></li>

@@ -57,14 +57,13 @@
   $columns: $grid-column-count,
   $gutter: $grid-column-gutter
 ) {
-  // Core properties
   @include grid-column-size($columns);
   float: $global-left;
 
   // Gutters
   @each $breakpoint, $value in $gutter {
     $padding: rem-calc($value) / 2;
-    
+
     @include breakpoint($breakpoint) {
       padding-left: $padding;
       padding-right: $padding;

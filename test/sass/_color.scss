@@ -1,40 +1,47 @@
-@import 'util/color';
+@import "true";
 
-@include describe('Foreground') {
-  @include it('returns black if the input color is light') {
-    $actual: foreground($white);
-    $expected: $black;
+@import '../../scss/global';
+@import '../../scss/util/color';
 
-    @include should(expect($actual), to(be($expected)));
+@include test-module('Color') {
+  
+  @include test('Foreground (Black) [function]') {
+    $test: foreground($white);
+    $expect: $black;
+
+    @include assert-equal($test, $expect,
+      'Returns black if the input color is light');
   }
 
-  @include it('returns white if the input color is dark') {
-    $actual: foreground($black);
-    $expected: $white;
+  @include test('Foreground (White) [function]') {
+    $test: foreground($black);
+    $expect: $white;
 
-    @include should(expect($actual), to(be($expected)));
+    @include assert-equal($test, $expect,
+      'Returns white if the input color is dark');
   }
-}
 
-@include describe('Smart Scale') {
-  @include it('darkens a light color') {
+  @include test('Smart Scale (Darken) [function]') {
     $color: $white;
     $scale: 5%;
     $threshold: 60%;
 
-    $actual: smart-scale($color, $scale, $threshold);
-    $expected: scale-color($color, $lightness: -$scale);
+    $test: smart-scale($color, $scale, $threshold);
+    $expect: scale-color($color, $lightness: -$scale);
 
-    @include should(expect($actual), to(be($expected)));
+    @include assert-equal($test, $expect,
+      'Darkens a light color');
   }
-  @include it('lightens a dark color') {
+
+  @include test('Smart Scale (Lighten) [function]') {
     $color: $black;
     $scale: 5%;
     $threshold: 60%;
 
-    $actual: smart-scale($color, $scale, $threshold);
-    $expected: scale-color($color, $lightness: $scale);
+    $test: smart-scale($color, $scale, $threshold);
+    $expect: scale-color($color, $lightness: $scale);
 
-    @include should(expect($actual), to(be($expected)));
+    @include assert-equal($test, $expect,
+      'Lightens a dark color');
   }
 }

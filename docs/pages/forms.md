@@ -115,9 +115,9 @@ To encourage their use as an accessibility tool, the `<fieldset>` element is no 
 ```html_example
 <fieldset class="fieldset">
   <legend>Check these out</legend>
-  <input id="checkbox1" type="checkbox"><label for="checkbox1">Checkbox 1</label>
-  <input id="checkbox2" type="checkbox"><label for="checkbox2">Checkbox 2</label>
-  <input id="checkbox3" type="checkbox"><label for="checkbox3">Checkbox 3</label>
+  <input id="checkbox12" type="checkbox"><label for="checkbox12">Checkbox 1</label>
+  <input id="checkbox22" type="checkbox"><label for="checkbox22">Checkbox 2</label>
+  <input id="checkbox32" type="checkbox"><label for="checkbox32">Checkbox 3</label>
 </fieldset>
 ```
 
@@ -218,6 +218,17 @@ To attach extra text or controls to the left or right of an input field, wrap th
     <input type="submit" class="button" value="Submit">
   </div>
 </div>
+```
+
+---
+
+## File Upload Button
+
+Use `<input type="file">` to create a file upload button. For security reasons, most browsers don't let you style file inputs. To work around that, we can style a form label as a button, and point it to the `<input>`. To properly mask the input, the `.show-for-sr` class is added.
+
+```html_example
+<label for="exampleFileUpload" class="button">Upload File</label>
+<input type="file" id="exampleFileUpload" class="show-for-sr">
 ```
 
 ---

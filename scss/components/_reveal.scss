@@ -63,7 +63,7 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   z-index: $reveal-zindex + 1;
   padding: $reveal-padding;
   border: $reveal-border;
-  margin: 100px auto 0;
+  margin: $reveal-offset auto 0;
   background-color: $reveal-background;
   border-radius: $reveal-radius;
 
@@ -112,6 +112,8 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
 }
 
 @mixin foundation-reveal {
+  // [TODO] Is this necessary?
+  // scss-lint:disable QualifyingElement
   body.is-reveal-open {
     overflow: hidden;
   }
@@ -128,11 +130,6 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
     position: absolute;
     overflow-y: auto;
 
-    // Remove padding
-    &.collapse {
-      padding: 0;
-    }
-
     // Placeholder selector for medium-and-up modals
     // Prevents duplicate CSS when defining multiple Reveal sizes
     @include breakpoint(medium) {
@@ -141,6 +138,11 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
         right: auto;
         margin: 0 auto;
       }
+    }
+
+    // Remove padding
+    &.collapse {
+      padding: 0;
     }
 
     // Sizing classes

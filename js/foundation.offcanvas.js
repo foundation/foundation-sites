@@ -1,6 +1,7 @@
 /**
  * OffCanvas module.
  * @module foundation.offcanvas
+ * @requires foundation.util.mediaQuery
  * @requires foundation.util.triggers
  * @requires foundation.util.motion
  */
@@ -55,7 +56,7 @@ OffCanvas.defaults = {
    */
   // isSticky: false,
   /**
-   * Allow the offcanvas to remain open for certain breakpoints. Can be used with `isSticky`.
+   * Allow the offcanvas to remain open for certain breakpoints.
    * @option
    * @example false
    */
@@ -140,8 +141,7 @@ OffCanvas.prototype._events = function() {
     'keydown.zf.offcanvas': this._handleKeyboard.bind(this)
   });
 
-  if (this.$exiter.length) {
-    var _this = this;
+  if (this.options.closeOnClick && this.$exiter.length) {
     this.$exiter.on({'click.zf.offcanvas': this.close.bind(this)});
   }
 };
@@ -235,7 +235,9 @@ OffCanvas.prototype.open = function(event, trigger) {
   this.$element.attr('aria-hidden', 'false')
       .trigger('opened.zf.offcanvas');
 
-
+  if(this.options.closeOnClick){
+    this.$exiter.addClass('is-visible');
+  }
   if(trigger){
     this.$lastTrigger = trigger.attr('aria-expanded', 'true');
   }
@@ -318,6 +320,9 @@ OffCanvas.prototype.close = function(cb) {
   //     $(window).off('scroll.zf.offcanvas');
   //   }, this.options.transitionTime);
   // }
+  if(this.options.closeOnClick){
+    this.$exiter.removeClass('is-visible');
+  }
 
   this.$lastTrigger.attr('aria-expanded', 'false');
   if(this.options.trapFocus){

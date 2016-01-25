@@ -87,4 +87,8 @@ $titlebar-icon-spacing: 0.25rem !default;
     @warn 'In Foundation 6.2, a new component mixin was added called "foundation-menu-icon". Add "@import foundation-menu-icon" to the main Sass file of your project to remove this warning.';
     @include foundation-menu-icon;
   }
+
+  .menu-icon.dark {
+    @include hamburger;
+  }
 }

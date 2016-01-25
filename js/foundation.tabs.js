@@ -88,9 +88,9 @@
       var $elem = $(this),
           $link = $elem.find('a'),
           isActive = $elem.hasClass('is-active'),
-          hash = $link.attr('href').slice(1),
-          linkId = hash + '-label',
-          $tabContent = $(hash);
+          hash = $link[0].hash.slice(1),
+          linkId = $link[0].id ? $link[0].id : hash + '-label',
+          $tabContent = $('#' + hash);
 
       $elem.attr({'role': 'presentation'});
 
@@ -209,14 +209,13 @@
    */
   Tabs.prototype._handleTabChange = function($target){
     var $tabLink = $target.find('[role="tab"]'),
-        hash = $tabLink.attr('href'),
+        hash = $tabLink[0].hash,
         $targetContent = $(hash),
-
         $oldTab = this.$element.find('.' + this.options.linkClass + '.is-active')
                   .removeClass('is-active').find('[role="tab"]')
-                  .attr({'aria-selected': 'false'}).attr('href');
+                  .attr({'aria-selected': 'false'}).attr('aria-controls');
 
-    $($oldTab).removeClass('is-active').attr({'aria-hidden': 'true'});
+    $('#'+$oldTab).removeClass('is-active').attr({'aria-hidden': 'true'});
 
     $target.addClass('is-active');
 

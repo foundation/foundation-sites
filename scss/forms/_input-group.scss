@@ -60,6 +60,7 @@ $input-prefix-padding: 1rem !default;
     background: $input-prefix-background;
     color: $input-prefix-color;
     border: $input-prefix-border;
+    white-space: nowrap;
 
     @if $global-flexbox {
       flex: 0 0 auto;

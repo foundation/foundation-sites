@@ -114,7 +114,7 @@
     this.isVert = this.$element.hasClass(this.options.verticalClass);
     this.$tabs.find('ul.is-dropdown-submenu').addClass(this.options.verticalClass);
 
-    if(this.$element.hasClass(this.options.rightClass) || this.options.alignment === 'right'){
+    if(this.$element.hasClass(this.options.rightClass) || this.options.alignment === 'right' || Foundation.rtl()){
       this.options.alignment = 'right';
       subs.addClass('is-left-arrow opens-left');
     }else{
@@ -135,8 +135,7 @@
   DropdownMenu.prototype._events = function(){
     var _this = this,
         hasTouch = 'ontouchstart' in window || (typeof window.ontouchstart !== 'undefined'),
-        parClass = 'is-dropdown-submenu-parent',
-        delay;
+        parClass = 'is-dropdown-submenu-parent';
 
     if(this.options.clickOpen || hasTouch){
       this.$menuItems.on('click.zf.dropdownmenu touchstart.zf.dropdownmenu', function(e){
@@ -170,8 +169,8 @@
             hasSub = $elem.hasClass(parClass);
 
         if(hasSub){
-          clearTimeout(delay);
-          delay = setTimeout(function(){
+          clearTimeout(_this.delay);
+          _this.delay = setTimeout(function(){
             _this._show($elem.children('.is-dropdown-submenu'));
           }, _this.options.hoverDelay);
         }
@@ -181,8 +180,8 @@
         if(hasSub && _this.options.autoclose){
           if($elem.attr('data-is-click') === 'true' && _this.options.clickOpen){ return false; }
 
-          // clearTimeout(delay);
-          delay = setTimeout(function(){
+          clearTimeout(_this.delay);
+          _this.delay = setTimeout(function(){
             _this._hide($elem);
           }, _this.options.closingTime);
         }
@@ -310,7 +309,7 @@
     this._hide($sibs, idx);
     $sub.css('visibility', 'hidden').addClass('js-dropdown-active').attr({'aria-hidden': false})
         .parent('li.is-dropdown-submenu-parent').addClass('is-active')
-        .attr({'aria-selected': true, 'aria-expanded': true});
+        .attr({'aria-expanded': true});
     var clear = Foundation.Box.ImNotTouchingYou($sub, null, true);
     if(!clear){
       var oldClass = this.options.alignment === 'left' ? '-right' : '-left',
@@ -353,7 +352,6 @@
 
     if(somethingToClose){
       $toClose.find('li.is-active').add($toClose).attr({
-        'aria-selected': false,
         'aria-expanded': false,
         'data-is-click': false
       }).removeClass('is-active');
@@ -383,6 +381,7 @@
   DropdownMenu.prototype.destroy = function(){
     this.$menuItems.off('.zf.dropdownmenu').removeAttr('data-is-click')
         .removeClass('is-right-arrow is-left-arrow is-down-arrow opens-right opens-left opens-inner');
+    $(document.body).off('.zf.dropdownmenu');
     Foundation.Nest.Burn(this.$element, 'dropdown');
     Foundation.unregisterPlugin(this);
   };

@@ -17,20 +17,25 @@
   width: 0%;
   height: 100%;
   background-color: $progress-meter-background;
-  border-radius: $global-radius;
+
+  @if has-value($progress-radius) {
+    border-radius: $global-radius;
+  }
 }
 
 /// Adds styles for text in the progress meter.
 @mixin progress-meter-text {
+  @include absolute-center;
   position: absolute;
-  top: 50%;
-  #{$global-left}: 50%;
-  transform: translate(-50%, -50%);
   margin: 0;
   font-size: 0.75rem;
   font-weight: bold;
   color: $white;
   white-space: nowrap;
+
+  @if has-value($progress-radius) {
+    border-radius: $progress-radius;
+  }
 }
 
 @mixin foundation-progress-bar {
@@ -47,13 +52,13 @@
     }
   }
 
-  // Progress bar meter
+  // Inner meter
   .progress-meter {
     @include progress-meter;
+  }
 
-    // Progress bar meter text
-    .progress-meter-text {
-      @include progress-meter-text;
-    }
+  // Inner meter text
+  .progress-meter-text {
+    @include progress-meter-text;
   }
 }

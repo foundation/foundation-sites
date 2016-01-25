@@ -3,13 +3,15 @@
  * @module foundation.dropdown
  * @requires foundation.util.keyboard
  * @requires foundation.util.box
+ * @requires foundation.util.triggers
  */
 !function($, Foundation){
   'use strict';
   /**
    * Creates a new instance of a dropdown.
    * @class
-   * @param {jQuery} element - jQuery object to make into an accordion menu.
+   * @param {jQuery} element - jQuery object to make into a dropdown.
+   *        Object should be of the dropdown panel, rather than its anchor.
    * @param {Object} options - Overrides to the default plugin settings.
    */
   function Dropdown(element, options){
@@ -79,7 +81,7 @@
     /**
      * Allows a click on the body to close the dropdown.
      * @option
-     * @example true
+     * @example false
      */
     closeOnClick: false
   };
@@ -118,7 +120,7 @@
    * @returns {String} position - string value of a position class.
    */
   Dropdown.prototype.getPositionClass = function(){
-    var position = this.$element[0].className.match(/(top|left|right)/g);
+    var position = this.$element[0].className.match(/\b(top|left|right)\b/g);
         position = position ? position[0] : '';
     return position;
   };
