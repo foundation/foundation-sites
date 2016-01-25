@@ -66,7 +66,7 @@ In Foundation 5, the top bar combined this menu toggling concept into one plugin
 
 To set it up, first give your menu a unique ID. (You don't even need to use Menu! Any element will work.) Next, add a title bar with the class `.title-bar` and the attribute `data-responsive-toggle`. The value of `data-responsive-toggle` should be the ID of the menu you're toggling.
 
-By default, the title bar will be visible on small screens, and the Menu hides. At the medium breakpoint, the title bar disappears, and the menu is always visible. This breakpoint can be changed with the `data-hidefor` attribute in HTML, or the `hideFor` setting in JavaScript.
+By default, the title bar will be visible on small screens, and the Menu hides. At the medium breakpoint, the title bar disappears, and the menu is always visible. This breakpoint can be changed with the `data-hide-for` attribute in HTML, or the `hideFor` setting in JavaScript.
 
 <div class="primary callout show-for-medium">
   <p>Scale your browser down to see the toggle happen.</p>
