@@ -140,7 +140,7 @@
    * @function
    */
   Magellan.prototype.scrollToLoc = function(loc){
-    var scrollPos = $(loc).offset().top - this.options.threshold / 2 - this.options.barOffset;
+    var scrollPos = Math.round($(loc).offset().top - this.options.threshold / 2 - this.options.barOffset);
 
     $('html, body').stop(true).animate({
         scrollTop: scrollPos
