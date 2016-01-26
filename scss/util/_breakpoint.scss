@@ -101,7 +101,9 @@ $breakpoint-classes: (small medium large) !default;
       // Skip media query creation if input value is exactly "0 down",
       // unless the function was called as "small down", in which case it's just "small only"
       @if $named or $bp > 0em {
-        $str: $str + '(max-width: #{$max})';
+        @if $max != null {
+          $str: $str + '(max-width: #{$max})';
+        }
       }
     }
 
