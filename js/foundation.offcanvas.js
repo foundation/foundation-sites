@@ -304,7 +304,7 @@ OffCanvas.prototype.close = function(cb) {
   var _this = this;
 
   //  Foundation.Move(this.options.transitionTime, this.$element, function(){
-  $('[data-off-canvas-wrapper]').removeClass('is-off-canvas-open is-open-' + _this.options.position);
+  $('[data-off-canvas-wrapper]').removeClass(`is-off-canvas-open is-open-${_this.options.position}`);
   _this.$element.removeClass('is-open');
     // Foundation._reflow();
   // });

@@ -127,7 +127,7 @@
     this.id = this.$element.attr('id');
     this.isActive = false;
 
-    this.$anchor = $('[data-open="' + this.id + '"]').length ? $('[data-open="' + this.id + '"]') : $('[data-toggle="' + this.id + '"]');
+    this.$anchor = $(`[data-open="${this.id}"]`).length ? $(`[data-open="${this.id}"]`) : $(`[data-toggle="${this.id}"]`);
 
     if(this.$anchor.length){
       var anchorId = this.$anchor[0].id || Foundation.GetYoDigits(6, 'reveal');
@@ -158,7 +158,7 @@
     });
 
     this._events();
-    if(this.options.deepLink && window.location.hash === ( '#' + this.id)){
+    if(this.options.deepLink && window.location.hash === ( `#${this.id}`)){
       $(window).one('load.zf.reveal', this.open.bind(this));
     }
   };
@@ -213,7 +213,7 @@
       this.$overlay.off('.zf.reveal').on('click.zf.reveal', this.close.bind(this));
     }
     if(this.options.deepLink){
-      $(window).on('popstate.zf.reveal:' + this.id, this._handleState.bind(this));
+      $(window).on(`popstate.zf.reveal:${this.id}`, this._handleState.bind(this));
     }
   };
   /**
@@ -221,7 +221,7 @@
    * @private
    */
   Reveal.prototype._handleState = function(e){
-    if(window.location.hash === ( '#' + this.id) && !this.isActive){ this.open(); }
+    if(window.location.hash === ( `#${this.id}`) && !this.isActive){ this.open(); }
     else{ this.close(); }
   };
   /**
@@ -271,7 +271,7 @@
    */
   Reveal.prototype.open = function(){
     if(this.options.deepLink){
-      var hash = '#' + this.id;
+      var hash = `#${this.id}`;
 
       if(window.history.pushState){
         window.history.pushState(null, null, hash);
@@ -496,7 +496,7 @@
     }
     this.$element.hide().off();
     this.$anchor.off('.zf');
-    $(window).off('.zf.reveal:' + this.id);
+    $(window).off(`.zf.reveal:${this.id}`);
 
     Foundation.unregisterPlugin(this);
   };

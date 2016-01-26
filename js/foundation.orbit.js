@@ -149,8 +149,8 @@
   * @private
   */
   Orbit.prototype._init = function(){
-    this.$wrapper = this.$element.find('.' + this.options.containerClass);
-    this.$slides = this.$element.find('.' + this.options.slideClass);
+    this.$wrapper = this.$element.find(`.${this.options.containerClass}`);
+    this.$slides = this.$element.find(`.${this.options.slideClass}`);
     var $images = this.$element.find('img'),
     initActive = this.$slides.filter('.is-active');
 
@@ -185,7 +185,7 @@
   * @private
   */
   Orbit.prototype._loadBullets = function(){
-    this.$bullets = this.$element.find('.' + this.options.boxOfBullets).find('button');
+    this.$bullets = this.$element.find(`.${this.options.boxOfBullets}`).find('button');
   };
   /**
   * Sets a `timer` object on the orbit, and starts the counter for the next slide.
@@ -291,7 +291,7 @@
           }
 
           if(this.options.navButtons){
-            var $controls = this.$element.find('.' + this.options.nextClass + ', .' + this.options.prevClass);
+            var $controls = this.$element.find(`.${this.options.nextClass}, .${this.options.prevClass}`);
             $controls.attr('tabindex', 0)
             //also need to handle enter/return and spacebar key presses
             .on('click.zf.orbit touchend.zf.orbit', function(){
@@ -350,9 +350,9 @@
 
         if(!chosenSlide){//most of the time, this will be auto played or clicked from the navButtons.
           $newSlide = isLTR ? //if wrapping enabled, check to see if there is a `next` or `prev` sibling, if not, select the first or last slide to fill in. if wrapping not enabled, attempt to select `next` or `prev`, if there's nothing there, the function will kick out on next step. CRAZY NESTED TERNARIES!!!!!
-          (this.options.infiniteWrap ? $curSlide.next('.' + this.options.slideClass).length ? $curSlide.next('.' + this.options.slideClass) : $firstSlide : $curSlide.next('.' + this.options.slideClass))//pick next slide if moving left to right
+          (this.options.infiniteWrap ? $curSlide.next(`.${this.options.slideClass}`).length ? $curSlide.next(`.${this.options.slideClass}`) : $firstSlide : $curSlide.next(`.${this.options.slideClass}`))//pick next slide if moving left to right
           :
-          (this.options.infiniteWrap ? $curSlide.prev('.' + this.options.slideClass).length ? $curSlide.prev('.' + this.options.slideClass) : $lastSlide : $curSlide.prev('.' + this.options.slideClass));//pick prev slide if moving right to left
+          (this.options.infiniteWrap ? $curSlide.prev(`.${this.options.slideClass}`).length ? $curSlide.prev(`.${this.options.slideClass}`) : $lastSlide : $curSlide.prev(`.${this.options.slideClass}`));//pick prev slide if moving right to left
         }else{
           $newSlide = chosenSlide;
         }
@@ -365,7 +365,7 @@
 
             Foundation.Motion.animateIn(
               $newSlide.addClass('is-active').css({'position': 'absolute', 'top': 0}),
-              this.options['animInFrom' + dirIn],
+              this.options[`animInFrom${dirIn}`],
               function(){
                 $newSlide.css({'position': 'relative', 'display': 'block'})
                 .attr('aria-live', 'polite');
@@ -373,7 +373,7 @@
 
               Foundation.Motion.animateOut(
                 $curSlide.removeClass('is-active'),
-                this.options['animOutTo' + dirOut],
+                this.options[`animOutTo${dirOut}`],
                 function(){
                   $curSlide.removeAttr('aria-live');
                   if(_this.options.autoPlay && !_this.timer.isPaused){
@@ -402,7 +402,7 @@
           * @param {Number} idx - the index of the current slide.
           */
           Orbit.prototype._updateBullets = function(idx){
-            var $oldBullet = this.$element.find('.' + this.options.boxOfBullets)
+            var $oldBullet = this.$element.find(`.${this.options.boxOfBullets}`)
             .find('.is-active').removeClass('is-active').blur(),
             span = $oldBullet.find('span:last').detach(),
             $newBullet = this.$bullets.eq(idx).addClass('is-active').append(span);

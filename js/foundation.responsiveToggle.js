@@ -44,7 +44,7 @@ ResponsiveToggle.prototype._init = function() {
     console.error('Your tab bar needs an ID of a Menu as the value of data-tab-bar.');
   }
 
-  this.$targetMenu = $('#'+targetID);
+  this.$targetMenu = $(`#${targetID}`);
   this.$toggler = this.$element.find('[data-toggle]');
 
   this._update();
