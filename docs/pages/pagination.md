@@ -14,7 +14,7 @@ Extra screen reader-only text should also be added to a pagination element. In t
 
 ```html_example
 <ul class="pagination" role="navigation" aria-label="Pagination">
-  <li class="pagination-previous disabled">Previous <span class="show-for-sr">page</span></li>
+  <li class="pagination-previous disabled"><a href="#" aria-label="Previous Page">Previous <span class="show-for-sr">page</span></a></li>
   <li class="current"><span class="show-for-sr">You're on page</span> 1</li>
   <li><a href="#" aria-label="Page 2">2</a></li>
   <li><a href="#" aria-label="Page 3">3</a></li>
