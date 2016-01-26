@@ -50,7 +50,7 @@ function animate(isIn, element, animation, cb) {
   // Resets transitions and removes motion-specific classes
   function reset() {
     element[0].style.transitionDuration = 0;
-    element.removeClass(initClass + ' ' + activeClass + ' ' + animation);
+    element.removeClass(`${initClass} ${activeClass} ${animation}`);
   }
 }
 

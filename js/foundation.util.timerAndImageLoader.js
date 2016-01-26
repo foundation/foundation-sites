@@ -29,7 +29,7 @@
         }
         cb();
       }, remain);
-      elem.trigger('timerstart.zf.' + nameSpace);
+      elem.trigger(`timerstart.zf.${nameSpace}`);
     };
 
     this.pause = function(){
@@ -39,7 +39,7 @@
       elem.data('paused', true);
       var end = Date.now();
       remain = remain - (end - start);
-      elem.trigger('timerpaused.zf.' + nameSpace);
+      elem.trigger(`timerpaused.zf.${nameSpace}`);
     };
   };
   /**

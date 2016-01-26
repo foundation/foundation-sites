@@ -81,16 +81,16 @@
   Tabs.prototype._init = function(){
     var _this = this;
 
-    this.$tabTitles = this.$element.find('.' + this.options.linkClass);
-    this.$tabContent = $('[data-tabs-content="' + this.$element[0].id + '"]');
+    this.$tabTitles = this.$element.find(`.${this.options.linkClass}`);
+    this.$tabContent = $(`[data-tabs-content="${this.$element[0].id}"]`);
 
     this.$tabTitles.each(function(){
       var $elem = $(this),
           $link = $elem.find('a'),
           isActive = $elem.hasClass('is-active'),
           hash = $link[0].hash.slice(1),
-          linkId = $link[0].id ? $link[0].id : hash + '-label',
-          $tabContent = $('#' + hash);
+          linkId = $link[0].id ? $link[0].id : `hash${-label}`,
+          $tabContent = $(`#${hash}`);
 
       $elem.attr({'role': 'presentation'});
 
@@ -140,7 +140,7 @@
   Tabs.prototype._addClickHandler = function(){
     var _this = this;
     this.$element.off('click.zf.tabs')
-                   .on('click.zf.tabs', '.' + this.options.linkClass, function(e){
+                   .on('click.zf.tabs', `.${this.options.linkClass}`, function(e){
                      e.preventDefault();
                      e.stopPropagation();
                      if($(this).hasClass('is-active')){
@@ -211,11 +211,11 @@
     var $tabLink = $target.find('[role="tab"]'),
         hash = $tabLink[0].hash,
         $targetContent = $(hash),
-        $oldTab = this.$element.find('.' + this.options.linkClass + '.is-active')
+        $oldTab = this.$element.find(`.${this.options.linkClass}.is-active`)
                   .removeClass('is-active').find('[role="tab"]')
                   .attr({'aria-selected': 'false'}).attr('aria-controls');
 
-    $('#'+$oldTab).removeClass('is-active').attr({'aria-hidden': 'true'});
+    $(`#${$oldTab}`).removeClass('is-active').attr({'aria-hidden': 'true'});
 
     $target.addClass('is-active');
 
@@ -247,9 +247,9 @@
     }
 
     if(idStr.indexOf('#') < 0){
-      idStr = '#' + idStr;
+      idStr = `#${idStr}`;
     }
-    var $target = this.$tabTitles.find('[href="' + idStr + '"]').parent('.' + this.options.linkClass);
+    var $target = this.$tabTitles.find(`[href="${idStr}"]`).parent(`.${this.options.linkClass}`);
 
     this._handleTabChange($target);
   };
@@ -262,7 +262,7 @@
    */
   Tabs.prototype._setHeight = function(){
     var max = 0;
-    this.$tabContent.find('.' + this.options.panelClass)
+    this.$tabContent.find(`.${this.options.panelClass}`)
                     .css('height', '')
                     .each(function(){
                       var panel = $(this),
@@ -279,7 +279,7 @@
 
                       max = temp > max ? temp : max;
                     })
-                    .css('height', max + 'px');
+                    .css('height', `${max}px`);
   };
 
   /**
@@ -287,9 +287,9 @@
    * @fires Tabs#destroyed
    */
   Tabs.prototype.destroy = function() {
-    this.$element.find('.' + this.options.linkClass)
+    this.$element.find(`.${this.options.linkClass}`)
                  .off('.zf.tabs').hide().end()
-                 .find('.' + this.options.panelClass)
+                 .find(`.${this.options.panelClass}`)
                  .hide();
     if(this.options.matchHeight){
       $(window).off('changed.zf.mediaquery');
