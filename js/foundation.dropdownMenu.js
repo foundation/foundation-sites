@@ -139,7 +139,7 @@
 
     if(this.options.clickOpen || hasTouch){
       this.$menuItems.on('click.zf.dropdownmenu touchstart.zf.dropdownmenu', function(e){
-        var $elem = $(e.target).parentsUntil('ul', '.' + parClass),
+        var $elem = $(e.target).parentsUntil('ul', `.${parClass}`),
             hasSub = $elem.hasClass(parClass),
             hasClicked = $elem.attr('data-is-click') === 'true',
             $sub = $elem.children('.is-dropdown-submenu');
@@ -156,7 +156,7 @@
             e.preventDefault();
             e.stopImmediatePropagation();
             _this._show($elem.children('.is-dropdown-submenu'));
-            $elem.add($elem.parentsUntil(_this.$element, '.' + parClass)).attr('data-is-click', true);
+            $elem.add($elem.parentsUntil(_this.$element, `.${parClass}`)).attr('data-is-click', true);
           }
         }else{ return; }
       });
@@ -314,10 +314,10 @@
     if(!clear){
       var oldClass = this.options.alignment === 'left' ? '-right' : '-left',
           $parentLi = $sub.parent('.is-dropdown-submenu-parent');
-      $parentLi.removeClass('opens' + oldClass).addClass('opens-' + this.options.alignment);
+      $parentLi.removeClass(`opens${oldClass}`).addClass(`opens-${this.options.alignment}`);
       clear = Foundation.Box.ImNotTouchingYou($sub, null, true);
       if(!clear){
-        $parentLi.removeClass('opens-' + this.options.alignment).addClass('opens-inner');
+        $parentLi.removeClass(`opens-${this.options.alignment}`).addClass('opens-inner');
       }
       this.changed = true;
     }
@@ -363,8 +363,8 @@
       if(this.changed || $toClose.find('opens-inner').length){
         var oldClass = this.options.alignment === 'left' ? 'right' : 'left';
         $toClose.find('li.is-dropdown-submenu-parent').add($toClose)
-                .removeClass('opens-inner opens-' + this.options.alignment)
-                .addClass('opens-' + oldClass);
+                .removeClass(`opens-inner opens-${this.options.alignment}`)
+                .addClass(`opens-${oldClass}`);
         this.changed = false;
       }
       /**
