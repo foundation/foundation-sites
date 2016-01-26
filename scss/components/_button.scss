@@ -252,7 +252,7 @@ $button-opacity-disabled: 0.25 !default;
     &.arrow-only::after {
       margin-#{$global-left}: 0;
       float: none;
-      top: 0.2em;
+      top: -0.1em;
     }
   }
 }
