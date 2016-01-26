@@ -47,7 +47,7 @@
    */
   Equalizer.prototype._init = function(){
     var eqId = this.$element.attr('data-equalizer') || '';
-    var $watched = this.$element.find('[data-equalizer-watch="' + eqId + '"]');
+    var $watched = this.$element.find(`[data-equalizer-watch="${eqId}"]`);
 
     this.$watched = $watched.length ? $watched : this.$element.find('[data-equalizer-watch]');
     this.$element.attr('data-resize', (eqId || Foundation.GetYoDigits(6, 'eq')));
