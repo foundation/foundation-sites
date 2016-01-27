@@ -125,6 +125,21 @@ Add a new menu inside the `<li>` of a Menu and add the class `.nested` to create
 
 ---
 
+## Text
+
+Because the padding of the menu item is applied to the `<a>`, if you try to add an item that's text only, it will be misaligned. To get around this, add the class `.menu-text` to any `<li>` that doesn't have a link inside of it.
+
+```html_example
+<ul class="menu">
+  <li class="menu-text">Site Title</li>
+  <li><a href="#">One</a></li>
+  <li><a href="#">Two</a></li>
+  <li><a href="#">Three</a></li>
+</ul>
+```
+
+---
+
 ## Icons
 
 Menu items can have icons. Wrap the text of the item in a `<span>`, and then add an `<img>` element before the `<span>`. If you're using the Foundation icon font, the `<img>` will be an `<i>` instead.
