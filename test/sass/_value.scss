@@ -102,19 +102,17 @@
     @include assert-equal($defaultColor, black, $defaultDescription);
   }
 
-  // TODO: Add spec for pow()
-}
-
-@include describe('Map Deep Get') {
-  @include it('gets a value from a nested map') {
+  @include test('Map Deep Get [function]') {
     $map: (
       one: (
         two: 'three',
       ),
     );
-
-    @include should(expect(map-deep-get($map, one, two)), to(be('three')));
+    $expect: 'three';
+    
+    @include assert-equal(map-deep-get($map, one, two), $expect,
+      'Gets a value from a nested map');
   }
-}
 
-// TODO: Add spec for pow()
+  // TODO: Add spec for pow()
+}
