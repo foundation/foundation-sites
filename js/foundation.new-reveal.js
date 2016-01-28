@@ -126,10 +126,10 @@
   Reveal.prototype._init = function(){
     this.id = this.$element.attr('id');
     this.isActive = false;
-    this.cached = {};
+    this.cached = {mq: Foundation.MediaQuery.current};
 
     this.$anchor = $('[data-open="' + this.id + '"]').length ? $('[data-open="' + this.id + '"]') : $('[data-toggle="' + this.id + '"]');
-    this.$offsetParent = this.$element.offsetParent();
+
 
     if(this.$anchor.length){
       var anchorId = this.$anchor[0].id || Foundation.GetYoDigits(6, 'reveal');
@@ -195,8 +195,8 @@
       'toggle.zf.trigger': this.toggle.bind(this),
       'resizeme.zf.trigger': function(){
         _this.updateVals = true;
-        if(_this.$element.is(':visible')){
-          _this._setPosition(function(){});
+        if(_this.isActive){
+          _this._setPosition();
         }
       }
     });
@@ -210,7 +210,6 @@
         }
       });
     }
-
 
     if(this.options.closeOnClick && this.options.overlay){
       this.$overlay.off('.zf.reveal').on('click.zf.reveal', this.close.bind(this));
@@ -228,13 +227,20 @@
     else{ this.close(); }
   };
   Reveal.prototype._cacheValues = function(){
-    this.cached.parentOffset = this.$element.offsetParent().offset();
+    if(this.cached.mq !== Foundation.MediaQuery.current || this.$offsetParent === undefined){
+      this.$offsetParent = this.$element.offsetParent();
+      this.cached.mq = Foundation.MediaQuery.current;
+    }
+
+    this.cached.parentOffset = this.$offsetParent.offset();
     this.cached.modalDims = this.$element[0].getBoundingClientRect();
     this.cached.winWidth = window.innerWidth;
     this.cached.vertOffset = window.innerHeight > this.cached.modalDims.height ? this.options.vOffset : 0;
-    console.log(window.innerHeight > this.cached.modalDims.height);
+
     this.updateVals = false;
+    return;
   };
+
   /**
    * Sets the position of the modal before opening
    * @param {Function} cb - a callback function to execute when positioning is complete.
@@ -242,46 +248,13 @@
    */
   Reveal.prototype._setPosition = function(cb){
     if(!this.cached.winWidth || this.updateVals){ this._cacheValues(); }
-    console.log('calling', this.cached  );
     
-    // var winWidth = window.innerWidth,
-    //     parentOffset = this.$element.offsetParent().offset(),
-        var x = Math.round((this.cached.winWidth - this.cached.modalDims.width) / 2 - (this.cached.parentOffset.left > 0 ? this.cached.parentOffset.left : 0)),
+    var x = Math.round((this.cached.winWidth - this.cached.modalDims.width) / 2 - (this.cached.parentOffset.left > 0 ? this.cached.parentOffset.left : 0)),
         y = Math.round(window.pageYOffset - (this.cached.parentOffset.top > 0 ? this.cached.parentOffset.top : 0) + this.cached.vertOffset);
+    // this.$element.css('transform', 'translate(' + x + 'px, ' + y + 'px)');
+    this.$element.css({top: y + 'px', left: x + 'px'});
     
-    this.$element.css('transform', 'translate(' + x + 'px, ' + y + 'px)');
     if(cb) cb();
-    // var eleDims = Foundation.Box.GetDimensions(this.$element);
-    // var elePos = this.options.fullScreen ? 'reveal full' : (eleDims.height >= (0.5 * eleDims.windowDims.height)) ? 'reveal' : 'center';
-    //
-    // if(elePos === 'reveal full'){
-    //   //set to full height/width
-    //   this.$element
-    //       .offset(Foundation.Box.GetOffsets(this.$element, null, elePos, this.options.vOffset))
-    //       .css({
-    //         'height': eleDims.windowDims.height,
-    //         'width': eleDims.windowDims.width
-    //       });
-    // }else if(!Foundation.MediaQuery.atLeast('medium') || !Foundation.Box.ImNotTouchingYou(this.$element, null, true, false)){
-    //   //if smaller than medium, resize to 100% width minus any custom L/R margin
-    //   this.$element
-    //       .css({
-    //         'width': eleDims.windowDims.width - (this.options.hOffset * 2)
-    //       })
-    //       .offset(Foundation.Box.GetOffsets(this.$element, null, 'center', this.options.vOffset, this.options.hOffset));
-    //   //flag a boolean so we can reset the size after the element is closed.
-    //   this.changedSize = true;
-    // }else{
-    //   this.$element
-    //       .css({
-    //         'max-height': eleDims.windowDims.height - (this.options.vOffset * (this.options.btmOffsetPct / 100 + 1)),
-    //         'width': ''
-    //       })
-    //       .offset(Foundation.Box.GetOffsets(this.$element, null, elePos, this.options.vOffset));
-    //       //the max height based on a percentage of vertical offset plus vertical offset
-    // }
-    //
-    // cb();
   };
 
   /**
@@ -307,7 +280,7 @@
     this.$element
         .css({'visibility': 'hidden'})
         .show()
-        // .scrollTop(0);
+        .scrollTop(0);
 
     this._setPosition(function(){
       _this.$element.hide()
