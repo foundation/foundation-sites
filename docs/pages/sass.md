@@ -52,7 +52,7 @@ grunt.initConfig({
   sass: {
     dist: {
     options: {
-        includePaths: ['node_modules/foundation-sites/scss']
+        loadPath: ['node_modules/foundation-sites/scss']
       }
     }
   }
