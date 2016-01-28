@@ -23,13 +23,13 @@
     this._init();
 
     Foundation.registerPlugin(this, 'Reveal');
-    // Foundation.Keyboard.register('Reveal', {
-    //   'ENTER': 'open',
-    //   'SPACE': 'open',
-    //   'ESCAPE': 'close',
-    //   'TAB': 'tab_forward',
-    //   'SHIFT_TAB': 'tab_backward'
-    // });
+    Foundation.Keyboard.register('Reveal', {
+      'ENTER': 'open',
+      'SPACE': 'open',
+      'ESCAPE': 'close',
+      'TAB': 'tab_forward',
+      'SHIFT_TAB': 'tab_backward'
+    });
   }
 
   Reveal.defaults = {
@@ -126,8 +126,10 @@
   Reveal.prototype._init = function(){
     this.id = this.$element.attr('id');
     this.isActive = false;
+    this.cached = {};
 
     this.$anchor = $('[data-open="' + this.id + '"]').length ? $('[data-open="' + this.id + '"]') : $('[data-toggle="' + this.id + '"]');
+    this.$offsetParent = this.$element.offsetParent();
 
     if(this.$anchor.length){
       var anchorId = this.$anchor[0].id || Foundation.GetYoDigits(6, 'reveal');
@@ -192,6 +194,7 @@
       'close.zf.trigger': this.close.bind(this),
       'toggle.zf.trigger': this.toggle.bind(this),
       'resizeme.zf.trigger': function(){
+        _this.updateVals = true;
         if(_this.$element.is(':visible')){
           _this._setPosition(function(){});
         }
@@ -224,18 +227,28 @@
     if(window.location.hash === ( '#' + this.id) && !this.isActive){ this.open(); }
     else{ this.close(); }
   };
+  Reveal.prototype._cacheValues = function(){
+    this.cached.parentOffset = this.$element.offsetParent().offset();
+    this.cached.modalDims = this.$element[0].getBoundingClientRect();
+    this.cached.winWidth = window.innerWidth;
+    this.cached.vertOffset = window.innerHeight > this.cached.modalDims.height ? this.options.vOffset : 0;
+    console.log(window.innerHeight > this.cached.modalDims.height);
+    this.updateVals = false;
+  };
   /**
    * Sets the position of the modal before opening
    * @param {Function} cb - a callback function to execute when positioning is complete.
    * @private
    */
   Reveal.prototype._setPosition = function(cb){
-    console.log('calling');
-    var winWidth = window.innerWidth,
-        parentOffset = this.$element.offsetParent().offset(),
-        x = Math.round((winWidth - this.$element[0].getBoundingClientRect().width) / 2 - (parentOffset.left > 0 ? parentOffset.left : 0)),
-        y = Math.round(window.pageYOffset - (parentOffset.top > 0 ? parentOffset.top : 0) + this.options.vOffset);
-        
+    if(!this.cached.winWidth || this.updateVals){ this._cacheValues(); }
+    console.log('calling', this.cached  );
+    
+    // var winWidth = window.innerWidth,
+    //     parentOffset = this.$element.offsetParent().offset(),
+        var x = Math.round((this.cached.winWidth - this.cached.modalDims.width) / 2 - (this.cached.parentOffset.left > 0 ? this.cached.parentOffset.left : 0)),
+        y = Math.round(window.pageYOffset - (this.cached.parentOffset.top > 0 ? this.cached.parentOffset.top : 0) + this.cached.vertOffset);
+    
     this.$element.css('transform', 'translate(' + x + 'px, ' + y + 'px)');
     if(cb) cb();
     // var eleDims = Foundation.Box.GetDimensions(this.$element);

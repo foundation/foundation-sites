@@ -59,6 +59,7 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
 /// Adds base styles for a modal.
 @mixin reveal-modal-base {
   @include disable-mouse-outline;
+
   display: none;
   top: 0;
   left: 0;
@@ -68,7 +69,13 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   // margin: $reveal-offset auto 0;
   background-color: $reveal-background;
   border-radius: $reveal-radius;
+  
+  //chris's additions
+  overflow-y: auto;
+  max-height: 100vh;
+  //
 
+  
   @include breakpoint(medium) {
     min-height: 0;
   }
