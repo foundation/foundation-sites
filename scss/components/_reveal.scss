@@ -60,10 +60,12 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
 @mixin reveal-modal-base {
   @include disable-mouse-outline;
   display: none;
+  top: 0;
+  left: 0;
   z-index: $reveal-zindex + 1;
   padding: $reveal-padding;
   border: $reveal-border;
-  margin: $reveal-offset auto 0;
+  // margin: $reveal-offset auto 0;
   background-color: $reveal-background;
   border-radius: $reveal-radius;
 
