@@ -99,7 +99,7 @@ $button-opacity-disabled: 0.25 !default;
   $color: $button-color
 ) {
   @if $color == auto {
-    $color: foreground($background);
+    $color: foreground($background, $button-color-alt, $button-color);
   }
 
   @if $background-hover == auto {
@@ -203,7 +203,7 @@ $button-opacity-disabled: 0.25 !default;
     @each $name, $color in $foundation-colors {
       @if $button-fill != hollow {
         &.#{$name} {
-          @include button-style($color, auto);
+          @include button-style($color, auto, auto);
         }
       }
       @else {
