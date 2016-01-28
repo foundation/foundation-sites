@@ -138,7 +138,10 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
     @include reveal-modal-width($reveal-width);
     position: absolute;
     overflow-y: auto;
-
+    
+    @include breakpoint(small) {
+      width: 100vw;
+    }
     // Placeholder selector for medium-and-up modals
     // Prevents duplicate CSS when defining multiple Reveal sizes
     @include breakpoint(medium) {
