@@ -126,6 +126,14 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   body.is-reveal-open {
     overflow: hidden;
   }
+  
+  /* this little snippet causes the intended scroll blocking on iOS Safari,
+     which can still DIAF, because it breaks literally everything else */
+  // html, body.is-reveal-open {
+  //   overflow: hidden;
+  //   position: relative;
+  //   height: 100%;
+  // }
 
   // Overlay
   .reveal-overlay {

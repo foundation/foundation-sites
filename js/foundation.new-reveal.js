@@ -327,8 +327,9 @@
      */
                  .trigger('open.zf.reveal');
 
-    $('body').addClass('is-reveal-open')
-             .attr({'aria-hidden': (this.options.overlay || this.options.fullScreen) ? true : false});
+    $('html, body').addClass('is-reveal-open');
+    
+    $('body').attr({'aria-hidden': (this.options.overlay || this.options.fullScreen) ? true : false});
     setTimeout(function(){
       _this._extraHandlers();
     }, 0);
@@ -441,7 +442,8 @@
           'width': ''
         });
       }
-      $('body').removeClass('is-reveal-open').attr({'aria-hidden': false, 'tabindex': ''});
+      $('html, body').removeClass('is-reveal-open')
+      $('body').attr({'aria-hidden': false, 'tabindex': ''});
       _this.$element.attr({'aria-hidden': true})
       /**
       * Fires when the modal is done closing.
