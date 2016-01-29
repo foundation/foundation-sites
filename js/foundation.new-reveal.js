@@ -127,6 +127,10 @@
     this.id = this.$element.attr('id');
     this.isActive = false;
     this.cached = {mq: Foundation.MediaQuery.current};
+    this.isiOS = iPhoneSniff();
+    console.log(this.isiOS);
+    
+    if(this.isiOS){ this.$element.addClass('is-ios'); }
 
     this.$anchor = $('[data-open="' + this.id + '"]').length ? $('[data-open="' + this.id + '"]') : $('[data-toggle="' + this.id + '"]');
 
@@ -252,11 +256,18 @@
     var x = Math.round((this.cached.winWidth - this.cached.modalDims.width) / 2 - (this.cached.parentOffset.left > 0 ? this.cached.parentOffset.left : 0)),
         y = Math.round(window.pageYOffset - (this.cached.parentOffset.top > 0 ? this.cached.parentOffset.top : 0) + this.cached.vertOffset);
     // this.$element.css('transform', 'translate(' + x + 'px, ' + y + 'px)');
-    this.$element.css({top: y + 'px', left: x + 'px'});
+    // this.$element.css({top: y + 'px', left: x + 'px'});
+    this.$element.css(this._applyCss(x, y));
     
     if(cb) cb();
   };
-
+  Reveal.prototype._applyCss = (function(x, y){
+    var _this = this;
+    return (_this.options.animationIn ?
+      {top: y + 'px', left: x + 'px'}
+      : {transform: 'translate(' + x + 'px, ' + y + 'px)'}
+      );
+  });
   /**
    * Opens the modal controlled by `this.$anchor`, and closes all others by default.
    * @function
@@ -326,8 +337,13 @@
      * @event Reveal#open
      */
                  .trigger('open.zf.reveal');
-
-    $('html, body').addClass('is-reveal-open');
+    if(this.isiOS){
+      var scrollPos = window.pageYOffset;
+      $('html, body').addClass('is-reveal-open').scrollTop(scrollPos);
+      // $('body').scrollTop(scrollPos);
+    }else{
+      $('body').addClass('is-reveal-open');
+    }
     
     $('body').attr({'aria-hidden': (this.options.overlay || this.options.fullScreen) ? true : false});
     setTimeout(function(){
@@ -434,15 +450,22 @@
       $('body').off('click.zf.reveal');
     }
     this.$element.off('keydown.zf.reveal');
+    
     function finishUp(){
       //if the modal changed size, reset it
-      if(_this.changedSize){
-        _this.$element.css({
-          'height': '',
-          'width': ''
-        });
+      // if(_this.changedSize){
+      //   _this.$element.css({
+      //     'height': '',
+      //     'width': ''
+      //   });
+      // }
+      
+      if(_this.isiOS){
+        $('html, body').removeClass('is-reveal-open');
+      }else{
+        $('body').removeClass('is-reveal-open');
       }
-      $('html, body').removeClass('is-reveal-open')
+      
       $('body').attr({'aria-hidden': false, 'tabindex': ''});
       _this.$element.attr({'aria-hidden': true})
       /**
@@ -498,6 +521,10 @@
   };
 
   Foundation.plugin(Reveal, 'Reveal');
+  
+  function iPhoneSniff(){
+    return /iP(ad|hone|od).*OS/.test(window.navigator.userAgent);
+  }
 
   // Exports for AMD/Browserify
   if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')
