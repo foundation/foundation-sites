@@ -23,7 +23,7 @@ This is the minimum markup for creating an Accordion with Foundation, repeating 
 ```html
 <ul class="accordion" data-accordion>
   <li class="accordion-item is-active" data-accordion-item>
-    <a class="accordion-title">Accordion 1</a>
+    <a href="#" class="accordion-title">Accordion 1</a>
     <div class="accordion-content" data-tab-content>
       I would start in the open state, due to using the `is-active` state class.
     </div>
@@ -36,21 +36,21 @@ Once you put it all together, here's what you get!
 
 <ul class="accordion" data-accordion>
   <li class="accordion-item is-active" data-accordion-item>
-    <a class="accordion-title">Accordion 1</a>
+    <a href="#" class="accordion-title">Accordion 1</a>
     <div class="accordion-content" data-tab-content >
       <p>Panel 1. Lorem ipsum dolor</p>
       <a href="#">Nowhere to Go</a>
     </div>
   </li>
   <li class="accordion-item" data-accordion-item>
-    <a class="accordion-title">Accordion 2</a>
+    <a href="#" class="accordion-title">Accordion 2</a>
     <div class="accordion-content" data-tab-content>
       <textarea></textarea>
       <button class="button">I do nothing!</button>
     </div>
   </li>
   <li class="accordion-item" data-accordion-item>
-    <a class="accordion-title">Accordion 3</a>
+    <a href="#" class="accordion-title">Accordion 3</a>
     <div class="accordion-content" data-tab-content>
       Pick a date!
       <input type="date"></input>
