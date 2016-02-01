@@ -43,7 +43,7 @@
       if(dir) {
         e.preventDefault();
         onTouchEnd.call(this);
-        $(this).trigger('swipe', dir).trigger('swipe' + dir);
+        $(this).trigger('swipe', dir).trigger(`swipe${dir}`);
       }
     }
   }
@@ -70,7 +70,7 @@
   $.event.special.swipe = { setup: init };
 
   $.each(['left', 'up', 'down', 'right'], function () {
-    $.event.special['swipe' + this] = { setup: function(){
+    $.event.special[`swipe${this}`] = { setup: function(){
       $(this).on('swipe', $.noop);
     } };
   });

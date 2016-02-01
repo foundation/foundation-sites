@@ -40,9 +40,9 @@
    */
   var parseKey = function(event) {
     var key = keyCodes[event.which || event.keyCode] || String.fromCharCode(event.which).toUpperCase();
-    if (event.shiftKey) key = 'SHIFT_' + key;
-    if (event.ctrlKey) key = 'CTRL_' + key;
-    if (event.altKey) key = 'ALT_' + key;
+    if (event.shiftKey) key = `SHIFT_${key}`;
+    if (event.ctrlKey) key = `CTRL_${key}`;
+    if (event.altKey) key = `ALT_${key}`;
     return key;
   };
   Foundation.Keyboard.parseKey = parseKey;

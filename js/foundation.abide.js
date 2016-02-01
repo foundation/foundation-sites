@@ -100,7 +100,7 @@
      */
     validators: {
       equalTo: function (el, required, parent) {
-        return $('#' + el.attr('data-equalto')).val() === el.val();
+        return $(`#${el.attr('data-equalto')}`).val() === el.val();
       }
     }
   };
@@ -205,7 +205,7 @@
    * @returns {Boolean} Boolean value depends on whether or not attribute is checked or empty
    */
   Abide.prototype.findLabel = function($el) {
-    var $label = this.$element.find('label[for="' + $el[0].id + '"]');
+    var $label = this.$element.find(`label[for="${$el[0].id}"]`);
     if(!$label.length){
       return $el.closest('label');
     }
@@ -342,7 +342,7 @@
    * @returns {Boolean} Boolean value depends on whether or not at least one radio input has been selected (if it's required)
    */
   Abide.prototype.validateRadio = function(groupName){
-    var $group = this.$element.find(':radio[name="' + groupName + '"]'),
+    var $group = this.$element.find(`:radio[name="${groupName}"]`),
         counter = [],
         _this = this;
 
@@ -378,9 +378,9 @@
     var $form = this.$element,
         opts = this.options;
 
-    $('.' + opts.labelErrorClass, $form).not('small').removeClass(opts.labelErrorClass);
-    $('.' + opts.inputErrorClass, $form).not('small').removeClass(opts.inputErrorClass);
-    $(opts.formErrorSelector + '.' + opts.formErrorClass).removeClass(opts.formErrorClass);
+    $(`.${opts.labelErrorClass}`, $form).not('small').removeClass(opts.labelErrorClass);
+    $(`.${opts.inputErrorClass}`, $form).not('small').removeClass(opts.inputErrorClass);
+    $(`${opts.formErrorSelector}.${opts.formErrorClass}`).removeClass(opts.formErrorClass);
     $form.find('[data-abide-error]').css('display', 'none');
     $(':input', $form).not(':button, :submit, :reset, :hidden, [data-abide-ignore]').val('').removeAttr('data-invalid');
     /**

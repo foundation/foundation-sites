@@ -41,8 +41,8 @@
   var MutationObserver = (function () {
     var prefixes = ['WebKit', 'Moz', 'O', 'Ms', ''];
     for (var i=0; i < prefixes.length; i++) {
-      if (prefixes[i] + 'MutationObserver' in window) {
-        return window[prefixes[i] + 'MutationObserver'];
+      if (`${prefixes[i]}MutationObserver` in window) {
+        return window[`${prefixes[i]}MutationObserver`];
       }
     }
     return false;
@@ -85,7 +85,7 @@
 
       $(window).off(listeners).on(listeners, function(e, pluginId){
         var plugin = e.namespace.split('.')[0];
-        var plugins = $('[data-' + plugin + ']').not('[data-yeti-box="' + pluginId + '"]');
+        var plugins = $(`[data-${plugin}]`).not(`[data-yeti-box="${pluginId}"]`);
 
         plugins.each(function(){
           var _this = $(this);

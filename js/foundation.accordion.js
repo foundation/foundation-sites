@@ -65,7 +65,7 @@
       var $el = $(el),
           $content = $el.find('[data-tab-content]'),
           id = $content[0].id || Foundation.GetYoDigits(6, 'accordion'),
-          linkId = el.id || id + '-label';
+          linkId = el.id || `${id}-label`;
 
       $el.find('a:first').attr({
         'aria-controls': id,
@@ -175,7 +175,7 @@
     // if(!firstTime){
     //   Foundation._reflow(this.$element.attr('data-accordion'));
     // }
-    $('#' + $target.attr('aria-labelledby')).attr({
+    $(`#${$target.attr('aria-labelledby')}`).attr({
       'aria-expanded': true,
       'aria-selected': true
     });
@@ -209,7 +209,7 @@
     $target.attr('aria-hidden', true)
            .parent().removeClass('is-active');
 
-    $('#' + $target.attr('aria-labelledby')).attr({
+    $(`#${$target.attr('aria-labelledby')}`).attr({
      'aria-expanded': false,
      'aria-selected': false
    });

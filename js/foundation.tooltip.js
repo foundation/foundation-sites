@@ -161,7 +161,7 @@
    * @private
    */
   Tooltip.prototype._buildTemplate = function(id){
-    var templateClasses = (this.options.tooltipClass + ' ' + this.options.positionClass + ' ' + this.options.templateClasses).trim();
+    var templateClasses = (`${this.options.tooltipClass} ${this.options.positionClass} ${this.options.templateClasses}`).trim();
     var $template =  $('<div></div>').addClass(templateClasses).attr({
       'role': 'tooltip',
       'aria-hidden': true,

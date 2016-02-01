@@ -146,7 +146,7 @@
     this.handles = this.$element.find('[data-slider-handle]');
 
     this.$handle = this.handles.eq(0);
-    this.$input = this.inputs.length ? this.inputs.eq(0) : $('#' + this.$handle.attr('aria-controls'));
+    this.$input = this.inputs.length ? this.inputs.eq(0) : $(`#${this.$handle.attr('aria-controls')}`);
     this.$fill = this.$element.find('[data-slider-fill]').css(this.options.vertical ? 'height' : 'width', 0);
 
     var isDbl = false,
@@ -165,7 +165,7 @@
     if(this.handles[1]){
       this.options.doubleSided = true;
       this.$handle2 = this.handles.eq(1);
-      this.$input2 = this.inputs.length > 1 ? this.inputs.eq(1) : $('#' + this.$handle2.attr('aria-controls'));
+      this.$input2 = this.inputs.length > 1 ? this.inputs.eq(1) : $(`#${this.$handle2.attr('aria-controls')}`);
 
       if(!this.inputs[1]){
         this.inputs = this.inputs.add(this.$input2);
@@ -249,7 +249,7 @@
       //if left handle, the math is slightly different than if it's the right handle, and the left/top property needs to be changed for the fill bar
       if(isLeftHndl){
         //left or top percentage value to apply to the fill bar.
-        css[lOrT] = movement + '%';
+        css[lOrT] = `${movement}%`;
         //calculate the new min-height/width for the fill bar.
         dim = parseFloat(this.$handle2[0].style[lOrT]) - movement + handlePct;
         //this callback is necessary to prevent errors and allow the proper placement and initialization of a 2-handled slider
@@ -263,7 +263,7 @@
         dim = movement - (isNaN(handlePos) ? this.options.initialStart : handlePos) + handlePct;
       }
       // assign the min-height/width to our css object
-      css['min-' + hOrW] = dim + '%';
+      css[`min-${hOrW}`] = `${dim}%`;
     }
 
     this.$element.one('finished.zf.animate', function(){
@@ -279,11 +279,11 @@
 
     Foundation.Move(moveTime, $hndl, function(){
       //adjusting the left/top property of the handle, based on the percentage calculated above
-      $hndl.css(lOrT, movement + '%');
+      $hndl.css(lOrT, `${movement}%`);
 
       if(!_this.options.doubleSided){
         //if single-handled, a simple method to expand the fill bar
-        _this.$fill.css(hOrW, pctOfBar * 100 + '%');
+        _this.$fill.css(hOrW, `${pctOfBar * 100}%`);
       }else{
         //otherwise, use the css object we created above
         _this.$fill.css(css);

@@ -204,7 +204,7 @@
    */
   Magellan.prototype.destroy = function(){
     this.$element.off('.zf.trigger .zf.magellan')
-        .find('.' + this.options.activeClass).removeClass(this.options.activeClass);
+        .find(`.${this.options.activeClass}`).removeClass(this.options.activeClass);
 
     if(this.options.deepLinking){
       var hash = this.$active[0].getAttribute('href');

@@ -63,7 +63,7 @@ var MediaQuery = {
     for (var key in namedQueries) {
       self.queries.push({
         name: key,
-        value: 'only screen and (min-width: ' + namedQueries[key] + ')'
+        value: `only screen and (min-width: ${namedQueries[key]})`
       });
     }
 
@@ -147,7 +147,7 @@ window.matchMedia || (window.matchMedia = function() {
 
     styleMedia = {
       matchMedium: function(media) {
-        var text = '@media ' + media + '{ #matchmediajs-test { width: 1px; } }';
+        var text = `@media ${media}{ #matchmediajs-test { width: 1px; } }`;
 
         // 'style.styleSheet' is used by IE <= 8 and 'style.textContent' for all other browsers
         if (style.styleSheet) {

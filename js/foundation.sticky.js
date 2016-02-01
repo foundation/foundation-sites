@@ -114,7 +114,7 @@
     this.isStuck = false;
 
     if(this.options.anchor !== ''){
-      this.$anchor = $('#' + this.options.anchor);
+      this.$anchor = $(`#${this.options.anchor}`);
     }else{
       this._parsePoints();
     }
@@ -142,7 +142,7 @@
           pt = pts[i];
         }else{
           var place = pts[i].split(':'),
-              anchor = $('#' + place[0]);
+              anchor = $(`#${place[0]}`);
 
           pt = anchor.offset().top;
           if(place[1] && place[1].toLowerCase() === 'bottom'){
@@ -166,7 +166,7 @@
    */
   Sticky.prototype._events = function(id){
     var _this = this,
-        scrollListener = this.scrollListener = 'scroll.zf.' + id;
+        scrollListener = this.scrollListener = `scroll.zf.${id}`;
     if(this.isOn){ return; }
     if(this.canStick){
       this.isOn = true;
@@ -263,20 +263,20 @@
         notStuckTo = stickTo === 'top' ? 'bottom' : 'top',
         css = {};
 
-    css[mrgn] = this.options[mrgn] + 'em';
+    css[mrgn] = `${this.options[mrgn]}em`;
     css[stickTo] = 0;
     css[notStuckTo] = 'auto';
     css['left'] = this.$container.offset().left + parseInt(window.getComputedStyle(this.$container[0])["padding-left"], 10);
     this.isStuck = true;
-    this.$element.removeClass('is-anchored is-at-' + notStuckTo)
-                 .addClass('is-stuck is-at-' + stickTo)
+    this.$element.removeClass(`is-anchored is-at-${notStuckTo}`)
+                 .addClass(`is-stuck is-at-${stickTo}`)
                  .css(css)
                  /**
                   * Fires when the $element has become `position: fixed;`
                   * Namespaced to `top` or `bottom`.
                   * @event Sticky#stuckto
                   */
-                 .trigger('sticky.zf.stuckto:' + stickTo);
+                 .trigger(`sticky.zf.stuckto:${stickTo}`);
   };
 
   /**
@@ -308,15 +308,15 @@
 
     css['left'] = '';
     this.isStuck = false;
-    this.$element.removeClass('is-stuck is-at-' + stickTo)
-                 .addClass('is-anchored is-at-' + topOrBottom)
+    this.$element.removeClass(`is-stuck is-at-${stickTo}`)
+                 .addClass(`is-anchored is-at-${topOrBottom}`)
                  .css(css)
                  /**
                   * Fires when the $element has become anchored.
                   * Namespaced to `top` or `bottom`.
                   * @event Sticky#unstuckfrom
                   */
-                 .trigger('sticky.zf.unstuckfrom:' + topOrBottom);
+                 .trigger(`sticky.zf.unstuckfrom:${topOrBottom}`);
   };
 
   /**
@@ -340,7 +340,7 @@
     }
 
     this.$element.css({
-      'max-width': newElemWidth - pdng + 'px'
+      'max-width': `${newElemWidth - pdng}px`
     });
 
     var newContainerHeight = this.$element[0].getBoundingClientRect().height || this.containerHeight;
@@ -403,7 +403,7 @@
   Sticky.prototype.destroy = function(){
     this._removeSticky(true);
 
-    this.$element.removeClass(this.options.stickyClass + ' is-anchored is-at-top')
+    this.$element.removeClass(`${this.options.stickyClass} is-anchored is-at-top`)
                  .css({
                    height: '',
                    top: '',
