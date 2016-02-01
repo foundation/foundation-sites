@@ -78,13 +78,13 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
   .is-dropdown-submenu-parent {
     position: relative;
 
-    a::after {
-      float: $global-right;
-      margin-top: 3px;
-      margin-#{$global-left}: 10px;
-    }
-
     @if $dropdownmenu-arrows {
+      a::after {
+        float: $global-right;
+        margin-top: 3px;
+        margin-#{$global-left}: 10px;
+      }
+
       &.is-down-arrow a {
         padding-#{$global-right}: 1.5rem;
         position: relative;
