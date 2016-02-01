@@ -39,62 +39,62 @@
    */
   DropdownMenu.defaults = {
     /**
-     * Disallows hover events from opening submenus
+     * Prevents hover events from opening submenus.
      * @option
      * @example false
      */
     disableHover: false,
     /**
-     * Allow a submenu to automatically close on a mouseleave event, if not clicked open.
+     * Allow a submenu to automatically close on a mouseleave event, if not clicked open. Clicking open a menu with clickOpen: true; allows that menu to remain open until another element is clicked on the page.
      * @option
      * @example true
      */
     autoclose: true,
     /**
-     * Amount of time to delay opening a submenu on hover event.
+     * Amount of time, in milliseconds, to delay opening a submenu on hover. A short delay can prevent an annoying "popup" effect, but a long delay can give the impression of a sluggish site.
      * @option
      * @example 50
      */
     hoverDelay: 50,
     /**
-     * Allow a submenu to open/remain open on parent click event. Allows cursor to move away from menu.
+     * Allow a submenu to open/remain open on parent click event. Allows cursor to move away from menu and the menu to remain visible.
      * @option
      * @example true
      */
     clickOpen: false,
     /**
-     * Amount of time to delay closing a submenu on a mouseleave event.
+     * Amount of time, in milliseconds, to delay closing a submenu on a mouseleave event. Similar to the hoverDelay, to little time can be frustrating for navigation, and too much can make your site seem sluggish or unresponsive.
      * @option
      * @example 500
      */
 
     closingTime: 500,
     /**
-     * Position of the menu relative to what direction the submenus should open. Handled by JS.
+     * Position of the menu relative to what direction the submenus should open. If your menu is aligned to the right side of the viewport, you should definitely update the value to: 'right', to reflect that.
      * @option
      * @example 'left'
      */
     alignment: 'left',
     /**
-     * Allow clicks on the body to close any open submenus.
+     * Allow clicks on the body to close any open submenus. Highly advisable to use this in conjunction with the clickOpen: true; option.
      * @option
      * @example true
      */
     closeOnClick: true,
     /**
-     * Class applied to vertical oriented menus, Foundation default is `vertical`. Update this if using your own class.
+     * Class applied to vertical oriented menus, Foundation default is `vertical`. It is required to update this if you are updating the mixin for vertical menus in the scss.
      * @option
      * @example 'vertical'
      */
     verticalClass: 'vertical',
     /**
-     * Class applied to right-side oriented menus, Foundation default is `align-right`. Update this if using your own class.
+     * Class applied to right-side oriented menus, Foundation default is `align-right`. Update this if using your own class. This class is required to attain the correct visual layout for your <span  data-tooltip title="Though, this should have been fairly obvious.">right-aligned</span> menu.
      * @option
      * @example 'align-right'
      */
     rightClass: 'align-right',
     /**
-     * Boolean to force overide the clicking of links to perform default action, on second touch event for mobile.
+     * Boolean to force overide the clicking of links to perform default action. If using clickOpen: true; and forceFollow: true;, the first click will open the menu, the second click will follow the link. This is the default interaction for browsers with touch events in the window object.
      * @option
      * @example false
      */
