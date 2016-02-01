@@ -234,19 +234,8 @@
     }
 
     .#{$-zf-size}-uncollapse {
-<<<<<<< HEAD
       $gutter: -zf-get-bp-val($grid-column-gutter, $-zf-size);
 
-=======
-      $gutter: null;
-
-      @if $grid-column-gutter {
-        $gutter: $grid-column-gutter;
-      }
-      @else {
-        $gutter: -zf-get-bp-val($grid-column-responsive-gutter, $-zf-size);
-      }
->>>>>>> develop
       > .column { @include grid-col-uncollapse($gutter); }
     }
   }
