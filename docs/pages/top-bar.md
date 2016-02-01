@@ -90,3 +90,9 @@ In the below example, we've combined the above pattern with the Responsive Toggl
   </div>
 </div>
 ```
+
+---
+
+## Sticky Navigation
+
+See the documentation for the [Sticky](sticky.html#sticky-navigation) plugin to see how to easily make a sticky nav bar.

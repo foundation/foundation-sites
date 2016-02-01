@@ -150,3 +150,8 @@ Add the class `.icon-top` to the Menu to orient icons above the text.
   <li><a href="#"><i class="fi-list"></i> <span>Four</span></a></li>
 </ul>
 ```
+---
+
+## Sticky Navigation
+
+See the documentation for the [Sticky](sticky.html#sticky-navigation) plugin to see how to easily make a sticky nav bar.
