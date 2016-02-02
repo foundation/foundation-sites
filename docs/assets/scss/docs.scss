@@ -21,8 +21,10 @@
 
 .studios-callout {
   text-align: center !important;
-  padding: rem-calc(45) !important;
+  padding: 45px 45px 25px 45px;
+  margin-top: 45px;
   background-color: #fafafa !important;
+  border-top: 1px solid #f6f4f4;
 
   .property-label {
     font-family: "Proxima Nova Condensed Bold","Proxima Nova Condensed","proxima-nova-condensed","Helvetica Neue",Helvetica,Arial,sans-serif !important;
@@ -37,8 +39,10 @@
   }
 
   h3 {
-    font-size: rem-calc(26) !important;
-    margin-top: rem-calc(20) !important;
+    font-size: 26px !important;
+    margin-top: 20px !important;
+    margin-bottom: 10px !important;
+    font-weight: light !important;
   }
 
   img {
@@ -47,8 +51,15 @@
     overflow: hidden !important;
   }
 
+  .lead {
+    color: #777777;
+    font-size: 18px;
+    font-weight: thin;
+  }
+
   .button {
     width: 100% !important;
+    font-weight: bold;
     &:hover {
       background-color: darken(#2CADBE, 10%) !important;
       transition: .25 ease all !important;
