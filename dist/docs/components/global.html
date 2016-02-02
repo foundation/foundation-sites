@@ -1,0 +1,1118 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Global Styles | Foundation Docs</title>
+    <link rel="icon" href="../assets/img/icons/favicon.ico" type="image/x-icon">
+    <!-- For third-generation iPad with high-resolution Retina display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/img/icons/apple-touch-icon-144x144-precomposed.png">
+    <!-- For iPhone with high-resolution Retina display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/img/icons/apple-touch-icon-114x114-precomposed.png">
+    <!-- For first- and second-generation iPad: -->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/img/icons/apple-touch-icon-72x72-precomposed.png">
+    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <link rel="apple-touch-icon-precomposed" href="../assets/img/icons/apple-touch-icon-precomposed.png">
+
+    <meta name="description" content="Documentation and reference library for ZURB Foundation. JavaScript, CSS, components, grid and more.">
+    <meta name="author" content="ZURB, inc. ZURB network also includes zurb.com">
+    <meta name="copyright" content="ZURB, inc. Copyright (c) 2014">
+
+    <link href="../assets/css/docs.css" rel="stylesheet" />
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet" />
+    <script src="../assets/js/modernizr.js"></script>
+  </head>
+  <body class="antialiased hide-extras">
+
+  <!-- Info Banner For Announcements or Links -->
+  <a href="http://zurb.com/article/1416/foundation-6-is-here" id="notice">
+    <div class="info">
+      <h5>Foundation 6 is here!</h5>
+    </div>
+  </a>
+
+
+
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+         
+ 
+
+<!-- <nav class="tab-bar show-for-small">
+  <a class="off-canvas-left-toggle menu-icon ">
+    <span></span>
+  </a>  
+</nav> -->
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+  <ul class="title-area">
+    <li class="name">
+      <h1>
+        <a href="http://foundation.zurb.com/">
+          <img class="zurb-logo" src="http://foundation.zurb.com/docs/assets/img/zurb-logo.svg">
+          <span>Foundation</span>
+        </a>
+      </h1>
+    </li>
+  </ul>
+
+  <section class="top-bar-section">
+    <ul class="right">
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="http://foundation.zurb.com/learn/features.html" class="">Learn</a>
+        <ul class="dropdown">
+          <li><a href="http://foundation.zurb.com/learn/about.html">About Foundation</a></li>
+          <li><a href="http://foundation.zurb.com/learn/tutorials.html">Tutorials</a></li>
+          <li><a href="http://foundation.zurb.com/learn/classes.html">Classes</a></li>
+          <li><a href="http://foundation.zurb.com/learn/case-studies.html">Case Studies</a></li>
+          <li><a href="http://foundation.zurb.com/learn/brands.html">Brands</a></li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="http://foundation.zurb.com/develop/getting-started.html" class="">Develop</a>
+        <ul class="dropdown">
+          <li class="title">Frameworks</li>
+          <li><a class="" href="http://foundation.zurb.com/sites.html">Foundation for Sites</a></li>
+          <li><a  class="" href="http://foundation.zurb.com/apps.html">Foundation for Apps</a></li>
+          <li><a  class="spaced-list-item" href="http://foundation.zurb.com/emails.html">Foundation for Emails</a></li>
+          <li class="spaced-divider"><hr></li>
+          <li><a href="http://foundation.zurb.com/templates.html">HTML Templates</a></li>
+          <li><a href="http://foundation.zurb.com/develop/resources.html">Resources</a></li>
+          <li><a href="http://foundation.zurb.com/sites/building-blocks.html">Building Blocks</a></li>
+          <li><a href="http://foundation.zurb.com/develop/contribute.html">Contribute</a></li>  
+          
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="http://foundation.zurb.com/support/support.html" class="">Support</a>
+        <ul class="dropdown">
+          <li><a href="http://foundation.zurb.com/support/support.html">Support Channels</a></li>
+          <li><a href="http://foundation.zurb.com/forum">Foundation Forum</a></li>
+          <li><a href="http://foundation.zurb.com/support/faq.html">FAQs</a></li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="../../business/services.html" class="">Business</a>
+        <ul class="dropdown">
+          <li><a href="../../business/services.html">Services</a></li>
+          <li><a href="http://foundation.zurb.com/learn/certification.html">Certification</a></li>
+          <li><a href="../../business/business-support.html">Business Support</a></li>
+          <li><a href="../../business/engineering-studios.html">Engineering Studios</a></li>
+          <li><a href="../../business/training.html">Business Training</a></li>
+          <li><a href="../../business/design-apps.html">Design Apps</a></li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li>
+        <a href="http://foundation.zurb.com/docs" class="">Docs</a>
+      </li>
+      <li class="divider"></li>
+      <li class="has-form">
+        <a href="http://foundation.zurb.com/docs" class="small button">Getting Started</a>
+    </ul>
+  </section>
+</nav>
+        <nav class="tab-bar show-for-small">
+  <a class="left-off-canvas-toggle menu-icon">
+    <span>Foundation</span>
+  </a>
+</nav>
+
+<aside class="marketing-left-off-canvas-menu">
+
+  <ul class="off-canvas-list">
+    <li><label class="first">Foundation</label></li>
+    <li><a href="http://foundation.zurb.com">Home</a></li>
+  </ul>
+
+  <hr>
+
+  <ul class="off-canvas-list">
+      <li><label>Setup</label></li>
+
+      <li><a href="../index.html" data-search="">Getting Started</a></li>
+      <li><a href="../css.html" data-search="Styles">CSS</a></li>
+      <li><a href="../sass.html" data-search="Sass">Sass</a></li>      
+      <li><a href="../sass-files.html" data-search="Sass,Sass - What You Get, How to Use Sass">Sass Files</a></li>
+      <li><a href="../using-sass.html" data-search="Sass,Sass - What You Get, How to Use Sass">Using Sass</a></li>
+      <li><a href="../applications.html" data-search="Rails,Gem">Applications</a></li>
+      <li><a href="../javascript.html" data-search="">Javascript</a></li>
+      <li><a href="global.html" data-search="Global Styles,Global Mixins,Global Variables,Useful HTML Classes">Global Styles</a></li>
+      <li><a href="kitchen_sink.html" data-search="">Kitchen Sink</a></li>
+      <li><a href="../upgrading.html" data-search="Migration">Upgrading</a></li>
+
+      <li class="divider"></li>
+      <li><label>Structure</label></li>
+      <li><a href="../media-queries.html" data-search="Breakpoints">Media Queries</a></li>
+      <li><a href="visibility.html" data-search="">Visibility</a></li>
+      <li><a href="grid.html" data-search="">Grid</a></li>
+      <li><a href="block_grid.html" data-search="">Block Grid</a></li>
+      <li><a href="interchange.html" data-search="Responsive Images">Interchange Responsive Content <span class="label">JS</span></a></li>
+      <li><a href="../utility-classes.html" data-search="">Utility Classes</a></li>
+      <li><a href="../javascript-utilities.html" data-search="">Javascript Utilities</a></li>
+      <li><a href="rtl.html" data-search="RTL">Right-to-Left Support</a></li>
+
+      <li class="divider"></li>
+      <li><label>Navigation</label></li>
+      <li><a href="offcanvas.html" data-search="Off Canvas">Off-canvas <span class="label">JS</span></a></li>
+      <li><a href="topbar.html" data-search="Nav Bar,Navigation,Sticky">Top Bar <span class="label">JS</span></a></li>
+      <li><a href="icon-bar.html" data-search="">Icon Bar</a></li>
+      <li><a href="sidenav.html" data-search="">Side Nav</a></li>
+      <li><a href="magellan.html" data-search="Scrollspy">Magellan Sticky Nav <span class="label">JS</span></a></li>
+      <li><a href="subnav.html" data-search="">Sub Nav</a></li>
+      <li><a href="breadcrumbs.html" data-search="Navigation Path,Cookie Crumb">Breadcrumbs</a></li>
+      <li><a href="pagination.html" data-search="">Pagination</a></li>
+
+      <li class="divider"></li>
+      <li><label>Media</label></li>
+      <li><a href="orbit.html" data-search="Carousel,Slider,Slideshow">Orbit Slider <span class="label">JS</span></a></li>
+      <li><a href="thumbnails.html" data-search="Images">Thumbnails</a></li>
+      <li><a href="clearing.html" data-search="Responsive Lightbox,Lightbox">Clearing Lightbox <span class="label">JS</span></a></li>
+      <li><a href="flex_video.html" data-search="Responsive Video">Flex Video</a></li>
+
+      <li class="divider"></li>
+      <li><label>Forms</label></li>
+      <li><a href="forms.html" data-search="">Forms</a></li>
+      <li><a href="switch.html" data-search="">Switches</a></li>
+      <li><a href="range_slider.html" data-search="Range Slider">Sliders <span class="label">JS</span></a></li>
+      <li><a href="abide.html" data-search="Form Validation,Field Validation">Abide Validation <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li><label>Buttons</label></li>
+      <li><a href="buttons.html" data-search="">Buttons</a></li>
+      <li><a href="button_groups.html" data-search="Button Bar">Button Groups</a></li>
+      <li><a href="split_buttons.html" data-search="">Split Buttons <span class="label">JS</span></a></li>
+      <li><a href="dropdown_buttons.html" data-search="">Dropdown Buttons <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li><label>Typography</label></li>
+      <li><a href="typography.html" data-search="Typography,Type-setting,Composition">Type</a></li>
+      <li><a href="inline_lists.html" data-search="Lists">Inline Lists</a></li>
+      <li><a href="labels.html" data-search="Tags">Labels</a></li>
+      <li><a href="keystrokes.html" data-search="">Keystrokes</a></li>
+
+      <li class="divider"></li>
+      <li class="heading"><label>Callouts &amp; Prompts</label></li>
+      <li><a href="reveal.html" data-search="Modal">Reveal Modal <span class="label">JS</span></a></li>
+      <li><a href="alert_boxes.html" data-search="Error,Success,Warning">Alerts <span class="label">JS</span></a></li>
+      <li><a href="panels.html" data-search="Wells">Panels</a></li>
+      <li><a href="tooltips.html" data-search="Popover">Tooltips <span class="label">JS</span></a></li>
+      <li><a href="joyride.html" data-search="Tooltip Tour,Guider,Tooltip Walk-through">Joyride <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li><label>Content</label></li>
+      <li><a href="dropdown.html" data-search="">Dropdowns <span class="label">JS</span></a></li>
+      <li><a href="pricing_tables.html" data-search="">Pricing Tables</a></li>
+      <li><a href="progress_bars.html" data-search="">Progress Bars</a></li>
+      <li><a href="tables.html" data-search="">Tables</a></li>
+      <li><a href="accordion.html" data-search="">Accordion <span class="label">JS</span></a></li>
+      <li><a href="tabs.html" data-search="">Tabs <span class="label">JS</span></a></li>
+      <li><a href="equalizer.html" data-search="">Equalizer <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li><label>Support</label></li>
+
+      <li><a href="../changelog.html" data-search="">Changelog</a></li>
+      <li><a href="../compatibility.html" data-search="">Compatibility</a></li>
+
+      <li class="divider"></li>
+      <li class="heading"><label>Older Docs</label></li>
+      <li><a href="/docs/v/4.3.2/" data-search="">Foundation 4</a></li>
+      <li><a href="/docs/v/3.2.5/" data-search="">Foundation 3</a></li>
+      <li><a href="/docs/v/2.2.1/" data-search="">Foundation 2</a></li>
+    </ul>
+
+    <hr>
+
+    <div class="zurb-links">
+    <ul class="top">
+      <li class="logo"><a href="http://zurb.com"></a></li>
+      <li><a href="http://zurb.com/about">About</a></li>
+      <li><a href="http://zurb.com/blog">Blog</a></li>
+      <li><a href="http://zurb.com/contact">Contact</a></li>
+    </ul>
+    <ul class="pillars">
+      <li>
+        <a href="http://www.zurb.com/studios" class="footer-link-block services">
+          <span class="title">Studios</span>
+          <span>Helping startups win since '98.</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://foundation.zurb.com/" class="footer-link-block foundation">
+          <span class="title">Foundation</span>
+          <span>World's most advanced responsive framework.</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://zurb.com/notable" class="footer-link-block apps">
+          <span class="title">Notable</span>
+          <span>Tools to rapidly prototype and iterate.</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://zurb.com/university" class="footer-link-block expo">
+          <span class="title">University</span>
+          <span>Online training for smarter product design.</span>
+        </a>
+      </li>
+    </ul>
+</div>
+
+</aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section role="main" class="scroll-container">
+
+          <div class="row">
+            <div class="large-3 medium-4 columns">
+              <div class="hide-for-small">
+                <div class="sidebar">
+  <h5>Foundation Documentation</h5>
+  <form>
+    <!--  <label>Search Documentation</label> -->
+    <input tabindex="1" id="autocomplete" type="search" placeholder="Search Docs: e.g. forms">
+  </form>
+
+  <a href="/develop/download.html" class="download button expand">Download Foundation</a>
+
+  <nav>
+    <ul class="side-nav">
+      <li class="heading">Setup</li>
+
+      <li><a href="../index.html" data-search="">Getting Started</a></li>
+      <li><a href="../css.html" data-search="Styles">CSS</a></li>
+      <li><a href="../sass.html" data-search="Sass">Sass</a></li>
+      <li><a href="../sass-files.html" data-search="Sass,Sass - What You Get, How to Use Sass">Sass Files</a></li>
+      <li><a href="../using-sass.html" data-search="Sass,Sass - What You Get, How to Use Sass">Using Sass</a></li>
+      <li><a href="../applications.html" data-search="Rails,Gem">Applications</a></li>
+      <li><a href="../javascript.html" data-search="">JavaScript</a></li>
+      <li><a href="global.html" data-search="Global Styles,Global Mixins,Global Variables,Useful HTML Classes">Global Styles</a></li>
+      <li><a href="kitchen_sink.html" data-search="">Kitchen Sink</a></li>
+      <li><a href="../accessibility.html" data-search="accessibility">Accessibility</a></li>
+      <li><a href="../upgrading.html" data-search="Migration">Upgrading</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Structure</li>
+      <li><a href="../media-queries.html" data-search="Breakpoints">Media Queries</a></li>
+      <li><a href="visibility.html" data-search="">Visibility</a></li>
+      <li><a href="grid.html" data-search="">Grid</a></li>
+      <li><a href="block_grid.html" data-search="">Block Grid</a></li>
+      <li><a href="interchange.html" data-search="Responsive Images">Interchange Responsive Content <span class="label">JS</span></a></li>
+      <li><a href="../utility-classes.html" data-search="">Utility Classes</a></li>
+      <li><a href="../javascript-utilities.html" data-search="">Javascript Utilities</a></li>
+      <li><a href="rtl.html" data-search="RTL">Right-to-Left Support</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Navigation</li>
+      <li><a href="offcanvas.html" data-search="Off Canvas">Off-canvas <span class="label">JS</span></a></li>
+      <li><a href="topbar.html" data-search="Nav Bar,Navigation,Sticky">Top Bar <span class="label">JS</span></a></li>
+      <li><a href="icon-bar.html" data-search="">Icon Bar</a></li>
+      <li><a href="sidenav.html" data-search="">Side Nav</a></li>
+      <li><a href="magellan.html" data-search="Scrollspy">Magellan Sticky Nav <span class="label">JS</span></a></li>
+      <li><a href="subnav.html" data-search="">Sub Nav</a></li>
+      <li><a href="breadcrumbs.html" data-search="Navigation Path,Cookie Crumb">Breadcrumbs</a></li>
+      <li><a href="pagination.html" data-search="">Pagination</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Media</li>
+      <li><a href="orbit.html" data-search="Carousel,Slider,Slideshow">Orbit Slider <span class="label">JS</span></a></li>
+      <li><a href="thumbnails.html" data-search="Images">Thumbnails</a></li>
+      <li><a href="clearing.html" data-search="Responsive Lightbox,Lightbox">Clearing Lightbox <span class="label">JS</span></a></li>
+      <li><a href="flex_video.html" data-search="Responsive Video">Flex Video</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Forms</li>
+      <li><a href="forms.html" data-search="">Forms</a></li>
+      <li><a href="switch.html" data-search="">Switches</a></li>
+      <li><a href="range_slider.html" data-search="Range Slider">Range Sliders <span class="label">JS</span></a></li>
+      <li><a href="abide.html" data-search="Form Validation,Field Validation">Abide Validation <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Buttons</li>
+      <li><a href="buttons.html" data-search="">Buttons</a></li>
+      <li><a href="button_groups.html" data-search="Button Bar">Button Groups</a></li>
+      <li><a href="split_buttons.html" data-search="">Split Buttons <span class="label">JS</span></a></li>
+      <li><a href="dropdown_buttons.html" data-search="">Dropdown Buttons <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Typography</li>
+      <li><a href="typography.html" data-search="Typography,Type-setting,Composition">Type</a></li>
+      <li><a href="inline_lists.html" data-search="Lists">Inline Lists</a></li>
+      <li><a href="labels.html" data-search="Tags">Labels</a></li>
+      <li><a href="keystrokes.html" data-search="">Keystrokes</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Callouts &amp; Prompts</li>
+      <li><a href="reveal.html" data-search="Modal">Reveal Modal <span class="label">JS</span></a></li>
+      <li><a href="alert_boxes.html" data-search="Error,Success,Warning">Alerts <span class="label">JS</span></a></li>
+      <li><a href="panels.html" data-search="Wells">Panels</a></li>
+      <li><a href="tooltips.html" data-search="Popover">Tooltips <span class="label">JS</span></a></li>
+      <li><a href="joyride.html" data-search="Tooltip Tour,Guider,Tooltip Walk-through">Joyride <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Content</li>
+      <li><a href="dropdown.html" data-search="">Dropdowns <span class="label">JS</span></a></li>
+      <li><a href="pricing_tables.html" data-search="">Pricing Tables</a></li>
+      <li><a href="progress_bars.html" data-search="">Progress Bars</a></li>
+      <li><a href="tables.html" data-search="">Tables</a></li>
+      <li><a href="accordion.html" data-search="">Accordion <span class="label">JS</span></a></li>
+      <li><a href="tabs.html" data-search="">Tabs <span class="label">JS</span></a></li>
+      <li><a href="equalizer.html" data-search="">Equalizer <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Support</li>
+
+      <li><a href="../changelog.html" data-search="">Changelog</a></li>
+      <li><a href="../compatibility.html" data-search="">Compatibility</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Older Docs</li>
+      <li><a href="/docs/v/4.3.2/" data-search="">Foundation 4</a></li>
+      <li><a href="/docs/v/3.2.5/" data-search="">Foundation 3</a></li>
+      <li><a href="/docs/v/2.2.1/" data-search="">Foundation 2</a></li>
+
+    </ul>
+  </nav>
+
+
+  <!-- <section id="jobs">
+    <h5>Get a job, nerd!</h5>
+    <script type="text/javascript" src="http://www.zurb.com/jobs/widgets/jobs.js?limit=3"></script>
+    <p class="via">via <a href="http://www.zurb.com/jobs">Job Board from ZURB</a></p>
+  </section> -->
+
+</div>
+              </div>
+            </div>
+            <div class="large-9 medium-8 columns">
+              <h1 id="global-styles">Global Styles</h1>
+              <div id="component-name" name="Global Styles"></div>
+              <h3 class="subheader">Every Foundation project needs to include these global styles in order to work properly. These include things like basic formatting and global utility classes.</h3>
+
+<hr>
+<h4>SCSS</h4>
+
+<pre><code class="language-scss"><div class="code-container"><span class="comment">// Foundation by ZURB</span>
+<span class="comment">// foundation.zurb.com</span>
+<span class="comment">// Licensed under MIT Open Source</span>
+
+<span class="at_rule">@<span class="keyword">import</span> <span class="string">"../functions"</span>;</span>
+<span class="comment">//</span>
+<span class="comment">// Foundation Variables</span>
+<span class="comment">//</span>
+
+<span class="comment">// Data attribute namespace</span>
+<span class="comment">// styles get applied to [data-mysite-plugin], etc</span>
+$namespace<span class="value">: false !default;</span>
+
+<span class="comment">// The default font-size is set to 100% of the browser style sheet (usually 16px)</span>
+<span class="comment">// for compatibility with browser-based text zoom or user-set defaults.</span>
+
+<span class="comment">// Since the typical default browser font-size is 16px, that makes the calculation for grid size.</span>
+<span class="comment">// If you want your base font-size to be different and not have it affect the grid breakpoints,</span>
+<span class="comment">// set $rem-base to $base-font-size and make sure $base-font-size is a px value.</span>
+$<span class="tag">base</span>-<span class="attribute">font-size</span><span class="value">: <span class="number">100</span>% !default;</span>
+
+<span class="comment">// $base-line-height is 24px while $base-font-size is 16px</span>
+$<span class="tag">base</span>-<span class="attribute">line-height</span><span class="value">: <span class="number">150</span>% !default;</span>
+
+<span class="comment">//</span>
+<span class="comment">// Global Foundation Mixins</span>
+<span class="comment">//</span>
+
+<span class="comment">// @mixins</span>
+<span class="comment">//</span>
+<span class="comment">// We use this to control border radius.</span>
+<span class="comment">// $radius - Default: $global-radius || 4px</span>
+<span class="at_rule">@<span class="keyword">mixin</span><span class="preprocessor"> radius</span>($radius:$global-radius) {</span>
+  <span class="at_rule">@if $radius {</span>
+    <span class="attribute">border-radius</span><span class="value">: $radius;</span>
+  }
+}
+
+<span class="comment">// @mixins</span>
+<span class="comment">//</span>
+<span class="comment">// We use this to create equal side border radius on elements.</span>
+<span class="comment">// $side - Options: left, right, top, bottom</span>
+<span class="at_rule">@<span class="keyword">mixin</span><span class="preprocessor"> side-radius</span>($side, $radius:$global-radius) {</span>
+  <span class="at_rule">@if ($side ==<span class="preprocessor"> left</span><span class="preprocessor"> or</span> $side ==<span class="preprocessor"> right</span>) {</span>
+    -webkit-<span class="attribute">border-bottom</span>-#{$side}-radius<span class="value">: $radius;</span>
+    -webkit-<span class="attribute">border-top</span>-#{$side}-radius<span class="value">: $radius;</span>
+    <span class="attribute">border-bottom</span>-#{$side}-radius<span class="value">: $radius;</span>
+    <span class="attribute">border-top</span>-#{$side}-radius<span class="value">: $radius;</span>
+  } <span class="at_rule">@else {</span>
+    -webkit-#{$side}-<span class="attribute">left</span>-radius<span class="value">: $radius;</span>
+    -webkit-#{$side}-<span class="attribute">right</span>-radius<span class="value">: $radius;</span>
+    <span class="attribute">border</span>-#{$side}-<span class="attribute">left</span>-radius<span class="value">: $radius;</span>
+    <span class="attribute">border</span>-#{$side}-<span class="attribute">right</span>-radius<span class="value">: $radius;</span>
+  }
+}
+
+<span class="comment">// @mixins</span>
+<span class="comment">//</span>
+<span class="comment">// We can control whether or not we have inset shadows edges.</span>
+<span class="comment">// $active - Default: true, Options: false</span>
+<span class="at_rule">@<span class="keyword">mixin</span><span class="preprocessor"> inset-shadow</span>($active:true) {</span>
+  <span class="attribute">box-shadow</span><span class="value">: $shiny-edge-size $shiny-edge-color inset;</span>
+
+  <span class="at_rule">@if $active {</span> &amp;<span class="pseudo">:active</span> {
+    <span class="attribute">box-shadow</span><span class="value">: $shiny-edge-size $shiny-edge-active-color inset;</span> } }
+}
+
+<span class="comment">// @mixins</span>
+<span class="comment">//</span>
+<span class="comment">// We use this to add transitions to elements</span>
+<span class="comment">// $property - Default: all, Options: http://www.w3.org/TR/css3-transitions/#animatable-properties</span>
+<span class="comment">// $speed - Default: 300ms</span>
+<span class="comment">// $ease - Default: ease-out, Options: http://css-tricks.com/almanac/properties/t/transition-timing-function/</span>
+<span class="at_rule">@<span class="keyword">mixin</span><span class="preprocessor"> single-transition</span>($property:all, $speed:<span class="number">300</span>ms, $ease:ease-out) {</span>
+  <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> transition</span>($property, $speed, $ease);</span>
+}
+
+<span class="comment">// @mixins</span>
+<span class="comment">//</span>
+<span class="comment">// We use this to add single or multiple transitions to elements</span>
+<span class="comment">// $property - Default: all, Options: http://www.w3.org/TR/css3-transitions/#animatable-properties</span>
+<span class="comment">// $speed - Default: 300ms</span>
+<span class="comment">// $ease - Default: ease-out, Options: http://css-tricks.com/almanac/properties/t/transition-timing-function/</span>
+<span class="comment">// $delay - Default: null (0s)</span>
+<span class="at_rule">@<span class="keyword">mixin</span><span class="preprocessor"> transition</span>($property:all, $speed:<span class="number">300</span>ms, $ease:ease-out, $delay:null) {</span>
+  $<span class="attribute">transition</span><span class="value">: none;</span>
+
+  <span class="at_rule">@if<span class="preprocessor"> length</span>($property) &gt;<span class="preprocessor"> 1</span> {</span>
+
+    <span class="at_rule">@each $transition_list<span class="preprocessor"> in</span> $property {</span>
+
+      <span class="at_rule">@<span class="keyword">for</span> $i<span class="preprocessor"> from</span><span class="preprocessor"> 1</span><span class="preprocessor"> through</span><span class="preprocessor"> length</span>($transition_list) {</span>
+
+        <span class="at_rule">@if $i ==<span class="preprocessor"> 1</span> {</span>
+          $_property<span class="value">: nth($transition_list, $i);</span>
+        }
+
+        <span class="at_rule">@if<span class="preprocessor"> length</span>($transition_list) &gt;<span class="preprocessor"> 1</span> {</span>
+          <span class="at_rule">@if $i ==<span class="preprocessor"> 2</span> {</span>
+            $_speed<span class="value">: nth($transition_list, $i);</span>
+          }
+        } <span class="at_rule">@else {</span>
+          $_speed<span class="value">: $speed;</span>
+        }
+
+        <span class="at_rule">@if<span class="preprocessor"> length</span>($transition_list) &gt;<span class="preprocessor"> 2</span> {</span>
+          <span class="at_rule">@if $i ==<span class="preprocessor"> 3</span> {</span>
+            $_ease<span class="value">: nth($transition_list, $i);</span>
+          }
+        } <span class="at_rule">@else {</span>
+          $_ease<span class="value">: $ease;</span>
+        }
+
+        <span class="at_rule">@if<span class="preprocessor"> length</span>($transition_list) &gt;<span class="preprocessor"> 3</span> {</span>
+          <span class="at_rule">@if $i ==<span class="preprocessor"> 4</span> {</span>
+            $_delay<span class="value">: nth($transition_list, $i);</span>
+          }
+        } <span class="at_rule">@else {</span>
+          $_delay<span class="value">: $delay;</span>
+        }
+      }
+
+      <span class="at_rule">@if $transition ==<span class="preprocessor"> none</span> {</span>
+        $<span class="attribute">transition</span><span class="value">: $_property $_speed $_ease $_delay;</span>
+      } <span class="at_rule">@else {</span>
+        $<span class="attribute">transition</span><span class="value">: $transition, $_property $_speed $_ease $_delay;</span>
+      }
+    }
+  }
+  <span class="at_rule">@else {</span>
+
+    <span class="at_rule">@each $prop<span class="preprocessor"> in</span> $property {</span>
+
+      <span class="at_rule">@if $transition ==<span class="preprocessor"> none</span> {</span>
+        $<span class="attribute">transition</span><span class="value">: $prop $speed $ease $delay;</span>
+      } <span class="at_rule">@else {</span>
+        $<span class="attribute">transition</span><span class="value">: $transition, $prop $speed $ease $delay;</span>
+      }
+    }
+  }
+
+  <span class="attribute">transition</span><span class="value">: $transition;</span>
+}
+
+<span class="comment">// @mixins</span>
+<span class="comment">//</span>
+<span class="comment">// We use this to add box-sizing across browser prefixes</span>
+<span class="at_rule">@<span class="keyword">mixin</span><span class="preprocessor"> box-sizing</span>($type:border-box) {</span>
+  -webkit-<span class="attribute">box-sizing</span><span class="value">: $type;</span> <span class="comment">// Android &lt; 2.3, iOS &lt; 4</span>
+     -moz-<span class="attribute">box-sizing</span><span class="value">: $type;</span> <span class="comment">// Firefox &lt; 29</span>
+          <span class="attribute">box-sizing</span><span class="value">: $type;</span> <span class="comment">// Chrome, IE 8+, Opera, Safari 5.1</span>
+}
+
+<span class="comment">// @mixins</span>
+<span class="comment">//</span>
+<span class="comment">// We use this to create isosceles triangles</span>
+<span class="comment">// $triangle-size - Used to set border-size. No default, set a px or em size.</span>
+<span class="comment">// $triangle-color - Used to set border-color which makes up triangle. No default</span>
+<span class="comment">// $triangle-direction - Used to determine which direction triangle points. Options: top, bottom, left, right</span>
+<span class="at_rule">@<span class="keyword">mixin</span><span class="preprocessor"> css-triangle</span>($triangle-size, $triangle-color, $triangle-direction) {</span>
+  <span class="attribute">content</span><span class="value">: <span class="string">""</span>;</span>
+  <span class="attribute">display</span><span class="value">: block;</span>
+  <span class="attribute">width</span><span class="value">: <span class="number">0</span>;</span>
+  <span class="attribute">height</span><span class="value">: <span class="number">0</span>;</span>
+  <span class="attribute">border</span><span class="value">: inset $triangle-size;</span>
+  <span class="at_rule">@if ($triangle-direction ==<span class="preprocessor"> top</span>) {</span>
+    <span class="attribute">border-color</span><span class="value">: $triangle-color transparent transparent transparent;</span>
+    <span class="attribute">border-top-style</span><span class="value">: solid;</span>
+  }
+  <span class="at_rule">@if ($triangle-direction ==<span class="preprocessor"> bottom</span>) {</span>
+    <span class="attribute">border-color</span><span class="value">: transparent transparent $triangle-color transparent;</span>
+    <span class="attribute">border-bottom-style</span><span class="value">: solid;</span>
+  }
+  <span class="at_rule">@if ($triangle-direction ==<span class="preprocessor"> left</span>) {</span>
+    <span class="attribute">border-color</span><span class="value">: transparent transparent transparent $triangle-color;</span>
+    <span class="attribute">border-left-style</span><span class="value">: solid;</span>
+  }
+  <span class="at_rule">@if ($triangle-direction ==<span class="preprocessor"> right</span>) {</span>
+    <span class="attribute">border-color</span><span class="value">: transparent $triangle-color transparent transparent;</span>
+    <span class="attribute">border-right-style</span><span class="value">: solid;</span>
+  }
+}
+
+<span class="comment">// @mixins</span>
+<span class="comment">//</span>
+<span class="comment">// We use this to create the icon with three lines aka the hamburger icon, the menu-icon or the navicon</span>
+<span class="comment">// $width - Width of hamburger icon in rem</span>
+<span class="comment">// $left - If false, icon will be centered horizontally || explicitly set value in rem</span>
+<span class="comment">// $top - If false, icon will be centered vertically || explicitly set value in rem</span>
+<span class="comment">// $thickness - thickness of lines in hamburger icon, set value in px</span>
+<span class="comment">// $gap - spacing between the lines in hamburger icon, set value in px</span>
+<span class="comment">// $color - icon color</span>
+<span class="comment">// $hover-color - icon color during hover</span>
+<span class="comment">// $offcanvas - Set to true of @include in offcanvas</span>
+<span class="at_rule">@<span class="keyword">mixin</span><span class="preprocessor"> hamburger</span>($width, $left, $top, $thickness, $gap, $color, $hover-color, $offcanvas) {</span>
+  <span class="tag">span</span><span class="pseudo">::after</span> {
+    <span class="attribute">content</span><span class="value">: <span class="string">""</span>;</span>
+    <span class="attribute">position</span><span class="value">: absolute;</span>
+    <span class="attribute">display</span><span class="value">: block;</span>
+    <span class="attribute">height</span><span class="value">: <span class="number">0</span>;</span>
+
+    <span class="at_rule">@if $offcanvas {</span>
+      <span class="at_rule">@if $top {</span>
+        <span class="attribute">top</span><span class="value">: $top;</span>
+      }
+      <span class="at_rule">@else {</span>
+        <span class="attribute">top</span><span class="value">: <span class="number">50</span>%;</span>
+        <span class="attribute">margin-top</span><span class="value">: -$width/<span class="number">2</span>;</span>
+      }
+      <span class="at_rule">@if $left {</span>
+        <span class="attribute">left</span><span class="value">: $left;</span>
+      }
+      <span class="at_rule">@else {</span>
+        <span class="attribute">left</span><span class="value">: ($tabbar-menu-icon-width - $width)/<span class="number">2</span>;</span>
+      }
+    }
+    <span class="at_rule">@else {</span>
+      <span class="attribute">top</span><span class="value">: <span class="number">50</span>%;</span>
+      <span class="attribute">margin-top</span><span class="value">: -($width/<span class="number">2</span>);</span>
+      #{$opposite-<span class="attribute">direction</span>}<span class="value">: $topbar-link-padding;</span>
+    }
+
+    <span class="attribute">box-shadow</span><span class="value">:
+      <span class="number">0</span> <span class="number">0</span>px <span class="number">0</span> $thickness $color,
+      <span class="number">0</span> $gap + $thickness <span class="number">0</span> $thickness $color,
+      <span class="number">0</span> (<span class="number">2</span> * $gap + <span class="number">2</span>*$thickness) <span class="number">0</span> $thickness $color;</span>
+    <span class="attribute">width</span><span class="value">: $width;</span>
+  }
+  <span class="tag">span</span><span class="pseudo">:hover</span><span class="pseudo">:after</span> {
+    <span class="attribute">box-shadow</span><span class="value">:
+      <span class="number">0</span> <span class="number">0</span>px <span class="number">0</span> $thickness $hover-color,
+      <span class="number">0</span> $gap + $thickness <span class="number">0</span> $thickness $hover-color,
+      <span class="number">0</span> (<span class="number">2</span> * $gap + <span class="number">2</span>*$thickness) <span class="number">0</span> $thickness $hover-color;</span>
+  }
+}
+
+<span class="comment">// We use this to do clear floats</span>
+<span class="at_rule">@<span class="keyword">mixin</span><span class="preprocessor"> clearfix</span> {</span>
+  &amp;<span class="pseudo">:before</span>, &amp;<span class="pseudo">:after</span> { <span class="attribute">content</span><span class="value">: <span class="string">" "</span>;</span> <span class="attribute">display</span><span class="value">: table;</span> }
+  &amp;<span class="pseudo">:after</span> { <span class="attribute">clear</span><span class="value">: both;</span> }
+}
+
+<span class="comment">// @mixins</span>
+<span class="comment">//</span>
+<span class="comment">// We use this to add a glowing effect to block elements</span>
+<span class="comment">// $selector - Used for selector state. Default: focus, Options: hover, active, visited</span>
+<span class="comment">// $fade-time - Default: 300ms</span>
+<span class="comment">// $glowing-effect-color - Default: fade-out($primary-color, .25)</span>
+<span class="at_rule">@<span class="keyword">mixin</span><span class="preprocessor"> block-glowing-effect</span>($selector:focus, $fade-time:<span class="number">300</span>ms, $glowing-effect-color:<span class="function">fade-out($primary-color, .<span class="number">25</span>)</span>) {</span>
+  <span class="attribute">transition</span><span class="value">: box-shadow $fade-time, border-color $fade-time ease-in-out;</span>
+
+  &amp;<span class="value">:#{$selector} {
+    box-shadow: <span class="number">0</span> <span class="number">0</span> <span class="number">5</span>px $glowing-effect-color;</span>
+    <span class="attribute">border-color</span><span class="value">: $glowing-effect-color;</span>
+  }
+}
+
+<span class="comment">// @mixins</span>
+<span class="comment">//</span>
+<span class="comment">// We use this to translate elements in 2D</span>
+<span class="comment">// $horizontal: Default: 0</span>
+<span class="comment">// $vertical: Default: 0</span>
+<span class="at_rule">@<span class="keyword">mixin</span><span class="preprocessor"> translate2d</span>($horizontal:<span class="number">0</span>, $vertical:<span class="number">0</span>) {</span>
+  <span class="attribute">transform</span><span class="value">: translate($horizontal,$vertical)
+}
+
+// @mixins
+//
+// Makes an element visually hidden, but accessible.
+// @see http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+@mixin element-invisible {
+  position: absolute <span class="important">!important</span>;</span>
+  <span class="attribute">height</span><span class="value">: <span class="number">1</span>px;</span>
+  <span class="attribute">width</span><span class="value">: <span class="number">1</span>px;</span>
+  <span class="attribute">overflow</span><span class="value">: hidden;</span>
+  <span class="attribute">clip</span><span class="value">: rect(<span class="number">1</span>px, <span class="number">1</span>px, <span class="number">1</span>px, <span class="number">1</span>px);</span>
+}
+
+<span class="comment">// @mixins</span>
+<span class="comment">//</span>
+<span class="comment">// Turns off the element-invisible effect.</span>
+<span class="at_rule">@<span class="keyword">mixin</span><span class="preprocessor"> element-invisible-off</span> {</span>
+  <span class="attribute">position</span><span class="value">: static <span class="important">!important</span>;</span>
+  <span class="attribute">height</span><span class="value">: auto;</span>
+  <span class="attribute">width</span><span class="value">: auto;</span>
+  <span class="attribute">overflow</span><span class="value">: visible;</span>
+  <span class="attribute">clip</span><span class="value">: auto;</span>
+}
+
+<span class="comment">// We use these as default colors throughout</span>
+$primary-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#008CBA</span> !default;</span>   <span class="comment">// bondi-blue</span>
+$secondary-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#e7e7e7</span> !default;</span> <span class="comment">// white-lilac</span>
+$alert-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#f04124</span> !default;</span>     <span class="comment">// cinnabar</span>
+$success-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#43AC6A</span> !default;</span>   <span class="comment">// sea-green</span>
+$warning-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#f08a24</span> !default;</span>   <span class="comment">// carrot</span>
+$info-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#a0d3e8</span> !default;</span>      <span class="comment">// cornflower</span>
+
+$white         <span class="value">: <span class="hexcolor">#FFFFFF</span> !default;</span>
+$ghost         <span class="value">: <span class="hexcolor">#FAFAFA</span> !default;</span>
+$snow          <span class="value">: <span class="hexcolor">#F9F9F9</span> !default;</span>
+$vapor         <span class="value">: <span class="hexcolor">#F6F6F6</span> !default;</span>
+$white-smoke   <span class="value">: <span class="hexcolor">#F5F5F5</span> !default;</span>
+$silver        <span class="value">: <span class="hexcolor">#EFEFEF</span> !default;</span>
+$smoke         <span class="value">: <span class="hexcolor">#EEEEEE</span> !default;</span>
+$gainsboro     <span class="value">: <span class="hexcolor">#DDDDDD</span> !default;</span>
+$iron          <span class="value">: <span class="hexcolor">#CCCCCC</span> !default;</span>
+$<span class="tag">base</span>          <span class="value">: <span class="hexcolor">#AAAAAA</span> !default;</span>
+$aluminum      <span class="value">: <span class="hexcolor">#999999</span> !default;</span>
+$jumbo         <span class="value">: <span class="hexcolor">#888888</span> !default;</span>
+$monsoon       <span class="value">: <span class="hexcolor">#777777</span> !default;</span>
+$steel         <span class="value">: <span class="hexcolor">#666666</span> !default;</span>
+$charcoal      <span class="value">: <span class="hexcolor">#555555</span> !default;</span>
+$tuatara       <span class="value">: <span class="hexcolor">#444444</span> !default;</span>
+$oil           <span class="value">: <span class="hexcolor">#333333</span> !default;</span>
+$jet           <span class="value">: <span class="hexcolor">#222222</span> !default;</span>
+$black         <span class="value">: <span class="hexcolor">#000000</span> !default;</span>
+
+<span class="comment">// We use these to define default font weights</span>
+$<span class="attribute">font-weight</span>-<span class="attribute">normal</span><span class="value">: normal !default;</span>
+$<span class="attribute">font-weight</span>-<span class="value">bold</span><span class="value">: bold !default;</span>
+
+<span class="comment">// We use these to control various global styles</span>
+$<span class="tag">body</span>-bg<span class="value">: <span class="hexcolor">#fff</span> !default;</span>
+$<span class="tag">body</span>-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#222</span> !default;</span>
+$<span class="tag">body</span>-<span class="attribute">font-family</span><span class="value">: <span class="string">"Helvetica Neue"</span>, <span class="string">"Helvetica"</span>, Helvetica, Arial, sans-serif !default;</span>
+$<span class="tag">body</span>-<span class="attribute">font-weight</span><span class="value">: $font-weight-normal !default;</span>
+$<span class="tag">body</span>-<span class="attribute">font-style</span><span class="value">: normal !default;</span>
+
+<span class="comment">// We use this to control font-smoothing</span>
+$<span class="attribute">font</span>-smoothing<span class="value">: antialiased !default;</span>
+
+<span class="comment">// We use these to control text direction settings</span>
+$<span class="value">text</span>-<span class="attribute">direction</span><span class="value">: ltr !default;</span>
+$<span class="value">default</span>-<span class="attribute">float</span><span class="value">: left !default;</span>
+$opposite-<span class="attribute">direction</span><span class="value">: right !default;</span>
+<span class="at_rule">@if $text-direction ==<span class="preprocessor"> ltr</span> {</span>
+  $<span class="value">default</span>-<span class="attribute">float</span><span class="value">: left;</span>
+  $opposite-<span class="attribute">direction</span><span class="value">: right;</span>
+} <span class="at_rule">@else {</span>
+  $<span class="value">default</span>-<span class="attribute">float</span><span class="value">: right;</span>
+  $opposite-<span class="attribute">direction</span><span class="value">: left;</span>
+}
+
+<span class="comment">// We use these to make sure border radius matches unless we want it different.</span>
+$global-radius<span class="value">: <span class="number">3</span>px !default;</span>
+$global-rounded<span class="value">: <span class="number">1000</span>px !default;</span>
+
+<span class="comment">// We use these to control inset shadow shiny edges and depressions.</span>
+$shiny-edge-size<span class="value">: <span class="number">0</span> <span class="number">1</span>px <span class="number">0</span> !default;</span>
+$shiny-edge-<span class="attribute">color</span><span class="value">: rgba(<span class="hexcolor">#fff</span>, .<span class="number">5</span>) !default;</span>
+$shiny-edge-active-<span class="attribute">color</span><span class="value">: rgba(<span class="hexcolor">#000</span>, .<span class="number">2</span>) !default;</span>
+
+<span class="comment">// We use this to control whether or not CSS classes come through in the gem files.</span>
+$include-<span class="tag">html</span>-classes<span class="value">: true !default;</span>
+$include-print-styles<span class="value">: true !default;</span>
+$include-<span class="tag">html</span>-global-classes<span class="value">: $include-html-classes !default;</span>
+
+$column-gutter<span class="value">: rem-calc(<span class="number">30</span>) !default;</span>
+
+<span class="comment">// Media Query Ranges</span>
+$<span class="tag">small</span>-range<span class="value">: (<span class="number">0</span>em, <span class="number">40</span>em) !default;</span>
+$<span class="value">medium</span>-range<span class="value">: (<span class="number">40.063</span>em, <span class="number">64</span>em) !default;</span>
+$large-range<span class="value">: (<span class="number">64.063</span>em, <span class="number">90</span>em) !default;</span>
+$xlarge-range<span class="value">: (<span class="number">90.063</span>em, <span class="number">120</span>em) !default;</span>
+$xxlarge-range<span class="value">: (<span class="number">120.063</span>em, <span class="number">99999999</span>em) !default;</span>
+
+
+$screen<span class="value">: <span class="string">"only screen"</span> !default;</span>
+
+$landscape<span class="value">: <span class="string">"#{$screen} and (orientation: landscape)"</span> !default;</span>
+$portrait<span class="value">: <span class="string">"#{$screen} and (orientation: portrait)"</span> !default;</span>
+
+$<span class="tag">small</span>-up<span class="value">: $screen !default;</span>
+$<span class="tag">small</span>-only<span class="value">: <span class="string">"#{$screen} and (max-width: #{upper-bound($small-range)})"</span> !default;</span>
+
+$<span class="value">medium</span>-up<span class="value">: <span class="string">"#{$screen} and (min-width:#{lower-bound($medium-range)})"</span> !default;</span>
+$<span class="value">medium</span>-only<span class="value">: <span class="string">"#{$screen} and (min-width:#{lower-bound($medium-range)}) and (max-width:#{upper-bound($medium-range)})"</span> !default;</span>
+
+$large-up<span class="value">: <span class="string">"#{$screen} and (min-width:#{lower-bound($large-range)})"</span> !default;</span>
+$large-only<span class="value">: <span class="string">"#{$screen} and (min-width:#{lower-bound($large-range)}) and (max-width:#{upper-bound($large-range)})"</span> !default;</span>
+
+$xlarge-up<span class="value">: <span class="string">"#{$screen} and (min-width:#{lower-bound($xlarge-range)})"</span> !default;</span>
+$xlarge-only<span class="value">: <span class="string">"#{$screen} and (min-width:#{lower-bound($xlarge-range)}) and (max-width:#{upper-bound($xlarge-range)})"</span> !default;</span>
+
+$xxlarge-up<span class="value">: <span class="string">"#{$screen} and (min-width:#{lower-bound($xxlarge-range)})"</span> !default;</span>
+$xxlarge-only<span class="value">: <span class="string">"#{$screen} and (min-width:#{lower-bound($xxlarge-range)}) and (max-width:#{upper-bound($xxlarge-range)})"</span> !default;</span>
+
+<span class="comment">// Legacy</span>
+$<span class="tag">small</span><span class="value">: $medium-up;</span>
+$<span class="value">medium</span><span class="value">: $medium-up;</span>
+$large<span class="value">: $large-up;</span>
+
+
+<span class="comment">//We use this as cursors values for enabling the option of having custom cursors in the whole site's stylesheet</span>
+$<span class="attribute">cursor</span>-<span class="value">crosshair</span>-value<span class="value">: crosshair !default;</span>
+$<span class="attribute">cursor</span>-<span class="value">default</span>-value<span class="value">: default !default;</span>
+$<span class="attribute">cursor</span>-<span class="value">pointer</span>-value<span class="value">: pointer !default;</span>
+$<span class="attribute">cursor</span>-<span class="value">help</span>-value<span class="value">: help !default;</span>
+$<span class="attribute">cursor</span>-<span class="value">text</span>-value<span class="value">: text !default;</span>
+
+
+<span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> exports</span>(<span class="string">"global"</span>) {</span>
+
+  <span class="comment">// Meta styles are included in all builds, as they are a dependancy of the Javascript.</span>
+  <span class="comment">// Used to provide media query values for javascript components.</span>
+  <span class="comment">// Forward slash placed around everything to convince PhantomJS to read the value.</span>
+
+  <span class="tag">meta</span><span class="class">.foundation-version</span> {
+    <span class="attribute">font-family</span><span class="value">: <span class="string">"/5.4.0/"</span>;</span>
+  }
+
+  <span class="tag">meta</span><span class="class">.foundation-mq-small</span> {
+    <span class="attribute">font-family</span><span class="value">: <span class="string">"/"</span> + unquote($small-up) + <span class="string">"/"</span>;</span>
+    <span class="attribute">width</span><span class="value">: lower-bound($small-range);</span>
+  }
+
+  <span class="tag">meta</span><span class="class">.foundation-mq-small-only</span> {
+    <span class="attribute">font-family</span><span class="value">: <span class="string">"/"</span> + unquote($small-only) + <span class="string">"/"</span>;</span>
+    <span class="attribute">width</span><span class="value">: lower-bound($small-range);</span>
+  }
+
+  <span class="tag">meta</span><span class="class">.foundation-mq-medium</span> {
+    <span class="attribute">font-family</span><span class="value">: <span class="string">"/"</span> + unquote($medium-up) + <span class="string">"/"</span>;</span>
+    <span class="attribute">width</span><span class="value">: lower-bound($medium-range);</span>
+  }
+
+  <span class="tag">meta</span><span class="class">.foundation-mq-medium-only</span> {
+    <span class="attribute">font-family</span><span class="value">: <span class="string">"/"</span> + unquote($medium-only) + <span class="string">"/"</span>;</span>
+    <span class="attribute">width</span><span class="value">: lower-bound($medium-range);</span>
+  }
+
+  <span class="tag">meta</span><span class="class">.foundation-mq-large</span> {
+    <span class="attribute">font-family</span><span class="value">: <span class="string">"/"</span> + unquote($large-up) + <span class="string">"/"</span>;</span>
+    <span class="attribute">width</span><span class="value">: lower-bound($large-range);</span>
+  }
+
+  <span class="tag">meta</span><span class="class">.foundation-mq-large-only</span> {
+    <span class="attribute">font-family</span><span class="value">: <span class="string">"/"</span> + unquote($large-only) + <span class="string">"/"</span>;</span>
+    <span class="attribute">width</span><span class="value">: lower-bound($large-range);</span>
+  }
+
+  <span class="tag">meta</span><span class="class">.foundation-mq-xlarge</span> {
+    <span class="attribute">font-family</span><span class="value">: <span class="string">"/"</span> + unquote($xlarge-up) + <span class="string">"/"</span>;</span>
+    <span class="attribute">width</span><span class="value">: lower-bound($xlarge-range);</span>
+  }
+
+  <span class="tag">meta</span><span class="class">.foundation-mq-xlarge-only</span> {
+    <span class="attribute">font-family</span><span class="value">: <span class="string">"/"</span> + unquote($xlarge-only) + <span class="string">"/"</span>;</span>
+    <span class="attribute">width</span><span class="value">: lower-bound($xlarge-range);</span>
+  }
+
+  <span class="tag">meta</span><span class="class">.foundation-mq-xxlarge</span> {
+    <span class="attribute">font-family</span><span class="value">: <span class="string">"/"</span> + unquote($xxlarge-up) + <span class="string">"/"</span>;</span>
+    <span class="attribute">width</span><span class="value">: lower-bound($xxlarge-range);</span>
+  }
+
+  <span class="tag">meta</span><span class="class">.foundation-data-attribute-namespace</span> {
+    <span class="attribute">font-family</span><span class="value">: #{$namespace};</span>
+  }
+
+  <span class="at_rule">@if $<span class="keyword">include</span>-html-global-classes {</span>
+
+    <span class="comment">// Must be 100% for off canvas to work</span>
+    <span class="tag">html</span>, <span class="tag">body</span> { <span class="attribute">height</span><span class="value">: <span class="number">100</span>%;</span> }
+
+    <span class="comment">// Set box-sizing globally to handle padding and border widths</span>
+    *,
+    *<span class="pseudo">:before</span>,
+    *<span class="pseudo">:after</span> {
+      <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> box-sizing</span>(border-box);</span>
+    }
+
+    <span class="tag">html</span>,
+    <span class="tag">body</span> { <span class="attribute">font-size</span><span class="value">: $base-font-size;</span> }
+
+    <span class="comment">// Default body styles</span>
+    <span class="tag">body</span> {
+      <span class="attribute">background</span><span class="value">: $body-bg;</span>
+      <span class="attribute">color</span><span class="value">: $body-font-color;</span>
+      <span class="attribute">padding</span><span class="value">: <span class="number">0</span>;</span>
+      <span class="attribute">margin</span><span class="value">: <span class="number">0</span>;</span>
+      <span class="attribute">font-family</span><span class="value">: $body-font-family;</span>
+      <span class="attribute">font-weight</span><span class="value">: $body-font-weight;</span>
+      <span class="attribute">font-style</span><span class="value">: $body-font-style;</span>
+      <span class="attribute">line-height</span><span class="value">: $base-line-height;</span> <span class="comment">// Set to $base-line-height to take on browser default of 150%</span>
+      <span class="attribute">position</span><span class="value">: relative;</span>
+      <span class="attribute">cursor</span><span class="value">: $cursor-default-value;</span>
+    }
+
+  <span class="tag">a</span><span class="pseudo">:hover</span> { <span class="attribute">cursor</span><span class="value">: $cursor-pointer-value;</span> }
+
+    <span class="comment">// Grid Defaults to get images and embeds to work properly</span>
+    <span class="tag">img</span> { <span class="attribute">max-width</span><span class="value">: <span class="number">100</span>%;</span> <span class="attribute">height</span><span class="value">: auto;</span> }
+
+    <span class="tag">img</span> { -ms-interpolation-mode<span class="value">: bicubic;</span> }
+
+    <span class="id">#map_canvas</span>,
+    <span class="class">.map_canvas</span> {
+      <span class="tag">img</span>,
+      <span class="tag">embed</span>,
+      <span class="tag">object</span> { <span class="attribute">max-width</span><span class="value">: none <span class="important">!important</span>;</span>
+      }
+    }
+
+    <span class="comment">// Miscellaneous useful HTML classes</span>
+    <span class="class">.left</span>   { <span class="attribute">float</span><span class="value">: left <span class="important">!important</span>;</span> }
+    <span class="class">.right</span>  { <span class="attribute">float</span><span class="value">: right <span class="important">!important</span>;</span> }
+    <span class="class">.clearfix</span>     { <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> clearfix</span>;</span> }
+    <span class="class">.hide</span>         { <span class="attribute">display</span><span class="value">: none;</span> }
+
+    <span class="comment">// Font smoothing</span>
+    <span class="comment">// Antialiased font smoothing works best for light text on a dark background.</span>
+    <span class="comment">// Apply to single elements instead of globally to body.</span>
+    <span class="comment">// Note this only applies to webkit-based desktop browsers and Firefox 25 (and later) on the Mac.</span>
+    <span class="class">.antialiased</span> { -webkit-<span class="attribute">font</span>-smoothing<span class="value">: antialiased;</span> -moz-osx-<span class="attribute">font</span>-smoothing<span class="value">: grayscale;</span> }
+
+    <span class="comment">// Get rid of gap under images by making them display: inline-block; by default</span>
+    <span class="tag">img</span> {
+      <span class="attribute">display</span><span class="value">: inline-block;</span>
+      <span class="attribute">vertical-align</span><span class="value">: middle;</span>
+    }
+
+    <span class="comment">//</span>
+    <span class="comment">// Global resets for forms</span>
+    <span class="comment">//</span>
+
+    <span class="comment">// Make sure textarea takes on height automatically</span>
+    <span class="tag">textarea</span> { <span class="attribute">height</span><span class="value">: auto;</span> <span class="attribute">min-height</span><span class="value">: <span class="number">50</span>px;</span> }
+
+    <span class="comment">// Make select elements 100% width by default</span>
+    <span class="tag">select</span> { <span class="attribute">width</span><span class="value">: <span class="number">100</span>%;</span> }
+  }
+}</div></code></pre>
+
+
+
+<p><br>
+<br></p>
+<hr>
+
+<section class="building-blocks-section">
+  <h2 class="building-blocks-header">Building Blocks Using Global Styles</h2>
+  <div class="row">
+    <div data-building-blocks>
+
+    </div>
+  </div>
+
+  <br>
+
+  <h3 class="building-blocks-header">Want more? Check out all the hot <a href="http://zurb.com/building-blocks">Building Blocks &#8680;</a></h4>
+</section>
+
+
+
+            </div>
+          </div>
+          <!-- <section id="courses-banner-large">
+  <div class="row">
+    <div class="large-5 medium-5 columns banner-image">
+      <img src="http://foundation.zurb.com/assets/img/responsive-banner-main.svg" alt="responsive design">
+    </div>
+    <div class="large-7 medium-7 columns banner-info">
+      <h3>Get a running start with Foundation</h3>
+      <p>Learn the fundamentals of the world's most advanced responsive framework in our <strong>Intro to Foundation class.</strong> You'll learn from the creators themselves on how to use Foundation and jumpstart your next project. <a href="http://zurb.com/university/courses" class="inline-hide">Learn more about classes »</a></p>
+      <a href="http://zurb.com/university/foundation-intro?utm_source=Foundation%20Docs&utm_medium=Large%20Banner&utm_campaign=Intro%20to%20Foundation" class="button">Learn More</a>
+      <a href="http://zurb.com/university/courses" class="learn-more hide-for-medium-up">Learn more about classes »</a>
+    </div>
+  </div>
+</section> -->
+          <div id="newsletter">
+  <div class="row">
+    <div class="medium-8 columns">
+      <h5>Stay on top of what&rsquo;s happening in <a href="http://zurb.com/responsive">responsive design</a>.</h5>
+      <p>Sign up to receive monthly Responsive Reading highlights. <a href="http://zurb.com/responsive/reading">Read Last Month's Edition &raquo;</a></p>
+    </div>
+    <div class="medium-4 columns">
+      <form action="http://zurb.createsend.com/t/y/s/xlitlu/" method="post" id="subForm">
+        <div class="row collapse margintop-20px">
+          <div class="small-8 medium-8 columns">
+            <input id="fieldEmail" name="cm-xlitlu-xlitlu" type="email" placeholder="signup@example.com">
+          </div>
+          <div class="small-4 medium-4 columns">
+            <input type="submit" href="#" class="postfix button" value="Sign Up">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="zurb-footer-top bg-fblue">
+  <div class="row property">
+    <div class="medium-4 columns">
+      <div class="property-info">
+        <h3>Foundation for Sites</h3>
+        <p>Foundation is a responsive front-end framework made by <a href="http://zurb.com">ZURB</a>, a product design company in Campbell, CA. This framework is the result of building web products &amp; services since 1998.
+        </p>
+      </div>
+    </div>
+
+    <div class="medium-8 columns">
+      <div class="row collapse">
+        <div class="medium-4 columns">
+          <div class="learn-links">
+            <h4 class="hide-for-small">Want more?</h4>
+            <ul>
+              <li><a href="http://foundation.zurb.com/apps">Foundation for Apps</a></li>
+              <li><a href="http://zurb.com/ink/">Ink Responsive Emails</a></li>
+              <li><a href="http://zurb.com/notable">Notable Design Apps</a></li>
+              <li><a href="http://zurb.com/university/courses">Training</a></li>
+              <li><a href="http://zurb.com/library">Design Resources</a></li>
+            </ul>
+          </div>
+        </div>
+          <div class="medium-4 columns">
+            <div class="support-links">
+            <h4 class="hide-for-small">Talk to us</h4>
+            <p>Tweet us at <br> <a href="https://twitter.com/zurbfoundation">@ZURBfoundation</a></p>
+            <p><a href="http://foundation.zurb.com/business/business-support.html">Business Support</a></p>
+            <p>Or check our <a href="http://foundation.zurb.com/support/support.html">support page</a></p>
+            </div>
+          </div>
+        <div class="medium-4 columns">
+          <div class="connect-links">
+            <h4 class="hide-for-small">Stay Updated</h4>
+            <p>Keep up with the latest on Foundation. Find us on <a href="https://github.com/zurb/foundation">Github</a>.</p>
+            <a href="http://zurb.com/news" class="small button">Stay Connected</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row global">
+    <div class="medium-3 small-6 columns">
+      <a href="http://zurb.com/studios" class="footer-link-block services">
+        <span class="title">Studios</span>
+        <span>Helping more than 200 startups succeed since 1998.</span>
+      </a>
+    </div>
+    <div class="medium-3 small-6 columns">
+      <a href="http://foundation.zurb.com/" class="footer-link-block foundation">
+        <span class="title">Foundation</span>
+        <span>The most advanced front-end framework in the world.</span>
+      </a>
+    </div>
+    <div class="medium-3 small-6 columns">
+      <a href="http://zurb.com/notable" class="footer-link-block apps">
+        <span class="title">Notable Design Apps</span>
+        <span>Prototype, iterate and collect feedback on your products.</span>
+      </a>
+    </div>
+    <div class="medium-3 small-6 columns">
+      <a href="http://zurb.com/university" class="footer-link-block expo">
+        <span class="title">University</span>
+        <span>Ideas, thoughts and design resources shared with you.</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="zurb-footer-bottom">
+  <div class="row">
+    <div class="medium-4 medium-4 push-8 columns">
+      <ul class="home-social">
+          <li><a href="http://www.twitter.com/ZURB" class="twitter"></a></li>
+          <li><a href="http://www.facebook.com/ZURB" class="facebook"></a></li>
+          <li><a href="http://zurb.com/contact" class="mail"></a></li>
+        </ul>
+     </div>
+     <div class="medium-8 medium-8 pull-4 columns">
+        <a href="http://www.zurb.com" class="zurb-logo regular"></a>
+        <ul class="zurb-links">
+          <li><a href="http://zurb.com/about">About</a></li>
+          <li><a href="http://zurb.com/blog">Blog</a></li>
+          <li><a href="http://zurb.com/news">News<span class="show-for-medium-up"> &amp; Events</span></a></li>
+          <li><a href="http://zurb.com/contact">Contact</a></li>
+          <li><a href="http://zurb.com/sitemap">Sitemap</a></li>
+       </ul>
+       <p class="copyright">&copy; 1998&dash;2015 ZURB, Inc. All rights reserved.</p>
+    </div>
+  </div>
+</div>
+
+        </section>
+
+      </div>
+    </div>
+
+    <script src="../assets/js/templates.js"></script>
+    <script src="../assets/js/all.js"></script>
+    <script>
+      var _gaq = _gaq || [];
+      _gaq.push(
+        ['_setAccount', 'UA-2195009-2'],
+        ['_trackPageview'],
+        ['b._setAccount', 'UA-2195009-27'],
+        ['b._trackPageview']
+      );
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <script>
+      $(document).foundation().foundation('joyride', 'start');
+    </script>
+  </body>
+
+</html>

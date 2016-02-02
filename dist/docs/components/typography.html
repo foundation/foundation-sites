@@ -1,0 +1,1063 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Typography | Foundation Docs</title>
+    <link rel="icon" href="../assets/img/icons/favicon.ico" type="image/x-icon">
+    <!-- For third-generation iPad with high-resolution Retina display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/img/icons/apple-touch-icon-144x144-precomposed.png">
+    <!-- For iPhone with high-resolution Retina display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/img/icons/apple-touch-icon-114x114-precomposed.png">
+    <!-- For first- and second-generation iPad: -->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/img/icons/apple-touch-icon-72x72-precomposed.png">
+    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <link rel="apple-touch-icon-precomposed" href="../assets/img/icons/apple-touch-icon-precomposed.png">
+
+    <meta name="description" content="Documentation and reference library for ZURB Foundation. JavaScript, CSS, components, grid and more.">
+    <meta name="author" content="ZURB, inc. ZURB network also includes zurb.com">
+    <meta name="copyright" content="ZURB, inc. Copyright (c) 2014">
+
+    <link href="../assets/css/docs.css" rel="stylesheet" />
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet" />
+    <script src="../assets/js/modernizr.js"></script>
+  </head>
+  <body class="antialiased hide-extras">
+
+  <!-- Info Banner For Announcements or Links -->
+  <a href="http://zurb.com/article/1416/foundation-6-is-here" id="notice">
+    <div class="info">
+      <h5>Foundation 6 is here!</h5>
+    </div>
+  </a>
+
+
+
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+         
+ 
+
+<!-- <nav class="tab-bar show-for-small">
+  <a class="off-canvas-left-toggle menu-icon ">
+    <span></span>
+  </a>  
+</nav> -->
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+  <ul class="title-area">
+    <li class="name">
+      <h1>
+        <a href="http://foundation.zurb.com/">
+          <img class="zurb-logo" src="http://foundation.zurb.com/docs/assets/img/zurb-logo.svg">
+          <span>Foundation</span>
+        </a>
+      </h1>
+    </li>
+  </ul>
+
+  <section class="top-bar-section">
+    <ul class="right">
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="http://foundation.zurb.com/learn/features.html" class="">Learn</a>
+        <ul class="dropdown">
+          <li><a href="http://foundation.zurb.com/learn/about.html">About Foundation</a></li>
+          <li><a href="http://foundation.zurb.com/learn/tutorials.html">Tutorials</a></li>
+          <li><a href="http://foundation.zurb.com/learn/classes.html">Classes</a></li>
+          <li><a href="http://foundation.zurb.com/learn/case-studies.html">Case Studies</a></li>
+          <li><a href="http://foundation.zurb.com/learn/brands.html">Brands</a></li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="http://foundation.zurb.com/develop/getting-started.html" class="">Develop</a>
+        <ul class="dropdown">
+          <li class="title">Frameworks</li>
+          <li><a class="" href="http://foundation.zurb.com/sites.html">Foundation for Sites</a></li>
+          <li><a  class="" href="http://foundation.zurb.com/apps.html">Foundation for Apps</a></li>
+          <li><a  class="spaced-list-item" href="http://foundation.zurb.com/emails.html">Foundation for Emails</a></li>
+          <li class="spaced-divider"><hr></li>
+          <li><a href="http://foundation.zurb.com/templates.html">HTML Templates</a></li>
+          <li><a href="http://foundation.zurb.com/develop/resources.html">Resources</a></li>
+          <li><a href="http://foundation.zurb.com/sites/building-blocks.html">Building Blocks</a></li>
+          <li><a href="http://foundation.zurb.com/develop/contribute.html">Contribute</a></li>  
+          
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="http://foundation.zurb.com/support/support.html" class="">Support</a>
+        <ul class="dropdown">
+          <li><a href="http://foundation.zurb.com/support/support.html">Support Channels</a></li>
+          <li><a href="http://foundation.zurb.com/forum">Foundation Forum</a></li>
+          <li><a href="http://foundation.zurb.com/support/faq.html">FAQs</a></li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="../../business/services.html" class="">Business</a>
+        <ul class="dropdown">
+          <li><a href="../../business/services.html">Services</a></li>
+          <li><a href="http://foundation.zurb.com/learn/certification.html">Certification</a></li>
+          <li><a href="../../business/business-support.html">Business Support</a></li>
+          <li><a href="../../business/engineering-studios.html">Engineering Studios</a></li>
+          <li><a href="../../business/training.html">Business Training</a></li>
+          <li><a href="../../business/design-apps.html">Design Apps</a></li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li>
+        <a href="http://foundation.zurb.com/docs" class="">Docs</a>
+      </li>
+      <li class="divider"></li>
+      <li class="has-form">
+        <a href="http://foundation.zurb.com/docs" class="small button">Getting Started</a>
+    </ul>
+  </section>
+</nav>
+        <nav class="tab-bar show-for-small">
+  <a class="left-off-canvas-toggle menu-icon">
+    <span>Foundation</span>
+  </a>
+</nav>
+
+<aside class="marketing-left-off-canvas-menu">
+
+  <ul class="off-canvas-list">
+    <li><label class="first">Foundation</label></li>
+    <li><a href="http://foundation.zurb.com">Home</a></li>
+  </ul>
+
+  <hr>
+
+  <ul class="off-canvas-list">
+      <li><label>Setup</label></li>
+
+      <li><a href="../index.html" data-search="">Getting Started</a></li>
+      <li><a href="../css.html" data-search="Styles">CSS</a></li>
+      <li><a href="../sass.html" data-search="Sass">Sass</a></li>      
+      <li><a href="../sass-files.html" data-search="Sass,Sass - What You Get, How to Use Sass">Sass Files</a></li>
+      <li><a href="../using-sass.html" data-search="Sass,Sass - What You Get, How to Use Sass">Using Sass</a></li>
+      <li><a href="../applications.html" data-search="Rails,Gem">Applications</a></li>
+      <li><a href="../javascript.html" data-search="">Javascript</a></li>
+      <li><a href="global.html" data-search="Global Styles,Global Mixins,Global Variables,Useful HTML Classes">Global Styles</a></li>
+      <li><a href="kitchen_sink.html" data-search="">Kitchen Sink</a></li>
+      <li><a href="../upgrading.html" data-search="Migration">Upgrading</a></li>
+
+      <li class="divider"></li>
+      <li><label>Structure</label></li>
+      <li><a href="../media-queries.html" data-search="Breakpoints">Media Queries</a></li>
+      <li><a href="visibility.html" data-search="">Visibility</a></li>
+      <li><a href="grid.html" data-search="">Grid</a></li>
+      <li><a href="block_grid.html" data-search="">Block Grid</a></li>
+      <li><a href="interchange.html" data-search="Responsive Images">Interchange Responsive Content <span class="label">JS</span></a></li>
+      <li><a href="../utility-classes.html" data-search="">Utility Classes</a></li>
+      <li><a href="../javascript-utilities.html" data-search="">Javascript Utilities</a></li>
+      <li><a href="rtl.html" data-search="RTL">Right-to-Left Support</a></li>
+
+      <li class="divider"></li>
+      <li><label>Navigation</label></li>
+      <li><a href="offcanvas.html" data-search="Off Canvas">Off-canvas <span class="label">JS</span></a></li>
+      <li><a href="topbar.html" data-search="Nav Bar,Navigation,Sticky">Top Bar <span class="label">JS</span></a></li>
+      <li><a href="icon-bar.html" data-search="">Icon Bar</a></li>
+      <li><a href="sidenav.html" data-search="">Side Nav</a></li>
+      <li><a href="magellan.html" data-search="Scrollspy">Magellan Sticky Nav <span class="label">JS</span></a></li>
+      <li><a href="subnav.html" data-search="">Sub Nav</a></li>
+      <li><a href="breadcrumbs.html" data-search="Navigation Path,Cookie Crumb">Breadcrumbs</a></li>
+      <li><a href="pagination.html" data-search="">Pagination</a></li>
+
+      <li class="divider"></li>
+      <li><label>Media</label></li>
+      <li><a href="orbit.html" data-search="Carousel,Slider,Slideshow">Orbit Slider <span class="label">JS</span></a></li>
+      <li><a href="thumbnails.html" data-search="Images">Thumbnails</a></li>
+      <li><a href="clearing.html" data-search="Responsive Lightbox,Lightbox">Clearing Lightbox <span class="label">JS</span></a></li>
+      <li><a href="flex_video.html" data-search="Responsive Video">Flex Video</a></li>
+
+      <li class="divider"></li>
+      <li><label>Forms</label></li>
+      <li><a href="forms.html" data-search="">Forms</a></li>
+      <li><a href="switch.html" data-search="">Switches</a></li>
+      <li><a href="range_slider.html" data-search="Range Slider">Sliders <span class="label">JS</span></a></li>
+      <li><a href="abide.html" data-search="Form Validation,Field Validation">Abide Validation <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li><label>Buttons</label></li>
+      <li><a href="buttons.html" data-search="">Buttons</a></li>
+      <li><a href="button_groups.html" data-search="Button Bar">Button Groups</a></li>
+      <li><a href="split_buttons.html" data-search="">Split Buttons <span class="label">JS</span></a></li>
+      <li><a href="dropdown_buttons.html" data-search="">Dropdown Buttons <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li><label>Typography</label></li>
+      <li><a href="typography.html" data-search="Typography,Type-setting,Composition">Type</a></li>
+      <li><a href="inline_lists.html" data-search="Lists">Inline Lists</a></li>
+      <li><a href="labels.html" data-search="Tags">Labels</a></li>
+      <li><a href="keystrokes.html" data-search="">Keystrokes</a></li>
+
+      <li class="divider"></li>
+      <li class="heading"><label>Callouts &amp; Prompts</label></li>
+      <li><a href="reveal.html" data-search="Modal">Reveal Modal <span class="label">JS</span></a></li>
+      <li><a href="alert_boxes.html" data-search="Error,Success,Warning">Alerts <span class="label">JS</span></a></li>
+      <li><a href="panels.html" data-search="Wells">Panels</a></li>
+      <li><a href="tooltips.html" data-search="Popover">Tooltips <span class="label">JS</span></a></li>
+      <li><a href="joyride.html" data-search="Tooltip Tour,Guider,Tooltip Walk-through">Joyride <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li><label>Content</label></li>
+      <li><a href="dropdown.html" data-search="">Dropdowns <span class="label">JS</span></a></li>
+      <li><a href="pricing_tables.html" data-search="">Pricing Tables</a></li>
+      <li><a href="progress_bars.html" data-search="">Progress Bars</a></li>
+      <li><a href="tables.html" data-search="">Tables</a></li>
+      <li><a href="accordion.html" data-search="">Accordion <span class="label">JS</span></a></li>
+      <li><a href="tabs.html" data-search="">Tabs <span class="label">JS</span></a></li>
+      <li><a href="equalizer.html" data-search="">Equalizer <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li><label>Support</label></li>
+
+      <li><a href="../changelog.html" data-search="">Changelog</a></li>
+      <li><a href="../compatibility.html" data-search="">Compatibility</a></li>
+
+      <li class="divider"></li>
+      <li class="heading"><label>Older Docs</label></li>
+      <li><a href="/docs/v/4.3.2/" data-search="">Foundation 4</a></li>
+      <li><a href="/docs/v/3.2.5/" data-search="">Foundation 3</a></li>
+      <li><a href="/docs/v/2.2.1/" data-search="">Foundation 2</a></li>
+    </ul>
+
+    <hr>
+
+    <div class="zurb-links">
+    <ul class="top">
+      <li class="logo"><a href="http://zurb.com"></a></li>
+      <li><a href="http://zurb.com/about">About</a></li>
+      <li><a href="http://zurb.com/blog">Blog</a></li>
+      <li><a href="http://zurb.com/contact">Contact</a></li>
+    </ul>
+    <ul class="pillars">
+      <li>
+        <a href="http://www.zurb.com/studios" class="footer-link-block services">
+          <span class="title">Studios</span>
+          <span>Helping startups win since '98.</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://foundation.zurb.com/" class="footer-link-block foundation">
+          <span class="title">Foundation</span>
+          <span>World's most advanced responsive framework.</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://zurb.com/notable" class="footer-link-block apps">
+          <span class="title">Notable</span>
+          <span>Tools to rapidly prototype and iterate.</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://zurb.com/university" class="footer-link-block expo">
+          <span class="title">University</span>
+          <span>Online training for smarter product design.</span>
+        </a>
+      </li>
+    </ul>
+</div>
+
+</aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section role="main" class="scroll-container">
+
+          <div class="row">
+            <div class="large-3 medium-4 columns">
+              <div class="hide-for-small">
+                <div class="sidebar">
+  <h5>Foundation Documentation</h5>
+  <form>
+    <!--  <label>Search Documentation</label> -->
+    <input tabindex="1" id="autocomplete" type="search" placeholder="Search Docs: e.g. forms">
+  </form>
+
+  <a href="/develop/download.html" class="download button expand">Download Foundation</a>
+
+  <nav>
+    <ul class="side-nav">
+      <li class="heading">Setup</li>
+
+      <li><a href="../index.html" data-search="">Getting Started</a></li>
+      <li><a href="../css.html" data-search="Styles">CSS</a></li>
+      <li><a href="../sass.html" data-search="Sass">Sass</a></li>
+      <li><a href="../sass-files.html" data-search="Sass,Sass - What You Get, How to Use Sass">Sass Files</a></li>
+      <li><a href="../using-sass.html" data-search="Sass,Sass - What You Get, How to Use Sass">Using Sass</a></li>
+      <li><a href="../applications.html" data-search="Rails,Gem">Applications</a></li>
+      <li><a href="../javascript.html" data-search="">JavaScript</a></li>
+      <li><a href="global.html" data-search="Global Styles,Global Mixins,Global Variables,Useful HTML Classes">Global Styles</a></li>
+      <li><a href="kitchen_sink.html" data-search="">Kitchen Sink</a></li>
+      <li><a href="../accessibility.html" data-search="accessibility">Accessibility</a></li>
+      <li><a href="../upgrading.html" data-search="Migration">Upgrading</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Structure</li>
+      <li><a href="../media-queries.html" data-search="Breakpoints">Media Queries</a></li>
+      <li><a href="visibility.html" data-search="">Visibility</a></li>
+      <li><a href="grid.html" data-search="">Grid</a></li>
+      <li><a href="block_grid.html" data-search="">Block Grid</a></li>
+      <li><a href="interchange.html" data-search="Responsive Images">Interchange Responsive Content <span class="label">JS</span></a></li>
+      <li><a href="../utility-classes.html" data-search="">Utility Classes</a></li>
+      <li><a href="../javascript-utilities.html" data-search="">Javascript Utilities</a></li>
+      <li><a href="rtl.html" data-search="RTL">Right-to-Left Support</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Navigation</li>
+      <li><a href="offcanvas.html" data-search="Off Canvas">Off-canvas <span class="label">JS</span></a></li>
+      <li><a href="topbar.html" data-search="Nav Bar,Navigation,Sticky">Top Bar <span class="label">JS</span></a></li>
+      <li><a href="icon-bar.html" data-search="">Icon Bar</a></li>
+      <li><a href="sidenav.html" data-search="">Side Nav</a></li>
+      <li><a href="magellan.html" data-search="Scrollspy">Magellan Sticky Nav <span class="label">JS</span></a></li>
+      <li><a href="subnav.html" data-search="">Sub Nav</a></li>
+      <li><a href="breadcrumbs.html" data-search="Navigation Path,Cookie Crumb">Breadcrumbs</a></li>
+      <li><a href="pagination.html" data-search="">Pagination</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Media</li>
+      <li><a href="orbit.html" data-search="Carousel,Slider,Slideshow">Orbit Slider <span class="label">JS</span></a></li>
+      <li><a href="thumbnails.html" data-search="Images">Thumbnails</a></li>
+      <li><a href="clearing.html" data-search="Responsive Lightbox,Lightbox">Clearing Lightbox <span class="label">JS</span></a></li>
+      <li><a href="flex_video.html" data-search="Responsive Video">Flex Video</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Forms</li>
+      <li><a href="forms.html" data-search="">Forms</a></li>
+      <li><a href="switch.html" data-search="">Switches</a></li>
+      <li><a href="range_slider.html" data-search="Range Slider">Range Sliders <span class="label">JS</span></a></li>
+      <li><a href="abide.html" data-search="Form Validation,Field Validation">Abide Validation <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Buttons</li>
+      <li><a href="buttons.html" data-search="">Buttons</a></li>
+      <li><a href="button_groups.html" data-search="Button Bar">Button Groups</a></li>
+      <li><a href="split_buttons.html" data-search="">Split Buttons <span class="label">JS</span></a></li>
+      <li><a href="dropdown_buttons.html" data-search="">Dropdown Buttons <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Typography</li>
+      <li><a href="typography.html" data-search="Typography,Type-setting,Composition">Type</a></li>
+      <li><a href="inline_lists.html" data-search="Lists">Inline Lists</a></li>
+      <li><a href="labels.html" data-search="Tags">Labels</a></li>
+      <li><a href="keystrokes.html" data-search="">Keystrokes</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Callouts &amp; Prompts</li>
+      <li><a href="reveal.html" data-search="Modal">Reveal Modal <span class="label">JS</span></a></li>
+      <li><a href="alert_boxes.html" data-search="Error,Success,Warning">Alerts <span class="label">JS</span></a></li>
+      <li><a href="panels.html" data-search="Wells">Panels</a></li>
+      <li><a href="tooltips.html" data-search="Popover">Tooltips <span class="label">JS</span></a></li>
+      <li><a href="joyride.html" data-search="Tooltip Tour,Guider,Tooltip Walk-through">Joyride <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Content</li>
+      <li><a href="dropdown.html" data-search="">Dropdowns <span class="label">JS</span></a></li>
+      <li><a href="pricing_tables.html" data-search="">Pricing Tables</a></li>
+      <li><a href="progress_bars.html" data-search="">Progress Bars</a></li>
+      <li><a href="tables.html" data-search="">Tables</a></li>
+      <li><a href="accordion.html" data-search="">Accordion <span class="label">JS</span></a></li>
+      <li><a href="tabs.html" data-search="">Tabs <span class="label">JS</span></a></li>
+      <li><a href="equalizer.html" data-search="">Equalizer <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Support</li>
+
+      <li><a href="../changelog.html" data-search="">Changelog</a></li>
+      <li><a href="../compatibility.html" data-search="">Compatibility</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Older Docs</li>
+      <li><a href="/docs/v/4.3.2/" data-search="">Foundation 4</a></li>
+      <li><a href="/docs/v/3.2.5/" data-search="">Foundation 3</a></li>
+      <li><a href="/docs/v/2.2.1/" data-search="">Foundation 2</a></li>
+
+    </ul>
+  </nav>
+
+
+  <!-- <section id="jobs">
+    <h5>Get a job, nerd!</h5>
+    <script type="text/javascript" src="http://www.zurb.com/jobs/widgets/jobs.js?limit=3"></script>
+    <p class="via">via <a href="http://www.zurb.com/jobs">Job Board from ZURB</a></p>
+  </section> -->
+
+</div>
+              </div>
+            </div>
+            <div class="large-9 medium-8 columns">
+              <h1 id="typography">Typography</h1>
+              <div id="component-name" name="Typography"></div>
+              <h3 class="subheader">Typography in Foundation 5 is meant to make your life easier by providing clean, attractive, simple default styles for all of the most basic typographical elements.</h3>
+
+<hr>
+<h3 id="headers">Headers</h3>
+<p>Foundation includes styles for all of the header elements that are balanced and based on a modular scale (though modular-scale is not a dependency of Foundation).</p>
+<div class="row">
+  <div class="large-6 columns">
+  <h4>HTML</h4>
+  <pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">h1</span>&gt;</span>h1. This is a very large header.<span class="tag">&lt;/<span class="title">h1</span>&gt;</span>
+<span class="tag">&lt;<span class="title">h2</span>&gt;</span>h2. This is a large header.<span class="tag">&lt;/<span class="title">h2</span>&gt;</span>
+<span class="tag">&lt;<span class="title">h3</span>&gt;</span>h3. This is a medium header.<span class="tag">&lt;/<span class="title">h3</span>&gt;</span>
+<span class="tag">&lt;<span class="title">h4</span>&gt;</span>h4. This is a moderate header.<span class="tag">&lt;/<span class="title">h4</span>&gt;</span>
+<span class="tag">&lt;<span class="title">h5</span>&gt;</span>h5. This is a small header.<span class="tag">&lt;/<span class="title">h5</span>&gt;</span>
+<span class="tag">&lt;<span class="title">h6</span>&gt;</span>h6. This is a tiny header.<span class="tag">&lt;/<span class="title">h6</span>&gt;</span></div></code></pre>
+
+  </div>
+  <div class="large-6 columns">
+  <h4>Rendered HTML</h4>
+      <div class="type-demo">
+            <h1>h1. This is a very large header.</h1>
+<h2>h2. This is a large header.</h2>
+<h3>h3. This is a medium header.</h3>
+<h4>h4. This is a moderate header.</h4>
+<h5>h5. This is a small header.</h5>
+<h6>h6. This is a tiny header.</h6>
+        </div>
+  </div>
+</div>
+
+<hr>
+<h3 id="subheaders">Subheaders</h3>
+<p>Lighten up your headers by adding a class of .subheader to any header element.</p>
+<div class="row">
+  <div class="large-6 columns">
+  <h4>HTML</h4>
+  <pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">h1</span> <span class="attribute">class</span>=<span class="value">&quot;subheader&quot;</span>&gt;</span>h1.subheader<span class="tag">&lt;/<span class="title">h1</span>&gt;</span>
+<span class="tag">&lt;<span class="title">h2</span> <span class="attribute">class</span>=<span class="value">&quot;subheader&quot;</span>&gt;</span>h2.subheader<span class="tag">&lt;/<span class="title">h2</span>&gt;</span>
+<span class="tag">&lt;<span class="title">h3</span> <span class="attribute">class</span>=<span class="value">&quot;subheader&quot;</span>&gt;</span>h3.subheader<span class="tag">&lt;/<span class="title">h3</span>&gt;</span>
+<span class="tag">&lt;<span class="title">h4</span> <span class="attribute">class</span>=<span class="value">&quot;subheader&quot;</span>&gt;</span>h4.subheader<span class="tag">&lt;/<span class="title">h4</span>&gt;</span>
+<span class="tag">&lt;<span class="title">h5</span> <span class="attribute">class</span>=<span class="value">&quot;subheader&quot;</span>&gt;</span>h5.subheader<span class="tag">&lt;/<span class="title">h5</span>&gt;</span>
+<span class="tag">&lt;<span class="title">h6</span> <span class="attribute">class</span>=<span class="value">&quot;subheader&quot;</span>&gt;</span>h6.subheader<span class="tag">&lt;/<span class="title">h6</span>&gt;</span></div></code></pre>
+
+  </div>
+  <div class="large-6 columns">
+  <h4>Rendered HTML</h4>
+      <div class="type-demo">
+
+<h1 class="subheader">h1.subheader</h1>
+<h2 class="subheader">h2.subheader</h2>
+<h3 class="subheader">h3.subheader</h3>
+<h4 class="subheader">h4.subheader</h4>
+<h5 class="subheader">h5.subheader</h5>
+<h6 class="subheader">h6.subheader</h6>
+
+        </div>
+  </div>
+</div>
+
+<hr>
+<h3 id="small-header-segments">Small Header Segments</h3>
+<p>By inserting a <code>small</code> element into a header Foundation will scale the header font size down for an inline element, allowing you to use this for subtitles or other secondary header text.</p>
+<div class="row">
+  <div class="large-6 columns">
+  <h4>HTML</h4>
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">h1</span>&gt;</span>h1. <span class="tag">&lt;<span class="title">small</span>&gt;</span>Small segment header.<span class="tag">&lt;/<span class="title">small</span>&gt;</span><span class="tag">&lt;/<span class="title">h1</span>&gt;</span>
+<span class="tag">&lt;<span class="title">h2</span>&gt;</span>h2. <span class="tag">&lt;<span class="title">small</span>&gt;</span>Small segment header.<span class="tag">&lt;/<span class="title">small</span>&gt;</span><span class="tag">&lt;/<span class="title">h2</span>&gt;</span>
+<span class="tag">&lt;<span class="title">h3</span>&gt;</span>h3. <span class="tag">&lt;<span class="title">small</span>&gt;</span>Small segment header.<span class="tag">&lt;/<span class="title">small</span>&gt;</span><span class="tag">&lt;/<span class="title">h3</span>&gt;</span>
+<span class="tag">&lt;<span class="title">h4</span>&gt;</span>h4. <span class="tag">&lt;<span class="title">small</span>&gt;</span>Small segment header.<span class="tag">&lt;/<span class="title">small</span>&gt;</span><span class="tag">&lt;/<span class="title">h4</span>&gt;</span>
+<span class="tag">&lt;<span class="title">h5</span>&gt;</span>h5. <span class="tag">&lt;<span class="title">small</span>&gt;</span>Small segment header.<span class="tag">&lt;/<span class="title">small</span>&gt;</span><span class="tag">&lt;/<span class="title">h5</span>&gt;</span>
+<span class="tag">&lt;<span class="title">h6</span>&gt;</span>h6. <span class="tag">&lt;<span class="title">small</span>&gt;</span>Small segment header.<span class="tag">&lt;/<span class="title">small</span>&gt;</span><span class="tag">&lt;/<span class="title">h6</span>&gt;</span></div></code></pre>
+
+  </div>
+  <div class="large-6 columns">
+  <h4>Rendered HTML</h4>
+      <div class="type-demo">
+            <h1>h1. <small>Small segment header.</small></h1>
+<h2>h2. <small>Small segment header.</small></h2>
+<h3>h3. <small>Small segment header.</small></h3>
+<h4>h4. <small>Small segment header.</small></h4>
+<h5>h5. <small>Small segment header.</small></h5>
+<h6>h6. <small>Small segment header.</small></h6>
+        </div>
+  </div>
+</div>
+
+<hr>
+<h3 id="paragraphs">Paragraphs</h3>
+<p>This is a paragraph. Paragraphs are preset with a font size, line height and spacing to match the overall vertical rhythm. To show what a paragraph looks like this needs a little more content &#45;&#45; so, did you know that there are storms occurring on Jupiter that are larger than the Earth? Pretty cool. Wrap <code>strong</code> around type to <strong>make it bold!</strong> You can also use <code>em</code> to <em>italicize your words</em>.</p>
+<h4>HTML</h4>
+
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">p</span>&gt;</span>This is a paragraph. Paragraphs are preset with a font size, line height and spacing to match the overall vertical rhythm. To show what a paragraph looks like this needs a little more content so, did you know that there are storms occurring on Jupiter that are larger than the Earth? Pretty cool. Wrap strong around type to <span class="tag">&lt;<span class="title">strong</span>&gt;</span>make it bold!<span class="tag">&lt;/<span class="title">strong</span>&gt;</span>. You can also use em to <span class="tag">&lt;<span class="title">em</span>&gt;</span>italicize your words<span class="tag">&lt;/<span class="title">em</span>&gt;</span>.<span class="tag">&lt;/<span class="title">p</span>&gt;</span></div></code></pre>
+
+
+<hr>
+<div class="callout panel text-center">Need to align text? We made some slick <a href="http://foundation.zurb.com/docs/utility-classes.html">utility classes</a> to help you out. </div>
+
+<h3 id="links">Links</h3>
+<p>Links are very standard, and the <a href="http://www.youtube.com/watch?v=zT2aVoUkSDg">color is preset</a> to the Foundation primary color.</p>
+<h4>HTML</h4>
+
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">p</span>&gt;</span>Links are very standard, and the <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"http://www.youtube.com/watch?v=zT2aVoUkSDg"</span>&gt;</span>color is preset<span class="tag">&lt;/<span class="title">a</span>&gt;</span> to the Foundation primary color.<span class="tag">&lt;/<span class="title">p</span>&gt;</span></div></code></pre>
+
+
+<hr>
+<h3 id="lists">Lists</h3>
+<p>Lists are helpful for, well, lists of things. Didn&#39;t see that coming did you! There are baked-in styles for a number of different unordered list styles, as well as ordered and definition lists.</p>
+<div class="row">
+  <div class="large-6 columns">
+  <h4>HTML</h4>
+  <pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">ul</span> <span class="attribute">class</span>=<span class="value">&quot;disc&quot;</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span>&gt;</span>List item with a much longer description or more content.<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span>&gt;</span>List item<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span>&gt;</span>List item
+    <span class="tag">&lt;<span class="title">ul</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">li</span>&gt;</span>Nested list item<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">li</span>&gt;</span>Nested list item<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">li</span>&gt;</span>Nested list item<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span>&gt;</span>List item<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span>&gt;</span>List item<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span>&gt;</span>List item<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+ <span class="tag">&lt;/<span class="title">ul</span>&gt;</span></div></code></pre>
+
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    <ul class="disc">
+      <li>List item with a much longer description or more content.</li>
+      <li>List item</li>
+      <li>List item
+        <ul>
+          <li>Nested list item</li>
+          <li>Nested list item</li>
+          <li>Nested list item</li>
+        </ul>
+      </li>
+      <li>List item</li>
+      <li>List item</li>
+      <li>List item</li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-6 columns">
+  <h4>HTML</h4>
+  <pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">ul</span> <span class="attribute">class</span>=<span class="value">&quot;circle&quot;</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span>&gt;</span>List item with a much longer description or more content.<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span>&gt;</span>List item<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span>&gt;</span>List item
+    <span class="tag">&lt;<span class="title">ul</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">li</span>&gt;</span>Nested List Item<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">li</span>&gt;</span>Nested List Item<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">li</span>&gt;</span>Nested List Item<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span>&gt;</span>List item<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span>&gt;</span>List item<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span>&gt;</span>List item<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+ <span class="tag">&lt;/<span class="title">ul</span>&gt;</span></div></code></pre>
+
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    <ul class="circle">
+      <li>List item with a much longer description or more content.</li>
+      <li>List item</li>
+      <li>List item
+        <ul>
+          <li>Nested List Item</li>
+          <li>Nested List Item</li>
+          <li>Nested List Item</li>
+        </ul>
+      </li>
+      <li>List item</li>
+      <li>List item</li>
+      <li>List item</li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-6 columns">
+  <h4>HTML</h4>
+  <pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">ul</span> <span class="attribute">class</span>=<span class="value">&quot;square&quot;</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span>&gt;</span>List item with a much longer description or more content.<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span>&gt;</span>List item<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span>&gt;</span>List item
+    <span class="tag">&lt;<span class="title">ul</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">li</span>&gt;</span>Nested List Item<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">li</span>&gt;</span>Nested List Item<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">li</span>&gt;</span>Nested List Item<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span>&gt;</span>List item<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span>&gt;</span>List item<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span>&gt;</span>List item<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+ <span class="tag">&lt;/<span class="title">ul</span>&gt;</span></div></code></pre>
+
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    <ul class="square">
+      <li>List item with a much longer description or more content.</li>
+      <li>List item</li>
+      <li>List item
+        <ul>
+          <li>Nested List Item</li>
+          <li>Nested List Item</li>
+          <li>Nested List Item</li>
+        </ul>
+      </li>
+      <li>List item</li>
+      <li>List item</li>
+      <li>List item</li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-6 columns">
+  <h4>HTML</h4>
+  <pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">ul</span> <span class="attribute">class</span>=<span class="value">&quot;no-bullet&quot;</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span>&gt;</span>List item with a much longer description or more content.<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span>&gt;</span>List item<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span>&gt;</span>List item
+    <span class="tag">&lt;<span class="title">ul</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">li</span>&gt;</span>Nested List Item<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">li</span>&gt;</span>Nested List Item<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">li</span>&gt;</span>Nested List Item<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span>&gt;</span>List item<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span>&gt;</span>List item<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span>&gt;</span>List item<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+ <span class="tag">&lt;/<span class="title">ul</span>&gt;</span></div></code></pre>
+
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    <ul class="no-bullet">
+      <li>List item with a much longer description or more content.</li>
+      <li>List item</li>
+      <li>List item
+        <ul>
+          <li>Nested List Item</li>
+          <li>Nested List Item</li>
+          <li>Nested List Item</li>
+        </ul>
+      </li>
+      <li>List item</li>
+      <li>List item</li>
+      <li>List item</li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="large-6 columns">
+  <h4>HTML</h4>
+  <pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">ol</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span>&gt;</span>List item with a much longer description or more content.<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span>&gt;</span>List item<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span>&gt;</span>List item
+    <span class="tag">&lt;<span class="title">ol</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">li</span>&gt;</span>Nested List Item<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">li</span>&gt;</span>Nested List Item<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">li</span>&gt;</span>Nested List Item<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">ol</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span>&gt;</span>List item<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span>&gt;</span>List item<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span>&gt;</span>List item<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+ <span class="tag">&lt;/<span class="title">ol</span>&gt;</span></div></code></pre>
+
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    <ol>
+      <li>List item with a much longer description or more content.</li>
+      <li>List item</li>
+      <li>List item
+        <ol>
+          <li>Nested List Item</li>
+          <li>Nested List Item</li>
+          <li>Nested List Item</li>
+        </ol>
+      </li>
+      <li>List item</li>
+      <li>List item</li>
+      <li>List item</li>
+    </ol>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="large-6 columns">
+  <h4>HTML</h4>
+  <pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">dl</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">dt</span>&gt;</span>Definition Title<span class="tag">&lt;/<span class="title">dt</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">dd</span>&gt;</span>Definition Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam id dolor id nibh ultricies vehicula ut id elit.<span class="tag">&lt;/<span class="title">dd</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">dl</span>&gt;</span></div></code></pre>
+
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    <dl>
+      <dt>Definition Title</dt>
+      <dd>Definition Cras justo odio, dapibus ac facilisis in, egestas eget quam. Nullam id dolor id nibh ultricies vehicula ut id elit.</dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+<p><a name="blockquotes"></a></p>
+<h3 id="blockquotes">Blockquotes</h3>
+<p>Sometimes other people say smart things, and you may want to mention that through a blockquote callout. We&#39;ve got you covered.</p>
+<div class="row">
+  <div class="large-6 columns">
+  <h4>HTML</h4>
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">blockquote</span>&gt;</span>Those people who think they know everything are a great annoyance to those of us who do.<span class="tag">&lt;<span class="title">cite</span>&gt;</span>Isaac Asimov<span class="tag">&lt;/<span class="title">cite</span>&gt;</span><span class="tag">&lt;/<span class="title">blockquote</span>&gt;</span></div></code></pre>
+
+  </div>
+  <div class="large-6 columns">
+  <h4>Rendered HTML</h4>
+        <blockquote>Those people who think they know everything are a great annoyance to those of us who do.<cite>Isaac Asimov</cite></blockquote>
+  </div>
+</div>
+
+<hr>
+<h3 id="v-cards">V-Cards</h3>
+<p>Here&#39;s a handy microformat-friendly list to <em>address</em> all your needs.</p>
+<div class="row">
+  <div class="large-6 columns">
+  <h4>HTML</h4>
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">ul</span> <span class="attribute">class</span>=<span class="value">&quot;vcard&quot;</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">&quot;fn&quot;</span>&gt;</span>Gaius Baltar<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">&quot;street-address&quot;</span>&gt;</span>123 Colonial Ave.<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">&quot;locality&quot;</span>&gt;</span>Caprica City<span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">&quot;state&quot;</span>&gt;</span>Caprica<span class="tag">&lt;/<span class="title">span</span>&gt;</span>, <span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">&quot;zip&quot;</span>&gt;</span>12345<span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">&quot;email&quot;</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">&quot;#&quot;</span>&gt;</span>g.baltar@example.com<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">ul</span>&gt;</span></div></code></pre>
+
+  </div>
+  <div class="large-6 columns">
+  <h4>Rendered HTML</h4>
+      <div class="type-demo">
+            <ul class="vcard">
+  <li class="fn">Gaius Baltar</li>
+  <li class="street-address">123 Colonial Ave.</li>
+  <li class="locality">Caprica City</li>
+  <li><span class="state">Caprica</span>, <span class="zip">12345</span></li>
+  <li class="email"><a href="#">g.baltar@example.com</a></li>
+</ul>
+        </div>
+  </div>
+</div>
+
+<hr>
+<h3 id="print-styles">Print Styles</h3>
+<p>Foundation includes print styles developed by HTML5 Boilerplate to give you some basic print-specific styles. These are activated when you print through a media query. It includes:</p>
+<ul>
+<li>Clearing out backgrounds, box shadows and text shadows</li>
+<li>Appending link URLs after the anchor text</li>
+<li>Bordering blockquotes and pre elements</li>
+<li>Page cleanup and window minimization</li>
+</ul>
+<p>On top of that, Foundation includes a couple of simple visibility classes you can use to control elements printing, or not printing. See <a href="visibility.html#print-visibility">Print Visibility</a> for more information.</p>
+<hr>
+<h3 id="available-scss-variables">Available SCSS Variables</h3>
+<p>We&#39;ve got a ton of variables for you to use to customize your typography.</p>
+<h4 id="scss">SCSS</h4>
+<pre><code class="language-scss"><div class="code-container">$include-<span class="tag">html</span>-type-classes<span class="value">: $include-html-classes;</span>
+
+<span class="comment">// We use these to control header font styles</span>
+$<span class="tag">header</span>-<span class="attribute">font-family</span><span class="value">: <span class="string">"Helvetica Neue"</span>, <span class="string">"Helvetica"</span>, Helvetica, Arial, sans-serif;</span>
+$<span class="tag">header</span>-<span class="attribute">font-weight</span><span class="value">: bold;</span>
+$<span class="tag">header</span>-<span class="attribute">font-style</span><span class="value">: normal;</span>
+$<span class="tag">header</span>-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: <span class="hexcolor">#222</span>;</span>
+$<span class="tag">header</span>-<span class="attribute">line-height</span><span class="value">: <span class="number">1.4</span>;</span>
+$<span class="tag">header</span>-<span class="attribute">top</span>-<span class="attribute">margin</span><span class="value">: .<span class="number">2</span>rem;</span>
+$<span class="tag">header</span>-<span class="attribute">bottom</span>-<span class="attribute">margin</span><span class="value">: .<span class="number">5</span>rem;</span>
+$<span class="tag">header</span>-<span class="attribute">text-rendering</span><span class="value">: optimizeLegibility;</span>
+
+<span class="comment">// We use these to control header font sizes</span>
+$<span class="tag">h1</span>-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">44</span>);</span>
+$<span class="tag">h2</span>-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">37</span>);</span>
+$<span class="tag">h3</span>-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">27</span>);</span>
+$<span class="tag">h4</span>-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">23</span>);</span>
+$<span class="tag">h5</span>-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">18</span>);</span>
+$<span class="tag">h6</span>-<span class="attribute">font-size</span><span class="value">: <span class="number">1</span>rem;</span>
+
+<span class="comment">// These control how subheaders are styled</span>
+$subheader-<span class="attribute">line-height</span><span class="value">: <span class="number">1.4</span>;</span>
+$subheader-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: scale-color($header-font-color, $lightness: <span class="number">35</span>%);</span>
+$subheader-<span class="attribute">font-weight</span><span class="value">: <span class="number">300</span>;</span>
+$subheader-<span class="attribute">top</span>-<span class="attribute">margin</span><span class="value">: .<span class="number">2</span>rem;</span>
+$subheader-<span class="attribute">bottom</span>-<span class="attribute">margin</span><span class="value">: .<span class="number">5</span>rem;</span>
+
+<span class="comment">// A general small styling</span>
+$<span class="tag">small</span>-<span class="attribute">font-size</span><span class="value">: <span class="number">60</span>%;</span>
+$<span class="tag">small</span>-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: scale-color($header-font-color, $lightness: <span class="number">35</span>%);</span>
+
+<span class="comment">// We use these to style paragraphs</span>
+$paragraph-<span class="attribute">font-family</span><span class="value">: inherit;</span>
+$paragraph-<span class="attribute">font-weight</span><span class="value">: normal;</span>
+$paragraph-<span class="attribute">font-size</span><span class="value">: <span class="number">1</span>rem;</span>
+$paragraph-<span class="attribute">line-height</span><span class="value">: <span class="number">1.6</span>;</span>
+$paragraph-<span class="attribute">margin-bottom</span><span class="value">: rem-calc(<span class="number">20</span>);</span>
+$paragraph-<span class="tag">aside</span>-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">14</span>);</span>
+$paragraph-<span class="tag">aside</span>-<span class="attribute">line-height</span><span class="value">: <span class="number">1.35</span>;</span>
+$paragraph-<span class="tag">aside</span>-<span class="attribute">font-style</span><span class="value">: italic;</span>
+$paragraph-<span class="attribute">text-rendering</span><span class="value">: optimizeLegibility;</span>
+
+<span class="comment">// We use these to style code tags</span>
+$<span class="tag">code</span>-<span class="attribute">color</span><span class="value">: scale-color($alert-color, $lightness: -<span class="number">27</span>%);</span>
+$<span class="tag">code</span>-<span class="attribute">font-family</span><span class="value">: Consolas, Liberation Mono, Courier, monospace;</span>
+$<span class="tag">code</span>-<span class="attribute">font-weight</span><span class="value">: bold;</span>
+
+<span class="comment">// We use these to style anchors</span>
+$anchor-<span class="attribute">text-decoration</span><span class="value">: none;</span>
+$anchor-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: $primary-color;</span>
+$anchor-<span class="attribute">font</span>-<span class="attribute">color</span>-hover<span class="value">: scale-color($primary-color, $lightness: -<span class="number">14</span>%);</span>
+
+<span class="comment">// We use these to style the hr element</span>
+$<span class="tag">hr</span>-<span class="attribute">border-width</span><span class="value">: <span class="number">1</span>px;</span>
+$<span class="tag">hr</span>-<span class="attribute">border-style</span><span class="value">: solid;</span>
+$<span class="tag">hr</span>-<span class="attribute">border-color</span><span class="value">: <span class="hexcolor">#ddd</span>;</span>
+$<span class="tag">hr</span>-<span class="attribute">margin</span><span class="value">: rem-calc(<span class="number">20</span>);</span>
+
+<span class="comment">// We use these to style lists</span>
+$<span class="attribute">list-style-position</span><span class="value">: outside;</span>
+$list-side-<span class="attribute">margin</span><span class="value">: <span class="number">0</span>;</span>
+$list-nested-<span class="attribute">margin</span><span class="value">: rem-calc(<span class="number">20</span>);</span>
+$definition-list-<span class="tag">header</span>-weight<span class="value">: bold;</span>
+$definition-list-<span class="tag">header</span>-<span class="attribute">margin-bottom</span><span class="value">: .<span class="number">3</span>rem;</span>
+$definition-list-<span class="attribute">margin-bottom</span><span class="value">: rem-calc(<span class="number">12</span>);</span>
+
+<span class="comment">// We use these to style blockquotes</span>
+$<span class="tag">blockquote</span>-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: scale-color($header-font-color, $lightness: <span class="number">35</span>%);</span>
+$<span class="tag">blockquote</span>-<span class="attribute">padding</span><span class="value">: rem-calc(<span class="number">9</span> <span class="number">20</span> <span class="number">0</span> <span class="number">19</span>);</span>
+$<span class="tag">blockquote</span>-<span class="attribute">border</span><span class="value">: <span class="number">1</span>px solid <span class="hexcolor">#ddd</span>;</span>
+$<span class="tag">blockquote</span>-<span class="tag">cite</span>-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">13</span>);</span>
+$<span class="tag">blockquote</span>-<span class="tag">cite</span>-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: scale-color($header-font-color, $lightness: <span class="number">23</span>%);</span>
+$<span class="tag">blockquote</span>-<span class="tag">cite</span>-<span class="tag">link</span>-<span class="attribute">color</span><span class="value">: $blockquote-cite-font-color;</span>
+
+<span class="comment">// Acronym styles</span>
+$<span class="tag">acronym</span>-<span class="value">underline</span><span class="value">: <span class="number">1</span>px dotted <span class="hexcolor">#ddd</span>;</span>
+
+<span class="comment">// We use these to control padding and margin</span>
+$microformat-<span class="attribute">padding</span><span class="value">: rem-calc(<span class="number">10</span> <span class="number">12</span>);</span>
+$microformat-<span class="attribute">margin</span><span class="value">: rem-calc(<span class="number">0</span> <span class="number">0</span> <span class="number">20</span> <span class="number">0</span>);</span>
+
+<span class="comment">// We use these to control the border styles</span>
+$microformat-<span class="attribute">border-width</span><span class="value">: <span class="number">1</span>px;</span>
+$microformat-<span class="attribute">border-style</span><span class="value">: solid;</span>
+$microformat-<span class="attribute">border-color</span><span class="value">: <span class="hexcolor">#ddd</span>;</span>
+
+<span class="comment">// We use these to control full name font styles</span>
+$microformat-fullname-<span class="attribute">font-weight</span><span class="value">: bold;</span>
+$microformat-fullname-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">15</span>);</span>
+
+<span class="comment">// We use this to control the summary font styles</span>
+$microformat-summary-<span class="attribute">font-weight</span><span class="value">: bold;</span>
+
+<span class="comment">// We use this to control abbr padding</span>
+$microformat-<span class="tag">abbr</span>-<span class="attribute">padding</span><span class="value">: rem-calc(<span class="number">0</span> <span class="number">1</span>);</span>
+
+<span class="comment">// We use this to control abbr font styles</span>
+$microformat-<span class="tag">abbr</span>-<span class="attribute">font-weight</span><span class="value">: bold;</span>
+$microformat-<span class="tag">abbr</span>-<span class="attribute">font</span>-decoration<span class="value">: none;</span></div></code></pre>
+
+
+<hr>
+<h5 id="sass-errors-">Sass Errors?</h5>
+<p>If the default &quot;foundation&quot; import was commented out, then make sure you import this file:</p>
+<h4>SCSS</h4>
+
+<pre><code class="language-scss"><div class="code-container"><span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/type"</span>;</span></div></code></pre>
+
+
+
+
+<p><br>
+<br></p>
+<hr>
+
+<section class="building-blocks-section">
+  <h2 class="building-blocks-header">Building Blocks Using Typography</h2>
+  <div class="row">
+    <div data-building-blocks>
+
+    </div>
+  </div>
+
+  <br>
+
+  <h3 class="building-blocks-header">Want more? Check out all the hot <a href="http://zurb.com/building-blocks">Building Blocks &#8680;</a></h4>
+</section>
+
+
+
+            </div>
+          </div>
+          <!-- <section id="courses-banner-large">
+  <div class="row">
+    <div class="large-5 medium-5 columns banner-image">
+      <img src="http://foundation.zurb.com/assets/img/responsive-banner-main.svg" alt="responsive design">
+    </div>
+    <div class="large-7 medium-7 columns banner-info">
+      <h3>Get a running start with Foundation</h3>
+      <p>Learn the fundamentals of the world's most advanced responsive framework in our <strong>Intro to Foundation class.</strong> You'll learn from the creators themselves on how to use Foundation and jumpstart your next project. <a href="http://zurb.com/university/courses" class="inline-hide">Learn more about classes »</a></p>
+      <a href="http://zurb.com/university/foundation-intro?utm_source=Foundation%20Docs&utm_medium=Large%20Banner&utm_campaign=Intro%20to%20Foundation" class="button">Learn More</a>
+      <a href="http://zurb.com/university/courses" class="learn-more hide-for-medium-up">Learn more about classes »</a>
+    </div>
+  </div>
+</section> -->
+          <div id="newsletter">
+  <div class="row">
+    <div class="medium-8 columns">
+      <h5>Stay on top of what&rsquo;s happening in <a href="http://zurb.com/responsive">responsive design</a>.</h5>
+      <p>Sign up to receive monthly Responsive Reading highlights. <a href="http://zurb.com/responsive/reading">Read Last Month's Edition &raquo;</a></p>
+    </div>
+    <div class="medium-4 columns">
+      <form action="http://zurb.createsend.com/t/y/s/xlitlu/" method="post" id="subForm">
+        <div class="row collapse margintop-20px">
+          <div class="small-8 medium-8 columns">
+            <input id="fieldEmail" name="cm-xlitlu-xlitlu" type="email" placeholder="signup@example.com">
+          </div>
+          <div class="small-4 medium-4 columns">
+            <input type="submit" href="#" class="postfix button" value="Sign Up">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="zurb-footer-top bg-fblue">
+  <div class="row property">
+    <div class="medium-4 columns">
+      <div class="property-info">
+        <h3>Foundation for Sites</h3>
+        <p>Foundation is a responsive front-end framework made by <a href="http://zurb.com">ZURB</a>, a product design company in Campbell, CA. This framework is the result of building web products &amp; services since 1998.
+        </p>
+      </div>
+    </div>
+
+    <div class="medium-8 columns">
+      <div class="row collapse">
+        <div class="medium-4 columns">
+          <div class="learn-links">
+            <h4 class="hide-for-small">Want more?</h4>
+            <ul>
+              <li><a href="http://foundation.zurb.com/apps">Foundation for Apps</a></li>
+              <li><a href="http://zurb.com/ink/">Ink Responsive Emails</a></li>
+              <li><a href="http://zurb.com/notable">Notable Design Apps</a></li>
+              <li><a href="http://zurb.com/university/courses">Training</a></li>
+              <li><a href="http://zurb.com/library">Design Resources</a></li>
+            </ul>
+          </div>
+        </div>
+          <div class="medium-4 columns">
+            <div class="support-links">
+            <h4 class="hide-for-small">Talk to us</h4>
+            <p>Tweet us at <br> <a href="https://twitter.com/zurbfoundation">@ZURBfoundation</a></p>
+            <p><a href="http://foundation.zurb.com/business/business-support.html">Business Support</a></p>
+            <p>Or check our <a href="http://foundation.zurb.com/support/support.html">support page</a></p>
+            </div>
+          </div>
+        <div class="medium-4 columns">
+          <div class="connect-links">
+            <h4 class="hide-for-small">Stay Updated</h4>
+            <p>Keep up with the latest on Foundation. Find us on <a href="https://github.com/zurb/foundation">Github</a>.</p>
+            <a href="http://zurb.com/news" class="small button">Stay Connected</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row global">
+    <div class="medium-3 small-6 columns">
+      <a href="http://zurb.com/studios" class="footer-link-block services">
+        <span class="title">Studios</span>
+        <span>Helping more than 200 startups succeed since 1998.</span>
+      </a>
+    </div>
+    <div class="medium-3 small-6 columns">
+      <a href="http://foundation.zurb.com/" class="footer-link-block foundation">
+        <span class="title">Foundation</span>
+        <span>The most advanced front-end framework in the world.</span>
+      </a>
+    </div>
+    <div class="medium-3 small-6 columns">
+      <a href="http://zurb.com/notable" class="footer-link-block apps">
+        <span class="title">Notable Design Apps</span>
+        <span>Prototype, iterate and collect feedback on your products.</span>
+      </a>
+    </div>
+    <div class="medium-3 small-6 columns">
+      <a href="http://zurb.com/university" class="footer-link-block expo">
+        <span class="title">University</span>
+        <span>Ideas, thoughts and design resources shared with you.</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="zurb-footer-bottom">
+  <div class="row">
+    <div class="medium-4 medium-4 push-8 columns">
+      <ul class="home-social">
+          <li><a href="http://www.twitter.com/ZURB" class="twitter"></a></li>
+          <li><a href="http://www.facebook.com/ZURB" class="facebook"></a></li>
+          <li><a href="http://zurb.com/contact" class="mail"></a></li>
+        </ul>
+     </div>
+     <div class="medium-8 medium-8 pull-4 columns">
+        <a href="http://www.zurb.com" class="zurb-logo regular"></a>
+        <ul class="zurb-links">
+          <li><a href="http://zurb.com/about">About</a></li>
+          <li><a href="http://zurb.com/blog">Blog</a></li>
+          <li><a href="http://zurb.com/news">News<span class="show-for-medium-up"> &amp; Events</span></a></li>
+          <li><a href="http://zurb.com/contact">Contact</a></li>
+          <li><a href="http://zurb.com/sitemap">Sitemap</a></li>
+       </ul>
+       <p class="copyright">&copy; 1998&dash;2015 ZURB, Inc. All rights reserved.</p>
+    </div>
+  </div>
+</div>
+
+        </section>
+
+      </div>
+    </div>
+
+    <script src="../assets/js/templates.js"></script>
+    <script src="../assets/js/all.js"></script>
+    <script>
+      var _gaq = _gaq || [];
+      _gaq.push(
+        ['_setAccount', 'UA-2195009-2'],
+        ['_trackPageview'],
+        ['b._setAccount', 'UA-2195009-27'],
+        ['b._trackPageview']
+      );
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <script>
+      $(document).foundation().foundation('joyride', 'start');
+    </script>
+  </body>
+
+</html>

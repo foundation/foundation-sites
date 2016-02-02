@@ -1,0 +1,985 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Orbit | Foundation Docs</title>
+    <link rel="icon" href="../assets/img/icons/favicon.ico" type="image/x-icon">
+    <!-- For third-generation iPad with high-resolution Retina display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/img/icons/apple-touch-icon-144x144-precomposed.png">
+    <!-- For iPhone with high-resolution Retina display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/img/icons/apple-touch-icon-114x114-precomposed.png">
+    <!-- For first- and second-generation iPad: -->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/img/icons/apple-touch-icon-72x72-precomposed.png">
+    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <link rel="apple-touch-icon-precomposed" href="../assets/img/icons/apple-touch-icon-precomposed.png">
+
+    <meta name="description" content="Documentation and reference library for ZURB Foundation. JavaScript, CSS, components, grid and more.">
+    <meta name="author" content="ZURB, inc. ZURB network also includes zurb.com">
+    <meta name="copyright" content="ZURB, inc. Copyright (c) 2014">
+
+    <link href="../assets/css/docs.css" rel="stylesheet" />
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet" />
+    <script src="../assets/js/modernizr.js"></script>
+  </head>
+  <body class="antialiased hide-extras">
+
+  <!-- Info Banner For Announcements or Links -->
+  <a href="http://zurb.com/article/1416/foundation-6-is-here" id="notice">
+    <div class="info">
+      <h5>Foundation 6 is here!</h5>
+    </div>
+  </a>
+
+
+
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+         
+ 
+
+<!-- <nav class="tab-bar show-for-small">
+  <a class="off-canvas-left-toggle menu-icon ">
+    <span></span>
+  </a>  
+</nav> -->
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+  <ul class="title-area">
+    <li class="name">
+      <h1>
+        <a href="http://foundation.zurb.com/">
+          <img class="zurb-logo" src="http://foundation.zurb.com/docs/assets/img/zurb-logo.svg">
+          <span>Foundation</span>
+        </a>
+      </h1>
+    </li>
+  </ul>
+
+  <section class="top-bar-section">
+    <ul class="right">
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="http://foundation.zurb.com/learn/features.html" class="">Learn</a>
+        <ul class="dropdown">
+          <li><a href="http://foundation.zurb.com/learn/about.html">About Foundation</a></li>
+          <li><a href="http://foundation.zurb.com/learn/tutorials.html">Tutorials</a></li>
+          <li><a href="http://foundation.zurb.com/learn/classes.html">Classes</a></li>
+          <li><a href="http://foundation.zurb.com/learn/case-studies.html">Case Studies</a></li>
+          <li><a href="http://foundation.zurb.com/learn/brands.html">Brands</a></li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="http://foundation.zurb.com/develop/getting-started.html" class="">Develop</a>
+        <ul class="dropdown">
+          <li class="title">Frameworks</li>
+          <li><a class="" href="http://foundation.zurb.com/sites.html">Foundation for Sites</a></li>
+          <li><a  class="" href="http://foundation.zurb.com/apps.html">Foundation for Apps</a></li>
+          <li><a  class="spaced-list-item" href="http://foundation.zurb.com/emails.html">Foundation for Emails</a></li>
+          <li class="spaced-divider"><hr></li>
+          <li><a href="http://foundation.zurb.com/templates.html">HTML Templates</a></li>
+          <li><a href="http://foundation.zurb.com/develop/resources.html">Resources</a></li>
+          <li><a href="http://foundation.zurb.com/sites/building-blocks.html">Building Blocks</a></li>
+          <li><a href="http://foundation.zurb.com/develop/contribute.html">Contribute</a></li>  
+          
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="http://foundation.zurb.com/support/support.html" class="">Support</a>
+        <ul class="dropdown">
+          <li><a href="http://foundation.zurb.com/support/support.html">Support Channels</a></li>
+          <li><a href="http://foundation.zurb.com/forum">Foundation Forum</a></li>
+          <li><a href="http://foundation.zurb.com/support/faq.html">FAQs</a></li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="../../business/services.html" class="">Business</a>
+        <ul class="dropdown">
+          <li><a href="../../business/services.html">Services</a></li>
+          <li><a href="http://foundation.zurb.com/learn/certification.html">Certification</a></li>
+          <li><a href="../../business/business-support.html">Business Support</a></li>
+          <li><a href="../../business/engineering-studios.html">Engineering Studios</a></li>
+          <li><a href="../../business/training.html">Business Training</a></li>
+          <li><a href="../../business/design-apps.html">Design Apps</a></li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li>
+        <a href="http://foundation.zurb.com/docs" class="">Docs</a>
+      </li>
+      <li class="divider"></li>
+      <li class="has-form">
+        <a href="http://foundation.zurb.com/docs" class="small button">Getting Started</a>
+    </ul>
+  </section>
+</nav>
+        <nav class="tab-bar show-for-small">
+  <a class="left-off-canvas-toggle menu-icon">
+    <span>Foundation</span>
+  </a>
+</nav>
+
+<aside class="marketing-left-off-canvas-menu">
+
+  <ul class="off-canvas-list">
+    <li><label class="first">Foundation</label></li>
+    <li><a href="http://foundation.zurb.com">Home</a></li>
+  </ul>
+
+  <hr>
+
+  <ul class="off-canvas-list">
+      <li><label>Setup</label></li>
+
+      <li><a href="../index.html" data-search="">Getting Started</a></li>
+      <li><a href="../css.html" data-search="Styles">CSS</a></li>
+      <li><a href="../sass.html" data-search="Sass">Sass</a></li>      
+      <li><a href="../sass-files.html" data-search="Sass,Sass - What You Get, How to Use Sass">Sass Files</a></li>
+      <li><a href="../using-sass.html" data-search="Sass,Sass - What You Get, How to Use Sass">Using Sass</a></li>
+      <li><a href="../applications.html" data-search="Rails,Gem">Applications</a></li>
+      <li><a href="../javascript.html" data-search="">Javascript</a></li>
+      <li><a href="global.html" data-search="Global Styles,Global Mixins,Global Variables,Useful HTML Classes">Global Styles</a></li>
+      <li><a href="kitchen_sink.html" data-search="">Kitchen Sink</a></li>
+      <li><a href="../upgrading.html" data-search="Migration">Upgrading</a></li>
+
+      <li class="divider"></li>
+      <li><label>Structure</label></li>
+      <li><a href="../media-queries.html" data-search="Breakpoints">Media Queries</a></li>
+      <li><a href="visibility.html" data-search="">Visibility</a></li>
+      <li><a href="grid.html" data-search="">Grid</a></li>
+      <li><a href="block_grid.html" data-search="">Block Grid</a></li>
+      <li><a href="interchange.html" data-search="Responsive Images">Interchange Responsive Content <span class="label">JS</span></a></li>
+      <li><a href="../utility-classes.html" data-search="">Utility Classes</a></li>
+      <li><a href="../javascript-utilities.html" data-search="">Javascript Utilities</a></li>
+      <li><a href="rtl.html" data-search="RTL">Right-to-Left Support</a></li>
+
+      <li class="divider"></li>
+      <li><label>Navigation</label></li>
+      <li><a href="offcanvas.html" data-search="Off Canvas">Off-canvas <span class="label">JS</span></a></li>
+      <li><a href="topbar.html" data-search="Nav Bar,Navigation,Sticky">Top Bar <span class="label">JS</span></a></li>
+      <li><a href="icon-bar.html" data-search="">Icon Bar</a></li>
+      <li><a href="sidenav.html" data-search="">Side Nav</a></li>
+      <li><a href="magellan.html" data-search="Scrollspy">Magellan Sticky Nav <span class="label">JS</span></a></li>
+      <li><a href="subnav.html" data-search="">Sub Nav</a></li>
+      <li><a href="breadcrumbs.html" data-search="Navigation Path,Cookie Crumb">Breadcrumbs</a></li>
+      <li><a href="pagination.html" data-search="">Pagination</a></li>
+
+      <li class="divider"></li>
+      <li><label>Media</label></li>
+      <li><a href="orbit.html" data-search="Carousel,Slider,Slideshow">Orbit Slider <span class="label">JS</span></a></li>
+      <li><a href="thumbnails.html" data-search="Images">Thumbnails</a></li>
+      <li><a href="clearing.html" data-search="Responsive Lightbox,Lightbox">Clearing Lightbox <span class="label">JS</span></a></li>
+      <li><a href="flex_video.html" data-search="Responsive Video">Flex Video</a></li>
+
+      <li class="divider"></li>
+      <li><label>Forms</label></li>
+      <li><a href="forms.html" data-search="">Forms</a></li>
+      <li><a href="switch.html" data-search="">Switches</a></li>
+      <li><a href="range_slider.html" data-search="Range Slider">Sliders <span class="label">JS</span></a></li>
+      <li><a href="abide.html" data-search="Form Validation,Field Validation">Abide Validation <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li><label>Buttons</label></li>
+      <li><a href="buttons.html" data-search="">Buttons</a></li>
+      <li><a href="button_groups.html" data-search="Button Bar">Button Groups</a></li>
+      <li><a href="split_buttons.html" data-search="">Split Buttons <span class="label">JS</span></a></li>
+      <li><a href="dropdown_buttons.html" data-search="">Dropdown Buttons <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li><label>Typography</label></li>
+      <li><a href="typography.html" data-search="Typography,Type-setting,Composition">Type</a></li>
+      <li><a href="inline_lists.html" data-search="Lists">Inline Lists</a></li>
+      <li><a href="labels.html" data-search="Tags">Labels</a></li>
+      <li><a href="keystrokes.html" data-search="">Keystrokes</a></li>
+
+      <li class="divider"></li>
+      <li class="heading"><label>Callouts &amp; Prompts</label></li>
+      <li><a href="reveal.html" data-search="Modal">Reveal Modal <span class="label">JS</span></a></li>
+      <li><a href="alert_boxes.html" data-search="Error,Success,Warning">Alerts <span class="label">JS</span></a></li>
+      <li><a href="panels.html" data-search="Wells">Panels</a></li>
+      <li><a href="tooltips.html" data-search="Popover">Tooltips <span class="label">JS</span></a></li>
+      <li><a href="joyride.html" data-search="Tooltip Tour,Guider,Tooltip Walk-through">Joyride <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li><label>Content</label></li>
+      <li><a href="dropdown.html" data-search="">Dropdowns <span class="label">JS</span></a></li>
+      <li><a href="pricing_tables.html" data-search="">Pricing Tables</a></li>
+      <li><a href="progress_bars.html" data-search="">Progress Bars</a></li>
+      <li><a href="tables.html" data-search="">Tables</a></li>
+      <li><a href="accordion.html" data-search="">Accordion <span class="label">JS</span></a></li>
+      <li><a href="tabs.html" data-search="">Tabs <span class="label">JS</span></a></li>
+      <li><a href="equalizer.html" data-search="">Equalizer <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li><label>Support</label></li>
+
+      <li><a href="../changelog.html" data-search="">Changelog</a></li>
+      <li><a href="../compatibility.html" data-search="">Compatibility</a></li>
+
+      <li class="divider"></li>
+      <li class="heading"><label>Older Docs</label></li>
+      <li><a href="/docs/v/4.3.2/" data-search="">Foundation 4</a></li>
+      <li><a href="/docs/v/3.2.5/" data-search="">Foundation 3</a></li>
+      <li><a href="/docs/v/2.2.1/" data-search="">Foundation 2</a></li>
+    </ul>
+
+    <hr>
+
+    <div class="zurb-links">
+    <ul class="top">
+      <li class="logo"><a href="http://zurb.com"></a></li>
+      <li><a href="http://zurb.com/about">About</a></li>
+      <li><a href="http://zurb.com/blog">Blog</a></li>
+      <li><a href="http://zurb.com/contact">Contact</a></li>
+    </ul>
+    <ul class="pillars">
+      <li>
+        <a href="http://www.zurb.com/studios" class="footer-link-block services">
+          <span class="title">Studios</span>
+          <span>Helping startups win since '98.</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://foundation.zurb.com/" class="footer-link-block foundation">
+          <span class="title">Foundation</span>
+          <span>World's most advanced responsive framework.</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://zurb.com/notable" class="footer-link-block apps">
+          <span class="title">Notable</span>
+          <span>Tools to rapidly prototype and iterate.</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://zurb.com/university" class="footer-link-block expo">
+          <span class="title">University</span>
+          <span>Online training for smarter product design.</span>
+        </a>
+      </li>
+    </ul>
+</div>
+
+</aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section role="main" class="scroll-container">
+
+          <div class="row">
+            <div class="large-3 medium-4 columns">
+              <div class="hide-for-small">
+                <div class="sidebar">
+  <h5>Foundation Documentation</h5>
+  <form>
+    <!--  <label>Search Documentation</label> -->
+    <input tabindex="1" id="autocomplete" type="search" placeholder="Search Docs: e.g. forms">
+  </form>
+
+  <a href="/develop/download.html" class="download button expand">Download Foundation</a>
+
+  <nav>
+    <ul class="side-nav">
+      <li class="heading">Setup</li>
+
+      <li><a href="../index.html" data-search="">Getting Started</a></li>
+      <li><a href="../css.html" data-search="Styles">CSS</a></li>
+      <li><a href="../sass.html" data-search="Sass">Sass</a></li>
+      <li><a href="../sass-files.html" data-search="Sass,Sass - What You Get, How to Use Sass">Sass Files</a></li>
+      <li><a href="../using-sass.html" data-search="Sass,Sass - What You Get, How to Use Sass">Using Sass</a></li>
+      <li><a href="../applications.html" data-search="Rails,Gem">Applications</a></li>
+      <li><a href="../javascript.html" data-search="">JavaScript</a></li>
+      <li><a href="global.html" data-search="Global Styles,Global Mixins,Global Variables,Useful HTML Classes">Global Styles</a></li>
+      <li><a href="kitchen_sink.html" data-search="">Kitchen Sink</a></li>
+      <li><a href="../accessibility.html" data-search="accessibility">Accessibility</a></li>
+      <li><a href="../upgrading.html" data-search="Migration">Upgrading</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Structure</li>
+      <li><a href="../media-queries.html" data-search="Breakpoints">Media Queries</a></li>
+      <li><a href="visibility.html" data-search="">Visibility</a></li>
+      <li><a href="grid.html" data-search="">Grid</a></li>
+      <li><a href="block_grid.html" data-search="">Block Grid</a></li>
+      <li><a href="interchange.html" data-search="Responsive Images">Interchange Responsive Content <span class="label">JS</span></a></li>
+      <li><a href="../utility-classes.html" data-search="">Utility Classes</a></li>
+      <li><a href="../javascript-utilities.html" data-search="">Javascript Utilities</a></li>
+      <li><a href="rtl.html" data-search="RTL">Right-to-Left Support</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Navigation</li>
+      <li><a href="offcanvas.html" data-search="Off Canvas">Off-canvas <span class="label">JS</span></a></li>
+      <li><a href="topbar.html" data-search="Nav Bar,Navigation,Sticky">Top Bar <span class="label">JS</span></a></li>
+      <li><a href="icon-bar.html" data-search="">Icon Bar</a></li>
+      <li><a href="sidenav.html" data-search="">Side Nav</a></li>
+      <li><a href="magellan.html" data-search="Scrollspy">Magellan Sticky Nav <span class="label">JS</span></a></li>
+      <li><a href="subnav.html" data-search="">Sub Nav</a></li>
+      <li><a href="breadcrumbs.html" data-search="Navigation Path,Cookie Crumb">Breadcrumbs</a></li>
+      <li><a href="pagination.html" data-search="">Pagination</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Media</li>
+      <li><a href="orbit.html" data-search="Carousel,Slider,Slideshow">Orbit Slider <span class="label">JS</span></a></li>
+      <li><a href="thumbnails.html" data-search="Images">Thumbnails</a></li>
+      <li><a href="clearing.html" data-search="Responsive Lightbox,Lightbox">Clearing Lightbox <span class="label">JS</span></a></li>
+      <li><a href="flex_video.html" data-search="Responsive Video">Flex Video</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Forms</li>
+      <li><a href="forms.html" data-search="">Forms</a></li>
+      <li><a href="switch.html" data-search="">Switches</a></li>
+      <li><a href="range_slider.html" data-search="Range Slider">Range Sliders <span class="label">JS</span></a></li>
+      <li><a href="abide.html" data-search="Form Validation,Field Validation">Abide Validation <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Buttons</li>
+      <li><a href="buttons.html" data-search="">Buttons</a></li>
+      <li><a href="button_groups.html" data-search="Button Bar">Button Groups</a></li>
+      <li><a href="split_buttons.html" data-search="">Split Buttons <span class="label">JS</span></a></li>
+      <li><a href="dropdown_buttons.html" data-search="">Dropdown Buttons <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Typography</li>
+      <li><a href="typography.html" data-search="Typography,Type-setting,Composition">Type</a></li>
+      <li><a href="inline_lists.html" data-search="Lists">Inline Lists</a></li>
+      <li><a href="labels.html" data-search="Tags">Labels</a></li>
+      <li><a href="keystrokes.html" data-search="">Keystrokes</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Callouts &amp; Prompts</li>
+      <li><a href="reveal.html" data-search="Modal">Reveal Modal <span class="label">JS</span></a></li>
+      <li><a href="alert_boxes.html" data-search="Error,Success,Warning">Alerts <span class="label">JS</span></a></li>
+      <li><a href="panels.html" data-search="Wells">Panels</a></li>
+      <li><a href="tooltips.html" data-search="Popover">Tooltips <span class="label">JS</span></a></li>
+      <li><a href="joyride.html" data-search="Tooltip Tour,Guider,Tooltip Walk-through">Joyride <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Content</li>
+      <li><a href="dropdown.html" data-search="">Dropdowns <span class="label">JS</span></a></li>
+      <li><a href="pricing_tables.html" data-search="">Pricing Tables</a></li>
+      <li><a href="progress_bars.html" data-search="">Progress Bars</a></li>
+      <li><a href="tables.html" data-search="">Tables</a></li>
+      <li><a href="accordion.html" data-search="">Accordion <span class="label">JS</span></a></li>
+      <li><a href="tabs.html" data-search="">Tabs <span class="label">JS</span></a></li>
+      <li><a href="equalizer.html" data-search="">Equalizer <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Support</li>
+
+      <li><a href="../changelog.html" data-search="">Changelog</a></li>
+      <li><a href="../compatibility.html" data-search="">Compatibility</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Older Docs</li>
+      <li><a href="/docs/v/4.3.2/" data-search="">Foundation 4</a></li>
+      <li><a href="/docs/v/3.2.5/" data-search="">Foundation 3</a></li>
+      <li><a href="/docs/v/2.2.1/" data-search="">Foundation 2</a></li>
+
+    </ul>
+  </nav>
+
+
+  <!-- <section id="jobs">
+    <h5>Get a job, nerd!</h5>
+    <script type="text/javascript" src="http://www.zurb.com/jobs/widgets/jobs.js?limit=3"></script>
+    <p class="via">via <a href="http://www.zurb.com/jobs">Job Board from ZURB</a></p>
+  </section> -->
+
+</div>
+              </div>
+            </div>
+            <div class="large-9 medium-8 columns">
+              <h1 id="orbit">Orbit</h1>
+              <div id="component-name" name="Orbit"></div>
+              <h3 class="subheader">Orbit is an easy, powerful, responsive image slider that allows users to swipe on touch-enabled devices.</h3>
+
+<hr>
+<ul class="example-orbit" data-orbit>
+  <li>
+    <img src="../assets/img/examples/satelite-orbit.jpg" alt="slide 1" />
+    <div class="orbit-caption">
+      Caption One.
+    </div>
+  </li>
+  <li class="active">
+    <img src="../assets/img/examples/andromeda-orbit.jpg" alt="slide 2" />
+    <div class="orbit-caption">
+      Caption Two.
+    </div>
+  </li>
+  <li>
+    <img src="../assets/img/examples/launch-orbit.jpg" alt="slide 3" />
+    <div class="orbit-caption">
+      Caption Three.
+    </div>
+  </li>
+</ul>
+
+
+<hr>
+<h4 class="warn">Deprecation Notice:</h4>
+
+<p>Orbit has been deprecated, meaning that it is no longer supported. There&#39;s no need to worry though as we decided to leave it in Foundation if you choose to continue using it. We explain it <a href="http://foundation.zurb.com/forum/posts/14504-moving-on-from-developing-orbit">here.</a> </p>
+<p>There are other great options if you need an image slider. A lot of them have features based on Orbit and may have added one of two more features.</p>
+<p>This image slider is really slick: <a href="http://kenwheeler.github.io/slick/">Slick Carousel</a>. It has all the features Orbit has and can also be used as a carousel for single image sliding. It&#39;s easy to set up and is <a href="https://github.com/kenwheeler/slick/">well supported.</a></p>
+<p>Orbit is also not accessible to screen readers or assistive devices.</p>
+<hr>
+<p><a name="setup"></a></p>
+<h2 id="how-to-setup-orbit">How to Setup Orbit</h2>
+<p>Orbit requires minimal HTML markup to function. Our Javascript takes care of most of the heavy lifting for you. The only thing you need to do is add a  <code>&lt;ul data-orbit&gt;&lt;/ul&gt;</code> element to your page. You can then populate it with images, text, and captions. Here&#39;s the markup required to implement a basic Orbit slider on your page:</p>
+<h4>HTML</h4>
+
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">ul</span> <span class="attribute">class</span>=<span class="value">"example-orbit"</span> <span class="attribute">data-orbit</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"../assets/img/examples/satelite-orbit.jpg"</span> <span class="attribute">alt</span>=<span class="value">"slide 1"</span> /&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"orbit-caption"</span>&gt;</span>
+      Caption One.
+    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"active"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"../assets/img/examples/andromeda-orbit.jpg"</span> <span class="attribute">alt</span>=<span class="value">"slide 2"</span> /&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"orbit-caption"</span>&gt;</span>
+      Caption Two.
+    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"../assets/img/examples/launch-orbit.jpg"</span> <span class="attribute">alt</span>=<span class="value">"slide 3"</span> /&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"orbit-caption"</span>&gt;</span>
+      Caption Three.
+    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">ul</span>&gt;</span></div></code></pre>
+
+
+<h4>Rendered HTML</h4>
+
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"orbit-container"</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">ul</span> <span class="attribute">data-orbit</span> <span class="attribute">class</span>=<span class="value">"example-orbit orbit-slides-container"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">li</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"../assets/img/examples/satelite-orbit.jpg"</span> <span class="attribute">alt</span>=<span class="value">"slide 1"</span> /&gt;</span>
+      <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"orbit-caption"</span>&gt;</span>
+        Caption One.
+      <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"active"</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"../assets/img/examples/andromeda-orbit.jpg"</span> <span class="attribute">alt</span>=<span class="value">"slide 1"</span> /&gt;</span>
+      <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"orbit-caption"</span>&gt;</span>
+        Caption Two.
+      <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">li</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">img</span> <span class="attribute">src</span>=<span class="value">"../assets/img/examples/launch-orbit.jpg"</span> <span class="attribute">alt</span>=<span class="value">"slide 1"</span> /&gt;</span>
+      <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"orbit-caption"</span>&gt;</span>
+        Caption Three.
+      <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
+
+  <span class="comment">&lt;!-- Navigation Arrows --&gt;</span>
+  <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span> <span class="attribute">class</span>=<span class="value">"orbit-prev"</span>&gt;</span>Prev <span class="tag">&lt;<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span> <span class="attribute">class</span>=<span class="value">"orbit-next"</span>&gt;</span>Next <span class="tag">&lt;<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span>
+
+  <span class="comment">&lt;!-- Slide Numbers --&gt;</span>
+  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"orbit-slide-number"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">span</span>&gt;</span>1<span class="tag">&lt;/<span class="title">span</span>&gt;</span> of <span class="tag">&lt;<span class="title">span</span>&gt;</span>3<span class="tag">&lt;/<span class="title">span</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+
+  <span class="comment">&lt;!-- Timer and Play/Pause Button --&gt;</span>
+  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"orbit-timer"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">span</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"orbit-progress"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+
+<span class="comment">&lt;!-- Bullets --&gt;</span>
+<span class="tag">&lt;<span class="title">ol</span> <span class="attribute">class</span>=<span class="value">"orbit-bullets"</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span> <span class="attribute">data-orbit-slide-number</span>=<span class="value">"1"</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span> <span class="attribute">data-orbit-slide-number</span>=<span class="value">"2"</span> <span class="attribute">class</span>=<span class="value">"active"</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span> <span class="attribute">data-orbit-slide-number</span>=<span class="value">"3"</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">ol</span>&gt;</span></div></code></pre>
+
+
+<hr>
+<h2 id="content-sliders">Content Sliders</h2>
+<p>Orbit can also be used with just content and no images.</p>
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">ul</span> <span class="attribute">class</span>=<span class="value">&quot;example-orbit-content&quot;</span> <span class="attribute">data-orbit</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span> <span class="attribute">data-orbit-slide</span>=<span class="value">&quot;headline-1&quot;</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">h2</span>&gt;</span>Headline 1<span class="tag">&lt;/<span class="title">h2</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">h3</span>&gt;</span>Subheadline<span class="tag">&lt;/<span class="title">h3</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span> <span class="attribute">data-orbit-slide</span>=<span class="value">&quot;headline-2&quot;</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">h2</span>&gt;</span>Headline 2<span class="tag">&lt;/<span class="title">h2</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">h3</span>&gt;</span>Subheadline<span class="tag">&lt;/<span class="title">h3</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">li</span> <span class="attribute">data-orbit-slide</span>=<span class="value">&quot;headline-3&quot;</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">h2</span>&gt;</span>Headline 3<span class="tag">&lt;/<span class="title">h2</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">h3</span>&gt;</span>Subheadline<span class="tag">&lt;/<span class="title">h3</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">ul</span>&gt;</span></div></code></pre>
+
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    <ul class="example-orbit-content" data-orbit>
+  <li data-orbit-slide="headline-1">
+    <div>
+      <h2>Headline 1</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+  <li data-orbit-slide="headline-2">
+    <div>
+      <h2>Headline 2</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+  <li data-orbit-slide="headline-3">
+    <div>
+      <h2>Headline 3</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+</ul>
+  </div>
+</div>
+
+<hr>
+<h2 id="deep-linking">Deep Linking</h2>
+<p>To link to a particular slide in your Orbit slider you will need to add a  <code>data-orbit-slide</code> attribute to each slide. Then anywhere on your page you can use <code>data-orbit-link</code> to link to that slide.</p>
+<div class="row">
+  <div class="large-6 columns">
+    <h4>HTML</h4>
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">data-orbit-link</span>=<span class="value">&quot;headline-1&quot;</span> <span class="attribute">class</span>=<span class="value">&quot;small button&quot;</span>&gt;</span>
+  Goto Slide 1
+<span class="tag">&lt;/<span class="title">a</span>&gt;</span>
+<span class="tag">&lt;<span class="title">a</span> <span class="attribute">data-orbit-link</span>=<span class="value">&quot;headline-2&quot;</span> <span class="attribute">class</span>=<span class="value">&quot;small button&quot;</span>&gt;</span>
+  Goto Slide 2
+<span class="tag">&lt;/<span class="title">a</span>&gt;</span>
+<span class="tag">&lt;<span class="title">a</span> <span class="attribute">data-orbit-link</span>=<span class="value">&quot;headline-3&quot;</span> <span class="attribute">class</span>=<span class="value">&quot;small button&quot;</span>&gt;</span>
+  Goto Slide 3
+<span class="tag">&lt;/<span class="title">a</span>&gt;</span></div></code></pre>
+
+  </div>
+  <div class="large-6 columns">
+    <h4>Rendered HTML</h4>
+    <a class="small button" data-orbit-link="headline-1">Goto Slide 1</a>
+    <a class="small button" data-orbit-link="headline-2">Goto Slide 2</a>
+    <a class="small button" data-orbit-link="headline-3">Goto Slide 3</a>
+    <ul class="example-orbit-content" data-orbit>
+  <li data-orbit-slide="headline-1">
+    <div>
+      <h2>Headline 1</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+  <li data-orbit-slide="headline-2">
+    <div>
+      <h2>Headline 2</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+  <li data-orbit-slide="headline-3">
+    <div>
+      <h2>Headline 3</h2>
+      <h3>Subheadline</h3>
+    </div>
+  </li>
+</ul>
+  </div>
+</div>
+
+<hr>
+<h2 id="accessibility">Accessibility</h2>
+<p class="panel">This component is not yet accessible. Stay tuned for updates in future releases.</p>
+
+<hr>
+<h2 id="customize-with-sass">Customize with Sass</h2>
+  <div class="row">
+    <section class="full-grid">
+      <p>We&#39;ve included a bunch of variables that you&#39;ll be able to use if you&#39;re into getting SASSy with things.</p>
+<pre><code class="language-scss"><div class="code-container">$include-<span class="tag">html</span>-orbit-classes<span class="value">: $include-html-classes !default;</span>
+
+<span class="comment">// We use these to control the caption styles</span>
+$orbit-container-bg<span class="value">: none !default;</span>
+$orbit-<span class="tag">caption</span>-bg<span class="value">: rgba(<span class="number">51</span>,<span class="number">51</span>,<span class="number">51</span>, <span class="number">0.8</span>) !default;</span>
+$orbit-<span class="tag">caption</span>-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: $white !default;</span>
+$orbit-<span class="tag">caption</span>-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">14</span>) !default;</span>
+$orbit-<span class="tag">caption</span>-<span class="attribute">position</span><span class="value">: <span class="string">&quot;bottom&quot;</span> !default;</span> <span class="comment">// Supported values: &quot;bottom&quot;, &quot;under&quot;</span>
+$orbit-<span class="tag">caption</span>-<span class="attribute">padding</span><span class="value">: rem-calc(<span class="number">10</span> <span class="number">14</span>) !default;</span>
+$orbit-<span class="tag">caption</span>-<span class="attribute">height</span><span class="value">: auto !default;</span>
+
+<span class="comment">// We use these to control the left/right nav styles</span>
+$orbit-<span class="tag">nav</span>-bg<span class="value">: transparent !default;</span>
+$orbit-<span class="tag">nav</span>-bg-hover<span class="value">: rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.3</span>) !default;</span>
+$orbit-<span class="tag">nav</span>-arrow-<span class="attribute">color</span><span class="value">: $white !default;</span>
+$orbit-<span class="tag">nav</span>-arrow-<span class="attribute">color</span>-hover<span class="value">: $white !default;</span>
+
+<span class="comment">// We use these to control the timer styles</span>
+$orbit-timer-bg<span class="value">: rgba(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>,<span class="number">0.3</span>) !default;</span>
+$orbit-timer-show-<span class="tag">progress</span>-bar<span class="value">: true !default;</span>
+
+<span class="comment">// We use these to control the bullet nav styles</span>
+$orbit-bullet-<span class="tag">nav</span>-<span class="attribute">color</span><span class="value">: $iron !default;</span>
+$orbit-bullet-<span class="tag">nav</span>-<span class="attribute">color</span>-active<span class="value">: $aluminum !default;</span>
+$orbit-bullet-radius<span class="value">: rem-calc(<span class="number">9</span>) !default;</span>
+
+<span class="comment">// We use these to controls the style of slide numbers</span>
+$orbit-slide-number-bg<span class="value">: rgba(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>) !default;</span>
+$orbit-slide-number-<span class="attribute">font</span>-<span class="attribute">color</span><span class="value">: $white !default;</span>
+$orbit-slide-number-<span class="attribute">padding</span><span class="value">: rem-calc(<span class="number">5</span>) !default;</span>
+
+<span class="comment">// Graceful Loading Wrapper and preloader</span>
+$wrapper-class<span class="value">: <span class="string">&quot;slideshow-wrapper&quot;</span> !default;</span>
+$preloader-class<span class="value">: <span class="string">&quot;preloader&quot;</span> !default;</span>
+
+<span class="comment">// Hide controls on small</span>
+$orbit-<span class="tag">nav</span>-hide-for-<span class="tag">small</span><span class="value">: true !default;</span>
+$orbit-bullet-hide-for-<span class="tag">small</span><span class="value">: true !default;</span>
+$orbit-timer-hide-for-<span class="tag">small</span><span class="value">: true !default;</span></div></code></pre>
+
+    </section>
+  </div>
+
+<hr>
+<h2 id="configuring-orbit">Configuring Orbit</h2>
+<p>It&#39;s easy to configure Orbit using our provided Javascript. You can use with data-attributes or plain old Javascript. Make sure <code>jquery.js</code>, <code>foundation.js</code>, and <code>foundation.orbit.js</code> have been included on your page before continuing. For example add the following before the closing <code>&lt;body&gt;</code> tag:</p>
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/vendor/jquery.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/foundation/foundation.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/foundation/foundation.orbit.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></div></code></pre>
+<h3 id="basic">Basic</h3>
+<p>Using data-attributes is the preferred method of making changes to our Javascript.</p>
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">ul</span> <span class="attribute">data-orbit</span> <span class="attribute">data-options</span>=<span class="value">"animation_speed:1500;"</span>&gt;</span>
+  ...
+<span class="tag">&lt;/<span class="title">ul</span>&gt;</span></div></code></pre>
+<h3 id="advanced">Advanced</h3>
+<p>You can also adjust settings using plain old Javascript. Here&#39;s all the available settings:</p>
+<h4 id="js">JS</h4>
+<pre><code class="language-js"><div class="code-container">$(document).foundation({
+  orbit: {
+      animation: <span class="string">'slide'</span>, <span class="comment">// Sets the type of animation used for transitioning between slides, can also be 'fade'</span>
+      timer_speed: <span class="number">10000</span>, <span class="comment">// Sets the amount of time in milliseconds before transitioning a slide</span>
+      pause_on_hover: <span class="literal">true</span>, <span class="comment">// Pauses on the current slide while hovering</span>
+      resume_on_mouseout: <span class="literal">false</span>, <span class="comment">// If pause on hover is set to true, this setting resumes playback after mousing out of slide</span>
+      next_on_click: <span class="literal">true</span>, <span class="comment">// Advance to next slide on click</span>
+      animation_speed: <span class="number">500</span>, <span class="comment">// Sets the amount of time in milliseconds the transition between slides will last</span>
+      stack_on_small: <span class="literal">false</span>,
+      navigation_arrows: <span class="literal">true</span>,
+      slide_number: <span class="literal">true</span>,
+      slide_number_text: <span class="string">'of'</span>,
+      container_class: <span class="string">'orbit-container'</span>,
+      stack_on_small_class: <span class="string">'orbit-stack-on-small'</span>,
+      next_class: <span class="string">'orbit-next'</span>, <span class="comment">// Class name given to the next button</span>
+      prev_class: <span class="string">'orbit-prev'</span>, <span class="comment">// Class name given to the previous button</span>
+      timer_container_class: <span class="string">'orbit-timer'</span>, <span class="comment">// Class name given to the timer</span>
+      timer_paused_class: <span class="string">'paused'</span>, <span class="comment">// Class name given to the paused button</span>
+      timer_progress_class: <span class="string">'orbit-progress'</span>, <span class="comment">// Class name given to the progress bar</span>
+      slides_container_class: <span class="string">'orbit-slides-container'</span>, <span class="comment">// Class name given to the slide container</span>
+      preloader_class: <span class="string">'preloader'</span>, <span class="comment">// Class given to the preloader</span>
+      slide_selector: <span class="string">'li'</span>, <span class="comment">// Default is '*' which selects all children under the container</span>
+      bullets_container_class: <span class="string">'orbit-bullets'</span>,
+      bullets_active_class: <span class="string">'active'</span>, <span class="comment">// Class name given to the active bullet</span>
+      slide_number_class: <span class="string">'orbit-slide-number'</span>, <span class="comment">// Class name given to the slide number</span>
+      caption_class: <span class="string">'orbit-caption'</span>, <span class="comment">// Class name given to the caption</span>
+      active_slide_class: <span class="string">'active'</span>, <span class="comment">// Class name given to the active slide</span>
+      orbit_transition_class: <span class="string">'orbit-transitioning'</span>,
+      bullets: <span class="literal">true</span>, <span class="comment">// Does the slider have bullets visible?</span>
+      circular: <span class="literal">true</span>, <span class="comment">// Does the slider should go to the first slide after showing the last?</span>
+      timer: <span class="literal">true</span>, <span class="comment">// Does the slider have a timer active? Setting to false disables the timer.</span>
+      variable_height: <span class="literal">false</span>, <span class="comment">// Does the slider have variable height content?</span>
+      swipe: <span class="literal">true</span>,
+      before_slide_change: noop, <span class="comment">// Execute a function before the slide changes</span>
+      after_slide_change: noop <span class="comment">// Execute a function after the slide changes</span>
+  }
+});</div></code></pre>
+<hr>
+<h2 id="real-world-example">Real World Example</h2>
+<h3 class="subheader">Here&#39;s an example of a customized Orbit container.</h3>
+
+  <div class="row">
+    <section class="large-6 columns">
+      <h4 class="">Javascript</h4>
+      <div class="code-container">
+
+<pre><code class="language-js"><div class="code-container">$(document).foundation({
+  orbit: {
+    animation: <span class="string">&#39;slide&#39;</span>,
+    timer_speed: <span class="number">1000</span>,
+    pause_on_hover: <span class="literal">true</span>,
+    animation_speed: <span class="number">500</span>,
+    navigation_arrows: <span class="literal">true</span>,
+    bullets: <span class="literal">false</span>
+  }
+});</div></code></pre>
+
+
+      </div>
+    </section>
+
+    <section class="large-6 columns">
+      <h4 class="">HTML</h4>
+      <div class="options-code-container">
+        <div class="code-container">
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">ul</span> <span class="attribute">data-orbit</span>
+    <span class="attribute">data-options</span>=<span class="value">&quot;animation:slide;
+                  pause_on_hover:true;
+                  animation_speed:500;
+                  navigation_arrows:true;
+                  bullets:false;&quot;</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">ul</span>&gt;</span></div></code></pre>
+
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="row">
+    <section class="full-grid">
+      <ul data-orbit data-options="
+        animation:slide;
+        pause_on_hover:true;
+        animation_speed:500;
+        navigation_arrows:true;
+        bullets:false;">
+        <li><img src="../assets/img/examples/andromeda-orbit.jpg" alt="slide 1"></li>
+        <li><img src="../assets/img/examples/satelite-orbit.jpg" alt="slide 2"></li>
+        <li><img src="../assets/img/examples/launch-orbit.jpg" alt="slide 3"></li>
+      </ul>
+    </section>
+  </div>
+
+<hr>
+<h2 id="events">Events</h2>
+<p>There are several events that you can bind to in Orbit. Here&#39;s an example of how you can bind to these events:</p>
+<h4 id="html">HTML</h4>
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">ul</span> <span class="attribute">id</span>=<span class="value">"featured1"</span> <span class="attribute">data-orbit</span>&gt;</span>
+  ...
+<span class="tag">&lt;/<span class="title">ul</span>&gt;</span></div></code></pre>
+<h4 id="js">JS</h4>
+<pre><code class="language-js"><div class="code-container">$(<span class="string">"#featured1"</span>).on(<span class="string">"ready.fndtn.orbit"</span>, <span class="keyword">function</span>(event) {
+  console.info(<span class="string">"ready"</span>);
+});
+$(<span class="string">"#featured1"</span>).on(<span class="string">"before-slide-change.fndtn.orbit"</span>, <span class="keyword">function</span>(event) {
+  console.info(<span class="string">"before slide change"</span>);
+});
+$(<span class="string">"#featured1"</span>).on(<span class="string">"after-slide-change.fndtn.orbit"</span>, <span class="keyword">function</span>(event, orbit) {
+  console.info(<span class="string">"after slide change"</span>);
+  console.info(<span class="string">"slide "</span> + orbit.slide_number + <span class="string">" of "</span> + orbit.total_slides);
+});
+$(<span class="string">"#featured1"</span>).on(<span class="string">"timer-started.fndtn.orbit"</span>, <span class="keyword">function</span>(event, orbit) {
+  console.info(<span class="string">"timer started"</span>);
+});
+$(<span class="string">"#featured1"</span>).on(<span class="string">"timer-stopped.fndtn.orbit"</span>, <span class="keyword">function</span>(event, orbit) {
+  console.info(<span class="string">"timer stopped"</span>);
+});</div></code></pre>
+<hr>
+<h3 id="adding-new-content-after-page-load">Adding New Content After Page Load</h3>
+<p>If you add new content after the page has been loaded, you will need to reinitialize the Foundation JavaScript by running the following:</p>
+<pre><code class="language-javascript"><div class="code-container">$(document).foundation();</div></code></pre>
+
+
+<p>Reflow will make Foundation check the DOM for any elements and re-apply any listeners to them.</p>
+<pre><code class="language-javascript"><div class="code-container">$(document).foundation(<span class="string">'orbit'</span>, <span class="string">'reflow'</span>);</div></code></pre>
+
+
+<hr>
+<h3 id="sass-errors-">Sass Errors?</h3>
+<p>If the default &quot;foundation&quot; import was commented out, then make sure you import this file:</p>
+<h4>SCSS</h4>
+
+<pre><code class="language-scss"><div class="code-container"><span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/orbit"</span>;</span></div></code></pre>
+
+
+
+
+<p><br>
+<br></p>
+<hr>
+
+<section class="building-blocks-section">
+  <h2 class="building-blocks-header">Building Blocks Using Orbit</h2>
+  <div class="row">
+    <div data-building-blocks>
+
+    </div>
+  </div>
+
+  <br>
+
+  <h3 class="building-blocks-header">Want more? Check out all the hot <a href="http://zurb.com/building-blocks">Building Blocks &#8680;</a></h4>
+</section>
+
+
+
+            </div>
+          </div>
+          <!-- <section id="courses-banner-large">
+  <div class="row">
+    <div class="large-5 medium-5 columns banner-image">
+      <img src="http://foundation.zurb.com/assets/img/responsive-banner-main.svg" alt="responsive design">
+    </div>
+    <div class="large-7 medium-7 columns banner-info">
+      <h3>Get a running start with Foundation</h3>
+      <p>Learn the fundamentals of the world's most advanced responsive framework in our <strong>Intro to Foundation class.</strong> You'll learn from the creators themselves on how to use Foundation and jumpstart your next project. <a href="http://zurb.com/university/courses" class="inline-hide">Learn more about classes »</a></p>
+      <a href="http://zurb.com/university/foundation-intro?utm_source=Foundation%20Docs&utm_medium=Large%20Banner&utm_campaign=Intro%20to%20Foundation" class="button">Learn More</a>
+      <a href="http://zurb.com/university/courses" class="learn-more hide-for-medium-up">Learn more about classes »</a>
+    </div>
+  </div>
+</section> -->
+          <div id="newsletter">
+  <div class="row">
+    <div class="medium-8 columns">
+      <h5>Stay on top of what&rsquo;s happening in <a href="http://zurb.com/responsive">responsive design</a>.</h5>
+      <p>Sign up to receive monthly Responsive Reading highlights. <a href="http://zurb.com/responsive/reading">Read Last Month's Edition &raquo;</a></p>
+    </div>
+    <div class="medium-4 columns">
+      <form action="http://zurb.createsend.com/t/y/s/xlitlu/" method="post" id="subForm">
+        <div class="row collapse margintop-20px">
+          <div class="small-8 medium-8 columns">
+            <input id="fieldEmail" name="cm-xlitlu-xlitlu" type="email" placeholder="signup@example.com">
+          </div>
+          <div class="small-4 medium-4 columns">
+            <input type="submit" href="#" class="postfix button" value="Sign Up">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="zurb-footer-top bg-fblue">
+  <div class="row property">
+    <div class="medium-4 columns">
+      <div class="property-info">
+        <h3>Foundation for Sites</h3>
+        <p>Foundation is a responsive front-end framework made by <a href="http://zurb.com">ZURB</a>, a product design company in Campbell, CA. This framework is the result of building web products &amp; services since 1998.
+        </p>
+      </div>
+    </div>
+
+    <div class="medium-8 columns">
+      <div class="row collapse">
+        <div class="medium-4 columns">
+          <div class="learn-links">
+            <h4 class="hide-for-small">Want more?</h4>
+            <ul>
+              <li><a href="http://foundation.zurb.com/apps">Foundation for Apps</a></li>
+              <li><a href="http://zurb.com/ink/">Ink Responsive Emails</a></li>
+              <li><a href="http://zurb.com/notable">Notable Design Apps</a></li>
+              <li><a href="http://zurb.com/university/courses">Training</a></li>
+              <li><a href="http://zurb.com/library">Design Resources</a></li>
+            </ul>
+          </div>
+        </div>
+          <div class="medium-4 columns">
+            <div class="support-links">
+            <h4 class="hide-for-small">Talk to us</h4>
+            <p>Tweet us at <br> <a href="https://twitter.com/zurbfoundation">@ZURBfoundation</a></p>
+            <p><a href="http://foundation.zurb.com/business/business-support.html">Business Support</a></p>
+            <p>Or check our <a href="http://foundation.zurb.com/support/support.html">support page</a></p>
+            </div>
+          </div>
+        <div class="medium-4 columns">
+          <div class="connect-links">
+            <h4 class="hide-for-small">Stay Updated</h4>
+            <p>Keep up with the latest on Foundation. Find us on <a href="https://github.com/zurb/foundation">Github</a>.</p>
+            <a href="http://zurb.com/news" class="small button">Stay Connected</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row global">
+    <div class="medium-3 small-6 columns">
+      <a href="http://zurb.com/studios" class="footer-link-block services">
+        <span class="title">Studios</span>
+        <span>Helping more than 200 startups succeed since 1998.</span>
+      </a>
+    </div>
+    <div class="medium-3 small-6 columns">
+      <a href="http://foundation.zurb.com/" class="footer-link-block foundation">
+        <span class="title">Foundation</span>
+        <span>The most advanced front-end framework in the world.</span>
+      </a>
+    </div>
+    <div class="medium-3 small-6 columns">
+      <a href="http://zurb.com/notable" class="footer-link-block apps">
+        <span class="title">Notable Design Apps</span>
+        <span>Prototype, iterate and collect feedback on your products.</span>
+      </a>
+    </div>
+    <div class="medium-3 small-6 columns">
+      <a href="http://zurb.com/university" class="footer-link-block expo">
+        <span class="title">University</span>
+        <span>Ideas, thoughts and design resources shared with you.</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="zurb-footer-bottom">
+  <div class="row">
+    <div class="medium-4 medium-4 push-8 columns">
+      <ul class="home-social">
+          <li><a href="http://www.twitter.com/ZURB" class="twitter"></a></li>
+          <li><a href="http://www.facebook.com/ZURB" class="facebook"></a></li>
+          <li><a href="http://zurb.com/contact" class="mail"></a></li>
+        </ul>
+     </div>
+     <div class="medium-8 medium-8 pull-4 columns">
+        <a href="http://www.zurb.com" class="zurb-logo regular"></a>
+        <ul class="zurb-links">
+          <li><a href="http://zurb.com/about">About</a></li>
+          <li><a href="http://zurb.com/blog">Blog</a></li>
+          <li><a href="http://zurb.com/news">News<span class="show-for-medium-up"> &amp; Events</span></a></li>
+          <li><a href="http://zurb.com/contact">Contact</a></li>
+          <li><a href="http://zurb.com/sitemap">Sitemap</a></li>
+       </ul>
+       <p class="copyright">&copy; 1998&dash;2015 ZURB, Inc. All rights reserved.</p>
+    </div>
+  </div>
+</div>
+
+        </section>
+
+      </div>
+    </div>
+
+    <script src="../assets/js/templates.js"></script>
+    <script src="../assets/js/all.js"></script>
+    <script>
+      var _gaq = _gaq || [];
+      _gaq.push(
+        ['_setAccount', 'UA-2195009-2'],
+        ['_trackPageview'],
+        ['b._setAccount', 'UA-2195009-27'],
+        ['b._trackPageview']
+      );
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <script>
+      $(document).foundation().foundation('joyride', 'start');
+    </script>
+  </body>
+
+</html>

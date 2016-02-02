@@ -1,0 +1,1011 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Reveal Modal | Foundation Docs</title>
+    <link rel="icon" href="../assets/img/icons/favicon.ico" type="image/x-icon">
+    <!-- For third-generation iPad with high-resolution Retina display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/img/icons/apple-touch-icon-144x144-precomposed.png">
+    <!-- For iPhone with high-resolution Retina display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/img/icons/apple-touch-icon-114x114-precomposed.png">
+    <!-- For first- and second-generation iPad: -->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/img/icons/apple-touch-icon-72x72-precomposed.png">
+    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <link rel="apple-touch-icon-precomposed" href="../assets/img/icons/apple-touch-icon-precomposed.png">
+
+    <meta name="description" content="Documentation and reference library for ZURB Foundation. JavaScript, CSS, components, grid and more.">
+    <meta name="author" content="ZURB, inc. ZURB network also includes zurb.com">
+    <meta name="copyright" content="ZURB, inc. Copyright (c) 2014">
+
+    <link href="../assets/css/docs.css" rel="stylesheet" />
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet" />
+    <script src="../assets/js/modernizr.js"></script>
+  </head>
+  <body class="antialiased hide-extras">
+
+  <!-- Info Banner For Announcements or Links -->
+  <a href="http://zurb.com/article/1416/foundation-6-is-here" id="notice">
+    <div class="info">
+      <h5>Foundation 6 is here!</h5>
+    </div>
+  </a>
+
+
+
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+         
+ 
+
+<!-- <nav class="tab-bar show-for-small">
+  <a class="off-canvas-left-toggle menu-icon ">
+    <span></span>
+  </a>  
+</nav> -->
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+  <ul class="title-area">
+    <li class="name">
+      <h1>
+        <a href="http://foundation.zurb.com/">
+          <img class="zurb-logo" src="http://foundation.zurb.com/docs/assets/img/zurb-logo.svg">
+          <span>Foundation</span>
+        </a>
+      </h1>
+    </li>
+  </ul>
+
+  <section class="top-bar-section">
+    <ul class="right">
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="http://foundation.zurb.com/learn/features.html" class="">Learn</a>
+        <ul class="dropdown">
+          <li><a href="http://foundation.zurb.com/learn/about.html">About Foundation</a></li>
+          <li><a href="http://foundation.zurb.com/learn/tutorials.html">Tutorials</a></li>
+          <li><a href="http://foundation.zurb.com/learn/classes.html">Classes</a></li>
+          <li><a href="http://foundation.zurb.com/learn/case-studies.html">Case Studies</a></li>
+          <li><a href="http://foundation.zurb.com/learn/brands.html">Brands</a></li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="http://foundation.zurb.com/develop/getting-started.html" class="">Develop</a>
+        <ul class="dropdown">
+          <li class="title">Frameworks</li>
+          <li><a class="" href="http://foundation.zurb.com/sites.html">Foundation for Sites</a></li>
+          <li><a  class="" href="http://foundation.zurb.com/apps.html">Foundation for Apps</a></li>
+          <li><a  class="spaced-list-item" href="http://foundation.zurb.com/emails.html">Foundation for Emails</a></li>
+          <li class="spaced-divider"><hr></li>
+          <li><a href="http://foundation.zurb.com/templates.html">HTML Templates</a></li>
+          <li><a href="http://foundation.zurb.com/develop/resources.html">Resources</a></li>
+          <li><a href="http://foundation.zurb.com/sites/building-blocks.html">Building Blocks</a></li>
+          <li><a href="http://foundation.zurb.com/develop/contribute.html">Contribute</a></li>  
+          
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="http://foundation.zurb.com/support/support.html" class="">Support</a>
+        <ul class="dropdown">
+          <li><a href="http://foundation.zurb.com/support/support.html">Support Channels</a></li>
+          <li><a href="http://foundation.zurb.com/forum">Foundation Forum</a></li>
+          <li><a href="http://foundation.zurb.com/support/faq.html">FAQs</a></li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+        <a href="../../business/services.html" class="">Business</a>
+        <ul class="dropdown">
+          <li><a href="../../business/services.html">Services</a></li>
+          <li><a href="http://foundation.zurb.com/learn/certification.html">Certification</a></li>
+          <li><a href="../../business/business-support.html">Business Support</a></li>
+          <li><a href="../../business/engineering-studios.html">Engineering Studios</a></li>
+          <li><a href="../../business/training.html">Business Training</a></li>
+          <li><a href="../../business/design-apps.html">Design Apps</a></li>
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li>
+        <a href="http://foundation.zurb.com/docs" class="">Docs</a>
+      </li>
+      <li class="divider"></li>
+      <li class="has-form">
+        <a href="http://foundation.zurb.com/docs" class="small button">Getting Started</a>
+    </ul>
+  </section>
+</nav>
+        <nav class="tab-bar show-for-small">
+  <a class="left-off-canvas-toggle menu-icon">
+    <span>Foundation</span>
+  </a>
+</nav>
+
+<aside class="marketing-left-off-canvas-menu">
+
+  <ul class="off-canvas-list">
+    <li><label class="first">Foundation</label></li>
+    <li><a href="http://foundation.zurb.com">Home</a></li>
+  </ul>
+
+  <hr>
+
+  <ul class="off-canvas-list">
+      <li><label>Setup</label></li>
+
+      <li><a href="../index.html" data-search="">Getting Started</a></li>
+      <li><a href="../css.html" data-search="Styles">CSS</a></li>
+      <li><a href="../sass.html" data-search="Sass">Sass</a></li>      
+      <li><a href="../sass-files.html" data-search="Sass,Sass - What You Get, How to Use Sass">Sass Files</a></li>
+      <li><a href="../using-sass.html" data-search="Sass,Sass - What You Get, How to Use Sass">Using Sass</a></li>
+      <li><a href="../applications.html" data-search="Rails,Gem">Applications</a></li>
+      <li><a href="../javascript.html" data-search="">Javascript</a></li>
+      <li><a href="global.html" data-search="Global Styles,Global Mixins,Global Variables,Useful HTML Classes">Global Styles</a></li>
+      <li><a href="kitchen_sink.html" data-search="">Kitchen Sink</a></li>
+      <li><a href="../upgrading.html" data-search="Migration">Upgrading</a></li>
+
+      <li class="divider"></li>
+      <li><label>Structure</label></li>
+      <li><a href="../media-queries.html" data-search="Breakpoints">Media Queries</a></li>
+      <li><a href="visibility.html" data-search="">Visibility</a></li>
+      <li><a href="grid.html" data-search="">Grid</a></li>
+      <li><a href="block_grid.html" data-search="">Block Grid</a></li>
+      <li><a href="interchange.html" data-search="Responsive Images">Interchange Responsive Content <span class="label">JS</span></a></li>
+      <li><a href="../utility-classes.html" data-search="">Utility Classes</a></li>
+      <li><a href="../javascript-utilities.html" data-search="">Javascript Utilities</a></li>
+      <li><a href="rtl.html" data-search="RTL">Right-to-Left Support</a></li>
+
+      <li class="divider"></li>
+      <li><label>Navigation</label></li>
+      <li><a href="offcanvas.html" data-search="Off Canvas">Off-canvas <span class="label">JS</span></a></li>
+      <li><a href="topbar.html" data-search="Nav Bar,Navigation,Sticky">Top Bar <span class="label">JS</span></a></li>
+      <li><a href="icon-bar.html" data-search="">Icon Bar</a></li>
+      <li><a href="sidenav.html" data-search="">Side Nav</a></li>
+      <li><a href="magellan.html" data-search="Scrollspy">Magellan Sticky Nav <span class="label">JS</span></a></li>
+      <li><a href="subnav.html" data-search="">Sub Nav</a></li>
+      <li><a href="breadcrumbs.html" data-search="Navigation Path,Cookie Crumb">Breadcrumbs</a></li>
+      <li><a href="pagination.html" data-search="">Pagination</a></li>
+
+      <li class="divider"></li>
+      <li><label>Media</label></li>
+      <li><a href="orbit.html" data-search="Carousel,Slider,Slideshow">Orbit Slider <span class="label">JS</span></a></li>
+      <li><a href="thumbnails.html" data-search="Images">Thumbnails</a></li>
+      <li><a href="clearing.html" data-search="Responsive Lightbox,Lightbox">Clearing Lightbox <span class="label">JS</span></a></li>
+      <li><a href="flex_video.html" data-search="Responsive Video">Flex Video</a></li>
+
+      <li class="divider"></li>
+      <li><label>Forms</label></li>
+      <li><a href="forms.html" data-search="">Forms</a></li>
+      <li><a href="switch.html" data-search="">Switches</a></li>
+      <li><a href="range_slider.html" data-search="Range Slider">Sliders <span class="label">JS</span></a></li>
+      <li><a href="abide.html" data-search="Form Validation,Field Validation">Abide Validation <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li><label>Buttons</label></li>
+      <li><a href="buttons.html" data-search="">Buttons</a></li>
+      <li><a href="button_groups.html" data-search="Button Bar">Button Groups</a></li>
+      <li><a href="split_buttons.html" data-search="">Split Buttons <span class="label">JS</span></a></li>
+      <li><a href="dropdown_buttons.html" data-search="">Dropdown Buttons <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li><label>Typography</label></li>
+      <li><a href="typography.html" data-search="Typography,Type-setting,Composition">Type</a></li>
+      <li><a href="inline_lists.html" data-search="Lists">Inline Lists</a></li>
+      <li><a href="labels.html" data-search="Tags">Labels</a></li>
+      <li><a href="keystrokes.html" data-search="">Keystrokes</a></li>
+
+      <li class="divider"></li>
+      <li class="heading"><label>Callouts &amp; Prompts</label></li>
+      <li><a href="reveal.html" data-search="Modal">Reveal Modal <span class="label">JS</span></a></li>
+      <li><a href="alert_boxes.html" data-search="Error,Success,Warning">Alerts <span class="label">JS</span></a></li>
+      <li><a href="panels.html" data-search="Wells">Panels</a></li>
+      <li><a href="tooltips.html" data-search="Popover">Tooltips <span class="label">JS</span></a></li>
+      <li><a href="joyride.html" data-search="Tooltip Tour,Guider,Tooltip Walk-through">Joyride <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li><label>Content</label></li>
+      <li><a href="dropdown.html" data-search="">Dropdowns <span class="label">JS</span></a></li>
+      <li><a href="pricing_tables.html" data-search="">Pricing Tables</a></li>
+      <li><a href="progress_bars.html" data-search="">Progress Bars</a></li>
+      <li><a href="tables.html" data-search="">Tables</a></li>
+      <li><a href="accordion.html" data-search="">Accordion <span class="label">JS</span></a></li>
+      <li><a href="tabs.html" data-search="">Tabs <span class="label">JS</span></a></li>
+      <li><a href="equalizer.html" data-search="">Equalizer <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li><label>Support</label></li>
+
+      <li><a href="../changelog.html" data-search="">Changelog</a></li>
+      <li><a href="../compatibility.html" data-search="">Compatibility</a></li>
+
+      <li class="divider"></li>
+      <li class="heading"><label>Older Docs</label></li>
+      <li><a href="/docs/v/4.3.2/" data-search="">Foundation 4</a></li>
+      <li><a href="/docs/v/3.2.5/" data-search="">Foundation 3</a></li>
+      <li><a href="/docs/v/2.2.1/" data-search="">Foundation 2</a></li>
+    </ul>
+
+    <hr>
+
+    <div class="zurb-links">
+    <ul class="top">
+      <li class="logo"><a href="http://zurb.com"></a></li>
+      <li><a href="http://zurb.com/about">About</a></li>
+      <li><a href="http://zurb.com/blog">Blog</a></li>
+      <li><a href="http://zurb.com/contact">Contact</a></li>
+    </ul>
+    <ul class="pillars">
+      <li>
+        <a href="http://www.zurb.com/studios" class="footer-link-block services">
+          <span class="title">Studios</span>
+          <span>Helping startups win since '98.</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://foundation.zurb.com/" class="footer-link-block foundation">
+          <span class="title">Foundation</span>
+          <span>World's most advanced responsive framework.</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://zurb.com/notable" class="footer-link-block apps">
+          <span class="title">Notable</span>
+          <span>Tools to rapidly prototype and iterate.</span>
+        </a>
+      </li>
+      <li>
+        <a href="http://zurb.com/university" class="footer-link-block expo">
+          <span class="title">University</span>
+          <span>Online training for smarter product design.</span>
+        </a>
+      </li>
+    </ul>
+</div>
+
+</aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section role="main" class="scroll-container">
+
+          <div class="row">
+            <div class="large-3 medium-4 columns">
+              <div class="hide-for-small">
+                <div class="sidebar">
+  <h5>Foundation Documentation</h5>
+  <form>
+    <!--  <label>Search Documentation</label> -->
+    <input tabindex="1" id="autocomplete" type="search" placeholder="Search Docs: e.g. forms">
+  </form>
+
+  <a href="/develop/download.html" class="download button expand">Download Foundation</a>
+
+  <nav>
+    <ul class="side-nav">
+      <li class="heading">Setup</li>
+
+      <li><a href="../index.html" data-search="">Getting Started</a></li>
+      <li><a href="../css.html" data-search="Styles">CSS</a></li>
+      <li><a href="../sass.html" data-search="Sass">Sass</a></li>
+      <li><a href="../sass-files.html" data-search="Sass,Sass - What You Get, How to Use Sass">Sass Files</a></li>
+      <li><a href="../using-sass.html" data-search="Sass,Sass - What You Get, How to Use Sass">Using Sass</a></li>
+      <li><a href="../applications.html" data-search="Rails,Gem">Applications</a></li>
+      <li><a href="../javascript.html" data-search="">JavaScript</a></li>
+      <li><a href="global.html" data-search="Global Styles,Global Mixins,Global Variables,Useful HTML Classes">Global Styles</a></li>
+      <li><a href="kitchen_sink.html" data-search="">Kitchen Sink</a></li>
+      <li><a href="../accessibility.html" data-search="accessibility">Accessibility</a></li>
+      <li><a href="../upgrading.html" data-search="Migration">Upgrading</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Structure</li>
+      <li><a href="../media-queries.html" data-search="Breakpoints">Media Queries</a></li>
+      <li><a href="visibility.html" data-search="">Visibility</a></li>
+      <li><a href="grid.html" data-search="">Grid</a></li>
+      <li><a href="block_grid.html" data-search="">Block Grid</a></li>
+      <li><a href="interchange.html" data-search="Responsive Images">Interchange Responsive Content <span class="label">JS</span></a></li>
+      <li><a href="../utility-classes.html" data-search="">Utility Classes</a></li>
+      <li><a href="../javascript-utilities.html" data-search="">Javascript Utilities</a></li>
+      <li><a href="rtl.html" data-search="RTL">Right-to-Left Support</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Navigation</li>
+      <li><a href="offcanvas.html" data-search="Off Canvas">Off-canvas <span class="label">JS</span></a></li>
+      <li><a href="topbar.html" data-search="Nav Bar,Navigation,Sticky">Top Bar <span class="label">JS</span></a></li>
+      <li><a href="icon-bar.html" data-search="">Icon Bar</a></li>
+      <li><a href="sidenav.html" data-search="">Side Nav</a></li>
+      <li><a href="magellan.html" data-search="Scrollspy">Magellan Sticky Nav <span class="label">JS</span></a></li>
+      <li><a href="subnav.html" data-search="">Sub Nav</a></li>
+      <li><a href="breadcrumbs.html" data-search="Navigation Path,Cookie Crumb">Breadcrumbs</a></li>
+      <li><a href="pagination.html" data-search="">Pagination</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Media</li>
+      <li><a href="orbit.html" data-search="Carousel,Slider,Slideshow">Orbit Slider <span class="label">JS</span></a></li>
+      <li><a href="thumbnails.html" data-search="Images">Thumbnails</a></li>
+      <li><a href="clearing.html" data-search="Responsive Lightbox,Lightbox">Clearing Lightbox <span class="label">JS</span></a></li>
+      <li><a href="flex_video.html" data-search="Responsive Video">Flex Video</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Forms</li>
+      <li><a href="forms.html" data-search="">Forms</a></li>
+      <li><a href="switch.html" data-search="">Switches</a></li>
+      <li><a href="range_slider.html" data-search="Range Slider">Range Sliders <span class="label">JS</span></a></li>
+      <li><a href="abide.html" data-search="Form Validation,Field Validation">Abide Validation <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Buttons</li>
+      <li><a href="buttons.html" data-search="">Buttons</a></li>
+      <li><a href="button_groups.html" data-search="Button Bar">Button Groups</a></li>
+      <li><a href="split_buttons.html" data-search="">Split Buttons <span class="label">JS</span></a></li>
+      <li><a href="dropdown_buttons.html" data-search="">Dropdown Buttons <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Typography</li>
+      <li><a href="typography.html" data-search="Typography,Type-setting,Composition">Type</a></li>
+      <li><a href="inline_lists.html" data-search="Lists">Inline Lists</a></li>
+      <li><a href="labels.html" data-search="Tags">Labels</a></li>
+      <li><a href="keystrokes.html" data-search="">Keystrokes</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Callouts &amp; Prompts</li>
+      <li><a href="reveal.html" data-search="Modal">Reveal Modal <span class="label">JS</span></a></li>
+      <li><a href="alert_boxes.html" data-search="Error,Success,Warning">Alerts <span class="label">JS</span></a></li>
+      <li><a href="panels.html" data-search="Wells">Panels</a></li>
+      <li><a href="tooltips.html" data-search="Popover">Tooltips <span class="label">JS</span></a></li>
+      <li><a href="joyride.html" data-search="Tooltip Tour,Guider,Tooltip Walk-through">Joyride <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Content</li>
+      <li><a href="dropdown.html" data-search="">Dropdowns <span class="label">JS</span></a></li>
+      <li><a href="pricing_tables.html" data-search="">Pricing Tables</a></li>
+      <li><a href="progress_bars.html" data-search="">Progress Bars</a></li>
+      <li><a href="tables.html" data-search="">Tables</a></li>
+      <li><a href="accordion.html" data-search="">Accordion <span class="label">JS</span></a></li>
+      <li><a href="tabs.html" data-search="">Tabs <span class="label">JS</span></a></li>
+      <li><a href="equalizer.html" data-search="">Equalizer <span class="label">JS</span></a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Support</li>
+
+      <li><a href="../changelog.html" data-search="">Changelog</a></li>
+      <li><a href="../compatibility.html" data-search="">Compatibility</a></li>
+
+      <li class="divider"></li>
+      <li class="heading">Older Docs</li>
+      <li><a href="/docs/v/4.3.2/" data-search="">Foundation 4</a></li>
+      <li><a href="/docs/v/3.2.5/" data-search="">Foundation 3</a></li>
+      <li><a href="/docs/v/2.2.1/" data-search="">Foundation 2</a></li>
+
+    </ul>
+  </nav>
+
+
+  <!-- <section id="jobs">
+    <h5>Get a job, nerd!</h5>
+    <script type="text/javascript" src="http://www.zurb.com/jobs/widgets/jobs.js?limit=3"></script>
+    <p class="via">via <a href="http://www.zurb.com/jobs">Job Board from ZURB</a></p>
+  </section> -->
+
+</div>
+              </div>
+            </div>
+            <div class="large-9 medium-8 columns">
+              <h1 id="reveal-modal">Reveal Modal</h1>
+              <div id="component-name" name="Reveal Modal"></div>
+              <h3 class="subheader">Modal dialogs, or pop-up windows, are handy for prototyping and production. Foundation includes Reveal our jQuery modal plugin, to make this easy for you.</h3>
+
+<hr>
+<h2>Basic</h2>
+
+<p>You can create a reveal modal using minimal markup. The anchor tag with the reveal-modal-id is what triggers the Reveal.</p>
+<div class="row">
+  <div class="large-8 columns">
+    <h4>HTML</h4>
+    <pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">&quot;#&quot;</span> <span class="attribute">data-reveal-id</span>=<span class="value">&quot;myModal&quot;</span>&gt;</span>Click Me For A Modal<span class="tag">&lt;/<span class="title">a</span>&gt;</span>
+
+<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">&quot;myModal&quot;</span> <span class="attribute">class</span>=<span class="value">&quot;reveal-modal&quot;</span> <span class="attribute">data-reveal</span> <span class="attribute">aria-labelledby</span>=<span class="value">&quot;modalTitle&quot;</span> <span class="attribute">aria-hidden</span>=<span class="value">&quot;true&quot;</span> <span class="attribute">role</span>=<span class="value">&quot;dialog&quot;</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">h2</span> <span class="attribute">id</span>=<span class="value">&quot;modalTitle&quot;</span>&gt;</span>Awesome. I have it.<span class="tag">&lt;/<span class="title">h2</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">&quot;lead&quot;</span>&gt;</span>Your couch.  It is mine.<span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">p</span>&gt;</span>I&#39;m a cool paragraph that lives inside of an even cooler modal. Wins!<span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">a</span> <span class="attribute">class</span>=<span class="value">&quot;close-reveal-modal&quot;</span> <span class="attribute">aria-label</span>=<span class="value">&quot;Close&quot;</span>&gt;</span>&amp;#215;<span class="tag">&lt;/<span class="title">a</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span></div></code></pre>
+
+
+
+
+
+  </div>
+  <div class="large-4 columns">
+    <h4>Rendered HTML</h4>
+    <a href="#" data-reveal-id="myModal">Click Me For A Modal</a>
+
+<div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <h2 id="modalTitle">Awesome. I have it.</h2>
+  <p class="lead">Your couch.  It is mine.</p>
+  <p>I&#39;m a cool paragraph that lives inside of an even cooler modal. Wins!</p>
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
+  </div>
+</div>
+
+<hr>
+<h2>Intermediate</h2>
+
+<p>You can create a reveal modal with another inside it. Setting <code>reveal.multiple_opened</code> to <code>true</code> will not close previously opened reveal modals. You can even put a video into a reveal.</p>
+<div class="row">
+  <div class="large-8 columns">
+    <h4>HTML</h4>
+    <pre><code class="language-html"><div class="code-container"><span class="comment">&lt;!-- Triggers the modals --&gt;</span>
+<span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">&quot;#&quot;</span> <span class="attribute">data-reveal-id</span>=<span class="value">&quot;firstModal&quot;</span> <span class="attribute">class</span>=<span class="value">&quot;radius button&quot;</span>&gt;</span>Modal in a modal&amp;hellip;<span class="tag">&lt;/<span class="title">a</span>&gt;</span>
+<span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">&quot;#&quot;</span> <span class="attribute">data-reveal-id</span>=<span class="value">&quot;videoModal&quot;</span> <span class="attribute">class</span>=<span class="value">&quot;radius button&quot;</span>&gt;</span>Example Modal with Video&amp;hellip;<span class="tag">&lt;/<span class="title">a</span>&gt;</span>
+
+<span class="comment">&lt;!-- Reveal Modals begin --&gt;</span>
+<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">&quot;firstModal&quot;</span> <span class="attribute">class</span>=<span class="value">&quot;reveal-modal&quot;</span> <span class="attribute">data-reveal</span> <span class="attribute">aria-labelledby</span>=<span class="value">&quot;firstModalTitle&quot;</span> <span class="attribute">aria-hidden</span>=<span class="value">&quot;true&quot;</span> <span class="attribute">role</span>=<span class="value">&quot;dialog&quot;</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">h2</span> <span class="attribute">id</span>=<span class="value">&quot;firstModalTitle&quot;</span>&gt;</span>This is a modal.<span class="tag">&lt;/<span class="title">h2</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">p</span>&gt;</span>Reveal makes these very easy to summon and dismiss. The close button is simply an anchor with a unicode character icon and a class of <span class="tag">&lt;<span class="title">code</span>&gt;</span>close-reveal-modal<span class="tag">&lt;/<span class="title">code</span>&gt;</span>. Clicking anywhere outside the modal will also dismiss it.<span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">p</span>&gt;</span>Finally, if your modal summons another Reveal modal, the plugin will handle that for you gracefully.<span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">p</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">&quot;#&quot;</span> <span class="attribute">data-reveal-id</span>=<span class="value">&quot;secondModal&quot;</span> <span class="attribute">class</span>=<span class="value">&quot;secondary button&quot;</span>&gt;</span>Second Modal...<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">a</span> <span class="attribute">class</span>=<span class="value">&quot;close-reveal-modal&quot;</span> <span class="attribute">aria-label</span>=<span class="value">&quot;Close&quot;</span>&gt;</span>&amp;#215;<span class="tag">&lt;/<span class="title">a</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+
+<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">&quot;secondModal&quot;</span> <span class="attribute">class</span>=<span class="value">&quot;reveal-modal&quot;</span> <span class="attribute">data-reveal</span> <span class="attribute">aria-labelledby</span>=<span class="value">&quot;secondModalTitle&quot;</span> <span class="attribute">aria-hidden</span>=<span class="value">&quot;true&quot;</span> <span class="attribute">role</span>=<span class="value">&quot;dialog&quot;</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">h2</span> <span class="attribute">id</span>=<span class="value">&quot;secondModalTitle&quot;</span>&gt;</span>This is a second modal.<span class="tag">&lt;/<span class="title">h2</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">p</span>&gt;</span>See? It just slides into place after the other first modal. Very handy when you need subsequent dialogs, or when a modal option impacts or requires another decision.<span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">a</span> <span class="attribute">class</span>=<span class="value">&quot;close-reveal-modal&quot;</span> <span class="attribute">aria-label</span>=<span class="value">&quot;Close&quot;</span>&gt;</span>&amp;#215;<span class="tag">&lt;/<span class="title">a</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+
+<span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">&quot;videoModal&quot;</span> <span class="attribute">class</span>=<span class="value">&quot;reveal-modal large&quot;</span> <span class="attribute">data-reveal</span> <span class="attribute">aria-labelledby</span>=<span class="value">&quot;videoModalTitle&quot;</span> <span class="attribute">aria-hidden</span>=<span class="value">&quot;true&quot;</span> <span class="attribute">role</span>=<span class="value">&quot;dialog&quot;</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">h2</span> <span class="attribute">id</span>=<span class="value">&quot;videoModalTitle&quot;</span>&gt;</span>This modal has video<span class="tag">&lt;/<span class="title">h2</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">&quot;flex-video widescreen vimeo&quot;</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">iframe</span> <span class="attribute">width</span>=<span class="value">&quot;1280&quot;</span> <span class="attribute">height</span>=<span class="value">&quot;720&quot;</span> <span class="attribute">src</span>=<span class="value">&quot;//www.youtube-nocookie.com/embed/wnXCopXXblE?rel=0&quot;</span> <span class="attribute">frameborder</span>=<span class="value">&quot;0&quot;</span> <span class="attribute">allowfullscreen</span>&gt;</span><span class="tag">&lt;/<span class="title">iframe</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+
+  <span class="tag">&lt;<span class="title">a</span> <span class="attribute">class</span>=<span class="value">&quot;close-reveal-modal&quot;</span> <span class="attribute">aria-label</span>=<span class="value">&quot;Close&quot;</span>&gt;</span>&amp;#215;<span class="tag">&lt;/<span class="title">a</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="comment">&lt;!-- Reveal Modals end --&gt;</span></div></code></pre>
+
+
+  </div>
+  <div class="large-4 columns">
+    <h4>Rendered HTML</h4>
+    <a href="#" data-reveal-id="firstModal" class="radius button">Modal in a modal&hellip;</a>
+<a href="#" data-reveal-id="videoModal" class="radius button">Example Modal with Video&hellip;</a>
+
+<!-- Reveal Modals begin -->
+<div id="firstModal" class="reveal-modal" data-reveal aria-labelledby="firstModalTitle" aria-hidden="true" role="dialog">
+  <h2 id="firstModalTitle">This is a modal.</h2>
+  <p>Reveal makes these very easy to summon and dismiss. The close button is simply an anchor with a unicode character icon and a class of <code>close-reveal-modal</code>. Clicking anywhere outside the modal will also dismiss it.</p>
+  <p>Finally, if your modal summons another Reveal modal, the plugin will handle that for you gracefully.</p>
+  <p><a href="#" data-reveal-id="secondModal" class="secondary button">Second Modal...</a></p>
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
+
+<div id="secondModal" class="reveal-modal" data-reveal aria-labelledby="secondModalTitle" aria-hidden="true" role="dialog">
+  <h2 id="secondModalTitle">This is a second modal.</h2>
+  <p>See? It just slides into place after the other first modal. Very handy when you need subsequent dialogs, or when a modal option impacts or requires another decision.</p>
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
+
+<div id="videoModal" class="reveal-modal large" data-reveal aria-labelledby="videoModalTitle" aria-hidden="true" role="dialog">
+  <h2 id="videoModalTitle">This modal has video</h2>
+  <div class="flex-video widescreen vimeo">
+    <iframe width="1280" height="720" src="//www.youtube-nocookie.com/embed/wnXCopXXblE?rel=0" frameborder="0" allowfullscreen></iframe>
+  </div>
+
+<p>  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
+<!-- Reveal Modals end -->
+  </div>
+</div></p>
+<hr>
+<h2>Advanced</h2>
+
+<p>Additional classes can be added to your reveal modal to change its appearance.</p>
+<p>The class options:</p>
+<ul>
+<li><code>tiny</code>: Set the width to 30%.</li>
+<li><code>small</code>: Set the width to 40%.</li>
+<li><code>medium</code>: Set the width to 60%.</li>
+<li><code>large</code>: Set the width to 70%.</li>
+<li><code>xlarge</code>: Set the width to 95%.</li>
+<li><code>full</code>: Set the width and height to 100%.</li>
+</ul>
+<p>Note: Default on small is 100% (full) width.</p>
+<h5 id="removing-the-background">Removing the Background</h5>
+<h4>HTML</h4>
+
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"reveal-modal-bg"</span> <span class="attribute">style</span>=<span class="value">"display: none"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></div></code></pre>
+
+
+<h5>Firing a Reveal Modal</h5>
+
+<p>To launch a modal, just add a <code>data-reveal-id</code> to the object which you want to fire the modal when clicked. The <code>data-reveal-id</code> needs to match the <code>id</code> of your reveal.</p>
+
+<h4>HTML</h4>
+
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span> <span class="attribute">data-reveal-id</span>=<span class="value">"myModal"</span>&gt;</span>Click Me For A Modal<span class="tag">&lt;/<span class="title">a</span>&gt;</span></div></code></pre>
+
+
+
+<p>You can also open and close Reveal via Javascript:</p>
+<pre><code class="language-javascript"><div class="code-container"><span class="comment">// trigger by event</span>
+$(<span class="string">'a.reveal-link'</span>).trigger(<span class="string">'click'</span>);
+$(<span class="string">'a.close-reveal-modal'</span>).trigger(<span class="string">'click'</span>);
+
+<span class="comment">// or directly on the modal</span>
+$(<span class="string">'#myModal'</span>).foundation(<span class="string">'reveal'</span>, <span class="string">'open'</span>);
+$(<span class="string">'#myModal'</span>).foundation(<span class="string">'reveal'</span>, <span class="string">'close'</span>);</div></code></pre>
+
+
+<p>Or you can call one right after the other:</p>
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">&#39;reveal-modal&#39;</span> <span class="attribute">id</span>=<span class="value">&#39;first-modal&#39;</span> <span class="attribute">data-reveal</span>&gt;</span>
+    I&#39;m the firstborn!
+    <span class="tag">&lt;<span class="title">a</span> <span class="attribute">class</span>=<span class="value">&#39;open-second&#39;</span>&gt;</span>Click me!<span class="tag">&lt;/<span class="title">a</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">&#39;reveal-modal&#39;</span> <span class="attribute">id</span>=<span class="value">&#39;second-modal&#39;</span> <span class="attribute">data-reveal</span>&gt;</span>
+    I&#39;m the secondborn!
+    <span class="tag">&lt;<span class="title">a</span> <span class="attribute">class</span>=<span class="value">&#39;close&#39;</span>&gt;</span>Close modal<span class="tag">&lt;/<span class="title">a</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">a</span> <span class="attribute">class</span>=<span class="value">&#39;open-first&#39;</span>&gt;</span>Click me!<span class="tag">&lt;/<span class="title">a</span>&gt;</span></div></code></pre>
+
+
+
+<pre><code class="language-javascript"><div class="code-container">
+<span class="comment">// There&#39;s no need to close a previous modal before you</span>
+<span class="comment">// open another one.</span>
+$(<span class="string">&#39;a.open-first&#39;</span>).on(<span class="string">&#39;click&#39;</span>, <span class="keyword">function</span>() {
+  $(<span class="string">&#39;#first-modal&#39;</span>).foundation(<span class="string">&#39;reveal&#39;</span>,<span class="string">&#39;open&#39;</span>);
+});
+$(<span class="string">&#39;a.open-second&#39;</span>).on(<span class="string">&#39;click&#39;</span>, <span class="keyword">function</span>() {
+  $(<span class="string">&#39;#second-modal&#39;</span>).foundation(<span class="string">&#39;reveal&#39;</span>, <span class="string">&#39;open&#39;</span>);
+});
+$(<span class="string">&#39;a.close&#39;</span>).on(<span class="string">&#39;click&#39;</span>, <span class="keyword">function</span>() {
+  $(<span class="string">&#39;#second-modal&#39;</span>).foundation(<span class="string">&#39;reveal&#39;</span>, <span class="string">&#39;close&#39;</span>);
+});</div></code></pre>
+
+
+<h5>Firing a Reveal Modal with Ajax Content</h5>
+
+To launch a modal with content from another page, just add a <code>data-reveal-ajax</code> attribute pointing to the url of that page. When clicked, the Reveal modal will be opened with a content from that page. Beware: content of the object from <code>data-reveal-id</code> attribute will be overwritten as a result.
+
+To use an url from <code>href</code> attribute just add <code>data-reveal-ajax=&quot;true&quot;</code> instead.
+
+<h4>JS</h4>
+
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">button</span> <span class="attribute">data-reveal-id</span>=<span class="value">&quot;myModal&quot;</span> <span class="attribute">data-reveal-ajax</span>=<span class="value">&quot;<a href="http://some-url">http://some-url</a>&quot;</span>&gt;</span>
+    Click Me For A Modal
+<span class="tag">&lt;/<span class="title">button</span>&gt;</span>
+
+<span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">&quot;<a href="http://some-url">http://some-url</a>&quot;</span> <span class="attribute">data-reveal-id</span>=<span class="value">&quot;myModal&quot;</span> <span class="attribute">data-reveal-ajax</span>=<span class="value">&quot;true&quot;</span>&gt;</span>
+    Click Me For A Modal
+<span class="tag">&lt;/<span class="title">a</span>&gt;</span></div></code></pre>
+
+
+Ajax-based Reveal modals can also be opened via Javascript:
+
+<h4>JS</h4>
+
+<pre><code class="language-javascript"><div class="code-container"><span class="comment">// just an url</span>
+$(<span class="string">&#39;#myModal&#39;</span>).foundation(<span class="string">&#39;reveal&#39;</span>, <span class="string">&#39;open&#39;</span>, <span class="string">&#39;<a href="http://some-url">http://some-url</a>&#39;</span>);
+
+<span class="comment">// url with extra parameters</span>
+$(<span class="string">&#39;#myModal&#39;</span>).foundation(<span class="string">&#39;reveal&#39;</span>, <span class="string">&#39;open&#39;</span>, {
+    url: <span class="string">&#39;<a href="http://some-url">http://some-url</a>&#39;</span>,
+    data: {param1: <span class="string">&#39;value1&#39;</span>, param2: <span class="string">&#39;value2&#39;</span>}
+});
+
+<span class="comment">// url with custom callbacks</span>
+$(<span class="string">&#39;#myModal&#39;</span>).foundation(<span class="string">&#39;reveal&#39;</span>, <span class="string">&#39;open&#39;</span>, {
+    url: <span class="string">&#39;<a href="http://some-url">http://some-url</a>&#39;</span>,
+    success: <span class="keyword">function</span>(data) {
+        alert(<span class="string">&#39;modal data loaded&#39;</span>);
+    },
+    error: <span class="keyword">function</span>() {
+        alert(<span class="string">&#39;failed loading modal&#39;</span>);
+    }
+});</div></code></pre>
+
+
+<p>Please refer to <a href="http://api.jquery.com/jQuery.ajax/"><a href="http://api.jquery.com/jQuery.ajax/">http://api.jquery.com/jQuery.ajax/</a></a> for a complete list of possible parameters.</p>
+
+<hr>
+<h3 id="event-bindings">Event Bindings</h3>
+<p>There are a series of events that you can bind to for triggering callbacks:</p>
+<div class="panel">
+  <p><strong>Deprecation Notice</strong></p>
+  <p>Previous versions of the reveal plugin emitted un-namespaced <code>open</code>, <code>opened</code>, <code>close</code> and <code>closed</code> events, however, these have been replaced by the namespaced <code>open.fndtn.reveal</code>, <code>opened.fndtn.reveal</code>, <code>close.fndtn.reveal</code> and <code>closed.fndtn.reveal</code> events. The un-namespaced events have been fully deprecated.</p>
+</div>
+
+<pre><code class="language-js"><div class="code-container">$(document).on(<span class="string">'open.fndtn.reveal'</span>, <span class="string">'[data-reveal]'</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+  <span class="keyword">var</span> modal = $(<span class="keyword">this</span>);
+});
+
+$(document).on(<span class="string">'opened.fndtn.reveal'</span>, <span class="string">'[data-reveal]'</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+  <span class="keyword">var</span> modal = $(<span class="keyword">this</span>);
+});
+
+$(document).on(<span class="string">'close.fndtn.reveal'</span>, <span class="string">'[data-reveal]'</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+  <span class="keyword">var</span> modal = $(<span class="keyword">this</span>);
+});
+
+$(document).on(<span class="string">'closed.fndtn.reveal'</span>, <span class="string">'[data-reveal]'</span>, <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+  <span class="keyword">var</span> modal = $(<span class="keyword">this</span>);
+});</div></code></pre>
+<hr>
+<h2 id="accessibility">Accessibility</h2>
+<p class="panel">This component is not yet fully accessible. While it is usable via the keyboard, it has to be checked if additional ARIA attributes can enhance the components accessibility.</p>
+
+<hr>
+<h2>Customize with Sass</h2>
+
+<p>Reveal modals can be easily customized using our Sass variables.</p>
+
+<h4>SCSS</h4>
+
+<pre><code class="language-scss"><div class="code-container">$include-<span class="tag">html</span>-reveal-classes<span class="value">: $include-html-classes;</span>
+
+<span class="comment">// We use these to control the style of the reveal overlay.</span>
+$reveal-overlay-bg<span class="value">: rgba($black, .<span class="number">45</span>);</span>
+$reveal-overlay-bg-old<span class="value">: $black;</span>
+
+<span class="comment">// We use these to control the style of the modal itself.</span>
+$reveal-modal-bg<span class="value">: $white;</span>
+$reveal-<span class="attribute">position</span>-<span class="attribute">top</span><span class="value">: rem-calc(<span class="number">100</span>);</span>
+$reveal-<span class="value">default</span>-<span class="attribute">width</span><span class="value">: <span class="number">80</span>%;</span>
+$reveal-<span class="attribute">max-width</span><span class="value">: $row-width;</span>
+$reveal-modal-<span class="attribute">padding</span><span class="value">: rem-calc(<span class="number">20</span>);</span>
+$reveal-<span class="attribute">box-shadow</span><span class="value">: <span class="number">0</span> <span class="number">0</span> <span class="number">10</span>px rgba($black,.<span class="number">4</span>);</span>
+
+<span class="comment">// We use these to style the reveal close button</span>
+$reveal-close-<span class="attribute">font-size</span><span class="value">: rem-calc(<span class="number">40</span>);</span>
+$reveal-close-<span class="attribute">top</span><span class="value">: rem-calc(<span class="number">8</span>);</span>
+$reveal-close-side<span class="value">: rem-calc(<span class="number">11</span>);</span>
+$reveal-close-<span class="attribute">color</span><span class="value">: $base;</span>
+$reveal-close-weight<span class="value">: $font-weight-bold;</span>
+
+<span class="comment">// We use this to set the default radius used throughout the core.</span>
+$reveal-radius<span class="value">: $global-radius;</span>
+$reveal-round<span class="value">: $global-rounded;</span>
+
+<span class="comment">// We use these to control the modal border</span>
+$reveal-<span class="attribute">border-style</span><span class="value">: solid;</span>
+$reveal-<span class="attribute">border-width</span><span class="value">: <span class="number">1</span>px;</span>
+$reveal-<span class="attribute">border-color</span><span class="value">: $steel;</span>
+
+$reveal-modal-class<span class="value">: <span class="string">"reveal-modal"</span>;</span>
+$close-reveal-modal-class<span class="value">: <span class="string">"close-reveal-modal"</span>;</span></div></code></pre>
+
+
+<hr />
+
+<h2>Semantic Markup With Sass</h2>
+
+<p>You can create your own reveal modals using our Sass mixins.</p>
+
+<h3>Setting the background</h3>
+
+<p>You can use the <code>reveal-bg()</code> mixin to create your own reveal modal, like so:</p>
+
+<pre><code class="language-scss"><div class="code-container"><span class="class">.custom-reveal-class</span> {
+  <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> reveal-bg</span>();</span>
+}</div></code></pre>
+
+
+<h3>Creating the base structure</h3>
+
+<p>You can use this mixin to create the structure of a reveal modal</p>
+
+<pre><code class="language-scss"><div class="code-container"><span class="class">.custom-reveal-class</span> {
+  <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> reveal-modal-base</span>(
+    //<span class="preprocessor"> Provides</span><span class="preprocessor"> reveal</span><span class="preprocessor"> base</span><span class="preprocessor"> styles</span>,<span class="preprocessor"> can</span><span class="preprocessor"> be</span><span class="preprocessor"> set</span><span class="preprocessor"> to</span><span class="preprocessor"> false</span><span class="preprocessor"> to</span><span class="preprocessor"> override.</span>
+    $base-style:true,
+    //<span class="preprocessor"> Sets</span><span class="preprocessor"> reveal</span><span class="preprocessor"> width</span><span class="preprocessor"> Default</span>: $reveal-default-width<span class="preprocessor"> or</span><span class="preprocessor"> 80</span>%
+    $width:$reveal-default-width
+  );</span>
+}</div></code></pre>
+
+
+<h3>Set Reveal Base Styles</h3>
+
+<p>You can use this mixin to style the reveal modal defaults</p>
+
+<pre><code class="language-scss"><div class="code-container"><span class="class">.custom-reveal-class</span> {
+  <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> reveal-modal-style</span>(
+    //<span class="preprocessor"> Sets</span><span class="preprocessor"> background</span><span class="preprocessor"> color</span><span class="preprocessor"> of</span><span class="preprocessor"> reveal</span><span class="preprocessor"> modal.</span><span class="preprocessor"> Default</span>: $reveal-modal-bg<span class="preprocessor"> or</span> <span class="hexcolor">#fff</span>
+    $bg:$reveal-modal-bg,
+    //<span class="preprocessor"> Set</span><span class="preprocessor"> reveal</span><span class="preprocessor"> border</span><span class="preprocessor"> style.</span><span class="preprocessor"> Default</span>: $reveal-border-style<span class="preprocessor"> or</span><span class="preprocessor"> solid</span>
+    $border:true,
+    //<span class="preprocessor"> Width</span><span class="preprocessor"> of</span><span class="preprocessor"> border</span> (i.e.<span class="preprocessor"> 1px</span>).<span class="preprocessor"> Default</span>: $reveal-border-width.
+    $border-style:$reveal-border-style,
+    //<span class="preprocessor"> Color</span><span class="preprocessor"> of</span><span class="preprocessor"> border.</span><span class="preprocessor"> Default</span>: $reveal-border-color.
+    $border-width:$reveal-border-width,
+    //<span class="preprocessor"> Color</span><span class="preprocessor"> of</span><span class="preprocessor"> border.</span><span class="preprocessor"> Default</span>: $reveal-border-color.
+    $border-color:$reveal-border-color,
+    //<span class="preprocessor"> Choose</span><span class="preprocessor"> whether</span><span class="preprocessor"> or</span><span class="preprocessor"> not</span><span class="preprocessor"> to</span><span class="preprocessor"> include</span><span class="preprocessor"> the</span><span class="preprocessor"> default</span><span class="preprocessor"> box-shadow.</span><span class="preprocessor"> Default</span>:<span class="preprocessor"> true</span>,<span class="preprocessor"> Options</span>:<span class="preprocessor"> false</span>
+    $box-shadow:true,
+    //<span class="preprocessor"> Default</span>: $reveal-position-top<span class="preprocessor"> or</span><span class="preprocessor"> 50px</span>
+    $top-offset:$reveal-position-top
+  );</span>
+}</div></code></pre>
+
+
+
+<h3>Add a close button</h3>
+
+<p>You can use this mixin to create a close button for the reveal modal</p>
+
+<pre><code class="language-scss"><div class="code-container"><span class="class">.custom-reveal-class</span> {
+  <span class="at_rule">@<span class="keyword">include</span><span class="preprocessor"> reveal-close</span>(
+    $color:$reveal-close-color
+  );</span>
+}</div></code></pre>
+
+
+<p><strong>Note:</strong> <code>rem-calc();</code> is a function we wrote to convert <code>px</code> to <code>rem</code>. It is included in <strong>_variables.scss</strong>.</p>
+<hr>
+<h2>Using the Javascript</h2>
+
+<div class="panel">
+  Before you can use Reveal you&#39;ll want to verify that jQuery and <code>foundation.min.js</code> are available on your page. You can refer to the <a href="../javascript.html">Javascript documentation</a> on setting that up.
+</div>
+
+<p>If you are not using foundation.min.js and individually adding plugins, include <code>foundation.reveal.js</code> AFTER the <code>foundation.js</code> file. Your markup should look something like this:</p>
+
+<pre><code class="language-html"><div class="code-container"><span class="tag">&lt;<span class="title">body</span>&gt;</span>
+
+  ...
+
+  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/vendor/jquery.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/foundation/foundation.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/foundation/foundation.reveal.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+  <span class="comment">&lt;!-- Other JS plugins can be included here --&gt;</span>
+
+  <span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript">
+    $(document).foundation();
+  </span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+
+<span class="tag">&lt;/<span class="title">body</span>&gt;</span></div></code></pre>
+
+
+<p>Required Foundation Library: <code>foundation.reveal.js</code></p>
+
+<h5>Optional Javascript Configuration</h5>
+
+<p>Reveal options can only be passed in during initialization at this time. However, you can bind to the <i>open</i>, <i>opened</i>, <i>close</i>, and <i>closed</i> events.</p> You can also specify an AJAX error callback with the option <i>on_ajax_error</i>.
+
+<pre><code class="language-javascript"><div class="code-container">{
+  animation: <span class="string">&#39;fadeAndPop&#39;</span>,
+  animation_speed: <span class="number">250</span>,
+  close_on_background_click: <span class="literal">true</span>,
+  dismiss_modal_class: <span class="string">&#39;close-reveal-modal&#39;</span>,
+  multiple_opened: <span class="literal">false</span>,
+  bg_class: <span class="string">&#39;reveal-modal-bg&#39;</span>,
+  root_element: <span class="string">&#39;body&#39;</span>,
+  on_ajax_error: $.noop,
+  bg : $(<span class="string">&#39;.reveal-modal-bg&#39;</span>),
+  css : {
+    open : {
+      <span class="string">&#39;opacity&#39;</span>: <span class="number">0</span>,
+      <span class="string">&#39;visibility&#39;</span>: <span class="string">&#39;visible&#39;</span>,
+      <span class="string">&#39;display&#39;</span> : <span class="string">&#39;block&#39;</span>
+    },
+    close : {
+      <span class="string">&#39;opacity&#39;</span>: <span class="number">1</span>,
+      <span class="string">&#39;visibility&#39;</span>: <span class="string">&#39;hidden&#39;</span>,
+      <span class="string">&#39;display&#39;</span>: <span class="string">&#39;none&#39;</span>
+    }
+  }
+}</div></code></pre>
+
+
+
+<hr />
+
+### Adding New Reveal Content After Page Load
+
+If you add new content after the page has been loaded, you will need to reinitialize the Foundation JavaScript by running the following:
+
+<pre><code class="language-javascript"><div class="code-container">$(document).foundation();</div></code></pre>
+
+
+Reflow will make Foundation check the DOM for any elements and re-apply any listeners to them.
+
+<pre><code class="language-javascript"><div class="code-container">$(document).foundation(<span class="string">&#39;reveal&#39;</span>, <span class="string">&#39;reflow&#39;</span>);</div></code></pre>
+
+
+<em>*</em>
+
+<h5>Sass Errors?</h5>
+
+<p>If the default &quot;foundation&quot; import was commented out, then make sure you import this file:</p>
+
+<h4>SCSS</h4>
+
+<pre><code class="language-scss"><div class="code-container"><span class="at_rule">@<span class="keyword">import</span> <span class="string">"foundation/components/reveal"</span>;</span></div></code></pre>
+
+
+
+
+<p><br>
+<br></p>
+<hr>
+
+<section class="building-blocks-section">
+  <h2 class="building-blocks-header">Building Blocks Using Reveal Modal</h2>
+  <div class="row">
+    <div data-building-blocks>
+
+    </div>
+  </div>
+
+  <br>
+
+  <h3 class="building-blocks-header">Want more? Check out all the hot <a href="http://zurb.com/building-blocks">Building Blocks &#8680;</a></h4>
+</section>
+
+
+
+            </div>
+          </div>
+          <!-- <section id="courses-banner-large">
+  <div class="row">
+    <div class="large-5 medium-5 columns banner-image">
+      <img src="http://foundation.zurb.com/assets/img/responsive-banner-main.svg" alt="responsive design">
+    </div>
+    <div class="large-7 medium-7 columns banner-info">
+      <h3>Get a running start with Foundation</h3>
+      <p>Learn the fundamentals of the world's most advanced responsive framework in our <strong>Intro to Foundation class.</strong> You'll learn from the creators themselves on how to use Foundation and jumpstart your next project. <a href="http://zurb.com/university/courses" class="inline-hide">Learn more about classes »</a></p>
+      <a href="http://zurb.com/university/foundation-intro?utm_source=Foundation%20Docs&utm_medium=Large%20Banner&utm_campaign=Intro%20to%20Foundation" class="button">Learn More</a>
+      <a href="http://zurb.com/university/courses" class="learn-more hide-for-medium-up">Learn more about classes »</a>
+    </div>
+  </div>
+</section> -->
+          <div id="newsletter">
+  <div class="row">
+    <div class="medium-8 columns">
+      <h5>Stay on top of what&rsquo;s happening in <a href="http://zurb.com/responsive">responsive design</a>.</h5>
+      <p>Sign up to receive monthly Responsive Reading highlights. <a href="http://zurb.com/responsive/reading">Read Last Month's Edition &raquo;</a></p>
+    </div>
+    <div class="medium-4 columns">
+      <form action="http://zurb.createsend.com/t/y/s/xlitlu/" method="post" id="subForm">
+        <div class="row collapse margintop-20px">
+          <div class="small-8 medium-8 columns">
+            <input id="fieldEmail" name="cm-xlitlu-xlitlu" type="email" placeholder="signup@example.com">
+          </div>
+          <div class="small-4 medium-4 columns">
+            <input type="submit" href="#" class="postfix button" value="Sign Up">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="zurb-footer-top bg-fblue">
+  <div class="row property">
+    <div class="medium-4 columns">
+      <div class="property-info">
+        <h3>Foundation for Sites</h3>
+        <p>Foundation is a responsive front-end framework made by <a href="http://zurb.com">ZURB</a>, a product design company in Campbell, CA. This framework is the result of building web products &amp; services since 1998.
+        </p>
+      </div>
+    </div>
+
+    <div class="medium-8 columns">
+      <div class="row collapse">
+        <div class="medium-4 columns">
+          <div class="learn-links">
+            <h4 class="hide-for-small">Want more?</h4>
+            <ul>
+              <li><a href="http://foundation.zurb.com/apps">Foundation for Apps</a></li>
+              <li><a href="http://zurb.com/ink/">Ink Responsive Emails</a></li>
+              <li><a href="http://zurb.com/notable">Notable Design Apps</a></li>
+              <li><a href="http://zurb.com/university/courses">Training</a></li>
+              <li><a href="http://zurb.com/library">Design Resources</a></li>
+            </ul>
+          </div>
+        </div>
+          <div class="medium-4 columns">
+            <div class="support-links">
+            <h4 class="hide-for-small">Talk to us</h4>
+            <p>Tweet us at <br> <a href="https://twitter.com/zurbfoundation">@ZURBfoundation</a></p>
+            <p><a href="http://foundation.zurb.com/business/business-support.html">Business Support</a></p>
+            <p>Or check our <a href="http://foundation.zurb.com/support/support.html">support page</a></p>
+            </div>
+          </div>
+        <div class="medium-4 columns">
+          <div class="connect-links">
+            <h4 class="hide-for-small">Stay Updated</h4>
+            <p>Keep up with the latest on Foundation. Find us on <a href="https://github.com/zurb/foundation">Github</a>.</p>
+            <a href="http://zurb.com/news" class="small button">Stay Connected</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row global">
+    <div class="medium-3 small-6 columns">
+      <a href="http://zurb.com/studios" class="footer-link-block services">
+        <span class="title">Studios</span>
+        <span>Helping more than 200 startups succeed since 1998.</span>
+      </a>
+    </div>
+    <div class="medium-3 small-6 columns">
+      <a href="http://foundation.zurb.com/" class="footer-link-block foundation">
+        <span class="title">Foundation</span>
+        <span>The most advanced front-end framework in the world.</span>
+      </a>
+    </div>
+    <div class="medium-3 small-6 columns">
+      <a href="http://zurb.com/notable" class="footer-link-block apps">
+        <span class="title">Notable Design Apps</span>
+        <span>Prototype, iterate and collect feedback on your products.</span>
+      </a>
+    </div>
+    <div class="medium-3 small-6 columns">
+      <a href="http://zurb.com/university" class="footer-link-block expo">
+        <span class="title">University</span>
+        <span>Ideas, thoughts and design resources shared with you.</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="zurb-footer-bottom">
+  <div class="row">
+    <div class="medium-4 medium-4 push-8 columns">
+      <ul class="home-social">
+          <li><a href="http://www.twitter.com/ZURB" class="twitter"></a></li>
+          <li><a href="http://www.facebook.com/ZURB" class="facebook"></a></li>
+          <li><a href="http://zurb.com/contact" class="mail"></a></li>
+        </ul>
+     </div>
+     <div class="medium-8 medium-8 pull-4 columns">
+        <a href="http://www.zurb.com" class="zurb-logo regular"></a>
+        <ul class="zurb-links">
+          <li><a href="http://zurb.com/about">About</a></li>
+          <li><a href="http://zurb.com/blog">Blog</a></li>
+          <li><a href="http://zurb.com/news">News<span class="show-for-medium-up"> &amp; Events</span></a></li>
+          <li><a href="http://zurb.com/contact">Contact</a></li>
+          <li><a href="http://zurb.com/sitemap">Sitemap</a></li>
+       </ul>
+       <p class="copyright">&copy; 1998&dash;2015 ZURB, Inc. All rights reserved.</p>
+    </div>
+  </div>
+</div>
+
+        </section>
+
+      </div>
+    </div>
+
+    <script src="../assets/js/templates.js"></script>
+    <script src="../assets/js/all.js"></script>
+    <script>
+      var _gaq = _gaq || [];
+      _gaq.push(
+        ['_setAccount', 'UA-2195009-2'],
+        ['_trackPageview'],
+        ['b._setAccount', 'UA-2195009-27'],
+        ['b._trackPageview']
+      );
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    <script>
+      $(document).foundation().foundation('joyride', 'start');
+    </script>
+  </body>
+
+</html>
