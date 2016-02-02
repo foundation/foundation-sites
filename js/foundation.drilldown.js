@@ -91,7 +91,7 @@
       var $sub = $(this);
       var $link = $sub.find('a:first');
       if(_this.options.parentLink){
-        $link.clone().prependTo($sub).children('[data-submenu]').wrap('<li class="is-submenu-parent-item is-submenu-item is-drilldown-submenu-item" role="menu-item"></li>');
+        $link.clone().prependTo($sub.children('[data-submenu]')).wrap('<li class="is-submenu-parent-item is-submenu-item is-drilldown-submenu-item" role="menu-item"></li>');
       }
       $link.data('savedHref', $link.attr('href')).removeAttr('href');
       $sub.children('[data-submenu]')
