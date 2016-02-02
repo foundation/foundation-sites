@@ -46,10 +46,12 @@ OffCanvas.defaults = {
    * @example left
    */
   position: 'left',
-  // /**
-  //  * Force the page to scroll to top on open.
-  //  */
-  // forceTop: true,
+  /**
+   * Force the page to scroll to top on open.
+   * @option
+   * @example true
+   */
+  forceTop: true,
   /**
    * Allow the offcanvas to be sticky while open. Does nothing if Sass option `$maincontent-prevent-scroll === true`.
    * Performance in Safari OSX/iOS is not great.
@@ -206,9 +208,12 @@ OffCanvas.prototype.reveal = function(isRevealed){
  */
 OffCanvas.prototype.open = function(event, trigger) {
   if (this.$element.hasClass('is-open') || this.isRevealed){ return; }
-  var _this = this,
-      $body = $(document.body);
-  $('body').scrollTop(0);
+
+  var _this = this;
+
+  if(this.options.forceTop){
+    $('body').scrollTop(0);
+  }
   // window.pageYOffset = 0;
 
   // if(!this.options.forceTop){
@@ -242,7 +247,8 @@ OffCanvas.prototype.open = function(event, trigger) {
     this.$lastTrigger = trigger.attr('aria-expanded', 'true');
   }
   if(this.options.autoFocus){
-    this.$element.one('finished.zf.animate', function(){
+    $(window).one(Foundation.transitionend(this.$element), function(){
+    // this.$element.one('finished.zf.animate', function(){ // For rAF, disabled in favor of CSS hardware accel.
       _this.$element.find('a, button').eq(0).focus();
     });
   }
