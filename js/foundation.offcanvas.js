@@ -46,10 +46,10 @@ OffCanvas.defaults = {
    * @example left
    */
   position: 'left',
-  /**
-   * Force the page to scroll to top on open.
-   */
-  forceTop: true,
+  // /**
+  //  * Force the page to scroll to top on open.
+  //  */
+  // forceTop: true,
   /**
    * Allow the offcanvas to be sticky while open. Does nothing if Sass option `$maincontent-prevent-scroll === true`.
    * Performance in Safari OSX/iOS is not great.
@@ -62,7 +62,7 @@ OffCanvas.defaults = {
    */
   isRevealed: false,
   /**
-   * Breakpoint at which to reveal. JS will use a RegExp to target standard classes, if changing classnames, pass your class @`revealClass`.
+   * Breakpoint at which to reveal. JS will use a RegExp to target standard classes, if changing classnames, pass your class with the `revealClass` option.
    * @option
    * @example reveal-for-large
    */
@@ -222,16 +222,16 @@ OffCanvas.prototype.open = function(event, trigger) {
    * Fires when the off-canvas menu opens.
    * @event OffCanvas#opened
    */
-  Foundation.Move(this.options.transitionTime, this.$element, function(){
+  // Foundation.Move(this.options.transitionTime, this.$element, function(){
     $('[data-off-canvas-wrapper]').addClass('is-off-canvas-open is-open-'+ _this.options.position);
 
     _this.$element
-      .addClass('is-open')
+      .addClass('is-open');
 
     // if(_this.options.isSticky){
     //   _this._stick();
     // }
-  });
+  // });
   this.$element.attr('aria-hidden', 'false')
       .trigger('opened.zf.offcanvas');
 
