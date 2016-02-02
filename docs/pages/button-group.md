@@ -4,6 +4,7 @@ description: Button groups are containers for related action items. They're grea
 sass: scss/components/_button-group.scss
 tags:
   - split button
+flexbox: true
 ---
 
 <div class="primary callout">

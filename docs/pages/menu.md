@@ -8,6 +8,7 @@ tags:
   - sub nav
   - icon bar
   - top bar
+flex: true
 ---
 
 <div class="primary callout">

@@ -2,6 +2,7 @@
 title: Top Bar
 description: The new top bar is a simpler wrapper around our flexible menu components.
 sass: ./scss/components/_top-bar.scss
+flex: true
 ---
 
 <div class="primary callout">

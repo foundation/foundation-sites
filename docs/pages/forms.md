@@ -9,6 +9,7 @@ tags:
   - select
   - radio
   - checkbox
+flex: true
 ---
 
 ## Form Basics
