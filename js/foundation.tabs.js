@@ -210,7 +210,7 @@
   Tabs.prototype._handleTabChange = function($target){
     var $tabLink = $target.find('[role="tab"]'),
         hash = $tabLink[0].hash,
-        $targetContent = $(hash),
+        $targetContent = this.$tabContent.find(hash),
         $oldTab = this.$element.find('.' + this.options.linkClass + '.is-active')
                   .removeClass('is-active').find('[role="tab"]')
                   .attr({'aria-selected': 'false'}).attr('aria-controls');
