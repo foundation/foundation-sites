@@ -29,6 +29,9 @@ $tab-item-color: foreground($tab-background, $primary-color) !default;
 /// Default background color on hover for items in a Menu.
 $tab-item-background-hover: $white !default;
 
+/// Default font size for items in a Menu.
+$tab-item-font-size: 12px !default;
+
 /// Default padding of a a tab item.
 /// @type Number
 $tab-item-padding: 1.25rem 1.5rem !default;
@@ -79,7 +82,7 @@ $tab-content-padding: 1rem !default;
     display: block;
     padding: $tab-item-padding;
     line-height: 1;
-    font-size: 12px;
+    font-size: $tab-item-font-size;
     color: $tab-item-color;
 
     &:hover {
