@@ -34,7 +34,7 @@
   }
   Orbit.defaults = {
     /**
-    * Tells the JS to loadBullets.
+    * Tells the plugin to look for and loadBullets.
     * @option
     * @example true
     */
@@ -119,7 +119,7 @@
     */
     slideClass: 'orbit-slide',
     /**
-    * Class applied to the bullet container. You're welcome.
+    * Class applied to the bullet container.
     * @option
     * @example 'orbit-bullets'
     */
@@ -200,222 +200,222 @@
         function(){
           _this.changeSlide(true);
         });
-        this.timer.start();
-      };
-      /**
-      * Sets wrapper and slide heights for the orbit.
-      * @function
-      * @private
-      */
-      Orbit.prototype._prepareForOrbit = function(){
-        var _this = this;
-        this._setWrapperHeight(function(max){
-          _this._setSlideHeight(max);
-        });
-      };
-      /**
-      * Calulates the height of each slide in the collection, and uses the tallest one for the wrapper height.
-      * @function
-      * @private
-      * @param {Function} cb - a callback function to fire when complete.
-      */
-      Orbit.prototype._setWrapperHeight = function(cb){//rewrite this to `for` loop
-        var max = 0, temp, counter = 0;
+    this.timer.start();
+  };
+  /**
+  * Sets wrapper and slide heights for the orbit.
+  * @function
+  * @private
+  */
+  Orbit.prototype._prepareForOrbit = function(){
+    var _this = this;
+    this._setWrapperHeight(function(max){
+      _this._setSlideHeight(max);
+    });
+  };
+  /**
+  * Calulates the height of each slide in the collection, and uses the tallest one for the wrapper height.
+  * @function
+  * @private
+  * @param {Function} cb - a callback function to fire when complete.
+  */
+  Orbit.prototype._setWrapperHeight = function(cb){//rewrite this to `for` loop
+  var max = 0, temp, counter = 0;
 
-        this.$slides.each(function(){
-          temp = this.getBoundingClientRect().height;
-          $(this).attr('data-slide', counter);
+  this.$slides.each(function(){
+    temp = this.getBoundingClientRect().height;
+    $(this).attr('data-slide', counter);
 
-          if(counter){//if not the first slide, set css position and display property
-            $(this).css({'position': 'relative', 'display': 'none'});
+    if(counter){//if not the first slide, set css position and display property
+      $(this).css({'position': 'relative', 'display': 'none'});
+    }
+    max = temp > max ? temp : max;
+    counter++;
+  });
+
+  if(counter === this.$slides.length){
+    this.$wrapper.css({'height': max});//only change the wrapper height property once.
+    cb(max);//fire callback with max height dimension.
+  }
+  };
+  /**
+  * Sets the max-height of each slide.
+  * @function
+  * @private
+  */
+  Orbit.prototype._setSlideHeight = function(height){
+  this.$slides.each(function(){
+    $(this).css('max-height', height);
+  });
+  };
+  /**
+  * Adds event listeners to basically everything within the element.
+  * @function
+  * @private
+  */
+  Orbit.prototype._events = function(){
+  var _this = this;
+
+  //***************************************
+  //**Now using custom event - thanks to:**
+  //**      Yohai Ararat of Toronto      **
+  //***************************************
+  if(this.$slides.length > 1){
+
+    if(this.options.swipe){
+      this.$slides.off('swipeleft.zf.orbit swiperight.zf.orbit')
+      .on('swipeleft.zf.orbit', function(e){
+        e.preventDefault();
+        _this.changeSlide(true);
+      }).on('swiperight.zf.orbit', function(e){
+        e.preventDefault();
+        _this.changeSlide(false);
+      });
+    }
+    //***************************************
+
+    if(this.options.autoPlay){
+      this.$slides.on('click.zf.orbit', function(){
+        _this.$element.data('clickedOn', _this.$element.data('clickedOn') ? false : true);
+        _this.timer[_this.$element.data('clickedOn') ? 'pause' : 'start']();
+      });
+      if(this.options.pauseOnHover){
+        this.$element.on('mouseenter.zf.orbit', function(){
+          _this.timer.pause();
+        }).on('mouseleave.zf.orbit', function(){
+          if(!_this.$element.data('clickedOn')){
+            _this.timer.start();
           }
-          max = temp > max ? temp : max;
-          counter++;
         });
+      }
+    }
 
-        if(counter === this.$slides.length){
-          this.$wrapper.css({'height': max});//only change the wrapper height property once.
-          cb(max);//fire callback with max height dimension.
+    if(this.options.navButtons){
+      var $controls = this.$element.find('.' + this.options.nextClass + ', .' + this.options.prevClass);
+      $controls.attr('tabindex', 0)
+      //also need to handle enter/return and spacebar key presses
+      .on('click.zf.orbit touchend.zf.orbit', function(){
+        _this.changeSlide($(this).hasClass(_this.options.nextClass));
+      });
+    }
+
+    if(this.options.bullets){
+      this.$bullets.on('click.zf.orbit touchend.zf.orbit', function(){
+        if(/is-active/g.test(this.className)){ return false; }//if this is active, kick out of function.
+        var idx = $(this).data('slide'),
+        ltr = idx > _this.$slides.filter('.is-active').data('slide'),
+        $slide = _this.$slides.eq(idx);
+
+        _this.changeSlide(ltr, $slide, idx);
+      });
+    }
+
+    this.$wrapper.add(this.$bullets).on('keydown.zf.orbit', function(e){
+      // handle keyboard event with keyboard util
+      Foundation.Keyboard.handleKey(e, 'Orbit', {
+        next: function() {
+          _this.changeSlide(true);
+        },
+        previous: function() {
+          _this.changeSlide(false);
+        },
+        handled: function() { // if bullet is focused, make sure focus moves
+          if ($(e.target).is(_this.$bullets)) {
+            _this.$bullets.filter('.is-active').focus();
+          }
         }
-      };
-      /**
-      * Sets the max-height of each slide.
-      * @function
-      * @private
-      */
-      Orbit.prototype._setSlideHeight = function(height){
-        this.$slides.each(function(){
-          $(this).css('max-height', height);
+      });
+    });
+  }
+  };
+  /**
+  * Changes the current slide to a new one.
+  * @function
+  * @param {Boolean} isLTR - flag if the slide should move left to right.
+  * @param {jQuery} chosenSlide - the jQuery element of the slide to show next, if one is selected.
+  * @param {Number} idx - the index of the new slide in its collection, if one chosen.
+  * @fires Orbit#slidechange
+  */
+  Orbit.prototype.changeSlide = function(isLTR, chosenSlide, idx){
+  var $curSlide = this.$slides.filter('.is-active').eq(0);
+
+  if(/mui/g.test($curSlide[0].className)){ return false; }//if the slide is currently animating, kick out of the function
+
+  var $firstSlide = this.$slides.first(),
+  $lastSlide = this.$slides.last(),
+  dirIn = isLTR ? 'Right' : 'Left',
+  dirOut = isLTR ? 'Left' : 'Right',
+  _this = this,
+  $newSlide;
+
+  if(!chosenSlide){//most of the time, this will be auto played or clicked from the navButtons.
+    $newSlide = isLTR ? //if wrapping enabled, check to see if there is a `next` or `prev` sibling, if not, select the first or last slide to fill in. if wrapping not enabled, attempt to select `next` or `prev`, if there's nothing there, the function will kick out on next step. CRAZY NESTED TERNARIES!!!!!
+    (this.options.infiniteWrap ? $curSlide.next('.' + this.options.slideClass).length ? $curSlide.next('.' + this.options.slideClass) : $firstSlide : $curSlide.next('.' + this.options.slideClass))//pick next slide if moving left to right
+    :
+    (this.options.infiniteWrap ? $curSlide.prev('.' + this.options.slideClass).length ? $curSlide.prev('.' + this.options.slideClass) : $lastSlide : $curSlide.prev('.' + this.options.slideClass));//pick prev slide if moving right to left
+  }else{
+    $newSlide = chosenSlide;
+  }
+  if($newSlide.length){
+    if(this.options.bullets){
+      idx = idx || this.$slides.index($newSlide);//grab index to update bullets
+      this._updateBullets(idx);
+    }
+    if(this.options.useMUI){
+
+      Foundation.Motion.animateIn(
+        $newSlide.addClass('is-active').css({'position': 'absolute', 'top': 0}),
+        this.options['animInFrom' + dirIn],
+        function(){
+          $newSlide.css({'position': 'relative', 'display': 'block'})
+          .attr('aria-live', 'polite');
         });
-      };
-      /**
-      * Adds event listeners to basically everything within the element.
-      * @function
-      * @private
-      */
-      Orbit.prototype._events = function(){
-        var _this = this;
 
-        //***************************************
-        //**Now using custom event - thanks to:**
-        //**      Yohai Ararat of Toronto      **
-        //***************************************
-        if(this.$slides.length > 1){
-
-          if(this.options.swipe){
-            this.$slides.off('swipeleft.zf.orbit swiperight.zf.orbit')
-            .on('swipeleft.zf.orbit', function(e){
-              e.preventDefault();
-              _this.changeSlide(true);
-            }).on('swiperight.zf.orbit', function(e){
-              e.preventDefault();
-              _this.changeSlide(false);
-            });
-          }
-          //***************************************
-
-          if(this.options.autoPlay){
-            this.$slides.on('click.zf.orbit', function(){
-              _this.$element.data('clickedOn', _this.$element.data('clickedOn') ? false : true);
-              _this.timer[_this.$element.data('clickedOn') ? 'pause' : 'start']();
-            });
-            if(this.options.pauseOnHover){
-              this.$element.on('mouseenter.zf.orbit', function(){
-                _this.timer.pause();
-              }).on('mouseleave.zf.orbit', function(){
-                if(!_this.$element.data('clickedOn')){
-                  _this.timer.start();
-                }
-              });
+        Foundation.Motion.animateOut(
+          $curSlide.removeClass('is-active'),
+          this.options['animOutTo' + dirOut],
+          function(){
+            $curSlide.removeAttr('aria-live');
+            if(_this.options.autoPlay && !_this.timer.isPaused){
+              _this.timer.restart();
             }
-          }
-
-          if(this.options.navButtons){
-            var $controls = this.$element.find('.' + this.options.nextClass + ', .' + this.options.prevClass);
-            $controls.attr('tabindex', 0)
-            //also need to handle enter/return and spacebar key presses
-            .on('click.zf.orbit touchend.zf.orbit', function(){
-              _this.changeSlide($(this).hasClass(_this.options.nextClass));
-            });
-          }
-
-          if(this.options.bullets){
-            this.$bullets.on('click.zf.orbit touchend.zf.orbit', function(){
-              if(/is-active/g.test(this.className)){ return false; }//if this is active, kick out of function.
-              var idx = $(this).data('slide'),
-              ltr = idx > _this.$slides.filter('.is-active').data('slide'),
-              $slide = _this.$slides.eq(idx);
-
-              _this.changeSlide(ltr, $slide, idx);
-            });
-          }
-
-          this.$wrapper.add(this.$bullets).on('keydown.zf.orbit', function(e){
-            // handle keyboard event with keyboard util
-            Foundation.Keyboard.handleKey(e, 'Orbit', {
-              next: function() {
-                _this.changeSlide(true);
-              },
-              previous: function() {
-                _this.changeSlide(false);
-              },
-              handled: function() { // if bullet is focused, make sure focus moves
-                if ($(e.target).is(_this.$bullets)) {
-                  _this.$bullets.filter('.is-active').focus();
-                }
-              }
-            });
+            //do stuff?
           });
-        }
-      };
-      /**
-      * Changes the current slide to a new one.
-      * @function
-      * @param {Boolean} isLTR - flag if the slide should move left to right.
-      * @param {jQuery} chosenSlide - the jQuery element of the slide to show next, if one is selected.
-      * @param {Number} idx - the index of the new slide in its collection, if one chosen.
-      * @fires Orbit#slidechange
-      */
-      Orbit.prototype.changeSlide = function(isLTR, chosenSlide, idx){
-        var $curSlide = this.$slides.filter('.is-active').eq(0);
-
-        if(/mui/g.test($curSlide[0].className)){ return false; }//if the slide is currently animating, kick out of the function
-
-        var $firstSlide = this.$slides.first(),
-        $lastSlide = this.$slides.last(),
-        dirIn = isLTR ? 'Right' : 'Left',
-        dirOut = isLTR ? 'Left' : 'Right',
-        _this = this,
-        $newSlide;
-
-        if(!chosenSlide){//most of the time, this will be auto played or clicked from the navButtons.
-          $newSlide = isLTR ? //if wrapping enabled, check to see if there is a `next` or `prev` sibling, if not, select the first or last slide to fill in. if wrapping not enabled, attempt to select `next` or `prev`, if there's nothing there, the function will kick out on next step. CRAZY NESTED TERNARIES!!!!!
-          (this.options.infiniteWrap ? $curSlide.next('.' + this.options.slideClass).length ? $curSlide.next('.' + this.options.slideClass) : $firstSlide : $curSlide.next('.' + this.options.slideClass))//pick next slide if moving left to right
-          :
-          (this.options.infiniteWrap ? $curSlide.prev('.' + this.options.slideClass).length ? $curSlide.prev('.' + this.options.slideClass) : $lastSlide : $curSlide.prev('.' + this.options.slideClass));//pick prev slide if moving right to left
         }else{
-          $newSlide = chosenSlide;
-        }
-        if($newSlide.length){
-          if(this.options.bullets){
-            idx = idx || this.$slides.index($newSlide);//grab index to update bullets
-            this._updateBullets(idx);
+          $curSlide.removeClass('is-active is-in').removeAttr('aria-live').hide();
+          $newSlide.addClass('is-active is-in').attr('aria-live', 'polite').show();
+          if(this.options.autoPlay && !this.timer.isPaused){
+            this.timer.restart();
           }
-          if(this.options.useMUI){
+        }
+        /**
+        * Triggers when the slide has finished animating in.
+        * @event Orbit#slidechange
+        */
+        this.$element.trigger('slidechange.zf.orbit', [$newSlide]);
+      }
+    };
+    /**
+    * Updates the active state of the bullets, if displayed.
+    * @function
+    * @private
+    * @param {Number} idx - the index of the current slide.
+    */
+    Orbit.prototype._updateBullets = function(idx){
+      var $oldBullet = this.$element.find('.' + this.options.boxOfBullets)
+      .find('.is-active').removeClass('is-active').blur(),
+      span = $oldBullet.find('span:last').detach(),
+      $newBullet = this.$bullets.eq(idx).addClass('is-active').append(span);
+    };
+    /**
+    * Destroys the carousel and hides the element.
+    * @function
+    */
+    Orbit.prototype.destroy = function(){
+      this.$element.off('.zf.orbit').find('*').off('.zf.orbit').end().hide();
+      Foundation.unregisterPlugin(this);
+    };
 
-            Foundation.Motion.animateIn(
-              $newSlide.addClass('is-active').css({'position': 'absolute', 'top': 0}),
-              this.options['animInFrom' + dirIn],
-              function(){
-                $newSlide.css({'position': 'relative', 'display': 'block'})
-                .attr('aria-live', 'polite');
-              });
+    Foundation.plugin(Orbit, 'Orbit');
 
-              Foundation.Motion.animateOut(
-                $curSlide.removeClass('is-active'),
-                this.options['animOutTo' + dirOut],
-                function(){
-                  $curSlide.removeAttr('aria-live');
-                  if(_this.options.autoPlay && !_this.timer.isPaused){
-                    _this.timer.restart();
-                  }
-                  //do stuff?
-                });
-              }else{
-                $curSlide.removeClass('is-active is-in').removeAttr('aria-live').hide();
-                $newSlide.addClass('is-active is-in').attr('aria-live', 'polite').show();
-                if(this.options.autoPlay && !this.timer.isPaused){
-                  this.timer.restart();
-                }
-              }
-              /**
-              * Triggers when the slide has finished animating in.
-              * @event Orbit#slidechange
-              */
-              this.$element.trigger('slidechange.zf.orbit', [$newSlide]);
-            }
-          };
-          /**
-          * Updates the active state of the bullets, if displayed.
-          * @function
-          * @private
-          * @param {Number} idx - the index of the current slide.
-          */
-          Orbit.prototype._updateBullets = function(idx){
-            var $oldBullet = this.$element.find('.' + this.options.boxOfBullets)
-            .find('.is-active').removeClass('is-active').blur(),
-            span = $oldBullet.find('span:last').detach(),
-            $newBullet = this.$bullets.eq(idx).addClass('is-active').append(span);
-          };
-          /**
-          * Destroys the carousel and hides the element.
-          * @function
-          */
-          Orbit.prototype.destroy = function(){
-            this.$element.off('.zf.orbit').find('*').off('.zf.orbit').end().hide();
-            Foundation.unregisterPlugin(this);
-          };
-
-          Foundation.plugin(Orbit, 'Orbit');
-
-        }(jQuery, window.Foundation);
+}(jQuery, window.Foundation);
