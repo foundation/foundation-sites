@@ -37,19 +37,19 @@
   }
   Drilldown.defaults = {
     /**
-     * Markup used for JS generated back button. Prepended to submenu lists and deleted on `destroy` method, 'js-drilldown-back' class required. Remove the backslash (`\`) if copy and pasting.
+     * Markup used for JS generated back button. Prepended to submenu lists and deleted on `destroy` method, 'js-drilldown-back' class required.
      * @option
-     * @example '<\li><\a>Back<\/a><\/li>'
+     * @example '&lt;li&gt;&lt;a&gt;Back&lt;/a&gt;&lt;/li&gt;'
      */
     backButton: '<li class="js-drilldown-back"><a>Back</a></li>',
     /**
-     * Markup used to wrap drilldown menu. Use a class name for independent styling; the JS applied class: `is-drilldown` is required. Remove the backslash (`\`) if copy and pasting.
+     * Markup used to wrap drilldown menu. Use a class name for independent styling; the JS applied class: `is-drilldown` is required.
      * @option
-     * @example '<\div class="is-drilldown"><\/div>'
+     * @example '&lt;div class="is-drilldown"&gt;&lt;/div&gt;'
      */
     wrapper: '<div></div>',
     /**
-     * Allow the menu to return to root list on body click.
+     * Allow the menu to return to top level menu on body click.
      * @option
      * @example false
      */
