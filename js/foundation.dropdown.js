@@ -31,7 +31,7 @@
 
   Dropdown.defaults = {
     /**
-     * Amount of time to delay opening a submenu on hover event.
+     * Amount of time, in milliseconds to delay opening a submenu on hover event.
      * @option
      * @example 250
      */
@@ -43,19 +43,19 @@
      */
     hover: false,
     /**
-     * Don't close dropdown when hovering over dropdown pane
+     * Prevent the dropdown pane from closing while hovering over it
      * @option
-     * @example true
+     * @example false
      */
     hoverPane: false,
     /**
-     * Number of pixels between the dropdown pane and the triggering element on open.
+     * Number of pixels between the dropdown pane and the triggering element on open, on the Y-axis
      * @option
      * @example 1
      */
     vOffset: 1,
     /**
-     * Number of pixels between the dropdown pane and the triggering element on open.
+     * Number of pixels between the dropdown pane and the triggering element on open, on the X-axis.
      * @option
      * @example 1
      */
@@ -67,13 +67,13 @@
      */
     positionClass: '',
     /**
-     * Allow the plugin to trap focus to the dropdown pane if opened with keyboard commands.
+     * Allow the plugin to trap focus to the dropdown pane if opened with keyboard commands. Useful if your dropdown pane contains form elements.
      * @option
      * @example false
      */
     trapFocus: false,
     /**
-     * Allow the plugin to set focus to the first focusable element within the pane, regardless of method of opening.
+     * Allow the plugin to set focus to the first focusable element within the pane, regardless of method of opening. Will cause the page to scroll your dropdown pane into view if opening via JS.
      * @option
      * @example true
      */
@@ -100,7 +100,7 @@
       'data-yeti-box': $id,
       'aria-haspopup': true,
       'aria-expanded': false
-      // 'data-resize': $id
+
     });
 
     this.options.positionClass = this.getPositionClass();
@@ -331,9 +331,6 @@
      * @event Dropdown#show
      */
      this.$element.trigger('show.zf.dropdown', [this.$element]);
-    //why does this not work correctly for this plugin?
-    // Foundation.reflow(this.$element, 'dropdown');
-    // Foundation._reflow(this.$element.attr('data-dropdown'));
   };
 
   /**
@@ -363,7 +360,6 @@
       this.usedPositions.length = 0;
     }
     this.$element.trigger('hide.zf.dropdown', [this.$element]);
-    // Foundation.reflow(this.$element, 'dropdown');
   };
   /**
    * Toggles the dropdown pane's visibility.
