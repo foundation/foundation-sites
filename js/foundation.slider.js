@@ -427,7 +427,7 @@
     if(this.options.clickSelect){
       this.$element.off('click.zf.slider').on('click.zf.slider', function(e){
         if(_this.$element.data('dragging')){ return false; }
-<<<<<<< HEAD
+// <<<<<<< HEAD
         _this.animComplete = false;
 
         if(!$(e.target).is('[data-slider-handle]')) {
@@ -436,15 +436,15 @@
           } else {
             _this._handleEvent(e, _this.$handle);
           }
-=======
+// =======
 
         if(_this.options.doubleSided){
           _this._handleEvent(e);
         }else{
           _this._handleEvent(e, _this.$handle);
->>>>>>> develop
+// >>>>>>> develop
         }
-      });
+      }});
     }
 
     if(this.options.draggable){
