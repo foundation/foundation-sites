@@ -29,6 +29,37 @@ Give the `<input>` a unique ID and point the `<label>` to it with the `for` attr
 
 ---
 
+## Coloring
+
+Switch paddle can be colored, using the .success`, `.warning` or `.alert` classes.
+
+```html_example
+<div class="switch">
+  <input class="switch-input" id="exampleColorSwitch1" type="checkbox" name="exampleColorSwitch1">
+  <label class="switch-paddle success" for="exampleColorSwitch1">
+    <span class="show-for-sr">Pat the cat</span>
+  </label>
+</div>
+
+<div class="switch">
+  <input class="switch-input" id="exampleColorSwitch2" type="checkbox" name="exampleColorSwitch2">
+  <label class="switch-paddle warning" for="exampleColorSwitch2">
+    <span class="show-for-sr">Disable the cat</span>
+  </label>
+</div>
+
+<div class="switch">
+  <input class="switch-input" id="exampleColorSwitch3" type="checkbox" name="exampleColorSwitch3">
+  <label class="switch-paddle alert" for="exampleColorSwitch3">
+    <span class="show-for-sr">Delete cat food?</span>
+  </label>
+</div>
+```
+
+Alternatively, in your css, use following selector: `input:checked~.switch-paddle.yourclass`, where `yourclass` is a class name of your choice.
+
+---
+
 ## Radio Switch
 
 You can also use `<input type="radio">` instead of `checkbox` to create a series of options.
