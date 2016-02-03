@@ -26,7 +26,10 @@ gulp.task('javascript', ['javascript:foundation', 'javascript:deps', 'javascript
 
 gulp.task('javascript:foundation', function() {
   return gulp.src(FOUNDATION)
-    .pipe(babel())
+    .pipe(babel()
+      .on('error', function(err) {
+        console.log(err);
+      }))
     .pipe(concat('foundation.js'))
     .pipe(gulp.dest('_build/assets/js'));
 });
