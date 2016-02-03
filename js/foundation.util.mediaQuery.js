@@ -1,7 +1,5 @@
-!function($, Foundation) {
-
 // Default set of media queries
-var defaultQueries = {
+const defaultQueries = {
   'default' : 'only screen',
   landscape : 'only screen and (orientation: landscape)',
   portrait : 'only screen and (orientation: portrait)',
@@ -15,45 +13,15 @@ var defaultQueries = {
 
 var MediaQuery = {
   queries: [],
+
   current: '',
-
-  /**
-   * Checks if the screen is at least as wide as a breakpoint.
-   * @function
-   * @param {String} size - Name of the breakpoint to check.
-   * @returns {Boolean} `true` if the breakpoint matches, `false` if it's smaller.
-   */
-  atLeast: function(size) {
-    var query = this.get(size);
-
-    if (query) {
-      return window.matchMedia(query).matches;
-    }
-
-    return false;
-  },
-
-  /**
-   * Gets the media query of a breakpoint.
-   * @function
-   * @param {String} size - Name of the breakpoint to get.
-   * @returns {String|null} - The media query of the breakpoint, or `null` if the breakpoint doesn't exist.
-   */
-  get: function(size) {
-    for (var i in this.queries) {
-      var query = this.queries[i];
-      if (size === query.name) return query.value;
-    }
-
-    return null;
-  },
 
   /**
    * Initializes the media query helper, by extracting the breakpoint list from the CSS and activating the breakpoint watcher.
    * @function
    * @private
    */
-  _init: function() {
+  _init() {
     var self = this;
     var extractedStyles = $('.foundation-mq').css('font-family');
     var namedQueries;
@@ -70,9 +38,37 @@ var MediaQuery = {
     this.current = this._getCurrentSize();
 
     this._watcher();
+  },
 
-    // Extend default queries
-    // namedQueries = $.extend(defaultQueries, namedQueries);
+  /**
+   * Checks if the screen is at least as wide as a breakpoint.
+   * @function
+   * @param {String} size - Name of the breakpoint to check.
+   * @returns {Boolean} `true` if the breakpoint matches, `false` if it's smaller.
+   */
+  atLeast(size) {
+    var query = this.get(size);
+
+    if (query) {
+      return window.matchMedia(query).matches;
+    }
+
+    return false;
+  },
+
+  /**
+   * Gets the media query of a breakpoint.
+   * @function
+   * @param {String} size - Name of the breakpoint to get.
+   * @returns {String|null} - The media query of the breakpoint, or `null` if the breakpoint doesn't exist.
+   */
+  get(size) {
+    for (var i in this.queries) {
+      var query = this.queries[i];
+      if (size === query.name) return query.value;
+    }
+
+    return null;
   },
 
   /**
@@ -81,7 +77,7 @@ var MediaQuery = {
    * @private
    * @returns {String} Name of the current breakpoint.
    */
-  _getCurrentSize: function() {
+  _getCurrentSize() {
     var matched;
 
     for (var i in this.queries) {
@@ -92,7 +88,7 @@ var MediaQuery = {
       }
     }
 
-    if(typeof matched === 'object') {
+    if (typeof matched === 'object') {
       return matched.name;
     } else {
       return matched;
@@ -104,18 +100,16 @@ var MediaQuery = {
    * @function
    * @private
    */
-  _watcher: function() {
-    var _this = this;
+  _watcher() {
+    $(window).on('resize.zf.mediaquery', () => {
+      var newSize = this._getCurrentSize();
 
-    $(window).on('resize.zf.mediaquery', function() {
-      var newSize = _this._getCurrentSize();
-
-      if (newSize !== _this.current) {
+      if (newSize !== this.current) {
         // Broadcast the media query change on the window
-        $(window).trigger('changed.zf.mediaquery', [newSize, _this.current]);
+        $(window).trigger('changed.zf.mediaquery', [newSize, this.current]);
 
         // Change the current media query
-        _this.current = newSize;
+        this.current = newSize;
       }
     });
   }
@@ -146,7 +140,7 @@ window.matchMedia || (window.matchMedia = function() {
     info = ('getComputedStyle' in window) && window.getComputedStyle(style, null) || style.currentStyle;
 
     styleMedia = {
-      matchMedium: function(media) {
+      matchMedium(media) {
         var text = `@media ${media}{ #matchmediajs-test { width: 1px; } }`;
 
         // 'style.styleSheet' is used by IE <= 8 and 'style.textContent' for all other browsers
@@ -159,7 +153,7 @@ window.matchMedia || (window.matchMedia = function() {
         // Test if media query is true or false
         return info.width === '1px';
       }
-    };
+    }
   }
 
   return function(media) {
@@ -167,7 +161,7 @@ window.matchMedia || (window.matchMedia = function() {
       matches: styleMedia.matchMedium(media || 'all'),
       media: media || 'all'
     };
-  };
+  }
 }());
 
 // Thank you: https://github.com/sindresorhus/query-string
@@ -207,4 +201,8 @@ function parseStyleToObject(str) {
   return styleObject;
 }
 
-}(jQuery, Foundation);
+export default MediaQuery;
+
+if (window.Foundation) {
+  window.Foundation.MediaQuery = MediaQuery;
+}
