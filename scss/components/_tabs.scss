@@ -18,10 +18,6 @@ $tab-background: $white !default;
 /// @type Color
 $tab-background-active: $light-gray !default;
 
-/// Default border color of tab content.
-/// @type Color
-$tab-border: $light-gray !default;
-
 /// Default text color for items in a Menu.
 /// @type Color
 $tab-item-color: foreground($tab-background, $primary-color) !default;
