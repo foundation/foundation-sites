@@ -75,3 +75,17 @@ To create an element that can be closed once, add the attribute `data-closable`.
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore praesentium sint alias dolorum qui vel quaerat, libero consequatur non esse asperiores veritatis commodi, odit eum ipsam nemo dicta iste aliquam.</p>
 </div>
 ```
+
+---
+
+### Toggle on focus
+
+The `data-toggle` attribute only toggles classes/visibility on click. You can also have the toggle fire when an element is *focused* or *unfocused* using `data-toggle-focus`.
+
+```html_example
+<input type="text" data-toggle-focus="form-callout" placeholder="Click in here to reveal extra content">
+
+<div class="secondary callout is-hidden" id="form-callout" data-toggler="is-hidden">
+  <p>This is only visible when the above field has focus.</p>
+</div>
+```

@@ -48,6 +48,11 @@ $(document).on('close.zf.trigger', '[data-closable]', function(e){
   }
 });
 
+$(document).on('focus.zf.trigger blur.zf.trigger', '[data-toggle-focus]', function() {
+  var id = $(this).data('toggle-focus');
+  $('#' + id).triggerHandler('toggle.zf.trigger', [$(this)]);
+});
+
 /**
 * Fires once after all other scripts have loaded
 * @function
