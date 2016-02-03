@@ -80,7 +80,7 @@
       $('[' + this.attr_name() + '=fixed]', self.scope).each(function (idx, el) {
         var expedition = $(this),
             settings = expedition.data('magellan-expedition-init'),
-            styles = expedition.attr('styles'), // save styles
+            styles = expedition.attr('style'), // save styles
             top_offset, fixed_top;
 
         expedition.attr('style', '');
