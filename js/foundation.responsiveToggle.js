@@ -6,7 +6,7 @@
  * @requires foundation.util.mediaQuery
  */
 
- export default class ResponsiveToggle {
+export default class ResponsiveToggle {
   /**
    * Creates a new instance of Tab Bar.
    * @class

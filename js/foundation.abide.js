@@ -1,5 +1,10 @@
 'use strict';
 
+/**
+ * Abide module.
+ * @module foundation.abide
+ */
+
 export default class Abide {
   /**
    * Creates a new instance of Abide.

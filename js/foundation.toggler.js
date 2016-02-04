@@ -1,11 +1,12 @@
 'use strict';
+
 /**
  * Toggler module.
  * @module foundation.toggler
  * @requires foundation.util.motion
  */
 
- export default class Toggler {
+export default class Toggler {
   /**
    * Creates a new instance of Toggler.
    * @class
@@ -23,8 +24,6 @@
 
     Foundation.registerPlugin(this, 'Toggler');
   }
-
-  
 
   /**
    * Initializes the Toggler plugin by parsing the toggle class from data-toggler, or animation classes from data-animate.

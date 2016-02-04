@@ -1,5 +1,10 @@
 'use strict';
 
+/**
+ * Equalizer module.
+ * @module foundation.equalizer
+ */
+
 export default class Equalizer {
   /**
    * Creates a new instance of Equalizer.
