@@ -178,7 +178,7 @@
           if (e.namespace !== 'fndtn.reveal') return;
         });
 
-        modal.on('open.fndtn.reveal').trigger('open.fndtn.reveal');
+        modal.on('open.fndtn.reveal', false).trigger('open.fndtn.reveal');
 
         if (open_modal.length < 1) {
           this.toggle_bg(modal, true);
