@@ -10,18 +10,22 @@ const MutationObserver = (function () {
   return false;
 }());
 
+const triggers = (el, type) => {
+  el.data(type).split(' ').forEach(id => {
+    $(`#${id}`)[ type === 'close' ? 'trigger' : 'triggerHandler'](`${type}.zf.trigger`, [el]);
+  });
+};
 // Elements with [data-open] will reveal a plugin that supports it when clicked.
 $(document).on('click.zf.trigger', '[data-open]', function() {
-  var id = $(this).data('open');
-  $('#' + id).triggerHandler('open.zf.trigger', [$(this)]);
+  triggers($(this), 'open');
 });
 
 // Elements with [data-close] will close a plugin that supports it when clicked.
 // If used without a value on [data-close], the event will bubble, allowing it to close a parent component.
 $(document).on('click.zf.trigger', '[data-close]', function() {
-  var id = $(this).data('close');
+  let id = $(this).data('close');
   if (id) {
-    $('#' + id).triggerHandler('close.zf.trigger', [$(this)]);
+    triggers($(this), 'close');
   }
   else {
     $(this).trigger('close.zf.trigger');
@@ -30,14 +34,13 @@ $(document).on('click.zf.trigger', '[data-close]', function() {
 
 // Elements with [data-toggle] will toggle a plugin that supports it when clicked.
 $(document).on('click.zf.trigger', '[data-toggle]', function() {
-  var id = $(this).data('toggle');
-  $('#' + id).triggerHandler('toggle.zf.trigger', [$(this)]);
+  triggers($(this), 'toggle');
 });
 
 // Elements with [data-closable] will respond to close.zf.trigger events.
 $(document).on('close.zf.trigger', '[data-closable]', function(e){
   e.stopPropagation();
-  var animation = $(this).data('closable');
+  let animation = $(this).data('closable');
 
   if(animation !== ''){
     Foundation.Motion.animateOut($(this), animation, function() {
@@ -49,8 +52,8 @@ $(document).on('close.zf.trigger', '[data-closable]', function(e){
 });
 
 $(document).on('focus.zf.trigger blur.zf.trigger', '[data-toggle-focus]', function() {
-  var id = $(this).data('toggle-focus');
-  $('#' + id).triggerHandler('toggle.zf.trigger', [$(this)]);
+  let id = $(this).data('toggle-focus');
+  $(`#${id}`).triggerHandler('toggle.zf.trigger', [$(this)]);
 });
 
 /**
@@ -84,16 +87,16 @@ function closemeListener(pluginName) {
     }
   }
   if(yetiBoxes.length){
-    var listeners = plugNames.map(function(name){
-      return 'closeme.zf.' + name;
+    let listeners = plugNames.map((name) => {
+      return `closeme.zf.${name}`;
     }).join(' ');
 
     $(window).off(listeners).on(listeners, function(e, pluginId){
-      var plugin = e.namespace.split('.')[0];
-      var plugins = $(`[data-${plugin}]`).not(`[data-yeti-box="${pluginId}"]`);
+      let plugin = e.namespace.split('.')[0];
+      let plugins = $(`[data-${plugin}]`).not(`[data-yeti-box="${pluginId}"]`);
 
       plugins.each(function(){
-        var _this = $(this);
+        let _this = $(this);
 
         _this.triggerHandler('close.zf.trigger', [_this]);
       });
@@ -102,7 +105,7 @@ function closemeListener(pluginName) {
 }
 
 function resizeListener(debounce){
-  var timer,
+  let timer,
       $nodes = $('[data-resize]');
   if($nodes.length){
     $(window).off('resize.zf.trigger')
@@ -124,7 +127,7 @@ function resizeListener(debounce){
 }
 
 function scrollListener(debounce){
-  var timer,
+  let timer,
       $nodes = $('[data-scroll]');
   if($nodes.length){
     $(window).off('scroll.zf.trigger')
@@ -147,7 +150,7 @@ function scrollListener(debounce){
 
 function eventsListener() {
   if(!MutationObserver){ return false; }
-  var nodes = document.querySelectorAll('[data-resize], [data-scroll], [data-mutate]');
+  let nodes = document.querySelectorAll('[data-resize], [data-scroll], [data-mutate]');
 
   //element callback
   var listeningElementsMutation = function(mutationRecordsList) {
@@ -182,7 +185,7 @@ function eventsListener() {
   if(nodes.length){
     //for each element that needs to listen for resizing, scrolling, (or coming soon mutation) add a single observer
     for (var i = 0; i <= nodes.length-1; i++) {
-      var elementObserver = new MutationObserver(listeningElementsMutation);
+      let elementObserver = new MutationObserver(listeningElementsMutation);
       elementObserver.observe(nodes[i], { attributes: true, childList: false, characterData: false, subtree:false, attributeFilter:["data-events"]});
     }
   }

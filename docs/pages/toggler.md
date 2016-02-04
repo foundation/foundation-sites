@@ -89,3 +89,26 @@ The `data-toggle` attribute only toggles classes/visibility on click. You can al
   <p>This is only visible when the above field has focus.</p>
 </div>
 ```
+
+---
+
+## Multiple Targets
+
+The `data-toggle`, `data-close`, and `data-open` attributes can now target multiple elements! The syntax is simple; just pass a *space* separated list to the `data-x` attribute like so:
+```html
+<button class="button" data-toggle="foo bar baz">Toggle things</button>
+```
+Then the elements with ids of `foo`, `bar`, and `baz` will be toggled any time your button, (or any other element you choose), is clicked.
+
+<button class="button primary" data-toggle="thumb1 thumb2 thumb3">Toggle All These</button>
+<div class="row">
+  <div class="small-4 columns">
+    <img class="thumbnail" id="thumb1" data-toggler data-animate="hinge-in-from-top spin-out" src="assets/img/thumbnail/01.jpg" alt="Photo of Uranus.">
+  </div>
+  <div class="small-4 columns">
+    <img class="thumbnail" id="thumb2" data-toggler data-animate="hinge-in-from-top spin-out" src="assets/img/thumbnail/02.jpg" alt="Photo of Uranus.">
+  </div>
+  <div class="small-4 columns">
+    <img class="thumbnail" id="thumb3" data-toggler data-animate="hinge-in-from-top spin-out" src="assets/img/thumbnail/03.jpg" alt="Photo of Uranus.">
+  </div>
+</div>
