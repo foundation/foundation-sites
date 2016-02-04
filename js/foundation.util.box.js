@@ -38,13 +38,35 @@
    * Uses native methods to return an object of dimension values.
    * @function
    * @param {jQuery || HTML} element - jQuery object or DOM element for which to get the dimensions. Can be any element other that document or window.
+   * @param {Boolean} element - If true, get dimensions on an hidden element.
    * @returns {Object} - nested object of integer pixel values
    * TODO - if element is window, return only those values.
    */
-  var GetDimensions = function(elem, test){
+  var GetDimensions = function(elem, checkHidden){
+
     elem = elem.length ? elem[0] : elem;
 
     if(elem === window || elem === document){ throw new Error("I'm sorry, Dave. I'm afraid I can't do that."); }
+
+    if (checkHidden) {
+      var savedStyles = [],
+          visibleStyle = 'visibility: hidden !important; display: block !important; ',
+          hiddenParents = [],
+          parseElem = elem;
+      // Get all hidden parents and make them visible and store original style
+      do {
+        if ( !(parseElem.offsetWidth > 0 || parseElem.offsetHeight > 0 || parseElem.getClientRects().length > 0)) {
+          var computedStyle = window.getComputedStyle(parseElem);
+          if (computedStyle.getPropertyValue('display') === 'none') {
+            var thisStyle = parseElem.style.cssText;
+            savedStyles.push(thisStyle);
+            parseElem.style.cssText = thisStyle ? thisStyle + ';' + visibleStyle : visibleStyle;
+            hiddenParents.push(parseElem);
+          }
+        }
+        parseElem = parseElem.parentNode;
+      } while (parseElem && parseElem !== document.body);
+    }
 
     var rect = elem.getBoundingClientRect(),
         parRect = elem.parentNode.getBoundingClientRect(),
@@ -52,7 +74,7 @@
         winY = window.pageYOffset,
         winX = window.pageXOffset;
 
-    return {
+    var dimensions = {
       width: rect.width,
       height: rect.height,
       offset: {
@@ -76,6 +98,20 @@
         }
       }
     };
+
+    if (checkHidden) {
+      // Restore all hidden parents to their original style
+      for (var i = 0; i < hiddenParents.length; i++) {
+        var style = savedStyles[i];
+        if (typeof style == "string" && style !=='') {
+          hiddenParents[i].style.cssText = style;
+        } else {
+          hiddenParents[i].removeAttribute("style");
+        }
+      }
+    }
+
+    return dimensions;
   };
   /**
    * Returns an object of top and left integer pixel values for dynamically rendered elements,
@@ -93,7 +129,7 @@
     var $eleDims = GetDimensions(element),
     // var $eleDims = GetDimensions(element),
         $anchorDims = anchor ? GetDimensions(anchor) : null;
-        // $anchorDims = anchor ? GetDimensions(anchor) : null;
+    // $anchorDims = anchor ? GetDimensions(anchor) : null;
     switch(position){
       case 'top':
         return {

@@ -281,6 +281,8 @@ $drilldown-transition: transform 0.15s linear;
 $drilldown-arrows: true;
 $drilldown-arrow-color: $primary-color;
 $drilldown-background: $white;
+$drilldown-auto-width: false;
+$drilldown-auto-width-breakpoint: small only;
 
 // 16. Dropdown
 // ------------
