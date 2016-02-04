@@ -14,6 +14,10 @@ $topbar-padding: 0.5rem !default;
 /// @type Color
 $topbar-background: $light-gray !default;
 
+/// Background color submenus within the top bar. Usefull if $topbar-background is transparent.
+/// @type Color
+$topbar-background-submenu: $topbar-background !default;
+
 /// Spacing for the top bar title.
 /// @type Number
 $topbar-title-spacing: 1rem !default;
@@ -30,6 +34,15 @@ $topbar-input-width: 200px !default;
   &,
   ul {
     background-color: $topbar-background;
+  }
+
+  // check if $topbar-background is differnt from $topbar-background-submenu
+  @if ($topbar-background != $topbar-background-submenu) {
+    ul {
+      ul {
+        background-color: $topbar-background-submenu;
+      }
+    }
   }
 
   input {
