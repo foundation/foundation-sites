@@ -130,6 +130,20 @@ Add a new menu inside the `<li>` of a Menu and add the class `.nested` to create
 
 ---
 
+## Active State
+
+Add the class `.is-active` to any `<li>` to create an active state. You could apply this server-side to mark the active page, or dynamically with JavaScript.
+
+```html_example
+<ul class="menu">
+  <li class="is-active"><a>Home</a></li>
+  <li><a>About</a></li>
+  <li><a>Nachos</a></li>
+</ul>
+```
+
+---
+
 ## Icons
 
 Menu items can have icons. Wrap the text of the item in a `<span>`, and then add an `<img>` element before the `<span>`. If you're using the Foundation icon font, the `<img>` will be an `<i>` instead.

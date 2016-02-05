@@ -18,6 +18,14 @@ $menu-margin-nested: 1rem !default;
 /// @type Number
 $menu-item-padding: 0.7rem 1rem !default;
 
+/// Text color of an active menu item.
+/// @type Color
+$menu-item-color-active: $white !default;
+
+/// Background color of an active menu item.
+/// @type Color
+$menu-item-background-active: map-get($foundation-palette, primary) !default;
+
 /// Spacing between an icon and text in a menu item.
 /// @type Number
 $menu-icon-spacing: 0.25rem !default;
@@ -249,6 +257,12 @@ $menu-icon-spacing: 0.25rem !default;
     // Nesting
     &.nested {
       @include menu-nested;
+    }
+
+    // Active state
+    .is-active > a {
+      color: $menu-item-color-active;
+      background: $menu-item-background-active;
     }
   }
 
