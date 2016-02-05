@@ -126,7 +126,7 @@
     this.template = this.options.template ? $(this.options.template) : this._buildTemplate(elemId);
 
     this.template.appendTo(document.body)
-        .text(this.options.tipText)
+        .html(this.options.tipText)
         .hide();
 
     this.$element.attr({
