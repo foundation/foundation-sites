@@ -126,8 +126,14 @@
   Reveal.prototype._init = function(){
     this.id = this.$element.attr('id');
     this.isActive = false;
+    this.cached = {mq: Foundation.MediaQuery.current};
+    this.isiOS = iPhoneSniff();
+    console.log(this.isiOS);
+
+    if(this.isiOS){ this.$element.addClass('is-ios'); }
 
     this.$anchor = $('[data-open="' + this.id + '"]').length ? $('[data-open="' + this.id + '"]') : $('[data-toggle="' + this.id + '"]');
+
 
     if(this.$anchor.length){
       var anchorId = this.$anchor[0].id || Foundation.GetYoDigits(6, 'reveal');
@@ -141,7 +147,7 @@
       this.$element.attr({'aria-labelledby': anchorId});
     }
 
-    // this.options.fullScreen = this.$element.hasClass('full');
+
     if(this.options.fullScreen || this.$element.hasClass('full')){
       this.options.fullScreen = true;
       this.options.overlay = false;
@@ -192,8 +198,9 @@
       'close.zf.trigger': this.close.bind(this),
       'toggle.zf.trigger': this.toggle.bind(this),
       'resizeme.zf.trigger': function(){
-        if(_this.$element.is(':visible')){
-          _this._setPosition(function(){});
+        _this.updateVals = true;
+        if(_this.isActive){
+          _this._setPosition();
         }
       }
     });
@@ -207,7 +214,6 @@
         }
       });
     }
-
 
     if(this.options.closeOnClick && this.options.overlay){
       this.$overlay.off('.zf.reveal').on('click.zf.reveal', this.close.bind(this));
@@ -224,45 +230,43 @@
     if(window.location.hash === ( '#' + this.id) && !this.isActive){ this.open(); }
     else{ this.close(); }
   };
+  Reveal.prototype._cacheValues = function(){
+    if(this.cached.mq !== Foundation.MediaQuery.current || this.$offsetParent === undefined){
+      this.$offsetParent = this.$element.offsetParent();
+      this.cached.mq = Foundation.MediaQuery.current;
+    }
+
+    this.cached.parentOffset = this.$offsetParent.offset();
+    this.cached.modalDims = this.$element[0].getBoundingClientRect();
+    this.cached.winWidth = window.innerWidth;
+    this.cached.vertOffset = window.innerHeight > this.cached.modalDims.height ? this.options.vOffset : 0;
+
+    this.updateVals = false;
+    return;
+  };
+
   /**
    * Sets the position of the modal before opening
    * @param {Function} cb - a callback function to execute when positioning is complete.
    * @private
    */
   Reveal.prototype._setPosition = function(cb){
-    var eleDims = Foundation.Box.GetDimensions(this.$element);
-    var elePos = this.options.fullScreen ? 'reveal full' : (eleDims.height >= (0.5 * eleDims.windowDims.height)) ? 'reveal' : 'center';
+    if(!this.cached.winWidth || this.updateVals){ this._cacheValues(); }
 
-    if(elePos === 'reveal full'){
-      //set to full height/width
-      this.$element
-          .offset(Foundation.Box.GetOffsets(this.$element, null, elePos, this.options.vOffset))
-          .css({
-            'height': eleDims.windowDims.height,
-            'width': eleDims.windowDims.width
-          });
-    }else if(!Foundation.MediaQuery.atLeast('medium') || !Foundation.Box.ImNotTouchingYou(this.$element, null, true, false)){
-      //if smaller than medium, resize to 100% width minus any custom L/R margin
-      this.$element
-          .css({
-            'width': eleDims.windowDims.width - (this.options.hOffset * 2)
-          })
-          .offset(Foundation.Box.GetOffsets(this.$element, null, 'center', this.options.vOffset, this.options.hOffset));
-      //flag a boolean so we can reset the size after the element is closed.
-      this.changedSize = true;
-    }else{
-      this.$element
-          .css({
-            'max-height': eleDims.windowDims.height - (this.options.vOffset * (this.options.btmOffsetPct / 100 + 1)),
-            'width': ''
-          })
-          .offset(Foundation.Box.GetOffsets(this.$element, null, elePos, this.options.vOffset));
-          //the max height based on a percentage of vertical offset plus vertical offset
-    }
+    var x = Math.round((this.cached.winWidth - this.cached.modalDims.width) / 2 - (this.cached.parentOffset.left > 0 ? this.cached.parentOffset.left : 0)),
+        y = Math.round(window.pageYOffset - (this.cached.parentOffset.top > 0 ? this.cached.parentOffset.top : 0) + this.cached.vertOffset);
 
-    cb();
+    this.$element.css(this._applyCss(x, y));
+
+    if(cb) cb();
   };
-
+  Reveal.prototype._applyCss = (function(x, y){
+    var _this = this;
+    return (_this.options.animationIn ?
+      {top: y + 'px', left: x + 'px'}
+      : {transform: 'translate(' + x + 'px, ' + y + 'px)'}
+      );
+  });
   /**
    * Opens the modal controlled by `this.$anchor`, and closes all others by default.
    * @function
@@ -332,9 +336,14 @@
      * @event Reveal#open
      */
                  .trigger('open.zf.reveal');
+    if(this.isiOS){
+      var scrollPos = window.pageYOffset;
+      $('html, body').addClass('is-reveal-open').scrollTop(scrollPos);
+    }else{
+      $('body').addClass('is-reveal-open');
+    }
 
-    $('body').addClass('is-reveal-open')
-             .attr({'aria-hidden': (this.options.overlay || this.options.fullScreen) ? true : false});
+    $('body').attr({'aria-hidden': (this.options.overlay || this.options.fullScreen) ? true : false});
     setTimeout(function(){
       _this._extraHandlers();
     }, 0);
@@ -439,15 +448,15 @@
       $('body').off('click.zf.reveal');
     }
     this.$element.off('keydown.zf.reveal');
+
     function finishUp(){
-      //if the modal changed size, reset it
-      if(_this.changedSize){
-        _this.$element.css({
-          'height': '',
-          'width': ''
-        });
+      if(_this.isiOS){
+        $('html, body').removeClass('is-reveal-open');
+      }else{
+        $('body').removeClass('is-reveal-open');
       }
-      $('body').removeClass('is-reveal-open').attr({'aria-hidden': false, 'tabindex': ''});
+
+      $('body').attr({'aria-hidden': false, 'tabindex': ''});
       _this.$element.attr({'aria-hidden': true})
       /**
       * Fires when the modal is done closing.
@@ -501,7 +510,11 @@
     Foundation.unregisterPlugin(this);
   };
 
-  // Foundation.plugin(Reveal, 'Reveal');
+  Foundation.plugin(Reveal, 'Reveal');
+
+  function iPhoneSniff(){
+    return /iP(ad|hone|od).*OS/.test(window.navigator.userAgent);
+  }
 
   // Exports for AMD/Browserify
   if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')
