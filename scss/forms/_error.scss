@@ -37,11 +37,13 @@ $input-error-font-weight: $global-weight-bold !default;
 /// Styles the background and border of an input field to have an error state.
 ///
 /// @param {Color} $background [$alert-color] - Color to use for the background and border.
+/// @param {Number} $background-alpha [0.1] - Transparency level of the background color.
 @mixin form-input-error(
-  $background: $input-background-invalid
+  $background: $input-background-invalid,
+  $background-alpha: 0.1
 ) {
   &:not(:focus) {
-    background-color: rgba($background, 0.1);
+    background-color: rgba($background, $background-alpha);
     border-color: $background;
   }
 }
