@@ -274,7 +274,7 @@
                  .css(css)
                  /**
                   * Fires when the $element has become `position: fixed;`
-                  * Namespaced to `top` or `bottom`.
+                  * Namespaced to `top` or `bottom`, e.g. `sticky.zf.stuckto:top`
                   * @event Sticky#stuckto
                   */
                  .trigger('sticky.zf.stuckto:' + stickTo);
@@ -314,7 +314,7 @@
                  .css(css)
                  /**
                   * Fires when the $element has become anchored.
-                  * Namespaced to `top` or `bottom`.
+                  * Namespaced to `top` or `bottom`, e.g. `sticky.zf.unstuckfrom:bottom`
                   * @event Sticky#unstuckfrom
                   */
                  .trigger('sticky.zf.unstuckfrom:' + topOrBottom);

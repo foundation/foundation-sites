@@ -37,7 +37,7 @@ To create the dropdown trigger, add `data-toggle` to a `<button>`. The value of 
 
 
 <button class="button" type="button" data-toggle="example-dropdown-1">Hoverable Dropdown</button>
-<div class="dropdown-pane" id="example-dropdown-1" data-dropdown data-hover="true">
+<div class="dropdown-pane" id="example-dropdown-1" data-dropdown data-hover="true" data-hover-pane="true">
   Just some junk that needs to be said. Or not. Your choice.
 </div>
 ```

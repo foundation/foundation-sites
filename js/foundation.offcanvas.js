@@ -48,6 +48,8 @@ OffCanvas.defaults = {
   position: 'left',
   /**
    * Force the page to scroll to top on open.
+   * @option
+   * @example true
    */
   forceTop: true,
   /**
@@ -62,7 +64,7 @@ OffCanvas.defaults = {
    */
   isRevealed: false,
   /**
-   * Breakpoint at which to reveal. JS will use a RegExp to target standard classes, if changing classnames, pass your class @`revealClass`.
+   * Breakpoint at which to reveal. JS will use a RegExp to target standard classes, if changing classnames, pass your class with the `revealClass` option.
    * @option
    * @example reveal-for-large
    */
@@ -206,9 +208,12 @@ OffCanvas.prototype.reveal = function(isRevealed){
  */
 OffCanvas.prototype.open = function(event, trigger) {
   if (this.$element.hasClass('is-open') || this.isRevealed){ return; }
-  var _this = this,
-      $body = $(document.body);
-  $('body').scrollTop(0);
+
+  var _this = this;
+
+  if(this.options.forceTop){
+    $('body').scrollTop(0);
+  }
   // window.pageYOffset = 0;
 
   // if(!this.options.forceTop){
@@ -222,16 +227,16 @@ OffCanvas.prototype.open = function(event, trigger) {
    * Fires when the off-canvas menu opens.
    * @event OffCanvas#opened
    */
-  Foundation.Move(this.options.transitionTime, this.$element, function(){
+  // Foundation.Move(this.options.transitionTime, this.$element, function(){
     $('[data-off-canvas-wrapper]').addClass('is-off-canvas-open is-open-'+ _this.options.position);
 
     _this.$element
-      .addClass('is-open')
+      .addClass('is-open');
 
     // if(_this.options.isSticky){
     //   _this._stick();
     // }
-  });
+  // });
   this.$element.attr('aria-hidden', 'false')
       .trigger('opened.zf.offcanvas');
 
@@ -242,7 +247,8 @@ OffCanvas.prototype.open = function(event, trigger) {
     this.$lastTrigger = trigger.attr('aria-expanded', 'true');
   }
   if(this.options.autoFocus){
-    this.$element.one('finished.zf.animate', function(){
+    $(window).one(Foundation.transitionend(this.$element), function(){
+    // this.$element.one('finished.zf.animate', function(){ // For rAF, disabled in favor of CSS hardware accel.
       _this.$element.find('a, button').eq(0).focus();
     });
   }

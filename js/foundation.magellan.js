@@ -135,8 +135,7 @@
   };
   /**
    * Function to scroll to a given location on the page.
-   * @param {String} loc - a properly formatted jQuery id selector.
-   * @example '#foo'
+   * @param {String} loc - a properly formatted jQuery id selector. Example: '#foo'
    * @function
    */
   Magellan.prototype.scrollToLoc = function(loc){

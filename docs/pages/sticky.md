@@ -10,8 +10,17 @@ Add the `.sticky` class and `[data-sticky]` to an element to create something th
 
 ```html
 <div class="columns small-6 right" data-sticky-container>
-  <div class="sticky" data-sticky>
+  <div class="sticky" data-sticky data-margin-top="0">
     <img class="thumbnail" src="assets/img/rectangle-3.jpg">
+    <!-- This sticky element would stick to the window, with a marginTop of 0 -->
+  </div>
+</div>
+
+
+<div class="columns small-6 right" data-sticky-container>
+  <div class="sticky" data-sticky data-anchor="#foo">
+    <img class="thumbnail" src="assets/img/rectangle-3.jpg">
+    <!-- This sticky element would stick to the window for the height of the element #foo, with a 1em marginTop -->
   </div>
 </div>
 ```
@@ -85,8 +94,17 @@ Sometimes you want a sticky nav bar or side nav, this is pretty simple, but does
 ```html
 <div data-sticky-container>
   <div class="title-bar" data-sticky data-options="marginTop:0;" style="width:100%">
-    <div class="title-bar-left"></div>
-    <div class="title-bar-right"></div>
+    <div class="title-bar-left"><!-- Content --></div>
+    <div class="title-bar-right"><!-- Content --></div>
+  </div>
+</div>
+```
+With the minimum markup above, your nav bar will be sticky for the entire page. You could change this up by using anchor points, so it sticks and breaks at important markers on the page. A top anchor point of '1' will make it stick at the top of the page, a bottom anchor of `content:bottom` will make it break at the bottom of your `#content` element. This is useful if you want a sticky nav element, but not for the full length of the page.
+```html
+<div data-sticky-container>
+  <div class="title-bar" data-sticky data-options="marginTop:0;" style="width:100%" data-top-anchor="1" data-btm-anchor="content:bottom">
+    <div class="title-bar-left"><!-- Content --></div>
+    <div class="title-bar-right"><!-- Content --></div>
   </div>
 </div>
 ```
