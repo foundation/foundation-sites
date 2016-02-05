@@ -103,12 +103,13 @@ $menu-expand-max: 6 !default;
 @mixin menu-icons($position: side, $base: true) {
   @if $base {
     > li > a {
-      > img,
-      > i {
+      img,
+      i {
         vertical-align: middle;
       }
 
-      > span {
+      i + span,
+      img + span {
         vertical-align: middle;
       }
     }
@@ -116,8 +117,8 @@ $menu-expand-max: 6 !default;
 
   @if $position == side {
     > li > a {
-      > img,
-      > i {
+      img,
+      i {
         display: inline-block;
         margin-#{$global-right}: $menu-icon-spacing;
       }
@@ -127,8 +128,8 @@ $menu-expand-max: 6 !default;
     > li > a {
       text-align: center;
 
-      > img,
-      > i {
+      img,
+      i {
         display: block;
         margin: 0 auto $menu-icon-spacing;
       }
