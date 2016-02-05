@@ -128,7 +128,6 @@
     this.isActive = false;
     this.cached = {mq: Foundation.MediaQuery.current};
     this.isiOS = iPhoneSniff();
-    console.log(this.isiOS);
 
     if(this.isiOS){ this.$element.addClass('is-ios'); }
 
