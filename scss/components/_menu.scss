@@ -22,10 +22,6 @@ $menu-item-padding: 0.7rem 1rem !default;
 /// @type Number
 $menu-icon-spacing: 0.25rem !default;
 
-/// Maximum number of `expand-n` classes to include in the CSS.
-/// @type Number
-$menu-expand-max: 6 !default;
-
 /// Creates the base styles for a Menu.
 @mixin menu-base {
   margin: $menu-margin;
