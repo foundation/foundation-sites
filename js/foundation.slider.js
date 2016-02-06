@@ -9,7 +9,7 @@
  * @requires foundation.util.touch
  */
 
-export default class Slider {  
+export default class Slider {
   /**
    * Creates a new instance of a drilldown menu.
    * @class
@@ -139,11 +139,11 @@ export default class Slider {
         //number of actual pixels to shift the handle, based on the percentage obtained above
         pxToMove = (elemDim - handleDim) * pctOfBar,
         //percentage of bar to shift the handle
-        movement = (percent(pxToMove, elemDim) * 100).toFixed(this.options.decimal),
+        movement = (percent(pxToMove, elemDim) * 100).toFixed(this.options.decimal);
         //fixing the decimal value for the location number, is passed to other methods as a fixed floating-point value
-        location = parseFloat(location.toFixed(this.options.decimal)),
+        location = parseFloat(location.toFixed(this.options.decimal));
         // declare empty object for css adjustments, only used with 2 handled-sliders
-        css = {};
+    var css = {};
 
     this._setValues($hndl, location);
 
@@ -264,14 +264,12 @@ export default class Slider {
           barXY = barOffset > 0 ? -halfOfHandle : (barOffset - halfOfHandle) < -barDim ? barDim : Math.abs(barOffset),
           offsetPct = percent(barXY, barDim);
       value = (this.options.end - this.options.start) * offsetPct;
-// FIX ME WEE WOO WEE WOO
-// <<<<<<< HEAD
-      value = _this._adjustValue(null, value);
-// =======
+
       // turn everything around for RTL, yay math!
       if (Foundation.rtl() && !this.options.vertical) {value = this.options.end - value;}
+
+      value = _this._adjustValue(null, value);
       //boolean flag for the setHandlePos fn, specifically for vertical sliders
-// >>>>>>> develop
       hasVal = false;
 
       if (!$handle) {//figure out which handle it is, pass it to the next function.
@@ -334,28 +332,19 @@ export default class Slider {
         _this._handleEvent(e, _this.handles.eq(idx), $(this).val());
       });
 
-    if (this.options.clickSelect) {
-      this.$element.off('click.zf.slider').on('click.zf.slider', function(e) {
-        if (_this.$element.data('dragging')) { return false; }
-// <<<<<<< HEAD
-        _this.animComplete = false;
+      if (this.options.clickSelect) {
+        this.$element.off('click.zf.slider').on('click.zf.slider', function(e) {
+          if (_this.$element.data('dragging')) { return false; }
 
-        if (!$(e.target).is('[data-slider-handle]')) {
-          if (_this.options.doubleSided) {
-            _this._handleEvent(e);
-          } else {
-            _this._handleEvent(e, _this.$handle);
+          if (!$(e.target).is('[data-slider-handle]')) {
+            if (_this.options.doubleSided) {
+              _this._handleEvent(e);
+            } else {
+              _this._handleEvent(e, _this.$handle);
+            }
           }
-// =======
-
-        if (_this.options.doubleSided) {
-          _this._handleEvent(e);
-        } else {
-          _this._handleEvent(e, _this.$handle);
-// >>>>>>> develop
-        }
-      }});
-    }
+        });
+      }
 
     if (this.options.draggable) {
       this.handles.addTouch();
@@ -386,7 +375,7 @@ export default class Slider {
           });
       });
     }
-    
+
     $handle.off('keydown.zf.slider').on('keydown.zf.slider', function(e) {
       var _$handle = $(this),
           idx = _this.options.doubleSided ? _this.handles.index(_$handle) : 0,
