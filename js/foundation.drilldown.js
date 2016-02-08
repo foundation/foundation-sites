@@ -53,7 +53,19 @@
      * @option
      * @example false
      */
-    closeOnClick: false
+    closeOnClick: false,
+    /**
+     * Will copy parent links into submenu for navigation if they have a href
+     * @option
+     * @example false
+     */
+    showParentLink: false,
+    /**
+     * Markup used for JS generated parent button. Prepended to submenu lists and deleted on `destroy` method, 'js-drilldown-parent' class required.
+     * @option
+     * @example '&lt;li class="js-drilldown-parent"&gt;&lt;/li&gt;'
+     */
+    parentButton: '<li class="js-drilldown-parent"></li>'
     // holdOpen: false
   };
   /**
@@ -96,13 +108,26 @@
     this.$submenus.each(function(){
       var $menu = $(this),
           $back = $menu.find('.js-drilldown-back');
+
+      if (_this.options.showParentLink) {
+        var $parent = $menu.find('.js-drilldown-parent');
+        if (!$parent.length) {
+          var $item = $menu.closest('li'), $link = $item.find('a:first');
+          if ($link.data('savedHref') !== '') {
+            $menu.prepend(_this.options.parentButton);
+            $menu.find('.js-drilldown-parent').append($item.html()).find('a:first').attr('href', $link.data('savedHref'));
+          }
+        }
+      }
+
       if(!$back.length){
         $menu.prepend(_this.options.backButton);
       }
       _this._back($menu);
     });
     if(!this.$element.parent().hasClass('is-drilldown')){
-      this.$wrapper = $(this.options.wrapper).addClass('is-drilldown').css(this._getMaxDims());
+      this.dimensions = this._getMaxDims();
+      this.$wrapper = $(this.options.wrapper).addClass('is-drilldown').css(this.dimensions);
       this.$element.wrap(this.$wrapper);
     }
 
@@ -280,22 +305,33 @@
 
   };
   /**
-   * Iterates through the nested menus to calculate the min-height, and max-width for the menu.
+   * Using Foundation.Box.GetDimensions to calculate the max-height, and width for the menu.
    * Prevents content jumping.
    * @function
    * @private
    */
   Drilldown.prototype._getMaxDims = function(){
-    var max = 0, result = {};
-    this.$submenus.add(this.$element).each(function(){
-      var numOfElems = $(this).children('li').length;
-      max = numOfElems > max ? numOfElems : max;
+    var ul = this.$element.find('ul');
+
+    this.$element.addClass('is-drilldown-prepare')
+    // We need a pseudo class to calculate the correct max height & width
+    ul.addClass('is-active');
+        var dimensions = Foundation.Box.GetDimensions(this.$element, true);
+        var height = dimensions.height;
+        var width = dimensions.width;
+
+    ul.each(function(){
+            dimensions = Foundation.Box.GetDimensions(this, true);
+      height = Math.max(dimensions.height, height);
     });
 
-    result.height = max * this.$menuItems[0].getBoundingClientRect().height + 'px';
-    result.width = this.$element[0].getBoundingClientRect().width + 'px';
+    ul.removeClass('is-active');
+    this.$element.removeClass('is-drilldown-prepare');
 
-    return result;
+    return {
+      height: height + 'px',
+      width: width + 'px'
+    };
   };
   /**
    * Destroys the Drilldown Menu
@@ -306,6 +342,7 @@
     Foundation.Nest.Burn(this.$element, 'drilldown');
     this.$element.unwrap()
                  .find('.js-drilldown-back').remove()
+                 .end().find('.js-drilldown-parent').remove()
                  .end().find('.is-active, .is-closing, .is-drilldown-submenu').removeClass('is-active is-closing is-drilldown-submenu')
                  .end().find('[data-submenu]').removeAttr('aria-hidden tabindex role')
                  .off('.zf.drilldown').end().off('zf.drilldown');
