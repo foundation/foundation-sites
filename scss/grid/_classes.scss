@@ -129,16 +129,32 @@
       }
     }
 
-    .#{$-zf-size}-#{$uncollapse} {
-      $gutter: null;
+    @if $grid-column-gutter {
+      $-zf-sizes: ($-zf-size);
+      $gutter: $grid-column-gutter;
+    } @else {
+      $-zf-sizes: ();
+      $-breakpoint-smaller-or-equal: true;
+      @each $-breakpoint-name in $breakpoint-classes {
+        @if $-breakpoint-smaller-or-equal {
+          $-zf-sizes: append($-zf-sizes, $-breakpoint-name);
+          @if $-breakpoint-name == $-zf-size {
+            $-breakpoint-smaller-or-equal: false;
+          }
+        }
+      }
+      $gutter: -zf-get-bp-val($grid-column-responsive-gutter, $-zf-size);
+    }
 
-      @if $grid-column-gutter {
-        $gutter: $grid-column-gutter;
+    $-zf-size-selector: null;
+    @each $-zf-size in $-zf-sizes {
+      $-zf-size-selector: append($-zf-size-selector, unquote('.#{$-zf-size}-#{$uncollapse}'), 'comma');
+    }
+
+    #{$-zf-size-selector} {
+      > .#{$column} {
+        @include grid-col-uncollapse($gutter);
       }
-      @else {
-        $gutter: -zf-get-bp-val($grid-column-responsive-gutter, $-zf-size);
-      }
-      > .#{$column} { @include grid-col-uncollapse($gutter); }
     }
 
     // Positioning
