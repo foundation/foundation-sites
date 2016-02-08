@@ -46,7 +46,7 @@ $input-prefix-padding: 1rem !default;
 
   %input-group-child {
     margin: 0;
-    
+
     @if not $global-flexbox {
       display: table-cell;
       vertical-align: middle;
@@ -86,7 +86,7 @@ $input-prefix-padding: 1rem !default;
   .input-group-field {
     @extend %input-group-child;
     border-radius: 0;
-    
+
     @if $global-flexbox {
       flex: 1 1 0px;
       width: auto;
@@ -116,5 +116,11 @@ $input-prefix-padding: 1rem !default;
     button {
       margin: 0;
     }
+  }
+
+  // Specificity bump needed to prevent override by buttons
+  // scss-lint:disable QualifyingSelector
+  .input-group .input-group-button {
+    display: table-cell;
   }
 }
