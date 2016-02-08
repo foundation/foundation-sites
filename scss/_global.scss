@@ -22,23 +22,23 @@ $global-lineheight: 1.5 !default;
 
 /// Primary color for interactive components like links and buttons.
 /// @type Color
-$primary-color: #2199e8 !default;
+$primary-color: #007cbd !default;
 
 /// Secondary color, used with components that support the `.secondary` class.
 /// @type Color
-$secondary-color: #777 !default;
+$secondary-color: #757575 !default;
 
 /// Color to indicate a positive status or action, used with the `.success` class.
 /// @type Color
-$success-color: #3adb76 !default;
+$success-color: #238748 !default;
 
 /// Color to indicate a caution status or action, used with the `.warning` class.
 /// @type Color
-$warning-color: #ffae00 !default;
+$warning-color: #c4540a !default;
 
 /// Color to indicate a negative status or action, used with the `.alert` class.
 /// @type Color
-$alert-color: #ec5840 !default;
+$alert-color: #cc3737 !default;
 
 /// Color used for light gray UI items.
 /// @type Color
