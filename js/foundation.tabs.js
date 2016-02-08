@@ -7,7 +7,7 @@
  * @requires foundation.util.timerAndImageLoader if tabs contain images
  */
 
-export default class Tabs {  
+export default class Tabs {
   /**
    * Creates a new instance of tabs.
    * @class
@@ -169,8 +169,8 @@ export default class Tabs {
   _handleTabChange($target) {
     var $tabLink = $target.find('[role="tab"]'),
         hash = $tabLink[0].hash,
-        $targetContent = $(hash),
-        $oldTab = this.$element.find(`.${this.options.linkClass}.is-active`)
+        $targetContent = this.$tabContent.find(hash),
+        $oldTab = this.$element.find('.' + this.options.linkClass + '.is-active')
                   .removeClass('is-active').find('[role="tab"]')
                   .attr({'aria-selected': 'false'}).attr('aria-controls');
 
@@ -307,6 +307,3 @@ function checkClass($elem){
 if (window.Foundation) {
   window.Foundation.plugin(Tabs, 'Tabs');
 }
-  
-
-

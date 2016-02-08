@@ -97,20 +97,13 @@ export default class Magellan {
 
   /**
    * Function to scroll to a given location on the page.
-   * @param {String} loc - a properly formatted jQuery id selector.
-   * @example '#foo'
+   * @param {String} loc - a properly formatted jQuery id selector. Example: '#foo'
    * @function
    */
   scrollToLoc(loc) {
-    var scrollPos = $(loc).offset().top - this.options.threshold / 2 - this.options.barOffset;
+    var scrollPos = Math.round($(loc).offset().top - this.options.threshold / 2 - this.options.barOffset);
 
-    $(document.body).stop(true).animate({
-        scrollTop: scrollPos
-      },
-      {
-        duration: this.options.animationDuration,
-        easiing: this.options.animationEasing
-     });
+    $('html, body').stop(true).animate({ scrollTop: scrollPos }, this.options.animationDuration, this.options.animationEasing);
   }
 
   /**
@@ -220,7 +213,7 @@ Magellan.defaults = {
    * @example 25
    */
   barOffset: 0
-};
+}
 
 // Window exports
 if (window.Foundation) {

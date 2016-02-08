@@ -56,7 +56,7 @@ You can further divide a top bar into a title area and content area. Use the `.t
   <div class="top-bar-title"></div>
   <div>
     <div class="top-bar-left"></div>
-    <div class="top-bar-left"></div>
+    <div class="top-bar-right"></div>
   </div>
 </div>
 ```
@@ -95,3 +95,9 @@ In the below example, we've combined the above pattern with the Responsive Toggl
   </div>
 </div>
 ```
+
+---
+
+## Sticky Navigation
+
+See the documentation for the [Sticky](sticky.html#sticky-navigation) plugin to see how to easily make a sticky nav bar.

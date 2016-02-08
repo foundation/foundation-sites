@@ -137,7 +137,7 @@ gulp.task('deploy:templates', function() {
 // The Customizer runs this function to generate files it needs
 gulp.task('deploy:custom', ['sass:foundation', 'javascript:foundation'], function() {
   gulp.src('./_build/assets/css/foundation.css')
-      .pipe(minifyCss())
+      .pipe(cssnano())
       .pipe(rename('foundation.min.css'))
       .pipe(gulp.dest('./_build/assets/css'));
 

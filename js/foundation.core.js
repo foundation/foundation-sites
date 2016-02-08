@@ -107,10 +107,12 @@ var Foundation = {
          fns = {
            'object': function(plgs){
              plgs.forEach(function(p){
+               p = hyphenate(p);
                $('[data-'+ p +']').foundation('_init');
              });
            },
            'string': function(){
+             plugins = hyphenate(plugins);
              $('[data-'+ plugins +']').foundation('_init');
            },
            'undefined': function(){

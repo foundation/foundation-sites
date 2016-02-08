@@ -512,6 +512,11 @@ Slider.defaults = {
    * @example 'disabled'
    */
   disabledClass: 'disabled',
+  /**
+   * Will invert the default layout for a vertical<span data-tooltip title="who would do this???"> </span>slider.
+   * @option
+   * @example false
+   */
   invertVertical: false
 };
 

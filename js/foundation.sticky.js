@@ -22,7 +22,7 @@ export default class Sticky {
 
     Foundation.registerPlugin(this, 'Sticky');
   }
-  
+
   /**
    * Initializes the sticky element by adding classes, getting/setting dimensions, breakpoints and attributes
    * @function
@@ -44,17 +44,18 @@ export default class Sticky {
 
     this.scrollCount = this.options.checkEvery;
     this.isStuck = false;
+    $(window).one('load.zf.sticky', function(){
+      if(_this.options.anchor !== ''){
+        _this.$anchor = $('#' + _this.options.anchor);
+      }else{
+        _this._parsePoints();
+      }
 
-    if (this.options.anchor !== '') {
-      this.$anchor = $(`#${this.options.anchor}`);
-    } else {
-      this._parsePoints();
-    }
-
-    this._setSizes(function() {
-      _this._calc(false);
+      _this._setSizes(function(){
+        _this._calc(false);
+      });
+      _this._events(id.split('-').reverse().join('-'));
     });
-    this._events(id.split('-').reverse().join('-'));
   }
 
   /**
@@ -207,7 +208,7 @@ export default class Sticky {
                  .css(css)
                  /**
                   * Fires when the $element has become `position: fixed;`
-                  * Namespaced to `top` or `bottom`.
+                  * Namespaced to `top` or `bottom`, e.g. `sticky.zf.stuckto:top`
                   * @event Sticky#stuckto
                   */
                  .trigger(`sticky.zf.stuckto:${stickTo}`);
@@ -247,7 +248,7 @@ export default class Sticky {
                  .css(css)
                  /**
                   * Fires when the $element has become anchored.
-                  * Namespaced to `top` or `bottom`.
+                  * Namespaced to `top` or `bottom`, e.g. `sticky.zf.unstuckfrom:bottom`
                   * @event Sticky#unstuckfrom
                   */
                  .trigger(`sticky.zf.unstuckfrom:${topOrBottom}`);

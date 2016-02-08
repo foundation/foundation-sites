@@ -184,7 +184,7 @@ export default class Orbit {
         });
 
         if (this.options.pauseOnHover) {
-          this.$element.on('mouseenter.zf.orbit', function() { 
+          this.$element.on('mouseenter.zf.orbit', function() {
             _this.timer.pause();
           }).on('mouseleave.zf.orbit', function() {
             if (!_this.$element.data('clickedOn')) {
@@ -327,7 +327,7 @@ export default class Orbit {
 
 Orbit.defaults = {
   /**
-  * Tells the JS to loadBullets.
+  * Tells the JS to look for and loadBullets.
   * @option
   * @example true
   */

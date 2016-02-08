@@ -9,7 +9,7 @@
  * @requires foundation.util.mediaQuery
  * @requires foundation.util.motion if using animations
  */
-  
+
 export default class Reveal {
   /**
    * Creates a new instance of Reveal.
@@ -39,6 +39,10 @@ export default class Reveal {
   _init() {
     this.id = this.$element.attr('id');
     this.isActive = false;
+    this.cached = {mq: Foundation.MediaQuery.current};
+    this.isiOS = iPhoneSniff();
+
+    if(this.isiOS){ this.$element.addClass('is-ios'); }
 
     this.$anchor = $(`[data-open="${this.id}"]`).length ? $(`[data-open="${this.id}"]`) : $(`[data-toggle="${this.id}"]`);
 
@@ -54,7 +58,6 @@ export default class Reveal {
       this.$element.attr({'aria-labelledby': anchorId});
     }
 
-    // this.options.fullScreen = this.$element.hasClass('full');
     if (this.options.fullScreen || this.$element.hasClass('full')) {
       this.options.fullScreen = true;
       this.options.overlay = false;
@@ -105,8 +108,9 @@ export default class Reveal {
       'close.zf.trigger': this.close.bind(this),
       'toggle.zf.trigger': this.toggle.bind(this),
       'resizeme.zf.trigger': function() {
-        if (_this.$element.is(':visible')) {
-          _this._setPosition(function() {});
+        _this.updateVals = true;
+        if (_this.isActive) {
+          _this._setPosition();
         }
       }
     });
@@ -121,7 +125,6 @@ export default class Reveal {
       });
     }
 
-
     if (this.options.closeOnClick && this.options.overlay) {
       this.$overlay.off('.zf.reveal').on('click.zf.reveal', this.close.bind(this));
     }
@@ -135,8 +138,23 @@ export default class Reveal {
    * @private
    */
   _handleState(e) {
-    if (window.location.hash === ( `#${this.id}`) && !this.isActive) { this.open(); }
-    else { this.close(); }
+    if(window.location.hash === ( '#' + this.id) && !this.isActive){ this.open(); }
+    else{ this.close(); }
+  }
+
+  _cacheValues() {
+    if(this.cached.mq !== Foundation.MediaQuery.current || this.$offsetParent === undefined){
+      this.$offsetParent = this.$element.offsetParent();
+      this.cached.mq = Foundation.MediaQuery.current;
+    }
+
+    this.cached.parentOffset = this.$offsetParent.offset();
+    this.cached.modalDims = this.$element[0].getBoundingClientRect();
+    this.cached.winWidth = window.innerWidth;
+    this.cached.vertOffset = window.innerHeight > this.cached.modalDims.height ? this.options.vOffset : 0;
+
+    this.updateVals = false;
+    return;
   }
 
   /**
@@ -175,8 +193,21 @@ export default class Reveal {
           //the max height based on a percentage of vertical offset plus vertical offset
     }
 
-    cb();
-  };
+    var x = Math.round((this.cached.winWidth - this.cached.modalDims.width) / 2 - (this.cached.parentOffset.left > 0 ? this.cached.parentOffset.left : 0)),
+        y = Math.round(window.pageYOffset - (this.cached.parentOffset.top > 0 ? this.cached.parentOffset.top : 0) + this.cached.vertOffset);
+
+    this.$element.css(this._applyCss(x, y));
+
+    if(cb) cb();
+  }
+
+  _applyCss(function(x, y) {
+    var _this = this;
+    return (_this.options.animationIn ?
+      {top: y + 'px', left: x + 'px'}
+      : {transform: 'translate(' + x + 'px, ' + y + 'px)'}
+      );
+  }
 
   /**
    * Opens the modal controlled by `this.$anchor`, and closes all others by default.
@@ -246,6 +277,12 @@ export default class Reveal {
      * @event Reveal#open
      */
                  .trigger('open.zf.reveal');
+    if(this.isiOS){
+      var scrollPos = window.pageYOffset;
+      $('html, body').addClass('is-reveal-open').scrollTop(scrollPos);
+    }else{
+      $('body').addClass('is-reveal-open');
+    }
 
     $('body').addClass('is-reveal-open')
              .attr({'aria-hidden': (this.options.overlay || this.options.fullScreen) ? true : false});
@@ -355,15 +392,15 @@ export default class Reveal {
     }
 
     this.$element.off('keydown.zf.reveal');
-    function finishUp() {
-      //if the modal changed size, reset it
-      if (_this.changedSize) {
-        _this.$element.css({
-          'height': '',
-          'width': ''
-        });
+
+    function finishUp(){
+      if(_this.isiOS){
+        $('html, body').removeClass('is-reveal-open');
+      }else{
+        $('body').removeClass('is-reveal-open');
       }
-      $('body').removeClass('is-reveal-open').attr({'aria-hidden': false, 'tabindex': ''});
+
+      $('body').attr({'aria-hidden': false, 'tabindex': ''});
       _this.$element.attr({'aria-hidden': true})
 
       /**
@@ -372,7 +409,6 @@ export default class Reveal {
       */
       .trigger('closed.zf.reveal');
     }
-
 
     /**
     * Resets the modal content
@@ -512,10 +548,6 @@ if (window.Foundation) {
   window.Foundation.plugin(Reveal, 'Reveal');
 }
 
-// Exports for AMD/Browserify
-if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')
-  module.exports = Reveal;
-if (typeof define === 'function')
-  define(['foundation'], function() {
-    return Reveal;
-  });
+function iPhoneSniff(){
+  return /iP(ad|hone|od).*OS/.test(window.navigator.userAgent);
+}

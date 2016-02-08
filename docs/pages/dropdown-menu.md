@@ -146,3 +146,9 @@ Add the `.vertical` class to the top-level menu to make it vertical. Sub-menus a
     </ul>
   </li>
 </ul>
+
+---
+
+## Sticky Navigation
+
+See the documentation for the [Sticky](sticky.html#sticky-navigation) plugin to see how to easily make a sticky nav bar. 

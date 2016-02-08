@@ -8,7 +8,7 @@
  * @requires foundation.util.triggers
  */
 
-export default class Dropdown {  
+export default class Dropdown {
   /**
    * Creates a new instance of a dropdown.
    * @class
@@ -30,7 +30,7 @@ export default class Dropdown {
       'SHIFT_TAB': 'tab_backward'
     });
   }
-  
+
   /**
    * Initializes the plugin by setting/checking options and attributes, adding helper variables, and saving the anchor.
    * @function
@@ -46,7 +46,7 @@ export default class Dropdown {
       'data-yeti-box': $id,
       'aria-haspopup': true,
       'aria-expanded': false
-      // 'data-resize': $id
+
     });
 
     this.options.positionClass = this.getPositionClass();
@@ -282,10 +282,7 @@ export default class Dropdown {
      * Fires once the dropdown is visible.
      * @event Dropdown#show
      */
-     this.$element.trigger('show.zf.dropdown', [this.$element]);
-    //why does this not work correctly for this plugin?
-    // Foundation.reflow(this.$element, 'dropdown');
-    // Foundation._reflow(this.$element.attr('data-dropdown'));
+    this.$element.trigger('show.zf.dropdown', [this.$element]);
   }
 
   /**
@@ -315,7 +312,6 @@ export default class Dropdown {
       this.usedPositions.length = 0;
     }
     this.$element.trigger('hide.zf.dropdown', [this.$element]);
-    // Foundation.reflow(this.$element, 'dropdown');
   }
 
   /**
@@ -398,7 +394,7 @@ Dropdown.defaults = {
    * @example false
    */
   closeOnClick: false
-};
+}
 
 // Window exports
 if (window.Foundation) {

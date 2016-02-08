@@ -149,7 +149,10 @@ export default class OffCanvas {
     if (this.$element.hasClass('is-open') || this.isRevealed) { return; }
     var _this = this,
         $body = $(document.body);
-    $('body').scrollTop(0);
+
+    if (this.options.forceTop) {
+      $('body').scrollTop(0);
+    }
     // window.pageYOffset = 0;
 
     // if (!this.options.forceTop) {
@@ -185,7 +188,7 @@ export default class OffCanvas {
     }
 
     if (this.options.autoFocus) {
-      this.$element.one('finished.zf.animate', function() {
+      this.$element.one(Foundation.transitionend(this.$element), function() {
         _this.$element.find('a, button').eq(0).focus();
       });
     }
@@ -325,45 +328,49 @@ OffCanvas.defaults = {
    * @example true
    */
   closeOnClick: true,
+
   /**
    * Amount of time in ms the open and close transition requires. If none selected, pulls from body style.
    * @option
    * @example 500
    */
   transitionTime: 0,
+
   /**
    * Direction the offcanvas opens from. Determines class applied to body.
    * @option
    * @example left
    */
   position: 'left',
+
   /**
    * Force the page to scroll to top on open.
+   * @option
+   * @example true
    */
   forceTop: true,
-  /**
-   * Allow the offcanvas to be sticky while open. Does nothing if Sass option `$maincontent-prevent-scroll === true`.
-   * Performance in Safari OSX/iOS is not great.
-   */
-  // isSticky: false,
+
   /**
    * Allow the offcanvas to remain open for certain breakpoints.
    * @option
    * @example false
    */
   isRevealed: false,
+
   /**
-   * Breakpoint at which to reveal. JS will use a RegExp to target standard classes, if changing classnames, pass your class @`revealClass`.
+   * Breakpoint at which to reveal. JS will use a RegExp to target standard classes, if changing classnames, pass your class with the `revealClass` option.
    * @option
    * @example reveal-for-large
    */
   revealOn: null,
+
   /**
    * Force focus to the offcanvas on open. If true, will focus the opening trigger on close.
    * @option
    * @example true
    */
   autoFocus: true,
+
   /**
    * Class used to force an offcanvas to remain open. Foundation defaults for this are `reveal-for-large` & `reveal-for-medium`.
    * @option
@@ -371,16 +378,16 @@ OffCanvas.defaults = {
    * @example reveal-for-large
    */
   revealClass: 'reveal-for-',
+
   /**
    * Triggers optional focus trapping when opening an offcanvas. Sets tabindex of [data-off-canvas-content] to -1 for accessibility purposes.
    * @option
    * @example true
    */
   trapFocus: false
-};
+}
 
 // Window exports
 if (window.Foundation) {
   window.Foundation.plugin(OffCanvas, 'OffCanvas');
 }
-
