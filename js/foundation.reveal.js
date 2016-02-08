@@ -201,7 +201,7 @@ export default class Reveal {
     if(cb) cb();
   }
 
-  _applyCss(function(x, y) {
+  _applyCss(x, y) {
     var _this = this;
     return (_this.options.animationIn ?
       {top: y + 'px', left: x + 'px'}
