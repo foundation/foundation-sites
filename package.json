@@ -29,6 +29,7 @@
     "babel-plugin-transform-es2015-template-literals": "^6.3.13",
     "bootcamp": "^1.1.7",
     "browser-sync": "^2.8.2",
+    "chalk": "^1.1.1",
     "clipboard": "^1.5.5",
     "corejs-typeahead": "corejavascript/typeahead.js",
     "foundation-docs": "zurb/foundation-docs",
