@@ -27,6 +27,7 @@ $topbar-title-spacing: 1rem !default;
 $topbar-input-width: 200px !default;
 
 /// Breakpoint at which top bar switches from mobile to desktop view.
+/// @type Breakpoint
 $topbar-unstack-breakpoint: medium !default;
 
 /// Adds styles for a top bar container.
