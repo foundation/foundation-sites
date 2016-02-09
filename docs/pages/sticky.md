@@ -11,7 +11,7 @@ Add the `.sticky` class and `[data-sticky]` to an element to create something th
 ```html
 <div class="columns small-6 right" data-sticky-container>
   <div class="sticky" data-sticky data-margin-top="0">
-    <img class="thumbnail" src="assets/img/rectangle-3.jpg">
+    <img class="thumbnail" src="assets/img/generic/rectangle-3.jpg">
     <!-- This sticky element would stick to the window, with a marginTop of 0 -->
   </div>
 </div>
@@ -19,7 +19,7 @@ Add the `.sticky` class and `[data-sticky]` to an element to create something th
 
 <div class="columns small-6 right" data-sticky-container>
   <div class="sticky" data-sticky data-anchor="#foo">
-    <img class="thumbnail" src="assets/img/rectangle-3.jpg">
+    <img class="thumbnail" src="assets/img/generic/rectangle-3.jpg">
     <!-- This sticky element would stick to the window for the height of the element #foo, with a 1em marginTop -->
   </div>
 </div>
@@ -44,7 +44,7 @@ Add the `.sticky` class and `[data-sticky]` to an element to create something th
     </div>
     <div class="columns small-6 right" data-sticky-container>
       <div class="sticky" data-sticky data-anchor="example1">
-        <img class="thumbnail" src="assets/img/rectangle-3.jpg">
+        <img class="thumbnail" src="assets/img/generic/rectangle-3.jpg">
       </div>
     </div>
   </div>
@@ -57,7 +57,7 @@ You can also use two anchors, if you please. Using `data-top-anchor="idOfSomethi
 ```html
 <div class="columns small-6 right" data-sticky-container>
   <div class="sticky" data-sticky data-top-anchor="example2" data-btm-anchor="foo:bottom">
-    <img class="thumbnail" src="assets/img/rectangle-5.jpg">
+    <img class="thumbnail" src="assets/img/generic/rectangle-5.jpg">
   </div>
 </div>
 ```
@@ -81,7 +81,7 @@ You can also use two anchors, if you please. Using `data-top-anchor="idOfSomethi
     </div>
     <div class="columns small-6 right" data-sticky-container>
       <div class="sticky" data-sticky data-top-anchor="example2:top" data-btm-anchor="foo" data-stick-to="bottom">
-        <img class="thumbnail" src="assets/img/rectangle-5.jpg">
+        <img class="thumbnail" src="assets/img/generic/rectangle-5.jpg">
       </div>
     </div>
   </div>
