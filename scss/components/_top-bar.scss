@@ -56,9 +56,16 @@ $topbar-unstack-breakpoint: medium !default;
     }
   }
 
+  // Restrain width of inputs by default to make them easier to arrange
   input {
     width: $topbar-input-width;
     margin-#{$global-right}: 1rem;
+  }
+
+  // The above styles shouldn't apply to input group fields
+  .input-group-field {
+    width: 100%;
+    margin-#{$global-right}: 0;
   }
 
   // scss-lint:disable QualifyingElement
