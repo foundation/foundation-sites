@@ -13,7 +13,7 @@ export default class Abide {
    * @param {Object} element - jQuery object to add the trigger to.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  constructor(element, options) {
+  constructor(element, options = {}) {
     this.$element = element;
     this.options  = $.extend({}, Abide.defaults, this.$element.data(), options);
 
@@ -26,7 +26,7 @@ export default class Abide {
    * Initializes the Abide plugin and calls functions to get Abide functioning on load.
    * @private
    */
-  _init(){
+  _init() {
     this.$inputs = this.$element.find('input, textarea, select').not('[data-abide-ignore]');
 
     this._events();
@@ -37,28 +37,28 @@ export default class Abide {
    * @private
    */
   _events() {
-    var _this = this;
-
     this.$element.off('.abide')
-        .on('reset.zf.abide', function(e){
-          _this.resetForm();
-        })
-        .on('submit.zf.abide', function(e){
-          return _this.validateForm();
-        });
+      .on('reset.zf.abide', () => {
+        this.resetForm();
+      })
+      .on('submit.zf.abide', () => {
+        return this.validateForm();
+      });
 
-    if(this.options.validateOn === 'fieldChange'){
-        this.$inputs.off('change.zf.abide')
-            .on('change.zf.abide', function(e){
-              _this.validateInput($(this));
-            });
+    if (this.options.validateOn === 'fieldChange') {
+      this.$inputs
+        .off('change.zf.abide')
+        .on('change.zf.abide', (e) => {
+          this.validateInput($(e.target));
+        });
     }
 
-    if(this.options.liveValidate){
-      this.$inputs.off('input.zf.abide')
-          .on('input.zf.abide', function(e){
-            _this.validateInput($(this));
-          });
+    if (this.options.liveValidate) {
+      this.$inputs
+        .off('input.zf.abide')
+        .on('input.zf.abide', (e) => {
+          this.validateInput($(e.target));
+        });
     }
   }
 
@@ -76,10 +76,11 @@ export default class Abide {
    * @returns {Boolean} Boolean value depends on whether or not attribute is checked or empty
    */
   requiredCheck($el) {
-    if(!$el.attr('required')) return true;
-    var isGood = true;
-    switch ($el[0].type) {
+    if (!$el.attr('required')) return true;
 
+    var isGood = true;
+
+    switch ($el[0].type) {
       case 'checkbox':
       case 'radio':
         isGood = $el[0].checked;
@@ -89,12 +90,13 @@ export default class Abide {
       case 'select-one':
       case 'select-multiple':
         var opt = $el.find('option:selected');
-        if(!opt.length || !opt.val()) isGood = false;
+        if (!opt.length || !opt.val()) isGood = false;
         break;
 
       default:
         if(!$el.val() || !$el.val().length) isGood = false;
     }
+
     return isGood;
   }
 
@@ -110,9 +112,11 @@ export default class Abide {
    */
   findFormError($el) {
     var $error = $el.siblings(this.options.formErrorSelector);
-    if(!$error.length){
+
+    if (!$error.length) {
       $error = $el.parent().find(this.options.formErrorSelector);
     }
+
     return $error;
   }
 
@@ -125,10 +129,13 @@ export default class Abide {
    * @returns {Boolean} Boolean value depends on whether or not attribute is checked or empty
    */
   findLabel($el) {
-    var $label = this.$element.find(`label[for="${$el[0].id}"]`);
-    if(!$label.length){
+    var id = $el[0].id;
+    var $label = this.$element.find(`label[for="${id}"]`);
+
+    if (!$label.length) {
       return $el.closest('label');
     }
+
     return $label;
   }
 
@@ -137,15 +144,17 @@ export default class Abide {
    * @param {Object} $el - jQuery object to add the class to
    */
   addErrorClasses($el) {
-    var $label = this.findLabel($el),
-        $formError = this.findFormError($el);
+    var $label = this.findLabel($el);
+    var $formError = this.findFormError($el);
 
-    if($label.length){
+    if ($label.length) {
       $label.addClass(this.options.labelErrorClass);
     }
-    if($formError.length){
+
+    if ($formError.length) {
       $formError.addClass(this.options.formErrorClass);
     }
+
     $el.addClass(this.options.inputErrorClass).attr('data-invalid', '');
   }
 
@@ -154,15 +163,17 @@ export default class Abide {
    * @param {Object} $el - jQuery object to remove the class from
    */
   removeErrorClasses($el) {
-    var $label = this.findLabel($el),
-        $formError = this.findFormError($el);
+    var $label = this.findLabel($el);
+    var $formError = this.findFormError($el);
 
-    if($label.length){
+    if ($label.length) {
       $label.removeClass(this.options.labelErrorClass);
     }
-    if($formError.length){
+
+    if ($formError.length) {
       $formError.removeClass(this.options.formErrorClass);
     }
+
     $el.removeClass(this.options.inputErrorClass).removeAttr('data-invalid');
   }
 
@@ -181,7 +192,6 @@ export default class Abide {
         equalTo = true;
 
     switch ($el[0].type) {
-
       case 'radio':
         validated = this.validateRadio($el.attr('name'));
         break;
@@ -200,11 +210,16 @@ export default class Abide {
         validated = this.validateText($el);
     }
 
-    if(validator){ customValidator = this.matchValidation($el, validator, $el.attr('required')); }
-    if($el.attr('data-equalto')){ equalTo = this.options.validators.equalTo($el); }
+    if (validator) {
+      customValidator = this.matchValidation($el, validator, $el.attr('required'));
+    }
 
-    var goodToGo = [clearRequire, validated, customValidator, equalTo].indexOf(false) === -1,
-        message = (goodToGo ? 'valid' : 'invalid') + '.zf.abide';
+    if ($el.attr('data-equalto')) {
+      equalTo = this.options.validators.equalTo($el);
+    }
+
+    var goodToGo = [clearRequire, validated, customValidator, equalTo].indexOf(false) === -1;
+    var message = (goodToGo ? 'valid' : 'invalid') + '.zf.abide';
 
     this[goodToGo ? 'removeErrorClasses' : 'addErrorClasses']($el);
 
@@ -226,22 +241,23 @@ export default class Abide {
    * @fires Abide#forminvalid
    */
   validateForm() {
-    var acc = [],
-        _this = this;
+    var acc = [];
+    var _this = this;
 
-    this.$inputs.each(function(){
+    this.$inputs.each(function() {
       acc.push(_this.validateInput($(this)));
     });
 
     var noError = acc.indexOf(false) === -1;
 
     this.$element.find('[data-abide-error]').css('display', (noError ? 'none' : 'block'));
-        /**
-         * Fires when the form is finished validating. Event trigger is either `formvalid.zf.abide` or `forminvalid.zf.abide`.
-         * Trigger includes the element of the form.
-         * @event Abide#formvalid
-         * @event Abide#forminvalid
-         */
+
+    /**
+     * Fires when the form is finished validating. Event trigger is either `formvalid.zf.abide` or `forminvalid.zf.abide`.
+     * Trigger includes the element of the form.
+     * @event Abide#formvalid
+     * @event Abide#forminvalid
+     */
     this.$element.trigger((noError ? 'formvalid' : 'forminvalid') + '.zf.abide', [this.$element]);
 
     return noError;
@@ -254,13 +270,17 @@ export default class Abide {
    * @returns {Boolean} Boolean value depends on whether or not the input value matches the pattern specified
    */
   validateText($el, pattern) {
-     // pattern = pattern ? pattern : $el.attr('pattern') ? $el.attr('pattern') : $el.attr('type');
-     pattern = (pattern || $el.attr('pattern') || $el.attr('type'));
-     var inputText = $el.val();
+    // pattern = pattern ? pattern : $el.attr('pattern') ? $el.attr('pattern') : $el.attr('type');
+    pattern = (pattern || $el.attr('pattern') || $el.attr('type'));
+    var inputText = $el.val();
 
-     return inputText.length ?//if text, check if the pattern exists, if so, test it, if no text or no pattern, return true.
-            this.options.patterns.hasOwnProperty(pattern) ? this.options.patterns[pattern].test(inputText) :
-            pattern && pattern !== $el.attr('type') ? new RegExp(pattern).test(inputText) : true : true;
+    // if text, check if the pattern exists, if so, test it, if no text or no pattern, return true.
+    return inputText.length ?
+      this.options.patterns.hasOwnProperty(pattern) ? this.options.patterns[pattern].test(inputText) :
+        pattern && pattern !== $el.attr('type') ?
+          new RegExp(pattern).test(inputText) :
+        true :
+      true;
    }
 
   /**
@@ -291,10 +311,10 @@ export default class Abide {
    * @returns {Boolean} - true if validations passed.
    */
   matchValidation($el, validators, required) {
-    var _this = this;
     required = required ? true : false;
-    var clear = validators.split(' ').map(function(v){
-      return _this.options.validators[v]($el, required, $el.parent());
+
+    var clear = validators.split(' ').map((v) => {
+      return this.options.validators[v]($el, required, $el.parent());
     });
     return clear.indexOf(false) === -1;
   }
@@ -325,12 +345,16 @@ export default class Abide {
    */
   destroy() {
     var _this = this;
-    this.$element.off('.abide')
-        .find('[data-abide-error]').css('display', 'none');
-    this.$inputs.off('.abide')
-        .each(function(){
-          _this.removeErrorClasses($(this));
-        });
+    this.$element
+      .off('.abide')
+      .find('[data-abide-error]')
+        .css('display', 'none');
+
+    this.$inputs
+      .off('.abide')
+      .each(function() {
+        _this.removeErrorClasses($(this));
+      });
 
     Foundation.unregisterPlugin(this);
   }
@@ -347,30 +371,35 @@ Abide.defaults = {
    * @example 'fieldChange'
    */
   validateOn: 'fieldChange',
+
   /**
    * Class to be applied to input labels on failed validation.
    * @option
    * @example 'is-invalid-label'
    */
   labelErrorClass: 'is-invalid-label',
+
   /**
    * Class to be applied to inputs on failed validation.
    * @option
    * @example 'is-invalid-input'
    */
   inputErrorClass: 'is-invalid-input',
+
   /**
    * Class selector to use to target Form Errors for show/hide.
    * @option
    * @example '.form-error'
    */
   formErrorSelector: '.form-error',
+
   /**
    * Class added to Form Errors on failed validation.
    * @option
    * @example 'is-visible'
    */
   formErrorClass: 'is-visible',
+
   /**
    * Set to true to validate text inputs on any value change.
    * @option
@@ -409,6 +438,7 @@ Abide.defaults = {
     // #FFF or #FFFFFF
     color : /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/
   },
+
   /**
    * Optional validation functions to be used. `equalTo` being the only default included function.
    * Functions should return only a boolean if the input is valid or not. Functions are given the following arguments:
@@ -422,17 +452,9 @@ Abide.defaults = {
       return $(`#${el.attr('data-equalto')}`).val() === el.val();
     }
   }
-};
+}
 
 // Window exports
 if (window.Foundation) {
   window.Foundation.plugin(Abide, 'Abide');
 }
-
-// Exports for AMD/Browserify
-if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')
-  module.exports = Abide;
-if (typeof define === 'function')
-  define(['foundation'], function() {
-    return Abide;
-  });
