@@ -1,10 +1,11 @@
+'use strict';
+
 var fs = require('fs');
 var gulp = require('gulp');
 var Parker = require('parker/lib/Parker');
 var prettyJSON = require('prettyjson');
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
-var rename = require('gulp-rename');
 var plumber = require('gulp-plumber');
 var sourcemaps = require('gulp-sourcemaps');
 var scssLint = require('gulp-scss-lint');
@@ -27,9 +28,7 @@ gulp.task('sass', ['sass:foundation', 'sass:docs']);
 // Compiles Foundation Sass
 gulp.task('sass:foundation', function() {
   return gulp.src(['assets/*'])
-    .pipe(scssLint({
-      'config': 'config/scss-lint.yml'
-    }))
+    // .pipe(scssLint())
     .pipe(sourcemaps.init())
     .pipe(plumber())
     .pipe(sass().on('error', sass.logError))
