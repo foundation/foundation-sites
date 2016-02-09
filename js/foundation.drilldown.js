@@ -78,13 +78,26 @@ export default class Drilldown {
     this.$submenus.each(function(){
       var $menu = $(this),
           $back = $menu.find('.js-drilldown-back');
+
+      if (_this.options.showParentLink) {
+        var $parent = $menu.find('.js-drilldown-parent');
+        if (!$parent.length) {
+          var $item = $menu.closest('li'), $link = $item.find('a:first');
+          if ($link.data('savedHref') !== '') {
+            $menu.prepend(_this.options.parentButton);
+            $menu.find('.js-drilldown-parent').append($item.html()).find('a:first').attr('href', $link.data('savedHref'));
+          }
+        }
+      }
+
       if(!$back.length){
         $menu.prepend(_this.options.backButton);
       }
       _this._back($menu);
     });
     if(!this.$element.parent().hasClass('is-drilldown')){
-      this.$wrapper = $(this.options.wrapper).addClass('is-drilldown').css(this._getMaxDims());
+      this.dimensions = this._getMaxDims();
+      this.$wrapper = $(this.options.wrapper).addClass('is-drilldown').css(this.dimensions);
       this.$element.wrap(this.$wrapper);
     }
   }
@@ -254,7 +267,6 @@ export default class Drilldown {
    * @param {jQuery} $elem - the current sub-menu to hide.
    */
   _hide($elem) {
-    var _this = this;
     $elem.addClass('is-closing')
          .one(Foundation.transitionend($elem), function(){
            $elem.removeClass('is-active is-closing');
@@ -273,16 +285,27 @@ export default class Drilldown {
    * @private
    */
   _getMaxDims() {
-    var max = 0, result = {};
-    this.$submenus.add(this.$element).each(function(){
-      var numOfElems = $(this).children('li').length;
-      max = numOfElems > max ? numOfElems : max;
+    var ul = this.$element.find('ul');
+
+    this.$element.addClass('is-drilldown-prepare')
+    // We need a pseudo class to calculate the correct max height & width
+    ul.addClass('is-active');
+    var dimensions = Foundation.Box.GetDimensions(this.$element, true);
+    var height = dimensions.height;
+    var width = dimensions.width;
+
+    ul.each(function(){
+      dimensions = Foundation.Box.GetDimensions(this, true);
+      height = Math.max(dimensions.height, height);
     });
 
-    result.height = `${max * this.$menuItems[0].getBoundingClientRect().height}px`;
-    result.width = `${this.$element[0].getBoundingClientRect().width}px`;
+    ul.removeClass('is-active');
+    this.$element.removeClass('is-drilldown-prepare');
 
-    return result;
+    return {
+      height: height + 'px',
+      width: width + 'px'
+    };
   }
 
   /**
@@ -309,23 +332,35 @@ export default class Drilldown {
 
 Drilldown.defaults = {
   /**
-   * Markup used for JS generated back button. Prepended to submenu lists and deleted on `destroy` method, 'js-drilldown-back' class required. Remove the backslash (`\`) if copy and pasting.
+   * Markup used for JS generated back button. Prepended to submenu lists and deleted on `destroy` method, 'js-drilldown-back' class required.
    * @option
-   * @example '<\li><\a>Back<\/a><\/li>'
+   * @example '&lt;li&gt;&lt;a&gt;Back&lt;/a&gt;&lt;/li&gt;'
    */
-  backButton: '<li class="js-drilldown-back"><a>Back</a></li>',
+  backButton : '<li class="js-drilldown-back"><a>Back</a></li>',
   /**
-   * Markup used to wrap drilldown menu. Use a class name for independent styling; the JS applied class: `is-drilldown` is required. Remove the backslash (`\`) if copy and pasting.
+   * Markup used to wrap drilldown menu. Use a class name for independent styling; the JS applied class: `is-drilldown` is required.
    * @option
-   * @example '<\div class="is-drilldown"><\/div>'
+   * @example '&lt;div class="is-drilldown"&gt;&lt;/div&gt;'
    */
-  wrapper: '<div></div>',
+  wrapper : '<div></div>',
   /**
-   * Allow the menu to return to root list on body click.
+   * Allow the menu to return to top level menu on body click.
    * @option
    * @example false
    */
-  closeOnClick: false
+  closeOnClick : false,
+  /**
+   * Will copy parent links into submenu for navigation if they have a href
+   * @option
+   * @example false
+   */
+  showParentLink : false,
+  /**
+   * Markup used for JS generated parent button. Prepended to submenu lists and deleted on `destroy` method, 'js-drilldown-parent' class required.
+   * @option
+   * @example '&lt;li class="js-drilldown-parent"&gt;&lt;/li&gt;'
+   */
+  parentButton : '<li class="js-drilldown-parent"></li>'
   // holdOpen: false
 };
 

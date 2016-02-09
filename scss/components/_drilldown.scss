@@ -22,14 +22,26 @@ $drilldown-arrow-color: $primary-color !default;
 /// @type Color
 $drilldown-background: $white !default;
 
+/// Enables auto width at breakpoint defined in $drilldown-auto-width-breakpoint
+/// @type Boolean
+$drilldown-auto-width: false !default;
+
+/// The breakpoint for activating the auto width
+/// @type String
+$drilldown-auto-width-breakpoint: small only !default;
+
 @mixin foundation-drilldown-menu {
   // Applied to the Menu container
   .is-drilldown {
     position: relative;
     overflow: hidden;
-
-    li {
-      display: block !important;
+    // When on small media then overwrite width
+    @if $drilldown-auto-width {
+      @media screen and #{breakpoint($drilldown-auto-width-breakpoint)} {
+        & {
+          width: auto !important;
+        }
+      }
     }
   }
 
@@ -52,6 +64,17 @@ $drilldown-background: $white !default;
 
     &.is-closing {
       transform: translateX(if($global-text-direction == ltr, 100%, -100%));
+    }
+  }
+  // Only used for calculating max height and width
+  .is-drilldown-prepare {
+    .is-drilldown-submenu {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      height: auto;
+      height: auto;
     }
   }
 
