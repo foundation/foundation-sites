@@ -41,16 +41,7 @@ $slider-radius: $global-radius !default;
 @mixin foundation-range-input {
   // scss-lint:disable QualifyingElement
   input[type="range"] {
-    $slider-background: $light-gray;
-    $slider-height: 0.5rem;
-    $slider-radius: 0;
-    $slider-thumb-height: 1.4rem;
-    $slider-thumb-width: 1.4rem;
-    $slider-thumb-color: $primary-color;
-    $slider-opacity-disabled: 0.25;
-    $slider-fill-background: $medium-gray;
-
-    $margin: ($slider-thumb-height - $slider-height) / 2;
+    $margin: ($slider-handle-height - $slider-height) / 2;
 
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -81,11 +72,11 @@ $slider-radius: $global-radius !default;
       background: $slider-background;
     }
 
-    &::-webkit-slider-thumb {
+    &::-webkit-slider-handle {
       -webkit-appearance: none;
-      background: $slider-thumb-color;
-      width: $slider-thumb-width;
-      height: $slider-thumb-height;
+      background: $slider-handle-background;
+      width: $slider-handle-width;
+      height: $slider-handle-height;
       margin-top: -$margin;
 
       @if has-value($slider-radius) {
@@ -102,9 +93,9 @@ $slider-radius: $global-radius !default;
 
     &::-moz-range-thumb {
       -moz-appearance: none;
-      background: $slider-thumb-color;
-      width: $slider-thumb-width;
-      height: $slider-thumb-height;
+      background: $slider-handle-background;
+      width: $slider-handle-width;
+      height: $slider-handle-height;
       margin-top: -$margin;
 
       @if has-value($slider-radius) {
@@ -124,9 +115,9 @@ $slider-radius: $global-radius !default;
     }
 
     &::-ms-thumb {
-      background: $slider-thumb-color;
-      width: $slider-thumb-width;
-      height: $slider-thumb-height;
+      background: $slider-handle-background;
+      width: $slider-handle-width;
+      height: $slider-handle-height;
       border: 0;
 
       @if has-value($slider-radius) {
@@ -144,7 +135,7 @@ $slider-radius: $global-radius !default;
 
     @at-root {
       output {
-        line-height: $slider-thumb-height;
+        line-height: $slider-handle-height;
         vertical-align: middle;
         margin-left: 0.5em;
       }
