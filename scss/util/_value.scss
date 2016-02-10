@@ -87,7 +87,7 @@
   $defaults: (
     width: 0,
     style: solid,
-    color: $black,
+    color: #000,
   );
 
   @return map-get($defaults, $elem);
