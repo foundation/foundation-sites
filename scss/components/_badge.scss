@@ -26,6 +26,10 @@ $badge-minwidth: 2.1em !default;
 /// @type Number
 $badge-font-size: 0.6rem !default;
 
+/// Default border radius size for the badges.
+/// @type Number
+$badge-border-radius-size: ($global-radius * 2);
+
 /// Generates the base styles for a badge.
 @mixin badge {
   display: inline-block;
@@ -33,7 +37,7 @@ $badge-font-size: 0.6rem !default;
   min-width: $badge-minwidth;
   font-size: $badge-font-size;
   text-align: center;
-  border-radius: 50%;
+  border-radius: $badge-border-radius-size;
 }
 
 @mixin foundation-badge {
