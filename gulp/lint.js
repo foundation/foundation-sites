@@ -13,15 +13,13 @@ gulp.task('lint', ['lint:sass', 'lint:javascript']);
 
 gulp.task('lint:sass', function() {
   return gulp.src(PATHS)
-    .pipe(scssLint({
-      'config': 'scss-lint.yml'
-    }));
+    .pipe(scssLint());
 });
 
 gulp.task('lint:javascript', function() {
   jshint.lookup = false;
 
   return gulp.src('js/*.js')
-    .pipe(jshint('./config/.jshintConfig'))
+    .pipe(jshint())
     .pipe(jshint.reporter('default'));
 });

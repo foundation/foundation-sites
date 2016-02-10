@@ -72,7 +72,10 @@ $menu-icon-spacing: 0.25rem !default;
 /// Expands the items of a Menu, so each item is the same width.
 @mixin menu-expand {
   @if $global-flexbox {
-    > li { flex: 1 1 0px; }
+    // scss-lint:disable ZeroUnit
+    > li {
+      flex: 1 1 0px;
+    }
   }
   @else {
     width: 100%;

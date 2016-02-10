@@ -76,7 +76,7 @@ $meter-fill-bad: $alert-color !default;
       @if has-value($meter-radius) {
         border-radius: $meter-radius;
       }
-    }d
+    }
 
     &::-webkit-meter-even-less-good-value {
       background: $meter-fill-bad;
@@ -85,9 +85,6 @@ $meter-fill-bad: $alert-color !default;
         border-radius: $meter-radius;
       }
     }
-
-    // Firefox
-    background: $meter-background;
 
     &::-moz-meter-bar {
       background: $primary-color;

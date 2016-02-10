@@ -91,7 +91,10 @@ $mediaobject-image-width-stacked: 100% !default;
     @include media-object-section;
 
     @if $global-flexbox {
-      &.main-section { flex: 1 1 0px; }
+      // scss-lint:disable ZeroUnit
+      &.main-section {
+        flex: 1 1 0px;
+      }
     }
     @else {
       &.middle { vertical-align: middle; }

@@ -69,13 +69,12 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   // margin: $reveal-offset auto 0;
   background-color: $reveal-background;
   border-radius: $reveal-radius;
-  
+
   //chris's additions
   overflow-y: auto;
   max-height: 100vh;
   //
 
-  
   @include breakpoint(medium) {
     min-height: 0;
   }
@@ -127,7 +126,7 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   body.is-reveal-open {
     overflow: hidden;
   }
-  
+
   /* this little snippet causes the intended scroll blocking on iOS Safari,
      which can still DIAF, because it breaks literally everything else */
   // html.is-reveal-open, body.is-reveal-open {
@@ -147,14 +146,14 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
     @include reveal-modal-width($reveal-width);
     position: absolute;
     overflow-y: auto;
-    
-    
+
+
     // &.is-ios {
     //   :last-child {
     //     padding-bottom: 1em;
     //   }
     // }
-    
+
     /*** chris's addition ***/
     @include breakpoint(small) {
       width: 100vw;

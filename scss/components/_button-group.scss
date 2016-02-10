@@ -74,6 +74,7 @@ $buttongroup-expand-max: 6 !default;
     }
   }
 
+  // scss-lint:disable ZeroUnit
   #{$selector} {
     @if $global-flexbox {
       flex: 1 1 0px;
@@ -83,7 +84,7 @@ $buttongroup-expand-max: 6 !default;
         &:first-child:nth-last-child(#{$i}) {
           &, &:first-child:nth-last-child(#{$i}) ~ #{$selector} {
             display: inline-block;
-            width: calc( #{percentage(1/$i)} - #{$buttongroup-spacing} );
+            width: calc(#{percentage(1/$i)} - #{$buttongroup-spacing});
             margin-right: $buttongroup-spacing;
           }
         }
@@ -120,6 +121,7 @@ $buttongroup-expand-max: 6 !default;
 @mixin button-group-unstack(
   $selector: $buttongroup-child-selector
 ) {
+  // scss-lint:disable ZeroUnit
   #{$selector} {
     @if $global-flexbox {
       flex: 1 1 0px;
@@ -179,6 +181,7 @@ $buttongroup-expand-max: 6 !default;
       }
     }
 
+    // scss-lint:disable MergeableSelector
     &.stacked-for-small.expanded {
       @include breakpoint(small only) {
         display: block;
