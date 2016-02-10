@@ -16,6 +16,11 @@ var PATHS = [
   'node_modules/foundation-docs/scss'
 ];
 
+var LINT_PATHS = [
+  'scss/**/*.scss',
+  '!scss/vendor/**/*.scss'
+];
+
 var COMPATIBILITY = [
   'last 2 versions',
   'ie >= 9',
@@ -28,7 +33,6 @@ gulp.task('sass', ['sass:foundation', 'sass:docs']);
 // Compiles Foundation Sass
 gulp.task('sass:foundation', function() {
   return gulp.src(['assets/*'])
-    // .pipe(scssLint())
     .pipe(sourcemaps.init())
     .pipe(plumber())
     .pipe(sass().on('error', sass.logError))
@@ -36,7 +40,10 @@ gulp.task('sass:foundation', function() {
       browsers: COMPATIBILITY
     }))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('_build/assets/css'));
+    .pipe(gulp.dest('_build/assets/css'))
+    .on('finish', function() {
+      gulp.src(LINT_PATHS).pipe(scssLint())
+    });
 });
 
 // Compiles docs Sass (includes Foundation code also)
