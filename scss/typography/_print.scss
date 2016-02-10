@@ -49,7 +49,7 @@ $print-transparent-backgrounds: true !default;
     // Prevent page breaks in the middle of a blockquote or preformatted text block
     pre,
     blockquote {
-      border: 1px solid #999;
+      border: 1px solid $dark-gray;
       page-break-inside: avoid;
     }
 

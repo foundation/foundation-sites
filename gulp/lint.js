@@ -14,7 +14,7 @@ gulp.task('lint', ['lint:sass', 'lint:javascript']);
 gulp.task('lint:sass', function() {
   return gulp.src(PATHS)
     .pipe(scssLint({
-      'config': 'config/scss-lint.yml'
+      'config': 'scss-lint.yml'
     }));
 });
 

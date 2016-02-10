@@ -28,11 +28,11 @@ $button-background-hover: scale-color($button-background, $lightness: -15%) !def
 
 /// Font color for buttons.
 /// @type List
-$button-color: #fff !default;
+$button-color: $white !default;
 
 /// Font color for buttons, if the background is light.
 /// @type List
-$button-color-alt: #000 !default;
+$button-color-alt: $black !default;
 
 /// Border radius for buttons, defaulted to global-radius.
 /// @type Number
