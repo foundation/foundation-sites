@@ -25,7 +25,7 @@
 
   // Styles for inputs inside labels
   label > [type='checkbox'],
-  label > [type='label'] {
+  label > [type='radio'] {
     margin-#{$global-right}: $form-spacing * 0.5;
   }
 
