@@ -10,7 +10,7 @@
  * @requires foundation.util.dropdown-menu
  */
 
-export default class ResponsiveMenu {
+class ResponsiveMenu {
   /**
    * Creates a new instance of a responsive menu.
    * @class
@@ -138,6 +138,4 @@ var MenuPlugins = {
 };
 
 // Window exports
-if (window.Foundation) {
-  window.Foundation.plugin(ResponsiveMenu, 'ResponsiveMenu');
-}
+Foundation.plugin(ResponsiveMenu, 'ResponsiveMenu');

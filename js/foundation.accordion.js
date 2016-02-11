@@ -7,7 +7,7 @@
  * @requires foundation.util.motion
  */
 
-export default class Accordion {
+class Accordion {
   /**
    * Creates a new instance of an accordion.
    * @class
@@ -20,7 +20,7 @@ export default class Accordion {
     this.options = $.extend({}, Accordion.defaults, this.$element.data(), options);
 
     this._init();
-    
+
     Foundation.registerPlugin(this, 'Accordion');
     Foundation.Keyboard.register('Accordion', {
       'ENTER': 'toggle',
@@ -232,6 +232,4 @@ Accordion.defaults = {
 };
 
 // Window exports
-if (window.Foundation) {
-  window.Foundation.plugin(Accordion, 'Accordion');
-}
+Foundation.plugin(Accordion, 'Accordion');

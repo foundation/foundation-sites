@@ -201,8 +201,4 @@ function parseStyleToObject(str) {
   return styleObject;
 }
 
-export default MediaQuery;
-
-if (window.Foundation) {
-  window.Foundation.MediaQuery = MediaQuery;
-}
+window.Foundation.MediaQuery = MediaQuery;

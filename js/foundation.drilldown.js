@@ -8,7 +8,7 @@
  * @requires foundation.util.nest
  */
 
-export default class Drilldown {
+class Drilldown {
   /**
    * Creates a new instance of a drilldown menu.
    * @class
@@ -330,6 +330,4 @@ Drilldown.defaults = {
 };
 
 // Window exports
-if (window.Foundation) {
-  window.Foundation.plugin(Drilldown, 'Drilldown');
-}
+Foundation.plugin(Drilldown, 'Drilldown');

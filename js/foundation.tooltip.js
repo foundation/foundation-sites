@@ -7,7 +7,7 @@
  * @requires foundation.util.triggers
  */
 
-export default class Tooltip {
+class Tooltip {
   /**
    * Creates a new instance of a Tooltip.
    * @class
@@ -431,6 +431,4 @@ Tooltip.defaults = {
  */
 
 // Window exports
-if (window.Foundation) {
-  window.Foundation.plugin(Tooltip, 'Tooltip');
-}
+Foundation.plugin(Tooltip, 'Tooltip');

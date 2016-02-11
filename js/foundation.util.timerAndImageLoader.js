@@ -78,7 +78,5 @@ export function onImagesLoaded(images, callback){
   }
 }
 
-if (window.Foundation) {
-  Foundation.Timer = Timer;
-  Foundation.onImagesLoaded = onImagesLoaded;
-}
+Foundation.Timer = Timer;
+Foundation.onImagesLoaded = onImagesLoaded;

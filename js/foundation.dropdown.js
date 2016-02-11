@@ -8,7 +8,7 @@
  * @requires foundation.util.triggers
  */
 
-export default class Dropdown {
+class Dropdown {
   /**
    * Creates a new instance of a dropdown.
    * @class
@@ -397,6 +397,4 @@ Dropdown.defaults = {
 }
 
 // Window exports
-if (window.Foundation) {
-  window.Foundation.plugin(Dropdown, 'Dropdown');
-}
+Foundation.plugin(Dropdown, 'Dropdown');

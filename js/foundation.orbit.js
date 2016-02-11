@@ -9,7 +9,7 @@
  * @requires foundation.util.touch
  */
 
-export default class Orbit {
+class Orbit {
   /**
   * Creates a new instance of an orbit carousel.
   * @class
@@ -438,6 +438,4 @@ Orbit.defaults = {
 };
 
 // Window exports
-if (window.Foundation) {
-  window.Foundation.plugin(Orbit, 'Orbit');
-}
+Foundation.plugin(Orbit, 'Orbit');

@@ -7,7 +7,7 @@
  * @requires foundation.util.timerAndImageLoader if tabs contain images
  */
 
-export default class Tabs {
+class Tabs {
   /**
    * Creates a new instance of tabs.
    * @class
@@ -318,6 +318,4 @@ function checkClass($elem){
 }
 
 // Window exports
-if (window.Foundation) {
-  window.Foundation.plugin(Tabs, 'Tabs');
-}
+Foundation.plugin(Tabs, 'Tabs');

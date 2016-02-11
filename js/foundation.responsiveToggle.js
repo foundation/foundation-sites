@@ -6,7 +6,7 @@
  * @requires foundation.util.mediaQuery
  */
 
-export default class ResponsiveToggle {
+class ResponsiveToggle {
   /**
    * Creates a new instance of Tab Bar.
    * @class
@@ -105,6 +105,4 @@ ResponsiveToggle.defaults = {
 };
 
 // Window exports
-if (window.Foundation) {
-  window.Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
-}
+Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');

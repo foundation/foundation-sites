@@ -8,7 +8,7 @@
  * @requires foundation.util.nest
  */
 
-export default class AccordionMenu {
+class AccordionMenu {
   /**
    * Creates a new instance of an accordion menu.
    * @class
@@ -16,7 +16,7 @@ export default class AccordionMenu {
    * @param {jQuery} element - jQuery object to make into an accordion menu.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  constructor(element, options) {  
+  constructor(element, options) {
     this.$element = element;
     this.options = $.extend({}, AccordionMenu.defaults, this.$element.data(), options);
 
@@ -38,7 +38,7 @@ export default class AccordionMenu {
     });
   }
 
-  
+
 
   /**
    * Initializes the accordion menu by hiding all nested menus.
@@ -263,6 +263,4 @@ AccordionMenu.defaults = {
 };
 
 // Window exports
-if (window.Foundation) {
-  window.Foundation.plugin(AccordionMenu, 'AccordionMenu');
-}
+Foundation.plugin(AccordionMenu, 'AccordionMenu');

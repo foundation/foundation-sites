@@ -7,7 +7,7 @@
  * @requires foundation.util.timerAndImageLoader
  */
 
-export default class Interchange {
+class Interchange {
   /**
    * Creates a new instance of Interchange.
    * @class
@@ -186,5 +186,5 @@ Interchange.SPECIAL_QUERIES = {
 
 // Window exports
 if (window.Foundation) {
-  window.Foundation.plugin(Interchange, 'Interchange');
+  Foundation.plugin(Interchange, 'Interchange');
 }

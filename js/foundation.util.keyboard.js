@@ -108,8 +108,4 @@ function getKeyCodes(kcs) {
   return k;
 }
 
-export default Keyboard;
-
-if (window.Foundation) {
-  window.Foundation.Keyboard = Keyboard;
-}
+Foundation.Keyboard = Keyboard;

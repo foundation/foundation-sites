@@ -89,7 +89,5 @@ function animate(isIn, element, animation, cb) {
   }
 }
 
-if (window.Foundation) {
-  window.Foundation.Move = Move;
-  window.Foundation.Motion = Motion;
-}
+Foundation.Move = Move;
+Foundation.Motion = Motion;

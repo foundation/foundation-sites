@@ -69,8 +69,4 @@ const Nest = {
   }
 }
 
-export default Nest;
-
-if (window.Foundation) {
-  window.Foundation.Nest = Nest;
-}
+Foundation.Nest = Nest;

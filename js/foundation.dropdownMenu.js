@@ -8,7 +8,7 @@
  * @requires foundation.util.nest
  */
 
-export default class DropdownMenu {
+class DropdownMenu {
   /**
    * Creates a new instance of DropdownMenu.
    * @class
@@ -394,6 +394,4 @@ DropdownMenu.defaults = {
 };
 
 // Window exports
-if (window.Foundation) {
-  window.Foundation.plugin(DropdownMenu, 'DropdownMenu');
-}
+Foundation.plugin(DropdownMenu, 'DropdownMenu');

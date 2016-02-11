@@ -5,7 +5,7 @@
  * @module foundation.abide
  */
 
-export default class Abide {
+class Abide {
   /**
    * Creates a new instance of Abide.
    * @class
@@ -455,6 +455,4 @@ Abide.defaults = {
 }
 
 // Window exports
-if (window.Foundation) {
-  window.Foundation.plugin(Abide, 'Abide');
-}
+Foundation.plugin(Abide, 'Abide');

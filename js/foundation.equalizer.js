@@ -5,7 +5,7 @@
  * @module foundation.equalizer
  */
 
-export default class Equalizer {
+class Equalizer {
   /**
    * Creates a new instance of Equalizer.
    * @class
@@ -278,16 +278,4 @@ Equalizer.defaults = {
 };
 
 // Window exports
-if (window.Foundation) {
-  window.Foundation.plugin(Equalizer, 'Equalizer');
-}
-
-// Exports for AMD/Browserify
-if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')
-  module.exports = Equalizer;
-if (typeof define === 'function')
-  define(['foundation'], function() {
-    return Equalizer;
-  });
-
-
+Foundation.plugin(Equalizer, 'Equalizer');

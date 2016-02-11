@@ -8,7 +8,7 @@
  * @requires foundation.util.motion
  */
 
-export default class OffCanvas {
+class OffCanvas {
   /**
    * Creates a new instance of an off-canvas wrapper.
    * @class
@@ -388,6 +388,4 @@ OffCanvas.defaults = {
 }
 
 // Window exports
-if (window.Foundation) {
-  window.Foundation.plugin(OffCanvas, 'OffCanvas');
-}
+Foundation.plugin(OffCanvas, 'OffCanvas');

@@ -6,7 +6,7 @@
  * @requires foundation.util.motion
  */
 
-export default class Toggler {
+class Toggler {
   /**
    * Creates a new instance of Toggler.
    * @class
@@ -136,14 +136,4 @@ Toggler.defaults = {
 };
 
 // Window exports
-if (window.Foundation) {
-  Foundation.plugin(Toggler, 'Toggler');
-}
-
-// Exports for AMD/Browserify
-if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')
-  module.exports = Toggler;
-if (typeof define === 'function')
-  define(['foundation'], function() {
-    return Toggler;
-  });
+Foundation.plugin(Toggler, 'Toggler');

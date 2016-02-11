@@ -5,7 +5,7 @@
  * @module foundation.magellan
  */
 
-export default class Magellan {
+class Magellan {
   /**
    * Creates a new instance of Magellan.
    * @class
@@ -216,14 +216,4 @@ Magellan.defaults = {
 }
 
 // Window exports
-if (window.Foundation) {
-  window.Foundation.plugin(Magellan, 'Magellan');
-}
-
-// Exports for AMD/Browserify
-if (typeof module !== 'undefined' && typeof module.exports !== 'undefined')
-  module.exports = Magellan;
-if (typeof define === 'function')
-  define(['foundation'], function() {
-    return Magellan;
-  });
+Foundation.plugin(Magellan, 'Magellan');

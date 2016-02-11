@@ -10,7 +10,7 @@
  * @requires foundation.util.motion if using animations
  */
 
-export default class Reveal {
+class Reveal {
   /**
    * Creates a new instance of Reveal.
    * @class
@@ -544,10 +544,8 @@ Reveal.defaults = {
 };
 
 // Window exports
-if (window.Foundation) {
-  window.Foundation.plugin(Reveal, 'Reveal');
-}
+Foundation.plugin(Reveal, 'Reveal');
 
-function iPhoneSniff(){
+function iPhoneSniff() {
   return /iP(ad|hone|od).*OS/.test(window.navigator.userAgent);
 }

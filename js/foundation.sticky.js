@@ -7,7 +7,7 @@
  * @requires foundation.util.mediaQuery
  */
 
-export default class Sticky {
+class Sticky {
   /**
    * Creates a new instance of a sticky thing.
    * @class
@@ -440,6 +440,4 @@ function emCalc(em) {
 }
 
 // Window exports
-if (window.Foundation) {
-  window.Foundation.plugin(Sticky, 'Sticky');
-}
+Foundation.plugin(Sticky, 'Sticky');

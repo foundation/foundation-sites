@@ -1,13 +1,7 @@
-var Box = {
+Foundation.Box = {
   ImNotTouchingYou: ImNotTouchingYou,
   GetDimensions: GetDimensions,
   GetOffsets: GetOffsets
-}
-
-export default Box;
-
-if (window.Foundation) {
-  window.Foundation.Box = Box;
 }
 
 /**

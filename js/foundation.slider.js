@@ -9,7 +9,7 @@
  * @requires foundation.util.touch
  */
 
-export default class Slider {
+class Slider {
   /**
    * Creates a new instance of a drilldown menu.
    * @class
@@ -528,9 +528,7 @@ function absPosition($handle, dir, clickPos, param) {
 }
 
 // Window exports
-if (window.Foundation) {
-  window.Foundation.plugin(Slider, 'Slider');
-}
+Foundation.plugin(Slider, 'Slider');
 
 //*********this is in case we go to static, absolute positions instead of dynamic positioning********
 // this.setSteps(function() {
