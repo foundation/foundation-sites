@@ -70,14 +70,17 @@ export default class Tabs {
         $link.focus();
       }
     });
-    if(this.options.matchHeight){
+
+    if(this.options.matchHeight) {
       var $images = this.$tabContent.find('img');
-      if($images.length){
+
+      if ($images.length) {
         Foundation.onImagesLoaded($images, this._setHeight.bind(this));
-      }else{
+      } else {
         this._setHeight();
       }
     }
+
     this._events();
   }
 
@@ -88,7 +91,8 @@ export default class Tabs {
   _events() {
     this._addKeyHandler();
     this._addClickHandler();
-    if(this.options.matchHeight){
+
+    if (this.options.matchHeight) {
       $(window).on('changed.zf.mediaquery', this._setHeight.bind(this));
     }
   }
@@ -99,15 +103,17 @@ export default class Tabs {
    */
   _addClickHandler() {
     var _this = this;
-    this.$element.off('click.zf.tabs')
-                   .on('click.zf.tabs', `.${this.options.linkClass}`, function(e){
-                     e.preventDefault();
-                     e.stopPropagation();
-                     if($(this).hasClass('is-active')){
-                       return;
-                     }
-                     _this._handleTabChange($(this));
-                   });
+
+    this.$element
+      .off('click.zf.tabs')
+      .on('click.zf.tabs', `.${this.options.linkClass}`, function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        if ($(this).hasClass('is-active')) {
+          return;
+        }
+        _this._handleTabChange($(this));
+      });
   }
 
   /**
@@ -120,7 +126,7 @@ export default class Tabs {
     var $lastTab = _this.$element.find('li:last-of-type');
 
     this.$tabTitles.off('keydown.zf.tabs').on('keydown.zf.tabs', function(e){
-      if(e.which === 9) return;
+      if (e.which === 9) return;
       e.stopPropagation();
       e.preventDefault();
 
@@ -170,11 +176,17 @@ export default class Tabs {
     var $tabLink = $target.find('[role="tab"]'),
         hash = $tabLink[0].hash,
         $targetContent = this.$tabContent.find(hash),
-        $oldTab = this.$element.find('.' + this.options.linkClass + '.is-active')
-                  .removeClass('is-active').find('[role="tab"]')
-                  .attr({'aria-selected': 'false'}).attr('aria-controls');
+        $oldTab = this.$element.find(`.${this.options.linkClass}.is-active`);
 
-    $(`#${$oldTab}`).removeClass('is-active').attr({'aria-hidden': 'true'});
+    $oldTab
+      .removeClass('is-active')
+      .find('[role="tab"]')
+        .attr({ 'aria-selected': 'false' })
+        .attr('aria-controls');
+
+    $(`#${$oldTab}`)
+      .removeClass('is-active')
+      .attr({ 'aria-hidden': 'true' });
 
     $target.addClass('is-active');
 
@@ -189,7 +201,6 @@ export default class Tabs {
      * @event Tabs#change
      */
     this.$element.trigger('change.zf.tabs', [$target]);
-    // Foundation.reflow(this.$element, 'tabs');
   }
 
   /**
@@ -199,15 +210,17 @@ export default class Tabs {
    */
   selectTab(elem) {
     var idStr;
-    if(typeof elem === 'object'){
+
+    if (typeof elem === 'object') {
       idStr = elem[0].id;
-    }else{
+    } else {
       idStr = elem;
     }
 
-    if(idStr.indexOf('#') < 0){
+    if (idStr.indexOf('#') < 0) {
       idStr = `#${idStr}`;
     }
+
     var $target = this.$tabTitles.find(`[href="${idStr}"]`).parent(`.${this.options.linkClass}`);
 
     this._handleTabChange($target);
@@ -221,24 +234,29 @@ export default class Tabs {
    */
   _setHeight() {
     var max = 0;
-    this.$tabContent.find(`.${this.options.panelClass}`)
-                    .css('height', '')
-                    .each(function(){
-                      var panel = $(this),
-                          isActive = panel.hasClass('is-active');
+    this.$tabContent
+      .find(`.${this.options.panelClass}`)
+      .css('height', '')
+      .each(function() {
+        var panel = $(this),
+            isActive = panel.hasClass('is-active');
 
-                      if(!isActive){
-                        panel.css({'visibility': 'hidden', 'display': 'block'});
-                      }
-                      var temp = this.getBoundingClientRect().height;
+        if (!isActive) {
+          panel.css({'visibility': 'hidden', 'display': 'block'});
+        }
 
-                      if(!isActive){
-                        panel.css({'visibility': '', 'display': ''});
-                      }
+        var temp = this.getBoundingClientRect().height;
 
-                      max = temp > max ? temp : max;
-                    })
-                    .css('height', `${max}px`);
+        if (!isActive) {
+          panel.css({
+            'visibility': '',
+            'display': ''
+          });
+        }
+
+        max = temp > max ? temp : max;
+      })
+      .css('height', `${max}px`);
   }
 
   /**
@@ -246,51 +264,49 @@ export default class Tabs {
    * @fires Tabs#destroyed
    */
   destroy() {
-    this.$element.find(`.${this.options.linkClass}`)
-                 .off('.zf.tabs').hide().end()
-                 .find(`.${this.options.panelClass}`)
-                 .hide();
-    if(this.options.matchHeight){
+    this.$element
+      .find(`.${this.options.linkClass}`)
+      .off('.zf.tabs').hide().end()
+      .find(`.${this.options.panelClass}`)
+      .hide();
+
+    if (this.options.matchHeight) {
       $(window).off('changed.zf.mediaquery');
     }
+
     Foundation.unregisterPlugin(this);
-  };
+  }
 }
 
 Tabs.defaults = {
-  // /**
-  //  * Allows the JS to alter the url of the window. Not yet implemented.
-  //  */
-  // deepLinking: false,
-  // /**
-  //  * If deepLinking is enabled, allows the window to scroll to content if window is loaded with a hash including a tab-pane id
-  //  */
-  // scrollToContent: false,
   /**
    * Allows the window to scroll to content of active pane on load if set to true.
    * @option
    * @example false
    */
   autoFocus: false,
+
   /**
    * Allows keyboard input to 'wrap' around the tab links.
    * @option
    * @example true
    */
   wrapOnKeys: true,
+
   /**
    * Allows the tab content panes to match heights if set to true.
    * @option
    * @example false
    */
   matchHeight: false,
+
   /**
    * Class applied to `li`'s in tab link list.
    * @option
    * @example 'tabs-title'
    */
   linkClass: 'tabs-title',
-  // contentClass: 'tabs-content',
+
   /**
    * Class applied to the content containers.
    * @option
