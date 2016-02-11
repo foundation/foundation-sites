@@ -36,6 +36,7 @@ $menu-icon-spacing: 0.25rem !default;
   list-style-type: none;
 
   @if $global-flexbox {
+    width: 100%;
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
