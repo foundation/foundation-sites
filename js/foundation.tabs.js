@@ -48,7 +48,7 @@ export default class Tabs {
           $link = $elem.find('a'),
           isActive = $elem.hasClass('is-active'),
           hash = $link[0].hash.slice(1),
-          linkId = $link[0].id ? $link[0].id : `hash${-label}`,
+          linkId = $link[0].id ? $link[0].id : `${hash}-label`,
           $tabContent = $(`#${hash}`);
 
       $elem.attr({'role': 'presentation'});
@@ -176,15 +176,13 @@ export default class Tabs {
     var $tabLink = $target.find('[role="tab"]'),
         hash = $tabLink[0].hash,
         $targetContent = this.$tabContent.find(hash),
-        $oldTab = this.$element.find(`.${this.options.linkClass}.is-active`);
+        $oldTab = this.$element.
+          find(`.${this.options.linkClass}.is-active`)
+          .removeClass('is-active')
+          .find('[role="tab"]')
+          .attr({ 'aria-selected': 'false' });
 
-    $oldTab
-      .removeClass('is-active')
-      .find('[role="tab"]')
-        .attr({ 'aria-selected': 'false' })
-        .attr('aria-controls');
-
-    $(`#${$oldTab}`)
+    $(`#${$oldTab.attr('aria-controls')}`)
       .removeClass('is-active')
       .attr({ 'aria-hidden': 'true' });
 
