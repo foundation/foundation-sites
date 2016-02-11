@@ -1,5 +1,7 @@
 'use strict';
 
+!function($) {
+
 /**
  * Dropdown module.
  * @module foundation.dropdown
@@ -398,3 +400,5 @@ Dropdown.defaults = {
 
 // Window exports
 Foundation.plugin(Dropdown, 'Dropdown');
+
+}(jQuery);

@@ -1,5 +1,7 @@
 'use strict';
 
+!function($) {
+
 /**
  * Magellan module.
  * @module foundation.magellan
@@ -217,3 +219,5 @@ Magellan.defaults = {
 
 // Window exports
 Foundation.plugin(Magellan, 'Magellan');
+
+}(jQuery);

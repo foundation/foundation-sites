@@ -1,5 +1,7 @@
 'use strict';
 
+!function($) {
+
 /**
  * Sticky module.
  * @module foundation.sticky
@@ -441,3 +443,5 @@ function emCalc(em) {
 
 // Window exports
 Foundation.plugin(Sticky, 'Sticky');
+
+}(jQuery);

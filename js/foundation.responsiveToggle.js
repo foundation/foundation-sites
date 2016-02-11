@@ -1,5 +1,7 @@
 'use strict';
 
+!function($) {
+
 /**
  * ResponsiveToggle module.
  * @module foundation.responsiveToggle
@@ -106,3 +108,5 @@ ResponsiveToggle.defaults = {
 
 // Window exports
 Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
+
+}(jQuery);

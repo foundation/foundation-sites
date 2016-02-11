@@ -1,5 +1,7 @@
 'use strict';
 
+!function($) {
+
 /**
  * Abide module.
  * @module foundation.abide
@@ -456,3 +458,5 @@ Abide.defaults = {
 
 // Window exports
 Foundation.plugin(Abide, 'Abide');
+
+}(jQuery);

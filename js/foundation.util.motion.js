@@ -1,3 +1,7 @@
+'use strict';
+
+!function($) {
+
 /**
  * Motion module.
  * @module foundation.motion
@@ -6,7 +10,7 @@
 const initClasses   = ['mui-enter', 'mui-leave'];
 const activeClasses = ['mui-enter-active', 'mui-leave-active'];
 
-export const Motion = {
+const Motion = {
   animateIn: function(element, animation, cb) {
     animate(true, element, animation, cb);
   },
@@ -16,7 +20,7 @@ export const Motion = {
   }
 }
 
-export function Move(duration, elem, fn){
+function Move(duration, elem, fn){
   var anim, prog, start = null;
   // console.log('called');
 
@@ -91,3 +95,5 @@ function animate(isIn, element, animation, cb) {
 
 Foundation.Move = Move;
 Foundation.Motion = Motion;
+
+}(jQuery);

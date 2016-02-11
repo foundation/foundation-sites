@@ -1,5 +1,7 @@
 'use strict';
 
+!function($) {
+
 const MutationObserver = (function () {
   var prefixes = ['WebKit', 'Moz', 'O', 'Ms', ''];
   for (var i=0; i < prefixes.length; i++) {
@@ -198,6 +200,8 @@ function eventsListener() {
 Foundation.IHearYou = checkListeners;
 // Foundation.ISeeYou = scrollListener;
 // Foundation.IFeelYou = closemeListener;
+
+}(jQuery);
 
 // function domMutationObserver(debounce) {
 //   // !!! This is coming soon and needs more work; not active  !!! //

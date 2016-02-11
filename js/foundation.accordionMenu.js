@@ -1,5 +1,7 @@
 'use strict';
 
+!function($) {
+
 /**
  * AccordionMenu module.
  * @module foundation.accordionMenu
@@ -264,3 +266,5 @@ AccordionMenu.defaults = {
 
 // Window exports
 Foundation.plugin(AccordionMenu, 'AccordionMenu');
+
+}(jQuery);

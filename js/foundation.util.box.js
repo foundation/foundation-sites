@@ -1,3 +1,7 @@
+'use strict';
+
+!function($) {
+
 Foundation.Box = {
   ImNotTouchingYou: ImNotTouchingYou,
   GetDimensions: GetDimensions,
@@ -175,3 +179,5 @@ function GetOffsets(element, anchor, position, vOffset, hOffset, isOverflow) {
       }
   }
 }
+
+}(jQuery);

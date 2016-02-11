@@ -1,5 +1,7 @@
 'use strict';
 
+!function($) {
+
 /**
  * Tabs module.
  * @module foundation.tabs
@@ -319,3 +321,5 @@ function checkClass($elem){
 
 // Window exports
 Foundation.plugin(Tabs, 'Tabs');
+
+}(jQuery);

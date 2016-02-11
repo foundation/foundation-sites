@@ -1,5 +1,7 @@
 'use strict';
 
+!function($) {
+
 /**
  * Equalizer module.
  * @module foundation.equalizer
@@ -279,3 +281,5 @@ Equalizer.defaults = {
 
 // Window exports
 Foundation.plugin(Equalizer, 'Equalizer');
+
+}(jQuery);

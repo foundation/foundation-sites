@@ -1,5 +1,7 @@
 'use strict';
 
+!function($) {
+
 /**
  * Tooltip module.
  * @module foundation.tooltip
@@ -432,3 +434,5 @@ Tooltip.defaults = {
 
 // Window exports
 Foundation.plugin(Tooltip, 'Tooltip');
+
+}(jQuery);

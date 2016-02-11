@@ -1,4 +1,5 @@
 !function($) {
+
 "use strict";
 
 var FOUNDATION_VERSION = '6.1.2';
@@ -218,7 +219,6 @@ var Foundation = {
     }
   }
 };
-
 
 Foundation.util = {
   /**

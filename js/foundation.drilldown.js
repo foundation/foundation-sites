@@ -1,5 +1,7 @@
 'use strict';
 
+!function($) {
+
 /**
  * Drilldown module.
  * @module foundation.drilldown
@@ -331,3 +333,5 @@ Drilldown.defaults = {
 
 // Window exports
 Foundation.plugin(Drilldown, 'Drilldown');
+
+}(jQuery);

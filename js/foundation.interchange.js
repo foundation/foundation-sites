@@ -1,5 +1,7 @@
 'use strict';
 
+!function($) {
+
 /**
  * Interchange module.
  * @module foundation.interchange
@@ -185,6 +187,6 @@ Interchange.SPECIAL_QUERIES = {
 };
 
 // Window exports
-if (window.Foundation) {
-  Foundation.plugin(Interchange, 'Interchange');
-}
+Foundation.plugin(Interchange, 'Interchange');
+
+}(jQuery);

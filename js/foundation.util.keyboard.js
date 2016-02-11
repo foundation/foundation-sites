@@ -8,6 +8,8 @@
 
 'use strict';
 
+!function($) {
+
 const keyCodes = {
   9: 'TAB',
   13: 'ENTER',
@@ -109,3 +111,5 @@ function getKeyCodes(kcs) {
 }
 
 Foundation.Keyboard = Keyboard;
+
+}(jQuery);

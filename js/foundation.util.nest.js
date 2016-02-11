@@ -1,5 +1,7 @@
 'use strict';
 
+!function($) {
+
 const Nest = {
   Feather(menu, type = 'zf') {
     menu.attr('role', 'menubar');
@@ -70,3 +72,5 @@ const Nest = {
 }
 
 Foundation.Nest = Nest;
+
+}(jQuery);

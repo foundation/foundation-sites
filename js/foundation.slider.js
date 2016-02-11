@@ -1,5 +1,7 @@
 'use strict';
 
+!function($) {
+
 /**
  * Slider module.
  * @module foundation.slider
@@ -529,6 +531,8 @@ function absPosition($handle, dir, clickPos, param) {
 
 // Window exports
 Foundation.plugin(Slider, 'Slider');
+
+}(jQuery);
 
 //*********this is in case we go to static, absolute positions instead of dynamic positioning********
 // this.setSteps(function() {

@@ -1,5 +1,7 @@
 'use strict';
 
+!function($) {
+
 /**
  * OffCanvas module.
  * @module foundation.offcanvas
@@ -389,3 +391,5 @@ OffCanvas.defaults = {
 
 // Window exports
 Foundation.plugin(OffCanvas, 'OffCanvas');
+
+}(jQuery);

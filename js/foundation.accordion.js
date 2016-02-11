@@ -1,5 +1,7 @@
 'use strict';
 
+!function($) {
+
 /**
  * Accordion module.
  * @module foundation.accordion
@@ -233,3 +235,5 @@ Accordion.defaults = {
 
 // Window exports
 Foundation.plugin(Accordion, 'Accordion');
+
+}(jQuery);

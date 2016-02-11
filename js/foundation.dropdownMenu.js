@@ -1,5 +1,7 @@
 'use strict';
 
+!function($) {
+
 /**
  * DropdownMenu module.
  * @module foundation.dropdown-menu
@@ -395,3 +397,5 @@ DropdownMenu.defaults = {
 
 // Window exports
 Foundation.plugin(DropdownMenu, 'DropdownMenu');
+
+}(jQuery);

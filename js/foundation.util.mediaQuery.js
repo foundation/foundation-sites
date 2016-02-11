@@ -1,3 +1,7 @@
+'use strict';
+
+!function($) {
+
 // Default set of media queries
 const defaultQueries = {
   'default' : 'only screen',
@@ -201,4 +205,6 @@ function parseStyleToObject(str) {
   return styleObject;
 }
 
-window.Foundation.MediaQuery = MediaQuery;
+Foundation.MediaQuery = MediaQuery;
+
+}(jQuery);

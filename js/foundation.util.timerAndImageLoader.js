@@ -1,6 +1,8 @@
 'use strict';
 
-export function Timer(elem, options, cb) {
+!function($) {
+
+function Timer(elem, options, cb) {
   var _this = this,
       duration = options.duration,//options is an object for easily adding features later.
       nameSpace = Object.keys(elem.data())[0] || 'timer',
@@ -48,7 +50,7 @@ export function Timer(elem, options, cb) {
  * @param {Object} images - Image(s) to check if loaded.
  * @param {Func} callback - Function to execute when image is fully loaded.
  */
-export function onImagesLoaded(images, callback){
+function onImagesLoaded(images, callback){
   var self = this,
       unloaded = images.length;
 
@@ -80,3 +82,5 @@ export function onImagesLoaded(images, callback){
 
 Foundation.Timer = Timer;
 Foundation.onImagesLoaded = onImagesLoaded;
+
+}(jQuery);

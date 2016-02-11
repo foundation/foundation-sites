@@ -1,5 +1,7 @@
 'use strict';
 
+!function($) {
+
 /**
  * Toggler module.
  * @module foundation.toggler
@@ -137,3 +139,5 @@ Toggler.defaults = {
 
 // Window exports
 Foundation.plugin(Toggler, 'Toggler');
+
+}(jQuery);

@@ -1,5 +1,7 @@
 'use strict';
 
+!function($) {
+
 /**
  * ResponsiveMenu module.
  * @module foundation.responsiveMenu
@@ -139,3 +141,5 @@ var MenuPlugins = {
 
 // Window exports
 Foundation.plugin(ResponsiveMenu, 'ResponsiveMenu');
+
+}(jQuery);

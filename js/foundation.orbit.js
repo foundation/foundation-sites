@@ -1,5 +1,7 @@
 'use strict';
 
+!function($) {
+
 /**
  * Orbit module.
  * @module foundation.orbit
@@ -439,3 +441,5 @@ Orbit.defaults = {
 
 // Window exports
 Foundation.plugin(Orbit, 'Orbit');
+
+}(jQuery);

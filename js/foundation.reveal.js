@@ -1,5 +1,7 @@
 'use strict';
 
+!function($) {
+
 /**
  * Reveal module.
  * @module foundation.reveal
@@ -549,3 +551,5 @@ Foundation.plugin(Reveal, 'Reveal');
 function iPhoneSniff() {
   return /iP(ad|hone|od).*OS/.test(window.navigator.userAgent);
 }
+
+}(jQuery);
