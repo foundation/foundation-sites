@@ -18,10 +18,6 @@ $reveal-width: 600px !default;
 /// @type Number
 $reveal-max-width: $global-width !default;
 
-/// Offset from the top of the window when a modal is added.
-/// @type Number
-$reveal-offset: rem-calc(100) !default;
-
 /// Default padding inside a modal.
 /// @type Number
 $reveal-padding: $global-padding !default;
@@ -59,17 +55,12 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
 /// Adds base styles for a modal.
 @mixin reveal-modal-base {
   @include disable-mouse-outline;
-
   display: none;
-  top: 0;
-  left: 0;
   z-index: $reveal-zindex + 1;
   padding: $reveal-padding;
   border: $reveal-border;
   background-color: $reveal-background;
   border-radius: $reveal-radius;
-  overflow-y: auto;
-  max-height: 100vh;
 
   @include breakpoint(medium) {
     min-height: 0;
@@ -110,13 +101,13 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   height: 100%;
   height: 100vh;
   min-height: 100vh;
-  min-width: 100vw;
   max-width: none;
   margin-left: 0;
   border: 0;
 }
 
 @mixin foundation-reveal {
+  // [TODO] Is this necessary?
   // scss-lint:disable QualifyingElement
   body.is-reveal-open {
     overflow: hidden;
@@ -133,10 +124,6 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
     @include reveal-modal-width($reveal-width);
     position: absolute;
     overflow-y: auto;
-
-    @include breakpoint(small) {
-      width: 100vw;
-    }
 
     // Placeholder selector for medium-and-up modals
     // Prevents duplicate CSS when defining multiple Reveal sizes

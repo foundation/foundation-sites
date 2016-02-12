@@ -165,35 +165,7 @@ class Reveal {
    * @private
    */
   _setPosition(cb) {
-    var eleDims = Foundation.Box.GetDimensions(this.$element);
-    var elePos = this.options.fullScreen ? 'reveal full' : (eleDims.height >= (0.5 * eleDims.windowDims.height)) ? 'reveal' : 'center';
-
-    if (elePos === 'reveal full') {
-      //set to full height/width
-      this.$element
-          .offset(Foundation.Box.GetOffsets(this.$element, null, elePos, this.options.vOffset))
-          .css({
-            'height': eleDims.windowDims.height,
-            'width': eleDims.windowDims.width
-          });
-    } else if (!Foundation.MediaQuery.atLeast('medium') || !Foundation.Box.ImNotTouchingYou(this.$element, null, true, false)) {
-      //if smaller than medium, resize to 100% width minus any custom L/R margin
-      this.$element
-          .css({
-            'width': eleDims.windowDims.width - (this.options.hOffset * 2)
-          })
-          .offset(Foundation.Box.GetOffsets(this.$element, null, 'center', this.options.vOffset, this.options.hOffset));
-      //flag a boolean so we can reset the size after the element is closed.
-      this.changedSize = true;
-    } else {
-      this.$element
-          .css({
-            'max-height': eleDims.windowDims.height - (this.options.vOffset * (this.options.btmOffsetPct / 100 + 1)),
-            'width': ''
-          })
-          .offset(Foundation.Box.GetOffsets(this.$element, null, elePos, this.options.vOffset));
-          //the max height based on a percentage of vertical offset plus vertical offset
-    }
+    if(!this.cached.winWidth || this.updateVals){ this._cacheValues(); }
 
     var x = Math.round((this.cached.winWidth - this.cached.modalDims.width) / 2 - (this.cached.parentOffset.left > 0 ? this.cached.parentOffset.left : 0)),
         y = Math.round(window.pageYOffset - (this.cached.parentOffset.top > 0 ? this.cached.parentOffset.top : 0) + this.cached.vertOffset);
