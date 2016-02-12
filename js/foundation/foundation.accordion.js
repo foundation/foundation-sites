@@ -36,6 +36,7 @@
             active_content = siblings.filter('.' + settings.active_class);
 
         e.preventDefault();
+        e.stopPropagation();
 
         if (accordion.attr(self.attr_name())) {
           siblings = siblings.add('[' + groupSelector + '] dd > ' + '.' + settings.content_class + ', [' + groupSelector + '] li > ' + '.' + settings.content_class);
