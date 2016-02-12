@@ -56,6 +56,18 @@ Get to know the pieces of Foundation.
     <strong>Media Queries</strong>
     <p>Working with Foundation's breakpoints.</p>
   </a></div>
+  <div class="column"><a href="media-queries.html">
+    <strong>Flexbox Mode</strong>
+    <p>Supercharge your CSS with flexbox.</p>
+  </a></div>
+  <div class="column"><a href="media-queries.html">
+    <strong>Compatibility</strong>
+    <p>What browsers does Foundation work with?</p>
+  </a></div>
+  <div class="column"><a href="media-queries.html">
+    <strong>Kitchen Sink</strong>
+    <p>Every component on one page.</p>
+  </a></div>
 </div>
 
 ### Components
