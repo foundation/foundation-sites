@@ -57,7 +57,6 @@
     @include foundation-grid;
   }
   @else {
-    @include foundation-flex-classes;
     @include foundation-flex-grid;
   }
   @include foundation-typography;
@@ -94,4 +93,8 @@
   @include foundation-title-bar;
   @include foundation-tooltip;
   @include foundation-top-bar;
+
+  @if $flex {
+    @include foundation-flex-classes;
+  }
 }
