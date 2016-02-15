@@ -12,6 +12,7 @@ var octophant = require('octophant');
 var sequence = require('run-sequence');
 var inquirer = require('inquirer');
 var exec = require('child_process').execSync;
+var plumber = require('gulp-plumber');
 
 var VERSIONED_FILES = [
   'bower.json',
@@ -61,6 +62,7 @@ gulp.task('deploy:dist', ['sass:foundation', 'javascript:foundation'], function(
   var jsFilter  = filter(['*.js'], { restore: true });
 
   return gulp.src(DIST_FILES)
+    .pipe(plumber())
     .pipe(cssFilter)
       .pipe(gulp.dest('./dist'))
       .pipe(cssnano())

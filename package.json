@@ -1,6 +1,6 @@
 {
   "name": "foundation-sites",
-  "version": "6.1.2",
+  "version": "6.2.0-rc.1",
   "main": "dist/foundation.js",
   "description": "The most advanced responsive front-end framework in the world.",
   "author": "ZURB <foundation@zurb.com> (http://foundation.zurb.com)",
@@ -25,6 +25,7 @@
     "babel-plugin-transform-es2015-modules-commonjs": "^6.4.5",
     "babel-plugin-transform-es2015-modules-umd": "^6.4.3",
     "babel-plugin-transform-es2015-parameters": "^6.3.26",
+    "babel-plugin-transform-es2015-shorthand-properties": "^6.5.0",
     "babel-plugin-transform-es2015-spread": "^6.4.0",
     "babel-plugin-transform-es2015-template-literals": "^6.3.13",
     "bootcamp": "^1.1.7",
