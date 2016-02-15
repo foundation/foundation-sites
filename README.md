@@ -29,6 +29,6 @@ Then run `npm start` to compile the documentation. When it finishes, a new brows
 
 ## Contributing
 
-Check out our [contributing guide](http://foundation.zurb.com/develop/contribute.html) to learn how you can contribute to Foundation. You can also browse the [https://github.com/zurb/foundation-sites/labels/help%20wanted](Help Wanted) tag in our issue tracker to find things to do.
+Check out our [contributing guide](http://foundation.zurb.com/develop/contribute.html) to learn how you can contribute to Foundation. You can also browse the [Help Wanted](https://github.com/zurb/foundation-sites/labels/help%20wanted) tag in our issue tracker to find things to do.
 
 Copyright (c) 2016 ZURB, inc.
