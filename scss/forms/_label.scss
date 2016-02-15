@@ -47,6 +47,7 @@ $form-label-line-height: 1.8 !default;
     .required{
       &:after {
         content: "*";
+        padding: rem-calc(5);
       }
     }
   }
