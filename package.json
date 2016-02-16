@@ -17,6 +17,7 @@
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.3.26",
+    "babel-eslint": "^4.1.8",
     "babel-plugin-transform-es2015-arrow-functions": "^6.3.13",
     "babel-plugin-transform-es2015-block-scoped-functions": "^6.3.13",
     "babel-plugin-transform-es2015-block-scoping": "^6.4.0",
@@ -41,6 +42,7 @@
     "gulp-cache-bust": "^1.0.2",
     "gulp-concat": "^2.4.3",
     "gulp-cssnano": "^2.1.0",
+    "gulp-eslint": "^2.0.0",
     "gulp-filter": "^3.0.1",
     "gulp-jshint": "^2.0.0",
     "gulp-load-plugins": "^1.2.0",
