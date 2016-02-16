@@ -2,6 +2,7 @@
 
 !function($) {
 
+
 /**
  * Accordion module.
  * @module foundation.accordion
