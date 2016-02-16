@@ -73,6 +73,8 @@ $global-text-direction: ltr;
 $global-flexbox: true;
 $print-transparent-backgrounds: true;
 
+@include add-foundation-colors();
+
 // 2. Breakpoints
 // --------------
 
@@ -384,9 +386,9 @@ $menu-icon-spacing: 0.25rem;
 // 23. Meter
 // ---------
 
-$meter-height: $progress-height;
-$meter-radius: $progress-radius;
-$meter-background: $progress-background;
+$meter-height: 1rem;
+$meter-radius: $global-radius;
+$meter-background: $medium-gray;
 $meter-fill-good: $success-color;
 $meter-fill-medium: $warning-color;
 $meter-fill-bad: $alert-color;
@@ -460,7 +462,7 @@ $reveal-overlay-background: rgba($black, 0.45);
 // 29. Slider
 // ----------
 
-$slider-width-vertical: $slider-height;
+$slider-width-vertical: 0.5rem;
 $slider-transition: all 0.2s ease-in-out;
 $slider-height: 0.5rem;
 $slider-background: $light-gray;
@@ -562,4 +564,3 @@ $topbar-submenu-background: $topbar-background;
 $topbar-title-spacing: 1rem;
 $topbar-input-width: 200px;
 $topbar-unstack-breakpoint: medium;
-
