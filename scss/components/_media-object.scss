@@ -21,14 +21,23 @@ $mediaobject-image-width-stacked: 100% !default;
 /// Adds styles for a media object container.
 @mixin media-object-container {
   margin-bottom: $mediaobject-margin-bottom;
-  display: block;
+  display: if($global-flexbox, flex, block);
+
+  @if $global-flexbox {
+    flex-wrap: nowrap;
+  }
 }
 
 /// Adds styles for sections within a media object.
 /// @param {Number} $padding [$mediaobject-section-padding] - Padding between sections.
 @mixin media-object-section($padding: $mediaobject-section-padding) {
-  display: table-cell;
-  vertical-align: top;
+  @if $global-flexbox {
+    flex: 0 0 auto;
+  }
+  @else {
+    display: table-cell;
+    vertical-align: top;
+  }
 
   &:first-child {
     padding-#{$global-right}: $padding;
@@ -41,9 +50,16 @@ $mediaobject-image-width-stacked: 100% !default;
 
 /// Adds styles to stack sections of a media object. Apply this to the section elements, not the container.
 @mixin media-object-stack {
-  display: block;
   padding: 0;
   padding-bottom: $mediaobject-section-padding;
+
+  @if $global-flexbox {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+  @else {
+    display: block;
+  }
 
   img {
     width: $mediaobject-image-width-stacked;
@@ -58,6 +74,12 @@ $mediaobject-image-width-stacked: 100% !default;
       max-width: none;
     }
 
+    @if $global-flexbox {
+      &.stack-for-small {
+        flex-wrap: wrap;
+      }
+    }
+
     &.stack-for-small .media-object-section {
       @include breakpoint(small only) {
         @include media-object-stack;
@@ -68,7 +90,15 @@ $mediaobject-image-width-stacked: 100% !default;
   .media-object-section {
     @include media-object-section;
 
-    &.middle { vertical-align: middle; }
-    &.bottom { vertical-align: bottom; }
+    @if $global-flexbox {
+      // scss-lint:disable ZeroUnit
+      &.main-section {
+        flex: 1 1 0px;
+      }
+    }
+    @else {
+      &.middle { vertical-align: middle; }
+      &.bottom { vertical-align: bottom; }
+    }
   }
 }

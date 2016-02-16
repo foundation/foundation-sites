@@ -4,7 +4,7 @@
 @import '../../scss/util/breakpoint';
 
 @include test-module('Breakpoint') {
-  
+
   @include test('Breakpoint (Named to Em) [function]') {
     $test: breakpoint(medium);
     $expect: '(min-width: 40em)';
@@ -26,22 +26,40 @@
     $test: breakpoint(medium only);
     $expect: '(min-width: 40em) and (max-width: 63.9375em)';
 
+    $test-lowest: breakpoint(small only);
+    $expect-lowest: '(max-width: 39.9375em)';
+
+    $test-highest: breakpoint(xxlarge only);
+    $expect-highest: '(min-width: 90em)';
+
     @include assert-equal($test, $expect,
-      'Creates an only range out of a named breakpoint');
+      'Creates a min/max-width range out of a named breakpoint');
+
+    @include assert-equal($test-lowest, $expect-lowest,
+      'Creates a max-width range if the breakpoint is the lowest');
+
+    @include assert-equal($test-highest, $expect-highest,
+      'Creates a min-width range if the breakpoint is the highest');
   }
 
   @include test('Breakpoint (Named Down Range) [function]') {
-    $test_medium: breakpoint(medium down);
-    $expect_medium: '(max-width: 63.9375em)';
+    $test: breakpoint(medium down);
+    $expect: '(max-width: 63.9375em)';
 
-    @include assert-equal($test_medium, $expect_medium,
+    @include assert-equal($test, $expect,
       'Creates a down range out of a medium breakpoint');
-    
-    $test_small: breakpoint(small down);
-    $expect_small: '(max-width: 39.9375em)';
 
-    @include assert-equal($test_small, $expect_small,
+    $test-lowest: breakpoint(small down);
+    $expect-lowest: '(max-width: 39.9375em)';
+
+    @include assert-equal($test-lowest, $expect-lowest,
       'Creates a down range out of a small breakpoint');
+
+    $test-highest: breakpoint(xxlarge down);
+    $expect-highest: '';
+
+    @include assert-equal($test-highest, $expect-highest,
+      'Skips media query creation for xxlarge down');
   }
 
   @include test('Breakpoint (Value Down Range) [function]') {
@@ -99,10 +117,10 @@
 
     @include assert-equal($test_next, $expect_next,
       'Returns the next value in a map');
-    
+
     $test_last: -zf-map-next($input, three);
     $expect_last: null;
-    
+
     @include assert-equal($test_last, $expect_last,
       'Returns null if the key is last in the map');
 
@@ -123,7 +141,7 @@
 
     @include assert-equal($test_kittens, $expect_kittens,
       'Given a non-existant breakpoint name, return null');
-    
+
     $test_match: -zf-get-bp-val($config, large);
     $expect_match: 1;
 

@@ -1,3 +1,7 @@
+'use strict';
+
+!function($) {
+
 /**
  * ResponsiveMenu module.
  * @module foundation.responsiveMenu
@@ -7,25 +11,8 @@
  * @requires foundation.util.drilldown
  * @requires foundation.util.dropdown-menu
  */
-!function(Foundation, $) {
-  'use strict';
 
-  // The plugin matches the plugin classes with these plugin instances.
-  var MenuPlugins = {
-    dropdown: {
-      cssClass: 'dropdown',
-      plugin: Foundation._plugins['dropdown-menu'] || null
-    },
-    drilldown: {
-      cssClass: 'drilldown',
-      plugin: Foundation._plugins['drilldown'] || null
-    },
-    accordion: {
-      cssClass: 'accordion-menu',
-      plugin: Foundation._plugins['accordion-menu'] || null
-    }
-  };
-
+class ResponsiveMenu {
   /**
    * Creates a new instance of a responsive menu.
    * @class
@@ -33,7 +20,7 @@
    * @param {jQuery} element - jQuery object to make into a dropdown menu.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  function ResponsiveMenu(element) {
+  constructor(element, options) {
     this.$element = $(element);
     this.rules = this.$element.data('responsive-menu');
     this.currentMq = null;
@@ -45,14 +32,12 @@
     Foundation.registerPlugin(this, 'ResponsiveMenu');
   }
 
-  ResponsiveMenu.defaults = {};
-
   /**
    * Initializes the Menu by parsing the classes from the 'data-ResponsiveMenu' attribute on the element.
    * @function
    * @private
    */
-  ResponsiveMenu.prototype._init = function() {
+  _init() {
     var rulesTree = {};
 
     // Parse rules from "classes" in data attribute
@@ -74,14 +59,14 @@
     if (!$.isEmptyObject(rulesTree)) {
       this._checkMediaQueries();
     }
-  };
+  }
 
   /**
    * Initializes events for the Menu.
    * @function
    * @private
    */
-  ResponsiveMenu.prototype._events = function() {
+  _events() {
     var _this = this;
 
     $(window).on('changed.zf.mediaquery', function() {
@@ -90,14 +75,14 @@
     // $(window).on('resize.zf.ResponsiveMenu', function() {
     //   _this._checkMediaQueries();
     // });
-  };
+  }
 
   /**
    * Checks the current screen width against available media queries. If the media query has changed, and the plugin needed has changed, the plugins will swap out.
    * @function
    * @private
    */
-  ResponsiveMenu.prototype._checkMediaQueries = function() {
+  _checkMediaQueries() {
     var matchedMq, _this = this;
     // Iterate through each rule and find the last matching rule
     $.each(this.rules, function(key) {
@@ -123,17 +108,38 @@
     // Create an instance of the new plugin
     if (this.currentPlugin) this.currentPlugin.destroy();
     this.currentPlugin = new this.rules[matchedMq].plugin(this.$element, {});
-  };
+  }
 
   /**
    * Destroys the instance of the current plugin on this element, as well as the window resize handler that switches the plugins out.
    * @function
    */
-  ResponsiveMenu.prototype.destroy = function() {
+  destroy() {
     this.currentPlugin.destroy();
     $(window).off('.zf.ResponsiveMenu');
     Foundation.unregisterPlugin(this);
-  };
-  Foundation.plugin(ResponsiveMenu, 'ResponsiveMenu');
+  }
+}
 
-}(Foundation, jQuery);
+ResponsiveMenu.defaults = {};
+
+// The plugin matches the plugin classes with these plugin instances.
+var MenuPlugins = {
+  dropdown: {
+    cssClass: 'dropdown',
+    plugin: Foundation._plugins['dropdown-menu'] || null
+  },
+ drilldown: {
+    cssClass: 'drilldown',
+    plugin: Foundation._plugins['drilldown'] || null
+  },
+  accordion: {
+    cssClass: 'accordion-menu',
+    plugin: Foundation._plugins['accordion-menu'] || null
+  }
+};
+
+// Window exports
+Foundation.plugin(ResponsiveMenu, 'ResponsiveMenu');
+
+}(jQuery);

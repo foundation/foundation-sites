@@ -12,7 +12,7 @@ To set up an Equalizer group, you need a container, which gets the attribute `da
 <div class="row" data-equalizer data-equalize-on="medium" id="test-eq">
   <div class="medium-4 columns">
     <div class="callout" data-equalizer-watch>
-      <img src= "assets/img/square-1.jpg">
+      <img src= "assets/img/generic/square-1.jpg">
     </div>
   </div>
   <div class="medium-4 columns">
@@ -22,7 +22,7 @@ To set up an Equalizer group, you need a container, which gets the attribute `da
   </div>
   <div class="medium-4 columns">
     <div class="callout" data-equalizer-watch>
-      <img src= "assets/img/rectangle-1.jpg">
+      <img src= "assets/img/generic/rectangle-1.jpg">
     </div>
   </div>
 </div>

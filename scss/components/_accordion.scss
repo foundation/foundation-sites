@@ -47,6 +47,7 @@ $accordion-content-padding: 1rem !default;
   list-style-type: none;
   background: $accordion-background;
   border: $accordion-content-border;
+  border-bottom: 0;
   border-radius: $global-radius;
   margin-#{$global-left}: 0;
 }
@@ -64,11 +65,6 @@ $accordion-content-padding: 1rem !default;
   &:hover,
   &:focus {
     background-color: $accordion-item-background-hover;
-  }
-
-  // Remove the border on the last title
-  :last-child > & {
-    border-bottom-width: 0;
   }
 
   @if $accordion-plusminus {

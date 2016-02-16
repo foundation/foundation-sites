@@ -9,6 +9,7 @@ tags:
   - select
   - radio
   - checkbox
+flex: true
 ---
 
 ## Form Basics
@@ -205,6 +206,10 @@ To attach extra text or controls to the left or right of an input field, wrap th
 - `.input-group-field` on the text field.
 - `.input-group-label` on a text label.
 - `.input-group-button` on a button. **Place the button inside this wrapper.**
+
+<div class="primary callout">
+  <p>This component supports flexbox mode. <a href="#">Learn how to enable flexbox mode</a>.</p>
+</div>
 
 ```html_example
 <div class="input-group">

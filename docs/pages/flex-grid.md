@@ -10,7 +10,7 @@ The flex grid works very similarly to the standard float grid, but includes a nu
 
 ## Browser support
 
-The flex grid is only supported in Chrome, Firefox, Safari 6+, IE10+, iOS 7+, and Android 4.4+. Flexbox is supported in older versions of Android, but not reliably enough for use with this grid. [View flexbox browser support here.](http://caniuse.com/#feat=flexbox) We recommend only using the flex grid on projects that can live with purely cutting-edge browser support.
+The flex grid is only supported in Chrome, Firefox, Safari 6+, IE10+, iOS 7+, and Android 4.4+. Flexbox is supported in Android 2, but not reliably enough for use with this grid. ([View flexbox browser support.](http://caniuse.com/#feat=flexbox)) We recommend only using the flex grid on projects that can live with purely cutting-edge browser support.
 
 <div class="warning callout">
   <p>In Firefox 43 (the latest version), images in flex columns may overflow their container. To fix this, add a defined <code>width</code> to any images inside a flex column, or use <code>width: 100%</code> for full-bleed images.</p>
@@ -20,14 +20,15 @@ The flex grid is only supported in Chrome, Firefox, Safari 6+, IE10+, iOS 7+, an
 
 ## Importing
 
-If you're using the CSS version of Foundation, you'll need to generate a [custom download](http://foundation.zurb.com/sites/download/#customizeFoundation) that replaces the float grid with the flex grid.
+If you're using the CSS version of Foundation, you can generate a <a href="https://foundation.zurb.com/sites/download">custom download of Foundation</a> with flexbox mode enabled.
 
-If you're using the Sass version of Foundation, remove the CSS export for the float grid, and replace it with the CSS export for the flex grid.
+If you're using the Sass version of Foundation, you can enable a framework-wide flexbox mode, and add exports for the flex grid and flexbox helper classes. [Learn more about enabling flexbox mode.](flexbox.html#enabling-flexbox-mode)
 
 ```scss
 @import 'foundation';
 
 // @include foundation-grid;
+@include foundation-flex-classes;
 @include foundation-flex-grid;
 ```
 
@@ -218,13 +219,17 @@ Applying a vertical alignment class to the flex row will affect every column dir
 
 ---
 
-The same alignment classes can also be applied to individual columns.
+Similar alignment classes can also be applied to individual columns, which use the format `.align-self-*` instead of `.align-*`.
+
+<div class="warning callout">
+  <p>In Foundation 6.2, we introduced the <code>.align-self-&ast;</code> classes, which replace the old method of using <code>.align-&ast;</code> classes on columns. The old classes will be removed completely in Foundation 6.3.</p>
+</div>
 
 ```html_example
 <div class="row">
-  <div class="column align-bottom">Align bottom</div>
-  <div class="column align-middle">Align middle</div>
-  <div class="column align-top">Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?</div>
+  <div class="column align-self-bottom">Align bottom</div>
+  <div class="column align-self-middle">Align middle</div>
+  <div class="column align-self-top">Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?</div>
 </div>
 ```
 
@@ -252,14 +257,16 @@ There are times when you won't want each media query to be collapsed or uncollap
 <div class="row medium-uncollapse large-collapse">
   <div class="small-6 columns">
     <div class="callout secondary">
+      <p class="show-for-small-only">On a small screen, I have gutters!</p>
       <p class="show-for-medium-only">On a medium screen, I have gutters!</p>
-      <p class="show-for-large-up">On a large screen, I have no gutters!</p>
+      <p class="show-for-large">On a large screen, I have no gutters!</p>
     </div>
   </div>
   <div class="small-6 columns">
     <div class="callout secondary">
+      <p class="show-for-small-only">On a small screen, I have gutters!</p>
       <p class="show-for-medium-only">On a medium screen, I have gutters!</p>
-      <p class="show-for-large-up">On a large screen, I have no gutters!</p>
+      <p class="show-for-large">On a large screen, I have no gutters!</p>
     </div>
   </div>
 </div>
@@ -297,11 +304,29 @@ We have a set of classes that make it easy to setup source ordering in your HTML
 
 ```html_example
 <div class="row">
-  <div class="column order-1 medium-order-2">
-    This column will come first on small, and second on medium and larger.
-  </div>
-  <div class="column order-2 medium-order-1">
+  <div class="column small-order-2 medium-order-1">
     This column will come second on small, and first on medium and larger.
   </div>
+  <div class="column small-order-1 medium-order-2">
+    This column will come first on small, and second on medium and larger.
+  </div>
+</div>
+```
+
+---
+
+## Block Grids
+
+To define column widths at the row-level, instead of the individual column level, add the class `.[size]-up-[n]` to a row, where `[n]` is the number of columns to display per row, and `[size]` is the breakpoint at which to apply the effect.
+
+<div class="primary callout">
+  <p>A block grid row has the property <code>align-items: stretch</code> by default, meaning the columns in each row are equal height. To change this, change the <code>align-items</code> property of the row, or use one of the <a href="flexbox.html#vertical-alignment">vertical alignment flexbox classes</a>.</p>
+</div>
+
+```html_example
+<div class="row small-up-1 medium-up-2 large-up-3">
+  <div class="column">1 per row on small</div>
+  <div class="column">2 per row on medium</div>
+  <div class="column">3 per row on large</div>
 </div>
 ```

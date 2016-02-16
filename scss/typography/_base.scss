@@ -435,5 +435,9 @@ $abbr-underline: 1px dotted $black !default;
     background-color: $keystroke-background;
     color: $keystroke-color;
     font-family: $keystroke-font;
+
+    @if has-value($keystroke-radius) {
+      border-radius: $keystroke-radius;
+    }
   }
 }

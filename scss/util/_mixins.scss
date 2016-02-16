@@ -54,7 +54,7 @@
 /// @param {Number} $bars - Number of bars in the icon.
 @mixin hamburger(
   $color: $black,
-  $color-hover: $medium-gray,
+  $color-hover: $dark-gray,
   $width: 20px,
   $height: 16px,
   $weight: 2px,
@@ -129,12 +129,16 @@
 }
 
 /// Applies the micro clearfix hack popularized by Nicolas Gallagher. Include this mixin on a container if its children are all floated, to give the container a proper height.
+/// The clearfix is augmented with specific styles to prevent borders in flexbox environments
 /// @link http://nicolasgallagher.com/micro-clearfix-hack/ Micro Clearfix Hack
+/// @link http://danisadesigner.com/blog/flexbox-clear-fix-pseudo-elements/ Flexbox fix
 @mixin clearfix {
   &::before,
   &::after {
     content: ' ';
     display: table;
+    flex-basis: 0;
+    order: 1;
   }
 
   &::after {

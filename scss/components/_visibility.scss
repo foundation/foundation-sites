@@ -22,7 +22,7 @@
   // more often than not this will be correct, just one time round the loop it won't so set in scope here
   $lower-bound: -zf-bp-to-em($lower-bound-size) - (1/16);
   // test actual lower-bound-size, if 0 set it to 0em
-  @if $lower-bound-size == 0 {
+  @if strip-unit($lower-bound-size) == 0 {
     $lower-bound: -zf-bp-to-em($lower-bound-size);
   }
 

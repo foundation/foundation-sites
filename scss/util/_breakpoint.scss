@@ -18,6 +18,13 @@ $breakpoints: (
   xxlarge: 1440px,
 ) !default;
 
+@if not map-has-key($breakpoints, small) or not map-has-key($breakpoints, medium) {
+  @error 'Your list of breakpoints (defined in $breakpoints) must include one named "small" and one named "medium".';
+}
+@else if map-get($breakpoints, small) != 0 {
+  @error 'Your "small" breakpoint (defined in $breakpoints) must be set to "0".';
+}
+
 /// All of the names in this list will be output as classes in your CSS, like `.small-12`, `.medium-6`, and so on. Each value in this list must also be in the `$breakpoints` map.
 /// @type List
 $breakpoint-classes: (small medium large) !default;
@@ -49,15 +56,7 @@ $breakpoint-classes: (small medium large) !default;
   @if type-of($bp) == 'string' {
     @if map-has-key($breakpoints, $bp) {
       @if $dir == 'only' or $dir == 'down' {
-        $next-bp: -zf-map-next($breakpoints, $bp);
-
-        @if $next-bp == null {
-          $bp-max: null;
-          @warn 'breakpoint(): the media query "#{$val}" cannot be used because #{$bp} is the largest breakpoint.';
-        }
-        @else {
-          $bp-max: $next-bp;
-        }
+        $bp-max: -zf-map-next($breakpoints, $bp);
       }
 
       $bp: map-get($breakpoints, $bp);
@@ -74,37 +73,44 @@ $breakpoint-classes: (small medium large) !default;
     $bp-max: -zf-bp-to-em($bp-max) - (1/16);
   }
 
-  // Skip media query creation if the input is "0 up"
+  // Conditions to skip media query creation
+  // - It's a named breakpoint that resolved to "0 down" or "0 up"
+  // - It's a numeric breakpoint that resolved to "0 " + anything
   @if $bp > 0em or $dir == 'only' or $dir == 'down' {
     // `only` ranges use the format `(min-width: n) and (max-width: n)`
     @if $dir == 'only' {
+      // Only named media queries can have an "only" range
       @if $named == true {
-        $str: $str + '(min-width: #{$bp})';
+        // Only use "min-width" if the floor is greater than 0
+        @if $bp > 0em {
+          $str: $str + '(min-width: #{$bp})';
 
+          // Only add "and" to the media query if there's a ceiling
+          @if $bp-max != null {
+            $str: $str + ' and ';
+          }
+        }
+
+        // Only use "max-width" if there's a ceiling
         @if $bp-max != null {
-          $str: $str + ' and (max-width: #{$bp-max})';
+          $str: $str + '(max-width: #{$bp-max})';
         }
       }
       @else {
-        @warn 'Only named media queries can have an `only` range.';
+        @warn 'breakpoint(): Only named media queries can have an `only` range.';
       }
     }
 
     // `down` ranges use the format `(max-width: n)`
     @else if $dir == 'down' {
-      $max: 0;
+      $max: if($named, $bp-max, $bp);
 
-      // For named breakpoints, subtract the breakpoint value by one "pixel", or 1/16em.
-      @if $named {
-        $max: $bp-max;
-      }
-      @else {
-        $max: $bp;
-      }
-
-      // Skip media query creation if input value is exactly "0 down" but don't "small down"
+      // Skip media query creation if input value is exactly "0 down",
+      // unless the function was called as "small down", in which case it's just "small only"
       @if $named or $bp > 0em {
-        $str: $str + '(max-width: #{$max})';
+        @if $max != null {
+          $str: $str + '(max-width: #{$max})';
+        }
       }
     }
 
@@ -229,7 +235,7 @@ $breakpoint-classes: (small medium large) !default;
 }
 
 // Legacy breakpoint variables
-// These will be removed in 6.2
+// These will be removed in 6.3
 $small-up: null;
 $small-only: null;
 $medium-up: null;

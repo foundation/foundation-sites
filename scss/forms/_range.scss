@@ -1,0 +1,144 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group slider
+////
+
+/// Default height of the slider.
+/// @type Number
+$slider-height: 0.5rem !default;
+
+/// Default background color of the slider's track.
+/// @type Color
+$slider-background: $light-gray !default;
+
+/// Default color of the active fill color of the slider.
+/// @type Color
+$slider-fill-background: $medium-gray !default;
+
+/// Default height of the handle of the slider.
+/// @type Number
+$slider-handle-height: 1.4rem !default;
+
+/// Default width of the handle of the slider.
+/// @type Number
+$slider-handle-width: 1.4rem !default;
+
+/// Default color of the handle for the slider.
+/// @type Color
+$slider-handle-background: $primary-color !default;
+
+/// Default fade amount of a disabled slider.
+/// @type Number
+$slider-opacity-disabled: 0.25 !default;
+
+/// Default radius for slider.
+/// @type Number
+$slider-radius: $global-radius !default;
+
+@mixin foundation-range-input {
+  // scss-lint:disable QualifyingElement
+  input[type="range"] {
+    $margin: ($slider-handle-height - $slider-height) / 2;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    display: block;
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+    margin-top: $margin;
+    margin-bottom: $margin;
+    border: 0;
+    line-height: 1;
+
+    @if has-value($slider-radius) {
+      border-radius: $slider-radius;
+    }
+
+    &:focus {
+      outline: 0;
+    }
+
+    &[disabled] {
+      opacity: $slider-opacity-disabled;
+    }
+
+    // Chrome/Safari
+    &::-webkit-slider-runnable-track {
+      height: $slider-height;
+      background: $slider-background;
+    }
+
+    &::-webkit-slider-handle {
+      -webkit-appearance: none;
+      background: $slider-handle-background;
+      width: $slider-handle-width;
+      height: $slider-handle-height;
+      margin-top: -$margin;
+
+      @if has-value($slider-radius) {
+        border-radius: $slider-radius;
+      }
+    }
+
+    // Firefox
+    &::-moz-range-track {
+      -moz-appearance: none;
+      height: $slider-height;
+      background: $slider-background;
+    }
+
+    &::-moz-range-thumb {
+      -moz-appearance: none;
+      background: $slider-handle-background;
+      width: $slider-handle-width;
+      height: $slider-handle-height;
+      margin-top: -$margin;
+
+      @if has-value($slider-radius) {
+        border-radius: $slider-radius;
+      }
+    }
+
+    // Internet Explorer
+    &::-ms-track {
+      height: $slider-height;
+      background: $slider-background;
+      color: transparent;
+      border: 0;
+      overflow: visible;
+      border-top: $margin solid $body-background;
+      border-bottom: $margin solid $body-background;
+    }
+
+    &::-ms-thumb {
+      background: $slider-handle-background;
+      width: $slider-handle-width;
+      height: $slider-handle-height;
+      border: 0;
+
+      @if has-value($slider-radius) {
+        border-radius: $slider-radius;
+      }
+    }
+
+    &::-ms-fill-lower {
+      background: $slider-fill-background;
+    }
+
+    &::-ms-fill-upper {
+      background: $slider-background;
+    }
+
+    @at-root {
+      output {
+        line-height: $slider-handle-height;
+        vertical-align: middle;
+        margin-left: 0.5em;
+      }
+    }
+  }
+}

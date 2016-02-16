@@ -1,6 +1,6 @@
 {
   "name": "foundation-sites",
-  "version": "6.1.1",
+  "version": "6.2.0-rc.1",
   "main": "dist/foundation.js",
   "description": "The most advanced responsive front-end framework in the world.",
   "author": "ZURB <foundation@zurb.com> (http://foundation.zurb.com)",
@@ -11,18 +11,33 @@
     "deploy": "gulp deploy"
   },
   "dependencies": {
-    "jquery": "~2.1.0",
-    "what-input": "~1.1.2"
+    "jquery": "^2.2.0",
+    "what-input": "^1.1.2"
   },
   "license": "MIT",
   "devDependencies": {
-    "browser-sync": "^2.11.1",
+    "babel-core": "^6.3.26",
+    "babel-plugin-transform-es2015-arrow-functions": "^6.3.13",
+    "babel-plugin-transform-es2015-block-scoped-functions": "^6.3.13",
+    "babel-plugin-transform-es2015-block-scoping": "^6.4.0",
+    "babel-plugin-transform-es2015-classes": "^6.3.15",
+    "babel-plugin-transform-es2015-destructuring": "^6.3.15",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.4.5",
+    "babel-plugin-transform-es2015-modules-umd": "^6.4.3",
+    "babel-plugin-transform-es2015-parameters": "^6.3.26",
+    "babel-plugin-transform-es2015-shorthand-properties": "^6.5.0",
+    "babel-plugin-transform-es2015-spread": "^6.4.0",
+    "babel-plugin-transform-es2015-template-literals": "^6.3.13",
+    "bootcamp": "^1.1.7",
+    "browser-sync": "^2.8.2",
+    "chalk": "^1.1.1",
     "clipboard": "^1.5.5",
     "corejs-typeahead": "corejavascript/typeahead.js",
     "foundation-docs": "zurb/foundation-docs",
     "gitty": "^3.3.3",
     "gulp": "^3.8.10",
-    "gulp-autoprefixer": "^3.1.0",
+    "gulp-autoprefixer": "^2.3.1",
+    "gulp-babel": "^6.1.1",
     "gulp-cache-bust": "^1.0.2",
     "gulp-concat": "^2.4.3",
     "gulp-cssnano": "^2.1.0",
@@ -68,5 +83,10 @@
   "keywords": [
     "handlebars-helper-rel",
     "handlebars-helper-slugify"
-  ]
+  ],
+  "eyeglass": {
+    "name": "foundation",
+    "sassDir": "scss",
+    "needs": "^0.8.0"
+  }
 }

@@ -374,7 +374,7 @@ description: Everything but.
 <div class="row" data-equalizer data-equalize-on="medium" id="test-eq">
   <div class="medium-4 columns">
     <div class="callout" data-equalizer-watch>
-      <img src= "assets/img/square-1.jpg">
+      <img src= "assets/img/generic/square-1.jpg">
     </div>
   </div>
   <div class="medium-4 columns">
@@ -384,7 +384,7 @@ description: Everything but.
   </div>
   <div class="medium-4 columns">
     <div class="callout" data-equalizer-watch>
-      <img src= "assets/img/rectangle-1.jpg">
+      <img src= "assets/img/generic/rectangle-1.jpg">
     </div>
   </div>
 </div>
@@ -854,7 +854,7 @@ description: Everything but.
     </div>
     <div class="columns small-6 right" data-sticky-container>
       <div class="sticky" data-sticky data-anchor="example1">
-        <img class="thumbnail" src="assets/img/rectangle-3.jpg">
+        <img class="thumbnail" src="assets/img/generic/rectangle-3.jpg">
       </div>
     </div>
   </div>
@@ -946,7 +946,7 @@ description: Everything but.
   </div>
   <div class="tabs-panel" id="panel2">
     <p>two</p>
-    <img class="thumbnail" src="assets/img/rectangle-7.jpg">
+    <img class="thumbnail" src="assets/img/generic/rectangle-7.jpg">
   </div>
   <div class="tabs-panel" id="panel3">
     <p>three</p>
@@ -954,7 +954,7 @@ description: Everything but.
   </div>
   <div class="tabs-panel" id="panel4">
     <p>four</p>
-    <img class="thumbnail" src="assets/img/rectangle-2.jpg">
+    <img class="thumbnail" src="assets/img/generic/rectangle-2.jpg">
   </div>
   <div class="tabs-panel" id="panel5">
     <p>five</p>
@@ -962,7 +962,7 @@ description: Everything but.
   </div>
   <div class="tabs-panel" id="panel6">
     <p>six</p>
-    <img class="thumbnail" src="assets/img/rectangle-8.jpg">
+    <img class="thumbnail" src="assets/img/generic/rectangle-8.jpg">
   </div>
 </div>
 ```

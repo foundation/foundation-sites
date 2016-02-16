@@ -41,6 +41,14 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
       display: none;
     }
 
+    &:not(.vertical) {
+      .is-dropdown-submenu.first-sub {
+        top: 100%;
+        #{$global-left}: 0;
+        #{$global-right}: auto;
+      }
+    }
+
     &.align-right {
       .is-dropdown-submenu.first-sub {
         top: 100%;
@@ -66,13 +74,13 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
   .is-dropdown-submenu-parent {
     position: relative;
 
-    a::after {
-      float: $global-right;
-      margin-top: 3px;
-      margin-#{$global-left}: 10px;
-    }
-
     @if $dropdownmenu-arrows {
+      a::after {
+        float: $global-right;
+        margin-top: 3px;
+        margin-#{$global-left}: 10px;
+      }
+
       &.is-down-arrow a {
         padding-#{$global-right}: 1.5rem;
         position: relative;
@@ -117,6 +125,7 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
     }
   }
 
+
   .is-dropdown-submenu {
     display: none;
     position: absolute;
@@ -137,11 +146,6 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
       width: 100%;
     }
 
-    &.first-sub {
-      top: 100%;
-      #{$global-left}: 0;
-      #{$global-right}: auto;
-    }
 
     // [TODO] Cut back specificity
     // scss-lint:disable SelectorDepth

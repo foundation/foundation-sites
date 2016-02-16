@@ -9,7 +9,7 @@ description: Foundation is written in Sass, which allows us to make the codebase
 
 ## Compatibility
 
-<img src="assets/img/logo-sass.svg" alt="Sass logo" class="float-right" style="width: 150px; height: 150px; margin-left: 1rem;">
+<img src="assets/img/logos/sass-logo.svg" alt="Sass logo" class="float-right" style="width: 150px; height: 150px; margin-left: 1rem;">
 
 **Foundation for Sites can be compiled with Ruby Sass and libsass.** We tend to stick to the latest versions of both compilers when possible. Our documentation and starter project are compiled with [node-sass](https://github.com/sass/node-sass), a Node port of libsass. We recommend these versions of either compiler:
 
@@ -52,7 +52,7 @@ grunt.initConfig({
   sass: {
     dist: {
     options: {
-        includePaths: ['node_modules/foundation-sites/scss']
+        loadPath: ['node_modules/foundation-sites/scss']
       }
     }
   }

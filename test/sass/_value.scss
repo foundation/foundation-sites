@@ -4,7 +4,7 @@
 @import '../../scss/util/value';
 
 @include test-module('Value') {
-  
+
   @include test('Value (Not Falsey) [function]') {
     $boolean: has-value(true);
     $number:  has-value(1px);
@@ -43,7 +43,7 @@
 
     @include assert-equal($testOne, $expectOne,
       'Returns correct sides when given one side value');
-    
+
     $valueTwo: 1rem 2rem;
     $testTwo: (
       get-side($valueTwo, top),
@@ -101,6 +101,18 @@
     @include assert-equal($defaultStyle, solid, $defaultDescription);
     @include assert-equal($defaultColor, black, $defaultDescription);
   }
-  
+
+  @include test('Map Deep Get [function]') {
+    $map: (
+      one: (
+        two: 'three',
+      ),
+    );
+    $expect: 'three';
+    
+    @include assert-equal(map-deep-get($map, one, two), $expect,
+      'Gets a value from a nested map');
+  }
+
   // TODO: Add spec for pow()
 }

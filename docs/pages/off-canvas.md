@@ -7,6 +7,7 @@ sass:
 js: js/foundation.offcanvas.js
 tags:
   - navigation
+flex: true
 ---
 
 <button class="button" type="button" data-toggle="offCanvasLeft">Toggle Off-canvas</button>
