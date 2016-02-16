@@ -1,18 +1,24 @@
 {
+  "ecmaVersion": 6,
   "env": {
-    "jasmine": true,
-    "node": true,
-    "mocha": true,
     "browser": true,
-    "builtin": true
+    "builtin": true,
+    "es6": true,
+    "jasmine": true,
+    "jquery": true,
+    "mocha": true,
+    "node": true
   },
-  "globals": {},
+  "globals": {
+    "Foundation": true
+    },
+  "parser": "babel-eslint",
   "rules": {
     "block-scoped-var": 2,
     "camelcase": 2,
     "comma-style": [
       2,
-      "first"
+      "last"
     ],
     "curly": [
       2,
@@ -27,10 +33,6 @@
     "eqeqeq": [
       2,
       "allow-null"
-    ],
-    "global-strict": [
-      2,
-      "never"
     ],
     "guard-for-in": 2,
     "new-cap": 2,
@@ -66,7 +68,7 @@
       0,
       "never"
     ],
-    "strict": 2,
+    "strict": [2, "global"],
     "valid-typeof": 2,
     "wrap-iife": [
       2,
