@@ -198,7 +198,7 @@
         @include flex-order($i);
       }
       .#{$-zf-size}-up-#{$i} {
-            @include flex-grid-layout($i);
+        @include flex-grid-layout($i);
       }
     }
 
