@@ -195,7 +195,7 @@
     // Source ordering
     @for $i from 1 through 6 {
       .#{$-zf-size}-order-#{$i} {
-        @include flex-grid-order($i);
+        @include flex-order($i);
       }
       .#{$-zf-size}-up-#{$i} {
             @include flex-grid-layout($i);
