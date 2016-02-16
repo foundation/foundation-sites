@@ -2,7 +2,7 @@
 
 **This package is only for versions 5 and earlier of Foundation. As of version 6, the package has a new name: `foundation-sites`.**
 
-[![Build Status](https://travis-ci.org/zurb/foundation.svg)](https://travis-ci.org/zurb/foundation)
+[![Build Status](https://travis-ci.org/zurb/foundation-sites.svg)](https://travis-ci.org/zurb/foundation-sites)
 
 
 Foundation is the most advanced responsive front-end framework in the world. You can quickly prototype and build sites or apps that work on any kind of device with Foundation, which includes layout constructs (like a fully responsive grid), elements and best practices.
