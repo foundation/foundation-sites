@@ -50,7 +50,9 @@
 @import 'components/tooltip';
 
 @mixin foundation-everything($flex: false) {
-  $global-flexbox: $flex !global;
+  @if $flex {
+    $global-flexbox: true !global;
+  }
 
   @include foundation-global-styles;
   @if not $flex {
