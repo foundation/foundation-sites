@@ -369,6 +369,8 @@ class Reveal {
         finishUp();
       }
 
+      debugger;
+
       this.$element.hide(this.options.hideDelay);
     }
 
@@ -396,13 +398,13 @@ class Reveal {
         'tabindex': ''
       });
 
-      this.$element.attr('aria-hidden', true);
+      _this.$element.attr('aria-hidden', true);
 
       /**
       * Fires when the modal is done closing.
       * @event Reveal#closed
       */
-      this.$element.trigger('closed.zf.reveal');
+      _this.$element.trigger('closed.zf.reveal');
     }
 
     /**
