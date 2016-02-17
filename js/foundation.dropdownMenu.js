@@ -48,18 +48,13 @@ class DropdownMenu {
 
     this.$menuItems = this.$element.find('[role="menuitem"]');
     this.$tabs = this.$element.children('[role="menuitem"]');
-    this.isVert = this.$element.hasClass(this.options.verticalClass);
     this.$tabs.find('ul.is-dropdown-submenu').addClass(this.options.verticalClass);
 
     if (this.$element.hasClass(this.options.rightClass) || this.options.alignment === 'right' || Foundation.rtl()) {
       this.options.alignment = 'right';
-      subs.addClass('is-left-arrow opens-left');
+      subs.addClass('opens-left');
     } else {
-      subs.addClass('is-right-arrow opens-right');
-    }
-    if (!this.isVert) {
-      this.$tabs.filter('.is-dropdown-submenu-parent').removeClass('is-right-arrow is-left-arrow opens-right opens-left')
-          .addClass('is-down-arrow');
+      subs.addClass('opens-right');
     }
     this.changed = false;
     this._events();

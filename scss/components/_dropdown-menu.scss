@@ -31,6 +31,78 @@ $dropdownmenu-border: 1px solid $medium-gray !default;
 // @type Length
 $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
 
+@mixin left-right-arrows() {
+  a::after {
+    float: $global-right;
+    margin-top: 3px;
+    margin-#{$global-left}: 10px;
+  }
+
+  &.opens-left > a::after {
+    @include css-triangle(5px, $dropdownmenu-arrow-color, left);
+  }
+
+  &.opens-right > a::after {
+    @include css-triangle(5px, $dropdownmenu-arrow-color, right);
+  }
+}
+
+@mixin dropdown-menu-direction($dir: horizontal) {
+  @if $dir == horizontal {
+    > li.opens-left {
+      > .is-dropdown-submenu {
+        left: auto;
+        right: 0;
+        top: 100%;
+      }
+    }
+    > li.opens-right {
+      > .is-dropdown-submenu {
+        right: auto;
+        left: 0;
+        top: 100%;
+      }
+    }
+    @if $dropdownmenu-arrows {
+      > li.is-dropdown-submenu-parent > a {
+        padding-#{$global-right}: 1.5rem;
+        position: relative;
+      }
+
+      > li.is-dropdown-submenu-parent > a::after {
+        @include css-triangle(5px, $dropdownmenu-arrow-color, down);
+        position: absolute;
+        top: rem-calc(2px) + rem-calc(get-side($menu-item-padding, top));
+        #{$global-right}: 5px;
+      }
+    }
+
+  } @else if $dir == vertical {
+    > li {
+      .is-dropdown-submenu {
+        top: 0;
+      }
+      &.opens-left {
+        .is-dropdown-submenu {
+          left: auto;
+          right: 100%;
+        }
+      }
+      &.opens-right {
+        .is-dropdown-submenu {
+          right: auto;
+          left: 100%;
+        }
+      }
+      @if $dropdownmenu-arrows {
+        @include left-right-arrows();
+      }
+    }
+  } @else {
+    @warn 'The direction used for dropdown-menu-direction() must be horizontal or vertical.';
+  }
+}
+
 @mixin foundation-dropdown-menu {
   .dropdown.menu {
     a {
@@ -41,11 +113,23 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
       display: none;
     }
 
-    &:not(.vertical) {
-      .is-dropdown-submenu.first-sub {
-        top: 100%;
-        #{$global-left}: 0;
-        #{$global-right}: auto;
+    @include dropdown-menu-direction(horizontal);
+
+    &.vertical {
+      @include dropdown-menu-direction(vertical);
+    }
+
+    @each $size in $breakpoint-classes {
+      @if $size != small {
+        @include breakpoint($size) {
+          &.#{$size}-horizontal {
+            @include dropdown-menu-direction(horizontal);
+          }
+
+          &.#{$size}-vertical {
+            @include dropdown-menu-direction(vertical);
+          }
+        }
       }
     }
 
@@ -64,56 +148,10 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
     &.align-right {
       float: right;
     }
-
-    > li .is-dropdown-submenu {
-      top: 0;
-      left: 100%;
-    }
   }
 
   .is-dropdown-submenu-parent {
     position: relative;
-
-    @if $dropdownmenu-arrows {
-      a::after {
-        float: $global-right;
-        margin-top: 3px;
-        margin-#{$global-left}: 10px;
-      }
-
-      &.is-down-arrow a {
-        padding-#{$global-right}: 1.5rem;
-        position: relative;
-      }
-
-      &.is-down-arrow > a::after {
-        @include css-triangle(5px, $dropdownmenu-arrow-color, down);
-        position: absolute;
-        top: rem-calc(2px) + rem-calc(get-side($menu-item-padding, top));
-        #{$global-right}: 5px;
-      }
-
-      &.is-left-arrow > a::after {
-        @include css-triangle(5px, $dropdownmenu-arrow-color, left);
-        float: left;
-        margin-left: 0;
-        margin-right: 10px;
-      }
-
-      &.is-right-arrow > a::after {
-        @include css-triangle(5px, $dropdownmenu-arrow-color, right);
-      }
-    }
-
-    &.is-left-arrow.opens-inner .is-dropdown-submenu {
-      right: 0;
-      left: auto;
-    }
-
-    &.is-right-arrow.opens-inner .is-dropdown-submenu {
-      left: 0;
-      right: auto;
-    }
 
     &.opens-inner .is-dropdown-submenu {
       top: 100%;
@@ -127,6 +165,7 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
   }
 
   .is-dropdown-submenu {
+
     display: none;
     position: absolute;
     top: 0;
@@ -136,6 +175,11 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
     background: $dropdownmenu-background;
     border: $dropdownmenu-border;
 
+    .is-dropdown-submenu-parent {
+      @if $dropdownmenu-arrows {
+        @include left-right-arrows()
+      }
+    }
     @if (type-of($dropdownmenu-border-width) == 'number') {
       .is-dropdown-submenu {
         margin-top: (-$dropdownmenu-border-width);
