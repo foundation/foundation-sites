@@ -284,8 +284,8 @@ class Drilldown {
       max = numOfElems > max ? numOfElems : max;
     });
 
-    result.height = `${max * this.$menuItems[0].getBoundingClientRect().height}px`;
-    result.width = `${this.$element[0].getBoundingClientRect().width}px`;
+    result['min-height'] = `${max * this.$menuItems[0].getBoundingClientRect().height}px`;
+    result['max-width'] = `${this.$element[0].getBoundingClientRect().width}px`;
 
     return result;
   }
