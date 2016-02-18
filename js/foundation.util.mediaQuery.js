@@ -37,15 +37,20 @@ var MediaQuery = {
 
     if (extractedStyles) {
       namedQueries = parseStyleToObject(extractedStyles);
-    } else {
-      namedQueries = defaultQueries;
-    }
+    } 
 
-    for (var key in namedQueries) {
-      self.queries.push({
-        name: key,
-        value: `only screen and (min-width: ${namedQueries[key]})`
-      });
+    for (var key in defaultQueries) {
+      if (key in namedQueries) {
+        self.queries.push({
+          name: key,
+          value: `only screen and (min-width: ${namedQueries[key]})`
+        });
+      } else {
+        self.queries.push({
+          name: key,
+          value: defaultQueries[key]
+        });
+      }
     }
 
     this.current = this._getCurrentSize();
