@@ -4,6 +4,11 @@
 
 // Default set of media queries
 const defaultQueries = {
+  small : 'only screen and (min-width: 0em)',
+  medium : 'only screen and (min-width: 40em)',
+  large : 'only screen and (min-width: 64em)',
+  xlarge : 'only screen and (min-width: 75em)',
+  xxlarge : 'only screen and (min-width: 90em)',
   'default' : 'only screen',
   landscape : 'only screen and (orientation: landscape)',
   portrait : 'only screen and (orientation: portrait)',
