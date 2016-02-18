@@ -64,8 +64,6 @@
   @include foundation-typography;
   @include foundation-forms;
   @include foundation-button;
-  @include foundation-visibility-classes;
-  @include foundation-float-classes;
   @include foundation-accordion;
   @include foundation-accordion-menu;
   @include foundation-badge;
@@ -95,6 +93,8 @@
   @include foundation-title-bar;
   @include foundation-tooltip;
   @include foundation-top-bar;
+  @include foundation-visibility-classes;
+  @include foundation-float-classes;
 
   @if $flex {
     @include foundation-flex-classes;
