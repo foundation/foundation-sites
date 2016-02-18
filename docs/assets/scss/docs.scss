@@ -92,3 +92,40 @@
       }
     }
   }
+
+  /* Banner for announcements */
+a.notice {
+  display:block;
+  overflow: hidden;
+  position: relative;
+  padding: 1rem 0;
+  width:100%;
+  background: url(../img/inky-banner-bg-boat.svg) no-repeat center center; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  @include breakpoint(medium down) {
+    background: url(../img/inky-banner-bg-clear.svg) no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+  }
+
+  .info {
+    left: 0;
+    right: 0;
+    z-index: 20;
+    margin-left: auto;
+    margin-right: auto;
+
+    h5 { 
+      color: #ffffff; 
+      text-align: center;
+      margin-bottom: 0 !important;
+    }
+  }
+}
