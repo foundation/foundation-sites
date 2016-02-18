@@ -35,7 +35,11 @@ var MediaQuery = {
     var extractedStyles = $('.foundation-mq').css('font-family');
     var namedQueries;
 
-    namedQueries = parseStyleToObject(extractedStyles);
+    if (extractedStyles) {
+      namedQueries = parseStyleToObject(extractedStyles);
+    } else {
+      namedQueries = defaultQueries;
+    }
 
     for (var key in namedQueries) {
       self.queries.push({
