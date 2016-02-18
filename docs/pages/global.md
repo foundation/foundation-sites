@@ -96,6 +96,10 @@ $foundation-palette: (
 
 Using the above palette, we can add the `.mars`, `.saturn`, or `.neptune` classes to buttons, labels, badges, and more.
 
+<div class="warning callout">
+  <p>If you're upgrading an older version of Foundation 6 to 6.2, add the line <code>@include add-foundation-colors;</code> <em>below the Global section of your settings file</em>. This will allow legacy color variables, such as <code>$primary-color</code> and <code>$secondary-color</code>, to continue working.
+</div>
+
 ---
 
 To color a component, add the name of the color as a class.
