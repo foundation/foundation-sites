@@ -197,7 +197,7 @@ The horizontal alignment classes are shorthands for the `justify-content` CSS pr
 
 ### Vertical Alignment
 
-By default, all columns in a flex grid align to the top of their parent. This behavior can be changed with another set of alignment classes. That's right, *middle alignment in CSS*!
+By default, all columns in a flex grid stretch to be equal height. This behavior can be changed with another set of alignment classes. That's right, *middle alignment in CSS*!
 
 Your options for vertical alignment are `top`, `middle`, `bottom`, and `stretch`. Note that we use the word *middle* for vertical alignment, and *center* for horizontal alignment.
 
