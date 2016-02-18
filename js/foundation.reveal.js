@@ -369,8 +369,6 @@ class Reveal {
         finishUp();
       }
 
-      debugger;
-
       this.$element.hide(this.options.hideDelay);
     }
 
