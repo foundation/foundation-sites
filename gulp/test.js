@@ -4,7 +4,7 @@ var mocha = require('gulp-mocha');
 var browser = require('browser-sync');
 
 // Runs unit tests
-gulp.task('test', ['build', 'test:sass', 'test:javascript'], function() {
+gulp.task('test', ['sass:foundation', 'javascript:foundation', 'test:sass', 'test:javascript', 'watch'], function() {
   browser.init({ server: 'test/visual' });
   gulp.watch(['scss/**/*', 'js/**/*', 'test/visual/**/*'], ['test:reload']);
 });
