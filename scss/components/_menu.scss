@@ -110,6 +110,10 @@ $menu-icon-spacing: 0.25rem !default;
         flex: 0 0 100%;
         max-width: 100%;
       }
+      > li  > a {
+        align-items: flex-start;
+        justify-content: flex-start;
+      }
     }
     @else {
       > li {
