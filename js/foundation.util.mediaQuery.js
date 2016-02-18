@@ -76,6 +76,10 @@ var MediaQuery = {
    * @returns {String|null} - The media query of the breakpoint, or `null` if the breakpoint doesn't exist.
    */
   get(size) {
+    if (! this.queries.length) {
+      this._init();
+    }
+
     for (var i in this.queries) {
       var query = this.queries[i];
       if (size === query.name) return query.value;
