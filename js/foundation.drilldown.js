@@ -263,6 +263,7 @@ class Drilldown {
     $elem.addClass('is-closing')
          .one(Foundation.transitionend($elem), function(){
            $elem.removeClass('is-active is-closing');
+           $elem.blur();
          });
     /**
      * Fires when the submenu is has closed.
