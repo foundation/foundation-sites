@@ -200,68 +200,74 @@ class Reveal {
       }
     }
 
-    var _this = this;
     this.isActive = true;
-    //make element invisible, but remove display: none so we can get size and positioning
+
+    // Make element invisible, but remove display: none so we can get size and positioning
     this.$element
-        .css({'visibility': 'hidden'})
+        .css({ 'visibility': 'hidden' })
         .show()
         .scrollTop(0);
 
-    this._setPosition(function() {
-      _this.$element.hide()
-                   .css({'visibility': ''});
-      if (!_this.options.multipleOpened) {
+    this._setPosition(() => {
+      this.$element
+        .hide()
+        .css({ 'visibility': '' });
+
+      if (!this.options.multipleOpened) {
         /**
          * Fires immediately before the modal opens.
          * Closes any other modals that are currently open
          * @event Reveal#closeme
          */
-        _this.$element.trigger('closeme.zf.reveal', _this.id);
+        this.$element.trigger('closeme.zf.reveal', this.id);
       }
-      if (_this.options.animationIn) {
-        if (_this.options.overlay) {
-          Foundation.Motion.animateIn(_this.$overlay, 'fade-in', function() {
-            Foundation.Motion.animateIn(_this.$element, _this.options.animationIn, function() {
-              _this.focusableElements = Foundation.Keyboard.findFocusable(_this.$element);
-            });
-          });
-        } else {
-          Foundation.Motion.animateIn(_this.$element, _this.options.animationIn, function() {
-            _this.focusableElements = Foundation.Keyboard.findFocusable(_this.$element);
-          });
+
+      // Motion UI method of reveal
+      if (this.options.animationIn) {
+        if (this.options.overlay) {
+          Foundation.Motion.animateIn(this.$overlay, 'fade-in');
         }
-      } else {
-        if (_this.options.overlay) {
-          _this.$overlay.show(0, function() {
-            _this.$element.show(_this.options.showDelay, function() {
-            });
-          });
-        } else {
-          _this.$element.show(_this.options.showDelay, function() {
-          });
+        Foundation.Motion.animateIn(this.$element, this.options.animationIn, function() {
+          this.focusableElements = Foundation.Keyboard.findFocusable(this.$element);
+        });
+      }
+      // jQuery method of reveal
+      else {
+        if (this.options.overlay) {
+          this.$overlay.show(0);
         }
+        this.$element.show(this.options.showDelay);
       }
     });
 
     // handle accessibility
-    this.$element.attr({'aria-hidden': false}).attr('tabindex', -1).focus()
+    this.$element
+      .attr({
+        'aria-hidden': false,
+        'tabindex': -1
+      })
+      .focus();
+
     /**
      * Fires when the modal has successfully opened.
      * @event Reveal#open
      */
-                 .trigger('open.zf.reveal');
-    if(this.isiOS){
+    this.$element.trigger('open.zf.reveal');
+
+    if (this.isiOS) {
       var scrollPos = window.pageYOffset;
       $('html, body').addClass('is-reveal-open').scrollTop(scrollPos);
-    }else{
+    }
+    else {
       $('body').addClass('is-reveal-open');
     }
 
-    $('body').addClass('is-reveal-open')
-             .attr({'aria-hidden': (this.options.overlay || this.options.fullScreen) ? true : false});
-    setTimeout(function() {
-      _this._extraHandlers();
+    $('body')
+      .addClass('is-reveal-open')
+      .attr('aria-hidden', (this.options.overlay || this.options.fullScreen) ? true : false);
+
+    setTimeout(() => {
+      this._extraHandlers();
     }, 0);
   }
 
@@ -343,20 +349,30 @@ class Reveal {
     }
     var _this = this;
 
+    // Motion UI method of hiding
     if (this.options.animationOut) {
-      Foundation.Motion.animateOut(this.$element, this.options.animationOut, function() {
-        if (_this.options.overlay) {
-          Foundation.Motion.animateOut(_this.$overlay, 'fade-out', finishUp);
-        } else { finishUp(); }
-      });
-    } else {
-      this.$element.hide(_this.options.hideDelay, function() {
-        if (_this.options.overlay) {
-          _this.$overlay.hide(0, finishUp);
-        } else { finishUp(); }
-      });
+      if (this.options.overlay) {
+        Foundation.Motion.animateOut(this.$overlay, 'fade-out', finishUp);
+      }
+      else {
+        finishUp();
+      }
+
+      Foundation.Motion.animateOut(this.$element, this.options.animationOut);
     }
-    //conditionals to remove extra event listeners added on open
+    // jQuery method of hiding
+    else {
+      if (this.options.overlay) {
+        this.$overlay.hide(0, finishUp);
+      }
+      else {
+        finishUp();
+      }
+
+      this.$element.hide(this.options.hideDelay);
+    }
+
+    // Conditionals to remove extra event listeners added on open
     if (this.options.closeOnEsc) {
       $(window).off('keydown.zf.reveal');
     }
@@ -367,21 +383,26 @@ class Reveal {
 
     this.$element.off('keydown.zf.reveal');
 
-    function finishUp(){
-      if(_this.isiOS){
+    function finishUp() {
+      if (this.isiOS) {
         $('html, body').removeClass('is-reveal-open');
-      }else{
+      }
+      else {
         $('body').removeClass('is-reveal-open');
       }
 
-      $('body').attr({'aria-hidden': false, 'tabindex': ''});
-      _this.$element.attr({'aria-hidden': true})
+      $('body').attr({
+        'aria-hidden': false,
+        'tabindex': ''
+      });
+
+      _this.$element.attr('aria-hidden', true);
 
       /**
       * Fires when the modal is done closing.
       * @event Reveal#closed
       */
-      .trigger('closed.zf.reveal');
+      _this.$element.trigger('closed.zf.reveal');
     }
 
     /**

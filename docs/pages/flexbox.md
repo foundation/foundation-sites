@@ -120,8 +120,9 @@ The horizontal alignment classes are shorthands for the `justify-content` CSS pr
 
 Vertical alignment can be applied to a flex parent&mdash;which will align all the children automatically&mdash;or to a flex child, which will align only that element.
 
-Top alignment is the default. To set parent alignment, use these classes:
+Stretch alignment is the default. To set parent alignment, use these classes:
 
+- `.align-top`
 - `.align-middle`
 - `.align-bottom`
 - `.align-stretch`

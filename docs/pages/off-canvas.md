@@ -92,6 +92,7 @@ If you need a simple title bar to toggle the off-canvas, `.title-bar` is here to
 </div>
 ```
 <br>
+
 #### Responsive Off-Canvas (Putting it all together)
 
 For an example of off-canvas on small screens and Top Bar Menu with Dropdowns, check out this Building Block: http://zurb.com/building-blocks/top-bar-with-off-canvas

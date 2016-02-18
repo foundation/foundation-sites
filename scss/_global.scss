@@ -92,7 +92,7 @@ $global-text-direction: ltr !default;
 
 /// Enables flexbox for components that support it.
 /// @type Boolean
-$global-flexbox: true !default;
+$global-flexbox: false !default;
 
 @if not map-has-key($foundation-palette, primary) {
   @error 'In $foundation-palette, you must have a color named "primary".';

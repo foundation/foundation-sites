@@ -23,7 +23,9 @@ A media object is a container with the class `.media-object`, and two or three s
 </div>
 ```
 
-In flexbox mode, the class `.main-section` must be added to your center section in order to properly size it.
+<div class="primary callout">
+  <p>In flexbox mode, the class `.main-section` must be added to your center section in order to properly size it.</p>
+</div>
 
 ```html
 <div class="media-object">
