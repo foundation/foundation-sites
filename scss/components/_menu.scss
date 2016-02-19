@@ -257,6 +257,8 @@ $menu-icon-spacing: 0.25rem !default;
         justify-content: flex-end;
       }
       @else {
+        @include clearfix;
+
         > li {
           float: $global-right;
         }
@@ -291,6 +293,15 @@ $menu-icon-spacing: 0.25rem !default;
 
   .menu-text {
     @include menu-text;
+  }
+
+  // Align center
+  .menu-centered {
+    text-align: center;
+
+    > .menu {
+      display: inline-block;
+    }
   }
 
   // Prevent FOUC when using the Responsive Menu plugin

@@ -48,7 +48,7 @@ gulp.task('docs:all', function() {
 });
 
 function buildSearch() {
-  foundationDocs.buildSearch(supercollider.tree);
+  foundationDocs.buildSearch('_build/data/search.json', supercollider.tree);
 }
 
 gulp.task('docs:debug', ['docs'], function(cb) {

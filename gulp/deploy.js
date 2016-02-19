@@ -7,7 +7,6 @@ var confirm = require('gulp-prompt').confirm;
 var prompt = require('gulp-prompt').prompt;
 var rsync = require('gulp-rsync');
 var replace = require('gulp-replace');
-var git = require('gitty')(process.cwd() + '/');
 var octophant = require('octophant');
 var sequence = require('run-sequence');
 var inquirer = require('inquirer');
