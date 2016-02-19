@@ -253,6 +253,8 @@ $menu-icon-spacing: 0.25rem !default;
         justify-content: flex-end;
       }
       @else {
+        @include clearfix;
+
         > li {
           float: $global-right;
         }
