@@ -47,6 +47,25 @@ By default, each item in the menu aligns to the left. They can also be aligned t
 </ul>
 ```
 
+<br>
+
+To align items in the middle, add a wrapping element with the class `.menu-centered`.
+
+<div class="primary callout">
+  <p>If you're using <a href="flexbox.html">Flexbox mode</a>, you don't need the wrapper class. Instead, you can just add the class <code>.align-center</code> to the menu.</p>
+</div>
+
+```html_example
+<div class="menu-centered">
+  <ul class="menu">
+    <li><a href="#">One</a></li>
+    <li><a href="#">Two</a></li>
+    <li><a href="#">Three</a></li>
+    <li><a href="#">Four</a></li>
+  </ul>
+</div>
+```
+
 ---
 
 Items can also be set to expand out and take up an even amount of space, with the `.expanded` class. Thanks to the magic of CSS, the items will automatically size themselves equally depending on how many are inside the menu.
