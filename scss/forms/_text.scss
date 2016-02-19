@@ -66,6 +66,10 @@ $input-number-spinners: true !default;
 /// @type Border
 $input-radius: $global-radius !default;
 
+/// Size of form spacing.
+/// @type Number
+$form-spacing: rem-calc(16) !default;
+
 @mixin form-element {
   $height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
 
