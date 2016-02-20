@@ -75,6 +75,12 @@ class Reveal {
         'data-resize': this.id
     });
 
+    if(this.$overlay) {
+      this.$element.detach().appendTo(this.$overlay);
+    } else {
+      this.$element.detach().appendTo($('body'));
+      this.$element.addClass('without-overlay');
+    }
     this._events();
     if (this.options.deepLink && window.location.hash === ( `#${this.id}`)) {
       $(window).one('load.zf.reveal', this.open.bind(this));
@@ -99,6 +105,17 @@ class Reveal {
   }
 
   /**
+   * Updates position left (should only be called for reveal modals without an overlay)
+   * TODO:  Figure out if we actually need to cache these values or if it doesn't matter
+   * @private
+   */
+  _updatePosition() {
+    var width = this.$element.width();
+    var outerWidth = $(window).width();
+    this.$element.css({'left': parseInt((outerWidth - width) / 2, 10) + 'px'});
+  }
+
+  /**
    * Adds event handlers for the modal.
    * @private
    */
@@ -110,9 +127,8 @@ class Reveal {
       'close.zf.trigger': this.close.bind(this),
       'toggle.zf.trigger': this.toggle.bind(this),
       'resizeme.zf.trigger': function() {
-        _this.updateVals = true;
-        if (_this.isActive) {
-          _this._setPosition();
+        if (!this.$overlay) {
+          _this._updatePosition();
         }
       }
     });
@@ -144,44 +160,6 @@ class Reveal {
     else{ this.close(); }
   }
 
-  _cacheValues() {
-    if(this.cached.mq !== Foundation.MediaQuery.current || this.$offsetParent === undefined){
-      this.$offsetParent = this.$element.offsetParent();
-      this.cached.mq = Foundation.MediaQuery.current;
-    }
-
-    this.cached.parentOffset = this.$offsetParent.offset();
-    this.cached.modalDims = this.$element[0].getBoundingClientRect();
-    this.cached.winWidth = window.innerWidth;
-    this.cached.vertOffset = window.innerHeight > this.cached.modalDims.height ? this.options.vOffset : 0;
-
-    this.updateVals = false;
-    return;
-  }
-
-  /**
-   * Sets the position of the modal before opening
-   * @param {Function} cb - a callback function to execute when positioning is complete.
-   * @private
-   */
-  _setPosition(cb) {
-    if(!this.cached.winWidth || this.updateVals){ this._cacheValues(); }
-
-    var x = Math.round((this.cached.winWidth - this.cached.modalDims.width) / 2 - (this.cached.parentOffset.left > 0 ? this.cached.parentOffset.left : 0)),
-        y = Math.round(window.pageYOffset - (this.cached.parentOffset.top > 0 ? this.cached.parentOffset.top : 0) + this.cached.vertOffset);
-
-    this.$element.css(this._applyCss(x, y));
-
-    if(cb) cb();
-  }
-
-  _applyCss(x, y) {
-    var _this = this;
-    return (_this.options.animationIn ?
-      {top: y + 'px', left: x + 'px'}
-      : {transform: 'translate(' + x + 'px, ' + y + 'px)'}
-      );
-  }
 
   /**
    * Opens the modal controlled by `this.$anchor`, and closes all others by default.
@@ -208,37 +186,39 @@ class Reveal {
         .show()
         .scrollTop(0);
 
-    this._setPosition(() => {
-      this.$element
-        .hide()
-        .css({ 'visibility': '' });
+    this.$element
+      .hide()
+      .css({ 'visibility': '' });
 
-      if (!this.options.multipleOpened) {
-        /**
-         * Fires immediately before the modal opens.
-         * Closes any other modals that are currently open
-         * @event Reveal#closeme
-         */
-        this.$element.trigger('closeme.zf.reveal', this.id);
-      }
+    if (!this.$overlay) {
+      this._updatePosition();
+    }
 
-      // Motion UI method of reveal
-      if (this.options.animationIn) {
-        if (this.options.overlay) {
-          Foundation.Motion.animateIn(this.$overlay, 'fade-in');
-        }
-        Foundation.Motion.animateIn(this.$element, this.options.animationIn, function() {
-          this.focusableElements = Foundation.Keyboard.findFocusable(this.$element);
-        });
+    if (!this.options.multipleOpened) {
+      /**
+       * Fires immediately before the modal opens.
+       * Closes any other modals that are currently open
+       * @event Reveal#closeme
+       */
+      this.$element.trigger('closeme.zf.reveal', this.id);
+    }
+
+    // Motion UI method of reveal
+    if (this.options.animationIn) {
+      if (this.options.overlay) {
+        Foundation.Motion.animateIn(this.$overlay, 'fade-in');
       }
-      // jQuery method of reveal
-      else {
-        if (this.options.overlay) {
-          this.$overlay.show(0);
-        }
-        this.$element.show(this.options.showDelay);
+      Foundation.Motion.animateIn(this.$element, this.options.animationIn, function() {
+        this.focusableElements = Foundation.Keyboard.findFocusable(this.$element);
+      });
+    }
+    // jQuery method of reveal
+    else {
+      if (this.options.overlay) {
+        this.$overlay.show(0);
       }
-    });
+      this.$element.show(this.options.showDelay);
+    }
 
     // handle accessibility
     this.$element
@@ -384,7 +364,7 @@ class Reveal {
     this.$element.off('keydown.zf.reveal');
 
     function finishUp() {
-      if (this.isiOS) {
+      if (_this.isiOS) {
         $('html, body').removeClass('is-reveal-open');
       }
       else {
