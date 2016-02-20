@@ -209,7 +209,7 @@ class Reveal {
         Foundation.Motion.animateIn(this.$overlay, 'fade-in');
       }
       Foundation.Motion.animateIn(this.$element, this.options.animationIn, function() {
-        this.focusableElements = Foundation.Keyboard.findFocusable(this.$element);
+        this.focusableElements = Foundation.Keyboard.findFocusable(this);
       });
     }
     // jQuery method of reveal
