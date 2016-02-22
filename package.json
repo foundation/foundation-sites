@@ -85,5 +85,13 @@
     "name": "foundation",
     "sassDir": "scss",
     "needs": "^0.8.0"
+  },
+  "jspm": {
+    "format": "global",
+    "meta": {
+      "dist/foundation.js": {
+        "deps": "jquery"
+      }
+    }
   }
 }
