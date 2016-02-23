@@ -105,14 +105,28 @@ class Reveal {
   }
 
   /**
-   * Updates position left (should only be called for reveal modals without an overlay)
+   * Updates position of modal
    * TODO:  Figure out if we actually need to cache these values or if it doesn't matter
    * @private
    */
   _updatePosition() {
-    var width = this.$element.width();
+    var width = this.$element.outerWidth();
     var outerWidth = $(window).width();
-    this.$element.css({'left': parseInt((outerWidth - width) / 2, 10) + 'px'});
+    var height = this.$element.outerHeight();
+    var outerHeight = $(window).height();
+    var left = parseInt((outerWidth - width) / 2, 10);
+    var top;
+    if (height > outerHeight) {
+      top = parseInt(Math.min(100, outerHeight / 10), 10);
+    } else {
+      top = parseInt((outerHeight - height) / 4, 10);
+    }
+    this.$element.css({top: top + 'px'});
+    // only worry about left if we don't have an overlay, otherwise we're perfectly in the middle
+    if(!this.$overlay) {
+      this.$element.css({left: left + 'px'});
+    }
+
   }
 
   /**
@@ -127,9 +141,7 @@ class Reveal {
       'close.zf.trigger': this.close.bind(this),
       'toggle.zf.trigger': this.toggle.bind(this),
       'resizeme.zf.trigger': function() {
-        if (!this.$overlay) {
-          _this._updatePosition();
-        }
+        _this._updatePosition();
       }
     });
 
@@ -180,19 +192,25 @@ class Reveal {
 
     this.isActive = true;
 
-    // Make element invisible, but remove display: none so we can get size and positioning
+    // Make elements invisible, but remove display: none so we can get size and positioning
     this.$element
         .css({ 'visibility': 'hidden' })
         .show()
         .scrollTop(0);
+    if (this.options.overlay) {
+      this.$overlay.css({'visibility': 'hidden'}).show();
+    }
+
+    this._updatePosition();
 
     this.$element
       .hide()
       .css({ 'visibility': '' });
 
-    if (!this.$overlay) {
-      this._updatePosition();
+    if(this.$overlay) {
+      this.$overlay.css({'visibility': ''}).hide();
     }
+
 
     if (!this.options.multipleOpened) {
       /**
