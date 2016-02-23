@@ -223,4 +223,12 @@ $show-header-for-stacked: false !default;
   table.hover {
     @include table-hover;
   }
+
+  .table-scroll {
+    overflow-x: auto;
+
+    table {
+      width: auto;
+    }
+  }
 }
