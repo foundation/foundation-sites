@@ -26,7 +26,8 @@ supercollider
     marked: foundationDocs.marked,
     handlebars: foundationDocs.handlebars,
     keepFm: true,
-    quiet: false
+    quiet: false,
+    pageRoot: 'docs/pages'
   })
   .searchConfig({
     extra: 'docs/search.yml',
