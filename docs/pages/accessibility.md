@@ -3,10 +3,10 @@ title: Accessibility
 description: Foundation for Sites is a fully-accessible framework. Here are some general guidelines to keep in mind as you make your pages accessible.
 ---
 
-Aside from accessibility features that has been built into Foundation's components, this guide will give you additional best practices towards making your site more accessible.
+In addition to the accessibility features built into Foundation's components, be sure to follow best practices for making your site more accessible.
 
 <div class="primary callout">
-  <p>Care about accessibility or want to contribute? Submit a Pull Request or get into the conversation on GitHub.</p>
+  <p>Care about accessibility or want to contribute? Submit a Pull Request or get into the [conversation on GitHub](https://github.com/zurb/foundation-sites/labels/accessibility).</p>
 </div>
 
 ## Basic Principles
