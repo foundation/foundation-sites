@@ -23,8 +23,6 @@
     "babel-plugin-transform-es2015-block-scoping": "^6.4.0",
     "babel-plugin-transform-es2015-classes": "^6.3.15",
     "babel-plugin-transform-es2015-destructuring": "^6.3.15",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.4.5",
-    "babel-plugin-transform-es2015-modules-umd": "^6.4.3",
     "babel-plugin-transform-es2015-parameters": "^6.3.26",
     "babel-plugin-transform-es2015-shorthand-properties": "^6.5.0",
     "babel-plugin-transform-es2015-spread": "^6.4.0",
