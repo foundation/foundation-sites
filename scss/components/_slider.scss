@@ -11,7 +11,7 @@
 
 /// Default slider width of a vertical slider. (Doesn't apply to the native slider.)
 /// @type Number
-$slider-width-vertical: $slider-height !default;
+$slider-width-vertical: 0.5rem !default;
 
 /// Transition properties to apply to the slider handle and fill. (Doesn't apply to the native slider.)
 /// @type Transition
