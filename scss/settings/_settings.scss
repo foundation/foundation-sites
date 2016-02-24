@@ -462,7 +462,7 @@ $reveal-overlay-background: rgba($black, 0.45);
 // 29. Slider
 // ----------
 
-$slider-width-vertical: $slider-height;
+$slider-width-vertical: 0.5rem;
 $slider-transition: all 0.2s ease-in-out;
 $slider-height: 0.5rem;
 $slider-background: $light-gray;
