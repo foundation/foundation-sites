@@ -17,6 +17,12 @@ Not a fan of GUIs? The Node-powered Foundation CLI can install the same template
 npm install --global foundation-cli
 ```
 
+Some Linux distributions may require you to run the command as root:
+
+```bash
+sudo npm install --global foundation-cli
+```
+
 <div class="callout alert">
   <p>If you already have the Foundation 5 CLI on your machine, you will only be able to access one of the commands, depending on how your command line environment is configured.</p>
 
