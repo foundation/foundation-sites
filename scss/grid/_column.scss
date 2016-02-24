@@ -61,13 +61,20 @@
   float: $global-left;
 
   // Gutters
-  @each $breakpoint, $value in $gutter {
-    $padding: rem-calc($value) / 2;
+  @if type-of($gutter) == 'map' {
+    @each $breakpoint, $value in $gutter {
+      $padding: rem-calc($value) / 2;
 
-    @include breakpoint($breakpoint) {
-      padding-left: $padding;
-      padding-right: $padding;
+      @include breakpoint($breakpoint) {
+        padding-left: $padding;
+        padding-right: $padding;
+      }
     }
+  }
+  @else if type-of($gutter) == 'number' and strip-unit($gutter) > 0 {
+    $padding: rem-calc($gutter) / 2;
+    padding-left: $padding;
+    padding-right: $padding;
   }
 
   // Last column alignment
