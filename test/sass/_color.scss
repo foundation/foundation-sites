@@ -4,7 +4,7 @@
 @import '../../scss/util/color';
 
 @include test-module('Color') {
-  
+
   @include test('Foreground (Black) [function]') {
     $test: foreground($white);
     $expect: $black;
@@ -44,9 +44,4 @@
     @include assert-equal($test, $expect,
       'Lightens a dark color');
   }
-}
-
-
-.top-bar {
-  padding: 90px;
 }

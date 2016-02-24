@@ -9,7 +9,7 @@ var PANINI_CONFIG = {
   root: 'docs/pages/',
   layouts: 'docs/layout/',
   partials: 'docs/partials/',
-  helpers: foundationDocs.handlebarsHelpers
+  helpers: foundationDocs.handlebarsHelpers,
 }
 
 var SEARCH_SORT_ORDER = ['page', 'component', 'sass variable', 'sass mixin', 'sass function', 'js class', 'js function', 'js plugin option', 'js event'];
@@ -27,7 +27,11 @@ supercollider
     handlebars: foundationDocs.handlebars,
     keepFm: true,
     quiet: false,
-    pageRoot: 'docs/pages'
+    pageRoot: 'docs/pages',
+    data: {
+      repoName: 'foundation-sites',
+      editBranch: 'master'
+    }
   })
   .searchConfig({
     extra: 'docs/search.yml',
