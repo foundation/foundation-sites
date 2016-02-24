@@ -1,4 +1,4 @@
-<html>
+<html dir="rtl">
 
 <head>
   <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
@@ -12,7 +12,7 @@
   </style>
 </head>
 
-<body dir="rtl">
+<body>
 
   <h1>RTL Should work</h1>
 
@@ -29,7 +29,12 @@
     <li><a href="#">Item 4</a>
       <ul class="menu">
         <li><a href="#">Item 4A</a></li>
-        <!-- ... -->
+        <li><a href="#">Item 4B</a>
+          <ul class="menu">
+            <li><a href="#">Item 4BA</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Item 4C</a></li>
       </ul>
     </li>
   </ul>
