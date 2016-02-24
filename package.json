@@ -88,9 +88,9 @@
   },
   "jspm": {
     "format": "global",
-    "meta": {
-      "dist/foundation.js": {
-        "deps": "jquery"
+    "shim": {
+      "dist/foundation": {
+        "deps": ["jquery"]
       }
     }
   }
