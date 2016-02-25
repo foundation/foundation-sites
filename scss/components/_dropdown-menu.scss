@@ -33,7 +33,7 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
 
 @mixin left-right-arrows {
   > a::after {
-    right: 14px;
+    #{$global-right}: 14px;
     margin-top: -3px;
   }
 
@@ -72,7 +72,7 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
 
       > li.is-dropdown-submenu-parent > a::after {
         @include css-triangle(5px, $dropdownmenu-arrow-color, down);
-        right: 5px;
+        #{$global-right}: 5px;
         margin-top: -2px;
       }
     }
@@ -160,7 +160,7 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
     a::after {
       position: absolute;
       top: 50%;
-      right: 5px;
+      #{$global-right}: 5px;
       margin-top: -2px;
     }
 
