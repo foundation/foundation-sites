@@ -211,9 +211,9 @@ Applying a vertical alignment class to the flex row will affect every column dir
 ```
 
 ```html_example
-<div class="row align-stretch">
-  <div class="columns">These colums have the same height.</div>
-  <div class="columns">That's right, equal-height columns are possible with Flexbox too! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, tempora. Impedit eius officia possimus laudantium? Molestiae eaque, sapiente atque doloremque placeat! In sint, fugiat saepe sunt dolore tempore amet cupiditate.</div>
+<div class="row align-top">
+  <div class="columns">These columns align to the top.</div>
+  <div class="columns">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, tempora. Impedit eius officia possimus laudantium? Molestiae eaque, sapiente atque doloremque placeat! In sint, fugiat saepe sunt dolore tempore amet cupiditate.</div>
 </div>
 ```
 
