@@ -66,7 +66,7 @@ To align items in the middle, add a wrapping element with the class `.menu-cente
 </div>
 ```
 
----
+<br>
 
 Items can also be set to expand out and take up an even amount of space, with the `.expanded` class. Thanks to the magic of CSS, the items will automatically size themselves equally depending on how many are inside the menu.
 
