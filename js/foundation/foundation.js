@@ -342,7 +342,7 @@
         }
       }
 
-      S(window).load(function () {
+      S(window).on('load', function () {
         S(window)
           .trigger('resize.fndtn.clearing')
           .trigger('resize.fndtn.dropdown')
