@@ -41,6 +41,50 @@ Along with the menu, the main content of your page will be housed in its own con
 </body>
 ```
 
+### Working Example for Foundation 6.x
+```html
+<body>
+  <div class="off-canvas-wrapper">
+    <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+      <div class="off-canvas position-left" id="offCanvas" data-off-canvas>
+      
+      <!--button close-->
+      <button class="close-button" aria-label="Close menu" type="button" data-close>
+        <span aria-hidden="true">&times;</span>
+      </button>
+      
+      <!-- menu -->
+       <ul class="vertical menu">
+          <li><a href="#">Foundation</a></li>
+          <li><a href="#">Dot</a></li>
+          <li><a href="#">ZURB</a></li>
+          <li><a href="#">Com</a></li>
+          <li><a href="#">Slash</a></li>
+          <li><a href="#">Sites</a></li>
+       </ul>
+      
+      </div>
+      <div class="off-canvas-content" data-off-canvas-content>
+        
+      <!-- page content -->
+      
+      </div>
+    </div>
+  </div>
+</body>
+```
+
+```javascript
+<script type="text/javascript">
+$(document).foundation().ready(function(){
+  var OffCanvas = new Foundation.OffCanvas($('#offCanvasLeft'), {
+    open_method : 'overlap' ,
+    close_on_click : true
+  });
+});
+</script>
+```
+
 ### Click Triggers
 
 To create a click trigger that opens the menu, add the attribute `data-open` or `data-toggle` to any element. That element will then open or toggle the menu when clicked on. The value of the data attribute should be the ID of the off-canvas.
