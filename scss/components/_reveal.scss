@@ -153,6 +153,10 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
       @include reveal-modal-fullscreen;
     }
 
+    @include breakpoint(small only) {
+      @include reveal-modal-fullscreen;
+    }
+
     &.without-overlay {
       position: fixed;
     }
