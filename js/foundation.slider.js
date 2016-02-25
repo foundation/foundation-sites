@@ -281,7 +281,7 @@ class Slider {
       }
 
     } else {//change event on input
-      value = this._adjustValue($handle);
+      value = this._adjustValue(null, val);
       hasVal = true;
     }
 
