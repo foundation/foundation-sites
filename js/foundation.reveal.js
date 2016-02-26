@@ -96,11 +96,6 @@ class Reveal {
                     .addClass('reveal-overlay')
                     .attr({'tabindex': -1, 'aria-hidden': true})
                     .appendTo('body');
-    if (this.options.closeOnClick) {
-      $overlay.attr({
-        'data-close': id
-      });
-    }
     return $overlay;
   }
 
@@ -156,7 +151,10 @@ class Reveal {
     }
 
     if (this.options.closeOnClick && this.options.overlay) {
-      this.$overlay.off('.zf.reveal').on('click.zf.reveal', this.close.bind(this));
+      this.$overlay.off('.zf.reveal').on('click.zf.reveal', function(e) {
+        if (e.target === _this.$element[0] || $.contains(_this.$element[0], e.target)) { return; }
+        _this.close();
+      });
     }
     if (this.options.deepLink) {
       $(window).on(`popstate.zf.reveal:${this.id}`, this._handleState.bind(this));
