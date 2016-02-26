@@ -87,7 +87,7 @@ Need to spiff up the table just a tad? Just add the class `.hover` lightly darke
 
 ## Stacked Table
 
-Sometimes you just need to stack a table. Just add the class `.stack` to your table.
+To stack a table on small screens, add the class `.stack`.
 
 ```html
 <table class="stack">
