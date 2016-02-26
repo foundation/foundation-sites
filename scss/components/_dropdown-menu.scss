@@ -175,7 +175,7 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
     }
   }
 
-  .is-dropdown-submenu, .top-bar .is-dropdown-submenu {
+  .is-dropdown-submenu {
     display: none;
     position: absolute;
     top: 0;
