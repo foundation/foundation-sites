@@ -9,7 +9,7 @@ js: js/foundation.drilldown.js
 
 Drilldowns use the standard [Menu](menu.html#nested-style) syntax, using `<ul>`, `<li>`, and `<a>`. Add `data-drilldown` to the root menu to set up the drilldown.
 
-To create sub-menus, place a `<ul>` *next to* an `<a>`. Clicking that `<a>` will then open the `<ul>` it's next to.
+To create sub-menus, place a `<ul>` *next to* an `<a>`. Clicking that `<a>` will then open the `<ul>` that it's next to.
 
 Any `<a>` without a submenu will function like a normal link.
 
@@ -25,6 +25,10 @@ Any `<a>` without a submenu will function like a normal link.
   <li><a href="#">Item 2</a></li>
 </ul>
 ```
+
+<div class="primary callout">
+  <p>The drilldown menu takes on the height of the tallest menu in the hierarchy, so the menu doesn't change height as the user navigates it.</p>
+</div>
 
 <ul class="menu" data-drilldown style="width: 200px" id="m1">
   <li>

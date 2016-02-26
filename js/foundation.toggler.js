@@ -6,6 +6,7 @@
  * Toggler module.
  * @module foundation.toggler
  * @requires foundation.util.motion
+ * @requires foundation.util.triggers
  */
 
 class Toggler {

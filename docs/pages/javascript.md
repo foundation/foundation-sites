@@ -19,6 +19,18 @@ Once you have the files, add links to jQuery and Foundation as `<script>` tags a
   <p>Make sure Foundation loads <em>after</em> jQuery.</p>
 </div>
 
+### Babel Required
+
+Our JavaScript uses some features of ECMAScript 2015. **If you use Foundation with a build system, you'll need to compile our code to ES5.** We use [Babel](https://babeljs.io/) in our templates to do this. Babel has [plugins](https://babeljs.io/docs/setup/) for every build system imaginable, so integrating it into an existing setup is easy.
+
+When configuring Babel to work with Foundation, you only need to include the `es2015` preset. At the root of your project, add a file called `.babelrc` with these contents to load that configuration:
+
+```json
+{
+  "presets": ["es2015"]
+}
+```
+
 ### File Structure
 
 All of Foundation's plugins ship as individual files, named `foundation.tabs.js`, `foundation.accordion.js`, and so on. These files are also combined into one big file called `foundation.js`, which allows you to get every plugin at once.

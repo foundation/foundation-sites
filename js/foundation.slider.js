@@ -281,7 +281,7 @@ class Slider {
       }
 
     } else {//change event on input
-      value = this._adjustValue($handle);
+      value = this._adjustValue(null, val);
       hasVal = true;
     }
 
@@ -436,8 +436,9 @@ Slider.defaults = {
    */
   end: 100,
   /**
-   * Minimum value change per change event. Not Currently Implemented!
-
+   * Minimum value change per change event.
+   * @option
+   * @example 1
    */
   step: 1,
   /**

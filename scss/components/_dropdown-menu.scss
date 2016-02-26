@@ -31,11 +31,10 @@ $dropdownmenu-border: 1px solid $medium-gray !default;
 // @type Length
 $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
 
-@mixin left-right-arrows() {
-  a::after {
-    float: $global-right;
-    margin-top: 3px;
-    margin-#{$global-left}: 10px;
+@mixin left-right-arrows {
+  > a::after {
+    #{$global-right}: 14px;
+    margin-top: -3px;
   }
 
   &.opens-left > a::after {
@@ -56,6 +55,7 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
         top: 100%;
       }
     }
+
     > li.opens-right {
       > .is-dropdown-submenu {
         right: auto;
@@ -63,6 +63,7 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
         top: 100%;
       }
     }
+
     @if $dropdownmenu-arrows {
       > li.is-dropdown-submenu-parent > a {
         padding-#{$global-right}: 1.5rem;
@@ -71,40 +72,45 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
 
       > li.is-dropdown-submenu-parent > a::after {
         @include css-triangle(5px, $dropdownmenu-arrow-color, down);
-        position: absolute;
-        top: rem-calc(2px) + rem-calc(get-side($menu-item-padding, top));
         #{$global-right}: 5px;
+        margin-top: -2px;
       }
     }
-
-  } @else if $dir == vertical {
+  }
+  @else if $dir == vertical {
     > li {
       .is-dropdown-submenu {
         top: 0;
       }
+
       &.opens-left {
         .is-dropdown-submenu {
           left: auto;
           right: 100%;
         }
       }
+
       &.opens-right {
         .is-dropdown-submenu {
           right: auto;
           left: 100%;
         }
       }
+
       @if $dropdownmenu-arrows {
-        @include left-right-arrows();
+        @include left-right-arrows;
       }
     }
-  } @else {
+  }
+  @else {
     @warn 'The direction used for dropdown-menu-direction() must be horizontal or vertical.';
   }
 }
 
 @mixin foundation-dropdown-menu {
   .dropdown.menu {
+    @include dropdown-menu-direction(horizontal);
+
     a {
       @include disable-mouse-outline;
     }
@@ -112,8 +118,6 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
     .no-js & ul {
       display: none;
     }
-
-    @include dropdown-menu-direction(horizontal);
 
     &.vertical {
       @include dropdown-menu-direction(vertical);
@@ -153,6 +157,13 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
   .is-dropdown-submenu-parent {
     position: relative;
 
+    a::after {
+      position: absolute;
+      top: 50%;
+      #{$global-right}: 5px;
+      margin-top: -2px;
+    }
+
     &.opens-inner .is-dropdown-submenu {
       top: 100%;
     }
@@ -164,8 +175,7 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
     }
   }
 
-  .is-dropdown-submenu, .top-bar .is-dropdown-submenu {
-
+  .is-dropdown-submenu {
     display: none;
     position: absolute;
     top: 0;
@@ -177,9 +187,10 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
 
     .is-dropdown-submenu-parent {
       @if $dropdownmenu-arrows {
-        @include left-right-arrows()
+        @include left-right-arrows;
       }
     }
+
     @if (type-of($dropdownmenu-border-width) == 'number') {
       .is-dropdown-submenu {
         margin-top: (-$dropdownmenu-border-width);
@@ -189,7 +200,6 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
     > li {
       width: 100%;
     }
-
 
     // [TODO] Cut back specificity
     // scss-lint:disable SelectorDepth

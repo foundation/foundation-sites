@@ -44,7 +44,7 @@ If you're using the Sass version of Foundation, you can enable a framework-wide 
 
 ## Basics
 
-The structure of the flex grid is identical to that of the float grid. Rows use the class `.row`, and columns use the class `.column`. Basic percentage-based sizing can also be done using the same grid classes you're used to: `.small-6`, `.medium-12`, and so on.
+The structure of the flex grid is identical to that of the float grid. Rows use the class `.row`, and columns use the class `.column` (or `.columns`). Basic percentage-based sizing can also be done using the same grid classes you're used to: `.small-6`, `.medium-12`, and so on.
 
 ```html_example
 <div class="row">
@@ -211,9 +211,9 @@ Applying a vertical alignment class to the flex row will affect every column dir
 ```
 
 ```html_example
-<div class="row align-stretch">
-  <div class="columns">These colums have the same height.</div>
-  <div class="columns">That's right, equal-height columns are possible with Flexbox too! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, tempora. Impedit eius officia possimus laudantium? Molestiae eaque, sapiente atque doloremque placeat! In sint, fugiat saepe sunt dolore tempore amet cupiditate.</div>
+<div class="row align-top">
+  <div class="columns">These columns align to the top.</div>
+  <div class="columns">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, tempora. Impedit eius officia possimus laudantium? Molestiae eaque, sapiente atque doloremque placeat! In sint, fugiat saepe sunt dolore tempore amet cupiditate.</div>
 </div>
 ```
 

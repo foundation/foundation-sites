@@ -27,6 +27,7 @@ var VERSIONED_FILES = [
 var DIST_FILES = [
   './_build/assets/css/foundation.css',
   './_build/assets/css/foundation-flex.css',
+  './_build/assets/css/foundation-rtl.css',
   '_build/assets/js/foundation.js'
 ];
 
