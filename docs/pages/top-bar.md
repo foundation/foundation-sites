@@ -13,7 +13,7 @@ flex: true
 
 A top bar (`.top-bar`) can have two sections: a left-hand section (`.top-bar-left`) and a right-hand section (`.top-bar-right`). On small screens, these sections stack on top of each other.
 
-In the below example, our top bar includes a [dropdown menu](dropdown-menu.html), along with a text input field and action button.
+In the below example, our top bar includes a [dropdown menu](dropdown-menu.html), along with a text input field and action button. The dropdown menu inherits the background color of the top bar. If you're using the Sass version of Foundation, you can change this with the `$topbar-submenu-background` variable.
 
 ```html_example
 <div class="top-bar">
