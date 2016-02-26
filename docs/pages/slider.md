@@ -94,6 +94,21 @@ To set it all up, create an `<input>` with an ID and add `aria-controls="id"` to
 
 ---
 
+Or with a step size:
+
+```html_example
+<div class="small-10 columns">
+  <div class="slider" data-slider data-initial-start="50" data-step="5">
+    <span class="slider-handle"  data-slider-handle role="slider" tabindex="1" aria-controls="sliderOutput2"></span>
+    <span class="slider-fill" data-slider-fill></span>
+  </div>
+</div>
+<div class="small-2 columns">
+  <input type="number" id="sliderOutput2">
+</div>
+```
+---
+
 ## Native Range Slider
 
 In Foundation 6.2, we introduced styles for `<input type="range">`, the native HTML element for range sliders. It's not supported in every browser, namely IE9 and some older mobile browsers. [View browser support for the range input type.](http://caniuse.com/#feat=input-range)

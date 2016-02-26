@@ -436,8 +436,9 @@ Slider.defaults = {
    */
   end: 100,
   /**
-   * Minimum value change per change event. Not Currently Implemented!
-
+   * Minimum value change per change event.
+   * @option
+   * @example 1
    */
   step: 1,
   /**
