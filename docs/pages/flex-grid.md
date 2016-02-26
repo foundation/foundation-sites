@@ -44,7 +44,7 @@ If you're using the Sass version of Foundation, you can enable a framework-wide 
 
 ## Basics
 
-The structure of the flex grid is identical to that of the float grid. Rows use the class `.row`, and columns use the class `.column`. Basic percentage-based sizing can also be done using the same grid classes you're used to: `.small-6`, `.medium-12`, and so on.
+The structure of the flex grid is identical to that of the float grid. Rows use the class `.row`, and columns use the class `.column` (or `.columns`). Basic percentage-based sizing can also be done using the same grid classes you're used to: `.small-6`, `.medium-12`, and so on.
 
 ```html_example
 <div class="row">
