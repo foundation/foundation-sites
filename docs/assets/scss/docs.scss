@@ -11,8 +11,6 @@
 @import 'foundation';
 @import 'motion-ui';
 
-$-zf-flex-classes-imported: true;
-
 @include foundation-everything;
 @include foundation-flex-classes;
 @include foundation-range-input;
@@ -21,6 +19,7 @@ $-zf-flex-classes-imported: true;
 @include motion-ui-transitions;
 
 @import 'foundation-docs';
+@import 'orbit';
 
 .docs-newsletter { margin-top: 0 !important; }
 #subForm { margin-top: 1rem; }
@@ -106,7 +105,7 @@ a.notice {
   position: relative;
   padding: 1rem 0;
   width:100%;
-  background: url(../img/inky-banner-bg-boat.svg) no-repeat center center; 
+  background: url(../img/inky-banner-bg-boat.svg) no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -128,8 +127,8 @@ a.notice {
     margin-left: auto;
     margin-right: auto;
 
-    h5 { 
-      color: #ffffff; 
+    h5 {
+      color: #ffffff;
       text-align: center;
       margin-bottom: 0 !important;
     }
