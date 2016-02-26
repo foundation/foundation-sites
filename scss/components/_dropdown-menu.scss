@@ -170,8 +170,7 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
 
     &.opens-left .is-dropdown-submenu {
       left: auto;
-      right: 0;
-      top: 100%;
+      right: 100%;
     }
   }
 
