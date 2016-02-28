@@ -29,7 +29,7 @@ If you're using the Sass version, open your settings file and set `$global-flexb
 You'll also need to replace the default float grid with the flex grid, which is actually a separate component. To do this, remove the `@include` for the float grid and replace it with the one for the flex grid.
 
 ```scss
-// @include foundation-grid-classes;
+// @include foundation-grid;
 @include foundation-flex-grid;
 ```
 
