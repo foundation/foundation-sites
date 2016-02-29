@@ -300,8 +300,9 @@ $menu-icon-spacing: 0.25rem !default;
   .menu-centered {
     text-align: center;
 
-    > .menu {
+    > .menu > li {
       display: inline-block;
+      text-align:left;
     }
   }
 
