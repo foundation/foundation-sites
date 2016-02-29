@@ -19,7 +19,7 @@ A basic button can be created with minimal markup. Because buttons can be used f
 
 ```html_example
 <!-- Anchors (links) -->
-<a href="about.html" class="button">Learn More</a>
+<a href="http://zurb.com/about" class="button">Learn More</a>
 <a href="#features" class="button">View All Features</a>
 
 <!-- Buttons (actions) -->
