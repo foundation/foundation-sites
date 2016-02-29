@@ -20,7 +20,7 @@
   // Source ordering
   @include -zf-each-breakpoint {
     @for $i from 1 through 6 {
-      .#{$-zf-size} {
+      .#{$-zf-size}-order-#{$i} {
         @include flex-order($i);
       }
     }
