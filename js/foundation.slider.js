@@ -103,6 +103,7 @@ class Slider {
    * @param {Number} location - floating point between the start and end values of the slider bar.
    * @param {Function} cb - callback function to fire on completion.
    * @fires Slider#moved
+   * @fires Slider#changed
    */
   _setHandlePos($hndl, location, noInvert, cb) {
   //might need to alter that slightly for bars that will have odd number selections.
@@ -199,6 +200,15 @@ class Slider {
         _this.$fill.css(css);
       }
     });
+
+    /**
+     * Fires when the value has not been change for a given time.
+     * @event Slider#changed
+     */    
+    clearTimeout(_this.timeout);
+    _this.timeout = setTimeout(function(){
+      _this.$element.trigger('changed.zf.slider', [$hndl]);
+    }, _this.options.changedDelay);
   }
 
   /**
@@ -520,7 +530,13 @@ Slider.defaults = {
    * @option
    * @example false
    */
-  invertVertical: false
+  invertVertical: false,
+  /**
+   * Milliseconds before the `changed.zf-slider` event is triggered after value change. 
+   * @option
+   * @example 500
+   */
+  changedDelay: 500
 };
 
 function percent(frac, num) {
