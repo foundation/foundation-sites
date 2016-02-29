@@ -532,7 +532,7 @@ Slider.defaults = {
    */
   invertVertical: false,
   /**
-   * Milliseconds before the `change .zf-slider` event is triggered after value change. 
+   * Milliseconds before the `changed.zf-slider` event is triggered after value change. 
    * @option
    * @example 500
    */
