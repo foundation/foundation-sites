@@ -84,7 +84,7 @@ var MediaQuery = {
   _getCurrentSize: function() {
     var matched;
 
-    for (var i in this.queries) {
+    for (var i = 0; i < this.queries.length; i++) {
       var query = this.queries[i];
 
       if (window.matchMedia(query.value).matches) {
