@@ -127,10 +127,12 @@ $topbar-unstack-breakpoint: medium !default;
     }
 
     // Generate classes for stacking on each screen size (defined in $breakpoint-classes)
-    @each $size in map-remove($breakpoint-classes, small) {
-      &.stacked-for-#{$size} {
-        @include breakpoint($size down) {
-          @include top-bar-stacked;
+    @each $size in $breakpoint-classes {
+      @if $size != small {
+        &.stacked-for-#{$size} {
+          @include breakpoint($size down) {
+            @include top-bar-stacked;
+          }
         }
       }
     }
