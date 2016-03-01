@@ -7,8 +7,12 @@
   "homepage": "http://foundation.zurb.com/sites",
   "scripts": {
     "start": "gulp",
-    "test": "gulp test",
-    "deploy": "gulp deploy"
+    "test": "npm run test:sass && npm run test:javascript",
+    "test:sass": "mocha test/sass/test_sass.js",
+    "test:javascript": "mocha-phantomjs test/javascript/index.html",
+    "test:visual": "gulp test",
+    "deploy": "gulp deploy",
+    "deploy:docs": "gulp deploy:docs"
   },
   "dependencies": {
     "jquery": "^2.2.0",
@@ -56,6 +60,7 @@
     "gulp-uglify": "^1.1.0",
     "inquirer": "^0.11.2",
     "mocha": "^2.3.3",
+    "mocha-phantomjs": "^4.0.2",
     "motion-ui": "^1.1.0",
     "octophant": "^1.0.0",
     "opener": "^1.4.1",

@@ -12,14 +12,4 @@ gulp.task('test', ['sass:foundation', 'javascript:foundation', 'test:sass', 'tes
 gulp.task('test:reload', function(done) {
   browser.reload();
   done();
-})
-
-gulp.task('test:sass', function() {
-  return gulp.src('./test/sass/test_sass.js', { read: false })
-    .pipe(mocha({ reporter: 'nyan' }));
-});
-
-gulp.task('test:javascript', function(cb) {
-  opener('../test/javascript/index.html');
-  cb();
 });
