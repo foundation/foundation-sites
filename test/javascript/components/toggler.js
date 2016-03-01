@@ -1,5 +1,4 @@
-var expect = chai.expect;
-var should = chai.should();
+chai.should();
 
 describe('Toggler', function() {
   var plugin;
@@ -15,8 +14,8 @@ describe('Toggler', function() {
       $html = $('<div id="toggler" data-toggler="class"></div>').appendTo('body');
       plugin = new Foundation.Toggler($html, {});
 
-      expect(plugin.$element).to.be.an('object');
-      expect(plugin.options).to.be.an('object');
+      plugin.$element.should.be.an('object');
+      plugin.options.should.be.an('object');
     });
   });
 
@@ -25,22 +24,22 @@ describe('Toggler', function() {
       $html = $('<div id="toggler" data-toggler="class"></div>').appendTo('body');
       plugin = new Foundation.Toggler($html, {});
 
-      expect(plugin.className).to.equal('class');
+      plugin.className.should.equal('class');
     });
 
     it('stores the class defined on the data-toggler attribute (with leading dot)', function() {
       $html = $('<div id="toggler" data-toggler=".class"></div>').appendTo('body');
       plugin = new Foundation.Toggler($html, {});
 
-      expect(plugin.className).to.equal('class');
+      plugin.className.should.equal('class');
     });
 
     it('stores defined animation classes', function() {
       $html = $('<div id="toggler" data-toggler data-animate="fade-in fade-out"></div>').appendTo('body');
       plugin = new Foundation.Toggler($html, {});
 
-      expect(plugin.animationIn).to.equal('fade-in');
-      expect(plugin.animationOut).to.equal('fade-out');
+      plugin.animationIn.should.equal('fade-in');
+      plugin.animationOut.should.equal('fade-out');
     });
 
     it('adds Aria attributes to click triggers', function() {
