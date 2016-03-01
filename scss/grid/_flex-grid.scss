@@ -204,16 +204,12 @@
       .#{$-zf-size}-order-#{$i} {
         @include flex-order($i);
       }
-
-      .#{$-zf-size}-up-#{$i} {
-        @include flex-grid-layout($i);
-      }
     }
 
     // Block grid
     @for $i from 1 through $block-grid-max {
       .#{$-zf-size}-up-#{$i} {
-        @include grid-layout($i);
+        @include flex-grid-layout($i);
       }
     }
 
