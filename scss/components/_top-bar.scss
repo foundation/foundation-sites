@@ -118,22 +118,22 @@ $topbar-unstack-breakpoint: medium !default;
   // Top bar container
   .top-bar {
     @include top-bar-container;
-  }
 
-  // Generate classes for stacking on each screen size (defined in $breakpoint-classes)
-  @each $size in $breakpoint-classes {
-    .stacked-for-#{$size} {
-      @include breakpoint($size down) {
-        @include top-bar-stacked;
+    // Stack on small screens by default
+    @include top-bar-stacked;
+
+    @include breakpoint($topbar-unstack-breakpoint) {
+      @include top-bar-unstack;
+    }
+
+    // Generate classes for stacking on each screen size (defined in $breakpoint-classes)
+    @each $size in map-remove($breakpoint-classes, small) {
+      &.stacked-for-#{$size} {
+        @include breakpoint($size down) {
+          @include top-bar-stacked;
+        }
       }
     }
-  }
-
-  // Stack on small screens by default
-  @include top-bar-stacked;
-
-  @include breakpoint($topbar-unstack-breakpoint) {
-    @include top-bar-unstack;
   }
 
   // Sub-sections
@@ -152,7 +152,7 @@ $topbar-unstack-breakpoint: medium !default;
     .top-bar-title {
       float: left;
       margin-right: $topbar-title-spacing;
-      
+
     }
 
     .top-bar-left {
