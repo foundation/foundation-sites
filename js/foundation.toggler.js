@@ -116,7 +116,6 @@ class Toggler {
   }
 
   _updateARIA(isOn) {
-    console.log(isOn);
     this.$element.attr('aria-expanded', isOn ? true : false);
   }
 
