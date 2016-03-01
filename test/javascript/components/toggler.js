@@ -1,5 +1,3 @@
-chai.should();
-
 describe('Toggler', function() {
   var plugin;
   var $html;

@@ -1,5 +1,3 @@
-chai.should();
-
 describe('Foundation core', function() {
   it('exists on the window', function() {
     (window.Foundation).should.be.an('object');
