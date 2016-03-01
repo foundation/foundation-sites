@@ -1,7 +1,7 @@
-var expect = chai.expect;
+chai.should();
 
-describe('Foundation', function() {
+describe('Foundation core', function() {
   it('should be a jQuery prototype function', function() {
-    expect($.fn.foundation).to.be.a('function');
+    ($.fn.foundation).should.to.be.a('function');
   });
 });
