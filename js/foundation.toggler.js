@@ -103,19 +103,20 @@ class Toggler {
 
     if (this.$element.is(':hidden')) {
       Foundation.Motion.animateIn(this.$element, this.animationIn, function() {
-        this.trigger('on.zf.toggler');
         _this._updateARIA(true);
+        this.trigger('on.zf.toggler');
       });
     }
     else {
       Foundation.Motion.animateOut(this.$element, this.animationOut, function() {
-        this.trigger('off.zf.toggler');
         _this._updateARIA(false);
+        this.trigger('off.zf.toggler');
       });
     }
   }
 
   _updateARIA(isOn) {
+    console.log(isOn);
     this.$element.attr('aria-expanded', isOn ? true : false);
   }
 
