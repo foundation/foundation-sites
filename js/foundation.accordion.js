@@ -94,10 +94,16 @@ class Accordion {
               _this.toggle($tabContent);
             },
             next: function() {
-              $elem.next().find('a').focus().trigger('click.zf.accordion');
+              var $a = $elem.next().find('a').focus();
+              if (!_this.options.multiExpand) {
+                $a.trigger('click.zf.accordion')
+              }
             },
             previous: function() {
-              $elem.prev().find('a').focus().trigger('click.zf.accordion');
+              var $a = $elem.prev().find('a').focus();
+              if (!_this.options.multiExpand) {
+                $a.trigger('click.zf.accordion')
+              }
             },
             handled: function() {
               e.preventDefault();
@@ -132,8 +138,7 @@ class Accordion {
    * @function
    */
   down($target, firstTime) {
-    var _this = this;
-    if(!this.options.multiExpand && !firstTime){
+    if (!this.options.multiExpand && !firstTime) {
       var $currentActive = this.$element.find('.is-active').children('[data-tab-content]');
       if($currentActive.length){
         this.up($currentActive);
@@ -146,19 +151,14 @@ class Accordion {
       .addBack()
       .parent().addClass('is-active');
 
-    // Foundation.Move(_this.options.slideSpeed, $target, function(){
-      $target.slideDown(_this.options.slideSpeed, function () {
-        /**
-         * Fires when the tab is done opening.
-         * @event Accordion#down
-         */
-        _this.$element.trigger('down.zf.accordion', [$target]);
-      });
-    // });
+    $target.slideDown(this.options.slideSpeed, () => {
+      /**
+       * Fires when the tab is done opening.
+       * @event Accordion#down
+       */
+      this.$element.trigger('down.zf.accordion', [$target]);
+    });
 
-    // if(!firstTime){
-    //   Foundation._reflow(this.$element.attr('data-accordion'));
-    // }
     $(`#${$target.attr('aria-labelledby')}`).attr({
       'aria-expanded': true,
       'aria-selected': true
