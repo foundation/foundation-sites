@@ -128,8 +128,8 @@ $-zf-flex-classes-imported: false;
 
   // Set box-sizing globally to handle padding and border widths
   *,
-  *:before,
-  *:after {
+  *::before,
+  *::after {
     box-sizing: inherit;
   }
 
