@@ -9,7 +9,7 @@
     "start": "gulp",
     "test": "npm run test:sass && npm run test:javascript",
     "test:sass": "mocha test/sass/test_sass.js",
-    "test:javascript": "mocha-phantomjs test/javascript/index.html",
+    "test:javascript": "gulp sass:foundation && gulp javascript:foundation && mocha-phantomjs test/javascript/index.html",
     "test:visual": "gulp test",
     "deploy": "gulp deploy",
     "deploy:docs": "gulp deploy:docs"
