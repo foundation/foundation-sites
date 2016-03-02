@@ -268,17 +268,30 @@ class Abide {
    * @returns {Boolean} Boolean value depends on whether or not the input value matches the pattern specified
    */
   validateText($el, pattern) {
-    // pattern = pattern ? pattern : $el.attr('pattern') ? $el.attr('pattern') : $el.attr('type');
+    // A pattern can be passed to this function, or it will be infered from the input's "pattern" attribute, or it's "type" attribute
     pattern = (pattern || $el.attr('pattern') || $el.attr('type'));
     var inputText = $el.val();
+    var valid = false;
 
-    // if text, check if the pattern exists, if so, test it, if no text or no pattern, return true.
-    return inputText.length ?
-      this.options.patterns.hasOwnProperty(pattern) ? this.options.patterns[pattern].test(inputText) :
-        pattern && pattern !== $el.attr('type') ?
-          new RegExp(pattern).test(inputText) :
-        true :
-      true;
+    if (inputText.length) {
+      // If the pattern attribute on the element is in Abide's list of patterns, then test that regexp
+      if (this.options.patterns.hasOwnProperty(pattern)) {
+        valid = this.options.patterns[pattern].test(inputText);
+      }
+      // If the pattern name isn't also the type attribute of the field, then test it as a regexp
+      else if (pattern !== $el.attr('type')) {
+        valid = new RegExp(pattern).test(inputText);
+      }
+      else {
+        valid = true;
+      }
+    }
+    // An empty field is valid if it's not required
+    else if (!$el.prop('required')) {
+      valid = true;
+    }
+
+    return valid;
    }
 
   /**

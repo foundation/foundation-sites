@@ -1,0 +1,41 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Foundation for Sites Testing</title>
+    <link href="../assets/css/foundation.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="row column">
+      <h1>Abide: Text Fields</h1>
+
+      <p>This form has one required text field and one optional text field.</p>
+
+      <form data-abide novalidate>
+        <input required type="text" placeholder="Required">
+        <input type="text" placeholder="Not required">
+        <button type="submit" class="button">Submit</button>
+        <button type="reset" class="button">Reset</button>
+      </form>
+
+      <hr>
+
+      <p>This field uses a custom pattern. The field is valid if the input is between 4 and 16 characters long.</p>
+
+      <form data-abide novalidate>
+        <input required type="text" pattern="customPattern">
+        <button type="submit" class="button">Submit</button>
+        <button type="reset" class="button">Reset</button>
+      </form>
+    </div>
+
+    <script src="../assets/js/vendor.js"></script>
+    <script src="../assets/js/foundation.js"></script>
+    <script>
+      Foundation.Abide.defaults.patterns['customPattern'] = /^\w{4,16}$/;
+      $(document).foundation();
+    </script>
+  </body>
+</html>
