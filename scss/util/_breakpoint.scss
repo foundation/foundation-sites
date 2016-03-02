@@ -63,7 +63,7 @@ $breakpoint-classes: (small medium large) !default;
       $named: true;
     }
     @else {
-      $bp: 0;
+      @error 'Your given breakpoint "#{$val}" is not defined in your settings $breakpoints.';
     }
   }
 
