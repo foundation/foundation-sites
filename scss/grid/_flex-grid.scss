@@ -213,7 +213,7 @@
       }
     }
 
-    @if $-zf-size != $zero-breakpoint-name {
+    @if $-zf-size != $-zf-zero-breakpoint {
       // Sizing (expand)
       @include breakpoint($-zf-size) {
         .#{$-zf-size}-expand {

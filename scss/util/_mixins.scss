@@ -220,7 +220,7 @@
   $map: $breakpoint-classes;
 
   @if not $small {
-    $map: map-remove($map, $zero-breakpoint-name);
+    $map: map-remove($map, $-zf-zero-breakpoint);
   }
 
   @each $size in $map {
