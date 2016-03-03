@@ -38,12 +38,9 @@ class Accordion {
    */
   _init() {
     this.$element.attr('role', 'tablist');
-    this.$tabs = this.$element.children('li');
-    if (this.$tabs.length === 0) {
-      this.$tabs = this.$element.children('[data-accordion-item]');
-    }
-    this.$tabs.each(function(idx, el){
+    this.$tabs = this.$element.children('li, [data-accordion-item]');
 
+    this.$tabs.each(function(idx, el) {
       var $el = $(el),
           $content = $el.children('[data-tab-content]'),
           id = $content[0].id || Foundation.GetYoDigits(6, 'accordion'),
@@ -56,6 +53,7 @@ class Accordion {
         'aria-expanded': false,
         'aria-selected': false
       });
+
       $content.attr({'role': 'tabpanel', 'aria-labelledby': linkId, 'aria-hidden': true, 'id': id});
     });
     var $initActive = this.$element.find('.is-active').children('[data-tab-content]');
