@@ -139,7 +139,7 @@ class Accordion {
    */
   down($target, firstTime) {
     if (!this.options.multiExpand && !firstTime) {
-      var $currentActive = this.$element.find('.is-active').children('[data-tab-content]');
+      var $currentActive = this.$element.children('.is-active').children('[data-tab-content]');
       if($currentActive.length){
         this.up($currentActive);
       }
