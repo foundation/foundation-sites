@@ -45,7 +45,7 @@ class Accordion {
     this.$tabs.each(function(idx, el){
 
       var $el = $(el),
-          $content = $el.find('[data-tab-content]'),
+          $content = $el.children('[data-tab-content]'),
           id = $content[0].id || Foundation.GetYoDigits(6, 'accordion'),
           linkId = el.id || `${id}-label`;
 
