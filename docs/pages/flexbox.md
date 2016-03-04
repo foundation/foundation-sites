@@ -24,7 +24,7 @@ Flexbox mode is only supported these browsers:
 
 If you're using the CSS version of Foundation, you can generate a <a href="https://foundation.zurb.com/sites/download">custom download of Foundation</a> with flexbox mode enabled. You can achieve this one of two methods if you're using sass:
 
-* If you use `@include foundation-everything;` in your settings scss file (usually `app.scss` or `settings.scss`, pass `true` like so:
+* If you use `@include foundation-everything;` in your settings scss file (usually `app.scss` or `settings.scss`), pass `true` like so:
 
 ```scss
 @include foundation-everything(true);
