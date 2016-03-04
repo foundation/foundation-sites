@@ -237,23 +237,22 @@ class Tooltip {
     var $template = this.template;
     var isFocus = false;
 
-    if (!this.options.disableHover) {
-
-      this.$element
-      .on('mouseenter.zf.tooltip', function(e) {
-        if (!_this.isActive) {
-          _this.timeout = setTimeout(function() {
-            _this.show();
-          }, _this.options.hoverDelay);
-        }
-      })
-      .on('mouseleave.zf.tooltip', function(e) {
-        clearTimeout(_this.timeout);
-        if (!isFocus || (!_this.isClick && _this.options.clickOpen)) {
-          _this.hide();
-        }
-      });
-    }
+    this.$element
+    .on('mouseenter.zf.tooltip', function(e) {
+      if (!_this.isActive && !_this.options.disableHover) {
+        _this.timeout = setTimeout(function() {
+          _this.show();
+        }, _this.options.hoverDelay);
+      }
+    })
+    .on('mouseleave.zf.tooltip', function(e) {
+      clearTimeout(_this.timeout);
+      if (!isFocus || (!_this.isClick && _this.options.clickOpen)) {
+        _this.hide();
+      } else if(!_this.options.clickOpen) {
+        _this.hide();
+      }
+    });
 
     if (this.options.clickOpen) {
       this.$element.on('mousedown.zf.tooltip', function(e) {
@@ -403,7 +402,7 @@ Tooltip.defaults = {
   tipText: '',
   touchCloseText: 'Tap to close.',
   /**
-   * Allows the tooltip to remain open if triggered with a click or touch event.
+   * Allows the tooltip to remain open if triggered with a click event.
    * @option
    * @example true
    */
