@@ -5,7 +5,10 @@ var browser = require('browser-sync');
 
 // Runs unit tests
 gulp.task('test', ['sass:foundation', 'javascript:foundation', 'watch'], function() {
-  browser.init({ server: 'test/visual' });
+  browser.init({
+    server: 'test/visual',
+    directory: true
+  });
   gulp.watch(['scss/**/*', 'js/**/*', 'test/visual/**/*'], ['test:reload']);
 });
 
