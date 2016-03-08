@@ -187,6 +187,7 @@ $-zf-flex-classes-imported: false;
 
   // Reset <button> styles created by most browsers
   button {
+    @include disable-mouse-outline;
     -webkit-appearance: none;
     -moz-appearance: none;
     background: transparent;
