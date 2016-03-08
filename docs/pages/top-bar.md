@@ -63,7 +63,7 @@ In the below example, we've combined the above pattern with the Responsive Toggl
 <div class="top-bar">
   <div class="top-bar-title">
     <span data-responsive-toggle="responsive-menu" data-hide-for="medium">
-      <span class="menu-icon dark" data-toggle></span>
+      <button class="menu-icon dark" type="button" data-toggle></button>
     </span>
     <strong>Site Title</strong>
   </div>
