@@ -141,7 +141,7 @@ class Dropdown {
 
     this.$element.offset(Foundation.Box.GetOffsets(this.$element, this.$anchor, position, this.options.vOffset, this.options.hOffset));
 
-    while(!Foundation.Box.ImNotTouchingYou(this.$element) && this.counter){
+    while(!Foundation.Box.ImNotTouchingYou(this.$element, false, true) && this.counter){
       this._reposition(position);
       this._setPosition();
     }
