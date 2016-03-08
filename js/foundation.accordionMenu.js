@@ -127,7 +127,6 @@ class AccordionMenu {
           return;
         }
       });
-        console.log('Keydown!');
       Foundation.Keyboard.handleKey(e, 'AccordionMenu', {
         open: function() {
           if ($target.is(':hidden')) {
