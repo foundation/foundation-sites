@@ -127,6 +127,7 @@ class AccordionMenu {
           return;
         }
       });
+        console.log('Keydown!');
       Foundation.Keyboard.handleKey(e, 'AccordionMenu', {
         open: function() {
           if ($target.is(':hidden')) {
@@ -143,10 +144,10 @@ class AccordionMenu {
           }
         },
         up: function() {
-          $prevElement.focus();
+          $prevElement.attr('tabindex', -1).focus();
         },
         down: function() {
-          $nextElement.focus();
+          $nextElement.attr('tabindex', -1).focus();
         },
         toggle: function() {
           if ($element.children('[data-submenu]').length) {
