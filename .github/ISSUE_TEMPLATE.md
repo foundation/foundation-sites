@@ -15,4 +15,4 @@
 Give us a link to a CodePen or JSFiddle that recreates the issue.
 
 - [CodePen with Foundation 6 and MotionUI](http://codepen.io/rafibomb/pen/xVVGOB)
-- [CodePen with Foundation 6 and Flexbox grid MotionUI](http://codepen.io/rafibomb/pen/jqqPra)
+- [CodePen with Foundation 6, Flexbox grid and MotionUI](http://codepen.io/rafibomb/pen/jqqPra)
