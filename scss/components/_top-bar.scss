@@ -22,7 +22,7 @@ $topbar-submenu-background: $topbar-background !default;
 /// @type Number
 $topbar-title-spacing: 1rem !default;
 
-/// Width of `<input>` elements inside the top bar.
+/// Maximum width of `<input>` elements inside the top bar.
 /// @type Number
 $topbar-input-width: 200px !default;
 
@@ -58,7 +58,7 @@ $topbar-unstack-breakpoint: medium !default;
 
   // Restrain width of inputs by default to make them easier to arrange
   input {
-    width: $topbar-input-width;
+    max-width: $topbar-input-width;
     margin-#{$global-right}: 1rem;
   }
 
