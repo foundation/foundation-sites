@@ -224,7 +224,7 @@ class Reveal {
       if (this.options.overlay) {
         Foundation.Motion.animateIn(this.$overlay, 'fade-in');
       }
-      Foundation.Motion.animateIn(this.$element, this.options.animationIn, function() {
+      Foundation.Motion.animateIn(this.$element, this.options.animationIn, () => {
         this.focusableElements = Foundation.Keyboard.findFocusable(this.$element);
       });
     }
