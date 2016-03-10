@@ -51,6 +51,11 @@ class Dropdown {
 
     });
 
+    if(this.options.parentClass){
+      this.$parent = $('.' + this.options.parentClass);
+    }else{
+      this.$parent = null;
+    }
     this.options.positionClass = this.getPositionClass();
     this.counter = 4;
     this.usedPositions = [];
@@ -130,9 +135,16 @@ class Dropdown {
         param = (direction === 'top') ? 'height' : 'width',
         offset = (param === 'height') ? this.options.vOffset : this.options.hOffset;
 
-    if(($eleDims.width >= $eleDims.windowDims.width) || (!this.counter && !Foundation.Box.ImNotTouchingYou(this.$element))){
+    if(($eleDims.width >= $eleDims.windowDims.width) || (!this.counter && !Foundation.Box.ImNotTouchingYou(this.$element, this.$parent))){
+      var newWidth = $eleDims.windowDims.width;
+      if(this.$parent) {
+        var parentWidth = this.$parent.width();
+        if(parentWidth < newWidth){
+          newWidth = parentWidth;
+        }
+      }
       this.$element.offset(Foundation.Box.GetOffsets(this.$element, this.$anchor, 'center bottom', this.options.vOffset, this.options.hOffset, true)).css({
-        'width': $eleDims.windowDims.width - (this.options.hOffset * 2),
+        'width': newWidth - (this.options.hOffset * 2),
         'height': 'auto'
       });
       this.classChanged = true;
@@ -141,7 +153,7 @@ class Dropdown {
 
     this.$element.offset(Foundation.Box.GetOffsets(this.$element, this.$anchor, position, this.options.vOffset, this.options.hOffset));
 
-    while(!Foundation.Box.ImNotTouchingYou(this.$element) && this.counter){
+    while(!Foundation.Box.ImNotTouchingYou(this.$element, this.$parent) && this.counter){
       this._reposition(position);
       this._setPosition();
     }
@@ -342,6 +354,12 @@ class Dropdown {
 }
 
 Dropdown.defaults = {
+  /**
+   * Class that designates bounding container of Dropdown (Default: window)
+   * @option
+   * @example 'dropdown-parent'
+   */
+  parentClass: null,
   /**
    * Amount of time to delay opening a submenu on hover event.
    * @option
