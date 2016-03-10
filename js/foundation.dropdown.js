@@ -141,8 +141,8 @@ class Dropdown {
       if(this.$parent) {
         var $parentDims = Foundation.Box.GetDimensions(this.$parent);
         newHOffset = $parentDims.offset.left;
-        if($parentDims.windowDims.width < newWidth){
-          newWidth = $parentDims.windowDims.width;
+        if($parentDims.width < newWidth){
+          newWidth = $parentDims.width;
         }
       }
       this.$element.offset(Foundation.Box.GetOffsets(this.$element, this.$anchor, 'center bottom', this.options.vOffset, this.options.hOffset + newHOffset, true)).css({
