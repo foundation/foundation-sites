@@ -136,14 +136,16 @@ class Dropdown {
         offset = (param === 'height') ? this.options.vOffset : this.options.hOffset;
 
     if(($eleDims.width >= $eleDims.windowDims.width) || (!this.counter && !Foundation.Box.ImNotTouchingYou(this.$element, this.$parent))){
-      var newWidth = $eleDims.windowDims.width;
+      var newWidth = $eleDims.windowDims.width,
+          newHOffset = 0;
       if(this.$parent) {
-        var parentWidth = this.$parent.width();
-        if(parentWidth < newWidth){
-          newWidth = parentWidth;
+        var $parentDims = Foundation.Box.GetDimensions(this.$parent);
+        newHOffset = $parentDims.offset.left;
+        if($parentDims.windowDims.width < newWidth){
+          newWidth = $parentDims.windowDims.width;
         }
       }
-      this.$element.offset(Foundation.Box.GetOffsets(this.$element, this.$anchor, 'center bottom', this.options.vOffset, this.options.hOffset, true)).css({
+      this.$element.offset(Foundation.Box.GetOffsets(this.$element, this.$anchor, 'center bottom', this.options.vOffset, this.options.hOffset + newHOffset, true)).css({
         'width': newWidth - (this.options.hOffset * 2),
         'height': 'auto'
       });
