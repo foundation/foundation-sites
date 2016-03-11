@@ -1,0 +1,180 @@
+grid:
+  sass: grid
+
+typography:
+  sass: typography
+
+button:
+  sass: button
+
+forms:
+  sass: forms
+
+input_range:
+  sass: range-input
+
+accordion:
+  sass: accordion
+  js: accordion
+  js_utils:
+    - keyboard
+    - motion
+
+accordion_menu:
+  sass: accordion-menu
+  js: accordionMenu
+  js_utils:
+    - keyboard
+    - motion
+    - nest
+
+badge:
+  sass: badge
+
+breadcrumbs:
+  sass: breadcrumbs
+
+button_group:
+  sass: button-group
+
+callout:
+  sass: callout
+
+close_button:
+  sass: close-button
+
+drilldown_menu:
+  sass: drilldown-menu
+  js: drilldown
+  js_utils:
+    - keyboard
+    - motion
+    - nest
+
+dropdown:
+  sass: dropdown
+  js: dropdown
+  js_utils:
+    - keyboard
+    - box
+    - triggers
+
+dropdown_menu:
+  sass: dropdown-menu
+  js: dropdownMenu
+  js_utils:
+    - keyboard
+    - motion
+    - box
+    - nest
+
+flex_video:
+  sass: flex-video
+
+interchange:
+  js: interchange
+  js_utils:
+    - triggers
+    - timerAndImageLoader
+
+label:
+  sass: label
+
+magellan:
+  js: magellan
+  js_utils:
+    - motion
+
+media_object:
+  sass: media-object
+
+menu:
+  sass: menu
+
+off_canvas:
+  sass: off-canvas
+
+orbit:
+  sass: orbit
+  js: orbit
+  js_utils:
+    - motion
+    - timerAndImageLoader
+    - keyboard
+    - touch
+
+progress_bar:
+  sass: progress-bar
+
+progress_element:
+  sass: progress-element
+
+meter_element:
+  sass: meter-element
+
+slider:
+  sass: slider
+  js: slider
+  js_utils:
+    - box
+    - motion
+    - triggers
+    - mediaQuery
+
+sticky:
+  sass: sticky
+  js: sticky
+  js_utils:
+    - triggers
+    - mediaQuery
+
+reveal:
+  sass: reveal
+  js: reveal
+  js_utils:
+    - box
+    - motion
+    - triggers
+    - mediaQuery
+
+switch:
+  sass: switch
+
+table:
+  sass: table
+
+tabs:
+  sass: tabs
+  js: tabs
+  js_utils:
+    - keyboard
+    - timerAndImageLoader
+
+thumbnail:
+  sass: thumbnail
+
+title_bar:
+  sass: title-bar
+
+togger:
+  js: toggler
+  js_utils:
+    - motion
+
+tooltip:
+  sass: tooltip
+  js: tooltip
+  js_utils:
+    - box
+    - triggers
+    - mediaQuery
+    - motion
+
+top_bar:
+  sass: top-bar
+
+visibility:
+  sass: visibility-classes
+
+float:
+  sass: float-classes
