@@ -9,7 +9,7 @@ var unique = require('array-uniq');
  */
 module.exports = function(config, modules) {
   var files = ['core'];
-  var utils = [];
+  var utils = ['mediaQuery'];
   var libraries = [];
 
   if (empty(modules)) {
@@ -31,7 +31,9 @@ module.exports = function(config, modules) {
   }
 
   // Prune duplicate entries from the list of utility files
-  utils = unique(utils);
+  utils = unique(utils).map(function(name) {
+    return 'util.' + name;
+  });
 
   // Combine foundation.core.js, utilities, and plugins into one array
   files = files.concat(utils, libraries);

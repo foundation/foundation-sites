@@ -39,7 +39,7 @@ module.exports = function(config, modules, variables) {
   // Create variable overrides code
   for (var i in variables) {
     var name = i.replace('_', '-');
-    variableList.push(`$${name}: ${variables[i]};`);
+    variableList.push(format('$%s: %s;', name, variables[i]));
   }
 
   // Create module exports with @include
@@ -47,7 +47,7 @@ module.exports = function(config, modules, variables) {
     var name = modules[i];
 
     if (CONFIG[name] && CONFIG[name].sass) {
-      exportList.push(`@include foundation-${CONFIG[name].sass};`);
+      exportList.push(format('@include foundation-%s;', CONFIG[name].sass));
     }
   }
 

@@ -2,7 +2,9 @@
   "modules": [
     "typography",
     "grid",
-    "buttons",
+    "forms",
+    "button",
+    "callout",
     "reveal"
   ],
   "variables": {}
