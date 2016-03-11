@@ -22,7 +22,7 @@ var SASS_TEMPLATE = multiline(function() {/*
 module.exports = function(config, modules, variables) {
   var CONFIG = config;
   var variableList = [];
-  var exportList = [];
+  var exportList = ['@include foundation-global-styles;'];
 
   // Create variable overrides code
   for (var i in variables) {

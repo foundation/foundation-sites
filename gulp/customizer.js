@@ -7,6 +7,8 @@ var yaml = require('js-yaml').safeLoad;
 var sass = require('gulp-sass');
 var Readable = require('stream').Readable;
 var source = require('vinyl-source-stream');
+var cssnano = require('gulp-cssnano');
+var rename = require('gulp-rename');
 
 var CUSTOMIZER_CONFIG;
 var MODULE_LIST = ['accordion', 'tabs'];
@@ -36,5 +38,8 @@ gulp.task('customizer:sass', ['customizer:loadConfig'], function(done) {
         'node_modules/motion-ui/src'
       ]
     }))
+    .pipe(gulp.dest('.customizer/css'))
+    .pipe(cssnano())
+    .pipe(rename('foundation.min.css'))
     .pipe(gulp.dest('.customizer/css'));
 });
