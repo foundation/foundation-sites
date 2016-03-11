@@ -1,3 +1,4 @@
+var empty = require('is-empty-object');
 var unique = require('array-uniq');
 
 /**
@@ -10,6 +11,10 @@ module.exports = function(config, modules) {
   var files = ['core'];
   var utils = [];
   var libraries = [];
+
+  if (empty(modules)) {
+    modules = Object.keys(config);
+  }
 
   for (var i in modules) {
     var name = modules[i];

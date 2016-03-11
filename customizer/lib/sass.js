@@ -1,3 +1,4 @@
+var empty = require('is-empty-object');
 var format = require('util').format;
 var multiline = require('multiline');
 
@@ -30,6 +31,10 @@ module.exports = function(config, modules, variables) {
   var CONFIG = config;
   var variableList = [];
   var exportList = ['@include foundation-global-styles;'];
+
+  if (empty(modules)) {
+    modules = Object.keys(config);
+  }
 
   // Create variable overrides code
   for (var i in variables) {
