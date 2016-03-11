@@ -329,7 +329,7 @@
           p.left = p.left - this.outerWidth() + t.outerWidth();
         }
 
-        if (!self.settings.no_pip && t.outerWidth() < this.outerWidth() || self.small() || this.hasClass(s.mega_menu)) {
+        if (!s.no_pip && t.outerWidth() < this.outerWidth() || self.small() || this.hasClass(s.mega_menu)) {
           self.adjust_pip(this, t, s, p);
         }
 
@@ -349,7 +349,7 @@
           p.left = p.left - this.outerWidth() + t.outerWidth();
         }
 
-        if (!self.settings.no_pip && t.outerWidth() < this.outerWidth() || self.small() || this.hasClass(s.mega_menu)) {
+        if (!s.no_pip && t.outerWidth() < this.outerWidth() || self.small() || this.hasClass(s.mega_menu)) {
           self.adjust_pip(this, t, s, p);
         }
 
@@ -389,7 +389,7 @@
 
         var self = Foundation.libs.dropdown;
 
-        if (!self.settings.no_pip && t.outerWidth() < this.outerWidth() || self.small() || this.hasClass(s.mega_menu)) {
+        if (!s.no_pip && t.outerWidth() < this.outerWidth() || self.small() || this.hasClass(s.mega_menu)) {
           self.adjust_pip(this, t, s, p);
         }
 
