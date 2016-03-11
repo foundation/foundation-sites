@@ -10,7 +10,7 @@ module.exports = function(config, modules) {
 
     // Check if the module has JS files
     if (config[name] && config[name].js) {
-      libraries = libraries.push(config[name].js);
+      libraries.push(config[name].js);
 
       // Check if the module has dependencies
       if (config[name].js_utils) {
@@ -23,6 +23,6 @@ module.exports = function(config, modules) {
   files = files.concat(utils, libraries);
 
   return files.map(function(file) {
-    return 'foundation.' + file + '.js';
+    return 'js/foundation.' + file + '.js';
   });
 }
