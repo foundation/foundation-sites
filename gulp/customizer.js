@@ -5,8 +5,10 @@ var customizer = require('../customizer/lib');
 var File = require('vinyl');
 var fs = require('fs');
 var gulp = require('gulp');
+var If = require('gulp-if');
 var path = require('path');
 var Readable = require('stream').Readable;
+var replace = require('gulp-replace');
 var rename = require('gulp-rename');
 var sass = require('gulp-sass');
 var source = require('vinyl-source-stream');
@@ -18,6 +20,7 @@ var yargs = require('yargs');
 var ARGS = require('yargs').argv;
 var CUSTOMIZER_CONFIG;
 var MODULE_LIST;
+var VARIABLE_LIST;
 
 // Load the configuration file for the customizer. It's a list of modules to load and Sass variables to override
 gulp.task('customizer:loadConfig', function() {
@@ -78,7 +81,10 @@ gulp.task('customizer:javascript', ['customizer:loadConfig'], function() {
 
 // Copies the boilerplate index.html to the custom download folder
 gulp.task('customizer:html', ['customizer:loadConfig'], function() {
+  var rtlEnabled = VARIABLE_LIST['global-text-direction'] && VARIABLE_LIST['global-text-direction'] === 'rtl';
+
   return gulp.src('customizer/index.html')
+    .pipe(If(rtlEnabled, replace('ltr', 'rtl')))
     .pipe(gulp.dest('.customizer'));
 });
 
