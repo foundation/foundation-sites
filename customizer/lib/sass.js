@@ -19,6 +19,13 @@ var SASS_TEMPLATE = multiline(function() {/*
   @include motion-ui-animations;
 */});
 
+/**
+ * Generates an entry point Sass file with a custom list of CSS exports and Sass variables.
+ * @param {Object} config - Customizer configuration object.
+ * @param {String[]} modules - Modules to include CSS for.
+ * @param {Object} variables - Sass variable overrides to include. The key is the name of the variable, and the value is the value.
+ * @returns {String} Formatted Sass file.
+ */
 module.exports = function(config, modules, variables) {
   var CONFIG = config;
   var variableList = [];

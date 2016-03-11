@@ -19,8 +19,12 @@ var ARGS = require('yargs').argv;
 var CUSTOMIZER_CONFIG;
 var MODULE_LIST;
 
+// Load the configuration file for the customizer. It's a list of modules to load and Sass variables to override
 gulp.task('customizer:loadConfig', function() {
+  // Config file with list of all Foundation modules and dependencies
   var config = fs.readFileSync('customizer/config.yml');
+
+  // Module file, created from customizer form data
   var moduleListPath = path.relative(__dirname, path.join(process.cwd(), ARGS.modules));
   var moduleList = require(moduleListPath);
 
@@ -29,6 +33,7 @@ gulp.task('customizer:loadConfig', function() {
   VARIABLE_LIST = moduleList.variables;
 });
 
+// Creates a Sass file from the module/variable list and creates foundation.css and foundation.min.css
 gulp.task('customizer:sass', ['customizer:loadConfig'], function() {
   var sassFile = customizer.sass(CUSTOMIZER_CONFIG, MODULE_LIST, VARIABLE_LIST);
 
@@ -54,6 +59,7 @@ gulp.task('customizer:sass', ['customizer:loadConfig'], function() {
     .pipe(gulp.dest('.customizer/css'));
 });
 
+// Creates a Foundation JavaScript file from the module list, and also copies dependencies (jQuery, what-input)
 gulp.task('customizer:javascript', ['customizer:loadConfig'], function() {
   var jsPaths = customizer.js(CUSTOMIZER_CONFIG, MODULE_LIST);
 
@@ -70,11 +76,18 @@ gulp.task('customizer:javascript', ['customizer:loadConfig'], function() {
     .pipe(gulp.dest('.customizer/js/vendor'));
 });
 
+// Copies the boilerplate index.html to the custom download folder
 gulp.task('customizer:html', ['customizer:loadConfig'], function() {
   return gulp.src('customizer/index.html')
     .pipe(gulp.dest('.customizer'));
 });
 
+// Creates a custom build by:
+//   - Generating a CSS file
+//   - Generating a JS file
+//   - Copying the index.html file
+//   - Creating a blank app.css file
+//   - Creating an app.js file with Foundation initialization code
 gulp.task('customizer', ['customizer:sass', 'customizer:javascript', 'customizer:html'], function(done) {
   touch('.customizer/css/app.css');
   touch('.customizer/js/app.js');

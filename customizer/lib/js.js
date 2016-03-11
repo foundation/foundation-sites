@@ -1,5 +1,11 @@
 var unique = require('array-uniq');
 
+/**
+ * Creates an array of file paths that can be passed to `gulp.src()`.
+ * @param {Object} config - Customizer configuration file.
+ * @param {String[]} modules - Modules to include in the file list.
+ * @returns {String[]} Array of file paths.
+ */
 module.exports = function(config, modules) {
   var files = ['core'];
   var utils = [];
@@ -19,9 +25,13 @@ module.exports = function(config, modules) {
     }
   }
 
+  // Prune duplicate entries from the list of utility files
   utils = unique(utils);
+
+  // Combine foundation.core.js, utilities, and plugins into one array
   files = files.concat(utils, libraries);
 
+  // Format the modules as paths
   return files.map(function(file) {
     return 'js/foundation.' + file + '.js';
   });

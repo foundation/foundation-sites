@@ -1,3 +1,9 @@
+# This is the customizer's master module list.
+# Each item in the list is a module with any of these keys:
+#   - sass: Name of the CSS export. 'grid' becomes '@include foundation-grid;'
+#   - js: Name of the JavaScript file. 'accordion' becomes 'foundation.accordion.js'
+#   - js_utils: Names of plugin dependencies. 'box' becomes 'foundation.util.box.js'
+
 grid:
   sass: grid
 
