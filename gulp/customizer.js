@@ -1,29 +1,27 @@
-var gulp = require('gulp');
-var File = require('vinyl');
-var sassBuild = require('../customizer/lib/sass');
-var jsGlob = require('../customizer/lib/js');
-var fs = require('fs');
-var yaml = require('js-yaml').safeLoad;
-var sass = require('gulp-sass');
-var Readable = require('stream').Readable;
-var source = require('vinyl-source-stream');
-var cssnano = require('gulp-cssnano');
-var rename = require('gulp-rename');
-var concat = require('gulp-concat');
 var babel = require('gulp-babel');
-var uglify = require('gulp-uglify');
-var touch = require('touch');
-var yargs = require('yargs');
+var concat = require('gulp-concat');
+var cssnano = require('gulp-cssnano');
+var customizer = require('../customizer/lib');
+var File = require('vinyl');
+var fs = require('fs');
+var gulp = require('gulp');
 var path = require('path');
+var Readable = require('stream').Readable;
+var rename = require('gulp-rename');
+var sass = require('gulp-sass');
+var source = require('vinyl-source-stream');
+var touch = require('touch');
+var uglify = require('gulp-uglify');
+var yaml = require('js-yaml').safeLoad;
+var yargs = require('yargs');
 
-var argv = require('yargs').argv;
-
+var ARGS = require('yargs').argv;
 var CUSTOMIZER_CONFIG;
 var MODULE_LIST;
 
 gulp.task('customizer:loadConfig', function() {
   var config = fs.readFileSync('customizer/config.yml');
-  var moduleListPath = path.relative(__dirname, path.join(process.cwd(), argv.modules));
+  var moduleListPath = path.relative(__dirname, path.join(process.cwd(), ARGS.modules));
   var moduleList = require(moduleListPath);
 
   CUSTOMIZER_CONFIG = yaml(config.toString());
@@ -32,7 +30,7 @@ gulp.task('customizer:loadConfig', function() {
 });
 
 gulp.task('customizer:sass', ['customizer:loadConfig'], function() {
-  var sassFile = sassBuild(CUSTOMIZER_CONFIG, MODULE_LIST, VARIABLE_LIST);
+  var sassFile = customizer.sass(CUSTOMIZER_CONFIG, MODULE_LIST, VARIABLE_LIST);
 
   // Create a stream with our makeshift Sass file
   var stream = new Readable({ objectMode: true });
@@ -57,7 +55,7 @@ gulp.task('customizer:sass', ['customizer:loadConfig'], function() {
 });
 
 gulp.task('customizer:javascript', ['customizer:loadConfig'], function() {
-  var jsPaths = jsGlob(CUSTOMIZER_CONFIG, MODULE_LIST);
+  var jsPaths = customizer.js(CUSTOMIZER_CONFIG, MODULE_LIST);
 
   return gulp.src(jsPaths)
     .pipe(babel())
