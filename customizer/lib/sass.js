@@ -27,7 +27,7 @@ module.exports = function(config, modules, variables) {
   // Create variable overrides code
   for (var i in variables) {
     var name = i.replace('_', '-');
-    variableList.push(`$${name}: ${variables[i]}`);
+    variableList.push(`$${name}: ${variables[i]};`);
   }
 
   // Create module exports with @include

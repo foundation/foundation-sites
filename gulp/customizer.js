@@ -13,20 +13,26 @@ var concat = require('gulp-concat');
 var babel = require('gulp-babel');
 var uglify = require('gulp-uglify');
 var touch = require('touch');
+var yargs = require('yargs');
+var path = require('path');
+
+var argv = require('yargs').argv;
 
 var CUSTOMIZER_CONFIG;
-var MODULE_LIST = ['accordion', 'tabs'];
+var MODULE_LIST;
 
-gulp.task('customizer:loadConfig', function(done) {
-  fs.readFile('customizer/config.yml', function(err, data) {
-    if (err) throw err;
-    CUSTOMIZER_CONFIG = yaml(data.toString());
-    done();
-  });
+gulp.task('customizer:loadConfig', function() {
+  var config = fs.readFileSync('customizer/config.yml');
+  var moduleListPath = path.relative(__dirname, path.join(process.cwd(), argv.modules));
+  var moduleList = require(moduleListPath);
+
+  CUSTOMIZER_CONFIG = yaml(config.toString());
+  MODULE_LIST = moduleList.modules;
+  VARIABLE_LIST = moduleList.variables;
 });
 
 gulp.task('customizer:sass', ['customizer:loadConfig'], function() {
-  var sassFile = sassBuild(CUSTOMIZER_CONFIG, MODULE_LIST, {});
+  var sassFile = sassBuild(CUSTOMIZER_CONFIG, MODULE_LIST, VARIABLE_LIST);
 
   // Create a stream with our makeshift Sass file
   var stream = new Readable({ objectMode: true });
