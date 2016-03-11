@@ -64,6 +64,7 @@ $breakpoint-classes: (small medium large) !default;
     }
     @else {
       $bp: 0;
+      @warn 'breakpoint(): "#{$val}" is not defined in your $breakpoints setting.';
     }
   }
 

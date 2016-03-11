@@ -97,8 +97,13 @@ $mediaobject-image-width-stacked: 100% !default;
       }
     }
     @else {
-      &.middle { vertical-align: middle; }
-      &.bottom { vertical-align: bottom; }
+      &.middle {
+        vertical-align: middle;
+      }
+
+      &.bottom {
+        vertical-align: bottom;
+      }
     }
   }
 }

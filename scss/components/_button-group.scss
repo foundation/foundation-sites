@@ -84,7 +84,11 @@ $buttongroup-expand-max: 6 !default;
         &:first-child:nth-last-child(#{$i}) {
           &, &:first-child:nth-last-child(#{$i}) ~ #{$selector} {
             display: inline-block;
-            width: calc(#{percentage(1/$i)} - #{$buttongroup-spacing});
+            @if #{$buttongroup-spacing} == '0' {
+              width: #{percentage(1 / $i)};
+            } @else {
+              width: calc(#{percentage(1 / $i)} - #{$buttongroup-spacing});
+            }
             margin-right: $buttongroup-spacing;
           }
         }
@@ -142,7 +146,9 @@ $buttongroup-expand-max: 6 !default;
 
     // Sizes
     @each $size, $value in map-remove($button-sizes, default) {
-      &.#{$size} #{$buttongroup-child-selector} { font-size: $value; }
+      &.#{$size} #{$buttongroup-child-selector} {
+        font-size: $value;
+      }
     }
 
     // Even-width Group

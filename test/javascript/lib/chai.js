@@ -56,11 +56,11 @@ require.helper.semVerSort = function(a, b) {
 
 /**
  * Find and require a module which name starts with the provided name.
- * If multiple modules exists, the highest semver is used. 
+ * If multiple modules exists, the highest semver is used.
  * This function can only be used for remote dependencies.
 
  * @param {String} name - module name: `user~repo`
- * @param {Boolean} returnPath - returns the canonical require path if true, 
+ * @param {Boolean} returnPath - returns the canonical require path if true,
  *                               otherwise it returns the epxorted module
  */
 require.latest = function (name, returnPath) {
@@ -83,7 +83,7 @@ require.latest = function (name, returnPath) {
           semVerCandidates.push({version: version, name: moduleName});
         } else {
           otherCandidates.push({version: version, name: moduleName});
-        } 
+        }
     }
   }
   if (semVerCandidates.concat(otherCandidates).length === 0) {
@@ -1039,7 +1039,7 @@ module.exports = function (chai, _) {
    * ### .any
    *
    * Sets the `any` flag, (opposite of the `all` flag)
-   * later used in the `keys` assertion. 
+   * later used in the `keys` assertion.
    *
    *     expect(foo).to.have.any.keys('bar', 'baz');
    *
@@ -1056,7 +1056,7 @@ module.exports = function (chai, _) {
   /**
    * ### .all
    *
-   * Sets the `all` flag (opposite of the `any` flag) 
+   * Sets the `all` flag (opposite of the `any` flag)
    * later used by the `keys` assertion.
    *
    *     expect(foo).to.have.all.keys('bar', 'baz');
@@ -1923,23 +1923,23 @@ module.exports = function (chai, _) {
    * ### .keys(key1, [key2], [...])
    *
    * Asserts that the target contains any or all of the passed-in keys.
-   * Use in combination with `any`, `all`, `contains`, or `have` will affect 
+   * Use in combination with `any`, `all`, `contains`, or `have` will affect
    * what will pass.
-   * 
-   * When used in conjunction with `any`, at least one key that is passed 
-   * in must exist in the target object. This is regardless whether or not 
+   *
+   * When used in conjunction with `any`, at least one key that is passed
+   * in must exist in the target object. This is regardless whether or not
    * the `have` or `contain` qualifiers are used. Note, either `any` or `all`
    * should be used in the assertion. If neither are used, the assertion is
    * defaulted to `all`.
-   * 
-   * When both `all` and `contain` are used, the target object must have at 
+   *
+   * When both `all` and `contain` are used, the target object must have at
    * least all of the passed-in keys but may have more keys not listed.
-   * 
+   *
    * When both `all` and `have` are used, the target object must both contain
    * all of the passed-in keys AND the number of keys in the target object must
-   * match the number of keys passed in (in other words, a target object must 
+   * match the number of keys passed in (in other words, a target object must
    * have all and only all of the passed-in keys).
-   * 
+   *
    *     expect({ foo: 1, bar: 2 }).to.have.any.keys('foo', 'baz');
    *     expect({ foo: 1, bar: 2 }).to.have.any.keys('foo');
    *     expect({ foo: 1, bar: 2 }).to.contain.any.keys('bar', 'baz');
@@ -4282,7 +4282,7 @@ var getPathInfo = require('chai/lib/chai/utils/getPathInfo.js');
 module.exports = function(path, obj) {
   var info = getPathInfo(path, obj);
   return info.value;
-}; 
+};
 
 });
 
@@ -4428,7 +4428,7 @@ var type = require('chai/lib/chai/utils/type.js');
  *     hasProperty('str', obj);  // true
  *     hasProperty('constructor', obj);  // true
  *     hasProperty('bar', obj);  // false
- *     
+ *
  *     hasProperty('length', obj.str); // true
  *     hasProperty(1, obj.str);  // true
  *     hasProperty(5, obj.str);  // false

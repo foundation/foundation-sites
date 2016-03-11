@@ -18,6 +18,7 @@ var DEPS = [
 var DOCS = [
   'node_modules/clipboard/dist/clipboard.js',
   'node_modules/corejs-typeahead/dist/typeahead.bundle.js',
+  'node_modules/foundation-docs/js/**/*.js',
   'docs/assets/js/docs.*.js',
   'docs/assets/js/docs.js'
 ];

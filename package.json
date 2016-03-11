@@ -7,12 +7,16 @@
   "homepage": "http://foundation.zurb.com/sites",
   "scripts": {
     "start": "gulp",
-    "test": "gulp test",
-    "deploy": "gulp deploy"
+    "test": "npm run test:sass && npm run test:javascript",
+    "test:sass": "mocha test/sass/test_sass.js",
+    "test:javascript": "gulp sass:foundation && gulp javascript:foundation && mocha-phantomjs test/javascript/index.html",
+    "test:visual": "gulp test",
+    "deploy": "gulp deploy",
+    "deploy:docs": "gulp deploy:docs"
   },
   "dependencies": {
     "jquery": "^2.2.0",
-    "what-input": "^1.1.2"
+    "what-input": "^2.0.0"
   },
   "license": "MIT",
   "devDependencies": {
@@ -28,6 +32,7 @@
     "babel-plugin-transform-es2015-spread": "^6.4.0",
     "babel-plugin-transform-es2015-template-literals": "^6.3.13",
     "browser-sync": "^2.8.2",
+    "chai-jquery": "^2.0.0",
     "chalk": "^1.1.1",
     "clipboard": "^1.5.5",
     "corejs-typeahead": "corejavascript/typeahead.js",
@@ -53,8 +58,9 @@
     "gulp-scss-lint": "^0.3.9",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.1.0",
-    "inquirer": "^0.11.2",
+    "inquirer": "^0.11.4",
     "mocha": "^2.3.3",
+    "mocha-phantomjs": "^4.0.2",
     "motion-ui": "^1.1.0",
     "octophant": "^1.0.0",
     "opener": "^1.4.1",
@@ -65,6 +71,7 @@
     "rimraf": "^2.3.2",
     "run-sequence": "^1.1.4",
     "sass-true": "^2.0.3",
+    "sinon": "^1.17.3",
     "supercollider": "^1.4.0"
   },
   "repository": {
@@ -88,7 +95,9 @@
     "format": "global",
     "shim": {
       "dist/foundation": {
-        "deps": ["jquery"]
+        "deps": [
+          "jquery"
+        ]
       }
     }
   }

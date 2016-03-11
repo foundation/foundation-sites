@@ -83,11 +83,6 @@ class Abide {
     var isGood = true;
 
     switch ($el[0].type) {
-      case 'checkbox':
-      case 'radio':
-        isGood = $el[0].checked;
-        break;
-
       case 'select':
       case 'select-one':
       case 'select-multiple':
@@ -220,6 +215,7 @@ class Abide {
       equalTo = this.options.validators.equalTo($el);
     }
 
+
     var goodToGo = [clearRequire, validated, customValidator, equalTo].indexOf(false) === -1;
     var message = (goodToGo ? 'valid' : 'invalid') + '.zf.abide';
 
@@ -272,37 +268,56 @@ class Abide {
    * @returns {Boolean} Boolean value depends on whether or not the input value matches the pattern specified
    */
   validateText($el, pattern) {
-    // pattern = pattern ? pattern : $el.attr('pattern') ? $el.attr('pattern') : $el.attr('type');
+    // A pattern can be passed to this function, or it will be infered from the input's "pattern" attribute, or it's "type" attribute
     pattern = (pattern || $el.attr('pattern') || $el.attr('type'));
     var inputText = $el.val();
+    var valid = false;
 
-    // if text, check if the pattern exists, if so, test it, if no text or no pattern, return true.
-    return inputText.length ?
-      this.options.patterns.hasOwnProperty(pattern) ? this.options.patterns[pattern].test(inputText) :
-        pattern && pattern !== $el.attr('type') ?
-          new RegExp(pattern).test(inputText) :
-        true :
-      true;
+    if (inputText.length) {
+      // If the pattern attribute on the element is in Abide's list of patterns, then test that regexp
+      if (this.options.patterns.hasOwnProperty(pattern)) {
+        valid = this.options.patterns[pattern].test(inputText);
+      }
+      // If the pattern name isn't also the type attribute of the field, then test it as a regexp
+      else if (pattern !== $el.attr('type')) {
+        valid = new RegExp(pattern).test(inputText);
+      }
+      else {
+        valid = true;
+      }
+    }
+    // An empty field is valid if it's not required
+    else if (!$el.prop('required')) {
+      valid = true;
+    }
+
+    return valid;
    }
 
   /**
-   * Determines whether or a not a radio input is valid based on whether or not it is required and selected
+   * Determines whether or a not a radio input is valid based on whether or not it is required and selected. Although the function targets a single `<input>`, it validates by checking the `required` and `checked` properties of all radio buttons in its group.
    * @param {String} groupName - A string that specifies the name of a radio button group
    * @returns {Boolean} Boolean value depends on whether or not at least one radio input has been selected (if it's required)
    */
   validateRadio(groupName) {
-    var $group = this.$element.find(`:radio[name="${groupName}"]`),
-        counter = [],
-        _this = this;
+    // If at least one radio in the group has the `required` attribute, the group is considered required
+    // Per W3C spec, all radio buttons in a group should have `required`, but we're being nice
+    var $group = this.$element.find(`:radio[name="${groupName}"]`);
+    var valid = false;
 
-    $group.each(function(){
-      var rdio = $(this),
-          clear = _this.requiredCheck(rdio);
-      counter.push(clear);
-      if(clear) _this.removeErrorClasses(rdio);
+    // .attr() returns undefined if no elements in $group have the attribute "required"
+    if ($group.attr('required') === undefined) {
+      valid = true;
+    }
+
+    // For the group to be valid, at least one radio needs to be checked
+    $group.each((i, e) => {
+      if ($(e).prop('checked')) {
+        valid = true;
+      }
     });
 
-    return counter.indexOf(false) === -1;
+    return valid;
   }
 
   /**
