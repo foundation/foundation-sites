@@ -40,8 +40,8 @@ $table-row-stripe-hover: darken($table-background, $table-color-scale + $table-h
 /// @type Color
 $table-striped-background: smart-scale($table-background, $table-color-scale) !default;
 
-/// Default value for showing the stripe on rows of the tables, excluding the header and footer If even, the even rows will have a background color. If odd, the odd rows will have a background color. If empty, or anyother value, the table rows will have no striping.
-/// @type Keyoword
+/// Default value for showing the stripe on rows of the tables, excluding the header and footer. If even, the even rows will have a background color. If odd, the odd rows will have a background color. If empty, or any other value, the table rows will have no striping.
+/// @type Keyword
 $table-stripe: even !default;
 
 /// Default color for header background.
