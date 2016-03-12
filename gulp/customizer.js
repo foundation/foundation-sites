@@ -10,14 +10,17 @@ var path = require('path');
 var Readable = require('stream').Readable;
 var replace = require('gulp-replace');
 var rename = require('gulp-rename');
+var rimraf = require('rimraf');
 var sass = require('gulp-sass');
 var source = require('vinyl-source-stream');
 var touch = require('touch');
 var uglify = require('gulp-uglify');
 var yaml = require('js-yaml').safeLoad;
 var yargs = require('yargs');
+var zip = require('gulp-zip');
 
 var ARGS = require('yargs').argv;
+var FOUNDATION_VERSION = require('../package.json').version;
 var CUSTOMIZER_CONFIG;
 var MODULE_LIST;
 var VARIABLE_LIST;
@@ -97,5 +100,12 @@ gulp.task('customizer:html', ['customizer:loadConfig'], function() {
 gulp.task('customizer', ['customizer:sass', 'customizer:javascript', 'customizer:html'], function(done) {
   touch('.customizer/css/app.css');
   touch('.customizer/js/app.js');
-  fs.writeFile('.customizer/js/app.js', '$(document).foundation()\n', done);
+  fs.writeFileSync('.customizer/js/app.js', '$(document).foundation()\n');
+
+  gulp.src('.customizer/**/*')
+    .pipe(zip('foundation-' + FOUNDATION_VERSION + '.zip'))
+    .pipe(gulp.dest('.'))
+    .on('finish', function() {
+      rimraf('.customizer', done);
+    });
 });
