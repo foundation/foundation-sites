@@ -18,7 +18,7 @@ The <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="
 ---
 
 ## Tooltip Top
-To get a tip-top top tooltip (lol), just add the class `.top` the `<span>` element.
+To get a tip-top top tooltip (lol), just add the class `.top` to the `<span>` element.
 
 ```html_example
 <p>
