@@ -31,7 +31,7 @@ gulp.task('customizer:loadConfig', function() {
   var config = fs.readFileSync('customizer/config.yml');
 
   // Module file, created from customizer form data
-  var moduleListPath = path.relative(__dirname, path.join(process.cwd(), ARGS.modules));
+  var moduleListPath = ARGS.modules;
   var moduleList = require(moduleListPath);
 
   CUSTOMIZER_CONFIG = yaml(config.toString());
