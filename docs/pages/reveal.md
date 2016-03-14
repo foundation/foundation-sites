@@ -13,7 +13,7 @@ tags:
 A modal is just an empty container, so you can put any kind of content inside it, from text to forms to video to an entire grid.
 
 <div class="callout primary">
-  <p>Please note that we removed the option for AJAX loaded modals in Foundation 6. We did make it very easy to implement on your own though, check out a sample in the <span><a href="#advanced">Advanced</a></span> section.</p>
+  <p>Please note that we removed the option for AJAX loaded modals in Foundation 6. We did make it very easy to implement on your own though, check out a sample in the <span><a href="#advanced-options">Advanced</a></span> section.</p>
 </div>
 
 To create a modal, add the class `.reveal`, the attribute `data-reveal`, and a unique ID to a container.
