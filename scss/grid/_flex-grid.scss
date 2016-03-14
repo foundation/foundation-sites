@@ -224,7 +224,7 @@
       // Auto-stacking/unstacking
       @at-root (without: media) {
         .row.#{$-zf-size}-unstack {
-          .column {
+          > .column {
             flex: flex-grid-column(100%);
 
             @include breakpoint($-zf-size) {
