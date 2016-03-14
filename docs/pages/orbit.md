@@ -161,7 +161,7 @@ Orbit uses [Motion UI](motion-ui.html) CSS classes to animate slides around. The
 - `data-anim-in-from-left`: transition to play when a slide comes *in from the left*.
 - `data-anim-in-from-right`: transition to play when a slide comes *in from the right*.
 - `data-anim-out-from-left`: transition to play when a slide comes *out from the left*.
-- `data-anim-in-from-right`: transition to play when a slide comes *in from the right*.
+- `data-anim-out-from-right`: transition to play when a slide comes *out from the right*.
 
 Since those option names are pretty *long*, you can also set them all in one HTML attribute, using `data-options`:
 
