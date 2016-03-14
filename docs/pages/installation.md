@@ -17,7 +17,7 @@ Not a fan of GUIs? The Node-powered Foundation CLI can install the same template
 npm install --global foundation-cli
 ```
 
-Some Linux distributions may require you to run the command as root:
+Depending on how your machine is configured, the command may fail with an `EACCESS` error. To get around this, run the command with `sudo` at the beginning:
 
 ```bash
 sudo npm install --global foundation-cli
@@ -106,7 +106,7 @@ Start with this HTML template and adapt it to your needs.
   </head>
   <body>
     <h1>Hello, world!</h1>
-    
+
     <script src="js/vendor/jquery.min.js"></script>
     <script src="js/vendor/what-input.min.js"></script>
     <script src="js/foundation.min.js"></script>
