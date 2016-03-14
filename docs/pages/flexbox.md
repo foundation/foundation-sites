@@ -22,20 +22,20 @@ Flexbox mode is only supported these browsers:
 
 ## Enabling Flexbox Mode
 
-If you're using the CSS version of Foundation, you can generate a <a href="https://foundation.zurb.com/sites/download">custom download of Foundation</a> with flexbox mode enabled.
+If you're using the CSS version of Foundation, you can generate a <a href="https://foundation.zurb.com/sites/download">custom download of Foundation</a> with flexbox mode enabled. You can achieve this one of two methods if you're using sass:
 
-If you're using the Sass version, open your settings file and set `$global-flexbox` to `true`.
+* If you use `@include foundation-everything;` in your settings scss file (usually `app.scss` or `settings.scss`), pass `true` like so:
 
-You'll also need to replace the default float grid with the flex grid, which is actually a separate component. To do this, remove the `@include` for the float grid and replace it with the one for the flex grid.
+```scss
+@include foundation-everything(true);
+```
+
+* If you included each component manually, open your settings file and set `$global-flexbox` to `true`, and remove the `@include` for the float grid and replace it with the one for the flex grid along with the helper classes:
 
 ```scss
 // @include foundation-grid;
+$global-flexbox: true;
 @include foundation-flex-grid;
-```
-
-Lastly, you'll also want to add the include for the flexbox helper classes.
-
-```scss
 @include foundation-flex-classes;
 ```
 
