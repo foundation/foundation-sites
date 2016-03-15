@@ -69,7 +69,7 @@
 
   // Responsive visibility classes
   @each $size in $breakpoint-classes {
-    @if $size != small {
+    @if $size != $-zf-zero-breakpoint {
       .hide-for-#{$size} {
         @include hide-for($size);
       }

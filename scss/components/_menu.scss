@@ -234,7 +234,7 @@ $menu-icon-spacing: 0.25rem !default;
     }
 
     @each $size in $breakpoint-classes {
-      @if $size != small {
+      @if $size != $-zf-zero-breakpoint {
         @include breakpoint($size) {
           &.#{$size}-horizontal {
             @include menu-direction(horizontal);

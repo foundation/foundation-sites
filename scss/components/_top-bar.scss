@@ -128,7 +128,7 @@ $topbar-unstack-breakpoint: medium !default;
 
     // Generate classes for stacking on each screen size (defined in $breakpoint-classes)
     @each $size in $breakpoint-classes {
-      @if $size != small {
+      @if $size != $-zf-zero-breakpoint {
         &.stacked-for-#{$size} {
           @include breakpoint($size down) {
             @include top-bar-stacked;
