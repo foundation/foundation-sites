@@ -21,22 +21,22 @@ var zip = require('gulp-zip');
 
 var ARGS = require('yargs').argv;
 var FOUNDATION_VERSION = require('../package.json').version;
+var OUTPUT_DIR = ARGS.output;
 var CUSTOMIZER_CONFIG;
 var MODULE_LIST;
 var VARIABLE_LIST;
 
 // Load the configuration file for the customizer. It's a list of modules to load and Sass variables to override
-gulp.task('customizer:loadConfig', function() {
-  // Config file with list of all Foundation modules and dependencies
-  var config = fs.readFileSync('customizer/config.yml');
+gulp.task('customizer:loadConfig', function(done) {
+  fs.readFile('customizer/config.yml', function(err, data) {
+    var moduleListPath = ARGS.modules;
+    var moduleList = require(moduleListPath);
 
-  // Module file, created from customizer form data
-  var moduleListPath = ARGS.modules;
-  var moduleList = require(moduleListPath);
-
-  CUSTOMIZER_CONFIG = yaml(config.toString());
-  MODULE_LIST = moduleList.modules;
-  VARIABLE_LIST = moduleList.variables;
+    CUSTOMIZER_CONFIG = yaml(data.toString());
+    MODULE_LIST = moduleList.modules;
+    VARIABLE_LIST = moduleList.variables;
+    done();
+  });
 });
 
 // Creates a Sass file from the module/variable list and creates foundation.css and foundation.min.css
@@ -62,7 +62,7 @@ gulp.task('customizer:sass', ['customizer:loadConfig'], function() {
     .pipe(gulp.dest('.customizer/css'))
     .pipe(cssnano())
     .pipe(rename('foundation.min.css'))
-    .pipe(gulp.dest('.customizer/css'));
+    .pipe(gulp.dest(path.join(OUTPUT_DIR, 'css')));
 });
 
 // Creates a Foundation JavaScript file from the module list, and also copies dependencies (jQuery, what-input)
@@ -79,7 +79,7 @@ gulp.task('customizer:javascript', ['customizer:loadConfig'], function() {
       'node_modules/jquery/dist/jquery.js',
       'node_modules/what-input/what-input.js'
     ]))
-    .pipe(gulp.dest('.customizer/js/vendor'));
+    .pipe(gulp.dest(path.join(OUTPUT_DIR, 'js/vendor')));
 });
 
 // Copies the boilerplate index.html to the custom download folder
@@ -88,7 +88,7 @@ gulp.task('customizer:html', ['customizer:loadConfig'], function() {
 
   return gulp.src('customizer/index.html')
     .pipe(If(rtlEnabled, replace('ltr', 'rtl')))
-    .pipe(gulp.dest('.customizer'));
+    .pipe(gulp.dest(OUTPUT_DIR));
 });
 
 // Creates a custom build by:
@@ -98,14 +98,14 @@ gulp.task('customizer:html', ['customizer:loadConfig'], function() {
 //   - Creating a blank app.css file
 //   - Creating an app.js file with Foundation initialization code
 gulp.task('customizer', ['customizer:sass', 'customizer:javascript', 'customizer:html'], function(done) {
-  touch('.customizer/css/app.css');
-  touch('.customizer/js/app.js');
-  fs.writeFileSync('.customizer/js/app.js', '$(document).foundation()\n');
+  touch(path.join(OUTPUT_DIR, 'css/app.css'));
+  touch(path.join(OUTPUT_DIR, 'js/app.js'));
+  fs.writeFileSync(path.join(OUTPUT_DIR, 'js/app.js'), '$(document).foundation()\n');
 
-  gulp.src('.customizer/**/*')
-    .pipe(zip('foundation-' + FOUNDATION_VERSION + '.zip'))
+  gulp.src(path.join(OUTPUT_DIR, '/**/*'))
+    .pipe(zip(path.basename(OUTPUT_DIR) + '.zip'))
     .pipe(gulp.dest('.'))
     .on('finish', function() {
-      rimraf('.customizer', done);
+      rimraf(OUTPUT_DIR, done);
     });
 });
