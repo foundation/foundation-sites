@@ -98,13 +98,16 @@ gulp.task('customizer:html', ['customizer:loadConfig'], function() {
 //   - Creating a blank app.css file
 //   - Creating an app.js file with Foundation initialization code
 gulp.task('customizer', ['customizer:sass', 'customizer:javascript', 'customizer:html'], function(done) {
+  var outputFolder = path.dirname(OUTPUT_DIR);
+  var outputFileName = path.basename(OUTPUT_DIR);
+
   touch(path.join(OUTPUT_DIR, 'css/app.css'));
   touch(path.join(OUTPUT_DIR, 'js/app.js'));
   fs.writeFileSync(path.join(OUTPUT_DIR, 'js/app.js'), '$(document).foundation()\n');
 
   gulp.src(path.join(OUTPUT_DIR, '/**/*'))
-    .pipe(zip(path.basename(OUTPUT_DIR) + '.zip'))
-    .pipe(gulp.dest('.'))
+    .pipe(zip(path.basename(outputFileName) + '.zip'))
+    .pipe(gulp.dest(outputFolder))
     .on('finish', function() {
       rimraf(OUTPUT_DIR, done);
     });
