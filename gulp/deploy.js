@@ -35,7 +35,7 @@ var CURRENT_VERSION = require('../package.json').version;
 var NEXT_VERSION;
 
 gulp.task('deploy', function(cb) {
-  sequence('deploy:prompt', 'deploy:version', 'deploy:dist', 'deploy:settings', 'deploy:commit', 'deploy:templates', cb);
+  sequence('deploy:prompt', 'deploy:version', 'deploy:dist', 'deploy:plugins', 'deploy:settings', 'deploy:commit', 'deploy:templates', cb);
 });
 
 gulp.task('deploy:prompt', function(cb) {
@@ -74,6 +74,12 @@ gulp.task('deploy:dist', ['sass:foundation', 'javascript:foundation'], function(
       .pipe(uglify())
       .pipe(rename({ suffix: '.min' }))
       .pipe(gulp.dest('./dist'));
+});
+
+// Copies standalone JavaScript plugins to dist/ folder
+gulp.task('deploy:plugins', function() {
+  gulp.src('_build/assets/js/plugins/*.js')
+    .pipe(gulp.dest('dist/plugins'));
 });
 
 // Generates a settings file
