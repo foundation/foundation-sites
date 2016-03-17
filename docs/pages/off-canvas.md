@@ -41,48 +41,37 @@ Along with the menu, the main content of your page will be housed in its own con
 </body>
 ```
 
-### Working Example for Foundation 6.x
+Here's a complete example that can be pasted into the `<body>` tag of your page. It includes a close button and basic menu styles.
+
 ```html
 <body>
   <div class="off-canvas-wrapper">
     <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
       <div class="off-canvas position-left" id="offCanvas" data-off-canvas>
-      
-      <!--button close-->
-      <button class="close-button" aria-label="Close menu" type="button" data-close>
-        <span aria-hidden="true">&times;</span>
-      </button>
-      
-      <!-- menu -->
-       <ul class="vertical menu">
+
+        <!-- Close button -->
+        <button class="close-button" aria-label="Close menu" type="button" data-close>
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+        <!-- Menu -->
+        <ul class="vertical menu">
           <li><a href="#">Foundation</a></li>
           <li><a href="#">Dot</a></li>
           <li><a href="#">ZURB</a></li>
           <li><a href="#">Com</a></li>
           <li><a href="#">Slash</a></li>
           <li><a href="#">Sites</a></li>
-       </ul>
-      
+        </ul>
+
       </div>
+
       <div class="off-canvas-content" data-off-canvas-content>
-        
-      <!-- page content -->
-      
+        <!-- Page content -->
       </div>
     </div>
   </div>
 </body>
-```
-
-```javascript
-<script type="text/javascript">
-$(document).foundation().ready(function(){
-  var OffCanvas = new Foundation.OffCanvas($('#offCanvasLeft'), {
-    open_method : 'overlap' ,
-    close_on_click : true
-  });
-});
-</script>
 ```
 
 ### Click Triggers
