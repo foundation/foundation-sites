@@ -22,7 +22,7 @@ All new features and bug fixes should be submitted as pull requests, so the comm
 
 When you submit a pull request, @mention a few people you’d like to help you review it. Once those people have signed off on it, the pull request can be merged! Core Team members will handle the merge itself.
 
-## Becoming a Yetinaut 
+## Becoming a Yetinaut
 
 Want to join our crack team of Yetinauts? The Core Team is inviting active community members to become Yetinauts  on a case-by-case basis. If you want to become a contributor, engage the community on the Foundation Forum, help us close issues on GitHub, and review pull requests from other contributors.
 
@@ -39,4 +39,4 @@ Here are some example contributions from some of our awesome team members:
 
 - Colin Marshall converted our Sass unit tests to a newer test runner called True.
 - Andy Cochraine reworked the CSS for button groups to fix issues with stacking and border radii.
-- designerno1 put together a slimmer version of Clearing that integrates existing Foundation components.
+- designerno1 developed the Equalize by Row feature for the Equalizer plugin.
