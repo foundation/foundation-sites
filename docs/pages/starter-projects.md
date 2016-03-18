@@ -35,7 +35,7 @@ The biggest difference between this and the basic template is the folder structu
 
 To override or add to the default styles of the ZURB Template, in your project's `src/assets/scss/` folder
  - Change Sass variables in `_settings.scss`
- - Add custom scss and css at the bottom of `app.scss`
+ - Add custom SCSS and css to new files in the `components` folder then import those files at the bottom of `app.scss`
 
 The `_settings.scss` and `app.scss` files are not changed when upgrading an existing project. As a result, you must manually edit your `_settings.scss` file to incorporate any Sass changes found [in the release notes](https://github.com/zurb/foundation-sites/releases).
 
