@@ -68,7 +68,7 @@ $input-radius: $global-radius !default;
 
 /// Margin around input fields.
 /// @type List
-$input-margin: 0 0 $form-spacing;
+$input-margin: 0 0 $form-spacing !default;
 
 @mixin form-element {
   $height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));

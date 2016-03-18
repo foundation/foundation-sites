@@ -24,7 +24,7 @@ $form-label-line-height: 1.8 !default;
 
 /// Margin around label-tag elements.
 /// @type List
-$form-label-margin: 0 0 $form-spacing;
+$form-label-margin: 0 0 $form-spacing !default;
 
 @mixin form-label {
   display: block;
