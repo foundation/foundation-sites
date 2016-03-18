@@ -18,13 +18,17 @@ $select-triangle-color: $dark-gray !default;
 /// @type Color
 $select-radius: $global-radius !default;
 
+/// Margin around select menus.
+/// @type List
+$select-margin: 0 0 $form-spacing !default;
+
 @mixin form-select {
   $height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
 
   height: $height;
   padding: ($form-spacing / 2);
   border: $input-border;
-  margin: 0 0 $form-spacing;
+  margin: $select-margin;
   font-size: $input-font-size;
   font-family: $input-font-family;
   line-height: normal;
