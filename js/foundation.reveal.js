@@ -133,7 +133,11 @@ class Reveal {
 
     this.$element.on({
       'open.zf.trigger': this.open.bind(this),
-      'close.zf.trigger': this.close.bind(this),
+      'close.zf.trigger': (event, element) => {
+        if (typeof element === 'undefined') { // only close reveal when it's explicitly called
+          return this.close.apply(this);
+        }
+      },
       'toggle.zf.trigger': this.toggle.bind(this),
       'resizeme.zf.trigger': function() {
         _this._updatePosition();
