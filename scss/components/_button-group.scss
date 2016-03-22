@@ -109,13 +109,20 @@ $buttongroup-expand-max: 6 !default;
   #{$selector} {
     @if $global-flexbox {
       flex: 0 0 100%;
+      margin-#{$global-right}: 0; 
     }
     @else {
       width: 100%;
+      border-#{$global-right}: $buttongroup-spacing solid transparent;
     }
-
+    
     &:not(:last-child) {
-      margin-#{$global-right}: 0;
+      @if $global-flexbox {
+        margin-bottom: $buttongroup-spacing;
+      }
+      @else {
+        border-bottom: $buttongroup-spacing solid $body-background;
+      }
     }
   }
 }
