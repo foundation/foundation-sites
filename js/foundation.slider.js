@@ -271,7 +271,9 @@ class Slider {
           pageXY = vertical ? e.pageY : e.pageX,
           halfOfHandle = this.$handle[0].getBoundingClientRect()[param] / 2,
           barDim = this.$element[0].getBoundingClientRect()[param],
-          barOffset = (this.$element.offset()[direction] -  pageXY),
+          // touch events emulated by the touch util give position relative to screen, add window.scroll to event coordinates...
+          windowScroll = vertical ? $(window).scrollTop() : $(window).scrollLeft(),
+          barOffset = this.$element.offset()[direction] - (this.$element.offset()[direction] < pageXY ? pageXY : (pageXY + windowScroll)),
           //if the cursor position is less than or greater than the elements bounding coordinates, set coordinates within those bounds
           barXY = barOffset > 0 ? -halfOfHandle : (barOffset - halfOfHandle) < -barDim ? barDim : Math.abs(barOffset),
           offsetPct = percent(barXY, barDim);
