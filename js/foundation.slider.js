@@ -387,6 +387,10 @@ class Slider {
 
             $body.off('mousemove.zf.slider mouseup.zf.slider');
           });
+      })
+      // prevent events triggered by touch
+      .on('selectstart.zf.slider touchmove.zf.slider', function(e) {
+        e.preventDefault();
       });
     }
 
