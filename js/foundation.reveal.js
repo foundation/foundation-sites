@@ -292,9 +292,6 @@ class Reveal {
             }
           }
         });
-        if (_this.focusableElements.length === 0) { // no focusable elements inside the modal at all, prevent tabbing in general
-          e.preventDefault();
-        }
       });
     }
 
@@ -308,10 +305,16 @@ class Reveal {
             _this.focusableElements.eq(0).focus();
             e.preventDefault();
           }
+          if (_this.focusableElements.length === 0) { // no focusable elements inside the modal at all, prevent tabbing in general
+            e.preventDefault();
+          }
         },
         tab_backward: function() {
           if (_this.$element.find(':focus').is(_this.focusableElements.eq(0)) || _this.$element.is(':focus')) { // left modal upwards, setting focus to last element
             _this.focusableElements.eq(-1).focus();
+            e.preventDefault();
+          }
+          if (_this.focusableElements.length === 0) { // no focusable elements inside the modal at all, prevent tabbing in general
             e.preventDefault();
           }
         },
