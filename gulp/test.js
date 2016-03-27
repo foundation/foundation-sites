@@ -4,7 +4,8 @@ var mocha = require('gulp-mocha');
 var browser = require('browser-sync');
 var concat = require('gulp-concat');
 var babel = require('gulp-babel');
-var onBabelError = require('./babel-error.js')
+var onBabelError = require('./babel-error.js');
+var rimraf = require('rimraf').sync;
 
 var JSTESTS = [
   'test/javascript/components/**/*.js',
@@ -26,6 +27,8 @@ gulp.task('test:reload', function(done) {
 });
 
 gulp.task('test:transpile-js', ['javascript:foundation'], function() {
+  rimraf('test/javascript/js-tests.js');
+  
   return gulp.src(JSTESTS)
   	.pipe(babel()
   		.on('error', onBabelError))
