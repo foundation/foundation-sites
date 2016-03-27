@@ -1,5 +1,4 @@
 var gulp = require('gulp');
-var chalk = require('chalk');
 var concat = require('gulp-concat');
 var babel = require('gulp-babel');
 var onBabelError = require('./babel-error.js');
@@ -31,6 +30,7 @@ gulp.task('javascript:foundation', function() {
   return gulp.src(FOUNDATION)
     .pipe(babel()
       .on('error', onBabelError))
+    .pipe(gulp.dest('_build/assets/js/plugins'))
     .pipe(concat('foundation.js'))
     .pipe(gulp.dest('_build/assets/js'));
 });
