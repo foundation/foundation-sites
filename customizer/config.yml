@@ -19,6 +19,9 @@ forms:
 input_range:
   sass: range-input
 
+abide:
+  js: abide
+
 accordion:
   sass: accordion
   js: accordion
@@ -74,6 +77,9 @@ dropdown_menu:
     - box
     - nest
 
+equalizer:
+  js: equalizer
+
 flex_video:
   sass: flex-video
 
@@ -99,6 +105,7 @@ menu:
 
 off_canvas:
   sass: off-canvas
+  js: offcanvas
 
 orbit:
   sass: orbit
@@ -114,6 +121,17 @@ progress_bar:
 
 progress_element:
   sass: progress-element
+
+responsive_menu:
+  js: responsiveMenu
+  js_utils:
+    - triggers
+    - mediaQuery
+
+responsive_toggle:
+  js: responsiveToggle
+  js_utils:
+    - mediaQuery
 
 meter_element:
   sass: meter-element
@@ -162,7 +180,7 @@ thumbnail:
 title_bar:
   sass: title-bar
 
-togger:
+toggler:
   js: toggler
   js_utils:
     - motion
