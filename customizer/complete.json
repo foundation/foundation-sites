@@ -43,5 +43,8 @@
     "visibility",
     "float"
   ],
-  "variables": {}
+  "variables": {
+    "primary-color": "#2199e8",
+    "alert-color": "#ec5840"
+  }
 }

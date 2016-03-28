@@ -1,6 +1,6 @@
 var empty = require('is-empty-object');
 var format = require('util').format;
-var multiline = require('multiline');
+var multiline = require('multiline').stripIndent;
 
 var SASS_TEMPLATE = multiline(function() {/*
   @charset 'utf-8';
@@ -28,8 +28,8 @@ var SASS_TEMPLATE = multiline(function() {/*
  * @returns {String} Formatted Sass file.
  */
 module.exports = function(config, modules, variables) {
-  var CONFIG = config;
   var variableList = [];
+  var colorList = {};
   var exportList = ['@include foundation-global-styles;'];
 
   if (empty(modules)) {
@@ -39,17 +39,36 @@ module.exports = function(config, modules, variables) {
   // Create variable overrides code
   for (var i in variables) {
     var name = i.replace('_', '-');
-    variableList.push(format('$%s: %s;', name, variables[i]));
+    if (name.match(/-color$/)) {
+      var key = name.replace('-color', '');
+      colorList[key] = variables[i];
+    }
+    else {
+      variableList.push(format('$%s: %s;', name, variables[i]));
+    }
   }
+
+  variableList.push(createPaletteMap(colorList));
 
   // Create module exports with @include
   for (var i in modules) {
     var name = modules[i];
 
-    if (CONFIG[name] && CONFIG[name].sass) {
-      exportList.push(format('@include foundation-%s;', CONFIG[name].sass));
+    if (config[name] && config[name].sass) {
+      exportList.push(format('@include foundation-%s;', config[name].sass));
     }
   }
 
-  return format(SASS_TEMPLATE, variableList.join('\n'), exportList.join('\n  '))
+  return format(SASS_TEMPLATE, variableList.join('\n'), exportList.join('\n'))
+}
+
+function createPaletteMap(colors) {
+  var output = '$foundation-palette: (%s\n);';
+  var keys = '';
+
+  for (var i in colors) {
+    keys += format('\n  %s: %s,', i, colors[i]);
+  }
+
+  return format(output, keys);
 }
