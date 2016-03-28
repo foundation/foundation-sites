@@ -21,7 +21,7 @@ var zip = require('gulp-zip');
 
 var ARGS = require('yargs').argv;
 var FOUNDATION_VERSION = require('../package.json').version;
-var OUTPUT_DIR = ARGS.output;
+var OUTPUT_DIR = ARGS.output || 'custom-build';
 var CUSTOMIZER_CONFIG;
 var MODULE_LIST;
 var VARIABLE_LIST;
@@ -29,7 +29,7 @@ var VARIABLE_LIST;
 // Load the configuration file for the customizer. It's a list of modules to load and Sass variables to override
 gulp.task('customizer:loadConfig', function(done) {
   fs.readFile('customizer/config.yml', function(err, data) {
-    var moduleListPath = ARGS.modules;
+    var moduleListPath = ARGS.modules || '../customizer/complete';
     var moduleList = require(moduleListPath);
 
     CUSTOMIZER_CONFIG = yaml(data.toString());
@@ -59,7 +59,7 @@ gulp.task('customizer:sass', ['customizer:loadConfig'], function() {
         'node_modules/motion-ui/src'
       ]
     }))
-    .pipe(gulp.dest('.customizer/css'))
+    .pipe(gulp.dest(path.join(OUTPUT_DIR, 'css')))
     .pipe(cssnano())
     .pipe(rename('foundation.min.css'))
     .pipe(gulp.dest(path.join(OUTPUT_DIR, 'css')));
@@ -72,7 +72,7 @@ gulp.task('customizer:javascript', ['customizer:loadConfig'], function() {
   return gulp.src(jsPaths)
     .pipe(babel())
     .pipe(concat('foundation.js'))
-    .pipe(gulp.dest('.customizer/js/vendor'))
+    .pipe(gulp.dest(path.join(OUTPUT_DIR, 'js/vendor')))
     .pipe(uglify())
     .pipe(rename('foundation.min.js'))
     .pipe(gulp.src([
