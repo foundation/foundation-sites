@@ -1,3 +1,4 @@
+var addSrc = require('gulp-add-src');
 var babel = require('gulp-babel');
 var concat = require('gulp-concat');
 var cssnano = require('gulp-cssnano');
@@ -75,7 +76,7 @@ gulp.task('customizer:javascript', ['customizer:loadConfig'], function() {
     .pipe(gulp.dest(path.join(OUTPUT_DIR, 'js/vendor')))
     .pipe(uglify())
     .pipe(rename('foundation.min.js'))
-    .pipe(gulp.src([
+    .pipe(addSrc([
       'node_modules/jquery/dist/jquery.js',
       'node_modules/what-input/what-input.js'
     ]))

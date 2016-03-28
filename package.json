@@ -39,6 +39,7 @@
     "corejs-typeahead": "corejavascript/typeahead.js",
     "foundation-docs": "zurb/foundation-docs",
     "gulp": "^3.8.10",
+    "gulp-add-src": "^0.2.0",
     "gulp-autoprefixer": "^2.3.1",
     "gulp-babel": "^6.1.1",
     "gulp-cache-bust": "^1.0.2",
