@@ -143,6 +143,7 @@ Foundation is available on npm, Bower, Meteor, and Composer. The package include
 - Bower: `bower install foundation-sites`
 - Meteor: `meteor add zurb:foundation-sites`
 - Composer: `php composer.phar require zurb/foundation`
+- NuGet: `Install-Package foundation-sites`
 
 ### Package Contents
 
