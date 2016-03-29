@@ -35,7 +35,7 @@ gulp.task('customizer:loadConfig', function(done) {
 
     CUSTOMIZER_CONFIG = yaml(data.toString());
     MODULE_LIST = moduleList.modules;
-    VARIABLE_LIST = moduleList.variables;
+    VARIABLE_LIST = moduleList.variables || {};
     done();
   });
 });
