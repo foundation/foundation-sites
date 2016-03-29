@@ -48,7 +48,9 @@ module.exports = function(config, modules, variables) {
     }
   }
 
-  variableList.push(createPaletteMap(colorList));
+  if (!empty(colorList)) {
+    variableList.push(createPaletteMap(colorList));
+  }
 
   // Create module exports with @include
   for (var i in modules) {
