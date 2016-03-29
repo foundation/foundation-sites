@@ -62,9 +62,9 @@ function onImagesLoaded(images, callback){
     if (this.complete) {
       singleImageLoaded();
     }
-    else if (typeof this.naturalWidth !== 'undefined' && this.naturalWidth > 0) {
-      singleImageLoaded();
-    }
+    // else if (typeof this.naturalWidth !== 'undefined' && this.naturalWidth > 0) {
+    //   singleImageLoaded();
+    // }
     else {
       $(this).one('load', function() {
         singleImageLoaded();
