@@ -7,6 +7,12 @@
 grid:
   sass: grid
 
+flex_grid:
+  sass: flex-grid
+
+flex_classes:
+  sass: flex-classes
+
 typography:
   sass: typography
 
