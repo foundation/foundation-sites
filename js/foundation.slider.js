@@ -107,7 +107,7 @@ class Slider {
    */
   _setHandlePos($hndl, location, noInvert, cb) {
     // don't move if the slider has been disabled since its initialization
-    if (this.options.disabled || this.$element.hasClass(this.options.disabledClass)) {
+    if (this.$element.hasClass(this.options.disabledClass)) {
       return;
     }
     //might need to alter that slightly for bars that will have odd number selections.
@@ -337,8 +337,6 @@ class Slider {
    * @param {jQuery} $handle - the current handle to apply listeners to.
    */
   _events($handle) {
-    if (this.options.disabled) { return false; }
-
     var _this = this,
         curHandle,
         timer;
