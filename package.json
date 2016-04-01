@@ -56,9 +56,9 @@
     "inquirer": "^0.11.2",
     "mocha": "^2.3.3",
     "motion-ui": "^1.1.0",
-    "octophant": "^1.0.0",
+    "octophant": "^1.0.1",
     "opener": "^1.4.1",
-    "panini": "^1.1.1",
+    "panini": "^1.3.0",
     "parker": "0.0.9",
     "prettyjson": "^1.1.3",
     "require-dir": "^0.3.0",
@@ -88,7 +88,9 @@
     "format": "global",
     "shim": {
       "dist/foundation": {
-        "deps": ["jquery"]
+        "deps": [
+          "jquery"
+        ]
       }
     }
   }
