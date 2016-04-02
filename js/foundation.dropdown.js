@@ -106,9 +106,12 @@ class Dropdown {
     }else if(position === 'right' && (this.usedPositions.indexOf('left') > -1) && (this.usedPositions.indexOf('bottom') < 0)){
       this.$element.removeClass(position);
     }
-    //if nothing cleared, set to bottom
+    //if nothing cleared, set to positionClass otherwise bottom
     else{
       this.$element.removeClass(position);
+      if (this.options.positionClass){
+        this.$element.addClass(this.options.positionClass);
+      }
     }
     this.classChanged = true;
     this.counter--;
@@ -122,6 +125,7 @@ class Dropdown {
    */
   _setPosition() {
     if(this.$anchor.attr('aria-expanded') === 'false'){ return false; }
+
     var position = this.getPositionClass(),
         $eleDims = Foundation.Box.GetDimensions(this.$element),
         $anchorDims = Foundation.Box.GetDimensions(this.$anchor),
@@ -130,7 +134,7 @@ class Dropdown {
         param = (direction === 'top') ? 'height' : 'width',
         offset = (param === 'height') ? this.options.vOffset : this.options.hOffset;
 
-    if(($eleDims.width >= $eleDims.windowDims.width) || (!this.counter && !Foundation.Box.ImNotTouchingYou(this.$element))){
+    if($eleDims.width >= $eleDims.windowDims.width){
       this.$element.offset(Foundation.Box.GetOffsets(this.$element, this.$anchor, 'center bottom', this.options.vOffset, this.options.hOffset, true)).css({
         'width': $eleDims.windowDims.width - (this.options.hOffset * 2),
         'height': 'auto'
@@ -148,6 +152,24 @@ class Dropdown {
   }
 
   /**
+   * Helper function to reset the position class if it had changed.
+   * @function
+   * @private
+   */
+  Dropdown.prototype._resetPositionClass = function(){
+    if(this.classChanged){
+      var curPositionClass = this.getPositionClass();
+      if(curPositionClass){
+        this.$element.removeClass(curPositionClass);
+      }
+      this.$element.addClass(this.options.positionClass)
+          /*.hide()*/.css({height: '', width: ''});
+      this.classChanged = false;
+      this.counter = 4;
+      this.usedPositions.length = 0;
+    }
+  };
+  /**
    * Adds event listeners to the element utilizing the triggers utility library.
    * @function
    * @private
@@ -158,7 +180,10 @@ class Dropdown {
       'open.zf.trigger': this.open.bind(this),
       'close.zf.trigger': this.close.bind(this),
       'toggle.zf.trigger': this.toggle.bind(this),
-      'resizeme.zf.trigger': this._setPosition.bind(this)
+      'resizeme.zf.trigger': function(){
+        _this._resetPositionClass();
+        _this._setPosition();
+      }
     });
 
     if(this.options.hover){
@@ -302,17 +327,7 @@ class Dropdown {
     this.$anchor.removeClass('hover')
         .attr('aria-expanded', false);
 
-    if(this.classChanged){
-      var curPositionClass = this.getPositionClass();
-      if(curPositionClass){
-        this.$element.removeClass(curPositionClass);
-      }
-      this.$element.addClass(this.options.positionClass)
-          /*.hide()*/.css({height: '', width: ''});
-      this.classChanged = false;
-      this.counter = 4;
-      this.usedPositions.length = 0;
-    }
+    this._resetPositionClass();
     this.$element.trigger('hide.zf.dropdown', [this.$element]);
   }
 
