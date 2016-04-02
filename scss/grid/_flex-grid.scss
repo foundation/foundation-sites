@@ -19,9 +19,11 @@
   $width: $grid-row-width,
   $columns: null,
   $base: true,
-  $gutter: $grid-column-gutter
+  $gutter: $grid-column-gutter,
+  $wrap: true
 ) {
   $margin: auto;
+  $wrap: if($wrap, wrap, nowrap);
 
   @if index($behavior, nest) != null {
     @include grid-row-nest($gutter);
@@ -39,7 +41,7 @@
 
   @if $base {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row $wrap;
   }
 
   @if $columns != null {
