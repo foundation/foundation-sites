@@ -440,6 +440,7 @@ class Reveal {
    */
   destroy() {
     if (this.options.overlay) {
+      this.$element.appendTo($('body')); // move $element outside of $overlay to prevent error unregisterPlugin()
       this.$overlay.hide().off().remove();
     }
     this.$element.hide().off();
