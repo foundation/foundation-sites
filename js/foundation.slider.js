@@ -138,7 +138,7 @@ class Slider {
         handleDim = $hndl[0].getBoundingClientRect()[hOrW],
         elemDim = this.$element[0].getBoundingClientRect()[hOrW],
         //percentage of bar min/max value based on click or drag point
-        pctOfBar = percent(location, this.options.end).toFixed(2),
+        pctOfBar = percent(location - this.options.start, this.options.end - this.options.start).toFixed(2),
         //number of actual pixels to shift the handle, based on the percentage obtained above
         pxToMove = (elemDim - handleDim) * pctOfBar,
         //percentage of bar to shift the handle
@@ -275,7 +275,7 @@ class Slider {
           //if the cursor position is less than or greater than the elements bounding coordinates, set coordinates within those bounds
           barXY = barOffset > 0 ? -halfOfHandle : (barOffset - halfOfHandle) < -barDim ? barDim : Math.abs(barOffset),
           offsetPct = percent(barXY, barDim);
-      value = (this.options.end - this.options.start) * offsetPct;
+      value = (this.options.end - this.options.start) * offsetPct + this.options.start;
 
       // turn everything around for RTL, yay math!
       if (Foundation.rtl() && !this.options.vertical) {value = this.options.end - value;}
