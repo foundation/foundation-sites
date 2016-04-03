@@ -109,3 +109,33 @@ Add the `.vertical` class to a tabstrip to stack tabs vertically. You can also p
   </div>
 </div>
 ```
+
+---
+
+## Collapsing Tabs
+
+Add the attribute `data-active-collapse="true"` to a tabstrip to collapse active tabs.
+
+```html_example
+<ul class="tabs" data-active-collapse="true" data-tabs id="collapsing-tabs">
+  <li class="tabs-title is-active"><a href="#panel1c" aria-selected="true">Tab 1</a></li>
+  <li class="tabs-title"><a href="#panel2c">Tab 2</a></li>
+  <li class="tabs-title"><a href="#panel3c">Tab 3</a></li>
+  <li class="tabs-title"><a href="#panel4c">Tab 4</a></li>
+</ul>
+
+<div class="tabs-content" data-tabs-content="collapsing-tabs">
+  <div class="tabs-panel is-active" id="panel1c">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  </div>
+  <div class="tabs-panel" id="panel2c">
+    <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
+  </div>
+  <div class="tabs-panel" id="panel3c">
+    <img class="thumbnail" src="assets/img/generic/rectangle-3.jpg">
+  </div>
+  <div class="tabs-panel" id="panel4c">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  </div>
+</div>
+```
