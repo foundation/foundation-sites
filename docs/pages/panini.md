@@ -183,6 +183,22 @@ module.exports = function(options) {
   return bolder;
 }
 ```
+
+```
+// Example  gulpfile.babel.js
+function pages() {
+  return gulp.src('src/pages/**/*.html')
+    .pipe(panini({
+      root: 'src/pages',
+      layouts: 'src/layouts',
+      partials: 'src/partials',
+      helpers: 'src/helpers'
+    }))
+    .pipe(inky())
+    .pipe(gulp.dest('dist'));
+}
+```
+
 Then in your projects call your custom `{{#bold}}` helper
 
 ```
