@@ -139,7 +139,7 @@ class Interchange {
       .trigger(trigger);
     }
     // Replacing background images
-    else if (path.match(/\.(gif|jpg|jpeg|tiff|png)([?#].*)?/i)) {
+    else if (path.match(/\.(gif|jpg|jpeg|png|svg|tiff)([?#].*)?/i)) {
       this.$element.css({ 'background-image': 'url('+path+')' })
           .trigger(trigger);
     }
