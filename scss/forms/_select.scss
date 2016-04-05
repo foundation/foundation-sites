@@ -55,6 +55,7 @@ $select-radius: $global-radius !default;
 
   &[multiple] {
     height: auto;
+    background-image: none;
   }
 }
 
