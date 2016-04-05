@@ -29,12 +29,14 @@ $buttongroup-expand-max: 6 !default;
 ) {
   @include clearfix;
   margin-bottom: $buttongroup-margin;
-  font-size: 0;
 
   @if $global-flexbox {
     display: flex;
     flex-wrap: nowrap;
     align-items: stretch;
+  }
+  @else {
+    font-size: 0;
   }
 
   #{$child-selector} {
@@ -44,17 +46,9 @@ $buttongroup-expand-max: 6 !default;
     @if $global-flexbox {
       flex: 0 0 auto;
     }
-    @else {
-      float: #{$global-left};
-    }
 
     &:not(:last-child) {
-      @if $global-flexbox {
-        margin-right: $buttongroup-spacing;
-      }
-      @else {
-        border-#{$global-right}: $buttongroup-spacing solid $body-background;
-      }
+      margin-right: $buttongroup-spacing;
     }
   }
 }
