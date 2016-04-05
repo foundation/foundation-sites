@@ -513,7 +513,7 @@ $-zf-flex-classes-imported: false;
 
   button[disabled],
   html input[disabled] {
-    cursor: default;
+    cursor: not-allowed;
   }
 
   /**
