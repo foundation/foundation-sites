@@ -4,6 +4,11 @@
 
 // Default set of media queries
 const defaultQueries = {
+  small : 'only screen and (min-width: 0em)',
+  medium : 'only screen and (min-width: 40em)',
+  large : 'only screen and (min-width: 64em)',
+  xlarge : 'only screen and (min-width: 75em)',
+  xxlarge : 'only screen and (min-width: 90em)',
   'default' : 'only screen',
   landscape : 'only screen and (orientation: landscape)',
   portrait : 'only screen and (orientation: portrait)',
@@ -30,13 +35,22 @@ var MediaQuery = {
     var extractedStyles = $('.foundation-mq').css('font-family');
     var namedQueries;
 
-    namedQueries = parseStyleToObject(extractedStyles);
+    if (extractedStyles) {
+      namedQueries = parseStyleToObject(extractedStyles);
+    } 
 
-    for (var key in namedQueries) {
-      self.queries.push({
-        name: key,
-        value: `only screen and (min-width: ${namedQueries[key]})`
-      });
+    for (var key in defaultQueries) {
+      if (key in namedQueries) {
+        self.queries.push({
+          name: key,
+          value: `only screen and (min-width: ${namedQueries[key]})`
+        });
+      } else {
+        self.queries.push({
+          name: key,
+          value: defaultQueries[key]
+        });
+      }
     }
 
     this.current = this._getCurrentSize();
@@ -67,6 +81,10 @@ var MediaQuery = {
    * @returns {String|null} - The media query of the breakpoint, or `null` if the breakpoint doesn't exist.
    */
   get(size) {
+    if (! this.queries.length) {
+      this._init();
+    }
+
     for (var i in this.queries) {
       var query = this.queries[i];
       if (size === query.name) return query.value;
