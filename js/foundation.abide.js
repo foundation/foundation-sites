@@ -137,6 +137,28 @@ class Abide {
   }
 
   /**
+   * Get the set of labels associated with a set of radio els in this order
+   * 2. The <label> with the attribute `[for="someInputId"]`
+   * 3. The `.closest()` <label>
+   *
+   * @param {Object} $el - jQuery object to check for required attribute
+   * @returns {Boolean} Boolean value depends on whether or not attribute is checked or empty
+   */
+  findRadioLabels($els) {
+    var labels = $els.map((i, el) => {
+      var id = el.id;
+      var $label = this.$element.find(`label[for="${id}"]`);
+
+      if (!$label.length) {
+        $label = $(el).closest('label');
+      }
+      return $label[0];
+    });
+
+    return $(labels);
+  }
+
+  /**
    * Adds the CSS error class as specified by the Abide settings to the label, input, and the form
    * @param {Object} $el - jQuery object to add the class to
    */
@@ -156,10 +178,38 @@ class Abide {
   }
 
   /**
+   * Remove CSS error classes etc from an entire radio button group
+   * @param {String} groupName - A string that specifies the name of a radio button group
+   *
+   */
+
+  removeRadioErrorClasses(groupName) {
+    var $els = this.$element.find(`:radio[name="${groupName}"]`);
+    var $labels = this.findRadioLabels($els);
+    var $formErrors = this.findFormError($els);
+
+    if ($labels.length) {
+      $labels.removeClass(this.options.labelErrorClass);
+    }
+
+    if ($formErrors.length) {
+      $formErrors.removeClass(this.options.formErrorClass);
+    }
+
+    $els.removeClass(this.options.inputErrorClass).removeAttr('data-invalid');
+
+  }
+
+  /**
    * Removes CSS error class as specified by the Abide settings from the label, input, and the form
    * @param {Object} $el - jQuery object to remove the class from
    */
   removeErrorClasses($el) {
+    // radios need to clear all of the els
+    if($el[0].type == 'radio') {
+      return this.removeRadioErrorClasses($el.attr('name'));
+    }
+
     var $label = this.findLabel($el);
     var $formError = this.findFormError($el);
 
