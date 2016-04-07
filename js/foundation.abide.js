@@ -160,18 +160,31 @@ class Abide {
    * @param {Object} $el - jQuery object to remove the class from
    */
   removeErrorClasses($el) {
-    var $label = this.findLabel($el);
+    var $group, $labels;
     var $formError = this.findFormError($el);
 
-    if ($label.length) {
-      $label.removeClass(this.options.labelErrorClass);
+    switch ($el[0].type) {
+      case 'radio':
+        $group = $el.add(`:radio[name="${$el[0].name}"]`);
+        $labels = $group.map((index, element) => {
+          return this.findLabel($(element))[0];
+        });
+        break;
+
+      default:
+        $group = $el;
+        $labels = this.findLabel($el);
+    }
+
+    if ($labels.length) {
+      $labels.removeClass(this.options.labelErrorClass);
     }
 
     if ($formError.length) {
       $formError.removeClass(this.options.formErrorClass);
     }
 
-    $el.removeClass(this.options.inputErrorClass).removeAttr('data-invalid');
+    $group.removeClass(this.options.inputErrorClass).removeAttr('data-invalid');
   }
 
   /**
