@@ -83,11 +83,6 @@ class Abide {
     var isGood = true;
 
     switch ($el[0].type) {
-      case 'checkbox':
-        isGood = $el[0].checked;
-        break;
-      case 'radio':
-        break;
       case 'select':
       case 'select-one':
       case 'select-multiple':
@@ -196,14 +191,13 @@ class Abide {
 
     switch ($el[0].type) {
       case 'radio':
-//        validated = this.validateRadio($el.attr('name'));
-//        break;
+        validated = this.validateRadio($el.attr('name'));
+        break;
 
       case 'checkbox':
-        var $group = $el.parent().closest('.'+$el[0].type+'-group');
+        var $group = $el.parent().closest('.checkbox-group');
         if ($group.length) {
-          var minRequired = ($el[0].type === 'radio') ? 1
-            : $group.attr('data-min-required') ? $group.attr('data-min-required') : 1;
+          var minRequired = $group.attr('data-min-required') ? $group.attr('data-min-required') : 1;
           if ($group.find(':checked').length >= minRequired) validated = true;
           $elError = $group;
         } else {
