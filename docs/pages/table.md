@@ -45,7 +45,7 @@ No bells or whistles here, just a straight up table for all of your basic table 
 
 ## Hover State
 
-Need to spiff up the table just a tad? Just add the class `.hover` lightly darken the table rows on hover.
+Need to spiff up the table just a tad? Just add the class `.hover` to lightly darken the table rows on hover.
 
 ```html
 <table class="hover">
@@ -87,7 +87,7 @@ Need to spiff up the table just a tad? Just add the class `.hover` lightly darke
 
 ## Stacked Table
 
-Sometimes you just need to stack a table. Just add the class `.stack` to your table.
+To stack a table on small screens, add the class `.stack`.
 
 ```html
 <table class="stack">

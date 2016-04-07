@@ -5,6 +5,7 @@ js: js/foundation.magellan.js
 tags:
   - navigation
 ---
+
 <div data-sticky-container>
   <div class="sticky" id="sticky-magellan" style="width:100%;" data-sticky data-margin-top="0" data-margin-bottom="0" data-top-anchor="setup" data-btm-anchor="destroy:bottom">
     <nav data-magellan class="sticky-mag" data-bar-offset="25">
@@ -16,6 +17,8 @@ tags:
     </nav>
   </div>
 </div>
+
+<br>
 
 ## Setup
 
@@ -34,9 +37,13 @@ You can use Magellan with any navigation element, like our [Menu](menu.html) or 
 </div>
 ```
 
+---
+
 ## Sticky Navigation
 
-You can use Magellan with our Sticky plugin to create a persistent navigation header or sidebar. The first example is a simplified version of the table of contents on the right side of this page, the second is the menu bar floating at the top of the page.
+You can use Magellan with our Sticky plugin to create a persistent navigation header or sidebar.
+
+This first example is a simplified version of the table of contents on the right side of this page:
 
 ```html
 <div class="large-3 columns" data-sticky-container>
@@ -48,9 +55,11 @@ You can use Magellan with our Sticky plugin to create a persistent navigation he
     </ul>
   </nav>
 </div>
+```
 
+This example is the menu bar floating at the top of the page.
 
-
+```html
 <div data-sticky-container>
   <div class="sticky" id="example" data-sticky data-margin-top="0" style="width:100%;" data-margin-bottom="0" data-top-anchor="topAnchorExample" data-btm-anchor="bottomOfContentId:bottom">
     <nav data-magellan>
