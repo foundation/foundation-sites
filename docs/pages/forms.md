@@ -82,7 +82,7 @@ Use select menus to combine many choices into one menu.
 </label>
 ```
 
-Add the `multiple` attribute to allow more than one option to be selected.
+Add the `multiple` attribute to allow more than one option to be selected. Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.
 
 ```html_example
 <label>Multiple Select Menu
