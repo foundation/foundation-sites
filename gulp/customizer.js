@@ -13,6 +13,7 @@ var replace = require('gulp-replace');
 var rename = require('gulp-rename');
 var rimraf = require('rimraf');
 var sass = require('gulp-sass');
+var autoprefixer = require('gulp-autoprefixer');
 var source = require('vinyl-source-stream');
 var touch = require('touch');
 var uglify = require('gulp-uglify');
@@ -23,6 +24,11 @@ var zip = require('gulp-zip');
 var ARGS = require('yargs').argv;
 var FOUNDATION_VERSION = require('../package.json').version;
 var OUTPUT_DIR = ARGS.output || 'custom-build';
+var COMPATIBILITY = [
+  'last 2 versions',
+  'ie >= 9',
+  'and_chr >= 2.3'
+];
 var CUSTOMIZER_CONFIG;
 var MODULE_LIST;
 var VARIABLE_LIST;
@@ -59,6 +65,9 @@ gulp.task('customizer:sass', ['customizer:loadConfig'], function() {
         'scss',
         'node_modules/motion-ui/src'
       ]
+    }))
+    .pipe(autoprefixer({
+      browsers: COMPATIBILITY
     }))
     .pipe(gulp.dest(path.join(OUTPUT_DIR, 'css')))
     .pipe(cssnano())
