@@ -28,7 +28,7 @@
             <li><a href="#">Two</a></li>
             <li>
               <a href="#">Three</a>
-              <ul class="submenu menu vertical align-left" data-submenu>
+              <ul class="submenu menu vertical" data-submenu>
                 <li><a href="#">One</a></li>
                 <li><a href="#">Two</a></li>
                 <li><a href="#">Three</a></li>
@@ -42,15 +42,29 @@
     </div>
     <div class="top-bar-right">
       <ul class="menu vertical medium-horizontal" data-responsive-menu="drilldown medium-dropdown">
-        <li><a href="#">One</a></li>
         <li class="has-submenu">
+          <a href="#">One</a>
+          <ul class="submenu menu vertical" data-submenu>
+            <li><a href="#">One</a></li>
+            <li><a href="#">Two</a></li>
+            <li>
+              <a href="#">Three</a>
+              <ul class="submenu menu vertical" data-submenu>
+                <li><a href="#">One</a></li>
+                <li><a href="#">Two</a></li>
+                <li><a href="#">Three</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="has-submenu opens-left">
           <a href="#">Broken?</a>
           <ul class="submenu menu vertical" data-submenu>
             <li><a href="#">One</a></li>
             <li><a href="#">Two</a></li>
             <li>
               <a href="#">Three</a>
-              <ul class="submenu menu vertical align-left" data-submenu>
+              <ul class="submenu menu vertical" data-submenu>
                 <li><a href="#">One</a></li>
                 <li><a href="#">Two</a></li>
                 <li><a href="#">Three</a></li>
@@ -59,13 +73,13 @@
           </ul>
         </li>
         <li class="has-submenu">
-          <a href="#">Three</a>
+          <a href="#">Two</a>
           <ul class="submenu menu vertical" data-submenu>
             <li><a href="#">One</a></li>
             <li><a href="#">Two</a></li>
             <li>
               <a href="#">Three</a>
-              <ul class="submenu menu vertical align-left" data-submenu>
+              <ul class="submenu menu vertical" data-submenu>
                 <li><a href="#">One</a></li>
                 <li><a href="#">Two</a></li>
                 <li><a href="#">Three</a></li>
@@ -73,7 +87,7 @@
             </li>
           </ul>
         </li>
-        <li><a href="#">Two</a></li>
+        <li><a href="#">Three</a></li>
       </ul>
     </div>
   </div>
