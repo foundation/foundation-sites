@@ -122,6 +122,9 @@ orbit:
     - keyboard
     - touch
 
+pagination:
+  sass: pagination
+
 progress_bar:
   sass: progress-bar
 
