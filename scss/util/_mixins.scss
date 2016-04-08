@@ -141,8 +141,8 @@
     display: table;
     @if $global-flexbox {
       flex-basis: 0;
+      order: 1;
     }
-    order: 1;
   }
 
   &::after {
