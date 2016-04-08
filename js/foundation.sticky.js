@@ -195,7 +195,8 @@ class Sticky {
    * @private
    */
   _setSticky() {
-    var stickTo = this.options.stickTo,
+    var _this = this,
+        stickTo = this.options.stickTo,
         mrgn = stickTo === 'top' ? 'marginTop' : 'marginBottom',
         notStuckTo = stickTo === 'top' ? 'bottom' : 'top',
         css = {};
@@ -214,6 +215,9 @@ class Sticky {
                   * @event Sticky#stuckto
                   */
                  .trigger(`sticky.zf.stuckto:${stickTo}`);
+    this.$element.on("transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd", function() {
+      _this._setSizes();
+    });
   }
 
   /**
