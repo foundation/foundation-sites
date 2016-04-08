@@ -139,7 +139,9 @@
   &::after {
     content: ' ';
     display: table;
-    flex-basis: 0;
+    @if $global-flexbox {
+      flex-basis: 0;
+    }
     order: 1;
   }
 
