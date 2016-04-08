@@ -6,9 +6,34 @@
 /// @group grid
 ////
 
+/// Get a gutter size for a given breakpoint
+/// @param {Keyword} $breakpoint [small] - Breakpoint name.
+/// @param {Number|Map} $gutters [$grid-column-gutter] - Gutter map or single value to use. Responsive gutter settings by default.
+///
+/// @returns {Number} Gutter size.
+@function grid-column-gutter(
+  $breakpoint: $-zf-zero-breakpoint,
+  $gutters: $grid-column-gutter
+) {
+  // If gutter is single value, return it
+  @if type-of($gutters) == 'number' {
+    @return $gutters;
+  }
+
+  // Else, return the corresponding responsive value
+  @return -zf-get-bp-val($gutters, $breakpoint);
+}
+
 /// Set the gutters on a column
-/// @param {Number} $gutter - Spacing between columns.
-@mixin grid-column-gutter($gutter) {
+/// @param {Number|Keyword} $gutters [small] - Spacing between columns or breakpoint name.
+/// @param {Number|Map} $gutters [$grid-column-gutter] - Gutter map or single value to use. Responsive gutter settings by default.
+@mixin grid-column-gutter(
+  $gutter: $-zf-zero-breakpoint,
+  $gutters: $grid-column-gutter
+) {
+  @if type-of($gutter) == 'string' {
+    $gutter: grid-column-gutter($gutter, $gutters);
+  }
   $padding: rem-calc($gutter) / 2;
 
   padding-left: $padding;
@@ -20,27 +45,14 @@
   @include grid-column-gutter(0);
 }
 
-/// Un-collapse the gutters on a column by re-adding the padding.
-///
-/// @param {Number} $gutter [$grid-column-gutter] - Spacing between columns.
-@mixin grid-column-uncollapse($gutter: $grid-column-gutter) {
-  @include grid-column-gutter($gutter);
-}
-
 /// Shorthand for `grid-column-gutter()`.
 /// @alias grid-column-gutter
-@mixin grid-col-gutter($gutter) {
-  @include grid-column-gutter($gutter);
+@mixin grid-col-gutter($gutters) {
+  @include grid-column-gutter($gutters);
 }
 
 /// Shorthand for `grid-column-collapse()`.
 /// @alias grid-column-collapse
 @mixin grid-col-collapse {
   @include grid-column-collapse;
-}
-
-/// Shorthand for `grid-column-uncollapse()`.
-/// @alias grid-column-uncollapse
-@mixin grid-col-uncollapse($gutter: $grid-column-gutter) {
-  @include grid-column-uncollapse($gutter);
 }

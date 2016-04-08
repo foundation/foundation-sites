@@ -42,13 +42,6 @@ $grid-column-responsive-gutter: null !default;
   $grid-column-gutter: $grid-column-responsive-gutter;
 }
 
-// If a single value is passed as a gutter, convert it to a map so the code knows what to do with it
-@if type-of($grid-column-gutter) == 'number' {
-  $grid-column-gutter: (
-    small: $grid-column-gutter,
-  );
-}
-
 @import 'row';
 @import 'column';
 @import 'size';

@@ -134,9 +134,7 @@
     }
 
     .#{$-zf-size}-#{$uncollapse} {
-      $gutter_value: -zf-get-bp-val($grid-column-gutter, $-zf-size);
-
-      > .#{$column} { @include grid-col-uncollapse($gutter_value); }
+      > .#{$column} { @include grid-col-gutter($-zf-size); }
     }
 
     // Positioning
