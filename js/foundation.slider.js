@@ -103,6 +103,7 @@ class Slider {
    * @param {Number} location - floating point between the start and end values of the slider bar.
    * @param {Function} cb - callback function to fire on completion.
    * @fires Slider#moved
+   * @fires Slider#changed
    */
   _setHandlePos($hndl, location, noInvert, cb) {
   //might need to alter that slightly for bars that will have odd number selections.
@@ -137,7 +138,7 @@ class Slider {
         handleDim = $hndl[0].getBoundingClientRect()[hOrW],
         elemDim = this.$element[0].getBoundingClientRect()[hOrW],
         //percentage of bar min/max value based on click or drag point
-        pctOfBar = percent(location, this.options.end).toFixed(2),
+        pctOfBar = percent(location - this.options.start, this.options.end - this.options.start).toFixed(2),
         //number of actual pixels to shift the handle, based on the percentage obtained above
         pxToMove = (elemDim - handleDim) * pctOfBar,
         //percentage of bar to shift the handle
@@ -199,6 +200,15 @@ class Slider {
         _this.$fill.css(css);
       }
     });
+
+    /**
+     * Fires when the value has not been change for a given time.
+     * @event Slider#changed
+     */    
+    clearTimeout(_this.timeout);
+    _this.timeout = setTimeout(function(){
+      _this.$element.trigger('changed.zf.slider', [$hndl]);
+    }, _this.options.changedDelay);
   }
 
   /**
@@ -265,7 +275,7 @@ class Slider {
           //if the cursor position is less than or greater than the elements bounding coordinates, set coordinates within those bounds
           barXY = barOffset > 0 ? -halfOfHandle : (barOffset - halfOfHandle) < -barDim ? barDim : Math.abs(barOffset),
           offsetPct = percent(barXY, barDim);
-      value = (this.options.end - this.options.start) * offsetPct;
+      value = (this.options.end - this.options.start) * offsetPct + this.options.start;
 
       // turn everything around for RTL, yay math!
       if (Foundation.rtl() && !this.options.vertical) {value = this.options.end - value;}
@@ -520,7 +530,13 @@ Slider.defaults = {
    * @option
    * @example false
    */
-  invertVertical: false
+  invertVertical: false,
+  /**
+   * Milliseconds before the `changed.zf-slider` event is triggered after value change. 
+   * @option
+   * @example 500
+   */
+  changedDelay: 500
 };
 
 function percent(frac, num) {

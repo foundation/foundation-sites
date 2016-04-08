@@ -139,8 +139,10 @@
   &::after {
     content: ' ';
     display: table;
-    flex-basis: 0;
-    order: 1;
+    @if $global-flexbox {
+      flex-basis: 0;
+      order: 1;
+    }
   }
 
   &::after {
@@ -220,7 +222,7 @@
   $map: $breakpoint-classes;
 
   @if not $small {
-    $map: map-remove($map, small);
+    $map: map-remove($map, $-zf-zero-breakpoint);
   }
 
   @each $size in $map {

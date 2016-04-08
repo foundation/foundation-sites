@@ -75,13 +75,13 @@ $mediaobject-image-width-stacked: 100% !default;
     }
 
     @if $global-flexbox {
-      &.stack-for-small {
+      &.stack-for-#{$-zf-zero-breakpoint} {
         flex-wrap: wrap;
       }
     }
 
-    &.stack-for-small .media-object-section {
-      @include breakpoint(small only) {
+    &.stack-for-#{$-zf-zero-breakpoint} .media-object-section {
+      @include breakpoint($-zf-zero-breakpoint only) {
         @include media-object-stack;
       }
     }
@@ -97,8 +97,13 @@ $mediaobject-image-width-stacked: 100% !default;
       }
     }
     @else {
-      &.middle { vertical-align: middle; }
-      &.bottom { vertical-align: bottom; }
+      &.middle {
+        vertical-align: middle;
+      }
+
+      &.bottom {
+        vertical-align: bottom;
+      }
     }
   }
 }

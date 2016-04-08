@@ -29,12 +29,14 @@ $buttongroup-expand-max: 6 !default;
 ) {
   @include clearfix;
   margin-bottom: $buttongroup-margin;
-  font-size: 0;
 
   @if $global-flexbox {
     display: flex;
     flex-wrap: nowrap;
     align-items: stretch;
+  }
+  @else {
+    font-size: 0;
   }
 
   #{$child-selector} {
@@ -44,17 +46,9 @@ $buttongroup-expand-max: 6 !default;
     @if $global-flexbox {
       flex: 0 0 auto;
     }
-    @else {
-      float: #{$global-left};
-    }
 
     &:not(:last-child) {
-      @if $global-flexbox {
-        margin-right: $buttongroup-spacing;
-      }
-      @else {
-        border-#{$global-right}: $buttongroup-spacing solid $body-background;
-      }
+      margin-right: $buttongroup-spacing;
     }
   }
 }
@@ -84,7 +78,11 @@ $buttongroup-expand-max: 6 !default;
         &:first-child:nth-last-child(#{$i}) {
           &, &:first-child:nth-last-child(#{$i}) ~ #{$selector} {
             display: inline-block;
-            width: calc(#{percentage(1/$i)} - #{$buttongroup-spacing});
+            @if #{$buttongroup-spacing} == '0' {
+              width: #{percentage(1 / $i)};
+            } @else {
+              width: calc(#{percentage(1 / $i)} - #{$buttongroup-spacing});
+            }
             margin-right: $buttongroup-spacing;
           }
         }
@@ -105,13 +103,20 @@ $buttongroup-expand-max: 6 !default;
   #{$selector} {
     @if $global-flexbox {
       flex: 0 0 100%;
+      margin-#{$global-right}: 0; 
     }
     @else {
       width: 100%;
+      border-#{$global-right}: $buttongroup-spacing solid transparent;
     }
-
+    
     &:not(:last-child) {
-      margin-#{$global-right}: 0;
+      @if $global-flexbox {
+        margin-bottom: $buttongroup-spacing;
+      }
+      @else {
+        border-bottom: $buttongroup-spacing solid $body-background;
+      }
     }
   }
 }
@@ -142,7 +147,9 @@ $buttongroup-expand-max: 6 !default;
 
     // Sizes
     @each $size, $value in map-remove($button-sizes, default) {
-      &.#{$size} #{$buttongroup-child-selector} { font-size: $value; }
+      &.#{$size} #{$buttongroup-child-selector} {
+        font-size: $value;
+      }
     }
 
     // Even-width Group

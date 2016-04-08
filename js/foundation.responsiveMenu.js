@@ -38,25 +38,28 @@ class ResponsiveMenu {
    * @private
    */
   _init() {
-    var rulesTree = {};
+    // The first time an Interchange plugin is initialized, this.rules is converted from a string of "classes" to an object of rules
+    if (typeof this.rules === 'string') {
+      let rulesTree = {};
 
-    // Parse rules from "classes" in data attribute
-    var rules = this.rules.split(' ');
+      // Parse rules from "classes" pulled from data attribute
+      let rules = this.rules.split(' ');
 
-    // Iterate through every rule found
-    for (var i = 0; i < rules.length; i++) {
-      var rule = rules[i].split('-');
-      var ruleSize = rule.length > 1 ? rule[0] : 'small';
-      var rulePlugin = rule.length > 1 ? rule[1] : rule[0];
+      // Iterate through every rule found
+      for (let i = 0; i < rules.length; i++) {
+        let rule = rules[i].split('-');
+        let ruleSize = rule.length > 1 ? rule[0] : 'small';
+        let rulePlugin = rule.length > 1 ? rule[1] : rule[0];
 
-      if (MenuPlugins[rulePlugin] !== null) {
-        rulesTree[ruleSize] = MenuPlugins[rulePlugin];
+        if (MenuPlugins[rulePlugin] !== null) {
+          rulesTree[ruleSize] = MenuPlugins[rulePlugin];
+        }
       }
+
+      this.rules = rulesTree;
     }
 
-    this.rules = rulesTree;
-
-    if (!$.isEmptyObject(rulesTree)) {
+    if (!$.isEmptyObject(this.rules)) {
       this._checkMediaQueries();
     }
   }

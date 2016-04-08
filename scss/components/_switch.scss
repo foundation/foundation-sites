@@ -179,7 +179,7 @@ $switch-paddle-transition: all 0.25s ease-out !default;
     height: $paddle-height;
   }
 
-  input:checked ~ .switch-paddle:after {
+  input:checked ~ .switch-paddle::after {
     #{$global-left}: $paddle-left-active;
   }
 }

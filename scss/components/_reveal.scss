@@ -104,6 +104,7 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   max-width: none;
   margin-left: 0;
   border: 0;
+  border-radius: 0;
 }
 
 @mixin foundation-reveal {
@@ -153,7 +154,7 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
       @include reveal-modal-fullscreen;
     }
 
-    @include breakpoint(small only) {
+    @include breakpoint($-zf-zero-breakpoint only) {
       @include reveal-modal-fullscreen;
     }
 

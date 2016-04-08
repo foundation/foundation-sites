@@ -162,7 +162,7 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5) !default;
 
   // Reveal off-canvas menu on larger screens
   @each $name, $value in $breakpoint-classes {
-    @if $name != small {
+    @if $name != $-zf-zero-breakpoint {
       @include breakpoint($name) {
         .position-left.reveal-for-#{$name} {
           @include off-canvas-reveal(left);

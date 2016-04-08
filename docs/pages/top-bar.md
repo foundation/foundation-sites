@@ -43,7 +43,7 @@ In the below example, our top bar includes a [dropdown menu](dropdown-menu.html)
 
 ---
 
-## Advanced
+## Advanced Layout
 
 You can further divide a top bar into a title area and content area. Use the `.top-bar-title` class to create a title/branding area. Next to that can be any element, which is used for the rest of the content.
 
@@ -63,7 +63,7 @@ In the below example, we've combined the above pattern with the Responsive Toggl
 <div class="top-bar">
   <div class="top-bar-title">
     <span data-responsive-toggle="responsive-menu" data-hide-for="medium">
-      <span class="menu-icon dark" data-toggle></span>
+      <button class="menu-icon dark" type="button" data-toggle></button>
     </span>
     <strong>Site Title</strong>
   </div>
@@ -91,6 +91,42 @@ In the below example, we've combined the above pattern with the Responsive Toggl
   </div>
 </div>
 ```
+
+---
+
+## Stacking
+
+By default, the two sections of a top bar will stack on top of each other on small screens. This can be changed by adding the class `.stacked-for-medium` or `.stacked-for-large`.
+
+```html
+<div class="top-bar stacked-for-medium">
+  <!-- ... -->
+</div>
+```
+
+<div class="top-bar stacked-for-medium">
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li class="menu-text">Site Title</li>
+      <li>
+        <a href="#">One</a>
+        <ul class="menu vertical">
+          <li><a href="#">One</a></li>
+          <li><a href="#">Two</a></li>
+          <li><a href="#">Three</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Two</a></li>
+      <li><a href="#">Three</a></li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu">
+      <li><input type="search" placeholder="Search"></li>
+      <li><button type="button" class="button">Search</button></li>
+    </ul>
+  </div>
+</div>
 
 ---
 

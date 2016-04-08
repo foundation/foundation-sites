@@ -124,7 +124,7 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
     }
 
     @each $size in $breakpoint-classes {
-      @if $size != small {
+      @if $size != $-zf-zero-breakpoint {
         @include breakpoint($size) {
           &.#{$size}-horizontal {
             @include dropdown-menu-direction(horizontal);
@@ -170,8 +170,7 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
 
     &.opens-left .is-dropdown-submenu {
       left: auto;
-      right: 0;
-      top: 100%;
+      right: 100%;
     }
   }
 

@@ -15,6 +15,7 @@
 .sass-cache/*
 .yardoc
 _build
+.customizer
 
 bower_components
 bundle
@@ -47,6 +48,7 @@ test/tmp
 test/version_tmp
 tmp
 testing/_build
+test/javascript/js-tests.js
 
 pizza/
 data.json
