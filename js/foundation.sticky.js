@@ -281,6 +281,9 @@ class Sticky {
     });
 
     var newContainerHeight = this.$element[0].getBoundingClientRect().height || this.containerHeight;
+    if (this.$element.css("display") == "none") {
+      newContainerHeight = 0;
+    }
     this.containerHeight = newContainerHeight;
     this.$container.css({
       height: newContainerHeight
