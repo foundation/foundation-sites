@@ -315,10 +315,8 @@ class Drilldown {
     this.$element.unwrap()
                  .find('.js-drilldown-back, .is-submenu-parent-item').remove()
                  .end().find('.is-active, .is-closing, .is-drilldown-submenu').removeClass('is-active is-closing is-drilldown-submenu')
-                 .end().find('[data-submenu]').removeAttr('aria-hidden tabindex role');
-    this.$submenuAnchors.each(function() {
-      $(this).off('.zf.drilldown');
-    });
+                 .end().find('[data-submenu]').removeAttr('aria-hidden tabindex role')
+                 .off('.zf.drilldown').end().off('zf.drilldown');
     this.$element.find('a').each(function(){
       var $link = $(this);
       if($link.data('savedHref')){
