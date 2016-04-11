@@ -129,8 +129,7 @@ class Tabs {
 
     this.$tabTitles.off('keydown.zf.tabs').on('keydown.zf.tabs', function(e){
       if (e.which === 9) return;
-      e.stopPropagation();
-      e.preventDefault();
+      
 
       var $element = $(this),
         $elements = $element.parent('ul').children('li'),
@@ -163,6 +162,10 @@ class Tabs {
         next: function() {
           $nextElement.find('[role="tab"]').focus();
           _this._handleTabChange($nextElement);
+        },
+        handled: function() {
+          e.stopPropagation();
+          e.preventDefault();
         }
       });
     });
