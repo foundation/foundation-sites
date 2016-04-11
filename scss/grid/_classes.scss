@@ -45,7 +45,7 @@
 
     // Expanded (full-width) row
     &.#{$expanded} {
-      max-width: none;
+      @include grid-row-size(expand);
 
       .#{$row} {
         margin-left: auto;

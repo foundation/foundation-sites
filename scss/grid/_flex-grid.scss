@@ -10,13 +10,13 @@
 ///
 /// @param {Keyword|List} $behavior [null]
 ///   Modifications to the default grid styles. `nest` indicates the row will be placed inside another row. `collapse` indicates that the columns inside this row will not have padding. `nest collapse` combines both behaviors.
-/// @param {Number} $width [$grid-row-width] - Maximum width of the row.
+/// @param {Keyword|Number} $size [$grid-row-width] Maximum size of the row. Set to `expand` to make the row taking the full width.
 /// @param {Number} $columns [null] - Number of columns to use for this row. If set to `null` (the default), the global column count will be used.
 /// @param {Boolean} $base [true] - Set to `false` to prevent basic styles from being output. Useful if you're calling this mixin on the same element twice, as it prevents duplicate CSS output.
 /// @param {Number} $gutter [$grid-column-gutter] - Gutter to use when inverting margins, in case the row is nested.
 @mixin flex-grid-row(
   $behavior: null,
-  $width: $grid-row-width,
+  $size: $grid-row-width,
   $columns: null,
   $base: true,
   $gutter: $grid-column-gutter
@@ -32,7 +32,7 @@
     }
   }
   @else {
-    max-width: $width;
+    @include grid-row-size($size);
     margin-left: auto;
     margin-right: auto;
   }
@@ -172,7 +172,7 @@
 
     // Expanded row
     &.expanded {
-      max-width: none;
+      @include grid-row-size(expand);
     }
 
     &.collapse {
