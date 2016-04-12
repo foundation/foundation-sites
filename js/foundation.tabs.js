@@ -93,9 +93,12 @@ class Tabs {
   _events() {
     this._addKeyHandler();
     this._addClickHandler();
-
+    this._setHeightMqHandler = null;
+    
     if (this.options.matchHeight) {
-      $(window).on('changed.zf.mediaquery', this._setHeight.bind(this));
+      this._setHeightMqHandler = this._setHeight.bind(this);
+      
+      $(window).on('changed.zf.mediaquery', this._setHeightMqHandler);
     }
   }
 
@@ -271,7 +274,9 @@ class Tabs {
       .hide();
 
     if (this.options.matchHeight) {
-      $(window).off('changed.zf.mediaquery');
+      if (this._setHeightMqHandler != null) {
+         $(window).off('changed.zf.mediaquery', this._setHeightMqHandler);
+      }
     }
 
     Foundation.unregisterPlugin(this);
