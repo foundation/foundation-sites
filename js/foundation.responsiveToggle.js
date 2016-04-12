@@ -141,7 +141,14 @@ ResponsiveToggle.defaults = {
    * @option
    * @example 'medium'
    */
-  hideFor: 'medium'
+  hideFor: 'medium',
+
+  /**
+   * To decide if the toggle should be animated or not.
+   * @option
+   * @example false
+   */
+  animate: false
 };
 
 // Window exports
