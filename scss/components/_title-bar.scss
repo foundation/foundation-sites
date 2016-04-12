@@ -48,11 +48,6 @@ $titlebar-icon-spacing: 0.25rem !default;
     @else {
       @include clearfix;
     }
-
-    .menu-icon {
-      margin-#{$global-left}: $titlebar-icon-spacing;
-      margin-#{$global-right}: $titlebar-padding;
-    }
   }
 
   @if $global-flexbox {
