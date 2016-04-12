@@ -83,6 +83,10 @@ class Abide {
     var isGood = true;
 
     switch ($el[0].type) {
+      case 'checkbox':
+        isGood = $el[0].checked;
+        break;
+
       case 'select':
       case 'select-one':
       case 'select-multiple':
