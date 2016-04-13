@@ -90,7 +90,7 @@ class Drilldown {
     });
     if(!this.$element.parent().hasClass('is-drilldown')){
       this.$wrapper = $(this.options.wrapper).addClass('is-drilldown').css(this._getMaxDims());
-      this.$element.wrap(this.$wrapper);
+      this.$wrapper = this.$element.wrap(this.$wrapper).parent();
     }
   }
 
