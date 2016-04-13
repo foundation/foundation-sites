@@ -58,7 +58,6 @@ class Reveal {
     // If there is a header associate the aria-labeledby to the header vs. the link
     this.$header = $(this.$element.find('h1,h2,h3,h4,h5,h6')[0]);
     if( this.$header.length ){
-      console.log('use header');
       var headerId = this.$header[0].id || Foundation.GetYoDigits(6, 'reveal');
       this.$header.attr({
         'id': headerId
@@ -67,7 +66,6 @@ class Reveal {
 
     // If no header associate the link text to the aria-labeledby
     } else if (this.$anchor.length) {
-      console.log('use link');
       var anchorId = this.$anchor[0].id || Foundation.GetYoDigits(6, 'reveal');
       this.$anchor.attr({
         'id': anchorId,
