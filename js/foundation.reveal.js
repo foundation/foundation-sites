@@ -47,15 +47,30 @@ class Reveal {
     if(this.isiOS){ this.$element.addClass('is-ios'); }
 
     this.$anchor = $(`[data-open="${this.id}"]`).length ? $(`[data-open="${this.id}"]`) : $(`[data-toggle="${this.id}"]`);
+    // Accessibility Update: An element that envokes a modal should have a tabindex of zero and aria tags
+    this.$anchor.attr({
+      'aria-controls': this.id,
+      'aria-haspopup': true,
+      'tabindex': 0
+    });
 
-    if (this.$anchor.length) {
+    // Accessibility Update : Conditional to determine which elements provides the aria-labeledby content.
+    // If there is a header associate the aria-labeledby to the header vs. the link
+    this.$header = $(this.$element.find('h1,h2,h3,h4,h5,h6')[0]);
+    if( this.$header.length ){
+      console.log('use header');
+      var headerId = this.$header[0].id || Foundation.GetYoDigits(6, 'reveal');
+      this.$header.attr({
+        'id': headerId
+      });
+      this.$element.attr({'aria-labelledby': headerId});
+
+    // If no header associate the link text to the aria-labeledby
+    } else if (this.$anchor.length) {
+      console.log('use link');
       var anchorId = this.$anchor[0].id || Foundation.GetYoDigits(6, 'reveal');
-
       this.$anchor.attr({
-        'aria-controls': this.id,
         'id': anchorId,
-        'aria-haspopup': true,
-        'tabindex': 0
       });
       this.$element.attr({'aria-labelledby': anchorId});
     }
@@ -94,7 +109,7 @@ class Reveal {
   _makeOverlay(id) {
     var $overlay = $('<div></div>')
                     .addClass('reveal-overlay')
-                    .attr({'tabindex': -1, 'aria-hidden': true})
+                    // REMOVED Issue #7904 .attr({'tabindex': -1, 'aria-hidden': true})
                     .appendTo('body');
     return $overlay;
   }
@@ -269,8 +284,8 @@ class Reveal {
     }
 
     $('body')
-      .addClass('is-reveal-open')
-      .attr('aria-hidden', (this.options.overlay || this.options.fullScreen) ? true : false);
+      .addClass('is-reveal-open');
+      // REMOVED Issue #7904 .attr('aria-hidden', (this.options.overlay || this.options.fullScreen) ? true : false);
 
     setTimeout(() => {
       this._extraHandlers();
