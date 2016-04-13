@@ -76,6 +76,11 @@ class DropdownMenu {
             hasClicked = $elem.attr('data-is-click') === 'true',
             $sub = $elem.children('.is-dropdown-submenu');
 
+        //prevent click twice to follow link for touche enabled PC browsers.
+        if(e.type === 'click'){
+          hasClicked = true;
+        }
+
         if (hasSub) {
           if (hasClicked) {
             if (!_this.options.closeOnClick || (!_this.options.clickOpen && !hasTouch) || (_this.options.forceFollow && hasTouch)) { return; }
