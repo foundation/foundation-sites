@@ -66,19 +66,19 @@ class Drilldown {
     //   this._menuLinkEvents();
     // }
     this.$submenuAnchors.each(function(){
-      var $sub = $(this);
-      var $link = $sub.find('a:first');
+      var $link = $(this);
+      var $sub = $link.parent();
       if(_this.options.parentLink){
         $link.clone().prependTo($sub.children('[data-submenu]')).wrap('<li class="is-submenu-parent-item is-submenu-item is-drilldown-submenu-item" role="menu-item"></li>');
       }
       $link.data('savedHref', $link.attr('href')).removeAttr('href');
-      $sub.children('[data-submenu]')
+      $link.children('[data-submenu]')
           .attr({
             'aria-hidden': true,
             'tabindex': 0,
             'role': 'menu'
           });
-      _this._events($sub);
+      _this._events($link);
     });
     this.$submenus.each(function(){
       var $menu = $(this),
