@@ -342,7 +342,6 @@
 
         return {left : p.left, top : p.top - thisOuterHeight};
       },
-
       bottom : function (t, s) {
         var self = Foundation.libs.dropdown,
             p = self.dirs._base.call(this, t, s),
