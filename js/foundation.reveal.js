@@ -107,7 +107,6 @@ class Reveal {
   _makeOverlay(id) {
     var $overlay = $('<div></div>')
                     .addClass('reveal-overlay')
-                    // REMOVED Issue #7904 .attr({'tabindex': -1, 'aria-hidden': true})
                     .appendTo('body');
     return $overlay;
   }
@@ -283,7 +282,6 @@ class Reveal {
 
     $('body')
       .addClass('is-reveal-open');
-      // REMOVED Issue #7904 .attr('aria-hidden', (this.options.overlay || this.options.fullScreen) ? true : false);
 
     setTimeout(() => {
       this._extraHandlers();
