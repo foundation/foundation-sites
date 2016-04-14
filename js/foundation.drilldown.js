@@ -89,8 +89,8 @@ class Drilldown {
       _this._back($menu);
     });
     if(!this.$element.parent().hasClass('is-drilldown')){
-      this.$wrapper = $(this.options.wrapper).addClass('is-drilldown').css(this._getMaxDims());
-      this.$element.wrap(this.$wrapper);
+      this.$wrapper = $(this.options.wrapper).addClass('is-drilldown');
+      this.$wrapper = this.$element.wrap(this.$wrapper).parent().css(this._getMaxDims());
     }
   }
 
@@ -132,9 +132,9 @@ class Drilldown {
    */
   _keyboardEvents() {
     var _this = this;
-    
+
     this.$menuItems.add(this.$element.find('.js-drilldown-back > a')).on('keydown.zf.drilldown', function(e){
-      
+
       var $element = $(this),
           $elements = $element.parent('li').parent('ul').children('li').children('a'),
           $prevElement,
@@ -186,13 +186,13 @@ class Drilldown {
               setTimeout(function() {
                 $element.parent('li').parent('ul').parent('li').children('a').first().focus();
               }, 1);
-            });            
+            });
             e.preventDefault();
           } else if ($element.is(_this.$submenuAnchors)) {
             _this._show($element.parent('li'));
             $element.parent('li').one(Foundation.transitionend($element), function(){
               $element.parent('li').find('ul li a').filter(_this.$menuItems).first().focus();
-            });            
+            });
             e.preventDefault();
           }
         },
@@ -293,16 +293,14 @@ class Drilldown {
    * @private
    */
   _getMaxDims() {
-    var max = 0, result = {}, oneHeight, tmpWidth = this.$element.css('width');
-    this.$element.css({width:'auto'});
-    oneHeight = this.$menuItems[0].getBoundingClientRect().height;
-    this.$element.css({width:tmpWidth});
-    this.$submenus.add(this.$element).each(function(){
-      var numOfElems = $(this).children('li').length;
-      max = numOfElems > max ? numOfElems : max;
+    var $uls = this.$element.find('ul'), max = 0, result = {};
+    $uls.add(this.$element).each(function(){
+      var $elem = $(this);
+      $elem.hasClass('is-drilldown-submenu')?$elem.css({height:'auto'}):'';
+      max = Math.max(this.getBoundingClientRect().height, max);
+      $elem.hasClass('is-drilldown-submenu')?$elem.css({height:'100%'}):'';
     });
-
-    result['min-height'] = `${max * oneHeight}px`;
+    result['min-height'] = `${max}px`;
     result['max-width'] = `${this.$element[0].getBoundingClientRect().width}px`;
 
     return result;
