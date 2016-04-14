@@ -96,7 +96,6 @@ class DropdownMenu {
 
     if (!this.options.disableHover) {
       this.$menuItems.on('mouseenter.zf.dropdownmenu', function(e) {
-        e.stopImmediatePropagation();
         var $elem = $(this),
             hasSub = $elem.hasClass(parClass);
 
