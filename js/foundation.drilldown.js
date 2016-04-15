@@ -66,19 +66,19 @@ class Drilldown {
     //   this._menuLinkEvents();
     // }
     this.$submenuAnchors.each(function(){
-      var $sub = $(this);
-      var $link = $sub.find('a:first');
+      var $link = $(this);
+      var $sub = $link.parent();
       if(_this.options.parentLink){
         $link.clone().prependTo($sub.children('[data-submenu]')).wrap('<li class="is-submenu-parent-item is-submenu-item is-drilldown-submenu-item" role="menu-item"></li>');
       }
       $link.data('savedHref', $link.attr('href')).removeAttr('href');
-      $sub.children('[data-submenu]')
+      $link.children('[data-submenu]')
           .attr({
             'aria-hidden': true,
             'tabindex': 0,
             'role': 'menu'
           });
-      _this._events($sub);
+      _this._events($link);
     });
     this.$submenus.each(function(){
       var $menu = $(this),
@@ -158,7 +158,7 @@ class Drilldown {
             $element.parent('li').one(Foundation.transitionend($element), function(){
               $element.parent('li').find('ul li a').filter(_this.$menuItems).first().focus();
             });
-            e.preventDefault();
+            return true;
           }
         },
         previous: function() {
@@ -168,15 +168,15 @@ class Drilldown {
               $element.parent('li').parent('ul').parent('li').children('a').first().focus();
             }, 1);
           });
-          e.preventDefault();
+          return true;
         },
         up: function() {
           $prevElement.focus();
-          e.preventDefault();
+          return true;
         },
         down: function() {
           $nextElement.focus();
-          e.preventDefault();
+          return true;
         },
         close: function() {
           _this._back();
@@ -190,16 +190,18 @@ class Drilldown {
                 $element.parent('li').parent('ul').parent('li').children('a').first().focus();
               }, 1);
             });
-            e.preventDefault();
           } else if ($element.is(_this.$submenuAnchors)) {
             _this._show($element.parent('li'));
             $element.parent('li').one(Foundation.transitionend($element), function(){
               $element.parent('li').find('ul li a').filter(_this.$menuItems).first().focus();
             });
+          }
+          return true;
+        },
+        handled: function(preventDefault) {
+          if (preventDefault) {
             e.preventDefault();
           }
-        },
-        handled: function() {
           e.stopImmediatePropagation();
         }
       });
