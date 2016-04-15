@@ -313,19 +313,19 @@ class Reveal {
         tab_forward: function() {
           if (_this.$element.find(':focus').is(_this.focusableElements.eq(-1))) { // left modal downwards, setting focus to first element
             _this.focusableElements.eq(0).focus();
-            e.preventDefault();
+            return true;
           }
           if (_this.focusableElements.length === 0) { // no focusable elements inside the modal at all, prevent tabbing in general
-            e.preventDefault();
+            return true;
           }
         },
         tab_backward: function() {
           if (_this.$element.find(':focus').is(_this.focusableElements.eq(0)) || _this.$element.is(':focus')) { // left modal upwards, setting focus to last element
             _this.focusableElements.eq(-1).focus();
-            e.preventDefault();
+            return true;
           }
           if (_this.focusableElements.length === 0) { // no focusable elements inside the modal at all, prevent tabbing in general
-            e.preventDefault();
+            return true;
           }
         },
         open: function() {
@@ -341,6 +341,11 @@ class Reveal {
           if (_this.options.closeOnEsc) {
             _this.close();
             _this.$anchor.focus();
+          }
+        },
+        handled: function(preventDefault) {
+          if (preventDefault) {
+            e.preventDefault();
           }
         }
       });
