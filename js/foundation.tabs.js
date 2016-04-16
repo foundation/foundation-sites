@@ -172,33 +172,22 @@ class Tabs {
   }
 
   /**
-   * Opens the tab `$targetContent` defined by `$target`.
+   * Opens the tab `$targetContent` defined by `$target`. Collapses active tab.
    * @param {jQuery} $target - Tab to open.
    * @fires Tabs#change
    * @function
    */
   _handleTabChange($target) {
-    var $tabLink = $target.find('[role="tab"]'),
-        hash = $tabLink[0].hash,
-        $targetContent = this.$tabContent.find(hash),
-        $oldTab = this.$element.
-          find(`.${this.options.linkClass}.is-active`)
-          .removeClass('is-active')
-          .find('[role="tab"]')
-          .attr({ 'aria-selected': 'false' });
+    var $oldTab = this.$element.
+          find(`.${this.options.linkClass}.is-active`);
+  
+    //close old tab
+    this._collapseTab($oldTab);
 
-    $(`#${$oldTab.attr('aria-controls')}`)
-      .removeClass('is-active')
-      .attr({ 'aria-hidden': 'true' });
-
-    $target.addClass('is-active');
-
-    $tabLink.attr({'aria-selected': 'true'});
-
-    $targetContent
-      .addClass('is-active')
-      .attr({'aria-hidden': 'false'});
-
+    //open new tab
+    this._openTab($target);
+    
+    
     /**
      * Fires when the plugin has successfully changed tabs.
      * @event Tabs#change
@@ -213,23 +202,49 @@ class Tabs {
    * @function
    */
   _handleCollapse($target) {
-    var $tabLink = $target.find('[role="tab"]'),
-        hash = $tabLink[0].hash,
-        $targetContent = this.$tabContent.find(hash);
-        
-    $target.removeClass('is-active')
-           .find('[role="tab"]')
-           .attr({ 'aria-selected': 'false' });
-
-    $targetContent
-      .removeClass('is-active')
-      .attr({'aria-hidden': 'true'});
+    this._collapseTab($target);
 
     /**
      * Fires when the plugin has successfully collapsed tab.
      * @event Tabs#collapse
      */
     this.$element.trigger('collapse.zf.tabs', [$target]);
+  }
+  
+  /**
+   * Opens the tab `$targetContent` defined by `$target`.
+   * @param {jQuery} $target - Tab to Open.
+   * @function 
+   */
+  _openTab($target) {
+      var $tabLink = $target.find('[role="tab"]'),
+          hash = $tabLink[0].hash,
+          $targetContent = this.$tabContent.find(hash);
+
+      $target.addClass('is-active');
+
+      $tabLink.attr({'aria-selected': 'true'});
+
+      $targetContent
+        .addClass('is-active')
+        .attr({'aria-hidden': 'false'});
+  }
+  
+  /**
+   * Collapses `$targetContent` defined by `$target`.
+   * @param {jQuery} $target - Tab to Open.
+   * @function 
+   */
+  _collapseTab($target) {
+    var $target_anchor = $target
+      .removeClass('is-active')
+      .find('[role="tab"]')
+      .attr({ 'aria-selected': 'false' })
+      .blur();
+
+    $(`#${$target_anchor.attr('aria-controls')}`)
+      .removeClass('is-active')
+      .attr({ 'aria-hidden': 'true' });
   }
 
   /**
