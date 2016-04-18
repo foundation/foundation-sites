@@ -18,7 +18,7 @@ Add the `.sticky` class and `[data-sticky]` to an element to create something th
 
 
 <div class="columns small-6 right" data-sticky-container>
-  <div class="sticky" data-sticky data-anchor="#foo">
+  <div class="sticky" data-sticky data-anchor="foo">
     <img class="thumbnail" src="assets/img/generic/rectangle-3.jpg">
     <!-- This sticky element would stick to the window for the height of the element #foo, with a 1em marginTop -->
   </div>

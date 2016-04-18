@@ -113,7 +113,7 @@ $pagination-arrows: true !default;
 @mixin pagination-item-disabled {
   padding: $pagination-item-padding;
   color: $pagination-item-color-disabled;
-  cursor: default;
+  cursor: not-allowed;
 
   &:hover {
     background: transparent;

@@ -69,8 +69,11 @@ class Dropdown {
    * @returns {String} position - string value of a position class.
    */
   getPositionClass() {
-    var position = this.$element[0].className.match(/\b(top|left|right)\b/g);
-        position = position ? position[0] : '';
+    var verticalPosition = this.$element[0].className.match(/(top|left|right|bottom)/g);
+        verticalPosition = verticalPosition ? verticalPosition[0] : '';
+    var horizontalPosition = /float-(\S+)\s/.exec(this.$anchor[0].className);
+        horizontalPosition = horizontalPosition ? horizontalPosition[1] : '';
+    var position = horizontalPosition ? horizontalPosition + ' ' + verticalPosition : verticalPosition;
     return position;
   }
 
@@ -129,6 +132,8 @@ class Dropdown {
         direction = (position === 'left' ? 'left' : ((position === 'right') ? 'left' : 'top')),
         param = (direction === 'top') ? 'height' : 'width',
         offset = (param === 'height') ? this.options.vOffset : this.options.hOffset;
+
+
 
     if(($eleDims.width >= $eleDims.windowDims.width) || (!this.counter && !Foundation.Box.ImNotTouchingYou(this.$element))){
       this.$element.offset(Foundation.Box.GetOffsets(this.$element, this.$anchor, 'center bottom', this.options.vOffset, this.options.hOffset, true)).css({

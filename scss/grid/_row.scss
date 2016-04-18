@@ -82,6 +82,7 @@
   @if type-of($gutter) == 'number' {
     $gutter: ($-zf-zero-breakpoint: $gutter);
   }
+  max-width: none;
 
   @each $breakpoint, $value in $gutter {
     $margin: rem-calc($value) / 2 * -1;

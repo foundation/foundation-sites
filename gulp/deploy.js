@@ -99,7 +99,8 @@ gulp.task('deploy:settings', function(cb) {
       'typography-base',
       'typography-helpers'
     ],
-    imports: ['util/util']
+    imports: ['util/util'],
+    _foundationShim: true
   }
 
   octophant('./scss', options, cb);
@@ -124,22 +125,24 @@ gulp.task('deploy:docs', ['build'], function() {
     }));
 });
 
-gulp.task('deploy:templates', function() {
-  exec('git clone https://github.com/zurb/foundation-sites-template');
-  exec('cp scss/settings/_settings.scss foundation-sites-template/scss/_settings.scss');
-  exec('cd foundation-sites-template');
-  exec('git commit -am "Update settings file to match Foundation "' + NEXT_VERSION);
-  exec('git push origin master');
-  exec('cd ..');
-  exec('rm -rf foundation-sites-template');
-
-  exec('git clone https://github.com/zurb/foundation-zurb-template');
-  exec('cp scss/settings/_settings.scss foundation-zurb-template/src/assets/scss/_settings.scss');
-  exec('cd foundation-zurb-template');
-  exec('git commit -am "Update settings file to match Foundation "' + NEXT_VERSION);
-  exec('git push origin master');
-  exec('cd ..');
-  exec('rm -rf foundation-zurb-template');
+// This part of the deploy process hasn't been tested! It should be done manually for now
+gulp.task('deploy:templates', function(done) {
+  // exec('git clone https://github.com/zurb/foundation-sites-template');
+  // exec('cp scss/settings/_settings.scss foundation-sites-template/scss/_settings.scss');
+  // exec('cd foundation-sites-template');
+  // exec('git commit -am "Update settings file to match Foundation "' + NEXT_VERSION);
+  // exec('git push origin master');
+  // exec('cd ..');
+  // exec('rm -rf foundation-sites-template');
+  //
+  // exec('git clone https://github.com/zurb/foundation-zurb-template');
+  // exec('cp scss/settings/_settings.scss foundation-zurb-template/src/assets/scss/_settings.scss');
+  // exec('cd foundation-zurb-template');
+  // exec('git commit -am "Update settings file to match Foundation "' + NEXT_VERSION);
+  // exec('git push origin master');
+  // exec('cd ..');
+  // exec('rm -rf foundation-zurb-template');
+  done();
 });
 
 // The Customizer runs this function to generate files it needs
