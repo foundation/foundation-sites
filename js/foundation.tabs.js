@@ -111,12 +111,6 @@ class Tabs {
       .on('click.zf.tabs', `.${this.options.linkClass}`, function(e){
         e.preventDefault();
         e.stopPropagation();
-        if ($(this).hasClass('is-active')) {
-          if(_this.options.activeCollapse) {
-             _this._handleCollapse($(this)); 
-          }
-          return;
-        }
         _this._handleTabChange($(this));
       });
   }
@@ -178,6 +172,23 @@ class Tabs {
    * @function
    */
   _handleTabChange($target) {
+    
+    /**
+     * Check for active class on target. Collapse if exists.
+     */
+    if ($target.hasClass('is-active')) {
+        if(this.options.activeCollapse) {
+            this._collapseTab($target);
+            
+           /**
+            * Fires when the zplugin has successfully collapsed tabs.
+            * @event Tabs#collapse
+            */
+            this.$element.trigger('collapse.zf.tabs', [$target]);
+        }
+        return;
+    }
+    
     var $oldTab = this.$element.
           find(`.${this.options.linkClass}.is-active`);
   
@@ -193,22 +204,6 @@ class Tabs {
      * @event Tabs#change
      */
     this.$element.trigger('change.zf.tabs', [$target]);
-  }
-  
-  /**
-   * Collapses `$targetContent` defined by `$target`.
-   * @param {jQuery} $target - Tab to collapse.
-   * @fires Tabs#collapse
-   * @function
-   */
-  _handleCollapse($target) {
-    this._collapseTab($target);
-
-    /**
-     * Fires when the plugin has successfully collapsed tab.
-     * @event Tabs#collapse
-     */
-    this.$element.trigger('collapse.zf.tabs', [$target]);
   }
   
   /**
@@ -239,8 +234,7 @@ class Tabs {
     var $target_anchor = $target
       .removeClass('is-active')
       .find('[role="tab"]')
-      .attr({ 'aria-selected': 'false' })
-      .blur();
+      .attr({ 'aria-selected': 'false' });
 
     $(`#${$target_anchor.attr('aria-controls')}`)
       .removeClass('is-active')
