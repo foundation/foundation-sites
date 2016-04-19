@@ -47,31 +47,11 @@ class Reveal {
     if(this.isiOS){ this.$element.addClass('is-ios'); }
 
     this.$anchor = $(`[data-open="${this.id}"]`).length ? $(`[data-open="${this.id}"]`) : $(`[data-toggle="${this.id}"]`);
-    // Accessibility Update: An element that envokes a modal should have a tabindex of zero and aria tags
     this.$anchor.attr({
       'aria-controls': this.id,
       'aria-haspopup': true,
       'tabindex': 0
     });
-
-    // Accessibility Update : Conditional to determine which elements provides the aria-labeledby content.
-    // If there is a header associate the aria-labeledby to the header vs. the link
-    this.$header = $(this.$element.find('h1,h2,h3,h4,h5,h6')[0]);
-    if( this.$header.length ){
-      var headerId = this.$header[0].id || Foundation.GetYoDigits(6, 'reveal');
-      this.$header.attr({
-        'id': headerId
-      });
-      this.$element.attr({'aria-labelledby': headerId});
-
-    // If no header associate the link text to the aria-labeledby
-    } else if (this.$anchor.length) {
-      var anchorId = this.$anchor[0].id || Foundation.GetYoDigits(6, 'reveal');
-      this.$anchor.attr({
-        'id': anchorId,
-      });
-      this.$element.attr({'aria-labelledby': anchorId});
-    }
 
     if (this.options.fullScreen || this.$element.hasClass('full')) {
       this.options.fullScreen = true;
@@ -240,14 +220,24 @@ class Reveal {
        */
       this.$element.trigger('closeme.zf.reveal', this.id);
     }
-
     // Motion UI method of reveal
     if (this.options.animationIn) {
+      var _this = this;
+      function afterAnimationFocus(){
+        _this.$element
+          .attr({
+            'aria-hidden': false,
+            'tabindex': -1
+          })
+          .focus();
+          console.log('focus');
+      }
       if (this.options.overlay) {
         Foundation.Motion.animateIn(this.$overlay, 'fade-in');
       }
       Foundation.Motion.animateIn(this.$element, this.options.animationIn, () => {
         this.focusableElements = Foundation.Keyboard.findFocusable(this.$element);
+        afterAnimationFocus();
       });
     }
     // jQuery method of reveal
