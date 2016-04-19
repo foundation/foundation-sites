@@ -49,6 +49,7 @@ class Drilldown {
     this.$menuItems = this.$element.find('li').not('.js-drilldown-back').attr('role', 'menuitem').find('a');
 
     this._prepareMenu();
+    this._registerEvents();
 
     this._keyboardEvents();
   }
@@ -127,14 +128,35 @@ class Drilldown {
   }
 
   /**
+   * Adds event handlers to the menu element.
+   * @function
+   * @private
+   */
+  _registerEvents() {
+    var _this = this;
+    if(_this.options.scrollTop){
+      _this.$element.on('open.zf.drilldown hide.zf.drilldown closed.zf.drilldown',function(){
+        var $scrollTopElement = _this.options.scrollTopElement!=''?$(_this.options.scrollTopElement):$(this), scrollPos = parseInt($scrollTopElement.offset().top+_this.options.scrollTopOffset);
+        $('html, body').stop(true).animate({ scrollTop: scrollPos }, _this.options.animationDuration, _this.options.animationEasing,function(){
+          /**
+            * Fires after the menu has scrolled
+            * @event Drilldown#scrollme
+            */
+          this==$('html')[0]?_this.$element.trigger('scrollme.zf.drilldown'):'';
+        });
+      });
+    }
+  }
+
+  /**
    * Adds keydown event listener to `li`'s in the menu.
    * @private
    */
   _keyboardEvents() {
     var _this = this;
-    
+
     this.$menuItems.add(this.$element.find('.js-drilldown-back > a')).on('keydown.zf.drilldown', function(e){
-      
+
       var $element = $(this),
           $elements = $element.parent('li').parent('ul').children('li').children('a'),
           $prevElement,
@@ -186,12 +208,12 @@ class Drilldown {
               setTimeout(function() {
                 $element.parent('li').parent('ul').parent('li').children('a').first().focus();
               }, 1);
-            });            
+            });
           } else if ($element.is(_this.$submenuAnchors)) {
             _this._show($element.parent('li'));
             $element.parent('li').one(Foundation.transitionend($element), function(){
               $element.parent('li').find('ul li a').filter(_this.$menuItems).first().focus();
-            });            
+            });
           }
           return true;
         },
@@ -264,7 +286,10 @@ class Drilldown {
    */
   _show($elem) {
     $elem.children('[data-submenu]').addClass('is-active');
-
+    /**
+     * Fires when the submenu has opened.
+     * @event Drilldown#open
+     */
     this.$element.trigger('open.zf.drilldown', [$elem]);
   };
 
@@ -282,7 +307,7 @@ class Drilldown {
            $elem.blur();
          });
     /**
-     * Fires when the submenu is has closed.
+     * Fires when the submenu has closed.
      * @event Drilldown#hide
      */
     $elem.trigger('hide.zf.drilldown', [$elem]);
@@ -355,7 +380,37 @@ Drilldown.defaults = {
    * @option
    * @example false
    */
-  closeOnClick: false
+  closeOnClick: false,
+  /**
+   * Scroll the menu after open,hide,closed
+   * @option
+   * @example false
+   */
+  scrollTop: false,
+  /**
+   * String jquery selector (for example 'body') of element to take offset().top from, if empty string the drilldown menu offset().top is taken
+   * @option
+   * @example ''
+   */
+  scrollTopElement: '',
+  /**
+   * ScrollTop offset
+   * @option
+   * @example 100
+   */
+  scrollTopOffset: 0,
+  /**
+   * Scroll animation duration
+   * @option
+   * @example 500
+   */
+  animationDuration: 500,
+  /**
+   * Scroll animation easing
+   * @option
+   * @example 'swing'
+   */
+  animationEasing: 'swing'
   // holdOpen: false
 };
 
