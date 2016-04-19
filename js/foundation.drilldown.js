@@ -136,13 +136,14 @@ class Drilldown {
     var _this = this;
     if(_this.options.scrollTop){
       _this.$element.on('open.zf.drilldown hide.zf.drilldown closed.zf.drilldown',function(){
-        var $scrollTopElement = _this.options.scrollTopElement!=''?$(_this.options.scrollTopElement):$(this), scrollPos = parseInt($scrollTopElement.offset().top+_this.options.scrollTopOffset);
+        var $scrollTopElement = _this.options.scrollTopElement!=''?$(_this.options.scrollTopElement):$(this),
+            scrollPos = parseInt($scrollTopElement.offset().top+_this.options.scrollTopOffset);
         $('html, body').stop(true).animate({ scrollTop: scrollPos }, _this.options.animationDuration, _this.options.animationEasing,function(){
           /**
             * Fires after the menu has scrolled
             * @event Drilldown#scrollme
             */
-          this==$('html')[0]?_this.$element.trigger('scrollme.zf.drilldown'):'';
+          if(this==$('html')[0])_this.$element.trigger('scrollme.zf.drilldown');
         });
       });
     }
