@@ -401,11 +401,6 @@ class Reveal {
         $('body').removeClass('is-reveal-open');
       }
 
-      $('body').attr({
-        'aria-hidden': false,
-        'tabindex': ''
-      });
-
       _this.$element.attr('aria-hidden', true);
 
       /**
