@@ -109,11 +109,11 @@ var MediaQuery = {
       var newSize = this._getCurrentSize();
 
       if (newSize !== this.current) {
-        // Broadcast the media query change on the window
-        $(window).trigger('changed.zf.mediaquery', [newSize, this.current]);
-
         // Change the current media query
         this.current = newSize;
+
+        // Broadcast the media query change on the window
+        $(window).trigger('changed.zf.mediaquery', [newSize, this.current]);
       }
     });
   }
