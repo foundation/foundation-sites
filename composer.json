@@ -1,7 +1,11 @@
 {
   "name": "zurb/foundation-sites",
   "description": "The most advanced responsive front-end framework in the world.",
+<<<<<<< HEAD
+  "version": "",
+=======
   "version": "6.2.1",
+>>>>>>> 7a6ed604689635ddda430ae46a100d30c415959b
   "keywords": [
     "css",
     "scss",
