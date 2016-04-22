@@ -94,7 +94,7 @@ By default, table rows are striped. There's an `.unstriped` class to remove the 
 </table>
 ```
 
-<table class="unstriped hover">
+<table class="unstriped">
   <thead>
     <tr>
       <th width="200">Table Header</th>
