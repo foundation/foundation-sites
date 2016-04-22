@@ -141,7 +141,7 @@ $show-header-for-stacked: false !default;
      &.unstriped {
        tbody {
          @include -zf-table-unstripe();
-         background-color: Blue;
+         background-color: $table-background;
        }
     }
   }
