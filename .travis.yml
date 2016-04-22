@@ -1,38 +1,9 @@
-sudo: false
-cache: bundler
 language: node_js
 node_js:
-  - '0.10'
-branches:
-  only:
-    - master
+  - "0.12"
 before_install:
-  - npm install -g grunt-cli bower
-  - gem install bundler
-  - bundle install
-before_script:
-  - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-  - git config --global user.email "arthur@zurb.com"
-  - git config --global user.name "arthurzurb"
-  - bower install
-script: ./run-tests.sh
-after_success:
-  - git clone https://arthurzurb:${GH_TOKEN}@github.com/zurb/bower-foundation.git
-  - rm -rf bower-foundation/*
-  - cp -r dist/assets/* bower-foundation/
-  - cd bower-foundation
-  - git remote rm origin
-  - git remote add origin https://arthurzurb:${GH_TOKEN}@github.com/zurb/bower-foundation.git
-  - git add -A
-  - FOUNDATION_VER=$(git diff bower.json | grep version | cut -d':' -f2 | cut -d'"' -f2 | sort -g -r | head -1) && if [ $(echo $FOUNDATION_VER | wc -m | tr -d ' ') = '1' ]; then echo 'VERSION DID NOT CHANGE'; else git tag -a $FOUNDATION_VER -m "Version $FOUNDATION_VER"; fi
-  - git commit -m "Foundation build to bower-foundation"
-  - git push -fq origin master
-  - git push -fq origin --tags
-  - echo -e "Done with magic\n"
-env:
-  global:
-    secure: gYR7N06dAdntmL/AWPN3pG3jjD29b3DiYQI+a0To5RF0b2rHF3D+FmP5QqpjO6+DmWMV9XtVTWM+/Ez+imsUT77lWzNF1c8yifJUw7TCRdstrmYhGuXUyDjpvTd69C+68IMW7WZXf7hZYwSq6HJocfrkh7yDXiM+IRYjXp5xS9k=
-notifications:
-  email:
-    recipients:
-      - arthur@zurb.com
+  - rvm install 2.2.2
+install:
+  - npm install -g bower
+  - npm install
+  - gem install scss_lint

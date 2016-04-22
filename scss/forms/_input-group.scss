@@ -1,0 +1,127 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group forms
+////
+
+/// Color of labels prefixed to an input.
+/// @type Color
+$input-prefix-color: $black !default;
+
+/// Background color of labels prefixed to an input.
+/// @type Color
+$input-prefix-background: $light-gray !default;
+
+/// Border around labels prefixed to an input.
+/// @type Border
+$input-prefix-border: 1px solid $medium-gray !default;
+
+/// Left/right padding of an pre/postfixed input label
+$input-prefix-padding: 1rem !default;
+
+@mixin foundation-form-prepostfix {
+  $height: ($input-font-size + $form-spacing * 1.5);
+
+  .input-group {
+    display: if($global-flexbox, flex, table);
+    width: 100%;
+    margin-bottom: $form-spacing;
+
+    @if $global-flexbox {
+      align-items: stretch;
+    }
+
+    > :first-child {
+      border-radius: if($global-text-direction == rtl, 0 $global-radius $global-radius 0, $global-radius 0 0 $global-radius);
+    }
+
+    > :last-child {
+      > * {
+        border-radius: if($global-text-direction == rtl, $global-radius 0 0 $global-radius, 0 $global-radius $global-radius 0);
+      }
+    }
+  }
+
+  %input-group-child {
+    margin: 0;
+
+    @if not $global-flexbox {
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+
+  .input-group-label {
+    @extend %input-group-child;
+    text-align: center;
+    padding: 0 $input-prefix-padding;
+    background: $input-prefix-background;
+    color: $input-prefix-color;
+    border: $input-prefix-border;
+    white-space: nowrap;
+
+    @if $global-flexbox {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+    }
+    @else {
+      width: 1%;
+      height: 100%;
+    }
+
+    @if has-value($input-prefix-border) {
+      &:first-child {
+        border-#{$global-right}: 0;
+      }
+
+      &:last-child {
+        border-#{$global-left}: 0;
+      }
+    }
+  }
+
+  .input-group-field {
+    @extend %input-group-child;
+    border-radius: 0;
+
+    // scss-lint:disable ZeroUnit
+    @if $global-flexbox {
+      flex: 1 1 0px;
+      width: auto;
+      height: auto;
+    }
+    @else {
+      height: $height;
+    }
+  }
+
+  .input-group-button {
+    @extend %input-group-child;
+    padding-top: 0;
+    padding-bottom: 0;
+    text-align: center;
+
+    @if $global-flexbox {
+      flex: 0 0 auto;
+    }
+    @else {
+      height: 100%;
+      width: 1%;
+    }
+
+    a,
+    input,
+    button {
+      margin: 0;
+    }
+  }
+
+  // Specificity bump needed to prevent override by buttons
+  // scss-lint:disable QualifyingSelector
+  .input-group .input-group-button {
+    display: table-cell;
+  }
+}

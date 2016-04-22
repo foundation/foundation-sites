@@ -1,0 +1,165 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group reveal
+////
+
+/// Default background color of a modal.
+/// @type Color
+$reveal-background: $white !default;
+
+/// Default width of a modal, with no class applied.
+/// @type Number
+$reveal-width: 600px !default;
+
+/// Default maximum width of a modal.
+/// @type Number
+$reveal-max-width: $global-width !default;
+
+/// Default padding inside a modal.
+/// @type Number
+$reveal-padding: $global-padding !default;
+
+/// Default border around a modal.
+/// @type Number
+$reveal-border: 1px solid $medium-gray !default;
+
+/// Default radius for modal.
+/// @type Number
+$reveal-radius: $global-radius !default;
+
+/// z-index for modals. The overlay uses this value, while the modal itself uses this value plus one.
+/// @type Number
+$reveal-zindex: 1005 !default;
+
+/// Background color of modal overlays.
+/// @type Color
+$reveal-overlay-background: rgba($black, 0.45) !default;
+
+/// Adds styles for a modal overlay.
+/// @param {Color} $background [$reveal-overlay-background] - Background color of the overlay.
+@mixin reveal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: $reveal-zindex;
+  background-color: $reveal-overlay-background;
+  overflow-y: scroll;
+}
+
+/// Adds base styles for a modal.
+@mixin reveal-modal-base {
+  @include disable-mouse-outline;
+  display: none;
+  z-index: $reveal-zindex + 1;
+  padding: $reveal-padding;
+  border: $reveal-border;
+  background-color: $reveal-background;
+  border-radius: $reveal-radius;
+
+  @include breakpoint(medium) {
+    min-height: 0;
+  }
+
+  // Make sure rows don't have a min-width on them
+  .column,
+  .columns {
+    min-width: 0;
+  }
+
+  // Strip margins from the last item in the modal
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+/// Adjusts the width of a modal.
+/// @param {Number} $width - Width of the modal. Generally a percentage.
+/// @param {Number} $max-width [$reveal-max-width] - Maximum width of the modal.
+@mixin reveal-modal-width(
+  $width: $reveal-width,
+  $max-width: $reveal-max-width
+) {
+  @include breakpoint(medium) {
+    @extend %reveal-centered;
+    width: $width;
+    max-width: $reveal-max-width;
+  }
+}
+
+/// Creates a full-screen modal, which stretches the full width and height of the window.
+@mixin reveal-modal-fullscreen {
+  // scss-lint:disable DuplicateProperty
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  height: 100vh;
+  min-height: 100vh;
+  max-width: none;
+  margin-left: 0;
+  border: 0;
+  border-radius: 0;
+}
+
+@mixin foundation-reveal {
+  // [TODO] Is this necessary?
+  // scss-lint:disable QualifyingElement
+  body.is-reveal-open {
+    overflow: hidden;
+  }
+
+  // Overlay
+  .reveal-overlay {
+    @include reveal-overlay;
+  }
+
+  // Modal container
+  .reveal {
+    @include reveal-modal-base;
+    @include reveal-modal-width($reveal-width);
+    position: relative;
+    top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-y: auto;
+
+    // Placeholder selector for medium-and-up modals
+    // Prevents duplicate CSS when defining multiple Reveal sizes
+    @include breakpoint(medium) {
+      %reveal-centered {
+        left: auto;
+        right: auto;
+        margin: 0 auto;
+      }
+    }
+
+    // Remove padding
+    &.collapse {
+      padding: 0;
+    }
+
+    // Sizing classes
+    &.tiny  { @include reveal-modal-width(30%); }
+    &.small { @include reveal-modal-width(50%); }
+    &.large { @include reveal-modal-width(90%); }
+
+    // Full-screen mode
+    &.full {
+      @include reveal-modal-fullscreen;
+    }
+
+    @include breakpoint($-zf-zero-breakpoint only) {
+      @include reveal-modal-fullscreen;
+    }
+
+    &.without-overlay {
+      position: fixed;
+    }
+  }
+}

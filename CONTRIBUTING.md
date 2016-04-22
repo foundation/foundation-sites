@@ -1,55 +1,46 @@
-# Foundation
+# Foundation Contributing Guidelines
 
-This is the Foundation project.  We love making super awesome stuff, but even more we like to empower people to make changes on their own.  Feel free to fork and improve Foundation.
+Although Foundation is maintained by ZURB, it’s also a community effort. Whether it’s bug fixing, feature development, or contributions to the ecosystem, designers and developers from all over the world help make Foundation the most advanced framework in the world.
 
-## Compass Project
+A select group of our contributors have been dubbed *Yetinauts*. They have direct write access to the codebase and support the core Foundation team on the development of the framework. Are you interested in making your mark on the Foundation framework? Whether you’re just submitting bugs or helping us write new features, there are many ways to contribute to Foundation.
 
-If you have a compass project and would like updated assets you can run the following command at any given time from within your project directory:
+## Terms
 
-```bash
-compass create -r zurb-foundation --using foundation
-```
+- The **community** is anyone commenting on issues or opening pull requests. That includes you!
+- A **Yetinaut** is anyone with write access to the repository.
+- The **Core Team** is anyone on the Foundation Team.
 
-## Development
+## Issues
 
-Want to test out the Compass templates?  Don't recompile the gem every time, use `bundler` like so:
+Open an issue for any problem you have with the framework. If there's anything missing from your issue, such as extra context, a code sample, etc. a team member will ask for more info in the comments.
 
-```bash
-mkdir demo1
-cd demo1
-echo -e 'source "https://rubygems.org"\n
-gem "zurb-foundation", :path => "/path/to/foundation/repo"\n
-gem "compass"\n' > Gemfile
-bundle exec compass create -r zurb-foundation --using foundation
-```
+Support requests are generally better suited for the [Foundation Forum](http://foundation.zurb.com), while GitHub is more appropriate for bugs. If you aren’t sure if your issue is a bug or not, don’t worry! Post your problem on GitHub and the team will help you along. Every participant is expected to follow the project's Code of Conduct so please be courteous and respectful.
 
-On subsequent template updates use:
+## Contributions
 
-```bash
-bundle exec compass create -r zurb-foundation --using foundation --force
-```
+All new features and bug fixes should be submitted as pull requests, so the community can review and discuss them. Core Team members can commit directly to the repository for very small changes, but should generally also submit new code as a pull request.
 
-## Contributing
+When you submit a pull request, @mention a few people you’d like to help you review it. Once those people have signed off on it, the pull request can be merged! Core Team members will handle the merge itself.
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. All code should have a 2 space indentation to avoid conflicts.
-4. Test your changes to the best of your ability.
-5. Update the documentation to reflect your changes if they add or change current functionality. Instructions on how to view the documentation locally can be found in the [README](README.md#view-documentation-locally).
-6. Commit your changes (`git commit -am 'Added some feature'`)
-7. Push to the branch (`git push origin my-new-feature`)
-8. Create new Pull Request
+## Coding Standards
 
-## JavaScript Testing
+If you aren't sure how a feature should be implemented, we recommend checking out our [standards document](https://github.com/zurb/foundation-standards), which outlines every aspect of writing framework features, from Sass to JavaScript.
 
-The Foundation JS libraries are tested with Jasmine. Grunt can be used to run the test suite.
+## Becoming a Yetinaut
 
-1. Install `node.js` and `npm` with `brew install node`
-    * You may need to `source` your bash config or restart your terminal client to make sure your PATH is up to date.
-2. From the root of the project, install required packages locally with `npm install`
-3. Install bower with `npm install -g bower` and and required assets locally `bower install`
-4. Install the command line interface for grunt with `npm install -g grunt-cli`
-5. Install PhantomJS with `brew install PhantomJS` (we assume you have Chrome and Firefox installed)
-    * If you get connection errors with PhantomJS when running the suite, ensure `node -v` returns  `v0.10.12` or later. Upgrade with `brew upgrade node`
-6. Run `grunt karma:dev` to run the tests with some real browsers
-7. Run `grunt build:assets` to compile any changes to foundation JS source into testing distribution
+Want to join our crack team of Yetinauts? The Core Team is inviting active community members to become Yetinauts  on a case-by-case basis. If you want to become a contributor, engage the community on the Foundation Forum, help us close issues on GitHub, and review pull requests from other contributors.
+
+If you’ve made substantial contributions to a Foundation framework and haven’t heard from us yet, you can reach out at foundation@zurb.com.
+
+Contributors are expected to:
+
+- Engage the community on GitHub by responding to and tagging issues.
+- Write pull requests to address bugs and feature requests.
+- Help in reviewing pull requests from users, contributors, and the Core Team.
+- Follow the guidelines outlined in this document.
+
+Here are some example contributions from some of our awesome team members:
+
+- Colin Marshall converted our Sass unit tests to a newer test runner called True.
+- Andy Cochran reworked the CSS for button groups to fix issues with stacking and border radii.
+- designerno1 developed the Equalize by Row feature for the Equalizer plugin.

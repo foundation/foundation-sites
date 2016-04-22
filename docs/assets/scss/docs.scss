@@ -1,0 +1,27 @@
+// The CSS for the Foundation docs is stored in an external codebase:
+// https://github.com/zurb/foundation-docs
+//
+// You can test Sass changes locally by running these commands:
+//   git clone https://github.com/zurb/foundation-docs
+//   npm link ./foundation-docs
+//
+// Feel free to submit pull requests to foundation-docs like you would Foundation itself!
+
+@import 'settings/settings';
+@import 'foundation';
+@import 'motion-ui';
+
+@include foundation-everything;
+@include foundation-flex-classes;
+@include foundation-range-input;
+@include foundation-progress-element;
+@include foundation-meter-element;
+@include motion-ui-transitions;
+
+@import 'foundation-docs';
+@import 'examples/grid';
+@import 'examples/motion-ui';
+@import 'examples/off-canvas';
+@import 'examples/orbit';
+@import 'examples/reveal';
+@import 'examples/top-bar';

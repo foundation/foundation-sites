@@ -1,0 +1,89 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group title-bar
+////
+
+/// Background color of a title bar.
+/// @type Color
+$titlebar-background: $black !default;
+
+/// Color of text inside a title bar.
+/// @type Color
+$titlebar-color: $white !default;
+
+/// Padding inside a title bar.
+/// @type Length
+$titlebar-padding: 0.5rem !default;
+
+/// Font weight of text inside a title bar.
+/// @type Weight
+$titlebar-text-font-weight: bold !default;
+
+/// Color of menu icons inside a title bar.
+/// @type Color
+$titlebar-icon-color: $white !default;
+
+/// Color of menu icons inside a title bar on hover.
+/// @type Color
+$titlebar-icon-color-hover: $medium-gray !default;
+
+/// Spacing between the menu icon and text inside a title bar.
+/// @type Length
+$titlebar-icon-spacing: 0.25rem !default;
+
+@mixin foundation-title-bar {
+  .title-bar {
+    background: $titlebar-background;
+    color: $titlebar-color;
+    padding: $titlebar-padding;
+
+    @if $global-flexbox {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    @else {
+      @include clearfix;
+    }
+
+    .menu-icon {
+      margin-#{$global-left}: $titlebar-icon-spacing;
+      margin-#{$global-right}: $titlebar-padding;
+    }
+  }
+
+  @if $global-flexbox {
+    // scss-lint:disable ZeroUnit
+    .title-bar-left,
+    .title-bar-right {
+      flex: 1 1 0px;
+    }
+
+    .title-bar-right {
+      text-align: right;
+    }
+  }
+  @else {
+    .title-bar-left {
+      float: left;
+    }
+
+    .title-bar-right {
+      float: right;
+      text-align: right;
+    }
+  }
+
+  .title-bar-title {
+    font-weight: $titlebar-text-font-weight;
+    vertical-align: middle;
+    display: inline-block;
+  }
+
+  .menu-icon.dark {
+    @include hamburger;
+  }
+}

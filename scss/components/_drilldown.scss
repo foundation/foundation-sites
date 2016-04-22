@@ -1,0 +1,79 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group drilldown
+////
+
+/// Transition property to use for animating menus.
+/// @type Transition
+$drilldown-transition: transform 0.15s linear !default;
+
+/// Adds arrows to drilldown items with submenus, as well as the back button.
+/// @type Boolean
+$drilldown-arrows: true !default;
+
+/// Sets drilldown arrow color if arrow is used.
+/// @type Color
+$drilldown-arrow-color: $primary-color !default;
+
+/// Background color for drilldown submenus.
+/// @type Color
+$drilldown-background: $white !default;
+
+@mixin foundation-drilldown-menu {
+  // Applied to the Menu container
+  .is-drilldown {
+    position: relative;
+    overflow: hidden;
+
+    li {
+      display: block !important;
+    }
+  }
+
+  // Applied to nested <ul>s
+  .is-drilldown-submenu {
+    position: absolute;
+    top: 0;
+    #{$global-left}: 100%;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    background: $drilldown-background;
+    transition: $drilldown-transition;
+
+    &.is-active {
+      z-index: 1;
+      display: block;
+      transform: translateX(if($global-text-direction == ltr, -100%, 100%));
+    }
+
+    &.is-closing {
+      transform: translateX(if($global-text-direction == ltr, 100%, -100%));
+    }
+  }
+
+  @if $drilldown-arrows {
+    .is-drilldown-submenu-parent > a {
+      position: relative;
+
+      &::after {
+        @include css-triangle(6px, $drilldown-arrow-color, $global-right);
+        position: absolute;
+        top: 50%;
+        margin-top: -6px;
+        #{$global-right}: 1rem;
+      }
+    }
+
+    .js-drilldown-back > a::before {
+      @include css-triangle(6px, $drilldown-arrow-color, $global-left);
+      border-#{$global-left}-width: 0;
+      display: inline-block;
+      vertical-align: middle;
+      margin-#{$global-right}: 0.75rem; // Creates space between the arrow and the text
+    }
+  }
+}

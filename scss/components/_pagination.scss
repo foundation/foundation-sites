@@ -1,0 +1,162 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group pagination
+////
+
+/// Font size of pagination items.
+/// @type Number
+$pagination-font-size: rem-calc(14) !default;
+
+/// Default bottom margin of the media object.
+/// @type Number
+$pagination-margin-bottom: $global-margin !default;
+
+/// Text color of pagination items.
+/// @type Color
+$pagination-item-color: $black !default;
+
+/// Padding inside of pagination items.
+/// @type Number
+$pagination-item-padding: rem-calc(3 10) !default;
+
+/// Right margin to separate pagination items.
+/// @type Number
+$pagination-item-spacing: rem-calc(1) !default;
+
+/// Default radius for pagination items.
+/// @type Number
+$pagination-radius: $global-radius !default;
+
+/// Background color of pagination items on hover.
+/// @type Color
+$pagination-item-background-hover: $light-gray !default;
+
+/// Background color of pagination item for the current page.
+/// @type Color
+$pagination-item-background-current: $primary-color !default;
+
+/// Text color of the pagination item for the current page.
+/// @type Color
+$pagination-item-color-current: foreground($pagination-item-background-current) !default;
+
+/// Text color of a disabled pagination item.
+/// @type Color
+$pagination-item-color-disabled: $medium-gray !default;
+
+/// Color of the ellipsis in a pagination menu.
+/// @type Color
+$pagination-ellipsis-color: $black !default;
+
+/// If `false`, don't display page number links on mobile, only next/previous links.
+/// @type Boolean
+$pagination-mobile-items: false !default;
+
+/// If `true`, arrows are added to the next and previous links of pagination.
+/// @type Boolean
+$pagination-arrows: true !default;
+
+/// Adds styles for a pagination container. Apply this to a `<ul>`.
+@mixin pagination-container {
+  @include clearfix;
+  margin-#{$global-left}: 0;
+  margin-bottom: $pagination-margin-bottom;
+
+  // List item
+  li {
+    font-size: $pagination-font-size;
+    margin-#{$global-right}: $pagination-item-spacing;
+    border-radius: $pagination-radius;
+
+    @if $pagination-mobile-items {
+      display: inline-block;
+    }
+    @else {
+      display: none;
+
+      &:last-child,
+      &:first-child {
+        display: inline-block;
+      }
+
+      @include breakpoint(medium) {
+        display: inline-block;
+      }
+    }
+  }
+
+  // Page links
+  a,
+  button {
+    color: $pagination-item-color;
+    display: block;
+    padding: $pagination-item-padding;
+    border-radius: $global-radius;
+
+    &:hover {
+      background: $pagination-item-background-hover;
+    }
+  }
+}
+
+/// Adds styles for the current pagination item. Apply this to an `<a>`.
+@mixin pagination-item-current {
+  padding: $pagination-item-padding;
+  background: $pagination-item-background-current;
+  color: $pagination-item-color-current;
+  cursor: default;
+}
+
+/// Adds styles for a disabled pagination item. Apply this to an `<a>`.
+@mixin pagination-item-disabled {
+  padding: $pagination-item-padding;
+  color: $pagination-item-color-disabled;
+  cursor: not-allowed;
+
+  &:hover {
+    background: transparent;
+  }
+}
+
+/// Adds styles for an ellipsis for use in a pagination list.
+@mixin pagination-ellipsis {
+  content: '\2026';
+  padding: $pagination-item-padding;
+  color: $pagination-ellipsis-color;
+}
+
+@mixin foundation-pagination {
+  .pagination {
+    @include pagination-container;
+
+    .current {
+      @include pagination-item-current;
+    }
+
+    .disabled {
+      @include pagination-item-disabled;
+    }
+
+    .ellipsis::after {
+      @include pagination-ellipsis;
+    }
+  }
+
+  @if $pagination-arrows {
+    .pagination-previous a::before,
+    .pagination-previous.disabled::before {
+      content: '\00ab';
+      display: inline-block;
+      margin-#{$global-right}: 0.5rem;
+    }
+
+    .pagination-next a::after,
+    .pagination-next.disabled::after {
+      content: '\00bb';
+      display: inline-block;
+      margin-#{$global-left}: 0.5rem;
+    }
+  }
+}
