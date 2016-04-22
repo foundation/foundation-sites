@@ -132,9 +132,9 @@ class Drilldown {
    */
   _keyboardEvents() {
     var _this = this;
-    
+
     this.$menuItems.add(this.$element.find('.js-drilldown-back > a')).on('keydown.zf.drilldown', function(e){
-      
+
       var $element = $(this),
           $elements = $element.parent('li').parent('ul').children('li').children('a'),
           $prevElement,
@@ -186,12 +186,12 @@ class Drilldown {
               setTimeout(function() {
                 $element.parent('li').parent('ul').parent('li').children('a').first().focus();
               }, 1);
-            });            
+            });
           } else if ($element.is(_this.$submenuAnchors)) {
             _this._show($element.parent('li'));
             $element.parent('li').one(Foundation.transitionend($element), function(){
               $element.parent('li').find('ul li a').filter(_this.$menuItems).first().focus();
-            });            
+            });
           }
           return true;
         },
@@ -264,7 +264,10 @@ class Drilldown {
    */
   _show($elem) {
     $elem.children('[data-submenu]').addClass('is-active');
-
+    /**
+     * Fires when the submenu has opened.
+     * @event Drilldown#open
+     */
     this.$element.trigger('open.zf.drilldown', [$elem]);
   };
 
@@ -282,7 +285,7 @@ class Drilldown {
            $elem.blur();
          });
     /**
-     * Fires when the submenu is has closed.
+     * Fires when the submenu has closed.
      * @event Drilldown#hide
      */
     $elem.trigger('hide.zf.drilldown', [$elem]);
