@@ -46,6 +46,18 @@ class Sticky {
 
     this.scrollCount = this.options.checkEvery;
     this.isStuck = false;
+    
+    //We copy our base element in an hidden clone to check if differents height
+    //has been set with CSS rules.
+    var heightCheckClone = this.$element.clone()
+                                        .appendTo(this.$container)
+                                        .css('display', 'none')
+                                        .css('transition', 'none');
+    this.anchoredHeight = heightCheckClone.addClass('is-anchored').height();
+    this.stuckHeight = heightCheckClone.removeClass('is-anchored').addClass('is-stuck').height();
+    this.heightChanges = (this.anchoredHeight != this.stuckHeight) ? true : false;
+    heightCheckClone.remove();
+            
     $(window).one('load.zf.sticky', function(){
       if(_this.options.anchor !== ''){
         _this.$anchor = $('#' + _this.options.anchor);
@@ -215,9 +227,23 @@ class Sticky {
                   * @event Sticky#stuckto
                   */
                  .trigger(`sticky.zf.stuckto:${stickTo}`);
-    this.$element.on("transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd", function() {
-      _this._setSizes();
-    });
+    /**
+     * If this.$element has different size depending on its stuck status,
+     * then resize the container.
+     * We force the container height with parameter because in case of css transition
+     * on height the _setSizes() won't have the information before transition ends
+     * and won't calculate container height correctly.
+     */
+    if (this.heightChanges) {
+      this._setSizes(null, this.stuckHeight);
+      /**
+      * We slow down the scroll down, especially with mouse wheel.
+      * When the element size down during the scroll, the below content will go up
+      * If we don't slow down the scroll, this content will be hidden by the
+      * new sticky bar.
+      **/
+      $(document).scrollTop(this.topPoint+1);
+    }
   }
 
   /**
@@ -258,6 +284,9 @@ class Sticky {
                   * @event Sticky#unstuckfrom
                   */
                  .trigger(`sticky.zf.unstuckfrom:${topOrBottom}`);
+    if (this.heightChanges) {
+      this._setSizes(null, this.anchoredHeight);
+    }
   }
 
   /**
@@ -266,7 +295,8 @@ class Sticky {
    * @param {Function} cb - optional callback function to fire on completion of `_setBreakPoints`.
    * @private
    */
-  _setSizes(cb) {
+  _setSizes(cb, height) {
+    height = typeof height !== 'undefined' ? height : 0;
     this.canStick = Foundation.MediaQuery.atLeast(this.options.stickyOn);
     if (!this.canStick) { cb(); }
     var _this = this,
@@ -284,7 +314,7 @@ class Sticky {
       'max-width': `${newElemWidth - pdng}px`
     });
 
-    var newContainerHeight = this.$element[0].getBoundingClientRect().height || this.containerHeight;
+    var newContainerHeight = height || this.$element[0].getBoundingClientRect().height || this.containerHeight;
     if (this.$element.css("display") == "none") {
       newContainerHeight = 0;
     }
