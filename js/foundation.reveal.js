@@ -47,18 +47,11 @@ class Reveal {
     if(this.isiOS){ this.$element.addClass('is-ios'); }
 
     this.$anchor = $(`[data-open="${this.id}"]`).length ? $(`[data-open="${this.id}"]`) : $(`[data-toggle="${this.id}"]`);
-
-    if (this.$anchor.length) {
-      var anchorId = this.$anchor[0].id || Foundation.GetYoDigits(6, 'reveal');
-
-      this.$anchor.attr({
-        'aria-controls': this.id,
-        'id': anchorId,
-        'aria-haspopup': true,
-        'tabindex': 0
-      });
-      this.$element.attr({'aria-labelledby': anchorId});
-    }
+    this.$anchor.attr({
+      'aria-controls': this.id,
+      'aria-haspopup': true,
+      'tabindex': 0
+    });
 
     if (this.options.fullScreen || this.$element.hasClass('full')) {
       this.options.fullScreen = true;
@@ -94,7 +87,6 @@ class Reveal {
   _makeOverlay(id) {
     var $overlay = $('<div></div>')
                     .addClass('reveal-overlay')
-                    .attr({'tabindex': -1, 'aria-hidden': true})
                     .appendTo('body');
     return $overlay;
   }
@@ -228,14 +220,24 @@ class Reveal {
        */
       this.$element.trigger('closeme.zf.reveal', this.id);
     }
-
     // Motion UI method of reveal
     if (this.options.animationIn) {
+      var _this = this;
+      function afterAnimationFocus(){
+        _this.$element
+          .attr({
+            'aria-hidden': false,
+            'tabindex': -1
+          })
+          .focus();
+          console.log('focus');
+      }
       if (this.options.overlay) {
         Foundation.Motion.animateIn(this.$overlay, 'fade-in');
       }
       Foundation.Motion.animateIn(this.$element, this.options.animationIn, () => {
         this.focusableElements = Foundation.Keyboard.findFocusable(this.$element);
+        afterAnimationFocus();
       });
     }
     // jQuery method of reveal
@@ -269,8 +271,7 @@ class Reveal {
     }
 
     $('body')
-      .addClass('is-reveal-open')
-      .attr('aria-hidden', (this.options.overlay || this.options.fullScreen) ? true : false);
+      .addClass('is-reveal-open');
 
     setTimeout(() => {
       this._extraHandlers();
@@ -313,19 +314,19 @@ class Reveal {
         tab_forward: function() {
           if (_this.$element.find(':focus').is(_this.focusableElements.eq(-1))) { // left modal downwards, setting focus to first element
             _this.focusableElements.eq(0).focus();
-            e.preventDefault();
+            return true;
           }
           if (_this.focusableElements.length === 0) { // no focusable elements inside the modal at all, prevent tabbing in general
-            e.preventDefault();
+            return true;
           }
         },
         tab_backward: function() {
           if (_this.$element.find(':focus').is(_this.focusableElements.eq(0)) || _this.$element.is(':focus')) { // left modal upwards, setting focus to last element
             _this.focusableElements.eq(-1).focus();
-            e.preventDefault();
+            return true;
           }
           if (_this.focusableElements.length === 0) { // no focusable elements inside the modal at all, prevent tabbing in general
-            e.preventDefault();
+            return true;
           }
         },
         open: function() {
@@ -341,6 +342,11 @@ class Reveal {
           if (_this.options.closeOnEsc) {
             _this.close();
             _this.$anchor.focus();
+          }
+        },
+        handled: function(preventDefault) {
+          if (preventDefault) {
+            e.preventDefault();
           }
         }
       });
@@ -399,11 +405,6 @@ class Reveal {
       else {
         $('body').removeClass('is-reveal-open');
       }
-
-      $('body').attr({
-        'aria-hidden': false,
-        'tabindex': ''
-      });
 
       _this.$element.attr('aria-hidden', true);
 

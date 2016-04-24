@@ -46,6 +46,10 @@ $mediaobject-image-width-stacked: 100% !default;
   &:last-child:not(:nth-child(2)) {
     padding-#{$global-left}: $padding;
   }
+
+  & > :last-child {
+    margin-bottom: 0;
+  }
 }
 
 /// Adds styles to stack sections of a media object. Apply this to the section elements, not the container.
