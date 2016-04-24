@@ -66,13 +66,13 @@ var Keyboard = {
 
     fn = functions[command];
     if (fn && typeof fn === 'function') { // execute function  if exists
-      fn.apply();
+      var returnValue = fn.apply();
       if (functions.handled || typeof functions.handled === 'function') { // execute function when event was handled
-          functions.handled.apply();
+          functions.handled(returnValue);
       }
     } else {
       if (functions.unhandled || typeof functions.unhandled === 'function') { // execute function when event was not handled
-          functions.unhandled.apply();
+          functions.unhandled();
       }
     }
   },
