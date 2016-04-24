@@ -49,17 +49,21 @@ class Sticky {
     this.staticHeight = this.options.staticHeight;
     this.scrollCount = this.options.checkEvery;
     this.isStuck = false;
+    this.heightChanges = false;
     
-    //We copy our base element in an hidden clone to check if differents height
-    //has been set with CSS rules.
-    var heightCheckClone = this.$element.clone()
-                                        .appendTo(this.$container)
-                                        .css('display', 'none')
-                                        .css('transition', 'none');
-    this.anchoredHeight = heightCheckClone.addClass('is-anchored').height();
-    this.stuckHeight = heightCheckClone.removeClass('is-anchored').addClass('is-stuck').height();
-    this.heightChanges = (this.anchoredHeight != this.stuckHeight) ? true : false;
-    heightCheckClone.remove();
+    if (!this.staticHeight) {
+      //We copy our base element in an hidden clone to check if differents height
+      //has been set with CSS rules.
+      var heightCheckClone = this.$element.clone()
+                                          .appendTo(this.$container)
+                                          .css('display', 'none')
+                                          .css('transition', 'none');
+      this.anchoredHeight = heightCheckClone.addClass('is-anchored').outerHeight();
+      this.stuckHeight = heightCheckClone.removeClass('is-anchored').addClass('is-stuck').outerHeight();
+      this.heightChanges = (this.anchoredHeight != this.stuckHeight) ? true : false;
+      heightCheckClone.remove();
+    }
+
             
     $(window).one('load.zf.sticky', function(){
       if(_this.options.anchor !== ''){
