@@ -42,8 +42,11 @@ class Sticky {
     this.$container.addClass(this.options.containerClass);
 
     this.$element.addClass(this.options.stickyClass)
-                 .attr({'data-resize': id});
+                 .attr({
+                        'data-resize': id
+                      });
 
+    this.staticHeight = this.options.staticHeight;
     this.scrollCount = this.options.checkEvery;
     this.isStuck = false;
     
@@ -261,10 +264,10 @@ class Sticky {
         anchorPt = (this.points ? this.points[1] - this.points[0] : this.anchorHeight) - this.elemHeight,
         mrgn = stickToTop ? 'marginTop' : 'marginBottom',
         notStuckTo = stickToTop ? 'bottom' : 'top',
-        topOrBottom = isTop ? 'top' : 'bottom';
-
-    css[mrgn] = 0;
-
+        topOrBottom = isTop ? 'top' : 'bottom',
+        preserveHeight = this.elemHeight,
+        staticHeight = this.staticHeight;
+    
     if ((isTop && !stickToTop) || (stickToTop && !isTop)) {
       css[stickTo] = anchorPt;
       css[notStuckTo] = 0;
@@ -273,7 +276,14 @@ class Sticky {
       css[notStuckTo] = anchorPt;
     }
 
+    if (staticHeight) {
+      css['height'] = preserveHeight;
+    }
+
     css['left'] = '';
+    
+    console.log(staticHeight);
+    
     this.isStuck = false;
     this.$element.removeClass(`is-stuck is-at-${stickTo}`)
                  .addClass(`is-anchored is-at-${topOrBottom}`)
@@ -467,7 +477,13 @@ Sticky.defaults = {
    * @option
    * @example 50
    */
-  checkEvery: -1
+  checkEvery: -1,
+  /**
+   * If the element you are stickying has height: auto when not sticky, 
+   * @option
+   * @example true
+   */
+  staticHeight: true
 };
 
 /**
