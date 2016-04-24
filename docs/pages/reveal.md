@@ -186,3 +186,22 @@ $.ajax('/url')
     $modal.html(resp.html).foundation('open');
 });
 ```
+
+
+---
+
+## Accessibility
+
+Modals by default are accessible through the use of various ARIA attributes.  To make a modal even more accessible, designate a label to the modal by adding `aria-labelledby="exampleModalHeader11"` to the container and `id="exampleModalHeader11"` to the elment you want to designate as the label.
+
+```html_example
+<p><a data-open="exampleModal11">Click me for a modal</a></p>
+
+<div class="reveal" id="exampleModal11" aria-labelledby="exampleModalHeader11" data-reveal>
+  <h1 id="exampleModalHeader11">Label for the Modal!</h1>
+  <p class="lead">I am even more accessible than the other modals.</p>
+  <button class="close-button" data-close aria-label="Close Accessible Modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+```
