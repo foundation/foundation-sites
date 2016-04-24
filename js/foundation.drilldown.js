@@ -276,6 +276,10 @@ class Drilldown {
       this.$wrapper.css({height:setHeight});
     }
 
+    /**
+     * Fires when the submenu has opened.
+     * @event Drilldown#open
+     */
     this.$element.trigger('open.zf.drilldown', [$elem]);
   };
 
@@ -296,7 +300,7 @@ class Drilldown {
            $elem.blur();
          });
     /**
-     * Fires when the submenu is has closed.
+     * Fires when the submenu has closed.
      * @event Drilldown#hide
      */
     $elem.trigger('hide.zf.drilldown', [$elem]);
