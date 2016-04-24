@@ -144,11 +144,11 @@ class AccordionMenu {
         },
         up: function() {
           $prevElement.attr('tabindex', -1).focus();
-          e.preventDefault();
+          return true;
         },
         down: function() {
           $nextElement.attr('tabindex', -1).focus();
-          e.preventDefault();
+          return true;
         },
         toggle: function() {
           if ($element.children('[data-submenu]').length) {
@@ -158,7 +158,10 @@ class AccordionMenu {
         closeAll: function() {
           _this.hideAll();
         },
-        handled: function() {
+        handled: function(preventDefault) {
+          if (preventDefault) {
+            e.preventDefault();
+          }
           e.stopImmediatePropagation();
         }
       });
