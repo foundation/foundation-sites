@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   <link href="../assets/css/foundation.css" rel="stylesheet" />
   <style>
+    body {
+      background-color: darkgrey;
+    }
     .foo {
       height: 30rem;
     }
@@ -78,9 +81,22 @@
       </div>
       <div id="foo7" class="foo">
         <h1>#foo7</h1>
+        <div class="container" data-sticky-container>
+          <div class="callout sticky" data-sticky data-margin-top="0" data-top-anchor="foo6" data-btm-anchor="foo8">
+            <h5>Test 5</h5>
+            <p>I should stick to the top of #foo6 and the bottom of #foo7, but I don't go to the top of #foo6 because I'm a child of #foo7. Is this normal?</p>
+            <a href="http://foundation.zurb.com/sites/docs/stick.html" class="small button">Go to Sticky Docs</a>          
+          </div>
+        </div>
       </div>
       <div id="foo8" class="foo">
         <h1>#foo8</h1>
+      </div>
+      <div id="foo9" class="foo">
+        <h1>#foo9</h1>
+      </div>
+      <div id="foo8" class="foo">
+        <h1>#foo10</h1>
       </div>
     </div>
 
@@ -88,7 +104,7 @@
       <div class="container" data-sticky-container>
         <div class="callout sticky" data-sticky data-margin-top="0" data-anchor="foo3">
           <h5>Test 3</h5>
-          <p>I should stick to the top and bottom of #foo3.<br/>I'm not the child of any of you #foo's.<br/>When I'm not feeling stuck I jump to the top because I'm not a child of the top anchor</p>
+          <p>I should stick to the top and bottom of #foo3.<br/>I'm not the child of any of you #foo's.<br/>When I'm not stuck I jump to the top because I'm not a child of the top anchor, is this my normal behavior?</p>
           <a href="http://foundation.zurb.com/sites/docs/stick.html" class="small button">Go to Sticky Docs</a>          
         </div>
       </div>
