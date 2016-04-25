@@ -18,7 +18,7 @@ gulp.task('test', ['sass:foundation', 'test:transpile-js', 'watch'], function() 
     server: 'test/visual',
     directory: true
   });
-  gulp.watch(['scss/**/*', 'js/**/*', 'test/visual/**/*'], ['test:reload']);
+  gulp.watch(['test/visual/**/*'], ['test:reload']);
 });
 
 gulp.task('test:reload', function(done) {
@@ -26,7 +26,7 @@ gulp.task('test:reload', function(done) {
   done();
 });
 
-gulp.task('test:transpile-js', ['javascript:foundation'], function() {
+gulp.task('test:transpile-js', ['javascript:foundation', 'javascript:deps'], function() {
   rimraf('test/javascript/js-tests.js');
   
   return gulp.src(JSTESTS)
