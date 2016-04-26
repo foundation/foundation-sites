@@ -3,11 +3,11 @@ title: Installation
 description: There are many ways to install Foundation, but if you're just getting started, we have a few suggestions.
 ---
 
-## Yeti Launch
+<!--## Yeti Launch-->
 
-Yeti Launch is our Mac app for quickly spinning up blank projects for any of the three Foundation frameworks. If you're just getting started with Foundation, we recommend downloading Yeti Launch to get going right away.
+<!--Yeti Launch is our Mac app for quickly spinning up blank projects for any of the three Foundation frameworks. If you're just getting started with Foundation, we recommend downloading Yeti Launch to get going right away.-->
 
-<a href="http://foundation.zurb.com/develop/yeti-launch" class="large button">Download Yeti Launch</a>
+<!--<a href="http://foundation.zurb.com/develop/yeti-launch" class="large button">Download Yeti Launch</a>-->
 
 ### Command-Line Tool
 
