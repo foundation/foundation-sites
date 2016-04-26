@@ -56,7 +56,7 @@ You can also use two anchors, if you please. Using `data-top-anchor="idOfSomethi
 
 ```html
 <div class="columns small-6 right" data-sticky-container>
-  <div class="sticky" data-sticky data-top-anchor="example2" data-btm-anchor="foo:bottom">
+  <div class="sticky" data-sticky data-top-anchor="example2:top" data-btm-anchor="foo:bottom">
     <img class="thumbnail" src="assets/img/generic/rectangle-5.jpg">
   </div>
 </div>
@@ -65,7 +65,11 @@ You can also use two anchors, if you please. Using `data-top-anchor="idOfSomethi
 
 <div class="row">
   <div class="columns small-12">
-    <div class="columns small-6" id="example2">
+    <div class="columns small-6">
+      <p id="example2">
+        <b>The image to the right will be sticky when it hits the top of this paragraph element.</b>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
@@ -73,6 +77,8 @@ You can also use two anchors, if you please. Using `data-top-anchor="idOfSomethi
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
       <p id="foo">
+        <b>The image to the right will lose stickiness when it hits the bottom of this paragraph element.</b>
+        <br />
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </p>
       <p>
@@ -80,7 +86,51 @@ You can also use two anchors, if you please. Using `data-top-anchor="idOfSomethi
       </p>
     </div>
     <div class="columns small-6 right" data-sticky-container>
-      <div class="sticky" data-sticky data-top-anchor="example2:top" data-btm-anchor="foo" data-stick-to="bottom">
+      <div class="sticky" data-sticky data-top-anchor="example2:top" data-btm-anchor="foo:bottom">
+        <img class="thumbnail" src="assets/img/generic/rectangle-5.jpg">
+      </div>
+    </div>
+  </div>
+</div>
+
+## Stick to bottom
+
+You can also stick to bottom.
+Using `data-stick-to="bottom"`. 
+Here is an example using two anchors (like above) with a stick to bottom.
+```html
+<div class="columns small-6 right" data-sticky-container>
+  <div class="sticky" data-sticky data-stick-to="bottom" data-top-anchor="example3" data-btm-anchor="foo2:top">
+    <img class="thumbnail" src="assets/img/generic/rectangle-5.jpg">
+  </div>
+</div>
+```
+
+
+<div class="row">
+  <div class="columns small-12">
+    <div class="columns small-6">
+      <p id="example3">
+        <b>The image to the right will be sticky when it hits the top of this paragraph element.</b>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+      <p id="foo2">
+        <b>The image to the right will lose stickiness when it hits the top of this paragraph element.</b>
+        <br />
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+    <div class="columns small-6 right" data-sticky-container>
+      <div class="sticky" data-sticky data-top-anchor="example3:top" data-btm-anchor="foo2:top" data-stick-to="bottom">
         <img class="thumbnail" src="assets/img/generic/rectangle-5.jpg">
       </div>
     </div>
