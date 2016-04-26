@@ -116,8 +116,9 @@ class Drilldown {
       _this._show($elem.parent('li'));
 
       if(_this.options.closeOnClick){
-        var $body = $('body').not(_this.$wrapper);
+        var $body = $('body');
         $body.off('.zf.drilldown').on('click.zf.drilldown', function(e){
+          if (e.target === _this.$element[0] || $.contains(_this.$element[0], e.target)) { return; }
           e.preventDefault();
           _this._hideAll();
           $body.off('.zf.drilldown');
