@@ -89,8 +89,11 @@ class Drilldown {
       _this._back($menu);
     });
     if(!this.$element.parent().hasClass('is-drilldown')){
-      this.$wrapper = $(this.options.wrapper).addClass('is-drilldown').css(this._getMaxDims());
-      this.$element.wrap(this.$wrapper);
+      this.$wrapper = $(this.options.wrapper).addClass('is-drilldown');
+      if(this.options.animateHeight){
+        this.$wrapper.addClass('animate-height');
+      }
+      this.$wrapper = this.$element.wrap(this.$wrapper).parent().css(this._getMaxDims());
     }
   }
 
@@ -213,6 +216,10 @@ class Drilldown {
    */
   _hideAll() {
     var $elem = this.$element.find('.is-drilldown-submenu.is-active').addClass('is-closing');
+    if(this.options.autoAdjustHeight){
+      var setHeight = $elem.parent().parent().data('calcHeight');
+      this.$wrapper.css({height:setHeight});
+    }
     $elem.one(Foundation.transitionend($elem), function(e){
       $elem.removeClass('is-active is-closing');
     });
@@ -265,6 +272,11 @@ class Drilldown {
    */
   _show($elem) {
     $elem.children('[data-submenu]').addClass('is-active');
+    if(this.options.autoAdjustHeight){
+      var setHeight = $elem.children('[data-submenu]').data('calcHeight');
+      this.$wrapper.css({height:setHeight});
+    }
+
     /**
      * Fires when the submenu has opened.
      * @event Drilldown#open
@@ -279,7 +291,10 @@ class Drilldown {
    * @param {jQuery} $elem - the current sub-menu to hide, i.e. the `ul` tag.
    */
   _hide($elem) {
-    var _this = this;
+    if(this.options.autoAdjustHeight){
+      var setHeight = $elem.parent().parent().data('calcHeight');
+      this.$wrapper.css({height:setHeight});
+    }
     $elem.addClass('is-closing')
          .one(Foundation.transitionend($elem), function(){
            $elem.removeClass('is-active is-closing');
@@ -299,13 +314,22 @@ class Drilldown {
    * @private
    */
   _getMaxDims() {
-    var max = 0, result = {};
-    this.$submenus.add(this.$element).each(function(){
-      var numOfElems = $(this).children('li').length;
-      max = numOfElems > max ? numOfElems : max;
+    var $uls = this.$element.find('ul'), max = 0, result = {}, _this = this;
+    $uls.add(this.$element).each(function(){
+      var $elem = $(this);
+      $elem.hasClass('is-drilldown-submenu')?$elem.css({height:'auto'}):'';
+      max = Math.max(this.getBoundingClientRect().height, max);
+      if(_this.options.autoAdjustHeight){
+        $(this).data('calcHeight',this.getBoundingClientRect().height);
+        if (!$elem.hasClass('is-drilldown-submenu')) {
+          result['height'] = this.getBoundingClientRect().height;
+        };
+      }
+      $elem.hasClass('is-drilldown-submenu')?$elem.css({height:'100%'}):'';
     });
-
-    result['min-height'] = `${max * this.$menuItems[0].getBoundingClientRect().height}px`;
+    if(!this.options.autoAdjustHeight){
+      result['min-height'] = `${max}px`;
+    }
     result['max-width'] = `${this.$element[0].getBoundingClientRect().width}px`;
 
     return result;
@@ -359,7 +383,19 @@ Drilldown.defaults = {
    * @option
    * @example false
    */
-  closeOnClick: false
+  closeOnClick: false,
+  /**
+   * Allow the menu to auto adjust height.
+   * @option
+   * @example false
+   */
+  autoAdjustHeight: false,
+  /**
+   * Animate the auto adjust height.
+   * @option
+   * @example false
+   */
+  animateHeight: false
   // holdOpen: false
 };
 
