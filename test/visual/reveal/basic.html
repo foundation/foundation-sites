@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Foundation for Sites Testing</title>
+    <link href="../motion-ui/dist/motion-ui.css" rel="stylesheet" />
     <link href="../assets/css/foundation.css" rel="stylesheet" />
   </head>
   <body>
@@ -48,6 +49,26 @@
         <p><a data-open="exampleModal4">Open offset modal</a></p>
         <div class="reveal" id="exampleModal4" data-reveal data-v-offset="50" data-h-offset="50">
           <p>Am I in the top left?</p>
+          <p><a data-close>Close modal</a></p>
+        </div>
+        </section>
+
+      <section>
+        <h2>Slower fade in</h2>
+        <p>Clicking this link should open a reveal fading in slow</p>
+        <p><a data-open="exampleModal5">Open offset modal</a></p>
+        <div class="reveal slow" id="exampleModal5" data-reveal data-animation-in="fade-in">
+          <p>Did I open slower?  Did the overlay also open slow?</p>
+          <p><a data-close>Close modal</a></p>
+        </div>
+        </section>
+
+      <section>
+        <h2>Faster fade in</h2>
+        <p>Clicking this link should open a reveal fading in fast</p>
+        <p><a data-open="exampleModal6">Open offset modal</a></p>
+        <div class="reveal fast" id="exampleModal6" data-reveal data-animation-in="fade-in">
+          <p>Did I open faster?  Did the overlay also open fast?</p>
           <p><a data-close>Close modal</a></p>
         </div>
       </section>
