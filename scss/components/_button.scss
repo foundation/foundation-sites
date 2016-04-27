@@ -140,8 +140,8 @@ $button-opacity-disabled: 0.25 !default;
   opacity: $button-opacity-disabled;
   cursor: not-allowed;
   &:hover, &:focus {
-    background-color: $background;
-    color: $color;
+    background-color: $button-background;
+    color: $button-color;
   }
 }
 
