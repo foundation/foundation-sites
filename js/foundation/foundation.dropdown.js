@@ -331,7 +331,7 @@
           p.left = p.left - thisOuterWidth + tOuterWidth;
         }
 
-        if (!self.settings.no_pip && tOuterWidth < thisOuterWidth || self.small() || this.hasClass(s.mega_menu)) {
+        if (!s.no_pip && tOuterWidth < thisOuterWidth || self.small() || this.hasClass(s.mega_menu)) {
           self.adjust_pip(this, t, s, p);
         }
 
@@ -354,7 +354,7 @@
           p.left = p.left - thisOuterWidth + tOuterWidth;
         }
 
-        if (!self.settings.no_pip && tOuterWidth < thisOuterWidth || self.small() || this.hasClass(s.mega_menu)) {
+        if (!s.no_pip && tOuterWidth < thisOuterWidth || self.small() || this.hasClass(s.mega_menu)) {
           self.adjust_pip(this, t, s, p);
         }
 
