@@ -249,7 +249,7 @@ class Tooltip {
       })
       .on('mouseleave.zf.tooltip', function(e) {
         clearTimeout(_this.timeout);
-        if (!isFocus || (!_this.isClick && _this.options.clickOpen)) {
+        if (!isFocus || (_this.isClick && !_this.options.clickOpen)) {
           _this.hide();
         }
       });
@@ -267,6 +267,11 @@ class Tooltip {
             _this.show();
           }
         }
+      });
+    } else {
+      this.$element.on('mousedown.zf.tooltip', function(e) {
+        e.stopImmediatePropagation();
+        _this.isClick = true;
       });
     }
 
@@ -286,11 +291,12 @@ class Tooltip {
     this.$element
       .on('focus.zf.tooltip', function(e) {
         isFocus = true;
-        // console.log(_this.isClick);
         if (_this.isClick) {
+          // If we're not showing open on clicks, we need to pretend a click-launched focus isn't
+          // a real focus, otherwise on hover and come back we get bad behavior
+          if(!_this.options.clickOpen) { isFocus = false; }
           return false;
         } else {
-          // $(window)
           _this.show();
         }
       })
