@@ -246,7 +246,7 @@
     }
 
     .#{$-zf-size}-uncollapse {
-      > .column { @include grid-col-size($-zf-size); }
+      > .column { @include grid-col-gutter($-zf-size); }
     }
   }
 
