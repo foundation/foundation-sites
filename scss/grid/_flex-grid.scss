@@ -129,7 +129,9 @@
 
 /// Changes the width flex grid column.
 /// @param {Mixed} $columns [expand] - Width of the column. Refer to the `flex-grid-column()` function to see possible values.
-@mixin flex-grid-size($columns: expand) {
+@mixin flex-grid-size($columns: null) {
+  $columns: $columns or expand;
+
   flex: flex-grid-column($columns);
 
   // max-width fixes IE 10/11 not respecting the flex-basis property
