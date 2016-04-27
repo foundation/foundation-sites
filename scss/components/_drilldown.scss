@@ -31,6 +31,10 @@ $drilldown-background: $white !default;
     li {
       display: block !important;
     }
+
+    &.animate-height {
+      transition: height 0.5s;
+    }
   }
 
   // Applied to nested <ul>s
