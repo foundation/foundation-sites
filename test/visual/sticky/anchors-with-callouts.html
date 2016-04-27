@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <title>Foundation for Sites Testing</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <link href="../assets/css/foundation.css" rel="stylesheet" />
+  <style>
+    body {
+      background-color: darkgrey;
+    }
+
+    .sticky-container {
+      background-color: #f00;
+      transition: height .5s ease;
+    }
+
+    .foo {
+      height: 30rem;
+      color: white;
+    }
+
+    .foo h1 {
+      display: inline-block;
+      float: right;
+    }
+
+    .foo:nth-child(odd) {
+      background-color: lightgreen;
+    }
+
+    .foo:nth-child(even) {
+      background-color: lightblue;
+    }
+
+  </style>
+
+</head>
+<body>
+  
+  <div class="row">
+
+    <div class="small-12 medium-2 columns">
+      <div class="container" data-sticky-container>
+        <div class="callout sticky" data-sticky data-margin-top="0" data-anchor="foo1">
+          <h5>Test 1</h5>
+          <p>I should stick to the top and bottom of #foo1. I'm not a child of any #foo's.</p>
+          <a href="http://foundation.zurb.com/sites/docs/stick.html" class="small button">Go to Sticky Docs</a>          
+        </div>
+      </div>
+    </div>
+    
+    <div class="small-12 medium-7 columns">
+      <div id="foo1" class="foo">
+        <h1>#foo1</h1>
+      </div>
+      <div id="foo2" class="foo">
+        <h1>#foo2</h1>
+        <div class="container" data-sticky-container>
+          <div class="callout sticky" data-sticky data-margin-top="0" data-anchor="foo2">
+            <h5>Test 2</h5>
+            <p>I should stick to the top and bottom of #foo2.<br/>I'm also a child of #foo2</p>
+            <a href="http://foundation.zurb.com/sites/docs/stick.html" class="small button">Go to Sticky Docs</a>          
+          </div>
+        </div>
+      </div>
+      <div id="foo3" class="foo">
+        <h1>#foo3</h1>
+
+      </div>
+      <div id="foo4" class="foo">
+        <h1>#foo4</h1>
+        <div class="container" data-sticky-container>
+          <div class="callout sticky" data-sticky data-margin-top="0" data-top-anchor="foo4" data-btm-anchor="foo6">
+            <h5>Test 4</h5>
+            <p>I should stick to the top of #foo4 and the bottom of #foo5.<br/>I'm a child of #foo4</p>
+            <a href="http://foundation.zurb.com/sites/docs/stick.html" class="small button">Go to Sticky Docs</a>          
+          </div>
+        </div>
+      </div>
+      <div id="foo5" class="foo">
+        <h1>#foo5</h1>
+      </div>
+      <div id="foo6" class="foo">
+        <h1>#foo6</h1>
+      </div>
+      <div id="foo7" class="foo">
+        <h1>#foo7</h1>
+        <div class="container" data-sticky-container>
+          <div class="callout sticky" data-sticky data-margin-top="0" data-top-anchor="foo6" data-btm-anchor="foo8">
+            <h5>Test 5</h5>
+            <p>I should stick to the top of #foo6 and the bottom of #foo7, but I don't go to the top of #foo6 because I'm a child of #foo7. Is this normal?</p>
+            <a href="http://foundation.zurb.com/sites/docs/stick.html" class="small button">Go to Sticky Docs</a>          
+          </div>
+        </div>
+      </div>
+      <div id="foo8" class="foo">
+        <h1>#foo8</h1>
+      </div>
+      <div id="foo9" class="foo">
+        <h1>#foo9</h1>
+      </div>
+      <div id="foo8" class="foo">
+        <h1>#foo10</h1>
+      </div>
+    </div>
+
+    <div class="small-12 medium-3 columns">
+      <div class="container" data-sticky-container>
+        <div class="callout sticky" data-sticky data-margin-top="0" data-anchor="foo3">
+          <h5>Test 3</h5>
+          <p>I should stick to the top and bottom of #foo3.<br/>I'm not the child of any of you #foo's.<br/>When I'm not stuck I jump to the top because I'm not a child of the top anchor, is this my normal behavior?</p>
+          <a href="http://foundation.zurb.com/sites/docs/stick.html" class="small button">Go to Sticky Docs</a>          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/vendor.js"></script>
+  <script src="../assets/js/foundation.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
+</body>
+</html>
