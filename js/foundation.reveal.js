@@ -209,6 +209,11 @@ class Reveal {
 
     if(this.$overlay) {
       this.$overlay.css({'visibility': ''}).hide();
+      if(this.$element.hasClass('fast')) {
+        this.$overlay.addClass('fast');
+      } else if (this.$element.hasClass('slow')) {
+        this.$overlay.addClass('slow');
+      }
     }
 
 
