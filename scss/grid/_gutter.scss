@@ -50,7 +50,7 @@
 /// @param {Number} $gutter [$grid-column-gutter] - Spacing between columns.
 @mixin grid-column-uncollapse($gutter: $grid-column-gutter) {
   @warn 'This mixin is being replaced by grid-column-gutter(). grid-column-uncollapse() will be removed in Foundation 6.4.';
-  @include grid-column-gutter($gutter);
+  @include grid-column-gutter($gutters: $gutter);
 }
 
 /// Shorthand for `grid-column-gutter()`.
@@ -67,7 +67,7 @@
 
 /// Shorthand for `grid-column-uncollapse()`.
 /// @alias grid-column-uncollapse
-@mixin grid-col-uncollapse($gutter) {
+@mixin grid-col-uncollapse($gutter: $grid-column-gutter) {
   @warn 'This mixin is being replaced by grid-col-gutter(). grid-col-uncollapse() will be removed in Foundation 6.4.';
   @include grid-column-uncollapse($gutter);
 }
