@@ -75,7 +75,7 @@
 
 /// Creates a grid column row. This is the equivalent of adding `.row` and `.column` to the same element.
 ///
-/// @param {Mixed} $gutter [$grid-column-gutter] - Width of the gutters on either side of the column row. Refer to the `grid-column-gutter()` function to see possible values.
+/// @param {Mixed} $gutters [$grid-column-gutter] - Width of the gutters on either side of the column row. Refer to the `grid-column-gutter()` function to see possible values.
 @mixin grid-column-row(
   $gutters: $grid-column-gutter
 ) {
