@@ -132,7 +132,7 @@ class Equalizer {
    * @private
    */
   _isStacked() {
-    return this.$watched[0].offsetTop !== this.$watched[1].offsetTop;
+    return this.$watched[0].getBoundingClientRect().top !== this.$watched[1].getBoundingClientRect().top;
   }
 
   /**
