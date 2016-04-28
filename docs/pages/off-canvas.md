@@ -153,3 +153,38 @@ The main content area (`.off-canvas-content`) will be padded to the left or righ
 ```
 
 <button type="button" class="button" data-docs-example-ofc>Toggle Reveal Class</button>
+
+---
+
+## Vertical Off-canvas
+
+In addition to left and right off-canvas menus, you can have vertical off-canvases as well.
+
+```html
+<body>
+  <div class="off-canvas-wrapper">
+    <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+      <div class="off-canvas position-top" id="offCanvasTop" data-off-canvas data-position="top"></div>
+      <div class="off-canvas-content" data-off-canvas-content></div>
+    </div>
+  </div>
+</body>
+```
+
+<button class="button" type="button" data-toggle="offCanvasTop">Open Top Menu</button>
+
+<div class="primary callout">
+  <p>When using the `title-bar` with a vertical off-canvas, the title-bar icons are still either `title-bar-left` or `title-bar-right`.</p>
+</div>
+
+```html_example
+<div class="title-bar">
+  <div class="title-bar-left">
+    <button class="menu-icon" type="button" data-open="offCanvasTop"></button>
+    <span class="title-bar-title">Foundation title bar with top off-canvas</span>
+  </div>
+  <div class="title-bar-right">
+    <button class="menu-icon" type="button" data-open="offCanvasTop"></button>
+  </div>
+</div>
+```
