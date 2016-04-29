@@ -24,15 +24,24 @@ describe('abide:', function() {
       expect($('input[name="user_email"]')).not.toHaveData('invalid');
     });
 
-    it('should skip validation when there are no validatable fields', function() {
+    it('should skip validation and emit valid.fndtn.abide when there are no validatable fields', function() {
       $(document).foundation();
 
       $('input[name="user_name"]').val('Name').hide();
       $('input[name="user_email"]').val('user@email.com').hide();
 
+      spyOnEvent('form', 'invalid.fndtn.abide');
+      spyOnEvent('form', 'valid.fndtn.abide');
+
+      spyOnEvent('input[name="user_name"]', 'invalid');
+      spyOnEvent('input[name="user_name"]', 'valid');
+
+      spyOnEvent('input[name="user_email"]', 'invalid');
+      spyOnEvent('input[name="user_email"]', 'valid');
+
       $('form').submit();
 
-      expect('valid.fndtn.abide').not.toHaveBeenTriggeredOn('form');
+      expect('valid.fndtn.abide').toHaveBeenTriggeredOn('form');
       expect('valid').not.toHaveBeenTriggeredOn('input[name="user_name"]');
       expect('valid').not.toHaveBeenTriggeredOn('input[name="user_email"]');
       expect('invalid.fndtn.abide').not.toHaveBeenTriggeredOn('form');

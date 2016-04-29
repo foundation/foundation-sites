@@ -154,7 +154,7 @@
     validate : function (els, e, is_ajax) {
       var validations = this.parse_patterns(els),
           validation_count = validations.length,
-          form = this.S(els[0]).closest('form'),
+          form = this.S(els.length ? els[0] : e.target).closest('form'),
           submit_event = /submit/.test(e.type);
 
       // Has to count up to make sure the focus gets applied to the top error
