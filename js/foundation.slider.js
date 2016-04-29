@@ -106,7 +106,11 @@ class Slider {
    * @fires Slider#changed
    */
   _setHandlePos($hndl, location, noInvert, cb) {
-  //might need to alter that slightly for bars that will have odd number selections.
+    // don't move if the slider has been disabled since its initialization
+    if (this.$element.hasClass(this.options.disabledClass)) {
+      return;
+    }
+    //might need to alter that slightly for bars that will have odd number selections.
     location = parseFloat(location);//on input change events, convert string to number...grumble.
 
     // prevent slider from running out of bounds, if value exceeds the limits set through options, override the value to min/max
@@ -335,8 +339,6 @@ class Slider {
    * @param {jQuery} $handle - the current handle to apply listeners to.
    */
   _events($handle) {
-    if (this.options.disabled) { return false; }
-
     var _this = this,
         curHandle,
         timer;
