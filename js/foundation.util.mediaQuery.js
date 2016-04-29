@@ -33,10 +33,12 @@ var MediaQuery = {
     namedQueries = parseStyleToObject(extractedStyles);
 
     for (var key in namedQueries) {
-      self.queries.push({
-        name: key,
-        value: `only screen and (min-width: ${namedQueries[key]})`
-      });
+      if(namedQueries.hasOwnProperty(key)) {
+        self.queries.push({
+          name: key,
+          value: `only screen and (min-width: ${namedQueries[key]})`
+        });
+      }
     }
 
     this.current = this._getCurrentSize();
@@ -68,8 +70,10 @@ var MediaQuery = {
    */
   get(size) {
     for (var i in this.queries) {
-      var query = this.queries[i];
-      if (size === query.name) return query.value;
+      if(this.queries.hasOwnProperty(i)) {
+        var query = this.queries[i];
+        if (size === query.name) return query.value;
+      }
     }
 
     return null;
