@@ -79,7 +79,9 @@ $select-radius: $global-radius !default;
 }
 
 @mixin foundation-form-select {
-  select {
+  $name: if($global-namespace, '.select', 'select');
+
+  #{$name} {
     @include form-select;
   }
 }
