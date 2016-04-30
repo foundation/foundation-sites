@@ -294,9 +294,14 @@ class Sticky {
     });
     this.elemHeight = newContainerHeight;
 
-  	if (this.isStuck) {
-  		this.$element.css({"left":this.$container.offset().left + parseInt(comp['padding-left'], 10)});
-  	}
+    if (this.isStuck) {
+      this.$element.css({"left":this.$container.offset().left + parseInt(comp['padding-left'], 10)});
+    } else {
+      if (this.$element.hasClass('is-at-bottom')) {
+        var anchorPt = (this.points ? this.points[1] - this.$container.offset().top : this.anchorHeight) - this.elemHeight;
+        this.$element.css('top', anchorPt);
+      }
+    }
 
     this._setBreakPoints(newContainerHeight, function() {
       if (cb) { cb(); }
