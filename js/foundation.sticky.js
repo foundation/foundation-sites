@@ -215,9 +215,6 @@ class Sticky {
                   * @event Sticky#stuckto
                   */
                  .trigger(`sticky.zf.stuckto:${stickTo}`);
-    this.$element.on("transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd", function() {
-      _this._setSizes();
-    });
   }
 
   /**
@@ -232,19 +229,18 @@ class Sticky {
     var stickTo = this.options.stickTo,
         stickToTop = stickTo === 'top',
         css = {},
-        anchorPt = (this.points ? this.points[1] - this.points[0] : this.anchorHeight) - this.elemHeight,
+        anchorPt = (this.points ? this.points[1] - this.$container.offset().top : this.anchorHeight) - this.elemHeight,
         mrgn = stickToTop ? 'marginTop' : 'marginBottom',
         notStuckTo = stickToTop ? 'bottom' : 'top',
         topOrBottom = isTop ? 'top' : 'bottom';
 
     css[mrgn] = 0;
 
-    if ((isTop && !stickToTop) || (stickToTop && !isTop)) {
-      css[stickTo] = anchorPt;
-      css[notStuckTo] = 0;
+    css['bottom'] = 'auto';
+    if(isTop) {
+      css['top'] = 0;
     } else {
-      css[stickTo] = 0;
-      css[notStuckTo] = anchorPt;
+      css['top'] = anchorPt;
     }
 
     css['left'] = '';
@@ -294,9 +290,14 @@ class Sticky {
     });
     this.elemHeight = newContainerHeight;
 
-  	if (this.isStuck) {
-  		this.$element.css({"left":this.$container.offset().left + parseInt(comp['padding-left'], 10)});
-  	}
+    if (this.isStuck) {
+            this.$element.css({"left":this.$container.offset().left + parseInt(comp['padding-left'], 10)});
+    } else {
+        if (this.$element.hasClass('is-at-bottom')) {
+            var anchorPt = (this.points ? this.points[1] - this.$container.offset().top : this.anchorHeight) - this.elemHeight;
+            this.$element.css('top', anchorPt);
+        }
+    }
 
     this._setBreakPoints(newContainerHeight, function() {
       if (cb) { cb(); }
