@@ -239,12 +239,11 @@ class Sticky {
 
     css[mrgn] = 0;
 
-    if ((isTop && !stickToTop) || (stickToTop && !isTop)) {
-      css[stickTo] = anchorPt;
-      css[notStuckTo] = 0;
+    css['bottom'] = 'auto';
+    if(isTop) {
+      css['top'] = 0;
     } else {
-      css[stickTo] = 0;
-      css[notStuckTo] = anchorPt;
+      css['top'] = anchorPt;
     }
 
     css['left'] = '';
