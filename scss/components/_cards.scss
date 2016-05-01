@@ -1,0 +1,85 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group cards
+////
+
+/// Border color of a card.
+/// @type color
+$card-border-color: $light-gray !default;
+
+/// Header background color of a card.
+/// @type color
+$card-header-background-color: $light-gray !default;
+
+/// Padding of a card.
+/// @type Number
+$card-padding: $global-padding !default;
+
+@mixin card-base() {
+  display: flex;
+  flex-direction: column;
+
+  > * {
+    border-left: 1px solid $card-border-color;
+    border-right: 1px solid $card-border-color;
+  }
+
+  > *:first-child {
+    border: {
+      top: 1px solid $card-border-color;
+      top-left-radius: $global-radius;
+      top-right-radius: $global-radius;
+    }
+  }
+
+  > *:last-child {
+    border: {
+      bottom: 1px solid $card-border-color;
+      bottom-left-radius: $global-radius;
+      bottom-right-radius: $global-radius;
+    }
+    @each $breakpoint, $value in $grid-column-gutter {
+      $padding: rem-calc($value);
+
+      @include breakpoint($breakpoint) {
+        margin-bottom: $padding;
+      }
+    }
+  }
+
+  .card-block {
+    flex-grow: 1;
+  }
+
+  .card-header {
+    border-bottom: 1px solid $card-border-color;
+    background-color: $card-header-background-color;
+
+    .card-title {
+      margin-bottom: 0;
+    }
+  }
+
+  .card-block, .card-footer, .card-header {
+    padding: $card-padding;
+  }
+
+  .card-button {
+    .button {
+      margin-bottom: 0;
+    }
+  }
+}
+
+@mixin foundation-cards {
+  .card {
+    @include card-base();
+  }
+}
+
+
+
+
