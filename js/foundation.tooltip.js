@@ -40,7 +40,7 @@ class Tooltip {
     this.template = this.options.template ? $(this.options.template) : this._buildTemplate(elemId);
 
     this.template.appendTo(document.body)
-        .html(this.options.tipText)
+        .text(this.options.tipText)
         .hide();
 
     this.$element.attr({
@@ -248,28 +248,10 @@ class Tooltip {
         }
       })
       .on('mouseleave.zf.tooltip', function(e) {
-		if (_this.options.tipHoverable) {
-			_this.timeout = setTimeout(function () {
-				clearTimeout(_this.timeout);
-				if ($template.is(":hover")) {
-				  $template.on('mouseleave', function (e) {
-					 if (!isFocus || !_this.isClick && _this.options.clickOpen) {
-						_this.hide();
-					 }
-					 $template.off('mouseleave');
-				  });
-				} else {
-					if (!isFocus || !_this.isClick && _this.options.clickOpen) {
-					  _this.hide();
-					}
-				}
-			}, 200); //min required to capture
-		} else {
-			clearTimeout(_this.timeout);
-			if (!isFocus || !_this.isClick && _this.options.clickOpen) {
-			  _this.hide();
-			}
-		}
+        clearTimeout(_this.timeout);
+        if (!isFocus || (_this.isClick && !_this.options.clickOpen)) {
+          _this.hide();
+        }
       });
     }
 
@@ -449,13 +431,7 @@ Tooltip.defaults = {
    * @option
    * @example 12
    */
-  hOffset: 12,
-  /**
-	 * Should the tip remain open if hover
-	 * @option
-	 * @example false
-	 */
-	 tipHoverable: false
+  hOffset: 12
 };
 
 /**
