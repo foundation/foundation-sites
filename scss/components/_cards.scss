@@ -18,35 +18,35 @@ $card-header-background-color: $light-gray !default;
 /// @type Number
 $card-padding: $global-padding !default;
 
+/// Padding of a card.
+/// @type Shadow
+$card-shadow: none !default;
+
 @mixin card-base() {
   display: flex;
+  border: {
+    color: $light-gray;
+    radius: $global-radius;
+    style: solid;
+    width: 1px;
+  }
+  box-shadow: $card-shadow;
   flex-direction: column;
 
-  > * {
-    border-left: 1px solid $card-border-color;
-    border-right: 1px solid $card-border-color;
-  }
-
-  > *:first-child {
+  .card-img-top {
     border: {
-      top: 1px solid $card-border-color;
-      top-left-radius: $global-radius;
-      top-right-radius: $global-radius;
-    }
-  }
-
-  > *:last-child {
-    border: {
-      bottom: 1px solid $card-border-color;
-      bottom-left-radius: $global-radius;
-      bottom-right-radius: $global-radius;
-    }
-    @each $breakpoint, $value in $grid-column-gutter {
-      $padding: rem-calc($value);
-
-      @include breakpoint($breakpoint) {
-        margin-bottom: $padding;
+      top: {
+        left-radius: $global-radius;
+        right-radius: $global-radius;
       }
+    }
+  }
+
+  @each $breakpoint, $value in $grid-column-gutter {
+    $padding: rem-calc($value);
+
+    @include breakpoint($breakpoint) {
+      margin-bottom: $padding;
     }
   }
 
@@ -74,9 +74,21 @@ $card-padding: $global-padding !default;
   }
 }
 
+@mixin card-row() {
+  .column {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+}
+
 @mixin foundation-cards {
   .card {
     @include card-base();
+  }
+
+  .row.cards {
+    @include card-row();
   }
 }
 
