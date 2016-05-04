@@ -259,7 +259,7 @@ class Tooltip {
       this.$element.on('mousedown.zf.tooltip', function(e) {
         e.stopImmediatePropagation();
         if (_this.isClick) {
-          _this.hide();
+          //_this.hide();
           // _this.isClick = false;
         } else {
           _this.isClick = true;
