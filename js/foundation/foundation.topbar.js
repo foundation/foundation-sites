@@ -265,7 +265,7 @@
 
         S('[' + self.attr_name() + '] li.hover').removeClass('hover');
         
-        if(!settings.is_hover){
+        if(settings && !settings.is_hover){
           S('[' + self.attr_name() + '] a.last-clicked').removeClass('last-clicked');
         }
       });
