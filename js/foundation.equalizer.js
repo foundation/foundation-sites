@@ -38,7 +38,10 @@ class Equalizer {
     this.hasNested = this.$element.find('[data-equalizer]').length > 0;
     this.isNested = this.$element.parentsUntil(document.body, '[data-equalizer]').length > 0;
     this.isOn = false;
-    this._bindHandler = this._bindHandlers.bind(this);
+    this._bindHandler = {
+      onResizeMeBound: this._onResizeMe.bind(this),
+      onPostEqualizedBound: this._onPostEqualized.bind(this)
+    };
 
     var imgs = this.$element.find('img');
     var tooSmall;
@@ -63,15 +66,26 @@ class Equalizer {
    */
   _pauseEvents() {
     this.isOn = false;
-    this.$element.off('.zf.equalizer resizeme.zf.trigger',this._bindHandler);
+    this.$element.off({
+      '.zf.equalizer': this._bindHandler.onPostEqualizedBound,
+      'resizeme.zf.trigger': this._bindHandler.onResizeMeBound
+    });
   }
 
-  _bindHandlers(e) {
-    if (e.type === 'resizeme') {
-      this._reflow();
-    }else if (e.type === 'postequalized'){
-      if(e.target !== this.$element[0]){ this._reflow(); }
-    };
+  /**
+   * function to handle $elements resizeme.zf.trigger, with bound this on _bindHandler.onResizeMeBound
+   * @private
+   */
+  _onResizeMe(e) {
+    this._reflow();
+  }
+
+  /**
+   * function to handle $elements postequalized.zf.equalizer, with bound this on _bindHandler.onPostEqualizedBound
+   * @private
+   */
+  _onPostEqualized(e) {
+    if(e.target !== this.$element[0]){ this._reflow(); }
   }
 
   /**
@@ -82,9 +96,9 @@ class Equalizer {
     var _this = this;
     this._pauseEvents();
     if(this.hasNested){
-      this.$element.on('postequalized.zf.equalizer', this._bindHandler);
+      this.$element.on('postequalized.zf.equalizer', this._bindHandler.onPostEqualizedBound);
     }else{
-      this.$element.on('resizeme.zf.trigger', this._bindHandler);
+      this.$element.on('resizeme.zf.trigger', this._bindHandler.onResizeMeBound);
     }
     this.isOn = true;
   }
