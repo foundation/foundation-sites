@@ -207,7 +207,7 @@ class AccordionMenu {
     $target.addClass('is-active').attr({'aria-hidden': false})
       .parent('.is-accordion-submenu-parent').attr({'aria-expanded': true});
 
-      Foundation.Move(this.options.slideSpeed, $target, function() {
+      //Foundation.Move(this.options.slideSpeed, $target, function() {
         $target.slideDown(_this.options.slideSpeed, function () {
           /**
            * Fires when the menu is done opening.
@@ -215,7 +215,7 @@ class AccordionMenu {
            */
           _this.$element.trigger('down.zf.accordionMenu', [$target]);
         });
-      });
+      //});
   }
 
   /**
@@ -225,7 +225,7 @@ class AccordionMenu {
    */
   up($target) {
     var _this = this;
-    Foundation.Move(this.options.slideSpeed, $target, function(){
+    //Foundation.Move(this.options.slideSpeed, $target, function(){
       $target.slideUp(_this.options.slideSpeed, function () {
         /**
          * Fires when the menu is done collapsing up.
@@ -233,7 +233,7 @@ class AccordionMenu {
          */
         _this.$element.trigger('up.zf.accordionMenu', [$target]);
       });
-    });
+    //});
 
     var $menus = $target.find('[data-submenu]').slideUp(0).addBack().attr('aria-hidden', true);
 
