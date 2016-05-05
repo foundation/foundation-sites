@@ -75,7 +75,7 @@ Any `<a>` without a submenu will function like a normal link.
 
 ## ScrollTop Drilldown
 
-<div class="callout">Scroll to the top on change the menu - Option scrollTop</div>
+<div class="callout">Scroll to the top of the menu when selecting a submenu/navigating back using the menu back button. Can be useful with a longer menu to provide a better user experience.</div>
 
 <ul class="menu" data-drilldown data-scroll-top="true" style="width: 200px" id="m2">
   <li><a href="#">Item</a></li>

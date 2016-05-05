@@ -393,7 +393,7 @@ Drilldown.defaults = {
    */
   closeOnClick: false,
   /**
-   * Scroll the menu after open,hide,closed
+   * Scroll to the top of the menu after opening a submenu or navigating back using the menu back button
    * @option
    * @example false
    */
