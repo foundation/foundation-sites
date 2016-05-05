@@ -25,10 +25,12 @@ function Move(duration, elem, fn){
   // console.log('called');
 
   function move(ts){
-    if(!start) start = window.performance.now();
+    if(!start) {
+      start = window.performance.now();
+      fn.apply(elem);
+    }
     // console.log(start, ts);
     prog = ts - start;
-    fn.apply(elem);
 
     if(prog < duration){ anim = window.requestAnimationFrame(move, elem); }
     else{
