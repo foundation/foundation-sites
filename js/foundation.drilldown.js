@@ -299,13 +299,14 @@ class Drilldown {
    * @private
    */
   _getMaxDims() {
-    var max = 0, result = {};
-    this.$submenus.add(this.$element).each(function(){
-      var numOfElems = $(this).children('li').length;
-      max = numOfElems > max ? numOfElems : max;
+    var $uls = this.$element.find('ul'), max = 0, result = {};
+    $uls.add(this.$element).each(function(){
+      var $elem = $(this);
+      $elem.hasClass('is-drilldown-submenu')?$elem.css({height:'auto'}):'';
+      max = Math.max(this.getBoundingClientRect().height, max);
+      $elem.hasClass('is-drilldown-submenu')?$elem.css({height:'100%'}):'';
     });
-
-    result['min-height'] = `${max * this.$menuItems[0].getBoundingClientRect().height}px`;
+    result['min-height'] = `${max}px`;
     result['max-width'] = `${this.$element[0].getBoundingClientRect().width}px`;
 
     return result;
