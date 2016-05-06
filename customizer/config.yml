@@ -153,6 +153,7 @@ slider:
     - motion
     - triggers
     - mediaQuery
+    - keyboard
 
 sticky:
   sass: sticky
@@ -169,6 +170,7 @@ reveal:
     - motion
     - triggers
     - mediaQuery
+    - keyboard
 
 switch:
   sass: switch
