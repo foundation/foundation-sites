@@ -47,7 +47,7 @@ $mediaobject-image-width-stacked: 100% !default;
     padding-#{$global-left}: $padding;
   }
 
-  & > :last-child {
+  > :last-child {
     margin-bottom: 0;
   }
 }
