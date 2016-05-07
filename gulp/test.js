@@ -19,7 +19,8 @@ gulp.task('test', ['sass:foundation', 'test:transpile-js', 'watch'], function() 
       baseDir: 'test/visual',
       directory: true,
       routes: {
-        "/assets": "_build/assets"
+        "/assets": "_build/assets",
+        "/motion-ui": "node_modules/motion-ui"
       }
     }
   });
