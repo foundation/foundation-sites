@@ -15,8 +15,13 @@ var JSTESTS = [
 // Runs unit tests
 gulp.task('test', ['sass:foundation', 'test:transpile-js', 'watch'], function() {
   browser.init({
-    server: 'test/visual',
-    directory: true
+    server: { 
+      baseDir: 'test/visual',
+      directory: true,
+      routes: {
+        "/assets": "_build/assets"
+      }
+    }
   });
   gulp.watch(['test/visual/**/*'], ['test:reload']);
 });
