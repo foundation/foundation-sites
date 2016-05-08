@@ -54,6 +54,7 @@ $accordion-content-padding: 1rem !default;
   &:first-child > :first-child {
     border-radius: $global-radius $global-radius 0 0;
   }
+
   &:last-child > :last-child {
     border-radius: 0 0 $global-radius $global-radius;
   }
@@ -69,6 +70,7 @@ $accordion-content-padding: 1rem !default;
   position: relative;
   border: $accordion-content-border;
   border-bottom: 0;
+
   :last-child:not(.is-active) > & {
     border-radius: 0 0 $global-radius $global-radius;
     border-bottom: $accordion-content-border;
@@ -102,6 +104,7 @@ $accordion-content-padding: 1rem !default;
   border-bottom: 0;
   background-color: $accordion-content-background;
   color: $accordion-content-color;
+
   :last-child > &:last-child {
     border-bottom: $accordion-content-border;
   }
