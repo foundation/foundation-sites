@@ -30,6 +30,21 @@ At the spot thus attained a second peg was driven, and about this, as a centre, 
 
 ---
 
+## Tooltip clicking
+By default, clicking on a tooltip will leave it open until you click somewhere else.  However, you can disable that by adding data-click-open="false"
+
+```html_example
+<p>
+this 
+<span data-tooltip aria-haspopup="true" class="has-tip top" data-disable-hover="false" tabindex="2" title="You see?  I'm open!">tooltip will stay open</span>
+
+while 
+<span data-tooltip aria-haspopup="true" class="has-tip top" data-click-open="false" data-disable-hover="false" tabindex="2" title="I don't stay open">this one will only be open when hovered</span>
+</p>
+```
+
+---
+
 ## Tooltip Right and Left
 
 You can also position the tooltips to the right and left of the word by adding the classes `.right` or `.left` to the `<span>` element.

@@ -402,7 +402,9 @@ class Abide {
     $(`.${opts.inputErrorClass}`, $form).not('small').removeClass(opts.inputErrorClass);
     $(`${opts.formErrorSelector}.${opts.formErrorClass}`).removeClass(opts.formErrorClass);
     $form.find('[data-abide-error]').css('display', 'none');
-    $(':input', $form).not(':button, :submit, :reset, :hidden, [data-abide-ignore]').val('').removeAttr('data-invalid');
+    $(':input', $form).not(':button, :submit, :reset, :hidden, :radio, :checkbox, [data-abide-ignore]').val('').removeAttr('data-invalid');
+    $(':input:radio', $form).not('[data-abide-ignore]').prop('checked',false).removeAttr('data-invalid');
+    $(':input:checkbox', $form).not('[data-abide-ignore]').prop('checked',false).removeAttr('data-invalid');
     /**
      * Fires when the form has been reset.
      * @event Abide#formreset

@@ -32,7 +32,7 @@ $mediaobject-image-width-stacked: 100% !default;
 /// @param {Number} $padding [$mediaobject-section-padding] - Padding between sections.
 @mixin media-object-section($padding: $mediaobject-section-padding) {
   @if $global-flexbox {
-    flex: 0 0 auto;
+    flex: 0 1 auto;
   }
   @else {
     display: table-cell;
@@ -45,6 +45,10 @@ $mediaobject-image-width-stacked: 100% !default;
 
   &:last-child:not(:nth-child(2)) {
     padding-#{$global-left}: $padding;
+  }
+
+  > :last-child {
+    margin-bottom: 0;
   }
 }
 
@@ -76,7 +80,9 @@ $mediaobject-image-width-stacked: 100% !default;
 
     @if $global-flexbox {
       &.stack-for-#{$-zf-zero-breakpoint} {
-        flex-wrap: wrap;
+        @include breakpoint($-zf-zero-breakpoint only) {
+          flex-wrap: wrap;
+        }
       }
     }
 

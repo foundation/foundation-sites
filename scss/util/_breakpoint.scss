@@ -20,10 +20,11 @@ $breakpoints: (
 
 $-zf-zero-breakpoint: small !default;
 
-@if nth(map-values($breakpoints),1) != 0 {
+@if nth(map-values($breakpoints), 1) != 0 {
   @error 'Your smallest breakpoint (defined in $breakpoints) must be set to "0".';
-} @else {
-  $-zf-zero-breakpoint: nth(map-keys($breakpoints),1);
+}
+@else {
+  $-zf-zero-breakpoint: nth(map-keys($breakpoints), 1);
 }
 
 /// All of the names in this list will be output as classes in your CSS, like `.small-12`, `.medium-6`, and so on. Each value in this list must also be in the `$breakpoints` map.

@@ -41,14 +41,16 @@ $buttongroup-expand-max: 6 !default;
 
   #{$child-selector} {
     margin: 0;
+    margin-#{$global-right}: $buttongroup-spacing;
+    margin-bottom: $buttongroup-spacing;
     font-size: map-get($button-sizes, default);
 
     @if $global-flexbox {
       flex: 0 0 auto;
     }
 
-    &:not(:last-child) {
-      margin-right: $buttongroup-spacing;
+    &:last-child {
+      margin-#{$global-right}: 0;
     }
   }
 }
@@ -60,7 +62,7 @@ $buttongroup-expand-max: 6 !default;
   $count: null
 ) {
   @if not $global-flexbox {
-    margin-right: -$buttongroup-spacing;
+    margin-#{$global-right}: -$buttongroup-spacing;
 
     &::before,
     &::after {
@@ -82,8 +84,10 @@ $buttongroup-expand-max: 6 !default;
               width: #{percentage(1 / $i)};
             } @else {
               width: calc(#{percentage(1 / $i)} - #{$buttongroup-spacing});
+              margin-#{$global-right}: $buttongroup-spacing;
+            &:last-child {
+              margin-#{$global-right}: $buttongroup-spacing * -$buttongroup-expand-max;
             }
-            margin-right: $buttongroup-spacing;
           }
         }
       }
@@ -103,20 +107,13 @@ $buttongroup-expand-max: 6 !default;
   #{$selector} {
     @if $global-flexbox {
       flex: 0 0 100%;
-      margin-#{$global-right}: 0; 
     }
     @else {
       width: 100%;
-      border-#{$global-right}: $buttongroup-spacing solid transparent;
     }
-    
-    &:not(:last-child) {
-      @if $global-flexbox {
-        margin-bottom: $buttongroup-spacing;
-      }
-      @else {
-        border-bottom: $buttongroup-spacing solid $body-background;
-      }
+
+    &:last-child {
+      margin-bottom: 0;
     }
   }
 }
@@ -134,10 +131,7 @@ $buttongroup-expand-max: 6 !default;
     @else {
       width: auto;
     }
-
-    &:not(:last-child) {
-      margin-#{$global-right}: $buttongroup-spacing;
-    }
+    margin-bottom: 0;
   }
 }
 
@@ -195,7 +189,7 @@ $buttongroup-expand-max: 6 !default;
 
         #{$buttongroup-child-selector} {
           display: block;
-          margin-right: 0;
+          margin-#{$global-right}: 0;
         }
       }
     }
