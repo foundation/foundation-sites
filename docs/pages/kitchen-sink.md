@@ -416,10 +416,10 @@ description: Everything but.
 
 ---
 
-## Flex Video
+## Responsive Embed
 
 ```html_example
-<div class="flex-video">
+<div class="responsive-embed">
   <iframe width="420" height="315" src="https://www.youtube.com/embed/V9gkYw35Vws" frameborder="0" allowfullscreen></iframe>
 </div>
 ```
