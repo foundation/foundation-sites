@@ -29,7 +29,7 @@ class Abide {
    * @private
    */
   _init() {
-    this.$inputs = this.$element.find('input, textarea, select').not('[data-abide-ignore]');
+    this.$inputs = this.$element.find('input, textarea, select');
 
     this._events();
   }
@@ -241,6 +241,11 @@ class Abide {
         customValidator = true,
         validator = $el.attr('data-validator'),
         equalTo = true;
+
+    // don't validate ignored inputs or hidden inputs
+    if ($el.is('[data-abide-ignore]') || $el.is('[type="hidden"]')) {
+      return true;
+    }
 
     switch ($el[0].type) {
       case 'radio':
