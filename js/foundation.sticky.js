@@ -354,8 +354,9 @@ class Sticky {
                    'max-width': ''
                  })
                  .off('resizeme.zf.trigger');
-
-    this.$anchor.off('change.zf.sticky');
+    if (this.$anchor && this.$anchor.length) {
+      this.$anchor.off('change.zf.sticky');
+    }
     $(window).off(this.scrollListener);
 
     if (this.wasWrapped) {
