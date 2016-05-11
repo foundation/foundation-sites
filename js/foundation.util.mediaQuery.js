@@ -110,14 +110,14 @@ var MediaQuery = {
    */
   _watcher() {
     $(window).on('resize.zf.mediaquery', () => {
-      var newSize = this._getCurrentSize();
+      var newSize = this._getCurrentSize(), currentSize = this.current;
 
-      if (newSize !== this.current) {
-        // Broadcast the media query change on the window
-        $(window).trigger('changed.zf.mediaquery', [newSize, this.current]);
-
+      if (newSize !== currentSize) {
         // Change the current media query
         this.current = newSize;
+
+        // Broadcast the media query change on the window
+        $(window).trigger('changed.zf.mediaquery', [newSize, currentSize]);
       }
     });
   }
