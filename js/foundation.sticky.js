@@ -66,30 +66,26 @@ class Sticky {
    * @private
    */
   _parsePoints() {
-    var top = this.options.topAnchor,
-        btm = this.options.btmAnchor,
+    var top = this.options.topAnchor == "" ? 1 : this.options.topAnchor,
+        btm = this.options.btmAnchor== "" ? document.documentElement.scrollHeight : this.options.btmAnchor,
         pts = [top, btm],
         breaks = {};
-    if (top && btm) {
+    for (var i = 0, len = pts.length; i < len && pts[i]; i++) {
+      var pt;
+      if (typeof pts[i] === 'number') {
+        pt = pts[i];
+      } else {
+        var place = pts[i].split(':'),
+            anchor = $(`#${place[0]}`);
 
-      for (var i = 0, len = pts.length; i < len && pts[i]; i++) {
-        var pt;
-        if (typeof pts[i] === 'number') {
-          pt = pts[i];
-        } else {
-          var place = pts[i].split(':'),
-              anchor = $(`#${place[0]}`);
-
-          pt = anchor.offset().top;
-          if (place[1] && place[1].toLowerCase() === 'bottom') {
-            pt += anchor[0].getBoundingClientRect().height;
-          }
+        pt = anchor.offset().top;
+        if (place[1] && place[1].toLowerCase() === 'bottom') {
+          pt += anchor[0].getBoundingClientRect().height;
         }
-        breaks[i] = pt;
       }
-    } else {
-      breaks = {0: 1, 1: document.documentElement.scrollHeight};
+      breaks[i] = pt;
     }
+
 
     this.points = breaks;
     return;
