@@ -221,7 +221,7 @@ To attach extra text or controls to the left or right of an input field, wrap th
 - `.input-group-button` on a button. **Place the button inside this wrapper.**
 
 <div class="primary callout">
-  <p>This component supports flexbox mode. <a href="#">Learn how to enable flexbox mode</a>.</p>
+  <p>This component supports flexbox mode. <a href="flexbox.html">Learn how to enable flexbox mode</a>.</p>
 </div>
 
 ```html_example

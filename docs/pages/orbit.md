@@ -156,7 +156,13 @@ A carousel slide can contain images or HTML&mdash;you can even mix between slide
 
 ## Using Animation
 
-Orbit uses [Motion UI](motion-ui.html) CSS classes to animate slides around. There are four plugin options you can set to change the default effects:
+Orbit uses [Motion UI](motion-ui.html) CSS classes to animate slides around.
+
+<div class="callout warning">
+  <p>Without the inclusion of the `motion-ui` [Motion UI](motion-ui.html) CSS file in your template, Orbit slider fails to work properly. </p>
+</div>
+
+There are four plugin options you can set to change the default effects:
 
 - `data-anim-in-from-left`: transition to play when a slide comes *in from the left*.
 - `data-anim-in-from-right`: transition to play when a slide comes *in from the right*.
