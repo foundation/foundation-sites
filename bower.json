@@ -22,7 +22,8 @@
     ".npm",
     ".gitignore",
     ".npmignore",
-    ".versions"
+    ".versions",
+    ".babelrc"
   ],
   "dependencies": {
     "jquery": "~2.2.0",
