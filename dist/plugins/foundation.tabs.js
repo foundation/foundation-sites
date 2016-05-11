@@ -107,9 +107,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       value: function _events() {
         this._addKeyHandler();
         this._addClickHandler();
+        this._setHeightMqHandler = null;
 
         if (this.options.matchHeight) {
-          $(window).on('changed.zf.mediaquery', this._setHeight.bind(this));
+          this._setHeightMqHandler = this._setHeight.bind(this);
+
+          $(window).on('changed.zf.mediaquery', this._setHeightMqHandler);
         }
       }
 
@@ -147,8 +150,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         this.$tabTitles.off('keydown.zf.tabs').on('keydown.zf.tabs', function (e) {
           if (e.which === 9) return;
-          e.stopPropagation();
-          e.preventDefault();
 
           var $element = $(this),
               $elements = $element.parent('ul').children('li'),
@@ -181,6 +182,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             next: function () {
               $nextElement.find('[role="tab"]').focus();
               _this._handleTabChange($nextElement);
+            },
+            handled: function () {
+              e.stopPropagation();
+              e.preventDefault();
             }
           });
         });
@@ -285,7 +290,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.$element.find('.' + this.options.linkClass).off('.zf.tabs').hide().end().find('.' + this.options.panelClass).hide();
 
         if (this.options.matchHeight) {
-          $(window).off('changed.zf.mediaquery');
+          if (this._setHeightMqHandler != null) {
+            $(window).off('changed.zf.mediaquery', this._setHeightMqHandler);
+          }
         }
 
         Foundation.unregisterPlugin(this);

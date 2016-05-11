@@ -2,7 +2,7 @@
 
   "use strict";
 
-  var FOUNDATION_VERSION = '6.2.1';
+  var FOUNDATION_VERSION = '6.2.2-rc1';
 
   // Global Foundation object
   // This is attached to the window, or used as a module for AMD/Browserify
@@ -44,7 +44,7 @@
      * @function
      * Populates the _uuids array with pointers to each individual plugin instance.
      * Adds the `zfPlugin` data-attribute to programmatically created plugins to allow use of $(selector).foundation(method) calls.
-     * Also fires the initialization event for each plugin, consolidating repeditive code.
+     * Also fires the initialization event for each plugin, consolidating repetitive code.
      * @param {Object} plugin - an instance of a plugin, usually `this` in context.
      * @param {String} name - the name of the plugin, passed as a camelCased string.
      * @fires Plugin#init
@@ -73,7 +73,7 @@
      * @function
      * Removes the plugins uuid from the _uuids array.
      * Removes the zfPlugin data attribute, as well as the data-plugin-name attribute.
-     * Also fires the destroyed event for the plugin, consolidating repeditive code.
+     * Also fires the destroyed event for the plugin, consolidating repetitive code.
      * @param {Object} plugin - an instance of a plugin, usually `this` in context.
      * @fires Plugin#destroyed
      */
@@ -417,7 +417,7 @@
       bottom = eleDims.offset.top + eleDims.height <= parDims.height + parDims.offset.top;
       top = eleDims.offset.top >= parDims.offset.top;
       left = eleDims.offset.left >= parDims.offset.left;
-      right = eleDims.offset.left + eleDims.width <= parDims.width;
+      right = eleDims.offset.left + eleDims.width <= parDims.width + parDims.offset.left;
     } else {
       bottom = eleDims.offset.top + eleDims.height <= eleDims.windowDims.height + eleDims.windowDims.offset.top;
       top = eleDims.offset.top >= eleDims.windowDims.offset.top;
@@ -650,15 +650,15 @@
       fn = functions[command];
       if (fn && typeof fn === 'function') {
         // execute function  if exists
-        fn.apply();
+        var returnValue = fn.apply();
         if (functions.handled || typeof functions.handled === 'function') {
           // execute function when event was handled
-          functions.handled.apply();
+          functions.handled(returnValue);
         }
       } else {
         if (functions.unhandled || typeof functions.unhandled === 'function') {
           // execute function when event was not handled
-          functions.unhandled.apply();
+          functions.unhandled();
         }
       }
     },
@@ -733,10 +733,12 @@
       namedQueries = parseStyleToObject(extractedStyles);
 
       for (var key in namedQueries) {
-        self.queries.push({
-          name: key,
-          value: 'only screen and (min-width: ' + namedQueries[key] + ')'
-        });
+        if (namedQueries.hasOwnProperty(key)) {
+          self.queries.push({
+            name: key,
+            value: 'only screen and (min-width: ' + namedQueries[key] + ')'
+          });
+        }
       }
 
       this.current = this._getCurrentSize();
@@ -770,8 +772,10 @@
      */
     get: function (size) {
       for (var i in this.queries) {
-        var query = this.queries[i];
-        if (size === query.name) return query.value;
+        if (this.queries.hasOwnProperty(i)) {
+          var query = this.queries[i];
+          if (size === query.name) return query.value;
+        }
       }
 
       return null;
@@ -812,14 +816,15 @@
       var _this = this;
 
       $(window).on('resize.zf.mediaquery', function () {
-        var newSize = _this._getCurrentSize();
+        var newSize = _this._getCurrentSize(),
+            currentSize = _this.current;
 
-        if (newSize !== _this.current) {
-          // Broadcast the media query change on the window
-          $(window).trigger('changed.zf.mediaquery', [newSize, _this.current]);
-
+        if (newSize !== currentSize) {
           // Change the current media query
           _this.current = newSize;
+
+          // Broadcast the media query change on the window
+          $(window).trigger('changed.zf.mediaquery', [newSize, currentSize]);
         }
       });
     }
@@ -1268,7 +1273,7 @@
 			    simulatedEvent;
 
 			if ('MouseEvent' in window && typeof window.MouseEvent === 'function') {
-				simulatedEvent = window.MouseEvent(type, {
+				simulatedEvent = new window.MouseEvent(type, {
 					'bubbles': true,
 					'cancelable': true,
 					'screenX': first.screenX,
@@ -1803,7 +1808,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     _createClass(Abide, [{
       key: '_init',
       value: function _init() {
-        this.$inputs = this.$element.find('input, textarea, select').not('[data-abide-ignore]');
+        this.$inputs = this.$element.find('input, textarea, select');
 
         this._events();
       }
@@ -1862,6 +1867,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         var isGood = true;
 
         switch ($el[0].type) {
+          case 'checkbox':
+            isGood = $el[0].checked;
+            break;
+
           case 'select':
           case 'select-one':
           case 'select-multiple':
@@ -2038,6 +2047,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             validator = $el.attr('data-validator'),
             equalTo = true;
 
+        // don't validate ignored inputs or hidden inputs
+        if ($el.is('[data-abide-ignore]') || $el.is('[type="hidden"]')) {
+          return true;
+        }
+
         switch ($el[0].type) {
           case 'radio':
             validated = this.validateRadio($el.attr('name'));
@@ -2213,7 +2227,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         $('.' + opts.inputErrorClass, $form).not('small').removeClass(opts.inputErrorClass);
         $(opts.formErrorSelector + '.' + opts.formErrorClass).removeClass(opts.formErrorClass);
         $form.find('[data-abide-error]').css('display', 'none');
-        $(':input', $form).not(':button, :submit, :reset, :hidden, [data-abide-ignore]').val('').removeAttr('data-invalid');
+        $(':input', $form).not(':button, :submit, :reset, :hidden, :radio, :checkbox, [data-abide-ignore]').val('').removeAttr('data-invalid');
+        $(':input:radio', $form).not('[data-abide-ignore]').prop('checked', false).removeAttr('data-invalid');
+        $(':input:checkbox', $form).not('[data-abide-ignore]').prop('checked', false).removeAttr('data-invalid');
         /**
          * Fires when the form has been reset.
          * @event Abide#formreset
@@ -2570,7 +2586,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: 'destroy',
       value: function destroy() {
-        this.$element.find('[data-tab-content]').slideUp(0).css('display', '');
+        this.$element.find('[data-tab-content]').stop(true).slideUp(0).css('display', '');
         this.$element.find('a').off('.zf.accordion');
 
         Foundation.unregisterPlugin(this);
@@ -2768,11 +2784,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             },
             up: function () {
               $prevElement.attr('tabindex', -1).focus();
-              e.preventDefault();
+              return true;
             },
             down: function () {
               $nextElement.attr('tabindex', -1).focus();
-              e.preventDefault();
+              return true;
             },
             toggle: function () {
               if ($element.children('[data-submenu]').length) {
@@ -2782,7 +2798,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             closeAll: function () {
               _this.hideAll();
             },
-            handled: function () {
+            handled: function (preventDefault) {
+              if (preventDefault) {
+                e.preventDefault();
+              }
               e.stopImmediatePropagation();
             }
           });
@@ -2835,15 +2854,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         $target.addClass('is-active').attr({ 'aria-hidden': false }).parent('.is-accordion-submenu-parent').attr({ 'aria-expanded': true });
 
-        Foundation.Move(this.options.slideSpeed, $target, function () {
-          $target.slideDown(_this.options.slideSpeed, function () {
-            /**
-             * Fires when the menu is done opening.
-             * @event AccordionMenu#down
-             */
-            _this.$element.trigger('down.zf.accordionMenu', [$target]);
-          });
+        //Foundation.Move(this.options.slideSpeed, $target, function() {
+        $target.slideDown(_this.options.slideSpeed, function () {
+          /**
+           * Fires when the menu is done opening.
+           * @event AccordionMenu#down
+           */
+          _this.$element.trigger('down.zf.accordionMenu', [$target]);
         });
+        //});
       }
 
       /**
@@ -2856,15 +2875,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       key: 'up',
       value: function up($target) {
         var _this = this;
-        Foundation.Move(this.options.slideSpeed, $target, function () {
-          $target.slideUp(_this.options.slideSpeed, function () {
-            /**
-             * Fires when the menu is done collapsing up.
-             * @event AccordionMenu#up
-             */
-            _this.$element.trigger('up.zf.accordionMenu', [$target]);
-          });
+        //Foundation.Move(this.options.slideSpeed, $target, function(){
+        $target.slideUp(_this.options.slideSpeed, function () {
+          /**
+           * Fires when the menu is done collapsing up.
+           * @event AccordionMenu#up
+           */
+          _this.$element.trigger('up.zf.accordionMenu', [$target]);
         });
+        //});
 
         var $menus = $target.find('[data-submenu]').slideUp(0).addBack().attr('aria-hidden', true);
 
@@ -2990,18 +3009,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         //   this._menuLinkEvents();
         // }
         this.$submenuAnchors.each(function () {
-          var $sub = $(this);
-          var $link = $sub.find('a:first');
+          var $link = $(this);
+          var $sub = $link.parent();
           if (_this.options.parentLink) {
             $link.clone().prependTo($sub.children('[data-submenu]')).wrap('<li class="is-submenu-parent-item is-submenu-item is-drilldown-submenu-item" role="menu-item"></li>');
           }
           $link.data('savedHref', $link.attr('href')).removeAttr('href');
-          $sub.children('[data-submenu]').attr({
+          $link.children('[data-submenu]').attr({
             'aria-hidden': true,
             'tabindex': 0,
             'role': 'menu'
           });
-          _this._events($sub);
+          _this._events($link);
         });
         this.$submenus.each(function () {
           var $menu = $(this),
@@ -3012,8 +3031,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           _this._back($menu);
         });
         if (!this.$element.parent().hasClass('is-drilldown')) {
-          this.$wrapper = $(this.options.wrapper).addClass('is-drilldown').css(this._getMaxDims());
-          this.$element.wrap(this.$wrapper);
+          this.$wrapper = $(this.options.wrapper).addClass('is-drilldown');
+          this.$wrapper = this.$element.wrap(this.$wrapper).parent().css(this._getMaxDims());
         }
       }
 
@@ -3041,8 +3060,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           _this._show($elem.parent('li'));
 
           if (_this.options.closeOnClick) {
-            var $body = $('body').not(_this.$wrapper);
+            var $body = $('body');
             $body.off('.zf.drilldown').on('click.zf.drilldown', function (e) {
+              if (e.target === _this.$element[0] || $.contains(_this.$element[0], e.target)) {
+                return;
+              }
               e.preventDefault();
               _this._hideAll();
               $body.off('.zf.drilldown');
@@ -3083,7 +3105,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 $element.parent('li').one(Foundation.transitionend($element), function () {
                   $element.parent('li').find('ul li a').filter(_this.$menuItems).first().focus();
                 });
-                e.preventDefault();
+                return true;
               }
             },
             previous: function () {
@@ -3093,15 +3115,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   $element.parent('li').parent('ul').parent('li').children('a').first().focus();
                 }, 1);
               });
-              e.preventDefault();
+              return true;
             },
             up: function () {
               $prevElement.focus();
-              e.preventDefault();
+              return true;
             },
             down: function () {
               $nextElement.focus();
-              e.preventDefault();
+              return true;
             },
             close: function () {
               _this._back();
@@ -3116,16 +3138,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     $element.parent('li').parent('ul').parent('li').children('a').first().focus();
                   }, 1);
                 });
-                e.preventDefault();
               } else if ($element.is(_this.$submenuAnchors)) {
                 _this._show($element.parent('li'));
                 $element.parent('li').one(Foundation.transitionend($element), function () {
                   $element.parent('li').find('ul li a').filter(_this.$menuItems).first().focus();
                 });
+              }
+              return true;
+            },
+            handled: function (preventDefault) {
+              if (preventDefault) {
                 e.preventDefault();
               }
-            },
-            handled: function () {
               e.stopImmediatePropagation();
             }
           });
@@ -3200,7 +3224,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       key: '_show',
       value: function _show($elem) {
         $elem.children('[data-submenu]').addClass('is-active');
-
+        /**
+         * Fires when the submenu has opened.
+         * @event Drilldown#open
+         */
         this.$element.trigger('open.zf.drilldown', [$elem]);
       }
     }, {
@@ -3220,7 +3247,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           $elem.blur();
         });
         /**
-         * Fires when the submenu is has closed.
+         * Fires when the submenu has closed.
          * @event Drilldown#hide
          */
         $elem.trigger('hide.zf.drilldown', [$elem]);
@@ -3259,7 +3286,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       value: function destroy() {
         this._hideAll();
         Foundation.Nest.Burn(this.$element, 'drilldown');
-        this.$element.unwrap().find('.js-drilldown-back, .is-submenu-parent-item').remove().end().find('.is-active, .is-closing, .is-drilldown-submenu').removeClass('is-active is-closing is-drilldown-submenu').end().find('[data-submenu]').removeAttr('aria-hidden tabindex role').off('.zf.drilldown').end().off('zf.drilldown');
+        this.$element.unwrap().find('.js-drilldown-back, .is-submenu-parent-item').remove().end().find('.is-active, .is-closing, .is-drilldown-submenu').removeClass('is-active is-closing is-drilldown-submenu').end().find('[data-submenu]').removeAttr('aria-hidden tabindex role');
+        this.$submenuAnchors.each(function () {
+          $(this).off('.zf.drilldown');
+        });
         this.$element.find('a').each(function () {
           var $link = $(this);
           if ($link.data('savedHref')) {
@@ -3393,7 +3423,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       value: function getPositionClass() {
         var verticalPosition = this.$element[0].className.match(/(top|left|right|bottom)/g);
         verticalPosition = verticalPosition ? verticalPosition[0] : '';
-        var horizontalPosition = /float-(.+)\s/.exec(this.$anchor[0].className);
+        var horizontalPosition = /float-(\S+)\s/.exec(this.$anchor[0].className);
         horizontalPosition = horizontalPosition ? horizontalPosition[1] : '';
         var position = horizontalPosition ? horizontalPosition + ' ' + verticalPosition : verticalPosition;
         return position;
@@ -3838,37 +3868,39 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             hasTouch = 'ontouchstart' in window || typeof window.ontouchstart !== 'undefined',
             parClass = 'is-dropdown-submenu-parent';
 
-        if (this.options.clickOpen || hasTouch) {
-          this.$menuItems.on('click.zf.dropdownmenu touchstart.zf.dropdownmenu', function (e) {
-            var $elem = $(e.target).parentsUntil('ul', '.' + parClass),
-                hasSub = $elem.hasClass(parClass),
-                hasClicked = $elem.attr('data-is-click') === 'true',
-                $sub = $elem.children('.is-dropdown-submenu');
+        // used for onClick and in the keyboard handlers
+        var handleClickFn = function (e) {
+          var $elem = $(e.target).parentsUntil('ul', '.' + parClass),
+              hasSub = $elem.hasClass(parClass),
+              hasClicked = $elem.attr('data-is-click') === 'true',
+              $sub = $elem.children('.is-dropdown-submenu');
 
-            if (hasSub) {
-              if (hasClicked) {
-                if (!_this.options.closeOnClick || !_this.options.clickOpen && !hasTouch || _this.options.forceFollow && hasTouch) {
-                  return;
-                } else {
-                  e.stopImmediatePropagation();
-                  e.preventDefault();
-                  _this._hide($elem);
-                }
+          if (hasSub) {
+            if (hasClicked) {
+              if (!_this.options.closeOnClick || !_this.options.clickOpen && !hasTouch || _this.options.forceFollow && hasTouch) {
+                return;
               } else {
-                e.preventDefault();
                 e.stopImmediatePropagation();
-                _this._show($elem.children('.is-dropdown-submenu'));
-                $elem.add($elem.parentsUntil(_this.$element, '.' + parClass)).attr('data-is-click', true);
+                e.preventDefault();
+                _this._hide($elem);
               }
             } else {
-              return;
+              e.preventDefault();
+              e.stopImmediatePropagation();
+              _this._show($elem.children('.is-dropdown-submenu'));
+              $elem.add($elem.parentsUntil(_this.$element, '.' + parClass)).attr('data-is-click', true);
             }
-          });
+          } else {
+            return;
+          }
+        };
+
+        if (this.options.clickOpen || hasTouch) {
+          this.$menuItems.on('click.zf.dropdownmenu touchstart.zf.dropdownmenu', handleClickFn);
         }
 
         if (!this.options.disableHover) {
           this.$menuItems.on('mouseenter.zf.dropdownmenu', function (e) {
-            e.stopImmediatePropagation();
             var $elem = $(this),
                 hasSub = $elem.hasClass(parClass);
 
@@ -3909,16 +3941,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           });
 
           var nextSibling = function () {
-            if (!$element.is(':last-child')) $nextElement.children('a:first').focus();
+            if (!$element.is(':last-child')) {
+              $nextElement.children('a:first').focus();
+              e.preventDefault();
+            }
           },
               prevSibling = function () {
             $prevElement.children('a:first').focus();
+            e.preventDefault();
           },
               openSub = function () {
             var $sub = $element.children('ul.is-dropdown-submenu');
             if ($sub.length) {
               _this._show($sub);
               $element.find('li > a:first').focus();
+              e.preventDefault();
             } else {
               return;
             }
@@ -3928,6 +3965,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             var close = $element.parent('ul').parent('li');
             close.children('a:first').focus();
             _this._hide(close);
+            e.preventDefault();
             //}
           };
           var functions = {
@@ -3935,15 +3973,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             close: function () {
               _this._hide(_this.$element);
               _this.$menuItems.find('a:first').focus(); // focus to first element
+              e.preventDefault();
             },
             handled: function () {
-              e.preventDefault();
               e.stopImmediatePropagation();
             }
           };
 
           if (isTab) {
-            if (_this.vertical) {
+            if (_this.$element.hasClass(_this.options.verticalClass)) {
               // vertical menu
               if (_this.options.alignment === 'left') {
                 // left aligned
@@ -4243,6 +4281,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.hasNested = this.$element.find('[data-equalizer]').length > 0;
         this.isNested = this.$element.parentsUntil(document.body, '[data-equalizer]').length > 0;
         this.isOn = false;
+        this._bindHandler = {
+          onResizeMeBound: this._onResizeMe.bind(this),
+          onPostEqualizedBound: this._onPostEqualized.bind(this)
+        };
 
         var imgs = this.$element.find('img');
         var tooSmall;
@@ -4270,7 +4312,34 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       key: '_pauseEvents',
       value: function _pauseEvents() {
         this.isOn = false;
-        this.$element.off('.zf.equalizer resizeme.zf.trigger');
+        this.$element.off({
+          '.zf.equalizer': this._bindHandler.onPostEqualizedBound,
+          'resizeme.zf.trigger': this._bindHandler.onResizeMeBound
+        });
+      }
+
+      /**
+       * function to handle $elements resizeme.zf.trigger, with bound this on _bindHandler.onResizeMeBound
+       * @private
+       */
+
+    }, {
+      key: '_onResizeMe',
+      value: function _onResizeMe(e) {
+        this._reflow();
+      }
+
+      /**
+       * function to handle $elements postequalized.zf.equalizer, with bound this on _bindHandler.onPostEqualizedBound
+       * @private
+       */
+
+    }, {
+      key: '_onPostEqualized',
+      value: function _onPostEqualized(e) {
+        if (e.target !== this.$element[0]) {
+          this._reflow();
+        }
       }
 
       /**
@@ -4284,13 +4353,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         var _this = this;
         this._pauseEvents();
         if (this.hasNested) {
-          this.$element.on('postequalized.zf.equalizer', function (e) {
-            if (e.target !== _this.$element[0]) {
-              _this._reflow();
-            }
-          });
+          this.$element.on('postequalized.zf.equalizer', this._bindHandler.onPostEqualizedBound);
         } else {
-          this.$element.on('resizeme.zf.trigger', this._reflow.bind(this));
+          this.$element.on('resizeme.zf.trigger', this._bindHandler.onResizeMeBound);
         }
         this.isOn = true;
       }
@@ -4357,7 +4422,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: '_isStacked',
       value: function _isStacked() {
-        return this.$watched[0].offsetTop !== this.$watched[1].offsetTop;
+        return this.$watched[0].getBoundingClientRect().top !== this.$watched[1].getBoundingClientRect().top;
       }
 
       /**
@@ -4607,10 +4672,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         // Iterate through each rule, but only save the last match
         for (var i in this.rules) {
-          var rule = this.rules[i];
+          if (this.rules.hasOwnProperty(i)) {
+            var rule = this.rules[i];
 
-          if (window.matchMedia(rule.query).matches) {
-            match = rule;
+            if (window.matchMedia(rule.query).matches) {
+              match = rule;
+            }
           }
         }
 
@@ -4629,8 +4696,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       key: '_addBreakpoints',
       value: function _addBreakpoints() {
         for (var i in Foundation.MediaQuery.queries) {
-          var query = Foundation.MediaQuery.queries[i];
-          Interchange.SPECIAL_QUERIES[query.name] = query.value;
+          if (Foundation.MediaQuery.queries.hasOwnProperty(i)) {
+            var query = Foundation.MediaQuery.queries[i];
+            Interchange.SPECIAL_QUERIES[query.name] = query.value;
+          }
         }
       }
 
@@ -4655,18 +4724,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
 
         for (var i in rules) {
-          var rule = rules[i].slice(1, -1).split(', ');
-          var path = rule.slice(0, -1).join('');
-          var query = rule[rule.length - 1];
+          if (rules.hasOwnProperty(i)) {
+            var rule = rules[i].slice(1, -1).split(', ');
+            var path = rule.slice(0, -1).join('');
+            var query = rule[rule.length - 1];
 
-          if (Interchange.SPECIAL_QUERIES[query]) {
-            query = Interchange.SPECIAL_QUERIES[query];
+            if (Interchange.SPECIAL_QUERIES[query]) {
+              query = Interchange.SPECIAL_QUERIES[query];
+            }
+
+            rulesList.push({
+              path: path,
+              query: query
+            });
           }
-
-          rulesList.push({
-            path: path,
-            query: query
-          });
         }
 
         this.rules = rulesList;
@@ -4913,7 +4984,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var isDown = this.scrollPos < winPos,
               _this = this,
               curVisible = this.points.filter(function (p, i) {
-            return isDown ? p <= winPos : p - _this.options.threshold <= winPos; //&& winPos >= _this.points[i -1] - _this.options.threshold;
+            return isDown ? p - _this.options.barOffset <= winPos : p - _this.options.barOffset - _this.options.threshold <= winPos;
           });
           curIdx = curVisible.length ? curVisible.length - 1 : 0;
         }
@@ -5038,6 +5109,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       this.$element = element;
       this.options = $.extend({}, OffCanvas.defaults, this.$element.data(), options);
       this.$lastTrigger = $();
+      this.$triggers = $();
 
       this._init();
       this._events();
@@ -5060,7 +5132,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.$element.attr('aria-hidden', 'true');
 
         // Find triggers that affect this element and add aria-expanded to them
-        $(document).find('[data-open="' + id + '"], [data-close="' + id + '"], [data-toggle="' + id + '"]').attr('aria-expanded', 'false').attr('aria-controls', id);
+        this.$triggers = $(document).find('[data-open="' + id + '"], [data-close="' + id + '"], [data-toggle="' + id + '"]').attr('aria-expanded', 'false').attr('aria-controls', id);
 
         // Add a close trigger over the body if necessary
         if (this.options.closeOnClick) {
@@ -5210,6 +5282,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           //   _this._stick();
           // }
         });
+
+        this.$triggers.attr('aria-expanded', 'true');
         this.$element.attr('aria-hidden', 'false').trigger('opened.zf.offcanvas');
 
         if (this.options.closeOnClick) {
@@ -5217,7 +5291,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
 
         if (trigger) {
-          this.$lastTrigger = trigger.attr('aria-expanded', 'true');
+          this.$lastTrigger = trigger;
         }
 
         if (this.options.autoFocus) {
@@ -5314,7 +5388,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.$exiter.removeClass('is-visible');
         }
 
-        this.$lastTrigger.attr('aria-expanded', 'false');
+        this.$triggers.attr('aria-expanded', 'false');
         if (this.options.trapFocus) {
           $('[data-off-canvas-content]').removeAttr('tabindex');
         }
@@ -6164,7 +6238,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       value: function _events() {
         var _this = this;
 
-        $(window).on('changed.zf.mediaquery', this._update.bind(this));
+        this._updateMqHandler = this._update.bind(this);
+
+        $(window).on('changed.zf.mediaquery', this._updateMqHandler);
 
         this.$toggler.on('click.zf.responsiveToggle', this.toggleMenu.bind(this));
       }
@@ -6213,7 +6289,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: 'destroy',
       value: function destroy() {
-        //TODO this...
+        this.$element.off('.zf.responsiveToggle');
+        this.$toggler.off('.zf.responsiveToggle');
+
+        $(window).off('changed.zf.mediaquery', this._updateMqHandler);
+
+        Foundation.unregisterPlugin(this);
       }
     }]);
 
@@ -6294,18 +6375,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
 
         this.$anchor = $('[data-open="' + this.id + '"]').length ? $('[data-open="' + this.id + '"]') : $('[data-toggle="' + this.id + '"]');
-
-        if (this.$anchor.length) {
-          var anchorId = this.$anchor[0].id || Foundation.GetYoDigits(6, 'reveal');
-
-          this.$anchor.attr({
-            'aria-controls': this.id,
-            'id': anchorId,
-            'aria-haspopup': true,
-            'tabindex': 0
-          });
-          this.$element.attr({ 'aria-labelledby': anchorId });
-        }
+        this.$anchor.attr({
+          'aria-controls': this.id,
+          'aria-haspopup': true,
+          'tabindex': 0
+        });
 
         if (this.options.fullScreen || this.$element.hasClass('full')) {
           this.options.fullScreen = true;
@@ -6342,7 +6416,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: '_makeOverlay',
       value: function _makeOverlay(id) {
-        var $overlay = $('<div></div>').addClass('reveal-overlay').attr({ 'tabindex': -1, 'aria-hidden': true }).appendTo('body');
+        var $overlay = $('<div></div>').addClass('reveal-overlay').appendTo('body');
         return $overlay;
       }
 
@@ -6391,11 +6465,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: '_events',
       value: function _events() {
+        var _this2 = this;
+
         var _this = this;
 
         this.$element.on({
           'open.zf.trigger': this.open.bind(this),
-          'close.zf.trigger': this.close.bind(this),
+          'close.zf.trigger': function (event, $element) {
+            if ($(event.target).parents('[data-closable]')[0] === $element) {
+              // only close reveal when it's explicitly called
+              return _this2.close.apply(_this2);
+            }
+          },
           'toggle.zf.trigger': this.toggle.bind(this),
           'resizeme.zf.trigger': function () {
             _this._updatePosition();
@@ -6450,7 +6531,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: 'open',
       value: function open() {
-        var _this2 = this;
+        var _this3 = this;
 
         if (this.options.deepLink) {
           var hash = '#' + this.id;
@@ -6476,6 +6557,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         if (this.$overlay) {
           this.$overlay.css({ 'visibility': '' }).hide();
+          if (this.$element.hasClass('fast')) {
+            this.$overlay.addClass('fast');
+          } else if (this.$element.hasClass('slow')) {
+            this.$overlay.addClass('slow');
+          }
         }
 
         if (!this.options.multipleOpened) {
@@ -6486,15 +6572,29 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
            */
           this.$element.trigger('closeme.zf.reveal', this.id);
         }
-
         // Motion UI method of reveal
         if (this.options.animationIn) {
-          if (this.options.overlay) {
-            Foundation.Motion.animateIn(this.$overlay, 'fade-in');
-          }
-          Foundation.Motion.animateIn(this.$element, this.options.animationIn, function () {
-            _this2.focusableElements = Foundation.Keyboard.findFocusable(_this2.$element);
-          });
+          var _this;
+
+          (function () {
+            var afterAnimationFocus = function () {
+              _this.$element.attr({
+                'aria-hidden': false,
+                'tabindex': -1
+              }).focus();
+              console.log('focus');
+            };
+
+            _this = _this3;
+
+            if (_this3.options.overlay) {
+              Foundation.Motion.animateIn(_this3.$overlay, 'fade-in');
+            }
+            Foundation.Motion.animateIn(_this3.$element, _this3.options.animationIn, function () {
+              _this3.focusableElements = Foundation.Keyboard.findFocusable(_this3.$element);
+              afterAnimationFocus();
+            });
+          })();
         }
         // jQuery method of reveal
         else {
@@ -6523,10 +6623,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           $('body').addClass('is-reveal-open');
         }
 
-        $('body').addClass('is-reveal-open').attr('aria-hidden', this.options.overlay || this.options.fullScreen ? true : false);
+        $('body').addClass('is-reveal-open');
 
         setTimeout(function () {
-          _this2._extraHandlers();
+          _this3._extraHandlers();
         }, 0);
       }
 
@@ -6572,22 +6672,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               if (_this.$element.find(':focus').is(_this.focusableElements.eq(-1))) {
                 // left modal downwards, setting focus to first element
                 _this.focusableElements.eq(0).focus();
-                e.preventDefault();
+                return true;
               }
               if (_this.focusableElements.length === 0) {
                 // no focusable elements inside the modal at all, prevent tabbing in general
-                e.preventDefault();
+                return true;
               }
             },
             tab_backward: function () {
               if (_this.$element.find(':focus').is(_this.focusableElements.eq(0)) || _this.$element.is(':focus')) {
                 // left modal upwards, setting focus to last element
                 _this.focusableElements.eq(-1).focus();
-                e.preventDefault();
+                return true;
               }
               if (_this.focusableElements.length === 0) {
                 // no focusable elements inside the modal at all, prevent tabbing in general
-                e.preventDefault();
+                return true;
               }
             },
             open: function () {
@@ -6605,6 +6705,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               if (_this.options.closeOnEsc) {
                 _this.close();
                 _this.$anchor.focus();
+              }
+            },
+            handled: function (preventDefault) {
+              if (preventDefault) {
+                e.preventDefault();
               }
             }
           });
@@ -6663,11 +6768,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           } else {
             $('body').removeClass('is-reveal-open');
           }
-
-          $('body').attr({
-            'aria-hidden': false,
-            'tabindex': ''
-          });
 
           _this.$element.attr('aria-hidden', true);
 
@@ -6951,6 +7051,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: '_setHandlePos',
       value: function _setHandlePos($hndl, location, noInvert, cb) {
+        // don't move if the slider has been disabled since its initialization
+        if (this.$element.hasClass(this.options.disabledClass)) {
+          return;
+        }
         //might need to alter that slightly for bars that will have odd number selections.
         location = parseFloat(location); //on input change events, convert string to number...grumble.
 
@@ -7137,7 +7241,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               pageXY = vertical ? e.pageY : e.pageX,
               halfOfHandle = this.$handle[0].getBoundingClientRect()[param] / 2,
               barDim = this.$element[0].getBoundingClientRect()[param],
-              barOffset = this.$element.offset()[direction] - pageXY,
+
+          // touch events emulated by the touch util give position relative to screen, add window.scroll to event coordinates...
+          windowScroll = vertical ? $(window).scrollTop() : $(window).scrollLeft(),
+              barOffset = this.$element.offset()[direction] - (this.$element.offset()[direction] < pageXY ? pageXY : pageXY + windowScroll),
 
           //if the cursor position is less than or greater than the elements bounding coordinates, set coordinates within those bounds
           barXY = barOffset > 0 ? -halfOfHandle : barOffset - halfOfHandle < -barDim ? barDim : Math.abs(barOffset),
@@ -7210,10 +7317,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: '_events',
       value: function _events($handle) {
-        if (this.options.disabled) {
-          return false;
-        }
-
         var _this = this,
             curHandle,
             timer;
@@ -7263,6 +7366,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
               $body.off('mousemove.zf.slider mouseup.zf.slider');
             });
+          })
+          // prevent events triggered by touch
+          .on('selectstart.zf.slider touchmove.zf.slider', function (e) {
+            e.preventDefault();
           });
         }
 
@@ -7540,29 +7647,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: '_parsePoints',
       value: function _parsePoints() {
-        var top = this.options.topAnchor,
-            btm = this.options.btmAnchor,
+        var top = this.options.topAnchor == "" ? 1 : this.options.topAnchor,
+            btm = this.options.btmAnchor == "" ? document.documentElement.scrollHeight : this.options.btmAnchor,
             pts = [top, btm],
             breaks = {};
-        if (top && btm) {
+        for (var i = 0, len = pts.length; i < len && pts[i]; i++) {
+          var pt;
+          if (typeof pts[i] === 'number') {
+            pt = pts[i];
+          } else {
+            var place = pts[i].split(':'),
+                anchor = $('#' + place[0]);
 
-          for (var i = 0, len = pts.length; i < len && pts[i]; i++) {
-            var pt;
-            if (typeof pts[i] === 'number') {
-              pt = pts[i];
-            } else {
-              var place = pts[i].split(':'),
-                  anchor = $('#' + place[0]);
-
-              pt = anchor.offset().top;
-              if (place[1] && place[1].toLowerCase() === 'bottom') {
-                pt += anchor[0].getBoundingClientRect().height;
-              }
+            pt = anchor.offset().top;
+            if (place[1] && place[1].toLowerCase() === 'bottom') {
+              pt += anchor[0].getBoundingClientRect().height;
             }
-            breaks[i] = pt;
           }
-        } else {
-          breaks = { 0: 1, 1: document.documentElement.scrollHeight };
+          breaks[i] = pt;
         }
 
         this.points = breaks;
@@ -7685,7 +7787,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: '_setSticky',
       value: function _setSticky() {
-        var stickTo = this.options.stickTo,
+        var _this = this,
+            stickTo = this.options.stickTo,
             mrgn = stickTo === 'top' ? 'marginTop' : 'marginBottom',
             notStuckTo = stickTo === 'top' ? 'bottom' : 'top',
             css = {};
@@ -7702,6 +7805,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
          * @event Sticky#stuckto
          */
         .trigger('sticky.zf.stuckto:' + stickTo);
+        this.$element.on("transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd", function () {
+          _this._setSizes();
+        });
       }
 
       /**
@@ -7726,12 +7832,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         css[mrgn] = 0;
 
-        if (isTop && !stickToTop || stickToTop && !isTop) {
-          css[stickTo] = anchorPt;
-          css[notStuckTo] = 0;
+        css['bottom'] = 'auto';
+        if (isTop) {
+          css['top'] = 0;
         } else {
-          css[stickTo] = 0;
-          css[notStuckTo] = anchorPt;
+          css['top'] = anchorPt;
         }
 
         css['left'] = '';
@@ -7775,6 +7880,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         });
 
         var newContainerHeight = this.$element[0].getBoundingClientRect().height || this.containerHeight;
+        if (this.$element.css("display") == "none") {
+          newContainerHeight = 0;
+        }
         this.containerHeight = newContainerHeight;
         this.$container.css({
           height: newContainerHeight
@@ -7854,8 +7962,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           bottom: '',
           'max-width': ''
         }).off('resizeme.zf.trigger');
-
-        this.$anchor.off('change.zf.sticky');
+        if (this.$anchor && this.$anchor.length) {
+          this.$anchor.off('change.zf.sticky');
+        }
         $(window).off(this.scrollListener);
 
         if (this.wasWrapped) {
@@ -8061,9 +8170,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       value: function _events() {
         this._addKeyHandler();
         this._addClickHandler();
+        this._setHeightMqHandler = null;
 
         if (this.options.matchHeight) {
-          $(window).on('changed.zf.mediaquery', this._setHeight.bind(this));
+          this._setHeightMqHandler = this._setHeight.bind(this);
+
+          $(window).on('changed.zf.mediaquery', this._setHeightMqHandler);
         }
       }
 
@@ -8101,8 +8213,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         this.$tabTitles.off('keydown.zf.tabs').on('keydown.zf.tabs', function (e) {
           if (e.which === 9) return;
-          e.stopPropagation();
-          e.preventDefault();
 
           var $element = $(this),
               $elements = $element.parent('ul').children('li'),
@@ -8135,6 +8245,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             next: function () {
               $nextElement.find('[role="tab"]').focus();
               _this._handleTabChange($nextElement);
+            },
+            handled: function () {
+              e.stopPropagation();
+              e.preventDefault();
             }
           });
         });
@@ -8239,7 +8353,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.$element.find('.' + this.options.linkClass).off('.zf.tabs').hide().end().find('.' + this.options.panelClass).hide();
 
         if (this.options.matchHeight) {
-          $(window).off('changed.zf.mediaquery');
+          if (this._setHeightMqHandler != null) {
+            $(window).off('changed.zf.mediaquery', this._setHeightMqHandler);
+          }
         }
 
         Foundation.unregisterPlugin(this);
@@ -8507,7 +8623,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       value: function _init() {
         var elemId = this.$element.attr('aria-describedby') || Foundation.GetYoDigits(6, 'tooltip');
 
-        this.options.positionClass = this._getPositionClass(this.$element);
+        this.options.positionClass = this.options.positionClass || this._getPositionClass(this.$element);
         this.options.tipText = this.options.tipText || this.$element.attr('title');
         this.template = this.options.template ? $(this.options.template) : this._buildTemplate(elemId);
 
@@ -8734,7 +8850,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }
           }).on('mouseleave.zf.tooltip', function (e) {
             clearTimeout(_this.timeout);
-            if (!isFocus || !_this.isClick && _this.options.clickOpen) {
+            if (!isFocus || _this.isClick && !_this.options.clickOpen) {
               _this.hide();
             }
           });
@@ -8744,7 +8860,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.$element.on('mousedown.zf.tooltip', function (e) {
             e.stopImmediatePropagation();
             if (_this.isClick) {
-              _this.hide();
+              //_this.hide();
               // _this.isClick = false;
             } else {
                 _this.isClick = true;
@@ -8752,6 +8868,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   _this.show();
                 }
               }
+          });
+        } else {
+          this.$element.on('mousedown.zf.tooltip', function (e) {
+            e.stopImmediatePropagation();
+            _this.isClick = true;
           });
         }
 
@@ -8769,11 +8890,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         this.$element.on('focus.zf.tooltip', function (e) {
           isFocus = true;
-          // console.log(_this.isClick);
           if (_this.isClick) {
+            // If we're not showing open on clicks, we need to pretend a click-launched focus isn't
+            // a real focus, otherwise on hover and come back we get bad behavior
+            if (!_this.options.clickOpen) {
+              isFocus = false;
+            }
             return false;
           } else {
-            // $(window)
             _this.show();
           }
         }).on('focusout.zf.tooltip', function (e) {

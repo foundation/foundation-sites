@@ -42,7 +42,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     _createClass(Abide, [{
       key: '_init',
       value: function _init() {
-        this.$inputs = this.$element.find('input, textarea, select').not('[data-abide-ignore]');
+        this.$inputs = this.$element.find('input, textarea, select');
 
         this._events();
       }
@@ -101,6 +101,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         var isGood = true;
 
         switch ($el[0].type) {
+          case 'checkbox':
+            isGood = $el[0].checked;
+            break;
+
           case 'select':
           case 'select-one':
           case 'select-multiple':
@@ -277,6 +281,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             validator = $el.attr('data-validator'),
             equalTo = true;
 
+        // don't validate ignored inputs or hidden inputs
+        if ($el.is('[data-abide-ignore]') || $el.is('[type="hidden"]')) {
+          return true;
+        }
+
         switch ($el[0].type) {
           case 'radio':
             validated = this.validateRadio($el.attr('name'));
@@ -452,7 +461,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         $('.' + opts.inputErrorClass, $form).not('small').removeClass(opts.inputErrorClass);
         $(opts.formErrorSelector + '.' + opts.formErrorClass).removeClass(opts.formErrorClass);
         $form.find('[data-abide-error]').css('display', 'none');
-        $(':input', $form).not(':button, :submit, :reset, :hidden, [data-abide-ignore]').val('').removeAttr('data-invalid');
+        $(':input', $form).not(':button, :submit, :reset, :hidden, :radio, :checkbox, [data-abide-ignore]').val('').removeAttr('data-invalid');
+        $(':input:radio', $form).not('[data-abide-ignore]').prop('checked', false).removeAttr('data-invalid');
+        $(':input:checkbox', $form).not('[data-abide-ignore]').prop('checked', false).removeAttr('data-invalid');
         /**
          * Fires when the form has been reset.
          * @event Abide#formreset
