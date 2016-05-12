@@ -228,6 +228,15 @@ $menu-icon-spacing: 0.25rem !default;
     @include menu-base;
     @include menu-icons;
 
+    // Even-width
+    &.expanded {
+      @include menu-expand;
+
+      > li:first-child:last-child {
+        width: 100%;
+      }
+    }
+
     // Orientation
     @include menu-direction(horizontal);
 
@@ -265,15 +274,6 @@ $menu-icon-spacing: 0.25rem !default;
         > li {
           float: $global-right;
         }
-      }
-    }
-
-    // Even-width
-    &.expanded {
-      @include menu-expand;
-
-      > li:first-child:last-child {
-        width: 100%;
       }
     }
 
