@@ -73,13 +73,14 @@ Any `<a>` without a submenu will function like a normal link.
   <li><a href="#Item-4"> Item 4</a></li>
 </ul>
 
-## autoAdjustHeight
+## autoHeight
 
 <div class="secondary callout">
-  <p>If you like to set the height to auto you can also set the autoAdjustHeight and animateHeight params</p>
+  <p>If you like to set the height to auto you can also set the autoHeight and animateHeight params</p>
+  <button class="button expanded" onclick="$('#m3').foundation('destroy');if($('#m3').data('autoHeight')){$('#m3').data('autoHeight',false);$(this).html('autoHeight is Off');}else{$('#m3').data('autoHeight',true);$(this).html('autoHeight is On');}new Foundation.Drilldown($('#m3'));return false;">autoHeight is On</button>
 </div>
 
-<ul class="menu" data-drilldown data-auto-adjust-height="true" data-animate-height="true" style="width: 200px" id="m2">
+<ul class="menu" data-drilldown data-auto-height="true" data-animate-height="true" style="width: 200px" id="m3">
   <li>
     <a href="#">Item 1</a>
     <ul class="menu">

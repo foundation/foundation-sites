@@ -214,7 +214,7 @@ class Drilldown {
    */
   _hideAll() {
     var $elem = this.$element.find('.is-drilldown-submenu.is-active').addClass('is-closing');
-    if(this.options.autoAdjustHeight) this.$wrapper.css({height:$elem.parent().closest('ul').data('calcHeight')});
+    if(this.options.autoHeight) this.$wrapper.css({height:$elem.parent().closest('ul').data('calcHeight')});
     $elem.one(Foundation.transitionend($elem), function(e){
       $elem.removeClass('is-active is-closing');
     });
@@ -266,7 +266,7 @@ class Drilldown {
    * @param {jQuery} $elem - the current element with a submenu to open, i.e. the `li` tag.
    */
   _show($elem) {
-    if(this.options.autoAdjustHeight) this.$wrapper.css({height:$elem.children('[data-submenu]').data('calcHeight')});
+    if(this.options.autoHeight) this.$wrapper.css({height:$elem.children('[data-submenu]').data('calcHeight')});
     $elem.children('[data-submenu]').addClass('is-active');
     /**
      * Fires when the submenu has opened.
@@ -282,7 +282,7 @@ class Drilldown {
    * @param {jQuery} $elem - the current sub-menu to hide, i.e. the `ul` tag.
    */
   _hide($elem) {
-    if(this.options.autoAdjustHeight) this.$wrapper.css({height:$elem.parent().closest('ul').data('calcHeight')});
+    if(this.options.autoHeight) this.$wrapper.css({height:$elem.parent().closest('ul').data('calcHeight')});
     $elem.addClass('is-closing')
          .one(Foundation.transitionend($elem), function(){
            $elem.removeClass('is-active is-closing');
@@ -306,13 +306,13 @@ class Drilldown {
     this.$submenus.add(this.$element).each(function(){
       var numOfElems = $(this).children('li').length;
       max = numOfElems > max ? numOfElems : max;
-      if(_this.options.autoAdjustHeight) {
+      if(_this.options.autoHeight) {
         $(this).data('calcHeight',numOfElems * oneHeight);
         if (!$(this).hasClass('is-drilldown-submenu')) result['height'] = numOfElems * oneHeight;
       }
     });
 
-    if(!this.options.autoAdjustHeight) result['min-height'] = `${max * oneHeight}px`;
+    if(!this.options.autoHeight) result['min-height'] = `${max * oneHeight}px`;
 
     result['max-width'] = `${this.$element[0].getBoundingClientRect().width}px`;
 
@@ -367,7 +367,19 @@ Drilldown.defaults = {
    * @option
    * @example false
    */
-  closeOnClick: false
+  closeOnClick: false,
+  /**
+   * Allow the menu to auto adjust height.
+   * @option
+   * @example false
+   */
+  autoHeight: false,
+  /**
+   * Animate the auto adjust height.
+   * @option
+   * @example false
+   */
+  animateHeight: false
   // holdOpen: false
 };
 
