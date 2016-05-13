@@ -228,6 +228,9 @@ $menu-icon-spacing: 0.25rem !default;
     @include menu-base;
     @include menu-icons;
 
+    // Orientation
+    @include menu-direction(horizontal);
+
     // Even-width
     &.expanded {
       @include menu-expand;
@@ -236,9 +239,6 @@ $menu-icon-spacing: 0.25rem !default;
         width: 100%;
       }
     }
-
-    // Orientation
-    @include menu-direction(horizontal);
 
     &.vertical {
       @include menu-direction(vertical);
@@ -249,6 +249,15 @@ $menu-icon-spacing: 0.25rem !default;
         @include breakpoint($size) {
           &.#{$size}-horizontal {
             @include menu-direction(horizontal);
+
+            // Even-width
+            &.expanded {
+              @include menu-expand;
+
+              > li:first-child:last-child {
+                width: 100%;
+              }
+            }
           }
 
           &.#{$size}-vertical {
