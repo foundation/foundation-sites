@@ -84,14 +84,14 @@ $base-line-height: 1.5 !default;
 // $delay - Default: null (0s)
 @mixin transition($property:all, $speed:300ms, $ease:ease-out, $delay:null) {
   $transition: none;
-  $_property: none;
-  $_speed: none;
-  $_ease: none;
-  $_delay: none;
 
   @if length($property) > 1 {
 
     @each $transition_list in $property {
+      $_property: all;
+      $_speed: $speed;
+      $_ease: $ease;
+      $_delay: $delay;
 
       @for $i from 1 through length($transition_list) {
 
