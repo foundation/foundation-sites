@@ -148,7 +148,7 @@ Before the JavaScript on your page loads, the dropdown menus will not have arrow
 
 ```html
 <ul class="dropdown menu" data-dropdown-menu>
-  <li class=".is-dropdown-submenu-parent">
+  <li class="is-dropdown-submenu-parent">
     <a href="#">Item 1</a>
     <ul class="menu">
       <li><a href="#">Item 1A</a></li>
