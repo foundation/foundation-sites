@@ -136,7 +136,8 @@ class Reveal {
     this.$element.on({
       'open.zf.trigger': this.open.bind(this),
       'close.zf.trigger': (event, $element) => {
-        if ($(event.target).parents('[data-closable]')[0] === $element) { // only close reveal when it's explicitly called
+        if ((event.target === _this.$element[0]) ||
+            ($(event.target).parents('[data-closable]')[0] === $element)) { // only close reveal when it's explicitly called
           return this.close.apply(this);
         }
       },
