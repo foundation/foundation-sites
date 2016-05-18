@@ -42,9 +42,7 @@ class Reveal {
     this.id = this.$element.attr('id');
     this.isActive = false;
     this.cached = {mq: Foundation.MediaQuery.current};
-    this.isiOS = iPhoneSniff();
-
-    if(this.isiOS){ this.$element.addClass('is-ios'); }
+    this.isMobile = mobileSniff();
 
     this.$anchor = $(`[data-open="${this.id}"]`).length ? $(`[data-open="${this.id}"]`) : $(`[data-toggle="${this.id}"]`);
     this.$anchor.attr({
@@ -271,16 +269,13 @@ class Reveal {
      */
     this.$element.trigger('open.zf.reveal');
 
-    if (this.isiOS) {
-      var scrollPos = window.pageYOffset;
-      $('html, body').addClass('is-reveal-open').scrollTop(scrollPos);
+    if (this.isMobile) {
+      this.originalScrollPos = window.pageYOffset;
+      $('html, body').addClass('is-reveal-open');
     }
     else {
       $('body').addClass('is-reveal-open');
     }
-
-    $('body')
-      .addClass('is-reveal-open');
 
     setTimeout(() => {
       this._extraHandlers();
@@ -408,8 +403,12 @@ class Reveal {
     this.$element.off('keydown.zf.reveal');
 
     function finishUp() {
-      if (_this.isiOS) {
+      if (_this.isMobile) {
         $('html, body').removeClass('is-reveal-open');
+        if(_this.originalScrollPos) {
+          $('body').scrollTop(_this.originalScrollPos);
+          _this.originalScrollPos = null;
+        }
       }
       else {
         $('body').removeClass('is-reveal-open');
@@ -563,6 +562,14 @@ Foundation.plugin(Reveal, 'Reveal');
 
 function iPhoneSniff() {
   return /iP(ad|hone|od).*OS/.test(window.navigator.userAgent);
+}
+
+function androidSniff() {
+  return /Android/.test(window.navigator.userAgent);
+}
+
+function mobileSniff() {
+  return iPhoneSniff() || androidSniff();
 }
 
 }(jQuery);
