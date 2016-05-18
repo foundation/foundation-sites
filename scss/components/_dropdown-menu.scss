@@ -173,6 +173,11 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
       left: auto;
       right: 100%;
     }
+
+    &.opens-right > .is-dropdown-submenu {
+      right: auto;
+      left: 100%;
+    }
   }
 
   .is-dropdown-submenu {
