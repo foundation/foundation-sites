@@ -281,7 +281,8 @@ class Slider {
       var elemOffset = this.$element.offset()[direction];
 
       // touch events emulated by the touch util give position relative to screen, add window.scroll to event coordinates...
-      if (eventOffset < elemOffset) { eventOffset = eventOffset + windowScroll; }
+      // best way to guess this is simulated is if screenY ==clientY == pageY
+      if (e.screenY === e.pageY && e.clientY === e.pageY) { eventOffset = eventOffset + windowScroll; }
       var eventFromBar = eventOffset - elemOffset;
       var barXY;
       if (eventFromBar < 0) {
