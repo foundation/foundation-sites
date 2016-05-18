@@ -275,11 +275,14 @@ class Slider {
           eventOffset = vertical ? e.pageY : e.pageX,
           halfOfHandle = this.$handle[0].getBoundingClientRect()[param] / 2,
           barDim = this.$element[0].getBoundingClientRect()[param],
-          // touch events emulated by the touch util give position relative to screen, add window.scroll to event coordinates...
           windowScroll = vertical ? $(window).scrollTop() : $(window).scrollLeft();
 
 
-      var eventFromBar = eventOffset - this.$element.offset()[direction];
+      var elemOffset = this.$element.offset()[direction];
+
+      // touch events emulated by the touch util give position relative to screen, add window.scroll to event coordinates...
+      if (eventOffset < elemOffset) { eventOffset = eventOffset + windowScroll; }
+      var eventFromBar = eventOffset - elemOffset;
       var barXY;
       if (eventFromBar < 0) {
         barXY = 0;
