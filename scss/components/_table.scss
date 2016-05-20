@@ -93,7 +93,13 @@ $show-header-for-stacked: false !default;
       text-align: #{$global-left};
     }
   }
-
+  
+  // Table foot
+  tfoot {
+    // Implement custom background
+    background: $table-foot-background;  
+  }
+  
   // Table rows
   tbody {
     tr {
