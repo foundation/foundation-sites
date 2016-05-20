@@ -2,7 +2,7 @@
 
   "use strict";
 
-  var FOUNDATION_VERSION = '6.2.2-rc1';
+  var FOUNDATION_VERSION = '6.2.2-rc2';
 
   // Global Foundation object
   // This is attached to the window, or used as a module for AMD/Browserify
@@ -2174,19 +2174,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         // If at least one radio in the group has the `required` attribute, the group is considered required
         // Per W3C spec, all radio buttons in a group should have `required`, but we're being nice
         var $group = this.$element.find(':radio[name="' + groupName + '"]');
-        var valid = false;
+        var valid = false,
+            required = false;
 
-        // .attr() returns undefined if no elements in $group have the attribute "required"
-        if ($group.attr('required') === undefined) {
-          valid = true;
-        }
-
-        // For the group to be valid, at least one radio needs to be checked
+        // For the group to be required, at least one radio needs to be required
         $group.each(function (i, e) {
-          if ($(e).prop('checked')) {
-            valid = true;
+          if ($(e).attr('required')) {
+            required = true;
           }
         });
+        if (!required) valid = true;
+
+        if (!valid) {
+          // For the group to be valid, at least one radio needs to be checked
+          $group.each(function (i, e) {
+            if ($(e).prop('checked')) {
+              valid = true;
+            }
+          });
+        };
 
         return valid;
       }
@@ -6368,11 +6374,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.id = this.$element.attr('id');
         this.isActive = false;
         this.cached = { mq: Foundation.MediaQuery.current };
-        this.isiOS = iPhoneSniff();
-
-        if (this.isiOS) {
-          this.$element.addClass('is-ios');
-        }
+        this.isMobile = mobileSniff();
 
         this.$anchor = $('[data-open="' + this.id + '"]').length ? $('[data-open="' + this.id + '"]') : $('[data-toggle="' + this.id + '"]');
         this.$anchor.attr({
@@ -6472,7 +6474,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.$element.on({
           'open.zf.trigger': this.open.bind(this),
           'close.zf.trigger': function (event, $element) {
-            if ($(event.target).parents('[data-closable]')[0] === $element) {
+            if (event.target === _this.$element[0] || $(event.target).parents('[data-closable]')[0] === $element) {
               // only close reveal when it's explicitly called
               return _this2.close.apply(_this2);
             }
@@ -6616,14 +6618,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
          */
         this.$element.trigger('open.zf.reveal');
 
-        if (this.isiOS) {
-          var scrollPos = window.pageYOffset;
-          $('html, body').addClass('is-reveal-open').scrollTop(scrollPos);
+        if (this.isMobile) {
+          this.originalScrollPos = window.pageYOffset;
+          $('html, body').addClass('is-reveal-open');
         } else {
           $('body').addClass('is-reveal-open');
         }
-
-        $('body').addClass('is-reveal-open');
 
         setTimeout(function () {
           _this3._extraHandlers();
@@ -6763,8 +6763,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.$element.off('keydown.zf.reveal');
 
         function finishUp() {
-          if (_this.isiOS) {
+          if (_this.isMobile) {
             $('html, body').removeClass('is-reveal-open');
+            if (_this.originalScrollPos) {
+              $('body').scrollTop(_this.originalScrollPos);
+              _this.originalScrollPos = null;
+            }
           } else {
             $('body').removeClass('is-reveal-open');
           }
@@ -6927,6 +6931,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   function iPhoneSniff() {
     return (/iP(ad|hone|od).*OS/.test(window.navigator.userAgent)
     );
+  }
+
+  function androidSniff() {
+    return (/Android/.test(window.navigator.userAgent)
+    );
+  }
+
+  function mobileSniff() {
+    return iPhoneSniff() || androidSniff();
   }
 }(jQuery);
 'use strict';
@@ -7238,17 +7251,29 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               vertical = this.options.vertical,
               param = vertical ? 'height' : 'width',
               direction = vertical ? 'top' : 'left',
-              pageXY = vertical ? e.pageY : e.pageX,
+              eventOffset = vertical ? e.pageY : e.pageX,
               halfOfHandle = this.$handle[0].getBoundingClientRect()[param] / 2,
               barDim = this.$element[0].getBoundingClientRect()[param],
+              windowScroll = vertical ? $(window).scrollTop() : $(window).scrollLeft();
+
+          var elemOffset = this.$element.offset()[direction];
 
           // touch events emulated by the touch util give position relative to screen, add window.scroll to event coordinates...
-          windowScroll = vertical ? $(window).scrollTop() : $(window).scrollLeft(),
-              barOffset = this.$element.offset()[direction] - (this.$element.offset()[direction] < pageXY ? pageXY : pageXY + windowScroll),
+          // best way to guess this is simulated is if clientY == pageY
+          if (e.clientY === e.pageY) {
+            eventOffset = eventOffset + windowScroll;
+          }
+          var eventFromBar = eventOffset - elemOffset;
+          var barXY;
+          if (eventFromBar < 0) {
+            barXY = 0;
+          } else if (eventFromBar > barDim) {
+            barXY = barDim;
+          } else {
+            barXY = eventFromBar;
+          }
+          offsetPct = percent(barXY, barDim);
 
-          //if the cursor position is less than or greater than the elements bounding coordinates, set coordinates within those bounds
-          barXY = barOffset > 0 ? -halfOfHandle : barOffset - halfOfHandle < -barDim ? barDim : Math.abs(barOffset),
-              offsetPct = percent(barXY, barDim);
           value = (this.options.end - this.options.start) * offsetPct + this.options.start;
 
           // turn everything around for RTL, yay math!
@@ -7355,7 +7380,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
             $body.on('mousemove.zf.slider', function (e) {
               e.preventDefault();
-
               _this._handleEvent(e, curHandle);
             }).on('mouseup.zf.slider', function (e) {
               _this._handleEvent(e, curHandle);
@@ -7524,7 +7548,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      */
     invertVertical: false,
     /**
-     * Milliseconds before the `changed.zf-slider` event is triggered after value change. 
+     * Milliseconds before the `changed.zf-slider` event is triggered after value change.
      * @option
      * @example 500
      */
