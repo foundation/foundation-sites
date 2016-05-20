@@ -310,7 +310,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           $elem.blur();
         });
         /**
-         * Fires when the submenu is has closed.
+         * Fires when the submenu has closed.
          * @event Drilldown#hide
          */
         $elem.trigger('hide.zf.drilldown', [$elem]);
