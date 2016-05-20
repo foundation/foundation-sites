@@ -1,41 +1,44 @@
-<ul class="vertical menu docs-menu" id="docs-menu">
-  <p class="docs-version-number">
+<ul class="vertical menu docs-nav" id="docs-menu">
+  <p class="docs-nav-version">
     <span data-docs-version></span>
     <a href="https://github.com/zurb/foundation-sites/releases/" target="_blank">(Changelog)</a>
   </p>
 
-  <li class="docs-menu-title">Getting Started</li>
+  <li class="docs-nav-title">Getting Started</li>
   <li{{#ifpage 'installation'}} class="current"{{/ifpage}}><a href="installation.html">Installation</a></li>
   <li{{#ifpage 'starter-projects'}} class="current"{{/ifpage}}><a href="starter-projects.html">Starter Projects</a></li>
   <li{{#ifpage 'compatibility'}} class="current"{{/ifpage}}><a href="compatibility.html">Compatibility</a></li>
   <li{{#ifpage 'accessibility'}} class="current"{{/ifpage}}><a href="accessibility.html">Accessibility</a></li>
   <li{{#ifpage 'kitchen-sink'}} class="current"{{/ifpage}}><a href="kitchen-sink.html">Kitchen Sink</a></li>
 
-  <li class="docs-menu-title">General</li>
+  <li class="docs-nav-title">Setup</li>
   <li{{#ifpage 'global'}} class="current"{{/ifpage}}><a href="global.html">Global Styles</a></li>
   <li{{#ifpage 'rtl'}} class="current"{{/ifpage}}><a href="rtl.html">Right-to-Left Support</a></li>
+  <li{{#ifpage 'flexbox'}} class="current"{{/ifpage}}><a href="flexbox.html">Flexbox</a></li>
   <li{{#ifpage 'sass'}} class="current"{{/ifpage}}><a href="sass.html">Sass</a></li>
   <li{{#ifpage 'javascript'}} class="current"{{/ifpage}}><a href="javascript.html">JavaScript</a></li>
   <li{{#ifpage 'javascript-utilities'}} class="current"{{/ifpage}}><a href="javascript-utilities.html">JavaScript Utilities</a></li>
   <li{{#ifpage 'media-queries'}} class="current"{{/ifpage}}><a href="media-queries.html">Media Queries</a></li>
+
+  <li class="docs-nav-title">General</li>
   <li{{#ifpage 'grid'}} class="current"{{/ifpage}}><a href="grid.html">Grid</a></li>
   <li{{#ifpage 'flex-grid'}} class="current"{{/ifpage}}><a href="flex-grid.html">Flex Grid</a></li>
   <li{{#ifpage 'forms'}} class="current"{{/ifpage}}><a href="forms.html">Forms</a></li>
   <li{{#ifpage 'visibility'}} class="current"{{/ifpage}}><a href="visibility.html">Visibility Classes</a></li>
   <li{{#ifpage 'float-classes'}} class="current"{{/ifpage}}><a href="float-classes.html">Float Classes</a></li>
 
-  <li class="docs-menu-title">Typography</li>
+  <li class="docs-nav-title">Typography</li>
   <li{{#ifpage 'typography-base'}} class="current"{{/ifpage}}><a href="typography-base.html">Base Styles</a></li>
   <li{{#ifpage 'typography-helpers'}} class="current"{{/ifpage}}><a href="typography-helpers.html">Helper Classes</a></li>
 
-  <li class="docs-menu-title">Controls</li>
+  <li class="docs-nav-title">Controls</li>
   <li{{#ifpage 'button'}} class="current"{{/ifpage}}><a href="button.html">Button</a></li>
   <li{{#ifpage 'button-group'}} class="current"{{/ifpage}}><a href="button-group.html">Button Group</a></li>
   <li{{#ifpage 'close-button'}} class="current"{{/ifpage}}><a href="close-button.html">Close Button</a></li>
   <li{{#ifpage 'slider'}} class="current"{{/ifpage}}><a href="slider.html">Slider <span class="label">JS</span></a></li>
   <li{{#ifpage 'switch'}} class="current"{{/ifpage}}><a href="switch.html">Switch</a></li>
 
-  <li class="docs-menu-title">Navigation</li>
+  <li class="docs-nav-title">Navigation</li>
   <li{{#ifpage 'navigation'}} class="current"{{/ifpage}}><a href="navigation.html">Overview</a></li>
   <li{{#ifpage 'menu'}} class="current"{{/ifpage}}><a href="menu.html">Menu</a></li>
   <li{{#ifpage 'dropdown-menu'}} class="current"{{/ifpage}}><a href="dropdown-menu.html">Dropdown Menu <span class="label">JS</span></a></li>
@@ -47,7 +50,7 @@
   <li{{#ifpage 'pagination'}} class="current"{{/ifpage}}><a href="pagination.html">Pagination</a></li>
   <li{{#ifpage 'breadcrumbs'}} class="current"{{/ifpage}}><a href="breadcrumbs.html">Breadcrumbs</a></li>
 
-  <li class="docs-menu-title">Containers</li>
+  <li class="docs-nav-title">Containers</li>
   <li{{#ifpage 'accordion'}} class="current"{{/ifpage}}><a href="accordion.html">Accordion <span class="label">JS</span></a></li>
   <li{{#ifpage 'callout'}} class="current"{{/ifpage}}><a href="callout.html">Callout</a></li>
   <li{{#ifpage 'dropdown'}} class="current"{{/ifpage}}><a href="dropdown.html">Dropdown <span class="label">JS</span></a></li>
@@ -57,7 +60,7 @@
   <li{{#ifpage 'table'}} class="current"{{/ifpage}}><a href="table.html">Table</a></li>
   <li{{#ifpage 'tabs'}} class="current"{{/ifpage}}><a href="tabs.html">Tabs <span class="label">JS</span></a></li>
 
-  <li class="docs-menu-title">Media</li>
+  <li class="docs-nav-title">Media</li>
   <li{{#ifpage 'badge'}} class="current"{{/ifpage}}><a href="badge.html">Badge</a></li>
   <li{{#ifpage 'flex-video'}} class="current"{{/ifpage}}><a href="flex-video.html">Flex Video</a></li>
   <li{{#ifpage 'label'}} class="current"{{/ifpage}}><a href="label.html">Label</a></li>
@@ -66,22 +69,23 @@
   <li{{#ifpage 'thumbnail'}} class="current"{{/ifpage}}><a href="thumbnail.html">Thumbnail</a></li>
   <li{{#ifpage 'tooltip'}} class="current"{{/ifpage}}><a href="tooltip.html">Tooltip <span class="label">JS</span></a></li>
 
-  <li class="docs-menu-title">Plugins</li>
+  <li class="docs-nav-title">Plugins</li>
   <li{{#ifpage 'abide'}} class="current"{{/ifpage}}><a href="abide.html">Abide <small>Form Validation</small></a></li>
   <li{{#ifpage 'equalizer'}} class="current"{{/ifpage}}><a href="equalizer.html">Equalizer <small>Column Alignment</small></a></li>
   <li{{#ifpage 'interchange'}} class="current"{{/ifpage}}><a href="interchange.html">Interchange <small>Responsive Content</small></a></li>
   <li{{#ifpage 'toggler'}} class="current"{{/ifpage}}><a href="toggler.html">Toggler <small>CSS Helper</small></a></li>
   <li{{#ifpage 'sticky'}} class="current"{{/ifpage}}><a href="sticky.html">Sticky <small>Header/Sidebar</small></a></li>
 
-  <li class="docs-menu-title">Sass</li>
+  <li class="docs-nav-title">Sass</li>
   <li{{#ifpage 'sass-functions'}} class="current"{{/ifpage}}><a href="sass-functions.html">Functions</a></li>
   <li{{#ifpage 'sass-mixins'}} class="current"{{/ifpage}}><a href="sass-mixins.html">Mixins</a></li>
 
-  <li class="docs-menu-title">Libraries</li>
+  <li class="docs-nav-title">Libraries</li>
   <li{{#ifpage 'motion-ui'}} class="current"{{/ifpage}}><a href="motion-ui.html">Motion UI</a></li>
   <li{{#ifpage 'panini'}} class="current"{{/ifpage}}><a href="panini.html">Panini</a></li>
+  <li{{#ifpage 'style-sherpa'}} class="current"{{/ifpage}}><a href="style-sherpa.html">Style Sherpa</a></li>
 
-  <li class="docs-menu-title">Older Versions</li>
+  <li class="docs-nav-title">Older Versions</li>
   <li><a href="http://foundation.zurb.com/sites/docs/v/5.5.3/index.html">Foundation 5</a></li>
   <li><a href="http://foundation.zurb.com/sites/docs/v/4.3.2/index.html">Foundation 4</a></li>
   <li><a href="http://foundation.zurb.com/sites/docs/v/3.2.5/">Foundation 3</a></li>

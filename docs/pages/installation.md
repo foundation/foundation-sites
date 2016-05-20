@@ -3,11 +3,11 @@ title: Installation
 description: There are many ways to install Foundation, but if you're just getting started, we have a few suggestions.
 ---
 
-## Yeti Launch
+<!--## Yeti Launch-->
 
-Yeti Launch is our Mac app for quickly spinning up blank projects for any of the three Foundation frameworks. If you're just getting started with Foundation, we recommend downloading Yeti Launch to get going right away.
+<!--Yeti Launch is our Mac app for quickly spinning up blank projects for any of the three Foundation frameworks. If you're just getting started with Foundation, we recommend downloading Yeti Launch to get going right away.-->
 
-<a href="http://foundation.zurb.com/develop/yeti-launch" class="large button">Download Yeti Launch</a>
+<!--<a href="http://foundation.zurb.com/develop/yeti-launch" class="large button">Download Yeti Launch</a>-->
 
 ### Command-Line Tool
 
@@ -15,6 +15,12 @@ Not a fan of GUIs? The Node-powered Foundation CLI can install the same template
 
 ```bash
 npm install --global foundation-cli
+```
+
+Depending on how your machine is configured, the command may fail with an `EACCESS` error. To get around this, run the command with `sudo` at the beginning:
+
+```bash
+sudo npm install --global foundation-cli
 ```
 
 <div class="callout alert">
@@ -100,7 +106,7 @@ Start with this HTML template and adapt it to your needs.
   </head>
   <body>
     <h1>Hello, world!</h1>
-    
+
     <script src="js/vendor/jquery.min.js"></script>
     <script src="js/vendor/what-input.min.js"></script>
     <script src="js/foundation.min.js"></script>
@@ -121,10 +127,10 @@ The folks at [jsDelivr](https://www.jsdelivr.com) host the compressed Foundation
 
 ```html
 <!-- Compressed CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.1.2/foundation.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.1/foundation.min.css">
 
 <!-- Compressed JavaScript -->
-<script src="https://cdn.jsdelivr.net/foundation/6.1.2/foundation.min.js"></script>
+<script src="https://cdn.jsdelivr.net/foundation/6.2.1/foundation.min.js"></script>
 ```
 
 ---
@@ -137,6 +143,7 @@ Foundation is available on npm, Bower, Meteor, and Composer. The package include
 - Bower: `bower install foundation-sites`
 - Meteor: `meteor add zurb:foundation-sites`
 - Composer: `php composer.phar require zurb/foundation`
+- NuGet: `Install-Package foundation-sites`
 
 ### Package Contents
 

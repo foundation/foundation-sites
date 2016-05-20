@@ -1,51 +1,44 @@
-# [Foundation for Sites](http://foundation.zurb.com) (v6.1)
+# [Foundation for Sites](http://foundation.zurb.com)
 
 [![npm version](https://badge.fury.io/js/foundation-sites.svg)](https://badge.fury.io/js/foundation-sites) [![Bower version](https://badge.fury.io/bo/foundation-sites.svg)](https://badge.fury.io/bo/foundation-sites) [![Gem Version](https://badge.fury.io/rb/foundation-rails.svg)](https://badge.fury.io/rb/foundation-rails) [![devDependency Status](https://david-dm.org/zurb/foundation-sites/dev-status.svg)](https://david-dm.org/zurb/foundation-sites#info=devDependencies) [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/zurb/foundation-sites?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-Foundation is the most advanced responsive front-end framework in the world. Quickly go from prototype to production, building sites or apps that work on any kind of device with Foundation. Includes layout constructs, like a fully customizable, responsive grid, commonly used JavaScript plugins, and full A11Y support.
+Foundation is the most advanced responsive front-end framework in the world. Quickly go from prototype to production, building sites or apps that work on any kind of device with Foundation. Includes a fully customizable, responsive grid, a large library of Sass mixins, commonly used JavaScript plugins, and full accessibility support.
 
-## Requirements
+## Getting Started
 
-Requires NodeJS to be installed on your machine. Works with version 0.12 and higher!
+The quickest way to get started is with the [basic CSS download](http://foundation.zurb.com/sites/download/). You can get versions with every component, essential ones only, or a custom build.
 
-The Sass is compiled using libsass, which requires the GCC to be installed on your machine. Windows users can install it through [MinGW](http://www.mingw.org/), and Mac users can install it through the [Xcode Command-line Tools](http://osxdaily.com/2014/02/12/install-command-line-tools-mac-os-x/).
+If you're a Sass user, we have two starter project templates, the [Basic Template](https://github.com/zurb/foundation-sites-template) and the [ZURB Template](https://github.com/zurb/foundation-zurb-template). You can install them by manually downloading them from GitHub, or using the [Foundation CLI](https://github.com/zurb/foundation-cli).
 
-## Setup
-
-To get going with Foundation you can:
-
-
-  * [Install Yeti Launch](http://foundation.zurb.com/develop/yeti-launch.html): Seriously though, check it out!
-  * [Install the CLI](https://www.npmjs.com/package/foundation-cli): `npm install -g foundation-cli`
-  * [Download the latest release](http://foundation.zurb.com/sites/download.html)
-  * [Install with Bower](http://bower.io): `bower install foundation-sites`
-  * [Install with npm](http://npmjs.com): `npm install foundation-sites`
-  * [Install with Atmosphere for Meteor](https://atmospherejs.com): `meteor add zurb:foundation-sites`
-  * [Install with Composer](https://getcomposer.org/): `php composer.phar require zurb/foundation`
+Lastly, if you're rolling your own setup, you can install Foundation through a variety of [package managers](http://foundation.zurb.com/sites/docs/installation.html#package-managers).
 
 ## Documentation
 
-Foundation uses [Gulp](http://gulpjs.com/) and [SuperCollider](https://www.npmjs.com/package/supercollider) to generate its [documentation pages](http://foundation.zurb.com/sites/docs). Documentation can also be run from your local computer:
+The documentation can be found at <https://foundation.zurb.com/sites/docs>. To run the documentation locally on your machine, you need [Node.js](https://nodejs.org/en/) and [Ruby](https://www.ruby-lang.org/en/) installed on your computer. (Your Node.js version must be 0.12 or higher.)
 
-### View documentation locally
+Run these commands to set up the documentation:
 
-You'll want to clone the Foundation repo first and install all the dependencies. You can do this using the following commands:
-
-```
-git clone git@github.com:zurb/foundation-sites.git
+```bash
+git clone https://github.com/zurb/foundation-sites
 cd foundation-sites
+gem install scss-lint
 npm install
 ```
 
-Then just run `npm start` and the documentation will be compiled. It will also launch an instance of [BrowserSync](http://www.browsersync.io/) and open a tab in your default browser.
-The file structure:
+Then run `npm start` to compile the documentation. When it finishes, a new browser window will open pointing to a BrowserSync server displaying the documentation.
 
-```
-foundation/
-├── dist/
-│   └── ...
-├── docs/
-│   └── ...
-```
+## Testing
+
+Foundation has three kinds of tests: JavaScript, Sass, and visual regression. Refer to our [testing guide](https://github.com/zurb/foundation-sites/wiki/Testing-Guide) for more details.
+
+These commands will run the various tests:
+
+- `npm run test:sass`
+- `npm run test:javascript`
+- `npm run test:visual`
+
+## Contributing
+
+Check out our [contributing guide](http://foundation.zurb.com/develop/contribute.html) to learn how you can contribute to Foundation. You can also browse the [Help Wanted](https://github.com/zurb/foundation-sites/labels/help%20wanted) tag in our issue tracker to find things to do.
 
 Copyright (c) 2016 ZURB, inc.

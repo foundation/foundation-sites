@@ -272,3 +272,9 @@ To see the below example in action, scale your browser down. The top bar will be
     </ul>
   </div>
 </div>
+
+---
+
+## Sticky Navigation
+
+See the documentation for the [Sticky](sticky.html#sticky-navigation) plugin to see how to easily make a sticky nav bar.

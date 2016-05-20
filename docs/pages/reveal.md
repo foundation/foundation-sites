@@ -13,7 +13,7 @@ tags:
 A modal is just an empty container, so you can put any kind of content inside it, from text to forms to video to an entire grid.
 
 <div class="callout primary">
-  <p>Please note that we removed the option for AJAX loaded modals in Foundation 6. We did make it very easy to implement on your own though, check out a sample in the <span><a href="#advanced">Advanced</a></span> section.</p>
+  <p>Please note that we removed the option for AJAX loaded modals in Foundation 6. We did make it very easy to implement on your own though, check out a sample in the <span><a href="#advanced-options">Advanced</a></span> section.</p>
 </div>
 
 To create a modal, add the class `.reveal`, the attribute `data-reveal`, and a unique ID to a container.
@@ -185,4 +185,23 @@ $.ajax('/url')
   .done(function(resp){
     $modal.html(resp.html).foundation('open');
 });
+```
+
+
+---
+
+## Accessibility
+
+Modals by default are accessible through the use of various ARIA attributes.  To make a modal even more accessible, designate a label to the modal by adding `aria-labelledby="exampleModalHeader11"` to the container and `id="exampleModalHeader11"` to the elment you want to designate as the label.
+
+```html_example
+<p><a data-open="exampleModal11">Click me for a modal</a></p>
+
+<div class="reveal" id="exampleModal11" aria-labelledby="exampleModalHeader11" data-reveal>
+  <h1 id="exampleModalHeader11">Label for the Modal!</h1>
+  <p class="lead">I am even more accessible than the other modals.</p>
+  <button class="close-button" data-close aria-label="Close Accessible Modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
 ```

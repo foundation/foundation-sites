@@ -18,18 +18,14 @@ $tab-background: $white !default;
 /// @type Color
 $tab-background-active: $light-gray !default;
 
-/// Default border color of tab content.
-/// @type Color
-$tab-border: $light-gray !default;
-
-/// Default text color for items in a Menu.
-/// @type Color
-$tab-item-color: foreground($tab-background, $primary-color) !default;
+/// Font size of tab items.
+/// @type Number
+$tab-item-font-size: rem-calc(12) !default;
 
 /// Default background color on hover for items in a Menu.
 $tab-item-background-hover: $white !default;
 
-/// Default padding of a a tab item.
+/// Default padding of a tab item.
 /// @type Number
 $tab-item-padding: 1.25rem 1.5rem !default;
 
@@ -79,8 +75,7 @@ $tab-content-padding: 1rem !default;
     display: block;
     padding: $tab-item-padding;
     line-height: 1;
-    font-size: 12px;
-    color: $tab-item-color;
+    font-size: $tab-item-font-size;
 
     &:hover {
       background: $tab-item-background-hover;

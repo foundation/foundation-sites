@@ -12,6 +12,16 @@
 @import 'motion-ui';
 
 @include foundation-everything;
+@include foundation-flex-classes;
+@include foundation-range-input;
+@include foundation-progress-element;
+@include foundation-meter-element;
 @include motion-ui-transitions;
 
 @import 'foundation-docs';
+@import 'examples/grid';
+@import 'examples/motion-ui';
+@import 'examples/off-canvas';
+@import 'examples/orbit';
+@import 'examples/reveal';
+@import 'examples/top-bar';

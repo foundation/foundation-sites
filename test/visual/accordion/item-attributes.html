@@ -1,0 +1,80 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Foundation for Sites Testing</title>
+    <link href="../assets/css/foundation.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="row column">
+      <h1>Accordion: Item Attributes</h1>
+
+      <p>Accordion items can be defined as <code>&lt;li&gt;</code>s, or by having the attribute <code>data-accordion-item</code>.</p>
+
+      <hr>
+
+      <p>This accordion uses list items and has no attribute.</p>
+
+      <ul class="accordion" data-accordion>
+        <li class="accordion-item is-active">
+          <a href="#" class="accordion-title">Accordion 1</a>
+          <div class="accordion-content" data-tab-content>
+            Item
+          </div>
+        </li>
+        <li class="accordion-item">
+          <a href="#" class="accordion-title">Accordion 2</a>
+          <div class="accordion-content" data-tab-content>
+            Item
+          </div>
+        </li>
+      </ul>
+
+      <hr>
+
+      <p>This accordion uses generic tags with an attribute.</p>
+
+      <div class="accordion" data-accordion>
+        <div class="accordion-item is-active" data-accordion-item>
+          <a href="#" class="accordion-title">Accordion 1</a>
+          <div class="accordion-content" data-tab-content>
+            Item
+          </div>
+        </div>
+        <div class="accordion-item" data-accordion-item>
+          <a href="#" class="accordion-title">Accordion 2</a>
+          <div class="accordion-content" data-tab-content>
+            Item
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <p>This accordion mixes both methods.</p>
+
+      <div class="accordion" data-accordion>
+        <li class="accordion-item is-active">
+          <a href="#" class="accordion-title">Accordion 1</a>
+          <div class="accordion-content" data-tab-content>
+            Item
+          </div>
+        </li>
+        <div class="accordion-item" data-accordion-item>
+          <a href="#" class="accordion-title">Accordion 2</a>
+          <div class="accordion-content" data-tab-content>
+            Item
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="../assets/js/vendor.js"></script>
+    <script src="../assets/js/foundation.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
+</html>

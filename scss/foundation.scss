@@ -1,6 +1,6 @@
 /**
  * Foundation for Sites by ZURB
- * Version 6.1.2
+ * Version 6.2.1
  * foundation.zurb.com
  * Licensed under MIT Open Source
  */
@@ -28,10 +28,12 @@
 @import 'components/drilldown';
 @import 'components/dropdown-menu';
 @import 'components/dropdown';
+@import 'components/flex';
 @import 'components/flex-video';
 @import 'components/label';
 @import 'components/media-object';
 @import 'components/menu';
+@import 'components/menu-icon';
 @import 'components/off-canvas';
 @import 'components/orbit';
 @import 'components/pagination';
@@ -48,6 +50,10 @@
 @import 'components/tooltip';
 
 @mixin foundation-everything($flex: false) {
+  @if $flex {
+    $global-flexbox: true !global;
+  }
+
   @include foundation-global-styles;
   @if not $flex {
     @include foundation-grid;
@@ -56,10 +62,8 @@
     @include foundation-flex-grid;
   }
   @include foundation-typography;
-  @include foundation-button;
   @include foundation-forms;
-  @include foundation-visibility-classes;
-  @include foundation-float-classes;
+  @include foundation-button;
   @include foundation-accordion;
   @include foundation-accordion-menu;
   @include foundation-badge;
@@ -67,13 +71,14 @@
   @include foundation-button-group;
   @include foundation-callout;
   @include foundation-close-button;
+  @include foundation-menu;
+  @include foundation-menu-icon;
   @include foundation-drilldown-menu;
   @include foundation-dropdown;
   @include foundation-dropdown-menu;
   @include foundation-flex-video;
   @include foundation-label;
   @include foundation-media-object;
-  @include foundation-menu;
   @include foundation-off-canvas;
   @include foundation-orbit;
   @include foundation-pagination;
@@ -88,4 +93,10 @@
   @include foundation-title-bar;
   @include foundation-tooltip;
   @include foundation-top-bar;
+  @include foundation-visibility-classes;
+  @include foundation-float-classes;
+
+  @if $flex {
+    @include foundation-flex-classes;
+  }
 }

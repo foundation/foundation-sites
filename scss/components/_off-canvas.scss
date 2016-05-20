@@ -71,6 +71,7 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5) !default;
     transition: transform $offcanvas-transition-length $offcanvas-transition-timing;
     backface-visibility: hidden;
     z-index: 1;
+    padding-bottom: 0.1px; // Prevents margin collapsing, which would reveal the box shadow of the wrapper
 
     @if has-value($maincontent-shadow) {
       box-shadow: $maincontent-shadow;
@@ -161,7 +162,7 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5) !default;
 
   // Reveal off-canvas menu on larger screens
   @each $name, $value in $breakpoint-classes {
-    @if $name != small {
+    @if $name != $-zf-zero-breakpoint {
       @include breakpoint($name) {
         .position-left.reveal-for-#{$name} {
           @include off-canvas-reveal(left);

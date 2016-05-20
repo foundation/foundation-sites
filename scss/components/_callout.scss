@@ -6,7 +6,7 @@
 /// @group callout
 ////
 
-/// Defualt background color.
+/// Default background color.
 /// @type Color
 $callout-background: $white !default;
 
@@ -14,7 +14,7 @@ $callout-background: $white !default;
 /// @type Number
 $callout-background-fade: 85% !default;
 
-/// Defualt border style for callouts.
+/// Default border style for callouts.
 /// @type List
 $callout-border: 1px solid rgba($black, 0.25) !default;
 
@@ -88,7 +88,7 @@ $callout-link-tint: 30% !default;
   .callout {
     @include callout;
 
-    @each $name, $color in $foundation-colors {
+    @each $name, $color in $foundation-palette {
       &.#{$name} {
         @include callout-style($color);
       }

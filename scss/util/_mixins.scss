@@ -46,12 +46,12 @@
 
 /// Creates a menu icon with a set width, height, number of bars, and colors. The mixin uses the height of the icon and the weight of the bars to determine spacing. <div class="docs-example-burger"></div>
 ///
-/// @param {Color} $color - Color to use for the icon.
-/// @param {Color} $color-hover - Color to use when the icon is hovered over.
-/// @param {Number} $width - Width of the icon.
-/// @param {Number} $height - Height of the icon.
-/// @param {Number} $weight - Height of individual bars in the icon.
-/// @param {Number} $bars - Number of bars in the icon.
+/// @param {Color} $color [$black] - Color to use for the icon.
+/// @param {Color} $color-hover [$dark-gray] - Color to use when the icon is hovered over.
+/// @param {Number} $width [20px] - Width of the icon.
+/// @param {Number} $height [16px] - Height of the icon.
+/// @param {Number} $weight [2px] - Height of individual bars in the icon.
+/// @param {Number} $bars [3] - Number of bars in the icon.
 @mixin hamburger(
   $color: $black,
   $color-hover: $dark-gray,
@@ -116,25 +116,33 @@
 @mixin background-triangle($color: $black) {
   $rgb: 'rgb%28#{red($color)}, #{green($color)}, #{blue($color)}%29';
 
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="32" height="24" viewBox="0 0 32 24"><polygon points="0,0 32,0 16,24" style="fill: #{$rgb}"></polygon></svg>');
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='32' height='24' viewBox='0 0 32 24'><polygon points='0,0 32,0 16,24' style='fill: #{$rgb}'></polygon></svg>");
 
   @media screen and (min-width:0\0) {
-    @if lightness($color) < 50% {
+    @if lightness($color) < 60% {
+      // White triangle
       background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAYCAYAAACbU/80AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAIpJREFUeNrEkckNgDAMBBfRkEt0ObRBBdsGXUDgmQfK4XhH2m8czQAAy27R3tsw4Qfe2x8uOO6oYLb6GlOor3GF+swURAOmUJ+RwtEJs9WvTGEYxBXqI1MQAZhCfUQKRzDMVj+TwrAIV6jvSUEkYAr1LSkcyTBb/V+KYfX7xAeusq3sLDtGH3kEGACPWIflNZfhRQAAAABJRU5ErkJggg==');
     }
     @else {
+      // Black triangle
       background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAYCAYAAACbU/80AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMBJREFUeNrEllsOhCAMRVszC9IlzU7KCmVHTJsoMWYMUtpyv9BgbuXQB5ZSdgBYYY4ycgBivk8KYFsQMfMiTTBP4o3nUzCKzOabLJbLy2/g31evGkAginR4/ZegKH5qX3bJCscA3t0x3kgO5tQFyhhFf50xRqFLbyMUNJQzgyjGS/wgCpvKqkRBpuWrE4V9d+1E4dPUXqIg107SQOE/2DRQxMwTDygIInVDET9T3lCoj/6j/VCmGjZOl2lKpZ8AAwDQP7zIimDGFQAAAABJRU5ErkJggg==');
     }
   }
 }
 
 /// Applies the micro clearfix hack popularized by Nicolas Gallagher. Include this mixin on a container if its children are all floated, to give the container a proper height.
+/// The clearfix is augmented with specific styles to prevent borders in flexbox environments
 /// @link http://nicolasgallagher.com/micro-clearfix-hack/ Micro Clearfix Hack
+/// @link http://danisadesigner.com/blog/flexbox-clear-fix-pseudo-elements/ Flexbox fix
 @mixin clearfix {
   &::before,
   &::after {
     content: ' ';
     display: table;
+    @if $global-flexbox {
+      flex-basis: 0;
+      order: 1;
+    }
   }
 
   &::after {
@@ -214,7 +222,7 @@
   $map: $breakpoint-classes;
 
   @if not $small {
-    $map: map-remove($map, small);
+    $map: map-remove($map, $-zf-zero-breakpoint);
   }
 
   @each $size in $map {

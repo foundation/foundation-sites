@@ -12,7 +12,7 @@ To set up an Equalizer group, you need a container, which gets the attribute `da
 <div class="row" data-equalizer data-equalize-on="medium" id="test-eq">
   <div class="medium-4 columns">
     <div class="callout" data-equalizer-watch>
-      <img src= "assets/img/square-1.jpg">
+      <img src= "assets/img/generic/square-1.jpg">
     </div>
   </div>
   <div class="medium-4 columns">
@@ -22,11 +22,13 @@ To set up an Equalizer group, you need a container, which gets the attribute `da
   </div>
   <div class="medium-4 columns">
     <div class="callout" data-equalizer-watch>
-      <img src= "assets/img/rectangle-1.jpg">
+      <img src= "assets/img/generic/rectangle-1.jpg">
     </div>
   </div>
 </div>
 ```
+
+---
 
 ## Nesting
 
@@ -80,52 +82,27 @@ In the below example, the first set of Equalizer elements have the value `foo`, 
   </div>
 </div>
 
-## Responsive Equalizer
-### Equalize row by row
+---
 
-Equalize elements on a per-row basis. Please note, that because this involves quite a bit of looping through elements, you may notice a performance decrease by using this feature and resizing your screen rapidly.
+## Equalize By Row
 
-<div class="callout success">
-  <strong>Works great with Block-Grid</strong>
-</div>
+If you have a gallery of items that wrap multiple times, Equalizer can be configured to match each row's items in height. Works great with the block grid!
 
 <div class="callout primary">
-  <strong>Under the Hood</strong><br>
-  <p>Equalizer splits the `data-equalizer-watch` elements into groups by checking the top position and then sets the max height to each element in a row</p>
-  <p>Be aware on what you set the `data-equalizer-watch`, if the top position is different, equalizer will interpret that as a new 'row' and equalize accordingly.</p>
+  <p><strong>Under the Hood:</strong></p>
+  <p>Equalizer splits the `data-equalizer-watch` elements into groups by checking their vertical offsets, and grouping ones with the same offset into a "row".</p>
+  <p>Be aware on what you set `data-equalizer-watch`, if the top position is different, Equalizer will interpret that as a new "row" and equalize accordingly.</p>
 </div>
 
-```html_example
-<div class="row" data-equalizer data-equalize-by-row="true">
-  <div class="small-12 medium-6 large-4 columns">
-    <div class="callout clearfix">
-      <div data-equalizer-watch>
-        <h5>Login</h5>
-        <p>Login Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt magni quia unde laboriosam tempore et quibusdam. Quibusdam maxime sit atque!</p>
-      </div>
-      <a href="#" class="button success expanded">Login</a> </div>
-  </div>
-  <div class="small-12 medium-6 large-4 columns">
-    <div class="callout clearfix">
-      <div data-equalizer-watch>
-        <h5>Create Account</h5>
-        <p>You can create an account here Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, assumenda, molestiae. Laboriosam et exercitationem, veniam odit, dicta illum corporis, placeat voluptates fuga, expedita distinctio quae magnam temporibus porro quas eius.</p>
-      </div>
-      <a href="#" class="button expanded">Create account</a> </div>
-  </div>
-  <div class="small-12 medium-12 large-4 columns">
-    <div class="callout clearfix">
-      <div data-equalizer-watch>
-        <h5>Social Login</h5>
-        <p>Social Networks Login Text</p>
-      </div>
-      <a href="#" class="button hollow expanded">Login</a> </div>
-  </div>
+```html
+<div class="row small-up-1 medium-up-2 large-up-4" data-equalizer data-equalize-by-row="true">
+  <div class="column"></div>
+  <div class="column"></div>
+  <div class="column"></div>
+  <!-- ... -->
 </div>
 ```
-<br>
-<hr>
-<p class="lead">Equalized Block Grid</p>
+
 <div class="row small-up-1 medium-up-2 large-up-4" data-equalizer data-equalize-by-row="true">
   <div class="column">
     <div class="callout" data-equalizer-watch>

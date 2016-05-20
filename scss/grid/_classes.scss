@@ -28,21 +28,14 @@
 
     // Collapsing
     &.#{$collapse} {
-      > .#{$column} { @include grid-col-collapse; }
+      > .#{$column} {
+        @include grid-col-collapse;
+      }
     }
 
     // Nesting
     & & {
-      @if $grid-column-gutter == null {
-        @each $breakpoint, $gutter in $grid-column-responsive-gutter {
-          @include breakpoint($breakpoint) {
-            @include grid-row-nest($gutter);
-          }
-        }
-      }
-      @else {
-        @include grid-row-nest($grid-column-gutter);
-      }
+      @include grid-row-nest($grid-column-gutter);
 
       &.#{$collapse} {
         margin-left: 0;
@@ -123,21 +116,16 @@
     .#{$-zf-size}-#{$collapse} {
       > .#{$column} { @include grid-col-collapse; }
 
-      .#{$row} {
+      .#{$row},
+      .#{$expanded}.#{$row} &.#{$row} {
         margin-left: 0;
         margin-right: 0;
       }
     }
 
     .#{$-zf-size}-#{$uncollapse} {
-      $gutter: null;
+      $gutter: -zf-get-bp-val($grid-column-gutter, $-zf-size);
 
-      @if $grid-column-gutter {
-        $gutter: $grid-column-gutter;
-      }
-      @else {
-        $gutter: -zf-get-bp-val($grid-column-responsive-gutter, $-zf-size);
-      }
       > .#{$column} { @include grid-col-uncollapse($gutter); }
     }
 

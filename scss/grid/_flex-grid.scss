@@ -6,21 +6,6 @@
 /// @group flex-grid
 ////
 
-$-zf-flex-justify: (
-  'left': flex-start,
-  'right': flex-end,
-  'center': center,
-  'justify': space-between,
-  'spaced': space-around,
-);
-
-$-zf-flex-align: (
-  'top': flex-start,
-  'bottom': flex-end,
-  'middle': center,
-  'stretch': stretch,
-);
-
 /// Creates a container for a flex grid row.
 ///
 /// @param {Keyword|List} $behavior [null]
@@ -36,13 +21,12 @@ $-zf-flex-align: (
   $base: true,
   $gutter: $grid-column-gutter
 ) {
-  $behavior: -zf-get-options($behavior, nest collapse);
   $margin: auto;
 
-  @if map-get($behavior, nest) {
+  @if index($behavior, nest) != null {
     @include grid-row-nest($gutter);
 
-    @if map-get($behavior, collapse) {
+    @if index($behavior, collapse) != null {
       margin-left: 0;
       margin-right: 0;
     }
@@ -92,12 +76,13 @@ $-zf-flex-align: (
   $columns: null,
   $gutter: $grid-column-gutter
 ) {
-  @if $gutter != null {
-    $gutter: rem-calc($gutter) / 2;
-  }
-  @else {
-    @each $breakpoint, $gutter in $grid-column-responsive-gutter {
-      $padding: rem-calc($gutter) / 2;
+  // Base properties
+  flex: flex-grid-column($columns);
+
+  // Gutters
+  @if type-of($gutter) == 'map' {
+    @each $breakpoint, $value in $gutter {
+      $padding: rem-calc($value) / 2;
 
       @include breakpoint($breakpoint) {
         padding-left: $padding;
@@ -105,21 +90,46 @@ $-zf-flex-align: (
       }
     }
   }
+  @else if type-of($gutter) == 'number' and strip-unit($gutter) > 0 {
+    $padding: rem-calc($gutter) / 2;
+    padding-left: $padding;
+    padding-right: $padding;
+  }
 
-  flex: flex-grid-column($columns);
-  padding-left: $gutter;
-  padding-right: $gutter;
-
+  // fixes recent Chrome version not limiting child width
+  // https://stackoverflow.com/questions/34934586/white-space-nowrap-and-flexbox-did-not-work-in-chrome
+  @if $columns == null {
+    min-width: initial;
+  }
   // max-width fixes IE 10/11 not respecting the flex-basis property
   @if $columns != null and $columns != shrink {
     max-width: grid-column($columns);
   }
 }
 
+/// Creates a block grid for a flex grid row.
+///
+/// @param {Number} $n - Number of columns to display on each row.
+/// @param {String} $selector - Selector to use to target columns within the row.
+@mixin flex-grid-layout(
+  $n,
+  $selector: '.column'
+) {
+  flex-wrap: wrap;
+
+  > #{$selector} {
+    $pct: percentage(1/$n);
+
+    flex: 0 0 $pct;
+    max-width: $pct;
+  }
+}
+
 /// Changes the source order of a flex grid column. Columns with lower numbers appear first in the layout.
 /// @param {Number} $order [0] - Order number to apply.
 @mixin flex-grid-order($order: 0) {
-  order: $order;
+  @warn 'This mixin is being replaced by flex-order(). flex-grid-order() will be removed in Foundation 6.3.';
+  @include flex-order($order);
 }
 
 /// Horizontally or vertically aligns the columns within a flex row. Apply this mixin to a flex row.
@@ -127,42 +137,16 @@ $-zf-flex-align: (
 /// @param {Keyword} $x [null] - Horizontal alignment to use. Can be `left`, `right`, `center`, `justify`, or `spaced`. Or, set it to `null` (the default) to not set horizontal alignment.
 /// @param {Keyword} $y [null] - Vertical alignment to use. Can be `top`, `bottom`, `middle`, or `stretch`. Or, set it to `null` (the default) to not set vertical alignment.
 @mixin flex-grid-row-align($x: null, $y: null) {
-  @if $x {
-    @if map-has-key($-zf-flex-justify, $x) {
-      $x: map-get($-zf-flex-justify, $x);
-    }
-    @else {
-      @warn 'flex-grid-row-align(): #{$x} is not a valid value for horizontal alignment. Use left, right, center, justify, or spaced.'
-    }
-  }
-
-  @if $y {
-    @if map-has-key($-zf-flex-align, $y) {
-      $y: map-get($-zf-flex-align, $y);
-    }
-    @else {
-      @warn 'flex-grid-row-align(): #{$y} is not a valid value for vertical alignment. Use top, bottom, middle, or stretch.'
-    }
-  }
-
-  justify-content: $x;
-  align-items: $y;
+  @warn 'This mixin is being replaced by flex-align(). flex-grid-row-align() will be removed in Foundation 6.3.';
+  @include flex-align($x, $y);
 }
 
 /// Vertically align a single column within a flex row. Apply this mixin to a flex column.
 ///
 /// @param {Keyword} $y [null] - Vertical alignment to use. Can be `top`, `bottom`, `middle`, or `stretch`. Or, set it to `null` (the default) to not set vertical alignment.
 @mixin flex-grid-column-align($y: null) {
-  @if $y {
-    @if map-has-key($-zf-flex-align, $y) {
-      $y: map-get($-zf-flex-align, $y);
-    }
-    @else {
-      @warn 'flex-grid-column-align(): #{$y} is not a valid value for alignment. Use top, bottom, middle, or stretch.'
-    }
-  }
-
-  align-self: $y;
+  @warn 'This mixin is being replaced by flex-align-self(). flex-grid-column-align() will be removed in Foundation 6.3.';
+  @include flex-align-self($y);
 }
 
 @mixin foundation-flex-grid {
@@ -194,6 +178,7 @@ $-zf-flex-align: (
   // The double .row class is needed to bump up the specificity
   .column.row.row {
     float: none;
+    display: block;
 
     // To properly nest a column row, padding and margin is removed
     .row & {
@@ -220,14 +205,21 @@ $-zf-flex-align: (
       }
     }
 
+    // Source ordering
     @for $i from 1 through 6 {
-      // Source ordering
       .#{$-zf-size}-order-#{$i} {
-        @include flex-grid-order($i);
+        @include flex-order($i);
       }
     }
 
-    @if $-zf-size != small {
+    // Block grid
+    @for $i from 1 through $block-grid-max {
+      .#{$-zf-size}-up-#{$i} {
+        @include flex-grid-layout($i);
+      }
+    }
+
+    @if $-zf-size != $-zf-zero-breakpoint {
       // Sizing (expand)
       @include breakpoint($-zf-size) {
         .#{$-zf-size}-expand {
@@ -238,7 +230,7 @@ $-zf-flex-align: (
       // Auto-stacking/unstacking
       @at-root (without: media) {
         .row.#{$-zf-size}-unstack {
-          .column {
+          > .column {
             flex: flex-grid-column(100%);
 
             @include breakpoint($-zf-size) {
@@ -255,14 +247,8 @@ $-zf-flex-align: (
     }
 
     .#{$-zf-size}-uncollapse {
-      $gutter: null;
+      $gutter: -zf-get-bp-val($grid-column-gutter, $-zf-size);
 
-      @if $grid-column-gutter {
-        $gutter: $grid-column-gutter;
-      }
-      @else {
-        $gutter: -zf-get-bp-val($grid-column-responsive-gutter, $-zf-size);
-      }
       > .column { @include grid-col-uncollapse($gutter); }
     }
   }
@@ -273,21 +259,11 @@ $-zf-flex-align: (
     max-width: 100%;
   }
 
-  // Horizontal alignment using justify-content
-  @each $hdir, $prop in map-remove($-zf-flex-justify, left) {
-    .row.align-#{$hdir} {
-      @include flex-grid-row-align($x: $hdir);
-    }
-  }
-
   // Vertical alignment using align-items and align-self
+  // Remove these in 6.3
   @each $vdir, $prop in $-zf-flex-align {
-    .row.align-#{$vdir} {
-      @include flex-grid-row-align($y: $vdir);
-    }
-
     .column.align-#{$vdir} {
-      @include flex-grid-column-align($vdir);
+      @include flex-align-self($vdir);
     }
   }
 

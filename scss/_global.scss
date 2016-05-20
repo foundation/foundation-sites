@@ -20,25 +20,15 @@ $global-width: rem-calc(1200) !default;
 /// @type Number
 $global-lineheight: 1.5 !default;
 
-/// Primary color for interactive components like links and buttons.
-/// @type Color
-$primary-color: #2199e8 !default;
-
-/// Secondary color, used with components that support the `.secondary` class.
-/// @type Color
-$secondary-color: #777 !default;
-
-/// Color to indicate a positive status or action, used with the `.success` class.
-/// @type Color
-$success-color: #3adb76 !default;
-
-/// Color to indicate a caution status or action, used with the `.warning` class.
-/// @type Color
-$warning-color: #ffae00 !default;
-
-/// Color to indicate a negative status or action, used with the `.alert` class.
-/// @type Color
-$alert-color: #ec5840 !default;
+/// Colors used for buttons, callouts, links, etc. There must always be a color called `primary`.
+/// @type Map
+$foundation-palette: (
+  primary: #2199e8,
+  secondary: #777,
+  success: #3adb76,
+  warning: #ffae00,
+  alert: #ec5840,
+) !default;
 
 /// Color used for light gray UI items.
 /// @type Color
@@ -97,20 +87,31 @@ $global-weight-bold: bold !default;
 $global-radius: 0 !default;
 
 /// Sets the text direction of the CSS. Can be either `ltr` or `rtl`.
+/// @type Keyword
 $global-text-direction: ltr !default;
+
+/// Enables flexbox for components that support it.
+/// @type Boolean
+$global-flexbox: false !default;
+
+@if not map-has-key($foundation-palette, primary) {
+  @error 'In $foundation-palette, you must have a color named "primary".';
+}
 
 // Internal variables used for text direction
 $global-left: if($global-text-direction == rtl, right, left);
 $global-right: if($global-text-direction == rtl, left, right);
 
-// Internal map used to iterate through colors, to generate CSS classes with less code
-$foundation-colors: (
-  primary: $primary-color,
-  secondary: $secondary-color,
-  success: $success-color,
-  alert: $alert-color,
-  warning: $warning-color,
-) !default;
+// Internal variables used for colors
+$primary-color: map-get($foundation-palette, primary);
+$secondary-color: map-get($foundation-palette, secondary);
+$success-color: map-get($foundation-palette, success);
+$warning-color: map-get($foundation-palette, warning);
+$alert-color: map-get($foundation-palette, alert);
+
+// Remove this in 6.3
+$-zf-menu-icon-imported: false;
+$-zf-flex-classes-imported: false;
 
 @mixin foundation-global-styles {
   @include -zf-normalize;
@@ -127,8 +128,8 @@ $foundation-colors: (
 
   // Set box-sizing globally to handle padding and border widths
   *,
-  *:before,
-  *:after {
+  *::before,
+  *::after {
     box-sizing: inherit;
   }
 
@@ -186,6 +187,7 @@ $foundation-colors: (
 
   // Reset <button> styles created by most browsers
   button {
+    @include disable-mouse-outline;
     -webkit-appearance: none;
     -moz-appearance: none;
     background: transparent;
@@ -511,7 +513,7 @@ $foundation-colors: (
 
   button[disabled],
   html input[disabled] {
-    cursor: default;
+    cursor: not-allowed;
   }
 
   /**

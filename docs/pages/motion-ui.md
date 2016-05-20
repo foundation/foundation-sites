@@ -127,7 +127,7 @@ Motion UI includes more than two dozen built-in transition classes. They can be 
       <option value="spin-out-ccw">spin-out-ccw</option>
     </optgroup>
   </select>
-  <img src="assets/img/voyager.jpg" class="docs-transition-demo">
+  <img src="assets/img/generic/voyager.jpg" class="docs-transition-demo">
 </div>
 
 ---
@@ -155,12 +155,33 @@ You can use the same five transition effects to create CSS animations as well. T
 <button type="button" class="button" data-docs-example-series>Play Animation</button>
 <div class="row" id="series-example">
   <div class="small-4 columns">
-    <img class="thumbnail" src= "assets/img/square-1.jpg" id="series-example-1">
+    <img class="thumbnail" src= "assets/img/generic/square-1.jpg" id="series-example-1">
   </div>
   <div class="small-4 columns">
-    <img class="thumbnail" src= "assets/img/square-2.jpg" id="series-example-2">
+    <img class="thumbnail" src= "assets/img/generic/square-2.jpg" id="series-example-2">
   </div>
   <div class="small-4 columns">
-    <img class="thumbnail" src= "assets/img/square-3.jpg" id="series-example-3">
+    <img class="thumbnail" src= "assets/img/generic/square-3.jpg" id="series-example-3">
   </div>
+</div>
+
+---
+
+## JavaScript Reference
+
+Motion UI includes a tiny JavaScript utility that will work anywhere as long as jQuery is loaded. However, Foundation 6 includes a customized version of this code that is included in `js/foundation.util.motion.js`. If you are using the Foundation version of this utility, and you wish to animate your own elements, trigger it this way:
+
+```js
+var elem = $('#elem-to-animate');
+
+Foundation.Motion.animateIn(elem, animationClass [, callback]);
+Foundation.Motion.animateOut(elem, animationClass [, callback]);
+```
+
+The callback is optional in this case, and will fire when the animation is complete.
+<div class="callout primary">
+  <p>Please note that the duration/animation speed for Motion UI animations are controlled via Sass mixin variables. The JavaScript handles the addition and removal of classes and event listener/callback firing only.
+  <br>
+  If you are individually including your `<script>` tags, make sure you are including the `js/foundation.util.motion.js` path.
+  </p>
 </div>

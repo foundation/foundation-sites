@@ -10,6 +10,10 @@
 /// @type Color
 $input-color: $black !default;
 
+/// Font color of placeholder text within text inputs.
+/// @type Color
+$input-placeholder-color: $medium-gray !default;
+
 /// Font family of text inputs.
 /// @type Font
 $input-font-family: inherit !default;
@@ -48,7 +52,7 @@ $input-shadow-focus: 0 0 5px $medium-gray !default;
 
 /// Cursor to use when hovering over a disabled text input.
 /// @type Cursor
-$input-cursor-disabled: default !default;
+$input-cursor-disabled: not-allowed !default;
 
 /// Properties to transition on text inputs.
 /// @type Transition
@@ -115,9 +119,14 @@ $input-radius: $global-radius !default;
     }
   }
 
-  // Disabled/readonly state
   input,
   textarea {
+    // Placeholder text
+    &::placeholder {
+      color: $input-placeholder-color;
+    }
+
+    // Disabled/readonly state
     &:disabled,
     &[readonly] {
       background-color: $input-background-disabled;

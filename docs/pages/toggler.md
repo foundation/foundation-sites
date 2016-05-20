@@ -39,7 +39,7 @@ Then, add `data-toggle` to any element, with the ID of the target as the value o
 
 Instead of toggling a class, you can also toggle visibility. When toggled, the element comes into or out of view using a Motion UI class.
 
-Instead of `data-toggler`, add the attribute `data-toggler-animate`. The value of the attribute is the *in animation* you want, followed by the *out animation*.
+Instead of `data-toggler`, add the attribute `data-animate`. The value of the attribute is the *in animation* you want, followed by the *out animation*.
 
 ```html_example
 <p><a data-toggle="panel">Toggle Panel</a></p>
@@ -75,3 +75,40 @@ To create an element that can be closed once, add the attribute `data-closable`.
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore praesentium sint alias dolorum qui vel quaerat, libero consequatur non esse asperiores veritatis commodi, odit eum ipsam nemo dicta iste aliquam.</p>
 </div>
 ```
+
+---
+
+### Toggle on focus
+
+The `data-toggle` attribute only toggles classes/visibility on click. You can also have the toggle fire when an element is *focused* or *unfocused* using `data-toggle-focus`.
+
+```html_example
+<input type="text" data-toggle-focus="form-callout" placeholder="Click in here to reveal extra content">
+
+<div class="secondary callout is-hidden" id="form-callout" data-toggler="is-hidden">
+  <p>This is only visible when the above field has focus.</p>
+</div>
+```
+
+---
+
+## Multiple Targets
+
+The `data-toggle`, `data-close`, and `data-open` attributes can now target multiple elements! The syntax is simple; just pass a *space* separated list to the `data-x` attribute like so:
+```html
+<button class="button" data-toggle="foo bar baz">Toggle things</button>
+```
+Then the elements with ids of `foo`, `bar`, and `baz` will be toggled any time your button, (or any other element you choose), is clicked.
+
+<button class="button primary" data-toggle="thumb1 thumb2 thumb3">Toggle All These</button>
+<div class="row">
+  <div class="small-4 columns">
+    <img class="thumbnail" id="thumb1" data-toggler data-animate="hinge-in-from-top spin-out" src="assets/img/thumbnail/01.jpg" alt="Photo of Uranus.">
+  </div>
+  <div class="small-4 columns">
+    <img class="thumbnail" id="thumb2" data-toggler data-animate="hinge-in-from-top spin-out" src="assets/img/thumbnail/02.jpg" alt="Photo of Uranus.">
+  </div>
+  <div class="small-4 columns">
+    <img class="thumbnail" id="thumb3" data-toggler data-animate="hinge-in-from-top spin-out" src="assets/img/thumbnail/03.jpg" alt="Photo of Uranus.">
+  </div>
+</div>

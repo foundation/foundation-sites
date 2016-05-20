@@ -89,38 +89,19 @@
     style: solid,
     color: #000,
   );
+
   @return map-get($defaults, $elem);
 }
 
-/// Calculates x^y, where x is `$base` and y is `$power`.
-/// @access private
+/// Finds a value in a nested map.
+/// @link https://css-tricks.com/snippets/sass/deep-getset-maps/ Deep Get/Set in Maps
 ///
-/// @param {Number} $base - Base number (x).
-/// @param {Number} $power - Exponent (y).
-@function pow($base, $power) {
-  @if $power == 0 { @return 1; }
-  @return $base * pow($base, $power - 1);
-}
-
-// TODO: Remove this (it's used by the grid but is overkill)
-/// Given a user-defined list of keywords and a list of possible keywords, find the ones that were passed in.
-/// @access private
-///
-/// @param {List} $opts - List of values to find keywords in.
-/// @param {List} $seeking - List of all possible keywords.
-///
-/// @returns {Map} A map of all keywords in $seeking. If a keyword was found in $opts, its value is true, otherwise false.
-@function -zf-get-options($opts, $seeking) {
-  @if type-of($opts) != 'list' {
-    $opts: ($opts);
+/// @param {Map} $map - Map to pull a value from.
+/// @param {String} $keys... - Keys to use when looking for a value.
+/// @returns {Mixed} The value found in the map.
+@function map-deep-get($map, $keys...) {
+  @each $key in $keys {
+    $map: map-get($map, $key);
   }
-
-  $map: ();
-  @each $keyword in $seeking {
-    $val: if(index($opts, $keyword) != null, true, false);
-    $item: ($keyword: $val);
-    $map: map-merge($map, $item);
-  }
-
   @return $map;
 }

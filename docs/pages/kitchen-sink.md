@@ -96,7 +96,7 @@ description: Everything but.
 
 ---
 
-## Accordion 
+## Accordion
 
 ```html_example
 <ul class="accordion" data-accordion role="tablist">
@@ -374,7 +374,7 @@ description: Everything but.
 <div class="row" data-equalizer data-equalize-on="medium" id="test-eq">
   <div class="medium-4 columns">
     <div class="callout" data-equalizer-watch>
-      <img src= "assets/img/square-1.jpg">
+      <img src= "assets/img/generic/square-1.jpg">
     </div>
   </div>
   <div class="medium-4 columns">
@@ -384,7 +384,7 @@ description: Everything but.
   </div>
   <div class="medium-4 columns">
     <div class="callout" data-equalizer-watch>
-      <img src= "assets/img/rectangle-1.jpg">
+      <img src= "assets/img/generic/rectangle-1.jpg">
     </div>
   </div>
 </div>
@@ -568,7 +568,7 @@ description: Everything but.
 
 ## Magellan
 
-```html_example
+```html
 <ul class="horizontal menu" data-magellan>
   <li><a href="#first">First Arrival</a></li>
   <li><a href="#second">Second Arrival</a></li>
@@ -590,9 +590,15 @@ description: Everything but.
 </div>
 ```
 
+<ul class="horizontal menu" data-magellan>
+  <li><a href="#first">First Arrival</a></li>
+  <li><a href="#second">Second Arrival</a></li>
+  <li><a href="#third">Third Arrival</a></li>
+</ul>
+
 ---
 
-## Media Object 
+## Media Object
 
 ```html_example
 <div class="media-object">
@@ -654,9 +660,9 @@ description: Everything but.
 
 ---
 
-## Orbit 
+## Orbit
 
-```html_example 
+```html_example
 <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
   <ul class="orbit-container">
     <button class="orbit-previous" aria-label="previous"><span class="show-for-sr">Previous Slide</span>&#9664;</button>
@@ -807,9 +813,9 @@ description: Everything but.
 
 ---
 
-## Slider 
+## Slider
 
-```html_example 
+```html_example
 <div class="slider" data-slider data-initial-start='50' data-end='200'>
   <span class="slider-handle"  data-slider-handle role="slider" tabindex="1"></span>
   <span class="slider-fill" data-slider-fill></span>
@@ -854,7 +860,7 @@ description: Everything but.
     </div>
     <div class="columns small-6 right" data-sticky-container>
       <div class="sticky" data-sticky data-anchor="example1">
-        <img class="thumbnail" src="assets/img/rectangle-3.jpg">
+        <img class="thumbnail" src="assets/img/generic/rectangle-3.jpg">
       </div>
     </div>
   </div>
@@ -863,9 +869,9 @@ description: Everything but.
 
 ---
 
-## Switch 
+## Switch
 
-```html_example 
+```html_example
 <div class="switch tiny">
   <input class="switch-input" id="tinySwitch" type="checkbox" name="exampleSwitch">
   <label class="switch-paddle" for="tinySwitch">
@@ -878,7 +884,7 @@ description: Everything but.
   <label class="switch-paddle" for="smallSwitch">
     <span class="show-for-sr">Small Portions Only</span>
   </label>
-</div> 
+</div>
 
 <div class="switch large">
   <input class="switch-input" id="largeSwitch" type="checkbox" name="exampleSwitch">
@@ -946,7 +952,7 @@ description: Everything but.
   </div>
   <div class="tabs-panel" id="panel2">
     <p>two</p>
-    <img class="thumbnail" src="assets/img/rectangle-7.jpg">
+    <img class="thumbnail" src="assets/img/generic/rectangle-7.jpg">
   </div>
   <div class="tabs-panel" id="panel3">
     <p>three</p>
@@ -954,7 +960,7 @@ description: Everything but.
   </div>
   <div class="tabs-panel" id="panel4">
     <p>four</p>
-    <img class="thumbnail" src="assets/img/rectangle-2.jpg">
+    <img class="thumbnail" src="assets/img/generic/rectangle-2.jpg">
   </div>
   <div class="tabs-panel" id="panel5">
     <p>five</p>
@@ -962,7 +968,7 @@ description: Everything but.
   </div>
   <div class="tabs-panel" id="panel6">
     <p>six</p>
-    <img class="thumbnail" src="assets/img/rectangle-8.jpg">
+    <img class="thumbnail" src="assets/img/generic/rectangle-8.jpg">
   </div>
 </div>
 ```

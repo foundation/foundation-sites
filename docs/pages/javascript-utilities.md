@@ -49,7 +49,7 @@ Another quite useful library, `Foundation.Keyboard` has several methods to make 
 
 Ever wanted a handy list of common keycodes and the keys they represent? Use `Foundation.Keyboard.keys`. This is an object containing key/value pairs of the most frequently used keys in our framework.
 
-Want to manage your own keyboard inputs? No problem! Within your `.on('key**')` callback, call `Foundation.Keyboard.parseKey(event)` to get a string of what key was pressed, e.g. `'TAB'` or `'ALT_X'`. 
+Want to manage your own keyboard inputs? No problem! Within your `.on('key**')` callback, call `Foundation.Keyboard.parseKey(event)` to get a string of what key was pressed, e.g. `'TAB'` or `'ALT_X'`.
 You can also use this function outside of the Foundation components in your own JavaScript code.
 
 What if you want to know if there's focusable elements somewhere on a page? Instead of writing that function and selector yourself, just use:
@@ -174,4 +174,4 @@ Foundation includes a couple useful features in the core library that are used i
 
 `Foundation.getFnName(fn)` returns a string representation of a named function. Seems small, but believe us, it's useful.
 
-`Foundation.transitionend` is a string of the properly vendor-prefixed version of `transitionend` events. Most browsers don't require a prefix these days, but for those that do, we've got you covered.
+`Foundation.transitionend()` is a function<span data-tooltip title="Goodbye ZURB, I'll miss you"> </span>that returns the string of the properly vendor-prefixed version of `transitionend` events. Most browsers don't require a prefix these days, but for those that do, we've got you covered. But IE 9 doesn't support transitions?? Quite right you are! In that case our plugins that use transitions will simply snap to whatever location or visibility state they were headed to, and this function will fire a `transitionend` event manually on the element you passed. It still gives the desired results, and allows Motion-UI to work in IE 9.

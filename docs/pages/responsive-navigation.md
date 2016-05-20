@@ -1,6 +1,7 @@
 ---
 title: Responsive Navigation
 description: Our three Menu patterns form like Voltron into one responsive Menu plugin, which allows you to switch between patterns at different screen sizes.
+js: js/foundation.responsiveToggle.js
 ---
 
 ## Responsive Menu
@@ -101,4 +102,46 @@ By default, the title bar will be visible on small screens, and the Menu hides. 
     </ul>
   </div>
 </div>
+```
+
+---
+
+### Preventing FOUC
+
+Before the JavaScript on your page loads, you'll be able to see both the mobile and desktop element at once for a brief second. This is known as a [flash of unstyled content](https://en.wikipedia.org/wiki/Flash_of_unstyled_content). There's not an easy way for the framework to handle this for you, but you can add some extra CSS to account for it.
+
+If we reference the above example, `.title-bar` is our mobile element and `.top-bar` is our desktop element. So before the JavaScript loads, we want only the right element for that screen size to be visible.
+
+```css
+.no-js .top-bar {
+  display: none;
+}
+
+@media screen and (min-width: 40em) {
+  .no-js .top-bar {
+    display: block;
+  }
+
+  .no-js .title-bar {
+    display: none;
+  }
+}
+```
+
+If you're using Sass, you can write it like this:
+
+```scss
+.no-js {
+  @include breakpoint(small only) {
+    .top-bar {
+      display: none;
+    }
+  }
+
+  @include breakpoint(medium) {
+    .title-bar {
+      display: none;
+    }
+  }
+}
 ```

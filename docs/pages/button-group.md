@@ -4,6 +4,7 @@ description: Button groups are containers for related action items. They're grea
 sass: scss/components/_button-group.scss
 tags:
   - split button
+flexbox: true
 ---
 
 ## Basics
@@ -76,7 +77,7 @@ Add the `.expanded` class to the container to make a full-width button group. Ea
 
 ## Stacking
 
-A button group can be made vertical with the `.stacked` class. Or, you can use `.stacked-for-small` to only stack a button group on small screens.
+A button group can be made vertical with the `.stacked` class. You can also use `.stacked-for-small` to only stack a button group on small screens, or `.stacked-for-medium` to only stack on small and medium screens.
 
 ```html_example
 <div class="stacked-for-small button-group">

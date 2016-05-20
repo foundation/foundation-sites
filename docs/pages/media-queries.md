@@ -6,7 +6,7 @@ js: js/foundation.util.mediaQuery.js
 tags:
   - breakpoints
 ---
- 
+
 ## Default Media Queries
 
 Foundation for Sites has three core breakpoints:
@@ -47,7 +47,7 @@ If you're using the CSS version of Foundation, use these media queries to imitat
 
 ## Upgrading from Foundation 5
 
-In Foundation 5, breakpoints were accessed using a series of Sass variables named `$small-up`, `$small-only`, `$medium-only`, and so on. In Foundation 6, this method of writing media queries has been replaced with a dedicated [breakpoint mixin](#the-breakpoint-mixin), described below. **The legacy variables will be removed in Foundation 6.**
+In Foundation 5, breakpoints were accessed using a series of Sass variables named `$small-up`, `$small-only`, `$medium-only`, and so on. In Foundation 6, this method of writing media queries has been replaced with a dedicated [breakpoint mixin](#the-breakpoint-mixin), described below. **The legacy variables will be removed in Foundation 6.3.**
 
 To upgrade your existing media queries, replace rulesets like this:
 
@@ -209,7 +209,7 @@ Foundation.MediaQuery.get('medium') // => only screen and (min-width: 640px)
 The media query helper broadcasts an event on the window every time the breakpoint changes. We use this internally with plugins like Interchange to detect a shift in breakpoint. You can also subscribe to the event yourself.
 
 ```js
-$(window).on('changed.zf.mediaquery', function(event, name) {
-  // name is the name of the breakpoint
+$(window).on('changed.zf.mediaquery', function(event, newSize, oldSize) {
+  // newSize is the name of the now-current breakpoint, oldSize is the previous breakpoint
 });
 ```

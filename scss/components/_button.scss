@@ -28,11 +28,11 @@ $button-background-hover: scale-color($button-background, $lightness: -15%) !def
 
 /// Font color for buttons.
 /// @type List
-$button-color: #fff !default;
+$button-color: $white !default;
 
 /// Font color for buttons, if the background is light.
 /// @type List
-$button-color-alt: #000 !default;
+$button-color-alt: $black !default;
 
 /// Border radius for buttons, defaulted to global-radius.
 /// @type Number
@@ -99,7 +99,7 @@ $button-opacity-disabled: 0.25 !default;
   $color: $button-color
 ) {
   @if $color == auto {
-    $color: foreground($background);
+    $color: foreground($background, $button-color-alt, $button-color);
   }
 
   @if $background-hover == auto {
@@ -139,7 +139,11 @@ $button-opacity-disabled: 0.25 !default;
 @mixin button-disabled {
   opacity: $button-opacity-disabled;
   cursor: not-allowed;
-  pointer-events: none;
+
+  &:hover, &:focus {
+    background-color: $button-background;
+    color: $button-color;
+  }
 }
 
 /// Adds a dropdown arrow to a button.
@@ -195,15 +199,18 @@ $button-opacity-disabled: 0.25 !default;
 
     // Sizes
     @each $size, $value in map-remove($button-sizes, default) {
-      &.#{$size} { font-size: $value; }
+      &.#{$size} {
+        font-size: $value;
+      }
     }
+
     &.expanded { @include button-expand; }
 
     // Colors
-    @each $name, $color in $foundation-colors {
+    @each $name, $color in $foundation-palette {
       @if $button-fill != hollow {
         &.#{$name} {
-          @include button-style($color, auto);
+          @include button-style($color, auto, auto);
         }
       }
       @else {
@@ -223,7 +230,7 @@ $button-opacity-disabled: 0.25 !default;
         @include button-hollow;
         @include button-hollow-style;
 
-        @each $name, $color in $foundation-colors {
+        @each $name, $color in $foundation-palette {
           &.#{$name} {
             @include button-hollow-style($color);
           }

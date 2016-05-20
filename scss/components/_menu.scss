@@ -18,24 +18,41 @@ $menu-margin-nested: 1rem !default;
 /// @type Number
 $menu-item-padding: 0.7rem 1rem !default;
 
+/// Text color of an active menu item.
+/// @type Color
+$menu-item-color-active: $white !default;
+
+/// Background color of an active menu item.
+/// @type Color
+$menu-item-background-active: map-get($foundation-palette, primary) !default;
+
 /// Spacing between an icon and text in a menu item.
 /// @type Number
 $menu-icon-spacing: 0.25rem !default;
-
-/// Maximum number of `expand-n` classes to include in the CSS.
-/// @type Number
-$menu-expand-max: 6 !default;
 
 /// Creates the base styles for a Menu.
 @mixin menu-base {
   margin: $menu-margin;
   list-style-type: none;
 
+  @if $global-flexbox {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
   // List items are table cell to allow for vertical alignment
   > li {
     @include disable-mouse-outline;
-    display: table-cell;
-    vertical-align: middle;
+
+    @if $global-flexbox {
+      flex: 0 0 auto;
+    }
+    @else {
+      display: table-cell;
+      vertical-align: middle;
+    }
   }
 
   // Reset line height to make the height of the overall item easier to calculate
@@ -55,22 +72,54 @@ $menu-expand-max: 6 !default;
 
 /// Expands the items of a Menu, so each item is the same width.
 @mixin menu-expand {
-  display: table;
-  table-layout: fixed;
-  width: 100%;
+  @if $global-flexbox {
+    // scss-lint:disable ZeroUnit
+    > li {
+      flex: 1 1 0px;
+    }
+  }
+  @else {
+    width: 100%;
+    display: table;
+    table-layout: fixed;
+  }
 }
 
 /// Sets the direction of a Menu.
 /// @param {Keyword} $dir [horizontal] - Direction of the Menu. Can be `horizontal` or `vertical`.
 @mixin menu-direction($dir: horizontal) {
   @if $dir == horizontal {
-    > li {
-      display: table-cell;
+    @if $global-flexbox {
+      flex-wrap: nowrap;
+
+      > li {
+        flex: 0 0 auto;
+      }
+    }
+    @else {
+      > li {
+        display: table-cell;
+      }
     }
   }
   @else if $dir == vertical {
-    > li {
-      display: block;
+    @if $global-flexbox {
+      flex-wrap: wrap;
+
+      > li {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+
+      > li  > a {
+        align-items: flex-start;
+        justify-content: flex-start;
+      }
+    }
+    @else {
+      > li {
+        display: block;
+      }
     }
   }
   @else {
@@ -102,35 +151,64 @@ $menu-expand-max: 6 !default;
 /// @param {Boolean} $base [true] - Set to `false` to prevent the shared CSS between side- and top-aligned icons from being printed. Set this to `false` if you're calling the mixin multiple times on the same element.
 @mixin menu-icons($position: side, $base: true) {
   @if $base {
-    > li > a {
-      > img,
-      > i {
-        vertical-align: middle;
+    @if $global-flexbox {
+      > li > a {
+        display: flex;
       }
+    }
+    @else {
+      > li > a {
+        img,
+        i,
+        svg {
+          vertical-align: middle;
 
-      > span {
-        vertical-align: middle;
+          + span {
+            vertical-align: middle;
+          }
+        }
       }
     }
   }
 
   @if $position == side {
     > li > a {
-      > img,
-      > i {
-        display: inline-block;
+      @if $global-flexbox {
+        flex-flow: row nowrap;
+      }
+
+      img,
+      i,
+      svg {
         margin-#{$global-right}: $menu-icon-spacing;
+
+        @if not $global-flexbox {
+          display: inline-block;
+        }
       }
     }
   }
   @else if $position == top {
     > li > a {
-      text-align: center;
+      @if $global-flexbox {
+        flex-flow: column nowrap;
+      }
+      @else {
+        text-align: center;
+      }
 
-      > img,
-      > i {
-        display: block;
-        margin: 0 auto $menu-icon-spacing;
+      img,
+      i,
+      svg {
+        @if not $global-flexbox {
+          display: block;
+          margin: 0 auto $menu-icon-spacing;
+        }
+        @else {
+          align-self: stretch;
+          text-align: center;
+          margin-bottom: $menu-icon-spacing;
+        }
       }
     }
   }
@@ -158,7 +236,7 @@ $menu-expand-max: 6 !default;
     }
 
     @each $size in $breakpoint-classes {
-      @if $size != small {
+      @if $size != $-zf-zero-breakpoint {
         @include breakpoint($size) {
           &.#{$size}-horizontal {
             @include menu-direction(horizontal);
@@ -178,8 +256,15 @@ $menu-expand-max: 6 !default;
 
     // Align right
     &.align-#{$global-right} {
-      > li {
-        float: $global-right;
+      @if $global-flexbox {
+        justify-content: flex-end;
+      }
+      @else {
+        @include clearfix;
+
+        > li {
+          float: $global-right;
+        }
       }
     }
 
@@ -201,10 +286,25 @@ $menu-expand-max: 6 !default;
     &.nested {
       @include menu-nested;
     }
+
+    // Active state
+    .active > a {
+      color: $menu-item-color-active;
+      background: $menu-item-background-active;
+    }
   }
 
   .menu-text {
     @include menu-text;
+  }
+
+  // Align center
+  .menu-centered {
+    text-align: center;
+
+    > .menu {
+      display: inline-block;
+    }
   }
 
   // Prevent FOUC when using the Responsive Menu plugin

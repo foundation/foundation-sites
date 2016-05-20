@@ -18,10 +18,6 @@ $reveal-width: 600px !default;
 /// @type Number
 $reveal-max-width: $global-width !default;
 
-/// Offset from the top of the window when a modal is added.
-/// @type Number
-$reveal-offset: rem-calc(100) !default;
-
 /// Default padding inside a modal.
 /// @type Number
 $reveal-padding: $global-padding !default;
@@ -63,7 +59,6 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   z-index: $reveal-zindex + 1;
   padding: $reveal-padding;
   border: $reveal-border;
-  margin: $reveal-offset auto 0;
   background-color: $reveal-background;
   border-radius: $reveal-radius;
 
@@ -109,6 +104,7 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   max-width: none;
   margin-left: 0;
   border: 0;
+  border-radius: 0;
 }
 
 @mixin foundation-reveal {
@@ -116,6 +112,13 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   // scss-lint:disable QualifyingElement
   body.is-reveal-open {
     overflow: hidden;
+  }
+  // html gets this class only in iOS
+  html.is-reveal-open,
+  html.is-reveal-open body {
+    height: 100%;
+    overflow: hidden;
+    user-select: none;
   }
 
   // Overlay
@@ -127,7 +130,10 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   .reveal {
     @include reveal-modal-base;
     @include reveal-modal-width($reveal-width);
-    position: absolute;
+    position: relative;
+    top: 100px;
+    margin-left: auto;
+    margin-right: auto;
     overflow-y: auto;
 
     // Placeholder selector for medium-and-up modals
@@ -153,6 +159,14 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
     // Full-screen mode
     &.full {
       @include reveal-modal-fullscreen;
+    }
+
+    @include breakpoint($-zf-zero-breakpoint only) {
+      @include reveal-modal-fullscreen;
+    }
+
+    &.without-overlay {
+      position: fixed;
     }
   }
 }

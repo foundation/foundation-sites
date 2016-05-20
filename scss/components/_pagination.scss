@@ -113,7 +113,7 @@ $pagination-arrows: true !default;
 @mixin pagination-item-disabled {
   padding: $pagination-item-padding;
   color: $pagination-item-color-disabled;
-  cursor: default;
+  cursor: not-allowed;
 
   &:hover {
     background: transparent;
@@ -122,7 +122,7 @@ $pagination-arrows: true !default;
 
 /// Adds styles for an ellipsis for use in a pagination list.
 @mixin pagination-ellipsis {
-  content: '…';
+  content: '\2026';
   padding: $pagination-item-padding;
   color: $pagination-ellipsis-color;
 }
@@ -147,14 +147,14 @@ $pagination-arrows: true !default;
   @if $pagination-arrows {
     .pagination-previous a::before,
     .pagination-previous.disabled::before {
-      content: '«';
+      content: '\00ab';
       display: inline-block;
       margin-#{$global-right}: 0.5rem;
     }
 
     .pagination-next a::after,
     .pagination-next.disabled::after {
-      content: '»';
+      content: '\00bb';
       display: inline-block;
       margin-#{$global-left}: 0.5rem;
     }

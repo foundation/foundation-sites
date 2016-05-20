@@ -181,7 +181,7 @@ $(document)
   })
   // form validation passed, form will submit if submit event not returned false
   .on("formvalid.zf.abide", function(ev,frm) {
-    console.log("Form id "+frm.attr('id')+" is invalid");
+    console.log("Form id "+frm.attr('id')+" is valid");
     // ajax post form 
   })
   // to prevent form from submitting upon successful validation
@@ -208,6 +208,7 @@ Foundation.Abide.defaults.patterns['dashes_only'] = /^[0-9-]*$/;
 Foundation.Abide.defaults.validators['greater_than'] =
 function($el,required,parent) {
   // parameter 1 is jQuery selector
+  if (!required) return true;
   var from = $('#'+$el.attr('data-greater-than')).val(),
       to = $el.val();
   return (parseInt(to) > parseInt(from));

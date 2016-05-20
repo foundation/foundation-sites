@@ -1,5 +1,6 @@
 $(document).foundation();
 
+// [TODO] Remove this when possible
 $(function() {
   // Equalizer test
   var counter = 0;

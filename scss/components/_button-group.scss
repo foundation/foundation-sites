@@ -29,14 +29,28 @@ $buttongroup-expand-max: 6 !default;
 ) {
   @include clearfix;
   margin-bottom: $buttongroup-margin;
-  font-size: 0;
+
+  @if $global-flexbox {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: stretch;
+  }
+  @else {
+    font-size: 0;
+  }
 
   #{$child-selector} {
     margin: 0;
+    margin-#{$global-right}: $buttongroup-spacing;
+    margin-bottom: $buttongroup-spacing;
     font-size: map-get($button-sizes, default);
 
-    &:not(:last-child) {
-      margin-right: $buttongroup-spacing;
+    @if $global-flexbox {
+      flex: 0 0 auto;
+    }
+
+    &:last-child {
+      margin-#{$global-right}: 0;
     }
   }
 }
@@ -47,19 +61,32 @@ $buttongroup-expand-max: 6 !default;
   $selector: $buttongroup-child-selector,
   $count: null
 ) {
-  @if $count != null {
-    @warn 'button-group-expand(): the $count property is no longer needed. This parameter will be removed in Foundation 6.2.';
+  @if not $global-flexbox {
+    margin-#{$global-right}: -$buttongroup-spacing;
+
+    &::before,
+    &::after {
+      display: none;
+    }
   }
 
-  margin-right: -$buttongroup-spacing;
-
+  // scss-lint:disable ZeroUnit
   #{$selector} {
-    @for $i from 2 through $buttongroup-expand-max {
-      &:first-child:nth-last-child(#{$i}) {
-        &, &:first-child:nth-last-child(#{$i}) ~ #{$selector} {
-          display: inline-block;
-          width: calc( #{percentage(1/$i)} - #{$buttongroup-spacing} );
-          margin-right: $buttongroup-spacing;
+    @if $global-flexbox {
+      flex: 1 1 0px;
+    }
+    @else {
+      @for $i from 2 through $buttongroup-expand-max {
+        &:first-child:nth-last-child(#{$i}) {
+          &, &:first-child:nth-last-child(#{$i}) ~ #{$selector} {
+            display: inline-block;
+            width: calc(#{percentage(1 / $i)} - #{$buttongroup-spacing});
+            margin-#{$global-right}: $buttongroup-spacing;
+
+            &:last-child {
+              margin-#{$global-right}: $buttongroup-spacing * -$buttongroup-expand-max;
+            }
+          }
         }
       }
     }
@@ -71,11 +98,20 @@ $buttongroup-expand-max: 6 !default;
 @mixin button-group-stack(
   $selector: $buttongroup-child-selector
 ) {
-  #{$selector} {
-    width: 100%;
+  @if $global-flexbox {
+    flex-wrap: wrap;
+  }
 
-    &:not(:last-child) {
-      margin-right: $buttongroup-spacing;
+  #{$selector} {
+    @if $global-flexbox {
+      flex: 0 0 100%;
+    }
+    @else {
+      width: 100%;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
     }
   }
 }
@@ -85,12 +121,15 @@ $buttongroup-expand-max: 6 !default;
 @mixin button-group-unstack(
   $selector: $buttongroup-child-selector
 ) {
+  // scss-lint:disable ZeroUnit
   #{$selector} {
-    width: auto;
-
-    &:not(:last-child) {
-      margin-right: $buttongroup-spacing;
+    @if $global-flexbox {
+      flex: 1 1 0px;
     }
+    @else {
+      width: auto;
+    }
+    margin-bottom: 0;
   }
 }
 
@@ -100,14 +139,16 @@ $buttongroup-expand-max: 6 !default;
 
     // Sizes
     @each $size, $value in map-remove($button-sizes, default) {
-      &.#{$size} #{$buttongroup-child-selector} { font-size: $value; }
+      &.#{$size} #{$buttongroup-child-selector} {
+        font-size: $value;
+      }
     }
 
     // Even-width Group
     &.expanded { @include button-group-expand; }
 
     // Colors
-    @each $name, $color in $foundation-colors {
+    @each $name, $color in $foundation-palette {
       @if $button-fill != hollow {
         &.#{$name} #{$buttongroup-child-selector} {
           @include button-style($color, auto, auto);
@@ -122,7 +163,8 @@ $buttongroup-expand-max: 6 !default;
     }
 
     &.stacked,
-    &.stacked-for-small {
+    &.stacked-for-small,
+    &.stacked-for-medium {
       @include button-group-stack;
     }
 
@@ -132,13 +174,20 @@ $buttongroup-expand-max: 6 !default;
       }
     }
 
+    &.stacked-for-medium {
+      @include breakpoint(large) {
+        @include button-group-unstack;
+      }
+    }
+
+    // scss-lint:disable MergeableSelector
     &.stacked-for-small.expanded {
       @include breakpoint(small only) {
         display: block;
 
         #{$buttongroup-child-selector} {
           display: block;
-          margin-right: 0;
+          margin-#{$global-right}: 0;
         }
       }
     }

@@ -7,11 +7,11 @@ var confirm = require('gulp-prompt').confirm;
 var prompt = require('gulp-prompt').prompt;
 var rsync = require('gulp-rsync');
 var replace = require('gulp-replace');
-var git = require('gitty')(process.cwd() + '/');
 var octophant = require('octophant');
 var sequence = require('run-sequence');
 var inquirer = require('inquirer');
 var exec = require('child_process').execSync;
+var plumber = require('gulp-plumber');
 
 var VERSIONED_FILES = [
   'bower.json',
@@ -27,6 +27,7 @@ var VERSIONED_FILES = [
 var DIST_FILES = [
   './_build/assets/css/foundation.css',
   './_build/assets/css/foundation-flex.css',
+  './_build/assets/css/foundation-rtl.css',
   '_build/assets/js/foundation.js'
 ];
 
@@ -34,7 +35,7 @@ var CURRENT_VERSION = require('../package.json').version;
 var NEXT_VERSION;
 
 gulp.task('deploy', function(cb) {
-  sequence('deploy:prompt', 'deploy:version', 'deploy:dist', 'deploy:settings', 'deploy:commit', 'deploy:templates', cb);
+  sequence('deploy:prompt', 'deploy:version', 'deploy:dist', 'deploy:plugins', 'deploy:settings', 'deploy:commit', 'deploy:templates', cb);
 });
 
 gulp.task('deploy:prompt', function(cb) {
@@ -61,6 +62,7 @@ gulp.task('deploy:dist', ['sass:foundation', 'javascript:foundation'], function(
   var jsFilter  = filter(['*.js'], { restore: true });
 
   return gulp.src(DIST_FILES)
+    .pipe(plumber())
     .pipe(cssFilter)
       .pipe(gulp.dest('./dist'))
       .pipe(cssnano())
@@ -72,6 +74,12 @@ gulp.task('deploy:dist', ['sass:foundation', 'javascript:foundation'], function(
       .pipe(uglify())
       .pipe(rename({ suffix: '.min' }))
       .pipe(gulp.dest('./dist'));
+});
+
+// Copies standalone JavaScript plugins to dist/ folder
+gulp.task('deploy:plugins', function() {
+  gulp.src('_build/assets/js/plugins/*.js')
+    .pipe(gulp.dest('dist/plugins'));
 });
 
 // Generates a settings file
@@ -91,7 +99,8 @@ gulp.task('deploy:settings', function(cb) {
       'typography-base',
       'typography-helpers'
     ],
-    imports: ['util/util']
+    imports: ['util/util'],
+    _foundationShim: true
   }
 
   octophant('./scss', options, cb);
@@ -116,22 +125,24 @@ gulp.task('deploy:docs', ['build'], function() {
     }));
 });
 
-gulp.task('deploy:templates', function() {
-  exec('git clone https://github.com/zurb/foundation-sites-template');
-  exec('cp scss/settings/_settings.scss foundation-sites-template/scss/_settings.scss');
-  exec('cd foundation-sites-template');
-  exec('git commit -am "Update settings file to match Foundation "' + NEXT_VERSION);
-  exec('git push origin master');
-  exec('cd ..');
-  exec('rm -rf foundation-sites-template');
-
-  exec('git clone https://github.com/zurb/foundation-zurb-template');
-  exec('cp scss/settings/_settings.scss foundation-zurb-template/src/assets/scss/_settings.scss');
-  exec('cd foundation-zurb-template');
-  exec('git commit -am "Update settings file to match Foundation "' + NEXT_VERSION);
-  exec('git push origin master');
-  exec('cd ..');
-  exec('rm -rf foundation-zurb-template');
+// This part of the deploy process hasn't been tested! It should be done manually for now
+gulp.task('deploy:templates', function(done) {
+  // exec('git clone https://github.com/zurb/foundation-sites-template');
+  // exec('cp scss/settings/_settings.scss foundation-sites-template/scss/_settings.scss');
+  // exec('cd foundation-sites-template');
+  // exec('git commit -am "Update settings file to match Foundation "' + NEXT_VERSION);
+  // exec('git push origin master');
+  // exec('cd ..');
+  // exec('rm -rf foundation-sites-template');
+  //
+  // exec('git clone https://github.com/zurb/foundation-zurb-template');
+  // exec('cp scss/settings/_settings.scss foundation-zurb-template/src/assets/scss/_settings.scss');
+  // exec('cd foundation-zurb-template');
+  // exec('git commit -am "Update settings file to match Foundation "' + NEXT_VERSION);
+  // exec('git push origin master');
+  // exec('cd ..');
+  // exec('rm -rf foundation-zurb-template');
+  done();
 });
 
 // The Customizer runs this function to generate files it needs

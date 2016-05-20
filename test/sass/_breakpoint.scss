@@ -93,6 +93,10 @@
       'Creates special media query for retina');
   }
 
+  @include test('Breakpoint (Unknown Value) [function]') {
+    @include assert-equal(breakpoint(xxxxlarge), '', 'Returns an empty string for non-existant media queries');
+  }
+
   @include test('Map Serialize [function]') {
     $input: (
       small: 1em,

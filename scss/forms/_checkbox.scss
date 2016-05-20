@@ -21,11 +21,15 @@
     margin-#{$global-right}: $form-spacing;
     margin-bottom: 0;
     vertical-align: baseline;
+
+    &[for] {
+      cursor: pointer;
+    }
   }
 
   // Styles for inputs inside labels
   label > [type='checkbox'],
-  label > [type='label'] {
+  label > [type='radio'] {
     margin-#{$global-right}: $form-spacing * 0.5;
   }
 

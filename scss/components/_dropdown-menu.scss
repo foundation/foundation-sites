@@ -31,24 +31,108 @@ $dropdownmenu-border: 1px solid $medium-gray !default;
 // @type Length
 $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
 
+@mixin left-right-arrows {
+  > a::after {
+    #{$global-right}: 14px;
+    margin-top: -3px;
+  }
+
+  &.opens-left > a::after {
+    @include css-triangle(5px, $dropdownmenu-arrow-color, left);
+  }
+
+  &.opens-right > a::after {
+    @include css-triangle(5px, $dropdownmenu-arrow-color, right);
+  }
+}
+
+@mixin dropdown-menu-direction($dir: horizontal) {
+  @if $dir == horizontal {
+    > li.opens-left {
+      > .is-dropdown-submenu {
+        left: auto;
+        right: 0;
+        top: 100%;
+      }
+    }
+
+    > li.opens-right {
+      > .is-dropdown-submenu {
+        right: auto;
+        left: 0;
+        top: 100%;
+      }
+    }
+
+    @if $dropdownmenu-arrows {
+      > li.is-dropdown-submenu-parent > a {
+        padding-#{$global-right}: 1.5rem;
+        position: relative;
+      }
+
+      > li.is-dropdown-submenu-parent > a::after {
+        @include css-triangle(5px, $dropdownmenu-arrow-color, down);
+        #{$global-right}: 5px;
+        margin-top: -2px;
+      }
+    }
+  }
+  @else if $dir == vertical {
+    > li {
+      .is-dropdown-submenu {
+        top: 0;
+      }
+
+      &.opens-left {
+        > .is-dropdown-submenu {
+          left: auto;
+          right: 100%;
+        }
+      }
+
+      &.opens-right {
+        > .is-dropdown-submenu {
+          right: auto;
+          left: 100%;
+        }
+      }
+
+      @if $dropdownmenu-arrows {
+        @include left-right-arrows;
+      }
+    }
+  }
+  @else {
+    @warn 'The direction used for dropdown-menu-direction() must be horizontal or vertical.';
+  }
+}
+
 @mixin foundation-dropdown-menu {
   .dropdown.menu {
+    @include dropdown-menu-direction(horizontal);
+
     a {
       @include disable-mouse-outline;
     }
-    &:not(.vertical) {
 
-    }
     .no-js & ul {
       display: none;
     }
 
-    &:not(.vertical) {
-      .is-dropdown-submenu {
-        &.first-sub {
-          top: 100%;
-          #{$global-left}: 0;
-          #{$global-right}: auto;
+    &.vertical {
+      @include dropdown-menu-direction(vertical);
+    }
+
+    @each $size in $breakpoint-classes {
+      @if $size != $-zf-zero-breakpoint {
+        @include breakpoint($size) {
+          &.#{$size}-horizontal {
+            @include dropdown-menu-direction(horizontal);
+          }
+
+          &.#{$size}-vertical {
+            @include dropdown-menu-direction(vertical);
+          }
         }
       }
     }
@@ -68,67 +152,28 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
     &.align-right {
       float: right;
     }
-
-    > li .is-dropdown-submenu {
-      top: 0;
-      left: 100%;
-    }
   }
 
   .is-dropdown-submenu-parent {
     position: relative;
 
     a::after {
-      float: $global-right;
-      margin-top: 3px;
-      margin-#{$global-left}: 10px;
+      position: absolute;
+      top: 50%;
+      #{$global-right}: 5px;
+      margin-top: -2px;
     }
 
-    @if $dropdownmenu-arrows {
-      &.is-down-arrow a {
-        padding-#{$global-right}: 1.5rem;
-        position: relative;
-      }
-
-      &.is-down-arrow > a::after {
-        @include css-triangle(5px, $dropdownmenu-arrow-color, down);
-        position: absolute;
-        top: rem-calc(2px) + rem-calc(get-side($menu-item-padding, top));
-        #{$global-right}: 5px;
-      }
-
-      &.is-left-arrow > a::after {
-        @include css-triangle(5px, $dropdownmenu-arrow-color, left);
-        float: left;
-        margin-left: 0;
-        margin-right: 10px;
-      }
-
-      &.is-right-arrow > a::after {
-        @include css-triangle(5px, $dropdownmenu-arrow-color, right);
-      }
-    }
-
-    &.is-left-arrow.opens-inner .is-dropdown-submenu {
-      right: 0;
+    &.opens-inner > .is-dropdown-submenu {
+      top: 100%;
       left: auto;
     }
 
-    &.is-right-arrow.opens-inner .is-dropdown-submenu {
-      left: 0;
-      right: auto;
-    }
-
-    &.opens-inner .is-dropdown-submenu {
-      top: 100%;
-    }
-
-    &.opens-left .is-dropdown-submenu {
+    &.opens-left > .is-dropdown-submenu {
       left: auto;
       right: 100%;
     }
   }
-
 
   .is-dropdown-submenu {
     display: none;
@@ -140,6 +185,12 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
     background: $dropdownmenu-background;
     border: $dropdownmenu-border;
 
+    .is-dropdown-submenu-parent {
+      @if $dropdownmenu-arrows {
+        @include left-right-arrows;
+      }
+    }
+
     @if (type-of($dropdownmenu-border-width) == 'number') {
       .is-dropdown-submenu {
         margin-top: (-$dropdownmenu-border-width);
@@ -150,10 +201,9 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
       width: 100%;
     }
 
-
     // [TODO] Cut back specificity
     // scss-lint:disable SelectorDepth
-    &:not(.js-dropdown-nohover) > .is-dropdown-submenu-parent:hover > &,
+    //&:not(.js-dropdown-nohover) > .is-dropdown-submenu-parent:hover > &, // why is this line needed? Opening is handled by JS and this causes some ugly flickering when the sub is re-positioned automatically...
     &.js-dropdown-active {
       display: block;
     }

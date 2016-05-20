@@ -1,0 +1,218 @@
+# This is the customizer's master module list.
+# Each item in the list is a module with any of these keys:
+#   - sass: Name of the CSS export. 'grid' becomes '@include foundation-grid;'
+#   - js: Name of the JavaScript file. 'accordion' becomes 'foundation.accordion.js'
+#   - js_utils: Names of plugin dependencies. 'box' becomes 'foundation.util.box.js'
+
+grid:
+  sass: grid
+
+flex_grid:
+  sass: flex-grid
+
+flex_classes:
+  sass: flex-classes
+
+typography:
+  sass: typography
+
+button:
+  sass: button
+
+forms:
+  sass: forms
+
+input_range:
+  sass: range-input
+
+abide:
+  js: abide
+
+accordion:
+  sass: accordion
+  js: accordion
+  js_utils:
+    - keyboard
+    - motion
+
+accordion_menu:
+  sass: accordion-menu
+  js: accordionMenu
+  js_utils:
+    - keyboard
+    - motion
+    - nest
+
+badge:
+  sass: badge
+
+breadcrumbs:
+  sass: breadcrumbs
+
+button_group:
+  sass: button-group
+
+callout:
+  sass: callout
+
+close_button:
+  sass: close-button
+
+drilldown_menu:
+  sass: drilldown-menu
+  js: drilldown
+  js_utils:
+    - keyboard
+    - motion
+    - nest
+
+dropdown:
+  sass: dropdown
+  js: dropdown
+  js_utils:
+    - keyboard
+    - box
+    - triggers
+
+dropdown_menu:
+  sass: dropdown-menu
+  js: dropdownMenu
+  js_utils:
+    - keyboard
+    - motion
+    - box
+    - nest
+
+equalizer:
+  js: equalizer
+
+flex_video:
+  sass: flex-video
+
+interchange:
+  js: interchange
+  js_utils:
+    - triggers
+    - timerAndImageLoader
+
+label:
+  sass: label
+
+magellan:
+  js: magellan
+  js_utils:
+    - motion
+
+media_object:
+  sass: media-object
+
+menu:
+  sass: menu
+
+menu_icon:
+  sass: menu-icon
+
+off_canvas:
+  sass: off-canvas
+  js: offcanvas
+
+orbit:
+  sass: orbit
+  js: orbit
+  js_utils:
+    - motion
+    - timerAndImageLoader
+    - keyboard
+    - touch
+
+pagination:
+  sass: pagination
+
+progress_bar:
+  sass: progress-bar
+
+progress_element:
+  sass: progress-element
+
+responsive_menu:
+  js: responsiveMenu
+  js_utils:
+    - triggers
+    - mediaQuery
+
+responsive_toggle:
+  js: responsiveToggle
+  js_utils:
+    - mediaQuery
+
+meter_element:
+  sass: meter-element
+
+slider:
+  sass: slider
+  js: slider
+  js_utils:
+    - box
+    - motion
+    - triggers
+    - mediaQuery
+    - keyboard
+
+sticky:
+  sass: sticky
+  js: sticky
+  js_utils:
+    - triggers
+    - mediaQuery
+
+reveal:
+  sass: reveal
+  js: reveal
+  js_utils:
+    - box
+    - motion
+    - triggers
+    - mediaQuery
+    - keyboard
+
+switch:
+  sass: switch
+
+table:
+  sass: table
+
+tabs:
+  sass: tabs
+  js: tabs
+  js_utils:
+    - keyboard
+    - timerAndImageLoader
+
+thumbnail:
+  sass: thumbnail
+
+title_bar:
+  sass: title-bar
+
+toggler:
+  js: toggler
+  js_utils:
+    - motion
+
+tooltip:
+  sass: tooltip
+  js: tooltip
+  js_utils:
+    - box
+    - triggers
+    - mediaQuery
+    - motion
+
+top_bar:
+  sass: top-bar
+
+visibility:
+  sass: visibility-classes
+
+float:
+  sass: float-classes

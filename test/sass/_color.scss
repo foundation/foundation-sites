@@ -4,7 +4,7 @@
 @import '../../scss/util/color';
 
 @include test-module('Color') {
-  
+
   @include test('Foreground (Black) [function]') {
     $test: foreground($white);
     $expect: $black;

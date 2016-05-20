@@ -9,7 +9,7 @@ description: Foundation is written in Sass, which allows us to make the codebase
 
 ## Compatibility
 
-<img src="assets/img/logo-sass.svg" alt="Sass logo" class="float-right" style="width: 150px; height: 150px; margin-left: 1rem;">
+<img src="assets/img/logos/sass-logo.svg" alt="Sass logo" class="float-right" style="width: 150px; height: 150px; margin-left: 1rem;">
 
 **Foundation for Sites can be compiled with Ruby Sass and libsass.** We tend to stick to the latest versions of both compilers when possible. Our documentation and starter project are compiled with [node-sass](https://github.com/sass/node-sass), a Node port of libsass. We recommend these versions of either compiler:
 
@@ -52,7 +52,7 @@ grunt.initConfig({
   sass: {
     dist: {
     options: {
-        includePaths: ['node_modules/foundation-sites/scss']
+        loadPath: ['node_modules/foundation-sites/scss']
       }
     }
   }
@@ -117,7 +117,7 @@ Our [starter projects](starter-projects.html) include the full list of imports, 
 
 ## The Settings File
 
-All Foundation projects include a settings file, named `_settings.scss`. If you're using Yeti Launch or the CLI to create a Foundation for Sites project, you can find the settings file under src/assets/scss/. If you're installing the framework standalone using Bower or npm, there's a settings file included in those packages, which you can move into your own Sass files to work with.
+All Foundation projects include a settings file, named `_settings.scss`. If you're using Yeti Launch or the CLI to create a Foundation for Sites project, you can find the settings file under scss/ (basic template) or src/assets/scss/ (ZURB template). If you're installing the framework standalone using Bower or npm, there's a settings file included in those packages, which you can move into your own Sass files to work with.
 
 Every component includes a set of variables that modify core structural or visual styles. If there's something you can't customize with a variable, you can just write your own CSS to add it.
 

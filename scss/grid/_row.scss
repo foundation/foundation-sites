@@ -48,13 +48,12 @@
   $cf: true,
   $gutter: $grid-column-gutter
 ) {
-  $behavior: -zf-get-options($behavior, nest collapse);
   $margin: auto;
 
-  @if map-get($behavior, nest) {
+  @if index($behavior, nest) != null {
     @include grid-row-nest($gutter);
 
-    @if map-get($behavior, collapse) {
+    @if index($behavior, collapse) != null {
       margin-left: 0;
       margin-right: 0;
     }
@@ -79,20 +78,18 @@
 /// Inverts the margins of a row to nest it inside of a column.
 ///
 /// @param {Map|null} $gutter [null] - Gutter value to use when inverting the margins. Set to `null` to refer to the responsive gutter settings.
-@mixin grid-row-nest($gutter: null) {
-  @if $gutter != null {
-    $margin: rem-calc($gutter) / 2 * -1;
-    margin-left: $margin;
-    margin-right: $margin;
+@mixin grid-row-nest($gutter: $grid-column-gutter) {
+  @if type-of($gutter) == 'number' {
+    $gutter: ($-zf-zero-breakpoint: $gutter);
   }
-  @else {
-    @each $breakpoint, $value in $grid-column-responsive-gutter {
-      $margin: rem-calc($value) / 2 * -1;
+  max-width: none;
 
-      @include breakpoint($breakpoint) {
-        margin-left: $margin;
-        margin-right: $margin;
-      }
+  @each $breakpoint, $value in $gutter {
+    $margin: rem-calc($value) / 2 * -1;
+
+    @include breakpoint($breakpoint) {
+      margin-left: $margin;
+      margin-right: $margin;
     }
   }
 }

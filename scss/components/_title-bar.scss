@@ -36,34 +36,51 @@ $titlebar-icon-spacing: 0.25rem !default;
 
 @mixin foundation-title-bar {
   .title-bar {
-    @include clearfix;
     background: $titlebar-background;
     color: $titlebar-color;
     padding: $titlebar-padding;
 
+    @if $global-flexbox {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    @else {
+      @include clearfix;
+    }
+
     .menu-icon {
       margin-#{$global-left}: $titlebar-icon-spacing;
-      margin-#{$global-right}: $titlebar-padding;
+      margin-#{$global-right}: $titlebar-icon-spacing;
     }
   }
 
-  .title-bar-left {
-    float: left;
-  }
+  @if $global-flexbox {
+    // scss-lint:disable ZeroUnit
+    .title-bar-left,
+    .title-bar-right {
+      flex: 1 1 0px;
+    }
 
-  .title-bar-right {
-    float: right;
-    text-align: right;
+    .title-bar-right {
+      text-align: right;
+    }
+  }
+  @else {
+    .title-bar-left {
+      float: left;
+    }
+
+    .title-bar-right {
+      float: right;
+      text-align: right;
+    }
   }
 
   .title-bar-title {
     font-weight: $titlebar-text-font-weight;
     vertical-align: middle;
     display: inline-block;
-  }
-
-  .menu-icon {
-    @include hamburger($color: $titlebar-icon-color, $color-hover: $titlebar-icon-color-hover);
   }
 
   .menu-icon.dark {

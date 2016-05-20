@@ -8,6 +8,7 @@ tags:
   - sub nav
   - icon bar
   - top bar
+flex: true
 ---
 
 The menu is a flexible, all-purpose component for navigation. It replaces Foundation 5's inline list, side nav, sub nav, and icon bar, unifying them into one component.
@@ -46,7 +47,26 @@ By default, each item in the menu aligns to the left. They can also be aligned t
 </ul>
 ```
 
----
+<br>
+
+To align items in the middle, add a wrapping element with the class `.menu-centered`.
+
+<div class="primary callout">
+  <p>If you're using <a href="flexbox.html">Flexbox mode</a>, you don't need the wrapper class. Instead, you can just add the class <code>.align-center</code> to the menu.</p>
+</div>
+
+```html_example
+<div class="menu-centered">
+  <ul class="menu">
+    <li><a href="#">One</a></li>
+    <li><a href="#">Two</a></li>
+    <li><a href="#">Three</a></li>
+    <li><a href="#">Four</a></li>
+  </ul>
+</div>
+```
+
+<br>
 
 Items can also be set to expand out and take up an even amount of space, with the `.expanded` class. Thanks to the magic of CSS, the items will automatically size themselves equally depending on how many are inside the menu.
 
@@ -125,6 +145,35 @@ Add a new menu inside the `<li>` of a Menu and add the class `.nested` to create
 
 ---
 
+## Active State
+
+Add the class `.active` to any `<li>` to create an active state. You could apply this server-side to mark the active page, or dynamically with JavaScript.
+
+```html_example
+<ul class="menu">
+  <li class="active"><a>Home</a></li>
+  <li><a>About</a></li>
+  <li><a>Nachos</a></li>
+</ul>
+```
+
+---
+
+## Text
+
+Because the padding of the menu item is applied to the `<a>`, if you try to add an item that's text only, it will be misaligned. To get around this, add the class `.menu-text` to any `<li>` that doesn't have a link inside of it.
+
+```html_example
+<ul class="menu">
+  <li class="menu-text">Site Title</li>
+  <li><a href="#">One</a></li>
+  <li><a href="#">Two</a></li>
+  <li><a href="#">Three</a></li>
+</ul>
+```
+
+---
+
 ## Icons
 
 Menu items can have icons. Wrap the text of the item in a `<span>`, and then add an `<img>` element before the `<span>`. If you're using the Foundation icon font, the `<img>` will be an `<i>` instead.
@@ -150,3 +199,8 @@ Add the class `.icon-top` to the Menu to orient icons above the text.
   <li><a href="#"><i class="fi-list"></i> <span>Four</span></a></li>
 </ul>
 ```
+---
+
+## Sticky Navigation
+
+See the documentation for the [Sticky](sticky.html#sticky-navigation) plugin to see how to easily make a sticky nav bar.

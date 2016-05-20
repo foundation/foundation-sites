@@ -9,43 +9,11 @@
 /// @group slider
 ////
 
-/// Default height of the slider.
+/// Default slider width of a vertical slider. (Doesn't apply to the native slider.)
 /// @type Number
-$slider-height: 0.5rem !default;
+$slider-width-vertical: 0.5rem !default;
 
-/// Default slider width of a vertical slider.
-/// @type Number
-$slider-width-vertical: $slider-height !default;
-
-/// Default background color of the slider's track.
-/// @type Color
-$slider-background: $light-gray !default;
-
-/// Default color of the active fill color of the slider.
-/// @type Color
-$slider-fill-background: $medium-gray !default;
-
-/// Default height of the handle of the slider.
-/// @type Number
-$slider-handle-height: 1.4rem !default;
-
-/// Default width of the handle of the slider.
-/// @type Number
-$slider-handle-width: 1.4rem !default;
-
-/// Default color of the handle for the slider.
-/// @type Color
-$slider-handle-background: $primary-color !default;
-
-/// Default fade amount of a disabled slider.
-/// @type Number
-$slider-opacity-disabled: 0.25 !default;
-
-/// Default radius for slider.
-/// @type Number
-$slider-radius: $global-radius !default;
-
-/// Transition properties to apply to the slider handle and fill.
+/// Transition properties to apply to the slider handle and fill. (Doesn't apply to the native slider.)
 /// @type Transition
 $slider-transition: all 0.2s ease-in-out !default;
 

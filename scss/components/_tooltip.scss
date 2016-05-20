@@ -38,10 +38,6 @@ $tooltip-pip-width: 0.75rem !default;
 /// @type Number
 $tooltip-pip-height: $tooltip-pip-width * 0.866 !default;
 
-/// Default pip offset for tooltips. This controls how far the pip is indented from the left edge of the tooltip.
-/// @type Number
-$tooltip-pip-offset: 1.25rem !default;
-
 /// Default radius for tooltips.
 /// @type Number
 $tooltip-radius: $global-radius !default;

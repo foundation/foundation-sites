@@ -57,12 +57,13 @@
   $columns: $grid-column-count,
   $gutter: $grid-column-gutter
 ) {
-  @if $gutter != null {
-    $gutter: rem-calc($gutter) / 2;
-  }
-  @else {
-    @each $breakpoint, $gutter in $grid-column-responsive-gutter {
-      $padding: rem-calc($gutter) / 2;
+  @include grid-column-size($columns);
+  float: $global-left;
+
+  // Gutters
+  @if type-of($gutter) == 'map' {
+    @each $breakpoint, $value in $gutter {
+      $padding: rem-calc($value) / 2;
 
       @include breakpoint($breakpoint) {
         padding-left: $padding;
@@ -70,12 +71,13 @@
       }
     }
   }
+  @else if type-of($gutter) == 'number' and strip-unit($gutter) > 0 {
+    $padding: rem-calc($gutter) / 2;
+    padding-left: $padding;
+    padding-right: $padding;
+  }
 
-  @include grid-column-size($columns);
-  float: $global-left;
-  padding-left: $gutter;
-  padding-right: $gutter;
-
+  // Last column alignment
   @if $grid-column-align-edge {
     &:last-child:not(:first-child) {
       float: $global-right;

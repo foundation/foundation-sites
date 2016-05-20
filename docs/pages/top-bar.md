@@ -2,6 +2,7 @@
 title: Top Bar
 description: The new top bar is a simpler wrapper around our flexible menu components.
 sass: ./scss/components/_top-bar.scss
+flex: true
 ---
 
 <div class="primary callout">
@@ -12,7 +13,7 @@ sass: ./scss/components/_top-bar.scss
 
 A top bar (`.top-bar`) can have two sections: a left-hand section (`.top-bar-left`) and a right-hand section (`.top-bar-right`). On small screens, these sections stack on top of each other.
 
-In the below example, our top bar includes a [dropdown menu](dropdown-menu.html), along with a text input field and action button.
+In the below example, our top bar includes a [dropdown menu](dropdown-menu.html), along with a text input field and action button. The dropdown menu inherits the background color of the top bar. If you're using the Sass version of Foundation, you can change this with the `$topbar-submenu-background` variable.
 
 ```html_example
 <div class="top-bar">
@@ -42,7 +43,7 @@ In the below example, our top bar includes a [dropdown menu](dropdown-menu.html)
 
 ---
 
-## Advanced
+## Advanced Layout
 
 You can further divide a top bar into a title area and content area. Use the `.top-bar-title` class to create a title/branding area. Next to that can be any element, which is used for the rest of the content.
 
@@ -62,7 +63,7 @@ In the below example, we've combined the above pattern with the Responsive Toggl
 <div class="top-bar">
   <div class="top-bar-title">
     <span data-responsive-toggle="responsive-menu" data-hide-for="medium">
-      <span class="menu-icon dark" data-toggle></span>
+      <button class="menu-icon dark" type="button" data-toggle></button>
     </span>
     <strong>Site Title</strong>
   </div>
@@ -90,3 +91,45 @@ In the below example, we've combined the above pattern with the Responsive Toggl
   </div>
 </div>
 ```
+
+---
+
+## Stacking
+
+By default, the two sections of a top bar will stack on top of each other on small screens. This can be changed by adding the class `.stacked-for-medium` or `.stacked-for-large`.
+
+```html
+<div class="top-bar stacked-for-medium">
+  <!-- ... -->
+</div>
+```
+
+<div class="top-bar stacked-for-medium">
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li class="menu-text">Site Title</li>
+      <li>
+        <a href="#">One</a>
+        <ul class="menu vertical">
+          <li><a href="#">One</a></li>
+          <li><a href="#">Two</a></li>
+          <li><a href="#">Three</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Two</a></li>
+      <li><a href="#">Three</a></li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu">
+      <li><input type="search" placeholder="Search"></li>
+      <li><button type="button" class="button">Search</button></li>
+    </ul>
+  </div>
+</div>
+
+---
+
+## Sticky Navigation
+
+See the documentation for the [Sticky](sticky.html#sticky-navigation) plugin to see how to easily make a sticky nav bar.

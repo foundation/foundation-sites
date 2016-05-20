@@ -2,30 +2,6 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-////
-/// @group progress-bar
-////
-
-/// Height of a progress bar.
-/// @type Number
-$progress-height: 1rem !default;
-
-/// Background color of a progress bar.
-/// @type Color
-$progress-background: $medium-gray !default;
-
-/// Bottom margin of a progress bar.
-/// @type Number
-$progress-margin-bottom: $global-margin !default;
-
-/// Default color of a progress bar's meter.
-/// @type Color
-$progress-meter-background: $primary-color !default;
-
-/// Default radius of a progress bar.
-/// @type Number
-$progress-radius: $global-radius !default;
-
 /// Adds styles for a progress bar container.
 @mixin progress-container {
   background-color: $progress-background;
@@ -67,7 +43,7 @@ $progress-radius: $global-radius !default;
   .progress {
     @include progress-container;
 
-    @each $name, $color in $foundation-colors {
+    @each $name, $color in $foundation-palette {
       &.#{$name} {
         .progress-meter {
           background-color: $color;
