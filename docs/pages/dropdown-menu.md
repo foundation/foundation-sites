@@ -157,11 +157,11 @@ See the documentation for the [Sticky](sticky.html#sticky-navigation) plugin to 
 
 ### Preventing FOUC
 
-Before the JavaScript on your page loads, the dropdown menus will not have arrows. However, once the JavaScript file has loaded, the arrows will appear causing a [flash of unstyled content](https://en.wikipedia.org/wiki/Flash_of_unstyled_content). You can prevent this by adding the `.is-dropdown-submenu-parent` class manually. 
+Before the JavaScript on your page loads, the dropdown menus will not have arrows. However, once the JavaScript file has loaded, the arrows will appear causing a [flash of unstyled content](https://en.wikipedia.org/wiki/Flash_of_unstyled_content). You can prevent this by adding the `is-dropdown-submenu-parent` class manually. 
 
 ```html
 <ul class="dropdown menu" data-dropdown-menu>
-  <li class=".is-dropdown-submenu-parent">
+  <li class="is-dropdown-submenu-parent">
     <a href="#">Item 1</a>
     <ul class="menu">
       <li><a href="#">Item 1A</a></li>
