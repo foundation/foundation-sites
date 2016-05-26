@@ -88,7 +88,7 @@ Small grids expand to large screens easier than large grids cram into small scre
 
 ```html
 <div class="row">
-  <div class="small-2 columns">2 columns</div>
+  <div class="small-2 columns">2 <span class="hide-for-small-only">columns</span></div>
   <div class="small-10 columns">10 columns</div>
 </div>
 <div class="row">
