@@ -1,6 +1,6 @@
 {
   "name": "foundation-sites",
-  "version": "6.2.2-rc2",
+  "version": "6.2.2",
   "main": [
     "scss/foundation.scss",
     "dist/foundation.js"
