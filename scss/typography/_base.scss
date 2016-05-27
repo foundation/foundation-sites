@@ -203,6 +203,10 @@ $cite-font-size: rem-calc(13) !default;
 /// @type Color
 $cite-color: $dark-gray !default;
 
+/// Pseudo content for `<cite>` elements.
+/// @type String
+$cite-pseudo-content: '\2014 \0020';
+
 /// Font family for `<kbd>` elements.
 /// @type String | List
 $keystroke-font: $font-family-monospace !default;
@@ -407,7 +411,7 @@ $abbr-underline: 1px dotted $black !default;
     color: $cite-color;
 
     &:before {
-      content: '\2014 \0020';
+      content: $cite-pseudo-content;
     }
   }
 
