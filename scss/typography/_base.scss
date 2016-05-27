@@ -205,7 +205,7 @@ $cite-color: $dark-gray !default;
 
 /// Pseudo content for `<cite>` elements.
 /// @type String
-$cite-pseudo-content: '\2014 \0020';
+$cite-pseudo-content: '\2014 \0020' !default;
 
 /// Font family for `<kbd>` elements.
 /// @type String | List
