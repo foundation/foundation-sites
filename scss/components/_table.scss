@@ -56,6 +56,10 @@ $table-foot-background: smart-scale($table-background, $table-color-scale) !defa
 /// @type Color
 $table-head-font-color: $body-font-color !default;
 
+/// Default font color for footer.
+/// @type Color
+$table-foot-font-color: $body-font-color !default;
+
 /// Default value for showing the header when using stacked tables.
 /// @type Boolean
 $show-header-for-stacked: false !default;
@@ -96,8 +100,10 @@ $show-header-for-stacked: false !default;
   
   // Table foot
   tfoot {
-    // Implement custom background
-    background: $table-foot-background;  
+    // Background
+    background: $table-foot-background;
+    // Font color
+    color: $table-foot-font-color;
   }
   
   // Table rows
