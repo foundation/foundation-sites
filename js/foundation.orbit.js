@@ -200,7 +200,8 @@ class Orbit {
         var $controls = this.$element.find(`.${this.options.nextClass}, .${this.options.prevClass}`);
         $controls.attr('tabindex', 0)
         //also need to handle enter/return and spacebar key presses
-        .on('click.zf.orbit touchend.zf.orbit', function(){
+        .on('click.zf.orbit touchend.zf.orbit', function(e){
+	  e.preventDefault();
           _this.changeSlide($(this).hasClass(_this.options.nextClass));
         });
       }

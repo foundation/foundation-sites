@@ -70,8 +70,10 @@ $global-weight-normal: normal;
 $global-weight-bold: bold;
 $global-radius: 0;
 $global-text-direction: ltr;
-$global-flexbox: true;
+$global-flexbox: false;
 $print-transparent-backgrounds: true;
+
+@include add-foundation-colors;
 
 // 2. Breakpoints
 // --------------
@@ -198,7 +200,7 @@ $accordion-item-background-hover: $light-gray;
 $accordion-item-padding: 1.25rem 1rem;
 $accordion-content-background: $white;
 $accordion-content-border: 1px solid $light-gray;
-$accordion-content-color: foreground($accordion-background, $primary-color);
+$accordion-content-color: foreground($accordion-content-background, $body-font-color);
 $accordion-content-padding: 1rem;
 
 // 8. Accordion Menu
@@ -350,7 +352,7 @@ $input-border: 1px solid $medium-gray;
 $input-border-focus: 1px solid $dark-gray;
 $input-shadow: inset 0 1px 2px rgba($black, 0.1);
 $input-shadow-focus: 0 0 5px $medium-gray;
-$input-cursor-disabled: default;
+$input-cursor-disabled: not-allowed;
 $input-transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
 $input-number-spinners: true;
 $input-radius: $global-radius;
@@ -384,9 +386,9 @@ $menu-icon-spacing: 0.25rem;
 // 23. Meter
 // ---------
 
-$meter-height: $progress-height;
-$meter-radius: $progress-radius;
-$meter-background: $progress-background;
+$meter-height: 1rem;
+$meter-radius: $global-radius;
+$meter-background: $medium-gray;
 $meter-fill-good: $success-color;
 $meter-fill-medium: $warning-color;
 $meter-fill-bad: $alert-color;
@@ -460,7 +462,7 @@ $reveal-overlay-background: rgba($black, 0.45);
 // 29. Slider
 // ----------
 
-$slider-width-vertical: $slider-height;
+$slider-width-vertical: 0.5rem;
 $slider-transition: all 0.2s ease-in-out;
 $slider-height: 0.5rem;
 $slider-background: $light-gray;

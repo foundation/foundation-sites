@@ -1,7 +1,7 @@
 ---
 title: The Grid
 description: Create powerful multi-device layouts quickly and easily with the default 12-column, nestable Foundation grid. If you're familiar with grid systems, you'll feel right at home. If not, you'll learn quickly.
-sass: 
+sass:
   - scss/grid/*.scss
   - '!scss/grid/_flex-grid.scss'
 tags:
@@ -88,7 +88,7 @@ Small grids expand to large screens easier than large grids cram into small scre
 
 ```html
 <div class="row">
-  <div class="small-2 columns">2 columns</div>
+  <div class="small-2 columns">2 <span class="hide-for-small-only">columns</span></div>
   <div class="small-10 columns">10 columns</div>
 </div>
 <div class="row">
@@ -277,10 +277,10 @@ In order to work around browsers' different rounding behaviors, Foundation will 
 
 ---
 
-### Responsive Gutters
+### Gutters
 
 <div class="warning callout">
-  <p>Responsive gutters were added in <strong>Foundation 6.1.0</strong>. As of this version, it's still possible to use static gutters, or you can upgrade your project to responsive gutters. In Foundation 6.2.0-rc.1, static gutters will be removed entirely in favor of responsive gutters. Refer to the <a href="https://github.com/zurb/foundation-sites/releases/tag/v6.1.0">Version 6.1.0 changelog</a> for more details on the upgrade process.</p>
+  <p>Responsive gutters were added in Foundation 6.1.</p>
 </div>
 
 The grid *gutter*&mdash;the space between two columns in a row, and the space between the edge of a grid and the edge of the page&mdash;is responsive, and becomes wider on larger screens.
@@ -290,16 +290,22 @@ Breakpoint | Gutter Size
 `small`    | 20px
 `medium`   | 30px
 
-If you're using the Sass version of Foundation, you can change these defaults by editing the `$grid-column-responsive-gutter` variable:
+If you're using the Sass version of Foundation, you can change these defaults by editing the `$grid-column-gutter` variable:
 
 ```scss
-$grid-column-responsive-gutter: (
+$grid-column-gutter: (
   small: 20px,
   medium: 30px,
 );
 ```
 
 To add more gutter definitions, add new lines to the map. The breakpoint names used here must match a breakpoint name in your project's `$breakpoints` map.
+
+Or, if you prefer using one gutter size on every breakpoint, just use a single number.
+
+```scss
+$grid-column-gutter: 30px;
+```
 
 ---
 
@@ -377,7 +383,7 @@ Center your columns by adding a class of `.small-centered` to your column. Large
 
 ### Source Ordering
 
-Using these source ordering classes, you can shift columns around between our breakpoints. This means if you place sub-navigation below main content on small displays, you have the option to position the sub-navigation on either the left or right of the page for large displays. Prefix push/pull with the size of the device you want to apply the styles to. `.medium-push-#`, `.large-push-#` is the syntax you'll use. Use large-reset-order to reset pushed or pulled columns to their original position on large screens.
+Using these source ordering classes, you can shift columns around between our breakpoints. This means if you place sub-navigation below main content on small displays, you have the option to position the sub-navigation on either the left or right of the page for large displays. Prefix push/pull with the size of the device you want to apply the styles to. `.medium-push-#`, `.large-push-#` is the syntax you'll use. Use the number 0 instead to reset a push/pull, such as `.medium-push-0` or `.large-pull-0`.
 
 ```html
 <div class="row">
@@ -512,7 +518,7 @@ To center a column semantically. Use ´grid-column-position(center);´.
 
 By default, all grids use the number of columns set by the `$grid-column-count` variable. However, this can be selectively overridden within an instance of a row.
 
-In this example, the grid is 16 columns instead of the normal 12. Any references to column math inside the mixin will use the new column count. 
+In this example, the grid is 16 columns instead of the normal 12. Any references to column math inside the mixin will use the new column count.
 
 ```scss
 .container {

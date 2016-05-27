@@ -1,20 +1,20 @@
 <!doctype html>
 <!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
 <html class="no-js" lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="{{description}}">
-    <link rel="icon" href="assets/img/icons/favicon.ico" type="image/x-icon">
-    <title>Foundation for Sites 6 Docs{{#unlesspage 'index'}} | {{title}}{{/unlesspage}}</title>
-    <link href="assets/css/docs.css" rel="stylesheet" />
-    <link href="//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="./node_modules/motion-ui/dist/motion-ui.css" /> -->
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{description}}">
+  <link rel="icon" href="assets/img/icons/favicon.ico" type="image/x-icon">
+  <title>Foundation for Sites 6 Docs{{#unlesspage 'index'}} | {{title}}{{/unlesspage}}</title>
+  <link href="assets/css/docs.css" rel="stylesheet" />
+  <link href="//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="./node_modules/motion-ui/dist/motion-ui.css" /> -->
+</head>
+<body>
 
-    <div class="off-canvas-wrapper"><div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+  <div class="off-canvas-wrapper"><div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
 
     {{> off-canvi}}
 
@@ -42,26 +42,26 @@
 
       {{> footer}}
     </div>
+  </div>
 
-    </div></div>
+  <script>
+  var _gaq = _gaq || [];
+  _gaq.push(
+    ['_setAccount', 'UA-2195009-2'],
+    ['_trackPageview'],
+    ['b._setAccount', 'UA-2195009-27'],
+    ['b._trackPageview']
+  );
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
 
-    <script>
-      var _gaq = _gaq || [];
-      _gaq.push(
-        ['_setAccount', 'UA-2195009-2'],
-        ['_trackPageview'],
-        ['b._setAccount', 'UA-2195009-27'],
-        ['b._trackPageview']
-      );
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    </script>
-
-    <script src="assets/js/vendor.js"></script>
-    <script src="assets/js/foundation.js"></script>
-    <script src="assets/js/docs.js"></script>
-  </body>
+  <script src="assets/js/vendor.js"></script>
+  <script src="assets/js/foundation.js"></script>
+  <script src="assets/js/docs.js"></script>
+  <script type="text/javascript" src="https://intercom.zurb.com/scripts/zcom.js"></script>
+</body>
 </html>

@@ -14,7 +14,7 @@ Lastly, if you're rolling your own setup, you can install Foundation through a v
 
 ## Documentation
 
-The documentation can be found at <https://foundation.zurb.com/sites/docs>. To run the documentation locally on your machine, you need [Node.js](https://nodejs.org/en/) and [Ruby](https://www.ruby-lang.org/en/) installed on your computer.
+The documentation can be found at <https://foundation.zurb.com/sites/docs>. To run the documentation locally on your machine, you need [Node.js](https://nodejs.org/en/) and [Ruby](https://www.ruby-lang.org/en/) installed on your computer. (Your Node.js version must be 0.12 or higher.)
 
 Run these commands to set up the documentation:
 
@@ -27,8 +27,18 @@ npm install
 
 Then run `npm start` to compile the documentation. When it finishes, a new browser window will open pointing to a BrowserSync server displaying the documentation.
 
+## Testing
+
+Foundation has three kinds of tests: JavaScript, Sass, and visual regression. Refer to our [testing guide](https://github.com/zurb/foundation-sites/wiki/Testing-Guide) for more details.
+
+These commands will run the various tests:
+
+- `npm run test:sass`
+- `npm run test:javascript`
+- `npm run test:visual`
+
 ## Contributing
 
-Check out our [contributing guide](http://foundation.zurb.com/develop/contribute.html) to learn how you can contribute to Foundation. You can also browse the [https://github.com/zurb/foundation-sites/labels/help%20wanted](Help Wanted) tag in our issue tracker to find things to do.
+Check out our [contributing guide](http://foundation.zurb.com/develop/contribute.html) to learn how you can contribute to Foundation. You can also browse the [Help Wanted](https://github.com/zurb/foundation-sites/labels/help%20wanted) tag in our issue tracker to find things to do.
 
 Copyright (c) 2016 ZURB, inc.

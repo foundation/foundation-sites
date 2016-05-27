@@ -109,19 +109,19 @@ class AccordionMenu {
 
       $elements.each(function(i) {
         if ($(this).is($element)) {
-          $prevElement = $elements.eq(Math.max(0, i-1));
-          $nextElement = $elements.eq(Math.min(i+1, $elements.length-1));
+          $prevElement = $elements.eq(Math.max(0, i-1)).find('a').first();
+          $nextElement = $elements.eq(Math.min(i+1, $elements.length-1)).find('a').first();
 
           if ($(this).children('[data-submenu]:visible').length) { // has open sub menu
-            $nextElement = $element.find('li:first-child');
+            $nextElement = $element.find('li:first-child').find('a').first();
           }
           if ($(this).is(':first-child')) { // is first element of sub menu
-            $prevElement = $element.parents('li').first();
+            $prevElement = $element.parents('li').first().find('a').first();
           } else if ($prevElement.children('[data-submenu]:visible').length) { // if previous element has open sub menu
-            $prevElement = $prevElement.find('li:last-child');
+            $prevElement = $prevElement.find('li:last-child').find('a').first();
           }
           if ($(this).is(':last-child')) { // is last element of sub menu
-            $nextElement = $element.parents('li').first().next('li');
+            $nextElement = $element.parents('li').first().next('li').find('a').first();
           }
 
           return;
@@ -131,7 +131,7 @@ class AccordionMenu {
         open: function() {
           if ($target.is(':hidden')) {
             _this.down($target);
-            $target.find('li').first().focus();
+            $target.find('li').first().find('a').first().focus();
           }
         },
         close: function() {
@@ -139,14 +139,16 @@ class AccordionMenu {
             _this.up($target);
           } else if ($element.parent('[data-submenu]').length) { // close currently open sub
             _this.up($element.parent('[data-submenu]'));
-            $element.parents('li').first().focus();
+            $element.parents('li').first().find('a').first().focus();
           }
         },
         up: function() {
-          $prevElement.focus();
+          $prevElement.attr('tabindex', -1).focus();
+          return true;
         },
         down: function() {
-          $nextElement.focus();
+          $nextElement.attr('tabindex', -1).focus();
+          return true;
         },
         toggle: function() {
           if ($element.children('[data-submenu]').length) {
@@ -156,8 +158,10 @@ class AccordionMenu {
         closeAll: function() {
           _this.hideAll();
         },
-        handled: function() {
-          e.preventDefault();
+        handled: function(preventDefault) {
+          if (preventDefault) {
+            e.preventDefault();
+          }
           e.stopImmediatePropagation();
         }
       });
@@ -203,7 +207,7 @@ class AccordionMenu {
     $target.addClass('is-active').attr({'aria-hidden': false})
       .parent('.is-accordion-submenu-parent').attr({'aria-expanded': true});
 
-      Foundation.Move(this.options.slideSpeed, $target, function() {
+      //Foundation.Move(this.options.slideSpeed, $target, function() {
         $target.slideDown(_this.options.slideSpeed, function () {
           /**
            * Fires when the menu is done opening.
@@ -211,7 +215,7 @@ class AccordionMenu {
            */
           _this.$element.trigger('down.zf.accordionMenu', [$target]);
         });
-      });
+      //});
   }
 
   /**
@@ -221,7 +225,7 @@ class AccordionMenu {
    */
   up($target) {
     var _this = this;
-    Foundation.Move(this.options.slideSpeed, $target, function(){
+    //Foundation.Move(this.options.slideSpeed, $target, function(){
       $target.slideUp(_this.options.slideSpeed, function () {
         /**
          * Fires when the menu is done collapsing up.
@@ -229,7 +233,7 @@ class AccordionMenu {
          */
         _this.$element.trigger('up.zf.accordionMenu', [$target]);
       });
-    });
+    //});
 
     var $menus = $target.find('[data-submenu]').slideUp(0).addBack().attr('aria-hidden', true);
 

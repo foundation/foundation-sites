@@ -8,15 +8,15 @@
 
 /// Height of a `<meter>` element.
 /// @type Length
-$meter-height: $progress-height !default;
+$meter-height: 1rem !default;
 
 /// Border radius of a `<meter>` element.
 /// @type Length
-$meter-radius: $progress-radius !default;
+$meter-radius: $global-radius !default;
 
 /// Background color of a `<meter>` element.
 /// @type Color
-$meter-background: $progress-background !default;
+$meter-background: $medium-gray !default;
 
 /// Meter fill for an optimal value in a `<meter>` element.
 /// @type Color

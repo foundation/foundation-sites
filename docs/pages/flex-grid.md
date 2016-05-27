@@ -13,7 +13,7 @@ The flex grid works very similarly to the standard float grid, but includes a nu
 The flex grid is only supported in Chrome, Firefox, Safari 6+, IE10+, iOS 7+, and Android 4.4+. Flexbox is supported in Android 2, but not reliably enough for use with this grid. ([View flexbox browser support.](http://caniuse.com/#feat=flexbox)) We recommend only using the flex grid on projects that can live with purely cutting-edge browser support.
 
 <div class="warning callout">
-  <p>In Firefox 43 (the latest version), images in flex columns may overflow their container. To fix this, add a defined <code>width</code> to any images inside a flex column, or use <code>width: 100%</code> for full-bleed images.</p>
+  <p>In Firefox 43+, images in flex columns may overflow their container. To fix this, add a defined <code>width</code> to any images inside a flex column, or use <code>width: 100%</code> for full-bleed images.</p>
 </div>
 
 ---
@@ -44,7 +44,7 @@ If you're using the Sass version of Foundation, you can enable a framework-wide 
 
 ## Basics
 
-The structure of the flex grid is identical to that of the float grid. Rows use the class `.row`, and columns use the class `.column`. Basic percentage-based sizing can also be done using the same grid classes you're used to: `.small-6`, `.medium-12`, and so on.
+The structure of the flex grid is identical to that of the float grid. Rows use the class `.row`, and columns use the class `.column` (or `.columns`). Basic percentage-based sizing can also be done using the same grid classes you're used to: `.small-6`, `.medium-12`, and so on.
 
 ```html_example
 <div class="row">
@@ -197,7 +197,7 @@ The horizontal alignment classes are shorthands for the `justify-content` CSS pr
 
 ### Vertical Alignment
 
-By default, all columns in a flex grid align to the top of their parent. This behavior can be changed with another set of alignment classes. That's right, *middle alignment in CSS*!
+By default, all columns in a flex grid stretch to be equal height. This behavior can be changed with another set of alignment classes. That's right, *middle alignment in CSS*!
 
 Your options for vertical alignment are `top`, `middle`, `bottom`, and `stretch`. Note that we use the word *middle* for vertical alignment, and *center* for horizontal alignment.
 
@@ -211,9 +211,9 @@ Applying a vertical alignment class to the flex row will affect every column dir
 ```
 
 ```html_example
-<div class="row align-stretch">
-  <div class="columns">These colums have the same height.</div>
-  <div class="columns">That's right, equal-height columns are possible with Flexbox too! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, tempora. Impedit eius officia possimus laudantium? Molestiae eaque, sapiente atque doloremque placeat! In sint, fugiat saepe sunt dolore tempore amet cupiditate.</div>
+<div class="row align-top">
+  <div class="columns">These columns align to the top.</div>
+  <div class="columns">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, tempora. Impedit eius officia possimus laudantium? Molestiae eaque, sapiente atque doloremque placeat! In sint, fugiat saepe sunt dolore tempore amet cupiditate.</div>
 </div>
 ```
 
@@ -229,7 +229,8 @@ Similar alignment classes can also be applied to individual columns, which use t
 <div class="row">
   <div class="column align-self-bottom">Align bottom</div>
   <div class="column align-self-middle">Align middle</div>
-  <div class="column align-self-top">Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?</div>
+  <div class="column align-self-top">Align top</div>
+  <div class="column">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?</div>
 </div>
 ```
 

@@ -1,6 +1,4 @@
 @mixin foundation-flex-classes {
-  $-zf-flex-classes-imported: true !global;
-
   // Horizontal alignment using justify-content
   @each $hdir, $prop in map-remove($-zf-flex-justify, left) {
     .align-#{$hdir} {
@@ -22,7 +20,7 @@
   // Source ordering
   @include -zf-each-breakpoint {
     @for $i from 1 through 6 {
-      .#{$-zf-size} {
+      .#{$-zf-size}-order-#{$i} {
         @include flex-order($i);
       }
     }

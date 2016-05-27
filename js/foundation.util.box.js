@@ -28,7 +28,7 @@ function ImNotTouchingYou(element, parent, lrOnly, tbOnly) {
     bottom = (eleDims.offset.top + eleDims.height <= parDims.height + parDims.offset.top);
     top    = (eleDims.offset.top >= parDims.offset.top);
     left   = (eleDims.offset.left >= parDims.offset.left);
-    right  = (eleDims.offset.left + eleDims.width <= parDims.width);
+    right  = (eleDims.offset.left + eleDims.width <= parDims.width + parDims.offset.left);
   }
   else {
     bottom = (eleDims.offset.top + eleDims.height <= eleDims.windowDims.height + eleDims.windowDims.offset.top);
@@ -115,7 +115,7 @@ function GetOffsets(element, anchor, position, vOffset, hOffset, isOverflow) {
   switch (position) {
     case 'top':
       return {
-        left: $anchorDims.offset.left,
+        left: (Foundation.rtl() ? $anchorDims.offset.left - $eleDims.width + $anchorDims.width : $anchorDims.offset.left),
         top: $anchorDims.offset.top - ($eleDims.height + vOffset)
       }
       break;
@@ -172,9 +172,21 @@ function GetOffsets(element, anchor, position, vOffset, hOffset, isOverflow) {
         top: $eleDims.windowDims.offset.top
       }
       break;
+    case 'left bottom':
+      return {
+        left: $anchorDims.offset.left - ($eleDims.width + hOffset),
+        top: $anchorDims.offset.top + $anchorDims.height
+      };
+      break;
+    case 'right bottom':
+      return {
+        left: $anchorDims.offset.left + $anchorDims.width + hOffset - $eleDims.width,
+        top: $anchorDims.offset.top + $anchorDims.height
+      };
+      break;
     default:
       return {
-        left: $anchorDims.offset.left,
+        left: (Foundation.rtl() ? $anchorDims.offset.left - $eleDims.width + $anchorDims.width : $anchorDims.offset.left),
         top: $anchorDims.offset.top + $anchorDims.height + vOffset
       }
   }

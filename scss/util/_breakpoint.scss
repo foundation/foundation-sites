@@ -18,11 +18,13 @@ $breakpoints: (
   xxlarge: 1440px,
 ) !default;
 
-@if not map-has-key($breakpoints, small) or not map-has-key($breakpoints, medium) {
-  @error 'Your list of breakpoints (defined in $breakpoints) must include one named "small" and one named "medium".';
+$-zf-zero-breakpoint: small !default;
+
+@if nth(map-values($breakpoints), 1) != 0 {
+  @error 'Your smallest breakpoint (defined in $breakpoints) must be set to "0".';
 }
-@else if map-get($breakpoints, small) != 0 {
-  @error 'Your "small" breakpoint (defined in $breakpoints) must be set to "0".';
+@else {
+  $-zf-zero-breakpoint: nth(map-keys($breakpoints), 1);
 }
 
 /// All of the names in this list will be output as classes in your CSS, like `.small-12`, `.medium-6`, and so on. Each value in this list must also be in the `$breakpoints` map.
@@ -32,7 +34,7 @@ $breakpoint-classes: (small medium large) !default;
 /// Generates a media query string matching the input value. Refer to the documentation for the `breakpoint()` mixin to see what the possible inputs are.
 ///
 /// @param {Keyword|Number} $val [small] - Breakpoint name, or px, rem, or em value to process.
-@function breakpoint($val: small) {
+@function breakpoint($val: $-zf-zero-breakpoint) {
   // Size or keyword
   $bp: nth($val, 1);
   // Value for max-width media queries
@@ -64,6 +66,7 @@ $breakpoint-classes: (small medium large) !default;
     }
     @else {
       $bp: 0;
+      @warn 'breakpoint(): "#{$val}" is not defined in your $breakpoints setting.';
     }
   }
 

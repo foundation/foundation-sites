@@ -173,7 +173,7 @@ Lorem ipsum [dolor sit amet](http://html5zombo.com), consectetur adipisicing eli
 
 ### Custom Helpers
 
-If you don't see the right helper, you can write your own. Add a javascript file to 'src/helpers', restart npm, then call it in your templates.
+If you don't see the right helper, you can write your own. Add a javascript file to 'src/helpers', add `helpers: 'src/helpers'` to the Panini process in your gulpfile.babel.js, restart npm, then call it in your templates.
 
 ```
 // Example file src/helpers/bold.js
@@ -183,6 +183,22 @@ module.exports = function(options) {
   return bolder;
 }
 ```
+
+```
+// Example  gulpfile.babel.js
+function pages() {
+  return gulp.src('src/pages/**/*.html')
+    .pipe(panini({
+      root: 'src/pages',
+      layouts: 'src/layouts',
+      partials: 'src/partials',
+      helpers: 'src/helpers'
+    }))
+    .pipe(inky())
+    .pipe(gulp.dest('dist'));
+}
+```
+
 Then in your projects call your custom `{{#bold}}` helper
 
 ```

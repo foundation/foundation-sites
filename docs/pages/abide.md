@@ -181,7 +181,7 @@ $(document)
   })
   // form validation passed, form will submit if submit event not returned false
   .on("formvalid.zf.abide", function(ev,frm) {
-    console.log("Form id "+frm.attr('id')+" is invalid");
+    console.log("Form id "+frm.attr('id')+" is valid");
     // ajax post form 
   })
   // to prevent form from submitting upon successful validation

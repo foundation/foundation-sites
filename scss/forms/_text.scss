@@ -52,7 +52,7 @@ $input-shadow-focus: 0 0 5px $medium-gray !default;
 
 /// Cursor to use when hovering over a disabled text input.
 /// @type Cursor
-$input-cursor-disabled: default !default;
+$input-cursor-disabled: not-allowed !default;
 
 /// Properties to transition on text inputs.
 /// @type Transition

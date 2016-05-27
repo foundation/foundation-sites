@@ -47,6 +47,10 @@ class Sticky {
     this.scrollCount = this.options.checkEvery;
     this.isStuck = false;
     $(window).one('load.zf.sticky', function(){
+      //We calculate the container height to have correct values for anchor points offset calculation.
+      _this.containerHeight = _this.$element.css("display") == "none" ? 0 : _this.$element[0].getBoundingClientRect().height;
+      _this.$container.css('height', _this.containerHeight);
+      _this.elemHeight = _this.containerHeight;
       if(_this.options.anchor !== ''){
         _this.$anchor = $('#' + _this.options.anchor);
       }else{
@@ -66,30 +70,26 @@ class Sticky {
    * @private
    */
   _parsePoints() {
-    var top = this.options.topAnchor,
-        btm = this.options.btmAnchor,
+    var top = this.options.topAnchor == "" ? 1 : this.options.topAnchor,
+        btm = this.options.btmAnchor== "" ? document.documentElement.scrollHeight : this.options.btmAnchor,
         pts = [top, btm],
         breaks = {};
-    if (top && btm) {
+    for (var i = 0, len = pts.length; i < len && pts[i]; i++) {
+      var pt;
+      if (typeof pts[i] === 'number') {
+        pt = pts[i];
+      } else {
+        var place = pts[i].split(':'),
+            anchor = $(`#${place[0]}`);
 
-      for (var i = 0, len = pts.length; i < len && pts[i]; i++) {
-        var pt;
-        if (typeof pts[i] === 'number') {
-          pt = pts[i];
-        } else {
-          var place = pts[i].split(':'),
-              anchor = $(`#${place[0]}`);
-
-          pt = anchor.offset().top;
-          if (place[1] && place[1].toLowerCase() === 'bottom') {
-            pt += anchor[0].getBoundingClientRect().height;
-          }
+        pt = anchor.offset().top;
+        if (place[1] && place[1].toLowerCase() === 'bottom') {
+          pt += anchor[0].getBoundingClientRect().height;
         }
-        breaks[i] = pt;
       }
-    } else {
-      breaks = {0: 1, 1: document.documentElement.scrollHeight};
+      breaks[i] = pt;
     }
+
 
     this.points = breaks;
     return;
@@ -195,7 +195,8 @@ class Sticky {
    * @private
    */
   _setSticky() {
-    var stickTo = this.options.stickTo,
+    var _this = this,
+        stickTo = this.options.stickTo,
         mrgn = stickTo === 'top' ? 'marginTop' : 'marginBottom',
         notStuckTo = stickTo === 'top' ? 'bottom' : 'top',
         css = {};
@@ -214,6 +215,9 @@ class Sticky {
                   * @event Sticky#stuckto
                   */
                  .trigger(`sticky.zf.stuckto:${stickTo}`);
+    this.$element.on("transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd", function() {
+      _this._setSizes();
+    });
   }
 
   /**
@@ -235,12 +239,11 @@ class Sticky {
 
     css[mrgn] = 0;
 
-    if ((isTop && !stickToTop) || (stickToTop && !isTop)) {
-      css[stickTo] = anchorPt;
-      css[notStuckTo] = 0;
+    css['bottom'] = 'auto';
+    if(isTop) {
+      css['top'] = 0;
     } else {
-      css[stickTo] = 0;
-      css[notStuckTo] = anchorPt;
+      css['top'] = anchorPt;
     }
 
     css['left'] = '';
@@ -281,15 +284,23 @@ class Sticky {
     });
 
     var newContainerHeight = this.$element[0].getBoundingClientRect().height || this.containerHeight;
+    if (this.$element.css("display") == "none") {
+      newContainerHeight = 0;
+    }
     this.containerHeight = newContainerHeight;
     this.$container.css({
       height: newContainerHeight
     });
     this.elemHeight = newContainerHeight;
 
-  	if (this.isStuck) {
-  		this.$element.css({"left":this.$container.offset().left + parseInt(comp['padding-left'], 10)});
-  	}
+    if (this.isStuck) {
+      this.$element.css({"left":this.$container.offset().left + parseInt(comp['padding-left'], 10)});
+    } else {
+      if (this.$element.hasClass('is-at-bottom')) {
+        var anchorPt = (this.points ? this.points[1] - this.$container.offset().top : this.anchorHeight) - this.elemHeight;
+        this.$element.css('top', anchorPt);
+      }
+    }
 
     this._setBreakPoints(newContainerHeight, function() {
       if (cb) { cb(); }
@@ -348,8 +359,9 @@ class Sticky {
                    'max-width': ''
                  })
                  .off('resizeme.zf.trigger');
-
-    this.$anchor.off('change.zf.sticky');
+    if (this.$anchor && this.$anchor.length) {
+      this.$anchor.off('change.zf.sticky');
+    }
     $(window).off(this.scrollListener);
 
     if (this.wasWrapped) {

@@ -41,6 +41,39 @@ Along with the menu, the main content of your page will be housed in its own con
 </body>
 ```
 
+Here's a complete example that can be pasted into the `<body>` tag of your page. It includes a close button and basic menu styles.
+
+```html
+<body>
+  <div class="off-canvas-wrapper">
+    <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+      <div class="off-canvas position-left" id="offCanvas" data-off-canvas>
+
+        <!-- Close button -->
+        <button class="close-button" aria-label="Close menu" type="button" data-close>
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+        <!-- Menu -->
+        <ul class="vertical menu">
+          <li><a href="#">Foundation</a></li>
+          <li><a href="#">Dot</a></li>
+          <li><a href="#">ZURB</a></li>
+          <li><a href="#">Com</a></li>
+          <li><a href="#">Slash</a></li>
+          <li><a href="#">Sites</a></li>
+        </ul>
+
+      </div>
+
+      <div class="off-canvas-content" data-off-canvas-content>
+        <!-- Page content -->
+      </div>
+    </div>
+  </div>
+</body>
+```
+
 ### Click Triggers
 
 To create a click trigger that opens the menu, add the attribute `data-open` or `data-toggle` to any element. That element will then open or toggle the menu when clicked on. The value of the data attribute should be the ID of the off-canvas.
@@ -92,6 +125,7 @@ If you need a simple title bar to toggle the off-canvas, `.title-bar` is here to
 </div>
 ```
 <br>
+
 #### Responsive Off-Canvas (Putting it all together)
 
 For an example of off-canvas on small screens and Top Bar Menu with Dropdowns, check out this Building Block: http://zurb.com/building-blocks/top-bar-with-off-canvas

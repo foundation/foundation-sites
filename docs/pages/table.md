@@ -4,7 +4,8 @@ description: Okay, they're not the sexiest things ever, but tables get the job d
 sass: scss/components/_table.scss
 ---
 
-## Basic Table
+## Basics
+
 No bells or whistles here, just a straight up table for all of your basic table needs.
 
 ```html_example
@@ -42,10 +43,15 @@ No bells or whistles here, just a straight up table for all of your basic table 
 
 ---
 
-## Hover Table
-Need to spiff up the table just a tad? Just add the class <code>.hover</code> lightly darken the table rows on hover.
+## Hover State
 
-```html_example
+Need to spiff up the table just a tad? Just add the class `.hover` to lightly darken the table rows on hover.
+
+```html
+<table class="hover">
+</table>
+```
+
 <table class="hover">
   <thead>
     <tr>
@@ -76,13 +82,18 @@ Need to spiff up the table just a tad? Just add the class <code>.hover</code> li
     </tr>
   </tbody>
 </table>
-```
 
 ---
-## Stacked Table
-Sometimes you just need to stack a table. Just add the class <code>.stack</code> to your table.
 
-```html_example
+## Stacked Table
+
+To stack a table on small screens, add the class `.stack`.
+
+```html
+<table class="stack">
+</table>
+```
+
 <table class="stack">
   <thead>
     <tr>
@@ -113,95 +124,105 @@ Sometimes you just need to stack a table. Just add the class <code>.stack</code>
     </tr>
   </tbody>
 </table>
-```
 
 ---
 
-## Scroll Table
-Got a lot of tubular tabular data? Add the class <code>.scroll</code> to your table to enable horizontal scrolling to your table!
+## Scrolling Table
 
-```html_example
-<table class="scroll">
-  <thead>
-    <tr>
-      <th>This is the description!</th>
-      <th>One</th>
-      <th>Two</th>
-      <th>Three</th>
-      <th>Four</th>
-      <th>Five</th>
-      <th>Six</th>
-      <th>Seven</th>
-      <th>Eight</th>
-      <th>Nine</th>
-      <th>Ten</th>
-      <th>Eleven</th>
-      <th>Twelve</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="display:block; width:400px;">These are all the words that people use to describe Foundation 6!</td>
-      <td>Cool</td>
-      <td>Swag</td>
-      <td>Chill</td>
-      <td>Killer</td>
-      <td>Rad</td>
-      <td>Baller</td>
-      <td>OMG</td>
-      <td>Sweet</td>
-      <td>Awesome</td>
-      <td>Beast</td>
-      <td>Dope</td>
-      <td>Tubular</td>
-    </tr>
-    <tr>
-      <td>These are some words that people use to describe other web frameworks.</td>
-      <td>Whatevs</td>
-      <td>Ugh.</td>
-      <td>LOL</td>
-      <td>K</td>
-      <td>Aight</td>
-      <td>Eh.</td>
-      <td>Grrr...</td>
-      <td>Meh.</td>
-      <td>TTYL</td>
-      <td>Bleh.</td>
-      <td>Really?</td>
-      <td>Why?</td>
-    </tr>
-    <tr>
-      <td>Here are some great super heros.</td>
-      <td>Batman</td>
-      <td>Superman</td>
-      <td>Spiderman</td>
-      <td>Wonder Woman</td>
-      <td>Hulk</td>
-      <td>Nicolas Cage</td>
-      <td>Antman</td>
-      <td>Aquaman</td>
-      <td>Captain America</td>
-      <td>Wolverine</td>
-      <td>Thor</td>
-      <td>Iron Man</td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <td>Here's a footer, just in case</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-  </tfoot>
-</table>
+Got a lot of tubular tabular data? Add a wrapper element with the class `.table-scroll` around your table to enable horizontal scrolling.
+
+<div class="primary callout">
+  <p>The wrapping element was added in Foundation 6.2&mdash;prior to that, you just added the class <code>.scroll</code> to the table itself. However, this method doesn't work great with Internet Explorer 9. <strong>If you don't need IE9 support, you can just add <code>.scroll</code> to your table, and the wrapping element isn't necessary.</strong>
+</div>
+
+```html
+<div class="table-scroll">
+  <table></table>
+</div>
 ```
+
+<div class="table-scroll">
+  <table>
+    <thead>
+      <tr>
+        <th>This is the description!</th>
+        <th>One</th>
+        <th>Two</th>
+        <th>Three</th>
+        <th>Four</th>
+        <th>Five</th>
+        <th>Six</th>
+        <th>Seven</th>
+        <th>Eight</th>
+        <th>Nine</th>
+        <th>Ten</th>
+        <th>Eleven</th>
+        <th>Twelve</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="display:block; width:400px;">These are all the words that people use to describe Foundation 6!</td>
+        <td>Cool</td>
+        <td>Swag</td>
+        <td>Chill</td>
+        <td>Killer</td>
+        <td>Rad</td>
+        <td>Baller</td>
+        <td>OMG</td>
+        <td>Sweet</td>
+        <td>Awesome</td>
+        <td>Beast</td>
+        <td>Dope</td>
+        <td>Tubular</td>
+      </tr>
+      <tr>
+        <td>These are some words that people use to describe other web frameworks.</td>
+        <td>Whatevs</td>
+        <td>Ugh.</td>
+        <td>LOL</td>
+        <td>K</td>
+        <td>Aight</td>
+        <td>Eh.</td>
+        <td>Grrr...</td>
+        <td>Meh.</td>
+        <td>TTYL</td>
+        <td>Bleh.</td>
+        <td>Really?</td>
+        <td>Why?</td>
+      </tr>
+      <tr>
+        <td>Here are some great super heros.</td>
+        <td>Batman</td>
+        <td>Superman</td>
+        <td>Spiderman</td>
+        <td>Wonder Woman</td>
+        <td>Hulk</td>
+        <td>Nicolas Cage</td>
+        <td>Antman</td>
+        <td>Aquaman</td>
+        <td>Captain America</td>
+        <td>Wolverine</td>
+        <td>Thor</td>
+        <td>Iron Man</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>Here's a footer, just in case</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tfoot>
+  </table>
+</div>

@@ -9,7 +9,15 @@ var PANINI_CONFIG = {
   root: 'docs/pages/',
   layouts: 'docs/layout/',
   partials: 'docs/partials/',
-  helpers: foundationDocs.handlebarsHelpers
+  helpers: foundationDocs.handlebarsHelpers,
+}
+
+var SEARCH_SORT_ORDER = ['page', 'component', 'sass variable', 'sass mixin', 'sass function', 'js class', 'js function', 'js plugin option', 'js event'];
+
+var SEARCH_PAGE_TYPES = {
+  'library': function(item) {
+    return !!(item.library);
+  }
 }
 
 supercollider
@@ -17,7 +25,18 @@ supercollider
     template: foundationDocs.componentTemplate,
     marked: foundationDocs.marked,
     handlebars: foundationDocs.handlebars,
-    keepFm: true
+    keepFm: true,
+    quiet: false,
+    pageRoot: 'docs/pages',
+    data: {
+      repoName: 'foundation-sites',
+      editBranch: 'master'
+    }
+  })
+  .searchConfig({
+    extra: 'docs/search.yml',
+    sort: SEARCH_SORT_ORDER,
+    pageTypes: SEARCH_PAGE_TYPES
   })
   .adapter('sass')
   .adapter('js');
@@ -48,10 +67,10 @@ gulp.task('docs:all', function() {
 });
 
 function buildSearch() {
-  foundationDocs.buildSearch(supercollider.tree);
+  supercollider.buildSearch('_build/data/search.json', function() {});
 }
 
-gulp.task('docs:debug', ['docs'], function(cb) {
+gulp.task('docs:debug', ['docs:all'], function(cb) {
   var output = JSON.stringify(supercollider.tree, null, '  ');
   require('fs').writeFile('./_debug.json', output, cb);
 });

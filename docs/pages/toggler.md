@@ -39,7 +39,7 @@ Then, add `data-toggle` to any element, with the ID of the target as the value o
 
 Instead of toggling a class, you can also toggle visibility. When toggled, the element comes into or out of view using a Motion UI class.
 
-Instead of `data-toggler`, add the attribute `data-toggler-animate`. The value of the attribute is the *in animation* you want, followed by the *out animation*.
+Instead of `data-toggler`, add the attribute `data-animate`. The value of the attribute is the *in animation* you want, followed by the *out animation*.
 
 ```html_example
 <p><a data-toggle="panel">Toggle Panel</a></p>

@@ -133,7 +133,7 @@ class Magellan {
       var isDown = this.scrollPos < winPos,
           _this = this,
           curVisible = this.points.filter(function(p, i){
-            return isDown ? p <= winPos : p - _this.options.threshold <= winPos;//&& winPos >= _this.points[i -1] - _this.options.threshold;
+            return isDown ? p - _this.options.barOffset <= winPos : p - _this.options.barOffset - _this.options.threshold <= winPos;
           });
       curIdx = curVisible.length ? curVisible.length - 1 : 0;
     }

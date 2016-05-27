@@ -79,16 +79,28 @@
   // Base properties
   flex: flex-grid-column($columns);
 
-  // Padding
-  @each $breakpoint, $value in $gutter {
-    $padding: rem-calc($value) / 2;
+  // Gutters
+  @if type-of($gutter) == 'map' {
+    @each $breakpoint, $value in $gutter {
+      $padding: rem-calc($value) / 2;
 
-    @include breakpoint($breakpoint) {
-      padding-left: $padding;
-      padding-right: $padding;
+      @include breakpoint($breakpoint) {
+        padding-left: $padding;
+        padding-right: $padding;
+      }
     }
   }
+  @else if type-of($gutter) == 'number' and strip-unit($gutter) > 0 {
+    $padding: rem-calc($gutter) / 2;
+    padding-left: $padding;
+    padding-right: $padding;
+  }
 
+  // fixes recent Chrome version not limiting child width
+  // https://stackoverflow.com/questions/34934586/white-space-nowrap-and-flexbox-did-not-work-in-chrome
+  @if $columns == null {
+    min-width: initial;
+  }
   // max-width fixes IE 10/11 not respecting the flex-basis property
   @if $columns != null and $columns != shrink {
     max-width: grid-column($columns);
@@ -166,6 +178,7 @@
   // The double .row class is needed to bump up the specificity
   .column.row.row {
     float: none;
+    display: block;
 
     // To properly nest a column row, padding and margin is removed
     .row & {
@@ -194,19 +207,19 @@
 
     // Source ordering
     @for $i from 1 through 6 {
-      .#{$-zf-size}-up-#{$i} {
-        @include flex-grid-layout($i);
+      .#{$-zf-size}-order-#{$i} {
+        @include flex-order($i);
       }
     }
 
     // Block grid
     @for $i from 1 through $block-grid-max {
       .#{$-zf-size}-up-#{$i} {
-        @include grid-layout($i);
+        @include flex-grid-layout($i);
       }
     }
 
-    @if $-zf-size != small {
+    @if $-zf-size != $-zf-zero-breakpoint {
       // Sizing (expand)
       @include breakpoint($-zf-size) {
         .#{$-zf-size}-expand {
@@ -217,7 +230,7 @@
       // Auto-stacking/unstacking
       @at-root (without: media) {
         .row.#{$-zf-size}-unstack {
-          .column {
+          > .column {
             flex: flex-grid-column(100%);
 
             @include breakpoint($-zf-size) {
@@ -257,11 +270,5 @@
   .columns {
     // scss-lint:disable PlaceholderInExtend
     @extend .column;
-  }
-
-  // Remove this in 6.3
-  @if not $-zf-flex-classes-imported {
-    @warn 'In Foundation 6.2, a new component mixin was added called "foundation-flex-classes". Add "@import foundation-flex-classes" to the main Sass file of your project, above "@import foundation-flex-grid", to remove this warning.';
-    @include foundation-flex-classes;
   }
 }
