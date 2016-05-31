@@ -362,19 +362,24 @@ class Abide {
     // If at least one radio in the group has the `required` attribute, the group is considered required
     // Per W3C spec, all radio buttons in a group should have `required`, but we're being nice
     var $group = this.$element.find(`:radio[name="${groupName}"]`);
-    var valid = false;
+    var valid = false, required = false;
 
-    // .attr() returns undefined if no elements in $group have the attribute "required"
-    if ($group.attr('required') === undefined) {
-      valid = true;
-    }
-
-    // For the group to be valid, at least one radio needs to be checked
+    // For the group to be required, at least one radio needs to be required
     $group.each((i, e) => {
-      if ($(e).prop('checked')) {
-        valid = true;
+      if ($(e).attr('required')) {
+        required = true;
       }
     });
+    if(!required) valid=true;
+
+    if (!valid) {
+      // For the group to be valid, at least one radio needs to be checked
+      $group.each((i, e) => {
+        if ($(e).prop('checked')) {
+          valid = true;
+        }
+      });
+    };
 
     return valid;
   }

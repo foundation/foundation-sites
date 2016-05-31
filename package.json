@@ -1,6 +1,6 @@
 {
   "name": "foundation-sites",
-  "version": "6.2.1",
+  "version": "6.2.3",
   "main": "dist/foundation.js",
   "description": "The most advanced responsive front-end framework in the world.",
   "author": "ZURB <foundation@zurb.com> (http://foundation.zurb.com)",
@@ -12,6 +12,7 @@
     "test:javascript": "gulp sass:foundation && gulp test:transpile-js && mocha-phantomjs test/javascript/index.html",
     "test:visual": "gulp test",
     "deploy": "gulp deploy",
+    "deploy:prep": "gulp deploy:prep",
     "deploy:docs": "gulp deploy:docs"
   },
   "dependencies": {
