@@ -165,7 +165,13 @@
     }
 
     &.collapse {
-      > .column { @include grid-col-collapse; }
+      > .column {
+        @include grid-col-collapse;
+        > .row {
+          margin-left: 0;
+          margin-right: 0;
+        }
+      }
     }
   }
 
