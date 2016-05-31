@@ -285,7 +285,7 @@ Equalizer.defaults = {
    * @option
    * @example true
    */
-  equalizeOnStack: true,
+  equalizeOnStack: false,
   /**
    * Enable height equalization row by row.
    * @option
