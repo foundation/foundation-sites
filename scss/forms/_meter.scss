@@ -47,13 +47,15 @@ $meter-fill-bad: $alert-color !default;
     background: $meter-background;
     border: 0;
 
-    // Chrome/Safari
+    // Chrome/Safari/Edge
     &::-webkit-meter-bar {
       background: $meter-background;
 
       @if has-value($meter-radius) {
         border-radius: $meter-radius;
       }
+      
+      border: 0;
     }
 
     &::-webkit-meter-inner-element {
