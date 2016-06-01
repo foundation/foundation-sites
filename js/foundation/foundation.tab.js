@@ -102,19 +102,19 @@
             var hash_element = S(hash);
             if (hash_element.hasClass('content') && hash_element.parent().hasClass('tabs-content')) {
               // Tab content div
-              self.toggle_active_tab($('[' + self.attr_name() + '] > * > a[href=\\' + hash + ']').parent());
+              self.toggle_active_tab($('[' + self.attr_name() + '] > * > a[href="' + hash + '"]').parent());
             } else {
               // Not the tab content div. If inside the tab content, find the
               // containing tab and toggle it as active.
               var hash_tab_container_id = hash_element.closest('.content').attr('id');
               if (hash_tab_container_id != undefined) {
-                self.toggle_active_tab($('[' + self.attr_name() + '] > * > a[href=\\#' + hash_tab_container_id + ']').parent(), hash);
+                self.toggle_active_tab($('[' + self.attr_name() + '] > * > a[href="#' + hash_tab_container_id + '"]').parent(), hash);
               }
             }
           } else {
             // Reference the default tab hashes which were initialized in the init function
             for (var ind = 0; ind < self.default_tab_hashes.length; ind++) {
-              self.toggle_active_tab($('[' + self.attr_name() + '] > * > a[href=\\' + self.default_tab_hashes[ind] + ']').parent());
+              self.toggle_active_tab($('[' + self.attr_name() + '] > * > a[href="' + self.default_tab_hashes[ind] + '"]').parent());
             }
           }
         }
