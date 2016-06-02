@@ -245,10 +245,10 @@ There are times when you won't want each media query to be collapsed or uncollap
 ```html
 <div class="row small-collapse medium-uncollapse">
   <div class="small-6 columns">
-    Removes gutter at large media query
+    Removes gutter at small media query and adds at medium.
   </div>
   <div class="small-6 columns">
-    Removes gutter at large media query
+    Removes gutter at small media query and adds at medium.
   </div>
 </div>
 ```
