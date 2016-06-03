@@ -82,7 +82,7 @@ As an alternative to our custom progress bar style, you can also opt to use the 
 If you're using the Sass version of Foundation, add this line to your main Sass file to export the `<progress>` CSS:
 
 ```scss
-@import foundation-progress-element;
+@include foundation-progress-element;
 ```
 
 The `<progress>` element can be styled with the same coloring classes: `.secondary`, `.success`, `.warning`, and `.alert`.
