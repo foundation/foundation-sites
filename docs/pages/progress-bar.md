@@ -103,7 +103,7 @@ For the *extra* adventurous developers out there, we also provide styles for the
 If you're using the Sass version of Foundation, add this line to your main Sass file to export the `<meter>` CSS:
 
 ```scss
-@import foundation-meter-element;
+@include foundation-meter-element;
 ```
 
 The meter automatically colors itself based on the current values, and the defined low, medium, and high ranges. [Learn more about the mechanics of `<meter>` values.](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms/The_native_form_widgets#Meters_and_progress_bars)
