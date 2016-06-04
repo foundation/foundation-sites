@@ -48,7 +48,7 @@ class Tabs {
     this.$tabTitles.each(function(){
       var $elem = $(this),
           $link = $elem.find('a'),
-          isActive = $elem.hasClass('is-active'),
+          isActive = $elem.hasClass(`${_this.options.linkActiveClass}`),
           hash = $link[0].hash.slice(1),
           linkId = $link[0].id ? $link[0].id : `${hash}-label`,
           $tabContent = $(`#${hash}`);
@@ -114,7 +114,7 @@ class Tabs {
       .on('click.zf.tabs', `.${this.options.linkClass}`, function(e){
         e.preventDefault();
         e.stopPropagation();
-        if ($(this).hasClass('is-active')) {
+        if ($(this).hasClass(`${_this.options.linkActiveClass}`)) {
           return;
         }
         _this._handleTabChange($(this));
@@ -185,21 +185,21 @@ class Tabs {
         hash = $tabLink[0].hash,
         $targetContent = this.$tabContent.find(hash),
         $oldTab = this.$element.
-          find(`.${this.options.linkClass}.is-active`)
-          .removeClass('is-active')
+          find(`.${this.options.linkClass}.${this.options.linkActiveClass}`)
+          .removeClass(`${this.options.linkActiveClass}`)
           .find('[role="tab"]')
           .attr({ 'aria-selected': 'false' });
 
     $(`#${$oldTab.attr('aria-controls')}`)
-      .removeClass('is-active')
+      .removeClass(`${this.options.panelActiveClass}`)
       .attr({ 'aria-hidden': 'true' });
 
-    $target.addClass('is-active');
+    $target.addClass(`${this.options.linkActiveClass}`);
 
     $tabLink.attr({'aria-selected': 'true'});
 
     $targetContent
-      .addClass('is-active')
+      .addClass(`${this.options.panelActiveClass}`)
       .attr({'aria-hidden': 'false'});
 
     /**
@@ -245,7 +245,7 @@ class Tabs {
       .css('height', '')
       .each(function() {
         var panel = $(this),
-            isActive = panel.hasClass('is-active');
+            isActive = panel.hasClass(`${this.options.panelActiveClass}`);
 
         if (!isActive) {
           panel.css({'visibility': 'hidden', 'display': 'block'});
@@ -316,11 +316,25 @@ Tabs.defaults = {
   linkClass: 'tabs-title',
 
   /**
+   * Class applied to the active `li` in tab link list.
+   * @option
+   * @example 'is-active'
+   */
+  linkActiveClass: 'is-active',
+
+  /**
    * Class applied to the content containers.
    * @option
    * @example 'tabs-panel'
    */
-  panelClass: 'tabs-panel'
+  panelClass: 'tabs-panel',
+
+  /**
+   * Class applied to the active content container.
+   * @option
+   * @example 'is-active'
+   */
+  panelActiveClass: 'is-active'
 };
 
 function checkClass($elem){
