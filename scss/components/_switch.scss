@@ -75,6 +75,7 @@ $switch-paddle-transition: all 0.25s ease-out !default;
 @mixin switch-input {
   opacity: 0;
   position: absolute;
+  margin-bottom: 0;
 }
 
 /// Adds styles for the background and paddle of a switch. Apply this to a `<label>` within a switch.
@@ -168,6 +169,8 @@ $switch-paddle-transition: all 0.25s ease-out !default;
   $paddle-height: $height - ($paddle-offset * 2);
   $paddle-left-active: $width - $paddle-width - $paddle-offset;
 
+  height: $height;
+  
   .switch-paddle {
     width: $width;
     height: $height;
@@ -187,6 +190,7 @@ $switch-paddle-transition: all 0.25s ease-out !default;
 @mixin foundation-switch {
   // Container class
   .switch {
+    height: $switch-height;
     @include switch-container;
   }
 
