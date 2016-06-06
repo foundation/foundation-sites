@@ -60,6 +60,7 @@
 
   @if $columns == shrink {
     $flex: 0 0 auto;
+    max-width: 100%;
   }
   @else if $columns != null {
     $flex: 0 0 grid-column($columns);
@@ -262,7 +263,6 @@
   // Sizing (shrink)
   .shrink {
     flex: flex-grid-column(shrink);
-    max-width: 100%;
   }
 
   // Vertical alignment using align-items and align-self
