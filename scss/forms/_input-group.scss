@@ -122,7 +122,9 @@ $input-prefix-padding: 1rem !default;
 
   // Specificity bump needed to prevent override by buttons
   // scss-lint:disable QualifyingSelector
-  .input-group .input-group-button {
-    display: table-cell;
+  @if not $global-flexbox {
+      .input-group .input-group-button {
+          display: table-cell;
+      }
   }
 }
