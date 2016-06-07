@@ -91,7 +91,6 @@ $input-prefix-padding: 1rem !default;
     // scss-lint:disable ZeroUnit
     @if $global-flexbox {
       flex: 1 1 0px;
-      width: auto;
       height: auto;
     }
     @else {
