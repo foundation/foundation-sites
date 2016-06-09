@@ -485,7 +485,7 @@ Use the `grid-column()` mixin to create a column. There are a number of ways to 
   // Use the full column count (100%)
   @include grid-column;
 
-  // Use a column count (33%);
+  // Use a column count (25%);
   @include grid-column(4);
 
   // Use a percentage (15%)
