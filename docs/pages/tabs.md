@@ -81,8 +81,8 @@ Add the `.vertical` class to a tabstrip to stack tabs vertically. You can also p
       <li class="tabs-title"><a href="#panel2v">Tab 2</a></li>
       <li class="tabs-title"><a href="#panel3v">Tab 3</a></li>
       <li class="tabs-title"><a href="#panel4v">Tab 4</a></li>
-      <li class="tabs-title"><a href="#panel3v">Tab 5</a></li>
-      <li class="tabs-title"><a href="#panel4v">Tab 6</a></li>
+      <li class="tabs-title"><a href="#panel5v">Tab 5</a></li>
+      <li class="tabs-title"><a href="#panel6v">Tab 6</a></li>
     </ul>
     </div>
     <div class="medium-9 columns">
