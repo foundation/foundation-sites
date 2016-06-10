@@ -1585,7 +1585,7 @@
   * @function
   * @private
   */
-  $(window).load(function () {
+  $(window).on("load", function () {
     checkListeners();
   });
 
@@ -4766,7 +4766,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         // Replacing images
         if (this.$element[0].nodeName === 'IMG') {
-          this.$element.attr('src', path).load(function () {
+          this.$element.attr('src', path).on("load", function () {
             _this.currentPath = path;
           }).trigger(trigger);
         }
