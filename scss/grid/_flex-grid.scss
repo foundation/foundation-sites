@@ -167,11 +167,15 @@
     &.collapse {
       > .column {
         @include grid-col-collapse;
-        > .row {
-          margin-left: 0;
-          margin-right: 0;
-        }
       }
+    }
+
+    // Undo negative margins
+    // From collapsed child
+    &.is-collapse-child,
+    &.collapse > .column > .row {
+      margin-left: 0;
+      margin-right: 0;
     }
   }
 
