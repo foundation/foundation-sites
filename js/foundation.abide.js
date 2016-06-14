@@ -163,6 +163,28 @@ class Abide {
   }
 
   /**
+   * Get the set of labels associated with a set of checkbox els in this order
+   * 2. The <label> with the attribute `[for="someInputId"]`
+   * 3. The `.closest()` <label>
+   *
+   * @param {Object} $el - jQuery object to check for required attribute
+   * @returns {Boolean} Boolean value depends on whether or not attribute is checked or empty
+   */
+  findCheckboxLabels($els) {
+    var labels = $els.map((i, el) => {
+      var id = el.id;
+      var $label = this.$element.find(`label[for="${id}"]`);
+
+      if (!$label.length) {
+        $label = $(el).closest('label');
+      }
+      return $label[0];
+    });
+
+    return $(labels);
+  }
+
+  /**
    * Adds the CSS error class as specified by the Abide settings to the label, input, and the form
    * @param {Object} $el - jQuery object to add the class to
    */
@@ -205,6 +227,29 @@ class Abide {
   }
 
   /**
+   * Remove CSS error classes etc from an entire checkbox group
+   * @param {String} groupName - A string that specifies the name of a checkbox group
+   *
+   */
+
+  removeCheckboxErrorClasses(groupName) {
+    var $els = this.$element.find(`:checkbox[name="${groupName}"]`);
+    var $labels = this.findCheckboxLabels($els);
+    var $formErrors = this.findFormError($els);
+
+    if ($labels.length) {
+      $labels.removeClass(this.options.labelErrorClass);
+    }
+
+    if ($formErrors.length) {
+      $formErrors.removeClass(this.options.formErrorClass);
+    }
+
+    $els.removeClass(this.options.inputErrorClass).removeAttr('data-invalid');
+
+  }
+
+  /**
    * Removes CSS error class as specified by the Abide settings from the label, input, and the form
    * @param {Object} $el - jQuery object to remove the class from
    */
@@ -212,6 +257,10 @@ class Abide {
     // radios need to clear all of the els
     if($el[0].type == 'radio') {
       return this.removeRadioErrorClasses($el.attr('name'));
+    }
+    // checkboxes need to clear all of the els
+    else if($el[0].type == 'checkbox') {
+      return this.removeCheckboxErrorClasses($el.attr('name'));
     }
 
     var $label = this.findLabel($el);
@@ -253,7 +302,7 @@ class Abide {
         break;
 
       case 'checkbox':
-        validated = clearRequire;
+        validated = this.validateCheckbox($el.attr('name'));
         break;
 
       case 'select':
@@ -374,6 +423,36 @@ class Abide {
 
     if (!valid) {
       // For the group to be valid, at least one radio needs to be checked
+      $group.each((i, e) => {
+        if ($(e).prop('checked')) {
+          valid = true;
+        }
+      });
+    };
+
+    return valid;
+  }
+
+  /**
+   * Determines whether or a not a checkbox input is valid based on whether or not it is required and checked. Although the function targets a single `<input>`, it validates by checking the `required` and `checked` properties of all checkboxes in its group.
+   * @param {String} groupName - A string that specifies the name of a checkbox group
+   * @returns {Boolean} Boolean value depends on whether or not at least one checkbox input has been checked (if it's required)
+   */
+  validateCheckbox(groupName) {
+    // If at least one checkbox in the group has the `required` attribute, the group is considered required
+    var $group = this.$element.find(`:checkbox[name="${groupName}"]`);
+    var valid = false, required = false;
+
+    // For the group to be required, at least one checkbox needs to be required
+    $group.each((i, e) => {
+      if ($(e).attr('required')) {
+        required = true;
+      }
+    });
+    if(!required) valid=true;
+
+    if (!valid) {
+      // For the group to be valid, at least one checkbox needs to be checked
       $group.each((i, e) => {
         if ($(e).prop('checked')) {
           valid = true;
