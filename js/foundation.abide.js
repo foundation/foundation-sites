@@ -442,6 +442,7 @@ class Abide {
     // If at least one checkbox in the group has the `required` attribute, the group is considered required
     var $group = this.$element.find(`:checkbox[name="${groupName}"]`);
     var valid = false, required = false;
+    var _this = this;
 
     // For the group to be required, at least one checkbox needs to be required
     $group.each((i, e) => {
@@ -459,6 +460,15 @@ class Abide {
         }
       });
     };
+
+    // Refresh error class for all input
+    $group.each((i, e) => {
+      if (!valid) {
+        _this.addErrorClasses($(e));
+      } else {
+        _this.removeErrorClasses($(e));
+      }
+    });
 
     return valid;
   }
