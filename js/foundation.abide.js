@@ -349,8 +349,16 @@ class Abide {
   validateForm() {
     var acc = [];
     var _this = this;
+    var checkboxGroupName;
 
     this.$inputs.each(function() {
+
+      // Only use one checkbox per group since validateCheckbox() iterates over all associated checkboxes
+      if ($(this)[0].type === 'checkbox') {
+        if ($(this).attr('name') === checkboxGroupName) return true;
+        checkboxGroupName = $(this).attr('name');
+      }
+
       acc.push(_this.validateInput($(this)));
     });
 
