@@ -303,6 +303,7 @@ class Abide {
 
       case 'checkbox':
         validated = this.validateCheckbox($el.attr('name'));
+        clearRequire = true;
         break;
 
       case 'select':
