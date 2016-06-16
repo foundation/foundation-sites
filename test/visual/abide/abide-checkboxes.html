@@ -68,6 +68,31 @@
       </form>
 
       <hr>
+
+      <p>This form has a required checkbox with a custom value for <strong>data-min-required</strong> that specifies how many checkboxes must be checked in the group. If you try to submit without checking at least 3 checkboxes, it
+      should show an error.  When you then pick the required amount, the error should clear and let you submit.</p>
+      <form id="form" data-abide novalidate>
+        <div class="alert callout hide" data-abide-error>
+          <p>This form has errors.</p>
+        </div>
+        <fieldset>
+          <legend>Fieldset Label</legend>
+          <input type="checkbox" name="example4" value="yes" id="example4Yes" />
+          <label for="example4Yes">Yes</label>
+          <input required data-min-required="3" type="checkbox" name="example4" value="no" id="example4No" />
+          <label for="example4No">No</label>
+          <input type="checkbox" name="example4" value="maybe" id="example4Maybe" />
+          <label for="example4Maybe">Maybe</label>
+          <input type="checkbox" name="example4" value="some" id="example4Some" />
+          <label for="example4Some">Some</label>
+          <input type="checkbox" name="example4" value="more" id="example4More" />
+          <label for="example4More">More</label>
+        </fieldset>
+        <button class="button" type="submit">Submit</button>
+        <button class="button" type="reset">Reset</button>
+      </form>
+
+      <hr>
     </div>
 
     <script src="../assets/js/vendor.js"></script>

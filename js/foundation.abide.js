@@ -450,7 +450,7 @@ class Abide {
   validateCheckbox(groupName) {
     // If at least one checkbox in the group has the `required` attribute, the group is considered required
     var $group = this.$element.find(`:checkbox[name="${groupName}"]`);
-    var valid = false, required = false;
+    var valid = false, required = false, minRequired = 1, checked = 0;
     var _this = this;
 
     // For the group to be required, at least one checkbox needs to be required
@@ -462,12 +462,21 @@ class Abide {
     if(!required) valid=true;
 
     if (!valid) {
-      // For the group to be valid, at least one checkbox needs to be checked
+      // Count checked checkboxes within the group
+      // Use data-min-required if available (default: 1)
       $group.each((i, e) => {
         if ($(e).prop('checked')) {
-          valid = true;
+          checked++;
+        }
+        if ( typeof $(e).attr('data-min-required') !== 'undefined' ) {
+          minRequired = parseInt( $(e).attr('data-min-required') );
         }
       });
+      
+      // For the group to be valid, the minRequired amount of checkboxes have to be checked
+      if (checked >= minRequired) {
+        valid = true;
+      }
     };
 
     // Refresh error class for all input
