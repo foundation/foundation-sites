@@ -6,6 +6,7 @@
  * Tooltip module.
  * @module foundation.tooltip
  * @requires foundation.util.box
+ * @requires foundation.util.mediaQuery
  * @requires foundation.util.triggers
  */
 
