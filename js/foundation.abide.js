@@ -352,6 +352,11 @@ class Abide {
     var _this = this;
     var checkboxGroupName;
 
+    // Remember first form submission to prevent specific checkbox validation (more than one required) until form got initially submitted
+    if (!this.initialized) {
+      this.initialized = true;
+    }
+
     this.$inputs.each(function() {
 
       // Only use one checkbox per group since validateCheckbox() iterates over all associated checkboxes
@@ -478,6 +483,11 @@ class Abide {
         valid = true;
       }
     };
+
+    // Skip validation if more than 1 checkbox have to be checked AND if the form hasn't got submitted yet (otherwise it will already show an error during the first fill in)
+    if (this.initialized !== true && minRequired > 1) {
+      return true;
+    }
 
     // Refresh error class for all input
     $group.each((i, e) => {
