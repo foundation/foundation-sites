@@ -267,6 +267,7 @@
   // Sizing (shrink)
   .shrink {
     flex: flex-grid-column(shrink);
+    max-width: 100%;
   }
 
   // Vertical alignment using align-items and align-self
