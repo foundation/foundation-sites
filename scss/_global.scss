@@ -8,6 +8,45 @@
 /// @group global
 ////
 
+/// Components list
+/// @type Map
+$foundation-components: (
+	grid: true,
+	flex-grid: false,
+	typography: true,
+	forms: true,
+	button: true,
+	accordion: true,
+	accordion-menu: true,
+	badge: true,
+	breadcrumbs: true,
+	button-group: true,
+	menu: true,
+	menu-icon: true,
+	drilldown-menu: true,
+	dropdown: true,
+	dropdown-menu: true,
+	flex-video: true,
+	label: true,
+	media-object: true,
+	off-canvas: true,
+	orbit: true,
+	pagination: true,
+	progress-bar: true,
+	slider: true,
+	sticky: true,
+	reveal: true,
+	switch: true,
+	table: true,
+	tabs: true,
+	thumbnail: true,
+	title-bar: true,
+	tooltip: true,
+	top-bar: true,
+	visibility-classes: true,
+	float-classes: true
+) !default;
+
 /// Font size attribute applied to `<html>` and `<body>`. We use 100% by default so the value is inherited from the user's browser settings.
 /// @type Number
 $global-font-size: 100% !default;
@@ -92,7 +131,7 @@ $global-text-direction: ltr !default;
 
 /// Enables flexbox for components that support it.
 /// @type Boolean
-$global-flexbox: false !default;
+$global-flexbox: foundation_flex_grid_enabled() !default;
 
 @if not map-has-key($foundation-palette, primary) {
   @error 'In $foundation-palette, you must have a color named "primary".';
