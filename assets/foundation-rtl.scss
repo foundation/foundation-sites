@@ -1,5 +1,41 @@
 $global-text-direction: rtl;
+$foundation-components: (
+	grid: true,
+	flex-grid: false,
+	typography: true,
+	forms: true,
+	button: true,
+	accordion: true,
+	accordion-menu: true,
+	badge: true,
+	breadcrumbs: true,
+	button-group: true,
+	menu: true,
+	menu-icon: true,
+	drilldown-menu: true,
+	dropdown: true,
+	dropdown-menu: true,
+	flex-video: true,
+	label: true,
+	media-object: true,
+	off-canvas: true,
+	orbit: true,
+	pagination: true,
+	progress-bar: true,
+	slider: true,
+	sticky: true,
+	reveal: true,
+	switch: true,
+	table: true,
+	tabs: true,
+	thumbnail: true,
+	title-bar: true,
+	tooltip: true,
+	top-bar: true,
+	visibility-classes: true,
+	float-classes: true
+);
 
 @import '../scss/foundation';
 
-@include foundation-everything;
+@include foundation-components-include;
