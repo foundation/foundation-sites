@@ -101,9 +101,14 @@
   @if $columns == null {
     min-width: initial;
   }
-  // max-width fixes IE 10/11 not respecting the flex-basis property
-  @if $columns != null and $columns != shrink {
-    max-width: grid-column($columns);
+  @else {
+    @if $columns == shrink {
+      max-width: 100%;
+    }
+    @else {
+      // max-width fixes IE 10/11 not respecting the flex-basis property
+      max-width: grid-column($columns);
+    }
   }
 }
 
@@ -262,7 +267,6 @@
   // Sizing (shrink)
   .shrink {
     flex: flex-grid-column(shrink);
-    max-width: 100%;
   }
 
   // Vertical alignment using align-items and align-self
