@@ -328,7 +328,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           } else {
             barXY = eventFromBar;
           }
-          offsetPct = percent(barXY, barDim);
+          var offsetPct = percent(barXY, barDim);
 
           value = (this.options.end - this.options.start) * offsetPct + this.options.start;
 
