@@ -4985,7 +4985,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         if (winPos + this.winHeight === this.docHeight) {
           curIdx = this.points.length - 1;
         } else if (winPos < this.points[0]) {
-          curIdx = 0;
+          curIdx = undefined;
         } else {
           var isDown = this.scrollPos < winPos,
               _this = this,
