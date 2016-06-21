@@ -69,7 +69,7 @@ Header  | Default | Large and up
 By inserting a `<small>` element into a header Foundation will scale the header font size down for an inline element, allowing you to use this for subtitles or other secondary header text.
 
 ```html_example
-<h3>Foundation for Sites <small>Version 6.0.4</small></h3>
+<h3>Foundation for Sites <small>Version 6.2.3</small></h3>
 ```
 
 ---
