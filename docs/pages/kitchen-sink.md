@@ -568,7 +568,7 @@ description: Everything but.
 
 ## Magellan
 
-```html
+```html_example
 <ul class="horizontal menu" data-magellan>
   <li><a href="#first">First Arrival</a></li>
   <li><a href="#second">Second Arrival</a></li>
@@ -589,12 +589,6 @@ description: Everything but.
   </section>
 </div>
 ```
-
-<ul class="horizontal menu" data-magellan>
-  <li><a href="#first">First Arrival</a></li>
-  <li><a href="#second">Second Arrival</a></li>
-  <li><a href="#third">Third Arrival</a></li>
-</ul>
 
 ---
 
