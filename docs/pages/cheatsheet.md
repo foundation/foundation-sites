@@ -688,3 +688,6 @@ description: Get coding faster with this cheatsheet. It contains CSS classes, ac
     `<h4>`  | 18px    | 25px
     `<h5>`  | 17px    | 20px
     `<h6>`  | 16px    | 16px
+
+  </div>
+</div>
