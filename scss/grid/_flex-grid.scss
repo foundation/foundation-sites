@@ -101,14 +101,12 @@
   @if $columns == null {
     min-width: initial;
   }
+  @else if $columns == shrink {
+    max-width: 100%;
+  }
   @else {
-    @if $columns == shrink {
-      max-width: 100%;
-    }
-    @else {
-      // max-width fixes IE 10/11 not respecting the flex-basis property
-      max-width: grid-column($columns);
-    }
+    // max-width fixes IE 10/11 not respecting the flex-basis property
+    max-width: grid-column($columns);
   }
 }
 
