@@ -176,19 +176,10 @@ $breakpoint-classes: (small medium large) !default;
 /// @returns {Mixed} The value for the key after `$key`, if `$key` was found. If `$key` was not found, or `$key` was the last value in the map, returns `null`.
 @function -zf-map-next($map, $key) {
   // Store the values of the map as a list, so we can access them with nth
-  $values: map-values($map);
+  $values: map-keys($map);
 
-  // Ghetto for loop
-  $i: 1;
-  $found: false;
-  @each $val in map-keys($map) {
-    @if $found == false {
-      @if ($key == $val) {
-        $found: true;
-      }
-      $i: $i + 1;
-    }
-  }
+  // Get the index of the key within the map and add 1 to it for the next breakpoint in the map
+  $i: index($values, $key) + 1;
 
   // If the key doesn't exist, or it's the last key in the map, return null
   @if $i > length($map) {
@@ -196,7 +187,8 @@ $breakpoint-classes: (small medium large) !default;
   }
   // Otherwise, return the value
   @else {
-    @return nth($values, $i);
+    @return map-get($map, nth($values, $i));
+
   }
 }
 
