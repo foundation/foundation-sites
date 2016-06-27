@@ -49,18 +49,10 @@
   @return $width;
 }
 
-/// Creates a grid column.
+/// Calculates the gutter sizes of a column based on the $gutter values and breakpoints.
 ///
-/// @param {Mixed} $columns [$grid-column-count] - Width of the column. Refer to the `grid-column()` function to see possible values.
-/// @param {Number} $gutter [$grid-column-gutter] - Spacing between columns.
-@mixin grid-column(
-  $columns: $grid-column-count,
-  $gutter: $grid-column-gutter
-) {
-  @include grid-column-size($columns);
-  float: $global-left;
-
-  // Gutters
+/// @returns {Number} The gutter width.
+@function grid-column-gutters {
   @if type-of($gutter) == 'map' {
     @each $breakpoint, $value in $gutter {
       $padding: rem-calc($value) / 2;
@@ -76,6 +68,24 @@
     padding-left: $padding;
     padding-right: $padding;
   }
+  
+  @return $padding;
+}
+
+/// Creates a grid column.
+///
+/// @param {Mixed} $columns [$grid-column-count] - Width of the column. Refer to the `grid-column()` function to see possible values.
+/// @param {Number} $gutter [$grid-column-gutter] - Spacing between columns.
+@mixin grid-column(
+  $columns: $grid-column-count,
+  $gutter: $grid-column-gutter
+) {
+  @include grid-column-size($columns);
+  float: $global-left;
+
+  // Gutters
+  padding-left: grid-column-gutters;
+  padding-right: grid-column-gutters;
 
   // Last column alignment
   @if $grid-column-align-edge {
