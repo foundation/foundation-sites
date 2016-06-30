@@ -14,6 +14,10 @@ $accordion-background: $white !default;
 /// @type Boolean
 $accordion-plusminus: true !default;
 
+/// Font size of accordion titles.
+/// @type Number
+$accordion-title-font-size: rem-calc(12) !default;
+
 /// Default text color for items in a Menu.
 /// @type Color
 $accordion-item-color: foreground($accordion-background, $primary-color) !default;
@@ -57,7 +61,7 @@ $accordion-content-padding: 1rem !default;
   display: block;
   padding: $accordion-item-padding;
   line-height: 1;
-  font-size: rem-calc(12);
+  font-size: $accordion-title-font-size;
   color: $accordion-item-color;
   position: relative;
   border-bottom: $accordion-content-border;
