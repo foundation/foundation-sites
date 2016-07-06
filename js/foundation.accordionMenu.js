@@ -34,9 +34,7 @@ class AccordionMenu {
       'ARROW_UP': 'up',
       'ARROW_DOWN': 'down',
       'ARROW_LEFT': 'close',
-      'ESCAPE': 'closeAll',
-      'TAB': 'down',
-      'SHIFT_TAB': 'up'
+      'ESCAPE': 'closeAll'
     });
   }
 
@@ -127,6 +125,7 @@ class AccordionMenu {
           return;
         }
       });
+
       Foundation.Keyboard.handleKey(e, 'AccordionMenu', {
         open: function() {
           if ($target.is(':hidden')) {
@@ -143,11 +142,11 @@ class AccordionMenu {
           }
         },
         up: function() {
-          $prevElement.attr('tabindex', -1).focus();
+          $prevElement.focus();
           return true;
         },
         down: function() {
-          $nextElement.attr('tabindex', -1).focus();
+          $nextElement.focus();
           return true;
         },
         toggle: function() {
