@@ -71,7 +71,7 @@ class Drilldown {
       if(_this.options.parentLink){
         $link.clone().prependTo($sub.children('[data-submenu]')).wrap('<li class="is-submenu-parent-item is-submenu-item is-drilldown-submenu-item" role="menu-item"></li>');
       }
-      $link.data('savedHref', $link.attr('href')).removeAttr('href');
+      $link.data('savedHref', $link.attr('href')).removeAttr('href').attr('tabindex', 0);
       $link.children('[data-submenu]')
           .attr({
             'aria-hidden': true,
@@ -148,6 +148,8 @@ class Drilldown {
           return;
         }
       });
+
+      console.log('Next:', $nextElement, 'Prev', $prevElement);
 
       Foundation.Keyboard.handleKey(e, 'Drilldown', {
         next: function() {
