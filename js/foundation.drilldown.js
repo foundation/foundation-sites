@@ -149,8 +149,6 @@ class Drilldown {
         }
       });
 
-      console.log('Next:', $nextElement, 'Prev', $prevElement);
-
       Foundation.Keyboard.handleKey(e, 'Drilldown', {
         next: function() {
           if ($element.is(_this.$submenuAnchors)) {
@@ -329,6 +327,7 @@ class Drilldown {
     });
     this.$element.find('a').each(function(){
       var $link = $(this);
+      $link.removeAttr('tabindex');
       if($link.data('savedHref')){
         $link.attr('href', $link.data('savedHref')).removeData('savedHref');
       }else{ return; }
