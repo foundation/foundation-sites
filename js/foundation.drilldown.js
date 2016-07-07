@@ -71,7 +71,7 @@ class Drilldown {
       if(_this.options.parentLink){
         $link.clone().prependTo($sub.children('[data-submenu]')).wrap('<li class="is-submenu-parent-item is-submenu-item is-drilldown-submenu-item" role="menu-item"></li>');
       }
-      $link.data('savedHref', $link.attr('href')).removeAttr('href');
+      $link.data('savedHref', $link.attr('href')).removeAttr('href').attr('tabindex', 0);
       $link.children('[data-submenu]')
           .attr({
             'aria-hidden': true,
@@ -327,6 +327,7 @@ class Drilldown {
     });
     this.$element.find('a').each(function(){
       var $link = $(this);
+      $link.removeAttr('tabindex');
       if($link.data('savedHref')){
         $link.attr('href', $link.data('savedHref')).removeData('savedHref');
       }else{ return; }
