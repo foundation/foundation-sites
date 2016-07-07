@@ -27,7 +27,11 @@ class OffCanvas {
     this._init();
     this._events();
 
-    Foundation.registerPlugin(this, 'OffCanvas');
+    Foundation.registerPlugin(this, 'OffCanvas')
+    Foundation.Keyboard.register('OffCanvas', {
+      'ESCAPE': 'close'
+    });
+
   }
 
   /**
@@ -193,13 +197,16 @@ class OffCanvas {
     }
 
     if (this.options.autoFocus) {
-      this.$element.one(Foundation.transitionend(this.$element), function() {
-        _this.$element.find('a, button').eq(0).focus();
-      });
+      this.$element.attr('tabindex', '-1');
+      this.$element.focus();
+      
+      /*this.$element.one(Foundation.transitionend(this.$element), function() {
+        _this.$element.focus();
+      });*/
     }
 
     if (this.options.trapFocus) {
-      $('[data-off-canvas-content]').attr('tabindex', '-1');
+      this.$element.attr('tabindex', '-1');
       this._trapFocus();
     }
   }
@@ -214,15 +221,14 @@ class OffCanvas {
         last = focusable.eq(-1);
 
     focusable.off('.zf.offcanvas').on('keydown.zf.offcanvas', function(e) {
-      if (e.which === 9 || e.keycode === 9) {
-        if (e.target === last[0] && !e.shiftKey) {
-          e.preventDefault();
-          first.focus();
-        }
-        if (e.target === first[0] && e.shiftKey) {
-          e.preventDefault();
-          last.focus();
-        }
+      var key = Foundation.Keyboard.parseKey(e);
+      if (key === 'TAB' && e.target === last[0]) {
+        e.preventDefault();
+        first.focus();
+      }
+      if (key === 'SHIFT_TAB' && e.target === first[0]) {
+        e.preventDefault();
+        last.focus();
       }
     });
   }
@@ -304,13 +310,18 @@ class OffCanvas {
    * @function
    * @private
    */
-  _handleKeyboard(event) {
-    if (event.which !== 27) return;
-
-    event.stopPropagation();
-    event.preventDefault();
-    this.close();
-    this.$lastTrigger.focus();
+  _handleKeyboard(e) {
+    Foundation.Keyboard.handleKey(e, 'OffCanvas', {
+      close: () => {
+        this.close();
+        this.$lastTrigger.focus();
+        return true;
+      },
+      handled: () => {
+        e.stopPropagation();
+        e.preventDefault();
+      }
+    });
   }
 
   /**
@@ -370,7 +381,7 @@ OffCanvas.defaults = {
   revealOn: null,
 
   /**
-   * Force focus to the offcanvas on open. If true, will focus the opening trigger on close.
+   * Force focus to the offcanvas on open. If true, will focus the opening trigger on close. Sets tabindex of [data-off-canvas-content] to -1 for accessibility purposes.
    * @option
    * @example true
    */
