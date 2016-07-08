@@ -105,6 +105,34 @@ var Keyboard = {
 
   register(componentName, cmds) {
     commands[componentName] = cmds;
+  },  
+
+  /**
+   * Traps the focus in the given element.
+   * @param  {jQuery} $element  jQuery object to trap the foucs into.
+   */
+  trapFocus($element) {
+    var $focusable = Foundation.Keyboard.findFocusable($element),
+        $firstFocusable = $focusable.eq(0),
+        $lastFocusable = $focusable.eq(-1);
+
+    $element.on('keydown.zf.trapfocus', function(event) {
+      if (event.target === $lastFocusable[0] && Foundation.Keyboard.parseKey(event) === 'TAB') {
+        event.preventDefault();
+        $firstFocusable.focus();
+      }
+      else if (event.target === $firstFocusable[0] && Foundation.Keyboard.parseKey(event) === 'SHIFT_TAB') {
+        event.preventDefault();
+        $lastFocusable.focus();
+      }
+    });
+  },
+  /**
+   * Releases the trapped focus from the given element.
+   * @param  {jQuery} $element  jQuery object to release the focus for.
+   */
+  releaseFocus($element) {
+    $element.off('keydown.zf.trapfocus');
   }
 }
 
