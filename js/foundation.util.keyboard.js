@@ -34,9 +34,17 @@ var Keyboard = {
    */
   parseKey(event) {
     var key = keyCodes[event.which || event.keyCode] || String.fromCharCode(event.which).toUpperCase();
+
+    // Remove un-printable characters, e.g. for `fromCharCode` calls for CTRL only events
+    key = key.replace(/\W+/, '');
+
     if (event.shiftKey) key = `SHIFT_${key}`;
     if (event.ctrlKey) key = `CTRL_${key}`;
     if (event.altKey) key = `ALT_${key}`;
+
+    // Remove trailing underscore, in case only modifiers were used (e.g. only `CTRL_ALT`)
+    key = key.replace(/_$/, '');
+
     return key;
   },
 
