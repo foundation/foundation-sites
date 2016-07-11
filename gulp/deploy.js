@@ -38,6 +38,11 @@ gulp.task('deploy', function(cb) {
   sequence('deploy:prompt', 'deploy:version', 'deploy:dist', 'deploy:plugins', 'deploy:settings', 'deploy:commit', 'deploy:templates', cb);
 });
 
+gulp.task('deploy:prep', function(cb) {
+  sequence('deploy:prompt', 'deploy:version', 'deploy:dist', 'deploy:plugins', 'deploy:settings', cb);
+});
+
+
 gulp.task('deploy:prompt', function(cb) {
   inquirer.prompt([{
     type: 'input',

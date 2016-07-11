@@ -1,6 +1,6 @@
 {
   "name": "foundation-sites",
-  "version": "6.2.1",
+  "version": "6.2.3",
   "main": [
     "scss/foundation.scss",
     "dist/foundation.js"
@@ -22,7 +22,8 @@
     ".npm",
     ".gitignore",
     ".npmignore",
-    ".versions"
+    ".versions",
+    ".babelrc"
   ],
   "dependencies": {
     "jquery": "~2.2.0",

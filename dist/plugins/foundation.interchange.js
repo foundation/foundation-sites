@@ -76,10 +76,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         // Iterate through each rule, but only save the last match
         for (var i in this.rules) {
-          var rule = this.rules[i];
+          if (this.rules.hasOwnProperty(i)) {
+            var rule = this.rules[i];
 
-          if (window.matchMedia(rule.query).matches) {
-            match = rule;
+            if (window.matchMedia(rule.query).matches) {
+              match = rule;
+            }
           }
         }
 
@@ -98,8 +100,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       key: '_addBreakpoints',
       value: function _addBreakpoints() {
         for (var i in Foundation.MediaQuery.queries) {
-          var query = Foundation.MediaQuery.queries[i];
-          Interchange.SPECIAL_QUERIES[query.name] = query.value;
+          if (Foundation.MediaQuery.queries.hasOwnProperty(i)) {
+            var query = Foundation.MediaQuery.queries[i];
+            Interchange.SPECIAL_QUERIES[query.name] = query.value;
+          }
         }
       }
 
@@ -124,18 +128,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
 
         for (var i in rules) {
-          var rule = rules[i].slice(1, -1).split(', ');
-          var path = rule.slice(0, -1).join('');
-          var query = rule[rule.length - 1];
+          if (rules.hasOwnProperty(i)) {
+            var rule = rules[i].slice(1, -1).split(', ');
+            var path = rule.slice(0, -1).join('');
+            var query = rule[rule.length - 1];
 
-          if (Interchange.SPECIAL_QUERIES[query]) {
-            query = Interchange.SPECIAL_QUERIES[query];
+            if (Interchange.SPECIAL_QUERIES[query]) {
+              query = Interchange.SPECIAL_QUERIES[query];
+            }
+
+            rulesList.push({
+              path: path,
+              query: query
+            });
           }
-
-          rulesList.push({
-            path: path,
-            query: query
-          });
         }
 
         this.rules = rulesList;

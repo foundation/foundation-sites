@@ -226,7 +226,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: 'destroy',
       value: function destroy() {
-        this.$element.find('[data-tab-content]').slideUp(0).css('display', '');
+        this.$element.find('[data-tab-content]').stop(true).slideUp(0).css('display', '');
         this.$element.find('a').off('.zf.accordion');
 
         Foundation.unregisterPlugin(this);

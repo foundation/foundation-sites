@@ -83,37 +83,39 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             hasTouch = 'ontouchstart' in window || typeof window.ontouchstart !== 'undefined',
             parClass = 'is-dropdown-submenu-parent';
 
-        if (this.options.clickOpen || hasTouch) {
-          this.$menuItems.on('click.zf.dropdownmenu touchstart.zf.dropdownmenu', function (e) {
-            var $elem = $(e.target).parentsUntil('ul', '.' + parClass),
-                hasSub = $elem.hasClass(parClass),
-                hasClicked = $elem.attr('data-is-click') === 'true',
-                $sub = $elem.children('.is-dropdown-submenu');
+        // used for onClick and in the keyboard handlers
+        var handleClickFn = function (e) {
+          var $elem = $(e.target).parentsUntil('ul', '.' + parClass),
+              hasSub = $elem.hasClass(parClass),
+              hasClicked = $elem.attr('data-is-click') === 'true',
+              $sub = $elem.children('.is-dropdown-submenu');
 
-            if (hasSub) {
-              if (hasClicked) {
-                if (!_this.options.closeOnClick || !_this.options.clickOpen && !hasTouch || _this.options.forceFollow && hasTouch) {
-                  return;
-                } else {
-                  e.stopImmediatePropagation();
-                  e.preventDefault();
-                  _this._hide($elem);
-                }
+          if (hasSub) {
+            if (hasClicked) {
+              if (!_this.options.closeOnClick || !_this.options.clickOpen && !hasTouch || _this.options.forceFollow && hasTouch) {
+                return;
               } else {
-                e.preventDefault();
                 e.stopImmediatePropagation();
-                _this._show($elem.children('.is-dropdown-submenu'));
-                $elem.add($elem.parentsUntil(_this.$element, '.' + parClass)).attr('data-is-click', true);
+                e.preventDefault();
+                _this._hide($elem);
               }
             } else {
-              return;
+              e.preventDefault();
+              e.stopImmediatePropagation();
+              _this._show($elem.children('.is-dropdown-submenu'));
+              $elem.add($elem.parentsUntil(_this.$element, '.' + parClass)).attr('data-is-click', true);
             }
-          });
+          } else {
+            return;
+          }
+        };
+
+        if (this.options.clickOpen || hasTouch) {
+          this.$menuItems.on('click.zf.dropdownmenu touchstart.zf.dropdownmenu', handleClickFn);
         }
 
         if (!this.options.disableHover) {
           this.$menuItems.on('mouseenter.zf.dropdownmenu', function (e) {
-            e.stopImmediatePropagation();
             var $elem = $(this),
                 hasSub = $elem.hasClass(parClass);
 
@@ -154,16 +156,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           });
 
           var nextSibling = function () {
-            if (!$element.is(':last-child')) $nextElement.children('a:first').focus();
+            if (!$element.is(':last-child')) {
+              $nextElement.children('a:first').focus();
+              e.preventDefault();
+            }
           },
               prevSibling = function () {
             $prevElement.children('a:first').focus();
+            e.preventDefault();
           },
               openSub = function () {
             var $sub = $element.children('ul.is-dropdown-submenu');
             if ($sub.length) {
               _this._show($sub);
               $element.find('li > a:first').focus();
+              e.preventDefault();
             } else {
               return;
             }
@@ -173,6 +180,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             var close = $element.parent('ul').parent('li');
             close.children('a:first').focus();
             _this._hide(close);
+            e.preventDefault();
             //}
           };
           var functions = {
@@ -180,15 +188,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             close: function () {
               _this._hide(_this.$element);
               _this.$menuItems.find('a:first').focus(); // focus to first element
+              e.preventDefault();
             },
             handled: function () {
-              e.preventDefault();
               e.stopImmediatePropagation();
             }
           };
 
           if (isTab) {
-            if (_this.vertical) {
+            if (_this.$element.hasClass(_this.options.verticalClass)) {
               // vertical menu
               if (_this.options.alignment === 'left') {
                 // left aligned

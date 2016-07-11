@@ -24,7 +24,7 @@ var LINT_PATHS = [
 var COMPATIBILITY = [
   'last 2 versions',
   'ie >= 9',
-  'and_chr >= 2.3'
+  'Android >= 2.3'
 ];
 
 // Compiles Sass files into CSS

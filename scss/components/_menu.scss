@@ -162,7 +162,8 @@ $menu-icon-spacing: 0.25rem !default;
         i,
         svg {
           vertical-align: middle;
-          & + span {
+
+          + span {
             vertical-align: middle;
           }
         }

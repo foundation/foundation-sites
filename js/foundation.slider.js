@@ -106,7 +106,11 @@ class Slider {
    * @fires Slider#changed
    */
   _setHandlePos($hndl, location, noInvert, cb) {
-  //might need to alter that slightly for bars that will have odd number selections.
+    // don't move if the slider has been disabled since its initialization
+    if (this.$element.hasClass(this.options.disabledClass)) {
+      return;
+    }
+    //might need to alter that slightly for bars that will have odd number selections.
     location = parseFloat(location);//on input change events, convert string to number...grumble.
 
     // prevent slider from running out of bounds, if value exceeds the limits set through options, override the value to min/max
@@ -204,7 +208,7 @@ class Slider {
     /**
      * Fires when the value has not been change for a given time.
      * @event Slider#changed
-     */    
+     */
     clearTimeout(_this.timeout);
     _this.timeout = setTimeout(function(){
       _this.$element.trigger('changed.zf.slider', [$hndl]);
@@ -268,15 +272,28 @@ class Slider {
           vertical = this.options.vertical,
           param = vertical ? 'height' : 'width',
           direction = vertical ? 'top' : 'left',
-          pageXY = vertical ? e.pageY : e.pageX,
+          eventOffset = vertical ? e.pageY : e.pageX,
           halfOfHandle = this.$handle[0].getBoundingClientRect()[param] / 2,
           barDim = this.$element[0].getBoundingClientRect()[param],
-          // touch events emulated by the touch util give position relative to screen, add window.scroll to event coordinates...
-          windowScroll = vertical ? $(window).scrollTop() : $(window).scrollLeft(),
-          barOffset = this.$element.offset()[direction] - (this.$element.offset()[direction] < pageXY ? pageXY : (pageXY + windowScroll)),
-          //if the cursor position is less than or greater than the elements bounding coordinates, set coordinates within those bounds
-          barXY = barOffset > 0 ? -halfOfHandle : (barOffset - halfOfHandle) < -barDim ? barDim : Math.abs(barOffset),
-          offsetPct = percent(barXY, barDim);
+          windowScroll = vertical ? $(window).scrollTop() : $(window).scrollLeft();
+
+
+      var elemOffset = this.$element.offset()[direction];
+
+      // touch events emulated by the touch util give position relative to screen, add window.scroll to event coordinates...
+      // best way to guess this is simulated is if clientY == pageY
+      if (e.clientY === e.pageY) { eventOffset = eventOffset + windowScroll; }
+      var eventFromBar = eventOffset - elemOffset;
+      var barXY;
+      if (eventFromBar < 0) {
+        barXY = 0;
+      } else if (eventFromBar > barDim) {
+        barXY = barDim;
+      } else {
+        barXY = eventFromBar;
+      }
+      offsetPct = percent(barXY, barDim);
+
       value = (this.options.end - this.options.start) * offsetPct + this.options.start;
 
       // turn everything around for RTL, yay math!
@@ -335,8 +352,6 @@ class Slider {
    * @param {jQuery} $handle - the current handle to apply listeners to.
    */
   _events($handle) {
-    if (this.options.disabled) { return false; }
-
     var _this = this,
         curHandle,
         timer;
@@ -375,7 +390,6 @@ class Slider {
 
           $body.on('mousemove.zf.slider', function(e) {
             e.preventDefault();
-
             _this._handleEvent(e, curHandle);
 
           }).on('mouseup.zf.slider', function(e) {
@@ -538,7 +552,7 @@ Slider.defaults = {
    */
   invertVertical: false,
   /**
-   * Milliseconds before the `changed.zf-slider` event is triggered after value change. 
+   * Milliseconds before the `changed.zf-slider` event is triggered after value change.
    * @option
    * @example 500
    */

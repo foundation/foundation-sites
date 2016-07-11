@@ -139,6 +139,7 @@ $button-opacity-disabled: 0.25 !default;
 @mixin button-disabled {
   opacity: $button-opacity-disabled;
   cursor: not-allowed;
+
   &:hover, &:focus {
     background-color: $button-background;
     color: $button-color;

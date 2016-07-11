@@ -60,6 +60,10 @@ $table-foot-background: smart-scale($table-background, $table-color-scale) !defa
 /// @type Color
 $table-head-font-color: $body-font-color !default;
 
+/// Default font color for footer.
+/// @type Color
+$table-foot-font-color: $body-font-color !default;
+
 /// Default value for showing the header when using stacked tables.
 /// @type Boolean
 $show-header-for-stacked: false !default;
@@ -104,13 +108,22 @@ $show-header-for-stacked: false !default;
     font-weight: $global-weight-bold;
     padding: $table-padding;
   }
+  
+  // Table head
+  thead {
+    background: $table-head-background;
+    color: $table-head-font-color;
+  }
+
+  // Table foot
+  tfoot {
+    background: $table-foot-background;
+    color: $table-foot-font-color;
+  }
 
   // Table head and foot
   thead,
   tfoot {
-    background: $table-head-background;
-    color: $table-head-font-color;
-
     // Rows within head and foot
     tr {
       background: transparent;
