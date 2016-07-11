@@ -197,31 +197,8 @@ class OffCanvas {
 
     if (this.options.trapFocus) {
       $('[data-off-canvas-content]').attr('tabindex', '-1');
-      this._trapFocus();
+      Foundation.Keyboard.trapFocus(this.$element);
     }
-  }
-
-  /**
-   * Traps focus within the offcanvas on open.
-   * @private
-   */
-  _trapFocus() {
-    var focusable = Foundation.Keyboard.findFocusable(this.$element),
-        first = focusable.eq(0),
-        last = focusable.eq(-1);
-
-    focusable.off('.zf.offcanvas').on('keydown.zf.offcanvas', function(e) {
-      if (e.which === 9 || e.keycode === 9) {
-        if (e.target === last[0] && !e.shiftKey) {
-          e.preventDefault();
-          first.focus();
-        }
-        if (e.target === first[0] && e.shiftKey) {
-          e.preventDefault();
-          last.focus();
-        }
-      }
-    });
   }
 
   /**
@@ -278,6 +255,7 @@ class OffCanvas {
     this.$lastTrigger.attr('aria-expanded', 'false');
     if (this.options.trapFocus) {
       $('[data-off-canvas-content]').removeAttr('tabindex');
+      Foundation.Keyboard.releaseFocus(this.$element);
     }
   }
 
