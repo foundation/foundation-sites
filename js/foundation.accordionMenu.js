@@ -34,9 +34,7 @@ class AccordionMenu {
       'ARROW_UP': 'up',
       'ARROW_DOWN': 'down',
       'ARROW_LEFT': 'close',
-      'ESCAPE': 'closeAll',
-      //'TAB': 'down',
-      //'SHIFT_TAB': 'up'
+      'ESCAPE': 'closeAll'
     });
   }
 
@@ -172,7 +170,7 @@ class AccordionMenu {
           e.stopImmediatePropagation();
         }
       });
-    });//.attr('tabindex', 0);
+    });
   }
 
   /**
