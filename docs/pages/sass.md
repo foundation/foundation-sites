@@ -48,11 +48,13 @@ Next, add the framework files as an import path. How you do this depends on your
 Here's an example using grunt-contrib-sass:
 
 ```js
+var path = require('path');
+
 grunt.initConfig({
   sass: {
     dist: {
     options: {
-        loadPath: ['node_modules/foundation-sites/scss']
+        loadPath: [path.join(path.dirname(require.resolve('foundation-sites')), '../scss')]
       }
     }
   }
