@@ -40,9 +40,15 @@ class Tooltip {
     this.options.tipText = this.options.tipText || this.$element.attr('title');
     this.template = this.options.template ? $(this.options.template) : this._buildTemplate(elemId);
 
-    this.template.appendTo(document.body)
+    if (this.options.allowHtml) {
+      this.template.appendTo(document.body)
+        .html(this.options.tipText)
+        .hide();
+    } else {
+      this.template.appendTo(document.body)
         .text(this.options.tipText)
         .hide();
+    }
 
     this.$element.attr({
       'title': '',
@@ -432,7 +438,14 @@ Tooltip.defaults = {
    * @option
    * @example 12
    */
-  hOffset: 12
+  hOffset: 12,
+    /**
+   * Allow HTML in tooltip. Warning: If you are loading user-generated content into tooltips,
+   * allowing HTML may open yourself up to XSS attacks.
+   * @option
+   * @example false
+   */
+  allowHtml: false
 };
 
 /**
