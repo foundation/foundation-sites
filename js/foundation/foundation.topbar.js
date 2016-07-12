@@ -134,7 +134,7 @@
           }
         }
       } else {
-        if (self.is_sticky(topbar, topbar.parent(), settings)) {
+        if (self.is_sticky(topbar, topbar.parent(), settings) && topbar.parent().offset().top==0) {
           topbar.parent().addClass('fixed');
         }
 
