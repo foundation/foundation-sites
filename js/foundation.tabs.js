@@ -115,6 +115,9 @@ class Tabs {
         e.preventDefault();
         e.stopPropagation();
         if ($(this).hasClass('is-active')) {
+          if(_this.options.activeCollapse) {
+             _this._handleCollapse($(this)); 
+          }
           return;
         }
         _this._handleTabChange($(this));
@@ -207,6 +210,32 @@ class Tabs {
      * @event Tabs#change
      */
     this.$element.trigger('change.zf.tabs', [$target]);
+  }
+  
+  /**
+   * Collapses `$targetContent` defined by `$target`.
+   * @param {jQuery} $target - Tab to collapse.
+   * @fires Tabs#collapse
+   * @function
+   */
+  _handleCollapse($target) {
+    var $tabLink = $target.find('[role="tab"]'),
+        hash = $tabLink[0].hash,
+        $targetContent = this.$tabContent.find(hash);
+        
+    $target.removeClass('is-active')
+           .find('[role="tab"]')
+           .attr({ 'aria-selected': 'false' });
+
+    $targetContent
+      .removeClass('is-active')
+      .attr({'aria-hidden': 'true'});
+
+    /**
+     * Fires when the plugin has successfully collapsed tab.
+     * @event Tabs#collapse
+     */
+    this.$element.trigger('collapse.zf.tabs', [$target]);
   }
 
   /**
@@ -307,7 +336,14 @@ Tabs.defaults = {
    * @example false
    */
   matchHeight: false,
-
+  
+  /**
+   * Allows active tabs to collapse when clicked.
+   * @option
+   * @example false
+   */
+  activeCollapse: false,
+  
   /**
    * Class applied to `li`'s in tab link list.
    * @option
