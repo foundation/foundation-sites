@@ -25,7 +25,7 @@
 
       S(this.scope)
       .off('.fndtn.accordion')
-      .on('click.fndtn.accordion', '[' + this.attr_name() + '] > dd > a, [' + this.attr_name() + '] > li > a', function (e) {
+      .on('click.fndtn.accordion', '[' + this.attr_name() + '] > dd > a:not(.follow), [' + this.attr_name() + '] > li > a:not(.follow)', function (e) {
         var accordion = S(this).closest('[' + self.attr_name() + ']'),
             groupSelector = self.attr_name() + '=' + accordion.attr(self.attr_name()),
             settings = accordion.data(self.attr_name(true) + '-init') || self.settings,
