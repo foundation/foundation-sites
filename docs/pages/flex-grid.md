@@ -227,10 +227,10 @@ Similar alignment classes can also be applied to individual columns, which use t
 
 ```html_example
 <div class="row">
-  <div class="column align-self-bottom">Align bottom</div>
-  <div class="column align-self-middle">Align middle</div>
-  <div class="column align-self-top">Align top</div>
-  <div class="column">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?</div>
+  <div class="large-3 column align-self-bottom">Align bottom</div>
+  <div class="large-3 column align-self-middle">Align middle</div>
+  <div class="large-3 column align-self-top">Align top</div>
+  <div class="large-3 column">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?</div>
 </div>
 ```
 
