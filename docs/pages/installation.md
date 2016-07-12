@@ -154,6 +154,7 @@ Here's what comes in the package.
 - `dist/`: Compiled files.
   - `css/`: Compiled CSS files. Includes minified and unminified files.
   - `js/`: Concatenated JavaScript files. Includes minified and unminified files.
+    - `plugins/`: Standalone JavaScript plugins.
 
 ---
 
