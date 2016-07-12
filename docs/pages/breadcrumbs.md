@@ -4,7 +4,7 @@ description: Breadcrumbs come in handy to show a navigation trail for users clic
 sass: scss/components/_breadcrumbs.scss
 ---
 
-To make a set of breadcrumb links, just add the class `.breadcrumbs` to a `<ul>`, and then add links instead of `<li>` elements.
+To make a set of breadcrumb links, just add the class `.breadcrumbs` to a `<ul>`, and then add links inside of the `<li>` elements.
 
 The current page doesn't require a link or a class, but you should add some explanatory text for AT that indicates which item is the current page.
 
