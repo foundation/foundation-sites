@@ -193,7 +193,7 @@ description: Everything but.
 
 ```html_example
 <!-- Anchors (links) -->
-<a href="about.html" class="button">Learn More</a>
+<a href="#" class="button">Learn More</a>
 <a href="#features" class="button">View All Features</a>
 
 <!-- Buttons (actions) -->
