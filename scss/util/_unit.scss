@@ -40,7 +40,7 @@ $global-font-size: 100% !default;
     $base: ($base / 100%) * 16px;
   }
   
-  // Using rem as base allwos correct scaling
+  // Using rem as base allows correct scaling
   @if unit($base) == 'rem' {
     $base: strip-unit($base) * 16px;
   }
