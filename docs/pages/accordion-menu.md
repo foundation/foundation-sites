@@ -20,10 +20,10 @@ Any `<a>` will behave like a standard link. However, any `<a>` paired with a nes
 </div>
 
 ```html
-<ul class="vertical menu" data-accordion-menu>
+<ul class="vertical tree" data-accordion-menu>
   <li>
     <a href="#">Item 1</a>
-    <ul class="menu vertical nested">
+    <ul class="tree vertical nested">
       <li><a href="#">Item 1A</a></li>
       <li><a href="#">Item 1B</a></li>
     </ul>
@@ -32,28 +32,28 @@ Any `<a>` will behave like a standard link. However, any `<a>` paired with a nes
 </ul>
 ```
 
-<ul class="vertical menu" data-accordion-menu>
+<ul class="vertical tree" data-accordion-menu>
   <li>
-    <a href="#">Item 1</a>
-    <ul class="menu vertical nested">
+    <span>Item 1</span>
+    <ul class="tree vertical nested">
       <li>
-        <a href="#">Item 1A</a>
-        <ul class="menu vertical nested">
-          <li><a href="#">Item 1Ai</a></li>
-          <li><a href="#">Item 1Aii</a></li>
-          <li><a href="#">Item 1Aiii</a></li>
+        <span>Item 1A</span>
+        <ul class="tree vertical nested">
+          <li><span>Item 1Ai</span></li>
+          <li><a href="http://www.sony.com">Item 1Aii</a></li>
+          <li><span>Item 1Aiii</span></li>
         </ul>
       </li>
-      <li><a href="#">Item 1B</a></li>
-      <li><a href="#">Item 1C</a></li>
+      <li><span>Item 1B</span></li>
+      <li><span>Item 1C</span></li>
     </ul>
   </li>
   <li>
-    <a href="#">Item 2</a>
-    <ul class="menu vertical nested">
-      <li><a href="#">Item 2A</a></li>
-      <li><a href="#">Item 2B</a></li>
+    <span>Item 2</span>
+    <ul class="tree vertical nested">
+      <li><span>Item 2A</a></li>
+      <li><span>Item 2B</a></li>
     </ul>
   </li>
-  <li><a href="#">Item 3</a></li>
+  <li><a href="http://www.nike.com">Item 3</a></li>
 </ul>
