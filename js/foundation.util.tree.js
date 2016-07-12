@@ -35,8 +35,11 @@ const Tree = {
           });
       }  else {
         $item.addClass(noSubClass).find('a').attr('tabindex',-1);
+        var text = $item.addClass(noSubClass).find('a').text();
+        if( $item.find('a').length > 0 ){
+          $item.attr('aria-label',text + ' link');
+        }
       }
-
 
       if ($item.parent('[data-submenu]').length) {
         $item.addClass(`is-submenu-item ${subItemClass}`);
