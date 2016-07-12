@@ -22,7 +22,7 @@ class AccordionMenu {
     this.$element = element;
     this.options = $.extend({}, AccordionMenu.defaults, this.$element.data(), options);
 
-    Foundation.Tree.Feather(this.$element, 'accordion');
+    Foundation.Nest.Feather(this.$element, 'accordion');
 
     this._init();
 
@@ -138,7 +138,6 @@ class AccordionMenu {
           if ($target.length && !$target.is(':hidden')) { // close active sub of this item
             _this.up($target);
           } else if ($element.parent('[data-submenu]').length) { // close currently open sub
-            _this.up($element.parent('[data-submenu]'));
             $element.parents('li').first().first().focus();
           }
         },

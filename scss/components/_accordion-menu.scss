@@ -11,16 +11,19 @@ $accordionmenu-arrows: true !default;
 $accordionmenu-arrow-color: $primary-color !default;
 
 @mixin foundation-accordion-menu {
-  .tree{
-    li:focus{
-      border: 1px dotted #000;
+  .tree {
+    li:focus {
+      border: 1px dotted $black;
       outline: 0;
     }
-    .is-accordion-submenu-none > a{
+
+    .is-accordion-submenu-none > a {
       padding: 0;
       line-height: $list-lineheight;
     }
+
   }
+
   @if $accordionmenu-arrows {
     .is-accordion-submenu-parent > span {
       position: relative;
@@ -28,7 +31,7 @@ $accordionmenu-arrow-color: $primary-color !default;
       cursor: pointer;
       color: $anchor-color;
 
-      &:hover{
+      &:hover {
         color: $anchor-color-hover;
       }
 
@@ -39,11 +42,13 @@ $accordionmenu-arrow-color: $primary-color !default;
         margin-top: -4px;
         right: 1rem;
       }
+
     }
 
     .is-accordion-submenu-parent[aria-expanded='true'] > span::after {
       transform-origin: 50% 50%;
       transform: scaleY(-1);
     }
+    
   }
 }
