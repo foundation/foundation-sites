@@ -19,7 +19,7 @@
       multiple_opened : false,
       bg_class : 'reveal-modal-bg',
       root_element : 'body',
-      no_scroll: true,
+      no_scroll: false,
       open : function(){},
       opened : function(){},
       close : function(){},
