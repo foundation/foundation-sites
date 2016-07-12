@@ -63,7 +63,7 @@ $(document).on('focus.zf.trigger blur.zf.trigger', '[data-toggle-focus]', functi
 * @function
 * @private
 */
-$(window).on("load", () => {
+$(window).on('load', () => {
   checkListeners();
 });
 
