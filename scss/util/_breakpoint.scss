@@ -175,29 +175,26 @@ $breakpoint-classes: (small medium large) !default;
 ///
 /// @returns {Mixed} The value for the key after `$key`, if `$key` was found. If `$key` was not found, or `$key` was the last value in the map, returns `null`.
 @function -zf-map-next($map, $key) {
-  // Store the values of the map as a list, so we can access them with nth
-  $values: map-values($map);
 
-  // Ghetto for loop
-  $i: 1;
-  $found: false;
-  @each $val in map-keys($map) {
-    @if $found == false {
-      @if ($key == $val) {
-        $found: true;
-      }
-      $i: $i + 1;
-    }
+  // Store the keys of the map as a list
+  $values: map-keys($map);
+
+  $i: 0;
+
+  // If the Key Exists, Get the index of the key within the map and add 1 to it for the next breakpoint in the map
+  @if (map-has-key($map, $key)) {
+    $i: index($values, $key) + 1;
   }
 
   // If the key doesn't exist, or it's the last key in the map, return null
-  @if $i > length($map) {
+  @if ($i > length($map) or $i == 0) {
     @return null;
   }
   // Otherwise, return the value
   @else {
-    @return nth($values, $i);
+    @return map-get($map, nth($values, $i));
   }
+
 }
 
 /// Get a value for a breakpoint from a responsive config map. If the config map has the key `$value`, the exact breakpoint value is returned. If the config map does *not* have the breakpoint, the value matching the next lowest breakpoint in the config map is returned.
