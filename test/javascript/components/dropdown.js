@@ -51,5 +51,14 @@ describe('Dropdown', function() {
 
       plugin.getPositionClass().trim().should.equal('right');
     });
+
+    it('has horizontal position and only one class', function() {
+      $dropdownController = $(getDropdownController('float-right'))
+        .appendTo('body');
+      $dropdownContainer = $(getDropdownContainer()).appendTo('body');
+      plugin = new Foundation.Dropdown($dropdownContainer, {});
+
+      plugin.getPositionClass().trim().should.equal('right');
+    });
   });
 });
