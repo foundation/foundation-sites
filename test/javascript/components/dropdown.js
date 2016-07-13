@@ -23,6 +23,27 @@ describe('Dropdown', function() {
       plugin.$element.should.be.an('object');
       plugin.options.should.be.an('object');
     });
+
+    it('uses user\'s defined options', function() {
+      $dropdownController = $(getDropdownController()).appendTo('body');
+      $dropdownContainer = $(getDropdownContainer()).appendTo('body');
+      const options = {
+        positionClass: 'right top',
+      };
+      plugin = new Foundation.Dropdown($dropdownContainer, options);
+
+      plugin.$element.should.be.an('object');
+      plugin.options.positionClass.should.equal(options.positionClass);
+    });
+
+    it('uses user\'s defined element properties', function() {
+      $dropdownController = $(getDropdownController('float-left ')).appendTo('body');
+      $dropdownContainer = $(getDropdownContainer('bottom')).appendTo('body');
+      plugin = new Foundation.Dropdown($dropdownContainer, {});
+
+      plugin.$element.should.be.an('object');
+      plugin.options.positionClass.should.equal('left bottom');
+    });
   });
 
   describe('getPositionClass()', function() {

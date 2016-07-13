@@ -51,7 +51,10 @@ class Dropdown {
 
     });
 
-    this.options.positionClass = this.getPositionClass();
+    if (this.options.positionClass.length === 0) {
+      this.options.positionClass = this.getPositionClass();
+    }
+
     this.counter = 4;
     this.usedPositions = [];
     this.$element.attr({
