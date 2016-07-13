@@ -72,6 +72,7 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5) !default;
     background: $body-background;
     transition: transform $offcanvas-transition-length $offcanvas-transition-timing;
     backface-visibility: hidden;
+    overflow-y: auto;
     z-index: 1;
     padding-bottom: 0.1px; // Prevents margin collapsing, which would reveal the box shadow of the wrapper
 
