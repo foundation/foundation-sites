@@ -87,7 +87,7 @@ class Equalizer {
    * @private
    */
   _checkMQ() {
-    var tooSmall = !Foundation.MediaQuery.atLeast(this.options.equalizeOn);
+    var tooSmall = !Foundation.MediaQuery.is(this.options.equalizeOn);
     if(tooSmall){
       if(this.isOn){
         this._pauseEvents();

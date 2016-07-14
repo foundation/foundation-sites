@@ -68,7 +68,7 @@ var MediaQuery = {
    */
   is(size) {
     size = size.trim().split(' ');
-    if(size.length > 0 && size[1] === 'only') {
+    if(size.length > 1 && size[1] === 'only') {
       if(size[0] === this._getCurrentSize()) return true;
     } else {
       return this.atLeast(size[0]);

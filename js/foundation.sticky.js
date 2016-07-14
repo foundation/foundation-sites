@@ -267,7 +267,7 @@ class Sticky {
    * @private
    */
   _setSizes(cb) {
-    this.canStick = Foundation.MediaQuery.atLeast(this.options.stickyOn);
+    this.canStick = Foundation.MediaQuery.is(this.options.stickyOn);
     if (!this.canStick) { cb(); }
     var _this = this,
         newElemWidth = this.$container[0].getBoundingClientRect().width,
