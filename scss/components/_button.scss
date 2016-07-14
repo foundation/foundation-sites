@@ -56,6 +56,10 @@ $button-opacity-disabled: 0.25 !default;
   $button-margin: 0 0 $global-margin $global-margin !default;
 }
 
+/// transitions for buttons.
+/// @type List
+$button-transition: background-color 0.25s ease-out, color 0.25s ease-out !default;
+
 // TODO: Document button-base() mixin
 @mixin button-base {
   @include disable-mouse-outline;
@@ -64,7 +68,7 @@ $button-opacity-disabled: 0.25 !default;
   line-height: 1;
   cursor: pointer;
   -webkit-appearance: none;
-  transition: background-color 0.25s ease-out, color 0.25s ease-out;
+  transition: $button-transition;
   vertical-align: middle;
   border: 1px solid transparent;
   border-radius: $button-radius;
