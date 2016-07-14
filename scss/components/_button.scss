@@ -136,12 +136,12 @@ $button-opacity-disabled: 0.25 !default;
 }
 
 /// Adds disabled styles to a button by fading the element, reseting the cursor, and disabling pointer events.
-@mixin button-disabled {
+@mixin button-disabled($color: $primary-color) {
   opacity: $button-opacity-disabled;
   cursor: not-allowed;
 
   &:hover, &:focus {
-    background-color: $button-background;
+    background-color: $color;
     color: $button-color;
   }
 }
@@ -242,6 +242,12 @@ $button-opacity-disabled: 0.25 !default;
     &.disabled,
     &[disabled] {
       @include button-disabled;
+
+      @each $name, $color in $foundation-palette {
+        &.#{$name} {
+          @include button-disabled($color);
+        }
+      }
     }
 
     // Dropdown arrow
