@@ -3,13 +3,9 @@
 		@return false;
 	}
 
-	@if $key == "grid" {
-		@if map-get($foundation-components, "flex-grid") {
-			@return false;
-		} @else {
-			@return map-get($foundation-components, $key);
-		}
-	} 
+	@if ($key == "grid" and map-get($foundation-components, "flex-grid")) {
+		@return false;
+	}
 	
 	@return map-get($foundation-components, $key);
 }
