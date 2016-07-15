@@ -9,9 +9,9 @@
 		} @else {
 			@return map-get($foundation-components, $key);
 		}
-	} @else {
-		@return map-get($foundation-components, $key);
-	}
+	} 
+	
+	@return map-get($foundation-components, $key);
 }
 
 @mixin foundation-components-include() {
