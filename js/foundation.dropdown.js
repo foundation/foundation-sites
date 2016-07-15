@@ -71,7 +71,7 @@ class Dropdown {
   getPositionClass() {
     var verticalPosition = this.$element[0].className.match(/(top|left|right|bottom)/g);
         verticalPosition = verticalPosition ? verticalPosition[0] : '';
-    var horizontalPosition = /float-(\S+)\s?/.exec(this.$anchor[0].className);
+    var horizontalPosition = /float-(\S+)/.exec(this.$anchor[0].className);
         horizontalPosition = horizontalPosition ? horizontalPosition[1] : '';
     var position = horizontalPosition ? horizontalPosition + ' ' + verticalPosition : verticalPosition;
 
