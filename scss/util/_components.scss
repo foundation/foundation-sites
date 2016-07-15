@@ -166,7 +166,7 @@
   	@include foundation-float-classes; 
   }
 
-  @if (foundation_flex_grid_enabled()) {
+  @if (foundation_component_enabled("flex-grid")) {
 	@include foundation-flex-classes;
   }
   
