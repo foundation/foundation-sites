@@ -40,7 +40,7 @@ $titlebar-icon-spacing: 0.25rem !default;
     color: $titlebar-color;
     padding: $titlebar-padding;
 
-    @if $global-flexbox {
+    @if foundation_component_enabled("flex-grid") {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -55,7 +55,7 @@ $titlebar-icon-spacing: 0.25rem !default;
     }
   }
 
-  @if $global-flexbox {
+  @if foundation_component_enabled("flex-grid") {
     // scss-lint:disable ZeroUnit
     .title-bar-left,
     .title-bar-right {
