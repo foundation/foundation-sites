@@ -21,9 +21,9 @@ $mediaobject-image-width-stacked: 100% !default;
 /// Adds styles for a media object container.
 @mixin media-object-container {
   margin-bottom: $mediaobject-margin-bottom;
-  display: if($global-flexbox, flex, block);
+  display: if(foundation_component_enabled("flex-grid"), flex, block);
 
-  @if $global-flexbox {
+  @if foundation_component_enabled("flex-grid") {
     flex-wrap: nowrap;
   }
 }
@@ -31,7 +31,7 @@ $mediaobject-image-width-stacked: 100% !default;
 /// Adds styles for sections within a media object.
 /// @param {Number} $padding [$mediaobject-section-padding] - Padding between sections.
 @mixin media-object-section($padding: $mediaobject-section-padding) {
-  @if $global-flexbox {
+  @if foundation_component_enabled("flex-grid") {
     flex: 0 0 auto;
   }
   @else {
@@ -57,7 +57,7 @@ $mediaobject-image-width-stacked: 100% !default;
   padding: 0;
   padding-bottom: $mediaobject-section-padding;
 
-  @if $global-flexbox {
+  @if foundation_component_enabled("flex-grid") {
     flex-basis: 100%;
     max-width: 100%;
   }
@@ -78,7 +78,7 @@ $mediaobject-image-width-stacked: 100% !default;
       max-width: none;
     }
 
-    @if $global-flexbox {
+    @if foundation_component_enabled("flex-grid") {
       &.stack-for-#{$-zf-zero-breakpoint} {
         flex-wrap: wrap;
       }
@@ -94,7 +94,7 @@ $mediaobject-image-width-stacked: 100% !default;
   .media-object-section {
     @include media-object-section;
 
-    @if $global-flexbox {
+    @if foundation_component_enabled("flex-grid") {
       // scss-lint:disable ZeroUnit
       &.main-section {
         flex: 1 1 0px;
