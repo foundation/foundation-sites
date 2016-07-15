@@ -1,21 +1,16 @@
-@function component_enabled($key: '') {
+@function foundation_component_enabled($key: '') {
 	@if (not map-has-key($foundation-components, $key)) {
 		@return false;
-	} @else {
-		@return map-get($foundation-components, $key) ;
 	}
-}
 
-
-@function foundation_component_enabled($key: '') {
 	@if $key == "grid" {
-		@if component_enabled("flex-grid") {
+		@if map-get($foundation-components, "flex-grid") {
 			@return false;
 		} @else {
-			@return component_enabled($key);
+			@return map-get($foundation-components, $key);
 		}
 	} @else {
-		@return component_enabled($key);
+		@return map-get($foundation-components, $key);
 	}
 }
 
