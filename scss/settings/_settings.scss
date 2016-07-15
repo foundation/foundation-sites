@@ -107,7 +107,6 @@ $global-weight-normal: normal;
 $global-weight-bold: bold;
 $global-radius: 0;
 $global-text-direction: ltr;
-$global-flexbox: foundation_flex_grid_enabled();
 $print-transparent-backgrounds: true;
 
 @include add-foundation-colors;
