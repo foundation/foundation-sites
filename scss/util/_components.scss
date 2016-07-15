@@ -1,4 +1,4 @@
-@function foundation_component_enabled($key: '') {
+@function component_enabled($key: '') {
 	@if (not map-has-key($foundation-components, $key)) {
 		@return false;
 	} @else {
@@ -6,27 +6,27 @@
 	}
 }
 
-@function foundation_grid_enabled() {
-	@if foundation_component_enabled("flex-grid") {
-		@return false;
+
+@function foundation_component_enabled($key: '') {
+	@if $key == "grid" {
+		@if component_enabled("flex-grid") {
+			@return false;
+		} @else {
+			@return component_enabled($key);
+		}
 	} @else {
-		@return foundation_component_enabled("grid");
+		@return component_enabled($key);
 	}
 }
-
-@function foundation_flex_grid_enabled() {
-	@return foundation_component_enabled('flex-grid');
-}
-
 
 @mixin foundation-components-include() {
   @include foundation-global-styles;
 
-  @if (foundation_grid_enabled()) {
+  @if (foundation_component_enabled("grid")) {
 	@include foundation-grid;
   }
 
-  @if (foundation_flex_grid_enabled()) {
+  @if (foundation_component_enabled("flex-grid")) {
 	@include foundation-flex-grid;
   }
   
