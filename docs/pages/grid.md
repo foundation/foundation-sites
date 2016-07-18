@@ -88,7 +88,7 @@ Small grids expand to large screens easier than large grids cram into small scre
 
 ```html
 <div class="row">
-  <div class="small-2 columns">2 columns</div>
+  <div class="small-2 columns">2 <span class="hide-for-small-only">columns</span></div>
   <div class="small-10 columns">10 columns</div>
 </div>
 <div class="row">
@@ -383,7 +383,7 @@ Center your columns by adding a class of `.small-centered` to your column. Large
 
 ### Source Ordering
 
-Using these source ordering classes, you can shift columns around between our breakpoints. This means if you place sub-navigation below main content on small displays, you have the option to position the sub-navigation on either the left or right of the page for large displays. Prefix push/pull with the size of the device you want to apply the styles to. `.medium-push-#`, `.large-push-#` is the syntax you'll use. Use large-reset-order to reset pushed or pulled columns to their original position on large screens.
+Using these source ordering classes, you can shift columns around between our breakpoints. This means if you place sub-navigation below main content on small displays, you have the option to position the sub-navigation on either the left or right of the page for large displays. Prefix push/pull with the size of the device you want to apply the styles to. `.medium-push-#`, `.large-push-#` is the syntax you'll use. Use the number 0 instead to reset a push/pull, such as `.medium-push-0` or `.large-pull-0`.
 
 ```html
 <div class="row">

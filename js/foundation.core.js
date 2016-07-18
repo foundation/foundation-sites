@@ -2,7 +2,7 @@
 
 "use strict";
 
-var FOUNDATION_VERSION = '6.2.0';
+var FOUNDATION_VERSION = '6.2.3';
 
 // Global Foundation object
 // This is attached to the window, or used as a module for AMD/Browserify
@@ -44,7 +44,7 @@ var Foundation = {
    * @function
    * Populates the _uuids array with pointers to each individual plugin instance.
    * Adds the `zfPlugin` data-attribute to programmatically created plugins to allow use of $(selector).foundation(method) calls.
-   * Also fires the initialization event for each plugin, consolidating repeditive code.
+   * Also fires the initialization event for each plugin, consolidating repetitive code.
    * @param {Object} plugin - an instance of a plugin, usually `this` in context.
    * @param {String} name - the name of the plugin, passed as a camelCased string.
    * @fires Plugin#init
@@ -69,7 +69,7 @@ var Foundation = {
    * @function
    * Removes the plugins uuid from the _uuids array.
    * Removes the zfPlugin data attribute, as well as the data-plugin-name attribute.
-   * Also fires the destroyed event for the plugin, consolidating repeditive code.
+   * Also fires the destroyed event for the plugin, consolidating repetitive code.
    * @param {Object} plugin - an instance of a plugin, usually `this` in context.
    * @fires Plugin#destroyed
    */

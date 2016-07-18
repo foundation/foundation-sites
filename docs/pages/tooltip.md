@@ -18,13 +18,28 @@ The <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="
 ---
 
 ## Tooltip Top
-To get a tip-top top tooltip (lol), just add the class `.top` the `<span>` element.
+To get a tip-top top tooltip (lol), just add the class `.top` to the `<span>` element.
 
 ```html_example
 <p>
 ...clearing away the brambles with the
 <span data-tooltip aria-haspopup="true" class="has-tip top" data-disable-hover="false" tabindex="2" title="A tool used for cutting crops.">scythe.</span>
 At the spot thus attained a second peg was driven, and about this, as a centre, a rude circle, about four feet in diameter, described. Taking now a spade himself, and giving one to Jupiter and one to me, Legrand begged us to set about one to digging as quickly as possible.
+</p>
+```
+
+---
+
+## Tooltip clicking
+By default, clicking on a tooltip will leave it open until you click somewhere else.  However, you can disable that by adding data-click-open="false"
+
+```html_example
+<p>
+this 
+<span data-tooltip aria-haspopup="true" class="has-tip top" data-disable-hover="false" tabindex="2" title="You see?  I'm open!">tooltip will stay open</span>
+
+while 
+<span data-tooltip aria-haspopup="true" class="has-tip top" data-click-open="false" data-disable-hover="false" tabindex="2" title="I don't stay open">this one will only be open when hovered</span>
 </p>
 ```
 

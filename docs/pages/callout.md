@@ -27,38 +27,38 @@ Callouts can be colored using the `.secondary`, `.primary`, `.success`, `.warnin
 
 ```html
 <div class="callout secondary">
-  <h5>This is a secondary panel</h5>
+  <h5>This is a secondary callout</h5>
   <p>It has an easy to override visual style, and is appropriately subdued.</p>
   <a href="#">It's dangerous to go alone, take this.</a>
 </div>
 ```
 
 <div class="callout secondary">
-  <h5>This is a secondary panel</h5>
+  <h5>This is a secondary callout</h5>
   <p>It has an easy to override visual style, and is appropriately subdued.</p>
   <a href="#">It's dangerous to go alone, take this.</a>
 </div>
 
 <div class="primary callout">
-  <h5>This is a primary panel</h5>
+  <h5>This is a primary callout</h5>
   <p>It has an easy to override visual style, and is appropriately subdued.</p>
   <a href="#">It's dangerous to go alone, take this.</a>
 </div>
 
 <div class="success callout">
-  <h5>This is a success panel</h5>
+  <h5>This is a success callout</h5>
   <p>It has an easy to override visual style, and is appropriately subdued.</p>
   <a href="#">It's dangerous to go alone, take this.</a>
 </div>
 
 <div class="warning callout">
-  <h5>This is a warning panel</h5>
+  <h5>This is a warning callout</h5>
   <p>It has an easy to override visual style, and is appropriately subdued.</p>
   <a href="#">It's dangerous to go alone, take this.</a>
 </div>
 
 <div class="alert callout">
-  <h5>This is an alert panel</h5>
+  <h5>This is an alert callout</h5>
   <p>It has an easy to override visual style, and is appropriately subdued.</p>
   <a href="#">It's dangerous to go alone, take this.</a>
 </div>

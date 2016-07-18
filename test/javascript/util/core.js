@@ -63,6 +63,8 @@ describe('Foundation core', function() {
     it('can append a namespace to the number', function() {
       var id = Foundation.GetYoDigits(6, 'plugin');
 
+      id.should.be.a('string');
+      id.should.have.lengthOf(6 + '-plugin'.length);
       id.should.contain('-plugin');
     });
   });

@@ -42,5 +42,5 @@ Contributors are expected to:
 Here are some example contributions from some of our awesome team members:
 
 - Colin Marshall converted our Sass unit tests to a newer test runner called True.
-- Andy Cochraine reworked the CSS for button groups to fix issues with stacking and border radii.
+- Andy Cochran reworked the CSS for button groups to fix issues with stacking and border radii.
 - designerno1 developed the Equalize by Row feature for the Equalizer plugin.

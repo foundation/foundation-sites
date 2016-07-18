@@ -8,7 +8,7 @@
 
 /// Reposition a column.
 ///
-/// @param {Number} $position - Direction and amount to move. The column will move equal to the width of the column count specified. A positive number will push the column to the right, while a negative number will pull it to the left.
+/// @param {Number|Keyword} $position - Direction and amount to move. The column will move equal to the width of the column count specified. A positive number will push the column to the right, while a negative number will pull it to the left. Set to center to center the column.
 @mixin grid-column-position($position) {
   @if type-of($position) == 'number' {
     $offset: percentage($position / $grid-column-count);
@@ -17,7 +17,10 @@
     #{$global-left}: $offset;
   }
   @else if $position == center {
-    float: none;
+    &, &:last-child:not(:first-child) {
+      float: none;
+      clear: both;
+    }
     margin-left: auto;
     margin-right: auto;
   }

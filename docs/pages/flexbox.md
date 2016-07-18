@@ -22,20 +22,21 @@ Flexbox mode is only supported these browsers:
 
 ## Enabling Flexbox Mode
 
-If you're using the CSS version of Foundation, you can generate a <a href="https://foundation.zurb.com/sites/download">custom download of Foundation</a> with flexbox mode enabled.
+If you're using the CSS version of Foundation, you can generate a <a href="https://foundation.zurb.com/sites/download">custom download of Foundation</a> with flexbox mode enabled. If you're using the Sass version of Foundation, you can enable flexbox mode two ways:
 
-If you're using the Sass version, open your settings file and set `$global-flexbox` to `true`.
-
-You'll also need to replace the default float grid with the flex grid, which is actually a separate component. To do this, remove the `@include` for the float grid and replace it with the one for the flex grid.
+If you use the `foundation-everything()` mixin in your main Sass file, pass in the parameter `true` to enable flexbox mode.
 
 ```scss
-// @include foundation-grid-classes;
-@include foundation-flex-grid;
+@include foundation-everything(true);
 ```
 
-Lastly, you'll also want to add the include for the flexbox helper classes.
+If you included each component manually (like our starter projects do), open your settings file (basic template: scss/_settings.scss, ZURB template: src/assets/scss/_settings.scss) and set `$global-flexbox` to `true`, and remove the `@include` for the float grid and replace it with the one for the flex grid, along with the helper classes (basic template: scss/app.scss, ZURB template: src/assets/scss/app.scss):
 
 ```scss
+$global-flexbox: true;
+
+// @include foundation-grid;
+@include foundation-flex-grid;
 @include foundation-flex-classes;
 ```
 
@@ -50,7 +51,7 @@ Besides the flex grid, these components have flexbox modes:
 - [Menu](menu.html)
 - [Top bar](top-bar.html)
 - [Media object](media-object.html)
-- [Title bar](title-bar.html)
+- [Title bar](off-canvas.html#title-bar)
 
 In general, all of the components work exactly the same. However, a few of them require slight changes to CSS classes used to work properly. Refer to the documentation for each to find out what's different.
 

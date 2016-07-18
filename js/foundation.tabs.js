@@ -93,9 +93,12 @@ class Tabs {
   _events() {
     this._addKeyHandler();
     this._addClickHandler();
-
+    this._setHeightMqHandler = null;
+    
     if (this.options.matchHeight) {
-      $(window).on('changed.zf.mediaquery', this._setHeight.bind(this));
+      this._setHeightMqHandler = this._setHeight.bind(this);
+      
+      $(window).on('changed.zf.mediaquery', this._setHeightMqHandler);
     }
   }
 
@@ -129,8 +132,7 @@ class Tabs {
 
     this.$tabTitles.off('keydown.zf.tabs').on('keydown.zf.tabs', function(e){
       if (e.which === 9) return;
-      e.stopPropagation();
-      e.preventDefault();
+      
 
       var $element = $(this),
         $elements = $element.parent('ul').children('li'),
@@ -163,6 +165,10 @@ class Tabs {
         next: function() {
           $nextElement.find('[role="tab"]').focus();
           _this._handleTabChange($nextElement);
+        },
+        handled: function() {
+          e.stopPropagation();
+          e.preventDefault();
         }
       });
     });
@@ -271,7 +277,9 @@ class Tabs {
       .hide();
 
     if (this.options.matchHeight) {
-      $(window).off('changed.zf.mediaquery');
+      if (this._setHeightMqHandler != null) {
+         $(window).off('changed.zf.mediaquery', this._setHeightMqHandler);
+      }
     }
 
     Foundation.unregisterPlugin(this);

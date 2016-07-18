@@ -77,7 +77,7 @@
   $gutter: $grid-column-gutter
 ) {
   // Base properties
-  @include flex-grid-size($columns);
+  flex: flex-grid-column($columns);
 
   // Gutters
   @if type-of($gutter) == 'map' {
@@ -94,6 +94,16 @@
     $padding: rem-calc($gutter) / 2;
     padding-left: $padding;
     padding-right: $padding;
+  }
+
+  // fixes recent Chrome version not limiting child width
+  // https://stackoverflow.com/questions/34934586/white-space-nowrap-and-flexbox-did-not-work-in-chrome
+  @if $columns == null {
+    min-width: initial;
+  }
+  // max-width fixes IE 10/11 not respecting the flex-basis property
+  @if $columns != null and $columns != shrink {
+    max-width: grid-column($columns);
   }
 }
 
@@ -112,17 +122,6 @@
 
     flex: 0 0 $pct;
     max-width: $pct;
-  }
-}
-
-/// Changes the width flex grid column.
-/// @param {Mixed} $columns [null] - Width of the column. Refer to the `flex-grid-column()` function to see possible values.
-@mixin flex-grid-size($columns: null) {
-  flex: flex-grid-column($columns);
-
-  // max-width fixes IE 10/11 not respecting the flex-basis property
-  @if $columns != null and $columns != shrink {
-    max-width: grid-column($columns);
   }
 }
 
@@ -166,7 +165,17 @@
     }
 
     &.collapse {
-      > .column { @include grid-col-collapse; }
+      > .column {
+        @include grid-col-collapse;
+      }
+    }
+
+    // Undo negative margins
+    // From collapsed child
+    &.is-collapse-child,
+    &.collapse > .column > .row {
+      margin-left: 0;
+      margin-right: 0;
     }
   }
 
@@ -179,6 +188,7 @@
   // The double .row class is needed to bump up the specificity
   .column.row.row {
     float: none;
+    display: block;
 
     // To properly nest a column row, padding and margin is removed
     .row & {

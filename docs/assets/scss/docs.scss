@@ -11,8 +11,6 @@
 @import 'foundation';
 @import 'motion-ui';
 
-$-zf-flex-classes-imported: true;
-
 @include foundation-everything;
 @include foundation-flex-classes;
 @include foundation-range-input;
@@ -21,117 +19,9 @@ $-zf-flex-classes-imported: true;
 @include motion-ui-transitions;
 
 @import 'foundation-docs';
-
-.docs-newsletter { margin-top: 0 !important; }
-#subForm { margin-top: 1rem; }
-
-#studiosCallout {
-    border-top: 1px solid #f6f4f4;
-    padding: 45px 45px 20px 45px !important;
-    background-color: #fafafa !important;
-
-    .property-label {
-      font-family: "Proxima Nova Condensed Bold","Proxima Nova Condensed","proxima-nova-condensed","Helvetica Neue",Helvetica,Arial,sans-serif;
-      text-transform: uppercase;
-      font-weight: bold;
-    }
-
-    h3 {
-      font-size: 26px;
-      margin-top: 20px;
-      color: #333;
-    }
-
-    .lead {
-      font-size: 18px;
-      color: #333;
-    }
-
-    img {
-      width: 100%;
-      height: 250px;
-      overflow: hidden;
-    }
-
-
-    /* -= Button + Label Colors Based on Property =- */
-
-    &.university {
-      .button { background: #ff6908;
-        &:hover {
-          background-color: #de5700;
-          transition: .25 ease all;
-        }
-      }
-      .property-label { color: #ff6908; }
-    }
-    &.foundation {
-      .button { background: #2CADBE;
-        &:hover {
-          background-color: #228795;
-          transition: .25 ease all;
-        }
-      }
-      .property-label { color: #2CADBE; }
-    }
-    &.studios {
-      .button { background: #2CADBE;
-        &:hover {
-          background-color: #228795;
-          transition: .25 ease all;
-        }
-      }
-      .property-label { color: #2CADBE; }
-    }
-  }
-
-  #studiosCallout {
-    @media (max-width: 650px) {
-      text-align: left;
-
-      .button {
-        width: auto;
-      }
-
-      h1 {
-        margin-top: 0;
-      }
-    }
-  }
-
-  /* Banner for announcements */
-a.notice {
-  display:block;
-  overflow: hidden;
-  position: relative;
-  padding: 1rem 0;
-  width:100%;
-  background: url(../img/inky-banner-bg-boat.svg) no-repeat center center; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-
-  @include breakpoint(medium down) {
-    background: url(../img/inky-banner-bg-clear.svg) no-repeat center center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-
-  }
-
-  .info {
-    left: 0;
-    right: 0;
-    z-index: 20;
-    margin-left: auto;
-    margin-right: auto;
-
-    h5 { 
-      color: #ffffff; 
-      text-align: center;
-      margin-bottom: 0 !important;
-    }
-  }
-}
+@import 'examples/grid';
+@import 'examples/motion-ui';
+@import 'examples/off-canvas';
+@import 'examples/orbit';
+@import 'examples/reveal';
+@import 'examples/top-bar';

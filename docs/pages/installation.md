@@ -3,11 +3,11 @@ title: Installation
 description: There are many ways to install Foundation, but if you're just getting started, we have a few suggestions.
 ---
 
-## Yeti Launch
+<!--## Yeti Launch-->
 
-Yeti Launch is our Mac app for quickly spinning up blank projects for any of the three Foundation frameworks. If you're just getting started with Foundation, we recommend downloading Yeti Launch to get going right away.
+<!--Yeti Launch is our Mac app for quickly spinning up blank projects for any of the three Foundation frameworks. If you're just getting started with Foundation, we recommend downloading Yeti Launch to get going right away.-->
 
-<a href="http://foundation.zurb.com/develop/yeti-launch" class="large button">Download Yeti Launch</a>
+<!--<a href="http://foundation.zurb.com/develop/yeti-launch" class="large button">Download Yeti Launch</a>-->
 
 ### Command-Line Tool
 
@@ -127,10 +127,10 @@ The folks at [jsDelivr](https://www.jsdelivr.com) host the compressed Foundation
 
 ```html
 <!-- Compressed CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.0/foundation.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.1/foundation.min.css">
 
 <!-- Compressed JavaScript -->
-<script src="https://cdn.jsdelivr.net/foundation/6.2.0/foundation.min.js"></script>
+<script src="https://cdn.jsdelivr.net/foundation/6.2.1/foundation.min.js"></script>
 ```
 
 ---
@@ -143,6 +143,7 @@ Foundation is available on npm, Bower, Meteor, and Composer. The package include
 - Bower: `bower install foundation-sites`
 - Meteor: `meteor add zurb:foundation-sites`
 - Composer: `php composer.phar require zurb/foundation`
+- NuGet: `Install-Package foundation-sites`
 
 ### Package Contents
 

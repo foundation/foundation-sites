@@ -62,6 +62,7 @@ $menu-icon-spacing: 0.25rem !default;
     line-height: 1;
   }
 
+
   // Reset styles of inner elements
   input,
   a,
@@ -159,13 +160,13 @@ $menu-icon-spacing: 0.25rem !default;
     @else {
       > li > a {
         img,
-        i {
+        i,
+        svg {
           vertical-align: middle;
-        }
 
-        i + span,
-        img + span {
-          vertical-align: middle;
+          + span {
+            vertical-align: middle;
+          }
         }
       }
     }
@@ -178,7 +179,8 @@ $menu-icon-spacing: 0.25rem !default;
       }
 
       img,
-      i {
+      i,
+      svg {
         margin-#{$global-right}: $menu-icon-spacing;
 
         @if not $global-flexbox {
@@ -197,7 +199,8 @@ $menu-icon-spacing: 0.25rem !default;
       }
 
       img,
-      i {
+      i,
+      svg {
         @if not $global-flexbox {
           display: block;
           margin: 0 auto $menu-icon-spacing;
@@ -222,7 +225,7 @@ $menu-icon-spacing: 0.25rem !default;
 }
 
 @mixin foundation-menu {
-  .menu {
+  .menu, .tree {
     @include menu-base;
     @include menu-icons;
 
