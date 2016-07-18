@@ -51,25 +51,23 @@
 
 /// Calculates the gutter sizes of a column based on the $gutter values and breakpoints.
 ///
-/// @returns {Number} The gutter width.
-@function grid-column-gutters {
+/// @param {String} the attribute to use.
+@mixin grid-column-gutters(
+  $attribute
+) {
   @if type-of($gutter) == 'map' {
     @each $breakpoint, $value in $gutter {
       $padding: rem-calc($value) / 2;
 
       @include breakpoint($breakpoint) {
-        padding-left: $padding;
-        padding-right: $padding;
+        #{$attribute}: $padding;
       }
     }
   }
   @else if type-of($gutter) == 'number' and strip-unit($gutter) > 0 {
     $padding: rem-calc($gutter) / 2;
-    padding-left: $padding;
-    padding-right: $padding;
+    #{$attribute}: $padding;
   }
-  
-  @return $padding;
 }
 
 /// Creates a grid column.
@@ -84,8 +82,8 @@
   float: $global-left;
 
   // Gutters
-  padding-left: grid-column-gutters;
-  padding-right: grid-column-gutters;
+  @include grid-column-gutters(padding-left);
+  @include grid-column-gutters(padding-right);
 
   // Last column alignment
   @if $grid-column-align-edge {
