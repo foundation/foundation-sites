@@ -51,7 +51,7 @@ Here's an example using grunt-contrib-sass:
 grunt.initConfig({
   sass: {
     dist: {
-    options: {
+      options: {
         loadPath: ['node_modules/foundation-sites/scss']
       }
     }
