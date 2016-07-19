@@ -178,8 +178,16 @@ class AccordionMenu {
    * @function
    */
   hideAll() {
-    this.$element.find('[data-submenu]').slideUp(this.options.slideSpeed);
+    this.up(this.$element.find('[data-submenu]'));
     this.$element.find('li:first')[0].focus();
+  }
+
+  /**
+   * Opens all panes of the menu.
+   * @function
+   */
+  showAll() {
+    this.down(this.$element.find('[data-submenu]'));
   }
 
   /**

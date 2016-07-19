@@ -37,18 +37,26 @@ $thumbnail-radius: $global-radius !default;
   display: inline-block;
   line-height: 0;
   max-width: 100%;
-  transition: $thumbnail-transition;
   border-radius: $thumbnail-radius;
   margin-bottom: $thumbnail-margin-bottom;
+}
 
+@mixin thumbnail-link {
+  transition: $thumbnail-transition;
   &:hover,
   &:focus {
     box-shadow: $thumbnail-shadow-hover;
+  }
+  image {
+    box-shadow: none;
   }
 }
 
 @mixin foundation-thumbnail {
   .thumbnail {
     @include thumbnail;
+  }
+  a.thumbnail {
+    @include thumbnail-link;
   }
 }
