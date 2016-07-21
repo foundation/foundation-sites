@@ -139,7 +139,7 @@ class Interchange {
 
     // Replacing images
     if (this.$element[0].nodeName === 'IMG') {
-      this.$element.attr('src', path).load(function() {
+      this.$element.attr('src', path).on('load', function() {
         _this.currentPath = path;
       })
       .trigger(trigger);
