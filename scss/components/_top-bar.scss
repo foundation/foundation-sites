@@ -165,4 +165,10 @@ $topbar-unstack-breakpoint: medium !default;
       float: right;
     }
   }
+
+  .top-bar-title .strong{
+    margin: $menu-item-padding;
+    display: inline-block;
+    line-height: 1
+  }
 }
