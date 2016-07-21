@@ -9,7 +9,6 @@
  * @requires foundation.util.motion
  * @requires foundation.util.nest
  */
-var donkey;
 class AccordionMenu {
   /**
    * Creates a new instance of an accordion menu.
