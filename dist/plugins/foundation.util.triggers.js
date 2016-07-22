@@ -62,7 +62,7 @@
   * @function
   * @private
   */
-  $(window).on('load', function () {
+  $(window).load(function () {
     checkListeners();
   });
 
