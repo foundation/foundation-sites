@@ -51,7 +51,6 @@ class Dropdown {
 
     });
 
-    this.options.positionClass = this.getPositionClass();
     this.counter = 4;
     this.usedPositions = [];
     this.$element.attr({
@@ -74,7 +73,12 @@ class Dropdown {
     var horizontalPosition = /float-(\S+)\s/.exec(this.$anchor[0].className);
         horizontalPosition = horizontalPosition ? horizontalPosition[1] : '';
     var position = horizontalPosition ? horizontalPosition + ' ' + verticalPosition : verticalPosition;
-    return position;
+
+    if (position.length > 0) {
+      return position;
+    }
+
+    return this.options.positionClass;
   }
 
   /**
@@ -145,6 +149,8 @@ class Dropdown {
     }
 
     this.$element.offset(Foundation.Box.GetOffsets(this.$element, this.$anchor, position, this.options.vOffset, this.options.hOffset));
+
+    this.initialPositionClass = this.getPositionClass();
 
     while(!Foundation.Box.ImNotTouchingYou(this.$element, false, true) && this.counter){
       this._reposition(position);
@@ -312,7 +318,8 @@ class Dropdown {
       if(curPositionClass){
         this.$element.removeClass(curPositionClass);
       }
-      this.$element.addClass(this.options.positionClass)
+
+      this.$element.addClass(this.initialPositionClass)
           /*.hide()*/.css({height: '', width: ''});
       this.classChanged = false;
       this.counter = 4;
