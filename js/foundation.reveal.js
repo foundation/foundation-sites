@@ -238,7 +238,7 @@ class Reveal {
             'tabindex': -1
           })
           .focus();
-          console.log('focus');
+          // console.log('focus');
       }
       if (this.options.overlay) {
         Foundation.Motion.animateIn(this.$overlay, 'fade-in');
