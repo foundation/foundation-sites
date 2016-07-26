@@ -106,6 +106,12 @@
      */
     overlay: true,
     /**
+     * Allows the modal to append to custom div. 
+     * @option
+     * @example false
+     */
+    appendTo: "body",    
+    /**
      * Allows the modal to remove and reinject markup on close. Should be true if using video elements w/o using provider's api.
      * @option
      * @example false
@@ -162,7 +168,7 @@
     var $overlay = $('<div></div>')
                     .addClass('reveal-overlay')
                     .attr({'tabindex': -1, 'aria-hidden': true})
-                    .appendTo('body');
+                    .appendTo(_this.options.appendTo);
     if(this.options.closeOnClick){
       $overlay.attr({
         'data-close': id
