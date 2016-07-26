@@ -20,7 +20,8 @@
         return '<span data-selector="' + selector + '" id="' + selector + '" class="'
           + Foundation.libs.tooltip.settings.tooltip_class.substring(1)
           + '" role="tooltip">' + content + '<span class="nub"></span></span>';
-      }
+      },
+      left_position_small : 12.5
     },
 
     cache : {},
@@ -241,7 +242,7 @@
       objPos(tip, (o_top + outerHeight + 10), 'auto', 'auto', o_left);
 
       if (this.small()) {
-        objPos(tip, (o_top + outerHeight + 10), 'auto', 'auto', 12.5, $(this.scope).width());
+        objPos(tip, (o_top + outerHeight + 10), 'auto', 'auto', this.settings.left_position_small, $(this.scope).width());
         tip.addClass('tip-override');
         objPos(nub, -nubHeight, 'auto', 'auto', o_left);
       } else {
