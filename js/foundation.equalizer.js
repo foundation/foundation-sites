@@ -5,6 +5,8 @@
 /**
  * Equalizer module.
  * @module foundation.equalizer
+ * @requires foundation.util.mediaQuery
+ * @requires foundation.util.timerAndImageLoader if equalizer contains images
  */
 
 class Equalizer {
