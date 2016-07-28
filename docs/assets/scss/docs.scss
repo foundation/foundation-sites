@@ -44,6 +44,10 @@ $topbar-hover-color: lighten($topbar-background, 10%);
 
 .dropdown.menu a.button {
   background: $primary-color;
+
+  &:hover {
+    background: darken($primary-color, 10%);
+  }
 }
 
 .is-dropdown-submenu-item a {
