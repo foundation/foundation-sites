@@ -26,8 +26,40 @@
 @import 'examples/reveal';
 @import 'examples/top-bar';
 
+$topbar-background: #2c3840;
+$topbar-hover-color: lighten($topbar-background, 10%);
 
 .marketing-topbar,
 .title-bar {
-  background: #2c3840;
+  background: $topbar-background;
+
+  .dropdown.menu a {
+    background: $topbar-background;
+  }
+
+  .title {
+    background: $topbar-background;
+  }
+}
+
+.dropdown.menu a.button {
+  background: $primary-color;
+}
+
+.is-dropdown-submenu-item a {
+  &:hover {
+    background: $topbar-hover-color;
+  }
+}
+
+.marketing-topbar .menu a:hover:not(.button), 
+.marketing-topbar .menu a:focus {
+  background: $topbar-hover-color;
+}
+
+.marketing-topbar .menu .topbar-title a {
+  &:hover, 
+  &:focus {
+    background: $topbar-background;
+  }
 }
