@@ -6,10 +6,10 @@ $(function() {
   var link = 'http://zurb.com/university/foundation-intro?utm_source=Foundation%20Docs&utm_medium=Docs&utm_content=Struggling&utm_campaign=Docs%20To%20Intro';
   var cta = 'Learn More';
 
-  var html = '<div><h5 class="foundation-ad-header">' + header + '</h5>' +
-             '<p class="foundation-ad-body">' + body + '</p>' +
-             '<p class="foundation-cta text-center"><a class="button button-primary" href="' + link+ '">' +
-             cta + '</a></p></div>';
+  var html = '<div class="ad-unit"><h3 class="ad-unit-title">' + header + '</h3>' +
+             '<p class="ad-unit-text">' + body + '</p>' +
+             '<a class="button ad-unit-button" href="' + link+ '">' +
+             cta + '</a></div>';
   $('#TOCAdUnit').html(html);
 
 });
