@@ -139,7 +139,7 @@ class Magellan {
     }
 
     this.$active.removeClass(this.options.activeClass);
-    this.$active = this.$links.eq(curIdx).addClass(this.options.activeClass);
+    this.$active = this.$links.filter('[href="#' + this.$targets.eq(curIdx).data('magellan-target') + '"]').addClass(this.options.activeClass);
 
     if(this.options.deepLinking){
       var hash = this.$active[0].getAttribute('href');
