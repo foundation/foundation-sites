@@ -103,6 +103,8 @@ class Magellan {
    * @function
    */
   scrollToLoc(loc) {
+    // Do nothing if target does not exist to prevent errors
+    if (!$(loc).length) {return false;}
     var scrollPos = Math.round($(loc).offset().top - this.options.threshold / 2 - this.options.barOffset);
 
     $('html, body').stop(true).animate({ scrollTop: scrollPos }, this.options.animationDuration, this.options.animationEasing);
