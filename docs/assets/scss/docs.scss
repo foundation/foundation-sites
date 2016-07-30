@@ -68,6 +68,15 @@ $topbar-hover-color: lighten($topbar-background, 10%);
   }
 }
 
+.docs-newsletter {
+  padding: 1rem 0;
+}
+
+.footer-signup-form {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
 .zurb-footer-bottom {
   background: $topbar-background;
 }
