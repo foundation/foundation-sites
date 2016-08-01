@@ -29,7 +29,6 @@ const Nest = {
           .addClass(`submenu ${subMenuClass}`)
           .attr({
             'data-submenu': '',
-            'aria-hidden': true,
             'role': 'menu'
           });
       }
