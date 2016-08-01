@@ -250,8 +250,7 @@ class DropdownMenu {
     var $sibs = $sub.parent('li.is-dropdown-submenu-parent').siblings('li.is-dropdown-submenu-parent');
     this._hide($sibs, idx);
     $sub.css('visibility', 'hidden').addClass('js-dropdown-active').attr({'aria-hidden': false})
-        .parent('li.is-dropdown-submenu-parent').addClass('is-active')
-        .attr({'aria-expanded': true});
+        .parent('li.is-dropdown-submenu-parent').addClass('is-active');
     var clear = Foundation.Box.ImNotTouchingYou($sub, null, true);
     if (!clear) {
       var oldClass = this.options.alignment === 'left' ? '-right' : '-left',
@@ -295,7 +294,6 @@ class DropdownMenu {
 
     if (somethingToClose) {
       $toClose.find('li.is-active').add($toClose).attr({
-        'aria-expanded': false,
         'data-is-click': false
       }).removeClass('is-active');
 

@@ -22,7 +22,6 @@ const Nest = {
           .addClass(hasSubClass)
           .attr({
             'aria-haspopup': true,
-            'aria-expanded': false,
             'aria-label': $item.children('a:first').text()
           });
 
