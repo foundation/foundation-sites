@@ -89,6 +89,7 @@ $breadcrumbs-item-slash: true !default;
 
     .disabled {
       color: $breadcrumbs-item-color-disabled;
+      cursor: not-allowed;
     }
   }
 }

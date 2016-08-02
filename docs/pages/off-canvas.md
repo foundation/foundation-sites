@@ -41,6 +41,39 @@ Along with the menu, the main content of your page will be housed in its own con
 </body>
 ```
 
+Here's a complete example that can be pasted into the `<body>` tag of your page. It includes a close button and basic menu styles.
+
+```html
+<body>
+  <div class="off-canvas-wrapper">
+    <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+      <div class="off-canvas position-left" id="offCanvas" data-off-canvas>
+
+        <!-- Close button -->
+        <button class="close-button" aria-label="Close menu" type="button" data-close>
+          <span aria-hidden="true">&times;</span>
+        </button>
+
+        <!-- Menu -->
+        <ul class="vertical menu">
+          <li><a href="#">Foundation</a></li>
+          <li><a href="#">Dot</a></li>
+          <li><a href="#">ZURB</a></li>
+          <li><a href="#">Com</a></li>
+          <li><a href="#">Slash</a></li>
+          <li><a href="#">Sites</a></li>
+        </ul>
+
+      </div>
+
+      <div class="off-canvas-content" data-off-canvas-content>
+        <!-- Page content -->
+      </div>
+    </div>
+  </div>
+</body>
+```
+
 ### Click Triggers
 
 To create a click trigger that opens the menu, add the attribute `data-open` or `data-toggle` to any element. That element will then open or toggle the menu when clicked on. The value of the data attribute should be the ID of the off-canvas.
@@ -120,3 +153,38 @@ The main content area (`.off-canvas-content`) will be padded to the left or righ
 ```
 
 <button type="button" class="button" data-docs-example-ofc>Toggle Reveal Class</button>
+
+---
+
+## Vertical Off-canvas
+
+In addition to left and right off-canvas menus, you can have vertical off-canvases as well.
+
+```html
+<body>
+  <div class="off-canvas-wrapper">
+    <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+      <div class="off-canvas position-top" id="offCanvasTop" data-off-canvas data-position="top"></div>
+      <div class="off-canvas-content" data-off-canvas-content></div>
+    </div>
+  </div>
+</body>
+```
+
+<button class="button" type="button" data-toggle="offCanvasTop">Open Top Menu</button>
+
+<div class="primary callout">
+  <p>When using the `title-bar` with a vertical off-canvas, the title-bar icons are still either `title-bar-left` or `title-bar-right`.</p>
+</div>
+
+```html_example
+<div class="title-bar">
+  <div class="title-bar-left">
+    <button class="menu-icon" type="button" data-open="offCanvasTop"></button>
+    <span class="title-bar-title">Foundation title bar with top off-canvas</span>
+  </div>
+  <div class="title-bar-right">
+    <button class="menu-icon" type="button" data-open="offCanvasTop"></button>
+  </div>
+</div>
+```

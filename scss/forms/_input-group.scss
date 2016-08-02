@@ -34,18 +34,19 @@ $input-prefix-padding: 1rem !default;
     }
 
     > :first-child {
-      border-radius: $global-radius 0 0 $global-radius;
+      border-radius: if($global-text-direction == rtl, 0 $global-radius $global-radius 0, $global-radius 0 0 $global-radius);
     }
 
     > :last-child {
       > * {
-        border-radius: 0 $global-radius $global-radius 0;
+        border-radius: if($global-text-direction == rtl, $global-radius 0 0 $global-radius, 0 $global-radius $global-radius 0);
       }
     }
   }
 
   %input-group-child {
     margin: 0;
+    white-space: nowrap;
 
     @if not $global-flexbox {
       display: table-cell;

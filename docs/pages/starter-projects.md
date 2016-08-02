@@ -1,6 +1,6 @@
 ---
 title: Starter Projects
-description: We have a few starter project templates that can be installed with Yeti Launch or the Foundation CLI. You can also download them manually!
+description: We have a few starter project templates that can be installed with the Foundation CLI. You can also download them manually!
 ---
 
 Our project templates give you a solid... *Foundation* on which to start a new project. Both templates use the [Gulp](http://gulpjs.com) build system to automate the process of compiling Sass, processing JavaScript, copying files, and more.
@@ -9,7 +9,7 @@ Our project templates give you a solid... *Foundation* on which to start a new p
 
 Our basic project template is a lot like the Sass template from Foundation 5. The project has a flat directory structure and only compiles Sass. It's great if you want to quickly put together a simple project and only need to use Sass.
 
-You can set up a basic project through [Yeti Launch](installation.html), or the Foundation CLI with this command:
+You can set up a basic project through the Foundation CLI with this command:
 
 ```bash
 foundation new --framework sites --template basic
@@ -23,13 +23,13 @@ It's also possible to download the template files directly from GitHub. Run `npm
 
 The official ZURB Template includes not only Sass processing, but also JavaScript processing, Handlebars templating, and image compression. We use this exact template at ZURB for our client work!
 
-You can set up an advanced project through [Yeti Launch](installation.html), or the Foundation CLI with this command:
+You can set up an advanced project through the Foundation CLI with this command:
 
 ```bash
 foundation new --framework sites --template zurb
 ```
 
-It's also possible to download the template files directly from GitHub. Run `npm install` and `bower install` first to set it up, then `npm start` to run it. [Download advanced template](https://github.com/zurb/foundation-zurb-template/archive/master.zip). 
+It's also possible to download the template files directly from GitHub. Run `npm install` and `bower install` first to set it up, then `npm start` to run it. [Download advanced template](https://github.com/zurb/foundation-zurb-template/archive/master.zip).
 
 The biggest difference between this and the basic template is the folder structure. In the ZURB Template, your project has a `src/` folder which contains your source files, and a separate `dist/` folder with your finished website. As you work on your project, Gulp continuously updates your `dist/` folder with new versions of files. To compile a production build, run `npm run build`.
 
@@ -68,3 +68,9 @@ By default, all images are copied as-is from `assets/img` to your `dist` folder.
 ### BrowserSync
 
 The template creates a [BrowserSync](http://www.browsersync.io/) server, which is at `http://localhost:8000`. Load this URL to see your compiled templates. While the server is running, any time you save a file, any pages you have open will automatically refresh, allowing you to see changes in real-time as you work.
+
+### Style Guide Creation
+
+Under `src/styleguide` are two files to create a style guide for your project. The style guide is generated using Style Sherpa, a small plugin created by ZURB.
+
+Style Sherpa has a dedicated page here in the docs that explains its various features. **[Learn more about Style Sherpa.](style-sherpa.html)**

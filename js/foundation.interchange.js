@@ -59,10 +59,12 @@ class Interchange {
 
     // Iterate through each rule, but only save the last match
     for (var i in this.rules) {
-      var rule = this.rules[i];
+      if(this.rules.hasOwnProperty(i)) {
+        var rule = this.rules[i];
 
-      if (window.matchMedia(rule.query).matches) {
-        match = rule;
+        if (window.matchMedia(rule.query).matches) {
+          match = rule;
+        }
       }
     }
 
@@ -78,8 +80,10 @@ class Interchange {
    */
   _addBreakpoints() {
     for (var i in Foundation.MediaQuery.queries) {
-      var query = Foundation.MediaQuery.queries[i];
-      Interchange.SPECIAL_QUERIES[query.name] = query.value;
+      if (Foundation.MediaQuery.queries.hasOwnProperty(i)) {
+        var query = Foundation.MediaQuery.queries[i];
+        Interchange.SPECIAL_QUERIES[query.name] = query.value;
+      }
     }
   }
 
@@ -102,18 +106,20 @@ class Interchange {
     }
 
     for (var i in rules) {
-      var rule = rules[i].slice(1, -1).split(', ');
-      var path = rule.slice(0, -1).join('');
-      var query = rule[rule.length - 1];
+      if(rules.hasOwnProperty(i)) {
+        var rule = rules[i].slice(1, -1).split(', ');
+        var path = rule.slice(0, -1).join('');
+        var query = rule[rule.length - 1];
 
-      if (Interchange.SPECIAL_QUERIES[query]) {
-        query = Interchange.SPECIAL_QUERIES[query];
+        if (Interchange.SPECIAL_QUERIES[query]) {
+          query = Interchange.SPECIAL_QUERIES[query];
+        }
+
+        rulesList.push({
+          path: path,
+          query: query
+        });
       }
-
-      rulesList.push({
-        path: path,
-        query: query
-      });
     }
 
     this.rules = rulesList;
@@ -139,7 +145,7 @@ class Interchange {
       .trigger(trigger);
     }
     // Replacing background images
-    else if (path.match(/\.(gif|jpg|jpeg|tiff|png)([?#].*)?/i)) {
+    else if (path.match(/\.(gif|jpg|jpeg|png|svg|tiff)([?#].*)?/i)) {
       this.$element.css({ 'background-image': 'url('+path+')' })
           .trigger(trigger);
     }

@@ -200,7 +200,8 @@ class Orbit {
         var $controls = this.$element.find(`.${this.options.nextClass}, .${this.options.prevClass}`);
         $controls.attr('tabindex', 0)
         //also need to handle enter/return and spacebar key presses
-        .on('click.zf.orbit touchend.zf.orbit', function(){
+        .on('click.zf.orbit touchend.zf.orbit', function(e){
+	  e.preventDefault();
           _this.changeSlide($(this).hasClass(_this.options.nextClass));
         });
       }
@@ -215,23 +216,25 @@ class Orbit {
           _this.changeSlide(ltr, $slide, idx);
         });
       }
-
-      this.$wrapper.add(this.$bullets).on('keydown.zf.orbit', function(e) {
-        // handle keyboard event with keyboard util
-        Foundation.Keyboard.handleKey(e, 'Orbit', {
-          next: function() {
-            _this.changeSlide(true);
-          },
-          previous: function() {
-            _this.changeSlide(false);
-          },
-          handled: function() { // if bullet is focused, make sure focus moves
-            if ($(e.target).is(_this.$bullets)) {
-              _this.$bullets.filter('.is-active').focus();
+      
+      if (this.options.accessible) {
+        this.$wrapper.add(this.$bullets).on('keydown.zf.orbit', function(e) {
+          // handle keyboard event with keyboard util
+          Foundation.Keyboard.handleKey(e, 'Orbit', {
+            next: function() {
+              _this.changeSlide(true);
+            },
+            previous: function() {
+              _this.changeSlide(false);
+            },
+            handled: function() { // if bullet is focused, make sure focus moves
+              if ($(e.target).is(_this.$bullets)) {
+                _this.$bullets.filter('.is-active').focus();
+              }
             }
-          }
+          });
         });
-      });
+      }
     }
   }
 

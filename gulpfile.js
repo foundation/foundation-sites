@@ -16,7 +16,7 @@ gulp.task('serve', ['build'], function(){
 // Watch files for changes
 gulp.task('watch', function() {
   gulp.watch('docs/**/*', ['docs', browser.reload]);
-  gulp.watch(['docs/layout/*.html', 'docs/partials/*.html'], ['docs:all', browser.reload]);
+  gulp.watch(['docs/layout/*.html', 'docs/partials/*.html', 'docs/assets/partials/*.html'], ['docs:all', browser.reload]);
   gulp.watch('scss/**/*', ['sass', browser.reload]);
   gulp.watch(['docs/assets/scss/**/*', 'foundation-docs/scss/**/*'], ['sass:docs', browser.reload]);
   gulp.watch('js/**/*', ['javascript:foundation', browser.reload]);

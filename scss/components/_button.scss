@@ -99,7 +99,7 @@ $button-opacity-disabled: 0.25 !default;
   $color: $button-color
 ) {
   @if $color == auto {
-    $color: foreground($background);
+    $color: foreground($background, $button-color-alt, $button-color);
   }
 
   @if $background-hover == auto {
@@ -139,7 +139,11 @@ $button-opacity-disabled: 0.25 !default;
 @mixin button-disabled {
   opacity: $button-opacity-disabled;
   cursor: not-allowed;
-  pointer-events: none;
+
+  &:hover, &:focus {
+    background-color: $button-background;
+    color: $button-color;
+  }
 }
 
 /// Adds a dropdown arrow to a button.
@@ -195,15 +199,18 @@ $button-opacity-disabled: 0.25 !default;
 
     // Sizes
     @each $size, $value in map-remove($button-sizes, default) {
-      &.#{$size} { font-size: $value; }
+      &.#{$size} {
+        font-size: $value;
+      }
     }
+
     &.expanded { @include button-expand; }
 
     // Colors
     @each $name, $color in $foundation-palette {
       @if $button-fill != hollow {
         &.#{$name} {
-          @include button-style($color, auto);
+          @include button-style($color, auto, auto);
         }
       }
       @else {

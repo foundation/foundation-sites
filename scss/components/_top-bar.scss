@@ -22,7 +22,7 @@ $topbar-submenu-background: $topbar-background !default;
 /// @type Number
 $topbar-title-spacing: 1rem !default;
 
-/// Width of `<input>` elements inside the top bar.
+/// Maximum width of `<input>` elements inside the top bar.
 /// @type Number
 $topbar-input-width: 200px !default;
 
@@ -58,7 +58,7 @@ $topbar-unstack-breakpoint: medium !default;
 
   // Restrain width of inputs by default to make them easier to arrange
   input {
-    width: $topbar-input-width;
+    max-width: $topbar-input-width;
     margin-#{$global-right}: 1rem;
   }
 
@@ -118,22 +118,24 @@ $topbar-unstack-breakpoint: medium !default;
   // Top bar container
   .top-bar {
     @include top-bar-container;
-  }
 
-  // Generate classes for stacking on each screen size (defined in $breakpoint-classes)
-  @each $size in $breakpoint-classes {
-    .stacked-for-#{$size} {
-      @include breakpoint($size down) {
-        @include top-bar-stacked;
+    // Stack on small screens by default
+    @include top-bar-stacked;
+
+    @include breakpoint($topbar-unstack-breakpoint) {
+      @include top-bar-unstack;
+    }
+
+    // Generate classes for stacking on each screen size (defined in $breakpoint-classes)
+    @each $size in $breakpoint-classes {
+      @if $size != $-zf-zero-breakpoint {
+        &.stacked-for-#{$size} {
+          @include breakpoint($size down) {
+            @include top-bar-stacked;
+          }
+        }
       }
     }
-  }
-
-  // Stack on small screens by default
-  @include top-bar-stacked;
-
-  @include breakpoint($topbar-unstack-breakpoint) {
-    @include top-bar-unstack;
   }
 
   // Sub-sections
@@ -152,7 +154,7 @@ $topbar-unstack-breakpoint: medium !default;
     .top-bar-title {
       float: left;
       margin-right: $topbar-title-spacing;
-      
+
     }
 
     .top-bar-left {

@@ -37,9 +37,10 @@ $select-radius: $global-radius !default;
   @if $select-triangle-color != transparent {
     @include background-triangle($select-triangle-color);
     background-size: 9px 6px;
-    background-position: $global-right center;
+    background-position: $global-right (-$form-spacing) center;
     background-origin: content-box;
     background-repeat: no-repeat;
+    padding-#{$global-right}: ($form-spacing * 1.5);
   }
 
   // Disabled state
@@ -55,6 +56,7 @@ $select-radius: $global-radius !default;
 
   &[multiple] {
     height: auto;
+    background-image: none;
   }
 }
 

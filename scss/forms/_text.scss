@@ -22,6 +22,10 @@ $input-font-family: inherit !default;
 /// @type Number
 $input-font-size: rem-calc(16) !default;
 
+/// Font weight of text inputs.
+/// @type Keyword
+$input-font-weight: $global-weight-normal !default;
+
 /// Background color of text inputs.
 /// @type Color
 $input-background: $white !default;
@@ -52,7 +56,7 @@ $input-shadow-focus: 0 0 5px $medium-gray !default;
 
 /// Cursor to use when hovering over a disabled text input.
 /// @type Cursor
-$input-cursor-disabled: default !default;
+$input-cursor-disabled: not-allowed !default;
 
 /// Properties to transition on text inputs.
 /// @type Transition
@@ -79,6 +83,7 @@ $input-radius: $global-radius !default;
 
   font-family: $input-font-family;
   font-size: $input-font-size;
+  font-weight: $input-font-weight;
   color: $input-color;
   background-color: $input-background;
   box-shadow: $input-shadow;

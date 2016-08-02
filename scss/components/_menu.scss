@@ -159,13 +159,13 @@ $menu-icon-spacing: 0.25rem !default;
     @else {
       > li > a {
         img,
-        i {
+        i,
+        svg {
           vertical-align: middle;
-        }
 
-        i + span,
-        img + span {
-          vertical-align: middle;
+          + span {
+            vertical-align: middle;
+          }
         }
       }
     }
@@ -178,7 +178,8 @@ $menu-icon-spacing: 0.25rem !default;
       }
 
       img,
-      i {
+      i,
+      svg {
         margin-#{$global-right}: $menu-icon-spacing;
 
         @if not $global-flexbox {
@@ -197,7 +198,8 @@ $menu-icon-spacing: 0.25rem !default;
       }
 
       img,
-      i {
+      i,
+      svg {
         @if not $global-flexbox {
           display: block;
           margin: 0 auto $menu-icon-spacing;
@@ -234,7 +236,7 @@ $menu-icon-spacing: 0.25rem !default;
     }
 
     @each $size in $breakpoint-classes {
-      @if $size != small {
+      @if $size != $-zf-zero-breakpoint {
         @include breakpoint($size) {
           &.#{$size}-horizontal {
             @include menu-direction(horizontal);

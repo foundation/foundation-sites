@@ -1,53 +1,46 @@
-# Contributing to Foundation
+# Foundation Contributing Guidelines
 
-ZURB loves its community! We always want to hear from our users, whether they're reporting bugs, suggesting new features, or even adding them themselves.
+Although Foundation is maintained by ZURB, it’s also a community effort. Whether it’s bug fixing, feature development, or contributions to the ecosystem, designers and developers from all over the world help make Foundation the most advanced framework in the world.
 
-## Reporting Bugs
+A select group of our contributors have been dubbed *Yetinauts*. They have direct write access to the codebase and support the core Foundation team on the development of the framework. Are you interested in making your mark on the Foundation framework? Whether you’re just submitting bugs or helping us write new features, there are many ways to contribute to Foundation.
 
-[Open a new issue](https://github.com/zurb/foundation-sites/issues/new) to report a problem you're having with Foundation for Apps. When writing your issue, keep these things in mind:
+## Terms
 
-- **Be descriptive.** If you can, upload a screenshot of problem you're having, or copy and paste any JavaScript or command line errors you encounter. Being detailed will help us hone in on the problem faster.
-- **Post your code.** It's very helpful to see any HTML, Sass, or JavaScript you've written that you think may be causing the problem. In some cases, we might be able to fix your problem just by fixing your code.
-- **Help us recreate it.** If your problem is complex, tell us the steps needed to recreate the issue. Sometimes we need to see the problem for ourselves, in our own web browsers, so we can more easily debug it.
+- The **community** is anyone commenting on issues or opening pull requests. That includes you!
+- A **Yetinaut** is anyone with write access to the repository.
+- The **Core Team** is anyone on the Foundation Team.
 
-## Editing the Documentation
+## Issues
 
-The documentation is compiled by a tool called [Supercollider](https://github.com/gakimball/supercollider). Each page is compiled from 1–3 sources:
+Open an issue for any problem you have with the framework. If there's anything missing from your issue, such as extra context, a code sample, etc. a team member will ask for more info in the comments.
 
-- A Markdown file under `docs/pages/`.
-- If it's a Sass component, the relevant Sass file inside `scss/` is scanned for special [SassDoc](http://sassdoc.com/) comments.
-- If it's a JavaScript component, the relevant JavaScript file inside `js/` is scanned for special [JSDoc](http://usejsdoc.org/) comments.
+Support requests are generally better suited for the [Foundation Forum](http://foundation.zurb.com), while GitHub is more appropriate for bugs. If you aren’t sure if your issue is a bug or not, don’t worry! Post your problem on GitHub and the team will help you along. Every participant is expected to follow the project's Code of Conduct so please be courteous and respectful.
 
-Each page is rendered in one big [Handlebars template](https://github.com/zurb/foundation-docs/blob/master/templates/component.html) that takes in all of the above data.
+## Contributions
 
-Much of the guts of the documentation are stored in an external codebase called [foundation-docs](https://github.com/zurb/foundation-docs). This is code that's shared between the documentation for all three Foundation frameworks, including:
+All new features and bug fixes should be submitted as pull requests, so the community can review and discuss them. Core Team members can commit directly to the repository for very small changes, but should generally also submit new code as a pull request.
 
-- CSS specific to the documentation
-- The Handlebars template used to build pages
-- A series of Handlebars helpers for the template
-- A custom Markdown parser used when parsing pages
-- A script that generates the search results for documentation pages
+When you submit a pull request, @mention a few people you’d like to help you review it. Once those people have signed off on it, the pull request can be merged! Core Team members will handle the merge itself.
 
-To hack on this repo locally, run the script `./docslink.sh` inside of the main Foundation repo. That will download foundation-docs and link it to your Foundation repo.
+## Coding Standards
 
-## Submitting Pull Requests
+If you aren't sure how a feature should be implemented, we recommend checking out our [standards document](https://github.com/zurb/foundation-standards), which outlines every aspect of writing framework features, from Sass to JavaScript.
 
-If you think you can solve a problem yourself, or want to implement a new feature, go for it! Follow these guidelines to make the most killer PR ever.
+## Becoming a Yetinaut
 
-- **Target the right branch.** So we can properly follow [semantic versioning](http://semver.org/), be sure to develop your pull request in the right branch:
-  - Documentation fixes: `master` (this allows us to deploy them to the live site right away)
-  - Bug fixes: `develop`
-  - New features `6.x` (we always have a public branch for the next minor version)
-  - Foundation 5 fixes: `V5`
-- **Test, test, and test.** The Foundation frameworks are used by thousands and thousands of designers and developers, so making sure your changes work in every browser is important! Foundation for Sites is officially supported on:
-  - Latest Chrome, Firefox, Safari, Edge, and Opera
-  - Internet Explorer 9+
-  - iOS 8+
-  - Android 2.3+
+Want to join our crack team of Yetinauts? The Core Team is inviting active community members to become Yetinauts  on a case-by-case basis. If you want to become a contributor, engage the community on the Foundation Forum, help us close issues on GitHub, and review pull requests from other contributors.
 
-## Help Wanted
+If you’ve made substantial contributions to a Foundation framework and haven’t heard from us yet, you can reach out at foundation@zurb.com.
 
-Want something to work on? Let us guide you in the right direction.
+Contributors are expected to:
 
-- Browse the [Help Wanted](https://github.com/zurb/foundation-sites/labels/help%20wanted) issue to see bugs or features we've asked for the community's help on. Feel free to implement them yourself as a pull request!
-- Find the [roadmap](https://github.com/zurb/foundation-sites/issues/7759) for our next minor version to see what we've got planned. We always have an open issue, and a public branch, to see what we're working on for the next 6.x version.
+- Engage the community on GitHub by responding to and tagging issues.
+- Write pull requests to address bugs and feature requests.
+- Help in reviewing pull requests from users, contributors, and the Core Team.
+- Follow the guidelines outlined in this document.
+
+Here are some example contributions from some of our awesome team members:
+
+- Colin Marshall converted our Sass unit tests to a newer test runner called True.
+- Andy Cochran reworked the CSS for button groups to fix issues with stacking and border radii.
+- designerno1 developed the Equalize by Row feature for the Equalizer plugin.

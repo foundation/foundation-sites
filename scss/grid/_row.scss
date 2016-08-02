@@ -80,8 +80,9 @@
 /// @param {Map|null} $gutter [null] - Gutter value to use when inverting the margins. Set to `null` to refer to the responsive gutter settings.
 @mixin grid-row-nest($gutter: $grid-column-gutter) {
   @if type-of($gutter) == 'number' {
-    $gutter: (small: $gutter);
+    $gutter: ($-zf-zero-breakpoint: $gutter);
   }
+  max-width: none;
 
   @each $breakpoint, $value in $gutter {
     $margin: rem-calc($value) / 2 * -1;

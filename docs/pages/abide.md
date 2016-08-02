@@ -1,6 +1,6 @@
 ---
 title: Abide
-description: Abide is an form validation library that extends the HTML5 validation API with custom validators.
+description: Abide is a form validation library that extends the HTML5 validation API with custom validators.
 sass: scss/forms/_error.scss
 js: js/foundation.abide.js
 tags:
@@ -181,7 +181,7 @@ $(document)
   })
   // form validation passed, form will submit if submit event not returned false
   .on("formvalid.zf.abide", function(ev,frm) {
-    console.log("Form id "+frm.attr('id')+" is invalid");
+    console.log("Form id "+frm.attr('id')+" is valid");
     // ajax post form 
   })
   // to prevent form from submitting upon successful validation

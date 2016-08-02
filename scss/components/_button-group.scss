@@ -29,32 +29,28 @@ $buttongroup-expand-max: 6 !default;
 ) {
   @include clearfix;
   margin-bottom: $buttongroup-margin;
-  font-size: 0;
 
   @if $global-flexbox {
     display: flex;
     flex-wrap: nowrap;
     align-items: stretch;
   }
+  @else {
+    font-size: 0;
+  }
 
   #{$child-selector} {
     margin: 0;
+    margin-#{$global-right}: $buttongroup-spacing;
+    margin-bottom: $buttongroup-spacing;
     font-size: map-get($button-sizes, default);
 
     @if $global-flexbox {
       flex: 0 0 auto;
     }
-    @else {
-      float: #{$global-left};
-    }
 
-    &:not(:last-child) {
-      @if $global-flexbox {
-        margin-right: $buttongroup-spacing;
-      }
-      @else {
-        border-#{$global-right}: $buttongroup-spacing solid $body-background;
-      }
+    &:last-child {
+      margin-#{$global-right}: 0;
     }
   }
 }
@@ -66,7 +62,7 @@ $buttongroup-expand-max: 6 !default;
   $count: null
 ) {
   @if not $global-flexbox {
-    margin-right: -$buttongroup-spacing;
+    margin-#{$global-right}: -$buttongroup-spacing;
 
     &::before,
     &::after {
@@ -84,8 +80,12 @@ $buttongroup-expand-max: 6 !default;
         &:first-child:nth-last-child(#{$i}) {
           &, &:first-child:nth-last-child(#{$i}) ~ #{$selector} {
             display: inline-block;
-            width: calc(#{percentage(1/$i)} - #{$buttongroup-spacing});
-            margin-right: $buttongroup-spacing;
+            width: calc(#{percentage(1 / $i)} - #{$buttongroup-spacing});
+            margin-#{$global-right}: $buttongroup-spacing;
+
+            &:last-child {
+              margin-#{$global-right}: $buttongroup-spacing * -$buttongroup-expand-max;
+            }
           }
         }
       }
@@ -110,8 +110,8 @@ $buttongroup-expand-max: 6 !default;
       width: 100%;
     }
 
-    &:not(:last-child) {
-      margin-#{$global-right}: 0;
+    &:last-child {
+      margin-bottom: 0;
     }
   }
 }
@@ -129,10 +129,7 @@ $buttongroup-expand-max: 6 !default;
     @else {
       width: auto;
     }
-
-    &:not(:last-child) {
-      margin-#{$global-right}: $buttongroup-spacing;
-    }
+    margin-bottom: 0;
   }
 }
 
@@ -142,7 +139,9 @@ $buttongroup-expand-max: 6 !default;
 
     // Sizes
     @each $size, $value in map-remove($button-sizes, default) {
-      &.#{$size} #{$buttongroup-child-selector} { font-size: $value; }
+      &.#{$size} #{$buttongroup-child-selector} {
+        font-size: $value;
+      }
     }
 
     // Even-width Group
@@ -188,7 +187,7 @@ $buttongroup-expand-max: 6 !default;
 
         #{$buttongroup-child-selector} {
           display: block;
-          margin-right: 0;
+          margin-#{$global-right}: 0;
         }
       }
     }

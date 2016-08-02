@@ -18,7 +18,7 @@ Creating a form in Foundation is designed to be easy but extremely flexible. For
 
 ---
 
-### Text Inputs
+#### Text Inputs
 
 These input types create a text field: `text`, `date`, `datetime`, `datetime-local`, `email`, `month`, `number`, `password`, `search`, `tel`, `time`, `url`, and `week`.
 
@@ -67,7 +67,7 @@ The `<textarea>` element creates a multi-line text input.
 
 ---
 
-### Select Menus
+#### Select Menus
 
 Use select menus to combine many choices into one menu.
 
@@ -82,9 +82,22 @@ Use select menus to combine many choices into one menu.
 </label>
 ```
 
+Add the `multiple` attribute to allow more than one option to be selected. Hold down the Ctrl (windows) / Command (Mac) button to select multiple options.
+
+```html_example
+<label>Multiple Select Menu
+  <select multiple>
+    <option value="showboat">Showboat</option>
+    <option value="redwing">Redwing</option>
+    <option value="narcho">Narcho</option>
+    <option value="hardball">Hardball</option>
+  </select>
+</label>
+```
+
 ---
 
-### Checkboxes and Radio Buttons
+#### Checkboxes and Radio Buttons
 
 Use groups of checkboxes when the user may select multiple choices from a list, and use radio buttons when the user must select just one choice.
 
@@ -109,7 +122,7 @@ Wrap a group of checkboxes or radio buttons in a `<fieldset>` element, and give 
 
 ---
 
-### Fieldset Styles
+#### Fieldset Styles
 
 To encourage their use as an accessibility tool, the `<fieldset>` element is no longer styled by default. Those styles are now contained in the `.fieldset` class.
 
@@ -208,7 +221,7 @@ To attach extra text or controls to the left or right of an input field, wrap th
 - `.input-group-button` on a button. **Place the button inside this wrapper.**
 
 <div class="primary callout">
-  <p>This component supports flexbox mode. <a href="#">Learn how to enable flexbox mode</a>.</p>
+  <p>This component supports flexbox mode. <a href="flexbox.html">Learn how to enable flexbox mode</a>.</p>
 </div>
 
 ```html_example

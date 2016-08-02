@@ -45,7 +45,7 @@ No bells or whistles here, just a straight up table for all of your basic table 
 
 ## Hover State
 
-Need to spiff up the table just a tad? Just add the class `.hover` lightly darken the table rows on hover.
+Need to spiff up the table just a tad? Just add the class `.hover` to lightly darken the table rows on hover.
 
 ```html
 <table class="hover">
@@ -85,9 +85,51 @@ Need to spiff up the table just a tad? Just add the class `.hover` lightly darke
 
 ---
 
+## Stripes
+
+By default, table rows are striped. There's an `.unstriped` class to remove the stripes. If you change `$table-is-striped` to `false` to remove stripes from all tables, use the `.striped` class to add stripes.
+
+```html
+<table class="unstriped">
+</table>
+```
+
+<table class="unstriped">
+  <thead>
+    <tr>
+      <th width="200">Table Header</th>
+      <th>Table Header</th>
+      <th width="150">Table Header</th>
+      <th width="150">Table Header</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Content Goes Here</td>
+      <td>This is longer content Donec id elit non mi porta gravida at eget metus.</td>
+      <td>Content Goes Here</td>
+      <td>Content Goes Here</td>
+    </tr>
+    <tr>
+      <td>Content Goes Here</td>
+      <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+      <td>Content Goes Here</td>
+      <td>Content Goes Here</td>
+    </tr>
+    <tr>
+      <td>Content Goes Here</td>
+      <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+      <td>Content Goes Here</td>
+      <td>Content Goes Here</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
 ## Stacked Table
 
-Sometimes you just need to stack a table. Just add the class `.stack` to your table.
+To stack a table on small screens, add the class `.stack`.
 
 ```html
 <table class="stack">

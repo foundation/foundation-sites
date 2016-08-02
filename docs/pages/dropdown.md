@@ -65,3 +65,15 @@ By default, a dropdown anchors below the button that opened it. Add the class `.
 <div class="dropdown-pane right" id="example-dropdown4" data-dropdown>
   Just some junk that needs to be said. Or not. Your choice.
 </div>
+
+
+Adding `.float-right` or `.float-left` to the anchor will change the direction of the dropdown as well.
+<button class="button float-right" type="button" data-toggle="example-dropdown5">Bottom-right Aligned</button>
+<div class="dropdown-pane bottom" id="example-dropdown5" data-dropdown>
+  Just some junk that needs to be said. Or not. Your choice.
+</div>
+
+<button class="button float-left" type="button" data-toggle="example-dropdown6">Bottom-left Aligned</button>
+<div class="dropdown-pane bottom" id="example-dropdown6" data-dropdown>
+  Just some junk that needs to be said. Or not. Your choice.
+</div>

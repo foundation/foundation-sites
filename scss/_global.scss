@@ -128,8 +128,8 @@ $-zf-flex-classes-imported: false;
 
   // Set box-sizing globally to handle padding and border widths
   *,
-  *:before,
-  *:after {
+  *::before,
+  *::after {
     box-sizing: inherit;
   }
 
@@ -187,6 +187,7 @@ $-zf-flex-classes-imported: false;
 
   // Reset <button> styles created by most browsers
   button {
+    @include disable-mouse-outline;
     -webkit-appearance: none;
     -moz-appearance: none;
     background: transparent;
@@ -512,7 +513,7 @@ $-zf-flex-classes-imported: false;
 
   button[disabled],
   html input[disabled] {
-    cursor: default;
+    cursor: not-allowed;
   }
 
   /**

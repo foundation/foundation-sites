@@ -1,7 +1,7 @@
 var gulp = require('gulp');
-var chalk = require('chalk');
 var concat = require('gulp-concat');
 var babel = require('gulp-babel');
+var onBabelError = require('./babel-error.js');
 
 var FOUNDATION = [
   'js/foundation.core.js',
@@ -30,6 +30,7 @@ gulp.task('javascript:foundation', function() {
   return gulp.src(FOUNDATION)
     .pipe(babel()
       .on('error', onBabelError))
+    .pipe(gulp.dest('_build/assets/js/plugins'))
     .pipe(concat('foundation.js'))
     .pipe(gulp.dest('_build/assets/js'));
 });
@@ -45,18 +46,3 @@ gulp.task('javascript:docs', function() {
     .pipe(concat('docs.js'))
     .pipe(gulp.dest('_build/assets/js'));
 });
-
-function onBabelError(err) {
-  console.log(
-    chalk.red(
-      err.fileName +
-      (
-          err.loc ?
-          '(' + err.loc.line + ',' + err.loc.column + '): ' :
-          ': '
-      )
-    ) +
-    'error Babel: ' + err.message + '\n' +
-    err.codeFrame
-  );
-}

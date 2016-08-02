@@ -84,14 +84,14 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
       }
 
       &.opens-left {
-        .is-dropdown-submenu {
+        > .is-dropdown-submenu {
           left: auto;
           right: 100%;
         }
       }
 
       &.opens-right {
-        .is-dropdown-submenu {
+        > .is-dropdown-submenu {
           right: auto;
           left: 100%;
         }
@@ -124,7 +124,7 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
     }
 
     @each $size in $breakpoint-classes {
-      @if $size != small {
+      @if $size != $-zf-zero-breakpoint {
         @include breakpoint($size) {
           &.#{$size}-horizontal {
             @include dropdown-menu-direction(horizontal);
@@ -164,14 +164,24 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
       margin-top: -2px;
     }
 
-    &.opens-inner .is-dropdown-submenu {
+    &.opens-inner > .is-dropdown-submenu {
+
       top: 100%;
+      @if $global-text-direction == 'rtl' {
+        right: auto;
+      } @else {
+        left: auto;
+      }
     }
 
-    &.opens-left .is-dropdown-submenu {
+    &.opens-left > .is-dropdown-submenu {
       left: auto;
-      right: 0;
-      top: 100%;
+      right: 100%;
+    }
+
+    &.opens-right > .is-dropdown-submenu {
+      right: auto;
+      left: 100%;
     }
   }
 
@@ -203,7 +213,7 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
 
     // [TODO] Cut back specificity
     // scss-lint:disable SelectorDepth
-    &:not(.js-dropdown-nohover) > .is-dropdown-submenu-parent:hover > &,
+    //&:not(.js-dropdown-nohover) > .is-dropdown-submenu-parent:hover > &, // why is this line needed? Opening is handled by JS and this causes some ugly flickering when the sub is re-positioned automatically...
     &.js-dropdown-active {
       display: block;
     }

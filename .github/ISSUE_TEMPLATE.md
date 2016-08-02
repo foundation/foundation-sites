@@ -12,4 +12,7 @@
 
 **Test case:**
 
-Give us a link to a [CodePen](http://codepen.io/gakimball/pen/jqEMYp) or [JSFiddle](http://jsfiddle.net) that recreates the issue.
+Give us a link to a CodePen or JSFiddle that recreates the issue.
+
+- [CodePen with Foundation 6 and MotionUI](http://codepen.io/rafibomb/pen/xVVGOB)
+- [CodePen with Foundation 6, Flexbox grid and MotionUI](http://codepen.io/rafibomb/pen/jqqPra)

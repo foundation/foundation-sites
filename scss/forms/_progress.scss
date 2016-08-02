@@ -81,5 +81,14 @@ $progress-radius: $global-radius !default;
         }
       }
     }
+    
+    // For IE and Edge  
+    &::-ms-fill{
+      @if hasvalue($progress-radius) {
+        border-radius: $progress-radius;  
+      }
+
+      border: 0;     
+    } 
   }
 }

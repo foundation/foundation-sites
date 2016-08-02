@@ -21,6 +21,7 @@
     margin-#{$global-right}: $form-spacing;
     margin-bottom: 0;
     vertical-align: baseline;
+
     &[for] {
       cursor: pointer;
     }

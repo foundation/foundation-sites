@@ -7,4 +7,3 @@ install:
   - npm install -g bower
   - npm install
   - gem install scss_lint
-script: npm start test:sass

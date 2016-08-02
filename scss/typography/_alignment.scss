@@ -6,7 +6,7 @@
   @each $size in $breakpoint-classes {
     @include breakpoint($size) {
       @each $align in (left, right, center, justify) {
-        @if $size != 'small' {
+        @if $size != $-zf-zero-breakpoint {
           .#{$size}-text-#{$align} {
             text-align: $align;
           }
