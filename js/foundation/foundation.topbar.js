@@ -134,7 +134,7 @@
           }
         }
       } else {
-        if (self.is_sticky(topbar, topbar.parent(), settings)) {
+        if (self.is_sticky(topbar, topbar.parent(), settings) && topbar.parent().offset().top==0) {
           topbar.parent().addClass('fixed');
         }
 
@@ -199,7 +199,7 @@
 
           e.stopImmediatePropagation();
 
-          if (li.hasClass('hover')) {
+          if (li.hasClass('hover') && (settings.is_hover || li.children('a').first().hasClass('last-clicked'))) {
             li
               .removeClass('hover')
               .find('li')
@@ -214,6 +214,10 @@
 
             if (target[0].nodeName === 'A' && target.parent().hasClass('has-dropdown')) {
               e.preventDefault();
+              if(!settings.is_hover){
+                topbar.find('.last-clicked').removeClass('last-clicked');
+                target.addClass('last-clicked');
+              }
             }
           }
         })
@@ -251,13 +255,19 @@
       });
 
       S('body').off('.topbar').on('click.fndtn.topbar', function (e) {
-        var parent = S(e.target).closest('li').closest('li.hover');
+        var parent = S(e.target).closest('li').closest('li.hover'),
+            topbar = S(e.target).closest('[' + self.attr_name() + ']'),
+            settings = topbar.data(self.attr_name(true) + '-init');
 
         if (parent.length > 0) {
           return;
         }
 
         S('[' + self.attr_name() + '] li.hover').removeClass('hover');
+        
+        if(settings && !settings.is_hover){
+          S('[' + self.attr_name() + '] a.last-clicked').removeClass('last-clicked');
+        }
       });
 
       // Go up a level on Click
@@ -298,7 +308,7 @@
           $(this).parents('.has-dropdown').addClass('hover');
         })
         .blur(function () {
-          $(this).parents('.has-dropdown').removeClass('hover');
+          $(this).removeClass('last-clicked').parents('.has-dropdown').removeClass('hover');
         });
     },
 

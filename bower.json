@@ -7,7 +7,7 @@
   "ignore": [
   ],
   "dependencies": {
-    "jquery": ">= 2.1.0",
+    "jquery": "~2.1.0",
     "modernizr": "2.8.3",
     "fastclick": ">=0.6.11",
     "jquery.cookie": "~1.4.0",
