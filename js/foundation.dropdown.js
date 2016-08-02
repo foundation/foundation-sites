@@ -52,7 +52,7 @@ class Dropdown {
     });
 
     if(this.options.parentClass){
-      this.$parent = $('.' + this.options.parentClass);
+      this.$parent = this.$element.parents('.' + this.options.parentClass);
     }else{
       this.$parent = null;
     }
@@ -139,8 +139,18 @@ class Dropdown {
         offset = (param === 'height') ? this.options.vOffset : this.options.hOffset;
 
     if(($eleDims.width >= $eleDims.windowDims.width) || (!this.counter && !Foundation.Box.ImNotTouchingYou(this.$element, this.$parent))){
-      this.$element.offset(Foundation.Box.GetOffsets(this.$element, this.$anchor, 'center bottom', this.options.vOffset, this.options.hOffset, true)).css({
-        'width': $eleDims.windowDims.width - (this.options.hOffset * 2),
+      var newWidth = $eleDims.windowDims.width,
+          parentHOffset = 0;
+      if(this.$parent){
+        var $parentDims = Foundation.Box.GetDimensions(this.$parent),
+            parentHOffset = $parentDims.offset.left;
+        if ($parentDims.width < newWidth){
+          newWidth = $parentDims.width;
+        }
+      }
+
+      this.$element.offset(Foundation.Box.GetOffsets(this.$element, this.$anchor, 'center bottom', this.options.vOffset, this.options.hOffset + parentHOffset, true)).css({
+        'width': newWidth - (this.options.hOffset * 2),
         'height': 'auto'
       });
       this.classChanged = true;
