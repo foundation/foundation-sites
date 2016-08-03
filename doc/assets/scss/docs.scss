@@ -83,13 +83,20 @@ a#notice {
   }
 }
 
+$topbar-background: #2c3840;
+$topbar-hover-color: lighten($topbar-background, 10%);
 
 .spaced-divider hr {
   margin: 0.5rem;
   border: 1px solid #4e4e4e;
 }
 
-.top-bar-section .dropdown li.title{
+.top-bar,
+.top-bar-section ul li {
+  background: $topbar-background;
+}
+
+.top-bar-section .dropdown li.title {
   color: rgba(255,255,255,0.5);
   padding-top: 10px;
   padding-left: 15px;
@@ -1238,7 +1245,7 @@ border: 5px solid red;
 }
 
 .top-bar.docs-bar .top-bar-section > ul > .divider, .top-bar-section > ul > [role="separator"] {
-  border-right: solid 1px #4e4e4e;
+  border-right: solid 1px #3B4951;
   border-bottom: none;
   border-top: none;
   clear: none;
@@ -1282,4 +1289,36 @@ border: 5px solid red;
   -webkit-appearance: none;
   border-color: #007095;
   transition: background-color 300ms ease-out;
+}
+
+.top-bar,
+.top-bar-section ul li,
+.top-bar-section li:not(.has-form) a:not(.button),
+.top-bar-section .dropdown li:not(.has-form):not(.active) > a:not(.button) {
+  background: $topbar-background;
+  background-color: $topbar-background;
+}
+
+.top-bar-section li:not(.has-form) a:not(.button):hover {
+  background: $topbar-hover-color;
+  background-color: $topbar-hover-color;
+}
+
+.top-bar-section li:not(.has-form) a:not(.button):hover, 
+.top-bar-section li:not(.has-form) a:not(.button):active, 
+.top-bar-section .dropdown li:not(.has-form):not(.active) > a:not(.button) {
+  background: $topbar-background;
+  background-color: $topbar-background;
+}
+
+.top-bar-section .has-form {
+  background: #1d92cf;
+}
+
+@media only screen and (min-width: 35.61111em) {
+.top-bar-section .dropdown li:not(.has-form):not(.active):hover > a:not(.button) {
+    background-color: $topbar-hover-color;
+    color: #FFFFFF;
+    background: $topbar-hover-color;
+  }
 }

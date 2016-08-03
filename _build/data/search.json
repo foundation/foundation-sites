@@ -1,0 +1,5398 @@
+[
+  {
+    "type": "old version",
+    "name": "Foundation 2",
+    "description": "Documentation for Foundation 2.2.1",
+    "link": "http://foundation.zurb.com/sites/docs/v/2.2.1/",
+    "tags": [
+      "old",
+      "previous"
+    ]
+  },
+  {
+    "type": "old version",
+    "name": "Foundation 5",
+    "description": "Documentation for Foundation 5.5.3",
+    "link": "http://foundation.zurb.com/sites/docs/v/5.5.3/index.html",
+    "tags": [
+      "old",
+      "previous"
+    ]
+  },
+  {
+    "type": "library",
+    "name": "Panini",
+    "description": "A flat file compiler that powers our prototyping template. Create pages with consistent layouts and reusable partials with ease.",
+    "link": "panini.html",
+    "tags": []
+  },
+  {
+    "type": "library",
+    "name": "Style Sherpa",
+    "description": "Bundled with the ZURB Template, Style Sherpa makes it easy to create a style guide for your codebase, with just two files.",
+    "link": "style-sherpa.html",
+    "tags": []
+  },
+  {
+    "type": "library",
+    "name": "Motion UI",
+    "description": "A Sass library for creating flexible UI transitions and animations.",
+    "link": "motion-ui.html",
+    "tags": []
+  },
+  {
+    "type": "old version",
+    "name": "Foundation 3",
+    "description": "Documentation for Foundation 3.2.5",
+    "link": "http://foundation.zurb.com/sites/docs/v/3.2.5/",
+    "tags": [
+      "old",
+      "previous"
+    ]
+  },
+  {
+    "type": "old version",
+    "name": "Foundation 4",
+    "description": "Documentation for Foundation 4.3.2",
+    "link": "http://foundation.zurb.com/sites/docs/v/4.3.2/index.html",
+    "tags": [
+      "old",
+      "previous"
+    ]
+  },
+  {
+    "type": "page",
+    "name": "Navigation",
+    "description": "Foundation is bundled with many simple navigation patterns, which can be combined to form more complex, robust responsive navigation solutions.",
+    "link": "navigation.html",
+    "tags": []
+  },
+  {
+    "type": "page",
+    "name": "Sass",
+    "description": "Foundation is written in Sass, which allows us to make the codebase customizable and flexible.",
+    "link": "sass.html",
+    "tags": []
+  },
+  {
+    "type": "page",
+    "name": "Starter Projects",
+    "description": "We have a few starter project templates that can be installed with the Foundation CLI. You can also download them manually!",
+    "link": "starter-projects.html",
+    "tags": []
+  },
+  {
+    "type": "page",
+    "name": "Kitchen Sink",
+    "description": "Everything but.",
+    "link": "kitchen-sink.html",
+    "tags": []
+  },
+  {
+    "type": "page",
+    "name": "JavaScript",
+    "description": "Our JavaScript is easy to set up and only requires jQuery to get going.",
+    "link": "javascript.html",
+    "tags": []
+  },
+  {
+    "type": "page",
+    "name": "JavaScript Utilities",
+    "description": "Our JavaScript Utility Libraries are easy to use and super helpful.",
+    "link": "javascript-utilities.html",
+    "tags": []
+  },
+  {
+    "type": "page",
+    "name": "Installation",
+    "description": "There are many ways to install Foundation, but if you're just getting started, we have a few suggestions.",
+    "link": "installation.html",
+    "tags": []
+  },
+  {
+    "type": "page",
+    "name": "Foundation for Sites",
+    "description": "We built Foundation for Sites to be the most advanced responsive front-end framework in the world.",
+    "link": "index.html",
+    "tags": [
+      "index",
+      "home"
+    ]
+  },
+  {
+    "type": "page",
+    "name": "Float Classes",
+    "description": "Foundation includes a handful of helpful float classes to add common positioning behaviors to elements.",
+    "link": "float-classes.html",
+    "tags": []
+  },
+  {
+    "type": "page",
+    "name": "Right-to-Left Support",
+    "description": "Foundation can easily adapt its components to work with languages that read from right to left.",
+    "link": "rtl.html",
+    "tags": []
+  },
+  {
+    "type": "page",
+    "name": "Compatibility",
+    "description": "Foundation is tested across many browsers and devices, and works back as far as IE9 and Android 2.",
+    "link": "compatibility.html",
+    "tags": [
+      "support",
+      "browser"
+    ]
+  },
+  {
+    "type": "page",
+    "name": "Accessibility",
+    "description": "Foundation for Sites is a fully-accessible framework. Here are some general guidelines to keep in mind as you make your pages accessible.",
+    "link": "accessibility.html",
+    "tags": []
+  },
+  {
+    "type": "component",
+    "name": "Forms",
+    "description": "We set out to create an easy, powerful and versatile form layout system. A combination of form styles and the Foundation grid means you can do almost anything.",
+    "link": "forms.html",
+    "tags": [
+      "input",
+      "select",
+      "radio",
+      "checkbox"
+    ]
+  },
+  {
+    "type": "component",
+    "name": "Flex Grid",
+    "description": "New in Foundation 6 is a Flexbox-powered grid, which you can use instead of the traditional float grid.",
+    "link": "flex-grid.html",
+    "tags": []
+  },
+  {
+    "type": "component",
+    "name": "Sass Functions",
+    "description": "Behind the scenes, Foundation is powered by a set of utility Sass functions that help us work with colors, units, selectors, and more.",
+    "link": "sass-functions.html",
+    "tags": []
+  },
+  {
+    "type": "component",
+    "name": "Reveal",
+    "description": "Modal dialogs, or pop-up windows, are handy for prototyping and production. Foundation includes Reveal, our jQuery modal plugin, to make this easy for you.",
+    "link": "reveal.html",
+    "tags": [
+      "modal"
+    ]
+  },
+  {
+    "type": "component",
+    "name": "Sass Mixins",
+    "link": "sass-mixins.html",
+    "tags": []
+  },
+  {
+    "type": "component",
+    "name": "Responsive Navigation",
+    "description": "Our three Menu patterns form like Voltron into one responsive Menu plugin, which allows you to switch between patterns at different screen sizes.",
+    "link": "responsive-navigation.html",
+    "tags": []
+  },
+  {
+    "type": "component",
+    "name": "Progress Bar",
+    "description": "Show your progress. A simple way to add progress bars to your layouts. You only need two HTML elements to make them and they're easy to customize.",
+    "link": "progress-bar.html",
+    "tags": []
+  },
+  {
+    "type": "component",
+    "name": "Abide",
+    "description": "Abide is a form validation library that extends the HTML5 validation API with custom validators.",
+    "link": "abide.html",
+    "tags": [
+      "forms",
+      "validation"
+    ]
+  },
+  {
+    "type": "component",
+    "name": "Pagination",
+    "description": "Pagination is a type of navigation that lets users click through pages of search results, products, or other related items.",
+    "link": "pagination.html",
+    "tags": []
+  },
+  {
+    "type": "component",
+    "name": "Slider",
+    "description": "This handy lil slider is perfect for setting specific values within a range.",
+    "link": "slider.html",
+    "tags": [
+      "range"
+    ]
+  },
+  {
+    "type": "component",
+    "name": "Sticky",
+    "description": "Stick nearly anything, anywhere you like!",
+    "link": "sticky.html",
+    "tags": []
+  },
+  {
+    "type": "component",
+    "name": "Switch",
+    "description": "Now you can tell your users to flip the switch or switch off.",
+    "link": "switch.html",
+    "tags": []
+  },
+  {
+    "type": "component",
+    "name": "Orbit",
+    "description": "An image and content carousel with animation support and many customizable options.",
+    "link": "orbit.html",
+    "tags": [
+      "slider",
+      "carousel"
+    ]
+  },
+  {
+    "type": "component",
+    "name": "Off-canvas",
+    "description": "Off-canvas menus are positioned outside of the viewport and slide in when activated. Setting up an off-canvas layout in Foundation is super easy.",
+    "link": "off-canvas.html",
+    "tags": [
+      "navigation"
+    ]
+  },
+  {
+    "type": "component",
+    "name": "Menu",
+    "description": "Our flexible menu component makes it easy to build many common navigation patterns, all with the same markup.",
+    "link": "menu.html",
+    "tags": [
+      "navigation",
+      "side nav",
+      "sub nav",
+      "icon bar",
+      "top bar"
+    ]
+  },
+  {
+    "type": "component",
+    "name": "Accordion Menu",
+    "description": "Change a basic vertical Menu into a expandable accordion menu with the Accordion Menu plugin.",
+    "link": "accordion-menu.html",
+    "tags": []
+  },
+  {
+    "type": "component",
+    "name": "Tables",
+    "description": "Okay, they're not the sexiest things ever, but tables get the job done (for tabular data, of course). They have responsive modifiers to help solve some of your layout issues based on your tables needs.",
+    "link": "table.html",
+    "tags": []
+  },
+  {
+    "type": "component",
+    "name": "Media Queries",
+    "description": "CSS media queries allow us to adjust the display and orientation of content at different screen sizes.",
+    "link": "media-queries.html",
+    "tags": [
+      "breakpoints"
+    ]
+  },
+  {
+    "type": "component",
+    "name": "Media Object",
+    "description": "Media objects are super useful components for displaying an item, usually an image, alongside some content, usually text. You could put lists, grids, or even other media objects inside.",
+    "link": "media-object.html",
+    "tags": []
+  },
+  {
+    "type": "component",
+    "name": "Magellan",
+    "description": "Magellan allows you to create navigation that tracks the active section of a page your user is in. Pair it with our Sticky plugin to create a fixed navigation element.",
+    "link": "magellan.html",
+    "tags": [
+      "navigation"
+    ]
+  },
+  {
+    "type": "component",
+    "name": "Label",
+    "description": "Labels are useful inline styles that can be dropped into body copy to call out certain sections or to attach metadata. For example, you can attach a label that notes when something was updated.",
+    "link": "label.html",
+    "tags": []
+  },
+  {
+    "type": "component",
+    "name": "Visibility Classes",
+    "description": "Visibility classes let you show or hide elements based on screen size or device orientation. You can also use visibility classes to control which elements users see depending on their browsing environment.",
+    "link": "visibility.html",
+    "tags": [
+      "hide",
+      "show"
+    ]
+  },
+  {
+    "type": "component",
+    "name": "Tabs",
+    "description": "Tabs are elements that help you organize and navigate multiple documents in a single container. They can be used for switching between items in the container.",
+    "link": "tabs.html",
+    "tags": []
+  },
+  {
+    "type": "component",
+    "name": "Interchange",
+    "description": "Interchange uses media queries to dynamically load responsive content that is appropriate for the user's device.",
+    "link": "interchange.html",
+    "tags": []
+  },
+  {
+    "type": "component",
+    "name": "The Grid",
+    "description": "Create powerful multi-device layouts quickly and easily with the default 12-column, nestable Foundation grid. If you're familiar with grid systems, you'll feel right at home. If not, you'll learn quickly.",
+    "link": "grid.html",
+    "tags": [
+      "block grid"
+    ]
+  },
+  {
+    "type": "component",
+    "name": "Global Styles",
+    "description": "Our global CSS includes helpful resets to ensure consistent styling across browsers.",
+    "link": "global.html",
+    "tags": []
+  },
+  {
+    "type": "component",
+    "name": "Typography Helpers",
+    "description": "Our helper classes allow you to scaffold certain typographic styles faster.",
+    "link": "typography-helpers.html",
+    "tags": [
+      "alignment",
+      "subheader",
+      "lead",
+      "statistic"
+    ]
+  },
+  {
+    "type": "component",
+    "name": "Flexbox",
+    "description": "For browsers with cutting-edge support, some of Foundation's key components can be converted to flexbox.",
+    "link": "flexbox.html",
+    "tags": []
+  },
+  {
+    "type": "component",
+    "name": "Accordion",
+    "description": "Accordions are elements that help you organize and navigate multiple documents in a single container. They can be used for switching between items in the container.",
+    "link": "accordion.html",
+    "tags": []
+  },
+  {
+    "type": "component",
+    "name": "Flex Video",
+    "description": "Wrap embedded videos from YouTube, Vimeo, and others in a flex video container to ensure they maintain the correct aspect ratio regardless of screen size.",
+    "link": "flex-video.html",
+    "tags": []
+  },
+  {
+    "type": "component",
+    "name": "Thumbnail",
+    "description": "If you're going to use an image as an anchor, we've got you covered. All you gotta do is add one class to your image and voilà!",
+    "link": "thumbnail.html",
+    "tags": []
+  },
+  {
+    "type": "component",
+    "name": "Equalizer",
+    "description": "Equalizer makes it dead simple to give multiple items equal height.",
+    "link": "equalizer.html",
+    "tags": []
+  },
+  {
+    "type": "component",
+    "name": "Toggler",
+    "description": "Toggler makes it easy to toggle CSS or animate any element with a click.",
+    "link": "toggler.html",
+    "tags": []
+  },
+  {
+    "type": "component",
+    "name": "Tooltip",
+    "description": "Tooltips? More like <em>Cooltips</em>. But really though, tooltips are nifty for displaying extended information for a term or action on a page.",
+    "link": "tooltip.html",
+    "tags": []
+  },
+  {
+    "type": "component",
+    "name": "Dropdown",
+    "description": "Dropdown panes are little happy sprites which can be revealed on click or hover.",
+    "link": "dropdown.html",
+    "tags": []
+  },
+  {
+    "type": "component",
+    "name": "Top Bar",
+    "description": "The new top bar is a simpler wrapper around our flexible menu components.",
+    "link": "top-bar.html",
+    "tags": []
+  },
+  {
+    "type": "component",
+    "name": "Base Typography",
+    "description": "Typography in Foundation 6 is meant to make your life easier by providing clean, attractive, simple default styles for all of the most basic typographical elements.",
+    "link": "typography-base.html",
+    "tags": [
+      "paragraph",
+      "heading",
+      "link",
+      "definition",
+      "blockquote",
+      "abbreviation",
+      "acronym",
+      "code",
+      "keystroke"
+    ]
+  },
+  {
+    "type": "component",
+    "name": "Dropdown Menu",
+    "description": "Change a basic Menu into an expandable dropdown menu with the Dropdown Menu plugin.",
+    "link": "dropdown-menu.html",
+    "tags": []
+  },
+  {
+    "type": "component",
+    "name": "Drilldown Menu",
+    "description": "Drilldown is one of Foundation's three menu patterns, which converts a series of nested lists into a vertical drilldown menu.",
+    "link": "drilldown-menu.html",
+    "tags": []
+  },
+  {
+    "type": "component",
+    "name": "Close Button",
+    "description": "The humble close button can be used anywhere you need something to go away on click.",
+    "link": "close-button.html",
+    "tags": []
+  },
+  {
+    "type": "component",
+    "name": "Callout",
+    "description": "Callouts combine panels and alerts from Foundation 5 into one generic container component.",
+    "link": "callout.html",
+    "tags": [
+      "panel",
+      "alert"
+    ]
+  },
+  {
+    "type": "component",
+    "name": "Button",
+    "description": "Buttons are convenient tools when you need more traditional actions. To that end, Foundation has many easy to use button styles that you can customize or override to fit your needs.",
+    "link": "button.html",
+    "tags": [
+      "dropdown button"
+    ]
+  },
+  {
+    "type": "component",
+    "name": "Button Group",
+    "description": "Button groups are containers for related action items. They're great when you need to display a group of actions in a bar. These build off the button styles and work perfectly with the grid.",
+    "link": "button-group.html",
+    "tags": [
+      "split button"
+    ]
+  },
+  {
+    "type": "component",
+    "name": "Breadcrumbs",
+    "description": "Breadcrumbs come in handy to show a navigation trail for users clicking through your site.",
+    "link": "breadcrumbs.html",
+    "tags": []
+  },
+  {
+    "type": "component",
+    "name": "Base Typography",
+    "description": "Typography in Foundation 6 is meant to make your life easier by providing clean, attractive, simple default styles for all of the most basic typographical elements.",
+    "link": "base-typography.html",
+    "tags": [
+      "paragraph",
+      "heading",
+      "link",
+      "definition",
+      "blockquote",
+      "abbreviation",
+      "acronym",
+      "code",
+      "keystroke"
+    ]
+  },
+  {
+    "type": "component",
+    "name": "Badge",
+    "description": "The badge is a basic component that displays a number. It's useful for calling out a number of unread items.",
+    "link": "badge.html",
+    "tags": []
+  },
+  {
+    "name": "$input-font-size",
+    "type": "sass variable",
+    "description": "Font size of text inputs.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$code-font-weight",
+    "type": "sass variable",
+    "description": "Font weight of text in code samples.",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$code-background",
+    "type": "sass variable",
+    "description": "Background color of code samples.",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$badge-background",
+    "type": "sass variable",
+    "description": "Default background color for badges.",
+    "link": "badge.html#sass-variables"
+  },
+  {
+    "name": "$badge-color",
+    "type": "sass variable",
+    "description": "Default text color for badges.",
+    "link": "badge.html#sass-variables"
+  },
+  {
+    "name": "$badge-padding",
+    "type": "sass variable",
+    "description": "Default padding inside badges.",
+    "link": "badge.html#sass-variables"
+  },
+  {
+    "name": "$badge-minwidth",
+    "type": "sass variable",
+    "description": "Minimum width of a badge.",
+    "link": "badge.html#sass-variables"
+  },
+  {
+    "name": "$badge-font-size",
+    "type": "sass variable",
+    "description": "Default font size for badges.",
+    "link": "badge.html#sass-variables"
+  },
+  {
+    "name": "$code-border",
+    "type": "sass variable",
+    "description": "Border around code samples.",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$print-transparent-backgrounds",
+    "type": "sass variable",
+    "description": "If true`, all elements will have transparent backgrounds when printed, to save on ink.\n",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$header-font-family",
+    "type": "sass variable",
+    "description": "Font family for header elements.",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$header-font-weight",
+    "type": "sass variable",
+    "description": "Font weight of headers.",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$header-font-style",
+    "type": "sass variable",
+    "description": "Font style (e.g. italicized) of headers.",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$font-family-monospace",
+    "type": "sass variable",
+    "description": "Font stack used for elements that use monospaced type, such as code samples",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$header-sizes",
+    "type": "sass variable",
+    "description": "Sizes of headings at various screen sizes. Each key is a breakpoint, and each value is a map of heading sizes.",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$header-color",
+    "type": "sass variable",
+    "description": "Color of headers.",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$header-lineheight",
+    "type": "sass variable",
+    "description": "Line height of headers.",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$header-margin-bottom",
+    "type": "sass variable",
+    "description": "Bottom margin of headers.",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$header-text-rendering",
+    "type": "sass variable",
+    "description": "Text rendering method of headers.",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$small-font-size",
+    "type": "sass variable",
+    "description": "Font size of &lt;small&gt;` elements.\n",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$header-small-font-color",
+    "type": "sass variable",
+    "description": "Color of &lt;small&gt;` elements when placed inside headers.\n",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$paragraph-lineheight",
+    "type": "sass variable",
+    "description": "Line height of text inside &lt;p&gt;` elements.\n",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$paragraph-margin-bottom",
+    "type": "sass variable",
+    "description": "Bottom margin of paragraphs.",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$paragraph-text-rendering",
+    "type": "sass variable",
+    "description": "Text rendering method for paragraph text.",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$code-color",
+    "type": "sass variable",
+    "description": "Text color of code samples.",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$code-font-family",
+    "type": "sass variable",
+    "description": "Font family of code samples.",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$code-font-weight",
+    "type": "sass variable",
+    "description": "Font weight of text in code samples.",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$code-background",
+    "type": "sass variable",
+    "description": "Background color of code samples.",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$code-border",
+    "type": "sass variable",
+    "description": "Border around code samples.",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$code-padding",
+    "type": "sass variable",
+    "description": "Padding around text of code samples.",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$anchor-color",
+    "type": "sass variable",
+    "description": "Default color for links.",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$anchor-color-hover",
+    "type": "sass variable",
+    "description": "Default color for links on hover.",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$anchor-text-decoration",
+    "type": "sass variable",
+    "description": "Default text deocration for links.",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$anchor-text-decoration-hover",
+    "type": "sass variable",
+    "description": "Default text decoration for links on hover.",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$hr-width",
+    "type": "sass variable",
+    "description": "Maximum width of a divider.",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$hr-border",
+    "type": "sass variable",
+    "description": "Default border for a divider.",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$hr-margin",
+    "type": "sass variable",
+    "description": "Default margin for a divider.",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$list-lineheight",
+    "type": "sass variable",
+    "description": "Line height for items in a list.",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$list-margin-bottom",
+    "type": "sass variable",
+    "description": "Bottom margin for items in a list.",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$list-style-type",
+    "type": "sass variable",
+    "description": "Bullet type to use for unordered lists (e.g., square`, `circle`, `disc`).\n",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$list-style-position",
+    "type": "sass variable",
+    "description": "Positioning for bullets on unordered list items.",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$list-side-margin",
+    "type": "sass variable",
+    "description": "Left (or right) margin for lists.",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$list-nested-side-margin",
+    "type": "sass variable",
+    "description": "Left (or right) margin for a list inside a list.",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$defnlist-margin-bottom",
+    "type": "sass variable",
+    "description": "Bottom margin for &lt;dl&gt;` elements.\n",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$defnlist-term-weight",
+    "type": "sass variable",
+    "description": "Font weight for &lt;dt&gt;` elements.\n",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$defnlist-term-margin-bottom",
+    "type": "sass variable",
+    "description": "Spacing between &lt;dt&gt;` and `&lt;dd&gt;` elements.\n",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$blockquote-color",
+    "type": "sass variable",
+    "description": "Text color of &lt;blockquote&gt;` elements.\n",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$blockquote-padding",
+    "type": "sass variable",
+    "description": "Padding inside a &lt;blockquote&gt;` element.\n",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$blockquote-border",
+    "type": "sass variable",
+    "description": "Side border for &lt;blockquote&gt;` elements.\n",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$cite-font-size",
+    "type": "sass variable",
+    "description": "Font size for &lt;cite&gt;` elements.\n",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$cite-color",
+    "type": "sass variable",
+    "description": "Text color for &lt;cite&gt;` elements.\n",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$keystroke-font",
+    "type": "sass variable",
+    "description": "Font family for &lt;kbd&gt;` elements.\n",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$keystroke-color",
+    "type": "sass variable",
+    "description": "Text color for &lt;kbd&gt;` elements.\n",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$keystroke-background",
+    "type": "sass variable",
+    "description": "Background color for &lt;kbd&gt;` elements.\n",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$keystroke-padding",
+    "type": "sass variable",
+    "description": "Padding for &lt;kbd&gt;` elements.\n",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$keystroke-radius",
+    "type": "sass variable",
+    "description": "Border radius for &lt;kbd&gt;` elements.\n",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$abbr-underline",
+    "type": "sass variable",
+    "description": "Bottom border style for &lt;abbr&gt;` elements.\n",
+    "link": "base-typography.html#sass-variables"
+  },
+  {
+    "name": "$code-padding",
+    "type": "sass variable",
+    "description": "Padding around text of code samples.",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$breadcrumbs-margin",
+    "type": "sass variable",
+    "description": "Margin around a breadcrumbs container.",
+    "link": "breadcrumbs.html#sass-variables"
+  },
+  {
+    "name": "$breadcrumbs-item-font-size",
+    "type": "sass variable",
+    "description": "Font size of breadcrumb links.",
+    "link": "breadcrumbs.html#sass-variables"
+  },
+  {
+    "name": "$breadcrumbs-item-color",
+    "type": "sass variable",
+    "description": "Color of breadcrumb links.",
+    "link": "breadcrumbs.html#sass-variables"
+  },
+  {
+    "name": "$breadcrumbs-item-color-current",
+    "type": "sass variable",
+    "description": "Color of the active breadcrumb link.",
+    "link": "breadcrumbs.html#sass-variables"
+  },
+  {
+    "name": "$breadcrumbs-item-color-disabled",
+    "type": "sass variable",
+    "description": "Opacity of disabled breadcrumb links.",
+    "link": "breadcrumbs.html#sass-variables"
+  },
+  {
+    "name": "$breadcrumbs-item-margin",
+    "type": "sass variable",
+    "description": "Margin between breadcrumb items.",
+    "link": "breadcrumbs.html#sass-variables"
+  },
+  {
+    "name": "$breadcrumbs-item-uppercase",
+    "type": "sass variable",
+    "description": "If true`, makes breadcrumb links uppercase.\n",
+    "link": "breadcrumbs.html#sass-variables"
+  },
+  {
+    "name": "$breadcrumbs-item-slash",
+    "type": "sass variable",
+    "description": "If true`, adds a slash between breadcrumb links.\n",
+    "link": "breadcrumbs.html#sass-variables"
+  },
+  {
+    "name": "$anchor-color",
+    "type": "sass variable",
+    "description": "Default color for links.",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$buttongroup-margin",
+    "type": "sass variable",
+    "description": "Margin for button groups.",
+    "link": "button-group.html#sass-variables"
+  },
+  {
+    "name": "$buttongroup-spacing",
+    "type": "sass variable",
+    "description": "Margin between buttons in a button group.",
+    "link": "button-group.html#sass-variables"
+  },
+  {
+    "name": "$buttongroup-child-selector",
+    "type": "sass variable",
+    "description": "Selector for the buttons inside a button group.",
+    "link": "button-group.html#sass-variables"
+  },
+  {
+    "name": "$buttongroup-expand-max",
+    "type": "sass variable",
+    "description": "Maximum number of buttons that can be in an even-width button group.",
+    "link": "button-group.html#sass-variables"
+  },
+  {
+    "name": "$anchor-color-hover",
+    "type": "sass variable",
+    "description": "Default color for links on hover.",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$button-padding",
+    "type": "sass variable",
+    "description": "Padding inside buttons.",
+    "link": "button.html#sass-variables"
+  },
+  {
+    "name": "$button-margin",
+    "type": "sass variable",
+    "description": "Margin around buttons.",
+    "link": "button.html#sass-variables"
+  },
+  {
+    "name": "$button-fill",
+    "type": "sass variable",
+    "description": "Default fill for buttons. Can either be solid` or `hollow`.\n",
+    "link": "button.html#sass-variables"
+  },
+  {
+    "name": "$button-background",
+    "type": "sass variable",
+    "description": "Default background color for buttons.",
+    "link": "button.html#sass-variables"
+  },
+  {
+    "name": "$button-background-hover",
+    "type": "sass variable",
+    "description": "Background color on hover for buttons.",
+    "link": "button.html#sass-variables"
+  },
+  {
+    "name": "$button-color",
+    "type": "sass variable",
+    "description": "Font color for buttons.",
+    "link": "button.html#sass-variables"
+  },
+  {
+    "name": "$button-color-alt",
+    "type": "sass variable",
+    "description": "Font color for buttons, if the background is light.",
+    "link": "button.html#sass-variables"
+  },
+  {
+    "name": "$button-radius",
+    "type": "sass variable",
+    "description": "Border radius for buttons, defaulted to global-radius.",
+    "link": "button.html#sass-variables"
+  },
+  {
+    "name": "$button-sizes",
+    "type": "sass variable",
+    "description": "Sizes for buttons.",
+    "link": "button.html#sass-variables"
+  },
+  {
+    "name": "$button-opacity-disabled",
+    "type": "sass variable",
+    "description": "opacity for a disabled button.",
+    "link": "button.html#sass-variables"
+  },
+  {
+    "name": "$anchor-text-decoration",
+    "type": "sass variable",
+    "description": "Default text deocration for links.",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$callout-background",
+    "type": "sass variable",
+    "description": "Default background color.",
+    "link": "callout.html#sass-variables"
+  },
+  {
+    "name": "$callout-background-fade",
+    "type": "sass variable",
+    "description": "Default fade value for callout backgrounds.",
+    "link": "callout.html#sass-variables"
+  },
+  {
+    "name": "$callout-border",
+    "type": "sass variable",
+    "description": "Default border style for callouts.",
+    "link": "callout.html#sass-variables"
+  },
+  {
+    "name": "$callout-margin",
+    "type": "sass variable",
+    "description": "Default bottom margin for callouts.",
+    "link": "callout.html#sass-variables"
+  },
+  {
+    "name": "$callout-padding",
+    "type": "sass variable",
+    "description": "Default inner padding for callouts.",
+    "link": "callout.html#sass-variables"
+  },
+  {
+    "name": "$callout-font-color",
+    "type": "sass variable",
+    "description": "Default font color for callouts.",
+    "link": "callout.html#sass-variables"
+  },
+  {
+    "name": "$callout-font-color-alt",
+    "type": "sass variable",
+    "description": "Default font color for callouts, if the callout has a dark background.",
+    "link": "callout.html#sass-variables"
+  },
+  {
+    "name": "$callout-radius",
+    "type": "sass variable",
+    "description": "Default border radius for callouts.",
+    "link": "callout.html#sass-variables"
+  },
+  {
+    "name": "$callout-link-tint",
+    "type": "sass variable",
+    "description": "Amount to tint links used within colored panels. Set to false` to disable this feature.\n",
+    "link": "callout.html#sass-variables"
+  },
+  {
+    "name": "$anchor-text-decoration-hover",
+    "type": "sass variable",
+    "description": "Default text decoration for links on hover.",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$closebutton-position",
+    "type": "sass variable",
+    "description": "Default position of the close button. The first value should be right` or `left`, and the second value should be `top` or `bottom`.\n",
+    "link": "close-button.html#sass-variables"
+  },
+  {
+    "name": "$closebutton-offset-horizontal",
+    "type": "sass variable",
+    "description": "Right (or left) offset for a close button.",
+    "link": "close-button.html#sass-variables"
+  },
+  {
+    "name": "$closebutton-offset-vertical",
+    "type": "sass variable",
+    "description": "Top (or bottom) offset for a close button.",
+    "link": "close-button.html#sass-variables"
+  },
+  {
+    "name": "$closebutton-size",
+    "type": "sass variable",
+    "description": "Default font size of the close button.",
+    "link": "close-button.html#sass-variables"
+  },
+  {
+    "name": "$closebutton-lineheight",
+    "type": "sass variable",
+    "description": "The line-height of the close button. It affects the spacing of the element.",
+    "link": "close-button.html#sass-variables"
+  },
+  {
+    "name": "$closebutton-color",
+    "type": "sass variable",
+    "description": "Default color of the close button.",
+    "link": "close-button.html#sass-variables"
+  },
+  {
+    "name": "$closebutton-color-hover",
+    "type": "sass variable",
+    "description": "Default color of the close button when being hovered on.",
+    "link": "close-button.html#sass-variables"
+  },
+  {
+    "name": "$subheader-lineheight",
+    "type": "sass variable",
+    "description": "Default line height for subheaders.",
+    "link": "typography-helpers.html#sass-variables"
+  },
+  {
+    "name": "$hr-width",
+    "type": "sass variable",
+    "description": "Maximum width of a divider.",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$code-color",
+    "type": "sass variable",
+    "description": "Text color of code samples.",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$paragraph-text-rendering",
+    "type": "sass variable",
+    "description": "Text rendering method for paragraph text.",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$paragraph-margin-bottom",
+    "type": "sass variable",
+    "description": "Bottom margin of paragraphs.",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$paragraph-lineheight",
+    "type": "sass variable",
+    "description": "Line height of text inside &lt;p&gt;` elements.\n",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$header-small-font-color",
+    "type": "sass variable",
+    "description": "Color of &lt;small&gt;` elements when placed inside headers.\n",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$small-font-size",
+    "type": "sass variable",
+    "description": "Font size of &lt;small&gt;` elements.\n",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$header-text-rendering",
+    "type": "sass variable",
+    "description": "Text rendering method of headers.",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$header-margin-bottom",
+    "type": "sass variable",
+    "description": "Bottom margin of headers.",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$header-lineheight",
+    "type": "sass variable",
+    "description": "Line height of headers.",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$header-color",
+    "type": "sass variable",
+    "description": "Color of headers.",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$header-sizes",
+    "type": "sass variable",
+    "description": "Sizes of headings at various screen sizes. Each key is a breakpoint, and each value is a map of heading sizes.",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$font-family-monospace",
+    "type": "sass variable",
+    "description": "Font stack used for elements that use monospaced type, such as code samples",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$header-font-style",
+    "type": "sass variable",
+    "description": "Font style (e.g. italicized) of headers.",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$accordion-content-padding",
+    "type": "sass variable",
+    "description": "Default padding for tab content.",
+    "link": "accordion.html#sass-variables"
+  },
+  {
+    "name": "$dropdownmenu-arrows",
+    "type": "sass variable",
+    "description": "Enables arrows for items with dropdown menus.",
+    "link": "dropdown-menu.html#sass-variables"
+  },
+  {
+    "name": "$dropdownmenu-arrow-color",
+    "type": "sass variable",
+    "description": "Sets dropdown menu arrow color if arrow is used.",
+    "link": "dropdown-menu.html#sass-variables"
+  },
+  {
+    "name": "$dropdownmenu-min-width",
+    "type": "sass variable",
+    "description": "Minimum width of dropdown sub-menus.",
+    "link": "dropdown-menu.html#sass-variables"
+  },
+  {
+    "name": "$dropdownmenu-background",
+    "type": "sass variable",
+    "description": "Background color for dropdowns.",
+    "link": "dropdown-menu.html#sass-variables"
+  },
+  {
+    "name": "$dropdownmenu-border",
+    "type": "sass variable",
+    "description": "Border for dropdown sub-menus.",
+    "link": "dropdown-menu.html#sass-variables"
+  },
+  {
+    "name": "$header-font-weight",
+    "type": "sass variable",
+    "description": "Font weight of headers.",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$header-font-family",
+    "type": "sass variable",
+    "description": "Font family for header elements.",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$print-transparent-backgrounds",
+    "type": "sass variable",
+    "description": "If true`, all elements will have transparent backgrounds when printed, to save on ink.\n",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$accordion-content-color",
+    "type": "sass variable",
+    "description": "Default text color of tab content.",
+    "link": "accordion.html#sass-variables"
+  },
+  {
+    "name": "$topbar-unstack-breakpoint",
+    "type": "sass variable",
+    "description": "Breakpoint at which top bar switches from mobile to desktop view.",
+    "link": "top-bar.html#sass-variables"
+  },
+  {
+    "name": "$topbar-input-width",
+    "type": "sass variable",
+    "description": "Maximum width of &lt;input&gt;` elements inside the top bar.\n",
+    "link": "top-bar.html#sass-variables"
+  },
+  {
+    "name": "$topbar-title-spacing",
+    "type": "sass variable",
+    "description": "Spacing for the top bar title.",
+    "link": "top-bar.html#sass-variables"
+  },
+  {
+    "name": "$topbar-submenu-background",
+    "type": "sass variable",
+    "description": "Background color submenus within the top bar. Usefull if $topbar-background is transparent.",
+    "link": "top-bar.html#sass-variables"
+  },
+  {
+    "name": "$topbar-background",
+    "type": "sass variable",
+    "description": "Background color for the top bar. This color also cascades to menus within the top bar.",
+    "link": "top-bar.html#sass-variables"
+  },
+  {
+    "name": "$topbar-padding",
+    "type": "sass variable",
+    "description": "Padding for the top bar.",
+    "link": "top-bar.html#sass-variables"
+  },
+  {
+    "name": "$accordion-content-border",
+    "type": "sass variable",
+    "description": "Default border color of tab content.",
+    "link": "accordion.html#sass-variables"
+  },
+  {
+    "name": "$accordion-content-background",
+    "type": "sass variable",
+    "description": "Default background color of tab content.",
+    "link": "accordion.html#sass-variables"
+  },
+  {
+    "name": "$dropdown-padding",
+    "type": "sass variable",
+    "description": "Padding for dropdown panes.",
+    "link": "dropdown.html#sass-variables"
+  },
+  {
+    "name": "$dropdown-border",
+    "type": "sass variable",
+    "description": "Border for dropdown panes.",
+    "link": "dropdown.html#sass-variables"
+  },
+  {
+    "name": "$dropdown-font-size",
+    "type": "sass variable",
+    "description": "Font size for dropdown panes.",
+    "link": "dropdown.html#sass-variables"
+  },
+  {
+    "name": "$dropdown-width",
+    "type": "sass variable",
+    "description": "Width for dropdown panes.",
+    "link": "dropdown.html#sass-variables"
+  },
+  {
+    "name": "$dropdown-radius",
+    "type": "sass variable",
+    "description": "Border radius dropdown panes.",
+    "link": "dropdown.html#sass-variables"
+  },
+  {
+    "name": "$dropdown-sizes",
+    "type": "sass variable",
+    "description": "Sizes for dropdown panes. Each size is a CSS class you can apply.",
+    "link": "dropdown.html#sass-variables"
+  },
+  {
+    "name": "$tooltip-radius",
+    "type": "sass variable",
+    "description": "Default radius for tooltips.",
+    "link": "tooltip.html#sass-variables"
+  },
+  {
+    "name": "$tooltip-pip-height",
+    "type": "sass variable",
+    "description": "Default pip height for tooltips. This is helpful for calculating the distance of the tooltip from the tooltip word.",
+    "link": "tooltip.html#sass-variables"
+  },
+  {
+    "name": "$tooltip-pip-width",
+    "type": "sass variable",
+    "description": "Default pip width for tooltips.",
+    "link": "tooltip.html#sass-variables"
+  },
+  {
+    "name": "$tooltip-font-size",
+    "type": "sass variable",
+    "description": "Default font size of the tooltip text. By default, we recommend a smaller font size than the body copy.",
+    "link": "tooltip.html#sass-variables"
+  },
+  {
+    "name": "$tooltip-padding",
+    "type": "sass variable",
+    "description": "Default padding of the tooltip background.",
+    "link": "tooltip.html#sass-variables"
+  },
+  {
+    "name": "$tooltip-color",
+    "type": "sass variable",
+    "description": "Default color of the tooltip font.",
+    "link": "tooltip.html#sass-variables"
+  },
+  {
+    "name": "$tooltip-background-color",
+    "type": "sass variable",
+    "description": "Default color of the tooltip background.",
+    "link": "tooltip.html#sass-variables"
+  },
+  {
+    "name": "$has-tip-border-bottom",
+    "type": "sass variable",
+    "description": "Default border bottom of the defined term.",
+    "link": "tooltip.html#sass-variables"
+  },
+  {
+    "name": "$has-tip-font-weight",
+    "type": "sass variable",
+    "description": "Default font weight of the defined term.",
+    "link": "tooltip.html#sass-variables"
+  },
+  {
+    "name": "$accordion-item-padding",
+    "type": "sass variable",
+    "description": "Default padding of an accordion item.",
+    "link": "accordion.html#sass-variables"
+  },
+  {
+    "name": "$accordion-item-background-hover",
+    "type": "sass variable",
+    "description": "Default background color on hover for items in a Menu.",
+    "link": "accordion.html#sass-variables"
+  },
+  {
+    "name": "$thumbnail-radius",
+    "type": "sass variable",
+    "description": "Default radius for thumbnail images.",
+    "link": "thumbnail.html#sass-variables"
+  },
+  {
+    "name": "$thumbnail-transition",
+    "type": "sass variable",
+    "description": "Transition proprties for thumbnail images.",
+    "link": "thumbnail.html#sass-variables"
+  },
+  {
+    "name": "$thumbnail-shadow-hover",
+    "type": "sass variable",
+    "description": "Box shadow under thumbnail images.",
+    "link": "thumbnail.html#sass-variables"
+  },
+  {
+    "name": "$thumbnail-shadow",
+    "type": "sass variable",
+    "description": "Box shadow under thumbnail images.",
+    "link": "thumbnail.html#sass-variables"
+  },
+  {
+    "name": "$thumbnail-margin-bottom",
+    "type": "sass variable",
+    "description": "Bottom margin for thumbnail images.",
+    "link": "thumbnail.html#sass-variables"
+  },
+  {
+    "name": "$accordion-item-color",
+    "type": "sass variable",
+    "description": "Default text color for items in a Menu.",
+    "link": "accordion.html#sass-variables"
+  },
+  {
+    "name": "$thumbnail-border",
+    "type": "sass variable",
+    "description": "Border around thumbnail images.",
+    "link": "thumbnail.html#sass-variables"
+  },
+  {
+    "name": "$accordion-plusminus",
+    "type": "sass variable",
+    "description": "If true`, adds plus and minus icons to the side of each accordion title.\n",
+    "link": "accordion.html#sass-variables"
+  },
+  {
+    "name": "$tab-content-padding",
+    "type": "sass variable",
+    "description": "Default padding for tab content.",
+    "link": "tabs.html#sass-variables"
+  },
+  {
+    "name": "$tab-content-color",
+    "type": "sass variable",
+    "description": "Default text color of tab content.",
+    "link": "tabs.html#sass-variables"
+  },
+  {
+    "name": "$tab-content-border",
+    "type": "sass variable",
+    "description": "Default border color of tab content.",
+    "link": "tabs.html#sass-variables"
+  },
+  {
+    "name": "$tab-content-background",
+    "type": "sass variable",
+    "description": "Default background color of tab content.",
+    "link": "tabs.html#sass-variables"
+  },
+  {
+    "name": "$tab-expand-max",
+    "type": "sass variable",
+    "description": "Maximum number of expand-n` classes to include in the CSS.\n",
+    "link": "tabs.html#sass-variables"
+  },
+  {
+    "name": "$subheader-color",
+    "type": "sass variable",
+    "description": "Default font color for subheaders.",
+    "link": "typography-helpers.html#sass-variables"
+  },
+  {
+    "name": "$tab-item-padding",
+    "type": "sass variable",
+    "description": "Default padding of a tab item.",
+    "link": "tabs.html#sass-variables"
+  },
+  {
+    "name": "$accordion-background",
+    "type": "sass variable",
+    "description": "Default background color of an accordion group.",
+    "link": "accordion.html#sass-variables"
+  },
+  {
+    "name": "$flexvideo-margin-bottom",
+    "type": "sass variable",
+    "description": "Margin below a flex video container.",
+    "link": "flex-video.html#sass-variables"
+  },
+  {
+    "name": "$flexvideo-ratio",
+    "type": "sass variable",
+    "description": "Padding used to create a 4:3 aspect ratio.",
+    "link": "flex-video.html#sass-variables"
+  },
+  {
+    "name": "$flexvideo-ratio-widescreen",
+    "type": "sass variable",
+    "description": "Padding used to create a 16:9 aspect ratio.",
+    "link": "flex-video.html#sass-variables"
+  },
+  {
+    "name": "$tab-item-background-hover",
+    "type": "sass variable",
+    "description": "Default background color on hover for items in a Menu.",
+    "link": "tabs.html#sass-variables"
+  },
+  {
+    "name": "$hr-border",
+    "type": "sass variable",
+    "description": "Default border for a divider.",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$subheader-font-weight",
+    "type": "sass variable",
+    "description": "Default font weight for subheaders.",
+    "link": "typography-helpers.html#sass-variables"
+  },
+  {
+    "name": "$hr-margin",
+    "type": "sass variable",
+    "description": "Default margin for a divider.",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$fieldset-border",
+    "type": "sass variable",
+    "description": "Default border around custom fieldsets.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$fieldset-padding",
+    "type": "sass variable",
+    "description": "Default padding inside custom fieldsets.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$fieldset-margin",
+    "type": "sass variable",
+    "description": "Default margin around custom fieldsets.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$legend-padding",
+    "type": "sass variable",
+    "description": "Default padding between the legend text and fieldset border.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$form-spacing",
+    "type": "sass variable",
+    "description": "Global spacing for form elements.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$helptext-color",
+    "type": "sass variable",
+    "description": "Default color for help text.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$helptext-font-size",
+    "type": "sass variable",
+    "description": "Default font size for help text.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$helptext-font-style",
+    "type": "sass variable",
+    "description": "Default font style for help text.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$input-prefix-color",
+    "type": "sass variable",
+    "description": "Color of labels prefixed to an input.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$input-prefix-background",
+    "type": "sass variable",
+    "description": "Background color of labels prefixed to an input.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$input-prefix-border",
+    "type": "sass variable",
+    "description": "Border around labels prefixed to an input.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$input-prefix-padding",
+    "type": "sass variable",
+    "description": "Left/right padding of an pre/postfixed input label",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$form-label-color",
+    "type": "sass variable",
+    "description": "Color for form labels.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$form-label-font-size",
+    "type": "sass variable",
+    "description": "Font size for form labels.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$form-label-font-weight",
+    "type": "sass variable",
+    "description": "Font weight for form labels.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$form-label-line-height",
+    "type": "sass variable",
+    "description": "Line height for form labels. The higher the number, the more space between the label and its input field.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$select-background",
+    "type": "sass variable",
+    "description": "Background color for select menus.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$select-triangle-color",
+    "type": "sass variable",
+    "description": "Color of the dropdown triangle inside select menus. Set to transparent` to remove it entirely.\n",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$select-radius",
+    "type": "sass variable",
+    "description": "Default radius for select menus.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$input-color",
+    "type": "sass variable",
+    "description": "Font color of text inputs.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$input-placeholder-color",
+    "type": "sass variable",
+    "description": "Font color of placeholder text within text inputs.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$input-font-family",
+    "type": "sass variable",
+    "description": "Font family of text inputs.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$code-font-family",
+    "type": "sass variable",
+    "description": "Font family of code samples.",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$input-background",
+    "type": "sass variable",
+    "description": "Background color of text inputs.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$input-background-focus",
+    "type": "sass variable",
+    "description": "Background color of focused of text inputs.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$input-background-disabled",
+    "type": "sass variable",
+    "description": "Background color of disabled text inputs.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$input-border",
+    "type": "sass variable",
+    "description": "Border around text inputs.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$input-border-focus",
+    "type": "sass variable",
+    "description": "Border around focused text inputs.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$input-shadow",
+    "type": "sass variable",
+    "description": "Box shadow inside text inputs when not focused.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$input-shadow-focus",
+    "type": "sass variable",
+    "description": "Box shadow outside text inputs when focused.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$input-cursor-disabled",
+    "type": "sass variable",
+    "description": "Cursor to use when hovering over a disabled text input.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$input-transition",
+    "type": "sass variable",
+    "description": "Properties to transition on text inputs.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$input-number-spinners",
+    "type": "sass variable",
+    "description": "Enables the up/down buttons that Chrome and Firefox add to &lt;input type=&#39;number&#39;&gt;` elements.\n",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$input-radius",
+    "type": "sass variable",
+    "description": "Radius for text inputs.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$meter-height",
+    "type": "sass variable",
+    "description": "Height of a &lt;meter&gt;` element.\n",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$meter-radius",
+    "type": "sass variable",
+    "description": "Border radius of a &lt;meter&gt;` element.\n",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$meter-background",
+    "type": "sass variable",
+    "description": "Background color of a &lt;meter&gt;` element.\n",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$meter-fill-good",
+    "type": "sass variable",
+    "description": "Meter fill for an optimal value in a &lt;meter&gt;` element.\n",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$meter-fill-medium",
+    "type": "sass variable",
+    "description": "Meter fill for an average value in a &lt;meter&gt;` element.\n",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$meter-fill-bad",
+    "type": "sass variable",
+    "description": "Meter fill for a suboptimal value in a &lt;meter&gt;` element.\n",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$progress-height",
+    "type": "sass variable",
+    "description": "Height of a progress bar.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$progress-background",
+    "type": "sass variable",
+    "description": "Background color of a progress bar.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$progress-margin-bottom",
+    "type": "sass variable",
+    "description": "Bottom margin of a progress bar.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$progress-meter-background",
+    "type": "sass variable",
+    "description": "Default color of a progress bar&#39;s meter.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$progress-radius",
+    "type": "sass variable",
+    "description": "Default radius of a progress bar.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$slider-height",
+    "type": "sass variable",
+    "description": "Default height of the slider.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$slider-background",
+    "type": "sass variable",
+    "description": "Default background color of the slider&#39;s track.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$slider-fill-background",
+    "type": "sass variable",
+    "description": "Default color of the active fill color of the slider.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$slider-handle-height",
+    "type": "sass variable",
+    "description": "Default height of the handle of the slider.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$slider-handle-width",
+    "type": "sass variable",
+    "description": "Default width of the handle of the slider.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$slider-handle-background",
+    "type": "sass variable",
+    "description": "Default color of the handle for the slider.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$slider-opacity-disabled",
+    "type": "sass variable",
+    "description": "Default fade amount of a disabled slider.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$slider-radius",
+    "type": "sass variable",
+    "description": "Default radius for slider.",
+    "link": "forms.html#sass-variables"
+  },
+  {
+    "name": "$list-lineheight",
+    "type": "sass variable",
+    "description": "Line height for items in a list.",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$global-font-size",
+    "type": "sass variable",
+    "description": "Font size attribute applied to &lt;html&gt;` and `&lt;body&gt;`. We use 100% by default so the value is inherited from the user&#39;s browser settings.\n",
+    "link": "global.html#sass-variables"
+  },
+  {
+    "name": "$global-width",
+    "type": "sass variable",
+    "description": "Global width of your site. Used by the grid to determine row width.",
+    "link": "global.html#sass-variables"
+  },
+  {
+    "name": "$global-lineheight",
+    "type": "sass variable",
+    "description": "Default line height for all type. $global-lineheight` is 24px while `$global-font-size` is 16px\n",
+    "link": "global.html#sass-variables"
+  },
+  {
+    "name": "$foundation-palette",
+    "type": "sass variable",
+    "description": "Colors used for buttons, callouts, links, etc. There must always be a color called primary`.\n",
+    "link": "global.html#sass-variables"
+  },
+  {
+    "name": "$light-gray",
+    "type": "sass variable",
+    "description": "Color used for light gray UI items.",
+    "link": "global.html#sass-variables"
+  },
+  {
+    "name": "$medium-gray",
+    "type": "sass variable",
+    "description": "Color used for medium gray UI items.",
+    "link": "global.html#sass-variables"
+  },
+  {
+    "name": "$dark-gray",
+    "type": "sass variable",
+    "description": "Color used for dark gray UI items.",
+    "link": "global.html#sass-variables"
+  },
+  {
+    "name": "$black",
+    "type": "sass variable",
+    "description": "Color used for black ui items.",
+    "link": "global.html#sass-variables"
+  },
+  {
+    "name": "$white",
+    "type": "sass variable",
+    "description": "Color used for white ui items.",
+    "link": "global.html#sass-variables"
+  },
+  {
+    "name": "$body-background",
+    "type": "sass variable",
+    "description": "Background color of the body.",
+    "link": "global.html#sass-variables"
+  },
+  {
+    "name": "$body-font-color",
+    "type": "sass variable",
+    "description": "Text color of the body.",
+    "link": "global.html#sass-variables"
+  },
+  {
+    "name": "$body-font-family",
+    "type": "sass variable",
+    "description": "Font stack of the body.",
+    "link": "global.html#sass-variables"
+  },
+  {
+    "name": "$body-antialiased",
+    "type": "sass variable",
+    "description": "Set to true` to enable antialiased type, using the `-webkit-font-smoothing` and `-moz-osx-font-smoothing` CSS properties.\n",
+    "link": "global.html#sass-variables"
+  },
+  {
+    "name": "$global-margin",
+    "type": "sass variable",
+    "description": "Global value used for margin on components.",
+    "link": "global.html#sass-variables"
+  },
+  {
+    "name": "$global-padding",
+    "type": "sass variable",
+    "description": "Global value used for padding on components.",
+    "link": "global.html#sass-variables"
+  },
+  {
+    "name": "$global-weight-normal",
+    "type": "sass variable",
+    "description": "Global font weight used for normal type.",
+    "link": "global.html#sass-variables"
+  },
+  {
+    "name": "$global-weight-bold",
+    "type": "sass variable",
+    "description": "Global font weight used for bold type.",
+    "link": "global.html#sass-variables"
+  },
+  {
+    "name": "$global-radius",
+    "type": "sass variable",
+    "description": "Global value used for all elements that have a border radius.",
+    "link": "global.html#sass-variables"
+  },
+  {
+    "name": "$global-text-direction",
+    "type": "sass variable",
+    "description": "Sets the text direction of the CSS. Can be either ltr` or `rtl`.\n",
+    "link": "global.html#sass-variables"
+  },
+  {
+    "name": "$global-flexbox",
+    "type": "sass variable",
+    "description": "Enables flexbox for components that support it.",
+    "link": "global.html#sass-variables"
+  },
+  {
+    "name": "$list-margin-bottom",
+    "type": "sass variable",
+    "description": "Bottom margin for items in a list.",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$grid-row-width",
+    "type": "sass variable",
+    "description": "The maximum width of a row.",
+    "link": "grid.html#sass-variables"
+  },
+  {
+    "name": "$grid-column-count",
+    "type": "sass variable",
+    "description": "The default column count of a grid. Changing this value affects the logic of the grid mixins, and the number of CSS classes output.",
+    "link": "grid.html#sass-variables"
+  },
+  {
+    "name": "$grid-column-gutter",
+    "type": "sass variable",
+    "description": "The amount of space between columns at different screen sizes. To use just one size, set the variable to a number instead of a map.",
+    "link": "grid.html#sass-variables"
+  },
+  {
+    "name": "$grid-column-align-edge",
+    "type": "sass variable",
+    "description": "If true`, the last column in a row will align to the opposite edge of the row.\n",
+    "link": "grid.html#sass-variables"
+  },
+  {
+    "name": "$block-grid-max",
+    "type": "sass variable",
+    "description": "The highest number of .x-up` classes available when using the block grid CSS.\n",
+    "link": "grid.html#sass-variables"
+  },
+  {
+    "name": "$tab-item-font-size",
+    "type": "sass variable",
+    "description": "Font size of tab items.",
+    "link": "tabs.html#sass-variables"
+  },
+  {
+    "name": "$tab-background-active",
+    "type": "sass variable",
+    "description": "active background color of a tab bar.",
+    "link": "tabs.html#sass-variables"
+  },
+  {
+    "name": "$subheader-margin-top",
+    "type": "sass variable",
+    "description": "Default top margin for subhheaders.",
+    "link": "typography-helpers.html#sass-variables"
+  },
+  {
+    "name": "$subheader-margin-bottom",
+    "type": "sass variable",
+    "description": "Default bottom margin for subheaders.",
+    "link": "typography-helpers.html#sass-variables"
+  },
+  {
+    "name": "$list-style-type",
+    "type": "sass variable",
+    "description": "Bullet type to use for unordered lists (e.g., square`, `circle`, `disc`).\n",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$tab-background",
+    "type": "sass variable",
+    "description": "Default background color of a tab bar.",
+    "link": "tabs.html#sass-variables"
+  },
+  {
+    "name": "$tab-margin",
+    "type": "sass variable",
+    "description": "Default margin of the tab bar.",
+    "link": "tabs.html#sass-variables"
+  },
+  {
+    "name": "$list-style-position",
+    "type": "sass variable",
+    "description": "Positioning for bullets on unordered list items.",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$stat-font-size",
+    "type": "sass variable",
+    "description": "Default font size for statistic numbers.",
+    "link": "typography-helpers.html#sass-variables"
+  },
+  {
+    "name": "$list-side-margin",
+    "type": "sass variable",
+    "description": "Left (or right) margin for lists.",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$input-error-font-weight",
+    "type": "sass variable",
+    "description": "Default font weight for form error text.",
+    "link": "abide.html#sass-variables"
+  },
+  {
+    "name": "$list-nested-side-margin",
+    "type": "sass variable",
+    "description": "Left (or right) margin for a list inside a list.",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$label-background",
+    "type": "sass variable",
+    "description": "Default background color for labels.",
+    "link": "label.html#sass-variables"
+  },
+  {
+    "name": "$label-color",
+    "type": "sass variable",
+    "description": "Default text color for labels.",
+    "link": "label.html#sass-variables"
+  },
+  {
+    "name": "$label-font-size",
+    "type": "sass variable",
+    "description": "Default font size for labels.",
+    "link": "label.html#sass-variables"
+  },
+  {
+    "name": "$label-padding",
+    "type": "sass variable",
+    "description": "Default padding inside labels.",
+    "link": "label.html#sass-variables"
+  },
+  {
+    "name": "$label-radius",
+    "type": "sass variable",
+    "description": "Default radius of labels.",
+    "link": "label.html#sass-variables"
+  },
+  {
+    "name": "$defnlist-margin-bottom",
+    "type": "sass variable",
+    "description": "Bottom margin for &lt;dl&gt;` elements.\n",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$show-header-for-stacked",
+    "type": "sass variable",
+    "description": "Default value for showing the header when using stacked tables.",
+    "link": "table.html#sass-variables"
+  },
+  {
+    "name": "$table-head-font-color",
+    "type": "sass variable",
+    "description": "Default font color for header.",
+    "link": "table.html#sass-variables"
+  },
+  {
+    "name": "$table-foot-background",
+    "type": "sass variable",
+    "description": "Default color for footer background.",
+    "link": "table.html#sass-variables"
+  },
+  {
+    "name": "$table-head-background",
+    "type": "sass variable",
+    "description": "Default color for header background.",
+    "link": "table.html#sass-variables"
+  },
+  {
+    "name": "$table-stripe",
+    "type": "sass variable",
+    "description": "Default value for showing the stripe on rows of the tables, excluding the header and footer. If even, the even rows will have a background color. If odd, the odd rows will have a background color. If empty, or any other value, the table rows will have no striping.",
+    "link": "table.html#sass-variables"
+  },
+  {
+    "name": "$table-striped-background",
+    "type": "sass variable",
+    "description": "Default background color for striped rows.",
+    "link": "table.html#sass-variables"
+  },
+  {
+    "name": "$table-row-stripe-hover",
+    "type": "sass variable",
+    "description": "Default color of striped rows on hover.",
+    "link": "table.html#sass-variables"
+  },
+  {
+    "name": "$table-row-hover",
+    "type": "sass variable",
+    "description": "Default color of standard rows on hover.",
+    "link": "table.html#sass-variables"
+  },
+  {
+    "name": "$table-hover-scale",
+    "type": "sass variable",
+    "description": "Default scale for darkening the table rows on hover.",
+    "link": "table.html#sass-variables"
+  },
+  {
+    "name": "$table-padding",
+    "type": "sass variable",
+    "description": "Default padding for table.",
+    "link": "table.html#sass-variables"
+  },
+  {
+    "name": "$defnlist-term-weight",
+    "type": "sass variable",
+    "description": "Font weight for &lt;dt&gt;` elements.\n",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$mediaobject-margin-bottom",
+    "type": "sass variable",
+    "description": "Bottom margin of a media object.",
+    "link": "media-object.html#sass-variables"
+  },
+  {
+    "name": "$mediaobject-section-padding",
+    "type": "sass variable",
+    "description": "Left and right padding on sections within a media object.",
+    "link": "media-object.html#sass-variables"
+  },
+  {
+    "name": "$mediaobject-image-width-stacked",
+    "type": "sass variable",
+    "description": "Width of images within a media object, when the object is stacked vertically. Set to &#39;auto&#39; to use the image&#39;s natural width.",
+    "link": "media-object.html#sass-variables"
+  },
+  {
+    "name": "$accordionmenu-arrow-color",
+    "type": "sass variable",
+    "description": "Sets accordion menu arrow color if arrow is used.",
+    "link": "accordion-menu.html#sass-variables"
+  },
+  {
+    "name": "$breakpoints",
+    "type": "sass variable",
+    "description": "A list of named breakpoints. You can use these with the breakpoint()` mixin to quickly create media queries.\n",
+    "link": "media-queries.html#sass-variables"
+  },
+  {
+    "name": "$breakpoint-classes",
+    "type": "sass variable",
+    "description": "All of the names in this list will be output as classes in your CSS, like .small-12`, `.medium-6`, and so on. Each value in this list must also be in the `$breakpoints` map.\n",
+    "link": "media-queries.html#sass-variables"
+  },
+  {
+    "name": "$table-border",
+    "type": "sass variable",
+    "description": "Default style for table border.",
+    "link": "table.html#sass-variables"
+  },
+  {
+    "name": "$table-color-scale",
+    "type": "sass variable",
+    "description": "Default scale for darkening the striped table rows and the table border.",
+    "link": "table.html#sass-variables"
+  },
+  {
+    "name": "$input-error-font-size",
+    "type": "sass variable",
+    "description": "Default font size for form error text.",
+    "link": "abide.html#sass-variables"
+  },
+  {
+    "name": "$table-background",
+    "type": "sass variable",
+    "description": "Default color for table background.",
+    "link": "table.html#sass-variables"
+  },
+  {
+    "name": "$accordionmenu-arrows",
+    "type": "sass variable",
+    "description": "Sets if accordion menus have the default arrow styles.",
+    "link": "accordion-menu.html#sass-variables"
+  },
+  {
+    "name": "$lead-lineheight",
+    "type": "sass variable",
+    "description": "Default line height for lead paragraphs.",
+    "link": "typography-helpers.html#sass-variables"
+  },
+  {
+    "name": "$menu-margin",
+    "type": "sass variable",
+    "description": "Margin of a menu.",
+    "link": "menu.html#sass-variables"
+  },
+  {
+    "name": "$menu-margin-nested",
+    "type": "sass variable",
+    "description": "Left-hand margin of a nested menu.",
+    "link": "menu.html#sass-variables"
+  },
+  {
+    "name": "$menu-item-padding",
+    "type": "sass variable",
+    "description": "Padding for items in a menu.",
+    "link": "menu.html#sass-variables"
+  },
+  {
+    "name": "$menu-item-color-active",
+    "type": "sass variable",
+    "description": "Text color of an active menu item.",
+    "link": "menu.html#sass-variables"
+  },
+  {
+    "name": "$menu-item-background-active",
+    "type": "sass variable",
+    "description": "Background color of an active menu item.",
+    "link": "menu.html#sass-variables"
+  },
+  {
+    "name": "$menu-icon-spacing",
+    "type": "sass variable",
+    "description": "Spacing between an icon and text in a menu item.",
+    "link": "menu.html#sass-variables"
+  },
+  {
+    "name": "$input-error-color",
+    "type": "sass variable",
+    "description": "Default font color for form error text.",
+    "link": "abide.html#sass-variables"
+  },
+  {
+    "name": "$form-label-color-invalid",
+    "type": "sass variable",
+    "description": "Color to use for labels of invalid inputs.",
+    "link": "abide.html#sass-variables"
+  },
+  {
+    "name": "$defnlist-term-margin-bottom",
+    "type": "sass variable",
+    "description": "Spacing between &lt;dt&gt;` and `&lt;dd&gt;` elements.\n",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$offcanvas-size",
+    "type": "sass variable",
+    "description": "Width of an off-canvas menu.",
+    "link": "off-canvas.html#sass-variables"
+  },
+  {
+    "name": "$offcanvas-background",
+    "type": "sass variable",
+    "description": "Background color of an off-canvas menu.",
+    "link": "off-canvas.html#sass-variables"
+  },
+  {
+    "name": "$offcanvas-zindex",
+    "type": "sass variable",
+    "description": "Z-index of an off-canvas menu.",
+    "link": "off-canvas.html#sass-variables"
+  },
+  {
+    "name": "$offcanvas-transition-length",
+    "type": "sass variable",
+    "description": "Length of the animation on an off-canvas menu.",
+    "link": "off-canvas.html#sass-variables"
+  },
+  {
+    "name": "$offcanvas-transition-timing",
+    "type": "sass variable",
+    "description": "Timing function of the animation on an off-canvas menu.",
+    "link": "off-canvas.html#sass-variables"
+  },
+  {
+    "name": "$offcanvas-fixed-reveal",
+    "type": "sass variable",
+    "description": "If true`, a revealed off-canvas will be fixed-position, and scroll with the screen.\n",
+    "link": "off-canvas.html#sass-variables"
+  },
+  {
+    "name": "$offcanvas-exit-background",
+    "type": "sass variable",
+    "description": "Background color for the overlay that appears when an off-canvas menu is open.",
+    "link": "off-canvas.html#sass-variables"
+  },
+  {
+    "name": "$maincontent-class",
+    "type": "sass variable",
+    "description": "CSS class used for the main content area. The off-canvas mixins use this to target the page body.",
+    "link": "off-canvas.html#sass-variables"
+  },
+  {
+    "name": "$maincontent-shadow",
+    "type": "sass variable",
+    "description": "Box shadow to place under the main content area. This shadow overlaps the off-canvas menus.",
+    "link": "off-canvas.html#sass-variables"
+  },
+  {
+    "name": "$titlebar-background",
+    "type": "sass variable",
+    "description": "Background color of a title bar.",
+    "link": "off-canvas.html#sass-variables"
+  },
+  {
+    "name": "$titlebar-color",
+    "type": "sass variable",
+    "description": "Color of text inside a title bar.",
+    "link": "off-canvas.html#sass-variables"
+  },
+  {
+    "name": "$titlebar-padding",
+    "type": "sass variable",
+    "description": "Padding inside a title bar.",
+    "link": "off-canvas.html#sass-variables"
+  },
+  {
+    "name": "$titlebar-text-font-weight",
+    "type": "sass variable",
+    "description": "Font weight of text inside a title bar.",
+    "link": "off-canvas.html#sass-variables"
+  },
+  {
+    "name": "$titlebar-icon-color",
+    "type": "sass variable",
+    "description": "Color of menu icons inside a title bar.",
+    "link": "off-canvas.html#sass-variables"
+  },
+  {
+    "name": "$titlebar-icon-color-hover",
+    "type": "sass variable",
+    "description": "Color of menu icons inside a title bar on hover.",
+    "link": "off-canvas.html#sass-variables"
+  },
+  {
+    "name": "$titlebar-icon-spacing",
+    "type": "sass variable",
+    "description": "Spacing between the menu icon and text inside a title bar.",
+    "link": "off-canvas.html#sass-variables"
+  },
+  {
+    "name": "$switch-paddle-transition",
+    "type": "sass variable",
+    "description": "switch transition.",
+    "link": "switch.html#sass-variables"
+  },
+  {
+    "name": "$switch-paddle-radius",
+    "type": "sass variable",
+    "description": "border radius of the switch paddle",
+    "link": "switch.html#sass-variables"
+  },
+  {
+    "name": "$switch-paddle-offset",
+    "type": "sass variable",
+    "description": "Spacing between a switch paddle and the edge of the body.",
+    "link": "switch.html#sass-variables"
+  },
+  {
+    "name": "$switch-paddle-background",
+    "type": "sass variable",
+    "description": "Background color for the switch container and paddle.",
+    "link": "switch.html#sass-variables"
+  },
+  {
+    "name": "$switch-margin",
+    "type": "sass variable",
+    "description": "border around a modal.",
+    "link": "switch.html#sass-variables"
+  },
+  {
+    "name": "$switch-radius",
+    "type": "sass variable",
+    "description": "Border radius of the switch",
+    "link": "switch.html#sass-variables"
+  },
+  {
+    "name": "$switch-height-large",
+    "type": "sass variable",
+    "description": "Height of a switch with .large class.",
+    "link": "switch.html#sass-variables"
+  },
+  {
+    "name": "$switch-height-small",
+    "type": "sass variable",
+    "description": "Height of a switch with .small class.",
+    "link": "switch.html#sass-variables"
+  },
+  {
+    "name": "$switch-height-tiny",
+    "type": "sass variable",
+    "description": "Height of a switch with .tiny class.",
+    "link": "switch.html#sass-variables"
+  },
+  {
+    "name": "$switch-height",
+    "type": "sass variable",
+    "description": "Height of a switch, with no class applied.",
+    "link": "switch.html#sass-variables"
+  },
+  {
+    "name": "$switch-background-active",
+    "type": "sass variable",
+    "description": "Background active color of a switch.",
+    "link": "switch.html#sass-variables"
+  },
+  {
+    "name": "$blockquote-color",
+    "type": "sass variable",
+    "description": "Text color of &lt;blockquote&gt;` elements.\n",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$orbit-bullet-background",
+    "type": "sass variable",
+    "description": "Default color for Orbit&#39;s bullets.",
+    "link": "orbit.html#sass-variables"
+  },
+  {
+    "name": "$orbit-bullet-background-active",
+    "type": "sass variable",
+    "description": "Default active color for Orbit&#39;s bullets.",
+    "link": "orbit.html#sass-variables"
+  },
+  {
+    "name": "$orbit-bullet-diameter",
+    "type": "sass variable",
+    "description": "Default diameter for Orbit&#39;s bullets.",
+    "link": "orbit.html#sass-variables"
+  },
+  {
+    "name": "$orbit-bullet-margin",
+    "type": "sass variable",
+    "description": "Default margin between Orbit&#39;s bullets.",
+    "link": "orbit.html#sass-variables"
+  },
+  {
+    "name": "$orbit-bullet-margin-top",
+    "type": "sass variable",
+    "description": "Default distance from slide region for Orbit&#39;s bullets.",
+    "link": "orbit.html#sass-variables"
+  },
+  {
+    "name": "$orbit-bullet-margin-bottom",
+    "type": "sass variable",
+    "description": "Default bottom margin from Orbit&#39;s bullets to whatever content may lurk below it.",
+    "link": "orbit.html#sass-variables"
+  },
+  {
+    "name": "$orbit-caption-background",
+    "type": "sass variable",
+    "description": "Default background color for Orbit&#39;s caption.",
+    "link": "orbit.html#sass-variables"
+  },
+  {
+    "name": "$orbit-caption-padding",
+    "type": "sass variable",
+    "description": "Default padding for Orbit&#39;s caption.",
+    "link": "orbit.html#sass-variables"
+  },
+  {
+    "name": "$orbit-control-background-hover",
+    "type": "sass variable",
+    "description": "Default background color for Orbit&#39;s controls when hovered.",
+    "link": "orbit.html#sass-variables"
+  },
+  {
+    "name": "$orbit-control-padding",
+    "type": "sass variable",
+    "description": "Default padding for Orbit&#39;s controls.",
+    "link": "orbit.html#sass-variables"
+  },
+  {
+    "name": "$orbit-control-zindex",
+    "type": "sass variable",
+    "description": "Default z-index for Orbit&#39;s controls.",
+    "link": "orbit.html#sass-variables"
+  },
+  {
+    "name": "$switch-background",
+    "type": "sass variable",
+    "description": "Background color of a switch.",
+    "link": "switch.html#sass-variables"
+  },
+  {
+    "name": "$blockquote-padding",
+    "type": "sass variable",
+    "description": "Padding inside a &lt;blockquote&gt;` element.\n",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$input-background-invalid",
+    "type": "sass variable",
+    "description": "Background color to use for invalid text inputs.",
+    "link": "abide.html#sass-variables"
+  },
+  {
+    "name": "$blockquote-border",
+    "type": "sass variable",
+    "description": "Side border for &lt;blockquote&gt;` elements.\n",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$abide-labels",
+    "type": "sass variable",
+    "description": "Sets if error styles should be added to labels.",
+    "link": "abide.html#sass-variables"
+  },
+  {
+    "name": "$slider-transition",
+    "type": "sass variable",
+    "description": "Transition properties to apply to the slider handle and fill. (Doesn&#39;t apply to the native slider.)",
+    "link": "slider.html#sass-variables"
+  },
+  {
+    "name": "$slider-width-vertical",
+    "type": "sass variable",
+    "description": "Default slider width of a vertical slider. (Doesn&#39;t apply to the native slider.)",
+    "link": "slider.html#sass-variables"
+  },
+  {
+    "name": "$cite-font-size",
+    "type": "sass variable",
+    "description": "Font size for &lt;cite&gt;` elements.\n",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$abide-inputs",
+    "type": "sass variable",
+    "description": "Sets if error styles should be added to inputs.",
+    "link": "abide.html#sass-variables"
+  },
+  {
+    "name": "$cite-color",
+    "type": "sass variable",
+    "description": "Text color for &lt;cite&gt;` elements.\n",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$pagination-font-size",
+    "type": "sass variable",
+    "description": "Font size of pagination items.",
+    "link": "pagination.html#sass-variables"
+  },
+  {
+    "name": "$pagination-margin-bottom",
+    "type": "sass variable",
+    "description": "Default bottom margin of the pagination object.",
+    "link": "pagination.html#sass-variables"
+  },
+  {
+    "name": "$pagination-item-color",
+    "type": "sass variable",
+    "description": "Text color of pagination items.",
+    "link": "pagination.html#sass-variables"
+  },
+  {
+    "name": "$pagination-item-padding",
+    "type": "sass variable",
+    "description": "Padding inside of pagination items.",
+    "link": "pagination.html#sass-variables"
+  },
+  {
+    "name": "$pagination-item-spacing",
+    "type": "sass variable",
+    "description": "Right margin to separate pagination items.",
+    "link": "pagination.html#sass-variables"
+  },
+  {
+    "name": "$pagination-radius",
+    "type": "sass variable",
+    "description": "Default radius for pagination items.",
+    "link": "pagination.html#sass-variables"
+  },
+  {
+    "name": "$pagination-item-background-hover",
+    "type": "sass variable",
+    "description": "Background color of pagination items on hover.",
+    "link": "pagination.html#sass-variables"
+  },
+  {
+    "name": "$pagination-item-background-current",
+    "type": "sass variable",
+    "description": "Background color of pagination item for the current page.",
+    "link": "pagination.html#sass-variables"
+  },
+  {
+    "name": "$pagination-item-color-current",
+    "type": "sass variable",
+    "description": "Text color of the pagination item for the current page.",
+    "link": "pagination.html#sass-variables"
+  },
+  {
+    "name": "$pagination-item-color-disabled",
+    "type": "sass variable",
+    "description": "Text color of a disabled pagination item.",
+    "link": "pagination.html#sass-variables"
+  },
+  {
+    "name": "$pagination-ellipsis-color",
+    "type": "sass variable",
+    "description": "Color of the ellipsis in a pagination menu.",
+    "link": "pagination.html#sass-variables"
+  },
+  {
+    "name": "$pagination-mobile-items",
+    "type": "sass variable",
+    "description": "If false`, don&#39;t display page number links on mobile, only next/previous links.\n",
+    "link": "pagination.html#sass-variables"
+  },
+  {
+    "name": "$pagination-arrows",
+    "type": "sass variable",
+    "description": "If true`, arrows are added to the next and previous links of pagination.\n",
+    "link": "pagination.html#sass-variables"
+  },
+  {
+    "name": "$keystroke-font",
+    "type": "sass variable",
+    "description": "Font family for &lt;kbd&gt;` elements.\n",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$keystroke-color",
+    "type": "sass variable",
+    "description": "Text color for &lt;kbd&gt;` elements.\n",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$meter-height",
+    "type": "sass variable",
+    "description": "Height of a &lt;meter&gt;` element.\n",
+    "link": "progress-bar.html#sass-variables"
+  },
+  {
+    "name": "$meter-radius",
+    "type": "sass variable",
+    "description": "Border radius of a &lt;meter&gt;` element.\n",
+    "link": "progress-bar.html#sass-variables"
+  },
+  {
+    "name": "$meter-background",
+    "type": "sass variable",
+    "description": "Background color of a &lt;meter&gt;` element.\n",
+    "link": "progress-bar.html#sass-variables"
+  },
+  {
+    "name": "$meter-fill-good",
+    "type": "sass variable",
+    "description": "Meter fill for an optimal value in a &lt;meter&gt;` element.\n",
+    "link": "progress-bar.html#sass-variables"
+  },
+  {
+    "name": "$meter-fill-medium",
+    "type": "sass variable",
+    "description": "Meter fill for an average value in a &lt;meter&gt;` element.\n",
+    "link": "progress-bar.html#sass-variables"
+  },
+  {
+    "name": "$meter-fill-bad",
+    "type": "sass variable",
+    "description": "Meter fill for a suboptimal value in a &lt;meter&gt;` element.\n",
+    "link": "progress-bar.html#sass-variables"
+  },
+  {
+    "name": "$progress-height",
+    "type": "sass variable",
+    "description": "Height of a progress bar.",
+    "link": "progress-bar.html#sass-variables"
+  },
+  {
+    "name": "$progress-background",
+    "type": "sass variable",
+    "description": "Background color of a progress bar.",
+    "link": "progress-bar.html#sass-variables"
+  },
+  {
+    "name": "$progress-margin-bottom",
+    "type": "sass variable",
+    "description": "Bottom margin of a progress bar.",
+    "link": "progress-bar.html#sass-variables"
+  },
+  {
+    "name": "$progress-meter-background",
+    "type": "sass variable",
+    "description": "Default color of a progress bar&#39;s meter.",
+    "link": "progress-bar.html#sass-variables"
+  },
+  {
+    "name": "$progress-radius",
+    "type": "sass variable",
+    "description": "Default radius of a progress bar.",
+    "link": "progress-bar.html#sass-variables"
+  },
+  {
+    "name": "$keystroke-background",
+    "type": "sass variable",
+    "description": "Background color for &lt;kbd&gt;` elements.\n",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$keystroke-padding",
+    "type": "sass variable",
+    "description": "Padding for &lt;kbd&gt;` elements.\n",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$keystroke-radius",
+    "type": "sass variable",
+    "description": "Border radius for &lt;kbd&gt;` elements.\n",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$reveal-background",
+    "type": "sass variable",
+    "description": "Default background color of a modal.",
+    "link": "reveal.html#sass-variables"
+  },
+  {
+    "name": "$reveal-width",
+    "type": "sass variable",
+    "description": "Default width of a modal, with no class applied.",
+    "link": "reveal.html#sass-variables"
+  },
+  {
+    "name": "$reveal-max-width",
+    "type": "sass variable",
+    "description": "Default maximum width of a modal.",
+    "link": "reveal.html#sass-variables"
+  },
+  {
+    "name": "$reveal-padding",
+    "type": "sass variable",
+    "description": "Default padding inside a modal.",
+    "link": "reveal.html#sass-variables"
+  },
+  {
+    "name": "$reveal-border",
+    "type": "sass variable",
+    "description": "Default border around a modal.",
+    "link": "reveal.html#sass-variables"
+  },
+  {
+    "name": "$reveal-radius",
+    "type": "sass variable",
+    "description": "Default radius for modal.",
+    "link": "reveal.html#sass-variables"
+  },
+  {
+    "name": "$reveal-zindex",
+    "type": "sass variable",
+    "description": "z-index for modals. The overlay uses this value, while the modal itself uses this value plus one.",
+    "link": "reveal.html#sass-variables"
+  },
+  {
+    "name": "$reveal-overlay-background",
+    "type": "sass variable",
+    "description": "Background color of modal overlays.",
+    "link": "reveal.html#sass-variables"
+  },
+  {
+    "name": "$abbr-underline",
+    "type": "sass variable",
+    "description": "Bottom border style for &lt;abbr&gt;` elements.\n",
+    "link": "typography-base.html#sass-variables"
+  },
+  {
+    "name": "$lead-font-size",
+    "type": "sass variable",
+    "description": "Default font size for lead paragraphs.",
+    "link": "typography-helpers.html#sass-variables"
+  },
+  {
+    "name": "foundation-grid()",
+    "type": "sass mixin",
+    "description": "Outputs CSS classes for the grid.",
+    "link": "grid.html#foundation-grid"
+  },
+  {
+    "name": "grid-column()",
+    "type": "sass mixin",
+    "description": "Creates a grid column.\n",
+    "link": "grid.html#grid-column"
+  },
+  {
+    "name": "grid-column-row()",
+    "type": "sass mixin",
+    "description": "Creates a grid column row. This is the equivalent of adding .row` and `.column` to the same element.\n\n",
+    "link": "grid.html#grid-column-row"
+  },
+  {
+    "name": "grid-col()",
+    "type": "sass mixin",
+    "description": "Shorthand for grid-column()`.\n",
+    "link": "grid.html#grid-col"
+  },
+  {
+    "name": "grid-col-row()",
+    "type": "sass mixin",
+    "description": "Shorthand for grid-column-row()`.\n",
+    "link": "grid.html#grid-col-row"
+  },
+  {
+    "name": "grid-column-collapse()",
+    "type": "sass mixin",
+    "description": "Collapse the gutters on a column by removing the padding. **Note:** only use this mixin within a breakpoint. To collapse a column&#39;s gutters on all screen sizes, use the $gutter` parameter of the `grid-column()` mixin instead.\n",
+    "link": "grid.html#grid-column-collapse"
+  },
+  {
+    "name": "grid-column-uncollapse()",
+    "type": "sass mixin",
+    "description": "Un-collapse the gutters on a column by re-adding the padding.\n",
+    "link": "grid.html#grid-column-uncollapse"
+  },
+  {
+    "name": "grid-col-collapse()",
+    "type": "sass mixin",
+    "description": "Shorthand for grid-column-collapse()`.\n",
+    "link": "grid.html#grid-col-collapse"
+  },
+  {
+    "name": "grid-col-uncollapse()",
+    "type": "sass mixin",
+    "description": "Shorthand for grid-column-uncollapse()`.\n",
+    "link": "grid.html#grid-col-uncollapse"
+  },
+  {
+    "name": "grid-layout()",
+    "type": "sass mixin",
+    "description": "Sizes child elements so that $n` number of items appear on each row.\n\n",
+    "link": "grid.html#grid-layout"
+  },
+  {
+    "name": "grid-layout-center-last()",
+    "type": "sass mixin",
+    "description": "Adds extra CSS to block grid children so the last items in the row center automatically. Apply this to the columns, not the row.\n",
+    "link": "grid.html#grid-layout-center-last"
+  },
+  {
+    "name": "grid-column-position()",
+    "type": "sass mixin",
+    "description": "Reposition a column.\n",
+    "link": "grid.html#grid-column-position"
+  },
+  {
+    "name": "grid-column-unposition()",
+    "type": "sass mixin",
+    "description": "Reset a position definition.",
+    "link": "grid.html#grid-column-unposition"
+  },
+  {
+    "name": "grid-column-offset()",
+    "type": "sass mixin",
+    "description": "Offsets a column to the right by $n` columns.\n",
+    "link": "grid.html#grid-column-offset"
+  },
+  {
+    "name": "grid-column-end()",
+    "type": "sass mixin",
+    "description": "Disable the default behavior of the last column in a row aligning to the opposite edge.",
+    "link": "grid.html#grid-column-end"
+  },
+  {
+    "name": "grid-col-pos()",
+    "type": "sass mixin",
+    "description": "Shorthand for grid-column-position()`.\n",
+    "link": "grid.html#grid-col-pos"
+  },
+  {
+    "name": "grid-col-unpos()",
+    "type": "sass mixin",
+    "description": "Shorthand for grid-column-unposition()`.\n",
+    "link": "grid.html#grid-col-unpos"
+  },
+  {
+    "name": "off-canvas-basics()",
+    "type": "sass mixin",
+    "description": "Adds baseline styles for off-canvas. This CSS is required to make the other pieces work.",
+    "link": "off-canvas.html#off-canvas-basics"
+  },
+  {
+    "name": "off-canvas-base()",
+    "type": "sass mixin",
+    "description": "Adds basic styles for an off-canvas menu.",
+    "link": "off-canvas.html#off-canvas-base"
+  },
+  {
+    "name": "off-canvas-reveal()",
+    "type": "sass mixin",
+    "description": "Adds styles that reveal an off-canvas menu.",
+    "link": "off-canvas.html#off-canvas-reveal"
+  },
+  {
+    "name": "switch-text-inactive()",
+    "type": "sass mixin",
+    "description": "Adds styles for the inactive state text within a switch.",
+    "link": "switch.html#switch-text-inactive"
+  },
+  {
+    "name": "switch-text-active()",
+    "type": "sass mixin",
+    "description": "Adds styles for the active state text within a switch.",
+    "link": "switch.html#switch-text-active"
+  },
+  {
+    "name": "switch-text()",
+    "type": "sass mixin",
+    "description": "Adds base styles for active/inactive text inside a switch. Apply this to text elements inside the switch &lt;label&gt;`.\n",
+    "link": "switch.html#switch-text"
+  },
+  {
+    "name": "switch-paddle()",
+    "type": "sass mixin",
+    "description": "Adds styles for the background and paddle of a switch. Apply this to a &lt;label&gt;` within a switch.\n",
+    "link": "switch.html#switch-paddle"
+  },
+  {
+    "name": "switch-input()",
+    "type": "sass mixin",
+    "description": "Adds styles for a switch input. Apply this to an &lt;input&gt;` within a switch.\n",
+    "link": "switch.html#switch-input"
+  },
+  {
+    "name": "switch-container()",
+    "type": "sass mixin",
+    "description": "Adds styles for a switch container. Apply this to a container class.",
+    "link": "switch.html#switch-container"
+  },
+  {
+    "name": "grid-col-off()",
+    "type": "sass mixin",
+    "description": "Shorthand for grid-column-offset()`.\n",
+    "link": "grid.html#grid-col-off"
+  },
+  {
+    "name": "grid-col-end()",
+    "type": "sass mixin",
+    "description": "Shorthand for grid-column-end()`.\n",
+    "link": "grid.html#grid-col-end"
+  },
+  {
+    "name": "grid-context()",
+    "type": "sass mixin",
+    "description": "Change the behavior of columns defined inside this mixin to use a different column count.",
+    "link": "grid.html#grid-context"
+  },
+  {
+    "name": "grid-row()",
+    "type": "sass mixin",
+    "description": "Creates a grid row.",
+    "link": "grid.html#grid-row"
+  },
+  {
+    "name": "grid-row-nest()",
+    "type": "sass mixin",
+    "description": "Inverts the margins of a row to nest it inside of a column.\n",
+    "link": "grid.html#grid-row-nest"
+  },
+  {
+    "name": "grid-column-size()",
+    "type": "sass mixin",
+    "description": "Set the width of a grid column.\n",
+    "link": "grid.html#grid-column-size"
+  },
+  {
+    "name": "grid-col-size()",
+    "type": "sass mixin",
+    "description": "Shorthand for grid-column-size()`.\n",
+    "link": "grid.html#grid-col-size"
+  },
+  {
+    "name": "flex-grid-row-align()",
+    "type": "sass mixin",
+    "description": "Horizontally or vertically aligns the columns within a flex row. Apply this mixin to a flex row.\n",
+    "link": "flex-grid.html#flex-grid-row-align"
+  },
+  {
+    "name": "flex-grid-column-align()",
+    "type": "sass mixin",
+    "description": "Vertically align a single column within a flex row. Apply this mixin to a flex column.\n",
+    "link": "flex-grid.html#flex-grid-column-align"
+  },
+  {
+    "name": "form-error()",
+    "type": "sass mixin",
+    "description": "Adds error styles to a form element, using the values in the settings file.",
+    "link": "abide.html#form-error"
+  },
+  {
+    "name": "hide-for()",
+    "type": "sass mixin",
+    "description": "Show an element by default, and hide it above a certain screen size.",
+    "link": "visibility.html#hide-for"
+  },
+  {
+    "name": "badge()",
+    "type": "sass mixin",
+    "description": "Generates the base styles for a badge.",
+    "link": "badge.html#badge"
+  },
+  {
+    "name": "accordion-container()",
+    "type": "sass mixin",
+    "description": "Adds styles for an accordion container. Apply this to the same element that gets data-accordion`.\n",
+    "link": "accordion.html#accordion-container"
+  },
+  {
+    "name": "dropdown-container()",
+    "type": "sass mixin",
+    "description": "Applies styles for a basic dropdown.",
+    "link": "dropdown.html#dropdown-container"
+  },
+  {
+    "name": "flex-video()",
+    "type": "sass mixin",
+    "description": "Creates a flex video container.",
+    "link": "flex-video.html#flex-video"
+  },
+  {
+    "name": "table-stack()",
+    "type": "sass mixin",
+    "description": "Adds styles for a stacked table. Useful for small-screen layouts.",
+    "link": "table.html#table-stack"
+  },
+  {
+    "name": "table-hover()",
+    "type": "sass mixin",
+    "description": "Slightly darkens the table rows on hover.",
+    "link": "table.html#table-hover"
+  },
+  {
+    "name": "accordion-item()",
+    "type": "sass mixin",
+    "description": "Adds styles for the accordion item. Apply this to the list item within an accordion ul.",
+    "link": "accordion.html#accordion-item"
+  },
+  {
+    "name": "callout-base()",
+    "type": "sass mixin",
+    "description": "Adds basic styles for a callout, including padding and margin.",
+    "link": "callout.html#callout-base"
+  },
+  {
+    "name": "flex()",
+    "type": "sass mixin",
+    "description": "Enables flexbox by adding display: flex` to the element.\n",
+    "link": "flexbox.html#flex"
+  },
+  {
+    "name": "flex-align()",
+    "type": "sass mixin",
+    "description": "Horizontally or vertically aligns the items within a flex container.\n",
+    "link": "flexbox.html#flex-align"
+  },
+  {
+    "name": "flex-align-self()",
+    "type": "sass mixin",
+    "description": "Vertically align a single column within a flex row. Apply this mixin to a flex column.\n",
+    "link": "flexbox.html#flex-align-self"
+  },
+  {
+    "name": "flex-order()",
+    "type": "sass mixin",
+    "description": "Changes the source order of a flex child. Children with lower numbers appear first in the layout.",
+    "link": "flexbox.html#flex-order"
+  },
+  {
+    "name": "orbit-wrapper()",
+    "type": "sass mixin",
+    "description": "Adds styles for the outer Orbit wrapper. These styles are used on the .orbit` class.\n",
+    "link": "orbit.html#orbit-wrapper"
+  },
+  {
+    "name": "orbit-container()",
+    "type": "sass mixin",
+    "description": "Adds styles for the inner Orbit slide container. These styles are used on the .orbit-container` class.\n",
+    "link": "orbit.html#orbit-container"
+  },
+  {
+    "name": "orbit-slide()",
+    "type": "sass mixin",
+    "description": "Adds styles for the individual slides of an Orbit slider. These styles are used on the .orbit-slide` class.\n",
+    "link": "orbit.html#orbit-slide"
+  },
+  {
+    "name": "orbit-image()",
+    "type": "sass mixin",
+    "description": "Adds styles for a slide containing an image. These styles are used on the .orbit-image` class.\n",
+    "link": "orbit.html#orbit-image"
+  },
+  {
+    "name": "orbit-caption()",
+    "type": "sass mixin",
+    "description": "Adds styles for an orbit slide caption. These styles are used on the .orbit-caption` class.\n",
+    "link": "orbit.html#orbit-caption"
+  },
+  {
+    "name": "orbit-control()",
+    "type": "sass mixin",
+    "description": "Adds base styles for the next/previous buttons in an Orbit slider. These styles are shared between the .orbit-next` and `.orbit-previous` classes in the default CSS.\n",
+    "link": "orbit.html#orbit-control"
+  },
+  {
+    "name": "orbit-previous()",
+    "type": "sass mixin",
+    "description": "Adds styles for the Orbit previous button. These styles are used on the .orbit-previous` class.\n",
+    "link": "orbit.html#orbit-previous"
+  },
+  {
+    "name": "orbit-next()",
+    "type": "sass mixin",
+    "description": "Adds styles for the Orbit next button. These styles are used on the .orbit-next` class.\n",
+    "link": "orbit.html#orbit-next"
+  },
+  {
+    "name": "orbit-bullets()",
+    "type": "sass mixin",
+    "description": "Adds styles for a container of Orbit bullets.  Adds styles for the Orbit previous button. These styles are used on the .orbit-bullets` class.\n",
+    "link": "orbit.html#orbit-bullets"
+  },
+  {
+    "name": "callout-style()",
+    "type": "sass mixin",
+    "description": "Generate quick styles for a callout using a single color as a baseline.",
+    "link": "callout.html#callout-style"
+  },
+  {
+    "name": "callout()",
+    "type": "sass mixin",
+    "description": "Adds styles for a callout.",
+    "link": "callout.html#callout"
+  },
+  {
+    "name": "accordion-title()",
+    "type": "sass mixin",
+    "description": "Adds styles for the title of an accordion item. Apply this to the link within an accordion item.",
+    "link": "accordion.html#accordion-title"
+  },
+  {
+    "name": "label()",
+    "type": "sass mixin",
+    "description": "Generates base styles for a label.",
+    "link": "label.html#label"
+  },
+  {
+    "name": "breadcrumbs-container()",
+    "type": "sass mixin",
+    "description": "Adds styles for a breadcrumbs container, along with the styles for the &lt;li&gt;` and `&lt;a&gt;` elements inside of it.\n",
+    "link": "breadcrumbs.html#breadcrumbs-container"
+  },
+  {
+    "name": "slider-handle()",
+    "type": "sass mixin",
+    "description": "Adds the general styles for the slider handles.",
+    "link": "slider.html#slider-handle"
+  },
+  {
+    "name": "slider-fill()",
+    "type": "sass mixin",
+    "description": "Adds the general styles for active fill for sliders.",
+    "link": "slider.html#slider-fill"
+  },
+  {
+    "name": "slider-container()",
+    "type": "sass mixin",
+    "description": "Adds the general styles for sliders.",
+    "link": "slider.html#slider-container"
+  },
+  {
+    "name": "table-scroll()",
+    "type": "sass mixin",
+    "description": "Adds the ability to horizontally scroll the table when the content overflows horizontally.",
+    "link": "table.html#table-scroll"
+  },
+  {
+    "name": "table()",
+    "type": "sass mixin",
+    "description": "Adds the general styles for tables.",
+    "link": "table.html#table"
+  },
+  {
+    "name": "accordion-content()",
+    "type": "sass mixin",
+    "description": "Adds styles for accordion content. Apply this to the content pane below an accordion item&#39;s title.",
+    "link": "accordion.html#accordion-content"
+  },
+  {
+    "name": "show-for-only()",
+    "type": "sass mixin",
+    "description": "Hide an element by default, only displaying it within a certain breakpoint.",
+    "link": "visibility.html#show-for-only"
+  },
+  {
+    "name": "-zf-each-breakpoint()",
+    "type": "sass mixin",
+    "description": "Iterates through breakpoints defined in $breakpoint-classes` and prints the CSS inside the mixin at each breakpoint&#39;s media query. Use this with the grid, or any other component that has responsive classes.\n\n",
+    "link": "sass-mixins.html#-zf-each-breakpoint"
+  },
+  {
+    "name": "absolute-center()",
+    "type": "sass mixin",
+    "description": "Absolutely centers the element inside of its first non-static parent,",
+    "link": "sass-mixins.html#absolute-center"
+  },
+  {
+    "name": "horizontal-center()",
+    "type": "sass mixin",
+    "description": "Horizontally centers the element inside of its first non-static parent,",
+    "link": "sass-mixins.html#horizontal-center"
+  },
+  {
+    "name": "vertical-center()",
+    "type": "sass mixin",
+    "description": "Vertically centers the element inside of its first non-static parent,",
+    "link": "sass-mixins.html#vertical-center"
+  },
+  {
+    "name": "element-invisible-off()",
+    "type": "sass mixin",
+    "description": "Reverses the CSS output created by the element-invisible()` mixin.\n",
+    "link": "sass-mixins.html#element-invisible-off"
+  },
+  {
+    "name": "element-invisible()",
+    "type": "sass mixin",
+    "description": "Makes an element visually hidden, but still accessible to keyboards and assistive devices.",
+    "link": "sass-mixins.html#element-invisible"
+  },
+  {
+    "name": "disable-mouse-outline()",
+    "type": "sass mixin",
+    "description": "Removes the focus ring around an element when a mouse input is detected.",
+    "link": "sass-mixins.html#disable-mouse-outline"
+  },
+  {
+    "name": "auto-width()",
+    "type": "sass mixin",
+    "description": "Adds CSS for a &quot;quantity query&quot; selector that automatically sizes elements based on how many there are inside a container.",
+    "link": "sass-mixins.html#auto-width"
+  },
+  {
+    "name": "clearfix()",
+    "type": "sass mixin",
+    "description": "Applies the micro clearfix hack popularized by Nicolas Gallagher. Include this mixin on a container if its children are all floated, to give the container a proper height.The clearfix is augmented with specific styles to prevent borders in flexbox environments\n",
+    "link": "sass-mixins.html#clearfix"
+  },
+  {
+    "name": "background-triangle()",
+    "type": "sass mixin",
+    "description": "Adds a downward-facing triangle as a background image to an element. The image is formatted as an SVG, making it easy to change the color. Because Internet Explorer doesn&#39;t support encoded SVGs as background images, a PNG fallback is also included.There are two PNG fallbacks: a black triangle and a white triangle. The one used depends on the lightness of the input color.\n\n",
+    "link": "sass-mixins.html#background-triangle"
+  },
+  {
+    "name": "hamburger()",
+    "type": "sass mixin",
+    "description": "Creates a menu icon with a set width, height, number of bars, and colors. The mixin uses the height of the icon and the weight of the bars to determine spacing. &lt;div class=&quot;docs-example-burger&quot;&gt;&lt;/div&gt;\n",
+    "link": "sass-mixins.html#hamburger"
+  },
+  {
+    "name": "show-for()",
+    "type": "sass mixin",
+    "description": "Hide an element by default, only displaying it above a certain screen size.",
+    "link": "visibility.html#show-for"
+  },
+  {
+    "name": "hide-for-only()",
+    "type": "sass mixin",
+    "description": "Show an element by default, and hide it above a certain screen size.",
+    "link": "visibility.html#hide-for-only"
+  },
+  {
+    "name": "button-expand()",
+    "type": "sass mixin",
+    "description": "Expands a button to make it full-width.",
+    "link": "button.html#button-expand"
+  },
+  {
+    "name": "thumbnail()",
+    "type": "sass mixin",
+    "description": "Adds thumbnail styles to an element.",
+    "link": "thumbnail.html#thumbnail"
+  },
+  {
+    "name": "button-style()",
+    "type": "sass mixin",
+    "description": "Sets the visual style of a button.",
+    "link": "button.html#button-style"
+  },
+  {
+    "name": "top-bar-unstack()",
+    "type": "sass mixin",
+    "description": "Undoes the CSS applied by the top-bar-stacked()` mixin.\n",
+    "link": "top-bar.html#top-bar-unstack"
+  },
+  {
+    "name": "top-bar-stacked()",
+    "type": "sass mixin",
+    "description": "Makes sections of a top bar stack on top of each other.",
+    "link": "top-bar.html#top-bar-stacked"
+  },
+  {
+    "name": "top-bar-container()",
+    "type": "sass mixin",
+    "description": "Adds styles for a top bar container.",
+    "link": "top-bar.html#top-bar-container"
+  },
+  {
+    "name": "close-button()",
+    "type": "sass mixin",
+    "description": "Adds styles for a close button, using the styles in the settings variables.",
+    "link": "close-button.html#close-button"
+  },
+  {
+    "name": "button-hollow()",
+    "type": "sass mixin",
+    "description": "Removes background fill on hover and focus for hollow buttons.",
+    "link": "button.html#button-hollow"
+  },
+  {
+    "name": "button-disabled()",
+    "type": "sass mixin",
+    "description": "Adds disabled styles to a button by fading the element, reseting the cursor, and disabling pointer events.",
+    "link": "button.html#button-disabled"
+  },
+  {
+    "name": "button-dropdown()",
+    "type": "sass mixin",
+    "description": "Adds a dropdown arrow to a button.",
+    "link": "button.html#button-dropdown"
+  },
+  {
+    "name": "media-object-container()",
+    "type": "sass mixin",
+    "description": "Adds styles for a media object container.",
+    "link": "media-object.html#media-object-container"
+  },
+  {
+    "name": "media-object-section()",
+    "type": "sass mixin",
+    "description": "Adds styles for sections within a media object.",
+    "link": "media-object.html#media-object-section"
+  },
+  {
+    "name": "pagination-container()",
+    "type": "sass mixin",
+    "description": "Adds styles for a pagination container. Apply this to a &lt;ul&gt;`.\n",
+    "link": "pagination.html#pagination-container"
+  },
+  {
+    "name": "pagination-item-current()",
+    "type": "sass mixin",
+    "description": "Adds styles for the current pagination item. Apply this to an &lt;a&gt;`.\n",
+    "link": "pagination.html#pagination-item-current"
+  },
+  {
+    "name": "pagination-item-disabled()",
+    "type": "sass mixin",
+    "description": "Adds styles for a disabled pagination item. Apply this to an &lt;a&gt;`.\n",
+    "link": "pagination.html#pagination-item-disabled"
+  },
+  {
+    "name": "pagination-ellipsis()",
+    "type": "sass mixin",
+    "description": "Adds styles for an ellipsis for use in a pagination list.",
+    "link": "pagination.html#pagination-ellipsis"
+  },
+  {
+    "name": "media-object-stack()",
+    "type": "sass mixin",
+    "description": "Adds styles to stack sections of a media object. Apply this to the section elements, not the container.",
+    "link": "media-object.html#media-object-stack"
+  },
+  {
+    "name": "tabs-panel()",
+    "type": "sass mixin",
+    "description": "Adds styles for an individual tab content panel within the tab content container.",
+    "link": "tabs.html#tabs-panel"
+  },
+  {
+    "name": "tabs-content-vertical()",
+    "type": "sass mixin",
+    "description": "Augments a tab content container to have a vertical style, by shifting the border around. Use this in conjunction with tabs-content()`.\n",
+    "link": "tabs.html#tabs-content-vertical"
+  },
+  {
+    "name": "tabs-content()",
+    "type": "sass mixin",
+    "description": "Adds styles for the wrapper that surrounds a tab group&#39;s content panes.",
+    "link": "tabs.html#tabs-content"
+  },
+  {
+    "name": "breakpoint()",
+    "type": "sass mixin",
+    "description": "Wraps a media query around the content you put inside the mixin. This mixin accepts a number of values: - If a string is passed, the mixin will look for it in the `$breakpoints` map, and use a media query there.\n - If a pixel value is passed, it will be converted to an em value using `$global-font-size` as the base.\n - If a rem value is passed, the unit will be changed to em.\n - If an em value is passed, the value will be used as-is.\n\n",
+    "link": "media-queries.html#breakpoint"
+  },
+  {
+    "name": "tabs-title()",
+    "type": "sass mixin",
+    "description": "Adds styles for the links within a tab container. Apply this to the &lt;li&gt;` elements inside a tab container.\n",
+    "link": "tabs.html#tabs-title"
+  },
+  {
+    "name": "tabs-container-vertical()",
+    "type": "sass mixin",
+    "description": "Augments a tab container to have vertical tabs. Use this in conjunction with tabs-container()`.\n",
+    "link": "tabs.html#tabs-container-vertical"
+  },
+  {
+    "name": "tabs-container()",
+    "type": "sass mixin",
+    "description": "Adds styles for a tab container. Apply this to a &lt;ul&gt;`.\n",
+    "link": "tabs.html#tabs-container"
+  },
+  {
+    "name": "button()",
+    "type": "sass mixin",
+    "description": "Adds all styles for a button. For more granular control over styles, use the individual button mixins.",
+    "link": "button.html#button"
+  },
+  {
+    "name": "form-input-error()",
+    "type": "sass mixin",
+    "description": "Styles the background and border of an input field to have an error state.\n",
+    "link": "abide.html#form-input-error"
+  },
+  {
+    "name": "switch-size()",
+    "type": "sass mixin",
+    "description": "Changes the size of a switch by modifying the size of the body and paddle. Apply this to a switch container.",
+    "link": "switch.html#switch-size"
+  },
+  {
+    "name": "button-group()",
+    "type": "sass mixin",
+    "description": "Add styles for a button group container.",
+    "link": "button-group.html#button-group"
+  },
+  {
+    "name": "button-group-expand()",
+    "type": "sass mixin",
+    "description": "Creates a full-width button group, making each button equal width.",
+    "link": "button-group.html#button-group-expand"
+  },
+  {
+    "name": "progress-container()",
+    "type": "sass mixin",
+    "description": "Adds styles for a progress bar container.",
+    "link": "progress-bar.html#progress-container"
+  },
+  {
+    "name": "progress-meter()",
+    "type": "sass mixin",
+    "description": "Adds styles for the inner meter of a progress bar.",
+    "link": "progress-bar.html#progress-meter"
+  },
+  {
+    "name": "progress-meter-text()",
+    "type": "sass mixin",
+    "description": "Adds styles for text in the progress meter.",
+    "link": "progress-bar.html#progress-meter-text"
+  },
+  {
+    "name": "-zf-normalize()",
+    "type": "sass mixin",
+    "description": "Loads normalize.css.",
+    "link": "global.html#-zf-normalize"
+  },
+  {
+    "name": "css-triangle()",
+    "type": "sass mixin",
+    "description": "Creates a CSS triangle, which can be used for dropdown arrows, dropdown pips, and more. Use this mixin inside a &amp;::before` or `&amp;::after` selector, to attach the triangle to an existing element.\n\n",
+    "link": "sass-mixins.html#css-triangle"
+  },
+  {
+    "name": "button-group-stack()",
+    "type": "sass mixin",
+    "description": "Stacks the buttons in a button group.",
+    "link": "button-group.html#button-group-stack"
+  },
+  {
+    "name": "flex-order()",
+    "type": "sass mixin",
+    "description": "Changes the source order of a flex child. Children with lower numbers appear first in the layout.",
+    "link": "sass-functions.html#flex-order"
+  },
+  {
+    "name": "flex-align-self()",
+    "type": "sass mixin",
+    "description": "Vertically align a single column within a flex row. Apply this mixin to a flex column.\n",
+    "link": "sass-functions.html#flex-align-self"
+  },
+  {
+    "name": "button-group-unstack()",
+    "type": "sass mixin",
+    "description": "Un-stacks the buttons in a button group.",
+    "link": "button-group.html#button-group-unstack"
+  },
+  {
+    "name": "flex-grid-row()",
+    "type": "sass mixin",
+    "description": "Creates a container for a flex grid row.\n",
+    "link": "flex-grid.html#flex-grid-row"
+  },
+  {
+    "name": "flex-grid-column()",
+    "type": "sass mixin",
+    "description": "Creates a column for a flex grid. By default, the column will stretch to the full width of its container, but this can be overridden with sizing classes, or by using the unstack` class on the parent flex row.\n\n",
+    "link": "flex-grid.html#flex-grid-column"
+  },
+  {
+    "name": "menu-base()",
+    "type": "sass mixin",
+    "description": "Creates the base styles for a Menu.",
+    "link": "menu.html#menu-base"
+  },
+  {
+    "name": "menu-expand()",
+    "type": "sass mixin",
+    "description": "Expands the items of a Menu, so each item is the same width.",
+    "link": "menu.html#menu-expand"
+  },
+  {
+    "name": "menu-direction()",
+    "type": "sass mixin",
+    "description": "Sets the direction of a Menu.",
+    "link": "menu.html#menu-direction"
+  },
+  {
+    "name": "menu-simple()",
+    "type": "sass mixin",
+    "description": "Creates a simple Menu, which has no padding or hover state.",
+    "link": "menu.html#menu-simple"
+  },
+  {
+    "name": "menu-nested()",
+    "type": "sass mixin",
+    "description": "Adds styles for a nested Menu, by adding margin-left` to the menu.\n",
+    "link": "menu.html#menu-nested"
+  },
+  {
+    "name": "menu-icons()",
+    "type": "sass mixin",
+    "description": "Adds support for icons to Menu items.",
+    "link": "menu.html#menu-icons"
+  },
+  {
+    "name": "reveal-overlay()",
+    "type": "sass mixin",
+    "description": "Adds styles for a modal overlay.",
+    "link": "reveal.html#reveal-overlay"
+  },
+  {
+    "name": "reveal-modal-base()",
+    "type": "sass mixin",
+    "description": "Adds base styles for a modal.",
+    "link": "reveal.html#reveal-modal-base"
+  },
+  {
+    "name": "reveal-modal-width()",
+    "type": "sass mixin",
+    "description": "Adjusts the width of a modal.",
+    "link": "reveal.html#reveal-modal-width"
+  },
+  {
+    "name": "reveal-modal-fullscreen()",
+    "type": "sass mixin",
+    "description": "Creates a full-screen modal, which stretches the full width and height of the window.",
+    "link": "reveal.html#reveal-modal-fullscreen"
+  },
+  {
+    "name": "flex-align()",
+    "type": "sass mixin",
+    "description": "Horizontally or vertically aligns the items within a flex container.\n",
+    "link": "sass-functions.html#flex-align"
+  },
+  {
+    "name": "flex()",
+    "type": "sass mixin",
+    "description": "Enables flexbox by adding display: flex` to the element.\n",
+    "link": "sass-functions.html#flex"
+  },
+  {
+    "name": "add-foundation-colors()",
+    "type": "sass mixin",
+    "description": "Transfers the colors in the $foundation-palette` variable into the legacy color variables, such as `$primary-color` and `$secondary-color`. Call this mixin below the Global section of your settings file to properly migrate your codebase.\n",
+    "link": "sass-functions.html#add-foundation-colors"
+  },
+  {
+    "name": "flex-grid-layout()",
+    "type": "sass mixin",
+    "description": "Creates a block grid for a flex grid row.\n",
+    "link": "flex-grid.html#flex-grid-layout"
+  },
+  {
+    "name": "flex-grid-order()",
+    "type": "sass mixin",
+    "description": "Changes the source order of a flex grid column. Columns with lower numbers appear first in the layout.",
+    "link": "flex-grid.html#flex-grid-order"
+  },
+  {
+    "name": "-zf-bp-serialize()",
+    "type": "sass function",
+    "description": "Convers the breakpoints map to a URL-encoded string, like this: key1=value1&amp;key2=value2`. The value is then dropped into the CSS for a special `&lt;meta&gt;` tag, which is read by the Foundation JavaScript. This is how we transfer values from Sass to JavaScript, so they can be defined in one place.\n",
+    "link": "media-queries.html#-zf-bp-serialize"
+  },
+  {
+    "name": "-zf-map-next()",
+    "type": "sass function",
+    "description": "Find the next key in a map.",
+    "link": "media-queries.html#-zf-map-next"
+  },
+  {
+    "name": "foreground()",
+    "type": "sass function",
+    "description": "Checks the lightness of $color`, and if it passes the `$threshold` of lightness, it returns the `$yes` color. Otherwise, it returns the `$no` color. Use this function to dynamically output a foreground color based on a given background color.\n\n",
+    "link": "sass-functions.html#foreground"
+  },
+  {
+    "name": "smart-scale()",
+    "type": "sass function",
+    "description": "Scales a color to be lighter if it&#39;s light, or darker if it&#39;s dark. Use this function to tint a color appropriate to its lightness.\n",
+    "link": "sass-functions.html#smart-scale"
+  },
+  {
+    "name": "text-inputs()",
+    "type": "sass function",
+    "description": "Generates a selector with every text input type. You can also filter the list to only output a subset of those selectors.\n",
+    "link": "sass-functions.html#text-inputs"
+  },
+  {
+    "name": "strip-unit()",
+    "type": "sass function",
+    "description": "Removes the unit (e.g. px, em, rem) from a value, returning the number only.\n",
+    "link": "sass-functions.html#strip-unit"
+  },
+  {
+    "name": "rem-calc()",
+    "type": "sass function",
+    "description": "Converts one or more pixel values into matching rem values.\n",
+    "link": "sass-functions.html#rem-calc"
+  },
+  {
+    "name": "-zf-to-rem()",
+    "type": "sass function",
+    "description": "Converts a pixel value to matching rem value. *Any* value passed, regardless of unit, is assumed to be a pixel value. By default, the base pixel value used to calculate the rem value is taken from the $global-font-size` variable.\n",
+    "link": "sass-functions.html#-zf-to-rem"
+  },
+  {
+    "name": "has-value()",
+    "type": "sass function",
+    "description": "Determine if a value is not falsey, in CSS terms. Falsey values are null`, `none`, `0` with any unit, or an empty list.\n\n",
+    "link": "sass-functions.html#has-value"
+  },
+  {
+    "name": "get-side()",
+    "type": "sass function",
+    "description": "Determine a top/right/bottom/right value on a padding, margin, etc. property, no matter how many values were passed in. Use this function if you need to know the specific side of a value, but don&#39;t know if the value is using a shorthand format.\n",
+    "link": "sass-functions.html#get-side"
+  },
+  {
+    "name": "get-border-value()",
+    "type": "sass function",
+    "description": "Given border $val, find a specific element of the border, which is $elem. The possible values for $elem are width, style, and color.\n",
+    "link": "sass-functions.html#get-border-value"
+  },
+  {
+    "name": "map-deep-get()",
+    "type": "sass function",
+    "description": "Finds a value in a nested map.",
+    "link": "sass-functions.html#map-deep-get"
+  },
+  {
+    "name": "flex-grid-column()",
+    "type": "sass function",
+    "description": "Calculates the flex` property for a flex grid column. It accepts all of the same values as the basic `grid-column()` function, along with two extras:\n  - `null` (the default) will make the column expand to fill space.\n  - `shrink` will make the column contract, so it only takes up the horizontal space it needs.\n\n",
+    "link": "flex-grid.html#flex-grid-column"
+  },
+  {
+    "name": "flex-video()",
+    "type": "sass function",
+    "description": "Creates a percentage height that can be used as padding in a flex video container.",
+    "link": "flex-video.html#flex-video"
+  },
+  {
+    "name": "grid-column()",
+    "type": "sass function",
+    "description": "Calculates the width of a column based on a number of factors.\n",
+    "link": "grid.html#grid-column"
+  },
+  {
+    "name": "grid-col()",
+    "type": "sass function",
+    "description": "Shorthand for grid-column()`.\n",
+    "link": "grid.html#grid-col"
+  },
+  {
+    "name": "breakpoint()",
+    "type": "sass function",
+    "description": "Generates a media query string matching the input value. Refer to the documentation for the breakpoint()` mixin to see what the possible inputs are.\n\n",
+    "link": "media-queries.html#breakpoint"
+  },
+  {
+    "name": "-zf-get-bp-val()",
+    "type": "sass function",
+    "description": "Get a value for a breakpoint from a responsive config map. If the config map has the key $value`, the exact breakpoint value is returned. If the config map does *not* have the breakpoint, the value matching the next lowest breakpoint in the config map is returned.\n",
+    "link": "media-queries.html#-zf-get-bp-val"
+  },
+  {
+    "type": "js class",
+    "name": "Tabs()",
+    "description": "Creates a new instance of tabs.",
+    "link": "tabs.html#js-class"
+  },
+  {
+    "type": "js class",
+    "name": "Reveal()",
+    "description": "Creates a new instance of Reveal.",
+    "link": "reveal.html#js-class"
+  },
+  {
+    "type": "js class",
+    "name": "Magellan()",
+    "description": "Creates a new instance of Magellan.",
+    "link": "magellan.html#js-class"
+  },
+  {
+    "type": "js class",
+    "name": "Abide()",
+    "description": "Creates a new instance of Abide.",
+    "link": "abide.html#js-class"
+  },
+  {
+    "type": "js class",
+    "name": "Interchange()",
+    "description": "Creates a new instance of Interchange.",
+    "link": "interchange.html#js-class"
+  },
+  {
+    "type": "js class",
+    "name": "Orbit()",
+    "description": "Creates a new instance of an orbit carousel.",
+    "link": "orbit.html#js-class"
+  },
+  {
+    "type": "js class",
+    "name": "Sticky()",
+    "description": "Creates a new instance of a sticky thing.",
+    "link": "sticky.html#js-class"
+  },
+  {
+    "type": "js class",
+    "name": "Slider()",
+    "description": "Creates a new instance of a drilldown menu.",
+    "link": "slider.html#js-class"
+  },
+  {
+    "type": "js class",
+    "name": "ResponsiveToggle()",
+    "description": "Creates a new instance of Tab Bar.",
+    "link": "responsive-navigation.html#js-class"
+  },
+  {
+    "type": "js class",
+    "name": "OffCanvas()",
+    "description": "Creates a new instance of an off-canvas wrapper.",
+    "link": "off-canvas.html#js-class"
+  },
+  {
+    "type": "js class",
+    "name": "Equalizer()",
+    "description": "Creates a new instance of Equalizer.",
+    "link": "equalizer.html#js-class"
+  },
+  {
+    "type": "js class",
+    "name": "Toggler()",
+    "description": "Creates a new instance of Toggler.",
+    "link": "toggler.html#js-class"
+  },
+  {
+    "type": "js class",
+    "name": "Dropdown()",
+    "description": "Creates a new instance of a dropdown.",
+    "link": "dropdown.html#js-class"
+  },
+  {
+    "type": "js class",
+    "name": "Tooltip()",
+    "description": "Creates a new instance of a Tooltip.",
+    "link": "tooltip.html#js-class"
+  },
+  {
+    "type": "js class",
+    "name": "AccordionMenu()",
+    "description": "Creates a new instance of an accordion menu.",
+    "link": "accordion-menu.html#js-class"
+  },
+  {
+    "type": "js class",
+    "name": "DropdownMenu()",
+    "description": "Creates a new instance of DropdownMenu.",
+    "link": "dropdown-menu.html#js-class"
+  },
+  {
+    "type": "js class",
+    "name": "Drilldown()",
+    "description": "Creates a new instance of a drilldown menu.",
+    "link": "drilldown-menu.html#js-class"
+  },
+  {
+    "type": "js class",
+    "name": "Accordion()",
+    "description": "Creates a new instance of an accordion.",
+    "link": "accordion.html#js-class"
+  },
+  {
+    "type": "js function",
+    "name": "Abide#removeErrorClasses()",
+    "description": "Removes CSS error class as specified by the Abide settings from the label, input, and the form",
+    "link": "abide.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Abide#validateInput()",
+    "description": "Goes through a form to find inputs and proceeds to validate them in ways specific to their type",
+    "link": "abide.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "OffCanvas#destroy()",
+    "description": "Destroys the offcanvas plugin.",
+    "link": "off-canvas.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "OffCanvas#toggle()",
+    "description": "Toggles the off-canvas menu open or closed.",
+    "link": "off-canvas.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "OffCanvas#close()",
+    "description": "Closes the off-canvas menu.",
+    "link": "off-canvas.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "OffCanvas#open()",
+    "description": "Opens the off-canvas menu.",
+    "link": "off-canvas.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "OffCanvas#reveal()",
+    "description": "Handles the revealing/hiding the off-canvas at breakpoints, not the same as open.",
+    "link": "off-canvas.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Reveal#close()",
+    "description": "Closes the modal.",
+    "link": "reveal.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "get()",
+    "description": "Gets the media query of a breakpoint.",
+    "link": "media-queries.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "atLeast()",
+    "description": "Checks if the screen is at least as wide as a breakpoint.",
+    "link": "media-queries.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Reveal#open()",
+    "description": "Opens the modal controlled by `this.$anchor`, and closes all others by default.",
+    "link": "reveal.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "ResponsiveToggle#toggleMenu()",
+    "description": "Toggles the element attached to the tab bar. The toggle only happens if the screen is small enough to allow it.",
+    "link": "responsive-navigation.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Accordion#toggle()",
+    "description": "Toggles the selected content pane&#39;s open/close state.",
+    "link": "accordion.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Abide#validateForm()",
+    "description": "Goes through a form and if there are any invalid inputs, it will display the form error element",
+    "link": "abide.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Magellan#destroy()",
+    "description": "Destroys an instance of Magellan and resets the url of the window.",
+    "link": "magellan.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Magellan#reflow()",
+    "description": "Calls necessary functions to update Magellan upon DOM change",
+    "link": "magellan.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Magellan#scrollToLoc()",
+    "description": "Function to scroll to a given location on the page.",
+    "link": "magellan.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Magellan#calcPoints()",
+    "description": "Calculates an array of pixel values that are the demarcation lines between locations on the page.Can be invoked if new elements are added or the size of a location changes.",
+    "link": "magellan.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Abide#requiredCheck()",
+    "description": "Checks whether or not a form element has the required attribute and if it&#39;s checked or not",
+    "link": "abide.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Slider#destroy()",
+    "description": "Destroys the slider plugin.",
+    "link": "slider.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Interchange#destroy()",
+    "description": "Destroys an instance of interchange.",
+    "link": "interchange.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Interchange#replace()",
+    "description": "Update the `src` property of an image, or change the HTML of a container, to the specified path.",
+    "link": "interchange.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Abide#findFormError()",
+    "description": "Based on $el, get the first element with selector in this order:1. The element&#39;s direct sibling(&#39;s).\n3. The element&#39;s parent&#39;s children.\n\nThis allows for multiple form errors per input, though if none are found, no form errors will be shown.",
+    "link": "abide.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Abide#findLabel()",
+    "description": "Get the first element in this order:2. The &lt;label&gt; with the attribute `[for=&quot;someInputId&quot;]`\n3. The `.closest()` &lt;label&gt;",
+    "link": "abide.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Abide#findRadioLabels()",
+    "description": "Get the set of labels associated with a set of radio els in this order2. The &lt;label&gt; with the attribute `[for=&quot;someInputId&quot;]`\n3. The `.closest()` &lt;label&gt;",
+    "link": "abide.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Orbit#destroy()",
+    "description": "Destroys the carousel and hides the element.",
+    "link": "orbit.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Reveal#destroy()",
+    "description": "Destroys an instance of a modal.",
+    "link": "reveal.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Abide#validateRadio()",
+    "description": "Determines whether or a not a radio input is valid based on whether or not it is required and selected. Although the function targets a single `&lt;input&gt;`, it validates by checking the `required` and `checked` properties of all radio buttons in its group.",
+    "link": "abide.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Abide#matchValidation()",
+    "description": "Determines if a selected input passes a custom validation function. Multiple validations can be used, if passed to the element with `data-validator=&quot;foo bar baz&quot;` in a space separated listed.",
+    "link": "abide.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Abide#resetForm()",
+    "description": "Resets form inputs and styles",
+    "link": "abide.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Abide#destroy()",
+    "description": "Destroys an instance of Abide.Removes error styles and classes from elements, without resetting their values.",
+    "link": "abide.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Equalizer#destroy()",
+    "description": "Destroys an instance of Equalizer.",
+    "link": "equalizer.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Equalizer#applyHeightByRow()",
+    "description": "Changes the CSS height property of each child in an Equalizer parent to match the tallest by row",
+    "link": "equalizer.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Equalizer#applyHeight()",
+    "description": "Changes the CSS height property of each child in an Equalizer parent to match the tallest",
+    "link": "equalizer.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Equalizer#getHeightsByRow()",
+    "description": "Finds the outer heights of children contained within an Equalizer parent and returns them in an array",
+    "link": "equalizer.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Sticky#_pauseListeners()",
+    "description": "Removes event handlers for scroll and change events on anchor.",
+    "link": "sticky.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Tabs#_handleTabChange()",
+    "description": "Opens the tab `$targetContent` defined by `$target`.",
+    "link": "tabs.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Tabs#selectTab()",
+    "description": "Public method for selecting a content pane to display.",
+    "link": "tabs.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Tabs#destroy()",
+    "description": "Destroys an instance of an tabs.",
+    "link": "tabs.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Equalizer#getHeights()",
+    "description": "Finds the outer heights of children contained within an Equalizer parent and returns them in an array",
+    "link": "equalizer.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Sticky#_calc()",
+    "description": "Called on every `scroll` event and on `_init`fires functions based on booleans and cached values",
+    "link": "sticky.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Sticky#destroy()",
+    "description": "Destroys the current sticky element.Resets the element to the top position first.\nRemoves event listeners, JS-added css properties and classes, and unwraps the $element if the JS added the $container.",
+    "link": "sticky.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Toggler#toggle()",
+    "description": "Toggles the target class on the target element. An event is fired from the original trigger depending on if the resultant state was &quot;on&quot; or &quot;off&quot;.",
+    "link": "toggler.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Toggler#destroy()",
+    "description": "Destroys the instance of Toggler on the element.",
+    "link": "toggler.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Dropdown#destroy()",
+    "description": "Destroys the dropdown.",
+    "link": "dropdown.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Dropdown#toggle()",
+    "description": "Toggles the dropdown pane&#39;s visibility.",
+    "link": "dropdown.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Dropdown#close()",
+    "description": "Closes the open dropdown pane.",
+    "link": "dropdown.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Dropdown#open()",
+    "description": "Opens the dropdown pane, and fires a bubbling event to close other dropdowns.",
+    "link": "dropdown.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Dropdown#getPositionClass()",
+    "description": "Helper function to determine current orientation of dropdown pane.",
+    "link": "dropdown.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "emCalc()",
+    "description": "Helper function to calculate em values",
+    "link": "sticky.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Abide#addErrorClasses()",
+    "description": "Adds the CSS error class as specified by the Abide settings to the label, input, and the form",
+    "link": "abide.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Tooltip#show()",
+    "description": "reveals the tooltip, and fires an event to close any other open tooltips on the page",
+    "link": "tooltip.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Tooltip#hide()",
+    "description": "Hides the current tooltip, and resets the positioning class if it was changed due to collision",
+    "link": "tooltip.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Tooltip#toggle()",
+    "description": "adds a toggle method, in addition to the static show() &amp; hide() functions",
+    "link": "tooltip.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Tooltip#destroy()",
+    "description": "Destroys an instance of tooltip, removes template element from the view.",
+    "link": "tooltip.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Abide#removeRadioErrorClasses()",
+    "description": "Remove CSS error classes etc from an entire radio button group",
+    "link": "abide.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "AccordionMenu#hideAll()",
+    "description": "Closes all panes of the menu.",
+    "link": "accordion-menu.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "AccordionMenu#toggle()",
+    "description": "Toggles the open/close state of a submenu.",
+    "link": "accordion-menu.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "AccordionMenu#down()",
+    "description": "Opens the sub-menu defined by `$target`.",
+    "link": "accordion-menu.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "DropdownMenu#destroy()",
+    "description": "Destroys the plugin.",
+    "link": "dropdown-menu.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Orbit#changeSlide()",
+    "description": "Changes the current slide to a new one.",
+    "link": "orbit.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "AccordionMenu#up()",
+    "description": "Closes the sub-menu defined by `$target`. All sub-menus inside the target will be closed as well.",
+    "link": "accordion-menu.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "AccordionMenu#destroy()",
+    "description": "Destroys an instance of accordion menu.",
+    "link": "accordion-menu.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Drilldown#destroy()",
+    "description": "Destroys the Drilldown Menu",
+    "link": "drilldown-menu.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Drilldown#_hide()",
+    "description": "Hides a submenu",
+    "link": "drilldown-menu.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Drilldown#_show()",
+    "description": "Opens a submenu.",
+    "link": "drilldown-menu.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Drilldown#_back()",
+    "description": "Adds event listener for each `back` button, and closes open menus.",
+    "link": "drilldown-menu.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Drilldown#_hideAll()",
+    "description": "Closes all open elements, and returns to root menu.",
+    "link": "drilldown-menu.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Orbit#geoSync()",
+    "description": "Sets a `timer` object on the orbit, and starts the counter for the next slide.",
+    "link": "orbit.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Reveal#toggle()",
+    "description": "Toggles the open/closed state of a modal.",
+    "link": "reveal.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Accordion#destroy()",
+    "description": "Destroys an instance of an accordion.",
+    "link": "accordion.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Accordion#up()",
+    "description": "Closes the tab defined by `$target`.",
+    "link": "accordion.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Accordion#down()",
+    "description": "Opens the accordion tab defined by `$target`.",
+    "link": "accordion.html#undefined"
+  },
+  {
+    "type": "js function",
+    "name": "Abide#validateText()",
+    "description": "Determines whether or a not a text input is valid based on the pattern specified in the attribute. If no matching pattern is found, returns true.",
+    "link": "abide.html#undefined"
+  },
+  {
+    "type": "js plugin option",
+    "name": "slideClass",
+    "description": "Class applied to individual slides.",
+    "link": "orbit.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "containerClass",
+    "description": "Class applied to the container of Orbit",
+    "link": "orbit.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "accessible",
+    "description": "Allows Orbit to bind keyboard events to the slider, to animate frames with arrow keys",
+    "link": "orbit.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "pauseOnHover",
+    "description": "Allows the timing function to pause animation on hover.",
+    "link": "orbit.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "swipe",
+    "description": "Allows the Orbit slides to bind to swipe events for mobile, requires an additional util library",
+    "link": "orbit.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "infiniteWrap",
+    "description": "Allows Orbit to infinitely loop through the slides",
+    "link": "orbit.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "timerDelay",
+    "description": "Amount of time, in ms, between slide transitions",
+    "link": "orbit.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "autoPlay",
+    "description": "Allows Orbit to automatically animate on page load.",
+    "link": "orbit.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "animOutToLeft",
+    "description": "motion-ui animation class to apply",
+    "link": "orbit.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "barOffset",
+    "description": "Number of pixels to offset the scroll of the page on item click if using a sticky nav bar.",
+    "link": "magellan.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "deepLinking",
+    "description": "Allows the script to manipulate the url of the current page, and if supported, alter the history.",
+    "link": "magellan.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "activeClass",
+    "description": "Class applied to the active locations link on the magellan container.",
+    "link": "magellan.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "threshold",
+    "description": "Number of pixels to use as a marker for location changes.",
+    "link": "magellan.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "animationEasing",
+    "description": "Animation style to use when scrolling between locations.",
+    "link": "magellan.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "animationDuration",
+    "description": "Amount of time, in ms, the animated scrolling should take between locations.",
+    "link": "magellan.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "animInFromLeft",
+    "description": "motion-ui animation class to apply",
+    "link": "orbit.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "animOutToRight",
+    "description": "motion-ui animation class to apply",
+    "link": "orbit.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "animInFromRight",
+    "description": "motion-ui animation class to apply",
+    "link": "orbit.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "navButtons",
+    "description": "Tells the JS to apply event listeners to nav buttons",
+    "link": "orbit.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "bullets",
+    "description": "Tells the JS to look for and loadBullets.",
+    "link": "orbit.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "showDelay",
+    "description": "Time, in ms, to delay the opening of a modal after a click if no animation used.",
+    "link": "reveal.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "rules",
+    "description": "Rules to be applied to Interchange elements. Set with the `data-interchange` array notation.",
+    "link": "interchange.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "hideDelay",
+    "description": "Time, in ms, to delay the closing of a modal after a click if no animation used.",
+    "link": "reveal.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "hideFor",
+    "description": "The breakpoint after which the menu is always shown, and the tab bar is hidden.",
+    "link": "responsive-navigation.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "closeOnClick",
+    "description": "Allows a click on the body/overlay to close the modal.",
+    "link": "reveal.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "start",
+    "description": "Minimum value for the slider scale.",
+    "link": "slider.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "end",
+    "description": "Maximum value for the slider scale.",
+    "link": "slider.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "step",
+    "description": "Minimum value change per change event.",
+    "link": "slider.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "initialStart",
+    "description": "Value at which the handle/input *(left handle/first input)* should be set to on initialization.",
+    "link": "slider.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "initialEnd",
+    "description": "Value at which the right handle/second input should be set to on initialization.",
+    "link": "slider.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "binding",
+    "description": "Allows the input to be located outside the container and visible. Set to by the JS",
+    "link": "slider.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "equalizeByRow",
+    "description": "Enable height equalization row by row.",
+    "link": "equalizer.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "equalizeOnStack",
+    "description": "Enable height equalization when stacked on smaller screens.",
+    "link": "equalizer.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "clickSelect",
+    "description": "Allows the user to click/tap on the slider bar to select a value.",
+    "link": "slider.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "vertical",
+    "description": "Set to true and use the `vertical` class to change alignment to vertical.",
+    "link": "slider.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "draggable",
+    "description": "Allows the user to drag the slider handle(s) to select a value.",
+    "link": "slider.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "validateOn",
+    "description": "The default event to validate inputs. Checkboxes and radios validate immediately.Remove or change this value for manual validation.",
+    "link": "abide.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "disabled",
+    "description": "Disables the slider and prevents event listeners from being applied. Double checked by JS with `disabledClass`.",
+    "link": "slider.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "doubleSided",
+    "description": "Allows the use of two handles. Double checked by the JS. Changes some logic handling.",
+    "link": "slider.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "decimal",
+    "description": "Number of decimal places the plugin should go to for floating point precision.",
+    "link": "slider.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "moveTime",
+    "description": "Time, in ms, to animate the movement of a slider handle if user clicks/taps on the bar. Needs to be manually set if updating the transition time in the Sass settings.",
+    "link": "slider.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "disabledClass",
+    "description": "Class applied to disabled sliders.",
+    "link": "slider.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "invertVertical",
+    "description": "Will invert the default layout for a vertical&lt;span data-tooltip title=&quot;who would do this???&quot;&gt; &lt;/span&gt;slider.",
+    "link": "slider.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "changedDelay",
+    "description": "Milliseconds before the `changed.zf-slider` event is triggered after value change.",
+    "link": "slider.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "closeOnEsc",
+    "description": "Allows the modal to close if the user presses the `ESCAPE` key.",
+    "link": "reveal.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "labelErrorClass",
+    "description": "Class to be applied to input labels on failed validation.",
+    "link": "abide.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "autoFocus",
+    "description": "Allows the window to scroll to content of active pane on load if set to true.",
+    "link": "tabs.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "wrapOnKeys",
+    "description": "Allows keyboard input to &#39;wrap&#39; around the tab links.",
+    "link": "tabs.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "matchHeight",
+    "description": "Allows the tab content panes to match heights if set to true.",
+    "link": "tabs.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "linkClass",
+    "description": "Class applied to `li`&#39;s in tab link list.",
+    "link": "tabs.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "panelClass",
+    "description": "Class applied to the content containers.",
+    "link": "tabs.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "multipleOpened",
+    "description": "If true, allows multiple modals to be displayed at once.",
+    "link": "reveal.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "vOffset",
+    "description": "Distance, in pixels, the modal should push down from the top of the screen.",
+    "link": "reveal.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "closeOnClick",
+    "description": "Allows a click on the body to close the dropdown.",
+    "link": "dropdown.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "autoFocus",
+    "description": "Allow the plugin to set focus to the first focusable element within the pane, regardless of method of opening.",
+    "link": "dropdown.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "trapFocus",
+    "description": "Allow the plugin to trap focus to the dropdown pane if opened with keyboard commands.",
+    "link": "dropdown.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "positionClass",
+    "description": "Class applied to adjust open position. JS will test and fill this in.",
+    "link": "dropdown.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "hOffset",
+    "description": "Number of pixels between the dropdown pane and the triggering element on open.",
+    "link": "dropdown.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "vOffset",
+    "description": "Number of pixels between the dropdown pane and the triggering element on open.",
+    "link": "dropdown.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "hoverPane",
+    "description": "Don&#39;t close dropdown when hovering over dropdown pane",
+    "link": "dropdown.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "hOffset",
+    "description": "Distance, in pixels, the modal should push in from the side of the screen.",
+    "link": "reveal.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "fullScreen",
+    "description": "Allows the modal to be fullscreen, completely blocking out the rest of the view. JS checks for this as well.",
+    "link": "reveal.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "btmOffsetPct",
+    "description": "Percentage of screen height the modal should push up from the bottom of the view.",
+    "link": "reveal.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "inputErrorClass",
+    "description": "Class to be applied to inputs on failed validation.",
+    "link": "abide.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "formErrorSelector",
+    "description": "Class selector to use to target Form Errors for show/hide.",
+    "link": "abide.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "animate",
+    "description": "Tells the plugin if the element should animated when toggled.",
+    "link": "toggler.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "hover",
+    "description": "Allow submenus to open on hover events",
+    "link": "dropdown.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "hoverDelay",
+    "description": "Amount of time to delay opening a submenu on hover event.",
+    "link": "dropdown.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "formErrorClass",
+    "description": "Class added to Form Errors on failed validation.",
+    "link": "abide.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "liveValidate",
+    "description": "Set to true to validate text inputs on any value change.",
+    "link": "abide.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "overlay",
+    "description": "Allows the modal to generate an overlay div, which will cover the view when modal opens.",
+    "link": "reveal.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "resetOnClose",
+    "description": "Allows the modal to remove and reinject markup on close. Should be true if using video elements w/o using provider&#39;s api, otherwise, videos will continue to play in the background.",
+    "link": "reveal.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "deepLink",
+    "description": "Allows the modal to alter the url on open/close, and allows the use of the `back` button to close modals. ALSO, allows a modal to auto-maniacally open on page load IF the hash === the modal&#39;s user-set id.",
+    "link": "reveal.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "container",
+    "description": "Customizable container template. Add your own classes for styling and sizing.",
+    "link": "sticky.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "stickTo",
+    "description": "Location in the view the element sticks to.",
+    "link": "sticky.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "anchor",
+    "description": "If anchored to a single element, the id of that element.",
+    "link": "sticky.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "topAnchor",
+    "description": "If using more than one element as anchor points, the id of the top anchor.",
+    "link": "sticky.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "btmAnchor",
+    "description": "If using more than one element as anchor points, the id of the bottom anchor.",
+    "link": "sticky.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "marginTop",
+    "description": "Margin, in `em`&#39;s to apply to the top of the element when it becomes sticky.",
+    "link": "sticky.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "marginBottom",
+    "description": "Margin, in `em`&#39;s to apply to the bottom of the element when it becomes sticky.",
+    "link": "sticky.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "stickyOn",
+    "description": "Breakpoint string that is the minimum screen size an element should become sticky.",
+    "link": "sticky.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "validators",
+    "description": "Optional validation functions to be used. `equalTo` being the only default included function.Functions should return only a boolean if the input is valid or not. Functions are given the following arguments:\nel : The jQuery element to validate.\nrequired : Boolean value of the required attribute be present or not.\nparent : The direct parent of the input.",
+    "link": "abide.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "stickyClass",
+    "description": "Class applied to sticky element, and removed on destruction. Foundation defaults to `sticky`.",
+    "link": "sticky.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "containerClass",
+    "description": "Class applied to sticky container. Foundation defaults to `sticky-container`.",
+    "link": "sticky.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "hoverDelay",
+    "description": "Time, in ms, before a tooltip should open on hover.",
+    "link": "tooltip.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "fadeInDuration",
+    "description": "Time, in ms, a tooltip should take to fade into view.",
+    "link": "tooltip.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "fadeOutDuration",
+    "description": "Time, in ms, a tooltip should take to fade out of view.",
+    "link": "tooltip.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "disableHover",
+    "description": "Disables hover events from opening the tooltip if set to true",
+    "link": "tooltip.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "templateClasses",
+    "description": "Optional addtional classes to apply to the tooltip template on init.",
+    "link": "tooltip.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "tooltipClass",
+    "description": "Non-optional class added to tooltip templates. Foundation default is &#39;tooltip&#39;.",
+    "link": "tooltip.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "triggerClass",
+    "description": "Class applied to the tooltip anchor element.",
+    "link": "tooltip.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "showOn",
+    "description": "Minimum breakpoint size at which to open the tooltip.",
+    "link": "tooltip.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "template",
+    "description": "Custom template to be used to generate markup for tooltip.",
+    "link": "tooltip.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "tipText",
+    "description": "Text displayed in the tooltip template on open.",
+    "link": "tooltip.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "clickOpen",
+    "description": "Allows the tooltip to remain open if triggered with a click or touch event.",
+    "link": "tooltip.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "positionClass",
+    "description": "Additional positioning classes, set by the JS",
+    "link": "tooltip.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "vOffset",
+    "description": "Distance, in pixels, the template should push away from the anchor on the Y axis.",
+    "link": "tooltip.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "hOffset",
+    "description": "Distance, in pixels, the template should push away from the anchor on the X axis, if aligned to a side.",
+    "link": "tooltip.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "forceFollow",
+    "description": "Boolean to force overide the clicking of links to perform default action, on second touch event for mobile.",
+    "link": "dropdown-menu.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "rightClass",
+    "description": "Class applied to right-side oriented menus, Foundation default is `align-right`. Update this if using your own class.",
+    "link": "dropdown-menu.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "verticalClass",
+    "description": "Class applied to vertical oriented menus, Foundation default is `vertical`. Update this if using your own class.",
+    "link": "dropdown-menu.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "closeOnClick",
+    "description": "Allow clicks on the body to close any open submenus.",
+    "link": "dropdown-menu.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "alignment",
+    "description": "Position of the menu relative to what direction the submenus should open. Handled by JS.",
+    "link": "dropdown-menu.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "closingTime",
+    "description": "Amount of time to delay closing a submenu on a mouseleave event.",
+    "link": "dropdown-menu.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "clickOpen",
+    "description": "Allow a submenu to open/remain open on parent click event. Allows cursor to move away from menu.",
+    "link": "dropdown-menu.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "hoverDelay",
+    "description": "Amount of time to delay opening a submenu on hover event.",
+    "link": "dropdown-menu.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "autoclose",
+    "description": "Allow a submenu to automatically close on a mouseleave event, if not clicked open.",
+    "link": "dropdown-menu.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "disableHover",
+    "description": "Disallows hover events from opening submenus",
+    "link": "dropdown-menu.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "checkEvery",
+    "description": "Number of scroll events between the plugin&#39;s recalculating sticky points. Setting it to `0` will cause it to recalc every scroll event, setting it to `-1` will prevent recalc on scroll.",
+    "link": "sticky.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "equalizeOn",
+    "description": "String representing the minimum breakpoint size the plugin should equalize heights on.",
+    "link": "equalizer.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "animationIn",
+    "description": "Motion-UI class to use for animated elements. If none used, defaults to simple show/hide.",
+    "link": "reveal.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "animationOut",
+    "description": "Motion-UI class to use for animated elements. If none used, defaults to simple show/hide.",
+    "link": "reveal.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "closeOnClick",
+    "description": "Allow the menu to return to root list on body click.",
+    "link": "drilldown-menu.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "parentLink",
+    "description": "Adds the parent link to the submenu.",
+    "link": "drilldown-menu.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "wrapper",
+    "description": "Markup used to wrap drilldown menu. Use a class name for independent styling; the JS applied class: `is-drilldown` is required. Remove the backslash (`\\`) if copy and pasting.",
+    "link": "drilldown-menu.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "backButton",
+    "description": "Markup used for JS generated back button. Prepended to submenu lists and deleted on `destroy` method, &#39;js-drilldown-back&#39; class required. Remove the backslash (`\\`) if copy and pasting.",
+    "link": "drilldown-menu.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "trapFocus",
+    "description": "Triggers optional focus trapping when opening an offcanvas. Sets tabindex of [data-off-canvas-content] to -1 for accessibility purposes.",
+    "link": "off-canvas.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "revealClass",
+    "description": "Class used to force an offcanvas to remain open. Foundation defaults for this are `reveal-for-large` &amp; `reveal-for-medium`.",
+    "link": "off-canvas.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "slideSpeed",
+    "description": "Amount of time to animate the opening of a submenu in ms.",
+    "link": "accordion-menu.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "autoFocus",
+    "description": "Force focus to the offcanvas on open. If true, will focus the opening trigger on close.",
+    "link": "off-canvas.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "revealOn",
+    "description": "Breakpoint at which to reveal. JS will use a RegExp to target standard classes, if changing classnames, pass your class with the `revealClass` option.",
+    "link": "off-canvas.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "isRevealed",
+    "description": "Allow the offcanvas to remain open for certain breakpoints.",
+    "link": "off-canvas.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "forceTop",
+    "description": "Force the page to scroll to top on open.",
+    "link": "off-canvas.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "position",
+    "description": "Direction the offcanvas opens from. Determines class applied to body.",
+    "link": "off-canvas.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "transitionTime",
+    "description": "Amount of time in ms the open and close transition requires. If none selected, pulls from body style.",
+    "link": "off-canvas.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "allowAllClosed",
+    "description": "Allow the accordion to close all panes.",
+    "link": "accordion.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "multiExpand",
+    "description": "Allow the accordion to have multiple open panes.",
+    "link": "accordion.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "slideSpeed",
+    "description": "Amount of time to animate the opening of an accordion pane.",
+    "link": "accordion.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "multiOpen",
+    "description": "Allow the menu to have multiple open panes.",
+    "link": "accordion-menu.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "closeOnClick",
+    "description": "Allow the user to click outside of the menu to close it.",
+    "link": "off-canvas.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "useMUI",
+    "description": "Boolean to flag the js to use motion ui classes or not. Default to true for backwards compatability.",
+    "link": "orbit.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "prevClass",
+    "description": "Class applied to the `previous` navigation button.",
+    "link": "orbit.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "nextClass",
+    "description": "Class applied to the `next` navigation button.",
+    "link": "orbit.html#js-members"
+  },
+  {
+    "type": "js plugin option",
+    "name": "boxOfBullets",
+    "description": "Class applied to the bullet container. You&#39;re welcome.",
+    "link": "orbit.html#js-members"
+  },
+  {
+    "type": "js event",
+    "name": "formreset",
+    "description": "Fires when the form has been reset.",
+    "link": "abide.html#js-events"
+  },
+  {
+    "type": "js event",
+    "name": "down",
+    "description": "Fires when the tab is done opening.",
+    "link": "accordion.html#js-events"
+  },
+  {
+    "type": "js event",
+    "name": "closed",
+    "description": "Fires when the menu is fully closed.",
+    "link": "drilldown-menu.html#js-events"
+  },
+  {
+    "type": "js event",
+    "name": "up",
+    "description": "Fires when the menu is done collapsing up.",
+    "link": "accordion-menu.html#js-events"
+  },
+  {
+    "type": "js event",
+    "name": "down",
+    "description": "Fires when the menu is done opening.",
+    "link": "accordion-menu.html#js-events"
+  },
+  {
+    "type": "js event",
+    "name": "open",
+    "description": "Fires when the submenu has opened.",
+    "link": "drilldown-menu.html#js-events"
+  },
+  {
+    "type": "js event",
+    "name": "hide",
+    "description": "Fires when the submenu has closed.",
+    "link": "drilldown-menu.html#js-events"
+  },
+  {
+    "type": "js event",
+    "name": "show",
+    "description": "Fires when the new dropdown pane is visible.",
+    "link": "dropdown-menu.html#js-events"
+  },
+  {
+    "type": "js event",
+    "name": "hide",
+    "description": "Fires when the open menus are closed.",
+    "link": "dropdown-menu.html#js-events"
+  },
+  {
+    "type": "js event",
+    "name": "hide",
+    "description": "fires when the tooltip is hidden",
+    "link": "tooltip.html#js-events"
+  },
+  {
+    "type": "js event",
+    "name": "show",
+    "description": "Fires when the tooltip is shown",
+    "link": "tooltip.html#js-events"
+  },
+  {
+    "type": "js event",
+    "name": "tooltip",
+    "description": "Fires to close all other open tooltips on the page",
+    "link": "tooltip.html#js-events"
+  },
+  {
+    "type": "js event",
+    "name": "closeme",
+    "description": "Fires to close other open dropdowns",
+    "link": "dropdown.html#js-events"
+  },
+  {
+    "type": "js event",
+    "name": "show",
+    "description": "Fires once the dropdown is visible.",
+    "link": "dropdown.html#js-events"
+  },
+  {
+    "type": "js event",
+    "name": "off",
+    "description": "Fires if the target element does not have the class after a toggle.",
+    "link": "toggler.html#js-events"
+  },
+  {
+    "type": "js event",
+    "name": "on",
+    "description": "Fires if the target element has the class after a toggle.",
+    "link": "toggler.html#js-events"
+  },
+  {
+    "type": "js event",
+    "name": "change",
+    "description": "Fires when the plugin has successfully changed tabs.",
+    "link": "tabs.html#js-events"
+  },
+  {
+    "type": "js event",
+    "name": "preequalized",
+    "description": "Fires before the heights are applied",
+    "link": "equalizer.html#js-events"
+  },
+  {
+    "type": "js event",
+    "name": "up",
+    "description": "Fires when the tab is done collapsing up.",
+    "link": "accordion.html#js-events"
+  },
+  {
+    "type": "js event",
+    "name": "forminvalid",
+    "description": "Fires when the form is finished validating. Event trigger is either `formvalid.zf.abide` or `forminvalid.zf.abide`.Trigger includes the element of the form.",
+    "link": "abide.html#js-events"
+  },
+  {
+    "type": "js event",
+    "name": "invalid",
+    "description": "Fires when the input is done checking for validation. Event trigger is either `valid.zf.abide` or `invalid.zf.abide`Trigger includes the DOM element of the input.",
+    "link": "abide.html#js-events"
+  },
+  {
+    "type": "js event",
+    "name": "postequalized",
+    "description": "Fires when the heights have been applied",
+    "link": "equalizer.html#js-events"
+  },
+  {
+    "type": "js event",
+    "name": "preequalizedRow",
+    "description": "Fires before the heights per row are applied",
+    "link": "equalizer.html#js-events"
+  },
+  {
+    "type": "js event",
+    "name": "postequalizedRow",
+    "description": "Fires when the heights per row have been applied",
+    "link": "equalizer.html#js-events"
+  },
+  {
+    "type": "js event",
+    "name": "open",
+    "description": "Fires when the modal has successfully opened.",
+    "link": "reveal.html#js-events"
+  },
+  {
+    "type": "js event",
+    "name": "replaced",
+    "description": "Fires when content in an Interchange element is done being loaded.",
+    "link": "interchange.html#js-events"
+  },
+  {
+    "type": "js event",
+    "name": "update",
+    "description": "Fires when magellan is finished updating to the new active element.",
+    "link": "magellan.html#js-events"
+  },
+  {
+    "type": "js event",
+    "name": "opened",
+    "description": "Fires when the off-canvas menu opens.",
+    "link": "off-canvas.html#js-events"
+  },
+  {
+    "type": "js event",
+    "name": "closed",
+    "description": "Fires when the off-canvas menu opens.",
+    "link": "off-canvas.html#js-events"
+  },
+  {
+    "type": "js event",
+    "name": "unstuckfrom",
+    "description": "Fires when the $element has become anchored.Namespaced to `top` or `bottom`, e.g. `sticky.zf.unstuckfrom:bottom`",
+    "link": "sticky.html#js-events"
+  },
+  {
+    "type": "js event",
+    "name": "stuckto",
+    "description": "Fires when the $element has become `position: fixed;`Namespaced to `top` or `bottom`, e.g. `sticky.zf.stuckto:top`",
+    "link": "sticky.html#js-events"
+  },
+  {
+    "type": "js event",
+    "name": "slidechange",
+    "description": "Triggers when the slide has finished animating in.",
+    "link": "orbit.html#js-events"
+  },
+  {
+    "type": "js event",
+    "name": "changed",
+    "description": "Fires when the value has not been change for a given time.",
+    "link": "slider.html#js-events"
+  },
+  {
+    "type": "js event",
+    "name": "moved",
+    "description": "Fires when the handle is done moving.",
+    "link": "slider.html#js-events"
+  },
+  {
+    "type": "js event",
+    "name": "toggled",
+    "description": "Fires when the element attached to the tab bar toggles.",
+    "link": "responsive-navigation.html#js-events"
+  },
+  {
+    "type": "js event",
+    "name": "closed",
+    "description": "Fires when the modal is done closing.",
+    "link": "reveal.html#js-events"
+  },
+  {
+    "type": "js event",
+    "name": "closeme",
+    "description": "Fires immediately before the modal opens.Closes any other modals that are currently open",
+    "link": "reveal.html#js-events"
+  }
+]

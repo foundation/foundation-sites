@@ -1,0 +1,1028 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Behind the scenes, Foundation is powered by a set of utility Sass functions that help us work with colors, units, selectors, and more.">
+  <link rel="icon" href="assets/img/icons/foundation-favicon.ico" type="image/x-icon">
+  <title>Foundation for Sites 6 Docs | Sass Functions</title>
+  <link href="assets/css/docs.css?hash=22a74e9f6e972530746afd6e3c93e5c6" rel="stylesheet" />
+  <link href="//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css?hash=d6cff3980a05d33c269e4ffcacdc2005" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="./node_modules/motion-ui/dist/motion-ui.css" /> -->
+</head>
+<body>
+
+  <div class="off-canvas-wrapper"><div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+
+    <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas data-position="left">
+      <button class="close-button" aria-label="Close menu" type="button" data-close>
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <ul class="mobile-ofc vertical menu">
+        
+        <li>
+          <a href="http://foundation.zurb.com/learn/about.html">About</a>
+          <ul class="submenu menu vertical" data-submenu>
+            <li><a href="http://foundation.zurb.com/learn/about.html">About Foundation</a></li>
+            <li><a href="http://foundation.zurb.com/learn/blog.html">Blog</a></li>
+            
+            <li><a href="http://foundation.zurb.com/learn/case-studies.html">Case Studies</a></li>
+            <li><a href="http://foundation.zurb.com/learn/brands.html">Brands</a></li>
+            <li><a href="http://foundation.zurb.com/learn/buzz.html">Buzz</a></li>
+          </ul>
+        </li>
+        
+        <li>
+          <a href="http://foundation.zurb.com/develop/getting-started.html">Develop</a>
+          <ul class="submenu menu vertical" data-submenu>
+            <li class="title">Frameworks</li>
+            <li><a href="http://foundation.zurb.com/sites.html">Foundation for Sites</a></li>
+            <li><a href="http://foundation.zurb.com/emails.html">Foundation for Email</a></li>
+            <li><a href="http://foundation.zurb.com/apps.html">Foundation for Apps</a></li>
+            <li class="divider"></li>
+            <li class="title">Develop</li>
+            <li><a href="http://foundation.zurb.com/templates.html">HTML Templates</a></li>
+            <li><a href="http://foundation.zurb.com/sites/resources.html">Resources</a></li>
+            <li><a href="http://foundation.zurb.com/develop/building-blocks.html">Building Blocks</a></li>
+            <li><a href="http://foundation.zurb.com/develop/yeti-launch.html">Yeti Launch</a></li>
+            <li><a href="http://foundation.zurb.com/develop/contribute.html">Contribute</a></li>
+          </ul>
+        </li>
+    
+        <li>
+          <a href="http://foundation.zurb.com/learn/tutorials.html">Tutorials</a>
+          <ul class="submenu menu vertical" data-submenu>
+            <li><a href="http://foundation.zurb.com/learn/tutorials.html">Tutorials</a></li>
+            <li><a href="http://foundation.zurb.com/learn/classes.html">Classes</a></li>
+            <li><a href="http://foundation.zurb.com/learn/custom-training.html">Custom Training</a></li>
+            <li><a href="http://foundation.zurb.com/learn/certification.html">Certification</a></li>
+            <li><a href="http://foundation.zurb.com/learn/responsive-reading.html">Responsive Reading</a></li>
+          </ul>
+        </li>
+        
+        <li>
+          <a href="http://foundation.zurb.com/get-involved/support.html">Get Involved</a>
+          <ul class="submenu menu vertical" data-submenu>
+            <li><a href="http://foundation.zurb.com/get-involved/support.html">Connect</a></li>
+            <li><a href="http://foundation.zurb.com/get-involved/premium-support.html">PLZ Halp</a></li>
+            <li><a href="http://foundation.zurb.com/forum/sort/unanswered">Foundation Forum</a></li>
+            <li><a href="http://foundation.zurb.com/learn/events.html">Events</a></li>
+            <li><a href="http://foundation.zurb.com/get-involved/faq.html">FAQs</a></li>
+            <li><a href="http://foundation.zurb.com/get-involved/contribute.html">Contribute</a></li>
+            <li><a href="http://foundation.zurb.com/get-involved/yetinauts.html">Yetinauts</a></li>
+          </ul>
+        </li>
+        
+        <li>
+          <a href="http://foundation.zurb.com/frameworks-docs.html">Docs</a>
+          <ul class="submenu menu vertical" data-submenu>
+            <li><a href="http://foundation.zurb.com/docs/" target="_blank">Sites Docs</a></li>
+            <li><a href="http://foundation.zurb.com/apps/docs/#!/" target="_blank">Apps Docs</a></li>
+            <li><a href="http://zurb.com/ink/docs.php" target="_blank">Email Docs</a></li>
+          </ul>
+        </li>
+        
+        <li><a href="http://foundation.zurb.com/develop/getting-started.html" class="button">Getting Started</a></li>
+    
+      </ul>
+    </div>
+    
+    <div class="off-canvas position-right" id="offCanvasRight" data-off-canvas data-position="right">
+      <button class="close-button" aria-label="Close menu" type="button" data-close>
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <ul class="vertical menu">
+        <li><a href="#">Foundation</a></li>
+        <li><a href="#">Dot</a></li>
+        <li><a href="#">ZURB</a></li>
+        <li><a href="#">Com</a></li>
+        <li><a href="#">Slash</a></li>
+        <li><a href="#">Sites</a></li>
+      </ul>
+    </div>
+    
+
+    <div class="off-canvas-content" data-off-canvas-content>
+      <!-- Info Banner For Announcements or Links -->
+      <!-- <a href="http://zurb.com/article/1416/foundation-6-is-here" id="notice">
+        <div class="info">
+          <h5>Foundation 6 is here!</h5>
+        </div>
+      </a> -->
+
+      <nav class="marketing-topbar show-for-medium">
+      
+        <ul class="menu">
+          <li class="topbar-title"><a href="http://foundation.zurb.com/index.html"><img src="assets/img/logos/zurb-logo.svg" alt="ZURB"> Foundation</a></li>
+        </ul>
+      
+        <ul class="dropdown menu" data-dropdown-menu data-click-open="false">
+      
+          <li>
+            <a href="http://foundation.zurb.com/learn/about.html">About</a>
+            <ul class="submenu menu vertical" data-submenu>
+              <li><a href="http://foundation.zurb.com/learn/about.html">About Foundation</a></li>
+              <li><a href="http://foundation.zurb.com/learn/blog.html">Blog</a></li>
+              <li><a href="http://foundation.zurb.com/learn/case-studies.html">Case Studies</a></li>
+              <li><a href="http://foundation.zurb.com/learn/brands.html">Brands</a></li>
+              <li><a href="http://foundation.zurb.com/learn/buzz.html">Buzz</a></li>
+            </ul>
+          </li>
+      
+          <li>
+            <a href="http://foundation.zurb.com/develop/getting-started.html">Develop</a>
+            <ul class="submenu menu vertical" data-submenu>
+              <li class="title">Frameworks</li>
+              <li><a href="http://foundation.zurb.com/sites.html">Foundation for Sites</a></li>
+              <li><a href="http://foundation.zurb.com/emails.html">Foundation for Email</a></li>
+              <li><a href="http://foundation.zurb.com/apps.html">Foundation for Apps</a></li>
+              <li class="divider"></li>
+              <li class="title">Develop</li>
+              <li><a href="http://foundation.zurb.com/templates.html">HTML Templates</a></li>
+              <li><a href="http://foundation.zurb.com/sites/resources.html">Resources</a></li>
+              <li><a href="http://foundation.zurb.com/develop/building-blocks.html">Building Blocks</a></li>
+              <li><a href="http://foundation.zurb.com/develop/yeti-launch.html">Yeti Launch</a></li>
+              <li><a href="http://foundation.zurb.com/develop/contribute.html">Contribute</a></li>
+              <li><a href="http://foundation.zurb.com/upload.html">Annotate Code</a></li>
+            </ul>
+          </li>
+      
+          <li>
+            <a href="http://foundation.zurb.com/learn/tutorials.html">Tutorials</a>
+            <ul class="submenu menu vertical" data-submenu>
+              <li><a href="http://foundation.zurb.com/learn/tutorials.html">Tutorials</a></li>
+              <li><a href="http://foundation.zurb.com/learn/classes.html">Classes</a></li>
+              <li><a href="http://foundation.zurb.com/learn/custom-training.html">Custom Training</a></li>
+              <li><a href="http://foundation.zurb.com/learn/certification.html">Certification</a></li>
+              <li><a href="http://foundation.zurb.com/learn/responsive-reading.html">Responsive Reading</a></li>
+            </ul>
+          </li>
+      
+          <li>
+            <a href="http://foundation.zurb.com/get-involved/contribute.html">Get Involved</a>
+            <ul class="submenu menu vertical" data-submenu>
+              <li><a href="http://foundation.zurb.com/get-involved/support.html">Connect</a></li>
+              <li><a href="http://foundation.zurb.com/get-involved/premium-support.html">PLZ Halp</a></li>
+              <li><a href="http://foundation.zurb.com/forum/">Foundation Forum</a></li>
+              <li><a href="http://foundation.zurb.com/learn/events.html">Events</a></li>
+              <li><a href="http://foundation.zurb.com/get-involved/faq.html">FAQs</a></li>
+              <li><a href="http://foundation.zurb.com/get-involved/contribute.html">Contribute</a></li>
+              <li><a href="http://foundation.zurb.com/get-involved/yetinauts.html">Yetinauts</a></li>
+            </ul>
+          </li>
+      
+          <li>
+            <a href="http://foundation.zurb.com/frameworks-docs.html">Docs</a>
+            <ul class="submenu menu vertical" data-submenu>
+              <li><a href="http://foundation.zurb.com/docs/" target="_blank">Sites Docs</a></li>
+              <li><a href="http://foundation.zurb.com/sites/docs/v/5.5.3/" target="_blank">F5 Docs</a></li>
+              <li><a href="http://foundation.zurb.com/apps/docs/#!/" target="_blank">Apps Docs</a></li>
+              <li><a href="http://foundation.zurb.com/emails/docs/" target="_blank">Email Docs</a></li>
+            </ul>
+          </li>
+      
+          <li><a href="http://foundation.zurb.com/develop/getting-started.html" class="button">Getting Started</a></li>
+      
+        </ul>
+      
+      </nav>
+      
+      <div class="title-bar hide-for-medium">
+        <div class="title-bar-left">
+          <button class="menu-icon" type="button" data-open="offCanvasLeft"></button>
+          <span class="title-bar-title">Foundation</span>
+        </div>
+      </div>
+      
+
+      <input type="text" class="docs-search" data-docs-search placeholder="Find a page, component, variable, mixin, function...">
+
+      <div class="expanded row">
+        <div class="medium-9 large-10 medium-push-3 large-push-2 columns">
+
+<article class="docs-component" id="docs-sass-functions">
+
+<a href="#docs-menu" class="small secondary expanded button hide-for-medium">Jump to Nav</a>
+
+<header>
+  <h1 class="docs-page-title">Sass Functions</h1>
+
+
+  <p class="lead docs-page-lead">Behind the scenes, Foundation is powered by a set of utility Sass functions that help us work with colors, units, selectors, and more.</p>
+
+  <ul class="menu simple docs-contribute-menu">
+    <li><a href="https://github.com/zurb/foundation-sites/edit/master/docs/pages/sass-functions.md" target="_blank"><i class="fi-pencil"></i>Edit this Page</a></li>
+    <li><a href="https://github.com/zurb/foundation-sites/issues/new?title=%5BSass%20Functions%5D%20ISSUE%20NAME%20HERE" target="_blank"><i class="fi-social-github"></i>Report a Bug</a></li>
+    <li><a href="http://foundation.zurb.com/forum" target="_blank"><i class="fi-comment"></i>Get Help</a></li>
+  </ul>
+</header>
+
+<hr>
+
+<div class="row">
+
+<div class="large-9 columns" id="docs">
+
+<h2 id="importing" class="docs-heading" data-magellan-target="importing">Importing<a class="docs-heading-icon" href="#importing"></a></h2><p>All of Foundation&#39;s Sass utilities are in the folder <code>scss/util</code>, and broken up into multiple files by category. You can import every utility file at once using this line of code:</p>
+<div class="docs-code" data-docs-code><pre><code class="scss">@<span class="hljs-keyword">import</span> <span class="hljs-string">'util/util'</span>;</code></pre></div><p>Or, utilities can be imported individually.</p>
+<div class="docs-code" data-docs-code><pre><code class="scss"><span class="hljs-comment">// Color manipulation</span>
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'util/color'</span>;
+
+<span class="hljs-comment">// Selector generation</span>
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'util/selector'</span>;
+
+<span class="hljs-comment">// Unit manipulation and conversion</span>
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'util/unit'</span>;
+
+<span class="hljs-comment">// Value checking and extraction</span>
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'util/value'</span>;</code></pre></div><div class="callout warning">
+  <p>Variables, functions, or mixins prefixed with <code>-zf-</code> are considered part of the internal API, which means they could change, break, or disappear without warning. We recommend sticking to only the public API, which is documented below.</p>
+</div>
+
+
+<hr>
+<section>
+  <h2 id="sass-reference" class="docs-heading" data-magellan-target="sass-reference">Sass Reference<a class="docs-heading-icon" href="#sass-reference"></a></h2>
+
+
+  
+
+  <section>
+    <h3 id="sass-mixins" class="docs-heading">Mixins<a class="docs-heading-icon" href="#sass-mixins"></a></h3>
+
+    <p>We use these mixins to build the final CSS output of this component. You can use the mixins yourself to build your own class structure out of our components.</p>
+
+    
+    <section >
+      <h4 id="add-foundation-colors" class="docs-heading">add-foundation-colors<a class="docs-heading-icon" href="#add-foundation-colors"></a></h4>
+
+
+
+      <div class="docs-code">
+        <pre><code>@<span class="hljs-keyword">include</span> add-foundation-colors;</code></pre>
+      </div>
+
+      <p>Transfers the colors in the <code>$foundation-palette</code> variable into the legacy color variables, such as <code>$primary-color</code> and <code>$secondary-color</code>. Call this mixin below the Global section of your settings file to properly migrate your codebase.</p>
+
+
+
+      
+
+    </section>
+
+    <hr>
+
+
+    
+    <section >
+      <h4 id="flex" class="docs-heading">flex<a class="docs-heading-icon" href="#flex"></a></h4>
+
+
+
+      <div class="docs-code">
+        <pre><code>@<span class="hljs-keyword">include</span> flex;</code></pre>
+      </div>
+
+      <p>Enables flexbox by adding <code>display: flex</code> to the element.</p>
+
+
+
+      
+
+    </section>
+
+    <hr>
+
+
+    
+    <section >
+      <h4 id="flex-align" class="docs-heading">flex-align<a class="docs-heading-icon" href="#flex-align"></a></h4>
+
+
+
+      <div class="docs-code">
+        <pre><code>@<span class="hljs-keyword">include</span> flex-align(<span class="hljs-variable">$x</span>, <span class="hljs-variable">$y</span>);</code></pre>
+      </div>
+
+      <p>Horizontally or vertically aligns the items within a flex container.</p>
+
+
+
+      
+
+      <table class="docs-variable-table">
+        <thead>
+          <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        </thead>
+        <tr>
+          <td><code>$x</code></td>
+          <td>Keyword</td>
+          <td><code>null</code></td>
+          <td><p>Horizontal alignment to use. Can be <code>left</code>, <code>right</code>, <code>center</code>, <code>justify</code>, or <code>spaced</code>. Or, set it to <code>null</code> (the default) to not set horizontal alignment.</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$y</code></td>
+          <td>Keyword</td>
+          <td><code>null</code></td>
+          <td><p>Vertical alignment to use. Can be <code>top</code>, <code>bottom</code>, <code>middle</code>, or <code>stretch</code>. Or, set it to <code>null</code> (the default) to not set vertical alignment.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+
+    <hr>
+
+
+    
+    <section >
+      <h4 id="flex-align-self" class="docs-heading">flex-align-self<a class="docs-heading-icon" href="#flex-align-self"></a></h4>
+
+
+
+      <div class="docs-code">
+        <pre><code>@<span class="hljs-keyword">include</span> flex-align-self(<span class="hljs-variable">$y</span>);</code></pre>
+      </div>
+
+      <p>Vertically align a single column within a flex row. Apply this mixin to a flex column.</p>
+
+
+
+      
+
+      <table class="docs-variable-table">
+        <thead>
+          <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        </thead>
+        <tr>
+          <td><code>$y</code></td>
+          <td>Keyword</td>
+          <td><code>null</code></td>
+          <td><p>Vertical alignment to use. Can be <code>top</code>, <code>bottom</code>, <code>middle</code>, or <code>stretch</code>. Or, set it to <code>null</code> (the default) to not set vertical alignment.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+
+    <hr>
+
+
+    
+    <section >
+      <h4 id="flex-order" class="docs-heading">flex-order<a class="docs-heading-icon" href="#flex-order"></a></h4>
+
+
+
+      <div class="docs-code">
+        <pre><code>@<span class="hljs-keyword">include</span> flex-order(<span class="hljs-variable">$order</span>);</code></pre>
+      </div>
+
+      <p>Changes the source order of a flex child. Children with lower numbers appear first in the layout.</p>
+
+
+
+      
+
+      <table class="docs-variable-table">
+        <thead>
+          <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        </thead>
+        <tr>
+          <td><code>$order</code></td>
+          <td>Number</td>
+          <td><code>0</code></td>
+          <td><p>Order number to apply.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+
+    
+
+
+    
+  </section>
+
+  <hr>
+
+  <section>
+    <h3 id="sass-functions" class="docs-heading">Functions<a class="docs-heading-icon" href="#sass-functions"></a></h3>
+
+    
+    <section >
+      <h4 id="foreground" class="docs-heading">foreground<a class="docs-heading-icon" href="#foreground"></a></h4>
+
+
+
+      <div class="docs-code">
+        <pre><code>foreground(<span class="hljs-variable">$color</span>, <span class="hljs-variable">$yes</span>, <span class="hljs-variable">$no</span>, <span class="hljs-variable">$threshold</span>)</code></pre>
+      </div>
+
+      <p>Checks the lightness of <code>$color</code>, and if it passes the <code>$threshold</code> of lightness, it returns the <code>$yes</code> color. Otherwise, it returns the <code>$no</code> color. Use this function to dynamically output a foreground color based on a given background color.</p>
+
+
+      
+
+      <table class="docs-variable-table">
+        <thead>
+          <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        </thead>
+        <tr>
+          <td><code>$color</code></td>
+          <td>Color</td>
+          <td><code><span style="color: #999;">None</span></code></td>
+          <td><p>Color to check the lightness of.</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$yes</code></td>
+          <td>Color</td>
+          <td><code>$black</code></td>
+          <td><p>Color to return if <code>$color</code> is light.</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$no</code></td>
+          <td>Color</td>
+          <td><code>$white</code></td>
+          <td><p>Color to return if <code>$color</code> is dark.</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$threshold</code></td>
+          <td>Percentage</td>
+          <td><code>60%</code></td>
+          <td><p>Threshold of lightness to check against.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+
+    <hr>
+    
+    <section >
+      <h4 id="smart-scale" class="docs-heading">smart-scale<a class="docs-heading-icon" href="#smart-scale"></a></h4>
+
+
+
+      <div class="docs-code">
+        <pre><code>smart-scale(<span class="hljs-variable">$color</span>, <span class="hljs-variable">$scale</span>, <span class="hljs-variable">$threshold</span>)</code></pre>
+      </div>
+
+      <p>Scales a color to be lighter if it&#39;s light, or darker if it&#39;s dark. Use this function to tint a color appropriate to its lightness.</p>
+
+
+      
+
+      <table class="docs-variable-table">
+        <thead>
+          <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        </thead>
+        <tr>
+          <td><code>$color</code></td>
+          <td>Color</td>
+          <td><code><span style="color: #999;">None</span></code></td>
+          <td><p>Color to scale.</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$scale</code></td>
+          <td>Percentage</td>
+          <td><code>5%</code></td>
+          <td><p>Amount to scale up or down.</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$threshold</code></td>
+          <td>Percentage</td>
+          <td><code>40%</code></td>
+          <td><p>Threshold of lightness to check against.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+
+    <hr>
+    
+    <section >
+      <h4 id="text-inputs" class="docs-heading">text-inputs<a class="docs-heading-icon" href="#text-inputs"></a></h4>
+
+
+
+      <div class="docs-code">
+        <pre><code>text-inputs(<span class="hljs-variable">$types</span>)</code></pre>
+      </div>
+
+      <p>Generates a selector with every text input type. You can also filter the list to only output a subset of those selectors.</p>
+
+
+      
+
+      <table class="docs-variable-table">
+        <thead>
+          <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        </thead>
+        <tr>
+          <td><code>$types</code></td>
+          <td>List or Keyword</td>
+          <td><code></code></td>
+          <td><p>A list of text input types to use. Leave blank to use all of them.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+
+    <hr>
+    
+    <section >
+      <h4 id="strip-unit" class="docs-heading">strip-unit<a class="docs-heading-icon" href="#strip-unit"></a></h4>
+
+
+
+      <div class="docs-code">
+        <pre><code>strip-unit(<span class="hljs-variable">$num</span>)</code></pre>
+      </div>
+
+      <p>Removes the unit (e.g. px, em, rem) from a value, returning the number only.</p>
+
+
+      
+
+      <table class="docs-variable-table">
+        <thead>
+          <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        </thead>
+        <tr>
+          <td><code>$num</code></td>
+          <td>Number</td>
+          <td><code><span style="color: #999;">None</span></code></td>
+          <td><p>Number to strip unit from.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+
+    <hr>
+    
+    <section >
+      <h4 id="rem-calc" class="docs-heading">rem-calc<a class="docs-heading-icon" href="#rem-calc"></a></h4>
+
+
+
+      <div class="docs-code">
+        <pre><code>rem-calc(<span class="hljs-variable">$values</span>, <span class="hljs-variable">$base</span>)</code></pre>
+      </div>
+
+      <p>Converts one or more pixel values into matching rem values.</p>
+
+
+      
+
+      <table class="docs-variable-table">
+        <thead>
+          <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        </thead>
+        <tr>
+          <td><code>$values</code></td>
+          <td>Number or List</td>
+          <td><code><span style="color: #999;">None</span></code></td>
+          <td><p>One or more values to convert. Be sure to separate them with spaces and not commas. If you need to convert a comma-separated list, wrap the list in parentheses.</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$base</code></td>
+          <td>Number</td>
+          <td><code>null</code></td>
+          <td><p>The base value to use when calculating the <code>rem</code>. If you&#39;re using Foundation out of the box, this is 16px. If this parameter is <code>null</code>, the function will reference the <code>$base-font-size</code> variable as the base.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+
+    <hr>
+    
+    <section >
+      <h4 id="has-value" class="docs-heading">has-value<a class="docs-heading-icon" href="#has-value"></a></h4>
+
+
+
+      <div class="docs-code">
+        <pre><code>has-value(<span class="hljs-variable">$val</span>)</code></pre>
+      </div>
+
+      <p>Determine if a value is not falsey, in CSS terms. Falsey values are <code>null</code>, <code>none</code>, <code>0</code> with any unit, or an empty list.</p>
+
+
+      
+
+      <table class="docs-variable-table">
+        <thead>
+          <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        </thead>
+        <tr>
+          <td><code>$val</code></td>
+          <td>Mixed</td>
+          <td><code><span style="color: #999;">None</span></code></td>
+          <td><p>Value to check.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+
+    <hr>
+    
+    <section >
+      <h4 id="get-side" class="docs-heading">get-side<a class="docs-heading-icon" href="#get-side"></a></h4>
+
+
+
+      <div class="docs-code">
+        <pre><code>get-side(<span class="hljs-variable">$val</span>, <span class="hljs-variable">$side</span>)</code></pre>
+      </div>
+
+      <p>Determine a top/right/bottom/right value on a padding, margin, etc. property, no matter how many values were passed in. Use this function if you need to know the specific side of a value, but don&#39;t know if the value is using a shorthand format.</p>
+
+
+      
+
+      <table class="docs-variable-table">
+        <thead>
+          <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        </thead>
+        <tr>
+          <td><code>$val</code></td>
+          <td>List or Number</td>
+          <td><code><span style="color: #999;">None</span></code></td>
+          <td><p>Value to analyze. Should be a shorthand sizing property, e.g. &quot;1em 2em 1em&quot;</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$side</code></td>
+          <td>Keyword</td>
+          <td><code><span style="color: #999;">None</span></code></td>
+          <td><p>Side to return. Should be <code>top</code>, <code>right</code>, <code>bottom</code>, or <code>left</code>.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+
+    <hr>
+    
+    <section >
+      <h4 id="get-border-value" class="docs-heading">get-border-value<a class="docs-heading-icon" href="#get-border-value"></a></h4>
+
+
+
+      <div class="docs-code">
+        <pre><code>get-<span class="hljs-attribute">border</span>-value(<span class="hljs-variable">$val</span>, <span class="hljs-variable">$elem</span>)</code></pre>
+      </div>
+
+      <p>Given border $val, find a specific element of the border, which is $elem. The possible values for $elem are width, style, and color.</p>
+
+
+      
+
+      <table class="docs-variable-table">
+        <thead>
+          <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        </thead>
+        <tr>
+          <td><code>$val</code></td>
+          <td>List</td>
+          <td><code><span style="color: #999;">None</span></code></td>
+          <td><p>Border value to find a value in.</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$elem</code></td>
+          <td>Keyword</td>
+          <td><code><span style="color: #999;">None</span></code></td>
+          <td><p>Border component to extract.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+
+    <hr>
+    
+    <section >
+      <h4 id="map-deep-get" class="docs-heading">map-deep-get<a class="docs-heading-icon" href="#map-deep-get"></a></h4>
+
+
+
+      <div class="docs-code">
+        <pre><code><span class="hljs-selector-tag">map</span>-deep-get(<span class="hljs-variable">$map</span>, <span class="hljs-variable">$keys</span>...)</code></pre>
+      </div>
+
+      <p>Finds a value in a nested map.</p>
+
+
+      <p><strong>Learn more:</strong> <a href="https://css-tricks.com/snippets/sass/deep-getset-maps/">Deep Get/Set in Maps</a></p>
+
+      <table class="docs-variable-table">
+        <thead>
+          <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        </thead>
+        <tr>
+          <td><code>$map</code></td>
+          <td>Map</td>
+          <td><code><span style="color: #999;">None</span></code></td>
+          <td><p>Map to pull a value from.</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$keys...</code></td>
+          <td>String</td>
+          <td><code><span style="color: #999;">None</span></code></td>
+          <td><p>Keys to use when looking for a value.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+
+    
+    
+  </section>
+
+</section>
+
+
+<!-- <hr> -->
+<!-- <section class="docs-building-blocks">
+  <h2 id="building-blocks" class="docs-heading" data-magellan-target="building-blocks">Building Blocks<a class="docs-heading-icon" href="#building-blocks"></a></h2>
+
+  <p><a href="http://zurb.com/building-blocks">Building Blocks</a> is a ZURB-curated resource with useful code snippets that use Foundation components. Here are a few for this component:</p>
+
+  <div class="warning callout">
+    <p>These are placeholder items. If you have ideas for building blocks for this component, <a href="https://github.com/zurb/foundation-sites-6/issues/118">we're taking ideas on GitHub</a>.</p>
+  </div>
+
+  <div data-building-blocks></div>
+</section> -->
+
+</div>
+
+<div class="large-3 columns" data-sticky-container>
+  <nav class="columns docs-toc-wrap" data-sticky data-anchor="docs" data-sticky-on="large">
+    <div class="docs-toc hide" id="docsTOC">
+      <ul class="vertical menu" data-docs-toc>
+        <li class="docs-nav-title">On this page:</li>
+      </ul>
+    </div>
+    <div class="foundation-toc-ad-unit" id="TOCAdUnit">
+    </div>
+  </nav>
+</div>
+
+</div>
+
+</article>
+
+        </div>
+        <div class="medium-3 large-2 medium-pull-9 large-pull-10 columns">
+          <ul class="vertical menu docs-nav" id="docs-menu">
+            <p class="docs-nav-version">
+              <span data-docs-version></span>
+              <a href="https://github.com/zurb/foundation-sites/releases/" target="_blank">(Changelog)</a>
+            </p>
+          
+            <li class="docs-nav-title">Getting Started</li>
+            <li><a href="installation.html">Installation</a></li>
+            <li><a href="starter-projects.html">Starter Projects</a></li>
+            <li><a href="compatibility.html">Compatibility</a></li>
+            <li><a href="accessibility.html">Accessibility</a></li>
+            <li><a href="kitchen-sink.html">Kitchen Sink</a></li>
+          
+            <li class="docs-nav-title">Setup</li>
+            <li><a href="global.html">Global Styles</a></li>
+            <li><a href="rtl.html">Right-to-Left Support</a></li>
+            <li><a href="flexbox.html">Flexbox</a></li>
+            <li><a href="sass.html">Sass</a></li>
+            <li><a href="javascript.html">JavaScript</a></li>
+            <li><a href="javascript-utilities.html">JavaScript Utilities</a></li>
+            <li><a href="media-queries.html">Media Queries</a></li>
+          
+            <li class="docs-nav-title">General</li>
+            <li><a href="grid.html">Grid</a></li>
+            <li><a href="flex-grid.html">Flex Grid</a></li>
+            <li><a href="forms.html">Forms</a></li>
+            <li><a href="visibility.html">Visibility Classes</a></li>
+            <li><a href="float-classes.html">Float Classes</a></li>
+          
+            <li class="docs-nav-title">Typography</li>
+            <li><a href="typography-base.html">Base Styles</a></li>
+            <li><a href="typography-helpers.html">Helper Classes</a></li>
+          
+            <li class="docs-nav-title">Controls</li>
+            <li><a href="button.html">Button</a></li>
+            <li><a href="button-group.html">Button Group</a></li>
+            <li><a href="close-button.html">Close Button</a></li>
+            <li><a href="slider.html">Slider <span class="label">JS</span></a></li>
+            <li><a href="switch.html">Switch</a></li>
+          
+            <li class="docs-nav-title">Navigation</li>
+            <li><a href="navigation.html">Overview</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="dropdown-menu.html">Dropdown Menu <span class="label">JS</span></a></li>
+            <li><a href="drilldown-menu.html">Drilldown Menu <span class="label">JS</span></a></li>
+            <li><a href="accordion-menu.html">Accordion Menu <span class="label">JS</span></a></li>
+            <li><a href="top-bar.html">Top Bar</a></li>
+            <li><a href="responsive-navigation.html">Responsive Navigation</a></li>
+            <li><a href="magellan.html">Magellan <span class="label">JS</span></a></li>
+            <li><a href="pagination.html">Pagination</a></li>
+            <li><a href="breadcrumbs.html">Breadcrumbs</a></li>
+          
+            <li class="docs-nav-title">Containers</li>
+            <li><a href="accordion.html">Accordion <span class="label">JS</span></a></li>
+            <li><a href="callout.html">Callout</a></li>
+            <li><a href="dropdown.html">Dropdown <span class="label">JS</span></a></li>
+            <li><a href="media-object.html">Media Object</a></li>
+            <li><a href="off-canvas.html">Off-canvas <span class="label">JS</span></a></li>
+            <li><a href="reveal.html">Reveal <span class="label">JS</span> <small>Modal</small></a></li>
+            <li><a href="table.html">Table</a></li>
+            <li><a href="tabs.html">Tabs <span class="label">JS</span></a></li>
+          
+            <li class="docs-nav-title">Media</li>
+            <li><a href="badge.html">Badge</a></li>
+            <li><a href="flex-video.html">Flex Video</a></li>
+            <li><a href="label.html">Label</a></li>
+            <li><a href="orbit.html">Orbit <span class="label">JS</span> <small>Carousel</small></a></li>
+            <li><a href="progress-bar.html">Progress Bar</a></li>
+            <li><a href="thumbnail.html">Thumbnail</a></li>
+            <li><a href="tooltip.html">Tooltip <span class="label">JS</span></a></li>
+          
+            <li class="docs-nav-title">Plugins</li>
+            <li><a href="abide.html">Abide <small>Form Validation</small></a></li>
+            <li><a href="equalizer.html">Equalizer <small>Column Alignment</small></a></li>
+            <li><a href="interchange.html">Interchange <small>Responsive Content</small></a></li>
+            <li><a href="toggler.html">Toggler <small>CSS Helper</small></a></li>
+            <li><a href="sticky.html">Sticky <small>Header/Sidebar</small></a></li>
+          
+            <li class="docs-nav-title">Sass</li>
+            <li class="current"><a href="sass-functions.html">Functions</a></li>
+            <li><a href="sass-mixins.html">Mixins</a></li>
+          
+            <li class="docs-nav-title">Libraries</li>
+            <li><a href="motion-ui.html">Motion UI</a></li>
+            <li><a href="panini.html">Panini</a></li>
+            <li><a href="style-sherpa.html">Style Sherpa</a></li>
+          
+            <li class="docs-nav-title">Older Versions</li>
+            <li><a href="http://foundation.zurb.com/sites/docs/v/5.5.3/index.html">Foundation 5</a></li>
+            <li><a href="http://foundation.zurb.com/sites/docs/v/4.3.2/index.html">Foundation 4</a></li>
+            <li><a href="http://foundation.zurb.com/sites/docs/v/3.2.5/">Foundation 3</a></li>
+            <li><a href="http://foundation.zurb.com/sites/docs/v/2.2.1/">Foundation 2</a></li>
+          </ul>
+          
+        </div>
+      </div>
+
+      <!-- Small Business(Docs) -->
+      <section id="studiosCallout">
+        <div class="row">
+          <div class="medium-4 large-4 columns">
+            <img src="http://foundation.zurb.com/assets/img/smallbiz-footer.svg" alt="">
+          </div>
+          <div class="medium-8 large-8 columns banner-info">
+            <div class="row column property-label">ZURB Foundation</div>
+            <h3 class="light">Yeah, we can help with that.</h3>
+            <p class="lead"> We’ll collaborate with your team throughout the entire project life cycle. We’ll take your concept and move it through ideation, hi-fi wireframes, visual design and code, all while informing you on the whys and hows along the way.</p>
+            <div class="course-buttons">
+              <a href="http://foundation.zurb.com/get-involved/premium-support.html" class="studios button" data-zcom-event="studios_foundation_click" id="foundationSmallV1">Show Me How &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <div class="docs-newsletter">
+        <div class="row">
+          <div class="medium-7 large-8 columns">
+            <a target="_blank" href="http://foundation.zurb.com/learn/responsive-reading.html">
+              <h5 class="">Download ZURB’s 21 Responsive Trends That Will Shape 2017</h5>
+              <p style="margin-bottom: 0;">Stay informed with amazing responsive trends each month from ZURB.</p>
+            </a>
+          </div>
+          <div class="medium-5 large-4 footer-signup-form columns">
+            <a style="margin-bottom: 0;" target="_blank" href="http://foundation.zurb.com/learn/responsive-reading.html" class="button expanded">Download the PDF</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="zurb-footer-top bg-fblue">
+        <div class="row property">
+          <div class="medium-4 columns">
+            <div class="property-info">
+              <h3>Foundation for Sites</h3>
+              <p>Foundation is a responsive front-end framework made by <a href="http://zurb.com">ZURB</a>, a product design company in Campbell, CA. This framework is the result of building web products &amp; services since 1998.
+              </p>
+            </div>
+          </div>
+      
+          <div class="medium-8 columns">
+            <div class="row collapse">
+              <div class="medium-4 columns">
+                <div class="learn-links">
+                  <h4 class="hide-for-small">Want more?</h4>
+                  <ul>
+                    <li><a href="http://foundation.zurb.com/apps">Foundation for Apps</a></li>
+                    <li><a href="http://zurb.com/ink/">Ink Responsive Emails</a></li>
+                    <li><a href="http://zurb.com/notable">Notable Design Apps</a></li>
+                    <li><a href="http://zurb.com/university/courses">Training</a></li>
+                    <li><a href="http://zurb.com/library">Design Resources</a></li>
+                  </ul>
+                </div>
+              </div>
+                <div class="medium-4 columns">
+                  <div class="support-links">
+                    <h4 class="hide-for-small">Talk to us</h4>
+                    <p>Tweet us at <br> <a href="https://twitter.com/zurbfoundation">@ZURBfoundation</a></p>
+                    <p><a href="http://foundation.zurb.com/get-involved/contribute.html">Get involved in<br>our amazing community.</a></p>
+                  </div>
+                </div>
+              <div class="medium-4 columns">
+                <div class="connect-links">
+                  <h4 class="hide-for-small">Stay Updated</h4>
+                  <p>Keep up with the latest on Foundation. Find us on <a href="https://github.com/zurb/foundation">Github</a>.</p>
+                  <a href="http://zurb.com/news" class="small button">Stay Connected</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row global">
+          <div class="medium-3 small-6 columns">
+            <a href="http://zurb.com/studios" class="footer-link-block services">
+              <span class="title">Studios</span>
+              <span>Helping more than 200 startups succeed since 1998.</span>
+            </a>
+          </div>
+          <div class="medium-3 small-6 columns">
+            <a href="http://foundation.zurb.com/" class="footer-link-block foundation">
+              <span class="title">Foundation</span>
+              <span>The most advanced front-end framework in the world.</span>
+            </a>
+          </div>
+          <div class="medium-3 small-6 columns">
+            <a href="http://zurb.com/notable" class="footer-link-block apps">
+              <span class="title">Notable Design Apps</span>
+              <span>Prototype, iterate and collect feedback on your products.</span>
+            </a>
+          </div>
+          <div class="medium-3 small-6 columns">
+            <a href="http://zurb.com/university" class="footer-link-block expo">
+              <span class="title">University</span>
+              <span>Ideas, thoughts and design resources shared with you.</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="zurb-footer-bottom">
+        <div class="row">
+          <div class="medium-4 medium-push-8 columns">
+            <ul class="home-social">
+                <li><a href="http://www.twitter.com/ZURB" class="twitter"></a></li>
+                <li><a href="http://www.facebook.com/ZURB" class="facebook"></a></li>
+                <li><a href="http://zurb.com/contact" class="mail"></a></li>
+              </ul>
+           </div>
+           <div class="medium-8 medium-pull-4 columns">
+              <a href="http://www.zurb.com" class="zurb-logo regular"></a>
+              <ul class="zurb-links">
+                <li><a href="http://zurb.com/about">About</a></li>
+                <li><a href="http://zurb.com/blog">Blog</a></li>
+                <li><a href="http://zurb.com/news">News<span class="show-for-medium-up"> &amp; Events</span></a></li>
+                <li><a href="http://zurb.com/contact">Contact</a></li>
+                <li><a href="http://zurb.com/sitemap">Sitemap</a></li>
+             </ul>
+             <p class="copyright">&copy; 1998&dash;2016 ZURB, Inc. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <script>
+  var _gaq = _gaq || [];
+  _gaq.push(
+    ['_setAccount', 'UA-2195009-2'],
+    ['_trackPageview'],
+    ['b._setAccount', 'UA-2195009-27'],
+    ['b._trackPageview']
+  );
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+
+  <script src="assets/js/vendor.js?hash=ecfdf0ca27db89590d9f7cee1014e397"></script>
+  <script src="assets/js/foundation.js?hash=5084fe0e09dbfade153731454415bd86"></script>
+  <script src="assets/js/docs.js?hash=d3662e0fb2dac7fb0bcff9b8f230eec4"></script>
+  <script type="text/javascript" src="https://intercom.zurb.com/scripts/zcom.js"></script>
+</body>
+</html>

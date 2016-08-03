@@ -1,0 +1,784 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="For browsers with cutting-edge support, some of Foundation&#x27;s key components can be converted to flexbox.">
+  <link rel="icon" href="assets/img/icons/foundation-favicon.ico" type="image/x-icon">
+  <title>Foundation for Sites 6 Docs | Flexbox</title>
+  <link href="assets/css/docs.css?hash=027f1be7bc5fd7f14dbe2e1d78e72ead" rel="stylesheet" />
+  <link href="//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css?hash=ce75df904c8f4a4d7b3e3f3ee3ce00e7" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="./node_modules/motion-ui/dist/motion-ui.css" /> -->
+</head>
+<body>
+
+  <div class="off-canvas-wrapper"><div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+
+    <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas data-position="left">
+      <button class="close-button" aria-label="Close menu" type="button" data-close>
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <ul class="mobile-ofc vertical menu">
+        
+        <li>
+          <a href="http://foundation.zurb.com/learn/about.html">About</a>
+          <ul class="submenu menu vertical" data-submenu>
+            <li><a href="http://foundation.zurb.com/learn/about.html">About Foundation</a></li>
+            <li><a href="http://foundation.zurb.com/learn/blog.html">Blog</a></li>
+            
+            <li><a href="http://foundation.zurb.com/learn/case-studies.html">Case Studies</a></li>
+            <li><a href="http://foundation.zurb.com/learn/brands.html">Brands</a></li>
+            <li><a href="http://foundation.zurb.com/learn/buzz.html">Buzz</a></li>
+          </ul>
+        </li>
+        
+        <li>
+          <a href="http://foundation.zurb.com/develop/getting-started.html">Develop</a>
+          <ul class="submenu menu vertical" data-submenu>
+            <li class="title">Frameworks</li>
+            <li><a href="http://foundation.zurb.com/sites.html">Foundation for Sites</a></li>
+            <li><a href="http://foundation.zurb.com/emails.html">Foundation for Email</a></li>
+            <li><a href="http://foundation.zurb.com/apps.html">Foundation for Apps</a></li>
+            <li class="divider"></li>
+            <li class="title">Develop</li>
+            <li><a href="http://foundation.zurb.com/templates.html">HTML Templates</a></li>
+            <li><a href="http://foundation.zurb.com/sites/resources.html">Resources</a></li>
+            <li><a href="http://foundation.zurb.com/develop/building-blocks.html">Building Blocks</a></li>
+            <li><a href="http://foundation.zurb.com/develop/yeti-launch.html">Yeti Launch</a></li>
+            <li><a href="http://foundation.zurb.com/develop/contribute.html">Contribute</a></li>
+          </ul>
+        </li>
+    
+        <li>
+          <a href="http://foundation.zurb.com/learn/tutorials.html">Tutorials</a>
+          <ul class="submenu menu vertical" data-submenu>
+            <li><a href="http://foundation.zurb.com/learn/tutorials.html">Tutorials</a></li>
+            <li><a href="http://foundation.zurb.com/learn/classes.html">Classes</a></li>
+            <li><a href="http://foundation.zurb.com/learn/custom-training.html">Custom Training</a></li>
+            <li><a href="http://foundation.zurb.com/learn/certification.html">Certification</a></li>
+            <li><a href="http://foundation.zurb.com/learn/responsive-reading.html">Responsive Reading</a></li>
+          </ul>
+        </li>
+        
+        <li>
+          <a href="http://foundation.zurb.com/get-involved/support.html">Get Involved</a>
+          <ul class="submenu menu vertical" data-submenu>
+            <li><a href="http://foundation.zurb.com/get-involved/support.html">Connect</a></li>
+            <li><a href="http://foundation.zurb.com/get-involved/premium-support.html">PLZ Halp</a></li>
+            <li><a href="http://foundation.zurb.com/forum/sort/unanswered">Foundation Forum</a></li>
+            <li><a href="http://foundation.zurb.com/learn/events.html">Events</a></li>
+            <li><a href="http://foundation.zurb.com/get-involved/faq.html">FAQs</a></li>
+            <li><a href="http://foundation.zurb.com/get-involved/contribute.html">Contribute</a></li>
+            <li><a href="http://foundation.zurb.com/get-involved/yetinauts.html">Yetinauts</a></li>
+          </ul>
+        </li>
+        
+        <li>
+          <a href="http://foundation.zurb.com/frameworks-docs.html">Docs</a>
+          <ul class="submenu menu vertical" data-submenu>
+            <li><a href="http://foundation.zurb.com/docs/" target="_blank">Sites Docs</a></li>
+            <li><a href="http://foundation.zurb.com/apps/docs/#!/" target="_blank">Apps Docs</a></li>
+            <li><a href="http://zurb.com/ink/docs.php" target="_blank">Email Docs</a></li>
+          </ul>
+        </li>
+        
+        <li><a href="http://foundation.zurb.com/develop/getting-started.html" class="button">Getting Started</a></li>
+    
+      </ul>
+    </div>
+    
+    <div class="off-canvas position-right" id="offCanvasRight" data-off-canvas data-position="right">
+      <button class="close-button" aria-label="Close menu" type="button" data-close>
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <ul class="vertical menu">
+        <li><a href="#">Foundation</a></li>
+        <li><a href="#">Dot</a></li>
+        <li><a href="#">ZURB</a></li>
+        <li><a href="#">Com</a></li>
+        <li><a href="#">Slash</a></li>
+        <li><a href="#">Sites</a></li>
+      </ul>
+    </div>
+    
+
+    <div class="off-canvas-content" data-off-canvas-content>
+      <!-- Info Banner For Announcements or Links -->
+      <!-- <a href="http://zurb.com/article/1416/foundation-6-is-here" id="notice">
+        <div class="info">
+          <h5>Foundation 6 is here!</h5>
+        </div>
+      </a> -->
+
+      <nav class="marketing-topbar show-for-medium">
+      
+        <ul class="menu">
+          <li class="topbar-title"><a href="http://foundation.zurb.com/index.html"><img src="assets/img/logos/zurb-logo.svg" alt="ZURB"> Foundation</a></li>
+        </ul>
+      
+        <ul class="dropdown menu" data-dropdown-menu data-click-open="false">
+      
+          <li>
+            <a href="http://foundation.zurb.com/learn/about.html">About</a>
+            <ul class="submenu menu vertical" data-submenu>
+              <li><a href="http://foundation.zurb.com/learn/about.html">About Foundation</a></li>
+              <li><a href="http://foundation.zurb.com/learn/blog.html">Blog</a></li>
+              <li><a href="http://foundation.zurb.com/learn/case-studies.html">Case Studies</a></li>
+              <li><a href="http://foundation.zurb.com/learn/brands.html">Brands</a></li>
+              <li><a href="http://foundation.zurb.com/learn/buzz.html">Buzz</a></li>
+            </ul>
+          </li>
+      
+          <li>
+            <a href="http://foundation.zurb.com/develop/getting-started.html">Develop</a>
+            <ul class="submenu menu vertical" data-submenu>
+              <li class="title">Frameworks</li>
+              <li><a href="http://foundation.zurb.com/sites.html">Foundation for Sites</a></li>
+              <li><a href="http://foundation.zurb.com/emails.html">Foundation for Email</a></li>
+              <li><a href="http://foundation.zurb.com/apps.html">Foundation for Apps</a></li>
+              <li class="divider"></li>
+              <li class="title">Develop</li>
+              <li><a href="http://foundation.zurb.com/templates.html">HTML Templates</a></li>
+              <li><a href="http://foundation.zurb.com/sites/resources.html">Resources</a></li>
+              <li><a href="http://foundation.zurb.com/develop/building-blocks.html">Building Blocks</a></li>
+              <li><a href="http://foundation.zurb.com/develop/yeti-launch.html">Yeti Launch</a></li>
+              <li><a href="http://foundation.zurb.com/develop/contribute.html">Contribute</a></li>
+              <li><a href="http://foundation.zurb.com/upload.html">Annotate Code</a></li>
+            </ul>
+          </li>
+      
+          <li>
+            <a href="http://foundation.zurb.com/learn/tutorials.html">Tutorials</a>
+            <ul class="submenu menu vertical" data-submenu>
+              <li><a href="http://foundation.zurb.com/learn/tutorials.html">Tutorials</a></li>
+              <li><a href="http://foundation.zurb.com/learn/classes.html">Classes</a></li>
+              <li><a href="http://foundation.zurb.com/learn/custom-training.html">Custom Training</a></li>
+              <li><a href="http://foundation.zurb.com/learn/certification.html">Certification</a></li>
+              <li><a href="http://foundation.zurb.com/learn/responsive-reading.html">Responsive Reading</a></li>
+            </ul>
+          </li>
+      
+          <li>
+            <a href="http://foundation.zurb.com/get-involved/contribute.html">Get Involved</a>
+            <ul class="submenu menu vertical" data-submenu>
+              <li><a href="http://foundation.zurb.com/get-involved/support.html">Connect</a></li>
+              <li><a href="http://foundation.zurb.com/get-involved/premium-support.html">PLZ Halp</a></li>
+              <li><a href="http://foundation.zurb.com/forum/">Foundation Forum</a></li>
+              <li><a href="http://foundation.zurb.com/learn/events.html">Events</a></li>
+              <li><a href="http://foundation.zurb.com/get-involved/faq.html">FAQs</a></li>
+              <li><a href="http://foundation.zurb.com/get-involved/contribute.html">Contribute</a></li>
+              <li><a href="http://foundation.zurb.com/get-involved/yetinauts.html">Yetinauts</a></li>
+            </ul>
+          </li>
+      
+          <li>
+            <a href="http://foundation.zurb.com/frameworks-docs.html">Docs</a>
+            <ul class="submenu menu vertical" data-submenu>
+              <li><a href="http://foundation.zurb.com/docs/" target="_blank">Sites Docs</a></li>
+              <li><a href="http://foundation.zurb.com/sites/docs/v/5.5.3/" target="_blank">F5 Docs</a></li>
+              <li><a href="http://foundation.zurb.com/apps/docs/#!/" target="_blank">Apps Docs</a></li>
+              <li><a href="http://foundation.zurb.com/emails/docs/" target="_blank">Email Docs</a></li>
+            </ul>
+          </li>
+      
+          <li><a href="http://foundation.zurb.com/develop/getting-started.html" class="button">Getting Started</a></li>
+      
+        </ul>
+      
+      </nav>
+      
+      <div class="title-bar hide-for-medium">
+        <div class="title-bar-left">
+          <button class="menu-icon" type="button" data-open="offCanvasLeft"></button>
+          <span class="title-bar-title">Foundation</span>
+        </div>
+      </div>
+      
+
+      <input type="text" class="docs-search" data-docs-search placeholder="Find a page, component, variable, mixin, function...">
+
+      <div class="expanded row">
+        <div class="medium-9 large-10 medium-push-3 large-push-2 columns">
+
+<article class="docs-component" id="docs-flexbox">
+
+<a href="#docs-menu" class="small secondary expanded button hide-for-medium">Jump to Nav</a>
+
+<header>
+  <h1 class="docs-page-title">Flexbox</h1>
+
+
+  <p class="lead docs-page-lead">For browsers with cutting-edge support, some of Foundation's key components can be converted to flexbox.</p>
+
+  <ul class="menu simple docs-contribute-menu">
+    <li><a href="https://github.com/zurb/foundation-sites/edit/master/docs/pages/flexbox.md" target="_blank"><i class="fi-pencil"></i>Edit this Page</a></li>
+    <li><a href="https://github.com/zurb/foundation-sites/issues/new?title=%5BFlexbox%5D%20ISSUE%20NAME%20HERE" target="_blank"><i class="fi-social-github"></i>Report a Bug</a></li>
+    <li><a href="http://foundation.zurb.com/forum" target="_blank"><i class="fi-comment"></i>Get Help</a></li>
+  </ul>
+</header>
+
+<hr>
+
+<div class="row">
+
+<div class="large-9 columns" id="docs">
+
+<p>Foundation components use a combination of floats, vertical alignment, table cells, and various other CSS hacks to get layouts looking right. These days, there&#39;s a better way... if you have the browser support!</p>
+<p>Enabling <strong>flexbox mode</strong> replaces those hacks with flexbox properties, streamlining how layouts are made, and making sizing and alignment of elements much easier.</p>
+<p>Flexbox mode is only supported these browsers:</p>
+<ul>
+<li>The latest Chrome and Firefox</li>
+<li>Safari 6+</li>
+<li>IE 10+</li>
+<li>iOS 7+</li>
+<li>Android 4.4+</li>
+</ul>
+<hr>
+<h2 id="enabling-flexbox-mode" class="docs-heading" data-magellan-target="enabling-flexbox-mode">Enabling Flexbox Mode<a class="docs-heading-icon" href="#enabling-flexbox-mode"></a></h2><p>If you&#39;re using the CSS version of Foundation, you can generate a <a href="https://foundation.zurb.com/sites/download">custom download of Foundation</a> with flexbox mode enabled. If you&#39;re using the Sass version of Foundation, you can enable flexbox mode two ways:</p>
+<p>If you use the <code>foundation-everything()</code> mixin in your main Sass file, pass in the parameter <code>true</code> to enable flexbox mode.</p>
+<div class="docs-code" data-docs-code><pre><code class="scss">@<span class="hljs-keyword">include</span> foundation-everything(true);</code></pre></div><p>If you included each component manually (like our starter projects do), open your settings file (basic template: scss/_settings.scss, ZURB template: src/assets/scss/_settings.scss) and set <code>$global-flexbox</code> to <code>true</code>, and remove the <code>@include</code> for the float grid and replace it with the one for the flex grid, along with the helper classes (basic template: scss/app.scss, ZURB template: src/assets/scss/app.scss):</p>
+<div class="docs-code" data-docs-code><pre><code class="scss"><span class="hljs-variable">$global-flexbox</span>: true;
+
+<span class="hljs-comment">// @include foundation-grid;</span>
+@<span class="hljs-keyword">include</span> foundation-flex-grid;
+@<span class="hljs-keyword">include</span> foundation-flex-classes;</code></pre></div><hr>
+<h2 id="supported-components" class="docs-heading" data-magellan-target="supported-components">Supported Components<a class="docs-heading-icon" href="#supported-components"></a></h2><p>Besides the flex grid, these components have flexbox modes:</p>
+<ul>
+<li><a href="button-group.html">Button group</a></li>
+<li><a href="forms.html#inline-labels-and-buttons">Input group</a></li>
+<li><a href="menu.html">Menu</a></li>
+<li><a href="top-bar.html">Top bar</a></li>
+<li><a href="media-object.html">Media object</a></li>
+<li><a href="off-canvas.html#title-bar">Title bar</a></li>
+</ul>
+<p>In general, all of the components work exactly the same. However, a few of them require slight changes to CSS classes used to work properly. Refer to the documentation for each to find out what&#39;s different.</p>
+<hr>
+<h2 id="helper-classes" class="docs-heading" data-magellan-target="helper-classes">Helper Classes<a class="docs-heading-icon" href="#helper-classes"></a></h2><p>Flexbox makes horizontal and vertical alignment painless, through the CSS properties <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/align-items"><code>align-content</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/align-self"><code>align-self</code></a>, and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content"><code>justify-content</code></a>. Foundation includes a handful of classes for these properties, which work with any flexbox-enabled component.</p>
+<p>To understand how these classes work, you need to understand the parent-child relationship created with flexbox. An element with <code>display: flex</code> is a <em>flex parent</em>, and can horizontally or vertically align its children. All immediate children of the flex parent are <em>flex children</em>. A flex child can vertically align itself.</p>
+<p>Here&#39;s a basic example: when using the grid, a row is a flex parent, and a column is a flex child.</p>
+<div class="docs-code" data-docs-code><pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"row"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"column"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"column"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"column"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre></div><hr>
+<h3 id="horizontal-alignment" class="docs-heading">Horizontal Alignment<a class="docs-heading-icon" href="#horizontal-alignment"></a></h3><p>Horizontal alignment classes are applied to flex parents. Left alignment is the default, but you can use one of these classes to change this:</p>
+<ul>
+<li><code>.align-right</code></li>
+<li><code>.align-center</code></li>
+<li><code>.align-justify</code></li>
+<li><code>.align-spaced</code></li>
+</ul>
+<div class="docs-code-live">
+  <div class="text-center">
+    <div class="row">
+      <div class="column small-4">Aligned to</div>
+      <div class="column small-4">the left</div>
+    </div>
+    <div class="row align-right">
+      <div class="column small-4">Aligned to</div>
+      <div class="column small-4">the right</div>
+    </div>
+    <div class="row align-center">
+      <div class="column small-4">Aligned to</div>
+      <div class="column small-4">the center</div>
+    </div>
+    <div class="row align-justify">
+      <div class="column small-4">Aligned to</div>
+      <div class="column small-4">the edges</div>
+    </div>
+    <div class="row align-spaced">
+      <div class="column small-4">Aligned to</div>
+      <div class="column small-4">the space around</div>
+    </div>
+  </div>
+</div>
+
+<p>You might be wondering what the difference between <code>.align-justify</code> and <code>.align-spaced</code> is. A justified grid (<code>justify-content: space-between</code>) evenly distributes the space <em>between</em> each column. The first and last columns pin to the edge of the grid.</p>
+<p>A spaced grid (<code>justify-content: space-around</code>) evenly distributes the space <em>around</em> each column. This means there will always be space to the left of the first column, and to the right of the last column.</p>
+<p>The horizontal alignment classes are shorthands for the <code>justify-content</code> CSS property. <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content">Learn more about <code>justify-content</code></a>.</p>
+<hr>
+<h3 id="vertical-alignment" class="docs-heading">Vertical Alignment<a class="docs-heading-icon" href="#vertical-alignment"></a></h3><p>Vertical alignment can be applied to a flex parent&mdash;which will align all the children automatically&mdash;or to a flex child, which will align only that element.</p>
+<p>Stretch alignment is the default. To set parent alignment, use these classes:</p>
+<ul>
+<li><code>.align-top</code></li>
+<li><code>.align-middle</code></li>
+<li><code>.align-bottom</code></li>
+<li><code>.align-stretch</code></li>
+</ul>
+<div class="primary callout">
+  <p>Note that with vertical alignment, we use the term &quot;middle&quot; for the midpoint, while with horizontal alignment, we use the term &quot;center&quot;. Otherwise, we&#39;d have two CSS classes with the same name, but different functionality.</p>
+</div>
+
+<div class="docs-code" data-docs-code><pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"row align-middle"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"columns"</span>&gt;</span>I'm in the middle!<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"columns"</span>&gt;</span>I am as well, but I have so much text I take up more space! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis facere ducimus earum minus, inventore, ratione doloremque deserunt neque perspiciatis accusamus explicabo soluta, quod provident distinctio aliquam omnis? Labore, ullam possimus.<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre></div>
+
+<div class="docs-code-live"><div class="row align-middle">
+  <div class="columns">I'm in the middle!</div>
+  <div class="columns">I am as well, but I have so much text I take up more space! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis facere ducimus earum minus, inventore, ratione doloremque deserunt neque perspiciatis accusamus explicabo soluta, quod provident distinctio aliquam omnis? Labore, ullam possimus.</div>
+</div></div><div class="docs-code" data-docs-code><pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"row align-stretch"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"columns"</span>&gt;</span>These colums have the same height.<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"columns"</span>&gt;</span>That's right, equal-height columns are possible with Flexbox too! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, tempora. Impedit eius officia possimus laudantium? Molestiae eaque, sapiente atque doloremque placeat! In sint, fugiat saepe sunt dolore tempore amet cupiditate.<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre></div>
+
+<div class="docs-code-live"><div class="row align-stretch">
+  <div class="columns">These colums have the same height.</div>
+  <div class="columns">That's right, equal-height columns are possible with Flexbox too! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, tempora. Impedit eius officia possimus laudantium? Molestiae eaque, sapiente atque doloremque placeat! In sint, fugiat saepe sunt dolore tempore amet cupiditate.</div>
+</div></div><hr>
+<p>To align an individual child, use the below classes. They use the same alignment terms as the parent-level classes, but the classes start with <code>.align-self-</code> instead of <code>.align-</code>.</p>
+<ul>
+<li><code>.align-self-top</code></li>
+<li><code>.align-self-middle</code></li>
+<li><code>.align-self-bottom</code></li>
+<li><code>.align-self-stretch</code></li>
+</ul>
+<div class="docs-code" data-docs-code><pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"row"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"column align-self-bottom"</span>&gt;</span>Align bottom<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"column align-self-middle"</span>&gt;</span>Align middle<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"column align-self-top"</span>&gt;</span>Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre></div>
+
+<div class="docs-code-live"><div class="row">
+  <div class="column align-self-bottom">Align bottom</div>
+  <div class="column align-self-middle">Align middle</div>
+  <div class="column align-self-top">Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?</div>
+</div></div><hr>
+<h2 id="helper-mixins" class="docs-heading" data-magellan-target="helper-mixins">Helper Mixins<a class="docs-heading-icon" href="#helper-mixins"></a></h2><p>If you&#39;re using the Sass version of Foundation, you can access the above helpers as mixins as well.</p>
+<p>For parent-level alignment, use <code>flex-align()</code>. You can pass in a horizontal alignment (<code>$x</code>), vertical alignment (<code>$y</code>), or both.</p>
+<div class="docs-code" data-docs-code><pre><code class="scss"><span class="hljs-selector-class">.container</span> {
+  @<span class="hljs-keyword">include</span> flex-align(<span class="hljs-variable">$x</span>: center, <span class="hljs-variable">$y</span>: stretch);
+}</code></pre></div><p>For child-level alignment, use <code>flex-align-self()</code>. You can pass in any horizontal alignment.</p>
+<div class="docs-code" data-docs-code><pre><code class="scss"><span class="hljs-selector-class">.sidebar</span> {
+  @<span class="hljs-keyword">include</span> flex-align-self(bottom);
+}</code></pre></div><p>Interested in building your own flexbox-ey component? Use the <code>flex()</code> mixin to get started.</p>
+<div class="docs-code" data-docs-code><pre><code class="scss"><span class="hljs-selector-class">.flexish-thang</span> {
+  @<span class="hljs-keyword">include</span> flex;
+  @<span class="hljs-keyword">include</span> flex-align(center, middle);
+}</code></pre></div>
+
+<hr>
+<section>
+  <h2 id="sass-reference" class="docs-heading" data-magellan-target="sass-reference">Sass Reference<a class="docs-heading-icon" href="#sass-reference"></a></h2>
+
+
+  
+
+  <section>
+    <h3 id="sass-mixins" class="docs-heading">Mixins<a class="docs-heading-icon" href="#sass-mixins"></a></h3>
+
+    <p>We use these mixins to build the final CSS output of this component. You can use the mixins yourself to build your own class structure out of our components.</p>
+
+    
+    <section >
+      <h4 id="flex" class="docs-heading">flex<a class="docs-heading-icon" href="#flex"></a></h4>
+
+
+
+      <div class="docs-code">
+        <pre><code>@<span class="hljs-keyword">include</span> flex;</code></pre>
+      </div>
+
+      <p>Enables flexbox by adding <code>display: flex</code> to the element.</p>
+
+
+
+      
+
+    </section>
+
+    <hr>
+
+
+    
+    <section >
+      <h4 id="flex-align" class="docs-heading">flex-align<a class="docs-heading-icon" href="#flex-align"></a></h4>
+
+
+
+      <div class="docs-code">
+        <pre><code>@<span class="hljs-keyword">include</span> flex-align(<span class="hljs-variable">$x</span>, <span class="hljs-variable">$y</span>);</code></pre>
+      </div>
+
+      <p>Horizontally or vertically aligns the items within a flex container.</p>
+
+
+
+      
+
+      <table class="docs-variable-table">
+        <thead>
+          <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        </thead>
+        <tr>
+          <td><code>$x</code></td>
+          <td>Keyword</td>
+          <td><code>null</code></td>
+          <td><p>Horizontal alignment to use. Can be <code>left</code>, <code>right</code>, <code>center</code>, <code>justify</code>, or <code>spaced</code>. Or, set it to <code>null</code> (the default) to not set horizontal alignment.</p>
+</td>
+        </tr>
+        <tr>
+          <td><code>$y</code></td>
+          <td>Keyword</td>
+          <td><code>null</code></td>
+          <td><p>Vertical alignment to use. Can be <code>top</code>, <code>bottom</code>, <code>middle</code>, or <code>stretch</code>. Or, set it to <code>null</code> (the default) to not set vertical alignment.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+
+    <hr>
+
+
+    
+    <section >
+      <h4 id="flex-align-self" class="docs-heading">flex-align-self<a class="docs-heading-icon" href="#flex-align-self"></a></h4>
+
+
+
+      <div class="docs-code">
+        <pre><code>@<span class="hljs-keyword">include</span> flex-align-self(<span class="hljs-variable">$y</span>);</code></pre>
+      </div>
+
+      <p>Vertically align a single column within a flex row. Apply this mixin to a flex column.</p>
+
+
+
+      
+
+      <table class="docs-variable-table">
+        <thead>
+          <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        </thead>
+        <tr>
+          <td><code>$y</code></td>
+          <td>Keyword</td>
+          <td><code>null</code></td>
+          <td><p>Vertical alignment to use. Can be <code>top</code>, <code>bottom</code>, <code>middle</code>, or <code>stretch</code>. Or, set it to <code>null</code> (the default) to not set vertical alignment.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+
+    <hr>
+
+
+    
+    <section >
+      <h4 id="flex-order" class="docs-heading">flex-order<a class="docs-heading-icon" href="#flex-order"></a></h4>
+
+
+
+      <div class="docs-code">
+        <pre><code>@<span class="hljs-keyword">include</span> flex-order(<span class="hljs-variable">$order</span>);</code></pre>
+      </div>
+
+      <p>Changes the source order of a flex child. Children with lower numbers appear first in the layout.</p>
+
+
+
+      
+
+      <table class="docs-variable-table">
+        <thead>
+          <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        </thead>
+        <tr>
+          <td><code>$order</code></td>
+          <td>Number</td>
+          <td><code>0</code></td>
+          <td><p>Order number to apply.</p>
+</td>
+        </tr>
+      </table>
+    </section>
+
+    
+
+
+    
+  </section>
+
+
+</section>
+
+
+<!-- <hr> -->
+<!-- <section class="docs-building-blocks">
+  <h2 id="building-blocks" class="docs-heading" data-magellan-target="building-blocks">Building Blocks<a class="docs-heading-icon" href="#building-blocks"></a></h2>
+
+  <p><a href="http://zurb.com/building-blocks">Building Blocks</a> is a ZURB-curated resource with useful code snippets that use Foundation components. Here are a few for this component:</p>
+
+  <div class="warning callout">
+    <p>These are placeholder items. If you have ideas for building blocks for this component, <a href="https://github.com/zurb/foundation-sites-6/issues/118">we're taking ideas on GitHub</a>.</p>
+  </div>
+
+  <div data-building-blocks></div>
+</section> -->
+
+</div>
+
+<div class="large-3 columns" data-sticky-container>
+  <nav class="columns docs-toc-wrap" data-sticky data-anchor="docs" data-sticky-on="large">
+    <div class="docs-toc hide" id="docsTOC">
+      <ul class="vertical menu" data-docs-toc>
+        <li class="docs-nav-title">On this page:</li>
+      </ul>
+    </div>
+    <div class="foundation-toc-ad-unit" id="TOCAdUnit">
+    </div>
+  </nav>
+</div>
+
+</div>
+
+</article>
+
+        </div>
+        <div class="medium-3 large-2 medium-pull-9 large-pull-10 columns">
+          <ul class="vertical menu docs-nav" id="docs-menu">
+            <p class="docs-nav-version">
+              <span data-docs-version></span>
+              <a href="https://github.com/zurb/foundation-sites/releases/" target="_blank">(Changelog)</a>
+            </p>
+          
+            <li class="docs-nav-title">Getting Started</li>
+            <li><a href="installation.html">Installation</a></li>
+            <li><a href="starter-projects.html">Starter Projects</a></li>
+            <li><a href="compatibility.html">Compatibility</a></li>
+            <li><a href="accessibility.html">Accessibility</a></li>
+            <li><a href="kitchen-sink.html">Kitchen Sink</a></li>
+          
+            <li class="docs-nav-title">Setup</li>
+            <li><a href="global.html">Global Styles</a></li>
+            <li><a href="rtl.html">Right-to-Left Support</a></li>
+            <li class="current"><a href="flexbox.html">Flexbox</a></li>
+            <li><a href="sass.html">Sass</a></li>
+            <li><a href="javascript.html">JavaScript</a></li>
+            <li><a href="javascript-utilities.html">JavaScript Utilities</a></li>
+            <li><a href="media-queries.html">Media Queries</a></li>
+          
+            <li class="docs-nav-title">General</li>
+            <li><a href="grid.html">Grid</a></li>
+            <li><a href="flex-grid.html">Flex Grid</a></li>
+            <li><a href="forms.html">Forms</a></li>
+            <li><a href="visibility.html">Visibility Classes</a></li>
+            <li><a href="float-classes.html">Float Classes</a></li>
+          
+            <li class="docs-nav-title">Typography</li>
+            <li><a href="typography-base.html">Base Styles</a></li>
+            <li><a href="typography-helpers.html">Helper Classes</a></li>
+          
+            <li class="docs-nav-title">Controls</li>
+            <li><a href="button.html">Button</a></li>
+            <li><a href="button-group.html">Button Group</a></li>
+            <li><a href="close-button.html">Close Button</a></li>
+            <li><a href="slider.html">Slider <span class="label">JS</span></a></li>
+            <li><a href="switch.html">Switch</a></li>
+          
+            <li class="docs-nav-title">Navigation</li>
+            <li><a href="navigation.html">Overview</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="dropdown-menu.html">Dropdown Menu <span class="label">JS</span></a></li>
+            <li><a href="drilldown-menu.html">Drilldown Menu <span class="label">JS</span></a></li>
+            <li><a href="accordion-menu.html">Accordion Menu <span class="label">JS</span></a></li>
+            <li><a href="top-bar.html">Top Bar</a></li>
+            <li><a href="responsive-navigation.html">Responsive Navigation</a></li>
+            <li><a href="magellan.html">Magellan <span class="label">JS</span></a></li>
+            <li><a href="pagination.html">Pagination</a></li>
+            <li><a href="breadcrumbs.html">Breadcrumbs</a></li>
+          
+            <li class="docs-nav-title">Containers</li>
+            <li><a href="accordion.html">Accordion <span class="label">JS</span></a></li>
+            <li><a href="callout.html">Callout</a></li>
+            <li><a href="dropdown.html">Dropdown <span class="label">JS</span></a></li>
+            <li><a href="media-object.html">Media Object</a></li>
+            <li><a href="off-canvas.html">Off-canvas <span class="label">JS</span></a></li>
+            <li><a href="reveal.html">Reveal <span class="label">JS</span> <small>Modal</small></a></li>
+            <li><a href="table.html">Table</a></li>
+            <li><a href="tabs.html">Tabs <span class="label">JS</span></a></li>
+          
+            <li class="docs-nav-title">Media</li>
+            <li><a href="badge.html">Badge</a></li>
+            <li><a href="flex-video.html">Flex Video</a></li>
+            <li><a href="label.html">Label</a></li>
+            <li><a href="orbit.html">Orbit <span class="label">JS</span> <small>Carousel</small></a></li>
+            <li><a href="progress-bar.html">Progress Bar</a></li>
+            <li><a href="thumbnail.html">Thumbnail</a></li>
+            <li><a href="tooltip.html">Tooltip <span class="label">JS</span></a></li>
+          
+            <li class="docs-nav-title">Plugins</li>
+            <li><a href="abide.html">Abide <small>Form Validation</small></a></li>
+            <li><a href="equalizer.html">Equalizer <small>Column Alignment</small></a></li>
+            <li><a href="interchange.html">Interchange <small>Responsive Content</small></a></li>
+            <li><a href="toggler.html">Toggler <small>CSS Helper</small></a></li>
+            <li><a href="sticky.html">Sticky <small>Header/Sidebar</small></a></li>
+          
+            <li class="docs-nav-title">Sass</li>
+            <li><a href="sass-functions.html">Functions</a></li>
+            <li><a href="sass-mixins.html">Mixins</a></li>
+          
+            <li class="docs-nav-title">Libraries</li>
+            <li><a href="motion-ui.html">Motion UI</a></li>
+            <li><a href="panini.html">Panini</a></li>
+            <li><a href="style-sherpa.html">Style Sherpa</a></li>
+          
+            <li class="docs-nav-title">Older Versions</li>
+            <li><a href="http://foundation.zurb.com/sites/docs/v/5.5.3/index.html">Foundation 5</a></li>
+            <li><a href="http://foundation.zurb.com/sites/docs/v/4.3.2/index.html">Foundation 4</a></li>
+            <li><a href="http://foundation.zurb.com/sites/docs/v/3.2.5/">Foundation 3</a></li>
+            <li><a href="http://foundation.zurb.com/sites/docs/v/2.2.1/">Foundation 2</a></li>
+          </ul>
+          
+        </div>
+      </div>
+
+      <!-- Small Business(Docs) -->
+      <section id="studiosCallout">
+        <div class="row">
+          <div class="medium-4 large-4 columns">
+            <img src="http://foundation.zurb.com/assets/img/smallbiz-footer.svg" alt="">
+          </div>
+          <div class="medium-8 large-8 columns banner-info">
+            <div class="row column property-label">ZURB Foundation</div>
+            <h3 class="light">Yeah, we can help with that.</h3>
+            <p class="lead"> We’ll collaborate with your team throughout the entire project life cycle. We’ll take your concept and move it through ideation, hi-fi wireframes, visual design and code, all while informing you on the whys and hows along the way.</p>
+            <div class="course-buttons">
+              <a href="http://foundation.zurb.com/get-involved/premium-support.html" class="studios button" data-zcom-event="studios_foundation_click" id="foundationSmallV1">Show Me How &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <div class="docs-newsletter">
+        <div class="row">
+          <div class="medium-7 large-8 columns">
+            <a target="_blank" href="http://foundation.zurb.com/learn/responsive-reading.html">
+              <h5 class="">Download ZURB’s 21 Responsive Trends That Will Shape 2017</h5>
+              <p style="margin-bottom: 0;">Stay informed with amazing responsive trends each month from ZURB.</p>
+            </a>
+          </div>
+          <div class="medium-5 large-4 footer-signup-form columns">
+            <a style="margin-bottom: 0;" target="_blank" href="http://foundation.zurb.com/learn/responsive-reading.html" class="button expanded">Download the PDF</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="zurb-footer-top bg-fblue">
+        <div class="row property">
+          <div class="medium-4 columns">
+            <div class="property-info">
+              <h3>Foundation for Sites</h3>
+              <p>Foundation is a responsive front-end framework made by <a href="http://zurb.com">ZURB</a>, a product design company in Campbell, CA. This framework is the result of building web products &amp; services since 1998.
+              </p>
+            </div>
+          </div>
+      
+          <div class="medium-8 columns">
+            <div class="row collapse">
+              <div class="medium-4 columns">
+                <div class="learn-links">
+                  <h4 class="hide-for-small">Want more?</h4>
+                  <ul>
+                    <li><a href="http://foundation.zurb.com/apps">Foundation for Apps</a></li>
+                    <li><a href="http://zurb.com/ink/">Ink Responsive Emails</a></li>
+                    <li><a href="http://zurb.com/notable">Notable Design Apps</a></li>
+                    <li><a href="http://zurb.com/university/courses">Training</a></li>
+                    <li><a href="http://zurb.com/library">Design Resources</a></li>
+                  </ul>
+                </div>
+              </div>
+                <div class="medium-4 columns">
+                  <div class="support-links">
+                    <h4 class="hide-for-small">Talk to us</h4>
+                    <p>Tweet us at <br> <a href="https://twitter.com/zurbfoundation">@ZURBfoundation</a></p>
+                    <p><a href="http://foundation.zurb.com/get-involved/contribute.html">Get involved in<br>our amazing community.</a></p>
+                  </div>
+                </div>
+              <div class="medium-4 columns">
+                <div class="connect-links">
+                  <h4 class="hide-for-small">Stay Updated</h4>
+                  <p>Keep up with the latest on Foundation. Find us on <a href="https://github.com/zurb/foundation">Github</a>.</p>
+                  <a href="http://zurb.com/news" class="small button">Stay Connected</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row global">
+          <div class="medium-3 small-6 columns">
+            <a href="http://zurb.com/studios" class="footer-link-block services">
+              <span class="title">Studios</span>
+              <span>Helping more than 200 startups succeed since 1998.</span>
+            </a>
+          </div>
+          <div class="medium-3 small-6 columns">
+            <a href="http://foundation.zurb.com/" class="footer-link-block foundation">
+              <span class="title">Foundation</span>
+              <span>The most advanced front-end framework in the world.</span>
+            </a>
+          </div>
+          <div class="medium-3 small-6 columns">
+            <a href="http://zurb.com/notable" class="footer-link-block apps">
+              <span class="title">Notable Design Apps</span>
+              <span>Prototype, iterate and collect feedback on your products.</span>
+            </a>
+          </div>
+          <div class="medium-3 small-6 columns">
+            <a href="http://zurb.com/university" class="footer-link-block expo">
+              <span class="title">University</span>
+              <span>Ideas, thoughts and design resources shared with you.</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="zurb-footer-bottom">
+        <div class="row">
+          <div class="medium-4 medium-push-8 columns">
+            <ul class="home-social">
+                <li><a href="http://www.twitter.com/ZURB" class="twitter"></a></li>
+                <li><a href="http://www.facebook.com/ZURB" class="facebook"></a></li>
+                <li><a href="http://zurb.com/contact" class="mail"></a></li>
+              </ul>
+           </div>
+           <div class="medium-8 medium-pull-4 columns">
+              <a href="http://www.zurb.com" class="zurb-logo regular"></a>
+              <ul class="zurb-links">
+                <li><a href="http://zurb.com/about">About</a></li>
+                <li><a href="http://zurb.com/blog">Blog</a></li>
+                <li><a href="http://zurb.com/news">News<span class="show-for-medium-up"> &amp; Events</span></a></li>
+                <li><a href="http://zurb.com/contact">Contact</a></li>
+                <li><a href="http://zurb.com/sitemap">Sitemap</a></li>
+             </ul>
+             <p class="copyright">&copy; 1998&dash;2016 ZURB, Inc. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <script>
+  var _gaq = _gaq || [];
+  _gaq.push(
+    ['_setAccount', 'UA-2195009-2'],
+    ['_trackPageview'],
+    ['b._setAccount', 'UA-2195009-27'],
+    ['b._trackPageview']
+  );
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+
+  <script src="assets/js/vendor.js?hash=05da17882a2bfb59e91cb1f0ab6fccbe"></script>
+  <script src="assets/js/foundation.js?hash=c1d474449d7ea6e2c488b2868c12bdf3"></script>
+  <script src="assets/js/docs.js?hash=7874cb9437981ef140db6c54b6d0631b"></script>
+  <script type="text/javascript" src="https://intercom.zurb.com/scripts/zcom.js"></script>
+</body>
+</html>
