@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /**
  * Foundation for Sites by ZURB
- * Version 6.2.3
+ * Version 
  * foundation.zurb.com
  * Licensed under MIT Open Source
  */
@@ -738,9 +738,11 @@ button {
   padding-right: 0.625rem; }
 
 .small-centered {
-  float: none;
   margin-left: auto;
   margin-right: auto; }
+  .small-centered, .small-centered:last-child:not(:first-child) {
+    float: none;
+    clear: both; }
 
 .small-uncentered,
 .small-push-0,
@@ -948,9 +950,11 @@ button {
     padding-left: 0.9375rem;
     padding-right: 0.9375rem; }
   .medium-centered {
-    float: none;
     margin-left: auto;
     margin-right: auto; }
+    .medium-centered, .medium-centered:last-child:not(:first-child) {
+      float: none;
+      clear: both; }
   .medium-uncentered,
   .medium-push-0,
   .medium-pull-0 {
@@ -1157,9 +1161,11 @@ button {
     padding-left: 0.9375rem;
     padding-right: 0.9375rem; }
   .large-centered {
-    float: none;
     margin-left: auto;
     margin-right: auto; }
+    .large-centered, .large-centered:last-child:not(:first-child) {
+      float: none;
+      clear: both; }
   .large-uncentered,
   .large-push-0,
   .large-pull-0 {
@@ -3074,6 +3080,7 @@ html.is-reveal-open body {
     position: fixed; }
 
 .switch {
+  height: 2rem;
   margin-bottom: 1rem;
   outline: 0;
   position: relative;
@@ -3087,7 +3094,8 @@ html.is-reveal-open body {
 
 .switch-input {
   opacity: 0;
-  position: absolute; }
+  position: absolute;
+  margin-bottom: 0; }
 
 .switch-paddle {
   background: #cacaca;
@@ -3142,41 +3150,41 @@ html.is-reveal-open body {
   input:checked + label > .switch-inactive {
     display: none; }
 
-.switch.tiny .switch-paddle {
-  width: 3rem;
-  height: 1.5rem;
-  font-size: 0.625rem; }
+.switch.tiny {
+  height: 1.5rem; }
+  .switch.tiny .switch-paddle {
+    width: 3rem;
+    height: 1.5rem;
+    font-size: 0.625rem; }
+  .switch.tiny .switch-paddle::after {
+    width: 1rem;
+    height: 1rem; }
+  .switch.tiny input:checked ~ .switch-paddle::after {
+    right: 1.75rem; }
 
-.switch.tiny .switch-paddle::after {
-  width: 1rem;
-  height: 1rem; }
+.switch.small {
+  height: 1.75rem; }
+  .switch.small .switch-paddle {
+    width: 3.5rem;
+    height: 1.75rem;
+    font-size: 0.75rem; }
+  .switch.small .switch-paddle::after {
+    width: 1.25rem;
+    height: 1.25rem; }
+  .switch.small input:checked ~ .switch-paddle::after {
+    right: 2rem; }
 
-.switch.tiny input:checked ~ .switch-paddle::after {
-  right: 1.75rem; }
-
-.switch.small .switch-paddle {
-  width: 3.5rem;
-  height: 1.75rem;
-  font-size: 0.75rem; }
-
-.switch.small .switch-paddle::after {
-  width: 1.25rem;
-  height: 1.25rem; }
-
-.switch.small input:checked ~ .switch-paddle::after {
-  right: 2rem; }
-
-.switch.large .switch-paddle {
-  width: 5rem;
-  height: 2.5rem;
-  font-size: 1rem; }
-
-.switch.large .switch-paddle::after {
-  width: 2rem;
-  height: 2rem; }
-
-.switch.large input:checked ~ .switch-paddle::after {
-  right: 2.75rem; }
+.switch.large {
+  height: 2.5rem; }
+  .switch.large .switch-paddle {
+    width: 5rem;
+    height: 2.5rem;
+    font-size: 1rem; }
+  .switch.large .switch-paddle::after {
+    width: 2rem;
+    height: 2rem; }
+  .switch.large input:checked ~ .switch-paddle::after {
+    right: 2.75rem; }
 
 table {
   width: 100%;
@@ -3190,20 +3198,22 @@ table {
   table caption {
     font-weight: bold;
     padding: 0.5rem 0.625rem 0.625rem; }
-  table thead,
-  table tfoot {
+  table thead {
     background: #f8f8f8;
     color: #0a0a0a; }
-    table thead tr,
-    table tfoot tr {
-      background: transparent; }
-    table thead th,
-    table thead td,
-    table tfoot th,
-    table tfoot td {
-      padding: 0.5rem 0.625rem 0.625rem;
-      font-weight: bold;
-      text-align: right; }
+  table tfoot {
+    background: #f1f1f1;
+    color: #0a0a0a; }
+  table thead tr,
+  table tfoot tr {
+    background: transparent; }
+  table thead th,
+  table thead td,
+  table tfoot th,
+  table tfoot td {
+    padding: 0.5rem 0.625rem 0.625rem;
+    font-weight: bold;
+    text-align: right; }
   table tbody tr:nth-child(even) {
     background-color: #f1f1f1; }
   table tbody th,

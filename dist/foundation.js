@@ -2,7 +2,7 @@
 
   "use strict";
 
-  var FOUNDATION_VERSION = '6.2.3';
+  var FOUNDATION_VERSION = '';
 
   // Global Foundation object
   // This is attached to the window, or used as a module for AMD/Browserify
@@ -562,7 +562,7 @@
         break;
       case 'left bottom':
         return {
-          left: $anchorDims.offset.left - ($eleDims.width + hOffset),
+          left: $anchorDims.offset.left,
           top: $anchorDims.offset.top + $anchorDims.height
         };
         break;
@@ -642,9 +642,9 @@
         // this component does not differentiate between ltr and rtl
         cmds = commandList; // use plain list
       } else {
-          // merge ltr and rtl: if document is rtl, rtl overwrites ltr and vice versa
-          if (Foundation.rtl()) cmds = $.extend({}, commandList.ltr, commandList.rtl);else cmds = $.extend({}, commandList.rtl, commandList.ltr);
-        }
+        // merge ltr and rtl: if document is rtl, rtl overwrites ltr and vice versa
+        if (Foundation.rtl()) cmds = $.extend({}, commandList.ltr, commandList.rtl);else cmds = $.extend({}, commandList.rtl, commandList.ltr);
+      }
       command = cmds[keyCode];
 
       fn = functions[command];
@@ -850,7 +850,7 @@
       style.type = 'text/css';
       style.id = 'matchmediajs-test';
 
-      script.parentNode.insertBefore(style, script);
+      script && script.parentNode && script.parentNode.insertBefore(style, script);
 
       // 'style.currentStyle' is used by IE <= 8 and 'window.getComputedStyle' for all other browsers
       info = 'getComputedStyle' in window && window.getComputedStyle(style, null) || style.currentStyle;
@@ -1585,7 +1585,7 @@
   * @function
   * @private
   */
-  $(window).load(function () {
+  $(window).on('load', function () {
     checkListeners();
   });
 
@@ -1785,7 +1785,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @param {Object} element - jQuery object to add the trigger to.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-
     function Abide(element) {
       var options = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
 
@@ -2387,7 +2386,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @param {jQuery} element - jQuery object to make into an accordion.
      * @param {Object} options - a plain object with settings to override the default options.
      */
-
     function Accordion(element, options) {
       _classCallCheck(this, Accordion);
 
@@ -2650,7 +2648,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @param {jQuery} element - jQuery object to make into an accordion menu.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-
     function AccordionMenu(element, options) {
       _classCallCheck(this, AccordionMenu);
 
@@ -2956,7 +2953,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @param {jQuery} element - jQuery object to make into an accordion menu.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-
     function Drilldown(element, options) {
       _classCallCheck(this, Drilldown);
 
@@ -3366,7 +3362,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      *        Object should be of the dropdown panel, rather than its anchor.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-
     function Dropdown(element, options) {
       _classCallCheck(this, Dropdown);
 
@@ -3429,9 +3424,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       value: function getPositionClass() {
         var verticalPosition = this.$element[0].className.match(/(top|left|right|bottom)/g);
         verticalPosition = verticalPosition ? verticalPosition[0] : '';
-        var horizontalPosition = /float-(\S+)\s/.exec(this.$anchor[0].className);
+        var horizontalPosition = /float-(\S+)/.exec(this.$anchor[0].className);
         horizontalPosition = horizontalPosition ? horizontalPosition[1] : '';
         var position = horizontalPosition ? horizontalPosition + ' ' + verticalPosition : verticalPosition;
+
         return position;
       }
 
@@ -3813,7 +3809,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @param {jQuery} element - jQuery object to make into a dropdown menu.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-
     function DropdownMenu(element, options) {
       _classCallCheck(this, DropdownMenu);
 
@@ -4247,6 +4242,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   /**
    * Equalizer module.
    * @module foundation.equalizer
+   * @requires foundation.util.mediaQuery
+   * @requires foundation.util.timerAndImageLoader if equalizer contains images
    */
 
   var Equalizer = function () {
@@ -4257,7 +4254,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @param {Object} element - jQuery object to add the trigger to.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-
     function Equalizer(element, options) {
       _classCallCheck(this, Equalizer);
 
@@ -4582,7 +4578,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @option
      * @example true
      */
-    equalizeOnStack: true,
+    equalizeOnStack: false,
     /**
      * Enable height equalization row by row.
      * @option
@@ -4623,7 +4619,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @param {Object} element - jQuery object to add the trigger to.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-
     function Interchange(element, options) {
       _classCallCheck(this, Interchange);
 
@@ -4766,7 +4761,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         // Replacing images
         if (this.$element[0].nodeName === 'IMG') {
-          this.$element.attr('src', path).load(function () {
+          this.$element.attr('src', path).on('load', function () {
             _this.currentPath = path;
           }).trigger(trigger);
         }
@@ -4848,7 +4843,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @param {Object} element - jQuery object to add the trigger to.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-
     function Magellan(element, options) {
       _classCallCheck(this, Magellan);
 
@@ -5108,7 +5102,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @param {Object} element - jQuery object to initialize.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-
     function OffCanvas(element, options) {
       _classCallCheck(this, OffCanvas);
 
@@ -5546,7 +5539,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     * @param {jQuery} element - jQuery object to make into an Orbit Carousel.
     * @param {Object} options - Overrides to the default plugin settings.
     */
-
     function Orbit(element, options) {
       _classCallCheck(this, Orbit);
 
@@ -5773,23 +5765,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             });
           }
 
-          this.$wrapper.add(this.$bullets).on('keydown.zf.orbit', function (e) {
-            // handle keyboard event with keyboard util
-            Foundation.Keyboard.handleKey(e, 'Orbit', {
-              next: function () {
-                _this.changeSlide(true);
-              },
-              previous: function () {
-                _this.changeSlide(false);
-              },
-              handled: function () {
-                // if bullet is focused, make sure focus moves
-                if ($(e.target).is(_this.$bullets)) {
-                  _this.$bullets.filter('.is-active').focus();
+          if (this.options.accessible) {
+            this.$wrapper.add(this.$bullets).on('keydown.zf.orbit', function (e) {
+              // handle keyboard event with keyboard util
+              Foundation.Keyboard.handleKey(e, 'Orbit', {
+                next: function () {
+                  _this.changeSlide(true);
+                },
+                previous: function () {
+                  _this.changeSlide(false);
+                },
+                handled: function () {
+                  // if bullet is focused, make sure focus moves
+                  if ($(e.target).is(_this.$bullets)) {
+                    _this.$bullets.filter('.is-active').focus();
+                  }
                 }
-              }
+              });
             });
-          });
+          }
         }
       }
 
@@ -5824,8 +5818,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.options.infiniteWrap ? $curSlide.next('.' + this.options.slideClass).length ? $curSlide.next('.' + this.options.slideClass) : $firstSlide : $curSlide.next('.' + this.options.slideClass) : //pick next slide if moving left to right
           this.options.infiniteWrap ? $curSlide.prev('.' + this.options.slideClass).length ? $curSlide.prev('.' + this.options.slideClass) : $lastSlide : $curSlide.prev('.' + this.options.slideClass); //pick prev slide if moving right to left
         } else {
-            $newSlide = chosenSlide;
-          }
+          $newSlide = chosenSlide;
+        }
 
         if ($newSlide.length) {
           if (this.options.bullets) {
@@ -5846,12 +5840,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               //do stuff?
             });
           } else {
-              $curSlide.removeClass('is-active is-in').removeAttr('aria-live').hide();
-              $newSlide.addClass('is-active is-in').attr('aria-live', 'polite').show();
-              if (this.options.autoPlay && !this.timer.isPaused) {
-                this.timer.restart();
-              }
+            $curSlide.removeClass('is-active is-in').removeAttr('aria-live').hide();
+            $newSlide.addClass('is-active is-in').attr('aria-live', 'polite').show();
+            if (this.options.autoPlay && !this.timer.isPaused) {
+              this.timer.restart();
             }
+          }
           /**
           * Triggers when the slide has finished animating in.
           * @event Orbit#slidechange
@@ -6032,7 +6026,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @param {jQuery} element - jQuery object to make into a dropdown menu.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-
     function ResponsiveMenu(element, options) {
       _classCallCheck(this, ResponsiveMenu);
 
@@ -6199,7 +6192,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @param {jQuery} element - jQuery object to attach tab bar functionality to.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-
     function ResponsiveToggle(element, options) {
       _classCallCheck(this, ResponsiveToggle);
 
@@ -6344,7 +6336,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @param {jQuery} element - jQuery object to use for the modal.
      * @param {Object} options - optional parameters.
      */
-
     function Reveal(element, options) {
       _classCallCheck(this, Reveal);
 
@@ -6584,7 +6575,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 'aria-hidden': false,
                 'tabindex': -1
               }).focus();
-              console.log('focus');
+              // console.log('focus');
             };
 
             _this = _this3;
@@ -6966,7 +6957,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @param {jQuery} element - jQuery object to make into an accordion menu.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-
     function Slider(element, options) {
       _classCallCheck(this, Slider);
 
@@ -7127,7 +7117,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           dim,
 
           //percentage w/h of the handle compared to the slider bar
-          handlePct = ~ ~(percent(handleDim, elemDim) * 100);
+          handlePct = ~~(percent(handleDim, elemDim) * 100);
           //if left handle, the math is slightly different than if it's the right handle, and the left/top property needs to be changed for the fill bar
           if (isLeftHndl) {
             //left or top percentage value to apply to the fill bar.
@@ -7140,12 +7130,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               cb();
             } //this is only needed for the initialization of 2 handled sliders
           } else {
-              //just caching the value of the left/bottom handle's left/top property
-              var handlePos = parseFloat(this.$handle[0].style[lOrT]);
-              //calculate the new min-height/width for the fill bar. Use isNaN to prevent false positives for numbers <= 0
-              //based on the percentage of movement of the handle being manipulated, less the opposing handle's left/top position, plus the percentage w/h of the handle itself
-              dim = movement - (isNaN(handlePos) ? this.options.initialStart / ((this.options.end - this.options.start) / 100) : handlePos) + handlePct;
-            }
+            //just caching the value of the left/bottom handle's left/top property
+            var handlePos = parseFloat(this.$handle[0].style[lOrT]);
+            //calculate the new min-height/width for the fill bar. Use isNaN to prevent false positives for numbers <= 0
+            //based on the percentage of movement of the handle being manipulated, less the opposing handle's left/top position, plus the percentage w/h of the handle itself
+            dim = movement - (isNaN(handlePos) ? this.options.initialStart / ((this.options.end - this.options.start) / 100) : handlePos) + handlePct;
+          }
           // assign the min-height/width to our css object
           css['min-' + hOrW] = dim + '%';
         }
@@ -7612,7 +7602,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @param {jQuery} element - jQuery object to make sticky.
      * @param {Object} options - options object passed when creating the element programmatically.
      */
-
     function Sticky(element, options) {
       _classCallCheck(this, Sticky);
 
@@ -7649,6 +7638,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.scrollCount = this.options.checkEvery;
         this.isStuck = false;
         $(window).one('load.zf.sticky', function () {
+          //We calculate the container height to have correct values for anchor points offset calculation.
+          _this.containerHeight = _this.$element.css("display") == "none" ? 0 : _this.$element[0].getBoundingClientRect().height;
+          _this.$container.css('height', _this.containerHeight);
+          _this.elemHeight = _this.containerHeight;
           if (_this.options.anchor !== '') {
             _this.$anchor = $('#' + _this.options.anchor);
           } else {
@@ -7891,7 +7884,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         var _this = this,
             newElemWidth = this.$container[0].getBoundingClientRect().width,
             comp = window.getComputedStyle(this.$container[0]),
-            pdng = parseInt(comp['padding-right'], 10);
+            pdng = parseInt(comp['padding-right'], 10) * 2;
 
         if (this.$anchor && this.$anchor.length) {
           this.anchorHeight = this.$anchor[0].getBoundingClientRect().height;
@@ -7915,6 +7908,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         if (this.isStuck) {
           this.$element.css({ "left": this.$container.offset().left + parseInt(comp['padding-left'], 10) });
+        } else {
+          if (this.$element.hasClass('is-at-bottom')) {
+            var anchorPt = (this.points ? this.points[1] - this.$container.offset().top : this.anchorHeight) - this.elemHeight;
+            this.$element.css('top', anchorPt);
+          }
         }
 
         this._setBreakPoints(newContainerHeight, function () {
@@ -8108,7 +8106,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @param {jQuery} element - jQuery object to make into tabs.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-
     function Tabs(element, options) {
       _classCallCheck(this, Tabs);
 
@@ -8456,7 +8453,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @param {Object} element - jQuery object to add the trigger to.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-
     function Toggler(element, options) {
       _classCallCheck(this, Toggler);
 
@@ -8611,6 +8607,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
    * Tooltip module.
    * @module foundation.tooltip
    * @requires foundation.util.box
+   * @requires foundation.util.mediaQuery
    * @requires foundation.util.triggers
    */
 
@@ -8622,7 +8619,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @param {jQuery} element - jQuery object to attach a tooltip to.
      * @param {Object} options - object to extend the default configuration.
      */
-
     function Tooltip(element, options) {
       _classCallCheck(this, Tooltip);
 
@@ -8887,11 +8883,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               //_this.hide();
               // _this.isClick = false;
             } else {
-                _this.isClick = true;
-                if ((_this.options.disableHover || !_this.$element.attr('tabindex')) && !_this.isActive) {
-                  _this.show();
-                }
+              _this.isClick = true;
+              if ((_this.options.disableHover || !_this.$element.attr('tabindex')) && !_this.isActive) {
+                _this.show();
               }
+            }
           });
         } else {
           this.$element.on('mousedown.zf.tooltip', function (e) {

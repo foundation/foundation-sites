@@ -21,7 +21,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @param {jQuery} element - jQuery object to make into an accordion menu.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-
     function Drilldown(element, options) {
       _classCallCheck(this, Drilldown);
 

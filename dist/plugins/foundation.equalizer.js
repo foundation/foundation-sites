@@ -9,6 +9,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   /**
    * Equalizer module.
    * @module foundation.equalizer
+   * @requires foundation.util.mediaQuery
+   * @requires foundation.util.timerAndImageLoader if equalizer contains images
    */
 
   var Equalizer = function () {
@@ -19,7 +21,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @param {Object} element - jQuery object to add the trigger to.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-
     function Equalizer(element, options) {
       _classCallCheck(this, Equalizer);
 
@@ -344,7 +345,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @option
      * @example true
      */
-    equalizeOnStack: true,
+    equalizeOnStack: false,
     /**
      * Enable height equalization row by row.
      * @option
