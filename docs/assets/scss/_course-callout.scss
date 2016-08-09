@@ -1,7 +1,8 @@
 .footer-course-upsell {
   overflow: hidden;
   img {
-    margin-top: 55px;
+    position: absolute;
+    bottom: -15px;
     animation:  ad-unit-hover 8s infinite ease;
   }
   border-top: 1px solid #cacaca;
