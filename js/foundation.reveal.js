@@ -69,7 +69,7 @@ class Reveal {
     if(this.$overlay) {
       this.$element.detach().appendTo(this.$overlay);
     } else {
-      this.$element.detach().appendTo($('body'));
+      this.$element.detach().appendTo($(this.options.appendTo));
       this.$element.addClass('without-overlay');
     }
     this._events();
@@ -85,7 +85,7 @@ class Reveal {
   _makeOverlay(id) {
     var $overlay = $('<div></div>')
                     .addClass('reveal-overlay')
-                    .appendTo('body');
+                    .appendTo('this.options.appendTo');
     return $overlay;
   }
 
@@ -460,7 +460,7 @@ class Reveal {
    */
   destroy() {
     if (this.options.overlay) {
-      this.$element.appendTo($('body')); // move $element outside of $overlay to prevent error unregisterPlugin()
+      this.$element.appendTo($(this.options.appendTo)); // move $element outside of $overlay to prevent error unregisterPlugin()
       this.$overlay.hide().off().remove();
     }
     this.$element.hide().off();
@@ -555,7 +555,14 @@ Reveal.defaults = {
    * @option
    * @example false
    */
-  deepLink: false
+  deepLink: false,
+    /**
+   * Allows the modal to append to custom div. 
+   * @option
+   * @example false
+   */
+  appendTo: "body"   
+
 };
 
 // Window exports
