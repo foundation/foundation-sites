@@ -29,24 +29,11 @@
       {{> navigation}}
       {{> mobile-navigation}}
 
-      <header class="docs-header">
-        Foundation for Sites
-
-        <input type="text" class="docs-search" data-docs-search placeholder="Find a page, component, variable, mixin, function...">
-
-        <a class="pin-button">Pin Page</a>
-
-        <div class="recently-viewed">
-          <a href="#">Recents</a>
-          <li class="recently-viewed-item">
-            <a href="#">Item</a>
-          </li>
-        </div>
-      </header>
+      <input type="text" class="docs-search" data-docs-search placeholder="Find a page, component, variable, mixin, function...">
 
       <div class="expanded row">
         <div class="medium-9 large-10 medium-push-3 large-push-2 columns">
-          {{> body}}
+{{> body}}
         </div>
         <div class="medium-3 large-2 medium-pull-9 large-pull-10 columns">
           {{> component-list}}
