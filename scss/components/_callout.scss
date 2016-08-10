@@ -49,7 +49,6 @@ $callout-link-tint: 30% !default;
   border: $callout-border;
   border-radius: $callout-radius;
   position: relative;
-  color: $callout-font-color;
 
   // Respect the padding, fool.
   > :first-child {
@@ -67,6 +66,26 @@ $callout-link-tint: 30% !default;
   $background: scale-color($color, $lightness: $callout-background-fade);
 
   background-color: $background;
+  color: foreground($background, $callout-font-color, $callout-font-color-alt);
+
+  a {
+    @if $callout-link-tint {
+  	  color: scale-color(foreground($background, $anchor-color), $lightness: $callout-link-tint);
+
+	  &:hover,
+      &:focus {
+        color: scale-color(foreground($background, $anchor-color-hover), $lightness: $callout-link-tint);
+      }
+	}
+	@else {
+	  color: foreground($background, $anchor-color);
+
+	  &:hover,
+      &:focus {
+        color: foreground($background, $anchor-color-hover);
+      }
+    }
+  }
 }
 
 @mixin callout-size($padding) {
