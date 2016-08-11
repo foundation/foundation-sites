@@ -65,7 +65,11 @@
   $hover-shadow: ();
 
   // Spacing between bars is calculated based on the total height of the icon and the weight of each bar
-  $spacing: floor(($height - ($weight * $bars)) / ($bars - 1));
+  $spacing: ($height - ($weight * $bars)) / ($bars - 1);
+
+  @if unit($spacing) == 'px' {
+    $spacing: floor($spacing);
+  }
 
   // Icon container
   position: relative;
