@@ -58,10 +58,10 @@ Not a fan of GUIs? The Node-powered Foundation CLI can install the same template
   </div>
 
   <!-- FAQ Accordion -->
-  <ul class="accordion indented" data-accordion>
-    <li class="accordion-item is-active" data-accordion-item>
-      <a href="#" class="accordion-title">Get an EACCESS Error?</a>
-      <div class="accordion-content" data-tab-content>
+  <ul class="faq-accordion indented" data-accordion>
+    <li class="faq-accordion-item is-active" data-accordion-item>
+      <a href="#" class="faq-accordion-title">Get an EACCESS Error?</a>
+      <div class="faq-accordion-content" data-tab-content>
         Depending on how your machine is configured, the command may fail with an `EACCESS` error. To get around this, run the command with `sudo` at the beginning:
 
         ```bash
@@ -69,15 +69,15 @@ Not a fan of GUIs? The Node-powered Foundation CLI can install the same template
         ```
       </div>
     </li>
-    <li class="accordion-item" data-accordion-item>
-      <a href="#" class="accordion-title">Already have the Foundation 5 CLI?</a>
-      <div class="accordion-content" data-tab-content>
+    <li class="faq-accordion-item" data-accordion-item>
+      <a href="#" class="faq-accordion-title">Already have the Foundation 5 CLI?</a>
+      <div class="faq-accordion-content" data-tab-content>
         <p>If you already have the Foundation 5 CLI on your machine, you will only be able to access one of the commands, depending on how your command line environment is configured.</p>
       </div>
     </li>
-    <li class="accordion-item" data-accordion-item>
-      <a href="#" class="accordion-title">Want to remove the old CLI?</a>
-      <div class="accordion-content" data-tab-content>
+    <li class="faq-accordion-item" data-accordion-item>
+      <a href="#" class="faq-accordion-title">Want to remove the old CLI?</a>
+      <div class="faq-accordion-content" data-tab-content>
         <p>If you want to remove the old CLI, run <code>gem uninstall foundation</code>. After testing this new CLI, if you want to go back to the old CLI, run <code>npm uninstall foundation-cli --global</code>.</p>
       </div>
     </li>
