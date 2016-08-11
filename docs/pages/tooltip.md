@@ -1,5 +1,5 @@
 ---
-title: Tooltips
+title: Tooltip
 description: Tooltips? More like <em>Cooltips</em>. But really though, tooltips are nifty for displaying extended information for a term or action on a page.
 sass: scss/components/_tooltip.scss
 js: js/foundation.tooltip.js

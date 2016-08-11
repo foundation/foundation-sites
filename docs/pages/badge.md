@@ -18,7 +18,7 @@ A badge will typically be describing another element on the page. To bind the tw
 
 ```html
 <h1 aria-describedby="messageCount">Unread Messages</h1>
-<span class="badge" id="messageCount">1<span>
+<span class="badge" id="messageCount">1</span>
 ```
 
 Finally, the content itself might need more context for users that use screen readers. You can add extra text inside the badge using the `.show-for-sr` class.

@@ -120,6 +120,14 @@ The `../` is added only on pages in a sub-folder, so the CSS can still be proper
 
 Helpers are special functions that manipulate content on the page. In addition to [Handlebars's built-in helpers](http://handlebarsjs.com/builtin_helpers.html), Panini includes a few custom helpers and you can add your own.
 
+### ifequal
+Displays the HTML inside the helper if the two values are equal. 
+```handlebars
+{{#ifequal foo bar}}
+  <p>foo and bar are equal</p>
+{{/ifequal}}
+```
+
 ### ifpage
 
 Displays the HTML inside the helper only on specific pages. In the below example, the HTML inside the helper will only show up on the `index.html` page.

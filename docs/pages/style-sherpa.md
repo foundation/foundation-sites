@@ -74,7 +74,7 @@ The output looks something like this:
 
 The ZURB Template includes a minimal boilerplate for your style guide, but you're free to customize it however you want.
 
-The boilerplate uses Foundation's tab plugin&mdash;one tab is made for each section. Here's what the Handlebars code looks like:
+The boilerplate uses Foundation's Vertical Menu&mdash;one item is made for each section. Here's what the Handlebars code looks like:
 
 {{{{raw}}}}
 ```handlebars
