@@ -27,7 +27,7 @@ description: There are many ways to install Foundation, but if you're just getti
     <ul>
       <li><a href="#cdn-links">CDN Links</a></li>
       <li><a href="#package-managers">Package Managers</a></li>
-      <li><a href="http://foundation.zurb.com/develop/yeti-launch">Yeti Launch</a></li>
+      <li><a href="#html-starter-template">HTML Starter Template</a></li>
     </ul>
   </div>
 </div>
@@ -42,7 +42,7 @@ description: There are many ways to install Foundation, but if you're just getti
 
 <!--<a href="http://foundation.zurb.com/develop/yeti-launch" class="large button">Download Yeti Launch</a>-->
 
-### Command-Line Tool
+## Command-Line Tool
 
 Not a fan of GUIs? The Node-powered Foundation CLI can install the same template projects for you. Install it with npm:
 
@@ -150,36 +150,6 @@ If you aren't into Sass, we have a starter template with compiled CSS and JavaSc
 
 ---
 
-## HTML Starter Template
-Start with this HTML template and adapt it to your needs.
-
-```html
-<!doctype html>
-<html class="no-js" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Foundation Starter Template</title>
-    <link rel="stylesheet" href="css/foundation.css" />
-  </head>
-  <body>
-    <h1>Hello, world!</h1>
-
-    <script src="js/vendor/jquery.min.js"></script>
-    <script src="js/vendor/what-input.min.js"></script>
-    <script src="js/foundation.min.js"></script>
-    <script>
-      $(document).foundation();
-    </script>
-
-  </body>
-</html>
-
-```
-
----
-
 ## CDN Links
 
 The folks at [jsDelivr](https://www.jsdelivr.com) host the compressed Foundation CSS and JavaScript for us. Just drop one of these `<script>` tags into your HTML and you're set:
@@ -213,6 +183,36 @@ Here's what comes in the package.
 - `dist/`: Compiled files.
   - `css/`: Compiled CSS files. Includes minified and unminified files.
   - `js/`: Concatenated JavaScript files. Includes minified and unminified files.
+
+---
+
+## HTML Starter Template
+Start with this HTML template and adapt it to your needs.
+
+```html
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Foundation Starter Template</title>
+    <link rel="stylesheet" href="css/foundation.css" />
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+
+    <script src="js/vendor/jquery.min.js"></script>
+    <script src="js/vendor/what-input.min.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+
+  </body>
+</html>
+
+```
 
 ---
 
