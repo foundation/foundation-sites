@@ -31,17 +31,37 @@
 
   {{> docs-header}}
 
-  <input type="text" class="docs-search" data-docs-search placeholder="Find a page, component, variable, mixin, function...">
+  <!-- <input type="text" class="docs-search" data-docs-search placeholder="Find a page, component, variable, mixin, function..."> -->
 
   <div class="expanded row">
     <div class="medium-9 large-10 medium-push-3 large-push-2 columns">
       {{> body}}
     </div>
-    <div class="docs-sidebar" data-sticky-container>
-      <div class="medium-3 large-2 medium-pull-9 large-pull-10 columns" data-sticky-on="medium">
-        {{> component-list}}
-      </div>
-    </div>
+    <div class="medium-3 large-2 medium-pull-9 large-pull-10 columns" data-sticky-container>
+          <div class="docs-sidebar" data-sticky data-anchor="docs" data-sticky-on="medium">
+            <div class="docs-sidebar-label">PAGES</div>
+            <div class="docs-sidebar-collapse-button">Collapse All</div>
+
+            <div class="pin-list" data-pin-list>
+              <div class="pin-list-item">
+                <a href="#">Pinned page</a>
+              </div>
+              <div class="pin-list-item">
+                <a href="#">Pinned page</a>
+              </div>
+            </div>
+
+            <ul class="vertical menu docs-nav" id="docs-menu">
+              {{> component-list}}
+            </ul>
+          </div>
+
+          <div class="docs-ad-unit">
+            <h3>Master Installation</h3>
+            <p>Get up to speed FAST, learn straight from the experts who built Foundation.</p>
+            <a href="#" class="button expanded">Learn More</a>
+          </div>
+        </div>
   </div>
 
   {{> footer}}

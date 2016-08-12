@@ -8,7 +8,7 @@ var supercollider = require('supercollider');
 var PANINI_CONFIG = {
   root: 'docs/pages/',
   layouts: 'docs/layout/',
-  partials: ['node_modules/foundation-docs/test/visual/partials/', 'docs/partials/'],
+  partials: ['node_modules/foundation-docs/templates/partials/', 'docs/partials/'],
   helpers: foundationDocs.handlebarsHelpers,
 }
 
