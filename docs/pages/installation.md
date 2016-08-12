@@ -51,9 +51,11 @@ Not a fan of GUIs? The Node-powered Foundation CLI can install the same template
   <div class="step">
     <h4 class="">Install the tool</h4>
     <div class="indented">
-      ```bash
-      npm install --global foundation-cli
-      ```
+
+```bash
+npm install --global foundation-cli
+```
+
     </div>
   </div>
 
@@ -64,9 +66,13 @@ Not a fan of GUIs? The Node-powered Foundation CLI can install the same template
       <div class="faq-accordion-content" data-tab-content>
         Depending on how your machine is configured, the command may fail with an `EACCESS` error. To get around this, run the command with `sudo` at the beginning:
 
-        ```bash
-        sudo npm install --global foundation-cli
-        ```
+```bash
+sudo npm install --global foundation-cli
+```
+
+          </code>
+        </pre>
+
       </div>
     </li>
     <li class="faq-accordion-item" data-accordion-item>
@@ -89,9 +95,10 @@ Not a fan of GUIs? The Node-powered Foundation CLI can install the same template
   <div class="indented">
     Once you've installed the CLI, use the `new` command to start making a new project:
 
-    ```bash
-    foundation new
-    ```
+```bash
+foundation new
+```
+
   </div>
   </div>
 
@@ -100,9 +107,10 @@ Not a fan of GUIs? The Node-powered Foundation CLI can install the same template
   <div class="indented">
     Finally, run npm start to run the Sass compiler. It will re-run every time you save a Sass file. This command is something you’ll use every time you work on your project.
 
-    ```bash
-    npm start
-    ```
+```bash
+npm start
+```
+
   </div>
   </div>
 
