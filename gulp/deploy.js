@@ -84,6 +84,9 @@ gulp.task('deploy:dist', ['sass:foundation', 'javascript:foundation'], function(
 // Copies standalone JavaScript plugins to dist/ folder
 gulp.task('deploy:plugins', function() {
   gulp.src('_build/assets/js/plugins/*.js')
+    .pipe(gulp.dest('dist/js/plugins'))
+    .pipe(uglify())
+    .pipe(rename({ suffix: '.min' }))
     .pipe(gulp.dest('dist/js/plugins'));
 });
 
