@@ -128,7 +128,7 @@ class Magellan {
         curIdx;
 
     if(winPos + this.winHeight === this.docHeight){ curIdx = this.points.length - 1; }
-    else if(winPos < this.points[0]){ curIdx = 0; }
+    else if(winPos < this.points[0]){ curIdx = undefined; }
     else{
       var isDown = this.scrollPos < winPos,
           _this = this,
