@@ -389,7 +389,7 @@ OffCanvas.defaults = {
    * @option
    * @example true
    */
-  trapFocus: false
+  trapFocus: true
 }
 
 // Window exports
