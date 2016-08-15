@@ -48,16 +48,19 @@ Not a fan of GUIs? The Node-powered Foundation CLI can install the same template
 
 <div class="steps" markdown="1">
 
-  <div class="step">
-    <h4 class="">Install the tool</h4>
-    <div class="indented">
+<div class="step">
+<div class="indented">
+<h4 class="">Install the tool</h4>
+
+<div></div>
 
 ```bash
 npm install --global foundation-cli
 ```
 
-    </div>
-  </div>
+</div>
+</div>
+
 
   <!-- FAQ Accordion -->
   <ul class="faq-accordion indented" data-accordion>
@@ -70,11 +73,8 @@ npm install --global foundation-cli
 sudo npm install --global foundation-cli
 ```
 
-          </code>
-        </pre>
-
-      </div>
-    </li>
+</div>
+</li>
     <li class="faq-accordion-item" data-accordion-item>
       <a href="#" class="faq-accordion-title">Already have the Foundation 5 CLI?</a>
       <div class="faq-accordion-content" data-tab-content>
