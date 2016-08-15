@@ -63,8 +63,8 @@ npm install --global foundation-cli
 
 
   <!-- FAQ Accordion -->
-  <ul class="faq-accordion indented" data-accordion>
-    <li class="faq-accordion-item is-active" data-accordion-item>
+  <ul class="faq-accordion indented" data-accordion  data-allow-all-closed="true">
+    <li class="faq-accordion-item" data-accordion-item>
       <a href="#" class="faq-accordion-title">Get an EACCESS Error?</a>
       <div class="faq-accordion-content" data-tab-content>
         Depending on how your machine is configured, the command may fail with an `EACCESS` error. To get around this, run the command with `sudo` at the beginning:
