@@ -2,17 +2,22 @@
 title: Foundation for Sites
 description: We built Foundation for Sites to be the most advanced responsive front-end framework in the world.
 tags:
-  - index
-  - home
+- index
+- home
 ---
 
 <div class="row">
   <div class="medium-6 columns">
     <h2 id="installing-foundation">Installing Foundation</h2>
-    <p>There are a number of ways to install Foundation for Sites. If you're just getting started, we recommend downloading Yeti Launch, which allows you to quickly set up starter projects with any Foundation framework. You can also install our Node CLI to do the same thing.</p>
-    <p>It's also possible to manually install Foundation for Sites into your project through npm, Bower, Meteor, or Composer.</p>
+    <p>There are a number of ways to install Foundation for Sites. If you're just getting started, we recommend installing our CLI, which allows you to quickly set up starter projects with any Foundation framework.</p>
+    <p>It's also possible to manually install Foundation for Sites into your project through NPM, Bower, Meteor, or Composer.</p>
     <a href="installation.html" class="large button-docs">Install Foundation for Sites</a>
-    <h4>Other Versions</h4>
+    <p class="docs-nav-version">
+      <span data-docs-version></span>
+      <a href="https://github.com/zurb/foundation-sites/releases/" target="_blank">(Changelog)</a>
+    </p>
+    <br>
+    <h4>Older Versions</h4>
     <a href="http://foundation.zurb.com/sites/docs/v/5.5.3" class="secondary button-docs">Foundation 5</a>
     <a href="http://foundation.zurb.com/sites/docs/v/4.3.2" class="secondary button-docs">Foundation 4</a>
     <a href="http://foundation.zurb.com/sites/docs/v/3.2.5/" class="secondary button-docs">Foundation 3</a>
@@ -20,7 +25,7 @@ tags:
   <div class="medium-6 columns">
     <h2 id="learning-foundation">Learning Foundation</h2>
     <h4>Understanding the framework</h4>
-    <p>Getting used to Foundation is a breeze! The syntax of the framework is easy to understand, and the structure is consistent.</p>
+    <p>With an easy to understand syntax and consistent structure, you’ll learn your way around Foundation in no time!</p>
 
     <div class="row up-1 medium-up-2 large-up-3 docs-big-index">
       <div class="column"><a href="global.html">
@@ -117,4 +122,48 @@ tags:
       </li>
     </ul>
   </div>
+</div>
+
+
+---
+
+
+<div class="row columns">
+  <h2>Templates</h2>
+  <p>Quickly get started with our ready-to-use Foundation templates.</p>
+
+  <!-- @TODO: Add real content -->
+  <div class="row small-up-2 medium-up-3 large-up-4">
+    {{#repeat 8}}
+    <div class="column docs-grid-content-block">
+      <img src="http://placehold.it/400x400" alt="" />
+      <h5>News or Magazine</h5>
+      <p>This template puts a focus on bold images, perfect for a magazine style site with eye catching content. Your stories are easy to find with large feature blocks.</p>
+      <a href="#" class="button-docs">Download</a>
+      <a href="#" class="secondary button-docs">See Demo</a>
+    </div>
+    {{/repeat}}
+  </div>
+
+  <a href="#">View All Templates</a>
+
+</div>
+
+
+---
+
+<div class="row columns">
+  <h2>Built with Foundation</h2>
+  <p>Thousands of the world’s biggest and most trusted brands (like Disney, Adobe, Amazon, and more) have chosen to build their responsive websites on the Foundation framework.</p>
+
+  <!-- @TODO: Add real content -->
+  <div class="row small-up-2 medium-up-3 large-up-5">
+    {{#repeat 5}}
+    <div class="column">
+      <h5>Pixar</h5>
+      <img src="http://placehold.it/400x400" alt="" />
+    </div>
+    {{/repeat}}
+  </div>
+  <a href="#">View More Sites Built with Foundation</a>
 </div>
