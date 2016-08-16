@@ -68,7 +68,7 @@ $callout-link-tint: 30% !default;
   background-color: $background;
   color: foreground($background, $callout-font-color, $callout-font-color-alt);
 
-  a {
+  a:not(.button) {
     @if $callout-link-tint {
   	  color: scale-color(foreground($background, $anchor-color), $lightness: $callout-link-tint);
 
