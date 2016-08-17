@@ -167,3 +167,11 @@ tags:
   </div>
   <a href="#">View More Sites Built with Foundation</a>
 </div>
+
+---
+
+<div class="row columns">
+  <h2>Ready to Start?</h2>
+  <p>Join millions of designers and developers around the world that use Foundation to build beautiful responsive websites every day.</p>
+  <a href="installation.html" class="large button-docs">Install Foundation for Sites</a>
+</div>

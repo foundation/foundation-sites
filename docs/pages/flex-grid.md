@@ -139,29 +139,6 @@ Columns in a flex grid can be aligned across the horizontal or vertical axis of 
 
 Columns can be aligned the same way you would align text in a paragraph. By default, all columns align to the left (or the right in RTL), but this can be overridden with by adding the `.align-[dir]` class to the flex row.
 
-```html
-<div class="row">
-  <div class="column small-4">Aligned to</div>
-  <div class="column small-4">the left</div>
-</div>
-<div class="row align-right">
-  <div class="column small-4">Aligned to</div>
-  <div class="column small-4">the right</div>
-</div>
-<div class="row align-center">
-  <div class="column small-4">Aligned to</div>
-  <div class="column small-4">the middle</div>
-</div>
-<div class="row align-justify">
-  <div class="column small-4">Aligned to</div>
-  <div class="column small-4">the edges</div>
-</div>
-<div class="row align-spaced">
-  <div class="column small-4">Aligned to</div>
-  <div class="column small-4">the space around</div>
-</div>
-```
-
 <div class="docs-code-live">
   <div class="text-center">
     <div class="row">
@@ -186,6 +163,29 @@ Columns can be aligned the same way you would align text in a paragraph. By defa
     </div>
   </div>
 </div>
+
+```html
+<div class="row">
+  <div class="column small-4">Aligned to</div>
+  <div class="column small-4">the left</div>
+</div>
+<div class="row align-right">
+  <div class="column small-4">Aligned to</div>
+  <div class="column small-4">the right</div>
+</div>
+<div class="row align-center">
+  <div class="column small-4">Aligned to</div>
+  <div class="column small-4">the middle</div>
+</div>
+<div class="row align-justify">
+  <div class="column small-4">Aligned to</div>
+  <div class="column small-4">the edges</div>
+</div>
+<div class="row align-spaced">
+  <div class="column small-4">Aligned to</div>
+  <div class="column small-4">the space around</div>
+</div>
+```
 
 You might be wondering what the difference between `.align-justify` and `.align-spaced` is. A justified grid (`justify-content: space-between`) evenly distributes the space *between* each column. The first and last columns pin to the edge of the grid.
 

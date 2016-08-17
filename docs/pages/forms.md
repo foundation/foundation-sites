@@ -158,6 +158,17 @@ Sometimes you want a form with labels to the left of your inputs. Piece of cake!
   <p>In a <a href="rtl.html">right-to-left</a> environment, use <code>.float-left</code> instead.</p>
 </div>
 
+<div class="medium-8 column row">
+  <div class="row">
+    <div class="small-3 columns">
+      <label for="right-label" class="text-right">Label</label>
+    </div>
+    <div class="small-9 columns">
+      <input type="text" id="right-label" placeholder="Right-aligned text input">
+    </div>
+  </div>
+</div>
+
 ```html
 <form>
   <div class="row">
@@ -170,22 +181,22 @@ Sometimes you want a form with labels to the left of your inputs. Piece of cake!
   </div>
 </form>
 ```
-
-<div class="medium-8 column row">
-  <div class="row">
-    <div class="small-3 columns">
-      <label for="right-label" class="text-right">Label</label>
-    </div>
-    <div class="small-9 columns">
-      <input type="text" id="right-label" placeholder="Right-aligned text input">
-    </div>
-  </div>
-</div>
 
 ---
 
 Add the `.middle` class to vertically align the label with its input.
 
+<div class="medium-8 column row">
+  <div class="row">
+    <div class="small-3 columns">
+      <label for="middle-label" class="text-right middle">Label</label>
+    </div>
+    <div class="small-9 columns">
+      <input type="text" id="middle-label" placeholder="Right- and middle-aligned text input">
+    </div>
+  </div>
+</div>
+
 ```html
 <form>
   <div class="row">
@@ -198,17 +209,6 @@ Add the `.middle` class to vertically align the label with its input.
   </div>
 </form>
 ```
-
-<div class="medium-8 column row">
-  <div class="row">
-    <div class="small-3 columns">
-      <label for="middle-label" class="text-right middle">Label</label>
-    </div>
-    <div class="small-9 columns">
-      <input type="text" id="middle-label" placeholder="Right- and middle-aligned text input">
-    </div>
-  </div>
-</div>
 
 ---
 
