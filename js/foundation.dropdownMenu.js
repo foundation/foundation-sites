@@ -163,7 +163,7 @@ class DropdownMenu {
         open: openSub,
         close: function() {
           _this._hide(_this.$element);
-          _this.$menuItems.find('a:first').focus(); // focus to first element
+          _this.$tabs.has(e.target).children('a').focus(); // focus to first element
           e.preventDefault();
         },
         handled: function() {
