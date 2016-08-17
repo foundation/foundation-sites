@@ -9,6 +9,7 @@ var PANINI_CONFIG = {
   root: 'docs/pages/',
   layouts: 'docs/layout/',
   partials: ['node_modules/foundation-docs/templates/partials/', 'docs/partials/'],
+  data: 'docs/data/',
   helpers: foundationDocs.handlebarsHelpers,
 }
 
