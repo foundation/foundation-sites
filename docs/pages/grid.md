@@ -14,6 +14,38 @@ Start by adding an element with a class of `.row`. This will create a horizontal
 
 **Foundation is mobile-first.** Code for small screens first, and larger devices will inherit those styles. Customize for larger screens as necessary.
 
+<div class="row display">
+  <div class="small-2 large-4 columns"><span class="hide-for-large">2</span><span class="show-for-large">4</span></div>
+  <div class="small-4 large-4 columns">4</div>
+  <div class="small-6 large-4 columns"><span class="hide-for-large">6</span><span class="show-for-large">4</span></div>
+</div>
+<div class="row display">
+  <div class="large-3 columns"><span class="hide-for-large">full</span><span class="show-for-large">3</span></div>
+  <div class="large-6 columns"><span class="hide-for-large">full</span><span class="show-for-large">6</span></div>
+  <div class="large-3 columns"><span class="hide-for-large">full</span><span class="show-for-large">3</span></div>
+</div>
+<div class="row display">
+  <div class="small-6 large-2 columns"><span class="hide-for-large">6</span><span class="show-for-large">2</span></div>
+  <div class="small-6 large-8 columns"><span class="hide-for-large">6</span><span class="show-for-large">8</span></div>
+  <div class="small-12 large-2 columns"><span class="hide-for-large">full</span><span class="show-for-large">2</span></div>
+</div>
+<div class="row display">
+  <div class="small-3 columns">3</div>
+  <div class="small-9 columns">9</div>
+</div>
+<div class="row display">
+  <div class="large-4 columns"><span class="hide-for-large">full</span><span class="show-for-large">4</span></div>
+  <div class="large-8 columns"><span class="hide-for-large">full</span><span class="show-for-large">8</span></div>
+</div>
+<div class="row display">
+  <div class="small-6 large-5 columns"><span class="hide-for-large">6</span><span class="show-for-large">5</span></div>
+  <div class="small-6 large-7 columns"><span class="hide-for-large">6</span><span class="show-for-large">7</span></div>
+</div>
+<div class="row display">
+  <div class="large-6 columns"><span class="hide-for-large">full</span><span class="show-for-large">6</span></div>
+  <div class="large-6 columns"><span class="hide-for-large">full</span><span class="show-for-large">6</span></div>
+</div>
+
 ```html
 <div class="row">
   <div class="small-2 large-4 columns"><!-- ... --></div>
@@ -48,43 +80,20 @@ Start by adding an element with a class of `.row`. This will create a horizontal
 </div>
 ```
 
-<div class="row display">
-  <div class="small-2 large-4 columns"><span class="hide-for-large">2</span><span class="show-for-large">4</span></div>
-  <div class="small-4 large-4 columns">4</div>
-  <div class="small-6 large-4 columns"><span class="hide-for-large">6</span><span class="show-for-large">4</span></div>
-</div>
-<div class="row display">
-  <div class="large-3 columns"><span class="hide-for-large">full</span><span class="show-for-large">3</span></div>
-  <div class="large-6 columns"><span class="hide-for-large">full</span><span class="show-for-large">6</span></div>
-  <div class="large-3 columns"><span class="hide-for-large">full</span><span class="show-for-large">3</span></div>
-</div>
-<div class="row display">
-  <div class="small-6 large-2 columns"><span class="hide-for-large">6</span><span class="show-for-large">2</span></div>
-  <div class="small-6 large-8 columns"><span class="hide-for-large">6</span><span class="show-for-large">8</span></div>
-  <div class="small-12 large-2 columns"><span class="hide-for-large">full</span><span class="show-for-large">2</span></div>
-</div>
-<div class="row display">
-  <div class="small-3 columns">3</div>
-  <div class="small-9 columns">9</div>
-</div>
-<div class="row display">
-  <div class="large-4 columns"><span class="hide-for-large">full</span><span class="show-for-large">4</span></div>
-  <div class="large-8 columns"><span class="hide-for-large">full</span><span class="show-for-large">8</span></div>
-</div>
-<div class="row display">
-  <div class="small-6 large-5 columns"><span class="hide-for-large">6</span><span class="show-for-large">5</span></div>
-  <div class="small-6 large-7 columns"><span class="hide-for-large">6</span><span class="show-for-large">7</span></div>
-</div>
-<div class="row display">
-  <div class="large-6 columns"><span class="hide-for-large">full</span><span class="show-for-large">6</span></div>
-  <div class="large-6 columns"><span class="hide-for-large">full</span><span class="show-for-large">6</span></div>
-</div>
-
 ---
 
 ### Small Grids
 
 Small grids expand to large screens easier than large grids cram into small screens.
+
+<div class="row display">
+  <div class="small-2 columns">2 columns</div>
+  <div class="small-10 columns">10 columns</div>
+</div>
+<div class="row display">
+  <div class="small-3 columns">3 columns</div>
+  <div class="small-9 columns">9 columns</div>
+</div>
 
 ```html
 <div class="row">
@@ -97,20 +106,20 @@ Small grids expand to large screens easier than large grids cram into small scre
 </div>
 ```
 
-<div class="row display">
-  <div class="small-2 columns">2 columns</div>
-  <div class="small-10 columns">10 columns</div>
-</div>
-<div class="row display">
-  <div class="small-3 columns">3 columns</div>
-  <div class="small-9 columns">9 columns</div>
-</div>
-
 ---
 
 ### Medium Grid
 
 Medium sized screens will inherit styles from small, unless you specify a different layout using the medium grid classes.
+
+<div class="row display">
+  <div class="medium-2 columns">2 columns</div>
+  <div class="medium-10 columns">10 columns</div>
+</div>
+<div class="row display">
+  <div class="medium-3 columns">3 columns</div>
+  <div class="medium-9 columns">9 columns</div>
+</div>
 
 ```html
 <div class="row">
@@ -122,15 +131,6 @@ Medium sized screens will inherit styles from small, unless you specify a differ
   <div class="medium-9 columns">9 columns</div>
 </div>
 ```
-
-<div class="row display">
-  <div class="medium-2 columns">2 columns</div>
-  <div class="medium-10 columns">10 columns</div>
-</div>
-<div class="row display">
-  <div class="medium-3 columns">3 columns</div>
-  <div class="medium-9 columns">9 columns</div>
-</div>
 
 ---
 
@@ -144,15 +144,15 @@ If you need a full-width column to use as a container, put the `.column` and `.r
   <p>Column rows can use sizing classes like <code>.small-8</code>, but only when used as a top-level container&mdash;not when nested inside another row.</p>
 </div>
 
+<div class="column row display">
+  Row column
+</div>
+
 ```html
 <div class="column row">
   Row column
 </div>
 ```
-
-<div class="column row display">
-  Row column
-</div>
 
 ---
 
@@ -171,6 +171,21 @@ Normally, a row is always 1200 pixels wide. Make a row completely fluid by addin
 
 You can nest the grids indefinitely, though at a certain point it will get absurd.
 
+<div class="row display">
+  <div class="small-8 columns">8
+    <div class="row">
+      <div class="small-8 columns">8 Nested
+        <div class="row">
+          <div class="small-8 columns">8 Nested Again</div>
+          <div class="small-4 columns">4</div>
+        </div>
+      </div>
+      <div class="small-4 columns">4</div>
+    </div>
+  </div>
+  <div class="small-4 columns">4</div>
+</div>
+
 ```html
 <div class="row">
   <div class="small-8 columns">8
@@ -187,21 +202,6 @@ You can nest the grids indefinitely, though at a certain point it will get absur
   <div class="small-4 columns">4</div>
 </div>
 ```
-
-<div class="row display">
-  <div class="small-8 columns">8
-    <div class="row">
-      <div class="small-8 columns">8 Nested
-        <div class="row">
-          <div class="small-8 columns">8 Nested Again</div>
-          <div class="small-4 columns">4</div>
-        </div>
-      </div>
-      <div class="small-4 columns">4</div>
-    </div>
-  </div>
-  <div class="small-4 columns">4</div>
-</div>
 
 ---
 
@@ -209,6 +209,23 @@ You can nest the grids indefinitely, though at a certain point it will get absur
 
 Move blocks up to 11 columns to the right by using classes like `.large-offset-1` and `.small-offset-3`.
 
+<div class="row display">
+  <div class="large-1 columns">1</div>
+  <div class="large-11 columns">11</div>
+</div>
+<div class="row display">
+  <div class="large-1 columns">1</div>
+  <div class="large-10 large-offset-1 columns">10, offset 1</div>
+</div>
+<div class="row display">
+  <div class="large-1 columns">1</div>
+  <div class="large-9 large-offset-2 columns">9, offset 2</div>
+</div>
+<div class="row display">
+  <div class="large-1 columns">1</div>
+  <div class="large-8 large-offset-3 columns">8, offset 3</div>
+</div>
+
 ```html
 <div class="row">
   <div class="large-1 columns">1</div>
@@ -227,23 +244,6 @@ Move blocks up to 11 columns to the right by using classes like `.large-offset-1
   <div class="large-8 large-offset-3 columns">8, offset 3</div>
 </div>
 ```
-
-<div class="row display">
-  <div class="large-1 columns">1</div>
-  <div class="large-11 columns">11</div>
-</div>
-<div class="row display">
-  <div class="large-1 columns">1</div>
-  <div class="large-10 large-offset-1 columns">10, offset 1</div>
-</div>
-<div class="row display">
-  <div class="large-1 columns">1</div>
-  <div class="large-9 large-offset-2 columns">9, offset 2</div>
-</div>
-<div class="row display">
-  <div class="large-1 columns">1</div>
-  <div class="large-8 large-offset-3 columns">8, offset 3</div>
-</div>
 
 ---
 
@@ -251,6 +251,17 @@ Move blocks up to 11 columns to the right by using classes like `.large-offset-1
 
 In order to work around browsers' different rounding behaviors, Foundation will float the last column in a row to the right so the edge aligns. If your row doesn't have a count that adds up to 12 columns, you can tag the last column with a class of `.end` in order to override that behavior.
 
+<div class="row display-end">
+  <div class="medium-3 columns">3</div>
+  <div class="medium-3 columns">3</div>
+  <div class="medium-3 columns">3</div>
+</div>
+<div class="row display-end">
+  <div class="medium-3 columns">3</div>
+  <div class="medium-3 columns">3</div>
+  <div class="medium-3 columns end">3 end</div>
+</div>
+
 ```html
 <div class="row">
   <div class="medium-3 columns">3</div>
@@ -263,17 +274,6 @@ In order to work around browsers' different rounding behaviors, Foundation will 
   <div class="medium-3 columns end">3 end</div>
 </div>
 ```
-
-<div class="row display-end">
-  <div class="medium-3 columns">3</div>
-  <div class="medium-3 columns">3</div>
-  <div class="medium-3 columns">3</div>
-</div>
-<div class="row display-end">
-  <div class="medium-3 columns">3</div>
-  <div class="medium-3 columns">3</div>
-  <div class="medium-3 columns end">3 end</div>
-</div>
 
 ---
 
@@ -351,6 +351,19 @@ There are times when you won't want each media query to be collapsed or uncollap
 
 Center your columns by adding a class of `.small-centered` to your column. Large will inherit small centering by default, but you can also center solely on large by applying a `.large-centered` class. To uncenter on large screens, use `.large-uncentered`.
 
+<div class="row display">
+  <div class="small-3 small-centered columns">3 centered</div>
+</div>
+<div class="row display">
+  <div class="small-6 large-centered columns">6 centered, large</div>
+</div>
+<div class="row display">
+  <div class="small-9 small-centered large-uncentered columns">9 centered small</div>
+</div>
+<div class="row display">
+  <div class="small-11 small-centered columns">11 centered</div>
+</div>
+
 ```html
 <div class="row">
   <div class="small-3 small-centered columns">3 centered</div>
@@ -366,24 +379,32 @@ Center your columns by adding a class of `.small-centered` to your column. Large
 </div>
 ```
 
-<div class="row display">
-  <div class="small-3 small-centered columns">3 centered</div>
-</div>
-<div class="row display">
-  <div class="small-6 large-centered columns">6 centered, large</div>
-</div>
-<div class="row display">
-  <div class="small-9 small-centered large-uncentered columns">9 centered small</div>
-</div>
-<div class="row display">
-  <div class="small-11 small-centered columns">11 centered</div>
-</div>
-
 ---
 
 ### Source Ordering
 
 Using these source ordering classes, you can shift columns around between our breakpoints. This means if you place sub-navigation below main content on small displays, you have the option to position the sub-navigation on either the left or right of the page for large displays. Prefix push/pull with the size of the device you want to apply the styles to. `.medium-push-#`, `.large-push-#` is the syntax you'll use. Use the number 0 instead to reset a push/pull, such as `.medium-push-0` or `.large-pull-0`.
+
+<div class="row display">
+  <div class="small-10 small-push-2 columns">10</div>
+  <div class="small-2 small-pull-10 columns">2, last</div>
+</div>
+<div class="row display">
+  <div class="large-9 large-push-3 columns">9</div>
+  <div class="large-3 large-pull-9 columns">3, last</div>
+</div>
+<div class="row display">
+  <div class="large-8 large-push-4 columns">8</div>
+  <div class="large-4 large-pull-8 columns">4, last</div>
+</div>
+<div class="row display">
+  <div class="small-5 small-push-7 medium-7 medium-push-5 columns">7</div>
+  <div class="small-7 small-pull-5 medium-5 medium-pull-7 columns">5, last</div>
+</div>
+<div class="row display">
+  <div class="medium-6 medium-push-6 columns">6</div>
+  <div class="medium-6 medium-pull-6 columns">6, last</div>
+</div>
 
 ```html
 <div class="row">
@@ -407,27 +428,6 @@ Using these source ordering classes, you can shift columns around between our br
   <div class="medium-6 medium-pull-6 columns">6, last</div>
 </div>
 ```
-
-<div class="row display">
-  <div class="small-10 small-push-2 columns">10</div>
-  <div class="small-2 small-pull-10 columns">2, last</div>
-</div>
-<div class="row display">
-  <div class="large-9 large-push-3 columns">9</div>
-  <div class="large-3 large-pull-9 columns">3, last</div>
-</div>
-<div class="row display">
-  <div class="large-8 large-push-4 columns">8</div>
-  <div class="large-4 large-pull-8 columns">4, last</div>
-</div>
-<div class="row display">
-  <div class="small-5 small-push-7 medium-7 medium-push-5 columns">7</div>
-  <div class="small-7 small-pull-5 medium-5 medium-pull-7 columns">5, last</div>
-</div>
-<div class="row display">
-  <div class="medium-6 medium-push-6 columns">6</div>
-  <div class="medium-6 medium-pull-6 columns">6, last</div>
-</div>
 
 ---
 

@@ -24,7 +24,7 @@ Give the `<input>` a unique ID and point the `<label>` to it with the `for` attr
   <label class="switch-paddle" for="exampleSwitch">
     <span class="show-for-sr">Download Kittens</span>
   </label>
-</div> 
+</div>
 ```
 
 ---
@@ -40,14 +40,12 @@ You can also use `<input type="radio">` instead of `checkbox` to create a series
     <span class="show-for-sr">Bulbasaur</span>
   </label>
 </div>
-```
-
 <div class="switch">
   <input class="switch-input" id="exampleRadioSwitch2" type="radio" name="testGroup">
   <label class="switch-paddle" for="exampleRadioSwitch2">
     <span class="show-for-sr">Charmander</span>
   </label>
-</div> 
+</div>
 
 <div class="switch">
   <input class="switch-input" id="exampleRadioSwitch3" type="radio" name="testGroup">
@@ -55,6 +53,7 @@ You can also use `<input type="radio">` instead of `checkbox` to create a series
     <span class="show-for-sr">Squirtle</span>
   </label>
 </div>
+```
 
 ---
 
@@ -75,14 +74,14 @@ Use the classes `.tiny`, `.small`, or `.large` to change the switch size.
   <label class="switch-paddle" for="smallSwitch">
     <span class="show-for-sr">Small Portions Only</span>
   </label>
-</div> 
+</div>
 
 <div class="switch large">
   <input class="switch-input" id="largeSwitch" type="checkbox" name="exampleSwitch">
   <label class="switch-paddle" for="largeSwitch">
     <span class="show-for-sr">Show Large Elephants</span>
   </label>
-</div> 
+</div>
 ```
 
 ---
