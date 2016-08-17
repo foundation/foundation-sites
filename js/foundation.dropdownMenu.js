@@ -131,16 +131,14 @@ class DropdownMenu {
       $elements.each(function(i) {
         if ($(this).is($element)) {
           $prevElement = $elements.eq(i-1);
-          $nextElement = $elements.eq(i+1);
+          $nextElement = $elements.length === i + 1 ? $elements.eq(0) : $elements.eq(i+1);
           return;
         }
       });
 
       var nextSibling = function() {
-        if (!$element.is(':last-child')) {
-          $nextElement.children('a:first').focus();
-          e.preventDefault();
-        }
+        $nextElement.children('a:first').focus();
+        e.preventDefault();
       }, prevSibling = function() {
         $prevElement.children('a:first').focus();
         e.preventDefault();
