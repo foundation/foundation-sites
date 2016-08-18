@@ -36,6 +36,7 @@ class Equalizer {
 
     this.$watched = $watched.length ? $watched : this.$element.find('[data-equalizer-watch]');
     this.$element.attr('data-resize', (eqId || Foundation.GetYoDigits(6, 'eq')));
+	this.$element.attr('data-mutate', (eqId || Foundation.GetYoDigits(6, 'eq')));
 
     this.hasNested = this.$element.find('[data-equalizer]').length > 0;
     this.isNested = this.$element.parentsUntil(document.body, '[data-equalizer]').length > 0;
@@ -71,6 +72,7 @@ class Equalizer {
     this.$element.off({
       '.zf.equalizer': this._bindHandler.onPostEqualizedBound,
       'resizeme.zf.trigger': this._bindHandler.onResizeMeBound
+	  'mutateme.zf.trigger': this._bindHandler.onResizeMeBound
     });
   }
 
@@ -101,6 +103,7 @@ class Equalizer {
       this.$element.on('postequalized.zf.equalizer', this._bindHandler.onPostEqualizedBound);
     }else{
       this.$element.on('resizeme.zf.trigger', this._bindHandler.onResizeMeBound);
+	  this.$element.on('mutateme.zf.trigger', this._bindHandler.onResizeMeBound);
     }
     this.isOn = true;
   }
