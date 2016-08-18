@@ -207,6 +207,9 @@ class Tabs {
      * @event Tabs#change
      */
     this.$element.trigger('change.zf.tabs', [$target]);
+	
+	//fire to children a mutation event
+	$targetContent.find("[data-mutate]").trigger("mutateme.zf.trigger");
   }
 
   /**
