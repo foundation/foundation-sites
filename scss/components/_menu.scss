@@ -62,6 +62,7 @@ $menu-icon-spacing: 0.25rem !default;
     line-height: 1;
   }
 
+
   // Reset styles of inner elements
   input,
   a,
@@ -224,7 +225,7 @@ $menu-icon-spacing: 0.25rem !default;
 }
 
 @mixin foundation-menu {
-  .menu {
+  .menu, .tree {
     @include menu-base;
     @include menu-icons;
 
