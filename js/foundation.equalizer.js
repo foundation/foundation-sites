@@ -71,7 +71,7 @@ class Equalizer {
     this.isOn = false;
     this.$element.off({
       '.zf.equalizer': this._bindHandler.onPostEqualizedBound,
-      'resizeme.zf.trigger': this._bindHandler.onResizeMeBound
+      'resizeme.zf.trigger': this._bindHandler.onResizeMeBound,
 	  'mutateme.zf.trigger': this._bindHandler.onResizeMeBound
     });
   }
