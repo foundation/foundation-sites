@@ -31,6 +31,66 @@
 $topbar-background: #2c3840;
 $topbar-hover-color: lighten($topbar-background, 10%);
 
+
+/* Banner for announcements */
+a#notice {
+  display:block;
+  overflow: hidden;
+  position: relative;
+  padding: 1rem 0;
+  width:100%;
+  background-image: url('http://zurb.com/university/assets/zurbwired2016-web-banner-90dc22ff5454de9d2099b9f5b7231137.gif');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: #0078AB;
+  height: 70px;
+
+  .countdown {
+    display: inline;
+    color: #ffffff;
+    font-size: 35px;
+    font-weight: 500;
+    margin-left: -50%;
+    font-family: "Proxima-Nova", "Proxima", "proxima-nova", sans-serif;
+    background-color: rgba(0,120,171,0.7);
+    -webkit-box-shadow: 0px 0px 16px 7px rgba(0,120,171,0.7);
+    -moz-box-shadow: 0px 0px 16px 7px rgba(0,120,171,0.7);
+    box-shadow: 0px 0px 16px 7px rgba(0,120,171,0.7);
+  }
+
+  .timer-colon {
+    margin: 0px -2px 0px -4px;
+    padding: 0;
+  }
+
+  .timer-hour, .timer-minute, .timer-second {
+    letter-spacing: 2px;
+  }
+
+  .info {
+    left: 0;
+    right: 0;
+    // top: 15px;
+    z-index: 20;
+    margin-top: -7px;
+    // width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    // position: absolute;
+    h5 { color: #ffffff; font-size: 18px !important;}
+    text-align: center;
+    @media only screen and (max-width: 675px) { width: 100%; padding: 0 15px 0px 15px; position: relative; }
+  }
+
+  @media (max-width: 800px) {
+    background-position: 51.2% 0;
+    .countdown { display: none; }
+  }
+}
+/* COUNTDOWN END */
+
+
 .marketing-topbar,
 .title-bar {
   background: $topbar-background;
