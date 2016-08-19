@@ -4,7 +4,17 @@ description: We built Foundation for Sites to be the most advanced responsive fr
 tags:
 - index
 - home
+layout: homepage
 ---
+
+<ul class="header-social-links">
+  <li>
+    <a id="stars" class="apps stars" href="https://github.com/zurb/foundation-apps/stargazers">1.6k GitHub stars</a>
+  </li>
+  <li>
+    <a class="twitter" href="http://twitter.com/zurbfoundation">@ZURBfoundation</a>
+  </li>
+</ul>
 
 <div class="row">
   <div class="medium-6 columns">
@@ -130,7 +140,7 @@ tags:
 
 <div class="row columns">
   <h2>Templates</h2>
-  <p>Quickly get started with our ready-to-use Foundation templates.</p>
+  <h4>Quickly get started with our ready-to-use Foundation templates.</h4>
 
   <!-- @TODO: Add real content -->
   <div class="row small-up-2 medium-up-3 large-up-4">
