@@ -19,7 +19,7 @@ description: There are many ways to install Foundation, but if you're just getti
   <div class="medium-3 columns">
     <span class="subtitle">Most Simple</span>
     <h4>CSS Download</h4>
-    <p>Easiest for beginners, but doesn’t unlock all the features of the stack (like SCSS, live previews and page templates).</p>
+    <p>The straight CSS version is perfect if you want to just start writing code, rapid prototype, or building a simple, static site.</p>
     <a href="#css-download" class="button-docs secondary expanded">Jump to Section</a>
   </div>
   <div class="medium-3 columns">
