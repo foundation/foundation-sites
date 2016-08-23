@@ -289,7 +289,6 @@ class Reveal {
    */
   _extraHandlers() {
     var _this = this;
-    this.focusableElements = Foundation.Keyboard.findFocusable(this.$element);
 
     if (!this.options.overlay && this.options.closeOnClick && !this.options.fullScreen) {
       $('body').on('click.zf.reveal', function(e) {
@@ -314,6 +313,8 @@ class Reveal {
     // lock focus within modal while tabbing
     this.$element.on('keydown.zf.reveal', function(e) {
       var $target = $(this);
+      _this.focusableElements = Foundation.Keyboard.findFocusable(_this.$element);
+
       // handle keyboard event with keyboard util
       Foundation.Keyboard.handleKey(e, 'Reveal', {
         tab_forward: function() {
