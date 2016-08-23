@@ -7,15 +7,6 @@ tags:
 layout: homepage
 ---
 
-<ul class="header-social-links">
-  <li>
-    <a id="stars" class="apps stars" href="https://github.com/zurb/foundation-apps/stargazers">1.6k GitHub stars</a>
-  </li>
-  <li>
-    <a class="twitter" href="http://twitter.com/zurbfoundation">@ZURBfoundation</a>
-  </li>
-</ul>
-
 <div class="row">
   <div class="medium-6 columns">
     <h2 id="installing-foundation">Installing Foundation</h2>
@@ -65,7 +56,7 @@ layout: homepage
 ---
 
 <div class="row">
-  <div class="medium-6 columns">
+  <div class="medium-12 large-6 columns columns">
     <h2 id="documentation">Documentation</h2>
 
     <div class="flex-video widescreen">
@@ -92,48 +83,48 @@ layout: homepage
       </li>
     </ul>
   </div>
-  <div class="medium-6 columns">
+  <div class="medium-12 large-6 columns docs-stacked-spacing">
     <h3 id="most-viewed-pages">Most-viewed Pages</h3>
     <!-- @TODO: Add real links -->
     <ul class="icon-buttons-docs row small-up-2 medium-up-2 large-up-4" data-equalizer data-equalize-on="medium">
-      <li class="column">
-        <a href="#" data-equalizer-watch>
-          <i class="fi-plus"></i> Grid
+      <li class="column" data-equalizer-watch>
+        <a href="#">
+          <img src="assets/icons/general.svg" alt="Grid"> Grid
         </a>
       </li>
-      <li class="column">
-        <a href="#" data-equalizer-watch>
-          <i class="fi-plus"></i> Buttons &amp; Controls
+      <li class="column" data-equalizer-watch>
+        <a href="#">
+          <img src="assets/icons/settings.svg" alt="Buttons and Controls"> Buttons &amp; Controls
         </a>
       </li>
-      <li class="column">
-        <a href="#" data-equalizer-watch>
-          <i class="fi-plus"></i> Navigation
+      <li class="column" data-equalizer-watch>
+        <a href="#">
+          <img src="assets/icons/navigation.svg" alt="Buttons and Controls"> Navigation
         </a>
       </li>
-      <li class="column">
-        <a href="#" data-equalizer-watch>
-          <i class="fi-plus"></i> Forms
+      <li class="column" data-equalizer-watch>
+        <a href="#">
+          <img src="assets/icons/general.svg" alt="Buttons and Controls"> Forms
         </a>
       </li>
-      <li class="column">
-        <a href="#" data-equalizer-watch>
-          <i class="fi-plus"></i> Typography
+      <li class="column" data-equalizer-watch>
+        <a href="#">
+          <img src="assets/icons/typography.svg" alt="Buttons and Controls"> Typography
         </a>
       </li>
-      <li class="column">
-        <a href="#" data-equalizer-watch>
-          <i class="fi-plus"></i>Sass
+      <li class="column" data-equalizer-watch>
+        <a href="#">
+          <img src="assets/icons/sass.svg" alt="Buttons and Controls"> Sass
         </a>
       </li>
-      <li class="column">
-        <a href="#" data-equalizer-watch>
-          <i class="fi-plus"></i>Top Bar
+      <li class="column" data-equalizer-watch>
+        <a href="#">
+          <img src="assets/icons/navigation.svg" alt="Buttons and Controls"> Top Bar
         </a>
       </li>
-      <li class="column">
-        <a href="#" data-equalizer-watch>
-          <i class="fi-plus"></i>Abide
+      <li class="column" data-equalizer-watch>
+        <a href="#">
+          <img src="assets/icons/plugins.svg" alt="Buttons and Controls"> Abide
         </a>
       </li>
     </ul>
@@ -146,22 +137,21 @@ layout: homepage
 
 <div class="row columns">
   <h2>Templates</h2>
-  <h4>Quickly get started with our ready-to-use Foundation templates.</h4>
+  <h4 class="subheader">Quickly get started with our ready-to-use Foundation templates.</h4>
+  <hr class="docs-hr-small">
 
   <!-- @TODO: Add real content -->
-  <div class="row small-up-2 medium-up-3 large-up-4">
-    {{#repeat 8}}
+  <div class="row small-up-2 medium-up-3 large-up-3">
+    {{#repeat 6}}
     <div class="column docs-grid-content-block">
-      <img src="http://placehold.it/400x400" alt="" />
-      <h5>News or Magazine</h5>
-      <p>This template puts a focus on bold images, perfect for a magazine style site with eye catching content. Your stories are easy to find with large feature blocks.</p>
-      <a href="#" class="button-docs">Download</a>
-      <a href="#" class="secondary button-docs">See Demo</a>
+      <img src="http://foundation.zurb.com/assets/img/sites-templates/f6-template-news-mag.svg" alt="" />
+      <h5>Blog w/ Sidebar</h5>
+      <p>Large images, an easy to navigate layout, and versatile sidebar will help you get your blog up and running.</p>
     </div>
     {{/repeat}}
   </div>
 
-  <a href="#">View All Templates</a>
+  <a href="#" class="button-docs secondary">View All Templates</a>
 
 </div>
 
@@ -170,10 +160,11 @@ layout: homepage
 
 <div class="row columns">
   <h2>Built with Foundation</h2>
-  <p>Thousands of the world’s biggest and most trusted brands (like Disney, Adobe, Amazon, and more) have chosen to build their responsive websites on the Foundation framework.</p>
+  <p class="subheader">Thousands of the world’s biggest and most trusted brands (like Disney, Adobe, Amazon, and more) have chosen to build their responsive websites on the Foundation framework.</p>
+  <hr class="docs-hr-small">
 
   <!-- @TODO: Add real content -->
-  <div class="row small-up-2 medium-up-3 large-up-5">
+  <div class="row small-up-2 medium-up-5">
     {{#repeat 5}}
     <div class="column">
       <h5>Pixar</h5>
@@ -181,7 +172,8 @@ layout: homepage
     </div>
     {{/repeat}}
   </div>
-  <a href="#">View More Sites Built with Foundation</a>
+
+  <a href="#" class="button-docs secondary">View More Sites Built with Foundation</a>
 </div>
 
 ---
