@@ -87,10 +87,15 @@ class DropdownMenu {
         } else {
           e.preventDefault();
           e.stopImmediatePropagation();
-          _this._show($elem.children('.is-dropdown-submenu'));
+          _this._show($sub);
           $elem.add($elem.parentsUntil(_this.$element, `.${parClass}`)).attr('data-is-click', true);
         }
-      } else { return; }
+      } else {
+        if(_this.options.closeOnClickInside){
+          _this._hide($elem);
+        }
+        return;
+      }
     };
 
     if (this.options.clickOpen || hasTouch) {
@@ -378,6 +383,12 @@ DropdownMenu.defaults = {
    * @example true
    */
   closeOnClick: true,
+  /**
+   * Allow clicks on leaf anchor links to close any open submenus.
+   * @option
+   * @example true
+   */
+  closeOnClickInside: true,
   /**
    * Class applied to vertical oriented menus, Foundation default is `vertical`. Update this if using your own class.
    * @option
