@@ -54,37 +54,17 @@ layout: homepage
 </div>
 
 ---
+<div class="row columns">
+  <h2 id="documentation">Documentation</h2>
+</div>
 
 <div class="row">
   <div class="medium-12 large-6 columns columns">
-    <h2 id="documentation">Documentation</h2>
 
     <div class="flex-video widescreen">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/UVLINsAuFEI" frameborder="0" allowfullscreen></iframe>
     </div>
-    <ul class="faq-accordion indented" data-accordion>
-      <li class="faq-accordion-item" data-accordion-item>
-        <a href="#" class="faq-accordion-title">Getting Help</a>
-        <div class="faq-accordion-content" data-tab-content>
-          This is where the content goes.
-        </div>
-      </li>
-      <li class="faq-accordion-item" data-accordion-item>
-        <a href="#" class="faq-accordion-title">Using code in your projects</a>
-        <div class="faq-accordion-content" data-tab-content>
-          This is where the content goes.
-        </div>
-      </li>
-      <li class="faq-accordion-item" data-accordion-item>
-        <a href="#" class="faq-accordion-title">Keyboard shortcuts</a>
-        <div class="faq-accordion-content" data-tab-content>
-          This is where the content goes.
-        </div>
-      </li>
-    </ul>
-  </div>
-  <div class="medium-12 large-6 columns docs-stacked-spacing">
-    <h3 id="most-viewed-pages">Most-viewed Pages</h3>
+    <h4 class="subheader" id="most-viewed-pages">Most-viewed Pages</h4>
     <!-- @TODO: Add real links -->
     <ul class="icon-buttons-docs row small-up-2 medium-up-2 large-up-4" data-equalizer data-equalize-on="medium">
       <li class="column" data-equalizer-watch>
@@ -129,6 +109,28 @@ layout: homepage
       </li>
     </ul>
   </div>
+  <div class="medium-12 large-6 columns docs-stacked-spacing" style="margin-top:0">
+    <ul class="faq-accordion" data-accordion style="margin-top:0">
+      <li class="faq-accordion-item" data-accordion-item>
+        <a href="#" class="faq-accordion-title">Getting Help</a>
+        <div class="faq-accordion-content" data-tab-content>
+          This is where the content goes.
+        </div>
+      </li>
+      <li class="faq-accordion-item" data-accordion-item>
+        <a href="#" class="faq-accordion-title">Using code in your projects</a>
+        <div class="faq-accordion-content" data-tab-content>
+          This is where the content goes.
+        </div>
+      </li>
+      <li class="faq-accordion-item" data-accordion-item>
+        <a href="#" class="faq-accordion-title">Keyboard shortcuts</a>
+        <div class="faq-accordion-content" data-tab-content>
+          This is where the content goes.
+        </div>
+      </li>
+    </ul>
+  </div>
 </div>
 
 
@@ -163,15 +165,21 @@ layout: homepage
   <p class="subheader">Thousands of the world’s biggest and most trusted brands (like Disney, Adobe, Amazon, and more) have chosen to build their responsive websites on the Foundation framework.</p>
   <hr class="docs-hr-small">
 
-  <!-- @TODO: Add real content -->
-  <div class="row small-up-2 medium-up-5">
+  <!-- @TODO: make this its own component instead of being specific -->
+  <div class="docs-examples small-up-2 medium-up-2 large-up-5 row">
     {{#repeat 5}}
-    <div class="column">
-      <h5>Pixar</h5>
-      <img src="http://placehold.it/400x400" alt="" />
+      <div class="section-inspiration column">
+        <div class="image-container">
+          <a href="#">
+            <img src="https://prod-university-library.s3.amazonaws.com/uploads/site/mobile_screenshot/17537/Screen_Shot_2016-08-04_at_10.02.33_AM.png" alt="" />
+          </a>
+        </div>
+        <h5>Snapfish</h5>
+        <p>Snapfish jams a ton of navigation power to help people find where they are going.</p>
+        <a href="#" class="secondary button-docs">Take a look <i class="di-arrow-right di-margin-left"></i></a>
+      </div>
+      {{/repeat}}
     </div>
-    {{/repeat}}
-  </div>
 
   <a href="#" class="button-docs secondary">View More Sites Built with Foundation</a>
 </div>

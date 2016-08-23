@@ -47,11 +47,6 @@ No bells or whistles here, just a straight up table for all of your basic table 
 
 Need to spiff up the table just a tad? Just add the class `.hover` to lightly darken the table rows on hover.
 
-```html
-<table class="hover">
-</table>
-```
-
 <table class="hover">
   <thead>
     <tr>
@@ -83,16 +78,16 @@ Need to spiff up the table just a tad? Just add the class `.hover` to lightly da
   </tbody>
 </table>
 
+```html
+<table class="hover">
+</table>
+```
+
 ---
 
 ## Stacked Table
 
 To stack a table on small screens, add the class `.stack`.
-
-```html
-<table class="stack">
-</table>
-```
 
 <table class="stack">
   <thead>
@@ -125,6 +120,11 @@ To stack a table on small screens, add the class `.stack`.
   </tbody>
 </table>
 
+```html
+<table class="stack">
+</table>
+```
+
 ---
 
 ## Scrolling Table
@@ -134,12 +134,6 @@ Got a lot of tubular tabular data? Add a wrapper element with the class `.table-
 <div class="primary callout">
   <p>The wrapping element was added in Foundation 6.2&mdash;prior to that, you just added the class <code>.scroll</code> to the table itself. However, this method doesn't work great with Internet Explorer 9. <strong>If you don't need IE9 support, you can just add <code>.scroll</code> to your table, and the wrapping element isn't necessary.</strong>
 </div>
-
-```html
-<div class="table-scroll">
-  <table></table>
-</div>
-```
 
 <div class="table-scroll">
   <table>
@@ -226,3 +220,9 @@ Got a lot of tubular tabular data? Add a wrapper element with the class `.table-
     </tfoot>
   </table>
 </div>
+
+```html
+<div class="table-scroll">
+  <table></table>
+</div>
+```

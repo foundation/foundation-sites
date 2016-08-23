@@ -10,7 +10,10 @@ tags:
 flex: true
 ---
 
+## Demo
 <button class="button" type="button" data-toggle="offCanvasLeft">Toggle Off-canvas</button>
+
+---
 
 ## Setup
 
