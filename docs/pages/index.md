@@ -21,16 +21,22 @@ layout: homepage
     <h2 id="installing-foundation">Installing Foundation</h2>
     <p>There are a number of ways to install Foundation for Sites. If you're just getting started, we recommend installing our CLI, which allows you to quickly set up starter projects with any Foundation framework.</p>
     <p>It's also possible to manually install Foundation for Sites into your project through NPM, Bower, Meteor, or Composer.</p>
-    <a href="installation.html" class="large button-docs">Install Foundation for Sites</a>
+    <a href="installation.html" class="button-docs">Install Foundation for Sites</a>
+    <ul class="dropdown menu docs-dropdown align-top" data-dropdown-menu>
+      <li>
+        <a href="#">Other versions</a>
+        <ul class="menu">
+          <li><a href="http://foundation.zurb.com/sites/docs/v/5.5.3"><i class="di-open"></i>Foundation 5</a></li>
+          <li><a href="http://foundation.zurb.com/sites/docs/v/4.3.2"><i class="di-open"></i>Foundation 4</a></li>
+          <li><a href="http://foundation.zurb.com/sites/docs/v/3.2.5/"><i class="di-open"></i>Foundation 3</a></li>
+        </ul>
+      </li>
+    </ul>
     <p class="docs-nav-version">
       <span data-docs-version></span>
       <a href="https://github.com/zurb/foundation-sites/releases/" target="_blank">(Changelog)</a>
     </p>
     <br>
-    <h4>Older Versions</h4>
-    <a href="http://foundation.zurb.com/sites/docs/v/5.5.3" class="secondary button-docs">Foundation 5</a>
-    <a href="http://foundation.zurb.com/sites/docs/v/4.3.2" class="secondary button-docs">Foundation 4</a>
-    <a href="http://foundation.zurb.com/sites/docs/v/3.2.5/" class="secondary button-docs">Foundation 3</a>
   </div>
   <div class="medium-6 columns">
     <h2 id="learning-foundation">Learning Foundation</h2>
