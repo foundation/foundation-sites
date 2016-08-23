@@ -7,7 +7,7 @@ description: There are many ways to install Foundation, but if you're just getti
   <div class="medium-3 columns">
     <span class="subtitle">ZURB Recommendation</span>
     <h4>Command-Line Tool</h4>
-    <p>Makes it easy to create new Foundation projects from the Terminal.</p>
+    <p>Makes it easy to create new Foundation projects from the Terminal. Requires some initial setup for long-term ease.</p>
     <a href="#command-line-tool" class="button-docs expanded">Jump to Section</a>
   </div>
   <div class="medium-3 columns">
