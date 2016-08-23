@@ -80,7 +80,7 @@
     "run-sequence": "^1.1.4",
     "sass-true": "^2.0.3",
     "sinon": "^1.17.3",
-    "supercollider": "^1.4.0",
+    "supercollider": "^1.4.2",
     "touch": "^1.0.0",
     "vinyl": "^1.1.1",
     "vinyl-source-stream": "^1.1.0",
