@@ -268,6 +268,8 @@ class Orbit {
     }
 
     if ($newSlide.length) {
+      this.$element.trigger('beforeslidechange.zf.orbit', [$curSlide, $newSlide]);
+      
       if (this.options.bullets) {
         idx = idx || this.$slides.index($newSlide); //grab index to update bullets
         this._updateBullets(idx);
