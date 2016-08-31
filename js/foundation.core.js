@@ -209,14 +209,16 @@ var Foundation = {
         end = transitions[t];
       }
     }
+    
     if(end){
       return end;
-    }else{
-      end = setTimeout(function(){
-        $elem.triggerHandler('transitionend', [$elem]);
-      }, 1);
-      return 'transitionend';
     }
+    
+    end = setTimeout(function(){
+      $elem.triggerHandler('transitionend', [$elem]);
+    }, 1);
+      
+    return 'transitionend';
   }
 };
 
@@ -356,17 +358,17 @@ function functionName(fn) {
     var results = (funcNameRegex).exec((fn).toString());
     return (results && results.length > 1) ? results[1].trim() : "";
   }
-  else if (fn.prototype === undefined) {
+  
+  if (fn.prototype === undefined) {
     return fn.constructor.name;
   }
-  else {
-    return fn.prototype.constructor.name;
-  }
+  
+  return fn.prototype.constructor.name;
 }
 function parseValue(str){
   if(/true/.test(str)) return true;
-  else if(/false/.test(str)) return false;
-  else if(!isNaN(str * 1)) return parseFloat(str);
+  if(/false/.test(str)) return false;
+  if(!isNaN(str * 1)) return parseFloat(str);
   return str;
 }
 // Convert PascalCase to kebab-case
