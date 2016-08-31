@@ -84,13 +84,20 @@ class ResponsiveToggle {
    */
   toggleMenu() {   
     if (!Foundation.MediaQuery.atLeast(this.options.hideFor)) {
-      this.$targetMenu.toggle(0);
-
-      /**
-       * Fires when the element attached to the tab bar toggles.
-       * @event ResponsiveToggle#toggled
-       */
-      this.$element.trigger('toggled.zf.responsiveToggle');
+      if(this.options.slideToggle) {
+        this.$targetMenu.slideToggle(this.options.slideSpeed, () => {
+            this.$element.trigger('toggled.zf.responsiveToggle');
+        });
+      }
+      else {
+        this.$targetMenu.toggle(0);
+  
+        /**
+         * Fires when the element attached to the tab bar toggles.
+         * @event ResponsiveToggle#toggled
+         */
+        this.$element.trigger('toggled.zf.responsiveToggle');
+      }
     }
   };
 
@@ -110,7 +117,21 @@ ResponsiveToggle.defaults = {
    * @option
    * @example 'medium'
    */
-  hideFor: 'medium'
+  hideFor: 'medium',
+  
+  /**
+   * To decide if the toggle should be animated via jQuery slideToggle() method or not.
+   * @option
+   * @example false
+   */
+  slideToggle: false,
+
+  /**
+   * Duration of slide-toggle animation.
+   * @option
+   * @example 250
+   */
+  slideSpeed: 250
 };
 
 // Window exports
