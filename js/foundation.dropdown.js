@@ -249,7 +249,7 @@ class Dropdown {
             if(_this.$anchor.is(e.target) || _this.$anchor.find(e.target).length) {
               return;
             }
-            if(_this.$element.find(e.target).length) {
+            if(_this.$element.find(e.target).length || !$(document).find(e.target).length) {
               return;
             }
             _this.close();
