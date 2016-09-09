@@ -169,12 +169,14 @@ class Dropdown {
 
     if(this.options.hover){
       this.$anchor.off('mouseenter.zf.dropdown mouseleave.zf.dropdown')
-          .on('mouseenter.zf.dropdown', function(){
-            clearTimeout(_this.timeout);
-            _this.timeout = setTimeout(function(){
-              _this.open();
-              _this.$anchor.data('hover', true);
-            }, _this.options.hoverDelay);
+      .on('mouseenter.zf.dropdown', function(){
+            if($('body[data-whatinput="mouse"]').is('*')) {
+              clearTimeout(_this.timeout);
+              _this.timeout = setTimeout(function(){
+                _this.open();
+                _this.$anchor.data('hover', true);
+              }, _this.options.hoverDelay);
+            }
           }).on('mouseleave.zf.dropdown', function(){
             clearTimeout(_this.timeout);
             _this.timeout = setTimeout(function(){
