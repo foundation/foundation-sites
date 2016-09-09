@@ -32,7 +32,7 @@
 
       S(self.scope)
         .off('.magellan')
-        .on('click.fndtn.magellan', '[' + self.add_namespace('data-magellan-arrival') + '] a[href*=\\#]', function (e) {
+        .on('click.fndtn.magellan', '[' + self.add_namespace('data-magellan-arrival') + '] a[href^="#"]', function (e) {
           var sameHost = ((this.hostname === location.hostname) || !this.hostname),
               samePath = self.filterPathname(location.pathname) === self.filterPathname(this.pathname),
               testHash = this.hash.replace(/(:|\.|\/)/g, '\\$1'),
