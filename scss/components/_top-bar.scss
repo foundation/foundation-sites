@@ -103,7 +103,7 @@ $topbar-unstack-breakpoint: medium !default;
     // scss-lint:disable ZeroUnit
     .top-bar-left,
     .top-bar-right {
-      flex: 1 1 0px;
+      flex: 0 0 auto;
     }
   }
   @else {
@@ -154,7 +154,6 @@ $topbar-unstack-breakpoint: medium !default;
     .top-bar-title {
       float: left;
       margin-right: $topbar-title-spacing;
-
     }
 
     .top-bar-left {
