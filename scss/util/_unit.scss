@@ -39,6 +39,11 @@ $global-font-size: 100% !default;
   @if unit($base) == '%' {
     $base: ($base / 100%) * 16px;
   }
+  
+  // Using rem as base allows correct scaling
+  @if unit($base) == 'rem' {
+    $base: strip-unit($base) * 16px;
+  }
 
   @if $count == 1 {
     @return -zf-to-rem($values, $base);
