@@ -49,7 +49,7 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   right: 0;
   z-index: $reveal-zindex;
   background-color: $background;
-  overflow-y: scroll;
+  overflow-y: hidden;
 }
 
 /// Adds base styles for a modal.
@@ -111,7 +111,7 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   // [TODO] Is this necessary?
   // scss-lint:disable QualifyingElement
   body.is-reveal-open {
-    overflow: hidden;
+    overflow: auto;
   }
   // html gets this class only in iOS
   html.is-reveal-open,
