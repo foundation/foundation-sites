@@ -13,7 +13,7 @@ A media object is a container with the class `.media-object`, and two or three s
 <div class="media-object">
   <div class="media-object-section">
     <div class="thumbnail">
-      <img src= "assets/img/media-object/avatar-1.jpg">
+      <img src="assets/img/media-object/avatar-1.jpg">
     </div>
   </div>
   <div class="media-object-section">
