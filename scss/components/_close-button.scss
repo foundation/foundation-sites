@@ -57,5 +57,10 @@ $closebutton-color-hover: $black !default;
 @mixin foundation-close-button {
   .close-button {
     @include close-button;
+    
+    &.small {
+      top: 0.25rem;
+      font-size: 1.5em;
+    }
   }
 }
