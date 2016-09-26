@@ -317,6 +317,7 @@ class Reveal {
       // handle keyboard event with keyboard util
       Foundation.Keyboard.handleKey(e, 'Reveal', {
         tab_forward: function() {
+          _this.focusableElements = Foundation.Keyboard.findFocusable(_this.$element);
           if (_this.$element.find(':focus').is(_this.focusableElements.eq(-1))) { // left modal downwards, setting focus to first element
             _this.focusableElements.eq(0).focus();
             return true;
@@ -326,6 +327,7 @@ class Reveal {
           }
         },
         tab_backward: function() {
+          _this.focusableElements = Foundation.Keyboard.findFocusable(_this.$element);
           if (_this.$element.find(':focus').is(_this.focusableElements.eq(0)) || _this.$element.is(':focus')) { // left modal upwards, setting focus to last element
             _this.focusableElements.eq(-1).focus();
             return true;
