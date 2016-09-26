@@ -91,7 +91,6 @@ $input-prefix-padding: 1rem !default;
     // scss-lint:disable ZeroUnit
     @if $global-flexbox {
       flex: 1 1 0px;
-      width: auto;
       height: auto;
     }
     @else {
@@ -122,7 +121,9 @@ $input-prefix-padding: 1rem !default;
 
   // Specificity bump needed to prevent override by buttons
   // scss-lint:disable QualifyingSelector
-  .input-group .input-group-button {
-    display: table-cell;
+  @if not $global-flexbox {
+      .input-group .input-group-button {
+          display: table-cell;
+      }
   }
 }

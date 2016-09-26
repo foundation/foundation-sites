@@ -158,8 +158,8 @@ $input-radius: $global-radius !default;
     @if not $input-number-spinners {
       -moz-appearance: textfield;
 
-      [type='number']::-webkit-inner-spin-button,
-      [type='number']::-webkit-outer-spin-button {
+      &::-webkit-inner-spin-button,
+      &::-webkit-outer-spin-button {
         -webkit-appearance: none;
         margin: 0;
       }
