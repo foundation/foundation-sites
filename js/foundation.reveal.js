@@ -157,7 +157,11 @@ class Reveal {
 
     if (this.options.closeOnClick && this.options.overlay) {
       this.$overlay.off('.zf.reveal').on('click.zf.reveal', function(e) {
-        if (e.target === _this.$element[0] || $.contains(_this.$element[0], e.target)) { return; }
+        if (e.target === _this.$element[0] || 
+          $.contains(_this.$element[0], e.target) || 
+            !$.contains(document, e.target)) { 
+              return; 
+        }
         _this.close();
       });
     }
@@ -293,7 +297,9 @@ class Reveal {
 
     if (!this.options.overlay && this.options.closeOnClick && !this.options.fullScreen) {
       $('body').on('click.zf.reveal', function(e) {
-        if (e.target === _this.$element[0] || $.contains(_this.$element[0], e.target)) { return; }
+        if (e.target === _this.$element[0] || 
+          $.contains(_this.$element[0], e.target) || 
+            !$.contains(document, e.target)) { return; }
         _this.close();
       });
     }
