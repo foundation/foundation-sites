@@ -40,9 +40,15 @@ class Tooltip {
     this.options.tipText = this.options.tipText || this.$element.attr('title');
     this.template = this.options.template ? $(this.options.template) : this._buildTemplate(elemId);
 
-    this.template.appendTo(document.body)
-        .text(this.options.tipText)
-        .hide();
+    if(this.options.allowHtml) {
+      this.template.appendTo(document.body)
+          .html(this.options.tipText)
+          .hide();
+    } else {
+      this.template.appendTo(document.body)
+          .text(this.options.tipText)
+          .hide();
+    }
 
     this.$element.attr({
       'title': '',
@@ -332,7 +338,8 @@ class Tooltip {
    * @function
    */
   destroy() {
-    this.$element.attr('title', this.template.text())
+    var oldText = this.options.allowHtml ? this.template.html() : this.options.text();
+    this.$element.attr('title', oldText)
                  .off('.zf.trigger .zf.tootip')
                 //  .removeClass('has-tip')
                  .removeAttr('aria-describedby')
@@ -348,6 +355,11 @@ class Tooltip {
 
 Tooltip.defaults = {
   disableForTouch: false,
+  /**
+   * Allow html content in tooltip (Unsafe if user generated)
+   * @example false
+   */
+  allowHtml: false,
   /**
    * Time, in ms, before a tooltip should open on hover.
    * @option
