@@ -25,8 +25,8 @@ If an element is described by multiple labels, place multiple IDs inside of `ari
 
 ```html
 <p aria-describedby="emailLabel1 emailLabel2">Re: re: re: you won't believe what's in this email!</p>
-<span class="label" id="emailLabel">High Priority<span>
-<span class="label" id="emailLabe2">Unread<span>
+<span class="label" id="emailLabel1">High Priority<span>
+<span class="label" id="emailLabel2">Unread<span>
 ```
 
 ---
