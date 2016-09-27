@@ -245,12 +245,12 @@ There are times when you won't want each media query to be collapsed or uncollap
 The `.is-collapse-child` class removes negative margins from nested row under collapsed parent.
 
 ```html
-<div class="row medium-uncollapse large-collapse">
+<div class="row small-collapse medium-uncollapse">
   <div class="small-6 columns">
-    Removes gutter at large media query
+    Removes gutter at small media query and adds at medium.
   </div>
   <div class="small-6 columns">
-    Removes gutter at large media query
+    Removes gutter at small media query and adds at medium.
   </div>
 </div>
 ```

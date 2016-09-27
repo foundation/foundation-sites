@@ -1,6 +1,6 @@
 ---
 title: Abide
-description: Abide is an form validation library that extends the HTML5 validation API with custom validators.
+description: Abide is a form validation library that extends the HTML5 validation API with custom validators.
 sass: scss/forms/_error.scss
 js: js/foundation.abide.js
 tags:
