@@ -29,7 +29,7 @@ function Timer(elem, options, cb) {
       if(options.infinite){
         _this.restart();//rerun the timer.
       }
-      cb();
+      if (cb && typeof cb === 'function') { cb(); }
     }, remain);
     elem.trigger(`timerstart.zf.${nameSpace}`);
   }

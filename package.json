@@ -95,13 +95,15 @@
     "email": "foundation@zurb.com"
   },
   "keywords": [
+    "eyeglass-module",
     "handlebars-helper-rel",
     "handlebars-helper-slugify"
   ],
   "eyeglass": {
     "name": "foundation",
     "sassDir": "scss",
-    "needs": "^0.8.0"
+    "needs": "^0.8.0",
+    "exports": false
   },
   "jspm": {
     "format": "global",

@@ -331,13 +331,15 @@ class Drilldown {
    * @private
    */
   _getMaxDims() {
-    var max = 0, result = {};
-    this.$submenus.add(this.$element).each(function(){
-      var numOfElems = $(this).children('li').length;
-      max = numOfElems > max ? numOfElems : max;
+    var biggest = 0
+    var result = {};
+
+    this.$submenus.add(this.$element).each((i, elem) => {
+      var height = elem.getBoundingClientRect().height;
+      if (height > biggest) biggest = height;
     });
 
-    result['min-height'] = `${max * this.$menuItems[0].getBoundingClientRect().height}px`;
+    result['min-height'] = `${biggest}px`;
     result['max-width'] = `${this.$element[0].getBoundingClientRect().width}px`;
 
     return result;
