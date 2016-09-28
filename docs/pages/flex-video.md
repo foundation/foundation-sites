@@ -8,7 +8,7 @@ Embedded videos won't maintain their aspect ratio as the width of the screen cha
 
 ```html_example
 <div class="flex-video">
-  <iframe width="420" height="315" src="https://www.youtube.com/embed/V9gkYw35Vws" frameborder="0" allowfullscreen></iframe>
+  <iframe width="420" height="315" src="https://www.youtube.com/embed/V9gkYw35Vws" allowfullscreen style="border:0"></iframe>
 </div>
 ```
 
@@ -18,7 +18,7 @@ The default ratio is 4:3. Add the `.widescreen` class to change it to 16:9.
 
 ```html_example
 <div class="flex-video widescreen">
-  <iframe width="420" height="315" src="https://www.youtube.com/embed/aiBt44rrslw" frameborder="0" allowfullscreen></iframe>
+  <iframe width="420" height="315" src="https://www.youtube.com/embed/aiBt44rrslw" allowfullscreen style="border:0"></iframe>
 </div>
 ```
 
@@ -28,6 +28,6 @@ Embedded Vimeo videos are special snowflakes of their own. Add the `.vimeo` clas
 
 ```html_example
 <div class="flex-video widescreen vimeo">
-  <iframe src="http://player.vimeo.com/video/60122989" width="400" height="225" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+  <iframe src="http://player.vimeo.com/video/60122989" width="400" height="225" allowfullscreen style="border:0"></iframe>
 </div>
 ```
