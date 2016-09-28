@@ -1,0 +1,80 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Foundation for Sites Testing</title>
+    <link href="../motion-ui/dist/motion-ui.css" rel="stylesheet" />
+    <link href="../assets/css/foundation.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="row">
+        <div class="column">
+            <h1>Sticky Reinitialization Bug</h1>
+            <h2><a href="https://github.com/zurb/foundation-sites/issues/8394">Issue #8394</a></h2>
+            <p>
+                I'm demonstrating here that when sticky is destroyed and re-initialized, it no longer has a height. I've added a delay to better demonstrate each stage visually. Watch the content underneath the image, when it first loads, it is beneath the image, wrapping appropriately, as it is when it is destroyed. However, when it is re-initialized, the container gets 0 height, and so the content goes underneath the image, not wrapping around it at all. See the bug <a href="https://github.com/zurb/foundation-sites/issues/8394">here</a>.
+            </p>
+            <hr />
+        </div>
+    </div>
+    <div class="row">
+        <div class="columns small-6" id="example1" data-something="">
+            <p>
+                To Address the issues: I've taken a look at the Sticky plugin and I believe that the window.one is restricting the re-initialization of the plugin once destroyed. line 1116 before: $(window).one('load.zf.sticky', function () { after: $(window).trigger('load.zf.sticky', function () { I've replaced the .one() with .trigger() and it seems to respond as expected. The height of the sticky element regains it height after being destroyed. I haven't received any errors in the console, yet. I would greatly appreciate any feedback about using this method.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+        </div>
+        <div class="columns small-6 right">
+            <div class="sticky-container" data-sticky-container>
+                <div class="sticky" data-sticky data-anchor="example1">
+                    <img class="thumbnail" src="http://foundation.zurb.com/sites/docs/assets/img/generic/rectangle-3.jpg" />
+                </div>
+                <!-- End sticky -->
+            </div>
+            <!-- End sticky container -->
+            <p>
+                This is underneath the sticky stuff. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+        </div>
+        <!-- End column -->
+    </div>
+    <script src="../assets/js/vendor.js"></script>
+    <script src="../assets/js/foundation.js"></script>
+    <script>
+    var $stickyEle = $('[data-sticky]'),
+        $stickyContainer = $stickyEle.closest('[data-sticky-container]');
+
+    $(document).foundation();
+    console.log("Foundation initialization.\n\tContainer Height:", $stickyContainer.height());
+
+    setTimeout(function() {
+        $stickyEle.foundation('destroy');
+        console.log("Destroyed sticky.\n\tContainer Height:", $stickyContainer.height());
+
+        setTimeout(function() {
+            $stickyEle.foundation();
+            console.log("Initializing sticky element again.\n\tContainer Height:", $stickyContainer.height());
+        }, 4000);
+    }, 2000);
+    </script>
+</body>
+
+</html>

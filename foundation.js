@@ -7262,7 +7262,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           } else {
             barXY = eventFromBar;
           }
-          var offsetPct = percent(barXY, barDim);
+          offsetPct = percent(barXY, barDim);
 
           value = (this.options.end - this.options.start) * offsetPct + this.options.start;
 
@@ -7637,7 +7637,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         this.scrollCount = this.options.checkEvery;
         this.isStuck = false;
-        $(window).one('load.zf.sticky', function () {
+        $(window).trigger('load.zf.sticky', function () {
           //We calculate the container height to have correct values for anchor points offset calculation.
           _this.containerHeight = _this.$element.css("display") == "none" ? 0 : _this.$element[0].getBoundingClientRect().height;
           _this.$container.css('height', _this.containerHeight);

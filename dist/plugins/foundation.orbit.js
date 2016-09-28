@@ -22,7 +22,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     * @param {jQuery} element - jQuery object to make into an Orbit Carousel.
     * @param {Object} options - Overrides to the default plugin settings.
     */
-
     function Orbit(element, options) {
       _classCallCheck(this, Orbit);
 
@@ -249,23 +248,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             });
           }
 
-          this.$wrapper.add(this.$bullets).on('keydown.zf.orbit', function (e) {
-            // handle keyboard event with keyboard util
-            Foundation.Keyboard.handleKey(e, 'Orbit', {
-              next: function () {
-                _this.changeSlide(true);
-              },
-              previous: function () {
-                _this.changeSlide(false);
-              },
-              handled: function () {
-                // if bullet is focused, make sure focus moves
-                if ($(e.target).is(_this.$bullets)) {
-                  _this.$bullets.filter('.is-active').focus();
+          if (this.options.accessible) {
+            this.$wrapper.add(this.$bullets).on('keydown.zf.orbit', function (e) {
+              // handle keyboard event with keyboard util
+              Foundation.Keyboard.handleKey(e, 'Orbit', {
+                next: function () {
+                  _this.changeSlide(true);
+                },
+                previous: function () {
+                  _this.changeSlide(false);
+                },
+                handled: function () {
+                  // if bullet is focused, make sure focus moves
+                  if ($(e.target).is(_this.$bullets)) {
+                    _this.$bullets.filter('.is-active').focus();
+                  }
                 }
-              }
+              });
             });
-          });
+          }
         }
       }
 
@@ -300,8 +301,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.options.infiniteWrap ? $curSlide.next('.' + this.options.slideClass).length ? $curSlide.next('.' + this.options.slideClass) : $firstSlide : $curSlide.next('.' + this.options.slideClass) : //pick next slide if moving left to right
           this.options.infiniteWrap ? $curSlide.prev('.' + this.options.slideClass).length ? $curSlide.prev('.' + this.options.slideClass) : $lastSlide : $curSlide.prev('.' + this.options.slideClass); //pick prev slide if moving right to left
         } else {
-            $newSlide = chosenSlide;
-          }
+          $newSlide = chosenSlide;
+        }
 
         if ($newSlide.length) {
           if (this.options.bullets) {
@@ -322,12 +323,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               //do stuff?
             });
           } else {
-              $curSlide.removeClass('is-active is-in').removeAttr('aria-live').hide();
-              $newSlide.addClass('is-active is-in').attr('aria-live', 'polite').show();
-              if (this.options.autoPlay && !this.timer.isPaused) {
-                this.timer.restart();
-              }
+            $curSlide.removeClass('is-active is-in').removeAttr('aria-live').hide();
+            $newSlide.addClass('is-active is-in').attr('aria-live', 'polite').show();
+            if (this.options.autoPlay && !this.timer.isPaused) {
+              this.timer.restart();
             }
+          }
           /**
           * Triggers when the slide has finished animating in.
           * @event Orbit#slidechange

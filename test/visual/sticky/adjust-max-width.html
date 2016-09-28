@@ -1,4 +1,49 @@
-'use strict';
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Foundation for Sites Testing</title>
+    <link href="../motion-ui/dist/motion-ui.css" rel="stylesheet" />
+    <link href="../assets/css/foundation.css" rel="stylesheet" />
+    <style>
+    #left {
+        border:1px solid blue;
+        height: 1200px;
+    }
+    
+    #right {}
+    
+    .sidebar {
+        border:1px solid green;
+        height: 400px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div id="left" class="large-9 columns">
+                <h1 class="text-center">Sticky Max-width Issue</h1>
+            </div>
+            <div id="right" class="large-3 columns" data-sticky-container>
+                <div class="sidebar sticky" data-sticky>
+                    <ul>
+                        <li><span class="fail">Currently failing</span> Accordion should unstick in the correct place when it reaches its anchor points.</li>
+                        <li><span class="fail">Currently failing</span> Sticky should not be effected by height changes to the accordion that are introduced by switching active accordion item.</li>
+                        <li><span class="fail">Addresses issue @ <a href="https://github.com/zurb/foundation-sites/issues/8427">Issue #8427</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../assets/js/vendor.js"></script>
+    <script src="../assets/js/foundation.js"></script>
+    <script>
+      'use strict';
 
 !function($) {
 
@@ -457,3 +502,11 @@ function emCalc(em) {
 Foundation.plugin(Sticky, 'Sticky');
 
 }(jQuery);
+
+    </script>
+    <script>
+    $(document).foundation();
+    </script>
+</body>
+
+</html>

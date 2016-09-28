@@ -23,7 +23,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @param {jQuery} element - jQuery object to use for the modal.
      * @param {Object} options - optional parameters.
      */
-
     function Reveal(element, options) {
       _classCallCheck(this, Reveal);
 
@@ -263,7 +262,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 'aria-hidden': false,
                 'tabindex': -1
               }).focus();
-              console.log('focus');
+              // console.log('focus');
             };
 
             _this = _this3;
