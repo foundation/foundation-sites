@@ -267,7 +267,9 @@ class Sticky {
    */
   _setSizes(cb) {
     this.canStick = Foundation.MediaQuery.atLeast(this.options.stickyOn);
-    if (!this.canStick) { cb(); }
+    if (!this.canStick) {
+      if (cb && typeof cb === 'function') { cb(); }
+    }
     var _this = this,
         newElemWidth = this.$container[0].getBoundingClientRect().width,
         comp = window.getComputedStyle(this.$container[0]),
@@ -303,7 +305,7 @@ class Sticky {
     }
 
     this._setBreakPoints(newContainerHeight, function() {
-      if (cb) { cb(); }
+      if (cb && typeof cb === 'function') { cb(); }
     });
   }
 
@@ -315,7 +317,7 @@ class Sticky {
    */
   _setBreakPoints(elemHeight, cb) {
     if (!this.canStick) {
-      if (cb) { cb(); }
+      if (cb && typeof cb === 'function') { cb(); }
       else { return false; }
     }
     var mTop = emCalc(this.options.marginTop),
@@ -339,7 +341,7 @@ class Sticky {
     this.topPoint = topPoint;
     this.bottomPoint = bottomPoint;
 
-    if (cb) { cb(); }
+    if (cb && typeof cb === 'function') { cb(); }
   }
 
   /**
