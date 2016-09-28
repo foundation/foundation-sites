@@ -162,9 +162,8 @@ class Accordion {
   up($target) {
     var $aunts = $target.parent().siblings(),
         _this = this;
-    var canClose = $aunts.hasClass('is-active');
 
-    if(!this.options.allowAllClosed && !$aunts.hasClass('is-active')) {
+    if((!this.options.allowAllClosed && !$aunts.hasClass('is-active')) || !$target.parent().hasClass('is-active')) {
       return;
     }
 
