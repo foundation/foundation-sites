@@ -564,3 +564,52 @@ Refer to the Sass documentation below to learn how each mixin works.
   }
 }
 ```
+### Custom Block Grid
+
+Use the `grid-layout()` mixin to create your own block grid.
+By default the mixin takes 3 parameters:
+- Number of columns
+- The child element selector
+  - An optional padding value
+
+The padding value can be set to `$grid-column-gutter` to use the values from that map.
+This will then generate different paddings at different breakpoints. Alternatively supply a numeric value (without a unit type) to output a static rem value.
+
+Here's an example:
+
+```scss
+.gallery {
+  @include grid-layout(3, '.gallery-item', $grid-column-gutter);
+}
+```
+That outputs this CSS:
+
+```
+.gallery > .gallery-item {
+  width: 33.33333%;
+  float: left;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+}
+
+@media screen and (min-width: 40em) {
+  .gallery > .gallery-item {
+    padding-left: 0.9375rem;
+    padding-right: 0.9375rem;
+  }
+}
+
+.gallery > .gallery-item:nth-of-type(1n) {
+  clear: none;
+}
+
+.gallery > .gallery-item:nth-of-type(3n+1) {
+  clear: both;
+}
+
+.gallery > .gallery-item:last-child {
+  float: left;
+}
+```
+
+---
