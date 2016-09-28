@@ -118,25 +118,25 @@ describe('Accordion', function() {
   });
 
   describe('toggle()', function() {
-    it('closes the open container if allowAllClosed is true', function() {
+    it('closes the only open container if allowAllClosed is true', function() {
       $html = $(template).appendTo('body');
       plugin = new Foundation.Accordion($html, {allowAllClosed: true});
 
-      plugin.toggle($html.find('.accordion-content').eq(1));
-      $html.find('.accordion-content').eq(1).should.have.attr('aria-hidden', 'false');
+      plugin.toggle($html.find('.accordion-content').eq(0));
+      $html.find('.accordion-content').eq(0).should.have.attr('aria-hidden', 'true');
       $html.on('up.zf.accordion', function() {
         $html.find('.accordion-content').eq(0).should.be.hidden;
         done();
       });
     });
 
-    it('not closes the open container if allowAllClosed is false', function() {
+    it('not closes the only open container if allowAllClosed is false', function() {
       $html = $(template).appendTo('body');
       plugin = new Foundation.Accordion($html, {allowAllClosed: false});
 
-      plugin.toggle($html.find('.accordion-content').eq(1));
-      $html.find('.accordion-content').eq(1).should.be.visible;
-      $html.find('.accordion-content').eq(1).should.have.attr('aria-hidden', 'false');
+      plugin.toggle($html.find('.accordion-content').eq(0));
+      $html.find('.accordion-content').eq(0).should.be.visible;
+      $html.find('.accordion-content').eq(0).should.have.attr('aria-hidden', 'false');
     });
   });
 });
