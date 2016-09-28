@@ -249,6 +249,7 @@ $button-sizes: (
   large: 1.25rem,
 );
 $button-opacity-disabled: 0.25;
+$button-transition: background-color 0.25s ease-out, color 0.25s ease-out;
 
 // 12. Button Group
 // ----------------
