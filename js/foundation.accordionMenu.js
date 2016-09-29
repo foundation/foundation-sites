@@ -185,13 +185,19 @@ class AccordionMenu {
 
   /**
    * Toggles the open/close state of a submenu.
+   * If data option "closeable" is set to "false", submenu will not close
+   * but parent link will be followed then.
    * @function
    * @param {jQuery} $target - the submenu to toggle
    */
   toggle($target){
     if(!$target.is(':animated')) {
       if (!$target.is(':hidden')) {
-        this.up($target);
+        if (this.options.closeable === false) {
+          window.location.href = $target.parent().children('a').attr('href');
+        } else {
+          this.up($target);    
+        }
       }
       else {
         this.down($target);
