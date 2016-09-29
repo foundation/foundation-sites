@@ -40,7 +40,7 @@ describe('Accordion', function() {
     });
   });
 
-  describe('up()', function() {
+  describe('up()', function(done) {
     it('closes the targeted container if allowAllClosed is true', function() {
       $html = $(template).appendTo('body');
       plugin = new Foundation.Accordion($html, {allowAllClosed: true});
@@ -117,7 +117,7 @@ describe('Accordion', function() {
     });
   });
 
-  describe('toggle()', function() {
+  describe('toggle()', function(done) {
     it('closes the only open container if allowAllClosed is true', function() {
       $html = $(template).appendTo('body');
       plugin = new Foundation.Accordion($html, {allowAllClosed: true});
