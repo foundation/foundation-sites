@@ -55,11 +55,11 @@ describe('Accordion', function() {
 
     it('toggles attributes of title of the targeted container', function() {
       $html = $(template).appendTo('body');
-      plugin = new Foundation.Accordion($html, {});
+      plugin = new Foundation.Accordion($html, {allowAllClosed: true});
 
-      plugin.up($html.find('.accordion-content').eq(1));
-      $html.find('.accordion-title').eq(1).should.have.attr('aria-expanded', 'false');
-      $html.find('.accordion-title').eq(1).should.have.attr('aria-selected', 'false');
+      plugin.up($html.find('.accordion-content').eq(0));
+      $html.find('.accordion-title').eq(0).should.have.attr('aria-expanded', 'false');
+      $html.find('.accordion-title').eq(0).should.have.attr('aria-selected', 'false');
     });
 
     it('not closes the open container if allowAllClosed is false', function() {
