@@ -1,0 +1,101 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group card
+////
+
+/// Defualt background color.
+/// @type Color
+$card-background: $white !default;
+
+/// Default font color for cards.
+/// @type Color
+$card-font-color: $body-font-color !default;
+
+/// Default background.
+/// @type Color
+$card-divider-background: $light-gray !default;
+
+/// Defualt border style.
+/// @type List
+$card-border: 1px solid $light-gray !default;
+
+/// Default padding.
+/// @type Number
+$card-padding: $global-padding !default;
+
+/// Default bottom margin.
+/// @type number
+$card-margin: $global-margin !default;
+
+/// Adds styles for a card container.
+/// @param {Color} $background - Background color of the card.
+/// @param {Border} $border - Border around the card.
+/// @param {Number} $margin - Bottom margin of the card.
+@mixin card-container(
+  $background: $card-background,
+  $border: $card-border,
+  $margin: $card-margin
+) {
+  border: $border;
+  margin-bottom: $margin;
+  background: $background;
+  overflow: hidden;
+  color: $card-font-color;
+
+  @if $global-flexbox {
+    display: flex;
+  }
+
+  & > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+/// Adds styles for a card divider.
+@mixin card-divider(
+  $background: $card-divider-background,
+  $padding: $card-padding
+) {
+  background: $background;
+  padding: $padding;
+
+  @if $global-flexbox {
+    flex-grow: 1;
+  }
+
+  & > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+/// Adds styles for a card section.
+@mixin card-content(
+  $padding: $card-padding
+) {
+  padding: $padding;
+
+  @if $global-flexbox {
+    flex-grow: 1;
+  }
+
+  & > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+@mixin foundation-card {
+  .card {
+    @include card-container;
+  }
+
+  .card-divider {
+    @include card-divider;
+  }
+
+  .card-content {
+    @include card-content;
+  }
+}
