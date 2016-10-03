@@ -12,7 +12,7 @@ $accordionmenu-arrow-color: $primary-color !default;
 
 @mixin foundation-accordion-menu {
   @if $accordionmenu-arrows {
-    .is-accordion-submenu-parent > a {
+    .is-accordion-submenu-parent:not(.has-submenu-toggle) > a {
       position: relative;
 
       &::after {
@@ -28,5 +28,27 @@ $accordionmenu-arrow-color: $primary-color !default;
       transform-origin: 50% 50%;
       transform: scaleY(-1);
     }
+  }
+
+  .submenu-toggle {
+    padding: 0.7rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 38px;
+    border-left: 1px solid $light-gray;
+
+    &::after {
+      @include css-triangle(6px, $accordionmenu-arrow-color, down);
+    }
+  }
+
+  .has-submenu-toggle {
+    position: relative;
+  }
+
+  .has-submenu-toggle[aria-expanded='true'] .submenu-toggle::after {
+    transform-origin: 50% 50%;
+    transform: scaleY(-1);
   }
 }
