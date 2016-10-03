@@ -240,7 +240,8 @@ class Abide {
         validated = false,
         customValidator = true,
         validator = $el.attr('data-validator'),
-        equalTo = true;
+        equalTo = true,
+        $elError = $el;
 
     // don't validate ignored inputs or hidden inputs
     if ($el.is('[data-abide-ignore]') || $el.is('[type="hidden"]')) {
@@ -253,7 +254,14 @@ class Abide {
         break;
 
       case 'checkbox':
-        validated = clearRequire;
+        var $group = $el.parent().closest('.checkbox-group');
+        if ($group.length) {
+          var minRequired = $group.attr('data-min-required') ? $group.attr('data-min-required') : 1;
+          if ($group.find(':checked').length >= minRequired) validated = true;
+          $elError = $group;
+        } else {
+          validated = clearRequire;
+        }
         break;
 
       case 'select':
@@ -278,7 +286,7 @@ class Abide {
     var goodToGo = [clearRequire, validated, customValidator, equalTo].indexOf(false) === -1;
     var message = (goodToGo ? 'valid' : 'invalid') + '.zf.abide';
 
-    this[goodToGo ? 'removeErrorClasses' : 'addErrorClasses']($el);
+    this[goodToGo ? 'removeErrorClasses' : 'addErrorClasses']($elError);
 
     /**
      * Fires when the input is done checking for validation. Event trigger is either `valid.zf.abide` or `invalid.zf.abide`
