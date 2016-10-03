@@ -1,0 +1,173 @@
+@function foundation_component_enabled($key: '') {
+	@if (not map-has-key($foundation-components, $key)) {
+		@return false;
+	} @else {
+		@return map-get($foundation-components, $key) ;
+	}
+}
+
+@function foundation_grid_enabled() {
+	@if foundation_component_enabled("flex-grid") {
+		@return false;
+	} @else {
+		@return foundation_component_enabled("grid");
+	}
+}
+
+@function foundation_flex_grid_enabled() {
+	@return foundation_component_enabled('flex-grid');
+}
+
+
+@mixin foundation-components-include() {
+  @include foundation-global-styles;
+
+  @if (foundation_grid_enabled()) {
+	@include foundation-grid;
+  }
+
+  @if (foundation_flex_grid_enabled()) {
+	@include foundation-flex-grid;
+  }
+  
+  @if (foundation_component_enabled("typography")) {
+	@include foundation-typography;
+  }
+
+  @if (foundation_component_enabled("forms")) {
+  	@include foundation-forms;
+  }
+
+  @if (foundation_component_enabled("button")) {
+  	@include foundation-button;
+  }
+
+  @if (foundation_component_enabled("accordion")) {
+	@include foundation-accordion;
+  }
+
+  @if (foundation_component_enabled("accordion-menu")) {
+  	@include foundation-accordion-menu;
+  }
+
+  @if (foundation_component_enabled("badge")) {
+  	@include foundation-badge;
+  }
+
+  @if (foundation_component_enabled("breadcrumbs")) {
+  	@include foundation-breadcrumbs;
+  }
+
+  @if (foundation_component_enabled("typography")) {
+	  @include foundation-button-group;
+  }
+
+  @if (foundation_component_enabled("callout")) {
+	  @include foundation-callout;
+  }
+
+  @if (foundation_component_enabled("close-button")) {
+	  @include foundation-close-button;
+  }
+
+  @if (foundation_component_enabled("menu")) {
+	  @include foundation-menu;
+  }
+
+  @if (foundation_component_enabled("menu-icon")) {
+	  @include foundation-menu-icon;
+  }
+
+  @if (foundation_component_enabled("drilldown-menu")) {
+	  @include foundation-drilldown-menu;
+  }
+
+  @if (foundation_component_enabled("dropdown")) {
+	  @include foundation-dropdown;
+  }
+
+  @if (foundation_component_enabled("dropdown-menu")) {
+	  @include foundation-dropdown-menu;
+  }
+
+  @if (foundation_component_enabled("flex-video")) {
+	  @include foundation-flex-video;
+  }
+
+  @if (foundation_component_enabled("label")) {
+	  @include foundation-label;
+  }
+
+  @if (foundation_component_enabled("media-object")) {
+	  @include foundation-media-object;
+  }
+
+  @if (foundation_component_enabled("off-canvas")) {
+	  @include foundation-off-canvas;
+  }
+
+  @if (foundation_component_enabled("orbit")) {
+	  @include foundation-orbit;
+  }
+
+  @if (foundation_component_enabled("pagination")) {
+	  @include foundation-pagination;
+  }
+
+  @if (foundation_component_enabled("progress-bar")) {
+	  @include foundation-progress-bar;
+  }
+
+  @if (foundation_component_enabled("typography")) {
+	  @include foundation-slider;
+  }
+
+  @if (foundation_component_enabled("sticky")) {
+	  @include foundation-sticky;
+  }
+
+  @if (foundation_component_enabled("reveal")) {
+	  @include foundation-reveal;
+  }
+
+  @if (foundation_component_enabled("switch")) {
+	  @include foundation-switch;
+  }
+
+  @if (foundation_component_enabled("table")) {
+	  @include foundation-table;
+  }
+
+  @if (foundation_component_enabled("tabs")) {
+	  @include foundation-tabs;
+  }
+
+  @if (foundation_component_enabled("thumbnail")) {
+	  @include foundation-thumbnail;
+  }
+
+  @if (foundation_component_enabled("title-bar")) {
+	  @include foundation-title-bar;
+  }
+
+  @if (foundation_component_enabled("tooltip")) {
+	  @include foundation-tooltip;
+  }
+
+  @if (foundation_component_enabled("top-bar")) {
+  	@include foundation-top-bar;
+  }
+
+  @if (foundation_component_enabled("typography")) {
+  	@include foundation-visibility-classes;
+  }
+
+  @if (foundation_component_enabled("float-classes")) {
+  	@include foundation-float-classes; 
+  }
+
+  @if (foundation_flex_grid_enabled()) {
+	@include foundation-flex-classes;
+  }
+  
+}

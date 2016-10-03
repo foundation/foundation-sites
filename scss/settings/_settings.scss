@@ -45,6 +45,42 @@
 // 1. Global
 // ---------
 
+$foundation-components: (
+	grid: true,
+	flex-grid: false,
+	typography: true,
+	forms: true,
+	button: true,
+	accordion: true,
+	accordion-menu: true,
+	badge: true,
+	breadcrumbs: true,
+	button-group: true,
+	menu: true,
+	menu-icon: true,
+	drilldown-menu: true,
+	dropdown: true,
+	dropdown-menu: true,
+	flex-video: true,
+	label: true,
+	media-object: true,
+	off-canvas: true,
+	orbit: true,
+	pagination: true,
+	progress-bar: true,
+	slider: true,
+	sticky: true,
+	reveal: true,
+	switch: true,
+	table: true,
+	tabs: true,
+	thumbnail: true,
+	title-bar: true,
+	tooltip: true,
+	top-bar: true,
+	visibility-classes: true,
+	float-classes: true
+);
 $global-font-size: 100%;
 $global-width: rem-calc(1200);
 $global-lineheight: 1.5;
@@ -70,7 +106,7 @@ $global-weight-normal: normal;
 $global-weight-bold: bold;
 $global-radius: 0;
 $global-text-direction: ltr;
-$global-flexbox: false;
+$global-flexbox: foundation_flex_grid_enabled();
 $print-transparent-backgrounds: true;
 
 @include add-foundation-colors;
