@@ -38,6 +38,8 @@ describe('Reveal', function() {
       plugin = new Foundation.Reveal($html, {});
 
       plugin.$anchor[0].should.be.equal($anchor[0]);
+
+      $anchor.remove();
     });
 
     it('sets ARIA attributes for anchor if one exists', function() {
@@ -47,6 +49,8 @@ describe('Reveal', function() {
 
       $anchor.should.have.attr('aria-haspopup', 'true');
       $anchor.should.have.attr('aria-controls', $html.attr('id'));
+
+      $anchor.remove();
     });
   });
 
@@ -218,6 +222,8 @@ describe('Reveal', function() {
       $anchor.trigger('click');
 
       plugin.$overlay.should.be.visible;
+
+      $anchor.remove();
     });
 		it('closes a modal on overlay click if closeOnClick option is true', function() {
       $html = $(template).appendTo('body');
