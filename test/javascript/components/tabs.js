@@ -60,22 +60,6 @@ describe('Tabs', function() {
       // Tab list items
       $html.find('[href="#panel1"]').parent().should.have.attr('role', 'presentation');
     });
-
-    // TODO: Check if classes should be applied by the Plugin or not.
-    
-    // it('uses linkClass option as class for links', function() {
-    //   $html = $(template).appendTo('body');
-    //   plugin = new Foundation.Tabs($html.find('[data-tabs]'), {linkClass: 'LINK_CLASS'});
-
-    //   $html.find('[href="#panel1"]').should.have.class('LINK_CLASS');      
-    // });
-
-    // it('uses panelClass option as class for links', function() {
-    //   $html = $(template).appendTo('body');
-    //   plugin = new Foundation.Tabs($html.find('[data-tabs]'), {linkClass: 'PANEL_CLASS'});
-
-    //   $html.find('#panel1').should.have.class('PANEL_CLASS');      
-    // });
   });
 
   describe('selectTab()', function() {
