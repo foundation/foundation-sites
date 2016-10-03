@@ -106,6 +106,41 @@ By default, the title bar will be visible on small screens, and the Menu hides. 
 
 ---
 
+## Responsive Toggle with animation
+
+To use animations from the Motion UI library, include the <code>data-animation="someAnimationIn someAnimationOut"</code> attribute.
+
+<div class="primary callout show-for-medium">
+  <p>Scale your browser down to see the toggle happen.</p>
+</div>
+
+```html_example
+<div class="title-bar" data-responsive-toggle="example-animated-menu" data-hide-for="medium">
+  <button class="menu-icon" type="button" data-toggle></button>
+  <div class="title-bar-title">Menu</div>
+</div>
+
+<div class="top-bar" id="example-animated-menu" data-animate="hinge-in-from-top spin-out">
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li class="menu-text">Site Title</li>
+      <li>
+        <a href="#">One</a>
+        <ul class="menu vertical">
+          <li><a href="#">One</a></li>
+          <li><a href="#">Two</a></li>
+          <li><a href="#">Three</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Two</a></li>
+      <li><a href="#">Three</a></li>
+    </ul>
+  </div>
+</div>
+```
+
+---
+
 ### Preventing FOUC
 
 Before the JavaScript on your page loads, you'll be able to see both the mobile and desktop element at once for a brief second. This is known as a [flash of unstyled content](https://en.wikipedia.org/wiki/Flash_of_unstyled_content). There's not an easy way for the framework to handle this for you, but you can add some extra CSS to account for it.
