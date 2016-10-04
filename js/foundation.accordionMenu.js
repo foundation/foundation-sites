@@ -37,8 +37,6 @@ class AccordionMenu {
     });
   }
 
-
-
   /**
    * Initializes the accordion menu by hiding all nested menus.
    * @private
