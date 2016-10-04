@@ -65,7 +65,6 @@
   .columns {
     float: none;
     width: auto;
-    margin-right: -1px; // Not sure why this has to be here
 
     &:nth-child(odd) {
       background: #eee;

@@ -56,7 +56,7 @@ class Tooltip {
       'data-yeti-box': elemId,
       'data-toggle': elemId,
       'data-resize': elemId
-    }).addClass(this.triggerClass);
+    }).addClass(this.options.triggerClass);
 
     //helper variables to track movement on collisions
     this.usedPositions = [];

@@ -13,7 +13,7 @@ A media object is a container with the class `.media-object`, and two or three s
 <div class="media-object">
   <div class="media-object-section">
     <div class="thumbnail">
-      <img src= "assets/img/media-object/avatar-1.jpg">
+      <img src="assets/img/media-object/avatar-1.jpg">
     </div>
   </div>
   <div class="media-object-section">
@@ -67,7 +67,7 @@ Each section aligns to the top by default, but individual sections can also be m
 </div>
 ```
 
-In flexbox mode, you can use the <a href="flex-classes.html">flexbox helper classes</a> instead to get the same result. The `.align-*` classes can be used on the container to align every child section at once, or individual child sections can be aligned with `.align-self-*` classes.
+In flexbox mode, you can use the <a href="flexbox.html#helper-classes">flexbox helper classes</a> instead to get the same result. The `.align-*` classes can be used on the container to align every child section at once, or individual child sections can be aligned with `.align-self-*` classes.
 
 ```html
 <div class="media-object">

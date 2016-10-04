@@ -29,7 +29,7 @@
   }
 
   // Restore the old column count
-  $grid-column-count: $old-grid-column-count;
+  $grid-column-count: $old-grid-column-count !global;
 }
 
 /// Creates a grid row.
@@ -82,7 +82,6 @@
   @if type-of($gutter) == 'number' {
     $gutter: ($-zf-zero-breakpoint: $gutter);
   }
-  max-width: none;
 
   @each $breakpoint, $value in $gutter {
     $margin: rem-calc($value) / 2 * -1;

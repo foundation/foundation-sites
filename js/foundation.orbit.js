@@ -268,6 +268,12 @@ class Orbit {
     }
 
     if ($newSlide.length) {
+      /**
+      * Triggers before the next slide starts animating in and only if a next slide has been found.
+      * @event Orbit#beforeslidechange
+      */
+      this.$element.trigger('beforeslidechange.zf.orbit', [$curSlide, $newSlide]);
+      
       if (this.options.bullets) {
         idx = idx || this.$slides.index($newSlide); //grab index to update bullets
         this._updateBullets(idx);
