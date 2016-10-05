@@ -442,6 +442,7 @@ $pagination-item-color-current: foreground($pagination-item-background-current);
 $pagination-item-color-disabled: $medium-gray;
 $pagination-ellipsis-color: $black;
 $pagination-mobile-items: false;
+$pagination-mobile-current-item: false;
 $pagination-arrows: true;
 
 // 27. Progress Bar
