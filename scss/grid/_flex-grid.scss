@@ -19,7 +19,7 @@
   $size: $grid-row-width,
   $columns: null,
   $base: true,
-  $wrap: true
+  $wrap: true,
   $gutters: $grid-column-gutter
 ) {
   $margin: auto;
@@ -88,11 +88,11 @@
 
   // fixes recent Chrome version not limiting child width
   // https://stackoverflow.com/questions/34934586/white-space-nowrap-and-flexbox-did-not-work-in-chrome
-  @if $columns == null {
+  @if $columns == expand {
     min-width: initial;
   }
   // max-width fixes IE 10/11 not respecting the flex-basis property
-  @if $columns != null and $columns != shrink {
+  @if $columns != expand and $columns != shrink {
     max-width: grid-column($columns);
   }
 }
