@@ -52,7 +52,7 @@
     }
 
     &:last-child {
-      float: left;
+      float: $global-left;
     }
   }
 }
