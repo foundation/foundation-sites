@@ -92,18 +92,11 @@ class AccordionMenu {
       var $submenu = $(this).children('[data-submenu]');
 
       if ($submenu.length) {
-        if(_this.options.submenuToggle) {
-          $(this).addClass('has-submenu-toggle');
-          $(this).children('a').after('<button class="submenu-toggle"></button>');
-          $(this).children('.submenu-toggle').off('click.zf.accordionMenu').on('click.zf.accordionMenu', function(e) {
-            _this.toggle($submenu);
-          });
-        } else {
-            $(this).children('a').off('click.zf.accordionMenu').on('click.zf.accordionMenu', function(e) {
-              e.preventDefault();
-              _this.toggle($submenu);
-            });
-        }
+        $(this).children('a').off('click.zf.accordionMenu').on('click.zf.accordionMenu', function(e) {
+          e.preventDefault();
+
+          _this.toggle($submenu);
+        });
       }
     }).on('keydown.zf.accordionmenu', function(e){
       var $element = $(this),
@@ -266,12 +259,6 @@ AccordionMenu.defaults = {
    * @example 250
    */
   slideSpeed: 250,
-  /**
-   * Adds a separate submenu toggle button. This allows the parent item to have a link.
-   * @option
-   * @example true
-   */
-  submenuToggle: false,
   /**
    * Allow the menu to have multiple open panes.
    * @option
