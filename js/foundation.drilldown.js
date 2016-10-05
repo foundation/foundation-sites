@@ -49,6 +49,7 @@ class Drilldown {
     this.$menuItems = this.$element.find('li').not('.js-drilldown-back').attr('role', 'menuitem').find('a');
 
     this._prepareMenu();
+    this._registerEvents();
 
     this._keyboardEvents();
   }
@@ -124,6 +125,36 @@ class Drilldown {
           $body.off('.zf.drilldown');
         });
       }
+    });
+  }
+
+  /**
+   * Adds event handlers to the menu element.
+   * @function
+   * @private
+   */
+  _registerEvents() {
+    if(this.options.scrollTop){
+      this._bindHandler = this._scrollTop.bind(this);
+      this.$element.on('open.zf.drilldown hide.zf.drilldown closed.zf.drilldown',this._bindHandler);
+    }
+  }
+
+  /**
+   * Scroll to Top of Element or data-scroll-top-element
+   * @function
+   * @fires Drilldown#scrollme
+   */
+  _scrollTop() {
+    var _this = this;
+    var $scrollTopElement = _this.options.scrollTopElement!=''?$(_this.options.scrollTopElement):_this.$element,
+        scrollPos = parseInt($scrollTopElement.offset().top+_this.options.scrollTopOffset);
+    $('html, body').stop(true).animate({ scrollTop: scrollPos }, _this.options.animationDuration, _this.options.animationEasing,function(){
+      /**
+        * Fires after the menu has scrolled
+        * @event Drilldown#scrollme
+        */
+      if(this===$('html')[0])_this.$element.trigger('scrollme.zf.drilldown');
     });
   }
 
@@ -327,6 +358,7 @@ class Drilldown {
    * @function
    */
   destroy() {
+    if(this.options.scrollTop) this.$element.off('.zf.drilldown',this._bindHandler);
     this._hideAll();
     Foundation.Nest.Burn(this.$element, 'drilldown');
     this.$element.unwrap()
@@ -371,7 +403,37 @@ Drilldown.defaults = {
    * @option
    * @example false
    */
-  closeOnClick: false
+  closeOnClick: false,
+  /**
+   * Scroll to the top of the menu after opening a submenu or navigating back using the menu back button
+   * @option
+   * @example false
+   */
+  scrollTop: false,
+  /**
+   * String jquery selector (for example 'body') of element to take offset().top from, if empty string the drilldown menu offset().top is taken
+   * @option
+   * @example ''
+   */
+  scrollTopElement: '',
+  /**
+   * ScrollTop offset
+   * @option
+   * @example 100
+   */
+  scrollTopOffset: 0,
+  /**
+   * Scroll animation duration
+   * @option
+   * @example 500
+   */
+  animationDuration: 500,
+  /**
+   * Scroll animation easing
+   * @option
+   * @example 'swing'
+   */
+  animationEasing: 'swing'
   // holdOpen: false
 };
 

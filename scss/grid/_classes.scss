@@ -12,6 +12,7 @@
   $row: 'row',
   $column: 'column',
   $column-row: 'column-row',
+  $gutter: 'gutter',
   $push: 'push',
   $pull: 'pull',
   $center: 'centered',
@@ -45,11 +46,20 @@
 
     // Expanded (full-width) row
     &.#{$expanded} {
-      max-width: none;
+      @include grid-row-size(expand);
 
       .#{$row} {
         margin-left: auto;
         margin-right: auto;
+      }
+    }
+
+    // Static (unresponsive) row gutters
+    @each $breakpoint, $value in $grid-column-gutter {
+      &.#{$gutter}-#{$breakpoint} {
+        > .#{$column} {
+          @include grid-col-gutter($value);
+        }
       }
     }
   }
@@ -124,9 +134,7 @@
     }
 
     .#{$-zf-size}-#{$uncollapse} {
-      $gutter: -zf-get-bp-val($grid-column-gutter, $-zf-size);
-
-      > .#{$column} { @include grid-col-uncollapse($gutter); }
+      > .#{$column} { @include grid-col-gutter($-zf-size); }
     }
 
     // Positioning

@@ -10,21 +10,23 @@
 ///
 /// @param {Keyword|List} $behavior [null]
 ///   Modifications to the default grid styles. `nest` indicates the row will be placed inside another row. `collapse` indicates that the columns inside this row will not have padding. `nest collapse` combines both behaviors.
-/// @param {Number} $width [$grid-row-width] - Maximum width of the row.
+/// @param {Keyword|Number} $size [$grid-row-width] Maximum size of the row. Set to `expand` to make the row taking the full width.
 /// @param {Number} $columns [null] - Number of columns to use for this row. If set to `null` (the default), the global column count will be used.
 /// @param {Boolean} $base [true] - Set to `false` to prevent basic styles from being output. Useful if you're calling this mixin on the same element twice, as it prevents duplicate CSS output.
-/// @param {Number} $gutter [$grid-column-gutter] - Gutter to use when inverting margins, in case the row is nested.
+/// @param {Number|Map} $gutters [$grid-column-gutter] - Gutter map or single value to use when inverting margins, in case the row is nested. Responsive gutter settings by default.
 @mixin flex-grid-row(
   $behavior: null,
-  $width: $grid-row-width,
+  $size: $grid-row-width,
   $columns: null,
   $base: true,
-  $gutter: $grid-column-gutter
+  $wrap: true,
+  $gutters: $grid-column-gutter
 ) {
   $margin: auto;
+  $wrap: if($wrap, wrap, nowrap);
 
   @if index($behavior, nest) != null {
-    @include grid-row-nest($gutter);
+    @include grid-row-nest($gutters);
 
     @if index($behavior, collapse) != null {
       margin-left: 0;
@@ -32,14 +34,14 @@
     }
   }
   @else {
-    max-width: $width;
+    @include grid-row-size($size);
     margin-left: auto;
     margin-right: auto;
   }
 
   @if $base {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row $wrap;
   }
 
   @if $columns != null {
@@ -50,18 +52,18 @@
 }
 
 /// Calculates the `flex` property for a flex grid column. It accepts all of the same values as the basic `grid-column()` function, along with two extras:
-///   - `null` (the default) will make the column expand to fill space.
+///   - `expand` (the default) will make the column expand to fill space.
 ///   - `shrink` will make the column contract, so it only takes up the horizontal space it needs.
 ///
-/// @param {Mixed} $columns [null] - Width of the column.
-@function flex-grid-column($columns: null) {
+/// @param {Mixed} $columns [expand] - Width of the column.
+@function flex-grid-column($columns: expand) {
   // scss-lint:disable ZeroUnit
   $flex: 1 1 0px;
 
   @if $columns == shrink {
     $flex: 0 0 auto;
   }
-  @else if $columns != null {
+  @else if $columns != expand {
     $flex: 0 0 grid-column($columns);
   }
 
@@ -70,39 +72,27 @@
 
 /// Creates a column for a flex grid. By default, the column will stretch to the full width of its container, but this can be overridden with sizing classes, or by using the `unstack` class on the parent flex row.
 ///
-/// @param {Mixed} $columns [null] - Width of the column. Refer to the `flex-grid-column()` function to see possible values.
+/// @param {Mixed} $columns [expand] - Width of the column. Refer to the `flex-grid-column()` function to see possible values.
 /// @param {Number} $gutter [$grid-column-gutter] - Space between columns, added as a left and right padding.
 @mixin flex-grid-column(
-  $columns: null,
-  $gutter: $grid-column-gutter
+  $columns: expand,
+  $gutters: $grid-column-gutter
 ) {
   // Base properties
-  flex: flex-grid-column($columns);
+  @include flex-grid-size($columns);
 
   // Gutters
-  @if type-of($gutter) == 'map' {
-    @each $breakpoint, $value in $gutter {
-      $padding: rem-calc($value) / 2;
-
-      @include breakpoint($breakpoint) {
-        padding-left: $padding;
-        padding-right: $padding;
-      }
-    }
-  }
-  @else if type-of($gutter) == 'number' and strip-unit($gutter) > 0 {
-    $padding: rem-calc($gutter) / 2;
-    padding-left: $padding;
-    padding-right: $padding;
+  @include -zf-each-breakpoint {
+    @include grid-column-gutter($-zf-size, $gutters);
   }
 
   // fixes recent Chrome version not limiting child width
   // https://stackoverflow.com/questions/34934586/white-space-nowrap-and-flexbox-did-not-work-in-chrome
-  @if $columns == null {
+  @if $columns == expand {
     min-width: initial;
   }
   // max-width fixes IE 10/11 not respecting the flex-basis property
-  @if $columns != null and $columns != shrink {
+  @if $columns != expand and $columns != shrink {
     max-width: grid-column($columns);
   }
 }
@@ -122,6 +112,19 @@
 
     flex: 0 0 $pct;
     max-width: $pct;
+  }
+}
+
+/// Changes the width flex grid column.
+/// @param {Mixed} $columns [expand] - Width of the column. Refer to the `flex-grid-column()` function to see possible values.
+@mixin flex-grid-size($columns: null) {
+  $columns: $columns or expand;
+
+  flex: flex-grid-column($columns);
+
+  // max-width fixes IE 10/11 not respecting the flex-basis property
+  @if $columns != expand and $columns != shrink {
+    max-width: grid-column($columns);
   }
 }
 
@@ -161,7 +164,7 @@
 
     // Expanded row
     &.expanded {
-      max-width: none;
+      @include grid-row-size(expand);
     }
 
     &.collapse {
@@ -257,9 +260,7 @@
     }
 
     .#{$-zf-size}-uncollapse {
-      $gutter: -zf-get-bp-val($grid-column-gutter, $-zf-size);
-
-      > .column { @include grid-col-uncollapse($gutter); }
+      > .column { @include grid-col-gutter($-zf-size); }
     }
   }
 

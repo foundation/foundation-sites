@@ -30,6 +30,14 @@ $menu-item-background-active: map-get($foundation-palette, primary) !default;
 /// @type Number
 $menu-icon-spacing: 0.25rem !default;
 
+/// Background color for an hovered menu item.
+/// @type Color
+$menu-item-background-hover: $light-gray !default;
+
+/// Color for bordered menu
+/// @type Color
+$menu-border: $light-gray !default;
+
 /// Creates the base styles for a Menu.
 @mixin menu-base {
   margin: $menu-margin;
@@ -280,6 +288,12 @@ $menu-icon-spacing: 0.25rem !default;
     // Vertical icons
     &.icon-top {
       @include menu-icons(top, $base: false);
+      // Make vertical menu with icons on top work
+      &.vertical {
+        a > span {
+          margin: auto;
+        }
+      }
     }
 
     // Nesting
@@ -291,6 +305,23 @@ $menu-icon-spacing: 0.25rem !default;
     .active > a {
       color: $menu-item-color-active;
       background: $menu-item-background-active;
+    }
+
+    // Menu with border
+    &.menu-bordered {
+      li {
+        border: 1px solid $menu-border;
+        &:not(:first-child) {
+          border-top: 0;
+        }
+      }
+    }
+
+    // Menu with background hover
+    &.menu-hover {
+      li:hover {
+        background-color: $menu-item-background-hover;
+      }
     }
   }
 
