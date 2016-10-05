@@ -19,9 +19,11 @@
   $size: $grid-row-width,
   $columns: null,
   $base: true,
-  $gutter: $grid-column-gutter
+  $gutter: $grid-column-gutter,
+  $wrap: true
 ) {
   $margin: auto;
+  $wrap: if($wrap, wrap, nowrap);
 
   @if index($behavior, nest) != null {
     @include grid-row-nest($gutter);
@@ -39,7 +41,7 @@
 
   @if $base {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row $wrap;
   }
 
   @if $columns != null {
@@ -50,18 +52,18 @@
 }
 
 /// Calculates the `flex` property for a flex grid column. It accepts all of the same values as the basic `grid-column()` function, along with two extras:
-///   - `null` (the default) will make the column expand to fill space.
+///   - `expand` (the default) will make the column expand to fill space.
 ///   - `shrink` will make the column contract, so it only takes up the horizontal space it needs.
 ///
-/// @param {Mixed} $columns [null] - Width of the column.
-@function flex-grid-column($columns: null) {
+/// @param {Mixed} $columns [expand] - Width of the column.
+@function flex-grid-column($columns: expand) {
   // scss-lint:disable ZeroUnit
   $flex: 1 1 0px;
 
   @if $columns == shrink {
     $flex: 0 0 auto;
   }
-  @else if $columns != null {
+  @else if $columns != expand {
     $flex: 0 0 grid-column($columns);
   }
 
@@ -70,10 +72,10 @@
 
 /// Creates a column for a flex grid. By default, the column will stretch to the full width of its container, but this can be overridden with sizing classes, or by using the `unstack` class on the parent flex row.
 ///
-/// @param {Mixed} $columns [null] - Width of the column. Refer to the `flex-grid-column()` function to see possible values.
+/// @param {Mixed} $columns [expand] - Width of the column. Refer to the `flex-grid-column()` function to see possible values.
 /// @param {Number} $gutter [$grid-column-gutter] - Space between columns, added as a left and right padding.
 @mixin flex-grid-column(
-  $columns: null,
+  $columns: expand,
   $gutter: $grid-column-gutter
 ) {
   // Base properties
@@ -126,12 +128,14 @@
 }
 
 /// Changes the width flex grid column.
-/// @param {Mixed} $columns [null] - Width of the column. Refer to the `flex-grid-column()` function to see possible values.
+/// @param {Mixed} $columns [expand] - Width of the column. Refer to the `flex-grid-column()` function to see possible values.
 @mixin flex-grid-size($columns: null) {
+  $columns: $columns or expand;
+
   flex: flex-grid-column($columns);
 
   // max-width fixes IE 10/11 not respecting the flex-basis property
-  @if $columns != null and $columns != shrink {
+  @if $columns != expand and $columns != shrink {
     max-width: grid-column($columns);
   }
 }
