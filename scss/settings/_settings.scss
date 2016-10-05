@@ -20,16 +20,16 @@
 //  15. Drilldown
 //  16. Dropdown
 //  17. Dropdown Menu
-//  18. Flex Video
-//  19. Forms
-//  20. Label
-//  21. Media Object
-//  22. Menu
-//  23. Meter
-//  24. Off-canvas
-//  25. Orbit
-//  26. Pagination
-//  27. Progress Bar
+//  18. Forms
+//  19. Label
+//  20. Media Object
+//  21. Menu
+//  22. Meter
+//  23. Off-canvas
+//  24. Orbit
+//  25. Pagination
+//  26. Progress Bar
+//  27. Responsive Embed
 //  28. Reveal
 //  29. Slider
 //  30. Switch
@@ -316,14 +316,7 @@ $dropdownmenu-min-width: 200px;
 $dropdownmenu-background: $white;
 $dropdownmenu-border: 1px solid $medium-gray;
 
-// 18. Flex Video
-// --------------
-
-$flexvideo-margin-bottom: rem-calc(16);
-$flexvideo-ratio: 4 by 3;
-$flexvideo-ratio-widescreen: 16 by 9;
-
-// 19. Forms
+// 18. Forms
 // ---------
 
 $fieldset-border: 1px solid $medium-gray;
@@ -362,7 +355,7 @@ $input-transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
 $input-number-spinners: true;
 $input-radius: $global-radius;
 
-// 20. Label
+// 19. Label
 // ---------
 
 $label-background: $primary-color;
@@ -371,7 +364,7 @@ $label-font-size: 0.8rem;
 $label-padding: 0.33333rem 0.5rem;
 $label-radius: $global-radius;
 
-// 21. Media Object
+// 20. Media Object
 // ----------------
 
 $mediaobject-margin-bottom: $global-margin;
@@ -388,7 +381,7 @@ $menu-item-color-active: $white;
 $menu-item-background-active: map-get($foundation-palette, primary);
 $menu-icon-spacing: 0.25rem;
 
-// 23. Meter
+// 22. Meter
 // ---------
 
 $meter-height: 1rem;
@@ -398,7 +391,7 @@ $meter-fill-good: $success-color;
 $meter-fill-medium: $warning-color;
 $meter-fill-bad: $alert-color;
 
-// 24. Off-canvas
+// 23. Off-canvas
 // --------------
 
 $offcanvas-size: 250px;
@@ -412,7 +405,7 @@ $offcanvas-vertical-size: 250px;
 $maincontent-class: 'off-canvas-content';
 $maincontent-shadow: 0 0 10px rgba($black, 0.5);
 
-// 25. Orbit
+// 24. Orbit
 // ---------
 
 $orbit-bullet-background: $medium-gray;
@@ -427,7 +420,7 @@ $orbit-control-background-hover: rgba($black, 0.5);
 $orbit-control-padding: 1rem;
 $orbit-control-zindex: 10;
 
-// 26. Pagination
+// 25. Pagination
 // --------------
 
 $pagination-font-size: rem-calc(14);
@@ -445,7 +438,7 @@ $pagination-mobile-items: false;
 $pagination-mobile-current-item: false;
 $pagination-arrows: true;
 
-// 27. Progress Bar
+// 26. Progress Bar
 // ----------------
 
 $progress-height: 1rem;
@@ -453,6 +446,13 @@ $progress-background: $medium-gray;
 $progress-margin-bottom: $global-margin;
 $progress-meter-background: $primary-color;
 $progress-radius: $global-radius;
+
+// 27. Responsive Embed
+// --------------
+
+$responsive-embed-margin-bottom: rem-calc(16);
+$responsive-embed-ratio: 4 by 3;
+$responsive-embed-ratio-widescreen: 16 by 9;
 
 // 28. Reveal
 // ----------

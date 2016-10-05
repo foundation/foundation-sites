@@ -1,13 +1,13 @@
 @import "true";
 
 @import '../../scss/global';
-@import '../../scss/components/flex-video';
+@import '../../scss/components/responsive-embed';
 @import '../../scss/grid/grid';
 
 @include test-module('Components') {
-  
-  @include test('Flex Video [function]') {
-    $test: flex-video(3 by 4);
+
+  @include test('Responsive Embed [function]') {
+    $test: responsive-embed(3 by 4);
     $expect: 4 / 3 * 100%;
 
     @include assert-equal($test, $expect,
