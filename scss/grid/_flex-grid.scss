@@ -186,17 +186,17 @@
 
   // Column row
   // The double .row class is needed to bump up the specificity
-  & .column.row.row {
+  .column.row.row {
     float: none;
     display: block;
+  }
 
-    // To properly nest a column row, padding and margin is removed
-    & .row {
-      padding-left: 0;
-      padding-right: 0;
-      margin-left: 0;
-      margin-right: 0;
-    }
+  // To properly nest a column row, padding and margin is removed
+  .row .column.row.row {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   @include -zf-each-breakpoint {
@@ -239,7 +239,7 @@
 
       // Auto-stacking/unstacking
       @at-root (without: media) {
-        & .row.#{$-zf-size}-unstack {
+        .row.#{$-zf-size}-unstack {
           > .column {
             flex: flex-grid-column(100%);
 
