@@ -50,6 +50,9 @@ class Drilldown {
 
     this._prepareMenu();
 
+    this.$element.attr('data-resize', Foundation.GetYoDigits(6, 'drilldown'));
+    this.$element.off('resizeme.zf.trigger').on('resizeme.zf.trigger', this._onResizeMe.bind(this));
+
     this._keyboardEvents();
   }
 
@@ -90,8 +93,19 @@ class Drilldown {
     });
     if(!this.$element.parent().hasClass('is-drilldown')){
       this.$wrapper = $(this.options.wrapper).addClass('is-drilldown');
-      this.$wrapper = this.$element.wrap(this.$wrapper).parent().css(this._getMaxDims());
+      this.$wrapper = this.$element.wrap(this.$wrapper).parent();
+      this._recalculateMaxDims();
     }
+  }
+
+  /**
+   * Recalculates the maxDims
+   * @function
+   * @private
+   */
+  _recalculateMaxDims() {
+    this.$wrapper.css({'min-height':'','max-width':''}).css(this._getMaxDims());
+
   }
 
   /**
@@ -125,6 +139,21 @@ class Drilldown {
         });
       }
     });
+  }
+  /**
+   * function to handle $elements resizeme.zf.trigger, with bound this on _bindHandler.onResizeMeBound
+   * @private
+   */
+  _onResizeMe(e) {
+    this._reflow();
+  }
+
+  /**
+   * Calls necessary functions to update Drilldown upon DOM change
+   * @private
+   */
+  _reflow() {
+    this._recalculateMaxDims();
   }
 
   /**
@@ -188,7 +217,7 @@ class Drilldown {
                 $element.parent('li').parent('ul').parent('li').children('a').first().focus();
               }, 1);
             });
-            return true;            
+            return true;
           } else if ($element.is(_this.$submenuAnchors)) {
             _this._show($element.parent('li'));
             $element.parent('li').one(Foundation.transitionend($element), function(){
@@ -241,7 +270,7 @@ class Drilldown {
 
         // If there is a parent submenu, call show
         let parentSubMenu = $elem.parent('li').parent('ul').parent('li');
-        if (parentSubMenu.length) { 
+        if (parentSubMenu.length) {
           _this._show(parentSubMenu);
         }
       });
@@ -308,16 +337,28 @@ class Drilldown {
    * @private
    */
   _getMaxDims() {
-    var biggest = 0
+    var biggest = 0;
+    var widest = 0;
     var result = {};
 
+    // check if $element has an individual width
+    var individualWidth = this.$element[0].style.width!='auto' && this.$element.outerWidth()!=this.$element.parent().width();
+
+    // if indvidaualWidth is true, then we must set each submenu to the width of $element
+    if (individualWidth) {
+        this.$submenus.css('width',`${this.$element.width()}px`);
+    }
+
     this.$submenus.add(this.$element).each((i, elem) => {
-      var height = elem.getBoundingClientRect().height;
+      var dimensions = Foundation.Box.GetDimensions(elem, true);
+      var height = dimensions.height;
+      var width = dimensions.width;
       if (height > biggest) biggest = height;
+      if (width > widest) widest = width;
     });
 
     result['min-height'] = `${biggest}px`;
-    result['max-width'] = `${this.$element[0].getBoundingClientRect().width}px`;
+    result['max-width'] = `${widest}px`;
 
     return result;
   }

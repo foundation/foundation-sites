@@ -15,6 +15,11 @@ One of the useful libraries is `Foundation.Box`, and it has a couple methods des
 ```js
 
 var dims = Foundation.Box.GetDimensions(element);
+
+// or to get dimension on an hidden element
+
+var dims = Foundation.Box.GetDimensions(element, true);
+
 ```
 Will return an object that contains the dimensions of the `element` passed. The object return looks like:
 
