@@ -18,9 +18,17 @@ $card-font-color: $body-font-color !default;
 /// @type Color
 $card-divider-background: $light-gray !default;
 
-/// Defualt border style.
+/// Default border style.
 /// @type List
 $card-border: 1px solid $light-gray !default;
+
+/// Default card shadow.
+/// @type List
+$card-shadow: none !default;
+
+/// Default border radius.
+/// @type List
+$card-border-radius: $global-radius !default;
 
 /// Default padding.
 /// @type Number
@@ -32,14 +40,22 @@ $card-margin: $global-margin !default;
 
 /// Adds styles for a card container.
 /// @param {Color} $background - Background color of the card.
-/// @param {Border} $border - Border around the card.
+/// @param {Color} $color - font color of the card.
 /// @param {Number} $margin - Bottom margin of the card.
+/// @param {List} $border - Border around the card.
+/// @param {List} $radius - border radius of the card.
+/// @param {List} $shadow - box shadow of the card.
 @mixin card-container(
   $background: $card-background,
+  $color: $card-font-color,
+  $margin: $card-margin,
   $border: $card-border,
-  $margin: $card-margin
+  $radius: $card-border-radius,
+  $shadow: $card-shadow,
 ) {
   border: $border;
+  border-radius: $radius;
+  box-shadow: $shadow;
   margin-bottom: $margin;
   background: $background;
   overflow: hidden;
@@ -47,6 +63,7 @@ $card-margin: $global-margin !default;
 
   @if $global-flexbox {
     display: flex;
+    flex-direction: column;
   }
 
   & > :last-child {
