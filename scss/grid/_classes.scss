@@ -23,7 +23,7 @@
   $expanded: 'expanded'
 ) {
   // Row
-  & .#{$row} {
+  .#{$row} {
     @include grid-row;
 
     // Collapsing
