@@ -20,7 +20,7 @@ $topbar-submenu-background: $topbar-background !default;
 
 /// Spacing for the top bar title.
 /// @type Number
-$topbar-title-spacing: 1rem !default;
+$topbar-title-spacing: 0.45rem 1rem 0 1rem !default;
 
 /// Maximum width of `<input>` elements inside the top bar.
 /// @type Number
@@ -142,7 +142,7 @@ $topbar-unstack-breakpoint: medium !default;
   @if $global-flexbox {
     .top-bar-title {
       flex: 0 0 auto;
-      margin-right: $topbar-title-spacing;
+      margin: $topbar-title-spacing;
     }
 
     .top-bar-left,
@@ -153,7 +153,7 @@ $topbar-unstack-breakpoint: medium !default;
   @else {
     .top-bar-title {
       float: left;
-      margin-right: $topbar-title-spacing;
+      margin: $topbar-title-spacing;
 
     }
 
@@ -164,11 +164,5 @@ $topbar-unstack-breakpoint: medium !default;
     .top-bar-right {
       float: right;
     }
-  }
-
-  .top-bar-title strong{
-    margin: $menu-item-padding;
-    display: inline-block;
-    line-height: 1
   }
 }
