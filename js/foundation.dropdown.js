@@ -41,7 +41,7 @@ class Dropdown {
   _init() {
     var $id = this.$element.attr('id');
 
-    this.$anchor = $(`[data-toggle="${$id}"]`) || $(`[data-open="${$id}"]`);
+    this.$anchor = $(`[data-toggle="${$id}"]`).length ? $(`[data-toggle="${$id}"]`) : $(`[data-open="${$id}"]`);
     this.$anchor.attr({
       'aria-controls': $id,
       'data-is-focus': false,
