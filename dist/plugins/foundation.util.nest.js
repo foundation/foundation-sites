@@ -4,7 +4,7 @@
 
   var Nest = {
     Feather: function (menu) {
-      var type = arguments.length <= 1 || arguments[1] === undefined ? 'zf' : arguments[1];
+      var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'zf';
 
       menu.attr('role', 'menubar');
 
@@ -46,7 +46,7 @@
           subItemClass = subMenuClass + '-item',
           hasSubClass = 'is-' + type + '-submenu-parent';
 
-      menu.find('*').removeClass(subMenuClass + ' ' + subItemClass + ' ' + hasSubClass + ' is-submenu-item submenu is-active').removeAttr('data-submenu').css('display', '');
+      menu.find('>li, .menu, .menu > li').removeClass(subMenuClass + ' ' + subItemClass + ' ' + hasSubClass + ' is-submenu-item submenu is-active').removeAttr('data-submenu').css('display', '');
 
       // console.log(      menu.find('.' + subMenuClass + ', .' + subItemClass + ', .has-submenu, .is-submenu-item, .submenu, [data-submenu]')
       //           .removeClass(subMenuClass + ' ' + subItemClass + ' has-submenu is-submenu-item submenu')

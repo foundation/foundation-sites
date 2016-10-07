@@ -22,7 +22,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @param {jQuery} element - jQuery object to make into a dropdown menu.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-
     function DropdownMenu(element, options) {
       _classCallCheck(this, DropdownMenu);
 
@@ -102,10 +101,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             } else {
               e.preventDefault();
               e.stopImmediatePropagation();
-              _this._show($elem.children('.is-dropdown-submenu'));
+              _this._show($sub);
               $elem.add($elem.parentsUntil(_this.$element, '.' + parClass)).attr('data-is-click', true);
             }
           } else {
+            if (_this.options.closeOnClickInside) {
+              _this._hide($elem);
+            }
             return;
           }
         };
@@ -422,6 +424,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @example true
      */
     closeOnClick: true,
+    /**
+     * Allow clicks on leaf anchor links to close any open submenus.
+     * @option
+     * @example true
+     */
+    closeOnClickInside: true,
     /**
      * Class applied to vertical oriented menus, Foundation default is `vertical`. Update this if using your own class.
      * @option
