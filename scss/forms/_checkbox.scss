@@ -6,11 +6,15 @@
 /// @group forms
 ////
 
+/// Margin around checkboxes, radios and file inputs.
+/// @type List
+$form-checkbox-margin: 0 0 $form-spacing !default;
+
 @mixin foundation-form-checkbox {
   [type='file'],
   [type='checkbox'],
   [type='radio'] {
-    margin: 0 0 $form-spacing;
+    margin: $form-checkbox-margin;
   }
 
   // Styles for input/label siblings

@@ -66,6 +66,10 @@ $input-number-spinners: true !default;
 /// @type Border
 $input-radius: $global-radius !default;
 
+/// Margin around input fields.
+/// @type List
+$input-margin: 0 0 $form-spacing !default;
+
 @mixin form-element {
   $height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
 
@@ -75,7 +79,7 @@ $input-radius: $global-radius !default;
   height: $height;
   padding: $form-spacing / 2;
   border: $input-border;
-  margin: 0 0 $form-spacing;
+  margin: $input-margin;
 
   font-family: $input-font-family;
   font-size: $input-font-size;

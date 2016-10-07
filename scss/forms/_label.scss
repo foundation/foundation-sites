@@ -22,6 +22,10 @@ $form-label-font-weight: $global-weight-normal !default;
 /// @type Number
 $form-label-line-height: 1.8 !default;
 
+/// Margin around label-tag elements.
+/// @type List
+$form-label-margin: 0 0 $form-spacing !default;
+
 @mixin form-label {
   display: block;
   margin: 0;
@@ -33,7 +37,7 @@ $form-label-line-height: 1.8 !default;
 
 @mixin form-label-middle {
   $input-border-width: get-border-value($input-border, width);
-  margin: 0 0 $form-spacing;
+  margin: $form-label-margin;
   padding: ($form-spacing / 2 + rem-calc($input-border-width)) 0;
 }
 
