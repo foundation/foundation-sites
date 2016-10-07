@@ -98,6 +98,11 @@ a#notice {
   .dropdown.menu a {
     background: $topbar-background;
   }
+  .is-dropdown-submenu-item a {
+    &:hover {
+      background: $topbar-hover-color;
+    }
+  }
 
   .title {
     background: $topbar-background;
@@ -112,11 +117,6 @@ a#notice {
   }
 }
 
-.is-dropdown-submenu-item a {
-  &:hover {
-    background: $topbar-hover-color;
-  }
-}
 
 .marketing-topbar .menu a:hover:not(.button),
 .marketing-topbar .menu a:focus {
