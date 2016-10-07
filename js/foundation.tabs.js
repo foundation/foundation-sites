@@ -71,6 +71,22 @@ class Tabs {
       if(isActive && _this.options.autoFocus){
         $link.focus();
       }
+
+      //use browser to open a tab, if it exists in this tabset
+      if (_this.options.deepLink) {
+        var anchor = window.location.hash;
+        //need a has and a relevant anchor in this tabset
+        if (anchor.length && this.$tabTitles.find('[href="'+anchor+'"]').length) {
+          this.selectTab($(anchor));
+          //roll up a little to show the titles
+          if (_this.options.deepLinkSmudge) {
+            var offset = this.$tabTitles.offset();
+            $(window).load(function() {
+              $('html, body').animate({ scrollTop: offset.top }, _this.options.deepLinkSmudgeDelay);
+            });
+          }
+        }
+      }
     });
 
     if(this.options.matchHeight) {
@@ -203,7 +219,12 @@ class Tabs {
 
     //open new tab
     this._openTab($target);
-    
+
+    //optionally set the browser history
+    if (this.options.updateHistory) {
+      var anchor = $target.find('a').attr('href');
+      history.pushState({}, "", anchor);
+    }
     
     /**
      * Fires when the plugin has successfully changed tabs.
@@ -326,7 +347,36 @@ class Tabs {
 
 Tabs.defaults = {
   /**
+   * Allows the window to scroll to content of pane specified by hash anchor
+   * @option
+   * @example false
+   */
+  deepLink: false,
+
+  /**
+   * Adjust the deep link scroll to make sure the top of the tab panel is visible
+   * @option
+   * @example false
+   */
+  deepLinkSmudge: true,
+
+  /**
+   * Animation time (ms) for the deep link adjustment
+   * @option
+   * @example 300
+   */
+  deepLinkSmudgeDelay: 300,
+
+  /**
+   * Update the browser history with the open tab
+   * @option
+   * @example false
+   */
+  updateHistory: true,
+
+  /**
    * Allows the window to scroll to content of active pane on load if set to true.
+   * Not recommended if more than one tab panel per page.
    * @option
    * @example false
    */
