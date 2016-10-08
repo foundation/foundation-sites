@@ -75,13 +75,13 @@ class Tabs {
       //use browser to open a tab, if it exists in this tabset
       if (_this.options.deepLink) {
         var anchor = window.location.hash;
-        //need a has and a relevant anchor in this tabset
-        if (anchor.length && this.$tabTitles.find('[href="'+anchor+'"]').length) {
-          this.selectTab($(anchor));
+        //need a hash and a relevant anchor in this tabset
+        if (anchor.length && $elem.find('[href="'+anchor+'"]').length) {
+          _this.selectTab($(anchor));
           //roll up a little to show the titles
           if (_this.options.deepLinkSmudge) {
-            var offset = this.$tabTitles.offset();
             $(window).load(function() {
+              var offset = $elem.offset();
               $('html, body').animate({ scrollTop: offset.top }, _this.options.deepLinkSmudgeDelay);
             });
           }
