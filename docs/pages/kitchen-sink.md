@@ -193,7 +193,7 @@ description: Everything but.
 
 ```html_example
 <!-- Anchors (links) -->
-<a href="about.html" class="button">Learn More</a>
+<a href="#" class="button">Learn More</a>
 <a href="#features" class="button">View All Features</a>
 
 <!-- Buttons (actions) -->
@@ -416,10 +416,10 @@ description: Everything but.
 
 ---
 
-## Flex Video
+## Responsive Embed
 
 ```html_example
-<div class="flex-video">
+<div class="responsive-embed">
   <iframe width="420" height="315" src="https://www.youtube.com/embed/V9gkYw35Vws" frameborder="0" allowfullscreen></iframe>
 </div>
 ```

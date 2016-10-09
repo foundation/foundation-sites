@@ -28,7 +28,7 @@ function ImNotTouchingYou(element, parent, lrOnly, tbOnly) {
     bottom = (eleDims.offset.top + eleDims.height <= parDims.height + parDims.offset.top);
     top    = (eleDims.offset.top >= parDims.offset.top);
     left   = (eleDims.offset.left >= parDims.offset.left);
-    right  = (eleDims.offset.left + eleDims.width <= parDims.width);
+    right  = (eleDims.offset.left + eleDims.width <= parDims.width + parDims.offset.left);
   }
   else {
     bottom = (eleDims.offset.top + eleDims.height <= eleDims.windowDims.height + eleDims.windowDims.offset.top);
@@ -174,7 +174,7 @@ function GetOffsets(element, anchor, position, vOffset, hOffset, isOverflow) {
       break;
     case 'left bottom':
       return {
-        left: $anchorDims.offset.left - ($eleDims.width + hOffset),
+        left: $anchorDims.offset.left,
         top: $anchorDims.offset.top + $anchorDims.height
       };
       break;
@@ -186,7 +186,7 @@ function GetOffsets(element, anchor, position, vOffset, hOffset, isOverflow) {
       break;
     default:
       return {
-        left: (Foundation.rtl() ? $anchorDims.offset.left - $eleDims.width + $anchorDims.width : $anchorDims.offset.left),
+        left: (Foundation.rtl() ? $anchorDims.offset.left - $eleDims.width + $anchorDims.width : $anchorDims.offset.left + hOffset),
         top: $anchorDims.offset.top + $anchorDims.height + vOffset
       }
   }

@@ -33,10 +33,12 @@ var MediaQuery = {
     namedQueries = parseStyleToObject(extractedStyles);
 
     for (var key in namedQueries) {
-      self.queries.push({
-        name: key,
-        value: `only screen and (min-width: ${namedQueries[key]})`
-      });
+      if(namedQueries.hasOwnProperty(key)) {
+        self.queries.push({
+          name: key,
+          value: `only screen and (min-width: ${namedQueries[key]})`
+        });
+      }
     }
 
     this.current = this._getCurrentSize();
@@ -61,6 +63,22 @@ var MediaQuery = {
   },
 
   /**
+   * Checks if the screen matches to a breakpoint. 
+   * @function
+   * @param {String} size - Name of the breakpoint to check, either 'small only' or 'small'. Omitting 'only' falls back to using atLeast() method.
+   * @returns {Boolean} `true` if the breakpoint matches, `false` if it does not.
+   */
+  is(size) {
+    size = size.trim().split(' ');
+    if(size.length > 1 && size[1] === 'only') {
+      if(size[0] === this._getCurrentSize()) return true;
+    } else {
+      return this.atLeast(size[0]);
+    }
+    return false;
+  },
+
+  /**
    * Gets the media query of a breakpoint.
    * @function
    * @param {String} size - Name of the breakpoint to get.
@@ -68,8 +86,10 @@ var MediaQuery = {
    */
   get(size) {
     for (var i in this.queries) {
-      var query = this.queries[i];
-      if (size === query.name) return query.value;
+      if(this.queries.hasOwnProperty(i)) {
+        var query = this.queries[i];
+        if (size === query.name) return query.value;
+      }
     }
 
     return null;
@@ -106,14 +126,14 @@ var MediaQuery = {
    */
   _watcher() {
     $(window).on('resize.zf.mediaquery', () => {
-      var newSize = this._getCurrentSize();
+      var newSize = this._getCurrentSize(), currentSize = this.current;
 
-      if (newSize !== this.current) {
-        // Broadcast the media query change on the window
-        $(window).trigger('changed.zf.mediaquery', [newSize, this.current]);
-
+      if (newSize !== currentSize) {
         // Change the current media query
         this.current = newSize;
+
+        // Broadcast the media query change on the window
+        $(window).trigger('changed.zf.mediaquery', [newSize, currentSize]);
       }
     });
   }
@@ -138,7 +158,7 @@ window.matchMedia || (window.matchMedia = function() {
     style.type  = 'text/css';
     style.id    = 'matchmediajs-test';
 
-    script.parentNode.insertBefore(style, script);
+    script && script.parentNode && script.parentNode.insertBefore(style, script);
 
     // 'style.currentStyle' is used by IE <= 8 and 'window.getComputedStyle' for all other browsers
     info = ('getComputedStyle' in window) && window.getComputedStyle(style, null) || style.currentStyle;

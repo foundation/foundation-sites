@@ -76,16 +76,8 @@ class Accordion {
       if ($tabContent.length) {
         $elem.children('a').off('click.zf.accordion keydown.zf.accordion')
                .on('click.zf.accordion', function(e) {
-        // $(this).children('a').on('click.zf.accordion', function(e) {
           e.preventDefault();
-          if ($elem.hasClass('is-active')) {
-            if(_this.options.allowAllClosed || $elem.siblings().hasClass('is-active')){
-              _this.up($tabContent);
-            }
-          }
-          else {
-            _this.down($tabContent);
-          }
+          _this.toggle($tabContent);
         }).on('keydown.zf.accordion', function(e){
           Foundation.Keyboard.handleKey(e, 'Accordion', {
             toggle: function() {
@@ -115,14 +107,12 @@ class Accordion {
 
   /**
    * Toggles the selected content pane's open/close state.
-   * @param {jQuery} $target - jQuery object of the pane to toggle.
+   * @param {jQuery} $target - jQuery object of the pane to toggle (`.accordion-content`).
    * @function
    */
   toggle($target) {
     if($target.parent().hasClass('is-active')) {
-      if(this.options.allowAllClosed || $target.parent().siblings().hasClass('is-active')){
-        this.up($target);
-      } else { return; }
+      this.up($target);
     } else {
       this.down($target);
     }
@@ -130,24 +120,24 @@ class Accordion {
 
   /**
    * Opens the accordion tab defined by `$target`.
-   * @param {jQuery} $target - Accordion pane to open.
+   * @param {jQuery} $target - Accordion pane to open (`.accordion-content`).
    * @param {Boolean} firstTime - flag to determine if reflow should happen.
    * @fires Accordion#down
    * @function
    */
   down($target, firstTime) {
-    if (!this.options.multiExpand && !firstTime) {
-      var $currentActive = this.$element.children('.is-active').children('[data-tab-content]');
-      if($currentActive.length){
-        this.up($currentActive);
-      }
-    }
-
     $target
       .attr('aria-hidden', false)
       .parent('[data-tab-content]')
       .addBack()
       .parent().addClass('is-active');
+
+    if (!this.options.multiExpand && !firstTime) {
+      var $currentActive = this.$element.children('.is-active').children('[data-tab-content]');
+      if ($currentActive.length) {
+        this.up($currentActive.not($target));
+      }
+    }
 
     $target.slideDown(this.options.slideSpeed, () => {
       /**
@@ -165,16 +155,15 @@ class Accordion {
 
   /**
    * Closes the tab defined by `$target`.
-   * @param {jQuery} $target - Accordion tab to close.
+   * @param {jQuery} $target - Accordion tab to close (`.accordion-content`).
    * @fires Accordion#up
    * @function
    */
   up($target) {
     var $aunts = $target.parent().siblings(),
         _this = this;
-    var canClose = this.options.multiExpand ? $aunts.hasClass('is-active') : $target.parent().hasClass('is-active');
 
-    if(!this.options.allowAllClosed && !canClose) {
+    if((!this.options.allowAllClosed && !$aunts.hasClass('is-active')) || !$target.parent().hasClass('is-active')) {
       return;
     }
 

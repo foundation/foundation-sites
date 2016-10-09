@@ -10,7 +10,7 @@
 /// @type Number
 $pagination-font-size: rem-calc(14) !default;
 
-/// Default bottom margin of the media object.
+/// Default bottom margin of the pagination object.
 /// @type Number
 $pagination-margin-bottom: $global-margin !default;
 
@@ -50,9 +50,14 @@ $pagination-item-color-disabled: $medium-gray !default;
 /// @type Color
 $pagination-ellipsis-color: $black !default;
 
-/// If `false`, don't display page number links on mobile, only next/previous links.
+/// If `false`, don't display page number links on mobile, only next/previous links
+/// and optionally current page number.
 /// @type Boolean
 $pagination-mobile-items: false !default;
+
+/// If `false`, don't display current page number on mobile.
+/// @type Boolean
+$pagination-mobile-current-item: false !default;
 
 /// If `true`, arrows are added to the next and previous links of pagination.
 /// @type Boolean
@@ -79,6 +84,12 @@ $pagination-arrows: true !default;
       &:last-child,
       &:first-child {
         display: inline-block;
+      }
+
+      @if $pagination-mobile-current-item {
+        &.current {
+          display: inline-block;
+        }
       }
 
       @include breakpoint(medium) {

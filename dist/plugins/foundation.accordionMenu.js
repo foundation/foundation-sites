@@ -162,11 +162,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             },
             up: function () {
               $prevElement.attr('tabindex', -1).focus();
-              e.preventDefault();
+              return true;
             },
             down: function () {
               $nextElement.attr('tabindex', -1).focus();
-              e.preventDefault();
+              return true;
             },
             toggle: function () {
               if ($element.children('[data-submenu]').length) {
@@ -176,7 +176,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             closeAll: function () {
               _this.hideAll();
             },
-            handled: function () {
+            handled: function (preventDefault) {
+              if (preventDefault) {
+                e.preventDefault();
+              }
               e.stopImmediatePropagation();
             }
           });
@@ -229,15 +232,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         $target.addClass('is-active').attr({ 'aria-hidden': false }).parent('.is-accordion-submenu-parent').attr({ 'aria-expanded': true });
 
-        Foundation.Move(this.options.slideSpeed, $target, function () {
-          $target.slideDown(_this.options.slideSpeed, function () {
-            /**
-             * Fires when the menu is done opening.
-             * @event AccordionMenu#down
-             */
-            _this.$element.trigger('down.zf.accordionMenu', [$target]);
-          });
+        //Foundation.Move(this.options.slideSpeed, $target, function() {
+        $target.slideDown(_this.options.slideSpeed, function () {
+          /**
+           * Fires when the menu is done opening.
+           * @event AccordionMenu#down
+           */
+          _this.$element.trigger('down.zf.accordionMenu', [$target]);
         });
+        //});
       }
 
       /**
@@ -250,15 +253,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       key: 'up',
       value: function up($target) {
         var _this = this;
-        Foundation.Move(this.options.slideSpeed, $target, function () {
-          $target.slideUp(_this.options.slideSpeed, function () {
-            /**
-             * Fires when the menu is done collapsing up.
-             * @event AccordionMenu#up
-             */
-            _this.$element.trigger('up.zf.accordionMenu', [$target]);
-          });
+        //Foundation.Move(this.options.slideSpeed, $target, function(){
+        $target.slideUp(_this.options.slideSpeed, function () {
+          /**
+           * Fires when the menu is done collapsing up.
+           * @event AccordionMenu#up
+           */
+          _this.$element.trigger('up.zf.accordionMenu', [$target]);
         });
+        //});
 
         var $menus = $target.find('[data-submenu]').slideUp(0).addBack().attr('aria-hidden', true);
 

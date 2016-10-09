@@ -34,9 +34,7 @@ class AccordionMenu {
       'ARROW_UP': 'up',
       'ARROW_DOWN': 'down',
       'ARROW_LEFT': 'close',
-      'ESCAPE': 'closeAll',
-      'TAB': 'down',
-      'SHIFT_TAB': 'up'
+      'ESCAPE': 'closeAll'
     });
   }
 
@@ -127,6 +125,7 @@ class AccordionMenu {
           return;
         }
       });
+
       Foundation.Keyboard.handleKey(e, 'AccordionMenu', {
         open: function() {
           if ($target.is(':hidden')) {
@@ -143,11 +142,11 @@ class AccordionMenu {
           }
         },
         up: function() {
-          $prevElement.attr('tabindex', -1).focus();
+          $prevElement.focus();
           return true;
         },
         down: function() {
-          $nextElement.attr('tabindex', -1).focus();
+          $nextElement.focus();
           return true;
         },
         toggle: function() {
@@ -215,7 +214,7 @@ class AccordionMenu {
     $target.addClass('is-active').attr({'aria-hidden': false})
       .parent('.is-accordion-submenu-parent').attr({'aria-expanded': true});
 
-      Foundation.Move(this.options.slideSpeed, $target, function() {
+      //Foundation.Move(this.options.slideSpeed, $target, function() {
         $target.slideDown(_this.options.slideSpeed, function () {
           /**
            * Fires when the menu is done opening.
@@ -223,7 +222,7 @@ class AccordionMenu {
            */
           _this.$element.trigger('down.zf.accordionMenu', [$target]);
         });
-      });
+      //});
   }
 
   /**
@@ -233,7 +232,7 @@ class AccordionMenu {
    */
   up($target) {
     var _this = this;
-    Foundation.Move(this.options.slideSpeed, $target, function(){
+    //Foundation.Move(this.options.slideSpeed, $target, function(){
       $target.slideUp(_this.options.slideSpeed, function () {
         /**
          * Fires when the menu is done collapsing up.
@@ -241,7 +240,7 @@ class AccordionMenu {
          */
         _this.$element.trigger('up.zf.accordionMenu', [$target]);
       });
-    });
+    //});
 
     var $menus = $target.find('[data-submenu]').slideUp(0).addBack().attr('aria-hidden', true);
 

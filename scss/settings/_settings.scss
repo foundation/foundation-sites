@@ -20,16 +20,16 @@
 //  15. Drilldown
 //  16. Dropdown
 //  17. Dropdown Menu
-//  18. Flex Video
-//  19. Forms
-//  20. Label
-//  21. Media Object
-//  22. Menu
-//  23. Meter
-//  24. Off-canvas
-//  25. Orbit
-//  26. Pagination
-//  27. Progress Bar
+//  18. Forms
+//  19. Label
+//  20. Media Object
+//  21. Menu
+//  22. Meter
+//  23. Off-canvas
+//  24. Orbit
+//  25. Pagination
+//  26. Progress Bar
+//  27. Responsive Embed
 //  28. Reveal
 //  29. Slider
 //  30. Switch
@@ -160,6 +160,7 @@ $blockquote-padding: rem-calc(9 20 0 19);
 $blockquote-border: 1px solid $medium-gray;
 $cite-font-size: rem-calc(13);
 $cite-color: $dark-gray;
+$cite-pseudo-content: '\2014 \0020';
 $keystroke-font: $font-family-monospace;
 $keystroke-color: $black;
 $keystroke-background: $light-gray;
@@ -195,12 +196,13 @@ $input-error-font-weight: $global-weight-bold;
 
 $accordion-background: $white;
 $accordion-plusminus: true;
+$accordion-title-font-size: rem-calc(12);
 $accordion-item-color: foreground($accordion-background, $primary-color);
 $accordion-item-background-hover: $light-gray;
 $accordion-item-padding: 1.25rem 1rem;
 $accordion-content-background: $white;
 $accordion-content-border: 1px solid $light-gray;
-$accordion-content-color: foreground($accordion-background, $primary-color);
+$accordion-content-color: foreground($accordion-content-background, $body-font-color);
 $accordion-content-padding: 1rem;
 
 // 8. Accordion Menu
@@ -248,6 +250,8 @@ $button-sizes: (
   large: 1.25rem,
 );
 $button-opacity-disabled: 0.25;
+$button-background-hover-lightness: -20%;
+$button-hollow-hover-lightness: -50%;
 
 // 12. Button Group
 // ----------------
@@ -313,14 +317,7 @@ $dropdownmenu-min-width: 200px;
 $dropdownmenu-background: $white;
 $dropdownmenu-border: 1px solid $medium-gray;
 
-// 18. Flex Video
-// --------------
-
-$flexvideo-margin-bottom: rem-calc(16);
-$flexvideo-ratio: 4 by 3;
-$flexvideo-ratio-widescreen: 16 by 9;
-
-// 19. Forms
+// 18. Forms
 // ---------
 
 $fieldset-border: 1px solid $medium-gray;
@@ -346,6 +343,7 @@ $input-color: $black;
 $input-placeholder-color: $medium-gray;
 $input-font-family: inherit;
 $input-font-size: rem-calc(16);
+$input-font-weight: $global-weight-normal;
 $input-background: $white;
 $input-background-focus: $white;
 $input-background-disabled: $light-gray;
@@ -358,7 +356,7 @@ $input-transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
 $input-number-spinners: true;
 $input-radius: $global-radius;
 
-// 20. Label
+// 19. Label
 // ---------
 
 $label-background: $primary-color;
@@ -367,7 +365,7 @@ $label-font-size: 0.8rem;
 $label-padding: 0.33333rem 0.5rem;
 $label-radius: $global-radius;
 
-// 21. Media Object
+// 20. Media Object
 // ----------------
 
 $mediaobject-margin-bottom: $global-margin;
@@ -384,7 +382,7 @@ $menu-item-color-active: $white;
 $menu-item-background-active: map-get($foundation-palette, primary);
 $menu-icon-spacing: 0.25rem;
 
-// 23. Meter
+// 22. Meter
 // ---------
 
 $meter-height: 1rem;
@@ -394,7 +392,7 @@ $meter-fill-good: $success-color;
 $meter-fill-medium: $warning-color;
 $meter-fill-bad: $alert-color;
 
-// 24. Off-canvas
+// 23. Off-canvas
 // --------------
 
 $offcanvas-size: 250px;
@@ -408,7 +406,7 @@ $offcanvas-vertical-size: 250px;
 $maincontent-class: 'off-canvas-content';
 $maincontent-shadow: 0 0 10px rgba($black, 0.5);
 
-// 25. Orbit
+// 24. Orbit
 // ---------
 
 $orbit-bullet-background: $medium-gray;
@@ -423,7 +421,7 @@ $orbit-control-background-hover: rgba($black, 0.5);
 $orbit-control-padding: 1rem;
 $orbit-control-zindex: 10;
 
-// 26. Pagination
+// 25. Pagination
 // --------------
 
 $pagination-font-size: rem-calc(14);
@@ -438,9 +436,10 @@ $pagination-item-color-current: foreground($pagination-item-background-current);
 $pagination-item-color-disabled: $medium-gray;
 $pagination-ellipsis-color: $black;
 $pagination-mobile-items: false;
+$pagination-mobile-current-item: false;
 $pagination-arrows: true;
 
-// 27. Progress Bar
+// 26. Progress Bar
 // ----------------
 
 $progress-height: 1rem;
@@ -448,6 +447,13 @@ $progress-background: $medium-gray;
 $progress-margin-bottom: $global-margin;
 $progress-meter-background: $primary-color;
 $progress-radius: $global-radius;
+
+// 27. Responsive Embed
+// --------------
+
+$responsive-embed-margin-bottom: rem-calc(16);
+$responsive-embed-ratio: 4 by 3;
+$responsive-embed-ratio-widescreen: 16 by 9;
 
 // 28. Reveal
 // ----------
@@ -507,6 +513,7 @@ $table-stripe: even;
 $table-head-background: smart-scale($table-background, $table-color-scale / 2);
 $table-foot-background: smart-scale($table-background, $table-color-scale);
 $table-head-font-color: $body-font-color;
+$table-foot-font-color: $body-font-color;
 $show-header-for-stacked: false;
 
 // 32. Tabs

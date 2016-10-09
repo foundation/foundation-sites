@@ -6,6 +6,7 @@
  * Tooltip module.
  * @module foundation.tooltip
  * @requires foundation.util.box
+ * @requires foundation.util.mediaQuery
  * @requires foundation.util.triggers
  */
 
@@ -35,7 +36,7 @@ class Tooltip {
   _init() {
     var elemId = this.$element.attr('aria-describedby') || Foundation.GetYoDigits(6, 'tooltip');
 
-    this.options.positionClass = this._getPositionClass(this.$element);
+    this.options.positionClass = this.options.positionClass || this._getPositionClass(this.$element);
     this.options.tipText = this.options.tipText || this.$element.attr('title');
     this.template = this.options.template ? $(this.options.template) : this._buildTemplate(elemId);
 
@@ -55,7 +56,7 @@ class Tooltip {
       'data-yeti-box': elemId,
       'data-toggle': elemId,
       'data-resize': elemId
-    }).addClass(this.triggerClass);
+    }).addClass(this.options.triggerClass);
 
     //helper variables to track movement on collisions
     this.usedPositions = [];
@@ -170,7 +171,7 @@ class Tooltip {
    * @function
    */
   show() {
-    if (this.options.showOn !== 'all' && !Foundation.MediaQuery.atLeast(this.options.showOn)) {
+    if (this.options.showOn !== 'all' && !Foundation.MediaQuery.is(this.options.showOn)) {
       // console.error('The screen is too small to display this tooltip');
       return false;
     }
@@ -255,7 +256,7 @@ class Tooltip {
       })
       .on('mouseleave.zf.tooltip', function(e) {
         clearTimeout(_this.timeout);
-        if (!isFocus || (!_this.isClick && _this.options.clickOpen)) {
+        if (!isFocus || (_this.isClick && !_this.options.clickOpen)) {
           _this.hide();
         }
       });
@@ -265,7 +266,7 @@ class Tooltip {
       this.$element.on('mousedown.zf.tooltip', function(e) {
         e.stopImmediatePropagation();
         if (_this.isClick) {
-          _this.hide();
+          //_this.hide();
           // _this.isClick = false;
         } else {
           _this.isClick = true;
@@ -273,6 +274,11 @@ class Tooltip {
             _this.show();
           }
         }
+      });
+    } else {
+      this.$element.on('mousedown.zf.tooltip', function(e) {
+        e.stopImmediatePropagation();
+        _this.isClick = true;
       });
     }
 
@@ -292,11 +298,12 @@ class Tooltip {
     this.$element
       .on('focus.zf.tooltip', function(e) {
         isFocus = true;
-        // console.log(_this.isClick);
         if (_this.isClick) {
+          // If we're not showing open on clicks, we need to pretend a click-launched focus isn't
+          // a real focus, otherwise on hover and come back we get bad behavior
+          if(!_this.options.clickOpen) { isFocus = false; }
           return false;
         } else {
-          // $(window)
           _this.show();
         }
       })

@@ -242,13 +242,15 @@ The `.collapse` class lets you remove column gutters (padding).
 
 There are times when you won't want each media query to be collapsed or uncollapsed. In this case, use the media query size you want and collapse or uncollapse and add that to your row element. Example shows no gutter at small media size and then adds the gutter to columns at medium.
 
+The `.is-collapse-child` class removes negative margins from nested row under collapsed parent.
+
 ```html
-<div class="row medium-uncollapse large-collapse">
+<div class="row small-collapse medium-uncollapse">
   <div class="small-6 columns">
-    Removes gutter at large media query
+    Removes gutter at small media query and adds at medium.
   </div>
   <div class="small-6 columns">
-    Removes gutter at large media query
+    Removes gutter at small media query and adds at medium.
   </div>
 </div>
 ```
