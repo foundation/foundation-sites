@@ -43,6 +43,22 @@ $select-radius: $global-radius !default;
     padding-#{$global-right}: ($form-spacing * 1.5);
   }
 
+  @if has-value($input-transition) {
+    transition: $input-transition;
+  }
+
+  // Focus state
+  &:focus {
+    border: $input-border-focus;
+    background-color: $input-background-focus;
+    outline: none;
+    box-shadow: $input-shadow-focus;
+
+    @if has-value($input-transition) {
+      transition: $input-transition;
+    }
+  }
+  
   // Disabled state
   &:disabled {
     background-color: $input-background-disabled;
