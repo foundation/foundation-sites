@@ -25,19 +25,35 @@
 }
 
 /// Set the gutters on a column
-/// @param {Number|Keyword} $gutters [small] - Spacing between columns or breakpoint name.
+/// @param {Number|Keyword} $gutter [auto]
+///   Spacing between columns, accepts multiple values:
+///   - A single value will make the gutter that exact size.
+///   - A breakpoint name will make the gutter the corresponding size in the $gutters map.
+///   - "auto" will make the gutter responsive, using the $gutters map values.
 /// @param {Number|Map} $gutters [$grid-column-gutter] - Gutter map or single value to use. Responsive gutter settings by default.
 @mixin grid-column-gutter(
-  $gutter: $-zf-zero-breakpoint,
+  $gutter: auto,
   $gutters: $grid-column-gutter
 ) {
-  @if type-of($gutter) == 'string' {
-    $gutter: grid-column-gutter($gutter, $gutters);
-  }
-  $padding: rem-calc($gutter) / 2;
+  @if $gutter == auto and type-of($gutters) == 'map' {
+    // "auto"
+    @each $value, $breakpoint in $gutters {
+      @include breakpoint($breakpoint) {
+        @include grid-column-gutter($value);
+      }
+    }
+  } @else {
+    // breakpoint name
+    @if type-of($gutter) == 'string' {
+      $gutter: grid-column-gutter($gutter, $gutters);
+    }
 
-  padding-left: $padding;
-  padding-right: $padding;
+    // single value
+    $padding: rem-calc($gutter) / 2;
+
+    padding-left: $padding;
+    padding-right: $padding;
+  }
 }
 
 /// Collapse the gutters on a column by removing the padding. **Note:** only use this mixin within a breakpoint. To collapse a column's gutters on all screen sizes, use the `$gutter` parameter of the `grid-column()` mixin instead.
@@ -55,8 +71,11 @@
 
 /// Shorthand for `grid-column-gutter()`.
 /// @alias grid-column-gutter
-@mixin grid-col-gutter($gutters) {
-  @include grid-column-gutter($gutters);
+@mixin grid-col-gutter(
+  $gutter: auto,
+  $gutters: $grid-column-gutter
+) {
+  @include grid-column-gutter($gutter, $gutters);
 }
 
 /// Shorthand for `grid-column-collapse()`.

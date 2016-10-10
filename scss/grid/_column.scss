@@ -61,9 +61,7 @@
   float: $global-left;
 
   // Gutters
-  @include -zf-each-breakpoint {
-    @include grid-column-gutter($-zf-size, $gutters);
-  }
+  @include grid-column-gutter($gutters: $gutters);
 
   // Last column alignment
   @if $grid-column-align-edge {

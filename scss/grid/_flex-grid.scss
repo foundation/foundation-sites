@@ -82,9 +82,7 @@
   @include flex-grid-size($columns);
 
   // Gutters
-  @include -zf-each-breakpoint {
-    @include grid-column-gutter($-zf-size, $gutters);
-  }
+  @include grid-column-gutter($gutters: $gutters);
 
   // fixes recent Chrome version not limiting child width
   // https://stackoverflow.com/questions/34934586/white-space-nowrap-and-flexbox-did-not-work-in-chrome
