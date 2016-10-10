@@ -44,13 +44,21 @@ $buttongroup-expand-max: 6 !default;
     margin-#{$global-right}: $buttongroup-spacing;
     margin-bottom: $buttongroup-spacing;
     font-size: map-get($button-sizes, default);
+    border-radius: 0;
 
     @if $global-flexbox {
       flex: 0 0 auto;
     }
 
+    &:first-child {
+      border-top-#{$global-left}-radius: $global-radius;
+      border-bottom-#{$global-left}-radius: $global-radius; 
+    }
+
     &:last-child {
       margin-#{$global-right}: 0;
+      border-top-#{$global-right}-radius: $global-radius;
+      border-bottom-#{$global-right}-radius: $global-radius;
     }
   }
 }
@@ -103,6 +111,8 @@ $buttongroup-expand-max: 6 !default;
   }
 
   #{$selector} {
+    border-radius: 0;
+
     @if $global-flexbox {
       flex: 0 0 100%;
     }
@@ -110,8 +120,15 @@ $buttongroup-expand-max: 6 !default;
       width: 100%;
     }
 
+    &:first-child{
+      border-top-#{$global-left}-radius: $global-radius;
+      border-top-#{$global-right}-radius: $global-radius; 
+    }
+
     &:last-child {
       margin-bottom: 0;
+      border-bottom-#{$global-left}-radius: $global-radius;
+      border-bottom-#{$global-right}-radius: $global-radius;
     }
   }
 }
@@ -130,6 +147,18 @@ $buttongroup-expand-max: 6 !default;
       width: auto;
     }
     margin-bottom: 0;
+
+    &:first-child {
+      border-top-#{$global-left}-radius: $global-radius;
+      border-top-#{$global-right}-radius: 0;
+      border-bottom-#{$global-left}-radius: $global-radius; 
+    }
+
+    &:last-child {
+      border-top-#{$global-right}-radius: $global-radius;
+      border-bottom-#{$global-right}-radius: $global-radius;
+      border-bottom-#{$global-left}-radius: 0;
+    }
   }
 }
 
