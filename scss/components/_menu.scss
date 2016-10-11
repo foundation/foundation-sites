@@ -83,6 +83,10 @@ $menu-icon-spacing: 0.25rem !default;
     display: table;
     table-layout: fixed;
   }
+
+  > li:first-child:last-child {
+    width: 100%;
+  }
 }
 
 /// Sets the direction of a Menu.
@@ -234,10 +238,6 @@ $menu-icon-spacing: 0.25rem !default;
     // Even-width
     &.expanded {
       @include menu-expand;
-
-      > li:first-child:last-child {
-        width: 100%;
-      }
     }
 
     &.vertical {
@@ -253,10 +253,6 @@ $menu-icon-spacing: 0.25rem !default;
             // Even-width
             &.expanded {
               @include menu-expand;
-
-              > li:first-child:last-child {
-                width: 100%;
-              }
             }
           }
 
