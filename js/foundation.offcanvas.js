@@ -173,16 +173,15 @@ class OffCanvas {
      * Fires when the off-canvas menu opens.
      * @event OffCanvas#opened
      */
-    Foundation.Move(this.options.transitionTime, this.$element, function() {
-      $('[data-off-canvas-wrapper]').addClass('is-off-canvas-open is-open-'+ _this.options.position);
 
-      _this.$element
-        .addClass('is-open')
+    var $wrapper = $('[data-off-canvas-wrapper]');
+    $wrapper.addClass('is-off-canvas-open is-open-'+ _this.options.position);
+
+    _this.$element.addClass('is-open')
 
       // if (_this.options.isSticky) {
       //   _this._stick();
       // }
-    });
 
     this.$triggers.attr('aria-expanded', 'true');
     this.$element.attr('aria-hidden', 'false')
@@ -197,17 +196,21 @@ class OffCanvas {
     }
 
     if (this.options.autoFocus) {
-      this.$element.attr('tabindex', '-1');
-      this.$element.focus();
-      
-      /*this.$element.one(Foundation.transitionend(this.$element), function() {
-        _this.$element.focus();
-      });*/
+      $wrapper.one(Foundation.transitionend($wrapper), function() {
+        if(_this.$element.hasClass('is-open')) { // handle double clicks
+          _this.$element.attr('tabindex', '-1');
+          _this.$element.focus();
+        }
+      });
     }
 
     if (this.options.trapFocus) {
-      this.$element.attr('tabindex', '-1');
-      this._trapFocus();
+      $wrapper.one(Foundation.transitionend($wrapper), function() {
+        if(_this.$element.hasClass('is-open')) { // handle double clicks
+          _this.$element.attr('tabindex', '-1');
+          _this.trapFocus();
+        }
+      });
     }
   }
 
