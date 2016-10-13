@@ -176,7 +176,7 @@
         break;
       case 'left bottom':
         return {
-          left: $anchorDims.offset.left - ($eleDims.width + hOffset),
+          left: $anchorDims.offset.left,
           top: $anchorDims.offset.top + $anchorDims.height
         };
         break;
@@ -188,7 +188,7 @@
         break;
       default:
         return {
-          left: Foundation.rtl() ? $anchorDims.offset.left - $eleDims.width + $anchorDims.width : $anchorDims.offset.left,
+          left: Foundation.rtl() ? $anchorDims.offset.left - $eleDims.width + $anchorDims.width : $anchorDims.offset.left + hOffset,
           top: $anchorDims.offset.top + $anchorDims.height + vOffset
         };
     }

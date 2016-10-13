@@ -22,7 +22,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @param {jQuery} element - jQuery object to make into an accordion menu.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-
     function AccordionMenu(element, options) {
       _classCallCheck(this, AccordionMenu);
 
@@ -41,9 +40,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         'ARROW_UP': 'up',
         'ARROW_DOWN': 'down',
         'ARROW_LEFT': 'close',
-        'ESCAPE': 'closeAll',
-        'TAB': 'down',
-        'SHIFT_TAB': 'up'
+        'ESCAPE': 'closeAll'
       });
     }
 
@@ -143,6 +140,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               return;
             }
           });
+
           Foundation.Keyboard.handleKey(e, 'AccordionMenu', {
             open: function () {
               if ($target.is(':hidden')) {
@@ -161,11 +159,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               }
             },
             up: function () {
-              $prevElement.attr('tabindex', -1).focus();
+              $prevElement.focus();
               return true;
             },
             down: function () {
-              $nextElement.attr('tabindex', -1).focus();
+              $nextElement.focus();
               return true;
             },
             toggle: function () {
