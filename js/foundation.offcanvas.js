@@ -259,7 +259,7 @@ class OffCanvas {
    * @fires OffCanvas#closed
    */
   close(cb) {
-    if (!this.$element.hasClass('is-open') || this.isRevealed) { return; }
+    if (!(this.$element.hasClass('is-open') || this.isRevealed)) { return; }
 
     var _this = this;
 
