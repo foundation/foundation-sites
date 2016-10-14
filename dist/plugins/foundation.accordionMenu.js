@@ -128,9 +128,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               if ($(this).is(':first-child')) {
                 // is first element of sub menu
                 $prevElement = $element.parents('li').first().find('a').first();
-              } else if ($prevElement.children('[data-submenu]:visible').length) {
+              } else if ($prevElement.parents('li').first().children('[data-submenu]:visible').length) {
                 // if previous element has open sub menu
-                $prevElement = $prevElement.find('li:last-child').find('a').first();
+                $prevElement = $prevElement.parents('li').find('li:last-child').find('a').first();
               }
               if ($(this).is(':last-child')) {
                 // is last element of sub menu

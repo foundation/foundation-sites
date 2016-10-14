@@ -296,7 +296,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.$element.trigger('open.zf.reveal');
 
         if (this.isMobile) {
-          //this.originalScrollPos = window.pageYOffset;
+          this.originalScrollPos = window.pageYOffset;
           $('html, body').addClass('is-reveal-open');
         } else {
           $('body').addClass('is-reveal-open');
@@ -444,10 +444,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         function finishUp() {
           if (_this.isMobile) {
             $('html, body').removeClass('is-reveal-open');
-            //if(_this.originalScrollPos) {
-            //  $('body').scrollTop(_this.originalScrollPos);
-            //  _this.originalScrollPos = null;
-            //}
+            if (_this.originalScrollPos) {
+              $('body').scrollTop(_this.originalScrollPos);
+              _this.originalScrollPos = null;
+            }
           } else {
             $('body').removeClass('is-reveal-open');
           }

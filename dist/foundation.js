@@ -2,7 +2,7 @@
 
   "use strict";
 
-  var FOUNDATION_VERSION = '6.2.4-rc1';
+  var FOUNDATION_VERSION = '6.2.4-rc2';
 
   // Global Foundation object
   // This is attached to the window, or used as a module for AMD/Browserify
@@ -2744,9 +2744,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               if ($(this).is(':first-child')) {
                 // is first element of sub menu
                 $prevElement = $element.parents('li').first().find('a').first();
-              } else if ($prevElement.children('[data-submenu]:visible').length) {
+              } else if ($prevElement.parents('li').first().children('[data-submenu]:visible').length) {
                 // if previous element has open sub menu
-                $prevElement = $prevElement.find('li:last-child').find('a').first();
+                $prevElement = $prevElement.parents('li').find('li:last-child').find('a').first();
               }
               if ($(this).is(':last-child')) {
                 // is last element of sub menu
@@ -3859,13 +3859,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this._events();
       }
     }, {
-      key: '_events',
+      key: '_isVertical',
+      value: function _isVertical() {
+        return this.$tabs.css('display') === 'block';
+      }
 
       /**
        * Adds event listeners to elements within the menu
        * @private
        * @function
        */
+
+    }, {
+      key: '_events',
       value: function _events() {
         var _this = this,
             hasTouch = 'ontouchstart' in window || typeof window.ontouchstart !== 'undefined',
@@ -3987,17 +3993,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           };
 
           if (isTab) {
-            if (_this.$element.hasClass(_this.options.verticalClass)) {
+            if (_this._isVertical()) {
               // vertical menu
-              if (_this.options.alignment === 'left') {
-                // left aligned
-                $.extend(functions, {
-                  down: nextSibling,
-                  up: prevSibling,
-                  next: openSub,
-                  previous: closeSub
-                });
-              } else {
+              if (Foundation.rtl()) {
                 // right aligned
                 $.extend(functions, {
                   down: nextSibling,
@@ -4005,31 +4003,50 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   next: closeSub,
                   previous: openSub
                 });
+              } else {
+                // left aligned
+                $.extend(functions, {
+                  down: nextSibling,
+                  up: prevSibling,
+                  next: openSub,
+                  previous: closeSub
+                });
               }
             } else {
               // horizontal menu
-              $.extend(functions, {
-                next: nextSibling,
-                previous: prevSibling,
-                down: openSub,
-                up: closeSub
-              });
+              if (Foundation.rtl()) {
+                // right aligned
+                $.extend(functions, {
+                  next: prevSibling,
+                  previous: nextSibling,
+                  down: openSub,
+                  up: closeSub
+                });
+              } else {
+                // left aligned
+                $.extend(functions, {
+                  next: nextSibling,
+                  previous: prevSibling,
+                  down: openSub,
+                  up: closeSub
+                });
+              }
             }
           } else {
             // not tabs -> one sub
-            if (_this.options.alignment === 'left') {
-              // left aligned
-              $.extend(functions, {
-                next: openSub,
-                previous: closeSub,
-                down: nextSibling,
-                up: prevSibling
-              });
-            } else {
+            if (Foundation.rtl()) {
               // right aligned
               $.extend(functions, {
                 next: closeSub,
                 previous: openSub,
+                down: nextSibling,
+                up: prevSibling
+              });
+            } else {
+              // left aligned
+              $.extend(functions, {
+                next: openSub,
+                previous: closeSub,
                 down: nextSibling,
                 up: prevSibling
               });
@@ -5290,15 +5307,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
          * Fires when the off-canvas menu opens.
          * @event OffCanvas#opened
          */
-        Foundation.Move(this.options.transitionTime, this.$element, function () {
-          $('[data-off-canvas-wrapper]').addClass('is-off-canvas-open is-open-' + _this.options.position);
 
-          _this.$element.addClass('is-open');
+        var $wrapper = $('[data-off-canvas-wrapper]');
+        $wrapper.addClass('is-off-canvas-open is-open-' + _this.options.position);
 
-          // if (_this.options.isSticky) {
-          //   _this._stick();
-          // }
-        });
+        _this.$element.addClass('is-open');
+
+        // if (_this.options.isSticky) {
+        //   _this._stick();
+        // }
 
         this.$triggers.attr('aria-expanded', 'true');
         this.$element.attr('aria-hidden', 'false').trigger('opened.zf.offcanvas');
@@ -5312,17 +5329,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
 
         if (this.options.autoFocus) {
-          this.$element.attr('tabindex', '-1');
-          this.$element.focus();
-
-          /*this.$element.one(Foundation.transitionend(this.$element), function() {
-            _this.$element.focus();
-          });*/
+          $wrapper.one(Foundation.transitionend($wrapper), function () {
+            if (_this.$element.hasClass('is-open')) {
+              // handle double clicks
+              _this.$element.attr('tabindex', '-1');
+              _this.$element.focus();
+            }
+          });
         }
 
         if (this.options.trapFocus) {
-          this.$element.attr('tabindex', '-1');
-          this._trapFocus();
+          $wrapper.one(Foundation.transitionend($wrapper), function () {
+            if (_this.$element.hasClass('is-open')) {
+              // handle double clicks
+              _this.$element.attr('tabindex', '-1');
+              _this.trapFocus();
+            }
+          });
         }
       }
 
@@ -6642,7 +6665,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.$element.trigger('open.zf.reveal');
 
         if (this.isMobile) {
-          //this.originalScrollPos = window.pageYOffset;
+          this.originalScrollPos = window.pageYOffset;
           $('html, body').addClass('is-reveal-open');
         } else {
           $('body').addClass('is-reveal-open');
@@ -6790,10 +6813,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         function finishUp() {
           if (_this.isMobile) {
             $('html, body').removeClass('is-reveal-open');
-            //if(_this.originalScrollPos) {
-            //  $('body').scrollTop(_this.originalScrollPos);
-            //  _this.originalScrollPos = null;
-            //}
+            if (_this.originalScrollPos) {
+              $('body').scrollTop(_this.originalScrollPos);
+              _this.originalScrollPos = null;
+            }
           } else {
             $('body').removeClass('is-reveal-open');
           }
