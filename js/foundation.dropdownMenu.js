@@ -183,14 +183,14 @@ class DropdownMenu {
 
       if (isTab) {
         if (_this._isVertical()) { // vertical menu
-          if (Foundation.rtl()) { // left aligned
+          if (Foundation.rtl()) { // right aligned
             $.extend(functions, {
               down: nextSibling,
               up: prevSibling,
               next: closeSub,
               previous: openSub
             });
-          } else { // right aligned
+          } else { // left aligned
             $.extend(functions, {
               down: nextSibling,
               up: prevSibling,
@@ -199,14 +199,14 @@ class DropdownMenu {
             });
           }
         } else { // horizontal menu
-          if (Foundation.rtl()) { // left aligned
+          if (Foundation.rtl()) { // right aligned
             $.extend(functions, {
               next: prevSibling,
               previous: nextSibling,
               down: openSub,
               up: closeSub
             });
-          } else {
+          } else { // left aligned
             $.extend(functions, {
               next: nextSibling,
               previous: prevSibling,
@@ -216,17 +216,17 @@ class DropdownMenu {
           }
         }
       } else { // not tabs -> one sub
-        if (_this.options.alignment === 'left') { // left aligned
-          $.extend(functions, {
-            next: openSub,
-            previous: closeSub,
-            down: nextSibling,
-            up: prevSibling
-          });
-        } else { // right aligned
+        if (Foundation.rtl()) { // right aligned
           $.extend(functions, {
             next: closeSub,
             previous: openSub,
+            down: nextSibling,
+            up: prevSibling
+          });
+        } else { // left aligned
+          $.extend(functions, {
+            next: openSub,
+            previous: closeSub,
             down: nextSibling,
             up: prevSibling
           });
