@@ -89,7 +89,7 @@ $card-margin: $global-margin !default;
 }
 
 /// Adds styles for a card section.
-@mixin card-content(
+@mixin card-section(
   $padding: $card-padding
 ) {
   padding: $padding;
@@ -112,7 +112,7 @@ $card-margin: $global-margin !default;
     @include card-divider;
   }
 
-  .card-content {
-    @include card-content;
+  .card-section {
+    @include card-section;
   }
 }
