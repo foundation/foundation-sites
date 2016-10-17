@@ -42,6 +42,7 @@ class Tabs {
   _init() {
     var _this = this;
 
+    this.$element.attr({'role': 'tablist'});
     this.$tabTitles = this.$element.find(`.${this.options.linkClass}`);
     this.$tabContent = $(`[data-tabs-content="${this.$element[0].id}"]`);
 
@@ -94,10 +95,10 @@ class Tabs {
     this._addKeyHandler();
     this._addClickHandler();
     this._setHeightMqHandler = null;
-    
+
     if (this.options.matchHeight) {
       this._setHeightMqHandler = this._setHeight.bind(this);
-      
+
       $(window).on('changed.zf.mediaquery', this._setHeightMqHandler);
     }
   }
@@ -132,7 +133,7 @@ class Tabs {
 
     this.$tabTitles.off('keydown.zf.tabs').on('keydown.zf.tabs', function(e){
       if (e.which === 9) return;
-      
+
 
       var $element = $(this),
         $elements = $element.parent('ul').children('li'),
