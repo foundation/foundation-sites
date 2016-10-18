@@ -240,7 +240,8 @@ class Abide {
         validated = false,
         customValidator = true,
         validator = $el.attr('data-validator'),
-        equalTo = true;
+        equalTo = true,
+        euqalToElement;
 
     // don't validate ignored inputs or hidden inputs
     if ($el.is('[data-abide-ignore]') || $el.is('[type="hidden"]')) {
@@ -277,6 +278,19 @@ class Abide {
 
     var goodToGo = [clearRequire, validated, customValidator, equalTo].indexOf(false) === -1;
     var message = (goodToGo ? 'valid' : 'invalid') + '.zf.abide';
+
+    if (goodToGo) {
+      // Re-validate inputs that depend on this one with equalto
+      const dependentElements = this.$element.find(`[data-equalto="${$el.attr('id')}"]`);
+      if (dependentElements.length) {
+        let _this = this;
+        dependentElements.each(function() {
+          if ($(this).val()) {
+            _this.validateInput($(this));
+          }
+        });
+      }
+    }
 
     this[goodToGo ? 'removeErrorClasses' : 'addErrorClasses']($el);
 
