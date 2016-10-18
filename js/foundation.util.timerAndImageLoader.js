@@ -59,12 +59,11 @@ function onImagesLoaded(images, callback){
   }
 
   images.each(function() {
-    if (this.complete) {
+    // Check if image is loaded
+    if (this.complete || (this.readyState === 4) || (this.readyState === 'complete')) {
       singleImageLoaded();
     }
-    else if (typeof this.naturalWidth !== 'undefined' && this.naturalWidth > 0) {
-      singleImageLoaded();
-    }
+    // Force load the image
     else {
       $(this).one('load', function() {
         singleImageLoaded();
