@@ -5,6 +5,8 @@
 /**
  * Equalizer module.
  * @module foundation.equalizer
+ * @requires foundation.util.mediaQuery
+ * @requires foundation.util.timerAndImageLoader if equalizer contains images
  */
 
 class Equalizer {
@@ -285,7 +287,7 @@ Equalizer.defaults = {
    * @option
    * @example true
    */
-  equalizeOnStack: true,
+  equalizeOnStack: false,
   /**
    * Enable height equalization row by row.
    * @option

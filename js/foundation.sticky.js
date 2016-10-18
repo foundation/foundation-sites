@@ -47,6 +47,10 @@ class Sticky {
     this.scrollCount = this.options.checkEvery;
     this.isStuck = false;
     $(window).one('load.zf.sticky', function(){
+      //We calculate the container height to have correct values for anchor points offset calculation.
+      _this.containerHeight = _this.$element.css("display") == "none" ? 0 : _this.$element[0].getBoundingClientRect().height;
+      _this.$container.css('height', _this.containerHeight);
+      _this.elemHeight = _this.containerHeight;
       if(_this.options.anchor !== ''){
         _this.$anchor = $('#' + _this.options.anchor);
       }else{
@@ -289,9 +293,14 @@ class Sticky {
     });
     this.elemHeight = newContainerHeight;
 
-  	if (this.isStuck) {
-  		this.$element.css({"left":this.$container.offset().left + parseInt(comp['padding-left'], 10)});
-  	}
+    if (this.isStuck) {
+      this.$element.css({"left":this.$container.offset().left + parseInt(comp['padding-left'], 10)});
+    } else {
+      if (this.$element.hasClass('is-at-bottom')) {
+        var anchorPt = (this.points ? this.points[1] - this.$container.offset().top : this.anchorHeight) - this.elemHeight;
+        this.$element.css('top', anchorPt);
+      }
+    }
 
     this._setBreakPoints(newContainerHeight, function() {
       if (cb) { cb(); }

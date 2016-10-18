@@ -85,6 +85,9 @@ dropdown_menu:
 
 equalizer:
   js: equalizer
+  js_utils:
+    - mediaQuery
+    - timerAndImageLoader
 
 flex_video:
   sass: flex-video
