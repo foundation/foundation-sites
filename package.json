@@ -43,7 +43,7 @@
     "gulp-add-src": "^0.2.0",
     "gulp-autoprefixer": "^2.3.1",
     "gulp-babel": "^6.1.1",
-    "gulp-cache-bust": "^1.0.2",
+    "gulp-cache-bust": "1.0.2",
     "gulp-concat": "^2.4.3",
     "gulp-cssnano": "^2.1.0",
     "gulp-eslint": "^2.0.0",
