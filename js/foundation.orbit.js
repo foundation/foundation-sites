@@ -43,6 +43,8 @@ class Orbit {
   * @private
   */
   _init() {
+    this._detachEvents();
+
     this.$wrapper = this.$element.find(`.${this.options.containerClass}`);
     this.$slides = this.$element.find(`.${this.options.slideClass}`);
     var $images = this.$element.find('img'),
@@ -216,7 +218,7 @@ class Orbit {
           _this.changeSlide(ltr, $slide, idx);
         });
       }
-      
+
       if (this.options.accessible) {
         this.$wrapper.add(this.$bullets).on('keydown.zf.orbit', function(e) {
           // handle keyboard event with keyboard util
@@ -234,6 +236,44 @@ class Orbit {
             }
           });
         });
+      }
+    }
+  }
+
+  /**
+   * Detaches event listeners
+   */
+  _detachEvents() {
+    // Don't do anything if there are no slides (first run)
+    if (typeof this.$slides == "undefined") {
+      return;
+    }
+
+    if (this.$slides.length > 1) {
+      // Remove old events
+      this.$element.off('.zf.orbit').find('*').off('.zf.orbit')
+
+      // Restart timer if autoPlay is enabled
+      if (this.options.autoPlay) {
+        this.timer.restart();
+      }
+
+      // Reset all sliddes
+      this.$slides.each(function(el) {
+        $(el).removeClass('is-active is-active is-in')
+          .removeAttr('aria-live')
+          .hide();
+      });
+
+      // Show the first slide
+      this.$slides.first().addClass('is-active').show();
+
+      // Triggers when the slide has finished animating
+      this.$element.trigger('slidechange.zf.orbit', [this.$slides.first()]);
+
+      // Select first bullet if bullets are present
+      if (this.options.bullets) {
+        this._updateBullets(0);
       }
     }
   }
@@ -273,7 +313,7 @@ class Orbit {
       * @event Orbit#beforeslidechange
       */
       this.$element.trigger('beforeslidechange.zf.orbit', [$curSlide, $newSlide]);
-      
+
       if (this.options.bullets) {
         idx = idx || this.$slides.index($newSlide); //grab index to update bullets
         this._updateBullets(idx);
