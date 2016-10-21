@@ -21,7 +21,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @param {Object} element - jQuery object to add the trigger to.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-
     function Toggler(element, options) {
       _classCallCheck(this, Toggler);
 

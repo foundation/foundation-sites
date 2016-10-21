@@ -83,7 +83,7 @@ Many components can also be colored with four other colors: secondary, alert, su
   </div>
 </div>
 
-If you're using the Sass version of Foundation, it's possible to edit the default color palette, by changing the `$foundation-palette` variable in your settings file. The only required color is one named "primary". The names used in the palette will be output as CSS classes.
+If you're using the Sass version of Foundation, it's possible to edit the default color palette, by changing the `$foundation-palette` variable in your settings file. The only required colors are ones named "primary" and "alert". The names used in the palette will be output as CSS classes.
 
 ```scss
 $foundation-palette: (

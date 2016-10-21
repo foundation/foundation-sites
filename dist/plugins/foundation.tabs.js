@@ -21,7 +21,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @param {jQuery} element - jQuery object to make into tabs.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-
     function Tabs(element, options) {
       _classCallCheck(this, Tabs);
 

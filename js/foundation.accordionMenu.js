@@ -47,7 +47,7 @@ class AccordionMenu {
   _init() {
     this.$element.find('[data-submenu]').not('.is-active').slideUp(0);//.find('a').css('padding-left', '1rem');
     this.$element.attr({
-      'role': 'tablist',
+      'role': 'menu',
       'aria-multiselectable': this.options.multiOpen
     });
 
@@ -61,13 +61,13 @@ class AccordionMenu {
       $elem.attr({
         'aria-controls': subId,
         'aria-expanded': isActive,
-        'role': 'tab',
+        'role': 'menuitem',
         'id': linkId
       });
       $sub.attr({
         'aria-labelledby': linkId,
         'aria-hidden': !isActive,
-        'role': 'tabpanel',
+        'role': 'menu',
         'id': subId
       });
     });
@@ -115,8 +115,8 @@ class AccordionMenu {
           }
           if ($(this).is(':first-child')) { // is first element of sub menu
             $prevElement = $element.parents('li').first().find('a').first();
-          } else if ($prevElement.children('[data-submenu]:visible').length) { // if previous element has open sub menu
-            $prevElement = $prevElement.find('li:last-child').find('a').first();
+          } else if ($prevElement.parents('li').first().children('[data-submenu]:visible').length) { // if previous element has open sub menu
+            $prevElement = $prevElement.parents('li').find('li:last-child').find('a').first();
           }
           if ($(this).is(':last-child')) { // is last element of sub menu
             $nextElement = $element.parents('li').first().next('li').find('a').first();

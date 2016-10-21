@@ -21,7 +21,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @param {Object} element - jQuery object to add the trigger to.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-
     function Interchange(element, options) {
       _classCallCheck(this, Interchange);
 
@@ -164,7 +163,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         // Replacing images
         if (this.$element[0].nodeName === 'IMG') {
-          this.$element.attr('src', path).load(function () {
+          this.$element.attr('src', path).on('load', function () {
             _this.currentPath = path;
           }).trigger(trigger);
         }

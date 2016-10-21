@@ -271,6 +271,12 @@ class Drilldown {
         e.stopImmediatePropagation();
         // console.log('mouseup on back');
         _this._hide($elem);
+
+        // If there is a parent submenu, call show
+        let parentSubMenu = $elem.parent('li').parent('ul').parent('li');
+        if (parentSubMenu.length) {
+          _this._show(parentSubMenu);
+        }
       });
   }
 
@@ -299,7 +305,8 @@ class Drilldown {
    */
   _show($elem) {
     if(this.options.autoHeight) this.$wrapper.css({height:$elem.children('[data-submenu]').data('calcHeight')});
-    $elem.children('[data-submenu]').addClass('is-active');
+    $elem.attr('aria-expanded', true);
+    $elem.children('[data-submenu]').addClass('is-active').attr('aria-hidden', false);
     /**
      * Fires when the submenu has opened.
      * @event Drilldown#open
@@ -315,6 +322,9 @@ class Drilldown {
    */
   _hide($elem) {
     if(this.options.autoHeight) this.$wrapper.css({height:$elem.parent().closest('ul').data('calcHeight')});
+    var _this = this;
+    $elem.parent('li').attr('aria-expanded', false);
+    $elem.attr('aria-hidden', true).addClass('is-closing')
     $elem.addClass('is-closing')
          .one(Foundation.transitionend($elem), function(){
            $elem.removeClass('is-active is-closing');
