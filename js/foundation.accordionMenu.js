@@ -9,7 +9,6 @@
  * @requires foundation.util.motion
  * @requires foundation.util.nest
  */
-
 class AccordionMenu {
   /**
    * Creates a new instance of an accordion menu.
@@ -38,8 +37,6 @@ class AccordionMenu {
     });
   }
 
-
-
   /**
    * Initializes the accordion menu by hiding all nested menus.
    * @private
@@ -47,7 +44,7 @@ class AccordionMenu {
   _init() {
     this.$element.find('[data-submenu]').not('.is-active').slideUp(0);//.find('a').css('padding-left', '1rem');
     this.$element.attr({
-      'role': 'menu',
+      'role': 'tree',
       'aria-multiselectable': this.options.multiOpen
     });
 
@@ -61,13 +58,13 @@ class AccordionMenu {
       $elem.attr({
         'aria-controls': subId,
         'aria-expanded': isActive,
-        'role': 'menuitem',
+        'role': 'treeitem',
         'id': linkId
       });
       $sub.attr({
         'aria-labelledby': linkId,
         'aria-hidden': !isActive,
-        'role': 'menu',
+        'role': 'group',
         'id': subId
       });
     });
@@ -92,7 +89,7 @@ class AccordionMenu {
       var $submenu = $(this).children('[data-submenu]');
 
       if ($submenu.length) {
-        $(this).children('a').off('click.zf.accordionMenu').on('click.zf.accordionMenu', function(e) {
+        $(this).children('span').off('click.zf.accordionMenu').on('click.zf.accordionMenu', function(e) {
           e.preventDefault();
 
           _this.toggle($submenu);
@@ -107,51 +104,57 @@ class AccordionMenu {
 
       $elements.each(function(i) {
         if ($(this).is($element)) {
-          $prevElement = $elements.eq(Math.max(0, i-1)).find('a').first();
-          $nextElement = $elements.eq(Math.min(i+1, $elements.length-1)).find('a').first();
+          $prevElement = $elements.eq(Math.max(0, i-1)).first();
+          $nextElement = $elements.eq(Math.min(i+1, $elements.length-1)).first();
 
           if ($(this).children('[data-submenu]:visible').length) { // has open sub menu
-            $nextElement = $element.find('li:first-child').find('a').first();
+            $nextElement = $element.find('li:first-child').first();
           }
           if ($(this).is(':first-child')) { // is first element of sub menu
-            $prevElement = $element.parents('li').first().find('a').first();
-          } else if ($prevElement.parents('li').first().children('[data-submenu]:visible').length) { // if previous element has open sub menu
-            $prevElement = $prevElement.parents('li').find('li:last-child').find('a').first();
+            $prevElement = $element.parents('li').first();
+          } else if ($prevElement.children('[data-submenu]:visible').length) { // if previous element has open sub menu
+            $prevElement = $prevElement.find('li:last-child');
           }
           if ($(this).is(':last-child')) { // is last element of sub menu
-            $nextElement = $element.parents('li').first().next('li').find('a').first();
+            $nextElement = $element.parents('li').first().next('li').first();
           }
 
           return;
         }
       });
-
       Foundation.Keyboard.handleKey(e, 'AccordionMenu', {
         open: function() {
           if ($target.is(':hidden')) {
             _this.down($target);
-            $target.find('li').first().find('a').first().focus();
+            //$target.find('li').first().first().focus();
           }
         },
         close: function() {
           if ($target.length && !$target.is(':hidden')) { // close active sub of this item
             _this.up($target);
           } else if ($element.parent('[data-submenu]').length) { // close currently open sub
-            _this.up($element.parent('[data-submenu]'));
-            $element.parents('li').first().find('a').first().focus();
+            $element.parents('li').first().first().focus();
           }
         },
         up: function() {
-          $prevElement.focus();
+          if( $prevElement.attr('tabindex') ){
+            $prevElement.focus();
+          } else {
+            $prevElement.attr('tabindex', -1).focus();
+          }
           return true;
         },
         down: function() {
-          $nextElement.focus();
+          $nextElement.attr('tabindex', -1).focus();
           return true;
         },
         toggle: function() {
           if ($element.children('[data-submenu]').length) {
             _this.toggle($element.children('[data-submenu]'));
+          } else {
+            if( $element.find('a:first').attr('href') ){
+              window.location = $element.find('a:first').attr('href');
+            }
           }
         },
         closeAll: function() {
@@ -164,7 +167,7 @@ class AccordionMenu {
           e.stopImmediatePropagation();
         }
       });
-    });//.attr('tabindex', 0);
+    });
   }
 
   /**
@@ -173,6 +176,7 @@ class AccordionMenu {
    */
   hideAll() {
     this.up(this.$element.find('[data-submenu]'));
+    this.$element.find('li:first')[0].focus();
   }
 
   /**

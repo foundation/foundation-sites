@@ -79,7 +79,7 @@
   $gutters: $grid-column-gutter
 ) {
   // Base properties
-  @include flex-grid-size($columns);
+  flex: flex-grid-column($columns);
 
   // Gutters
   @include grid-column-gutter($gutters: $gutters);
