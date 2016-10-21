@@ -34,7 +34,7 @@
     }
 
     // Nesting
-    & & {
+    & .#{$row} {
       @include grid-row-nest($grid-column-gutter);
 
       &.#{$collapse} {
@@ -69,14 +69,14 @@
   // The double .row class is needed to bump up the specificity
   .#{$column}.#{$row}.#{$row} {
     float: none;
+  }
 
-    // To properly nest a column row, padding and margin is removed
-    .#{$row} & {
-      padding-left: 0;
-      padding-right: 0;
-      margin-left: 0;
-      margin-right: 0;
-    }
+  // To properly nest a column row, padding and margin is removed
+  .#{$row} .#{$column}.#{$row}.#{$row} {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   @include -zf-each-breakpoint {
@@ -116,11 +116,15 @@
     .#{$-zf-size}-#{$collapse} {
       > .#{$column} { @include grid-col-collapse; }
 
-      .#{$row},
-      .#{$expanded}.#{$row} &.#{$row} {
+      .#{$row} {
         margin-left: 0;
         margin-right: 0;
       }
+    }
+
+    .#{$expanded}.#{$row} .#{$-zf-size}-#{$collapse}.#{$row} {
+      margin-left: 0;
+      margin-right: 0;
     }
 
     .#{$-zf-size}-#{$uncollapse} {

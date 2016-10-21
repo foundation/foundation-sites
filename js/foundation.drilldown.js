@@ -71,7 +71,7 @@ class Drilldown {
       if(_this.options.parentLink){
         $link.clone().prependTo($sub.children('[data-submenu]')).wrap('<li class="is-submenu-parent-item is-submenu-item is-drilldown-submenu-item" role="menu-item"></li>');
       }
-      $link.data('savedHref', $link.attr('href')).removeAttr('href');
+      $link.data('savedHref', $link.attr('href')).removeAttr('href').attr('tabindex', 0);
       $link.children('[data-submenu]')
           .attr({
             'aria-hidden': true,
@@ -188,13 +188,14 @@ class Drilldown {
                 $element.parent('li').parent('ul').parent('li').children('a').first().focus();
               }, 1);
             });
+            return true;            
           } else if ($element.is(_this.$submenuAnchors)) {
             _this._show($element.parent('li'));
             $element.parent('li').one(Foundation.transitionend($element), function(){
               $element.parent('li').find('ul li a').filter(_this.$menuItems).first().focus();
             });
+            return true;
           }
-          return true;
         },
         handled: function(preventDefault) {
           if (preventDefault) {
@@ -237,6 +238,12 @@ class Drilldown {
         e.stopImmediatePropagation();
         // console.log('mouseup on back');
         _this._hide($elem);
+
+        // If there is a parent submenu, call show
+        let parentSubMenu = $elem.parent('li').parent('ul').parent('li');
+        if (parentSubMenu.length) { 
+          _this._show(parentSubMenu);
+        }
       });
   }
 
@@ -264,7 +271,8 @@ class Drilldown {
    * @param {jQuery} $elem - the current element with a submenu to open, i.e. the `li` tag.
    */
   _show($elem) {
-    $elem.children('[data-submenu]').addClass('is-active');
+    $elem.attr('aria-expanded', true);
+    $elem.children('[data-submenu]').addClass('is-active').attr('aria-hidden', false);
     /**
      * Fires when the submenu has opened.
      * @event Drilldown#open
@@ -280,7 +288,8 @@ class Drilldown {
    */
   _hide($elem) {
     var _this = this;
-    $elem.addClass('is-closing')
+    $elem.parent('li').attr('aria-expanded', false);
+    $elem.attr('aria-hidden', true).addClass('is-closing')
          .one(Foundation.transitionend($elem), function(){
            $elem.removeClass('is-active is-closing');
            $elem.blur();
@@ -299,13 +308,15 @@ class Drilldown {
    * @private
    */
   _getMaxDims() {
-    var max = 0, result = {};
-    this.$submenus.add(this.$element).each(function(){
-      var numOfElems = $(this).children('li').length;
-      max = numOfElems > max ? numOfElems : max;
+    var biggest = 0
+    var result = {};
+
+    this.$submenus.add(this.$element).each((i, elem) => {
+      var height = elem.getBoundingClientRect().height;
+      if (height > biggest) biggest = height;
     });
 
-    result['min-height'] = `${max * this.$menuItems[0].getBoundingClientRect().height}px`;
+    result['min-height'] = `${biggest}px`;
     result['max-width'] = `${this.$element[0].getBoundingClientRect().width}px`;
 
     return result;
@@ -327,6 +338,7 @@ class Drilldown {
     });
     this.$element.find('a').each(function(){
       var $link = $(this);
+      $link.removeAttr('tabindex');
       if($link.data('savedHref')){
         $link.attr('href', $link.data('savedHref')).removeData('savedHref');
       }else{ return; }

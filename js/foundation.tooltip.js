@@ -6,6 +6,7 @@
  * Tooltip module.
  * @module foundation.tooltip
  * @requires foundation.util.box
+ * @requires foundation.util.mediaQuery
  * @requires foundation.util.triggers
  */
 
@@ -49,7 +50,7 @@ class Tooltip {
       'data-yeti-box': elemId,
       'data-toggle': elemId,
       'data-resize': elemId
-    }).addClass(this.triggerClass);
+    }).addClass(this.options.triggerClass);
 
     //helper variables to track movement on collisions
     this.usedPositions = [];

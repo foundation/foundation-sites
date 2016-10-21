@@ -19,7 +19,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @param {Object} element - jQuery object to add the trigger to.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-
     function Magellan(element, options) {
       _classCallCheck(this, Magellan);
 
@@ -123,6 +122,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: 'scrollToLoc',
       value: function scrollToLoc(loc) {
+        // Do nothing if target does not exist to prevent errors
+        if (!$(loc).length) {
+          return false;
+        }
         var scrollPos = Math.round($(loc).offset().top - this.options.threshold / 2 - this.options.barOffset);
 
         $('html, body').stop(true).animate({ scrollTop: scrollPos }, this.options.animationDuration, this.options.animationEasing);
@@ -167,7 +170,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
 
         this.$active.removeClass(this.options.activeClass);
-        this.$active = this.$links.eq(curIdx).addClass(this.options.activeClass);
+        this.$active = this.$links.filter('[href="#' + this.$targets.eq(curIdx).data('magellan-target') + '"]').addClass(this.options.activeClass);
 
         if (this.options.deepLinking) {
           var hash = this.$active[0].getAttribute('href');

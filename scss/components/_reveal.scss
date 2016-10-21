@@ -40,7 +40,7 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
 
 /// Adds styles for a modal overlay.
 /// @param {Color} $background [$reveal-overlay-background] - Background color of the overlay.
-@mixin reveal-overlay {
+@mixin reveal-overlay($background: $reveal-overlay-background) {
   display: none;
   position: fixed;
   top: 0;
@@ -48,7 +48,7 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   left: 0;
   right: 0;
   z-index: $reveal-zindex;
-  background-color: $reveal-overlay-background;
+  background-color: $background;
   overflow-y: scroll;
 }
 
@@ -116,7 +116,7 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   // html gets this class only in iOS
   html.is-reveal-open,
   html.is-reveal-open body {
-    height: 100%;
+    min-height: 100%;
     overflow: hidden;
     user-select: none;
   }

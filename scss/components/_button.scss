@@ -51,6 +51,14 @@ $button-sizes: (
 /// @type List
 $button-opacity-disabled: 0.25 !default;
 
+/// Background color lightness on hover for buttons.
+/// @type Number
+$button-background-hover-lightness: -20% !default;
+
+/// Color lightness on hover for hollow buttons.
+/// @type Number
+$button-hollow-hover-lightness: -50% !default;
+
 // Internal: flip from margin-right to margin-left for defaults
 @if $global-text-direction == 'rtl' {
   $button-margin: 0 0 $global-margin $global-margin !default;
@@ -96,14 +104,15 @@ $button-opacity-disabled: 0.25 !default;
 @mixin button-style(
   $background: $button-background,
   $background-hover: $button-background-hover,
-  $color: $button-color
+  $color: $button-color,
+  $background-hover-lightness: $button-background-hover-lightness
 ) {
   @if $color == auto {
     $color: foreground($background, $button-color-alt, $button-color);
   }
 
   @if $background-hover == auto {
-    $background-hover: scale-color($background, $lightness: -20%);
+    $background-hover: scale-color($background, $lightness: $background-hover-lightness);
   }
 
   background-color: $background;
@@ -123,8 +132,11 @@ $button-opacity-disabled: 0.25 !default;
   }
 }
 
-@mixin button-hollow-style($color: $primary-color) {
-  $color-hover: scale-color($color, $lightness: -50%);
+@mixin button-hollow-style(
+  $color: $primary-color,
+  $hover-lightness: $button-hollow-hover-lightness
+) {
+  $color-hover: scale-color($color, $lightness: $hover-lightness);
 
   border: 1px solid $color;
   color: $color;
@@ -136,12 +148,12 @@ $button-opacity-disabled: 0.25 !default;
 }
 
 /// Adds disabled styles to a button by fading the element, reseting the cursor, and disabling pointer events.
-@mixin button-disabled {
+@mixin button-disabled($color: $primary-color) {
   opacity: $button-opacity-disabled;
   cursor: not-allowed;
 
   &:hover, &:focus {
-    background-color: $button-background;
+    background-color: $color;
     color: $button-color;
   }
 }
@@ -242,6 +254,12 @@ $button-opacity-disabled: 0.25 !default;
     &.disabled,
     &[disabled] {
       @include button-disabled;
+
+      @each $name, $color in $foundation-palette {
+        &.#{$name} {
+          @include button-disabled($color);
+        }
+      }
     }
 
     // Dropdown arrow

@@ -101,9 +101,11 @@ $topbar-unstack-breakpoint: medium !default;
     flex-wrap: nowrap;
 
     // scss-lint:disable ZeroUnit
-    .top-bar-left,
+    .top-bar-left {
+      flex: 1 1 auto;
+    }
     .top-bar-right {
-      flex: 1 1 0px;
+      flex: 0 1 auto;
     }
   }
   @else {

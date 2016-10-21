@@ -155,7 +155,7 @@
     @include flex-grid-row;
 
     // Nesting behavior
-    & & {
+    & .row {
       @include flex-grid-row(nest, $base: false);
     }
 
@@ -165,7 +165,17 @@
     }
 
     &.collapse {
-      > .column { @include grid-col-collapse; }
+      > .column {
+        @include grid-col-collapse;
+      }
+    }
+
+    // Undo negative margins
+    // From collapsed child
+    &.is-collapse-child,
+    &.collapse > .column > .row {
+      margin-left: 0;
+      margin-right: 0;
     }
   }
 
@@ -179,14 +189,14 @@
   .column.row.row {
     float: none;
     display: block;
+  }
 
-    // To properly nest a column row, padding and margin is removed
-    .row & {
-      padding-left: 0;
-      padding-right: 0;
-      margin-left: 0;
-      margin-right: 0;
-    }
+  // To properly nest a column row, padding and margin is removed
+  .row .column.row.row {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   @include -zf-each-breakpoint {

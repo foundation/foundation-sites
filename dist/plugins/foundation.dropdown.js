@@ -22,7 +22,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      *        Object should be of the dropdown panel, rather than its anchor.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-
     function Dropdown(element, options) {
       _classCallCheck(this, Dropdown);
 
@@ -52,7 +51,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       value: function _init() {
         var $id = this.$element.attr('id');
 
-        this.$anchor = $('[data-toggle="' + $id + '"]') || $('[data-open="' + $id + '"]');
+        this.$anchor = $('[data-toggle="' + $id + '"]').length ? $('[data-toggle="' + $id + '"]') : $('[data-open="' + $id + '"]');
         this.$anchor.attr({
           'aria-controls': $id,
           'data-is-focus': false,
@@ -85,9 +84,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       value: function getPositionClass() {
         var verticalPosition = this.$element[0].className.match(/(top|left|right|bottom)/g);
         verticalPosition = verticalPosition ? verticalPosition[0] : '';
-        var horizontalPosition = /float-(\S+)\s/.exec(this.$anchor[0].className);
+        var horizontalPosition = /float-(\S+)/.exec(this.$anchor[0].className);
         horizontalPosition = horizontalPosition ? horizontalPosition[1] : '';
         var position = horizontalPosition ? horizontalPosition + ' ' + verticalPosition : verticalPosition;
+
         return position;
       }
 
@@ -188,11 +188,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         if (this.options.hover) {
           this.$anchor.off('mouseenter.zf.dropdown mouseleave.zf.dropdown').on('mouseenter.zf.dropdown', function () {
-            clearTimeout(_this.timeout);
-            _this.timeout = setTimeout(function () {
-              _this.open();
-              _this.$anchor.data('hover', true);
-            }, _this.options.hoverDelay);
+            if ($('body[data-whatinput="mouse"]').is('*')) {
+              clearTimeout(_this.timeout);
+              _this.timeout = setTimeout(function () {
+                _this.open();
+                _this.$anchor.data('hover', true);
+              }, _this.options.hoverDelay);
+            }
           }).on('mouseleave.zf.dropdown', function () {
             clearTimeout(_this.timeout);
             _this.timeout = setTimeout(function () {

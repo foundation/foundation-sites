@@ -24,7 +24,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @param {jQuery} element - jQuery object to make into a dropdown menu.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-
     function ResponsiveMenu(element, options) {
       _classCallCheck(this, ResponsiveMenu);
 

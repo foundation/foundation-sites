@@ -157,7 +157,11 @@ class Reveal {
 
     if (this.options.closeOnClick && this.options.overlay) {
       this.$overlay.off('.zf.reveal').on('click.zf.reveal', function(e) {
-        if (e.target === _this.$element[0] || $.contains(_this.$element[0], e.target)) { return; }
+        if (e.target === _this.$element[0] || 
+          $.contains(_this.$element[0], e.target) || 
+            !$.contains(document, e.target)) { 
+              return; 
+        }
         _this.close();
       });
     }
@@ -238,7 +242,6 @@ class Reveal {
             'tabindex': -1
           })
           .focus();
-          console.log('focus');
       }
       if (this.options.overlay) {
         Foundation.Motion.animateIn(this.$overlay, 'fade-in');
@@ -293,7 +296,9 @@ class Reveal {
 
     if (!this.options.overlay && this.options.closeOnClick && !this.options.fullScreen) {
       $('body').on('click.zf.reveal', function(e) {
-        if (e.target === _this.$element[0] || $.contains(_this.$element[0], e.target)) { return; }
+        if (e.target === _this.$element[0] || 
+          $.contains(_this.$element[0], e.target) || 
+            !$.contains(document, e.target)) { return; }
         _this.close();
       });
     }
@@ -317,6 +322,7 @@ class Reveal {
       // handle keyboard event with keyboard util
       Foundation.Keyboard.handleKey(e, 'Reveal', {
         tab_forward: function() {
+          _this.focusableElements = Foundation.Keyboard.findFocusable(_this.$element);
           if (_this.$element.find(':focus').is(_this.focusableElements.eq(-1))) { // left modal downwards, setting focus to first element
             _this.focusableElements.eq(0).focus();
             return true;
@@ -326,6 +332,7 @@ class Reveal {
           }
         },
         tab_backward: function() {
+          _this.focusableElements = Foundation.Keyboard.findFocusable(_this.$element);
           if (_this.$element.find(':focus').is(_this.focusableElements.eq(0)) || _this.$element.is(':focus')) { // left modal upwards, setting focus to last element
             _this.focusableElements.eq(-1).focus();
             return true;
