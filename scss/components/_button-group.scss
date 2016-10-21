@@ -22,7 +22,7 @@ $buttongroup-child-selector: '.button' !default;
 /// @type Number
 $buttongroup-expand-max: 6 !default;
 
-/// Determines if $button-radius is applied to each button or the button group as a whole.
+/// Determines if $button-radius is applied to each button or the button group as a whole. Use $global-radius in _settings.scss to change radius.
 /// @type Boolean
 $buttongroup-radius-on-each: true !default;
 
