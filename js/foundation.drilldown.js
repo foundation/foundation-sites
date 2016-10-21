@@ -49,6 +49,7 @@ class Drilldown {
     this.$menuItems = this.$element.find('li').not('.js-drilldown-back').attr('role', 'menuitem').find('a');
 
     this._prepareMenu();
+    this._registerEvents();
 
     this._keyboardEvents();
   }
@@ -90,6 +91,7 @@ class Drilldown {
     });
     if(!this.$element.parent().hasClass('is-drilldown')){
       this.$wrapper = $(this.options.wrapper).addClass('is-drilldown');
+      if(this.options.animateHeight) this.$wrapper.addClass('animate-height');
       this.$wrapper = this.$element.wrap(this.$wrapper).parent().css(this._getMaxDims());
     }
   }
@@ -124,6 +126,36 @@ class Drilldown {
           $body.off('.zf.drilldown');
         });
       }
+    });
+  }
+
+  /**
+   * Adds event handlers to the menu element.
+   * @function
+   * @private
+   */
+  _registerEvents() {
+    if(this.options.scrollTop){
+      this._bindHandler = this._scrollTop.bind(this);
+      this.$element.on('open.zf.drilldown hide.zf.drilldown closed.zf.drilldown',this._bindHandler);
+    }
+  }
+
+  /**
+   * Scroll to Top of Element or data-scroll-top-element
+   * @function
+   * @fires Drilldown#scrollme
+   */
+  _scrollTop() {
+    var _this = this;
+    var $scrollTopElement = _this.options.scrollTopElement!=''?$(_this.options.scrollTopElement):_this.$element,
+        scrollPos = parseInt($scrollTopElement.offset().top+_this.options.scrollTopOffset);
+    $('html, body').stop(true).animate({ scrollTop: scrollPos }, _this.options.animationDuration, _this.options.animationEasing,function(){
+      /**
+        * Fires after the menu has scrolled
+        * @event Drilldown#scrollme
+        */
+      if(this===$('html')[0])_this.$element.trigger('scrollme.zf.drilldown');
     });
   }
 
@@ -188,7 +220,7 @@ class Drilldown {
                 $element.parent('li').parent('ul').parent('li').children('a').first().focus();
               }, 1);
             });
-            return true;            
+            return true;
           } else if ($element.is(_this.$submenuAnchors)) {
             _this._show($element.parent('li'));
             $element.parent('li').one(Foundation.transitionend($element), function(){
@@ -214,6 +246,7 @@ class Drilldown {
    */
   _hideAll() {
     var $elem = this.$element.find('.is-drilldown-submenu.is-active').addClass('is-closing');
+    if(this.options.autoHeight) this.$wrapper.css({height:$elem.parent().closest('ul').data('calcHeight')});
     $elem.one(Foundation.transitionend($elem), function(e){
       $elem.removeClass('is-active is-closing');
     });
@@ -241,7 +274,7 @@ class Drilldown {
 
         // If there is a parent submenu, call show
         let parentSubMenu = $elem.parent('li').parent('ul').parent('li');
-        if (parentSubMenu.length) { 
+        if (parentSubMenu.length) {
           _this._show(parentSubMenu);
         }
       });
@@ -271,6 +304,7 @@ class Drilldown {
    * @param {jQuery} $elem - the current element with a submenu to open, i.e. the `li` tag.
    */
   _show($elem) {
+    if(this.options.autoHeight) this.$wrapper.css({height:$elem.children('[data-submenu]').data('calcHeight')});
     $elem.attr('aria-expanded', true);
     $elem.children('[data-submenu]').addClass('is-active').attr('aria-hidden', false);
     /**
@@ -287,9 +321,11 @@ class Drilldown {
    * @param {jQuery} $elem - the current sub-menu to hide, i.e. the `ul` tag.
    */
   _hide($elem) {
+    if(this.options.autoHeight) this.$wrapper.css({height:$elem.parent().closest('ul').data('calcHeight')});
     var _this = this;
     $elem.parent('li').attr('aria-expanded', false);
     $elem.attr('aria-hidden', true).addClass('is-closing')
+    $elem.addClass('is-closing')
          .one(Foundation.transitionend($elem), function(){
            $elem.removeClass('is-active is-closing');
            $elem.blur();
@@ -308,15 +344,18 @@ class Drilldown {
    * @private
    */
   _getMaxDims() {
-    var biggest = 0
-    var result = {};
-
-    this.$submenus.add(this.$element).each((i, elem) => {
-      var height = elem.getBoundingClientRect().height;
-      if (height > biggest) biggest = height;
+    var max = 0, result = {}, oneHeight = this.$menuItems[0].getBoundingClientRect().height,_this = this;
+    this.$submenus.add(this.$element).each(function(){
+      var numOfElems = $(this).children('li').length;
+      max = numOfElems > max ? numOfElems : max;
+      if(_this.options.autoHeight) {
+        $(this).data('calcHeight',numOfElems * oneHeight);
+        if (!$(this).hasClass('is-drilldown-submenu')) result['height'] = numOfElems * oneHeight;
+      }
     });
 
-    result['min-height'] = `${biggest}px`;
+    if(!this.options.autoHeight) result['min-height'] = `${max * oneHeight}px`;
+
     result['max-width'] = `${this.$element[0].getBoundingClientRect().width}px`;
 
     return result;
@@ -327,6 +366,7 @@ class Drilldown {
    * @function
    */
   destroy() {
+    if(this.options.scrollTop) this.$element.off('.zf.drilldown',this._bindHandler);
     this._hideAll();
     Foundation.Nest.Burn(this.$element, 'drilldown');
     this.$element.unwrap()
@@ -371,7 +411,49 @@ Drilldown.defaults = {
    * @option
    * @example false
    */
-  closeOnClick: false
+  closeOnClick: false,
+  /**
+   * Allow the menu to auto adjust height.
+   * @option
+   * @example false
+   */
+  autoHeight: false,
+  /**
+   * Animate the auto adjust height.
+   * @option
+   * @example false
+   */
+  animateHeight: false,
+  /**
+   * Scroll to the top of the menu after opening a submenu or navigating back using the menu back button
+   * @option
+   * @example false
+   */
+  scrollTop: false,
+  /**
+   * String jquery selector (for example 'body') of element to take offset().top from, if empty string the drilldown menu offset().top is taken
+   * @option
+   * @example ''
+   */
+  scrollTopElement: '',
+  /**
+   * ScrollTop offset
+   * @option
+   * @example 100
+   */
+  scrollTopOffset: 0,
+  /**
+   * Scroll animation duration
+   * @option
+   * @example 500
+   */
+  animationDuration: 500,
+  /**
+   * Scroll animation easing
+   * @option
+   * @example 'swing'
+   */
+  animationEasing: 'swing'
   // holdOpen: false
 };
 
