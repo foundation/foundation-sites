@@ -364,9 +364,9 @@ function functionName(fn) {
   }
 }
 function parseValue(str){
-  if(/true/.test(str)) return true;
-  else if(/false/.test(str)) return false;
-  else if(!isNaN(str * 1)) return parseFloat(str);
+  if ('true' === str) return true;
+  else if ('false' === str) return false;
+  else if (!isNaN(str * 1)) return parseFloat(str);
   return str;
 }
 // Convert PascalCase to kebab-case

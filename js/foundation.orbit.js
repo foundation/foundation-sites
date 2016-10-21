@@ -216,7 +216,7 @@ class Orbit {
           _this.changeSlide(ltr, $slide, idx);
         });
       }
-      
+
       if (this.options.accessible) {
         this.$wrapper.add(this.$bullets).on('keydown.zf.orbit', function(e) {
           // handle keyboard event with keyboard util
@@ -247,6 +247,7 @@ class Orbit {
   * @fires Orbit#slidechange
   */
   changeSlide(isLTR, chosenSlide, idx) {
+    if (!this.$slides) {return; } // Don't freak out if we're in the middle of cleanup
     var $curSlide = this.$slides.filter('.is-active').eq(0);
 
     if (/mui/g.test($curSlide[0].className)) { return false; } //if the slide is currently animating, kick out of the function
@@ -273,7 +274,7 @@ class Orbit {
       * @event Orbit#beforeslidechange
       */
       this.$element.trigger('beforeslidechange.zf.orbit', [$curSlide, $newSlide]);
-      
+
       if (this.options.bullets) {
         idx = idx || this.$slides.index($newSlide); //grab index to update bullets
         this._updateBullets(idx);
