@@ -157,10 +157,10 @@ class Reveal {
 
     if (this.options.closeOnClick && this.options.overlay) {
       this.$overlay.off('.zf.reveal').on('click.zf.reveal', function(e) {
-        if (e.target === _this.$element[0] || 
-          $.contains(_this.$element[0], e.target) || 
-            !$.contains(document, e.target)) { 
-              return; 
+        if (e.target === _this.$element[0] ||
+          $.contains(_this.$element[0], e.target) ||
+            !$.contains(document, e.target)) {
+              return;
         }
         _this.close();
       });
@@ -247,8 +247,10 @@ class Reveal {
         Foundation.Motion.animateIn(this.$overlay, 'fade-in');
       }
       Foundation.Motion.animateIn(this.$element, this.options.animationIn, () => {
-        this.focusableElements = Foundation.Keyboard.findFocusable(this.$element);
-        afterAnimationFocus();
+        if(this.$element) { // protect against object having been removed
+          this.focusableElements = Foundation.Keyboard.findFocusable(this.$element);
+          afterAnimationFocus();
+        }
       });
     }
     // jQuery method of reveal
@@ -292,12 +294,13 @@ class Reveal {
    */
   _extraHandlers() {
     var _this = this;
+    if(!this.$element) { return; } // If we're in the middle of cleanup, don't freak out
     this.focusableElements = Foundation.Keyboard.findFocusable(this.$element);
 
     if (!this.options.overlay && this.options.closeOnClick && !this.options.fullScreen) {
       $('body').on('click.zf.reveal', function(e) {
-        if (e.target === _this.$element[0] || 
-          $.contains(_this.$element[0], e.target) || 
+        if (e.target === _this.$element[0] ||
+          $.contains(_this.$element[0], e.target) ||
             !$.contains(document, e.target)) { return; }
         _this.close();
       });
