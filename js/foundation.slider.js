@@ -192,6 +192,7 @@ class Slider {
     //because we don't know exactly how the handle will be moved, check the amount of time it should take to move.
     var moveTime = this.$element.data('dragging') ? 1000/60 : this.options.moveTime;
 
+
     Foundation.Move(moveTime, $hndl, function() {
       //adjusting the left/top property of the handle, based on the percentage calculated above
       $hndl.css(lOrT, `${movement}%`);
@@ -204,6 +205,7 @@ class Slider {
         _this.$fill.css(css);
       }
     });
+
 
     /**
      * Fires when the value has not been change for a given time.
@@ -447,6 +449,8 @@ class Slider {
     this.handles.off('.zf.slider');
     this.inputs.off('.zf.slider');
     this.$element.off('.zf.slider');
+
+    clearTimeout(this.timeout);
 
     Foundation.unregisterPlugin(this);
   }
