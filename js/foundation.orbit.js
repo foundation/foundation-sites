@@ -123,13 +123,13 @@ class Orbit {
   * @param {Function} cb - a callback function to fire when complete.
   */
   _setWrapperHeight(cb) {//rewrite this to `for` loop
-    var max = 0, temp, counter = 0;
+    var max = 0, temp, counter = 0, _this = this;
 
     this.$slides.each(function() {
       temp = this.getBoundingClientRect().height;
       $(this).attr('data-slide', counter);
 
-      if (counter) {//if not the first slide, set css position and display property
+      if (_this.$slides.filter('.is-active')[0] !== _this.$slides.eq(counter)[0]) {//if not the active slide, set css position and display property
         $(this).css({'position': 'relative', 'display': 'none'});
       }
       max = temp > max ? temp : max;
