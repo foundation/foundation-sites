@@ -48,29 +48,9 @@ describe('Interchange', function() {
     }
   };
 
-  /**
-   * Substitutes the window.matchMedia function with a mock function that
-   * will always and only return a match for the given size.
-   * @param  {string} size Size to be matched.
-   */
-  var mockMatchMedia = function(size) {
-    window.matchMedia = function(mq) {
-      return {
-        matches: mq === size
-      };
-    };
-  };
-
-  // Reset mocked functions after each test
-  var matchMedia = window.matchMedia,
-      get = $.get;
-
   afterEach(function() {
     plugin.destroy();
     $html.remove();
-
-    window.matchMedia = matchMedia;
-    $.get = get;
   });
 
   describe('constructor()', function() {
@@ -85,7 +65,7 @@ describe('Interchange', function() {
 
   describe('replace()', function() {
     it('replaces src attribute of img', function() {
-      $html = $(generateTemplate('image')).appendTo('body');
+      $html = $(generateTemplate('image')).attr('data-interchange', '').appendTo('body');
       plugin = new Foundation.Interchange($html, {});
 
       plugin.replace(getPath('img', 'large'));
@@ -94,7 +74,7 @@ describe('Interchange', function() {
     });
 
     it('replaces background style of divs', function() {
-      $html = $(generateTemplate('background')).appendTo('body');
+      $html = $(generateTemplate('background')).attr('data-interchange', '').appendTo('body');
       plugin = new Foundation.Interchange($html, {});
 
       plugin.replace(getPath('background', 'large'));
@@ -102,70 +82,114 @@ describe('Interchange', function() {
       $html[0].style.backgroundImage.should.contain(getPath('background', 'large'));
     });
 
-    it('replaces contents of div with templates', function(done) {
-      $html = $(generateTemplate('template')).appendTo('body');
+    it('replaces contents of div with templates', function() {
+      $html = $(generateTemplate('template')).attr('data-interchange', '').appendTo('body');
       plugin = new Foundation.Interchange($html, {});
 
-      $.get = function(url) {
-        url.should.be.equal(getPath('template', 'large'));
-        done();
-      };
-
+      var spy = sinon.spy($, 'get');
+      
       plugin.replace(getPath('template', 'large'));
+
+      sinon.assert.calledWith(spy, getPath('template', 'large'));
+
+      spy.restore();      
     });
 
     it('fires replaced.zf.interchange event', function() {
-      $html = $(generateTemplate('template')).appendTo('body');
+      $html = $(generateTemplate('image')).appendTo('body');
       plugin = new Foundation.Interchange($html, {});
 
       let spy = sinon.spy();
       $html.on('replaced.zf.interchange', spy);
 
-      spy.called.should.be.true;
+      plugin.replace(getPath('image', 'large'));
+      
+      sinon.assert.called(spy);
     });
   });
 
-  describe('reflow(()', function() {
-    it('calls replace for small media query', function() {
-      $html = $(generateTemplate('image')).appendTo('body');
+  describe('reflow()', function() {
+    it('calls replace for given media query', function() {
+      $html = $(generateTemplate('image')).attr('data-interchange', '[image.png, (min-width: 1px)]').appendTo('body');
       plugin = new Foundation.Interchange($html, {});
-
-      mockMatchMedia('small');
 
       let spy = sinon.spy();
       plugin.replace = spy;
 
       plugin._reflow();
 
-      spy.calledWith(getPath('image', 'small')).should.be.true;
-    });
-    it('calls replace for medium media query', function() {
-      $html = $(generateTemplate('image')).appendTo('body');
-      plugin = new Foundation.Interchange($html, {});
-
-      mockMatchMedia('medium');
-
-      let spy = sinon.spy();
-      plugin.replace = spy;
-
-      plugin._reflow();
-
-      spy.calledWith(getPath('image', 'medium')).should.be.true;
-    });
-
-    it('calls replace for large media query', function() {
-      $html = $(generateTemplate('image')).appendTo('body');
-      plugin = new Foundation.Interchange($html, {});
-
-      mockMatchMedia('large');
-
-      let spy = sinon.spy();
-      plugin.replace = spy;
-
-      plugin._reflow();
-
-      spy.calledWith(getPath('image', 'large')).should.be.true;
+      sinon.assert.calledWith(spy, 'image.png');
     });
   });
+
+  describe('generateRules()', function() {
+    it('extracts rules from the plugin element', function() {
+      $html = $(generateTemplate('image')).appendTo('body');
+      plugin = new Foundation.Interchange($html, {});
+
+      plugin._generateRules($html);
+
+      plugin.rules.length.should.be.equal(3);
+    });
+
+     it('extracts special queries from the plugin element', function() {
+      $html = $(generateTemplate('image')).attr('data-interchange', '[image.png, retina]').appendTo('body');
+      plugin = new Foundation.Interchange($html, {});
+
+      plugin._generateRules($html);
+
+      plugin.rules[0].query.should.be.equal(Foundation.Interchange.SPECIAL_QUERIES['retina']);
+    });
+  });
+
+
+  describe('addBreakpoints()', function() {
+    it('adds Foundation breakpoints to special queries', function() {
+      $html = $(generateTemplate('image')).appendTo('body');
+      plugin = new Foundation.Interchange($html, {});
+
+
+      var specialQueriesCount = Object.keys(Foundation.Interchange.SPECIAL_QUERIES).length,
+          foundationMediaQueriesCount = Foundation.MediaQuery.queries.length;
+
+      Foundation.MediaQuery.queries.push({
+        name: 'test-query',
+        value: 'test-query-value'
+      })
+
+      plugin._addBreakpoints($html);
+
+      Object.keys(Foundation.Interchange.SPECIAL_QUERIES).length.should.be.equal(specialQueriesCount + 1);
+
+      // Reset Foundation.MediaQueries
+      Foundation.MediaQuery.queries.length = foundationMediaQueriesCount;
+    });
+  });
+
+ describe('events()', function() {
+    it('calls reflow on viewport size change once', function(done) {
+      $html = $(generateTemplate('image')).appendTo('body');
+      plugin = new Foundation.Interchange($html, {});
+
+      let spy = sinon.spy(plugin, '_reflow');
+      
+      $(window).trigger('resize');
+
+      setTimeout(function() {
+        $(window).trigger('resize');
+      }, 30);
+
+      setTimeout(function() {
+        $(window).trigger('resize');
+      }, 60);
+
+      setTimeout(function() { // Wait for third trigger...
+        $(window).trigger('resize');
+        sinon.assert.calledOnce(spy);
+        done();
+      }, 60);
+    });
+  });
+
 
 });
