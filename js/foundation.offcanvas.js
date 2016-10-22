@@ -154,7 +154,7 @@ class OffCanvas {
    */
   open(event, trigger) {
     if (this.$element.hasClass('is-open') || this.isRevealed) { return; }
-    var _this = this
+    var _this = this;
 
     if (this.options.forceTop) {
       $('body').scrollTop(0);
