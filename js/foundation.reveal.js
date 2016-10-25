@@ -232,16 +232,30 @@ class Reveal {
        */
       this.$element.trigger('closeme.zf.reveal', this.id);
     }
+
+    var _this = this;
+
+    function addRevealOpenClasses() {
+      if (_this.isMobile) {
+        if(!_this.originalScrollPos) {
+          _this.originalScrollPos = window.pageYOffset;
+        }
+        $('html, body').addClass('is-reveal-open');
+      }
+      else {
+        $('body').addClass('is-reveal-open');
+      }
+    }
     // Motion UI method of reveal
     if (this.options.animationIn) {
-      var _this = this;
-      function afterAnimationFocus(){
+      function afterAnimation(){
         _this.$element
           .attr({
             'aria-hidden': false,
             'tabindex': -1
           })
           .focus();
+        addRevealOpenClasses();
       }
       if (this.options.overlay) {
         Foundation.Motion.animateIn(this.$overlay, 'fade-in');
@@ -249,7 +263,7 @@ class Reveal {
       Foundation.Motion.animateIn(this.$element, this.options.animationIn, () => {
         if(this.$element) { // protect against object having been removed
           this.focusableElements = Foundation.Keyboard.findFocusable(this.$element);
-          afterAnimationFocus();
+          afterAnimation();
         }
       });
     }
@@ -275,13 +289,7 @@ class Reveal {
      */
     this.$element.trigger('open.zf.reveal');
 
-    if (this.isMobile) {
-      this.originalScrollPos = window.pageYOffset;
-      $('html, body').addClass('is-reveal-open');
-    }
-    else {
-      $('body').addClass('is-reveal-open');
-    }
+    addRevealOpenClasses();
 
     setTimeout(() => {
       this._extraHandlers();
