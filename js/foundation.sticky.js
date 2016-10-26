@@ -273,7 +273,7 @@ class Sticky {
     var _this = this,
         newElemWidth = this.$container[0].getBoundingClientRect().width,
         comp = window.getComputedStyle(this.$container[0]),
-        pdngl = parseInt(comp['padding-right'], 10),
+        pdngl = parseInt(comp['padding-left'], 10),
         pdngr = parseInt(comp['padding-right'], 10);
 
     if (this.$anchor && this.$anchor.length) {
