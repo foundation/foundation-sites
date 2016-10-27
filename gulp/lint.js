@@ -1,5 +1,6 @@
 var gulp = require('gulp');
-var scssLint = require('gulp-scss-lint');
+var plumber = require('gulp-plumber');
+var sassLint = require('gulp-sass-lint');
 var eslint = require('gulp-eslint');
 
 var PATHS = [
@@ -13,7 +14,12 @@ gulp.task('lint', ['lint:sass', 'lint:javascript']);
 
 gulp.task('lint:sass', function() {
   return gulp.src(PATHS)
-    .pipe(scssLint());
+    .pipe(plumber())
+    .pipe(sassLint({
+      config: './.sass-lint.yml'
+    }))
+    .pipe(sassLint.format())
+    .pipe(sassLint.failOnError())
 });
 
 gulp.task('lint:javascript', function () {
