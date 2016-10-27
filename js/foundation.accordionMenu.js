@@ -85,13 +85,16 @@ class AccordionMenu {
   _events() {
     var _this = this;
 
-    this.$element.find('li').each(function() {
+    this.$element.find('li').each(function(idx) {
+      if(idx > 0 ){
+        $(this).attr('tabindex','-1');
+      }
       var $submenu = $(this).children('[data-submenu]');
 
       if ($submenu.length) {
         $(this).children('span').off('click.zf.accordionMenu').on('click.zf.accordionMenu', function(e) {
           e.preventDefault();
-
+          _this.setIndex(e.target);
           _this.toggle($submenu);
         });
       }
@@ -100,7 +103,8 @@ class AccordionMenu {
           $elements = $element.parent('ul').children('li'),
           $prevElement,
           $nextElement,
-          $target = $element.children('[data-submenu]');
+          $target = $element.children('[data-submenu]'); 
+          _this.setIndex(e.target);
 
       $elements.each(function(i) {
         if ($(this).is($element)) {
@@ -187,12 +191,25 @@ class AccordionMenu {
     this.down(this.$element.find('[data-submenu]'));
   }
 
+   /**
+   * Sets the tabindex of the selected item to 0 and resets all the rest
+   * @function
+   */
+  setIndex(el){
+    this.$element.find('li').attr('tabindex','-1');
+    if( $(el).is('li') ){
+      $(el).attr('tabindex',0);
+    } else {
+      $(el).parent('li').attr('tabindex',0);
+    }
+  }
+
   /**
    * Toggles the open/close state of a submenu.
    * @function
    * @param {jQuery} $target - the submenu to toggle
    */
-  toggle($target){
+  toggle($target){  
     if(!$target.is(':animated')) {
       if (!$target.is(':hidden')) {
         this.up($target);

@@ -21,57 +21,51 @@ Use `<span>` for elements that should open a nested menu.  Use `<a>` for links o
 
 ```html
 <ul class="vertical tree" data-accordion-menu>
-  <li>
-    <span>Item 1</span>
-    <ul class="tree vertical nested">
-      <li>
-        <span>Item 1A</span>
+    <li><span>Item 1</span>
+      <ul class="tree vertical nested">
+        <li><span>Item 1A</span>
+          <ul class="tree vertical nested">
+            <li><span>Item 1Ai</span></li>
+            <li><a href="http://www.google.com">External link</a></li>
+            <li><span>Item 1Aiii</span></li>
+          </ul>
+        </li>
+        <li><span>Item 1B</span></li>
+        <li><span>Item 1C</span></li>
+      </ul>
+      </li>
+      <li><span>Item 2</span>
         <ul class="tree vertical nested">
-          <li><span>Item 1Ai</span></li>
-          <li><a href="#">Item 1Aii</a></li>
-          <li><span>Item 1Aiii</span></li>
+          <li><span>Item 2A</a></li>
+          <li><span>Item 2B</a></li>
         </ul>
       </li>
-      <li><span>Item 1B</span></li>
-      <li><span>Item 1C</span></li>
-    </ul>
-  </li>
-  <li>
-    <span>Item 2</span>
-    <ul class="tree vertical nested">
-      <li><span>Item 2A</a></li>
-      <li><span>Item 2B</a></li>
-    </ul>
-  </li>
-  <li><a href="#">Item 3</a></li>
-</ul>
+    <li><a href="http://www.google.com">External link</a></li>
+  </ul>
 ```
 
 <ul class="vertical tree" data-accordion-menu>
-  <li>
-    <span>Item 1</span>
-    <ul class="tree vertical nested">
-      <li>
-        <span>Item 1A</span>
+    <li><span>Item 1</span>
+      <ul class="tree vertical nested">
+        <li><span>Item 1A</span>
+          <ul class="tree vertical nested">
+            <li><span>Item 1Ai</span></li>
+            <li><a href="http://www.google.com">External link</a></li>
+            <li><span>Item 1Aiii</span></li>
+          </ul>
+        </li>
+        <li><span>Item 1B</span></li>
+        <li><span>Item 1C</span></li>
+      </ul>
+      </li>
+      <li><span>Item 2</span>
         <ul class="tree vertical nested">
-          <li><span>Item 1Ai</span></li>
-          <li><a href="#">Item 1Aii</a></li>
-          <li><span>Item 1Aiii</span></li>
+          <li><span>Item 2A</a></li>
+          <li><span>Item 2B</a></li>
         </ul>
       </li>
-      <li><span>Item 1B</span></li>
-      <li><span>Item 1C</span></li>
-    </ul>
-  </li>
-  <li>
-    <span>Item 2</span>
-    <ul class="tree vertical nested">
-      <li><span>Item 2A</a></li>
-      <li><span>Item 2B</a></li>
-    </ul>
-  </li>
-  <li><a href="#">Item 3</a></li>
-</ul>
+    <li><a href="http://www.google.com">External link</a></li>
+  </ul>
 
 
 ---
