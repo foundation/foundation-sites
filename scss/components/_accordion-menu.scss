@@ -12,11 +12,6 @@ $accordionmenu-arrow-color: $primary-color !default;
 
 @mixin foundation-accordion-menu {
   .tree {
-    li:focus {
-      border: 1px dotted $black;
-      outline: 0;
-    }
-
     .is-accordion-submenu-none > a {
       padding: 0;
       line-height: $list-lineheight;
