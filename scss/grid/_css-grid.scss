@@ -52,10 +52,14 @@
 
 @function grid-template-string($count) {
   $str: '1fr';
+  @if $count == 1 {
+    @return $str;
+  }
+
   @for $i from 2 through $count {
     $str: $str + ' 1fr';
   }
-  @return str;
+  @return $str;
 
 }
 
@@ -67,7 +71,7 @@
   @if($columns == null) {
     $columns: $grid-column-count;
   }
-  grid-template-columns: grid-template-string($columns);
+  grid-template-columns: #{grid-template-string($columns)};
 }
 
 // Set grid-template-rows for equal spaced number of rows
@@ -75,7 +79,7 @@
 /// @param {Number} $rows [1] Number of rows to use for this grid.  Default is 1 to mimic old grid-row behavior.
 @mixin css-grid-template-rows($rows: 1) {
   $rows: $rows;
-  grid-template-rows: grid-template-string($rows);
+  grid-template-rows: #{grid-template-string($rows)};
 }
 
 
@@ -95,7 +99,7 @@
   @if $gutter == auto and type-of($gutters) == 'map' {
     @each $value, $breakpoint in $gutters {
       @include breakpoint($breakpoint) {
-        @include css-grid-column-gap($gutters: $value);
+        @include css-grid-column-gap($gutter: $value);
       }
     }
   } @else {
@@ -135,7 +139,7 @@
     @include css-grid-column-gap($gutter: 0);
   }
   .column {
-    @include css-grid-block();
+    @include css-grid-block($column-end: span $grid-column-count);
   }
   @include -zf-each-breakpoint {
     @for $i from 1 through $grid-column-count {
