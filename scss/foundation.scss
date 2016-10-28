@@ -49,17 +49,26 @@
 @import 'components/thumbnail';
 @import 'components/tooltip';
 
-@mixin foundation-everything($flex: false) {
+@mixin foundation-everything($flex: false, $css-grid: false) {
+  // TODO:  Should we move these into a string set or a map?
   @if $flex {
     $global-flexbox: true !global;
+  } @else {
+    @if $css-grid {
+      $global-css-grid: true !global;
+    }
   }
 
   @include foundation-global-styles;
-  @if not $flex {
-    @include foundation-grid;
+  @if $flex {
+    @include foundation-flex-grid;
   }
   @else {
-    @include foundation-flex-grid;
+    @if $css-grid {
+      @include foundation-css-grid;
+    } @else {
+      @include foundation-grid;
+    }
   }
   @include foundation-typography;
   @include foundation-forms;

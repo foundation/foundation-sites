@@ -1,0 +1,164 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group css-grid
+////
+
+/// Creates a container for a css grid.  PROTOTYPE
+///
+/// @param {Keyword|List} $behavior [null]
+///   Modifications to the default grid styles. `nest` indicates the grid will be placed inside another grid. `collapse` indicates that the columns inside this grid will not have padding. `nest collapse` combines both behaviors. TODO:  Do we need to independently handle row and column padding?
+/// @param {Keyword|Number} $size [$grid-row-width] Maximum width of the grid. Set to `expand` to make the grid take the full width.
+/// @param {Number} $rows [1] Number of rows to use for this grid.  Default is 1 to mimic old grid-row behavior.
+/// @param {Number} $columns [null] - Number of columns to use for this row. If set to `null` (the default), the global column count will be used.
+/// @param {Boolean} $base [true] - Set to `false` to prevent basic styles from being output. Useful if you're calling this mixin on the same element twice, as it prevents duplicate CSS output.
+/// @param {Number|Map} $gutters [$grid-column-gutter] - Gutter map or single value to use when inverting margins, in case the row is nested. Responsive gutter settings by default.
+@mixin css-grid-container(
+  $behavior: null,
+  $size: $grid-row-width,
+  $rows: 1,
+  $columns: null,
+  $base: true,
+  $gutters: $grid-column-gutter
+) {
+  $margin: auto;
+
+  @if index($behavior, nest) != null {
+    // TODO:  Figure out what this should be in CSS grid
+    //@include grid-row-nest($gutters);
+
+    @if index($behavior, collapse) != null {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+  @else {
+    @include grid-row-size($size);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @if $base {
+    display: grid;
+
+    @include css-grid-template-columns($columns);
+    @include css-grid-template-rows($rows);
+
+    @include css-grid-column-gap($gutters: $gutters);
+  }
+}
+
+@function grid-template-string($count) {
+  $str: '1fr';
+  @for $i from 2 through $count {
+    $str: $str + ' 1fr';
+  }
+  @return str;
+
+}
+
+// Set grid-template-columns for equal spaced number of columns
+//
+/// @param {Number} $rows [1] Number of rows to use for this grid.  Default is 1 to mimic old grid-row behavior.
+/// @param {Number} $columns [null] - Number of columns to use for this row. If set to `null` (the default), the global column count will be used.
+@mixin css-grid-template-columns($columns) {
+  @if($columns == null) {
+    $columns: $grid-column-count;
+  }
+  grid-template-columns: grid-template-string($columns);
+}
+
+// Set grid-template-rows for equal spaced number of rows
+//
+/// @param {Number} $rows [1] Number of rows to use for this grid.  Default is 1 to mimic old grid-row behavior.
+@mixin css-grid-template-rows($rows: 1) {
+  $rows: $rows;
+  grid-template-rows: grid-template-string($rows);
+}
+
+
+// Set grid-column-gap based on margins
+//
+/// @param {Number|Keyword} $gutter [auto]
+///   Spacing between columns, accepts multiple values:
+///   - A single value will make the gutter that exact size.
+///   - A breakpoint name will make the gutter the corresponding size in the $gutters map.
+///   - "auto" will make the gutter responsive, using the $gutters map values.
+/// @param {Number|Map} $gutters [$grid-column-gutter] - Gutter map or single value to use. Responsive gutter settings by default.
+//
+@mixin css-grid-column-gap(
+  $gutter: auto,
+  $gutters: $grid-column-gutter
+) {
+  @if $gutter == auto and type-of($gutters) == 'map' {
+    @each $value, $breakpoint in $gutters {
+      @include breakpoint($breakpoint) {
+        @include css-grid-column-gap($gutters: $value);
+      }
+    }
+  } @else {
+    // breakpoint name
+    @if type-of($gutter) == 'string' {
+      $gutter: grid-column-gutter($gutter, $gutters);
+    }
+    // single value
+    //grid-column-gutter: rem-calc($gutter);
+    grid-column-gap: $gutter;
+  }
+}
+
+// Specify a block within css grid
+//
+// TODO:  Fill in params from https://css-tricks.com/snippets/css/complete-guide-grid/
+@mixin css-grid-block(
+  $row-start: auto,
+  $row-end: auto,
+  $column-start: auto,
+  $column-end: auto
+) {
+  grid-row-start: $row-start;
+  grid-row-end: $row-end;
+  grid-column-start: $column-start;
+  grid-column-end: $column-end;
+}
+
+@mixin foundation-css-grid {
+  .row {
+    @include css-grid-container;
+  }
+  &.expanded {
+    @include css-grid-container($size: expand, $base: false);
+  }
+  &.collapse {
+    @include css-grid-column-gap($gutter: 0);
+  }
+  .column {
+    @include css-grid-block();
+  }
+  @include -zf-each-breakpoint {
+    @for $i from 1 through $grid-column-count {
+      // Sizing (percentage)
+      .#{$-zf-size}-#{$i} {
+        grid-column-end: span $i;
+      }
+    }
+
+    // TODO:  Figure out what the css grid equivalent is to the flex grid source ordering helper classes
+
+    // Block grid
+    @for $i from 1 through $block-grid-max {
+      .#{$-zf-size}-up-#{$i} {
+        @include css-grid-template-columns($i);
+      }
+    }
+
+    // TODO:  Figure out stack/unstack
+  }
+
+  .columns {
+    // scss-lint:disable PlaceholderInExtend
+    @extend .column;
+  }
+}
