@@ -208,7 +208,7 @@ class OffCanvas {
       $wrapper.one(Foundation.transitionend($wrapper), function() {
         if(_this.$element.hasClass('is-open')) { // handle double clicks
           _this.$element.attr('tabindex', '-1');
-          _this.trapFocus();
+          _this._trapFocus();
         }
       });
     }
