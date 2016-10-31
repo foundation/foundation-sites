@@ -29,7 +29,7 @@ $drilldown-background: $white !default;
     overflow: hidden;
 
     li {
-      display: block !important;
+      display: block;
     }
 
     &.animate-height {
