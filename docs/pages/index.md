@@ -141,6 +141,7 @@ Get to know the pieces of Foundation.
         <li><a href="reveal.html">Reveal</a></li>
         <li><a href="table.html">Table</a></li>
         <li><a href="tabs.html">Tabs</a></li>
+        <li><a href="responsive-accordion-tabs.html">Responsive Accordion Tabs</a></li>
       </ul>
     </section>
   </div>
