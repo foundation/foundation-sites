@@ -280,7 +280,7 @@ class Orbit {
         this._updateBullets(idx);
       }
 
-      if (this.options.useMUI) {
+      if (this.options.useMUI && !this.$element.is(':hidden')) {
         Foundation.Motion.animateIn(
           $newSlide.addClass('is-active').css({'position': 'absolute', 'top': 0}),
           this.options[`animInFrom${dirIn}`],
