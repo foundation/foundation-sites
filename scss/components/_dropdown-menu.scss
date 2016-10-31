@@ -34,7 +34,7 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
 @mixin left-right-arrows {
   > a::after {
     #{$global-right}: 14px;
-    margin-top: -3px;
+    margin-top: -5px;
   }
 
   &.opens-left > a::after {

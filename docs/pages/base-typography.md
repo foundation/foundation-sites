@@ -56,7 +56,7 @@ The framework includes two typographic scales&mdash;one uses a narrow range of s
 Header  | Default | Medium and up
 --------|---------|--------------
 `<h1>`  | 24px    | 48px
-`<h2>`  | 20px    | 40px 
+`<h2>`  | 20px    | 40px
 `<h3>`  | 19px    | 31px
 `<h4>`  | 18px    | 25px
 `<h5>`  | 17px    | 20px
@@ -260,3 +260,7 @@ Foundation includes print styles developed by HTML5 Boilerplate to give you some
 - Page cleanup and window minimization
 
 On top of that, Foundation includes a couple of simple classes you can use to control elements printing, or not printing. Simply attach `.show-for-print` to an element to only show when printing, and `.hide-for-print` to hide something when printing.
+
+<div class="callout primary">
+  <p>Print styles use `!important` to ensure they aren't overriden by more specific selectors. This framework conscientiously avoids using `!important` declarations. This is one of the few components that does.</p>
+</div>
