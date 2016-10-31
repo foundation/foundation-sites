@@ -1,12 +1,19 @@
 ---
 title: Responsive Accordion Tabs
-description: Use the Markup of a Accordion or Tabs and create a Responsive Accordion Tabs.
+description: Use the Markup of the Accordion or Tabs components to create Responsive Accordion Tabs.
+sass: 
+  - scss/components/_accordion.scss
+  - scss/components/_tabs.scss
+js: js/foundation.zf.responsiveAccordionTabs.js
 ---
 
 ## Basics
 
-Eighter <a href="accordion.html">Accordion Markup</a> or <a href="tabs.html">Tabs Markup</a> can be used for responsive switching these components
+Either the <a href="accordion.html">Accordion Markup</a> or the <a href="tabs.html">Tabs Markup</a> can be used to responsively switch between the two components at different breakpoints.
 
+The Accordion should have an id specified, but the plugin will automatically generate one if the id is omitted.
+
+Accordion content should also have an ID, or the # of the href should be specified, otherwise a random id will be generated
 
 ```html
 <ul class="accordion" data-responsive-accordion-tabs="tabs medium-accordion large-tabs">
@@ -21,7 +28,7 @@ Eighter <a href="accordion.html">Accordion Markup</a> or <a href="tabs.html">Tab
 ```
 
 <div class="secondary callout">
-  <p>Once you put it all together, here's what you get!<br>Scale your browser down to see the toggle happen.<br>I am a `Accordion on small and large` and `Tabs on medium`</p>
+  <p>Once you put it all together, here's what you get!<br>Scale your browser down to see the toggle happen.<br>I am an `Accordion on small and large` but I am `Tabs on medium`</p>
 </div>
 
 <ul class="accordion" data-responsive-accordion-tabs="accordion medium-tabs large-accordion">
@@ -62,7 +69,7 @@ Tabs HTML Markup
 ```
 
 <div class="secondary callout">
-  <p>Once you put it all together, here's what you get!<br>Scale your browser down to see the toggle happen.<br>I am a `Tabs on small and large` and `Accordion on medium`</p>
+  <p>Once you put it all together, here's what you get!<br>Scale your browser down to see the toggle happen.<br>I am `Tabs on small and large` and `Accordion on medium`</p>
 </div>
 
 <ul class="tabs" data-responsive-accordion-tabs="tabs medium-accordion large-tabs" id="example-tabs">
