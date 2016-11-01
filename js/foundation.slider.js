@@ -96,6 +96,63 @@ class Slider {
   }
 
   /**
+  * @function
+  * @private
+  * @param {Number} value - floating point (the value) to be transformed using to a relative position on the slider (the inverse of _value)
+  */
+  _pctOfBar(value) {
+    var pctOfBar = percent(value - this.options.start, this.options.end - this.options.start)
+
+    switch(this.options.positionValueFunction) {
+    case "pow":
+      pctOfBar = this._logTransform(pctOfBar);
+      break;
+    case "log":
+      pctOfBar = this._powTransform(pctOfBar);
+      break;
+    }
+
+    return pctOfBar.toFixed(2)
+  }
+
+  /**
+  * @function
+  * @private
+  * @param {Number} pctOfBar - floating point, the relative position of the slider (typically between 0-1) to be transformed to a value
+  */
+  _value(pctOfBar) {
+    switch(this.options.positionValueFunction) {
+    case "pow":
+      pctOfBar = this._powTransform(pctOfBar);
+      break;
+    case "log":
+      pctOfBar = this._logTransform(pctOfBar);
+      break;
+    }
+    var value = (this.options.end - this.options.start) * pctOfBar + this.options.start;
+
+    return value
+  }
+
+  /**
+  * @function
+  * @private
+  * @param {Number} value - floating point (typically between 0-1) to be transformed using the log function
+  */
+  _logTransform(value) {
+    return baseLog(this.options.nonLinearBase, ((value*(this.options.nonLinearBase-1))+1))
+  }
+
+  /**
+  * @function
+  * @private
+  * @param {Number} value - floating point (typically between 0-1) to be transformed using the power function
+  */
+  _powTransform(value) {
+    return (Math.pow(this.options.nonLinearBase, value) - 1) / (this.options.nonLinearBase - 1)
+  }
+
+  /**
    * Sets the position of the selected handle and fill bar.
    * @function
    * @private
@@ -142,7 +199,7 @@ class Slider {
         handleDim = $hndl[0].getBoundingClientRect()[hOrW],
         elemDim = this.$element[0].getBoundingClientRect()[hOrW],
         //percentage of bar min/max value based on click or drag point
-        pctOfBar = percent(location - this.options.start, this.options.end - this.options.start).toFixed(2),
+        pctOfBar = this._pctOfBar(location),
         //number of actual pixels to shift the handle, based on the percentage obtained above
         pxToMove = (elemDim - handleDim) * pctOfBar,
         //percentage of bar to shift the handle
@@ -296,7 +353,7 @@ class Slider {
       }
       var offsetPct = percent(barXY, barDim);
 
-      value = (this.options.end - this.options.start) * offsetPct + this.options.start;
+      value = this._value(offsetPct);
 
       // turn everything around for RTL, yay math!
       if (Foundation.rtl() && !this.options.vertical) {value = this.options.end - value;}
@@ -560,7 +617,19 @@ Slider.defaults = {
    * @option
    * @example 500
    */
-  changedDelay: 500
+  changedDelay: 500,
+  /**
+  * Basevalue for non-linear sliders
+  * @option
+  * @example 5
+  */
+  nonLinearBase: 5,
+  /**
+  * Basevalue for non-linear sliders, possible values are: 'linear', 'pow' & 'log'. Pow and Log use the nonLinearBase setting.
+  * @option
+  * @example 'linear'
+  */
+  positionValueFunction: 'linear',
 };
 
 function percent(frac, num) {
@@ -568,6 +637,9 @@ function percent(frac, num) {
 }
 function absPosition($handle, dir, clickPos, param) {
   return Math.abs(($handle.position()[dir] + ($handle[param]() / 2)) - clickPos);
+}
+function baseLog(base, value) {
+  return Math.log(value)/Math.log(base)
 }
 
 // Window exports
