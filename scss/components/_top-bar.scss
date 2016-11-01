@@ -154,9 +154,9 @@ $topbar-unstack-breakpoint: medium !default;
   }
   @else {
     .top-bar-title {
+      display:inline-block;
       float: left;
       margin: $topbar-title-spacing;
-      display:inline-block;
     }
 
     .top-bar-left {
