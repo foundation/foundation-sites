@@ -71,6 +71,7 @@ $global-weight-bold: bold;
 $global-radius: 0;
 $global-text-direction: ltr;
 $global-flexbox: false;
+$global-arrow-size: 6px;
 $print-transparent-backgrounds: true;
 
 @include add-foundation-colors;
@@ -210,7 +211,7 @@ $accordion-content-padding: 1rem;
 
 $accordionmenu-arrows: true;
 $accordionmenu-arrow-color: $primary-color;
-$accordionmenu-arrow-size: 6px;
+$accordionmenu-arrow-size: $global-arrow-size;
 
 // 9. Badge
 // --------
@@ -302,7 +303,7 @@ $closebutton-color-hover: $black;
 $drilldown-transition: transform 0.15s linear;
 $drilldown-arrows: true;
 $drilldown-arrow-color: $primary-color;
-$drilldown-arrow-size: 6px;
+$drilldown-arrow-size: $global-arrow-size;
 $drilldown-background: $white;
 
 // 16. Dropdown
@@ -325,7 +326,7 @@ $dropdown-sizes: (
 
 $dropdownmenu-arrows: true;
 $dropdownmenu-arrow-color: $anchor-color;
-$dropdownmenu-arrow-size: 6px;
+$dropdownmenu-arrow-size: $global-arrow-size;
 $dropdownmenu-min-width: 200px;
 $dropdownmenu-background: $white;
 $dropdownmenu-border: 1px solid $medium-gray;
