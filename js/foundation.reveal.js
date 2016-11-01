@@ -83,9 +83,12 @@ class Reveal {
    * @private
    */
   _makeOverlay(id) {
-    var $overlay = $('<div></div>')
-                    .addClass('reveal-overlay')
-                    .appendTo('body');
+    var $overlay = $('body').find(`.reveal-overlay.overlay-${id}`);
+    if ($overlay.length < 1) {
+      $overlay = $('<div></div>')
+        .addClass(`reveal-overlay overlay-${id}`)
+        .appendTo('body');
+    }
     return $overlay;
   }
 
