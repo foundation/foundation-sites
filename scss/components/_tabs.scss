@@ -14,9 +14,17 @@ $tab-margin: 0 !default;
 /// @type Color
 $tab-background: $white !default;
 
-/// active background color of a tab bar.
+/// Font color of tab item.
+/// @type Color
+$tab-color: pick-best-color($tab-background, ($primary-color, $white)) !default;
+
+/// Active background color of a tab bar.
 /// @type Color
 $tab-background-active: $light-gray !default;
+
+/// Active font color of tab item.
+/// @type Color
+$tab-background-active-color: pick-best-color($tab-background-active, ($primary-color, $white)) !default;
 
 /// Font size of tab items.
 /// @type Number
@@ -43,7 +51,7 @@ $tab-content-border: $light-gray !default;
 
 /// Default text color of tab content.
 /// @type Color
-$tab-content-color: foreground($tab-background, $primary-color) !default;
+$tab-content-color: pick-best-color($tab-content-background) !default;
 
 /// Default padding for tab content.
 /// @type Number | List
@@ -68,14 +76,22 @@ $tab-content-padding: 1rem !default;
 }
 
 /// Adds styles for the links within a tab container. Apply this to the `<li>` elements inside a tab container.
-@mixin tabs-title {
+@mixin tabs-title (
+  $padding: $tab-item-padding,
+  $font-size: $tab-item-font-size,
+  $color: $tab-color,
+  $color-active: $tab-background-active-color,
+  $background-hover: $tab-item-background-hover,
+  $background-active: $tab-background-active
+) {
   float: #{$global-left};
 
   > a {
     display: block;
-    padding: $tab-item-padding;
-    font-size: $tab-item-font-size;
+    padding: $padding;
+    font-size: $font-size;
     line-height: 1;
+    color: $color;
 
     &:hover {
       background: $tab-item-background-hover;
@@ -84,15 +100,21 @@ $tab-content-padding: 1rem !default;
     &:focus,
     &[aria-selected='true'] {
       background: $tab-background-active;
+      color: $tab-background-active-color;
     }
   }
 }
 
 /// Adds styles for the wrapper that surrounds a tab group's content panes.
-@mixin tabs-content {
-  border: 1px solid $tab-content-border;
+@mixin tabs-content (
+  $background: $tab-content-background,
+  $color: $tab-content-color,
+  $border-color: $tab-content-border
+) {
+  border: 1px solid $border-color;
   border-top: 0;
-  background: $tab-content-background;
+  background: $background;
+  color: $color;
   transition: all 0.5s ease;
 }
 
@@ -138,7 +160,7 @@ $tab-content-padding: 1rem !default;
     background: $primary-color;
 
     > li > a {
-      color: foreground($primary-color);
+      color: pick-best-color($primary-color);
 
       &:hover,
       &:focus {

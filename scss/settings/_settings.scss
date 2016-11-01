@@ -49,7 +49,7 @@ $global-font-size: 100%;
 $global-width: rem-calc(1200);
 $global-lineheight: 1.5;
 $foundation-palette: (
-  primary: #1a7cbd,
+  primary: #1779ba,
   secondary: #767676,
   success: #3adb76,
   warning: #ffae00,
@@ -197,12 +197,12 @@ $input-error-font-weight: $global-weight-bold;
 $accordion-background: $white;
 $accordion-plusminus: true;
 $accordion-title-font-size: rem-calc(12);
-$accordion-item-color: foreground($accordion-background, $primary-color);
+$accordion-item-color: pick-best-color($accordion-background, ($primary-color, $white));
 $accordion-item-background-hover: $light-gray;
 $accordion-item-padding: 1.25rem 1rem;
 $accordion-content-background: $white;
 $accordion-content-border: 1px solid $light-gray;
-$accordion-content-color: foreground($accordion-content-background, $body-font-color);
+$accordion-content-color: pick-best-color($accordion-content-background, ($body-font-color, $white));
 $accordion-content-padding: 1rem;
 
 // 8. Accordion Menu
@@ -215,7 +215,7 @@ $accordionmenu-arrow-color: $primary-color;
 // --------
 
 $badge-background: $primary-color;
-$badge-color: foreground($badge-background);
+$badge-color: pick-best-color($badge-background);
 $badge-padding: 0.3em;
 $badge-minwidth: 2.1em;
 $badge-font-size: 0.6rem;
@@ -240,8 +240,7 @@ $button-margin: 0 0 $global-margin 0;
 $button-fill: solid;
 $button-background: $primary-color;
 $button-background-hover: scale-color($button-background, $lightness: -15%);
-$button-color: $white;
-$button-color-alt: $black;
+$button-color: pick-best-color($button-background);
 $button-radius: $global-radius;
 $button-sizes: (
   tiny: 0.6rem,
@@ -371,7 +370,7 @@ $form-button-radius: $global-radius;
 // ---------
 
 $label-background: $primary-color;
-$label-color: foreground($label-background);
+$label-color: pick-best-color($label-background);
 $label-font-size: 0.8rem;
 $label-padding: 0.33333rem 0.5rem;
 $label-radius: $global-radius;
@@ -443,7 +442,7 @@ $pagination-item-spacing: rem-calc(1);
 $pagination-radius: $global-radius;
 $pagination-item-background-hover: $light-gray;
 $pagination-item-background-current: $primary-color;
-$pagination-item-color-current: foreground($pagination-item-background-current);
+$pagination-item-color-current: pick-best-color($pagination-item-background-current);
 $pagination-item-color-disabled: $medium-gray;
 $pagination-ellipsis-color: $black;
 $pagination-mobile-items: false;
@@ -534,14 +533,16 @@ $show-header-for-stacked: false;
 
 $tab-margin: 0;
 $tab-background: $white;
+$tab-color: pick-best-color($tab-background, ($primary-color, $white));
 $tab-background-active: $light-gray;
+$tab-background-active-color: pick-best-color($tab-background-active, ($primary-color, $white));
 $tab-item-font-size: rem-calc(12);
 $tab-item-background-hover: $white;
 $tab-item-padding: 1.25rem 1.5rem;
 $tab-expand-max: 6;
 $tab-content-background: $white;
 $tab-content-border: $light-gray;
-$tab-content-color: foreground($tab-background, $primary-color);
+$tab-content-color: pick-best-color($tab-content-background);
 $tab-content-padding: 1rem;
 
 // 33. Thumbnail

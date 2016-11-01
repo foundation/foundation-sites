@@ -20,7 +20,7 @@ $accordion-title-font-size: rem-calc(12) !default;
 
 /// Default text color for items in a Menu.
 /// @type Color
-$accordion-item-color: foreground($accordion-background, $primary-color) !default;
+$accordion-item-color: pick-best-color($accordion-background, ($primary-color, $white)) !default;
 
 /// Default background color on hover for items in a Menu.
 /// @type Color
@@ -40,7 +40,7 @@ $accordion-content-border: 1px solid $light-gray !default;
 
 /// Default text color of tab content.
 /// @type Color
-$accordion-content-color: foreground($accordion-content-background, $body-font-color) !default;
+$accordion-content-color: pick-best-color($accordion-content-background, ($body-font-color, $white)) !default;
 
 /// Default padding for tab content.
 /// @type Number | List

@@ -6,7 +6,7 @@
 @include test-module('Color') {
 
   @include test('Foreground (Black) [function]') {
-    $test: foreground($white);
+    $test: pick-best-color($white);
     $expect: $black;
 
     @include assert-equal($test, $expect,
@@ -14,7 +14,7 @@
   }
 
   @include test('Foreground (White) [function]') {
-    $test: foreground($black);
+    $test: pick-best-color($black);
     $expect: $white;
 
     @include assert-equal($test, $expect,

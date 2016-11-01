@@ -57,7 +57,7 @@
 /// @param {Color} $color2 - Second color to compare.
 ///
 /// @returns {Number} The contrast ratio of the compared colors.
-@function pick-best-color($base, $colors: ($button-color, $button-color-alt), $tolerance: 0) {
+@function pick-best-color($base, $colors: ($white, $black), $tolerance: 0) {
   $contrast: color-contrast($base, nth($colors, 1));
   $best: nth($colors, 1);
 
