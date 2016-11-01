@@ -210,6 +210,7 @@ $accordion-content-padding: 1rem;
 
 $accordionmenu-arrows: true;
 $accordionmenu-arrow-color: $primary-color;
+$accordionmenu-arrow-size: 6px;
 
 // 9. Badge
 // --------
@@ -301,6 +302,7 @@ $closebutton-color-hover: $black;
 $drilldown-transition: transform 0.15s linear;
 $drilldown-arrows: true;
 $drilldown-arrow-color: $primary-color;
+$drilldown-arrow-size: 6px;
 $drilldown-background: $white;
 
 // 16. Dropdown
@@ -323,6 +325,7 @@ $dropdown-sizes: (
 
 $dropdownmenu-arrows: true;
 $dropdownmenu-arrow-color: $anchor-color;
+$dropdownmenu-arrow-size: 6px;
 $dropdownmenu-min-width: 200px;
 $dropdownmenu-background: $white;
 $dropdownmenu-border: 1px solid $medium-gray;
