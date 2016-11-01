@@ -245,7 +245,7 @@ class Orbit {
    */
   _detachEvents() {
     // Don't do anything if there are no slides (first run)
-    if (typeof this.$slides == "undefined") {
+    if (typeof this.$slides == 'undefined') {
       return;
     }
 
