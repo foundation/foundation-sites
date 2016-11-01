@@ -61,12 +61,12 @@ $orbit-control-zindex: 10 !default;
   margin: 0;
   overflow: hidden;
   list-style: none;
+  height: 0px; // Prevent FOUC by not showing until JS sets height
 }
 
 /// Adds styles for the individual slides of an Orbit slider. These styles are used on the `.orbit-slide` class.
 @mixin orbit-slide {
   width: 100%;
-  max-height: 100%;
 
   &.no-motionui {
     &.is-active {
