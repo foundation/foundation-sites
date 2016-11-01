@@ -43,7 +43,8 @@ class Orbit {
   * @private
   */
   _init() {
-    this._detachEvents();
+    // @TODO: consider discussion on PR #9278 about DOM pollution by changeSlide
+    this._reset();
 
     this.$wrapper = this.$element.find(`.${this.options.containerClass}`);
     this.$slides = this.$element.find(`.${this.options.slideClass}`);
@@ -241,9 +242,9 @@ class Orbit {
   }
 
   /**
-   * Detaches event listeners
+   * Resets Orbit so it can be reinitialized
    */
-  _detachEvents() {
+  _reset() {
     // Don't do anything if there are no slides (first run)
     if (typeof this.$slides == 'undefined') {
       return;
