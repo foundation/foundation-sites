@@ -43,6 +43,9 @@ class Orbit {
   * @private
   */
   _init() {
+    // @TODO: consider discussion on PR #9278 about DOM pollution by changeSlide
+    this._reset();
+
     this.$wrapper = this.$element.find(`.${this.options.containerClass}`);
     this.$slides = this.$element.find(`.${this.options.slideClass}`);
     var $images = this.$element.find('img'),
@@ -234,6 +237,44 @@ class Orbit {
             }
           });
         });
+      }
+    }
+  }
+
+  /**
+   * Resets Orbit so it can be reinitialized
+   */
+  _reset() {
+    // Don't do anything if there are no slides (first run)
+    if (typeof this.$slides == 'undefined') {
+      return;
+    }
+
+    if (this.$slides.length > 1) {
+      // Remove old events
+      this.$element.off('.zf.orbit').find('*').off('.zf.orbit')
+
+      // Restart timer if autoPlay is enabled
+      if (this.options.autoPlay) {
+        this.timer.restart();
+      }
+
+      // Reset all sliddes
+      this.$slides.each(function(el) {
+        $(el).removeClass('is-active is-active is-in')
+          .removeAttr('aria-live')
+          .hide();
+      });
+
+      // Show the first slide
+      this.$slides.first().addClass('is-active').show();
+
+      // Triggers when the slide has finished animating
+      this.$element.trigger('slidechange.zf.orbit', [this.$slides.first()]);
+
+      // Select first bullet if bullets are present
+      if (this.options.bullets) {
+        this._updateBullets(0);
       }
     }
   }
