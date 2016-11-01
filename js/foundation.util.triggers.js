@@ -152,21 +152,13 @@ function scrollListener(debounce){
 }
 
 function mutateListener(debounce) {
-    let timer,
-        $nodes = $('[data-mutate]');
-    if ($nodes.length) {
-        if (timer) {
-          clearTimeout(timer);
-        }
-
-        timer = setTimeout(function () {
-		
+    let $nodes = $('[data-mutate]');
+    if ($nodes.length && MutationObserver){
 			//trigger all listening elements and signal a mutate event
+      //no IE 9 or 10
 			$nodes.each(function () {
 			  $(this).triggerHandler('mutateme.zf.trigger');
 			});
-		  
-        }, debounce || 10); //default time to emit scroll event
     }
  }
 
