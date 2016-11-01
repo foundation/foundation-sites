@@ -12,6 +12,7 @@
   $row: 'row',
   $column: 'column',
   $column-row: 'column-row',
+  $gutter: 'gutter',
   $push: 'push',
   $pull: 'pull',
   $center: 'centered',
@@ -34,7 +35,7 @@
     }
 
     // Nesting
-    & & {
+    & .#{$row} {
       @include grid-row-nest($grid-column-gutter);
 
       &.#{$collapse} {
@@ -45,11 +46,20 @@
 
     // Expanded (full-width) row
     &.#{$expanded} {
-      max-width: none;
+      @include grid-row-size(expand);
 
       .#{$row} {
         margin-left: auto;
         margin-right: auto;
+      }
+    }
+
+    // Static (unresponsive) row gutters
+    @each $breakpoint, $value in $grid-column-gutter {
+      &.#{$gutter}-#{$breakpoint} {
+        > .#{$column} {
+          @include grid-col-gutter($value);
+        }
       }
     }
   }
@@ -69,14 +79,14 @@
   // The double .row class is needed to bump up the specificity
   .#{$column}.#{$row}.#{$row} {
     float: none;
+  }
 
-    // To properly nest a column row, padding and margin is removed
-    .#{$row} & {
-      padding-left: 0;
-      padding-right: 0;
-      margin-left: 0;
-      margin-right: 0;
-    }
+  // To properly nest a column row, padding and margin is removed
+  .#{$row} .#{$column}.#{$row}.#{$row} {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   @include -zf-each-breakpoint {
@@ -116,17 +126,19 @@
     .#{$-zf-size}-#{$collapse} {
       > .#{$column} { @include grid-col-collapse; }
 
-      .#{$row},
-      .#{$expanded}.#{$row} &.#{$row} {
+      .#{$row} {
         margin-left: 0;
         margin-right: 0;
       }
     }
 
-    .#{$-zf-size}-#{$uncollapse} {
-      $gutter: -zf-get-bp-val($grid-column-gutter, $-zf-size);
+    .#{$expanded}.#{$row} .#{$-zf-size}-#{$collapse}.#{$row} {
+      margin-left: 0;
+      margin-right: 0;
+    }
 
-      > .#{$column} { @include grid-col-uncollapse($gutter); }
+    .#{$-zf-size}-#{$uncollapse} {
+      > .#{$column} { @include grid-col-gutter($-zf-size); }
     }
 
     // Positioning

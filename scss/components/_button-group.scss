@@ -22,6 +22,10 @@ $buttongroup-child-selector: '.button' !default;
 /// @type Number
 $buttongroup-expand-max: 6 !default;
 
+/// Determines if $button-radius is applied to each button or the button group as a whole. Use $global-radius in _settings.scss to change radius.
+/// @type Boolean
+$buttongroup-radius-on-each: true !default;
+
 /// Add styles for a button group container.
 /// @param {String} $child-selector [$buttongroup-child-selector] - Selector for the buttons inside a button group.
 @mixin button-group(
@@ -41,15 +45,32 @@ $buttongroup-expand-max: 6 !default;
 
   #{$child-selector} {
     margin: 0;
+    margin-#{$global-right}: $buttongroup-spacing;
+    margin-bottom: $buttongroup-spacing;
     font-size: map-get($button-sizes, default);
 
     @if $global-flexbox {
       flex: 0 0 auto;
     }
 
-    &:not(:last-child) {
-      margin-right: $buttongroup-spacing;
+    &:last-child {
+      margin-#{$global-right}: 0;
     }
+
+    @if not $buttongroup-radius-on-each {
+      border-radius: 0;
+
+      &:first-child {
+        border-top-#{$global-left}-radius: $global-radius;
+        border-bottom-#{$global-left}-radius: $global-radius;
+      }
+
+      &:last-child {
+        border-top-#{$global-right}-radius: $global-radius;
+        border-bottom-#{$global-right}-radius: $global-radius;
+      }
+    }
+
   }
 }
 
@@ -60,7 +81,7 @@ $buttongroup-expand-max: 6 !default;
   $count: null
 ) {
   @if not $global-flexbox {
-    margin-right: -$buttongroup-spacing;
+    margin-#{$global-right}: -$buttongroup-spacing;
 
     &::before,
     &::after {
@@ -78,12 +99,12 @@ $buttongroup-expand-max: 6 !default;
         &:first-child:nth-last-child(#{$i}) {
           &, &:first-child:nth-last-child(#{$i}) ~ #{$selector} {
             display: inline-block;
-            @if #{$buttongroup-spacing} == '0' {
-              width: #{percentage(1 / $i)};
-            } @else {
-              width: calc(#{percentage(1 / $i)} - #{$buttongroup-spacing});
+            width: calc(#{percentage(1 / $i)} - #{$buttongroup-spacing});
+            margin-#{$global-right}: $buttongroup-spacing;
+
+            &:last-child {
+              margin-#{$global-right}: $buttongroup-spacing * -$buttongroup-expand-max;
             }
-            margin-right: $buttongroup-spacing;
           }
         }
       }
@@ -103,21 +124,31 @@ $buttongroup-expand-max: 6 !default;
   #{$selector} {
     @if $global-flexbox {
       flex: 0 0 100%;
-      margin-#{$global-right}: 0; 
     }
     @else {
       width: 100%;
-      border-#{$global-right}: $buttongroup-spacing solid transparent;
     }
-    
-    &:not(:last-child) {
-      @if $global-flexbox {
-        margin-bottom: $buttongroup-spacing;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+
+    @if not $buttongroup-radius-on-each {
+      border-radius: 0;
+
+      &:first-child{
+        border-top-#{$global-left}-radius: $global-radius;
+        border-top-#{$global-right}-radius: $global-radius;
       }
-      @else {
-        border-bottom: $buttongroup-spacing solid $body-background;
+
+      &:last-child {
+        margin-bottom: 0;
+        border-bottom-#{$global-left}-radius: $global-radius;
+        border-bottom-#{$global-right}-radius: $global-radius;
       }
     }
+
   }
 }
 
@@ -134,10 +165,22 @@ $buttongroup-expand-max: 6 !default;
     @else {
       width: auto;
     }
+    margin-bottom: 0;
 
-    &:not(:last-child) {
-      margin-#{$global-right}: $buttongroup-spacing;
+    @if not $buttongroup-radius-on-each {
+      &:first-child {
+        border-top-#{$global-left}-radius: $global-radius;
+        border-top-#{$global-right}-radius: 0;
+        border-bottom-#{$global-left}-radius: $global-radius;
+      }
+
+      &:last-child {
+        border-top-#{$global-right}-radius: $global-radius;
+        border-bottom-#{$global-right}-radius: $global-radius;
+        border-bottom-#{$global-left}-radius: 0;
+      }
     }
+
   }
 }
 
@@ -195,7 +238,7 @@ $buttongroup-expand-max: 6 !default;
 
         #{$buttongroup-child-selector} {
           display: block;
-          margin-right: 0;
+          margin-#{$global-right}: 0;
         }
       }
     }

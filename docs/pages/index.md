@@ -141,6 +141,7 @@ Get to know the pieces of Foundation.
         <li><a href="reveal.html">Reveal</a></li>
         <li><a href="table.html">Table</a></li>
         <li><a href="tabs.html">Tabs</a></li>
+        <li><a href="responsive-accordion-tabs.html">Responsive Accordion Tabs</a></li>
       </ul>
     </section>
   </div>
@@ -149,7 +150,7 @@ Get to know the pieces of Foundation.
       <h4>Media</h4>
       <ul>
         <li><a href="badge.html">Badge</a></li>
-        <li><a href="flex-video.html">Flex Video</a></li>
+        <li><a href="responsive-embed.html">Responsive Embed</a></li>
         <li><a href="label.html">Label</a></li>
         <li><a href="orbit.html">Orbit</a></li>
         <li><a href="progress-bar.html">Progress Bar</a></li>

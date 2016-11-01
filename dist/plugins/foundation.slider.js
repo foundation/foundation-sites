@@ -22,7 +22,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @param {jQuery} element - jQuery object to make into an accordion menu.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-
     function Slider(element, options) {
       _classCallCheck(this, Slider);
 
@@ -120,6 +119,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: '_setHandlePos',
       value: function _setHandlePos($hndl, location, noInvert, cb) {
+        // don't move if the slider has been disabled since its initialization
+        if (this.$element.hasClass(this.options.disabledClass)) {
+          return;
+        }
         //might need to alter that slightly for bars that will have odd number selections.
         location = parseFloat(location); //on input change events, convert string to number...grumble.
 
@@ -179,7 +182,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           dim,
 
           //percentage w/h of the handle compared to the slider bar
-          handlePct = ~ ~(percent(handleDim, elemDim) * 100);
+          handlePct = ~~(percent(handleDim, elemDim) * 100);
           //if left handle, the math is slightly different than if it's the right handle, and the left/top property needs to be changed for the fill bar
           if (isLeftHndl) {
             //left or top percentage value to apply to the fill bar.
@@ -192,12 +195,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               cb();
             } //this is only needed for the initialization of 2 handled sliders
           } else {
-              //just caching the value of the left/bottom handle's left/top property
-              var handlePos = parseFloat(this.$handle[0].style[lOrT]);
-              //calculate the new min-height/width for the fill bar. Use isNaN to prevent false positives for numbers <= 0
-              //based on the percentage of movement of the handle being manipulated, less the opposing handle's left/top position, plus the percentage w/h of the handle itself
-              dim = movement - (isNaN(handlePos) ? this.options.initialStart / ((this.options.end - this.options.start) / 100) : handlePos) + handlePct;
-            }
+            //just caching the value of the left/bottom handle's left/top property
+            var handlePos = parseFloat(this.$handle[0].style[lOrT]);
+            //calculate the new min-height/width for the fill bar. Use isNaN to prevent false positives for numbers <= 0
+            //based on the percentage of movement of the handle being manipulated, less the opposing handle's left/top position, plus the percentage w/h of the handle itself
+            dim = movement - (isNaN(handlePos) ? this.options.initialStart / ((this.options.end - this.options.start) / 100) : handlePos) + handlePct;
+          }
           // assign the min-height/width to our css object
           css['min-' + hOrW] = dim + '%';
         }
@@ -303,14 +306,29 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               vertical = this.options.vertical,
               param = vertical ? 'height' : 'width',
               direction = vertical ? 'top' : 'left',
-              pageXY = vertical ? e.pageY : e.pageX,
+              eventOffset = vertical ? e.pageY : e.pageX,
               halfOfHandle = this.$handle[0].getBoundingClientRect()[param] / 2,
               barDim = this.$element[0].getBoundingClientRect()[param],
-              barOffset = this.$element.offset()[direction] - pageXY,
+              windowScroll = vertical ? $(window).scrollTop() : $(window).scrollLeft();
 
-          //if the cursor position is less than or greater than the elements bounding coordinates, set coordinates within those bounds
-          barXY = barOffset > 0 ? -halfOfHandle : barOffset - halfOfHandle < -barDim ? barDim : Math.abs(barOffset),
-              offsetPct = percent(barXY, barDim);
+          var elemOffset = this.$element.offset()[direction];
+
+          // touch events emulated by the touch util give position relative to screen, add window.scroll to event coordinates...
+          // best way to guess this is simulated is if clientY == pageY
+          if (e.clientY === e.pageY) {
+            eventOffset = eventOffset + windowScroll;
+          }
+          var eventFromBar = eventOffset - elemOffset;
+          var barXY;
+          if (eventFromBar < 0) {
+            barXY = 0;
+          } else if (eventFromBar > barDim) {
+            barXY = barDim;
+          } else {
+            barXY = eventFromBar;
+          }
+          var offsetPct = percent(barXY, barDim);
+
           value = (this.options.end - this.options.start) * offsetPct + this.options.start;
 
           // turn everything around for RTL, yay math!
@@ -379,10 +397,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: '_events',
       value: function _events($handle) {
-        if (this.options.disabled) {
-          return false;
-        }
-
         var _this = this,
             curHandle,
             timer;
@@ -421,7 +435,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
             $body.on('mousemove.zf.slider', function (e) {
               e.preventDefault();
-
               _this._handleEvent(e, curHandle);
             }).on('mouseup.zf.slider', function (e) {
               _this._handleEvent(e, curHandle);
@@ -432,6 +445,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
               $body.off('mousemove.zf.slider mouseup.zf.slider');
             });
+          })
+          // prevent events triggered by touch
+          .on('selectstart.zf.slider touchmove.zf.slider', function (e) {
+            e.preventDefault();
           });
         }
 
@@ -586,7 +603,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      */
     invertVertical: false,
     /**
-     * Milliseconds before the `changed.zf-slider` event is triggered after value change. 
+     * Milliseconds before the `changed.zf-slider` event is triggered after value change.
      * @option
      * @example 500
      */

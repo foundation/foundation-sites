@@ -9,6 +9,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   /**
    * Equalizer module.
    * @module foundation.equalizer
+   * @requires foundation.util.mediaQuery
+   * @requires foundation.util.timerAndImageLoader if equalizer contains images
    */
 
   var Equalizer = function () {
@@ -19,7 +21,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @param {Object} element - jQuery object to add the trigger to.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-
     function Equalizer(element, options) {
       _classCallCheck(this, Equalizer);
 
@@ -49,6 +50,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.hasNested = this.$element.find('[data-equalizer]').length > 0;
         this.isNested = this.$element.parentsUntil(document.body, '[data-equalizer]').length > 0;
         this.isOn = false;
+        this._bindHandler = {
+          onResizeMeBound: this._onResizeMe.bind(this),
+          onPostEqualizedBound: this._onPostEqualized.bind(this)
+        };
 
         var imgs = this.$element.find('img');
         var tooSmall;
@@ -76,7 +81,34 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       key: '_pauseEvents',
       value: function _pauseEvents() {
         this.isOn = false;
-        this.$element.off('.zf.equalizer resizeme.zf.trigger');
+        this.$element.off({
+          '.zf.equalizer': this._bindHandler.onPostEqualizedBound,
+          'resizeme.zf.trigger': this._bindHandler.onResizeMeBound
+        });
+      }
+
+      /**
+       * function to handle $elements resizeme.zf.trigger, with bound this on _bindHandler.onResizeMeBound
+       * @private
+       */
+
+    }, {
+      key: '_onResizeMe',
+      value: function _onResizeMe(e) {
+        this._reflow();
+      }
+
+      /**
+       * function to handle $elements postequalized.zf.equalizer, with bound this on _bindHandler.onPostEqualizedBound
+       * @private
+       */
+
+    }, {
+      key: '_onPostEqualized',
+      value: function _onPostEqualized(e) {
+        if (e.target !== this.$element[0]) {
+          this._reflow();
+        }
       }
 
       /**
@@ -90,13 +122,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         var _this = this;
         this._pauseEvents();
         if (this.hasNested) {
-          this.$element.on('postequalized.zf.equalizer', function (e) {
-            if (e.target !== _this.$element[0]) {
-              _this._reflow();
-            }
-          });
+          this.$element.on('postequalized.zf.equalizer', this._bindHandler.onPostEqualizedBound);
         } else {
-          this.$element.on('resizeme.zf.trigger', this._reflow.bind(this));
+          this.$element.on('resizeme.zf.trigger', this._bindHandler.onResizeMeBound);
         }
         this.isOn = true;
       }
@@ -163,7 +191,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: '_isStacked',
       value: function _isStacked() {
-        return this.$watched[0].offsetTop !== this.$watched[1].offsetTop;
+        return this.$watched[0].getBoundingClientRect().top !== this.$watched[1].getBoundingClientRect().top;
       }
 
       /**
@@ -317,7 +345,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @option
      * @example true
      */
-    equalizeOnStack: true,
+    equalizeOnStack: false,
     /**
      * Enable height equalization row by row.
      * @option

@@ -40,9 +40,7 @@ class Reveal {
     this.id = this.$element.attr('id');
     this.isActive = false;
     this.cached = {mq: Foundation.MediaQuery.current};
-    this.isiOS = iPhoneSniff();
-
-    if(this.isiOS){ this.$element.addClass('is-ios'); }
+    this.isMobile = mobileSniff();
 
     this.$anchor = $(`[data-open="${this.id}"]`).length ? $(`[data-open="${this.id}"]`) : $(`[data-toggle="${this.id}"]`);
     this.$anchor.attr({
@@ -69,7 +67,7 @@ class Reveal {
     if(this.$overlay) {
       this.$element.detach().appendTo(this.$overlay);
     } else {
-      this.$element.detach().appendTo($('body'));
+      this.$element.detach().appendTo($(this.options.appendTo));
       this.$element.addClass('without-overlay');
     }
     this._events();
@@ -85,7 +83,7 @@ class Reveal {
   _makeOverlay(id) {
     var $overlay = $('<div></div>')
                     .addClass('reveal-overlay')
-                    .appendTo('body');
+                    .appendTo(this.options.appendTo);
     return $overlay;
   }
 
@@ -133,7 +131,12 @@ class Reveal {
 
     this.$element.on({
       'open.zf.trigger': this.open.bind(this),
-      'close.zf.trigger': this.close.bind(this),
+      'close.zf.trigger': (event, $element) => {
+        if ((event.target === _this.$element[0]) ||
+            ($(event.target).parents('[data-closable]')[0] === $element)) { // only close reveal when it's explicitly called
+          return this.close.apply(this);
+        }
+      },
       'toggle.zf.trigger': this.toggle.bind(this),
       'resizeme.zf.trigger': function() {
         _this._updatePosition();
@@ -152,7 +155,11 @@ class Reveal {
 
     if (this.options.closeOnClick && this.options.overlay) {
       this.$overlay.off('.zf.reveal').on('click.zf.reveal', function(e) {
-        if (e.target === _this.$element[0] || $.contains(_this.$element[0], e.target)) { return; }
+        if (e.target === _this.$element[0] ||
+          $.contains(_this.$element[0], e.target) ||
+            !$.contains(document, e.target)) {
+              return;
+        }
         _this.close();
       });
     }
@@ -239,8 +246,10 @@ class Reveal {
         Foundation.Motion.animateIn(this.$overlay, 'fade-in');
       }
       Foundation.Motion.animateIn(this.$element, this.options.animationIn, () => {
-        this.focusableElements = Foundation.Keyboard.findFocusable(this.$element);
-        afterAnimationFocus();
+        if(this.$element) { // protect against object having been removed
+          this.focusableElements = Foundation.Keyboard.findFocusable(this.$element);
+          afterAnimationFocus();
+        }
       });
     }
     // jQuery method of reveal
@@ -266,16 +275,13 @@ class Reveal {
      */
     this.$element.trigger('open.zf.reveal');
 
-    if (this.isiOS) {
-      var scrollPos = window.pageYOffset;
-      $('html, body').addClass('is-reveal-open').scrollTop(scrollPos);
+    if (this.isMobile) {
+      this.originalScrollPos = window.pageYOffset;
+      $('html, body').addClass('is-reveal-open');
     }
     else {
       $('body').addClass('is-reveal-open');
     }
-
-    $('body')
-      .addClass('is-reveal-open');
 
     setTimeout(() => {
       this._extraHandlers();
@@ -288,11 +294,14 @@ class Reveal {
    */
   _extraHandlers() {
     var _this = this;
+    if(!this.$element) { return; } // If we're in the middle of cleanup, don't freak out
     this.focusableElements = Foundation.Keyboard.findFocusable(this.$element);
 
     if (!this.options.overlay && this.options.closeOnClick && !this.options.fullScreen) {
       $('body').on('click.zf.reveal', function(e) {
-        if (e.target === _this.$element[0] || $.contains(_this.$element[0], e.target)) { return; }
+        if (e.target === _this.$element[0] ||
+          $.contains(_this.$element[0], e.target) ||
+            !$.contains(document, e.target)) { return; }
         _this.close();
       });
     }
@@ -385,8 +394,12 @@ class Reveal {
     this.$element.off('keydown.zf.reveal');
 
     function finishUp() {
-      if (_this.isiOS) {
+      if (_this.isMobile) {
         $('html, body').removeClass('is-reveal-open');
+        if(_this.originalScrollPos) {
+          $('body').scrollTop(_this.originalScrollPos);
+          _this.originalScrollPos = null;
+        }
       }
       else {
         $('body').removeClass('is-reveal-open');
@@ -440,7 +453,7 @@ class Reveal {
    */
   destroy() {
     if (this.options.overlay) {
-      this.$element.appendTo($('body')); // move $element outside of $overlay to prevent error unregisterPlugin()
+      this.$element.appendTo($(this.options.appendTo)); // move $element outside of $overlay to prevent error unregisterPlugin()
       this.$overlay.hide().off().remove();
     }
     this.$element.hide().off();
@@ -535,7 +548,14 @@ Reveal.defaults = {
    * @option
    * @example false
    */
-  deepLink: false
+  deepLink: false,
+    /**
+   * Allows the modal to append to custom div.
+   * @option
+   * @example false
+   */
+  appendTo: "body"
+
 };
 
 // Window exports
@@ -543,6 +563,14 @@ Foundation.plugin(Reveal, 'Reveal');
 
 function iPhoneSniff() {
   return /iP(ad|hone|od).*OS/.test(window.navigator.userAgent);
+}
+
+function androidSniff() {
+  return /Android/.test(window.navigator.userAgent);
+}
+
+function mobileSniff() {
+  return iPhoneSniff() || androidSniff();
 }
 
 }(jQuery);

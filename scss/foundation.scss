@@ -1,6 +1,6 @@
 /**
  * Foundation for Sites by ZURB
- * Version 6.2.1
+ * Version 6.2.4
  * foundation.zurb.com
  * Licensed under MIT Open Source
  */
@@ -29,7 +29,7 @@
 @import 'components/dropdown-menu';
 @import 'components/dropdown';
 @import 'components/flex';
-@import 'components/flex-video';
+@import 'components/responsive-embed';
 @import 'components/label';
 @import 'components/media-object';
 @import 'components/menu';
@@ -76,7 +76,7 @@
   @include foundation-drilldown-menu;
   @include foundation-dropdown;
   @include foundation-dropdown-menu;
-  @include foundation-flex-video;
+  @include foundation-responsive-embed;
   @include foundation-label;
   @include foundation-media-object;
   @include foundation-off-canvas;

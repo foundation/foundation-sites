@@ -29,7 +29,11 @@ $drilldown-background: $white !default;
     overflow: hidden;
 
     li {
-      display: block !important;
+      display: block;
+    }
+
+    &.animate-height {
+      transition: height 0.5s;
     }
   }
 
@@ -39,7 +43,7 @@ $drilldown-background: $white !default;
     top: 0;
     #{$global-left}: 100%;
     z-index: -1;
-    height: 100%;
+    // height: 100%;
     width: 100%;
     background: $drilldown-background;
     transition: $drilldown-transition;

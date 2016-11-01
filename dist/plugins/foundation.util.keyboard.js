@@ -60,23 +60,23 @@
         // this component does not differentiate between ltr and rtl
         cmds = commandList; // use plain list
       } else {
-          // merge ltr and rtl: if document is rtl, rtl overwrites ltr and vice versa
-          if (Foundation.rtl()) cmds = $.extend({}, commandList.ltr, commandList.rtl);else cmds = $.extend({}, commandList.rtl, commandList.ltr);
-        }
+        // merge ltr and rtl: if document is rtl, rtl overwrites ltr and vice versa
+        if (Foundation.rtl()) cmds = $.extend({}, commandList.ltr, commandList.rtl);else cmds = $.extend({}, commandList.rtl, commandList.ltr);
+      }
       command = cmds[keyCode];
 
       fn = functions[command];
       if (fn && typeof fn === 'function') {
         // execute function  if exists
-        fn.apply();
+        var returnValue = fn.apply();
         if (functions.handled || typeof functions.handled === 'function') {
           // execute function when event was handled
-          functions.handled.apply();
+          functions.handled(returnValue);
         }
       } else {
         if (functions.unhandled || typeof functions.unhandled === 'function') {
           // execute function when event was not handled
-          functions.unhandled.apply();
+          functions.unhandled();
         }
       }
     },

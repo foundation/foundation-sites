@@ -82,8 +82,4 @@ $titlebar-icon-spacing: 0.25rem !default;
     vertical-align: middle;
     display: inline-block;
   }
-
-  .menu-icon.dark {
-    @include hamburger;
-  }
 }

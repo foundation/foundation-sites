@@ -17,7 +17,10 @@
     #{$global-left}: $offset;
   }
   @else if $position == center {
-    float: none;
+    &, &:last-child:not(:first-child) {
+      float: none;
+      clear: both;
+    }
     margin-left: auto;
     margin-right: auto;
   }

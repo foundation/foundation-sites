@@ -1,6 +1,6 @@
 {
   "name": "foundation-sites",
-  "version": "6.2.1",
+  "version": "6.2.4",
   "main": "dist/foundation.js",
   "description": "The most advanced responsive front-end framework in the world.",
   "author": "ZURB <foundation@zurb.com> (http://foundation.zurb.com)",
@@ -9,9 +9,10 @@
     "start": "gulp",
     "test": "npm run test:sass && npm run test:javascript",
     "test:sass": "mocha test/sass/test_sass.js",
-    "test:javascript": "gulp sass:foundation && gulp test:transpile-js && mocha-phantomjs test/javascript/index.html",
+    "test:javascript": "gulp sass:foundation && gulp test:transpile-js && mocha-phantomjs --ignore-resource-errors test/javascript/index.html",
     "test:visual": "gulp test",
     "deploy": "gulp deploy",
+    "deploy:prep": "gulp deploy:prep",
     "deploy:docs": "gulp deploy:docs"
   },
   "dependencies": {
@@ -42,7 +43,7 @@
     "gulp-add-src": "^0.2.0",
     "gulp-autoprefixer": "^2.3.1",
     "gulp-babel": "^6.1.1",
-    "gulp-cache-bust": "^1.0.2",
+    "gulp-cache-bust": "1.0.2",
     "gulp-concat": "^2.4.3",
     "gulp-cssnano": "^2.1.0",
     "gulp-eslint": "^2.0.0",
@@ -59,7 +60,7 @@
     "gulp-ruby-sass": "^2.0.6",
     "gulp-sass": "^2.1.0",
     "gulp-scss-lint": "^0.3.9",
-    "gulp-sourcemaps": "^1.6.0",
+    "gulp-sourcemaps": "1.6.0",
     "gulp-uglify": "^1.1.0",
     "gulp-zip": "^3.2.0",
     "inquirer": "^0.11.4",
@@ -94,13 +95,15 @@
     "email": "foundation@zurb.com"
   },
   "keywords": [
+    "eyeglass-module",
     "handlebars-helper-rel",
     "handlebars-helper-slugify"
   ],
   "eyeglass": {
     "name": "foundation",
     "sassDir": "scss",
-    "needs": "^0.8.0"
+    "needs": "^0.8.0",
+    "exports": false
   },
   "jspm": {
     "format": "global",
@@ -111,5 +114,8 @@
         ]
       }
     }
+  },
+  "browserify": {
+    "transform": [["babelify", { "presets": ["es2015"] }]]
   }
 }

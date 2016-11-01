@@ -38,6 +38,11 @@ gulp.task('deploy', function(cb) {
   sequence('deploy:prompt', 'deploy:version', 'deploy:dist', 'deploy:plugins', 'deploy:settings', 'deploy:commit', 'deploy:templates', cb);
 });
 
+gulp.task('deploy:prep', function(cb) {
+  sequence('deploy:prompt', 'deploy:version', 'deploy:dist', 'deploy:plugins', 'deploy:settings', cb);
+});
+
+
 gulp.task('deploy:prompt', function(cb) {
   inquirer.prompt([{
     type: 'input',
@@ -64,22 +69,25 @@ gulp.task('deploy:dist', ['sass:foundation', 'javascript:foundation'], function(
   return gulp.src(DIST_FILES)
     .pipe(plumber())
     .pipe(cssFilter)
-      .pipe(gulp.dest('./dist'))
+      .pipe(gulp.dest('./dist/css'))
       .pipe(cssnano())
       .pipe(rename({ suffix: '.min' }))
-      .pipe(gulp.dest('./dist'))
+      .pipe(gulp.dest('./dist/css'))
     .pipe(cssFilter.restore)
     .pipe(jsFilter)
-      .pipe(gulp.dest('./dist'))
+      .pipe(gulp.dest('./dist/js'))
       .pipe(uglify())
       .pipe(rename({ suffix: '.min' }))
-      .pipe(gulp.dest('./dist'));
+      .pipe(gulp.dest('./dist/js'));
 });
 
 // Copies standalone JavaScript plugins to dist/ folder
 gulp.task('deploy:plugins', function() {
   gulp.src('_build/assets/js/plugins/*.js')
-    .pipe(gulp.dest('dist/plugins'));
+    .pipe(gulp.dest('dist/js/plugins'))
+    .pipe(uglify())
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(gulp.dest('dist/js/plugins'));
 });
 
 // Generates a settings file
