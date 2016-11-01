@@ -85,7 +85,7 @@ class Reveal {
   _makeOverlay(id) {
     var $overlay = $('<div></div>')
                     .addClass('reveal-overlay')
-                    .appendTo('this.options.appendTo');
+                    .appendTo(this.options.appendTo);
     return $overlay;
   }
 
@@ -567,11 +567,11 @@ Reveal.defaults = {
    */
   deepLink: false,
     /**
-   * Allows the modal to append to custom div. 
+   * Allows the modal to append to custom div.
    * @option
    * @example false
    */
-  appendTo: "body"   
+  appendTo: "body"
 
 };
 
