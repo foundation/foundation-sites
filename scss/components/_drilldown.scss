@@ -18,6 +18,10 @@ $drilldown-arrows: true !default;
 /// @type Color
 $drilldown-arrow-color: $primary-color !default;
 
+/// Sets drilldown arrow size if arrow is used.
+/// @type Length
+$drilldown-arrow-size: 6px !default;
+
 /// Background color for drilldown submenus.
 /// @type Color
 $drilldown-background: $white !default;
@@ -64,16 +68,16 @@ $drilldown-background: $white !default;
       position: relative;
 
       &::after {
-        @include css-triangle(6px, $drilldown-arrow-color, $global-right);
+        @include css-triangle($drilldown-arrow-size, $drilldown-arrow-color, $global-right);
         position: absolute;
         top: 50%;
-        margin-top: -6px;
+        transform: translateY(-50%);
         #{$global-right}: 1rem;
       }
     }
 
     .js-drilldown-back > a::before {
-      @include css-triangle(6px, $drilldown-arrow-color, $global-left);
+      @include css-triangle($drilldown-arrow-size, $drilldown-arrow-color, $global-left);
       border-#{$global-left}-width: 0;
       display: inline-block;
       vertical-align: middle;
