@@ -372,7 +372,8 @@ $form-button-radius: $global-radius;
 // ---------
 
 $label-background: $primary-color;
-$label-color: pick-best-color($label-background);
+$label-color: $white;
+$label-color-alt: $black;
 $label-font-size: 0.8rem;
 $label-padding: 0.33333rem 0.5rem;
 $label-radius: $global-radius;
