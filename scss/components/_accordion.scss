@@ -20,7 +20,7 @@ $accordion-title-font-size: rem-calc(12) !default;
 
 /// Default text color for items in a Menu.
 /// @type Color
-$accordion-item-color: pick-best-color($accordion-background, ($primary-color, $white)) !default;
+$accordion-item-color: $primary-color !default;
 
 /// Default background color on hover for items in a Menu.
 /// @type Color
@@ -40,16 +40,18 @@ $accordion-content-border: 1px solid $light-gray !default;
 
 /// Default text color of tab content.
 /// @type Color
-$accordion-content-color: pick-best-color($accordion-content-background, ($body-font-color, $white)) !default;
+$accordion-content-color: $body-font-color !default;
 
 /// Default padding for tab content.
 /// @type Number | List
 $accordion-content-padding: 1rem !default;
 
 /// Adds styles for an accordion container. Apply this to the same element that gets `data-accordion`.
-@mixin accordion-container {
+@mixin accordion-container (
+  $background: $accordion-background
+) {
   margin-#{$global-left}: 0;
-  background: $accordion-background;
+  background: $background;
   list-style-type: none;
 }
 
@@ -65,26 +67,32 @@ $accordion-content-padding: 1rem !default;
 }
 
 /// Adds styles for the title of an accordion item. Apply this to the link within an accordion item.
-@mixin accordion-title {
+@mixin accordion-title (
+  $padding: $accordion-item-padding,
+  $font-size: $accordion-title-font-size,
+  $color: $accordion-item-color,
+  $border: $accordion-content-border,
+  $background-hover: $accordion-item-background-hover
+) {
   position: relative;
   display: block;
-  padding: $accordion-item-padding;
+  padding: $padding;
 
-  border: $accordion-content-border;
+  border: $border;
   border-bottom: 0;
 
-  font-size: $accordion-title-font-size;
+  font-size: $font-size;
   line-height: 1;
-  color: $accordion-item-color;
+  color: $color;
 
   :last-child:not(.is-active) > & {
-    border-bottom: $accordion-content-border;
+    border-bottom: $border;
     border-radius: 0 0 $global-radius $global-radius;
   }
 
   &:hover,
   &:focus {
-    background-color: $accordion-item-background-hover;
+    background-color: $background-hover;
   }
 
   @if $accordion-plusminus {
@@ -103,18 +111,23 @@ $accordion-content-padding: 1rem !default;
 }
 
 /// Adds styles for accordion content. Apply this to the content pane below an accordion item's title.
-@mixin accordion-content {
+@mixin accordion-content (
+  $padding: $accordion-content-padding,
+  $border: $accordion-content-border,
+  $background: $accordion-content-background,
+  $color: $accordion-content-color
+) {
   display: none;
-  padding: $accordion-content-padding;
+  padding: $padding;
 
-  border: $accordion-content-border;
+  border: $border;
   border-bottom: 0;
-  background-color: $accordion-content-background;
+  background-color: $background;
 
-  color: $accordion-content-color;
+  color: $color;
 
   :last-child > &:last-child {
-    border-bottom: $accordion-content-border;
+    border-bottom: $border;
   }
 }
 

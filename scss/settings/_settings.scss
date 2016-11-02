@@ -197,12 +197,12 @@ $input-error-font-weight: $global-weight-bold;
 $accordion-background: $white;
 $accordion-plusminus: true;
 $accordion-title-font-size: rem-calc(12);
-$accordion-item-color: pick-best-color($accordion-background, ($primary-color, $white));
+$accordion-item-color: $primary-color;
 $accordion-item-background-hover: $light-gray;
 $accordion-item-padding: 1.25rem 1rem;
 $accordion-content-background: $white;
 $accordion-content-border: 1px solid $light-gray;
-$accordion-content-color: pick-best-color($accordion-content-background, ($body-font-color, $white));
+$accordion-content-color: $body-font-color;
 $accordion-content-padding: 1rem;
 
 // 8. Accordion Menu
