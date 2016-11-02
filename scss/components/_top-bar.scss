@@ -22,6 +22,10 @@ $topbar-submenu-background: $topbar-background !default;
 /// @type Number
 $topbar-title-spacing: 1rem !default;
 
+/// Padding for the top bar title.
+/// @type Number
+$topbar-title-padding: 0.7rem 0 !default;
+
 /// Maximum width of `<input>` elements inside the top bar.
 /// @type Number
 $topbar-input-width: 200px !default;
@@ -156,7 +160,8 @@ $topbar-unstack-breakpoint: medium !default;
     .top-bar-title {
       float: left;
       margin-right: $topbar-title-spacing;
-
+      padding: $topbar-title-padding;
+      line-height: 1;
     }
 
     .top-bar-left {
