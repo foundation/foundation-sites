@@ -200,6 +200,29 @@
     margin-right: 0;
   }
 
+
+  .flex-container {
+    @include flex;
+  }
+
+  .flex-child-auto {
+    flex: 1 1 auto;
+  }
+
+  .flex-child-grow {
+    flex: 1 0 auto;
+  }
+
+  .flex-child-shrink {
+    flex: 0 1 auto;
+  }
+
+  @each $dir, $prop in $-zf-flex-direction {
+    .flex-direct-#{$dir} {
+      @include flex-direction($prop);
+    }
+  }
+
   @include -zf-each-breakpoint {
     @for $i from 1 through $grid-column-count {
       // Sizing (percentage)
@@ -238,6 +261,11 @@
         }
       }
 
+      @each $dir, $prop in $-zf-flex-direction {
+        .#{$-zf-size}-flex-direct-#{$dir} {
+          @include flex-direction($prop);
+        }
+      }
       // Auto-stacking/unstacking
       @at-root (without: media) {
         .row.#{$-zf-size}-unstack {
