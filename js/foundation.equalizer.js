@@ -158,6 +158,9 @@ class Equalizer {
    * @private
    */
   _isStacked() {
+    if (!this.$watched[0] || !this.$watched[1]) {
+      return true;
+    }
     return this.$watched[0].getBoundingClientRect().top !== this.$watched[1].getBoundingClientRect().top;
   }
 
