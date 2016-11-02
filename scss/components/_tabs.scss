@@ -16,7 +16,7 @@ $tab-background: $white !default;
 
 /// Font color of tab item.
 /// @type Color
-$tab-color: pick-best-color($tab-background, ($primary-color, $white)) !default;
+$tab-color: $primary-color !default;
 
 /// Active background color of a tab bar.
 /// @type Color
@@ -24,7 +24,7 @@ $tab-background-active: $light-gray !default;
 
 /// Active font color of tab item.
 /// @type Color
-$tab-background-active-color: pick-best-color($tab-background-active, ($primary-color, $white)) !default;
+$tab-background-active-color: $primary-color !default;
 
 /// Font size of tab items.
 /// @type Number
@@ -51,18 +51,22 @@ $tab-content-border: $light-gray !default;
 
 /// Default text color of tab content.
 /// @type Color
-$tab-content-color: pick-best-color($tab-content-background) !default;
+$tab-content-color: $body-font-color !default;
 
 /// Default padding for tab content.
 /// @type Number | List
 $tab-content-padding: 1rem !default;
 
 /// Adds styles for a tab container. Apply this to a `<ul>`.
-@mixin tabs-container {
+@mixin tabs-container (
+  $margin: $tab-margin,
+  $background: $tab-background,
+  $border-color: $tab-content-border
+) {
   @include clearfix;
-  margin: $tab-margin;
-  border: 1px solid $tab-content-border;
-  background: $tab-background;
+  margin: $margin;
+  border: 1px solid $border-color;
+  background: $background;
   list-style-type: none;
 }
 
@@ -94,13 +98,14 @@ $tab-content-padding: 1rem !default;
     color: $color;
 
     &:hover {
-      background: $tab-item-background-hover;
+      background: $background-hover;
+      color: scale-color($color, $lightness: -14%);
     }
 
     &:focus,
     &[aria-selected='true'] {
-      background: $tab-background-active;
-      color: $tab-background-active-color;
+      background: $background-active;
+      color: $color-active;
     }
   }
 }
@@ -119,15 +124,19 @@ $tab-content-padding: 1rem !default;
 }
 
 /// Augments a tab content container to have a vertical style, by shifting the border around. Use this in conjunction with `tabs-content()`.
-@mixin tabs-content-vertical {
-  border: 1px solid $tab-content-border;
+@mixin tabs-content-vertical (
+  $border-color: $tab-content-border
+) {
+  border: 1px solid $border-color;
   border-#{$global-left}: 0;
 }
 
 /// Adds styles for an individual tab content panel within the tab content container.
-@mixin tabs-panel {
+@mixin tabs-panel (
+  $padding: $tab-content-padding
+) {
   display: none;
-  padding: $tab-content-padding;
+  padding: $padding;
 
   &[aria-hidden="false"] {
     display: block;
