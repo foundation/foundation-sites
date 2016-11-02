@@ -40,7 +40,7 @@ $pagination-item-background-current: $primary-color !default;
 
 /// Text color of the pagination item for the current page.
 /// @type Color
-$pagination-item-color-current: pick-best-color($pagination-item-background-current) !default;
+$pagination-item-color-current: $white !default;
 
 /// Text color of a disabled pagination item.
 /// @type Color
