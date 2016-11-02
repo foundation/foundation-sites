@@ -215,7 +215,8 @@ $accordionmenu-arrow-color: $primary-color;
 // --------
 
 $badge-background: $primary-color;
-$badge-color: pick-best-color($badge-background);
+$badge-color: $white;
+$badge-color-alt: $black;
 $badge-padding: 0.3em;
 $badge-minwidth: 2.1em;
 $badge-font-size: 0.6rem;

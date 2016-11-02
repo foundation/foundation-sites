@@ -12,7 +12,11 @@ $badge-background: $primary-color !default;
 
 /// Default text color for badges.
 /// @type Color
-$badge-color: pick-best-color($badge-background) !default;
+$badge-color: $white !default;
+
+/// Default text color for badges.
+/// @type Color
+$badge-color-alt: $black !default;
 
 /// Default padding inside badges.
 /// @type Number
@@ -49,7 +53,7 @@ $badge-font-size: 0.6rem !default;
       @if $name != primary {
         &.#{$name} {
           background: $color;
-          color: pick-best-color($color, ($white, $black));
+          color: pick-best-color($color, ($badge-color, $badge-color-alt));
         }
       }
     }
