@@ -53,7 +53,7 @@ $badge-font-size: 0.6rem !default;
       @if $name != primary {
         &.#{$name} {
           background: $color;
-          color: pick-best-color($color, ($badge-color, $badge-color-alt));
+          color: color-pick-contrast($color, ($badge-color, $badge-color-alt));
         }
       }
     }

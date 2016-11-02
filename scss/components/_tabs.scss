@@ -169,7 +169,7 @@ $tab-content-padding: 1rem !default;
     background: $primary-color;
 
     > li > a {
-      color: pick-best-color($primary-color);
+      color: color-pick-contrast($primary-color);
 
       &:hover,
       &:focus {

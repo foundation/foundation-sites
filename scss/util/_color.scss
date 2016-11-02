@@ -51,13 +51,13 @@
   @return $ratio;
 }
 
-/// Checks the luminance of `$base`, and if it passes the `$threshold` of lightness, it returns the `$yes` color. Otherwise, it returns the `$no` color. Use this function to dynamically output a foreground color based on a given background color.
+/// Checks the luminance of `$base`, and returns the color from `$colors` (list of colors) that has the most contrast.
 ///
 /// @param {Color} $color1 - First color to compare.
 /// @param {Color} $color2 - Second color to compare.
 ///
 /// @returns {Number} The contrast ratio of the compared colors.
-@function pick-best-color($base, $colors: ($white, $black), $tolerance: 0) {
+@function color-pick-contrast($base, $colors: ($white, $black), $tolerance: 0) {
   $contrast: color-contrast($base, nth($colors, 1));
   $best: nth($colors, 1);
 

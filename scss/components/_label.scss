@@ -54,7 +54,7 @@ $label-radius: $global-radius !default;
       @if $name != primary {
         &.#{$name} {
           background: $color;
-          color: pick-best-color($color, ($label-color, $label-color-alt));
+          color: color-pick-contrast($color, ($label-color, $label-color-alt));
         }
       }
     }
