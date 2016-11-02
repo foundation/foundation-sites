@@ -97,6 +97,7 @@ $orbit-control-zindex: 10 !default;
 
   background-color: $orbit-caption-background;
   color: color-pick-contrast($orbit-caption-background);
+  background-color: $orbit-caption-background;
 }
 
 /// Adds base styles for the next/previous buttons in an Orbit slider. These styles are shared between the `.orbit-next` and `.orbit-previous` classes in the default CSS.
