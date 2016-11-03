@@ -51,20 +51,23 @@ $card-margin: $global-margin !default;
   $margin: $card-margin,
   $border: $card-border,
   $radius: $card-border-radius,
-  $shadow: $card-shadow,
+  $shadow: $card-shadow
 ) {
-  border: $border;
-  border-radius: $radius;
-  box-shadow: $shadow;
-  margin-bottom: $margin;
-  background: $background;
-  overflow: hidden;
-  color: $card-font-color;
-
   @if $global-flexbox {
     display: flex;
     flex-direction: column;
   }
+
+  margin-bottom: $margin;
+
+  border: $border;
+  border-radius: $radius;
+
+  background: $background;
+  box-shadow: $shadow;
+
+  overflow: hidden;
+  color: $card-font-color;
 
   & > :last-child {
     margin-bottom: 0;
@@ -76,12 +79,12 @@ $card-margin: $global-margin !default;
   $background: $card-divider-background,
   $padding: $card-padding
 ) {
-  background: $background;
-  padding: $padding;
-
   @if $global-flexbox {
-    flex-grow: 1;
+    flex: 0 1 auto;
   }
+
+  padding: $padding;
+  background: $background;
 
   & > :last-child {
     margin-bottom: 0;
@@ -92,11 +95,11 @@ $card-margin: $global-margin !default;
 @mixin card-section(
   $padding: $card-padding
 ) {
-  padding: $padding;
-
   @if $global-flexbox {
-    flex-grow: 1;
+    flex: 1 0 auto;
   }
+
+  padding: $padding;
 
   & > :last-child {
     margin-bottom: 0;
