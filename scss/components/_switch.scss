@@ -83,7 +83,7 @@ $switch-paddle-transition: all 0.25s ease-out !default;
   $switch-width: $switch-height * 2;
   $paddle-height: $switch-height - ($switch-paddle-offset * 2);
   $paddle-width: $switch-height - ($switch-paddle-offset * 2);
-  $paddle-left-active: $switch-width - $paddle-width - $switch-paddle-offset;
+  $paddle-active-offest: $switch-width - $paddle-width - $switch-paddle-offset;
 
   background: $switch-background;
   cursor: pointer;
@@ -123,7 +123,7 @@ $switch-paddle-transition: all 0.25s ease-out !default;
     background: $switch-background-active;
 
     &::after {
-      #{$global-left}: $paddle-left-active;
+      #{$global-left}: $paddle-active-offest;
     }
   }
 
@@ -171,7 +171,7 @@ $switch-paddle-transition: all 0.25s ease-out !default;
   $switch-width: $switch-height * 2;
   $paddle-width: $switch-height - ($paddle-offset * 2);
   $paddle-height: $switch-height - ($paddle-offset * 2);
-  $paddle-left-active: $switch-width - $paddle-width - $paddle-offset;
+  $paddle-active-offest: $switch-width - $paddle-width - $paddle-offset;
 
   height: $switch-height;
   
@@ -189,7 +189,7 @@ $switch-paddle-transition: all 0.25s ease-out !default;
   }
 
   input:checked ~ .switch-paddle::after {
-    #{$global-left}: $paddle-left-active;
+    #{$global-left}: $paddle-active-offest;
   }
 }
 
