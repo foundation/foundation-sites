@@ -227,9 +227,9 @@ alpha : /^[a-zäöüßA-ZÄÖÜ]+$/,
 alpha_numeric : /^[a-zäöüßA-ZÄÖÜ0-9]+$/,
 ```
 
-Then you need to  customize the builtin pattern as explained in the next section. Otherwise Abide will produce an error if a special character is input in your text field which is validated with `pattern="alpha"` or  `pattern="alpha_numeric"`.
+Then you need to customize the builtin patterns as explained in the next section. Otherwise Abide will produce an error if a special character is input in your text field which is validated with `pattern="alpha"` or  `pattern="alpha_numeric"`.
 
-Here is the definition of the builtin patterns:
+Here are the definitions of the builtin patterns:
 
 ```JS
 alpha : /^[a-zA-Z]+$/,
