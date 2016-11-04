@@ -76,6 +76,7 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
       > li.is-dropdown-submenu-parent > a::after {
         @include css-triangle($dropdownmenu-arrow-size, $dropdownmenu-arrow-color, down);
         #{$global-right}: 5px;
+        margin-top: -1 * ($dropdownmenu-arrow-size / 2);
       }
     }
   }
@@ -163,7 +164,7 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
       position: absolute;
       top: 50%;
       #{$global-right}: 5px;
-      transform: translateY(-50%);
+      margin-top: -1 * $dropdownmenu-arrow-size;
     }
 
     &.opens-inner > .is-dropdown-submenu {

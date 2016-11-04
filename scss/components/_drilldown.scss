@@ -71,7 +71,7 @@ $drilldown-background: $white !default;
         @include css-triangle($drilldown-arrow-size, $drilldown-arrow-color, $global-right);
         position: absolute;
         top: 50%;
-        transform: translateY(-50%);
+        margin-top: -1 * $drilldown-arrow-size;
         #{$global-right}: 1rem;
       }
     }
