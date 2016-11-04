@@ -252,6 +252,7 @@ $button-sizes: (
 $button-opacity-disabled: 0.25;
 $button-background-hover-lightness: -20%;
 $button-hollow-hover-lightness: -50%;
+$button-transition: background-color 0.25s ease-out, color 0.25s ease-out;
 
 // 12. Button Group
 // ----------------
@@ -278,9 +279,18 @@ $callout-link-tint: 30%;
 // ----------------
 
 $closebutton-position: right top;
-$closebutton-offset-horizontal: 1rem;
-$closebutton-offset-vertical: 0.5rem;
-$closebutton-size: 2em;
+$closebutton-offset-horizontal: (
+  small: .66rem,
+  medium: 1rem,
+);
+$closebutton-offset-vertical: (
+  small: .33em,
+  medium: .5rem,
+);
+$closebutton-sizes: (
+  small: 1.5em,
+  medium: 2em,
+);
 $closebutton-lineheight: 1;
 $closebutton-color: $dark-gray;
 $closebutton-color-hover: $black;
@@ -355,6 +365,7 @@ $input-cursor-disabled: not-allowed;
 $input-transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
 $input-number-spinners: true;
 $input-radius: $global-radius;
+$button-radius: $global-radius;
 
 // 19. Label
 // ---------
@@ -511,7 +522,9 @@ $table-is-striped: true;
 $table-striped-background: smart-scale($table-background, $table-color-scale);
 $table-stripe: even;
 $table-head-background: smart-scale($table-background, $table-color-scale / 2);
+$table-head-row-hover: darken($table-head-background, $table-hover-scale);
 $table-foot-background: smart-scale($table-background, $table-color-scale);
+$table-foot-row-hover: darken($table-foot-background, $table-hover-scale);
 $table-head-font-color: $body-font-color;
 $table-foot-font-color: $body-font-color;
 $show-header-for-stacked: false;

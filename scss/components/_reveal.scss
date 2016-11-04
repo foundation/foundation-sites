@@ -116,7 +116,7 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   // html gets this class only in iOS
   html.is-reveal-open,
   html.is-reveal-open body {
-    height: 100%;
+    min-height: 100%;
     overflow: hidden;
     user-select: none;
   }

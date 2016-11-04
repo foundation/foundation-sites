@@ -41,7 +41,7 @@ class Dropdown {
   _init() {
     var $id = this.$element.attr('id');
 
-    this.$anchor = $(`[data-toggle="${$id}"]`) || $(`[data-open="${$id}"]`);
+    this.$anchor = $(`[data-toggle="${$id}"]`).length ? $(`[data-toggle="${$id}"]`) : $(`[data-open="${$id}"]`);
     this.$anchor.attr({
       'aria-controls': $id,
       'data-is-focus': false,
@@ -169,12 +169,14 @@ class Dropdown {
 
     if(this.options.hover){
       this.$anchor.off('mouseenter.zf.dropdown mouseleave.zf.dropdown')
-          .on('mouseenter.zf.dropdown', function(){
-            clearTimeout(_this.timeout);
-            _this.timeout = setTimeout(function(){
-              _this.open();
-              _this.$anchor.data('hover', true);
-            }, _this.options.hoverDelay);
+      .on('mouseenter.zf.dropdown', function(){
+            if($('body[data-whatinput="mouse"]').is('*')) {
+              clearTimeout(_this.timeout);
+              _this.timeout = setTimeout(function(){
+                _this.open();
+                _this.$anchor.data('hover', true);
+              }, _this.options.hoverDelay);
+            }
           }).on('mouseleave.zf.dropdown', function(){
             clearTimeout(_this.timeout);
             _this.timeout = setTimeout(function(){

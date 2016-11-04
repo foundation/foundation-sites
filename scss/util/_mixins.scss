@@ -65,7 +65,11 @@
   $hover-shadow: ();
 
   // Spacing between bars is calculated based on the total height of the icon and the weight of each bar
-  $spacing: floor(($height - ($weight * $bars)) / ($bars - 1));
+  $spacing: ($height - ($weight * $bars)) / ($bars - 1);
+
+  @if unit($spacing) == 'px' {
+    $spacing: floor($spacing);
+  }
 
   // Icon container
   position: relative;
@@ -114,7 +118,7 @@
 ///
 /// @param {Color} $color [$black] - Color to use for the triangle.
 @mixin background-triangle($color: $black) {
-  $rgb: 'rgb%28#{red($color)}, #{green($color)}, #{blue($color)}%29';
+  $rgb: 'rgb%28#{round(red($color))}, #{round(green($color))}, #{round(blue($color))}%29';
 
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='32' height='24' viewBox='0 0 32 24'><polygon points='0,0 32,0 16,24' style='fill: #{$rgb}'></polygon></svg>");
 

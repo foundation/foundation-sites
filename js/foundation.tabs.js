@@ -42,6 +42,7 @@ class Tabs {
   _init() {
     var _this = this;
 
+    this.$element.attr({'role': 'tablist'});
     this.$tabTitles = this.$element.find(`.${this.options.linkClass}`);
     this.$tabContent = $(`[data-tabs-content="${this.$element[0].id}"]`);
 
@@ -118,10 +119,10 @@ class Tabs {
     this._addKeyHandler();
     this._addClickHandler();
     this._setHeightMqHandler = null;
-    
+
     if (this.options.matchHeight) {
       this._setHeightMqHandler = this._setHeight.bind(this);
-      
+
       $(window).on('changed.zf.mediaquery', this._setHeightMqHandler);
     }
   }
@@ -153,7 +154,7 @@ class Tabs {
 
     this.$tabTitles.off('keydown.zf.tabs').on('keydown.zf.tabs', function(e){
       if (e.which === 9) return;
-      
+
 
       var $element = $(this),
         $elements = $element.parent('ul').children('li'),
@@ -202,14 +203,14 @@ class Tabs {
    * @function
    */
   _handleTabChange($target) {
-    
+
     /**
      * Check for active class on target. Collapse if exists.
      */
     if ($target.hasClass('is-active')) {
         if(this.options.activeCollapse) {
             this._collapseTab($target);
-            
+
            /**
             * Fires when the zplugin has successfully collapsed tabs.
             * @event Tabs#collapse
@@ -218,10 +219,13 @@ class Tabs {
         }
         return;
     }
-    
+
     var $oldTab = this.$element.
-          find(`.${this.options.linkClass}.is-active`);
-  
+          find(`.${this.options.linkClass}.is-active`),
+          $tabLink = $target.find('[role="tab"]'),
+          hash = $tabLink[0].hash,
+          $targetContent = this.$tabContent.find(hash);
+
     //close old tab
     this._collapseTab($oldTab);
 
@@ -241,12 +245,15 @@ class Tabs {
      * @event Tabs#change
      */
     this.$element.trigger('change.zf.tabs', [$target]);
+
+	  //fire to children a mutation event
+	  $targetContent.find("[data-mutate]").trigger("mutateme.zf.trigger");
   }
-  
+
   /**
    * Opens the tab `$targetContent` defined by `$target`.
    * @param {jQuery} $target - Tab to Open.
-   * @function 
+   * @function
    */
   _openTab($target) {
       var $tabLink = $target.find('[role="tab"]'),
@@ -261,11 +268,11 @@ class Tabs {
         .addClass('is-active')
         .attr({'aria-hidden': 'false'});
   }
-  
+
   /**
    * Collapses `$targetContent` defined by `$target`.
    * @param {jQuery} $target - Tab to Open.
-   * @function 
+   * @function
    */
   _collapseTab($target) {
     var $target_anchor = $target
@@ -405,14 +412,14 @@ Tabs.defaults = {
    * @example false
    */
   matchHeight: false,
-  
+
   /**
    * Allows active tabs to collapse when clicked.
    * @option
    * @example false
    */
   activeCollapse: false,
-  
+
   /**
    * Class applied to `li`'s in tab link list.
    * @option

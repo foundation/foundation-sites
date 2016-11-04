@@ -1,6 +1,6 @@
 /**
  * Foundation for Sites by ZURB
- * Version 6.2.3
+ * Version 6.2.4
  * foundation.zurb.com
  * Licensed under MIT Open Source
  */
@@ -24,6 +24,7 @@
 @import 'components/badge';
 @import 'components/breadcrumbs';
 @import 'components/callout';
+@import 'components/card';
 @import 'components/close-button';
 @import 'components/drilldown';
 @import 'components/dropdown-menu';
@@ -70,6 +71,7 @@
   @include foundation-breadcrumbs;
   @include foundation-button-group;
   @include foundation-callout;
+  @include foundation-card;
   @include foundation-close-button;
   @include foundation-menu;
   @include foundation-menu-icon;

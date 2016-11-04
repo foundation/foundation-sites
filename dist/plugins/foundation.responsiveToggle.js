@@ -20,7 +20,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @param {jQuery} element - jQuery object to attach tab bar functionality to.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-
     function ResponsiveToggle(element, options) {
       _classCallCheck(this, ResponsiveToggle);
 

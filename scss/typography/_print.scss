@@ -6,6 +6,7 @@
 /// @type Boolean
 /// @group global
 $print-transparent-backgrounds: true !default;
+$print-hrefs: true !default;
 
 // scss-lint:disable all
 
@@ -36,7 +37,9 @@ $print-transparent-backgrounds: true !default;
     // Display the URL of a link after the text
     a,
     a:visited { text-decoration: underline;}
-    a[href]:after { content: ' (' attr(href) ')'; }
+    @if $print-hrefs {
+      a[href]:after { content: ' (' attr(href) ')'; }
+    }
 
     // Don't display the URL for images or JavaScript/internal links
     .ir a:after,
