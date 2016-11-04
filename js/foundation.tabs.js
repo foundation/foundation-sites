@@ -77,7 +77,9 @@ class Tabs {
         var anchor = window.location.hash;
         //need a hash and a relevant anchor in this tabset
         if (anchor.length && $elem.find('[href="'+anchor+'"]').length) {
+
           _this.selectTab($(anchor));
+
           //roll up a little to show the titles
           if (_this.options.deepLinkSmudge) {
             $(window).load(function() {
@@ -85,6 +87,12 @@ class Tabs {
               $('html, body').animate({ scrollTop: offset.top }, _this.options.deepLinkSmudgeDelay);
             });
           }
+
+          /**
+            * Fires when the zplugin has deeplinked at pageload
+            * @event Tabs#deeplink
+            */
+          this.$element.trigger('deeplink.zf.tabs', [$target]);
         }
       }
     });
@@ -220,10 +228,12 @@ class Tabs {
     //open new tab
     this._openTab($target);
 
-    //optionally set the browser history
+    //either replace or update browser history
+    var anchor = $target.find('a').attr('href');
     if (this.options.updateHistory) {
-      var anchor = $target.find('a').attr('href');
       history.pushState({}, "", anchor);
+    } else {
+      history.replaceState({}, "", anchor);
     }
     
     /**
@@ -358,7 +368,7 @@ Tabs.defaults = {
    * @option
    * @example false
    */
-  deepLinkSmudge: true,
+  deepLinkSmudge: false,
 
   /**
    * Animation time (ms) for the deep link adjustment
@@ -372,7 +382,7 @@ Tabs.defaults = {
    * @option
    * @example false
    */
-  updateHistory: true,
+  updateHistory: false,
 
   /**
    * Allows the window to scroll to content of active pane on load if set to true.
