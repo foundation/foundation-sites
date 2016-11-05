@@ -1,9 +1,10 @@
 describe('Keyboard util', function() {
   /**
-   * Create object to use as fake event.
+   * Creates a dummy event to parse.
+   * Uses jQuery Event class constructor.
    * @param  {number} keyCode Key code of the key that is simulated.
    * @param  {object} opts    Options that say if modifiers are pressed.
-   * @return {object}         Object to use intead of an event.
+   * @return {Event}          Event to use.
    */
   const createEvent = function(keyCode, opts) {
     let options = opts || {},
@@ -19,7 +20,7 @@ describe('Keyboard util', function() {
           keyCode: keyCode,
           which: keyCode
         };
-    return event;
+    return new $.Event('keydown', event);
   };
   const keyCodes = {
     'A': 65,
@@ -200,8 +201,8 @@ describe('Keyboard util', function() {
       Foundation.Keyboard.trapFocus($html);
       $html.find('a').last().focus();
 
-      // Three links, so move focus foreward three times
-      $(document.activeElement).trigger(new $.Event('keydown', createEvent(keyCodes['TAB'])));
+      let event = createEvent(keyCodes['TAB']);
+      $(document.activeElement).trigger(event);
 
       document.activeElement.should.be.equal($html.find('a').eq(0)[0]);
 
@@ -218,7 +219,8 @@ describe('Keyboard util', function() {
       Foundation.Keyboard.trapFocus($html);
       $html.find('a').first().focus();
 
-      $(document.activeElement).trigger(new $.Event('keydown', createEvent(keyCodes['TAB'], {shift: true})));
+      let event = createEvent(keyCodes['TAB'], {shift: true});
+      $(document.activeElement).trigger(event);
 
       document.activeElement.should.be.equal($html.find('a').eq(2)[0]);
 
@@ -239,7 +241,8 @@ describe('Keyboard util', function() {
 
       Foundation.Keyboard.releaseFocus($html);
 
-      $(document.activeElement).trigger(new $.Event('keydown', createEvent(keyCodes['TAB'])));
+      let event = createEvent(keyCodes['TAB']);
+      $(document.activeElement).trigger(event);
 
       document.activeElement.should.not.be.equal($html.find('a').eq(0)[0]);
 
@@ -258,7 +261,9 @@ describe('Keyboard util', function() {
 
       Foundation.Keyboard.releaseFocus($html);
 
-      $(document.activeElement).trigger(new $.Event('keydown', createEvent(keyCodes['TAB'], {shift: true})));
+
+      let event = createEvent(createEvent(keyCodes['TAB'], {shift: true}));
+      $(document.activeElement).trigger(event);
 
       document.activeElement.should.not.be.equal($html.find('a').eq(2)[0]);
 
