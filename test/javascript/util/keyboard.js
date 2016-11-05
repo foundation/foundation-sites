@@ -188,4 +188,81 @@ describe('Keyboard util', function() {
       $html.remove();
     });
   });
+
+  describe('trapFocus()', function() {
+    it('moves the focus to the first focusable element', function() {
+      let $html = $(`<div>
+            <a href="#">Link1</a>
+            <a href="#">Link2</a>
+            <a href="#">Link3</a>
+          </div>`).appendTo('body');
+
+      Foundation.Keyboard.trapFocus($html);
+      $html.find('a').last().focus();
+
+      // Three links, so move focus foreward three times
+      $(document.activeElement).trigger(new $.Event('keydown', createEvent(keyCodes['TAB'])));
+
+      document.activeElement.should.be.equal($html.find('a').eq(0)[0]);
+
+      $html.remove();
+    });
+
+    it('moves the focus to the last focusable element', function() {
+      let $html = $(`<div>
+            <a href="#">Link1</a>
+            <a href="#">Link2</a>
+            <a href="#">Link3</a>
+          </div>`).appendTo('body');
+
+      Foundation.Keyboard.trapFocus($html);
+      $html.find('a').first().focus();
+
+      $(document.activeElement).trigger(new $.Event('keydown', createEvent(keyCodes['TAB'], {shift: true})));
+
+      document.activeElement.should.be.equal($html.find('a').eq(2)[0]);
+
+      $html.remove();
+    });
+  });
+
+  describe('releaseFocus()', function() {
+    it('stops trapping the focus at the end', function() {
+      let $html = $(`<div>
+            <a href="#">Link1</a>
+            <a href="#">Link2</a>
+            <a href="#">Link3</a>
+          </div>`).appendTo('body');
+
+      Foundation.Keyboard.trapFocus($html);
+      $html.find('a').last().focus();
+
+      Foundation.Keyboard.releaseFocus($html);
+
+      $(document.activeElement).trigger(new $.Event('keydown', createEvent(keyCodes['TAB'])));
+
+      document.activeElement.should.not.be.equal($html.find('a').eq(0)[0]);
+
+      $html.remove();
+    });
+
+    it('stops trapping the focus at the top', function() {
+      let $html = $(`<div>
+            <a href="#">Link1</a>
+            <a href="#">Link2</a>
+            <a href="#">Link3</a>
+          </div>`).appendTo('body');
+
+      Foundation.Keyboard.trapFocus($html);
+      $html.find('a').first().focus();
+
+      Foundation.Keyboard.releaseFocus($html);
+
+      $(document.activeElement).trigger(new $.Event('keydown', createEvent(keyCodes['TAB'], {shift: true})));
+
+      document.activeElement.should.not.be.equal($html.find('a').eq(2)[0]);
+
+      $html.remove();
+    });
+  });
 });
