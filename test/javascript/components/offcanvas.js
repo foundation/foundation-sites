@@ -133,6 +133,21 @@ describe('Off Canvas', function() {
       plugin.open();
     });
 
+    it('traps focus if trapFocus option is true', function(done) {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.OffCanvas($html.find('[data-off-canvas]'), {trapFocus: true});
+
+      let spy = sinon.spy(Foundation.Keyboard, 'trapFocus');
+
+      $html.one(Foundation.transitionend($html), function() {
+        sinon.assert.called(spy);
+        Foundation.Keyboard.trapFocus.restore();
+        done();
+      });
+
+      plugin.open();
+    });
+
 
     it('fires opened.zf.offcanvas event', function(done) {
       $html = $(template).appendTo('body');
@@ -185,8 +200,6 @@ describe('Off Canvas', function() {
       $html = $(template).appendTo('body');
       plugin = new Foundation.OffCanvas($html.find('[data-off-canvas]'), {});
 
-      
-
       $html.one(Foundation.transitionend($html), function() {
         $html.one('closed.zf.offcanvas', function() {
           done();
@@ -196,6 +209,23 @@ describe('Off Canvas', function() {
       });
 
       // Open it first
+      plugin.open();
+    });
+
+    it('releases focus if trapFocus option is true', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.OffCanvas($html.find('[data-off-canvas]'), {trapFocus: true});
+
+      $html.one(Foundation.transitionend($html), function() {
+        let spy = sinon.spy(Foundation.Keyboard, 'releaseFocus');
+
+        plugin.close();
+
+        sinon.assert.called(spy);
+        Foundation.Keyboard.releaseFocus.restore();
+      });
+
+      // Open it first...
       plugin.open();
     });
   });
