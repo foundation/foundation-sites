@@ -6,4 +6,3 @@ before_install:
 install:
   - npm install -g bower
   - npm install
-  - gem install scss_lint
