@@ -1,6 +1,5 @@
 # The following scss-lint Linters are not yet supported by sass-lint:
 # ElsePlacement, PropertyCount, SelectorDepth, UnnecessaryParentReference
-# VendorPrefixes, Compass::*
 # 
 # The following settings/values are unsupported by sass-lint:
 # Linter Indentation, option "allow_non_nested_indentation"
@@ -85,6 +84,9 @@ rules:
       allow-element-with-id: false
   no-trailing-zero: 1
   no-url-protocols: 1
+  no-vendor-prefixes:
+     - 1
+     - ignore-non-standard: true
   placeholder-in-extend: 1
   placeholder-name-format:
     - 1
