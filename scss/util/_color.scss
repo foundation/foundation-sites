@@ -26,7 +26,7 @@
   }
 }
 
-/// Scales a color to be lighter if it's light, or darker if it's dark. Use this function to tint a color appropriate to its lightness.
+/// Scales a color to be darker if it's light, or lighter if it's dark. Use this function to tint a color appropriate to its lightness.
 ///
 /// @param {Color} $color - Color to scale.
 /// @param {Percentage} $scale [5%] - Amount to scale up or down.
