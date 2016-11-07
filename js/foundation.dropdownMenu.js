@@ -107,7 +107,7 @@ class DropdownMenu {
       this.$menuItems.on('click.zf.dropdownmenu touchend.zf.dropdownmenu', function(e) {
         var hasSub = $elem.hasClass(parClass);
         if(!hasSub){
-          _this.hide();
+          _this._hide();
         }
       }
     }
