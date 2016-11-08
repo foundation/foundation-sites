@@ -48,6 +48,7 @@ $stat-font-size: 2.5rem !default;
   .subheader {
     margin-top: $subheader-margin-top;
     margin-bottom: $subheader-margin-bottom;
+
     font-weight: $subheader-font-weight;
     line-height: $subheader-lineheight;
     color: $subheader-color;
