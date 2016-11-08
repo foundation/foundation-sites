@@ -70,9 +70,9 @@ $input-number-spinners: true !default;
 /// @type Border
 $input-radius: $global-radius !default;
 
-/// Border radius for buttons, defaulted to global-radius.
+/// Border radius for form buttons, defaulted to global-radius.
 /// @type Number
-$button-radius: $global-radius !default;
+$form-button-radius: $global-radius !default;
 
 @mixin form-element {
   $height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
@@ -146,7 +146,7 @@ $button-radius: $global-radius !default;
   // Reset styles on button-like inputs
   [type='submit'],
   [type='button'] {
-    border-radius: $button-radius;
+    border-radius: $form-button-radius;
     -webkit-appearance: none;
     -moz-appearance: none;
   }
