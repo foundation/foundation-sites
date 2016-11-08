@@ -133,6 +133,7 @@ rules:
   property-sort-order:
     - 1
     -
+      ignore-custom-properties: true
       order:
         # Specific - CSS property order
         # https://gist.github.com/ncoden/d42f55df7c7970f548a02cd3468f9c86
