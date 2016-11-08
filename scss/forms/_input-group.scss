@@ -114,8 +114,13 @@ $input-prefix-padding: 1rem !default;
 
     a,
     input,
-    button {
-      margin: 0;
+    button,
+    label {
+      @extend %input-group-child;
+      font-size: $input-font-size;
+      height: $height;
+      padding-top: 0;
+      padding-bottom: 0;
     }
   }
 
