@@ -43,9 +43,9 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
 @mixin reveal-overlay($background: $reveal-overlay-background) {
   position: fixed;
   top: 0;
+  right: 0;
   bottom: 0;
   left: 0;
-  right: 0;
   z-index: $reveal-zindex;
 
   display: none;
@@ -137,16 +137,16 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
     @include reveal-modal-width($reveal-width);
     position: relative;
     top: 100px;
-    margin-left: auto;
     margin-right: auto;
+    margin-left: auto;
     overflow-y: auto;
 
     // Placeholder selector for medium-and-up modals
     // Prevents duplicate CSS when defining multiple Reveal sizes
     @include breakpoint(medium) {
       %reveal-centered {
-        left: auto;
         right: auto;
+        left: auto;
         margin: 0 auto;
       }
     }

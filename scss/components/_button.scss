@@ -93,8 +93,8 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
   @if $expand {
     display: block;
     width: 100%;
-    margin-left: 0;
     margin-right: 0;
+    margin-left: 0;
   }
   @else {
     display: inline-block;

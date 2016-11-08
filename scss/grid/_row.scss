@@ -54,14 +54,14 @@
     @include grid-row-nest($gutters);
 
     @if index($behavior, collapse) != null {
-      margin-left: 0;
       margin-right: 0;
+      margin-left: 0;
     }
   }
   @else {
     @include grid-row-size($size);
-    margin-left: auto;
     margin-right: auto;
+    margin-left: auto;
   }
 
   @if $cf {
@@ -82,8 +82,8 @@
   @include -zf-each-breakpoint {
     $margin: rem-calc(grid-column-gutter($-zf-size, $gutters)) / 2 * -1;
 
-    margin-left: $margin;
     margin-right: $margin;
+    margin-left: $margin;
   }
 }
 
