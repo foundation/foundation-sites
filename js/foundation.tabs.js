@@ -72,6 +72,30 @@ class Tabs {
       if(isActive && _this.options.autoFocus){
         $link.focus();
       }
+
+      //use browser to open a tab, if it exists in this tabset
+      if (_this.options.deepLink) {
+        var anchor = window.location.hash;
+        //need a hash and a relevant anchor in this tabset
+        if (anchor.length && $elem.find('[href="'+anchor+'"]').length) {
+
+          _this.selectTab($(anchor));
+
+          //roll up a little to show the titles
+          if (_this.options.deepLinkSmudge) {
+            $(window).load(function() {
+              var offset = $elem.offset();
+              $('html, body').animate({ scrollTop: offset.top }, _this.options.deepLinkSmudgeDelay);
+            });
+          }
+
+          /**
+            * Fires when the zplugin has deeplinked at pageload
+            * @event Tabs#deeplink
+            */
+          this.$element.trigger('deeplink.zf.tabs', [$target]);
+        }
+      }
     });
 
     if(this.options.matchHeight) {
@@ -208,14 +232,21 @@ class Tabs {
     //open new tab
     this._openTab($target);
 
-
+    //either replace or update browser history
+    var anchor = $target.find('a').attr('href');
+    if (this.options.updateHistory) {
+      history.pushState({}, "", anchor);
+    } else {
+      history.replaceState({}, "", anchor);
+    }
+    
     /**
      * Fires when the plugin has successfully changed tabs.
      * @event Tabs#change
      */
     this.$element.trigger('change.zf.tabs', [$target]);
 
-	//fire to children a mutation event
+	  //fire to children a mutation event
 	  $targetContent.find("[data-mutate]").trigger("mutateme.zf.trigger");
   }
 
@@ -333,7 +364,36 @@ class Tabs {
 
 Tabs.defaults = {
   /**
+   * Allows the window to scroll to content of pane specified by hash anchor
+   * @option
+   * @example false
+   */
+  deepLink: false,
+
+  /**
+   * Adjust the deep link scroll to make sure the top of the tab panel is visible
+   * @option
+   * @example false
+   */
+  deepLinkSmudge: false,
+
+  /**
+   * Animation time (ms) for the deep link adjustment
+   * @option
+   * @example 300
+   */
+  deepLinkSmudgeDelay: 300,
+
+  /**
+   * Update the browser history with the open tab
+   * @option
+   * @example false
+   */
+  updateHistory: false,
+
+  /**
    * Allows the window to scroll to content of active pane on load if set to true.
+   * Not recommended if more than one tab panel per page.
    * @option
    * @example false
    */
