@@ -109,7 +109,7 @@ class DropdownMenu {
         if(!hasSub){
           _this._hide();
         }
-      }
+      });
     }
     
     if (!this.options.disableHover) {
