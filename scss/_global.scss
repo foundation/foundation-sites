@@ -122,8 +122,8 @@ $-zf-flex-classes-imported: false;
   }
 
   html {
-    font-size: $global-font-size;
     box-sizing: border-box;
+    font-size: $global-font-size;
   }
 
   // Set box-sizing globally to handle padding and border widths
@@ -135,13 +135,15 @@ $-zf-flex-classes-imported: false;
 
   // Default body styles
   body {
-    padding: 0;
     margin: 0;
+    padding: 0;
+
+    background: $body-background;
+
     font-family: $body-font-family;
     font-weight: $global-weight-normal;
     line-height: $global-lineheight;
     color: $body-font-color;
-    background: $body-background;
 
     @if ($body-antialiased) {
       -webkit-font-smoothing: antialiased;
@@ -150,14 +152,14 @@ $-zf-flex-classes-imported: false;
   }
 
   img {
+    // Get rid of gap under images by making them display: inline-block; by default
+    display: inline-block;
+    vertical-align: middle;
+
     // Grid defaults to get images and embeds to work properly
     max-width: 100%;
     height: auto;
     -ms-interpolation-mode: bicubic;
-
-    // Get rid of gap under images by making them display: inline-block; by default
-    display: inline-block;
-    vertical-align: middle;
   }
 
   // Make sure textarea takes on height automatically
@@ -188,12 +190,15 @@ $-zf-flex-classes-imported: false;
   // Reset <button> styles created by most browsers
   button {
     @include disable-mouse-outline;
+
+    padding: 0;
+
     -webkit-appearance: none;
     -moz-appearance: none;
-    background: transparent;
-    padding: 0;
     border: 0;
     border-radius: $global-radius;
+    background: transparent;
+
     line-height: 1;
   }
 
@@ -258,8 +263,8 @@ $-zf-flex-classes-imported: false;
    */
 
   h1 {
-    font-size: 2em;
     margin: 0.67em 0;
+    font-size: 2em;
   }
 
   /* Grouping content
@@ -401,10 +406,11 @@ $-zf-flex-classes-imported: false;
 
   sub,
   sup {
-    font-size: 75%;
-    line-height: 0;
     position: relative;
     vertical-align: baseline;
+
+    font-size: 75%;
+    line-height: 0;
   }
 
   sub {
@@ -456,8 +462,8 @@ $-zf-flex-classes-imported: false;
      ========================================================================== */
 
   /**
-   * 1. Change font properties to `inherit` in all browsers (opinionated).
-   * 2. Remove the margin in Firefox and Safari.
+   * 1. Remove the margin in Firefox and Safari.
+   * 2. Change font properties to `inherit` in all browsers (opinionated).
    */
 
   button,
@@ -465,8 +471,8 @@ $-zf-flex-classes-imported: false;
   optgroup,
   select,
   textarea {
-    font: inherit; /* 1 */
-    margin: 0; /* 2 */
+    margin: 0; /* 1 */
+    font: inherit; /* 2 */
   }
 
   /**
@@ -518,8 +524,8 @@ $-zf-flex-classes-imported: false;
   [type="button"]::-moz-focus-inner,
   [type="reset"]::-moz-focus-inner,
   [type="submit"]::-moz-focus-inner {
-    border-style: none;
     padding: 0;
+    border-style: none;
   }
 
   /**
@@ -538,9 +544,9 @@ $-zf-flex-classes-imported: false;
    */
 
   fieldset {
-    border: 1px solid #c0c0c0;
     margin: 0 2px;
     padding: 0.35em 0.625em 0.75em;
+    border: 1px solid #c0c0c0;
   }
 
   /**
@@ -551,11 +557,12 @@ $-zf-flex-classes-imported: false;
    */
 
   legend {
-    box-sizing: border-box; /* 1 */
-    color: inherit; /* 2 */
     display: table; /* 1 */
+    box-sizing: border-box; /* 1 */
     max-width: 100%; /* 1 */
     padding: 0; /* 3 */
+
+    color: inherit; /* 2 */
     white-space: normal; /* 1 */
   }
 
