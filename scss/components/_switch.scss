@@ -60,43 +60,46 @@ $switch-paddle-transition: all 0.25s ease-out !default;
 
 /// Adds styles for a switch container. Apply this to a container class.
 @mixin switch-container {
+  position: relative;
   margin-bottom: $switch-margin;
   outline: 0;
-  position: relative;
-  user-select: none;
 
   // These properties cascade down to the switch text
-  color: $white;
-  font-weight: bold;
   font-size: rem-calc(14);
+  font-weight: bold;
+  color: $white;
+
+  user-select: none;
 }
 
 /// Adds styles for a switch input. Apply this to an `<input>` within a switch.
 @mixin switch-input {
-  opacity: 0;
   position: absolute;
   margin-bottom: 0;
+  opacity: 0;
 }
 
 /// Adds styles for the background and paddle of a switch. Apply this to a `<label>` within a switch.
 @mixin switch-paddle {
+<<<<<<< HEAD
   $switch-width: $switch-height * 2;
   $paddle-height: $switch-height - ($switch-paddle-offset * 2);
   $paddle-width: $switch-height - ($switch-paddle-offset * 2);
   $paddle-active-offest: $switch-width - $paddle-width - $switch-paddle-offset;
 
-  background: $switch-background;
-  cursor: pointer;
-  display: block;
   position: relative;
+  display: block;
   width: $switch-width;
   height: $switch-height;
-  transition: $switch-paddle-transition;
+
   border-radius: $switch-radius;
+  background: $switch-background;
+  transition: $switch-paddle-transition;
+  cursor: pointer;
 
   // Resetting these <label> presets so type styles cascade down
-  color: inherit;
   font-weight: inherit;
+  color: inherit;
 
   // Needed to override specificity
   input + & {
@@ -105,17 +108,19 @@ $switch-paddle-transition: all 0.25s ease-out !default;
 
   // The paddle itself
   &::after {
-    background: $switch-paddle-background;
-    content: '';
-    display: block;
     position: absolute;
-    width: $paddle-width;
-    height: $paddle-height;
     top: $switch-paddle-offset;
     #{$global-left}: $switch-paddle-offset;
-    transition: $switch-paddle-transition;
+
+    display: block;
+    width: $paddle-width;
+    height: $paddle-height;
+
     transform: translate3d(0, 0, 0);
     border-radius: $switch-paddle-radius;
+    background: $switch-paddle-background;
+    transition: $switch-paddle-transition;
+    content: '';
   }
 
   // Change the visual style when the switch is active

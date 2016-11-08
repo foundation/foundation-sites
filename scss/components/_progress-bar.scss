@@ -4,9 +4,9 @@
 
 /// Adds styles for a progress bar container.
 @mixin progress-container {
-  background-color: $progress-background;
   height: $progress-height;
   margin-bottom: $progress-margin-bottom;
+  background-color: $progress-background;
   border-radius: $progress-radius;
 }
 

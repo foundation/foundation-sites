@@ -92,10 +92,11 @@ $orbit-control-zindex: 10 !default;
   position: absolute;
   bottom: 0;
   width: 100%;
-  padding: $orbit-caption-padding;
   margin-bottom: 0;
-  color: foreground($orbit-caption-background);
+  padding: $orbit-caption-padding;
+
   background-color: $orbit-caption-background;
+  color: foreground($orbit-caption-background);
 }
 
 /// Adds base styles for the next/previous buttons in an Orbit slider. These styles are shared between the `.orbit-next` and `.orbit-previous` classes in the default CSS.
@@ -136,8 +137,9 @@ $orbit-control-zindex: 10 !default;
     width: $orbit-bullet-diameter;
     height: $orbit-bullet-diameter;
     margin: $orbit-bullet-margin;
-    background-color: $orbit-bullet-background;
+
     border-radius: 50%;
+    background-color: $orbit-bullet-background;
 
     &:hover {
       background-color: $orbit-bullet-background-active;

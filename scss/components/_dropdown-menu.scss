@@ -66,8 +66,8 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
 
     @if $dropdownmenu-arrows {
       > li.is-dropdown-submenu-parent > a {
-        padding-#{$global-right}: 1.5rem;
         position: relative;
+        padding-#{$global-right}: 1.5rem;
       }
 
       > li.is-dropdown-submenu-parent > a::after {
@@ -186,12 +186,14 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
   }
 
   .is-dropdown-submenu {
-    display: none;
     position: absolute;
     top: 0;
     #{$global-left}: 100%;
-    min-width: $dropdownmenu-min-width;
     z-index: 1;
+
+    display: none;
+    min-width: $dropdownmenu-min-width;
+
     background: $dropdownmenu-background;
     border: $dropdownmenu-border;
 

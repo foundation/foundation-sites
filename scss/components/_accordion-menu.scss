@@ -23,8 +23,8 @@ $accordionmenu-arrow-color: $primary-color !default;
     .is-accordion-submenu-parent > span {
       position: relative;
       display: block;
-      cursor: pointer;
       color: $anchor-color;
+      cursor: pointer;
 
       &:hover {
         color: $anchor-color-hover;
@@ -34,8 +34,8 @@ $accordionmenu-arrow-color: $primary-color !default;
         @include css-triangle(6px, $accordionmenu-arrow-color, down);
         position: absolute;
         top: 50%;
-        margin-top: -4px;
-        #{$global-right}: 1rem;
+        right: 1rem;
+        #{$global-right}: -4px;
       }
 
     }
