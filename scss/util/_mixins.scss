@@ -16,11 +16,13 @@
   $triangle-color,
   $triangle-direction
 ) {
-  content: '';
   display: block;
   width: 0;
   height: 0;
+
   border: inset $triangle-size;
+
+  content: '';
 
   @if ($triangle-direction == down) {
     border-color: $triangle-color transparent transparent;
@@ -75,20 +77,23 @@
   position: relative;
   display: inline-block;
   vertical-align: middle;
-  cursor: pointer;
   width: $width;
   height: $height;
+  cursor: pointer;
 
   // Icon bars
   &::after {
-    content: '';
     position: absolute;
+    top: 0;
+    left: 0;
+
     display: block;
     width: 100%;
     height: $weight;
+
     background: $color;
-    top: 0;
-    left: 0;
+
+    content: '';
 
     @for $i from 2 through $bars {
       $offset: ($weight + $spacing) * ($i - 1);
@@ -141,8 +146,9 @@
 @mixin clearfix {
   &::before,
   &::after {
-    content: ' ';
     display: table;
+    content: ' ';
+
     @if $global-flexbox {
       flex-basis: 0;
       order: 1;
