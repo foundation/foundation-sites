@@ -109,9 +109,9 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5) !default;
   z-index: $offcanvas-zindex;
   max-height: 100%;
 
-  overflow-y: auto;
-  background: $offcanvas-background;
   transform: translateX(0) translateY(0);
+  background: $offcanvas-background;
+  overflow-y: auto;
 }
 
 @mixin off-canvas-position(
@@ -121,13 +121,13 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5) !default;
   $vertical-size: $offcanvas-vertical-size
 ) {
   @if $position == left {
-    left: -$size;
     top: 0;
+    left: -$size;
     width: $size;
   }
   @else if $position == right {
-    right: -$size;
     top: 0;
+    right: -$size;
     width: $size;
   }
   @else if $position == top {

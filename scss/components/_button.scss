@@ -73,8 +73,8 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
   @include disable-mouse-outline;
   display: inline-block;
   vertical-align: middle;
-  padding: $button-padding;
   margin: $button-margin;
+  padding: $button-padding;
 
   -webkit-appearance: none;
   border: 1px solid transparent;
@@ -82,8 +82,8 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
   transition: $button-transition;
 
   font-size: map-get($button-sizes, default);
-  text-align: center;
   line-height: 1;
+  text-align: center;
   cursor: pointer;
 }
 

@@ -41,8 +41,8 @@ $accordionmenu-arrow-color: $primary-color !default;
     }
 
     .is-accordion-submenu-parent[aria-expanded='true'] > span::after {
-      transform-origin: 50% 50%;
       transform: scaleY(-1);
+      transform-origin: 50% 50%;
     }
 
   }

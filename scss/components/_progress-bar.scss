@@ -6,8 +6,8 @@
 @mixin progress-container {
   height: $progress-height;
   margin-bottom: $progress-margin-bottom;
-  background-color: $progress-background;
   border-radius: $progress-radius;
+  background-color: $progress-background;
 }
 
 /// Adds styles for the inner meter of a progress bar.

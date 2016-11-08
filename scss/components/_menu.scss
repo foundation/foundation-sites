@@ -122,8 +122,8 @@ $menu-border: $light-gray !default;
       }
 
       > li  > a {
-        align-items: flex-start;
         justify-content: flex-start;
+        align-items: flex-start;
       }
     }
     @else {
@@ -306,8 +306,8 @@ $menu-border: $light-gray !default;
 
     // Active state
     .active > a {
-      color: $menu-item-color-active;
       background: $menu-item-background-active;
+      color: $menu-item-color-active;
     }
 
     // Menu with border

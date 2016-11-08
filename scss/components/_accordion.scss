@@ -78,8 +78,8 @@ $accordion-content-padding: 1rem !default;
   color: $accordion-item-color;
 
   :last-child:not(.is-active) > & {
-    border-radius: 0 0 $global-radius $global-radius;
     border-bottom: $accordion-content-border;
+    border-radius: 0 0 $global-radius $global-radius;
   }
 
   &:hover,
@@ -89,11 +89,11 @@ $accordion-content-padding: 1rem !default;
 
   @if $accordion-plusminus {
     &::before {
-      content: '+';
       position: absolute;
-      #{$global-right}: 1rem;
       top: 50%;
+      #{$global-right}: 1rem;
       margin-top: -0.5rem;
+      content: '+';
     }
 
     .is-active > &::before {

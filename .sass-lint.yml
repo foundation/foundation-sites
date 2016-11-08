@@ -269,12 +269,13 @@ rules:
 
         # Background
         - 'background'
+        - 'background-image'
+        - 'background-color'
         - 'background-attachment'
         - 'background-clip'
-        - 'background-color'
-        - 'background-image'
-        - 'background-repeat'
+        - 'background-origin'
         - 'background-position'
+        - 'background-repeat'
         - 'background-size'
 
         # Shadow

@@ -50,17 +50,17 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
   @if $dir == horizontal {
     > li.opens-left {
       > .is-dropdown-submenu {
-        left: auto;
-        right: 0;
         top: 100%;
+        right: 0;
+        left: auto;
       }
     }
 
     > li.opens-right {
       > .is-dropdown-submenu {
+        top: 100%;
         right: auto;
         left: 0;
-        top: 100%;
       }
     }
 
@@ -194,8 +194,8 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
     display: none;
     min-width: $dropdownmenu-min-width;
 
-    background: $dropdownmenu-background;
     border: $dropdownmenu-border;
+    background: $dropdownmenu-background;
 
     .is-dropdown-submenu-parent {
       @if $dropdownmenu-arrows {

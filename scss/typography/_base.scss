@@ -431,8 +431,8 @@ $abbr-underline: 1px dotted $black !default;
   code {
     padding: $code-padding;
 
-    background-color: $code-background;
     border: $code-border;
+    background-color: $code-background;
 
     font-family: $code-font-family;
     font-weight: $code-font-weight;

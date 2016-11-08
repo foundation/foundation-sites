@@ -95,11 +95,12 @@ $switch-paddle-transition: all 0.25s ease-out !default;
   border-radius: $switch-radius;
   background: $switch-background;
   transition: $switch-paddle-transition;
-  cursor: pointer;
 
   // Resetting these <label> presets so type styles cascade down
   font-weight: inherit;
   color: inherit;
+
+  cursor: pointer;
 
   // Needed to override specificity
   input + & {
