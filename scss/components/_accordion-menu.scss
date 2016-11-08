@@ -35,7 +35,7 @@ $accordionmenu-arrow-color: $primary-color !default;
         position: absolute;
         top: 50%;
         margin-top: -4px;
-        right: 1rem;
+        #{$global-right}: 1rem;
       }
 
     }
@@ -44,6 +44,6 @@ $accordionmenu-arrow-color: $primary-color !default;
       transform-origin: 50% 50%;
       transform: scaleY(-1);
     }
-    
+
   }
 }
