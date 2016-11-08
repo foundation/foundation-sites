@@ -32,9 +32,9 @@
 /// Reset a position definition.
 @mixin grid-column-unposition {
   position: static;
+  float: left;
   margin-left: 0;
   margin-right: 0;
-  float: left;
 }
 
 /// Offsets a column to the right by `$n` columns.

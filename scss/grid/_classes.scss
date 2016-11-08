@@ -83,10 +83,10 @@
 
   // To properly nest a column row, padding and margin is removed
   .#{$row} .#{$column}.#{$row}.#{$row} {
-    padding-left: 0;
-    padding-right: 0;
     margin-left: 0;
     margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   @include -zf-each-breakpoint {

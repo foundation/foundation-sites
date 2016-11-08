@@ -20,8 +20,8 @@
   $gutter: null
 ) {
   & > #{$selector} {
-    width: percentage(1/$n);
     float: $global-left;
+    width: percentage(1/$n);
 
     // If a $gutter value is passed
     @if($gutter) {
