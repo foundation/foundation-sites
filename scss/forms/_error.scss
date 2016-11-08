@@ -43,8 +43,8 @@ $input-error-font-weight: $global-weight-bold !default;
   $background-alpha: 0.1
 ) {
   &:not(:focus) {
-    background-color: rgba($background, $background-alpha);
     border-color: $background;
+    background-color: rgba($background, $background-alpha);
   }
 }
 
@@ -53,6 +53,7 @@ $input-error-font-weight: $global-weight-bold !default;
   display: none;
   margin-top: $form-spacing * -0.5;
   margin-bottom: $form-spacing;
+
   font-size: $input-error-font-size;
   font-weight: $input-error-font-weight;
   color: $input-error-color;
