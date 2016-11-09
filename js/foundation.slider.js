@@ -175,7 +175,7 @@ class Slider {
         var handlePos = parseFloat(this.$handle[0].style[lOrT]);
         //calculate the new min-height/width for the fill bar. Use isNaN to prevent false positives for numbers <= 0
         //based on the percentage of movement of the handle being manipulated, less the opposing handle's left/top position, plus the percentage w/h of the handle itself
-        dim = movement - (isNaN(handlePos) ? this.options.initialStart/((this.options.end-this.options.start)/100) : handlePos) + handlePct;
+        dim = movement - (isNaN(handlePos) ? (this.options.initialStart - this.options.start)/((this.options.end-this.options.start)/100) : handlePos) + handlePct;
       }
       // assign the min-height/width to our css object
       css[`min-${hOrW}`] = `${dim}%`;
@@ -191,7 +191,6 @@ class Slider {
 
     //because we don't know exactly how the handle will be moved, check the amount of time it should take to move.
     var moveTime = this.$element.data('dragging') ? 1000/60 : this.options.moveTime;
-
 
     Foundation.Move(moveTime, $hndl, function() {
       //adjusting the left/top property of the handle, based on the percentage calculated above
