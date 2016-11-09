@@ -8,7 +8,7 @@ var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var plumber = require('gulp-plumber');
 var sourcemaps = require('gulp-sourcemaps');
-var scssLint = require('gulp-scss-lint');
+var sassLint = require('gulp-sass-lint');
 
 var PATHS = [
   'scss',
@@ -42,7 +42,11 @@ gulp.task('sass:foundation', function() {
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('_build/assets/css'))
     .on('finish', function() {
-      gulp.src(LINT_PATHS).pipe(scssLint())
+      gulp.src(LINT_PATHS)
+        .pipe(sassLint({
+            config: './.sass-lint.yml'
+          }))
+        .pipe(sassLint.format());
     });
 });
 

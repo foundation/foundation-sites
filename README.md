@@ -14,14 +14,13 @@ Lastly, if you're rolling your own setup, you can install Foundation through a v
 
 ## Documentation
 
-The documentation can be found at <https://foundation.zurb.com/sites/docs>. To run the documentation locally on your machine, you need [Node.js](https://nodejs.org/en/) and [Ruby](https://www.ruby-lang.org/en/) installed on your computer. (Your Node.js version must be 0.12 or higher.)
+The documentation can be found at <https://foundation.zurb.com/sites/docs>. To run the documentation locally on your machine, you need [Node.js](https://nodejs.org/en/) installed on your computer. (Your Node.js version must be **4.0** or higher.)
 
 Run these commands to set up the documentation:
 
 ```bash
 git clone https://github.com/zurb/foundation-sites
 cd foundation-sites
-gem install scss-lint
 npm install
 ```
 
