@@ -93,7 +93,7 @@ class Tabs {
             * Fires when the zplugin has deeplinked at pageload
             * @event Tabs#deeplink
             */
-          this.$element.trigger('deeplink.zf.tabs', [$target]);
+          $elem.trigger('deeplink.zf.tabs', [$(anchor)]);
         }
       }
     });
