@@ -48,8 +48,15 @@ class Orbit {
 
     this.$wrapper = this.$element.find(`.${this.options.containerClass}`);
     this.$slides = this.$element.find(`.${this.options.slideClass}`);
+
     var $images = this.$element.find('img'),
-    initActive = this.$slides.filter('.is-active');
+        initActive = this.$slides.filter('.is-active'),
+        id = this.$element[0].id || Foundation.GetYoDigits(6, 'orbit');
+
+    this.$element.attr({
+      'data-resize': id,
+      'id': id
+    });
 
     if (!initActive.length) {
       this.$slides.eq(0).addClass('is-active');
@@ -114,9 +121,7 @@ class Orbit {
   */
   _prepareForOrbit() {
     var _this = this;
-    this._setWrapperHeight(function(max){
-      _this._setSlideHeight(max);
-    });
+    this._setWrapperHeight();
   }
 
   /**
@@ -141,7 +146,7 @@ class Orbit {
 
     if (counter === this.$slides.length) {
       this.$wrapper.css({'height': max}); //only change the wrapper height property once.
-      cb(max); //fire callback with max height dimension.
+      if(cb) {cb(max);} //fire callback with max height dimension.
     }
   }
 
@@ -168,6 +173,10 @@ class Orbit {
     //**Now using custom event - thanks to:**
     //**      Yohai Ararat of Toronto      **
     //***************************************
+    //
+    this.$element.off('.resizeme.zf.trigger').on({
+      'resizeme.zf.trigger': this._prepareForOrbit.bind(this)
+    })
     if (this.$slides.length > 1) {
 
       if (this.options.swipe) {
