@@ -10,6 +10,10 @@
 /// @type Border
 $fieldset-border: 1px solid $medium-gray !default;
 
+/// Default weight for legend in custom fieldsets.
+/// @type Font-Style
+$fieldset-legend-font-weight: $global-weight-bold;
+
 /// Default padding inside custom fieldsets.
 /// @type Number
 $fieldset-padding: rem-calc(20) !default;
@@ -33,6 +37,7 @@ $legend-padding: rem-calc(0 3) !default;
     padding: $legend-padding;
     margin: 0;
     margin-#{$global-left}: rem-calc(-3);
+    font-weight: $fieldset-legend-font-weight;
   }
 }
 

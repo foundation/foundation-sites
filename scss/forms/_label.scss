@@ -44,5 +44,11 @@ $form-label-line-height: 1.8 !default;
     &.middle {
       @include form-label-middle;
     }
+    .required{
+      &:after {
+        content: "*";
+        padding: rem-calc(5);
+      }
+    }
   }
 }
