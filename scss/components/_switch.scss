@@ -81,7 +81,6 @@ $switch-paddle-transition: all 0.25s ease-out !default;
 
 /// Adds styles for the background and paddle of a switch. Apply this to a `<label>` within a switch.
 @mixin switch-paddle {
-<<<<<<< HEAD
   $switch-width: $switch-height * 2;
   $paddle-height: $switch-height - ($switch-paddle-offset * 2);
   $paddle-width: $switch-height - ($switch-paddle-offset * 2);
