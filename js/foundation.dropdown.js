@@ -170,20 +170,21 @@ class Dropdown {
     if(this.options.hover){
       this.$anchor.off('mouseenter.zf.dropdown mouseleave.zf.dropdown')
       .on('mouseenter.zf.dropdown', function(){
-            if($('body[data-whatinput="mouse"]').is('*')) {
-              clearTimeout(_this.timeout);
-              _this.timeout = setTimeout(function(){
-                _this.open();
-                _this.$anchor.data('hover', true);
-              }, _this.options.hoverDelay);
-            }
-          }).on('mouseleave.zf.dropdown', function(){
-            clearTimeout(_this.timeout);
-            _this.timeout = setTimeout(function(){
-              _this.close();
-              _this.$anchor.data('hover', false);
-            }, _this.options.hoverDelay);
-          });
+        var bodyData = $('body').data();
+        if(typeof(bodyData.whatinput) === 'undefined' || bodyData.whatinput === 'mouse') {
+          clearTimeout(_this.timeout);
+          _this.timeout = setTimeout(function(){
+            _this.open();
+            _this.$anchor.data('hover', true);
+          }, _this.options.hoverDelay);
+        }
+      }).on('mouseleave.zf.dropdown', function(){
+        clearTimeout(_this.timeout);
+        _this.timeout = setTimeout(function(){
+          _this.close();
+          _this.$anchor.data('hover', false);
+        }, _this.options.hoverDelay);
+      });
       if(this.options.hoverPane){
         this.$element.off('mouseenter.zf.dropdown mouseleave.zf.dropdown')
             .on('mouseenter.zf.dropdown', function(){
