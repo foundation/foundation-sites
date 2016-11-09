@@ -10,7 +10,88 @@ $accordionmenu-arrows: true !default;
 /// @type Color
 $accordionmenu-arrow-color: $primary-color !default;
 
+/// Sets accordion menu item padding.
+/// @type Color
+$accordionmenu-item-background: null !default;
+
+/// Sets accordion menu item border.
+/// @type Color
+$accordionmenu-border: 1px solid $light-gray !default;
+
+/// Sets accordion menu item padding.
+/// @type Color
+$accordionmenu-submenu-toggle-background: null !default;
+
+/// Sets accordion menu item padding.
+/// @type Color
+$accordion-submenu-toggle-border: $accordionmenu-border !default;
+
+/// Sets accordion menu submenu toggle background width.
+/// @type Color
+$accordionmenu-submenu-toggle-width: 40px !default;
+
+/// Sets accordion menu submenu toggle background height.
+/// @type Color
+$accordionmenu-submenu-toggle-height: $accordionmenu-submenu-toggle-width !default;
+
 @mixin foundation-accordion-menu {
+  // Base <ul> styling
+  .accordion-menu {
+    @if $accordionmenu-border {
+      border-bottom: $accordionmenu-border;
+    }
+
+    a {
+      @if $accordionmenu-item-background {
+        background: $accordionmenu-item-background;
+      }
+
+      @if $accordionmenu-border {
+        border-top: $accordionmenu-border;
+        border-left: $accordionmenu-border;
+        border-right: $accordionmenu-border;
+      }
+    }
+
+    // Submenu li styling
+    .is-accordion-submenu-parent {
+      position: relative;
+
+      & > a {
+        padding-#{$global-right}: $accordionmenu-submenu-toggle-width;
+      }
+    }
+
+    // Submenu toggle
+    .submenu-toggle {
+      width: $accordionmenu-submenu-toggle-width;
+      height: $accordionmenu-submenu-toggle-height;
+      border-#{$global-left}: $accordion-submenu-toggle-border;
+      position: absolute;
+      top: 0;
+      #{$global-right}: 0;
+
+      @if $accordionmenu-submenu-toggle-background {
+        background: $accordionmenu-submenu-toggle-background;
+      }
+
+      // Add the arrow to the toggle
+      &::after {
+        @include css-triangle(6px, $accordionmenu-arrow-color, down);
+        top: 0;
+        bottom: 0;
+        margin: auto;
+      }
+    }
+
+    // Rotate the arrow when menu is open
+    .has-submenu-toggle[aria-expanded='true'] .submenu-toggle::after {
+      transform-origin: 50% 50%;
+      transform: scaleY(-1);
+    }
+  }
+
+  // If arrows are enabled, display them
   @if $accordionmenu-arrows {
     .is-accordion-submenu-parent:not(.has-submenu-toggle) > a {
       position: relative;
@@ -18,9 +99,10 @@ $accordionmenu-arrow-color: $primary-color !default;
       &::after {
         @include css-triangle(6px, $accordionmenu-arrow-color, down);
         position: absolute;
-        top: 50%;
-        margin-top: -4px;
-        right: 1rem;
+        top: 0;
+        bottom: 0;
+        margin: auto 0;
+        #{$global-right}: 1rem;
       }
     }
 
@@ -28,27 +110,5 @@ $accordionmenu-arrow-color: $primary-color !default;
       transform-origin: 50% 50%;
       transform: scaleY(-1);
     }
-  }
-
-  .submenu-toggle {
-    padding: 0.7rem;
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 38px;
-    border-left: 1px solid $light-gray;
-
-    &::after {
-      @include css-triangle(6px, $accordionmenu-arrow-color, down);
-    }
-  }
-
-  .has-submenu-toggle {
-    position: relative;
-  }
-
-  .has-submenu-toggle[aria-expanded='true'] .submenu-toggle::after {
-    transform-origin: 50% 50%;
-    transform: scaleY(-1);
   }
 }
