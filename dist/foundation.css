@@ -3018,7 +3018,7 @@ body {
     bottom: 0; }
 
 body.is-reveal-open {
-  overflow: hidden; }
+  overflow: auto; }
 
 html.is-reveal-open,
 html.is-reveal-open body {
@@ -3038,7 +3038,7 @@ html.is-reveal-open body {
   right: 0;
   z-index: 1005;
   background-color: rgba(10, 10, 10, 0.45);
-  overflow-y: scroll; }
+  overflow-y: hidden; }
 
 .reveal {
   display: none;
