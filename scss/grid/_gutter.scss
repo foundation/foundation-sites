@@ -37,7 +37,7 @@
 ) {
   @if $gutter == auto and type-of($gutters) == 'map' {
     // "auto"
-    @each $value, $breakpoint in $gutters {
+    @each $breakpoint, $value in $gutters {
       @include breakpoint($breakpoint) {
         @include grid-column-gutter($value);
       }
