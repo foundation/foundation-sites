@@ -27,7 +27,11 @@ class OffCanvas {
     this._init();
     this._events();
 
-    Foundation.registerPlugin(this, 'OffCanvas');
+    Foundation.registerPlugin(this, 'OffCanvas')
+    Foundation.Keyboard.register('OffCanvas', {
+      'ESCAPE': 'close'
+    });
+
   }
 
   /**
