@@ -77,23 +77,25 @@ class Tabs {
       if (_this.options.deepLink) {
         var anchor = window.location.hash;
         //need a hash and a relevant anchor in this tabset
-        if (anchor.length && $elem.find('[href="'+anchor+'"]').length) {
+        if(anchor.length) {
+          var $link =$elem.find('[href="'+anchor+'"]')
+          if ($link.length) {
+            _this.selectTab($(anchor));
 
-          _this.selectTab($(anchor));
+            //roll up a little to show the titles
+            if (_this.options.deepLinkSmudge) {
+              $(window).load(function() {
+                var offset = $elem.offset();
+                $('html, body').animate({ scrollTop: offset.top }, _this.options.deepLinkSmudgeDelay);
+              });
+            }
 
-          //roll up a little to show the titles
-          if (_this.options.deepLinkSmudge) {
-            $(window).load(function() {
-              var offset = $elem.offset();
-              $('html, body').animate({ scrollTop: offset.top }, _this.options.deepLinkSmudgeDelay);
-            });
-          }
-
-          /**
-            * Fires when the zplugin has deeplinked at pageload
-            * @event Tabs#deeplink
-            */
-          $elem.trigger('deeplink.zf.tabs', [$(anchor)]);
+            /**
+              * Fires when the zplugin has deeplinked at pageload
+              * @event Tabs#deeplink
+              */
+             $elem.trigger('deeplink.zf.tabs', [$link, $(anchor)]);
+           }
         }
       }
     });
@@ -239,12 +241,12 @@ class Tabs {
     } else {
       history.replaceState({}, "", anchor);
     }
-    
+
     /**
      * Fires when the plugin has successfully changed tabs.
      * @event Tabs#change
      */
-    this.$element.trigger('change.zf.tabs', [$target]);
+    this.$element.trigger('change.zf.tabs', [$target, $targetContent]);
 
 	  //fire to children a mutation event
 	  $targetContent.find("[data-mutate]").trigger("mutateme.zf.trigger");
