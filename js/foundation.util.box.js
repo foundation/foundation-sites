@@ -116,55 +116,55 @@ function GetOffsets(element, anchor, position, vOffset, hOffset, isOverflow) {
   switch (position) {
     case 'top':
       return {
-        left: (Rtl() ? $anchorDims.offset.left - $eleDims.width + $anchorDims.width : $anchorDims.offset.left),
+        left: (Rtl() ? $anchorDims.offset.left - $eleDims.width + $anchorDims.width - hOffset: $anchorDims.offset.left + hOffset),
         top: $anchorDims.offset.top - ($eleDims.height + vOffset)
       }
       break;
     case 'left':
       return {
         left: $anchorDims.offset.left - ($eleDims.width + hOffset),
-        top: $anchorDims.offset.top
+        top: $anchorDims.offset.top + vOffset
       }
       break;
     case 'right':
       return {
         left: $anchorDims.offset.left + $anchorDims.width + hOffset,
-        top: $anchorDims.offset.top
+        top: $anchorDims.offset.top + vOffset
       }
       break;
     case 'center top':
       return {
-        left: ($anchorDims.offset.left + ($anchorDims.width / 2)) - ($eleDims.width / 2),
+        left: ($anchorDims.offset.left + ($anchorDims.width / 2)) - ($eleDims.width / 2) + hOffset,
         top: $anchorDims.offset.top - ($eleDims.height + vOffset)
       }
       break;
     case 'center bottom':
       return {
-        left: isOverflow ? hOffset : (($anchorDims.offset.left + ($anchorDims.width / 2)) - ($eleDims.width / 2)),
+        left: isOverflow ? hOffset : (($anchorDims.offset.left + ($anchorDims.width / 2)) - ($eleDims.width / 2)) + hOffset,
         top: $anchorDims.offset.top + $anchorDims.height + vOffset
       }
       break;
     case 'center left':
       return {
         left: $anchorDims.offset.left - ($eleDims.width + hOffset),
-        top: ($anchorDims.offset.top + ($anchorDims.height / 2)) - ($eleDims.height / 2)
+        top: ($anchorDims.offset.top + vOffset + ($anchorDims.height / 2)) - ($eleDims.height / 2)
       }
       break;
     case 'center right':
       return {
         left: $anchorDims.offset.left + $anchorDims.width + hOffset + 1,
-        top: ($anchorDims.offset.top + ($anchorDims.height / 2)) - ($eleDims.height / 2)
+        top: ($anchorDims.offset.top + ($anchorDims.height / 2)) - ($eleDims.height / 2) + vOffset
       }
       break;
     case 'center':
       return {
-        left: ($eleDims.windowDims.offset.left + ($eleDims.windowDims.width / 2)) - ($eleDims.width / 2),
-        top: ($eleDims.windowDims.offset.top + ($eleDims.windowDims.height / 2)) - ($eleDims.height / 2)
+        left: ($eleDims.windowDims.offset.left + ($eleDims.windowDims.width / 2)) - ($eleDims.width / 2) + hOffset,
+        top: ($eleDims.windowDims.offset.top + ($eleDims.windowDims.height / 2)) - ($eleDims.height / 2 + vOffset)
       }
       break;
     case 'reveal':
       return {
-        left: ($eleDims.windowDims.width - $eleDims.width) / 2,
+        left: ($eleDims.windowDims.width - $eleDims.width) / 2 + hOffset,
         top: $eleDims.windowDims.offset.top + vOffset
       }
     case 'reveal full':
@@ -175,7 +175,7 @@ function GetOffsets(element, anchor, position, vOffset, hOffset, isOverflow) {
       break;
     case 'left bottom':
       return {
-        left: $anchorDims.offset.left,
+        left: $anchorDims.offset.left - hOffset,
         top: $anchorDims.offset.top + $anchorDims.height + vOffset
       };
       break;
@@ -187,7 +187,7 @@ function GetOffsets(element, anchor, position, vOffset, hOffset, isOverflow) {
       break;
     default:
       return {
-        left: (Rtl() ? $anchorDims.offset.left - $eleDims.width + $anchorDims.width : $anchorDims.offset.left + hOffset),
+        left: (Rtl() ? $anchorDims.offset.left - $eleDims.width + $anchorDims.width - hOffset: $anchorDims.offset.left + hOffset),
         top: $anchorDims.offset.top + $anchorDims.height + vOffset
       }
   }
