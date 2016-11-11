@@ -62,6 +62,14 @@ class Abide {
           this.validateInput($(e.target));
         });
     }
+
+    if (this.options.validateOnBlur) {
+      this.$inputs
+        .off('blur.zf.abide')
+        .on('blur.zf.abide', (e) => {
+          this.validateInput($(e.target));
+        });
+    }
   }
 
   /**
@@ -502,6 +510,13 @@ Abide.defaults = {
    * @example false
    */
   liveValidate: false,
+
+  /**
+   * Set to true to validate inputs on blur.
+   * @option
+   * @example false
+   */
+  validateOnBlur: false,
 
   patterns: {
     alpha : /^[a-zA-Z]+$/,
