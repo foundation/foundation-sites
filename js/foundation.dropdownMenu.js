@@ -95,18 +95,23 @@ class DropdownMenu {
           _this._show($sub);
           $elem.add($elem.parentsUntil(_this.$element, `.${parClass}`)).attr('data-is-click', true);
         }
-      } else {
-        if(_this.options.closeOnClickInside){
-          _this._hide($elem);
-        }
-        return;
       }
     };
 
     if (this.options.clickOpen || hasTouch) {
       this.$menuItems.on('click.zf.dropdownmenu touchstart.zf.dropdownmenu', handleClickFn);
     }
-
+    
+    // Handle Leaf element Clicks
+    if(_this.options.closeOnClickInside){
+      this.$menuItems.on('click.zf.dropdownmenu touchend.zf.dropdownmenu', function(e) {
+        var hasSub = $elem.hasClass(parClass);
+        if(!hasSub){
+          _this._hide();
+        }
+      });
+    }
+    
     if (!this.options.disableHover) {
       this.$menuItems.on('mouseenter.zf.dropdownmenu', function(e) {
         var $elem = $(this),
