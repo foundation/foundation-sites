@@ -72,7 +72,7 @@ class OffCanvas {
       this._setMQChecker();
     }
     if (!this.options.transitionTime) {
-      this.options.transitionTime = parseFloat(window.getComputedStyle($('[data-off-canvas-content]')[0]).transitionDuration) * 1000;
+      this.options.transitionTime = parseFloat(window.getComputedStyle($('[data-off-canvas]')[0]).transitionDuration) * 1000;
     }
   }
 
@@ -130,10 +130,12 @@ class OffCanvas {
     if (isRevealed) {
       this.close();
       this.isRevealed = true;
+      this.$element.attr('aria-hidden', 'false');
       this.$element.off('open.zf.trigger toggle.zf.trigger');
       if ($closer.length) { $closer.hide(); }
     } else {
       this.isRevealed = false;
+      this.$element.attr('aria-hidden', 'true');
       this.$element.on({
         'open.zf.trigger': this.open.bind(this),
         'toggle.zf.trigger': this.toggle.bind(this)
