@@ -2,6 +2,7 @@
 
 !function($) {
 
+
 /**
  * Dropdown module.
  * @module foundation.dropdown
@@ -22,6 +23,11 @@ class Dropdown {
     this.$element = element;
     this.options = $.extend({}, Dropdown.defaults, this.$element.data(), options);
     this._init();
+
+    // TODO:  Figure out if this should be a const?  Currently not b/c horizontal needs dynamic rtl
+    this.verticalClassOrder = [ 'bottom', 'top', 'center' ];
+    this.horizontalClassOrder = Foundation.rtl() ? ['right', 'left', 'center'] : ['left', 'right', 'center'];
+
 
     Foundation.registerPlugin(this, 'Dropdown');
     Foundation.Keyboard.register('Dropdown', {
@@ -51,10 +57,12 @@ class Dropdown {
 
     });
 
+    // no context inferring on vertical right now
     this.verticalPositionClass = this.originalVerticalPosition = this.getVerticalPositionClass(this.options.positionClass);
-    this.horizontalPositionClass = this.originalHorizontalPosition = this.getHorizontalPositionClass(this.options.positionClass);
+    this.originalHorizontalPosition = this.getHorizontalPositionClass(this.options.positionClass);
+    this.horizontalPositionClass = this.originalHorizontalPosition.length ? this.originalHorizontalPosition : this.inferHorizontalPositionClass();
     this.positionClass = [this.horizontalPositionClass, this.verticalPositionClass].join(' ').trim();
-    this.counter = 4;
+    this.counter = 6;
     this.usedPositions = [];
     this.$element.attr({
       'aria-hidden': 'true',
@@ -86,9 +94,19 @@ class Dropdown {
       className = this.$element[0].className;
     }
     var horizontalPosition = /(left|right)/g.exec(className);
-        horizontalPosition = horizontalPosition || /float-(\S+)/.exec(this.$anchor[0].className);
         horizontalPosition = horizontalPosition ? horizontalPosition[1] : '';
     return horizontalPosition;
+  }
+
+  inferHorizontalPositionClass() {
+    var horizontalPosition = /float-(\S+)/.exec(this.$anchor[0].className);
+        horizontalPosition = horizontalPosition ? horizontalPosition[1] : '';
+    return horizontalPosition;
+  }
+
+  getNextClass(current, array) {
+    var index = array.indexOf(current);
+    return array[(index + 1) % array.length];
   }
 
   /**
@@ -99,34 +117,28 @@ class Dropdown {
    */
   _reposition(position) {
     this.usedPositions.push(position ? position : 'bottom');
-    //default, try switching to opposite side
-    if(!position && (this.usedPositions.indexOf('top') < 0)){
-      this.$element.addClass('top');
-    }else if(position === 'top' && (this.usedPositions.indexOf('bottom') < 0)){
-      this.$element.removeClass(position);
-    }else if(position === 'left' && (this.usedPositions.indexOf('right') < 0)){
-      this.$element.removeClass(position)
-          .addClass('right');
-    }else if(position === 'right' && (this.usedPositions.indexOf('left') < 0)){
-      this.$element.removeClass(position)
-          .addClass('left');
-    }
 
-    //if default change didn't work, try bottom or left first
-    else if(!position && (this.usedPositions.indexOf('top') > -1) && (this.usedPositions.indexOf('left') < 0)){
-      this.$element.addClass('left');
-    }else if(position === 'top' && (this.usedPositions.indexOf('bottom') > -1) && (this.usedPositions.indexOf('left') < 0)){
-      this.$element.removeClass(position)
-          .addClass('left');
-    }else if(position === 'left' && (this.usedPositions.indexOf('right') > -1) && (this.usedPositions.indexOf('bottom') < 0)){
-      this.$element.removeClass(position);
-    }else if(position === 'right' && (this.usedPositions.indexOf('left') > -1) && (this.usedPositions.indexOf('bottom') < 0)){
-      this.$element.removeClass(position);
+    var newVertical = this.verticalPositionClass, newHorizontal = this.horizontalPositionClass, newPosition;
+    // if we have horizontal specified, try just swapping vertical
+    // otherwise, try horizontal first, followed by vertical changes.
+    //
+    //
+    if(this.originalHorizontalPosition.length > 0) {
+      newVertical = this.getNextClass(this.verticalPositionClass, this.verticalClassOrder);
+    } else {
+      newHorizontal = this.getNextClass(this.horizontalPositionClass, this.horizontalClassOrder);
     }
-    //if nothing cleared, set to bottom
-    else{
-      this.$element.removeClass(position);
+    newPosition = [this.horizontalPositionClass, this.verticalPositionClass].join(' ').trim();
+    if(this.usedPositions.indexOf(newPosition) >= 0 && !this.originalVerticalPosition.length) {
+      newHorizontal = this.horizontalPositionClass;
+      newVertical = this.getNextClass(this.verticalPositionClass, this.verticalClassOrder);
+      newPosition = [this.horizontalPositionClass, this.verticalPositionClass].join(' ').trim();
     }
+    this.horizontalPositionClass = newHorizontal;
+    this.verticalPositionClass = newVertical;
+    this.positionClass = newPosition;
+    this.$element.removeClass(position);
+    this.$element.addClass(newPosition);
     this.classChanged = true;
     this.counter--;
   }
@@ -326,7 +338,7 @@ class Dropdown {
       this.$element.addClass(this.options.positionClass)
           /*.hide()*/.css({height: '', width: ''});
       this.classChanged = false;
-      this.counter = 4;
+      this.counter = 6;
       this.usedPositions.length = 0;
     }
     this.$element.trigger('hide.zf.dropdown', [this.$element]);
