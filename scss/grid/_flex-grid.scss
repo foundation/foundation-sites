@@ -188,8 +188,7 @@
   // Column row
   // The double .row class is needed to bump up the specificity
   .column.row.row {
-    float: none;
-    display: block;
+    display: flex;
   }
 
   // To properly nest a column row, padding and margin is removed
