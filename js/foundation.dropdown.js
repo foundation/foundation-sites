@@ -51,7 +51,9 @@ class Dropdown {
 
     });
 
-    this.options.positionClass = this.getPositionClass();
+    this.verticalPositionClass = this.originalVerticalPosition = this.getVerticalPositionClass(this.options.positionClass);
+    this.horizontalPositionClass = this.originalHorizontalPosition = this.getHorizontalPositionClass(this.options.positionClass);
+    this.positionClass = [this.horizontalPositionClass, this.verticalPositionClass].join(' ').trim();
     this.counter = 4;
     this.usedPositions = [];
     this.$element.attr({
@@ -64,18 +66,29 @@ class Dropdown {
   }
 
   /**
-   * Helper function to determine current orientation of dropdown pane.
+   * Helper function to determine current y orientation of dropdown pane.
    * @function
-   * @returns {String} position - string value of a position class.
+   * @returns {String} position - string value of a position class.  Will pull
+   * it out of explicit class or perform some heuristics to do a best guess.
    */
-  getPositionClass() {
-    var verticalPosition = this.$element[0].className.match(/(top|left|right|bottom)/g);
-        verticalPosition = verticalPosition ? verticalPosition[0] : '';
-    var horizontalPosition = /float-(\S+)/.exec(this.$anchor[0].className);
-        horizontalPosition = horizontalPosition ? horizontalPosition[1] : '';
-    var position = horizontalPosition ? horizontalPosition + ' ' + verticalPosition : verticalPosition;
+  getVerticalPositionClass(className) {
+    if(typeof(className) === 'undefined' || !className.length) {
+      className = this.$element[0].className;
+    }
+    var verticalPosition = /(top|bottom)/g.exec(className);
+        verticalPosition = verticalPosition ? verticalPosition[1] : '';
 
-    return position;
+    return verticalPosition;
+  }
+
+  getHorizontalPositionClass(className) {
+    if(typeof(className) === 'undefined' || !className.length) {
+      className = this.$element[0].className;
+    }
+    var horizontalPosition = /(left|right)/g.exec(className);
+        horizontalPosition = horizontalPosition || /float-(\S+)/.exec(this.$anchor[0].className);
+        horizontalPosition = horizontalPosition ? horizontalPosition[1] : '';
+    return horizontalPosition;
   }
 
   /**
@@ -126,13 +139,9 @@ class Dropdown {
    */
   _setPosition() {
     if(this.$anchor.attr('aria-expanded') === 'false'){ return false; }
-    var position = this.getPositionClass(),
+    var position = this.positionClass,
         $eleDims = Foundation.Box.GetDimensions(this.$element),
-        $anchorDims = Foundation.Box.GetDimensions(this.$anchor),
-        _this = this,
-        direction = (position === 'left' ? 'left' : ((position === 'right') ? 'left' : 'top')),
-        param = (direction === 'top') ? 'height' : 'width',
-        offset = (param === 'height') ? this.options.vOffset : this.options.hOffset;
+        $anchorDims = Foundation.Box.GetDimensions(this.$anchor);
 
 
 
@@ -144,7 +153,6 @@ class Dropdown {
       this.classChanged = true;
       return false;
     }
-
     this.$element.offset(Foundation.Box.GetOffsets(this.$element, this.$anchor, position, this.options.vOffset, this.options.hOffset));
 
     while(!Foundation.Box.ImNotTouchingYou(this.$element, false, true) && this.counter){
@@ -311,7 +319,7 @@ class Dropdown {
         .attr('aria-expanded', false);
 
     if(this.classChanged){
-      var curPositionClass = this.getPositionClass();
+      var curPositionClass = this.positionClass;
       if(curPositionClass){
         this.$element.removeClass(curPositionClass);
       }
