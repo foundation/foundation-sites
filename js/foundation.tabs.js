@@ -69,8 +69,12 @@ class Tabs {
         'aria-labelledby': linkId
       });
 
-      if(isActive && _this.options.autoFocus){
-        $link.focus();
+      if(isActive && _this.options.autoFocus){  
+        $(window).load(function() {         
+          $('html, body').animate({ scrollTop: $elem.offset().top }, _this.options.deepLinkSmudgeDelay, () => {
+            $link.focus();
+          });
+        });
       }
 
       //use browser to open a tab, if it exists in this tabset
