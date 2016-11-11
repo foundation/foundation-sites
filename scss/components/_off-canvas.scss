@@ -114,7 +114,6 @@ $offcanvas-shadow: 0 0 10px rgba($black, 0.5) !default;
 
   transition: transform $transition;
   backface-visibility: hidden;
-  will-change: transform;
 
   background: $background;
 
@@ -212,7 +211,6 @@ $offcanvas-shadow: 0 0 10px rgba($black, 0.5) !default;
 ) {
   transition: transform $offcanvas-transition-length $offcanvas-transition-timing;
   backface-visibility: hidden;
-  will-change: transform;
 
   background: $background;
 
