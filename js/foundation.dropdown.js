@@ -60,8 +60,11 @@ class Dropdown {
     // no context inferring on vertical right now
     this.verticalPositionClass = this.originalVerticalPosition = this.getVerticalPositionClass(this.options.positionClass);
     this.originalHorizontalPosition = this.getHorizontalPositionClass(this.options.positionClass);
+    this.checkForCenterClass(this.options.positionClass);
     this.horizontalPositionClass = this.originalHorizontalPosition.length ? this.originalHorizontalPosition : this.inferHorizontalPositionClass();
+
     this.positionClass = [this.horizontalPositionClass, this.verticalPositionClass].join(' ').trim();
+    this.fixedExhausted = false;
     this.counter = 6;
     this.usedPositions = [];
     this.$element.attr({
@@ -104,9 +107,38 @@ class Dropdown {
     return horizontalPosition;
   }
 
+  checkForCenterClass(className) {
+    if(typeof(className) === 'undefined' || !className.length) {
+      className = this.$element[0].className;
+    }
+
+    var hasCenterClass = className.match(/center/);
+    if(hasCenterClass) {
+      if(this.originalHorizontalPosition) {
+        this.verticalPosition = this.originalVerticalPosition = 'center';
+      } else {
+        this.originalHorizontalPosition = 'center';
+      }
+    }
+  }
+
   getNextClass(current, array) {
     var index = array.indexOf(current);
     return array[(index + 1) % array.length];
+  }
+
+  // We want to always respect explicitly set positioning,
+  // so this method checks if we've exhausted the possibilities.
+  checkFixedExhausted() {
+    if(this.originalHorizontalPosition.length && this.originalVerticalPosition.length) {
+      return true;
+    }
+
+    if(this.originalHorizontalPosition.length || this.originalVerticalPosition.length) {
+      return this.usedPositions.length > 4;
+    }
+
+    return false;
   }
 
   /**
@@ -140,6 +172,7 @@ class Dropdown {
     this.$element.removeClass(position);
     this.$element.addClass(newPosition);
     this.classChanged = true;
+    this.fixedExhausted = this.checkFixedExhausted();
     this.counter--;
   }
 
@@ -155,7 +188,7 @@ class Dropdown {
         $eleDims = Foundation.Box.GetDimensions(this.$element),
         $anchorDims = Foundation.Box.GetDimensions(this.$anchor);
 
-
+    debugger;
 
     if(($eleDims.width >= $eleDims.windowDims.width) || (!this.counter && !Foundation.Box.ImNotTouchingYou(this.$element))){
       this.$element.offset(Foundation.Box.GetOffsets(this.$element, this.$anchor, 'center bottom', this.options.vOffset, this.options.hOffset, true)).css({
@@ -167,7 +200,7 @@ class Dropdown {
     }
     this.$element.offset(Foundation.Box.GetOffsets(this.$element, this.$anchor, position, this.options.vOffset, this.options.hOffset));
 
-    while(!Foundation.Box.ImNotTouchingYou(this.$element, false, true) && this.counter){
+    while(!Foundation.Box.ImNotTouchingYou(this.$element, false, true) && this.counter && !this.fixedExhausted) {
       this._reposition(position);
       this._setPosition();
     }

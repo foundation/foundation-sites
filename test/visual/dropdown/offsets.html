@@ -1,0 +1,39 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Foundation for Sites Testing</title>
+    <link href="../assets/css/foundation.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="row column">
+      <h1>Dropdown: Positioning Content</h1>
+
+      <p>These dropdowns test various positioning and position offsets</p>
+
+      <p>This dropdown should be offset by 10 down and 30 to the right</p>
+      <button class="button" type="button" data-toggle="example-dropdown">Toggle Dropdown</button>
+      <div class="dropdown-pane" id="example-dropdown" data-dropdown data-v-offset="10" data-h-offset="30" data-auto-focus="true">
+        <p>This dropdown should be offset by 10 down and 30 to the right</p>
+      </div>
+      <p>This dropdown should go off the screen left because it is 100% explicitly positioned.</p>
+      <button class="button" type="button" data-toggle="example-dropdown2">Toggle Dropdown</button>
+      <div class="dropdown-pane center left" id="example-dropdown2" data-dropdown data-auto-focus="true">
+        <p>This dropdown should go off the screen left because it is 100% explicitly positioned.</p>
+      </div>
+      <p>This dropdown should go off the screen left because it is 100% explicitly positioned.</p>
+      <button class="button" type="button" data-toggle="example-dropdown3">Toggle Dropdown</button>
+      <div class="dropdown-pane left" id="example-dropdown3" data-dropdown data-auto-focus="true">
+        <p>This dropdown should go left if there is room and otherwise below</p>
+      </div>
+    </div>
+
+    <script src="../assets/js/vendor.js"></script>
+    <script src="../assets/js/foundation.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
+</html>
