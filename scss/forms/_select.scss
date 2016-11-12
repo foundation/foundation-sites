@@ -61,7 +61,7 @@ $select-radius: $global-radius !default;
       transition: $input-transition;
     }
   }
-  
+
   // Disabled state
   &:disabled {
     background-color: $input-background-disabled;

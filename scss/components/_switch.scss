@@ -179,7 +179,7 @@ $switch-paddle-transition: all 0.25s ease-out !default;
   $paddle-active-offest: $switch-width - $paddle-width - $paddle-offset;
 
   height: $switch-height;
-  
+
   .switch-paddle {
     width: $switch-width;
     height: $switch-height;
