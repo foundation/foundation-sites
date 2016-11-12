@@ -433,27 +433,27 @@ Using these source ordering classes, you can shift columns around between our br
 
 ### Block Grids
 
-The block grid from Foundation 5 has been merged into the main grid. Add a class of the format `[size]-up-[n]` to change the size of all columns within the row. By default, the max number of columns you can use with block grid are 8.
+Block grids are a shorthand way to create equally-sized columns. Add a class of the format `.[size]-up-[n]` to change the number of columns within the row. By default, the max number of columns you can use with block grid are 8. Adding the `.block-grid-column` class to columns will apply a bottom margin equal to the width of gutters.
 
 ```html_example
-<div class="row small-up-1 medium-up-2 large-up-4">
-  <div class="column">
-    <img src="//placehold.it/300x300" class="thumbnail" alt="">
+<div class="row small-up-2 medium-up-3 large-up-4">
+  <div class="column block-grid-column">
+    <img src="//placehold.it/600x600" class="thumbnail" alt="">
   </div>
-  <div class="column">
-    <img src="//placehold.it/300x300" class="thumbnail" alt="">
+  <div class="column block-grid-column">
+    <img src="//placehold.it/600x600" class="thumbnail" alt="">
   </div>
-  <div class="column">
-    <img src="//placehold.it/300x300" class="thumbnail" alt="">
+  <div class="column block-grid-column">
+    <img src="//placehold.it/600x600" class="thumbnail" alt="">
   </div>
-  <div class="column">
-    <img src="//placehold.it/300x300" class="thumbnail" alt="">
+  <div class="column block-grid-column">
+    <img src="//placehold.it/600x600" class="thumbnail" alt="">
   </div>
-  <div class="column">
-    <img src="//placehold.it/300x300" class="thumbnail" alt="">
+  <div class="column block-grid-column">
+    <img src="//placehold.it/600x600" class="thumbnail" alt="">
   </div>
-  <div class="column">
-    <img src="//placehold.it/300x300" class="thumbnail" alt="">
+  <div class="column block-grid-column">
+    <img src="//placehold.it/600x600" class="thumbnail" alt="">
   </div>
 </div>
 ```
