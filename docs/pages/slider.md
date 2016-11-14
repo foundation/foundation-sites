@@ -140,7 +140,7 @@ Alternatively there is also a `pow`-type position value function available, maki
 
 ```html_example
 <div class="small-10 columns">
-<div class="slider" data-slider data-initial-start="50" data-step="1" data-position-value-function="log" data-non-linear-base="10">
+<div class="slider" data-slider data-initial-start="50" data-step="1" data-position-value-function="log" data-non-linear-base="5">
   <span class="slider-handle" data-slider-handle role="slider" tabindex="1" aria-controls="sliderOutputNonLinear"></span>
 </div>
 </div>
@@ -150,4 +150,4 @@ Alternatively there is also a `pow`-type position value function available, maki
 </div>
 ```
 
-The nonLinearBase-option is optional and defaults to 10.
+The nonLinearBase-option is optional and defaults to 5.
