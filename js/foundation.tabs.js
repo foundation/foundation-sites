@@ -49,7 +49,7 @@ class Tabs {
     this.$tabTitles.each(function(){
       var $elem = $(this),
           $link = $elem.find('a'),
-          isActive = $elem.hasClass('is-active'),
+          isActive = $elem.hasClass(`${_this.options.linkActiveClass}`),
           hash = $link[0].hash.slice(1),
           linkId = $link[0].id ? $link[0].id : `${hash}-label`,
           $tabContent = $(`#${hash}`);
@@ -82,7 +82,7 @@ class Tabs {
         var anchor = window.location.hash;
         //need a hash and a relevant anchor in this tabset
         if(anchor.length) {
-          var $link =$elem.find('[href="'+anchor+'"]')
+          var $link =$elem.find('[href="'+anchor+'"]');
           if ($link.length) {
             _this.selectTab($(anchor));
 
@@ -213,7 +213,7 @@ class Tabs {
     /**
      * Check for active class on target. Collapse if exists.
      */
-    if ($target.hasClass('is-active')) {
+    if ($target.hasClass(`${this.options.linkActiveClass}`)) {
         if(this.options.activeCollapse) {
             this._collapseTab($target);
 
@@ -227,7 +227,7 @@ class Tabs {
     }
 
     var $oldTab = this.$element.
-          find(`.${this.options.linkClass}.is-active`),
+          find(`.${this.options.linkClass}.${this.options.linkActiveClass}`),
           $tabLink = $target.find('[role="tab"]'),
           hash = $tabLink[0].hash,
           $targetContent = this.$tabContent.find(hash);
@@ -266,12 +266,12 @@ class Tabs {
           hash = $tabLink[0].hash,
           $targetContent = this.$tabContent.find(hash);
 
-      $target.addClass('is-active');
+      $target.addClass(`${this.options.linkActiveClass}`);
 
       $tabLink.attr({'aria-selected': 'true'});
 
       $targetContent
-        .addClass('is-active')
+        .addClass(`${this.options.panelActiveClass}`)
         .attr({'aria-hidden': 'false'});
   }
 
@@ -282,12 +282,12 @@ class Tabs {
    */
   _collapseTab($target) {
     var $target_anchor = $target
-      .removeClass('is-active')
+      .removeClass(`${this.options.linkActiveClass}`)
       .find('[role="tab"]')
       .attr({ 'aria-selected': 'false' });
 
     $(`#${$target_anchor.attr('aria-controls')}`)
-      .removeClass('is-active')
+      .removeClass(`${this.options.panelActiveClass}`)
       .attr({ 'aria-hidden': 'true' });
   }
 
@@ -327,7 +327,7 @@ class Tabs {
       .css('height', '')
       .each(function() {
         var panel = $(this),
-            isActive = panel.hasClass('is-active');
+            isActive = panel.hasClass(`${this.options.panelActiveClass}`);
 
         if (!isActive) {
           panel.css({'visibility': 'hidden', 'display': 'block'});
@@ -434,16 +434,26 @@ Tabs.defaults = {
   linkClass: 'tabs-title',
 
   /**
+   * Class applied to the active `li` in tab link list.
+   * @option
+   * @example 'is-active'
+   */
+  linkActiveClass: 'is-active',
+
+  /**
    * Class applied to the content containers.
    * @option
    * @example 'tabs-panel'
    */
-  panelClass: 'tabs-panel'
-};
+  panelClass: 'tabs-panel',
 
-function checkClass($elem){
-  return $elem.hasClass('is-active');
-}
+  /**
+   * Class applied to the active content container.
+   * @option
+   * @example 'is-active'
+   */
+  panelActiveClass: 'is-active'
+};
 
 // Window exports
 Foundation.plugin(Tabs, 'Tabs');
