@@ -18,6 +18,10 @@ $offcanvas-vertical-size: 250px !default;
 /// @type Color
 $offcanvas-background: $light-gray !default;
 
+/// Box shadow for the off-canvas panel.
+/// @type Shadow
+$offcanvas-shadow: 0 0 10px rgba($black, 0.5) !default;
+
 /// If `true`, an off-canvas panel will be fixed-position, and scroll with the screen. Otherwise it will be absolute positioned.
 /// @type Bool
 $offcanvas-fixed: true !default;
@@ -56,10 +60,6 @@ $maincontent-class: 'off-canvas-content' !default;
 /// Background color of the main content area.
 /// @type Color
 $maincontent-background: $body-background !default;
-
-/// Box shadow thats applied to the main content (or to the off-canvas panel if overlap transition).
-/// @type Shadow
-$offcanvas-shadow: 0 0 10px rgba($black, 0.5) !default;
 
 /// Adds baseline styles for off-canvas. This CSS is required to make the other pieces work.
 @mixin off-canvas-basics {
