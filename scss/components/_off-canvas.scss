@@ -18,6 +18,10 @@ $offcanvas-vertical-size: 250px !default;
 /// @type Color
 $offcanvas-background: $light-gray !default;
 
+/// If `true`, an off-canvas panel will be fixed-position, and scroll with the screen. Otherwise it will be absolute positioned.
+/// @type Bool
+$offcanvas-fixed: true !default;
+
 /// Z-index of an off-canvas panel with the `push` transition.
 /// @type Number
 $offcanvas-push-zindex: 1 !default;
@@ -39,6 +43,7 @@ $offcanvas-transition-length: 0.5s !default;
 $offcanvas-transition-timing: ease !default;
 
 /// If `true`, a revealed off-canvas will be fixed-position, and scroll with the screen.
+/// @type Bool
 $offcanvas-fixed-reveal: true !default;
 
 /// Background color for the overlay that appears when an off-canvas panel is open.
@@ -105,17 +110,29 @@ $offcanvas-shadow: 0 0 10px rgba($black, 0.5) !default;
 /// Adds basic styles for an off-canvas panel.
 @mixin off-canvas-base(
   $background: $offcanvas-background,
-  $transition: $offcanvas-transition-length $offcanvas-transition-timing
+  $transition: $offcanvas-transition-length $offcanvas-transition-timing,
+  $fixed: $offcanvas-fixed
 ) {
   @include disable-mouse-outline;
 
-  position: fixed;
+  @if $fixed == true {
+    position: fixed;
+  }
+  @else {
+    position: absolute;
+  }
+
   z-index: $offcanvas-push-zindex;
 
-  transition: transform $transition;
+  transition: transform $transition, box-shadow $transition;
   backface-visibility: hidden;
 
   background: $background;
+
+  // Push only styles.
+  &.is-transition-push {
+    box-shadow: inset $offcanvas-shadow;
+  }
 
   // Overlap only styles.
   &.is-transition-overlap {
@@ -145,7 +162,7 @@ $offcanvas-shadow: 0 0 10px rgba($black, 0.5) !default;
     width: $size;
     height: 100%;
 
-    transform: translateX(-$size);
+    transform: translateX(-100%);
     overflow-y: auto;
 
     // Sets the open position for the content
@@ -160,7 +177,7 @@ $offcanvas-shadow: 0 0 10px rgba($black, 0.5) !default;
     width: $size;
     height: 100%;
 
-    transform: translateX($size);
+    transform: translateX(100%);
     overflow-y: auto;
 
     // Sets the open position for the content
@@ -175,7 +192,7 @@ $offcanvas-shadow: 0 0 10px rgba($black, 0.5) !default;
     width: 100%;
     height: $size;
 
-    transform: translateY(-$size);
+    transform: translateY(-100%);
     overflow-x: auto;
 
     // Sets the open position for the content
@@ -190,7 +207,7 @@ $offcanvas-shadow: 0 0 10px rgba($black, 0.5) !default;
     width: 100%;
     height: $size;
 
-    transform: translateY($size);
+    transform: translateY(100%);
     overflow-x: auto;
 
     // Sets the open position for the content
@@ -213,10 +230,6 @@ $offcanvas-shadow: 0 0 10px rgba($black, 0.5) !default;
   backface-visibility: hidden;
 
   background: $background;
-
-  .is-off-canvas-open & {
-    box-shadow: $offcanvas-shadow;
-  }
 }
 
 /// Adds styles that reveal an off-canvas panel.
@@ -257,7 +270,7 @@ $content: $maincontent-class
     @include off-canvas-content;
   }
 
-  // Reveal off-canvas panel on larger screens @TODO
+  // Reveal off-canvas panel on larger screens
   @each $name, $value in $breakpoint-classes {
     @if $name != $-zf-zero-breakpoint {
       @include breakpoint($name) {
