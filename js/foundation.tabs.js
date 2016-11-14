@@ -69,8 +69,8 @@ class Tabs {
         'aria-labelledby': linkId
       });
 
-      if(isActive && _this.options.autoFocus){  
-        $(window).load(function() {         
+      if(isActive && _this.options.autoFocus){
+        $(window).load(function() {
           $('html, body').animate({ scrollTop: $elem.offset().top }, _this.options.deepLinkSmudgeDelay, () => {
             $link.focus();
           });
@@ -82,7 +82,7 @@ class Tabs {
         var anchor = window.location.hash;
         //need a hash and a relevant anchor in this tabset
         if(anchor.length) {
-          var $link =$elem.find('[href="'+anchor+'"]');
+          var $link = $elem.find('[href="'+anchor+'"]');
           if ($link.length) {
             _this.selectTab($(anchor));
 
@@ -155,8 +155,6 @@ class Tabs {
    */
   _addKeyHandler() {
     var _this = this;
-    var $firstTab = _this.$element.find('li:first-of-type');
-    var $lastTab = _this.$element.find('li:last-of-type');
 
     this.$tabTitles.off('keydown.zf.tabs').on('keydown.zf.tabs', function(e){
       if (e.which === 9) return;
@@ -252,8 +250,8 @@ class Tabs {
      */
     this.$element.trigger('change.zf.tabs', [$target, $targetContent]);
 
-	  //fire to children a mutation event
-	  $targetContent.find("[data-mutate]").trigger("mutateme.zf.trigger");
+    //fire to children a mutation event
+    $targetContent.find("[data-mutate]").trigger("mutateme.zf.trigger");
   }
 
   /**
