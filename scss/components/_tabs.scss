@@ -107,7 +107,7 @@ $tab-content-padding: 1rem !default;
   display: none;
   padding: $tab-content-padding;
 
-  &.is-active {
+  &[aria-hidden="false"] {
     display: block;
   }
 }

@@ -13,6 +13,13 @@ $-zf-flex-align: (
   'stretch': stretch,
 );
 
+$-zf-flex-direction: (
+  'row': row,
+  'row-reverse': row-reverse,
+  'column': column,
+  'column-reverse': column-reverse,
+);
+
 /// Enables flexbox by adding `display: flex` to the element.
 @mixin flex {
   display: flex;
@@ -65,4 +72,14 @@ $-zf-flex-align: (
 /// @param {Number} $order [0] - Order number to apply.
 @mixin flex-order($order: 0) {
   order: $order;
+}
+
+/// Change flex-direction
+/// @param {Keyword} $direction [row] - Flex direction to use. Can be
+///   - row (default): same as text direction
+///   - row-reverse: opposite to text direction
+///   - column: same as row but top to bottom
+///   - column-reverse: same as row-reverse top to bottom
+@mixin flex-direction($direction: row) {
+  flex-direction: $direction;
 }
