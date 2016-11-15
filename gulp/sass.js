@@ -21,8 +21,7 @@ var DOC_PATHS = PATHS.concat([
 ]);
 
 var LINT_PATHS = [
-  'scss/**/*.scss',
-  '!scss/vendor/**/*.scss'
+  'scss/**/*.scss'
 ];
 
 var COMPATIBILITY = [
