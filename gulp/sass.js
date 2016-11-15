@@ -9,6 +9,8 @@ var autoprefixer = require('gulp-autoprefixer');
 var plumber = require('gulp-plumber');
 var sourcemaps = require('gulp-sourcemaps');
 var sassLint = require('gulp-sass-lint');
+var doiuse = require('doiuse');
+var postcss = require('gulp-postcss');
 
 var PATHS = [
   'scss',
@@ -78,4 +80,15 @@ gulp.task('sass:audit', ['sass:foundation'], function(cb) {
     console.log(prettyJSON.render(results));
     cb();
   });
+});
+
+// Check browsers incompatibilities
+gulp.task('sass:doiuse', function() {
+  return gulp.src(['_build/assets/css/foundation.css'])
+    .pipe(postcss([doiuse({
+      browsers: COMPATIBILITY,
+      onFeatureUsage: function (usageInfo) {
+        console.log(usageInfo.message)
+      }
+    })]))
 });
