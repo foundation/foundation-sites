@@ -255,6 +255,7 @@ class AccordionMenu {
     this.$element.find('a').off('click.zf.accordionMenu');
 
     if(this.options.submenuToggle) {
+      this.$element.find('.has-submenu-toggle').removeClass('has-submenu-toggle');
       this.$element.find('.submenu-toggle').remove();
     }
 
