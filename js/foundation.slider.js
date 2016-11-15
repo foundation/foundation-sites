@@ -58,6 +58,9 @@ class Slider {
     this.$input = this.inputs.length ? this.inputs.eq(0) : $(`#${this.$handle.attr('aria-controls')}`);
     this.$fill = this.$element.find('[data-slider-fill]').css(this.options.vertical ? 'height' : 'width', 0);
 
+    var id = this.$element.attr('id') || Foundation.GetYoDigits(6, 'slider');
+    this.$element.attr({id: id, 'data-slider': id, 'data-mutate': id});
+
     var isDbl = false,
         _this = this;
     if (this.options.disabled || this.$element.hasClass(this.options.disabledClass)) {
@@ -68,8 +71,8 @@ class Slider {
       this.inputs = $().add(this.$input);
       this.options.binding = true;
     }
+
     this._setInitAttr(0);
-    this._events(this.$handle);
 
     if (this.handles[1]) {
       this.options.doubleSided = true;
@@ -81,17 +84,23 @@ class Slider {
       }
       isDbl = true;
 
-      this._setHandlePos(this.$handle, this.options.initialStart, true, function() {
-
-        _this._setHandlePos(_this.$handle2, _this.options.initialEnd, true);
-      });
       // this.$handle.triggerHandler('click.zf.slider');
       this._setInitAttr(1);
-      this._events(this.$handle2);
     }
 
-    if (!isDbl) {
-      this._setHandlePos(this.$handle, this.options.initialStart, true);
+    // Set handle positions
+    this.setHandles();
+
+    this._events();
+  }
+
+  setHandles() {
+    if(this.handles[1]) {
+      this._setHandlePos(this.$handle, this.inputs.eq(0).val(), true, () => {
+        this._setHandlePos(this.$handle2, this.inputs.eq(1).val(), true);
+      });
+    } else {
+      this._setHandlePos(this.$handle, this.inputs.eq(0).val(), true);
     }
   }
 
@@ -223,6 +232,7 @@ class Slider {
    * @param {Number} idx - index of the current handle/input to use.
    */
   _setInitAttr(idx) {
+    var initVal = (idx === 0 ? this.options.initialStart : this.options.initialEnd)
     var id = this.inputs.eq(idx).attr('id') || Foundation.GetYoDigits(6, 'slider');
     this.inputs.eq(idx).attr({
       'id': id,
@@ -230,12 +240,13 @@ class Slider {
       'min': this.options.start,
       'step': this.options.step
     });
+    this.inputs.eq(idx).val(initVal);
     this.handles.eq(idx).attr({
       'role': 'slider',
       'aria-controls': id,
       'aria-valuemax': this.options.end,
       'aria-valuemin': this.options.start,
-      'aria-valuenow': idx === 0 ? this.options.initialStart : this.options.initialEnd,
+      'aria-valuenow': initVal,
       'aria-orientation': this.options.vertical ? 'vertical' : 'horizontal',
       'tabindex': 0
     });
@@ -350,9 +361,23 @@ class Slider {
    * Adds event listeners to the slider elements.
    * @function
    * @private
+   */
+  _events() {
+    this._eventsForHandle(this.$handle);
+    if(this.handles[1]) {
+      this._eventsForHandle(this.$handle2);
+    }
+    this.$element.on('mutateme.zf.trigger', this.setHandles.bind(this));
+  }
+
+
+  /**
+   * Adds event listeners a particular handle
+   * @function
+   * @private
    * @param {jQuery} $handle - the current handle to apply listeners to.
    */
-  _events($handle) {
+  _eventsForHandle($handle) {
     var _this = this,
         curHandle,
         timer;
@@ -448,6 +473,7 @@ class Slider {
     this.handles.off('.zf.slider');
     this.inputs.off('.zf.slider');
     this.$element.off('.zf.slider');
+    this.$element.off('mutateme.zf.trigger');
 
     clearTimeout(this.timeout);
 
