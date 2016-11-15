@@ -218,7 +218,7 @@
   }
 
   @each $dir, $prop in $-zf-flex-direction {
-    .flex-direct-#{$dir} {
+    .flex-dir-#{$dir} {
       @include flex-direction($prop);
     }
   }
@@ -261,11 +261,25 @@
         }
       }
 
+      // direction helper classes
       @each $dir, $prop in $-zf-flex-direction {
-        .#{$-zf-size}-flex-direct-#{$dir} {
+        .#{$-zf-size}-flex-dir-#{$dir} {
           @include flex-direction($prop);
         }
       }
+      // child helper classes
+      .#{$-zf-size}-flex-child-auto {
+        flex: 1 1 auto;
+      }
+
+      .#{$-zf-size}-flex-child-grow {
+        flex: 1 0 auto;
+      }
+
+      .#{$-zf-size}-flex-child-shrink {
+        flex: 0 1 auto;
+      }
+
       // Auto-stacking/unstacking
       @at-root (without: media) {
         .row.#{$-zf-size}-unstack {

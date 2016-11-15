@@ -173,10 +173,10 @@ To make something a flex container, simply apply
 
 And to change its flex direction from row to column you can use the helper classes:
 
-- `.flex-direct-row` (default)
-- `.flex-direct-row-reverse`
-- `.flex-direct-column`
-- `.flex-direct-column-reverse`
+- `.flex-dir-row` (default)
+- `.flex-dir-row-reverse`
+- `.flex-dir-column`
+- `.flex-dir-column-reverse`
 
 For children, there are 3 quick helper classes
 
@@ -186,7 +186,7 @@ For children, there are 3 quick helper classes
 
 ```html_example
 <div class="row">
-  <div class="column flex-container flex-direct-column">
+  <div class="column flex-container flex-dir-column">
     <div class="callout flex-child-auto">Auto</div>
     <div class="callout flex-child-auto">Auto</div>
     <div class="callout flex-child-shrink">Shrink</div>
@@ -195,6 +195,19 @@ For children, there are 3 quick helper classes
   </div>
   <div class="column align-self-top">Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?</div>
 </div>
+```
+
+All of these helper classes come in responsive varieties, prefixed with all of your named breakpoints.  So you can do things like
+
+```html_example
+  <div class="row">
+    <div class="column large-12 flex-container flex-dir-column large-flex-dir-row">
+      <div class="callout flex-child-auto">Auto</div>
+      <div class="callout flex-child-auto">Auto</div>
+      <div class="callout flex-child-shrink large-flex-child-auto">Auto on Large</div>
+    </div>
+    <div class="column align-self-top">Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?</div>
+  </div>
 ```
 
 ---
