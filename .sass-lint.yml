@@ -21,7 +21,8 @@ rules:
 
   brace-style:
     - 1
-    - allow-single-line: false
+    - style: stroustrup
+    - allow-single-line: true
 
   class-name-format:
     - 1
