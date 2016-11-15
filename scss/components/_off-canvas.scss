@@ -124,7 +124,7 @@ $maincontent-background: $body-background !default;
 
   z-index: $offcanvas-push-zindex;
 
-  transition: transform $transition, box-shadow $transition;
+  transition: transform $transition;
   backface-visibility: hidden;
 
   background: $background;
