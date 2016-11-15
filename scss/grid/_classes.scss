@@ -156,7 +156,7 @@
 
   @if $column == 'column' {
     .columns {
-      // scss-lint:disable PlaceholderInExtend
+      // sass-lint:disable-block placeholder-in-extend
       @extend .column;
     }
   }
