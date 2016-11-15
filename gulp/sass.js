@@ -12,9 +12,13 @@ var sassLint = require('gulp-sass-lint');
 
 var PATHS = [
   'scss',
+  'node_modules/normalize-scss/sass'
+];
+
+var DOC_PATHS = PATHS.concat([
   'node_modules/motion-ui/src',
   'node_modules/foundation-docs/scss'
-];
+]);
 
 var LINT_PATHS = [
   'scss/**/*.scss',
@@ -36,7 +40,9 @@ gulp.task('sass:foundation', function() {
   return gulp.src(['assets/*'])
     .pipe(sourcemaps.init())
     .pipe(plumber())
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass({
+      includePaths: PATHS
+    }).on('error', sass.logError))
     .pipe(autoprefixer({
       browsers: COMPATIBILITY
     }))
@@ -56,7 +62,7 @@ gulp.task('sass:docs', function() {
   return gulp.src('docs/assets/scss/docs.scss')
     .pipe(sourcemaps.init())
     .pipe(sass({
-      includePaths: PATHS
+      includePaths: DOC_PATHS
     }).on('error', sass.logError))
     .pipe(autoprefixer({
       browsers: COMPATIBILITY
