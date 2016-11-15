@@ -49,9 +49,7 @@ $slider-radius: $global-radius !default;
     margin-top: $margin;
     margin-bottom: $margin;
 
-    -webkit-appearance: none;
-    -moz-appearance: none;
-
+    appearance: none;
     border: 0;
     line-height: 1;
     cursor: pointer;
@@ -67,6 +65,8 @@ $slider-radius: $global-radius !default;
     &[disabled] {
       opacity: $slider-opacity-disabled;
     }
+
+    // sass-lint:disable no-vendor-prefix
 
     // Chrome/Safari
     &::-webkit-slider-runnable-track {

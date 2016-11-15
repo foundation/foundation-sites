@@ -37,8 +37,7 @@ $meter-fill-bad: $alert-color !default;
     height: $meter-height;
     margin-bottom: 1rem;
 
-    -webkit-appearance: none;
-    -moz-appearance: none;
+    appearance: none;
 
     @if has-value($meter-radius) {
       border-radius: $meter-radius;

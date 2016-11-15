@@ -25,8 +25,7 @@ $select-radius: $global-radius !default;
   margin: 0 0 $form-spacing;
   padding: ($form-spacing / 2);
 
-  -webkit-appearance: none;
-  -moz-appearance: none;
+  appearance: none;
   border: $input-border;
   border-radius: $select-radius;
   background-color: $select-background;
