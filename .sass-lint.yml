@@ -17,7 +17,7 @@ options:
 rules:
   border-zero:
     - 1
-    - convention: zero
+    - convention: '0'
 
   brace-style:
     - 1
