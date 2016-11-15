@@ -5,7 +5,6 @@ var eslint = require('gulp-eslint');
 
 var PATHS = [
   'scss/**/*.scss',
-  '!scss/vendor/**/*.scss',
   '!scss/components_old/**/*.scss'
 ];
 
