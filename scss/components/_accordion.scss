@@ -51,6 +51,11 @@ $accordion-content-padding: 1rem !default;
   list-style-type: none;
   background: $accordion-background;
   margin-#{$global-left}: 0;
+
+  // Remove the border on the last container
+  :last-child > & {
+    border-bottom-width: 0;
+  }
 }
 
 /// Adds styles for the accordion item. Apply this to the list item within an accordion ul.
