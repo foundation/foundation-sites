@@ -71,13 +71,13 @@ Callouts can be sized using the `.small` and `.large` classes. These will affect
 
 ```html_example
 <div class="callout small">
-  <h5>This is a secondary panel</h5>
+  <h5>This is a small callout</h5>
   <p>It has an easy to override visual style, and is appropriately subdued.</p>
   <a href="#">It's dangerous to go alone, take this.</a>
 </div>
 
 <div class="callout large">
-  <h5>This is a secondary panel</h5>
+  <h5>This is a large callout</h5>
   <p>It has an easy to override visual style, and is appropriately subdued.</p>
   <a href="#">It's dangerous to go alone, take this.</a>
 </div>
