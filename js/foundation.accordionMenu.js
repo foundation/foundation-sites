@@ -254,6 +254,10 @@ class AccordionMenu {
     this.$element.find('[data-submenu]').slideDown(0).css('display', '');
     this.$element.find('a').off('click.zf.accordionMenu');
 
+    if(this.options.submenuToggle) {
+      this.$element.find('.submenu-toggle').remove();
+    }
+
     Foundation.Nest.Burn(this.$element, 'accordion');
     Foundation.unregisterPlugin(this);
   }
