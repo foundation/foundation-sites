@@ -82,9 +82,9 @@ $orbit-control-zindex: 10 !default;
 
 /// Adds styles for a slide containing an image. These styles are used on the `.orbit-image` class.
 @mixin orbit-image {
-  margin: 0;
   width: 100%;
   max-width: 100%;
+  margin: 0;
 }
 
 /// Adds styles for an orbit slide caption. These styles are used on the `.orbit-caption` class.

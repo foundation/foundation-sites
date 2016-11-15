@@ -187,10 +187,10 @@ $switch-paddle-transition: all 0.25s ease-out !default;
   }
 
   .switch-paddle::after {
-    width: $paddle-width;
-    height: $paddle-height;
     top: $paddle-offset;
     #{$global-left}: $paddle-offset;
+    width: $paddle-width;
+    height: $paddle-height;
   }
 
   input:checked ~ .switch-paddle::after {
