@@ -58,7 +58,7 @@ $orbit-control-zindex: 10 !default;
 /// Adds styles for the inner Orbit slide container. These styles are used on the `.orbit-container` class.
 @mixin orbit-container {
   position: relative;
-  height: 0px; // Prevent FOUC by not showing until JS sets height
+  height: 0; // Prevent FOUC by not showing until JS sets height
   margin: 0;
   list-style: none;
   overflow: hidden;
