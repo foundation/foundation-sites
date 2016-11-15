@@ -96,7 +96,7 @@ $closebutton-color-hover: $black !default;
   .close-button {
     @include close-button;
 
-  &.small { @include close-button-size(small) }
-  &, &.medium { @include close-button-size(medium) }
+    &.small { @include close-button-size(small) }
+    &, &.medium { @include close-button-size(medium) }
   }
 }

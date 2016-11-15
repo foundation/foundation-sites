@@ -118,6 +118,7 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   body.is-reveal-open {
     overflow: hidden;
   }
+
   // html gets this class only in iOS
   html.is-reveal-open,
   html.is-reveal-open body {
