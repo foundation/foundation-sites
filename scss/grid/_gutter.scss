@@ -51,8 +51,8 @@
     // single value
     $padding: rem-calc($gutter) / 2;
 
-    padding-left: $padding;
     padding-right: $padding;
+    padding-left: $padding;
   }
 }
 

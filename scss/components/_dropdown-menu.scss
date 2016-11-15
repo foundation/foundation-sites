@@ -50,24 +50,24 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
   @if $dir == horizontal {
     > li.opens-left {
       > .is-dropdown-submenu {
-        left: auto;
-        right: 0;
         top: 100%;
+        right: 0;
+        left: auto;
       }
     }
 
     > li.opens-right {
       > .is-dropdown-submenu {
+        top: 100%;
         right: auto;
         left: 0;
-        top: 100%;
       }
     }
 
     @if $dropdownmenu-arrows {
       > li.is-dropdown-submenu-parent > a {
-        padding-#{$global-right}: 1.5rem;
         position: relative;
+        padding-#{$global-right}: 1.5rem;
       }
 
       > li.is-dropdown-submenu-parent > a::after {
@@ -85,8 +85,8 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
 
       &.opens-left {
         > .is-dropdown-submenu {
-          left: auto;
           right: 100%;
+          left: auto;
         }
       }
 
@@ -140,8 +140,8 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
     &.align-right {
       .is-dropdown-submenu.first-sub {
         top: 100%;
-        left: auto;
         right: 0;
+        left: auto;
       }
     }
   }
@@ -175,8 +175,8 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
     }
 
     &.opens-left > .is-dropdown-submenu {
-      left: auto;
       right: 100%;
+      left: auto;
     }
 
     &.opens-right > .is-dropdown-submenu {
@@ -186,14 +186,16 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
   }
 
   .is-dropdown-submenu {
-    display: none;
     position: absolute;
     top: 0;
     #{$global-left}: 100%;
-    min-width: $dropdownmenu-min-width;
     z-index: 1;
-    background: $dropdownmenu-background;
+
+    display: none;
+    min-width: $dropdownmenu-min-width;
+
     border: $dropdownmenu-border;
+    background: $dropdownmenu-background;
 
     .is-dropdown-submenu-parent {
       @if $dropdownmenu-arrows {

@@ -122,8 +122,8 @@ $-zf-flex-classes-imported: false;
   }
 
   html {
-    font-size: $global-font-size;
     box-sizing: border-box;
+    font-size: $global-font-size;
   }
 
   // Set box-sizing globally to handle padding and border widths
@@ -135,13 +135,15 @@ $-zf-flex-classes-imported: false;
 
   // Default body styles
   body {
-    padding: 0;
     margin: 0;
+    padding: 0;
+
+    background: $body-background;
+
     font-family: $body-font-family;
     font-weight: $global-weight-normal;
     line-height: $global-lineheight;
     color: $body-font-color;
-    background: $body-background;
 
     @if ($body-antialiased) {
       -webkit-font-smoothing: antialiased;
@@ -150,14 +152,14 @@ $-zf-flex-classes-imported: false;
   }
 
   img {
+    // Get rid of gap under images by making them display: inline-block; by default
+    display: inline-block;
+    vertical-align: middle;
+
     // Grid defaults to get images and embeds to work properly
     max-width: 100%;
     height: auto;
     -ms-interpolation-mode: bicubic;
-
-    // Get rid of gap under images by making them display: inline-block; by default
-    display: inline-block;
-    vertical-align: middle;
   }
 
   // Make sure textarea takes on height automatically
@@ -188,12 +190,15 @@ $-zf-flex-classes-imported: false;
   // Reset <button> styles created by most browsers
   button {
     @include disable-mouse-outline;
+
+    padding: 0;
+
     -webkit-appearance: none;
     -moz-appearance: none;
-    background: transparent;
-    padding: 0;
     border: 0;
     border-radius: $global-radius;
+    background: transparent;
+
     line-height: 1;
   }
 

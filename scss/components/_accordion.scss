@@ -48,9 +48,9 @@ $accordion-content-padding: 1rem !default;
 
 /// Adds styles for an accordion container. Apply this to the same element that gets `data-accordion`.
 @mixin accordion-container {
-  list-style-type: none;
-  background: $accordion-background;
   margin-#{$global-left}: 0;
+  background: $accordion-background;
+  list-style-type: none;
 }
 
 /// Adds styles for the accordion item. Apply this to the list item within an accordion ul.
@@ -66,18 +66,20 @@ $accordion-content-padding: 1rem !default;
 
 /// Adds styles for the title of an accordion item. Apply this to the link within an accordion item.
 @mixin accordion-title {
+  position: relative;
   display: block;
   padding: $accordion-item-padding;
-  line-height: 1;
-  font-size: $accordion-title-font-size;
-  color: $accordion-item-color;
-  position: relative;
+
   border: $accordion-content-border;
   border-bottom: 0;
 
+  font-size: $accordion-title-font-size;
+  line-height: 1;
+  color: $accordion-item-color;
+
   :last-child:not(.is-active) > & {
-    border-radius: 0 0 $global-radius $global-radius;
     border-bottom: $accordion-content-border;
+    border-radius: 0 0 $global-radius $global-radius;
   }
 
   &:hover,
@@ -87,11 +89,11 @@ $accordion-content-padding: 1rem !default;
 
   @if $accordion-plusminus {
     &::before {
-      content: '+';
       position: absolute;
-      #{$global-right}: 1rem;
       top: 50%;
+      #{$global-right}: 1rem;
       margin-top: -0.5rem;
+      content: '+';
     }
 
     .is-active > &::before {
@@ -102,11 +104,13 @@ $accordion-content-padding: 1rem !default;
 
 /// Adds styles for accordion content. Apply this to the content pane below an accordion item's title.
 @mixin accordion-content {
-  padding: $accordion-content-padding;
   display: none;
+  padding: $accordion-content-padding;
+
   border: $accordion-content-border;
   border-bottom: 0;
   background-color: $accordion-content-background;
+
   color: $accordion-content-color;
 
   :last-child > &:last-child {

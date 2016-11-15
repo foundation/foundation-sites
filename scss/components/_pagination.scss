@@ -73,9 +73,9 @@ $pagination-arrows: true !default;
 
   // List item
   li {
-    font-size: $pagination-font-size;
     margin-#{$global-right}: $pagination-item-spacing;
     border-radius: $pagination-radius;
+    font-size: $pagination-font-size;
 
     @if $pagination-mobile-items {
       display: inline-block;
@@ -103,10 +103,10 @@ $pagination-arrows: true !default;
   // Page links
   a,
   button {
-    color: $pagination-item-color;
     display: block;
     padding: $pagination-item-padding;
     border-radius: $global-radius;
+    color: $pagination-item-color;
 
     &:hover {
       background: $pagination-item-background-hover;
@@ -135,8 +135,8 @@ $pagination-arrows: true !default;
 
 /// Adds styles for an ellipsis for use in a pagination list.
 @mixin pagination-ellipsis {
-  content: '\2026';
   padding: $pagination-item-padding;
+  content: '\2026';
   color: $pagination-ellipsis-color;
 }
 
@@ -160,16 +160,16 @@ $pagination-arrows: true !default;
   @if $pagination-arrows {
     .pagination-previous a::before,
     .pagination-previous.disabled::before {
-      content: '\00ab';
       display: inline-block;
       margin-#{$global-right}: 0.5rem;
+      content: '\00ab';
     }
 
     .pagination-next a::after,
     .pagination-next.disabled::after {
-      content: '\00bb';
       display: inline-block;
       margin-#{$global-left}: 0.5rem;
+      content: '\00bb';
     }
   }
 }

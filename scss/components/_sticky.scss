@@ -28,8 +28,8 @@
 
   .sticky.is-anchored {
     position: relative;
-    left: auto;
     right: auto;
+    left: auto;
 
     &.is-at-bottom {
       bottom: 0;

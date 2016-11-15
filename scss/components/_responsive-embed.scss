@@ -32,8 +32,8 @@ $responsive-embed-ratio-widescreen: 16 by 9 !default;
 @mixin responsive-embed($ratio: $responsive-embed-ratio) {
   position: relative;
   height: 0;
-  padding-bottom: responsive-embed($ratio);
   margin-bottom: $responsive-embed-margin-bottom;
+  padding-bottom: responsive-embed($ratio);
   overflow: hidden;
 
   iframe,
@@ -67,8 +67,8 @@ $responsive-embed-ratio-widescreen: 16 by 9 !default;
   @warn 'This mixin is being replaced by responsive-embed(). flex-video() will be removed in Foundation 6.4.';
   position: relative;
   height: 0;
-  padding-bottom: responsive-embed($ratio);
   margin-bottom: $responsive-embed-margin-bottom;
+  padding-bottom: responsive-embed($ratio);
   overflow: hidden;
 
   iframe,

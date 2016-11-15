@@ -40,16 +40,19 @@ $dropdown-sizes: (
 
 /// Applies styles for a basic dropdown.
 @mixin dropdown-container {
-  background-color: $dropdown-background;
+  position: absolute;
+  z-index: 10;
+
+  display: block;
+  width: $dropdown-width;
+  padding: $dropdown-padding;
+
+  visibility: hidden;
   border: $dropdown-border;
   border-radius: $dropdown-radius;
-  display: block;
+  background-color: $dropdown-background;
+
   font-size: $dropdown-font-size;
-  padding: $dropdown-padding;
-  position: absolute;
-  visibility: hidden;
-  width: $dropdown-width;
-  z-index: 10;
 
   &.is-open {
     visibility: visible;
