@@ -202,8 +202,15 @@ class Slider {
     var moveTime = this.$element.data('dragging') ? 1000/60 : this.options.moveTime;
 
     Foundation.Move(moveTime, $hndl, function() {
-      //adjusting the left/top property of the handle, based on the percentage calculated above
-      $hndl.css(lOrT, `${movement}%`);
+      // adjusting the left/top property of the handle, based on the percentage calculated above
+      // if movement isNaN, that is because the slider is hidden and we cannot determine handle width,
+      // fall back to next best guess.
+      if (isNaN(movement)) {
+        $hndl.css(lOrT, `${pctOfBar * 100}%`);
+      }
+      else {
+        $hndl.css(lOrT, `${movement}%`);
+      }
 
       if (!_this.options.doubleSided) {
         //if single-handled, a simple method to expand the fill bar
