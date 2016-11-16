@@ -13,15 +13,15 @@ $closebutton-position: right top !default;
 /// Right (or left) offset(s) for a close button.
 /// @type Number|Map
 $closebutton-offset-horizontal: (
-  small: .66rem,
+  small: 0.66rem,
   medium: 1rem,
 ) !default;
 
 /// Top (or bottom) offset(s) for a close button.
 /// @type Number|Map
 $closebutton-offset-vertical: (
-  small: .33em,
-  medium: .5rem,
+  small: 0.33em,
+  medium: 0.5rem,
 ) !default;
 
 /// Default font size(s) of the close button.
@@ -96,7 +96,7 @@ $closebutton-color-hover: $black !default;
   .close-button {
     @include close-button;
 
-  &.small { @include close-button-size(small) }
-  &, &.medium { @include close-button-size(medium) }
+    &.small { @include close-button-size(small) }
+    &, &.medium { @include close-button-size(medium) }
   }
 }

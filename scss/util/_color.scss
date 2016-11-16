@@ -48,7 +48,8 @@
 @function get-color($key) {
   @if map-has-key($foundation-palette, $key) {
     @return map-get($foundation-palette, $key);
-  } @else {
+  }
+  @else {
     @error 'given $key is not available in $foundation-palette';
   }
 }

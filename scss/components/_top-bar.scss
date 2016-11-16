@@ -68,8 +68,7 @@ $topbar-unstack-breakpoint: medium !default;
     margin-#{$global-right}: 0;
   }
 
-  // scss-lint:disable QualifyingElement
-  input.button {
+  input.button { // sass-lint:disable-line no-qualifying-elements
     width: auto;
   }
 }
@@ -100,10 +99,10 @@ $topbar-unstack-breakpoint: medium !default;
   @if $global-flexbox {
     flex-wrap: nowrap;
 
-    // scss-lint:disable ZeroUnit
     .top-bar-left {
       flex: 1 1 auto;
     }
+
     .top-bar-right {
       flex: 0 1 auto;
     }
@@ -154,7 +153,7 @@ $topbar-unstack-breakpoint: medium !default;
   }
   @else {
     .top-bar-title {
-      display:inline-block;
+      display: inline-block;
       float: left;
       margin: $topbar-title-spacing;
     }

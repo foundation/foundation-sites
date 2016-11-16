@@ -8,7 +8,7 @@
 $print-transparent-backgrounds: true !default;
 $print-hrefs: true !default;
 
-// scss-lint:disable all
+// sass-lint:disable-all
 
 @mixin foundation-print-styles {
   .show-for-print { display: none !important; }

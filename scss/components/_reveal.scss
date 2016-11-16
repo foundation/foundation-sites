@@ -97,14 +97,13 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
 
 /// Creates a full-screen modal, which stretches the full width and height of the window.
 @mixin reveal-modal-fullscreen {
-  // scss-lint:disable DuplicateProperty
   top: 0;
   left: 0;
 
   width: 100%;
   max-width: none;
   height: 100%;
-  height: 100vh;
+  height: 100vh; // sass-lint:disable-line no-duplicate-properties
   min-height: 100vh;
   margin-left: 0;
 
@@ -114,10 +113,10 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
 
 @mixin foundation-reveal {
   // [TODO] Is this necessary?
-  // scss-lint:disable QualifyingElement
-  body.is-reveal-open {
+  body.is-reveal-open { // sass-lint:disable-line no-qualifying-elements
     overflow: hidden;
   }
+
   // html gets this class only in iOS
   html.is-reveal-open,
   html.is-reveal-open body {
