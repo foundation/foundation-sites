@@ -52,13 +52,13 @@ class OffCanvas {
       .attr('aria-expanded', 'false')
       .attr('aria-controls', id);
 
-    // Add a close trigger over the body if necessary
+    // Add an overlay over the content if necessary
     if (this.options.contentOverlay) {
-      if ($('.js-off-canvas-exit').length) {
-        this.$overlay = $('.js-off-canvas-exit');
+      if ($('.js-off-canvas-overlay').length) {
+        this.$overlay = $('.js-off-canvas-overlay');
       } else {
         var overlay = document.createElement('div');
-        overlay.setAttribute('class', 'js-off-canvas-exit');
+        overlay.setAttribute('class', 'js-off-canvas-overlay');
         $('[data-off-canvas-content]').append(overlay);
 
         this.$overlay = $(overlay);
