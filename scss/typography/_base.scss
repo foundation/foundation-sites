@@ -71,6 +71,27 @@ $header-lineheight: 1.4 !default;
 /// @type Number
 $header-margin-bottom: 0.5rem !default;
 
+/// Styles for headings at various screen sizes. Each key is a breakpoint, and each value is a map of font-size, line-height, margin-top and margin-bottom.
+/// @type Map
+$header-styles: (
+  'small': (
+    'h1': ('font-size': 24),
+    'h2': ('font-size': 20),
+    'h3': ('font-size': 19),
+    'h4': ('font-size': 18),
+    'h5': ('font-size': 17),
+    'h6': ('font-size': 16)
+  ),
+  'medium': (
+    'h1': ('font-size': 48),
+    'h2': ('font-size': 40),
+    'h3': ('font-size': 31),
+    'h4': ('font-size': 25),
+    'h5': ('font-size': 20),
+    'h6': ('font-size': 16)
+  )
+) !default;
+
 /// Text rendering method of headers.
 /// @type String
 $header-text-rendering: optimizeLegibility !default;
@@ -292,9 +313,6 @@ $abbr-underline: 1px dotted $black !default;
   h4,
   h5,
   h6 {
-    margin-top: 0;
-    margin-bottom: $header-margin-bottom;
-
     font-family: $header-font-family;
     font-style: $header-font-style;
     font-weight: $header-font-weight;
@@ -308,12 +326,40 @@ $abbr-underline: 1px dotted $black !default;
     }
   }
 
-  // Heading sizes
-  @each $size, $headers in $header-sizes {
+  // Heading styles
+   @each $size, $headers in $header-styles {
     @include breakpoint($size) {
-      @each $header, $font-size in $headers {
+      @each $header, $header-defs in $headers {
         #{$header} {
-          font-size: rem-calc($font-size);
+          @if map-has-key($header-defs, margin-top) {
+            margin-top: rem-calc(map-get($header-defs, margin-top));
+          } @else if map-has-key($header-defs, mt) {
+            margin-top: rem-calc(map-get($header-defs, mt));
+          } @else {
+            margin-top: 0;
+          }
+          @if map-has-key($header-defs, margin-bottom) {
+            margin-bottom: rem-calc(map-get($header-defs, margin-bottom));
+          } @else if map-has-key($header-defs, mb) {
+            margin-bottom: rem-calc(map-get($header-defs, mb));
+          } @else {
+            margin-bottom: rem-calc($header-margin-bottom);
+          }
+
+          @if map-has-key($header-defs, font-size) {
+            font-size: rem-calc(map-get($header-defs, font-size));
+          } @else if map-has-key($header-defs, fs) {
+            font-size: rem-calc(map-get($header-defs, fs));
+          } @else {
+            font-size: 1rem;
+          }
+          @if map-has-key($header-defs, line-height) {
+            line-height: unitless-calc(map-get($header-defs, line-height));
+          } @else if map-has-key($header-defs, lh) {
+            line-height: unitless-calc(map-get($header-defs, lh));
+          } @else {
+            line-height: unitless-calc($header-lineheight);
+          }
         }
       }
     }
