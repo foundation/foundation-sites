@@ -104,6 +104,9 @@ class Slider {
     }
   }
 
+  _reflow() {
+    this.setHandles();
+  }
   /**
    * Sets the position of the selected handle and fill bar.
    * @function
@@ -367,7 +370,7 @@ class Slider {
     if(this.handles[1]) {
       this._eventsForHandle(this.$handle2);
     }
-    this.$element.on('mutateme.zf.trigger', this.setHandles.bind(this));
+    this.$element.on('mutateme.zf.trigger', this._reflow.bind(this));
   }
 
 
