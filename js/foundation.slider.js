@@ -58,9 +58,6 @@ class Slider {
     this.$input = this.inputs.length ? this.inputs.eq(0) : $(`#${this.$handle.attr('aria-controls')}`);
     this.$fill = this.$element.find('[data-slider-fill]').css(this.options.vertical ? 'height' : 'width', 0);
 
-    var id = this.$element.attr('id') || Foundation.GetYoDigits(6, 'slider');
-    this.$element.attr({id: id, 'data-slider': id, 'data-mutate': id});
-
     var isDbl = false,
         _this = this;
     if (this.options.disabled || this.$element.hasClass(this.options.disabledClass)) {
@@ -370,7 +367,6 @@ class Slider {
     if(this.handles[1]) {
       this._eventsForHandle(this.$handle2);
     }
-    this.$element.on('mutateme.zf.trigger', this._reflow.bind(this));
   }
 
 
@@ -476,7 +472,6 @@ class Slider {
     this.handles.off('.zf.slider');
     this.inputs.off('.zf.slider');
     this.$element.off('.zf.slider');
-    this.$element.off('mutateme.zf.trigger');
 
     clearTimeout(this.timeout);
 
