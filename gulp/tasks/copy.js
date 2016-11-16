@@ -1,13 +1,9 @@
 var gulp = require('gulp');
 
-var FILES = [
-  'docs/assets/**/*',
-  '!docs/assets/{js,scss}',
-  '!docs/assets/{js,scss}/**/*'
-];
+var CONFIG = require('../config.js');
 
 // Copies static assets
 gulp.task('copy', function() {
-  gulp.src(FILES)
+  gulp.src(CONFIG.ASSETS_FILES)
     .pipe(gulp.dest('_build/assets'));
 });

@@ -13,25 +13,8 @@ var inquirer = require('inquirer');
 var exec = require('child_process').execSync;
 var plumber = require('gulp-plumber');
 
-var VERSIONED_FILES = [
-  'bower.json',
-  'composer.json',
-  'docs/pages/installation.md',
-  'js/foundation.core.js',
-  'meteor-README.md',
-  'package.js',
-  'package.json',
-  'scss/foundation.scss'
-];
-
-var DIST_FILES = [
-  './_build/assets/css/foundation.css',
-  './_build/assets/css/foundation-flex.css',
-  './_build/assets/css/foundation-rtl.css',
-  '_build/assets/js/foundation.js'
-];
-
-var CURRENT_VERSION = require('../package.json').version;
+var CONFIG = require('../config.js');
+var CURRENT_VERSION = require('../../package.json').version;
 var NEXT_VERSION;
 
 gulp.task('deploy', function(cb) {
@@ -56,7 +39,7 @@ gulp.task('deploy:prompt', function(cb) {
 
 // Bumps the version number in any file that has one
 gulp.task('deploy:version', function() {
-  return gulp.src(VERSIONED_FILES, { base: process.cwd() })
+  return gulp.src(CONFIG.VERSIONED_FILES, { base: process.cwd() })
     .pipe(replace(CURRENT_VERSION, NEXT_VERSION))
     .pipe(gulp.dest('.'));
 });
@@ -66,7 +49,7 @@ gulp.task('deploy:dist', ['sass:foundation', 'javascript:foundation'], function(
   var cssFilter = filter(['*.css'], { restore: true });
   var jsFilter  = filter(['*.js'], { restore: true });
 
-  return gulp.src(DIST_FILES)
+  return gulp.src(CONFIG.DIST_FILES)
     .pipe(plumber())
     .pipe(cssFilter)
       .pipe(gulp.dest('./dist/css'))

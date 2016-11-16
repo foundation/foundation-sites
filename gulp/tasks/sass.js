@@ -9,29 +9,8 @@ var autoprefixer = require('gulp-autoprefixer');
 var plumber = require('gulp-plumber');
 var sourcemaps = require('gulp-sourcemaps');
 var sassLint = require('gulp-sass-lint');
-var doiuse = require('doiuse');
-var postcss = require('gulp-postcss');
 
-var PATHS = [
-  'scss',
-  'node_modules/normalize-scss/sass'
-];
-
-var DOC_PATHS = PATHS.concat([
-  'node_modules/motion-ui/src',
-  'node_modules/foundation-docs/scss'
-]);
-
-var LINT_PATHS = [
-  'scss/**/*.scss'
-];
-
-var COMPATIBILITY = [
-  'last 2 versions',
-  'ie >= 9',
-  'Android >= 2.3',
-  'ios >= 7'
-];
+var CONFIG = require('../config.js');
 
 // Compiles Sass files into CSS
 gulp.task('sass', ['sass:foundation', 'sass:docs']);
@@ -42,15 +21,15 @@ gulp.task('sass:foundation', function() {
     .pipe(sourcemaps.init())
     .pipe(plumber())
     .pipe(sass({
-      includePaths: PATHS
+      includePaths: CONFIG.SASS_DEPS_PATHS
     }).on('error', sass.logError))
     .pipe(autoprefixer({
-      browsers: COMPATIBILITY
+      browsers: CONFIG.CSS_COMPATIBILITY
     }))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('_build/assets/css'))
     .on('finish', function() {
-      gulp.src(LINT_PATHS)
+      gulp.src(CONFIG.SASS_LINT_FILES)
         .pipe(sassLint({
             config: './.sass-lint.yml'
           }))
@@ -63,10 +42,10 @@ gulp.task('sass:docs', function() {
   return gulp.src('docs/assets/scss/docs.scss')
     .pipe(sourcemaps.init())
     .pipe(sass({
-      includePaths: DOC_PATHS
+      includePaths: CONFIG.SASS_DEPS_PATHS.concat(CONFIG.SASS_DOC_PATHS)
     }).on('error', sass.logError))
     .pipe(autoprefixer({
-      browsers: COMPATIBILITY
+      browsers: CONFIG.CSS_COMPATIBILITY
     }))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('_build/assets/css'));
@@ -80,15 +59,4 @@ gulp.task('sass:audit', ['sass:foundation'], function(cb) {
     console.log(prettyJSON.render(results));
     cb();
   });
-});
-
-// Check browsers incompatibilities
-gulp.task('sass:doiuse', function() {
-  return gulp.src(['_build/assets/css/foundation.css'])
-    .pipe(postcss([doiuse({
-      browsers: COMPATIBILITY,
-      onFeatureUsage: function (usageInfo) {
-        console.log(usageInfo.message)
-      }
-    })]))
 });
