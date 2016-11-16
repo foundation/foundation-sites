@@ -36,7 +36,7 @@ var VARIABLE_LIST;
 // Load the configuration file for the customizer. It's a list of modules to load and Sass variables to override
 gulp.task('customizer:loadConfig', function(done) {
   fs.readFile('customizer/config.yml', function(err, data) {
-    var moduleListPath = ARGS.modules || 'customizer/complete';
+    var moduleListPath = ARGS.modules || '../../customizer/complete';
     var moduleList = require(moduleListPath);
 
     CUSTOMIZER_CONFIG = yaml(data.toString());
