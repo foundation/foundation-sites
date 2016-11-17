@@ -157,7 +157,7 @@ $maincontent-background: $body-background !default;
     width: $size;
     height: 100%;
 
-    transform: translateX(-100%);
+    transform: translateX(-$size);
     overflow-y: auto;
 
     // Sets the open position for the content
@@ -172,7 +172,7 @@ $maincontent-background: $body-background !default;
     width: $size;
     height: 100%;
 
-    transform: translateX(100%);
+    transform: translateX($size);
     overflow-y: auto;
 
     // Sets the open position for the content
@@ -187,7 +187,7 @@ $maincontent-background: $body-background !default;
     width: 100%;
     height: $size;
 
-    transform: translateY(-100%);
+    transform: translateY(-$size);
     overflow-x: auto;
 
     // Sets the open position for the content
@@ -202,7 +202,7 @@ $maincontent-background: $body-background !default;
     width: 100%;
     height: $size;
 
-    transform: translateY(100%);
+    transform: translateY($size);
     overflow-x: auto;
 
     // Sets the open position for the content
