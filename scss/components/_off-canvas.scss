@@ -57,20 +57,12 @@ $offcanvas-exit-background: rgba($white, 0.25) !default;
 /// CSS class used for the main content area. The off-canvas mixins use this to target the page content.
 $maincontent-class: 'off-canvas-content' !default;
 
-/// Background color of the main content area.
-/// @type Color
-$maincontent-background: $body-background !default;
-
 /// Adds baseline styles for off-canvas. This CSS is required to make the other pieces work.
 @mixin off-canvas-basics {
   // Extra properties needed on <html> and <body> to make off-canvas work
   html,
   body {
     height: 100%;
-  }
-
-  body {
-    overflow-x: hidden;
   }
 
   // Hides overflow on body when an off-canvas panel is open.
@@ -105,6 +97,12 @@ $maincontent-background: $body-background !default;
       cursor: pointer;
     }
   }
+}
+
+// Adds basic styles for an off-canvas wrapper.
+@mixin off-canvas-wrapper() {
+  position: relative;
+  overflow: hidden;
 }
 
 /// Adds basic styles for an off-canvas panel.
@@ -258,13 +256,9 @@ $maincontent-background: $body-background !default;
 }
 
 /// Sets the styles for the content container.
-@mixin off-canvas-content(
-  $background: $maincontent-background
-) {
+@mixin off-canvas-content() {
   transition: transform $offcanvas-transition-length $offcanvas-transition-timing;
   backface-visibility: hidden;
-
-  background: $background;
 }
 
 /// Adds styles that reveal an off-canvas panel.
@@ -287,6 +281,11 @@ $content: $maincontent-class
 
 @mixin foundation-off-canvas {
   @include off-canvas-basics;
+
+  // Off-canvas wrapper
+  .off-canvas-wrapper {
+    @include off-canvas-wrapper;
+  }
 
   // Off-canvas container
   .off-canvas {
