@@ -147,6 +147,16 @@ class OffCanvas {
   }
 
   /**
+   * Stops scrolling of the body when offcanvas is open on mobile Safari and other troublesome browsers.
+   * @private
+   */
+  _stopScrolling(event) {
+  	event.preventDefault();
+  	event.stopPropagation();
+  	return false;
+  }
+
+  /**
    * Opens the off-canvas menu.
    * @function
    * @param {Object} event - Event object passed from listener.
@@ -177,6 +187,7 @@ class OffCanvas {
 
     // If we have an overlay lets make it visible.
     if (this.options.contentOverlay) {
+    	$('body').on('touchmove', this._stopScrolling);
       this.$overlay.addClass('is-visible');
     }
 
@@ -247,6 +258,7 @@ class OffCanvas {
 
     // Remove `is-visible` class from overlay.
     if (this.options.contentOverlay) {
+    	$('body').off('touchmove', this._stopScrolling);
       this.$overlay.removeClass('is-visible');
     }
 
