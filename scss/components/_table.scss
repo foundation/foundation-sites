@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-// scss-lint:disable MergeableSelector, QualifyingElement
+// sass-lint:disable force-element-nesting, no-qualifying-elements
 
 ////
 /// @group table
@@ -35,6 +35,10 @@ $table-row-hover: darken($table-background, $table-hover-scale) !default;
 /// Default color of striped rows on hover.
 /// @type List
 $table-row-stripe-hover: darken($table-background, $table-color-scale + $table-hover-scale) !default;
+
+/// If `true`, tables are striped by default and an .unstriped class is created. If `false`, a .striped class is created.
+/// @type Boolean
+$table-is-striped: true !default;
 
 /// Default background color for striped rows.
 /// @type Color
@@ -72,7 +76,34 @@ $table-foot-font-color: $body-font-color !default;
 /// @type Boolean
 $show-header-for-stacked: false !default;
 
-@mixin -zf-table-children-styles($stripe: $table-stripe) {
+@mixin -zf-table-stripe($stripe: $table-stripe) {
+  tr {
+    // If stripe is set to even, darken the even rows.
+    @if $stripe == even {
+      &:nth-child(even) {
+        border-bottom: 0;
+        background-color: $table-striped-background;
+      }
+    }
+
+    // If stripe is set to odd, darken the odd rows.
+    @else if $stripe == odd {
+      &:nth-child(odd) {
+        background-color: $table-striped-background;
+      }
+    }
+  }
+}
+
+@mixin -zf-table-unstripe() {
+  tr {
+    border-bottom: 0;
+    border-bottom: $table-border;
+    background-color: $table-background;
+  }
+}
+
+@mixin -zf-table-children-styles($stripe: $table-stripe, $is-striped: $table-is-striped) {
   thead,
   tbody,
   tfoot {
@@ -82,10 +113,10 @@ $show-header-for-stacked: false !default;
 
   // Caption
   caption {
-    font-weight: $global-weight-bold;
     padding: $table-padding;
+    font-weight: $global-weight-bold;
   }
-  
+
   // Table head
   thead {
     background: $table-head-background;
@@ -117,25 +148,36 @@ $show-header-for-stacked: false !default;
 
   // Table rows
   tbody {
-    tr {
-      // If stripe is set to even, darken the even rows.
-      @if $stripe == even {
-        &:nth-child(even) {
-          background-color: $table-striped-background;
-        }
-      }
-
-      // If stripe is set to odd, darken the odd rows.
-      @else if $stripe == odd {
-        &:nth-child(odd) {
-          background-color: $table-striped-background;
-        }
-      }
-    }
-
     th,
     td {
       padding: $table-padding;
+    }
+  }
+
+  // If tables are striped
+  @if $is-striped == true {
+    tbody {
+      @include -zf-table-stripe($stripe);
+    }
+
+    &.unstriped {
+      tbody {
+        @include -zf-table-unstripe();
+        background-color: $table-background;
+      }
+    }
+  }
+
+  // If tables are not striped
+  @else if $is-striped == false {
+    tbody {
+      @include -zf-table-unstripe();
+    }
+
+    &.striped {
+      tbody {
+        @include -zf-table-stripe($stripe);
+      }
     }
   }
 }
@@ -188,17 +230,35 @@ $show-header-for-stacked: false !default;
     &:hover {
       background-color: $table-row-hover;
     }
+  }
 
-    //Darkens the even striped table rows.
+  @if $table-is-striped == true {
+    // Darkens the even striped table rows.
     @if($table-stripe == even) {
-      &:nth-of-type(even):hover {
+      &:not(.unstriped) tr:nth-of-type(even):hover {
         background-color: $table-row-stripe-hover;
       }
     }
 
-    //Darkens the odd striped table rows.
+    // Darkens the odd striped table rows.
     @elseif($table-stripe == odd) {
-      &:nth-of-type(odd):hover {
+      &:not(.unstriped) tr:nth-of-type(odd):hover {
+        background-color: $table-row-stripe-hover;
+      }
+    }
+  }
+
+  @else if $table-is-striped == false {
+    // Darkens the even striped table rows.
+    @if($table-stripe == even) {
+      &.striped tr:nth-of-type(even):hover {
+        background-color: $table-row-stripe-hover;
+      }
+    }
+
+    // Darkens the odd striped table rows.
+    @elseif($table-stripe == odd) {
+      &.striped tr:nth-of-type(odd):hover {
         background-color: $table-row-stripe-hover;
       }
     }

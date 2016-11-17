@@ -8,8 +8,6 @@
 
 $global-font-size: 100% !default;
 
-// scss-lint:disable ZeroUnit
-
 /// Removes the unit (e.g. px, em, rem) from a value, returning the number only.
 ///
 /// @param {Number} $num - Number to strip unit from.
@@ -39,7 +37,7 @@ $global-font-size: 100% !default;
   @if unit($base) == '%' {
     $base: ($base / 100%) * 16px;
   }
-  
+
   // Using rem as base allows correct scaling
   @if unit($base) == 'rem' {
     $base: strip-unit($base) * 16px;

@@ -29,11 +29,13 @@ $badge-font-size: 0.6rem !default;
 /// Generates the base styles for a badge.
 @mixin badge {
   display: inline-block;
-  padding: $badge-padding;
   min-width: $badge-minwidth;
+  padding: $badge-padding;
+
+  border-radius: 50%;
+
   font-size: $badge-font-size;
   text-align: center;
-  border-radius: 50%;
 }
 
 @mixin foundation-badge {

@@ -53,17 +53,17 @@ $tab-content-padding: 1rem !default;
 @mixin tabs-container {
   @include clearfix;
   margin: $tab-margin;
-  list-style-type: none;
-  background: $tab-background;
   border: 1px solid $tab-content-border;
+  background: $tab-background;
+  list-style-type: none;
 }
 
 /// Augments a tab container to have vertical tabs. Use this in conjunction with `tabs-container()`.
 @mixin tabs-container-vertical {
   > li {
-    width: auto;
-    float: none;
     display: block;
+    float: none;
+    width: auto;
   }
 }
 
@@ -74,8 +74,8 @@ $tab-content-padding: 1rem !default;
   > a {
     display: block;
     padding: $tab-item-padding;
-    line-height: 1;
     font-size: $tab-item-font-size;
+    line-height: 1;
 
     &:hover {
       background: $tab-item-background-hover;
@@ -90,10 +90,10 @@ $tab-content-padding: 1rem !default;
 
 /// Adds styles for the wrapper that surrounds a tab group's content panes.
 @mixin tabs-content {
-  background: $tab-content-background;
-  transition: all 0.5s ease;
   border: 1px solid $tab-content-border;
   border-top: 0;
+  background: $tab-content-background;
+  transition: all 0.5s ease;
 }
 
 /// Augments a tab content container to have a vertical style, by shifting the border around. Use this in conjunction with `tabs-content()`.
@@ -107,7 +107,7 @@ $tab-content-padding: 1rem !default;
   display: none;
   padding: $tab-content-padding;
 
-  &.is-active {
+  &[aria-hidden="false"] {
     display: block;
   }
 }

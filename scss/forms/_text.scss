@@ -22,6 +22,10 @@ $input-font-family: inherit !default;
 /// @type Number
 $input-font-size: rem-calc(16) !default;
 
+/// Font weight of text inputs.
+/// @type Keyword
+$input-font-weight: $global-weight-normal !default;
+
 /// Background color of text inputs.
 /// @type Color
 $input-background: $white !default;
@@ -66,9 +70,9 @@ $input-number-spinners: true !default;
 /// @type Border
 $input-radius: $global-radius !default;
 
-/// Border radius for buttons, defaulted to global-radius.
+/// Border radius for form buttons, defaulted to global-radius.
 /// @type Number
-$button-radius: $global-radius !default;
+$form-button-radius: $global-radius !default;
 
 @mixin form-element {
   $height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
@@ -77,16 +81,18 @@ $button-radius: $global-radius !default;
   box-sizing: border-box;
   width: 100%;
   height: $height;
-  padding: $form-spacing / 2;
-  border: $input-border;
   margin: 0 0 $form-spacing;
+  padding: $form-spacing / 2;
+
+  border: $input-border;
+  border-radius: $input-radius;
+  background-color: $input-background;
+  box-shadow: $input-shadow;
 
   font-family: $input-font-family;
   font-size: $input-font-size;
+  font-weight: $input-font-weight;
   color: $input-color;
-  background-color: $input-background;
-  box-shadow: $input-shadow;
-  border-radius: $input-radius;
 
   @if has-value($input-transition) {
     transition: $input-transition;
@@ -94,9 +100,9 @@ $button-radius: $global-radius !default;
 
   // Focus state
   &:focus {
+    outline: none;
     border: $input-border-focus;
     background-color: $input-background-focus;
-    outline: none;
     box-shadow: $input-shadow-focus;
 
     @if has-value($input-transition) {
@@ -110,8 +116,7 @@ $button-radius: $global-radius !default;
   #{text-inputs()},
   textarea {
     @include form-element;
-    -webkit-appearance: none;
-    -moz-appearance: none;
+    appearance: none;
   }
 
   // Text areas
@@ -141,25 +146,23 @@ $button-radius: $global-radius !default;
   // Reset styles on button-like inputs
   [type='submit'],
   [type='button'] {
-    border-radius: $button-radius;
-    -webkit-appearance: none;
-    -moz-appearance: none;
+    appearance: none;
+    border-radius: $form-button-radius;
   }
 
   // Reset Normalize setting content-box to search elements
-  // scss-lint:disable QualifyingElement
-  input[type='search'] {
+  input[type='search'] { // sass-lint:disable-line no-qualifying-elements
     box-sizing: border-box;
   }
 
   // Number input styles
   [type='number'] {
     @if not $input-number-spinners {
-      -moz-appearance: textfield;
+      -moz-appearance: textfield; // sass-lint:disable-line no-vendor-prefix
 
       &::-webkit-inner-spin-button,
       &::-webkit-outer-spin-button {
-        -webkit-appearance: none;
+        -webkit-appearance: none; // sass-lint:disable-line no-vendor-prefix
         margin: 0;
       }
     }

@@ -145,7 +145,7 @@
       style.type = 'text/css';
       style.id = 'matchmediajs-test';
 
-      script.parentNode.insertBefore(style, script);
+      script && script.parentNode && script.parentNode.insertBefore(style, script);
 
       // 'style.currentStyle' is used by IE <= 8 and 'window.getComputedStyle' for all other browsers
       info = 'getComputedStyle' in window && window.getComputedStyle(style, null) || style.currentStyle;

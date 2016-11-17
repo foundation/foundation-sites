@@ -1,7 +1,9 @@
 ---
 title: Responsive Navigation
 description: Our three Menu patterns form like Voltron into one responsive Menu plugin, which allows you to switch between patterns at different screen sizes.
-js: js/foundation.responsiveToggle.js
+js:
+  - js/foundation.responsiveMenu.js
+  - js/foundation.responsiveToggle.js
 ---
 
 ## Responsive Menu
@@ -99,6 +101,41 @@ By default, the title bar will be visible on small screens, and the Menu hides. 
     <ul class="menu">
       <li><input type="search" placeholder="Search"></li>
       <li><button type="button" class="button">Search</button></li>
+    </ul>
+  </div>
+</div>
+```
+
+---
+
+## Responsive Toggle with animation
+
+To use animations from the Motion UI library, include the <code>data-animation="someAnimationIn someAnimationOut"</code> attribute.
+
+<div class="primary callout show-for-medium">
+  <p>Scale your browser down to see the toggle happen.</p>
+</div>
+
+```html_example
+<div class="title-bar" data-responsive-toggle="example-animated-menu" data-hide-for="medium">
+  <button class="menu-icon" type="button" data-toggle></button>
+  <div class="title-bar-title">Menu</div>
+</div>
+
+<div class="top-bar" id="example-animated-menu" data-animate="hinge-in-from-top spin-out">
+  <div class="top-bar-left">
+    <ul class="dropdown menu" data-dropdown-menu>
+      <li class="menu-text">Site Title</li>
+      <li>
+        <a href="#">One</a>
+        <ul class="menu vertical">
+          <li><a href="#">One</a></li>
+          <li><a href="#">Two</a></li>
+          <li><a href="#">Three</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Two</a></li>
+      <li><a href="#">Three</a></li>
     </ul>
   </div>
 </div>

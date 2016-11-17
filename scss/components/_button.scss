@@ -64,21 +64,27 @@ $button-hollow-hover-lightness: -50% !default;
   $button-margin: 0 0 $global-margin $global-margin !default;
 }
 
+/// transitions for buttons.
+/// @type List
+$button-transition: background-color 0.25s ease-out, color 0.25s ease-out !default;
+
 // TODO: Document button-base() mixin
 @mixin button-base {
   @include disable-mouse-outline;
   display: inline-block;
-  text-align: center;
-  line-height: 1;
-  cursor: pointer;
-  -webkit-appearance: none;
-  transition: background-color 0.25s ease-out, color 0.25s ease-out;
   vertical-align: middle;
+  margin: $button-margin;
+  padding: $button-padding;
+
+  -webkit-appearance: none;
   border: 1px solid transparent;
   border-radius: $button-radius;
-  padding: $button-padding;
-  margin: $button-margin;
+  transition: $button-transition;
+
   font-size: map-get($button-sizes, default);
+  line-height: 1;
+  text-align: center;
+  cursor: pointer;
 }
 
 /// Expands a button to make it full-width.
@@ -87,8 +93,8 @@ $button-hollow-hover-lightness: -50% !default;
   @if $expand {
     display: block;
     width: 100%;
-    margin-left: 0;
     margin-right: 0;
+    margin-left: 0;
   }
   @else {
     display: inline-block;
@@ -171,9 +177,10 @@ $button-hollow-hover-lightness: -50% !default;
     @include css-triangle($size, $color, down);
     position: relative;
     top: 0.4em; // Aligns the arrow with the text of the button
+
+    display: inline-block;
     float: #{$global-right};
     margin-#{$global-left}: get-side($button-padding, right);
-    display: inline-block;
   }
 }
 
@@ -275,9 +282,9 @@ $button-hollow-hover-lightness: -50% !default;
 
     // Button with dropdown arrow only
     &.arrow-only::after {
-      margin-#{$global-left}: 0;
-      float: none;
       top: -0.1em;
+      float: none;
+      margin-#{$global-left}: 0;
     }
   }
 }

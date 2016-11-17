@@ -83,6 +83,7 @@ var Keyboard = {
    * @return {jQuery} $focusable - all focusable elements within `$element`
    */
   findFocusable($element) {
+    if(!$element) {return false; }
     return $element.find('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]').filter(function() {
       if (!$(this).is(':visible') || $(this).attr('tabindex') < 0) { return false; } //only have visible elements and those that have a tabindex greater or equal 0
       return true;
