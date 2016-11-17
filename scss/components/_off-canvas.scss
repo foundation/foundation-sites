@@ -59,12 +59,6 @@ $maincontent-class: 'off-canvas-content' !default;
 
 /// Adds baseline styles for off-canvas. This CSS is required to make the other pieces work.
 @mixin off-canvas-basics {
-  // Extra properties needed on <html> and <body> to make off-canvas work
-  html,
-  body {
-    height: 100%;
-  }
-
   // Hides overflow on body when an off-canvas panel is open.
   .is-off-canvas-open {
     overflow: hidden;
