@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en" class="no-js">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Foundation for Sites Testing</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <link href="../assets/css/foundation.css" rel="stylesheet" />
+
+  <style>
+    .m-scene .page-transition-element {
+        -webkit-animation-duration: .4s;
+        animation-duration: .4s;
+        -webkit-transition-timing-function: ease;
+        transition-timing-function: ease;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both
+    }
+    .m-scene.is-exiting .page-transition-element {
+        -webkit-animation-direction: alternate-reverse;
+        animation-direction: alternate-reverse
+    }
+    .m-scene .page-transition-element.fade__in {
+        -webkit-animation-name: pageFadeIn;
+        animation-name: pageFadeIn
+    }
+    @-webkit-keyframes pageFadeIn {
+        0% {
+            opacity: 0
+        }
+        100% {
+            opacity: 1
+        }
+    }
+    @keyframes pageFadeIn {
+        0% {
+            opacity: 0
+        }
+        100% {
+            opacity: 1
+        }
+    }
+    .show-me {
+        opacity: 1;
+        -webkit-transition: opacity .5s ease 1s;
+        transition: opacity .5s ease 1s
+    }
+    a.ken-burns {
+        display: block
+    }
+    [data-whatinput="mouse"] .ken-burns img {
+        -webkit-transition: -webkit-transform 7s ease, -webkit-transform-origin .4s ease;
+        transition: transform 7s ease, -ms-transform-origin .4s ease;
+        transition: transform 7s ease, transform-origin .4s ease
+    }
+    [data-whatinput="mouse"] .ken-burns:hover img {
+        -webkit-transform: scale(1.03);
+        -ms-transform: scale(1.03);
+        transform: scale(1.03)
+    }
+    .debug {
+        position: absolute;
+        z-index: 9999
+    }
+    .page-container {
+        padding-left: .625rem;
+        padding-right: .625rem
+    }
+    @media screen and (min-width: 40em) {
+        .page-container {
+            padding-right: 3.75rem;
+            padding-left: 1.875rem
+        }
+    }
+    @media screen and (min-width: 68.75em) {
+        .page-container {
+            padding-right: 7.5rem;
+            padding-left: 1.875rem
+        }
+    }
+    #content {
+        position: relative
+    }
+    #content-footer {
+        position: relative;
+        z-index: 6000;
+        background-color: #1d1e1e;
+        margin-top: 1.875rem;
+        padding-top: .9375rem;
+        min-height: 11.25rem;
+        overflow: hidden
+    }
+    @media screen and (min-width: 40em) {
+        #content-footer {
+            padding-top: 1.875rem;
+            min-height: 15rem
+        }
+    }
+    #content-footer .row {
+        position: relative
+    }
+    #content-footer:after {
+        content: 'ideas for living';
+        font-size: 7.5rem;
+        font-family: "Clarendon Light", "Georgia", serif;
+        text-transform: none;
+        color: rgba(255, 255, 255, 0.2);
+        position: absolute;
+        left: 0;
+        bottom: 2.8125rem
+    }
+    .fce-element {
+        position: relative;
+        overflow: hidden
+    }
+    .fce-element.has-sticky {
+        overflow: visible
+    }
+    .vertical-center-wrap {
+        position: relative
+    }
+    .large-vertical-center {
+        padding: 2.8125rem .9375rem .9375rem
+    }
+  </style>
+
+</head>
+
+<body>
+  <div id="content" class="m-scene" data-toggler=".is-menu-open">
+
+    <a href="/sticky/ajax.html" class="button">Reload (ajax inject)</a>
+    <a href="#" class="button recalc">Call '_calc' on sticky</a>
+
+    <main id="content-main" class="row page-container page-transition-element fade__in">
+
+      <div id="foo" class="row fce-element mb-60" data-equalizer data-equalize-on="large">
+        <div class="small-6 columns" data-equalizer-watch>
+          <h1>#foo</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div class="small-6 columns" data-equalizer-watch style="background-color:#EEE">
+          <h1>me is equalized</h1>
+          <div class="" data-sticky-container>
+            <div class="sticky" data-sticky data-margin-top="8.5" data-anchor="foo">
+            Stick Me Foo
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="bar" class="row fce-element mb-60">
+        <div class="small-6 columns">
+          <h1>#bar</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+        <div class="small-6 columns" style="background-color:#EEE">
+          <div class="" data-sticky-container>
+            <div class="sticky" data-sticky data-margin-top="8.5" data-anchor="bar">
+            Stick Me Bar
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+
+  <script src="../assets/js/vendor.js"></script>
+  <script src="../assets/js/foundation.js"></script>
+  <script src="https://cdn.jsdelivr.net/jquery.smoothstate/0.7.2/jquery.smoothState.min.js"></script>
+  <script>
+    // Init on document ready
+    $(document).foundation();
+
+    $(function() {
+      'use strict';
+      var $page       = $('#content'),
+          smoothState = false,
+          ssoptions   = {
+            prefetch:     true,
+            blacklist:    '.noss',
+            cacheLength:  20,
+            onStart: {
+              duration: 400, // Duration of our animation
+              render: function ($container) {
+                $page.addClass('is-exiting');
+                smoothState.restartCSSAnimations();
+              }
+            },
+            onReady: {
+              duration: 800,
+              render: function ($container, $newContent) {
+                  $container
+                    .find('#content-main')
+                    .html( $newContent.filter('#content-main').children() ).foundation();
+              }
+            },
+            onAfter: function($container, $newContent) {
+              $page.removeClass('is-exiting');
+              smoothState.restartCSSAnimations();
+              
+              pageInit();
+            }
+          },
+          smoothState = $page.smoothState(ssoptions).data('smoothState');
+
+      //////////////////////////////////////
+      pageInit();
+    });
+
+    function pageInit() {
+      $('.recalc').on('click',function(e) {
+        e.preventDefault();
+        console.log("Call: $('.sticky').foundation('_calc',true);");
+        $('.sticky').foundation('_calc',true);
+      });
+    }
+  </script>
+</body>
+
+</html>
