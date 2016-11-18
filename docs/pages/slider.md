@@ -130,3 +130,24 @@ It's possible to use both the JavaScript slider and the native slider in the sam
 - To disable the slider, add `disabled` as an attribute, instead of a class.
 - No support for vertical orientation.
 - No support for two handles.
+
+---
+
+## Non-linear value translation
+
+Sometimes not every value is of equal importance. In the example below, the slider focusses on the higher numbers by adding a `log`-type position value funtion.
+Alternatively there is also a `pow`-type position value function available, making the reverse possible.
+
+```html_example
+<div class="small-10 columns">
+<div class="slider" data-slider data-initial-start="50" data-step="1" data-position-value-function="log" data-non-linear-base="5">
+  <span class="slider-handle" data-slider-handle role="slider" tabindex="1" aria-controls="sliderOutputNonLinear"></span>
+</div>
+</div>
+<div class="small-2 columns">
+  <input type="number" id="sliderOutputNonLinear">
+</div>
+</div>
+```
+
+The nonLinearBase-option is optional and defaults to 5.
