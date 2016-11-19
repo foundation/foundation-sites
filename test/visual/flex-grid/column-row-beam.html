@@ -1,0 +1,113 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" dir="ltr">
+ <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Foundation for Sites Testing</title>
+  <link href="../assets/css/foundation-flex.css" rel="stylesheet" />
+ </head>
+ <body id="body" data-toggler=".beam">
+  <style>
+    .beam {
+     max-width: 75em;
+     margin-left: auto;
+     margin-right: auto;
+     display: flex;
+     flex-direction: column;
+     flex-wrap: nowrap;
+    }
+
+  </style>
+  <header>
+   <p><a style="color:black" data-toggle="body">Beam me up!</a></p>
+   <style>
+
+     header {
+      border:1px solid #333;
+      background:#AfffCF;
+      min-height: 40px;
+
+      order: 0;
+      flex: 1 1 auto;
+      align-self: auto;
+      padding: 2px;
+     }
+   </style>
+  </header>
+  <main>
+   <style>
+     main {
+      border:1px solid #333;
+      background:#AAAAAA;
+      min-height: 20px;
+
+      order: 0;
+      flex: 4 1 auto;
+      align-self: auto;
+      padding: 2px;
+
+     }
+
+   </style>
+   <div class="row column">
+    <style>.row.column {border: 1px solid #333;}</style>
+    <h1>Flex Grid: Column Row Beam</h1>
+    <p>
+     The introduction of a class meant to further integrate flexbox attributes into the Foundation CSS core.
+    </p>
+    <p>
+     By designating 'body' as a column flexing flex container, this allows for flex children to fill the viewports entire vertical space even when content is sparse.
+    </p>
+    <p>
+     The added benefit is that containers do not "jump" when images load as container heights are predetermined according to flexbox rules.
+    </p>
+    <p>
+     Click the link in the header to see the difference.
+    </p>
+
+   </div>
+   <h3>Witness me!</h3>
+   <div class="row">
+    <div class="small-3 columns">
+     <img class="thumbnail" src="http://placekitten.com/1200/800" />
+    </div>
+    <div class="small-3 columns">
+     <img class="thumbnail" src="http://placekitten.com/1200/800" />
+
+    </div>
+    <div class="small-3 columns">
+     <img class="thumbnail" src="http://placekitten.com/1200/800" />
+
+    </div>
+    <div class="small-3 columns">
+     <img class="thumbnail" src="http://placekitten.com/1200/800" />
+
+    </div>
+
+
+   </div>
+
+   <script src="../assets/js/vendor.js"></script>
+   <script src="../assets/js/foundation.js"></script>
+   <script>
+     $(document).foundation();
+   </script>
+  </main>
+  <footer>
+   I am a footer section.
+   <style>
+     footer {
+      border:1px solid #333;
+      background:#FDFD96;
+      min-height: 20px;
+
+      order: 0;
+      flex: 1 1 auto;
+      align-self: auto;
+      padding: 2px;
+     }
+   </style>
+  </footer>
+ </body>
+</html>
