@@ -116,9 +116,7 @@ The values for `'font-size'`/`'fs'`, `'margin-top'`/`'mt'` and `'margin-bottom'`
 
 The value for `'line-height'`/`'lh'` is transformed into a unitless number, that expresses the line-height relative to the fonts-size. You can also input any unit. If you don't, we assume that for numbers smaller than 10, you mean a typical relative line-height. However, if you put in anything larger than 10, we assume you mean 'px', since we have not yet seen relative line-heights that were larger than 10. If you do not set `'line-height'`/`'lh'` it defaults to `$header-lineheight`. 
 
-
-
-Warning. The `$header-styles` map has replaced `$header-sizes` map in version 6.3. `$header-styles` map is a more general map than `$header-sizes`. `$header-sizes` map is still working and is used to initialize the `$header-styles` map. In a future version `$header-styles` is going to be depreciated.
+Warning. The `$header-styles` map has replaced `$header-sizes` map in version 6.3. `$header-styles` map is a more general map than `$header-sizes`. `$header-sizes` map is still working and is used to initialize the `$header-styles` map. In a future version `$header-sizes` is going to be depreciated.
 
 ---
 
