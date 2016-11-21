@@ -18,7 +18,7 @@ gulp.task('check:deps', function() {
 gulp.task('check:browserSupport', function() {
   return gulp.src(['_build/assets/css/foundation.css'])
     .pipe(postcss([doiuse({
-      browsers: CONFIG.COMPATIBILITY,
+      browsers: CONFIG.CSS_COMPATIBILITY,
       onFeatureUsage: function (usageInfo) {
         console.log(usageInfo.message)
       }
