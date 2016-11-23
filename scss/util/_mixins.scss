@@ -139,7 +139,7 @@
   &::after {
     content: ' ';
     display: table;
-    @if foundation_component_enabled("flex-grid") {
+    @if $global-flexbox {
       flex-basis: 0;
       order: 1;
     }
