@@ -129,6 +129,10 @@ $global-radius: 0 !default;
 /// @type Keyword
 $global-text-direction: ltr !default;
 
+/// Enables flexbox for components that support it.
+/// @type Boolean
+$global-flexbox: foundation_component_enabled("flex-grid") !default;
+
 @if not map-has-key($foundation-palette, primary) {
   @error 'In $foundation-palette, you must have a color named "primary".';
 }
