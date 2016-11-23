@@ -30,7 +30,7 @@ $buttongroup-expand-max: 6 !default;
   @include clearfix;
   margin-bottom: $buttongroup-margin;
 
-  @if foundation_component_enabled("flex-grid") {
+  @if $global-flexbox {
     display: flex;
     flex-wrap: nowrap;
     align-items: stretch;
@@ -43,7 +43,7 @@ $buttongroup-expand-max: 6 !default;
     margin: 0;
     font-size: map-get($button-sizes, default);
 
-    @if foundation_component_enabled("flex-grid") {
+    @if $global-flexbox {
       flex: 0 0 auto;
     }
 
@@ -59,7 +59,7 @@ $buttongroup-expand-max: 6 !default;
   $selector: $buttongroup-child-selector,
   $count: null
 ) {
-  @if not foundation_component_enabled("flex-grid") {
+  @if not $global-flexbox {
     margin-right: -$buttongroup-spacing;
 
     &::before,
@@ -70,7 +70,7 @@ $buttongroup-expand-max: 6 !default;
 
   // scss-lint:disable ZeroUnit
   #{$selector} {
-    @if foundation_component_enabled("flex-grid") {
+    @if $global-flexbox {
       flex: 1 1 0px;
     }
     @else {
@@ -96,12 +96,12 @@ $buttongroup-expand-max: 6 !default;
 @mixin button-group-stack(
   $selector: $buttongroup-child-selector
 ) {
-  @if foundation_component_enabled("flex-grid") {
+  @if $global-flexbox {
     flex-wrap: wrap;
   }
 
   #{$selector} {
-    @if foundation_component_enabled("flex-grid") {
+    @if $global-flexbox {
       flex: 0 0 100%;
       margin-#{$global-right}: 0; 
     }
@@ -111,7 +111,7 @@ $buttongroup-expand-max: 6 !default;
     }
     
     &:not(:last-child) {
-      @if foundation_component_enabled("flex-grid") {
+      @if $global-flexbox {
         margin-bottom: $buttongroup-spacing;
       }
       @else {
@@ -128,7 +128,7 @@ $buttongroup-expand-max: 6 !default;
 ) {
   // scss-lint:disable ZeroUnit
   #{$selector} {
-    @if foundation_component_enabled("flex-grid") {
+    @if $global-flexbox {
       flex: 1 1 0px;
     }
     @else {
