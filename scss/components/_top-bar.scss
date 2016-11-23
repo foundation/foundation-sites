@@ -32,7 +32,7 @@ $topbar-unstack-breakpoint: medium !default;
 
 /// Adds styles for a top bar container.
 @mixin top-bar-container {
-  @if foundation_component_enabled("flex-grid") {
+  @if $global-flexbox {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -76,7 +76,7 @@ $topbar-unstack-breakpoint: medium !default;
 
 /// Makes sections of a top bar stack on top of each other.
 @mixin top-bar-stacked {
-  @if foundation_component_enabled("flex-grid") {
+  @if $global-flexbox {
     flex-wrap: wrap;
 
     // Sub-sections
@@ -97,7 +97,7 @@ $topbar-unstack-breakpoint: medium !default;
 
 /// Undoes the CSS applied by the `top-bar-stacked()` mixin.
 @mixin top-bar-unstack {
-  @if foundation_component_enabled("flex-grid") {
+  @if $global-flexbox {
     flex-wrap: nowrap;
 
     // scss-lint:disable ZeroUnit
@@ -139,7 +139,7 @@ $topbar-unstack-breakpoint: medium !default;
   }
 
   // Sub-sections
-  @if foundation_component_enabled("flex-grid") {
+  @if $global-flexbox {
     .top-bar-title {
       flex: 0 0 auto;
       margin-right: $topbar-title-spacing;
