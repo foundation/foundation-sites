@@ -35,7 +35,7 @@ $menu-icon-spacing: 0.25rem !default;
   margin: $menu-margin;
   list-style-type: none;
 
-  @if foundation_component_enabled("flex-grid") {
+  @if $global-flexbox {
     width: 100%;
     display: flex;
     flex-wrap: nowrap;
@@ -46,7 +46,7 @@ $menu-icon-spacing: 0.25rem !default;
   > li {
     @include disable-mouse-outline;
 
-    @if foundation_component_enabled("flex-grid") {
+    @if $global-flexbox {
       flex: 0 0 auto;
     }
     @else {
@@ -72,7 +72,7 @@ $menu-icon-spacing: 0.25rem !default;
 
 /// Expands the items of a Menu, so each item is the same width.
 @mixin menu-expand {
-  @if foundation_component_enabled("flex-grid") {
+  @if $global-flexbox {
     // scss-lint:disable ZeroUnit
     > li {
       flex: 1 1 0px;
@@ -89,7 +89,7 @@ $menu-icon-spacing: 0.25rem !default;
 /// @param {Keyword} $dir [horizontal] - Direction of the Menu. Can be `horizontal` or `vertical`.
 @mixin menu-direction($dir: horizontal) {
   @if $dir == horizontal {
-    @if foundation_component_enabled("flex-grid") {
+    @if $global-flexbox {
       flex-wrap: nowrap;
 
       > li {
@@ -103,7 +103,7 @@ $menu-icon-spacing: 0.25rem !default;
     }
   }
   @else if $dir == vertical {
-    @if foundation_component_enabled("flex-grid") {
+    @if $global-flexbox {
       flex-wrap: wrap;
 
       > li {
@@ -151,7 +151,7 @@ $menu-icon-spacing: 0.25rem !default;
 /// @param {Boolean} $base [true] - Set to `false` to prevent the shared CSS between side- and top-aligned icons from being printed. Set this to `false` if you're calling the mixin multiple times on the same element.
 @mixin menu-icons($position: side, $base: true) {
   @if $base {
-    @if foundation_component_enabled("flex-grid") {
+    @if $global-flexbox {
       > li > a {
         display: flex;
       }
@@ -172,7 +172,7 @@ $menu-icon-spacing: 0.25rem !default;
 
   @if $position == side {
     > li > a {
-      @if foundation_component_enabled("flex-grid") {
+      @if $global-flexbox {
         flex-flow: row nowrap;
       }
 
@@ -181,7 +181,7 @@ $menu-icon-spacing: 0.25rem !default;
       svg {
         margin-#{$global-right}: $menu-icon-spacing;
 
-        @if not foundation_component_enabled("flex-grid") {
+        @if not $global-flexbox {
           display: inline-block;
         }
       }
@@ -189,7 +189,7 @@ $menu-icon-spacing: 0.25rem !default;
   }
   @else if $position == top {
     > li > a {
-      @if foundation_component_enabled("flex-grid") {
+      @if $global-flexbox {
         flex-flow: column nowrap;
       }
       @else {
@@ -199,7 +199,7 @@ $menu-icon-spacing: 0.25rem !default;
       img,
       i,
       svg {
-        @if not foundation_component_enabled("flex-grid") {
+        @if not $global-flexbox {
           display: block;
           margin: 0 auto $menu-icon-spacing;
         }
@@ -255,7 +255,7 @@ $menu-icon-spacing: 0.25rem !default;
 
     // Align right
     &.align-#{$global-right} {
-      @if foundation_component_enabled("flex-grid") {
+      @if $global-flexbox {
         justify-content: flex-end;
       }
       @else {
