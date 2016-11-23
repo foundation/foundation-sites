@@ -25,11 +25,11 @@ $input-prefix-padding: 1rem !default;
   $height: ($input-font-size + $form-spacing * 1.5);
 
   .input-group {
-    display: if(foundation_component_enabled("flex-grid"), flex, table);
+    display: if($global-flexbox, flex, table);
     width: 100%;
     margin-bottom: $form-spacing;
 
-    @if foundation_component_enabled("flex-grid") {
+    @if $global-flexbox {
       align-items: stretch;
     }
 
@@ -48,7 +48,7 @@ $input-prefix-padding: 1rem !default;
     margin: 0;
     white-space: nowrap;
 
-    @if not foundation_component_enabled("flex-grid") {
+    @if not $global-flexbox {
       display: table-cell;
       vertical-align: middle;
     }
@@ -63,7 +63,7 @@ $input-prefix-padding: 1rem !default;
     border: $input-prefix-border;
     white-space: nowrap;
 
-    @if foundation_component_enabled("flex-grid") {
+    @if $global-flexbox {
       flex: 0 0 auto;
       display: flex;
       align-items: center;
@@ -89,7 +89,7 @@ $input-prefix-padding: 1rem !default;
     border-radius: 0;
 
     // scss-lint:disable ZeroUnit
-    @if foundation_component_enabled("flex-grid") {
+    @if $global-flexbox {
       flex: 1 1 0px;
       width: auto;
       height: auto;
@@ -105,7 +105,7 @@ $input-prefix-padding: 1rem !default;
     padding-bottom: 0;
     text-align: center;
 
-    @if foundation_component_enabled("flex-grid") {
+    @if $global-flexbox {
       flex: 0 0 auto;
     }
     @else {
