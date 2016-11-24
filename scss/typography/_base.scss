@@ -330,19 +330,6 @@ $abbr-underline: 1px dotted $black !default;
         $font-size-temp: 1rem;
         #{$header} {
 
-          @if map-has-key($header-defs, margin-top) {
-            margin-top: rem-calc(map-get($header-defs, margin-top));
-          } @else if map-has-key($header-defs, mt) {
-            margin-top: rem-calc(map-get($header-defs, mt));
-          } 
-
-          @if map-has-key($header-defs, margin-bottom) {
-            margin-bottom: rem-calc(map-get($header-defs, margin-bottom));
-          } @else if map-has-key($header-defs, mb) {
-            margin-bottom: rem-calc(map-get($header-defs, mb));
-          } 
-
-
           @if map-has-key($header-defs, font-size) {
             $font-size-temp: rem-calc(map-get($header-defs, font-size));
             font-size: $font-size-temp;
@@ -355,6 +342,18 @@ $abbr-underline: 1px dotted $black !default;
             line-height: unitless-calc(map-get($header-defs, line-height), $font-size-temp);
           } @else if map-has-key($header-defs, lh) {
             line-height: unitless-calc(map-get($header-defs, lh), $font-size-temp);
+          } 
+
+          @if map-has-key($header-defs, margin-top) {
+            margin-top: rem-calc(map-get($header-defs, margin-top));
+          } @else if map-has-key($header-defs, mt) {
+            margin-top: rem-calc(map-get($header-defs, mt));
+          } 
+
+          @if map-has-key($header-defs, margin-bottom) {
+            margin-bottom: rem-calc(map-get($header-defs, margin-bottom));
+          } @else if map-has-key($header-defs, mb) {
+            margin-bottom: rem-calc(map-get($header-defs, mb));
           } 
 
         }
