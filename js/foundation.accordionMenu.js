@@ -94,7 +94,7 @@ class AccordionMenu {
       if ($submenu.length) {
         if(_this.options.submenuToggle) {
           $(this).addClass('has-submenu-toggle');
-          $(this).children('a').after('<button class="submenu-toggle"></button>');
+          $(this).children('a').after('<button class="submenu-toggle" aria-expanded="false"><span class="submenu-toggle-text">' + _this.options.submenuToggleText + '</span></button>');
           $(this).children('.submenu-toggle').off('click.zf.accordionMenu').on('click.zf.accordionMenu', function(e) {
             _this.toggle($submenu);
           });
@@ -210,8 +210,14 @@ class AccordionMenu {
       this.up(this.$element.find('.is-active').not($target.parentsUntil(this.$element).add($target)));
     }
 
-    $target.addClass('is-active').attr({'aria-hidden': false})
-      .parent('.is-accordion-submenu-parent').attr({'aria-expanded': true});
+    $target.addClass('is-active').attr({'aria-hidden': false});
+
+    if(this.options.submenuToggle) {
+      $target.prev('.submenu-toggle').attr({'aria-expanded': true});
+    }
+    else {
+      $target.parent('.is-accordion-submenu-parent').attr({'aria-expanded': true});
+    }
 
       //Foundation.Move(this.options.slideSpeed, $target, function() {
         $target.slideDown(_this.options.slideSpeed, function () {
@@ -243,7 +249,12 @@ class AccordionMenu {
 
     var $menus = $target.find('[data-submenu]').slideUp(0).addBack().attr('aria-hidden', true);
 
-    $menus.parent('.is-accordion-submenu-parent').attr('aria-expanded', false);
+    if(this.options.submenuToggle) {
+      $menus.prev('.submenu-toggle').attr('aria-expanded', false);
+    }
+    else {
+      $menus.parent('.is-accordion-submenu-parent').attr('aria-expanded', false);
+    }
   }
 
   /**
@@ -277,6 +288,12 @@ AccordionMenu.defaults = {
    * @example true
    */
   submenuToggle: false,
+  /**
+   * The text used for the submenu toggle if enabled. This is used for screen readers only.
+   * @option
+   * @example true
+   */
+  submenuToggleText: 'Toggle menu',
   /**
    * Allow the menu to have multiple open panes.
    * @option
