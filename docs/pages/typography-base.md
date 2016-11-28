@@ -51,10 +51,10 @@ Foundation includes styles for all headings&mdash;they're balanced and sized alo
 
 ### Header Sizes
 
-The framework includes two typographic scales&mdash;one uses a narrow range of sizes for small- and medium-sized screens, and the other uses a wider range of sizes for large-sized screens. You can change these scales, or add new ones for other breakpoints, by editing the `$header-sizes` map in your project's <a href="sass.html#the-settings-file">Settings File</a>.
+The framework includes two typographic scales&mdash;one uses a narrow range of sizes for small-sized screens, and the other uses a wider range of sizes for medium- and larger-sized screens. You can change these scales, or add new ones for other breakpoints, by editing the `$header-sizes` map in your project's <a href="sass.html#the-settings-file">Settings File</a>.
 
-Header  | Default | Large and up
---------|---------|-------------
+Header  | Default | Medium and up
+--------|---------|--------------
 `<h1>`  | 24px    | 48px
 `<h2>`  | 20px    | 40px
 `<h3>`  | 19px    | 31px
@@ -260,3 +260,7 @@ Foundation includes print styles developed by HTML5 Boilerplate to give you some
 - Page cleanup and window minimization
 
 On top of that, Foundation includes a couple of simple classes you can use to control elements printing, or not printing. Simply attach `.show-for-print` to an element to only show when printing, and `.hide-for-print` to hide something when printing.
+
+<div class="callout primary">
+  <p>Print styles use `!important` to ensure they aren't overriden by more specific selectors. This framework conscientiously avoids using `!important` declarations. This is one of the few components that does.</p>
++</div>

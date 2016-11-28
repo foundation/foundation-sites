@@ -89,7 +89,7 @@ Get to know the pieces of Foundation.
     <section>
       <h4>Typography</h4>
       <ul>
-        <li><a href="base-typography.html">Base Styles</a></li>
+        <li><a href="typography-base.html">Base Styles</a></li>
         <li><a href="typography-helpers.html">Helper Classes</a></li>
       </ul>
     </section>
