@@ -52,13 +52,13 @@ class OffCanvas {
       .attr('aria-expanded', 'false')
       .attr('aria-controls', id);
 
-    // Add a close trigger over the body if necessary
+    // Add an overlay over the content if necessary
     if (this.options.contentOverlay) {
-      if ($('.js-off-canvas-exit').length) {
-        this.$overlay = $('.js-off-canvas-exit');
+      if ($('.js-off-canvas-overlay').length) {
+        this.$overlay = $('.js-off-canvas-overlay');
       } else {
         var overlay = document.createElement('div');
-        overlay.setAttribute('class', 'js-off-canvas-exit');
+        overlay.setAttribute('class', 'js-off-canvas-overlay');
         $('[data-off-canvas-content]').append(overlay);
 
         this.$overlay = $(overlay);
@@ -147,6 +147,16 @@ class OffCanvas {
   }
 
   /**
+   * Stops scrolling of the body when offcanvas is open on mobile Safari and other troublesome browsers.
+   * @private
+   */
+  _stopScrolling(event) {
+  	event.preventDefault();
+  	event.stopPropagation();
+  	return false;
+  }
+
+  /**
    * Opens the off-canvas menu.
    * @function
    * @param {Object} event - Event object passed from listener.
@@ -177,6 +187,7 @@ class OffCanvas {
 
     // If we have an overlay lets make it visible.
     if (this.options.contentOverlay) {
+    	$('body').on('touchmove', this._stopScrolling);
       this.$overlay.addClass('is-visible');
     }
 
@@ -247,6 +258,7 @@ class OffCanvas {
 
     // Remove `is-visible` class from overlay.
     if (this.options.contentOverlay) {
+    	$('body').off('touchmove', this._stopScrolling);
       this.$overlay.removeClass('is-visible');
     }
 
@@ -331,13 +343,6 @@ OffCanvas.defaults = {
    * @example push
    */
   transition: 'push',
-
-  /**
-   * Direction the offcanvas opens from. Determines class applied to body.
-   * @option
-   * @example left
-   */
-  position: 'left',
 
   /**
    * Force the page to scroll to top or bottom on open.
