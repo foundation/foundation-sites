@@ -24,7 +24,7 @@ $tab-background-active: $light-gray !default;
 
 /// Active font color of tab item.
 /// @type Color
-$tab-background-active-color: $primary-color !default;
+$tab-active-color: $primary-color !default;
 
 /// Font size of tab items.
 /// @type Number
@@ -84,7 +84,7 @@ $tab-content-padding: 1rem !default;
   $padding: $tab-item-padding,
   $font-size: $tab-item-font-size,
   $color: $tab-color,
-  $color-active: $tab-background-active-color,
+  $color-active: $tab-active-color,
   $background-hover: $tab-item-background-hover,
   $background-active: $tab-background-active
 ) {
