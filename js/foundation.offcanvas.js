@@ -345,13 +345,6 @@ OffCanvas.defaults = {
   transition: 'push',
 
   /**
-   * Direction the offcanvas opens from. Determines class applied to body.
-   * @option
-   * @example left
-   */
-  position: 'left',
-
-  /**
    * Force the page to scroll to top or bottom on open.
    * @option
    * @example top
