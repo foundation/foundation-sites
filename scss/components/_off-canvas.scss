@@ -33,6 +33,10 @@ $offcanvas-fixed-reveal: true !default;
 /// @type Color
 $offcanvas-exit-background: rgba($white, 0.25) !default;
 
+/// Height of a vertical off-canvas menu.
+/// @type Number
+$offcanvas-vertical-size: 250px !default;
+
 /// CSS class used for the main content area. The off-canvas mixins use this to target the page body.
 $maincontent-class: 'off-canvas-content' !default;
 
@@ -51,6 +55,7 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5) !default;
   .off-canvas-wrapper {
     width: 100%;
     overflow-x: hidden;
+    overflow-y: hidden;
     position: relative;
     backface-visibility: hidden;
     -webkit-overflow-scrolling: auto;
@@ -101,13 +106,14 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5) !default;
   z-index: $offcanvas-zindex;
   max-height: 100%;
   overflow-y: auto;
-  transform: translateX(0);
+  transform: translateX(0) translateY(0);
 }
 
 @mixin off-canvas-position(
   $position: left,
   $size: $offcanvas-size,
-  $fixed: false
+  $fixed: false,
+  $vertical-size: $offcanvas-vertical-size
 ) {
   @if $position == left {
     left: -$size;
@@ -119,6 +125,10 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5) !default;
     top: 0;
     width: $size;
   }
+  @else if $position == top {
+    top: -$vertical-size;
+    width: 100%;
+  }
 
   // Generates an open state class that matches the width of the menu
   @at-root {
@@ -128,6 +138,9 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5) !default;
       }
       @else if $position == right {
         transform: translateX(-$size);
+      }
+      @else if $position == top {
+        transform: translateY($vertical-size);
       }
     }
   }
@@ -159,6 +172,7 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5) !default;
 
     &.position-left   { @include off-canvas-position(left); }
     &.position-right  { @include off-canvas-position(right); }
+    &.position-top    { @include off-canvas-position(top); }
   }
 
   // Reveal off-canvas menu on larger screens
@@ -171,6 +185,10 @@ $maincontent-shadow: 0 0 10px rgba($black, 0.5) !default;
 
         .position-right.reveal-for-#{$name} {
           @include off-canvas-reveal(right);
+        }
+
+        .position-top.reveal-for-#{$name} {
+          @include off-canvas-reveal(top);
         }
       }
     }

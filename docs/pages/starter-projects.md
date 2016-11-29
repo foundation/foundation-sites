@@ -1,6 +1,6 @@
 ---
 title: Starter Projects
-description: We have a few starter project templates that can be installed with Yeti Launch or the Foundation CLI. You can also download them manually!
+description: We have a few starter project templates that can be installed with the Foundation CLI. You can also download them manually!
 ---
 
 Our project templates give you a solid... *Foundation* on which to start a new project. Both templates use the [Gulp](http://gulpjs.com) build system to automate the process of compiling Sass, processing JavaScript, copying files, and more.
@@ -9,7 +9,7 @@ Our project templates give you a solid... *Foundation* on which to start a new p
 
 Our basic project template is a lot like the Sass template from Foundation 5. The project has a flat directory structure and only compiles Sass. It's great if you want to quickly put together a simple project and only need to use Sass.
 
-You can set up a basic project through [Yeti Launch](installation.html), or the Foundation CLI with this command:
+You can set up a basic project through the Foundation CLI with this command:
 
 ```bash
 foundation new --framework sites --template basic
@@ -23,7 +23,7 @@ It's also possible to download the template files directly from GitHub. Run `npm
 
 The official ZURB Template includes not only Sass processing, but also JavaScript processing, Handlebars templating, and image compression. We use this exact template at ZURB for our client work!
 
-You can set up an advanced project through [Yeti Launch](installation.html), or the Foundation CLI with this command:
+You can set up an advanced project through the Foundation CLI with this command:
 
 ```bash
 foundation new --framework sites --template zurb

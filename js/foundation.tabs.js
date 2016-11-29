@@ -114,9 +114,6 @@ class Tabs {
       .on('click.zf.tabs', `.${this.options.linkClass}`, function(e){
         e.preventDefault();
         e.stopPropagation();
-        if ($(this).hasClass('is-active')) {
-          return;
-        }
         _this._handleTabChange($(this));
       });
   }
@@ -175,38 +172,79 @@ class Tabs {
   }
 
   /**
-   * Opens the tab `$targetContent` defined by `$target`.
+   * Opens the tab `$targetContent` defined by `$target`. Collapses active tab.
    * @param {jQuery} $target - Tab to open.
    * @fires Tabs#change
    * @function
    */
   _handleTabChange($target) {
-    var $tabLink = $target.find('[role="tab"]'),
-        hash = $tabLink[0].hash,
-        $targetContent = this.$tabContent.find(hash),
-        $oldTab = this.$element.
-          find(`.${this.options.linkClass}.is-active`)
-          .removeClass('is-active')
-          .find('[role="tab"]')
-          .attr({ 'aria-selected': 'false' });
+    
+    /**
+     * Check for active class on target. Collapse if exists.
+     */
+    if ($target.hasClass('is-active')) {
+        if(this.options.activeCollapse) {
+            this._collapseTab($target);
+            
+           /**
+            * Fires when the zplugin has successfully collapsed tabs.
+            * @event Tabs#collapse
+            */
+            this.$element.trigger('collapse.zf.tabs', [$target]);
+        }
+        return;
+    }
+    
+    var $oldTab = this.$element.
+          find(`.${this.options.linkClass}.is-active`);
+  
+    //close old tab
+    this._collapseTab($oldTab);
 
-    $(`#${$oldTab.attr('aria-controls')}`)
-      .removeClass('is-active')
-      .attr({ 'aria-hidden': 'true' });
-
-    $target.addClass('is-active');
-
-    $tabLink.attr({'aria-selected': 'true'});
-
-    $targetContent
-      .addClass('is-active')
-      .attr({'aria-hidden': 'false'});
-
+    //open new tab
+    this._openTab($target);
+    
+    
     /**
      * Fires when the plugin has successfully changed tabs.
      * @event Tabs#change
      */
     this.$element.trigger('change.zf.tabs', [$target]);
+  }
+  
+  /**
+   * Opens the tab `$targetContent` defined by `$target`.
+   * @param {jQuery} $target - Tab to Open.
+   * @function 
+   */
+  _openTab($target) {
+      var $tabLink = $target.find('[role="tab"]'),
+          hash = $tabLink[0].hash,
+          $targetContent = this.$tabContent.find(hash);
+
+      $target.addClass('is-active');
+
+      $tabLink.attr({'aria-selected': 'true'});
+
+      $targetContent
+        .addClass('is-active')
+        .attr({'aria-hidden': 'false'});
+  }
+  
+  /**
+   * Collapses `$targetContent` defined by `$target`.
+   * @param {jQuery} $target - Tab to Open.
+   * @function 
+   */
+  _collapseTab($target) {
+    var $target_anchor = $target
+      .removeClass('is-active')
+      .find('[role="tab"]')
+      .attr({ 'aria-selected': 'false' });
+
+    $(`#${$target_anchor.attr('aria-controls')}`)
+      .removeClass('is-active')
+      .attr({ 'aria-hidden': 'true' });
   }
 
   /**
@@ -307,7 +345,14 @@ Tabs.defaults = {
    * @example false
    */
   matchHeight: false,
-
+  
+  /**
+   * Allows active tabs to collapse when clicked.
+   * @option
+   * @example false
+   */
+  activeCollapse: false,
+  
   /**
    * Class applied to `li`'s in tab link list.
    * @option

@@ -73,6 +73,62 @@ Any `<a>` without a submenu will function like a normal link.
   <li><a href="#Item-4"> Item 4</a></li>
 </ul>
 
+## ScrollTop Drilldown
+
+<div class="callout">Scroll to the top of the menu when selecting a submenu/navigating back using the menu back button. Can be useful with a longer menu to provide a better user experience.</div>
+
+<ul class="menu" data-drilldown data-scroll-top="true" style="width: 200px" id="m2">
+  <li><a href="#">Item</a></li>
+  <li><a href="#">Item</a></li>
+  <li><a href="#">Item</a></li>
+  <li><a href="#">Item</a></li>
+  <li><a href="#">Item</a></li>
+  <li><a href="#">Item</a></li>
+  <li><a href="#">Item</a></li>
+  <li><a href="#">Item</a></li>
+  <li><a href="#">Item</a></li>
+  <li><a href="#">Item</a></li>
+  <li> <a href="#">Item</a>
+    <ul class="vertical menu">
+      <li><a href="#">Item</a></li>
+      <li><a href="#">Item</a></li>
+      <li><a href="#">Item</a></li>
+      <li><a href="#">Item</a></li>
+      <li><a href="#">Item</a></li>
+      <li><a href="#">Item</a></li>
+      <li><a href="#">Item</a></li>
+      <li><a href="#">Item</a></li>
+      <li><a href="#">Item</a></li>
+      <li><a href="#">Item</a></li>
+      <li><a href="#">Item</a></li>
+      <li><a href="#">Item</a></li>
+      <li><a href="#">Item</a></li>
+      <li><a href="#">Item</a></li>
+      <li><a href="#">Item</a></li>
+      <li><a href="#">Item</a></li>
+      <li><a href="#">Item</a></li>
+      <li><a href="#">Item</a></li>
+      <li><a href="#">Item</a></li>
+      <li><a href="#">Item</a></li>
+      <li><a href="#">Item</a></li>
+      <li><a href="#">Item</a></li>
+      <li><a href="#">Item</a></li>
+      <li><a href="#">Item</a></li>
+      <li><a href="#">Item</a></li>
+      <li><a href="#">Item</a></li>
+      <li><a href="#">Item</a></li>
+      <li><a href="#">Item</a></li>
+      <li><a href="#">Item</a></li>
+      <li> <a href="#">Item</a>
+        <ul class="vertical menu">
+          <li><a href="#">Item</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#">Item</a></li>
+</ul>
+
 ---
 
 ## Custom Styling
