@@ -292,7 +292,6 @@ $content: $maincontent-class
   .position-top     { @include off-canvas-position(top,    vertical); }
   .position-bottom  { @include off-canvas-position(bottom, vertical); }
 
-  // Off-canvas content
   .off-canvas-content {
     @include off-canvas-content;
   }

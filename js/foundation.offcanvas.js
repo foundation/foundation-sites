@@ -53,7 +53,7 @@ class OffCanvas {
       .attr('aria-controls', id);
 
     // Add an overlay over the content if necessary
-    if (this.options.contentOverlay) {
+    if (this.options.contentOverlay === true) {
       if ($('.js-off-canvas-overlay').length) {
         this.$overlay = $('.js-off-canvas-overlay');
       } else {
@@ -67,11 +67,11 @@ class OffCanvas {
 
     this.options.isRevealed = this.options.isRevealed || new RegExp(this.options.revealClass, 'g').test(this.$element[0].className);
 
-    if (this.options.isRevealed) {
+    if (this.options.isRevealed === true) {
       this.options.revealOn = this.options.revealOn || this.$element[0].className.match(/(reveal-for-medium|reveal-for-large)/g)[0].split('-')[2];
       this._setMQChecker();
     }
-    if (!this.options.transitionTime) {
+    if (!this.options.transitionTime === true) {
       this.options.transitionTime = parseFloat(window.getComputedStyle($('[data-off-canvas]')[0]).transitionDuration) * 1000;
     }
   }
@@ -89,14 +89,9 @@ class OffCanvas {
       'keydown.zf.offcanvas': this._handleKeyboard.bind(this)
     });
 
-    // If we have an overlay and close on click, let it close the off canvas menu.
-    if (this.options.closeOnClick && this.options.contentOverlay && this.$overlay.length) {
-      this.$overlay.on({'click.zf.offcanvas': this.close.bind(this)});
-    }
-
-    // If content overlay is false but close on click is true, close via click on content.
-    if (this.options.closeOnClick && this.options.contentOverlay !== true) {
-      $('[data-off-canvas-content]').on({'click.zf.offcanvas': this.close.bind(this)});
+    if (this.options.closeOnClick === true) {                                            
+      var $target = this.options.contentOverlay ? this.$overlay : $('[data-off-canvas-content]');
+      $target.on({'click.zf.offcanvas': this.close.bind(this)});                
     }
   }
 
@@ -151,8 +146,6 @@ class OffCanvas {
    * @private
    */
   _stopScrolling(event) {
-  	event.preventDefault();
-  	event.stopPropagation();
   	return false;
   }
 
@@ -166,6 +159,10 @@ class OffCanvas {
   open(event, trigger) {
     if (this.$element.hasClass('is-open') || this.isRevealed) { return; }
     var _this = this;
+
+    if (trigger) {
+      this.$lastTrigger = trigger;
+    }
 
     if (this.options.forceTo === 'top') {
       window.scrollTo(0, 0);
@@ -184,31 +181,25 @@ class OffCanvas {
         .trigger('opened.zf.offcanvas');
 
     // If `contentScroll` is set to false, add class and disable scrolling on touch devices.
-    if (this.options.contentScroll == false) {
+    if (this.options.contentScroll === false) {
       $('body').addClass('is-off-canvas-open').on('touchmove', this._stopScrolling);
     }
 
-    // If we have an overlay lets make it visible.
-    if (this.options.contentOverlay) {
+    if (this.options.contentOverlay === true) {
       this.$overlay.addClass('is-visible');
     }
 
-    // If we have close on click and an overlay add a `is-closable` class.
-    if (this.options.closeOnClick && this.options.contentOverlay) {
+    if (this.options.closeOnClick === true && this.options.contentOverlay === true) {
       this.$overlay.addClass('is-closable');
     }
 
-    if (trigger) {
-      this.$lastTrigger = trigger;
-    }
-
-    if (this.options.autoFocus) {
+    if (this.options.autoFocus === true) {
       this.$element.one(Foundation.transitionend(this.$element), function() {
         _this.$element.find('a, button').eq(0).focus();
       });
     }
 
-    if (this.options.trapFocus) {
+    if (this.options.trapFocus === true) {
       $('[data-off-canvas-content]').attr('tabindex', '-1');
       this._trapFocus();
     }
@@ -258,22 +249,20 @@ class OffCanvas {
         .trigger('closed.zf.offcanvas');
 
     // If `contentScroll` is set to false, remove class and re-enable scrolling on touch devices.
-    if (this.options.contentScroll == false) {
+    if (this.options.contentScroll === false) {
       $('body').removeClass('is-off-canvas-open').off('touchmove', this._stopScrolling);
     }
 
-    // Remove `is-visible` class from overlay.
-    if (this.options.contentOverlay) {
+    if (this.options.contentOverlay === true) {
       this.$overlay.removeClass('is-visible');
     }
 
-    // If we have `closeOnClick` and `contentOverlay` add `is-closable` class.
-    if (this.options.closeOnClick && this.options.contentOverlay) {
+    if (this.options.closeOnClick === true && this.options.contentOverlay === true) {
       this.$overlay.removeClass('is-closable');
     }
 
     this.$triggers.attr('aria-expanded', 'false');
-    if (this.options.trapFocus) {
+    if (this.options.trapFocus === true) {
       $('[data-off-canvas-content]').removeAttr('tabindex');
     }
   }
