@@ -23,7 +23,7 @@
         <button class="close-button" aria-label="Close panel" type="button" data-close>
           <span aria-hidden="true">&times;</span>
         </button>
-        <h3>This is a right off-canvas panel</h3>
+        <h3>This is a right off-canvas panel.</h3>
       </div>
 
       <div class="off-canvas position-top" id="offCanvasTop" data-off-canvas>
@@ -37,7 +37,7 @@
         <button class="close-button" aria-label="Close panel" type="button" data-close>
           <span aria-hidden="true">&times;</span>
         </button>
-        <h3>This is a bottom off-canvas panel</h3>
+        <h3>This is a bottom off-canvas panel.</h3>
       </div>
 
       <div class="off-canvas position-left" id="offCanvasLeftOverlap" data-off-canvas data-transition="overlap">
@@ -82,6 +82,13 @@
         <h3>This is a bottom off-canvas panel with force-to set to bottom</h3>
       </div>
 
+      <div class="off-canvas position-left" id="noScroll" data-off-canvas data-content-scroll="false">
+        <button class="close-button" aria-label="Close panel" type="button" data-close>
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h3>This is a left off-canvas panel with content scroll disabled.</h3>
+      </div>
+
       <div class="off-canvas position-left" id="noOverlay" data-off-canvas data-content-overlay="false">
         <button class="close-button" aria-label="Close panel" type="button" data-close>
           <span aria-hidden="true">&times;</span>
@@ -119,6 +126,7 @@
           </div>
 
           <div class="button-group expanded">
+            <button type="button" class="button" data-toggle="noScroll">No scroll</button>
             <button type="button" class="button" data-toggle="noOverlay">No overlay</button>
             <button type="button" class="button" data-toggle="noCloseOnClick">No close on click</button>
           </div>
@@ -169,6 +177,7 @@
           </div>
 
           <div class="button-group expanded">
+            <button type="button" class="button" data-toggle="noScroll">No scroll</button>
             <button type="button" class="button" data-toggle="noOverlay">No overlay</button>
             <button type="button" class="button" data-toggle="noCloseOnClick">No close on click</button>
           </div>

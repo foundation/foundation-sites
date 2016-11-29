@@ -165,8 +165,7 @@ class OffCanvas {
    */
   open(event, trigger) {
     if (this.$element.hasClass('is-open') || this.isRevealed) { return; }
-    var _this = this,
-        $body = $(document.body);
+    var _this = this;
 
     if (this.options.forceTo === 'top') {
       window.scrollTo(0, 0);
@@ -178,16 +177,19 @@ class OffCanvas {
      * Fires when the off-canvas menu opens.
      * @event OffCanvas#opened
      */
-    $('body').addClass('is-off-canvas-open');
     _this.$element.addClass('is-open')
 
     this.$triggers.attr('aria-expanded', 'true');
     this.$element.attr('aria-hidden', 'false')
         .trigger('opened.zf.offcanvas');
 
+    // If `contentScroll` is set to false, add class and disable scrolling on touch devices.
+    if (this.options.contentScroll == false) {
+      $('body').addClass('is-off-canvas-open').on('touchmove', this._stopScrolling);
+    }
+
     // If we have an overlay lets make it visible.
     if (this.options.contentOverlay) {
-    	$('body').on('touchmove', this._stopScrolling);
       this.$overlay.addClass('is-visible');
     }
 
@@ -246,7 +248,6 @@ class OffCanvas {
 
     var _this = this;
 
-    $('body').removeClass('is-off-canvas-open');
     _this.$element.removeClass('is-open');
 
     this.$element.attr('aria-hidden', 'true')
@@ -256,9 +257,13 @@ class OffCanvas {
        */
         .trigger('closed.zf.offcanvas');
 
+    // If `contentScroll` is set to false, remove class and re-enable scrolling on touch devices.
+    if (this.options.contentScroll == false) {
+      $('body').removeClass('is-off-canvas-open').off('touchmove', this._stopScrolling);
+    }
+
     // Remove `is-visible` class from overlay.
     if (this.options.contentOverlay) {
-    	$('body').off('touchmove', this._stopScrolling);
       this.$overlay.removeClass('is-visible');
     }
 
@@ -329,6 +334,13 @@ OffCanvas.defaults = {
    * @example true
    */
   contentOverlay: true,
+
+  /**
+   * Enable/disable scrolling of the main content when an off canvas panel is open.
+   * @option
+   * @example true
+   */
+  contentScroll: true,
 
   /**
    * Amount of time in ms the open and close transition requires. If none selected, pulls from body style.
