@@ -81,7 +81,12 @@ $global-font-size: 100% !default;
     @return $value;
   }
 
-  // Calculate rem if units for $value is not rem
+  // Transform em into rem if someone hands over 'em's
+  @if unit($value) == 'em' {
+    $value: strip-unit($value) * 1rem;
+  }
+
+  // Calculate rem if units for $value is not rem or em
   @if unit($value) != 'rem' {
     $value: strip-unit($value) / strip-unit($base) * 1rem;
   }
@@ -124,19 +129,25 @@ $global-font-size: 100% !default;
 
   // Now lets convert our value to pixels too
   @if unit($value) == '%' {
-    $value: ($value / 100%) * 16px;
+    $value: ($value / 100%) * $base;
   }
 
   @if unit($value) == 'rem' {
-    $value: strip-unit($value) * 16px;
+    $value: strip-unit($value) * $base;
   }
 
   @if unit($value) == 'em' {
-    $value: strip-unit($value) * 16px;
+    $value: strip-unit($value) * $base;
   }
 
-  @if type-of($value) == 'number' and not unitless($value) {
+  // 'px'
+  @if unit($value) == 'px' {
     @return strip-unit($value) / strip-unit($base);
+  }
+
+  // assume that line-heights greatern then 10 are meant to be absolute in 'px'
+  @if unitless($value) and ($value > 10) {
+    @return $value / strip-unit($base);
   }
 
   @return $value;

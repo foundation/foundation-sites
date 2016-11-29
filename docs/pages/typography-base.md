@@ -49,18 +49,74 @@ Foundation includes styles for all headings&mdash;they're balanced and sized alo
 
 ---
 
-### Header Sizes
+### Header Styles
 
-The framework includes two typographic scales&mdash;one uses a narrow range of sizes for small- and medium-sized screens, and the other uses a wider range of sizes for large-sized screens. You can change these scales, or add new ones for other breakpoints, by editing the `$header-sizes` map in your project's <a href="sass.html#the-settings-file">Settings File</a>.
+The framework includes two typographic scales&mdash;one uses a narrow range of sizes for small-sized screens, and the other uses a wider range of sizes for medium- and larger-sized screens. You can change these scales, or add new ones for other breakpoints, by editing the `$header-styles` map in your project's <a href="sass.html#the-settings-file">Settings File</a>.
 
-Header  | Default | Large and up
---------|---------|-------------
+Header  | Default | Medium and up
+--------|---------|--------------
 `<h1>`  | 24px    | 48px
 `<h2>`  | 20px    | 40px
 `<h3>`  | 19px    | 31px
 `<h4>`  | 18px    | 25px
 `<h5>`  | 17px    | 20px
 `<h6>`  | 16px    | 16px
+
+If you want to go beyond setting just the header font-sizes you can also do this in your <a href="sass.html#the-settings-file">Settings File</a>.
+
+In its most complete form the `$header-styles` map looks like this:
+
+```
+$header-styles: (
+  'small': (
+    'h1': ('font-size': 24, 'line-height': $header-lineheight, 'margin-top': 0, 'margin-bottom': $header-margin-bottom), 
+    'h2': ('font-size': 20, 'line-height': $header-lineheight, 'margin-top': 0, 'margin-bottom': $header-margin-bottom),
+    'h3': ('font-size': 19, 'line-height': $header-lineheight, 'margin-top': 0, 'margin-bottom': $header-margin-bottom),
+    'h4': ('font-size': 18, 'line-height': $header-lineheight, 'margin-top': 0, 'margin-bottom': $header-margin-bottom),
+    'h5': ('font-size': 17, 'line-height': $header-lineheight, 'margin-top': 0, 'margin-bottom': $header-margin-bottom),
+    'h6': ('font-size': 16, 'line-height': $header-lineheight, 'margin-top': 0, 'margin-bottom': $header-margin-bottom)
+  ),
+  'medium': (
+    'h1': ('font-size': 48, 'line-height': $header-lineheight, 'margin-top': 0, 'margin-bottom': $header-margin-bottom),
+    'h2': ('font-size': 40, 'line-height': $header-lineheight, 'margin-top': 0, 'margin-bottom': $header-margin-bottom),
+    'h3': ('font-size': 31, 'line-height': $header-lineheight, 'margin-top': 0, 'margin-bottom': $header-margin-bottom),
+    'h4': ('font-size': 25, 'line-height': $header-lineheight, 'margin-top': 0, 'margin-bottom': $header-margin-bottom),
+    'h5': ('font-size': 20, 'line-height': $header-lineheight, 'margin-top': 0, 'margin-bottom': $header-margin-bottom),
+    'h6': ('font-size': 16, 'line-height': $header-lineheight, 'margin-top': 0, 'margin-bottom': $header-margin-bottom)
+  ),
+  ...
+);
+```
+
+Because this is a little bit lengthy we have also introduced a short form, that you can use alternatively:
+
+```
+$header-styles: (
+  'small': (
+    'h1': ('fs': 24, 'lh': $header-lineheight, 'mt': 0, 'mb': $header-margin-bottom), 
+    'h2': ('fs': 20, 'lh': $header-lineheight, 'mt': 0, 'mb': $header-margin-bottom),
+    'h3': ('fs': 19, 'lh': $header-lineheight, 'mt': 0, 'mb': $header-margin-bottom),
+    'h4': ('fs': 18, 'lh': $header-lineheight, 'mt': 0, 'mb': $header-margin-bottom),
+    'h5': ('fs': 17, 'lh': $header-lineheight, 'mt': 0, 'mb': $header-margin-bottom),
+    'h6': ('fs': 16, 'lh': $header-lineheight, 'mt': 0, 'mb': $header-margin-bottom)
+  ),
+  'medium': (
+    'h1': ('fs': 48, 'lh': $header-lineheight, 'mt': 0, 'mb': $header-margin-bottom),
+    'h2': ('fs': 40, 'lh': $header-lineheight, 'mt': 0, 'mb': $header-margin-bottom),
+    'h3': ('fs': 31, 'lh': $header-lineheight, 'mt': 0, 'mb': $header-margin-bottom),
+    'h4': ('fs': 25, 'lh': $header-lineheight, 'mt': 0, 'mb': $header-margin-bottom),
+    'h5': ('fs': 20, 'lh': $header-lineheight, 'mt': 0, 'mb': $header-margin-bottom),
+    'h6': ('fs': 16, 'lh': $header-lineheight, 'mt': 0, 'mb': $header-margin-bottom)
+  ),
+  ...
+);
+```
+
+The values for `'font-size'`/`'fs'`, `'margin-top'`/`'mt'` and `'margin-bottom'`/`'mb'` are transformed into 'rem's. You can use any unit, but if you don't, we assume that you mean 'px'. If you do not set the keys `'font-size'`/`'fs'` defaults to `1rem`, `'margin-top'`/`'mt'` to `0` and `'margin-bottom'`/`'mb'` to `$header-margin-bottom` for size `'small'`. Thereafter the values for a larger size are inherited from the values of the smaller size.
+
+The value for `'line-height'`/`'lh'` is transformed into a unitless number, that expresses the line-height relative to the fonts-size. You can also input any unit. If you don't, we assume that for numbers smaller than or equal to 10, you mean a typical relative line-height. However, if you put in anything larger than 10, we assume you mean 'px', since we have not yet seen relative line-heights that were larger than 10. If you do not set `'line-height'`/`'lh'` it defaults to `$header-lineheight` for size `'small'`. Thereafter the value for a larger size is inherited from the values of the smaller size.
+
+Warning. The `$header-styles` map has replaced `$header-sizes` map in version 6.3. `$header-styles` map is a more general map than `$header-sizes`. `$header-sizes` map is still working and is used to initialize the `$header-styles` map. In a future version `$header-sizes` is going to be depreciated.
 
 ---
 
@@ -260,3 +316,7 @@ Foundation includes print styles developed by HTML5 Boilerplate to give you some
 - Page cleanup and window minimization
 
 On top of that, Foundation includes a couple of simple classes you can use to control elements printing, or not printing. Simply attach `.show-for-print` to an element to only show when printing, and `.hide-for-print` to hide something when printing.
+
+<div class="callout primary">
+  <p>Print styles use `!important` to ensure they aren't overriden by more specific selectors. This framework conscientiously avoids using `!important` declarations. This is one of the few components that does.</p>
++</div>
