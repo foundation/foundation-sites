@@ -36,7 +36,12 @@ $(document).on('click.zf.trigger', '[data-close]', function() {
 
 // Elements with [data-toggle] will toggle a plugin that supports it when clicked.
 $(document).on('click.zf.trigger', '[data-toggle]', function() {
-  triggers($(this), 'toggle');
+  let id = $(this).data('toggle');
+  if (id) {
+    triggers($(this), 'toggle');
+  } else {
+    $(this).trigger('toggle.zf.trigger');
+  }
 });
 
 // Elements with [data-closable] will respond to close.zf.trigger events.
