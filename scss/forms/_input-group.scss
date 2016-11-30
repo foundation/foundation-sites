@@ -92,6 +92,7 @@ $input-prefix-padding: 1rem !default;
     @if $global-flexbox {
       flex: 1 1 0px; // sass-lint:disable-line zero-unit
       height: auto;
+      min-width: 0;
     }
     @else {
       height: $height;
