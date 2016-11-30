@@ -95,9 +95,9 @@
 /// @param {Number|Keyword} $margin [auto]
 ///   The bottom margin on block grid columns, accepts multiple values:
 ///   - A single value will make the margin that exact size.
-///   - A breakpoint name will make the margin the corresponding size in the $gutters map.
-///   - "auto" will make the margin responsive, using the $gutters map values.
-/// @param {Number|Map} $margins [$grid-column-gutter] - Gutter map or single value to use. Responsive gutter settings by default.
+///   - A breakpoint name will make the margin the corresponding size in the $margins map.
+///   - "auto" will make the margin responsive, using the $margins map values.
+/// @param {Number|Map} $margins [$grid-column-gutter] - Map or single value to use. Responsive gutter settings by default.
 @mixin block-grid-column (
   $margin: auto,
   $margins: $grid-column-gutter
