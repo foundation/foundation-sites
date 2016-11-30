@@ -209,7 +209,6 @@ class Sticky {
     css[mrgn] = `${this.options[mrgn]}em`;
     css[stickTo] = 0;
     css[notStuckTo] = 'auto';
-    css['left'] = this.$container.offset().left + parseInt(window.getComputedStyle(this.$container[0])["padding-left"], 10);
     this.isStuck = true;
     this.$element.removeClass(`is-anchored is-at-${notStuckTo}`)
                  .addClass(`is-stuck is-at-${stickTo}`)
@@ -251,7 +250,6 @@ class Sticky {
       css['top'] = anchorPt;
     }
 
-    css['left'] = '';
     this.isStuck = false;
     this.$element.removeClass(`is-stuck is-at-${stickTo}`)
                  .addClass(`is-anchored is-at-${topOrBottom}`)
@@ -301,9 +299,7 @@ class Sticky {
     });
     this.elemHeight = newContainerHeight;
 
-    if (this.isStuck) {
-      this.$element.css({"left":this.$container.offset().left + parseInt(comp['padding-left'], 10)});
-    } else {
+    if (!this.isStuck) {
       if (this.$element.hasClass('is-at-bottom')) {
         var anchorPt = (this.points ? this.points[1] - this.$container.offset().top : this.anchorHeight) - this.elemHeight;
         this.$element.css('top', anchorPt);
