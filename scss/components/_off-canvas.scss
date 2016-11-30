@@ -24,7 +24,7 @@ $offcanvas-shadow: 0 0 10px rgba($black, 0.7) !default;
 
 /// If `true`, an off-canvas panel will be fixed-position, and scroll with the screen. Otherwise it will be absolute positioned.
 /// @type Bool
-$offcanvas-fixed: true !default;
+$offcanvas-fixed: false !default;
 
 /// Z-index of an off-canvas panel with the `push` transition.
 /// @type Number
@@ -284,6 +284,11 @@ $content: $maincontent-class
   // Off-canvas container
   .off-canvas {
     @include off-canvas-base;
+  }
+
+  // Off-canvas container with fixed position
+  .off-canvas-fixed {
+    @include off-canvas-base($fixed: true);
   }
 
   // Off-canvas position classes
