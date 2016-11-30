@@ -58,7 +58,12 @@ class Sticky {
       }
 
       _this._setSizes(function(){
-        _this._calc(false);
+        var scroll = window.pageYOffset;
+        _this._calc(false, scroll);
+        //Unstick the element will ensure that proper classes are set.
+        if (!_this.isStuck) {
+          _this._removeSticky((scroll >= _this.topPoint) ? false : true);
+        }
       });
       _this._events(id.split('-').reverse().join('-'));
     });
