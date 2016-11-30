@@ -4,21 +4,14 @@
 
 const Nest = {
   Feather(menu, type = 'zf') {
+    menu.attr('role', 'menubar');
 
-    if( type !== 'accordion'){
-      menu.attr('role', 'menubar');
-      menu.find('a:first').attr('tabindex', 0);
-    } else {
-      menu.find('li:first').attr('tabindex', 0);
-    }
-
-    var roleType = (type === 'accordion') ? 'treeitem' : 'menuitem',
-        elementType = (type === 'accordion') ? 'span' : 'a',
-        items = menu.find('li').attr({'role': roleType}),
+    var items = menu.find('li').attr({'role': 'menuitem'}),
         subMenuClass = `is-${type}-submenu`,
         subItemClass = `${subMenuClass}-item`,
-        hasSubClass = `is-${type}-submenu-parent`,
-        noSubClass = `is-${type}-submenu-none`;
+        hasSubClass = `is-${type}-submenu-parent`;
+
+    menu.find('a:first').attr('tabindex', 0);
 
     items.each(function() {
       var $item = $(this),
@@ -30,7 +23,7 @@ const Nest = {
           .attr({
             'aria-haspopup': true,
             'aria-expanded': false,
-            'aria-label': $item.children(elementType + ':first').text()
+            'aria-label': $item.children('a:first').text()
           });
 
         $sub
@@ -40,12 +33,6 @@ const Nest = {
             'aria-hidden': true,
             'role': 'menu'
           });
-      } else {
-        $item.addClass(noSubClass).find('a').attr('tabindex',-1);
-        var text = $item.addClass(noSubClass).find('a').text();
-        if( $item.find('a').length > 0 ){
-          $item.attr('aria-label',text + ' link');
-        }
       }
 
       if ($item.parent('[data-submenu]').length) {

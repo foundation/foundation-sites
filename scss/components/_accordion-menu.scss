@@ -11,24 +11,9 @@ $accordionmenu-arrows: true !default;
 $accordionmenu-arrow-color: $primary-color !default;
 
 @mixin foundation-accordion-menu {
-  .tree {
-    .is-accordion-submenu-none > a {
-      padding: 0;
-      line-height: $list-lineheight;
-    }
-
-  }
-
   @if $accordionmenu-arrows {
-    .is-accordion-submenu-parent > span {
+    .is-accordion-submenu-parent > a {
       position: relative;
-      display: block;
-      color: $anchor-color;
-      cursor: pointer;
-
-      &:hover {
-        color: $anchor-color-hover;
-      }
 
       &::after {
         @include css-triangle(6px, $accordionmenu-arrow-color, down);
@@ -37,13 +22,12 @@ $accordionmenu-arrow-color: $primary-color !default;
         right: 1rem;
         #{$global-right}: -4px;
       }
-
     }
 
-    .is-accordion-submenu-parent[aria-expanded='true'] > span::after {
+    .is-accordion-submenu-parent[aria-expanded='true'] > a::after {
+      transform-origin: 50% 50%;
       transform: scaleY(-1);
       transform-origin: 50% 50%;
     }
-
   }
 }
