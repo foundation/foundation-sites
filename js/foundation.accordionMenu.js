@@ -45,6 +45,8 @@ class AccordionMenu {
    * @private
    */
   _init() {
+    var _this = this;
+
     this.$element.find('[data-submenu]').not('.is-active').slideUp(0);//.find('a').css('padding-left', '1rem');
     this.$element.attr({
       'role': 'menu',
@@ -58,12 +60,19 @@ class AccordionMenu {
           $sub = $elem.children('[data-submenu]'),
           subId = $sub[0].id || Foundation.GetYoDigits(6, 'acc-menu'),
           isActive = $sub.hasClass('is-active');
-      $elem.attr({
-        'aria-controls': subId,
-        'aria-expanded': isActive,
-        'role': 'menuitem',
-        'id': linkId
-      });
+
+
+      if(_this.options.submenuToggle) {
+        $elem.addClass('has-submenu-toggle');
+        $elem.children('a').after('<button id="' + linkId + '" class="submenu-toggle" aria-controls="' + subId + '" aria-expanded="' + isActive + '"><span class="submenu-toggle-text">' + _this.options.submenuToggleText + '</span></button>');
+      } else {
+        $elem.attr({
+          'aria-controls': subId,
+          'aria-expanded': isActive,
+          'role': 'menuitem',
+          'id': linkId
+        });
+      }
       $sub.attr({
         'aria-labelledby': linkId,
         'aria-hidden': !isActive,
@@ -93,8 +102,6 @@ class AccordionMenu {
 
       if ($submenu.length) {
         if(_this.options.submenuToggle) {
-          $(this).addClass('has-submenu-toggle');
-          $(this).children('a').after('<button class="submenu-toggle" aria-expanded="false"><span class="submenu-toggle-text">' + _this.options.submenuToggleText + '</span></button>');
           $(this).children('.submenu-toggle').off('click.zf.accordionMenu').on('click.zf.accordionMenu', function(e) {
             _this.toggle($submenu);
           });

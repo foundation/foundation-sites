@@ -9,7 +9,8 @@ const Nest = {
     var items = menu.find('li').attr({'role': 'menuitem'}),
         subMenuClass = `is-${type}-submenu`,
         subItemClass = `${subMenuClass}-item`,
-        hasSubClass = `is-${type}-submenu-parent`;
+        hasSubClass = `is-${type}-submenu-parent`,
+        applyAria = (type !== 'accordion'); // Accordions handle their own ARIA attriutes.
 
     menu.find('a:first').attr('tabindex', 0);
 
@@ -18,21 +19,20 @@ const Nest = {
           $sub = $item.children('ul');
 
       if ($sub.length) {
-        $item
-          .addClass(hasSubClass)
-          .attr({
+        $item.addClass(hasSubClass);
+        $sub.addClass(`submenu ${subMenuClass}`).attr({'data-submenu': ''});
+        if(applyAria) {
+          $item.attr({
             'aria-haspopup': true,
             'aria-expanded': false,
             'aria-label': $item.children('a:first').text()
           });
 
-        $sub
-          .addClass(`submenu ${subMenuClass}`)
-          .attr({
-            'data-submenu': '',
+          $sub.attr({
             'aria-hidden': true,
             'role': 'menu'
           });
+        }
       }
 
       if ($item.parent('[data-submenu]').length) {
