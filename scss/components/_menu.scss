@@ -44,10 +44,10 @@ $menu-border: $light-gray !default;
   list-style-type: none;
 
   @if $global-flexbox {
-    width: 100%;
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
+    width: 100%;
   }
 
   // List items are table cell to allow for vertical alignment
@@ -70,7 +70,6 @@ $menu-border: $light-gray !default;
     line-height: 1;
   }
 
-
   // Reset styles of inner elements
   input,
   select,
@@ -83,14 +82,13 @@ $menu-border: $light-gray !default;
 /// Expands the items of a Menu, so each item is the same width.
 @mixin menu-expand {
   @if $global-flexbox {
-    // scss-lint:disable ZeroUnit
     > li {
-      flex: 1 1 0px;
+      flex: 1 1 0px; // sass-lint:disable-line zero-unit
     }
   }
   @else {
-    width: 100%;
     display: table;
+    width: 100%;
     table-layout: fixed;
   }
 }
@@ -122,8 +120,8 @@ $menu-border: $light-gray !default;
       }
 
       > li  > a {
-        align-items: flex-start;
         justify-content: flex-start;
+        align-items: flex-start;
       }
     }
     @else {
@@ -140,9 +138,9 @@ $menu-border: $light-gray !default;
 /// Creates a simple Menu, which has no padding or hover state.
 @mixin menu-simple {
   li {
-    line-height: 1;
     display: inline-block;
     margin-#{$global-right}: get-side($menu-item-padding, $global-right);
+    line-height: 1;
   }
 
   a {
@@ -216,8 +214,8 @@ $menu-border: $light-gray !default;
         }
         @else {
           align-self: stretch;
-          text-align: center;
           margin-bottom: $menu-icon-spacing;
+          text-align: center;
         }
       }
     }
@@ -225,16 +223,17 @@ $menu-border: $light-gray !default;
 }
 
 @mixin menu-text {
-  font-weight: bold;
-  color: inherit;
-  line-height: 1;
   padding-top: 0;
   padding-bottom: 0;
   padding: $menu-item-padding;
+
+  font-weight: bold;
+  line-height: 1;
+  color: inherit;
 }
 
 @mixin foundation-menu {
-  .menu, .tree {
+  .menu {
     @include menu-base;
     @include menu-icons;
 
@@ -305,8 +304,8 @@ $menu-border: $light-gray !default;
 
     // Active state
     .active > a {
-      color: $menu-item-color-active;
       background: $menu-item-background-active;
+      color: $menu-item-color-active;
     }
 
     // Menu with border

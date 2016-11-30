@@ -258,9 +258,10 @@ $abbr-underline: 1px dotted $black !default;
 
   // Paragraphs
   p {
+    margin-bottom: $paragraph-margin-bottom;
+
     font-size: inherit;
     line-height: $paragraph-lineheight;
-    margin-bottom: $paragraph-margin-bottom;
     text-rendering: $paragraph-text-rendering;
   }
 
@@ -291,18 +292,19 @@ $abbr-underline: 1px dotted $black !default;
   h4,
   h5,
   h6 {
-    font-family: $header-font-family;
-    font-weight: $header-font-weight;
-    font-style: $header-font-style;
-    color: $header-color;
-    text-rendering: $header-text-rendering;
     margin-top: 0;
     margin-bottom: $header-margin-bottom;
+
+    font-family: $header-font-family;
+    font-style: $header-font-style;
+    font-weight: $header-font-weight;
     line-height: $header-lineheight;
+    color: $header-color;
+    text-rendering: $header-text-rendering;
 
     small {
-      color: $header-small-font-color;
       line-height: 0;
+      color: $header-small-font-color;
     }
   }
 
@@ -319,9 +321,10 @@ $abbr-underline: 1px dotted $black !default;
 
   // Links
   a {
+    line-height: inherit;
     color: $anchor-color;
     text-decoration: $anchor-text-decoration;
-    line-height: inherit;
+
     cursor: pointer;
 
     &:hover,
@@ -339,23 +342,25 @@ $abbr-underline: 1px dotted $black !default;
 
   // Horizontal rule
   hr {
+    clear: both;
+
     max-width: $hr-width;
     height: 0;
-    border-right: 0;
+    margin: $hr-margin;
+
     border-top: 0;
+    border-right: 0;
     border-bottom: $hr-border;
     border-left: 0;
-    margin: $hr-margin;
-    clear: both;
   }
 
   // Lists
   ul,
   ol,
   dl {
-    line-height: $list-lineheight;
     margin-bottom: $list-margin-bottom;
     list-style-position: $list-style-position;
+    line-height: $list-lineheight;
   }
 
   // List items
@@ -365,8 +370,8 @@ $abbr-underline: 1px dotted $black !default;
 
   // Unordered lists
   ul {
-    list-style-type: $list-style-type;
     margin-#{$global-left}: $list-side-margin;
+    list-style-type: $list-style-type;
   }
 
   // Ordered lists
@@ -417,28 +422,37 @@ $abbr-underline: 1px dotted $black !default;
 
   // Abbreviations
   abbr {
+    border-bottom: $abbr-underline;
     color: $body-font-color;
     cursor: help;
-    border-bottom: $abbr-underline;
   }
 
+  // Figures
+  figure {
+    margin: 0;
+  }
+  
   // Code
   code {
+    padding: $code-padding;
+
+    border: $code-border;
+    background-color: $code-background;
+
     font-family: $code-font-family;
     font-weight: $code-font-weight;
     color: $code-color;
-    background-color: $code-background;
-    border: $code-border;
-    padding: $code-padding;
   }
 
   // Keystrokes
   kbd {
-    padding: $keystroke-padding;
     margin: 0;
+    padding: $keystroke-padding;
+
     background-color: $keystroke-background;
-    color: $keystroke-color;
+
     font-family: $keystroke-font;
+    color: $keystroke-color;
 
     @if has-value($keystroke-radius) {
       border-radius: $keystroke-radius;

@@ -145,7 +145,6 @@ $maincontent-class: 'off-canvas-content' !default;
   @if $position == left {
     top: 0;
     left: 0;
-
     width: $size;
     height: 100%;
 
@@ -160,7 +159,6 @@ $maincontent-class: 'off-canvas-content' !default;
   @else if $position == right {
     top: 0;
     right: 0;
-
     width: $size;
     height: 100%;
 

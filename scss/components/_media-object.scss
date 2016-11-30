@@ -20,8 +20,8 @@ $mediaobject-image-width-stacked: 100% !default;
 
 /// Adds styles for a media object container.
 @mixin media-object-container {
-  margin-bottom: $mediaobject-margin-bottom;
   display: if($global-flexbox, flex, block);
+  margin-bottom: $mediaobject-margin-bottom;
 
   @if $global-flexbox {
     flex-wrap: nowrap;
@@ -97,9 +97,8 @@ $mediaobject-image-width-stacked: 100% !default;
     @include media-object-section;
 
     @if $global-flexbox {
-      // scss-lint:disable ZeroUnit
       &.main-section {
-        flex: 1 1 0px;
+        flex: 1 1 0px; // sass-lint:disable-line zero-unit
       }
     }
     @else {

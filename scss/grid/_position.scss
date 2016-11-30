@@ -21,8 +21,8 @@
       float: none;
       clear: both;
     }
-    margin-left: auto;
     margin-right: auto;
+    margin-left: auto;
   }
   @else {
     @warn 'Wrong syntax for grid-column-position(). Enter a positive or negative number, or center.';
@@ -32,9 +32,9 @@
 /// Reset a position definition.
 @mixin grid-column-unposition {
   position: static;
-  margin-left: 0;
-  margin-right: 0;
   float: left;
+  margin-right: 0;
+  margin-left: 0;
 }
 
 /// Offsets a column to the right by `$n` columns.

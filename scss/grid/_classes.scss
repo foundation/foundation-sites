@@ -39,8 +39,8 @@
       @include grid-row-nest($grid-column-gutter);
 
       &.#{$collapse} {
-        margin-left: 0;
         margin-right: 0;
+        margin-left: 0;
       }
     }
 
@@ -49,8 +49,8 @@
       @include grid-row-size(expand);
 
       .#{$row} {
-        margin-left: auto;
         margin-right: auto;
+        margin-left: auto;
       }
     }
 
@@ -83,10 +83,10 @@
 
   // To properly nest a column row, padding and margin is removed
   .#{$row} .#{$column}.#{$row}.#{$row} {
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: 0;
     margin-right: 0;
+    margin-left: 0;
+    padding-right: 0;
+    padding-left: 0;
   }
 
   @include -zf-each-breakpoint {
@@ -118,7 +118,7 @@
     // Block grid
     @for $i from 1 through $block-grid-max {
       .#{$-zf-size}-up-#{$i} {
-        @include grid-layout($i, ".#{$column}");
+        @include grid-layout($i, '.#{$column}');
       }
     }
 
@@ -127,14 +127,14 @@
       > .#{$column} { @include grid-col-collapse; }
 
       .#{$row} {
-        margin-left: 0;
         margin-right: 0;
+        margin-left: 0;
       }
     }
 
     .#{$expanded}.#{$row} .#{$-zf-size}-#{$collapse}.#{$row} {
-      margin-left: 0;
       margin-right: 0;
+      margin-left: 0;
     }
 
     .#{$-zf-size}-#{$uncollapse} {
@@ -156,7 +156,7 @@
 
   @if $column == 'column' {
     .columns {
-      // scss-lint:disable PlaceholderInExtend
+      // sass-lint:disable-block placeholder-in-extend
       @extend .column;
     }
   }

@@ -7,10 +7,7 @@ var babel = require('gulp-babel');
 var onBabelError = require('./babel-error.js');
 var rimraf = require('rimraf').sync;
 
-var JSTESTS = [
-  'test/javascript/components/**/*.js',
-  'test/javascript/util/**/*.js'
-];
+var CONFIG = require('../config.js');
 
 // Runs unit tests
 gulp.task('test', ['sass:foundation', 'test:transpile-js', 'watch'], function() {
@@ -35,7 +32,7 @@ gulp.task('test:reload', function(done) {
 gulp.task('test:transpile-js', ['javascript:foundation', 'javascript:deps'], function() {
   rimraf('test/javascript/js-tests.js');
   
-  return gulp.src(JSTESTS)
+  return gulp.src(CONFIG.TEST_JS_FILES)
   	.pipe(babel()
   		.on('error', onBabelError))
   	.pipe(concat('js-tests.js'))

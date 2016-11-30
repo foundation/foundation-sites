@@ -89,10 +89,9 @@ $buttongroup-radius-on-each: true !default;
     }
   }
 
-  // scss-lint:disable ZeroUnit
   #{$selector} {
     @if $global-flexbox {
-      flex: 1 1 0px;
+      flex: 1 1 0px; // sass-lint:disable-line zero-unit
     }
     @else {
       @for $i from 2 through $buttongroup-expand-max {
@@ -157,10 +156,9 @@ $buttongroup-radius-on-each: true !default;
 @mixin button-group-unstack(
   $selector: $buttongroup-child-selector
 ) {
-  // scss-lint:disable ZeroUnit
   #{$selector} {
     @if $global-flexbox {
-      flex: 1 1 0px;
+      flex: 1 1 0px; // sass-lint:disable-line zero-unit
     }
     @else {
       width: auto;
@@ -231,8 +229,7 @@ $buttongroup-radius-on-each: true !default;
       }
     }
 
-    // scss-lint:disable MergeableSelector
-    &.stacked-for-small.expanded {
+    &.stacked-for-small.expanded { // sass-lint:disable-line force-element-nesting
       @include breakpoint(small only) {
         display: block;
 

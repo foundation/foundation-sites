@@ -3,17 +3,13 @@ var plumber = require('gulp-plumber');
 var sassLint = require('gulp-sass-lint');
 var eslint = require('gulp-eslint');
 
-var PATHS = [
-  'scss/**/*.scss',
-  '!scss/vendor/**/*.scss',
-  '!scss/components_old/**/*.scss'
-];
+var CONFIG = require('../config.js');
 
 // Lints Sass and JavaScript files for formatting issues
 gulp.task('lint', ['lint:sass', 'lint:javascript']);
 
 gulp.task('lint:sass', function() {
-  return gulp.src(PATHS)
+  return gulp.src(CONFIG.SASS_LINT_FILES)
     .pipe(plumber())
     .pipe(sassLint({
       config: './.sass-lint.yml'
@@ -23,7 +19,7 @@ gulp.task('lint:sass', function() {
 });
 
 gulp.task('lint:javascript', function () {
-    return gulp.src(['js/*.js'])
+    return gulp.src([CONFIG.JS_FILES])
         .pipe(eslint({
         	useEslintrc: true,
         	configFile: '.eslintrc'

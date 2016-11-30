@@ -53,11 +53,12 @@ Give a button additional meaning by adding a coloring class, or `.disabled` to c
 </div>
 
 ```html_example
-<a class="secondary button" href="#">Secondary Color</a>
-<a class="success button" href="#">Success Color</a>
-<a class="alert button" href="#">Alert Color</a>
-<a class="warning button" href="#">Warning Color</a>
-<a class="disabled button" href="#">Disabled Button</a>
+<a class="button" href="#">Primary</a>
+<a class="secondary button" href="#">Secondary</a>
+<a class="success button" href="#">Success</a>
+<a class="alert button" href="#">Alert</a>
+<a class="warning button" href="#">Warning</a>
+<a class="disabled button" href="#">Disabled</a>
 ```
 
 ---
