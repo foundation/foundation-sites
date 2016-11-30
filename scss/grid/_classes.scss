@@ -21,7 +21,8 @@
   $uncollapse: 'uncollapse',
   $offset: 'offset',
   $end: 'end',
-  $expanded: 'expanded'
+  $expanded: 'expanded',
+  $block: 'block'
 ) {
   // Row
   .#{$row} {
@@ -152,6 +153,11 @@
     .#{$-zf-size}-#{$pull}-0 {
       @include grid-col-unpos;
     }
+  }
+
+  // Block grid columns
+  .#{$column}-#{$block} {
+    @include grid-column-margin;
   }
 
   @if $column == 'column' {

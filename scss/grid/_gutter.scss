@@ -91,3 +91,37 @@
   @warn 'This mixin is being replaced by grid-col-gutter(). grid-col-uncollapse() will be removed in Foundation 6.4.';
   @include grid-column-uncollapse($gutter);
 }
+
+/// Sets bottom marin on grid columns to match gutters
+/// @param {Number|Keyword} $margin [auto]
+///   The bottom margin on grid columns, accepts multiple values:
+///   - A single value will make the margin that exact size.
+///   - A breakpoint name will make the margin the corresponding size in the $margins map.
+///   - "auto" will make the margin responsive, using the $margins map values.
+/// @param {Number|Map} $margins [$grid-column-gutter] - Map or single value to use. Responsive gutter settings by default.
+@mixin grid-column-margin (
+  $margin: auto,
+  $margins: $grid-column-gutter
+) {
+  @if $margin == auto and type-of($margins) == 'map' {
+    // "auto"
+    @each $breakpoint, $value in $margins {
+      @include breakpoint($breakpoint) {
+        @include grid-column-margin($value);
+      }
+    }
+  } @else {
+    // breakpoint name
+    @if type-of($margin) == 'string' {
+      $margin: grid-column-gutter($margin, $margins);
+    }
+
+    // single value
+    $margin-bottom: rem-calc($margin);
+    margin-bottom: $margin-bottom;
+    
+    > :last-child {
+      margin-bottom: 0;
+    }
+  }
+}
