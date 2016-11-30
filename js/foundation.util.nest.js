@@ -50,7 +50,7 @@ const Nest = {
         hasSubClass = `is-${type}-submenu-parent`;
 
     menu
-      .find('*')
+      .find('>li, .menu, .menu > li')
       .removeClass(`${subMenuClass} ${subItemClass} ${hasSubClass} is-submenu-item submenu is-active`)
       .removeAttr('data-submenu').css('display', '');
 

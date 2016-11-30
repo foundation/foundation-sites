@@ -52,30 +52,16 @@
 /// Creates a grid column.
 ///
 /// @param {Mixed} $columns [$grid-column-count] - Width of the column. Refer to the `grid-column()` function to see possible values.
-/// @param {Number} $gutter [$grid-column-gutter] - Spacing between columns.
+/// @param {Mixed} $gutters [$grid-column-gutter] - Spacing between columns. Refer to the `grid-column-gutter()` function to see possible values.
 @mixin grid-column(
   $columns: $grid-column-count,
-  $gutter: $grid-column-gutter
+  $gutters: $grid-column-gutter
 ) {
   @include grid-column-size($columns);
   float: $global-left;
 
   // Gutters
-  @if type-of($gutter) == 'map' {
-    @each $breakpoint, $value in $gutter {
-      $padding: rem-calc($value) / 2;
-
-      @include breakpoint($breakpoint) {
-        padding-left: $padding;
-        padding-right: $padding;
-      }
-    }
-  }
-  @else if type-of($gutter) == 'number' and strip-unit($gutter) > 0 {
-    $padding: rem-calc($gutter) / 2;
-    padding-left: $padding;
-    padding-right: $padding;
-  }
+  @include grid-column-gutter($gutters: $gutters);
 
   // Last column alignment
   @if $grid-column-align-edge {
@@ -87,12 +73,12 @@
 
 /// Creates a grid column row. This is the equivalent of adding `.row` and `.column` to the same element.
 ///
-/// @param {Number} $gutter [$grid-column-gutter] - Width of the gutters on either side of the column row.
+/// @param {Mixed} $gutters [$grid-column-gutter] - Width of the gutters on either side of the column row. Refer to the `grid-column-gutter()` function to see possible values.
 @mixin grid-column-row(
-  $gutter: $grid-column-gutter
+  $gutters: $grid-column-gutter
 ) {
   @include grid-row;
-  @include grid-column($gutter: $gutter);
+  @include grid-column($gutters: $gutters);
 
   &,
   &:last-child {
@@ -112,15 +98,15 @@
 /// @alias grid-column
 @mixin grid-col(
   $columns: $grid-column-count,
-  $gutter: $grid-column-gutter
+  $gutters: $grid-column-gutter
 ) {
-  @include grid-column($columns, $gutter);
+  @include grid-column($columns, $gutters);
 }
 
 /// Shorthand for `grid-column-row()`.
 /// @alias grid-column-row
 @mixin grid-col-row(
-  $gutter: $grid-column-gutter
+  $gutters: $grid-column-gutter
 ) {
-  @include grid-column-row($gutter);
+  @include grid-column-row($gutters);
 }

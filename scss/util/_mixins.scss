@@ -16,31 +16,33 @@
   $triangle-color,
   $triangle-direction
 ) {
-  content: '';
   display: block;
   width: 0;
   height: 0;
+
   border: inset $triangle-size;
 
+  content: '';
+
   @if ($triangle-direction == down) {
-    border-color: $triangle-color transparent transparent;
-    border-top-style: solid;
     border-bottom-width: 0;
+    border-top-style: solid;
+    border-color: $triangle-color transparent transparent;
   }
   @if ($triangle-direction == up) {
-    border-color: transparent transparent $triangle-color;
-    border-bottom-style: solid;
     border-top-width: 0;
+    border-bottom-style: solid;
+    border-color: transparent transparent $triangle-color;
   }
   @if ($triangle-direction == right) {
-    border-color: transparent transparent transparent $triangle-color;
-    border-left-style: solid;
     border-right-width: 0;
+    border-left-style: solid;
+    border-color: transparent transparent transparent $triangle-color;
   }
   @if ($triangle-direction == left) {
-    border-color: transparent $triangle-color transparent transparent;
-    border-right-style: solid;
     border-left-width: 0;
+    border-right-style: solid;
+    border-color: transparent $triangle-color transparent transparent;
   }
 }
 
@@ -65,33 +67,39 @@
   $hover-shadow: ();
 
   // Spacing between bars is calculated based on the total height of the icon and the weight of each bar
-  $spacing: floor(($height - ($weight * $bars)) / ($bars - 1));
+  $spacing: ($height - ($weight * $bars)) / ($bars - 1);
+
+  @if unit($spacing) == 'px' {
+    $spacing: floor($spacing);
+  }
 
   // Icon container
   position: relative;
   display: inline-block;
   vertical-align: middle;
-  cursor: pointer;
   width: $width;
   height: $height;
+  cursor: pointer;
 
   // Icon bars
   &::after {
-    content: '';
     position: absolute;
+    top: 0;
+    left: 0;
+
     display: block;
     width: 100%;
     height: $weight;
+
     background: $color;
-    top: 0;
-    left: 0;
+    box-shadow: $shadow;
+
+    content: '';
 
     @for $i from 2 through $bars {
       $offset: ($weight + $spacing) * ($i - 1);
       $shadow: append($shadow, 0 $offset 0 $color, comma);
     }
-
-    box-shadow: $shadow;
   }
 
   // Hover state
@@ -114,7 +122,7 @@
 ///
 /// @param {Color} $color [$black] - Color to use for the triangle.
 @mixin background-triangle($color: $black) {
-  $rgb: 'rgb%28#{red($color)}, #{green($color)}, #{blue($color)}%29';
+  $rgb: 'rgb%28#{round(red($color))}, #{round(green($color))}, #{round(blue($color))}%29';
 
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='32' height='24' viewBox='0 0 32 24'><polygon points='0,0 32,0 16,24' style='fill: #{$rgb}'></polygon></svg>");
 
@@ -137,8 +145,9 @@
 @mixin clearfix {
   &::before,
   &::after {
-    content: ' ';
     display: table;
+    content: ' ';
+
     @if $global-flexbox {
       flex-basis: 0;
       order: 1;
@@ -184,8 +193,8 @@
 /// Reverses the CSS output created by the `element-invisible()` mixin.
 @mixin element-invisible-off {
   position: static !important;
-  height: auto;
   width: auto;
+  height: auto;
   overflow: visible;
   clip: auto;
 }

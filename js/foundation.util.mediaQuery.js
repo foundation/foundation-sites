@@ -63,6 +63,22 @@ var MediaQuery = {
   },
 
   /**
+   * Checks if the screen matches to a breakpoint.
+   * @function
+   * @param {String} size - Name of the breakpoint to check, either 'small only' or 'small'. Omitting 'only' falls back to using atLeast() method.
+   * @returns {Boolean} `true` if the breakpoint matches, `false` if it does not.
+   */
+  is(size) {
+    size = size.trim().split(' ');
+    if(size.length > 1 && size[1] === 'only') {
+      if(size[0] === this._getCurrentSize()) return true;
+    } else {
+      return this.atLeast(size[0]);
+    }
+    return false;
+  },
+
+  /**
    * Gets the media query of a breakpoint.
    * @function
    * @param {String} size - Name of the breakpoint to get.

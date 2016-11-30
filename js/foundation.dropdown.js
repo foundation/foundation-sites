@@ -41,7 +41,7 @@ class Dropdown {
   _init() {
     var $id = this.$element.attr('id');
 
-    this.$anchor = $(`[data-toggle="${$id}"]`) || $(`[data-open="${$id}"]`);
+    this.$anchor = $(`[data-toggle="${$id}"]`).length ? $(`[data-toggle="${$id}"]`) : $(`[data-open="${$id}"]`);
     this.$anchor.attr({
       'aria-controls': $id,
       'data-is-focus': false,
@@ -51,6 +51,11 @@ class Dropdown {
 
     });
 
+    if(this.options.parentClass){
+      this.$parent = this.$element.parents('.' + this.options.parentClass);
+    }else{
+      this.$parent = null;
+    }
     this.options.positionClass = this.getPositionClass();
     this.counter = 4;
     this.usedPositions = [];
@@ -134,11 +139,19 @@ class Dropdown {
         param = (direction === 'top') ? 'height' : 'width',
         offset = (param === 'height') ? this.options.vOffset : this.options.hOffset;
 
+    if(($eleDims.width >= $eleDims.windowDims.width) || (!this.counter && !Foundation.Box.ImNotTouchingYou(this.$element, this.$parent))){
+      var newWidth = $eleDims.windowDims.width,
+          parentHOffset = 0;
+      if(this.$parent){
+        var $parentDims = Foundation.Box.GetDimensions(this.$parent),
+            parentHOffset = $parentDims.offset.left;
+        if ($parentDims.width < newWidth){
+          newWidth = $parentDims.width;
+        }
+      }
 
-
-    if(($eleDims.width >= $eleDims.windowDims.width) || (!this.counter && !Foundation.Box.ImNotTouchingYou(this.$element))){
-      this.$element.offset(Foundation.Box.GetOffsets(this.$element, this.$anchor, 'center bottom', this.options.vOffset, this.options.hOffset, true)).css({
-        'width': $eleDims.windowDims.width - (this.options.hOffset * 2),
+      this.$element.offset(Foundation.Box.GetOffsets(this.$element, this.$anchor, 'center bottom', this.options.vOffset, this.options.hOffset + parentHOffset, true)).css({
+        'width': newWidth - (this.options.hOffset * 2),
         'height': 'auto'
       });
       this.classChanged = true;
@@ -147,7 +160,7 @@ class Dropdown {
 
     this.$element.offset(Foundation.Box.GetOffsets(this.$element, this.$anchor, position, this.options.vOffset, this.options.hOffset));
 
-    while(!Foundation.Box.ImNotTouchingYou(this.$element, false, true) && this.counter){
+    while(!Foundation.Box.ImNotTouchingYou(this.$element, this.$parent, true) && this.counter){
       this._reposition(position);
       this._setPosition();
     }
@@ -169,19 +182,22 @@ class Dropdown {
 
     if(this.options.hover){
       this.$anchor.off('mouseenter.zf.dropdown mouseleave.zf.dropdown')
-          .on('mouseenter.zf.dropdown', function(){
-            clearTimeout(_this.timeout);
-            _this.timeout = setTimeout(function(){
-              _this.open();
-              _this.$anchor.data('hover', true);
-            }, _this.options.hoverDelay);
-          }).on('mouseleave.zf.dropdown', function(){
-            clearTimeout(_this.timeout);
-            _this.timeout = setTimeout(function(){
-              _this.close();
-              _this.$anchor.data('hover', false);
-            }, _this.options.hoverDelay);
-          });
+      .on('mouseenter.zf.dropdown', function(){
+        var bodyData = $('body').data();
+        if(typeof(bodyData.whatinput) === 'undefined' || bodyData.whatinput === 'mouse') {
+          clearTimeout(_this.timeout);
+          _this.timeout = setTimeout(function(){
+            _this.open();
+            _this.$anchor.data('hover', true);
+          }, _this.options.hoverDelay);
+        }
+      }).on('mouseleave.zf.dropdown', function(){
+        clearTimeout(_this.timeout);
+        _this.timeout = setTimeout(function(){
+          _this.close();
+          _this.$anchor.data('hover', false);
+        }, _this.options.hoverDelay);
+      });
       if(this.options.hoverPane){
         this.$element.off('mouseenter.zf.dropdown mouseleave.zf.dropdown')
             .on('mouseenter.zf.dropdown', function(){
@@ -348,6 +364,12 @@ class Dropdown {
 }
 
 Dropdown.defaults = {
+  /**
+   * Class that designates bounding container of Dropdown (Default: window)
+   * @option
+   * @example 'dropdown-parent'
+   */
+  parentClass: null,
   /**
    * Amount of time to delay opening a submenu on hover event.
    * @option

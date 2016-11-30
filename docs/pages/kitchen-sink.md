@@ -134,28 +134,28 @@ description: Everything but.
 ```html_example
 <ul class="vertical menu" data-accordion-menu>
   <li>
-    <a href="#">Item 1</a>
+    <a href="#0">Item 1</a>
     <ul class="menu vertical nested is-active">
       <li>
-        <a href="#">Item 1A</a>
+        <a href="#0">Item 1A</a>
         <ul class="menu vertical nested">
-          <li><a href="#">Item 1Ai</a></li>
-          <li><a href="#">Item 1Aii</a></li>
-          <li><a href="#">Item 1Aiii</a></li>
+          <li><a href="#0">Item 1Ai</a></li>
+          <li><a href="#0">Item 1Aii</a></li>
+          <li><a href="#0">Item 1Aiii</a></li>
         </ul>
       </li>
-      <li><a href="#">Item 1B</a></li>
-      <li><a href="#">Item 1C</a></li>
+      <li><a href="#0">Item 1B</a></li>
+      <li><a href="#0">Item 1C</a></li>
     </ul>
   </li>
   <li>
-    <a href="#">Item 2</a>
+    <a href="#0">Item 2</a>
     <ul class="menu vertical nested">
-      <li><a href="#">Item 2A</a></li>
-      <li><a href="#">Item 2B</a></li>
+      <li><a href="#0">Item 2A</a></li>
+      <li><a href="#0">Item 2B</a></li>
     </ul>
   </li>
-  <li><a href="#">Item 3</a></li>
+  <li><a href="#0">Item 3</a></li>
 </ul>
 ```
 
@@ -177,8 +177,8 @@ description: Everything but.
 ```html_example
 <nav aria-label="You are here:" role="navigation">
   <ul class="breadcrumbs">
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Features</a></li>
+    <li><a href="#0">Home</a></li>
+    <li><a href="#0">Features</a></li>
     <li class="disabled">Gene Splicing</li>
     <li>
       <span class="show-for-sr">Current: </span> Cloning
@@ -193,17 +193,17 @@ description: Everything but.
 
 ```html_example
 <!-- Anchors (links) -->
-<a href="#" class="button">Learn More</a>
+<a href="#0" class="button">Learn More</a>
 <a href="#features" class="button">View All Features</a>
 
 <!-- Buttons (actions) -->
 <button type="button" class="success button">Save</button>
 <button type="button" class="alert button">Delete</button>
 
-<a class="tiny button" href="#">So Tiny</a>
-<a class="small button" href="#">So Small</a>
-<a class="large button" href="#">So Large</a>
-<a class="expanded button" href="#">Such Expand</a>
+<a class="tiny button" href="#0">So Tiny</a>
+<a class="small button" href="#0">So Small</a>
+<a class="large button" href="#0">So Large</a>
+<a class="expanded button" href="#0">Such Expand</a>
 
 <div class="button-group">
   <a class="button">One</a>
@@ -220,31 +220,31 @@ description: Everything but.
 <div class="callout">
   <h5>This is a callout.</h5>
   <p>It has an easy to override visual style, and is appropriately subdued.</p>
-  <a href="#">It's dangerous to go alone, take this.</a>
+  <a href="#0">It's dangerous to go alone, take this.</a>
 </div>
 
 <div class="callout secondary">
   <h5>This is a secondary callout</h5>
   <p>It has an easy to override visual style, and is appropriately subdued.</p>
-  <a href="#">It's dangerous to go alone, take this.</a>
+  <a href="#0">It's dangerous to go alone, take this.</a>
 </div>
 
 <div class="callout success">
   <h5>This is a success callout</h5>
   <p>It has an easy to override visual style, and is appropriately subdued.</p>
-  <a href="#">It's dangerous to go alone, take this.</a>
+  <a href="#0">It's dangerous to go alone, take this.</a>
 </div>
 
 <div class="callout warning">
   <h5>This is a warning callout</h5>
   <p>It has an easy to override visual style, and is appropriately subdued.</p>
-  <a href="#">It's dangerous to go alone, take this.</a>
+  <a href="#0">It's dangerous to go alone, take this.</a>
 </div>
 
 <div class="callout alert">
   <h5>This is an alert callout</h5>
   <p>It has an easy to override visual style, and is appropriately subdued.</p>
-  <a href="#">It's dangerous to go alone, take this.</a>
+  <a href="#0">It's dangerous to go alone, take this.</a>
 </div>
 ```
 
@@ -268,45 +268,45 @@ description: Everything but.
 ```html_example
 <ul class="vertical menu" data-drilldown style="width: 200px" id="m1">
   <li>
-    <a href="#">Item 1</a>
+    <a href="#0">Item 1</a>
     <ul class="vertical menu" id="m2">
       <li>
-        <a href="#">Item 1A</a>
+        <a href="#0">Item 1A</a>
         <ul class="vertical menu" id="m3">
-          <li><a href="#">Item 1Aa</a></li>
-          <li><a href="#">Item 1Ba</a></li>
-          <li><a href="#">Item 1Ca</a></li>
-          <li><a href="#">Item 1Da</a></li>
-          <li><a href="#">Item 1Ea</a></li>
+          <li><a href="#0">Item 1Aa</a></li>
+          <li><a href="#0">Item 1Ba</a></li>
+          <li><a href="#0">Item 1Ca</a></li>
+          <li><a href="#0">Item 1Da</a></li>
+          <li><a href="#0">Item 1Ea</a></li>
         </ul>
       </li>
-      <li><a href="#">Item 1B</a></li>
-      <li><a href="#">Item 1C</a></li>
-      <li><a href="#">Item 1D</a></li>
-      <li><a href="#">Item 1E</a></li>
+      <li><a href="#0">Item 1B</a></li>
+      <li><a href="#0">Item 1C</a></li>
+      <li><a href="#0">Item 1D</a></li>
+      <li><a href="#0">Item 1E</a></li>
     </ul>
   </li>
   <li>
-    <a href="#">Item 2</a>
+    <a href="#0">Item 2</a>
     <ul class="vertical menu">
-      <li><a href="#">Item 2A</a></li>
-      <li><a href="#">Item 2B</a></li>
-      <li><a href="#">Item 2C</a></li>
-      <li><a href="#">Item 2D</a></li>
-      <li><a href="#">Item 2E</a></li>
+      <li><a href="#0">Item 2A</a></li>
+      <li><a href="#0">Item 2B</a></li>
+      <li><a href="#0">Item 2C</a></li>
+      <li><a href="#0">Item 2D</a></li>
+      <li><a href="#0">Item 2E</a></li>
     </ul>
   </li>
   <li>
-    <a href="#">Item 3</a>
+    <a href="#0">Item 3</a>
     <ul class="vertical menu">
-      <li><a href="#">Item 3A</a></li>
-      <li><a href="#">Item 3B</a></li>
-      <li><a href="#">Item 3C</a></li>
-      <li><a href="#">Item 3D</a></li>
-      <li><a href="#">Item 3E</a></li>
+      <li><a href="#0">Item 3A</a></li>
+      <li><a href="#0">Item 3B</a></li>
+      <li><a href="#0">Item 3C</a></li>
+      <li><a href="#0">Item 3D</a></li>
+      <li><a href="#0">Item 3E</a></li>
     </ul>
   </li>
-  <li><a href='#'> Item 4</a></li>
+  <li><a href='#0'> Item 4</a></li>
 </ul>
 ```
 
@@ -319,39 +319,39 @@ description: Everything but.
   <li>
     <a>Item 1</a>
     <ul class="menu">
-      <li><a href="#">Item 1A Loooong</a></li>
+      <li><a href="#0">Item 1A Loooong</a></li>
       <li>
-        <a href='#'> Item 1 sub</a>
+        <a href='#0'> Item 1 sub</a>
         <ul class='menu'>
-          <li><a href='#'>Item 1 subA</a></li>
-          <li><a href='#'>Item 1 subB</a></li>
+          <li><a href='#0'>Item 1 subA</a></li>
+          <li><a href='#0'>Item 1 subB</a></li>
           <li>
-            <a href='#'> Item 1 sub</a>
+            <a href='#0'> Item 1 sub</a>
             <ul class='menu'>
-              <li><a href='#'>Item 1 subA</a></li>
-              <li><a href='#'>Item 1 subB</a></li>
+              <li><a href='#0'>Item 1 subA</a></li>
+              <li><a href='#0'>Item 1 subB</a></li>
             </ul>
           </li>
           <li>
-            <a href='#'> Item 1 sub</a>
+            <a href='#0'> Item 1 sub</a>
             <ul class='menu'>
-              <li><a href='#'>Item 1 subA</a></li>
+              <li><a href='#0'>Item 1 subA</a></li>
             </ul>
           </li>
         </ul>
       </li>
-      <li><a href="#">Item 1B</a></li>
+      <li><a href="#0">Item 1B</a></li>
     </ul>
   </li>
   <li>
-    <a href="#">Item 2</a>
+    <a href="#0">Item 2</a>
     <ul class="menu">
-      <li><a href="#">Item 2A</a></li>
-      <li><a href="#">Item 2B</a></li>
+      <li><a href="#0">Item 2A</a></li>
+      <li><a href="#0">Item 2B</a></li>
     </ul>
   </li>
-  <li><a href="#">Item 3</a></li>
-  <li><a href='#'>Item 4</a></li>
+  <li><a href="#0">Item 3</a></li>
+  <li><a href='#0'>Item 4</a></li>
 </ul>
 ```
 
@@ -416,10 +416,10 @@ description: Everything but.
 
 ---
 
-## Flex Video
+## Responsive Embed
 
 ```html_example
-<div class="flex-video">
+<div class="responsive-embed">
   <iframe width="420" height="315" src="https://www.youtube.com/embed/V9gkYw35Vws" frameborder="0" allowfullscreen></iframe>
 </div>
 ```
@@ -618,17 +618,17 @@ description: Everything but.
 
 ```html_example
 <ul class="menu">
-  <li><a href="#">One</a></li>
-  <li><a href="#">Two</a></li>
-  <li><a href="#">Three</a></li>
-  <li><a href="#">Four</a></li>
+  <li><a href="#0">One</a></li>
+  <li><a href="#0">Two</a></li>
+  <li><a href="#0">Three</a></li>
+  <li><a href="#0">Four</a></li>
 </ul>
 
 <ul class="menu icon-top">
-  <li><a href="#"><i class="fi-list"></i> <span>One</span></a></li>
-  <li><a href="#"><i class="fi-list"></i> <span>Two</span></a></li>
-  <li><a href="#"><i class="fi-list"></i> <span>Three</span></a></li>
-  <li><a href="#"><i class="fi-list"></i> <span>Four</span></a></li>
+  <li><a href="#0"><i class="fi-list"></i> <span>One</span></a></li>
+  <li><a href="#0"><i class="fi-list"></i> <span>Two</span></a></li>
+  <li><a href="#0"><i class="fi-list"></i> <span>Three</span></a></li>
+  <li><a href="#0"><i class="fi-list"></i> <span>Four</span></a></li>
 </ul>
 ```
 
@@ -713,13 +713,13 @@ description: Everything but.
 <ul class="pagination" role="navigation" aria-label="Pagination">
   <li class="disabled">Previous <span class="show-for-sr">page</span></li>
   <li class="current"><span class="show-for-sr">You're on page</span> 1</li>
-  <li><a href="#" aria-label="Page 2">2</a></li>
-  <li><a href="#" aria-label="Page 3">3</a></li>
-  <li><a href="#" aria-label="Page 4">4</a></li>
+  <li><a href="#0" aria-label="Page 2">2</a></li>
+  <li><a href="#0" aria-label="Page 3">3</a></li>
+  <li><a href="#0" aria-label="Page 4">4</a></li>
   <li class="ellipsis" aria-hidden="true"></li>
-  <li><a href="#" aria-label="Page 12">12</a></li>
-  <li><a href="#" aria-label="Page 13">13</a></li>
-  <li><a href="#" aria-label="Next page">Next <span class="show-for-sr">page</span></a></li>
+  <li><a href="#0" aria-label="Page 12">12</a></li>
+  <li><a href="#0" aria-label="Page 13">13</a></li>
+  <li><a href="#0" aria-label="Next page">Next <span class="show-for-sr">page</span></a></li>
 </ul>
 ```
 
@@ -753,9 +753,9 @@ description: Everything but.
 
 ```html_example
 <ul class="vertical medium-horizontal menu">
-  <li><a href="#">Item 1</a></li>
-  <li><a href="#">Item 2</a></li>
-  <li><a href="#">Item 3</a></li>
+  <li><a href="#0">Item 1</a></li>
+  <li><a href="#0">Item 2</a></li>
+  <li><a href="#0">Item 3</a></li>
 </ul>
 ```
 
@@ -774,15 +774,15 @@ description: Everything but.
     <ul class="dropdown menu" data-dropdown-menu>
       <li class="menu-text">Site Title</li>
       <li class="has-submenu">
-        <a href="#">One</a>
+        <a href="#0">One</a>
         <ul class="submenu menu vertical" data-submenu>
-          <li><a href="#">One</a></li>
-          <li><a href="#">Two</a></li>
-          <li><a href="#">Three</a></li>
+          <li><a href="#0">One</a></li>
+          <li><a href="#0">Two</a></li>
+          <li><a href="#0">Three</a></li>
         </ul>
       </li>
-      <li><a href="#">Two</a></li>
-      <li><a href="#">Three</a></li>
+      <li><a href="#0">Two</a></li>
+      <li><a href="#0">Three</a></li>
     </ul>
   </div>
   <div class="top-bar-right">
@@ -1015,10 +1015,10 @@ description: Everything but.
 <p><a data-toggle="menuBar">Expand!</a></p>
 
 <ul class="menu" id="menuBar" data-toggler=".expanded">
-  <li><a href="#">One</a></li>
-  <li><a href="#">Two</a></li>
-  <li><a href="#">Three</a></li>
-  <li><a href="#">Four</a></li>
+  <li><a href="#0">One</a></li>
+  <li><a href="#0">Two</a></li>
+  <li><a href="#0">Three</a></li>
+  <li><a href="#0">Four</a></li>
 </ul>
 ```
 
@@ -1040,15 +1040,15 @@ description: Everything but.
     <ul class="dropdown menu" data-dropdown-menu>
       <li class="menu-text">Site Title</li>
       <li class="has-submenu">
-        <a href="#">One</a>
+        <a href="#0">One</a>
         <ul class="submenu menu vertical" data-submenu>
-          <li><a href="#">One</a></li>
-          <li><a href="#">Two</a></li>
-          <li><a href="#">Three</a></li>
+          <li><a href="#0">One</a></li>
+          <li><a href="#0">Two</a></li>
+          <li><a href="#0">Three</a></li>
         </ul>
       </li>
-      <li><a href="#">Two</a></li>
-      <li><a href="#">Three</a></li>
+      <li><a href="#0">Two</a></li>
+      <li><a href="#0">Three</a></li>
     </ul>
   </div>
   <div class="top-bar-right">

@@ -69,7 +69,7 @@ class Reveal {
     if(this.$overlay) {
       this.$element.detach().appendTo(this.$overlay);
     } else {
-      this.$element.detach().appendTo($('body'));
+      this.$element.detach().appendTo($(this.options.appendTo));
       this.$element.addClass('without-overlay');
     }
     this._events();
@@ -85,7 +85,7 @@ class Reveal {
   _makeOverlay(id) {
     var $overlay = $('<div></div>')
                     .addClass('reveal-overlay')
-                    .appendTo('body');
+                    .appendTo(this.options.appendTo);
     return $overlay;
   }
 
@@ -157,10 +157,10 @@ class Reveal {
 
     if (this.options.closeOnClick && this.options.overlay) {
       this.$overlay.off('.zf.reveal').on('click.zf.reveal', function(e) {
-        if (e.target === _this.$element[0] || 
-          $.contains(_this.$element[0], e.target) || 
-            !$.contains(document, e.target)) { 
-              return; 
+        if (e.target === _this.$element[0] ||
+          $.contains(_this.$element[0], e.target) ||
+            !$.contains(document, e.target)) {
+              return;
         }
         _this.close();
       });
@@ -232,24 +232,39 @@ class Reveal {
        */
       this.$element.trigger('closeme.zf.reveal', this.id);
     }
+
+    var _this = this;
+
+    function addRevealOpenClasses() {
+      if (_this.isMobile) {
+        if(!_this.originalScrollPos) {
+          _this.originalScrollPos = window.pageYOffset;
+        }
+        $('html, body').addClass('is-reveal-open');
+      }
+      else {
+        $('body').addClass('is-reveal-open');
+      }
+    }
     // Motion UI method of reveal
     if (this.options.animationIn) {
-      var _this = this;
-      function afterAnimationFocus(){
+      function afterAnimation(){
         _this.$element
           .attr({
             'aria-hidden': false,
             'tabindex': -1
           })
           .focus();
-          // console.log('focus');
+        addRevealOpenClasses();
       }
       if (this.options.overlay) {
         Foundation.Motion.animateIn(this.$overlay, 'fade-in');
       }
       Foundation.Motion.animateIn(this.$element, this.options.animationIn, () => {
-        this.focusableElements = Foundation.Keyboard.findFocusable(this.$element);
-        afterAnimationFocus();
+        if(this.$element) { // protect against object having been removed
+          this.focusableElements = Foundation.Keyboard.findFocusable(this.$element);
+          afterAnimation();
+        }
       });
     }
     // jQuery method of reveal
@@ -274,13 +289,7 @@ class Reveal {
      */
     this.$element.trigger('open.zf.reveal');
 
-    if (this.isMobile) {
-      this.originalScrollPos = window.pageYOffset;
-      $('html, body').addClass('is-reveal-open');
-    }
-    else {
-      $('body').addClass('is-reveal-open');
-    }
+    addRevealOpenClasses();
 
     setTimeout(() => {
       this._extraHandlers();
@@ -293,12 +302,13 @@ class Reveal {
    */
   _extraHandlers() {
     var _this = this;
+    if(!this.$element) { return; } // If we're in the middle of cleanup, don't freak out
     this.focusableElements = Foundation.Keyboard.findFocusable(this.$element);
 
     if (!this.options.overlay && this.options.closeOnClick && !this.options.fullScreen) {
       $('body').on('click.zf.reveal', function(e) {
-        if (e.target === _this.$element[0] || 
-          $.contains(_this.$element[0], e.target) || 
+        if (e.target === _this.$element[0] ||
+          $.contains(_this.$element[0], e.target) ||
             !$.contains(document, e.target)) { return; }
         _this.close();
       });
@@ -468,7 +478,7 @@ class Reveal {
    */
   destroy() {
     if (this.options.overlay) {
-      this.$element.appendTo($('body')); // move $element outside of $overlay to prevent error unregisterPlugin()
+      this.$element.appendTo($(this.options.appendTo)); // move $element outside of $overlay to prevent error unregisterPlugin()
       this.$overlay.hide().off().remove();
     }
     this.$element.hide().off();
@@ -563,7 +573,14 @@ Reveal.defaults = {
    * @option
    * @example false
    */
-  deepLink: false
+  deepLink: false,
+    /**
+   * Allows the modal to append to custom div.
+   * @option
+   * @example false
+   */
+  appendTo: "body"
+
 };
 
 // Window exports

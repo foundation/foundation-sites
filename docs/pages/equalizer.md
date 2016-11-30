@@ -57,7 +57,7 @@ In the below example, the first set of Equalizer elements have the value `foo`, 
 
 <div class="row"  data-equalize-on="medium" data-equalizer="foo">
   <div class="medium-4 columns" >
-    <div class="callout" data-equalizer-watch="foo" data-equalizer="bar">
+    <div class="callout" data-equalizer-watch="foo" data-equalizer="bar" data-equalize-on-stack="true">
       <h3>Parent panel</h3>
       <div class="callout" data-equalizer-watch="bar">
         <p>The three callouts in this panel will equalize, even when stacked.</p>

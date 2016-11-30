@@ -59,6 +59,11 @@ class DropdownMenu {
     this.changed = false;
     this._events();
   };
+
+  _isVertical() {
+    return this.$tabs.css('display') === 'block';
+  }
+
   /**
    * Adds event listeners to elements within the menu
    * @private
@@ -90,18 +95,23 @@ class DropdownMenu {
           _this._show($sub);
           $elem.add($elem.parentsUntil(_this.$element, `.${parClass}`)).attr('data-is-click', true);
         }
-      } else {
-        if(_this.options.closeOnClickInside){
-          _this._hide($elem);
-        }
-        return;
       }
     };
 
     if (this.options.clickOpen || hasTouch) {
       this.$menuItems.on('click.zf.dropdownmenu touchstart.zf.dropdownmenu', handleClickFn);
     }
-
+    
+    // Handle Leaf element Clicks
+    if(_this.options.closeOnClickInside){
+      this.$menuItems.on('click.zf.dropdownmenu touchend.zf.dropdownmenu', function(e) {
+        var hasSub = $elem.hasClass(parClass);
+        if(!hasSub){
+          _this._hide();
+        }
+      });
+    }
+    
     if (!this.options.disableHover) {
       this.$menuItems.on('mouseenter.zf.dropdownmenu', function(e) {
         var $elem = $(this),
@@ -177,42 +187,51 @@ class DropdownMenu {
       };
 
       if (isTab) {
-        if (_this.$element.hasClass(_this.options.verticalClass)) { // vertical menu
-          if (_this.options.alignment === 'left') { // left aligned
-            $.extend(functions, {
-              down: nextSibling,
-              up: prevSibling,
-              next: openSub,
-              previous: closeSub
-            });
-          } else { // right aligned
+        if (_this._isVertical()) { // vertical menu
+          if (Foundation.rtl()) { // right aligned
             $.extend(functions, {
               down: nextSibling,
               up: prevSibling,
               next: closeSub,
               previous: openSub
             });
+          } else { // left aligned
+            $.extend(functions, {
+              down: nextSibling,
+              up: prevSibling,
+              next: openSub,
+              previous: closeSub
+            });
           }
         } else { // horizontal menu
-          $.extend(functions, {
-            next: nextSibling,
-            previous: prevSibling,
-            down: openSub,
-            up: closeSub
-          });
+          if (Foundation.rtl()) { // right aligned
+            $.extend(functions, {
+              next: prevSibling,
+              previous: nextSibling,
+              down: openSub,
+              up: closeSub
+            });
+          } else { // left aligned
+            $.extend(functions, {
+              next: nextSibling,
+              previous: prevSibling,
+              down: openSub,
+              up: closeSub
+            });
+          }
         }
       } else { // not tabs -> one sub
-        if (_this.options.alignment === 'left') { // left aligned
-          $.extend(functions, {
-            next: openSub,
-            previous: closeSub,
-            down: nextSibling,
-            up: prevSibling
-          });
-        } else { // right aligned
+        if (Foundation.rtl()) { // right aligned
           $.extend(functions, {
             next: closeSub,
             previous: openSub,
+            down: nextSibling,
+            up: prevSibling
+          });
+        } else { // left aligned
+          $.extend(functions, {
+            next: openSub,
+            previous: closeSub,
             down: nextSibling,
             up: prevSibling
           });
