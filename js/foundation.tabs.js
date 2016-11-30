@@ -237,11 +237,16 @@ class Tabs {
     this._openTab($target);
 
     //either replace or update browser history
-    var anchor = $target.find('a').attr('href');
-    if (this.options.updateHistory) {
-      history.pushState({}, "", anchor);
+    if (this.options.deepLink) {
+      var anchor = $target.find('a').attr('href');
+
+      if (this.options.updateHistory) {
+        history.pushState({}, '', anchor);
+      } else {
+        history.replaceState({}, '', anchor);
+      }
     } else {
-      history.replaceState({}, "", anchor);
+      history.replaceState({}, '', window.location.pathname);
     }
 
     /**

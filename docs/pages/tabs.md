@@ -156,13 +156,13 @@ Add the attribute `data-deep-link="true" to a tabstrip to allow anchoring to and
 
 ```html_example
 <ul class="tabs" data-deep-link="true" data-tabs id="deeplinked-tabs">
-  <li class="tabs-title is-active"><a href="#panel1c" aria-selected="true">Tab 1</a></li>
+  <li class="tabs-title is-active"><a href="#panel1d" aria-selected="true">Tab 1</a></li>
   <li class="tabs-title"><a href="#panel2d">Tab 2</a></li>
   <li class="tabs-title"><a href="#panel3d">Tab 3</a></li>
   <li class="tabs-title"><a href="#panel4d">Tab 4</a></li>
 </ul>
 
-<div class="tabs-content" data-tabs-content="collapsing-tabs">
+<div class="tabs-content" data-tabs-content="deeplinked-tabs">
   <div class="tabs-panel is-active" id="panel1d">
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
   </div>
