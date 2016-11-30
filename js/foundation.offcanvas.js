@@ -215,15 +215,14 @@ class OffCanvas {
         last = focusable.eq(-1);
 
     focusable.off('.zf.offcanvas').on('keydown.zf.offcanvas', function(e) {
-      if (e.which === 9 || e.keycode === 9) {
-        if (e.target === last[0] && !e.shiftKey) {
-          e.preventDefault();
-          first.focus();
-        }
-        if (e.target === first[0] && e.shiftKey) {
-          e.preventDefault();
-          last.focus();
-        }
+      var key = Foundation.Keyboard.parseKey(e);
+      if (key === 'TAB' && e.target === last[0]) {
+        e.preventDefault();
+        first.focus();
+      }
+      if (key === 'SHIFT_TAB' && e.target === first[0]) {
+        e.preventDefault();
+        last.focus();
       }
     });
   }
@@ -287,13 +286,18 @@ class OffCanvas {
    * @function
    * @private
    */
-  _handleKeyboard(event) {
-    if (event.which !== 27) return;
-
-    event.stopPropagation();
-    event.preventDefault();
-    this.close();
-    this.$lastTrigger.focus();
+  _handleKeyboard(e) {
+    Foundation.Keyboard.handleKey(e, 'OffCanvas', {
+      close: () => {
+        this.close();
+        this.$lastTrigger.focus();
+        return true;
+      },
+      handled: () => {
+        e.stopPropagation();
+        e.preventDefault();
+      }
+    });
   }
 
   /**
