@@ -70,7 +70,6 @@ $menu-border: $light-gray !default;
     line-height: 1;
   }
 
-
   // Reset styles of inner elements
   input,
   select,
@@ -234,7 +233,7 @@ $menu-border: $light-gray !default;
 }
 
 @mixin foundation-menu {
-  .menu, .tree {
+  .menu {
     @include menu-base;
     @include menu-icons;
 

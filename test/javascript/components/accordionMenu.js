@@ -1,28 +1,32 @@
 describe('Accordion Menu', function() {
   var plugin;
   var $html;
-  var template = `<ul class="vertical tree" data-accordion-menu>
-    <li><span>Item 1</span>
-      <ul class="tree vertical nested">
-        <li><span>Item 1A</span>
-          <ul class="tree vertical nested">
-            <li><span>Item 1Ai</span></li>
-            <li><a href="http://www.google.com">External link</a></li>
-            <li><span>Item 1Aiii</span></li>
-          </ul>
-        </li>
-        <li><span>Item 1B</span></li>
-        <li><span>Item 1C</span></li>
-      </ul>
-      </li>
-      <li><span>Item 2</span>
-        <ul class="tree vertical nested">
-          <li><span>Item 2A</a></li>
-          <li><span>Item 2B</a></li>
+  var template = `
+    <ul class="vertical menu">
+      <li>
+        <a href="#">Item 1</a>
+        <ul class="menu vertical nested">
+          <li>
+            <a href="#">Item 1A</a>
+            <ul class="menu vertical nested">
+              <li><a href="#">Item 1Ai</a></li>
+              <li><a href="#">Item 1Aii</a></li>
+              <li><a href="#">Item 1Aiii</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Item 1B</a></li>
+          <li><a href="#">Item 1C</a></li>
         </ul>
       </li>
-    <li><a href="http://www.google.com">External link</a></li>
-  </ul>`;
+      <li>
+        <a href="#">Item 2</a>
+        <ul class="menu vertical nested">
+          <li><a href="#">Item 2A</a></li>
+          <li><a href="#">Item 2B</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Item 3</a></li>
+    </ul>`;
   Foundation.AccordionMenu.defaults.slideSpeed = 0;
 
   afterEach(function() {
