@@ -11,8 +11,6 @@ const Nest = {
         subItemClass = `${subMenuClass}-item`,
         hasSubClass = `is-${type}-submenu-parent`;
 
-    menu.find('a:first').attr('tabindex', 0);
-
     items.each(function() {
       var $item = $(this),
           $sub = $item.children('ul');
@@ -22,7 +20,6 @@ const Nest = {
           .addClass(hasSubClass)
           .attr({
             'aria-haspopup': true,
-            'aria-expanded': false,
             'aria-label': $item.children('a:first').text()
           });
 
@@ -30,7 +27,6 @@ const Nest = {
           .addClass(`submenu ${subMenuClass}`)
           .attr({
             'data-submenu': '',
-            'aria-hidden': true,
             'role': 'menu'
           });
       }
@@ -44,7 +40,7 @@ const Nest = {
   },
 
   Burn(menu, type) {
-    var items = menu.find('li').removeAttr('tabindex'),
+    var //items = menu.find('li'),
         subMenuClass = `is-${type}-submenu`,
         subItemClass = `${subMenuClass}-item`,
         hasSubClass = `is-${type}-submenu-parent`;
