@@ -22,6 +22,12 @@ const Nest = {
             'aria-haspopup': true,
             'aria-label': $item.children('a:first').text()
           });
+          // Note:  Drilldowns behave differently in how they hide, and so need
+          // additional attributes.  We should look if this possibly over-generalized
+          // utility (Nest) is appropriate when we rework menus in 6.4
+          if(type === 'drilldown') {
+            $item.attr({'aria-expanded': false});
+          }
 
         $sub
           .addClass(`submenu ${subMenuClass}`)
@@ -29,6 +35,9 @@ const Nest = {
             'data-submenu': '',
             'role': 'menu'
           });
+        if(type === 'drilldown') {
+          $sub.attr({'aria-hidden': true});
+        }
       }
 
       if ($item.parent('[data-submenu]').length) {
