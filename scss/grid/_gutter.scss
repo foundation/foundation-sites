@@ -117,8 +117,8 @@
 
     // single value
     $margin-bottom: rem-calc($margin);
-
     margin-bottom: $margin-bottom;
+    
     > :last-child {
       margin-bottom: 0;
     }
