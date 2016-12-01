@@ -86,6 +86,12 @@ $maincontent-class: 'off-canvas-content' !default;
     &.is-closable {
       cursor: pointer;
     }
+    &.is-overlay-absolute {
+      position: absolute;
+    }
+    &.is-overlay-fixed {
+      position: fixed;
+    }
   }
 }
 
