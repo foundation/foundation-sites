@@ -51,8 +51,6 @@ $callout-link-tint: 30% !default;
   border: $callout-border;
   border-radius: $callout-radius;
 
-  color: $callout-font-color;
-
   // Respect the padding, fool.
   > :first-child {
     margin-top: 0;
@@ -69,6 +67,7 @@ $callout-link-tint: 30% !default;
   $background: scale-color($color, $lightness: $callout-background-fade);
 
   background-color: $background;
+  color: color-pick-contrast($background, ($callout-font-color, $callout-font-color-alt));
 }
 
 @mixin callout-size($padding) {
