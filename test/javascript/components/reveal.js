@@ -128,6 +128,17 @@ describe('Reveal', function() {
 
       plugin.open();
     });
+
+    it('traps focus if trapFocus option is true', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Reveal($html, {trapFocus: true});
+
+      let spy = sinon.spy(Foundation.Keyboard, 'trapFocus');
+      plugin.open();
+
+      sinon.assert.called(spy);
+      Foundation.Keyboard.trapFocus.restore();
+    });
   });
 
 	describe('close()', function() {
@@ -188,6 +199,20 @@ describe('Reveal', function() {
       });
       
       plugin.close();
+    });
+
+    it('releases focus if trapFocus option is true', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Reveal($html, {trapFocus: true});
+
+      // Open it first
+      plugin.open();
+
+      let spy = sinon.spy(Foundation.Keyboard, 'releaseFocus');
+      plugin.close();
+
+      sinon.assert.called(spy);
+      Foundation.Keyboard.releaseFocus.restore();
     });
   });
 

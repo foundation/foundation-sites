@@ -89,9 +89,9 @@ class OffCanvas {
       'keydown.zf.offcanvas': this._handleKeyboard.bind(this)
     });
 
-    if (this.options.closeOnClick === true) {                                            
+    if (this.options.closeOnClick === true) {
       var $target = this.options.contentOverlay ? this.$overlay : $('[data-off-canvas-content]');
-      $target.on({'click.zf.offcanvas': this.close.bind(this)});                
+      $target.on({'click.zf.offcanvas': this.close.bind(this)});
     }
   }
 
@@ -201,30 +201,8 @@ class OffCanvas {
 
     if (this.options.trapFocus === true) {
       $('[data-off-canvas-content]').attr('tabindex', '-1');
-      this._trapFocus();
+      Foundation.Keyboard.trapFocus(_this.$element);
     }
-  }
-
-  /**
-   * Traps focus within the offcanvas on open.
-   * @private
-   */
-  _trapFocus() {
-    var focusable = Foundation.Keyboard.findFocusable(this.$element),
-        first = focusable.eq(0),
-        last = focusable.eq(-1);
-
-    focusable.off('.zf.offcanvas').on('keydown.zf.offcanvas', function(e) {
-      var key = Foundation.Keyboard.parseKey(e);
-      if (key === 'TAB' && e.target === last[0]) {
-        e.preventDefault();
-        first.focus();
-      }
-      if (key === 'SHIFT_TAB' && e.target === first[0]) {
-        e.preventDefault();
-        last.focus();
-      }
-    });
   }
 
   /**
@@ -261,8 +239,10 @@ class OffCanvas {
     }
 
     this.$triggers.attr('aria-expanded', 'false');
+
     if (this.options.trapFocus === true) {
       $('[data-off-canvas-content]').removeAttr('tabindex');
+      Foundation.Keyboard.releaseFocus(this.$element);
     }
   }
 
