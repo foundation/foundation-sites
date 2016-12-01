@@ -96,9 +96,9 @@ If you have a gallery of items that wrap multiple times, Equalizer can be config
 
 ```html
 <div class="row small-up-1 medium-up-2 large-up-4" data-equalizer data-equalize-by-row="true">
-  <div class="column"></div>
-  <div class="column"></div>
-  <div class="column"></div>
+  <div class="column" data-equalizer-watch></div>
+  <div class="column" data-equalizer-watch></div>
+  <div class="column" data-equalizer-watch></div>
   <!-- ... -->
 </div>
 ```

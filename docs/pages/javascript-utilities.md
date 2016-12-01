@@ -16,7 +16,7 @@ One of the useful libraries is `Foundation.Box`, and it has a couple methods des
 
 var dims = Foundation.Box.GetDimensions(element);
 ```
-Will return an object that contains the dimensions of the `element` passed. The object return looks like:
+Will return an object that contains the dimensions of `element`. The object return looks like:
 
 ```js
 
@@ -36,7 +36,7 @@ Will return an object that contains the dimensions of the `element` passed. The 
 }
 ```
 
-Also included is the `ImNotTouchingYou` function. It returns a boolean based on whether the element you pass it is colliding with the edge of the window, or optionally, a parent element. The other two options are for detecting collisions on only one axis, and are simply booleans you pass in.
+Also included is the `ImNotTouchingYou` function. It returns a boolean based on whether the passed `element` is colliding with the edge of the window (default), or a parent element. The remaining two options are booleans for limiting collision detection to only one axis.
 ```js
 
 var clear = Foundation.Box.ImNotTouchingYou(element [, parent, leftAndRightOnly, topAndBottomOnly]);
@@ -45,14 +45,14 @@ var clear = Foundation.Box.ImNotTouchingYou(element [, parent, leftAndRightOnly,
 ## Keyboard
 `js/foundation.util.keyboard.js`
 
-Another quite useful library, `Foundation.Keyboard` has several methods to make keyboard event interaction easier for all. Shout out to [Marius Olbertz](http://www.mariusolbertz.de/) of Germany who conceived and coded this library.
+Another quite useful library, `Foundation.Keyboard` has several methods to make keyboard event interaction easier for all. Shout out to [Marius Olbertz](http://www.mariusolbertz.de) of Germany who conceived and coded this library.
 
 Ever wanted a handy list of common keycodes and the keys they represent? Use `Foundation.Keyboard.keys`. This is an object containing key/value pairs of the most frequently used keys in our framework.
 
 Want to manage your own keyboard inputs? No problem! Within your `.on('key**')` callback, call `Foundation.Keyboard.parseKey(event)` to get a string of what key was pressed, e.g. `'TAB'` or `'ALT_X'`.
-You can also use this function outside of the Foundation components in your own JavaScript code.
+(You can also use this function outside of the Foundation components, in your own JavaScript code!)
 
-What if you want to know if there's focusable elements somewhere on a page? Instead of writing that function and selector yourself, just use:
+What if you want to know if there's focusable elements somewhere on a page? Instead of writing your own function and selector from scratch, just use:
 ```js
 var focusable = Foundation.Keyboard.findFocusable($('#content'));
 ```
@@ -79,9 +79,9 @@ Foundation.Keyboard.handleKey(event, 'pluginName', {
   }
 });
 ```
-There are also the functions `handled` and `unhandled` where you can place any code that shall always be executed after the key event has been handled or not.
+There are also the functions `handled` and `unhandled`, where you can place any code that shall always be executed after the key event has been handled (or not).
 
-If you want to use your own key bindings, you can simply call the `Foundation.Keyboard.register` function even after Foundation has been initialized.
+If you want to use your own key bindings, simply call the `Foundation.Keyboard.register` function. It even works after Foundation has already initialized.
 
 ## MediaQuery
 `js/foundation.util.mediaQuery.js`
@@ -99,7 +99,7 @@ Foundation.MediaQuery.current;
 // a string of the current breakpoint size.
 ```
 
-Also included is an event emitter for breakpoint changes. You can hook into this event with
+Also included is an event emitter for breakpoint changes. You can hook into this event with:
 ```js
 
 $(window).on('changed.zf.mediaquery', function(event, newSize, oldSize){});
@@ -110,26 +110,26 @@ $(window).on('changed.zf.mediaquery', function(event, newSize, oldSize){});
 
 Two handy utilities, one little file.
 
-Foundation.Motion is the same JavaScript used by the [Motion-UI](https://github.com/zurb/motion-ui) library, and is included in Foundation 6. See the GitHub page for more details.
+`Foundation.Motion` is the same JavaScript used by the [Motion-UI](https://github.com/zurb/motion-ui/) library, and is included in Foundation 6. See the GitHub page for more details.
 
-Foundation.Move is a simple helper function for utilizing browsers' `requestAnimationFrame` method for hardware acceleration. Invoke like so:
+`Foundation.Move` is a simple helper function for utilizing browsers' `requestAnimationFrame` method for hardware acceleration. Invoke like so:
 ```js
 Foundation.Move(durationInMS, $element, function(){
   //animation logic
 });
 ```
-Your jQuery element will fire `finished.zf.animate` when the animation is complete.
+When the animation is complete, your jQuery element will fire `finished.zf.animate`.
 
 ## Timer & Images Loaded
 `js/foundation.util.timerAndImageLoader.js`
 
-Both functions are used by [Orbit](orbit.html) and can be useful elsewhere as well.
+Both functions are used by [Orbit](orbit.html), and can be useful elsewhere as well.
 ```js
 
 var timer = new Foundation.Timer($element, {duration: ms, infinite: bool}, callback);
 // includes: timer.start(), timer.pause(), timer.restart()
 ```
-Similar to `setInterval`, except you can pause and pick back up where you left off.
+Similar to `setInterval`, except you can pause and resume where you left off.
 
 ```js
 Foundation.onImagesLoaded($images, callback);
@@ -139,7 +139,7 @@ This will execute your callback function after all the images in your jQuery col
 ## Touch
 `js/foundation.util.touch.js`
 
-Gives you the ability to add swipe and psuedo-drag events to elements.
+Allows you to add `swipe*` and psuedo-drag events to elements.
 
 ```js
 $('selector').addTouch().on('mousemove', handleDrag);
@@ -151,7 +151,7 @@ $('selector').spotSwipe().on('swipeleft', handleLeftSwipe);
 ## Triggers
 `js/foundation.util.triggers.js`
 
-Provides a number of event listeners and triggers your script can hook into. Most of them are self-explanatory, and utilized in many Foundation plugins.
+Provides a number of event listeners and triggers your script can hook into. Most are self-explanatory, and used in many Foundation plugins.
 ```html
 <button data-open='someId'>I open something!</button>
 <button data-close='someId'>I close something!</button>
@@ -180,8 +180,8 @@ $('#someId').on('resizeme.zf.trigger', handleResize);
 
 Foundation includes a couple useful features in the core library that are used in many places, that you can tap into.
 
-`Foundation.GetYoDigits([number, namespace])` returns a base-36, psuedo-random string with a hyphenated namespace (if you include one). Both arguments are optional, it will by default return a string six characters long.
+`Foundation.GetYoDigits([number, namespace])` returns a base-36, psuedo-random string with a hyphenated namespace (if you include one). Both arguments are optional; by default, it will return a string six characters long.
 
-`Foundation.getFnName(fn)` returns a string representation of a named function. Seems small, but believe us, it's useful.
+`Foundation.getFnName(fn)` returns a string representation of a named function. Seems small, but believe us—it's useful.
 
-`Foundation.transitionend()` is a function<span data-tooltip title="Goodbye ZURB, I'll miss you"> </span>that returns the string of the properly vendor-prefixed version of `transitionend` events. Most browsers don't require a prefix these days, but for those that do, we've got you covered. But IE 9 doesn't support transitions?? Quite right you are! In that case our plugins that use transitions will simply snap to whatever location or visibility state they were headed to, and this function will fire a `transitionend` event manually on the element you passed. It still gives the desired results, and allows Motion-UI to work in IE 9.
+`Foundation.transitionend()` is a function<span data-tooltip title="Goodbye ZURB, I'll miss you"> </span> that returns the string of the properly vendor-prefixed version of `transitionend` events. Most browsers don't require a prefix these days, but for those that do, we've got you covered. But IE 9 doesn't support transitions?? Quite right you are! In that case, our plugins that use transitions will simply snap to whatever location or visibility state they were headed to, and this function will fire a `transitionend` event manually on the element you passed. It still gives the desired results, and allows Motion-UI to work in IE 9.
