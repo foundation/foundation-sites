@@ -29,8 +29,6 @@ class Reveal {
       'ENTER': 'open',
       'SPACE': 'open',
       'ESCAPE': 'close',
-      'TAB': 'tab_forward',
-      'SHIFT_TAB': 'tab_backward'
     });
   }
 
@@ -256,6 +254,7 @@ class Reveal {
           })
           .focus();
         addRevealOpenClasses();
+        Foundation.Keyboard.trapFocus(_this.$element);
       }
       if (this.options.overlay) {
         Foundation.Motion.animateIn(this.$overlay, 'fade-in');
@@ -282,6 +281,7 @@ class Reveal {
         'tabindex': -1
       })
       .focus();
+    Foundation.Keyboard.trapFocus(this.$element);
 
     /**
      * Fires when the modal has successfully opened.
@@ -332,26 +332,6 @@ class Reveal {
       var $target = $(this);
       // handle keyboard event with keyboard util
       Foundation.Keyboard.handleKey(e, 'Reveal', {
-        tab_forward: function() {
-          _this.focusableElements = Foundation.Keyboard.findFocusable(_this.$element);
-          if (_this.$element.find(':focus').is(_this.focusableElements.eq(-1))) { // left modal downwards, setting focus to first element
-            _this.focusableElements.eq(0).focus();
-            return true;
-          }
-          if (_this.focusableElements.length === 0) { // no focusable elements inside the modal at all, prevent tabbing in general
-            return true;
-          }
-        },
-        tab_backward: function() {
-          _this.focusableElements = Foundation.Keyboard.findFocusable(_this.$element);
-          if (_this.$element.find(':focus').is(_this.focusableElements.eq(0)) || _this.$element.is(':focus')) { // left modal upwards, setting focus to last element
-            _this.focusableElements.eq(-1).focus();
-            return true;
-          }
-          if (_this.focusableElements.length === 0) { // no focusable elements inside the modal at all, prevent tabbing in general
-            return true;
-          }
-        },
         open: function() {
           if (_this.$element.find(':focus').is(_this.$element.find('[data-close]'))) {
             setTimeout(function() { // set focus back to anchor if close button has been activated
@@ -432,6 +412,9 @@ class Reveal {
       else {
         $('body').removeClass('is-reveal-open');
       }
+
+
+      Foundation.Keyboard.releaseFocus(_this.$element);
 
       _this.$element.attr('aria-hidden', true);
 

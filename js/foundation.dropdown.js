@@ -27,9 +27,7 @@ class Dropdown {
     Foundation.Keyboard.register('Dropdown', {
       'ENTER': 'open',
       'SPACE': 'open',
-      'ESCAPE': 'close',
-      'TAB': 'tab_forward',
-      'SHIFT_TAB': 'tab_backward'
+      'ESCAPE': 'close'
     });
   }
 
@@ -217,26 +215,6 @@ class Dropdown {
         visibleFocusableElements = Foundation.Keyboard.findFocusable(_this.$element);
 
       Foundation.Keyboard.handleKey(e, 'Dropdown', {
-        tab_forward: function() {
-          if (_this.$element.find(':focus').is(visibleFocusableElements.eq(-1))) { // left modal downwards, setting focus to first element
-            if (_this.options.trapFocus) { // if focus shall be trapped
-              visibleFocusableElements.eq(0).focus();
-              e.preventDefault();
-            } else { // if focus is not trapped, close dropdown on focus out
-              _this.close();
-            }
-          }
-        },
-        tab_backward: function() {
-          if (_this.$element.find(':focus').is(visibleFocusableElements.eq(0)) || _this.$element.is(':focus')) { // left modal upwards, setting focus to last element
-            if (_this.options.trapFocus) { // if focus shall be trapped
-              visibleFocusableElements.eq(-1).focus();
-              e.preventDefault();
-            } else { // if focus is not trapped, close dropdown on focus out
-              _this.close();
-            }
-          }
-        },
         open: function() {
           if ($target.is(_this.$anchor)) {
             _this.open();
@@ -302,6 +280,10 @@ class Dropdown {
 
     if(this.options.closeOnClick){ this._addBodyHandler(); }
 
+    if (this.options.trapFocus) {
+      Foundation.Keyboard.trapFocus(this.$element);
+    }
+
     /**
      * Fires once the dropdown is visible.
      * @event Dropdown#show
@@ -336,6 +318,10 @@ class Dropdown {
       this.usedPositions.length = 0;
     }
     this.$element.trigger('hide.zf.dropdown', [this.$element]);
+
+    if (this.options.trapFocus) {
+      Foundation.Keyboard.releaseFocus(this.$element);
+    }
   }
 
   /**
