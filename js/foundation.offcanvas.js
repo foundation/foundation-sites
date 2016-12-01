@@ -54,14 +54,14 @@ class OffCanvas {
 
     // Add an overlay over the content if necessary
     if (this.options.contentOverlay === true) {
-      if ($('.js-off-canvas-overlay').length) {
-        this.$overlay = $('.js-off-canvas-overlay');
+      var overlay = document.createElement('div');
+      var overlayPosition = $(this.$element).css("position") === 'fixed' ? 'is-overlay-fixed' : 'is-overlay-absolute';
+      overlay.setAttribute('class', 'js-off-canvas-overlay ' + overlayPosition);
+      this.$overlay = $(overlay);
+      if(overlayPosition === 'is-overlay-fixed') {
+        $('body').append(this.$overlay);
       } else {
-        var overlay = document.createElement('div');
-        overlay.setAttribute('class', 'js-off-canvas-overlay');
-        $('[data-off-canvas-content]').append(overlay);
-
-        this.$overlay = $(overlay);
+        this.$element.siblings('[data-off-canvas-content]').append(this.$overlay);
       }
     }
 
@@ -89,9 +89,9 @@ class OffCanvas {
       'keydown.zf.offcanvas': this._handleKeyboard.bind(this)
     });
 
-    if (this.options.closeOnClick === true) {                                            
+    if (this.options.closeOnClick === true) {
       var $target = this.options.contentOverlay ? this.$overlay : $('[data-off-canvas-content]');
-      $target.on({'click.zf.offcanvas': this.close.bind(this)});                
+      $target.on({'click.zf.offcanvas': this.close.bind(this)});
     }
   }
 
@@ -200,7 +200,7 @@ class OffCanvas {
     }
 
     if (this.options.trapFocus === true) {
-      $('[data-off-canvas-content]').attr('tabindex', '-1');
+      this.$elements.siblings('[data-off-canvas-content]').attr('tabindex', '-1');
       this._trapFocus();
     }
   }
@@ -262,7 +262,7 @@ class OffCanvas {
 
     this.$triggers.attr('aria-expanded', 'false');
     if (this.options.trapFocus === true) {
-      $('[data-off-canvas-content]').removeAttr('tabindex');
+      this.$element.siblings('[data-off-canvas-content]').removeAttr('tabindex');
     }
   }
 
