@@ -436,7 +436,7 @@ class Reveal {
     this.isActive = false;
      if (_this.options.deepLink) {
        if (window.history.replaceState) {
-         window.history.replaceState("", document.title, window.location.pathname);
+         window.history.replaceState('', document.title, window.location.href.replace(`#${this.id}`, ''));
        } else {
          window.location.hash = '';
        }
