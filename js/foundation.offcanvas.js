@@ -200,7 +200,7 @@ class OffCanvas {
     }
 
     if (this.options.trapFocus === true) {
-      this.$elements.siblings('[data-off-canvas-content]').attr('tabindex', '-1');
+      this.$element.siblings('[data-off-canvas-content]').attr('tabindex', '-1');
       Foundation.Keyboard.trapFocus(_this.$element);
     }
   }
