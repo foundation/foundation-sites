@@ -47,6 +47,7 @@ class Drilldown {
     this.$submenuAnchors = this.$element.find('li.is-drilldown-submenu-parent').children('a');
     this.$submenus = this.$submenuAnchors.parent('li').children('[data-submenu]');
     this.$menuItems = this.$element.find('li').not('.js-drilldown-back').attr('role', 'menuitem').find('a');
+    this.$element.attr('data-mutate', (this.$element.attr('data-drilldown') || Foundation.GetYoDigits(6, 'drilldown')));
 
     this._prepareMenu();
     this._registerEvents();
@@ -105,6 +106,12 @@ class Drilldown {
     }
   }
 
+  _resize() {
+    this.$wrapper.css({'max-width': 'none', 'min-height': 'none'});
+    // _getMaxDims has side effects (boo) but calling it should update all other necessary heights & widths
+    this.$wrapper.css(this._getMaxDims());
+  }
+
   /**
    * Adds event handlers to elements in the menu.
    * @function
@@ -136,6 +143,7 @@ class Drilldown {
         });
       }
     });
+	  this.$element.on('mutateme.zf.trigger', this._resize.bind(this));
   }
 
   /**
@@ -377,6 +385,7 @@ class Drilldown {
   destroy() {
     if(this.options.scrollTop) this.$element.off('.zf.drilldown',this._bindHandler);
     this._hideAll();
+	  this.$element.off('mutateme.zf.trigger');
     Foundation.Nest.Burn(this.$element, 'drilldown');
     this.$element.unwrap()
                  .find('.js-drilldown-back, .is-submenu-parent-item').remove()
