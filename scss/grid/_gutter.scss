@@ -42,7 +42,8 @@
         @include grid-column-gutter($value);
       }
     }
-  } @else {
+  }
+  @else {
     // breakpoint name
     @if type-of($gutter) == 'string' {
       $gutter: grid-column-gutter($gutter, $gutters);

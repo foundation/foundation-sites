@@ -103,7 +103,7 @@ class AccordionMenu {
           $elements = $element.parent('ul').children('li'),
           $prevElement,
           $nextElement,
-          $target = $element.children('[data-submenu]'); 
+          $target = $element.children('[data-submenu]');
           _this.setIndex(e.target);
 
       $elements.each(function(i) {
@@ -209,7 +209,7 @@ class AccordionMenu {
    * @function
    * @param {jQuery} $target - the submenu to toggle
    */
-  toggle($target){  
+  toggle($target){
     if(!$target.is(':animated')) {
       if (!$target.is(':hidden')) {
         this.up($target);

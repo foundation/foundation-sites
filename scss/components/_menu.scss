@@ -83,9 +83,8 @@ $menu-border: $light-gray !default;
 /// Expands the items of a Menu, so each item is the same width.
 @mixin menu-expand {
   @if $global-flexbox {
-    // scss-lint:disable ZeroUnit
     > li {
-      flex: 1 1 0px;
+      flex: 1 1 0px; // sass-lint:disable-line zero-unit
     }
   }
   @else {

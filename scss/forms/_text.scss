@@ -116,8 +116,7 @@ $form-button-radius: $global-radius !default;
   #{text-inputs()},
   textarea {
     @include form-element;
-    -webkit-appearance: none;
-    -moz-appearance: none;
+    appearance: none;
   }
 
   // Text areas
@@ -147,25 +146,23 @@ $form-button-radius: $global-radius !default;
   // Reset styles on button-like inputs
   [type='submit'],
   [type='button'] {
-    -webkit-appearance: none;
-    -moz-appearance: none;
+    appearance: none;
     border-radius: $form-button-radius;
   }
 
   // Reset Normalize setting content-box to search elements
-  // scss-lint:disable QualifyingElement
-  input[type='search'] {
+  input[type='search'] { // sass-lint:disable-line no-qualifying-elements
     box-sizing: border-box;
   }
 
   // Number input styles
   [type='number'] {
     @if not $input-number-spinners {
-      -moz-appearance: textfield;
+      -moz-appearance: textfield; // sass-lint:disable-line no-vendor-prefix
 
       &::-webkit-inner-spin-button,
       &::-webkit-outer-spin-button {
-        -webkit-appearance: none;
+        -webkit-appearance: none; // sass-lint:disable-line no-vendor-prefix
         margin: 0;
       }
     }

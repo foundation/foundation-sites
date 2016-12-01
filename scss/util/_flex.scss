@@ -35,7 +35,7 @@ $-zf-flex-direction: (
       $x: map-get($-zf-flex-justify, $x);
     }
     @else {
-      @warn 'flex-grid-row-align(): #{$x} is not a valid value for horizontal alignment. Use left, right, center, justify, or spaced.'
+      @warn 'flex-grid-row-align(): #{$x} is not a valid value for horizontal alignment. Use left, right, center, justify, or spaced.';
     }
   }
 
@@ -44,7 +44,7 @@ $-zf-flex-direction: (
       $y: map-get($-zf-flex-align, $y);
     }
     @else {
-      @warn 'flex-grid-row-align(): #{$y} is not a valid value for vertical alignment. Use top, bottom, middle, or stretch.'
+      @warn 'flex-grid-row-align(): #{$y} is not a valid value for vertical alignment. Use top, bottom, middle, or stretch.';
     }
   }
 
@@ -61,7 +61,7 @@ $-zf-flex-direction: (
       $y: map-get($-zf-flex-align, $y);
     }
     @else {
-      @warn 'flex-grid-column-align(): #{$y} is not a valid value for alignment. Use top, bottom, middle, or stretch.'
+      @warn 'flex-grid-column-align(): #{$y} is not a valid value for alignment. Use top, bottom, middle, or stretch.';
     }
   }
 

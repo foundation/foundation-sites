@@ -165,7 +165,7 @@ function mutateListener(debounce) {
 function eventsListener() {
   if(!MutationObserver){ return false; }
   let nodes = document.querySelectorAll('[data-resize], [data-scroll], [data-mutate]');
-  
+
   //element callback
   var listeningElementsMutation = function (mutationRecordsList) {
       var $target = $(mutationRecordsList[0].target);
@@ -174,14 +174,14 @@ function eventsListener() {
       switch (mutationRecordsList[0].type) {
 
         case "attributes":
-          if ($target.attr("data-events") === "scroll" && mutationRecordsList[0].attributeName === "data-events") { 
-		  	$target.triggerHandler('scrollme.zf.trigger', [$target, window.pageYOffset]); 
+          if ($target.attr("data-events") === "scroll" && mutationRecordsList[0].attributeName === "data-events") {
+		  	$target.triggerHandler('scrollme.zf.trigger', [$target, window.pageYOffset]);
 		  }
-		  if ($target.attr("data-events") === "resize" && mutationRecordsList[0].attributeName === "data-events") { 
+		  if ($target.attr("data-events") === "resize" && mutationRecordsList[0].attributeName === "data-events") {
 		  	$target.triggerHandler('resizeme.zf.trigger', [$target]);
 		   }
 		  if (mutationRecordsList[0].attributeName === "style") {
-			  $target.closest("[data-mutate]").attr("data-events","mutate"); 
+			  $target.closest("[data-mutate]").attr("data-events","mutate");
 			  $target.closest("[data-mutate]").triggerHandler('mutateme.zf.trigger', [$target.closest("[data-mutate]")]);
 		  }
 		  break;
@@ -190,7 +190,7 @@ function eventsListener() {
 		  $target.closest("[data-mutate]").attr("data-events","mutate");
 		  $target.closest("[data-mutate]").triggerHandler('mutateme.zf.trigger', [$target.closest("[data-mutate]")]);
           break;
-		  
+
         default:
           return false;
         //nothing

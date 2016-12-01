@@ -45,10 +45,12 @@ $thumbnail-radius: $global-radius !default;
 
 @mixin thumbnail-link {
   transition: $thumbnail-transition;
+
   &:hover,
   &:focus {
     box-shadow: $thumbnail-shadow-hover;
   }
+
   image {
     box-shadow: none;
   }
@@ -58,6 +60,7 @@ $thumbnail-radius: $global-radius !default;
   .thumbnail {
     @include thumbnail;
   }
+
   a.thumbnail {
     @include thumbnail-link;
   }

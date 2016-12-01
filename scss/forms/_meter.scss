@@ -37,8 +37,7 @@ $meter-fill-bad: $alert-color !default;
     height: $meter-height;
     margin-bottom: 1rem;
 
-    -webkit-appearance: none;
-    -moz-appearance: none;
+    appearance: none;
 
     @if has-value($meter-radius) {
       border-radius: $meter-radius;
@@ -96,15 +95,15 @@ $meter-fill-bad: $alert-color !default;
       }
     }
 
-    &:-moz-meter-optimum::-moz-meter-bar {
+    &:-moz-meter-optimum::-moz-meter-bar { // sass-lint:disable-line force-pseudo-nesting
       background: $meter-fill-good;
     }
 
-    &:-moz-meter-sub-optimum::-moz-meter-bar {
+    &:-moz-meter-sub-optimum::-moz-meter-bar { // sass-lint:disable-line force-pseudo-nesting
       background: $meter-fill-medium;
     }
 
-    &:-moz-meter-sub-sub-optimum::-moz-meter-bar {
+    &:-moz-meter-sub-sub-optimum::-moz-meter-bar { // sass-lint:disable-line force-pseudo-nesting
       background: $meter-fill-bad;
     }
   }
