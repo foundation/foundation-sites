@@ -56,10 +56,9 @@ $titlebar-icon-spacing: 0.25rem !default;
   }
 
   @if $global-flexbox {
-    // scss-lint:disable ZeroUnit
     .title-bar-left,
     .title-bar-right {
-      flex: 1 1 0px;
+      flex: 1 1 0px; // sass-lint:disable-line zero-unit
     }
 
     .title-bar-right {

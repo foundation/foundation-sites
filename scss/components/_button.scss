@@ -30,7 +30,7 @@ $button-background-hover: scale-color($button-background, $lightness: -15%) !def
 /// @type List
 $button-color: $white !default;
 
-/// Font color for buttons, if the background is light.
+/// Alternative font color for buttons.
 /// @type List
 $button-color-alt: $black !default;
 
@@ -114,7 +114,7 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
   $background-hover-lightness: $button-background-hover-lightness
 ) {
   @if $color == auto {
-    $color: foreground($background, $button-color-alt, $button-color);
+    $color: color-pick-contrast($background, ($button-color, $button-color-alt));
   }
 
   @if $background-hover == auto {

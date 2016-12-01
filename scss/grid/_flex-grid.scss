@@ -57,8 +57,7 @@
 ///
 /// @param {Mixed} $columns [expand] - Width of the column.
 @function flex-grid-column($columns: expand) {
-  // scss-lint:disable ZeroUnit
-  $flex: 1 1 0px;
+  $flex: 1 1 0px; // sass-lint:disable-line zero-unit
 
   @if $columns == shrink {
     $flex: 0 0 auto;
@@ -79,7 +78,7 @@
   $gutters: $grid-column-gutter
 ) {
   // Base properties
-  flex: flex-grid-column($columns);
+  @include flex-grid-size($columns);
 
   // Gutters
   @include grid-column-gutter($gutters: $gutters);
@@ -318,7 +317,7 @@
   }
 
   .columns {
-    // scss-lint:disable PlaceholderInExtend
-    @extend .column;
+    @extend .column; // sass-lint:disable-line placeholder-in-extend
+
   }
 }

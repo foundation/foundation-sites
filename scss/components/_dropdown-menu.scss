@@ -169,7 +169,8 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
       top: 100%;
       @if $global-text-direction == 'rtl' {
         right: auto;
-      } @else {
+      }
+      @else {
         left: auto;
       }
     }
@@ -214,7 +215,6 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
     }
 
     // [TODO] Cut back specificity
-    // scss-lint:disable SelectorDepth
     //&:not(.js-dropdown-nohover) > .is-dropdown-submenu-parent:hover > &, // why is this line needed? Opening is handled by JS and this causes some ugly flickering when the sub is re-positioned automatically...
     &.js-dropdown-active {
       display: block;

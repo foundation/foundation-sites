@@ -85,7 +85,16 @@ class Drilldown {
       var $menu = $(this),
           $back = $menu.find('.js-drilldown-back');
       if(!$back.length){
-        $menu.prepend(_this.options.backButton);
+        switch (_this.options.backButtonPosition) {
+          case "bottom":
+            $menu.append(_this.options.backButton);
+            break;
+          case "top":
+            $menu.prepend(_this.options.backButton);
+            break;
+          default:
+            console.error("Unsupported backButtonPosition value '" + _this.options.backButtonPosition + "'");
+        }
       }
       _this._back($menu);
     });
@@ -389,11 +398,17 @@ class Drilldown {
 
 Drilldown.defaults = {
   /**
-   * Markup used for JS generated back button. Prepended to submenu lists and deleted on `destroy` method, 'js-drilldown-back' class required. Remove the backslash (`\`) if copy and pasting.
+   * Markup used for JS generated back button. Prepended  or appended (see backButtonPosition) to submenu lists and deleted on `destroy` method, 'js-drilldown-back' class required. Remove the backslash (`\`) if copy and pasting.
    * @option
    * @example '<\li><\a>Back<\/a><\/li>'
    */
   backButton: '<li class="js-drilldown-back"><a tabindex="0">Back</a></li>',
+  /**
+   * Position the back button either at the top or bottom of drilldown submenus.
+   * @option
+   * @example bottom
+   */
+  backButtonPosition: 'top',
   /**
    * Markup used to wrap drilldown menu. Use a class name for independent styling; the JS applied class: `is-drilldown` is required. Remove the backslash (`\`) if copy and pasting.
    * @option

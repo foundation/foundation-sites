@@ -475,6 +475,11 @@ $abbr-underline: 1px dotted $black !default;
     cursor: help;
   }
 
+  // Figures
+  figure {
+    margin: 0;
+  }
+  
   // Code
   code {
     padding: $code-padding;

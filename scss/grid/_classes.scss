@@ -21,7 +21,8 @@
   $uncollapse: 'uncollapse',
   $offset: 'offset',
   $end: 'end',
-  $expanded: 'expanded'
+  $expanded: 'expanded',
+  $block: 'block'
 ) {
   // Row
   .#{$row} {
@@ -118,7 +119,7 @@
     // Block grid
     @for $i from 1 through $block-grid-max {
       .#{$-zf-size}-up-#{$i} {
-        @include grid-layout($i, ".#{$column}");
+        @include grid-layout($i, '.#{$column}');
       }
     }
 
@@ -154,9 +155,14 @@
     }
   }
 
+  // Block grid columns
+  .#{$column}-#{$block} {
+    @include grid-column-margin;
+  }
+
   @if $column == 'column' {
     .columns {
-      // scss-lint:disable PlaceholderInExtend
+      // sass-lint:disable-block placeholder-in-extend
       @extend .column;
     }
   }

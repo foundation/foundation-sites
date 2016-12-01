@@ -58,7 +58,7 @@ $orbit-control-zindex: 10 !default;
 /// Adds styles for the inner Orbit slide container. These styles are used on the `.orbit-container` class.
 @mixin orbit-container {
   position: relative;
-  height: 0px; // Prevent FOUC by not showing until JS sets height
+  height: 0; // Prevent FOUC by not showing until JS sets height
   margin: 0;
   list-style: none;
   overflow: hidden;
@@ -82,9 +82,9 @@ $orbit-control-zindex: 10 !default;
 
 /// Adds styles for a slide containing an image. These styles are used on the `.orbit-image` class.
 @mixin orbit-image {
-  margin: 0;
   width: 100%;
   max-width: 100%;
+  margin: 0;
 }
 
 /// Adds styles for an orbit slide caption. These styles are used on the `.orbit-caption` class.
@@ -96,7 +96,7 @@ $orbit-control-zindex: 10 !default;
   padding: $orbit-caption-padding;
 
   background-color: $orbit-caption-background;
-  color: foreground($orbit-caption-background);
+  color: color-pick-contrast($orbit-caption-background);
 }
 
 /// Adds base styles for the next/previous buttons in an Orbit slider. These styles are shared between the `.orbit-next` and `.orbit-previous` classes in the default CSS.

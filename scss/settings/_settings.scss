@@ -49,11 +49,11 @@ $global-font-size: 100%;
 $global-width: rem-calc(1200);
 $global-lineheight: 1.5;
 $foundation-palette: (
-  primary: #2199e8,
-  secondary: #777,
+  primary: #1779ba,
+  secondary: #767676,
   success: #3adb76,
   warning: #ffae00,
-  alert: #ec5840,
+  alert: #cc4b37,
 );
 $light-gray: #e6e6e6;
 $medium-gray: #cacaca;
@@ -197,12 +197,12 @@ $input-error-font-weight: $global-weight-bold;
 $accordion-background: $white;
 $accordion-plusminus: true;
 $accordion-title-font-size: rem-calc(12);
-$accordion-item-color: foreground($accordion-background, $primary-color);
+$accordion-item-color: $primary-color;
 $accordion-item-background-hover: $light-gray;
 $accordion-item-padding: 1.25rem 1rem;
 $accordion-content-background: $white;
 $accordion-content-border: 1px solid $light-gray;
-$accordion-content-color: foreground($accordion-content-background, $body-font-color);
+$accordion-content-color: $body-font-color;
 $accordion-content-padding: 1rem;
 
 // 8. Accordion Menu
@@ -215,7 +215,8 @@ $accordionmenu-arrow-color: $primary-color;
 // --------
 
 $badge-background: $primary-color;
-$badge-color: foreground($badge-background);
+$badge-color: $white;
+$badge-color-alt: $black;
 $badge-padding: 0.3em;
 $badge-minwidth: 2.1em;
 $badge-font-size: 0.6rem;
@@ -280,12 +281,12 @@ $callout-link-tint: 30%;
 
 $closebutton-position: right top;
 $closebutton-offset-horizontal: (
-  small: .66rem,
+  small: 0.66rem,
   medium: 1rem,
 );
 $closebutton-offset-vertical: (
-  small: .33em,
-  medium: .5rem,
+  small: 0.33em,
+  medium: 0.5rem,
 );
 $closebutton-sizes: (
   small: 1.5em,
@@ -371,7 +372,8 @@ $form-button-radius: $global-radius;
 // ---------
 
 $label-background: $primary-color;
-$label-color: foreground($label-background);
+$label-color: $white;
+$label-color-alt: $black;
 $label-font-size: 0.8rem;
 $label-padding: 0.33333rem 0.5rem;
 $label-radius: $global-radius;
@@ -443,7 +445,7 @@ $pagination-item-spacing: rem-calc(1);
 $pagination-radius: $global-radius;
 $pagination-item-background-hover: $light-gray;
 $pagination-item-background-current: $primary-color;
-$pagination-item-color-current: foreground($pagination-item-background-current);
+$pagination-item-color-current: $white;
 $pagination-item-color-disabled: $medium-gray;
 $pagination-ellipsis-color: $black;
 $pagination-mobile-items: false;
@@ -534,14 +536,16 @@ $show-header-for-stacked: false;
 
 $tab-margin: 0;
 $tab-background: $white;
+$tab-color: $primary-color;
 $tab-background-active: $light-gray;
+$tab-active-color: $primary-color;
 $tab-item-font-size: rem-calc(12);
 $tab-item-background-hover: $white;
 $tab-item-padding: 1.25rem 1.5rem;
 $tab-expand-max: 6;
 $tab-content-background: $white;
 $tab-content-border: $light-gray;
-$tab-content-color: foreground($tab-background, $primary-color);
+$tab-content-color: $body-font-color;
 $tab-content-padding: 1rem;
 
 // 33. Thumbnail

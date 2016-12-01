@@ -70,7 +70,6 @@ $menu-border: $light-gray !default;
     line-height: 1;
   }
 
-
   // Reset styles of inner elements
   input,
   select,
@@ -83,9 +82,8 @@ $menu-border: $light-gray !default;
 /// Expands the items of a Menu, so each item is the same width.
 @mixin menu-expand {
   @if $global-flexbox {
-    // scss-lint:disable ZeroUnit
     > li {
-      flex: 1 1 0px;
+      flex: 1 1 0px; // sass-lint:disable-line zero-unit
     }
   }
   @else {
@@ -235,7 +233,7 @@ $menu-border: $light-gray !default;
 }
 
 @mixin foundation-menu {
-  .menu, .tree {
+  .menu {
     @include menu-base;
     @include menu-icons;
 

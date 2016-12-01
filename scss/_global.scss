@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-// scss-lint:disable ColorVariable, QualifyingElement, VendorPrefix
+// sass-lint:disable force-attribute-nesting, force-pseudo-nesting, no-color-literals, no-qualifying-elements
 
 ////
 /// @group global
@@ -23,11 +23,11 @@ $global-lineheight: 1.5 !default;
 /// Colors used for buttons, callouts, links, etc. There must always be a color called `primary`.
 /// @type Map
 $foundation-palette: (
-  primary: #2199e8,
-  secondary: #777,
+  primary: #1779ba,
+  secondary: #767676,
   success: #3adb76,
   warning: #ffae00,
-  alert: #ec5840,
+  alert: #cc4b37,
 ) !default;
 
 /// Color used for light gray UI items.
@@ -176,8 +176,7 @@ $-zf-flex-classes-imported: false;
   }
 
   // Styles Google Maps and MapQuest embeds properly
-  // scss-lint:disable IdSelector
-  #map_canvas,
+  // sass-lint:disable-line no-ids
   .map_canvas,
   .mqa-display {
     img,
@@ -193,8 +192,7 @@ $-zf-flex-classes-imported: false;
 
     padding: 0;
 
-    -webkit-appearance: none;
-    -moz-appearance: none;
+    appearance: none;
     border: 0;
     border-radius: $global-radius;
     background: transparent;

@@ -44,7 +44,7 @@ $drilldown-background: $white !default;
     #{$global-left}: 100%;
     z-index: -1;
 
-    // height: 100%;
+    min-height: 100%;
     width: 100%;
     background: $drilldown-background;
     transition: $drilldown-transition;

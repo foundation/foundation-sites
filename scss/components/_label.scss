@@ -12,7 +12,11 @@ $label-background: $primary-color !default;
 
 /// Default text color for labels.
 /// @type Color
-$label-color: foreground($label-background) !default;
+$label-color: $white !default;
+
+/// Alternate text color for labels.
+/// @type Color
+$label-color-alt: $black !default;
 
 /// Default font size for labels.
 /// @type Number
@@ -50,7 +54,7 @@ $label-radius: $global-radius !default;
       @if $name != primary {
         &.#{$name} {
           background: $color;
-          color: foreground($color);
+          color: color-pick-contrast($color, ($label-color, $label-color-alt));
         }
       }
     }

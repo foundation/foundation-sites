@@ -33,8 +33,7 @@ $progress-radius: $global-radius !default;
     height: $progress-height;
     margin-bottom: $progress-margin-bottom;
 
-    -webkit-appearance: none;
-    -moz-appearance: none;
+    appearance: none;
 
     @if hasvalue($progress-radius) {
       border-radius: $progress-radius;
@@ -82,14 +81,14 @@ $progress-radius: $global-radius !default;
         }
       }
     }
-    
-    // For IE and Edge  
-    &::-ms-fill{
+
+    // For IE and Edge
+    &::-ms-fill {
       @if hasvalue($progress-radius) {
-        border-radius: $progress-radius;  
+        border-radius: $progress-radius;
       }
 
-      border: 0;     
-    } 
+      border: 0;
+    }
   }
 }

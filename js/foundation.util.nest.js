@@ -4,21 +4,12 @@
 
 const Nest = {
   Feather(menu, type = 'zf') {
+    menu.attr('role', 'menubar');
 
-    if( type !== 'accordion'){
-      menu.attr('role', 'menubar');
-      menu.find('a:first').attr('tabindex', 0);
-    } else {
-      menu.find('li:first').attr('tabindex', 0);
-    }
-
-    var roleType = (type === 'accordion') ? 'treeitem' : 'menuitem',
-        elementType = (type === 'accordion') ? 'span' : 'a',
-        items = menu.find('li').attr({'role': roleType}),
+    var items = menu.find('li').attr({'role': 'menuitem'}),
         subMenuClass = `is-${type}-submenu`,
         subItemClass = `${subMenuClass}-item`,
-        hasSubClass = `is-${type}-submenu-parent`,
-        noSubClass = `is-${type}-submenu-none`;
+        hasSubClass = `is-${type}-submenu-parent`;
 
     items.each(function() {
       var $item = $(this),
@@ -29,22 +20,23 @@ const Nest = {
           .addClass(hasSubClass)
           .attr({
             'aria-haspopup': true,
-            'aria-expanded': false,
-            'aria-label': $item.children(elementType + ':first').text()
+            'aria-label': $item.children('a:first').text()
           });
+          // Note:  Drilldowns behave differently in how they hide, and so need
+          // additional attributes.  We should look if this possibly over-generalized
+          // utility (Nest) is appropriate when we rework menus in 6.4
+          if(type === 'drilldown') {
+            $item.attr({'aria-expanded': false});
+          }
 
         $sub
           .addClass(`submenu ${subMenuClass}`)
           .attr({
             'data-submenu': '',
-            'aria-hidden': true,
             'role': 'menu'
           });
-      } else {
-        $item.addClass(noSubClass).find('a').attr('tabindex',-1);
-        var text = $item.addClass(noSubClass).find('a').text();
-        if( $item.find('a').length > 0 ){
-          $item.attr('aria-label',text + ' link');
+        if(type === 'drilldown') {
+          $sub.attr({'aria-hidden': true});
         }
       }
 
@@ -57,7 +49,7 @@ const Nest = {
   },
 
   Burn(menu, type) {
-    var items = menu.find('li').removeAttr('tabindex'),
+    var //items = menu.find('li'),
         subMenuClass = `is-${type}-submenu`,
         subItemClass = `${subMenuClass}-item`,
         hasSubClass = `is-${type}-submenu-parent`;
