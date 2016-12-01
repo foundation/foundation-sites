@@ -245,8 +245,6 @@ class Tabs {
       } else {
         history.replaceState({}, '', anchor);
       }
-    } else {
-      history.replaceState({}, '', window.location.pathname);
     }
 
     /**
