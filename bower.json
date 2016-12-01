@@ -28,6 +28,7 @@
   ],
   "dependencies": {
     "jquery": "~2.2.0",
+    "normalize.scss": "^6.0.0",
     "what-input": "~2.0.0"
   }
 }
