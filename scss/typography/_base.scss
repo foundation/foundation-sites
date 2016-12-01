@@ -309,15 +309,7 @@ $abbr-underline: 1px dotted $black !default;
   }
 
   // Heading sizes
-  @each $size, $headers in $header-sizes {
-    @include breakpoint($size) {
-      @each $header, $font-size in $headers {
-        #{$header} {
-          font-size: rem-calc($font-size);
-        }
-      }
-    }
-  }
+  @include typography-header-font-size;
 
   // Links
   a {
@@ -456,6 +448,29 @@ $abbr-underline: 1px dotted $black !default;
 
     @if has-value($keystroke-radius) {
       border-radius: $keystroke-radius;
+    }
+  }
+}
+
+/// Calculates the header font-size based on breakpoints.
+///
+/// @param {String} the size of the header to output.
+@mixin typography-header-font-size (
+  $requested-size
+) {
+  // Heading sizes
+  @each $size, $headers in $header-sizes {
+    @include breakpoint($size) {
+      @each $header, $font-size in $headers {
+        @if $requested-size == $size {
+          font-size: rem-calc($font-size);
+        }
+        @else {
+          #{$header} {
+            font-size: rem-calc($font-size);
+          }
+        }
+      }
     }
   }
 }
