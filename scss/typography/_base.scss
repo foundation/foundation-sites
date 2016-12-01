@@ -50,30 +50,31 @@ $header-lineheight: 1.4 !default;
 /// @type Number
 $header-margin-bottom: 0.5rem !default;
 
-/// Sizes of headings at various screen sizes. Each key is a breakpoint, and each value is a map of heading sizes.
+/// Styles for headings at various screen sizes. Each key is a breakpoint, and each value is a map of heading styles.
 /// @type Map
-$header-sizes: (
+$header-styles: (
   small: (
-    'h1': 24,
-    'h2': 20,
-    'h3': 19,
-    'h4': 18,
-    'h5': 17,
-    'h6': 16,
+    'h1': ('font-size': 24),
+    'h2': ('font-size': 20),
+    'h3': ('font-size': 19),
+    'h4': ('font-size': 18),
+    'h5': ('font-size': 17),
+    'h6': ('font-size': 16),
   ),
   medium: (
-    'h1': 48,
-    'h2': 40,
-    'h3': 31,
-    'h4': 25,
-    'h5': 20,
-    'h6': 16,
+    'h1': ('font-size': 48),
+    'h2': ('font-size': 40),
+    'h3': ('font-size': 31),
+    'h4': ('font-size': 25),
+    'h5': ('font-size': 20),
+    'h6': ('font-size': 16),
   ),
 ) !default;
 
-/// $header-styles map is built from $header-sizes in order to ensure downward compatibility
-/// when $header-sizes is depreciated, $header-styles needs to get !default values like settings.scss
+// $header-styles map is built from $header-sizes in order to ensure downward compatibility
+// when $header-sizes is depreciated, $header-styles needs to get !default values like settings.scss
 @function build_from_header-sizes($header-sizes) {
+  @warn 'Note, that $header-sizes has been replaced with $header-styles. $header-sizes still works, but it is going to be depreciated.';
   $header-styles: ();
   @each $size, $headers in $header-sizes {
     $header-map: ();
@@ -85,8 +86,10 @@ $header-sizes: (
   @return $header-styles;
 }
 
-/// $headers-styles is replacing $header-sizes. See the documentation.
-$header-styles: build_from_header-sizes($header-sizes) !default;
+// If it exists $headers-sizes is used to build $header-styles. See the documentation.
+@if variable-exists(header-sizes) {
+  $header-styles: build_from_header-sizes($header-sizes);
+}
 
 /// Text rendering method of headers.
 /// @type String
