@@ -52,7 +52,7 @@ Add color classes to give buttons additional meaning. These classes are generate
   <p>The default settings meet WCAG 2.0 level AA contrast requirements. Be sure to [check the contrast](http://webaim.org/resources/contrastchecker/) when changing color variables. To give all buttons the same color text, set `$button-color` and `$button-color-alt` to the same value &mdash; but know that doing so may decrease accessibility.</p>
 </div>
 
-The `.disabled` class will give buttons a faded appearance.
+The `.disabled` class will give buttons a faded appearance, as will the <code>disabled</code> attribute for <code>&lt;button&gt;</code> elements.
 
 <div class="primary callout">
   <p>The <code>.disabled</code> class is a purely visual style, and won't actually disable a control. For <code>&lt;button&gt;</code> elements, you can add the <code>disabled</code> attribute to disable it. If you want to disable a link, you should add the `aria-disabled` attribute to mark it as disabled for assistive technology.</p>
