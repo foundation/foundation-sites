@@ -224,7 +224,7 @@ For parent-level alignment, use `flex-align()`. You can pass in a horizontal ali
 }
 ```
 
-For child-level alignment, use `flex-align-self()`. You can pass in any horizontal alignment.
+For child-level alignment, use `flex-align-self()`. You can pass in any vertical alignment.
 
 ```scss
 .sidebar {
