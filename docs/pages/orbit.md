@@ -19,25 +19,25 @@ Orbit doesn't automatically generate any HTML for you, giving you the flexibilit
     <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
   <ul class="orbit-container">
     <li class="is-active orbit-slide">
-      <figure>
+      <figure class="orbit-slide">
         <img class="orbit-image" src="assets/img/orbit/01.jpg" alt="Space">
         <figcaption class="orbit-caption">Space, the final frontier.</figcaption>
       </figure>
     </li>
     <li class="orbit-slide">
-      <figure>
+      <figure class="orbit-slide">
         <img class="orbit-image" src="assets/img/orbit/02.jpg" alt="Space">
         <figcaption class="orbit-caption">Lets Rocket!</figcaption>
       </figure>
     </li>
     <li class="orbit-slide">
-      <figure>
+      <figure class="orbit-slide">
         <img class="orbit-image" src="assets/img/orbit/03.jpg" alt="Space">
         <figcaption class="orbit-caption">Encapsulating</figcaption>
       </figure>
     </li>
     <li class="orbit-slide">
-      <figure>
+      <figure class="orbit-slide">
         <img class="orbit-image" src="assets/img/orbit/04.jpg" alt="Space">
         <figcaption class="orbit-caption">Outta This World</figcaption>
       </figure>
