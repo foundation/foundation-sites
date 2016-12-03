@@ -60,7 +60,7 @@
   @include grid-column-uncollapse($gutter);
 }
 
-/// Sets bottom marin on grid columns to match gutters
+/// Sets bottom margin on grid columns to match gutters
 /// @param {Number|Keyword} $margin [auto]
 ///   The bottom margin on grid columns, accepts multiple values:
 ///   - A single value will make the margin that exact size.
