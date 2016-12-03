@@ -80,7 +80,7 @@
 /// @param {Number|Map} $gutters [$grid-column-gutter] - Gutter map or single value to use when inverting margins. Responsive gutter settings by default.
 @mixin grid-row-nest($gutters: $grid-column-gutter) {
   @include -zf-each-breakpoint {
-    $margin: rem-calc(grid-column-gutter($-zf-size, $gutters)) / 2 * -1;
+    $margin: rem-calc(-zf-breakpoint-value($-zf-size, $gutters)) / 2 * -1;
 
     margin-right: $margin;
     margin-left: $margin;

@@ -6,24 +6,6 @@
 /// @group grid
 ////
 
-/// Get a gutter size for a given breakpoint
-/// @param {Keyword} $breakpoint [small] - Breakpoint name.
-/// @param {Number|Map} $gutters [$grid-column-gutter] - Gutter map or single value to use. Responsive gutter settings by default.
-///
-/// @returns {Number} Gutter size.
-@function grid-column-gutter(
-  $breakpoint: $-zf-zero-breakpoint,
-  $gutters: $grid-column-gutter
-) {
-  // If gutter is single value, return it
-  @if type-of($gutters) == 'number' {
-    @return $gutters;
-  }
-
-  // Else, return the corresponding responsive value
-  @return -zf-get-bp-val($gutters, $breakpoint);
-}
-
 /// Set the gutters on a column
 /// @param {Number|Keyword} $gutter [auto]
 ///   Spacing between columns, accepts multiple values:
@@ -35,22 +17,8 @@
   $gutter: auto,
   $gutters: $grid-column-gutter
 ) {
-  @if $gutter == auto and type-of($gutters) == 'map' {
-    // "auto"
-    @each $breakpoint, $value in $gutters {
-      @include breakpoint($breakpoint) {
-        @include grid-column-gutter($value);
-      }
-    }
-  }
-  @else {
-    // breakpoint name
-    @if type-of($gutter) == 'string' {
-      $gutter: grid-column-gutter($gutter, $gutters);
-    }
-
-    // single value
-    $padding: rem-calc($gutter) / 2;
+  @include -zf-breakpoint-value($gutter, $gutters) {
+    $padding: rem-calc($-zf-bp-value) / 2;
 
     padding-right: $padding;
     padding-left: $padding;
@@ -103,23 +71,10 @@
   $margin: auto,
   $margins: $grid-column-gutter
 ) {
-  @if $margin == auto and type-of($margins) == 'map' {
-    // "auto"
-    @each $breakpoint, $value in $margins {
-      @include breakpoint($breakpoint) {
-        @include grid-column-margin($value);
-      }
-    }
-  } @else {
-    // breakpoint name
-    @if type-of($margin) == 'string' {
-      $margin: grid-column-gutter($margin, $margins);
-    }
-
-    // single value
-    $margin-bottom: rem-calc($margin);
+  @include -zf-breakpoint-value($margin, $margins) {
+    $margin-bottom: rem-calc($-zf-bp-value);
     margin-bottom: $margin-bottom;
-    
+
     > :last-child {
       margin-bottom: 0;
     }

@@ -248,6 +248,24 @@ $breakpoint-classes: (small medium large) !default;
   }
 }
 
+/// Get a value in a map for a given breakpoint name
+/// @param {Keyword} $bp-name [small] - Breakpoint name.
+/// @param {Number|Map} $bp-values-map - Map of breakpoints and values or single value to use.
+///
+/// @returns {Number} Breakpoint-related value from `$bp-values-map`.
+@function -zf-breakpoint-value(
+  $bp-name: $-zf-zero-breakpoint,
+  $bp-values-map: null
+) {
+  // If the map is a single value, return it
+  @if type-of($bp-values-map) == 'number' {
+    @return $bp-values-map;
+  }
+
+  // Else, return the corresponding breakpoint value
+  @return -zf-get-bp-val($bp-values-map, $bp-name);
+}
+
 // Legacy breakpoint variables
 // These will be removed in 6.3
 $small-up: null;
