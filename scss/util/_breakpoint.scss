@@ -211,14 +211,22 @@ $breakpoint-classes: (small medium large) !default;
 
 }
 
-/// Get a value for a breakpoint from a responsive config map. If the config map has the key `$value`, the exact breakpoint value is returned. If the config map does *not* have the breakpoint, the value matching the next lowest breakpoint in the config map is returned.
+/// Get a value for a breakpoint from a responsive config map or single value.
+/// - If the config is a single value, return it regardless of `$value`.
+/// - If the config is a map and has the key `$value`, the exact breakpoint value is returned.
+/// - If the config is a map and does *not* have the breakpoint, the value matching the next lowest breakpoint in the config map is returned.
 /// @access private
 ///
-/// @param {Map} $map - Input config map.
+/// @param {Number|Map} $map - Responsive config map or single value.
 /// @param {Keyword} $value - Breakpoint name to use.
 ///
 /// @return {Mixed} The corresponding breakpoint value.
 @function -zf-get-bp-val($map, $value) {
+  // If the given map is a single value, return it
+  @if type-of($map) == 'number' {
+    @return $map;
+  }
+
   // Check if the breakpoint name exists globally
   @if not map-has-key($breakpoints, $value) {
     @return null;
@@ -246,24 +254,6 @@ $breakpoint-classes: (small medium large) !default;
 
     @return map-get($map, $anchor);
   }
-}
-
-/// Get a value in a map for a given breakpoint name
-/// @param {Keyword} $bp-name [small] - Breakpoint name.
-/// @param {Number|Map} $bp-values-map - Map of breakpoints and values or single value to use.
-///
-/// @returns {Number} Breakpoint-related value from `$bp-values-map`.
-@function -zf-breakpoint-value(
-  $bp-name: $-zf-zero-breakpoint,
-  $bp-values-map: null
-) {
-  // If the map is a single value, return it
-  @if type-of($bp-values-map) == 'number' {
-    @return $bp-values-map;
-  }
-
-  // Else, return the corresponding breakpoint value
-  @return -zf-get-bp-val($bp-values-map, $bp-name);
 }
 
 // Legacy breakpoint variables

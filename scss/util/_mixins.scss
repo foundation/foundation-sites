@@ -267,7 +267,7 @@
   @else {
     // breakpoint name
     @if type-of($name) == 'string' {
-      $name: -zf-breakpoint-value($name, $map);
+      $name: -zf-get-bp-val($map, $name);
     }
 
     // breakpoint value
