@@ -118,8 +118,8 @@ class DropdownMenu {
             hasSub = $elem.hasClass(parClass);
 
         if (hasSub) {
-          clearTimeout(_this.delay);
-          _this.delay = setTimeout(function() {
+          clearTimeout(this.delay);
+          this.delay = setTimeout(function() {
             _this._show($elem.children('.is-dropdown-submenu'));
           }, _this.options.hoverDelay);
         }
@@ -129,8 +129,8 @@ class DropdownMenu {
         if (hasSub && _this.options.autoclose) {
           if ($elem.attr('data-is-click') === 'true' && _this.options.clickOpen) { return false; }
 
-          clearTimeout(_this.delay);
-          _this.delay = setTimeout(function() {
+          clearTimeout(this.delay);
+          this.delay = setTimeout(function() {
             _this._hide($elem);
           }, _this.options.closingTime);
         }
