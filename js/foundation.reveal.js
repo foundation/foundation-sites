@@ -80,7 +80,7 @@ class Reveal {
    * Creates an overlay div to display behind the modal.
    * @private
    */
-  _makeOverlay(id) {
+  _makeOverlay() {
     var $overlay = $('<div></div>')
                     .addClass('reveal-overlay')
                     .appendTo(this.options.appendTo);
