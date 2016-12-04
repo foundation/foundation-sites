@@ -2032,7 +2032,7 @@ select {
   .callout > :first-child {
     margin-top: 0; }
   .callout > :last-child {
-    margin-bottom: 0; }
+    margin-bottom: inherit; }
   .callout.primary {
     background-color: #def0fc; }
   .callout.secondary {
