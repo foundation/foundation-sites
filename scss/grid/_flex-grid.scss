@@ -125,29 +125,6 @@
   }
 }
 
-/// Changes the source order of a flex grid column. Columns with lower numbers appear first in the layout.
-/// @param {Number} $order [0] - Order number to apply.
-@mixin flex-grid-order($order: 0) {
-  @warn 'This mixin is being replaced by flex-order(). flex-grid-order() will be removed in Foundation 6.3.';
-  @include flex-order($order);
-}
-
-/// Horizontally or vertically aligns the columns within a flex row. Apply this mixin to a flex row.
-///
-/// @param {Keyword} $x [null] - Horizontal alignment to use. Can be `left`, `right`, `center`, `justify`, or `spaced`. Or, set it to `null` (the default) to not set horizontal alignment.
-/// @param {Keyword} $y [null] - Vertical alignment to use. Can be `top`, `bottom`, `middle`, or `stretch`. Or, set it to `null` (the default) to not set vertical alignment.
-@mixin flex-grid-row-align($x: null, $y: null) {
-  @warn 'This mixin is being replaced by flex-align(). flex-grid-row-align() will be removed in Foundation 6.3.';
-  @include flex-align($x, $y);
-}
-
-/// Vertically align a single column within a flex row. Apply this mixin to a flex column.
-///
-/// @param {Keyword} $y [null] - Vertical alignment to use. Can be `top`, `bottom`, `middle`, or `stretch`. Or, set it to `null` (the default) to not set vertical alignment.
-@mixin flex-grid-column-align($y: null) {
-  @warn 'This mixin is being replaced by flex-align-self(). flex-grid-column-align() will be removed in Foundation 6.3.';
-  @include flex-align-self($y);
-}
 
 @mixin foundation-flex-grid {
   // Row
@@ -306,14 +283,6 @@
   .shrink {
     flex: flex-grid-column(shrink);
     max-width: 100%;
-  }
-
-  // Vertical alignment using align-items and align-self
-  // Remove these in 6.3
-  @each $vdir, $prop in $-zf-flex-align {
-    .column.align-#{$vdir} {
-      @include flex-align-self($vdir);
-    }
   }
 
   .columns {

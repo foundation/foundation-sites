@@ -248,19 +248,6 @@ $breakpoint-classes: (small medium large) !default;
   }
 }
 
-// Legacy breakpoint variables
-// These will be removed in 6.3
-$small-up: null;
-$small-only: null;
-$medium-up: null;
-$medium-only: null;
-$large-up: null;
-$large-only: null;
-$xlarge-up: null;
-$xlarge-only: null;
-$xxlarge-up: null;
-$xxlarge-only: null;
-
 @if map-has-key($breakpoints, small) {
   $small-up: screen;
   $small-only: unquote('screen and #{breakpoint(small only)}');
