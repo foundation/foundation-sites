@@ -20,9 +20,7 @@ gulp.task('sass:foundation', function() {
   return gulp.src(['assets/*'])
     .pipe(sourcemaps.init())
     .pipe(plumber())
-    .pipe(sass({
-      includePaths: CONFIG.SASS_DEPS_PATHS
-    }).on('error', sass.logError))
+    .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer({
       browsers: CONFIG.CSS_COMPATIBILITY
     }))
@@ -42,7 +40,7 @@ gulp.task('sass:docs', function() {
   return gulp.src('docs/assets/scss/docs.scss')
     .pipe(sourcemaps.init())
     .pipe(sass({
-      includePaths: CONFIG.SASS_DEPS_PATHS.concat(CONFIG.SASS_DOC_PATHS)
+      includePaths: CONFIG.SASS_DOC_PATHS
     }).on('error', sass.logError))
     .pipe(autoprefixer({
       browsers: CONFIG.CSS_COMPATIBILITY
