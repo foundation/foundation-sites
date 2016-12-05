@@ -92,7 +92,6 @@
     height: $weight;
 
     background: $color;
-    box-shadow: $shadow;
 
     content: '';
 
@@ -100,6 +99,8 @@
       $offset: ($weight + $spacing) * ($i - 1);
       $shadow: append($shadow, 0 $offset 0 $color, comma);
     }
+
+    box-shadow: $shadow;
   }
 
   // Hover state
