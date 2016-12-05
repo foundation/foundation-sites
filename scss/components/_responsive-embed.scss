@@ -10,13 +10,12 @@
 /// @type Number
 $responsive-embed-margin-bottom: rem-calc(16) !default;
 
-/// Padding used to create a 4:3 aspect ratio.
-/// @type Number
-$responsive-embed-ratio: 4 by 3 !default;
-
-/// Padding used to create a 16:9 aspect ratio.
-/// @type Number
-$responsive-embed-ratio-widescreen: 16 by 9 !default;
+/// Aspect ratios used to determine padding-bottom of responsive embed containers.
+/// @type Map
+$responsive-embed-ratios: (
+  default: 4 by 3,
+  widescreen: 16 by 9,
+) !default;
 
 /// Creates a percentage height that can be used as padding in a responsive embed container.
 /// @param {List} $ratio - Ratio to use to calculate the height, formatted as `x by y`.
@@ -29,7 +28,7 @@ $responsive-embed-ratio-widescreen: 16 by 9 !default;
 
 /// Creates a responsive embed container.
 /// @param {List} $ratio [$responsive-embed-ratio] - Ratio to use for the container, formatted as `x by y`.
-@mixin responsive-embed($ratio: $responsive-embed-ratio) {
+@mixin responsive-embed($ratio: 4 by 3) {
   position: relative;
   height: 0;
   margin-bottom: $responsive-embed-margin-bottom;
@@ -50,10 +49,14 @@ $responsive-embed-ratio-widescreen: 16 by 9 !default;
 
 @mixin foundation-responsive-embed {
   .responsive-embed, .flex-video {
-    @include responsive-embed;
+    @include responsive-embed( map-get($responsive-embed-ratios,default) );
 
-    &.widescreen {
-      padding-bottom: responsive-embed($responsive-embed-ratio-widescreen);
+    @each $name, $ratio in $responsive-embed-ratios {
+      @if $name != default {
+        &.#{$name} {
+          padding-bottom: responsive-embed($ratio);
+        }
+      }
     }
   }
 }
@@ -65,20 +68,5 @@ $responsive-embed-ratio-widescreen: 16 by 9 !default;
 
 @mixin flex-video($ratio: $responsive-embed-ratio) {
   @warn 'This mixin is being replaced by responsive-embed(). flex-video() will be removed in Foundation 6.4.';
-  position: relative;
-  height: 0;
-  margin-bottom: $responsive-embed-margin-bottom;
-  padding-bottom: responsive-embed($ratio);
-  overflow: hidden;
-
-  iframe,
-  object,
-  embed,
-  video {
-    position: absolute;
-    top: 0;
-    #{$global-left}: 0;
-    width: 100%;
-    height: 100%;
-  }
+  @include responsive-embed;
 }
