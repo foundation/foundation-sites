@@ -28,7 +28,10 @@ $responsive-embed-ratios: (
 
 /// Creates a responsive embed container.
 /// @param {List} $ratio [$responsive-embed-ratio] - Ratio to use for the container, formatted as `x by y`.
-@mixin responsive-embed($ratio: map-get($responsive-embed-ratios,default)) {
+@mixin responsive-embed($ratio: null) {
+  @if $ratio == null {
+    $ratio: map-get($responsive-embed-ratios, default);
+  }
   position: relative;
   height: 0;
   margin-bottom: $responsive-embed-margin-bottom;
@@ -51,11 +54,11 @@ $responsive-embed-ratios: (
   .responsive-embed, .flex-video {
     @include responsive-embed( map-get($responsive-embed-ratios,default) );
 
+    $responsive-embed-ratios: map-remove($responsive-embed-ratios,default);
+
     @each $name, $ratio in $responsive-embed-ratios {
-      @if $name != default {
-        &.#{$name} {
-          padding-bottom: responsive-embed($ratio);
-        }
+      &.#{$name} {
+        padding-bottom: responsive-embed($ratio);
       }
     }
   }
