@@ -22,6 +22,7 @@
   "license": "MIT",
   "devDependencies": {
     "array-uniq": "^1.0.2",
+    "autoprefixer": "^6.5.3",
     "babel-core": "^6.3.26",
     "babel-eslint": "^5.0.0",
     "babel-plugin-transform-es2015-arrow-functions": "^6.3.13",
@@ -42,7 +43,6 @@
     "foundation-docs": "zurb/foundation-docs",
     "gulp": "^3.8.10",
     "gulp-add-src": "^0.2.0",
-    "gulp-autoprefixer": "^2.3.1",
     "gulp-babel": "^6.1.1",
     "gulp-cache-bust": "1.0.2",
     "gulp-check-deps": "^1.4.1",

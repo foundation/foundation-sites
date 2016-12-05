@@ -13,13 +13,14 @@ var replace = require('gulp-replace');
 var rename = require('gulp-rename');
 var rimraf = require('rimraf');
 var sass = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
 var source = require('vinyl-source-stream');
 var touch = require('touch');
 var uglify = require('gulp-uglify');
 var yaml = require('js-yaml').safeLoad;
 var yargs = require('yargs');
 var zip = require('gulp-zip');
+var postcss = require('gulp-postcss');
+var autoprefixer = require('autoprefixer');
 
 var ARGS = require('yargs').argv;
 var FOUNDATION_VERSION = require('../../package.json').version;
@@ -75,9 +76,9 @@ gulp.task('customizer:sass', ['customizer:loadConfig', 'customizer:prepareSassDe
         'node_modules/motion-ui/src'
       ]
     }))
-    .pipe(autoprefixer({
+    .pipe(postcss([autoprefixer({
       browsers: COMPATIBILITY
-    }))
+    })]))
     .pipe(gulp.dest(path.join(OUTPUT_DIR, 'css')))
     .pipe(cssnano())
     .pipe(rename('foundation.min.css'))
