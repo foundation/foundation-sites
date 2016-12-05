@@ -17,25 +17,16 @@ $responsive-embed-ratios: (
   widescreen: 16 by 9,
 ) !default;
 
-/// Creates a percentage height that can be used as padding in a responsive embed container.
-/// @param {List} $ratio - Ratio to use to calculate the height, formatted as `x by y`.
-/// @return {Number} A percentage value that can be used as the `padding-bottom` parameter of a responsive embed container.
-@function responsive-embed($ratio) {
-  $w: nth($ratio, 1);
-  $h: nth($ratio, 3);
-  @return $h / $w * 100%;
-}
-
 /// Creates a responsive embed container.
-/// @param {List} $ratio [$responsive-embed-ratio] - Ratio to use for the container, formatted as `x by y`.
-@mixin responsive-embed($ratio: null) {
-  @if $ratio == null {
-    $ratio: map-get($responsive-embed-ratios, default);
+/// @param {String|List} $ratio [default] - Ratio of the container. Can be a key from the `$responsive-embed-ratios` map or a list formatted as `x by y`.
+@mixin responsive-embed($ratio: default) {
+  @if type-of($ratio) == 'string' {
+    $ratio: map-get($responsive-embed-ratios, $ratio);
   }
   position: relative;
   height: 0;
   margin-bottom: $responsive-embed-margin-bottom;
-  padding-bottom: responsive-embed($ratio);
+  padding-bottom: ratio-to-percentage($ratio);
   overflow: hidden;
 
   iframe,
@@ -52,13 +43,13 @@ $responsive-embed-ratios: (
 
 @mixin foundation-responsive-embed {
   .responsive-embed, .flex-video {
-    @include responsive-embed( map-get($responsive-embed-ratios,default) );
+    @include responsive-embed($ratio: default);
 
-    $responsive-embed-ratios: map-remove($responsive-embed-ratios,default);
+    $ratios: map-remove($responsive-embed-ratios,default);
 
-    @each $name, $ratio in $responsive-embed-ratios {
+    @each $name, $ratio in $ratios {
       &.#{$name} {
-        padding-bottom: responsive-embed($ratio);
+        padding-bottom: ratio-to-percentage($ratio);
       }
     }
   }
