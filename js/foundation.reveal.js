@@ -81,10 +81,9 @@ class Reveal {
    * @private
    */
   _makeOverlay() {
-    var $overlay = $('<div></div>')
-                    .addClass('reveal-overlay')
-                    .appendTo(this.options.appendTo);
-    return $overlay;
+    return $('<div></div>')
+      .addClass('reveal-overlay')
+      .appendTo(this.options.appendTo);
   }
 
   /**
