@@ -22,6 +22,10 @@ module.exports = {
   ],
 
   // Sass
+  SASS_DEPS_PATHS: [
+    'node_modules'
+  ],
+
   SASS_DOC_PATHS: [
     'scss',
     'node_modules/motion-ui/src',
