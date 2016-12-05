@@ -73,6 +73,11 @@
     $spacing: floor($spacing);
   }
 
+  @for $i from 2 through $bars {
+    $offset: ($weight + $spacing) * ($i - 1);
+    $shadow: append($shadow, 0 $offset 0 $color, comma);
+  }
+
   // Icon container
   position: relative;
   display: inline-block;
@@ -92,15 +97,9 @@
     height: $weight;
 
     background: $color;
-
-    content: '';
-
-    @for $i from 2 through $bars {
-      $offset: ($weight + $spacing) * ($i - 1);
-      $shadow: append($shadow, 0 $offset 0 $color, comma);
-    }
-
     box-shadow: $shadow;
+
+    content: '';    
   }
 
   // Hover state
