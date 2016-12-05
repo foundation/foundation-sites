@@ -242,3 +242,35 @@
     }
   }
 }
+
+/// Generate the `@content` passed to the mixin with a value `$-zf-bp-value` related to a breakpoint, depending on the `$name` parameter:
+/// - For a single value, `$-zf-bp-value` is this value.
+/// - For a breakpoint name, `$-zf-bp-value` is the corresponding breakpoint value in `$map`.
+/// - For "auto", `$-zf-bp-value` is the corresponding breakpoint value in `$map` and is passed to `@content`, which is made responsive for each breakpoint of `$map`.
+/// @param {Number|Keyword} $name [auto] - Single value or breakpoint name to use. "auto" by default.
+/// @param {Number|Map} $map - Map of breakpoints and values or single value to use.
+@mixin -zf-breakpoint-value(
+  $name: auto,
+  $map: null
+) {
+  @if $name == auto and type-of($map) == 'map' {
+    // "auto"
+    @each $k, $v in $map {
+      @include breakpoint($k) {
+        @include -zf-breakpoint-value($v, $map) {
+          @content;
+        }
+      }
+    }
+  }
+  @else {
+    // breakpoint name
+    @if type-of($name) == 'string' {
+      $name: -zf-get-bp-val($map, $name);
+    }
+
+    // breakpoint value
+    $-zf-bp-value: $name !global;
+    @content;
+  }
+}
