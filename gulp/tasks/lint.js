@@ -19,7 +19,7 @@ gulp.task('lint:sass', function() {
 });
 
 gulp.task('lint:javascript', function () {
-    return gulp.src([CONFIG.JS_FILES])
+    return gulp.src(CONFIG.JS_FILES)
         .pipe(eslint({
         	useEslintrc: true,
         	configFile: '.eslintrc'
