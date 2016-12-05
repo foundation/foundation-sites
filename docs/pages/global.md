@@ -96,11 +96,11 @@ $foundation-palette: (
 
 Using the above palette, we can add the `.mars`, `.saturn`, or `.neptune` classes to buttons, labels, badges, and more.
 
-To access the colors in your code, use Sass's `map-get()` function:
+To access the colors in your code, use Foundation's `get-color()` function:
 
 ```scss
 .mars {
-  color: map-get($foundation-palette, mars);
+  color: get-color(mars);
 }
 ```
 

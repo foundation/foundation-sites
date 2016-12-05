@@ -186,9 +186,9 @@ $stat-font-size: 2.5rem;
 
 $abide-inputs: true;
 $abide-labels: true;
-$input-background-invalid: map-get($foundation-palette, alert);
-$form-label-color-invalid: map-get($foundation-palette, alert);
-$input-error-color: map-get($foundation-palette, alert);
+$input-background-invalid: get-color(alert);
+$form-label-color-invalid: get-color(alert);
+$input-error-color: get-color(alert);
 $input-error-font-size: rem-calc(12);
 $input-error-font-weight: $global-weight-bold;
 
@@ -396,7 +396,7 @@ $menu-margin: 0;
 $menu-margin-nested: 1rem;
 $menu-item-padding: 0.7rem 1rem;
 $menu-item-color-active: $white;
-$menu-item-background-active: map-get($foundation-palette, primary);
+$menu-item-background-active: get-color(primary);
 $menu-icon-spacing: 0.25rem;
 
 // 22. Meter
