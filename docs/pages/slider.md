@@ -147,7 +147,6 @@ Alternatively there is also a `pow`-type position value function available, maki
 <div class="small-2 columns">
   <input type="number" id="sliderOutputNonLinear">
 </div>
-</div>
 ```
 
 The nonLinearBase-option is optional and defaults to 5.
