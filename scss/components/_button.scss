@@ -47,6 +47,10 @@ $button-sizes: (
   large: 1.25rem,
 ) !default;
 
+/// Coloring classes. The names in this list output classes in your CSS, like `.secondary`, `.success`, and so on. Each value must also be in the `$foundation-palette` map.
+/// @type List
+$button-classes: ( secondary success warning alert ) !default;
+
 /// opacity for a disabled button.
 /// @type List
 $button-opacity-disabled: 0.25 !default;
@@ -226,18 +230,19 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
     &.expanded { @include button-expand; }
 
     // Colors
-    @each $name, $color in $foundation-palette {
+    @each $class in $button-classes {
+      $color: get-color($class);
       @if $button-fill != hollow {
-        &.#{$name} {
+        &.#{$class} {
           @include button-style($color, auto, auto);
         }
       }
       @else {
-        &.#{$name} {
+        &.#{$class} {
           @include button-hollow-style($color);
         }
 
-        &.#{$name}.dropdown::after {
+        &.#{$class}.dropdown::after {
           border-top-color: $color;
         }
       }
@@ -249,8 +254,9 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
         @include button-hollow;
         @include button-hollow-style;
 
-        @each $name, $color in $foundation-palette {
-          &.#{$name} {
+        @each $class in $button-classes {
+          $color: get-color($class);
+          &.#{$class} {
             @include button-hollow-style($color);
           }
         }
@@ -262,8 +268,9 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
     &[disabled] {
       @include button-disabled;
 
-      @each $name, $color in $foundation-palette {
-        &.#{$name} {
+      @each $class in $button-classes {
+        $color: get-color($class);
+        &.#{$class} {
           @include button-disabled($color);
         }
       }
