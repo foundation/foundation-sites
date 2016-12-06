@@ -51,7 +51,7 @@ gulp.task('customizer:prepareSassDeps', function() {
   return gulp.src([
       'node_modules/@(normalize-scss)/sass/**/*.scss'
     ])
-    .pipe(gulp.dest('_vendor/scss'));
+    .pipe(gulp.dest('_vendor'));
 });
 
 // Creates a Sass file from the module/variable list and creates foundation.css and foundation.min.css
