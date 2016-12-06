@@ -18,7 +18,7 @@ gulp.task('sass', ['sass:foundation', 'sass:docs']);
 // Prepare dependencies
 gulp.task('sass:deps', function() {
   return gulp.src(CONFIG.SASS_DEPS_FILES)
-    .pipe(gulp.dest('_vendor/scss'));
+    .pipe(gulp.dest('_vendor'));
 });
 
 // Compiles Foundation Sass
