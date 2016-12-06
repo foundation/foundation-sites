@@ -15,6 +15,7 @@
 .sass-cache/*
 .yardoc
 _build
+_vendor
 .customizer
 
 bower_components
