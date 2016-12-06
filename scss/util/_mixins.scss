@@ -228,16 +228,16 @@
 ///
 /// @param {Boolean} $small [true] - If `false`, the mixin will skip the `small` breakpoint. Use this with components that don't prefix classes with `small-`, only `medium-` and up.
 @mixin -zf-each-breakpoint($small: true) {
-  $map: $breakpoint-classes;
+  $list: $breakpoint-classes;
 
   @if not $small {
-    $map: map-remove($map, $-zf-zero-breakpoint);
+    $list: sl-remove($list, $-zf-zero-breakpoint);
   }
 
-  @each $size in $map {
-    $-zf-size: $size !global;
+  @each $name in $list {
+    $-zf-size: $name !global;
 
-    @include breakpoint($size) {
+    @include breakpoint($name) {
       @content;
     }
   }

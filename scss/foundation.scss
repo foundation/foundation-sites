@@ -6,10 +6,11 @@
  */
 
 // Dependencies
-@import "normalize";
+@import "../_vendor/scss/normalize-scss/sass/normalize";
+@import "../_vendor/scss/sassy-lists/stylesheets/SassyLists";
 
 // Settings
-// import your own `settings` here or 
+// import your own `settings` here or
 // import and modify the default settings through
 // @import "settings/settings";
 

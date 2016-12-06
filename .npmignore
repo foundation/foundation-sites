@@ -1,5 +1,6 @@
 .sass-cache
 _build
+_vendor
 bower_components
 config
 docs
