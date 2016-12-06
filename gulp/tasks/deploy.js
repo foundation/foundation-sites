@@ -4,7 +4,6 @@ var cssnano = require('gulp-cssnano');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 var confirm = require('gulp-prompt').confirm;
-var prompt = require('gulp-prompt').prompt;
 var rsync = require('gulp-rsync');
 var replace = require('gulp-replace');
 var octophant = require('octophant');
