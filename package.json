@@ -67,7 +67,7 @@
     "inquirer": "^1.2.3",
     "is-empty-object": "^1.1.1",
     "js-yaml": "^3.5.4",
-    "mocha": "^2.3.3",
+    "mocha": "^3.2.0",
     "mocha-phantomjs": "^4.0.2",
     "motion-ui": "^1.1.0",
     "multiline": "^1.0.2",
