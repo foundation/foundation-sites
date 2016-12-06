@@ -37,7 +37,7 @@
     "chai-jquery": "^2.0.0",
     "chalk": "^1.1.1",
     "clipboard": "^1.5.5",
-    "corejs-typeahead": "corejavascript/typeahead.js",
+    "corejs-typeahead": "^1.0.1",
     "doiuse": "^2.5.0",
     "foundation-docs": "zurb/foundation-docs",
     "gulp": "^3.8.10",
