@@ -51,7 +51,6 @@
     "gulp-filter": "^4.0.0",
     "gulp-if": "^2.0.0",
     "gulp-load-plugins": "^1.2.0",
-    "gulp-mocha": "^2.2.0",
     "gulp-newer": "^1.1.0",
     "gulp-plumber": "^1.0.1",
     "gulp-postcss": "^6.2.0",
