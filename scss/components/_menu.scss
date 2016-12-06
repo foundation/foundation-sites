@@ -91,6 +91,10 @@ $menu-border: $light-gray !default;
     width: 100%;
     table-layout: fixed;
   }
+
+  > li:first-child:last-child {
+    width: 100%;
+  }
 }
 
 /// Sets the direction of a Menu.
@@ -237,24 +241,32 @@ $menu-border: $light-gray !default;
     @include menu-base;
     @include menu-icons;
 
-    // Orientation
-    @include menu-direction(horizontal);
+    // Default orientation: horizontal
+    &, &.horizontal {
+      @include menu-direction(horizontal);
+    }
 
+    // Even-width modifier for horizontal orientation
+    &.expanded {
+      @include menu-expand;
+    }
+
+    // Vertical orientation modifier
     &.vertical {
       @include menu-direction(vertical);
     }
 
-    @each $size in $breakpoint-classes {
-      @if $size != $-zf-zero-breakpoint {
-        @include breakpoint($size) {
-          &.#{$size}-horizontal {
-            @include menu-direction(horizontal);
-          }
+    @include -zf-each-breakpoint($small: false) {
+      &.#{$-zf-size}-horizontal {
+        @include menu-direction(horizontal);
+      }
 
-          &.#{$size}-vertical {
-            @include menu-direction(vertical);
-          }
-        }
+      &.#{$-zf-size}-expanded {
+        @include menu-expand;
+      }
+
+      &.#{$-zf-size}-vertical {
+        @include menu-direction(vertical);
       }
     }
 
@@ -274,15 +286,6 @@ $menu-border: $light-gray !default;
         > li {
           float: $global-right;
         }
-      }
-    }
-
-    // Even-width
-    &.expanded {
-      @include menu-expand;
-
-      > li:first-child:last-child {
-        width: 100%;
       }
     }
 
