@@ -46,8 +46,16 @@ gulp.task('customizer:loadConfig', function(done) {
   });
 });
 
+// Prepare dependencies
+gulp.task('customizer:prepareSassDeps', function() {
+  return gulp.src([
+      'node_modules/@(normalize-scss)/sass/**/*.scss'
+    ])
+    .pipe(gulp.dest('_vendor/scss'));
+});
+
 // Creates a Sass file from the module/variable list and creates foundation.css and foundation.min.css
-gulp.task('customizer:sass', ['customizer:loadConfig'], function() {
+gulp.task('customizer:sass', ['customizer:loadConfig', 'customizer:prepareSassDeps'], function() {
   var sassFile = customizer.sass(CUSTOMIZER_CONFIG, MODULE_LIST, VARIABLE_LIST);
 
   // Create a stream with our makeshift Sass file

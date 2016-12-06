@@ -22,8 +22,8 @@ module.exports = {
   ],
 
   // Sass
-  SASS_DEPS_PATHS: [
-    'node_modules/normalize-scss/sass'
+  SASS_DEPS_FILES: [
+    'node_modules/@(normalize-scss)/sass/**/*.scss'
   ],
 
   SASS_DOC_PATHS: [
