@@ -75,7 +75,7 @@
     "octophant": "^1.0.0",
     "opener": "^1.4.1",
     "panini": "^1.3.0",
-    "parker": "0.0.9",
+    "parker": "^1.0.0-alpha.0",
     "prettyjson": "^1.1.3",
     "require-dir": "^0.3.0",
     "rimraf": "^2.3.2",
