@@ -64,7 +64,7 @@
     "gulp-sourcemaps": "1.6.0",
     "gulp-uglify": "^2.0.0",
     "gulp-zip": "^3.2.0",
-    "inquirer": "^0.11.4",
+    "inquirer": "^1.2.3",
     "is-empty-object": "^1.1.1",
     "js-yaml": "^3.5.4",
     "mocha": "^2.3.3",

@@ -31,7 +31,8 @@ gulp.task('deploy:prompt', function(cb) {
     type: 'input',
     name: 'version',
     message: 'What version are we moving to? (Current version is ' + CURRENT_VERSION + ')'
-  }], function(res) {
+  }])
+  .then(function(res) {
     NEXT_VERSION = res.version;
     cb();
   });
