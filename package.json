@@ -85,7 +85,7 @@
     "sinon": "^1.17.3",
     "supercollider": "^1.4.0",
     "touch": "^1.0.0",
-    "vinyl": "^1.1.1",
+    "vinyl": "^2.0.1",
     "vinyl-source-stream": "^1.1.0",
     "yargs": "^4.2.0"
   },

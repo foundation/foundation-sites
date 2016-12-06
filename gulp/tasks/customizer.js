@@ -3,7 +3,7 @@ var babel = require('gulp-babel');
 var concat = require('gulp-concat');
 var cssnano = require('gulp-cssnano');
 var customizer = require('../../customizer/lib');
-var File = require('vinyl');
+var Vinyl = require('vinyl');
 var fs = require('fs');
 var gulp = require('gulp');
 var If = require('gulp-if');
@@ -63,7 +63,7 @@ gulp.task('customizer:sass', ['customizer:loadConfig', 'customizer:prepareSassDe
   // Create a stream with our makeshift Sass file
   var stream = new Readable({ objectMode: true });
   stream._read = function() {};
-  stream.push(new File({
+  stream.push(new Vinyl({
     path: 'foundation.scss',
     contents: new Buffer(sassFile)
   }));
