@@ -33,6 +33,12 @@ It's also possible to download the template files directly from GitHub. Run `npm
 
 The biggest difference between this and the basic template is the folder structure. In the ZURB Template, your project has a `src/` folder which contains your source files, and a separate `dist/` folder with your finished website. As you work on your project, Gulp continuously updates your `dist/` folder with new versions of files. To compile a production build, run `npm run build`.
 
+To override or add to the default styles of the ZURB Template, in your project's `src/assets/scss/` folder
+ - Change Sass variables in `_settings.scss`
+ - Add custom SCSS and css to new files in the `components` folder then import those files at the bottom of `app.scss`
+
+The `_settings.scss` and `app.scss` files are not changed when upgrading an existing project. As a result, you must manually edit your `_settings.scss` file to incorporate any Sass changes found [in the release notes](https://github.com/zurb/foundation-sites/releases).
+
 Here's an overview of what the ZURB Template can do:
 
 ### Asset Copying

@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-// scss-lint:disable MergeableSelector, QualifyingElement
+// sass-lint:disable force-element-nesting, no-qualifying-elements
 
 ////
 /// @group table
@@ -52,9 +52,17 @@ $table-stripe: even !default;
 /// @type Color
 $table-head-background: smart-scale($table-background, $table-color-scale / 2) !default;
 
+/// Default color of header rows on hover.
+/// @type List
+$table-head-row-hover: darken($table-head-background, $table-hover-scale) !default;
+
 /// Default color for footer background.
 /// @type Color
 $table-foot-background: smart-scale($table-background, $table-color-scale) !default;
+
+/// Default color of footer rows on hover.
+/// @type List
+$table-foot-row-hover: darken($table-foot-background, $table-hover-scale) !default;
 
 /// Default font color for header.
 /// @type Color
@@ -73,8 +81,8 @@ $show-header-for-stacked: false !default;
     // If stripe is set to even, darken the even rows.
     @if $stripe == even {
       &:nth-child(even) {
-        background-color: $table-striped-background;
         border-bottom: 0;
+        background-color: $table-striped-background;
       }
     }
 
@@ -89,9 +97,9 @@ $show-header-for-stacked: false !default;
 
 @mixin -zf-table-unstripe() {
   tr {
-    background-color: $table-background;
     border-bottom: 0;
     border-bottom: $table-border;
+    background-color: $table-background;
   }
 }
 
@@ -105,10 +113,10 @@ $show-header-for-stacked: false !default;
 
   // Caption
   caption {
-    font-weight: $global-weight-bold;
     padding: $table-padding;
+    font-weight: $global-weight-bold;
   }
-  
+
   // Table head
   thead {
     background: $table-head-background;
@@ -140,22 +148,23 @@ $show-header-for-stacked: false !default;
 
   // Table rows
   tbody {
-     th,
-     td {
-       padding: $table-padding;
-     }
-   }
+    th,
+    td {
+      padding: $table-padding;
+    }
+  }
 
-   // If tables are striped
-   @if $is-striped == true {
-     tbody {
-       @include -zf-table-stripe($stripe);
-     }
-     &.unstriped {
-       tbody {
-         @include -zf-table-unstripe();
-         background-color: $table-background;
-       }
+  // If tables are striped
+  @if $is-striped == true {
+    tbody {
+      @include -zf-table-stripe($stripe);
+    }
+
+    &.unstriped {
+      tbody {
+        @include -zf-table-unstripe();
+        background-color: $table-background;
+      }
     }
   }
 
@@ -164,6 +173,7 @@ $show-header-for-stacked: false !default;
     tbody {
       @include -zf-table-unstripe();
     }
+
     &.striped {
       tbody {
         @include -zf-table-stripe($stripe);
@@ -201,8 +211,22 @@ $show-header-for-stacked: false !default;
 
 /// Slightly darkens the table rows on hover.
 @mixin table-hover {
-  tr {
-    // Darkens the non-striped table rows on hover.
+  thead tr {
+    //Darkens the table header rows on hover.
+    &:hover {
+      background-color: $table-head-row-hover;
+    }
+  }
+
+  tfoot tr {
+    //Darkens the table footer rows on hover.
+    &:hover {
+      background-color: $table-foot-row-hover;
+    }
+  }
+
+  tbody tr {
+    //Darkens the non-striped table rows on hover.
     &:hover {
       background-color: $table-row-hover;
     }

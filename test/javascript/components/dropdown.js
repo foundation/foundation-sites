@@ -25,6 +25,37 @@ describe('Dropdown', function() {
     });
   });
 
+  describe('open()', function() {
+    it('traps focus if trapFocus option is true', function() {
+      $dropdownController = $(getDropdownController()).appendTo('body');
+      $dropdownContainer = $(getDropdownContainer()).appendTo('body');
+      plugin = new Foundation.Dropdown($dropdownContainer, {trapFocus: true});
+
+      let spy = sinon.spy(Foundation.Keyboard, 'trapFocus');
+      plugin.open();
+
+      sinon.assert.called(spy);
+      Foundation.Keyboard.trapFocus.restore();
+    });
+  });
+
+  describe('close()', function() {
+    it('releases focus if trapFocus option is true', function() {
+      $dropdownController = $(getDropdownController()).appendTo('body');
+      $dropdownContainer = $(getDropdownContainer()).appendTo('body');
+      plugin = new Foundation.Dropdown($dropdownContainer, {trapFocus: true});
+
+      // Open it first...
+      plugin.open();
+
+      let spy = sinon.spy(Foundation.Keyboard, 'releaseFocus');
+      plugin.close();
+
+      sinon.assert.called(spy);
+      Foundation.Keyboard.releaseFocus.restore();
+    });
+  });
+
   describe('getPositionClass()', function() {
     it('has no orientation', function() {
       $dropdownController = $(getDropdownController()).appendTo('body');

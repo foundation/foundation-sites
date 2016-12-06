@@ -1,6 +1,6 @@
 {
   "name": "foundation-sites",
-  "version": "6.2.3",
+  "version": "6.2.4",
   "main": "dist/foundation.js",
   "description": "The most advanced responsive front-end framework in the world.",
   "author": "ZURB <foundation@zurb.com> (http://foundation.zurb.com)",
@@ -9,7 +9,7 @@
     "start": "gulp",
     "test": "npm run test:sass && npm run test:javascript",
     "test:sass": "mocha test/sass/test_sass.js",
-    "test:javascript": "gulp sass:foundation && gulp test:transpile-js && mocha-phantomjs test/javascript/index.html",
+    "test:javascript": "gulp sass:foundation && gulp test:transpile-js && mocha-phantomjs --ignore-resource-errors test/javascript/index.html",
     "test:visual": "gulp test",
     "deploy": "gulp deploy",
     "deploy:prep": "gulp deploy:prep",
@@ -17,7 +17,8 @@
   },
   "dependencies": {
     "jquery": "^2.2.0",
-    "what-input": "^2.0.0"
+    "normalize-scss": "^6.0.0",
+    "what-input": "^4.0.3"
   },
   "license": "MIT",
   "devDependencies": {
@@ -38,12 +39,14 @@
     "chalk": "^1.1.1",
     "clipboard": "^1.5.5",
     "corejs-typeahead": "corejavascript/typeahead.js",
+    "doiuse": "^2.5.0",
     "foundation-docs": "zurb/foundation-docs",
     "gulp": "^3.8.10",
     "gulp-add-src": "^0.2.0",
     "gulp-autoprefixer": "^2.3.1",
     "gulp-babel": "^6.1.1",
-    "gulp-cache-bust": "^1.0.2",
+    "gulp-cache-bust": "1.0.2",
+    "gulp-check-deps": "^1.4.1",
     "gulp-concat": "^2.4.3",
     "gulp-cssnano": "^2.1.0",
     "gulp-eslint": "^2.0.0",
@@ -53,14 +56,15 @@
     "gulp-mocha": "^2.2.0",
     "gulp-newer": "^1.1.0",
     "gulp-plumber": "^1.0.1",
+    "gulp-postcss": "^6.2.0",
     "gulp-prompt": "^0.1.2",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.4",
     "gulp-rsync": "0.0.5",
     "gulp-ruby-sass": "^2.0.6",
     "gulp-sass": "^2.1.0",
-    "gulp-scss-lint": "^0.3.9",
-    "gulp-sourcemaps": "^1.6.0",
+    "gulp-sass-lint": "^1.3.2",
+    "gulp-sourcemaps": "1.6.0",
     "gulp-uglify": "^1.1.0",
     "gulp-zip": "^3.2.0",
     "inquirer": "^0.11.4",
@@ -95,13 +99,15 @@
     "email": "foundation@zurb.com"
   },
   "keywords": [
+    "eyeglass-module",
     "handlebars-helper-rel",
     "handlebars-helper-slugify"
   ],
   "eyeglass": {
     "name": "foundation",
     "sassDir": "scss",
-    "needs": "^0.8.0"
+    "needs": "^0.8.0",
+    "exports": false
   },
   "jspm": {
     "format": "global",
@@ -112,5 +118,17 @@
         ]
       }
     }
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "es2015"
+          ]
+        }
+      ]
+    ]
   }
 }

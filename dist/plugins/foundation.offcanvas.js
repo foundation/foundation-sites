@@ -22,7 +22,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @param {Object} element - jQuery object to initialize.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-
     function OffCanvas(element, options) {
       _classCallCheck(this, OffCanvas);
 
@@ -35,6 +34,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       this._events();
 
       Foundation.registerPlugin(this, 'OffCanvas');
+      Foundation.Keyboard.register('OffCanvas', {
+        'ESCAPE': 'close'
+      });
     }
 
     /**
@@ -193,15 +195,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
          * Fires when the off-canvas menu opens.
          * @event OffCanvas#opened
          */
-        Foundation.Move(this.options.transitionTime, this.$element, function () {
-          $('[data-off-canvas-wrapper]').addClass('is-off-canvas-open is-open-' + _this.options.position);
 
-          _this.$element.addClass('is-open');
+        var $wrapper = $('[data-off-canvas-wrapper]');
+        $wrapper.addClass('is-off-canvas-open is-open-' + _this.options.position);
 
-          // if (_this.options.isSticky) {
-          //   _this._stick();
-          // }
-        });
+        _this.$element.addClass('is-open');
+
+        // if (_this.options.isSticky) {
+        //   _this._stick();
+        // }
 
         this.$triggers.attr('aria-expanded', 'true');
         this.$element.attr('aria-hidden', 'false').trigger('opened.zf.offcanvas');
@@ -215,14 +217,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
 
         if (this.options.autoFocus) {
-          this.$element.one(Foundation.transitionend(this.$element), function () {
-            _this.$element.find('a, button').eq(0).focus();
+          $wrapper.one(Foundation.transitionend($wrapper), function () {
+            if (_this.$element.hasClass('is-open')) {
+              // handle double clicks
+              _this.$element.attr('tabindex', '-1');
+              _this.$element.focus();
+            }
           });
         }
 
         if (this.options.trapFocus) {
-          $('[data-off-canvas-content]').attr('tabindex', '-1');
-          this._trapFocus();
+          $wrapper.one(Foundation.transitionend($wrapper), function () {
+            if (_this.$element.hasClass('is-open')) {
+              // handle double clicks
+              _this.$element.attr('tabindex', '-1');
+              _this.trapFocus();
+            }
+          });
         }
       }
 
@@ -239,15 +250,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             last = focusable.eq(-1);
 
         focusable.off('.zf.offcanvas').on('keydown.zf.offcanvas', function (e) {
-          if (e.which === 9 || e.keycode === 9) {
-            if (e.target === last[0] && !e.shiftKey) {
-              e.preventDefault();
-              first.focus();
-            }
-            if (e.target === first[0] && e.shiftKey) {
-              e.preventDefault();
-              last.focus();
-            }
+          var key = Foundation.Keyboard.parseKey(e);
+          if (key === 'TAB' && e.target === last[0]) {
+            e.preventDefault();
+            first.focus();
+          }
+          if (key === 'SHIFT_TAB' && e.target === first[0]) {
+            e.preventDefault();
+            last.focus();
           }
         });
       }
@@ -339,13 +349,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     }, {
       key: '_handleKeyboard',
-      value: function _handleKeyboard(event) {
-        if (event.which !== 27) return;
+      value: function _handleKeyboard(e) {
+        var _this2 = this;
 
-        event.stopPropagation();
-        event.preventDefault();
-        this.close();
-        this.$lastTrigger.focus();
+        Foundation.Keyboard.handleKey(e, 'OffCanvas', {
+          close: function () {
+            _this2.close();
+            _this2.$lastTrigger.focus();
+            return true;
+          },
+          handled: function () {
+            e.stopPropagation();
+            e.preventDefault();
+          }
+        });
       }
 
       /**
@@ -411,7 +428,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     revealOn: null,
 
     /**
-     * Force focus to the offcanvas on open. If true, will focus the opening trigger on close.
+     * Force focus to the offcanvas on open. If true, will focus the opening trigger on close. Sets tabindex of [data-off-canvas-content] to -1 for accessibility purposes.
      * @option
      * @example true
      */

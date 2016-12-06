@@ -22,7 +22,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @param {jQuery} element - jQuery object to make into an accordion menu.
      * @param {Object} options - Overrides to the default plugin settings.
      */
-
     function Slider(element, options) {
       _classCallCheck(this, Slider);
 
@@ -183,7 +182,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           dim,
 
           //percentage w/h of the handle compared to the slider bar
-          handlePct = ~ ~(percent(handleDim, elemDim) * 100);
+          handlePct = ~~(percent(handleDim, elemDim) * 100);
           //if left handle, the math is slightly different than if it's the right handle, and the left/top property needs to be changed for the fill bar
           if (isLeftHndl) {
             //left or top percentage value to apply to the fill bar.
@@ -196,12 +195,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               cb();
             } //this is only needed for the initialization of 2 handled sliders
           } else {
-              //just caching the value of the left/bottom handle's left/top property
-              var handlePos = parseFloat(this.$handle[0].style[lOrT]);
-              //calculate the new min-height/width for the fill bar. Use isNaN to prevent false positives for numbers <= 0
-              //based on the percentage of movement of the handle being manipulated, less the opposing handle's left/top position, plus the percentage w/h of the handle itself
-              dim = movement - (isNaN(handlePos) ? this.options.initialStart / ((this.options.end - this.options.start) / 100) : handlePos) + handlePct;
-            }
+            //just caching the value of the left/bottom handle's left/top property
+            var handlePos = parseFloat(this.$handle[0].style[lOrT]);
+            //calculate the new min-height/width for the fill bar. Use isNaN to prevent false positives for numbers <= 0
+            //based on the percentage of movement of the handle being manipulated, less the opposing handle's left/top position, plus the percentage w/h of the handle itself
+            dim = movement - (isNaN(handlePos) ? this.options.initialStart / ((this.options.end - this.options.start) / 100) : handlePos) + handlePct;
+          }
           // assign the min-height/width to our css object
           css['min-' + hOrW] = dim + '%';
         }
@@ -328,7 +327,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           } else {
             barXY = eventFromBar;
           }
-          offsetPct = percent(barXY, barDim);
+          var offsetPct = percent(barXY, barDim);
 
           value = (this.options.end - this.options.start) * offsetPct + this.options.start;
 

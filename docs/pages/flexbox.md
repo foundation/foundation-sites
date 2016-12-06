@@ -59,7 +59,7 @@ In general, all of the components work exactly the same. However, a few of them 
 
 ## Helper Classes
 
-Flexbox makes horizontal and vertical alignment painless, through the CSS properties [`align-content`](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items), [`align-self`](https://developer.mozilla.org/en-US/docs/Web/CSS/align-self), and [`justify-content`](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content). Foundation includes a handful of classes for these properties, which work with any flexbox-enabled component.
+Flexbox makes horizontal and vertical alignment painless, through the CSS properties [`align-items`](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items), [`align-self`](https://developer.mozilla.org/en-US/docs/Web/CSS/align-self), and [`justify-content`](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content). Foundation includes a handful of classes for these properties, which work with any flexbox-enabled component.
 
 To understand how these classes work, you need to understand the parent-child relationship created with flexbox. An element with `display: flex` is a *flex parent*, and can horizontally or vertically align its children. All immediate children of the flex parent are *flex children*. A flex child can vertically align itself.
 
@@ -161,6 +161,53 @@ To align an individual child, use the below classes. They use the same alignment
   <div class="column align-self-middle">Align middle</div>
   <div class="column align-self-top">Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?</div>
 </div>
+```
+
+## Vanilla Flexbox Helper Classes
+
+Foundation also includes some helper classes for quickly applying flex
+container & direction attributes to elements.
+
+To make something a flex container, simply apply
+- `.flex-container`
+
+And to change its flex direction from row to column you can use the helper classes:
+
+- `.flex-dir-row` (default)
+- `.flex-dir-row-reverse`
+- `.flex-dir-column`
+- `.flex-dir-column-reverse`
+
+For children, there are 3 quick helper classes
+
+- `.flex-child-auto` (auto size flex child)
+- `.flex-child-grow` (flex child that will grow to take up all possible space)
+- `.flex-child-shrink` (flex child that will shrink to minimum possible space)
+
+```html_example
+<div class="row">
+  <div class="column flex-container flex-dir-column">
+    <div class="callout flex-child-auto">Auto</div>
+    <div class="callout flex-child-auto">Auto</div>
+    <div class="callout flex-child-shrink">Shrink</div>
+  </div>
+  <div class="column">
+  </div>
+  <div class="column align-self-top">Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?</div>
+</div>
+```
+
+All of these helper classes come in responsive varieties, prefixed with all of your named breakpoints.  So you can do things like
+
+```html_example
+  <div class="row">
+    <div class="column large-12 flex-container flex-dir-column large-flex-dir-row">
+      <div class="callout flex-child-auto">Auto</div>
+      <div class="callout flex-child-auto">Auto</div>
+      <div class="callout flex-child-shrink large-flex-child-auto">Auto on Large</div>
+    </div>
+    <div class="column align-self-top">Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?</div>
+  </div>
 ```
 
 ---

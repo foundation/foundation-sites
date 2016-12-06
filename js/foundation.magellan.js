@@ -103,6 +103,8 @@ class Magellan {
    * @function
    */
   scrollToLoc(loc) {
+    // Do nothing if target does not exist to prevent errors
+    if (!$(loc).length) {return false;}
     var scrollPos = Math.round($(loc).offset().top - this.options.threshold / 2 - this.options.barOffset);
 
     $('html, body').stop(true).animate({ scrollTop: scrollPos }, this.options.animationDuration, this.options.animationEasing);
@@ -128,7 +130,7 @@ class Magellan {
         curIdx;
 
     if(winPos + this.winHeight === this.docHeight){ curIdx = this.points.length - 1; }
-    else if(winPos < this.points[0]){ curIdx = 0; }
+    else if(winPos < this.points[0]){ curIdx = undefined; }
     else{
       var isDown = this.scrollPos < winPos,
           _this = this,
@@ -139,10 +141,13 @@ class Magellan {
     }
 
     this.$active.removeClass(this.options.activeClass);
-    this.$active = this.$links.eq(curIdx).addClass(this.options.activeClass);
+    this.$active = this.$links.filter('[href="#' + this.$targets.eq(curIdx).data('magellan-target') + '"]').addClass(this.options.activeClass);
 
     if(this.options.deepLinking){
-      var hash = this.$active[0].getAttribute('href');
+      var hash = " ";
+      if(curIdx != undefined){
+        hash = this.$active[0].getAttribute('href');
+      }
       if(window.history.pushState){
         window.history.pushState(null, null, hash);
       }else{

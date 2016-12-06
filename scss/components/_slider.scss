@@ -23,6 +23,7 @@ $slider-transition: all 0.2s ease-in-out !default;
   height: $slider-height;
   margin-top: 1.25rem;
   margin-bottom: 2.25rem;
+
   background-color: $slider-background;
   cursor: pointer;
   user-select: none;
@@ -34,9 +35,11 @@ $slider-transition: all 0.2s ease-in-out !default;
   position: absolute;
   top: 0;
   left: 0;
+
   display: inline-block;
   max-width: 100%;
   height: $slider-height;
+
   background-color: $slider-fill-background;
   transition: $slider-transition;
 
@@ -52,13 +55,15 @@ $slider-transition: all 0.2s ease-in-out !default;
   position: absolute;
   left: 0;
   z-index: 1;
+
   display: inline-block;
   width: $slider-handle-width;
   height: $slider-handle-height;
+
+  border-radius: $slider-radius;
   background-color: $slider-handle-background;
   transition: $slider-transition;
   touch-action: manipulation;
-  border-radius: $slider-radius;
 
   &:hover {
     background-color: scale-color($slider-handle-background, $lightness: -15%);

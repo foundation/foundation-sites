@@ -56,7 +56,7 @@ class Tooltip {
       'data-yeti-box': elemId,
       'data-toggle': elemId,
       'data-resize': elemId
-    }).addClass(this.triggerClass);
+    }).addClass(this.options.triggerClass);
 
     //helper variables to track movement on collisions
     this.usedPositions = [];
@@ -171,7 +171,7 @@ class Tooltip {
    * @function
    */
   show() {
-    if (this.options.showOn !== 'all' && !Foundation.MediaQuery.atLeast(this.options.showOn)) {
+    if (this.options.showOn !== 'all' && !Foundation.MediaQuery.is(this.options.showOn)) {
       // console.error('The screen is too small to display this tooltip');
       return false;
     }
@@ -339,12 +339,9 @@ class Tooltip {
    */
   destroy() {
     this.$element.attr('title', this.template.text())
-                 .off('.zf.trigger .zf.tootip')
-                //  .removeClass('has-tip')
-                 .removeAttr('aria-describedby')
-                 .removeAttr('data-yeti-box')
-                 .removeAttr('data-toggle')
-                 .removeAttr('data-resize');
+                 .off('.zf.trigger .zf.tooltip')
+                 .removeClass('has-tip top right left')
+                 .removeAttr('aria-describedby aria-haspopup data-disable-hover data-resize data-toggle data-tooltip data-yeti-box');
 
     this.template.remove();
 

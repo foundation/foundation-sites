@@ -249,7 +249,7 @@ Move blocks up to 11 columns to the right by using classes like `.large-offset-1
 
 ### Incomplete Rows
 
-In order to work around browsers' different rounding behaviors, Foundation will float the last column in a row to the right so the edge aligns. If your row doesn't have a count that adds up to 12 columns, you can tag the last column with a class of `.end` in order to override that behavior.
+In order to work around browsers' different rounding behaviors, Foundation will float the last column in a row to the right so the edge aligns. If your row doesn't have a count that adds up to 12 columns, you can tag the last column with a class of `.end` in order to override that behavior. Alternatively, you can set the `$grid-column-align-edge` variable to `false` to turn off this behavior entirely.
 
 ```html
 <div class="row">
@@ -433,27 +433,27 @@ Using these source ordering classes, you can shift columns around between our br
 
 ### Block Grids
 
-The block grid from Foundation 5 has been merged into the main grid. Add a class of the format `[size]-up-[n]` to change the size of all columns within the row. By default, the max number of columns you can use with block grid are 8.
+Block grids are a shorthand way to create equally-sized columns. Add a class of the format `.[size]-up-[n]` to change the number of columns within the row. By default, the max number of columns you can use with block grid are 8. Adding the `.column-block` class to columns will apply a bottom margin equal to the width of gutters.
 
 ```html_example
-<div class="row small-up-1 medium-up-2 large-up-4">
-  <div class="column">
-    <img src="//placehold.it/300x300" class="thumbnail" alt="">
+<div class="row small-up-2 medium-up-3 large-up-4">
+  <div class="column column-block">
+    <img src="//placehold.it/600x600" class="thumbnail" alt="">
   </div>
-  <div class="column">
-    <img src="//placehold.it/300x300" class="thumbnail" alt="">
+  <div class="column column-block">
+    <img src="//placehold.it/600x600" class="thumbnail" alt="">
   </div>
-  <div class="column">
-    <img src="//placehold.it/300x300" class="thumbnail" alt="">
+  <div class="column column-block">
+    <img src="//placehold.it/600x600" class="thumbnail" alt="">
   </div>
-  <div class="column">
-    <img src="//placehold.it/300x300" class="thumbnail" alt="">
+  <div class="column column-block">
+    <img src="//placehold.it/600x600" class="thumbnail" alt="">
   </div>
-  <div class="column">
-    <img src="//placehold.it/300x300" class="thumbnail" alt="">
+  <div class="column column-block">
+    <img src="//placehold.it/600x600" class="thumbnail" alt="">
   </div>
-  <div class="column">
-    <img src="//placehold.it/300x300" class="thumbnail" alt="">
+  <div class="column column-block">
+    <img src="//placehold.it/600x600" class="thumbnail" alt="">
   </div>
 </div>
 ```
@@ -564,3 +564,52 @@ Refer to the Sass documentation below to learn how each mixin works.
   }
 }
 ```
+### Custom Block Grid
+
+Use the `grid-layout()` mixin to create your own block grid.
+By default the mixin takes 3 parameters:
+- Number of columns
+- The child element selector
+  - An optional padding value
+
+The padding value can be set to `$grid-column-gutter` to use the values from that map.
+This will then generate different paddings at different breakpoints. Alternatively supply a numeric value (without a unit type) to output a static rem value.
+
+Here's an example:
+
+```scss
+.gallery {
+  @include grid-layout(3, '.gallery-item', $grid-column-gutter);
+}
+```
+That outputs this CSS:
+
+```
+.gallery > .gallery-item {
+  width: 33.33333%;
+  float: left;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+}
+
+@media screen and (min-width: 40em) {
+  .gallery > .gallery-item {
+    padding-left: 0.9375rem;
+    padding-right: 0.9375rem;
+  }
+}
+
+.gallery > .gallery-item:nth-of-type(1n) {
+  clear: none;
+}
+
+.gallery > .gallery-item:nth-of-type(3n+1) {
+  clear: both;
+}
+
+.gallery > .gallery-item:last-child {
+  float: left;
+}
+```
+
+---

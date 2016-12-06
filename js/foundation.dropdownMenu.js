@@ -59,6 +59,11 @@ class DropdownMenu {
     this.changed = false;
     this._events();
   };
+
+  _isVertical() {
+    return this.$tabs.css('display') === 'block';
+  }
+
   /**
    * Adds event listeners to elements within the menu
    * @private
@@ -87,16 +92,26 @@ class DropdownMenu {
         } else {
           e.preventDefault();
           e.stopImmediatePropagation();
-          _this._show($elem.children('.is-dropdown-submenu'));
+          _this._show($sub);
           $elem.add($elem.parentsUntil(_this.$element, `.${parClass}`)).attr('data-is-click', true);
         }
-      } else { return; }
+      }
     };
 
     if (this.options.clickOpen || hasTouch) {
       this.$menuItems.on('click.zf.dropdownmenu touchstart.zf.dropdownmenu', handleClickFn);
     }
-
+    
+    // Handle Leaf element Clicks
+    if(_this.options.closeOnClickInside){
+      this.$menuItems.on('click.zf.dropdownmenu touchend.zf.dropdownmenu', function(e) {
+        var hasSub = $elem.hasClass(parClass);
+        if(!hasSub){
+          _this._hide();
+        }
+      });
+    }
+    
     if (!this.options.disableHover) {
       this.$menuItems.on('mouseenter.zf.dropdownmenu', function(e) {
         var $elem = $(this),
@@ -172,42 +187,51 @@ class DropdownMenu {
       };
 
       if (isTab) {
-        if (_this.$element.hasClass(_this.options.verticalClass)) { // vertical menu
-          if (_this.options.alignment === 'left') { // left aligned
-            $.extend(functions, {
-              down: nextSibling,
-              up: prevSibling,
-              next: openSub,
-              previous: closeSub
-            });
-          } else { // right aligned
+        if (_this._isVertical()) { // vertical menu
+          if (Foundation.rtl()) { // right aligned
             $.extend(functions, {
               down: nextSibling,
               up: prevSibling,
               next: closeSub,
               previous: openSub
             });
+          } else { // left aligned
+            $.extend(functions, {
+              down: nextSibling,
+              up: prevSibling,
+              next: openSub,
+              previous: closeSub
+            });
           }
         } else { // horizontal menu
-          $.extend(functions, {
-            next: nextSibling,
-            previous: prevSibling,
-            down: openSub,
-            up: closeSub
-          });
+          if (Foundation.rtl()) { // right aligned
+            $.extend(functions, {
+              next: prevSibling,
+              previous: nextSibling,
+              down: openSub,
+              up: closeSub
+            });
+          } else { // left aligned
+            $.extend(functions, {
+              next: nextSibling,
+              previous: prevSibling,
+              down: openSub,
+              up: closeSub
+            });
+          }
         }
       } else { // not tabs -> one sub
-        if (_this.options.alignment === 'left') { // left aligned
-          $.extend(functions, {
-            next: openSub,
-            previous: closeSub,
-            down: nextSibling,
-            up: prevSibling
-          });
-        } else { // right aligned
+        if (Foundation.rtl()) { // right aligned
           $.extend(functions, {
             next: closeSub,
             previous: openSub,
+            down: nextSibling,
+            up: prevSibling
+          });
+        } else { // left aligned
+          $.extend(functions, {
+            next: openSub,
+            previous: closeSub,
             down: nextSibling,
             up: prevSibling
           });
@@ -249,9 +273,8 @@ class DropdownMenu {
     }));
     var $sibs = $sub.parent('li.is-dropdown-submenu-parent').siblings('li.is-dropdown-submenu-parent');
     this._hide($sibs, idx);
-    $sub.css('visibility', 'hidden').addClass('js-dropdown-active').attr({'aria-hidden': false})
-        .parent('li.is-dropdown-submenu-parent').addClass('is-active')
-        .attr({'aria-expanded': true});
+    $sub.css('visibility', 'hidden').addClass('js-dropdown-active')
+        .parent('li.is-dropdown-submenu-parent').addClass('is-active');
     var clear = Foundation.Box.ImNotTouchingYou($sub, null, true);
     if (!clear) {
       var oldClass = this.options.alignment === 'left' ? '-right' : '-left',
@@ -295,13 +318,10 @@ class DropdownMenu {
 
     if (somethingToClose) {
       $toClose.find('li.is-active').add($toClose).attr({
-        'aria-expanded': false,
         'data-is-click': false
       }).removeClass('is-active');
 
-      $toClose.find('ul.js-dropdown-active').attr({
-        'aria-hidden': true
-      }).removeClass('js-dropdown-active');
+      $toClose.find('ul.js-dropdown-active').removeClass('js-dropdown-active');
 
       if (this.changed || $toClose.find('opens-inner').length) {
         var oldClass = this.options.alignment === 'left' ? 'right' : 'left';
@@ -378,6 +398,12 @@ DropdownMenu.defaults = {
    * @example true
    */
   closeOnClick: true,
+  /**
+   * Allow clicks on leaf anchor links to close any open submenus.
+   * @option
+   * @example true
+   */
+  closeOnClickInside: true,
   /**
    * Class applied to vertical oriented menus, Foundation default is `vertical`. Update this if using your own class.
    * @option

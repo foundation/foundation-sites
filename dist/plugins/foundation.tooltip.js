@@ -10,6 +10,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
    * Tooltip module.
    * @module foundation.tooltip
    * @requires foundation.util.box
+   * @requires foundation.util.mediaQuery
    * @requires foundation.util.triggers
    */
 
@@ -21,7 +22,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @param {jQuery} element - jQuery object to attach a tooltip to.
      * @param {Object} options - object to extend the default configuration.
      */
-
     function Tooltip(element, options) {
       _classCallCheck(this, Tooltip);
 
@@ -58,7 +58,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           'data-yeti-box': elemId,
           'data-toggle': elemId,
           'data-resize': elemId
-        }).addClass(this.triggerClass);
+        }).addClass(this.options.triggerClass);
 
         //helper variables to track movement on collisions
         this.usedPositions = [];
@@ -286,11 +286,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               //_this.hide();
               // _this.isClick = false;
             } else {
-                _this.isClick = true;
-                if ((_this.options.disableHover || !_this.$element.attr('tabindex')) && !_this.isActive) {
-                  _this.show();
-                }
+              _this.isClick = true;
+              if ((_this.options.disableHover || !_this.$element.attr('tabindex')) && !_this.isActive) {
+                _this.show();
               }
+            }
           });
         } else {
           this.$element.on('mousedown.zf.tooltip', function (e) {

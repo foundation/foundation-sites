@@ -2,7 +2,7 @@ var addSrc = require('gulp-add-src');
 var babel = require('gulp-babel');
 var concat = require('gulp-concat');
 var cssnano = require('gulp-cssnano');
-var customizer = require('../customizer/lib');
+var customizer = require('../../customizer/lib');
 var File = require('vinyl');
 var fs = require('fs');
 var gulp = require('gulp');
@@ -22,7 +22,7 @@ var yargs = require('yargs');
 var zip = require('gulp-zip');
 
 var ARGS = require('yargs').argv;
-var FOUNDATION_VERSION = require('../package.json').version;
+var FOUNDATION_VERSION = require('../../package.json').version;
 var OUTPUT_DIR = ARGS.output || 'custom-build';
 var COMPATIBILITY = [
   'last 2 versions',
@@ -36,7 +36,7 @@ var VARIABLE_LIST;
 // Load the configuration file for the customizer. It's a list of modules to load and Sass variables to override
 gulp.task('customizer:loadConfig', function(done) {
   fs.readFile('customizer/config.yml', function(err, data) {
-    var moduleListPath = ARGS.modules || '../customizer/complete';
+    var moduleListPath = ARGS.modules || '../../customizer/complete';
     var moduleList = require(moduleListPath);
 
     CUSTOMIZER_CONFIG = yaml(data.toString());
