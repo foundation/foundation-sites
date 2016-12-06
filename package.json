@@ -48,7 +48,7 @@
     "gulp-concat": "^2.4.3",
     "gulp-cssnano": "^2.1.0",
     "gulp-eslint": "^3.0.1",
-    "gulp-filter": "^3.0.1",
+    "gulp-filter": "^4.0.0",
     "gulp-if": "^2.0.0",
     "gulp-load-plugins": "^1.2.0",
     "gulp-mocha": "^2.2.0",
