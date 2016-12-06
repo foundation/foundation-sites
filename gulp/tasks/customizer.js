@@ -49,7 +49,8 @@ gulp.task('customizer:loadConfig', function(done) {
 // Prepare dependencies
 gulp.task('customizer:prepareSassDeps', function() {
   return gulp.src([
-      'node_modules/@(normalize-scss)/sass/**/*.scss'
+      'node_modules/@(normalize-scss)/sass/**/*.scss',
+      'node_modules/@(sassy-lists)/stylesheets/**/*'
     ])
     .pipe(gulp.dest('_vendor/scss'));
 });
