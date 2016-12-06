@@ -141,7 +141,7 @@ class Sticky {
                      });
     });
 	
-	this.$element.on('mutateme.zf.trigger', function (e, el, ms, mr) {
+	this.$element.on('mutateme.zf.trigger', function (e, el) {
 		_this._setSizes(function () {
 			_this._calc(false);
 			if (_this.canStick) {
@@ -154,7 +154,7 @@ class Sticky {
 	  });
 	});
 	
-	this.$anchor.on('mutateme.zf.trigger', function (e, el, ms, mr) {
+	this.$anchor.on('mutateme.zf.trigger', function (e, el) {
 		_this._setSizes(function () {
 			_this._calc(false);
 			if (_this.canStick) {
