@@ -22,7 +22,7 @@ var zip = require('gulp-zip');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 
-var ARGS = require('yargs').argv;
+var ARGS = yargs.argv;
 var FOUNDATION_VERSION = require('../../package.json').version;
 var OUTPUT_DIR = ARGS.output || 'custom-build';
 var COMPATIBILITY = [

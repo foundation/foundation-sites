@@ -87,7 +87,7 @@
     "touch": "^1.0.0",
     "vinyl": "^2.0.1",
     "vinyl-source-stream": "^1.1.0",
-    "yargs": "^4.2.0"
+    "yargs": "^6.5.0"
   },
   "repository": {
     "type": "git",
