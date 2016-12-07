@@ -22,7 +22,7 @@ Foundation has an accessible default color palette. The primary color is used fo
   <div class="column column-block">
     <div class="docs-color-block">
       <div class="docs-color-block-primary"></div>
-      <p>Primary<br></p>
+      <p>Primary</p>
     </div>
   </div>
   <div class="column column-block">
