@@ -24,7 +24,12 @@ module.exports = {
   // Sass
   SASS_DEPS_FILES: [
     'node_modules/@(normalize-scss)/sass/**/*.scss',
-    'node_modules/@(sassy-lists)/stylesheets/**/*.scss'
+    'node_modules/@(sassy-lists)/stylesheets/helpers/_missing-dependencies.scss',
+    'node_modules/@(sassy-lists)/stylesheets/helpers/_true.scss',
+    'node_modules/@(sassy-lists)/stylesheets/functions/_purge.scss',
+    'node_modules/@(sassy-lists)/stylesheets/functions/_remove.scss',
+    'node_modules/@(sassy-lists)/stylesheets/functions/_replace.scss',
+    'node_modules/@(sassy-lists)/stylesheets/functions/_to-list.scss'
   ],
 
   SASS_DOC_PATHS: [
