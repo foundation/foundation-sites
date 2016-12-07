@@ -34,8 +34,9 @@ Along with the menu, the main content of your page will be housed in its own con
 <body>
   <div class="off-canvas-wrapper">
     <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
-      <div class="off-canvas position-left" id="offCanvas" data-off-canvas></div>
-      <div class="off-canvas-content" data-off-canvas-content></div>
+      <div class="off-canvas position-left" id="offCanvas" data-off-canvas>
+        <div class="off-canvas-content" data-off-canvas-content></div>
+      </div>
     </div>
   </div>
 </body>
