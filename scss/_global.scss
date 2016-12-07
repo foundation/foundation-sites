@@ -109,10 +109,6 @@ $success-color: get-color(success);
 $warning-color: get-color(warning);
 $alert-color: get-color(alert);
 
-// Remove this in 6.3
-$-zf-menu-icon-imported: false;
-$-zf-flex-classes-imported: false;
-
 @mixin foundation-global-styles {
   @include -zf-normalize;
 
