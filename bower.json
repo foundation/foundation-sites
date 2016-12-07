@@ -24,7 +24,8 @@
     ".gitignore",
     ".npmignore",
     ".versions",
-    ".babelrc"
+    ".babelrc",
+    "yarn.lock"
   ],
   "dependencies": {
     "jquery": "~2.2.0",
