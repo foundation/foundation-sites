@@ -43,7 +43,7 @@
     "gulp": "^3.8.10",
     "gulp-add-src": "^0.2.0",
     "gulp-babel": "^6.1.1",
-    "gulp-cache-bust": "1.0.2",
+    "gulp-cache-bust": "~1.0.2",
     "gulp-check-deps": "^1.4.1",
     "gulp-concat": "^2.4.3",
     "gulp-cssnano": "^2.1.0",
