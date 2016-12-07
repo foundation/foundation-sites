@@ -1,0 +1,19 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group frame
+////
+
+/// Padding of frame blocks.
+/// @type Length
+$block-padding: $global-padding !default;
+
+/// Column count to use when sizing grid elements.
+/// @type Number
+$total-columns: $grid-column-count !default;
+
+@import 'apps-grid-elements';
+@import 'apps-grid-modifiers';
+@import 'apps-grid-classes';
