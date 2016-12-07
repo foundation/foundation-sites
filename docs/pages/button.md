@@ -101,7 +101,7 @@ The text color for each button class is determined by either `$button-color` or 
 
 ---
 
-### Disabled Buttons
+## Disabled Buttons
 
 The `.disabled` class will give buttons a faded appearance. The class is a purely visual style, and won't actually disable a control. For `<button>` elements, you can add the `disabled` attribute to both disable and style it. If you want to disable a link, you should add the `aria-disabled` attribute to mark it as disabled for assistive technology.
 
