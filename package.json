@@ -91,6 +91,10 @@
     "vinyl-source-stream": "^1.1.0",
     "yargs": "^4.2.0"
   },
+  "engines": {
+    "node": ">=4.0",
+    "npm": ">=2.14.2"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/zurb/foundation-sites"
