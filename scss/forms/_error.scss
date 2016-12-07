@@ -16,15 +16,15 @@ $abide-labels: true !default;
 
 /// Background color to use for invalid text inputs.
 /// @type Color
-$input-background-invalid: map-get($foundation-palette, alert) !default;
+$input-background-invalid: get-color(alert) !default;
 
 /// Color to use for labels of invalid inputs.
 /// @type Color
-$form-label-color-invalid: map-get($foundation-palette, alert) !default;
+$form-label-color-invalid: get-color(alert) !default;
 
 /// Default font color for form error text.
 /// @type Color
-$input-error-color: map-get($foundation-palette, alert) !default;
+$input-error-color: get-color(alert) !default;
 
 /// Default font size for form error text.
 /// @type Number
@@ -47,7 +47,7 @@ $input-error-font-weight: $global-weight-bold !default;
     background-color: mix($background, $white, $background-lighten);
     &::placeholder {
       color: $background;
-    }    
+    }
   }
 }
 

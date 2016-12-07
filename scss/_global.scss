@@ -103,11 +103,11 @@ $global-left: if($global-text-direction == rtl, right, left);
 $global-right: if($global-text-direction == rtl, left, right);
 
 // Internal variables used for colors
-$primary-color: map-get($foundation-palette, primary);
-$secondary-color: map-get($foundation-palette, secondary);
-$success-color: map-get($foundation-palette, success);
-$warning-color: map-get($foundation-palette, warning);
-$alert-color: map-get($foundation-palette, alert);
+$primary-color: get-color(primary);
+$secondary-color: get-color(secondary);
+$success-color: get-color(success);
+$warning-color: get-color(warning);
+$alert-color: get-color(alert);
 
 // Remove this in 6.3
 $-zf-menu-icon-imported: false;
