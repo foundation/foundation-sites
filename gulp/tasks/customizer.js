@@ -3,7 +3,7 @@ var babel = require('gulp-babel');
 var concat = require('gulp-concat');
 var cssnano = require('gulp-cssnano');
 var customizer = require('../../customizer/lib');
-var File = require('vinyl');
+var Vinyl = require('vinyl');
 var fs = require('fs');
 var gulp = require('gulp');
 var If = require('gulp-if');
@@ -13,15 +13,16 @@ var replace = require('gulp-replace');
 var rename = require('gulp-rename');
 var rimraf = require('rimraf');
 var sass = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
 var source = require('vinyl-source-stream');
 var touch = require('touch');
 var uglify = require('gulp-uglify');
 var yaml = require('js-yaml').safeLoad;
 var yargs = require('yargs');
 var zip = require('gulp-zip');
+var postcss = require('gulp-postcss');
+var autoprefixer = require('autoprefixer');
 
-var ARGS = require('yargs').argv;
+var ARGS = yargs.argv;
 var FOUNDATION_VERSION = require('../../package.json').version;
 var OUTPUT_DIR = ARGS.output || 'custom-build';
 var COMPATIBILITY = [
@@ -62,7 +63,7 @@ gulp.task('customizer:sass', ['customizer:loadConfig', 'customizer:prepareSassDe
   // Create a stream with our makeshift Sass file
   var stream = new Readable({ objectMode: true });
   stream._read = function() {};
-  stream.push(new File({
+  stream.push(new Vinyl({
     path: 'foundation.scss',
     contents: new Buffer(sassFile)
   }));
@@ -75,9 +76,9 @@ gulp.task('customizer:sass', ['customizer:loadConfig', 'customizer:prepareSassDe
         'node_modules/motion-ui/src'
       ]
     }))
-    .pipe(autoprefixer({
+    .pipe(postcss([autoprefixer({
       browsers: COMPATIBILITY
-    }))
+    })]))
     .pipe(gulp.dest(path.join(OUTPUT_DIR, 'css')))
     .pipe(cssnano())
     .pipe(rename('foundation.min.css'))
