@@ -34,16 +34,49 @@ Finally, the content itself might need more context for users that use screen re
 Add color classes to give badges additional meaning.
 
 ```html_example
-<span class="badge">1</span>
+<span class="badge primary">1</span>
 <span class="badge secondary">2</span>
 <span class="badge success">3</span>
 <span class="badge alert">A</span>
 <span class="badge warning">B</span>
 ```
 
-<br>
+---
 
-The `$badge-classes` list in your settings file determines which colors in `$foundation-palette` will generate color classes. If you don't need a certain badge class, simply remove it from the list.
+### Custom Colors
+
+If you're using the Sass version of Foundation, you can customize the badge classes by editing the `$badge-palette` map in your settings file. The badge palette defaults to `$foundation-palette`.
+
+If you don't need certain colors from the default palette, simply remove them from the list.
+
+```scss
+$badge-palette: map-remove($foundation-palette, (
+    primary,
+    secondary
+)) !default;
+```  
+
+Or you can add more colors to the default palette.
+
+```scss
+$badge-palette: map-merge($foundation-palette, (
+    purple: #bb00ff
+)) !default;
+```
+
+Or you can define your own custom badge palette.
+
+```scss
+$badge-palette: (
+    black: #000000,
+    red: #ff0000,
+    purple: #bb00ff
+) !default;
+```
+
+---
+
+### Text Colors
 
 The text color for each badge class is determined by either `$badge-color` or `$badge-color-alt`, whichever settings variable has more contrast.
 
@@ -53,7 +86,7 @@ The text color for each badge class is determined by either `$badge-color` or `$
 
 ---
 
-### With Icons
+## Icons
 
 An icon can be used in place of text. We're using the [Foundation icon font](http://zurb.com/playground/foundation-icon-fonts-3) here, but any icon fonts or image-based icons will work fine.
 

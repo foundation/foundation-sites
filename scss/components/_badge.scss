@@ -18,9 +18,9 @@ $badge-color: $white !default;
 /// @type Color
 $badge-color-alt: $black !default;
 
-/// Coloring classes. The names in this list output classes in your CSS, like `.secondary`, `.success`, and so on. Each value must also be in the `$foundation-palette` map.
-/// @type List
-$badge-classes: ( secondary success warning alert ) !default;
+/// Coloring classes. A map of classes to output in your CSS, like `.secondary`, `.success`, and so on.
+/// @type Map
+$badge-palette: $foundation-palette !default;
 
 /// Default padding inside badges.
 /// @type Number
@@ -53,9 +53,8 @@ $badge-font-size: 0.6rem !default;
     background: $badge-background;
     color: $badge-color;
 
-    @each $class in $badge-classes {
-      $color: get-color($class);
-      &.#{$class} {
+    @each $name, $color in $badge-palette {
+      &.#{$name} {
         background: $color;
         color: color-pick-contrast($color, ($badge-color, $badge-color-alt));
       }

@@ -18,9 +18,9 @@ $label-color: $white !default;
 /// @type Color
 $label-color-alt: $black !default;
 
-/// Coloring classes. The names in this list output classes in your CSS, like `.secondary`, `.success`, and so on. Each value must also be in the `$foundation-palette` map.
-/// @type List
-$label-classes: ( secondary success warning alert ) !default;
+/// Coloring classes. A map of classes to output in your CSS, like `.secondary`, `.success`, and so on.
+/// @type Map
+$label-palette: $foundation-palette !default;
 
 /// Default font size for labels.
 /// @type Number
@@ -54,9 +54,8 @@ $label-radius: $global-radius !default;
     background: $label-background;
     color: $label-color;
 
-    @each $class in $label-classes {
-      $color: get-color($class);
-      &.#{$class} {
+    @each $name, $color in $label-palette {
+      &.#{$name} {
         background: $color;
         color: color-pick-contrast($color, ($label-color, $label-color-alt));
       }

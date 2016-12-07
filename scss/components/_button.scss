@@ -47,9 +47,9 @@ $button-sizes: (
   large: 1.25rem,
 ) !default;
 
-/// Coloring classes. The names in this list output classes in your CSS, like `.secondary`, `.success`, and so on. Each value must also be in the `$foundation-palette` map.
-/// @type List
-$button-classes: ( secondary success warning alert ) !default;
+/// Coloring classes. A map of classes to output in your CSS, like `.secondary`, `.success`, and so on.
+/// @type Map
+$button-palette: $foundation-palette !default;
 
 /// opacity for a disabled button.
 /// @type List
@@ -230,19 +230,18 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
     &.expanded { @include button-expand; }
 
     // Colors
-    @each $class in $button-classes {
-      $color: get-color($class);
+    @each $name, $color in $button-palette {
       @if $button-fill != hollow {
-        &.#{$class} {
+        &.#{$name} {
           @include button-style($color, auto, auto);
         }
       }
       @else {
-        &.#{$class} {
+        &.#{$name} {
           @include button-hollow-style($color);
         }
 
-        &.#{$class}.dropdown::after {
+        &.#{$name}.dropdown::after {
           border-top-color: $color;
         }
       }
@@ -254,9 +253,8 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
         @include button-hollow;
         @include button-hollow-style;
 
-        @each $class in $button-classes {
-          $color: get-color($class);
-          &.#{$class} {
+        @each $name, $color in $button-palette {
+          &.#{$name} {
             @include button-hollow-style($color);
           }
         }
@@ -268,9 +266,8 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
     &[disabled] {
       @include button-disabled;
 
-      @each $class in $button-classes {
-        $color: get-color($class);
-        &.#{$class} {
+      @each $name, $color in $button-palette {
+        &.#{$name} {
           @include button-disabled($color);
         }
       }
