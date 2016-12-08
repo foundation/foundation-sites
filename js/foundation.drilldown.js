@@ -99,6 +99,11 @@ class Drilldown {
       }
       _this._back($menu);
     });
+
+    if(!this.options.autoHeight) {
+      this.$submenus.addClass('drilldown-submenu-cover-previous');
+    }
+
     if(!this.$element.parent().hasClass('is-drilldown')){
       this.$wrapper = $(this.options.wrapper).addClass('is-drilldown');
       if(this.options.animateHeight) this.$wrapper.addClass('animate-height');
@@ -361,17 +366,18 @@ class Drilldown {
    * @private
    */
   _getMaxDims() {
-    var max = 0, result = {}, oneHeight = this.$menuItems[0].getBoundingClientRect().height,_this = this;
+    var  maxHeight = 0, result = {}, _this = this;
     this.$submenus.add(this.$element).each(function(){
       var numOfElems = $(this).children('li').length;
-      max = numOfElems > max ? numOfElems : max;
+      var height = Foundation.Box.GetDimensions(this).height;
+      maxHeight = height > maxHeight ? height : maxHeight;
       if(_this.options.autoHeight) {
-        $(this).data('calcHeight',numOfElems * oneHeight);
-        if (!$(this).hasClass('is-drilldown-submenu')) result['height'] = numOfElems * oneHeight;
+        $(this).data('calcHeight',height);
+        if (!$(this).hasClass('is-drilldown-submenu')) result['height'] = height;
       }
     });
 
-    if(!this.options.autoHeight) result['min-height'] = `${max * oneHeight}px`;
+    if(!this.options.autoHeight) result['min-height'] = `${maxHeight}px`;
 
     result['max-width'] = `${this.$element[0].getBoundingClientRect().width}px`;
 
@@ -394,6 +400,9 @@ class Drilldown {
     this.$submenuAnchors.each(function() {
       $(this).off('.zf.drilldown');
     });
+
+    this.$submenus.removeClass('drilldown-submenu-cover-previous');
+
     this.$element.find('a').each(function(){
       var $link = $(this);
       $link.removeAttr('tabindex');
