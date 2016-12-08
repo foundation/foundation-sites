@@ -1,12 +1,9 @@
-// Type definitions for Foundation Sites v6.3.0
+// Type definitions for Foundation Sites v6.3.0-rc2
 // Project: http://foundation.zurb.com/
 // Github: https://github.com/zurb/foundation-sites
 //
 // Definitions by: Sam Vloeberghs <https://github.com/samvloeberghs/>
 // Original Definitions: https://github.com/samvloeberghs/foundation-sites-typings
-//
-// Attention:
-// Please contribute on updating versions! Happy to merge pull-requests
 
 declare module FoundationSites {
 
