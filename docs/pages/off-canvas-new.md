@@ -7,10 +7,6 @@ sass:
 js: js/foundation.offcanvas.js
 tags:
   - navigation
-  - offcanvas
-  - off-canvas
-  - nav
-  - title bar
 flex: true
 ---
 
