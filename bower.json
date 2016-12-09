@@ -1,10 +1,10 @@
 {
   "name": "foundation-sites",
-  "version": "6.3-rc1",
+  "version": "6.3.0-rc2",
   "license": "MIT",
   "main": [
     "scss/foundation.scss",
-    "dist/foundation.js"
+    "dist/js/foundation.js"
   ],
   "ignore": [
     "config",

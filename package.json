@@ -1,7 +1,8 @@
 {
   "name": "foundation-sites",
-  "version": "6.3.0-rc1",
-  "main": "dist/foundation.js",
+  "version": "6.3.0-rc2",
+  "main": "dist/js/foundation.js",
+  "typings": "dist/js/foundation.d.ts",
   "description": "The most advanced responsive front-end framework in the world.",
   "author": "ZURB <foundation@zurb.com> (http://foundation.zurb.com)",
   "homepage": "http://foundation.zurb.com/sites",
@@ -115,7 +116,7 @@
   "jspm": {
     "format": "global",
     "shim": {
-      "dist/foundation": {
+      "dist/js/foundation": {
         "deps": [
           "jquery"
         ]

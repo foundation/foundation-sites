@@ -101,17 +101,18 @@ class DropdownMenu {
     if (this.options.clickOpen || hasTouch) {
       this.$menuItems.on('click.zf.dropdownmenu touchstart.zf.dropdownmenu', handleClickFn);
     }
-    
+
     // Handle Leaf element Clicks
     if(_this.options.closeOnClickInside){
       this.$menuItems.on('click.zf.dropdownmenu touchend.zf.dropdownmenu', function(e) {
-        var hasSub = $elem.hasClass(parClass);
+        var $elem = $(this),
+            hasSub = $elem.hasClass(parClass);
         if(!hasSub){
           _this._hide();
         }
       });
     }
-    
+
     if (!this.options.disableHover) {
       this.$menuItems.on('mouseenter.zf.dropdownmenu', function(e) {
         var $elem = $(this),

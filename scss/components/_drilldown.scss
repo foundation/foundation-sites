@@ -48,7 +48,6 @@ $drilldown-background: $white !default;
     #{$global-left}: 100%;
     z-index: -1;
 
-    min-height: 100%;
     width: 100%;
     background: $drilldown-background;
     transition: $drilldown-transition;
@@ -62,6 +61,10 @@ $drilldown-background: $white !default;
     &.is-closing {
       transform: translateX(if($global-text-direction == ltr, 100%, -100%));
     }
+  }
+
+  .drilldown-submenu-cover-previous {
+    min-height: 100%;
   }
 
   @if $drilldown-arrows {

@@ -220,6 +220,7 @@ $accordionmenu-arrow-size: 6px;
 $badge-background: $primary-color;
 $badge-color: $white;
 $badge-color-alt: $black;
+$badge-palette: $foundation-palette;
 $badge-padding: 0.3em;
 $badge-minwidth: 2.1em;
 $badge-font-size: 0.6rem;
@@ -253,6 +254,7 @@ $button-sizes: (
   default: 0.9rem,
   large: 1.25rem,
 );
+$button-palette: $foundation-palette;
 $button-opacity-disabled: 0.25;
 $button-background-hover-lightness: -20%;
 $button-hollow-hover-lightness: -50%;
@@ -392,6 +394,7 @@ $form-button-radius: $global-radius;
 $label-background: $primary-color;
 $label-color: $white;
 $label-color-alt: $black;
+$label-palette: $foundation-palette;
 $label-font-size: 0.8rem;
 $label-padding: 0.33333rem 0.5rem;
 $label-radius: $global-radius;
@@ -487,8 +490,10 @@ $progress-radius: $global-radius;
 // --------------------
 
 $responsive-embed-margin-bottom: rem-calc(16);
-$responsive-embed-ratio: 4 by 3;
-$responsive-embed-ratio-widescreen: 16 by 9;
+$responsive-embed-ratios: (
+  default: 4 by 3,
+  widescreen: 16 by 9,
+);
 
 // 29. Reveal
 // ----------
