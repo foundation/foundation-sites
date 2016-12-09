@@ -122,6 +122,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                  * @event ResponsiveToggle#toggled
                  */
                 _this2.$element.trigger('toggled.zf.responsiveToggle');
+                _this2.$targetMenu.find('[data-mutate]').triggerHandler('mutateme.zf.trigger');
               });
             } else {
               Foundation.Motion.animateOut(this.$targetMenu, this.animationOut, function () {
@@ -134,6 +135,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }
           } else {
             this.$targetMenu.toggle(0);
+            this.$targetMenu.find('[data-mutate]').trigger('mutateme.zf.trigger');
 
             /**
              * Fires when the element attached to the tab bar toggles.

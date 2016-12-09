@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /**
  * Foundation for Sites by ZURB
- * Version 6.3-rc1
+ * Version 6.3.0-rc3
  * foundation.zurb.com
  * Licensed under MIT Open Source
  */
@@ -1587,8 +1587,10 @@ textarea {
   font-size: 1rem;
   font-weight: normal;
   color: #0a0a0a;
-  -webkit-transition: -webkit-box-shadow 0.5s, border-color 0.25s ease-in-out;
-          transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
+  -webkit-transition: border-color 0.25s ease-in-out, -webkit-box-shadow 0.5s;
+  transition: border-color 0.25s ease-in-out, -webkit-box-shadow 0.5s;
+  transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
+  transition: box-shadow 0.5s, border-color 0.25s ease-in-out, -webkit-box-shadow 0.5s;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none; }
@@ -1599,8 +1601,10 @@ textarea {
     background-color: #fefefe;
     -webkit-box-shadow: 0 0 5px #cacaca;
             box-shadow: 0 0 5px #cacaca;
-    -webkit-transition: -webkit-box-shadow 0.5s, border-color 0.25s ease-in-out;
-            transition: box-shadow 0.5s, border-color 0.25s ease-in-out; }
+    -webkit-transition: border-color 0.25s ease-in-out, -webkit-box-shadow 0.5s;
+    transition: border-color 0.25s ease-in-out, -webkit-box-shadow 0.5s;
+    transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
+    transition: box-shadow 0.5s, border-color 0.25s ease-in-out, -webkit-box-shadow 0.5s; }
 
 textarea {
   max-width: 100%; }
@@ -1775,8 +1779,10 @@ select {
   -webkit-background-size: 9px 6px;
           background-size: 9px 6px;
   padding-right: 1.5rem;
-  -webkit-transition: -webkit-box-shadow 0.5s, border-color 0.25s ease-in-out;
-          transition: box-shadow 0.5s, border-color 0.25s ease-in-out; }
+  -webkit-transition: border-color 0.25s ease-in-out, -webkit-box-shadow 0.5s;
+  transition: border-color 0.25s ease-in-out, -webkit-box-shadow 0.5s;
+  transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
+  transition: box-shadow 0.5s, border-color 0.25s ease-in-out, -webkit-box-shadow 0.5s; }
   @media screen and (min-width: 0\0) {
     select {
       background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAYCAYAAACbU/80AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAIpJREFUeNrEkckNgDAMBBfRkEt0ObRBBdsGXUDgmQfK4XhH2m8czQAAy27R3tsw4Qfe2x8uOO6oYLb6GlOor3GF+swURAOmUJ+RwtEJs9WvTGEYxBXqI1MQAZhCfUQKRzDMVj+TwrAIV6jvSUEkYAr1LSkcyTBb/V+KYfX7xAeusq3sLDtGH3kEGACPWIflNZfhRQAAAABJRU5ErkJggg=="); } }
@@ -1786,8 +1792,10 @@ select {
     background-color: #fefefe;
     -webkit-box-shadow: 0 0 5px #cacaca;
             box-shadow: 0 0 5px #cacaca;
-    -webkit-transition: -webkit-box-shadow 0.5s, border-color 0.25s ease-in-out;
-            transition: box-shadow 0.5s, border-color 0.25s ease-in-out; }
+    -webkit-transition: border-color 0.25s ease-in-out, -webkit-box-shadow 0.5s;
+    transition: border-color 0.25s ease-in-out, -webkit-box-shadow 0.5s;
+    transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
+    transition: box-shadow 0.5s, border-color 0.25s ease-in-out, -webkit-box-shadow 0.5s; }
   select:disabled {
     background-color: #e6e6e6;
     cursor: not-allowed; }
@@ -1831,7 +1839,7 @@ select {
   border: 1px solid transparent;
   border-radius: 0;
   -webkit-transition: background-color 0.25s ease-out, color 0.25s ease-out;
-          transition: background-color 0.25s ease-out, color 0.25s ease-out;
+  transition: background-color 0.25s ease-out, color 0.25s ease-out;
   font-size: 0.9rem;
   line-height: 1;
   text-align: center;
@@ -2054,6 +2062,9 @@ select {
   text-align: center;
   background: #1779ba;
   color: #fefefe; }
+  .badge.primary {
+    background: #1779ba;
+    color: #fefefe; }
   .badge.secondary {
     background: #767676;
     color: #fefefe; }
@@ -2310,18 +2321,36 @@ select {
   .menu > li > a svg {
     margin-right: 0.25rem;
     display: inline-block; }
-  .menu > li {
+  .menu > li, .menu.horizontal > li {
     display: table-cell; }
+  .menu.expanded {
+    display: table;
+    width: 100%;
+    table-layout: fixed; }
+    .menu.expanded > li:first-child:last-child {
+      width: 100%; }
   .menu.vertical > li {
     display: block; }
   @media print, screen and (min-width: 40em) {
     .menu.medium-horizontal > li {
       display: table-cell; }
+    .menu.medium-expanded {
+      display: table;
+      width: 100%;
+      table-layout: fixed; }
+      .menu.medium-expanded > li:first-child:last-child {
+        width: 100%; }
     .menu.medium-vertical > li {
       display: block; } }
   @media print, screen and (min-width: 64em) {
     .menu.large-horizontal > li {
       display: table-cell; }
+    .menu.large-expanded {
+      display: table;
+      width: 100%;
+      table-layout: fixed; }
+      .menu.large-expanded > li:first-child:last-child {
+        width: 100%; }
     .menu.large-vertical > li {
       display: block; } }
   .menu.simple li {
@@ -2337,12 +2366,6 @@ select {
     clear: both; }
   .menu.align-right > li {
     float: right; }
-  .menu.expanded {
-    display: table;
-    width: 100%;
-    table-layout: fixed; }
-    .menu.expanded > li:first-child:last-child {
-      width: 100%; }
   .menu.icon-top > li > a {
     text-align: center; }
     .menu.icon-top > li > a img,
@@ -2395,6 +2418,8 @@ select {
     width: 100%;
     height: 2px;
     background: #fefefe;
+    -webkit-box-shadow: 0 7px 0 #fefefe, 0 14px 0 #fefefe;
+            box-shadow: 0 7px 0 #fefefe, 0 14px 0 #fefefe;
     content: ''; }
   .menu-icon:hover::after {
     background: #cacaca;
@@ -2416,6 +2441,8 @@ select {
     width: 100%;
     height: 2px;
     background: #0a0a0a;
+    -webkit-box-shadow: 0 7px 0 #0a0a0a, 0 14px 0 #0a0a0a;
+            box-shadow: 0 7px 0 #0a0a0a, 0 14px 0 #0a0a0a;
     content: ''; }
   .menu-icon.dark:hover::after {
     background: #8a8a8a;
@@ -2429,18 +2456,19 @@ select {
     display: block; }
   .is-drilldown.animate-height {
     -webkit-transition: height 0.5s;
-            transition: height 0.5s; }
+    transition: height 0.5s; }
 
 .is-drilldown-submenu {
   position: absolute;
   top: 0;
   left: 100%;
   z-index: -1;
-  min-height: 100%;
   width: 100%;
   background: #fefefe;
   -webkit-transition: -webkit-transform 0.15s linear;
-          transition: transform 0.15s linear; }
+  transition: -webkit-transform 0.15s linear;
+  transition: transform 0.15s linear;
+  transition: transform 0.15s linear, -webkit-transform 0.15s linear; }
   .is-drilldown-submenu.is-active {
     z-index: 1;
     display: block;
@@ -2451,6 +2479,9 @@ select {
     -webkit-transform: translateX(100%);
         -ms-transform: translateX(100%);
             transform: translateX(100%); }
+
+.drilldown-submenu-cover-previous {
+  min-height: 100%; }
 
 .is-drilldown-submenu-parent > a {
   position: relative; }
@@ -2770,6 +2801,9 @@ select {
   cursor: default;
   background: #1779ba;
   color: #fefefe; }
+  .label.primary {
+    background: #1779ba;
+    color: #fefefe; }
   .label.secondary {
     background: #767676;
     color: #fefefe; }
@@ -2820,7 +2854,7 @@ select {
   width: 100%;
   height: 100%;
   -webkit-transition: opacity 0.5s ease, visibility 0.5s ease;
-          transition: opacity 0.5s ease, visibility 0.5s ease;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
   background: rgba(254, 254, 254, 0.25);
   opacity: 0;
   visibility: hidden;
@@ -2843,7 +2877,9 @@ select {
   position: fixed;
   z-index: 1;
   -webkit-transition: -webkit-transform 0.5s ease;
-          transition: transform 0.5s ease;
+  transition: -webkit-transform 0.5s ease;
+  transition: transform 0.5s ease;
+  transition: transform 0.5s ease, -webkit-transform 0.5s ease;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
   background: #e6e6e6; }
@@ -2863,7 +2899,9 @@ select {
   position: absolute;
   z-index: 1;
   -webkit-transition: -webkit-transform 0.5s ease;
-          transition: transform 0.5s ease;
+  transition: -webkit-transform 0.5s ease;
+  transition: transform 0.5s ease;
+  transition: transform 0.5s ease, -webkit-transform 0.5s ease;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
   background: #e6e6e6; }
@@ -2989,7 +3027,9 @@ select {
 
 .off-canvas-content {
   -webkit-transition: -webkit-transform 0.5s ease;
-          transition: transform 0.5s ease;
+  transition: -webkit-transform 0.5s ease;
+  transition: transform 0.5s ease;
+  transition: transform 0.5s ease, -webkit-transform 0.5s ease;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden; }
 
@@ -3240,10 +3280,10 @@ select {
   height: 0.5rem;
   background-color: #cacaca;
   -webkit-transition: all 0.2s ease-in-out;
-          transition: all 0.2s ease-in-out; }
+  transition: all 0.2s ease-in-out; }
   .slider-fill.is-dragging {
     -webkit-transition: all 0s linear;
-            transition: all 0s linear; }
+    transition: all 0s linear; }
 
 .slider-handle {
   position: absolute;
@@ -3260,7 +3300,7 @@ select {
   border-radius: 0;
   background-color: #1779ba;
   -webkit-transition: all 0.2s ease-in-out;
-          transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   -ms-touch-action: manipulation;
       touch-action: manipulation; }
   [data-whatinput='mouse'] .slider-handle {
@@ -3269,7 +3309,7 @@ select {
     background-color: #14679e; }
   .slider-handle.is-dragging {
     -webkit-transition: all 0s linear;
-            transition: all 0s linear; }
+    transition: all 0s linear; }
 
 .slider.disabled,
 .slider[disabled] {
@@ -3442,7 +3482,7 @@ html.is-reveal-open body {
   border-radius: 0;
   background: #cacaca;
   -webkit-transition: all 0.25s ease-out;
-          transition: all 0.25s ease-out;
+  transition: all 0.25s ease-out;
   font-weight: inherit;
   color: inherit;
   cursor: pointer; }
@@ -3460,7 +3500,7 @@ html.is-reveal-open body {
     border-radius: 0;
     background: #fefefe;
     -webkit-transition: all 0.25s ease-out;
-            transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
     content: ''; }
   input:checked ~ .switch-paddle {
     background: #1779ba; }
@@ -3653,7 +3693,7 @@ table.hover:not(.unstriped) tr:nth-of-type(even):hover {
   background: #fefefe;
   color: #0a0a0a;
   -webkit-transition: all 0.5s ease;
-          transition: all 0.5s ease; }
+  transition: all 0.5s ease; }
 
 .tabs-content.vertical {
   border: 1px solid #e6e6e6;
@@ -3677,7 +3717,9 @@ table.hover:not(.unstriped) tr:nth-of-type(even):hover {
 
 a.thumbnail {
   -webkit-transition: -webkit-box-shadow 200ms ease-out;
-          transition: box-shadow 200ms ease-out; }
+  transition: -webkit-box-shadow 200ms ease-out;
+  transition: box-shadow 200ms ease-out;
+  transition: box-shadow 200ms ease-out, -webkit-box-shadow 200ms ease-out; }
   a.thumbnail:hover, a.thumbnail:focus {
     -webkit-box-shadow: 0 0 6px 1px rgba(23, 121, 186, 0.5);
             box-shadow: 0 0 6px 1px rgba(23, 121, 186, 0.5); }

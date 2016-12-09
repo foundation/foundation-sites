@@ -111,6 +111,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
 
         this._updateARIA(isOn);
+        this.$element.find('[data-mutate]').trigger('mutateme.zf.trigger');
       }
     }, {
       key: '_toggleAnimate',
@@ -121,11 +122,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           Foundation.Motion.animateIn(this.$element, this.animationIn, function () {
             _this._updateARIA(true);
             this.trigger('on.zf.toggler');
+            this.find('[data-mutate]').trigger('mutateme.zf.trigger');
           });
         } else {
           Foundation.Motion.animateOut(this.$element, this.animationOut, function () {
             _this._updateARIA(false);
             this.trigger('off.zf.toggler');
+            this.find('[data-mutate]').trigger('mutateme.zf.trigger');
           });
         }
       }

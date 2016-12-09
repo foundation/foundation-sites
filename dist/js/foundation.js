@@ -2,7 +2,7 @@
 
   "use strict";
 
-  var FOUNDATION_VERSION = '6.3-rc1';
+  var FOUNDATION_VERSION = '6.3.0-rc3';
 
   // Global Foundation object
   // This is attached to the window, or used as a module for AMD/Browserify
@@ -1223,6 +1223,9 @@
       }
       // Force load the image
       else {
+          // fix for IE. See https://css-tricks.com/snippets/jquery/fixing-load-in-ie-for-cached-images/
+          var src = $(this).attr('src');
+          $(this).attr('src', src + '?' + new Date().getTime());
           $(this).one('load', function () {
             singleImageLoaded();
           });
@@ -3160,6 +3163,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }
           _this._back($menu);
         });
+
+        if (!this.options.autoHeight) {
+          this.$submenus.addClass('drilldown-submenu-cover-previous');
+        }
+
         if (!this.$element.parent().hasClass('is-drilldown')) {
           this.$wrapper = $(this.options.wrapper).addClass('is-drilldown');
           if (this.options.animateHeight) this.$wrapper.addClass('animate-height');
@@ -3451,20 +3459,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: '_getMaxDims',
       value: function _getMaxDims() {
-        var max = 0,
+        var maxHeight = 0,
             result = {},
-            oneHeight = this.$menuItems[0].getBoundingClientRect().height,
             _this = this;
         this.$submenus.add(this.$element).each(function () {
           var numOfElems = $(this).children('li').length;
-          max = numOfElems > max ? numOfElems : max;
+          var height = Foundation.Box.GetDimensions(this).height;
+          maxHeight = height > maxHeight ? height : maxHeight;
           if (_this.options.autoHeight) {
-            $(this).data('calcHeight', numOfElems * oneHeight);
-            if (!$(this).hasClass('is-drilldown-submenu')) result['height'] = numOfElems * oneHeight;
+            $(this).data('calcHeight', height);
+            if (!$(this).hasClass('is-drilldown-submenu')) result['height'] = height;
           }
         });
 
-        if (!this.options.autoHeight) result['min-height'] = max * oneHeight + 'px';
+        if (!this.options.autoHeight) result['min-height'] = maxHeight + 'px';
 
         result['max-width'] = this.$element[0].getBoundingClientRect().width + 'px';
 
@@ -3487,6 +3495,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.$submenuAnchors.each(function () {
           $(this).off('.zf.drilldown');
         });
+
+        this.$submenus.removeClass('drilldown-submenu-cover-previous');
+
         this.$element.find('a').each(function () {
           var $link = $(this);
           $link.removeAttr('tabindex');
@@ -4155,7 +4166,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         // Handle Leaf element Clicks
         if (_this.options.closeOnClickInside) {
           this.$menuItems.on('click.zf.dropdownmenu touchend.zf.dropdownmenu', function (e) {
-            var hasSub = $elem.hasClass(parClass);
+            var $elem = $(this),
+                hasSub = $elem.hasClass(parClass);
             if (!hasSub) {
               _this._hide();
             }
@@ -4792,8 +4804,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
        * Changes the CSS height property of each child in an Equalizer parent to match the tallest by row
        * @param {array} groups - An array of heights of children within Equalizer container grouped by row with element,height and max as last child
        * @fires Equalizer#preequalized
-       * @fires Equalizer#preequalizedRow
-       * @fires Equalizer#postequalizedRow
+       * @fires Equalizer#preequalizedrow
+       * @fires Equalizer#postequalizedrow
        * @fires Equalizer#postequalized
        */
 
@@ -4813,7 +4825,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }
           /**
             * Fires before the heights per row are applied
-            * @event Equalizer#preequalizedRow
+            * @event Equalizer#preequalizedrow
             */
           this.$element.trigger('preequalizedrow.zf.equalizer');
           for (var j = 0, lenJ = groupsILength - 1; j < lenJ; j++) {
@@ -4821,7 +4833,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }
           /**
             * Fires when the heights per row have been applied
-            * @event Equalizer#postequalizedRow
+            * @event Equalizer#postequalizedrow
             */
           this.$element.trigger('postequalizedrow.zf.equalizer');
         }
@@ -6634,6 +6646,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                  * @event ResponsiveToggle#toggled
                  */
                 _this2.$element.trigger('toggled.zf.responsiveToggle');
+                _this2.$targetMenu.find('[data-mutate]').triggerHandler('mutateme.zf.trigger');
               });
             } else {
               Foundation.Motion.animateOut(this.$targetMenu, this.animationOut, function () {
@@ -6646,6 +6659,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }
           } else {
             this.$targetMenu.toggle(0);
+            this.$targetMenu.find('[data-mutate]').trigger('mutateme.zf.trigger');
 
             /**
              * Fires when the element attached to the tab bar toggles.
@@ -6784,9 +6798,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     }, {
       key: '_makeOverlay',
-      value: function _makeOverlay(id) {
-        var $overlay = $('<div></div>').addClass('reveal-overlay').appendTo(this.options.appendTo);
-        return $overlay;
+      value: function _makeOverlay() {
+        return $('<div></div>').addClass('reveal-overlay').appendTo(this.options.appendTo);
       }
 
       /**
@@ -9154,6 +9167,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
 
         this._updateARIA(isOn);
+        this.$element.find('[data-mutate]').trigger('mutateme.zf.trigger');
       }
     }, {
       key: '_toggleAnimate',
@@ -9164,11 +9178,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           Foundation.Motion.animateIn(this.$element, this.animationIn, function () {
             _this._updateARIA(true);
             this.trigger('on.zf.toggler');
+            this.find('[data-mutate]').trigger('mutateme.zf.trigger');
           });
         } else {
           Foundation.Motion.animateOut(this.$element, this.animationOut, function () {
             _this._updateARIA(false);
             this.trigger('off.zf.toggler');
+            this.find('[data-mutate]').trigger('mutateme.zf.trigger');
           });
         }
       }

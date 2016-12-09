@@ -120,7 +120,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         // Handle Leaf element Clicks
         if (_this.options.closeOnClickInside) {
           this.$menuItems.on('click.zf.dropdownmenu touchend.zf.dropdownmenu', function (e) {
-            var hasSub = $elem.hasClass(parClass);
+            var $elem = $(this),
+                hasSub = $elem.hasClass(parClass);
             if (!hasSub) {
               _this._hide();
             }
