@@ -9,7 +9,7 @@
 /// Creates the top-level app frame.
 @mixin frame($size: expand, $orientation: horizontal, $align: left) {
   display: flex;
-  height: 100vh;
+  height: calc(100% - 0px);
   position: relative;
   overflow: hidden;
   backface-visibility: hidden;
