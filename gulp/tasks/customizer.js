@@ -64,7 +64,9 @@ gulp.task('customizer:sass', ['customizer:loadConfig'], function() {
     .pipe(sass({
       includePaths: [
         'scss',
-        'node_modules/motion-ui/src'
+        'node_modules/motion-ui/src',
+        'node_modules/normalize-scss/sass',
+        'node_modules/sassy-lists/stylesheets'
       ]
     }))
     .pipe(postcss([autoprefixer({

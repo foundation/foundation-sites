@@ -44,14 +44,18 @@ gulp.task('deploy:version', function() {
     .pipe(gulp.dest('.'));
 });
 
-// Generates compiled CSS and JS files and puts them in the dist/ folder
-gulp.task('deploy:dist', ['sass:foundation', 'javascript:foundation'], function() {
+// Generates compiled SCSS, CSS and JS files and puts them in the dist/ folder
+gulp.task('deploy:dist', ['sass:foundationSCSS', 'sass:foundationCSS', 'javascript:foundation'], function() {
+  var scssFilter = filter(['**/*.scss'], { restore: true });
   var cssFilter = filter(['**/*.css'], { restore: true });
   var jsFilter  = filter(['**/*.js'], { restore: true });
 
   console.log(CONFIG.DIST_FILES)
   return gulp.src(CONFIG.DIST_FILES)
     .pipe(plumber())
+    .pipe(scssFilter)
+      .pipe(gulp.dest('./dist/scss'))
+    .pipe(scssFilter.restore)
     .pipe(cssFilter)
       .pipe(gulp.dest('./dist/css'))
       .pipe(cssnano())
@@ -138,7 +142,7 @@ gulp.task('deploy:templates', function(done) {
 });
 
 // The Customizer runs this function to generate files it needs
-gulp.task('deploy:custom', ['sass:foundation', 'javascript:foundation'], function() {
+gulp.task('deploy:custom', ['sass:foundationCSS', 'javascript:foundation'], function() {
   gulp.src('./_build/assets/css/foundation.css')
       .pipe(cssnano())
       .pipe(rename('foundation.min.css'))
