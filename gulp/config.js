@@ -64,6 +64,7 @@ module.exports = {
   ],
 
   DIST_FILES: [
+    './_build/assets/scss/foundation.scss',
     './_build/assets/css/foundation.css',
     './_build/assets/css/foundation-flex.css',
     './_build/assets/css/foundation-rtl.css',
