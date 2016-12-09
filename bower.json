@@ -4,7 +4,7 @@
   "license": "MIT",
   "main": [
     "scss/foundation.scss",
-    "dist/foundation.js"
+    "dist/js/foundation.js"
   ],
   "ignore": [
     "config",
