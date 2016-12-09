@@ -10,7 +10,7 @@ Package.onUse(function(api) {
   api.versionsFrom('1.2.1');
   api.imply('fourseven:scss@3.4.1');
   api.use(['ecmascript', 'jquery', 'fourseven:scss@3.4.1'], 'client');
-  api.addFiles('dist/foundation.js', 'client');
+  api.addFiles('dist/js/foundation.js', 'client');
   api.addFiles([
 
     'scss/foundation.scss',

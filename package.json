@@ -116,7 +116,7 @@
   "jspm": {
     "format": "global",
     "shim": {
-      "dist/foundation": {
+      "dist/js/foundation": {
         "deps": [
           "jquery"
         ]
