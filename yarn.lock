@@ -4814,7 +4814,7 @@ normalize-range@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/normalize-range/-/normalize-range-0.1.2.tgz#2d10c06bdfd312ea9777695a4d28439456b75942"
 
-normalize-scss@6.0.0:
+normalize-scss@^6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/normalize-scss/-/normalize-scss-6.0.0.tgz#5e94fc91e3bb279933ae8aaa511ad0912a0cb44d"
 
@@ -5527,6 +5527,10 @@ qs@~0.6.0:
   version "0.6.6"
   resolved "https://registry.yarnpkg.com/qs/-/qs-0.6.6.tgz#6e015098ff51968b8a3c819001d5f2c89bc4b107"
 
+qs@~5.2.0:
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-5.2.1.tgz#801fee030e0b9450d6385adc48a4cc55b44aedfc"
+
 query-string@^4.1.0:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/query-string/-/query-string-4.2.3.tgz#9f27273d207a25a8ee4c7b8c74dcd45d556db822"
@@ -6021,7 +6025,7 @@ sassdoc@^2.0.0-rc.17, sassdoc@^2.1.11:
     vinyl-fs "^1.0.0"
     vinyl-source-stream "^1.0.0"
 
-sassy-lists@3.0.0:
+sassy-lists@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/sassy-lists/-/sassy-lists-3.0.0.tgz#866fe19510a98c6fbb83ca8557d8ffd28cbc1e0f"
 
