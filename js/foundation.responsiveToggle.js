@@ -101,6 +101,7 @@ class ResponsiveToggle {
              * @event ResponsiveToggle#toggled
              */
             this.$element.trigger('toggled.zf.responsiveToggle');
+            this.$targetMenu.find('[data-mutate]').triggerHandler('mutateme.zf.trigger');
           });
         }
         else {
@@ -115,6 +116,7 @@ class ResponsiveToggle {
       }
       else {
         this.$targetMenu.toggle(0);
+        this.$targetMenu.find('[data-mutate]').trigger('mutateme.zf.trigger');
 
         /**
          * Fires when the element attached to the tab bar toggles.
