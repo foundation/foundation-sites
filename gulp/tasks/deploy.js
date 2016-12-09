@@ -46,9 +46,10 @@ gulp.task('deploy:version', function() {
 
 // Generates compiled CSS and JS files and puts them in the dist/ folder
 gulp.task('deploy:dist', ['sass:foundation', 'javascript:foundation'], function() {
-  var cssFilter = filter(['*.css'], { restore: true });
-  var jsFilter  = filter(['*.js'], { restore: true });
+  var cssFilter = filter(['**/*.css'], { restore: true });
+  var jsFilter  = filter(['**/*.js'], { restore: true });
 
+  console.log(CONFIG.DIST_FILES)
   return gulp.src(CONFIG.DIST_FILES)
     .pipe(plumber())
     .pipe(cssFilter)
