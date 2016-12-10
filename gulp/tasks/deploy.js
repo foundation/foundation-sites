@@ -50,7 +50,6 @@ gulp.task('deploy:dist', ['sass:foundationSCSS', 'sass:foundationCSS', 'javascri
   var cssFilter = filter(['**/*.css'], { restore: true });
   var jsFilter  = filter(['**/*.js'], { restore: true });
 
-  console.log(CONFIG.DIST_FILES)
   return gulp.src(CONFIG.DIST_FILES)
     .pipe(plumber())
     .pipe(scssFilter)
