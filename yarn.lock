@@ -2864,9 +2864,9 @@ gulp-sass@^2.1.0:
     through2 "^2.0.0"
     vinyl-sourcemaps-apply "^0.2.0"
 
-gulp-shopify-sass@ncoden/gulp-shopify-sass:
-  version "0.3.3"
-  resolved "https://codeload.github.com/ncoden/gulp-shopify-sass/tar.gz/cedec932276c386c42018d2a4a974a653aba00e4"
+gulp-shopify-sass@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/gulp-shopify-sass/-/gulp-shopify-sass-0.4.0.tgz#5c4fc63d09e1ef53d7792ba86b094229afb5f659"
   dependencies:
     gulp-util "^3.0.7"
     lodash.clonedeep "^4.5.0"
