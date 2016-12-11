@@ -15,7 +15,7 @@ flex: true
 ---
 
 <div class="primary callout">
-  <p>Good news! We've updated Off-canvas to offer more and better functionality. Another bonus is the markup is simplified. This new version applies to version 6.3+. We work hard to avoid breaking changes, so any markup updates are listed in the <a href="#versions-prior-to-v6-3">migration section</a> of this page.</p>
+  <p>Good news! We've updated Off-canvas to offer more and better functionality. Another bonus is the markup is simplified. This new version applies to version 6.3+. We work hard to avoid breaking changes, so any markup updates are listed in the <a href="#migrating-from-versions-prior-to-v6-3">migration section</a> of this page.</p>
 </div>
 
 <button class="button" type="button" data-toggle="offCanvasLeft">Toggle Off-canvas</button>
@@ -24,7 +24,7 @@ Foundation's Off-canvas is a well established mobile pattern for navigation that
 
 ## Setup
 
-Setting up the Off-canvas only requires two elememts! To setup the Off-canvas create an off-canvas container with the class `.off-canvas` and the attribute `data-off-canvas`. This is the container that holds your Off-canvas content.
+Setting up the Off-canvas only requires two elements! To setup the Off-canvas create an off-canvas container with the class `.off-canvas` and the attribute `data-off-canvas`. This is the container that holds your Off-canvas content.
 
 The Off-canvas container also needs a positioning class to determine which side of the viewport it opens from:
 
@@ -33,23 +33,17 @@ The Off-canvas container also needs a positioning class to determine which side 
 - `.position-top` 
 - `.position-bottom` 
 
-You will also add an data attribute for the position so the JS can do it's magic:
-- `data-position="left"`
-- `data-position="right"`
-- `data-position="top"`
-- `data-position="bottom"` 
-
-Last, make sure the off-canvas panel has a unique ID so it can be targeted.
+Also be sure the off-canvas panel has a unique ID so it can be targeted by the click trigger.
 
 Example:
 
 ```html
-<div class="off-canvas position-left" id="offCanvas" data-off-canvas data-position="left">
+<div class="off-canvas position-left" id="offCanvas" data-off-canvas>
   <!-- Your menu or Off-canvas content goes here -->
 </div>
 ```
 
-Along with the Off-canvas container, the main content of your page will be housed in its own container with the class `.off-canvas-content` and attribute `data-off-canvas-content`. This is where your page content lives. A class of `.off-canvas-content` should be added to this container.
+Along with the Off-canvas container, the main content of your page will be housed in its own container with the class `.off-canvas-content` and attribute `data-off-canvas-content`. This is where your page content lives.
 
 ```html
 <div class="off-canvas-content" data-off-canvas-content>
@@ -61,11 +55,29 @@ So putting it all together:
 
 ```html
 <body>
-  <div class="off-canvas position-left" id="offCanvas" data-off-canvas data-position="left">
+  <div class="off-canvas position-left" id="offCanvas" data-off-canvas>
     <!-- Your menu or Off-canvas content goes here -->
   </div>
   <div class="off-canvas-content" data-off-canvas-content>
     <!-- Your page content lives here -->
+  </div>
+</body>
+```
+
+### Wrapper
+
+You can add an optionalwrapper around off-canvas and the content. This hides the vertical (on top/bottom off-canvas) or horizontal (on left/right off-canvas) scrollbars the body will have.
+Simply add a container with the class `.off-canvas-wrapper`.
+
+```html
+<body>
+  <div class="off-canvas-wrapper">
+    <div class="off-canvas position-left" id="offCanvas" data-off-canvas>
+      <!-- Your menu or Off-canvas content goes here -->
+    </div>
+    <div class="off-canvas-content" data-off-canvas-content>
+      <!-- Your page content lives here -->
+    </div>
   </div>
 </body>
 ```
@@ -94,7 +106,7 @@ Here's a complete example that can be pasted into the `<body>` tag of your page.
 
 ```html
 <body>
-  <div class="off-canvas position-left" id="offCanvas" data-off-canvas data-position="left">
+  <div class="off-canvas position-left" id="offCanvas" data-off-canvas>
 
     <!-- Close button -->
     <button class="close-button" aria-label="Close menu" type="button" data-close>
@@ -118,12 +130,45 @@ Here's a complete example that can be pasted into the `<body>` tag of your page.
   </div>
 </body>
 ```
+---
+
+## Off-canvas Position
+
+Foundation's Off-canvas is set to `position: fixed` by default using the `.off-canvas` class. This makes the off-canvas panel sit in relation to the viewport, and is the desired behavior for most users. However you can also set an off-canvas container to `position: absolute` by using the alternative class `.off-canvas-absolute`. Also be sure to use the `.off-canvas-wrapper` when using this method.
+
+```html_example
+<button type="button" class="button" data-toggle="offCanvasLeftSPlit1">Open Left</button>
+<button type="button" class="button" data-toggle="offCanvasLeftSplit2">Open Left</button>
+
+<div class="row">
+  <div class="small-6 columns">
+    <div class="off-canvas-wrapper">
+      <div class="off-canvas-absolute position-left" id="offCanvasLeftSPlit1" data-off-canvas>
+        <!-- Your menu or Off-canvas content goes here -->
+      </div>
+      <div class="off-canvas-content" style="min-height: 300px;" data-off-canvas-content>
+        <p>I have nothing to do with the off-canvas on the right!</p>
+      </div>
+    </div>
+  </div>
+  <div class="small-6 columns">
+    <div class="off-canvas-wrapper">
+      <div class="off-canvas-absolute position-left" id="offCanvasLeftSplit2" data-off-canvas>
+        <!-- Your menu or Off-canvas content goes here -->
+      </div>
+      <div class="off-canvas-content" style="min-height: 300px;" data-off-canvas-content>
+        <p>Im a unique off-canvas container all on my own!</p>
+      </div>
+    </div>
+  </div>
+</div>
+```
 
 ---
 
 ## Off-canvas Directions
 
-Foundation's Off-canvas can open from any direction, left, tight, top, and bottom. 
+Foundation's Off-canvas can open from any direction, left, right, top, and bottom. 
 
 The Off-canvas container requires a positioning class to determine which side of the viewport it opens from:
 
@@ -132,12 +177,6 @@ The Off-canvas container requires a positioning class to determine which side of
 - `.position-top` 
 - `.position-bottom` 
 
-You will also add an data attribute for the position so the JS can do it's magic:
-- `data-position="left"`
-- `data-position="right"`
-- `data-position="top"`
-- `data-position="bottom"` 
-
 ```html_example
 <button type="button" class="button" data-toggle="offCanvasLeft1">Open Left</button>
 <button type="button" class="button" data-toggle="offCanvasRight1">Open Right</button>
@@ -145,20 +184,22 @@ You will also add an data attribute for the position so the JS can do it's magic
 <button type="button" class="button" data-toggle="offCanvasBottom1">Open Bottom</button>
 
 <div class="row column">
-  <div class="off-canvas position-left" id="offCanvasLeft1" data-off-canvas data-position="left">
-    <!-- Your menu or Off-canvas content goes here -->
-  </div>
-  <div class="off-canvas position-right" id="offCanvasRight1" data-off-canvas data-position="right">
-    <!-- Your menu or Off-canvas content goes here -->
-  </div>
-  <div class="off-canvas position-top" id="offCanvasTop1" data-off-canvas data-position="top">
-    <!-- Your menu or Off-canvas content goes here -->
-  </div>
-  <div class="off-canvas position-bottom" id="offCanvasBottom1" data-off-canvas data-position="bottom">
-    <!-- Your menu or Off-canvas content goes here -->
-  </div>
-  <div class="off-canvas-content" data-off-canvas-content>
-    <img src="http://placehold.it/300x300" class="" height="" width="" alt="">
+  <div class="off-canvas-wrapper">
+    <div class="off-canvas position-left" id="offCanvasLeft1" data-off-canvas>
+      <!-- Your menu or Off-canvas content goes here -->
+    </div>
+    <div class="off-canvas position-right" id="offCanvasRight1" data-off-canvas>
+      <!-- Your menu or Off-canvas content goes here -->
+    </div>
+    <div class="off-canvas position-top" id="offCanvasTop1" data-off-canvas>
+      <!-- Your menu or Off-canvas content goes here -->
+    </div>
+    <div class="off-canvas position-bottom" id="offCanvasBottom1" data-off-canvas>
+      <!-- Your menu or Off-canvas content goes here -->
+    </div>
+    <div class="off-canvas-content" data-off-canvas-content>
+      <img src="http://placehold.it/300x300" class="" height="" width="" alt="">
+    </div>
   </div>
 </div>
 ```
@@ -175,8 +216,8 @@ A design can have multiple panels. Be sure that all panels come *before* the `.o
 
 ```html
 <body>
-  <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas data-position="left"></div>
-  <div class="off-canvas position-right" id="offCanvasRight" data-off-canvas data-position="left"></div>
+  <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas></div>
+  <div class="off-canvas position-right" id="offCanvasRight" data-off-canvas></div>
   <div class="off-canvas-content" data-off-canvas-content></div>
 </body>
 ```
@@ -186,12 +227,13 @@ A design can have multiple panels. Be sure that all panels come *before* the `.o
 
 ---
 
-## Off-canvas Behavior
+## Off-canvas Transitions
 
-You can switch the default behavior of the off-canvas from pushing the page over as it open to overlaping the page by adding the `.is-transition-overlap` to the `.off-canvas`. The default option is `.is-transition-push`.
+You can switch the default transition of the off-canvas from pushing the page over as it open to overlapping the page by adding the `data-transition="overlap"` to the `.off-canvas`.
+There are 2 available transitions: push (`data-transition="push"`) which is the default, and overlap (`data-transition="overlap"`).
 
 ```html
-<div class="off-canvas position-left is-transition-overlap" id="offCanvasLeft1" data-off-canvas data-position="left">
+<div class="off-canvas position-left" id="offCanvasLeft1" data-off-canvas>
   <!-- Your menu or Off-canvas content goes here -->
 </div>
 ```
@@ -199,7 +241,7 @@ You can switch the default behavior of the off-canvas from pushing the page over
 <button type="button" class="button" data-toggle="offCanvasOverlap">Open Left with Overlap</button>
 <button class="button" type="button" data-toggle="offCanvasRight">Open Right with Push</button>
 
-<div class="off-canvas position-left is-transition-overlap" id="offCanvasOverlap" data-off-canvas data-position="left">
+<div class="off-canvas position-left" id="offCanvasOverlap" data-off-canvas data-transition="overlap">
   <ul class="vertical menu">
     <li><a href="#">Foundation</a></li>
     <li><a href="#">Dot</a></li>
@@ -221,11 +263,6 @@ The main content area (`.off-canvas-content`) will be padded to the left or righ
 <div class="callout">
   <p>The menu will be fixed-position by default, meaning it follows you as you scroll up and down. The menu also gets its own scroll bar if it's taller than the window. To disable these features, set the <code>$offcanvas-fixed-reveal</code> variable to <code>false</code>.</p>
 </div>
-
-You can also set the position on .off-canvas by attaching one of these classes:
-
-- `.is-overlay-absolute`
-- `.is-overlay-fixed`
 
 <div class="warning callout">
   <p>The slide in/out of the plugin still works when these classes are active. If you use this feature on a larger screen, be sure to hide any click triggers on those larger breakpoints as well. Foundation's <a href="visibility.html">visibility classes</a> can help you with that.</p>
