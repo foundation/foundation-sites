@@ -20,6 +20,7 @@ class Magellan {
     this.options  = $.extend({}, Magellan.defaults, this.$element.data(), options);
 
     this._init();
+    this.calcPoints();
 
     Foundation.registerPlugin(this, 'Magellan');
   }
