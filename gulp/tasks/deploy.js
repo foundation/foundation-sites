@@ -45,7 +45,7 @@ gulp.task('deploy:version', function() {
 });
 
 // Generates compiled SCSS, CSS and JS files and puts them in the dist/ folder
-gulp.task('deploy:dist', ['sass:foundation', 'javascript:foundation'], function() {
+gulp.task('deploy:dist', ['sass:foundationSCSS', 'sass:foundationCSS', 'javascript:foundation'], function() {
   var scssFilter = filter(['**/*.scss'], { restore: true });
   var cssFilter = filter(['**/*.css'], { restore: true });
   var jsFilter  = filter(['**/*.js'], { restore: true });
