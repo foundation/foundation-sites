@@ -191,6 +191,11 @@ a#notice {
   100% { opacity: 1; transform: scale(1, 1);}
 }
 
-.menu .docs-nav-version a {
-  display: inline-block;
+.menu li.docs-nav-version {
+  display: flex;
+  align-items: center;
+
+  span {
+    line-height: 2.5;
+  }
 }
