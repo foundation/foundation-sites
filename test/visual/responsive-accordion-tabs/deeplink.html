@@ -1,0 +1,49 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Foundation for Sites Testing</title>
+    <link href="../assets/css/foundation.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="row column">
+      <h1>Responsive Accordion Tabs</h1>
+      <h4>Deeplink Codebase Tabs</h4>
+      <p class="callout small">I have the HTML Markup from Tabs and should be <code>tabs on small</code> <code>accordion on medium</code> <code>tabs on large</code> </p>
+      <ul class="" id="example-tabs" data-responsive-accordion-tabs="tabs medium-accordion large-tabs" data-deep-link="true">
+        <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Tab 1</a></li>
+        <li class="tabs-title"><a href="#panel2">Tab 2</a></li>
+      </ul>
+      <div class="tabs-content" data-tabs-content="example-tabs">
+        <div class="tabs-panel is-active" id="panel1">
+          <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
+        </div>
+        <div class="tabs-panel" id="panel2">
+          <p>Suspendisse dictum feugiat nisl ut dapibus.  Vivamus hendrerit arcu sed erat molestie vehicula. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor.  Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.</p>
+        </div>
+      </div>
+      <h4>Deeplink Codebase Accordion</h4>
+      <p class="callout small">I have the HTML Markup from Accordion and should be <code>accordion on small</code> <code>tabs on medium</code> <code>accordion on large</code> </p>
+      <ul class="" id="example-accordion" data-responsive-accordion-tabs="accordion medium-tabs large-accordion" data-deep-link="true">
+        <li class="accordion-item is-active" data-accordion-item>
+          <a href="#a-one" class="accordion-title">Accordion 1</a>
+            <div class="accordion-content" data-tab-content>
+              I would start in the open state, due to using the `is-active` state class.
+            </div>
+        </li>
+        <li class="accordion-item" data-accordion-item>
+          <a href="#a-two" class="accordion-title">Accordion 2</a>
+            <div class="accordion-content" data-tab-content>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus expedita animi, ipsum nostrum tempore deserunt quae dolores ratione modi repudiandae dolor doloremque, non necessitatibus accusamus dignissimos facere magni corporis quasi laboriosam. Eum accusamus odio possimus iste itaque quidem, sapiente repellat placeat. Obcaecati odio consequatur debitis asperiores veritatis, impedit nulla accusantium sint ab ducimus neque sit non illum, accusamus, quibusdam possimus vero a distinctio repellat, ad quas voluptates adipisci. Explicabo voluptatem dolorem laborum deserunt fugiat praesentium totam aperiam, similique iure voluptas. Maxime, sequi vero velit praesentium earum suscipit facere cum quasi tenetur voluptatibus eos magni ipsum assumenda quibusdam ut dolorem voluptate debitis molestias, aliquid obcaecati! Consequuntur nisi repudiandae et in veniam vel, quod dolor doloribus eveniet atque ipsa eos odio, dignissimos laboriosam eius quidem distinctio non sunt maiores id dolore a similique. Quis exercitationem consequatur error, deleniti soluta harum. Est consequuntur aut, iusto. Vitae quam, neque velit ab ullam ex nobis laudantium exercitationem porro culpa necessitatibus provident, nulla similique pariatur dolorem iste perspiciatis ratione quaerat fugit, reiciendis ut ad reprehenderit totam, veritatis natus. Ut alias possimus perspiciatis veritatis, ratione laboriosam. Placeat hic nobis, deleniti aperiam dolore qui illum iusto alias explicabo sunt aliquid autem pariatur error saepe ad perferendis tempore adipisci.
+            </div>
+        </li>
+      </ul>
+    <script src="../assets/js/vendor.js"></script>
+    <script src="../assets/js/foundation.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
+</html>
