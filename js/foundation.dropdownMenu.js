@@ -119,21 +119,22 @@ class DropdownMenu {
             hasSub = $elem.hasClass(parClass);
 
         if (hasSub) {
-          clearTimeout(_this.delay);
-          _this.delay = setTimeout(function() {
+          clearTimeout($elem.data('_delay'));
+          $elem.data('_delay', setTimeout(function() {
             _this._show($elem.children('.is-dropdown-submenu'));
-          }, _this.options.hoverDelay);
+          }, _this.options.hoverDelay));
         }
       }).on('mouseleave.zf.dropdownmenu', function(e) {
         var $elem = $(this),
+            elemStore = Foundation.ElemStore(this).store,
             hasSub = $elem.hasClass(parClass);
         if (hasSub && _this.options.autoclose) {
           if ($elem.attr('data-is-click') === 'true' && _this.options.clickOpen) { return false; }
 
-          clearTimeout(_this.delay);
-          _this.delay = setTimeout(function() {
+          clearTimeout($elem.data('_delay'));
+          $elem.data('_delay', setTimeout(function() {
             _this._hide($elem);
-          }, _this.options.closingTime);
+          }, _this.options.closingTime));
         }
       });
     }
