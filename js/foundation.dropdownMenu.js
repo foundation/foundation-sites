@@ -126,7 +126,6 @@ class DropdownMenu {
         }
       }).on('mouseleave.zf.dropdownmenu', function(e) {
         var $elem = $(this),
-            elemStore = Foundation.ElemStore(this).store,
             hasSub = $elem.hasClass(parClass);
         if (hasSub && _this.options.autoclose) {
           if ($elem.attr('data-is-click') === 'true' && _this.options.clickOpen) { return false; }
