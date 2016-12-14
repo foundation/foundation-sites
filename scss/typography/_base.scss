@@ -284,56 +284,15 @@ $abbr-underline: 1px dotted $black !default;
   h4, .h4,
   h5, .h5,
   h6, .h6 {
-    font-family: $header-font-family;
-    font-style: $header-font-style;
-    font-weight: $header-font-weight;
-    color: $header-color;
-    text-rendering: $header-text-rendering;
-
-    small {
-      line-height: 0;
-      color: $header-small-font-color;
-    }
+    @include header();
   }
 
   // Heading styles
   @each $size, $headers in $header-styles {
     @include breakpoint($size) {
       @each $header, $header-defs in $headers {
-        $font-size-temp: 1rem;
         #{$header}, .#{$header} {
-
-          @if map-has-key($header-defs, font-size) {
-            $font-size-temp: rem-calc(map-get($header-defs, font-size));
-            font-size: $font-size-temp;
-          } @else if map-has-key($header-defs, fs) {
-            $font-size-temp: rem-calc(map-get($header-defs, fs));
-            font-size: $font-size-temp;
-          } @else if $size == $-zf-zero-breakpoint {
-            font-size: $font-size-temp;
-          }
-          @if map-has-key($header-defs, line-height) {
-            line-height: unitless-calc(map-get($header-defs, line-height), $font-size-temp);
-          } @else if map-has-key($header-defs, lh) {
-            line-height: unitless-calc(map-get($header-defs, lh), $font-size-temp);
-          } @else if $size == $-zf-zero-breakpoint {
-            line-height: unitless-calc($header-lineheight, $font-size-temp);
-          }
-
-          @if map-has-key($header-defs, margin-top) {
-            margin-top: rem-calc(map-get($header-defs, margin-top));
-          } @else if map-has-key($header-defs, mt) {
-            margin-top: rem-calc(map-get($header-defs, mt));
-          } @else if $size == $-zf-zero-breakpoint {
-            margin-top: 0;
-          }
-          @if map-has-key($header-defs, margin-bottom) {
-            margin-bottom: rem-calc(map-get($header-defs, margin-bottom));
-          } @else if map-has-key($header-defs, mb) {
-            margin-bottom: rem-calc(map-get($header-defs, mb));
-          } @else if $size == $-zf-zero-breakpoint {
-            margin-bottom: rem-calc($header-margin-bottom);
-          }
+          @include header-style($header-defs);
         }
       }
     }
