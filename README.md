@@ -21,7 +21,7 @@ Run these commands to set up the documentation:
 ```bash
 git clone https://github.com/zurb/foundation-sites
 cd foundation-sites
-gem install scss-lint
+gem install scss_lint
 npm install
 ```
 
