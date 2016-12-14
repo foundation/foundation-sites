@@ -1,0 +1,72 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group typography-header
+////
+
+/// Create a header
+/// @param {Boolean} $base [true] - If `false`, do not output basic styles.
+/// @param {Map} $styles [()] - Styling properties. Set to `null` to do not generate styles. See the `header-style` mixin for possible values.
+@mixin header($base: true, $styles: ()) {
+  @if $base {
+    font-family: $header-font-family;
+    font-style: $header-font-style;
+    font-weight: $header-font-weight;
+    color: $header-color;
+    text-rendering: $header-text-rendering;
+
+    small {
+      line-height: 0;
+      color: $header-small-font-color;
+    }
+  }
+
+  @if $styles != null {
+    @include header-style($styles, $base);
+  }
+}
+
+/// Set the styles of a header
+/// @param {Map} $styles [()]
+///   Map of properties for header styles. Possible properties are:
+///   - `font-size` (alias `fs`), `margin-top` (alias `mt`)
+///       and `margin-bottom` (alias `mb`) converted to rem.
+///   - `line-height` alias `lh`, converted to an unitless value.
+/// @param {Boolean} $base [false] - If `false` (by default), do not output basic styles.
+@mixin header-style($styles: (), $base: false) {
+  $font-size-temp: 1rem;
+
+  @if map-has-key($styles, font-size) {
+    $font-size-temp: rem-calc(map-get($styles, font-size));
+    font-size: $font-size-temp;
+  } @else if map-has-key($styles, fs) {
+    $font-size-temp: rem-calc(map-get($styles, fs));
+    font-size: $font-size-temp;
+  } @else if $base {
+    font-size: $font-size-temp;
+  }
+  @if map-has-key($styles, line-height) {
+    line-height: unitless-calc(map-get($styles, line-height), $font-size-temp);
+  } @else if map-has-key($styles, lh) {
+    line-height: unitless-calc(map-get($styles, lh), $font-size-temp);
+  } @else if $base {
+    line-height: unitless-calc($header-lineheight, $font-size-temp);
+  }
+
+  @if map-has-key($styles, margin-top) {
+    margin-top: rem-calc(map-get($styles, margin-top));
+  } @else if map-has-key($styles, mt) {
+    margin-top: rem-calc(map-get($styles, mt));
+  } @else if $base {
+    margin-top: 0;
+  }
+  @if map-has-key($styles, margin-bottom) {
+    margin-bottom: rem-calc(map-get($styles, margin-bottom));
+  } @else if map-has-key($styles, mb) {
+    margin-bottom: rem-calc(map-get($styles, mb));
+  } @else if $base {
+    margin-bottom: rem-calc($header-margin-bottom);
+  }
+}
