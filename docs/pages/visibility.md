@@ -8,10 +8,10 @@ tags:
 ---
 
 <div class="callout primary">
-  <p>Visibility classes use `!important` to ensure they aren't overriden by more specific selectors. This is the only component in the framework that uses `!important`.</p>
+  <p>Visibility classes use `!important` to ensure they aren't overriden by more specific selectors. This framework conscientiously avoids using `!important` declarations. This is one of the few components that does.</p>
 </div>
 
-<div class="callout primary">
+<div class="callout warning">
   <p>There are no classes to detect touchscreen devices, as both desktop and mobile browsers inconsistently report touch support. Learn more here: <a href="http://www.stucox.com/blog/you-cant-detect-a-touchscreen/">You Can't Detect a Touchscreen</a></p>
 </div>
 

@@ -105,3 +105,36 @@
   }
   @return $map;
 }
+
+/// Casts a map into a list.
+/// @link http://hugogiraudel.com/2014/04/28/casting-map-into-list/
+///
+/// @param {Map} $map - Map to pull a value from.
+///
+/// @returns {List} Depending on the flag, returns either $keys or $values or both.
+@function map-to-list($map, $keep: 'both') {
+  $keep: if(index('keys' 'values', $keep), $keep, 'both');
+
+  @if type-of($map) == 'map' {
+    $keys: ();
+    $values: ();
+
+    @each $key, $val in $map {
+      $keys: append($keys, $key);
+      $values: append($values, $val);
+    }
+
+    @if $keep == 'keys' {
+      @return $keys;
+    }
+    @else if $keep == 'values' {
+      @return $values;
+    }
+    @else {
+      @return zip($keys, $values);
+    }
+  }
+
+  @return if(type-of($map) != 'list', ($value,), $map);
+
+}

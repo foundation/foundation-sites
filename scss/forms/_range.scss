@@ -39,20 +39,19 @@ $slider-opacity-disabled: 0.25 !default;
 $slider-radius: $global-radius !default;
 
 @mixin foundation-range-input {
-  // scss-lint:disable QualifyingElement
-  input[type="range"] {
+  input[type="range"] {  // sass-lint:disable-line no-qualifying-elements
     $margin: ($slider-handle-height - $slider-height) / 2;
 
-    -webkit-appearance: none;
-    -moz-appearance: none;
     display: block;
     width: 100%;
     height: auto;
-    cursor: pointer;
     margin-top: $margin;
     margin-bottom: $margin;
+
+    appearance: none;
     border: 0;
     line-height: 1;
+    cursor: pointer;
 
     @if has-value($slider-radius) {
       border-radius: $slider-radius;
@@ -66,6 +65,8 @@ $slider-radius: $global-radius !default;
       opacity: $slider-opacity-disabled;
     }
 
+    // sass-lint:disable no-vendor-prefix
+
     // Chrome/Safari
     &::-webkit-slider-runnable-track {
       height: $slider-height;
@@ -73,11 +74,12 @@ $slider-radius: $global-radius !default;
     }
 
     &::-webkit-slider-handle {
-      -webkit-appearance: none;
-      background: $slider-handle-background;
       width: $slider-handle-width;
       height: $slider-handle-height;
       margin-top: -$margin;
+
+      -webkit-appearance: none;
+      background: $slider-handle-background;
 
       @if has-value($slider-radius) {
         border-radius: $slider-radius;
@@ -86,17 +88,18 @@ $slider-radius: $global-radius !default;
 
     // Firefox
     &::-moz-range-track {
-      -moz-appearance: none;
       height: $slider-height;
+      -moz-appearance: none;
       background: $slider-background;
     }
 
     &::-moz-range-thumb {
-      -moz-appearance: none;
-      background: $slider-handle-background;
       width: $slider-handle-width;
       height: $slider-handle-height;
       margin-top: -$margin;
+
+      -moz-appearance: none;
+      background: $slider-handle-background;
 
       @if has-value($slider-radius) {
         border-radius: $slider-radius;
@@ -106,19 +109,21 @@ $slider-radius: $global-radius !default;
     // Internet Explorer
     &::-ms-track {
       height: $slider-height;
-      background: $slider-background;
-      color: transparent;
+
       border: 0;
-      overflow: visible;
       border-top: $margin solid $body-background;
       border-bottom: $margin solid $body-background;
+      background: $slider-background;
+
+      overflow: visible;
+      color: transparent;
     }
 
     &::-ms-thumb {
-      background: $slider-handle-background;
       width: $slider-handle-width;
       height: $slider-handle-height;
       border: 0;
+      background: $slider-handle-background;
 
       @if has-value($slider-radius) {
         border-radius: $slider-radius;
@@ -135,9 +140,9 @@ $slider-radius: $global-radius !default;
 
     @at-root {
       output {
-        line-height: $slider-handle-height;
         vertical-align: middle;
         margin-left: 0.5em;
+        line-height: $slider-handle-height;
       }
     }
   }

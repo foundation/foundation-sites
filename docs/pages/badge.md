@@ -31,23 +31,67 @@ Finally, the content itself might need more context for users that use screen re
 
 ## Coloring
 
-Badges can be colored with the same classes used for buttons and other components.
+Add color classes to give badges additional meaning.
 
 ```html_example
-<span class="secondary badge">2</span>
-<span class="success badge">3</span>
-<span class="alert badge">A</span>
-<span class="warning badge">B</span>
+<span class="badge primary">1</span>
+<span class="badge secondary">2</span>
+<span class="badge success">3</span>
+<span class="badge alert">A</span>
+<span class="badge warning">B</span>
 ```
 
 ---
 
-### With Icons
+### Custom Colors
+
+If you're using the Sass version of Foundation, you can customize the badge classes by editing the `$badge-palette` map in your settings file. The badge palette defaults to `$foundation-palette`.
+
+If you don't need certain colors from the default palette, simply remove them from the list.
+
+```scss
+$badge-palette: map-remove($foundation-palette, (
+    primary,
+    secondary
+)) !default;
+```  
+
+Or you can add more colors to the default palette.
+
+```scss
+$badge-palette: map-merge($foundation-palette, (
+    purple: #bb00ff
+)) !default;
+```
+
+Or you can define your own custom badge palette.
+
+```scss
+$badge-palette: (
+    black: #000000,
+    red: #ff0000,
+    purple: #bb00ff
+) !default;
+```
+
+---
+
+### Text Colors
+
+The text color for each badge class is determined by either `$badge-color` or `$badge-color-alt`, whichever settings variable has more contrast.
+
+<div class="primary callout">
+  <p>The default settings meet WCAG 2.0 level AA contrast requirements. Be sure to [check the contrast](http://webaim.org/resources/contrastchecker/) when changing color variables. To give all badges the same color text, set `$badge-color` and `$badge-color-alt` to the same value &mdash; but know that doing so may decrease accessibility.</p>
+</div>
+
+---
+
+## Icons
 
 An icon can be used in place of text. We're using the [Foundation icon font](http://zurb.com/playground/foundation-icon-fonts-3) here, but any icon fonts or image-based icons will work fine.
 
 ```html_example
-<span class="info badge"><i class="fi-share"></i></span>
-<span class="success badge"><i class="fi-check"></i></span>
-<span class="warning badge"><i class="fi-wrench"></i></span>
+<span class="badge secondary"><i class="fi-share"></i></span>
+<span class="badge success"><i class="fi-check"></i></span>
+<span class="badge warning"><i class="fi-wrench"></i></span>
 ```

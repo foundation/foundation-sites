@@ -1,10 +1,10 @@
 {
   "name": "foundation-sites",
-  "version": "6.2.4",
+  "version": "6.3.0",
   "license": "MIT",
   "main": [
     "scss/foundation.scss",
-    "dist/foundation.js"
+    "dist/js/foundation.js"
   ],
   "ignore": [
     "config",
@@ -24,10 +24,11 @@
     ".gitignore",
     ".npmignore",
     ".versions",
-    ".babelrc"
+    ".babelrc",
+    "yarn.lock"
   ],
   "dependencies": {
     "jquery": "~2.2.0",
-    "what-input": "~2.0.0"
+    "what-input": "~4.0.3"
   }
 }

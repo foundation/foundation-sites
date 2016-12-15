@@ -32,23 +32,36 @@ $thumbnail-radius: $global-radius !default;
 
 /// Adds thumbnail styles to an element.
 @mixin thumbnail {
-  border: $thumbnail-border;
-  box-shadow: $thumbnail-shadow;
   display: inline-block;
-  line-height: 0;
   max-width: 100%;
-  transition: $thumbnail-transition;
-  border-radius: $thumbnail-radius;
   margin-bottom: $thumbnail-margin-bottom;
+
+  border: $thumbnail-border;
+  border-radius: $thumbnail-radius;
+  box-shadow: $thumbnail-shadow;
+
+  line-height: 0;
+}
+
+@mixin thumbnail-link {
+  transition: $thumbnail-transition;
 
   &:hover,
   &:focus {
     box-shadow: $thumbnail-shadow-hover;
+  }
+
+  image {
+    box-shadow: none;
   }
 }
 
 @mixin foundation-thumbnail {
   .thumbnail {
     @include thumbnail;
+  }
+
+  a.thumbnail {
+    @include thumbnail-link;
   }
 }

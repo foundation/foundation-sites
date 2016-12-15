@@ -22,25 +22,43 @@ $select-radius: $global-radius !default;
   $height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
 
   height: $height;
-  padding: ($form-spacing / 2);
-  border: $input-border;
   margin: 0 0 $form-spacing;
-  font-size: $input-font-size;
+  padding: ($form-spacing / 2);
+
+  appearance: none;
+  border: $input-border;
+  border-radius: $select-radius;
+  background-color: $select-background;
+
   font-family: $input-font-family;
+  font-size: $input-font-size;
   line-height: normal;
   color: $input-color;
-  background-color: $select-background;
-  border-radius: $select-radius;
-  -webkit-appearance: none;
-  -moz-appearance: none;
 
   @if $select-triangle-color != transparent {
     @include background-triangle($select-triangle-color);
-    background-size: 9px 6px;
-    background-position: $global-right (-$form-spacing) center;
     background-origin: content-box;
+    background-position: $global-right (-$form-spacing) center;
     background-repeat: no-repeat;
+    background-size: 9px 6px;
+
     padding-#{$global-right}: ($form-spacing * 1.5);
+  }
+
+  @if has-value($input-transition) {
+    transition: $input-transition;
+  }
+
+  // Focus state
+  &:focus {
+    outline: none;
+    border: $input-border-focus;
+    background-color: $input-background-focus;
+    box-shadow: $input-shadow-focus;
+
+    @if has-value($input-transition) {
+      transition: $input-transition;
+    }
   }
 
   // Disabled state

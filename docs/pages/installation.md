@@ -121,10 +121,10 @@ The folks at [jsDelivr](https://www.jsdelivr.com) host the compressed Foundation
 
 ```html
 <!-- Compressed CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.3.0/foundation.min.css">
 
 <!-- Compressed JavaScript -->
-<script src="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.js"></script>
+<script src="https://cdn.jsdelivr.net/foundation/6.3.0/foundation.min.js"></script>
 ```
 
 ---

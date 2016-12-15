@@ -57,7 +57,17 @@ What if you want to know if there's focusable elements somewhere on a page? Inst
 var focusable = Foundation.Keyboard.findFocusable($('#content'));
 ```
 
-The real gem of this library, however, is the `handleKey` function. Any plugins registered with the utility can call on `handleKey` to manage keyboard inputs.
+The Keyboard utility also provides functions to trap the keyboard focus inside a given element. This is quite useful for modals in terms of accessibility. When the focus is trapped, pressing tab while the last focusable element inside the given container is selected will focus the first element and vice versa.
+```js
+// Trap focus to given element
+Foundation.Keyboard.trapFocus($('#content'));
+
+// Release focus from given element
+Foundation.Keyboard.releaseFocus($('#content'));
+```
+
+
+The real gem of this library, however, is the `handleKey` function. Any plugin that is registered with the utility can call on this method to manage keyboard inputs.
 ```js
 Foundation.Keyboard.register('pluginName', {
   'TAB': 'next'

@@ -16,31 +16,33 @@
   $triangle-color,
   $triangle-direction
 ) {
-  content: '';
   display: block;
   width: 0;
   height: 0;
+
   border: inset $triangle-size;
 
+  content: '';
+
   @if ($triangle-direction == down) {
-    border-color: $triangle-color transparent transparent;
-    border-top-style: solid;
     border-bottom-width: 0;
+    border-top-style: solid;
+    border-color: $triangle-color transparent transparent;
   }
   @if ($triangle-direction == up) {
-    border-color: transparent transparent $triangle-color;
-    border-bottom-style: solid;
     border-top-width: 0;
+    border-bottom-style: solid;
+    border-color: transparent transparent $triangle-color;
   }
   @if ($triangle-direction == right) {
-    border-color: transparent transparent transparent $triangle-color;
-    border-left-style: solid;
     border-right-width: 0;
+    border-left-style: solid;
+    border-color: transparent transparent transparent $triangle-color;
   }
   @if ($triangle-direction == left) {
-    border-color: transparent $triangle-color transparent transparent;
-    border-right-style: solid;
     border-left-width: 0;
+    border-right-style: solid;
+    border-color: transparent $triangle-color transparent transparent;
   }
 }
 
@@ -71,31 +73,33 @@
     $spacing: floor($spacing);
   }
 
+  @for $i from 2 through $bars {
+    $offset: ($weight + $spacing) * ($i - 1);
+    $shadow: append($shadow, 0 $offset 0 $color, comma);
+  }
+
   // Icon container
   position: relative;
   display: inline-block;
   vertical-align: middle;
-  cursor: pointer;
   width: $width;
   height: $height;
+  cursor: pointer;
 
   // Icon bars
   &::after {
-    content: '';
     position: absolute;
-    display: block;
-    width: 100%;
-    height: $weight;
-    background: $color;
     top: 0;
     left: 0;
 
-    @for $i from 2 through $bars {
-      $offset: ($weight + $spacing) * ($i - 1);
-      $shadow: append($shadow, 0 $offset 0 $color, comma);
-    }
+    display: block;
+    width: 100%;
+    height: $weight;
 
+    background: $color;
     box-shadow: $shadow;
+
+    content: '';    
   }
 
   // Hover state
@@ -141,8 +145,9 @@
 @mixin clearfix {
   &::before,
   &::after {
-    content: ' ';
     display: table;
+    content: ' ';
+
     @if $global-flexbox {
       flex-basis: 0;
       order: 1;
@@ -188,8 +193,8 @@
 /// Reverses the CSS output created by the `element-invisible()` mixin.
 @mixin element-invisible-off {
   position: static !important;
-  height: auto;
   width: auto;
+  height: auto;
   overflow: visible;
   clip: auto;
 }
@@ -223,17 +228,49 @@
 ///
 /// @param {Boolean} $small [true] - If `false`, the mixin will skip the `small` breakpoint. Use this with components that don't prefix classes with `small-`, only `medium-` and up.
 @mixin -zf-each-breakpoint($small: true) {
-  $map: $breakpoint-classes;
+  $list: $breakpoint-classes;
 
   @if not $small {
-    $map: map-remove($map, $-zf-zero-breakpoint);
+    $list: sl-remove($list, $-zf-zero-breakpoint);
   }
 
-  @each $size in $map {
-    $-zf-size: $size !global;
+  @each $name in $list {
+    $-zf-size: $name !global;
 
-    @include breakpoint($size) {
+    @include breakpoint($name) {
       @content;
     }
+  }
+}
+
+/// Generate the `@content` passed to the mixin with a value `$-zf-bp-value` related to a breakpoint, depending on the `$name` parameter:
+/// - For a single value, `$-zf-bp-value` is this value.
+/// - For a breakpoint name, `$-zf-bp-value` is the corresponding breakpoint value in `$map`.
+/// - For "auto", `$-zf-bp-value` is the corresponding breakpoint value in `$map` and is passed to `@content`, which is made responsive for each breakpoint of `$map`.
+/// @param {Number|Keyword} $name [auto] - Single value or breakpoint name to use. "auto" by default.
+/// @param {Number|Map} $map - Map of breakpoints and values or single value to use.
+@mixin -zf-breakpoint-value(
+  $name: auto,
+  $map: null
+) {
+  @if $name == auto and type-of($map) == 'map' {
+    // "auto"
+    @each $k, $v in $map {
+      @include breakpoint($k) {
+        @include -zf-breakpoint-value($v, $map) {
+          @content;
+        }
+      }
+    }
+  }
+  @else {
+    // breakpoint name
+    @if type-of($name) == 'string' {
+      $name: -zf-get-bp-val($map, $name);
+    }
+
+    // breakpoint value
+    $-zf-bp-value: $name !global;
+    @content;
   }
 }

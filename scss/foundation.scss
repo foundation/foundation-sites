@@ -1,9 +1,23 @@
 /**
  * Foundation for Sites by ZURB
- * Version 6.2.4
+ * Version 6.3.0
  * foundation.zurb.com
  * Licensed under MIT Open Source
  */
+
+// Dependencies
+@import "../_vendor/normalize-scss/sass/normalize";
+@import '../_vendor/sassy-lists/stylesheets/helpers/missing-dependencies';
+@import '../_vendor/sassy-lists/stylesheets/helpers/true';
+@import '../_vendor/sassy-lists/stylesheets/functions/purge';
+@import '../_vendor/sassy-lists/stylesheets/functions/remove';
+@import '../_vendor/sassy-lists/stylesheets/functions/replace';
+@import '../_vendor/sassy-lists/stylesheets/functions/to-list';
+
+// Settings
+// import your own `settings` here or
+// import and modify the default settings through
+// @import "settings/settings";
 
 // Sass utilities
 @import 'util/util';
@@ -24,12 +38,13 @@
 @import 'components/badge';
 @import 'components/breadcrumbs';
 @import 'components/callout';
+@import 'components/card';
 @import 'components/close-button';
 @import 'components/drilldown';
 @import 'components/dropdown-menu';
 @import 'components/dropdown';
 @import 'components/flex';
-@import 'components/flex-video';
+@import 'components/responsive-embed';
 @import 'components/label';
 @import 'components/media-object';
 @import 'components/menu';
@@ -70,13 +85,14 @@
   @include foundation-breadcrumbs;
   @include foundation-button-group;
   @include foundation-callout;
+  @include foundation-card;
   @include foundation-close-button;
   @include foundation-menu;
   @include foundation-menu-icon;
   @include foundation-drilldown-menu;
   @include foundation-dropdown;
   @include foundation-dropdown-menu;
-  @include foundation-flex-video;
+  @include foundation-responsive-embed;
   @include foundation-label;
   @include foundation-media-object;
   @include foundation-off-canvas;

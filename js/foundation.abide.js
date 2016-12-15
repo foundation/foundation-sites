@@ -62,6 +62,14 @@ class Abide {
           this.validateInput($(e.target));
         });
     }
+
+    if (this.options.validateOnBlur) {
+      this.$inputs
+        .off('blur.zf.abide')
+        .on('blur.zf.abide', (e) => {
+          this.validateInput($(e.target));
+        });
+    }
   }
 
   /**
@@ -278,6 +286,19 @@ class Abide {
     var goodToGo = [clearRequire, validated, customValidator, equalTo].indexOf(false) === -1;
     var message = (goodToGo ? 'valid' : 'invalid') + '.zf.abide';
 
+    if (goodToGo) {
+      // Re-validate inputs that depend on this one with equalto
+      const dependentElements = this.$element.find(`[data-equalto="${$el.attr('id')}"]`);
+      if (dependentElements.length) {
+        let _this = this;
+        dependentElements.each(function() {
+          if ($(this).val()) {
+            _this.validateInput($(this));
+          }
+        });
+      }
+    }
+
     this[goodToGo ? 'removeErrorClasses' : 'addErrorClasses']($el);
 
     /**
@@ -489,6 +510,13 @@ Abide.defaults = {
    * @example false
    */
   liveValidate: false,
+
+  /**
+   * Set to true to validate inputs on blur.
+   * @option
+   * @example false
+   */
+  validateOnBlur: false,
 
   patterns: {
     alpha : /^[a-zA-Z]+$/,
