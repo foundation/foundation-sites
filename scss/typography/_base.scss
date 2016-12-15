@@ -323,6 +323,26 @@ $abbr-underline: 1px dotted $black !default;
       color: $header-small-font-color;
     }
   }
+  
+  h2 {
+    color: $header2-color;
+  }
+  
+  h3 {
+    color: $header3-color;
+  }
+  
+  h4 {
+    color: $header4-color;
+  }
+  
+  h5 {
+    color: $header5-color;
+  }
+  
+  h6 {
+    color: $header6-color;
+  }
 
   // Heading styles
   @each $size, $headers in $header-styles {
