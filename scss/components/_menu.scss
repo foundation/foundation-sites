@@ -289,6 +289,10 @@ $menu-border: $light-gray !default;
     // Simple
     &.simple {
       @include menu-simple;
+
+      &.align-#{$global-right} {
+        @include menu-simple-direction($global-right);
+      }
     }
 
     // Align right
