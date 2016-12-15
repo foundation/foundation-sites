@@ -37,6 +37,7 @@
 @import 'components/accordion';
 @import 'components/badge';
 @import 'components/breadcrumbs';
+@import 'components/cards';
 @import 'components/callout';
 @import 'components/card';
 @import 'components/close-button';
@@ -114,5 +115,6 @@
 
   @if $flex {
     @include foundation-flex-classes;
+    @include foundation-cards;
   }
 }
