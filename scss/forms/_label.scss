@@ -40,7 +40,9 @@ $form-label-line-height: 1.8 !default;
 }
 
 @mixin foundation-form-label {
-  label {
+  $name: if($global-namespace, '.label', 'label');
+
+  #{$name} {
     @include form-label;
 
     &.middle {
