@@ -19,6 +19,9 @@ typography:
 button:
   sass: button
 
+card:
+  sass: card
+
 forms:
   sass: forms
 
@@ -167,6 +170,9 @@ sticky:
   js_utils:
     - triggers
     - mediaQuery
+
+responsive_accordion_tabs:
+  js: zf.responsiveAccordionTabs
 
 reveal:
   sass: reveal
