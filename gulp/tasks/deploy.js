@@ -78,7 +78,7 @@ gulp.task('deploy:plugins', function() {
 gulp.task('deploy:settings', function(cb) {
   var options = {
     title: 'Foundation for Sites Settings',
-    output: './scss/settings/_settings.scss',
+    output: './scss/settings/_settings-sites.scss',
     groups: {
       'grid': 'The Grid',
       'off-canvas': 'Off-canvas',
