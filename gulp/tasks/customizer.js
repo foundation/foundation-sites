@@ -102,7 +102,7 @@ gulp.task('customizer:javascript', ['customizer:loadConfig'], function() {
     .pipe(rename('foundation.min.js'))
     .pipe(addSrc([
       'node_modules/jquery/dist/jquery.js',
-      'node_modules/what-input/what-input.js'
+      'node_modules/what-input/dist/what-input.js'
     ]))
     .pipe(gulp.dest(path.join(OUTPUT_DIR, 'js/vendor')));
 });
