@@ -134,10 +134,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 hasSub = $elem.hasClass(parClass);
 
             if (hasSub) {
-              clearTimeout(_this.delay);
-              _this.delay = setTimeout(function () {
+              clearTimeout($elem.data('_delay'));
+              $elem.data('_delay', setTimeout(function () {
                 _this._show($elem.children('.is-dropdown-submenu'));
-              }, _this.options.hoverDelay);
+              }, _this.options.hoverDelay));
             }
           }).on('mouseleave.zf.dropdownmenu', function (e) {
             var $elem = $(this),
@@ -147,10 +147,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 return false;
               }
 
-              clearTimeout(_this.delay);
-              _this.delay = setTimeout(function () {
+              clearTimeout($elem.data('_delay'));
+              $elem.data('_delay', setTimeout(function () {
                 _this._hide($elem);
-              }, _this.options.closingTime);
+              }, _this.options.closingTime));
             }
           });
         }
