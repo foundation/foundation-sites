@@ -260,7 +260,7 @@ class Dropdown {
   open() {
     // var _this = this;
     /**
-     * Fires to close other open dropdowns
+     * Fires to close other open dropdowns, typically when dropdown is opening
      * @event Dropdown#closeme
      */
     this.$element.trigger('closeme.zf.dropdown', this.$element.attr('id'));
@@ -317,6 +317,10 @@ class Dropdown {
       this.counter = 4;
       this.usedPositions.length = 0;
     }
+    /**
+     * Fires once the dropdown is no longer visible.
+     * @event Dropdown#hide
+     */
     this.$element.trigger('hide.zf.dropdown', [this.$element]);
 
     if (this.options.trapFocus) {
