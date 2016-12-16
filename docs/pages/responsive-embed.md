@@ -5,10 +5,10 @@ sass: scss/components/_responsive-embed.scss
 tags: flex video 'flex video'
 ---
 
-To make sure embedded content maintains its aspect ratio as the width of the screen changes, wrap the `iframe`, `object`, `embed`, or `video` in a container with the `.responsive-embed` class.
+To make sure embedded content maintains its aspect ratio as the width of the screen changes, wrap the `iframe`, `object`, `embed`, or `video` in a container with the `.flex-video` class.
 
 ```html_example
-<div class="responsive-embed">
+<div class="flex-video">
   <iframe width="420" height="315" src="https://www.youtube.com/embed/mM5_T-F1Yn4" frameborder="0" allowfullscreen></iframe>
 </div>
 ```
@@ -20,7 +20,7 @@ To make sure embedded content maintains its aspect ratio as the width of the scr
 Add ratio classes to change the aspect ratio of responsive embeds. The default ratio is 4:3. The `.widescreen` class will change the container's aspect ratio to 16:9.
 
 ```html_example
-<div class="responsive-embed widescreen">
+<div class="flex-video widescreen">
   <iframe width="560" height="315" src="https://www.youtube.com/embed/WUgvvPRH7Oc" frameborder="0" allowfullscreen></iframe>
 </div>
 ```
@@ -37,7 +37,7 @@ $responsive-embed-ratios: (
 ```
 
 ```html_example
-<div class="responsive-embed panorama">
+<div class="flex-video panorama">
   <iframe width="1024" height="315" src="https://www.youtube.com/embed/bnD9I24EL_4" frameborder="0" allowfullscreen></iframe>
 </div>
 ```
