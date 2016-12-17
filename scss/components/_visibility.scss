@@ -102,7 +102,6 @@
     .show-for-#{$size}-only {
       @include show-for-only($size);
     }
-
     // Boolean conjunction of visibility classes
     .show-for-#{$size}-only.show-for-landscape {
       @include show-for-only($size,landscape);
