@@ -1,0 +1,97 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" dir="ltr">
+ <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Foundation for Sites Testing</title>
+  <link href="../motion-ui/dist/motion-ui.css" rel="stylesheet" />
+  <link href="../assets/css/foundation.css" rel="stylesheet" />
+ </head>
+ <body>
+  <h1>Visibility by Screen size AND Orientation</h1>
+  <div class="callout success">
+   <h4><code>Show for landscape AND medium only</code></h4>
+   <div class="show-for-medium-only show-for-landscape">
+    <p>Landscape orientation and medium</p>
+   </div>
+  </div>
+
+  <h1>Visibility by screen size</h1>
+  <div class="callout alert">
+   <h4><code>Show for small only:</code></h4>
+   <div class="show-for-small-only">
+    <p>Time, Dr. Freeman? Is it really that time again?</p>
+   </div>
+   <hr />
+   <h4><code>Hide for small and up:</code></h4>
+   <div class="hide">
+    <p>42</p>
+   </div>
+   <h4><code>Hide for small only:</code></h4>
+   <div class="hide-for-small-only">
+    <p>42</p>
+   </div>
+  </div>
+
+  <div class="callout success">
+   <h4><code>Show for medium and up:</code></h4>
+   <div class="show-for-medium">
+    <p>Welcome. Welcome, to City 17.</p>
+   </div>
+   <h4><code>Show for medium only:</code></h4>
+   <div class="show-for-medium-only">
+    <p>Dr. Wallace Breen</p>
+   </div>
+   <hr />
+   <h4><code>Hide for medium and up:</code></h4>
+   <div class="hide-for-medium">
+    <p>What you say?!</p>
+   </div>
+   <h4><code>Hide for medium only:</code></h4>
+   <div class="hide-for-medium-only">
+    <p>What about Bob?</p>
+   </div>
+  </div>
+
+
+  <div class="primary callout">
+   <h4><code>Show for large and up:</code></h4>
+   <div class="show-for-large">
+    <p>Throwing that switch and all, I can see your MIT education really pays for itself.</p>
+   </div>
+   <h4><code>Show for large only:</code></h4>
+   <div class="show-for-large-only">
+    <p>Barney Gumble</p>
+   </div>
+   <hr />
+   <h4><code>Hide for large and up:</code></h4>
+   <div class="hide-for-large">
+    <p>Someone setup us the bomb.</p>
+   </div>
+   <h4><code>Hide for large only:</code></h4>
+   <div class="hide-for-large-only">
+    <p>Pink elephants on parade.</p>
+   </div>
+  </div>
+
+  <h1>Visibility by orientation</h1>
+  <div class="callout alert">
+   <h4><code>Show for landscape:</code></h4>
+   <div class="show-for-landscape">
+    <p>Landscape orientation.</p>
+   </div>
+   <h4><code>Show for portrait:</code></h4>
+   <div class="show-for-portrait">
+    <p>Portrait orientation.</p>
+   </div>
+  </div>
+
+
+  <script src="../assets/js/vendor.js"></script>
+  <script src="../assets/js/foundation.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
+ </body>
+</html>
