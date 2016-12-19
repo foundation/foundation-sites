@@ -8,7 +8,7 @@ tags:
 
 ## Installing
 
-There are a number of ways to install Foundation for Sites. If you're just getting started, we recommend downloading Yeti Launch, which allows you to quickly set up starter projects with any Foundation framework. You can also install our Node CLI to do the same thing.
+There are a number of ways to install Foundation for Sites. If you're just getting started, we recommend installing our Node CLI, which allows you to quickly set up starter projects with any Foundation framework.
 
 It's also possible to manually install Foundation for Sites into your project through npm, Bower, Meteor, or Composer.
 
@@ -89,7 +89,7 @@ Get to know the pieces of Foundation.
     <section>
       <h4>Typography</h4>
       <ul>
-        <li><a href="base-typography.html">Base Styles</a></li>
+        <li><a href="typography-base.html">Base Styles</a></li>
         <li><a href="typography-helpers.html">Helper Classes</a></li>
       </ul>
     </section>
@@ -141,6 +141,7 @@ Get to know the pieces of Foundation.
         <li><a href="reveal.html">Reveal</a></li>
         <li><a href="table.html">Table</a></li>
         <li><a href="tabs.html">Tabs</a></li>
+        <li><a href="responsive-accordion-tabs.html">Responsive Accordion Tabs</a></li>
       </ul>
     </section>
   </div>
@@ -149,7 +150,7 @@ Get to know the pieces of Foundation.
       <h4>Media</h4>
       <ul>
         <li><a href="badge.html">Badge</a></li>
-        <li><a href="flex-video.html">Flex Video</a></li>
+        <li><a href="responsive-embed.html">Responsive Embed</a></li>
         <li><a href="label.html">Label</a></li>
         <li><a href="orbit.html">Orbit</a></li>
         <li><a href="progress-bar.html">Progress Bar</a></li>

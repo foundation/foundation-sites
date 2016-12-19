@@ -42,16 +42,16 @@ describe('Toggler', function() {
 
     it('adds Aria attributes to click triggers', function() {
       $html = $('<div id="toggler" data-toggler="class"></div>').appendTo('body');
-      var $triggers = $(`
-        <a data-open="toggler">Open</a>
-        <a data-close="toggler">Close</a>
-        <a data-toggle="toggler">Toggle</a>
-        `).appendTo('body');
+      var $triggers = $(`<div>
+          <a data-open="toggler">Open</a>
+          <a data-close="toggler">Close</a>
+          <a data-toggle="toggler">Toggle</a>
+        </div>`).appendTo('body');
       plugin = new Foundation.Toggler($html, {});
 
-      $('[data-open]').should.have.attr('aria-controls', 'toggler');
-      $('[data-close]').should.have.attr('aria-controls', 'toggler');
-      $('[data-toggle]').should.have.attr('aria-controls', 'toggler');
+      $triggers.find('[data-open]').should.have.attr('aria-controls', 'toggler');
+      $triggers.find('[data-close]').should.have.attr('aria-controls', 'toggler');
+      $triggers.find('[data-toggle]').should.have.attr('aria-controls', 'toggler');
 
       $triggers.remove();
     });

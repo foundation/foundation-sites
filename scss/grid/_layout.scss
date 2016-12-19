@@ -20,8 +20,8 @@
   $gutter: null
 ) {
   & > #{$selector} {
-    width: percentage(1/$n);
     float: $global-left;
+    width: percentage(1/$n);
 
     // If a $gutter value is passed
     @if($gutter) {
@@ -31,15 +31,15 @@
           $padding: rem-calc($value) / 2;
 
           @include breakpoint($breakpoint) {
-            padding-left: $padding;
             padding-right: $padding;
+            padding-left: $padding;
           }
         }
       }
       @else if type-of($gutter) == 'number' and strip-unit($gutter) > 0 {
         $padding: rem-calc($gutter) / 2;
-        padding-left: $padding;
         padding-right: $padding;
+        padding-left: $padding;
       }
     }
 

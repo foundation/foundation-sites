@@ -34,12 +34,12 @@ $input-prefix-padding: 1rem !default;
     }
 
     > :first-child {
-      border-radius: if($global-text-direction == rtl, 0 $global-radius $global-radius 0, $global-radius 0 0 $global-radius);
+      border-radius: if($global-text-direction == rtl, 0 $input-radius $input-radius 0, $input-radius 0 0 $input-radius);
     }
 
     > :last-child {
       > * {
-        border-radius: if($global-text-direction == rtl, $global-radius 0 0 $global-radius, 0 $global-radius $global-radius 0);
+        border-radius: if($global-text-direction == rtl, $input-radius 0 0 $input-radius, 0 $input-radius $input-radius 0);
       }
     }
   }
@@ -56,16 +56,17 @@ $input-prefix-padding: 1rem !default;
 
   .input-group-label {
     @extend %input-group-child;
-    text-align: center;
     padding: 0 $input-prefix-padding;
-    background: $input-prefix-background;
-    color: $input-prefix-color;
     border: $input-prefix-border;
+    background: $input-prefix-background;
+
+    color: $input-prefix-color;
+    text-align: center;
     white-space: nowrap;
 
     @if $global-flexbox {
-      flex: 0 0 auto;
       display: flex;
+      flex: 0 0 auto;
       align-items: center;
     }
     @else {
@@ -88,10 +89,10 @@ $input-prefix-padding: 1rem !default;
     @extend %input-group-child;
     border-radius: 0;
 
-    // scss-lint:disable ZeroUnit
     @if $global-flexbox {
-      flex: 1 1 0px;
+      flex: 1 1 0px; // sass-lint:disable-line zero-unit
       height: auto;
+      min-width: 0;
     }
     @else {
       height: $height;
@@ -108,19 +109,24 @@ $input-prefix-padding: 1rem !default;
       flex: 0 0 auto;
     }
     @else {
-      height: 100%;
       width: 1%;
+      height: 100%;
     }
 
     a,
     input,
-    button {
-      margin: 0;
+    button,
+    label {
+      @extend %input-group-child;
+      height: $height;
+      padding-top: 0;
+      padding-bottom: 0;
+
+      font-size: $input-font-size;
     }
   }
 
   // Specificity bump needed to prevent override by buttons
-  // scss-lint:disable QualifyingSelector
   @if not $global-flexbox {
       .input-group .input-group-button {
           display: table-cell;

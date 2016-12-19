@@ -12,7 +12,15 @@ $badge-background: $primary-color !default;
 
 /// Default text color for badges.
 /// @type Color
-$badge-color: foreground($badge-background) !default;
+$badge-color: $white !default;
+
+/// Alternate text color for badges.
+/// @type Color
+$badge-color-alt: $black !default;
+
+/// Coloring classes. A map of classes to output in your CSS, like `.secondary`, `.success`, and so on.
+/// @type Map
+$badge-palette: $foundation-palette !default;
 
 /// Default padding inside badges.
 /// @type Number
@@ -29,11 +37,13 @@ $badge-font-size: 0.6rem !default;
 /// Generates the base styles for a badge.
 @mixin badge {
   display: inline-block;
-  padding: $badge-padding;
   min-width: $badge-minwidth;
+  padding: $badge-padding;
+
+  border-radius: 50%;
+
   font-size: $badge-font-size;
   text-align: center;
-  border-radius: 50%;
 }
 
 @mixin foundation-badge {
@@ -43,12 +53,10 @@ $badge-font-size: 0.6rem !default;
     background: $badge-background;
     color: $badge-color;
 
-    @each $name, $color in $foundation-palette {
-      @if $name != primary {
-        &.#{$name} {
-          background: $color;
-          color: foreground($color);
-        }
+    @each $name, $color in $badge-palette {
+      &.#{$name} {
+        background: $color;
+        color: color-pick-contrast($color, ($badge-color, $badge-color-alt));
       }
     }
   }

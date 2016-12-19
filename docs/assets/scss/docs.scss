@@ -23,8 +23,8 @@
 @import 'examples/motion-ui';
 @import 'examples/off-canvas';
 @import 'examples/orbit';
+@import 'examples/responsive-embed';
 @import 'examples/reveal';
-@import 'examples/top-bar';
 
 @import 'course-callout';
 
@@ -193,4 +193,13 @@ a#notice {
 
 .youtube {
   background: url("../img/icons/youtube.png") no-repeat center 0;
+}
+
+.menu li.docs-nav-version {
+  display: flex;
+  align-items: center;
+
+  span {
+    line-height: 2.5;
+  }
 }

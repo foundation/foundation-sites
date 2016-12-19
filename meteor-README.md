@@ -1,4 +1,4 @@
-# [Foundation for Sites](http://foundation.zurb.com) (v6.2.4)
+# [Foundation for Sites](http://foundation.zurb.com) (v6.3.0)
 
 Foundation is the most advanced responsive front-end framework in the world. Quickly go from prototype to production, building sites or apps that work on any kind of device with Foundation. Includes layout constructs, like a fully customizable, responsive grid, commonly used JavaScript plugins, and full A11Y support.
 
@@ -50,7 +50,7 @@ Or you can comment out the components you don't need:
 @include foundation-drilldown-menu;
 @include foundation-dropdown;
 @include foundation-dropdown-menu;
-@include foundation-flex-video;
+@include foundation-responsive-embed;
 @include foundation-label;
 @include foundation-media-object;
 @include foundation-menu;
@@ -70,7 +70,7 @@ Or you can comment out the components you don't need:
 @include foundation-top-bar;
 ```
 
-Note: For now there is a Motion-UI library added in the package (css, js files). It is needed for some Foundation plugins. Maybe in the future it will be separated package. 
+Note: For now there is a Motion-UI library added in the package (css, js files). It is needed for some Foundation plugins. Maybe in the future it will be separated package.
 
 ### 3. Overwrite Foundation settings
 
@@ -145,6 +145,5 @@ You will find more info about particular plugins on its docs page here: [http://
 
 #### Known problems
 
-1. **Conflicts with Meteor events**. 
+1. **Conflicts with Meteor events**.
 Solution: Try to always wrap Foundation's DOM nodes into another ones in your Meteor templates. This applies only to nodes on which are initialized Foundation's JS plugins and which are the first nodes in the Meteor templates with attached custom Meteor events. For more details read the last comments here: [#7248](https://github.com/zurb/foundation-sites/issues/7248)
-

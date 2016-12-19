@@ -12,6 +12,7 @@
   $row: 'row',
   $column: 'column',
   $column-row: 'column-row',
+  $gutter: 'gutter',
   $push: 'push',
   $pull: 'pull',
   $center: 'centered',
@@ -20,7 +21,8 @@
   $uncollapse: 'uncollapse',
   $offset: 'offset',
   $end: 'end',
-  $expanded: 'expanded'
+  $expanded: 'expanded',
+  $block: 'block'
 ) {
   // Row
   .#{$row} {
@@ -38,18 +40,30 @@
       @include grid-row-nest($grid-column-gutter);
 
       &.#{$collapse} {
-        margin-left: 0;
         margin-right: 0;
+        margin-left: 0;
       }
     }
 
     // Expanded (full-width) row
     &.#{$expanded} {
-      max-width: none;
+      @include grid-row-size(expand);
 
       .#{$row} {
-        margin-left: auto;
         margin-right: auto;
+        margin-left: auto;
+      }
+    }
+
+    @if type-of($grid-column-gutter) == 'map' {
+      // Static (unresponsive) row gutters
+      //
+      @each $breakpoint, $value in $grid-column-gutter {
+        &.#{$gutter}-#{$breakpoint} {
+          > .#{$column} {
+            @include grid-col-gutter($value);
+          }
+        }
       }
     }
   }
@@ -73,10 +87,10 @@
 
   // To properly nest a column row, padding and margin is removed
   .#{$row} .#{$column}.#{$row}.#{$row} {
-    padding-left: 0;
-    padding-right: 0;
-    margin-left: 0;
     margin-right: 0;
+    margin-left: 0;
+    padding-right: 0;
+    padding-left: 0;
   }
 
   @include -zf-each-breakpoint {
@@ -108,7 +122,7 @@
     // Block grid
     @for $i from 1 through $block-grid-max {
       .#{$-zf-size}-up-#{$i} {
-        @include grid-layout($i, ".#{$column}");
+        @include grid-layout($i, '.#{$column}');
       }
     }
 
@@ -117,20 +131,18 @@
       > .#{$column} { @include grid-col-collapse; }
 
       .#{$row} {
-        margin-left: 0;
         margin-right: 0;
+        margin-left: 0;
       }
     }
 
     .#{$expanded}.#{$row} .#{$-zf-size}-#{$collapse}.#{$row} {
-      margin-left: 0;
       margin-right: 0;
+      margin-left: 0;
     }
 
     .#{$-zf-size}-#{$uncollapse} {
-      $gutter: -zf-get-bp-val($grid-column-gutter, $-zf-size);
-
-      > .#{$column} { @include grid-col-uncollapse($gutter); }
+      > .#{$column} { @include grid-col-gutter($-zf-size); }
     }
 
     // Positioning
@@ -146,9 +158,14 @@
     }
   }
 
+  // Block grid columns
+  .#{$column}-#{$block} {
+    @include grid-column-margin;
+  }
+
   @if $column == 'column' {
     .columns {
-      // scss-lint:disable PlaceholderInExtend
+      // sass-lint:disable-block placeholder-in-extend
       @extend .column;
     }
   }

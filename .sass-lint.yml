@@ -1,0 +1,409 @@
+# The following scss-lint Linters are not yet supported by sass-lint:
+# ElsePlacement, PropertyCount, SelectorDepth, UnnecessaryParentReference
+#
+# The following settings/values are unsupported by sass-lint:
+# Linter Indentation, option "allow_non_nested_indentation"
+# Linter Indentation, option "character"
+# Linter PropertySortOrder, option "separate_groups"
+# Linter SpaceBeforeBrace, option "allow_single_line_padding"
+
+files:
+  include: 'scss/**/*.scss'
+
+options:
+  formatter: stylish
+  merge-default-rules: false
+
+rules:
+  border-zero:
+    - 1
+    - convention: '0'
+
+  brace-style:
+    - 1
+    - style: stroustrup
+    - allow-single-line: true
+
+  class-name-format:
+    - 1
+    - convention: '([a-z0-9]+-?)+'
+
+  clean-import-paths:
+    - 1
+    - filename-extension: false
+      leading-underscore: false
+
+  empty-line-between-blocks:
+    - 1
+    - ignore-single-line-rulesets: true
+
+  extends-before-declarations: 1
+
+  extends-before-mixins: 1
+
+  final-newline:
+    - 1
+    - include: true
+
+  force-attribute-nesting: 1
+
+  force-element-nesting: 1
+
+  force-pseudo-nesting: 1
+
+  function-name-format:
+    - 1
+    - allow-leading-underscore: true
+      convention: hyphenatedlowercase
+
+  hex-length:
+    - 1
+    - style: short
+
+  hex-notation:
+    - 1
+    - style: lowercase
+
+  id-name-format:
+    - 1
+    - convention: '([a-z0-9]+-?)+'
+
+  indentation:
+    - 1
+    - size: 2
+
+  leading-zero:
+    - 1
+    - include: true
+
+  mixin-name-format:
+    - 1
+    - allow-leading-underscore: true
+      convention: hyphenatedlowercase
+
+  mixins-before-declarations: 1
+
+  nesting-depth:
+    - 1
+    - max-depth: 3
+
+  no-color-keywords: 1
+
+  no-color-literals: 1
+
+  no-css-comments: 0
+
+  no-debug: 1
+
+  no-duplicate-properties: 1
+
+  no-empty-rulesets: 1
+
+  no-ids: 1
+
+  no-important: 0
+
+  no-invalid-hex: 1
+
+  no-mergeable-selectors: 1
+
+  no-misspelled-properties:
+    - 1
+    - extra-properties: []
+
+  no-qualifying-elements:
+    - 1
+    - allow-element-with-attribute: false
+      allow-element-with-class: false
+      allow-element-with-id: false
+
+  no-trailing-zero: 1
+
+  no-url-protocols: 1
+
+  no-vendor-prefixes:
+     - 1
+     - ignore-non-standard: true
+
+  placeholder-in-extend: 1
+
+  placeholder-name-format:
+    - 1
+    - convention: '([a-z0-9]+-?)+'
+
+  property-sort-order:
+    - 1
+    -
+      ignore-custom-properties: true
+      order:
+        # Specific - CSS property order
+        # https://gist.github.com/ncoden/d42f55df7c7970f548a02cd3468f9c86
+
+        # Position
+        - 'position'
+        - 'top'
+        - 'right'
+        - 'bottom'
+        - 'left'
+        - 'z-index'
+
+        # Disposition
+        - 'display'
+
+        - 'flex'
+        - 'flex-basis'
+        - 'flex-direction'
+        - 'flex-flow'
+        - 'flex-grow'
+        - 'flex-shrink'
+        - 'flex-wrap'
+        - 'justify-content'
+        - 'order'
+
+        - 'box-align'
+        - 'box-flex'
+        - 'box-orient'
+        - 'box-pack'
+
+        - 'align-content'
+        - 'align-items'
+        - 'align-self'
+
+        - 'columns'
+        - 'column-gap'
+        - 'column-fill'
+        - 'column-rule'
+        - 'column-span'
+        - 'column-count'
+        - 'column-width'
+
+        - 'vertical-align'
+        - 'float'
+        - 'clear'
+
+        # Dimension
+        - 'box-sizing'
+
+        - 'width'
+        - 'min-width'
+        - 'max-width'
+
+        - 'height'
+        - 'min-height'
+        - 'max-height'
+
+        - 'margin'
+        - 'margin-top'
+        - 'margin-right'
+        - 'margin-bottom'
+        - 'margin-left'
+        - 'margin-collapse'
+        - 'margin-top-collapse'
+        - 'margin-right-collapse'
+        - 'margin-bottom-collapse'
+        - 'margin-left-collapse'
+
+        - 'padding'
+        - 'padding-top'
+        - 'padding-right'
+        - 'padding-bottom'
+        - 'padding-left'
+
+
+        # Global appearance
+        - 'appearance'
+        - 'opacity'
+        - 'filter'
+        - 'visibility'
+
+        - 'size'
+        - 'resize'
+        - 'zoom'
+
+        - 'transform'
+        - 'transform-box'
+        - 'transform-origin'
+        - 'transform-style'
+
+        # Border
+        - 'outline'
+        - 'outline-color'
+        - 'outline-offset'
+        - 'outline-style'
+        - 'outline-width'
+
+        - 'border'
+        - 'border-top'
+        - 'border-right'
+        - 'border-bottom'
+        - 'border-left'
+        - 'border-width'
+        - 'border-top-width'
+        - 'border-right-width'
+        - 'border-bottom-width'
+        - 'border-left-width'
+
+        - 'border-style'
+        - 'border-top-style'
+        - 'border-right-style'
+        - 'border-bottom-style'
+        - 'border-left-style'
+
+        - 'border-radius'
+        - 'border-top-left-radius'
+        - 'border-top-right-radius'
+        - 'border-bottom-right-radius'
+        - 'border-bottom-left-radius'
+        - 'border-radius-topleft'
+        - 'border-radius-topright'
+        - 'border-radius-bottomright'
+        - 'border-radius-bottomleft'
+
+        - 'border-color'
+        - 'border-top-color'
+        - 'border-right-color'
+        - 'border-bottom-color'
+        - 'border-left-color'
+
+        - 'border-collapse'
+        - 'border-spacing'
+
+        # Background
+        - 'background'
+        - 'background-image'
+        - 'background-color'
+        - 'background-attachment'
+        - 'background-clip'
+        - 'background-origin'
+        - 'background-position'
+        - 'background-repeat'
+        - 'background-size'
+
+        # Shadow
+        - 'box-shadow'
+
+        # Animation
+        - 'animation'
+        - 'animation-delay'
+        - 'animation-duration'
+        - 'animation-iteration-count'
+        - 'animation-name'
+        - 'animation-play-state'
+        - 'animation-timing-function'
+        - 'animation-fill-mode'
+
+        - 'transition'
+        - 'transition-delay'
+        - 'transition-duration'
+        - 'transition-property'
+        - 'transition-timing-function'
+
+
+        # Content
+        - 'content'
+
+        - 'list-style'
+        - 'list-style-image'
+        - 'list-style-position'
+        - 'list-style-type'
+
+        - 'overflow'
+        - 'overflow-x'
+        - 'overflow-y'
+        - 'clip'
+
+        # Text
+        - 'font'
+        - 'font-family'
+        - 'font-size'
+        - 'font-smoothing'
+        - 'osx-font-smoothing'
+        - 'font-style'
+        - 'font-variant'
+        - 'font-weight'
+        - 'src'
+
+        - 'word-spacing'
+        - 'letter-spacing'
+        - 'line-height'
+
+        - 'color'
+        - 'direction'
+        - 'text-align'
+        - 'text-decoration'
+        - 'text-indent'
+        - 'text-overflow'
+        - 'text-rendering'
+        - 'text-size-adjust'
+        - 'text-shadow'
+        - 'text-transform'
+
+        - 'white-space'
+        - 'word-break'
+        - 'word-wrap'
+        - 'hyphens'
+        - 'quotes'
+
+        # Divers
+        - 'pointer-events'
+        - 'cursor'
+
+        - 'backface-visibility'
+        - 'caption-side'
+        - 'empty-cells'
+        - 'table-layout'
+        - 'user-select'
+
+        - 'interpolation-mode'
+        - 'marks'
+        - 'page'
+        - 'set-link-source'
+        - 'unicode-bidi'
+        - 'speak'
+
+  quotes:
+    - 1
+    - style: single
+
+  shorthand-values: 1
+
+  single-line-per-selector: 0
+
+  space-after-bang:
+    - 1
+    - include: false
+
+  space-after-colon:
+    - 1
+    - include: true
+
+  space-after-comma: 1
+
+  space-before-bang:
+    - 1
+    - include: true
+
+  space-before-brace:
+    - 1
+    - include: true
+
+  space-before-colon: 1
+
+  space-between-parens:
+    - 1
+    - include: false
+
+  trailing-semicolon: 1
+
+  url-quotes: 1
+
+  variable-for-property:
+    - 0
+    - properties: []
+
+  variable-name-format:
+    - 1
+    - allow-leading-underscore: true
+      convention: hyphenatedlowercase
+
+  zero-unit: 1

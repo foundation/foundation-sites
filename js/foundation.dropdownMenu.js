@@ -95,16 +95,22 @@ class DropdownMenu {
           _this._show($sub);
           $elem.add($elem.parentsUntil(_this.$element, `.${parClass}`)).attr('data-is-click', true);
         }
-      } else {
-        if(_this.options.closeOnClickInside){
-          _this._hide($elem);
-        }
-        return;
       }
     };
 
     if (this.options.clickOpen || hasTouch) {
       this.$menuItems.on('click.zf.dropdownmenu touchstart.zf.dropdownmenu', handleClickFn);
+    }
+
+    // Handle Leaf element Clicks
+    if(_this.options.closeOnClickInside){
+      this.$menuItems.on('click.zf.dropdownmenu touchend.zf.dropdownmenu', function(e) {
+        var $elem = $(this),
+            hasSub = $elem.hasClass(parClass);
+        if(!hasSub){
+          _this._hide();
+        }
+      });
     }
 
     if (!this.options.disableHover) {
@@ -113,10 +119,10 @@ class DropdownMenu {
             hasSub = $elem.hasClass(parClass);
 
         if (hasSub) {
-          clearTimeout(_this.delay);
-          _this.delay = setTimeout(function() {
+          clearTimeout($elem.data('_delay'));
+          $elem.data('_delay', setTimeout(function() {
             _this._show($elem.children('.is-dropdown-submenu'));
-          }, _this.options.hoverDelay);
+          }, _this.options.hoverDelay));
         }
       }).on('mouseleave.zf.dropdownmenu', function(e) {
         var $elem = $(this),
@@ -124,10 +130,10 @@ class DropdownMenu {
         if (hasSub && _this.options.autoclose) {
           if ($elem.attr('data-is-click') === 'true' && _this.options.clickOpen) { return false; }
 
-          clearTimeout(_this.delay);
-          _this.delay = setTimeout(function() {
+          clearTimeout($elem.data('_delay'));
+          $elem.data('_delay', setTimeout(function() {
             _this._hide($elem);
-          }, _this.options.closingTime);
+          }, _this.options.closingTime));
         }
       });
     }
@@ -268,9 +274,8 @@ class DropdownMenu {
     }));
     var $sibs = $sub.parent('li.is-dropdown-submenu-parent').siblings('li.is-dropdown-submenu-parent');
     this._hide($sibs, idx);
-    $sub.css('visibility', 'hidden').addClass('js-dropdown-active').attr({'aria-hidden': false})
-        .parent('li.is-dropdown-submenu-parent').addClass('is-active')
-        .attr({'aria-expanded': true});
+    $sub.css('visibility', 'hidden').addClass('js-dropdown-active')
+        .parent('li.is-dropdown-submenu-parent').addClass('is-active');
     var clear = Foundation.Box.ImNotTouchingYou($sub, null, true);
     if (!clear) {
       var oldClass = this.options.alignment === 'left' ? '-right' : '-left',
@@ -314,13 +319,10 @@ class DropdownMenu {
 
     if (somethingToClose) {
       $toClose.find('li.is-active').add($toClose).attr({
-        'aria-expanded': false,
         'data-is-click': false
       }).removeClass('is-active');
 
-      $toClose.find('ul.js-dropdown-active').attr({
-        'aria-hidden': true
-      }).removeClass('js-dropdown-active');
+      $toClose.find('ul.js-dropdown-active').removeClass('js-dropdown-active');
 
       if (this.changed || $toClose.find('opens-inner').length) {
         var oldClass = this.options.alignment === 'left' ? 'right' : 'left';

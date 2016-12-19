@@ -34,9 +34,17 @@ var Keyboard = {
    */
   parseKey(event) {
     var key = keyCodes[event.which || event.keyCode] || String.fromCharCode(event.which).toUpperCase();
+
+    // Remove un-printable characters, e.g. for `fromCharCode` calls for CTRL only events
+    key = key.replace(/\W+/, '');
+
     if (event.shiftKey) key = `SHIFT_${key}`;
     if (event.ctrlKey) key = `CTRL_${key}`;
     if (event.altKey) key = `ALT_${key}`;
+
+    // Remove trailing underscore, in case only modifiers were used (e.g. only `CTRL_ALT`)
+    key = key.replace(/_$/, '');
+
     return key;
   },
 
@@ -83,6 +91,7 @@ var Keyboard = {
    * @return {jQuery} $focusable - all focusable elements within `$element`
    */
   findFocusable($element) {
+    if(!$element) {return false; }
     return $element.find('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]').filter(function() {
       if (!$(this).is(':visible') || $(this).attr('tabindex') < 0) { return false; } //only have visible elements and those that have a tabindex greater or equal 0
       return true;
@@ -97,6 +106,34 @@ var Keyboard = {
 
   register(componentName, cmds) {
     commands[componentName] = cmds;
+  },  
+
+  /**
+   * Traps the focus in the given element.
+   * @param  {jQuery} $element  jQuery object to trap the foucs into.
+   */
+  trapFocus($element) {
+    var $focusable = Foundation.Keyboard.findFocusable($element),
+        $firstFocusable = $focusable.eq(0),
+        $lastFocusable = $focusable.eq(-1);
+
+    $element.on('keydown.zf.trapfocus', function(event) {
+      if (event.target === $lastFocusable[0] && Foundation.Keyboard.parseKey(event) === 'TAB') {
+        event.preventDefault();
+        $firstFocusable.focus();
+      }
+      else if (event.target === $firstFocusable[0] && Foundation.Keyboard.parseKey(event) === 'SHIFT_TAB') {
+        event.preventDefault();
+        $lastFocusable.focus();
+      }
+    });
+  },
+  /**
+   * Releases the trapped focus from the given element.
+   * @param  {jQuery} $element  jQuery object to release the focus for.
+   */
+  releaseFocus($element) {
+    $element.off('keydown.zf.trapfocus');
   }
 }
 

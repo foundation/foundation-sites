@@ -38,27 +38,6 @@ $header-font-style: normal !default;
 /// @type String | List
 $font-family-monospace: Consolas, 'Liberation Mono', Courier, monospace !default;
 
-/// Sizes of headings at various screen sizes. Each key is a breakpoint, and each value is a map of heading sizes.
-/// @type Map
-$header-sizes: (
-  small: (
-    'h1': 24,
-    'h2': 20,
-    'h3': 19,
-    'h4': 18,
-    'h5': 17,
-    'h6': 16,
-  ),
-  medium: (
-    'h1': 48,
-    'h2': 40,
-    'h3': 31,
-    'h4': 25,
-    'h5': 20,
-    'h6': 16,
-  ),
-) !default;
-
 /// Color of headers.
 /// @type Color
 $header-color: inherit !default;
@@ -70,6 +49,47 @@ $header-lineheight: 1.4 !default;
 /// Bottom margin of headers.
 /// @type Number
 $header-margin-bottom: 0.5rem !default;
+
+/// Styles for headings at various screen sizes. Each key is a breakpoint, and each value is a map of heading styles.
+/// @type Map
+$header-styles: (
+  small: (
+    'h1': ('font-size': 24),
+    'h2': ('font-size': 20),
+    'h3': ('font-size': 19),
+    'h4': ('font-size': 18),
+    'h5': ('font-size': 17),
+    'h6': ('font-size': 16),
+  ),
+  medium: (
+    'h1': ('font-size': 48),
+    'h2': ('font-size': 40),
+    'h3': ('font-size': 31),
+    'h4': ('font-size': 25),
+    'h5': ('font-size': 20),
+    'h6': ('font-size': 16),
+  ),
+) !default;
+
+// $header-styles map is built from $header-sizes in order to ensure downward compatibility
+// when $header-sizes is depreciated, $header-styles needs to get !default values like settings.scss
+@function build_from_header-sizes($header-sizes) {
+  @warn 'Note, that $header-sizes has been replaced with $header-styles. $header-sizes still works, but it is going to be depreciated.';
+  $header-styles: ();
+  @each $size, $headers in $header-sizes {
+    $header-map: ();
+    @each $header, $font-size in $headers {
+      $header-map: map-merge($header-map, ($header: ('font-size': $font-size)));  
+    }
+    $header-styles: map-merge($header-styles, ($size: $header-map));
+  }
+  @return $header-styles;
+}
+
+// If it exists $headers-sizes is used to build $header-styles. See the documentation.
+@if variable-exists(header-sizes) {
+  $header-styles: build_from_header-sizes($header-sizes);
+}
 
 /// Text rendering method of headers.
 /// @type String
@@ -203,6 +223,10 @@ $cite-font-size: rem-calc(13) !default;
 /// @type Color
 $cite-color: $dark-gray !default;
 
+/// Pseudo content for `<cite>` elements.
+/// @type String
+$cite-pseudo-content: '\2014 \0020' !default;
+
 /// Font family for `<kbd>` elements.
 /// @type String | List
 $keystroke-font: $font-family-monospace !default;
@@ -254,9 +278,10 @@ $abbr-underline: 1px dotted $black !default;
 
   // Paragraphs
   p {
+    margin-bottom: $paragraph-margin-bottom;
+
     font-size: inherit;
     line-height: $paragraph-lineheight;
-    margin-bottom: $paragraph-margin-bottom;
     text-rendering: $paragraph-text-rendering;
   }
 
@@ -288,26 +313,55 @@ $abbr-underline: 1px dotted $black !default;
   h5,
   h6 {
     font-family: $header-font-family;
-    font-weight: $header-font-weight;
     font-style: $header-font-style;
+    font-weight: $header-font-weight;
     color: $header-color;
     text-rendering: $header-text-rendering;
-    margin-top: 0;
-    margin-bottom: $header-margin-bottom;
-    line-height: $header-lineheight;
 
     small {
-      color: $header-small-font-color;
       line-height: 0;
+      color: $header-small-font-color;
     }
   }
 
-  // Heading sizes
-  @each $size, $headers in $header-sizes {
+  // Heading styles
+  @each $size, $headers in $header-styles {
     @include breakpoint($size) {
-      @each $header, $font-size in $headers {
+      @each $header, $header-defs in $headers {
+        $font-size-temp: 1rem;
         #{$header} {
-          font-size: rem-calc($font-size);
+
+          @if map-has-key($header-defs, font-size) {
+            $font-size-temp: rem-calc(map-get($header-defs, font-size));
+            font-size: $font-size-temp;
+          } @else if map-has-key($header-defs, fs) {
+            $font-size-temp: rem-calc(map-get($header-defs, fs));
+            font-size: $font-size-temp;
+          } @else if $size == $-zf-zero-breakpoint {
+            font-size: $font-size-temp;
+          }
+          @if map-has-key($header-defs, line-height) {
+            line-height: unitless-calc(map-get($header-defs, line-height), $font-size-temp);
+          } @else if map-has-key($header-defs, lh) {
+            line-height: unitless-calc(map-get($header-defs, lh), $font-size-temp);
+          } @else if $size == $-zf-zero-breakpoint {
+            line-height: unitless-calc($header-lineheight, $font-size-temp);
+          }
+
+          @if map-has-key($header-defs, margin-top) {
+            margin-top: rem-calc(map-get($header-defs, margin-top));
+          } @else if map-has-key($header-defs, mt) {
+            margin-top: rem-calc(map-get($header-defs, mt));
+          } @else if $size == $-zf-zero-breakpoint {
+            margin-top: 0;
+          }
+          @if map-has-key($header-defs, margin-bottom) {
+            margin-bottom: rem-calc(map-get($header-defs, margin-bottom));
+          } @else if map-has-key($header-defs, mb) {
+            margin-bottom: rem-calc(map-get($header-defs, mb));
+          } @else if $size == $-zf-zero-breakpoint {
+            margin-bottom: rem-calc($header-margin-bottom);
+          }
         }
       }
     }
@@ -315,9 +369,10 @@ $abbr-underline: 1px dotted $black !default;
 
   // Links
   a {
+    line-height: inherit;
     color: $anchor-color;
     text-decoration: $anchor-text-decoration;
-    line-height: inherit;
+
     cursor: pointer;
 
     &:hover,
@@ -335,23 +390,25 @@ $abbr-underline: 1px dotted $black !default;
 
   // Horizontal rule
   hr {
+    clear: both;
+
     max-width: $hr-width;
     height: 0;
-    border-right: 0;
+    margin: $hr-margin;
+
     border-top: 0;
+    border-right: 0;
     border-bottom: $hr-border;
     border-left: 0;
-    margin: $hr-margin;
-    clear: both;
   }
 
   // Lists
   ul,
   ol,
   dl {
-    line-height: $list-lineheight;
     margin-bottom: $list-margin-bottom;
     list-style-position: $list-style-position;
+    line-height: $list-lineheight;
   }
 
   // List items
@@ -361,8 +418,8 @@ $abbr-underline: 1px dotted $black !default;
 
   // Unordered lists
   ul {
-    list-style-type: $list-style-type;
     margin-#{$global-left}: $list-side-margin;
+    list-style-type: $list-style-type;
   }
 
   // Ordered lists
@@ -407,34 +464,43 @@ $abbr-underline: 1px dotted $black !default;
     color: $cite-color;
 
     &:before {
-      content: '\2014 \0020';
+      content: $cite-pseudo-content;
     }
   }
 
   // Abbreviations
   abbr {
+    border-bottom: $abbr-underline;
     color: $body-font-color;
     cursor: help;
-    border-bottom: $abbr-underline;
   }
 
+  // Figures
+  figure {
+    margin: 0;
+  }
+  
   // Code
   code {
+    padding: $code-padding;
+
+    border: $code-border;
+    background-color: $code-background;
+
     font-family: $code-font-family;
     font-weight: $code-font-weight;
     color: $code-color;
-    background-color: $code-background;
-    border: $code-border;
-    padding: $code-padding;
   }
 
   // Keystrokes
   kbd {
-    padding: $keystroke-padding;
     margin: 0;
+    padding: $keystroke-padding;
+
     background-color: $keystroke-background;
-    color: $keystroke-color;
+
     font-family: $keystroke-font;
+    color: $keystroke-color;
 
     @if has-value($keystroke-radius) {
       border-radius: $keystroke-radius;

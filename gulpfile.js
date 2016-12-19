@@ -3,7 +3,7 @@ var browser = require('browser-sync');
 var requireDir = require('require-dir');
 var port = process.env.SERVER_PORT || 3000;
 
-requireDir('./gulp');
+requireDir('./gulp/tasks');
 
 // Builds the documentation and framework files
 gulp.task('build', ['clean', 'copy', 'docs:all', 'sass', 'javascript']);
