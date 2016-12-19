@@ -214,8 +214,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       value: function _keyboardEvents() {
         var _this = this;
 
-        this.$menuItems.add(this.$element.find('.js-drilldown-back > a')).on('keydown.zf.drilldown', function (e) {
-
+        this.$menuItems.add(this.$element.find('.js-drilldown-back > a, .is-submenu-parent-item > a')).on('keydown.zf.drilldown', function (e) {
           var $element = $(this),
               $elements = $element.parent('li').parent('ul').children('li').children('a'),
               $prevElement,

@@ -55,11 +55,14 @@
       }
     }
 
-    // Static (unresponsive) row gutters
-    @each $breakpoint, $value in $grid-column-gutter {
-      &.#{$gutter}-#{$breakpoint} {
-        > .#{$column} {
-          @include grid-col-gutter($value);
+    @if type-of($grid-column-gutter) == 'map' {
+      // Static (unresponsive) row gutters
+      //
+      @each $breakpoint, $value in $grid-column-gutter {
+        &.#{$gutter}-#{$breakpoint} {
+          > .#{$column} {
+            @include grid-col-gutter($value);
+          }
         }
       }
     }

@@ -2,7 +2,7 @@
 
   "use strict";
 
-  var FOUNDATION_VERSION = '6.3.0-rc3';
+  var FOUNDATION_VERSION = '6.3.0';
 
   // Global Foundation object
   // This is attached to the window, or used as a module for AMD/Browserify
@@ -3266,8 +3266,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       value: function _keyboardEvents() {
         var _this = this;
 
-        this.$menuItems.add(this.$element.find('.js-drilldown-back > a')).on('keydown.zf.drilldown', function (e) {
-
+        this.$menuItems.add(this.$element.find('.js-drilldown-back > a, .is-submenu-parent-item > a')).on('keydown.zf.drilldown', function (e) {
           var $element = $(this),
               $elements = $element.parent('li').parent('ul').children('li').children('a'),
               $prevElement,
@@ -4180,10 +4179,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 hasSub = $elem.hasClass(parClass);
 
             if (hasSub) {
-              clearTimeout(_this.delay);
-              _this.delay = setTimeout(function () {
+              clearTimeout($elem.data('_delay'));
+              $elem.data('_delay', setTimeout(function () {
                 _this._show($elem.children('.is-dropdown-submenu'));
-              }, _this.options.hoverDelay);
+              }, _this.options.hoverDelay));
             }
           }).on('mouseleave.zf.dropdownmenu', function (e) {
             var $elem = $(this),
@@ -4193,10 +4192,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 return false;
               }
 
-              clearTimeout(_this.delay);
-              _this.delay = setTimeout(function () {
+              clearTimeout($elem.data('_delay'));
+              $elem.data('_delay', setTimeout(function () {
                 _this._hide($elem);
-              }, _this.options.closingTime);
+              }, _this.options.closingTime));
             }
           });
         }
@@ -5147,6 +5146,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       this.options = $.extend({}, Magellan.defaults, this.$element.data(), options);
 
       this._init();
+      this.calcPoints();
 
       Foundation.registerPlugin(this, 'Magellan');
     }
@@ -5232,6 +5232,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var arrival = this.getAttribute('href');
           _this.scrollToLoc(arrival);
         });
+        $(window).on('popstate', function (e) {
+          if (_this.options.deepLinking) {
+            _this.scrollToLoc(window.location.hash);
+          }
+        });
       }
 
       /**
@@ -5247,9 +5252,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         if (!$(loc).length) {
           return false;
         }
-        var scrollPos = Math.round($(loc).offset().top - this.options.threshold / 2 - this.options.barOffset);
+        this._inTransition = true;
+        var _this = this,
+            scrollPos = Math.round($(loc).offset().top - this.options.threshold / 2 - this.options.barOffset);
 
-        $('html, body').stop(true).animate({ scrollTop: scrollPos }, this.options.animationDuration, this.options.animationEasing);
+        $('html, body').stop(true).animate({ scrollTop: scrollPos }, this.options.animationDuration, this.options.animationEasing, function () {
+          _this._inTransition = false;_this._updateActive();
+        });
       }
 
       /**
@@ -5274,6 +5283,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: '_updateActive',
       value: function _updateActive() /*evt, elem, scrollPos*/{
+        if (this._inTransition) {
+          return;
+        }
         var winPos = /*scrollPos ||*/parseInt(window.pageYOffset, 10),
             curIdx;
 
@@ -5294,14 +5306,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.$active = this.$links.filter('[href="#' + this.$targets.eq(curIdx).data('magellan-target') + '"]').addClass(this.options.activeClass);
 
         if (this.options.deepLinking) {
-          var hash = " ";
+          var hash = "";
           if (curIdx != undefined) {
             hash = this.$active[0].getAttribute('href');
           }
-          if (window.history.pushState) {
-            window.history.pushState(null, null, hash);
-          } else {
-            window.location.hash = hash;
+          if (hash !== window.location.hash) {
+            if (window.history.pushState) {
+              window.history.pushState(null, null, hash);
+            } else {
+              window.location.hash = hash;
+            }
           }
         }
 
