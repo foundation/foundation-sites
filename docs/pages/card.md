@@ -4,6 +4,7 @@ description: Cards are a popular and flexible UI component.
 sass: scss/components/_card.scss
 tags:
   - card
+flex: true
 ---
 
 ## Basics
