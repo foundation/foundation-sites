@@ -5,6 +5,8 @@ sass:
   - scss/components/_accordion.scss
   - scss/components/_tabs.scss
 js: js/foundation.zf.responsiveAccordionTabs.js
+tags:
+  - tabcordion
 ---
 
 ## Basics

@@ -5,6 +5,7 @@
 /**
  * OffCanvas module.
  * @module foundation.offcanvas
+ * @requires foundation.util.keyboard
  * @requires foundation.util.mediaQuery
  * @requires foundation.util.triggers
  * @requires foundation.util.motion

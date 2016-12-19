@@ -377,7 +377,7 @@ DropdownMenu.defaults = {
   /**
    * Allow a submenu to open/remain open on parent click event. Allows cursor to move away from menu.
    * @option
-   * @example true
+   * @example false
    */
   clickOpen: false,
   /**
@@ -420,7 +420,7 @@ DropdownMenu.defaults = {
   /**
    * Boolean to force overide the clicking of links to perform default action, on second touch event for mobile.
    * @option
-   * @example false
+   * @example true
    */
   forceFollow: true
 };

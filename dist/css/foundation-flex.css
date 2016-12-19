@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /**
  * Foundation for Sites by ZURB
- * Version 6.3.0-rc3
+ * Version 6.3.0
  * foundation.zurb.com
  * Licensed under MIT Open Source
  */
@@ -3705,6 +3705,8 @@ html.is-reveal-open body {
 
 .reveal {
   z-index: 1006;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
   display: none;
   padding: 1rem;
   border: 1px solid #cacaca;
@@ -4245,7 +4247,7 @@ a.thumbnail {
   -webkit-flex: 0 0 auto;
       -ms-flex: 0 0 auto;
           flex: 0 0 auto;
-  margin: 0.45rem 1rem 0 1rem; }
+  margin: 0.5rem 1rem 0.5rem 0; }
 
 .top-bar-left,
 .top-bar-right {
