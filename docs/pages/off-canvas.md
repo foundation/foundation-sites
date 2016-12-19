@@ -30,8 +30,8 @@ The Off-canvas container also needs a positioning class to determine which side 
 
 - `.position-left`
 - `.position-right`
-- `.position-top` 
-- `.position-bottom` 
+- `.position-top`
+- `.position-bottom`
 
 Also be sure the off-canvas panel has a unique ID so it can be targeted by the click trigger.
 
@@ -138,7 +138,7 @@ Foundation's Off-canvas is set to `position: fixed` by default using the `.off-c
 
 ```html_example
 <button type="button" class="button" data-toggle="offCanvasLeftSPlit1">Open Left</button>
-<button type="button" class="button" data-toggle="offCanvasLeftSplit2">Open Left</button>
+<button type="button" class="button" data-toggle="offCanvasRightSplit2">Open Right</button>
 
 <div class="row">
   <div class="small-6 columns">
@@ -153,7 +153,7 @@ Foundation's Off-canvas is set to `position: fixed` by default using the `.off-c
   </div>
   <div class="small-6 columns">
     <div class="off-canvas-wrapper">
-      <div class="off-canvas-absolute position-left" id="offCanvasLeftSplit2" data-off-canvas>
+      <div class="off-canvas-absolute position-right" id="offCanvasRightSplit2" data-off-canvas>
         <!-- Your menu or Off-canvas content goes here -->
       </div>
       <div class="off-canvas-content" style="min-height: 300px;" data-off-canvas-content>
@@ -168,14 +168,14 @@ Foundation's Off-canvas is set to `position: fixed` by default using the `.off-c
 
 ## Off-canvas Directions
 
-Foundation's Off-canvas can open from any direction, left, right, top, and bottom. 
+Foundation's Off-canvas can open from any direction, left, right, top, and bottom.
 
 The Off-canvas container requires a positioning class to determine which side of the viewport it opens from:
 
 - `.position-left`
 - `.position-right`
-- `.position-top` 
-- `.position-bottom` 
+- `.position-top`
+- `.position-bottom`
 
 ```html_example
 <button type="button" class="button" data-toggle="offCanvasLeft1">Open Left</button>
