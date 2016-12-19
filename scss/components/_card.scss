@@ -48,7 +48,7 @@ $card-margin-bottom: $global-margin !default;
 @mixin card-container(
   $background: $card-background,
   $color: $card-font-color,
-  $margin: $card-margin,
+  $margin: $card-margin-bottom,
   $border: $card-border,
   $radius: $card-border-radius,
   $shadow: $card-shadow
