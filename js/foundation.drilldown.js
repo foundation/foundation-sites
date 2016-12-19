@@ -108,6 +108,8 @@ class Drilldown {
       this.$wrapper = $(this.options.wrapper).addClass('is-drilldown');
       if(this.options.animateHeight) this.$wrapper.addClass('animate-height');
       this.$wrapper = this.$element.wrap(this.$wrapper).parent().css(this._getMaxDims());
+    } else {
+      this.$wrapper = this.$element.parent().css(this._getMaxDims());
     }
   }
 
