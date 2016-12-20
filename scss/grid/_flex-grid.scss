@@ -285,6 +285,11 @@
     max-width: 100%;
   }
 
+  // Block grid columns
+  .column-block {
+    @include grid-column-margin;
+  }
+
   .columns {
     @extend .column; // sass-lint:disable-line placeholder-in-extend
 
