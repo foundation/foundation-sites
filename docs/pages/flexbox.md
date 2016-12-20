@@ -47,11 +47,12 @@ $global-flexbox: true;
 Besides the flex grid, these components have flexbox modes:
 
 - [Button group](button-group.html)
-- [Input group](forms.html#inline-labels-and-buttons)
+- [Input group - (Forms)](forms.html#inline-labels-and-buttons)
 - [Menu](menu.html)
 - [Top bar](top-bar.html)
 - [Media object](media-object.html)
 - [Title bar](off-canvas.html#title-bar)
+- [Card](card.html)
 
 In general, all of the components work exactly the same. However, a few of them require slight changes to CSS classes used to work properly. Refer to the documentation for each to find out what's different.
 
