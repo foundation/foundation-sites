@@ -17,7 +17,7 @@
   $place: index($dirs, $dir);
 
   @if $place == null {
-    @error 'direction-opposite: Invalid $dir parameter, expected a value from "' + $dirs + '", found "' + $dir + '".';
+    @error 'direction-opposite: Invalid $dir parameter, expected a value from "#{$dirs}", found "#{$dir}".';
     @return null;
   }
 
