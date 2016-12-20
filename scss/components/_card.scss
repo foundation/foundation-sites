@@ -81,6 +81,7 @@ $card-margin: $global-margin !default;
 ) {
   @if $global-flexbox {
     flex: 0 1 auto;
+    display: flex;
   }
 
   padding: $padding;
@@ -97,6 +98,22 @@ $card-margin: $global-margin !default;
 ) {
   @if $global-flexbox {
     flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    // flex dir column, therefor align directions are reversed
+    // horizontal alignment
+    @each $vdir, $prop in $-zf-flex-justify {
+      .align-#{$hdir} {
+        @include flex-align($y: $vdir);
+      }
+    }
+
+    // // vertical alignment
+    // @each $hdir, $prop in map-remove($-zf-flex-justify, left) {
+    //   .align-#{$vdir} {
+    //     @include flex-align($x: $hdir);
+    //   }
+    // }
   }
 
   padding: $padding;
