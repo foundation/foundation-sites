@@ -10,7 +10,7 @@ tags:
 
 There are a number of ways to install Foundation for Sites. If you're just getting started, we recommend installing our Node CLI, which allows you to quickly set up starter projects with any Foundation framework.
 
-It's also possible to manually install Foundation for Sites into your project through npm, Bower, Meteor, or Composer.
+It's also possible to manually install Foundation for Sites into your project through npm, Bower, Meteor, NuGet or Composer.
 
 <a href="installation.html" class="large button">Install Foundation for Sites</a>
 
