@@ -167,6 +167,7 @@ $alert-color: get-color(alert);
 
   // Make select elements are 100% width by default
   select {
+    box-sizing: border-box;
     width: 100%;
     border-radius: $global-radius;
   }
