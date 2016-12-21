@@ -144,6 +144,7 @@ $menu-border: $light-gray !default;
 @mixin menu-simple($dir: $global-left) {
   li {
     display: inline-block;
+    vertical-align: top;
     line-height: 1;
   }
 
