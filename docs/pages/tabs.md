@@ -178,7 +178,7 @@ Add the attribute `data-deep-link="true" to a tabstrip to allow anchoring to and
 </div>
 ```
 
-For example, <a href="#panel3d">http://example.com/#panel3d</a> will open the third tab panel at page load.
+For example, <a target="_blank" href="#panel3d">http://example.com/#panel3d</a> will open the third tab panel at page load. This example will open a new browser tab and scroll you to the open tab.
 
 When linking directly to a tab panel, it might not be obvious that the content appears within a tab panel. An additional attribute `data-deep-link-smudge` rolls the page up slightly after deep linking (to a horizontal tabset) so that the tabstrip is at the top of the viewport.
 
