@@ -42,7 +42,8 @@ $responsive-embed-ratios: (
 }
 
 @mixin foundation-responsive-embed {
-  .responsive-embed, .flex-video {
+  .responsive-embed,
+  .flex-video {
     @include responsive-embed($ratio: default);
 
     $ratios: map-remove($responsive-embed-ratios,default);
