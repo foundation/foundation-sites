@@ -108,7 +108,7 @@ class DropdownMenu {
         var $elem = $(this),
             hasSub = $elem.hasClass(parClass);
         if(!hasSub){
-          _this._hide($elem);
+          _this._hide();
         }
       });
     }
