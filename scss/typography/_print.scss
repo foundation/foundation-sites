@@ -77,5 +77,10 @@ $print-hrefs: true !default;
     // Avoid page breaks after a heading
     h2,
     h3 { page-break-after: avoid; }
+
+    // Helper to re-allow page breaks in the middle of certain elements (e.g. pre, blockquote, tr)
+    .print-break-inside {
+      page-break-inside: auto;
+    }
   }
 }
