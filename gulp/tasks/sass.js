@@ -5,6 +5,7 @@ var gulp = require('gulp');
 var Parker = require('parker/lib/Parker');
 var prettyJSON = require('prettyjson');
 var sass = require('gulp-sass');
+var eyeglass = require('eyeglass');
 var plumber = require('gulp-plumber');
 var sourcemaps = require('gulp-sourcemaps');
 var sassLint = require('gulp-sass-lint');
@@ -21,9 +22,7 @@ gulp.task('sass', ['sass:foundationSCSS', 'sass:foundationCSS', 'sass:docs']);
 // Concat Foundation Sass and its dependencies into a single SCSS file
 gulp.task('sass:foundationSCSS', function() {
   return gulp.src(['assets/foundation.scss'])
-    .pipe(gss({
-      includePaths: CONFIG.SASS_DEPS_PATHS
-    }))
+    .pipe(gss(eyeglass()))
     .pipe(rename('foundation.scss'))
     .pipe(gulp.dest('_build/assets/scss'));
 });
@@ -33,9 +32,8 @@ gulp.task('sass:foundationCSS', function() {
   return gulp.src(['assets/*'])
     .pipe(sourcemaps.init())
     .pipe(plumber())
-    .pipe(sass({
-      includePaths: CONFIG.SASS_DEPS_PATHS
-    }).on('error', sass.logError))
+    .pipe(sass(eyeglass())
+        .on('error', sass.logError))
     .pipe(postcss([autoprefixer({
       browsers: CONFIG.CSS_COMPATIBILITY
     })]))
@@ -54,9 +52,9 @@ gulp.task('sass:foundationCSS', function() {
 gulp.task('sass:docs', function() {
   return gulp.src('docs/assets/scss/docs.scss')
     .pipe(sourcemaps.init())
-    .pipe(sass({
-      includePaths: CONFIG.SASS_DEPS_PATHS.concat(CONFIG.SASS_DOC_PATHS)
-    }).on('error', sass.logError))
+    .pipe(sass(eyeglass({
+      includePaths: CONFIG.SASS_DOC_PATHS
+    })).on('error', sass.logError))
     .pipe(postcss([autoprefixer({
       browsers: CONFIG.CSS_COMPATIBILITY
     })]))

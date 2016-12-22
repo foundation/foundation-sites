@@ -40,6 +40,7 @@
     "clipboard": "^1.5.5",
     "corejs-typeahead": "^1.0.1",
     "doiuse": "^2.5.0",
+    "eyeglass": "^0.8.3",
     "foundation-docs": "zurb/foundation-docs",
     "gulp": "^3.8.10",
     "gulp-add-src": "^0.2.0",

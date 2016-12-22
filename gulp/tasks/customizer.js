@@ -13,6 +13,7 @@ var replace = require('gulp-replace');
 var rename = require('gulp-rename');
 var rimraf = require('rimraf');
 var sass = require('gulp-sass');
+var eyeglass = require('eyeglass');
 var source = require('vinyl-source-stream');
 var touch = require('touch');
 var uglify = require('gulp-uglify');
@@ -61,14 +62,12 @@ gulp.task('customizer:sass', ['customizer:loadConfig'], function() {
   stream.push(null);
 
   return stream
-    .pipe(sass({
+    .pipe(sass(eyeglass({
       includePaths: [
         'scss',
-        'node_modules/motion-ui/src',
-        'node_modules/normalize-scss/sass',
-        'node_modules/sassy-lists/stylesheets'
+        'node_modules/motion-ui/src'
       ]
-    }))
+    })))
     .pipe(postcss([autoprefixer({
       browsers: COMPATIBILITY
     })]))
