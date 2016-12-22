@@ -417,73 +417,73 @@ Drilldown.defaults = {
   /**
    * Markup used for JS generated back button. Prepended  or appended (see backButtonPosition) to submenu lists and deleted on `destroy` method, 'js-drilldown-back' class required. Remove the backslash (`\`) if copy and pasting.
    * @option
-   * @example '<\li><\a>Back<\/a><\/li>'
+   * @default '<li class="js-drilldown-back"><a tabindex="0">Back</a></li>'
    */
   backButton: '<li class="js-drilldown-back"><a tabindex="0">Back</a></li>',
   /**
    * Position the back button either at the top or bottom of drilldown submenus.
    * @option
-   * @example bottom
+   * @default top
    */
   backButtonPosition: 'top',
   /**
    * Markup used to wrap drilldown menu. Use a class name for independent styling; the JS applied class: `is-drilldown` is required. Remove the backslash (`\`) if copy and pasting.
    * @option
-   * @example '<\div class="is-drilldown"><\/div>'
+   * @default '<div></div>'
    */
   wrapper: '<div></div>',
   /**
    * Adds the parent link to the submenu.
    * @option
-   * @example false
+   * @default false
    */
   parentLink: false,
   /**
    * Allow the menu to return to root list on body click.
    * @option
-   * @example false
+   * @default false
    */
   closeOnClick: false,
   /**
    * Allow the menu to auto adjust height.
    * @option
-   * @example false
+   * @default false
    */
   autoHeight: false,
   /**
    * Animate the auto adjust height.
    * @option
-   * @example false
+   * @default false
    */
   animateHeight: false,
   /**
    * Scroll to the top of the menu after opening a submenu or navigating back using the menu back button
    * @option
-   * @example false
+   * @default false
    */
   scrollTop: false,
   /**
    * String jquery selector (for example 'body') of element to take offset().top from, if empty string the drilldown menu offset().top is taken
    * @option
-   * @example ''
+   * @default ''
    */
   scrollTopElement: '',
   /**
    * ScrollTop offset
    * @option
-   * @example 100
+   * @default 0
    */
   scrollTopOffset: 0,
   /**
    * Scroll animation duration
    * @option
-   * @example 500
+   * @default 500
    */
   animationDuration: 500,
   /**
    * Scroll animation easing
    * @option
-   * @example 'swing'
+   * @default 'swing'
    */
   animationEasing: 'swing'
   // holdOpen: false

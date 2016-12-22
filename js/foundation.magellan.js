@@ -203,37 +203,37 @@ Magellan.defaults = {
   /**
    * Amount of time, in ms, the animated scrolling should take between locations.
    * @option
-   * @example 500
+   * @default 500
    */
   animationDuration: 500,
   /**
    * Animation style to use when scrolling between locations.
    * @option
-   * @example 'ease-in-out'
+   * @default 'linear'
    */
   animationEasing: 'linear',
   /**
    * Number of pixels to use as a marker for location changes.
    * @option
-   * @example 50
+   * @default 50
    */
   threshold: 50,
   /**
    * Class applied to the active locations link on the magellan container.
    * @option
-   * @example 'active'
+   * @default 'active'
    */
   activeClass: 'active',
   /**
    * Allows the script to manipulate the url of the current page, and if supported, alter the history.
    * @option
-   * @example true
+   * @default false
    */
   deepLinking: false,
   /**
    * Number of pixels to offset the scroll of the page on item click if using a sticky nav bar.
    * @option
-   * @example 25
+   * @default 0
    */
   barOffset: 0
 }

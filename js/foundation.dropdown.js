@@ -357,61 +357,61 @@ Dropdown.defaults = {
   /**
    * Class that designates bounding container of Dropdown (Default: window)
    * @option
-   * @example 'dropdown-parent'
+   * @default null
    */
   parentClass: null,
   /**
    * Amount of time to delay opening a submenu on hover event.
    * @option
-   * @example 250
+   * @default 250
    */
   hoverDelay: 250,
   /**
    * Allow submenus to open on hover events
    * @option
-   * @example false
+   * @default false
    */
   hover: false,
   /**
    * Don't close dropdown when hovering over dropdown pane
    * @option
-   * @example true
+   * @default false
    */
   hoverPane: false,
   /**
    * Number of pixels between the dropdown pane and the triggering element on open.
    * @option
-   * @example 1
+   * @default 1
    */
   vOffset: 1,
   /**
    * Number of pixels between the dropdown pane and the triggering element on open.
    * @option
-   * @example 1
+   * @default 1
    */
   hOffset: 1,
   /**
    * Class applied to adjust open position. JS will test and fill this in.
    * @option
-   * @example 'top'
+   * @default ''
    */
   positionClass: '',
   /**
    * Allow the plugin to trap focus to the dropdown pane if opened with keyboard commands.
    * @option
-   * @example false
+   * @default false
    */
   trapFocus: false,
   /**
    * Allow the plugin to set focus to the first focusable element within the pane, regardless of method of opening.
    * @option
-   * @example true
+   * @default false
    */
   autoFocus: false,
   /**
    * Allows a click on the body to close the dropdown.
    * @option
-   * @example false
+   * @default false
    */
   closeOnClick: false
 }

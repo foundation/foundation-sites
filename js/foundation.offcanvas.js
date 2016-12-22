@@ -298,63 +298,63 @@ OffCanvas.defaults = {
   /**
    * Allow the user to click outside of the menu to close it.
    * @option
-   * @example true
+   * @default true
    */
   closeOnClick: true,
 
   /**
    * Adds an overlay on top of `[data-off-canvas-content]`.
    * @option
-   * @example true
+   * @default true
    */
   contentOverlay: true,
 
   /**
    * Enable/disable scrolling of the main content when an off canvas panel is open.
    * @option
-   * @example true
+   * @default true
    */
   contentScroll: true,
 
   /**
    * Amount of time in ms the open and close transition requires. If none selected, pulls from body style.
    * @option
-   * @example 500
+   * @default 0
    */
   transitionTime: 0,
 
   /**
    * Type of transition for the offcanvas menu. Options are 'push', 'detached' or 'slide'.
    * @option
-   * @example push
+   * @default push
    */
   transition: 'push',
 
   /**
    * Force the page to scroll to top or bottom on open.
    * @option
-   * @example top
+   * @default null
    */
   forceTo: null,
 
   /**
    * Allow the offcanvas to remain open for certain breakpoints.
    * @option
-   * @example false
+   * @default false
    */
   isRevealed: false,
 
   /**
    * Breakpoint at which to reveal. JS will use a RegExp to target standard classes, if changing classnames, pass your class with the `revealClass` option.
    * @option
-   * @example reveal-for-large
+   * @default null
    */
   revealOn: null,
 
   /**
    * Force focus to the offcanvas on open. If true, will focus the opening trigger on close.
    * @option
-   * @example true
+   * @default true
    */
   autoFocus: true,
 
@@ -362,14 +362,14 @@ OffCanvas.defaults = {
    * Class used to force an offcanvas to remain open. Foundation defaults for this are `reveal-for-large` & `reveal-for-medium`.
    * @option
    * TODO improve the regex testing for this.
-   * @example reveal-for-large
+   * @default reveal-for-
    */
   revealClass: 'reveal-for-',
 
   /**
    * Triggers optional focus trapping when opening an offcanvas. Sets tabindex of [data-off-canvas-content] to -1 for accessibility purposes.
    * @option
-   * @example true
+   * @default false
    */
   trapFocus: false
 }

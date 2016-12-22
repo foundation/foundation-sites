@@ -475,91 +475,91 @@ Reveal.defaults = {
   /**
    * Motion-UI class to use for animated elements. If none used, defaults to simple show/hide.
    * @option
-   * @example 'slide-in-left'
+   * @default ''
    */
   animationIn: '',
   /**
    * Motion-UI class to use for animated elements. If none used, defaults to simple show/hide.
    * @option
-   * @example 'slide-out-right'
+   * @default ''
    */
   animationOut: '',
   /**
    * Time, in ms, to delay the opening of a modal after a click if no animation used.
    * @option
-   * @example 10
+   * @default 0
    */
   showDelay: 0,
   /**
    * Time, in ms, to delay the closing of a modal after a click if no animation used.
    * @option
-   * @example 10
+   * @default 0
    */
   hideDelay: 0,
   /**
    * Allows a click on the body/overlay to close the modal.
    * @option
-   * @example true
+   * @default true
    */
   closeOnClick: true,
   /**
    * Allows the modal to close if the user presses the `ESCAPE` key.
    * @option
-   * @example true
+   * @default true
    */
   closeOnEsc: true,
   /**
    * If true, allows multiple modals to be displayed at once.
    * @option
-   * @example false
+   * @default false
    */
   multipleOpened: false,
   /**
    * Distance, in pixels, the modal should push down from the top of the screen.
    * @option
-   * @example auto
+   * @default auto
    */
   vOffset: 'auto',
   /**
    * Distance, in pixels, the modal should push in from the side of the screen.
    * @option
-   * @example auto
+   * @default auto
    */
   hOffset: 'auto',
   /**
    * Allows the modal to be fullscreen, completely blocking out the rest of the view. JS checks for this as well.
    * @option
-   * @example false
+   * @default false
    */
   fullScreen: false,
   /**
    * Percentage of screen height the modal should push up from the bottom of the view.
    * @option
-   * @example 10
+   * @default 10
    */
   btmOffsetPct: 10,
   /**
    * Allows the modal to generate an overlay div, which will cover the view when modal opens.
    * @option
-   * @example true
+   * @default true
    */
   overlay: true,
   /**
    * Allows the modal to remove and reinject markup on close. Should be true if using video elements w/o using provider's api, otherwise, videos will continue to play in the background.
    * @option
-   * @example false
+   * @default false
    */
   resetOnClose: false,
   /**
    * Allows the modal to alter the url on open/close, and allows the use of the `back` button to close modals. ALSO, allows a modal to auto-maniacally open on page load IF the hash === the modal's user-set id.
    * @option
-   * @example false
+   * @default false
    */
   deepLink: false,
     /**
    * Allows the modal to append to custom div.
    * @option
-   * @example false
+   * @default "body"
    */
   appendTo: "body"
 
