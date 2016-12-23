@@ -118,7 +118,7 @@ The value for `'line-height'`/`'lh'` is transformed into a unitless number, that
 
 <div class="callout alert">
   <p><strong>The `$header-styles` map has replaced `$header-sizes` map in version 6.3. `$header-styles` map is a more general map than `$header-sizes`.</strong></p>
-  <p>`$header-sizes` map is still working and is used to initialize the `$header-styles` map. In version 6.4 the `$header-sizes` is going to be depreciated.</p>
+  <p>`$header-sizes` map is still working and is used to initialize the `$header-styles` map. In version 6.4 the `$header-sizes` is going to be deprecated.</p>
 </div>
 
 ---
