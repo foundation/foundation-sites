@@ -117,7 +117,7 @@ Start with this HTML template and adapt it to your needs.
 
 ## CDN Links
 
-The folks at [jsDelivr](https://www.jsdelivr.com) host the compressed Foundation CSS and JavaScript for us. Just drop one of these `<script>` tags into your HTML and you're set:
+The folks at [cdnjs](https://cdnjs.com) host the compressed Foundation CSS and JavaScript for us. Just drop one of these `<script>` tags into your HTML and you're set:
 
 ```html
 <!-- Compressed CSS -->
