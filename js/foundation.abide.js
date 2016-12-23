@@ -472,6 +472,7 @@ Abide.defaults = {
    * The default event to validate inputs. Checkboxes and radios validate immediately.
    * Remove or change this value for manual validation.
    * @option
+   * @type {?string}
    * @default 'fieldChange'
    */
   validateOn: 'fieldChange',
@@ -479,6 +480,7 @@ Abide.defaults = {
   /**
    * Class to be applied to input labels on failed validation.
    * @option
+   * @type {string}
    * @default 'is-invalid-label'
    */
   labelErrorClass: 'is-invalid-label',
@@ -486,6 +488,7 @@ Abide.defaults = {
   /**
    * Class to be applied to inputs on failed validation.
    * @option
+   * @type {string}
    * @default 'is-invalid-input'
    */
   inputErrorClass: 'is-invalid-input',
@@ -493,6 +496,7 @@ Abide.defaults = {
   /**
    * Class selector to use to target Form Errors for show/hide.
    * @option
+   * @type {string}
    * @default '.form-error'
    */
   formErrorSelector: '.form-error',
@@ -500,6 +504,7 @@ Abide.defaults = {
   /**
    * Class added to Form Errors on failed validation.
    * @option
+   * @type {string}
    * @default 'is-visible'
    */
   formErrorClass: 'is-visible',
@@ -507,6 +512,7 @@ Abide.defaults = {
   /**
    * Set to true to validate text inputs on any value change.
    * @option
+   * @type {boolean}
    * @default false
    */
   liveValidate: false,
@@ -514,6 +520,7 @@ Abide.defaults = {
   /**
    * Set to true to validate inputs on blur.
    * @option
+   * @type {boolean}
    * @default false
    */
   validateOnBlur: false,

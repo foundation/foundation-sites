@@ -391,30 +391,35 @@ Orbit.defaults = {
   /**
   * Tells the JS to look for and loadBullets.
   * @option
+   * @type {boolean}
   * @default true
   */
   bullets: true,
   /**
   * Tells the JS to apply event listeners to nav buttons
   * @option
+   * @type {boolean}
   * @default true
   */
   navButtons: true,
   /**
   * motion-ui animation class to apply
   * @option
+   * @type {string}
   * @default 'slide-in-right'
   */
   animInFromRight: 'slide-in-right',
   /**
   * motion-ui animation class to apply
   * @option
+   * @type {string}
   * @default 'slide-out-right'
   */
   animOutToRight: 'slide-out-right',
   /**
   * motion-ui animation class to apply
   * @option
+   * @type {string}
   * @default 'slide-in-left'
   *
   */
@@ -422,78 +427,91 @@ Orbit.defaults = {
   /**
   * motion-ui animation class to apply
   * @option
+   * @type {string}
   * @default 'slide-out-left'
   */
   animOutToLeft: 'slide-out-left',
   /**
   * Allows Orbit to automatically animate on page load.
   * @option
+   * @type {boolean}
   * @default true
   */
   autoPlay: true,
   /**
   * Amount of time, in ms, between slide transitions
   * @option
+   * @type {number}
   * @default 5000
   */
   timerDelay: 5000,
   /**
   * Allows Orbit to infinitely loop through the slides
   * @option
+   * @type {boolean}
   * @default true
   */
   infiniteWrap: true,
   /**
   * Allows the Orbit slides to bind to swipe events for mobile, requires an additional util library
   * @option
+   * @type {boolean}
   * @default true
   */
   swipe: true,
   /**
   * Allows the timing function to pause animation on hover.
   * @option
+   * @type {boolean}
   * @default true
   */
   pauseOnHover: true,
   /**
   * Allows Orbit to bind keyboard events to the slider, to animate frames with arrow keys
   * @option
+   * @type {boolean}
   * @default true
   */
   accessible: true,
   /**
   * Class applied to the container of Orbit
   * @option
+   * @type {string}
   * @default 'orbit-container'
   */
   containerClass: 'orbit-container',
   /**
   * Class applied to individual slides.
   * @option
+   * @type {string}
   * @default 'orbit-slide'
   */
   slideClass: 'orbit-slide',
   /**
   * Class applied to the bullet container. You're welcome.
   * @option
+   * @type {string}
   * @default 'orbit-bullets'
   */
   boxOfBullets: 'orbit-bullets',
   /**
   * Class applied to the `next` navigation button.
   * @option
+   * @type {string}
   * @default 'orbit-next'
   */
   nextClass: 'orbit-next',
   /**
   * Class applied to the `previous` navigation button.
   * @option
+   * @type {string}
   * @default 'orbit-previous'
   */
   prevClass: 'orbit-previous',
   /**
   * Boolean to flag the js to use motion ui classes or not. Default to true for backwards compatability.
   * @option
+   * @type {boolean}
   * @default true
   */
   useMUI: true

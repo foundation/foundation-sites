@@ -203,18 +203,21 @@ Accordion.defaults = {
   /**
    * Amount of time to animate the opening of an accordion pane.
    * @option
+   * @type {number}
    * @default 250
    */
   slideSpeed: 250,
   /**
    * Allow the accordion to have multiple open panes.
    * @option
+   * @type {boolean}
    * @default false
    */
   multiExpand: false,
   /**
    * Allow the accordion to close all panes.
    * @option
+   * @type {boolean}
    * @default false
    */
   allowAllClosed: false

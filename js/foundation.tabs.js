@@ -373,6 +373,7 @@ Tabs.defaults = {
   /**
    * Allows the window to scroll to content of pane specified by hash anchor
    * @option
+   * @type {boolean}
    * @default false
    */
   deepLink: false,
@@ -380,6 +381,7 @@ Tabs.defaults = {
   /**
    * Adjust the deep link scroll to make sure the top of the tab panel is visible
    * @option
+   * @type {boolean}
    * @default false
    */
   deepLinkSmudge: false,
@@ -387,6 +389,7 @@ Tabs.defaults = {
   /**
    * Animation time (ms) for the deep link adjustment
    * @option
+   * @type {number}
    * @default 300
    */
   deepLinkSmudgeDelay: 300,
@@ -394,6 +397,7 @@ Tabs.defaults = {
   /**
    * Update the browser history with the open tab
    * @option
+   * @type {boolean}
    * @default false
    */
   updateHistory: false,
@@ -402,6 +406,7 @@ Tabs.defaults = {
    * Allows the window to scroll to content of active pane on load if set to true.
    * Not recommended if more than one tab panel per page.
    * @option
+   * @type {boolean}
    * @default false
    */
   autoFocus: false,
@@ -409,6 +414,7 @@ Tabs.defaults = {
   /**
    * Allows keyboard input to 'wrap' around the tab links.
    * @option
+   * @type {boolean}
    * @default true
    */
   wrapOnKeys: true,
@@ -416,6 +422,7 @@ Tabs.defaults = {
   /**
    * Allows the tab content panes to match heights if set to true.
    * @option
+   * @type {boolean}
    * @default false
    */
   matchHeight: false,
@@ -423,6 +430,7 @@ Tabs.defaults = {
   /**
    * Allows active tabs to collapse when clicked.
    * @option
+   * @type {boolean}
    * @default false
    */
   activeCollapse: false,
@@ -430,6 +438,7 @@ Tabs.defaults = {
   /**
    * Class applied to `li`'s in tab link list.
    * @option
+   * @type {string}
    * @default 'tabs-title'
    */
   linkClass: 'tabs-title',
@@ -437,6 +446,7 @@ Tabs.defaults = {
   /**
    * Class applied to the active `li` in tab link list.
    * @option
+   * @type {string}
    * @default 'is-active'
    */
   linkActiveClass: 'is-active',
@@ -444,6 +454,7 @@ Tabs.defaults = {
   /**
    * Class applied to the content containers.
    * @option
+   * @type {string}
    * @default 'tabs-panel'
    */
   panelClass: 'tabs-panel',
@@ -451,6 +462,7 @@ Tabs.defaults = {
   /**
    * Class applied to the active content container.
    * @option
+   * @type {string}
    * @default 'is-active'
    */
   panelActiveClass: 'is-active'

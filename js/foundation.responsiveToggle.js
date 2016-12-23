@@ -141,6 +141,7 @@ ResponsiveToggle.defaults = {
   /**
    * The breakpoint after which the menu is always shown, and the tab bar is hidden.
    * @option
+   * @type {string}
    * @default 'medium'
    */
   hideFor: 'medium',
@@ -148,6 +149,7 @@ ResponsiveToggle.defaults = {
   /**
    * To decide if the toggle should be animated or not.
    * @option
+   * @type {boolean}
    * @default false
    */
   animate: false

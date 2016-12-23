@@ -354,60 +354,70 @@ Tooltip.defaults = {
   /**
    * Time, in ms, before a tooltip should open on hover.
    * @option
+   * @type {number}
    * @default 200
    */
   hoverDelay: 200,
   /**
    * Time, in ms, a tooltip should take to fade into view.
    * @option
+   * @type {number}
    * @default 150
    */
   fadeInDuration: 150,
   /**
    * Time, in ms, a tooltip should take to fade out of view.
    * @option
+   * @type {number}
    * @default 150
    */
   fadeOutDuration: 150,
   /**
    * Disables hover events from opening the tooltip if set to true
    * @option
+   * @type {boolean}
    * @default false
    */
   disableHover: false,
   /**
    * Optional addtional classes to apply to the tooltip template on init.
    * @option
+   * @type {string}
    * @default ''
    */
   templateClasses: '',
   /**
    * Non-optional class added to tooltip templates. Foundation default is 'tooltip'.
    * @option
+   * @type {string}
    * @default 'tooltip'
    */
   tooltipClass: 'tooltip',
   /**
    * Class applied to the tooltip anchor element.
    * @option
+   * @type {string}
    * @default 'has-tip'
    */
   triggerClass: 'has-tip',
   /**
    * Minimum breakpoint size at which to open the tooltip.
    * @option
+   * @type {string}
    * @default 'small'
    */
   showOn: 'small',
   /**
    * Custom template to be used to generate markup for tooltip.
    * @option
+   * @type {string}
    * @default ''
    */
   template: '',
   /**
    * Text displayed in the tooltip template on open.
    * @option
+   * @type {string}
    * @default ''
    */
   tipText: '',
@@ -415,24 +425,28 @@ Tooltip.defaults = {
   /**
    * Allows the tooltip to remain open if triggered with a click or touch event.
    * @option
+   * @type {boolean}
    * @default true
    */
   clickOpen: true,
   /**
    * Additional positioning classes, set by the JS
    * @option
+   * @type {string}
    * @default ''
    */
   positionClass: '',
   /**
    * Distance, in pixels, the template should push away from the anchor on the Y axis.
    * @option
+   * @type {number}
    * @default 10
    */
   vOffset: 10,
   /**
    * Distance, in pixels, the template should push away from the anchor on the X axis, if aligned to a side.
    * @option
+   * @type {number}
    * @default 12
    */
   hOffset: 12,
@@ -440,6 +454,7 @@ Tooltip.defaults = {
    * Allow HTML in tooltip. Warning: If you are loading user-generated content into tooltips,
    * allowing HTML may open yourself up to XSS attacks.
    * @option
+   * @type {boolean}
    * @default false
    */
   allowHtml: false

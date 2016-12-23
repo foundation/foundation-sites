@@ -359,30 +359,35 @@ DropdownMenu.defaults = {
   /**
    * Disallows hover events from opening submenus
    * @option
+   * @type {boolean}
    * @default false
    */
   disableHover: false,
   /**
    * Allow a submenu to automatically close on a mouseleave event, if not clicked open.
    * @option
+   * @type {boolean}
    * @default true
    */
   autoclose: true,
   /**
    * Amount of time to delay opening a submenu on hover event.
    * @option
+   * @type {number}
    * @default 50
    */
   hoverDelay: 50,
   /**
    * Allow a submenu to open/remain open on parent click event. Allows cursor to move away from menu.
    * @option
+   * @type {boolean}
    * @default false
    */
   clickOpen: false,
   /**
    * Amount of time to delay closing a submenu on a mouseleave event.
    * @option
+   * @type {number}
    * @default 500
    */
 
@@ -390,36 +395,42 @@ DropdownMenu.defaults = {
   /**
    * Position of the menu relative to what direction the submenus should open. Handled by JS.
    * @option
+   * @type {string}
    * @default 'left'
    */
   alignment: 'left',
   /**
    * Allow clicks on the body to close any open submenus.
    * @option
+   * @type {boolean}
    * @default true
    */
   closeOnClick: true,
   /**
    * Allow clicks on leaf anchor links to close any open submenus.
    * @option
+   * @type {boolean}
    * @default true
    */
   closeOnClickInside: true,
   /**
    * Class applied to vertical oriented menus, Foundation default is `vertical`. Update this if using your own class.
    * @option
+   * @type {string}
    * @default 'vertical'
    */
   verticalClass: 'vertical',
   /**
    * Class applied to right-side oriented menus, Foundation default is `align-right`. Update this if using your own class.
    * @option
+   * @type {string}
    * @default 'align-right'
    */
   rightClass: 'align-right',
   /**
    * Boolean to force overide the clicking of links to perform default action, on second touch event for mobile.
    * @option
+   * @type {boolean}
    * @default true
    */
   forceFollow: true
