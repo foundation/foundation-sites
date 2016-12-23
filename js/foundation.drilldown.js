@@ -422,7 +422,7 @@ Drilldown.defaults = {
    */
   backButton: '<li class="js-drilldown-back"><a tabindex="0">Back</a></li>',
   /**
-   * Position the back button either at the top or bottom of drilldown submenus.
+   * Position the back button either at the top or bottom of drilldown submenus. Can be `'left'` or `'bottom'`.
    * @option
    * @type {string}
    * @default top
@@ -492,9 +492,10 @@ Drilldown.defaults = {
    */
   animationDuration: 500,
   /**
-   * Scroll animation easing
+   * Scroll animation easing. Can be `'swing'` or `'linear'`.
    * @option
    * @type {string}
+   * @see {@link https://api.jquery.com/animate|JQuery animate}
    * @default 'swing'
    */
   animationEasing: 'swing'

@@ -208,10 +208,11 @@ Magellan.defaults = {
    */
   animationDuration: 500,
   /**
-   * Animation style to use when scrolling between locations.
+   * Animation style to use when scrolling between locations. Can be `'swing'` or `'linear'`.
    * @option
    * @type {string}
    * @default 'linear'
+   * @see {@link https://api.jquery.com/animate|Jquery animate}
    */
   animationEasing: 'linear',
   /**

@@ -389,7 +389,7 @@ Sticky.defaults = {
    */
   container: '<div data-sticky-container></div>',
   /**
-   * Location in the view the element sticks to.
+   * Location in the view the element sticks to. Can be `'top'` or `'bottom'`.
    * @option
    * @type {string}
    * @default 'top'

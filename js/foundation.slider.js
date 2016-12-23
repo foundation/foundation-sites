@@ -672,7 +672,7 @@ Slider.defaults = {
   */
   nonLinearBase: 5,
   /**
-  * Basevalue for non-linear sliders, possible values are: 'linear', 'pow' & 'log'. Pow and Log use the nonLinearBase setting.
+  * Basevalue for non-linear sliders, possible values are: `'linear'`, `'pow'` & `'log'`. Pow and Log use the nonLinearBase setting.
   * @option
   * @type {string}
   * @default 'linear'

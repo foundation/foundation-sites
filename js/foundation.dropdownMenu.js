@@ -393,7 +393,7 @@ DropdownMenu.defaults = {
 
   closingTime: 500,
   /**
-   * Position of the menu relative to what direction the submenus should open. Handled by JS.
+   * Position of the menu relative to what direction the submenus should open. Handled by JS. Can be `'left'` or `'right'`.
    * @option
    * @type {string}
    * @default 'left'
