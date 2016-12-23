@@ -355,7 +355,7 @@ class Dropdown {
 
 Dropdown.defaults = {
   /**
-   * Class that designates bounding container of Dropdown (Default: window)
+   * Class that designates bounding container of Dropdown (default: window)
    * @option
    * @type {?string}
    * @default null
