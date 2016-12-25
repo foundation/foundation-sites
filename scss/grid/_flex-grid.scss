@@ -141,6 +141,10 @@
       @include grid-row-size(expand);
     }
 
+    &:not(.expanded) .row {
+      @include grid-row-size(expand);
+    }
+
     &.collapse {
       > .column {
         @include grid-col-collapse;

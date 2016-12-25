@@ -55,6 +55,10 @@
       }
     }
 
+    &:not(.#{$expanded}) .#{$row} {
+      @include grid-row-size(expand);
+    }
+
     @if type-of($grid-column-gutter) == 'map' {
       // Static (unresponsive) row gutters
       //
