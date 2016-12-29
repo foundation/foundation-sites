@@ -146,13 +146,16 @@ Add the attribute `data-active-collapse="true"` to a tabstrip to collapse active
 
 ### Browser history
 
-The current state of the tabset is now recorded by adding a hash with the tab panel ID to the browser URL when a tab is opened. By default, tabs replace the browser history. Modify this behavior by using attribute `data-update-history="true"` to *append* to the browser history. In the latter case the browser back button will track each click that opens a tab panel.
+When the `data-deep-link="true"` attribute is set, the current state of the tabset is recorded by adding a hash with the tab panel ID to the browser URL when a tab opens. By default, tabs *update and replace* the browser history (meaning that the browser does not navigate). Modify this behavior by using attribute `data-update-history="true"` to *append* to the browser history. In the latter case the browser back button will track each click that opens a tab panel.
 
 By using deep linking (see below), the open state of a page's tabset may be shared by copy-pasting the browser URL.
 
 ### Deep linking
 
-Add the attribute `data-deep-link="true" to a tabstrip to allow anchoring to and opening a tab panel at page load.
+Add the attribute `data-deep-link="true"` to a tabstrip to:
+
+- modify the browser history when a tab is clicked
+- allow users to open a particular tab at page load with a hash-appended URL
 
 ```html_example
 <ul class="tabs" data-deep-link="true" data-tabs id="deeplinked-tabs">
