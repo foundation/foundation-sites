@@ -105,7 +105,7 @@ $accordion-content-padding: 1rem !default;
     }
 
     .is-active > &::before {
-      content: '–';
+      content: '\2013';
     }
   }
 }
