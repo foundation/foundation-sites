@@ -250,8 +250,8 @@ class Abide {
         validator = $el.attr('data-validator'),
         equalTo = true;
 
-    // don't validate ignored inputs or hidden inputs
-    if ($el.is('[data-abide-ignore]') || $el.is('[type="hidden"]')) {
+    // don't validate ignored inputs or hidden inputs or disabled inputs
+    if ($el.is('[data-abide-ignore]') || $el.is('[type="hidden"]') || $el.is('[disabled]')) {
       return true;
     }
 
