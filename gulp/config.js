@@ -22,14 +22,9 @@ module.exports = {
   ],
 
   // Sass
-  SASS_DEPS_FILES: [
-    'node_modules/@(normalize-scss)/sass/**/*.scss',
-    'node_modules/@(sassy-lists)/stylesheets/helpers/_missing-dependencies.scss',
-    'node_modules/@(sassy-lists)/stylesheets/helpers/_true.scss',
-    'node_modules/@(sassy-lists)/stylesheets/functions/_purge.scss',
-    'node_modules/@(sassy-lists)/stylesheets/functions/_remove.scss',
-    'node_modules/@(sassy-lists)/stylesheets/functions/_replace.scss',
-    'node_modules/@(sassy-lists)/stylesheets/functions/_to-list.scss'
+  SASS_DEPS_PATHS: [
+    'node_modules/normalize-scss/sass',
+    'node_modules/sassy-lists/stylesheets'
   ],
 
   SASS_DOC_PATHS: [
@@ -69,6 +64,7 @@ module.exports = {
   ],
 
   DIST_FILES: [
+    './_build/assets/scss/foundation.scss',
     './_build/assets/css/foundation.css',
     './_build/assets/css/foundation-flex.css',
     './_build/assets/css/foundation-rtl.css',

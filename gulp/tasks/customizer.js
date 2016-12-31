@@ -47,22 +47,8 @@ gulp.task('customizer:loadConfig', function(done) {
   });
 });
 
-// Prepare dependencies
-gulp.task('customizer:prepareSassDeps', function() {
-  return gulp.src([
-      'node_modules/@(normalize-scss)/sass/**/*.scss',
-      'node_modules/@(sassy-lists)/stylesheets/helpers/missing-dependencies',
-      'node_modules/@(sassy-lists)/stylesheets/helpers/true',
-      'node_modules/@(sassy-lists)/stylesheets/functions/purge',
-      'node_modules/@(sassy-lists)/stylesheets/functions/remove',
-      'node_modules/@(sassy-lists)/stylesheets/functions/replace',
-      'node_modules/@(sassy-lists)/stylesheets/functions/to-list'
-    ])
-    .pipe(gulp.dest('_vendor'));
-});
-
 // Creates a Sass file from the module/variable list and creates foundation.css and foundation.min.css
-gulp.task('customizer:sass', ['customizer:loadConfig', 'customizer:prepareSassDeps'], function() {
+gulp.task('customizer:sass', ['customizer:loadConfig'], function() {
   var sassFile = customizer.sass(CUSTOMIZER_CONFIG, MODULE_LIST, VARIABLE_LIST);
 
   // Create a stream with our makeshift Sass file
@@ -78,7 +64,9 @@ gulp.task('customizer:sass', ['customizer:loadConfig', 'customizer:prepareSassDe
     .pipe(sass({
       includePaths: [
         'scss',
-        'node_modules/motion-ui/src'
+        'node_modules/motion-ui/src',
+        'node_modules/normalize-scss/sass',
+        'node_modules/sassy-lists/stylesheets'
       ]
     }))
     .pipe(postcss([autoprefixer({

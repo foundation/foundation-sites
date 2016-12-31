@@ -2199,6 +2199,12 @@ first-chunk-stream@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/first-chunk-stream/-/first-chunk-stream-1.0.0.tgz#59bfb50cd905f60d7c394cd3d9acaab4e6ad934e"
 
+first-chunk-stream@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/first-chunk-stream/-/first-chunk-stream-2.0.0.tgz#1bdecdb8e083c0664b91945581577a43a9f31d70"
+  dependencies:
+    readable-stream "^2.0.2"
+
 flagged-respawn@^0.3.2:
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/flagged-respawn/-/flagged-respawn-0.3.2.tgz#ff191eddcd7088a675b2610fffc976be9b8074b5"
@@ -2856,6 +2862,16 @@ gulp-sass@^2.1.0:
     node-sass "^3.4.2"
     through2 "^2.0.0"
     vinyl-sourcemaps-apply "^0.2.0"
+
+gulp-shopify-sass@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/gulp-shopify-sass/-/gulp-shopify-sass-0.4.0.tgz#5c4fc63d09e1ef53d7792ba86b094229afb5f659"
+  dependencies:
+    gulp-util "^3.0.7"
+    lodash.clonedeep "^4.5.0"
+    through2 "^2.0.0"
+    vinyl "^1.1.1"
+    vinyl-file "^2.0.0"
 
 gulp-sourcemaps@1.6.0:
   version "1.6.0"
@@ -4092,7 +4108,7 @@ lodash.capitalize@^4.1.0:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/lodash.capitalize/-/lodash.capitalize-4.2.1.tgz#f826c9b4e2a8511d84e3aca29db05e1a4f3b72a9"
 
-lodash.clonedeep@^4.3.2:
+lodash.clonedeep@^4.3.2, lodash.clonedeep@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
 
@@ -4814,7 +4830,7 @@ normalize-range@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/normalize-range/-/normalize-range-0.1.2.tgz#2d10c06bdfd312ea9777695a4d28439456b75942"
 
-normalize-scss@6.0.0:
+normalize-scss@^6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/normalize-scss/-/normalize-scss-6.0.0.tgz#5e94fc91e3bb279933ae8aaa511ad0912a0cb44d"
 
@@ -5217,7 +5233,7 @@ phantomjs@1.9.7-15:
     rimraf "~2.2.2"
     which "~1.0.5"
 
-pify@^2.0.0:
+pify@^2.0.0, pify@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/pify/-/pify-2.3.0.tgz#ed141a6ac043a849ea588498e7dca8b15330e90c"
 
@@ -6021,7 +6037,7 @@ sassdoc@^2.0.0-rc.17, sassdoc@^2.1.11:
     vinyl-fs "^1.0.0"
     vinyl-source-stream "^1.0.0"
 
-sassy-lists@3.0.0:
+sassy-lists@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/sassy-lists/-/sassy-lists-3.0.0.tgz#866fe19510a98c6fbb83ca8557d8ffd28cbc1e0f"
 
@@ -6457,6 +6473,13 @@ strip-bom-stream@^1.0.0:
   resolved "https://registry.yarnpkg.com/strip-bom-stream/-/strip-bom-stream-1.0.0.tgz#e7144398577d51a6bed0fa1994fa05f43fd988ee"
   dependencies:
     first-chunk-stream "^1.0.0"
+    strip-bom "^2.0.0"
+
+strip-bom-stream@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/strip-bom-stream/-/strip-bom-stream-2.0.0.tgz#f87db5ef2613f6968aa545abfe1ec728b6a829ca"
+  dependencies:
+    first-chunk-stream "^2.0.0"
     strip-bom "^2.0.0"
 
 strip-bom@3.X, strip-bom@^3.0.0:
@@ -6966,6 +6989,17 @@ verror@1.3.6:
   dependencies:
     extsprintf "1.0.2"
 
+vinyl-file@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/vinyl-file/-/vinyl-file-2.0.0.tgz#a7ebf5ffbefda1b7d18d140fcb07b223efb6751a"
+  dependencies:
+    graceful-fs "^4.1.2"
+    pify "^2.3.0"
+    pinkie-promise "^2.0.0"
+    strip-bom "^2.0.0"
+    strip-bom-stream "^2.0.0"
+    vinyl "^1.1.0"
+
 vinyl-fs@^0.3.0, vinyl-fs@~0.3.11:
   version "0.3.14"
   resolved "https://registry.yarnpkg.com/vinyl-fs/-/vinyl-fs-0.3.14.tgz#9a6851ce1cac1c1cea5fe86c0931d620c2cfa9e6"
@@ -7029,7 +7063,7 @@ vinyl-sourcemaps-apply@^0.2.0, vinyl-sourcemaps-apply@^0.2.1:
   dependencies:
     source-map "^0.5.1"
 
-vinyl@1.X, vinyl@^1.0.0:
+vinyl@1.X, vinyl@^1.0.0, vinyl@^1.1.0, vinyl@^1.1.1:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/vinyl/-/vinyl-1.2.0.tgz#5c88036cf565e5df05558bfc911f8656df218884"
   dependencies:
