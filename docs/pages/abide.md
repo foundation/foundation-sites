@@ -34,6 +34,18 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
       <p class="help-text" id="exampleHelpTex">This input is ignored by Abide using `data-abide-ignore`</p>
     </div>
     <div class="small-12 columns">
+      <label>Disabled!
+        <input type="text" placeholder="You can't use me!" aria-describedby="exampleHelpTex" disabled>
+      </label>
+      <p class="help-text" id="exampleHelpTex">This input is ignored by Abide using `disabled`</p>
+    </div>
+    <div class="small-12 columns">
+      <label>Hidden!
+        <input type="hidden" placeholder="You can't see me!" aria-describedby="exampleHelpTex" >
+      </label>
+      <p class="help-text" id="exampleHelpTex">This input is ignored by Abide using `type="hidden"`</p>
+    </div>
+    <div class="small-12 columns">
       <label>Password Required
         <input type="password" id="password" placeholder="yeti4preZ" aria-describedby="exampleHelpText" required >
         <span class="form-error">
