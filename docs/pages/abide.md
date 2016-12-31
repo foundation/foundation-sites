@@ -28,24 +28,6 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
       <p class="help-text" id="exampleHelpText">Here's how you use this input field!</p>
     </div>
     <div class="small-12 columns">
-      <label>Nothing Required!
-        <input type="text" placeholder="Use me, or don't" aria-describedby="exampleHelpTex" data-abide-ignore>
-      </label>
-      <p class="help-text" id="exampleHelpTex">This input is ignored by Abide using `data-abide-ignore`</p>
-    </div>
-    <div class="small-12 columns">
-      <label>Disabled!
-        <input type="text" placeholder="You can't use me!" aria-describedby="exampleHelpTex" disabled>
-      </label>
-      <p class="help-text" id="exampleHelpTex">This input is ignored by Abide using `disabled`</p>
-    </div>
-    <div class="small-12 columns">
-      <label>Hidden!
-        <input type="hidden" placeholder="You can't see me!" aria-describedby="exampleHelpTex" >
-      </label>
-      <p class="help-text" id="exampleHelpTex">This input is ignored by Abide using `type="hidden"`</p>
-    </div>
-    <div class="small-12 columns">
       <label>Password Required
         <input type="password" id="password" placeholder="yeti4preZ" aria-describedby="exampleHelpText" required >
         <span class="form-error">
@@ -168,6 +150,40 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
   </label>
 </form>
 ```
+
+## Ignored Inputs
+
+```html
+<form data-abide>
+    <div class="small-12 columns">
+      <label>Nothing Required!
+        <input type="text" placeholder="Use me, or don't" aria-describedby="exampleHelpTex" data-abide-ignore>
+      </label>
+      <p class="help-text" id="exampleHelpTex">This input is ignored by Abide using `data-abide-ignore`</p>
+    </div>
+    <div class="small-12 columns">
+      <label>Disabled!
+        <input type="text" placeholder="Disabled input" aria-describedby="exampleHelpTex" disabled>
+      </label>
+      <p class="help-text" id="exampleHelpTex">This input is ignored by Abide using `disabled`</p>
+    </div>
+    <div class="small-12 columns">
+      <label>Hidden!
+        <input type="hidden" placeholder="Hidden input" aria-describedby="exampleHelpTex" >
+      </label>
+      <p class="help-text" id="exampleHelpTex">This input is ignored by Abide using `type="hidden"`</p>
+    </div>
+  <div class="row">
+    <fieldset class="large-6 columns">
+      <button class="button" type="submit" value="Submit">Submit</button>
+    </fieldset>
+    <fieldset class="large-6 columns">
+      <button class="button" type="reset" value="Reset">Reset</button>
+    </fieldset>
+  </div>
+</form>
+```
+
 ## Event Listener
 Setup event listener after foundation is initialized (especially for formvalid/forminvalid). Easier to chain via document selector.
 * valid.zf.abide and invalid.zf.abide are field level events, triggered in validateInput function 
