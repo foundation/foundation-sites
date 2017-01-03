@@ -42,6 +42,9 @@ These commands will run the various tests:
 - `npm run test:javascript`
 - `npm run test:visual`
 
+Testing Supported By<br/>
+<img width="160" src="http://foundation.zurb.com/sites/docs/assets/img/logos/browser-stack.svg" alt="BrowserStack"/>
+
 ## Contributing
 
 Check out our [contributing guide](http://foundation.zurb.com/develop/contribute.html) to learn how you can contribute to Foundation. You can also browse the [Help Wanted](https://github.com/zurb/foundation-sites/labels/help%20wanted) tag in our issue tracker to find things to do.
