@@ -134,10 +134,19 @@
     // Nesting behavior
     & .row {
       @include flex-grid-row(nest, $base: false);
+
+      &.collapse {
+        margin-right: 0;
+        margin-left: 0;
+      }
     }
 
     // Expanded row
     &.expanded {
+      @include grid-row-size(expand);
+    }
+
+    &:not(.expanded) .row {
       @include grid-row-size(expand);
     }
 
