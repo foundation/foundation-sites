@@ -72,7 +72,7 @@
 /// Creates a column for a flex grid. By default, the column will stretch to the full width of its container, but this can be overridden with sizing classes, or by using the `unstack` class on the parent flex row.
 ///
 /// @param {Mixed} $columns [expand] - Width of the column. Refer to the `flex-grid-column()` function to see possible values.
-/// @param {Number} $gutter [$grid-column-gutter] - Space between columns, added as a left and right padding.
+/// @param {Number|Map} $gutters [$grid-column-gutter] - Map or single value for gutters width. See the `grid-column-gutter` mixin.
 @mixin flex-grid-column(
   $columns: expand,
   $gutters: $grid-column-gutter
