@@ -197,15 +197,15 @@ Triggers.Initializers.addScrollListener = function(debounce){
 }
 
 function mutateListener(debounce) {
-    let $nodes = $('[data-mutate]');
-    if ($nodes.length && MutationObserver){
-			//trigger all listening elements and signal a mutate event
-      //no IE 9 or 10
-			$nodes.each(function () {
-			  $(this).triggerHandler('mutateme.zf.trigger');
-			});
-    }
- }
+  let $nodes = $('[data-mutate]');
+  if ($nodes.length && MutationObserver){
+    //trigger all listening elements and signal a mutate event
+    //no IE 9 or 10
+    $nodes.each(function () {
+      $(this).triggerHandler('mutateme.zf.trigger');
+    });
+  }
+}
 
 function eventsListener() {
   if(!MutationObserver){ return false; }
@@ -213,54 +213,53 @@ function eventsListener() {
 
   //element callback
   var listeningElementsMutation = function (mutationRecordsList) {
-      var $target = $(mutationRecordsList[0].target);
+    var $target = $(mutationRecordsList[0].target);
 
-	  //trigger the event handler for the element depending on type
-      switch (mutationRecordsList[0].type) {
+    //trigger the event handler for the element depending on type
+    switch (mutationRecordsList[0].type) {
+      case "attributes":
+        if ($target.attr("data-events") === "scroll" && mutationRecordsList[0].attributeName === "data-events") {
+          $target.triggerHandler('scrollme.zf.trigger', [$target, window.pageYOffset]);
+        }
+        if ($target.attr("data-events") === "resize" && mutationRecordsList[0].attributeName === "data-events") {
+          $target.triggerHandler('resizeme.zf.trigger', [$target]);
+         }
+        if (mutationRecordsList[0].attributeName === "style") {
+          $target.closest("[data-mutate]").attr("data-events","mutate");
+          $target.closest("[data-mutate]").triggerHandler('mutateme.zf.trigger', [$target.closest("[data-mutate]")]);
+        }
+        break;
 
-        case "attributes":
-          if ($target.attr("data-events") === "scroll" && mutationRecordsList[0].attributeName === "data-events") {
-		  	$target.triggerHandler('scrollme.zf.trigger', [$target, window.pageYOffset]);
-		  }
-		  if ($target.attr("data-events") === "resize" && mutationRecordsList[0].attributeName === "data-events") {
-		  	$target.triggerHandler('resizeme.zf.trigger', [$target]);
-		   }
-		  if (mutationRecordsList[0].attributeName === "style") {
-			  $target.closest("[data-mutate]").attr("data-events","mutate");
-			  $target.closest("[data-mutate]").triggerHandler('mutateme.zf.trigger', [$target.closest("[data-mutate]")]);
-		  }
-		  break;
+      case "childList":
+        $target.closest("[data-mutate]").attr("data-events","mutate");
+        $target.closest("[data-mutate]").triggerHandler('mutateme.zf.trigger', [$target.closest("[data-mutate]")]);
+        break;
 
-        case "childList":
-		  $target.closest("[data-mutate]").attr("data-events","mutate");
-		  $target.closest("[data-mutate]").triggerHandler('mutateme.zf.trigger', [$target.closest("[data-mutate]")]);
-          break;
+      default:
+        return false;
+      //nothing
+    }
+  };
 
-        default:
-          return false;
-        //nothing
-      }
-    };
-
-    if (nodes.length) {
-      //for each element that needs to listen for resizing, scrolling, or mutation add a single observer
-      for (var i = 0; i <= nodes.length - 1; i++) {
-        var elementObserver = new MutationObserver(listeningElementsMutation);
-        elementObserver.observe(nodes[i], { attributes: true, childList: true, characterData: false, subtree: true, attributeFilter: ["data-events", "style"] });
-      }
+  if (nodes.length) {
+    //for each element that needs to listen for resizing, scrolling, or mutation add a single observer
+    for (var i = 0; i <= nodes.length - 1; i++) {
+      var elementObserver = new MutationObserver(listeningElementsMutation);
+      elementObserver.observe(nodes[i], { attributes: true, childList: true, characterData: false, subtree: true, attributeFilter: ["data-events", "style"] });
     }
   }
+}
 
-  Triggers.init = function($) {
-    let $document = $(document);
-    Triggers.Initializers.addOpenListener($document);
-    Triggers.Initializers.addCloseListener($document);
-    Triggers.Initializers.addToggleListener($document);
-    Triggers.Initializers.addCloseableListener($document);
-    Triggers.Initializers.addToggleFocusListener($document);
-  }
+Triggers.init = function($) {
+  let $document = $(document);
+  Triggers.Initializers.addOpenListener($document);
+  Triggers.Initializers.addCloseListener($document);
+  Triggers.Initializers.addToggleListener($document);
+  Triggers.Initializers.addCloseableListener($document);
+  Triggers.Initializers.addToggleFocusListener($document);
+}
 
-  Triggers.init($);
+Triggers.init($);
 
 // ------------------------------------
 
