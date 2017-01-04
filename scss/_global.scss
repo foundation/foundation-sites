@@ -196,6 +196,11 @@ $alert-color: get-color(alert);
     line-height: 1;
   }
 
+  // Prevent text overflow on pre
+  pre {
+    overflow: auto;
+  }
+
   // Internal classes to show/hide elements in JavaScript
   .is-visible {
     display: block !important;

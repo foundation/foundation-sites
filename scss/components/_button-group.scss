@@ -94,6 +94,12 @@ $buttongroup-radius-on-each: true !default;
       flex: 1 1 0px; // sass-lint:disable-line zero-unit
     }
     @else {
+      // One child
+      &:first-child:last-child {
+        width: 100%
+      }
+
+      // Two or more childreen
       @for $i from 2 through $buttongroup-expand-max {
         &:first-child:nth-last-child(#{$i}) {
           &, &:first-child:nth-last-child(#{$i}) ~ #{$selector} {

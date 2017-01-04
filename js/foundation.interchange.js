@@ -103,8 +103,10 @@ class Interchange {
       rules = this.options.rules;
     }
     else {
-      rules = this.$element.data('interchange').match(/\[.*?\]/g);
+      rules = this.$element.data('interchange');
     }
+    
+    rules =  typeof rules === 'string' ? rules.match(/\[.*?\]/g) : rules;
 
     for (var i in rules) {
       if(rules.hasOwnProperty(i)) {

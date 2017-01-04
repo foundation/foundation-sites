@@ -12,7 +12,7 @@
 ///   Width of the column. Accepts multiple values:
 ///   - A percentage value will make the column that exact size.
 ///   - A single digit will make the column span that number of columns wide, taking into account the column count of the parent row.
-///   - A string of the format "x of y" will make a column that is *x* columns wide, assuming *y* total columns for the parent.
+///   - A list of the format "x of y" (without quotes) will make a column that is *x* columns wide, assuming *y* total columns for the parent.
 ///
 /// @returns {Number} A calculated percentage value.
 @function grid-column($columns) {

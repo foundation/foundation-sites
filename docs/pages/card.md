@@ -4,6 +4,7 @@ description: Cards are a popular and flexible UI component.
 sass: scss/components/_card.scss
 tags:
   - card
+flex: true
 ---
 
 ## Basics
@@ -48,25 +49,68 @@ You can also include a `.card-divider` element as a title, footer or to break up
 
 ### Images
 
-Images play nicely with cards. Simply include one outside of the `.card-section` element to span nicely to the edges.
+Images play nicely with cards. Simply include one outside of the `.card-section` element to span nicely to the edges. Or move the image inside the `.card-section` to have padding around the image.
 
-```html_example
-<div class="card" style="width: 300px;">
+```html
+<!-- image has no padding -->
+<div class="card">
   <img src="assets/img/generic/rectangle-1.jpg">
   <div class="card-section">
     <p>This is a simple card with an image.</p>
   </div>
 </div>
+
+<!-- image has padding -->
+<div class="card">
+  <div class="card-section">
+    <img src="assets/img/generic/rectangle-1.jpg">
+  </div>
+  <div class="card-section">
+    <p>This is a simple card with an image inside a `.card-section`.</p>
+  </div>
+</div>
 ```
 
-```html_example
-<div class="card" style="width: 300px;">
+<div class="row small-up-3">
+  <div class="column">
+    <div class="card">
+      <img src="assets/img/generic/rectangle-1.jpg">
+      <div class="card-section">
+        <p>This is a simple card with an image.</p>
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    <div class="card">
+      <div class="card-section">
+        <img src="assets/img/generic/rectangle-1.jpg">
+      </div>
+      <div class="card-section">
+        <p>This is a simple card with an image inside a `.card-section`.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+```html
+<div class="card">
   <div class="card-section">
     <p>Images work just fine below the content too!</p>
   </div>
   <img src="assets/img/generic/rectangle-1.jpg">
 </div>
 ```
+
+<div class="row small-up-3">
+  <div class="column">
+    <div class="card">
+      <div class="card-section">
+        <p>Images work just fine below the content too!</p>
+      </div>
+      <img src="assets/img/generic/rectangle-1.jpg">
+    </div>
+  </div>
+</div>
 
 ---
 
@@ -103,116 +147,32 @@ You can either set the width of cards with custom css or add them into the Found
       </div>
     </div>
   </div>
-  <div class="column">
-    <div class="card">
-      <img src="assets/img/generic/rectangle-1.jpg">
-      <div class="card-section">
-        <h4>This is a card.</h4>
-        <p>It has an easy to override visual style, and is appropriately subdued.</p>
-      </div>
-    </div>
-  </div>
-  <div class="column">
-    <div class="card">
-      <img src="assets/img/generic/rectangle-1.jpg">
-      <div class="card-section">
-        <h4>This is a card.</h4>
-        <p>It has an easy to override visual style, and is appropriately subdued.</p>
-      </div>
-    </div>
-  </div>
-  <div class="column">
-    <div class="card">
-      <img src="assets/img/generic/rectangle-1.jpg">
-      <div class="card-section">
-        <h4>This is a card.</h4>
-        <p>It has an easy to override visual style, and is appropriately subdued.</p>
-      </div>
-    </div>
-  </div>
 </div>
-```
-
----
-
-## Common examples
-
-Cards are very flexible and work seamlessly with other Foundation components.
-Here are some common patterns to give you some inspiration!
-
-```html_example
-<div class="row small-up-2 medium-up-3">
-  <div class="column">
+<div class="row">
+  <div class="medium-4 columns">
     <div class="card">
       <img src="assets/img/generic/rectangle-1.jpg">
       <div class="card-section">
-        <h4>Dreams feel real</h4>
-        <p>I'm going to improvise. Listen, there's something you should know about me... about inception.</p>
-        <small>Last updated 1 minute ago</small>
+        <h4>This is a card.</h4>
+        <p>It has an easy to override visual style, and is appropriately subdued.</p>
       </div>
     </div>
   </div>
-  <div class="column">
+  <div class="medium-5 columns">
     <div class="card">
       <img src="assets/img/generic/rectangle-1.jpg">
       <div class="card-section">
-        <h4>Menus</h4>
-        <p>Cards play nicely with menus too! Give them a try.</p>
-        <ul class="menu simple">
-          <li><a href="#">One</a></li>
-          <li><a href="#">Two</a></li>
-          <li><a href="#">Three</a></li>
-        </ul>
+        <h4>This is a card.</h4>
+        <p>It has an easy to override visual style, and is appropriately subdued.</p>
       </div>
     </div>
   </div>
-  <div class="column">
-    <div class="card">
-      <div class="card-divider">
-        <p>Featured</p>
-      </div>
-      <div class="card-section">
-        <h4>Your title here!</h4>
-        <p>An idea is like a virus, resilient, highly contagious. The smallest seed of an idea can grow. It can grow to define or destroy you.</p>
-      </div>
-      <div class="card-divider">
-        <small>Last updated 10 minutes ago</small>
-      </div>
-    </div>
-  </div>
-  <div class="column">
+  <div class="medium-3 columns">
     <div class="card">
       <img src="assets/img/generic/rectangle-1.jpg">
       <div class="card-section">
-        <h4>Buttons!</h4>
-        <p>Who doesn't love a good button? Buttons work in all of their forms too.</p>
-        <a class="button" href="#">I'm a button</a>
-      </div>
-    </div>
-  </div>
-  <div class="column">
-    <div class="card">
-      <img src="assets/img/generic/rectangle-1.jpg">
-      <div class="card-section">
-        <h4>And button groups...</h4>
-        <p>Button groups also work great!</p>
-        <div class="button-group">
-          <a class="button">One</a>
-          <a class="button">Two</a>
-          <a class="button">Three</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="column">
-    <div class="card text-center">
-      <div class="card-divider">
-        <p>Centered</p>
-      </div>
-      <img src="assets/img/generic/rectangle-1.jpg">
-      <div class="card-section">
-        <p>The utility classes like .text-center work great too.</p>
-        <a class="button" href="#">Click me</a>
+        <h4>This is a card.</h4>
+        <p>It has an easy to override visual style, and is appropriately subdued.</p>
       </div>
     </div>
   </div>
