@@ -2,6 +2,9 @@
 //**Work inspired by multiple jquery swipe plugins**
 //**Done by Yohai Ararat ***************************
 //**************************************************
+
+class Touch {}
+
 (function($) {
 
   var startPosX,
@@ -59,7 +62,7 @@
     this.removeEventListener('touchstart', onTouchStart);
   }
 
-  class spotSwipe {
+  class SpotSwipe {
     constructor($) {
       this.version = '1.0.0';
       this.enabled = 'ontouchstart' in document.documentElement;
@@ -81,47 +84,71 @@
       });
     }
   }
-  $.spotSwipe = new spotSwipe($);
-})(jQuery);
-/****************************************************
- * Method for adding psuedo drag events to elements *
- ***************************************************/
-!function($){
-  $.fn.addTouch = function(){
-    this.each(function(i,el){
-      $(el).bind('touchstart touchmove touchend touchcancel',function(){
-        //we pass the original event object because the jQuery event
-        //object is normalized to w3c specs and does not provide the TouchList
-        handleTouch(event);
-      });
-    });
 
-    var handleTouch = function(event){
-      var touches = event.changedTouches,
-          first = touches[0],
-          eventTypes = {
-            touchstart: 'mousedown',
-            touchmove: 'mousemove',
-            touchend: 'mouseup'
-          },
-          type = eventTypes[event.type],
-          simulatedEvent
-        ;
+  /****************************************************
+   * As far as I can tell, both setupSpotSwipe and    *
+   * setupTouchHandler should be idempotent,          *
+   * because they directly replace functions &        *
+   * values, and do not add event handlers directly.  *
+   ****************************************************/
 
-      if('MouseEvent' in window && typeof window.MouseEvent === 'function') {
-        simulatedEvent = new window.MouseEvent(type, {
-          'bubbles': true,
-          'cancelable': true,
-          'screenX': first.screenX,
-          'screenY': first.screenY,
-          'clientX': first.clientX,
-          'clientY': first.clientY
+  Touch.setupSpotSwipe = function($) {
+    $.spotSwipe = new SpotSwipe($);
+  };
+
+  /****************************************************
+   * Method for adding psuedo drag events to elements *
+   ***************************************************/
+  Touch.setupTouchHandler = function($) {
+    $.fn.addTouch = function(){
+      this.each(function(i,el){
+        $(el).bind('touchstart touchmove touchend touchcancel',function(){
+          //we pass the original event object because the jQuery event
+          //object is normalized to w3c specs and does not provide the TouchList
+          handleTouch(event);
         });
-      } else {
-        simulatedEvent = document.createEvent('MouseEvent');
-        simulatedEvent.initMouseEvent(type, true, true, window, 1, first.screenX, first.screenY, first.clientX, first.clientY, false, false, false, false, 0/*left*/, null);
-      }
-      first.target.dispatchEvent(simulatedEvent);
+      });
+
+      var handleTouch = function(event){
+        var touches = event.changedTouches,
+            first = touches[0],
+            eventTypes = {
+              touchstart: 'mousedown',
+              touchmove: 'mousemove',
+              touchend: 'mouseup'
+            },
+            type = eventTypes[event.type],
+            simulatedEvent
+          ;
+
+        if('MouseEvent' in window && typeof window.MouseEvent === 'function') {
+          simulatedEvent = new window.MouseEvent(type, {
+            'bubbles': true,
+            'cancelable': true,
+            'screenX': first.screenX,
+            'screenY': first.screenY,
+            'clientX': first.clientX,
+            'clientY': first.clientY
+          });
+        } else {
+          simulatedEvent = document.createEvent('MouseEvent');
+          simulatedEvent.initMouseEvent(type, true, true, window, 1, first.screenX, first.screenY, first.clientX, first.clientY, false, false, false, false, 0/*left*/, null);
+        }
+        first.target.dispatchEvent(simulatedEvent);
+      };
     };
   };
-}(jQuery);
+
+  Touch.init = function($) {
+    Touch.setupSpotSwipe($);
+    Touch.setupTouchHandler($);
+  };
+
+
+  // TODO: When we fully modularize, we should remove this and call it explicitly
+  // after import
+  Touch.init($);
+
+})(jQuery);
+
+//export default Touch
