@@ -120,29 +120,20 @@ Triggers.Listeners.Global  = {
     }
     //trigger all listening elements and signal a scroll event
     $nodes.attr('data-events', "scroll");
+  },
+  closeMeListener: function(e, pluginId){
+    let plugin = e.namespace.split('.')[0];
+    let plugins = $(`[data-${plugin}]`).not(`[data-yeti-box="${pluginId}"]`);
+
+    plugins.each(function(){
+      let _this = $(this);
+      _this.triggerHandler('close.zf.trigger', [_this]);
+    });
   }
 }
 
-
-
-/**
-* Fires once after all other scripts have loaded
-* @function
-* @private
-*/
-$(window).on('load', () => {
-  checkListeners();
-});
-
-function checkListeners() {
-  eventsListener();
-  Triggers.Initializers.addResizeListener();
-  Triggers.Initializers.addScrollListener();
-  closemeListener();
-}
-
-//******** only fires this function once on load, if there's something to watch ********
-function closemeListener(pluginName) {
+// Global, parses whole document.
+Triggers.Initializers.addClosemeListener = function(pluginName) {
   var yetiBoxes = $('[data-yeti-box]'),
       plugNames = ['dropdown', 'tooltip', 'reveal'];
 
@@ -160,16 +151,7 @@ function closemeListener(pluginName) {
       return `closeme.zf.${name}`;
     }).join(' ');
 
-    $(window).off(listeners).on(listeners, function(e, pluginId){
-      let plugin = e.namespace.split('.')[0];
-      let plugins = $(`[data-${plugin}]`).not(`[data-yeti-box="${pluginId}"]`);
-
-      plugins.each(function(){
-        let _this = $(this);
-
-        _this.triggerHandler('close.zf.trigger', [_this]);
-      });
-    });
+    $(window).off(listeners).on(listeners, Triggers.Global.closeMeListener);
   }
 }
 
@@ -197,9 +179,25 @@ Triggers.Initializers.addScrollListener = function(debounce){
   }
 }
 
+<<<<<<< 4fc40f0ee312d4cca73acdb0f24775e2bae7e142
 function eventsListener() {
+=======
+// TODO: Figure out if this needs to be refactored or removed
+function mutateListener(debounce) {
+  let $nodes = $('[data-mutate]');
+  if ($nodes.length && MutationObserver){
+    //trigger all listening elements and signal a mutate event
+    //no IE 9 or 10
+    $nodes.each(function () {
+      $(this).triggerHandler('mutateme.zf.trigger');
+    });
+  }
+}
+
+Triggers.Initializers.addMutationEventsListener = function($elem) {
+>>>>>>> Refactor more global events, finish init fn
   if(!MutationObserver){ return false; }
-  let nodes = document.querySelectorAll('[data-resize], [data-scroll], [data-mutate]');
+  let $nodes = $elem.find('[data-resize], [data-scroll], [data-mutate]');
 
   //element callback
   var listeningElementsMutation = function (mutationRecordsList) {
@@ -231,32 +229,57 @@ function eventsListener() {
     }
   };
 
-  if (nodes.length) {
+  if ($nodes.length) {
     //for each element that needs to listen for resizing, scrolling, or mutation add a single observer
-    for (var i = 0; i <= nodes.length - 1; i++) {
+    for (var i = 0; i <= $nodes.length - 1; i++) {
       var elementObserver = new MutationObserver(listeningElementsMutation);
-      elementObserver.observe(nodes[i], { attributes: true, childList: true, characterData: false, subtree: true, attributeFilter: ["data-events", "style"] });
+      elementObserver.observe($nodes[i], { attributes: true, childList: true, characterData: false, subtree: true, attributeFilter: ["data-events", "style"] });
     }
   }
 }
 
-Triggers.init = function($) {
+Triggers.Initializers.addSimpleListeners = function() {
   let $document = $(document);
+
   Triggers.Initializers.addOpenListener($document);
   Triggers.Initializers.addCloseListener($document);
   Triggers.Initializers.addToggleListener($document);
   Triggers.Initializers.addCloseableListener($document);
   Triggers.Initializers.addToggleFocusListener($document);
+
 }
 
-Triggers.init($);
+Triggers.Initializers.addGlobalListeners = function() {
+  let $document = $(document);
+  Triggers.Initializers.addMutationEventsListener($document);
+  Triggers.Initializers.addResizeListener();
+  Triggers.Initializers.addScrollListener();
+  Triggers.Initializers.addClosemeListener();
 
-// ------------------------------------
+  // TODO, figure out if mutateListener needs to be refactored or removed
+  mutateListener();
+}
 
-// [PH]
-// Foundation.CheckWatchers = checkWatchers;
-Foundation.IHearYou = checkListeners;
-// Foundation.ISeeYou = scrollListener;
-// Foundation.IFeelYou = closemeListener;
+
+Triggers.init = function(Foundation, $) {
+  let $document = $(document);
+
+  Triggers.Initializers.addSimpleListeners();
+
+  if(document.readyState === "complete") {
+    Triggers.Initializers.addGlobalListeners();
+  } else {
+    $(window).on('load', () => {
+      Triggers.Initializers.addGlobalListeners();
+    });
+  }
+  Foundation.Triggers = Triggers;
+
+  // Legacy included to be backwards compatible for now.
+  Foundation.IHearYou = Triggers.Initializers.addGlobalListeners
+}
+
+Triggers.init(Foundation, $);
+
 
 }(jQuery);
