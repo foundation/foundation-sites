@@ -373,28 +373,32 @@ Tabs.defaults = {
   /**
    * Allows the window to scroll to content of pane specified by hash anchor
    * @option
-   * @example false
+   * @type {boolean}
+   * @default false
    */
   deepLink: false,
 
   /**
    * Adjust the deep link scroll to make sure the top of the tab panel is visible
    * @option
-   * @example false
+   * @type {boolean}
+   * @default false
    */
   deepLinkSmudge: false,
 
   /**
    * Animation time (ms) for the deep link adjustment
    * @option
-   * @example 300
+   * @type {number}
+   * @default 300
    */
   deepLinkSmudgeDelay: 300,
 
   /**
    * Update the browser history with the open tab
    * @option
-   * @example false
+   * @type {boolean}
+   * @default false
    */
   updateHistory: false,
 
@@ -402,56 +406,64 @@ Tabs.defaults = {
    * Allows the window to scroll to content of active pane on load if set to true.
    * Not recommended if more than one tab panel per page.
    * @option
-   * @example false
+   * @type {boolean}
+   * @default false
    */
   autoFocus: false,
 
   /**
    * Allows keyboard input to 'wrap' around the tab links.
    * @option
-   * @example true
+   * @type {boolean}
+   * @default true
    */
   wrapOnKeys: true,
 
   /**
    * Allows the tab content panes to match heights if set to true.
    * @option
-   * @example false
+   * @type {boolean}
+   * @default false
    */
   matchHeight: false,
 
   /**
    * Allows active tabs to collapse when clicked.
    * @option
-   * @example false
+   * @type {boolean}
+   * @default false
    */
   activeCollapse: false,
 
   /**
    * Class applied to `li`'s in tab link list.
    * @option
-   * @example 'tabs-title'
+   * @type {string}
+   * @default 'tabs-title'
    */
   linkClass: 'tabs-title',
 
   /**
    * Class applied to the active `li` in tab link list.
    * @option
-   * @example 'is-active'
+   * @type {string}
+   * @default 'is-active'
    */
   linkActiveClass: 'is-active',
 
   /**
    * Class applied to the content containers.
    * @option
-   * @example 'tabs-panel'
+   * @type {string}
+   * @default 'tabs-panel'
    */
   panelClass: 'tabs-panel',
 
   /**
    * Class applied to the active content container.
    * @option
-   * @example 'is-active'
+   * @type {string}
+   * @default 'is-active'
    */
   panelActiveClass: 'is-active'
 };

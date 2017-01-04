@@ -6,7 +6,7 @@ sass:
   - scss/util/_flex.scss
 ---
 
-Foundation components use a combination of floats, vertical alignment, table cells, and various other CSS hacks to get layouts looking right. These days, there's a better way... if you have the browser support!
+Foundation components use a combination of floats, vertical alignment, table cells, and various other CSS hacks to get layouts looking right. These days though, there's a better way... if you are happy with the below browser support!
 
 Enabling **flexbox mode** replaces those hacks with flexbox properties, streamlining how layouts are made, and making sizing and alignment of elements much easier.
 
@@ -47,11 +47,12 @@ $global-flexbox: true;
 Besides the flex grid, these components have flexbox modes:
 
 - [Button group](button-group.html)
-- [Input group](forms.html#inline-labels-and-buttons)
+- [Input group - (Forms)](forms.html#inline-labels-and-buttons)
 - [Menu](menu.html)
 - [Top bar](top-bar.html)
 - [Media object](media-object.html)
 - [Title bar](off-canvas.html#title-bar)
+- [Card](card.html)
 
 In general, all of the components work exactly the same. However, a few of them require slight changes to CSS classes used to work properly. Refer to the documentation for each to find out what's different.
 

@@ -354,93 +354,108 @@ Tooltip.defaults = {
   /**
    * Time, in ms, before a tooltip should open on hover.
    * @option
-   * @example 200
+   * @type {number}
+   * @default 200
    */
   hoverDelay: 200,
   /**
    * Time, in ms, a tooltip should take to fade into view.
    * @option
-   * @example 150
+   * @type {number}
+   * @default 150
    */
   fadeInDuration: 150,
   /**
    * Time, in ms, a tooltip should take to fade out of view.
    * @option
-   * @example 150
+   * @type {number}
+   * @default 150
    */
   fadeOutDuration: 150,
   /**
    * Disables hover events from opening the tooltip if set to true
    * @option
-   * @example false
+   * @type {boolean}
+   * @default false
    */
   disableHover: false,
   /**
    * Optional addtional classes to apply to the tooltip template on init.
    * @option
-   * @example 'my-cool-tip-class'
+   * @type {string}
+   * @default ''
    */
   templateClasses: '',
   /**
    * Non-optional class added to tooltip templates. Foundation default is 'tooltip'.
    * @option
-   * @example 'tooltip'
+   * @type {string}
+   * @default 'tooltip'
    */
   tooltipClass: 'tooltip',
   /**
    * Class applied to the tooltip anchor element.
    * @option
-   * @example 'has-tip'
+   * @type {string}
+   * @default 'has-tip'
    */
   triggerClass: 'has-tip',
   /**
    * Minimum breakpoint size at which to open the tooltip.
    * @option
-   * @example 'small'
+   * @type {string}
+   * @default 'small'
    */
   showOn: 'small',
   /**
    * Custom template to be used to generate markup for tooltip.
    * @option
-   * @example '&lt;div class="tooltip"&gt;&lt;/div&gt;'
+   * @type {string}
+   * @default ''
    */
   template: '',
   /**
    * Text displayed in the tooltip template on open.
    * @option
-   * @example 'Some cool space fact here.'
+   * @type {string}
+   * @default ''
    */
   tipText: '',
   touchCloseText: 'Tap to close.',
   /**
    * Allows the tooltip to remain open if triggered with a click or touch event.
    * @option
-   * @example true
+   * @type {boolean}
+   * @default true
    */
   clickOpen: true,
   /**
    * Additional positioning classes, set by the JS
    * @option
-   * @example 'top'
+   * @type {string}
+   * @default ''
    */
   positionClass: '',
   /**
    * Distance, in pixels, the template should push away from the anchor on the Y axis.
    * @option
-   * @example 10
+   * @type {number}
+   * @default 10
    */
   vOffset: 10,
   /**
    * Distance, in pixels, the template should push away from the anchor on the X axis, if aligned to a side.
    * @option
-   * @example 12
+   * @type {number}
+   * @default 12
    */
   hOffset: 12,
     /**
    * Allow HTML in tooltip. Warning: If you are loading user-generated content into tooltips,
    * allowing HTML may open yourself up to XSS attacks.
    * @option
-   * @example false
+   * @type {boolean}
+   * @default false
    */
   allowHtml: false
 };

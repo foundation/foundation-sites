@@ -291,19 +291,22 @@ Equalizer.defaults = {
   /**
    * Enable height equalization when stacked on smaller screens.
    * @option
-   * @example true
+   * @type {boolean}
+   * @default false
    */
   equalizeOnStack: false,
   /**
    * Enable height equalization row by row.
    * @option
-   * @example false
+   * @type {boolean}
+   * @default false
    */
   equalizeByRow: false,
   /**
    * String representing the minimum breakpoint size the plugin should equalize heights on.
    * @option
-   * @example 'medium'
+   * @type {string}
+   * @default ''
    */
   equalizeOn: ''
 };
