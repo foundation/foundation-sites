@@ -547,67 +547,78 @@ Slider.defaults = {
   /**
    * Minimum value for the slider scale.
    * @option
-   * @example 0
+   * @type {number}
+   * @default 0
    */
   start: 0,
   /**
    * Maximum value for the slider scale.
    * @option
-   * @example 100
+   * @type {number}
+   * @default 100
    */
   end: 100,
   /**
    * Minimum value change per change event.
    * @option
-   * @example 1
+   * @type {number}
+   * @default 1
    */
   step: 1,
   /**
    * Value at which the handle/input *(left handle/first input)* should be set to on initialization.
    * @option
-   * @example 0
+   * @type {number}
+   * @default 0
    */
   initialStart: 0,
   /**
    * Value at which the right handle/second input should be set to on initialization.
    * @option
-   * @example 100
+   * @type {number}
+   * @default 100
    */
   initialEnd: 100,
   /**
    * Allows the input to be located outside the container and visible. Set to by the JS
    * @option
-   * @example false
+   * @type {boolean}
+   * @default false
    */
   binding: false,
   /**
    * Allows the user to click/tap on the slider bar to select a value.
    * @option
-   * @example true
+   * @type {boolean}
+   * @default true
    */
   clickSelect: true,
   /**
    * Set to true and use the `vertical` class to change alignment to vertical.
    * @option
-   * @example false
+   * @type {boolean}
+   * @default false
    */
   vertical: false,
   /**
    * Allows the user to drag the slider handle(s) to select a value.
    * @option
-   * @example true
+   * @type {boolean}
+   * @default true
    */
   draggable: true,
   /**
    * Disables the slider and prevents event listeners from being applied. Double checked by JS with `disabledClass`.
    * @option
-   * @example false
+   * @type {boolean}
+   * @default false
    */
   disabled: false,
   /**
    * Allows the use of two handles. Double checked by the JS. Changes some logic handling.
    * @option
-   * @example false
+   * @type {boolean}
+   * @default false
    */
   doubleSided: false,
   /**
@@ -617,7 +628,8 @@ Slider.defaults = {
   /**
    * Number of decimal places the plugin should go to for floating point precision.
    * @option
-   * @example 2
+   * @type {number}
+   * @default 2
    */
   decimal: 2,
   /**
@@ -627,37 +639,43 @@ Slider.defaults = {
   /**
    * Time, in ms, to animate the movement of a slider handle if user clicks/taps on the bar. Needs to be manually set if updating the transition time in the Sass settings.
    * @option
-   * @example 200
+   * @type {number}
+   * @default 200
    */
   moveTime: 200,//update this if changing the transition time in the sass
   /**
    * Class applied to disabled sliders.
    * @option
-   * @example 'disabled'
+   * @type {string}
+   * @default 'disabled'
    */
   disabledClass: 'disabled',
   /**
    * Will invert the default layout for a vertical<span data-tooltip title="who would do this???"> </span>slider.
    * @option
-   * @example false
+   * @type {boolean}
+   * @default false
    */
   invertVertical: false,
   /**
    * Milliseconds before the `changed.zf-slider` event is triggered after value change.
    * @option
-   * @example 500
+   * @type {number}
+   * @default 500
    */
   changedDelay: 500,
   /**
   * Basevalue for non-linear sliders
   * @option
-  * @example 5
+  * @type {number}
+  * @default 5
   */
   nonLinearBase: 5,
   /**
-  * Basevalue for non-linear sliders, possible values are: 'linear', 'pow' & 'log'. Pow and Log use the nonLinearBase setting.
+  * Basevalue for non-linear sliders, possible values are: `'linear'`, `'pow'` & `'log'`. Pow and Log use the nonLinearBase setting.
   * @option
-  * @example 'linear'
+  * @type {string}
+  * @default 'linear'
   */
   positionValueFunction: 'linear',
 };

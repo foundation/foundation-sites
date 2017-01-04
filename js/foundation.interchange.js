@@ -185,6 +185,8 @@ Interchange.defaults = {
   /**
    * Rules to be applied to Interchange elements. Set with the `data-interchange` array notation.
    * @option
+   * @type {?array}
+   * @default null
    */
   rules: null
 };
