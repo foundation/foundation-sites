@@ -4,19 +4,11 @@
 //**************************************************
 (function($) {
 
-  $.spotSwipe = {
-    version: '1.0.0',
-    enabled: 'ontouchstart' in document.documentElement,
-    preventDefault: false,
-    moveThreshold: 75,
-    timeThreshold: 200
-  };
-
-  var   startPosX,
-        startPosY,
-        startTime,
-        elapsedTime,
-        isMoving = false;
+  var startPosX,
+      startPosY,
+      startTime,
+      elapsedTime,
+      isMoving = false;
 
   function onTouchEnd() {
     //  alert(this);
@@ -67,13 +59,29 @@
     this.removeEventListener('touchstart', onTouchStart);
   }
 
-  $.event.special.swipe = { setup: init };
+  class spotSwipe {
+    constructor($) {
+      this.version = '1.0.0';
+      this.enabled = 'ontouchstart' in document.documentElement;
+      this.preventDefault = false;
+      this.moveThreshold = 75;
+      this.timeThreshold = 200;
+      this.$ = $;
+      this._init();
+    }
 
-  $.each(['left', 'up', 'down', 'right'], function () {
-    $.event.special[`swipe${this}`] = { setup: function(){
-      $(this).on('swipe', $.noop);
-    } };
-  });
+    _init() {
+      var $ = this.$;
+      $.event.special.swipe = { setup: init };
+
+      $.each(['left', 'up', 'down', 'right'], function () {
+        $.event.special[`swipe${this}`] = { setup: function(){
+          $(this).on('swipe', $.noop);
+        } };
+      });
+    }
+  }
+  $.spotSwipe = new spotSwipe($);
 })(jQuery);
 /****************************************************
  * Method for adding psuedo drag events to elements *
