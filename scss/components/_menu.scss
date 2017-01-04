@@ -140,15 +140,32 @@ $menu-border: $light-gray !default;
 }
 
 /// Creates a simple Menu, which has no padding or hover state.
-@mixin menu-simple {
+/// @param {Keyword} $dir [$global-left] - Direction of the menu. Set to `null` to do not generate styles for direction.
+@mixin menu-simple($dir: $global-left) {
   li {
     display: inline-block;
-    margin-#{$global-right}: get-side($menu-item-padding, $global-right);
+    vertical-align: top;
     line-height: 1;
   }
 
   a {
     padding: 0;
+  }
+
+  @if $dir != null {
+    @include menu-simple-direction($dir);
+  }
+}
+
+/// Direction modifier for a simple Menu
+/// @param {Keyword} $dir [$global-left] - Direction of the menu
+@mixin menu-simple-direction($dir: $global-left) {
+  $no-margin-dir: $dir;
+  $margin-dir: direction-opposite($dir);
+
+  li {
+    margin-#{$no-margin-dir}: 0;
+    margin-#{$margin-dir}: get-side($menu-item-padding, $margin-dir);
   }
 }
 
@@ -273,6 +290,10 @@ $menu-border: $light-gray !default;
     // Simple
     &.simple {
       @include menu-simple;
+
+      &.align-#{$global-right} {
+        @include menu-simple-direction($global-right);
+      }
     }
 
     // Align right
