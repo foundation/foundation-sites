@@ -103,12 +103,16 @@ class Drilldown {
     if(!this.options.autoHeight) {
       this.$submenus.addClass('drilldown-submenu-cover-previous');
     }
-
+    
+    // create a wrapper on element if it doesn't exist.
     if(!this.$element.parent().hasClass('is-drilldown')){
       this.$wrapper = $(this.options.wrapper).addClass('is-drilldown');
       if(this.options.animateHeight) this.$wrapper.addClass('animate-height');
-      this.$wrapper = this.$element.wrap(this.$wrapper).parent().css(this._getMaxDims());
+      this.$element.wrap(this.$wrapper);
     }
+    // set wrapper
+    this.$wrapper = this.$element.parent();
+    this.$wrapper.css(this._getMaxDims());
   }
 
   _resize() {
