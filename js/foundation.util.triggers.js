@@ -99,6 +99,32 @@ Triggers.Initializers.addToggleFocusListener = ($elem) => {
   $elem.on('focus.zf.trigger blur.zf.trigger', '[data-toggle-focus]', Triggers.Listeners.Basic.toggleFocusListener);
 }
 
+
+
+// More Global/complex listeners and triggers
+Triggers.Listeners.Global  = {
+  resizeListener: function($nodes) {
+    if(!MutationObserver){//fallback for IE 9
+      $nodes.each(function(){
+        $(this).triggerHandler('resizeme.zf.trigger');
+      });
+    }
+    //trigger all listening elements and signal a resize event
+    $nodes.attr('data-events', "resize");
+  },
+  scrollListener: function($nodes) {
+    if(!MutationObserver){//fallback for IE 9
+      $nodes.each(function(){
+        $(this).triggerHandler('scrollme.zf.trigger');
+      });
+    }
+    //trigger all listening elements and signal a scroll event
+    $nodes.attr('data-events', "scroll");
+  }
+}
+
+
+
 /**
 * Fires once after all other scripts have loaded
 * @function
@@ -110,8 +136,8 @@ $(window).on('load', () => {
 
 function checkListeners() {
   eventsListener();
-  resizeListener();
-  scrollListener();
+  Triggers.Initializers.addResizeListener();
+  Triggers.Initializers.addScrollListener();
   closemeListener();
 }
 
@@ -148,42 +174,26 @@ function closemeListener(pluginName) {
 }
 
 function debounceGlobalListener(debounce, trigger, listener) {
-  let timer;
+  let timer, args = Array.prototype.slice.call(arguments, 3);
   $(window).off(trigger).on(trigger, function(e) {
     if (timer) { clearTimeout(timer); }
     timer = setTimeout(function(){
-      listener.apply(null, Array.prototype.slice.call(arguments, 2));
+      listener.apply(null, args);
     }, debounce || 10);//default time to emit scroll event
   });
 }
 
-function resizeListener(debounce){
+Triggers.Initializers.addResizeListener = function(debounce){
   let $nodes = $('[data-resize]');
   if($nodes.length){
-    debounceGlobalListener(debounce, 'resize.zf.trigger', function() {
-      if(!MutationObserver){//fallback for IE 9
-        $nodes.each(function(){
-          $(this).triggerHandler('resizeme.zf.trigger');
-        });
-      }
-      //trigger all listening elements and signal a resize event
-      $nodes.attr('data-events', "resize");
-    });
+    debounceGlobalListener(debounce, 'resize.zf.trigger', Triggers.Listeners.Global.resizeListener, $nodes);
   }
 }
 
-function scrollListener(debounce){
+Triggers.Initializers.addScrollListener = function(debounce){
   let $nodes = $('[data-scroll]');
   if($nodes.length){
-    debounceGlobalListener(debounce, 'scroll.zf.trigger', function() {
-      if(!MutationObserver){//fallback for IE 9
-        $nodes.each(function(){
-          $(this).triggerHandler('scrollme.zf.trigger');
-        });
-      }
-      //trigger all listening elements and signal a scroll event
-      $nodes.attr('data-events', "scroll");
-    });
+    debounceGlobalListener(debounce, 'scroll.zf.trigger', Triggers.Listeners.Global.scrollListener, $nodes);
   }
 }
 
