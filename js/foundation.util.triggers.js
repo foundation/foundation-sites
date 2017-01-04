@@ -1,5 +1,6 @@
 'use strict';
 
+
 !function($) {
 
   let Motion = Foundation.Motion; // import { Motion } from "foundation.util.motion";
@@ -19,10 +20,20 @@ const triggers = (el, type) => {
     $(`#${id}`)[ type === 'close' ? 'trigger' : 'triggerHandler'](`${type}.zf.trigger`, [el]);
   });
 };
+
+var Triggers = {
+  jQueryListeners: {
+    openListener: function() {
+      triggers($(this), 'open');
+    }
+  }
+};
+
 // Elements with [data-open] will reveal a plugin that supports it when clicked.
-$(document).on('click.zf.trigger', '[data-open]', function() {
-  triggers($(this), 'open');
-});
+Triggers.addOpenListener = ($elem) => {
+  $elem.off('click.zf.trigger', Triggers.jQueryListeners.openListener);
+  $elem.on('click.zf.trigger', '[data-open]', Triggers.jQueryListeners.openListener);
+}
 
 // Elements with [data-close] will close a plugin that supports it when clicked.
 // If used without a value on [data-close], the event will bubble, allowing it to close a parent component.
@@ -200,6 +211,13 @@ function eventsListener() {
       }
     }
   }
+
+  Triggers.init = function($) {
+    let $document = $(document);
+    Triggers.addOpenListener($document);
+  }
+
+  Triggers.init($);
 
 // ------------------------------------
 
