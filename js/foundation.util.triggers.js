@@ -25,6 +25,39 @@ var Triggers = {
   jQueryListeners: {
     openListener: function() {
       triggers($(this), 'open');
+    },
+    closeListener: function() {
+      let id = $(this).data('close');
+      if (id) {
+        triggers($(this), 'close');
+      }
+      else {
+        $(this).trigger('close.zf.trigger');
+      }
+    },
+    toggleListener: function() {
+      let id = $(this).data('toggle');
+      if (id) {
+        triggers($(this), 'toggle');
+      } else {
+        $(this).trigger('toggle.zf.trigger');
+      }
+    },
+    closeableListener: function(e) {
+      e.stopPropagation();
+      let animation = $(this).data('closable');
+
+      if(animation !== ''){
+        Foundation.Motion.animateOut($(this), animation, function() {
+          $(this).trigger('closed.zf');
+        });
+      }else{
+        $(this).fadeOut().trigger('closed.zf');
+      }
+    },
+    toggleFocusListener: function() {
+      let id = $(this).data('toggle-focus');
+      $(`#${id}`).triggerHandler('toggle.zf.trigger', [$(this)]);
     }
   }
 };
@@ -37,44 +70,28 @@ Triggers.addOpenListener = ($elem) => {
 
 // Elements with [data-close] will close a plugin that supports it when clicked.
 // If used without a value on [data-close], the event will bubble, allowing it to close a parent component.
-$(document).on('click.zf.trigger', '[data-close]', function() {
-  let id = $(this).data('close');
-  if (id) {
-    triggers($(this), 'close');
-  }
-  else {
-    $(this).trigger('close.zf.trigger');
-  }
-});
+Triggers.addCloseListener = ($elem) => {
+  $elem.off('click.zf.trigger', Triggers.jQueryListeners.closeListener);
+  $elem.on('click.zf.trigger', '[data-close]', Triggers.jQueryListeners.closeListener);
+}
 
 // Elements with [data-toggle] will toggle a plugin that supports it when clicked.
-$(document).on('click.zf.trigger', '[data-toggle]', function() {
-  let id = $(this).data('toggle');
-  if (id) {
-    triggers($(this), 'toggle');
-  } else {
-    $(this).trigger('toggle.zf.trigger');
-  }
-});
+Triggers.addToggleListener = ($elem) => {
+  $elem.off('click.zf.trigger', Triggers.jQueryListeners.toggleListener);
+  $elem.on('click.zf.trigger', '[data-toggle]', Triggers.jQueryListeners.toggleListener);
+}
 
 // Elements with [data-closable] will respond to close.zf.trigger events.
-$(document).on('close.zf.trigger', '[data-closable]', function(e){
-  e.stopPropagation();
-  let animation = $(this).data('closable');
+Triggers.addCloseableListener = ($elem) => {
+  $elem.off('close.zf.trigger', Triggers.jQueryListeners.closeableListener);
+  $elem.on('close.zf.trigger', '[data-closeable]', Triggers.jQueryListeners.closeableListener);
+}
 
-  if(animation !== ''){
-    Motion.animateOut($(this), animation, function() {
-      $(this).trigger('closed.zf');
-    });
-  }else{
-    $(this).fadeOut().trigger('closed.zf');
-  }
-});
-
-$(document).on('focus.zf.trigger blur.zf.trigger', '[data-toggle-focus]', function() {
-  let id = $(this).data('toggle-focus');
-  $(`#${id}`).triggerHandler('toggle.zf.trigger', [$(this)]);
-});
+// Elements with [data-toggle-focus] will respond to coming in and out of focus
+Triggers.addToggleFocusListener = ($elem) => {
+  $elem.off('focus.zf.trigger blur.zf.trigger', Triggers.jQueryListeners.toggleFocusListener);
+  $elem.on('focus.zf.trigger blur.zf.trigger', '[data-toggle-focus]', Triggers.jQueryListeners.toggleFocusListener);
+}
 
 /**
 * Fires once after all other scripts have loaded
@@ -215,6 +232,10 @@ function eventsListener() {
   Triggers.init = function($) {
     let $document = $(document);
     Triggers.addOpenListener($document);
+    Triggers.addCloseListener($document);
+    Triggers.addToggleListener($document);
+    Triggers.addCloseableListener($document);
+    Triggers.addToggleFocusListener($document);
   }
 
   Triggers.init($);
