@@ -20,75 +20,81 @@ const triggers = (el, type) => {
 };
 
 var Triggers = {
-  jQueryListeners: {
-    openListener: function() {
-      triggers($(this), 'open');
-    },
-    closeListener: function() {
-      let id = $(this).data('close');
-      if (id) {
-        triggers($(this), 'close');
-      }
-      else {
-        $(this).trigger('close.zf.trigger');
-      }
-    },
-    toggleListener: function() {
-      let id = $(this).data('toggle');
-      if (id) {
-        triggers($(this), 'toggle');
-      } else {
-        $(this).trigger('toggle.zf.trigger');
-      }
-    },
-    closeableListener: function(e) {
-      e.stopPropagation();
-      let animation = $(this).data('closable');
+  Listeners: {
+    Basic: {},
+    Global: {}
+  },
+  Initializers: {}
+}
 
-      if(animation !== ''){
-        Foundation.Motion.animateOut($(this), animation, function() {
-          $(this).trigger('closed.zf');
-        });
-      }else{
-        $(this).fadeOut().trigger('closed.zf');
-      }
-    },
-    toggleFocusListener: function() {
-      let id = $(this).data('toggle-focus');
-      $(`#${id}`).triggerHandler('toggle.zf.trigger', [$(this)]);
+Triggers.Listeners.Basic  = {
+  openListener: function() {
+    triggers($(this), 'open');
+  },
+  closeListener: function() {
+    let id = $(this).data('close');
+    if (id) {
+      triggers($(this), 'close');
     }
+    else {
+      $(this).trigger('close.zf.trigger');
+    }
+  },
+  toggleListener: function() {
+    let id = $(this).data('toggle');
+    if (id) {
+      triggers($(this), 'toggle');
+    } else {
+      $(this).trigger('toggle.zf.trigger');
+    }
+  },
+  closeableListener: function(e) {
+    e.stopPropagation();
+    let animation = $(this).data('closable');
+
+    if(animation !== ''){
+      Foundation.Motion.animateOut($(this), animation, function() {
+        $(this).trigger('closed.zf');
+      });
+    }else{
+      $(this).fadeOut().trigger('closed.zf');
+    }
+  },
+  toggleFocusListener: function() {
+    let id = $(this).data('toggle-focus');
+    $(`#${id}`).triggerHandler('toggle.zf.trigger', [$(this)]);
   }
 };
 
 // Elements with [data-open] will reveal a plugin that supports it when clicked.
-Triggers.addOpenListener = ($elem) => {
-  $elem.off('click.zf.trigger', Triggers.jQueryListeners.openListener);
-  $elem.on('click.zf.trigger', '[data-open]', Triggers.jQueryListeners.openListener);
+Triggers.Initializers.addOpenListener = ($elem) => {
+  $elem.off('click.zf.trigger', Triggers.Listeners.Basic.openListener);
+  $elem.on('click.zf.trigger', '[data-open]', Triggers.Listeners.Basic.openListener);
 }
 
 // Elements with [data-close] will close a plugin that supports it when clicked.
 // If used without a value on [data-close], the event will bubble, allowing it to close a parent component.
-Triggers.addCloseListener = ($elem) => {
-  $elem.off('click.zf.trigger', Triggers.jQueryListeners.closeListener);
-  $elem.on('click.zf.trigger', '[data-close]', Triggers.jQueryListeners.closeListener);
+Triggers.Initializers.addCloseListener = ($elem) => {
+  $elem.off('click.zf.trigger', Triggers.Listeners.Basic.closeListener);
+  $elem.on('click.zf.trigger', '[data-close]', Triggers.Listeners.Basic.closeListener);
 }
 
 // Elements with [data-toggle] will toggle a plugin that supports it when clicked.
-Triggers.addToggleListener = ($elem) => {
-  $elem.off('click.zf.trigger', Triggers.jQueryListeners.toggleListener);
-  $elem.on('click.zf.trigger', '[data-toggle]', Triggers.jQueryListeners.toggleListener);
+Triggers.Initializers.addToggleListener = ($elem) => {
+  $elem.off('click.zf.trigger', Triggers.Listeners.Basic.toggleListener);
+  $elem.on('click.zf.trigger', '[data-toggle]', Triggers.Listeners.Basic.toggleListener);
 }
 
 // Elements with [data-closable] will respond to close.zf.trigger events.
-Triggers.addCloseableListener = ($elem) => {
-  $elem.off('close.zf.trigger', Triggers.jQueryListeners.closeableListener);
-  $elem.on('close.zf.trigger', '[data-closeable]', Triggers.jQueryListeners.closeableListener);
+Triggers.Initializers.addCloseableListener = ($elem) => {
+  $elem.off('close.zf.trigger', Triggers.Listeners.Basic.closeableListener);
+  $elem.on('close.zf.trigger', '[data-closeable]', Triggers.Listeners.Basic.closeableListener);
 }
 
 // Elements with [data-toggle-focus] will respond to coming in and out of focus
-Triggers.addToggleFocusListener = ($elem) => {
-  $elem.off('focus.zf.trigger blur.zf.trigger', Triggers.jQueryListeners.toggleFocusListener);
-  $elem.on('focus.zf.trigger blur.zf.trigger', '[data-toggle-focus]', Triggers.jQueryListeners.toggleFocusListener);
+Triggers.Initializers.addToggleFocusListener = ($elem) => {
+  $elem.off('focus.zf.trigger blur.zf.trigger', Triggers.Listeners.Basic.toggleFocusListener);
+  $elem.on('focus.zf.trigger blur.zf.trigger', '[data-toggle-focus]', Triggers.Listeners.Basic.toggleFocusListener);
 }
 
 /**
@@ -140,46 +146,42 @@ function closemeListener(pluginName) {
   }
 }
 
+function debounceGlobalListener(debounce, trigger, listener) {
+  let timer;
+  $(window).off(trigger).on(trigger, function(e) {
+    if (timer) { clearTimeout(timer); }
+    timer = setTimeout(function(){
+      listener.apply(null, Array.prototype.slice.call(arguments, 2));
+    }, debounce || 10);//default time to emit scroll event
+  });
+}
+
 function resizeListener(debounce){
-  let timer,
-      $nodes = $('[data-resize]');
+  let $nodes = $('[data-resize]');
   if($nodes.length){
-    $(window).off('resize.zf.trigger')
-    .on('resize.zf.trigger', function(e) {
-      if (timer) { clearTimeout(timer); }
-
-      timer = setTimeout(function(){
-
-        if(!MutationObserver){//fallback for IE 9
-          $nodes.each(function(){
-            $(this).triggerHandler('resizeme.zf.trigger');
-          });
-        }
-        //trigger all listening elements and signal a resize event
-        $nodes.attr('data-events', "resize");
-      }, debounce || 10);//default time to emit resize event
+    debounceGlobalListener(debounce, 'resize.zf.trigger', function() {
+      if(!MutationObserver){//fallback for IE 9
+        $nodes.each(function(){
+          $(this).triggerHandler('resizeme.zf.trigger');
+        });
+      }
+      //trigger all listening elements and signal a resize event
+      $nodes.attr('data-events', "resize");
     });
   }
 }
 
 function scrollListener(debounce){
-  let timer,
-      $nodes = $('[data-scroll]');
+  let $nodes = $('[data-scroll]');
   if($nodes.length){
-    $(window).off('scroll.zf.trigger')
-    .on('scroll.zf.trigger', function(e){
-      if(timer){ clearTimeout(timer); }
-
-      timer = setTimeout(function(){
-
-        if(!MutationObserver){//fallback for IE 9
-          $nodes.each(function(){
-            $(this).triggerHandler('scrollme.zf.trigger');
-          });
-        }
-        //trigger all listening elements and signal a scroll event
-        $nodes.attr('data-events', "scroll");
-      }, debounce || 10);//default time to emit scroll event
+    debounceGlobalListener(debounce, 'scroll.zf.trigger', function() {
+      if(!MutationObserver){//fallback for IE 9
+        $nodes.each(function(){
+          $(this).triggerHandler('scrollme.zf.trigger');
+        });
+      }
+      //trigger all listening elements and signal a scroll event
+      $nodes.attr('data-events', "scroll");
     });
   }
 }
@@ -241,11 +243,11 @@ function eventsListener() {
 
   Triggers.init = function($) {
     let $document = $(document);
-    Triggers.addOpenListener($document);
-    Triggers.addCloseListener($document);
-    Triggers.addToggleListener($document);
-    Triggers.addCloseableListener($document);
-    Triggers.addToggleFocusListener($document);
+    Triggers.Initializers.addOpenListener($document);
+    Triggers.Initializers.addCloseListener($document);
+    Triggers.Initializers.addToggleListener($document);
+    Triggers.Initializers.addCloseableListener($document);
+    Triggers.Initializers.addToggleFocusListener($document);
   }
 
   Triggers.init($);
