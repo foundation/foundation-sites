@@ -6,7 +6,7 @@ sass:
   - scss/util/_flex.scss
 ---
 
-Foundation components use a combination of floats, vertical alignment, table cells, and various other CSS hacks to get layouts looking right. These days, there's a better way... if you have the browser support!
+Foundation components use a combination of floats, vertical alignment, table cells, and various other CSS hacks to get layouts looking right. These days though, there's a better way... if you are happy with the below browser support!
 
 Enabling **flexbox mode** replaces those hacks with flexbox properties, streamlining how layouts are made, and making sizing and alignment of elements much easier.
 
