@@ -2,11 +2,13 @@
 
 !function($) {
 
+  let Keyboard    = Foundation.Keyboard; // import Keyboard from 'foundation.util.keyboard'
+  let GetYoDigits = Foundation.GetYoDigits; // currently part of foundation.core. Refactor?
+
 /**
  * Accordion module.
  * @module foundation.accordion
  * @requires foundation.util.keyboard
- * @requires foundation.util.motion
  */
 
 class Accordion {
@@ -24,7 +26,7 @@ class Accordion {
     this._init();
 
     Foundation.registerPlugin(this, 'Accordion');
-    Foundation.Keyboard.register('Accordion', {
+    Keyboard.register('Accordion', {
       'ENTER': 'toggle',
       'SPACE': 'toggle',
       'ARROW_DOWN': 'next',
@@ -43,7 +45,7 @@ class Accordion {
     this.$tabs.each(function(idx, el) {
       var $el = $(el),
           $content = $el.children('[data-tab-content]'),
-          id = $content[0].id || Foundation.GetYoDigits(6, 'accordion'),
+          id = $content[0].id || GetYoDigits(6, 'accordion'),
           linkId = el.id || `${id}-label`;
 
       $el.find('a:first').attr({
@@ -118,7 +120,7 @@ class Accordion {
           e.preventDefault();
           _this.toggle($tabContent);
         }).on('keydown.zf.accordion', function(e){
-          Foundation.Keyboard.handleKey(e, 'Accordion', {
+          Keyboard.handleKey(e, 'Accordion', {
             toggle: function() {
               _this.toggle($tabContent);
             },
@@ -219,15 +221,13 @@ class Accordion {
       return;
     }
 
-    // Foundation.Move(this.options.slideSpeed, $target, function(){
-      $target.slideUp(_this.options.slideSpeed, function () {
-        /**
-         * Fires when the tab is done collapsing up.
-         * @event Accordion#up
-         */
-        _this.$element.trigger('up.zf.accordion', [$target]);
-      });
-    // });
+    $target.slideUp(_this.options.slideSpeed, function () {
+      /**
+       * Fires when the tab is done collapsing up.
+       * @event Accordion#up
+       */
+      _this.$element.trigger('up.zf.accordion', [$target]);
+    });
 
     $target.attr('aria-hidden', true)
            .parent().removeClass('is-active');

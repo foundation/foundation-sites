@@ -2,11 +2,13 @@
 
 !function($) {
 
+  let MediaQuery = Foundation.MediaQuery; // import MediaQuery from "foundation.util.mediaQuery.js";
+
+
 /**
  * Interchange module.
  * @module foundation.interchange
  * @requires foundation.util.mediaQuery
- * @requires foundation.util.timerAndImageLoader
  */
 
 class Interchange {
@@ -80,9 +82,9 @@ class Interchange {
    * @private
    */
   _addBreakpoints() {
-    for (var i in Foundation.MediaQuery.queries) {
-      if (Foundation.MediaQuery.queries.hasOwnProperty(i)) {
-        var query = Foundation.MediaQuery.queries[i];
+    for (var i in MediaQuery.queries) {
+      if (MediaQuery.queries.hasOwnProperty(i)) {
+        var query = MediaQuery.queries[i];
         Interchange.SPECIAL_QUERIES[query.name] = query.value;
       }
     }
@@ -105,7 +107,7 @@ class Interchange {
     else {
       rules = this.$element.data('interchange');
     }
-    
+
     rules =  typeof rules === 'string' ? rules.match(/\[.*?\]/g) : rules;
 
     for (var i in rules) {

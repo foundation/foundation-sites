@@ -10,6 +10,8 @@
 
 !function($) {
 
+  let Rtl = Foundation.rtl; // Figure out import after refactor
+
 const keyCodes = {
   9: 'TAB',
   13: 'ENTER',
@@ -66,7 +68,7 @@ var Keyboard = {
     if (typeof commandList.ltr === 'undefined') { // this component does not differentiate between ltr and rtl
         cmds = commandList; // use plain list
     } else { // merge ltr and rtl: if document is rtl, rtl overwrites ltr and vice versa
-        if (Foundation.rtl()) cmds = $.extend({}, commandList.ltr, commandList.rtl);
+        if (Rtl()) cmds = $.extend({}, commandList.ltr, commandList.rtl);
 
         else cmds = $.extend({}, commandList.rtl, commandList.ltr);
     }
@@ -106,8 +108,11 @@ var Keyboard = {
 
   register(componentName, cmds) {
     commands[componentName] = cmds;
-  },  
+  },
 
+
+  // TODO9438: These references to Keyboard need to not require global. Will 'this' work in this context?
+  //
   /**
    * Traps the focus in the given element.
    * @param  {jQuery} $element  jQuery object to trap the foucs into.

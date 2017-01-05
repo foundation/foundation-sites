@@ -2,6 +2,8 @@
 
 !function($) {
 
+  let GetYoDigits = Foundation.GetYoDigits; // TODO: Separate this out?
+
 /**
  * Magellan module.
  * @module foundation.magellan
@@ -31,7 +33,7 @@ class Magellan {
    * @private
    */
   _init() {
-    var id = this.$element[0].id || Foundation.GetYoDigits(6, 'magellan');
+    var id = this.$element[0].id || GetYoDigits(6, 'magellan');
     var _this = this;
     this.$targets = $('[data-magellan-target]');
     this.$links = this.$element.find('a');
