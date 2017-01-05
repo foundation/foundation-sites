@@ -2,6 +2,8 @@
 
 !function($) {
 
+  let Keyboard       = Foundation.Keyboard; // import Keyboard from "foundation.util.keyboard";
+  let onImagesLoaded = Foundation.onImagesLoaded; // add import after refactor TODO9438;
 /**
  * Tabs module.
  * @module foundation.tabs
@@ -23,7 +25,7 @@ class Tabs {
 
     this._init();
     Foundation.registerPlugin(this, 'Tabs');
-    Foundation.Keyboard.register('Tabs', {
+    Keyboard.register('Tabs', {
       'ENTER': 'open',
       'SPACE': 'open',
       'ARROW_RIGHT': 'next',
@@ -85,7 +87,7 @@ class Tabs {
       var $images = this.$tabContent.find('img');
 
       if ($images.length) {
-        Foundation.onImagesLoaded($images, this._setHeight.bind(this));
+        onImagesLoaded($images, this._setHeight.bind(this));
       } else {
         this._setHeight();
       }
@@ -189,7 +191,7 @@ class Tabs {
       });
 
       // handle keyboard event with keyboard util
-      Foundation.Keyboard.handleKey(e, 'Tabs', {
+      Keyboard.handleKey(e, 'Tabs', {
         open: function() {
           $element.find('[role="tab"]').focus();
           _this._handleTabChange($element);

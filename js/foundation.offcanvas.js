@@ -2,13 +2,20 @@
 
 !function($) {
 
+  let Keyboard      = Foundation.Keyboard; // import Keyboard from "foundation.util.keyboard";
+  let MediaQuery    = Foundation.MediaQuery; // import MediaQuery from "foundation.util.mediaQuery";
+
+  let transitionend = Foundation.transitionend; // Should transitionend be refactored into it's own module?
+
+  // import "foundation.util.triggers.js";
+  // TODO: Figure out what triggers import should actually do, given how indirect their use is
+
 /**
  * OffCanvas module.
  * @module foundation.offcanvas
  * @requires foundation.util.keyboard
  * @requires foundation.util.mediaQuery
  * @requires foundation.util.triggers
- * @requires foundation.util.motion
  */
 
 class OffCanvas {
@@ -31,7 +38,7 @@ class OffCanvas {
     this._events();
 
     Foundation.registerPlugin(this, 'OffCanvas')
-    Foundation.Keyboard.register('OffCanvas', {
+    Keyboard.register('OffCanvas', {
       'ESCAPE': 'close'
     });
 
@@ -123,13 +130,13 @@ class OffCanvas {
     var _this = this;
 
     $(window).on('changed.zf.mediaquery', function() {
-      if (Foundation.MediaQuery.atLeast(_this.options.revealOn)) {
+      if (MediaQuery.atLeast(_this.options.revealOn)) {
         _this.reveal(true);
       } else {
         _this.reveal(false);
       }
     }).one('load.zf.offcanvas', function() {
-      if (Foundation.MediaQuery.atLeast(_this.options.revealOn)) {
+      if (MediaQuery.atLeast(_this.options.revealOn)) {
         _this.reveal(true);
       }
     });
@@ -278,7 +285,7 @@ class OffCanvas {
     }
 
     if (this.options.autoFocus === true) {
-      this.$element.one(Foundation.transitionend(this.$element), function() {
+      this.$element.one(transitionend(this.$element), function() {
         var canvasFocus = _this.$element.find('[data-autofocus]');
         if (canvasFocus.length) {
             canvasFocus.eq(0).focus();
@@ -290,7 +297,7 @@ class OffCanvas {
 
     if (this.options.trapFocus === true) {
       this.$content.attr('tabindex', '-1');
-      Foundation.Keyboard.trapFocus(this.$element);
+      Keyboard.trapFocus(this.$element);
     }
 
     this._setContentClasses();
@@ -337,7 +344,7 @@ class OffCanvas {
 
     if (this.options.trapFocus === true) {
       this.$content.removeAttr('tabindex');
-      Foundation.Keyboard.releaseFocus(this.$element);
+      Keyboard.releaseFocus(this.$element);
     }
 
     // Listen to transitionEnd of content container and add class when done.
@@ -371,7 +378,7 @@ class OffCanvas {
    * @private
    */
   _handleKeyboard(e) {
-    Foundation.Keyboard.handleKey(e, 'OffCanvas', {
+    Keyboard.handleKey(e, 'OffCanvas', {
       close: () => {
         this.close();
         this.$lastTrigger.focus();
