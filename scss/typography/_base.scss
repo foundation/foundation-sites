@@ -79,7 +79,7 @@ $header-styles: (
   @each $size, $headers in $header-sizes {
     $header-map: ();
     @each $header, $font-size in $headers {
-      $header-map: map-merge($header-map, ($header: ('font-size': $font-size)));  
+      $header-map: map-merge($header-map, ($header: ('font-size': $font-size)));
     }
     $header-styles: map-merge($header-styles, ($size: $header-map));
   }
@@ -305,13 +305,8 @@ $abbr-underline: 1px dotted $black !default;
     line-height: inherit;
   }
 
-  // Headings
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  // Heading base
+  %header {
     @include header();
   }
 
@@ -320,6 +315,9 @@ $abbr-underline: 1px dotted $black !default;
     @include breakpoint($size) {
       @each $header, $header-defs in $headers {
         #{$header}, .#{$header} {
+          @if $size == $-zf-zero-breakpoint {
+            @extend %header;
+          }
           @include header-style($header-defs);
         }
       }
@@ -438,7 +436,7 @@ $abbr-underline: 1px dotted $black !default;
   figure {
     margin: 0;
   }
-  
+
   // Code
   code {
     padding: $code-padding;
