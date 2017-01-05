@@ -2,6 +2,8 @@
 
 !function($) {
 
+  let GetYoDigits = Foundation.GetYoDigits; // figure out import after refactor TODO9438
+  let MediaQuery  = Foundation.MediaQuery; // import MediaQuery from "foundation.util.mediaQuery";
 /**
  * Sticky module.
  * @module foundation.sticky
@@ -32,7 +34,7 @@ class Sticky {
    */
   _init() {
     var $parent = this.$element.parent('[data-sticky-container]'),
-        id = this.$element[0].id || Foundation.GetYoDigits(6, 'sticky'),
+        id = this.$element[0].id || GetYoDigits(6, 'sticky'),
         _this = this;
 
     if (!$parent.length) {
@@ -269,7 +271,7 @@ class Sticky {
    * @private
    */
   _setSizes(cb) {
-    this.canStick = Foundation.MediaQuery.is(this.options.stickyOn);
+    this.canStick = MediaQuery.is(this.options.stickyOn);
     if (!this.canStick) {
       if (cb && typeof cb === 'function') { cb(); }
     }

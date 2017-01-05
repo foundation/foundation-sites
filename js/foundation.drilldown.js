@@ -2,12 +2,18 @@
 
 !function($) {
 
+  let Keyboard      = Foundation.Keyboard; // import Keyboard from "foundation.util.keyboard";
+  let Nest          = Foundation.Nest; // import Nest from "foundation.util.nest";
+  let GetYoDigits   = Foundation.GetYoDigits; // figure out import after refactor
+  let transitionend = Foundation.transitionend; // figure out import after refactor
+  let Box           = Foundation.Box; // import Box from "foundation.util.box";
+
 /**
  * Drilldown module.
  * @module foundation.drilldown
  * @requires foundation.util.keyboard
- * @requires foundation.util.motion
  * @requires foundation.util.nest
+ * @requires foundation.util.box
  */
 
 class Drilldown {
@@ -21,12 +27,12 @@ class Drilldown {
     this.$element = element;
     this.options = $.extend({}, Drilldown.defaults, this.$element.data(), options);
 
-    Foundation.Nest.Feather(this.$element, 'drilldown');
+    Nest.Feather(this.$element, 'drilldown');
 
     this._init();
 
     Foundation.registerPlugin(this, 'Drilldown');
-    Foundation.Keyboard.register('Drilldown', {
+    Keyboard.register('Drilldown', {
       'ENTER': 'open',
       'SPACE': 'open',
       'ARROW_RIGHT': 'next',
@@ -47,7 +53,7 @@ class Drilldown {
     this.$submenuAnchors = this.$element.find('li.is-drilldown-submenu-parent').children('a');
     this.$submenus = this.$submenuAnchors.parent('li').children('[data-submenu]');
     this.$menuItems = this.$element.find('li').not('.js-drilldown-back').attr('role', 'menuitem').find('a');
-    this.$element.attr('data-mutate', (this.$element.attr('data-drilldown') || Foundation.GetYoDigits(6, 'drilldown')));
+    this.$element.attr('data-mutate', (this.$element.attr('data-drilldown') || GetYoDigits(6, 'drilldown')));
 
     this._prepareMenu();
     this._registerEvents();
@@ -103,7 +109,7 @@ class Drilldown {
     if(!this.options.autoHeight) {
       this.$submenus.addClass('drilldown-submenu-cover-previous');
     }
-    
+
     // create a wrapper on element if it doesn't exist.
     if(!this.$element.parent().hasClass('is-drilldown')){
       this.$wrapper = $(this.options.wrapper).addClass('is-drilldown');
@@ -206,11 +212,11 @@ class Drilldown {
         }
       });
 
-      Foundation.Keyboard.handleKey(e, 'Drilldown', {
+      Keyboard.handleKey(e, 'Drilldown', {
         next: function() {
           if ($element.is(_this.$submenuAnchors)) {
             _this._show($element.parent('li'));
-            $element.parent('li').one(Foundation.transitionend($element), function(){
+            $element.parent('li').one(transitionend($element), function(){
               $element.parent('li').find('ul li a').filter(_this.$menuItems).first().focus();
             });
             return true;
@@ -218,7 +224,7 @@ class Drilldown {
         },
         previous: function() {
           _this._hide($element.parent('li').parent('ul'));
-          $element.parent('li').parent('ul').one(Foundation.transitionend($element), function(){
+          $element.parent('li').parent('ul').one(transitionend($element), function(){
             setTimeout(function() {
               $element.parent('li').parent('ul').parent('li').children('a').first().focus();
             }, 1);
@@ -240,7 +246,7 @@ class Drilldown {
         open: function() {
           if (!$element.is(_this.$menuItems)) { // not menu item means back button
             _this._hide($element.parent('li').parent('ul'));
-            $element.parent('li').parent('ul').one(Foundation.transitionend($element), function(){
+            $element.parent('li').parent('ul').one(transitionend($element), function(){
               setTimeout(function() {
                 $element.parent('li').parent('ul').parent('li').children('a').first().focus();
               }, 1);
@@ -248,7 +254,7 @@ class Drilldown {
             return true;
           } else if ($element.is(_this.$submenuAnchors)) {
             _this._show($element.parent('li'));
-            $element.parent('li').one(Foundation.transitionend($element), function(){
+            $element.parent('li').one(transitionend($element), function(){
               $element.parent('li').find('ul li a').filter(_this.$menuItems).first().focus();
             });
             return true;
@@ -272,7 +278,7 @@ class Drilldown {
   _hideAll() {
     var $elem = this.$element.find('.is-drilldown-submenu.is-active').addClass('is-closing');
     if(this.options.autoHeight) this.$wrapper.css({height:$elem.parent().closest('ul').data('calcHeight')});
-    $elem.one(Foundation.transitionend($elem), function(e){
+    $elem.one(transitionend($elem), function(e){
       $elem.removeClass('is-active is-closing');
     });
         /**
@@ -351,7 +357,7 @@ class Drilldown {
     $elem.parent('li').attr('aria-expanded', false);
     $elem.attr('aria-hidden', true).addClass('is-closing')
     $elem.addClass('is-closing')
-         .one(Foundation.transitionend($elem), function(){
+         .one(transitionend($elem), function(){
            $elem.removeClass('is-active is-closing');
            $elem.blur();
          });
@@ -372,7 +378,7 @@ class Drilldown {
     var  maxHeight = 0, result = {}, _this = this;
     this.$submenus.add(this.$element).each(function(){
       var numOfElems = $(this).children('li').length;
-      var height = Foundation.Box.GetDimensions(this).height;
+      var height = Box.GetDimensions(this).height;
       maxHeight = height > maxHeight ? height : maxHeight;
       if(_this.options.autoHeight) {
         $(this).data('calcHeight',height);
@@ -395,7 +401,7 @@ class Drilldown {
     if(this.options.scrollTop) this.$element.off('.zf.drilldown',this._bindHandler);
     this._hideAll();
 	  this.$element.off('mutateme.zf.trigger');
-    Foundation.Nest.Burn(this.$element, 'drilldown');
+    Nest.Burn(this.$element, 'drilldown');
     this.$element.unwrap()
                  .find('.js-drilldown-back, .is-submenu-parent-item').remove()
                  .end().find('.is-active, .is-closing, .is-drilldown-submenu').removeClass('is-active is-closing is-drilldown-submenu')

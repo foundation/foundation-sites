@@ -2,6 +2,8 @@
 
 !function($) {
 
+  let Rtl = Foundation.rtl; // Figure out imports after refactor
+
 Foundation.Box = {
   ImNotTouchingYou: ImNotTouchingYou,
   GetDimensions: GetDimensions,
@@ -115,7 +117,7 @@ function GetOffsets(element, anchor, position, vOffset, hOffset, isOverflow) {
   switch (position) {
     case 'top':
       return {
-        left: (Foundation.rtl() ? $anchorDims.offset.left - $eleDims.width + $anchorDims.width : $anchorDims.offset.left),
+        left: (Rtl() ? $anchorDims.offset.left - $eleDims.width + $anchorDims.width : $anchorDims.offset.left),
         top: $anchorDims.offset.top - ($eleDims.height + vOffset)
       }
       break;
@@ -186,7 +188,7 @@ function GetOffsets(element, anchor, position, vOffset, hOffset, isOverflow) {
       break;
     default:
       return {
-        left: (Foundation.rtl() ? $anchorDims.offset.left - $eleDims.width + $anchorDims.width : $anchorDims.offset.left + hOffset),
+        left: (Rtl() ? $anchorDims.offset.left - $eleDims.width + $anchorDims.width : $anchorDims.offset.left + hOffset),
         top: $anchorDims.offset.top + $anchorDims.height + vOffset
       }
   }
