@@ -2,11 +2,14 @@
 
 !function($) {
 
+  let Keyboard   = Foundation.Keyboard; // import Keyboard from "foundation.util.keyboard";
+  let MediaQuery = Foundation.MediaQuery; // import MediaQuery from "foundation.util.mediaQuery";
+  let Motion     = Foundation.Motion; // import { Motion } from "foundation.util.motion";
+
 /**
  * Reveal module.
  * @module foundation.reveal
  * @requires foundation.util.keyboard
- * @requires foundation.util.box
  * @requires foundation.util.triggers
  * @requires foundation.util.mediaQuery
  * @requires foundation.util.motion if using animations
@@ -25,7 +28,7 @@ class Reveal {
     this._init();
 
     Foundation.registerPlugin(this, 'Reveal');
-    Foundation.Keyboard.register('Reveal', {
+    Keyboard.register('Reveal', {
       'ENTER': 'open',
       'SPACE': 'open',
       'ESCAPE': 'close',
@@ -39,7 +42,7 @@ class Reveal {
   _init() {
     this.id = this.$element.attr('id');
     this.isActive = false;
-    this.cached = {mq: Foundation.MediaQuery.current};
+    this.cached = {mq: MediaQuery.current};
     this.isMobile = mobileSniff();
 
     this.$anchor = $(`[data-open="${this.id}"]`).length ? $(`[data-open="${this.id}"]`) : $(`[data-toggle="${this.id}"]`);
@@ -253,14 +256,14 @@ class Reveal {
           })
           .focus();
         addRevealOpenClasses();
-        Foundation.Keyboard.trapFocus(_this.$element);
+        Keyboard.trapFocus(_this.$element);
       }
       if (this.options.overlay) {
-        Foundation.Motion.animateIn(this.$overlay, 'fade-in');
+        Motion.animateIn(this.$overlay, 'fade-in');
       }
-      Foundation.Motion.animateIn(this.$element, this.options.animationIn, () => {
+      Motion.animateIn(this.$element, this.options.animationIn, () => {
         if(this.$element) { // protect against object having been removed
-          this.focusableElements = Foundation.Keyboard.findFocusable(this.$element);
+          this.focusableElements = Keyboard.findFocusable(this.$element);
           afterAnimation();
         }
       });
@@ -280,7 +283,7 @@ class Reveal {
         'tabindex': -1
       })
       .focus();
-    Foundation.Keyboard.trapFocus(this.$element);
+    Keyboard.trapFocus(this.$element);
 
     /**
      * Fires when the modal has successfully opened.
@@ -302,7 +305,7 @@ class Reveal {
   _extraHandlers() {
     var _this = this;
     if(!this.$element) { return; } // If we're in the middle of cleanup, don't freak out
-    this.focusableElements = Foundation.Keyboard.findFocusable(this.$element);
+    this.focusableElements = Keyboard.findFocusable(this.$element);
 
     if (!this.options.overlay && this.options.closeOnClick && !this.options.fullScreen) {
       $('body').on('click.zf.reveal', function(e) {
@@ -315,7 +318,7 @@ class Reveal {
 
     if (this.options.closeOnEsc) {
       $(window).on('keydown.zf.reveal', function(e) {
-        Foundation.Keyboard.handleKey(e, 'Reveal', {
+        Keyboard.handleKey(e, 'Reveal', {
           close: function() {
             if (_this.options.closeOnEsc) {
               _this.close();
@@ -330,7 +333,7 @@ class Reveal {
     this.$element.on('keydown.zf.reveal', function(e) {
       var $target = $(this);
       // handle keyboard event with keyboard util
-      Foundation.Keyboard.handleKey(e, 'Reveal', {
+      Keyboard.handleKey(e, 'Reveal', {
         open: function() {
           if (_this.$element.find(':focus').is(_this.$element.find('[data-close]'))) {
             setTimeout(function() { // set focus back to anchor if close button has been activated
@@ -369,13 +372,13 @@ class Reveal {
     // Motion UI method of hiding
     if (this.options.animationOut) {
       if (this.options.overlay) {
-        Foundation.Motion.animateOut(this.$overlay, 'fade-out', finishUp);
+        Motion.animateOut(this.$overlay, 'fade-out', finishUp);
       }
       else {
         finishUp();
       }
 
-      Foundation.Motion.animateOut(this.$element, this.options.animationOut);
+      Motion.animateOut(this.$element, this.options.animationOut);
     }
     // jQuery method of hiding
     else {
@@ -413,7 +416,7 @@ class Reveal {
       }
 
 
-      Foundation.Keyboard.releaseFocus(_this.$element);
+      Keyboard.releaseFocus(_this.$element);
 
       _this.$element.attr('aria-hidden', true);
 

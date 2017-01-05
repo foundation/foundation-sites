@@ -2,6 +2,8 @@
 
 !function($) {
 
+  let Motion = Foundation.Motion; // import { Motion } from "foundation.util.motion";
+
 const MutationObserver = (function () {
   var prefixes = ['WebKit', 'Moz', 'O', 'Ms', ''];
   for (var i=0; i < prefixes.length; i++) {
@@ -50,7 +52,7 @@ $(document).on('close.zf.trigger', '[data-closable]', function(e){
   let animation = $(this).data('closable');
 
   if(animation !== ''){
-    Foundation.Motion.animateOut($(this), animation, function() {
+    Motion.animateOut($(this), animation, function() {
       $(this).trigger('closed.zf');
     });
   }else{

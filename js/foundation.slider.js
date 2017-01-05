@@ -2,6 +2,10 @@
 
 !function($) {
 
+  let Keyboard    = Foundation.Keyboard; // import Keyboard from "foundation.util.keyboard";
+  let Move        = Foundation.Move; // import { Move } from "foundation.util.motion";
+  let GetYoDigits = Foundation.GetYoDigits; // figure out import after refactor TODO9438
+  let Rtl         = Foundation.rtl; // figure out import/refactor for encapsulation of rtl() TODO9438
 /**
  * Slider module.
  * @module foundation.slider
@@ -25,7 +29,7 @@ class Slider {
     this._init();
 
     Foundation.registerPlugin(this, 'Slider');
-    Foundation.Keyboard.register('Slider', {
+    Keyboard.register('Slider', {
       'ltr': {
         'ARROW_RIGHT': 'increase',
         'ARROW_UP': 'increase',
@@ -258,7 +262,7 @@ class Slider {
     //because we don't know exactly how the handle will be moved, check the amount of time it should take to move.
     var moveTime = this.$element.data('dragging') ? 1000/60 : this.options.moveTime;
 
-    Foundation.Move(moveTime, $hndl, function() {
+    Move(moveTime, $hndl, function() {
       // adjusting the left/top property of the handle, based on the percentage calculated above
       // if movement isNaN, that is because the slider is hidden and we cannot determine handle width,
       // fall back to next best guess.
@@ -297,7 +301,7 @@ class Slider {
    */
   _setInitAttr(idx) {
     var initVal = (idx === 0 ? this.options.initialStart : this.options.initialEnd)
-    var id = this.inputs.eq(idx).attr('id') || Foundation.GetYoDigits(6, 'slider');
+    var id = this.inputs.eq(idx).attr('id') || GetYoDigits(6, 'slider');
     this.inputs.eq(idx).attr({
       'id': id,
       'max': this.options.end,
@@ -373,7 +377,7 @@ class Slider {
       value = this._value(offsetPct);
 
       // turn everything around for RTL, yay math!
-      if (Foundation.rtl() && !this.options.vertical) {value = this.options.end - value;}
+      if (Rtl() && !this.options.vertical) {value = this.options.end - value;}
 
       value = _this._adjustValue(null, value);
       //boolean flag for the setHandlePos fn, specifically for vertical sliders
@@ -504,7 +508,7 @@ class Slider {
           newValue;
 
       // handle keyboard event with keyboard util
-      Foundation.Keyboard.handleKey(e, 'Slider', {
+      Keyboard.handleKey(e, 'Slider', {
         decrease: function() {
           newValue = oldValue - _this.options.step;
         },

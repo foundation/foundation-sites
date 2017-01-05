@@ -2,6 +2,16 @@
 
 !function($) {
 
+
+  let Keyboard       = Foundation.Keyboard; // import Keyboard from "foundation.util.keyboard";
+  let Motion         = Foundation.Motion; // import { Motion } from "foundation.util.move"
+  let Timer          = Foundation.Timer; // Add import after refactoring to separate timer & image loader
+  let onImagesLoaded = Foundation.onImagesLoaded; // Add import after refactoring to separate timer & image loader
+  let GetYoDigits    = Foundation.GetYoDigits; // Add import after refactor
+
+  // import "foundation.util.touch.js"
+  // TODO:  Figure out what a touch import should really do.
+
 /**
  * Orbit module.
  * @module foundation.orbit
@@ -25,7 +35,7 @@ class Orbit {
     this._init();
 
     Foundation.registerPlugin(this, 'Orbit');
-    Foundation.Keyboard.register('Orbit', {
+    Keyboard.register('Orbit', {
       'ltr': {
         'ARROW_RIGHT': 'next',
         'ARROW_LEFT': 'previous'
@@ -51,7 +61,7 @@ class Orbit {
 
     var $images = this.$element.find('img'),
         initActive = this.$slides.filter('.is-active'),
-        id = this.$element[0].id || Foundation.GetYoDigits(6, 'orbit');
+        id = this.$element[0].id || GetYoDigits(6, 'orbit');
 
     this.$element.attr({
       'data-resize': id,
@@ -67,7 +77,7 @@ class Orbit {
     }
 
     if ($images.length) {
-      Foundation.onImagesLoaded($images, this._prepareForOrbit.bind(this));
+      onImagesLoaded($images, this._prepareForOrbit.bind(this));
     } else {
       this._prepareForOrbit();//hehe
     }
@@ -102,7 +112,7 @@ class Orbit {
   */
   geoSync() {
     var _this = this;
-    this.timer = new Foundation.Timer(
+    this.timer = new Timer(
       this.$element,
       {
         duration: this.options.timerDelay,
@@ -232,7 +242,7 @@ class Orbit {
       if (this.options.accessible) {
         this.$wrapper.add(this.$bullets).on('keydown.zf.orbit', function(e) {
           // handle keyboard event with keyboard util
-          Foundation.Keyboard.handleKey(e, 'Orbit', {
+          Keyboard.handleKey(e, 'Orbit', {
             next: function() {
               _this.changeSlide(true);
             },
@@ -331,7 +341,7 @@ class Orbit {
       }
 
       if (this.options.useMUI && !this.$element.is(':hidden')) {
-        Foundation.Motion.animateIn(
+        Motion.animateIn(
           $newSlide.addClass('is-active').css({'position': 'absolute', 'top': 0}),
           this.options[`animInFrom${dirIn}`],
           function(){
@@ -339,7 +349,7 @@ class Orbit {
             .attr('aria-live', 'polite');
         });
 
-        Foundation.Motion.animateOut(
+        Motion.animateOut(
           $curSlide.removeClass('is-active'),
           this.options[`animOutTo${dirOut}`],
           function(){
