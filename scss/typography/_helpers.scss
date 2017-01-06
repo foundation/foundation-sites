@@ -38,38 +38,6 @@ $subheader-margin-bottom: 0.5rem !default;
 /// @type Number
 $stat-font-size: 2.5rem !default;
 
-/// If `true`, makes dropcaps uppercase.
-/// @type Boolean
-$dropcaps-uppercase: true !default;
-
-/// Dropcaps component
-/// @param { Boolean } $uppercase [$dropcaps-uppercase] If `true`, makes dropcaps uppercase.
-@mixin dropcaps(
-  $uppercase: $dropcaps-uppercase
-) {
-  // Default margin (Arial/Helvetica) to let it properly aligned from the top on the 
-  // first line beside it and have a tiny space between them through the right
-  // See: http://code.stephenmorley.org/html-and-css/creating-drop-caps/
-  $-margin-top: 0.192em;
-  $-margin-right: 0.0962em;
-  $-font-size: 5.2em; // Increased font size (Arial/Helvetica) for dropcaps
-  $-line-height: .5; // Reduced line height to avoid affecting the lines below it 
-
-  line-height: 1.5; // Disabling default line height of an element
-
-  &:first-letter {
-    float: #{$global-left};
-    margin-top: $-margin-top;
-    margin-#{$global-right}: $-margin-right;
-    font-size: $-font-size;
-    line-height: $-line-height;
-
-    @if $uppercase {
-      text-transform: uppercase;
-    }
-  }
-}
-
 @mixin foundation-typography-helpers {
   // Use to create a subheading under a main header
   // Make sure you pair the two elements in a <header> element, like this:
@@ -106,10 +74,5 @@ $dropcaps-uppercase: true !default;
   .no-bullet {
     margin-#{$global-left}: 0;
     list-style: none;
-  }
-  
-  // Use to create an initial aka dropcap
-  .dropcaps {
-    @include dropcaps();
   }
 }

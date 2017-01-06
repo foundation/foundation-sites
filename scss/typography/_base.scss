@@ -506,4 +506,9 @@ $abbr-underline: 1px dotted $black !default;
       border-radius: $keystroke-radius;
     }
   }
+
+  // Use to create an initial aka dropcap
+  .dropcaps {
+    @include dropcaps();
+  }
 }
