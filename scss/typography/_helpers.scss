@@ -38,37 +38,30 @@ $subheader-margin-bottom: 0.5rem !default;
 /// @type Number
 $stat-font-size: 2.5rem !default;
 
-////
-/// @group typography-helpers-dropcaps
-////
+/// If `true`, makes dropcaps uppercase.
+/// @type Boolean
+$dropcaps-uppercase: true !default;
 
-/// Default font size for dropcaps 
-/// @type Number
-$dropcaps-font-size: 5.20em !default;
+/// Dropcaps component
+@mixin dropcaps($uppercase: $dropcaps-uppercase) {
+  // Default margin (Arial/Helvetica) to let it properly aligned from the top on the 
+  // first line beside it and have a tiny space between them through the right
+  $-margin: 0.192em 0.0962em 0 0; 
+  $-font-size: 5.2em; // Increased font size (Arial/Helvetica) for dropcaps
+  $-line-height: .5; // Reduced line height to avoid affecting the lines below it 
 
-/// Default line height for dropcaps
-/// @type Number
-$dropcaps-line-height: 0.5 !default;
+  line-height: 1.5; // Disabling default line height of an element
 
-/// Default vertically aligned position for dropcaps
-/// @type String
-$dropcaps-vertical-align: baseline !default;
+  &:first-letter {
+    float: #{$global-left};
+    margin: $-margin;
+    font-size: $-font-size;
+    line-height: $-line-height;
 
-/// Default text transform for dropcaps
-/// @type String
-$dropcaps-text-transform: uppercase !default;
-
-/// Deafult margin for dropcaps
-/// @type Numbers
-$dropcaps-margin: 0.192em 0.0962em 0 0 !default;
-
-@mixin foundation-dropcaps() { 
-  font-size: $dropcaps-font-size;
-  line-height: $dropcaps-line-height;
-  vertical-align: $dropcaps-vertical-align;
-  text-transform: $dropcaps-text-transform;
-  margin: $dropcaps-margin;
-  float: #{$global-left};
+    @if $dropcaps-uppercase {
+      text-transform: uppercase;
+    }
+  }
 }
 
 @mixin foundation-typography-helpers {
@@ -111,12 +104,6 @@ $dropcaps-margin: 0.192em 0.0962em 0 0 !default;
   
   // Use to create an initial aka dropcap
   .dropcaps{
-    line-height: 1.5; // Disabling default line height of an element
-    &:first-letter {
-      @include foundation-dropcaps;
-    }
+     @include dropcaps();
   }
 }
-
-
-
