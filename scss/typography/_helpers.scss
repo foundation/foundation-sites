@@ -43,10 +43,15 @@ $stat-font-size: 2.5rem !default;
 $dropcaps-uppercase: true !default;
 
 /// Dropcaps component
-@mixin dropcaps($uppercase: $dropcaps-uppercase) {
+/// @param { Boolean } $uppercase [$dropcaps-uppercase] If `true`, makes dropcaps uppercase.
+@mixin dropcaps(
+  $uppercase: $dropcaps-uppercase
+) {
   // Default margin (Arial/Helvetica) to let it properly aligned from the top on the 
   // first line beside it and have a tiny space between them through the right
-  $-margin: 0.192em 0.0962em 0 0; 
+  // See: http://code.stephenmorley.org/html-and-css/creating-drop-caps/
+  $-margin-top: 0.192em;
+  $-margin-right: 0.0962em;
   $-font-size: 5.2em; // Increased font size (Arial/Helvetica) for dropcaps
   $-line-height: .5; // Reduced line height to avoid affecting the lines below it 
 
@@ -54,11 +59,12 @@ $dropcaps-uppercase: true !default;
 
   &:first-letter {
     float: #{$global-left};
-    margin: $-margin;
+    margin-top: $-margin-top;
+    margin-#{$global-right}: $-margin-right;
     font-size: $-font-size;
     line-height: $-line-height;
 
-    @if $dropcaps-uppercase {
+    @if $uppercase {
       text-transform: uppercase;
     }
   }
@@ -103,7 +109,8 @@ $dropcaps-uppercase: true !default;
   }
   
   // Use to create an initial aka dropcap
-  .dropcaps{
-     @include dropcaps();
+  .dropcaps {
+    @include dropcaps();
   }
+
 }
