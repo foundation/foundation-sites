@@ -38,28 +38,38 @@ $subheader-margin-bottom: 0.5rem !default;
 /// @type Number
 $stat-font-size: 2.5rem !default;
 
-/// @dropcaps
+////
+/// @group typography-helpers-dropcaps
+////
 
-// Line height for all the text within dropcaps, disabling default line height's
-$dropcaps-line-height : 1.45 !default;
+/// Default font size for dropcaps 
+/// @type Number
+$dropcaps-font-size: 5.20em !default;
 
-// @dropcaps-first-letter
+/// Default line height for dropcaps
+/// @type Number
+$dropcaps-line-height: 0.5 !default;
 
-// Lets set margin first, used tiny negative margins for proper alignment
-$dropcaps-first-letter-margin-top: 0.02em !default;
-$dropcaps-first-letter-margin-bottom: -0.05em !default;
+/// Default vertically aligned position for dropcaps
+/// @type String
+$dropcaps-vertical-align: baseline !default;
 
-// Padding Right to the dropcaps first letter to create gap b/w rest of text 
-$dropcaps-first-letter-padding-right: 0.05em !default;
+/// Default text transform for dropcaps
+/// @type String
+$dropcaps-text-transform: uppercase !default;
 
-// Dropcaps first charchter is 500% bigger then regular size of an element 
-$dropcaps-first-letter-font-size: $global-font-size * 5 !default;
+/// Deafult margin for dropcaps
+/// @type Numbers
+$dropcaps-margin: 0.192em 0.0962em 0 0 !default;
 
-// Line height for first letter of the dropcaps
-$dropcaps-first-letter-line-height: 0.85em !default;
-
-// Dropcaps float
-$dropcaps-first-letter-float: left;
+@mixin foundation-dropcaps() { 
+  font-size: $dropcaps-font-size;
+  line-height: $dropcaps-line-height;
+  vertical-align: $dropcaps-vertical-align;
+  text-transform: $dropcaps-text-transform;
+  margin: $dropcaps-margin;
+  float: #{$global-left};
+}
 
 @mixin foundation-typography-helpers {
   // Use to create a subheading under a main header
@@ -98,16 +108,15 @@ $dropcaps-first-letter-float: left;
     margin-#{$global-left}: 0;
     list-style: none;
   }
-
-  .dropcaps {
-    line-height: $dropcaps-line-height;
+  
+  // Use to create an initial aka dropcap
+  .dropcaps{
+    line-height: 1.5; // Disabling default line height of an element
     &:first-letter {
-      margin-top: $dropcaps-first-letter-margin-top;
-      margin-bottom: $dropcaps-first-letter-margin-bottom;
-      padding-right: $dropcaps-first-letter-padding-right;
-      font-size: $dropcaps-first-letter-font-size;
-      line-height: $dropcaps-first-letter-line-height;
-      float: $dropcaps-first-letter-float;
+      @include foundation-dropcaps;
     }
   }
 }
+
+
+
