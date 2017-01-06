@@ -75,9 +75,4 @@ $stat-font-size: 2.5rem !default;
     margin-#{$global-left}: 0;
     list-style: none;
   }
-
-  // Use to create an initial aka dropcap
-  .dropcaps {
-    @include foundation-dropcaps();
-  }
 }

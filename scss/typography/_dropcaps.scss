@@ -8,7 +8,7 @@ $dropcaps-uppercase: true !default;
 
 /// Dropcaps component
 /// @param { Boolean } $uppercase [$dropcaps-uppercase] If `true`, makes dropcaps uppercase.
-@mixin foundation-dropcaps(
+@mixin dropcaps(
   $uppercase: $dropcaps-uppercase
 ) {
   // Default margin (Arial/Helvetica) to let it properly aligned from the top on the 
@@ -31,5 +31,12 @@ $dropcaps-uppercase: true !default;
     @if $uppercase {
       text-transform: uppercase;
     }
+  }
+}
+
+@mixin foundation-dropcaps {
+  // Use to create an initial aka dropcap
+  .dropcaps {
+    @include dropcaps();
   }
 }
