@@ -28,7 +28,6 @@
 // Components
 @import 'grid/grid';
 @import 'typography/typography';
-@import "typography/dropcaps";
 @import 'forms/forms';
 @import 'components/visibility';
 @import 'components/float';
@@ -77,8 +76,7 @@
   @else {
     @include foundation-flex-grid;
   }
-  @include foundation-typography;
-  @include foundation-dropcaps;
+  @include foundation-typography;  
   @include foundation-forms;
   @include foundation-button;
   @include foundation-accordion;
