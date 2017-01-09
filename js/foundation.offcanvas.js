@@ -5,7 +5,7 @@
   let Keyboard      = Foundation.Keyboard; // import Keyboard from "foundation.util.keyboard";
   let MediaQuery    = Foundation.MediaQuery; // import MediaQuery from "foundation.util.mediaQuery";
 
-  let transitionend = Foundation.transitionend; // Should transitionend be refactored into it's own module?
+  let transitionend = Foundation.transitionend; // import { transitionend } from "foundation.util.core";
 
   // import "foundation.util.triggers.js";
   // TODO: Figure out what triggers import should actually do, given how indirect their use is

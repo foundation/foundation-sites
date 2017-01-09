@@ -3,7 +3,7 @@
 !function($) {
 
   let MediaQuery  = Foundation.MediaQuery; // import MediaQuery from "foundation.util.mediaQuery";
-  let GetYoDigits = Foundation.GetYoDigits; // separate out GetYoDigits into util
+  let GetYoDigits = Foundation.GetYoDigits; // import { GetYoDigits } from "foundation.util.core";
 
   // import "foundation.util.triggers.js";
 

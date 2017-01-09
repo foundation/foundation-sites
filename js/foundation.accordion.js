@@ -3,7 +3,7 @@
 !function($) {
 
   let Keyboard    = Foundation.Keyboard; // import Keyboard from 'foundation.util.keyboard'
-  let GetYoDigits = Foundation.GetYoDigits; // currently part of foundation.core. Refactor?
+  let GetYoDigits = Foundation.GetYoDigits; // import { GetYoDigits } from 'foundation.util.core'
 
 /**
  * Accordion module.

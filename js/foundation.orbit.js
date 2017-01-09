@@ -4,10 +4,10 @@
 
 
   let Keyboard       = Foundation.Keyboard; // import Keyboard from "foundation.util.keyboard";
-  let Motion         = Foundation.Motion; // import { Motion } from "foundation.util.move"
-  let Timer          = Foundation.Timer; // import Timer from "foundation.util.timer"
-  let onImagesLoaded = Foundation.onImagesLoaded; // import onImagesLoaded from "foundation.util.imageLoader"
-  let GetYoDigits    = Foundation.GetYoDigits; // Add import after refactor
+  let Motion         = Foundation.Motion; // import { Motion } from "foundation.util.move";
+  let Timer          = Foundation.Timer; // import Timer from "foundation.util.timer";
+  let onImagesLoaded = Foundation.onImagesLoaded; // import onImagesLoaded from "foundation.util.imageLoader";
+  let GetYoDigits    = Foundation.GetYoDigits; // import { GetYoDigits } from "foundation.util.core";
 
   // import "foundation.util.touch.js"
   // TODO:  Figure out what a touch import should really do.

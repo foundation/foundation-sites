@@ -2,7 +2,7 @@
 
 !function($) {
 
-  let GetYoDigits = Foundation.GetYoDigits; // TODO: Separate this out?
+  let GetYoDigits = Foundation.GetYoDigits; // import { GetYoDigits } from "foundation.util.core";
 
 /**
  * Magellan module.
