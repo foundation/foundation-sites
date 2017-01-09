@@ -3,7 +3,7 @@
 !function($) {
 
   let Box         = Foundation.Box; // import Box from "foundation.utils.box";
-  let GetYoDigits = Foundation.GetYoDigits; // figure out import after refactor. TODO9438
+  let GetYoDigits = Foundation.GetYoDigits; // import { GetYoDigits } from "foundation.utils.core";
   let MediaQuery  = Foundation.MediaQuery; // import MediaQuery from "foundation.utils.mediaQuery";
 
   // import "foundation.util.triggers";

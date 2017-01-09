@@ -2,7 +2,7 @@
 
 !function($) {
 
-  let GetYoDigits = Foundation.GetYoDigits; // figure out import after refactor TODO9438
+  let GetYoDigits = Foundation.GetYoDigits; // import { GetYoDigits } from "foundation.util.core";
   let MediaQuery  = Foundation.MediaQuery; // import MediaQuery from "foundation.util.mediaQuery";
 /**
  * Sticky module.
