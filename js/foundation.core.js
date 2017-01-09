@@ -20,12 +20,6 @@ var Foundation = {
   _uuids: [],
 
   /**
-   * Returns a boolean for RTL support
-   */
-  rtl: function(){
-    return $('html').attr('dir') === 'rtl';
-  },
-  /**
    * Defines a Foundation plugin, adding it to the `Foundation` namespace and the list of plugins to initialize when reflowing.
    * @param {Object} plugin - The constructor of the plugin.
    */
@@ -130,18 +124,6 @@ var Foundation = {
    },
 
   /**
-   * returns a random base-36 uid with namespacing
-   * @function
-   * @param {Number} length - number of random base-36 digits desired. Increase for more random strings.
-   * @param {String} namespace - name of plugin to be incorporated in uid, optional.
-   * @default {String} '' - if no plugin name is provided, nothing is appended to the uid.
-   * @returns {String} - unique id
-   */
-  GetYoDigits: function(length, namespace){
-    length = length || 6;
-    return Math.round((Math.pow(36, length + 1) - Math.random() * Math.pow(36, length))).toString(36).slice(1) + (namespace ? `-${namespace}` : '');
-  },
-  /**
    * Initialize plugins on any elements within `elem` (and `elem` itself) that aren't already initialized.
    * @param {Object} elem - jQuery object containing the element to check inside. Also checks the element itself, unless it's the `document` object.
    * @param {String|Array} plugins - A list of plugins to initialize. Leave this out to initialize everything.
@@ -194,30 +176,6 @@ var Foundation = {
     });
   },
   getFnName: functionName,
-  transitionend: function($elem){
-    var transitions = {
-      'transition': 'transitionend',
-      'WebkitTransition': 'webkitTransitionEnd',
-      'MozTransition': 'transitionend',
-      'OTransition': 'otransitionend'
-    };
-    var elem = document.createElement('div'),
-        end;
-
-    for (var t in transitions){
-      if (typeof elem.style[t] !== 'undefined'){
-        end = transitions[t];
-      }
-    }
-    if(end){
-      return end;
-    }else{
-      end = setTimeout(function(){
-        $elem.triggerHandler('transitionend', [$elem]);
-      }, 1);
-      return 'transitionend';
-    }
-  }
 };
 
 Foundation.util = {

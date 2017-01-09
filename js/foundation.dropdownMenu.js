@@ -5,7 +5,7 @@
   let Keyboard = Foundation.Keyboard; // import Keyboard from "foundation.util.keyboard";
   let Nest     = Foundation.Nest; // import Nest from "foundation.util.nest";
   let Box      = Foundation.Box; // import Box from "foundation.util.box";
-  let Rtl      = Foundation.rtl; // Figure out import after refactor
+  let Rtl      = Foundation.rtl; // import { rtl } from "foundation.util.core";
 
 /**
  * DropdownMenu module.

@@ -10,7 +10,7 @@
 
 !function($) {
 
-  let Rtl = Foundation.rtl; // Figure out import after refactor
+  let Rtl = Foundation.rtl; // import { rtl } from "foundation.util.core";
 
 const keyCodes = {
   9: 'TAB',

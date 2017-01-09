@@ -4,7 +4,7 @@
 
   let MediaQuery     = Foundation.MediaQuery; // import MediaQuery from "foundation.util.mediaQuery";
   let onImagesLoaded = Foundation.onImagesLoaded; // import onImagesLoaded from "foundation.util.imageLoader";
-  let GetYoDigits    = Foundation.GetYoDigits; // figure out import after refactor;
+  let GetYoDigits    = Foundation.GetYoDigits; // import { GetYoDigits } from "foundation.util.core"
 
 /**
  * Equalizer module.

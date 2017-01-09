@@ -3,7 +3,7 @@
 !function($) {
 
   let MediaQuery  = Foundation.MediaQuery; // import MediaQuery from "foundation.util.mediaQuery";
-  let GetYoDigits = Foundation.GetYoDigits;
+  let GetYoDigits = Foundation.GetYoDigits; // import { GetYoDigits } from "foundation.util.core";
 
 /**
  * ResponsiveAccordionTabs module.

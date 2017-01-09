@@ -2,7 +2,7 @@
 
 !function($) {
 
-  let Rtl = Foundation.rtl; // Figure out imports after refactor
+  let Rtl = Foundation.rtl; // import { rtl } from "foundation.util.core";
 
 Foundation.Box = {
   ImNotTouchingYou: ImNotTouchingYou,

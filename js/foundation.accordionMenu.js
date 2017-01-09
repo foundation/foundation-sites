@@ -4,7 +4,7 @@
 
   let Keyboard    = Foundation.Keyboard; // import Keyboard from "foundation.util.keyboard"
   let Nest        = Foundation.Nest; // import Nest from "foundation.util.nest"
-  let GetYoDigits = Foundation.GetYoDigits; // add import after refactor
+  let GetYoDigits = Foundation.GetYoDigits; //import { GetYoDigits } from "foundation.util.core"
 
 /**
  * AccordionMenu module.

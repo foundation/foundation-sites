@@ -4,8 +4,8 @@
 
   let Keyboard    = Foundation.Keyboard; // import Keyboard from "foundation.util.keyboard";
   let Move        = Foundation.Move; // import { Move } from "foundation.util.motion";
-  let GetYoDigits = Foundation.GetYoDigits; // figure out import after refactor TODO9438
-  let Rtl         = Foundation.rtl; // figure out import/refactor for encapsulation of rtl() TODO9438
+  let GetYoDigits = Foundation.GetYoDigits; // import { GetYoDigits, rtl } from "foundation.util.core";
+  let Rtl         = Foundation.rtl;
 /**
  * Slider module.
  * @module foundation.slider

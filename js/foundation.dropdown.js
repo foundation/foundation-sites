@@ -4,7 +4,7 @@
 
   let Keyboard    = Foundation.Keyboard; // import Keyboard from "foundation.util.keyboard";
   let Box         = Foundation.Box; // import Box from "foundation.util.box";
-  let GetYoDigits = Foundation.GetYoDigits; // figure out import after refactor
+  let GetYoDigits = Foundation.GetYoDigits; // import { GetYoDigits } from "foundation.util.core";
 
   // import "foundation.util.triggers.js";
   // TODO: Figure out what a triggers import "means", since triggers are always accessed indirectly.
