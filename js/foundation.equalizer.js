@@ -2,15 +2,15 @@
 
 !function($) {
 
-  let MediaQuery     = Foundation.MediaQuery; // import MediaQuery from "foundation.util.mediaQuery.js";
-  let onImagesLoaded = Foundation.onImagesLoaded; // TODO9438: Separate out foundation.util.timerAndImageLoader
+  let MediaQuery     = Foundation.MediaQuery; // import MediaQuery from "foundation.util.mediaQuery";
+  let onImagesLoaded = Foundation.onImagesLoaded; // import onImagesLoaded from "foundation.util.imageLoader";
   let GetYoDigits    = Foundation.GetYoDigits; // figure out import after refactor;
 
 /**
  * Equalizer module.
  * @module foundation.equalizer
  * @requires foundation.util.mediaQuery
- * @requires foundation.util.timerAndImageLoader if equalizer contains images
+ * @requires foundation.util.imageLoader if equalizer contains images
  */
 
 class Equalizer {

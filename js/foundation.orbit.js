@@ -5,8 +5,8 @@
 
   let Keyboard       = Foundation.Keyboard; // import Keyboard from "foundation.util.keyboard";
   let Motion         = Foundation.Motion; // import { Motion } from "foundation.util.move"
-  let Timer          = Foundation.Timer; // Add import after refactoring to separate timer & image loader
-  let onImagesLoaded = Foundation.onImagesLoaded; // Add import after refactoring to separate timer & image loader
+  let Timer          = Foundation.Timer; // import Timer from "foundation.util.timer"
+  let onImagesLoaded = Foundation.onImagesLoaded; // import onImagesLoaded from "foundation.util.imageLoader"
   let GetYoDigits    = Foundation.GetYoDigits; // Add import after refactor
 
   // import "foundation.util.touch.js"
@@ -17,7 +17,8 @@
  * @module foundation.orbit
  * @requires foundation.util.keyboard
  * @requires foundation.util.motion
- * @requires foundation.util.timerAndImageLoader
+ * @requires foundation.util.timer
+ * @requires foundation.util.imageLoader
  * @requires foundation.util.touch
  */
 

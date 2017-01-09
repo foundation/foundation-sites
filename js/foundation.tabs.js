@@ -3,12 +3,12 @@
 !function($) {
 
   let Keyboard       = Foundation.Keyboard; // import Keyboard from "foundation.util.keyboard";
-  let onImagesLoaded = Foundation.onImagesLoaded; // add import after refactor TODO9438;
+  let onImagesLoaded = Foundation.onImagesLoaded; // import onImagesLoaded from "foundation.util.imageLoader";
 /**
  * Tabs module.
  * @module foundation.tabs
  * @requires foundation.util.keyboard
- * @requires foundation.util.timerAndImageLoader if tabs contain images
+ * @requires foundation.util.imageLoader if tabs contain images
  */
 
 class Tabs {
