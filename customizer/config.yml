@@ -90,13 +90,12 @@ equalizer:
   js: equalizer
   js_utils:
     - mediaQuery
-    - timerAndImageLoader
+    - imageLoader
 
 interchange:
   js: interchange
   js_utils:
     - triggers
-    - timerAndImageLoader
 
 label:
   sass: label
@@ -124,7 +123,8 @@ orbit:
   js: orbit
   js_utils:
     - motion
-    - timerAndImageLoader
+    - timer
+    - imageLoader
     - keyboard
     - touch
 
@@ -196,7 +196,7 @@ tabs:
   js: tabs
   js_utils:
     - keyboard
-    - timerAndImageLoader
+    - imageLoader
 
 thumbnail:
   sass: thumbnail

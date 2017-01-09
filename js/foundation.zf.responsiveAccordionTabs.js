@@ -8,7 +8,6 @@
 /**
  * ResponsiveAccordionTabs module.
  * @module foundation.responsiveAccordionTabs
- * @requires foundation.util.timerAndImageLoader
  * @requires foundation.util.motion
  * @requires foundation.accordion
  * @requires foundation.tabs
