@@ -38,7 +38,10 @@ class ResponsiveToggle {
     }
 
     this.$targetMenu = $(`#${targetID}`);
-    this.$toggler = this.$element.find('[data-toggle]');
+    this.$toggler = this.$element.find('[data-toggle]').filter(function() {
+      var target = $(this).data('toggle');
+      return (target === targetID || target === "");
+    });
     this.options = $.extend({}, this.options, this.$targetMenu.data());
 
     // If they were set, parse the animation classes
