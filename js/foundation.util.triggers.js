@@ -178,18 +178,6 @@ Triggers.Initializers.addScrollListener = function(debounce){
   }
 }
 
-// TODO: Figure out if this needs to be refactored or removed
-function mutateListener(debounce) {
-  let $nodes = $('[data-mutate]');
-  if ($nodes.length && MutationObserver){
-    //trigger all listening elements and signal a mutate event
-    //no IE 9 or 10
-    $nodes.each(function () {
-      $(this).triggerHandler('mutateme.zf.trigger');
-    });
-  }
-}
-
 Triggers.Initializers.addMutationEventsListener = function($elem) {
   if(!MutationObserver){ return false; }
   let $nodes = $elem.find('[data-resize], [data-scroll], [data-mutate]');
@@ -250,9 +238,6 @@ Triggers.Initializers.addGlobalListeners = function() {
   Triggers.Initializers.addResizeListener();
   Triggers.Initializers.addScrollListener();
   Triggers.Initializers.addClosemeListener();
-
-  // TODO, figure out if mutateListener needs to be refactored or removed
-  mutateListener();
 }
 
 
