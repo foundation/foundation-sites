@@ -20,6 +20,7 @@ class Magellan {
     this.options  = $.extend({}, Magellan.defaults, this.$element.data(), options);
 
     this._init();
+    this.calcPoints();
 
     Foundation.registerPlugin(this, 'Magellan');
   }
@@ -94,6 +95,11 @@ class Magellan {
         e.preventDefault();
         var arrival   = this.getAttribute('href');
         _this.scrollToLoc(arrival);
+      });
+    $(window).on('popstate', function(e) {
+      if(_this.options.deepLinking) {
+        _this.scrollToLoc(window.location.hash);
+      }
     });
   }
 
@@ -103,9 +109,18 @@ class Magellan {
    * @function
    */
   scrollToLoc(loc) {
-    var scrollPos = Math.round($(loc).offset().top - this.options.threshold / 2 - this.options.barOffset);
+    // Do nothing if target does not exist to prevent errors
+    if (!$(loc).length) {return false;}
+    this._inTransition = true;
+    var _this = this,
+        scrollPos = Math.round($(loc).offset().top - this.options.threshold / 2 - this.options.barOffset);
 
-    $('html, body').stop(true).animate({ scrollTop: scrollPos }, this.options.animationDuration, this.options.animationEasing);
+    $('html, body').stop(true).animate(
+      { scrollTop: scrollPos },
+      this.options.animationDuration,
+      this.options.animationEasing,
+      function() {_this._inTransition = false; _this._updateActive()}
+    );
   }
 
   /**
@@ -124,11 +139,12 @@ class Magellan {
    * @fires Magellan#update
    */
   _updateActive(/*evt, elem, scrollPos*/) {
+    if(this._inTransition) {return;}
     var winPos = /*scrollPos ||*/ parseInt(window.pageYOffset, 10),
         curIdx;
 
     if(winPos + this.winHeight === this.docHeight){ curIdx = this.points.length - 1; }
-    else if(winPos < this.points[0]){ curIdx = 0; }
+    else if(winPos < this.points[0]){ curIdx = undefined; }
     else{
       var isDown = this.scrollPos < winPos,
           _this = this,
@@ -139,14 +155,19 @@ class Magellan {
     }
 
     this.$active.removeClass(this.options.activeClass);
-    this.$active = this.$links.eq(curIdx).addClass(this.options.activeClass);
+    this.$active = this.$links.filter('[href="#' + this.$targets.eq(curIdx).data('magellan-target') + '"]').addClass(this.options.activeClass);
 
     if(this.options.deepLinking){
-      var hash = this.$active[0].getAttribute('href');
-      if(window.history.pushState){
-        window.history.pushState(null, null, hash);
-      }else{
-        window.location.hash = hash;
+      var hash = "";
+      if(curIdx != undefined){
+        hash = this.$active[0].getAttribute('href');
+      }
+      if(hash !== window.location.hash) {
+        if(window.history.pushState){
+          window.history.pushState(null, null, hash);
+        }else{
+          window.location.hash = hash;
+        }
       }
     }
 
@@ -182,37 +203,44 @@ Magellan.defaults = {
   /**
    * Amount of time, in ms, the animated scrolling should take between locations.
    * @option
-   * @example 500
+   * @type {number}
+   * @default 500
    */
   animationDuration: 500,
   /**
-   * Animation style to use when scrolling between locations.
+   * Animation style to use when scrolling between locations. Can be `'swing'` or `'linear'`.
    * @option
-   * @example 'ease-in-out'
+   * @type {string}
+   * @default 'linear'
+   * @see {@link https://api.jquery.com/animate|Jquery animate}
    */
   animationEasing: 'linear',
   /**
    * Number of pixels to use as a marker for location changes.
    * @option
-   * @example 50
+   * @type {number}
+   * @default 50
    */
   threshold: 50,
   /**
    * Class applied to the active locations link on the magellan container.
    * @option
-   * @example 'active'
+   * @type {string}
+   * @default 'active'
    */
   activeClass: 'active',
   /**
    * Allows the script to manipulate the url of the current page, and if supported, alter the history.
    * @option
-   * @example true
+   * @type {boolean}
+   * @default false
    */
   deepLinking: false,
   /**
    * Number of pixels to offset the scroll of the page on item click if using a sticky nav bar.
    * @option
-   * @example 25
+   * @type {number}
+   * @default 0
    */
   barOffset: 0
 }

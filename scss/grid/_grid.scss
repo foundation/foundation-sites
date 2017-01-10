@@ -33,22 +33,6 @@ $block-grid-max: 8 !default;
 // Internal value to store the end column float direction
 $-zf-end-float: if($grid-column-align-edge, $global-right, $global-left);
 
-// The last piece to transition the responsive gutter feature
-// Remove this in 6.3
-$grid-column-responsive-gutter: null !default;
-@if $grid-column-responsive-gutter {
-  // scss-lint:disable DebugStatement
-  @warn 'Rename $grid-column-responsive-gutter to $grid-column-gutter to remove this warning.';
-  $grid-column-gutter: $grid-column-responsive-gutter;
-}
-
-// If a single value is passed as a gutter, convert it to a map so the code knows what to do with it
-@if type-of($grid-column-gutter) == 'number' {
-  $grid-column-gutter: (
-    small: $grid-column-gutter,
-  );
-}
-
 @import 'row';
 @import 'column';
 @import 'size';

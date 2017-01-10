@@ -139,7 +139,7 @@ To encourage their use as an accessibility tool, the `<fieldset>` element is no 
 
 ## Help Text
 
-Place help text below a field to clarify it's purpose. Whenever you use help text, give the text a unique ID, and add the attribute `aria-describedby` to the input.
+Place help text below a field to clarify its purpose. Whenever you use help text, give the text a unique ID, and add the attribute `aria-describedby` to the input.
 
 ```html_example
 <label>Password

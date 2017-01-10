@@ -58,7 +58,12 @@ class Sticky {
       }
 
       _this._setSizes(function(){
-        _this._calc(false);
+        var scroll = window.pageYOffset;
+        _this._calc(false, scroll);
+        //Unstick the element will ensure that proper classes are set.
+        if (!_this.isStuck) {
+          _this._removeSticky((scroll >= _this.topPoint) ? false : true);
+        }
       });
       _this._events(id.split('-').reverse().join('-'));
     });
@@ -204,7 +209,6 @@ class Sticky {
     css[mrgn] = `${this.options[mrgn]}em`;
     css[stickTo] = 0;
     css[notStuckTo] = 'auto';
-    css['left'] = this.$container.offset().left + parseInt(window.getComputedStyle(this.$container[0])["padding-left"], 10);
     this.isStuck = true;
     this.$element.removeClass(`is-anchored is-at-${notStuckTo}`)
                  .addClass(`is-stuck is-at-${stickTo}`)
@@ -246,7 +250,6 @@ class Sticky {
       css['top'] = anchorPt;
     }
 
-    css['left'] = '';
     this.isStuck = false;
     this.$element.removeClass(`is-stuck is-at-${stickTo}`)
                  .addClass(`is-anchored is-at-${topOrBottom}`)
@@ -266,12 +269,15 @@ class Sticky {
    * @private
    */
   _setSizes(cb) {
-    this.canStick = Foundation.MediaQuery.atLeast(this.options.stickyOn);
-    if (!this.canStick) { cb(); }
+    this.canStick = Foundation.MediaQuery.is(this.options.stickyOn);
+    if (!this.canStick) {
+      if (cb && typeof cb === 'function') { cb(); }
+    }
     var _this = this,
         newElemWidth = this.$container[0].getBoundingClientRect().width,
         comp = window.getComputedStyle(this.$container[0]),
-        pdng = parseInt(comp['padding-right'], 10);
+        pdngl = parseInt(comp['padding-left'], 10),
+        pdngr = parseInt(comp['padding-right'], 10);
 
     if (this.$anchor && this.$anchor.length) {
       this.anchorHeight = this.$anchor[0].getBoundingClientRect().height;
@@ -280,7 +286,7 @@ class Sticky {
     }
 
     this.$element.css({
-      'max-width': `${newElemWidth - pdng}px`
+      'max-width': `${newElemWidth - pdngl - pdngr}px`
     });
 
     var newContainerHeight = this.$element[0].getBoundingClientRect().height || this.containerHeight;
@@ -293,9 +299,7 @@ class Sticky {
     });
     this.elemHeight = newContainerHeight;
 
-    if (this.isStuck) {
-      this.$element.css({"left":this.$container.offset().left + parseInt(comp['padding-left'], 10)});
-    } else {
+    if (!this.isStuck) {
       if (this.$element.hasClass('is-at-bottom')) {
         var anchorPt = (this.points ? this.points[1] - this.$container.offset().top : this.anchorHeight) - this.elemHeight;
         this.$element.css('top', anchorPt);
@@ -303,7 +307,7 @@ class Sticky {
     }
 
     this._setBreakPoints(newContainerHeight, function() {
-      if (cb) { cb(); }
+      if (cb && typeof cb === 'function') { cb(); }
     });
   }
 
@@ -315,7 +319,7 @@ class Sticky {
    */
   _setBreakPoints(elemHeight, cb) {
     if (!this.canStick) {
-      if (cb) { cb(); }
+      if (cb && typeof cb === 'function') { cb(); }
       else { return false; }
     }
     var mTop = emCalc(this.options.marginTop),
@@ -339,7 +343,7 @@ class Sticky {
     this.topPoint = topPoint;
     this.bottomPoint = bottomPoint;
 
-    if (cb) { cb(); }
+    if (cb && typeof cb === 'function') { cb(); }
   }
 
   /**
@@ -380,67 +384,78 @@ Sticky.defaults = {
   /**
    * Customizable container template. Add your own classes for styling and sizing.
    * @option
-   * @example '&lt;div data-sticky-container class="small-6 columns"&gt;&lt;/div&gt;'
+   * @type {string}
+   * @default '&lt;div data-sticky-container&gt;&lt;/div&gt;'
    */
   container: '<div data-sticky-container></div>',
   /**
-   * Location in the view the element sticks to.
+   * Location in the view the element sticks to. Can be `'top'` or `'bottom'`.
    * @option
-   * @example 'top'
+   * @type {string}
+   * @default 'top'
    */
   stickTo: 'top',
   /**
    * If anchored to a single element, the id of that element.
    * @option
-   * @example 'exampleId'
+   * @type {string}
+   * @default ''
    */
   anchor: '',
   /**
    * If using more than one element as anchor points, the id of the top anchor.
    * @option
-   * @example 'exampleId:top'
+   * @type {string}
+   * @default ''
    */
   topAnchor: '',
   /**
    * If using more than one element as anchor points, the id of the bottom anchor.
    * @option
-   * @example 'exampleId:bottom'
+   * @type {string}
+   * @default ''
    */
   btmAnchor: '',
   /**
    * Margin, in `em`'s to apply to the top of the element when it becomes sticky.
    * @option
-   * @example 1
+   * @type {number}
+   * @default 1
    */
   marginTop: 1,
   /**
    * Margin, in `em`'s to apply to the bottom of the element when it becomes sticky.
    * @option
-   * @example 1
+   * @type {number}
+   * @default 1
    */
   marginBottom: 1,
   /**
    * Breakpoint string that is the minimum screen size an element should become sticky.
    * @option
-   * @example 'medium'
+   * @type {string}
+   * @default 'medium'
    */
   stickyOn: 'medium',
   /**
    * Class applied to sticky element, and removed on destruction. Foundation defaults to `sticky`.
    * @option
-   * @example 'sticky'
+   * @type {string}
+   * @default 'sticky'
    */
   stickyClass: 'sticky',
   /**
    * Class applied to sticky container. Foundation defaults to `sticky-container`.
    * @option
-   * @example 'sticky-container'
+   * @type {string}
+   * @default 'sticky-container'
    */
   containerClass: 'sticky-container',
   /**
    * Number of scroll events between the plugin's recalculating sticky points. Setting it to `0` will cause it to recalc every scroll event, setting it to `-1` will prevent recalc on scroll.
    * @option
-   * @example 50
+   * @type {number}
+   * @default -1
    */
   checkEvery: -1
 };

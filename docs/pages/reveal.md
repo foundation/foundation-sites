@@ -183,7 +183,7 @@ var $modal = $('#modal');
 
 $.ajax('/url')
   .done(function(resp){
-    $modal.html(resp.html).foundation('open');
+    $modal.html(resp).foundation('open');
 });
 ```
 

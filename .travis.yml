@@ -1,9 +1,8 @@
 language: node_js
 node_js:
-  - "0.12"
-before_install:
-  - rvm install 2.2.2
+  - "4.0"
 install:
   - npm install -g bower
   - npm install
-  - gem install scss_lint
+notifications:
+  email: false

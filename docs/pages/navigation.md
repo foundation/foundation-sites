@@ -46,9 +46,9 @@ Top bar is a simple wrapper around these menu patterns. It supports a left-hand 
   <div class="top-bar-left">
     <ul class="dropdown menu" data-dropdown-menu>
       <li class="menu-text">Site Title</li>
-      <li><a href="#">One</a></li>
-      <li><a href="#">Two</a></li>
-      <li><a href="#">Three</a></li>
+      <li><a href="#0">One</a></li>
+      <li><a href="#0">Two</a></li>
+      <li><a href="#0">Three</a></li>
     </ul>
   </div>
   <div class="top-bar-right">
@@ -73,47 +73,47 @@ The dropdown menu plugin (`data-dropdown-menu`) converts a nested menu into a se
   <li class="has-submenu">
     <a>Item 1</a>
     <ul class="submenu menu" data-submenu>
-      <li><a href="#">Item 1A Loooong</a></li>
+      <li><a href="#0">Item 1A Loooong</a></li>
       <li class="has-submenu">
-        <a href="#"> Item 1 sub</a>
+        <a href="#0"> Item 1 sub</a>
         <ul class="submenu menu" data-submenu>
-          <li><a href="#">Item 1 subA</a></li>
-          <li><a href="#">Item 1 subB</a></li>
+          <li><a href="#0">Item 1 subA</a></li>
+          <li><a href="#0">Item 1 subB</a></li>
           <li class="has-submenu">
             <a href="#"> Item 1 sub</a>
             <ul class="submenu menu" data-submenu>
-              <li><a href="#">Item 1 subA</a></li>
-              <li><a href="#">Item 1 subB</a></li>
+              <li><a href="#0">Item 1 subA</a></li>
+              <li><a href="#0">Item 1 subB</a></li>
             </ul>
           </li>
           <li class="has-submenu">
-            <a href="#">Item 1 sub</a>
+            <a href="#0">Item 1 sub</a>
             <ul class="submenu menu" data-submenu>
-              <li><a href="#">Item 1 subA</a></li>
-              <li><a href="#">Item 1 subB</a></li>
+              <li><a href="#0">Item 1 subA</a></li>
+              <li><a href="#0">Item 1 subB</a></li>
             </ul>
           </li>
 
         </ul>
       </li>
-      <li><a href="#">Item 1B</a></li>
+      <li><a href="#0">Item 1B</a></li>
     </ul>
   </li>
   <li class="has-submenu">
-    <a href="#">Item 2</a>
+    <a href="#0">Item 2</a>
     <ul class="submenu menu" data-submenu>
-      <li><a href="#">Item 2A</a></li>
-      <li><a href="#">Item 2B</a></li>
+      <li><a href="#0">Item 2A</a></li>
+      <li><a href="#0">Item 2B</a></li>
     </ul>
   </li>
   <li class="has-submenu">
-    <a href="#">Item 3</a>
+    <a href="#0">Item 3</a>
     <ul class="submenu menu" data-submenu>
-      <li><a href="#">Item 3A</a></li>
-      <li><a href="#">Item 3B</a></li>
+      <li><a href="#0">Item 3A</a></li>
+      <li><a href="#0">Item 3B</a></li>
     </ul>
   </li>
-  <li><a href="#">Item 4</a></li>
+  <li><a href="#0">Item 4</a></li>
 </ul>
 
 ---
@@ -129,37 +129,37 @@ The drilldown menu plugin (`data-drilldown`) converts a nested menu into a serie
       <li class="has-submenu">
         <a href="#">Item 1A</a>
         <ul class="vertical menu" data-submenu id="m3">
-          <li><a href="#">Item 1Aa</a></li>
-          <li><a href="#">Item 1Ba</a></li>
-          <li><a href="#">Item 1Ca</a></li>
-          <li><a href="#">Item 1Da</a></li>
-          <li><a href="#">Item 1Ea</a></li>
+          <li><a href="#0">Item 1Aa</a></li>
+          <li><a href="#0">Item 1Ba</a></li>
+          <li><a href="#0">Item 1Ca</a></li>
+          <li><a href="#0">Item 1Da</a></li>
+          <li><a href="#0">Item 1Ea</a></li>
         </ul>
       </li>
-      <li><a href="#">Item 1B</a></li>
-      <li><a href="#">Item 1C</a></li>
-      <li><a href="#">Item 1D</a></li>
-      <li><a href="#">Item 1E</a></li>
+      <li><a href="#0">Item 1B</a></li>
+      <li><a href="#0">Item 1C</a></li>
+      <li><a href="#0">Item 1D</a></li>
+      <li><a href="#0">Item 1E</a></li>
     </ul>
   </li>
   <li class="has-submenu">
     <a href="#">Item 2</a>
     <ul class="vertical menu" data-submenu>
-      <li><a href="#">Item 2A</a></li>
-      <li><a href="#">Item 2B</a></li>
-      <li><a href="#">Item 2C</a></li>
-      <li><a href="#">Item 2D</a></li>
-      <li><a href="#">Item 2E</a></li>
+      <li><a href="#0">Item 2A</a></li>
+      <li><a href="#0">Item 2B</a></li>
+      <li><a href="#0">Item 2C</a></li>
+      <li><a href="#0">Item 2D</a></li>
+      <li><a href="#0">Item 2E</a></li>
     </ul>
   </li>
   <li class="has-submenu">
     <a href="#">Item 3</a>
     <ul class="vertical menu" data-submenu>
-      <li><a href="#">Item 3A</a></li>
-      <li><a href="#">Item 3B</a></li>
-      <li><a href="#">Item 3C</a></li>
-      <li><a href="#">Item 3D</a></li>
-      <li><a href="#">Item 3E</a></li>
+      <li><a href="#0">Item 3A</a></li>
+      <li><a href="#0">Item 3B</a></li>
+      <li><a href="#0">Item 3C</a></li>
+      <li><a href="#0">Item 3D</a></li>
+      <li><a href="#0">Item 3E</a></li>
     </ul>
   </li>
   <li><a href="#"> Item 4</a></li>
@@ -178,23 +178,23 @@ The accordion menu plugin (`data-accordion-menu`) converts a nested menu into a 
       <li class="has-submenu">
         <a href="#">Item 1A</a>
         <ul class="menu vertical nested" data-submenu>
-          <li><a href="#">Item 1Ai</a></li>
-          <li><a href="#">Item 1Aii</a></li>
-          <li><a href="#">Item 1Aiii</a></li>
+          <li><a href="#0">Item 1Ai</a></li>
+          <li><a href="#0">Item 1Aii</a></li>
+          <li><a href="#0">Item 1Aiii</a></li>
         </ul>
       </li>
-      <li><a href="#">Item 1B</a></li>
-      <li><a href="#">Item 1C</a></li>
+      <li><a href="#0">Item 1B</a></li>
+      <li><a href="#0">Item 1C</a></li>
     </ul>
   </li>
   <li class="has-submenu">
     <a href="#">Item 2</a>
     <ul class="menu vertical nested" data-submenu>
-      <li><a href="#">Item 2A</a></li>
-      <li><a href="#">Item 2B</a></li>
+      <li><a href="#0">Item 2A</a></li>
+      <li><a href="#0">Item 2B</a></li>
     </ul>
   </li>
-  <li><a href="#">Item 3</a></li>
+  <li><a href="#0">Item 3</a></li>
 </div>
 
 ---
@@ -207,33 +207,33 @@ Our responsive menu plugin (`data-responsive-menu`) allows you to take a Menu, a
 
 <ul class="vertical menu" data-responsive-menu="drilldown medium-dropdown" style="width: 300px;">
   <li class="has-submenu">
-    <a href="#">Item 1</a>
+    <a href="#0">Item 1</a>
     <ul class="vertical submenu menu" data-submenu id="m2">
       <li class="has-submenu">
-        <a href="#">Item 1A</a>
+        <a href="#0">Item 1A</a>
         <ul class="vertical submenu menu" data-submenu id="m3">
-          <li><a href="#">Item 1A</a></li>
-          <li><a href="#">Item 1B</a></li>
-          <li><a href="#">Item 1C</a></li>
-          <li><a href="#">Item 1D</a></li>
-          <li><a href="#">Item 1E</a></li>
+          <li><a href="#0">Item 1A</a></li>
+          <li><a href="#0">Item 1B</a></li>
+          <li><a href="#0">Item 1C</a></li>
+          <li><a href="#0">Item 1D</a></li>
+          <li><a href="#0">Item 1E</a></li>
         </ul>
       </li>
-      <li><a href="#">Item 1B</a></li>
+      <li><a href="#0">Item 1B</a></li>
     </ul>
   </li>
   <li class="has-submenu">
-    <a href="#">Item 2</a>
+    <a href="#0">Item 2</a>
     <ul class="vertical submenu menu" data-submenu>
-      <li><a href="#">Item 2A</a></li>
-      <li><a href="#">Item 2B</a></li>
+      <li><a href="#0">Item 2A</a></li>
+      <li><a href="#0">Item 2B</a></li>
     </ul>
   </li>
   <li class="has-submenu">
-    <a href="#">Item 3</a>
+    <a href="#0">Item 3</a>
     <ul class="vertical submenu menu" data-submenu>
-      <li><a href="#">Item 3A</a></li>
-      <li><a href="#">Item 3B</a></li>
+      <li><a href="#0">Item 3A</a></li>
+      <li><a href="#0">Item 3B</a></li>
     </ul>
   </li>
 </ul>
@@ -254,15 +254,15 @@ To see the below example in action, scale your browser down. The top bar will be
     <ul class="dropdown menu" data-dropdown-menu>
       <li class="menu-text">Site Title</li>
       <li class="has-submenu">
-        <a href="#">One</a>
+        <a href="#0">One</a>
         <ul class="submenu menu vertical" data-submenu>
-          <li><a href="#">One</a></li>
-          <li><a href="#">Two</a></li>
-          <li><a href="#">Three</a></li>
+          <li><a href="#0">One</a></li>
+          <li><a href="#0">Two</a></li>
+          <li><a href="#0">Three</a></li>
         </ul>
       </li>
-      <li><a href="#">Two</a></li>
-      <li><a href="#">Three</a></li>
+      <li><a href="#0">Two</a></li>
+      <li><a href="#0">Three</a></li>
     </ul>
   </div>
   <div class="top-bar-right">

@@ -22,6 +22,10 @@ $buttongroup-child-selector: '.button' !default;
 /// @type Number
 $buttongroup-expand-max: 6 !default;
 
+/// Determines if $button-radius is applied to each button or the button group as a whole. Use $global-radius in _settings.scss to change radius.
+/// @type Boolean
+$buttongroup-radius-on-each: true !default;
+
 /// Add styles for a button group container.
 /// @param {String} $child-selector [$buttongroup-child-selector] - Selector for the buttons inside a button group.
 @mixin button-group(
@@ -52,6 +56,21 @@ $buttongroup-expand-max: 6 !default;
     &:last-child {
       margin-#{$global-right}: 0;
     }
+
+    @if not $buttongroup-radius-on-each {
+      border-radius: 0;
+
+      &:first-child {
+        border-top-#{$global-left}-radius: $global-radius;
+        border-bottom-#{$global-left}-radius: $global-radius;
+      }
+
+      &:last-child {
+        border-top-#{$global-right}-radius: $global-radius;
+        border-bottom-#{$global-right}-radius: $global-radius;
+      }
+    }
+
   }
 }
 
@@ -70,10 +89,9 @@ $buttongroup-expand-max: 6 !default;
     }
   }
 
-  // scss-lint:disable ZeroUnit
   #{$selector} {
     @if $global-flexbox {
-      flex: 1 1 0px;
+      flex: 1 1 0px; // sass-lint:disable-line zero-unit
     }
     @else {
       @for $i from 2 through $buttongroup-expand-max {
@@ -113,6 +131,23 @@ $buttongroup-expand-max: 6 !default;
     &:last-child {
       margin-bottom: 0;
     }
+
+
+    @if not $buttongroup-radius-on-each {
+      border-radius: 0;
+
+      &:first-child{
+        border-top-#{$global-left}-radius: $global-radius;
+        border-top-#{$global-right}-radius: $global-radius;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+        border-bottom-#{$global-left}-radius: $global-radius;
+        border-bottom-#{$global-right}-radius: $global-radius;
+      }
+    }
+
   }
 }
 
@@ -121,15 +156,29 @@ $buttongroup-expand-max: 6 !default;
 @mixin button-group-unstack(
   $selector: $buttongroup-child-selector
 ) {
-  // scss-lint:disable ZeroUnit
   #{$selector} {
     @if $global-flexbox {
-      flex: 1 1 0px;
+      flex: 1 1 0px; // sass-lint:disable-line zero-unit
     }
     @else {
       width: auto;
     }
     margin-bottom: 0;
+
+    @if not $buttongroup-radius-on-each {
+      &:first-child {
+        border-top-#{$global-left}-radius: $global-radius;
+        border-top-#{$global-right}-radius: 0;
+        border-bottom-#{$global-left}-radius: $global-radius;
+      }
+
+      &:last-child {
+        border-top-#{$global-right}-radius: $global-radius;
+        border-bottom-#{$global-right}-radius: $global-radius;
+        border-bottom-#{$global-left}-radius: 0;
+      }
+    }
+
   }
 }
 
@@ -180,8 +229,7 @@ $buttongroup-expand-max: 6 !default;
       }
     }
 
-    // scss-lint:disable MergeableSelector
-    &.stacked-for-small.expanded {
+    &.stacked-for-small.expanded { // sass-lint:disable-line force-element-nesting
       @include breakpoint(small only) {
         display: block;
 

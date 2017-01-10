@@ -6,6 +6,20 @@ tags:
   - navigation
 ---
 
+<div data-sticky-container>
+  <div class="sticky" id="sticky-magellan" style="width:100%;" data-sticky data-margin-top="0" data-margin-bottom="0" data-top-anchor="setup" data-btm-anchor="destroy:bottom" data-sticky-on="small">
+    <nav data-magellan class="sticky-mag" data-bar-offset="25">
+      <ul class="horizontal menu expanded">
+        <li><a href="#setup">Setup</a></li>
+        <li><a href="#sticky-navigation">Sticky Navigation</a></li>
+        <li><a href="#javascript-reference">JavaScript Reference</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<br>
+
 ## Setup
 
 You can use Magellan with any navigation element, like our [Menu](menu.html) or your own custom component. Just add the attribute `data-magellan` to the container, and links to specific sections of your page. Each section needs a unique ID.

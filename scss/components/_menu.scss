@@ -24,11 +24,19 @@ $menu-item-color-active: $white !default;
 
 /// Background color of an active menu item.
 /// @type Color
-$menu-item-background-active: map-get($foundation-palette, primary) !default;
+$menu-item-background-active: get-color(primary) !default;
 
 /// Spacing between an icon and text in a menu item.
 /// @type Number
 $menu-icon-spacing: 0.25rem !default;
+
+/// Background color for an hovered menu item.
+/// @type Color
+$menu-item-background-hover: $light-gray !default;
+
+/// Color for bordered menu
+/// @type Color
+$menu-border: $light-gray !default;
 
 /// Creates the base styles for a Menu.
 @mixin menu-base {
@@ -36,10 +44,10 @@ $menu-icon-spacing: 0.25rem !default;
   list-style-type: none;
 
   @if $global-flexbox {
-    width: 100%;
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
+    width: 100%;
   }
 
   // List items are table cell to allow for vertical alignment
@@ -64,6 +72,7 @@ $menu-icon-spacing: 0.25rem !default;
 
   // Reset styles of inner elements
   input,
+  select,
   a,
   button {
     margin-bottom: 0;
@@ -73,15 +82,18 @@ $menu-icon-spacing: 0.25rem !default;
 /// Expands the items of a Menu, so each item is the same width.
 @mixin menu-expand {
   @if $global-flexbox {
-    // scss-lint:disable ZeroUnit
     > li {
-      flex: 1 1 0px;
+      flex: 1 1 0px; // sass-lint:disable-line zero-unit
     }
   }
   @else {
-    width: 100%;
     display: table;
+    width: 100%;
     table-layout: fixed;
+  }
+
+  > li:first-child:last-child {
+    width: 100%;
   }
 }
 
@@ -112,8 +124,8 @@ $menu-icon-spacing: 0.25rem !default;
       }
 
       > li  > a {
-        align-items: flex-start;
         justify-content: flex-start;
+        align-items: flex-start;
       }
     }
     @else {
@@ -130,9 +142,9 @@ $menu-icon-spacing: 0.25rem !default;
 /// Creates a simple Menu, which has no padding or hover state.
 @mixin menu-simple {
   li {
-    line-height: 1;
     display: inline-block;
     margin-#{$global-right}: get-side($menu-item-padding, $global-right);
+    line-height: 1;
   }
 
   a {
@@ -206,8 +218,8 @@ $menu-icon-spacing: 0.25rem !default;
         }
         @else {
           align-self: stretch;
-          text-align: center;
           margin-bottom: $menu-icon-spacing;
+          text-align: center;
         }
       }
     }
@@ -215,12 +227,13 @@ $menu-icon-spacing: 0.25rem !default;
 }
 
 @mixin menu-text {
-  font-weight: bold;
-  color: inherit;
-  line-height: 1;
   padding-top: 0;
   padding-bottom: 0;
   padding: $menu-item-padding;
+
+  font-weight: bold;
+  line-height: 1;
+  color: inherit;
 }
 
 @mixin foundation-menu {
@@ -228,24 +241,32 @@ $menu-icon-spacing: 0.25rem !default;
     @include menu-base;
     @include menu-icons;
 
-    // Orientation
-    @include menu-direction(horizontal);
+    // Default orientation: horizontal
+    &, &.horizontal {
+      @include menu-direction(horizontal);
+    }
 
+    // Even-width modifier for horizontal orientation
+    &.expanded {
+      @include menu-expand;
+    }
+
+    // Vertical orientation modifier
     &.vertical {
       @include menu-direction(vertical);
     }
 
-    @each $size in $breakpoint-classes {
-      @if $size != $-zf-zero-breakpoint {
-        @include breakpoint($size) {
-          &.#{$size}-horizontal {
-            @include menu-direction(horizontal);
-          }
+    @include -zf-each-breakpoint($small: false) {
+      &.#{$-zf-size}-horizontal {
+        @include menu-direction(horizontal);
+      }
 
-          &.#{$size}-vertical {
-            @include menu-direction(vertical);
-          }
-        }
+      &.#{$-zf-size}-expanded {
+        @include menu-expand;
+      }
+
+      &.#{$-zf-size}-vertical {
+        @include menu-direction(vertical);
       }
     }
 
@@ -268,18 +289,15 @@ $menu-icon-spacing: 0.25rem !default;
       }
     }
 
-    // Even-width
-    &.expanded {
-      @include menu-expand;
-
-      > li:first-child:last-child {
-        width: 100%;
-      }
-    }
-
     // Vertical icons
     &.icon-top {
       @include menu-icons(top, $base: false);
+      // Make vertical menu with icons on top work
+      &.vertical {
+        a > span {
+          margin: auto;
+        }
+      }
     }
 
     // Nesting
@@ -289,8 +307,25 @@ $menu-icon-spacing: 0.25rem !default;
 
     // Active state
     .active > a {
-      color: $menu-item-color-active;
       background: $menu-item-background-active;
+      color: $menu-item-color-active;
+    }
+
+    // Menu with border
+    &.menu-bordered {
+      li {
+        border: 1px solid $menu-border;
+        &:not(:first-child) {
+          border-top: 0;
+        }
+      }
+    }
+
+    // Menu with background hover
+    &.menu-hover {
+      li:hover {
+        background-color: $menu-item-background-hover;
+      }
     }
   }
 

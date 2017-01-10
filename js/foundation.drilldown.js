@@ -47,8 +47,10 @@ class Drilldown {
     this.$submenuAnchors = this.$element.find('li.is-drilldown-submenu-parent').children('a');
     this.$submenus = this.$submenuAnchors.parent('li').children('[data-submenu]');
     this.$menuItems = this.$element.find('li').not('.js-drilldown-back').attr('role', 'menuitem').find('a');
+    this.$element.attr('data-mutate', (this.$element.attr('data-drilldown') || Foundation.GetYoDigits(6, 'drilldown')));
 
     this._prepareMenu();
+    this._registerEvents();
 
     this._keyboardEvents();
   }
@@ -71,7 +73,7 @@ class Drilldown {
       if(_this.options.parentLink){
         $link.clone().prependTo($sub.children('[data-submenu]')).wrap('<li class="is-submenu-parent-item is-submenu-item is-drilldown-submenu-item" role="menu-item"></li>');
       }
-      $link.data('savedHref', $link.attr('href')).removeAttr('href');
+      $link.data('savedHref', $link.attr('href')).removeAttr('href').attr('tabindex', 0);
       $link.children('[data-submenu]')
           .attr({
             'aria-hidden': true,
@@ -84,14 +86,35 @@ class Drilldown {
       var $menu = $(this),
           $back = $menu.find('.js-drilldown-back');
       if(!$back.length){
-        $menu.prepend(_this.options.backButton);
+        switch (_this.options.backButtonPosition) {
+          case "bottom":
+            $menu.append(_this.options.backButton);
+            break;
+          case "top":
+            $menu.prepend(_this.options.backButton);
+            break;
+          default:
+            console.error("Unsupported backButtonPosition value '" + _this.options.backButtonPosition + "'");
+        }
       }
       _this._back($menu);
     });
+
+    if(!this.options.autoHeight) {
+      this.$submenus.addClass('drilldown-submenu-cover-previous');
+    }
+
     if(!this.$element.parent().hasClass('is-drilldown')){
       this.$wrapper = $(this.options.wrapper).addClass('is-drilldown');
+      if(this.options.animateHeight) this.$wrapper.addClass('animate-height');
       this.$wrapper = this.$element.wrap(this.$wrapper).parent().css(this._getMaxDims());
     }
+  }
+
+  _resize() {
+    this.$wrapper.css({'max-width': 'none', 'min-height': 'none'});
+    // _getMaxDims has side effects (boo) but calling it should update all other necessary heights & widths
+    this.$wrapper.css(this._getMaxDims());
   }
 
   /**
@@ -125,6 +148,37 @@ class Drilldown {
         });
       }
     });
+	  this.$element.on('mutateme.zf.trigger', this._resize.bind(this));
+  }
+
+  /**
+   * Adds event handlers to the menu element.
+   * @function
+   * @private
+   */
+  _registerEvents() {
+    if(this.options.scrollTop){
+      this._bindHandler = this._scrollTop.bind(this);
+      this.$element.on('open.zf.drilldown hide.zf.drilldown closed.zf.drilldown',this._bindHandler);
+    }
+  }
+
+  /**
+   * Scroll to Top of Element or data-scroll-top-element
+   * @function
+   * @fires Drilldown#scrollme
+   */
+  _scrollTop() {
+    var _this = this;
+    var $scrollTopElement = _this.options.scrollTopElement!=''?$(_this.options.scrollTopElement):_this.$element,
+        scrollPos = parseInt($scrollTopElement.offset().top+_this.options.scrollTopOffset);
+    $('html, body').stop(true).animate({ scrollTop: scrollPos }, _this.options.animationDuration, _this.options.animationEasing,function(){
+      /**
+        * Fires after the menu has scrolled
+        * @event Drilldown#scrollme
+        */
+      if(this===$('html')[0])_this.$element.trigger('scrollme.zf.drilldown');
+    });
   }
 
   /**
@@ -134,8 +188,7 @@ class Drilldown {
   _keyboardEvents() {
     var _this = this;
 
-    this.$menuItems.add(this.$element.find('.js-drilldown-back > a')).on('keydown.zf.drilldown', function(e){
-
+    this.$menuItems.add(this.$element.find('.js-drilldown-back > a, .is-submenu-parent-item > a')).on('keydown.zf.drilldown', function(e){
       var $element = $(this),
           $elements = $element.parent('li').parent('ul').children('li').children('a'),
           $prevElement,
@@ -188,13 +241,14 @@ class Drilldown {
                 $element.parent('li').parent('ul').parent('li').children('a').first().focus();
               }, 1);
             });
+            return true;
           } else if ($element.is(_this.$submenuAnchors)) {
             _this._show($element.parent('li'));
             $element.parent('li').one(Foundation.transitionend($element), function(){
               $element.parent('li').find('ul li a').filter(_this.$menuItems).first().focus();
             });
+            return true;
           }
-          return true;
         },
         handled: function(preventDefault) {
           if (preventDefault) {
@@ -213,6 +267,7 @@ class Drilldown {
    */
   _hideAll() {
     var $elem = this.$element.find('.is-drilldown-submenu.is-active').addClass('is-closing');
+    if(this.options.autoHeight) this.$wrapper.css({height:$elem.parent().closest('ul').data('calcHeight')});
     $elem.one(Foundation.transitionend($elem), function(e){
       $elem.removeClass('is-active is-closing');
     });
@@ -237,6 +292,12 @@ class Drilldown {
         e.stopImmediatePropagation();
         // console.log('mouseup on back');
         _this._hide($elem);
+
+        // If there is a parent submenu, call show
+        let parentSubMenu = $elem.parent('li').parent('ul').parent('li');
+        if (parentSubMenu.length) {
+          _this._show(parentSubMenu);
+        }
       });
   }
 
@@ -264,7 +325,9 @@ class Drilldown {
    * @param {jQuery} $elem - the current element with a submenu to open, i.e. the `li` tag.
    */
   _show($elem) {
-    $elem.children('[data-submenu]').addClass('is-active');
+    if(this.options.autoHeight) this.$wrapper.css({height:$elem.children('[data-submenu]').data('calcHeight')});
+    $elem.attr('aria-expanded', true);
+    $elem.children('[data-submenu]').addClass('is-active').attr('aria-hidden', false);
     /**
      * Fires when the submenu has opened.
      * @event Drilldown#open
@@ -279,7 +342,10 @@ class Drilldown {
    * @param {jQuery} $elem - the current sub-menu to hide, i.e. the `ul` tag.
    */
   _hide($elem) {
+    if(this.options.autoHeight) this.$wrapper.css({height:$elem.parent().closest('ul').data('calcHeight')});
     var _this = this;
+    $elem.parent('li').attr('aria-expanded', false);
+    $elem.attr('aria-hidden', true).addClass('is-closing')
     $elem.addClass('is-closing')
          .one(Foundation.transitionend($elem), function(){
            $elem.removeClass('is-active is-closing');
@@ -299,13 +365,19 @@ class Drilldown {
    * @private
    */
   _getMaxDims() {
-    var max = 0, result = {};
+    var  maxHeight = 0, result = {}, _this = this;
     this.$submenus.add(this.$element).each(function(){
       var numOfElems = $(this).children('li').length;
-      max = numOfElems > max ? numOfElems : max;
+      var height = Foundation.Box.GetDimensions(this).height;
+      maxHeight = height > maxHeight ? height : maxHeight;
+      if(_this.options.autoHeight) {
+        $(this).data('calcHeight',height);
+        if (!$(this).hasClass('is-drilldown-submenu')) result['height'] = height;
+      }
     });
 
-    result['min-height'] = `${max * this.$menuItems[0].getBoundingClientRect().height}px`;
+    if(!this.options.autoHeight) result['min-height'] = `${maxHeight}px`;
+
     result['max-width'] = `${this.$element[0].getBoundingClientRect().width}px`;
 
     return result;
@@ -316,7 +388,9 @@ class Drilldown {
    * @function
    */
   destroy() {
+    if(this.options.scrollTop) this.$element.off('.zf.drilldown',this._bindHandler);
     this._hideAll();
+	  this.$element.off('mutateme.zf.trigger');
     Foundation.Nest.Burn(this.$element, 'drilldown');
     this.$element.unwrap()
                  .find('.js-drilldown-back, .is-submenu-parent-item').remove()
@@ -325,8 +399,12 @@ class Drilldown {
     this.$submenuAnchors.each(function() {
       $(this).off('.zf.drilldown');
     });
+
+    this.$submenus.removeClass('drilldown-submenu-cover-previous');
+
     this.$element.find('a').each(function(){
       var $link = $(this);
+      $link.removeAttr('tabindex');
       if($link.data('savedHref')){
         $link.attr('href', $link.data('savedHref')).removeData('savedHref');
       }else{ return; }
@@ -337,29 +415,90 @@ class Drilldown {
 
 Drilldown.defaults = {
   /**
-   * Markup used for JS generated back button. Prepended to submenu lists and deleted on `destroy` method, 'js-drilldown-back' class required. Remove the backslash (`\`) if copy and pasting.
+   * Markup used for JS generated back button. Prepended  or appended (see backButtonPosition) to submenu lists and deleted on `destroy` method, 'js-drilldown-back' class required. Remove the backslash (`\`) if copy and pasting.
    * @option
-   * @example '<\li><\a>Back<\/a><\/li>'
+   * @type {string}
+   * @default '<li class="js-drilldown-back"><a tabindex="0">Back</a></li>'
    */
   backButton: '<li class="js-drilldown-back"><a tabindex="0">Back</a></li>',
   /**
+   * Position the back button either at the top or bottom of drilldown submenus. Can be `'left'` or `'bottom'`.
+   * @option
+   * @type {string}
+   * @default top
+   */
+  backButtonPosition: 'top',
+  /**
    * Markup used to wrap drilldown menu. Use a class name for independent styling; the JS applied class: `is-drilldown` is required. Remove the backslash (`\`) if copy and pasting.
    * @option
-   * @example '<\div class="is-drilldown"><\/div>'
+   * @type {string}
+   * @default '<div></div>'
    */
   wrapper: '<div></div>',
   /**
    * Adds the parent link to the submenu.
    * @option
-   * @example false
+   * @type {boolean}
+   * @default false
    */
   parentLink: false,
   /**
    * Allow the menu to return to root list on body click.
    * @option
-   * @example false
+   * @type {boolean}
+   * @default false
    */
-  closeOnClick: false
+  closeOnClick: false,
+  /**
+   * Allow the menu to auto adjust height.
+   * @option
+   * @type {boolean}
+   * @default false
+   */
+  autoHeight: false,
+  /**
+   * Animate the auto adjust height.
+   * @option
+   * @type {boolean}
+   * @default false
+   */
+  animateHeight: false,
+  /**
+   * Scroll to the top of the menu after opening a submenu or navigating back using the menu back button
+   * @option
+   * @type {boolean}
+   * @default false
+   */
+  scrollTop: false,
+  /**
+   * String jquery selector (for example 'body') of element to take offset().top from, if empty string the drilldown menu offset().top is taken
+   * @option
+   * @type {string}
+   * @default ''
+   */
+  scrollTopElement: '',
+  /**
+   * ScrollTop offset
+   * @option
+   * @type {number}
+   * @default 0
+   */
+  scrollTopOffset: 0,
+  /**
+   * Scroll animation duration
+   * @option
+   * @type {number}
+   * @default 500
+   */
+  animationDuration: 500,
+  /**
+   * Scroll animation easing. Can be `'swing'` or `'linear'`.
+   * @option
+   * @type {string}
+   * @see {@link https://api.jquery.com/animate|JQuery animate}
+   * @default 'swing'
+   */
+  animationEasing: 'swing'
   // holdOpen: false
 };
 

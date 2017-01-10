@@ -32,7 +32,7 @@ autoprefixer({
 
 ## Loading the Framework
 
-If you're using Yeti Launch or the CLI to create a project, the Sass compilation process is already set up for you. If not, you can compile our Sass files yourself, or drop in a pre-built CSS file.
+If you're the CLI to create a project, the Sass compilation process is already set up for you. If not, you can compile our Sass files yourself, or drop in a pre-built CSS file.
 
 To get started, first install the framework files using Bower or npm.
 
@@ -100,24 +100,57 @@ Each component has an **export mixin** which prints out the CSS for that compone
 @include foundation-everything;
 ```
 
-Our [starter projects](starter-projects.html) include the full list of imports, making it easy to comment out the components you don't need.
+Our [starter projects](starter-projects.html) include the full list of imports, making it easy to comment out the components you don't need. A full list is also included below. 
 
 ```scss
 @import 'foundation';
 
 @include foundation-global-styles;
 @include foundation-grid;
+@include foundation-flex-grid;
+@include foundation-flex-classes;
 @include foundation-typography;
-@include foundation-button;
 @include foundation-forms;
-// And so on...
+@include foundation-button;
+@include foundation-accordion;
+@include foundation-accordion-menu;
+@include foundation-badge;
+@include foundation-breadcrumbs;
+@include foundation-button-group;
+@include foundation-callout;
+@include foundation-card;
+@include foundation-close-button;
+@include foundation-menu;
+@include foundation-menu-icon;
+@include foundation-drilldown-menu;
+@include foundation-dropdown;
+@include foundation-dropdown-menu;
+@include foundation-responsive-embed;
+@include foundation-label;
+@include foundation-media-object;
+@include foundation-off-canvas;
+@include foundation-orbit;
+@include foundation-pagination;
+@include foundation-progress-bar;
+@include foundation-slider;
+@include foundation-sticky;
+@include foundation-reveal;
+@include foundation-switch;
+@include foundation-table;
+@include foundation-tabs;
+@include foundation-thumbnail;
+@include foundation-title-bar;
+@include foundation-tooltip;
+@include foundation-top-bar;
+@include foundation-visibility-classes;
+@include foundation-float-classes;
 ```
 
 ---
 
 ## The Settings File
 
-All Foundation projects include a settings file, named `_settings.scss`. If you're using Yeti Launch or the CLI to create a Foundation for Sites project, you can find the settings file under scss/ (basic template) or src/assets/scss/ (ZURB template). If you're installing the framework standalone using Bower or npm, there's a settings file included in those packages, which you can move into your own Sass files to work with.
+All Foundation projects include a settings file, named `_settings.scss`. If you're using the CLI to create a Foundation for Sites project, you can find the settings file under scss/ (basic template) or src/assets/scss/ (ZURB template). If you're installing the framework standalone using Bower or npm, there's a settings file included in those packages, which you can move into your own Sass files to work with.
 
 Every component includes a set of variables that modify core structural or visual styles. If there's something you can't customize with a variable, you can just write your own CSS to add it.
 

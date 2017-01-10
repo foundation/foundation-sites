@@ -29,7 +29,7 @@ function Timer(elem, options, cb) {
       if(options.infinite){
         _this.restart();//rerun the timer.
       }
-      cb();
+      if (cb && typeof cb === 'function') { cb(); }
     }, remain);
     elem.trigger(`timerstart.zf.${nameSpace}`);
   }
@@ -59,13 +59,15 @@ function onImagesLoaded(images, callback){
   }
 
   images.each(function() {
-    if (this.complete) {
+    // Check if image is loaded
+    if (this.complete || (this.readyState === 4) || (this.readyState === 'complete')) {
       singleImageLoaded();
     }
-    else if (typeof this.naturalWidth !== 'undefined' && this.naturalWidth > 0) {
-      singleImageLoaded();
-    }
+    // Force load the image
     else {
+      // fix for IE. See https://css-tricks.com/snippets/jquery/fixing-load-in-ie-for-cached-images/
+      var src = $(this).attr('src');
+      $(this).attr('src', src + '?' + (new Date().getTime()));
       $(this).one('load', function() {
         singleImageLoaded();
       });

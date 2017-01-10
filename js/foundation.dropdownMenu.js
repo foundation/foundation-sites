@@ -59,6 +59,11 @@ class DropdownMenu {
     this.changed = false;
     this._events();
   };
+
+  _isVertical() {
+    return this.$tabs.css('display') === 'block';
+  }
+
   /**
    * Adds event listeners to elements within the menu
    * @private
@@ -87,14 +92,25 @@ class DropdownMenu {
         } else {
           e.preventDefault();
           e.stopImmediatePropagation();
-          _this._show($elem.children('.is-dropdown-submenu'));
+          _this._show($sub);
           $elem.add($elem.parentsUntil(_this.$element, `.${parClass}`)).attr('data-is-click', true);
         }
-      } else { return; }
+      }
     };
 
     if (this.options.clickOpen || hasTouch) {
       this.$menuItems.on('click.zf.dropdownmenu touchstart.zf.dropdownmenu', handleClickFn);
+    }
+
+    // Handle Leaf element Clicks
+    if(_this.options.closeOnClickInside){
+      this.$menuItems.on('click.zf.dropdownmenu touchend.zf.dropdownmenu', function(e) {
+        var $elem = $(this),
+            hasSub = $elem.hasClass(parClass);
+        if(!hasSub){
+          _this._hide();
+        }
+      });
     }
 
     if (!this.options.disableHover) {
@@ -103,10 +119,10 @@ class DropdownMenu {
             hasSub = $elem.hasClass(parClass);
 
         if (hasSub) {
-          clearTimeout(_this.delay);
-          _this.delay = setTimeout(function() {
+          clearTimeout($elem.data('_delay'));
+          $elem.data('_delay', setTimeout(function() {
             _this._show($elem.children('.is-dropdown-submenu'));
-          }, _this.options.hoverDelay);
+          }, _this.options.hoverDelay));
         }
       }).on('mouseleave.zf.dropdownmenu', function(e) {
         var $elem = $(this),
@@ -114,10 +130,10 @@ class DropdownMenu {
         if (hasSub && _this.options.autoclose) {
           if ($elem.attr('data-is-click') === 'true' && _this.options.clickOpen) { return false; }
 
-          clearTimeout(_this.delay);
-          _this.delay = setTimeout(function() {
+          clearTimeout($elem.data('_delay'));
+          $elem.data('_delay', setTimeout(function() {
             _this._hide($elem);
-          }, _this.options.closingTime);
+          }, _this.options.closingTime));
         }
       });
     }
@@ -172,42 +188,51 @@ class DropdownMenu {
       };
 
       if (isTab) {
-        if (_this.$element.hasClass(_this.options.verticalClass)) { // vertical menu
-          if (_this.options.alignment === 'left') { // left aligned
-            $.extend(functions, {
-              down: nextSibling,
-              up: prevSibling,
-              next: openSub,
-              previous: closeSub
-            });
-          } else { // right aligned
+        if (_this._isVertical()) { // vertical menu
+          if (Foundation.rtl()) { // right aligned
             $.extend(functions, {
               down: nextSibling,
               up: prevSibling,
               next: closeSub,
               previous: openSub
             });
+          } else { // left aligned
+            $.extend(functions, {
+              down: nextSibling,
+              up: prevSibling,
+              next: openSub,
+              previous: closeSub
+            });
           }
         } else { // horizontal menu
-          $.extend(functions, {
-            next: nextSibling,
-            previous: prevSibling,
-            down: openSub,
-            up: closeSub
-          });
+          if (Foundation.rtl()) { // right aligned
+            $.extend(functions, {
+              next: prevSibling,
+              previous: nextSibling,
+              down: openSub,
+              up: closeSub
+            });
+          } else { // left aligned
+            $.extend(functions, {
+              next: nextSibling,
+              previous: prevSibling,
+              down: openSub,
+              up: closeSub
+            });
+          }
         }
       } else { // not tabs -> one sub
-        if (_this.options.alignment === 'left') { // left aligned
-          $.extend(functions, {
-            next: openSub,
-            previous: closeSub,
-            down: nextSibling,
-            up: prevSibling
-          });
-        } else { // right aligned
+        if (Foundation.rtl()) { // right aligned
           $.extend(functions, {
             next: closeSub,
             previous: openSub,
+            down: nextSibling,
+            up: prevSibling
+          });
+        } else { // left aligned
+          $.extend(functions, {
+            next: openSub,
+            previous: closeSub,
             down: nextSibling,
             up: prevSibling
           });
@@ -249,9 +274,8 @@ class DropdownMenu {
     }));
     var $sibs = $sub.parent('li.is-dropdown-submenu-parent').siblings('li.is-dropdown-submenu-parent');
     this._hide($sibs, idx);
-    $sub.css('visibility', 'hidden').addClass('js-dropdown-active').attr({'aria-hidden': false})
-        .parent('li.is-dropdown-submenu-parent').addClass('is-active')
-        .attr({'aria-expanded': true});
+    $sub.css('visibility', 'hidden').addClass('js-dropdown-active')
+        .parent('li.is-dropdown-submenu-parent').addClass('is-active');
     var clear = Foundation.Box.ImNotTouchingYou($sub, null, true);
     if (!clear) {
       var oldClass = this.options.alignment === 'left' ? '-right' : '-left',
@@ -295,13 +319,10 @@ class DropdownMenu {
 
     if (somethingToClose) {
       $toClose.find('li.is-active').add($toClose).attr({
-        'aria-expanded': false,
         'data-is-click': false
       }).removeClass('is-active');
 
-      $toClose.find('ul.js-dropdown-active').attr({
-        'aria-hidden': true
-      }).removeClass('js-dropdown-active');
+      $toClose.find('ul.js-dropdown-active').removeClass('js-dropdown-active');
 
       if (this.changed || $toClose.find('opens-inner').length) {
         var oldClass = this.options.alignment === 'left' ? 'right' : 'left';
@@ -338,62 +359,79 @@ DropdownMenu.defaults = {
   /**
    * Disallows hover events from opening submenus
    * @option
-   * @example false
+   * @type {boolean}
+   * @default false
    */
   disableHover: false,
   /**
    * Allow a submenu to automatically close on a mouseleave event, if not clicked open.
    * @option
-   * @example true
+   * @type {boolean}
+   * @default true
    */
   autoclose: true,
   /**
    * Amount of time to delay opening a submenu on hover event.
    * @option
-   * @example 50
+   * @type {number}
+   * @default 50
    */
   hoverDelay: 50,
   /**
    * Allow a submenu to open/remain open on parent click event. Allows cursor to move away from menu.
    * @option
-   * @example true
+   * @type {boolean}
+   * @default false
    */
   clickOpen: false,
   /**
    * Amount of time to delay closing a submenu on a mouseleave event.
    * @option
-   * @example 500
+   * @type {number}
+   * @default 500
    */
 
   closingTime: 500,
   /**
-   * Position of the menu relative to what direction the submenus should open. Handled by JS.
+   * Position of the menu relative to what direction the submenus should open. Handled by JS. Can be `'left'` or `'right'`.
    * @option
-   * @example 'left'
+   * @type {string}
+   * @default 'left'
    */
   alignment: 'left',
   /**
    * Allow clicks on the body to close any open submenus.
    * @option
-   * @example true
+   * @type {boolean}
+   * @default true
    */
   closeOnClick: true,
   /**
+   * Allow clicks on leaf anchor links to close any open submenus.
+   * @option
+   * @type {boolean}
+   * @default true
+   */
+  closeOnClickInside: true,
+  /**
    * Class applied to vertical oriented menus, Foundation default is `vertical`. Update this if using your own class.
    * @option
-   * @example 'vertical'
+   * @type {string}
+   * @default 'vertical'
    */
   verticalClass: 'vertical',
   /**
    * Class applied to right-side oriented menus, Foundation default is `align-right`. Update this if using your own class.
    * @option
-   * @example 'align-right'
+   * @type {string}
+   * @default 'align-right'
    */
   rightClass: 'align-right',
   /**
    * Boolean to force overide the clicking of links to perform default action, on second touch event for mobile.
    * @option
-   * @example false
+   * @type {boolean}
+   * @default true
    */
   forceFollow: true
 };

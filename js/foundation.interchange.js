@@ -46,7 +46,9 @@ class Interchange {
    * @private
    */
   _events() {
-    $(window).on('resize.zf.interchange', Foundation.util.throttle(this._reflow.bind(this), 50));
+    $(window).on('resize.zf.interchange', Foundation.util.throttle(() => {
+      this._reflow();
+    }, 50));
   }
 
   /**
@@ -61,7 +63,6 @@ class Interchange {
     for (var i in this.rules) {
       if(this.rules.hasOwnProperty(i)) {
         var rule = this.rules[i];
-
         if (window.matchMedia(rule.query).matches) {
           match = rule;
         }
@@ -182,6 +183,8 @@ Interchange.defaults = {
   /**
    * Rules to be applied to Interchange elements. Set with the `data-interchange` array notation.
    * @option
+   * @type {?array}
+   * @default null
    */
   rules: null
 };

@@ -78,16 +78,16 @@ Items can also be set to expand out and take up an even amount of space, with th
 ```
 
 <ul class="menu expanded">
-  <li><a href="#">One</a></li>
-  <li><a href="#">Two</a></li>
-  <li><a href="#">Three</a></li>
+  <li><a href="#0">One</a></li>
+  <li><a href="#0">Two</a></li>
+  <li><a href="#0">Three</a></li>
 </ul>
 
 <ul class="menu expanded">
-  <li><a href="#">One</a></li>
-  <li><a href="#">Two</a></li>
-  <li><a href="#">Three</a></li>
-  <li><a href="#">Four</a></li>
+  <li><a href="#0">One</a></li>
+  <li><a href="#0">Two</a></li>
+  <li><a href="#0">Three</a></li>
+  <li><a href="#0">Four</a></li>
 </ul>
 
 ---
