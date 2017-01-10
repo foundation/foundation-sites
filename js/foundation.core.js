@@ -1,7 +1,6 @@
-!function($) {
-
 "use strict";
 
+import $ from 'jquery';
 var FOUNDATION_VERSION = '6.3.1';
 
 // Global Foundation object
@@ -333,4 +332,4 @@ function hyphenate(str) {
   return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 }
 
-}(jQuery);
+export default Foundation;
