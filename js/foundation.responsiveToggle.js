@@ -97,23 +97,19 @@ class ResponsiveToggle {
    */
   toggleMenu() {
     if (!MediaQuery.atLeast(this.options.hideFor)) {
+      /**
+       * Fires when the element attached to the tab bar toggles.
+       * @event ResponsiveToggle#toggled
+       */
       if(this.options.animate) {
         if (this.$targetMenu.is(':hidden')) {
-          Motion.animateIn(this.$targetMenu, this.animationIn, () => {
-            /**
-             * Fires when the element attached to the tab bar toggles.
-             * @event ResponsiveToggle#toggled
-             */
+          Foundation.Motion.animateIn(this.$targetMenu, this.animationIn, () => {
             this.$element.trigger('toggled.zf.responsiveToggle');
             this.$targetMenu.find('[data-mutate]').triggerHandler('mutateme.zf.trigger');
           });
         }
         else {
           Motion.animateOut(this.$targetMenu, this.animationOut, () => {
-            /**
-             * Fires when the element attached to the tab bar toggles.
-             * @event ResponsiveToggle#toggled
-             */
             this.$element.trigger('toggled.zf.responsiveToggle');
           });
         }
@@ -121,11 +117,6 @@ class ResponsiveToggle {
       else {
         this.$targetMenu.toggle(0);
         this.$targetMenu.find('[data-mutate]').trigger('mutateme.zf.trigger');
-
-        /**
-         * Fires when the element attached to the tab bar toggles.
-         * @event ResponsiveToggle#toggled
-         */
         this.$element.trigger('toggled.zf.responsiveToggle');
       }
     }

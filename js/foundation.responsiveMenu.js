@@ -13,9 +13,6 @@
  * @module foundation.responsiveMenu
  * @requires foundation.util.triggers
  * @requires foundation.util.mediaQuery
- * @requires foundation.util.accordionMenu
- * @requires foundation.util.drilldown
- * @requires foundation.util.dropdown-menu
  */
 
 class ResponsiveMenu {
