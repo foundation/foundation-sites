@@ -1,6 +1,6 @@
 'use strict';
 
-!function($) {
+import $ from 'jquery';
 
 /**
  * Runs a callback function when images are fully loaded.
@@ -39,6 +39,4 @@ function onImagesLoaded(images, callback){
   }
 }
 
-Foundation.onImagesLoaded = onImagesLoaded;
-
-}(jQuery);
+export default onImagesLoaded;

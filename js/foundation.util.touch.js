@@ -5,7 +5,7 @@
 
 class Touch {}
 
-(function($) {
+import $ from 'jquery';
 
   var startPosX,
       startPosY,
@@ -145,10 +145,4 @@ class Touch {}
   };
 
 
-  // TODO: When we fully modularize, we should remove this and call it explicitly
-  // after import
-  Touch.init($);
-
-})(jQuery);
-
-//export default Touch
+export default Touch;

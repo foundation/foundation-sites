@@ -1,6 +1,7 @@
 "use strict";
 
 import $ from 'jquery';
+import { GetYoDigits } from './foundation.util.core';
 var FOUNDATION_VERSION = '6.3.1';
 
 // Global Foundation object
@@ -44,7 +45,7 @@ var Foundation = {
    */
   registerPlugin: function(plugin, name){
     var pluginName = name ? hyphenate(name) : functionName(plugin.constructor).toLowerCase();
-    plugin.uuid = this.GetYoDigits(6, pluginName);
+    plugin.uuid = GetYoDigits(6, pluginName);
 
     if(!plugin.$element.attr(`data-${pluginName}`)){ plugin.$element.attr(`data-${pluginName}`, plugin.uuid); }
     if(!plugin.$element.data('zfPlugin')){ plugin.$element.data('zfPlugin', plugin); }

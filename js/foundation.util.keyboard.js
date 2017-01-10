@@ -8,9 +8,9 @@
 
 'use strict';
 
-!function($) {
-
-  let Rtl = Foundation.rtl; // import { rtl } from "foundation.util.core";
+import $ from 'jquery';
+import { rtl } from './foundation.util.core';
+let Rtl =  rtl;
 
 const keyCodes = {
   9: 'TAB',
@@ -160,6 +160,4 @@ function getKeyCodes(kcs) {
   return k;
 }
 
-Foundation.Keyboard = Keyboard;
-
-}(jQuery);
+export default Keyboard;

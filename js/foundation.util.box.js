@@ -1,10 +1,11 @@
 'use strict';
 
-!function($) {
 
-  let Rtl = Foundation.rtl; // import { rtl } from "foundation.util.core";
+import { rtl } from "./foundation.util.core";
 
-Foundation.Box = {
+var Rtl = rtl;
+
+var Box = {
   ImNotTouchingYou: ImNotTouchingYou,
   GetDimensions: GetDimensions,
   GetOffsets: GetOffsets
@@ -194,4 +195,4 @@ function GetOffsets(element, anchor, position, vOffset, hOffset, isOverflow) {
   }
 }
 
-}(jQuery);
+export default Box;
