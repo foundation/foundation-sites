@@ -1,5 +1,3 @@
-!function($) {
-
 "use strict";
 
 // Core Foundation Utilities, utilized in a number of places.
@@ -49,10 +47,4 @@ function transitionend($elem){
   }
 }
 
-// export {rtl, GetYoDigits, transitionend}
-
-Foundation.rtl = rtl;
-Foundation.GetYoDigits = GetYoDigits;
-Foundation.transitionend = transitionend;
-
-}(jQuery)
+export {rtl, GetYoDigits, transitionend};

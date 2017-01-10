@@ -1,6 +1,6 @@
 'use strict';
 
-!function($) {
+import $ from 'jquery';
 
 function Timer(elem, options, cb) {
   var _this = this,
@@ -45,6 +45,4 @@ function Timer(elem, options, cb) {
   }
 }
 
-Foundation.Timer = Timer;
-
-}(jQuery);
+export default Timer;
