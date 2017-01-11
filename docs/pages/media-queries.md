@@ -5,6 +5,12 @@ sass: scss/util/_breakpoint.scss
 js: js/foundation.util.mediaQuery.js
 tags:
   - breakpoints
+previous:
+  url: javascript-utilities.html
+  title: JavaScript Utilities
+next:
+  url: grid.html
+  title: Grid
 ---
 
 ## Default Media Queries

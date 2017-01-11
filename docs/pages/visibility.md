@@ -5,6 +5,12 @@ sass: scss/components/_visibility.scss
 tags:
   - hide
   - show
+previous:
+  url: forms.html
+  title: Forms
+next:
+  url: float-classes.html
+  title: Float Classes
 ---
 
 <div class="callout primary">

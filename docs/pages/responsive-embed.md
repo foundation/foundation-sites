@@ -3,6 +3,12 @@ title: Responsive Embed
 description: Wrap embedded content like videos, maps, and calendars in a responsive embed container to maintain the correct aspect ratio regardless of screen size.
 sass: scss/components/_responsive-embed.scss
 tags: flex video 'flex video'
+previous:
+  url: badge.html
+  title: Badge
+next:
+  url: label.html
+  title: Label
 ---
 
 To make sure embedded content maintains its aspect ratio as the width of the screen changes, wrap the `iframe`, `object`, `embed`, or `video` in a container with the `.responsive-embed` class.

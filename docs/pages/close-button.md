@@ -2,6 +2,12 @@
 title: Close Button
 description: The humble close button can be used anywhere you need something to go away on click.
 sass: scss/components/_close-button.scss
+previous:
+  url: button-group.html
+  title: Button Group
+next:
+  url: slider.html
+  title: Slider
 ---
 
 A close button is a `<button>` element with the class `.close-button`. We use the multiplication symbol (`&times;`) as the X icon. This icon is wrapped in a `<span>` with the attribute `aria-hidden="true"`, so screen readers don't read the X icon.

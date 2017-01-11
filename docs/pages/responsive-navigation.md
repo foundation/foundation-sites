@@ -4,6 +4,12 @@ description: Our three Menu patterns form like Voltron into one responsive Menu 
 js:
   - js/foundation.responsiveMenu.js
   - js/foundation.responsiveToggle.js
+previous:
+  url: top-bar.html
+  title: Top Bar
+next:
+  url: magellan.html
+  title: Magellan
 ---
 
 ## Responsive Menu

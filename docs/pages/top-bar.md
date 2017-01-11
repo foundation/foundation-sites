@@ -3,6 +3,12 @@ title: Top Bar
 description: The new top bar is a simpler wrapper around our flexible menu components.
 sass: ./scss/components/_top-bar.scss
 flex: true
+previous:
+  url: accordion-menu.html
+  title: Accordion Menu
+next:
+  url: responsive-navigation.html
+  title: Responsive Navigation
 ---
 
 <div class="primary callout">

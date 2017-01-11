@@ -2,6 +2,12 @@
 title: Badge
 description: The badge is a basic component that displays a number. It's useful for calling out a number of unread items.
 sass: scss/components/_badge.scss
+previous:
+  url: responsive-accordion-tabs.html
+  title: Responsive Accordion Tabs
+next:
+  url: responsive-embed.html
+  title: Responsive Embed
 ---
 
 ## Basics

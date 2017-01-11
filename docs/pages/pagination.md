@@ -2,6 +2,12 @@
 title: Pagination
 description: Pagination is a type of navigation that lets users click through pages of search results, products, or other related items.
 sass: scss/components/_pagination.scss
+previous:
+  url: magellan.html
+  title: Magellan
+next:
+  url: breadcrumbs.html
+  title: Breadcrumbs
 ---
 
 ## Basics

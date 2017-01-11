@@ -3,6 +3,12 @@ title: Media Object
 description: Media objects are super useful components for displaying an item, usually an image, alongside some content, usually text. You could put lists, grids, or even other media objects inside.
 sass: scss/components/_media-object.scss
 flex: true
+previous:
+  url: dropdown.html
+  title: Dropdown
+next:
+  url: off-canvas.html
+  title: Off-canvas
 ---
 
 ## Basics

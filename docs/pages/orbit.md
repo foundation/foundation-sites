@@ -7,6 +7,12 @@ mui: true
 tags:
   - slider
   - carousel
+previous:
+  url: label.html
+  title: Label
+next:
+  url: progress-bar.html
+  title: Progress Bar
 ---
 
 ## Basics

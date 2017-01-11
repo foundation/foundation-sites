@@ -4,6 +4,12 @@ description: Buttons are convenient tools when you need more traditional actions
 sass: scss/components/_button.scss
 tags:
   - dropdown button
+previous:
+  url: typography-helpers.html
+  title: Typography Helper Classes
+next:
+  url: button-group.html
+  title: Button Group
 ---
 
 ## Basics

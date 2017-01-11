@@ -6,6 +6,12 @@ js: js/foundation.reveal.js
 mui: true
 tags:
   - modal
+previous:
+  url: off-canvas.html
+  title: Off-canvas
+next:
+  url: table.html
+  title: Table
 ---
 
 ## Basics

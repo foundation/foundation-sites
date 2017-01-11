@@ -5,6 +5,12 @@ sass: scss/components/_button-group.scss
 tags:
   - split button
 flexbox: true
+previous:
+  url: button.html
+  title: Button
+next:
+  url: close-button.html
+  title: Close Button
 ---
 
 ## Basics

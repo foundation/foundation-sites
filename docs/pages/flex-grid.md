@@ -2,6 +2,12 @@
 title: Flex Grid
 description: New in Foundation 6 is a Flexbox-powered grid, which you can use instead of the traditional float grid.
 sass: scss/grid/_flex-grid.scss
+previous:
+  url: grid.html
+  title: Grid
+next:
+  url: forms.html
+  title: Forms
 ---
 
 The flex grid works very similarly to the standard float grid, but includes a number of useful features only possible with flexbox, like horizontal and vertical alignment, automatic sizing, and easier source ordering.

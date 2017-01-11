@@ -12,6 +12,12 @@ tags:
   - nav
   - title bar
 flex: true
+previous:
+  url: media-object.html
+  title: Media Object
+next:
+  url: reveal.html
+  title: Reveal
 ---
 
 <div class="primary callout">

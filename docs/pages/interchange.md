@@ -2,6 +2,12 @@
 title: Interchange
 description: Interchange uses media queries to dynamically load responsive content that is appropriate for the user's device.
 js: js/foundation.interchange.js
+previous:
+  url: equalizer.html
+  title: Equalizer
+next:
+  url: toggler.html
+  title: Toggler
 ---
 
 <img data-interchange="[assets/img/interchange/small.jpg, small], [assets/img/interchange/medium.jpg, medium], [assets/img/interchange/large.jpg, large]">

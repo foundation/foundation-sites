@@ -14,6 +14,12 @@ tags:
   - acronym
   - code
   - keystroke
+previous:
+  url: float-classes.html
+  title: Float Classes
+next:
+  url: typography-helpers.html
+  title: Typography Helper Classes
 ---
 
 ## Paragraphs

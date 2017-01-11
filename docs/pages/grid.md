@@ -6,6 +6,12 @@ sass:
   - '!scss/grid/_flex-grid.scss'
 tags:
   - block grid
+previous:
+  url: media-queries.html
+  title: Media Queries
+next:
+  url: flex-grid.html
+  title: Flex Grid
 ---
 
 ## Basics

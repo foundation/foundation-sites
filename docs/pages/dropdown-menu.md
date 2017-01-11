@@ -3,6 +3,12 @@ title: Dropdown Menu
 description: Change a basic Menu into an expandable dropdown menu with the Dropdown Menu plugin.
 sass: scss/components/_dropdown-menu.scss
 js: js/foundation.dropdownMenu.js
+previous:
+  url: menu.html
+  title: Menu
+next:
+  url: drilldown-menu.html
+  title: Drilldown Menu
 ---
 
 ## Horizontal

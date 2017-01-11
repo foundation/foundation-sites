@@ -5,6 +5,12 @@ sass: scss/components/_card.scss
 tags:
   - card
 flex: true
+previous:
+  url: callout.html
+  title: Callout
+next:
+  url: dropdown.html
+  title: Dropdown
 ---
 
 ## Basics

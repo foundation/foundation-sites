@@ -3,6 +3,12 @@ title: Accordion
 description: Accordions are elements that help you organize and navigate multiple documents in a single container. They can be used for switching between items in the container.
 sass: scss/components/_accordion.scss
 js: js/foundation.accordion.js
+previous:
+  url: breadcrumbs.html
+  title: Breadcrumbs
+next:
+  url: callout.html
+  title: Callout
 ---
 
 ## Basics

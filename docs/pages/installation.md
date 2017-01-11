@@ -1,6 +1,12 @@
 ---
 title: Installation
 description: There are many ways to install Foundation, but if you're just getting started, we have a few suggestions.
+previous:
+  url: index.html
+  title: Home
+next:
+  url: starter-projects.html
+  title: Starter Projects
 ---
 
 <div class="row">

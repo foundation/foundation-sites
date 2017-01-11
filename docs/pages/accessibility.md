@@ -1,6 +1,12 @@
 ---
 title: Accessibility
 description: Foundation for Sites is a fully-accessible framework. Here are some general guidelines to keep in mind as you make your pages accessible.
+previous:
+  url: compatibility.html
+  title: Compatibility
+next:
+  url: kitchen-sink.html
+  title: Kitchen Sink
 ---
 
 In addition to the accessibility features built into Foundation's components, be sure to follow best practices for making your site more accessible.

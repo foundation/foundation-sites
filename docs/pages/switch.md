@@ -2,6 +2,12 @@
 title: Switch
 description: Now you can tell your users to flip the switch or switch off.
 sass: scss/components/_switch.scss
+previous:
+  url: slider.html
+  title: Slider
+next:
+  url: navigation.html
+  title: Navigation Overview
 ---
 
 ## Basics

@@ -5,6 +5,9 @@ tags:
 - index
 - home
 layout: homepage
+next: 
+  url: "installation.html"
+  title: "Installation"
 ---
 
 <div class="row">

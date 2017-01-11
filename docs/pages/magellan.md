@@ -4,6 +4,12 @@ description: Magellan allows you to create navigation that tracks the active sec
 js: js/foundation.magellan.js
 tags:
   - navigation
+previous:
+  url: responsive-navigation.html
+  title: Responsive Navigation
+next:
+  url: pagination.html
+  title: Pagination
 ---
 
 <div data-sticky-container>

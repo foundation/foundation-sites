@@ -1,6 +1,12 @@
 ---
 title: JavaScript Utilities
 description: Our JavaScript Utility Libraries are easy to use and super helpful.
+previous:
+  url: javascript.html
+  title: JavaScript
+next:
+  url: media-queries.html
+  title: Media Queries
 ---
 
 ## Installing

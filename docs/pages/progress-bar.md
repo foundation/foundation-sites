@@ -5,6 +5,12 @@ sass:
   - scss/components/_progress-bar.scss
   - scss/forms/_progress.scss
   - scss/forms/_meter.scss
+previous:
+  url: orbit.html
+  title: Orbit
+next:
+  url: thumbnail.html
+  title: Thumbnail
 ---
 
 ## Basics

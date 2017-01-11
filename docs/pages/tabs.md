@@ -3,6 +3,12 @@ title: Tabs
 description: Tabs are elements that help you organize and navigate multiple documents in a single container. They can be used for switching between items in the container.
 sass: scss/components/_tabs.scss
 js: js/foundation.tabs.js
+previous:
+  url: table.html
+  title: Table
+next:
+  url: responsive-accordion-tabs.html
+  title: Responsive Accordion Tabs
 ---
 
 ## Basics

@@ -9,6 +9,12 @@ tags:
   - icon bar
   - top bar
 flex: true
+previous:
+  url: navigation.html
+  title: Navigation Overview
+next:
+  url: dropdown-menu.html
+  title: Dropdown Menu
 ---
 
 The menu is a flexible, all-purpose component for navigation. It replaces Foundation 5's inline list, side nav, sub nav, and icon bar, unifying them into one component.

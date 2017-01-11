@@ -2,6 +2,12 @@
 title: Label
 description: Labels are useful inline styles that can be dropped into body copy to call out certain sections or to attach metadata. For example, you can attach a label that notes when something was updated.
 sass: scss/components/_label.scss
+previous:
+  url: responsive-embed.html
+  title: Responsive Embed
+next:
+  url: orbit.html
+  title: Orbit
 ---
 
 ## Basics

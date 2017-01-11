@@ -1,6 +1,12 @@
 ---
 title: Right-to-Left Support
 description: Foundation can easily adapt its components to work with languages that read from right to left.
+previous:
+  url: global.html
+  title: Global Styles
+next:
+  url: flexbox.html
+  title: Flexbox
 ---
 
 ## HTML

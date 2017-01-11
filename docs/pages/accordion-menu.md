@@ -3,6 +3,12 @@ title: Accordion Menu
 sass: scss/components/_accordion-menu.scss
 js: js/foundation.accordionMenu.js
 description: Change a basic vertical Menu into a expandable accordion menu with the Accordion Menu plugin.
+previous:
+  url: drilldown-menu.html
+  title: Drilldown Menu
+next:
+  url: top-bar.html
+  title: Top Bar
 ---
 
 ## Basics

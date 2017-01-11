@@ -7,6 +7,12 @@ sass:
 js: js/foundation.zf.responsiveAccordionTabs.js
 tags:
   - tabcordion
+previous:
+  url: tabs.html
+  title: Tabs
+next:
+  url: badge.html
+  title: Badge
 ---
 
 ## Basics

@@ -1,6 +1,12 @@
 ---
 title: Kitchen Sink
 description: Everything but.
+previous:
+  url: accessibility.html
+  title: Accessibility
+next:
+  url: global.html
+  title: Global Styles
 ---
 
 ## Abide

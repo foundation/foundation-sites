@@ -6,6 +6,12 @@ js: js/foundation.abide.js
 tags:
   - forms
   - validation
+previous:
+  url: tooltip.html
+  title: Tooltip
+next:
+  url: equalizer.html
+  title: Equalizer
 ---
 
 ### Abide Demo

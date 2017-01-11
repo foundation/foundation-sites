@@ -10,6 +10,12 @@ tags:
   - radio
   - checkbox
 flex: true
+previous:
+  url: flex-grid.html
+  title: Flex Grid
+next:
+  url: visibility.html
+  title: Visibility Classes
 ---
 
 ## Form Basics

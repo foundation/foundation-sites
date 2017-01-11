@@ -2,6 +2,12 @@
 title: Breadcrumbs
 description: Breadcrumbs come in handy to show a navigation trail for users clicking through your site.
 sass: scss/components/_breadcrumbs.scss
+previous:
+  url: pagination.html
+  title: Pagination
+next:
+  url: accordion.html
+  title: Accordion
 ---
 
 To make a set of breadcrumb links, just add the class `.breadcrumbs` to a `<ul>`, and then add links inside of the `<li>` elements.

@@ -1,6 +1,12 @@
 ---
 title: Navigation
 description: Foundation is bundled with many simple navigation patterns, which can be combined to form more complex, robust responsive navigation solutions.
+previous:
+  url: switch.html
+  title: Switch
+next:
+  url: menu.html
+  title: Menu
 ---
 
 ## Basics: Menu

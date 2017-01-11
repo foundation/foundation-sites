@@ -5,6 +5,12 @@ sass: scss/components/_slider.scss
 js: js/foundation.slider.js
 tags:
   - range
+previous:
+  url: close-button.html
+  title: Close Button
+next:
+  url: switch.html
+  title: Switch
 ---
 
 ## Basics

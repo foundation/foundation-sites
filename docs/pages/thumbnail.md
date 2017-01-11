@@ -2,6 +2,12 @@
 title: Thumbnail
 description: If you're going to use an image as an anchor, we've got you covered. All you gotta do is add one class to your image and voilà!
 sass: scss/components/_thumbnail.scss
+previous:
+  url: progress-bar.html
+  title: Progress Bar
+next:
+  url: tooltip.html
+  title: Tooltip
 ---
 
 The `.thumbnail` class can be applied directly to an `<img>` element, or an `<a>` that wraps it. Make sure the `<img>` has an `alt` attribute that describes the contents of the image.

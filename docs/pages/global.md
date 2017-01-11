@@ -2,6 +2,12 @@
 title: Global Styles
 description: Our global CSS includes helpful resets to ensure consistent styling across browsers.
 sass: scss/_global.scss
+previous:
+  url: kitchen-sink.html
+  title: Kitchen Sink
+next:
+  url: rtl.html
+  title: Right-to-Left Support
 ---
 
 ## Font Sizing

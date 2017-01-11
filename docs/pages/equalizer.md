@@ -2,6 +2,12 @@
 title: Equalizer
 description: Equalizer makes it dead simple to give multiple items equal height.
 js: js/foundation.equalizer.js
+previous:
+  url: abide.html
+  title: Abide
+next:
+  url: interchange.html
+  title: Interchange
 ---
 
 ## Basics

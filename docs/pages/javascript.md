@@ -1,6 +1,12 @@
 ---
 title: JavaScript
 description: Our JavaScript is easy to set up and only requires jQuery to get going.
+previous:
+  url: sass.html
+  title: Sass
+next:
+  url: javascript-utilities.html
+  title: JavaScript Utilities
 ---
 
 ## Installing

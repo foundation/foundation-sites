@@ -2,6 +2,9 @@
 title: Sticky
 description: Stick nearly anything, anywhere you like!
 js: js/foundation.sticky.js
+previous:
+  url: toggler.html
+  title: Toggler
 ---
 
 ## Basics

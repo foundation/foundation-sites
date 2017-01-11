@@ -1,6 +1,12 @@
 ---
 title: Float Classes
 description: Foundation includes a handful of helpful float classes to add common positioning behaviors to elements.
+previous:
+  url: visibility.html
+  title: Visibility Classes
+next:
+  url: typography-base.html
+  title: Typography Base Styles
 ---
 
 ## Float Left/Right

@@ -4,6 +4,12 @@ description: For browsers with cutting-edge support, some of Foundation's key co
 sass:
   - scss/components/_flex.scss
   - scss/util/_flex.scss
+previous:
+  url: rtl.html
+  title: Right-to-Left Support
+next:
+  url: sass.html
+  title: Sass
 ---
 
 Foundation components use a combination of floats, vertical alignment, table cells, and various other CSS hacks to get layouts looking right. These days though, there's a better way... if you are happy with the below browser support!

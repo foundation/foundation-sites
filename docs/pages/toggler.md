@@ -3,6 +3,12 @@ title: Toggler
 description: Toggler makes it easy to toggle CSS or animate any element with a click.
 js: js/foundation.toggler.js
 mui: true
+previous:
+  url: interchange.html
+  title: Interchange
+next:
+  url: sticky.html
+  title: Sticky
 ---
 
 ## Toggle a CSS class

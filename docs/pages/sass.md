@@ -1,6 +1,12 @@
 ---
 title: Sass
 description: Foundation is written in Sass, which allows us to make the codebase customizable and flexible.
+previous:
+  url: flexbox.html
+  title: Flexbox
+next:
+  url: javascript.html
+  title: JavaScript
 ---
 
 <div class="primary callout">

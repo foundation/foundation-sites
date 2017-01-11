@@ -4,6 +4,12 @@ description: Foundation is tested across many browsers and devices, and works ba
 tags:
   - support
   - browser
+previous:
+  url: starter-projects.html
+  title: Starter Projects
+next:
+  url: accessibility.html
+  title: Accessibility
 ---
 
 ## Overview

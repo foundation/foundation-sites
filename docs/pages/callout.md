@@ -5,6 +5,12 @@ sass: scss/components/_callout.scss
 tags:
   - panel
   - alert
+previous:
+  url: accordion.html
+  title: Accordion
+next:
+  url: card.html
+  title: Card
 ---
 
 ## Basics
