@@ -29,12 +29,12 @@ $dropcaps-uppercase: true !default;
   $mt: (15 / 100); // Distance between Ascent and Top of the font
   $mb: (18 / 100); // Distance between Baseline and Bottom of the font
 
-  $lh: $line-height; // Defining $line-height as `$lh` for easy calculations
-  $n: $lines; // Defining $lines as `$n` for easy calculations
+  // Maths variables for dropcaps
+  $lh: $line-height;
+  $n: $lines;
+  $h: $n * $lh;
 
-  $h: $n * $lh; // Multiplied line height and number of lines to a variable `$h`
-
-  // Some Maths Magic for dropcaps to calculate font size, margin top and margin bottom
+  // Maths Magic for dropcaps to calculate font size, margin top and margin bottom
   $-font-size: ($h - ($lh + $mt + $mb) + 1) / (1 - ($mt + $mb));
   $-margin-top: -($-font-size - $h) * $mt / ($mt + $mb) / $-font-size;
   $-margin-bottom: -($-font-size - $h) * $mb / ($mt + $mb) / $-font-size;
