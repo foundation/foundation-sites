@@ -2,31 +2,52 @@
 /// @group typography-dropcaps
 ////
 
+/// Default number of lines against the rest of the content  
+/// @type Number
+$dropcaps-lines: 3;
+
+/// Default line height for the rest of the content
+/// @type Number
+$dropcaps-line-height: 1.6;
+
 /// If `true`, makes dropcaps uppercase.
 /// @type Boolean
 $dropcaps-uppercase: true !default;
 
 /// Dropcaps component
+/// @param { Number } $lines [$dropcaps-lines] number of lines against the rest of the content 
+/// @param { Number } $line-height [$dropcaps-line-height] Default line height for the rest of the content
 /// @param { Boolean } $uppercase [$dropcaps-uppercase] If `true`, makes dropcaps uppercase.
 @mixin dropcaps(
+  $lines: $dropcaps-lines,
+  $line-height: $dropcaps-line-height,
   $uppercase: $dropcaps-uppercase
 ) {
-  // Default margin (Arial/Helvetica) to let it properly aligned from the top on the 
-  // first line beside it and have a tiny space between them through the right
+  // Default margin right (Arial/Helvetica) for having a tiny space between them through the right
   // See: http://code.stephenmorley.org/html-and-css/creating-drop-caps/
-  $-margin-top: 0.192em;
   $-margin-right: 0.0962em;
-  $-font-size: 5.2em; // Increased font size (Arial/Helvetica) for dropcaps
-  $-line-height: .5; // Reduced line height to avoid affecting the lines below it 
+  $mt: (15 / 100); // Distance between Ascent and Top of the font
+  $mb: (18 / 100); // Distance between Baseline and Bottom of the font
 
-  line-height: 1.5; // Disabling default line height of an element
+  $lh: $line-height; // Defining $line-height as `$lh` for easy calculations
+  $n: $lines; // Defining $lines as `$n` for easy calculations
 
-  &:first-letter {
+  $h: $n * $lh; // Multiplied line height and number of lines to a variable `$h`
+
+  // Some Maths Magic for dropcaps to calculate font size, margin top and margin bottom
+  $-font-size: ($h - ($lh + $mt + $mb) + 1) / (1 - ($mt + $mb));
+  $-margin-top: -($-font-size - $h) * $mt / ($mt + $mb) / $-font-size;
+  $-margin-bottom: -($-font-size - $h) * $mb / ($mt + $mb) / $-font-size;
+
+  line-height: $line-height; // Disabling default line height of an element
+
+  &::first-letter {
     float: #{$global-left};
-    margin-top: $-margin-top;
+    margin-top: $-margin-top * 1em;
+    margin-bottom: $-margin-bottom * 1em;
     margin-#{$global-right}: $-margin-right;
-    font-size: $-font-size;
-    line-height: $-line-height;
+    font-size: $-font-size * 1em;
+    line-height: 1;
 
     @if $uppercase {
       text-transform: uppercase;
