@@ -129,43 +129,37 @@ class Sticky {
 
     this.$element.off('resizeme.zf.trigger')
                  .on('resizeme.zf.trigger', function(e, el) {
-                     _this._setSizes(function() {
-                       _this._calc(false);
-                       if (_this.canStick) {
-                         if (!_this.isOn) {
-                           _this._events(id);
-                         }
-                       } else if (_this.isOn) {
-                         _this._pauseListeners(scrollListener);
-                       }
-                     });
+                    _this._eventsHandler(id);
     });
 	
 	this.$element.on('mutateme.zf.trigger', function (e, el) {
-		_this._setSizes(function () {
-			_this._calc(false);
-			if (_this.canStick) {
-			  if (!_this.isOn) {
-				_this._events(id);
-			  }
-			} else if (_this.isOn) {
-			  _this._pauseListeners(scrollListener);
-			}
-	  });
+		_this._eventsHandler(id);
 	});
 	
 	this.$anchor.on('mutateme.zf.trigger', function (e, el) {
-		_this._setSizes(function () {
-			_this._calc(false);
-			if (_this.canStick) {
-			  if (!_this.isOn) {
-				_this._events(id);
-			  }
-			} else if (_this.isOn) {
-			  _this._pauseListeners(scrollListener);
-			}
-		});
+		_this._eventsHandler(id);
 	});
+  }
+  
+  /**
+   * Handler for events.
+   * @private
+   * @param {String} id - psuedo-random id for unique scroll event listener.
+   */
+  _eventsHandler(id) {
+	   var _this = this,
+        scrollListener = this.scrollListener = `scroll.zf.${id}`;
+		
+	   _this._setSizes(function() {
+	   _this._calc(false);
+	   if (_this.canStick) {
+		 if (!_this.isOn) {
+		   _this._events(id);
+		 }
+	   } else if (_this.isOn) {
+		 _this._pauseListeners(scrollListener);
+	   }
+	 });
   }
 
   /**
