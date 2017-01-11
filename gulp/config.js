@@ -52,6 +52,7 @@ module.exports = {
   // Assets
   ASSETS_FILES: [
     'docs/assets/**/*',
+    'node_modules/foundation-docs/assets/**/*',
     '!docs/assets/{js,scss}',
     '!docs/assets/{js,scss}/**/*'
   ],
