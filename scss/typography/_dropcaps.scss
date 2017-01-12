@@ -27,7 +27,7 @@ $dropcaps-uppercase: true !default;
   // See: http://code.stephenmorley.org/html-and-css/creating-drop-caps/
   $-margin-right: 0.0962em;
   $mt: (15 / 100); // Distance between Ascent and Top of the font
-  $mb: (18 / 100); // Distance between Baseline and Bottom of the font
+  $mb: (17.5 / 100); // Distance between Baseline and Bottom of the font
 
   // Maths variables for dropcaps
   $lh: $line-height;
@@ -36,8 +36,8 @@ $dropcaps-uppercase: true !default;
 
   // Maths Magic for dropcaps to calculate font size, margin top and margin bottom
   $-font-size: ($h - ($lh + $mt + $mb) + 1) / (1 - ($mt + $mb));
-  $-margin-top: -($-font-size - $h) * $mt / ($mt + $mb) / $-font-size;
-  $-margin-bottom: -($-font-size - $h) * $mb / ($mt + $mb) / $-font-size;
+  $-margin-top: -($mt - ($mt + ($lh - 1) / 2) / $-font-size);
+  $-margin-bottom: -($mb);
 
   line-height: $line-height; // Disabling default line height of an element
 
