@@ -5,6 +5,7 @@
 /**
  * Magellan module.
  * @module foundation.magellan
+ * @requires foundation.smoothScroll
  */
 
 class Magellan {
@@ -109,18 +110,13 @@ class Magellan {
    * @function
    */
   scrollToLoc(loc) {
-    // Do nothing if target does not exist to prevent errors
-    if (!$(loc).length) {return false;}
     this._inTransition = true;
-    var _this = this,
-        scrollPos = Math.round($(loc).offset().top - this.options.threshold / 2 - this.options.barOffset);
+    var _this = this;
 
-    $('html, body').stop(true).animate(
-      { scrollTop: scrollPos },
-      this.options.animationDuration,
-      this.options.animationEasing,
-      function() {_this._inTransition = false; _this._updateActive()}
-    );
+    Foundation.SmoothScroll.scrollToLoc(loc, this.options, function() {
+      _this._inTransition = false; 
+      _this._updateActive();
+    })
   }
 
   /**
