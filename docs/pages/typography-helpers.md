@@ -4,9 +4,11 @@ description: Our helper classes allow you to scaffold certain typographic styles
 sass:
   - scss/typography/_helpers.scss
   - scss/typography/_alignment.scss
+  - scss/typography/_dropcaps.scss
 tags:
   - alignment
   - subheader
+  - dropcaps
   - lead
   - statistic
 ---
@@ -46,6 +48,22 @@ Lighten up your headers by adding a class of `.subheader` to any header element.
 <h5 class="subheader">h5.subheader</h5>
 <h6 class="subheader">h6.subheader</h6>
 ```
+
+---
+
+## Drop Caps
+
+Add a drop cap of 3 lines to the begining of a paragraph.
+
+```html_example
+<p class="dropcaps">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</p>
+```
+
+<div class="primary callout">
+  <p>The initial letter has the best alignement with the paragraph lines for standard `serif` and `sans-serif` fonts like `Helvetica` or `Times New Roman`. The render may differ for fonts with different metrics.</p>
+</div>
 
 ---
 
