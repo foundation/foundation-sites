@@ -234,8 +234,11 @@ class Drilldown {
           return true;
         },
         close: function() {
-          _this._back();
-          //_this.$menuItems.first().focus(); // focus to first element
+          // Don't close on element in root ul
+          if (!$element.is(_this.$element.find('> li > a'))) {
+            _this._hide($element.parent().parent());
+            $element.parent().parent().siblings('a').focus();
+          }
         },
         open: function() {
           if (!$element.is(_this.$menuItems)) { // not menu item means back button
