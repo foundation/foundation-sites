@@ -26,8 +26,8 @@ $dropcaps-uppercase: true !default;
   // Default margin right (Arial/Helvetica) for having a tiny space between them through the right
   // See: http://code.stephenmorley.org/html-and-css/creating-drop-caps/
   $-margin-right: 0.0962em;
-  $mt: (15 / 100); // Distance between Ascent and Top of the font
-  $mb: (17.5 / 100); // Distance between Baseline and Bottom of the font
+  $mt: (15.6 / 100); // Distance between Ascent and Top of the font
+  $mb: (13.2 / 100); // Distance between Baseline and Bottom of the font
 
   // Maths variables for dropcaps
   $lh: $line-height;
