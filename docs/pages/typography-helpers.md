@@ -62,7 +62,7 @@ Add a drop cap of 3 lines to the begining of a paragraph.
 ```
 
 <div class="primary callout">
-  <p>The initial letter has the best alignement with the paragraph lines for standard `serif` and `sans-serif` fonts like `Helvetica` or `Times New Roman`. The render may differ for fonts with different metrics.</p>
+  <p>The initial letter has the best alignment with the paragraph lines for standard `serif` and `sans-serif` fonts like `Helvetica` or `Times New Roman`. The render may differ for fonts with different metrics.</p>
 </div>
 
 ---
