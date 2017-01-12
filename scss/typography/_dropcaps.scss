@@ -2,11 +2,11 @@
 /// @group typography-dropcaps
 ////
 
-/// Default number of lines against the rest of the content  
+/// Number of lines against the rest of the content.
 /// @type Number
 $dropcaps-lines: 3 !default;
 
-/// Default line height for the rest of the content
+/// Line height for the rest of the content.
 /// @type Number
 $dropcaps-line-height: 1.6 !default;
 
@@ -15,26 +15,27 @@ $dropcaps-line-height: 1.6 !default;
 $dropcaps-uppercase: true !default;
 
 /// Dropcaps component
-/// @param { Number } $lines [$dropcaps-lines] number of lines against the rest of the content 
-/// @param { Number } $line-height [$dropcaps-line-height] Default line height for the rest of the content
+/// @param { Number } $lines [$dropcaps-lines] Number of lines against the rest of the content.
+/// @param { Number } $line-height [$dropcaps-line-height] Line height for the rest of the content.
 /// @param { Boolean } $uppercase [$dropcaps-uppercase] If `true`, makes dropcaps uppercase.
 @mixin dropcaps(
   $lines: $dropcaps-lines,
   $line-height: $dropcaps-line-height,
   $uppercase: $dropcaps-uppercase
 ) {
-  // Default margin right (Arial/Helvetica) for having a tiny space between them through the right
-  // See: http://code.stephenmorley.org/html-and-css/creating-drop-caps/
+  // Default margin right (Arial/Helvetica) for having a tiny space between them through the right,
+  // See: http://code.stephenmorley.org/html-and-css/creating-drop-caps
   $-margin-right: 0.0962em;
-  $mt: (15.6 / 100); // Distance between Ascent and Top of the font
-  $mb: (13.2 / 100); // Distance between Baseline and Bottom of the font
 
-  // Maths variables for dropcaps
+  // Font metrics (for Helvetica Neue)
+  $mt: (15.6 / 100); // Distance between Ascent and Top
+  $mb: (13.2 / 100); // Distance between Baseline and Bottom
+
+  // Maths Magic for dropcaps to calculate font size, margin top and margin bottom
   $lh: $line-height;
   $n: $lines;
   $h: $n * $lh;
 
-  // Maths Magic for dropcaps to calculate font size, margin top and margin bottom
   $-font-size: ($h - ($lh + $mt + $mb) + 1) / (1 - ($mt + $mb));
   $-margin-top: -($mt - ($mt + ($lh - 1) / 2) / $-font-size);
   $-margin-bottom: -($mb);
