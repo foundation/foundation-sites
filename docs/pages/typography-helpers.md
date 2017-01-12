@@ -53,7 +53,7 @@ Lighten up your headers by adding a class of `.subheader` to any header element.
 
 ## Drop Caps
 
-Add a drop cap of 3 lines to the begining of a paragraph.
+Add a drop cap of 3 lines to the begining of a paragraph. A dropcap (or Initial) is a letter at the beginning of a word, a chapter, or a paragraph that is larger than the rest of the text.
 
 ```html_example
 <p class="dropcaps">
