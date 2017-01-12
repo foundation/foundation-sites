@@ -4,11 +4,11 @@
 
 /// Default number of lines against the rest of the content  
 /// @type Number
-$dropcaps-lines: 3;
+$dropcaps-lines: 3 !default;
 
 /// Default line height for the rest of the content
 /// @type Number
-$dropcaps-line-height: 1.6;
+$dropcaps-line-height: 1.6 !default;
 
 /// If `true`, makes dropcaps uppercase.
 /// @type Boolean
