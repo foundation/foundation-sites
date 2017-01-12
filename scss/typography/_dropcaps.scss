@@ -2,30 +2,13 @@
 /// @group typography-dropcaps
 ////
 
-/// let 1em = 16px for the conversion tool
-/// @type Number
-$dropcaps-browser-context: 16;
-
-/// Safe px to em conversion
-@function em($pixels, $context: $dropcaps-browser-context) {
-  @if (unitless($pixels)) {
-    $pixels: $pixels * 1px;
-  }
-
-  @if (unitless($context)) {
-    $context: $context * 1px;
-  }
-
-  @return $pixels / $context * 1em;
-}
-
 /// Default number of lines against the rest of the content  
 /// @type Number
 $dropcaps-lines: 3;
 
 /// Default line height for the rest of the content
 /// @type Number
-$dropcaps-line-height: 1.5;
+$dropcaps-line-height: 1.6;
 
 /// If `true`, makes dropcaps uppercase.
 /// @type Boolean
@@ -43,7 +26,7 @@ $dropcaps-uppercase: true !default;
   // Default margin right (Arial/Helvetica) for having a tiny space between them through the right
   // See: http://code.stephenmorley.org/html-and-css/creating-drop-caps/
   $-margin-right: 0.0962em;
-  $mt: (12 / 100); // Distance between Ascent and Top of the font
+  $mt: (15 / 100); // Distance between Ascent and Top of the font
   $mb: (18 / 100); // Distance between Baseline and Bottom of the font
 
   // Maths variables for dropcaps
@@ -60,11 +43,11 @@ $dropcaps-uppercase: true !default;
 
   &::first-letter {
     float: #{$global-left};
-    margin-top: $-margin-top * em(16px);
-    margin-bottom: $-margin-bottom * em(16px);
+    margin-top: $-margin-top * 1em;
+    margin-bottom: $-margin-bottom * 1em;
     margin-#{$global-right}: $-margin-right;
-    font-size: $-font-size * em(16px);
-    line-height: 0.99;
+    font-size: $-font-size * 1em;
+    line-height: 1;
 
     @if $uppercase {
       text-transform: uppercase;
