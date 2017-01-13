@@ -23,7 +23,7 @@
     $rgb: nth($rgba, $i);
     $rgb: $rgb / 255;
 
-    $rgb: if($rgb < 0.03928, $rgb / 12.92, pow(($rgb + 0.055) / 1.055, 2.4, 18));
+    $rgb: if($rgb < 0.03928, $rgb / 12.92, pow(($rgb + 0.055) / 1.055, 2.4));
 
     $rgba2: append($rgba2, $rgb);
   }
