@@ -1,0 +1,34 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group functions
+////
+
+$-zf-font-stack: (
+  'georgia': (Georgia, "URW Bookman L", serif),
+  'helvetica': (Helvetica, Arial, "Nimbus Sans L", sans-serif),
+  'lucida-grande': ("Lucida Grande", "Lucida Sans Unicode", "Bitstream Vera Sans", sans-serif),
+  'monospace': ("Courier New", Courier, "Nimbus Sans L", monospace),
+  'system': (-apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Helvetica Neue", Helvetica, Arial, sans-serif),
+  'verdana': (Verdana, Geneva, "DejaVu Sans", sans-serif),
+);
+
+/// Retrieve a font stack string from a map.
+/// @param {String} $stack - The key of the font stack from the map.
+/// @param {Map} $map - A map of font stacks to retrieve a string from.
+/// @return {List} A font stack list.
+@function font-stack($stack, $map: $-zf-font-stack) {
+  @if (type-of($map) == 'map') {
+    @if (map-has-key($map, $stack)) {
+      @return map-get($map, $stack);
+    }
+    @else {
+      @error 'Font stack $key is not available in $map';
+    }
+  }
+  @else {
+    @error '$map is not a map';
+  }
+}
