@@ -25,10 +25,10 @@ $-zf-font-stack: (
       @return map-get($map, $stack);
     }
     @else {
-      @error 'Font stack $key is not available in $map';
+      @error 'Font stack `#{$stack}` is not available in `#{$map}`';
     }
   }
   @else {
-    @error '$map is not a map';
+    @error '`#{$map}` is not a valid map';
   }
 }
