@@ -115,6 +115,29 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
   <textarea type="text" class="is-invalid-input"></textarea>
 </label>
 
+---
+
+### Form Errors
+
+Abide automatically detects Form Errors of an input by their class (`.form-error` by default, see the `formErrorSelector` option) when they are siblings of the input or inside the same parent.
+
+When the Form Errors cannot be placed next to its field, like in an Input Group, the relation can be declared with `[data-form-error-for]` attribute.
+
+```html_example
+<form data-abide novalidate>
+  <label>
+    Amount
+    <div class="input-group">
+      <span class="input-group-label">$</span>
+      <input class="input-group-field" id="exampleNumberInput" type="number" required pattern="number"/>
+    </div>
+    <span class="form-error" data-form-error-for="exampleNumberInput">Amount is required.</span>
+  </label>
+  <button class="button" type="submit" value="Submit">Submit</button>
+</form>
+```
+
+
 ## Initial State
 
 ```html
