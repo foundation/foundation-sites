@@ -169,6 +169,11 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
   $color: color-pick-contrast($background, ($button-color, $button-color-alt));
 
   color: $color;
+
+  &:hover, &:focus {
+    background-color: $background;
+    color: $color;
+  }
 }
 
 /// Adds a dropdown arrow to a button.
