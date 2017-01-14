@@ -166,7 +166,9 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
   cursor: not-allowed;
   background-color: $background;
   
-  $color: color-pick-contrast($background, ($button-color, $button-color-alt));
+  @if $color == auto {
+    $color: color-pick-contrast($background, ($button-color, $button-color-alt));
+  }
 
   color: $color;
 
@@ -276,7 +278,7 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
 
       @each $name, $color in $button-palette {
         &.#{$name} {
-          @include button-disabled($color);
+          @include button-disabled($color, auto);
         }
       }
     }
