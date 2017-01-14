@@ -107,8 +107,12 @@ The `.disabled` class will give buttons a faded appearance. The class is a purel
 
 
 ```html_example
-<button type="button" class="button" disabled>Disabled</button>
 <a class="button disabled" href="#" aria-disabled>Disabled</a>
+<button type="button" class="button primary" disabled>Disabled</button>
+<button type="button" class="button secondary" disabled>Disabled</button>
+<button type="button" class="button success" disabled>Disabled</button>
+<button type="button" class="button alert" disabled>Disabled</button>
+<button type="button" class="button warning" disabled>Disabled</button>
 ```
 
 ---
