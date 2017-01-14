@@ -184,13 +184,14 @@ class Reveal {
    * @fires Reveal#open
    */
   open() {
+    // either update or replace browser history
     if (this.options.deepLink) {
       var hash = `#${this.id}`;
 
-      if (window.history.pushState) {
-        window.history.pushState(null, null, hash);
+      if (this.options.updateHistory) {
+        history.pushState({}, '', hash);
       } else {
-        window.location.hash = hash;
+        history.replaceState({}, '', hash);
       }
     }
 
@@ -570,6 +571,12 @@ Reveal.defaults = {
    * @default false
    */
   deepLink: false,
+  /**
+   * Update the browser history with the open modal
+   * @option
+   * @example false
+   */
+  updateHistory: false,
     /**
    * Allows the modal to append to custom div.
    * @option
