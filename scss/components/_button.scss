@@ -158,22 +158,22 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
 }
 
 /// Adds disabled styles to a button by fading the element, reseting the cursor, and disabling pointer events.
+/// @param [Color] $background [$primary-color] - Background color of the disabled button. Set to `auto` to have the mixin automatically generate a hover color.
+/// @param [Color] $color [$button-color] - Text color of the disabled button. Set to `auto` to have the mixin automatically generate a hover color.
 @mixin button-disabled(
   $background: $primary-color,
   $color: $button-color
 ) {
   opacity: $button-opacity-disabled;
   cursor: not-allowed;
-  background-color: $background;
-  
-  @if $color == auto {
-    $color: color-pick-contrast($background, ($button-color, $button-color-alt));
-  }
 
-  color: $color;
-
-  &:hover, &:focus {
+  &, &:hover, &:focus {
     background-color: $background;
+  
+    @if $color == auto {
+      $color: color-pick-contrast($background, ($button-color, $button-color-alt));
+    }
+
     color: $color;
   }
 }
