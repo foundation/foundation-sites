@@ -33,7 +33,7 @@ $block-grid-max: 8 !default;
 // Internal value to store the end column float direction
 $-zf-end-float: if($grid-column-align-edge, $global-right, $global-left);
 
-// Extend column with this alias if no alias set to false
+// Selector used for an alias of column (with @extend). If `false`, no alias is created.
 $column-alias: 'columns' !default;
 
 @import 'row';
