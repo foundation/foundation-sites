@@ -42,15 +42,15 @@ $breakpoint-classes: (small medium large) !default;
   // Size or keyword
   $bp: nth($val, 1);
   // Value for max-width media queries
-  $bp-max: 0;
+  $bp-min: null;
+  // Value for min-width media queries
+  $bp-max: null;
   // Direction of media query (up, down, or only)
   $dir: if(length($val) > 1, nth($val, 2), up);
-  // Eventual output
-  $str: '';
-  // Is it a named media query?
-  $named: false;
+  // Name of the breakpoint, if named.
+  $name: null;
 
-  // Orientation media queries have a unique syntax
+  // Orientation and retina media queries have a unique syntax
   @if $bp == 'landscape' or $bp == 'portrait' {
     @return '(orientation: #{$bp})';
   }
@@ -58,15 +58,11 @@ $breakpoint-classes: (small medium large) !default;
     @return '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)';
   }
 
-  // Try to pull a named breakpoint out of the $breakpoints map
+  // If a breakpoint name is given, get its value from the $breakpoints map.
   @if type-of($bp) == 'string' {
     @if map-has-key($breakpoints, $bp) {
-      @if $dir == 'only' or $dir == 'down' {
-        $bp-max: -zf-map-next($breakpoints, $bp);
-      }
-
-      $bp: map-get($breakpoints, $bp);
-      $named: true;
+      $name: $bp;
+      $bp: map-get($breakpoints, $name);
     }
     @else {
       $bp: 0;
@@ -74,57 +70,41 @@ $breakpoint-classes: (small medium large) !default;
     }
   }
 
-  // Convert any pixel, rem, or unitless value to em
-  $bp: -zf-bp-to-em($bp);
-  @if $bp-max {
-    $bp-max: -zf-bp-to-em($bp-max) - (1/16);
+  @if not $name and $dir == 'only' {
+    @warn 'breakpoint(): Only named media queries can have an `only` range.';
+    @return null;
   }
 
-  // Conditions to skip media query creation
-  // - It's a named breakpoint that resolved to "0 down" or "0 up"
-  // - It's a numeric breakpoint that resolved to "0 " + anything
-  @if $bp > 0em or $dir == 'only' or $dir == 'down' {
-    // `only` ranges use the format `(min-width: n) and (max-width: n)`
-    @if $dir == 'only' {
-      // Only named media queries can have an "only" range
-      @if $named == true {
-        // Only use "min-width" if the floor is greater than 0
-        @if $bp > 0em {
-          $str: $str + '(min-width: #{$bp})';
-
-          // Only add "and" to the media query if there's a ceiling
-          @if $bp-max != null {
-            $str: $str + ' and ';
-          }
-        }
-
-        // Only use "max-width" if there's a ceiling
-        @if $bp-max != null {
-          $str: $str + '(max-width: #{$bp-max})';
-        }
-      }
-      @else {
-        @warn 'breakpoint(): Only named media queries can have an `only` range.';
+  // Only 'only' and 'up' have a min limit.
+  @if $dir == 'only' or $dir == 'up' {
+    $bp-min: -zf-bp-to-em($bp);
+  }
+  // Only 'only' and 'down' have a max limit.
+  @if $dir == 'only' or $dir == 'down' {
+    // If the breakpoint is named, the max limit is the following breakpoint - 1px.
+    @if $name {
+      $bp-max: -zf-map-next($breakpoints, $name);
+      @if $bp-max {
+        $bp-max: -zf-bp-to-em($bp-max) - (1/16);
       }
     }
-
-    // `down` ranges use the format `(max-width: n)`
-    @else if $dir == 'down' {
-      $max: if($named, $bp-max, $bp);
-
-      // Skip media query creation if input value is exactly "0 down",
-      // unless the function was called as "small down", in which case it's just "small only"
-      @if $named or $bp > 0em {
-        @if $max != null {
-          $str: $str + '(max-width: #{$max})';
-        }
-      }
+    // Otherwhise, the max limit is the given value.
+    @else {
+      $bp-max: -zf-bp-to-em($bp);
     }
+  }
 
-    // `up` ranges use the format `(min-width: n)`
-    @else if $bp > 0em {
-      $str: $str + '(min-width: #{$bp})';
+  // Generate the media query string from min and max limits.
+  $str: '';
+  @if $bp-min and $bp-min > 0em {
+    $str: $str + '(min-width: #{$bp-min})';
+
+    @if $bp-max and $bp-max > 0em {
+      $str: $str + ' and ';
     }
+  }
+  @if $bp-max and $bp-max > 0em {
+    $str: $str + '(max-width: #{$bp-max})';
   }
 
   @return $str;
