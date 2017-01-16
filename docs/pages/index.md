@@ -71,53 +71,53 @@ next:
 <div class="row">
   <div class="medium-12 large-6 columns columns">
 
-    <div class="flex-video widescreen">
+    <div class="responsive-embed widescreen">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/UVLINsAuFEI" frameborder="0" allowfullscreen></iframe>
     </div>
     <h4 class="subheader" id="most-viewed-pages">Most-viewed Pages</h4>
     <!-- @TODO: Add real links -->
-    <ul class="icon-buttons-docs row small-up-2 medium-up-2 large-up-4" data-equalizer data-equalize-on="medium">
-      <li class="column" data-equalizer-watch>
-        <a href="#">
-          <img src="assets/icons/general.svg" alt="Grid"> Grid
+    <div class="icon-buttons-docs row small-up-2 medium-up-2 large-up-4" data-equalizer data-equalize-on="medium">
+      <div class="column column-block" data-equalizer-watch>
+        <a href="{{root}}grid.html">
+          <img src="assets/icons/general.svg" alt="Grid">Grid
         </a>
-      </li>
-      <li class="column" data-equalizer-watch>
-        <a href="#">
-          <img src="assets/icons/settings.svg" alt="Buttons and Controls"> Buttons &amp; Controls
+      </div>
+      <div class="column column-block" data-equalizer-watch>
+        <a href="{{root}}top-bar.html">
+          <img src="assets/icons/navigation.svg" alt="Top Bar">Top Bar
         </a>
-      </li>
-      <li class="column" data-equalizer-watch>
-        <a href="#">
-          <img src="assets/icons/navigation.svg" alt="Buttons and Controls"> Navigation
+      </div>
+      <div class="column column-block" data-equalizer-watch>
+        <a href="{{roo}}forms.html">
+          <img src="assets/icons/general.svg" alt="Forms">Forms
         </a>
-      </li>
-      <li class="column" data-equalizer-watch>
-        <a href="#">
-          <img src="assets/icons/general.svg" alt="Buttons and Controls"> Forms
+      </div>
+      <div class="column column-block" data-equalizer-watch>
+        <a href="{{root}}off-canvas.html">
+          <img src="assets/icons/navigation.svg" alt="Off-canvas">Off-canvas
         </a>
-      </li>
-      <li class="column" data-equalizer-watch>
-        <a href="#">
-          <img src="assets/icons/typography.svg" alt="Buttons and Controls"> Typography
+      </div>
+      <div class="column column-block" data-equalizer-watch>
+        <a href="{{root}}sass.html">
+          <img src="assets/icons/sass.svg" alt="Sass">Sass
         </a>
-      </li>
-      <li class="column" data-equalizer-watch>
-        <a href="#">
-          <img src="assets/icons/sass.svg" alt="Buttons and Controls"> Sass
+      </div>
+      <div class="column column-block" data-equalizer-watch>
+        <a href="{{root}}reveal.html">
+          <img src="assets/icons/containers.svg" alt="Buttons and Controls">Reveal Modal
         </a>
-      </li>
-      <li class="column" data-equalizer-watch>
-        <a href="#">
-          <img src="assets/icons/navigation.svg" alt="Buttons and Controls"> Top Bar
+      </div>
+      <div class="column column-block" data-equalizer-watch>
+        <a href="{{root}}button.html">
+          <img src="assets/icons/controls.svg" alt="Buttons and Controls">Buttons &amp; Controls
         </a>
-      </li>
-      <li class="column" data-equalizer-watch>
-        <a href="#">
-          <img src="assets/icons/plugins.svg" alt="Buttons and Controls"> Abide
+      </div>
+      <div class="column column-block" data-equalizer-watch>
+        <a href="{{root}}media-queries.html">
+          <img src="assets/icons/settings.svg" alt="Media Queries">Media Queries
         </a>
-      </li>
-    </ul>
+      </div>
+    </div>
   </div>
   <div class="medium-12 large-6 columns docs-stacked-spacing" style="margin-top:0">
     <ul class="faq-accordion" data-accordion style="margin-top:0">
