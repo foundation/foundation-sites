@@ -1,9 +1,11 @@
 ---
-title: Foundation for Sites
-description: We built Foundation for Sites to be the most advanced responsive front-end framework in the world.
+title: Foundation 6
+description: We built Foundation to be the most advanced responsive front-end framework in the world.
 tags:
 - index
 - home
+- getting started
+- intro
 layout: homepage
 next:
   url: "installation.html"
@@ -12,7 +14,7 @@ next:
 
 <div class="row">
   <div class="medium-6 columns">
-    <h2 id="installing-foundation">Installing Foundation</h2>
+    <h2 id="installing-foundation" class="docs-heading main">Installing Foundation <a class="docs-heading-icon" href="#installing-foundation"></a></h2>
     <p>There are a number of ways to install Foundation for Sites. If you're just getting started, we recommend installing our CLI, which allows you to quickly set up starter projects with any Foundation framework.</p>
     <p>It's also possible to manually install Foundation for Sites into your project through NPM, Bower, Meteor, or Composer.</p>
     <a href="installation.html" class="button-docs">Install Foundation for Sites</a>
@@ -33,14 +35,7 @@ next:
     <br>
   </div>
   <div class="medium-6 columns">
-
-
-
-    <h2 id="learning-foundation">Learning Foundation</h2>
-
-
-
-
+    <h2 id="learning-foundation" class="docs-heading main">Learning Foundation <a class="docs-heading-icon" href="#learning-foundation"></a></h2>
     <h4>Understanding the framework</h4>
     <p>With an easy to understand syntax and consistent structure, you’ll learn your way around Foundation in no time!</p>
 
@@ -151,21 +146,39 @@ next:
 <div class="row columns">
   <h4 class="subheader">Quickly get started with our ready-to-use Foundation templates.</h4>
   <hr class="docs-hr-small">
+</div>
 
-  <!-- @TODO: Add real content -->
-  <div class="row small-up-2 medium-up-3 large-up-3">
-    {{#repeat 6}}
-    <div class="column docs-grid-content-block">
+<div class="row small-up-2 medium-up-3 large-up-3">
+
+  <div class="column docs-grid-content-block">
+    <a href="http://foundation.zurb.com/templates.html" target="_blank">
       <img src="http://foundation.zurb.com/assets/img/sites-templates/f6-template-news-mag.svg" alt="" />
-      <h5>Blog w/ Sidebar</h5>
-      <p>Large images, an easy to navigate layout, and versatile sidebar will help you get your blog up and running.</p>
-    </div>
-    {{/repeat}}
+      <h5>News or Magazine</h5>
+      <p>This template puts a focus on bold images, perfect for a magazine style site with eye catching content. Your stories are easy to find with large feature blocks.</p>
+    </a>
   </div>
 
-  <a href="#" class="button-docs secondary">View All Templates</a>
+  <div class="column docs-grid-content-block">
+    <a href="http://foundation.zurb.com/templates.html" target="_blank">
+      <img src="http://foundation.zurb.com/assets/img/sites-templates/f6-template-realestate.svg" alt="" />
+      <h5>Real Estate or Travel</h5>
+      <p>Big thumbnails with a space for captions and descriptions along with an informative header make this the perfect template for real estate or hotel booking.</p>
+    </a>
+  </div>
 
+  <div class="column docs-grid-content-block">
+    <a href="http://foundation.zurb.com/templates.html" target="_blank">
+      <img src="http://foundation.zurb.com/assets/img/sites-templates/foundation6-templates-04.svg" alt="" />
+      <h5>Ecommerce Homepage</h5>
+      <p>Building an online store? You'll appreciate this template's large Orbit powered hero image slider and thumbnail patterns for items and buttons.</p>
+    </a>
+  </div>
 </div>
+
+<div class="text-center">
+  <a href="http://foundation.zurb.com/templates.html" target="_blank" class="button-docs secondary">View All Templates</a>
+</div>
+
 
 
 ---
