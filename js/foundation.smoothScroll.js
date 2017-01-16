@@ -17,7 +17,8 @@ class SmoothScroll {
     }
 
     /**
-     * Initialize the SmoothScroll plugin 
+     * Initialize the SmoothScroll plugin
+     * @private
      */
     _init() {
         var id = this.$element[0].id || Foundation.GetYoDigits(6, 'smooth-scroll');
@@ -29,42 +30,50 @@ class SmoothScroll {
         this._events();
     }
 
+    /**
+     * Initializes events for SmoothScroll.
+     * @private
+     */
     _events() {
         var _this = this;
 
-        this.$element.on('click.zf.smoothScroll', 'a[href^="#"]', function(e) {
+        // click handler function.
+        var handleLinkClick = function(e) {
+            // exit function if the event source isn't coming from an anchor with href attribute starts with '#'
+            if(!$(this).is('a[href^="#"]'))  {
+                return false;
+            }
+            
+            var arrival = this.getAttribute('href');
+            
+            _this._inTransition = true;
+
+            SmoothScroll.scrollToLoc(arrival, _this.options, function() {
+                _this._inTransition = false;
+            });
+            
             e.preventDefault();
-            var arrival   = this.getAttribute('href');
-            _this.scrollToLoc(arrival);
-        });
+        };
+
+        this.$element.on('click.zf.smoothScroll', handleLinkClick)
+        this.$element.on('click.zf.smoothScroll', 'a[href^="#"]', handleLinkClick);
     }
 
     /**
      * Function to scroll to a given location on the page.
-     * @param {String} loc - a properly formatted jQuery id selector. Example: '#foo'
-     * @function
-     */
-    scrollToLoc(loc) {
-        this._inTransition = true;
-        var _this = this;
-        this.constructor.scrollToLoc(loc, this.options, function() {
-            _this._inTransition = false;
-        });
-    }
-
-    /**
-     * Function to scroll to a given location on the page.
-     * @param {String} loc - a properly formatted jQuery id selector. Example: '#foo'
+     * @param {String} loc - A properly formatted jQuery id selector. Example: '#foo'
+     * @param {Object} options - The options to use.
+     * @param {Function} callback - The callback function.
      * @static
      * @function
      */
-    static scrollToLoc(loc, options, callback) {
+    static scrollToLoc(loc, options = SmoothScroll.defaults, callback) {
         // Do nothing if target does not exist to prevent errors
         if (!$(loc).length) {
             return false;
         }
 
-        var scrollPos = Math.round($(loc).offset().top - options.threshold / 2 - options.barOffset);
+        var scrollPos = Math.round($(loc).offset().top - options.threshold / 2 - options.offset);
 
         $('html, body').stop(true).animate(
             { scrollTop: scrollPos },
@@ -78,6 +87,10 @@ class SmoothScroll {
         );
     }
 
+   /**
+    * Destroys an instance of SmoothScroll.
+    * @function
+    */
     destory() {
         Foundation.unregisterPlugin(this);
     }
@@ -115,7 +128,7 @@ SmoothScroll.defaults = {
    * @type {number}
    * @default 0
    */
-  barOffset: 0
+  offset: 0
 }
 
 // Window exports

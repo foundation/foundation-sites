@@ -113,7 +113,14 @@ class Magellan {
     this._inTransition = true;
     var _this = this;
 
-    Foundation.SmoothScroll.scrollToLoc(loc, this.options, function() {
+    var options = {
+      animationEasing: this.options.animationEasing,
+      animationDuration: this.options.animationDuration,
+      threshold: this.options.threshold,
+      offset: this.options.offset
+    };
+
+    Foundation.SmoothScroll.scrollToLoc(loc, options, function() {
       _this._inTransition = false; 
       _this._updateActive();
     })
@@ -145,7 +152,7 @@ class Magellan {
       var isDown = this.scrollPos < winPos,
           _this = this,
           curVisible = this.points.filter(function(p, i){
-            return isDown ? p - _this.options.barOffset <= winPos : p - _this.options.barOffset - _this.options.threshold <= winPos;
+            return isDown ? p - _this.options.offset <= winPos : p - _this.options.offset - _this.options.threshold <= winPos;
           });
       curIdx = curVisible.length ? curVisible.length - 1 : 0;
     }
@@ -238,7 +245,7 @@ Magellan.defaults = {
    * @type {number}
    * @default 0
    */
-  barOffset: 0
+  offset: 0
 }
 
 // Window exports
