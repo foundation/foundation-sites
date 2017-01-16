@@ -15,7 +15,7 @@ Start by adding an element with a class of `.row`. This will create a horizontal
 **Foundation is mobile-first.** Code for small screens first, and larger devices will inherit those styles. Customize for larger screens as necessary.
 
 <div class="primary callout">
-  <p>By defaut `.column` have an alias `.columns` (see the <a href="http://localhost:3000/grid.html#sass-reference">`$grid-column-alias` option</a>) &mdash;the only difference is grammar.</p>
+  <p>By default `.column` has an alias `.columns` (see the <a href="http://localhost:3000/grid.html#sass-reference">`$grid-column-alias` option</a>) &mdash;the only difference is grammar.</p>
   <p>Disabling the alias can reduce the Foundation CSS file size from 3 to 5%. It is recommended if the alias is not used.</p>
 </div>
 
