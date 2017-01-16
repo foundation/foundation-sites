@@ -82,7 +82,7 @@ class Tabs {
         var anchor = window.location.hash;
         //need a hash and a relevant anchor in this tabset
         if(anchor.length) {
-          var $link = $elem.find('[href="'+anchor+'"]');
+          var $link = $elem.find('[href$="'+anchor+'"]');
           if ($link.length) {
             _this.selectTab($(anchor));
 
@@ -310,7 +310,7 @@ class Tabs {
       idStr = `#${idStr}`;
     }
 
-    var $target = this.$tabTitles.find(`[href="${idStr}"]`).parent(`.${this.options.linkClass}`);
+    var $target = this.$tabTitles.find(`[href$="${idStr}"]`).parent(`.${this.options.linkClass}`);
 
     this._handleTabChange($target);
   };
