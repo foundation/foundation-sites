@@ -31,7 +31,6 @@ $grid-column-align-edge: true !default;
 $block-grid-max: 8 !default;
 
 /// Selector used for an alias of column (with @extend). If `false`, no alias is created.
-/// @since 6.4.0
 /// @type String
 $column-alias: 'columns' !default;
 
