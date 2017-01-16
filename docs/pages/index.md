@@ -5,7 +5,7 @@ tags:
 - index
 - home
 layout: homepage
-next: 
+next:
   url: "installation.html"
   title: "Installation"
 ---
@@ -33,7 +33,14 @@ next:
     <br>
   </div>
   <div class="medium-6 columns">
+
+
+
     <h2 id="learning-foundation">Learning Foundation</h2>
+
+
+
+
     <h4>Understanding the framework</h4>
     <p>With an easy to understand syntax and consistent structure, you’ll learn your way around Foundation in no time!</p>
 
@@ -57,9 +64,9 @@ next:
 </div>
 
 ---
-<div class="row columns">
-  <h2 id="documentation">Documentation</h2>
-</div>
+
+## Documentation
+
 
 <div class="row">
   <div class="medium-12 large-6 columns columns">
@@ -139,9 +146,9 @@ next:
 
 ---
 
+## Templates
 
 <div class="row columns">
-  <h2>Templates</h2>
   <h4 class="subheader">Quickly get started with our ready-to-use Foundation templates.</h4>
   <hr class="docs-hr-small">
 
@@ -163,8 +170,9 @@ next:
 
 ---
 
+## Built with Foundation
+
 <div class="row columns">
-  <h2>Built with Foundation</h2>
   <p class="subheader">Thousands of the world’s biggest and most trusted brands (like Disney, Adobe, Amazon, and more) have chosen to build their responsive websites on the Foundation framework.</p>
   <hr class="docs-hr-small">
 
@@ -189,8 +197,9 @@ next:
 
 ---
 
+##  Ready to Start?
+
 <div class="row columns">
-  <h2>Ready to Start?</h2>
   <p>Join millions of designers and developers around the world that use Foundation to build beautiful responsive websites every day.</p>
   <a href="installation.html" class="large button-docs">Install Foundation for Sites</a>
 </div>

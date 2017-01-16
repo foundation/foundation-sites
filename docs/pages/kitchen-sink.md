@@ -611,7 +611,7 @@ next:
   <div class="media-object-section">
     <img src= "http://placeimg.com/200/200/people">
   </div>
-  <div class="media-object-section">
+  <div class="media-object-section middle">
     <h4>Dreams feel real while we're in them.</h4>
     <p>I'm going to improvise. Listen, there's something you should know about me... about inception. An idea is like a virus, resilient, highly contagious. The smallest seed of an idea can grow. It can grow to define or destroy you.</p>
   </div>
@@ -865,7 +865,7 @@ next:
       </p>
     </div>
     <div class="columns small-6 right" data-sticky-container>
-      <div class="sticky" data-sticky data-anchor="example1">
+      <div class="sticky" data-sticky data-anchor="example1" style="z-index: 0;">
         <img class="thumbnail" src="assets/img/generic/rectangle-3.jpg">
       </div>
     </div>
