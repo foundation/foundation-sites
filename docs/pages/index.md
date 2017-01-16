@@ -188,25 +188,70 @@ next:
 <div class="row columns">
   <p class="subheader">Thousands of the world’s biggest and most trusted brands (like Disney, Adobe, Amazon, and more) have chosen to build their responsive websites on the Foundation framework.</p>
   <hr class="docs-hr-small">
-
-  <!-- @TODO: make this its own component instead of being specific -->
-  <div class="docs-examples small-up-2 medium-up-2 large-up-5 row">
-    {{#repeat 5}}
-      <div class="section-inspiration column">
-        <div class="image-container">
-          <a href="#">
-            <img src="https://prod-university-library.s3.amazonaws.com/uploads/site/mobile_screenshot/17537/Screen_Shot_2016-08-04_at_10.02.33_AM.png" alt="" />
-          </a>
-        </div>
-        <h5>Snapfish</h5>
-        <p>Snapfish jams a ton of navigation power to help people find where they are going.</p>
-        <a href="#" class="secondary button-docs">Take a look <i class="di-arrow-right di-margin-left"></i></a>
-      </div>
-      {{/repeat}}
-    </div>
-
-  <a href="#" class="button-docs secondary">View More Sites Built with Foundation</a>
 </div>
+<div class="docs-examples small-up-2 medium-up-2 large-up-5 row">
+
+  <div class="section-inspiration column">
+    <div class="image-container">
+      <a target="_blank" href="http://zurb.com/responsive/site/pacific-sunwear-golden-state-of-mind">
+        <img src="https://prod-university-library.s3.amazonaws.com/uploads/site/mobile_screenshot/17455/Screen_Shot_2015-09-01_at_10.09.27_AM.png" alt="" />
+      </a>
+    </div>
+    <h5>Pacific Sunwear</h5>
+    <p>Pacific Sunwear loves diversity and adventure so they created a portal for people to discover both &hellip;</p>
+    <a target="_blank" href="http://zurb.com/responsive/site/whirlpool" class="secondary button-docs">Take a look <i class="di-arrow-right di-margin-left"></i></a>
+  </div>
+
+  <div class="section-inspiration column">
+    <div class="image-container">
+      <a target="_blank" href="http://zurb.com/responsive/site/whirlpool">
+        <img src="https://prod-university-library.s3.amazonaws.com/uploads/site/mobile_screenshot/18066/Screen_Shot_2016-12-12_at_11.50.44_AM.png" alt="" />
+      </a>
+    </div>
+    <h5>Whirlpool</h5>
+    <p>Studies show that more and more shoppers are looking online while shopping in stores for product details &hellip;</p>
+    <a target="_blank" href="http://zurb.com/responsive/site/whirlpool" class="secondary button-docs">Take a look <i class="di-arrow-right di-margin-left"></i></a>
+  </div>
+
+  <div class="section-inspiration column">
+    <div class="image-container">
+      <a target="_blank" href="http://zurb.com/responsive/site/lamborghini">
+        <img src="https://prod-university-library.s3.amazonaws.com/uploads/site/mobile_screenshot/17915/Screen_Shot_2016-10-18_at_4.10.15_PM.png" class="" height="" width="" alt="">
+      </a>
+    </div>
+    <h5>Lamborghini</h5>
+    <p>Since 1963, Lamborghini has been building exotic sports cars with elegant interiors. Form has always gone hand &hellip;</p>
+    <a target="_blank" href="http://zurb.com/responsive/site/whirlpool" class="secondary button-docs">Take a look <i class="di-arrow-right di-margin-left"></i></a>
+  </div>
+
+  <div class="section-inspiration column">
+    <div class="image-container">
+      <a target="_blank" href="http://zurb.com/responsive/site/sonos-ad8b6113-9320-4a48-a6de-3e56352a1293">
+        <img src="https://prod-university-library.s3.amazonaws.com/uploads/site/mobile_screenshot/17902/Screen_Shot_2016-10-12_at_12.39.02_PM.png" alt="" />
+      </a>
+    </div>
+    <h5>Sonos</h5>
+    <p>Ever since launching their their hot new responsive website, Sonos has seen mobile usage just skyrocket &hellip;</p>
+    <a target="_blank" href="http://zurb.com/responsive/site/whirlpool" class="secondary button-docs">Take a look <i class="di-arrow-right di-margin-left"></i></a>
+  </div>
+
+  <div class="section-inspiration column">
+    <div class="image-container">
+      <a target="_blank" href="http://zurb.com/responsive/site/pressed-juicery">
+        <img src="https://prod-university-library.s3.amazonaws.com/uploads/site/mobile_screenshot/16728/Screen_Shot_2016-02-04_at_8.38.56_PM.png" alt="" />
+      </a>
+    </div>
+    <h5>Pressed Juicery</h5>
+    <p>Fresh juice is a fast growing industry, and Pressed Juicery has a gorgeous responsive website to stay at the &hellip;</p>
+    <a target="_blank" href="http://zurb.com/responsive/site/whirlpool" class="secondary button-docs">Take a look <i class="di-arrow-right di-margin-left"></i></a>
+  </div>
+
+</div>
+
+<div class="text-center">
+  <a href="http://zurb.com/responsive" class="button-docs secondary">View More Sites Built with Foundation</a>
+</div>
+
 
 ---
 
