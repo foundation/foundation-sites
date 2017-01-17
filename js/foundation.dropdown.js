@@ -1,10 +1,10 @@
 'use strict';
 
-!function($) {
-
-  let Keyboard    = Foundation.Keyboard; // import Keyboard from "foundation.util.keyboard";
-  let Box         = Foundation.Box; // import Box from "foundation.util.box";
-  let GetYoDigits = Foundation.GetYoDigits; // import { GetYoDigits } from "foundation.util.core";
+import $ from 'jquery';
+import Keyboard from './foundation.util.keyboard';
+import Box from './foundation.util.box';
+import { GetYoDigits } from './foundation.util.core';
+import Plugin from './foundation.plugin';
 
   // import "foundation.util.triggers.js";
   // TODO: Figure out what a triggers import "means", since triggers are always accessed indirectly.
@@ -18,7 +18,7 @@
  * @requires foundation.util.triggers
  */
 
-class Dropdown {
+class Dropdown extends Plugin {
   /**
    * Creates a new instance of a dropdown.
    * @class
@@ -26,12 +26,11 @@ class Dropdown {
    *        Object should be of the dropdown panel, rather than its anchor.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  constructor(element, options) {
+  _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, Dropdown.defaults, this.$element.data(), options);
     this._init();
 
-    Foundation.registerPlugin(this, 'Dropdown');
     Keyboard.register('Dropdown', {
       'ENTER': 'open',
       'SPACE': 'open',
@@ -353,12 +352,11 @@ class Dropdown {
    * Destroys the dropdown.
    * @function
    */
-  destroy() {
+  _destroy() {
     this.$element.off('.zf.trigger').hide();
     this.$anchor.off('.zf.dropdown');
     $(document.body).off('click.zf.dropdown');
 
-    Foundation.unregisterPlugin(this);
   }
 }
 
@@ -435,7 +433,4 @@ Dropdown.defaults = {
   closeOnClick: false
 }
 
-// Window exports
-Foundation.plugin(Dropdown, 'Dropdown');
-
-}(jQuery);
+export default Dropdown;

@@ -1,10 +1,11 @@
 'use strict';
 
-!function($) {
 
-  let Keyboard    = Foundation.Keyboard; // import Keyboard from "foundation.util.keyboard"
-  let Nest        = Foundation.Nest; // import Nest from "foundation.util.nest"
-  let GetYoDigits = Foundation.GetYoDigits; //import { GetYoDigits } from "foundation.util.core"
+import $ from 'jquery';
+import Keyboard from './foundation.util.keyboard';
+import Nest from './foundation.util.nest';
+import { GetYoDigits } from './foundation.util.core';
+import Plugin from './foundation.plugin';
 
 /**
  * AccordionMenu module.
@@ -13,7 +14,7 @@
  * @requires foundation.util.nest
  */
 
-class AccordionMenu {
+class AccordionMenu extends Plugin {
   /**
    * Creates a new instance of an accordion menu.
    * @class
@@ -21,7 +22,7 @@ class AccordionMenu {
    * @param {jQuery} element - jQuery object to make into an accordion menu.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  constructor(element, options) {
+  _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, AccordionMenu.defaults, this.$element.data(), options);
 
@@ -29,7 +30,6 @@ class AccordionMenu {
 
     this._init();
 
-    Foundation.registerPlugin(this, 'AccordionMenu');
     Keyboard.register('AccordionMenu', {
       'ENTER': 'toggle',
       'SPACE': 'toggle',
@@ -250,12 +250,11 @@ class AccordionMenu {
    * Destroys an instance of accordion menu.
    * @fires AccordionMenu#destroyed
    */
-  destroy() {
+  _destroy() {
     this.$element.find('[data-submenu]').slideDown(0).css('display', '');
     this.$element.find('a').off('click.zf.accordionMenu');
 
     Nest.Burn(this.$element, 'accordion');
-    Foundation.unregisterPlugin(this);
   }
 }
 
@@ -276,7 +275,4 @@ AccordionMenu.defaults = {
   multiOpen: true
 };
 
-// Window exports
-Foundation.plugin(AccordionMenu, 'AccordionMenu');
-
-}(jQuery);
+export default AccordionMenu;

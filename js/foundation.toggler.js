@@ -1,8 +1,8 @@
 'use strict';
 
-!function($) {
-
-  let Motion = Foundation.Motion; // import { Motion } from "foundation.util.motion";
+import $ from 'jquery';
+import { Motion } from './foundation.util.motion';
+import Plugin from './foundation.plugin';
 
   // import "foundation.util.triggersjs";
 
@@ -13,7 +13,7 @@
  * @requires foundation.util.triggers
  */
 
-class Toggler {
+class Toggler extends Plugin {
   /**
    * Creates a new instance of Toggler.
    * @class
@@ -21,15 +21,13 @@ class Toggler {
    * @param {Object} element - jQuery object to add the trigger to.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  constructor(element, options) {
+  _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, Toggler.defaults, element.data(), options);
     this.className = '';
 
     this._init();
     this._events();
-
-    Foundation.registerPlugin(this, 'Toggler');
   }
 
   /**
@@ -130,9 +128,8 @@ class Toggler {
    * Destroys the instance of Toggler on the element.
    * @function
    */
-  destroy() {
+  _destroy() {
     this.$element.off('.zf.toggler');
-    Foundation.unregisterPlugin(this);
   }
 }
 
@@ -146,7 +143,4 @@ Toggler.defaults = {
   animate: false
 };
 
-// Window exports
-Foundation.plugin(Toggler, 'Toggler');
-
-}(jQuery);
+export default Toggler;

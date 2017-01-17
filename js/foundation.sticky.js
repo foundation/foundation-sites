@@ -1,9 +1,9 @@
 'use strict';
 
-!function($) {
-
-  let GetYoDigits = Foundation.GetYoDigits; // import { GetYoDigits } from "foundation.util.core";
-  let MediaQuery  = Foundation.MediaQuery; // import MediaQuery from "foundation.util.mediaQuery";
+import $ from 'jquery';
+import { GetYoDigits } from './foundation.util.core';
+import MediaQuery from './foundation.util.mediaQuery';
+import Plugin from './foundation.plugin';
 /**
  * Sticky module.
  * @module foundation.sticky
@@ -11,20 +11,18 @@
  * @requires foundation.util.mediaQuery
  */
 
-class Sticky {
+class Sticky extends Plugin {
   /**
    * Creates a new instance of a sticky thing.
    * @class
    * @param {jQuery} element - jQuery object to make sticky.
    * @param {Object} options - options object passed when creating the element programmatically.
    */
-  constructor(element, options) {
+  _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, Sticky.defaults, this.$element.data(), options);
 
     this._init();
-
-    Foundation.registerPlugin(this, 'Sticky');
   }
 
   /**
@@ -381,7 +379,7 @@ class Sticky {
    * Removes event listeners, JS-added css properties and classes, and unwraps the $element if the JS added the $container.
    * @function
    */
-  destroy() {
+  _destroy() {
     this._removeSticky(true);
 
     this.$element.removeClass(`${this.options.stickyClass} is-anchored is-at-top`)
@@ -406,7 +404,6 @@ class Sticky {
                        height: ''
                      });
     }
-    Foundation.unregisterPlugin(this);
   }
 }
 
@@ -498,7 +495,4 @@ function emCalc(em) {
   return parseInt(window.getComputedStyle(document.body, null).fontSize, 10) * em;
 }
 
-// Window exports
-Foundation.plugin(Sticky, 'Sticky');
-
-}(jQuery);
+export default Sticky;

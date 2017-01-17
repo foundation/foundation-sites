@@ -1,12 +1,11 @@
 'use strict';
 
-!function($) {
-
-  let Keyboard      = Foundation.Keyboard; // import Keyboard from "foundation.util.keyboard";
-  let Nest          = Foundation.Nest; // import Nest from "foundation.util.nest";
-  let GetYoDigits   = Foundation.GetYoDigits; // figure out import after refactor
-  let transitionend = Foundation.transitionend; // figure out import after refactor
-  let Box           = Foundation.Box; // import Box from "foundation.util.box";
+import $ from 'jquery';
+import Keyboard from './foundation.util.keyboard';
+import Nest from './foundation.util.nest';
+import {GetYoDigits, transitionend} from './foundation.util.core';
+import Box from './foundation.util.box';
+import Plugin from './foundation.plugin';
 
 /**
  * Drilldown module.
@@ -16,14 +15,14 @@
  * @requires foundation.util.box
  */
 
-class Drilldown {
+class Drilldown extends Plugin {
   /**
    * Creates a new instance of a drilldown menu.
    * @class
    * @param {jQuery} element - jQuery object to make into an accordion menu.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  constructor(element, options) {
+  _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, Drilldown.defaults, this.$element.data(), options);
 
@@ -31,7 +30,6 @@ class Drilldown {
 
     this._init();
 
-    Foundation.registerPlugin(this, 'Drilldown');
     Keyboard.register('Drilldown', {
       'ENTER': 'open',
       'SPACE': 'open',
@@ -403,7 +401,7 @@ class Drilldown {
    * Destroys the Drilldown Menu
    * @function
    */
-  destroy() {
+  _destroy() {
     if(this.options.scrollTop) this.$element.off('.zf.drilldown',this._bindHandler);
     this._hideAll();
 	  this.$element.off('mutateme.zf.trigger');
@@ -425,7 +423,6 @@ class Drilldown {
         $link.attr('href', $link.data('savedHref')).removeData('savedHref');
       }else{ return; }
     });
-    Foundation.unregisterPlugin(this);
   };
 }
 
@@ -518,7 +515,4 @@ Drilldown.defaults = {
   // holdOpen: false
 };
 
-// Window exports
-Foundation.plugin(Drilldown, 'Drilldown');
-
-}(jQuery);
+export default Drilldown;

@@ -1,8 +1,8 @@
 'use strict';
 
-!function($) {
-
-  let MediaQuery = Foundation.MediaQuery; // import MediaQuery from "foundation.util.mediaQuery.js";
+import $ from 'jquery';
+import MediaQuery from './foundation.util.mediaQuery';
+import Plugin from './foundation.plugin';
 
 
 /**
@@ -11,7 +11,7 @@
  * @requires foundation.util.mediaQuery
  */
 
-class Interchange {
+class Interchange extends Plugin {
   /**
    * Creates a new instance of Interchange.
    * @class
@@ -19,7 +19,7 @@ class Interchange {
    * @param {Object} element - jQuery object to add the trigger to.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  constructor(element, options) {
+  _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, Interchange.defaults, options);
     this.rules = [];
@@ -27,8 +27,6 @@ class Interchange {
 
     this._init();
     this._events();
-
-    Foundation.registerPlugin(this, 'Interchange');
   }
 
   /**
@@ -179,7 +177,7 @@ class Interchange {
    * Destroys an instance of interchange.
    * @function
    */
-  destroy() {
+  _destroy() {
     this.$element.off('resizeme.zf.trigger')
   }
 }
@@ -203,7 +201,4 @@ Interchange.SPECIAL_QUERIES = {
   'retina': 'only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx)'
 };
 
-// Window exports
-Foundation.plugin(Interchange, 'Interchange');
-
-}(jQuery);
+export default Interchange;

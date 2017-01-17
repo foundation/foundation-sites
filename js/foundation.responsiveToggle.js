@@ -1,9 +1,10 @@
 'use strict';
 
-!function($) {
+import $ from 'jquery';
 
-  let MediaQuery = Foundation.MediaQuery; // import MediaQuery from "foundation.util.mediaQuery";
-  let Motion     = Foundation.Motion; // import { Motion } from "foundation.util.motion";
+import MediaQuery from './foundation.util.mediaQuery';
+import { Motion } from './foundation.util.motion';
+import Plugin from './foundation.plugin';
 
 /**
  * ResponsiveToggle module.
@@ -12,7 +13,7 @@
  * @requires foundation.util.motion
  */
 
-class ResponsiveToggle {
+class ResponsiveToggle extends Plugin {
   /**
    * Creates a new instance of Tab Bar.
    * @class
@@ -20,14 +21,12 @@ class ResponsiveToggle {
    * @param {jQuery} element - jQuery object to attach tab bar functionality to.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  constructor(element, options) {
+  _setup(element, options) {
     this.$element = $(element);
     this.options = $.extend({}, ResponsiveToggle.defaults, this.$element.data(), options);
 
     this._init();
     this._events();
-
-    Foundation.registerPlugin(this, 'ResponsiveToggle');
   }
 
   /**
@@ -125,13 +124,11 @@ class ResponsiveToggle {
     }
   };
 
-  destroy() {
+  _destroy() {
     this.$element.off('.zf.responsiveToggle');
     this.$toggler.off('.zf.responsiveToggle');
 
     $(window).off('changed.zf.mediaquery', this._updateMqHandler);
-
-    Foundation.unregisterPlugin(this);
   }
 }
 
@@ -153,7 +150,4 @@ ResponsiveToggle.defaults = {
   animate: false
 };
 
-// Window exports
-Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
-
-}(jQuery);
+export default ResponsiveToggle;

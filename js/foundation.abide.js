@@ -1,13 +1,14 @@
 'use strict';
 
-!function($) {
+import $ from 'jquery';
+import Plugin from './foundation.plugin';
 
 /**
  * Abide module.
  * @module foundation.abide
  */
 
-class Abide {
+class Abide extends Plugin {
   /**
    * Creates a new instance of Abide.
    * @class
@@ -15,13 +16,11 @@ class Abide {
    * @param {Object} element - jQuery object to add the trigger to.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  constructor(element, options = {}) {
+  _setup(element, options = {}) {
     this.$element = element;
     this.options  = $.extend({}, Abide.defaults, this.$element.data(), options);
 
     this._init();
-
-    Foundation.registerPlugin(this, 'Abide');
   }
 
   /**
@@ -453,7 +452,7 @@ class Abide {
    * Destroys an instance of Abide.
    * Removes error styles and classes from elements, without resetting their values.
    */
-  destroy() {
+  _destroy() {
     var _this = this;
     this.$element
       .off('.abide')
@@ -465,8 +464,6 @@ class Abide {
       .each(function() {
         _this.removeErrorClasses($(this));
       });
-
-    Foundation.unregisterPlugin(this);
   }
 }
 
@@ -578,7 +575,4 @@ Abide.defaults = {
   }
 }
 
-// Window exports
-Foundation.plugin(Abide, 'Abide');
-
-}(jQuery);
+export default Abide;
