@@ -5,7 +5,9 @@
 
 @include test-module('Breakpoint') {
 
-  @include test('Breakpoint (Named to Em) [function]') {
+  // --- Breakpoint: Named ---
+
+  @include test('Breakpoint (Named Default/Up Range) [function]') {
     $test: breakpoint(medium);
     $expect: '(min-width: 40em)';
 
@@ -13,16 +15,7 @@
       'Converts a named breakpoint to an em value');
   }
 
-  @include test('Breakpoint (Rem/Px to Em) [function]') {
-    $expect: '(min-width: 1em)';
-
-    @include assert-equal(breakpoint(16px), $expect,
-      'Converts a pixel breakpoint to em');
-    @include assert-equal(breakpoint(1rem), $expect,
-      'Converts a rem breakpoint to em');
-  }
-
-  @include test('Breakpoint (Only Range) [function]') {
+  @include test('Breakpoint (Named Only Range) [function]') {
     $test: breakpoint(medium only);
     $expect: '(min-width: 40em) and (max-width: 63.9375em)';
 
@@ -61,6 +54,9 @@
     @include assert-equal($test-highest, $expect-highest,
       'Skips media query creation for xxlarge down');
   }
+
+
+  // --- Breakpoint: HiDPI/Retina ---
 
   @include test('Breakpoint (Retina) [function]') {
     $expect-2: '((-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi))';
@@ -116,6 +112,18 @@
       'Skips media query creation for highest HiDPI breakpoint down');
   }
 
+
+  // --- Breakpoint: Value ---
+
+  @include test('Breakpoint (Value Default/Up Range) [function]') {
+    $expect: '(min-width: 1em)';
+
+    @include assert-equal(breakpoint(16px), $expect,
+      'Converts a pixel breakpoint to em');
+    @include assert-equal(breakpoint(1rem), $expect,
+      'Converts a rem breakpoint to em');
+  }
+
   @include test('Breakpoint (Value Down Range) [function]') {
     $expect: '(max-width: 1em)';
 
@@ -127,12 +135,18 @@
       'Creates a down range out of an em value');
   }
 
+
+  // --- Breakpoint: Orientation ---
+
   @include test('Breakpoint (Orientation) [function]') {
     @include assert-equal(breakpoint(landscape), '(orientation: landscape)',
       'Creates special media query for landscape');
     @include assert-equal(breakpoint(portrait), '(orientation: portrait)',
       'Creates special media query for portrait');
   }
+
+
+  // --- Breakpoint: Miscellaneous ---
 
   @include test('Breakpoint (Empty String) [function]') {
     $expect: '';
@@ -148,6 +162,9 @@
   @include test('Breakpoint (Unknown Value) [function]') {
     @include assert-equal(breakpoint(xxxxlarge), '', 'Returns an empty string for non-existant media queries');
   }
+
+
+  // --- Utilities ---
 
   @include test('Map Serialize [function]') {
     $input: (
