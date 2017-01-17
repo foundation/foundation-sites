@@ -22,11 +22,11 @@ All new features and bug fixes should be submitted as pull requests, so the comm
 
 When you submit a pull request, @mention a few people you’d like to help you review it. Once those people have signed off on it, the pull request can be merged! Core Team members will handle the merge itself.
 
-## Git Worflow
+## Git Workflow
 
 Foundation uses a git workflow close to [GitFlow](http://nvie.com/posts/a-successful-git-branching-model/). The workflow relies on three branches:
 - **`master`**: The stable branch. It only contains the latest stable version released. Pull requests for docs improvements can be opened on it.
-- **`develop`**: The developing branch used to prepare the next version. It always contains all the new features and bug fixes previously made, and constitutes the more up-to-date version of Foundation. Almost every pull request should be open on this branch. When a new version is released, it is merged on `master`, a support branch is created, and `develop` now target the next version.
+- **`develop`**: The developing branch used to prepare the next minor/major version. It always contains all the new features and bug fixes previously made, and constitutes the most up-to-date version of Foundation. Almost every pull request should be opened on this branch. When a new version is released, it is merged on `master`, a support branch is created, and `develop` now targets the next version.
 - **`support/*`**: Support branches used to support the previous versions (i.e. `support/6.3` for `v6.3.0`) and prepare patches (i.e. `v6.3.1`). When a bug fix is compatible with supported versions, it is also merged on their support branches and patch versions can be released. If a fix is not compatible with `develop`, a pull request can be opened on the latest compatible and supported version.
 
 ## Coding Standards
