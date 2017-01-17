@@ -169,7 +169,8 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
 
   &, &:hover, &:focus {
     background-color: $background;
-  
+    
+    // If color is set to `auto`, the function `color-pick-contrast` automatically generates a color based on the background color 
     @if $color == auto {
       $color: color-pick-contrast($background, ($button-color, $button-color-alt));
     }
