@@ -1,9 +1,25 @@
 'use strict';
 
-!function($) {
+import $ from 'jquery';
+import MediaQuery from './foundation.util.mediaQuery';
+import { GetYoDigits } from './foundation.util.core';
+import Plugin from './foundation.plugin';
 
-  let MediaQuery  = Foundation.MediaQuery; // import MediaQuery from "foundation.util.mediaQuery";
-  let GetYoDigits = Foundation.GetYoDigits; // import { GetYoDigits } from "foundation.util.core";
+import Accordion from './foundation.accordion';
+import Tabs from './foundation.tabs';
+
+// The plugin matches the plugin classes with these plugin instances.
+var MenuPlugins = {
+  tabs: {
+    cssClass: 'tabs',
+    plugin: Tabs
+  },
+  accordion: {
+    cssClass: 'accordion',
+    plugin: Accordion
+  }
+};
+
 
 /**
  * ResponsiveAccordionTabs module.
@@ -13,7 +29,7 @@
  * @requires foundation.tabs
  */
 
-class ResponsiveAccordionTabs {
+class ResponsiveAccordionTabs extends Plugin{
   /**
    * Creates a new instance of a responsive accordion tabs.
    * @class
@@ -21,7 +37,7 @@ class ResponsiveAccordionTabs {
    * @param {jQuery} element - jQuery object to make into a dropdown menu.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  constructor(element, options) {
+  _setup(element, options) {
     this.$element = $(element);
     this.options  = $.extend({}, this.$element.data(), options);
     this.rules = this.$element.data('responsive-accordion-tabs');
@@ -33,8 +49,6 @@ class ResponsiveAccordionTabs {
 
     this._init();
     this._events();
-
-    Foundation.registerPlugin(this, 'ResponsiveAccordionTabs');
   }
 
   /**
@@ -214,30 +228,12 @@ class ResponsiveAccordionTabs {
    * Destroys the instance of the current plugin on this element, as well as the window resize handler that switches the plugins out.
    * @function
    */
-  destroy() {
+  _destroy() {
     if (this.currentPlugin) this.currentPlugin.destroy();
     $(window).off('.zf.ResponsiveAccordionTabs');
-    Foundation.unregisterPlugin(this);
   }
 }
 
 ResponsiveAccordionTabs.defaults = {};
 
-// TODO9438 move this to initialize in order to eliminate side effects
-//
-// The plugin matches the plugin classes with these plugin instances.
-var MenuPlugins = {
-  tabs: {
-    cssClass: 'tabs',
-    plugin: Foundation._plugins.tabs || null
-  },
-  accordion: {
-    cssClass: 'accordion',
-    plugin: Foundation._plugins.accordion || null
-  }
-};
-
-// Window exports
-Foundation.plugin(ResponsiveAccordionTabs, 'ResponsiveAccordionTabs');
-
-}(jQuery);
+export default ResponsiveAccordionTabs;

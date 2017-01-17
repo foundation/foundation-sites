@@ -63,8 +63,8 @@ Foundation.plugin(Interchange, 'Interchange');
 import OffCanvas from '../foundation.offcanvas';
 Foundation.plugin(OffCanvas, 'OffCanvas');
 
-//import ResponsiveMenu from '../foundation.responsiveMenu';
-//Foundation.plugin(ResponsiveMenu, 'ResponsiveMenu');
+import ResponsiveMenu from '../foundation.responsiveMenu';
+Foundation.plugin(ResponsiveMenu, 'ResponsiveMenu');
 
 import ResponsiveToggle from '../foundation.responsiveToggle';
 Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
@@ -87,5 +87,5 @@ Foundation.plugin(Toggler, 'Toggler');
 import Tooltip from '../foundation.tooltip';
 Foundation.plugin(Tooltip, 'Tooltip');
 
-//import ResponsiveAccordionTabs from '../foundation.zf.responsiveAccordionTabs';
-//Foundation.plugin(ResponsiveAccordionTabs, 'ResponsiveAccordionTabs');
+import ResponsiveAccordionTabs from '../foundation.zf.responsiveAccordionTabs';
+Foundation.plugin(ResponsiveAccordionTabs, 'ResponsiveAccordionTabs');

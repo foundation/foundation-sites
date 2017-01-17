@@ -1,9 +1,29 @@
 'use strict';
 
-!function($) {
+import $ from 'jquery';
 
-  let MediaQuery  = Foundation.MediaQuery; // import MediaQuery from "foundation.util.mediaQuery";
-  let GetYoDigits = Foundation.GetYoDigits; // import { GetYoDigits } from "foundation.util.core";
+import MediaQuery from './foundation.util.mediaQuery';
+import { GetYoDigits } from './foundation.util.core';
+import Plugin from './foundation.plugin';
+
+import DropdownMenu from './foundation.dropdownMenu';
+import Drilldown from './foundation.drilldown';
+import AccordionMenu from './foundation.accordionMenu';
+
+let MenuPlugins = {
+  dropdown: {
+    cssClass: 'dropdown',
+    plugin: DropdownMenu
+  },
+ drilldown: {
+    cssClass: 'drilldown',
+    plugin: Drilldown
+  },
+  accordion: {
+    cssClass: 'accordion-menu',
+    plugin: AccordionMenu
+  }
+};
 
   // import "foundation.util.triggers.js";
 
@@ -15,7 +35,7 @@
  * @requires foundation.util.mediaQuery
  */
 
-class ResponsiveMenu {
+class ResponsiveMenu extends Plugin {
   /**
    * Creates a new instance of a responsive menu.
    * @class
@@ -23,7 +43,7 @@ class ResponsiveMenu {
    * @param {jQuery} element - jQuery object to make into a dropdown menu.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  constructor(element, options) {
+  _setup(element, options) {
     this.$element = $(element);
     this.rules = this.$element.data('responsive-menu');
     this.currentMq = null;
@@ -31,8 +51,6 @@ class ResponsiveMenu {
 
     this._init();
     this._events();
-
-    Foundation.registerPlugin(this, 'ResponsiveMenu');
   }
 
   /**
@@ -122,34 +140,12 @@ class ResponsiveMenu {
    * Destroys the instance of the current plugin on this element, as well as the window resize handler that switches the plugins out.
    * @function
    */
-  destroy() {
+  _destroy() {
     this.currentPlugin.destroy();
     $(window).off('.zf.ResponsiveMenu');
-    Foundation.unregisterPlugin(this);
   }
 }
 
 ResponsiveMenu.defaults = {};
 
-// TODO9438: refactor this to happen on init, rather than as side effect.
-//
-// The plugin matches the plugin classes with these plugin instances.
-var MenuPlugins = {
-  dropdown: {
-    cssClass: 'dropdown',
-    plugin: Foundation._plugins['dropdown-menu'] || null
-  },
- drilldown: {
-    cssClass: 'drilldown',
-    plugin: Foundation._plugins['drilldown'] || null
-  },
-  accordion: {
-    cssClass: 'accordion-menu',
-    plugin: Foundation._plugins['accordion-menu'] || null
-  }
-};
-
-// Window exports
-Foundation.plugin(ResponsiveMenu, 'ResponsiveMenu');
-
-}(jQuery);
+export default ResponsiveMenu;
