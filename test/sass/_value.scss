@@ -114,5 +114,16 @@
       'Gets a value from a nested map');
   }
 
+  @include test('Map Safe Get [function]') {
+    $map: (
+      one: 'two',
+      ),
+    );
+    $expect: 'two';
+    
+    @include assert-equal(map-safe-get($map, one), $expect,
+      'Safely return a value from a map');
+  }
+
   // TODO: Add spec for pow()
 }
