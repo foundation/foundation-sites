@@ -93,7 +93,7 @@
     "touch": "^1.0.0",
     "vinyl": "^2.0.1",
     "vinyl-source-stream": "^1.1.0",
-    "webpack": "^2.2.0-rc.3",
+    "webpack": "^2.2.0-rc.7",
     "yargs": "^6.5.0"
   },
   "engines": {

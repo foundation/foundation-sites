@@ -1,10 +1,11 @@
 'use strict';
 
-!function($) {
+import $ from 'jquery';
 
-  let Box         = Foundation.Box; // import Box from "foundation.utils.box";
-  let GetYoDigits = Foundation.GetYoDigits; // import { GetYoDigits } from "foundation.utils.core";
-  let MediaQuery  = Foundation.MediaQuery; // import MediaQuery from "foundation.utils.mediaQuery";
+import Box from './foundation.util.box';
+import { GetYoDigits } from './foundation.util.core';
+import MediaQuery from './foundation.util.mediaQuery';
+import Plugin from './foundation.plugin';
 
   // import "foundation.util.triggers";
 
@@ -16,7 +17,7 @@
  * @requires foundation.util.triggers
  */
 
-class Tooltip {
+class Tooltip extends Plugin {
   /**
    * Creates a new instance of a Tooltip.
    * @class
@@ -24,15 +25,13 @@ class Tooltip {
    * @param {jQuery} element - jQuery object to attach a tooltip to.
    * @param {Object} options - object to extend the default configuration.
    */
-  constructor(element, options) {
+  _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, Tooltip.defaults, this.$element.data(), options);
 
     this.isActive = false;
     this.isClick = false;
     this._init();
-
-    Foundation.registerPlugin(this, 'Tooltip');
   }
 
   /**
@@ -342,15 +341,13 @@ class Tooltip {
    * Destroys an instance of tooltip, removes template element from the view.
    * @function
    */
-  destroy() {
+  _destroy() {
     this.$element.attr('title', this.template.text())
                  .off('.zf.trigger .zf.tooltip')
                  .removeClass('has-tip top right left')
                  .removeAttr('aria-describedby aria-haspopup data-disable-hover data-resize data-toggle data-tooltip data-yeti-box');
 
     this.template.remove();
-
-    Foundation.unregisterPlugin(this);
   }
 }
 
@@ -469,7 +466,4 @@ Tooltip.defaults = {
  * TODO utilize resize event trigger
  */
 
-// Window exports
-Foundation.plugin(Tooltip, 'Tooltip');
-
-}(jQuery);
+export default Tooltip;

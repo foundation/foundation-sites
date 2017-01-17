@@ -1,10 +1,10 @@
 'use strict';
 
-!function($) {
-
-  let MediaQuery     = Foundation.MediaQuery; // import MediaQuery from "foundation.util.mediaQuery";
-  let onImagesLoaded = Foundation.onImagesLoaded; // import onImagesLoaded from "foundation.util.imageLoader";
-  let GetYoDigits    = Foundation.GetYoDigits; // import { GetYoDigits } from "foundation.util.core"
+import $ from 'jquery';
+import MediaQuery from './foundation.util.mediaQuery';
+import onImagesLoaded from './foundation.util.imageLoader';
+import { GetYoDigits } from './foundation.util.core';
+import Plugin from './foundation.plugin';
 
 /**
  * Equalizer module.
@@ -13,7 +13,7 @@
  * @requires foundation.util.imageLoader if equalizer contains images
  */
 
-class Equalizer {
+class Equalizer extends Plugin {
   /**
    * Creates a new instance of Equalizer.
    * @class
@@ -21,13 +21,11 @@ class Equalizer {
    * @param {Object} element - jQuery object to add the trigger to.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  constructor(element, options){
+  _setup(element, options){
     this.$element = element;
     this.options  = $.extend({}, Equalizer.defaults, this.$element.data(), options);
 
     this._init();
-
-    Foundation.registerPlugin(this, 'Equalizer');
   }
 
   /**
@@ -280,11 +278,9 @@ class Equalizer {
    * Destroys an instance of Equalizer.
    * @function
    */
-  destroy() {
+  _destroy() {
     this._pauseEvents();
     this.$watched.css('height', 'auto');
-
-    Foundation.unregisterPlugin(this);
   }
 }
 
@@ -315,7 +311,4 @@ Equalizer.defaults = {
   equalizeOn: ''
 };
 
-// Window exports
-Foundation.plugin(Equalizer, 'Equalizer');
-
-}(jQuery);
+export default Equalizer;

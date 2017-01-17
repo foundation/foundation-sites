@@ -1,13 +1,12 @@
 'use strict';
 
-!function($) {
-
-
-  let Keyboard       = Foundation.Keyboard; // import Keyboard from "foundation.util.keyboard";
-  let Motion         = Foundation.Motion; // import { Motion } from "foundation.util.move";
-  let Timer          = Foundation.Timer; // import Timer from "foundation.util.timer";
-  let onImagesLoaded = Foundation.onImagesLoaded; // import onImagesLoaded from "foundation.util.imageLoader";
-  let GetYoDigits    = Foundation.GetYoDigits; // import { GetYoDigits } from "foundation.util.core";
+import $ from 'jquery';
+import Keyboard from './foundation.util.keyboard';
+import { Motion } from './foundation.util.move';
+import Timer from './foundation.util.timer';
+import onImagesLoaded from './foundation.util.imageLoader';
+import { GetYoDigits } from './foundation.util.core';
+import Plugin from './foundation.plugin';
 
   // import "foundation.util.touch.js"
   // TODO:  Figure out what a touch import should really do.
@@ -22,20 +21,19 @@
  * @requires foundation.util.touch
  */
 
-class Orbit {
+class Orbit extends Plugin {
   /**
   * Creates a new instance of an orbit carousel.
   * @class
   * @param {jQuery} element - jQuery object to make into an Orbit Carousel.
   * @param {Object} options - Overrides to the default plugin settings.
   */
-  constructor(element, options){
+  _setup(element, options){
     this.$element = element;
     this.options = $.extend({}, Orbit.defaults, this.$element.data(), options);
 
     this._init();
 
-    Foundation.registerPlugin(this, 'Orbit');
     Keyboard.register('Orbit', {
       'ltr': {
         'ARROW_RIGHT': 'next',
@@ -392,9 +390,8 @@ class Orbit {
   * Destroys the carousel and hides the element.
   * @function
   */
-  destroy() {
+  _destroy() {
     this.$element.off('.zf.orbit').find('*').off('.zf.orbit').end().hide();
-    Foundation.unregisterPlugin(this);
   }
 }
 
@@ -528,7 +525,4 @@ Orbit.defaults = {
   useMUI: true
 };
 
-// Window exports
-Foundation.plugin(Orbit, 'Orbit');
-
-}(jQuery);
+export default Orbit;

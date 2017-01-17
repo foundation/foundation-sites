@@ -1,10 +1,10 @@
 'use strict';
 
-!function($) {
-
-  let Keyboard   = Foundation.Keyboard; // import Keyboard from "foundation.util.keyboard";
-  let MediaQuery = Foundation.MediaQuery; // import MediaQuery from "foundation.util.mediaQuery";
-  let Motion     = Foundation.Motion; // import { Motion } from "foundation.util.motion";
+import $ from 'jquery';
+import Keyboard from './foundation.util.keyboard';
+import MediaQuery from './foundation.util.mediaQuery';
+import { Motion } from './foundation.util.motion';
+import Plugin from './foundation.plugin';
 
 /**
  * Reveal module.
@@ -15,19 +15,18 @@
  * @requires foundation.util.motion if using animations
  */
 
-class Reveal {
+class Reveal extends Plugin {
   /**
    * Creates a new instance of Reveal.
    * @class
    * @param {jQuery} element - jQuery object to use for the modal.
    * @param {Object} options - optional parameters.
    */
-  constructor(element, options) {
+  _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, Reveal.defaults, this.$element.data(), options);
     this._init();
 
-    Foundation.registerPlugin(this, 'Reveal');
     Keyboard.register('Reveal', {
       'ENTER': 'open',
       'SPACE': 'open',
@@ -468,7 +467,7 @@ class Reveal {
    * Destroys an instance of a modal.
    * @function
    */
-  destroy() {
+  _destroy() {
     if (this.options.overlay) {
       this.$element.appendTo($(this.options.appendTo)); // move $element outside of $overlay to prevent error unregisterPlugin()
       this.$overlay.hide().off().remove();
@@ -476,8 +475,6 @@ class Reveal {
     this.$element.hide().off();
     this.$anchor.off('.zf');
     $(window).off(`.zf.reveal:${this.id}`);
-
-    Foundation.unregisterPlugin(this);
   };
 }
 
@@ -596,9 +593,6 @@ Reveal.defaults = {
   additionalOverlayClasses: ''
 };
 
-// Window exports
-Foundation.plugin(Reveal, 'Reveal');
-
 function iPhoneSniff() {
   return /iP(ad|hone|od).*OS/.test(window.navigator.userAgent);
 }
@@ -611,4 +605,4 @@ function mobileSniff() {
   return iPhoneSniff() || androidSniff();
 }
 
-}(jQuery);
+export default Reveal;

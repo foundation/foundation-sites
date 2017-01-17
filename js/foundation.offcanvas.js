@@ -1,11 +1,10 @@
 'use strict';
 
-!function($) {
-
-  let Keyboard      = Foundation.Keyboard; // import Keyboard from "foundation.util.keyboard";
-  let MediaQuery    = Foundation.MediaQuery; // import MediaQuery from "foundation.util.mediaQuery";
-
-  let transitionend = Foundation.transitionend; // import { transitionend } from "foundation.util.core";
+import $ from 'jquery';
+import Keyboard from './foundation.util.keyboard';
+import MediaQuery from './foundation.util.mediaQuery';
+import { transitionend } from './foundation.util.core';
+import Plugin from './foundation.plugin';
 
   // import "foundation.util.triggers.js";
   // TODO: Figure out what triggers import should actually do, given how indirect their use is
@@ -18,7 +17,7 @@
  * @requires foundation.util.triggers
  */
 
-class OffCanvas {
+class OffCanvas extends Plugin {
   /**
    * Creates a new instance of an off-canvas wrapper.
    * @class
@@ -26,7 +25,7 @@ class OffCanvas {
    * @param {Object} element - jQuery object to initialize.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  constructor(element, options) {
+  _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, OffCanvas.defaults, this.$element.data(), options);
     this.$lastTrigger = $();
@@ -37,7 +36,6 @@ class OffCanvas {
     this._init();
     this._events();
 
-    Foundation.registerPlugin(this, 'OffCanvas')
     Keyboard.register('OffCanvas', {
       'ESCAPE': 'close'
     });
@@ -395,12 +393,10 @@ class OffCanvas {
    * Destroys the offcanvas plugin.
    * @function
    */
-  destroy() {
+  _destroy() {
     this.close();
     this.$element.off('.zf.trigger .zf.offcanvas');
     this.$overlay.off('.zf.offcanvas');
-
-    Foundation.unregisterPlugin(this);
   }
 }
 
@@ -503,7 +499,4 @@ OffCanvas.defaults = {
   trapFocus: false
 }
 
-// Window exports
-Foundation.plugin(OffCanvas, 'OffCanvas');
-
-}(jQuery);
+export default OffCanvas;

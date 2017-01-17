@@ -1,11 +1,11 @@
 'use strict';
 
-!function($) {
-
-  let Keyboard = Foundation.Keyboard; // import Keyboard from "foundation.util.keyboard";
-  let Nest     = Foundation.Nest; // import Nest from "foundation.util.nest";
-  let Box      = Foundation.Box; // import Box from "foundation.util.box";
-  let Rtl      = Foundation.rtl; // import { rtl } from "foundation.util.core";
+import $ from 'jquery';
+import Keyboard from './foundation.util.keyboard';
+import Nest from './foundation.util.nest';
+import Box from './foundation.util.box';
+import { rtl } from './foundation.util.core';
+import Plugin from './foundation.plugin';
 
 /**
  * DropdownMenu module.
@@ -15,7 +15,7 @@
  * @requires foundation.util.nest
  */
 
-class DropdownMenu {
+class DropdownMenu extends Plugin {
   /**
    * Creates a new instance of DropdownMenu.
    * @class
@@ -23,14 +23,13 @@ class DropdownMenu {
    * @param {jQuery} element - jQuery object to make into a dropdown menu.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  constructor(element, options) {
+  _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, DropdownMenu.defaults, this.$element.data(), options);
 
     Nest.Feather(this.$element, 'dropdown');
     this._init();
 
-    Foundation.registerPlugin(this, 'DropdownMenu');
     Keyboard.register('DropdownMenu', {
       'ENTER': 'open',
       'SPACE': 'open',
@@ -348,12 +347,11 @@ class DropdownMenu {
    * Destroys the plugin.
    * @function
    */
-  destroy() {
+  _destroy() {
     this.$menuItems.off('.zf.dropdownmenu').removeAttr('data-is-click')
         .removeClass('is-right-arrow is-left-arrow is-down-arrow opens-right opens-left opens-inner');
     $(document.body).off('.zf.dropdownmenu');
     Nest.Burn(this.$element, 'dropdown');
-    Foundation.unregisterPlugin(this);
   }
 }
 
@@ -441,7 +439,4 @@ DropdownMenu.defaults = {
   forceFollow: true
 };
 
-// Window exports
-Foundation.plugin(DropdownMenu, 'DropdownMenu');
-
-}(jQuery);
+export default DropdownMenu;

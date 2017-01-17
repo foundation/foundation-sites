@@ -1,11 +1,12 @@
 'use strict';
 
-!function($) {
+import $ from 'jquery';
+import Keyboard from './foundation.util.keyboard';
+import { Move } from './foundation.util.motion';
+import { GetYoDigits, rtl } from './foundation.util.core';
+let Rtl = rtl;
 
-  let Keyboard    = Foundation.Keyboard; // import Keyboard from "foundation.util.keyboard";
-  let Move        = Foundation.Move; // import { Move } from "foundation.util.motion";
-  let GetYoDigits = Foundation.GetYoDigits; // import { GetYoDigits, rtl } from "foundation.util.core";
-  let Rtl         = Foundation.rtl;
+import Plugin from './foundation.plugin';
 /**
  * Slider module.
  * @module foundation.slider
@@ -15,20 +16,19 @@
  * @requires foundation.util.touch
  */
 
-class Slider {
+class Slider extends Plugin {
   /**
    * Creates a new instance of a slider control.
    * @class
    * @param {jQuery} element - jQuery object to make into a slider control.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  constructor(element, options) {
+  _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, Slider.defaults, this.$element.data(), options);
 
     this._init();
 
-    Foundation.registerPlugin(this, 'Slider');
     Keyboard.register('Slider', {
       'ltr': {
         'ARROW_RIGHT': 'increase',
@@ -544,14 +544,12 @@ class Slider {
   /**
    * Destroys the slider plugin.
    */
-  destroy() {
+  _destroy() {
     this.handles.off('.zf.slider');
     this.inputs.off('.zf.slider');
     this.$element.off('.zf.slider');
 
     clearTimeout(this.timeout);
-
-    Foundation.unregisterPlugin(this);
   }
 }
 
@@ -702,8 +700,4 @@ function baseLog(base, value) {
   return Math.log(value)/Math.log(base)
 }
 
-// Window exports
-Foundation.plugin(Slider, 'Slider');
-
-}(jQuery);
-
+export default Slider;
