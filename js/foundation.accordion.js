@@ -56,10 +56,45 @@ class Accordion {
 
       $content.attr({'role': 'tabpanel', 'aria-labelledby': linkId, 'aria-hidden': true, 'id': id});
     });
-    var $initActive = this.$element.find('.is-active').children('[data-tab-content]');
+    var $initActive = this.$element.find('.is-active').children('[data-tab-content]'),
+    firstTimeInit = true;
     if($initActive.length){
-      this.down($initActive, true);
+      this.down($initActive, firstTimeInit);
+      firstTimeInit = false;
     }
+
+    //use browser to open a tab, if it exists in this tabset
+    if (this.options.deepLink) {
+      var anchor = window.location.hash;
+      //need a hash and a relevant anchor in this tabset
+      if(anchor.length) {
+        var $link = this.$element.find('[href$="'+anchor+'"]'),
+        $anchor = $(anchor);
+
+        if ($link.length && $anchor) {
+          if (!$link.parent('[data-accordion-item]').hasClass('is-active')) {
+            this.down($anchor, firstTimeInit);
+            firstTimeInit = false;
+          };
+
+          //roll up a little to show the titles
+          if (this.options.deepLinkSmudge) {
+            var _this = this;
+            $(window).load(function() {
+              var offset = _this.$element.offset();
+              $('html, body').animate({ scrollTop: offset.top }, _this.options.deepLinkSmudgeDelay);
+            });
+          }
+
+          /**
+            * Fires when the zplugin has deeplinked at pageload
+            * @event Accordion#deeplink
+            */
+          this.$element.trigger('deeplink.zf.accordion', [$link, $anchor]);
+        }
+      }
+    }
+
     this._events();
   }
 
@@ -115,6 +150,16 @@ class Accordion {
       this.up($target);
     } else {
       this.down($target);
+    }
+    //either replace or update browser history
+    if (this.options.deepLink) {
+      var anchor = $target.prev('a').attr('href');
+
+      if (this.options.updateHistory) {
+        history.pushState({}, '', anchor);
+      } else {
+        history.replaceState({}, '', anchor);
+      }
     }
   }
 
@@ -220,7 +265,38 @@ Accordion.defaults = {
    * @type {boolean}
    * @default false
    */
-  allowAllClosed: false
+  allowAllClosed: false,
+  /**
+   * Allows the window to scroll to content of pane specified by hash anchor
+   * @option
+   * @type {boolean}
+   * @default false
+   */
+  deepLink: false,
+
+  /**
+   * Adjust the deep link scroll to make sure the top of the accordion panel is visible
+   * @option
+   * @type {boolean}
+   * @default false
+   */
+  deepLinkSmudge: false,
+
+  /**
+   * Animation time (ms) for the deep link adjustment
+   * @option
+   * @type {number}
+   * @default 300
+   */
+  deepLinkSmudgeDelay: 300,
+
+  /**
+   * Update the browser history with the open accordion
+   * @option
+   * @type {boolean}
+   * @default false
+   */
+  updateHistory: false
 };
 
 // Window exports
