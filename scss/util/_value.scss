@@ -142,16 +142,16 @@
 /// Safely return a value from a map.
 ///
 /// @param {Map} $map - Map to retrieve a value from.
-/// @param {String} $name - Name of the map key.
+/// @param {String} $key - Name of the map key.
 ///
 /// @returns {List} Found value.
-@function map-safe-get($map, $name) {
-  @if (type-of($map) == 'map') {
-    @if (map-has-key($map, $name)) {
-      @return map-get($map, $name);
+@function map-safe-get($map, $key) {
+  @if (type-of($map) == 'map' or (type-of($map) == 'list' and length($map) == 0)) {
+    @if (map-has-key($map, $key)) {
+      @return map-get($map, $key);
     }
     @else {
-      @error 'Key: `#{$name}` is not available in `#{$map}`';
+      @error 'Key: `#{$key}` is not available in `#{$map}`';
     }
   }
   @else {
