@@ -7,158 +7,275 @@
     <title>All Foundation Menu Options</title>
     <link href="../motion-ui/dist/motion-ui.css" rel="stylesheet" />
     <link href="../assets/css/foundation.css" rel="stylesheet" />
+
+    <style>
+      h1 {
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 2rem;
+      }
+
+      .example {
+        padding: 2rem;
+        border: 1px solid #ddd;
+      }
+
+      .example + h1 {
+        margin-top: 5rem;
+      }
+
+      .example + h3 {
+        margin-top: 3rem;
+      }
+    </style>
   </head>
   <body>
     <div class="row column">
       <h1>Basic Menus</h1>
 
       <h3>Default Menu</h3>
-      <ul class="menu">
-        <li><a href="#">One</a></li>
-        <li><a href="#">Two</a></li>
-        <li><a href="#">Three</a></li>
-        <li><a href="#">Four</a></li>
-      </ul>
-
-      <hr>
+      <div class="example">
+        <ul class="menu">
+          <li><a href="#">One</a></li>
+          <li><a href="#">Two</a></li>
+          <li><a href="#">Three</a></li>
+          <li><a href="#">Four</a></li>
+        </ul>
+      </div>
 
       <h3>Horizontal Menu</h3>
-      <ul class="menu horizontal">
-        <li><a href="#">One</a></li>
-        <li><a href="#">Two</a></li>
-        <li><a href="#">Three</a></li>
-        <li><a href="#">Four</a></li>
-      </ul>
-
-      <hr>
+      <div class="example">
+        <ul class="menu horizontal">
+          <li><a href="#">One</a></li>
+          <li><a href="#">Two</a></li>
+          <li><a href="#">Three</a></li>
+          <li><a href="#">Four</a></li>
+        </ul>
+      </div>
 
       <h3>Vertical Menu</h3>
-      <ul class="menu vertical">
-        <li><a href="#">One</a></li>
-        <li><a href="#">Two</a></li>
-        <li><a href="#">Three</a></li>
-        <li><a href="#">Four</a></li>
-      </ul>
-
-      <hr>
+      <div class="example">
+        <ul class="menu vertical">
+          <li><a href="#">One</a></li>
+          <li><a href="#">Two</a></li>
+          <li><a href="#">Three</a></li>
+          <li><a href="#">Four</a></li>
+        </ul>
+      </div>
 
       <h3>Vertical, Horizontal, Vertical Menu</h3>
-      <ul class="menu vertical medium-horizontal large-vertical">
-        <li><a href="#">One</a></li>
-        <li><a href="#">Two</a></li>
-        <li><a href="#">Three</a></li>
-        <li><a href="#">Four</a></li>
-      </ul>
-
-      <hr>
+      <div class="example">
+        <ul class="menu vertical medium-horizontal large-vertical">
+          <li><a href="#">One</a></li>
+          <li><a href="#">Two</a></li>
+          <li><a href="#">Three</a></li>
+          <li><a href="#">Four</a></li>
+        </ul>
+      </div>
 
       <h3>Horizontal, Vertical, Horizontal Menu</h3>
-      <ul class="menu horizontal medium-vertical large-horizontal">
-        <li><a href="#">One</a></li>
-        <li><a href="#">Two</a></li>
-        <li><a href="#">Three</a></li>
-        <li><a href="#">Four</a></li>
-      </ul>
+      <div class="example">
+        <ul class="menu horizontal medium-vertical large-horizontal">
+          <li><a href="#">One</a></li>
+          <li><a href="#">Two</a></li>
+          <li><a href="#">Three</a></li>
+          <li><a href="#">Four</a></li>
+        </ul>
+      </div>
 
-      <hr>
+      <h1>Basic Menu Styles</h1>
 
       <h3>Nested Menu</h3>
-      <ul class="menu vertical">
-        <li><a href="#">One</a></li>
-        <li>
-          <a href="#">Two</a>
-          <ul class="menu vertical nested">
-            <li><a href="#">Two A</a></li>
-            <li><a href="#">Two B</a></li>
-            <li><a href="#">Two C</a></li>
-            <li><a href="#">Two D</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Three</a></li>
-        <li><a href="#">Four</a></li>
-      </ul>
-
-      <hr>
+      <div class="example">
+        <ul class="menu vertical">
+          <li><a href="#">One</a></li>
+          <li>
+            <a href="#">Two</a>
+            <ul class="menu vertical nested">
+              <li><a href="#">Two A</a></li>
+              <li><a href="#">Two B</a></li>
+              <li><a href="#">Two C</a></li>
+              <li><a href="#">Two D</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Three</a></li>
+          <li><a href="#">Four</a></li>
+        </ul>
+      </div>
 
       <h3>Simple Menu</h3>
-      <ul class="menu simple">
-        <li><a href="#">One</a></li>
-        <li><a href="#">Two</a></li>
-        <li><a href="#">Three</a></li>
-        <li><a href="#">Four</a></li>
-      </ul>
-
-      <hr>
+      <div class="example">
+        <ul class="menu simple">
+          <li><a href="#">One</a></li>
+          <li><a href="#">Two</a></li>
+          <li><a href="#">Three</a></li>
+          <li><a href="#">Four</a></li>
+        </ul>
+      </div>
 
       <h3>Pills Menu</h3>
-      <ul class="menu pills">
-        <li><a href="#">One</a></li>
-        <li><a href="#">Two</a></li>
-        <li><a href="#">Three</a></li>
-        <li><a href="#">Four</a></li>
-      </ul>
-
-      <hr>
-
-      <h3>Pills Menu (vertical)</h3>
-      <ul class="menu pills vertical">
-        <li><a href="#">One</a></li>
-        <li><a href="#">Two</a></li>
-        <li><a href="#">Three</a></li>
-        <li><a href="#">Four</a></li>
-      </ul>
-
-      <hr>
-
-      <h3>Pills with Active Menu</h3>
-      <ul class="menu pills">
-        <li><a href="#">One</a></li>
-        <li class="active"><a href="#">Two (.active)</a></li>
-        <li><a href="#">Three</a></li>
-        <li><a href="#">Four</a></li>
-      </ul>
-
-      <hr>
-
-      <h3>Right Aligned Menu</h3>
-      <ul class="menu align-right">
-        <li><a href="#">One</a></li>
-        <li><a href="#">Two</a></li>
-        <li><a href="#">Three</a></li>
-        <li><a href="#">Four</a></li>
-      </ul>
-
-      <hr>
-
-      <h3>Centered Menu</h3>
-      <ul class="menu align-center">
-        <li><a href="#">One</a></li>
-        <li><a href="#">Two</a></li>
-        <li><a href="#">Three</a></li>
-        <li><a href="#">Four</a></li>
-      </ul>
-
-      <hr>
-
-      <h3>Horizontal, Vertical, Horizontal Pills Menu</h3>
-      <ul class="menu pills horizontal medium-vertical large-horizontal">
-        <li><a href="#">One</a></li>
-        <li><a href="#">Two</a></li>
-        <li><a href="#">Three</a></li>
-        <li><a href="#">Four</a></li>
-      </ul>
-
-      <hr>
+      <div class="example">
+        <ul class="menu pills">
+          <li><a href="#">One</a></li>
+          <li><a href="#">Two</a></li>
+          <li><a href="#">Three</a></li>
+          <li><a href="#">Four</a></li>
+        </ul>
+      </div>
 
       <h3>Expanded Menu</h3>
-      <ul class="menu expanded">
-        <li><a href="#">One</a></li>
-        <li><a href="#">Two</a></li>
-        <li><a href="#">Three</a></li>
-        <li><a href="#">Four</a></li>
-      </ul>
+      <div class="example">
+        <ul class="menu expanded">
+          <li><a href="#">One</a></li>
+          <li><a href="#">Two</a></li>
+          <li><a href="#">Three</a></li>
+          <li><a href="#">Four</a></li>
+        </ul>
+      </div>
 
-      <hr>
+      <h3>Active Menu Item Class</h3>
+      <div class="example">
+        <ul class="menu pills">
+          <li><a href="#">One</a></li>
+          <li class="active"><a href="#">Two (.active)</a></li>
+          <li><a href="#">Three</a></li>
+          <li><a href="#">Four</a></li>
+        </ul>
+      </div>
+
+      <h1>Menu Alignment Classes</h1>
+
+      <h3>Right Aligned Menu</h3>
+      <div class="example">
+        <ul class="menu align-right">
+          <li><a href="#">One</a></li>
+          <li><a href="#">Two</a></li>
+          <li><a href="#">Three</a></li>
+          <li><a href="#">Four</a></li>
+        </ul>
+      </div>
+
+      <h3>Centered Menu</h3>
+      <div class="example">
+        <ul class="menu align-center">
+          <li><a href="#">One</a></li>
+          <li><a href="#">Two</a></li>
+          <li><a href="#">Three</a></li>
+          <li><a href="#">Four</a></li>
+        </ul>
+      </div>
+
+      <h1>Menu Plugin Styles</h1>
+
+      <h3>Dropdown Menu</h3>
+      <div class="example">
+        <ul class="menu dropdown" data-dropdown-menu>
+          <li><a href="#">One</a></li>
+          <li>
+            <a href="#">Two</a>
+            <ul class="menu vertical">
+              <li><a href="#">Two A</a></li>
+              <li><a href="#">Two B</a></li>
+              <li><a href="#">Two C</a></li>
+              <li><a href="#">Two D</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Three</a></li>
+          <li><a href="#">Four</a></li>
+        </ul>
+      </div>
+
+      <h3>Accordion Menu</h3>
+      <div class="example">
+        <ul class="menu vertical accordion-menu" data-accordion-menu>
+          <li><a href="#">One</a></li>
+          <li><a href="#">Two</a></li>
+          <li>
+            <a href="#">Two</a>
+            <ul class="menu vertical vertical">
+              <li><a href="#">Two A</a></li>
+              <li><a href="#">Two B</a></li>
+              <li><a href="#">Two C</a></li>
+              <li><a href="#">Two D</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Three</a></li>
+          <li><a href="#">Four</a></li>
+        </ul>
+      </div>
+
+      <h3>Drilldown Menu</h3>
+      <div class="example">
+        <ul class="menu vertical drilldown" data-drilldown>
+          <li><a href="#">One</a></li>
+          <li>
+            <a href="#">Two</a>
+            <ul class="menu vertical">
+              <li><a href="#">Two A</a></li>
+              <li><a href="#">Two B</a></li>
+              <li><a href="#">Two C</a></li>
+              <li><a href="#">Two D</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Three</a></li>
+          <li><a href="#">Four</a></li>
+        </ul>
+      </div>
+
+      <h1>Responsive Menus</h1>
+
+      <h3>Accordion to Dropdown Menu</h3>
+      <div class="example">
+        <ul class="menu vertical medium-horizontal" data-responsive-menu="accordion medium-dropdown">
+          <li><a href="#">One</a></li>
+          <li>
+            <a href="#">Two</a>
+            <ul class="menu">
+              <li><a href="#">Two A</a></li>
+              <li><a href="#">Two B</a></li> 
+              <li><a href="#">Two C</a></li>
+              <li><a href="#">Two D</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Three</a></li>
+          <li><a href="#">Four</a></li>
+        </ul>
+      </div>
+
+      <h3>Drilldown to Dropdown Menu</h3>
+      <div class="example">
+        <ul class="menu vertical medium-horizontal" data-responsive-menu="drilldown medium-dropdown">
+          <li><a href="#">One</a></li>
+          <li>
+            <a href="#">Two</a>
+            <ul class="menu">
+              <li><a href="#">Two A</a></li>
+              <li><a href="#">Two B</a></li>
+              <li><a href="#">Two C</a></li>
+              <li><a href="#">Two D</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Three</a></li>
+          <li><a href="#">Four</a></li>
+        </ul>
+      </div>
+
+      <h3>Drilldown to Accordion to Dropdown Menu</h3>
+      <div class="example">
+        <ul class="menu vertical large-horizontal" data-responsive-menu="drilldown medium-accordion large-dropdown">
+          <li><a href="#">One</a></li>
+          <li>
+            <a href="#">Two</a>
+            <ul class="menu">
+              <li><a href="#">Two A</a></li>
+              <li><a href="#">Two B</a></li>
+              <li><a href="#">Two C</a></li>
+              <li><a href="#">Two D</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Three</a></li>
+          <li><a href="#">Four</a></li>
+        </ul>
+      </div>
 
     </div>
 
