@@ -38,7 +38,7 @@ autoprefixer({
 
 ## Loading the Framework
 
-If you're the CLI to create a project, the Sass compilation process is already set up for you. If not, you can compile our Sass files yourself, or drop in a pre-built CSS file.
+If you're using the CLI to create a project, the Sass compilation process is already set up for you. If not, you can compile our Sass files yourself, or drop in a pre-built CSS file.
 
 To get started, first install the framework files using Bower or npm.
 
@@ -106,7 +106,7 @@ Each component has an **export mixin** which prints out the CSS for that compone
 @include foundation-everything;
 ```
 
-Our [starter projects](starter-projects.html) include the full list of imports, making it easy to comment out the components you don't need. A full list is also included below. 
+Our [starter projects](starter-projects.html) include the full list of imports, making it easy to comment out the components you don't need. A full list is also included below.
 
 ```scss
 @import 'foundation';
