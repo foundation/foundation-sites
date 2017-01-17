@@ -16,6 +16,16 @@ $breakpoints: (
   xxlarge: 1440px,
 ) !default;
 
+/// A list of named HiDPI breakpoints. You can use these with the `breakpoint()` mixin to quickly create media queries for resolutions.
+/// @type Map
+$breakpoints-hidpi: (
+  hidpi-1: 1,
+  hidpi-1-5: 1.5,
+  hidpi-2: 2,
+  retina: 2,
+  hidpi-3: 3
+) !default;
+
 /// The largest named breakpoint in which to include print as a media type
 /// @type Keyword
 $print-breakpoint: large !default;
@@ -41,21 +51,22 @@ $breakpoint-classes: (small medium large) !default;
 @function breakpoint($val: $-zf-zero-breakpoint) {
   // Size or keyword
   $bp: nth($val, 1);
+  // Value of the following breakpoint
+  $bp-next: null;
   // Value for max-width media queries
   $bp-min: null;
   // Value for min-width media queries
   $bp-max: null;
   // Direction of media query (up, down, or only)
   $dir: if(length($val) > 1, nth($val, 2), up);
-  // Name of the breakpoint, if named.
+  // If named, name of the breakpoint
   $name: null;
+  // If the breakpoint is a HiDPI breakpoint
+  $hidpi: false;
 
-  // Orientation and retina media queries have a unique syntax
+  // Orientation media queries have a unique syntax
   @if $bp == 'landscape' or $bp == 'portrait' {
     @return '(orientation: #{$bp})';
-  }
-  @else if $bp == 'retina' {
-    @return '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)';
   }
 
   // If a breakpoint name is given, get its value from the $breakpoints map.
@@ -63,10 +74,17 @@ $breakpoint-classes: (small medium large) !default;
     @if map-has-key($breakpoints, $bp) {
       $name: $bp;
       $bp: map-get($breakpoints, $name);
+      $bp-next: -zf-map-next($breakpoints, $name);
+    }
+    @else if map-has-key($breakpoints-hidpi, $bp) {
+      $name: $bp;
+      $bp: map-get($breakpoints-hidpi, $name);
+      $bp-next: -zf-map-next-number($breakpoints-hidpi, $bp);
+      $hidpi: true;
     }
     @else {
       $bp: 0;
-      @warn 'breakpoint(): "#{$val}" is not defined in your $breakpoints setting.';
+      @warn 'breakpoint(): "#{$val}" is not defined in your `$breakpoints` or `$breakpoints-hidpi` setting.';
     }
   }
 
@@ -77,34 +95,43 @@ $breakpoint-classes: (small medium large) !default;
 
   // Only 'only' and 'up' have a min limit.
   @if $dir == 'only' or $dir == 'up' {
-    $bp-min: -zf-bp-to-em($bp);
+    $bp-min: if($hidpi, $bp, -zf-bp-to-em($bp));
   }
   // Only 'only' and 'down' have a max limit.
   @if $dir == 'only' or $dir == 'down' {
-    // If the breakpoint is named, the max limit is the following breakpoint - 1px.
-    @if $name {
-      $bp-max: -zf-map-next($breakpoints, $name);
-      @if $bp-max {
-        $bp-max: -zf-bp-to-em($bp-max) - (1/16);
-      }
+    // If the breakpoint is a value, use it as max limit.
+    @if not $name {
+      $bp-max: if($hidpi, $bp, -zf-bp-to-em($bp));
     }
-    // Otherwhise, the max limit is the given value.
-    @else {
-      $bp-max: -zf-bp-to-em($bp);
+    // If the breakpoint is named, the max limit is the following breakpoint - 1px.
+    @else if $bp-next {
+      $bp-max: if($hidpi, $bp-next - (1/96), -zf-bp-to-em($bp-next) - (1/16));
     }
   }
 
   // Generate the media query string from min and max limits.
   $str: '';
-  @if $bp-min and $bp-min > 0em {
-    $str: $str + '(min-width: #{$bp-min})';
+  @if $bp-min and $bp-min > 0 {
+    @if $hidpi {
+      $bp-min-dpi: $bp-min * 96dpi;
+      $str: $str + '((-webkit-min-device-pixel-ratio: #{$bp-min}), (min-resolution: #{$bp-min-dpi}))'
+    }
+    @else {
+      $str: $str + '(min-width: #{$bp-min})';
+    }
 
-    @if $bp-max and $bp-max > 0em {
+    @if $bp-max and $bp-max > 0 {
       $str: $str + ' and ';
     }
   }
-  @if $bp-max and $bp-max > 0em {
-    $str: $str + '(max-width: #{$bp-max})';
+  @if $bp-max and $bp-max > 0 {
+    @if $hidpi {
+      $bp-max-dpi: $bp-max * 96dpi;
+      $str: $str + '((-webkit-max-device-pixel-ratio: #{$bp-max}), (max-resolution: #{$bp-max-dpi}))'
+    }
+    @else {
+      $str: $str + '(max-width: #{$bp-max})';
+    }
   }
 
   @return $str;
@@ -189,6 +216,26 @@ $breakpoint-classes: (small medium large) !default;
     @return map-get($map, nth($values, $i));
   }
 
+}
+
+/// Find the next number in a map.
+/// @access private
+///
+/// @param {Map} $map - Map to traverse.
+/// @param {Mixed} $number - Number to use as a starting point.
+///
+/// @returns {Mixed} The number following `$number`, if `$number` was found. If `$number` was not found, or `$number` was the biggest number in the map, returns `null`.
+@function -zf-map-next-number($map, $number) {
+
+  $next_number: null;
+
+  @each $k, $v in $map {
+    @if type-of($v) == 'number' and $v > $number and ($next_number == null or $v < $next_number) {
+      $next_number: $v;
+    }
+  }
+
+  @return $next_number;
 }
 
 /// Get a value for a breakpoint from a responsive config map or single value.
