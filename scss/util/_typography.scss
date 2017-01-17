@@ -15,17 +15,19 @@ $-zf-font-stack: (
   'verdana': (Verdana, Geneva, "DejaVu Sans", sans-serif),
 );
 
-/// Retrieve a font stack string from a map.
-/// @param {String} $stack - The key of the font stack from the map.
-/// @param {Map} $map - A map of font stacks to retrieve a string from.
-/// @return {List} A font stack list.
-@function font-stack($stack, $map: $-zf-font-stack) {
+/// Return a font stack list from a map. Equivalent to `map-safe-get($name, $-zf-font-stack)`.
+///
+/// @param {String} $name - Name of the font stack.
+/// @param {Map} $map [$-zf-font-stack] - Map of font stacks to retrieve a list from.
+///
+/// @returns {List} Found font stack.
+@function font-stack($name, $map: $-zf-font-stack) {
   @if (type-of($map) == 'map') {
-    @if (map-has-key($map, $stack)) {
-      @return map-get($map, $stack);
+    @if (map-has-key($map, $name)) {
+      @return map-get($map, $name);
     }
     @else {
-      @error 'Font stack `#{$stack}` is not available in `#{$map}`';
+      @error 'Font stack `#{$name}` is not available in `#{$map}`';
     }
   }
   @else {
