@@ -62,6 +62,60 @@
       'Skips media query creation for xxlarge down');
   }
 
+  @include test('Breakpoint (Retina) [function]') {
+    $expect-2: '((-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi))';
+
+    @include assert-equal(breakpoint(retina), $expect-2,
+      'Creates a x2 HiDPI range out of the retina alias breakpoint');
+  }
+
+  @include test('Breakpoint (HIDPI Default/Up Range) [function]') {
+    $expect-1-5: '((-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi))';
+    $expect-2: '((-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi))';
+
+    @include assert-equal(breakpoint(hidpi-1-5 up), $expect-1-5,
+      'Creates a x1.5 HiDPI up range out of a x1.5 HiDPI breakpoint');
+
+    @include assert-equal(breakpoint(hidpi-1-5), $expect-1-5,
+      'Creates a x1.5 HiDPI up range out of a x1.5 HiDPI breakpoint');
+
+    @include assert-equal(breakpoint(hidpi-2 up), $expect-2,
+      'Creates a x2 HiDPI up range out of a x2 HiDPI breakpoint');
+
+    @include assert-equal(breakpoint(hidpi-2), $expect-2,
+      'Creates a x2 HiDPI up range out of a x2 HiDPI breakpoint');
+  }
+
+  @include test('Breakpoint (HIDPI Only Range) [function]') {
+    $expect-1-5: '((-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi)) and ((-webkit-max-device-pixel-ratio: 1.98958), (max-resolution: 191dpi))';
+    $expect-2: '((-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)) and ((-webkit-max-device-pixel-ratio: 2.98958), (max-resolution: 287dpi))';
+    $expect-highest: '((-webkit-min-device-pixel-ratio: 3), (min-resolution: 288dpi))';
+
+    @include assert-equal(breakpoint(hidpi-1-5 only), $expect-1-5,
+      'Creates a x1.5 HiDPI only range out of a x1.5 HiDPI breakpoint');
+
+    @include assert-equal(breakpoint(hidpi-2 only), $expect-2,
+      'Creates a x2 HiDPI only range out of a x2 HiDPI breakpoint');
+
+    @include assert-equal(breakpoint(hidpi-3 only), $expect-highest,
+      'Creates an up range if the HiDPI breakpoint is the highest');
+  }
+
+  @include test('Breakpoint (HIDPI Down Range) [function]') {
+    $expect-1-5: '((-webkit-max-device-pixel-ratio: 1.98958), (max-resolution: 191dpi))';
+    $expect-2: '((-webkit-max-device-pixel-ratio: 2.98958), (max-resolution: 287dpi))';
+    $expect-highest: '';
+
+    @include assert-equal(breakpoint(hidpi-1-5 down), $expect-1-5,
+      'Creates a x1.5 HiDPI down range out of a x1.5 HiDPI breakpoint');
+
+    @include assert-equal(breakpoint(hidpi-2 down), $expect-2,
+      'Creates a x2 HiDPI down range out of a x2 HiDPI breakpoint');
+
+    @include assert-equal(breakpoint(hidpi-3 down), $expect-highest,
+      'Skips media query creation for highest HiDPI breakpoint down');
+  }
+
   @include test('Breakpoint (Value Down Range) [function]') {
     $expect: '(max-width: 1em)';
 
@@ -73,6 +127,13 @@
       'Creates a down range out of an em value');
   }
 
+  @include test('Breakpoint (Orientation) [function]') {
+    @include assert-equal(breakpoint(landscape), '(orientation: landscape)',
+      'Creates special media query for landscape');
+    @include assert-equal(breakpoint(portrait), '(orientation: portrait)',
+      'Creates special media query for portrait');
+  }
+
   @include test('Breakpoint (Empty String) [function]') {
     $expect: '';
 
@@ -82,15 +143,6 @@
       'Returns an empty string for the value 0 down');
     @include assert-equal(breakpoint(0 up), $expect,
       'Returns an empty string for the value 0 up');
-  }
-
-  @include test('Breakpoint (Orientation/Retina) [function]') {
-    @include assert-equal(breakpoint(landscape), '(orientation: landscape)',
-      'Creates special media query for landscape');
-    @include assert-equal(breakpoint(portrait), '(orientation: portrait)',
-      'Creates special media query for portrait');
-    @include assert-equal(breakpoint(retina), '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)',
-      'Creates special media query for retina');
   }
 
   @include test('Breakpoint (Unknown Value) [function]') {
