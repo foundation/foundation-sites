@@ -12,11 +12,15 @@ $menu-margin: 0 !default;
 
 /// Left-hand margin of a nested menu.
 /// @type Number
-$menu-margin-nested: 1rem !default;
+$menu-nested-margin: 1rem !default;
 
-/// Padding for items in a menu.
+/// Padding for items in a pill menu.
 /// @type Number
-$menu-item-padding: 0.7rem 1rem !default;
+$menu-pills-padding: 0.7rem 1rem !default;
+
+/// margin for items in a simple menu.
+/// @type Number
+$menu-simple-margin: 1rem !default;
 
 /// Text color of an active menu item.
 /// @type Color
@@ -34,14 +38,12 @@ $menu-icon-spacing: 0.25rem !default;
 /// @type Color
 $menu-item-background-hover: $light-gray !default;
 
-/// Color for bordered menu
-/// @type Color
-$menu-border: $light-gray !default;
-
 /// Creates the base styles for a Menu.
 @mixin menu-base {
-  margin: $menu-margin;
-  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  position: relative;
 
   @if $global-flexbox {
     display: flex;
@@ -50,24 +52,14 @@ $menu-border: $light-gray !default;
     width: 100%;
   }
 
-  // List items are table cell to allow for vertical alignment
-  > li {
+  li {
     @include disable-mouse-outline;
-
-    @if $global-flexbox {
-      flex: 0 0 auto;
-    }
-    @else {
-      display: table-cell;
-      vertical-align: middle;
-    }
   }
 
-  // Reset line height to make the height of the overall item easier to calculate
-  > li > a {
-    display: block;
-    padding: $menu-item-padding;
+  a {
     line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
   }
 
   // Reset styles of inner elements
@@ -82,18 +74,48 @@ $menu-border: $light-gray !default;
 /// Expands the items of a Menu, so each item is the same width.
 @mixin menu-expand {
   @if $global-flexbox {
-    > li {
+    li {
       flex: 1 1 0px; // sass-lint:disable-line zero-unit
     }
   }
   @else {
     display: table;
     width: 100%;
-    table-layout: fixed;
-  }
 
-  > li:first-child:last-child {
-    width: 100%;
+    li {
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+}
+
+/// Align menu items.
+@mixin menu-align($alignment) {
+  @if $alignment == center {
+    @if $global-flexbox {
+      li {
+        justify-content: center;
+      }
+    }
+    @else {
+      text-align: center;
+
+      li {
+        text-align: $global-left;
+      }
+    }
+  }
+  @else if $alignment == right {
+    @if $global-flexbox {
+      justify-content: flex-end;
+    }
+    @else {
+      text-align: $global-right;
+
+      li {
+        text-align: $global-left;
+      }
+    }
   }
 }
 
@@ -104,13 +126,17 @@ $menu-border: $light-gray !default;
     @if $global-flexbox {
       flex-wrap: nowrap;
 
-      > li {
+      li {
         flex: 0 0 auto;
       }
     }
     @else {
-      > li {
-        display: table-cell;
+      li {
+        display: inline-block;
+      }
+
+      a {
+        display: inline-block;
       }
     }
   }
@@ -118,18 +144,22 @@ $menu-border: $light-gray !default;
     @if $global-flexbox {
       flex-wrap: wrap;
 
-      > li {
+      li {
         flex: 0 0 100%;
         max-width: 100%;
       }
 
-      > li  > a {
+      a {
         justify-content: flex-start;
         align-items: flex-start;
       }
     }
     @else {
-      > li {
+      li {
+        display: block;
+      }
+
+      a {
         display: block;
       }
     }
@@ -140,123 +170,31 @@ $menu-border: $light-gray !default;
 }
 
 /// Creates a simple Menu, which has no padding or hover state.
-/// @param {Keyword} $dir [$global-left] - Direction of the menu. Set to `null` to do not generate styles for direction.
-@mixin menu-simple($dir: $global-left) {
-  li {
-    display: inline-block;
-    vertical-align: top;
-    line-height: 1;
-  }
-
-  a {
-    padding: 0;
-  }
-
-  @if $dir != null {
-    @include menu-simple-direction($dir);
+/// @param {Keyword} $dir [$global-left] - Direction of the menu. This effects the side of the <li> that receives the margin.
+/// @param {Number} $margin [$menu-simple-margin] - The margin to apply to each <li>.
+@mixin menu-simple($dir: $global-left, $margin: $menu-simple-margin) {
+  li + li {
+    margin-#{$dir}: $margin;
   }
 }
 
-/// Direction modifier for a simple Menu
-/// @param {Keyword} $dir [$global-left] - Direction of the menu
-@mixin menu-simple-direction($dir: $global-left) {
-  $no-margin-dir: $dir;
-  $margin-dir: direction-opposite($dir);
-
-  li {
-    margin-#{$no-margin-dir}: 0;
-    margin-#{$margin-dir}: get-side($menu-item-padding, $margin-dir);
+/// Creates a simple padded Menu.
+/// @param {Number} $padding [$menu-pills-padding] - Padding of each menu item.
+@mixin menu-pills($padding: $menu-pills-padding) {
+  a {
+    padding: $padding;
   }
 }
 
 /// Adds styles for a nested Menu, by adding `margin-left` to the menu.
 /// @param {Keyword|Number} $padding [auto] - Length of the margin.
-@mixin menu-nested($margin: $menu-margin-nested) {
+@mixin menu-nested($margin: $menu-nested-margin) {
   margin-#{$global-left}: $margin;
-}
-
-/// Adds support for icons to Menu items.
-/// @param {Keyword} $position [side] - Positioning for icons. Can be `side` (left, or right on RTL) or `top`.
-/// @param {Boolean} $base [true] - Set to `false` to prevent the shared CSS between side- and top-aligned icons from being printed. Set this to `false` if you're calling the mixin multiple times on the same element.
-@mixin menu-icons($position: side, $base: true) {
-  @if $base {
-    @if $global-flexbox {
-      > li > a {
-        display: flex;
-      }
-    }
-    @else {
-      > li > a {
-        img,
-        i,
-        svg {
-          vertical-align: middle;
-
-          + span {
-            vertical-align: middle;
-          }
-        }
-      }
-    }
-  }
-
-  @if $position == side {
-    > li > a {
-      @if $global-flexbox {
-        flex-flow: row nowrap;
-      }
-
-      img,
-      i,
-      svg {
-        margin-#{$global-right}: $menu-icon-spacing;
-
-        @if not $global-flexbox {
-          display: inline-block;
-        }
-      }
-    }
-  }
-  @else if $position == top {
-    > li > a {
-      @if $global-flexbox {
-        flex-flow: column nowrap;
-      }
-      @else {
-        text-align: center;
-      }
-
-      img,
-      i,
-      svg {
-        @if not $global-flexbox {
-          display: block;
-          margin: 0 auto $menu-icon-spacing;
-        }
-        @else {
-          align-self: stretch;
-          margin-bottom: $menu-icon-spacing;
-          text-align: center;
-        }
-      }
-    }
-  }
-}
-
-@mixin menu-text {
-  padding-top: 0;
-  padding-bottom: 0;
-  padding: $menu-item-padding;
-
-  font-weight: bold;
-  line-height: 1;
-  color: inherit;
 }
 
 @mixin foundation-menu {
   .menu {
     @include menu-base;
-    @include menu-icons;
 
     // Default orientation: horizontal
     &, &.horizontal {
@@ -274,51 +212,23 @@ $menu-border: $light-gray !default;
     }
 
     @include -zf-each-breakpoint($small: false) {
-      &.#{$-zf-size}-horizontal {
-        @include menu-direction(horizontal);
-      }
-
-      &.#{$-zf-size}-expanded {
-        @include menu-expand;
-      }
-
       &.#{$-zf-size}-vertical {
         @include menu-direction(vertical);
+      }
+
+      &.#{$-zf-size}-horizontal {
+        @include menu-direction(horizontal);
       }
     }
 
     // Simple
     &.simple {
       @include menu-simple;
-
-      &.align-#{$global-right} {
-        @include menu-simple-direction($global-right);
-      }
     }
 
-    // Align right
-    &.align-#{$global-right} {
-      @if $global-flexbox {
-        justify-content: flex-end;
-      }
-      @else {
-        @include clearfix;
-
-        > li {
-          float: $global-right;
-        }
-      }
-    }
-
-    // Vertical icons
-    &.icon-top {
-      @include menu-icons(top, $base: false);
-      // Make vertical menu with icons on top work
-      &.vertical {
-        a > span {
-          margin: auto;
-        }
-      }
+    // Pills
+    &.pills {
+      @include menu-pills;
     }
 
     // Nesting
@@ -332,35 +242,14 @@ $menu-border: $light-gray !default;
       color: $menu-item-color-active;
     }
 
-    // Menu with border
-    &.menu-bordered {
-      li {
-        border: 1px solid $menu-border;
-        &:not(:first-child) {
-          border-top: 0;
-        }
-      }
+    // Align center
+    .align-center {
+      @include menu-align(center);
     }
 
-    // Menu with background hover
-    &.menu-hover {
-      li:hover {
-        background-color: $menu-item-background-hover;
-      }
-    }
-  }
-
-  .menu-text {
-    @include menu-text;
-  }
-
-  // Align center
-  .menu-centered {
-    text-align: center;
-
-    > .menu {
-      display: inline-block;
-      vertical-align: top;
+    // Align right
+    .align-#{$global-right} {
+      @include menu-align(right);
     }
   }
 
