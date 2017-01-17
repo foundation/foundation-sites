@@ -17,20 +17,10 @@ $-zf-font-stack: (
 
 /// Return a font stack list from a map. Equivalent to `map-safe-get($name, $-zf-font-stack)`.
 ///
-/// @param {String} $name - Name of the font stack.
+/// @param {String} $stack - Name of the font stack.
 /// @param {Map} $map [$-zf-font-stack] - Map of font stacks to retrieve a list from.
 ///
 /// @returns {List} Found font stack.
-@function font-stack($name, $map: $-zf-font-stack) {
-  @if (type-of($map) == 'map') {
-    @if (map-has-key($map, $name)) {
-      @return map-get($map, $name);
-    }
-    @else {
-      @error 'Font stack `#{$name}` is not available in `#{$map}`';
-    }
-  }
-  @else {
-    @error '`#{$map}` is not a valid map';
-  }
+@function font-stack($stack, $map: $-zf-font-stack) {
+  @return map-safe-get($map, $stack);
 }

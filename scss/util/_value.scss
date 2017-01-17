@@ -141,11 +141,11 @@
 
 /// Safely return a value from a map.
 ///
-/// @param {String} $name - Name of the map key.
 /// @param {Map} $map - Map to retrieve a value from.
+/// @param {String} $name - Name of the map key.
 ///
 /// @returns {List} Found value.
-@function map-safe-get($name, $map) {
+@function map-safe-get($map, $name) {
   @if (type-of($map) == 'map') {
     @if (map-has-key($map, $name)) {
       @return map-get($map, $name);
