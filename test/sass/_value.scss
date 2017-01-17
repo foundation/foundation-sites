@@ -116,8 +116,7 @@
 
   @include test('Map Safe Get [function]') {
     $map: (
-      one: 'two',
-      ),
+      one: 'two'
     );
     $expect: 'two';
     
