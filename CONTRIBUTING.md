@@ -29,6 +29,8 @@ Foundation uses a git workflow close to [GitFlow](http://nvie.com/posts/a-succes
 - **`develop`**: The developing branch used to prepare the next minor/major version. It always contains all the new features and bug fixes previously made, and constitutes the most up-to-date version of Foundation. Almost every pull request should be opened on this branch. When a new version is released, it is merged on `master`, a support branch is created, and `develop` now targets the next version.
 - **`support/*`**: Support branches used to support the previous versions (i.e. `support/6.3` for `v6.3.0`) and prepare patches (i.e. `v6.3.1`). When a bug fix is compatible with supported versions, it is also merged on their support branches and patch versions can be released. If a fix is not compatible with `develop`, a pull request can be opened on the latest compatible and supported version.
 
+This git workflow was adopted as of `v6.3`, so `v6.2` and previous versions are not supported.
+
 ## Coding Standards
 
 If you aren't sure how a feature should be implemented, we recommend checking out our [standards document](https://github.com/zurb/foundation-standards), which outlines every aspect of writing framework features, from Sass to JavaScript.
