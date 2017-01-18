@@ -212,7 +212,7 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
     min-width: $dropdownmenu-min-width;
 
     border: $dropdownmenu-border;
-    background: $dropdownmenu-background;
+    background: $dropdownmenu-submenu-background;
 
     a {
       padding: $dropdownmenu-submenu-padding;
