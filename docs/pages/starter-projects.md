@@ -1,9 +1,9 @@
 ---
 title: Starter Projects
-description: We have a few starter project templates that can be installed with the Foundation CLI. You can also download them manually!
+description: We have a few starter project templates that can be installed with the Foundation CLI. You can also download them manually! If you are using WordPress, Angular or other integrations, there is likely a starter project for you!
 previous:
-  url: installation.html
-  title: Installation
+  url: updating.html
+  title: Updating
 next:
   url: compatibility.html
   title: Compatibility
@@ -86,3 +86,44 @@ The template creates a [BrowserSync](http://www.browsersync.io/) server, which i
 Under `src/styleguide` are two files to create a style guide for your project. The style guide is generated using Style Sherpa, a small plugin created by ZURB.
 
 Style Sherpa has a dedicated page here in the docs that explains its various features. **[Learn more about Style Sherpa.](style-sherpa.html)**
+
+---
+
+## Other Integrations
+
+<div class="row columns">
+  <h4 class="subheader">We collected some valuable starter projects for Foundation 6 we think you'll like.</h4>
+  <hr class="docs-hr-small">
+</div>
+
+<div class="row small-up-2 medium-up-3 large-up-3">
+
+  <div class="column docs-grid-content-block">
+    <a href="https://circlingthesun.github.io/angular-foundation-6/" target="_blank">
+      <img style="height: 150px;" src="http://foundation.zurb.com/assets/img/foundation-apps/built-on-angular.svg" alt="" />
+      <h5>Angular Foundation 6</h5>
+      <p>The awesome folks at Pinecone created an Angular port for Foundation 6.</p>
+    </a>
+  </div>
+
+  <div class="column docs-grid-content-block">
+    <a href="http://jointswp.com/" target="_blank">
+      <img src="https://materiell.com/wp-content/uploads/2016/04/materiell-foundation-jointswp-wordpress.jpg" alt="" />
+      <h5>JointsWP - WordPress Theme</h5>
+      <p>JointsWP is a blank WordPress theme built with Foundation 6, giving you all the power and flexibility you need to build complex, mobile friendly websites without starting from scratch.</p>
+    </a>
+  </div>
+
+  <div class="column docs-grid-content-block">
+    <a href="https://themeforest.net/item/sd-business-responsive-wordpress-theme/14934920?s_rank=12" target="_blank">
+      <img src="http://www.designbombs.com/wp-content/uploads/2016/02/foundationpress.png" alt="" />
+      <h5>FoundationPress - WordPress Theme</h5>
+      <p>FoundationPress: the ultimate WordPress starter-theme built on Foundation 6. FoundationPress is meant to be a starting point, not the final product.</p>
+    </a>
+  </div>
+
+</div>
+
+<div class="text-center">
+  <a href="http://foundation.zurb.com/sites/resources.html" target="_blank" class="button-docs secondary">See All Resources</a>
+</div>

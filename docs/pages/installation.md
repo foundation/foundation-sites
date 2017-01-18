@@ -5,8 +5,8 @@ previous:
   url: index.html
   title: Home
 next:
-  url: starter-projects.html
-  title: Starter Projects
+  url: updating.html
+  title: Updating Versions
 ---
 
 <div class="row">
