@@ -2,6 +2,14 @@
 /// @group accordion-menu
 ////
 
+/// Sets accordion menu padding.
+/// @type Number
+$accordionmenu-padding: $global-padding !default;
+
+/// Sets accordion menu submenu padding.
+/// @type Number
+$accordionmenu-submenu-padding: $accordionmenu-padding !default;
+
 /// Sets if accordion menus have the default arrow styles.
 /// @type Boolean
 $accordionmenu-arrows: true !default;
@@ -15,6 +23,15 @@ $accordionmenu-arrow-color: $primary-color !default;
 $accordionmenu-arrow-size: 6px !default;
 
 @mixin foundation-accordion-menu {
+
+  .accordion-menu a {
+    padding: $accordionmenu-padding;
+  }
+
+  .is-accordion-submenu-parent > a {
+    padding: $accordionmenu-submenu-padding;
+  }
+
   @if $accordionmenu-arrows {
     .is-accordion-submenu-parent > a {
       position: relative;

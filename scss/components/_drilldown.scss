@@ -14,6 +14,22 @@ $drilldown-transition: transform 0.15s linear !default;
 /// @type Boolean
 $drilldown-arrows: true !default;
 
+/// Sets drilldown menu item padding.
+/// @type Number
+$drilldown-padding: $global-padding !default;
+
+/// Background color for drilldown top level items.
+/// @type Color
+$drilldown-background: $white !default;
+
+/// Sets drilldown menu item padding in the submenu.
+/// @type Number
+$drilldown-submenu-padding: $drilldown-padding !default;
+
+/// Background color for drilldown submenus.
+/// @type Color
+$drilldown-submenu-background: $white !default;
+
 /// Sets drilldown arrow color if arrow is used.
 /// @type Color
 $drilldown-arrow-color: $primary-color !default;
@@ -21,10 +37,6 @@ $drilldown-arrow-color: $primary-color !default;
 /// Sets drilldown arrow size if arrow is used.
 /// @type Length
 $drilldown-arrow-size: 6px !default;
-
-/// Background color for drilldown submenus.
-/// @type Color
-$drilldown-background: $white !default;
 
 @mixin foundation-drilldown-menu {
   // Applied to the Menu container
@@ -41,6 +53,12 @@ $drilldown-background: $white !default;
     }
   }
 
+  // The top level <ul>
+  .drilldown a {
+    padding: $drilldown-padding;
+    background: $drilldown-background;
+  }
+
   // Applied to nested <ul>s
   .is-drilldown-submenu {
     position: absolute;
@@ -49,7 +67,7 @@ $drilldown-background: $white !default;
     z-index: -1;
 
     width: 100%;
-    background: $drilldown-background;
+    background: $drilldown-submenu-background;
     transition: $drilldown-transition;
 
     &.is-active {
@@ -60,6 +78,11 @@ $drilldown-background: $white !default;
 
     &.is-closing {
       transform: translateX(if($global-text-direction == ltr, 100%, -100%));
+    }
+
+    // Submenu item padding
+    a {
+      padding: $drilldown-submenu-padding;
     }
   }
 

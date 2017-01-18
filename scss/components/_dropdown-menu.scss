@@ -22,9 +22,21 @@ $dropdownmenu-arrow-size: 6px !default;
 /// @type Length
 $dropdownmenu-min-width: 200px !default;
 
-/// Background color for dropdowns.
+/// Background color for top level items.
 /// @type Color
 $dropdownmenu-background: $white !default;
+
+/// Background color for dropdowns.
+/// @type Color
+$dropdownmenu-submenu-background: $dropdownmenu-background !default;
+
+/// Padding for top level items.
+/// @type Number
+$dropdownmenu-padding: $global-padding !default;
+
+/// Padding for sub-menu items.
+/// @type Number
+$dropdownmenu-submenu-padding: $dropdownmenu-padding !default;
 
 /// Border for dropdown sub-menus.
 /// @type List
@@ -116,6 +128,7 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
 
     a {
       @include disable-mouse-outline;
+      padding: $dropdownmenu-padding;
     }
 
     .no-js & ul {
@@ -200,6 +213,10 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
 
     border: $dropdownmenu-border;
     background: $dropdownmenu-background;
+
+    a {
+      padding: $dropdownmenu-submenu-padding;
+    }
 
     .is-dropdown-submenu-parent {
       @if $dropdownmenu-arrows {
