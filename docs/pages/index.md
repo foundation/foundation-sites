@@ -179,7 +179,46 @@ next:
   <a href="http://foundation.zurb.com/templates.html" target="_blank" class="button-docs secondary">View All Templates</a>
 </div>
 
+---
 
+## Themes
+
+<div class="row columns">
+  <h4 class="subheader">Quickly get started with our ready-to-use Foundation templates.</h4>
+  <hr class="docs-hr-small">
+</div>
+
+<div class="row small-up-2 medium-up-3 large-up-3">
+
+  <div class="column docs-grid-content-block">
+    <a href="https://themeforest.net/item/edumix-foundation-zurb-admin-dashboard/10525482" target="_blank">
+      <img src="https://image-tf.s3.envato.com/files/127311061/preview.__large_preview.png" alt="" />
+      <h5>Edumix - Admin Dashboard</h5>
+      <p>This simple yet powerful admin templates is well suited for web apps or any other website or project that requires admin dashboard.</p>
+    </a>
+  </div>
+
+  <div class="column docs-grid-content-block">
+    <a href="https://themeforest.net/item/zeit-multipurpose-coming-soon-template/17568293?s_rank=11" target="_blank">
+      <img src="https://image-tf.s3.envato.com/files/204168328/01_preview1.__large_preview.jpg" alt="" />
+      <h5>ZEIT - Multipurpose Theme</h5>
+      <p>Zeit is a modern and professional coming soon/under construction template. It comes with 6 different styles, you can choose between slideshow, single image, Youtube video, particle effect, rainy effect and html5 video backgrounds.</p>
+    </a>
+  </div>
+
+  <div class="column docs-grid-content-block">
+    <a href="https://themeforest.net/item/sd-business-responsive-wordpress-theme/14934920?s_rank=12" target="_blank">
+      <img src="https://image-tf.s3.envato.com/files/184893631/preview.__large_preview.jpg" alt="" />
+      <h5>SD Business - WordPress Theme</h5>
+      <p>SD Business is a fully responsive, customizable, powerful and lightweight WordPress theme that will introduce your business in the most elegant way.</p>
+    </a>
+  </div>
+
+</div>
+
+<div class="text-center">
+  <a href="http://foundation.zurb.com/sites/resources.html" target="_blank" class="button-docs secondary">View All Themes</a>
+</div>
 
 ---
 
