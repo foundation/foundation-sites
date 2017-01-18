@@ -243,12 +243,12 @@ $menu-item-background-hover: $light-gray !default;
     }
 
     // Align center
-    .align-center {
+    &.align-center {
       @include menu-align(center);
     }
 
     // Align right
-    .align-#{$global-right} {
+    &.align-#{$global-right} {
       @include menu-align(right);
     }
   }
