@@ -1,6 +1,7 @@
 import $ from 'jquery';
 
 import Foundation from '../foundation.core';
+Foundation.addToJquery($);
 
 // Add Foundation Utils to Foundation global namespace for backwards
 // compatibility.
@@ -31,7 +32,7 @@ Foundation.Timer = Timer;
 // so no // need to add it to Foundation, just init them.
 
 import Touch from '../foundation.util.touch';
-Touch.init();
+Touch.init($);
 
 import Triggers from '../foundation.util.triggers';
 Triggers.init(Foundation, $);
@@ -60,8 +61,14 @@ Foundation.plugin(Equalizer, 'Equalizer');
 import Interchange from '../foundation.interchange';
 Foundation.plugin(Interchange, 'Interchange');
 
+import Magellan from '../foundation.magellan';
+Foundation.plugin(Magellan, 'Magellan');
+
 import OffCanvas from '../foundation.offcanvas';
 Foundation.plugin(OffCanvas, 'OffCanvas');
+
+import Orbit from '../foundation.orbit';
+Foundation.plugin(Orbit, 'Orbit');
 
 import ResponsiveMenu from '../foundation.responsiveMenu';
 Foundation.plugin(ResponsiveMenu, 'ResponsiveMenu');
