@@ -77,32 +77,11 @@ class Tabs {
         });
       }
 
-      //use browser to open a tab, if it exists in this tabset
-      if (_this.options.deepLink) {
-        var anchor = window.location.hash;
-        //need a hash and a relevant anchor in this tabset
-        if(anchor.length) {
-          var $link = $elem.find('[href="'+anchor+'"]');
-          if ($link.length) {
-            _this.selectTab($(anchor));
-
-            //roll up a little to show the titles
-            if (_this.options.deepLinkSmudge) {
-              $(window).load(function() {
-                var offset = $elem.offset();
-                $('html, body').animate({ scrollTop: offset.top }, _this.options.deepLinkSmudgeDelay);
-              });
-            }
-
-            /**
-              * Fires when the zplugin has deeplinked at pageload
-              * @event Tabs#deeplink
-              */
-             $elem.trigger('deeplink.zf.tabs', [$link, $(anchor)]);
-           }
-        }
-      }
     });
+    //use browser to open a tab, if it exists in this tabset
+    if (this.options.deepLink) {
+      this._checkDeepLink();
+    }
 
     if(this.options.matchHeight) {
       var $images = this.$tabContent.find('img');
@@ -114,9 +93,32 @@ class Tabs {
       }
     }
 
+    this._checkDeepLink = this._checkDeepLink.bind(this);
     this._events();
   }
 
+  _checkDeepLink() {
+    var anchor = window.location.hash;
+    //need a hash and a relevant anchor in this tabset
+    if(anchor.length) {
+      var $link = this.$element.find('[href="'+anchor+'"]');
+      if ($link.length) {
+        this.selectTab($(anchor));
+
+        //roll up a little to show the titles
+        if (this.options.deepLinkSmudge) {
+          var offset = this.$element.offset();
+          $('html, body').animate({ scrollTop: offset.top }, this.options.deepLinkSmudgeDelay);
+        }
+
+        /**
+          * Fires when the zplugin has deeplinked at pageload
+          * @event Tabs#deeplink
+          */
+         this.$element.trigger('deeplink.zf.tabs', [$link, $(anchor)]);
+       }
+     }
+   }
   /**
    * Adds event handlers for items within the tabs.
    * @private
@@ -130,6 +132,10 @@ class Tabs {
       this._setHeightMqHandler = this._setHeight.bind(this);
 
       $(window).on('changed.zf.mediaquery', this._setHeightMqHandler);
+    }
+
+    if(this.options.deepLink) {
+      $(window).on('popstate', this._checkDeepLink);
     }
   }
 
@@ -365,6 +371,7 @@ class Tabs {
       }
     }
 
+    $(window).off('popstate', this._checkDeepLink);
     Foundation.unregisterPlugin(this);
   }
 }
