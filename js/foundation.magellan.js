@@ -247,5 +247,4 @@ Magellan.defaults = {
   offset: 0
 }
 
-// Window exports
-Foundation.plugin(Magellan, 'Magellan');
+export default Magellan;

@@ -150,7 +150,7 @@ Triggers.Initializers.addClosemeListener = function(pluginName) {
       return `closeme.zf.${name}`;
     }).join(' ');
 
-    $(window).off(listeners).on(listeners, Triggers.Global.closeMeListener);
+    $(window).off(listeners).on(listeners, Triggers.Listeners.Global.closeMeListener);
   }
 }
 

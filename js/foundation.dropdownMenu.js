@@ -7,6 +7,8 @@ import Box from './foundation.util.box';
 import { rtl } from './foundation.util.core';
 import Plugin from './foundation.plugin';
 
+const Rtl = rtl;
+
 /**
  * DropdownMenu module.
  * @module foundation.dropdown-menu

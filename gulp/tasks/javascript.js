@@ -13,7 +13,7 @@ gulp.task('javascript', ['javascript:foundation', 'javascript:deps', 'javascript
 
 gulp.task('javascript:foundation', function() {
   return gulp.src('js/entries/all.js')
-    .pipe(webpackStream({/* options */}, webpack2))
+    .pipe(webpackStream({externals: {jquery: 'jQuery'}}, webpack2))
     .pipe(rename('foundation.js'))
     .pipe(gulp.dest('_build/assets/js'));
 });
