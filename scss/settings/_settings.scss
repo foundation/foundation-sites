@@ -494,6 +494,8 @@ $responsive-embed-ratios: (
   default: 4 by 3,
   widescreen: 16 by 9,
 );
+// WARNING: Will be removed in version 6.4
+$responsive-embed-ratio: default;
 
 // 29. Reveal
 // ----------
