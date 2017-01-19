@@ -138,3 +138,32 @@
   @return if(type-of($map) != 'list', ($value,), $map);
 
 }
+
+/// Return a join of the two given strings `$str1` and `$str2`.
+/// If the two strings are not empty, they are separated by `$delimiter`.
+///
+/// @param {String} $str1 [null] - First string to join.
+/// @param {String} $str1 [null] - Second string to join.
+/// @param {String} $delimiter [null] - Delimieter between `$str1` and `$str2`.
+///
+/// @returns {String} Join of `$str1`, `$delimiter` and `$str2`.
+@function zf-str-join(
+  $str1: null,
+  $str2: null,
+  $delimiter: null
+) {
+  $ret: '';
+
+  @if $str1 and str-length($str1) > 0 {
+    $ret: $ret + $str1;
+
+    @if $delimiter and str-length($delimiter) > 0 and $str2 and str-length($str2) > 0 {
+      $ret: $ret + $delimiter;
+    }
+  }
+  @if $str2 and str-length($str2) > 0 {
+    $ret: $ret + $str2;
+  }
+
+  @return $ret;
+}

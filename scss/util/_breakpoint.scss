@@ -110,31 +110,17 @@ $breakpoint-classes: (small medium large) !default;
   }
 
   // Generate the media query string from min and max limits.
-  $str: '';
-  @if $bp-min and $bp-min > 0 {
-    @if $hidpi {
-      $bp-min-dpi: $bp-min * 96dpi;
-      $str: $str + '((-webkit-min-device-pixel-ratio: #{$bp-min}), (min-resolution: #{$bp-min-dpi}))'
-    }
-    @else {
-      $str: $str + '(min-width: #{$bp-min})';
-    }
-
-    @if $bp-max and $bp-max > 0 {
-      $str: $str + ' and ';
-    }
+  @if $hidpi {
+    $bp-min-dpi: if($bp-min, $bp-min * 96dpi, $bp-min);
+    $bp-max-dpi: if($bp-max, $bp-max * 96dpi, $bp-max);
+    @return zf-str-join(
+      -zf-bp-join($bp-min, $bp-max, '-webkit-min-device-pixel-ratio', '-webkit-max-device-pixel-ratio'),
+      -zf-bp-join($bp-min-dpi, $bp-max-dpi, 'min-resolution', 'max-resolution'),
+      ', ');
   }
-  @if $bp-max and $bp-max > 0 {
-    @if $hidpi {
-      $bp-max-dpi: $bp-max * 96dpi;
-      $str: $str + '((-webkit-max-device-pixel-ratio: #{$bp-max}), (max-resolution: #{$bp-max-dpi}))'
-    }
-    @else {
-      $str: $str + '(max-width: #{$bp-max})';
-    }
+  @else {
+    @return -zf-bp-join($bp-min, $bp-max);
   }
-
-  @return $str;
 }
 
 /// Wraps a media query around the content you put inside the mixin. This mixin accepts a number of values:
@@ -281,6 +267,28 @@ $breakpoint-classes: (small medium large) !default;
 
     @return map-get($map, $anchor);
   }
+}
+
+/// Return media query string from the given min and/or max limits.
+/// If a limit is equal to `null` or `0`, it is ignored.
+/// @access private
+///
+/// @param {Number} $min [0] - Min media query limit.
+/// @param {Number} $max [0] - Max media query limit.
+/// @param {String} $min-name ['min-width'] - Name of the min media query limit.
+/// @param {String} $delimiter ['max-width'] - Name of the max media query limit.
+///
+/// @returns {String} Media Query string.
+@function -zf-bp-join(
+  $min: 0,
+  $max: 0,
+  $min-name: 'min-width',
+  $max-name: 'max-width'
+) {
+  @return zf-str-join(
+    if($min and $min > 0, '(#{$min-name}: #{$min})', null),
+    if($max and $max > 0, '(#{$max-name}: #{$max})', null),
+    ' and ');
 }
 
 @if map-has-key($breakpoints, small) {
