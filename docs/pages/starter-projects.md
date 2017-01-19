@@ -96,29 +96,29 @@ Style Sherpa has a dedicated page here in the docs that explains its various fea
   <hr class="docs-hr-small">
 </div>
 
-<div class="row small-up-2 medium-up-3 large-up-3">
+<div class="row small-up-2 medium-up-3 large-up-3 thumb-row">
 
-  <div class="column docs-grid-content-block">
+  <div class="column">
     <a href="https://circlingthesun.github.io/angular-foundation-6/" target="_blank">
       <img style="height: 150px;" src="http://foundation.zurb.com/assets/img/foundation-apps/built-on-angular.svg" alt="" />
-      <h5>Angular Foundation 6</h5>
-      <p>The awesome folks at Pinecone created an Angular port for Foundation 6.</p>
+      <h5 class="thumb-category">Angular Foundation 6</h5>
+      <p class="thumb-description" target="_blank">The awesome folks at Pinecone created an Angular port for Foundation 6.</p>
     </a>
   </div>
 
-  <div class="column docs-grid-content-block">
+  <div class="column">
     <a href="http://jointswp.com/" target="_blank">
-      <img src="https://materiell.com/wp-content/uploads/2016/04/materiell-foundation-jointswp-wordpress.jpg" alt="" />
-      <h5>JointsWP - WordPress Theme</h5>
-      <p>JointsWP is a blank WordPress theme built with Foundation 6, giving you all the power and flexibility you need to build complex, mobile friendly websites without starting from scratch.</p>
+      <img style="margin-bottom: 4rem;" src="https://materiell.com/wp-content/uploads/2016/04/materiell-foundation-jointswp-wordpress.jpg" alt="" />
+      <h5 class="thumb-category">JointsWP - WordPress Theme</h5>
+      <p class="thumb-description" target="_blank">JointsWP is a powerful and flexible blank WordPress theme built with Foundation 6.</p>
     </a>
   </div>
 
-  <div class="column docs-grid-content-block">
+  <div class="column">
     <a href="https://themeforest.net/item/sd-business-responsive-wordpress-theme/14934920?s_rank=12" target="_blank">
       <img src="http://www.designbombs.com/wp-content/uploads/2016/02/foundationpress.png" alt="" />
-      <h5>FoundationPress - WordPress Theme</h5>
-      <p>FoundationPress: the ultimate WordPress starter-theme built on Foundation 6. FoundationPress is meant to be a starting point, not the final product.</p>
+      <h5 class="thumb-category">FoundationPress - WordPress Theme</h5>
+      <p class="thumb-description" target="_blank">FoundationPress: the ultimate WordPress starter-theme built on Foundation 6. FoundationPress is meant to be a starting point, not the final product.</p>
     </a>
   </div>
 
@@ -126,4 +126,100 @@ Style Sherpa has a dedicated page here in the docs that explains its various fea
 
 <div class="text-center">
   <a href="http://foundation.zurb.com/sites/resources.html" target="_blank" class="button-docs secondary">See All Resources</a>
+</div>
+
+---
+
+## Related Resources
+
+<div class="row small-up-1 medium-up-2 large-up-3 thumb-row">
+
+  <div class="column">
+    <a href="http://foundation.zurb.com/learn/learn-the-zurb-stack-panini.html" target="_blank">
+      <img src="http://foundation.zurb.com/assets/img/develop/tuts-panini-zurb.png" class="tuts-img" height="" width="" alt="image clip of video">
+      <h5 class="thumb-category">F6, WORKFLOW, OPTIMIZATION, GULP</h5>
+      <p class="thumb-description" target="_blank">Under Promise &amp; Over Deliver with the ZURB Stack<span class="thumb-author">Geoff Kimball | ZURB</span></p>
+    </a>
+  </div>
+
+  <div class="column">
+    <a href="http://foundation.zurb.com/learn/upgrade-foundation-6-rails-gem.html" target="_blank">
+      <img src="http://foundation.zurb.com/assets/img/develop/tuts-upgraderails-jamesstone.png" class="tuts-img" height="" width="" alt="image clip of video">
+      <h5 class="thumb-category">F6, RUBY, RAILS, INSTALL</h5>
+      <p class="thumb-description">Upgrade to the Foundation 6 Rails Gem From Foundation 5<span class="thumb-author">James Stone</span></p>
+    </a>
+  </div>
+
+  <div class="column">
+    <a href="http://foundation.zurb.com/learn/foundation-6-zurb-stack-part-1.html" target="_blank">
+      <img src="http://foundation.zurb.com/assets/img/learn/training/tuts-zurb-stack-part-1.png" class="tuts-img" height="" width="" alt="image clip of video">
+      <h5 class="thumb-category">F6, OPTIMIZATION, PROJECT STRUCTURE, ZURB STACK</h5>
+      <p class="thumb-description">What the ZURB Stack Does - Part 1<span class="thumb-author">Rafi Benkual</span></p>
+    </a>
+  </div>
+
+  <div class="column">
+    <a href="http://foundation.zurb.com/learn/foundation-6-zurb-stack-part-2.html" target="_blank">
+      <img src="http://foundation.zurb.com/assets/img/learn/training/tuts-zurb-stack-part-2.png" class="tuts-img" height="" width="" alt="image clip of video">
+      <h5 class="thumb-category">F6, OPTIMIZATION, PROJECT STRUCTURE, ZURB STACK</h5>
+      <p class="thumb-description">What the ZURB Stack Does - Part 2<span class="thumb-author">Rafi Benkual</span></p>
+    </a>
+  </div>
+
+  <div class="column">
+    <a href="http://foundation.zurb.com/learn/foundation-6-stack-file-structure.html" target="_blank">
+      <img src="http://foundation.zurb.com/assets/img/learn/training/tuts-stack-file-structure.png" class="tuts-img" height="" width="" alt="image clip of video">
+      <h5 class="thumb-category">F6, SASS, PROJECT STRUCTURE, ZURB STACK</h5>
+      <p class="thumb-description">Overview of Foundation's ZURB Stack and File Structure<span class="thumb-author">Rafi Benkual</span></p>
+    </a>
+  </div>
+
+  <div class="column">
+    <a href="http://foundation.zurb.com/learn/foundation-6-stack-file-structure.html" target="_blank">
+      <img src="http://foundation.zurb.com/assets/img/learn/training/tuts-stack-file-structure.png" class="tuts-img" height="" width="" alt="image clip of video">
+      <h5 class="thumb-category">F6, SASS, PROJECT STRUCTURE, ZURB STACK</h5>
+      <p class="thumb-description">Overview of Foundation's ZURB Stack and File Structure<span class="thumb-author">Rafi Benkual</span></p>
+    </a>
+  </div>
+
+  <div class="column">
+    <a href="http://foundation.zurb.com/learn/deploy-your-foundation-website-with-the-zurb-stack.html" target="_blank">
+      <img src="http://foundation.zurb.com/assets/img/develop/tuts-deploy-gulpfile.png" class="tuts-img" height="" width="" alt="image clip of video">
+      <h5 class="thumb-category">GULP, WORKFLOW, ZURB STACK</h5>
+      <p class="thumb-description">Deploy your Foundation Website with the ZURB Stack<span class="thumb-author">ZURB</span></p>
+    </a>
+  </div>
+
+  <div class="column">
+    <a href="http://foundation.zurb.com/learn/install-foundation-6-sass-on-windows.html" target="_blank">
+      <img src="http://foundation.zurb.com/assets/img/develop/tuts-sass-windows-jamesstone.png" class="tuts-img" height="" width="" alt="image clip of video">
+      <h5 class="thumb-category">F6, SASS, INSTALL, CLI</h5>
+      <p class="thumb-description">Installing Foundation 6 Sass on Windows<span class="thumb-author">James Stone</span></p>
+    </a>
+  </div>
+
+  <div class="column">
+    <a href="http://developer.telerik.com/featured/using-foundation-6-asp-net-core/" target="_blank">
+      <p class="thumb-description">Using Foundation 6 on ASP.NET Core<span class="thumb-author">By Ed Charbeneau</span></p>
+    </a>
+    <a href="http://penguindreams.org/blog/jekyll-3-and-foundation-6/" target="_blank">
+      <p class="thumb-description">Jekyll 3 and Foundation 6<span class="thumb-author">By Sumit Khanna</span></p>
+    </a>
+    <a href="https://www.sitepoint.com/getting-started-with-foundation-6s-cli-tools/" target="_blank">
+      <p class="thumb-description">Getting Started with Foundation 6’s CLI Tools<span class="thumb-author">By Julian Ćwirko</span></p>
+    </a>
+  </div>
+
+  <div class="column">
+    <a href="http://giverhell.com/2016/02/13/get-started-with-zurbs-foundation-6-for-sites-on-windows-with-scss/" target="_blank">
+      <p class="thumb-description">Get started with ZURB’s Foundation 6 on Windows with SCSS<span class="thumb-author">By Cory</span></p>
+    </a>
+    <a href="https://zeek.com/update-heisenberg-to-foundation-sites-6/" target="_blank">
+      <p class="thumb-description">Heisenberg WP Theme is now on Foundation 6<span class="thumb-author">By Jacob Arriola</span></p>
+    </a>
+    <a href="https://emberobserver.com/addons/ember-cli-foundation-6-sass" target="_blank">
+      <p class="thumb-description">Foundation 6 SASS package for Ember CLI<span class="thumb-author">By Acoustep</span></p>
+    </a>
+  </div>
+
 </div>
