@@ -167,6 +167,7 @@ Get to know the pieces of Foundation.
         <li><a href="equalizer.html">Equalizer</a></li>
         <li><a href="interchange.html">Interchange</a></li>
         <li><a href="toggler.html">Toggler</a></li>
+        <li><a href="smooth-scroll.html">Smooth Scroll</a></li>
         <li><a href="sticky.html">Sticky</a></li>
       </ul>
     </section>
