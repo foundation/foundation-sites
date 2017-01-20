@@ -113,12 +113,7 @@ $foundation-colors: (
 ///
 /// @returns {Color} color from foundation-colors
 @function get-color($key) {
-  @if map-has-key($foundation-colors, $key) {
-    @return map-safe-get($foundation-colors, $key);
-  }
-  @else {
-    @error 'given key "#{$key}" is not available in $foundation-colors';
-  }
+  @return map-safe-get($foundation-colors, $key);
 }
 
 /// Get color state from foundation-states
@@ -127,12 +122,7 @@ $foundation-colors: (
 ///
 /// @returns {Color} color from foundation-states
 @function get-state($key) {
-  @if map-has-key($foundation-states, $key) {
-    @return map-safe-get($foundation-states, $key);
-  }
-  @else {
-    @error 'given key "#{$key}" is not available in $foundation-states';
-  }
+  @return map-safe-get($foundation-states, $key);
 }
 
 /// Transfers the colors in the `$foundation-states` map into variables, such as `$primary-color` and `$secondary-color`. Call this mixin below the Global section of your settings file to properly migrate your codebase.
