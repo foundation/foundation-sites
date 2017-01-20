@@ -1,7 +1,8 @@
-@import "true";
+@import 'true';
 
-@import '../../scss/global';
+@import '../../scss/util/value';
 @import '../../scss/util/color';
+@import '../../scss/global';
 
 @include test-module('Color') {
 
