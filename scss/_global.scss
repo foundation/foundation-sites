@@ -110,7 +110,7 @@ $global-text-direction: ltr !default;
 $global-flexbox: false !default;
 
 @if not map-has-key($foundation-states, primary) {
-  @error 'In $foundation-states, you must have a color named "primary".';
+  @error 'In $foundation-states, you must have a state color named "primary".';
 }
 
 // Internal variables used for text direction
