@@ -49,30 +49,18 @@
 $global-font-size: 100%;
 $global-width: rem-calc(1200);
 $global-lineheight: 1.5;
-$foundation-colors: (
-  'blue': #1779ba,
-  'green': #3adb76,
-  'yellow': #ffae00,
-  'red': #cc4b37,
-  'white': #fefefe,
-  'light-gray': #e6e6e6,
-  'medium-gray': #cacaca,
-  'dark-gray': #8a8a8a,
-  'gray': #767676,
-  'black': #0a0a0a,
+$foundation-palette: (
+  primary: #1779ba,
+  secondary: #767676,
+  success: #3adb76,
+  warning: #ffae00,
+  alert: #cc4b37,
 );
-$foundation-states: (
-  primary: get-color('blue'),
-  secondary: get-color('gray'),
-  success: get-color('green'),
-  warning: get-color('yellow'),
-  alert: get-color('red'),
-);
-$light-gray: get-color('light-gray');
-$medium-gray: get-color('medium-gray');
-$dark-gray: get-color('dark-gray');
-$black: get-color('black');
-$white: get-color('white');
+$light-gray: #e6e6e6;
+$medium-gray: #cacaca;
+$dark-gray: #8a8a8a;
+$black: #0a0a0a;
+$white: #fefefe;
 $body-background: $white;
 $body-font-color: $black;
 $body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
@@ -199,9 +187,9 @@ $stat-font-size: 2.5rem;
 
 $abide-inputs: true;
 $abide-labels: true;
-$input-background-invalid: get-state(alert);
-$form-label-color-invalid: get-state(alert);
-$input-error-color: get-state(alert);
+$input-background-invalid: get-color(alert);
+$form-label-color-invalid: get-color(alert);
+$input-error-color: get-color(alert);
 $input-error-font-size: rem-calc(12);
 $input-error-font-weight: $global-weight-bold;
 
@@ -232,7 +220,7 @@ $accordionmenu-arrow-size: 6px;
 $badge-background: $primary-color;
 $badge-color: $white;
 $badge-color-alt: $black;
-$badge-states: $foundation-states;
+$badge-palette: $foundation-palette;
 $badge-padding: 0.3em;
 $badge-minwidth: 2.1em;
 $badge-font-size: 0.6rem;
@@ -266,7 +254,7 @@ $button-sizes: (
   default: 0.9rem,
   large: 1.25rem,
 );
-$button-states: $foundation-states;
+$button-palette: $foundation-palette;
 $button-opacity-disabled: 0.25;
 $button-background-hover-lightness: -20%;
 $button-hollow-hover-lightness: -50%;
@@ -387,11 +375,13 @@ $input-placeholder-color: $medium-gray;
 $input-font-family: inherit;
 $input-font-size: rem-calc(16);
 $input-font-weight: $global-weight-normal;
+$input-line-height: $global-lineheight;
 $input-background: $white;
 $input-background-focus: $white;
 $input-background-disabled: $light-gray;
 $input-border: 1px solid $medium-gray;
 $input-border-focus: 1px solid $dark-gray;
+$input-padding: $form-spacing / 2;
 $input-shadow: inset 0 1px 2px rgba($black, 0.1);
 $input-shadow-focus: 0 0 5px $medium-gray;
 $input-cursor-disabled: not-allowed;
@@ -406,7 +396,7 @@ $form-button-radius: $global-radius;
 $label-background: $primary-color;
 $label-color: $white;
 $label-color-alt: $black;
-$label-states: $foundation-states;
+$label-palette: $foundation-palette;
 $label-font-size: 0.8rem;
 $label-padding: 0.33333rem 0.5rem;
 $label-radius: $global-radius;
@@ -425,7 +415,7 @@ $menu-margin: 0;
 $menu-margin-nested: 1rem;
 $menu-item-padding: 0.7rem 1rem;
 $menu-item-color-active: $white;
-$menu-item-background-active: get-state(primary);
+$menu-item-background-active: get-color(primary);
 $menu-icon-spacing: 0.25rem;
 $menu-item-background-hover: $light-gray;
 $menu-border: $light-gray;
