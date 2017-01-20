@@ -47,16 +47,19 @@
   }
 
   @include test('Get Color (Blue) [function]') {
-    $test: get-color('blue');
     $expect: #1779ba;
+    $foundation-colors: ('blue': $expect);
+    $test: get-color('blue');
 
     @include assert-equal($test, $expect,
       'Returns the color for blue from the color map');
   }
 
   @include test('Get State (Primary) [function]') {
-    $test: get-state(primary);
     $expect: #1779ba;
+    $foundation-colors: ('blue': $expect);
+    $foundation-states: (primary: get-color('blue'));
+    $test: get-state(primary);
 
     @include assert-equal($test, $expect,
       'Returns the color for the primary state from the states map');
