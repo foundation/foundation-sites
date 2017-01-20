@@ -10,6 +10,11 @@ previous:
 next:
   url: magellan.html
   title: Magellan
+
+videos:
+  -
+    video-url: blah
+    video-desc: blah
 ---
 
 ## Responsive Menu

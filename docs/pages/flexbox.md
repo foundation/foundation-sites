@@ -10,6 +10,21 @@ previous:
 next:
   url: sass.html
   title: Sass
+flexbox:
+  - scss/util/_flex.scss
+videos:
+  -
+    title: Flexbox Utility Classes
+    desc: Learn how to use Flexbox Utility Classes
+    url: https://www.youtube.com/embed/UVLINsAuFEI
+  -
+    title: Flexbox and Cards
+    desc: Learn how to use Flexbox Utility Classes with Foundation Cards
+    url: https://youtu.be/Du7rwO4y564
+  -
+    title: Intro to Flexbox
+    desc: Foundation Flexbox Meetup at ZURB HQ
+    url: https://youtu.be/lqUORRmKOmI
 ---
 
 Foundation components use a combination of floats, vertical alignment, table cells, and various other CSS hacks to get layouts looking right. These days though, there's a better way... if you are happy with the below browser support!

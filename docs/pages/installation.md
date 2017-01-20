@@ -240,3 +240,68 @@ Start with this HTML template and adapt it to your needs.
 ## Other Integrations
 
 The Foundation community has helped us integrate the framework into Rails, WordPress, Django, and more. Head to our [resources page](http://foundation.zurb.com/sites/resources) to find even more ways to use Foundation.
+
+---
+
+## Resources to Get You Started
+
+<div class="row small-up-1 medium-up-2 large-up-3 thumb-row">
+
+  <div class="column">
+    <a href="http://foundation.zurb.com/learn/foundation-6-grid-basics-mobile-first.html" target="_blank">
+      <img src="http://foundation.zurb.com/assets/img/learn/training/tuts-grid-basics-mobile-first.png" class="tuts-img" height="" width="" alt="image clip of video">
+      <h5 class="thumb-category">F6, GRID, LAYOUT, CSS</h5>
+      <p class="thumb-description" target="_blank">The basics of the Foundation 6 Grid and Mobile First<span class="thumb-author">Jon - Foundation Team</span></p>
+    </a>
+  </div>
+
+  <div class="column">
+    <a href="http://foundation.zurb.com/learn/introduction-to-the-foundation-grid.html" target="_blank">
+      <img src="http://foundation.zurb.com/assets/img/develop/tuts-grid-jamesstone.png" class="tuts-img" height="" width="" alt="image clip of video">
+      <h5 class="thumb-category">F6, GRID, LAYOUT, HTML</h5>
+      <p class="thumb-description">Intro to the Foundation Grid<span class="thumb-author">James Stone</span></p>
+    </a>
+  </div>
+
+  <div class="column">
+    <a href="http://foundation.zurb.com/learn/getting-started-with-foundation-6-gary-jennings.html" target="_blank">
+      <img src="http://foundation.zurb.com/assets/img/develop/tuts-intro-jenning.png" class="tuts-img" height="" width="" alt="image clip of video">
+      <h5 class="thumb-category">F6, DOWNLOAD, CSS</h5>
+      <p class="thumb-description">Getting Started with Foundation 6<span class="thumb-author">Gary Jennings</span></p>
+    </a>
+  </div>
+
+  <div class="column">
+    <a href="http://foundation.zurb.com/learn/getting-started-with-foundation-6-gary-jennings.html" target="_blank">
+      <img src="http://foundation.zurb.com/assets/img/develop/tuts-intro-jenning.png" class="tuts-img" height="" width="" alt="image clip of video">
+      <h5 class="thumb-category">F6, CSS, INSTALL, PROJECT STRUCTURE</h5>
+      <p class="thumb-description">Setting Up Your Foundation 6 Project<span class="thumb-author">Gary Jennings</span></p>
+    </a>
+  </div>
+
+  <div class="column">
+    <a href="http://foundation.zurb.com/learn/foundation-6-source-ordering-buttons.html" target="_blank">
+      <img src="http://foundation.zurb.com/assets/img/learn/training/tuts-grid-source-ordering-buttons.png" class="tuts-img" height="" width="" alt="image clip of video">
+      <h5 class="thumb-category">F6, GRID, LAYOUT, CSS</h5>
+      <p class="thumb-description">Prototyping with Foundation 6 Grid Source Ordering and Buttons<span class="thumb-author">Tim - Foundation Team</span></p>
+    </a>
+  </div>
+
+  <div class="column">
+    <a href="http://appsbyjohn.com/learn/using-the-foundation-framework-for-responsive-web-design/" target="_blank">
+      <p class="thumb-description">Using the Foundation Framework for Responsive Web Design<span class="thumb-author">By John MacAdam</span></p>
+    </a>
+    <a href="http://www.webdesignerdepot.com/2014/11/the-ultimate-guide-to-getting-started-with-foundation/" target="_blank">
+      <p class="thumb-description">The ultimate guide to getting started with Foundation<span class="thumb-author">By Ezequiel Bruni</span></p>
+    </a>
+    <a href="https://scotch.io/bar-talk/a-quick-look-at-the-best-new-foundation-6-features" target="_blank">
+      <p class="thumb-description">A Quick Look at the Best New Foundation 6 Features<span class="thumb-author">By Scotch.io</span></p>
+    </a>
+  </div>
+
+</div>
+
+<div class="text-center">
+  <a href="http://zurb.com/university/lessons" class="button-docs secondary">See More Tutorials</a>
+</div>
+
