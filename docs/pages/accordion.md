@@ -140,7 +140,7 @@ Add the attribute `data-deep-link="true"` to a accordion to:
 - allow users to open a particular accordion panel at page load with a hash-appended URL
 
 ```html_example
-<ul class="accordion" data-accordion data-deep-link="true" id="deeplinked-accordion">
+<ul class="accordion" data-accordion data-deep-link="true" data-update-history="true" data-deep-link-smudge="true" data-deep-link-smudge="500" id="deeplinked-accordion">
   <li class="accordion-item is-active" data-accordion-item>
     <a href="#deeplink1" class="accordion-title">Accordion 1</a>
     <div class="accordion-content" data-tab-content id="deeplink1">

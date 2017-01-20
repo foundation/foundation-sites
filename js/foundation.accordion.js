@@ -56,15 +56,14 @@ class Accordion {
 
       $content.attr({'role': 'tabpanel', 'aria-labelledby': linkId, 'aria-hidden': true, 'id': id});
     });
-    var $initActive = this.$element.find('.is-active').children('[data-tab-content]'),
-    firstTimeInit = true;
+    var $initActive = this.$element.find('.is-active').children('[data-tab-content]');
+    this.firstTimeInit = true;
     if($initActive.length){
-      this.down($initActive, firstTimeInit);
-      firstTimeInit = false;
+      this.down($initActive, this.firstTimeInit);
+      this.firstTimeInit = false;
     }
 
-    //use browser to open a tab, if it exists in this tabset
-    if (this.options.deepLink) {
+    this._checkDeepLink = () => {
       var anchor = window.location.hash;
       //need a hash and a relevant anchor in this tabset
       if(anchor.length) {
@@ -73,8 +72,8 @@ class Accordion {
 
         if ($link.length && $anchor) {
           if (!$link.parent('[data-accordion-item]').hasClass('is-active')) {
-            this.down($anchor, firstTimeInit);
-            firstTimeInit = false;
+            this.down($anchor, this.firstTimeInit);
+            this.firstTimeInit = false;
           };
 
           //roll up a little to show the titles
@@ -93,6 +92,11 @@ class Accordion {
           this.$element.trigger('deeplink.zf.accordion', [$link, $anchor]);
         }
       }
+    }
+
+    //use browser to open a tab, if it exists in this tabset
+    if (this.options.deepLink) {
+      this._checkDeepLink();
     }
 
     this._events();
@@ -138,6 +142,9 @@ class Accordion {
         });
       }
     });
+    if(this.options.deepLink) {
+      $(window).on('popstate', this._checkDeepLink);
+    }
   }
 
   /**
@@ -239,6 +246,9 @@ class Accordion {
   destroy() {
     this.$element.find('[data-tab-content]').stop(true).slideUp(0).css('display', '');
     this.$element.find('a').off('.zf.accordion');
+    if(this.options.deepLink) {
+      $(window).off('popstate', this._checkDeepLink);
+    }
 
     Foundation.unregisterPlugin(this);
   }
