@@ -57,8 +57,7 @@
 
   @include test('Get State (Primary) [function]') {
     $expect: #1779ba;
-    $foundation-colors: ('blue': $expect);
-    $foundation-states: (primary: get-color('blue'));
+    $foundation-states: (primary: $expect);
     $test: get-state(primary);
 
     @include assert-equal($test, $expect,
