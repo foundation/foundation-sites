@@ -17,7 +17,7 @@ var rename = require('gulp-rename');
 var CONFIG = require('../config.js');
 
 // Compiles Sass files into SCSS and CSS
-gulp.task('sass', ['sass:foundationSCSS', 'sass:foundationCSS', 'sass:docs']);
+gulp.task('sass', ['sass:foundationSCSS', 'sass:foundation', 'sass:docs']);
 
 // Concat Foundation Sass and its dependencies into a single SCSS file
 gulp.task('sass:foundationSCSS', function() {
@@ -28,7 +28,7 @@ gulp.task('sass:foundationSCSS', function() {
 });
 
 // Compiles Foundation Sass into CSS
-gulp.task('sass:foundationCSS', function() {
+gulp.task('sass:foundation', function() {
   return gulp.src(['assets/*'])
     .pipe(sourcemaps.init())
     .pipe(plumber())
@@ -63,7 +63,7 @@ gulp.task('sass:docs', function() {
 });
 
 // Audits CSS filesize, selector count, specificity, etc.
-gulp.task('sass:audit', ['sass:foundationCSS'], function(cb) {
+gulp.task('sass:audit', ['sass:foundation'], function(cb) {
   fs.readFile('./_build/assets/css/foundation.css', function(err, data) {
     var parker = new Parker(require('parker/metrics/All'));
     var results = parker.run(data.toString());

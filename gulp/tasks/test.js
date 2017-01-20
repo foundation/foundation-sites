@@ -9,7 +9,7 @@ var rimraf = require('rimraf').sync;
 var CONFIG = require('../config.js');
 
 // Runs unit tests
-gulp.task('test', ['sass:foundationCSS', 'test:transpile-js', 'watch'], function() {
+gulp.task('test', ['sass:foundation', 'test:transpile-js', 'watch'], function() {
   browser.init({
     server: { 
       baseDir: 'test/visual',
