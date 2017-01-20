@@ -4,6 +4,21 @@
 
 @import 'math';
 
+/// Colors available by using `get-color()`.
+/// @type Map
+$foundation-colors: (
+  'blue': #1779ba,
+  'green': #3adb76,
+  'yellow': #ffae00,
+  'red': #cc4b37,
+  'white': #fefefe,
+  'light-gray': #e6e6e6,
+  'medium-gray': #cacaca,
+  'dark-gray': #8a8a8a,
+  'gray': #767676,
+  'black': #0a0a0a,
+) !default;
+
 ////
 /// @group functions
 ////
