@@ -85,8 +85,7 @@ When you download the Foundation CSS package, you'll receive a .zip file that co
       <li>
         <strong>foundation.min.js</strong>
         <p>If you are using any Foundation JavaScript components, this needs to be loaded on the page. We recommend at the end before your closing `<body>` tags like so:</p>
-        <img src="{{root}}assets/img/generic/js-cssversion.html" class="" height="" width="" alt="">
-
+        <img src="{{root}}assets/img/generic/js-cssversion.png" class="" height="" width="" alt="">
       </li>
       <li>
         <strong>/foundation</strong>
@@ -110,28 +109,25 @@ When you download the Foundation CSS package, you'll receive a .zip file that co
   </div>
 </div>
 
-<hr>
+---
 
+## Best Practices
+
+We have some best practice recommendations to help you optimize your experience with the Foundation CSS package.
+
+Making Changes to Foundation Default Stylings
 
 <div class="row">
-  <div class="small-12 path-container columns">
-    <h2>Best Practices</h2>
-    <h2 class="subheader">We have some best practice recommendations to help you optimize your experience with the Foundation CSS package.</h2>
-    <h3>Making Changes to Foundation Default Stylings</h3>
-    <div class="row">
-      <div class="large-7 columns">
-        <img class="round-margin" src="http://foundation.zurb.com/sites/docs/v/5.5.3/assets/img/images/using-css.png">
-      </div>
-      <div class="large-5 columns">
-        <p>In order to update your Foundation CSS when we release a new version, we recommend keeping your `foundation.css` file clean of any changes. Any components that you want to add your own stylings to should be copied to your `app.css` file where you can make changes there.</p>
-        <p class="subheader"><strong>Note:</strong> be sure to link the `app.css` stylesheet into the `<head>` of your file.</p>
-      </div>
-    </div>
+  <div class="large-7 columns">
+    <img class="round-margin" src="http://foundation.zurb.com/sites/docs/v/5.5.3/assets/img/images/using-css.png">
+  </div>
+  <div class="large-5 columns">
+    <p>In order to update your Foundation CSS when we release a new version, we recommend keeping your `foundation.css` file clean of any changes. Any components that you want to add your own stylings to should be copied to your `app.css` file where you can make changes there.</p>
+    <p class="subheader"><strong>Note:</strong> be sure to link the `app.css` stylesheet into the `<head>` of your file.</p>
   </div>
 </div>
 
-<hr>
-
+---
 
 ## HTML Page Markup
 
