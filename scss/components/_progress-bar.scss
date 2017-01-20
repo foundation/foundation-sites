@@ -43,7 +43,7 @@
   .progress {
     @include progress-container;
 
-    @each $name, $color in $foundation-palette {
+    @each $name, $color in $foundation-states {
       &.#{$name} {
         .progress-meter {
           background-color: $color;

@@ -49,7 +49,7 @@ $button-sizes: (
 
 /// Coloring classes. A map of classes to output in your CSS, like `.secondary`, `.success`, and so on.
 /// @type Map
-$button-palette: $foundation-palette !default;
+$button-states: $foundation-states !default;
 
 /// opacity for a disabled button.
 /// @type List
@@ -230,7 +230,7 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
     &.expanded { @include button-expand; }
 
     // Colors
-    @each $name, $color in $button-palette {
+    @each $name, $color in $button-states {
       @if $button-fill != hollow {
         &.#{$name} {
           @include button-style($color, auto, auto);
@@ -253,7 +253,7 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
         @include button-hollow;
         @include button-hollow-style;
 
-        @each $name, $color in $button-palette {
+        @each $name, $color in $button-states {
           &.#{$name} {
             @include button-hollow-style($color);
           }
@@ -266,7 +266,7 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
     &[disabled] {
       @include button-disabled;
 
-      @each $name, $color in $button-palette {
+      @each $name, $color in $button-states {
         &.#{$name} {
           @include button-disabled($color);
         }

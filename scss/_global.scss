@@ -20,35 +20,50 @@ $global-width: rem-calc(1200) !default;
 /// @type Number
 $global-lineheight: 1.5 !default;
 
-/// Colors used for buttons, callouts, links, etc. There must always be a color called `primary`.
+/// Colors available by using `get-color()`.
 /// @type Map
-$foundation-palette: (
-  primary: #1779ba,
-  secondary: #767676,
-  success: #3adb76,
-  warning: #ffae00,
-  alert: #cc4b37,
+$foundation-colors: (
+  'blue': #1779ba,
+  'green': #3adb76,
+  'yellow': #ffae00,
+  'red': #cc4b37,
+  'white': #fefefe,
+  'light-gray': #e6e6e6,
+  'medium-gray': #cacaca,
+  'dark-gray': #8a8a8a,
+  'gray': #767676,
+  'black': #0a0a0a,
+) !default;
+
+/// Color states used for buttons, callouts, links, etc. There must always be a color called `primary`.
+/// @type Map
+$foundation-states: (
+  primary: get-color('blue'),
+  secondary: get-color('grey'),
+  success: get-color('green'),
+  warning: get-color('yellow'),
+  alert: get-color('red'),
 ) !default;
 
 /// Color used for light gray UI items.
 /// @type Color
-$light-gray: #e6e6e6 !default;
+$light-gray: get-color('light-gray') !default;
 
 /// Color used for medium gray UI items.
 /// @type Color
-$medium-gray: #cacaca !default;
+$medium-gray: get-color('medium-gray') !default;
 
 /// Color used for dark gray UI items.
 /// @type Color
-$dark-gray: #8a8a8a !default;
+$dark-gray: get-color('dark-gray') !default;
 
 /// Color used for black ui items.
 /// @type Color
-$black: #0a0a0a !default;
+$black: get-color('black') !default;
 
 /// Color used for white ui items.
 /// @type Color
-$white: #fefefe !default;
+$white: get-color('white') !default;
 
 /// Background color of the body.
 /// @type Color
@@ -94,8 +109,8 @@ $global-text-direction: ltr !default;
 /// @type Boolean
 $global-flexbox: false !default;
 
-@if not map-has-key($foundation-palette, primary) {
-  @error 'In $foundation-palette, you must have a color named "primary".';
+@if not map-has-key($foundation-states, primary) {
+  @error 'In $foundation-states, you must have a color named "primary".';
 }
 
 // Internal variables used for text direction
@@ -103,11 +118,11 @@ $global-left: if($global-text-direction == rtl, right, left);
 $global-right: if($global-text-direction == rtl, left, right);
 
 // Internal variables used for colors
-$primary-color: get-color(primary);
-$secondary-color: get-color(secondary);
-$success-color: get-color(success);
-$warning-color: get-color(warning);
-$alert-color: get-color(alert);
+$primary-color: get-state(primary);
+$secondary-color: get-state(secondary);
+$success-color: get-state(success);
+$warning-color: get-state(warning);
+$alert-color: get-state(alert);
 
 @mixin foundation-global-styles {
   @include -zf-normalize;

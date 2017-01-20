@@ -24,7 +24,7 @@ $menu-item-color-active: $white !default;
 
 /// Background color of an active menu item.
 /// @type Color
-$menu-item-background-active: get-color(primary) !default;
+$menu-item-background-active: get-state(primary) !default;
 
 /// Spacing between an icon and text in a menu item.
 /// @type Number

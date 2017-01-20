@@ -49,7 +49,7 @@ module.exports = function(config, modules, variables) {
   }
 
   if (!empty(colorList)) {
-    variableList.push(createPaletteMap(colorList));
+    variableList.push(createColorStatesMap(colorList));
   }
 
   // Create module exports with @include
@@ -64,8 +64,8 @@ module.exports = function(config, modules, variables) {
   return format(SASS_TEMPLATE, variableList.join('\n'), exportList.join('\n'))
 }
 
-function createPaletteMap(colors) {
-  var output = '$foundation-palette: (%s\n);';
+function createColorStatesMap(colors) {
+  var output = '$foundation-states: (%s\n);';
   var keys = '';
 
   for (var i in colors) {
