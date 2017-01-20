@@ -102,7 +102,7 @@
     @return map-get($foundation-colors, $key);
   }
   @else {
-    @error 'given $key is not available in $foundation-colors';
+    @error 'given key "#{$key}" is not available in $foundation-colors';
   }
 }
 
@@ -116,7 +116,7 @@
     @return map-get($foundation-states, $key);
   }
   @else {
-    @error 'given $key is not available in $foundation-states';
+    @error 'given key "#{$key}" is not available in $foundation-states';
   }
 }
 
