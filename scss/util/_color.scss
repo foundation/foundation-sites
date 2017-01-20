@@ -4,7 +4,7 @@
 
 @import 'math';
 
-/// Colors available by using `get-color()`. These should not be used directly within components, variables should be used instead to make components customizable.
+/// Colors available by using `get-color()`. These colors should not be used directly within components, `get-state()` and settings should be used instead to make components customizable.
 /// @type Map
 $foundation-colors: (
   'blue': #1779ba,
