@@ -327,7 +327,7 @@ class Tabs {
         _this = this; // Lock down the `this` value for the root tabs object
 
     this.$tabContent
-      .find(`.${_this.options.panelClass}`) // get the options from the parent instead of trying to get them from the child
+      .find(`.${this.options.panelClass}`)
       .css('height', '')
       .each(function() {
 
