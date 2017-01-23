@@ -318,18 +318,22 @@ class Tabs {
    * Sets the height of each panel to the height of the tallest panel.
    * If enabled in options, gets called on media query change.
    * If loading content via external source, can be called directly or with _reflow.
+   * If enabled with `data-match-height="true"`, tabs sets to equal height
    * @function
    * @private
    */
   _setHeight() {
-    var max = 0;
+    var max = 0,
+        _this = this; // Lock down the `this` value for the root tabs object
+
     this.$tabContent
       .find(`.${this.options.panelClass}`)
       .css('height', '')
       .each(function() {
-        var panel = $(this),
-            isActive = panel.hasClass(`${this.options.panelActiveClass}`);
 
+        var panel = $(this),
+            isActive = panel.hasClass(`${_this.options.panelActiveClass}`); // get the options from the parent instead of trying to get them from the child
+            
         if (!isActive) {
           panel.css({'visibility': 'hidden', 'display': 'block'});
         }
