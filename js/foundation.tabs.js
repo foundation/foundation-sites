@@ -210,6 +210,7 @@ class Tabs {
   /**
    * Opens the tab `$targetContent` defined by `$target`. Collapses active tab.
    * @param {jQuery} $target - Tab to open.
+   * @param {boolean} historyHandled - browser has already handled a history update
    * @fires Tabs#change
    * @function
    */
@@ -302,6 +303,7 @@ class Tabs {
   /**
    * Public method for selecting a content pane to display.
    * @param {jQuery | String} elem - jQuery object or string of the id of the pane to display.
+   * @param {boolean} historyHandled - browser has already handled a history update
    * @function
    */
   selectTab(elem, historyHandled) {
