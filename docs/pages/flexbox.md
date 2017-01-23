@@ -16,15 +16,15 @@ videos:
   -
     title: Flexbox Utility Classes
     desc: Learn how to use Flexbox Utility Classes
-    url: https://www.youtube.com/embed/UVLINsAuFEI
+    url: https://www.youtube.com/embed/o1D1iPagm68
   -
     title: Flexbox and Cards
     desc: Learn how to use Flexbox Utility Classes with Foundation Cards
-    url: https://youtu.be/Du7rwO4y564
+    url: https://www.youtube.com/embed/Du7rwO4y564
   -
     title: Intro to Flexbox
     desc: Foundation Flexbox Meetup at ZURB HQ
-    url: https://youtu.be/lqUORRmKOmI
+    url: https://www.youtube.com/embed/lqUORRmKOmI
 ---
 
 Foundation components use a combination of floats, vertical alignment, table cells, and various other CSS hacks to get layouts looking right. These days though, there's a better way... if you are happy with the below browser support!
