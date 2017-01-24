@@ -16,15 +16,15 @@ $abide-labels: true !default;
 
 /// Background color to use for invalid text inputs.
 /// @type Color
-$input-background-invalid: get-state(alert) !default;
+$input-background-invalid: get-state-color(alert) !default;
 
 /// Color to use for labels of invalid inputs.
 /// @type Color
-$form-label-color-invalid: get-state(alert) !default;
+$form-label-color-invalid: get-state-color(alert) !default;
 
 /// Default font color for form error text.
 /// @type Color
-$input-error-color: get-state(alert) !default;
+$input-error-color: get-state-color(alert) !default;
 
 /// Default font size for form error text.
 /// @type Number

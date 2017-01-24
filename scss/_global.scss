@@ -103,11 +103,11 @@ $global-left: if($global-text-direction == rtl, right, left);
 $global-right: if($global-text-direction == rtl, left, right);
 
 // Internal variables used for colors
-$primary-color: get-state(primary);
-$secondary-color: get-state(secondary);
-$success-color: get-state(success);
-$warning-color: get-state(warning);
-$alert-color: get-state(alert);
+$primary-color: get-state-color(primary);
+$secondary-color: get-state-color(secondary);
+$success-color: get-state-color(success);
+$warning-color: get-state-color(warning);
+$alert-color: get-state-color(alert);
 
 @mixin foundation-global-styles {
   @include -zf-normalize;

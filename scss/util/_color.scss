@@ -4,7 +4,7 @@
 
 @import 'math';
 
-/// Colors available by using `get-color()`. These colors should not be used directly within components, `get-state()` and settings should be used instead to make components customizable.
+/// Colors available by using `get-color()`. These colors should not be used directly within components, `get-state-color()` and settings should be used instead to make components customizable.
 /// @type Map
 $foundation-colors: (
   'blue': #1779ba,
@@ -116,12 +116,12 @@ $foundation-colors: (
   @return map-safe-get($foundation-colors, $key);
 }
 
-/// Get color state from foundation-states
+/// Get state color from foundation-states
 ///
 /// @param {key} state key from foundation-states
 ///
 /// @returns {Color} color from foundation-states
-@function get-state($key) {
+@function get-state-color($key) {
   @return map-safe-get($foundation-states, $key);
 }
 
