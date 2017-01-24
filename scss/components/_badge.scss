@@ -53,7 +53,9 @@ $badge-font-size: 0.6rem !default;
     background: $badge-background;
     color: $badge-color;
 
-    @each $name, $color in $badge-states {
+    @each $name, $color-name in $badge-states {
+      $color: get-color($color-name);
+
       &.#{$name} {
         background: $color;
         color: color-pick-contrast($color, ($badge-color, $badge-color-alt));

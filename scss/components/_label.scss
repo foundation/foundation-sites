@@ -54,7 +54,9 @@ $label-radius: $global-radius !default;
     background: $label-background;
     color: $label-color;
 
-    @each $name, $color in $label-states {
+    @each $name, $color-name in $label-states {
+      $color: get-color($color-name);
+
       &.#{$name} {
         background: $color;
         color: color-pick-contrast($color, ($label-color, $label-color-alt));

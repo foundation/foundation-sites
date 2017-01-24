@@ -67,7 +67,9 @@ $progress-radius: $global-radius !default;
       }
     }
 
-    @each $name, $color in $foundation-states {
+    @each $name, $color-name in $foundation-states {
+      $color: get-color($color-name);
+
       &.#{$name} {
         // Internet Explorer sets the fill with color
         color: $color;

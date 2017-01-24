@@ -230,7 +230,9 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
     &.expanded { @include button-expand; }
 
     // Colors
-    @each $name, $color in $button-states {
+    @each $name, $color-name in $button-states {
+      $color: get-color($color-name);
+
       @if $button-fill != hollow {
         &.#{$name} {
           @include button-style($color, auto, auto);
@@ -253,7 +255,9 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
         @include button-hollow;
         @include button-hollow-style;
 
-        @each $name, $color in $button-states {
+        @each $name, $color-name in $button-states {
+          $color: get-color($color-name);
+
           &.#{$name} {
             @include button-hollow-style($color);
           }
@@ -266,7 +270,9 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
     &[disabled] {
       @include button-disabled;
 
-      @each $name, $color in $button-states {
+      @each $name, $color-name in $button-states {
+        $color: get-color($color-name);
+
         &.#{$name} {
           @include button-disabled($color);
         }

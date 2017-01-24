@@ -23,11 +23,11 @@ $global-lineheight: 1.5 !default;
 /// Color states used for buttons, callouts, links, etc. There must always be a color called `primary`.
 /// @type Map
 $foundation-states: (
-  primary: get-color('blue'),
-  secondary: get-color('gray'),
-  success: get-color('green'),
-  warning: get-color('yellow'),
-  alert: get-color('red'),
+  primary: 'blue',
+  secondary: 'gray',
+  success: 'green',
+  warning: 'yellow',
+  alert: 'red',
 ) !default;
 
 /// Color used for light gray UI items.

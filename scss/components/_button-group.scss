@@ -203,7 +203,9 @@ $buttongroup-radius-on-each: true !default;
     &.expanded { @include button-group-expand; }
 
     // Colors
-    @each $name, $color in $button-states {
+    @each $name, $color-name in $button-states {
+      $color: get-color($color-name);
+
       @if $button-fill != hollow {
         &.#{$name} #{$buttongroup-child-selector} {
           @include button-style($color, auto, auto);
