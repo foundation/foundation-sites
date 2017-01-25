@@ -17,6 +17,13 @@
     }
   }
 
+  .align-central {
+    align-content: center;
+    @include flex-align($x: 'center');
+    @include flex-align($y: 'middle');
+  }
+
+
   // Source ordering
   @include -zf-each-breakpoint {
     @for $i from 1 through 6 {
