@@ -132,7 +132,7 @@ class OffCanvas {
     } else {
       this.isRevealed = false;
       this.$element.attr('aria-hidden', 'true');
-      this.$element.on({
+      this.$element.off('open.zf.trigger toggle.zf.trigger').on({
         'open.zf.trigger': this.open.bind(this),
         'toggle.zf.trigger': this.toggle.bind(this)
       });
