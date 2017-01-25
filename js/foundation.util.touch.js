@@ -3,9 +3,9 @@
 //**Done by Yohai Ararat ***************************
 //**************************************************
 
-class Touch {}
-
 import $ from 'jquery';
+
+class Touch {}
 
   var startPosX,
       startPosY,
