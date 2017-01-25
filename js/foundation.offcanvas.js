@@ -196,7 +196,12 @@ class OffCanvas {
 
     if (this.options.autoFocus === true) {
       this.$element.one(Foundation.transitionend(this.$element), function() {
-        _this.$element.find('a, button').eq(0).focus();
+        var canvasFocus = _this.$element.find('[data-autofocus]');
+        if (canvasFocus.length) {
+            canvasFocus.eq(0).focus();
+        } else {
+            _this.$element.find('a, button').eq(0).focus();
+        }
       });
     }
 
