@@ -42,9 +42,9 @@ class Sticky {
     this.$container.addClass(this.options.containerClass);
 
     this.$element.addClass(this.options.stickyClass).attr({ 'data-resize': id, 'data-mutate': id });
-	if (this.options.anchor !== '') {
-		$('#' + _this.options.anchor).attr({ 'data-mutate': id });
-	}
+    if (this.options.anchor !== '') {
+        $('#' + _this.options.anchor).attr({ 'data-mutate': id });
+    }
 
     this.scrollCount = this.options.checkEvery;
     this.isStuck = false;
@@ -131,35 +131,37 @@ class Sticky {
                  .on('resizeme.zf.trigger', function(e, el) {
                     _this._eventsHandler(id);
     });
-	
-	this.$element.on('mutateme.zf.trigger', function (e, el) {
-		_this._eventsHandler(id);
-	});
-	
-	this.$anchor.on('mutateme.zf.trigger', function (e, el) {
-		_this._eventsHandler(id);
-	});
+
+    this.$element.on('mutateme.zf.trigger', function (e, el) {
+        _this._eventsHandler(id);
+    });
+
+    if(this.$anchor) {
+      this.$anchor.on('mutateme.zf.trigger', function (e, el) {
+          _this._eventsHandler(id);
+      });
+    }
   }
-  
+
   /**
    * Handler for events.
    * @private
    * @param {String} id - psuedo-random id for unique scroll event listener.
    */
   _eventsHandler(id) {
-	   var _this = this,
+       var _this = this,
         scrollListener = this.scrollListener = `scroll.zf.${id}`;
-		
-	   _this._setSizes(function() {
-	   _this._calc(false);
-	   if (_this.canStick) {
-		 if (!_this.isOn) {
-		   _this._events(id);
-		 }
-	   } else if (_this.isOn) {
-		 _this._pauseListeners(scrollListener);
-	   }
-	 });
+
+       _this._setSizes(function() {
+       _this._calc(false);
+       if (_this.canStick) {
+         if (!_this.isOn) {
+           _this._events(id);
+         }
+       } else if (_this.isOn) {
+         _this._pauseListeners(scrollListener);
+       }
+     });
   }
 
   /**
@@ -385,7 +387,7 @@ class Sticky {
                    'max-width': ''
                  })
                  .off('resizeme.zf.trigger')
-				 .off('mutateme.zf.trigger');
+                 .off('mutateme.zf.trigger');
     if (this.$anchor && this.$anchor.length) {
       this.$anchor.off('change.zf.sticky');
     }
