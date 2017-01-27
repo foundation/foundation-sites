@@ -62,5 +62,5 @@ $responsive-embed-ratios: (
 
 @mixin flex-video($ratio: $responsive-embed-ratio) {
   @warn 'This mixin is being replaced by responsive-embed(). flex-video() will be removed in Foundation 6.4.';
-  @include responsive-embed;
+  @include responsive-embed($ratio);
 }
