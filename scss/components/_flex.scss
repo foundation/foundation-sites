@@ -17,12 +17,11 @@
     }
   }
 
-  .align-central {
+  // Central alignment of content
+  .align-center-middle {
+    @include flex-align($x: center, $y: middle);
     align-content: center;
-    @include flex-align($x: 'center');
-    @include flex-align($y: 'middle');
   }
-
 
   // Source ordering
   @include -zf-each-breakpoint {
