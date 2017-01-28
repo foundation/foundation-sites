@@ -14,7 +14,7 @@ A select group of our contributors have been dubbed *Yetinauts*. They have direc
 
 Open an issue for any problem you have with the framework. If there's anything missing from your issue, such as extra context, a code sample, etc. a team member will ask for more info in the comments.
 
-Support requests are generally better suited for the [Foundation Forum](http://foundation.zurb.com), while GitHub is more appropriate for bugs. If you aren’t sure if your issue is a bug or not, don’t worry! Post your problem on GitHub and the team will help you along. Every participant is expected to follow the project's Code of Conduct so please be courteous and respectful.
+Support requests are generally better suited for the [Foundation Forum](http://foundation.zurb.com), while GitHub is more appropriate for bugs. If you aren’t sure if your issue is a bug or not, don’t worry! Post your problem on GitHub and the team will help you along. Every participant is expected to follow the project's [Code of Conduct](code-of-conduct.md) so please be courteous and respectful.
 
 ## Contributions
 
