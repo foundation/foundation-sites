@@ -12,6 +12,12 @@
 // Typography helper classes (classes only)
 @import 'helpers';
 
+// Text utilities
+@import 'utilities';
+
+// Text transformation classes
+@import 'transformation';
+
 // Text alignment classes
 @import 'alignment';
 
@@ -21,6 +27,8 @@
 @mixin foundation-typography {
   @include foundation-typography-base;
   @include foundation-typography-helpers;
+  @include foundation-text-utilities;
+  @include foundation-text-transformation;
   @include foundation-text-alignment;
   @include foundation-print-styles;
 }
