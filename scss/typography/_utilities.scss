@@ -6,7 +6,7 @@
 /// @group text-utilities
 ////
 
-@mixin text-hide() {
+@mixin text-hide {
   font: 0/0 a;
   color: transparent;
   text-shadow: none;
@@ -14,13 +14,13 @@
   border: 0;
 }
 
-@mixin text-truncate() {
+@mixin text-truncate {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-@mixin text-nowrap() {
+@mixin text-nowrap {
   white-space: nowrap;
 }
 
