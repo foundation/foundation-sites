@@ -6,22 +6,45 @@
 /// @group float
 ////
 
+@mixin float-center {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 @mixin foundation-float-classes {
-  .float-left {
-    float: left !important;
-  }
-
-  .float-right {
-    float: right !important;
-  }
-
-  .float-center {
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
-  }
-
-  .clearfix {
-    @include clearfix;
+  @each $size in $breakpoint-classes {
+    @include breakpoint($size) {
+      // Float left and right
+      @each $float in (left, right) {
+        @if $size != $-zf-zero-breakpoint {
+          .#{$size}-float-#{$float} {
+            float: $float !important;
+          }
+        }
+        @else {
+          .float-#{$float} {
+            float: $float !important;
+          }
+        }
+      }
+      // Float center and clearfix
+      @if $size != $-zf-zero-breakpoint {
+        .#{$size}-float-center {
+          @include float-center;
+        }
+        .#{$size}-clearfix {
+          @include clearfix;
+        }
+      }
+      @else {
+        .float-center {
+          @include float-center;
+        }
+        .clearfix {
+          @include clearfix;
+        }
+      }
+    }
   }
 }
