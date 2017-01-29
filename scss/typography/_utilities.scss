@@ -2,6 +2,10 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
+////
+/// @group text-utilities
+////
+
 @mixin text-hide() {
   font: 0/0 a;
   color: transparent;
