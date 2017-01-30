@@ -14,7 +14,7 @@ A select group of our contributors have been dubbed *Yetinauts*. They have direc
 
 Open an issue for any problem you have with the framework. If there's anything missing from your issue, such as extra context, a code sample, etc. a team member will ask for more info in the comments.
 
-Support requests are generally better suited for the [Foundation Forum](http://foundation.zurb.com), while GitHub is more appropriate for bugs. If you aren’t sure if your issue is a bug or not, don’t worry! Post your problem on GitHub and the team will help you along. Every participant is expected to follow the project's Code of Conduct so please be courteous and respectful.
+Support requests are generally better suited for the [Foundation Forum](http://foundation.zurb.com/forum), while GitHub is more appropriate for bugs. If you aren’t sure if your issue is a bug or not, don’t worry! Post your problem on GitHub and the team will help you along. Every participant is expected to follow the project's [Code of Conduct](code-of-conduct.md) so please be courteous and respectful.
 
 ## Contributions
 
@@ -26,8 +26,8 @@ When you submit a pull request, @mention a few people you’d like to help you r
 
 Foundation uses a git workflow close to [GitFlow](http://nvie.com/posts/a-successful-git-branching-model/). The workflow relies on three branches:
 - **`master`**: The stable branch. It only contains the latest stable version released. Pull requests for docs improvements can be opened on it.
-- **`develop`**: The developing branch used to prepare the next minor/major version. It always contains all the new features and bug fixes previously made, and constitutes the most up-to-date version of Foundation. Almost every pull request should be opened on this branch. When a new version is released, it is merged on `master`, a support branch is created, and `develop` now targets the next version.
-- **`support/*`**: Support branches used to support the previous versions (i.e. `support/6.3` for `v6.3.0`) and prepare patches (i.e. `v6.3.1`). When a bug fix is compatible with supported versions, it is also merged on their support branches and patch versions can be released. If a fix is not compatible with `develop`, a pull request can be opened on the latest compatible and supported version.
+- **`develop`**: The developing branch is used to prepare the next minor/major version. It always contains all the new features and bug fixes previously made, and constitutes the most up-to-date version of Foundation. Almost every pull request should be opened on this branch. When a new version is released, it is merged on `master`, a support branch is created, and `develop` now targets the next version.
+- **`support/*`**: Support branches are used to support the previous versions (i.e. `support/6.3` for `v6.3.0`) and prepare patches (i.e. `v6.3.1`). When a bug fix is compatible with supported versions, it is also merged on their support branches and patch versions can be released. If a fix is not compatible with `develop`, a pull request can be opened on the latest compatible and supported version.
 
 This git workflow was adopted as of `v6.3`, so `v6.2` and previous versions are not supported.
 
