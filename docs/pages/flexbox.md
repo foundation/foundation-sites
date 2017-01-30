@@ -185,6 +185,8 @@ For children, there are 3 quick helper classes
 - `.flex-child-grow` (flex child that will grow to take up all possible space)
 - `.flex-child-shrink` (flex child that will shrink to minimum possible space)
 
+Also, adding a breakpoint to the front of these flexbox helper classes will cause it to only be applied on that size screen or larger. For example, `.medium-flex-container` will keep things as default on the smallest screens, but switch itself to a flex container on medium screens and larger.
+
 ```html_example
 <div class="row">
   <div class="column flex-container flex-dir-column">

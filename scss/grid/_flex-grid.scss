@@ -253,7 +253,7 @@
       }
       
       // flex container
-      .flex-container {
+      .#{$-zf-size}-flex-container {
         @include flex;
       }
 
