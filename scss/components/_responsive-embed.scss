@@ -17,6 +17,9 @@ $responsive-embed-ratios: (
   widescreen: 16 by 9,
 ) !default;
 
+// WARNING: Will be removed in version 6.4
+$responsive-embed-ratio: default;
+
 /// Creates a responsive embed container.
 /// @param {String|List} $ratio [default] - Ratio of the container. Can be a key from the `$responsive-embed-ratios` map or a list formatted as `x by y`.
 @mixin responsive-embed($ratio: default) {
