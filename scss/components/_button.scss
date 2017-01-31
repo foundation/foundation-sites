@@ -82,7 +82,17 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
   display: inline-block;
   vertical-align: middle;
   margin: $button-margin;
-  padding: $button-padding;
+
+  @if (type-of($button-padding) == 'map') {
+    @each $size, $padding in $button-padding {
+      @include breakpoint($size) {
+        padding: $padding;
+      }
+    }
+  }
+  @else {
+    padding: $button-padding;
+  }
 
   -webkit-appearance: none;
   border: 1px solid transparent;
