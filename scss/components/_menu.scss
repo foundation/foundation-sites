@@ -60,6 +60,10 @@ $menu-item-background-hover: $light-gray !default;
     line-height: 1;
     text-decoration: none;
     white-space: nowrap;
+
+    @if not $global-flexbox {
+      display: block;
+    }
   }
 
   // Reset styles of inner elements
@@ -134,10 +138,6 @@ $menu-item-background-hover: $light-gray !default;
       li {
         display: inline-block;
       }
-
-      a {
-        display: inline-block;
-      }
     }
   }
   @else if $dir == vertical {
@@ -156,10 +156,6 @@ $menu-item-background-hover: $light-gray !default;
     }
     @else {
       li {
-        display: block;
-      }
-
-      a {
         display: block;
       }
     }
