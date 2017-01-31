@@ -113,7 +113,15 @@ $foundation-colors: (
 ///
 /// @returns {Color} color from foundation-colors
 @function get-color($key) {
-  @return map-safe-get($foundation-colors, $key);
+  @if map-has-key($foundation-colors, $key) {
+    @return map-safe-get($foundation-colors, $key);
+  }
+  @else if variable-exists(foundation-palette) and map-has-key($foundation-palette, $key) {
+    @warn '$foundation-palette has been deprecated and will be removed in future versions. Please see release notes for migration.';
+    @return map-safe-get($foundation-palette, $key);
+  }
+
+  @error 'Key: `#{$key}` is not available in `#{$foundation-colors}`';
 }
 
 /// Get state color from foundation-states
