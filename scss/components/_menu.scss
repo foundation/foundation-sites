@@ -192,6 +192,112 @@ $menu-item-background-hover: $light-gray !default;
   margin-#{$global-left}: $margin;
 }
 
+/// Adds basic styles for icons in menus.
+@mixin menu-icons() {
+  @if $global-flexbox {
+    a {
+      display: flex;
+    }
+  }
+  @else {
+    img,
+    i,
+    svg {
+      vertical-align: middle;
+
+      + span {
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
+/// Adds position classes for icons within a menu.
+@mixin menu-icon-position($position: left, $spacing: $menu-icon-spacing) {
+  @if $position == left {
+    li a {
+      @if $global-flexbox {
+        flex-flow: row nowrap;
+      }
+
+      img,
+      i,
+      svg {
+        margin-#{$global-right}: $spacing;
+
+        @if not $global-flexbox {
+          display: inline-block;
+        }
+      }
+    }
+  }
+  @else if $position == right {
+    li a {
+      @if $global-flexbox {
+        flex-flow: row nowrap;
+      }
+
+      img,
+      i,
+      svg {
+        margin-#{$global-left}: $spacing;
+
+        @if not $global-flexbox {
+          display: inline-block;
+        }
+      }
+    }
+  }
+  @else if $position == top {
+    li a {
+      @if $global-flexbox {
+        flex-flow: column nowrap;
+      }
+      @else {
+        text-align: center;
+      }
+
+      img,
+      i,
+      svg {
+        @if not $global-flexbox {
+          display: block;
+          margin: 0 auto $spacing;
+        }
+        @else {
+          align-self: stretch;
+          margin-bottom: $spacing;
+          text-align: center;
+        }
+      }
+    }
+  }
+  @else if $position == bottom {
+    li a {
+      @if $global-flexbox {
+        flex-flow: column nowrap;
+      }
+      @else {
+        text-align: center;
+      }
+
+      img,
+      i,
+      svg {
+        @if not $global-flexbox {
+          display: block;
+          margin: $spacing auto 0;
+        }
+        @else {
+          align-self: stretch;
+          margin-bottom: $spacing;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
 @mixin foundation-menu {
   .menu {
     @include menu-base;
@@ -234,6 +340,31 @@ $menu-item-background-hover: $light-gray !default;
     // Nesting
     &.nested {
       @include menu-nested;
+    }
+
+    // Icon Base Styles
+    &.icons {
+      @include menu-icons;
+    }
+
+    // Icon Left
+    &.icon-left {
+      @include menu-icon-position(left);
+    }
+
+    // Icon Right
+    &.icon-right {
+      @include menu-icon-position(right);
+    }
+
+    // Icon Top
+    &.icon-top {
+      @include menu-icon-position(top);
+    }
+
+    // Icon Bottom
+    &.icon-bottom {
+      @include menu-icon-position(bottom);
     }
 
     // Active state
