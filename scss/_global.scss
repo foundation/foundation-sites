@@ -86,6 +86,10 @@ $global-weight-bold: bold !default;
 /// @type Number
 $global-radius: 0 !default;
 
+/// Global value used for all menu styles. Can be overwritten at individual menu component level.
+/// @type Number
+$global-menu-padding: 0.7rem 1rem !default;
+
 /// Sets the text direction of the CSS. Can be either `ltr` or `rtl`.
 /// @type Keyword
 $global-text-direction: ltr !default;
