@@ -40,7 +40,7 @@ $button-radius: $global-radius !default;
 
 /// Border width for hollow outline buttons
 /// @type Number
-$button-hollow-width: 1px !default;
+$button-hollow-border-width: 1px !default;
 
 /// Sizes for buttons.
 /// @type Map
@@ -149,7 +149,7 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
 @mixin button-hollow-style(
   $color: $primary-color,
   $hover-lightness: $button-hollow-hover-lightness, 
-  $border-width: $button-hollow-width
+  $border-width: $button-hollow-border-width
 ) {
   $color-hover: scale-color($color, $lightness: $hover-lightness);
 
