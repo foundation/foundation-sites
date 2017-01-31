@@ -164,23 +164,6 @@ To align an individual child, use the below classes. They use the same alignment
 </div>
 ```
 
----
-
-## Central Alignment
-
-Central alignment can be applied to a flex parent&mdash;which will centrally align all children automatically.
-
-To set parent alignment, use this class:
-
-- `.align-center-middle`
-
-```html_example
-<div class="row align-center-middle">
-  <div class="columns">I am in the center-middle&mdash; that is, I am centrally located!</div>
-  <div class="columns">As above, though I share the center-middle with my siblings.
-</div>
-```
-
 ## Vanilla Flexbox Helper Classes
 
 Foundation also includes some helper classes for quickly applying flex
