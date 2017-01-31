@@ -110,6 +110,7 @@ Get to know the pieces of Foundation.
       <ul>
         <li><a href="motion-ui.html">Motion UI</a></li>
         <li><a href="panini.html">Panini</a></li>
+        <li><a href="style-sherpa.html">Style Sherpa</a></li>
       </ul>
     </section>
   </div>
