@@ -10,13 +10,17 @@
 /// @type Number
 $menu-margin: 0 !default;
 
+/// Padding of a menu. Used as a global value for other menu components.
+/// @type Number
+$menu-item-padding: 0.7rem 1rem !default;
+
 /// Left-hand margin of a nested menu.
 /// @type Number
 $menu-nested-margin: 1rem !default;
 
 /// Padding for items in a pill menu.
 /// @type Number
-$menu-pills-padding: 0.7rem 1rem !default;
+$menu-pills-padding: $menu-item-padding !default;
 
 /// margin for items in a simple menu.
 /// @type Number
@@ -298,6 +302,16 @@ $menu-item-background-hover: $light-gray !default;
   }
 }
 
+@mixin menu-text {
+  padding: $menu-item-padding;
+  padding-top: 0;
+  padding-bottom: 0;
+
+  font-weight: bold;
+  line-height: 1;
+  color: inherit;
+}
+
 @mixin foundation-menu {
   .menu {
     @include menu-base;
@@ -310,6 +324,13 @@ $menu-item-background-hover: $light-gray !default;
     // Even-width modifier for horizontal orientation
     &.expanded {
       @include menu-expand;
+    }
+
+    // Responsive expanded
+    @include -zf-each-breakpoint($small: false) {
+      &.#{$-zf-size}-expanded {
+        @include menu-expand;
+      }
     }
 
     // Vertical orientation modifier
@@ -386,6 +407,10 @@ $menu-item-background-hover: $light-gray !default;
     // Align right
     &.align-#{$global-right} {
       @include menu-align(right);
+    }
+
+    .menu-text {
+      @include menu-text;
     }
   }
 
