@@ -82,7 +82,7 @@ $menu-item-background-hover: $light-gray !default;
     display: table;
     width: 100%;
 
-    li {
+    > li {
       display: table-cell;
       vertical-align: middle;
     }
@@ -317,18 +317,6 @@ $menu-item-background-hover: $light-gray !default;
       @include menu-direction(horizontal);
     }
 
-    // Even-width modifier for horizontal orientation
-    &.expanded {
-      @include menu-expand;
-    }
-
-    // Responsive expanded
-    @include -zf-each-breakpoint($small: false) {
-      &.#{$-zf-size}-expanded {
-        @include menu-expand;
-      }
-    }
-
     // Vertical orientation modifier
     &.vertical {
       @include menu-direction(vertical);
@@ -357,6 +345,18 @@ $menu-item-background-hover: $light-gray !default;
     // Pills
     &.pills {
       @include menu-pills;
+    }
+
+    // Even-width modifier for horizontal orientation
+    &.expanded {
+      @include menu-expand;
+    }
+
+    // Responsive expanded
+    @include -zf-each-breakpoint($small: false) {
+      &.#{$-zf-size}-expanded {
+        @include menu-expand;
+      }
     }
 
     // Nesting
