@@ -328,8 +328,13 @@ $menu-item-background-hover: $light-gray !default;
     }
 
     // Simple
-    &.simple {
+    &.simple:not(.vertical) {
       @include menu-simple;
+    }
+
+    // Vertical simple
+    &.vertical.simple {
+      @include menu-simple(top);
     }
 
     // Pills
