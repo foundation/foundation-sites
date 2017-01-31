@@ -16,7 +16,7 @@ $menu-nested-margin: 1rem !default;
 
 /// Padding for items in a pill menu.
 /// @type Number
-$menu-pills-padding: $global-menu-padding !default;
+$menu-items-padding: $global-menu-padding !default;
 
 /// margin for items in a simple menu.
 /// @type Number
@@ -59,6 +59,7 @@ $menu-item-background-hover: $light-gray !default;
     text-decoration: none;
     white-space: nowrap;
     display: block;
+    padding: $menu-items-padding;
   }
 
   // Reset styles of inner elements
@@ -90,18 +91,13 @@ $menu-item-background-hover: $light-gray !default;
 
 /// Align menu items.
 @mixin menu-align($alignment) {
-  @if $alignment == center {
+  
+  @if $alignment == left {
     @if $global-flexbox {
-      li {
-        justify-content: center;
-      }
+      justify-content: flex-start;
     }
     @else {
-      text-align: center;
-
-      li {
-        text-align: $global-left;
-      }
+      text-align: $global-left;
     }
   }
   @else if $alignment == right {
@@ -110,6 +106,20 @@ $menu-item-background-hover: $light-gray !default;
     }
     @else {
       text-align: $global-right;
+
+      li {
+        text-align: $global-left;
+      }
+    }
+  }
+  @else if $alignment == center {
+    @if $global-flexbox {
+      li {
+        justify-content: center;
+      }
+    }
+    @else {
+      text-align: center;
 
       li {
         text-align: $global-left;
@@ -155,13 +165,9 @@ $menu-item-background-hover: $light-gray !default;
   li + li {
     margin-#{$dir}: $margin;
   }
-}
 
-/// Creates a simple padded Menu.
-/// @param {Number} $padding [$menu-pills-padding] - Padding of each menu item.
-@mixin menu-pills($padding: $menu-pills-padding) {
   a {
-    padding: $padding;
+    padding: 0;
   }
 }
 
@@ -301,39 +307,31 @@ $menu-item-background-hover: $light-gray !default;
       @include menu-direction(vertical);
     }
 
-    @include -zf-each-breakpoint($small: false) {
-      &.#{$-zf-size}-vertical {
-        @include menu-direction(vertical);
-      }
-
-      &.#{$-zf-size}-horizontal {
-        @include menu-direction(horizontal);
-      }
-    }
-
-    // Simple
-    &.simple:not(.vertical) {
-      @include menu-simple;
-    }
-
-    // Vertical simple
-    &.vertical.simple {
-      @include menu-simple(top);
-    }
-
-    // Pills
-    &.pills {
-      @include menu-pills;
-    }
-
     // Even-width modifier for horizontal orientation
     &.expanded {
       @include menu-expand;
     }
 
-    // Responsive expanded
+    // Simple
+    &.simple {
+      @include menu-simple;
+    }
+
+    // Breakpoint specific versions
     @include -zf-each-breakpoint($small: false) {
+      &.#{$-zf-size}-horizontal {
+        @include menu-direction(horizontal);
+      }
+
+      &.#{$-zf-size}-vertical {
+        @include menu-direction(vertical);
+      }
+
       &.#{$-zf-size}-expanded {
+        @include menu-expand;
+      }
+
+      &.#{$-zf-size}-simple {
         @include menu-expand;
       }
     }
@@ -374,14 +372,19 @@ $menu-item-background-hover: $light-gray !default;
       color: $menu-item-color-active;
     }
 
-    // Align center
-    &.align-center {
-      @include menu-align(center);
+    // Align left
+    &.align-#{$global-left} {
+      @include menu-align(left);
     }
 
     // Align right
     &.align-#{$global-right} {
       @include menu-align(right);
+    }
+
+    // Align center
+    &.align-center {
+      @include menu-align(center);
     }
 
     .menu-text {
