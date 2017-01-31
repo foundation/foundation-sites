@@ -60,10 +60,7 @@ $menu-item-background-hover: $light-gray !default;
     line-height: 1;
     text-decoration: none;
     white-space: nowrap;
-
-    @if not $global-flexbox {
-      display: block;
-    }
+    display: block;
   }
 
   // Reset styles of inner elements
