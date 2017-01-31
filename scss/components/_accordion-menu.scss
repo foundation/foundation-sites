@@ -24,8 +24,14 @@ $accordionmenu-arrow-size: 6px !default;
 
 @mixin foundation-accordion-menu {
 
-  .accordion-menu a {
-    padding: $accordionmenu-padding;
+  .accordion-menu {
+    li {
+      width: 100%;
+    }
+
+    a {
+      padding: $accordionmenu-padding;
+    }
   }
 
   .is-accordion-submenu-parent > a {
