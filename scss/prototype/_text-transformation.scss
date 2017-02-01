@@ -23,9 +23,4 @@
       }
     }
   }
-  @each $transformation in (lowercase, uppercase, capitalize) {
-    .text-#{$transformation} {
-      text-transform: $transformation;
-    }
-  }
 }
