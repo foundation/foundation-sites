@@ -1,0 +1,39 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group text-utilities
+////
+
+@mixin text-hide {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin text-nowrap {
+  white-space: nowrap;
+}
+
+@mixin foundation-text-utilities {
+  .text-hide {
+    @include text-hide;
+  }
+
+  .text-truncate {
+    @include text-truncate;
+  }
+
+  .text-nowrap {
+    @include text-nowrap;
+  }
+}
