@@ -6,11 +6,11 @@
 /// @group prototype
 ////
 
+// Float classes
+@import 'float';
+
 // Display classes
 @import 'display';
-
-// Float classes
-// @import 'float';
 
 // Text utilities
 @import 'text-utilities';
@@ -43,6 +43,7 @@
 // @import 'flex-helpers';
 
 @mixin foundation-prototype-classes {
+  @include foundation-float-classes;
   @include foundation-prototype-display;
   @include foundation-text-utilities;
   @include foundation-text-transformation;

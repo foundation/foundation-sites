@@ -30,7 +30,6 @@
 @import 'typography/typography';
 @import 'forms/forms';
 @import 'components/visibility';
-@import 'components/float';
 @import 'components/button';
 @import 'components/button-group';
 @import 'components/accordion-menu';
@@ -114,7 +113,6 @@
   @include foundation-tooltip;
   @include foundation-top-bar;
   @include foundation-visibility-classes;
-  @include foundation-float-classes;
 
   @if $flex {
     @include foundation-flex-classes;
