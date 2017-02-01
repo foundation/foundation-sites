@@ -42,6 +42,10 @@ $button-radius: $global-radius !default;
 /// @type Number
 $button-hollow-border-width: 1px !default;
 
+/// Border width for hollow outline buttons
+/// @type Number
+$button-clear-border-width: 1px !default;
+
 /// Sizes for buttons.
 /// @type Map
 $button-sizes: (
@@ -66,6 +70,10 @@ $button-background-hover-lightness: -20% !default;
 /// Color lightness on hover for hollow buttons.
 /// @type Number
 $button-hollow-hover-lightness: -50% !default;
+
+/// Color lightness on hover for clear buttons.
+/// @type Number
+$button-clear-hover-lightness: -50% !default;
 
 // Internal: flip from margin-right to margin-left for defaults
 @if $global-text-direction == 'rtl' {
@@ -158,7 +166,7 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
 
 @mixin button-hollow-style(
   $color: $primary-color,
-  $hover-lightness: $button-hollow-hover-lightness, 
+  $hover-lightness: $button-hollow-hover-lightness,
   $border-width: $button-hollow-border-width
 ) {
   $color-hover: scale-color($color, $lightness: $hover-lightness);
@@ -168,6 +176,30 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
 
   &:hover, &:focus {
     border-color: $color-hover;
+    color: $color-hover;
+  }
+}
+
+/// Removes background fill on hover and focus for hollow buttons.
+@mixin button-clear {
+  &,
+  &:hover, &:focus {
+    background-color: transparent;
+  }
+}
+
+@mixin button-clear-style(
+  $color: $primary-color,
+  $hover-lightness: $button-clear-hover-lightness,
+  $border-width: $button-clear-border-width
+) {
+  $color-hover: scale-color($color, $lightness: $hover-lightness);
+
+  border: $border-width solid transparent;
+  color: $color;
+
+  &:hover, &:focus {
+    border-color: transparent;
     color: $color-hover;
   }
 }
@@ -280,6 +312,20 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
         @each $name, $color in $button-palette {
           &.#{$name} {
             @include button-hollow-style($color);
+          }
+        }
+      }
+    }
+
+    // Clear style
+    @if $button-fill != clear {
+      &.clear {
+        @include button-clear;
+        @include button-clear-style;
+
+        @each $name, $color in $button-palette {
+          &.#{$name} {
+            @include button-clear-style($color);
           }
         }
       }
