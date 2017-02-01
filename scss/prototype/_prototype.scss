@@ -13,13 +13,13 @@
 // @import 'float';
 
 // Text utilities
-// @import 'text-utilities';
+@import 'text-utilities';
 
 // Text transformation classes
-// @import 'text-transformation';
+@import 'text-transformation';
 
 // Text alignment classes
-// @import 'text-alignment';
+@import 'text-alignment';
 
 // Spacing Utilities
 // @import 'spacing';
@@ -44,4 +44,7 @@
 
 @mixin foundation-prototype-classes {
   @include foundation-prototype-display;
+  @include foundation-text-utilities;
+  @include foundation-text-transformation;
+  @include foundation-text-alignment;
 }
