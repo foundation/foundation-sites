@@ -1,0 +1,47 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group prototype
+////
+
+// Display classes
+@import 'display';
+
+// Float classes
+// @import 'float';
+
+// Text utilities
+// @import 'text-utilities';
+
+// Text transformation classes
+// @import 'text-transformation';
+
+// Text alignment classes
+// @import 'text-alignment';
+
+// Spacing Utilities
+// @import 'spacing';
+
+// Overlay Utilities
+// @import 'overlay';
+
+// Sizing Utilities
+// @import 'sizing';
+
+// Color Utilities
+// @import 'color';
+
+// Position Helpers
+// @import 'position';
+
+// Flex classes
+// @import 'flex';
+
+// Flex helpers
+// @import 'flex-helpers';
+
+@mixin foundation-prototype-classes {
+  @include foundation-prototype-display;
+}

@@ -1,0 +1,40 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group prototype-display
+////
+
+@mixin foundation-prototype-display {
+  @each $size in $breakpoint-classes {
+    @include breakpoint($size) {
+    	@each $display in (none, inline, inline-block, block, table, table-cell) {
+        @if $size != $-zf-zero-breakpoint {
+          .#{$size}-display-#{$display} {
+            display: $display !important;
+          }
+        }
+        @else {
+          .display-#{$display} {
+            display: $display !important;
+          }
+        }
+      }
+      @if $global-flexbox {
+				@each $display-flex in (flex, inline-flex) {
+          @if $size != $-zf-zero-breakpoint {
+            .#{$size}-display-#{$display-flex} {
+              display: $display-flex !important;
+            }
+          }
+          @else {
+            .display-#{$display-flex} {
+              display: $display-flex !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
