@@ -25,15 +25,34 @@
 }
 
 @mixin foundation-text-utilities {
-  .text-hide {
-    @include text-hide;
-  }
+  @each $size in $breakpoint-classes {
+    @include breakpoint($size) {
+      @if $size != $-zf-zero-breakpoint {
+        .#{$size}-text-hide {
+          @include text-hide;
+        }
 
-  .text-truncate {
-    @include text-truncate;
-  }
+        .#{$size}-text-truncate {
+          @include text-truncate;
+        }
 
-  .text-nowrap {
-    @include text-nowrap;
+        .#{$size}-text-nowrap {
+          @include text-nowrap;
+        }
+      }
+      @else {
+        .text-hide {
+          @include text-hide;
+        }
+
+        .text-truncate {
+          @include text-truncate;
+        }
+
+        .text-nowrap {
+          @include text-nowrap;
+        }
+      }
+    }
   }
 }
