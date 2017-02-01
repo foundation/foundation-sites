@@ -6,7 +6,7 @@
 /// @group prototype-text-alignment
 ////
 
-@mixin foundation-text-alignment {
+@mixin foundation-prototype-text-alignment {
   @each $size in $breakpoint-classes {
     @include breakpoint($size) {
       @each $align in (left, right, center, justify) {

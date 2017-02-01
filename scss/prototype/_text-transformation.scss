@@ -6,7 +6,7 @@
 /// @group prototype-text-transformation
 ////
 
-@mixin foundation-text-transformation {
+@mixin foundation-prototype-text-transformation {
 	@each $size in $breakpoint-classes {
     @include breakpoint($size) {
       @each $transformation in (lowercase, uppercase, capitalize) {

@@ -24,7 +24,7 @@
   white-space: nowrap;
 }
 
-@mixin foundation-text-utilities {
+@mixin foundation-prototype-text-utilities {
   @each $size in $breakpoint-classes {
     @include breakpoint($size) {
       @if $size != $-zf-zero-breakpoint {
