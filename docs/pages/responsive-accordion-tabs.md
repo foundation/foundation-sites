@@ -1,7 +1,7 @@
 ---
 title: Responsive Accordion Tabs
 description: Use the Markup of the Accordion or Tabs components to create Responsive Accordion Tabs.
-sass: 
+sass:
   - scss/components/_accordion.scss
   - scss/components/_tabs.scss
 js: js/foundation.zf.responsiveAccordionTabs.js
@@ -13,6 +13,11 @@ previous:
 next:
   url: badge.html
   title: Badge
+videos:
+  -
+    title: Responsive Tabs to Accordions
+    desc: Foundation Lesson - Responsive Tabs Accordion
+    url: https://www.youtube.com/watch?v=FKzzaWR6j2M
 ---
 
 ## Basics

@@ -1,6 +1,6 @@
 ---
 title: Flexbox
-description: For browsers with cutting-edge support, some of Foundation's key components can be converted to flexbox.
+description: For browsers with cutting-edge support, some of Foundation's key components have been converted to flexbox.
 sass:
   - scss/components/_flex.scss
   - scss/util/_flex.scss
@@ -51,15 +51,25 @@ If you use the `foundation-everything()` mixin in your main Sass file, pass in t
 @include foundation-everything(true);
 ```
 
-If you included each component manually (like our starter projects do), open your settings file (basic template: scss/_settings.scss, ZURB template: src/assets/scss/_settings.scss) and set `$global-flexbox` to `true`, and remove the `@include` for the float grid and replace it with the one for the flex grid, along with the helper classes (basic template: scss/app.scss, ZURB template: src/assets/scss/app.scss):
+If you included each component manually (like our starter projects do), open your settings file (basic template: scss/_settings.scss, ZURB template: src/assets/scss/_settings.scss) and set `$global-flexbox` to `true`, and remove the `@include` for the float grid and replace it with the one for the flex grid, along with the helper classes (basic template: scss/app.scss, ZURB Stack: src/assets/scss/app.scss).
+
+In `app.scss`, comment out the standard grid and the float classes:
+
+```scss
+// @include foundation-grid;
+@include foundation-flex-grid;
+
+// @include foundation-float-classes;
+@include foundation-flex-classes;
+```
+
+In the `_settings.scss` file, activate Flexbox components:
 
 ```scss
 $global-flexbox: true;
-
-// @include foundation-grid;
-@include foundation-flex-grid;
-@include foundation-flex-classes;
 ```
+
+You have now activated Flex-mode!
 
 ---
 
@@ -262,3 +272,125 @@ Interested in building your own flexbox-ey component? Use the `flex()` mixin to 
   @include flex-align(center, middle);
 }
 ```
+
+---
+
+## Related Resources
+
+Some releated resources for using {{title}}.
+
+<div class="row small-up-1 medium-up-2 large-up-3 thumb-row">
+
+  <div class="column">
+    <a href="http://zurb.com/university/lessons/solving-problems-using-flexbox-vertical-alignment" target="_blank">
+      <img src="http://foundation.zurb.com/assets/img/learn/training/tuts-grid-basics-mobile-first.png" class="tuts-img" height="" width="" alt="image clip of video">
+      <h5 class="thumb-category">F6, GRID, LAYOUT, Flexbox</h5>
+      <p class="thumb-description" target="_blank">Solving problems using Flexbox - Vertical Alignment<span class="thumb-author">Rafi - Foundation Team</span></p>
+    </a>
+  </div>
+
+  <div class="column">
+    <a href="http://foundation.zurb.com/learn/introduction-to-the-foundation-grid.html" target="_blank">
+      <img src="http://foundation.zurb.com/assets/img/develop/tuts-grid-jamesstone.png" class="tuts-img" height="" width="" alt="image clip of video">
+      <h5 class="thumb-category">F6, GRID, LAYOUT, Flexbox</h5>
+      <p class="thumb-description">Foundation's Flexbox Cards to Win the Game<span class="thumb-author">Rafi - Foundation Team</span></p>
+    </a>
+  </div>
+
+  <div class="column">
+    <a href="http://foundation.zurb.com/learn/getting-started-with-foundation-6-gary-jennings.html" target="_blank">
+      <img src="http://foundation.zurb.com/assets/img/develop/tuts-intro-jenning.png" class="tuts-img" height="" width="" alt="image clip of video">
+      <h5 class="thumb-category">F6, DOWNLOAD, CSS</h5>
+      <p class="thumb-description">Getting Started with Foundation 6<span class="thumb-author">Gary Jennings</span></p>
+    </a>
+  </div>
+
+  <div class="column">
+    <a href="http://foundation.zurb.com/learn/getting-started-with-foundation-6-gary-jennings.html" target="_blank">
+      <img src="http://foundation.zurb.com/assets/img/develop/tuts-intro-jenning.png" class="tuts-img" height="" width="" alt="image clip of video">
+      <h5 class="thumb-category">F6, CSS, INSTALL, PROJECT STRUCTURE</h5>
+      <p class="thumb-description">Setting Up Your Foundation 6 Project<span class="thumb-author">Gary Jennings</span></p>
+    </a>
+  </div>
+
+  <div class="column">
+    <a href="http://foundation.zurb.com/learn/foundation-6-source-ordering-buttons.html" target="_blank">
+      <img src="http://foundation.zurb.com/assets/img/learn/training/tuts-grid-source-ordering-buttons.png" class="tuts-img" height="" width="" alt="image clip of video">
+      <h5 class="thumb-category">F6, GRID, LAYOUT, CSS</h5>
+      <p class="thumb-description">Prototyping with Foundation 6 Grid Source Ordering and Buttons<span class="thumb-author">Tim - Foundation Team</span></p>
+    </a>
+  </div>
+
+  <div class="column">
+    <a href="https://scotch.io/tutorials/get-to-know-the-flexbox-grid-in-foundation-6" target="_blank">
+      <p class="thumb-description">Get to Know the Flexbox Grid in Foundation 6<span class="thumb-author">By Chris Sevilleja of Scotch.io</span></p>
+    </a>
+  </div>
+
+</div>
+
+<div class="text-center">
+  <a href="http://zurb.com/university/lessons" class="button-docs secondary">See More Tutorials</a>
+</div>
+
+<!-- ## Inspiration
+
+Get inspired by the Foundation community to see what you can do with this component in your own work.
+
+<div class="docs-examples small-up-2 medium-up-2 large-up-5 row">
+
+  <div class="section-inspiration column">
+    <div class="image-container">
+      <a target="_blank" href="http://zurb.com/responsive/site/pacific-sunwear-golden-state-of-mind">
+        <img src="https://prod-university-library.s3.amazonaws.com/uploads/site/mobile_screenshot/17455/Screen_Shot_2015-09-01_at_10.09.27_AM.png" alt="" />
+      </a>
+    </div>
+    <h5>Pacific Sunwear</h5>
+    <p>Pacific Sunwear loves diversity and adventure so they created a portal for people to discover both &hellip;</p>
+    <a target="_blank" href="http://zurb.com/responsive/site/whirlpool" class="secondary button-docs">Take a look <i class="di-arrow-right di-margin-left"></i></a>
+  </div>
+  <div class="section-inspiration column">
+    <div class="image-container">
+      <a target="_blank" href="http://zurb.com/responsive/site/whirlpool">
+        <img src="https://prod-university-library.s3.amazonaws.com/uploads/site/mobile_screenshot/18066/Screen_Shot_2016-12-12_at_11.50.44_AM.png" alt="" />
+      </a>
+    </div>
+    <h5>Whirlpool</h5>
+    <p>Studies show that more and more shoppers are looking online while shopping in stores for product details &hellip;</p>
+    <a target="_blank" href="http://zurb.com/responsive/site/whirlpool" class="secondary button-docs">Take a look <i class="di-arrow-right di-margin-left"></i></a>
+  </div>
+  <div class="section-inspiration column">
+    <div class="image-container">
+      <a target="_blank" href="http://zurb.com/responsive/site/lamborghini">
+        <img src="https://prod-university-library.s3.amazonaws.com/uploads/site/mobile_screenshot/17915/Screen_Shot_2016-10-18_at_4.10.15_PM.png" class="" height="" width="" alt="">
+      </a>
+    </div>
+    <h5>Lamborghini</h5>
+    <p>Since 1963, Lamborghini has been building exotic sports cars with elegant interiors. Form has always gone hand &hellip;</p>
+    <a target="_blank" href="http://zurb.com/responsive/site/whirlpool" class="secondary button-docs">Take a look <i class="di-arrow-right di-margin-left"></i></a>
+  </div>
+  <div class="section-inspiration column">
+    <div class="image-container">
+      <a target="_blank" href="http://zurb.com/responsive/site/sonos-ad8b6113-9320-4a48-a6de-3e56352a1293">
+        <img src="https://prod-university-library.s3.amazonaws.com/uploads/site/mobile_screenshot/17902/Screen_Shot_2016-10-12_at_12.39.02_PM.png" alt="" />
+      </a>
+    </div>
+    <h5>Sonos</h5>
+    <p>Ever since launching their their hot new responsive website, Sonos has seen mobile usage just skyrocket &hellip;</p>
+    <a target="_blank" href="http://zurb.com/responsive/site/whirlpool" class="secondary button-docs">Take a look <i class="di-arrow-right di-margin-left"></i></a>
+  </div>
+  <div class="section-inspiration column">
+    <div class="image-container">
+      <a target="_blank" href="http://zurb.com/responsive/site/pressed-juicery">
+        <img src="https://prod-university-library.s3.amazonaws.com/uploads/site/mobile_screenshot/16728/Screen_Shot_2016-02-04_at_8.38.56_PM.png" alt="" />
+      </a>
+    </div>
+    <h5>Pressed Juicery</h5>
+    <p>Fresh juice is a fast growing industry, and Pressed Juicery has a gorgeous responsive website to stay at the &hellip;</p>
+    <a target="_blank" href="http://zurb.com/responsive/site/whirlpool" class="secondary button-docs">Take a look <i class="di-arrow-right di-margin-left"></i></a>
+  </div>
+</div>
+
+<div class="text-center">
+  <a href="http://zurb.com/responsive" class="button-docs secondary">View More Sites Built with Foundation</a>
+</div> -->
