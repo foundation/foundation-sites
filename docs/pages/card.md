@@ -178,3 +178,78 @@ You can either set the width of cards with custom css or add them into the Found
   </div>
 </div>
 ```
+
+## Card columns
+
+Cards can be organized into <a href="http://masonry.desandro.com/" target="_blank">Masonry-like</a> columns with just CSS by wrapping them in .card-columns. Cards are built with <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Columns/Using_multi-column_layouts" target="_blank">CSS column</a> properties instead of flexbox for easier alignment. Cards are ordered from top to bottom and left to right.
+
+Heads up! Your mileage with card columns may vary. To prevent cards breaking across columns, we must set them to `display: inline-block` as `column-break-inside: avoid` isn’t a bulletproof solution yet.
+
+```html_example
+<div class="card-columns">
+  <div class="card">
+    <img src="http://placehold.it/350x250">
+    <div class="card-section">
+      <h4>Card title that wraps to a new line</h4>
+      <p>This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-section">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+      <p><small>Updated: 10 min ago</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <img src="http://placehold.it/350x250">
+    <div class="card-section">
+      <h4>Card title</h4>
+      <p>This card has supporting text below as a natural lead-in to additional content.</p>
+      <p><small>Updated: 10 min ago</small></p>
+    </div>
+  </div>
+  <div class="card text-center" style="color: #fff; background: dodgerblue;">
+    <div class="card-section">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
+      <p><small>Updated: 10 min ago</small></p>
+    </div>
+  </div>
+  <div class="card text-center">
+    <div class="card-section">
+      <h4>Card title.</h4>
+      <p>This card has supporting text below as a natural lead-in to additional content.</p>
+      <p><small>Updated: 10 min ago</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <img src="http://placehold.it/300x350">
+  </div>
+  <div class="card">
+    <div class="card-section">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+      <p><small>Updated: 10 min ago</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <img src="http://placehold.it/350x250">
+    <div class="card-section">
+      <h4>Card title</h4>
+      <p>This card has supporting text below as a natural lead-in to additional content.</p>
+      <p><small>Updated: 10 min ago</small></p>
+    </div>
+  </div>
+</div>
+```
+
+Card columns can also be extended and customized with some additional code. Shown below is an extension of the `.card-columns` class using the same CSS we use—CSS columns— to generate a set of responsive tiers for changing the number of columns.
+
+```scss
+.card-columns {
+  @include breakpoint(large) {
+    column-count: 4;
+  }
+  @include breakpoint(xlarge) {
+    column-count: 5;
+  }
+}
+```

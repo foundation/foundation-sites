@@ -38,13 +38,21 @@ $card-padding: $global-padding !default;
 /// @type number
 $card-margin: $global-margin !default;
 
+/// Default columns in a `.card-columns` wrapper.
+/// @type number
+$card-columns-count: 3 !default;
+
+/// Default gutter between cards in a `.card-columns` wrapper.
+/// @type number
+$card-columns-gap: $card-margin !default;
+
 /// Adds styles for a card container.
-/// @param {Color} $background - Background color of the card.
-/// @param {Color} $color - font color of the card.
-/// @param {Number} $margin - Bottom margin of the card.
-/// @param {List} $border - Border around the card.
-/// @param {List} $radius - border radius of the card.
-/// @param {List} $shadow - box shadow of the card.
+/// @param {Color} $background [$white] - Background color of the card.
+/// @param {Color} $color [$body-font-color] - font color of the card.
+/// @param {Number} $margin [$global-margin] - Bottom margin of the card.
+/// @param {List} $border [1px solid $light-gray] - Border around the card.
+/// @param {List} $radius [$global-radius] - border radius of the card.
+/// @param {List} $shadow [none] - box shadow of the card.
 @mixin card-container(
   $background: $card-background,
   $color: $card-font-color,
@@ -103,6 +111,28 @@ $card-margin: $global-margin !default;
 
   & > :last-child {
     margin-bottom: 0;
+  }
+}
+
+/// Adds styles for card columns.
+/// @param {Number} $columns [3] - Number of columns.
+/// @param {Number} $gap [$card-margin] - Horizontal spacing between columns.
+@mixin card-columns-section(
+  $columns: $card-columns-count,
+  $gap: $card-columns-gap
+) {
+  @include breakpoint(medium) {
+    column-count: $columns;
+    column-gap: $gap;
+  }
+}
+
+.card-columns {
+  @include card-columns-section;
+
+  .card {
+    display: inline-block; // Don't let them vertically span multiple columns
+    width: 100%; // Don't let their width change
   }
 }
 
