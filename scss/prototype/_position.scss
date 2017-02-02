@@ -6,6 +6,10 @@
 /// @group prototype-position
 ////
 
+/// Responsive breakpoints for floats, defaulted to global-prototype-responsive-breakpoints.
+/// @type Number
+$prototype-position-responsive-breakpoints: $global-prototype-responsive-breakpoints !default;
+
 /// z-index for fixed positioning
 /// @type Number
 $position-zindex: 975 !default;
@@ -27,38 +31,40 @@ $position-zindex: 975 !default;
 }
 
 @mixin foundation-prototype-position {
-	@each $size in $breakpoint-classes {
-    @include breakpoint($size) {
-      // Position: Static, Relative, Fixed, Absolute
-      @each $position in (static, relative, absolute, fixed) {
+  @each $position in (static, relative, absolute, fixed) {
+    .position-#{$position} {
+      position: $position;
+    }
+  }
+  .position-fixed-top {
+    @include position-fixed-top;
+  }
+
+  .position-fixed-bottom {
+    @include position-fixed-bottom;
+  }
+
+  @if ($prototype-position-responsive-breakpoints) {
+    // Loop through Responsive Breakpoints
+    @each $size in $breakpoint-classes {
+      @include breakpoint($size) {
+        // Position: Static, Relative, Fixed, Absolute
+        @each $position in (static, relative, absolute, fixed) {
+          @if $size != $-zf-zero-breakpoint {
+            .#{$size}-position-#{$position} {
+              position: $position;
+            }
+          }
+        }
+        // Position: Fixed Top, Fixed Bottom
         @if $size != $-zf-zero-breakpoint {
-          .#{$size}-position-#{$position} {
-			      position: $position;
-			    }
-        }
-        @else {
-          .position-#{$position} {
-			      position: $position;
-			    }
-        }
-      }
-      // Position: Fixed Top, Fixed Bottom
-      @if $size != $-zf-zero-breakpoint {
-        .#{$size}-position-fixed-top {
-          @include position-fixed-top;
-        }
+          .#{$size}-position-fixed-top {
+            @include position-fixed-top;
+          }
 
-        .#{$size}-position-fixed-bottom {
-          @include position-fixed-bottom;
-        }
-      }
-      @else {
-        .position-fixed-top {
-          @include position-fixed-top;
-        }
-
-        .position-fixed-bottom {
-          @include position-fixed-bottom;
+          .#{$size}-position-fixed-bottom {
+            @include position-fixed-bottom;
+          }
         }
       }
     }
