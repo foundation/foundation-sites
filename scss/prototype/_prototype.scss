@@ -25,7 +25,7 @@
 @import 'text-decoration';
 
 // Font Styling
-// @import 'font-styling';
+@import 'font-styling';
 
 // Position Helpers
 // @import 'position';
@@ -55,4 +55,5 @@
   @include foundation-prototype-text-utilities;
   @include foundation-prototype-text-transformation;
   @include foundation-prototype-text-decoration;
+  @include foundation-prototype-font-styling;
 }

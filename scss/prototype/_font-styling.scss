@@ -1,0 +1,52 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group prototype-font-styling
+////
+
+@mixin font-normal {
+  font-weight: $global-weight-normal;
+}
+
+@mixin font-bold {
+  font-weight: $global-weight-bold;
+}
+
+@mixin font-italic {
+  font-style: italic;
+}
+
+@mixin foundation-prototype-font-styling {
+  @each $size in $breakpoint-classes {
+    @include breakpoint($size) {
+      @if $size != $-zf-zero-breakpoint {
+        .#{$size}-font-normal {
+          @include font-normal;
+        }
+
+        .#{$size}-font-bold {
+          @include font-bold;
+        }
+
+        .#{$size}-font-italic {
+          @include font-italic;
+        }
+      }
+      @else {
+        .font-normal {
+          @include font-normal;
+        }
+
+        .font-bold {
+          @include font-bold;
+        }
+
+        .font-italic {
+          @include font-italic;
+        }
+      }
+    }
+  }
+}
