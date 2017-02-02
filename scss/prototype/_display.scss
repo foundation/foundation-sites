@@ -6,33 +6,53 @@
 /// @group prototype-display
 ////
 
+/// Responsive breakpoints for floats, defaulted to global-prototype-responsive-breakpoints.
+/// @type Number
+$prototype-display-responsive-breakpoints: $global-prototype-responsive-breakpoints !default;
+
 @mixin foundation-prototype-display {
-  @each $size in $breakpoint-classes {
-    @include breakpoint($size) {
-    	@each $display in (none, inline, inline-block, block, table, table-cell) {
-        @if $size != $-zf-zero-breakpoint {
-          .#{$size}-display-#{$display} {
-            display: $display !important;
-          }
-        }
-        @else {
-          .display-#{$display} {
-            display: $display !important;
-          }
-        }
-      }
-      @if $global-flexbox {
-				@each $display-flex in (flex, inline-flex) {
+  @if ($prototype-float-responsive-breakpoints) {
+    @each $size in $breakpoint-classes {
+      @include breakpoint($size) {
+        @each $display in (none, inline, inline-block, block, table, table-cell) {
           @if $size != $-zf-zero-breakpoint {
-            .#{$size}-display-#{$display-flex} {
-              display: $display-flex !important;
+            .#{$size}-display-#{$display} {
+              display: $display !important;
             }
           }
           @else {
-            .display-#{$display-flex} {
-              display: $display-flex !important;
+            .display-#{$display} {
+              display: $display !important;
             }
           }
+        }
+        @if $global-flexbox {
+          @each $display-flex in (flex, inline-flex) {
+            @if $size != $-zf-zero-breakpoint {
+              .#{$size}-display-#{$display-flex} {
+                display: $display-flex !important;
+              }
+            }
+            @else {
+              .display-#{$display-flex} {
+                display: $display-flex !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  @else {
+    @each $display in (none, inline, inline-block, block, table, table-cell) {
+      .display-#{$display} {
+        display: $display !important;
+      }
+    }
+    @if $global-flexbox {
+      @each $display-flex in (flex, inline-flex) {
+        .display-#{$display-flex} {
+          display: $display-flex !important;
         }
       }
     }
