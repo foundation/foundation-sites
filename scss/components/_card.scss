@@ -56,6 +56,7 @@ $card-margin: $global-margin !default;
   @if $global-flexbox {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
   }
 
   margin-bottom: $margin;
@@ -81,6 +82,7 @@ $card-margin: $global-margin !default;
 ) {
   @if $global-flexbox {
     flex: 0 1 auto;
+    display: flex;
   }
 
   padding: $padding;
