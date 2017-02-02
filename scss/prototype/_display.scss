@@ -11,17 +11,26 @@
 $prototype-display-responsive-breakpoints: $global-prototype-responsive-breakpoints !default;
 
 @mixin foundation-prototype-display {
+  @each $display in (none, inline, inline-block, block, table, table-cell) {
+    .display-#{$display} {
+      display: $display !important;
+    }
+  }
+  @if $global-flexbox {
+    @each $display-flex in (flex, inline-flex) {
+      .display-#{$display-flex} {
+        display: $display-flex !important;
+      }
+    }
+  }
+
   @if ($prototype-display-responsive-breakpoints) {
+    // Loop through Responsive Breakpoints
     @each $size in $breakpoint-classes {
       @include breakpoint($size) {
         @each $display in (none, inline, inline-block, block, table, table-cell) {
           @if $size != $-zf-zero-breakpoint {
             .#{$size}-display-#{$display} {
-              display: $display !important;
-            }
-          }
-          @else {
-            .display-#{$display} {
               display: $display !important;
             }
           }
@@ -33,26 +42,7 @@ $prototype-display-responsive-breakpoints: $global-prototype-responsive-breakpoi
                 display: $display-flex !important;
               }
             }
-            @else {
-              .display-#{$display-flex} {
-                display: $display-flex !important;
-              }
-            }
           }
-        }
-      }
-    }
-  }
-  @else {
-    @each $display in (none, inline, inline-block, block, table, table-cell) {
-      .display-#{$display} {
-        display: $display !important;
-      }
-    }
-    @if $global-flexbox {
-      @each $display-flex in (flex, inline-flex) {
-        .display-#{$display-flex} {
-          display: $display-flex !important;
         }
       }
     }

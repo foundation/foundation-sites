@@ -17,18 +17,28 @@ $prototype-float-responsive-breakpoints: $global-prototype-responsive-breakpoint
 }
 
 @mixin foundation-prototype-float {
+  // Float left and right
+  @each $float in (left, right) {
+    .float-#{$float} {
+      float: $float !important;
+    }
+  }
+  // Float center and clearfix
+  .float-center {
+    @include float-center;
+  }
+  .clearfix {
+    @include clearfix;
+  }
+
   @if ($prototype-float-responsive-breakpoints) {
+    // Loop through Responsive Breakpoints
     @each $size in $breakpoint-classes {
       @include breakpoint($size) {
         // Float left and right
         @each $float in (left, right) {
           @if $size != $-zf-zero-breakpoint {
             .#{$size}-float-#{$float} {
-              float: $float !important;
-            }
-          }
-          @else {
-            .float-#{$float} {
               float: $float !important;
             }
           }
@@ -43,30 +53,7 @@ $prototype-float-responsive-breakpoints: $global-prototype-responsive-breakpoint
             @include clearfix;
           }
         }
-        @else {
-          .float-center {
-            @include float-center;
-          }
-          .clearfix {
-            @include clearfix;
-          }
-        }
       }
-    }
-  }
-  @else {
-    // Float left and right
-    @each $float in (left, right) {
-      .float-#{$float} {
-        float: $float !important;
-      }
-    }
-    // Float center and clearfix
-    .float-center {
-      @include float-center;
-    }
-    .clearfix {
-      @include clearfix;
     }
   }
 }

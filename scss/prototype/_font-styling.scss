@@ -23,7 +23,20 @@ $prototype-font-styling-responsive-breakpoints: $global-prototype-responsive-bre
 }
 
 @mixin foundation-prototype-font-styling {
+  .font-normal {
+    @include font-normal;
+  }
+
+  .font-bold {
+    @include font-bold;
+  }
+
+  .font-italic {
+    @include font-italic;
+  }
+
   @if ($prototype-font-styling-responsive-breakpoints) {
+    // Loop through Responsive Breakpoints
     @each $size in $breakpoint-classes {
       @include breakpoint($size) {
         @if $size != $-zf-zero-breakpoint {
@@ -39,33 +52,7 @@ $prototype-font-styling-responsive-breakpoints: $global-prototype-responsive-bre
             @include font-italic;
           }
         }
-        @else {
-          .font-normal {
-            @include font-normal;
-          }
-
-          .font-bold {
-            @include font-bold;
-          }
-
-          .font-italic {
-            @include font-italic;
-          }
-        }
       }
-    }
-  }
-  @else {
-    .font-normal {
-      @include font-normal;
-    }
-
-    .font-bold {
-      @include font-bold;
-    }
-
-    .font-italic {
-      @include font-italic;
     }
   }
 }
