@@ -36,8 +36,13 @@ $buttongroup-radius-on-each: true !default;
 
   @if $global-flexbox {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     align-items: stretch;
+    flex-grow: 1;
+    &::before,
+    &::after {
+      display: none;
+    }
   }
   @else {
     font-size: 0;
