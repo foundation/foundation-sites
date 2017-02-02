@@ -6,19 +6,27 @@
 /// @group prototype-text-transformation
 ////
 
+/// Responsive breakpoints for text transformation, defaulted to global-prototype-responsive-breakpoints.
+/// @type Boolean
+$prototype-text-transformation-responsive-breakpoints: $global-prototype-responsive-breakpoints !default;
+
 @mixin foundation-prototype-text-transformation {
-	@each $size in $breakpoint-classes {
-    @include breakpoint($size) {
-      @each $transformation in (lowercase, uppercase, capitalize) {
-        @if $size != $-zf-zero-breakpoint {
-          .#{$size}-text-#{$transformation} {
-			      text-transform: $transformation;
-			    }
-        }
-        @else {
-          .text-#{$transformation} {
-			      text-transform: $transformation;
-			    }
+  @each $transformation in (lowercase, uppercase, capitalize) {
+    .text-#{$transformation} {
+      text-transform: $transformation;
+    }
+  }
+
+  @if ($prototype-text-transformation-responsive-breakpoints) {
+    // Loop through Responsive Breakpoints
+  	@each $size in $breakpoint-classes {
+      @include breakpoint($size) {
+        @each $transformation in (lowercase, uppercase, capitalize) {
+          @if $size != $-zf-zero-breakpoint {
+            .#{$size}-text-#{$transformation} {
+  			      text-transform: $transformation;
+  			    }
+          }
         }
       }
     }

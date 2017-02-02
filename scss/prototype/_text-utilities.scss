@@ -6,6 +6,10 @@
 /// @group prototype-text-utilities
 ////
 
+/// Responsive breakpoints for text utilities, defaulted to global-prototype-responsive-breakpoints.
+/// @type Boolean
+$prototype-text-utilities-responsive-breakpoints: $global-prototype-responsive-breakpoints !default;
+
 @mixin text-hide {
   font: 0/0 a;
   color: transparent;
@@ -25,32 +29,34 @@
 }
 
 @mixin foundation-prototype-text-utilities {
-  @each $size in $breakpoint-classes {
-    @include breakpoint($size) {
-      @if $size != $-zf-zero-breakpoint {
-        .#{$size}-text-hide {
-          @include text-hide;
-        }
+  .text-hide {
+    @include text-hide;
+  }
 
-        .#{$size}-text-truncate {
-          @include text-truncate;
-        }
+  .text-truncate {
+    @include text-truncate;
+  }
 
-        .#{$size}-text-nowrap {
-          @include text-nowrap;
-        }
-      }
-      @else {
-        .text-hide {
-          @include text-hide;
-        }
+  .text-nowrap {
+    @include text-nowrap;
+  }
 
-        .text-truncate {
-          @include text-truncate;
-        }
+  @if ($prototype-text-utilities-responsive-breakpoints) {
+    // Loop through Responsive Breakpoints
+    @each $size in $breakpoint-classes {
+      @include breakpoint($size) {
+        @if $size != $-zf-zero-breakpoint {
+          .#{$size}-text-hide {
+            @include text-hide;
+          }
 
-        .text-nowrap {
-          @include text-nowrap;
+          .#{$size}-text-truncate {
+            @include text-truncate;
+          }
+
+          .#{$size}-text-nowrap {
+            @include text-nowrap;
+          }
         }
       }
     }
