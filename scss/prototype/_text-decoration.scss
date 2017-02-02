@@ -12,12 +12,12 @@
       @each $decoration in (overline, underline, line-through) {
         @if $size != $-zf-zero-breakpoint {
           .#{$size}-text-#{$decoration} {
-			      text-transform: $decoration;
+			      text-decoration: $decoration;
 			    }
         }
         @else {
           .text-#{$decoration} {
-			      text-transform: $decoration;
+			      text-decoration: $decoration;
 			    }
         }
       }
