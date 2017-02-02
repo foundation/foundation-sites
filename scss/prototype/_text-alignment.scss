@@ -6,21 +6,30 @@
 /// @group prototype-text-alignment
 ////
 
+/// Responsive breakpoints for position, defaulted to global-prototype-responsive-breakpoints.
+/// @type Number
+$prototype-text-alignment-responsive-breakpoints: $global-prototype-responsive-breakpoints !default;
+
 @mixin foundation-prototype-text-alignment {
-  @each $size in $breakpoint-classes {
-    @include breakpoint($size) {
-      @each $align in (left, right, center, justify) {
-        @if $size != $-zf-zero-breakpoint {
-          .#{$size}-text-#{$align} {
-            text-align: $align;
-          }
-        }
-        @else {
-          .text-#{$align} {
-            text-align: $align;
+  @each $align in (left, right, center, justify) {
+    .text-#{$align} {
+      text-align: $align;
+    }
+  }
+
+  @if ($prototype-position-responsive-breakpoints) {
+    // Loop through Responsive Breakpoints
+    @each $size in $breakpoint-classes {
+      @include breakpoint($size) {
+        @each $align in (left, right, center, justify) {
+          @if $size != $-zf-zero-breakpoint {
+            .#{$size}-text-#{$align} {
+              text-align: $align;
+            }
           }
         }
       }
     }
   }
+  
 }
