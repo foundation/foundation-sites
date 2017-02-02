@@ -7,7 +7,7 @@
 ////
 
 /// Responsive breakpoints for display, defaulted to global-prototype-responsive-breakpoints.
-/// @type Number
+/// @type Boolean
 $prototype-display-responsive-breakpoints: $global-prototype-responsive-breakpoints !default;
 
 @mixin foundation-prototype-display {

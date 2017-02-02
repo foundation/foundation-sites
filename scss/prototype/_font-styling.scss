@@ -7,7 +7,7 @@
 ////
 
 /// Responsive breakpoints for font styling, defaulted to global-prototype-responsive-breakpoints.
-/// @type Number
+/// @type Boolean
 $prototype-font-styling-responsive-breakpoints: $global-prototype-responsive-breakpoints !default;
 
 @mixin font-normal {

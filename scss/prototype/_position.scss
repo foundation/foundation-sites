@@ -7,7 +7,7 @@
 ////
 
 /// Responsive breakpoints for position, defaulted to global-prototype-responsive-breakpoints.
-/// @type Number
+/// @type Boolean
 $prototype-position-responsive-breakpoints: $global-prototype-responsive-breakpoints !default;
 
 /// z-index for fixed positioning

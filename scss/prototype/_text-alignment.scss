@@ -6,8 +6,8 @@
 /// @group prototype-text-alignment
 ////
 
-/// Responsive breakpoints for position, defaulted to global-prototype-responsive-breakpoints.
-/// @type Number
+/// Responsive breakpoints for text alignment, defaulted to global-prototype-responsive-breakpoints.
+/// @type Boolean
 $prototype-text-alignment-responsive-breakpoints: $global-prototype-responsive-breakpoints !default;
 
 @mixin foundation-prototype-text-alignment {

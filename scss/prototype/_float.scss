@@ -7,7 +7,7 @@
 ////
 
 /// Responsive breakpoints for floats, defaulted to global-prototype-responsive-breakpoints.
-/// @type Number
+/// @type Boolean
 $prototype-float-responsive-breakpoints: $global-prototype-responsive-breakpoints !default;
 
 @mixin float-center {
