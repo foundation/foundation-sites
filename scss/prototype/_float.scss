@@ -6,6 +6,10 @@
 /// @group prototype-float
 ////
 
+/// Responsive breakpoints for floats, defaulted to global-prototype-responsive-breakpoints.
+/// @type Number
+$prototype-float-responsive-breakpoints: $global-prototype-responsive-breakpoints !default;
+
 @mixin float-center {
   display: block;
   margin-right: auto;
@@ -13,39 +17,56 @@
 }
 
 @mixin foundation-prototype-float {
-  @each $size in $breakpoint-classes {
-    @include breakpoint($size) {
-      // Float left and right
-      @each $float in (left, right) {
+  @if ($prototype-float-responsive-breakpoints) {
+    @each $size in $breakpoint-classes {
+      @include breakpoint($size) {
+        // Float left and right
+        @each $float in (left, right) {
+          @if $size != $-zf-zero-breakpoint {
+            .#{$size}-float-#{$float} {
+              float: $float !important;
+            }
+          }
+          @else {
+            .float-#{$float} {
+              float: $float !important;
+            }
+          }
+        }
+        
+        // Float center and clearfix
         @if $size != $-zf-zero-breakpoint {
-          .#{$size}-float-#{$float} {
-            float: $float !important;
+          .#{$size}-float-center {
+            @include float-center;
+          }
+          .#{$size}-clearfix {
+            @include clearfix;
           }
         }
         @else {
-          .float-#{$float} {
-            float: $float !important;
+          .float-center {
+            @include float-center;
+          }
+          .clearfix {
+            @include clearfix;
           }
         }
       }
-      
-      // Float center and clearfix
-      @if $size != $-zf-zero-breakpoint {
-        .#{$size}-float-center {
-          @include float-center;
-        }
-        .#{$size}-clearfix {
-          @include clearfix;
-        }
+    }
+  }
+  @else {
+    // Float left and right
+    @each $float in (left, right) {
+      .float-#{$float} {
+        float: $float !important;
       }
-      @else {
-        .float-center {
-          @include float-center;
-        }
-        .clearfix {
-          @include clearfix;
-        }
-      }
+    }
+    // Float center and clearfix
+    .float-center {
+      @include float-center;
+    }
+    .clearfix {
+      @include clearfix;
     }
   }
 }
