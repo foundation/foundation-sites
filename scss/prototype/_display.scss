@@ -11,7 +11,7 @@
 $prototype-display-responsive-breakpoints: $global-prototype-responsive-breakpoints !default;
 
 @mixin foundation-prototype-display {
-  @if ($prototype-float-responsive-breakpoints) {
+  @if ($prototype-display-responsive-breakpoints) {
     @each $size in $breakpoint-classes {
       @include breakpoint($size) {
         @each $display in (none, inline, inline-block, block, table, table-cell) {
