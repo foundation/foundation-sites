@@ -17,7 +17,7 @@ $prototype-text-alignment-responsive-breakpoints: $global-prototype-responsive-b
     }
   }
 
-  @if ($prototype-position-responsive-breakpoints) {
+  @if ($prototype-text-alignment-responsive-breakpoints) {
     // Loop through Responsive Breakpoints
     @each $size in $breakpoint-classes {
       @include breakpoint($size) {
