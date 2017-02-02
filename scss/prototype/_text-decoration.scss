@@ -6,19 +6,27 @@
 /// @group prototype-text-decoration
 ////
 
+/// Responsive breakpoints for position, defaulted to global-prototype-responsive-breakpoints.
+/// @type Number
+$prototype-text-decoration-responsive-breakpoints: $global-prototype-responsive-breakpoints !default;
+
 @mixin foundation-prototype-text-decoration {
-	@each $size in $breakpoint-classes {
-    @include breakpoint($size) {
-      @each $decoration in (overline, underline, line-through) {
-        @if $size != $-zf-zero-breakpoint {
-          .#{$size}-text-#{$decoration} {
-			      text-decoration: $decoration;
-			    }
-        }
-        @else {
-          .text-#{$decoration} {
-			      text-decoration: $decoration;
-			    }
+  @each $decoration in (overline, underline, line-through) {
+    .text-#{$decoration} {
+      text-decoration: $decoration;
+    }
+  }
+
+  @if ($prototype-text-decoration-responsive-breakpoints) {
+    // Loop through Responsive Breakpoints
+    @each $size in $breakpoint-classes {
+      @include breakpoint($size) {
+        @each $decoration in (overline, underline, line-through) {
+          @if $size != $-zf-zero-breakpoint {
+            .#{$size}-text-#{$decoration} {
+              text-decoration: $decoration;
+            }
+          }
         }
       }
     }
