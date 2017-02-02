@@ -1,0 +1,66 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group prototype-position
+////
+
+/// z-index for fixed positioning
+/// @type Number
+$position-zindex: 975 !default;
+
+@mixin position-fixed-top {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: $position-zindex;
+}
+
+@mixin position-fixed-bottom {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: $position-zindex;
+}
+
+@mixin foundation-prototype-position {
+	@each $size in $breakpoint-classes {
+    @include breakpoint($size) {
+      // Position: Static, Relative, Fixed, Absolute
+      @each $position in (static, relative, absolute, fixed) {
+        @if $size != $-zf-zero-breakpoint {
+          .#{$size}-position-#{$position} {
+			      position: $position;
+			    }
+        }
+        @else {
+          .position-#{$position} {
+			      position: $position;
+			    }
+        }
+      }
+      // Position: Fixed Top, Fixed Bottom
+      @if $size != $-zf-zero-breakpoint {
+        .#{$size}-position-fixed-top {
+          @include position-fixed-top;
+        }
+
+        .#{$size}-position-fixed-bottom {
+          @include position-fixed-bottom;
+        }
+      }
+      @else {
+        .position-fixed-top {
+          @include position-fixed-top;
+        }
+
+        .position-fixed-bottom {
+          @include position-fixed-bottom;
+        }
+      }
+    }
+  }
+}

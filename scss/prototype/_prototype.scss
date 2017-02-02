@@ -28,7 +28,7 @@
 @import 'font-styling';
 
 // Position Helpers
-// @import 'position';
+@import 'position';
 
 // Spacing Utilities
 // @import 'spacing';
@@ -56,4 +56,5 @@
   @include foundation-prototype-text-transformation;
   @include foundation-prototype-text-decoration;
   @include foundation-prototype-font-styling;
+  @include foundation-prototype-position;
 }
