@@ -10,8 +10,20 @@
 /// @type Boolean
 $prototype-list-style-type-responsive-breakpoints: $global-prototype-responsive-breakpoints !default;
 
+// Map containing all the `style-type-unordered` classes
+// @type Boolean
+$prototype-style-type-unordered-classes: (
+  none, disc, circle, square
+)!default;
+
+// Map containing all the `style-type-ordered` classes
+// @type Boolean
+$prototype-style-type-ordered-classes: (
+  none, decimal, lower-alpha, lower-latin, lower-roman, upper-alpha, upper-latin, upper-roman
+)!default;
+
 @mixin list-unordered {
-  @each $style-type-unordered in (none, disc, circle, square) {
+  @each $style-type-unordered in $prototype-style-type-unordered-classes {
     ul.list-#{$style-type-unordered} {
       margin-#{$global-left}: 0;
       list-style-type: $style-type-unordered;
@@ -22,7 +34,7 @@ $prototype-list-style-type-responsive-breakpoints: $global-prototype-responsive-
     // Loop through Responsive Breakpoints
     @each $size in $breakpoint-classes {
       @include breakpoint($size) {
-        @each $style-type-unordered in (none, disc, circle, square) {
+        @each $style-type-unordered in $prototype-style-type-unordered-classes {
           @if $size != $-zf-zero-breakpoint {
             ul.#{$size}-list-#{$style-type-unordered} {
               margin-#{$global-left}: 0;
@@ -36,7 +48,7 @@ $prototype-list-style-type-responsive-breakpoints: $global-prototype-responsive-
 }
 
 @mixin list-ordered {
-  @each $style-type-ordered in (none, decimal, lower-alpha, lower-latin, lower-roman, upper-alpha, upper-latin, upper-roman) {
+  @each $style-type-ordered in $prototype-style-type-ordered-classes {
     ol.list-#{$style-type-ordered} {
       margin-#{$global-left}: 0;
       list-style-type: $style-type-ordered;
@@ -47,7 +59,7 @@ $prototype-list-style-type-responsive-breakpoints: $global-prototype-responsive-
     // Loop through Responsive Breakpoints
     @each $size in $breakpoint-classes {
       @include breakpoint($size) {
-        @each $style-type-ordered in (none, decimal, lower-alpha, lower-latin, lower-roman, upper-alpha, upper-latin, upper-roman) {
+        @each $style-type-ordered in $prototype-style-type-ordered-classes {
           @if $size != $-zf-zero-breakpoint {
             ol.#{$size}-list-#{$style-type-ordered} {
               margin-#{$global-left}: 0;
