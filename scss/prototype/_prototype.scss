@@ -27,8 +27,14 @@
 // Font Styling
 @import 'font-styling';
 
+// List Style type
+@import 'list-style-type';
+
 // Position Helpers
 @import 'position';
+
+// Visibility classes
+// @import 'visibility';
 
 // Spacing Utilities
 // @import 'spacing';
@@ -56,5 +62,6 @@
   @include foundation-prototype-text-transformation;
   @include foundation-prototype-text-decoration;
   @include foundation-prototype-font-styling;
+  @include foundation-prototype-list-style-type;
   @include foundation-prototype-position;
 }

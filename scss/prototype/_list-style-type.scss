@@ -1,0 +1,66 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group prototype-list-style-type
+////
+
+/// Responsive breakpoints for list style-type, defaulted to global-prototype-responsive-breakpoints.
+/// @type Boolean
+$prototype-list-style-type-responsive-breakpoints: $global-prototype-responsive-breakpoints !default;
+
+@mixin list-unordered {
+  @each $style-type-unordered in (none, disc, circle, square) {
+    ul.list-#{$style-type-unordered} {
+      margin-#{$global-left}: 0;
+      list-style-type: $style-type-unordered;
+    }
+  }
+
+  @if ($prototype-list-style-type-responsive-breakpoints) {
+    // Loop through Responsive Breakpoints
+    @each $size in $breakpoint-classes {
+      @include breakpoint($size) {
+        @each $style-type-unordered in (none, disc, circle, square) {
+          @if $size != $-zf-zero-breakpoint {
+            ul.#{$size}-list-#{$style-type-unordered} {
+              margin-#{$global-left}: 0;
+              list-style-type: $style-type-unordered;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin list-ordered {
+  @each $style-type-ordered in (none, decimal, lower-alpha, lower-latin, lower-roman, upper-alpha, upper-latin, upper-roman) {
+    ol.list-#{$style-type-ordered} {
+      margin-#{$global-left}: 0;
+      list-style-type: $style-type-ordered;
+    }
+  }
+
+  @if ($prototype-list-style-type-responsive-breakpoints) {
+    // Loop through Responsive Breakpoints
+    @each $size in $breakpoint-classes {
+      @include breakpoint($size) {
+        @each $style-type-ordered in (none, decimal, lower-alpha, lower-latin, lower-roman, upper-alpha, upper-latin, upper-roman) {
+          @if $size != $-zf-zero-breakpoint {
+            ol.#{$size}-list-#{$style-type-ordered} {
+              margin-#{$global-left}: 0;
+              list-style-type: $style-type-ordered;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin foundation-prototype-list-style-type {
+  @include list-unordered;
+  @include list-ordered;
+}
