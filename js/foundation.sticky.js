@@ -58,11 +58,11 @@ class Sticky {
 
         $(element).on('opened.zf.offcanvas', function() {
           _this._translateFix();
-          $(window).on('scroll', _this.translateFix);
+          $(window).on('scroll', _this._translateFix);
         });
 
         $(element).on('afterClose.zf.offcanvas', function() {
-          $(window).off('scroll', _this.translateFix);
+          $(window).off('scroll', _this._translateFix);
           _this.$element.css('transform','translateY(0)');      
         });
       });
@@ -414,7 +414,7 @@ class Sticky {
     if (this.$anchor && this.$anchor.length) {
       this.$anchor.off('change.zf.sticky');
     }
-    
+
     $(window).off(this.scrollListener);
     $(window).off('scroll', this.translateFix);
 
