@@ -10,8 +10,14 @@
 /// @type Boolean
 $prototype-text-decoration-responsive-breakpoints: $global-prototype-responsive-breakpoints !default;
 
+// Map containing all the `text-decoration` classes
+// @type Boolean
+$prototype-text-decoration-classes: (
+  overline, underline, line-through
+)!default;
+
 @mixin foundation-prototype-text-decoration {
-  @each $decoration in (overline, underline, line-through) {
+  @each $decoration in $prototype-text-decoration-classes {
     .text-#{$decoration} {
       text-decoration: $decoration;
     }
@@ -21,7 +27,7 @@ $prototype-text-decoration-responsive-breakpoints: $global-prototype-responsive-
     // Loop through Responsive Breakpoints
     @each $size in $breakpoint-classes {
       @include breakpoint($size) {
-        @each $decoration in (overline, underline, line-through) {
+        @each $decoration in $prototype-text-decoration-classes {
           @if $size != $-zf-zero-breakpoint {
             .#{$size}-text-#{$decoration} {
               text-decoration: $decoration;
