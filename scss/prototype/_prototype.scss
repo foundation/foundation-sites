@@ -56,13 +56,13 @@
 
 @mixin foundation-prototype-classes {
   @include foundation-prototype-float;
-  @include foundation-prototype-display;
+  @include foundation-prototype-visibility;
   @include foundation-prototype-text-alignment;
   @include foundation-prototype-text-utilities;
   @include foundation-prototype-text-transformation;
   @include foundation-prototype-text-decoration;
   @include foundation-prototype-font-styling;
   @include foundation-prototype-list-style-type;
+  @include foundation-prototype-display;
   @include foundation-prototype-position;
-  @include foundation-prototype-visibility;
 }
