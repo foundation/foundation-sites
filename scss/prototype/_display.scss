@@ -10,26 +10,26 @@
 /// @type Boolean
 $prototype-display-responsive-breakpoints: $global-prototype-responsive-breakpoints !default;
 
-// Map containing all the `display` types
+// Map containing all the `display` classes
 // @type Boolean
-$prototype-display-types: (
+$prototype-display-classes: (
   none, inline, inline-block, block, table, table-cell
 )!default;
 
-// Map containing all the `display-flex` types
+// Map containing all the `display-flex` classes
 // @type Boolean
-$prototype-display-flex-types: (
+$prototype-display-flex-classes: (
   flex, inline-flex
 )!default;
 
 @mixin foundation-prototype-display {
-  @each $display in $prototype-display-types {
+  @each $display in $prototype-display-classes {
     .display-#{$display} {
       display: $display !important;
     }
   }
   @if $global-flexbox {
-    @each $display-flex in $prototype-display-flex-types {
+    @each $display-flex in $prototype-display-flex-classes {
       .display-#{$display-flex} {
         display: $display-flex !important;
       }
@@ -40,7 +40,7 @@ $prototype-display-flex-types: (
     // Loop through Responsive Breakpoints
     @each $size in $breakpoint-classes {
       @include breakpoint($size) {
-        @each $display in $prototype-display-types {
+        @each $display in $prototype-display-classes {
           @if $size != $-zf-zero-breakpoint {
             .#{$size}-display-#{$display} {
               display: $display !important;
@@ -48,7 +48,7 @@ $prototype-display-flex-types: (
           }
         }
         @if $global-flexbox {
-          @each $display-flex in $prototype-display-flex-types {
+          @each $display-flex in $prototype-display-flex-classes {
             @if $size != $-zf-zero-breakpoint {
               .#{$size}-display-#{$display-flex} {
                 display: $display-flex !important;
