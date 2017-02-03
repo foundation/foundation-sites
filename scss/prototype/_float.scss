@@ -10,6 +10,12 @@
 /// @type Boolean
 $prototype-float-responsive-breakpoints: $global-prototype-responsive-breakpoints !default;
 
+// Map containing all the `float` classes
+// @type Boolean
+$prototype-float-classes: (
+  left, right
+)!default;
+
 @mixin float-center {
   display: block;
   margin-right: auto;
@@ -18,7 +24,7 @@ $prototype-float-responsive-breakpoints: $global-prototype-responsive-breakpoint
 
 @mixin foundation-prototype-float {
   // Float left and right
-  @each $float in (left, right) {
+  @each $float in $prototype-float-classes {
     .float-#{$float} {
       float: $float !important;
     }
@@ -36,7 +42,7 @@ $prototype-float-responsive-breakpoints: $global-prototype-responsive-breakpoint
     @each $size in $breakpoint-classes {
       @include breakpoint($size) {
         // Float left and right
-        @each $float in (left, right) {
+        @each $float in $prototype-float-classes {
           @if $size != $-zf-zero-breakpoint {
             .#{$size}-float-#{$float} {
               float: $float !important;
