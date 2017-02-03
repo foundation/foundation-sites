@@ -34,7 +34,7 @@
 @import 'position';
 
 // Visibility classes
-// @import 'visibility';
+@import 'visibility';
 
 // Spacing Utilities
 // @import 'spacing';
@@ -64,4 +64,5 @@
   @include foundation-prototype-font-styling;
   @include foundation-prototype-list-style-type;
   @include foundation-prototype-position;
+  @include foundation-prototype-visibility;
 }
