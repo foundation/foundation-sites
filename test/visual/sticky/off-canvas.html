@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <title>Foundation for Sites Testing</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <link href="../assets/css/foundation.css" rel="stylesheet" />
+  
+  <style>
+
+    .container {
+      background-color: rgba(255,0,0,0.7);
+
+    }
+    
+    .fail {
+      color: red;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .foo {
+      height: 35rem;
+      color: white;
+    }
+
+    .megafoo {
+      height:50rem;
+      color: white;
+    }
+
+    .bar {
+      color: white;
+    }
+
+    .foo h1 {
+      float: right;
+    }
+
+    .foo:nth-child(odd), .bar:nth-child(odd), .megafoo:nth-child(odd) {
+      background-color: lightgreen;
+    }
+
+    .foo:nth-child(even), .bar:nth-child(even), .megafoo:nth-child(even) {
+      background-color: lightblue;
+    }
+
+    .test-container {
+      background-color: darkgrey;
+    }
+    
+    .sticky {
+      will-change: transform;
+      transform: translateZ(0);
+    }
+  </style>
+
+</head>
+<body>
+
+  <div class="off-canvas-wrapper">
+    <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+      <div class="off-canvas position-right" id="offCanvas" data-position="right" data-off-canvas>
+        <ul class="vertical menu">
+          <li><a href="#">Foundation</a></li>
+          <li><a href="#">Dot</a></li>
+          <li><a href="#">ZURB</a></li>
+          <li><a href="#">Com</a></li>
+          <li><a href="#">Slash</a></li>
+          <li><a href="#">Sites</a></li>
+        </ul>
+      </div>
+
+      <div class="off-canvas-content" data-off-canvas-content>
+
+        <div data-sticky-container>
+          <div class="title-bar sticky" data-sticky-off-canvas="#offCanvas" data-top-anchor="1" data-options="marginTop:0;" style="width:100%" data-sticky data-sticky-on="small">
+            <div class="title-bar-left">
+              <span class="title-bar-title">Foundation</span>
+            </div>
+            <div class="title-bar-right">
+              <button class="menu-icon" type="button" data-open="offCanvas"></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="row test-container">
+
+          <div class="small-12 medium-6 columns">
+            <div id="foo1" class="foo">
+              <h1>#foo1</h1>
+            </div>
+            <div id="foo2" class="foo">
+              <div class="row">
+                <div class="small-12 medium-8 columns">
+                  <!-- <div class="container" data-sticky-container>
+                    <div class="sticky" data-sticky data-sticky-on="small" data-margin-top="0" data-anchor="foo2" style="width:100%">
+                      <ul class="accordion" data-accordion>
+                        <li class="accordion-item is-active" data-accordion-item>
+                          <a href="#" class="accordion-title">Test Accordion #2</a>
+                          <div class="accordion-content" data-tab-content >
+                            <p>I should stick to the top and bottom of my anchor #foo2</p>
+                            <p>I am a descendant of #foo2</p>
+                          </div>
+                        </li>
+                        <li class="accordion-item" data-accordion-item>
+                          <a href="#" class="accordion-title">Expand &amp; Collapse Me</a>
+                          <div class="accordion-content" data-tab-content>
+                            <textarea></textarea>
+                            <textarea></textarea>
+                            <button class="button">I do nothing!</button>
+                          </div>
+                        </li>
+                        <li class="accordion-item" data-accordion-item>
+                          <a href="#" class="accordion-title">Expand &amp; Collapse Me</a>
+                          <div class="accordion-content" data-tab-content>
+                            Pick a date!
+                            <input type="date">
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>-->
+                </div> 
+                <div class="small-12 medium-4 columns">
+                  <h1>#foo2</h1>
+                </div>
+              </div>
+            </div>
+            <div id="foo3" class="foo">
+              <h1>#foo3</h1>
+            </div>
+
+            <div id="foo4" class="foo">
+              <h1>#foo4</h1>
+
+            </div>
+            <div id="foo5" class="foo">
+              <h1>#foo5</h1>
+            </div>
+            <div id="foo6" class="foo">
+              <h1>#foo6</h1>
+            </div>
+            <div id="foo7" class="foo">
+              <h1>#foo7</h1>
+            </div>
+            <div id="foo8" class="foo">
+              <h1>#foo8</h1>
+            </div>
+            <div id="foo9" class="foo">
+              <h1>#foo9</h1>
+            </div>
+            <div id="foo10" class="foo">
+              <h1>#foo10</h1>
+            </div>
+          </div>
+
+          <div class="small-12 medium-6 columns">
+
+            <!-- <div class="container" data-sticky-container>
+              <div class="sticky" data-sticky-on="small" data-sticky data-margin-top="0" data-anchor="foo1" style="width:100%">
+                <ul class="accordion" data-accordion>
+                  <li class="accordion-item is-active" data-accordion-item>
+                    <a href="#" class="accordion-title">Test Accordion #1</a>
+                    <div class="accordion-content" data-tab-content >
+                      <p>I should stick to the top and bottom of my anchor #foo1</p>
+                    </div>
+                  </li>
+                  <li class="accordion-item" data-accordion-item>
+                    <a href="#" class="accordion-title">Expand &amp; Collapse Me</a>
+                    <div class="accordion-content" data-tab-content>
+                      <textarea></textarea>
+                      <textarea></textarea>
+                      <button class="button">I do nothing!</button>
+                    </div>
+                  </li>
+                  <li class="accordion-item" data-accordion-item>
+                    <a href="#" class="accordion-title">Expand &amp; Collapse Me</a>
+                    <div class="accordion-content" data-tab-content>
+                      Pick a date!
+                      <input type="date">
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+          </div> -->
+
+        </div>
+
+
+
+      </div>
+
+    </div>
+  </div>
+  
+  
+
+  <script src="../assets/js/vendor.js"></script>
+  <script src="../assets/js/foundation.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
+</body>
+</html>
