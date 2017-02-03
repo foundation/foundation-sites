@@ -222,11 +222,20 @@ class OffCanvas {
 
     var _this = this;
 
+    /**
+     * Fires when the off-canvas closing transition has finished.
+     * @event OffCanvas#afterClose
+     */
+    this.$element.one(Foundation.transitionend(this.$element), function() {
+      
+      _this.$element.trigger('afterClose.zf.offcanvas');
+    });
+
     _this.$element.removeClass('is-open');
 
     this.$element.attr('aria-hidden', 'true')
       /**
-       * Fires when the off-canvas menu opens.
+       * Fires when the off-canvas menu begins closing.
        * @event OffCanvas#closed
        */
         .trigger('closed.zf.offcanvas');
@@ -246,10 +255,10 @@ class OffCanvas {
 
     this.$triggers.attr('aria-expanded', 'false');
 
-    if (this.options.trapFocus === true) {
-      this.$element.siblings('[data-off-canvas-content]').removeAttr('tabindex');
-      Foundation.Keyboard.releaseFocus(this.$element);
-    }
+    // if (this.options.trapFocus === true) {
+    //   this.$element.siblings('[data-off-canvas-content]').removeAttr('tabindex');
+    //   Foundation.Keyboard.releaseFocus(this.$element);
+    // }
   }
 
   /**
