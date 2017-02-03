@@ -39,9 +39,10 @@ $buttongroup-radius-on-each: true !default;
     flex-wrap: wrap;
     align-items: stretch;
     flex-grow: 1;
+
     &::before,
     &::after {
-      display: none;
+      display: none; // Disable clearfix
     }
   }
   @else {
@@ -90,13 +91,14 @@ $buttongroup-radius-on-each: true !default;
 
     &::before,
     &::after {
-      display: none;
+      display: none; // Disable clearfix
     }
   }
 
   #{$selector} {
     @if $global-flexbox {
       flex: 1 1 0px; // sass-lint:disable-line zero-unit
+      margin-right: 0;
     }
     @else {
       // One child
@@ -143,7 +145,6 @@ $buttongroup-radius-on-each: true !default;
       margin-bottom: 0;
     }
 
-
     @if not $buttongroup-radius-on-each {
       border-radius: 0;
 
@@ -158,7 +159,6 @@ $buttongroup-radius-on-each: true !default;
         border-bottom-#{$global-right}-radius: $global-radius;
       }
     }
-
   }
 }
 

@@ -105,3 +105,61 @@ To create a button with only an arrow, add the class `.arrow-only`. Note that th
   </a>
 </div>
 ```
+
+---
+
+## Flexbox Button Group
+
+The buttons in a button group can be positioned using the [Flexbox Utility](http://localhost:3000/flexbox.html#helper-classes) classes in Foundation. You can use `.align-center`, `.align-right`, `.align-spaced`, or `.align-justify`.
+
+```html_example
+<div class="button-group align-center">
+  <a class="button">One</a>
+  <a class="button">Two</a>
+  <a class="button">Three</a>
+</div>
+
+<div class="button-group align-right">
+  <a class="button">One</a>
+  <a class="button">Two</a>
+  <a class="button">Three</a>
+</div>
+
+<div class="button-group align-spaced">
+  <a class="button">One</a>
+  <a class="button">Two</a>
+  <a class="button">Three</a>
+</div>
+
+<div class="button-group align-justify">
+  <a class="button">One</a>
+  <a class="button">Two</a>
+  <a class="button">Three</a>
+</div>
+```
+
+<article class="docs-component" id="docs-flexbox-buttongroup">
+<div class="button-group align-center">
+  <a class="button">One</a>
+  <a class="button">Two</a>
+  <a class="button">Three</a>
+</div>
+
+<div class="button-group align-right">
+  <a class="button">One</a>
+  <a class="button">Two</a>
+  <a class="button">Three</a>
+</div>
+
+<div class="button-group align-spaced">
+  <a class="button">One</a>
+  <a class="button">Two</a>
+  <a class="button">Three</a>
+</div>
+
+<div class="button-group align-justify">
+  <a class="button">One</a>
+  <a class="button">Two</a>
+  <a class="button">Three</a>
+</div>
+</article>
