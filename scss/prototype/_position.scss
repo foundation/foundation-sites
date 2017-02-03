@@ -10,6 +10,12 @@
 /// @type Boolean
 $prototype-position-responsive-breakpoints: $global-prototype-responsive-breakpoints !default;
 
+// Map containing all the `position` classes
+// @type Boolean
+$prototype-position-classes: (
+  static, relative, absolute, fixed
+)!default;
+
 /// z-index for fixed positioning
 /// @type Number
 $position-zindex: 975 !default;
@@ -31,7 +37,7 @@ $position-zindex: 975 !default;
 }
 
 @mixin foundation-prototype-position {
-  @each $position in (static, relative, absolute, fixed) {
+  @each $position in $prototype-position-classes {
     .position-#{$position} {
       position: $position;
     }
@@ -49,7 +55,7 @@ $position-zindex: 975 !default;
     @each $size in $breakpoint-classes {
       @include breakpoint($size) {
         // Position: Static, Relative, Fixed, Absolute
-        @each $position in (static, relative, absolute, fixed) {
+        @each $position in $prototype-position-classes {
           @if $size != $-zf-zero-breakpoint {
             .#{$size}-position-#{$position} {
               position: $position;
