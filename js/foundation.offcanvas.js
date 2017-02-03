@@ -227,7 +227,6 @@ class OffCanvas {
      * @event OffCanvas#afterClose
      */
     this.$element.one(Foundation.transitionend(this.$element), function() {
-      
       _this.$element.trigger('afterClose.zf.offcanvas');
     });
 
@@ -255,10 +254,10 @@ class OffCanvas {
 
     this.$triggers.attr('aria-expanded', 'false');
 
-    // if (this.options.trapFocus === true) {
-    //   this.$element.siblings('[data-off-canvas-content]').removeAttr('tabindex');
-    //   Foundation.Keyboard.releaseFocus(this.$element);
-    // }
+    if (this.options.trapFocus === true) {
+      this.$element.siblings('[data-off-canvas-content]').removeAttr('tabindex');
+      Foundation.Keyboard.releaseFocus(this.$element);
+    }
   }
 
   /**
