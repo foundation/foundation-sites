@@ -10,8 +10,14 @@
 /// @type Boolean
 $prototype-text-transformation-responsive-breakpoints: $global-prototype-responsive-breakpoints !default;
 
+// Map containing all the `text-transformation` classes
+// @type Boolean
+$prototype-text-transformation-classes: (
+  lowercase, uppercase, capitalize
+)!default;
+
 @mixin foundation-prototype-text-transformation {
-  @each $transformation in (lowercase, uppercase, capitalize) {
+  @each $transformation in $prototype-text-transformation-classes {
     .text-#{$transformation} {
       text-transform: $transformation;
     }
@@ -21,7 +27,7 @@ $prototype-text-transformation-responsive-breakpoints: $global-prototype-respons
     // Loop through Responsive Breakpoints
   	@each $size in $breakpoint-classes {
       @include breakpoint($size) {
-        @each $transformation in (lowercase, uppercase, capitalize) {
+        @each $transformation in $prototype-text-transformation-classes {
           @if $size != $-zf-zero-breakpoint {
             .#{$size}-text-#{$transformation} {
   			      text-transform: $transformation;
