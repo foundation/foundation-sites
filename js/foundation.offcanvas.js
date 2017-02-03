@@ -147,7 +147,41 @@ class OffCanvas {
    * @private
    */
   _stopScrolling(event) {
-  	return false;
+    return false;
+  }
+
+  // Taken and adapted from http://stackoverflow.com/questions/16889447/prevent-full-page-scrolling-ios
+  // Only really works for y, not sure how to extend to x or if we need to.
+  _recordScrollable(event) {
+    let elem = this; // called from event handler context with this as elem
+
+     // If the element is scrollable (content overflows), then...
+    if (elem.scrollHeight !== elem.clientHeight) {
+      // If we're at the top, scroll down one pixel to allow scrolling up
+      if (elem.scrollTop === 0) {
+        elem.scrollTop = 1;
+      }
+      // If we're at the bottom, scroll up one pixel to allow scrolling down
+      if (elem.scrollTop === elem.scrollHeight - elem.clientHeight) {
+        elem.scrollTop = elem.scrollHeight - elem.clientHeight - 1;
+      }
+    }
+    elem.allowUp = elem.scrollTop > 0;
+    elem.allowDown = elem.scrollTop < (elem.scrollHeight - elem.clientHeight);
+    elem.lastY = event.originalEvent.pageY;
+  }
+
+  _stopScrollPropagation(event) {
+    let elem = this; // called from event handler context with this as elem
+    let up = event.pageY < elem.lastY;
+    let down = !up;
+    elem.lastY = event.pageY;
+
+    if((up && elem.allowUp) || (down && elem.allowDown)) {
+      event.stopPropagation();
+    } else {
+      event.preventDefault();
+    }
   }
 
   /**
@@ -184,6 +218,8 @@ class OffCanvas {
     // If `contentScroll` is set to false, add class and disable scrolling on touch devices.
     if (this.options.contentScroll === false) {
       $('body').addClass('is-off-canvas-open').on('touchmove', this._stopScrolling);
+      this.$element.on('touchstart', this._recordScrollable);
+      this.$element.on('touchmove', this._stopScrollPropagation);
     }
 
     if (this.options.contentOverlay === true) {
@@ -229,6 +265,8 @@ class OffCanvas {
     // If `contentScroll` is set to false, remove class and re-enable scrolling on touch devices.
     if (this.options.contentScroll === false) {
       $('body').removeClass('is-off-canvas-open').off('touchmove', this._stopScrolling);
+      this.$element.off('touchstart', this._recordScrollable);
+      this.$element.off('touchmove', this._stopScrollPropagation);
     }
 
     if (this.options.contentOverlay === true) {
