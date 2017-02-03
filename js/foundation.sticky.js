@@ -53,7 +53,6 @@ class Sticky {
 
     if (this.options.stickyOffCanvas) {
       var offCanvasElements = this.options.stickyOffCanvas.split(", ");
-      console.log(offCanvasElements);
 
       offCanvasElements.forEach(function(element) {
 
@@ -415,7 +414,9 @@ class Sticky {
     if (this.$anchor && this.$anchor.length) {
       this.$anchor.off('change.zf.sticky');
     }
+    
     $(window).off(this.scrollListener);
+    $(window).off('scroll', this.translateFix);
 
     if (this.wasWrapped) {
       this.$element.unwrap();
