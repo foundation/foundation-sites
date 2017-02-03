@@ -482,7 +482,14 @@ Sticky.defaults = {
    * @type {number}
    * @default -1
    */
-  checkEvery: -1
+  checkEvery: -1,
+  /**
+   * Array of selectors for the off-canvas elements you have on the page to make sticky components work with off-canvas components. Array is empty by default.
+   * @option
+   * @type {array}
+   * @default empty array
+   */
+  offCanvas: []
 };
 
 /**
