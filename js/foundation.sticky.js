@@ -46,7 +46,34 @@ class Sticky {
         $('#' + _this.options.anchor).attr({ 'data-mutate': id });
     }
 
+    // Needs refactoring
+    function translateFix() {
+      var topOffset = $(window).scrollTop();
+
+      _this.$element.css('transform','translateY(' + topOffset + 'px)');
+    }
+
+    if (this.options.stickyOffCanvas) {
+      var offCanvasElements = this.options.stickyOffCanvas.split(", ");
+      console.log(offCanvasElements);
+
+      offCanvasElements.forEach(function(element) {
+
+        $(element).on('opened.zf.offcanvas', function() {
+          _this._translateFix();
+
+          $(window).on('scroll', translateFix);
+        });
+
+        $(element).on('afterClose.zf.offcanvas', function() {
+          $(window).off('scroll', translateFix);
+          _this.$element.css('transform','translateY(0)');      
+        });
+      });
+    }
+
     this.scrollCount = this.options.checkEvery;
+
     this.isStuck = false;
     $(window).one('load.zf.sticky', function(){
       //We calculate the container height to have correct values for anchor points offset calculation.
@@ -371,6 +398,17 @@ class Sticky {
   }
 
   /**
+   * Translates Sticky element from top when Off Canvas is opened
+   * @function
+   */
+  _translateFix() {
+    var topOffset = $(window).scrollTop();
+    var _this = this;
+
+    _this.$element.css('transform','translateY(' + topOffset + 'px)');
+  }
+
+  /**
    * Destroys the current sticky element.
    * Resets the element to the top position first.
    * Removes event listeners, JS-added css properties and classes, and unwraps the $element if the JS added the $container.
@@ -489,7 +527,7 @@ Sticky.defaults = {
    * @type {array}
    * @default empty array
    */
-  offCanvas: []
+  stickyOffCanvas: false
 };
 
 /**
