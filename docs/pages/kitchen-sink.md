@@ -223,6 +223,12 @@ description: Everything but.
   <a href="#0">It's dangerous to go alone, take this.</a>
 </div>
 
+<div class="callout primary">
+  <h5>This is a primary callout.</h5>
+  <p>It has an easy to override visual style, and is appropriately subdued.</p>
+  <a href="#0">It's dangerous to go alone, take this.</a>
+</div>
+
 <div class="callout secondary">
   <h5>This is a secondary callout</h5>
   <p>It has an easy to override visual style, and is appropriately subdued.</p>
