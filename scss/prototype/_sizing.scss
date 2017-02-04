@@ -1,0 +1,49 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group prototype-sizing
+////
+
+// Map containing all the `sizing` classes
+// @type Boolean
+$prototype-sizing-classes: (
+  width, height
+)!default;
+
+// Map containing all the sizes.
+// @type Boolean
+$sizes: (
+  25: 25%,
+  50: 50%,
+  75: 75%,
+  100: 100%
+)!default;
+
+@mixin max-width-100 {
+  max-width: 100%;
+}
+
+@mixin max-height-100 {
+  max-height: 100%;
+}
+
+@mixin foundation-prototype-sizing {
+  // Element Sizing
+  @each $sizing in $prototype-sizing-classes {
+    @each $size, $percentage in $sizes {
+      .#{$sizing}-#{$size} { 
+        #{$sizing}: $percentage; 
+      }
+    }
+  }
+
+  // Max width & height
+  .max-width-100 {
+    @include max-width-100;
+  }
+  .max-height-100 {
+    @include max-height-100;
+  }
+}

@@ -39,11 +39,11 @@
 // Position Helpers
 @import 'position';
 
+// Sizing Utilities
+@import 'sizing';
+
 // Spacing Utilities
 // @import 'spacing';
-
-// Sizing Utilities
-// @import 'sizing';
 
 // Color Utilities
 // @import 'color';
@@ -66,4 +66,5 @@
   @include foundation-prototype-overflow;
   @include foundation-prototype-display;
   @include foundation-prototype-position;
+  @include foundation-prototype-sizing;
 }
