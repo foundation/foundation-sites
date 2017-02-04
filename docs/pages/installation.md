@@ -121,10 +121,10 @@ The folks at [cdnjs](https://cdnjs.com) host the compressed Foundation CSS and J
 
 ```html
 <!-- Compressed CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.0/css/foundation.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1-rc1/css/foundation.min.css">
 
 <!-- Compressed JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.0/js/foundation.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1-rc1/js/foundation.min.js"></script>
 ```
 
 ---
