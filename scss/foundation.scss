@@ -28,6 +28,8 @@
 // Components
 @import 'grid/grid';
 @import 'typography/typography';
+@import 'components/visibility';
+@import 'components/float';
 @import 'forms/forms';
 @import 'components/button';
 @import 'components/button-group';
@@ -111,6 +113,8 @@
   @include foundation-title-bar;
   @include foundation-tooltip;
   @include foundation-top-bar;
+  @include foundation-visibility-classes;
+  @include foundation-float-classes;
 
   @if $flex {
     @include foundation-flex-classes;

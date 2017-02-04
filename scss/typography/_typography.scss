@@ -12,11 +12,15 @@
 // Typography helper classes (classes only)
 @import 'helpers';
 
+// Text alignment classes
+@import 'alignment';
+
 // Print styles
 @import 'print';
 
 @mixin foundation-typography {
   @include foundation-typography-base;
   @include foundation-typography-helpers;
+  @include foundation-text-alignment;
   @include foundation-print-styles;
 }
