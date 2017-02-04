@@ -10,6 +10,10 @@
 /// @type Boolean
 $prototype-text-utilities-responsive-breakpoints: $global-prototype-responsive-breakpoints !default;
 
+/// Default Value for `text-overflow` variable
+/// @type String
+$text-overflow: ellipsis!default;
+
 @mixin text-hide {
   font: 0/0 a;
   color: transparent;
@@ -18,9 +22,11 @@ $prototype-text-utilities-responsive-breakpoints: $global-prototype-responsive-b
   border: 0;
 }
 
-@mixin text-truncate {
+@mixin text-truncate(
+  $overflow: $text-overflow
+) {
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-overflow: $overflow; 
   white-space: nowrap;
 }
 
