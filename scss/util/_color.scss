@@ -59,7 +59,7 @@
 /// @param {Color} $color2 - Second color to compare.
 ///
 /// @returns {Number} The contrast ratio of the compared colors.
-@function color-pick-contrast($base, $colors: ($white, $black), $tolerance: 0) {
+@function color-pick-contrast($base, $colors: ($white, $black), $tolerance: $global-color-pick-contrast-tolerance) {
   $contrast: color-contrast($base, nth($colors, 1));
   $best: nth($colors, 1);
 
