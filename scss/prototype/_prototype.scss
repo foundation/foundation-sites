@@ -30,6 +30,9 @@
 // List Style type
 @import 'list-style-type';
 
+// Overflow helper classes
+@import 'overflow';
+
 // Display classes
 @import 'display';
 
@@ -41,9 +44,6 @@
 
 // Sizing Utilities
 // @import 'sizing';
-
-// Overlay Utilities
-// @import 'overlay';
 
 // Color Utilities
 // @import 'color';
@@ -63,6 +63,7 @@
   @include foundation-prototype-text-decoration;
   @include foundation-prototype-font-styling;
   @include foundation-prototype-list-style-type;
+  @include foundation-prototype-overflow;
   @include foundation-prototype-display;
   @include foundation-prototype-position;
 }

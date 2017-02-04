@@ -1,0 +1,52 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group prototype-overflow
+////
+
+/// Responsive breakpoints for overflow, defaulted to global-prototype-responsive-breakpoints.
+/// @type Boolean
+$prototype-overflow-responsive-breakpoints: $global-prototype-responsive-breakpoints !default;
+
+// Map containing all the `overflow` classes
+// @type Boolean
+$prototype-overflow-classes: (
+  visible, hidden, scroll
+)!default;
+
+@mixin foundation-prototype-overflow {
+  @each $overflow in $prototype-overflow-classes {
+    .overflow-#{$overflow} {
+      overflow: $overflow;
+    }
+    .overflow-x-#{$overflow} {
+      overflow-x: $overflow;
+    }
+    .overflow-y-#{$overflow} {
+      overflow-y: $overflow;
+    }
+  }
+
+  @if ($prototype-overflow-responsive-breakpoints) {
+    // Loop through Responsive Breakpoints
+    @each $size in $breakpoint-classes {
+      @include breakpoint($size) {
+        @each $overflow in $prototype-overflow-classes {
+          @if $size != $-zf-zero-breakpoint {
+            .#{$size}-overflow-#{$overflow} {
+              overflow: $overflow;
+            }
+            .#{$size}-overflow-x-#{$overflow} {
+              overflow-x: $overflow;
+            }
+            .#{$size}-overflow-y-#{$overflow} {
+              overflow-y: $overflow;
+            }
+          }
+        }
+      }
+    }
+  }
+}
