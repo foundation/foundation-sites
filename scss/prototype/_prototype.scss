@@ -6,15 +6,6 @@
 /// @group prototype
 ////
 
-// Float classes
-// @import 'float'; // This prototype will be added(moved) here in v6.5
-
-// Visibility classes
-// @import 'visibility'; // This prototype will be added(moved) here in v6.5
-
-// Text alignment classes
-// @import 'text-alignment'; // This prototype will be added(moved) here in v6.5
-
 // Text utilities
 @import 'text-utilities';
 
@@ -48,19 +39,7 @@
 // Spacing Utilities
 @import 'spacing';
 
-// Color Utilities
-// @import 'color';
-
-// Flex classes
-// @import 'flex';
-
-// Flex helpers
-// @import 'flex-helpers';
-
 @mixin foundation-prototype-classes {
-  // @include foundation-prototype-float;
-  // @include foundation-prototype-visibility;
-  // @include foundation-prototype-text-alignment;
   @include foundation-prototype-text-utilities;
   @include foundation-prototype-text-transformation;
   @include foundation-prototype-text-decoration;
