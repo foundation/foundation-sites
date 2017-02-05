@@ -63,6 +63,18 @@ Note how `text-capitalize` just changes the first letter of every single word, l
 
 ---
 
+## Text Decoration
+
+Text Decoration can be used to underline, overline, or line-through a text. You can change the text decoration by adding `.text-underline`, `text-overline`, `text-line-through` to an element.
+
+```html
+<p class="text-underline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+<p class="text-overline">Perspiciatis tempore cumque, magni aspernatur, quidem</p>
+<p class="text-line-through">Lorem minus, placeat, iure voluptas aliquam tempora neque?</p>
+``` 
+
+---
+
 ## Font Styling
 
 You can use font styling to style a text. You can change the font styling by adding `font-normal`, `font-bold`, `font-italic` to an element.
@@ -75,14 +87,29 @@ You can use font styling to style a text. You can change the font styling by add
 
 ---
 
-## Text Decoration
+## List Styling
 
-Text Decoration can be used to underline, overline, or line-through a text. You can change the text decoration by adding `.text-underline`, `text-overline`, `text-line-through` to an element.
+
+#### Unordered Lists
 
 ```html
-<p class="text-underline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
-<p class="text-overline">Perspiciatis tempore cumque, magni aspernatur, quidem</p>
-<p class="text-line-through">Lorem minus, placeat, iure voluptas aliquam tempora neque?</p>
+<ul class="list-none">  <!-- <li>First</li> <li>Second</li> --></ul>
+<ul class="list-disc">  <!-- <li>First</li> <li>Second</li> --></ul>
+<ul class="list-circle"><!-- <li>First</li> <li>Second</li> --></ul>
+<ul class="list-square"><!-- <li>First</li> <li>Second</li> --></ul>
+``` 
+
+#### Ordered Lists
+
+```html
+<ol class="list-none">       <!-- <li>First</li> <li>Second</li> --></ol>
+<ol class="list-decimal">    <!-- <li>First</li> <li>Second</li> --></ol>
+<ol class="list-lower-alpha"><!-- <li>First</li> <li>Second</li> --></ol>
+<ol class="list-lower-latin"><!-- <li>First</li> <li>Second</li> --></ol>
+<ol class="list-lower-roman"><!-- <li>First</li> <li>Second</li> --></ol>
+<ol class="list-upper-alpha"><!-- <li>First</li> <li>Second</li> --></ol>
+<ol class="list-upper-latin"><!-- <li>First</li> <li>Second</li> --></ol>
+<ol class="list-upper-roman"><!-- <li>First</li> <li>Second</li> --></ol>
 ``` 
 
 ---
