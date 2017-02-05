@@ -1,0 +1,92 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group prototype-rounded
+////
+
+/// Responsive breakpoints for rounded utility, defaulted to global-prototype-responsive-breakpoints.
+/// @type Boolean
+$prototype-rounded-responsive-breakpoints: $global-prototype-responsive-breakpoints !default;
+
+// Default value for `prototype-border-radius`
+// @type Number
+$prototype-border-radius: rem-calc(4px) !default;
+
+@mixin border-radius {
+  border-radius: $prototype-border-radius;
+}
+
+@mixin border-top-radius {
+  border-top-right-radius: $prototype-border-radius;
+  border-top-left-radius: $prototype-border-radius;
+}
+
+@mixin border-right-radius {
+  border-bottom-right-radius: $prototype-border-radius;
+  border-top-right-radius: $prototype-border-radius;
+}
+
+@mixin border-bottom-radius {
+  border-bottom-right-radius: $prototype-border-radius;
+  border-bottom-left-radius: $prototype-border-radius;
+}
+
+@mixin border-left-radius {
+  border-bottom-left-radius: $prototype-border-radius;
+  border-top-left-radius: $prototype-border-radius;
+}
+
+@mixin rounded-circle {
+  border-radius: 50%;
+}
+
+@mixin foundation-prototype-rounded {
+  .rounded {
+    @include border-radius;
+  }
+  .rounded-top {
+    @include border-top-radius;
+  }
+  .rounded-right {
+    @include border-right-radius;
+  }
+  .rounded-bottom {
+    @include border-bottom-radius;
+  }
+  .rounded-left {
+    @include border-left-radius;
+  }
+  .rounded-circle {
+    @include rounded-circle
+  }
+
+  @if ($prototype-rounded-responsive-breakpoints) {
+    // Loop through Responsive Breakpoints
+    @each $size in $breakpoint-classes {
+      @include breakpoint($size) {
+        @if $size != $-zf-zero-breakpoint {
+          .#{$size}-rounded {
+            @include border-radius;
+          }
+          .#{$size}-rounded-top {
+            @include border-top-radius;
+          }
+          .#{$size}-rounded-right {
+            @include border-right-radius;
+          }
+          .#{$size}-rounded-bottom {
+            @include border-bottom-radius;
+          }
+          .#{$size}-rounded-left {
+            @include border-left-radius;
+          }
+          .#{$size}-rounded-circle {
+            @include rounded-circle
+          }
+        }
+      }
+    }
+  }
+}

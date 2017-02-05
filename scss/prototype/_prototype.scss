@@ -30,6 +30,9 @@
 // List Style type
 @import 'list-style-type';
 
+// Rounded Utility
+@import 'rounded';
+
 // Overflow helper classes
 @import 'overflow';
 
@@ -63,6 +66,7 @@
   @include foundation-prototype-text-decoration;
   @include foundation-prototype-font-styling;
   @include foundation-prototype-list-style-type;
+  @include foundation-prototype-rounded;
   @include foundation-prototype-overflow;
   @include foundation-prototype-display;
   @include foundation-prototype-position;
