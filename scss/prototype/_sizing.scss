@@ -7,13 +7,13 @@
 ////
 
 // Map containing all the `sizing` classes
-// @type Boolean
+// @type Map
 $prototype-sizing-classes: (
   width, height
 )!default;
 
 // Map containing all the sizes.
-// @type Boolean
+// @type Map
 $prototype-sizes: (
   25: 25%,
   50: 50%,
