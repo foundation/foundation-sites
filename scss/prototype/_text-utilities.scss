@@ -12,7 +12,7 @@ $prototype-text-utilities-breakpoints: $global-prototype-breakpoints !default;
 
 /// Default Value for `text-overflow` variable
 /// @type String
-$text-overflow: ellipsis!default;
+$prototype-text-overflow: ellipsis!default;
 
 @mixin text-hide {
   font: 0/0 a;
@@ -23,7 +23,7 @@ $text-overflow: ellipsis!default;
 }
 
 @mixin text-truncate(
-  $overflow: $text-overflow
+  $overflow: $prototype-text-overflow
 ) {
   overflow: hidden;
   text-overflow: $overflow; 
