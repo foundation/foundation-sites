@@ -65,21 +65,21 @@ Note how `text-capitalize` just changes the first letter of every single word, l
 
 ---
 
-### Text Decoration
+### Font Styling
 
-Text Decoration can be used to underline, overline, or line-through a text. You can change the text decoration by adding `.text-underline`, `text-overline`, `text-line-through` to an element.
+You can use font styling to style a text. You can change the font styling by adding `font-normal`, `font-bold`, `font-italic` to an element.
 
-```html
-<p class="text-underline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
-<p class="text-overline">Perspiciatis tempore cumque, magni aspernatur, quidem</p>
-<p class="text-line-through">Lorem minus, placeat, iure voluptas aliquam tempora neque?</p>
+```html_example
+<p class="font-normal">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+<p class="font-bold">Perspiciatis tempore cumque, magni aspernatur, quidem. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse</p>
+<p class="font-italic">Lorem minus, placeat, cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.iure voluptas aliquam tempora neque?</p>
 ``` 
 
 ---
 
-### Font Styling
+### Text Decoration
 
-You can use font styling to style a text. You can change the font styling by adding `font-normal`, `font-bold`, `font-italic` to an element.
+Text Decoration can be used to underline, overline, or line-through a text. You can change the text decoration by adding `.text-underline`, `text-overline`, `text-line-through` to an element.
 
 ```html
 <p class="text-underline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
