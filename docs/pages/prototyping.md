@@ -73,6 +73,8 @@ Text Decoration can be used to underline, overline, or line-through a text. You 
 <p class="text-line-through">Lorem minus, placeat, iure voluptas aliquam tempora neque?</p>
 ``` 
 
+Looking for example, Here is the <a href="http://codepen.io/IamManchanda/pen/OWEvmj">Codepen</a>
+
 ---
 
 ## Font Styling
