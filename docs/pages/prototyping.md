@@ -5,7 +5,7 @@ sass:
   - scss/prototype/*.scss
 ---
 
-It doesn't matter if you are a designer or a developer. Whether, you are a beginner or you have been around, you need some prototyping utilities for making hi-fi wireframes, landing pages or doing some urgent work that needs to be done quickly. Foundation provides you with a utility toolkit that you can use for your next prototyping project. Just fire it in with these simple reusable classes and you are done.
+It doesn't matter if you are a designer or a developer. Whether, you are a beginner or you have been around, you need some prototyping utilities for making hi-fi wireframes, landing pages or doing some urgent work that needs to be done quickly. Foundation provides you with a utility toolkit that you can use for your next prototyping project and quickly create fully-functional and responsive prototypes from simple sketches and mockups. Just fire in these simple reusable classes and you are done.
 
 At the same time, we also understand that prototypes are not always required for your projects and there are many cases specially in bigger projects where you have time to show up your skill with both design and beautiful code and thus prototype mode is **disabled by default!**  
 
@@ -52,6 +52,4 @@ or, if you looking for specific utility instead of all, these helper classes can
 // Spacing Utilities
 @include foundation-prototype-spacing;
 ```
-
----
 
