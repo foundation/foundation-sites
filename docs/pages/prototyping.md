@@ -5,23 +5,23 @@ sass:
   - scss/prototype/*.scss
 ---
 
-It doesn't matter if you are a designer or a developer. Whether, you are a beginner or you have been around, you need some prototyping utilities for making hi-fi wireframes, landing pages or doing some urgent work that needs to be done quickly. Foundation provides you with a utility toolkit that you can use for your next prototyping project and quickly create fully-functional and responsive prototypes from simple sketches and mockups. Just fire in these simple reusable classes and you are done.
+It doesn't matter if you are a designer or a developer. Whether, you are a beginner or you have been around, you will be needing some prototyping utilities for making hi-fi wireframes, landing pages or doing some urgent work that needs to be done quickly. Foundation provides you with a utility toolkit that you can use for your next prototyping project and quickly create a fully-functional and responsive prototypes from simple sketches and mockups. Just fire in these simple and reusable classes and you are done.
 
-At the same time, we also understand that prototypes are not always required for your projects and there are many cases specially in bigger projects where you have time to show up your skill with both design and beautiful code and thus, prototype mode is **disabled by default!**  
+At the same time, we also understand that prototypes are not always required for every single projects and there are many cases specially in bigger projects where you have the time to show up your skill with both design &amp; code and so, prototype mode is **disabled by default!**  
 
 ---
 
 ## Enabling Prototyping Mode
 
-If you're using the CSS version of Foundation, you can generate a <a href="https://foundation.zurb.com/sites/download">custom download of Foundation</a> with prototype mode enabled. If you're using the Sass version of Foundation, you can enable prototype mode two ways:
+If you're using the CSS version of Foundation, you can generate a <a href="https://foundation.zurb.com/sites/download">custom download of Foundation</a> with prototype mode enabled. If you're using the Sass version of Foundation, you can enable prototype mode in two ways:
 
-If you use the `foundation-everything()` mixin in your main Sass file, pass in `$prototype: true` to enable the prototype mode.
+If you use the `foundation-everything()` mixin in your main Sass file, just pass in `$prototype: true` to enable the prototype mode.
 
 ```scss
 @include foundation-everything($prototype: true);
 ```
 
-If you included each component manually (like our starter projects do), open up your settings file (basic template: scss/_settings.scss, ZURB template: src/assets/scss/_settings.scss) and simply add
+If you included each component manually (like our starter projects do), open up your main **scss** file and simply add
 
 ```scss
 @include foundation-prototype-classes;
@@ -47,7 +47,7 @@ or, if you looking for specific utility instead of all, these helper classes can
 
 ### Text Transformation
 
-Text transformation lets you controls the capitalization of text. You can change the text transformation by adding `.text-uppercase`, `text-lowercase`, `text-capitalize` to an element. 
+Text transformation lets you control the capitalization of text. You can change the text transformation by adding `.text-uppercase`, `text-lowercase`, `text-capitalize` to an element. 
 
 ```html
 <p class="text-uppercase"><!-- Text here --></p>
@@ -67,7 +67,7 @@ Note how `text-capitalize` just changes the first letter of every single word, l
 
 ### Text Decoration
 
-Text Decoration can be use to underline, overline, or line-through a text. You can change the text decoration by adding `.text-underline`, `text-overline`, `text-line-through` to an element.
+Text Decoration can be used to underline, overline, or line-through a text. You can change the text decoration by adding `.text-underline`, `text-overline`, `text-line-through` to an element.
 
 ```html
 <p class="text-underline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
@@ -91,7 +91,7 @@ You can use font styling to style a text. You can change the font styling by add
 
 ### Image Replacement
 
-You might want to include a logo on the page but you also would like to use a text within a header tag for the sake of accessibility and also for gaining benifits from SEO, but ideally on the webpage you would like to show your logo and not text. In that scenario you can utilize this `.text-hide` class to replace an element’s text content with an background image, often logo.
+You might want to include a logo on the page but you also would like to use a text within a header tag for the sake of accessibility and also for gaining benifits from SEO, and ideally on the webpage you would like to show your logo and not text. In that scenario you can utilize this `.text-hide` class to replace an element’s text content with a background image, often logo.
 
 ```html
 <h1 class="text-hide">Lorem ipsum dolor.</h1> 
@@ -101,7 +101,7 @@ You might want to include a logo on the page but you also would like to use a te
 
 ### Text Truncate
 
-The `text-truncate` displays an elipsis when the text must be in a single straight line that should overflows a box where the overflow is hidden. See how in example the content did not crossed the first line!
+The `text-truncate` displays an elipsis when the text must be in a single straight line that should overflows a box where overflow is hidden. See how in example the content did not crossed the first line!
 
 ```html_example
 <p class="text-truncate">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam voluptatem similique officiis recusandae esse cum in totam quisquam perspiciatis quod! Magnam culpa vitae, tempore eos explicabo cupiditate. Deserunt, quisquam, quos!</p>
@@ -111,7 +111,7 @@ The `text-truncate` displays an elipsis when the text must be in a single straig
 
 ### Text Nowrap
 
-If you would like to prevent the text wrapping into the next line you can utilize 'text-nowrap'. The sequences of whitespace will collapse into a single whitespace and text will wrap into the next line. Please note that the text will continue to be in same line untill the `<br/>` tag is used.
+If you would like to prevent the text wrapping into the next line you can utilize `text-nowrap`. The sequences of whitespace will collapse into a single whitespace and text will wrap into the next line. Please note that the text will continue to be in same line unless the `<br/>` tag is used.
 
 ```html
 <p class="text-nowrap">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam voluptatem similique officiis recusandae esse cum in totam quisquam perspiciatis quod! Magnam culpa vitae, tempore eos explicabo cupiditate. Deserunt, quisquam, quos!</p>
