@@ -6,9 +6,9 @@
 /// @group prototype-font-styling
 ////
 
-/// Responsive breakpoints for font styling, defaulted to global-prototype-responsive-breakpoints.
+/// Responsive breakpoints for font styling, defaulted to global-prototype-breakpoints.
 /// @type Boolean
-$prototype-font-styling-responsive-breakpoints: $global-prototype-responsive-breakpoints !default;
+$prototype-font-styling-breakpoints: $global-prototype-breakpoints !default;
 
 @mixin font-normal {
   font-weight: $global-weight-normal;
@@ -35,7 +35,7 @@ $prototype-font-styling-responsive-breakpoints: $global-prototype-responsive-bre
     @include font-italic;
   }
 
-  @if ($prototype-font-styling-responsive-breakpoints) {
+  @if ($prototype-font-styling-breakpoints) {
     // Loop through Responsive Breakpoints
     @each $size in $breakpoint-classes {
       @include breakpoint($size) {

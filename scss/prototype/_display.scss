@@ -6,9 +6,9 @@
 /// @group prototype-display
 ////
 
-/// Responsive breakpoints for display, defaulted to global-prototype-responsive-breakpoints.
+/// Responsive breakpoints for display, defaulted to global-prototype-breakpoints.
 /// @type Boolean
-$prototype-display-responsive-breakpoints: $global-prototype-responsive-breakpoints !default;
+$prototype-display-breakpoints: $global-prototype-breakpoints !default;
 
 // Map containing all the `display` classes
 // @type Boolean
@@ -36,7 +36,7 @@ $prototype-display-flex-classes: (
     }
   }
 
-  @if ($prototype-display-responsive-breakpoints) {
+  @if ($prototype-display-breakpoints) {
     // Loop through Responsive Breakpoints
     @each $size in $breakpoint-classes {
       @include breakpoint($size) {

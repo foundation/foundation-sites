@@ -6,9 +6,9 @@
 /// @group prototype-float
 ////
 
-/// Responsive breakpoints for floats, defaulted to global-prototype-responsive-breakpoints.
+/// Responsive breakpoints for floats, defaulted to global-prototype-breakpoints.
 /// @type Boolean
-$prototype-float-responsive-breakpoints: $global-prototype-responsive-breakpoints !default;
+$prototype-float-breakpoints: $global-prototype-breakpoints !default;
 
 // Map containing all the `float` classes
 // @type Boolean
@@ -37,7 +37,7 @@ $prototype-float-classes: (
     @include clearfix;
   }
 
-  @if ($prototype-float-responsive-breakpoints) {
+  @if ($prototype-float-breakpoints) {
     // Loop through Responsive Breakpoints
     @each $size in $breakpoint-classes {
       @include breakpoint($size) {

@@ -6,9 +6,9 @@
 /// @group prototype-text-utilities
 ////
 
-/// Responsive breakpoints for text utilities, defaulted to global-prototype-responsive-breakpoints.
+/// Responsive breakpoints for text utilities, defaulted to global-prototype-breakpoints.
 /// @type Boolean
-$prototype-text-utilities-responsive-breakpoints: $global-prototype-responsive-breakpoints !default;
+$prototype-text-utilities-breakpoints: $global-prototype-breakpoints !default;
 
 /// Default Value for `text-overflow` variable
 /// @type String
@@ -47,7 +47,7 @@ $text-overflow: ellipsis!default;
     @include text-nowrap;
   }
 
-  @if ($prototype-text-utilities-responsive-breakpoints) {
+  @if ($prototype-text-utilities-breakpoints) {
     // Loop through Responsive Breakpoints
     @each $size in $breakpoint-classes {
       @include breakpoint($size) {

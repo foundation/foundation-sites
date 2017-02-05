@@ -6,9 +6,9 @@
 /// @group prototype-text-alignment
 ////
 
-/// Responsive breakpoints for text alignment, defaulted to global-prototype-responsive-breakpoints.
+/// Responsive breakpoints for text alignment, defaulted to global-prototype-breakpoints.
 /// @type Boolean
-$prototype-text-alignment-responsive-breakpoints: $global-prototype-responsive-breakpoints !default;
+$prototype-text-alignment-breakpoints: $global-prototype-breakpoints !default;
 
 // Map containing all the `text-alignment` classes
 // @type Boolean
@@ -23,7 +23,7 @@ $prototype-text-alignment-classes: (
     }
   }
 
-  @if ($prototype-text-alignment-responsive-breakpoints) {
+  @if ($prototype-text-alignment-breakpoints) {
     // Loop through Responsive Breakpoints
     @each $size in $breakpoint-classes {
       @include breakpoint($size) {

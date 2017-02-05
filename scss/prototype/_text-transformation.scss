@@ -6,9 +6,9 @@
 /// @group prototype-text-transformation
 ////
 
-/// Responsive breakpoints for text transformation, defaulted to global-prototype-responsive-breakpoints.
+/// Responsive breakpoints for text transformation, defaulted to global-prototype-breakpoints.
 /// @type Boolean
-$prototype-text-transformation-responsive-breakpoints: $global-prototype-responsive-breakpoints !default;
+$prototype-text-transformation-breakpoints: $global-prototype-breakpoints !default;
 
 // Map containing all the `text-transformation` classes
 // @type Boolean
@@ -23,7 +23,7 @@ $prototype-text-transformation-classes: (
     }
   }
 
-  @if ($prototype-text-transformation-responsive-breakpoints) {
+  @if ($prototype-text-transformation-breakpoints) {
     // Loop through Responsive Breakpoints
   	@each $size in $breakpoint-classes {
       @include breakpoint($size) {

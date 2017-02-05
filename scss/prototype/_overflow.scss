@@ -6,9 +6,9 @@
 /// @group prototype-overflow
 ////
 
-/// Responsive breakpoints for overflow, defaulted to global-prototype-responsive-breakpoints.
+/// Responsive breakpoints for overflow, defaulted to global-prototype-breakpoints.
 /// @type Boolean
-$prototype-overflow-responsive-breakpoints: $global-prototype-responsive-breakpoints !default;
+$prototype-overflow-breakpoints: $global-prototype-breakpoints !default;
 
 // Map containing all the `overflow` classes
 // @type Boolean
@@ -29,7 +29,7 @@ $prototype-overflow-classes: (
     }
   }
 
-  @if ($prototype-overflow-responsive-breakpoints) {
+  @if ($prototype-overflow-breakpoints) {
     // Loop through Responsive Breakpoints
     @each $size in $breakpoint-classes {
       @include breakpoint($size) {

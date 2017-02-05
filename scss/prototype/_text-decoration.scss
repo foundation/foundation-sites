@@ -6,9 +6,9 @@
 /// @group prototype-text-decoration
 ////
 
-/// Responsive breakpoints for text decoration, defaulted to global-prototype-responsive-breakpoints.
+/// Responsive breakpoints for text decoration, defaulted to global-prototype-breakpoints.
 /// @type Boolean
-$prototype-text-decoration-responsive-breakpoints: $global-prototype-responsive-breakpoints !default;
+$prototype-text-decoration-breakpoints: $global-prototype-breakpoints !default;
 
 // Map containing all the `text-decoration` classes
 // @type Boolean
@@ -23,7 +23,7 @@ $prototype-text-decoration-classes: (
     }
   }
 
-  @if ($prototype-text-decoration-responsive-breakpoints) {
+  @if ($prototype-text-decoration-breakpoints) {
     // Loop through Responsive Breakpoints
     @each $size in $breakpoint-classes {
       @include breakpoint($size) {
