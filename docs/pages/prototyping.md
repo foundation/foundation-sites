@@ -89,6 +89,39 @@ You can use font styling to style a text. You can change the font styling by add
 
 ---
 
+## Rounded
+
+These `.rounded` classes helps to make an element round its corners. This will help you quickly style the borders of an element. Mostly used in images, buttons and more
+
+```html_example
+<button type="button" class="button rounded primary">Primary</button>
+<button type="button" class="button rounded secondary">Secondary</button>
+<button type="button" class="button rounded success">Success</button>
+<button type="button" class="button rounded alert">Alert</button>
+<button type="button" class="button rounded warning">Warning</button>
+```
+
+
+```html
+<img src="" class="rounded">
+<img src="" class="rounded-top">
+<img src="" class="rounded-right">
+<img src="" class="rounded-bottom">
+<img src="" class="rounded-left">
+<img src="" class="rounded-circle">
+``` 
+
+<div class="docs-code-live">
+	<img src="http://placehold.it/100x100" class="rounded m-r-10">
+	<img src="http://placehold.it/100x100" class="rounded-top m-r-10">
+	<img src="http://placehold.it/100x100" class="rounded-right m-r-10">
+	<img src="http://placehold.it/100x100" class="rounded-bottom m-r-10">
+	<img src="http://placehold.it/100x100" class="rounded-left m-r-10">
+	<img src="http://placehold.it/100x100" class="rounded-circle m-r-10">
+</div>
+
+---
+
 ## List Styling
 
 
