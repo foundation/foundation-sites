@@ -1,0 +1,75 @@
+// Map containing all the `spacing` classes
+// @type Map
+$prototype-spacing-classes: (
+  margin: m, 
+  padding: p
+)!default;
+
+// Default value for `prototype-spacer`
+// @type Number
+$prototype-spacer: rem-calc(10px) !default;
+
+// Map containing all the spacer values.
+// @type Map
+$prototype-spacers: (
+  0: (
+    x: 0,
+    y: 0
+  ),
+  10: (
+    x: ($prototype-spacer * 1),
+    y: ($prototype-spacer * 1)
+  ),
+  20: (
+    x: ($prototype-spacer * 2),
+    y: ($prototype-spacer * 2)
+  ),
+  30: (
+    x: ($prototype-spacer * 3),
+    y: ($prototype-spacer * 3)
+  ),
+  40: (
+    x: ($prototype-spacer * 4),
+    y: ($prototype-spacer * 4)
+  ),
+  50: (
+    x: ($prototype-spacer * 5),
+    y: ($prototype-spacer * 5)
+  )
+) !default;
+
+@mixin foundation-prototype-spacing {
+
+  @each $prop, $abbrev in $prototype-spacing-classes {
+    @each $size, $lengths in $prototype-spacers {
+      $length-x:   map-get($lengths, x);
+      $length-y:   map-get($lengths, y);
+
+      .#{$abbrev}-a-#{$size} { 
+        #{$prop}: $length-y $length-x !important; 
+      } // a = All sides
+      .#{$abbrev}-t-#{$size} { 
+        #{$prop}-top: $length-y !important; 
+      } // t = top
+      .#{$abbrev}-r-#{$size} { 
+        #{$prop}-right: $length-x !important; 
+      } // r = right
+      .#{$abbrev}-b-#{$size} { 
+        #{$prop}-bottom: $length-y !important; 
+      } // b = bottom
+      .#{$abbrev}-l-#{$size} { 
+        #{$prop}-left: $length-x !important; 
+      } // l = left
+
+      // Axes
+      .#{$abbrev}-x-#{$size} {
+        #{$prop}-right: $length-x !important;
+        #{$prop}-left: $length-x !important;
+      } // x = Horizontal Line
+      .#{$abbrev}-y-#{$size} {
+        #{$prop}-top: $length-y !important;
+        #{$prop}-bottom: $length-y !important;
+      } // y = vertical line
+    }
+  }
+}

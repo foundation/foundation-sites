@@ -43,7 +43,7 @@
 @import 'sizing';
 
 // Spacing Utilities
-// @import 'spacing';
+@import 'spacing';
 
 // Color Utilities
 // @import 'color';
@@ -67,4 +67,5 @@
   @include foundation-prototype-display;
   @include foundation-prototype-position;
   @include foundation-prototype-sizing;
+  @include foundation-prototype-spacing;
 }
