@@ -6,15 +6,15 @@
 /// @group prototype-float
 ////
 
-/// Responsive breakpoints for floats, defaulted to global-prototype-breakpoints.
+/// Responsive breakpoints for float classes
 /// @type Boolean
 $prototype-float-breakpoints: $global-prototype-breakpoints !default;
 
-// Map containing all the `float` classes
-// @type Boolean
+/// Map containing all the `float` classes
+/// @type Map
 $prototype-float-classes: (
   left, right
-)!default;
+) !default;
 
 @mixin float-center {
   display: block;

@@ -6,26 +6,26 @@
 /// @group prototype-position
 ////
 
-/// Responsive breakpoints for position, defaulted to global-prototype-breakpoints.
+/// Responsive breakpoints for position helpers
 /// @type Boolean
 $prototype-position-breakpoints: $global-prototype-breakpoints !default;
 
-// Map containing all the `position` classes
-// @type Boolean
+/// Map containing all the `position` classes
+/// @type Map
 $prototype-position-classes: (
   static, relative, absolute, fixed
-)!default;
+) !default;
 
 /// z-index for fixed positioning
 /// @type Number
-$position-zindex: 975 !default;
+$prototype-position-zindex: 975 !default;
 
 @mixin position-fixed-top {
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
-  z-index: $position-zindex;
+  z-index: $prototype-position-zindex;
 }
 
 @mixin position-fixed-bottom {
@@ -33,7 +33,7 @@ $position-zindex: 975 !default;
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: $position-zindex;
+  z-index: $prototype-position-zindex;
 }
 
 @mixin foundation-prototype-position {

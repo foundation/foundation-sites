@@ -6,15 +6,15 @@
 /// @group prototype-text-transformation
 ////
 
-/// Responsive breakpoints for text transformation, defaulted to global-prototype-breakpoints.
+/// Responsive breakpoints for text transformation classes
 /// @type Boolean
-$prototype-text-transformation-breakpoints: $global-prototype-breakpoints !default;
+$prototype-transformation-breakpoints: $global-prototype-breakpoints !default;
 
-// Map containing all the `text-transformation` classes
-// @type Boolean
+/// Map containing all the `text-transformation` classes
+/// @type Map
 $prototype-text-transformation-classes: (
   lowercase, uppercase, capitalize
-)!default;
+) !default;
 
 @mixin foundation-prototype-text-transformation {
   @each $transformation in $prototype-text-transformation-classes {
@@ -23,7 +23,7 @@ $prototype-text-transformation-classes: (
     }
   }
 
-  @if ($prototype-text-transformation-breakpoints) {
+  @if ($prototype-transformation-breakpoints) {
     // Loop through Responsive Breakpoints
   	@each $size in $breakpoint-classes {
       @include breakpoint($size) {

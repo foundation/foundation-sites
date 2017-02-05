@@ -6,15 +6,15 @@
 /// @group prototype-text-decoration
 ////
 
-/// Responsive breakpoints for text decoration, defaulted to global-prototype-breakpoints.
+/// Responsive breakpoints for text decoration classes
 /// @type Boolean
-$prototype-text-decoration-breakpoints: $global-prototype-breakpoints !default;
+$prototype-decoration-breakpoints: $global-prototype-breakpoints !default;
 
-// Map containing all the `text-decoration` classes
-// @type Boolean
+/// Map containing all the `text-decoration` classes
+/// @type Map
 $prototype-text-decoration-classes: (
   overline, underline, line-through
-)!default;
+) !default;
 
 @mixin foundation-prototype-text-decoration {
   @each $decoration in $prototype-text-decoration-classes {
@@ -23,7 +23,7 @@ $prototype-text-decoration-classes: (
     }
   }
 
-  @if ($prototype-text-decoration-breakpoints) {
+  @if ($prototype-decoration-breakpoints) {
     // Loop through Responsive Breakpoints
     @each $size in $breakpoint-classes {
       @include breakpoint($size) {

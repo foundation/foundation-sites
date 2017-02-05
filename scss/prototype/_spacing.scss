@@ -6,19 +6,19 @@
 /// @group prototype-spacing
 ////
 
-// Map containing all the `spacing` classes
-// @type Map
+/// Map containing all the `spacing` classes
+/// @type Map
 $prototype-spacing-classes: (
   margin: m, 
   padding: p
-)!default;
+) !default;
 
-// Default value for `prototype-spacer`
-// @type Number
+/// Default value for `prototype-spacer`
+/// @type Null
 $prototype-spacer: rem-calc(10px) !default;
 
-// Map containing all the spacer values.
-// @type Map
+/// Map containing all the spacer values.
+/// @type Map
 $prototype-spacers: (
   0: (
     x: 0,

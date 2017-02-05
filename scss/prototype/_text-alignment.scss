@@ -6,15 +6,15 @@
 /// @group prototype-text-alignment
 ////
 
-/// Responsive breakpoints for text alignment, defaulted to global-prototype-breakpoints.
+/// Responsive breakpoints for text alignment utilities
 /// @type Boolean
-$prototype-text-alignment-breakpoints: $global-prototype-breakpoints !default;
+$prototype-alignment-breakpoints: $global-prototype-breakpoints !default;
 
-// Map containing all the `text-alignment` classes
-// @type Boolean
+/// Map containing all the `text-alignment` classes
+/// @type Boolean
 $prototype-text-alignment-classes: (
   left, right, center, justify
-)!default;
+) !default;
 
 @mixin foundation-prototype-text-alignment {
   @each $align in $prototype-text-alignment-classes {
@@ -23,7 +23,7 @@ $prototype-text-alignment-classes: (
     }
   }
 
-  @if ($prototype-text-alignment-breakpoints) {
+  @if ($prototype-alignment-breakpoints) {
     // Loop through Responsive Breakpoints
     @each $size in $breakpoint-classes {
       @include breakpoint($size) {

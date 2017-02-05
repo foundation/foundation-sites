@@ -6,21 +6,21 @@
 /// @group prototype-list-style-type
 ////
 
-/// Responsive breakpoints for list style-type, defaulted to global-prototype-breakpoints.
+/// Responsive breakpoints for list styling types
 /// @type Boolean
-$prototype-list-style-type-breakpoints: $global-prototype-breakpoints !default;
+$prototype-list-breakpoints: $global-prototype-breakpoints !default;
 
-// Map containing all the `style-type-unordered` classes
-// @type Boolean
+/// Map containing all the `style-type-unordered` classes
+/// @type Map
 $prototype-style-type-unordered-classes: (
   none, disc, circle, square
-)!default;
+) !default;
 
 // Map containing all the `style-type-ordered` classes
-// @type Boolean
+// @type Map
 $prototype-style-type-ordered-classes: (
   none, decimal, lower-alpha, lower-latin, lower-roman, upper-alpha, upper-latin, upper-roman
-)!default;
+) !default;
 
 @mixin list-unordered {
   @each $style-type-unordered in $prototype-style-type-unordered-classes {
@@ -30,7 +30,7 @@ $prototype-style-type-ordered-classes: (
     }
   }
 
-  @if ($prototype-list-style-type-breakpoints) {
+  @if ($prototype-list-breakpoints) {
     // Loop through Responsive Breakpoints
     @each $size in $breakpoint-classes {
       @include breakpoint($size) {
@@ -55,7 +55,7 @@ $prototype-style-type-ordered-classes: (
     }
   }
 
-  @if ($prototype-list-style-type-breakpoints) {
+  @if ($prototype-list-breakpoints) {
     // Loop through Responsive Breakpoints
     @each $size in $breakpoint-classes {
       @include breakpoint($size) {

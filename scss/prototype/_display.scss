@@ -6,21 +6,21 @@
 /// @group prototype-display
 ////
 
-/// Responsive breakpoints for display, defaulted to global-prototype-breakpoints.
+/// Responsive breakpoints for display classes
 /// @type Boolean
 $prototype-display-breakpoints: $global-prototype-breakpoints !default;
 
-// Map containing all the `display` classes
-// @type Boolean
+/// Map containing all the `display` classes
+/// @type Map
 $prototype-display-classes: (
   none, inline, inline-block, block, table, table-cell
-)!default;
+) !default;
 
-// Map containing all the `display-flex` classes
-// @type Boolean
+/// Map containing all the `display-flex` classes
+/// @type Map
 $prototype-display-flex-classes: (
   flex, inline-flex
-)!default;
+) !default;
 
 @mixin foundation-prototype-display {
   @each $display in $prototype-display-classes {

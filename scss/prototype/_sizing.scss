@@ -6,20 +6,20 @@
 /// @group prototype-sizing
 ////
 
-// Map containing all the `sizing` classes
-// @type Map
+/// Map containing all the `sizing` classes
+/// @type Map
 $prototype-sizing-classes: (
   width, height
-)!default;
+) !default;
 
-// Map containing all the sizes.
-// @type Map
+/// Map containing all the sizes.
+/// @type Map
 $prototype-sizes: (
   25: 25%,
   50: 50%,
   75: 75%,
   100: 100%
-)!default;
+) !default;
 
 @mixin max-width-100 {
   max-width: 100%;

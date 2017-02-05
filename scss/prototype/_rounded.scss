@@ -6,12 +6,12 @@
 /// @group prototype-rounded
 ////
 
-/// Responsive breakpoints for rounded utility, defaulted to global-prototype-breakpoints.
+/// Responsive breakpoints for rounded utility.
 /// @type Boolean
 $prototype-rounded-breakpoints: $global-prototype-breakpoints !default;
 
-// Default value for `prototype-border-radius`
-// @type Number
+/// Default value for `prototype-border-radius`
+/// @type Number
 $prototype-border-radius: rem-calc(4px) !default;
 
 @mixin border-radius {

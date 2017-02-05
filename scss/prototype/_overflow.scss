@@ -6,15 +6,15 @@
 /// @group prototype-overflow
 ////
 
-/// Responsive breakpoints for overflow, defaulted to global-prototype-breakpoints.
+/// Responsive breakpoints for overflow helper classes
 /// @type Boolean
 $prototype-overflow-breakpoints: $global-prototype-breakpoints !default;
 
-// Map containing all the `overflow` classes
-// @type Boolean
+/// Map containing all the `overflow` classes
+/// @type Map
 $prototype-overflow-classes: (
   visible, hidden, scroll
-)!default;
+) !default;
 
 @mixin foundation-prototype-overflow {
   @each $overflow in $prototype-overflow-classes {
