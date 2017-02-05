@@ -43,9 +43,7 @@ or, if you looking for specific utility instead of all, these helper classes can
 
 ---
 
-## Vanilla Text Helpers
-
-### Text Transformation
+## Text Transformation
 
 Text transformation lets you control the capitalization of text. You can change the text transformation by adding `.text-uppercase`, `text-lowercase`, `text-capitalize` to an element. 
 
@@ -65,7 +63,7 @@ Note how `text-capitalize` just changes the first letter of every single word, l
 
 ---
 
-### Font Styling
+## Font Styling
 
 You can use font styling to style a text. You can change the font styling by adding `font-normal`, `font-bold`, `font-italic` to an element.
 
@@ -77,7 +75,7 @@ You can use font styling to style a text. You can change the font styling by add
 
 ---
 
-### Text Decoration
+## Text Decoration
 
 Text Decoration can be used to underline, overline, or line-through a text. You can change the text decoration by adding `.text-underline`, `text-overline`, `text-line-through` to an element.
 
@@ -89,7 +87,7 @@ Text Decoration can be used to underline, overline, or line-through a text. You 
 
 ---
 
-### Image Replacement
+## Image Replacement
 
 You might want to include a logo on the page but you also would like to use a text within a header tag for the sake of accessibility and also for gaining benifits from SEO, and ideally on the webpage you would like to show your logo and not text. In that scenario you can utilize this `.text-hide` class to replace an element’s text content with a background image, often logo.
 
@@ -99,7 +97,7 @@ You might want to include a logo on the page but you also would like to use a te
 
 ---
 
-### Text Truncate
+## Text Truncate
 
 The `text-truncate` displays an elipsis when the text must be in a single straight line that should overflows a box where overflow is hidden. See how in example the content did not crossed the first line!
 
@@ -109,7 +107,7 @@ The `text-truncate` displays an elipsis when the text must be in a single straig
 
 ---
 
-### Text Nowrap
+## Text Nowrap
 
 If you would like to prevent the text wrapping into the next line you can utilize `text-nowrap`. The sequences of whitespace will collapse into a single whitespace and text will wrap into the next line. Please note that the text will continue to be in same line unless the `<br/>` tag is used.
 
@@ -118,5 +116,3 @@ If you would like to prevent the text wrapping into the next line you can utiliz
 ``` 
 
 Looking for example, Here is the <a href="http://codepen.io/IamManchanda/pen/egKyov/">Codepen.</a>
-
-
