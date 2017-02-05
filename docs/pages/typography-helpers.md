@@ -13,6 +13,10 @@ tags:
 
 ## Text Alignment
 
+<div class="callout alert">
+  <p><strong>Depreciation Notice:</strong> From v6.5.x, we are moving text alignment classes to prototype specific mode and thus text alignment classes will be disabled by default. You can re-enable it though, with a simple `@include`.</p>
+</div>
+
 You can change the text alignment of an element by adding `.text-left`, `.text-right`, `.text-center` or `.text-justify` to an element.
 
 Adding a breakpoint to the front of a text alignment class will cause it to only be applied on that size screen or larger. For example, `.medium-text-center` will keep text left-aligned on the smallest screens, but switch to center-aligned on medium screens and larger.

@@ -15,6 +15,10 @@ tags:
   <p>There are no classes to detect touchscreen devices, as both desktop and mobile browsers inconsistently report touch support. Learn more here: <a href="http://www.stucox.com/blog/you-cant-detect-a-touchscreen/">You Can't Detect a Touchscreen</a></p>
 </div>
 
+<div class="callout alert">
+  <p><strong>Depreciation Notice:</strong> From v6.5.x, we are moving visibility classes to prototype specific mode and thus visibility classes will be disabled by default. You can re-enable it though, with a simple `@include`.</p>
+</div>
+
 ## Show by Screen Size
 
 In this example, we use the `.show` visibility classes to show certain strings of text based on the device on which users view a page. If their browser meets the class's conditions, the element will be shown. If not, it will be hidden.
