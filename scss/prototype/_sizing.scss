@@ -14,7 +14,7 @@ $prototype-sizing-classes: (
 
 // Map containing all the sizes.
 // @type Boolean
-$sizes: (
+$prototype-sizes: (
   25: 25%,
   50: 50%,
   75: 75%,
@@ -32,7 +32,7 @@ $sizes: (
 @mixin foundation-prototype-sizing {
   // Element Sizing
   @each $sizing in $prototype-sizing-classes {
-    @each $size, $percentage in $sizes {
+    @each $size, $percentage in $prototype-sizes {
       .#{$sizing}-#{$size} { 
         #{$sizing}: $percentage; 
       }
