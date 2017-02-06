@@ -6,6 +6,14 @@
 /// @group prototype-typescale
 ////
 
+/// Letter spacing for `.font-wide`
+/// @type Number
+$font-wide-letter-spacing: rem-calc(4px) !default;
+
+@mixin font-wide {
+  letter-spacing: $font-wide-letter-spacing;
+}
+
 @mixin foundation-prototype-typescale {
 	@each $size, $headers in $header-styles {
     @include breakpoint($size) {
@@ -16,5 +24,8 @@
         }
       }
     }
+  }
+  .font-wide{
+    @include font-wide;
   }
 }

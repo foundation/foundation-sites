@@ -41,6 +41,8 @@ or, if you looking for specific utility instead of all, these helper classes can
 @include foundation-prototype-spacing;
 ```
 
+Looking for more customization? Click here for the [Sass Reference](#sass-reference)
+
 ---
 
 ## Rounded Elements
@@ -84,6 +86,16 @@ You can use font styling to style a text. You can change the font styling by add
 <p class="font-bold">Perspiciatis tempore cumque, magni aspernatur, quidem. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse</p>
 <p class="font-italic">Lorem minus, placeat, cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.iure voluptas aliquam tempora neque?</p>
 ``` 
+
+---
+
+## Font Wide
+
+Wider the text of an element with `font-wide`.
+
+```html_example
+<p class="font-wide">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+```
 
 ---
 

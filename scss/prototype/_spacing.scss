@@ -14,7 +14,7 @@ $prototype-spacing-classes: (
 ) !default;
 
 /// Default value for `prototype-spacer`
-/// @type Null
+/// @type Number
 $prototype-spacer: rem-calc(10px) !default;
 
 /// Map containing all the spacer values.
