@@ -409,10 +409,20 @@ The `text-truncate` displays an elipsis when the text must be in a single straig
 
 ---
 
-## Text Nowrap
+## Text Wrapping
 
-If you would like to prevent the text wrapping into the next line you can utilize `text-nowrap`. The sequences of whitespace will collapse into a single whitespace and text will wrap into the next line. Please note that the text will continue to be in same line unless the `<br/>` tag is used.
+#### Text No-wrap
+
+If you would like to prevent the text wrapping into the next line you can utilize `text-nowrap`. Please note that the text will continue to be in same line unless the `<br/>` tag is used.
 
 ```html
 <p class="text-nowrap">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam voluptatem similique officiis recusandae esse cum in totam quisquam perspiciatis quod! Magnam culpa vitae, tempore eos explicabo cupiditate. Deserunt, quisquam, quos!</p>
+``` 
+
+#### Text Wrap
+
+Oppositely, if you are looking for text wrapping into the next line, you can use `text-wrap`.
+
+```html
+<p class="text-wrap">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam voluptatem similique officiis recusandae esse cum in totam quisquam perspiciatis quod! Magnam culpa vitae, tempore eos explicabo cupiditate. Deserunt, quisquam, quos!</p>
 ``` 

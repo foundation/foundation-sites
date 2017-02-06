@@ -34,6 +34,10 @@ $prototype-text-overflow: ellipsis !default;
   white-space: nowrap;
 }
 
+@mixin text-wrap {
+  word-wrap: break-word;
+}
+
 @mixin foundation-prototype-text-utilities {
   .text-hide {
     @include text-hide;
@@ -45,6 +49,10 @@ $prototype-text-overflow: ellipsis !default;
 
   .text-nowrap {
     @include text-nowrap;
+  }
+
+  .text-wrap {
+    @include text-wrap;
   }
 
   @if ($prototype-utilities-breakpoints) {
@@ -62,6 +70,10 @@ $prototype-text-overflow: ellipsis !default;
 
           .#{$size}-text-nowrap {
             @include text-nowrap;
+          }
+
+          .#{$size}-text-wrap {
+            @include text-wrap;
           }
         }
       }
