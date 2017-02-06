@@ -296,7 +296,7 @@ Generate spaces around the content with these easy to use padding classes. By de
 
 ---
 
-## Sizing Classes
+## Sizing
 
 These width and height classes helps you to easily make an element as wide or as tall as per your need relative to its parent. By default it supports `25%`, `50%`, `75%` and `100%`. You can add more sizes though, through Sass Variables.
 
