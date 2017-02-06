@@ -130,7 +130,7 @@ Stretch alignment is the default. To set parent alignment, use these classes:
 - `.align-stretch`
 
 <div class="primary callout">
-  <p>Note that with vertical alignment, we use the term "middle" for the midpoint, while with horizontal alignment, we use the term "center". Otherwise, we'd have two CSS classes with the same name, but different functionality.</p>
+  <p>Note that with vertical alignment, we use the term "middle" for the midpoint, while with horizontal alignment, we use the term "center". As we can't have two CSS classes with the same name, thus we are using different terms.</p>
 </div>
 
 ```html_example
