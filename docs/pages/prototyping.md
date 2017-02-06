@@ -87,7 +87,7 @@ You can use font styling to style a text. You can change the font styling by add
 
 ---
 
-## Rounded
+## Rounded Elements
 
 These `.rounded` classes helps to make an element round its corners. This will help you quickly style the borders of an element. Mostly used in images, buttons and more
 
