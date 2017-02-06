@@ -40,10 +40,6 @@ Get to know the pieces of Foundation.
     <strong>Accessibility</strong>
     <p>An overview of Foundation's accessibility hooks.</p>
   </a></div>
-  <div class="column"><a href="prototyping.html">
-    <strong>Prototyping Utilities</strong>
-    <p>Quickly create Prototypes from simple sketches and mockups.</p>
-  </a></div>
   <div class="column"><a href="rtl.html">
     <strong>Right-to-Left Support</strong>
     <p>Getting Foundation working with RTL languages.</p>
@@ -60,6 +56,14 @@ Get to know the pieces of Foundation.
     <strong>Media Queries</strong>
     <p>Working with Foundation's breakpoints.</p>
   </a></div>
+  <div class="column"><a href="prototyping.html">
+    <strong>Prototyping Utilities</strong>
+    <p>Quickly create Prototypes from simple sketches and mockups.</p>
+  </a></div>
+  <div class="column"><a href="javascript-utilities.html">
+    <strong>JavaScript Utilities</strong>
+    <p>Use our easy to use and super helpful Utility Libraries</p>
+  </a></div>
   <div class="column"><a href="flexbox.html">
     <strong>Flexbox Mode</strong>
     <p>Supercharge your CSS with flexbox.</p>
@@ -71,6 +75,10 @@ Get to know the pieces of Foundation.
   <div class="column"><a href="compatibility.html">
     <strong>Compatibility</strong>
     <p>What browsers does Foundation work with?</p>
+  </a></div>
+  <div class="column"><a href="starter-projects.html">
+    <strong>Starter Projects</strong>
+    <p>Templates that give you a solid foundation to start with.</p>
   </a></div>
 </div>
 
