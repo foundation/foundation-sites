@@ -87,6 +87,21 @@ You can use font styling to style a text. You can change the font styling by add
 
 ---
 
+## Font Typescale
+
+Adjust font-size by overriding an element’s default size.
+
+```html_example
+<p class="font-h1">Lorem Ipsum Dolor</p>
+<p class="font-h2">Lorem Ipsum Dolor</p>
+<p class="font-h3">Lorem Ipsum Dolor</p>
+<p class="font-h4">Lorem Ipsum Dolor</p>
+<p class="font-h5">Lorem Ipsum Dolor</p>
+<p class="font-h6">Lorem Ipsum Dolor</p>
+```
+
+---
+
 ## List Styling
 
 <div class="primary callout">
