@@ -43,50 +43,6 @@ or, if you looking for specific utility instead of all, these helper classes can
 
 ---
 
-## Text Transformation
-
-Text transformation lets you control the capitalization of text. You can change the text transformation by adding `.text-uppercase`, `text-lowercase`, `text-capitalize` to an element. 
-
-```html
-<p class="text-uppercase"><!-- Text here --></p>
-<p class="text-lowercase"><!-- Text here --></p>
-<p class="text-capitalize"><!-- Text here --></p>
-``` 
-
-<p class="text-uppercase"><strong>This is a upper-cased text.</strong> Set in the year 0 F.E. ("Foundation Era"), The Psychohistorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire. Though the empire appears stable and powerful, it is slowly decaying in ways that parallel the decline of the Western Roman Empire.</p>
-
-<p class="text-lowercase"><strong>This is a lower-cased text.</strong> Set in the year 0 F.E. ("Foundation Era"), The Psychohistorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire. Though the empire appears stable and powerful, it is slowly decaying in ways that parallel the decline of the Western Roman Empire.</p>
-
-<p class="text-capitalize"><strong>This is a caPitAlized teXt.</strong> Set in the yEar 0 F.E. ("Foundation Era"), The PsychohisTorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire. Though the empire appears stable and powerful, it is slowly decaying in ways that parallel the decline of the Western Roman Empire.</p>
-
-Note how `text-capitalize` just changes the first letter of every single word, leaving the case of other letters unaffected.
-
----
-
-## Text Decoration
-
-Text Decoration can be used to underline, overline, or line-through a text. You can change the text decoration by adding `.text-underline`, `text-overline`, `text-line-through` to an element.
-
-```html
-<p class="text-underline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
-<p class="text-overline">Perspiciatis tempore cumque, magni aspernatur, quidem</p>
-<p class="text-line-through">Lorem minus, placeat, iure voluptas aliquam tempora neque?</p>
-``` 
-
----
-
-## Font Styling
-
-You can use font styling to style a text. You can change the font styling by adding `font-normal`, `font-bold`, `font-italic` to an element.
-
-```html_example
-<p class="font-normal">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-<p class="font-bold">Perspiciatis tempore cumque, magni aspernatur, quidem. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse</p>
-<p class="font-italic">Lorem minus, placeat, cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.iure voluptas aliquam tempora neque?</p>
-``` 
-
----
-
 ## Rounded Elements
 
 These `.rounded` classes helps to make an element round its corners. This will help you quickly style the borders of an element. Mostly used in images, buttons and more
@@ -116,6 +72,18 @@ These `.rounded` classes helps to make an element round its corners. This will h
 	<img src="http://placehold.it/100x100" class="rounded-left m-r-10">
 	<img src="http://placehold.it/100x100" class="rounded-circle m-r-10">
 </div>
+
+---
+
+## Font Styling
+
+You can use font styling to style a text. You can change the font styling by adding `font-normal`, `font-bold`, `font-italic` to an element.
+
+```html_example
+<p class="font-normal">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+<p class="font-bold">Perspiciatis tempore cumque, magni aspernatur, quidem. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse</p>
+<p class="font-italic">Lorem minus, placeat, cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.iure voluptas aliquam tempora neque?</p>
+``` 
 
 ---
 
@@ -149,12 +117,80 @@ These `.rounded` classes helps to make an element round its corners. This will h
 
 ---
 
+## Display Classes
+
+Display classes helps to display the elements in specific positions inside any other HTML elements.
+
+```html
+<div class="display-none"></div>
+<div class="display-inline"></div>
+<div class="display-inline-block"></div>
+<div class="display-block"></div>
+<div class="display-table"></div>
+<div class="display-table-cell"></div>
+<div class="display-flex"></div>
+<div class="display-inline-flex"></div>
+``` 
+
+<div class="callout warning">
+	Please note that `display-flex` and `display-inline-flex` is only supported if [flexbox mode](flexbox.html) is enabled.
+</div>
+
+---
+
+## Positioning
+
+Positioning is very helpful and basic need for complex layouts. 
+
+```html
+<div class="position-static"></div>
+<div class="position-relative"></div>
+<div class="position-absolute"></div>
+<div class="position-fixed"></div>
+<div class="position-fixed-top"></div>
+<div class="position-fixed-bottom"></div>
+``` 
+
+---
+
 ## Image Replacement
 
 You might want to include a logo on the page but you also would like to use a text within a header tag for the sake of accessibility and also for gaining benifits from SEO, and ideally on the webpage you would like to show your logo and not text. In that scenario you can utilize this `.text-hide` class to replace an element’s text content with a background image, often logo.
 
 ```html
 <h1 class="text-hide">Lorem ipsum dolor.</h1> 
+``` 
+
+---
+
+## Text Transformation
+
+Text transformation lets you control the capitalization of text. You can change the text transformation by adding `.text-uppercase`, `text-lowercase`, `text-capitalize` to an element. 
+
+```html
+<p class="text-uppercase"><!-- Text here --></p>
+<p class="text-lowercase"><!-- Text here --></p>
+<p class="text-capitalize"><!-- Text here --></p>
+``` 
+
+<p class="text-uppercase"><strong>This is a upper-cased text.</strong> Set in the year 0 F.E. ("Foundation Era"), The Psychohistorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire. Though the empire appears stable and powerful, it is slowly decaying in ways that parallel the decline of the Western Roman Empire.</p>
+
+<p class="text-lowercase"><strong>This is a lower-cased text.</strong> Set in the year 0 F.E. ("Foundation Era"), The Psychohistorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire. Though the empire appears stable and powerful, it is slowly decaying in ways that parallel the decline of the Western Roman Empire.</p>
+
+<p class="text-capitalize"><strong>This is a caPitAlized teXt.</strong> Set in the yEar 0 F.E. ("Foundation Era"), The PsychohisTorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire. Though the empire appears stable and powerful, it is slowly decaying in ways that parallel the decline of the Western Roman Empire.</p>
+
+Note how `text-capitalize` just changes the first letter of every single word, leaving the case of other letters unaffected.
+
+---
+
+## Text Decoration
+
+Text Decoration can be used to underline, overline, or line-through a text. You can change the text decoration by adding `.text-underline`, `text-overline`, `text-line-through` to an element.
+
+```html
+<p class="text-underline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+<p class="text-overline">Perspiciatis tempore cumque, magni aspernatur, quidem</p>
+<p class="text-line-through">Lorem minus, placeat, iure voluptas aliquam tempora neque?</p>
 ``` 
 
 ---
