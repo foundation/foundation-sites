@@ -151,6 +151,34 @@ Positioning is very helpful and basic need for complex layouts.
 <div class="position-fixed-bottom"></div>
 ``` 
 
+## Overflow
+
+These overflow classes helps you to clip content, render scrollbars or simply just display the content when it overflows its block level container. 
+
+#### All sides 
+
+```html
+<div class="overflow-visible"></div>
+<div class="overflow-hidden"></div>
+<div class="overflow-scroll"></div>
+``` 
+
+#### Horizontal Axis
+
+```html
+<div class="overflow-x-visible"></div>
+<div class="overflow-x-hidden"></div>
+<div class="overflow-x-scroll"></div>
+``` 
+
+#### Vertical Axis
+
+```html
+<div class="overflow-y-visible"></div>
+<div class="overflow-y-hidden"></div>
+<div class="overflow-y-scroll"></div>
+``` 
+
 ---
 
 ## Image Replacement
