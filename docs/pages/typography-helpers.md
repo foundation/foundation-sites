@@ -65,7 +65,9 @@ A slightly-larger-than-normal block of text, useful for decks, blurbs, or other 
 
 ## Un-bulleted List
 
-In Foundation, the `<ul>` is a bulleted list by default, but you can add the class `.no-bullet` to remove the bullets.
+In Foundation, the `<ul>` is a bulleted list and `<ol>` is a numbered list by default, but you can add the class `.no-bullet` to remove the bullets and numbers respectively.
+
+#### Unordered List
 
 ```html_example
 <ul class="no-bullet">
@@ -82,6 +84,25 @@ In Foundation, the `<ul>` is a bulleted list by default, but you can add the cla
   <li>List item</li>
   <li>List item</li>
 </ul>
+```
+
+#### Ordered List
+
+```html_example
+<ol class="no-bullet">
+  <li>List item with a much longer description or more content.</li>
+  <li>List item</li>
+  <li>List item
+    <ol>
+      <li>Nested list item</li>
+      <li>Nested list item</li>
+      <li>Nested list item</li>
+    </ol>
+  </li>
+  <li>List item</li>
+  <li>List item</li>
+  <li>List item</li>
+</ol>
 ```
 
 ---

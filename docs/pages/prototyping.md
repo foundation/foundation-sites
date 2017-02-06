@@ -121,10 +121,14 @@ These `.rounded` classes helps to make an element round its corners. This will h
 
 ## List Styling
 
+<div class="primary callout">
+	Please note that [Unbulleted lists](typography-helpers.html#un-bulleted-list), `.no-bullets` is enabled by default for both ordered and unordered lists.
+</div>
+
 #### Unordered Lists
 
 ```html
-<ul class="list-none">  <!-- <li>First</li> <li>Second</li> --></ul>
+<ul class="no-bullets"> <!-- <li>First</li> <li>Second</li> --></ul>
 <ul class="list-disc">  <!-- <li>First</li> <li>Second</li> --></ul>
 <ul class="list-circle"><!-- <li>First</li> <li>Second</li> --></ul>
 <ul class="list-square"><!-- <li>First</li> <li>Second</li> --></ul>
@@ -133,7 +137,7 @@ These `.rounded` classes helps to make an element round its corners. This will h
 #### Ordered Lists
 
 ```html
-<ol class="list-none">       <!-- <li>First</li> <li>Second</li> --></ol>
+<ol class="no-bullets">      <!-- <li>First</li> <li>Second</li> --></ol>
 <ol class="list-decimal">    <!-- <li>First</li> <li>Second</li> --></ol>
 <ol class="list-lower-alpha"><!-- <li>First</li> <li>Second</li> --></ol>
 <ol class="list-lower-latin"><!-- <li>First</li> <li>Second</li> --></ol>

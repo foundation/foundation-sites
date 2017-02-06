@@ -13,13 +13,13 @@ $prototype-list-breakpoints: $global-prototype-breakpoints !default;
 /// Map containing all the `style-type-unordered` classes
 /// @type Map
 $prototype-style-type-unordered-classes: (
-  none, disc, circle, square
+  disc, circle, square
 ) !default;
 
 // Map containing all the `style-type-ordered` classes
 // @type Map
 $prototype-style-type-ordered-classes: (
-  none, decimal, lower-alpha, lower-latin, lower-roman, upper-alpha, upper-latin, upper-roman
+  decimal, lower-alpha, lower-latin, lower-roman, upper-alpha, upper-latin, upper-roman
 ) !default;
 
 @mixin list-unordered {
