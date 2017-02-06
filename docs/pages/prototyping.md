@@ -117,9 +117,161 @@ You can use font styling to style a text. You can change the font styling by add
 
 ---
 
+## Margin Helpers
+
+Generate spaces around the element with these easy to use margin classes. By default it supports `10`, `20`, `30`, `40` and `50`. You can add more values though, through Sass Variables.
+
+#### Margin (All Sides)
+
+```html
+<div class="m-a-10"></div>
+<div class="m-a-20"></div>
+<div class="m-a-30"></div>
+<div class="m-a-40"></div>
+<div class="m-a-50"></div>
+``` 
+
+#### Margin Top
+
+```html
+<div class="m-t-10"></div>
+<div class="m-t-20"></div>
+<div class="m-t-30"></div>
+<div class="m-t-40"></div>
+<div class="m-t-50"></div>
+``` 
+
+#### Margin Bottom
+
+```html
+<div class="m-b-10"></div>
+<div class="m-b-20"></div>
+<div class="m-b-30"></div>
+<div class="m-b-40"></div>
+<div class="m-b-50"></div>
+``` 
+
+#### Margin Left
+
+```html
+<div class="m-l-10"></div>
+<div class="m-l-20"></div>
+<div class="m-l-30"></div>
+<div class="m-l-40"></div>
+<div class="m-l-50"></div>
+``` 
+
+#### Margin Right
+
+```html
+<div class="m-r-10"></div>
+<div class="m-r-20"></div>
+<div class="m-r-30"></div>
+<div class="m-r-40"></div>
+<div class="m-r-50"></div>
+``` 
+
+#### Margin Left Right (Horizontal Axis)
+
+```html
+<div class="m-x-10"></div>
+<div class="m-x-20"></div>
+<div class="m-x-30"></div>
+<div class="m-x-40"></div>
+<div class="m-x-50"></div>
+``` 
+
+#### Margin Top Bottom (Vertical Axis)
+
+```html
+<div class="m-y-10"></div>
+<div class="m-y-20"></div>
+<div class="m-y-30"></div>
+<div class="m-y-40"></div>
+<div class="m-y-50"></div>
+``` 
+
+---
+
+## Padding Helpers
+
+Generate spaces around the content with these easy to use padding classes. By default it supports `10`, `20`, `30`, `40` and `50`. You can add more values though, through Sass Variables.
+
+#### Padding (All Sides)
+
+```html
+<div class="p-a-10"></div>
+<div class="p-a-20"></div>
+<div class="p-a-30"></div>
+<div class="p-a-40"></div>
+<div class="p-a-50"></div>
+``` 
+
+#### Padding Top
+
+```html
+<div class="p-t-10"></div>
+<div class="p-t-20"></div>
+<div class="p-t-30"></div>
+<div class="p-t-40"></div>
+<div class="p-t-50"></div>
+``` 
+
+#### Padding Bottom
+
+```html
+<div class="p-b-10"></div>
+<div class="p-b-20"></div>
+<div class="p-b-30"></div>
+<div class="p-b-40"></div>
+<div class="p-b-50"></div>
+``` 
+
+#### Padding Left
+
+```html
+<div class="p-l-10"></div>
+<div class="p-l-20"></div>
+<div class="p-l-30"></div>
+<div class="p-l-40"></div>
+<div class="p-l-50"></div>
+``` 
+
+#### Padding Right
+
+```html
+<div class="p-r-10"></div>
+<div class="p-r-20"></div>
+<div class="p-r-30"></div>
+<div class="p-r-40"></div>
+<div class="p-r-50"></div>
+``` 
+
+#### Padding Left Right (Horizontal Axis)
+
+```html
+<div class="p-x-10"></div>
+<div class="p-x-20"></div>
+<div class="p-x-30"></div>
+<div class="p-x-40"></div>
+<div class="p-x-50"></div>
+``` 
+
+#### Padding Top Bottom (Vertical Axis)
+
+```html
+<div class="p-y-10"></div>
+<div class="p-y-20"></div>
+<div class="p-y-30"></div>
+<div class="p-y-40"></div>
+<div class="p-y-50"></div>
+``` 
+
+---
+
 ## Sizing Classes
 
-These width and height classes helps you to easily make an element as wide or as tall as per your need relative to its parent. By default it supports `25%`, `50%`, `75%` and `100%`. You can add more sizes through Sass Variables.
+These width and height classes helps you to easily make an element as wide or as tall as per your need relative to its parent. By default it supports `25%`, `50%`, `75%` and `100%`. You can add more sizes though, through Sass Variables.
 
 #### Width
 
