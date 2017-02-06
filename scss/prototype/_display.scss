@@ -16,23 +16,10 @@ $prototype-display-classes: (
   none, inline, inline-block, block, table, table-cell
 ) !default;
 
-/// Map containing all the `display-flex` classes
-/// @type Map
-$prototype-display-flex-classes: (
-  flex, inline-flex
-) !default;
-
 @mixin foundation-prototype-display {
   @each $display in $prototype-display-classes {
     .display-#{$display} {
       display: $display !important;
-    }
-  }
-  @if $global-flexbox {
-    @each $display-flex in $prototype-display-flex-classes {
-      .display-#{$display-flex} {
-        display: $display-flex !important;
-      }
     }
   }
 
@@ -44,15 +31,6 @@ $prototype-display-flex-classes: (
           @if $size != $-zf-zero-breakpoint {
             .#{$size}-display-#{$display} {
               display: $display !important;
-            }
-          }
-        }
-        @if $global-flexbox {
-          @each $display-flex in $prototype-display-flex-classes {
-            @if $size != $-zf-zero-breakpoint {
-              .#{$size}-display-#{$display-flex} {
-                display: $display-flex !important;
-              }
             }
           }
         }
