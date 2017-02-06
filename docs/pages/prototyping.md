@@ -73,8 +73,6 @@ Text Decoration can be used to underline, overline, or line-through a text. You 
 <p class="text-line-through">Lorem minus, placeat, iure voluptas aliquam tempora neque?</p>
 ``` 
 
-Looking for example, Here is the <a href="http://codepen.io/IamManchanda/pen/OWEvmj">Codepen</a>
-
 ---
 
 ## Font Styling
@@ -101,7 +99,6 @@ These `.rounded` classes helps to make an element round its corners. This will h
 <button type="button" class="button rounded warning">Warning</button>
 ```
 
-
 ```html
 <img src="" class="rounded">
 <img src="" class="rounded-top">
@@ -123,7 +120,6 @@ These `.rounded` classes helps to make an element round its corners. This will h
 ---
 
 ## List Styling
-
 
 #### Unordered Lists
 
@@ -176,5 +172,3 @@ If you would like to prevent the text wrapping into the next line you can utiliz
 ```html
 <p class="text-nowrap">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam voluptatem similique officiis recusandae esse cum in totam quisquam perspiciatis quod! Magnam culpa vitae, tempore eos explicabo cupiditate. Deserunt, quisquam, quos!</p>
 ``` 
-
-Looking for example, Here is the <a href="http://codepen.io/IamManchanda/pen/egKyov/">Codepen.</a>
