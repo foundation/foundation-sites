@@ -36,16 +36,22 @@ $prototype-position-zindex: 975 !default;
   z-index: $prototype-position-zindex;
 }
 
+@mixin position($position) {
+  position: $position;
+} 
+
 @mixin foundation-prototype-position {
+  // Position: Static, Relative, Fixed, Absolute
   @each $position in $prototype-position-classes {
     .position-#{$position} {
-      position: $position;
+      @include position($position);
     }
   }
+  
+  // Position: Fixed Top, Fixed Bottom
   .position-fixed-top {
     @include position-fixed-top;
   }
-
   .position-fixed-bottom {
     @include position-fixed-bottom;
   }
@@ -58,10 +64,11 @@ $prototype-position-zindex: 975 !default;
         @each $position in $prototype-position-classes {
           @if $size != $-zf-zero-breakpoint {
             .#{$size}-position-#{$position} {
-              position: $position;
+              @include position($position);
             }
           }
         }
+
         // Position: Fixed Top, Fixed Bottom
         @if $size != $-zf-zero-breakpoint {
           .#{$size}-position-fixed-top {

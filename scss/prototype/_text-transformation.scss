@@ -16,10 +16,14 @@ $prototype-text-transformation-classes: (
   lowercase, uppercase, capitalize
 ) !default;
 
+@mixin text-transform($transformation) {
+  text-transform: $transformation;
+} 
+
 @mixin foundation-prototype-text-transformation {
   @each $transformation in $prototype-text-transformation-classes {
     .text-#{$transformation} {
-      text-transform: $transformation;
+      @include text-transform($transformation);
     }
   }
 
@@ -30,7 +34,7 @@ $prototype-text-transformation-classes: (
         @each $transformation in $prototype-text-transformation-classes {
           @if $size != $-zf-zero-breakpoint {
             .#{$size}-text-#{$transformation} {
-  			      text-transform: $transformation;
+  			      @include text-transform($transformation);
   			    }
           }
         }

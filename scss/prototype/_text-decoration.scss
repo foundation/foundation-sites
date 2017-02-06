@@ -16,10 +16,14 @@ $prototype-text-decoration-classes: (
   overline, underline, line-through
 ) !default;
 
+@mixin text-decoration($decoration) {
+  text-decoration: $decoration;
+} 
+
 @mixin foundation-prototype-text-decoration {
   @each $decoration in $prototype-text-decoration-classes {
     .text-#{$decoration} {
-      text-decoration: $decoration;
+      @include text-decoration($decoration);
     }
   }
 
@@ -30,7 +34,7 @@ $prototype-text-decoration-classes: (
         @each $decoration in $prototype-text-decoration-classes {
           @if $size != $-zf-zero-breakpoint {
             .#{$size}-text-#{$decoration} {
-              text-decoration: $decoration;
+              @include text-decoration($decoration);
             }
           }
         }

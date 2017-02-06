@@ -16,10 +16,14 @@ $prototype-display-classes: (
   none, inline, inline-block, block, table, table-cell
 ) !default;
 
+@mixin display($display) {
+    display: $display !important;
+}
+
 @mixin foundation-prototype-display {
   @each $display in $prototype-display-classes {
     .display-#{$display} {
-      display: $display !important;
+       @include display($display);
     }
   }
 
@@ -30,7 +34,7 @@ $prototype-display-classes: (
         @each $display in $prototype-display-classes {
           @if $size != $-zf-zero-breakpoint {
             .#{$size}-display-#{$display} {
-              display: $display !important;
+              @include display($display);
             }
           }
         }

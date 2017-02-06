@@ -16,16 +16,28 @@ $prototype-overflow-classes: (
   visible, hidden, scroll
 ) !default;
 
+@mixin overflow($overflow) {
+    overflow: $overflow;
+}
+
+@mixin overflow-x($overflow) {
+    overflow-x: $overflow;
+}
+
+@mixin overflow-y($overflow) {
+    overflow-y: $overflow;
+}
+
 @mixin foundation-prototype-overflow {
   @each $overflow in $prototype-overflow-classes {
     .overflow-#{$overflow} {
-      overflow: $overflow;
+      @include overflow($overflow);
     }
     .overflow-x-#{$overflow} {
-      overflow-x: $overflow;
+      @include overflow-x($overflow);
     }
     .overflow-y-#{$overflow} {
-      overflow-y: $overflow;
+      @include overflow-y($overflow);
     }
   }
 
@@ -36,13 +48,13 @@ $prototype-overflow-classes: (
         @each $overflow in $prototype-overflow-classes {
           @if $size != $-zf-zero-breakpoint {
             .#{$size}-overflow-#{$overflow} {
-              overflow: $overflow;
+              @include overflow($overflow);
             }
             .#{$size}-overflow-x-#{$overflow} {
-              overflow-x: $overflow;
+              @include overflow-x($overflow);
             }
             .#{$size}-overflow-y-#{$overflow} {
-              overflow-y: $overflow;
+              @include overflow-y($overflow);
             }
           }
         }
