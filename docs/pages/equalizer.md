@@ -39,7 +39,7 @@ In the below example, the first set of Equalizer elements have the value `foo`, 
 ```html
 <div class="row" data-equalizer="foo">
   <div class="medium-4 columns" data-equalizer-watch="foo">
-    <div class="callout" data-equalizer="bar">
+    <div class="callout" data-equalizer-watch="foo" data-equalizer="bar">
       <h3>Parent panel</h3>
       <div class="callout" data-equalizer-watch="bar"></div>
       <div class="callout" data-equalizer-watch="bar"></div>
