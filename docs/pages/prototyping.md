@@ -156,13 +156,7 @@ Display classes helps to display the elements in specific positions inside any o
 <div class="display-block"></div>
 <div class="display-table"></div>
 <div class="display-table-cell"></div>
-<div class="display-flex"></div>
-<div class="display-inline-flex"></div>
 ``` 
-
-<div class="callout warning">
-	Please note that `display-flex` and `display-inline-flex` is only supported if [flexbox mode](flexbox.html) is enabled.
-</div>
 
 ---
 
