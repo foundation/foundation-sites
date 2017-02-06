@@ -57,20 +57,20 @@ These `.rounded` classes helps to make an element round its corners. This will h
 
 ```html
 <img src="" class="rounded">
+<img src="" class="rounded-circle">
 <img src="" class="rounded-top">
 <img src="" class="rounded-right">
 <img src="" class="rounded-bottom">
 <img src="" class="rounded-left">
-<img src="" class="rounded-circle">
 ``` 
 
 <div class="docs-code-live">
 	<img src="http://placehold.it/100x100" class="rounded m-r-10">
+	<img src="http://placehold.it/100x100" class="rounded-circle m-r-10">
 	<img src="http://placehold.it/100x100" class="rounded-top m-r-10">
 	<img src="http://placehold.it/100x100" class="rounded-right m-r-10">
 	<img src="http://placehold.it/100x100" class="rounded-bottom m-r-10">
 	<img src="http://placehold.it/100x100" class="rounded-left m-r-10">
-	<img src="http://placehold.it/100x100" class="rounded-circle m-r-10">
 </div>
 
 ---
@@ -117,6 +117,34 @@ You can use font styling to style a text. You can change the font styling by add
 
 ---
 
+## Sizing Classes
+
+These width and height classes helps you to easily make an element as wide or as tall as per your need relative to its parent. By default it supports `25%`, `50%`, `75%` and `100%`. You can add more sizes through Sass Variables.
+
+#### Width
+
+```html
+<div class="width-25"></div>
+<div class="width-50"></div>
+<div class="width-75"></div>
+<div class="width-100"></div>
+
+<div class="max-width-100"></div>
+``` 
+
+#### Height
+
+```html
+<div class="height-25"></div>
+<div class="height-50"></div>
+<div class="height-75"></div>
+<div class="height-100"></div>
+
+<div class="max-height-100"></div>
+``` 
+
+---
+
 ## Display Classes
 
 Display classes helps to display the elements in specific positions inside any other HTML elements.
@@ -151,7 +179,9 @@ Positioning is very helpful and basic need for complex layouts.
 <div class="position-fixed-bottom"></div>
 ``` 
 
-## Overflow
+---
+
+## Overflow Helpers
 
 These overflow classes helps you to clip content, render scrollbars or simply just display the content when it overflows its block level container. 
 
