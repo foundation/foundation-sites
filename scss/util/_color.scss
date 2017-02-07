@@ -56,7 +56,7 @@
 /// Checks the luminance of `$base`, and returns the color from `$colors` (list of colors) that has the most contrast.
 ///
 /// @param {Color} $base - Color to check luminance.
-/// @param {List} $colors - Colors to compare.
+/// @param {List} $colors [($white, $black)] - Colors to compare.
 /// @param {Number} $tolerance [$global-color-pick-contrast-tolerance] - Contrast tolerance.
 ///
 /// @returns {Color} the color from `$colors` (list of colors) that has the most contrast.
