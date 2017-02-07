@@ -421,7 +421,7 @@ Positioning is very helpful and basic need for complex layouts.
 
 ---
 
-## Overflow Helpers
+## Overflow
 
 These overflow classes helps you to clip content, render scrollbars or simply just display the content when it overflows its block level container. 
 

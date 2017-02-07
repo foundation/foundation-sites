@@ -17,34 +17,31 @@ $prototype-spacing-classes: (
 /// @type Number
 $prototype-spacer: rem-calc(10px) !default;
 
-/// Map containing all the spacer values.
+/// Default value for Horizontal spacing. 
+/// @type Boolean
+$prototype-spacer-x: $prototype-spacer !default;
+
+/// Default value for Vertical spacing. 
+/// @type Boolean
+$prototype-spacer-y: $prototype-spacer !default;
+
+/// Map containing all values of Horizontal and vertical spacing, defaulted to null. 
 /// @type Map
-$prototype-spacers: (
-  0: (
-    x: 0,
-    y: 0
-  ),
-  10: (
-    x: ($prototype-spacer * 1),
-    y: ($prototype-spacer * 1)
-  ),
-  20: (
-    x: ($prototype-spacer * 2),
-    y: ($prototype-spacer * 2)
-  ),
-  30: (
-    x: ($prototype-spacer * 3),
-    y: ($prototype-spacer * 3)
-  ),
-  40: (
-    x: ($prototype-spacer * 4),
-    y: ($prototype-spacer * 4)
-  ),
-  50: (
-    x: ($prototype-spacer * 5),
-    y: ($prototype-spacer * 5)
-  )
-) !default;
+$prototype-spacers: () !default;
+
+/// Default number of spacers count
+/// @type Number
+$prototype-spacers-n: 5 !default;
+
+// Looping through prototype spacers
+@for $i from 0 through $prototype-spacers-n {
+  $prototype-spacers: map-merge($prototype-spacers, (
+    $i: (
+      x: $prototype-spacer-x * $i,
+      y: $prototype-spacer-y * $i
+    )
+  )) 
+}
 
 @mixin foundation-prototype-spacing {
 
@@ -52,6 +49,9 @@ $prototype-spacers: (
     @each $size, $lengths in $prototype-spacers {
       $length-x:   map-get($lengths, x);
       $length-y:   map-get($lengths, y);
+      
+      // Multiply `$size` by 10
+      $size: ($size * 10);
 
       // Positive Margin & Padding
       .#{$abbrev}-a-#{$size} { 
@@ -82,6 +82,7 @@ $prototype-spacers: (
 
       // Negative margin
       @if ($prop == margin ) {
+
         .#{$abbrev}-a-#{$size}n { 
           #{$prop}: ($length-y * -1) ($length-x * -1) !important; 
         } // a = All sides
