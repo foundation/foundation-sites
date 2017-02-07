@@ -53,6 +53,7 @@ $prototype-spacers: (
       $length-x:   map-get($lengths, x);
       $length-y:   map-get($lengths, y);
 
+      // Positive Margin & Padding
       .#{$abbrev}-a-#{$size} { 
         #{$prop}: $length-y $length-x !important; 
       } // a = All sides
@@ -78,6 +79,35 @@ $prototype-spacers: (
         #{$prop}-top: $length-y !important;
         #{$prop}-bottom: $length-y !important;
       } // y = vertical line
+
+      // Negative margin
+      @if ($prop == margin ) {
+        .#{$abbrev}-a-#{$size}n { 
+          #{$prop}: ($length-y * -1) ($length-x * -1) !important; 
+        } // a = All sides
+        .#{$abbrev}-t-#{$size}n { 
+          #{$prop}-top: ($length-y * -1) !important; 
+        } // t = top
+        .#{$abbrev}-r-#{$size}n { 
+          #{$prop}-right: ($length-x * -1) !important; 
+        } // r = right
+        .#{$abbrev}-b-#{$size}n { 
+          #{$prop}-bottom: ($length-y * -1) !important; 
+        } // b = bottom
+        .#{$abbrev}-l-#{$size}n { 
+          #{$prop}-left: ($length-x * -1) !important; 
+        } // l = left
+
+        // Axes
+        .#{$abbrev}-x-#{$size}n {
+          #{$prop}-right: ($length-x * -1) !important;
+          #{$prop}-left: ($length-x * -1) !important;
+        } // x = Horizontal Line
+        .#{$abbrev}-y-#{$size}n {
+          #{$prop}-top: ($length-y * -1) !important;
+          #{$prop}-bottom: ($length-y * -1) !important;
+        } // y = vertical line
+      }
     }
   }
 }
