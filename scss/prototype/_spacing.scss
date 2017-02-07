@@ -31,10 +31,10 @@ $prototype-spacers: () !default;
 
 /// Default number of spacers count
 /// @type Number
-$prototype-spacers-n: 5 !default;
+$prototype-spacers-count: 5 !default;
 
 // Looping through prototype spacers
-@for $i from 0 through $prototype-spacers-n {
+@for $i from 0 through $prototype-spacers-count {
   $prototype-spacers: map-merge($prototype-spacers, (
     $i: (
       x: $prototype-spacer-x * $i,
