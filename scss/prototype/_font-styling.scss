@@ -10,6 +10,14 @@
 /// @type Boolean
 $prototype-font-breakpoints: $global-prototype-breakpoints !default;
 
+/// Letter spacing for `.font-wide`
+/// @type Number
+$prototype-wide-letter-spacing: rem-calc(4px) !default;
+
+@mixin font-wide {
+  letter-spacing: $prototype-wide-letter-spacing;
+}
+
 @mixin font-normal {
   font-weight: $global-weight-normal;
 }
@@ -23,6 +31,10 @@ $prototype-font-breakpoints: $global-prototype-breakpoints !default;
 }
 
 @mixin foundation-prototype-font-styling {
+  .font-wide{
+    @include font-wide;
+  }
+
   .font-normal {
     @include font-normal;
   }
@@ -40,6 +52,10 @@ $prototype-font-breakpoints: $global-prototype-breakpoints !default;
     @each $size in $breakpoint-classes {
       @include breakpoint($size) {
         @if $size != $-zf-zero-breakpoint {
+          .#{$size}-font-wide{
+            @include font-wide;
+          }
+
           .#{$size}-font-normal {
             @include font-normal;
           }

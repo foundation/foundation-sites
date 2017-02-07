@@ -79,23 +79,14 @@ These `.rounded` classes helps to make an element round its corners. This will h
 
 ## Font Styling
 
-You can use font styling to style a text. You can change the font styling by adding `font-normal`, `font-bold`, `font-italic` to an element.
+You can use font styling to style a text. You can change the font styling by adding `font-normal`, `font-bold`, `font-italic` to an element. You can also wider the text of an element with `font-wide`.
 
 ```html_example
+<p class="font-wide">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
 <p class="font-normal">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 <p class="font-bold">Perspiciatis tempore cumque, magni aspernatur, quidem. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse</p>
 <p class="font-italic">Lorem minus, placeat, cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.iure voluptas aliquam tempora neque?</p>
 ``` 
-
----
-
-## Font Wide
-
-Wider the text of an element with `font-wide`.
-
-```html_example
-<p class="font-wide">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-```
 
 ---
 
@@ -144,9 +135,9 @@ Adjust font-size by overriding an element’s default size.
 
 ---
 
-## Margin Helpers
+## Margin Helper Classes
 
-Generate spaces around the element with these easy to use margin classes. By default it supports `10`, `20`, `30`, `40` and `50`. You can add more values though, through Sass Variables.
+Generate spaces around the element with these easy to use margin classes. By default it  only supports `10`, `20`, `30`, `40` and `50`. You can add more values though, through Sass Variables.
 
 #### Margin (All Sides)
 
@@ -220,9 +211,85 @@ Generate spaces around the element with these easy to use margin classes. By def
 
 ---
 
-## Padding Helpers
+## Negative Margin
 
-Generate spaces around the content with these easy to use padding classes. By default it supports `10`, `20`, `30`, `40` and `50`. You can add more values though, through Sass Variables.
+Negative margins helps you to create complex layouts easily but please note that negative margins are not the answer for every single css so they should be applied with care. By default it only supports `10`, `20`, `30`, `40` and `50`. You can add more values though, through Sass Variables.
+
+#### Margin (All Sides)
+
+```html
+<div class="m-a-10n"></div>
+<div class="m-a-20n"></div>
+<div class="m-a-30n"></div>
+<div class="m-a-40n"></div>
+<div class="m-a-50n"></div>
+``` 
+
+#### Margin Top
+
+```html
+<div class="m-t-10n"></div>
+<div class="m-t-20n"></div>
+<div class="m-t-30n"></div>
+<div class="m-t-40n"></div>
+<div class="m-t-50n"></div>
+``` 
+
+#### Margin Bottom
+
+```html
+<div class="m-b-10n"></div>
+<div class="m-b-20n"></div>
+<div class="m-b-30n"></div>
+<div class="m-b-40n"></div>
+<div class="m-b-50n"></div>
+``` 
+
+#### Margin Left
+
+```html
+<div class="m-l-10n"></div>
+<div class="m-l-20n"></div>
+<div class="m-l-30n"></div>
+<div class="m-l-40n"></div>
+<div class="m-l-50n"></div>
+``` 
+
+#### Margin Right
+
+```html
+<div class="m-r-10n"></div>
+<div class="m-r-20n"></div>
+<div class="m-r-30n"></div>
+<div class="m-r-40n"></div>
+<div class="m-r-50n"></div>
+``` 
+
+#### Margin Left Right (Horizontal Axis)
+
+```html
+<div class="m-x-10n"></div>
+<div class="m-x-20n"></div>
+<div class="m-x-30n"></div>
+<div class="m-x-40n"></div>
+<div class="m-x-50n"></div>
+``` 
+
+#### Margin Top Bottom (Vertical Axis)
+
+```html
+<div class="m-y-10n"></div>
+<div class="m-y-20n"></div>
+<div class="m-y-30n"></div>
+<div class="m-y-40n"></div>
+<div class="m-y-50n"></div>
+``` 
+
+---
+
+## Padding Helper Classes
+
+Generate spaces around the content with these easy to use padding classes. By default it only supports `10`, `20`, `30`, `40` and `50`. You can add more values though, through Sass Variables.
 
 #### Padding (All Sides)
 
