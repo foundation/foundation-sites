@@ -13,6 +13,8 @@ $prototype-spacing-classes: (
   padding: p
 ) !default;
 
+/// Default value of the spacing multiplier (pixels)
+/// @type Number
 $prototype-spacing-multiplier: 10 !default;
 
 /// Default value for `prototype-spacer`
