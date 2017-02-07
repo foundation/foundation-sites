@@ -79,7 +79,7 @@ These `.rounded` classes helps to make an element round its corners. This will h
 
 ## Font Styling
 
-You can use font styling to style a text. You can change the font styling by adding `font-normal`, `font-bold`, `font-italic` to an element. You can also wider the text of an element with `font-wide`.
+You can use font styling to style your text. You can change the font styling by adding `font-normal`, `font-bold`, `font-italic` to an element. You can also wider the text of an element with `font-wide`.
 
 ```html_example
 <p class="font-wide">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
@@ -365,7 +365,7 @@ Generate spaces around the content with these easy to use padding classes. By de
 
 ## Sizing
 
-These width and height classes helps you to easily make an element as wide or as tall as per your need relative to its parent. By default it supports `25%`, `50%`, `75%` and `100%`. You can add more sizes though, through Sass Variables.
+These width and height classes helps you to easily make an element as wide or as tall as per your need relative to its parent. By default it only supports `25%`, `50%`, `75%` and `100%`. You can add more sizes though, through Sass Variables.
 
 #### Width
 
