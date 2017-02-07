@@ -13,9 +13,11 @@ $prototype-spacing-classes: (
   padding: p
 ) !default;
 
+$prototype-spacing-multiplier: 10 !default;
+
 /// Default value for `prototype-spacer`
 /// @type Number
-$prototype-spacer: rem-calc(10px) !default;
+$prototype-spacer: rem-calc($prototype-spacing-multiplier) !default;
 
 /// Default value for Horizontal spacing. 
 /// @type Boolean
@@ -50,8 +52,7 @@ $prototype-spacers-count: 5 !default;
       $length-x:   map-get($lengths, x);
       $length-y:   map-get($lengths, y);
       
-      // Multiply `$size` by 10
-      $size: ($size * 10);
+      $size: ($size * $prototype-spacing-multiplier);
 
       // Positive Margin & Padding
       .#{$abbrev}-a-#{$size} { 
