@@ -137,7 +137,7 @@ Adjust font-size by overriding an element’s default size.
 
 ## Margin Helper Classes
 
-Generate spaces around the element with these easy to use margin classes. By default it  only supports `10`, `20`, `30`, `40` and `50`. You can add more values though, through Sass Variables.
+Generate spaces around the element with these easy to use margin classes.
 
 #### Margin (All Sides)
 
@@ -213,7 +213,7 @@ Generate spaces around the element with these easy to use margin classes. By def
 
 ## Negative Margin
 
-Negative margins helps you to create complex layouts easily but please note that negative margins are not the answer for every single css so they should be applied with care. By default it only supports `10`, `20`, `30`, `40` and `50`. You can add more values though, through Sass Variables.
+Negative margins helps you to create complex layouts easily. Please note that negative margins are not the answer for every single css so they should be applied with care.
 
 #### Margin (All Sides)
 
@@ -289,7 +289,7 @@ Negative margins helps you to create complex layouts easily but please note that
 
 ## Padding Helper Classes
 
-Generate spaces around the content with these easy to use padding classes. By default it only supports `10`, `20`, `30`, `40` and `50`. You can add more values though, through Sass Variables.
+Generate spaces around the content with these easy to use padding classes.
 
 #### Padding (All Sides)
 
