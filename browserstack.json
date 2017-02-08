@@ -1,0 +1,32 @@
+{
+    "username": "BROWSERSTACK_USERNAME",
+    "key": "BROWSERSTACK_ACCESS_KEY",
+    "test_path": "test/javascript/index.html",
+    "test_framework": "mocha",
+    "browsers": [
+        {
+            "browser": "chrome",
+            "browser_version": "latest",
+            "os": "OS X",
+            "os_version": "Sierra"
+        },
+        {
+            "browser": "firefox",
+            "browser_version": "latest",
+            "os": "Windows",
+            "os_version": "7"
+        },
+        {
+            "browser": "ie",
+            "browser_version": "latest",
+            "os": "Windows",
+            "os_version": "10"
+        },
+        {
+            "browser": "safari",
+            "browser_version": "latest",
+            "os": "OS X",
+            "os_version": "Yosemite"
+        }
+    ]
+}

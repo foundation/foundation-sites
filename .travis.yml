@@ -2,7 +2,8 @@ language: node_js
 node_js:
   - "4.0"
 install:
-  - npm install -g bower
+  - npm install -g bower browserstack-runner
   - npm install
+script: npm run test:ci
 notifications:
   email: false
