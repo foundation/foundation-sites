@@ -306,6 +306,20 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
           border-top-color: $button-background;
         }
       }
+
+      &.hollow {
+        &::after {
+          border-top-color: $button-background;
+        }
+
+        @each $name, $color in $button-palette {
+          &.#{$name} {
+            &::after {
+              border-top-color: $color;
+            }
+          }
+        }
+      }
     }
 
     // Button with dropdown arrow only
