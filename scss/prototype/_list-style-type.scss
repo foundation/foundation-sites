@@ -23,12 +23,10 @@ $prototype-style-type-ordered-classes: (
 ) !default;
 
 @mixin style-type-unordered($style-type-unordered) {
-  margin-#{$global-left}: 0;
   list-style-type: $style-type-unordered;
 }
 
 @mixin style-type-ordered($style-type-ordered) {
-  margin-#{$global-left}: 0;
   list-style-type: $style-type-ordered;
 }
 
