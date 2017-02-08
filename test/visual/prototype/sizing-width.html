@@ -1,0 +1,41 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Foundation for Sites Testing</title>
+    <link href="../motion-ui/dist/motion-ui.css" rel="stylesheet" />
+    <link href="../assets/css/foundation-prototype.css" rel="stylesheet" />
+    <style type="text/css">
+      /* Just for demo purposes */
+      .demo-width-box div{
+        background: #eee;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="row column">
+      <h2 class="m-t-20">Width</h2>
+      <div class="demo-width-box">
+        <div class="width-25 p-a-20">Width 25%</div>
+        <div class="width-50 p-a-20">Width 50%</div>
+        <div class="width-75 p-a-20">Width 75%</div>
+        <div class="width-100 p-a-20">Width 100%</div>
+      </div>
+    </div>
+
+    <div class="row column">
+      <h2 class="m-t-30">Max Width 100</h2>
+      <img src="http://placehold.it/1500x200?text=Max+Width+=100%" class="max-width-100">
+    </div>
+
+    <p class="m-t-40">&nbsp;</p>
+
+    <script src="../assets/js/vendor.js"></script>
+    <script src="../assets/js/foundation.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
+</html>
