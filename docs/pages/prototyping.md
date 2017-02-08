@@ -379,9 +379,12 @@ These overflow classes helps you to clip content, render scrollbars or simply ju
 
 You might want to include a logo on the page but you also would like to use a text within a header tag for the sake of accessibility and also for gaining benifits from SEO, and ideally on the webpage you would like to show your logo and not text. In that scenario you can utilize this `.text-hide` class to replace an element’s text content with a background image, often logo.
 
-```html
-<h1 class="text-hide">Lorem ipsum dolor.</h1> 
-``` 
+```html_example
+<a href="" class="text-hide">
+  <img src="assets/img/logos/zurb-logo.svg">
+  Zurb <!-- Logo Text  -->
+</a>
+```
 
 ---
 
