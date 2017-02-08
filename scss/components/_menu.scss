@@ -327,7 +327,7 @@ $menu-border: $light-gray !default;
     }
 
     // Active state
-    .active > a {
+    .is-active > a {
       background: $menu-item-background-active;
       color: $menu-item-color-active;
     }
