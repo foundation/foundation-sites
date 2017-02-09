@@ -13,7 +13,7 @@ $prototype-display-breakpoints: $global-prototype-breakpoints !default;
 /// Map containing all the `display` classes
 /// @type Map
 $prototype-display-classes: (
-  none, inline, inline-block, block, table, table-cell
+  none, inline, inline-block, block
 ) !default;
 
 @mixin display($display) {
