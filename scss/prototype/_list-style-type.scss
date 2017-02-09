@@ -16,8 +16,8 @@ $prototype-style-type-unordered-classes: (
   disc, circle, square
 ) !default;
 
-// Map containing all the `style-type-ordered` classes
-// @type Map
+/// Map containing all the `style-type-ordered` classes
+/// @type Map
 $prototype-style-type-ordered-classes: (
   decimal, lower-alpha, lower-latin, lower-roman, upper-alpha, upper-latin, upper-roman
 ) !default;
