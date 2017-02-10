@@ -490,10 +490,12 @@ description: Everything but.
     </div>
   </div>
   <div class="input-group">
-    <span class="input-group-label">$</span>
-    <input class="input-group-field" type="url">
-    <a class="input-group-button button">Submit</a>
+  <span class="input-group-label">$</span>
+  <input class="input-group-field" type="url">
+  <div class="input-group-button">
+    <input type="submit" class="button" value="Submit">
   </div>
+</div>
 </form>
 ```
 
