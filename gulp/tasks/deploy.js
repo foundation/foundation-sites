@@ -149,10 +149,3 @@ gulp.task('deploy:custom', ['sass:foundation', 'javascript:foundation'], functio
       .pipe(rename('foundation.min.js'))
       .pipe(gulp.dest('./_build/assets/js'));
 });
-
-// Commits the docs to the gh-pages branch
-gulp.task('deploy:tbg', function(cb) {
-  exec('git commit -am "build for github pages"');
-  exec('git subtree push --prefix _build origin gh-pages');
-  cb();
-});

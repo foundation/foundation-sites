@@ -14,6 +14,7 @@
 .idea
 .sass-cache/*
 .yardoc
+_build
 .customizer
 
 bower_components
