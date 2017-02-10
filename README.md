@@ -1,3 +1,7 @@
+## The Berndt Group's Foundation Fork
+
+This is a fork of ZURB's official Foundation for Sites framework for use with [TBG-foundation-cli](https://github.com/BerndtGroup/TBG-foundation-cli) and the [TBG-foundation-template](https://github.com/BerndtGroup/TBG-foundation-template).
+
 # [Foundation for Sites](http://foundation.zurb.com)
 
 [![Build Status](https://travis-ci.org/zurb/foundation-sites.svg?branch=develop)](https://travis-ci.org/zurb/foundation-sites)
