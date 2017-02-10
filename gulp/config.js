@@ -4,7 +4,9 @@ module.exports = {
   JS_FILES: [
   'js/foundation.core.js',
   'js/foundation.util.*.js',
-  'js/*.js'
+  'js/*.js',
+  'bower_components/jquery-mousewheel/jquery.mousewheel.js',
+  'bower_components/flickity/dist/flickity.pkgd.js'
   ],
 
   JS_DEPS: [
@@ -16,7 +18,7 @@ module.exports = {
   JS_DOCS: [
     'node_modules/clipboard/dist/clipboard.js',
     'node_modules/corejs-typeahead/dist/typeahead.bundle.js',
-    'node_modules/foundation-docs/js/**/*.js',
+    'node_modules/tbg-foundation-docs/js/**/*.js',
     'docs/assets/js/docs.*.js',
     'docs/assets/js/docs.js'
   ],
@@ -35,7 +37,7 @@ module.exports = {
   SASS_DOC_PATHS: [
     'scss',
     'node_modules/motion-ui/src',
-    'node_modules/foundation-docs/scss'
+    'node_modules/tbg-foundation-docs/scss'
   ],
 
   SASS_LINT_FILES: [

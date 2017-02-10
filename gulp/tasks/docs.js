@@ -1,5 +1,5 @@
 var cacheBust = require('gulp-cache-bust');
-var foundationDocs = require('foundation-docs');
+var foundationDocs = require('tbg-foundation-docs');
 var gulp = require('gulp');
 var newer = require('gulp-newer');
 var panini = require('panini');
@@ -16,7 +16,7 @@ var SEARCH_SORT_ORDER = ['page', 'component', 'sass variable', 'sass mixin', 'sa
 
 var SEARCH_PAGE_TYPES = {
   'library': function(item) {
-    return !!(item.library);
+    return !!item.library;
   }
 }
 

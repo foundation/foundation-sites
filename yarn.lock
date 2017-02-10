@@ -1565,16 +1565,16 @@ doiuse@^2.5.0:
     through2 "^0.6.3"
     yargs "^3.5.4"
 
-dom-serializer@0, dom-serializer@~0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/dom-serializer/-/dom-serializer-0.1.0.tgz#073c697546ce0780ce23be4a28e293e40bc30c82"
+dom-serializer@0, dom-serializer@~0.0.0:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/dom-serializer/-/dom-serializer-0.0.1.tgz#9589827f1e32d22c37c829adabd59b3247af8eaf"
   dependencies:
     domelementtype "~1.1.1"
     entities "~1.1.1"
 
-dom-serializer@~0.0.0:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/dom-serializer/-/dom-serializer-0.0.1.tgz#9589827f1e32d22c37c829adabd59b3247af8eaf"
+dom-serializer@~0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/dom-serializer/-/dom-serializer-0.1.0.tgz#073c697546ce0780ce23be4a28e293e40bc30c82"
   dependencies:
     domelementtype "~1.1.1"
     entities "~1.1.1"
@@ -2263,24 +2263,6 @@ formatio@1.1.1:
 formidable@1.0.x:
   version "1.0.17"
   resolved "https://registry.yarnpkg.com/formidable/-/formidable-1.0.17.tgz#ef5491490f9433b705faa77249c99029ae348559"
-
-foundation-docs@zurb/foundation-docs:
-  version "0.1.0"
-  resolved "https://codeload.github.com/zurb/foundation-docs/tar.gz/f0cc72f963826f97f7be0962b5a94d5be55166db"
-  dependencies:
-    cheerio "^0.20.0"
-    handlebars "^3.0.1"
-    highlight.js "^9.0.0"
-    inky "^1.2.6"
-    js-beautify "^1.6.2"
-    kebab-case "^1.0.0"
-    marked "^0.3.5"
-    mkdirp "^0.5.1"
-    multiline "^1.0.2"
-    querystring "^0.2.0"
-    require-dir "^0.3.0"
-    string-template "^1.0.0"
-    strip-indent "^1.0.1"
 
 foundation-emails@^2.2.0:
   version "2.2.1"
@@ -3553,7 +3535,7 @@ jodid25519@^1.0.0:
   dependencies:
     jsbn "~0.1.0"
 
-jquery@>=1.7, jquery@^2.2.0:
+jquery@>=1.7, jquery@>=2.2.0, jquery@^2.2.0:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-2.2.4.tgz#2c89d6889b5eac522a7eea32c14521559c6cbf02"
 
@@ -6600,6 +6582,24 @@ tar@^2.0.0, tar@~2.2.1:
     block-stream "*"
     fstream "^1.0.2"
     inherits "2"
+
+tbg-foundation-docs@BerndtGroup/TBG-foundation-docs:
+  version "0.1.0"
+  resolved "https://codeload.github.com/BerndtGroup/TBG-foundation-docs/tar.gz/ea643deb099707236dd924e654495f21580cad90"
+  dependencies:
+    cheerio "^0.20.0"
+    handlebars "^3.0.1"
+    highlight.js "^9.0.0"
+    inky "^1.2.6"
+    js-beautify "^1.6.2"
+    kebab-case "^1.0.0"
+    marked "^0.3.5"
+    mkdirp "^0.5.1"
+    multiline "^1.0.2"
+    querystring "^0.2.0"
+    require-dir "^0.3.0"
+    string-template "^1.0.0"
+    strip-indent "^1.0.1"
 
 temp-path@^1.0.0:
   version "1.0.0"

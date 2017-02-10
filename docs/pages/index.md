@@ -83,6 +83,7 @@ Get to know the pieces of Foundation.
         <li><a href="visibility.html">Visibility Classes</a></li>
         <li><a href="float-classes.html">Float Classes</a></li>
         <li><a href="flexbox.html">Flexbox</a></li>
+        <li><a href="vertical-rhythm.html">Vertical Rhythm</a></li>
       </ul>
     </section>
 
@@ -155,6 +156,7 @@ Get to know the pieces of Foundation.
         <li><a href="responsive-embed.html">Responsive Embed</a></li>
         <li><a href="label.html">Label</a></li>
         <li><a href="orbit.html">Orbit</a></li>
+        <li><a href="flickity.html">Flickity</a></li>
         <li><a href="progress-bar.html">Progress Bar</a></li>
         <li><a href="thumbnail.html">Thumbnail</a></li>
         <li><a href="tooltip.html">Tooltip</a></li>

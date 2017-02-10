@@ -40,6 +40,7 @@
 //  35. Title Bar
 //  36. Tooltip
 //  37. Top Bar
+//  38. Flickity
 
 @import 'util/util';
 
@@ -618,3 +619,18 @@ $topbar-submenu-background: $topbar-background;
 $topbar-title-spacing: 0.5rem 1rem 0.5rem 0;
 $topbar-input-width: 200px;
 $topbar-unstack-breakpoint: medium;
+
+// 38. Flickity
+// ------------
+
+$flickity-bullet-background: $medium-gray;
+$flickity-bullet-background-active: $dark-gray;
+$flickity-bullet-diameter: 1.2rem;
+$flickity-bullet-margin: 0.1rem;
+$flickity-bullet-margin-top: 0.8rem;
+$flickity-bullet-margin-bottom: 0.8rem;
+$flickity-caption-background: rgba($black, 0.5);
+$flickity-caption-padding: 1rem;
+$flickity-control-background-hover: rgba($black, 0.5);
+$flickity-control-padding: 1rem;
+$flickity-control-zindex: 10;

@@ -1,10 +1,13 @@
 {
-  "name": "foundation-sites",
+  "name": "tbg-foundation-sites",
   "version": "6.3.0",
   "main": "dist/js/foundation.js",
   "typings": "dist/js/foundation.d.ts",
-  "description": "The most advanced responsive front-end framework in the world.",
+  "description": "TBG fork of the most advanced responsive front-end framework in the world.",
   "author": "ZURB <foundation@zurb.com> (http://foundation.zurb.com)",
+  "contributors": [
+    "The Berndt Group <tyler.madsen@berndtgroup.net> (http://berndtgroup.net)"
+  ],
   "homepage": "http://foundation.zurb.com/sites",
   "scripts": {
     "start": "gulp",
@@ -40,7 +43,7 @@
     "clipboard": "^1.5.5",
     "corejs-typeahead": "^1.0.1",
     "doiuse": "^2.5.0",
-    "foundation-docs": "zurb/foundation-docs",
+    "tbg-foundation-docs": "BerndtGroup/TBG-foundation-docs",
     "gulp": "^3.8.10",
     "gulp-add-src": "^0.2.0",
     "gulp-babel": "^6.1.1",

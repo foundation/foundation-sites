@@ -1,0 +1,62 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group vertical-rhythm
+////
+
+/// Outputs a `margin-top` or `padding-top` CSS property for vertical spacing
+///
+/// @param {Number} $multiplier [1rem] - The number of times to multiply the base increment
+/// @param {String} $property ['margin'] - Designates the CSS property to use for spacing: either `margin` or `padding`
+/// @param {Number} $increment [1rem] - The base increment to be multiplied
+@mixin vertical-rhythm(
+  $multiplier,
+  $property: 'margin',
+  $increment: 1rem
+) {
+  @if ($property == 'margin') {
+    margin-top: #{$multiplier * $increment};
+  }
+  @else if ($property == 'padding') {
+    padding-top: #{$multiplier * $increment};
+  }
+}
+
+/// Generates vertical spacing helper classes (and extends) in increments a given number of times
+///
+/// @param {String} $class ['vertical-'] - The base of the class name for each increment
+/// @param {Number} $count [12] - The total number of classes (increments) to generate
+@mixin vertical-rhythm-classes(
+  $class: 'vertical-',
+  $count: 12
+) {
+  @for $i from 0 through $count {
+    @if ($i == 1) {
+      .#{$class + 'margin-half'},
+      %#{$class + 'margin-half'} {
+        @include vertical-rhythm(0.5);
+      }
+
+      .#{$class + 'padding-half'},
+      %#{$class + 'padding-half'} {
+        @include vertical-rhythm(0.5, 'padding');
+      }
+    }
+
+    .#{$class + 'margin-' + $i},
+    %#{$class + 'margin-' + $i} {
+      @include vertical-rhythm($i);
+    }
+
+    .#{$class + 'padding-' + $i},
+    %#{$class + 'padding-' + $i} {
+      @include vertical-rhythm($i, 'padding');
+    }
+  }
+}
+
+@mixin foundation-vertical-rhythm {
+  @include vertical-rhythm-classes();
+}

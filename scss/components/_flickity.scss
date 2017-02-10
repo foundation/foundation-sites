@@ -1,0 +1,227 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+// The Berndt Group customization
+
+////
+/// @group flickity
+////
+
+/// Default Flickity viewport class
+/// @type String
+$flickity-viewport-class: '.flickity-viewport' !default;
+
+/// Default Flickity slide class
+/// @type String
+$flickity-slide-class: '.flickity-slide' !default;
+
+/// Default Flickity right-to-left class
+/// @type String
+$flickity-rtl-class: '.flickity-rtl' !default;
+
+/// Default Flickity arrow class
+/// @type String
+$flickity-arrow-class: '.arrow' !default;
+
+/// Default Flickity dot class
+/// @type String
+$flickity-dot-class: '.dot' !default;
+
+/// Default Flickity previous button class
+/// @type String
+$flickity-prev-button-class: '.previous' !default;
+
+/// Default Flickity next button class
+/// @type String
+$flickity-next-button-class: '.next' !default;
+
+/// Default focus outline color for Flickity's bullets.
+/// @type Color
+$flickity-slide-width: 100% !default;
+
+/// Default color for Flickity's bullets.
+/// @type Color
+$flickity-bullet-background: hsla(0, 0%, 100%, 0.75) !default;
+
+/// Default active color for Flickity's bullets.
+/// @type Color
+$flickity-bullet-background-active: $light-gray !default;
+
+/// Default focus outline color for Flickity's bullets.
+/// @type Color
+$flickity-bullet-focus: #09f !default;
+
+/// Adds styles for the outer Flickity wrapper. These styles are used on the `.flickity-enabled` class.
+@mixin flickity-enabled {
+  position: relative;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+/// Adds styles for the Flickity viewport wrapper. These styles are used on the `.flickity-viewport` class.
+@mixin flickity-viewport {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+/// Adds styles for the Flickity slider wrapper. These styles are used on the `.flickity-slider` class.
+@mixin flickity-slider {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+/// Adds styles for the Flickity slide. These styles are used on the `.flickity-slide` class.
+@mixin flickity-slide {
+  width: $flickity-slide-width;
+}
+
+/// Adds styles for the Flickity's "draggable" mode. These styles are used on the `.is-draggable` modifier class, chained to the `.flickity-enabled` class.
+@mixin flickity-is-draggable {
+  user-select: none;
+  tap-highlight-color: transparent;
+
+  #{$flickity-viewport-class} {
+    cursor: grab;
+
+    &.is-pointer-down {
+      cursor: grabbing;
+    }
+  }
+}
+
+/// Adds styles for the Flickity's previous and next buttons. These styles are used on the `.flickity-prev-button` and `.flickity-next-button` classes
+@mixin flickity-prev-next-button {
+  position: absolute;
+  top: 50%;
+  width: 44px;
+  height: 44px;
+  transform: translateY(-50%);
+  border: 0;
+  border-radius: 50%;
+  background: $white;
+  background: $flickity-bullet-background;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $flickity-bullet-background-active;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 5px $flickity-bullet-focus;
+  }
+
+  &:active {
+    opacity: 0.6;
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: auto;
+  }
+
+  svg {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    width: 60%;
+    height: 60%;
+  }
+
+  #{$flickity-arrow-class} {
+    fill: lighten($black, 20%);
+  }
+}
+
+/// Adds styles for the Flickity's previous button. These styles are used on the `.flickity-prev-button`
+@mixin flickity-prev-button {
+  left: 10px;
+
+  #{$flickity-rtl-class} & {
+    right: 10px;
+    left: auto;
+  }
+}
+
+/// Adds styles for the Flickity's next button. These styles are used on the `.flickity-next-button`
+@mixin flickity-next-button {
+  right: 10px;
+
+  #{$flickity-rtl-class} & {
+    right: auto;
+    left: 10px;
+  }
+}
+
+/// Adds styles for the Flickity's page buttons. These styles are used on the `.flickity-page-buttons`
+@mixin flickity-page-dots {
+  position: absolute;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  line-height: 1;
+  text-align: center;
+
+  #{$flickity-rtl-class} & {
+    direction: rtl;
+  }
+
+  #{$flickity-dot-class} {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 8px;
+    opacity: 0.25;
+    border-radius: 50%;
+    background: $dark-gray;
+    cursor: pointer;
+
+    &.is-selected {
+      opacity: 1;
+    }
+  }
+}
+
+@mixin foundation-flickity {
+  .flickity-enabled {
+    @include flickity-enabled;
+
+    &.is-draggable {
+      @include flickity-is-draggable;
+    }
+  }
+
+  .flickity-viewport {
+    @include flickity-viewport;
+  }
+
+  .flickity-slider {
+    @include flickity-slider;
+  }
+
+  #{$flickity-slide-class} {
+    @include flickity-slide;
+  }
+
+  .flickity-prev-next-button {
+    @include flickity-prev-next-button;
+
+    &#{$flickity-prev-button-class} {
+      @include flickity-prev-button;
+    }
+
+    &#{$flickity-next-button-class} {
+      @include flickity-next-button;
+    }
+  }
+
+  .flickity-page-dots {
+    @include flickity-page-dots;
+  }
+}
