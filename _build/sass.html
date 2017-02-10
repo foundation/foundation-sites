@@ -1,0 +1,549 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Foundation is written in Sass, which allows us to make the codebase customizable and flexible.">
+  <link rel="icon" href="assets/img/icons/foundation-favicon.ico" type="image/x-icon">
+  <title>Sass | Foundation for Sites 6 Docs</title>
+  <link href="assets/css/docs.css?hash=1ecf3dd832d7e366c96bb5bf8cbad0d1" rel="stylesheet" />
+  <link href="//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css?hash=19a155f71519cf1b4041849318fe003a" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="./node_modules/motion-ui/dist/motion-ui.css" /> -->
+</head>
+<body>
+
+  <!-- Info Banner For Announcements or Links -->
+  <!-- <a href="http://zurb.com/wired" id="notice">
+    <div class="info">
+      <div id="clockdiv" class="countdown">
+          <span class="timer-day days"></span>
+          <span class="timer-colon">:</span>
+        <span class="timer-hour hours"></span>
+        <span class="timer-colon">:</span>
+        <span class="timer-hour minutes"></span>
+        <span class="timer-colon">:</span>
+        <span class="timer-seconds seconds"></span>
+      </div>
+    </div>
+  </a> -->
+
+  <div class="off-canvas-wrapper"><div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+
+    <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas data-position="left">
+      <button class="close-button" aria-label="Close menu" type="button" data-close>
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <ul class="mobile-ofc vertical menu">
+    
+        <li>
+          <a href="http://zurb.com/responsive">Showcase</a>
+          <ul class="submenu menu vertical" data-submenu>
+            <li><a href="http://zurb.com/responsive">Foundation Showcase</a></li>
+            <li><a href="http://foundation.zurb.com/showcase/brands.html">Brands</a></li>
+            <li><a href="http://foundation.zurb.com/showcase/case-studies.html">Case Studies</a></li>
+            <li><a href="http://foundation.zurb.com/showcase/blog.html">Blog</a></li>
+            <li><a href="http://foundation.zurb.com/showcase/buzz.html">Buzz</a></li>
+            <li><a href="http://foundation.zurb.com/showcase/about.html">About Foundation</a></li>
+          </ul>
+        </li>
+    
+        <li>
+          <a href="http://foundation.zurb.com/develop/getting-started.html">Develop</a>
+          <ul class="submenu menu vertical" data-submenu>
+            <li class="title">Frameworks</li>
+            <li><a href="http://foundation.zurb.com/sites.html">Foundation for Sites</a></li>
+            <li><a href="http://foundation.zurb.com/emails.html">Foundation for Email</a></li>
+            <li class="divider"></li>
+            <li class="title">Develop</li>
+            <li><a href="http://foundation.zurb.com/templates.html">HTML Templates</a></li>
+            <li><a href="http://foundation.zurb.com/sites/resources.html">Resources</a></li>
+            <li><a href="http://foundation.zurb.com/develop/building-blocks.html">Building Blocks</a></li>
+            <li><a href="http://foundation.zurb.com/develop/contribute.html">Contribute</a></li>
+          </ul>
+        </li>
+    
+        <li>
+          <a href="http://foundation.zurb.com/learn/tutorials.html">Tutorials</a>
+          <ul class="submenu menu vertical" data-submenu>
+            <li><a href="http://foundation.zurb.com/learn/tutorials.html">Tutorials</a></li>
+            <li><a href="http://foundation.zurb.com/learn/classes.html">Classes</a></li>
+            <li><a href="http://foundation.zurb.com/learn/custom-training.html">Custom Training</a></li>
+            <li><a href="http://foundation.zurb.com/learn/certification.html">Certification</a></li>
+            <li><a href="http://foundation.zurb.com/learn/responsive-reading.html">Responsive Reading</a></li>
+          </ul>
+        </li>
+    
+        <li>
+          <a href="http://foundation.zurb.com/get-involved/support.html">Get Involved</a>
+          <ul class="submenu menu vertical" data-submenu>
+            <li><a href="http://foundation.zurb.com/get-involved/support.html">Connect</a></li>
+            <li><a href="http://foundation.zurb.com/get-involved/premium-support.html">PLZ Halp</a></li>
+            <li><a href="http://foundation.zurb.com/forum/sort/unanswered">Foundation Forum</a></li>
+            <li><a href="http://foundation.zurb.com/learn/events.html">Events</a></li>
+            <li><a href="http://foundation.zurb.com/get-involved/faq.html">FAQs</a></li>
+            <li><a href="http://foundation.zurb.com/get-involved/contribute.html">Contribute</a></li>
+            <li><a href="http://foundation.zurb.com/get-involved/yetinauts.html">Yetinauts</a></li>
+          </ul>
+        </li>
+    
+        <li>
+          <a href="http://foundation.zurb.com/frameworks-docs.html">Docs</a>
+          <ul class="submenu menu vertical" data-submenu>
+            <li><a href="http://foundation.zurb.com/docs/" target="_blank">Sites Docs</a></li>
+            <li><a href="http://zurb.com/ink/docs.php" target="_blank">Email Docs</a></li>
+          </ul>
+        </li>
+    
+        <li><a href="http://foundation.zurb.com/develop/getting-started.html" class="button">Getting Started</a></li>
+    
+      </ul>
+    </div>
+    
+    <div class="off-canvas position-right" id="offCanvasRight" data-off-canvas data-position="right">
+      <button class="close-button" aria-label="Close menu" type="button" data-close>
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <ul class="vertical menu">
+        <li><a href="#">Foundation</a></li>
+        <li><a href="#">Dot</a></li>
+        <li><a href="#">ZURB</a></li>
+        <li><a href="#">Com</a></li>
+        <li><a href="#">Slash</a></li>
+        <li><a href="#">Sites</a></li>
+      </ul>
+    </div>
+    
+    <div class="off-canvas position-top" id="offCanvasTop" data-off-canvas data-position="top">
+      <button class="close-button" aria-label="Close menu" type="button" data-close>
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <ul class="mobile-ofc vertical menu">
+        <li><a href="#">Off-canvas</a></li>
+        <li><a href="#">Example</a></li>
+        <li><a href="#">Vertical</a></li>
+        <li><a href="#">Menu</a></li>
+        <li><a href="#">From</a></li>
+        <li><a href="#">The</a></li>
+        <li><a href="#">Top</a></li>
+      </ul>
+    </div>
+    
+
+    <div class="off-canvas-content" data-off-canvas-content>
+      <!-- Info Banner For Announcements or Links -->
+      <!-- <a href="http://zurb.com/article/1416/foundation-6-is-here" id="notice">
+        <div class="info">
+          <h5>Foundation 6 is here!</h5>
+        </div>
+      </a> -->
+
+      <nav class="marketing-topbar show-for-medium">
+      
+        <ul class="menu">
+          <li class="topbar-title"><a href="http://foundation.zurb.com/index.html"><img src="assets/img/logos/zurb-logo.svg" alt="ZURB"> Foundation</a></li>
+          <li class="topbar-title"><a href="http://berndtgroup.net"><img src="assets/img/logos/tbg-logo.svg" alt="The Berndt Group"></a></li>
+        </ul>
+      
+        <ul class="dropdown menu" data-dropdown-menu data-click-open="false">
+      
+          <li>
+            <a href="http://zurb.com/responsive">Showcase</a>
+            <ul class="submenu menu vertical" data-submenu>
+              <li><a href="http://zurb.com/responsive">Foundation Showcase</a></li>
+              <li><a href="http://foundation.zurb.com/showcase/brands.html">Brands</a></li>
+              <li><a href="http://foundation.zurb.com/showcase/case-studies.html">Case Studies</a></li>
+              <li><a href="http://foundation.zurb.com/showcase/blog.html">Blog</a></li>
+              <li><a href="http://foundation.zurb.com/showcase/buzz.html">Buzz</a></li>
+              <li><a href="http://foundation.zurb.com/showcase/about.html">About Foundation</a></li>
+            </ul>
+          </li>
+      
+          <li>
+            <a href="http://foundation.zurb.com/develop/getting-started.html">Develop</a>
+            <ul class="submenu menu vertical" data-submenu>
+              <li class="title">Frameworks</li>
+              <li><a href="http://foundation.zurb.com/sites.html">Foundation for Sites</a></li>
+              <li><a href="http://foundation.zurb.com/emails.html">Foundation for Email</a></li>
+              <li class="divider"></li>
+              <li class="title">Develop</li>
+              <li><a href="http://foundation.zurb.com/templates.html">HTML Templates</a></li>
+              <li><a href="http://foundation.zurb.com/sites/resources.html">Resources</a></li>
+              <li><a href="http://foundation.zurb.com/develop/building-blocks.html">Building Blocks</a></li>
+              <li><a href="http://foundation.zurb.com/upload.html">Annotate Code</a></li>
+            </ul>
+          </li>
+      
+          <li>
+            <a href="http://foundation.zurb.com/learn/tutorials.html">Tutorials</a>
+            <ul class="submenu menu vertical" data-submenu>
+              <li><a href="http://foundation.zurb.com/learn/tutorials.html">Tutorials</a></li>
+              <li><a href="http://zurb.com/university/lessons">Lessons</a></li>
+              <li><a href="http://zurb.com/university/courses">Courses</a></li>
+              <li><a href="http://zurb.com/university/training">Custom Training</a>
+              <li><a href="http://foundation.zurb.com/learn/certification.html">Certification</a></li>
+              <li><a href="http://foundation.zurb.com/learn/responsive-reading.html">Responsive Reading</a></li>
+            </ul>
+          </li>
+      
+          <li>
+            <a href="http://foundation.zurb.com/get-involved/contribute.html">Get Involved</a>
+            <ul class="submenu menu vertical" data-submenu>
+              <li><a href="http://foundation.zurb.com/get-involved/support.html">Connect</a></li>
+              <li><a href="http://foundation.zurb.com/get-involved/premium-support.html">PLZ Halp</a></li>
+              <li><a href="http://foundation.zurb.com/forum/">Foundation Forum</a></li>
+              <li><a href="http://foundation.zurb.com/learn/events.html">Events</a></li>
+              <li><a href="http://foundation.zurb.com/get-involved/faq.html">FAQs</a></li>
+              <li><a href="http://foundation.zurb.com/get-involved/contribute.html">Contribute</a></li>
+              <li><a href="http://foundation.zurb.com/get-involved/yetinauts.html">Yetinauts</a></li>
+            </ul>
+          </li>
+      
+          <li>
+            <a href="http://foundation.zurb.com/frameworks-docs.html">Docs</a>
+            <ul class="submenu menu vertical" data-submenu>
+              <li><a href="http://foundation.zurb.com/docs/" target="_blank">Sites Docs</a></li>
+              <li><a href="http://foundation.zurb.com/sites/docs/v/5.5.3/" target="_blank">F5 Docs</a></li>
+              <li><a href="http://foundation.zurb.com/emails/docs/" target="_blank">Email Docs</a></li>
+            </ul>
+          </li>
+      
+          <li><a href="http://foundation.zurb.com/develop/getting-started.html" class="button">Getting Started</a></li>
+      
+        </ul>
+      
+      </nav>
+      
+      <div class="title-bar hide-for-medium">
+        <div class="title-bar-left">
+          <button class="menu-icon" type="button" data-open="offCanvasLeft"></button>
+          <span class="title-bar-title">Foundation</span>
+        </div>
+      </div>
+      
+
+      <input type="text" class="docs-search" data-docs-search placeholder="Find a page, component, variable, mixin, function...">
+
+      <div class="expanded row">
+        <div class="medium-9 large-10 medium-push-3 large-push-2 columns">
+<!-- do not indent -->
+
+<article class="docs-component" id="docs-sass">
+
+<a href="#docs-menu" class="small secondary expanded button hide-for-medium">Jump to Nav</a>
+
+<header>
+  <h1 class="docs-page-title">Sass</h1>
+
+
+  <p class="lead docs-page-lead">Foundation is written in Sass, which allows us to make the codebase customizable and flexible.</p>
+
+  <ul class="menu simple docs-contribute-menu">
+    <li><a href="https://github.com/zurb/foundation-sites/edit/master/docs\pages\sass.md" target="_blank"><i class="fi-pencil"></i>Edit this Page</a></li>
+    <li><a href="https://github.com/zurb/foundation-sites/issues/new?title=%5BSass%5D%20ISSUE%20NAME%20HERE" target="_blank"><i class="fi-social-github"></i>Report a Bug</a></li>
+    <li><a href="http://foundation.zurb.com/forum" target="_blank"><i class="fi-comment"></i>Get Help</a></li>
+  </ul>
+</header>
+
+<hr>
+
+<div class="row">
+
+<div class="large-9 columns" id="docs">
+
+<div class="primary callout">
+  <p>Not familiar with Sass? The <a href="http://sass-lang.com/guide">official tutorial</a> on sass-lang.com is a great place to start.</p>
+</div>
+
+<h2 id="compatibility" class="docs-heading" data-magellan-target="compatibility">Compatibility<a class="docs-heading-icon" href="#compatibility"></a></h2><p><img src="assets/img/logos/sass-logo.svg" alt="Sass logo" class="float-right" style="width: 150px; height: 150px; margin-left: 1rem;"></p>
+<p><strong>Foundation for Sites can be compiled with Ruby Sass and libsass.</strong> We tend to stick to the latest versions of both compilers when possible. Our documentation and starter project are compiled with <a href="https://github.com/sass/node-sass">node-sass</a>, a Node port of libsass. We recommend these versions of either compiler:</p>
+<ul>
+<li>Ruby Sass <strong>3.4+</strong></li>
+<li>node-sass <strong>3.4.2+</strong> (libsass <strong>3.3.2</strong>)</li>
+</ul>
+<h3 id="autoprefixer-required" class="docs-heading">Autoprefixer Required<a class="docs-heading-icon" href="#autoprefixer-required"></a></h3><p>We don&#39;t include vendor prefixes in our Sass files&mdash;instead, we let <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a> handle it for us. Our build process uses <a href="https://github.com/sindresorhus/gulp-autoprefixer">gulp-autoprefixer</a>, but there are <a href="https://github.com/postcss/autoprefixer#usage">other versions</a> that work with Grunt, Rails, Brunch, and more.</p>
+<p>To get the proper browser support, use these Autoprefixer settings:</p>
+<div class="docs-code" data-docs-code><pre><code class="js">autoprefixer({
+  <span class="hljs-attr">browsers</span>: [<span class="hljs-string">'last 2 versions'</span>, <span class="hljs-string">'ie &gt;= 9'</span>, <span class="hljs-string">'and_chr &gt;= 2.3'</span>]
+});</code></pre></div><hr>
+<h2 id="loading-the-framework" class="docs-heading" data-magellan-target="loading-the-framework">Loading the Framework<a class="docs-heading-icon" href="#loading-the-framework"></a></h2><p>If you&#39;re using the CLI to create a project, the Sass compilation process is already set up for you. If not, you can compile our Sass files yourself, or drop in a pre-built CSS file.</p>
+<p>To get started, first install the framework files using Bower or npm.</p>
+<div class="docs-code" data-docs-code><pre><code class="bash">npm install foundation-sites --save
+bower install foundation-sites --save</code></pre></div><h3 id="compiling-manually" class="docs-heading">Compiling Manually<a class="docs-heading-icon" href="#compiling-manually"></a></h3><p>Next, add the framework files as an import path. How you do this depends on your build process, but the path is the same regardless: <code>packages_folder/foundation-sites/scss</code></p>
+<p>Here&#39;s an example using grunt-contrib-sass:</p>
+<div class="docs-code" data-docs-code><pre><code class="js">grunt.initConfig({
+  <span class="hljs-attr">sass</span>: {
+    <span class="hljs-attr">dist</span>: {
+      <span class="hljs-attr">options</span>: {
+        <span class="hljs-attr">loadPath</span>: [<span class="hljs-string">'node_modules/foundation-sites/scss'</span>]
+      }
+    }
+  }
+});</code></pre></div><p>If you&#39;re using Compass, open your project&#39;s <code>config.rb</code> and add the import path there:</p>
+<div class="docs-code" data-docs-code><pre><code class="ruby">add_import_path <span class="hljs-string">"node_modules/foundation-sites/scss"</span></code></pre></div><p>Finally, add an <code>@import</code> statement to the top of your primary Sass file. Refer to <a href="#adjusting-css-output">Adjusting CSS Output</a> below to learn how to control the CSS output of the framework.</p>
+<div class="docs-code" data-docs-code><pre><code class="scss">@<span class="hljs-keyword">import</span> <span class="hljs-string">'foundation'</span>;</code></pre></div><p>You&#39;re also going to want a settings file for your project, which will allow you to modify the default styles of Foundation. <strong><a href="https://raw.githubusercontent.com/zurb/foundation-sites/master/scss/settings/_settings.scss">Download the latest settings file here</a></strong>, add it to your project as <code>_settings.scss</code>, then import it <em>before</em> Foundation itself.</p>
+<div class="docs-code" data-docs-code><pre><code class="scss">@<span class="hljs-keyword">import</span> <span class="hljs-string">'settings'</span>;
+@<span class="hljs-keyword">import</span> <span class="hljs-string">'foundation'</span>;</code></pre></div><h3 id="using-compiled-css" class="docs-heading">Using Compiled CSS<a class="docs-heading-icon" href="#using-compiled-css"></a></h3><p>The Foundation for Sites npm and Bower packages include pre-compiled CSS files, in minified (compressed) and unminified flavors. If you&#39;re interested in editing the framework CSS directly, use the unminified file. For production, use the minified version.</p>
+<div class="docs-code" data-docs-code><pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"node_modules/foundation-sites/dist/css/foundation-sites.css"</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"node_modules/foundation-sites/dist/css/foundation-sites.min.css"</span>&gt;</span></code></pre></div><hr>
+<h2 id="adjusting-css-output" class="docs-heading" data-magellan-target="adjusting-css-output">Adjusting CSS Output<a class="docs-heading-icon" href="#adjusting-css-output"></a></h2><p>Foundation outputs many classes for its various components. These help developers get up and running quickly. However, when you move to production, you may wish to build your grid semantically, replace our pre-built classes with your own, or remove components entirely.</p>
+<p>Each component has an <strong>export mixin</strong> which prints out the CSS for that component. If you&#39;re cool with having everything, you just need one line of code:</p>
+<div class="docs-code" data-docs-code><pre><code class="scss">@<span class="hljs-keyword">include</span> foundation-everything;</code></pre></div><p>Our <a href="starter-projects.html">starter projects</a> include the full list of imports, making it easy to comment out the components you don&#39;t need. A full list is also included below. </p>
+<div class="docs-code" data-docs-code><pre><code class="scss">@<span class="hljs-keyword">import</span> <span class="hljs-string">'foundation'</span>;
+
+@<span class="hljs-keyword">include</span> foundation-global-styles;
+@<span class="hljs-keyword">include</span> foundation-grid;
+@<span class="hljs-keyword">include</span> foundation-flex-grid;
+@<span class="hljs-keyword">include</span> foundation-flex-classes;
+@<span class="hljs-keyword">include</span> foundation-typography;
+@<span class="hljs-keyword">include</span> foundation-forms;
+@<span class="hljs-keyword">include</span> foundation-button;
+@<span class="hljs-keyword">include</span> foundation-accordion;
+@<span class="hljs-keyword">include</span> foundation-accordion-menu;
+@<span class="hljs-keyword">include</span> foundation-badge;
+@<span class="hljs-keyword">include</span> foundation-breadcrumbs;
+@<span class="hljs-keyword">include</span> foundation-button-group;
+@<span class="hljs-keyword">include</span> foundation-callout;
+@<span class="hljs-keyword">include</span> foundation-card;
+@<span class="hljs-keyword">include</span> foundation-close-button;
+@<span class="hljs-keyword">include</span> foundation-menu;
+@<span class="hljs-keyword">include</span> foundation-menu-icon;
+@<span class="hljs-keyword">include</span> foundation-drilldown-menu;
+@<span class="hljs-keyword">include</span> foundation-dropdown;
+@<span class="hljs-keyword">include</span> foundation-dropdown-menu;
+@<span class="hljs-keyword">include</span> foundation-responsive-embed;
+@<span class="hljs-keyword">include</span> foundation-label;
+@<span class="hljs-keyword">include</span> foundation-media-object;
+@<span class="hljs-keyword">include</span> foundation-off-canvas;
+@<span class="hljs-keyword">include</span> foundation-orbit;
+@<span class="hljs-keyword">include</span> foundation-pagination;
+@<span class="hljs-keyword">include</span> foundation-progress-bar;
+@<span class="hljs-keyword">include</span> foundation-slider;
+@<span class="hljs-keyword">include</span> foundation-sticky;
+@<span class="hljs-keyword">include</span> foundation-reveal;
+@<span class="hljs-keyword">include</span> foundation-switch;
+@<span class="hljs-keyword">include</span> foundation-table;
+@<span class="hljs-keyword">include</span> foundation-tabs;
+@<span class="hljs-keyword">include</span> foundation-thumbnail;
+@<span class="hljs-keyword">include</span> foundation-title-bar;
+@<span class="hljs-keyword">include</span> foundation-tooltip;
+@<span class="hljs-keyword">include</span> foundation-top-bar;
+@<span class="hljs-keyword">include</span> foundation-visibility-classes;
+@<span class="hljs-keyword">include</span> foundation-float-classes;</code></pre></div><hr>
+<h2 id="the-settings-file" class="docs-heading" data-magellan-target="the-settings-file">The Settings File<a class="docs-heading-icon" href="#the-settings-file"></a></h2><p>All Foundation projects include a settings file, named <code>_settings.scss</code>. If you&#39;re using the CLI to create a Foundation for Sites project, you can find the settings file under scss/ (basic template) or src/assets/scss/ (ZURB template). If you&#39;re installing the framework standalone using Bower or npm, there&#39;s a settings file included in those packages, which you can move into your own Sass files to work with.</p>
+<p>Every component includes a set of variables that modify core structural or visual styles. If there&#39;s something you can&#39;t customize with a variable, you can just write your own CSS to add it.</p>
+<div class="callout warning">
+  <p>Once you&#39;ve set up a new project, your settings file can&#39;t be automatically updated when new versions change, add, or remove variables. Keep tabs on new <a href="https://github.com/zurb/foundation/releases">Foundation releases</a> so you know when things change.</p>
+</div>
+
+<p>Here&#39;s an example set of settings variables. These change the default styling of <a href="button.html">buttons</a>:</p>
+<div class="docs-code" data-docs-code><pre><code class="scss"><span class="hljs-comment">// Default padding for button.</span>
+<span class="hljs-variable">$button-padding</span>: <span class="hljs-number">0.85em</span> <span class="hljs-number">1em</span> !default;
+
+<span class="hljs-comment">// Default margin for button.</span>
+<span class="hljs-variable">$button-margin</span>: <span class="hljs-number">0</span> <span class="hljs-variable">$global-padding</span> <span class="hljs-variable">$global-padding</span> <span class="hljs-number">0</span> !default;
+
+<span class="hljs-comment">// Default fill for button. Is either solid or hollow.</span>
+<span class="hljs-variable">$button-fill</span>: solid !default;
+
+<span class="hljs-comment">// Default background color for button.</span>
+<span class="hljs-variable">$button-background</span>: <span class="hljs-variable">$primary-color</span> !default;
+
+<span class="hljs-comment">// Default hover background color for button.</span>
+<span class="hljs-variable">$button-background-hover</span>: scale-color(<span class="hljs-variable">$button-background</span>, <span class="hljs-variable">$lightness</span>: -<span class="hljs-number">15%</span>) !default;
+
+<span class="hljs-comment">// Default font color for button.</span>
+<span class="hljs-variable">$button-font-color</span>: <span class="hljs-number">#fff</span> !default;
+
+<span class="hljs-comment">// Default alternative font color for button.</span>
+<span class="hljs-variable">$button-font-color-alt</span>: <span class="hljs-number">#000</span> !default;
+
+<span class="hljs-comment">// Default radius for button.</span>
+<span class="hljs-variable">$button-radius</span>: <span class="hljs-number">0</span> !default;
+
+<span class="hljs-comment">// Default sizes for button.</span>
+<span class="hljs-variable">$button-sizes</span>: (
+  tiny: <span class="hljs-number">0.7</span>,
+  small: <span class="hljs-number">0.8</span>,
+  medium: <span class="hljs-number">1</span>,
+  large: <span class="hljs-number">1.3</span>,
+) !default;
+
+<span class="hljs-comment">// Default font size for button.</span>
+<span class="hljs-variable">$button-font-size</span>: <span class="hljs-number">0.9rem</span> !default;
+
+<span class="hljs-comment">// Default opacity for a disabled button.</span>
+<span class="hljs-variable">$button-opacity-disabled</span>: <span class="hljs-number">0.25</span> !default;</code></pre></div>
+
+
+
+
+</div>
+
+<div class="large-3 columns" data-sticky-container>
+  <nav class="columns docs-toc-wrap" data-sticky data-anchor="docs" data-sticky-on="large">
+    <div class="docs-toc hide" id="docsTOC">
+      <ul class="vertical menu" data-docs-toc>
+        <li class="docs-nav-title">On this page:</li>
+      </ul>
+    </div>
+    <div class="foundation-toc-ad-unit" id="TOCAdUnit">
+    </div>
+  </nav>
+</div>
+
+</div>
+
+</article>
+
+        </div>
+        <div class="medium-3 large-2 medium-pull-9 large-pull-10 columns">
+          <ul class="vertical menu docs-nav" id="docs-menu">
+            <li class="docs-nav-version">
+              <span data-docs-version></span>
+              <a href="https://github.com/zurb/foundation-sites/releases/" target="_blank">(Changelog)</a>
+            </li>
+          
+            <li class="docs-nav-title">Getting Started</li>
+            <li><a href="installation.html">Installation</a></li>
+            <li><a href="starter-projects.html">Starter Projects</a></li>
+            <li><a href="compatibility.html">Compatibility</a></li>
+            <li><a href="accessibility.html">Accessibility</a></li>
+            <li><a href="kitchen-sink.html">Kitchen Sink</a></li>
+          
+            <li class="docs-nav-title">Setup</li>
+            <li><a href="global.html">Global Styles</a></li>
+            <li><a href="rtl.html">Right-to-Left Support</a></li>
+            <li><a href="flexbox.html">Flexbox</a></li>
+            <li class="current"><a href="sass.html">Sass</a></li>
+            <li><a href="javascript.html">JavaScript</a></li>
+            <li><a href="javascript-utilities.html">JavaScript Utilities</a></li>
+            <li><a href="media-queries.html">Media Queries</a></li>
+          
+            <li class="docs-nav-title">General</li>
+            <li><a href="grid.html">Grid</a></li>
+            <li><a href="flex-grid.html">Flex Grid</a></li>
+            <li><a href="forms.html">Forms</a></li>
+            <li><a href="visibility.html">Visibility Classes</a></li>
+            <li><a href="float-classes.html">Float Classes</a></li>
+            <li><a href="vertical-rhythm.html">Vertical Rhythm <small class="tbg">TBG</small></a></li>
+          
+            <li class="docs-nav-title">Typography</li>
+            <li><a href="typography-base.html">Base Styles</a></li>
+            <li><a href="typography-helpers.html">Helper Classes</a></li>
+          
+            <li class="docs-nav-title">Controls</li>
+            <li><a href="button.html">Button</a></li>
+            <li><a href="button-group.html">Button Group</a></li>
+            <li><a href="close-button.html">Close Button</a></li>
+            <li><a href="slider.html">Slider <span class="label">JS</span></a></li>
+            <li><a href="switch.html">Switch</a></li>
+          
+            <li class="docs-nav-title">Navigation</li>
+            <li><a href="navigation.html">Overview</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="dropdown-menu.html">Dropdown Menu <span class="label">JS</span></a></li>
+            <li><a href="drilldown-menu.html">Drilldown Menu <span class="label">JS</span></a></li>
+            <li><a href="accordion-menu.html">Accordion Menu <span class="label">JS</span></a></li>
+            <li><a href="top-bar.html">Top Bar</a></li>
+            <li><a href="responsive-navigation.html">Responsive Navigation</a></li>
+            <li><a href="magellan.html">Magellan <span class="label">JS</span></a></li>
+            <li><a href="pagination.html">Pagination</a></li>
+            <li><a href="breadcrumbs.html">Breadcrumbs</a></li>
+          
+            <li class="docs-nav-title">Containers</li>
+            <li><a href="accordion.html">Accordion <span class="label">JS</span></a></li>
+            <li><a href="callout.html">Callout</a></li>
+            <li><a href="card.html">Card</a></li>
+            <li><a href="dropdown.html">Dropdown <span class="label">JS</span></a></li>
+            <li><a href="media-object.html">Media Object</a></li>
+            <li><a href="off-canvas.html">Off-canvas <span class="label">JS</span></a></li>
+            <li><a href="reveal.html">Reveal <span class="label">JS</span> <small>Modal</small></a></li>
+            <li><a href="table.html">Table</a></li>
+            <li><a href="tabs.html">Tabs <span class="label">JS</span></a></li>
+            <li><a href="responsive-accordion-tabs.html">Responsive Accordion Tabs<span class="label">JS</span></a></li>
+          
+            <li class="docs-nav-title">Media</li>
+            <li><a href="badge.html">Badge</a></li>
+            <li><a href="responsive-embed.html">Responsive Embed</a></li>
+            <li><a href="label.html">Label</a></li>
+            <li><a href="orbit.html">Orbit <span class="label">JS</span> <small>Carousel</small></a></li>
+            <li><a href="flickity.html">Flickity <span class="label">JS</span> <small>Carousel</small> <small class="tbg">TBG</small></a></li>
+            <li><a href="progress-bar.html">Progress Bar</a></li>
+            <li><a href="thumbnail.html">Thumbnail</a></li>
+            <li><a href="tooltip.html">Tooltip <span class="label">JS</span></a></li>
+          
+            <li class="docs-nav-title">Plugins</li>
+            <li><a href="abide.html">Abide <small>Form Validation</small></a></li>
+            <li><a href="equalizer.html">Equalizer <small>Column Alignment</small></a></li>
+            <li><a href="interchange.html">Interchange <small>Responsive Content</small></a></li>
+            <li><a href="toggler.html">Toggler <small>CSS Helper</small></a></li>
+            <li><a href="sticky.html">Sticky <small>Header/Sidebar</small></a></li>
+          
+            <li class="docs-nav-title">Sass</li>
+            <li><a href="sass-functions.html">Functions</a></li>
+            <li><a href="sass-mixins.html">Mixins</a></li>
+          
+            <li class="docs-nav-title">Libraries</li>
+            <li><a href="motion-ui.html">Motion UI</a></li>
+            <li><a href="panini.html">Panini</a></li>
+            <li><a href="style-sherpa.html">Style Sherpa</a></li>
+          
+            <li class="docs-nav-title">Older Versions</li>
+            <li><a href="http://foundation.zurb.com/sites/docs/v/5.5.3/index.html">Foundation 5</a></li>
+            <li><a href="http://foundation.zurb.com/sites/docs/v/4.3.2/index.html">Foundation 4</a></li>
+            <li><a href="http://foundation.zurb.com/sites/docs/v/3.2.5/">Foundation 3</a></li>
+            <li><a href="http://foundation.zurb.com/sites/docs/v/2.2.1/">Foundation 2</a></li>
+          </ul>
+          
+        </div>
+      </div>
+
+    </div>
+  </div></div>
+
+  <script>
+  var _gaq = _gaq || [];
+  _gaq.push(
+    ['_setAccount', 'UA-2195009-2'],
+    ['_trackPageview'],
+    ['b._setAccount', 'UA-2195009-27'],
+    ['b._trackPageview']
+  );
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+
+  <script src="assets/js/vendor.js?hash=d9932ef6021713902a85413827b73b64"></script>
+  <script src="assets/js/foundation.js?hash=779157a9b8bb7546bd1e75956030860b"></script>
+  <script src="assets/js/docs.js?hash=e10f577c331636ceb4fb90a9a68fd3e6"></script>
+  <script type="text/javascript" src="https://intercom.zurb.com/scripts/zcom.js"></script>
+  <script type="text/javascript">
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+    fbq('init', '585552368271130');
+    fbq('track', "PageView");
+  </script>
+  <!-- Twitter universal website tag code -->
+  <script>
+    !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
+    },s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='//static.ads-twitter.com/uwt.js',
+    a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+    // Insert Twitter Pixel ID and Standard Event data below
+    twq('init','nvkjx');
+    twq('track','PageView');
+  </script>
+  <!-- End Twitter universal website tag code -->
+
+
+</body>
+</html>

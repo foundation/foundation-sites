@@ -1,0 +1,671 @@
+<!doctype html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Visibility classes let you show or hide elements based on screen size or device orientation. You can also use visibility classes to control which elements users see depending on their browsing environment.">
+  <link rel="icon" href="assets/img/icons/foundation-favicon.ico" type="image/x-icon">
+  <title>Visibility Classes | Foundation for Sites 6 Docs</title>
+  <link href="assets/css/docs.css?hash=80031623eda1ff023c0ff39623ec03ad" rel="stylesheet" />
+  <link href="//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css?hash=bf26037ebb4ecefb8c0d2e24f96f0ac1" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="./node_modules/motion-ui/dist/motion-ui.css" /> -->
+</head>
+<body>
+
+  <!-- Info Banner For Announcements or Links -->
+  <!-- <a href="http://zurb.com/wired" id="notice">
+    <div class="info">
+      <div id="clockdiv" class="countdown">
+          <span class="timer-day days"></span>
+          <span class="timer-colon">:</span>
+        <span class="timer-hour hours"></span>
+        <span class="timer-colon">:</span>
+        <span class="timer-hour minutes"></span>
+        <span class="timer-colon">:</span>
+        <span class="timer-seconds seconds"></span>
+      </div>
+    </div>
+  </a> -->
+
+  <div class="off-canvas-wrapper"><div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+
+    <div class="off-canvas position-left" id="offCanvasLeft" data-off-canvas data-position="left">
+      <button class="close-button" aria-label="Close menu" type="button" data-close>
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <ul class="mobile-ofc vertical menu">
+    
+        <li>
+          <a href="http://zurb.com/responsive">Showcase</a>
+          <ul class="submenu menu vertical" data-submenu>
+            <li><a href="http://zurb.com/responsive">Foundation Showcase</a></li>
+            <li><a href="http://foundation.zurb.com/showcase/brands.html">Brands</a></li>
+            <li><a href="http://foundation.zurb.com/showcase/case-studies.html">Case Studies</a></li>
+            <li><a href="http://foundation.zurb.com/showcase/blog.html">Blog</a></li>
+            <li><a href="http://foundation.zurb.com/showcase/buzz.html">Buzz</a></li>
+            <li><a href="http://foundation.zurb.com/showcase/about.html">About Foundation</a></li>
+          </ul>
+        </li>
+    
+        <li>
+          <a href="http://foundation.zurb.com/develop/getting-started.html">Develop</a>
+          <ul class="submenu menu vertical" data-submenu>
+            <li class="title">Frameworks</li>
+            <li><a href="http://foundation.zurb.com/sites.html">Foundation for Sites</a></li>
+            <li><a href="http://foundation.zurb.com/emails.html">Foundation for Email</a></li>
+            <li class="divider"></li>
+            <li class="title">Develop</li>
+            <li><a href="http://foundation.zurb.com/templates.html">HTML Templates</a></li>
+            <li><a href="http://foundation.zurb.com/sites/resources.html">Resources</a></li>
+            <li><a href="http://foundation.zurb.com/develop/building-blocks.html">Building Blocks</a></li>
+            <li><a href="http://foundation.zurb.com/develop/contribute.html">Contribute</a></li>
+          </ul>
+        </li>
+    
+        <li>
+          <a href="http://foundation.zurb.com/learn/tutorials.html">Tutorials</a>
+          <ul class="submenu menu vertical" data-submenu>
+            <li><a href="http://foundation.zurb.com/learn/tutorials.html">Tutorials</a></li>
+            <li><a href="http://foundation.zurb.com/learn/classes.html">Classes</a></li>
+            <li><a href="http://foundation.zurb.com/learn/custom-training.html">Custom Training</a></li>
+            <li><a href="http://foundation.zurb.com/learn/certification.html">Certification</a></li>
+            <li><a href="http://foundation.zurb.com/learn/responsive-reading.html">Responsive Reading</a></li>
+          </ul>
+        </li>
+    
+        <li>
+          <a href="http://foundation.zurb.com/get-involved/support.html">Get Involved</a>
+          <ul class="submenu menu vertical" data-submenu>
+            <li><a href="http://foundation.zurb.com/get-involved/support.html">Connect</a></li>
+            <li><a href="http://foundation.zurb.com/get-involved/premium-support.html">PLZ Halp</a></li>
+            <li><a href="http://foundation.zurb.com/forum/sort/unanswered">Foundation Forum</a></li>
+            <li><a href="http://foundation.zurb.com/learn/events.html">Events</a></li>
+            <li><a href="http://foundation.zurb.com/get-involved/faq.html">FAQs</a></li>
+            <li><a href="http://foundation.zurb.com/get-involved/contribute.html">Contribute</a></li>
+            <li><a href="http://foundation.zurb.com/get-involved/yetinauts.html">Yetinauts</a></li>
+          </ul>
+        </li>
+    
+        <li>
+          <a href="http://foundation.zurb.com/frameworks-docs.html">Docs</a>
+          <ul class="submenu menu vertical" data-submenu>
+            <li><a href="http://foundation.zurb.com/docs/" target="_blank">Sites Docs</a></li>
+            <li><a href="http://zurb.com/ink/docs.php" target="_blank">Email Docs</a></li>
+          </ul>
+        </li>
+    
+        <li><a href="http://foundation.zurb.com/develop/getting-started.html" class="button">Getting Started</a></li>
+    
+      </ul>
+    </div>
+    
+    <div class="off-canvas position-right" id="offCanvasRight" data-off-canvas data-position="right">
+      <button class="close-button" aria-label="Close menu" type="button" data-close>
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <ul class="vertical menu">
+        <li><a href="#">Foundation</a></li>
+        <li><a href="#">Dot</a></li>
+        <li><a href="#">ZURB</a></li>
+        <li><a href="#">Com</a></li>
+        <li><a href="#">Slash</a></li>
+        <li><a href="#">Sites</a></li>
+      </ul>
+    </div>
+    
+    <div class="off-canvas position-top" id="offCanvasTop" data-off-canvas data-position="top">
+      <button class="close-button" aria-label="Close menu" type="button" data-close>
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <ul class="mobile-ofc vertical menu">
+        <li><a href="#">Off-canvas</a></li>
+        <li><a href="#">Example</a></li>
+        <li><a href="#">Vertical</a></li>
+        <li><a href="#">Menu</a></li>
+        <li><a href="#">From</a></li>
+        <li><a href="#">The</a></li>
+        <li><a href="#">Top</a></li>
+      </ul>
+    </div>
+    
+
+    <div class="off-canvas-content" data-off-canvas-content>
+      <!-- Info Banner For Announcements or Links -->
+      <!-- <a href="http://zurb.com/article/1416/foundation-6-is-here" id="notice">
+        <div class="info">
+          <h5>Foundation 6 is here!</h5>
+        </div>
+      </a> -->
+
+      <nav class="marketing-topbar show-for-medium">
+      
+        <ul class="menu">
+          <li class="topbar-title"><a href="http://foundation.zurb.com/index.html"><img src="assets/img/logos/zurb-logo.svg" alt="ZURB"> Foundation</a></li>
+          <li class="topbar-title"><a href="http://berndtgroup.net"><img src="assets/img/logos/tbg-logo.svg" alt="The Berndt Group"></a></li>
+        </ul>
+      
+        <ul class="dropdown menu" data-dropdown-menu data-click-open="false">
+      
+          <li>
+            <a href="http://zurb.com/responsive">Showcase</a>
+            <ul class="submenu menu vertical" data-submenu>
+              <li><a href="http://zurb.com/responsive">Foundation Showcase</a></li>
+              <li><a href="http://foundation.zurb.com/showcase/brands.html">Brands</a></li>
+              <li><a href="http://foundation.zurb.com/showcase/case-studies.html">Case Studies</a></li>
+              <li><a href="http://foundation.zurb.com/showcase/blog.html">Blog</a></li>
+              <li><a href="http://foundation.zurb.com/showcase/buzz.html">Buzz</a></li>
+              <li><a href="http://foundation.zurb.com/showcase/about.html">About Foundation</a></li>
+            </ul>
+          </li>
+      
+          <li>
+            <a href="http://foundation.zurb.com/develop/getting-started.html">Develop</a>
+            <ul class="submenu menu vertical" data-submenu>
+              <li class="title">Frameworks</li>
+              <li><a href="http://foundation.zurb.com/sites.html">Foundation for Sites</a></li>
+              <li><a href="http://foundation.zurb.com/emails.html">Foundation for Email</a></li>
+              <li class="divider"></li>
+              <li class="title">Develop</li>
+              <li><a href="http://foundation.zurb.com/templates.html">HTML Templates</a></li>
+              <li><a href="http://foundation.zurb.com/sites/resources.html">Resources</a></li>
+              <li><a href="http://foundation.zurb.com/develop/building-blocks.html">Building Blocks</a></li>
+              <li><a href="http://foundation.zurb.com/upload.html">Annotate Code</a></li>
+            </ul>
+          </li>
+      
+          <li>
+            <a href="http://foundation.zurb.com/learn/tutorials.html">Tutorials</a>
+            <ul class="submenu menu vertical" data-submenu>
+              <li><a href="http://foundation.zurb.com/learn/tutorials.html">Tutorials</a></li>
+              <li><a href="http://zurb.com/university/lessons">Lessons</a></li>
+              <li><a href="http://zurb.com/university/courses">Courses</a></li>
+              <li><a href="http://zurb.com/university/training">Custom Training</a>
+              <li><a href="http://foundation.zurb.com/learn/certification.html">Certification</a></li>
+              <li><a href="http://foundation.zurb.com/learn/responsive-reading.html">Responsive Reading</a></li>
+            </ul>
+          </li>
+      
+          <li>
+            <a href="http://foundation.zurb.com/get-involved/contribute.html">Get Involved</a>
+            <ul class="submenu menu vertical" data-submenu>
+              <li><a href="http://foundation.zurb.com/get-involved/support.html">Connect</a></li>
+              <li><a href="http://foundation.zurb.com/get-involved/premium-support.html">PLZ Halp</a></li>
+              <li><a href="http://foundation.zurb.com/forum/">Foundation Forum</a></li>
+              <li><a href="http://foundation.zurb.com/learn/events.html">Events</a></li>
+              <li><a href="http://foundation.zurb.com/get-involved/faq.html">FAQs</a></li>
+              <li><a href="http://foundation.zurb.com/get-involved/contribute.html">Contribute</a></li>
+              <li><a href="http://foundation.zurb.com/get-involved/yetinauts.html">Yetinauts</a></li>
+            </ul>
+          </li>
+      
+          <li>
+            <a href="http://foundation.zurb.com/frameworks-docs.html">Docs</a>
+            <ul class="submenu menu vertical" data-submenu>
+              <li><a href="http://foundation.zurb.com/docs/" target="_blank">Sites Docs</a></li>
+              <li><a href="http://foundation.zurb.com/sites/docs/v/5.5.3/" target="_blank">F5 Docs</a></li>
+              <li><a href="http://foundation.zurb.com/emails/docs/" target="_blank">Email Docs</a></li>
+            </ul>
+          </li>
+      
+          <li><a href="http://foundation.zurb.com/develop/getting-started.html" class="button">Getting Started</a></li>
+      
+        </ul>
+      
+      </nav>
+      
+      <div class="title-bar hide-for-medium">
+        <div class="title-bar-left">
+          <button class="menu-icon" type="button" data-open="offCanvasLeft"></button>
+          <span class="title-bar-title">Foundation</span>
+        </div>
+      </div>
+      
+
+      <input type="text" class="docs-search" data-docs-search placeholder="Find a page, component, variable, mixin, function...">
+
+      <div class="expanded row">
+        <div class="medium-9 large-10 medium-push-3 large-push-2 columns">
+<!-- do not indent -->
+
+<article class="docs-component" id="docs-visibility-classes">
+
+<a href="#docs-menu" class="small secondary expanded button hide-for-medium">Jump to Nav</a>
+
+<header>
+  <h1 class="docs-page-title">Visibility Classes</h1>
+
+
+  <p class="lead docs-page-lead">Visibility classes let you show or hide elements based on screen size or device orientation. You can also use visibility classes to control which elements users see depending on their browsing environment.</p>
+
+  <ul class="menu simple docs-contribute-menu">
+    <li><a href="https://github.com/zurb/foundation-sites/edit/master/docs\pages\visibility.md" target="_blank"><i class="fi-pencil"></i>Edit this Page</a></li>
+    <li><a href="https://github.com/zurb/foundation-sites/issues/new?title=%5BVisibility%20Classes%5D%20ISSUE%20NAME%20HERE" target="_blank"><i class="fi-social-github"></i>Report a Bug</a></li>
+    <li><a href="http://foundation.zurb.com/forum" target="_blank"><i class="fi-comment"></i>Get Help</a></li>
+  </ul>
+</header>
+
+<hr>
+
+<div class="row">
+
+<div class="large-9 columns" id="docs">
+
+<div class="callout primary">
+  <p>Visibility classes use <code>!important</code> to ensure they aren&#39;t overriden by more specific selectors. This framework conscientiously avoids using <code>!important</code> declarations. This is one of the few components that does.</p>
+</div>
+
+<div class="callout warning">
+  <p>There are no classes to detect touchscreen devices, as both desktop and mobile browsers inconsistently report touch support. Learn more here: <a href="http://www.stucox.com/blog/you-cant-detect-a-touchscreen/">You Can&#39;t Detect a Touchscreen</a></p>
+</div>
+
+<h2 id="show-by-screen-size" class="docs-heading" data-magellan-target="show-by-screen-size">Show by Screen Size<a class="docs-heading-icon" href="#show-by-screen-size"></a></h2><p>In this example, we use the <code>.show</code> visibility classes to show certain strings of text based on the device on which users view a page. If their browser meets the class&#39;s conditions, the element will be shown. If not, it will be hidden.</p>
+<div class="docs-code" data-docs-code><pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>You are on a small screen or larger.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"show-for-medium"</span>&gt;</span>You are on a medium screen or larger.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"show-for-large"</span>&gt;</span>You are on a large screen or larger.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre></div>
+
+<div class="docs-code-live"><p>You are on a small screen or larger.</p>
+<p class="show-for-medium">You are on a medium screen or larger.</p>
+<p class="show-for-large">You are on a large screen or larger.</p></div><p>These classes automatically hide the element on screen sizes <em>below</em> what&#39;s specified in the class. So <code>.show-for-medium</code> will hide the element on small, and show it on medium and larger.</p>
+<p>A separate set of classes allow you to show content <em>only</em> on a certain screen size. Just add <code>-only</code> to the end of the class.</p>
+<div class="primary callout">
+  <p>Don&#39;t see any text below the code sample? You must be on an <em>extra</em> large screen.</p>
+</div>
+
+<div class="docs-code" data-docs-code><pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"show-for-small-only"</span>&gt;</span>You are <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>definitely<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span> on a small screen.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"show-for-medium-only"</span>&gt;</span>You are <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>definitely<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span> on a medium screen.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"show-for-large-only"</span>&gt;</span>You are <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>definitely<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span> on a large screen.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre></div>
+
+<div class="docs-code-live"><p class="show-for-small-only">You are <em>definitely</em> on a small screen.</p>
+<p class="show-for-medium-only">You are <em>definitely</em> on a medium screen.</p>
+<p class="show-for-large-only">You are <em>definitely</em> on a large screen.</p></div><hr>
+<h2 id="hide-by-screen-size" class="docs-heading" data-magellan-target="hide-by-screen-size">Hide by Screen Size<a class="docs-heading-icon" href="#hide-by-screen-size"></a></h2><p>This example shows the opposite: It uses the <code>.hide</code> visibility classes to state which elements should disappear based on the device&#39;s screen size.</p>
+<div class="primary callout">
+  <p>There&#39;s no <code>.hide-for-small</code> class, because that would just permanently hide the element. For that, you can use the plain old <code>.hide</code> class instead.</p>
+</div>
+
+<div class="docs-code" data-docs-code><pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hide-for-medium"</span>&gt;</span>You are <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>not<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span> on a medium screen or larger.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hide-for-large"</span>&gt;</span>You are <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>not<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span> on a large screen or larger.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre></div>
+
+<div class="docs-code-live"><p class="hide-for-medium">You are <em>not</em> on a medium screen or larger.</p>
+<p class="hide-for-large">You are <em>not</em> on a large screen or larger.</p></div><p class="show-for-large">If you&#39;re reading this, you&#39;re on a large screen, and can&#39;t see either of the above examples.</p>
+
+<p>Like with <code>.show</code>, these classes also have <code>-only</code> versions.</p>
+<div class="docs-code" data-docs-code><pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hide-for-small-only"</span>&gt;</span>You are <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>definitely not<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span> on a small screen.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hide-for-medium-only"</span>&gt;</span>You are <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>definitely not<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span> on a medium screen.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hide-for-large-only"</span>&gt;</span>You are <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>definitely not<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span> on a large screen.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre></div>
+
+<div class="docs-code-live"><p class="hide-for-small-only">You are <em>definitely not</em> on a small screen.</p>
+<p class="hide-for-medium-only">You are <em>definitely not</em> on a medium screen.</p>
+<p class="hide-for-large-only">You are <em>definitely not</em> on a large screen.</p></div><h3 id="generic-hide-classes" class="docs-heading">Generic Hide Classes<a class="docs-heading-icon" href="#generic-hide-classes"></a></h3><p>And if you really just need something hidden no matter what, there are classes for that as well. The <code>.hide</code> and <code>.invisible</code> classes respectively set <code>display: none</code> and <code>visibility: hidden</code> on an element. Note that both of these classes hide content from screen readers.</p>
+<div class="docs-code" data-docs-code><pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"hide"</span>&gt;</span>Can't touch this.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"invisible"</span>&gt;</span>Can sort of touch this.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre></div><hr>
+<h2 id="orientation-detection" class="docs-heading" data-magellan-target="orientation-detection">Orientation Detection<a class="docs-heading-icon" href="#orientation-detection"></a></h2><p>This straightforward example shows how two strings of text determine whether or not an element is visible in different orientations. This will change on mobile devices when you rotate the device. On desktop, the orientation is almost always reported as landscape.</p>
+<div class="docs-code" data-docs-code><pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"show-for-landscape"</span>&gt;</span>You are in landscape orientation.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"show-for-portrait"</span>&gt;</span>You are in portrait orientation.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre></div>
+
+<div class="docs-code-live"><p class="show-for-landscape">You are in landscape orientation.</p>
+<p class="show-for-portrait">You are in portrait orientation.</p></div><hr>
+<h2 id="accessibility" class="docs-heading" data-magellan-target="accessibility">Accessibility<a class="docs-heading-icon" href="#accessibility"></a></h2><p>Adding <code>display: none</code> to an element will prevent screen readers from reading it. However, there are techniques to hide content while still making it readable by screen readers.</p>
+<h3 id="show-for-screen-readers-only" class="docs-heading">Show for Screen Readers Only<a class="docs-heading-icon" href="#show-for-screen-readers-only"></a></h3><p>To visually hide content, while still allowing assistive technology to read it, add the class show-for-sr.</p>
+<div class="docs-code" data-docs-code><pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"show-for-sr"</span>&gt;</span>This text can only be read by a screen reader.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>There's a line of text above this one, you just can't see it.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre></div>
+
+<div class="docs-code-live"><p class="show-for-sr">This text can only be read by a screen reader.</p>
+<p>There's a line of text above this one, you just can't see it.</p></div><h3 id="hide-for-screen-readers-only" class="docs-heading">Hide for Screen Readers Only<a class="docs-heading-icon" href="#hide-for-screen-readers-only"></a></h3><p>To hide text from assistive technology, while still keeping it visible, add the attribute <code>aria-hidden=&quot;true&quot;</code>. This doesn&#39;t affect how the element looks, but screen readers will skip over it.</p>
+<div class="primary callout">
+  <p>It&#39;s usually not a good idea to hide content from screen readers. <code>aria-hidden</code> is best used to mask purely visual elements of a page.</p>
+</div>
+
+<div class="docs-code" data-docs-code><pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">aria-hidden</span>=<span class="hljs-string">"true"</span>&gt;</span>This text can be seen, but won't be read by a screen reader.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></code></pre></div>
+
+<div class="docs-code-live"><p aria-hidden="true">This text can be seen, but won't be read by a screen reader.</p></div><h3 id="creating-skip-links" class="docs-heading">Creating Skip Links<a class="docs-heading-icon" href="#creating-skip-links"></a></h3><p>If your site has a lot of navigation, a screen reader will have to read through the entire navigation to get to your site&#39;s content. To remedy this, you can add a <em>skip link</em> at the very top of your page, which will send the user farther down the page, past the navigation when clicked on.</p>
+<p>Use the class <code>.show-on-focus</code> to hide an element, except when it has focus. Adding tabindex=&quot;0&quot; to the target element makes if focusable.</p>
+<div class="docs-code" data-docs-code><pre><code class="html"><span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"show-on-focus"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#mainContent"</span>&gt;</span>Skip to Content<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"header"</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"banner"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">main</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"mainContent"</span> <span class="hljs-attr">role</span>=<span class="hljs-string">"main"</span> <span class="hljs-attr">tabindex</span>=<span class="hljs-string">"0"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span></code></pre></div>
+
+<div class="docs-code-live"><p><a class="show-on-focus" href="#mainContent">Skip to Content</a></p>
+
+<header id="header" role="banner">
+</header>
+
+<main id="mainContent" role="main" tabindex="0">
+</main></div>
+
+<hr>
+<section>
+  <h2 id="sass-reference" class="docs-heading" data-magellan-target="sass-reference">Sass Reference<a class="docs-heading-icon" href="#sass-reference"></a></h2>
+
+
+  
+
+  <section>
+    <h3 id="sass-mixins" class="docs-heading">Mixins<a class="docs-heading-icon" href="#sass-mixins"></a></h3>
+
+    <p>We use these mixins to build the final CSS output of this component. You can use the mixins yourself to build your own class structure out of our components.</p>
+
+    
+    <section >
+      <h4 id="show-for" class="docs-heading">show-for<a class="docs-heading-icon" href="#show-for"></a></h4>
+
+
+
+      <div class="docs-code">
+        <pre><code>@<span class="hljs-keyword">include</span> show-for(<span class="hljs-variable">$size</span>);</code></pre>
+      </div>
+
+      <p>Hide an element by default, only displaying it above a certain screen size.</p>
+
+
+
+      
+
+      <table class="docs-variable-table">
+        <thead>
+          <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        </thead>
+        <tr>
+          <td><code>$size</code></td>
+          <td>Keyword</td>
+          <td><code><span style="color: #999;">None</span></code></td>
+          <td><p>Breakpoint to use. <strong>Must be a breakpoint defined in <code>$breakpoints</code>.</strong></p>
+</td>
+        </tr>
+      </table>
+    </section>
+
+    <hr>
+
+
+    
+    <section >
+      <h4 id="show-for-only" class="docs-heading">show-for-only<a class="docs-heading-icon" href="#show-for-only"></a></h4>
+
+
+
+      <div class="docs-code">
+        <pre><code>@<span class="hljs-keyword">include</span> show-for-only(<span class="hljs-variable">$size</span>);</code></pre>
+      </div>
+
+      <p>Hide an element by default, only displaying it within a certain breakpoint.</p>
+
+
+
+      
+
+      <table class="docs-variable-table">
+        <thead>
+          <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        </thead>
+        <tr>
+          <td><code>$size</code></td>
+          <td>Keyword</td>
+          <td><code><span style="color: #999;">None</span></code></td>
+          <td><p>Breakpoint to use. <strong>Must be a breakpoint defined in <code>$breakpoints</code>.</strong></p>
+</td>
+        </tr>
+      </table>
+    </section>
+
+    <hr>
+
+
+    
+    <section >
+      <h4 id="hide-for" class="docs-heading">hide-for<a class="docs-heading-icon" href="#hide-for"></a></h4>
+
+
+
+      <div class="docs-code">
+        <pre><code>@<span class="hljs-keyword">include</span> hide-for(<span class="hljs-variable">$size</span>);</code></pre>
+      </div>
+
+      <p>Show an element by default, and hide it above a certain screen size.</p>
+
+
+
+      
+
+      <table class="docs-variable-table">
+        <thead>
+          <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        </thead>
+        <tr>
+          <td><code>$size</code></td>
+          <td>Keyword</td>
+          <td><code><span style="color: #999;">None</span></code></td>
+          <td><p>Breakpoint to use. <strong>Must be a breakpoint defined in <code>$breakpoints</code>.</strong></p>
+</td>
+        </tr>
+      </table>
+    </section>
+
+    <hr>
+
+
+    
+    <section >
+      <h4 id="hide-for-only" class="docs-heading">hide-for-only<a class="docs-heading-icon" href="#hide-for-only"></a></h4>
+
+
+
+      <div class="docs-code">
+        <pre><code>@<span class="hljs-keyword">include</span> hide-for-only(<span class="hljs-variable">$size</span>);</code></pre>
+      </div>
+
+      <p>Show an element by default, and hide it above a certain screen size.</p>
+
+
+
+      
+
+      <table class="docs-variable-table">
+        <thead>
+          <tr><th>Parameter</th><th>Type</th><th>Default Value</th><th>Description</th></tr>
+        </thead>
+        <tr>
+          <td><code>$size</code></td>
+          <td>Keyword</td>
+          <td><code><span style="color: #999;">None</span></code></td>
+          <td><p>Breakpoint to use. <strong>Must be a breakpoint defined in <code>$breakpoints</code>.</strong></p>
+</td>
+        </tr>
+      </table>
+    </section>
+
+    
+
+
+    
+  </section>
+
+
+</section>
+
+
+<!-- <hr> -->
+<!-- <section class="docs-building-blocks">
+  <h2 id="building-blocks" class="docs-heading" data-magellan-target="building-blocks">Building Blocks<a class="docs-heading-icon" href="#building-blocks"></a></h2>
+
+  <p><a href="http://zurb.com/building-blocks">Building Blocks</a> is a ZURB-curated resource with useful code snippets that use Foundation components. Here are a few for this component:</p>
+
+  <div class="warning callout">
+    <p>These are placeholder items. If you have ideas for building blocks for this component, <a href="https://github.com/zurb/foundation-sites-6/issues/118">we're taking ideas on GitHub</a>.</p>
+  </div>
+
+  <div data-building-blocks></div>
+</section> -->
+
+</div>
+
+<div class="large-3 columns" data-sticky-container>
+  <nav class="columns docs-toc-wrap" data-sticky data-anchor="docs" data-sticky-on="large">
+    <div class="docs-toc hide" id="docsTOC">
+      <ul class="vertical menu" data-docs-toc>
+        <li class="docs-nav-title">On this page:</li>
+      </ul>
+    </div>
+    <div class="foundation-toc-ad-unit" id="TOCAdUnit">
+    </div>
+  </nav>
+</div>
+
+</div>
+
+</article>
+
+        </div>
+        <div class="medium-3 large-2 medium-pull-9 large-pull-10 columns">
+          <ul class="vertical menu docs-nav" id="docs-menu">
+            <li class="docs-nav-version">
+              <span data-docs-version></span>
+              <a href="https://github.com/zurb/foundation-sites/releases/" target="_blank">(Changelog)</a>
+            </li>
+          
+            <li class="docs-nav-title">Getting Started</li>
+            <li><a href="installation.html">Installation</a></li>
+            <li><a href="starter-projects.html">Starter Projects</a></li>
+            <li><a href="compatibility.html">Compatibility</a></li>
+            <li><a href="accessibility.html">Accessibility</a></li>
+            <li><a href="kitchen-sink.html">Kitchen Sink</a></li>
+          
+            <li class="docs-nav-title">Setup</li>
+            <li><a href="global.html">Global Styles</a></li>
+            <li><a href="rtl.html">Right-to-Left Support</a></li>
+            <li><a href="flexbox.html">Flexbox</a></li>
+            <li><a href="sass.html">Sass</a></li>
+            <li><a href="javascript.html">JavaScript</a></li>
+            <li><a href="javascript-utilities.html">JavaScript Utilities</a></li>
+            <li><a href="media-queries.html">Media Queries</a></li>
+          
+            <li class="docs-nav-title">General</li>
+            <li><a href="grid.html">Grid</a></li>
+            <li><a href="flex-grid.html">Flex Grid</a></li>
+            <li><a href="forms.html">Forms</a></li>
+            <li class="current"><a href="visibility.html">Visibility Classes</a></li>
+            <li><a href="float-classes.html">Float Classes</a></li>
+            <li><a href="vertical-rhythm.html">Vertical Rhythm <small class="tbg">TBG</small></a></li>
+          
+            <li class="docs-nav-title">Typography</li>
+            <li><a href="typography-base.html">Base Styles</a></li>
+            <li><a href="typography-helpers.html">Helper Classes</a></li>
+          
+            <li class="docs-nav-title">Controls</li>
+            <li><a href="button.html">Button</a></li>
+            <li><a href="button-group.html">Button Group</a></li>
+            <li><a href="close-button.html">Close Button</a></li>
+            <li><a href="slider.html">Slider <span class="label">JS</span></a></li>
+            <li><a href="switch.html">Switch</a></li>
+          
+            <li class="docs-nav-title">Navigation</li>
+            <li><a href="navigation.html">Overview</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="dropdown-menu.html">Dropdown Menu <span class="label">JS</span></a></li>
+            <li><a href="drilldown-menu.html">Drilldown Menu <span class="label">JS</span></a></li>
+            <li><a href="accordion-menu.html">Accordion Menu <span class="label">JS</span></a></li>
+            <li><a href="top-bar.html">Top Bar</a></li>
+            <li><a href="responsive-navigation.html">Responsive Navigation</a></li>
+            <li><a href="magellan.html">Magellan <span class="label">JS</span></a></li>
+            <li><a href="pagination.html">Pagination</a></li>
+            <li><a href="breadcrumbs.html">Breadcrumbs</a></li>
+          
+            <li class="docs-nav-title">Containers</li>
+            <li><a href="accordion.html">Accordion <span class="label">JS</span></a></li>
+            <li><a href="callout.html">Callout</a></li>
+            <li><a href="card.html">Card</a></li>
+            <li><a href="dropdown.html">Dropdown <span class="label">JS</span></a></li>
+            <li><a href="media-object.html">Media Object</a></li>
+            <li><a href="off-canvas.html">Off-canvas <span class="label">JS</span></a></li>
+            <li><a href="reveal.html">Reveal <span class="label">JS</span> <small>Modal</small></a></li>
+            <li><a href="table.html">Table</a></li>
+            <li><a href="tabs.html">Tabs <span class="label">JS</span></a></li>
+            <li><a href="responsive-accordion-tabs.html">Responsive Accordion Tabs<span class="label">JS</span></a></li>
+          
+            <li class="docs-nav-title">Media</li>
+            <li><a href="badge.html">Badge</a></li>
+            <li><a href="responsive-embed.html">Responsive Embed</a></li>
+            <li><a href="label.html">Label</a></li>
+            <li><a href="orbit.html">Orbit <span class="label">JS</span> <small>Carousel</small></a></li>
+            <li><a href="flickity.html">Flickity <span class="label">JS</span> <small>Carousel</small> <small class="tbg">TBG</small></a></li>
+            <li><a href="progress-bar.html">Progress Bar</a></li>
+            <li><a href="thumbnail.html">Thumbnail</a></li>
+            <li><a href="tooltip.html">Tooltip <span class="label">JS</span></a></li>
+          
+            <li class="docs-nav-title">Plugins</li>
+            <li><a href="abide.html">Abide <small>Form Validation</small></a></li>
+            <li><a href="equalizer.html">Equalizer <small>Column Alignment</small></a></li>
+            <li><a href="interchange.html">Interchange <small>Responsive Content</small></a></li>
+            <li><a href="toggler.html">Toggler <small>CSS Helper</small></a></li>
+            <li><a href="sticky.html">Sticky <small>Header/Sidebar</small></a></li>
+          
+            <li class="docs-nav-title">Sass</li>
+            <li><a href="sass-functions.html">Functions</a></li>
+            <li><a href="sass-mixins.html">Mixins</a></li>
+          
+            <li class="docs-nav-title">Libraries</li>
+            <li><a href="motion-ui.html">Motion UI</a></li>
+            <li><a href="panini.html">Panini</a></li>
+            <li><a href="style-sherpa.html">Style Sherpa</a></li>
+          
+            <li class="docs-nav-title">Older Versions</li>
+            <li><a href="http://foundation.zurb.com/sites/docs/v/5.5.3/index.html">Foundation 5</a></li>
+            <li><a href="http://foundation.zurb.com/sites/docs/v/4.3.2/index.html">Foundation 4</a></li>
+            <li><a href="http://foundation.zurb.com/sites/docs/v/3.2.5/">Foundation 3</a></li>
+            <li><a href="http://foundation.zurb.com/sites/docs/v/2.2.1/">Foundation 2</a></li>
+          </ul>
+          
+        </div>
+      </div>
+
+    </div>
+  </div></div>
+
+  <script>
+  var _gaq = _gaq || [];
+  _gaq.push(
+    ['_setAccount', 'UA-2195009-2'],
+    ['_trackPageview'],
+    ['b._setAccount', 'UA-2195009-27'],
+    ['b._trackPageview']
+  );
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+
+  <script src="assets/js/vendor.js?hash=e1c3fb3951802caa5f6fc7f0ec6ec7b5"></script>
+  <script src="assets/js/foundation.js?hash=654db83e7f672bbe91107547c6ec3064"></script>
+  <script src="assets/js/docs.js?hash=a9e307ecadcb369ded101d33e721208d"></script>
+  <script type="text/javascript" src="https://intercom.zurb.com/scripts/zcom.js"></script>
+  <script type="text/javascript">
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+    fbq('init', '585552368271130');
+    fbq('track', "PageView");
+  </script>
+  <!-- Twitter universal website tag code -->
+  <script>
+    !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
+    },s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='//static.ads-twitter.com/uwt.js',
+    a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+    // Insert Twitter Pixel ID and Standard Event data below
+    twq('init','nvkjx');
+    twq('track','PageView');
+  </script>
+  <!-- End Twitter universal website tag code -->
+
+
+</body>
+</html>
