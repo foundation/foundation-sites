@@ -67,7 +67,7 @@ $card-margin: $global-margin !default;
   box-shadow: $shadow;
 
   overflow: hidden;
-  color: $card-font-color;
+  color: $color;
 
   & > :last-child {
     margin-bottom: 0;
