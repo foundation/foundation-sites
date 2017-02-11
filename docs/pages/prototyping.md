@@ -47,7 +47,9 @@ Looking for more customization including responsive breakpoints? Click here for 
 
 ## Rounded Elements
 
-These `.rounded` classes helps to make an element round its corners. This will help you quickly style the borders of an element. Mostly used in images, buttons and more
+These `.rounded` classes helps to make an element round its corners. This will help you quickly style the borders of an element. Mostly used in buttons, images, cards and more
+
+#### Buttons
 
 ```html_example
 <button type="button" class="button rounded primary">Primary</button>
@@ -56,6 +58,8 @@ These `.rounded` classes helps to make an element round its corners. This will h
 <button type="button" class="button rounded alert">Alert</button>
 <button type="button" class="button rounded warning">Warning</button>
 ```
+
+#### Images
 
 ```html
 <img src="" class="rounded">
@@ -66,13 +70,69 @@ These `.rounded` classes helps to make an element round its corners. This will h
 <img src="" class="rounded-left">
 ``` 
 
-<div class="docs-code-live">
+<div class="docs-code-live m-b-20">
 	<img src="http://placehold.it/100x100" class="rounded m-r-10">
 	<img src="http://placehold.it/100x100" class="rounded-circle m-r-10">
 	<img src="http://placehold.it/100x100" class="rounded-top m-r-10">
 	<img src="http://placehold.it/100x100" class="rounded-right m-r-10">
 	<img src="http://placehold.it/100x100" class="rounded-bottom m-r-10">
 	<img src="http://placehold.it/100x100" class="rounded-left m-r-10">
+</div>
+
+#### Cards
+
+```html
+<div class="rounded card">
+  <img src="assets/img/generic/rectangle-1.jpg">
+  <div class="card-divider">
+    This is a Middle section
+  </div>
+  <div class="card-section">
+    <h4>This is a card.</h4>
+    <p>It has an easy to override visual style, and is appropriately subdued.</p>
+  </div>
+</div>
+```
+
+<div class="docs-code-live">
+	<div class="row">
+		<div class="small-4 columns">
+			<div class="rounded card">
+			  <img src="assets/img/generic/rectangle-1.jpg">
+			  <div class="card-divider">
+			    Rounded Card
+			  </div>
+			  <div class="card-section">
+			    <h4>This is a card.</h4>
+			    <p>It has an easy to override visual style, and is appropriately subdued.</p>
+			  </div>
+			</div>
+		</div>
+		<div class="small-4 columns">
+			<div class="rounded card">
+			  <img src="assets/img/generic/rectangle-1.jpg">
+			  <div class="card-divider">
+			    Rounded Card
+			  </div>
+			  <div class="card-section">
+			    <h4>This is a card.</h4>
+			    <p>It has an easy to override visual style, and is appropriately subdued.</p>
+			  </div>
+			</div>
+		</div>
+		<div class="small-4 columns">
+			<div class="rounded card">
+			  <img src="assets/img/generic/rectangle-1.jpg">
+			  <div class="card-divider">
+			    Rounded Card
+			  </div>
+			  <div class="card-section">
+			    <h4>This is a card.</h4>
+			    <p>It has an easy to override visual style, and is appropriately subdued.</p>
+			  </div>
+			</div>
+		</div>
+	</div>
 </div>
 
 ---
