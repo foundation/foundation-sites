@@ -149,7 +149,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         } else {
           this.isRevealed = false;
           this.$element.attr('aria-hidden', 'true');
-          this.$element.on({
+          this.$element.off('open.zf.trigger toggle.zf.trigger').on({
             'open.zf.trigger': this.open.bind(this),
             'toggle.zf.trigger': this.toggle.bind(this)
           });
@@ -168,6 +168,44 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       key: '_stopScrolling',
       value: function _stopScrolling(event) {
         return false;
+      }
+
+      // Taken and adapted from http://stackoverflow.com/questions/16889447/prevent-full-page-scrolling-ios
+      // Only really works for y, not sure how to extend to x or if we need to.
+
+    }, {
+      key: '_recordScrollable',
+      value: function _recordScrollable(event) {
+        var elem = this; // called from event handler context with this as elem
+
+        // If the element is scrollable (content overflows), then...
+        if (elem.scrollHeight !== elem.clientHeight) {
+          // If we're at the top, scroll down one pixel to allow scrolling up
+          if (elem.scrollTop === 0) {
+            elem.scrollTop = 1;
+          }
+          // If we're at the bottom, scroll up one pixel to allow scrolling down
+          if (elem.scrollTop === elem.scrollHeight - elem.clientHeight) {
+            elem.scrollTop = elem.scrollHeight - elem.clientHeight - 1;
+          }
+        }
+        elem.allowUp = elem.scrollTop > 0;
+        elem.allowDown = elem.scrollTop < elem.scrollHeight - elem.clientHeight;
+        elem.lastY = event.originalEvent.pageY;
+      }
+    }, {
+      key: '_stopScrollPropagation',
+      value: function _stopScrollPropagation(event) {
+        var elem = this; // called from event handler context with this as elem
+        var up = event.pageY < elem.lastY;
+        var down = !up;
+        elem.lastY = event.pageY;
+
+        if (up && elem.allowUp || down && elem.allowDown) {
+          event.stopPropagation();
+        } else {
+          event.preventDefault();
+        }
       }
 
       /**
@@ -208,6 +246,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         // If `contentScroll` is set to false, add class and disable scrolling on touch devices.
         if (this.options.contentScroll === false) {
           $('body').addClass('is-off-canvas-open').on('touchmove', this._stopScrolling);
+          this.$element.on('touchstart', this._recordScrollable);
+          this.$element.on('touchmove', this._stopScrollPropagation);
         }
 
         if (this.options.contentOverlay === true) {
@@ -220,7 +260,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         if (this.options.autoFocus === true) {
           this.$element.one(Foundation.transitionend(this.$element), function () {
-            _this.$element.find('a, button').eq(0).focus();
+            var canvasFocus = _this.$element.find('[data-autofocus]');
+            if (canvasFocus.length) {
+              canvasFocus.eq(0).focus();
+            } else {
+              _this.$element.find('a, button').eq(0).focus();
+            }
           });
         }
 
@@ -258,6 +303,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         // If `contentScroll` is set to false, remove class and re-enable scrolling on touch devices.
         if (this.options.contentScroll === false) {
           $('body').removeClass('is-off-canvas-open').off('touchmove', this._stopScrolling);
+          this.$element.off('touchstart', this._recordScrollable);
+          this.$element.off('touchmove', this._stopScrollPropagation);
         }
 
         if (this.options.contentOverlay === true) {
@@ -340,78 +387,89 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /**
      * Allow the user to click outside of the menu to close it.
      * @option
-     * @example true
+     * @type {boolean}
+     * @default true
      */
     closeOnClick: true,
 
     /**
      * Adds an overlay on top of `[data-off-canvas-content]`.
      * @option
-     * @example true
+     * @type {boolean}
+     * @default true
      */
     contentOverlay: true,
 
     /**
      * Enable/disable scrolling of the main content when an off canvas panel is open.
      * @option
-     * @example true
+     * @type {boolean}
+     * @default true
      */
     contentScroll: true,
 
     /**
      * Amount of time in ms the open and close transition requires. If none selected, pulls from body style.
      * @option
-     * @example 500
+     * @type {number}
+     * @default 0
      */
     transitionTime: 0,
 
     /**
      * Type of transition for the offcanvas menu. Options are 'push', 'detached' or 'slide'.
      * @option
-     * @example push
+     * @type {string}
+     * @default push
      */
     transition: 'push',
 
     /**
      * Force the page to scroll to top or bottom on open.
      * @option
-     * @example top
+     * @type {?string}
+     * @default null
      */
     forceTo: null,
 
     /**
      * Allow the offcanvas to remain open for certain breakpoints.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     isRevealed: false,
 
     /**
      * Breakpoint at which to reveal. JS will use a RegExp to target standard classes, if changing classnames, pass your class with the `revealClass` option.
      * @option
-     * @example reveal-for-large
+     * @type {?string}
+     * @default null
      */
     revealOn: null,
 
     /**
      * Force focus to the offcanvas on open. If true, will focus the opening trigger on close.
      * @option
-     * @example true
+     * @type {boolean}
+     * @default true
      */
     autoFocus: true,
 
     /**
      * Class used to force an offcanvas to remain open. Foundation defaults for this are `reveal-for-large` & `reveal-for-medium`.
      * @option
-     * TODO improve the regex testing for this.
-     * @example reveal-for-large
+     * @type {string}
+     * @default reveal-for-
+     * @todo improve the regex testing for this.
      */
     revealClass: 'reveal-for-',
 
     /**
      * Triggers optional focus trapping when opening an offcanvas. Sets tabindex of [data-off-canvas-content] to -1 for accessibility purposes.
      * @option
-     * @example true
+     * @type {boolean}
+     * @default false
      */
     trapFocus: false
   };

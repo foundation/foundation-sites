@@ -14,6 +14,7 @@
 .idea
 .sass-cache/*
 .yardoc
+.publish
 _build
 .customizer
 

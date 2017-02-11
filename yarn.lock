@@ -1786,7 +1786,7 @@ es6-map@^0.1.3:
     es6-symbol "~3.1.0"
     event-emitter "~0.3.4"
 
-es6-promise@^2.0.1:
+es6-promise@^2.0.1, es6-promise@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/es6-promise/-/es6-promise-2.3.0.tgz#96edb9f2fdb01995822b263dd8aadab6748181bc"
 
@@ -2416,6 +2416,12 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
+gift@^0.6.1:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/gift/-/gift-0.6.1.tgz#c1698e6b6887164ed978a01095423cff65b8e79f"
+  dependencies:
+    underscore "1.x.x"
+
 glob-all@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/glob-all/-/glob-all-3.1.0.tgz#8913ddfb5ee1ac7812656241b03d5217c64b02ab"
@@ -2724,6 +2730,17 @@ gulp-filter@^4.0.0:
     gulp-util "^3.0.6"
     multimatch "^2.0.0"
     streamfilter "^1.0.5"
+
+gulp-gh-pages@^0.5.4:
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/gulp-gh-pages/-/gulp-gh-pages-0.5.4.tgz#a6732ca475ab9b5a53253c1c24734c40c21b6546"
+  dependencies:
+    gift "^0.6.1"
+    gulp-util "^3.0.7"
+    readable-stream "^2.0.2"
+    rimraf "^2.4.3"
+    vinyl-fs "^2.2.1"
+    wrap-promise "^1.0.1"
 
 gulp-if@^2.0.0:
   version "2.0.2"
@@ -5856,7 +5873,7 @@ right-align@^0.1.1:
   dependencies:
     align-text "^0.1.1"
 
-rimraf@2, rimraf@2.*, rimraf@^2.2.8, rimraf@^2.3.2, rimraf@~2.5.1, rimraf@~2.5.4:
+rimraf@2, rimraf@2.*, rimraf@^2.2.8, rimraf@^2.3.2, rimraf@^2.4.3, rimraf@~2.5.1, rimraf@~2.5.4:
   version "2.5.4"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.5.4.tgz#96800093cbf1a0c86bd95b4625467535c29dfa04"
   dependencies:
@@ -6849,7 +6866,7 @@ underscore@1.7.x:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.7.0.tgz#6bbaf0877500d36be34ecaa584e0db9fef035209"
 
-underscore@^1.8.3, underscore@~1.8.3:
+underscore@1.x.x, underscore@^1.8.3, underscore@~1.8.3:
   version "1.8.3"
   resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.8.3.tgz#4f3fb53b106e6097fcf9cb4109f2a5e9bdfa5022"
 
@@ -6994,7 +7011,7 @@ vinyl-fs@^1.0.0:
     through2 "^0.6.1"
     vinyl "^0.4.0"
 
-vinyl-fs@^2.3.0, vinyl-fs@^2.4.4:
+vinyl-fs@^2.2.1, vinyl-fs@^2.3.0, vinyl-fs@^2.4.4:
   version "2.4.4"
   resolved "https://registry.yarnpkg.com/vinyl-fs/-/vinyl-fs-2.4.4.tgz#be6ff3270cb55dfd7d3063640de81f25d7532239"
   dependencies:
@@ -7144,6 +7161,12 @@ wrap-ansi@^2.0.0:
   dependencies:
     string-width "^1.0.1"
     strip-ansi "^3.0.1"
+
+wrap-promise@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/wrap-promise/-/wrap-promise-1.0.1.tgz#b019f4236ccbf1fb560921b4b4870b7bda2f5255"
+  dependencies:
+    es6-promise "^2.3.0"
 
 wrappy@1:
   version "1.0.2"

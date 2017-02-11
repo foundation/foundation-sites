@@ -6,8 +6,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
   /**
    * Flickity Carousel module.
+   * By The Berndt Group
    * @module foundation.flickity
-   * @requires foundation.util.keyboard
+   * @requires jquery.mousewheel
    * @requires flickity.pkgd
    */
 
@@ -22,22 +23,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _classCallCheck(this, FlickityCarousel);
 
       this.$element = element;
-      this.element = element[0];
       this.options = $.extend({}, FlickityCarousel.defaults, this.$element.data(), options);
+      this.id = this.$element[0].id || Foundation.GetYoDigits(6, 'flickity');
 
       this._init();
 
       Foundation.registerPlugin(this, 'FlickityCarousel');
-      Foundation.Keyboard.register('FlickityCarousel', {
-        'ltr': {
-          'ARROW_RIGHT': 'next',
-          'ARROW_LEFT': 'previous'
-        },
-        'rtl': {
-          'ARROW_LEFT': 'next',
-          'ARROW_RIGHT': 'previous'
-        }
-      });
     }
 
     /**
@@ -50,15 +41,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     _createClass(FlickityCarousel, [{
       key: '_init',
       value: function _init() {
-        this._reset();
+        if (this.options.horizontalScrolling) {
+          if (!this.options.cellAlign) {
+            this.options.cellAlign = 'left';
+          }
+          if (!this.options.cellAlign) {
+            this.options.freeScroll = true;
+          }
+        }
 
-        this.flickity = new Flickity(this.element, this.options);
-
-        var id = this.$element[0].id || Foundation.GetYoDigits(6, 'flickity');
+        this._enableFlickity();
 
         this.$element.attr({
-          'data-resize': id,
-          'id': id
+          'data-resize': this.id,
+          'id': this.id
         });
 
         this._events();
@@ -76,24 +72,97 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     }, {
       key: '_events',
-      value: function _events() {}
-      // var _this = this;
-      //
-      // if (this.options.x) {
-      // }
+      value: function _events() {
+        var _this = this,
+            mediaqueryListener = this.mediaqueryListener = 'changed.zf.mediaquery.' + this.id;
 
+        if (this.options.horizontalScrolling) {
+          this.$element.off('mousewheel.zf.flickity DOMMouseScroll.zf.flickity').on('mousewheel.zf.flickity DOMMouseScroll.zf.flickity', function (e) {
+            if (!window.wheeling) {
+              if (e.deltaX > 0 || e.deltaY < 0) {
+                _this.$element.flickity('next');
+              } else if (e.deltaX < 0 || e.deltaY > 0) {
+                _this.$element.flickity('previous');
+              }
+            }
+
+            clearTimeout(window.wheeling);
+
+            window.wheeling = setTimeout(function () {
+              delete window.wheeling;
+
+              if (window.wheeldata) {
+                window.wheeldelta.x = 0;
+                window.wheeldelta.y = 0;
+              }
+            }, 250);
+
+            if (window.wheeldelta) {
+              window.wheeldelta.x += e.deltaFactor * e.deltaX;
+              window.wheeldelta.y += e.deltaFactor * e.deltaY;
+
+              if (window.wheeldelta.x > 500 || window.wheeldelta.y > 500 || window.wheeldelta.x < -500 || window.wheeldelta.y < -500) {
+                window.wheeldelta.x = 0;
+                window.wheeldelta.y = 0;
+
+                if (e.deltaX > 0 || e.deltaY < 0) {
+                  _this.$element.flickity('next');
+                } else if (e.deltaX < 0 || e.deltaY > 0) {
+                  _this.$element.flickity('previous');
+                }
+              }
+            }
+
+            e.preventDefault();
+          });
+        }
+
+        if (this.options.disableBreakpoint !== '') {
+          $(window).off(mediaqueryListener).on(mediaqueryListener, function () {
+            if (Foundation.MediaQuery.atLeast(_this.options.disableBreakpoint) && _this.$element.data('flickity')) {
+              _this._disableFlickity();
+            } else if (!_this.$element.data('flickity')) {
+              _this._enableFlickity();
+            }
+          });
+        }
+
+        if (this.options.enableBreakpoint !== '') {
+          $(window).off(mediaqueryListener).on(mediaqueryListener, function () {
+            if (Foundation.MediaQuery.atLeast(_this.options.enableBreakpoint) && _this.$element.data('flickity')) {
+              _this._enableFlickity();
+            } else if (!_this.$element.data('flickity')) {
+              _this._disableFlickity();
+            }
+          });
+        }
+      }
 
       /**
-       * Resets FlickityCarousel so it can be reinitialized
+       * Destroy Flickity and remove all event listeners tied to the element
+       * (does not remove window event listeners)
+       * @function
+       * @private
        */
 
     }, {
-      key: '_reset',
-      value: function _reset() {
-        // Don't do anything if flickity isn't initialized yet
-        if (typeof this.flickity === 'undefined') {
-          return;
-        }
+      key: '_disableFlickity',
+      value: function _disableFlickity() {
+        this.$element.flickity('destroy');
+        this.$element.off('.zf.flickity').find('*').off('.zf.flickity');
+      }
+
+      /**
+       * (Re-)enables Flickity
+       * @function
+       * @private
+       */
+
+    }, {
+      key: '_enableFlickity',
+      value: function _enableFlickity() {
+        this.$element.flickity(this.options);
+        this._events();
       }
 
       /**
@@ -104,7 +173,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: 'destroy',
       value: function destroy() {
-        this.$element.off('.zf.flickity').find('*').off('.zf.flickity').end().hide();
+        $(window).off(this.mediaqueryListener);
+        this._disableFlickity();
+        this.$element.hide();
         Foundation.unregisterPlugin(this);
       }
     }]);
@@ -114,7 +185,43 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
   FlickityCarousel.defaults = {
     /**
-    * Allows FlickityCarousel to bind keyboard events to the slider, to animate frames with arrow keys
+    * Enable horizontal scrolling with mousewheel support
+    * @option
+     * @type {boolean}
+    * @default false
+    */
+    horizontalScrolling: false,
+    /**
+    * Disable Flickity at a given breakpoint
+    * @option
+     * @type {string}
+    * @default ''
+    */
+    disableBreakpoint: '',
+    /**
+    * Enable Flickity at a given breakpoint
+    * @option
+     * @type {string}
+    * @default ''
+    */
+    enableBreakpoint: '',
+    /**
+    * Generates previous and next button HTML
+    * @option
+     * @type {boolean}
+    * @default false
+    */
+    prevNextButtons: false,
+    /**
+    * Generates page dots HTML
+    * @option
+     * @type {boolean}
+    * @default false
+    */
+    pageDots: false,
+    /**
+    * Allows FlickityCarousel to bind keyboard events
+    * to the slider
     * @option
      * @type {boolean}
     * @default true

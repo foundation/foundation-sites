@@ -21,26 +21,26 @@
 //  16. Drilldown
 //  17. Dropdown
 //  18. Dropdown Menu
-//  19. Forms
-//  20. Label
-//  21. Media Object
-//  22. Menu
-//  23. Meter
-//  24. Off-canvas
-//  25. Orbit
-//  26. Pagination
-//  27. Progress Bar
-//  28. Responsive Embed
-//  29. Reveal
-//  30. Slider
-//  31. Switch
-//  32. Table
-//  33. Tabs
-//  34. Thumbnail
-//  35. Title Bar
-//  36. Tooltip
-//  37. Top Bar
-//  38. Flickity
+//  19. Flickity
+//  20. Forms
+//  21. Label
+//  22. Media Object
+//  23. Menu
+//  24. Meter
+//  25. Off-canvas
+//  26. Orbit
+//  27. Pagination
+//  28. Progress Bar
+//  29. Responsive Embed
+//  30. Reveal
+//  31. Slider
+//  32. Switch
+//  33. Table
+//  34. Tabs
+//  35. Thumbnail
+//  36. Title Bar
+//  37. Tooltip
+//  38. Top Bar
 
 @import 'util/util';
 
@@ -75,8 +75,6 @@ $global-text-direction: ltr;
 $global-flexbox: false;
 $print-transparent-backgrounds: true;
 
-@include add-foundation-colors;
-
 // 2. Breakpoints
 // --------------
 
@@ -100,6 +98,7 @@ $grid-column-gutter: (
   medium: 30px,
 );
 $grid-column-align-edge: true;
+$grid-column-alias: 'columns';
 $block-grid-max: 8;
 
 // 4. Base Typography
@@ -237,6 +236,7 @@ $breadcrumbs-item-color-disabled: $medium-gray;
 $breadcrumbs-item-margin: 0.75rem;
 $breadcrumbs-item-uppercase: true;
 $breadcrumbs-item-slash: true;
+$breadcrumbs-item-slash-color: $medium-gray;
 
 // 11. Button
 // ----------
@@ -249,6 +249,7 @@ $button-background-hover: scale-color($button-background, $lightness: -15%);
 $button-color: $white;
 $button-color-alt: $black;
 $button-radius: $global-radius;
+$button-hollow-border-width: 1px;
 $button-sizes: (
   tiny: 0.6rem,
   small: 0.75rem,
@@ -349,7 +350,22 @@ $dropdownmenu-min-width: 200px;
 $dropdownmenu-background: $white;
 $dropdownmenu-border: 1px solid $medium-gray;
 
-// 19. Forms
+// 19. Flickity
+// ------------
+
+$flickity-viewport-class: '.flickity-viewport';
+$flickity-slide-class: '.flickity-slide';
+$flickity-rtl-class: '.flickity-rtl';
+$flickity-arrow-class: '.arrow';
+$flickity-dot-class: '.dot';
+$flickity-prev-button-class: '.previous';
+$flickity-next-button-class: '.next';
+$flickity-slide-width: 100%;
+$flickity-bullet-background: hsla(0, 0%, 100%, 0.75);
+$flickity-bullet-background-active: $light-gray;
+$flickity-bullet-focus: #09f;
+
+// 20. Forms
 // ---------
 
 $fieldset-border: 1px solid $medium-gray;
@@ -389,7 +405,7 @@ $input-number-spinners: true;
 $input-radius: $global-radius;
 $form-button-radius: $global-radius;
 
-// 20. Label
+// 21. Label
 // ---------
 
 $label-background: $primary-color;
@@ -400,14 +416,14 @@ $label-font-size: 0.8rem;
 $label-padding: 0.33333rem 0.5rem;
 $label-radius: $global-radius;
 
-// 21. Media Object
+// 22. Media Object
 // ----------------
 
 $mediaobject-margin-bottom: $global-margin;
 $mediaobject-section-padding: $global-padding;
 $mediaobject-image-width-stacked: 100%;
 
-// 22. Menu
+// 23. Menu
 // --------
 
 $menu-margin: 0;
@@ -419,7 +435,7 @@ $menu-icon-spacing: 0.25rem;
 $menu-item-background-hover: $light-gray;
 $menu-border: $light-gray;
 
-// 23. Meter
+// 24. Meter
 // ---------
 
 $meter-height: 1rem;
@@ -429,7 +445,7 @@ $meter-fill-good: $success-color;
 $meter-fill-medium: $warning-color;
 $meter-fill-bad: $alert-color;
 
-// 24. Off-canvas
+// 25. Off-canvas
 // --------------
 
 $offcanvas-size: 250px;
@@ -445,7 +461,7 @@ $offcanvas-fixed-reveal: true;
 $offcanvas-exit-background: rgba($white, 0.25);
 $maincontent-class: 'off-canvas-content';
 
-// 25. Orbit
+// 26. Orbit
 // ---------
 
 $orbit-bullet-background: $medium-gray;
@@ -460,7 +476,7 @@ $orbit-control-background-hover: rgba($black, 0.5);
 $orbit-control-padding: 1rem;
 $orbit-control-zindex: 10;
 
-// 26. Pagination
+// 27. Pagination
 // --------------
 
 $pagination-font-size: rem-calc(14);
@@ -478,7 +494,7 @@ $pagination-mobile-items: false;
 $pagination-mobile-current-item: false;
 $pagination-arrows: true;
 
-// 27. Progress Bar
+// 28. Progress Bar
 // ----------------
 
 $progress-height: 1rem;
@@ -487,7 +503,7 @@ $progress-margin-bottom: $global-margin;
 $progress-meter-background: $primary-color;
 $progress-radius: $global-radius;
 
-// 28. Responsive Embed
+// 29. Responsive Embed
 // --------------------
 
 $responsive-embed-margin-bottom: rem-calc(16);
@@ -496,7 +512,7 @@ $responsive-embed-ratios: (
   widescreen: 16 by 9,
 );
 
-// 29. Reveal
+// 30. Reveal
 // ----------
 
 $reveal-background: $white;
@@ -508,7 +524,7 @@ $reveal-radius: $global-radius;
 $reveal-zindex: 1005;
 $reveal-overlay-background: rgba($black, 0.45);
 
-// 30. Slider
+// 31. Slider
 // ----------
 
 $slider-width-vertical: 0.5rem;
@@ -522,7 +538,7 @@ $slider-handle-background: $primary-color;
 $slider-opacity-disabled: 0.25;
 $slider-radius: $global-radius;
 
-// 31. Switch
+// 32. Switch
 // ----------
 
 $switch-background: $medium-gray;
@@ -538,7 +554,7 @@ $switch-paddle-offset: 0.25rem;
 $switch-paddle-radius: $global-radius;
 $switch-paddle-transition: all 0.25s ease-out;
 
-// 32. Table
+// 33. Table
 // ---------
 
 $table-background: $white;
@@ -559,7 +575,7 @@ $table-head-font-color: $body-font-color;
 $table-foot-font-color: $body-font-color;
 $show-header-for-stacked: false;
 
-// 33. Tabs
+// 34. Tabs
 // --------
 
 $tab-margin: 0;
@@ -576,7 +592,7 @@ $tab-content-border: $light-gray;
 $tab-content-color: $body-font-color;
 $tab-content-padding: 1rem;
 
-// 34. Thumbnail
+// 35. Thumbnail
 // -------------
 
 $thumbnail-border: solid 4px $white;
@@ -586,7 +602,7 @@ $thumbnail-shadow-hover: 0 0 6px 1px rgba($primary-color, 0.5);
 $thumbnail-transition: box-shadow 200ms ease-out;
 $thumbnail-radius: $global-radius;
 
-// 35. Title Bar
+// 36. Title Bar
 // -------------
 
 $titlebar-background: $black;
@@ -597,7 +613,7 @@ $titlebar-icon-color: $white;
 $titlebar-icon-color-hover: $medium-gray;
 $titlebar-icon-spacing: 0.25rem;
 
-// 36. Tooltip
+// 37. Tooltip
 // -----------
 
 $has-tip-font-weight: $global-weight-bold;
@@ -610,7 +626,7 @@ $tooltip-pip-width: 0.75rem;
 $tooltip-pip-height: $tooltip-pip-width * 0.866;
 $tooltip-radius: $global-radius;
 
-// 37. Top Bar
+// 38. Top Bar
 // -----------
 
 $topbar-padding: 0.5rem;
@@ -620,17 +636,3 @@ $topbar-title-spacing: 0.5rem 1rem 0.5rem 0;
 $topbar-input-width: 200px;
 $topbar-unstack-breakpoint: medium;
 
-// 38. Flickity
-// ------------
-
-$flickity-bullet-background: $medium-gray;
-$flickity-bullet-background-active: $dark-gray;
-$flickity-bullet-diameter: 1.2rem;
-$flickity-bullet-margin: 0.1rem;
-$flickity-bullet-margin-top: 0.8rem;
-$flickity-bullet-margin-bottom: 0.8rem;
-$flickity-caption-background: rgba($black, 0.5);
-$flickity-caption-padding: 1rem;
-$flickity-control-background-hover: rgba($black, 0.5);
-$flickity-control-padding: 1rem;
-$flickity-control-zindex: 10;

@@ -47,6 +47,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     _createClass(Accordion, [{
       key: '_init',
       value: function _init() {
+        var _this2 = this;
+
         this.$element.attr('role', 'tablist');
         this.$tabs = this.$element.children('[data-accordion-item]');
 
@@ -67,9 +69,48 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           $content.attr({ 'role': 'tabpanel', 'aria-labelledby': linkId, 'aria-hidden': true, 'id': id });
         });
         var $initActive = this.$element.find('.is-active').children('[data-tab-content]');
+        this.firstTimeInit = true;
         if ($initActive.length) {
-          this.down($initActive, true);
+          this.down($initActive, this.firstTimeInit);
+          this.firstTimeInit = false;
         }
+
+        this._checkDeepLink = function () {
+          var anchor = window.location.hash;
+          //need a hash and a relevant anchor in this tabset
+          if (anchor.length) {
+            var $link = _this2.$element.find('[href$="' + anchor + '"]'),
+                $anchor = $(anchor);
+
+            if ($link.length && $anchor) {
+              if (!$link.parent('[data-accordion-item]').hasClass('is-active')) {
+                _this2.down($anchor, _this2.firstTimeInit);
+                _this2.firstTimeInit = false;
+              };
+
+              //roll up a little to show the titles
+              if (_this2.options.deepLinkSmudge) {
+                var _this = _this2;
+                $(window).load(function () {
+                  var offset = _this.$element.offset();
+                  $('html, body').animate({ scrollTop: offset.top }, _this.options.deepLinkSmudgeDelay);
+                });
+              }
+
+              /**
+                * Fires when the zplugin has deeplinked at pageload
+                * @event Accordion#deeplink
+                */
+              _this2.$element.trigger('deeplink.zf.accordion', [$link, $anchor]);
+            }
+          }
+        };
+
+        //use browser to open a tab, if it exists in this tabset
+        if (this.options.deepLink) {
+          this._checkDeepLink();
+        }
+
         this._events();
       }
 
@@ -115,6 +156,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             });
           }
         });
+        if (this.options.deepLink) {
+          $(window).on('popstate', this._checkDeepLink);
+        }
       }
 
       /**
@@ -131,6 +175,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         } else {
           this.down($target);
         }
+        //either replace or update browser history
+        if (this.options.deepLink) {
+          var anchor = $target.prev('a').attr('href');
+
+          if (this.options.updateHistory) {
+            history.pushState({}, '', anchor);
+          } else {
+            history.replaceState({}, '', anchor);
+          }
+        }
       }
 
       /**
@@ -144,7 +198,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: 'down',
       value: function down($target, firstTime) {
-        var _this2 = this;
+        var _this3 = this;
 
         $target.attr('aria-hidden', false).parent('[data-tab-content]').addBack().parent().addClass('is-active');
 
@@ -160,7 +214,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
            * Fires when the tab is done opening.
            * @event Accordion#down
            */
-          _this2.$element.trigger('down.zf.accordion', [$target]);
+          _this3.$element.trigger('down.zf.accordion', [$target]);
         });
 
         $('#' + $target.attr('aria-labelledby')).attr({
@@ -215,6 +269,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       value: function destroy() {
         this.$element.find('[data-tab-content]').stop(true).slideUp(0).css('display', '');
         this.$element.find('a').off('.zf.accordion');
+        if (this.options.deepLink) {
+          $(window).off('popstate', this._checkDeepLink);
+        }
 
         Foundation.unregisterPlugin(this);
       }
@@ -227,21 +284,55 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /**
      * Amount of time to animate the opening of an accordion pane.
      * @option
-     * @example 250
+     * @type {number}
+     * @default 250
      */
     slideSpeed: 250,
     /**
      * Allow the accordion to have multiple open panes.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     multiExpand: false,
     /**
      * Allow the accordion to close all panes.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
-    allowAllClosed: false
+    allowAllClosed: false,
+    /**
+     * Allows the window to scroll to content of pane specified by hash anchor
+     * @option
+     * @type {boolean}
+     * @default false
+     */
+    deepLink: false,
+
+    /**
+     * Adjust the deep link scroll to make sure the top of the accordion panel is visible
+     * @option
+     * @type {boolean}
+     * @default false
+     */
+    deepLinkSmudge: false,
+
+    /**
+     * Animation time (ms) for the deep link adjustment
+     * @option
+     * @type {number}
+     * @default 300
+     */
+    deepLinkSmudgeDelay: 300,
+
+    /**
+     * Update the browser history with the open accordion
+     * @option
+     * @type {boolean}
+     * @default false
+     */
+    updateHistory: false
   };
 
   // Window exports

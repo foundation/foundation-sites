@@ -6,6 +6,7 @@ var uglify = require('gulp-uglify');
 var confirm = require('gulp-prompt').confirm;
 var rsync = require('gulp-rsync');
 var replace = require('gulp-replace');
+var ghpages = require('gulp-gh-pages');
 var octophant = require('octophant');
 var sequence = require('run-sequence');
 var inquirer = require('inquirer');
@@ -148,4 +149,15 @@ gulp.task('deploy:custom', ['sass:foundation', 'javascript:foundation'], functio
       .pipe(uglify())
       .pipe(rename('foundation.min.js'))
       .pipe(gulp.dest('./_build/assets/js'));
+});
+
+// TBG-specific deploy tasks
+gulp.task('tbg', function(cb) {
+  sequence('deploy:dist', 'deploy:plugins', 'deploy:settings', 'deploy:custom', 'tbg:pub', cb);
+});
+
+// TBG task that commits the docs to the gh-pages branch
+gulp.task('tbg:pub', function() {
+  return gulp.src('./_build/**/*')
+    .pipe(ghpages({force: true}));
 });

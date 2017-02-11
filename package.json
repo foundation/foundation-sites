@@ -17,7 +17,9 @@
     "test:visual": "gulp test",
     "deploy": "gulp deploy",
     "deploy:prep": "gulp deploy:prep",
-    "deploy:docs": "gulp deploy:docs"
+    "deploy:docs": "gulp deploy:docs",
+    "tbg": "gulp tbg",
+    "tbg:pub": "gulp tbg:pub"
   },
   "dependencies": {
     "jquery": ">=2.2.0",
@@ -43,7 +45,6 @@
     "clipboard": "^1.5.5",
     "corejs-typeahead": "^1.0.1",
     "doiuse": "^2.5.0",
-    "tbg-foundation-docs": "BerndtGroup/TBG-foundation-docs",
     "gulp": "^3.8.10",
     "gulp-add-src": "^0.2.0",
     "gulp-babel": "^6.1.1",
@@ -53,6 +54,7 @@
     "gulp-cssnano": "^2.1.0",
     "gulp-eslint": "^3.0.1",
     "gulp-filter": "^4.0.0",
+    "gulp-gh-pages": "^0.5.4",
     "gulp-if": "^2.0.0",
     "gulp-load-plugins": "^1.2.0",
     "gulp-newer": "^1.1.0",
@@ -88,6 +90,7 @@
     "sassy-lists": "3.0.0",
     "sinon": "^1.17.3",
     "supercollider": "^1.4.0",
+    "tbg-foundation-docs": "BerndtGroup/TBG-foundation-docs",
     "touch": "^1.0.0",
     "vinyl": "^2.0.1",
     "vinyl-source-stream": "^1.1.0",

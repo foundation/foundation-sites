@@ -75,7 +75,6 @@
     eventsListener();
     resizeListener();
     scrollListener();
-    mutateListener();
     closemeListener();
   }
 
@@ -159,17 +158,6 @@
     }
   }
 
-  function mutateListener(debounce) {
-    var $nodes = $('[data-mutate]');
-    if ($nodes.length && MutationObserver) {
-      //trigger all listening elements and signal a mutate event
-      //no IE 9 or 10
-      $nodes.each(function () {
-        $(this).triggerHandler('mutateme.zf.trigger');
-      });
-    }
-  }
-
   function eventsListener() {
     if (!MutationObserver) {
       return false;
@@ -224,38 +212,3 @@
   // Foundation.ISeeYou = scrollListener;
   // Foundation.IFeelYou = closemeListener;
 }(jQuery);
-
-// function domMutationObserver(debounce) {
-//   // !!! This is coming soon and needs more work; not active  !!! //
-//   var timer,
-//   nodes = document.querySelectorAll('[data-mutate]');
-//   //
-//   if (nodes.length) {
-//     // var MutationObserver = (function () {
-//     //   var prefixes = ['WebKit', 'Moz', 'O', 'Ms', ''];
-//     //   for (var i=0; i < prefixes.length; i++) {
-//     //     if (prefixes[i] + 'MutationObserver' in window) {
-//     //       return window[prefixes[i] + 'MutationObserver'];
-//     //     }
-//     //   }
-//     //   return false;
-//     // }());
-//
-//
-//     //for the body, we need to listen for all changes effecting the style and class attributes
-//     var bodyObserver = new MutationObserver(bodyMutation);
-//     bodyObserver.observe(document.body, { attributes: true, childList: true, characterData: false, subtree:true, attributeFilter:["style", "class"]});
-//
-//
-//     //body callback
-//     function bodyMutation(mutate) {
-//       //trigger all listening elements and signal a mutation event
-//       if (timer) { clearTimeout(timer); }
-//
-//       timer = setTimeout(function() {
-//         bodyObserver.disconnect();
-//         $('[data-mutate]').attr('data-events',"mutate");
-//       }, debounce || 150);
-//     }
-//   }
-// }
