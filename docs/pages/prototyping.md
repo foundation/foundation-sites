@@ -41,7 +41,7 @@ or, if you looking for specific utility instead of all, these helper classes can
 @include foundation-prototype-spacing;
 ```
 
-Looking for more customization including responsive breakpoints? Click here for the [Sass Reference](#sass-reference)
+Looking for more customization including **responsive breakpoints?** Click here for the [Sass Reference](#sass-reference)
 
 ---
 
@@ -202,6 +202,7 @@ Generate spaces around the element with these easy to use margin classes.
 #### Margin (All Sides)
 
 ```html
+<div class="m-a-0"></div>
 <div class="m-a-10"></div>
 <div class="m-a-20"></div>
 <div class="m-a-30"></div>
@@ -212,6 +213,7 @@ Generate spaces around the element with these easy to use margin classes.
 #### Margin Top
 
 ```html
+<div class="m-t-0"></div>
 <div class="m-t-10"></div>
 <div class="m-t-20"></div>
 <div class="m-t-30"></div>
@@ -222,6 +224,7 @@ Generate spaces around the element with these easy to use margin classes.
 #### Margin Bottom
 
 ```html
+<div class="m-b-0"></div>
 <div class="m-b-10"></div>
 <div class="m-b-20"></div>
 <div class="m-b-30"></div>
@@ -242,6 +245,7 @@ Generate spaces around the element with these easy to use margin classes.
 #### Margin Right
 
 ```html
+<div class="m-r-0"></div>
 <div class="m-r-10"></div>
 <div class="m-r-20"></div>
 <div class="m-r-30"></div>
@@ -252,6 +256,7 @@ Generate spaces around the element with these easy to use margin classes.
 #### Margin Left Right (Horizontal Axis)
 
 ```html
+<div class="m-x-0"></div>
 <div class="m-x-10"></div>
 <div class="m-x-20"></div>
 <div class="m-x-30"></div>
@@ -262,6 +267,7 @@ Generate spaces around the element with these easy to use margin classes.
 #### Margin Top Bottom (Vertical Axis)
 
 ```html
+<div class="m-y-0"></div>
 <div class="m-y-10"></div>
 <div class="m-y-20"></div>
 <div class="m-y-30"></div>
@@ -278,6 +284,7 @@ Generate spaces around the content with these easy to use padding classes.
 #### Padding (All Sides)
 
 ```html
+<div class="p-a-0"></div>
 <div class="p-a-10"></div>
 <div class="p-a-20"></div>
 <div class="p-a-30"></div>
@@ -288,6 +295,7 @@ Generate spaces around the content with these easy to use padding classes.
 #### Padding Top
 
 ```html
+<div class="p-t-0"></div>
 <div class="p-t-10"></div>
 <div class="p-t-20"></div>
 <div class="p-t-30"></div>
@@ -298,6 +306,7 @@ Generate spaces around the content with these easy to use padding classes.
 #### Padding Bottom
 
 ```html
+<div class="p-b-0"></div>
 <div class="p-b-10"></div>
 <div class="p-b-20"></div>
 <div class="p-b-30"></div>
@@ -308,6 +317,7 @@ Generate spaces around the content with these easy to use padding classes.
 #### Padding Left
 
 ```html
+<div class="p-l-0"></div>
 <div class="p-l-10"></div>
 <div class="p-l-20"></div>
 <div class="p-l-30"></div>
@@ -318,6 +328,7 @@ Generate spaces around the content with these easy to use padding classes.
 #### Padding Right
 
 ```html
+<div class="p-r-0"></div>
 <div class="p-r-10"></div>
 <div class="p-r-20"></div>
 <div class="p-r-30"></div>
@@ -328,6 +339,7 @@ Generate spaces around the content with these easy to use padding classes.
 #### Padding Left Right (Horizontal Axis)
 
 ```html
+<div class="p-x-0"></div>
 <div class="p-x-10"></div>
 <div class="p-x-20"></div>
 <div class="p-x-30"></div>
@@ -338,6 +350,7 @@ Generate spaces around the content with these easy to use padding classes.
 #### Padding Top Bottom (Vertical Axis)
 
 ```html
+<div class="p-y-0"></div>
 <div class="p-y-10"></div>
 <div class="p-y-20"></div>
 <div class="p-y-30"></div>
