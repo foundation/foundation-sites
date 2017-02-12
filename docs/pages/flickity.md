@@ -94,13 +94,17 @@ You can read more about how Foundation works with media queries [here](/media-qu
 Set the `data-no-dragging` attribute to `true` to disable dragging. The carousel will then only proceed with its controls or with the autoplay option enabled.
 
 ```html_example
-<div class="flickity" role="region" aria-label="Favorite Space Pictures" data-flickity-carousel data-autoplay="true" data-no-dragging="true">
+<div class="flickity" role="region" aria-label="Favorite Space Pictures" data-flickity-carousel data-no-dragging="true" data-auto-play="true" data-pause-auto-play-on-hover="false" data-wrap-around="true">
   <div class="flickity-slide">
     <img class="flickity-image" src="assets/img/orbit/03.jpg" alt="Space">
     <figcaption class="flickity-caption">Space, the final frontier.</figcaption>
   </div>
   <div class="flickity-slide">
     <img class="flickity-image" src="assets/img/orbit/04.jpg" alt="Space">
+    <figcaption class="flickity-caption">Lets Rocket!</figcaption>
+  </div>
+  <div class="flickity-slide">
+    <img class="flickity-image" src="assets/img/orbit/02.jpg" alt="Space">
     <figcaption class="flickity-caption">Lets Rocket!</figcaption>
   </div>
 </div>
