@@ -8,7 +8,7 @@
 
 /// Map containing all the `spacing` classes
 /// @type Map
-$prototype-spacing-classes: (
+$prototype-spacing: (
   margin: m, 
   padding: p
 ) !default;
@@ -48,7 +48,7 @@ $prototype-spacers-count: 5 !default;
 }
 
 @mixin foundation-prototype-spacing {
-  @each $prop, $abbrev in $prototype-spacing-classes {
+  @each $prop, $abbrev in $prototype-spacing {
     @each $size, $lengths in $prototype-spacers {
       $length-x:   map-get($lengths, x);
       $length-y:   map-get($lengths, y);

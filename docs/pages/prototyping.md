@@ -446,7 +446,7 @@ Display classes helps to display the elements in specific positions inside any o
 <div class="display-block"></div>
 ``` 
 
-By default, we have just added the most used display classes. but as you would know, there are many other display classes as specified by MDN [here](https://developer.mozilla.org/en-US/docs/Web/CSS/display). If you need some of those classes, then you can add them easily through Sass variables with `$prototype-display-classes`. Sass Reference [here](#sass-reference)
+By default, we have just added the most used display classes. but as you would know, there are many other display classes as specified by MDN [here](https://developer.mozilla.org/en-US/docs/Web/CSS/display). If you need some of those classes, then you can add them easily through Sass variables with `$prototype-display`. Sass Reference [here](#sass-reference)
 
 ---
 

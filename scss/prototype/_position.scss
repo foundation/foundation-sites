@@ -12,7 +12,7 @@ $prototype-position-breakpoints: $global-prototype-breakpoints !default;
 
 /// Map containing all the `position` classes
 /// @type Map
-$prototype-position-classes: (
+$prototype-position: (
   static, relative, absolute, fixed
 ) !default;
 
@@ -20,7 +20,7 @@ $prototype-position-classes: (
 /// @type Number
 $prototype-position-z-index: 975 !default;
 
-/// Position classes, by default coming through a map `$prototype-position-classes`
+/// Position classes, by default coming through a map `$prototype-position`
 /// @param {String} $position [] Position classes
 @mixin position($position) {
   position: $position;
@@ -52,7 +52,7 @@ $prototype-position-z-index: 975 !default;
 
 @mixin foundation-prototype-position {
   // Position: Static, Relative, Fixed, Absolute
-  @each $position in $prototype-position-classes {
+  @each $position in $prototype-position {
     .position-#{$position} {
       @include position($position);
     }
@@ -71,7 +71,7 @@ $prototype-position-z-index: 975 !default;
     @each $size in $breakpoint-classes {
       @include breakpoint($size) {
         // Position: Static, Relative, Fixed, Absolute
-        @each $position in $prototype-position-classes {
+        @each $position in $prototype-position {
           @if $size != $-zf-zero-breakpoint {
             .#{$size}-position-#{$position} {
               @include position($position);

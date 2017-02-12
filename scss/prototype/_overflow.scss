@@ -12,30 +12,30 @@ $prototype-overflow-breakpoints: $global-prototype-breakpoints !default;
 
 /// Map containing all the `overflow` classes
 /// @type Map
-$prototype-overflow-classes: (
+$prototype-overflow: (
   visible, hidden, scroll
 ) !default;
 
-/// Overflow classes, by default coming through a map `$prototype-overflow-classes`
+/// Overflow classes, by default coming through a map `$prototype-overflow`
 /// @param {String} $overflow [] Overflow classes
 @mixin overflow($overflow) {
     overflow: $overflow;
 }
 
-/// Overflow classes on horizontal axis, by default coming through a map `$prototype-overflow-classes`
+/// Overflow classes on horizontal axis, by default coming through a map `$prototype-overflow`
 /// @param {String} $overflow [] Overflow classes (horizontal axis)
 @mixin overflow-x($overflow) {
     overflow-x: $overflow;
 }
 
-/// Overflow classes on vertical axis, by default coming through a map `$prototype-overflow-classes`
+/// Overflow classes on vertical axis, by default coming through a map `$prototype-overflow`
 /// @param {String} $overflow [] Overflow classes (vertical axis)
 @mixin overflow-y($overflow) {
     overflow-y: $overflow;
 }
 
 @mixin foundation-prototype-overflow {
-  @each $overflow in $prototype-overflow-classes {
+  @each $overflow in $prototype-overflow {
     .overflow-#{$overflow} {
       @include overflow($overflow);
     }
@@ -51,7 +51,7 @@ $prototype-overflow-classes: (
     // Loop through Responsive Breakpoints
     @each $size in $breakpoint-classes {
       @include breakpoint($size) {
-        @each $overflow in $prototype-overflow-classes {
+        @each $overflow in $prototype-overflow {
           @if $size != $-zf-zero-breakpoint {
             .#{$size}-overflow-#{$overflow} {
               @include overflow($overflow);

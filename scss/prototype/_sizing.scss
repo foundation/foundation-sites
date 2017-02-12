@@ -8,7 +8,7 @@
 
 /// Map containing all the `sizing` classes
 /// @type Map
-$prototype-sizing-classes: (
+$prototype-sizing: (
   width, height
 ) !default;
 
@@ -33,7 +33,7 @@ $prototype-sizes: (
 
 @mixin foundation-prototype-sizing {
   // Element Sizing
-  @each $sizing in $prototype-sizing-classes {
+  @each $sizing in $prototype-sizing {
     @each $size, $percentage in $prototype-sizes {
       .#{$sizing}-#{$size} { 
         #{$sizing}: $percentage; 

@@ -12,18 +12,18 @@ $prototype-display-breakpoints: $global-prototype-breakpoints !default;
 
 /// Map containing all the `display` classes
 /// @type Map
-$prototype-display-classes: (
+$prototype-display: (
   none, inline, inline-block, block
 ) !default;
 
-/// Display classes, by default coming through a map `$prototype-display-classes`
+/// Display classes, by default coming through a map `$prototype-display`
 /// @param {String} $display [] Display classes
 @mixin display($display) {
     display: $display !important;
 }
 
 @mixin foundation-prototype-display {
-  @each $display in $prototype-display-classes {
+  @each $display in $prototype-display {
     .display-#{$display} {
        @include display($display);
     }
@@ -33,7 +33,7 @@ $prototype-display-classes: (
     // Loop through Responsive Breakpoints
     @each $size in $breakpoint-classes {
       @include breakpoint($size) {
-        @each $display in $prototype-display-classes {
+        @each $display in $prototype-display {
           @if $size != $-zf-zero-breakpoint {
             .#{$size}-display-#{$display} {
               @include display($display);
