@@ -22,8 +22,16 @@ $prototype-border-type: solid !default;
 /// @type Color
 $prototype-border-color: $medium-gray !default;
 
-@mixin bordered {
-  border: $prototype-border-width $prototype-border-type $prototype-border-color;
+/// Bordered Utility: Adds a light border to an element by default.
+/// @param {Number} $width [$prototype-border-width] Width of the border
+/// @param {String} $type [$prototype-border-type] Type of the border
+/// @param {Color} $color [$prototype-border-color] Color of the border 
+@mixin bordered(
+  $width: $prototype-border-width,
+  $type: $prototype-border-type,
+  $color: $prototype-border-color
+) {
+  border: $width $type $color;
 }
 
 @mixin foundation-prototype-bordered {
