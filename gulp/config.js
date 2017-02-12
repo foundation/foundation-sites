@@ -2,11 +2,11 @@ module.exports = {
 
   // Javascript
   JS_FILES: [
-  'js/foundation.core.js',
-  'js/foundation.util.*.js',
-  'js/*.js',
-  'bower_components/jquery-mousewheel/jquery.mousewheel.js',
-  'bower_components/flickity/dist/flickity.pkgd.js'
+    'js/foundation.core.js',
+    'js/foundation.util.*.js',
+    'js/*.js',
+    'bower_components/jquery-mousewheel/jquery.mousewheel.js',
+    'bower_components/flickity/dist/flickity.pkgd.js'
   ],
 
   JS_DEPS: [

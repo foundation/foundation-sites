@@ -131,6 +131,10 @@ class FlickityCarousel {
         }
       });
     }
+
+    if (this.options.noDragging) {
+      this.$element.flickity('unbindDrag');
+    }
   }
 
   /**
@@ -188,6 +192,13 @@ FlickityCarousel.defaults = {
   * @default ''
   */
   enableBreakpoint: '',
+  /**
+  * Disable dragging
+  * @option
+   * @type {boolean}
+  * @default false
+  */
+  noDragging: false,
   /**
   * Generates previous and next button HTML
   * @option
