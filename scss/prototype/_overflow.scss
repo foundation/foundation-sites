@@ -16,14 +16,20 @@ $prototype-overflow-classes: (
   visible, hidden, scroll
 ) !default;
 
+/// Overflow classes, by default coming through a map `$prototype-overflow-classes`
+/// @param {String} $overflow [] Overflow classes
 @mixin overflow($overflow) {
     overflow: $overflow;
 }
 
+/// Overflow classes on horizontal axis, by default coming through a map `$prototype-overflow-classes`
+/// @param {String} $overflow [] Overflow classes (horizontal axis)
 @mixin overflow-x($overflow) {
     overflow-x: $overflow;
 }
 
+/// Overflow classes on vertical axis, by default coming through a map `$prototype-overflow-classes`
+/// @param {String} $overflow [] Overflow classes (vertical axis)
 @mixin overflow-y($overflow) {
     overflow-y: $overflow;
 }
