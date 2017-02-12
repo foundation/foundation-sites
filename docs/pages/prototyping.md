@@ -45,18 +45,18 @@ Looking for more customization including **responsive breakpoints?** Click here 
 
 ---
 
-## Rounded Elements
+## Rounded & Bordered
 
-These `.rounded` classes helps to make an element round its corners. This will help you quickly style the borders of an element. Mostly used in buttons, images, cards and more
+These `.rounded` & `.bordered` classes helps to make an element round its corners and give light borders respectively. This will help you quickly style the borders of an element. Mostly used in buttons, images, cards, tables and many more
 
 #### Buttons
 
 ```html_example
-<button type="button" class="button rounded primary">Primary</button>
-<button type="button" class="button rounded secondary">Secondary</button>
-<button type="button" class="button rounded success">Success</button>
-<button type="button" class="button rounded alert">Alert</button>
-<button type="button" class="button rounded warning">Warning</button>
+<button type="button" class="button rounded bordered primary">Primary</button>
+<button type="button" class="button rounded bordered secondary">Secondary</button>
+<button type="button" class="button rounded bordered success">Success</button>
+<button type="button" class="button rounded bordered alert">Alert</button>
+<button type="button" class="button rounded bordered warning">Warning</button>
 ```
 
 #### Images
@@ -82,10 +82,10 @@ These `.rounded` classes helps to make an element round its corners. This will h
 #### Cards
 
 ```html
-<div class="rounded card">
+<div class="rounded bordered card">
   <img src="assets/img/generic/rectangle-1.jpg">
   <div class="card-divider">
-    This is a Middle section
+    Rounded Card
   </div>
   <div class="card-section">
     <h4>This is a card.</h4>
@@ -97,7 +97,7 @@ These `.rounded` classes helps to make an element round its corners. This will h
 <div class="docs-code-live">
 	<div class="row">
 		<div class="small-4 columns">
-			<div class="rounded card">
+			<div class="rounded bordered card">
 			  <img src="assets/img/generic/rectangle-1.jpg">
 			  <div class="card-divider">
 			    Rounded Card
@@ -109,7 +109,7 @@ These `.rounded` classes helps to make an element round its corners. This will h
 			</div>
 		</div>
 		<div class="small-4 columns">
-			<div class="rounded card">
+			<div class="rounded bordered card">
 			  <img src="assets/img/generic/rectangle-1.jpg">
 			  <div class="card-divider">
 			    Rounded Card
@@ -121,7 +121,7 @@ These `.rounded` classes helps to make an element round its corners. This will h
 			</div>
 		</div>
 		<div class="small-4 columns">
-			<div class="rounded card">
+			<div class="rounded bordered card">
 			  <img src="assets/img/generic/rectangle-1.jpg">
 			  <div class="card-divider">
 			    Rounded Card
@@ -133,6 +133,53 @@ These `.rounded` classes helps to make an element round its corners. This will h
 			</div>
 		</div>
 	</div>
+</div>
+
+#### Tables
+
+```html
+<table class="rounded bordered">
+	<!-- My Table goes here -->
+</table>
+```
+
+<div class="docs-code-live">
+	<table class="rounded bordered">
+	  <thead>
+	    <tr>
+	      <th width="200">Table Header</th>
+	      <th>Table Header</th>
+	      <th width="150">Table Header</th>
+	      <th width="150">Table Header</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr>
+	      <td>Content Goes Here</td>
+	      <td>This is longer content Donec id elit non mi porta gravida at eget metus.</td>
+	      <td>Content Goes Here</td>
+	      <td>Content Goes Here</td>
+	    </tr>
+	    <tr>
+	      <td>Content Goes Here</td>
+	      <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+	      <td>Content Goes Here</td>
+	      <td>Content Goes Here</td>
+	    </tr>
+	    <tr>
+	      <td>Content Goes Here</td>
+	      <td>This is longer content Donec id elit non mi porta gravida at eget metus.</td>
+	      <td>Content Goes Here</td>
+	      <td>Content Goes Here</td>
+	    </tr>
+	    <tr>
+	      <td>Content Goes Here</td>
+	      <td>This is longer Content Goes Here Donec id elit non mi porta gravida at eget metus.</td>
+	      <td>Content Goes Here</td>
+	      <td>Content Goes Here</td>
+	    </tr>
+	  </tbody>
+	</table>
 </div>
 
 ---

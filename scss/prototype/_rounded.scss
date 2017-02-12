@@ -59,7 +59,7 @@ $prototype-border-radius: rem-calc(4px) !default;
     @include border-left-radius;
   }
   .rounded-circle {
-    @include rounded-circle
+    @include rounded-circle;
   }
 
   @if ($prototype-rounded-breakpoints) {
@@ -83,7 +83,7 @@ $prototype-border-radius: rem-calc(4px) !default;
             @include border-left-radius;
           }
           .#{$size}-rounded-circle {
-            @include rounded-circle
+            @include rounded-circle;
           }
         }
       }

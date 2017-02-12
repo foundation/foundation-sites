@@ -27,6 +27,9 @@
 // Rounded Utility
 @import 'rounded';
 
+// Bordered Utility
+@import 'bordered';
+
 // Overflow helper classes
 @import 'overflow';
 
@@ -50,6 +53,7 @@
   @include foundation-prototype-font-styling;
   @include foundation-prototype-list-style-type;
   @include foundation-prototype-rounded;
+  @include foundation-prototype-bordered;
   @include foundation-prototype-overflow;
   @include foundation-prototype-display;
   @include foundation-prototype-position;

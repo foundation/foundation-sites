@@ -1,0 +1,46 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group prototype-bordered
+////
+
+/// Responsive breakpoints for bordered utility.
+/// @type Boolean
+$prototype-bordered-breakpoints: $global-prototype-breakpoints !default;
+
+/// Default value for `prototype-border-width`
+/// @type Number
+$prototype-border-width: rem-calc(1px) !default;
+
+/// Default value for `prototype-border-type`
+/// @type String
+$prototype-border-type: solid !default;
+
+/// Default value for `prototype-border-color` defaulted to `medium-gray`
+/// @type Color
+$prototype-border-color: $medium-gray !default;
+
+@mixin bordered {
+  border: $prototype-border-width $prototype-border-type $prototype-border-color;
+}
+
+@mixin foundation-prototype-bordered {
+  .bordered {
+    @include bordered;
+  }
+
+  @if ($prototype-bordered-breakpoints) {
+    // Loop through Responsive Breakpoints
+    @each $size in $breakpoint-classes {
+      @include breakpoint($size) {
+        @if $size != $-zf-zero-breakpoint {
+          .#{$size}-bordered {
+            @include bordered;
+          }
+        }
+      }
+    }
+  }
+}
