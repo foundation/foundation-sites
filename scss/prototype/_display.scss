@@ -16,6 +16,8 @@ $prototype-display-classes: (
   none, inline, inline-block, block
 ) !default;
 
+/// Display classes, by default coming through a map `$prototype-display-classes`
+/// @param {String} $display [] Display classes
 @mixin display($display) {
     display: $display !important;
 }
