@@ -48,7 +48,6 @@ $prototype-spacers-count: 5 !default;
 }
 
 @mixin foundation-prototype-spacing {
-
   @each $prop, $abbrev in $prototype-spacing-classes {
     @each $size, $lengths in $prototype-spacers {
       $length-x:   map-get($lengths, x);

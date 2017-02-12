@@ -21,10 +21,12 @@ $prototype-sizes: (
   100: 100%
 ) !default;
 
+/// Max Width 100 utility.
 @mixin max-width-100 {
   max-width: 100%;
 }
 
+/// Max Height 100 utility.
 @mixin max-height-100 {
   max-height: 100%;
 }
