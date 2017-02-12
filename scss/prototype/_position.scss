@@ -18,26 +18,36 @@ $prototype-position-classes: (
 
 /// z-index for fixed positioning
 /// @type Number
-$prototype-position-zindex: 975 !default;
+$prototype-position-z-index: 975 !default;
 
-@mixin position-fixed-top {
-  position: fixed;
+/// Position classes, by default coming through a map `$prototype-position-classes`
+/// @param {String} $position [] Position classes
+@mixin position($position) {
+  position: $position;
+}
+
+/// Position Fixed on top corners
+/// @param {Number} $z-index [$prototype-position-z-index] z-index for `position-fixed-top`
+@mixin position-fixed-top(
+  $z-index: $prototype-position-z-index
+) {
+  @include position(fixed);
   top: 0;
   right: 0;
   left: 0;
-  z-index: $prototype-position-zindex;
+  z-index: $z-index;
 }
 
-@mixin position-fixed-bottom {
-  position: fixed;
+/// Position Fixed on bottom corners
+/// @param {Number} $z-index [$prototype-position-z-index] z-index for `position-fixed-bottom`
+@mixin position-fixed-bottom(
+  $z-index: $prototype-position-z-index
+) {
+  @include position(fixed);
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: $prototype-position-zindex;
-}
-
-@mixin position($position) {
-  position: $position;
+  z-index: $z-index;
 } 
 
 @mixin foundation-prototype-position {
