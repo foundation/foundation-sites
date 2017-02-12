@@ -14,7 +14,7 @@ $prototype-rounded-breakpoints: $global-prototype-breakpoints !default;
 /// @type Number
 $prototype-border-radius: rem-calc(4px) !default;
 
-/// Rounded Utility (all corners): Adds rounded corners (all corners) to an element by default.
+/// Rounded utility (all corners): Adds rounded corners (all corners) to an element by default.
 /// @param {Number} $radius [$prototype-border-radius] Border radius (all corners)
 @mixin border-radius(
   $radius: $prototype-border-radius
@@ -22,7 +22,7 @@ $prototype-border-radius: rem-calc(4px) !default;
   border-radius: $radius;
 }
 
-/// Rounded Utility (top corner): Adds rounded corner (top corner) to an element by default.
+/// Rounded utility (top corner): Adds rounded corner (top corner) to an element by default.
 /// @param {Number} $radius [$prototype-border-radius] Border radius (top corner)
 @mixin border-top-radius(
   $radius: $prototype-border-radius
@@ -31,7 +31,7 @@ $prototype-border-radius: rem-calc(4px) !default;
   border-top-left-radius: $radius;
 }
 
-/// Rounded Utility (right corner): Adds rounded corner (right corner) to an element by default.
+/// Rounded utility (right corner): Adds rounded corner (right corner) to an element by default.
 /// @param {Number} $radius [$prototype-border-radius] Border radius (right corner)
 @mixin border-right-radius(
   $radius: $prototype-border-radius
@@ -40,7 +40,7 @@ $prototype-border-radius: rem-calc(4px) !default;
   border-top-right-radius: $radius;
 }
 
-/// Rounded Utility (bottom corner): Adds rounded corner (bottom corner) to an element by default.
+/// Rounded utility (bottom corner): Adds rounded corner (bottom corner) to an element by default.
 /// @param {Number} $radius [$prototype-border-radius] Border radius (bottom corner)
 @mixin border-bottom-radius(
   $radius: $prototype-border-radius
@@ -49,7 +49,7 @@ $prototype-border-radius: rem-calc(4px) !default;
   border-bottom-left-radius: $radius;
 }
 
-/// Rounded Utility (left corner): Adds rounded corner (left corner) to an element by default.
+/// Rounded utility (left corner): Adds rounded corner (left corner) to an element by default.
 /// @param {Number} $radius [$prototype-border-radius] Border radius (left corner)
 @mixin border-left-radius(
   $radius: $prototype-border-radius
@@ -58,6 +58,7 @@ $prototype-border-radius: rem-calc(4px) !default;
   border-top-left-radius: $radius;
 }
 
+/// Rounded circle utility
 @mixin rounded-circle {
   border-radius: 50%;
 }
