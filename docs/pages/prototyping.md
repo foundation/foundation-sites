@@ -26,18 +26,21 @@ If you included each component manually (like our starter projects do), open up 
 ```scss
 @include foundation-prototype-classes;
 ```
-or, if you looking for specific utility instead of all, these helper classes can be included individually like.
+or, if you looking for specific utility instead of all, these helper classes can be included individually like. Also, for your ease full list is also included below.
 
 ```scss
-// Text utilities
+@include foundation-prototype-typescale;
 @include foundation-prototype-text-utilities;
-// Text transformation classes
 @include foundation-prototype-text-transformation;
-// Display classes
+@include foundation-prototype-text-decoration;
+@include foundation-prototype-font-styling;
+@include foundation-prototype-list-style-type;
+@include foundation-prototype-rounded;
+@include foundation-prototype-bordered;
+@include foundation-prototype-overflow;
 @include foundation-prototype-display;
-// Position Helpers
+@include foundation-prototype-position;
 @include foundation-prototype-sizing;
-// Spacing Utilities
 @include foundation-prototype-spacing;
 ```
 
