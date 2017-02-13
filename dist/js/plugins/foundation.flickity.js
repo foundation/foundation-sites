@@ -25,6 +25,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       this.$element = element;
       this.options = $.extend({}, FlickityCarousel.defaults, this.$element.data(), options);
       this.id = this.$element[0].id || Foundation.GetYoDigits(6, 'flickity');
+      this.nextPrevEls = [];
 
       this._init();
 
@@ -50,18 +51,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }
         }
 
-        this._enableFlickity();
-
         this.$element.attr({
           'data-resize': this.id,
           'id': this.id
         });
 
-        this._events();
+        if (this.options.disableBreakpoint === '' && this.options.enableBreakpoint === '') {
+          this._enableFlickity();
+        } else {
+          if (this.options.disableBreakpoint !== '') {
+            this._disableIfMediaQuery(this.options.disableBreakpoint);
+          }
 
-        if (this.options.accessible) {
-          this.$element.attr('tabindex', 0);
+          if (this.options.enableBreakpoint !== '') {
+            this._enableIfMediaQuery(this.options.enableBreakpoint);
+          }
         }
+
+        this._events();
       }
 
       /**
@@ -78,67 +85,127 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         if (this.options.horizontalScrolling) {
           this.$element.off('mousewheel.zf.flickity DOMMouseScroll.zf.flickity').on('mousewheel.zf.flickity DOMMouseScroll.zf.flickity', function (e) {
-            if (!window.wheeling) {
-              if (e.deltaX > 0 || e.deltaY < 0) {
-                _this.$element.flickity('next');
-              } else if (e.deltaX < 0 || e.deltaY > 0) {
-                _this.$element.flickity('previous');
-              }
-            }
-
-            clearTimeout(window.wheeling);
-
-            window.wheeling = setTimeout(function () {
-              delete window.wheeling;
-
-              if (window.wheeldata) {
-                window.wheeldelta.x = 0;
-                window.wheeldelta.y = 0;
-              }
-            }, 250);
-
-            if (window.wheeldelta) {
-              window.wheeldelta.x += e.deltaFactor * e.deltaX;
-              window.wheeldelta.y += e.deltaFactor * e.deltaY;
-
-              if (window.wheeldelta.x > 500 || window.wheeldelta.y > 500 || window.wheeldelta.x < -500 || window.wheeldelta.y < -500) {
-                window.wheeldelta.x = 0;
-                window.wheeldelta.y = 0;
-
+            if (this.$element.data('flickity')) {
+              if (!window.wheeling) {
                 if (e.deltaX > 0 || e.deltaY < 0) {
                   _this.$element.flickity('next');
                 } else if (e.deltaX < 0 || e.deltaY > 0) {
                   _this.$element.flickity('previous');
                 }
               }
-            }
 
-            e.preventDefault();
+              clearTimeout(window.wheeling);
+
+              window.wheeling = setTimeout(function () {
+                delete window.wheeling;
+
+                if (window.wheeldata) {
+                  window.wheeldelta.x = 0;
+                  window.wheeldelta.y = 0;
+                }
+              }, 250);
+
+              if (window.wheeldelta) {
+                window.wheeldelta.x += e.deltaFactor * e.deltaX;
+                window.wheeldelta.y += e.deltaFactor * e.deltaY;
+
+                if (window.wheeldelta.x > 500 || window.wheeldelta.y > 500 || window.wheeldelta.x < -500 || window.wheeldelta.y < -500) {
+                  window.wheeldelta.x = 0;
+                  window.wheeldelta.y = 0;
+
+                  if (e.deltaX > 0 || e.deltaY < 0) {
+                    _this.$element.flickity('next');
+                  } else if (e.deltaX < 0 || e.deltaY > 0) {
+                    _this.$element.flickity('previous');
+                  }
+                }
+              }
+
+              e.preventDefault();
+            }
+          });
+        }
+
+        if (this.options.previousElement !== '') {
+          var prevElArr = this.options.previousElement.split(',');
+          $.each(prevElArr, function (i, selector) {
+            var $selector = $(selector);
+
+            if ($selector.length > 0) {
+              $selector.off('click.zf.flickity').on('click.zf.flickity', function (e) {
+                _this.$element.flickity('previous');
+                e.preventDefault();
+              });
+
+              _this.nextPrevEls.push($selector);
+            }
+          });
+        }
+
+        if (this.options.nextElement !== '') {
+          var nextElArr = this.options.nextElement.split(',');
+          $.each(nextElArr, function (i, selector) {
+            var $selector = $(selector);
+
+            if ($selector.length > 0) {
+              $selector.off('click.zf.flickity').on('click.zf.flickity', function (e) {
+                _this.$element.flickity('next');
+                e.preventDefault();
+              });
+
+              _this.nextPrevEls.push($selector);
+            }
           });
         }
 
         if (this.options.disableBreakpoint !== '') {
           $(window).off(mediaqueryListener).on(mediaqueryListener, function () {
-            if (Foundation.MediaQuery.atLeast(_this.options.disableBreakpoint) && _this.$element.data('flickity')) {
-              _this._disableFlickity();
-            } else if (!_this.$element.data('flickity')) {
-              _this._enableFlickity();
-            }
+            _this._disableIfMediaQuery(_this.options.disableBreakpoint);
           });
         }
 
         if (this.options.enableBreakpoint !== '') {
           $(window).off(mediaqueryListener).on(mediaqueryListener, function () {
-            if (Foundation.MediaQuery.atLeast(_this.options.enableBreakpoint) && _this.$element.data('flickity')) {
-              _this._enableFlickity();
-            } else if (!_this.$element.data('flickity')) {
-              _this._disableFlickity();
-            }
+            _this._enableIfMediaQuery(_this.options.enableBreakpoint);
           });
         }
 
         if (this.options.noDragging) {
-          this.$element.flickity('unbindDrag');
+          if (this.$element.data('flickity')) {
+            this.$element.flickity('unbindDrag');
+          }
+        }
+      }
+
+      /**
+       * Disable Flickity based on media query
+       * @function
+       * @private
+       */
+
+    }, {
+      key: '_disableIfMediaQuery',
+      value: function _disableIfMediaQuery(mediaQuery) {
+        if (Foundation.MediaQuery.atLeast(mediaQuery)) {
+          this._disableFlickity();
+        } else {
+          this._enableFlickity();
+        }
+      }
+
+      /**
+       * Enable Flickity based on media query
+       * @function
+       * @private
+       */
+
+    }, {
+      key: '_enableIfMediaQuery',
+      value: function _enableIfMediaQuery(mediaQuery) {
+        if (Foundation.MediaQuery.atLeast(mediaQuery)) {
+          this._enableFlickity();
+        } else {
+          this._disableFlickity();
         }
       }
 
@@ -152,8 +219,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: '_disableFlickity',
       value: function _disableFlickity() {
-        this.$element.flickity('destroy');
+        if (this.$element.data('flickity')) {
+          this.$element.flickity('destroy');
+        }
         this.$element.off('.zf.flickity').find('*').off('.zf.flickity');
+        if (this.nextPrevEls.length > 0) {
+          $.each(this.nextPrevEls, function (i, $el) {
+            $el.off('.zf.flickity');
+          });
+        }
       }
 
       /**
@@ -196,6 +270,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     */
     horizontalScrolling: false,
     /**
+    * Comma separated list of selectors that will trigger the previous
+    * slide in the carousel
+    * @option
+     * @type {string}
+    * @default ''
+    */
+    previousElement: '',
+    /**
+    * Comma separated list of selectors that will trigger the next slide
+    * in the carousel
+    * @option
+     * @type {string}
+    * @default ''
+    */
+    nextElement: '',
+    /**
     * Disable Flickity at a given breakpoint
     * @option
      * @type {string}
@@ -229,15 +319,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * @type {boolean}
     * @default false
     */
-    pageDots: false,
-    /**
-    * Allows FlickityCarousel to bind keyboard events
-    * to the slider
-    * @option
-     * @type {boolean}
-    * @default true
-    */
-    accessible: true
+    pageDots: false
   };
 
   // Window exports

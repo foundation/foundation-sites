@@ -88,11 +88,55 @@ __Note:__ these elements do _not_ have to be within the `data-flickity-carousel`
 <button id="some-button" class="button">Some button</button>
 ```
 
+---
+
+### Enable autoplay at a media query breakpoint
+
+Often times carousels' contents stack at mobile window sizes, causing the height to change from slide to slide. If the carousel's `autoPlay` option is enabled, this can have the undesirable consequence of pushing all the content below the carousel up and down the page at intervals.
+
+To prevent this, set the `data-auto-play-breakpoint` attribute to the same breakpoint name as when the carousel's contents unstack.
+
+**Note:** there's no need to set the `data-auto-play` attribute to `true` in addition to using `data-auto-play-breakpoint`
+
+```html_example
+<div class="flickity" role="region" aria-label="Favorite Space Pictures" data-flickity-carousel data-auto-play-breakpoint="large" data-pause-auto-play-on-hover="false" data-wrap-around="true">
+  <div class="flickity-slide">
+    <div class="row">
+      <div class="large-6 column">
+        <img class="flickity-image" src="assets/img/orbit/01.jpg" alt="Space">
+      </div>
+      <div class="large-6 column">
+        <p>Cupidatat commodo officia qui nisi culpa ullamco pariatur velit pariatur reprehenderit laboris anim mollit magna voluptate tempor consequat. Proident officia incididunt nulla occaecat sit ipsum et ex reprehenderit voluptate non duis ad adipisicing non culpa reprehenderit. Anim Lorem dolor in veniam et irure aliqua ipsum reprehenderit irure qui.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="flickity-slide">
+    <div class="row">
+      <div class="large-6 column">
+        <img class="flickity-image" src="assets/img/orbit/02.jpg" alt="Space">
+      </div>
+      <div class="large-6 column">
+        <p>Occaecat velit esse non ullamco nulla ad aute proident pariatur cillum magna. Sit esse ullamco aliqua dolor et est aliquip culpa ea eiusmod cillum cillum quis. Dolor ut tempor ut aliqua proident sit commodo in qui labore aliqua in minim. Ad elit nostrud proident aliqua amet ipsum officia consectetur qui tempor aliqua.</p>
+
+        <p>Mollit in occaecat consequat fugiat deserunt ut et in cillum exercitation deserunt ad. Lorem dolore excepteur aliquip mollit in minim exercitation. Mollit ut laborum labore officia deserunt laboris sit velit officia et laboris est ad consectetur cillum. Ullamco consequat deserunt Lorem id ex ad eu fugiat ad esse in. Dolor minim ad do nulla fugiat laborum adipisicing dolore sit enim eu exercitation excepteur.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="flickity-slide">
+    <img class="flickity-image" src="assets/img/orbit/03.jpg" alt="Space">
+  </div>
+</div>
+```
+
+---
+
 ### Disable or enable Flickity at a media query breakpoint
 
-To _disable_ Flickity when the window expands to a certain media query, use the `data-disable-breakpoint` attribute with the breakpoint name as the value.
+To _completely disable_ Flickity when the window expands to a certain media query, use the `data-disable-breakpoint` attribute with the breakpoint name as the value.
 
-To _enable_ Flickity when the window expands to a certain media query, use the `data-enable-breakpoint` attribute with the breakpoint name as the value.
+To _completely enable_ Flickity when the window expands to a certain media query, use the `data-enable-breakpoint` attribute with the breakpoint name as the value.
 
 Be careful when using both options simultaneously! You probably don't have to.
 
