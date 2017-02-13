@@ -7,7 +7,11 @@ sass:
 
 Prototyping utilities helps you to make prototypes from simple sketches and mockups quickly. Foundation provides you with a utility toolkit that you can use for your prototyping project and quickly create a fully-functional and responsive prototypes. Just fire in these simple and reusable classes and you are done.
 
-At the same time, we also understand that prototypes are not always required for every single projects and there are many cases specially in bigger projects where you have the time to show up your skill with both design &amp; code and so, prototype mode is **disabled by default!**  
+At the same time, we also understand that prototypes are not always required for every single projects and there are many cases specially in bigger projects where you have the time to show up your skill with both design &amp; code and so, prototype mode is **disabled by default!** 
+
+<div class="primary callout">
+	<p>Many Prototype classes use `!important` to ensure that these they aren't overriden by more specific selectors. This framework conscientiously avoids using `!important` declarations. Please note that we have only inserted `!important` on those specific **CSS** properties which we are fully sure that values of those properties shouldn't be overridden.</p>
+</div> 
 
 ---
 
