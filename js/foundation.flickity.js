@@ -169,7 +169,9 @@ class FlickityCarousel {
     }
 
     if (this.options.noDragging) {
-      this.$element.flickity('unbindDrag');
+      if (this.$element.data('flickity')) {
+        this.$element.flickity('unbindDrag');
+      }
     }
   }
 
