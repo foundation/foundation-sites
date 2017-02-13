@@ -64,6 +64,30 @@ Requires the **jquery-mousewheel** plugin.
 
 ---
 
+### Custom previous/next selectors
+
+To have an element (or a comma separated list of elements) trigger the carousel to proceed to the previous slide, set the `data-previous-element` attribute to your selector of choice (for example, `.previous-link` or `.previous-link, .some-other-link`). The same goes for the `data-next-element` attribute, which will trigger the carousel to proceed to the next slide.
+
+__Note:__ these elements do _not_ have to be within the `data-flickity-carousel` wrapper.
+
+```html_example
+<div class="flickity" role="region" aria-label="Favorite Space Pictures" data-flickity-carousel data-previous-element=".previous-link" data-next-element=".next-link, #some-button" data-wrap-around="true">
+  <div class="flickity-slide">
+    <img class="flickity-image" src="assets/img/orbit/02.jpg" alt="Space">
+  </div>
+  <div class="flickity-slide">
+    <img class="flickity-image" src="assets/img/orbit/04.jpg" alt="Space">
+  </div>
+  <div class="flickity-slide">
+    <img class="flickity-image" src="assets/img/orbit/01.jpg" alt="Space">
+  </div>
+</div>
+
+<p>Clicking <a class="previous-link" href="#">this</a> link will take you to the previous slide, while clicking <a class="next-link" href="#">this</a> link will take you to the next slide.</p>
+
+<button id="some-button" class="button">Some button</button>
+```
+
 ### Disable or enable Flickity at a media query breakpoint
 
 To _disable_ Flickity when the window expands to a certain media query, use the `data-disable-breakpoint` attribute with the breakpoint name as the value.

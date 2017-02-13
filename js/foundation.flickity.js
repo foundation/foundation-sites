@@ -19,6 +19,7 @@ class FlickityCarousel {
     this.$element = element;
     this.options = $.extend({}, FlickityCarousel.defaults, this.$element.data(), options);
     this.id = this.$element[0].id || Foundation.GetYoDigits(6, 'flickity');
+    this.nextPrevEls = [];
 
     this._init();
 
@@ -108,6 +109,40 @@ class FlickityCarousel {
         });
     }
 
+    if (this.options.previousElement !== '') {
+      var prevElArr = this.options.previousElement.split(',');
+      $.each(prevElArr, function(i, selector) {
+        var $selector = $(selector);
+
+        if ($selector.length > 0) {
+          $selector.off('click.zf.flickity')
+            .on('click.zf.flickity', function (e) {
+              _this.$element.flickity('previous');
+              e.preventDefault();
+            });
+
+          _this.nextPrevEls.push($selector);
+        }
+      });
+    }
+
+    if (this.options.nextElement !== '') {
+      var nextElArr = this.options.nextElement.split(',');
+      $.each(nextElArr, function(i, selector) {
+        var $selector = $(selector);
+
+        if ($selector.length > 0) {
+          $selector.off('click.zf.flickity')
+            .on('click.zf.flickity', function (e) {
+              _this.$element.flickity('next');
+              e.preventDefault();
+            });
+
+          _this.nextPrevEls.push($selector);
+        }
+      });
+    }
+
     if (this.options.disableBreakpoint !== '') {
       $(window).off(mediaqueryListener)
         .on(mediaqueryListener, function() {
@@ -146,6 +181,11 @@ class FlickityCarousel {
   _disableFlickity() {
     this.$element.flickity('destroy');
     this.$element.off('.zf.flickity').find('*').off('.zf.flickity');
+    if (this.nextPrevEls.length > 0) {
+      $.each(this.nextPrevEls, function(i, $el) {
+        $el.off('.zf.flickity');
+      });
+    }
   }
 
   /**
@@ -178,6 +218,22 @@ FlickityCarousel.defaults = {
   * @default false
   */
   horizontalScrolling: false,
+  /**
+  * Comma separated list of selectors that will trigger the previous
+  * slide in the carousel
+  * @option
+   * @type {string}
+  * @default ''
+  */
+  previousElement: '',
+  /**
+  * Comma separated list of selectors that will trigger the next slide
+  * in the carousel
+  * @option
+   * @type {string}
+  * @default ''
+  */
+  nextElement: '',
   /**
   * Disable Flickity at a given breakpoint
   * @option

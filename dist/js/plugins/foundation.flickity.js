@@ -136,6 +136,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }
           });
         }
+
+        if (this.options.noDragging) {
+          this.$element.flickity('unbindDrag');
+        }
       }
 
       /**
@@ -205,6 +209,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     * @default ''
     */
     enableBreakpoint: '',
+    /**
+    * Disable dragging
+    * @option
+     * @type {boolean}
+    * @default false
+    */
+    noDragging: false,
     /**
     * Generates previous and next button HTML
     * @option
