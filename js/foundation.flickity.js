@@ -60,10 +60,6 @@ class FlickityCarousel {
     }
 
     this._events();
-
-    if (this.options.accessible) {
-      this.$element.attr('tabindex', 0);
-    }
   }
 
   /**
@@ -78,45 +74,47 @@ class FlickityCarousel {
     if (this.options.horizontalScrolling) {
       this.$element.off('mousewheel.zf.flickity DOMMouseScroll.zf.flickity')
         .on('mousewheel.zf.flickity DOMMouseScroll.zf.flickity', function (e) {
-          if (!window.wheeling) {
-            if (e.deltaX > 0 || e.deltaY < 0) {
-              _this.$element.flickity('next');
-            } else if (e.deltaX < 0 || e.deltaY > 0) {
-              _this.$element.flickity('previous');
-            }
-          }
-
-          clearTimeout(window.wheeling);
-
-          window.wheeling = setTimeout(function () {
-            delete window.wheeling;
-
-            if (window.wheeldata) {
-              window.wheeldelta.x = 0;
-              window.wheeldelta.y = 0;
-            }
-          }, 250);
-
-          if (window.wheeldelta) {
-            window.wheeldelta.x += e.deltaFactor * e.deltaX;
-            window.wheeldelta.y += e.deltaFactor * e.deltaY;
-
-            if (window.wheeldelta.x > 500 ||
-                window.wheeldelta.y > 500 ||
-                window.wheeldelta.x < -500 ||
-                window.wheeldelta.y < -500) {
-              window.wheeldelta.x = 0;
-              window.wheeldelta.y = 0;
-
+          if (this.$element.data('flickity')) {
+            if (!window.wheeling) {
               if (e.deltaX > 0 || e.deltaY < 0) {
                 _this.$element.flickity('next');
               } else if (e.deltaX < 0 || e.deltaY > 0) {
                 _this.$element.flickity('previous');
               }
             }
-          }
 
-          e.preventDefault();
+            clearTimeout(window.wheeling);
+
+            window.wheeling = setTimeout(function () {
+              delete window.wheeling;
+
+              if (window.wheeldata) {
+                window.wheeldelta.x = 0;
+                window.wheeldelta.y = 0;
+              }
+            }, 250);
+
+            if (window.wheeldelta) {
+              window.wheeldelta.x += e.deltaFactor * e.deltaX;
+              window.wheeldelta.y += e.deltaFactor * e.deltaY;
+
+              if (window.wheeldelta.x > 500 ||
+                  window.wheeldelta.y > 500 ||
+                  window.wheeldelta.x < -500 ||
+                  window.wheeldelta.y < -500) {
+                window.wheeldelta.x = 0;
+                window.wheeldelta.y = 0;
+
+                if (e.deltaX > 0 || e.deltaY < 0) {
+                  _this.$element.flickity('next');
+                } else if (e.deltaX < 0 || e.deltaY > 0) {
+                  _this.$element.flickity('previous');
+                }
+              }
+            }
+
+            e.preventDefault();
+          }
         });
     }
 
@@ -299,15 +297,7 @@ FlickityCarousel.defaults = {
    * @type {boolean}
   * @default false
   */
-  pageDots: false,
-  /**
-  * Allows FlickityCarousel to bind keyboard events
-  * to the slider
-  * @option
-   * @type {boolean}
-  * @default true
-  */
-  accessible: true
+  pageDots: false
 };
 
 // Window exports
