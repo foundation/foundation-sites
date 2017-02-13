@@ -18,6 +18,9 @@ Give the `<input>` a unique ID and point the `<label>` to it with the `for` attr
   <p>Make sure the HTML of the switch goes in the order you see above&mdash;<code>&lt;input&gt;</code>, then <code>&lt;label&gt;</code></p>
 </div>
 
+<div class='primary callout'>
+  <p>Inspecting the value of the underlying input should be done by evaluating the <code>checked</code> property of said input.</p>
+</div>
 ```html_example
 <div class="switch">
   <input class="switch-input" id="exampleSwitch" type="checkbox" name="exampleSwitch">
