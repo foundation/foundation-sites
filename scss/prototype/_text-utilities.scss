@@ -28,6 +28,7 @@ $prototype-text-overflow: ellipsis !default;
 @mixin text-truncate(
   $overflow: $prototype-text-overflow
 ) {
+  max-width: 100% !important;
   overflow: hidden !important;
   text-overflow: $overflow; 
   white-space: nowrap !important;
