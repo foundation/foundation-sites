@@ -41,12 +41,23 @@ class FlickityCarousel {
       }
     }
 
-    this._enableFlickity();
-
     this.$element.attr({
       'data-resize': this.id,
       'id': this.id
     });
+
+    if (this.options.disableBreakpoint === '' &&
+      this.options.enableBreakpoint === '') {
+      this._enableFlickity();
+    } else {
+      if (this.options.disableBreakpoint !== '') {
+        this._disableIfMediaQuery(this.options.disableBreakpoint);
+      }
+
+      if (this.options.enableBreakpoint !== '') {
+        this._enableIfMediaQuery(this.options.enableBreakpoint);
+      }
+    }
 
     this._events();
 
@@ -146,29 +157,45 @@ class FlickityCarousel {
     if (this.options.disableBreakpoint !== '') {
       $(window).off(mediaqueryListener)
         .on(mediaqueryListener, function() {
-        if (Foundation.MediaQuery.atLeast(_this.options.disableBreakpoint) &&
-          _this.$element.data('flickity')) {
-          _this._disableFlickity();
-        } else if (!_this.$element.data('flickity')) {
-          _this._enableFlickity();
-        }
+        _this._disableIfMediaQuery(_this.options.disableBreakpoint);
       });
     }
 
     if (this.options.enableBreakpoint !== '') {
       $(window).off(mediaqueryListener)
         .on(mediaqueryListener, function() {
-        if (Foundation.MediaQuery.atLeast(_this.options.enableBreakpoint) &&
-          _this.$element.data('flickity')) {
-          _this._enableFlickity();
-        } else if (!_this.$element.data('flickity')) {
-          _this._disableFlickity();
-        }
+        _this._enableIfMediaQuery(_this.options.enableBreakpoint);
       });
     }
 
     if (this.options.noDragging) {
       this.$element.flickity('unbindDrag');
+    }
+  }
+
+  /**
+   * Disable Flickity based on media query
+   * @function
+   * @private
+   */
+  _disableIfMediaQuery(mediaQuery) {
+    if (Foundation.MediaQuery.atLeast(mediaQuery)) {
+      this._disableFlickity();
+    } else {
+      this._enableFlickity();
+    }
+  }
+
+  /**
+   * Enable Flickity based on media query
+   * @function
+   * @private
+   */
+  _enableIfMediaQuery(mediaQuery) {
+    if (Foundation.MediaQuery.atLeast(mediaQuery)) {
+      this._enableFlickity();
+    } else {
+      this._disableFlickity();
     }
   }
 
@@ -179,7 +206,9 @@ class FlickityCarousel {
    * @private
    */
   _disableFlickity() {
-    this.$element.flickity('destroy');
+    if (this.$element.data('flickity')) {
+      this.$element.flickity('destroy');
+    }
     this.$element.off('.zf.flickity').find('*').off('.zf.flickity');
     if (this.nextPrevEls.length > 0) {
       $.each(this.nextPrevEls, function(i, $el) {
