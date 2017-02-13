@@ -8,7 +8,7 @@
   "contributors": [
     "The Berndt Group <tyler.madsen@berndtgroup.net> (http://berndtgroup.net)"
   ],
-  "homepage": "http://foundation.zurb.com/sites",
+  "homepage": "https://berndtgroup.github.io/TBG-foundation-sites",
   "scripts": {
     "start": "gulp",
     "test": "npm run test:sass && npm run test:javascript",
@@ -102,11 +102,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/zurb/foundation-sites"
+    "url": "https://github.com/BerndtGroup/TBG-foundation-sites"
   },
   "bugs": {
-    "url": "https://github.com/zurb/foundation-sites/issues",
-    "email": "foundation@zurb.com"
+    "url": "https://github.com/BerndtGroup/TBG-foundation-sites/issues",
+    "email": "tyer.madsen@berndtgroup.net"
   },
   "keywords": [
     "eyeglass-module",
