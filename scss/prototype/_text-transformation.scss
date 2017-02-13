@@ -19,7 +19,7 @@ $prototype-text-transformation: (
 /// Text Transformation, by default coming through a map `$prototype-text-transformation`
 /// @param {String} $transformation [] Text Transformation
 @mixin text-transform($transformation) {
-  text-transform: $transformation;
+  text-transform: $transformation !important;
 } 
 
 @mixin foundation-prototype-text-transformation {

@@ -60,7 +60,7 @@ $prototype-border-radius: rem-calc(4px) !default;
 
 /// Rounded circle utility
 @mixin rounded-circle {
-  border-radius: 50%;
+  border-radius: 50% !important;
 }
 
 @mixin foundation-prototype-rounded {

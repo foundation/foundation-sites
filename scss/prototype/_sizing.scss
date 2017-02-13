@@ -23,12 +23,12 @@ $prototype-sizes: (
 
 /// Max Width 100 utility.
 @mixin max-width-100 {
-  max-width: 100%;
+  max-width: 100% !important;
 }
 
 /// Max Height 100 utility.
 @mixin max-height-100 {
-  max-height: 100%;
+  max-height: 100% !important;
 }
 
 @mixin foundation-prototype-sizing {
@@ -36,7 +36,7 @@ $prototype-sizes: (
   @each $sizing in $prototype-sizing {
     @each $size, $percentage in $prototype-sizes {
       .#{$sizing}-#{$size} { 
-        #{$sizing}: $percentage; 
+        #{$sizing}: $percentage !important; 
       }
     }
   }

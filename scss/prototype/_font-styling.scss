@@ -48,7 +48,7 @@ $prototype-font-bold: $global-weight-bold !default;
 
 /// Font Style Italic
 @mixin font-italic {
-  font-style: italic;
+  font-style: italic !important;
 }
 
 @mixin foundation-prototype-font-styling {

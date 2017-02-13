@@ -23,7 +23,7 @@ $prototype-position-z-index: 975 !default;
 /// Position classes, by default coming through a map `$prototype-position`
 /// @param {String} $position [] Position classes
 @mixin position($position) {
-  position: $position;
+  position: $position !important;
 }
 
 /// Position Fixed on top corners
@@ -32,9 +32,9 @@ $prototype-position-z-index: 975 !default;
   $z-index: $prototype-position-z-index
 ) {
   @include position(fixed);
-  top: 0;
-  right: 0;
-  left: 0;
+  top: 0 !important;
+  right: 0 !important;
+  left: 0 !important;
   z-index: $z-index;
 }
 
@@ -44,9 +44,9 @@ $prototype-position-z-index: 975 !default;
   $z-index: $prototype-position-z-index
 ) {
   @include position(fixed);
-  right: 0;
-  bottom: 0;
-  left: 0;
+  right: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
   z-index: $z-index;
 } 
 

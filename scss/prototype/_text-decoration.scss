@@ -19,7 +19,7 @@ $prototype-text-decoration: (
 /// Text Decoration, by default coming through a map `$prototype-text-decoration`
 /// @param {String} $decoration [] Text Decoration
 @mixin text-decoration($decoration) {
-  text-decoration: $decoration;
+  text-decoration: $decoration !important;
 } 
 
 @mixin foundation-prototype-text-decoration {
