@@ -16,7 +16,7 @@ tags:
 </div>
 
 <div class="callout alert">
-  <p><strong>Depreciation Notice:</strong> From v6.5.x, we are moving visibility classes to prototype specific mode and thus visibility classes will be disabled by default. You can re-enable it though, with a simple `@include`.</p>
+  <p><strong>Depreciation Notice:</strong> From v6.5.x, we are moving visibility classes to <a href="prototyping.html">Prototype specific mode</a> and thus visibility classes will be disabled by default. You can re-enable it though, with a simple `@include`.</p>
 </div>
 
 ## Show by Screen Size
