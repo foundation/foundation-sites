@@ -58,6 +58,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         if (this.options.disableBreakpoint === '' && this.options.enableBreakpoint === '') {
           this._enableFlickity();
+          if (this.options.autoPlayBreakpoint !== '') {
+            this._autoplayIfMediaQuery(this.options.autoPlayBreakpoint);
+          }
         } else {
           if (this.options.disableBreakpoint !== '') {
             this._disableIfMediaQuery(this.options.disableBreakpoint);
@@ -85,7 +88,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         if (this.options.horizontalScrolling) {
           this.$element.off('mousewheel.zf.flickity DOMMouseScroll.zf.flickity').on('mousewheel.zf.flickity DOMMouseScroll.zf.flickity', function (e) {
-            if (this.$element.data('flickity')) {
+            if (_this.$element.data('flickity')) {
               if (!window.wheeling) {
                 if (e.deltaX > 0 || e.deltaY < 0) {
                   _this.$element.flickity('next');
@@ -158,6 +161,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           });
         }
 
+        if (this.options.autoPlayBreakpoint !== '') {
+          $(window).off(mediaqueryListener).on(mediaqueryListener, function () {
+            _this._autoplayIfMediaQuery(_this.options.autoPlayBreakpoint);
+          });
+        }
+
         if (this.options.disableBreakpoint !== '') {
           $(window).off(mediaqueryListener).on(mediaqueryListener, function () {
             _this._disableIfMediaQuery(_this.options.disableBreakpoint);
@@ -173,6 +182,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         if (this.options.noDragging) {
           if (this.$element.data('flickity')) {
             this.$element.flickity('unbindDrag');
+          }
+        }
+      }
+
+      /**
+       * Disable Flickity based on media query
+       * @function
+       * @private
+       */
+
+    }, {
+      key: '_autoplayIfMediaQuery',
+      value: function _autoplayIfMediaQuery(mediaQuery) {
+        console.log(Foundation.MediaQuery.current);
+        if (this.$element.data('flickity')) {
+          if (Foundation.MediaQuery.atLeast(mediaQuery)) {
+            this.$element.flickity('playPlayer');
+          } else {
+            this.$element.flickity('stopPlayer');
           }
         }
       }
@@ -285,6 +313,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     * @default ''
     */
     nextElement: '',
+    /**
+    * Enable autoPlay option at a given breakpoint
+    * @option
+     * @type {string}
+    * @default ''
+    */
+    autoPlayBreakpoint: '',
     /**
     * Disable Flickity at a given breakpoint
     * @option

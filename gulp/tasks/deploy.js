@@ -153,7 +153,7 @@ gulp.task('deploy:custom', ['sass:foundation', 'javascript:foundation'], functio
 
 // TBG-specific deploy tasks
 gulp.task('tbg', function(cb) {
-  sequence('deploy:dist', 'deploy:plugins', 'deploy:settings', 'deploy:custom', 'tbg:pub', cb);
+  sequence('deploy:dist', 'deploy:plugins', 'deploy:custom', 'tbg:pub', cb);
 });
 
 // TBG task that commits the docs to the gh-pages branch

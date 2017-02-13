@@ -29,8 +29,8 @@ supercollider
     quiet: false,
     pageRoot: 'docs/pages',
     data: {
-      repoName: 'foundation-sites',
-      editBranch: 'master'
+      repoName: 'tbg-foundation-sites',
+      editBranch: 'tbg'
     }
   })
   .searchConfig({
