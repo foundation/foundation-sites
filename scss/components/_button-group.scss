@@ -78,6 +78,7 @@ $buttongroup-radius-on-each: true !default;
 
 /// Creates a full-width button group, making each button equal width.
 /// @param {String} $selector [$buttongroup-child-selector] - Selector for the buttons inside a button group.
+/// @param {Number} $spacing [$buttongroup-spacing] - Spacing between buttons in a button group.
 @mixin button-group-expand(
   $selector: $buttongroup-child-selector,
   $spacing: $buttongroup-spacing,
