@@ -306,7 +306,7 @@ $show-header-for-stacked: false !default;
   }
 
   table.stack {
-    @include breakpoint(medium down) {
+    @include breakpoint($table-stack-breakpoint down) {
       @include table-stack;
     }
   }
