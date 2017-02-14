@@ -11,7 +11,7 @@
 $buttongroup-margin: 1rem !default;
 
 /// Margin between buttons in a button group.
-/// @type Border
+/// @type Number
 $buttongroup-spacing: 1px !default;
 
 /// Selector for the buttons inside a button group.
@@ -28,8 +28,10 @@ $buttongroup-radius-on-each: true !default;
 
 /// Add styles for a button group container.
 /// @param {String} $child-selector [$buttongroup-child-selector] - Selector for the buttons inside a button group.
+/// @param {Number} $spacing [$buttongroup-spacing] - Spacing between buttons in a button group.
 @mixin button-group(
-  $child-selector: $buttongroup-child-selector
+  $child-selector: $buttongroup-child-selector,
+  $spacing: $buttongroup-spacing
 ) {
   @include clearfix;
   margin-bottom: $buttongroup-margin;
@@ -45,8 +47,8 @@ $buttongroup-radius-on-each: true !default;
 
   #{$child-selector} {
     margin: 0;
-    margin-#{$global-right}: $buttongroup-spacing;
-    margin-bottom: $buttongroup-spacing;
+    margin-#{$global-right}: $spacing;
+    margin-bottom: $spacing;
     font-size: map-get($button-sizes, default);
 
     @if $global-flexbox {
@@ -78,10 +80,11 @@ $buttongroup-radius-on-each: true !default;
 /// @param {String} $selector [$buttongroup-child-selector] - Selector for the buttons inside a button group.
 @mixin button-group-expand(
   $selector: $buttongroup-child-selector,
+  $spacing: $buttongroup-spacing,
   $count: null
 ) {
   @if not $global-flexbox {
-    margin-#{$global-right}: -$buttongroup-spacing;
+    margin-#{$global-right}: -$spacing;
 
     &::before,
     &::after {
@@ -104,11 +107,11 @@ $buttongroup-radius-on-each: true !default;
         &:first-child:nth-last-child(#{$i}) {
           &, &:first-child:nth-last-child(#{$i}) ~ #{$selector} {
             display: inline-block;
-            width: calc(#{percentage(1 / $i)} - #{$buttongroup-spacing});
-            margin-#{$global-right}: $buttongroup-spacing;
+            width: calc(#{percentage(1 / $i)} - #{$spacing});
+            margin-#{$global-right}: $spacing;
 
             &:last-child {
-              margin-#{$global-right}: $buttongroup-spacing * -$buttongroup-expand-max;
+              margin-#{$global-right}: $spacing * -$buttongroup-expand-max;
             }
           }
         }
