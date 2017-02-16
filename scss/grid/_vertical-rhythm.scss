@@ -34,24 +34,24 @@
 ) {
   @for $i from 0 through $count {
     @if ($i == 1) {
-      .#{$class + 'margin-half'},
-      %#{$class + 'margin-half'} {
+      %#{$class + 'margin-half'},
+      .#{$class + 'margin-half'} {
         @include vertical-rhythm(0.5);
       }
 
-      .#{$class + 'padding-half'},
-      %#{$class + 'padding-half'} {
+      %#{$class + 'padding-half'},
+      .#{$class + 'padding-half'} {
         @include vertical-rhythm(0.5, 'padding');
       }
     }
 
-    .#{$class + 'margin-' + $i},
-    %#{$class + 'margin-' + $i} {
+    %#{$class + 'margin-' + $i},
+    .#{$class + 'margin-' + $i} {
       @include vertical-rhythm($i);
     }
 
-    .#{$class + 'padding-' + $i},
-    %#{$class + 'padding-' + $i} {
+    %#{$class + 'padding-' + $i},
+    .#{$class + 'padding-' + $i} {
       @include vertical-rhythm($i, 'padding');
     }
   }

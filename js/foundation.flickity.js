@@ -189,7 +189,6 @@ class FlickityCarousel {
    * @private
    */
   _autoplayIfMediaQuery(mediaQuery) {
-    console.log(Foundation.MediaQuery.current);
     if (this.$element.data('flickity')) {
       if (Foundation.MediaQuery.atLeast(mediaQuery)) {
         this.$element.flickity('playPlayer');
