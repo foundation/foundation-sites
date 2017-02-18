@@ -103,7 +103,7 @@ class Drilldown {
     if(!this.options.autoHeight) {
       this.$submenus.addClass('drilldown-submenu-cover-previous');
     }
-    
+
     // create a wrapper on element if it doesn't exist.
     if(!this.$element.parent().hasClass('is-drilldown')){
       this.$wrapper = $(this.options.wrapper).addClass('is-drilldown');
@@ -175,7 +175,7 @@ class Drilldown {
   _scrollTop() {
     var _this = this;
     var $scrollTopElement = _this.options.scrollTopElement!=''?$(_this.options.scrollTopElement):_this.$element,
-        scrollPos = parseInt($scrollTopElement.offset().top+_this.options.scrollTopOffset);
+        scrollPos = parseInt($scrollTopElement.offset().top+_this.options.scrollTopOffset, 10);
     $('html, body').stop(true).animate({ scrollTop: scrollPos }, _this.options.animationDuration, _this.options.animationEasing,function(){
       /**
         * Fires after the menu has scrolled
