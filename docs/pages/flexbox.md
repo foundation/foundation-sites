@@ -130,7 +130,7 @@ Stretch alignment is the default. To set parent alignment, use these classes:
 - `.align-stretch`
 
 <div class="primary callout">
-  <p>Note that with vertical alignment, we use the term "middle" for the midpoint, while with horizontal alignment, we use the term "center". Otherwise, we'd have two CSS classes with the same name, but different functionality.</p>
+  <p>Note that with vertical alignment, we use the term "middle" for the midpoint, while with horizontal alignment, we use the term "center". As we can't have two CSS classes with the same name, thus we are using different terms.</p>
 </div>
 
 ```html_example
@@ -163,6 +163,25 @@ To align an individual child, use the below classes. They use the same alignment
   <div class="column align-self-top">Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?</div>
 </div>
 ```
+
+---
+
+### Central Alignment
+
+Central alignment can be applied to a flex parent, which will centrally align all children's automatically. To set this to your layout, simply use the class: `.align-center-middle`.
+
+<div class="primary callout">
+  <p>We are using `.text-center` class just for demo purposes here.</p>
+</div>
+
+```html_example
+<div class="row align-center-middle text-center">
+  <div class="columns small-4">I am in the center-middle</div>
+  <div class="columns small-4">I am also centrally located</div>
+</div>
+```
+
+---
 
 ## Vanilla Flexbox Helper Classes
 

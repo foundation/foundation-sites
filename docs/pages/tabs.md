@@ -157,7 +157,7 @@ Add the attribute `data-deep-link="true"` to a tabstrip to:
 - allow users to open a particular tab at page load with a hash-appended URL
 
 ```html_example
-<ul class="tabs" data-deep-link="true" data-tabs id="deeplinked-tabs">
+<ul class="tabs" data-deep-link="true" data-update-history="true" data-deep-link-smudge="true" data-deep-link-smudge="500" data-tabs id="deeplinked-tabs">
   <li class="tabs-title is-active"><a href="#panel1d" aria-selected="true">Tab 1</a></li>
   <li class="tabs-title"><a href="#panel2d">Tab 2</a></li>
   <li class="tabs-title"><a href="#panel3d">Tab 3</a></li>

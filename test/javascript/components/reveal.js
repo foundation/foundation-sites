@@ -175,16 +175,42 @@ describe('Reveal', function() {
 
       $html.should.have.attr('aria-hidden', 'true');
     });
-    it('removes class from body', function() {
+    it('removes class from body', function(done) {
       $html = $(template).appendTo('body');
       plugin = new Foundation.Reveal($html, {});
 
       // Open it first
       plugin.open();
 
-      plugin.close();
 
-      $('body').should.not.have.class('is-reveal-open');
+      $html.on('closed.zf.reveal', function() {
+        $('body').should.not.have.class('is-reveal-open');
+        done();
+      });
+      
+      plugin.close();
+    });
+    it('does not remove class from body if another reveal is open', function(done) {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Reveal($html, {multipleOpened: true});
+
+      let $html2 = $(template).attr('id', 'exampleModal2').appendTo('body');
+      let plugin2 = new Foundation.Reveal($html2, {multipleOpened: true, vOffset: 10});
+
+      // Open both first
+      plugin.open();
+      plugin2.open();
+
+
+      $html.on('closed.zf.reveal', function() {
+
+        $('body').should.have.class('is-reveal-open');
+        plugin2.destroy();
+        $html2.remove();
+        done();
+      });
+
+      plugin.close();
     });
     it('fires closed.zf.reveal event', function(done) {
       $html = $(template).appendTo('body');
@@ -247,7 +273,6 @@ describe('Reveal', function() {
       $anchor.trigger('click');
 
       plugin.$overlay.should.be.visible;
-
       $anchor.remove();
     });
 		it('closes a modal on overlay click if closeOnClick option is true', function() {

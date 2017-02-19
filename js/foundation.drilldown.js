@@ -227,15 +227,20 @@ class Drilldown {
         },
         up: function() {
           $prevElement.focus();
-          return true;
+          // Don't tap focus on first element in root ul
+          return !$element.is(_this.$element.find('> li:first-child > a'));
         },
         down: function() {
           $nextElement.focus();
-          return true;
+          // Don't tap focus on last element in root ul
+          return !$element.is(_this.$element.find('> li:last-child > a'));
         },
         close: function() {
-          _this._back();
-          //_this.$menuItems.first().focus(); // focus to first element
+          // Don't close on element in root ul
+          if (!$element.is(_this.$element.find('> li > a'))) {
+            _this._hide($element.parent().parent());
+            $element.parent().parent().siblings('a').focus();
+          }
         },
         open: function() {
           if (!$element.is(_this.$menuItems)) { // not menu item means back button

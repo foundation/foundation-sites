@@ -143,7 +143,12 @@
 
     // Expanded row
     &.expanded {
-      @include grid-row-size(expand);
+      @include grid-row-size(expand); 
+      
+      .row {
+        margin-right: auto;
+        margin-left: auto;
+      }
     }
 
     &:not(.expanded) .row {
