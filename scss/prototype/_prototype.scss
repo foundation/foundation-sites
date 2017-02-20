@@ -45,6 +45,9 @@
 // Spacing Utilities
 @import 'spacing';
 
+// Relational Mixins
+@import 'relation';
+
 @mixin foundation-prototype-classes {
   @include foundation-prototype-typescale;
   @include foundation-prototype-text-utilities;
