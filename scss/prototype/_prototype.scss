@@ -48,6 +48,9 @@
 // Relational Mixins
 @import 'relation';
 
+// Box Mixin
+@import 'box';
+
 @mixin foundation-prototype-classes {
   @include foundation-prototype-typescale;
   @include foundation-prototype-text-utilities;
