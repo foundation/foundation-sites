@@ -6,9 +6,16 @@ tags:
   - navigation
 ---
 
-## Usage
+<ul class="menu vertical" data-smooth-scroll>
+  <li><a href="#setup">Setup</a></li>
+  <li><a href="#javascript-reference">Javascript Reference</a></li>
+</ul>
 
-To enable smooth scrolling on internal links add the attribute `data-smooth-scroll` to the parent container like our [Menu](menu.html). Each section needs a unique ID
+<br>
+
+## Setup
+
+To enable SmoothScroll on internal links, just add the attribute `data-smooth-scroll` to the parent container like our [Menu](menu.html). Each section needs a unique ID
 
 ```html
 <ul class="horizontal menu" data-smooth-scroll>
@@ -23,7 +30,7 @@ To enable smooth scrolling on internal links add the attribute `data-smooth-scro
 </div>
 ```
 
-You can also apply `data-smooth-scroll` attribute directly to the link.
+You can also setup SmoothScroll directly via indiviual link.
 
 ```html
 <a href="#exclusive" data-smooth-scroll>Exclusive Section</a>

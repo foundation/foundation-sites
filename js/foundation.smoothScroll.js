@@ -62,18 +62,16 @@ class SmoothScroll {
     /**
      * Function to scroll to a given location on the page.
      * @param {String} loc - A properly formatted jQuery id selector. Example: '#foo'
-     * @param {Object} options - Overrides to the default plugin settings.
-     * @param {Function} callback - The callback function when scroll animation is finished.
+     * @param {Object} options - The options to use.
+     * @param {Function} callback - The callback function.
      * @static
      * @function
      */
-    static scrollToLoc(loc, options, callback) {
+    static scrollToLoc(loc, options = SmoothScroll.defaults, callback) {
         // Do nothing if target does not exist to prevent errors
         if (!$(loc).length) {
             return false;
         }
-
-        options = $.extend({}, SmoothScroll.defaults, options);
 
         var scrollPos = Math.round($(loc).offset().top - options.threshold / 2 - options.offset);
 
