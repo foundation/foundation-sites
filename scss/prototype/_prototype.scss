@@ -6,6 +6,12 @@
 /// @group prototype
 ////
 
+// Relational Mixins
+@import 'relation';
+
+// Box Mixin
+@import 'box';
+
 // Typescale
 @import 'typescale';
 
@@ -44,12 +50,6 @@
 
 // Spacing Utilities
 @import 'spacing';
-
-// Relational Mixins
-@import 'relation';
-
-// Box Mixin
-@import 'box';
 
 @mixin foundation-prototype-classes {
   @include foundation-prototype-typescale;
