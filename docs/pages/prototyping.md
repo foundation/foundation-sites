@@ -442,6 +442,16 @@ These width and height classes helps you to easily make an element as wide or as
 
 ---
 
+## Border box 
+
+Border box lets you only add the content, padding and border, but not the margin within the width and height css properties.
+
+```html
+<div class="border-box"></div>
+``` 
+
+---
+
 ## Display Classes
 
 Display classes helps to display the elements in specific positions inside any other HTML elements.
@@ -515,7 +525,9 @@ You might want to include a logo on the page but you also would like to use a te
 
 ---
 
-## Text Transformation
+## Text Helpers
+
+### Text Transformation
 
 Text transformation lets you control the capitalization of text. You can change the text transformation by adding `.text-uppercase`, `text-lowercase`, `text-capitalize` to an element. 
 
@@ -535,7 +547,7 @@ Note how `text-capitalize` just changes the first letter of every single word, l
 
 ---
 
-## Text Decoration
+### Text Decoration
 
 Text Decoration can be used to underline, overline, or line-through a text. You can change the text decoration by adding `.text-underline`, `text-overline`, `text-line-through` to an element.
 
@@ -547,7 +559,7 @@ Text Decoration can be used to underline, overline, or line-through a text. You 
 
 ---
 
-## Text Truncate
+### Text Truncate
 
 The `text-truncate` displays an elipsis when the text must be in a single straight line that should overflows a box where overflow is hidden. See how in example the content did not crossed the first line!
 
@@ -557,9 +569,7 @@ The `text-truncate` displays an elipsis when the text must be in a single straig
 
 ---
 
-## Text Wrapping
-
-#### Text No-wrap
+### Text No-wrap
 
 If you would like to prevent the text wrapping into the next line you can utilize `text-nowrap`. Please note that the text will continue to be in same line unless the `<br/>` tag is used.
 
@@ -567,7 +577,7 @@ If you would like to prevent the text wrapping into the next line you can utiliz
 <p class="text-nowrap">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam voluptatem similique officiis recusandae esse cum in totam quisquam perspiciatis quod! Magnam culpa vitae, tempore eos explicabo cupiditate. Deserunt, quisquam, quos!</p>
 ``` 
 
-#### Text Wrap
+### Text Wrap
 
 Oppositely, if you are looking for text wrapping into the next line, you can use `text-wrap`.
 

@@ -45,6 +45,9 @@
 // Position Helpers
 @import 'position';
 
+// Border box
+@import 'border-box';
+
 // Sizing Utilities
 @import 'sizing';
 
@@ -63,6 +66,7 @@
   @include foundation-prototype-overflow;
   @include foundation-prototype-display;
   @include foundation-prototype-position;
+  @include foundation-prototype-border-box;
   @include foundation-prototype-sizing;
   @include foundation-prototype-spacing;
 }
