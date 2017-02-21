@@ -1,7 +1,7 @@
 /// Box Mixin: Easily create a square, rectangle or a circle
 /// @param {Number} $width[] Width of the box
 /// @param {Number} $height[] Height of the box
-/// @param {Boolean} $circle[] Makes the box a circle, by default `false`.
+/// @param {Boolean} $circle[false] Makes the box a circle, by default `false`.
 @mixin box($width, $height, $circle: false) {
   width: $width;
   height: $height;
