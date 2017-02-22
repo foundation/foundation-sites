@@ -38,13 +38,13 @@ class Sticky {
     if (!$parent.length) {
       this.wasWrapped = true;
     }
-      if($parent.lenth){
-          this.$container = $parent;
-      } else {
-          this.wasWrapped = true;
-          this.$element.wrap(this.options.container);
-          this.$container = this.$element.parent();
-      }
+    if($parent.lenth){
+        this.$container = $parent;
+    } else {
+        this.wasWrapped = true;
+        this.$element.wrap(this.options.container);
+        this.$container = this.$element.parent();
+    }
     this.$container.addClass(this.options.containerClass);
 
     this.$element.addClass(this.options.stickyClass).attr({ 'data-resize': id, 'data-mutate': id });
