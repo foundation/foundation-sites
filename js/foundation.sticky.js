@@ -39,11 +39,11 @@ class Sticky {
       this.wasWrapped = true;
     }
     if($parent.lenth){
-        this.$container = $parent;
+      this.$container = $parent;
     } else {
-        this.wasWrapped = true;
-        this.$element.wrap(this.options.container);
-        this.$container = this.$element.parent();
+      this.wasWrapped = true;
+      this.$element.wrap(this.options.container);
+      this.$container = this.$element.parent();
     }
     this.$container.addClass(this.options.containerClass);
 
