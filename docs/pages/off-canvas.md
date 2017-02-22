@@ -20,7 +20,7 @@ flex: true
 
 <button class="button" type="button" data-toggle="offCanvasLeft">Toggle Off-canvas</button>
 
-Foundation's Off-canvas is a well established mobile pattern for navigation that can also be used to create a responsive sidebar. It can open from any direction, left, tight, top, and bottom. There are options to allow the Off-canvas to push your page over or to overlap your page plus a few other neat tricks.
+Foundation's Off-canvas is a well established mobile pattern for navigation that can also be used to create a responsive sidebar. It can open from any direction, left, right, top, and bottom. There are options to allow the Off-canvas to push your page over or to overlap your page plus a few other neat tricks.
 
 ## Setup
 
