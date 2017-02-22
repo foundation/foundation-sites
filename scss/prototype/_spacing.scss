@@ -37,6 +37,56 @@ $prototype-spacers: () !default;
 /// @type Number
 $prototype-spacers-count: 5 !default;
 
+/// Margin helper mixin
+/// @param {Number} $top [null] - Margin Top
+/// @param {Number} $right [null] - Margin Right
+/// @param {Number} $bottom [null] - Margin Bottom
+/// @param {Number} $left [null] - Margin Left
+@mixin margin(
+  $top: null, 
+  $right: null, 
+  $bottom: null, 
+  $left: null
+) {
+  @if $top != null {
+    margin-top: $top !important;
+  }
+  @if $right != null {
+    margin-right: $right !important;
+  }
+  @if $bottom != null {
+    margin-bottom: $bottom !important;
+  }
+  @if $left != null {
+    margin-left: $left !important;
+  }
+}
+
+/// Padding helper mixin
+/// @param {Number} $top [null] - Padding Top
+/// @param {Number} $right [null] - Padding Right
+/// @param {Number} $bottom [null] - Padding Bottom
+/// @param {Number} $left [null] - Padding Left
+@mixin padding(
+  $top: null, 
+  $right: null, 
+  $bottom: null, 
+  $left: null
+) {
+  @if $top != null {
+    padding-top: $top !important;
+  }
+  @if $right != null {
+    padding-right: $right !important;
+  }
+  @if $bottom != null {
+    padding-bottom: $bottom !important;
+  }
+  @if $left != null {
+    padding-left: $left !important;
+  }
+}
+
 // Looping through prototype spacers
 @for $i from 0 through $prototype-spacers-count {
   $prototype-spacers: map-merge($prototype-spacers, (
