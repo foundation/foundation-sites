@@ -13,13 +13,9 @@ $prototype-spacing: (
   padding: p
 ) !default;
 
-/// Default value of the spacing multiplier (pixels)
-/// @type Number
-$prototype-spacing-multiplier: 10 !default;
-
 /// Default value for `prototype-spacer`
 /// @type Number
-$prototype-spacer: rem-calc($prototype-spacing-multiplier) !default;
+$prototype-spacer: 1rem !default;
 
 /// Default value for Horizontal spacing. 
 /// @type Boolean
@@ -35,9 +31,9 @@ $prototype-spacers: () !default;
 
 /// Default number of spacers count
 /// @type Number
-$prototype-spacers-count: 5 !default;
+$prototype-spacers-count: 3 !default;
 
-/// Margin helper mixin
+/// Margin helper mixin, all the values are multiplied by `$global-margin` which by default is equal to `1rem`
 /// @param {Number} $top [null] - Margin Top
 /// @param {Number} $right [null] - Margin Right
 /// @param {Number} $bottom [null] - Margin Bottom
@@ -49,20 +45,20 @@ $prototype-spacers-count: 5 !default;
   $left: null
 ) {
   @if $top != null {
-    margin-top: $top !important;
+    margin-top: $top * $global-margin !important;
   }
   @if $right != null {
-    margin-right: $right !important;
+    margin-right: $right * $global-margin !important;
   }
   @if $bottom != null {
-    margin-bottom: $bottom !important;
+    margin-bottom: $bottom * $global-margin !important;
   }
   @if $left != null {
-    margin-left: $left !important;
+    margin-left: $left * $global-margin !important;
   }
 }
 
-/// Padding helper mixin
+/// Padding helper mixin, all the values are multiplied by `$global-padding` which by default is equal to `1rem`
 /// @param {Number} $top [null] - Padding Top
 /// @param {Number} $right [null] - Padding Right
 /// @param {Number} $bottom [null] - Padding Bottom
@@ -74,16 +70,16 @@ $prototype-spacers-count: 5 !default;
   $left: null
 ) {
   @if $top != null {
-    padding-top: $top !important;
+    padding-top: $top * $global-padding !important;
   }
   @if $right != null {
-    padding-right: $right !important;
+    padding-right: $right * $global-padding !important;
   }
   @if $bottom != null {
-    padding-bottom: $bottom !important;
+    padding-bottom: $bottom * $global-padding !important;
   }
   @if $left != null {
-    padding-left: $left !important;
+    padding-left: $left * $global-padding !important;
   }
 }
 
@@ -103,8 +99,6 @@ $prototype-spacers-count: 5 !default;
       $length-x:   map-get($lengths, x);
       $length-y:   map-get($lengths, y);
       
-      $size: ($size * $prototype-spacing-multiplier);
-
       // Margin & Padding
       .#{$abbrev}-a-#{$size} { 
         #{$prop}: $length-y $length-x !important; 

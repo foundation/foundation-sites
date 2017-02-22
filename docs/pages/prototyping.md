@@ -251,166 +251,183 @@ Adjust font-size by overriding an element’s default size.
 
 ## Margin Helper Classes
 
-Generate spaces around the element with these easy to use margin classes.
+Generate spaces around the element with these easy to use margin classes. <br>
+Please note that here `1 = 1rem` by default and so on.
 
 #### Margin (All Sides)
 
 ```html
 <div class="m-a-0"></div>
-<div class="m-a-10"></div>
-<div class="m-a-20"></div>
-<div class="m-a-30"></div>
-<div class="m-a-40"></div>
-<div class="m-a-50"></div>
+<div class="m-a-1"></div>
+<div class="m-a-2"></div>
+<div class="m-a-3"></div>
 ``` 
 
 #### Margin Top
 
 ```html
 <div class="m-t-0"></div>
-<div class="m-t-10"></div>
-<div class="m-t-20"></div>
-<div class="m-t-30"></div>
-<div class="m-t-40"></div>
-<div class="m-t-50"></div>
+<div class="m-t-1"></div>
+<div class="m-t-2"></div>
+<div class="m-t-3"></div>
 ``` 
 
 #### Margin Bottom
 
 ```html
 <div class="m-b-0"></div>
-<div class="m-b-10"></div>
-<div class="m-b-20"></div>
-<div class="m-b-30"></div>
-<div class="m-b-40"></div>
-<div class="m-b-50"></div>
+<div class="m-b-1"></div>
+<div class="m-b-2"></div>
+<div class="m-b-3"></div>
 ``` 
 
 #### Margin Left
 
 ```html
-<div class="m-l-10"></div>
-<div class="m-l-20"></div>
-<div class="m-l-30"></div>
-<div class="m-l-40"></div>
-<div class="m-l-50"></div>
+<div class="m-l-0"></div>
+<div class="m-l-1"></div>
+<div class="m-l-2"></div>
+<div class="m-l-3"></div>
 ``` 
 
 #### Margin Right
 
 ```html
 <div class="m-r-0"></div>
-<div class="m-r-10"></div>
-<div class="m-r-20"></div>
-<div class="m-r-30"></div>
-<div class="m-r-40"></div>
-<div class="m-r-50"></div>
+<div class="m-r-1"></div>
+<div class="m-r-2"></div>
+<div class="m-r-3"></div>
 ``` 
 
 #### Margin Left Right (Horizontal Axis)
 
 ```html
 <div class="m-x-0"></div>
-<div class="m-x-10"></div>
-<div class="m-x-20"></div>
-<div class="m-x-30"></div>
-<div class="m-x-40"></div>
-<div class="m-x-50"></div>
+<div class="m-x-1"></div>
+<div class="m-x-2"></div>
+<div class="m-x-3"></div>
 ``` 
 
 #### Margin Top Bottom (Vertical Axis)
 
 ```html
 <div class="m-y-0"></div>
-<div class="m-y-10"></div>
-<div class="m-y-20"></div>
-<div class="m-y-30"></div>
-<div class="m-y-40"></div>
-<div class="m-y-50"></div>
+<div class="m-y-1"></div>
+<div class="m-y-2"></div>
+<div class="m-y-3"></div>
 ``` 
+
+#### Usage as a Mixin
+
+```scss
+.foo {
+  @include margin(1,0,2,3);
+}
+```
+
+This above code will generate the below output 
+
+```scss
+.foo {
+  margin-top: 1rem !important;
+  margin-right: 0rem !important;
+  margin-bottom: 2rem !important;
+  margin-left: 3rem !important; 
+}
+```
+
+Please note that this mixin also accept `null` as a value. Click here for more [Sass Reference](#margin)
 
 ---
 
 ## Padding Helper Classes
 
-Generate spaces around the content with these easy to use padding classes.
+Generate spaces around the content with these easy to use padding classes. <br>
+Please note that here `1 = 1rem` by default and so on.
 
 #### Padding (All Sides)
 
 ```html
 <div class="p-a-0"></div>
-<div class="p-a-10"></div>
-<div class="p-a-20"></div>
-<div class="p-a-30"></div>
-<div class="p-a-40"></div>
-<div class="p-a-50"></div>
+<div class="p-a-1"></div>
+<div class="p-a-2"></div>
+<div class="p-a-3"></div>
 ``` 
 
 #### Padding Top
 
 ```html
 <div class="p-t-0"></div>
-<div class="p-t-10"></div>
-<div class="p-t-20"></div>
-<div class="p-t-30"></div>
-<div class="p-t-40"></div>
-<div class="p-t-50"></div>
+<div class="p-t-1"></div>
+<div class="p-t-2"></div>
+<div class="p-t-3"></div>
 ``` 
 
 #### Padding Bottom
 
 ```html
 <div class="p-b-0"></div>
-<div class="p-b-10"></div>
-<div class="p-b-20"></div>
-<div class="p-b-30"></div>
-<div class="p-b-40"></div>
-<div class="p-b-50"></div>
+<div class="p-b-1"></div>
+<div class="p-b-2"></div>
+<div class="p-b-3"></div>
 ``` 
 
 #### Padding Left
 
 ```html
 <div class="p-l-0"></div>
-<div class="p-l-10"></div>
-<div class="p-l-20"></div>
-<div class="p-l-30"></div>
-<div class="p-l-40"></div>
-<div class="p-l-50"></div>
+<div class="p-l-1"></div>
+<div class="p-l-2"></div>
+<div class="p-l-3"></div>
 ``` 
 
 #### Padding Right
 
 ```html
 <div class="p-r-0"></div>
-<div class="p-r-10"></div>
-<div class="p-r-20"></div>
-<div class="p-r-30"></div>
-<div class="p-r-40"></div>
-<div class="p-r-50"></div>
+<div class="p-r-1"></div>
+<div class="p-r-2"></div>
+<div class="p-r-3"></div>
 ``` 
 
 #### Padding Left Right (Horizontal Axis)
 
 ```html
 <div class="p-x-0"></div>
-<div class="p-x-10"></div>
-<div class="p-x-20"></div>
-<div class="p-x-30"></div>
-<div class="p-x-40"></div>
-<div class="p-x-50"></div>
+<div class="p-x-1"></div>
+<div class="p-x-2"></div>
+<div class="p-x-3"></div>
 ``` 
 
 #### Padding Top Bottom (Vertical Axis)
 
 ```html
 <div class="p-y-0"></div>
-<div class="p-y-10"></div>
-<div class="p-y-20"></div>
-<div class="p-y-30"></div>
-<div class="p-y-40"></div>
-<div class="p-y-50"></div>
+<div class="p-y-1"></div>
+<div class="p-y-2"></div>
+<div class="p-y-3"></div>
 ``` 
+
+#### Usage as a Mixin
+
+```scss
+.bar {
+  @include padding(1,0,2,3);
+}
+```
+
+This above code will generate the below output 
+
+```scss
+.bar {
+  padding-top: 1rem !important;
+  padding-right: 0rem !important;
+  padding-bottom: 2rem !important;
+  padding-left: 3rem !important; 
+}
+```
+
+Please note that this mixin also accept `null` as a value. Click here for more [Sass Reference](#padding)
 
 ---
 
