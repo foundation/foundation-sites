@@ -251,77 +251,80 @@ Adjust font-size by overriding an element’s default size.
 
 ## Margin Helper Classes
 
-Generate spaces around the element with these easy to use margin classes. <br>
-Please note that here `1 = 1rem` by default and so on.
+Generate spaces around the element with these easy to use margin classes. 
+
+<div class="primary callout">
+	Please note that here below, `1 = 1 * $global-margin` and so on. By default `$global-margin` is equal to `1rem` which you can easily customize through [Sass Variables](#sass-variables).
+</div>
 
 #### Margin (All Sides)
 
 ```html
-<div class="m-a-0"></div>
-<div class="m-a-1"></div>
-<div class="m-a-2"></div>
-<div class="m-a-3"></div>
+<div class="margin-all-0"></div>
+<div class="margin-all-1"></div>
+<div class="margin-all-2"></div>
+<div class="margin-all-3"></div>
 ``` 
 
 #### Margin Top
 
 ```html
-<div class="m-t-0"></div>
-<div class="m-t-1"></div>
-<div class="m-t-2"></div>
-<div class="m-t-3"></div>
+<div class="margin-top-0"></div>
+<div class="margin-top-1"></div>
+<div class="margin-top-2"></div>
+<div class="margin-top-3"></div>
 ``` 
 
 #### Margin Bottom
 
 ```html
-<div class="m-b-0"></div>
-<div class="m-b-1"></div>
-<div class="m-b-2"></div>
-<div class="m-b-3"></div>
+<div class="margin-bottom-0"></div>
+<div class="margin-bottom-1"></div>
+<div class="margin-bottom-2"></div>
+<div class="margin-bottom-3"></div>
 ``` 
 
 #### Margin Left
 
 ```html
-<div class="m-l-0"></div>
-<div class="m-l-1"></div>
-<div class="m-l-2"></div>
-<div class="m-l-3"></div>
+<div class="margin-left-0"></div>
+<div class="margin-left-1"></div>
+<div class="margin-left-2"></div>
+<div class="margin-left-3"></div>
 ``` 
 
 #### Margin Right
 
 ```html
-<div class="m-r-0"></div>
-<div class="m-r-1"></div>
-<div class="m-r-2"></div>
-<div class="m-r-3"></div>
+<div class="margin-right-0"></div>
+<div class="margin-right-1"></div>
+<div class="margin-right-2"></div>
+<div class="margin-right-3"></div>
 ``` 
 
 #### Margin Left Right (Horizontal Axis)
 
 ```html
-<div class="m-x-0"></div>
-<div class="m-x-1"></div>
-<div class="m-x-2"></div>
-<div class="m-x-3"></div>
+<div class="margin-horizontal-0"></div>
+<div class="margin-horizontal-1"></div>
+<div class="margin-horizontal-2"></div>
+<div class="margin-horizontal-3"></div>
 ``` 
 
 #### Margin Top Bottom (Vertical Axis)
 
 ```html
-<div class="m-y-0"></div>
-<div class="m-y-1"></div>
-<div class="m-y-2"></div>
-<div class="m-y-3"></div>
+<div class="margin-vertical-0"></div>
+<div class="margin-vertical-1"></div>
+<div class="margin-vertical-2"></div>
+<div class="margin-vertical-3"></div>
 ``` 
 
 #### Usage as a Mixin
 
 ```scss
 .foo {
-  @include margin(1,0,2,3);
+  @include margin(1, 0, 2, null);
 }
 ```
 
@@ -332,87 +335,89 @@ This above code will generate the below output
   margin-top: 1rem !important;
   margin-right: 0rem !important;
   margin-bottom: 2rem !important;
-  margin-left: 3rem !important; 
 }
 ```
 
-Please note that this mixin also accept `null` as a value. Click here for more [Sass Reference](#margin)
+See how `margin-left` wasn't printed as this mixin also accept `null` as a value. Click here for more [Sass Reference](#margin)
 
 ---
 
 ## Padding Helper Classes
 
-Generate spaces around the content with these easy to use padding classes. <br>
-Please note that here `1 = 1rem` by default and so on.
+Generate spaces around the content with these easy to use padding classes.
+
+<div class="primary callout">
+	Please note that here below, `1 = 1 * $global-padding` and so on. By default `$global-padding` is equal to `1rem` which you can easily customize through [Sass Variables](#sass-variables).
+</div>
 
 #### Padding (All Sides)
 
 ```html
-<div class="p-a-0"></div>
-<div class="p-a-1"></div>
-<div class="p-a-2"></div>
-<div class="p-a-3"></div>
+<div class="padding-all-0"></div>
+<div class="padding-all-1"></div>
+<div class="padding-all-2"></div>
+<div class="padding-all-3"></div>
 ``` 
 
 #### Padding Top
 
 ```html
-<div class="p-t-0"></div>
-<div class="p-t-1"></div>
-<div class="p-t-2"></div>
-<div class="p-t-3"></div>
+<div class="padding-top-0"></div>
+<div class="padding-top-1"></div>
+<div class="padding-top-2"></div>
+<div class="padding-top-3"></div>
 ``` 
 
 #### Padding Bottom
 
 ```html
-<div class="p-b-0"></div>
-<div class="p-b-1"></div>
-<div class="p-b-2"></div>
-<div class="p-b-3"></div>
+<div class="padding-bottom-0"></div>
+<div class="padding-bottom-1"></div>
+<div class="padding-bottom-2"></div>
+<div class="padding-bottom-3"></div>
 ``` 
 
 #### Padding Left
 
 ```html
-<div class="p-l-0"></div>
-<div class="p-l-1"></div>
-<div class="p-l-2"></div>
-<div class="p-l-3"></div>
+<div class="padding-left-0"></div>
+<div class="padding-left-1"></div>
+<div class="padding-left-2"></div>
+<div class="padding-left-3"></div>
 ``` 
 
 #### Padding Right
 
 ```html
-<div class="p-r-0"></div>
-<div class="p-r-1"></div>
-<div class="p-r-2"></div>
-<div class="p-r-3"></div>
+<div class="padding-right-0"></div>
+<div class="padding-right-1"></div>
+<div class="padding-right-2"></div>
+<div class="padding-right-3"></div>
 ``` 
 
 #### Padding Left Right (Horizontal Axis)
 
 ```html
-<div class="p-x-0"></div>
-<div class="p-x-1"></div>
-<div class="p-x-2"></div>
-<div class="p-x-3"></div>
+<div class="padding-horizontal-0"></div>
+<div class="padding-horizontal-1"></div>
+<div class="padding-horizontal-2"></div>
+<div class="padding-horizontal-3"></div>
 ``` 
 
 #### Padding Top Bottom (Vertical Axis)
 
 ```html
-<div class="p-y-0"></div>
-<div class="p-y-1"></div>
-<div class="p-y-2"></div>
-<div class="p-y-3"></div>
+<div class="padding-vertical-0"></div>
+<div class="padding-vertical-1"></div>
+<div class="padding-vertical-2"></div>
+<div class="padding-vertical-3"></div>
 ``` 
 
 #### Usage as a Mixin
 
 ```scss
 .bar {
-  @include padding(1,0,2,3);
+  @include padding(1, 0, 2, null);
 }
 ```
 
@@ -423,11 +428,10 @@ This above code will generate the below output
   padding-top: 1rem !important;
   padding-right: 0rem !important;
   padding-bottom: 2rem !important;
-  padding-left: 3rem !important; 
 }
 ```
 
-Please note that this mixin also accept `null` as a value. Click here for more [Sass Reference](#padding)
+See how `padding-left` wasn't printed as this mixin also accept `null` as a value. Click here for more [Sass Reference](#padding)
 
 ---
 

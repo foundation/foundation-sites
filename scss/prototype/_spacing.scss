@@ -6,30 +6,7 @@
 /// @group prototype-spacing
 ////
 
-/// Map containing all the `spacing` classes
-/// @type Map
-$prototype-spacing: (
-  margin: m, 
-  padding: p
-) !default;
-
-/// Default value for `prototype-spacer`
-/// @type Number
-$prototype-spacer: 1rem !default;
-
-/// Default value for Horizontal spacing. 
-/// @type Boolean
-$prototype-spacer-x: $prototype-spacer !default;
-
-/// Default value for Vertical spacing. 
-/// @type Boolean
-$prototype-spacer-y: $prototype-spacer !default;
-
-/// Map containing all values of Horizontal and vertical spacing, defaulted to null. 
-/// @type Map
-$prototype-spacers: () !default;
-
-/// Default number of spacers count
+/// Default number of spacers count 
 /// @type Number
 $prototype-spacers-count: 3 !default;
 
@@ -83,48 +60,63 @@ $prototype-spacers-count: 3 !default;
   }
 }
 
-// Looping through prototype spacers
-@for $i from 0 through $prototype-spacers-count {
-  $prototype-spacers: map-merge($prototype-spacers, (
-    $i: (
-      x: $prototype-spacer-x * $i,
-      y: $prototype-spacer-y * $i
-    )
-  )) 
-}
-
 @mixin foundation-prototype-spacing {
-  @each $prop, $abbrev in $prototype-spacing {
-    @each $size, $lengths in $prototype-spacers {
-      $length-x:   map-get($lengths, x);
-      $length-y:   map-get($lengths, y);
-      
-      // Margin & Padding
-      .#{$abbrev}-a-#{$size} { 
-        #{$prop}: $length-y $length-x !important; 
-      } // a = All sides
-      .#{$abbrev}-t-#{$size} { 
-        #{$prop}-top: $length-y !important; 
-      } // t = top
-      .#{$abbrev}-r-#{$size} { 
-        #{$prop}-right: $length-x !important; 
-      } // r = right
-      .#{$abbrev}-b-#{$size} { 
-        #{$prop}-bottom: $length-y !important; 
-      } // b = bottom
-      .#{$abbrev}-l-#{$size} { 
-        #{$prop}-left: $length-x !important; 
-      } // l = left
+  @for $spacer from 0 through $prototype-spacers-count {
 
-      // Axes
-      .#{$abbrev}-x-#{$size} {
-        #{$prop}-right: $length-x !important;
-        #{$prop}-left: $length-x !important;
-      } // x = Horizontal Line
-      .#{$abbrev}-y-#{$size} {
-        #{$prop}-top: $length-y !important;
-        #{$prop}-bottom: $length-y !important;
-      } // y = vertical line
+    // All Sides
+    .margin-all-#{$spacer} { 
+      @include margin($spacer, $spacer, $spacer, $spacer);
     }
+    .padding-all-#{$spacer} { 
+      @include padding($spacer, $spacer, $spacer, $spacer);
+    }
+    
+    // Top Side
+    .margin-top-#{$spacer} { 
+      @include margin($spacer, null, null, null);
+    } 
+    .padding-top-#{$spacer} { 
+      @include padding($spacer, null, null, null);
+    } 
+
+    // Right Side
+    .margin-right-#{$spacer} { 
+      @include margin(null, $spacer, null, null);
+    }
+    .padding-right-#{$spacer} { 
+      @include padding(null, $spacer, null, null);
+    }
+
+    // Bottom Side
+    .margin-bottom-#{$spacer} { 
+      @include margin(null, null, $spacer, null);
+    }
+    .padding-bottom-#{$spacer} { 
+      @include padding(null, null, $spacer, null);
+    }
+
+    // Left Side
+    .margin-left-#{$spacer} { 
+      @include margin(null, null, null, $spacer); 
+    }
+    .padding-left-#{$spacer} { 
+      @include padding(null, null, null, $spacer); 
+    } 
+
+    // Horizontal Axes
+    .margin-horizontal-#{$spacer} {
+      @include margin(null, $spacer, null, $spacer);
+    } 
+    .padding-horizontal-#{$spacer} {
+      @include padding(null, $spacer, null, $spacer);
+    } 
+
+    // Vertical Axes
+    .margin-vertical-#{$spacer} {
+      @include margin($spacer, null, $spacer, null)
+    } 
+    .padding-vertical-#{$spacer} {
+      @include padding($spacer, null, $spacer, null)
+    } 
   }
 }
