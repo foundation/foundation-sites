@@ -160,11 +160,13 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
   .is-dropdown-submenu-parent {
     position: relative;
 
-    a::after {
-      position: absolute;
-      top: 50%;
-      #{$global-right}: 5px;
-      margin-top: -1 * $dropdownmenu-arrow-size;
+    @if $dropdownmenu-arrows {
+      a::after {
+        position: absolute;
+        top: 50%;
+        #{$global-right}: 5px;
+        margin-top: -1 * $dropdownmenu-arrow-size;
+      }
     }
 
     &.opens-inner > .is-dropdown-submenu {
