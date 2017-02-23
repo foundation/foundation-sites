@@ -62,7 +62,6 @@ $prototype-spacers-count: 3 !default;
 
 @mixin foundation-prototype-spacing {
   @for $spacer from 0 through $prototype-spacers-count {
-
     // All Sides
     .margin-all-#{$spacer} { 
       @include margin($spacer, $spacer, $spacer, $spacer);
