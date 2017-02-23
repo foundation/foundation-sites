@@ -323,6 +323,7 @@ $show-header-for-stacked: false !default;
     overflow-x: auto;
 
     table {
+      min-width: 100%;
       width: auto;
     }
   }
