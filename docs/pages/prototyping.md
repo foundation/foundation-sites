@@ -321,7 +321,7 @@ Generate spaces around the element with these easy to use margin classes.
 <div class="margin-vertical-3"></div>
 ``` 
 
-#### Usage as a Mixin
+#### Margin: Usage as a Mixin
 
 ```scss
 .foo {
@@ -414,7 +414,7 @@ Generate spaces around the content with these easy to use padding classes.
 <div class="padding-vertical-3"></div>
 ``` 
 
-#### Usage as a Mixin
+#### Padding: Usage as a Mixin
 
 ```scss
 .bar {
