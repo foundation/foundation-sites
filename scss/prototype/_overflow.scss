@@ -19,19 +19,19 @@ $prototype-overflow: (
 /// Overflow classes, by default coming through a map `$prototype-overflow`
 /// @param {String} $overflow [] Overflow classes
 @mixin overflow($overflow) {
-    overflow: $overflow !important;
+  overflow: $overflow !important;
 }
 
 /// Overflow classes on horizontal axis, by default coming through a map `$prototype-overflow`
 /// @param {String} $overflow [] Overflow classes (horizontal axis)
 @mixin overflow-x($overflow) {
-    overflow-x: $overflow !important;
+  overflow-x: $overflow !important;
 }
 
 /// Overflow classes on vertical axis, by default coming through a map `$prototype-overflow`
 /// @param {String} $overflow [] Overflow classes (vertical axis)
 @mixin overflow-y($overflow) {
-    overflow-y: $overflow !important;
+  overflow-y: $overflow !important;
 }
 
 @mixin foundation-prototype-overflow {

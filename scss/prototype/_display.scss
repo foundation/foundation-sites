@@ -19,13 +19,13 @@ $prototype-display: (
 /// Display classes, by default coming through a map `$prototype-display`
 /// @param {String} $display [] Display classes
 @mixin display($display) {
-    display: $display !important;
+  display: $display !important;
 }
 
 @mixin foundation-prototype-display {
   @each $display in $prototype-display {
     .display-#{$display} {
-       @include display($display);
+      @include display($display);
     }
   }
 
