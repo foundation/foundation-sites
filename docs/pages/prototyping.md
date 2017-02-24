@@ -622,11 +622,13 @@ Oppositely, if you are looking for text wrapping into the next line, you can use
 
 ---
 
-## Helper Box Mixin
+## Vanilla Mixin Helpers 
 
-This mixin helps you to easily create a square, rectangle or a circle
+We also provides some extra utility mixins that you can use for your next prototype project.
 
-#### Box: Usage a mixin 
+### Box Mixin
+
+This mixin helps you to easily create a square, rectangle or a circle. Sass Reference [here](#box)
 
 ```scss 
 .foo {
@@ -640,4 +642,28 @@ This mixin helps you to easily create a square, rectangle or a circle
 }
 ``` 
 
-Sass Reference [here](#box)
+### Relational Mixins
+
+These relational mixins helps you to manage styling of :nth-child’ified elements through easy Sass mixins.
+
+```scss
+@include first($num) {} 
+@include first-child {}
+@include last($num) {}
+@include last-child {}
+@include every($num) {}
+@include first-last {}
+@include after-first($num) {}
+@include from-last($num) {}
+@include from-first-last($num) {}
+@include all-but($num) {}
+@include all-but-first-last($num) {}
+@include unique {}
+@include not-unique {}
+@include between($first, $last) {}
+@include even {}
+@include even-between($first, $last) {}
+@include odd {}
+@include odd-between($first, $last) {}
+@include number-between($num, $first, $last) {}
+```
