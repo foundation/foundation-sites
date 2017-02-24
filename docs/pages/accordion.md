@@ -125,6 +125,39 @@ By default, at least one pane in an accordion must be open. This can be changed 
 
 ---
 
+### Disabled
+
+There may be times where you want to disable pane switching on an accordion. This can be accomplished by setting the disabled attribute.
+
+```html
+<ul class="accordion" data-accordion disabled>
+  <!-- ... -->
+</ul>
+```
+
+<ul class="accordion" data-accordion disabled>
+  <li class="accordion-item is-active" data-accordion-item>
+    <a href="#" class="accordion-title">Accordion 1</a>
+    <div class="accordion-content" data-tab-content >
+      Panel 1. I'm open because I'm loaded that way, but you can't close me
+    </div>
+  </li>
+  <li class="accordion-item" data-accordion-item>
+    <a href="#" class="accordion-title">Accordion 2, you can't open me.</a>
+    <div class="accordion-content" data-tab-content>
+      Panel 2. Lorem ipsum dolor
+    </div>
+  </li>
+  <li class="accordion-item" data-accordion-item>
+    <a href="#" class="accordion-title">Accordion 3, you can't open me.</a>
+    <div class="accordion-content" data-tab-content>
+      Panel 3. Lorem ipsum dolor
+    </div>
+  </li>
+</ul>
+
+---
+
 ## Accordion and URLs
 
 ### Browser history
