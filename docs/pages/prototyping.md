@@ -339,7 +339,7 @@ This above code will generate the below output
 }
 ```
 
-See how `margin-left` wasn't printed as this mixin also accept `null` as a value. Click here for more [Sass Reference](#margin)
+See how `margin-left` wasn't printed as this mixin also accept `null` as a value. Sass Reference [here](#margin)
 
 ---
 
@@ -432,7 +432,7 @@ This above code will generate the below output
 }
 ```
 
-See how `padding-left` wasn't printed as this mixin also accept `null` as a value. Click here for more [Sass Reference](#padding)
+See how `padding-left` wasn't printed as this mixin also accept `null` as a value. Sass Reference [here](#padding)
 
 ---
 
@@ -501,6 +501,27 @@ Positioning is very helpful and basic need for complex layouts.
 <div class="position-fixed-top"></div>
 <div class="position-fixed-bottom"></div>
 ``` 
+
+#### Positioning: Usage as a Mixin
+
+```scss
+.foo {
+  @include position(fixed, 1, 2, 0, null);
+}
+```
+
+This above code will generate the below output 
+
+```scss
+.foo {
+  position: fixed !important;
+  top: 1rem !important;
+  right: 2rem !important;
+  bottom: 0rem !important; 
+}
+```
+
+See how `left` offset wasn't printed as this mixin also accept `null` as a value. Sass Reference [here](#position)
 
 ---
 

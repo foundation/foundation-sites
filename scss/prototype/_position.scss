@@ -20,7 +20,7 @@ $prototype-position: (
 /// @type Number
 $prototype-position-z-index: 975 !default;
 
-/// Position classes, by default coming through a map `$prototype-position`
+/// Position classes, by default coming through a map `$prototype-position`, whereas all the offset values are multiplied by `$global-position` which by default is equal to `1rem`. 
 /// @param {String} $position [] Position classes, Either `static`, `relative`, `absolute` or `fixed`
 /// @param {Number} $top [null] - Top offset
 /// @param {Number} $right [null] - Right offset
@@ -35,16 +35,16 @@ $prototype-position-z-index: 975 !default;
 ) {
   position: $position !important;
   @if $top != null {
-    top: $top !important;
+    top: $top * $global-postion !important;
   }
   @if $right != null {
-    right: $right !important;
+    right: $right * $global-postion !important;
   }
   @if $bottom != null {
-    bottom: $bottom !important;
+    bottom: $bottom * $global-postion !important;
   }
   @if $left != null {
-    left: $left !important;
+    left: $left * $global-postion !important;
   }
 }
 
@@ -53,7 +53,7 @@ $prototype-position-z-index: 975 !default;
 @mixin position-fixed-top(
   $z-index: $prototype-position-z-index
 ) {
-  @include position(fixed, $top: 0, $right: 0, $left: 0);
+  @include position(fixed, 0, 0, null, 0);
   z-index: $z-index;
 }
 
@@ -62,7 +62,7 @@ $prototype-position-z-index: 975 !default;
 @mixin position-fixed-bottom(
   $z-index: $prototype-position-z-index
 ) {
-  @include position(fixed, $right: 0, $bottom: 0, $left: 0);
+  @include position(fixed, null, 0, 0, 0);
   z-index: $z-index;
 } 
 
