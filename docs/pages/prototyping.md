@@ -44,6 +44,7 @@ or, if you looking for specific utility instead of all, these helper classes can
 @include foundation-prototype-overflow;
 @include foundation-prototype-display;
 @include foundation-prototype-position;
+@include foundation-prototype-border-box;
 @include foundation-prototype-sizing;
 @include foundation-prototype-spacing;
 ```
