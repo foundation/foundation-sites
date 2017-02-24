@@ -627,3 +627,25 @@ Oppositely, if you are looking for text wrapping into the next line, you can use
 ```html
 <p class="text-wrap">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam voluptatem similique officiis recusandae esse cum in totam quisquam perspiciatis quod! Magnam culpa vitae, tempore eos explicabo cupiditate. Deserunt, quisquam, quos!</p>
 ``` 
+
+---
+
+## Helper Box Mixin
+
+This mixin helps you to easily create a square, rectangle or a circle
+
+#### Box: Usage a mixin 
+
+```scss 
+.foo {
+	@include box(1rem, 2rem); // Rectangle
+}
+.bar {
+	@include box(1rem); // Square
+}
+.baz {
+	@include box(1rem, $circle: true); // Circle
+}
+``` 
+
+Sass Reference [here](#box)
