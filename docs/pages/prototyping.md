@@ -72,19 +72,11 @@ These `.rounded` & `.bordered` classes helps to make an element round its corner
 ```html
 <img src="" class="rounded">
 <img src="" class="rounded-circle">
-<img src="" class="rounded-top">
-<img src="" class="rounded-right">
-<img src="" class="rounded-bottom">
-<img src="" class="rounded-left">
 ``` 
 
-<div class="docs-code-live m-b-20">
-	<img src="http://placehold.it/100x100" class="rounded m-r-10">
-	<img src="http://placehold.it/100x100" class="rounded-circle m-r-10">
-	<img src="http://placehold.it/100x100" class="rounded-top m-r-10">
-	<img src="http://placehold.it/100x100" class="rounded-right m-r-10">
-	<img src="http://placehold.it/100x100" class="rounded-bottom m-r-10">
-	<img src="http://placehold.it/100x100" class="rounded-left m-r-10">
+<div class="docs-code-live margin-bottom-1">
+	<img src="http://placehold.it/100x100" class="rounded margin-right-1">
+	<img src="http://placehold.it/100x100" class="rounded-circle">
 </div>
 
 #### Cards

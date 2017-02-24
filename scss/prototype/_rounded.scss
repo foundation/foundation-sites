@@ -22,42 +22,6 @@ $prototype-border-radius: rem-calc(4px) !default;
   border-radius: $radius;
 }
 
-/// Rounded utility (top corner): Adds rounded corner (top corner) to an element by default.
-/// @param {Number} $radius [$prototype-border-radius] Border radius (top corner)
-@mixin border-top-radius(
-  $radius: $prototype-border-radius
-) {
-  border-top-right-radius: $radius;
-  border-top-left-radius: $radius;
-}
-
-/// Rounded utility (right corner): Adds rounded corner (right corner) to an element by default.
-/// @param {Number} $radius [$prototype-border-radius] Border radius (right corner)
-@mixin border-right-radius(
-  $radius: $prototype-border-radius
-) {
-  border-bottom-right-radius: $radius;
-  border-top-right-radius: $radius;
-}
-
-/// Rounded utility (bottom corner): Adds rounded corner (bottom corner) to an element by default.
-/// @param {Number} $radius [$prototype-border-radius] Border radius (bottom corner)
-@mixin border-bottom-radius(
-  $radius: $prototype-border-radius
-) {
-  border-bottom-right-radius: $radius;
-  border-bottom-left-radius: $radius;
-}
-
-/// Rounded utility (left corner): Adds rounded corner (left corner) to an element by default.
-/// @param {Number} $radius [$prototype-border-radius] Border radius (left corner)
-@mixin border-left-radius(
-  $radius: $prototype-border-radius
-) {
-  border-bottom-left-radius: $radius;
-  border-top-left-radius: $radius;
-}
-
 /// Rounded circle utility
 @mixin rounded-circle {
   border-radius: 50% !important;
@@ -66,18 +30,6 @@ $prototype-border-radius: rem-calc(4px) !default;
 @mixin foundation-prototype-rounded {
   .rounded {
     @include border-radius;
-  }
-  .rounded-top {
-    @include border-top-radius;
-  }
-  .rounded-right {
-    @include border-right-radius;
-  }
-  .rounded-bottom {
-    @include border-bottom-radius;
-  }
-  .rounded-left {
-    @include border-left-radius;
   }
   .rounded-circle {
     @include rounded-circle;
@@ -90,18 +42,6 @@ $prototype-border-radius: rem-calc(4px) !default;
         @if $size != $-zf-zero-breakpoint {
           .#{$size}-rounded {
             @include border-radius;
-          }
-          .#{$size}-rounded-top {
-            @include border-top-radius;
-          }
-          .#{$size}-rounded-right {
-            @include border-right-radius;
-          }
-          .#{$size}-rounded-bottom {
-            @include border-bottom-radius;
-          }
-          .#{$size}-rounded-left {
-            @include border-left-radius;
           }
           .#{$size}-rounded-circle {
             @include rounded-circle;
