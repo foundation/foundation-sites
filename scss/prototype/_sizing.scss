@@ -6,6 +6,10 @@
 /// @group prototype-sizing
 ////
 
+/// Responsive breakpoints for spacing classes (margin and padding)
+/// @type Boolean
+$prototype-sizing-breakpoints: $global-prototype-breakpoints !default;
+
 /// Map containing all the `sizing` classes
 /// @type Map
 $prototype-sizing: (
@@ -34,8 +38,8 @@ $prototype-sizes: (
 @mixin foundation-prototype-sizing {
   // Element Sizing
   @each $sizing in $prototype-sizing {
-    @each $size, $percentage in $prototype-sizes {
-      .#{$sizing}-#{$size} { 
+    @each $length, $percentage in $prototype-sizes {
+      .#{$sizing}-#{$length} { 
         #{$sizing}: $percentage !important; 
       }
     }
@@ -47,5 +51,22 @@ $prototype-sizes: (
   }
   .max-height-100 {
     @include max-height-100;
+  }
+
+  @if ($prototype-sizing-breakpoints) {
+    // Loop through Responsive Breakpoints
+    @each $size in $breakpoint-classes {
+      @include breakpoint($size) {
+        @if $size != $-zf-zero-breakpoint {
+          @each $sizing in $prototype-sizing {
+            @each $length, $percentage in $prototype-sizes {
+              .#{$size}-#{$sizing}-#{$length} { 
+                #{$sizing}: $percentage !important; 
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
