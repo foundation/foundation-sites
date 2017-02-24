@@ -1,6 +1,6 @@
 ---
 title: Prototyping Utilities
-description: Our prototyping utilities allow you to quickly flesh out the skeletal sketches and turn them into hi-fi wireframes.
+description: Utility Toolkit for quickly fleshing out the skeletal sketches and mockups into hi-fi prototype's
 sass:
   - scss/prototype/*.scss
 ---
