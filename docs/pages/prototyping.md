@@ -261,10 +261,10 @@ Generate spaces around the element with these easy to use margin classes.
 #### Margin (All Sides)
 
 ```html
-<div class="margin-all-0"></div>
-<div class="margin-all-1"></div>
-<div class="margin-all-2"></div>
-<div class="margin-all-3"></div>
+<div class="margin-0"></div>
+<div class="margin-1"></div>
+<div class="margin-2"></div>
+<div class="margin-3"></div>
 ``` 
 
 #### Margin Top
@@ -354,10 +354,10 @@ Generate spaces around the content with these easy to use padding classes.
 #### Padding (All Sides)
 
 ```html
-<div class="padding-all-0"></div>
-<div class="padding-all-1"></div>
-<div class="padding-all-2"></div>
-<div class="padding-all-3"></div>
+<div class="padding-0"></div>
+<div class="padding-1"></div>
+<div class="padding-2"></div>
+<div class="padding-3"></div>
 ``` 
 
 #### Padding Top
