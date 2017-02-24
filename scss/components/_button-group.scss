@@ -104,9 +104,11 @@ $buttongroup-radius-on-each: true !default;
         &:first-child:nth-last-child(#{$i}) {
           &, &:first-child:nth-last-child(#{$i}) ~ #{$selector} {
             display: inline-block;
-            width: calc(#{percentage(1 / $i)} - #{$buttongroup-spacing});
-            margin-#{$global-right}: $buttongroup-spacing;
-
+            @if unquote('#{$buttongroup-spacing} == "0"') {
+              width: #{percentage(1 / $i)};
+            } @else {
+              width: calc(#{percentage(1 / $i)} - #{$buttongroup-spacing});
+              margin-#{$global-right}: $buttongroup-spacing;
             &:last-child {
               margin-#{$global-right}: $buttongroup-spacing * -$buttongroup-expand-max;
             }
