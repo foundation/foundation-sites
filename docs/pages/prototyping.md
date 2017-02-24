@@ -10,12 +10,20 @@ Prototyping utilities helps you to make prototypes from simple sketches and mock
 At the same time, we also understand that prototypes are not always required for every single projects and there are many cases specially in bigger projects where you have the time to show up your skill with both design &amp; code and so, prototype mode is **disabled by default!** 
 
 <div class="primary callout">
-	<p>Many Prototype classes use `!important` to ensure that these they aren't overriden by more specific selectors. This framework conscientiously avoids using `!important` declarations. Please note that we have only inserted `!important` on those specific **CSS** properties which we are fully sure that values of those properties shouldn't be overridden.</p>
+	<p>
+		Many Prototype classes use `!important` to ensure that these they aren't overriden by more specific selectors. This framework conscientiously avoids using `!important` declarations. Please note that we have only inserted `!important` on those specific **CSS** properties which we are fully sure that values of those properties shouldn't be overridden.
+	</p>
 </div> 
 
 ---
 
 ## Enabling Prototype Mode
+
+<div class="warning callout">
+	<p>
+		Prototyping classes like these below should only be used for prototyping tasks. Also if you are using **Sass**, we encourage you to use **[Prototyping Mixins](#sass-mixins)** instead.
+	</p>
+</div>
 
 If you're using the CSS version of Foundation, you can generate a <a href="https://foundation.zurb.com/sites/download">custom download of Foundation</a> with prototype mode enabled. If you're using the Sass version of Foundation, you can enable prototype mode in two ways:
 
