@@ -11,7 +11,7 @@
     @include breakpoint($size) {
       @each $header, $header-defs in $headers {
         $font-size-temp: 1rem;
-        .font-#{$header} {
+        .#{$header} {
           @extend #{$header};
         }
       }

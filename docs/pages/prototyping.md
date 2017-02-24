@@ -197,17 +197,17 @@ You can use font styling to style your text. You can change the font styling by 
 
 ---
 
-## Font Typescale
+## Typescale
 
 Adjust font-size by overriding an element’s default size.
 
 ```html_example
-<p class="font-h1">Lorem Ipsum Dolor</p>
-<p class="font-h2">Lorem Ipsum Dolor</p>
-<p class="font-h3">Lorem Ipsum Dolor</p>
-<p class="font-h4">Lorem Ipsum Dolor</p>
-<p class="font-h5">Lorem Ipsum Dolor</p>
-<p class="font-h6">Lorem Ipsum Dolor</p>
+<p class="h1">Lorem Ipsum Dolor</p>
+<p class="h2">Lorem Ipsum Dolor</p>
+<p class="h3">Lorem Ipsum Dolor</p>
+<p class="h4">Lorem Ipsum Dolor</p>
+<p class="h5">Lorem Ipsum Dolor</p>
+<p class="h6">Lorem Ipsum Dolor</p>
 ```
 
 ---
@@ -221,23 +221,23 @@ Adjust font-size by overriding an element’s default size.
 #### Unordered Lists
 
 ```html
-<ul class="no-bullets"> <!-- <li>First</li> <li>Second</li> --></ul>
-<ul class="list-disc">  <!-- <li>First</li> <li>Second</li> --></ul>
-<ul class="list-circle"><!-- <li>First</li> <li>Second</li> --></ul>
-<ul class="list-square"><!-- <li>First</li> <li>Second</li> --></ul>
+<ul class="no-bullets"></ul>
+<ul class="list-disc"></ul>
+<ul class="list-circle"></ul>
+<ul class="list-square"></ul>
 ``` 
 
 #### Ordered Lists
 
 ```html
-<ol class="no-bullets">      <!-- <li>First</li> <li>Second</li> --></ol>
-<ol class="list-decimal">    <!-- <li>First</li> <li>Second</li> --></ol>
-<ol class="list-lower-alpha"><!-- <li>First</li> <li>Second</li> --></ol>
-<ol class="list-lower-latin"><!-- <li>First</li> <li>Second</li> --></ol>
-<ol class="list-lower-roman"><!-- <li>First</li> <li>Second</li> --></ol>
-<ol class="list-upper-alpha"><!-- <li>First</li> <li>Second</li> --></ol>
-<ol class="list-upper-latin"><!-- <li>First</li> <li>Second</li> --></ol>
-<ol class="list-upper-roman"><!-- <li>First</li> <li>Second</li> --></ol>
+<ol class="no-bullets"></ol>
+<ol class="list-decimal"></ol>
+<ol class="list-lower-alpha"></ol>
+<ol class="list-lower-latin"></ol>
+<ol class="list-lower-roman"></ol>
+<ol class="list-upper-alpha"></ol>
+<ol class="list-upper-latin"></ol>
+<ol class="list-upper-roman"></ol>
 ``` 
 
 ---
