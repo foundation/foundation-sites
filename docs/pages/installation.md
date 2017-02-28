@@ -86,7 +86,7 @@ If you aren't into Sass, we have a starter template with compiled CSS and JavaSc
 ---
 
 ## HTML Starter Template
-Start with this HTML template and adapt it to your needs.
+Start with this HTML template and adapt it to your needs. Be sure to include the `no-js` class on the `html` tag of your template.  Adding this class prevents [flash of unstyled content](https://en.wikipedia.org/wiki/Flash_of_unstyled_content) for a number of foundation components.
 
 ```html
 <!doctype html>
