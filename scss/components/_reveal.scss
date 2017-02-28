@@ -123,6 +123,7 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   html.is-reveal-open body {
     min-height: 100%;
     overflow: hidden;
+    position: fixed;
     user-select: none;
   }
 
