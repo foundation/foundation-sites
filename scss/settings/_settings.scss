@@ -56,7 +56,6 @@ $foundation-palette: (
   warning: #ffae00,
   alert: #cc4b37,
 );
-@include add-foundation-colors;
 $light-gray: #e6e6e6;
 $medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
@@ -74,6 +73,8 @@ $global-radius: 0;
 $global-text-direction: ltr;
 $global-flexbox: false;
 $print-transparent-backgrounds: true;
+
+@include add-foundation-colors;
 
 // 2. Breakpoints
 // --------------

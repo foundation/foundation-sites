@@ -2,7 +2,7 @@
 
   "use strict";
 
-  var FOUNDATION_VERSION = '6.3.1-rc1';
+  var FOUNDATION_VERSION = '6.3.1';
 
   // Global Foundation object
   // This is attached to the window, or used as a module for AMD/Browserify
@@ -3177,6 +3177,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           _this._back($menu);
         });
 
+        this.$submenus.addClass('invisible');
         if (!this.options.autoHeight) {
           this.$submenus.addClass('drilldown-submenu-cover-previous');
         }
@@ -3437,7 +3438,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       value: function _show($elem) {
         if (this.options.autoHeight) this.$wrapper.css({ height: $elem.children('[data-submenu]').data('calcHeight') });
         $elem.attr('aria-expanded', true);
-        $elem.children('[data-submenu]').addClass('is-active').attr('aria-hidden', false);
+        $elem.children('[data-submenu]').addClass('is-active').removeClass('invisible').attr('aria-hidden', false);
         /**
          * Fires when the submenu has opened.
          * @event Drilldown#open
@@ -3461,7 +3462,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         $elem.attr('aria-hidden', true).addClass('is-closing');
         $elem.addClass('is-closing').one(Foundation.transitionend($elem), function () {
           $elem.removeClass('is-active is-closing');
-          $elem.blur();
+          $elem.blur().addClass('invisible');
         });
         /**
          * Fires when the submenu has closed.
