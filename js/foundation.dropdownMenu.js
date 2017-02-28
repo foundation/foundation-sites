@@ -104,7 +104,7 @@ class DropdownMenu {
 
     // Handle Leaf element Clicks
     if(_this.options.closeOnClickInside){
-      this.$menuItems.on('click.zf.dropdownmenu touchend.zf.dropdownmenu', function(e) {
+      this.$menuItems.on('click.zf.dropdownmenu', function(e) {
         var $elem = $(this),
             hasSub = $elem.hasClass(parClass);
         if(!hasSub){

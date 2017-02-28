@@ -237,7 +237,8 @@ class Abide {
   }
 
   /**
-   * Goes through a form to find inputs and proceeds to validate them in ways specific to their type
+   * Goes through a form to find inputs and proceeds to validate them in ways specific to their type. 
+   * Ignores inputs with data-abide-ignore, type="hidden" or disabled attributes set
    * @fires Abide#invalid
    * @fires Abide#valid
    * @param {Object} element - jQuery object to validate, should be an HTML input
@@ -250,8 +251,8 @@ class Abide {
         validator = $el.attr('data-validator'),
         equalTo = true;
 
-    // don't validate ignored inputs or hidden inputs
-    if ($el.is('[data-abide-ignore]') || $el.is('[type="hidden"]')) {
+    // don't validate ignored inputs or hidden inputs or disabled inputs
+    if ($el.is('[data-abide-ignore]') || $el.is('[type="hidden"]') || $el.is('[disabled]')) {
       return true;
     }
 

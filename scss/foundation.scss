@@ -1,12 +1,12 @@
 /**
  * Foundation for Sites by ZURB
- * Version 6.3.0
+ * Version 6.3.1
  * foundation.zurb.com
  * Licensed under MIT Open Source
  */
 
 // Dependencies
-@import "../_vendor/normalize-scss/sass/normalize";
+@import '../_vendor/normalize-scss/sass/normalize';
 @import '../_vendor/sassy-lists/stylesheets/helpers/missing-dependencies';
 @import '../_vendor/sassy-lists/stylesheets/helpers/true';
 @import '../_vendor/sassy-lists/stylesheets/functions/purge';
@@ -17,7 +17,7 @@
 // Settings
 // import your own `settings` here or
 // import and modify the default settings through
-// @import "settings/settings";
+// @import 'settings/settings';
 
 // Sass utilities
 @import 'util/util';

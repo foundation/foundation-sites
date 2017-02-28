@@ -1,6 +1,6 @@
 {
   "name": "foundation-sites",
-  "version": "6.3.0",
+  "version": "6.3.1",
   "license": "MIT",
   "main": [
     "scss/foundation.scss",
@@ -28,7 +28,7 @@
     "yarn.lock"
   ],
   "dependencies": {
-    "jquery": "~2.2.0",
+    "jquery": ">= 2.2.0",
     "what-input": "~4.0.3"
   }
 }

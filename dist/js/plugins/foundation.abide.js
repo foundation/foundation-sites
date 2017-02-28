@@ -270,7 +270,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       /**
-       * Goes through a form to find inputs and proceeds to validate them in ways specific to their type
+       * Goes through a form to find inputs and proceeds to validate them in ways specific to their type. 
+       * Ignores inputs with data-abide-ignore, type="hidden" or disabled attributes set
        * @fires Abide#invalid
        * @fires Abide#valid
        * @param {Object} element - jQuery object to validate, should be an HTML input
@@ -288,8 +289,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             validator = $el.attr('data-validator'),
             equalTo = true;
 
-        // don't validate ignored inputs or hidden inputs
-        if ($el.is('[data-abide-ignore]') || $el.is('[type="hidden"]')) {
+        // don't validate ignored inputs or hidden inputs or disabled inputs
+        if ($el.is('[data-abide-ignore]') || $el.is('[type="hidden"]') || $el.is('[disabled]')) {
           return true;
         }
 
@@ -531,49 +532,56 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * The default event to validate inputs. Checkboxes and radios validate immediately.
      * Remove or change this value for manual validation.
      * @option
-     * @example 'fieldChange'
+     * @type {?string}
+     * @default 'fieldChange'
      */
     validateOn: 'fieldChange',
 
     /**
      * Class to be applied to input labels on failed validation.
      * @option
-     * @example 'is-invalid-label'
+     * @type {string}
+     * @default 'is-invalid-label'
      */
     labelErrorClass: 'is-invalid-label',
 
     /**
      * Class to be applied to inputs on failed validation.
      * @option
-     * @example 'is-invalid-input'
+     * @type {string}
+     * @default 'is-invalid-input'
      */
     inputErrorClass: 'is-invalid-input',
 
     /**
      * Class selector to use to target Form Errors for show/hide.
      * @option
-     * @example '.form-error'
+     * @type {string}
+     * @default '.form-error'
      */
     formErrorSelector: '.form-error',
 
     /**
      * Class added to Form Errors on failed validation.
      * @option
-     * @example 'is-visible'
+     * @type {string}
+     * @default 'is-visible'
      */
     formErrorClass: 'is-visible',
 
     /**
      * Set to true to validate text inputs on any value change.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     liveValidate: false,
 
     /**
      * Set to true to validate inputs on blur.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     validateOnBlur: false,
 

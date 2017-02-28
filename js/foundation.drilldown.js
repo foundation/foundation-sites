@@ -100,15 +100,20 @@ class Drilldown {
       _this._back($menu);
     });
 
+    this.$submenus.addClass('invisible');
     if(!this.options.autoHeight) {
       this.$submenus.addClass('drilldown-submenu-cover-previous');
     }
 
+    // create a wrapper on element if it doesn't exist.
     if(!this.$element.parent().hasClass('is-drilldown')){
       this.$wrapper = $(this.options.wrapper).addClass('is-drilldown');
       if(this.options.animateHeight) this.$wrapper.addClass('animate-height');
-      this.$wrapper = this.$element.wrap(this.$wrapper).parent().css(this._getMaxDims());
+      this.$element.wrap(this.$wrapper);
     }
+    // set wrapper
+    this.$wrapper = this.$element.parent();
+    this.$wrapper.css(this._getMaxDims());
   }
 
   _resize() {
@@ -223,15 +228,20 @@ class Drilldown {
         },
         up: function() {
           $prevElement.focus();
-          return true;
+          // Don't tap focus on first element in root ul
+          return !$element.is(_this.$element.find('> li:first-child > a'));
         },
         down: function() {
           $nextElement.focus();
-          return true;
+          // Don't tap focus on last element in root ul
+          return !$element.is(_this.$element.find('> li:last-child > a'));
         },
         close: function() {
-          _this._back();
-          //_this.$menuItems.first().focus(); // focus to first element
+          // Don't close on element in root ul
+          if (!$element.is(_this.$element.find('> li > a'))) {
+            _this._hide($element.parent().parent());
+            $element.parent().parent().siblings('a').focus();
+          }
         },
         open: function() {
           if (!$element.is(_this.$menuItems)) { // not menu item means back button
@@ -327,7 +337,7 @@ class Drilldown {
   _show($elem) {
     if(this.options.autoHeight) this.$wrapper.css({height:$elem.children('[data-submenu]').data('calcHeight')});
     $elem.attr('aria-expanded', true);
-    $elem.children('[data-submenu]').addClass('is-active').attr('aria-hidden', false);
+    $elem.children('[data-submenu]').addClass('is-active').removeClass('invisible').attr('aria-hidden', false);
     /**
      * Fires when the submenu has opened.
      * @event Drilldown#open
@@ -349,7 +359,7 @@ class Drilldown {
     $elem.addClass('is-closing')
          .one(Foundation.transitionend($elem), function(){
            $elem.removeClass('is-active is-closing');
-           $elem.blur();
+           $elem.blur().addClass('invisible');
          });
     /**
      * Fires when the submenu has closed.

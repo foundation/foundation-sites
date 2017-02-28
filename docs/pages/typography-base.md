@@ -118,7 +118,7 @@ The value for `'line-height'`/`'lh'` is transformed into a unitless number, that
 
 <div class="callout alert">
   <p><strong>The `$header-styles` map has replaced `$header-sizes` map in version 6.3. `$header-styles` map is a more general map than `$header-sizes`.</strong></p>
-  <p>`$header-sizes` map is still working and is used to initialize the `$header-styles` map. In version 6.4 the `$header-sizes` is going to be depreciated.</p>
+  <p>`$header-sizes` map is still working and is used to initialize the `$header-styles` map. In version 6.4 the `$header-sizes` is going to be deprecated.</p>
 </div>
 
 ---
@@ -128,7 +128,7 @@ The value for `'line-height'`/`'lh'` is transformed into a unitless number, that
 By inserting a `<small>` element into a header Foundation will scale the header font size down for an inline element, allowing you to use this for subtitles or other secondary header text.
 
 ```html_example
-<h3>Foundation for Sites <small>Version 6.3.0</small></h3>
+<h3>Foundation for Sites <small>Version 6.3.1</small></h3>
 ```
 
 ---

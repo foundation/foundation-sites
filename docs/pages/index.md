@@ -135,6 +135,7 @@ Get to know the pieces of Foundation.
       <ul>
         <li><a href="accordion.html">Accordion</a></li>
         <li><a href="callout.html">Callout</a></li>
+        <li><a href="card.html">Card</a></li>
         <li><a href="dropdown.html">Dropdown</a></li>
         <li><a href="media-object.html">Media Object</a></li>
         <li><a href="off-canvas.html">Off-canvas</a></li>
