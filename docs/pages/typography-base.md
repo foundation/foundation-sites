@@ -128,7 +128,7 @@ The value for `'line-height'`/`'lh'` is transformed into a unitless number, that
 By inserting a `<small>` element into a header Foundation will scale the header font size down for an inline element, allowing you to use this for subtitles or other secondary header text.
 
 ```html_example
-<h3>Foundation for Sites <small>Version 6.3.0</small></h3>
+<h3>Foundation for Sites <small>Version 6.3.1</small></h3>
 ```
 
 ---

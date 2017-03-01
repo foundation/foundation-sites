@@ -77,7 +77,6 @@ class Tabs {
         });
       }
     });
-
     if(this.options.matchHeight) {
       var $images = this.$tabContent.find('img');
 

@@ -223,6 +223,12 @@ description: Everything but.
   <a href="#0">It's dangerous to go alone, take this.</a>
 </div>
 
+<div class="callout primary">
+  <h5>This is a primary callout.</h5>
+  <p>It has an easy to override visual style, and is appropriately subdued.</p>
+  <a href="#0">It's dangerous to go alone, take this.</a>
+</div>
+
 <div class="callout secondary">
   <h5>This is a secondary callout</h5>
   <p>It has an easy to override visual style, and is appropriately subdued.</p>
@@ -484,10 +490,12 @@ description: Everything but.
     </div>
   </div>
   <div class="input-group">
-    <span class="input-group-label">$</span>
-    <input class="input-group-field" type="url">
-    <a class="input-group-button button">Submit</a>
+  <span class="input-group-label">$</span>
+  <input class="input-group-field" type="url">
+  <div class="input-group-button">
+    <input type="submit" class="button" value="Submit">
   </div>
+</div>
 </form>
 ```
 
