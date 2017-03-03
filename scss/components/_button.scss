@@ -169,6 +169,11 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
   &:hover, &:focus {
     border-color: $color-hover;
     color: $color-hover;
+    &.disabled,
+    &[disabled] {
+      border: $border-width solid $color;
+      color: $color;
+    }
   }
 }
 
@@ -271,20 +276,6 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
       }
     }
 
-    // Hollow style
-    @if $button-fill != hollow {
-      &.hollow {
-        @include button-hollow;
-        @include button-hollow-style;
-
-        @each $name, $color in $button-palette {
-          &.#{$name} {
-            @include button-hollow-style($color);
-          }
-        }
-      }
-    }
-
     // Disabled style
     &.disabled,
     &[disabled] {
@@ -293,6 +284,27 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
       @each $name, $color in $button-palette {
         &.#{$name} {
           @include button-disabled($color, auto);
+        }
+      }
+    }
+
+    // Hollow style
+    @if $button-fill != hollow {
+      &.hollow {
+        @include button-hollow;
+        @include button-hollow-style;
+
+        &.disabled,
+        &[disabled] {
+          &, &:hover, &:focus {
+            background-color: transparent;
+          }
+        }
+
+        @each $name, $color in $button-palette {
+          &.#{$name} {
+            @include button-hollow-style($color);
+          }
         }
       }
     }
