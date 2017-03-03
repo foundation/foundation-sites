@@ -143,8 +143,8 @@ class Tooltip {
         $tipDims = Foundation.Box.GetDimensions(this.template),
         $anchorDims = Foundation.Box.GetDimensions(this.$element),
         direction = (position === 'left' ? 'left' : ((position === 'right') ? 'left' : 'top')),
-        param = (direction === 'top') ? 'height' : 'width',
-        offset = (param === 'height') ? this.options.vOffset : this.options.hOffset,
+        // param = (direction === 'top') ? 'height' : 'width',
+        // offset = (param === 'height') ? this.options.vOffset : this.options.hOffset,
         _this = this;
 
     if (($tipDims.width >= $tipDims.windowDims.width) || (!this.counter && !Foundation.Box.ImNotTouchingYou(this.template))) {
