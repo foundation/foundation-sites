@@ -82,7 +82,7 @@ class Reveal {
    */
   _makeOverlay() {
     return $('<div></div>')
-      .addClass('reveal-overlay')
+      .addClass('reveal-overlay' + ' ' + this.options.additionalOverlayClassNames)
       .appendTo(this.options.appendTo);
   }
 
@@ -581,8 +581,14 @@ Reveal.defaults = {
    * @type {string}
    * @default "body"
    */
-  appendTo: "body"
-
+  appendTo: "body",
+  /**
+   * Allows adding additional class names to the reveal overlay
+   * @option
+   * @type {string}
+   * @default ''
+   */
+  additionalOverlayClassNames: ''
 };
 
 // Window exports
