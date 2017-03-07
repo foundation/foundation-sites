@@ -39,6 +39,7 @@
 @import 'components/breadcrumbs';
 @import 'components/callout';
 @import 'components/card';
+@import 'components/css-columns';
 @import 'components/close-button';
 @import 'components/drilldown';
 @import 'components/dropdown-menu';
@@ -87,6 +88,7 @@
   @include foundation-button-group;
   @include foundation-callout;
   @include foundation-card;
+  @include foundation-css-columns;
   @include foundation-close-button;
   @include foundation-menu;
   @include foundation-menu-icon;

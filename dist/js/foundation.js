@@ -5195,7 +5195,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: '_autoplayIfMediaQuery',
       value: function _autoplayIfMediaQuery(mediaQuery) {
-        console.log(Foundation.MediaQuery.current);
         if (this.$element.data('flickity')) {
           if (Foundation.MediaQuery.atLeast(mediaQuery)) {
             this.$element.flickity('playPlayer');

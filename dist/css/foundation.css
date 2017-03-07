@@ -3676,6 +3676,7 @@ table.hover:not(.unstriped) tr:nth-of-type(even):hover {
 .table-scroll {
   overflow-x: auto; }
   .table-scroll table {
+    min-width: 100%;
     width: auto; }
 
 .tabs {
@@ -3994,10 +3995,10 @@ a.thumbnail {
       display: block !important; } }
 
 .float-left {
-  float: left !important; }
+  float: left; }
 
 .float-right {
-  float: right !important; }
+  float: right; }
 
 .float-center {
   display: block;
@@ -4012,88 +4013,288 @@ a.thumbnail {
   clear: both; }
 
 .vertical-margin-0 {
-  margin-top: 0rem; }
+  margin-top: 0rem !important; }
 
 .vertical-padding-0 {
-  padding-top: 0rem; }
+  padding-top: 0rem !important; }
 
 .vertical-margin-half {
-  margin-top: 0.5rem; }
+  margin-top: 0.5rem !important; }
 
 .vertical-padding-half {
-  padding-top: 0.5rem; }
+  padding-top: 0.5rem !important; }
 
 .vertical-margin-1 {
-  margin-top: 1rem; }
+  margin-top: 1rem !important; }
 
 .vertical-padding-1 {
-  padding-top: 1rem; }
+  padding-top: 1rem !important; }
 
 .vertical-margin-2 {
-  margin-top: 2rem; }
+  margin-top: 2rem !important; }
 
 .vertical-padding-2 {
-  padding-top: 2rem; }
+  padding-top: 2rem !important; }
 
 .vertical-margin-3 {
-  margin-top: 3rem; }
+  margin-top: 3rem !important; }
 
 .vertical-padding-3 {
-  padding-top: 3rem; }
+  padding-top: 3rem !important; }
 
 .vertical-margin-4 {
-  margin-top: 4rem; }
+  margin-top: 4rem !important; }
 
 .vertical-padding-4 {
-  padding-top: 4rem; }
+  padding-top: 4rem !important; }
 
 .vertical-margin-5 {
-  margin-top: 5rem; }
+  margin-top: 5rem !important; }
 
 .vertical-padding-5 {
-  padding-top: 5rem; }
+  padding-top: 5rem !important; }
 
 .vertical-margin-6 {
-  margin-top: 6rem; }
+  margin-top: 6rem !important; }
 
 .vertical-padding-6 {
-  padding-top: 6rem; }
+  padding-top: 6rem !important; }
 
 .vertical-margin-7 {
-  margin-top: 7rem; }
+  margin-top: 7rem !important; }
 
 .vertical-padding-7 {
-  padding-top: 7rem; }
+  padding-top: 7rem !important; }
 
 .vertical-margin-8 {
-  margin-top: 8rem; }
+  margin-top: 8rem !important; }
 
 .vertical-padding-8 {
-  padding-top: 8rem; }
+  padding-top: 8rem !important; }
 
 .vertical-margin-9 {
-  margin-top: 9rem; }
+  margin-top: 9rem !important; }
 
 .vertical-padding-9 {
-  padding-top: 9rem; }
+  padding-top: 9rem !important; }
 
 .vertical-margin-10 {
-  margin-top: 10rem; }
+  margin-top: 10rem !important; }
 
 .vertical-padding-10 {
-  padding-top: 10rem; }
+  padding-top: 10rem !important; }
 
 .vertical-margin-11 {
-  margin-top: 11rem; }
+  margin-top: 11rem !important; }
 
 .vertical-padding-11 {
-  padding-top: 11rem; }
+  padding-top: 11rem !important; }
 
 .vertical-margin-12 {
-  margin-top: 12rem; }
+  margin-top: 12rem !important; }
 
 .vertical-padding-12 {
-  padding-top: 12rem; }
+  padding-top: 12rem !important; }
+
+.vertical-margin-0-small {
+  margin-top: 0rem !important; }
+
+.vertical-padding-0-small {
+  padding-top: 0rem !important; }
+
+.vertical-margin-half-1-small {
+  margin-top: 0.5rem !important; }
+
+.vertical-padding-half-1-small {
+  padding-top: 0.5rem !important; }
+
+.vertical-margin-1-small {
+  margin-top: 1rem !important; }
+
+.vertical-padding-1-small {
+  padding-top: 1rem !important; }
+
+.vertical-margin-2-small {
+  margin-top: 2rem !important; }
+
+.vertical-padding-2-small {
+  padding-top: 2rem !important; }
+
+.vertical-margin-3-small {
+  margin-top: 3rem !important; }
+
+.vertical-padding-3-small {
+  padding-top: 3rem !important; }
+
+.vertical-margin-4-small {
+  margin-top: 4rem !important; }
+
+.vertical-padding-4-small {
+  padding-top: 4rem !important; }
+
+.vertical-margin-5-small {
+  margin-top: 5rem !important; }
+
+.vertical-padding-5-small {
+  padding-top: 5rem !important; }
+
+.vertical-margin-6-small {
+  margin-top: 6rem !important; }
+
+.vertical-padding-6-small {
+  padding-top: 6rem !important; }
+
+.vertical-margin-7-small {
+  margin-top: 7rem !important; }
+
+.vertical-padding-7-small {
+  padding-top: 7rem !important; }
+
+.vertical-margin-8-small {
+  margin-top: 8rem !important; }
+
+.vertical-padding-8-small {
+  padding-top: 8rem !important; }
+
+.vertical-margin-9-small {
+  margin-top: 9rem !important; }
+
+.vertical-padding-9-small {
+  padding-top: 9rem !important; }
+
+.vertical-margin-10-small {
+  margin-top: 10rem !important; }
+
+.vertical-padding-10-small {
+  padding-top: 10rem !important; }
+
+.vertical-margin-11-small {
+  margin-top: 11rem !important; }
+
+.vertical-padding-11-small {
+  padding-top: 11rem !important; }
+
+.vertical-margin-12-small {
+  margin-top: 12rem !important; }
+
+.vertical-padding-12-small {
+  padding-top: 12rem !important; }
+
+@media print, screen and (min-width: 40em) {
+  .vertical-margin-0-medium {
+    margin-top: 0rem !important; }
+  .vertical-padding-0-medium {
+    padding-top: 0rem !important; }
+  .vertical-margin-half-1-medium {
+    margin-top: 0.5rem !important; }
+  .vertical-padding-half-1-medium {
+    padding-top: 0.5rem !important; }
+  .vertical-margin-1-medium {
+    margin-top: 1rem !important; }
+  .vertical-padding-1-medium {
+    padding-top: 1rem !important; }
+  .vertical-margin-2-medium {
+    margin-top: 2rem !important; }
+  .vertical-padding-2-medium {
+    padding-top: 2rem !important; }
+  .vertical-margin-3-medium {
+    margin-top: 3rem !important; }
+  .vertical-padding-3-medium {
+    padding-top: 3rem !important; }
+  .vertical-margin-4-medium {
+    margin-top: 4rem !important; }
+  .vertical-padding-4-medium {
+    padding-top: 4rem !important; }
+  .vertical-margin-5-medium {
+    margin-top: 5rem !important; }
+  .vertical-padding-5-medium {
+    padding-top: 5rem !important; }
+  .vertical-margin-6-medium {
+    margin-top: 6rem !important; }
+  .vertical-padding-6-medium {
+    padding-top: 6rem !important; }
+  .vertical-margin-7-medium {
+    margin-top: 7rem !important; }
+  .vertical-padding-7-medium {
+    padding-top: 7rem !important; }
+  .vertical-margin-8-medium {
+    margin-top: 8rem !important; }
+  .vertical-padding-8-medium {
+    padding-top: 8rem !important; }
+  .vertical-margin-9-medium {
+    margin-top: 9rem !important; }
+  .vertical-padding-9-medium {
+    padding-top: 9rem !important; }
+  .vertical-margin-10-medium {
+    margin-top: 10rem !important; }
+  .vertical-padding-10-medium {
+    padding-top: 10rem !important; }
+  .vertical-margin-11-medium {
+    margin-top: 11rem !important; }
+  .vertical-padding-11-medium {
+    padding-top: 11rem !important; }
+  .vertical-margin-12-medium {
+    margin-top: 12rem !important; }
+  .vertical-padding-12-medium {
+    padding-top: 12rem !important; } }
+
+@media print, screen and (min-width: 64em) {
+  .vertical-margin-0-large {
+    margin-top: 0rem !important; }
+  .vertical-padding-0-large {
+    padding-top: 0rem !important; }
+  .vertical-margin-half-1-large {
+    margin-top: 0.5rem !important; }
+  .vertical-padding-half-1-large {
+    padding-top: 0.5rem !important; }
+  .vertical-margin-1-large {
+    margin-top: 1rem !important; }
+  .vertical-padding-1-large {
+    padding-top: 1rem !important; }
+  .vertical-margin-2-large {
+    margin-top: 2rem !important; }
+  .vertical-padding-2-large {
+    padding-top: 2rem !important; }
+  .vertical-margin-3-large {
+    margin-top: 3rem !important; }
+  .vertical-padding-3-large {
+    padding-top: 3rem !important; }
+  .vertical-margin-4-large {
+    margin-top: 4rem !important; }
+  .vertical-padding-4-large {
+    padding-top: 4rem !important; }
+  .vertical-margin-5-large {
+    margin-top: 5rem !important; }
+  .vertical-padding-5-large {
+    padding-top: 5rem !important; }
+  .vertical-margin-6-large {
+    margin-top: 6rem !important; }
+  .vertical-padding-6-large {
+    padding-top: 6rem !important; }
+  .vertical-margin-7-large {
+    margin-top: 7rem !important; }
+  .vertical-padding-7-large {
+    padding-top: 7rem !important; }
+  .vertical-margin-8-large {
+    margin-top: 8rem !important; }
+  .vertical-padding-8-large {
+    padding-top: 8rem !important; }
+  .vertical-margin-9-large {
+    margin-top: 9rem !important; }
+  .vertical-padding-9-large {
+    padding-top: 9rem !important; }
+  .vertical-margin-10-large {
+    margin-top: 10rem !important; }
+  .vertical-padding-10-large {
+    padding-top: 10rem !important; }
+  .vertical-margin-11-large {
+    margin-top: 11rem !important; }
+  .vertical-padding-11-large {
+    padding-top: 11rem !important; }
+  .vertical-margin-12-large {
+    margin-top: 12rem !important; }
+  .vertical-padding-12-large {
+    padding-top: 12rem !important; } }
 
 .flickity-enabled {
   position: relative; }

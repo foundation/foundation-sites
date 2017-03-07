@@ -1,0 +1,66 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group columns
+////
+
+/// Outputs CSS properties for CSS columns
+///
+/// @param {Number} $count - The number of CSS columns
+/// @param {Number} $gap - The gap between CSS columns
+@mixin css-columns(
+  $count,
+  $gap: $global-padding
+) {
+  column-gap: $gap;
+  column-count: $count;
+
+  > * {
+    break-inside: avoid;
+  }
+}
+
+/// Generates CSS columns helper classes (and extends) for a given column count
+///
+/// @param {String} $class ['col-'] - The base of the class name for each column count
+/// @param {Number} $count [12] - The total number of classes (column counts) to generate
+/// @param {Number} $gap [1rem] - The gap between CSS columns
+@mixin css-columns-classes(
+  $class: 'css-columns-',
+  $count: 6
+) {
+  %#{$class + '0-' + $-zf-size},
+  .#{$class + '0-' + $-zf-size},
+  %#{$class + '1-' + $-zf-size},
+  .#{$class + '1-' + $-zf-size} {
+    column-gap: normal;
+    column-count: auto;
+  }
+
+  @for $i from 2 through $count {
+    %#{$class + $i},
+    .#{$class + $i} {
+      @include css-columns($i);
+    }
+  }
+
+  @include -zf-each-breakpoint(true) {
+    .#{$class + '0-' + $-zf-size},
+    .#{$class + '1-' + $-zf-size} {
+      column-gap: normal;
+      column-count: auto;
+    }
+
+    @for $i from 2 through $count {
+      .#{$class + $i + '-' + $-zf-size} {
+        @include css-columns($i);
+      }
+    }
+  }
+}
+
+@mixin foundation-css-columns {
+  @include css-columns-classes();
+}
