@@ -14,17 +14,29 @@
 @mixin vertical-rhythm(
   $multiplier,
   $property: 'margin',
-  $increment: 1rem
+  $increment: 1rem,
+  $important: false
 ) {
   @if ($property == 'margin') {
-    margin-top: #{$multiplier * $increment} !important;
+    @if ($important) {
+      margin-top: #{$multiplier * $increment} !important;
+    }
+    @else {
+      margin-top: #{$multiplier * $increment};
+    }
   }
   @else if ($property == 'padding') {
-    padding-top: #{$multiplier * $increment} !important;
+    @if ($important) {
+      padding-top: #{$multiplier * $increment} !important;
+    }
+    @else {
+      padding-top: #{$multiplier * $increment};
+    }
   }
 }
 
 /// Generates vertical spacing helper classes (and extends) in increments a given number of times
+/// Classes have !important to override CSS
 ///
 /// @param {String} $class ['vertical-'] - The base of the class name for each increment
 /// @param {Number} $count [12] - The total number of classes (increments) to generate
@@ -34,25 +46,37 @@
 ) {
   @for $i from 0 through $count {
     @if ($i == 1) {
-      %#{$class + 'margin-half'},
-      .#{$class + 'margin-half'} {
+      %#{$class + 'margin-half'} {
         @include vertical-rhythm(0.5);
       }
 
-      %#{$class + 'padding-half'},
-      .#{$class + 'padding-half'} {
+      .#{$class + 'margin-half'} {
+        @include vertical-rhythm(0.5, $important: true);
+      }
+
+      %#{$class + 'padding-half'} {
         @include vertical-rhythm(0.5, 'padding');
+      }
+
+      .#{$class + 'padding-half'} {
+        @include vertical-rhythm(0.5, 'padding', $important: true);
       }
     }
 
-    %#{$class + 'margin-' + $i},
-    .#{$class + 'margin-' + $i} {
+    %#{$class + 'margin-' + $i} {
       @include vertical-rhythm($i);
     }
 
-    %#{$class + 'padding-' + $i},
-    .#{$class + 'padding-' + $i} {
+    .#{$class + 'margin-' + $i} {
+      @include vertical-rhythm($i, $important: true);
+    }
+
+    %#{$class + 'padding-' + $i} {
       @include vertical-rhythm($i, 'padding');
+    }
+
+    .#{$class + 'padding-' + $i} {
+      @include vertical-rhythm($i, 'padding', $important: true);
     }
   }
 }
