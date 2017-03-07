@@ -129,12 +129,7 @@ By default, at least one pane in an accordion must be open. This can be changed 
 
 There may be times where you want to disable pane switching on an accordion. This can be accomplished by setting the disabled attribute.
 
-```html
-<ul class="accordion" data-accordion disabled>
-  <!-- ... -->
-</ul>
-```
-
+```html_example
 <ul class="accordion" data-accordion disabled>
   <li class="accordion-item is-active" data-accordion-item>
     <a href="#" class="accordion-title">Accordion 1</a>
@@ -155,7 +150,7 @@ There may be times where you want to disable pane switching on an accordion. Thi
     </div>
   </li>
 </ul>
-
+```
 ---
 
 ## Accordion and URLs
@@ -172,7 +167,7 @@ Add the attribute `data-deep-link="true"` to a accordion to:
 - modify the browser history when a accordion panel is clicked
 - allow users to open a particular accordion panel at page load with a hash-appended URL
 
-```html
+```html_example
 <ul class="accordion" data-accordion data-deep-link="true" data-update-history="true" data-deep-link-smudge="true" data-deep-link-smudge="500" id="deeplinked-accordion">
   <li class="accordion-item is-active" data-accordion-item>
     <a href="#deeplink1" class="accordion-title">Accordion 1</a>
@@ -198,6 +193,6 @@ For example, <a target="_blank" href="#deeplink3">http://example.com/#deeplink3<
 
 When linking directly to a accordion panel, it might not be obvious that the content appears within a accordion panel. An additional attribute `data-deep-link-smudge` rolls the page up slightly after deep linking (to a horizontal accordion) so that the accordion is at the top of the viewport.
 
-```html
+```html_example
 <ul class="accordion" data-deep-link="true" data-deep-link-smudge="true" data-deep-link-smudge-delay="600" data-accordion id="deeplinked-accordion-with-smudge">
 ```
