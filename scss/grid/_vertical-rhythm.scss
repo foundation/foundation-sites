@@ -17,10 +17,10 @@
   $increment: 1rem
 ) {
   @if ($property == 'margin') {
-    margin-top: #{$multiplier * $increment};
+    margin-top: #{$multiplier * $increment} !important;
   }
   @else if ($property == 'padding') {
-    padding-top: #{$multiplier * $increment};
+    padding-top: #{$multiplier * $increment} !important;
   }
 }
 
