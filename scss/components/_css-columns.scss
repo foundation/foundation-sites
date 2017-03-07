@@ -12,7 +12,7 @@
 /// @param {Number} $gap - The gap between CSS columns
 @mixin css-columns(
   $count,
-  $gap: $global-padding
+  $gap: 2rem
 ) {
   column-gap: $gap;
   column-count: $count;
