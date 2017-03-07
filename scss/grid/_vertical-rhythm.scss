@@ -79,6 +79,28 @@
       @include vertical-rhythm($i, 'padding', $important: true);
     }
   }
+
+  @include -zf-each-breakpoint(true) {
+    @for $i from 0 through $count {
+      @if $i == 1 {
+        .#{$class + 'margin-half-' + $i + '-' + $-zf-size} {
+          @include vertical-rhythm(0.5, $important: true);
+        }
+
+        .#{$class + 'padding-half-' + $i + '-' + $-zf-size} {
+          @include vertical-rhythm(0.5, 'padding', $important: true);
+        }
+      }
+
+      .#{$class + 'margin-' + $i + '-' + $-zf-size} {
+        @include vertical-rhythm($i, $important: true);
+      }
+
+      .#{$class + 'padding-' + $i + '-' + $-zf-size} {
+        @include vertical-rhythm($i, 'padding', $important: true);
+      }
+    }
+  }
 }
 
 @mixin foundation-vertical-rhythm {

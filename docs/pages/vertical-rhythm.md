@@ -31,3 +31,24 @@ These classes and extends begin with either `vertical-margin-` or `vertical-padd
   <img src="assets/img/vertical-rhythm/jigglypuff.gif" alt="">
 </div>
 ```
+
+---
+
+## Responsive vertical spacing classes
+
+To trigger different vertical spacing at different breakpoints, append the name of a breakpoint to the `vertical-margin-` or `vertical-padding-` class.
+
+```html_example
+<div class="vertical-margin-2-small vertical-margin-0-large text-center">
+  <img src="assets/img/vertical-rhythm/jigglypuff.gif" alt="">
+  <div>
+    0 vertical margin above the large breakpoint and 2x vertical margin below
+  </div>
+</div>
+<div class="vertical-padding-2-small vertical-padding-4-large text-center">
+  <img src="assets/img/vertical-rhythm/jigglypuff.gif" alt="">
+  <div>
+    4x vertical padding above the large breakpoint and 2x vertical padding below
+  </div>
+</div>
+```
