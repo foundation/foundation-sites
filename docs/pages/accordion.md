@@ -9,7 +9,7 @@ js: js/foundation.accordion.js
 
 The container for an accordion needs the class `.accordion`, and the attribute `data-accordion`. Note that in these examples, we use a `<ul>`, but you can use any element you want.
 
-```html_example
+```html
 <ul class="accordion" data-accordion></ul>
 ```
 
@@ -17,7 +17,7 @@ Inside the accordion, place a series of panes with the class `.accordion-item` a
 
 Each pane has a **title**, an `<a>` with the class `.accordion-title`, and a **content area**, an element with the class `.accordion-content` and the attribute `data-tab-content`.
 
-```html_example
+```html
 <ul class="accordion" data-accordion>
   <li class="accordion-item is-active" data-accordion-item>
     <a href="#" class="accordion-title">Accordion 1</a>
@@ -63,7 +63,7 @@ Once you put it all together, here's what you get!
 
 By default, only one pane of an accordion can be open at a time. This can be changed by setting the `multiExpand` option to `true`.
 
-```html_example
+```html
 <ul class="accordion" data-accordion data-multi-expand="true">
   <!-- ... -->
 </ul>
@@ -96,7 +96,7 @@ By default, only one pane of an accordion can be open at a time. This can be cha
 
 By default, at least one pane in an accordion must be open. This can be changed by setting `allowAllClosed` option to `true`.
 
-```html_example
+```html
 <ul class="accordion" data-accordion data-allow-all-closed="true">
   <!-- ... -->
 </ul>
@@ -129,7 +129,7 @@ By default, at least one pane in an accordion must be open. This can be changed 
 
 There may be times where you want to disable pane switching on an accordion. This can be accomplished by setting the disabled attribute.
 
-```html_example
+```html
 <ul class="accordion" data-accordion disabled>
   <!-- ... -->
 </ul>
@@ -172,7 +172,7 @@ Add the attribute `data-deep-link="true"` to a accordion to:
 - modify the browser history when a accordion panel is clicked
 - allow users to open a particular accordion panel at page load with a hash-appended URL
 
-```html_example
+```html
 <ul class="accordion" data-accordion data-deep-link="true" data-update-history="true" data-deep-link-smudge="true" data-deep-link-smudge="500" id="deeplinked-accordion">
   <li class="accordion-item is-active" data-accordion-item>
     <a href="#deeplink1" class="accordion-title">Accordion 1</a>
@@ -198,6 +198,6 @@ For example, <a target="_blank" href="#deeplink3">http://example.com/#deeplink3<
 
 When linking directly to a accordion panel, it might not be obvious that the content appears within a accordion panel. An additional attribute `data-deep-link-smudge` rolls the page up slightly after deep linking (to a horizontal accordion) so that the accordion is at the top of the viewport.
 
-```html_example
+```html
 <ul class="accordion" data-deep-link="true" data-deep-link-smudge="true" data-deep-link-smudge-delay="600" data-accordion id="deeplinked-accordion-with-smudge">
 ```
