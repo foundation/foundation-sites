@@ -2307,9 +2307,9 @@ select {
 
 
 .css-columns-2 {
-  -webkit-column-gap: 1rem;
-     -moz-column-gap: 1rem;
-          column-gap: 1rem;
+  -webkit-column-gap: 2rem;
+     -moz-column-gap: 2rem;
+          column-gap: 2rem;
   -webkit-column-count: 2;
      -moz-column-count: 2;
           column-count: 2; }
@@ -2321,9 +2321,9 @@ select {
 
 
 .css-columns-3 {
-  -webkit-column-gap: 1rem;
-     -moz-column-gap: 1rem;
-          column-gap: 1rem;
+  -webkit-column-gap: 2rem;
+     -moz-column-gap: 2rem;
+          column-gap: 2rem;
   -webkit-column-count: 3;
      -moz-column-count: 3;
           column-count: 3; }
@@ -2335,9 +2335,9 @@ select {
 
 
 .css-columns-4 {
-  -webkit-column-gap: 1rem;
-     -moz-column-gap: 1rem;
-          column-gap: 1rem;
+  -webkit-column-gap: 2rem;
+     -moz-column-gap: 2rem;
+          column-gap: 2rem;
   -webkit-column-count: 4;
      -moz-column-count: 4;
           column-count: 4; }
@@ -2349,9 +2349,9 @@ select {
 
 
 .css-columns-5 {
-  -webkit-column-gap: 1rem;
-     -moz-column-gap: 1rem;
-          column-gap: 1rem;
+  -webkit-column-gap: 2rem;
+     -moz-column-gap: 2rem;
+          column-gap: 2rem;
   -webkit-column-count: 5;
      -moz-column-count: 5;
           column-count: 5; }
@@ -2363,9 +2363,9 @@ select {
 
 
 .css-columns-6 {
-  -webkit-column-gap: 1rem;
-     -moz-column-gap: 1rem;
-          column-gap: 1rem;
+  -webkit-column-gap: 2rem;
+     -moz-column-gap: 2rem;
+          column-gap: 2rem;
   -webkit-column-count: 6;
      -moz-column-count: 6;
           column-count: 6; }
@@ -2385,9 +2385,9 @@ select {
           column-count: auto; }
 
 .css-columns-2-small {
-  -webkit-column-gap: 1rem;
-     -moz-column-gap: 1rem;
-          column-gap: 1rem;
+  -webkit-column-gap: 2rem;
+     -moz-column-gap: 2rem;
+          column-gap: 2rem;
   -webkit-column-count: 2;
      -moz-column-count: 2;
           column-count: 2; }
@@ -2397,9 +2397,9 @@ select {
             break-inside: avoid; }
 
 .css-columns-3-small {
-  -webkit-column-gap: 1rem;
-     -moz-column-gap: 1rem;
-          column-gap: 1rem;
+  -webkit-column-gap: 2rem;
+     -moz-column-gap: 2rem;
+          column-gap: 2rem;
   -webkit-column-count: 3;
      -moz-column-count: 3;
           column-count: 3; }
@@ -2409,9 +2409,9 @@ select {
             break-inside: avoid; }
 
 .css-columns-4-small {
-  -webkit-column-gap: 1rem;
-     -moz-column-gap: 1rem;
-          column-gap: 1rem;
+  -webkit-column-gap: 2rem;
+     -moz-column-gap: 2rem;
+          column-gap: 2rem;
   -webkit-column-count: 4;
      -moz-column-count: 4;
           column-count: 4; }
@@ -2421,9 +2421,9 @@ select {
             break-inside: avoid; }
 
 .css-columns-5-small {
-  -webkit-column-gap: 1rem;
-     -moz-column-gap: 1rem;
-          column-gap: 1rem;
+  -webkit-column-gap: 2rem;
+     -moz-column-gap: 2rem;
+          column-gap: 2rem;
   -webkit-column-count: 5;
      -moz-column-count: 5;
           column-count: 5; }
@@ -2433,9 +2433,9 @@ select {
             break-inside: avoid; }
 
 .css-columns-6-small {
-  -webkit-column-gap: 1rem;
-     -moz-column-gap: 1rem;
-          column-gap: 1rem;
+  -webkit-column-gap: 2rem;
+     -moz-column-gap: 2rem;
+          column-gap: 2rem;
   -webkit-column-count: 6;
      -moz-column-count: 6;
           column-count: 6; }
@@ -2454,9 +2454,9 @@ select {
        -moz-column-count: auto;
             column-count: auto; }
   .css-columns-2-medium {
-    -webkit-column-gap: 1rem;
-       -moz-column-gap: 1rem;
-            column-gap: 1rem;
+    -webkit-column-gap: 2rem;
+       -moz-column-gap: 2rem;
+            column-gap: 2rem;
     -webkit-column-count: 2;
        -moz-column-count: 2;
             column-count: 2; }
@@ -2465,9 +2465,9 @@ select {
          page-break-inside: avoid;
               break-inside: avoid; }
   .css-columns-3-medium {
-    -webkit-column-gap: 1rem;
-       -moz-column-gap: 1rem;
-            column-gap: 1rem;
+    -webkit-column-gap: 2rem;
+       -moz-column-gap: 2rem;
+            column-gap: 2rem;
     -webkit-column-count: 3;
        -moz-column-count: 3;
             column-count: 3; }
@@ -2476,9 +2476,9 @@ select {
          page-break-inside: avoid;
               break-inside: avoid; }
   .css-columns-4-medium {
-    -webkit-column-gap: 1rem;
-       -moz-column-gap: 1rem;
-            column-gap: 1rem;
+    -webkit-column-gap: 2rem;
+       -moz-column-gap: 2rem;
+            column-gap: 2rem;
     -webkit-column-count: 4;
        -moz-column-count: 4;
             column-count: 4; }
@@ -2487,9 +2487,9 @@ select {
          page-break-inside: avoid;
               break-inside: avoid; }
   .css-columns-5-medium {
-    -webkit-column-gap: 1rem;
-       -moz-column-gap: 1rem;
-            column-gap: 1rem;
+    -webkit-column-gap: 2rem;
+       -moz-column-gap: 2rem;
+            column-gap: 2rem;
     -webkit-column-count: 5;
        -moz-column-count: 5;
             column-count: 5; }
@@ -2498,9 +2498,9 @@ select {
          page-break-inside: avoid;
               break-inside: avoid; }
   .css-columns-6-medium {
-    -webkit-column-gap: 1rem;
-       -moz-column-gap: 1rem;
-            column-gap: 1rem;
+    -webkit-column-gap: 2rem;
+       -moz-column-gap: 2rem;
+            column-gap: 2rem;
     -webkit-column-count: 6;
        -moz-column-count: 6;
             column-count: 6; }
@@ -2519,9 +2519,9 @@ select {
        -moz-column-count: auto;
             column-count: auto; }
   .css-columns-2-large {
-    -webkit-column-gap: 1rem;
-       -moz-column-gap: 1rem;
-            column-gap: 1rem;
+    -webkit-column-gap: 2rem;
+       -moz-column-gap: 2rem;
+            column-gap: 2rem;
     -webkit-column-count: 2;
        -moz-column-count: 2;
             column-count: 2; }
@@ -2530,9 +2530,9 @@ select {
          page-break-inside: avoid;
               break-inside: avoid; }
   .css-columns-3-large {
-    -webkit-column-gap: 1rem;
-       -moz-column-gap: 1rem;
-            column-gap: 1rem;
+    -webkit-column-gap: 2rem;
+       -moz-column-gap: 2rem;
+            column-gap: 2rem;
     -webkit-column-count: 3;
        -moz-column-count: 3;
             column-count: 3; }
@@ -2541,9 +2541,9 @@ select {
          page-break-inside: avoid;
               break-inside: avoid; }
   .css-columns-4-large {
-    -webkit-column-gap: 1rem;
-       -moz-column-gap: 1rem;
-            column-gap: 1rem;
+    -webkit-column-gap: 2rem;
+       -moz-column-gap: 2rem;
+            column-gap: 2rem;
     -webkit-column-count: 4;
        -moz-column-count: 4;
             column-count: 4; }
@@ -2552,9 +2552,9 @@ select {
          page-break-inside: avoid;
               break-inside: avoid; }
   .css-columns-5-large {
-    -webkit-column-gap: 1rem;
-       -moz-column-gap: 1rem;
-            column-gap: 1rem;
+    -webkit-column-gap: 2rem;
+       -moz-column-gap: 2rem;
+            column-gap: 2rem;
     -webkit-column-count: 5;
        -moz-column-count: 5;
             column-count: 5; }
@@ -2563,9 +2563,9 @@ select {
          page-break-inside: avoid;
               break-inside: avoid; }
   .css-columns-6-large {
-    -webkit-column-gap: 1rem;
-       -moz-column-gap: 1rem;
-            column-gap: 1rem;
+    -webkit-column-gap: 2rem;
+       -moz-column-gap: 2rem;
+            column-gap: 2rem;
     -webkit-column-count: 6;
        -moz-column-count: 6;
             column-count: 6; }
