@@ -35,7 +35,7 @@ class Sticky {
         id = this.$element[0].id || Foundation.GetYoDigits(6, 'sticky'),
         _this = this;
 
-    if($parent.lenth){
+    if($parent.length){
       this.$container = $parent;
     } else {
       this.wasWrapped = true;
