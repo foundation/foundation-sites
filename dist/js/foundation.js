@@ -5534,7 +5534,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }).trigger(trigger);
         }
         // Replacing background images
-        else if (path.match(/\.(gif|jpg|jpeg|png|svg|tiff)([?#].*)?/i)) {
+        else if (path.match(/\.(gif|jpg|jpeg|png|svg|tiff|ashx)([?#].*)?/i)) {
             this.$element.css({ 'background-image': 'url(' + path + ')' }).trigger(trigger);
           }
           // Replacing HTML
