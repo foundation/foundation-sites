@@ -18,8 +18,6 @@
   column-count: $count;
 
   > * {
-    display: inline-block;
-    width: 100%;
     break-inside: avoid;
   }
 }
