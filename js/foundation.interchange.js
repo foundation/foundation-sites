@@ -105,7 +105,7 @@ class Interchange {
     else {
       rules = this.$element.data('interchange');
     }
-    
+
     rules =  typeof rules === 'string' ? rules.match(/\[.*?\]/g) : rules;
 
     for (var i in rules) {
@@ -148,7 +148,7 @@ class Interchange {
       .trigger(trigger);
     }
     // Replacing background images
-    else if (path.match(/\.(gif|jpg|jpeg|png|svg|tiff)([?#].*)?/i)) {
+    else if (path.match(/\.(gif|jpg|jpeg|png|svg|tiff|ashx)([?#].*)?/i)) {
       this.$element.css({ 'background-image': 'url('+path+')' })
           .trigger(trigger);
     }
