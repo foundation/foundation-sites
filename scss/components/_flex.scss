@@ -32,3 +32,30 @@
     }
   }
 }
+
+@mixin gimbal($o:row,$x:left,$y:top) {
+  //columns
+  $map-xy: (
+  right: bottom,
+  left: top,
+  top: left,
+  bottom: right,
+  center: middle,
+  middle: center
+);
+  $x1: $x;
+  $y1: $y;
+  @if $o == column {
+    $x1: map-get($map-xy,$y);
+    $y1: map-get($map-xy,$x);
+  }
+
+  @include flex;
+  @include flex-direction($o);
+  @include flex-align($x:$x1,$y:$y1);
+}
+
+///////
+.gimbal-test {
+  @include gimbal($o:column,$x:left,$y:top);
+}
