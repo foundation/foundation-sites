@@ -196,6 +196,36 @@ These `.rounded`, `.bordered` & `.shadow` classes can be used independently or t
 
 ---
 
+## Title Bar Utility
+
+This creates a tiny bar below the heading of an element and is usually used within the heading of a section.
+
+<div class="primary callout">
+	You don't need to use [Text alignment classes](typography-helpers.html#text-alignment) as this bar utility deals with the alignment of the text itself.
+</div>
+
+```html
+<h3 class="bar-left">Lorem</h3>
+<h3 class="bar-center">Ipsum Dolor</h3>
+<h3 class="bar-right">Tempor</h3>
+``` 
+
+<div class="docs-code-live">
+	<div class="row">
+		<div class="small-12 medium-4 columns">
+			<h3 class="bar-left">Lorem</h3>
+		</div>
+		<div class="small-12 medium-4 columns">
+			<h3 class="bar-center">Ipsum Dolor</h3>
+		</div>
+		<div class="small-12 medium-4 columns">
+			<h3 class="bar-right">Tempor</h3>
+		</div>
+	</div>
+</div>
+
+---
+
 ## Font Styling
 
 You can use font styling to style your text. You can change the font styling by adding `font-normal`, `font-bold`, `font-italic` to an element. You can also wider the text of an element with `font-wide`.
@@ -254,33 +284,78 @@ Adjust font-size by overriding an element’s default size.
 
 ---
 
-## Title Bar Utility
+## Text Helpers
 
-This creates a tiny bar below the heading of an element and is usually used within the heading of a section.
+### Image Replacement (Text Hide)
 
-<div class="primary callout">
-	You don't need to use [Text alignment classes](typography-helpers.html#text-alignment) as this bar utility deals with the alignment of the text itself.
-</div>
+You might want to include a logo on the page but you also would like to use a text within a header tag for the sake of accessibility and also for gaining benifits from SEO, and ideally on the webpage you would like to show your logo and not text. In that scenario you can utilize this `.text-hide` class to replace an element’s text content with a background image, often logo.
+
+```html_example
+<a href="" class="text-hide">
+  <img src="assets/img/logos/zurb-logo.svg">
+  Zurb <!-- Logo Text  -->
+</a>
+```
+
+---
+
+### Text Transformation
+
+Text transformation lets you control the capitalization of text. You can change the text transformation by adding `.text-uppercase`, `text-lowercase`, `text-capitalize` to an element. 
 
 ```html
-<h3 class="bar-left">Lorem</h3>
-<h3 class="bar-center">Ipsum Dolor</h3>
-<h3 class="bar-right">Tempor</h3>
+<p class="text-uppercase"><!-- Text here --></p>
+<p class="text-lowercase"><!-- Text here --></p>
+<p class="text-capitalize"><!-- Text here --></p>
 ``` 
 
-<div class="docs-code-live">
-	<div class="row">
-		<div class="small-12 medium-4 columns">
-			<h3 class="bar-left">Lorem</h3>
-		</div>
-		<div class="small-12 medium-4 columns">
-			<h3 class="bar-center">Ipsum Dolor</h3>
-		</div>
-		<div class="small-12 medium-4 columns">
-			<h3 class="bar-right">Tempor</h3>
-		</div>
-	</div>
-</div>
+<p class="text-uppercase"><strong>This is a upper-cased text.</strong> Set in the year 0 F.E. ("Foundation Era"), The Psychohistorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire. Though the empire appears stable and powerful, it is slowly decaying in ways that parallel the decline of the Western Roman Empire.</p>
+
+<p class="text-lowercase"><strong>This is a lower-cased text.</strong> Set in the year 0 F.E. ("Foundation Era"), The Psychohistorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire. Though the empire appears stable and powerful, it is slowly decaying in ways that parallel the decline of the Western Roman Empire.</p>
+
+<p class="text-capitalize"><strong>This is a caPitAlized teXt.</strong> Set in the yEar 0 F.E. ("Foundation Era"), The PsychohisTorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire. Though the empire appears stable and powerful, it is slowly decaying in ways that parallel the decline of the Western Roman Empire.</p>
+
+Note how `text-capitalize` just changes the first letter of every single word, leaving the case of other letters unaffected.
+
+---
+
+### Text Decoration
+
+Text Decoration can be used to underline, overline, or line-through a text. You can change the text decoration by adding `.text-underline`, `text-overline`, `text-line-through` to an element.
+
+```html_example
+<p class="text-underline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+<p class="text-overline">Perspiciatis tempore cumque, magni aspernatur, quidem</p>
+<p class="text-line-through">Lorem minus, placeat, iure voluptas aliquam tempora neque?</p>
+``` 
+
+---
+
+### Text Truncate
+
+The `text-truncate` displays an elipsis when the text must be in a single straight line that should overflows a box where overflow is hidden. See how in example the content did not crossed the first line!
+
+```html_example
+<p class="text-truncate">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam voluptatem similique officiis recusandae esse cum in totam quisquam perspiciatis quod! Magnam culpa vitae, tempore eos explicabo cupiditate. Deserunt, quisquam, quos!</p>
+``` 
+
+---
+
+### Text No-wrap
+
+If you would like to prevent the text wrapping into the next line you can utilize `text-nowrap`. Please note that the text will continue to be in same line unless the `<br/>` tag is used.
+
+```html
+<p class="text-nowrap">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam voluptatem similique officiis recusandae esse cum in totam quisquam perspiciatis quod! Magnam culpa vitae, tempore eos explicabo cupiditate. Deserunt, quisquam, quos!</p>
+``` 
+
+### Text Wrap
+
+Oppositely, if you are looking for text wrapping into the next line, you can use `text-wrap`.
+
+```html
+<p class="text-wrap">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam voluptatem similique officiis recusandae esse cum in totam quisquam perspiciatis quod! Magnam culpa vitae, tempore eos explicabo cupiditate. Deserunt, quisquam, quos!</p>
+``` 
 
 ---
 
@@ -585,81 +660,6 @@ These overflow classes helps you to clip content, render scrollbars or simply ju
 <div class="overflow-y-visible"></div>
 <div class="overflow-y-hidden"></div>
 <div class="overflow-y-scroll"></div>
-``` 
-
----
-
-## Text Helpers
-
-### Image Replacement (Text Hide)
-
-You might want to include a logo on the page but you also would like to use a text within a header tag for the sake of accessibility and also for gaining benifits from SEO, and ideally on the webpage you would like to show your logo and not text. In that scenario you can utilize this `.text-hide` class to replace an element’s text content with a background image, often logo.
-
-```html_example
-<a href="" class="text-hide">
-  <img src="assets/img/logos/zurb-logo.svg">
-  Zurb <!-- Logo Text  -->
-</a>
-```
-
----
-
-### Text Transformation
-
-Text transformation lets you control the capitalization of text. You can change the text transformation by adding `.text-uppercase`, `text-lowercase`, `text-capitalize` to an element. 
-
-```html
-<p class="text-uppercase"><!-- Text here --></p>
-<p class="text-lowercase"><!-- Text here --></p>
-<p class="text-capitalize"><!-- Text here --></p>
-``` 
-
-<p class="text-uppercase"><strong>This is a upper-cased text.</strong> Set in the year 0 F.E. ("Foundation Era"), The Psychohistorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire. Though the empire appears stable and powerful, it is slowly decaying in ways that parallel the decline of the Western Roman Empire.</p>
-
-<p class="text-lowercase"><strong>This is a lower-cased text.</strong> Set in the year 0 F.E. ("Foundation Era"), The Psychohistorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire. Though the empire appears stable and powerful, it is slowly decaying in ways that parallel the decline of the Western Roman Empire.</p>
-
-<p class="text-capitalize"><strong>This is a caPitAlized teXt.</strong> Set in the yEar 0 F.E. ("Foundation Era"), The PsychohisTorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire. Though the empire appears stable and powerful, it is slowly decaying in ways that parallel the decline of the Western Roman Empire.</p>
-
-Note how `text-capitalize` just changes the first letter of every single word, leaving the case of other letters unaffected.
-
----
-
-### Text Decoration
-
-Text Decoration can be used to underline, overline, or line-through a text. You can change the text decoration by adding `.text-underline`, `text-overline`, `text-line-through` to an element.
-
-```html_example
-<p class="text-underline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
-<p class="text-overline">Perspiciatis tempore cumque, magni aspernatur, quidem</p>
-<p class="text-line-through">Lorem minus, placeat, iure voluptas aliquam tempora neque?</p>
-``` 
-
----
-
-### Text Truncate
-
-The `text-truncate` displays an elipsis when the text must be in a single straight line that should overflows a box where overflow is hidden. See how in example the content did not crossed the first line!
-
-```html_example
-<p class="text-truncate">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam voluptatem similique officiis recusandae esse cum in totam quisquam perspiciatis quod! Magnam culpa vitae, tempore eos explicabo cupiditate. Deserunt, quisquam, quos!</p>
-``` 
-
----
-
-### Text No-wrap
-
-If you would like to prevent the text wrapping into the next line you can utilize `text-nowrap`. Please note that the text will continue to be in same line unless the `<br/>` tag is used.
-
-```html
-<p class="text-nowrap">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam voluptatem similique officiis recusandae esse cum in totam quisquam perspiciatis quod! Magnam culpa vitae, tempore eos explicabo cupiditate. Deserunt, quisquam, quos!</p>
-``` 
-
-### Text Wrap
-
-Oppositely, if you are looking for text wrapping into the next line, you can use `text-wrap`.
-
-```html
-<p class="text-wrap">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam voluptatem similique officiis recusandae esse cum in totam quisquam perspiciatis quod! Magnam culpa vitae, tempore eos explicabo cupiditate. Deserunt, quisquam, quos!</p>
 ``` 
 
 ---
