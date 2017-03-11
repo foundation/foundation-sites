@@ -254,6 +254,36 @@ Adjust font-size by overriding an element’s default size.
 
 ---
 
+## Heading Bar
+
+This creates a tiny bar below the heading of an element and is usually used within the heading of a section.
+
+<div class="primary callout">
+	You don't need to use [Text alignment classes](typography-helpers.html#text-alignment) as this bar utility deals with the alignment of the text itself.
+</div>
+
+```html
+<h3 class="bar-left">Lorem</h3>
+<h3 class="bar-center">Ipsum Dolor</h3>
+<h3 class="bar-right">Tempor</h3>
+``` 
+
+<div class="docs-code-live">
+	<div class="row">
+		<div class="small-12 medium-4 columns">
+			<h3 class="bar-left">Lorem</h3>
+		</div>
+		<div class="small-12 medium-4 columns">
+			<h3 class="bar-center">Ipsum Dolor</h3>
+		</div>
+		<div class="small-12 medium-4 columns">
+			<h3 class="bar-right">Tempor</h3>
+		</div>
+	</div>
+</div>
+
+---
+
 ## Margin Helper Classes
 
 Generate spaces around the element with these easy to use margin classes. 
