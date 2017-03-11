@@ -30,7 +30,7 @@ $prototype-bar-background: $primary-color !default;
 /// @type Number
 $prototype-bar-margin-top: $global-margin !default;
 
-/// Heading Bar utility, mostly used to style the main heading of a section
+/// Title Bar Utility, mostly used to style the main heading of a section
 /// @param {String} $align [$prototype-bar-align] - Bar Alignment
 /// @param {Number} $height [$prototype-bar-height] - Width
 /// @param {Number} $width [$prototype-bar-width] - Height
@@ -45,7 +45,7 @@ $prototype-bar-margin-top: $global-margin !default;
 ) {
   text-align: $align !important;
 	@include clearfix;
-  
+
   &::after {
     @include position(relative);
     width: $width;

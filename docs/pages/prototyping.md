@@ -254,7 +254,7 @@ Adjust font-size by overriding an element’s default size.
 
 ---
 
-## Heading Bar Utility
+## Title Bar Utility
 
 This creates a tiny bar below the heading of an element and is usually used within the heading of a section.
 
