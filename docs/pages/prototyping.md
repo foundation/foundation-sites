@@ -628,7 +628,7 @@ Note how `text-capitalize` just changes the first letter of every single word, l
 
 Text Decoration can be used to underline, overline, or line-through a text. You can change the text decoration by adding `.text-underline`, `text-overline`, `text-line-through` to an element.
 
-```html
+```html_example
 <p class="text-underline">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
 <p class="text-overline">Perspiciatis tempore cumque, magni aspernatur, quidem</p>
 <p class="text-line-through">Lorem minus, placeat, iure voluptas aliquam tempora neque?</p>
