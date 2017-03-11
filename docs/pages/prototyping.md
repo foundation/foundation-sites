@@ -61,39 +61,27 @@ Looking for more customization including **responsive breakpoints?** Click here 
 
 ---
 
-## Rounded & Bordered
+## Component Styling
 
-These `.rounded` & `.bordered` classes helps to make an element round its corners and give light borders respectively. This will help you quickly style the borders of an element. Mostly used in buttons, images, cards, tables and many more
+These `.rounded`, `.bordered` & `.shadow` classes can be used independently or together to style the component by rounding its corners, giving light borders, and creating shadow to it respectively. Mostly used in buttons, cards, tables, images and many more
 
 #### Buttons
 
 ```html_example
-<button type="button" class="button rounded bordered primary">Primary</button>
-<button type="button" class="button rounded bordered secondary">Secondary</button>
-<button type="button" class="button rounded bordered success">Success</button>
-<button type="button" class="button rounded bordered alert">Alert</button>
-<button type="button" class="button rounded bordered warning">Warning</button>
+<button type="button" class="button rounded bordered shadow primary">Primary</button>
+<button type="button" class="button rounded bordered shadow secondary">Secondary</button>
+<button type="button" class="button rounded bordered shadow success">Success</button>
+<button type="button" class="button rounded bordered shadow alert">Alert</button>
+<button type="button" class="button rounded bordered shadow warning">Warning</button>
 ```
-
-#### Images
-
-```html
-<img src="" class="rounded">
-<img src="" class="rounded-circle">
-``` 
-
-<div class="docs-code-live margin-bottom-1">
-	<img src="http://placehold.it/100x100" class="rounded margin-right-1">
-	<img src="http://placehold.it/100x100" class="rounded-circle">
-</div>
 
 #### Cards
 
 ```html
-<div class="rounded bordered card">
+<div class="rounded bordered shadow card">
   <img src="assets/img/generic/rectangle-1.jpg">
   <div class="card-divider">
-    Rounded Card
+    Styled Card
   </div>
   <div class="card-section">
     <h4>This is a card.</h4>
@@ -105,10 +93,10 @@ These `.rounded` & `.bordered` classes helps to make an element round its corner
 <div class="docs-code-live">
 	<div class="row">
 		<div class="small-4 columns">
-			<div class="rounded bordered card">
+			<div class="rounded bordered shadow card">
 			  <img src="assets/img/generic/rectangle-1.jpg">
 			  <div class="card-divider">
-			    Rounded Card
+			    Styled Card
 			  </div>
 			  <div class="card-section">
 			    <h4>This is a card.</h4>
@@ -117,10 +105,10 @@ These `.rounded` & `.bordered` classes helps to make an element round its corner
 			</div>
 		</div>
 		<div class="small-4 columns">
-			<div class="rounded bordered card">
+			<div class="rounded bordered shadow card">
 			  <img src="assets/img/generic/rectangle-1.jpg">
 			  <div class="card-divider">
-			    Rounded Card
+			    Styled Card
 			  </div>
 			  <div class="card-section">
 			    <h4>This is a card.</h4>
@@ -129,10 +117,10 @@ These `.rounded` & `.bordered` classes helps to make an element round its corner
 			</div>
 		</div>
 		<div class="small-4 columns">
-			<div class="rounded bordered card">
+			<div class="rounded bordered shadow card">
 			  <img src="assets/img/generic/rectangle-1.jpg">
 			  <div class="card-divider">
-			    Rounded Card
+			    Styled Card
 			  </div>
 			  <div class="card-section">
 			    <h4>This is a card.</h4>
@@ -146,13 +134,13 @@ These `.rounded` & `.bordered` classes helps to make an element round its corner
 #### Tables
 
 ```html
-<table class="rounded bordered">
+<table class="rounded bordered shadow">
 	<!-- My Table goes here -->
 </table>
 ```
 
 <div class="docs-code-live">
-	<table class="rounded bordered">
+	<table class="rounded bordered shadow">
 	  <thead>
 	    <tr>
 	      <th width="200">Table Header</th>
@@ -188,6 +176,18 @@ These `.rounded` & `.bordered` classes helps to make an element round its corner
 	    </tr>
 	  </tbody>
 	</table>
+</div>
+
+#### Images
+
+```html
+<img src="" class="rounded">
+<img src="" class="rounded-circle">
+``` 
+
+<div class="docs-code-live margin-bottom-1">
+	<img src="http://placehold.it/100x100" class="rounded margin-right-1">
+	<img src="http://placehold.it/100x100" class="rounded-circle">
 </div>
 
 ---
