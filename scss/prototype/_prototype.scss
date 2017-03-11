@@ -40,7 +40,7 @@
 @import 'shadow';
 
 // Title Bar Utility
-@import 'bar';
+@import 'titlebar';
 
 // Overflow helper classes
 @import 'overflow';
@@ -70,7 +70,7 @@
   @include foundation-prototype-rounded;
   @include foundation-prototype-bordered;
   @include foundation-prototype-shadow;
-  @include foundation-prototype-bar;
+  @include foundation-prototype-titlebar;
   @include foundation-prototype-overflow;
   @include foundation-prototype-display;
   @include foundation-prototype-position;
