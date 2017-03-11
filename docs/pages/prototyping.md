@@ -589,7 +589,9 @@ These overflow classes helps you to clip content, render scrollbars or simply ju
 
 ---
 
-## Image Replacement
+## Text Helpers
+
+### Image Replacement (Text Hide)
 
 You might want to include a logo on the page but you also would like to use a text within a header tag for the sake of accessibility and also for gaining benifits from SEO, and ideally on the webpage you would like to show your logo and not text. In that scenario you can utilize this `.text-hide` class to replace an element’s text content with a background image, often logo.
 
@@ -601,8 +603,6 @@ You might want to include a logo on the page but you also would like to use a te
 ```
 
 ---
-
-## Text Helpers
 
 ### Text Transformation
 
