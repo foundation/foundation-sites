@@ -37,9 +37,9 @@ $meter-fill-bad: $alert-color !default;
     height: $meter-height;
     margin-bottom: 1rem;
 
-    // Specific Hack to disable `-webkit-appearance: none` from getting prefixed,
-    // We have disabled autoprefixer first and are just using `-moz-appearance: none` 
-    // as a prefix and neglecting `-webkit-appearance: none`
+    // Disable `-webkit-appearance: none` from getting prefixed,
+    // We have disabled autoprefixer first and are just only using 
+    // `-moz-appearance: none` as a prefix and neglecting the webkit.
     
     /*! autoprefixer: off */
     -moz-appearance: none;
