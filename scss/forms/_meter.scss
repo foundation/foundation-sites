@@ -37,8 +37,13 @@ $meter-fill-bad: $alert-color !default;
     height: $meter-height;
     margin-bottom: 1rem;
 
-    -webkit-appearance: -hack-; // Hack to disable `-webkit-appearance: none` from getting prefixed
-    appearance: none;
+    // Specific Hack to disable `-webkit-appearance: none` from getting prefixed,
+    // We have disabled autoprefixer first and are just using `-moz-appearance: none` 
+    // as a prefix and neglecting `-webkit-appearance: none`
+    
+    /*! autoprefixer: off */
+    -moz-appearance: none;
+         appearance: none;
 
     @if has-value($meter-radius) {
       border-radius: $meter-radius;
