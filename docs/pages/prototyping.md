@@ -49,6 +49,8 @@ or, if you looking for specific utility instead of all, these helper classes can
 @include foundation-prototype-list-style-type;
 @include foundation-prototype-rounded;
 @include foundation-prototype-bordered;
+@include foundation-prototype-shadow;
+@include foundation-prototype-titlebar;
 @include foundation-prototype-overflow;
 @include foundation-prototype-display;
 @include foundation-prototype-position;
