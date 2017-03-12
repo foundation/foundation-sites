@@ -359,7 +359,7 @@ Oppositely, if you are looking for text wrapping into the next line, you can use
 
 ---
 
-## Margin Helper Classes
+## Margin Helpers
 
 Generate spaces around the element with these easy to use margin classes. 
 
@@ -452,7 +452,7 @@ See how `margin-left` wasn't printed as this mixin also accept `null` as a value
 
 ---
 
-## Padding Helper Classes
+## Padding Helpers
 
 Generate spaces around the content with these easy to use padding classes.
 
@@ -664,7 +664,7 @@ These overflow classes helps you to clip content, render scrollbars or simply ju
 
 ---
 
-## Vanilla Mixin Helpers 
+## Sass Mixin Helpers 
 
 We also provides some extra utility mixins that you can use for your next prototype project.
 
