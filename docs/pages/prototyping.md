@@ -686,6 +686,24 @@ This mixin helps you to easily create a square, rectangle or a circle. Sass Refe
 }
 ``` 
 
+### Rotate Mixin 
+These Rotate mixins lets you rotate an element to a certain degree.
+
+```scss 
+.foo {
+	@include rotate(30); // 30 Degree
+}
+.bar {
+	@include rotateX(60); // 60 Degree
+}
+.baz {
+	@include rotateY(90); // 90 Degree
+}
+.shaz {
+	@include rotateZ(120); // 120 Degree
+}
+``` 
+
 ### Relational Mixins
 
 These relational mixins helps you to manage styling of :nth-child’ified elements through easy Sass mixins.
@@ -711,3 +729,4 @@ These relational mixins helps you to manage styling of :nth-child’ified elemen
 @include odd-between($first, $last) {}
 @include number-between($num, $first, $last) {}
 ```
+ 
