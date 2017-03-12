@@ -37,7 +37,7 @@ $meter-fill-bad: $alert-color !default;
     height: $meter-height;
     margin-bottom: 1rem;
 
-    -webkit-appearance: text; // Hack to disable `-webkit-appearance` from getting prefixed
+    -webkit-appearance: text; // Hack to disable `-webkit-appearance: none` from getting prefixed
     appearance: none;
 
     @if has-value($meter-radius) {
