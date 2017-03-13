@@ -27,35 +27,49 @@
   @include -zf-each-breakpoint {
     @for $i from 1 through 6 {
       .#{$-zf-size}-order-#{$i} {
-        @include flex-order($i);
+	@include flex-order($i);
       }
     }
   }
 }
 
-@mixin gimbal($o:row,$x:left,$y:top) {
-  //columns
+@mixin flex-gimbal($o: row, $x: left, $y: top) {
   $map-xy: (
-  right: bottom,
-  left: top,
-  top: left,
-  bottom: right,
-  center: middle,
-  middle: center
+    right: bottom,
+    left: top,
+    top: left,
+    bottom: right,
+    center: middle,
+    middle: center
 );
   $x1: $x;
   $y1: $y;
   @if $o == column {
-    $x1: map-get($map-xy,$y);
-    $y1: map-get($map-xy,$x);
+    $x1: map-get($map-xy, $y);
+    $y1: map-get($map-xy, $x);
   }
 
   @include flex;
   @include flex-direction($o);
-  @include flex-align($x:$x1,$y:$y1);
+  @include flex-align($x: $x1, $y: $y1);
 }
 
 ///////
 .gimbal-test {
-  @include gimbal($o:column,$x:left,$y:top);
+  @include flex-gimbal($o: row, $x: right, $y: bottom);
 }
+
+// @include flex-gimbal($o:column,$x:left,$y:top) yields...
+// .gimbal-test {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: flex-start;
+//   align-items: flex-start;
+// }
+//  @include flex-gimbal($o:row,$x:right,$y:bottom) yields...
+// .gimbal-test {
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: flex-end;
+//   align-items: flex-end;
+// }
