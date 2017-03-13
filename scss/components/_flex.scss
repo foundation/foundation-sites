@@ -35,18 +35,21 @@
 
 @mixin flex-gimbal($o: row, $x: left, $y: top) {
   $map-xy: (
-    right: bottom,
-    left: top,
-    top: left,
     bottom: right,
     center: middle,
-    middle: center
+    left: top,
+    middle: center,
+    right: bottom,
+    top: left
 );
   $x1: $x;
   $y1: $y;
+
   @if $o == column {
-    $x1: map-get($map-xy, $y);
-    $y1: map-get($map-xy, $x);
+    @if map-has-key($map-xy, $y) and map-has-key($map-xy, $x) {
+      $x1: map-get($map-xy, $y);
+      $y1: map-get($map-xy, $x);
+    }
   }
 
   @include flex;
@@ -56,7 +59,7 @@
 
 ///////
 .gimbal-test {
-  @include flex-gimbal($o: row, $x: right, $y: bottom);
+  @include flex-gimbal($o: column, $x: justify, $y: middle);
 }
 
 // @include flex-gimbal($o:column,$x:left,$y:top) yields...
