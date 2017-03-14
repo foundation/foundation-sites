@@ -198,30 +198,30 @@ These `.rounded`, `.bordered` & `.shadow` classes can be used independently or t
 
 ---
 
-## Title Bar Utility
+## Separator
 
-This creates a tiny titlebar below the heading of an element and is usually used within the heading of a section.
+This creates a tiny separator below the heading of an element and is usually used within the heading of a section.
 
 <div class="primary callout">
-	You don't need to use [Text alignment classes](typography-helpers.html#text-alignment) as this titlebar utility deals with the alignment of the text itself.
+	You don't need to use [Text alignment classes](typography-helpers.html#text-alignment) as this separator utility deals with the alignment of the text itself.
 </div>
 
 ```html
-<h3 class="titlebar-left">Lorem</h3>
-<h3 class="titlebar-center">Ipsum Dolor</h3>
-<h3 class="titlebar-right">Tempor</h3>
+<h3 class="separator-left">Lorem</h3>
+<h3 class="separator-center">Ipsum Dolor</h3>
+<h3 class="separator-right">Tempor</h3>
 ``` 
 
 <div class="docs-code-live">
 	<div class="row">
 		<div class="small-12 medium-4 columns">
-			<h3 class="titlebar-left">Lorem</h3>
+			<h3 class="separator-left">Lorem</h3>
 		</div>
 		<div class="small-12 medium-4 columns">
-			<h3 class="titlebar-center">Ipsum Dolor</h3>
+			<h3 class="separator-center">Ipsum Dolor</h3>
 		</div>
 		<div class="small-12 medium-4 columns">
-			<h3 class="titlebar-right">Tempor</h3>
+			<h3 class="separator-right">Tempor</h3>
 		</div>
 	</div>
 </div>
