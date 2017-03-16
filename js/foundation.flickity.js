@@ -18,7 +18,7 @@ class FlickityCarousel {
   constructor(element, options) {
     this.$element = element;
     this.options = $.extend({}, FlickityCarousel.defaults, this.$element.data(), options);
-    this.id = this.$element[0].id || Foundation.GetYoDigits(6, 'flickity');
+    this.id = this.$element[0].id || Foundation.GetYoDigits(6, 'flickity'); // eslint-disable-line new-cap
     this.nextPrevEls = [];
 
     this._init();
@@ -153,6 +153,14 @@ class FlickityCarousel {
           _this.nextPrevEls.push($selector);
         }
       });
+    }
+
+    if (this.$element.data('flickity')) {
+      if (_this.$element.data('flickity').options.resize) {
+        this.$element.on('settle.flickity', function () {
+          _this.$element.flickity('resize');
+        });
+      }
     }
 
     if (this.options.autoPlayBreakpoint !== '') {

@@ -2315,8 +2315,6 @@ select {
           column-count: 2; }
   
   .css-columns-2 > * {
-    display: inline-block;
-    width: 100%;
     -webkit-column-break-inside: avoid;
        page-break-inside: avoid;
             break-inside: avoid; }
@@ -2331,8 +2329,6 @@ select {
           column-count: 3; }
   
   .css-columns-3 > * {
-    display: inline-block;
-    width: 100%;
     -webkit-column-break-inside: avoid;
        page-break-inside: avoid;
             break-inside: avoid; }
@@ -2347,8 +2343,6 @@ select {
           column-count: 4; }
   
   .css-columns-4 > * {
-    display: inline-block;
-    width: 100%;
     -webkit-column-break-inside: avoid;
        page-break-inside: avoid;
             break-inside: avoid; }
@@ -2363,8 +2357,6 @@ select {
           column-count: 5; }
   
   .css-columns-5 > * {
-    display: inline-block;
-    width: 100%;
     -webkit-column-break-inside: avoid;
        page-break-inside: avoid;
             break-inside: avoid; }
@@ -2379,8 +2371,6 @@ select {
           column-count: 6; }
   
   .css-columns-6 > * {
-    display: inline-block;
-    width: 100%;
     -webkit-column-break-inside: avoid;
        page-break-inside: avoid;
             break-inside: avoid; }
@@ -2402,8 +2392,6 @@ select {
      -moz-column-count: 2;
           column-count: 2; }
   .css-columns-2-small > * {
-    display: inline-block;
-    width: 100%;
     -webkit-column-break-inside: avoid;
        page-break-inside: avoid;
             break-inside: avoid; }
@@ -2416,8 +2404,6 @@ select {
      -moz-column-count: 3;
           column-count: 3; }
   .css-columns-3-small > * {
-    display: inline-block;
-    width: 100%;
     -webkit-column-break-inside: avoid;
        page-break-inside: avoid;
             break-inside: avoid; }
@@ -2430,8 +2416,6 @@ select {
      -moz-column-count: 4;
           column-count: 4; }
   .css-columns-4-small > * {
-    display: inline-block;
-    width: 100%;
     -webkit-column-break-inside: avoid;
        page-break-inside: avoid;
             break-inside: avoid; }
@@ -2444,8 +2428,6 @@ select {
      -moz-column-count: 5;
           column-count: 5; }
   .css-columns-5-small > * {
-    display: inline-block;
-    width: 100%;
     -webkit-column-break-inside: avoid;
        page-break-inside: avoid;
             break-inside: avoid; }
@@ -2458,8 +2440,6 @@ select {
      -moz-column-count: 6;
           column-count: 6; }
   .css-columns-6-small > * {
-    display: inline-block;
-    width: 100%;
     -webkit-column-break-inside: avoid;
        page-break-inside: avoid;
             break-inside: avoid; }
@@ -2481,8 +2461,6 @@ select {
        -moz-column-count: 2;
             column-count: 2; }
     .css-columns-2-medium > * {
-      display: inline-block;
-      width: 100%;
       -webkit-column-break-inside: avoid;
          page-break-inside: avoid;
               break-inside: avoid; }
@@ -2494,8 +2472,6 @@ select {
        -moz-column-count: 3;
             column-count: 3; }
     .css-columns-3-medium > * {
-      display: inline-block;
-      width: 100%;
       -webkit-column-break-inside: avoid;
          page-break-inside: avoid;
               break-inside: avoid; }
@@ -2507,8 +2483,6 @@ select {
        -moz-column-count: 4;
             column-count: 4; }
     .css-columns-4-medium > * {
-      display: inline-block;
-      width: 100%;
       -webkit-column-break-inside: avoid;
          page-break-inside: avoid;
               break-inside: avoid; }
@@ -2520,8 +2494,6 @@ select {
        -moz-column-count: 5;
             column-count: 5; }
     .css-columns-5-medium > * {
-      display: inline-block;
-      width: 100%;
       -webkit-column-break-inside: avoid;
          page-break-inside: avoid;
               break-inside: avoid; }
@@ -2533,8 +2505,6 @@ select {
        -moz-column-count: 6;
             column-count: 6; }
     .css-columns-6-medium > * {
-      display: inline-block;
-      width: 100%;
       -webkit-column-break-inside: avoid;
          page-break-inside: avoid;
               break-inside: avoid; } }
@@ -2556,8 +2526,6 @@ select {
        -moz-column-count: 2;
             column-count: 2; }
     .css-columns-2-large > * {
-      display: inline-block;
-      width: 100%;
       -webkit-column-break-inside: avoid;
          page-break-inside: avoid;
               break-inside: avoid; }
@@ -2569,8 +2537,6 @@ select {
        -moz-column-count: 3;
             column-count: 3; }
     .css-columns-3-large > * {
-      display: inline-block;
-      width: 100%;
       -webkit-column-break-inside: avoid;
          page-break-inside: avoid;
               break-inside: avoid; }
@@ -2582,8 +2548,6 @@ select {
        -moz-column-count: 4;
             column-count: 4; }
     .css-columns-4-large > * {
-      display: inline-block;
-      width: 100%;
       -webkit-column-break-inside: avoid;
          page-break-inside: avoid;
               break-inside: avoid; }
@@ -2595,8 +2559,6 @@ select {
        -moz-column-count: 5;
             column-count: 5; }
     .css-columns-5-large > * {
-      display: inline-block;
-      width: 100%;
       -webkit-column-break-inside: avoid;
          page-break-inside: avoid;
               break-inside: avoid; }
@@ -2608,8 +2570,6 @@ select {
        -moz-column-count: 6;
             column-count: 6; }
     .css-columns-6-large > * {
-      display: inline-block;
-      width: 100%;
       -webkit-column-break-inside: avoid;
          page-break-inside: avoid;
               break-inside: avoid; } }

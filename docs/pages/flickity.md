@@ -177,3 +177,22 @@ Set the `data-no-dragging` attribute to `true` to disable dragging. The carousel
   </div>
 </div>
 ```
+
+---
+
+```html_example
+<div class="flickity" role="region" aria-label="Favorite Space Pictures" data-flickity-carousel data-resize="false">
+  <div class="flickity-slide">
+    <img class="flickity-image" src="assets/img/orbit/03.jpg" alt="Space">
+    <figcaption class="flickity-caption">Space, the final frontier.</figcaption>
+  </div>
+  <div class="flickity-slide">
+    <img class="flickity-image" src="assets/img/orbit/04.jpg" alt="Space">
+    <figcaption class="flickity-caption">Lets Rocket!</figcaption>
+  </div>
+  <div class="flickity-slide">
+    <img class="flickity-image" src="assets/img/orbit/02.jpg" alt="Space">
+    <figcaption class="flickity-caption">Lets Rocket!</figcaption>
+  </div>
+</div>
+```
