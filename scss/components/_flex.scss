@@ -27,7 +27,7 @@
   @include -zf-each-breakpoint {
     @for $i from 1 through 6 {
       .#{$-zf-size}-order-#{$i} {
-	@include flex-order($i);
+        @include flex-order($i);
       }
     }
   }
@@ -35,12 +35,12 @@
 
 @mixin flex-gimbal($o: row, $x: left, $y: top) {
   $map-xy: (
-  bottom: right,
-  center: middle,
-  left: top,
-  middle: center,
-  right: bottom,
-  top: left
+    bottom: right,
+    center: middle,
+    left: top,
+    middle: center,
+    right: bottom,
+    top: left
 );
   $x1: $x;
   $y1: $y;
