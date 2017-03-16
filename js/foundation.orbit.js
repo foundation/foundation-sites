@@ -137,7 +137,7 @@ class Orbit {
       temp = this.getBoundingClientRect().height;
       $(this).attr('data-slide', counter);
 
-      if (_this.$slides.filter('.is-active')[0] !== _this.$slides.eq(counter)[0]) {//if not the active slide, set css position and display property
+      if (!/mui/g.test($(this)[0].className) && _this.$slides.filter('.is-active')[0] !== _this.$slides.eq(counter)[0]) {//if not the active slide, set css position and display property
         $(this).css({'position': 'relative', 'display': 'none'});
       }
       max = temp > max ? temp : max;
@@ -213,7 +213,7 @@ class Orbit {
         $controls.attr('tabindex', 0)
         //also need to handle enter/return and spacebar key presses
         .on('click.zf.orbit touchend.zf.orbit', function(e){
-	  e.preventDefault();
+    e.preventDefault();
           _this.changeSlide($(this).hasClass(_this.options.nextClass));
         });
       }
