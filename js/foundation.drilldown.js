@@ -176,7 +176,7 @@ class Drilldown {
   _scrollTop() {
     var _this = this;
     var $scrollTopElement = _this.options.scrollTopElement!=''?$(_this.options.scrollTopElement):_this.$element,
-        scrollPos = parseInt($scrollTopElement.offset().top+_this.options.scrollTopOffset);
+        scrollPos = parseInt($scrollTopElement.offset().top+_this.options.scrollTopOffset, 10);
     $('html, body').stop(true).animate({ scrollTop: scrollPos }, _this.options.animationDuration, _this.options.animationEasing,function(){
       /**
         * Fires after the menu has scrolled
