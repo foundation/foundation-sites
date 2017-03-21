@@ -52,6 +52,10 @@
       .#{$row} {
         margin-right: auto;
         margin-left: auto;
+
+        &.#{$expanded} {
+          @include grid-row-size(expand);
+        }
       }
     }
 
