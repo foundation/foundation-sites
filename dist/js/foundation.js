@@ -5089,11 +5089,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         if (this.options.horizontalScrolling) {
           this.$element.off('mousewheel.zf.flickity DOMMouseScroll.zf.flickity').on('mousewheel.zf.flickity DOMMouseScroll.zf.flickity', function (e) {
             if (_this.$element.data('flickity')) {
+              var flckty = _this.$element.data('flickity');
               if (!window.wheeling) {
                 if (e.deltaX > 0 || e.deltaY < 0) {
-                  _this.$element.flickity('next');
+                  if (flckty.selectedIndex !== flckty.slides.length - 1) {
+                    console.log('next!');
+                    _this.$element.flickity('next');
+                    e.preventDefault();
+                  }
                 } else if (e.deltaX < 0 || e.deltaY > 0) {
-                  _this.$element.flickity('previous');
+                  if (flckty.selectedIndex !== 0) {
+                    _this.$element.flickity('previous');
+                    e.preventDefault();
+                  }
                 }
               }
 
@@ -5117,14 +5125,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   window.wheeldelta.y = 0;
 
                   if (e.deltaX > 0 || e.deltaY < 0) {
-                    _this.$element.flickity('next');
+                    if (flckty.selectedIndex !== flckty.slides.length - 1) {
+                      _this.$element.flickity('next');
+                    }
                   } else if (e.deltaX < 0 || e.deltaY > 0) {
-                    _this.$element.flickity('previous');
+                    if (flckty.selectedIndex !== 0) {
+                      _this.$element.flickity('previous');
+                    }
                   }
                 }
               }
-
-              e.preventDefault();
             }
           });
         }

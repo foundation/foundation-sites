@@ -81,7 +81,8 @@ class FlickityCarousel {
             var flckty = _this.$element.data('flickity');
             if (!window.wheeling) {
               if (e.deltaX > 0 || e.deltaY < 0) {
-                if (flckty.selectedIndex !== flckty.slides.length) {
+                if (flckty.selectedIndex !== flckty.slides.length - 1) {
+                  console.log('next!');
                   _this.$element.flickity('next');
                   e.preventDefault();
                 }
@@ -116,14 +117,12 @@ class FlickityCarousel {
                 window.wheeldelta.y = 0;
 
                 if (e.deltaX > 0 || e.deltaY < 0) {
-                  if (flckty.selectedIndex !== flckty.slides.length) {
+                  if (flckty.selectedIndex !== flckty.slides.length - 1) {
                     _this.$element.flickity('next');
-                    e.preventDefault();
                   }
                 } else if (e.deltaX < 0 || e.deltaY > 0) {
                   if (flckty.selectedIndex !== 0) {
                     _this.$element.flickity('previous');
-                    e.preventDefault();
                   }
                 }
               }
