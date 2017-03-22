@@ -78,11 +78,18 @@ class FlickityCarousel {
       this.$element.off('mousewheel.zf.flickity DOMMouseScroll.zf.flickity')
         .on('mousewheel.zf.flickity DOMMouseScroll.zf.flickity', function (e) {
           if (_this.$element.data('flickity')) {
+            var flckty = _this.$element.data('flickity');
             if (!window.wheeling) {
               if (e.deltaX > 0 || e.deltaY < 0) {
-                _this.$element.flickity('next');
+                if (flckty.selectedIndex !== flckty.slides.length) {
+                  _this.$element.flickity('next');
+                  e.preventDefault();
+                }
               } else if (e.deltaX < 0 || e.deltaY > 0) {
-                _this.$element.flickity('previous');
+                if (flckty.selectedIndex !== 0) {
+                  _this.$element.flickity('previous');
+                  e.preventDefault();
+                }
               }
             }
 
@@ -109,14 +116,18 @@ class FlickityCarousel {
                 window.wheeldelta.y = 0;
 
                 if (e.deltaX > 0 || e.deltaY < 0) {
-                  _this.$element.flickity('next');
+                  if (flckty.selectedIndex !== flckty.slides.length) {
+                    _this.$element.flickity('next');
+                    e.preventDefault();
+                  }
                 } else if (e.deltaX < 0 || e.deltaY > 0) {
-                  _this.$element.flickity('previous');
+                  if (flckty.selectedIndex !== 0) {
+                    _this.$element.flickity('previous');
+                    e.preventDefault();
+                  }
                 }
               }
             }
-
-            e.preventDefault();
           }
         });
     }
