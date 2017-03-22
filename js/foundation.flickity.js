@@ -82,7 +82,6 @@ class FlickityCarousel {
             if (!window.wheeling) {
               if (e.deltaX > 0 || e.deltaY < 0) {
                 if (flckty.selectedIndex !== flckty.slides.length - 1) {
-                  console.log('next!');
                   _this.$element.flickity('next');
                   e.preventDefault();
                 }
@@ -347,7 +346,14 @@ FlickityCarousel.defaults = {
    * @type {boolean}
   * @default false
   */
-  pageDots: false
+  pageDots: false,
+  /**
+  * Re-positions carousel once its images have loaded
+  * @option
+   * @type {boolean}
+  * @default true
+  */
+  imagesLoaded: true
 };
 
 // Window exports
