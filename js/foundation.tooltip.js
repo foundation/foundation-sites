@@ -72,8 +72,13 @@ class Tooltip {
    */
   _getPositionClass(element) {
     if (!element) { return ''; }
-    // var position = element.attr('class').match(/top|left|right/g);
-    var position = element[0].className.match(/\b(top|left|right)\b/g);
+
+    var elementClassName = element[0].className;
+    if (element[0] instanceof SVGElement) {
+        elementClassName = elementClassName.baseVal;
+    }
+
+    var position = elementClassName.match(/\b(top|left|right)\b/g);
         position = position ? position[0] : '';
     return position;
   };
