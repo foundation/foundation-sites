@@ -310,6 +310,7 @@ class Sticky {
     }
 
     this.$element.css({
+      'width': `${newElemWidth - pdngl - pdngr}px`,
       'max-width': `${newElemWidth - pdngl - pdngr}px`
     });
 
