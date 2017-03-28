@@ -134,7 +134,7 @@
           }
         }
       } else {
-        if (self.is_sticky(topbar, topbar.parent(), settings) && topbar.parent().offset().top==0) {
+        if (self.is_sticky(topbar, topbar.parent(), settings) && topbar.parent().offset().top === 0) {
           topbar.parent().addClass('fixed');
         }
 
@@ -315,8 +315,7 @@
     resize : function () {
       var self = this;
       self.S('[' + this.attr_name() + ']').each(function () {
-        var topbar = self.S(this),
-            settings = topbar.data(self.attr_name(true) + '-init');
+        var topbar = self.S(this);
 
         var stickyContainer = topbar.parent('.' + self.settings.sticky_class);
         var stickyOffset;
@@ -334,7 +333,7 @@
             }
         }
 
-        if (self.is_sticky(topbar, stickyContainer, settings)) {
+        if (self.is_sticky(topbar, stickyContainer, self.settings)) {
           if (stickyContainer.hasClass('fixed')) {
             // Remove the fixed to allow for correct calculation of the offset.
             stickyContainer.removeClass('fixed');
@@ -387,14 +386,14 @@
 
         if (!$dropdown.find('.title.back').length) {
 
-          if (settings.mobile_show_parent_link == true && url) {
+          if (settings.mobile_show_parent_link === true && url) {
             $titleLi = $('<li class="title back js-generated"><h5><a href="javascript:void(0)"></a></h5></li><li class="parent-link hide-for-medium-up"><a class="parent-link js-generated" href="' + url + '">' + $link.html() +'</a></li>');
           } else {
             $titleLi = $('<li class="title back js-generated"><h5><a href="javascript:void(0)"></a></h5>');
           }
 
           // Copy link to subnav
-          if (settings.custom_back_text == true) {
+          if (settings.custom_back_text === true) {
             $('h5>a', $titleLi).html(settings.back_text);
           } else {
             $('h5>a', $titleLi).html('&laquo; ' + $link.html());
