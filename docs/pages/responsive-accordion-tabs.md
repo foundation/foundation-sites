@@ -18,7 +18,7 @@ The Accordion should have an id specified, but the plugin will automatically gen
 Accordion content should also have an ID, or the # of the href should be specified, otherwise a random id will be generated
 
 ```html
-<ul class="accordion" data-responsive-accordion-tabs="tabs medium-accordion large-tabs">
+<ul class="accordion" data-responsive-accordion-tabs="accordion medium-tabs large-accordion">
   <li class="accordion-item is-active" data-accordion-item>
     <a href="#" class="accordion-title">Accordion 1</a>
     <div class="accordion-content" data-tab-content>
