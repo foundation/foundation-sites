@@ -280,7 +280,7 @@ class Tabs {
 
       $targetContent
         .addClass(`${this.options.panelActiveClass}`)
-        .attr({'aria-hidden': 'false'});
+        .attr({'aria-hidden': ''});
   }
 
   /**
