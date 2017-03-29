@@ -6,9 +6,9 @@
 /// @group button
 ////
 
-/// Font family for button elements.
-/// @type String | List
-$button-font-family: $body-font-family !default;
+/// Font family of text inputs.
+/// @type Font
+$button-font-family: inherit !default;
 
 /// Padding inside buttons.
 /// @type List
