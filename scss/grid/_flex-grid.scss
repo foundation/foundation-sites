@@ -143,8 +143,8 @@
 
     // Expanded row
     &.expanded {
-      @include grid-row-size(expand); 
-      
+      @include grid-row-size(expand);
+
       .row {
         margin-right: auto;
         margin-left: auto;
@@ -247,6 +247,10 @@
       @include breakpoint($-zf-size) {
         .#{$-zf-size}-expand {
           flex: flex-grid-column();
+        }
+
+        .#{$-zf-size}-shrink {
+          flex: flex-grid-column(shrink);
         }
       }
 
