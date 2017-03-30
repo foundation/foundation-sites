@@ -13,6 +13,8 @@ Sometimes a list or other kinds of content runs too long on the page, and that&r
 
 Within the `data-long-cat` wrapper, add an empty element with the attribute `data-long-cat-visible` where the content will be revealed 10 items at a time (or a customized amount using the `data-count` attribute).
 
+You can also specify the initial number of visible items with the `data-initial-count` attribute if it should differ from the default or `data-count`-specified number. None of the items will be visible initially if the value of `data-initial-count` is "0."
+
 Finally, clicking an element with the `data-long-cat-trigger` attribute will reveal the content one after the other.
 
 ```html_example

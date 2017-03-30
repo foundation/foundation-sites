@@ -17,7 +17,10 @@ class LongCat {
     this.$element = element;
     this.options = $.extend({}, LongCat.defaults, this.$element.data(), options);
     this.id = this.$element[0].id || Foundation.GetYoDigits(6, 'long-cat'); // eslint-disable-line new-cap
-
+    if (this.options.initialCount == null || this.options.initialCount === false) {
+      this.options.initialCount = this.options.count;
+    }
+    this.initial = true;
     this.position = 0;
 
     this._init();
@@ -66,6 +69,8 @@ class LongCat {
   */
   moreContent() {
     var _this = this;
+    let count;
+    let end;
 
     var revealContent = function ($content) {
       $content
@@ -73,7 +78,19 @@ class LongCat {
         .fadeIn();
     };
 
-    let end = this.position + this.options.count;
+    if (this.initial) {
+      this.initial = false;
+
+      if (this.options.initialCount === 0) {
+        return;
+      } else {
+        count = this.options.initialCount;
+      }
+    } else {
+      count = this.options.count;
+    }
+
+    end = this.position + count;
 
     if (end > this.$hidden.length) {
         end = this.$hidden.length;
@@ -81,15 +98,15 @@ class LongCat {
 
     if (this.position < this.$hidden.length) {
         revealContent(this.$hidden.slice(this.position, end))
-        this.position += this.options.count;
+        this.position += count;
     } else {
         this.position = 0;
-        revealContent(this.$hidden.slice(this.position, this.options.count))
+        revealContent(this.$hidden.slice(this.position, count))
     }
 
     if (this.position >= this.$hidden.length) {
       this.$trigger.fadeOut(function () {
-        this.$trigger.remove();
+        _this.$trigger.remove();
       });
     }
   }
@@ -112,7 +129,14 @@ LongCat.defaults = {
   * @type {number}
   * @default 10
   */
-  count: 10
+  count: 10,
+  /**
+  * Number of hidden items to show initially
+  * @option
+  * @type {number}
+  * @default null
+  */
+  initialCount: null
 };
 
 // Window exports
