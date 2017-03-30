@@ -1080,7 +1080,12 @@ pre {
     -webkit-box-flex: 1;
     -webkit-flex: 1 1 0px;
         -ms-flex: 1 1 0px;
-            flex: 1 1 0px; } }
+            flex: 1 1 0px; }
+  .medium-shrink {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 auto;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto; } }
 
 @media print, screen and (min-width: 40em) {
   .medium-flex-dir-row {
@@ -1356,7 +1361,12 @@ pre {
     -webkit-box-flex: 1;
     -webkit-flex: 1 1 0px;
         -ms-flex: 1 1 0px;
-            flex: 1 1 0px; } }
+            flex: 1 1 0px; }
+  .large-shrink {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 auto;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto; } }
 
 @media print, screen and (min-width: 64em) {
   .large-flex-dir-row {
