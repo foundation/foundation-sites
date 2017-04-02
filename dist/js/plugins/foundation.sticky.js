@@ -114,7 +114,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       /**
        * Adds event handlers for the scrolling element.
        * @private
-       * @param {String} id - psuedo-random id for unique scroll event listener.
+       * @param {String} id - pseudo-random id for unique scroll event listener.
        */
 
     }, {

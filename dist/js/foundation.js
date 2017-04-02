@@ -1323,7 +1323,7 @@
 	});
 })(jQuery);
 /****************************************************
- * Method for adding psuedo drag events to elements *
+ * Method for adding pseudo drag events to elements *
  ***************************************************/
 !function ($) {
 	$.fn.addTouch = function () {
@@ -2128,7 +2128,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       /**
-       * Goes through a form to find inputs and proceeds to validate them in ways specific to their type. 
+       * Goes through a form to find inputs and proceeds to validate them in ways specific to their type.
        * Ignores inputs with data-abide-ignore, type="hidden" or disabled attributes set
        * @fires Abide#invalid
        * @fires Abide#valid
@@ -8368,7 +8368,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       /**
        * Adds event handlers for the scrolling element.
        * @private
-       * @param {String} id - psuedo-random id for unique scroll event listener.
+       * @param {String} id - pseudo-random id for unique scroll event listener.
        */
 
     }, {

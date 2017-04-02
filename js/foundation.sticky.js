@@ -105,7 +105,7 @@ class Sticky {
   /**
    * Adds event handlers for the scrolling element.
    * @private
-   * @param {String} id - psuedo-random id for unique scroll event listener.
+   * @param {String} id - pseudo-random id for unique scroll event listener.
    */
   _events(id) {
     var _this = this,
@@ -146,7 +146,7 @@ class Sticky {
   /**
    * Handler for events.
    * @private
-   * @param {String} id - psuedo-random id for unique scroll event listener.
+   * @param {String} id - pseudo-random id for unique scroll event listener.
    */
   _eventsHandler(id) {
        var _this = this,
