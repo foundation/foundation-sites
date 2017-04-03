@@ -99,8 +99,16 @@ describe('Reveal', function() {
 
       $('body').should.have.class('is-reveal-open');
     });
+    it('adds optional overlay classes overlay element', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Reveal($html, {additionalOverlayClasses: 'default'});
+
+      plugin.open();
+
+      $('.reveal-overlay').should.have.class('default');
+    });
     // TODO: Check if  this.$element.trigger('closeme.zf.reveal', this.id) is correctly used.
-    
+
     // it('closes previously opened modal if multipleOpened option is false', function(done) {
     //   $html = $(template).appendTo('body');
     //   $html2 = $(template).attr('id', 'exampleModal2').appendTo('body');
@@ -187,7 +195,7 @@ describe('Reveal', function() {
         $('body').should.not.have.class('is-reveal-open');
         done();
       });
-      
+
       plugin.close();
     });
     it('does not remove class from body if another reveal is open', function(done) {
@@ -223,7 +231,7 @@ describe('Reveal', function() {
       	$html.should.be.hidden;
       	done();
       });
-      
+
       plugin.close();
     });
 
