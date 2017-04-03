@@ -1,4 +1,4 @@
-<!-- Please only file either bugs or any feature request that you would like to suggest for Foundation for Sites on GitHub. If you've got a more general question about how to use Foundation, we can help you on the Foundation Forum: http://foundation.zurb.com/forum -->
+<!-- For replicatable bugs or feature requests GitHub is the right place. The [Foundation Forum](http://foundation.zurb.com/forum) would be a great place to seek some help with general questions or help with your code. There you can reach out to the community to share your insights or ask questions. -->
 
 #### How to reproduce this bug:
 
