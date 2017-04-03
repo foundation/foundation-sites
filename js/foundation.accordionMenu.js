@@ -64,7 +64,7 @@ class AccordionMenu {
 
       if(_this.options.submenuToggle) {
         $elem.addClass('has-submenu-toggle');
-        $elem.children('a').after('<button id="' + linkId + '" class="submenu-toggle" aria-controls="' + subId + '" aria-expanded="' + isActive + '"><span class="submenu-toggle-text">' + _this.options.submenuToggleText + '</span></button>');
+        $elem.children('a').after('<button id="' + linkId + '" class="submenu-toggle" aria-controls="' + subId + '" aria-expanded="' + isActive + '" title="' + _this.options.submenuToggleText + '"><span class="submenu-toggle-text">' + _this.options.submenuToggleText + '</span></button>');
       } else {
         $elem.attr({
           'aria-controls': subId,
