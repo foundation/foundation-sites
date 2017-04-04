@@ -4,6 +4,8 @@
 
 @import 'math';
 
+$contrast-warnings: true !default;
+
 ////
 /// @group functions
 ////
@@ -72,7 +74,7 @@
     }
   }
 
-  @if ($contrast < 3) {
+  @if ($contrast-warnings and $contrast < 3) {
     @warn "Contrast ratio of #{$best} on #{$base} is pretty bad, just #{$contrast}";
   }
 
