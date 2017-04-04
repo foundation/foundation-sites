@@ -6,7 +6,7 @@ describe('Tabs', function() {
       <ul class="tabs" data-tabs id="example-tabs">
         <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Tab 1</a></li>
         <li class="tabs-title"><a href="#panel2">Tab 2</a></li>
-        <li class="tabs-title"><a href="#panel3">Tab 3</a></li>
+        <li class="tabs-title"><a data-tabs-target="panel3" href="#/panel3">Tab 3</a></li>
       </ul>
 
       <div class="tabs-content" data-tabs-content="example-tabs">
@@ -77,6 +77,13 @@ describe('Tabs', function() {
 
       plugin.selectTab('#panel2');
       $html.find('#panel2').should.be.visible;
+    });
+    it('opens the selected tab with data-tabs-target attribute', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Tabs($html.find('[data-tabs]'), {});
+
+      plugin.selectTab('#/panel3');
+      $html.find('#panel3').should.be.visible;
     });
   });
 
