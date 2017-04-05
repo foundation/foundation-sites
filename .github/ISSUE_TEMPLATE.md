@@ -10,7 +10,7 @@
 
 #### What happened instead:
 
-#### Browser(s) and Device(s) tested on
+#### Browser(s) and Device(s) tested on:
 
 #### Test case link:
 
