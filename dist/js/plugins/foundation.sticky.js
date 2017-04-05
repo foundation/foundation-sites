@@ -429,67 +429,78 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /**
      * Customizable container template. Add your own classes for styling and sizing.
      * @option
-     * @example '&lt;div data-sticky-container class="small-6 columns"&gt;&lt;/div&gt;'
+     * @type {string}
+     * @default '&lt;div data-sticky-container&gt;&lt;/div&gt;'
      */
     container: '<div data-sticky-container></div>',
     /**
-     * Location in the view the element sticks to.
+     * Location in the view the element sticks to. Can be `'top'` or `'bottom'`.
      * @option
-     * @example 'top'
+     * @type {string}
+     * @default 'top'
      */
     stickTo: 'top',
     /**
      * If anchored to a single element, the id of that element.
      * @option
-     * @example 'exampleId'
+     * @type {string}
+     * @default ''
      */
     anchor: '',
     /**
      * If using more than one element as anchor points, the id of the top anchor.
      * @option
-     * @example 'exampleId:top'
+     * @type {string}
+     * @default ''
      */
     topAnchor: '',
     /**
      * If using more than one element as anchor points, the id of the bottom anchor.
      * @option
-     * @example 'exampleId:bottom'
+     * @type {string}
+     * @default ''
      */
     btmAnchor: '',
     /**
      * Margin, in `em`'s to apply to the top of the element when it becomes sticky.
      * @option
-     * @example 1
+     * @type {number}
+     * @default 1
      */
     marginTop: 1,
     /**
      * Margin, in `em`'s to apply to the bottom of the element when it becomes sticky.
      * @option
-     * @example 1
+     * @type {number}
+     * @default 1
      */
     marginBottom: 1,
     /**
      * Breakpoint string that is the minimum screen size an element should become sticky.
      * @option
-     * @example 'medium'
+     * @type {string}
+     * @default 'medium'
      */
     stickyOn: 'medium',
     /**
      * Class applied to sticky element, and removed on destruction. Foundation defaults to `sticky`.
      * @option
-     * @example 'sticky'
+     * @type {string}
+     * @default 'sticky'
      */
     stickyClass: 'sticky',
     /**
      * Class applied to sticky container. Foundation defaults to `sticky-container`.
      * @option
-     * @example 'sticky-container'
+     * @type {string}
+     * @default 'sticky-container'
      */
     containerClass: 'sticky-container',
     /**
      * Number of scroll events between the plugin's recalculating sticky points. Setting it to `0` will cause it to recalc every scroll event, setting it to `-1` will prevent recalc on scroll.
      * @option
-     * @example 50
+     * @type {number}
+     * @default -1
      */
     checkEvery: -1
   };

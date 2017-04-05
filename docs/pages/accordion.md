@@ -20,9 +20,13 @@ Each pane has a **title**, an `<a>` with the class `.accordion-title`, and a **c
 ```html
 <ul class="accordion" data-accordion>
   <li class="accordion-item is-active" data-accordion-item>
+    <!-- Accordion tab title -->
     <a href="#" class="accordion-title">Accordion 1</a>
+
+    <!-- Accordion tab content: it would start in the open state due to using the `is-active` state class. -->
     <div class="accordion-content" data-tab-content>
-      I would start in the open state, due to using the `is-active` state class.
+      <p>Panel 1. Lorem ipsum dolor</p>
+      <a href="#">Nowhere to Go</a>
     </div>
   </li>
   <!-- ... -->
@@ -49,8 +53,8 @@ Once you put it all together, here's what you get!
   <li class="accordion-item" data-accordion-item>
     <a href="#" class="accordion-title">Accordion 3</a>
     <div class="accordion-content" data-tab-content>
-      Pick a date!
-      <input type="date"></input>
+      Type your name!
+      <input type="text"></input>
     </div>
   </li>
 </ul>

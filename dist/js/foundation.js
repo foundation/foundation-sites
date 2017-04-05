@@ -2,7 +2,7 @@
 
   "use strict";
 
-  var FOUNDATION_VERSION = '6.3.0';
+  var FOUNDATION_VERSION = '6.3.1';
 
   // Global Foundation object
   // This is attached to the window, or used as a module for AMD/Browserify
@@ -1225,7 +1225,7 @@
       else {
           // fix for IE. See https://css-tricks.com/snippets/jquery/fixing-load-in-ie-for-cached-images/
           var src = $(this).attr('src');
-          $(this).attr('src', src + '?' + new Date().getTime());
+          $(this).attr('src', src + (src.indexOf('?') >= 0 ? '&' : '?') + new Date().getTime());
           $(this).one('load', function () {
             singleImageLoaded();
           });
@@ -2128,7 +2128,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       /**
-       * Goes through a form to find inputs and proceeds to validate them in ways specific to their type
+       * Goes through a form to find inputs and proceeds to validate them in ways specific to their type. 
+       * Ignores inputs with data-abide-ignore, type="hidden" or disabled attributes set
        * @fires Abide#invalid
        * @fires Abide#valid
        * @param {Object} element - jQuery object to validate, should be an HTML input
@@ -2146,8 +2147,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             validator = $el.attr('data-validator'),
             equalTo = true;
 
-        // don't validate ignored inputs or hidden inputs
-        if ($el.is('[data-abide-ignore]') || $el.is('[type="hidden"]')) {
+        // don't validate ignored inputs or hidden inputs or disabled inputs
+        if ($el.is('[data-abide-ignore]') || $el.is('[type="hidden"]') || $el.is('[disabled]')) {
           return true;
         }
 
@@ -2389,49 +2390,56 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * The default event to validate inputs. Checkboxes and radios validate immediately.
      * Remove or change this value for manual validation.
      * @option
-     * @example 'fieldChange'
+     * @type {?string}
+     * @default 'fieldChange'
      */
     validateOn: 'fieldChange',
 
     /**
      * Class to be applied to input labels on failed validation.
      * @option
-     * @example 'is-invalid-label'
+     * @type {string}
+     * @default 'is-invalid-label'
      */
     labelErrorClass: 'is-invalid-label',
 
     /**
      * Class to be applied to inputs on failed validation.
      * @option
-     * @example 'is-invalid-input'
+     * @type {string}
+     * @default 'is-invalid-input'
      */
     inputErrorClass: 'is-invalid-input',
 
     /**
      * Class selector to use to target Form Errors for show/hide.
      * @option
-     * @example '.form-error'
+     * @type {string}
+     * @default '.form-error'
      */
     formErrorSelector: '.form-error',
 
     /**
      * Class added to Form Errors on failed validation.
      * @option
-     * @example 'is-visible'
+     * @type {string}
+     * @default 'is-visible'
      */
     formErrorClass: 'is-visible',
 
     /**
      * Set to true to validate text inputs on any value change.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     liveValidate: false,
 
     /**
      * Set to true to validate inputs on blur.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     validateOnBlur: false,
 
@@ -2714,19 +2722,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /**
      * Amount of time to animate the opening of an accordion pane.
      * @option
-     * @example 250
+     * @type {number}
+     * @default 250
      */
     slideSpeed: 250,
     /**
      * Allow the accordion to have multiple open panes.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     multiExpand: false,
     /**
      * Allow the accordion to close all panes.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     allowAllClosed: false
   };
@@ -3036,13 +3047,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /**
      * Amount of time to animate the opening of a submenu in ms.
      * @option
-     * @example 250
+     * @type {number}
+     * @default 250
      */
     slideSpeed: 250,
     /**
      * Allow the menu to have multiple open panes.
      * @option
-     * @example true
+     * @type {boolean}
+     * @default true
      */
     multiOpen: true
   };
@@ -3164,15 +3177,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           _this._back($menu);
         });
 
+        this.$submenus.addClass('invisible');
         if (!this.options.autoHeight) {
           this.$submenus.addClass('drilldown-submenu-cover-previous');
         }
 
+        // create a wrapper on element if it doesn't exist.
         if (!this.$element.parent().hasClass('is-drilldown')) {
           this.$wrapper = $(this.options.wrapper).addClass('is-drilldown');
           if (this.options.animateHeight) this.$wrapper.addClass('animate-height');
-          this.$wrapper = this.$element.wrap(this.$wrapper).parent().css(this._getMaxDims());
+          this.$element.wrap(this.$wrapper);
         }
+        // set wrapper
+        this.$wrapper = this.$element.parent();
+        this.$wrapper.css(this._getMaxDims());
       }
     }, {
       key: '_resize',
@@ -3301,15 +3319,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             },
             up: function () {
               $prevElement.focus();
-              return true;
+              // Don't tap focus on first element in root ul
+              return !$element.is(_this.$element.find('> li:first-child > a'));
             },
             down: function () {
               $nextElement.focus();
-              return true;
+              // Don't tap focus on last element in root ul
+              return !$element.is(_this.$element.find('> li:last-child > a'));
             },
             close: function () {
-              _this._back();
-              //_this.$menuItems.first().focus(); // focus to first element
+              // Don't close on element in root ul
+              if (!$element.is(_this.$element.find('> li > a'))) {
+                _this._hide($element.parent().parent());
+                $element.parent().parent().siblings('a').focus();
+              }
             },
             open: function () {
               if (!$element.is(_this.$menuItems)) {
@@ -3415,7 +3438,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       value: function _show($elem) {
         if (this.options.autoHeight) this.$wrapper.css({ height: $elem.children('[data-submenu]').data('calcHeight') });
         $elem.attr('aria-expanded', true);
-        $elem.children('[data-submenu]').addClass('is-active').attr('aria-hidden', false);
+        $elem.children('[data-submenu]').addClass('is-active').removeClass('invisible').attr('aria-hidden', false);
         /**
          * Fires when the submenu has opened.
          * @event Drilldown#open
@@ -3439,7 +3462,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         $elem.attr('aria-hidden', true).addClass('is-closing');
         $elem.addClass('is-closing').one(Foundation.transitionend($elem), function () {
           $elem.removeClass('is-active is-closing');
-          $elem.blur();
+          $elem.blur().addClass('invisible');
         });
         /**
          * Fires when the submenu has closed.
@@ -3517,73 +3540,86 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /**
      * Markup used for JS generated back button. Prepended  or appended (see backButtonPosition) to submenu lists and deleted on `destroy` method, 'js-drilldown-back' class required. Remove the backslash (`\`) if copy and pasting.
      * @option
-     * @example '<\li><\a>Back<\/a><\/li>'
+     * @type {string}
+     * @default '<li class="js-drilldown-back"><a tabindex="0">Back</a></li>'
      */
     backButton: '<li class="js-drilldown-back"><a tabindex="0">Back</a></li>',
     /**
-     * Position the back button either at the top or bottom of drilldown submenus.
+     * Position the back button either at the top or bottom of drilldown submenus. Can be `'left'` or `'bottom'`.
      * @option
-     * @example bottom
+     * @type {string}
+     * @default top
      */
     backButtonPosition: 'top',
     /**
      * Markup used to wrap drilldown menu. Use a class name for independent styling; the JS applied class: `is-drilldown` is required. Remove the backslash (`\`) if copy and pasting.
      * @option
-     * @example '<\div class="is-drilldown"><\/div>'
+     * @type {string}
+     * @default '<div></div>'
      */
     wrapper: '<div></div>',
     /**
      * Adds the parent link to the submenu.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     parentLink: false,
     /**
      * Allow the menu to return to root list on body click.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     closeOnClick: false,
     /**
      * Allow the menu to auto adjust height.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     autoHeight: false,
     /**
      * Animate the auto adjust height.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     animateHeight: false,
     /**
      * Scroll to the top of the menu after opening a submenu or navigating back using the menu back button
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     scrollTop: false,
     /**
      * String jquery selector (for example 'body') of element to take offset().top from, if empty string the drilldown menu offset().top is taken
      * @option
-     * @example ''
+     * @type {string}
+     * @default ''
      */
     scrollTopElement: '',
     /**
      * ScrollTop offset
      * @option
-     * @example 100
+     * @type {number}
+     * @default 0
      */
     scrollTopOffset: 0,
     /**
      * Scroll animation duration
      * @option
-     * @example 500
+     * @type {number}
+     * @default 500
      */
     animationDuration: 500,
     /**
-     * Scroll animation easing
+     * Scroll animation easing. Can be `'swing'` or `'linear'`.
      * @option
-     * @example 'swing'
+     * @type {string}
+     * @see {@link https://api.jquery.com/animate|JQuery animate}
+     * @default 'swing'
      */
     animationEasing: 'swing'
     // holdOpen: false
@@ -3878,7 +3914,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       value: function open() {
         // var _this = this;
         /**
-         * Fires to close other open dropdowns
+         * Fires to close other open dropdowns, typically when dropdown is opening
          * @event Dropdown#closeme
          */
         this.$element.trigger('closeme.zf.dropdown', this.$element.attr('id'));
@@ -3936,6 +3972,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.counter = 4;
           this.usedPositions.length = 0;
         }
+        /**
+         * Fires once the dropdown is no longer visible.
+         * @event Dropdown#hide
+         */
         this.$element.trigger('hide.zf.dropdown', [this.$element]);
 
         if (this.options.trapFocus) {
@@ -3979,63 +4019,73 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
   Dropdown.defaults = {
     /**
-     * Class that designates bounding container of Dropdown (Default: window)
+     * Class that designates bounding container of Dropdown (default: window)
      * @option
-     * @example 'dropdown-parent'
+     * @type {?string}
+     * @default null
      */
     parentClass: null,
     /**
      * Amount of time to delay opening a submenu on hover event.
      * @option
-     * @example 250
+     * @type {number}
+     * @default 250
      */
     hoverDelay: 250,
     /**
      * Allow submenus to open on hover events
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     hover: false,
     /**
      * Don't close dropdown when hovering over dropdown pane
      * @option
-     * @example true
+     * @type {boolean}
+     * @default false
      */
     hoverPane: false,
     /**
      * Number of pixels between the dropdown pane and the triggering element on open.
      * @option
-     * @example 1
+     * @type {number}
+     * @default 1
      */
     vOffset: 1,
     /**
      * Number of pixels between the dropdown pane and the triggering element on open.
      * @option
-     * @example 1
+     * @type {number}
+     * @default 1
      */
     hOffset: 1,
     /**
      * Class applied to adjust open position. JS will test and fill this in.
      * @option
-     * @example 'top'
+     * @type {string}
+     * @default ''
      */
     positionClass: '',
     /**
      * Allow the plugin to trap focus to the dropdown pane if opened with keyboard commands.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     trapFocus: false,
     /**
      * Allow the plugin to set focus to the first focusable element within the pane, regardless of method of opening.
      * @option
-     * @example true
+     * @type {boolean}
+     * @default false
      */
     autoFocus: false,
     /**
      * Allows a click on the body to close the dropdown.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     closeOnClick: false
   };
@@ -4164,7 +4214,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         // Handle Leaf element Clicks
         if (_this.options.closeOnClickInside) {
-          this.$menuItems.on('click.zf.dropdownmenu touchend.zf.dropdownmenu', function (e) {
+          this.$menuItems.on('click.zf.dropdownmenu', function (e) {
             var $elem = $(this),
                 hasSub = $elem.hasClass(parClass);
             if (!hasSub) {
@@ -4449,68 +4499,79 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /**
      * Disallows hover events from opening submenus
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     disableHover: false,
     /**
      * Allow a submenu to automatically close on a mouseleave event, if not clicked open.
      * @option
-     * @example true
+     * @type {boolean}
+     * @default true
      */
     autoclose: true,
     /**
      * Amount of time to delay opening a submenu on hover event.
      * @option
-     * @example 50
+     * @type {number}
+     * @default 50
      */
     hoverDelay: 50,
     /**
      * Allow a submenu to open/remain open on parent click event. Allows cursor to move away from menu.
      * @option
-     * @example true
+     * @type {boolean}
+     * @default false
      */
     clickOpen: false,
     /**
      * Amount of time to delay closing a submenu on a mouseleave event.
      * @option
-     * @example 500
+     * @type {number}
+     * @default 500
      */
 
     closingTime: 500,
     /**
-     * Position of the menu relative to what direction the submenus should open. Handled by JS.
+     * Position of the menu relative to what direction the submenus should open. Handled by JS. Can be `'left'` or `'right'`.
      * @option
-     * @example 'left'
+     * @type {string}
+     * @default 'left'
      */
     alignment: 'left',
     /**
      * Allow clicks on the body to close any open submenus.
      * @option
-     * @example true
+     * @type {boolean}
+     * @default true
      */
     closeOnClick: true,
     /**
      * Allow clicks on leaf anchor links to close any open submenus.
      * @option
-     * @example true
+     * @type {boolean}
+     * @default true
      */
     closeOnClickInside: true,
     /**
      * Class applied to vertical oriented menus, Foundation default is `vertical`. Update this if using your own class.
      * @option
-     * @example 'vertical'
+     * @type {string}
+     * @default 'vertical'
      */
     verticalClass: 'vertical',
     /**
      * Class applied to right-side oriented menus, Foundation default is `align-right`. Update this if using your own class.
      * @option
-     * @example 'align-right'
+     * @type {string}
+     * @default 'align-right'
      */
     rightClass: 'align-right',
     /**
      * Boolean to force overide the clicking of links to perform default action, on second touch event for mobile.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default true
      */
     forceFollow: true
   };
@@ -4869,19 +4930,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /**
      * Enable height equalization when stacked on smaller screens.
      * @option
-     * @example true
+     * @type {boolean}
+     * @default false
      */
     equalizeOnStack: false,
     /**
      * Enable height equalization row by row.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     equalizeByRow: false,
     /**
      * String representing the minimum breakpoint size the plugin should equalize heights on.
      * @option
-     * @example 'medium'
+     * @type {string}
+     * @default ''
      */
     equalizeOn: ''
   };
@@ -5017,8 +5081,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         if (this.options.rules) {
           rules = this.options.rules;
         } else {
-          rules = this.$element.data('interchange').match(/\[.*?\]/g);
+          rules = this.$element.data('interchange');
         }
+
+        rules = typeof rules === 'string' ? rules.match(/\[.*?\]/g) : rules;
 
         for (var i in rules) {
           if (rules.hasOwnProperty(i)) {
@@ -5105,6 +5171,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /**
      * Rules to be applied to Interchange elements. Set with the `data-interchange` array notation.
      * @option
+     * @type {?array}
+     * @default null
      */
     rules: null
   };
@@ -5358,37 +5426,44 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /**
      * Amount of time, in ms, the animated scrolling should take between locations.
      * @option
-     * @example 500
+     * @type {number}
+     * @default 500
      */
     animationDuration: 500,
     /**
-     * Animation style to use when scrolling between locations.
+     * Animation style to use when scrolling between locations. Can be `'swing'` or `'linear'`.
      * @option
-     * @example 'ease-in-out'
+     * @type {string}
+     * @default 'linear'
+     * @see {@link https://api.jquery.com/animate|Jquery animate}
      */
     animationEasing: 'linear',
     /**
      * Number of pixels to use as a marker for location changes.
      * @option
-     * @example 50
+     * @type {number}
+     * @default 50
      */
     threshold: 50,
     /**
      * Class applied to the active locations link on the magellan container.
      * @option
-     * @example 'active'
+     * @type {string}
+     * @default 'active'
      */
     activeClass: 'active',
     /**
      * Allows the script to manipulate the url of the current page, and if supported, alter the history.
      * @option
-     * @example true
+     * @type {boolean}
+     * @default false
      */
     deepLinking: false,
     /**
      * Number of pixels to offset the scroll of the page on item click if using a sticky nav bar.
      * @option
-     * @example 25
+     * @type {number}
+     * @default 0
      */
     barOffset: 0
   };
@@ -5568,6 +5643,44 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         return false;
       }
 
+      // Taken and adapted from http://stackoverflow.com/questions/16889447/prevent-full-page-scrolling-ios
+      // Only really works for y, not sure how to extend to x or if we need to.
+
+    }, {
+      key: '_recordScrollable',
+      value: function _recordScrollable(event) {
+        var elem = this; // called from event handler context with this as elem
+
+        // If the element is scrollable (content overflows), then...
+        if (elem.scrollHeight !== elem.clientHeight) {
+          // If we're at the top, scroll down one pixel to allow scrolling up
+          if (elem.scrollTop === 0) {
+            elem.scrollTop = 1;
+          }
+          // If we're at the bottom, scroll up one pixel to allow scrolling down
+          if (elem.scrollTop === elem.scrollHeight - elem.clientHeight) {
+            elem.scrollTop = elem.scrollHeight - elem.clientHeight - 1;
+          }
+        }
+        elem.allowUp = elem.scrollTop > 0;
+        elem.allowDown = elem.scrollTop < elem.scrollHeight - elem.clientHeight;
+        elem.lastY = event.originalEvent.pageY;
+      }
+    }, {
+      key: '_stopScrollPropagation',
+      value: function _stopScrollPropagation(event) {
+        var elem = this; // called from event handler context with this as elem
+        var up = event.pageY < elem.lastY;
+        var down = !up;
+        elem.lastY = event.pageY;
+
+        if (up && elem.allowUp || down && elem.allowDown) {
+          event.stopPropagation();
+        } else {
+          event.preventDefault();
+        }
+      }
+
       /**
        * Opens the off-canvas menu.
        * @function
@@ -5606,6 +5719,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         // If `contentScroll` is set to false, add class and disable scrolling on touch devices.
         if (this.options.contentScroll === false) {
           $('body').addClass('is-off-canvas-open').on('touchmove', this._stopScrolling);
+          this.$element.on('touchstart', this._recordScrollable);
+          this.$element.on('touchmove', this._stopScrollPropagation);
         }
 
         if (this.options.contentOverlay === true) {
@@ -5656,6 +5771,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         // If `contentScroll` is set to false, remove class and re-enable scrolling on touch devices.
         if (this.options.contentScroll === false) {
           $('body').removeClass('is-off-canvas-open').off('touchmove', this._stopScrolling);
+          this.$element.off('touchstart', this._recordScrollable);
+          this.$element.off('touchmove', this._stopScrollPropagation);
         }
 
         if (this.options.contentOverlay === true) {
@@ -5738,78 +5855,89 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /**
      * Allow the user to click outside of the menu to close it.
      * @option
-     * @example true
+     * @type {boolean}
+     * @default true
      */
     closeOnClick: true,
 
     /**
      * Adds an overlay on top of `[data-off-canvas-content]`.
      * @option
-     * @example true
+     * @type {boolean}
+     * @default true
      */
     contentOverlay: true,
 
     /**
      * Enable/disable scrolling of the main content when an off canvas panel is open.
      * @option
-     * @example true
+     * @type {boolean}
+     * @default true
      */
     contentScroll: true,
 
     /**
      * Amount of time in ms the open and close transition requires. If none selected, pulls from body style.
      * @option
-     * @example 500
+     * @type {number}
+     * @default 0
      */
     transitionTime: 0,
 
     /**
      * Type of transition for the offcanvas menu. Options are 'push', 'detached' or 'slide'.
      * @option
-     * @example push
+     * @type {string}
+     * @default push
      */
     transition: 'push',
 
     /**
      * Force the page to scroll to top or bottom on open.
      * @option
-     * @example top
+     * @type {?string}
+     * @default null
      */
     forceTo: null,
 
     /**
      * Allow the offcanvas to remain open for certain breakpoints.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     isRevealed: false,
 
     /**
      * Breakpoint at which to reveal. JS will use a RegExp to target standard classes, if changing classnames, pass your class with the `revealClass` option.
      * @option
-     * @example reveal-for-large
+     * @type {?string}
+     * @default null
      */
     revealOn: null,
 
     /**
      * Force focus to the offcanvas on open. If true, will focus the opening trigger on close.
      * @option
-     * @example true
+     * @type {boolean}
+     * @default true
      */
     autoFocus: true,
 
     /**
      * Class used to force an offcanvas to remain open. Foundation defaults for this are `reveal-for-large` & `reveal-for-medium`.
      * @option
-     * TODO improve the regex testing for this.
-     * @example reveal-for-large
+     * @type {string}
+     * @default reveal-for-
+     * @todo improve the regex testing for this.
      */
     revealClass: 'reveal-for-',
 
     /**
      * Triggers optional focus trapping when opening an offcanvas. Sets tabindex of [data-off-canvas-content] to -1 for accessibility purposes.
      * @option
-     * @example true
+     * @type {boolean}
+     * @default false
      */
     trapFocus: false
   };
@@ -6254,110 +6382,128 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /**
     * Tells the JS to look for and loadBullets.
     * @option
-    * @example true
+     * @type {boolean}
+    * @default true
     */
     bullets: true,
     /**
     * Tells the JS to apply event listeners to nav buttons
     * @option
-    * @example true
+     * @type {boolean}
+    * @default true
     */
     navButtons: true,
     /**
     * motion-ui animation class to apply
     * @option
-    * @example 'slide-in-right'
+     * @type {string}
+    * @default 'slide-in-right'
     */
     animInFromRight: 'slide-in-right',
     /**
     * motion-ui animation class to apply
     * @option
-    * @example 'slide-out-right'
+     * @type {string}
+    * @default 'slide-out-right'
     */
     animOutToRight: 'slide-out-right',
     /**
     * motion-ui animation class to apply
     * @option
-    * @example 'slide-in-left'
+     * @type {string}
+    * @default 'slide-in-left'
     *
     */
     animInFromLeft: 'slide-in-left',
     /**
     * motion-ui animation class to apply
     * @option
-    * @example 'slide-out-left'
+     * @type {string}
+    * @default 'slide-out-left'
     */
     animOutToLeft: 'slide-out-left',
     /**
     * Allows Orbit to automatically animate on page load.
     * @option
-    * @example true
+     * @type {boolean}
+    * @default true
     */
     autoPlay: true,
     /**
     * Amount of time, in ms, between slide transitions
     * @option
-    * @example 5000
+     * @type {number}
+    * @default 5000
     */
     timerDelay: 5000,
     /**
     * Allows Orbit to infinitely loop through the slides
     * @option
-    * @example true
+     * @type {boolean}
+    * @default true
     */
     infiniteWrap: true,
     /**
     * Allows the Orbit slides to bind to swipe events for mobile, requires an additional util library
     * @option
-    * @example true
+     * @type {boolean}
+    * @default true
     */
     swipe: true,
     /**
     * Allows the timing function to pause animation on hover.
     * @option
-    * @example true
+     * @type {boolean}
+    * @default true
     */
     pauseOnHover: true,
     /**
     * Allows Orbit to bind keyboard events to the slider, to animate frames with arrow keys
     * @option
-    * @example true
+     * @type {boolean}
+    * @default true
     */
     accessible: true,
     /**
     * Class applied to the container of Orbit
     * @option
-    * @example 'orbit-container'
+     * @type {string}
+    * @default 'orbit-container'
     */
     containerClass: 'orbit-container',
     /**
     * Class applied to individual slides.
     * @option
-    * @example 'orbit-slide'
+     * @type {string}
+    * @default 'orbit-slide'
     */
     slideClass: 'orbit-slide',
     /**
     * Class applied to the bullet container. You're welcome.
     * @option
-    * @example 'orbit-bullets'
+     * @type {string}
+    * @default 'orbit-bullets'
     */
     boxOfBullets: 'orbit-bullets',
     /**
     * Class applied to the `next` navigation button.
     * @option
-    * @example 'orbit-next'
+     * @type {string}
+    * @default 'orbit-next'
     */
     nextClass: 'orbit-next',
     /**
     * Class applied to the `previous` navigation button.
     * @option
-    * @example 'orbit-previous'
+     * @type {string}
+    * @default 'orbit-previous'
     */
     prevClass: 'orbit-previous',
     /**
     * Boolean to flag the js to use motion ui classes or not. Default to true for backwards compatability.
     * @option
-    * @example true
+     * @type {boolean}
+    * @default true
     */
     useMUI: true
   };
@@ -6378,9 +6524,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
    * @module foundation.responsiveMenu
    * @requires foundation.util.triggers
    * @requires foundation.util.mediaQuery
-   * @requires foundation.util.accordionMenu
-   * @requires foundation.util.drilldown
-   * @requires foundation.util.dropdown-menu
    */
 
   var ResponsiveMenu = function () {
@@ -6587,7 +6730,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
 
         this.$targetMenu = $('#' + targetID);
-        this.$toggler = this.$element.find('[data-toggle]');
+        this.$toggler = this.$element.find('[data-toggle]').filter(function () {
+          var target = $(this).data('toggle');
+          return target === targetID || target === "";
+        });
         this.options = $.extend({}, this.options, this.$targetMenu.data());
 
         // If they were set, parse the animation classes
@@ -6653,33 +6799,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         var _this2 = this;
 
         if (!Foundation.MediaQuery.atLeast(this.options.hideFor)) {
+          /**
+           * Fires when the element attached to the tab bar toggles.
+           * @event ResponsiveToggle#toggled
+           */
           if (this.options.animate) {
             if (this.$targetMenu.is(':hidden')) {
               Foundation.Motion.animateIn(this.$targetMenu, this.animationIn, function () {
-                /**
-                 * Fires when the element attached to the tab bar toggles.
-                 * @event ResponsiveToggle#toggled
-                 */
                 _this2.$element.trigger('toggled.zf.responsiveToggle');
                 _this2.$targetMenu.find('[data-mutate]').triggerHandler('mutateme.zf.trigger');
               });
             } else {
               Foundation.Motion.animateOut(this.$targetMenu, this.animationOut, function () {
-                /**
-                 * Fires when the element attached to the tab bar toggles.
-                 * @event ResponsiveToggle#toggled
-                 */
                 _this2.$element.trigger('toggled.zf.responsiveToggle');
               });
             }
           } else {
             this.$targetMenu.toggle(0);
             this.$targetMenu.find('[data-mutate]').trigger('mutateme.zf.trigger');
-
-            /**
-             * Fires when the element attached to the tab bar toggles.
-             * @event ResponsiveToggle#toggled
-             */
             this.$element.trigger('toggled.zf.responsiveToggle');
           }
         }
@@ -6703,14 +6840,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /**
      * The breakpoint after which the menu is always shown, and the tab bar is hidden.
      * @option
-     * @example 'medium'
+     * @type {string}
+     * @default 'medium'
      */
     hideFor: 'medium',
 
     /**
      * To decide if the toggle should be animated or not.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     animate: false
   };
@@ -7229,91 +7368,106 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /**
      * Motion-UI class to use for animated elements. If none used, defaults to simple show/hide.
      * @option
-     * @example 'slide-in-left'
+     * @type {string}
+     * @default ''
      */
     animationIn: '',
     /**
      * Motion-UI class to use for animated elements. If none used, defaults to simple show/hide.
      * @option
-     * @example 'slide-out-right'
+     * @type {string}
+     * @default ''
      */
     animationOut: '',
     /**
      * Time, in ms, to delay the opening of a modal after a click if no animation used.
      * @option
-     * @example 10
+     * @type {number}
+     * @default 0
      */
     showDelay: 0,
     /**
      * Time, in ms, to delay the closing of a modal after a click if no animation used.
      * @option
-     * @example 10
+     * @type {number}
+     * @default 0
      */
     hideDelay: 0,
     /**
      * Allows a click on the body/overlay to close the modal.
      * @option
-     * @example true
+     * @type {boolean}
+     * @default true
      */
     closeOnClick: true,
     /**
      * Allows the modal to close if the user presses the `ESCAPE` key.
      * @option
-     * @example true
+     * @type {boolean}
+     * @default true
      */
     closeOnEsc: true,
     /**
      * If true, allows multiple modals to be displayed at once.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     multipleOpened: false,
     /**
      * Distance, in pixels, the modal should push down from the top of the screen.
      * @option
-     * @example auto
+     * @type {number|string}
+     * @default auto
      */
     vOffset: 'auto',
     /**
      * Distance, in pixels, the modal should push in from the side of the screen.
      * @option
-     * @example auto
+     * @type {number|string}
+     * @default auto
      */
     hOffset: 'auto',
     /**
      * Allows the modal to be fullscreen, completely blocking out the rest of the view. JS checks for this as well.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     fullScreen: false,
     /**
      * Percentage of screen height the modal should push up from the bottom of the view.
      * @option
-     * @example 10
+     * @type {number}
+     * @default 10
      */
     btmOffsetPct: 10,
     /**
      * Allows the modal to generate an overlay div, which will cover the view when modal opens.
      * @option
-     * @example true
+     * @type {boolean}
+     * @default true
      */
     overlay: true,
     /**
      * Allows the modal to remove and reinject markup on close. Should be true if using video elements w/o using provider's api, otherwise, videos will continue to play in the background.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     resetOnClose: false,
     /**
      * Allows the modal to alter the url on open/close, and allows the use of the `back` button to close modals. ALSO, allows a modal to auto-maniacally open on page load IF the hash === the modal's user-set id.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     deepLink: false,
     /**
     * Allows the modal to append to custom div.
     * @option
-    * @example false
+    * @type {string}
+    * @default "body"
     */
     appendTo: "body"
 
@@ -7952,67 +8106,78 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /**
      * Minimum value for the slider scale.
      * @option
-     * @example 0
+     * @type {number}
+     * @default 0
      */
     start: 0,
     /**
      * Maximum value for the slider scale.
      * @option
-     * @example 100
+     * @type {number}
+     * @default 100
      */
     end: 100,
     /**
      * Minimum value change per change event.
      * @option
-     * @example 1
+     * @type {number}
+     * @default 1
      */
     step: 1,
     /**
      * Value at which the handle/input *(left handle/first input)* should be set to on initialization.
      * @option
-     * @example 0
+     * @type {number}
+     * @default 0
      */
     initialStart: 0,
     /**
      * Value at which the right handle/second input should be set to on initialization.
      * @option
-     * @example 100
+     * @type {number}
+     * @default 100
      */
     initialEnd: 100,
     /**
      * Allows the input to be located outside the container and visible. Set to by the JS
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     binding: false,
     /**
      * Allows the user to click/tap on the slider bar to select a value.
      * @option
-     * @example true
+     * @type {boolean}
+     * @default true
      */
     clickSelect: true,
     /**
      * Set to true and use the `vertical` class to change alignment to vertical.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     vertical: false,
     /**
      * Allows the user to drag the slider handle(s) to select a value.
      * @option
-     * @example true
+     * @type {boolean}
+     * @default true
      */
     draggable: true,
     /**
      * Disables the slider and prevents event listeners from being applied. Double checked by JS with `disabledClass`.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     disabled: false,
     /**
      * Allows the use of two handles. Double checked by the JS. Changes some logic handling.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     doubleSided: false,
     /**
@@ -8022,7 +8187,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /**
      * Number of decimal places the plugin should go to for floating point precision.
      * @option
-     * @example 2
+     * @type {number}
+     * @default 2
      */
     decimal: 2,
     /**
@@ -8032,37 +8198,43 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /**
      * Time, in ms, to animate the movement of a slider handle if user clicks/taps on the bar. Needs to be manually set if updating the transition time in the Sass settings.
      * @option
-     * @example 200
+     * @type {number}
+     * @default 200
      */
     moveTime: 200, //update this if changing the transition time in the sass
     /**
      * Class applied to disabled sliders.
      * @option
-     * @example 'disabled'
+     * @type {string}
+     * @default 'disabled'
      */
     disabledClass: 'disabled',
     /**
      * Will invert the default layout for a vertical<span data-tooltip title="who would do this???"> </span>slider.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     invertVertical: false,
     /**
      * Milliseconds before the `changed.zf-slider` event is triggered after value change.
      * @option
-     * @example 500
+     * @type {number}
+     * @default 500
      */
     changedDelay: 500,
     /**
     * Basevalue for non-linear sliders
     * @option
-    * @example 5
+    * @type {number}
+    * @default 5
     */
     nonLinearBase: 5,
     /**
-    * Basevalue for non-linear sliders, possible values are: 'linear', 'pow' & 'log'. Pow and Log use the nonLinearBase setting.
+    * Basevalue for non-linear sliders, possible values are: `'linear'`, `'pow'` & `'log'`. Pow and Log use the nonLinearBase setting.
     * @option
-    * @example 'linear'
+    * @type {string}
+    * @default 'linear'
     */
     positionValueFunction: 'linear'
   };
@@ -8511,67 +8683,78 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /**
      * Customizable container template. Add your own classes for styling and sizing.
      * @option
-     * @example '&lt;div data-sticky-container class="small-6 columns"&gt;&lt;/div&gt;'
+     * @type {string}
+     * @default '&lt;div data-sticky-container&gt;&lt;/div&gt;'
      */
     container: '<div data-sticky-container></div>',
     /**
-     * Location in the view the element sticks to.
+     * Location in the view the element sticks to. Can be `'top'` or `'bottom'`.
      * @option
-     * @example 'top'
+     * @type {string}
+     * @default 'top'
      */
     stickTo: 'top',
     /**
      * If anchored to a single element, the id of that element.
      * @option
-     * @example 'exampleId'
+     * @type {string}
+     * @default ''
      */
     anchor: '',
     /**
      * If using more than one element as anchor points, the id of the top anchor.
      * @option
-     * @example 'exampleId:top'
+     * @type {string}
+     * @default ''
      */
     topAnchor: '',
     /**
      * If using more than one element as anchor points, the id of the bottom anchor.
      * @option
-     * @example 'exampleId:bottom'
+     * @type {string}
+     * @default ''
      */
     btmAnchor: '',
     /**
      * Margin, in `em`'s to apply to the top of the element when it becomes sticky.
      * @option
-     * @example 1
+     * @type {number}
+     * @default 1
      */
     marginTop: 1,
     /**
      * Margin, in `em`'s to apply to the bottom of the element when it becomes sticky.
      * @option
-     * @example 1
+     * @type {number}
+     * @default 1
      */
     marginBottom: 1,
     /**
      * Breakpoint string that is the minimum screen size an element should become sticky.
      * @option
-     * @example 'medium'
+     * @type {string}
+     * @default 'medium'
      */
     stickyOn: 'medium',
     /**
      * Class applied to sticky element, and removed on destruction. Foundation defaults to `sticky`.
      * @option
-     * @example 'sticky'
+     * @type {string}
+     * @default 'sticky'
      */
     stickyClass: 'sticky',
     /**
      * Class applied to sticky container. Foundation defaults to `sticky-container`.
      * @option
-     * @example 'sticky-container'
+     * @type {string}
+     * @default 'sticky-container'
      */
     containerClass: 'sticky-container',
     /**
      * Number of scroll events between the plugin's recalculating sticky points. Setting it to `0` will cause it to recalc every scroll event, setting it to `-1` will prevent recalc on scroll.
      * @option
-     * @example 50
+     * @type {number}
+     * @default -1
      */
     checkEvery: -1
   };
@@ -8639,6 +8822,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     _createClass(Tabs, [{
       key: '_init',
       value: function _init() {
+        var _this2 = this;
+
         var _this = this;
 
         this.$element.attr({ 'role': 'tablist' });
@@ -8675,34 +8860,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               });
             });
           }
-
-          //use browser to open a tab, if it exists in this tabset
-          if (_this.options.deepLink) {
-            var anchor = window.location.hash;
-            //need a hash and a relevant anchor in this tabset
-            if (anchor.length) {
-              var $link = $elem.find('[href="' + anchor + '"]');
-              if ($link.length) {
-                _this.selectTab($(anchor));
-
-                //roll up a little to show the titles
-                if (_this.options.deepLinkSmudge) {
-                  $(window).load(function () {
-                    var offset = $elem.offset();
-                    $('html, body').animate({ scrollTop: offset.top }, _this.options.deepLinkSmudgeDelay);
-                  });
-                }
-
-                /**
-                  * Fires when the zplugin has deeplinked at pageload
-                  * @event Tabs#deeplink
-                  */
-                $elem.trigger('deeplink.zf.tabs', [$link, $(anchor)]);
-              }
-            }
-          }
         });
-
         if (this.options.matchHeight) {
           var $images = this.$tabContent.find('img');
 
@@ -8711,6 +8869,35 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           } else {
             this._setHeight();
           }
+        }
+
+        //current context-bound function to open tabs on page load or history popstate
+        this._checkDeepLink = function () {
+          var anchor = window.location.hash;
+          //need a hash and a relevant anchor in this tabset
+          if (anchor.length) {
+            var $link = _this2.$element.find('[href="' + anchor + '"]');
+            if ($link.length) {
+              _this2.selectTab($(anchor), true);
+
+              //roll up a little to show the titles
+              if (_this2.options.deepLinkSmudge) {
+                var offset = _this2.$element.offset();
+                $('html, body').animate({ scrollTop: offset.top }, _this2.options.deepLinkSmudgeDelay);
+              }
+
+              /**
+                * Fires when the zplugin has deeplinked at pageload
+                * @event Tabs#deeplink
+                */
+              _this2.$element.trigger('deeplink.zf.tabs', [$link, $(anchor)]);
+            }
+          }
+        };
+
+        //use browser to open a tab, if it exists in this tabset
+        if (this.options.deepLink) {
+          this._checkDeepLink();
         }
 
         this._events();
@@ -8732,6 +8919,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this._setHeightMqHandler = this._setHeight.bind(this);
 
           $(window).on('changed.zf.mediaquery', this._setHeightMqHandler);
+        }
+
+        if (this.options.deepLink) {
+          $(window).on('popstate', this._checkDeepLink);
         }
       }
 
@@ -8808,13 +8999,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       /**
        * Opens the tab `$targetContent` defined by `$target`. Collapses active tab.
        * @param {jQuery} $target - Tab to open.
+       * @param {boolean} historyHandled - browser has already handled a history update
        * @fires Tabs#change
        * @function
        */
 
     }, {
       key: '_handleTabChange',
-      value: function _handleTabChange($target) {
+      value: function _handleTabChange($target, historyHandled) {
 
         /**
          * Check for active class on target. Collapse if exists.
@@ -8844,7 +9036,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this._openTab($target);
 
         //either replace or update browser history
-        if (this.options.deepLink) {
+        if (this.options.deepLink && !historyHandled) {
           var anchor = $target.find('a').attr('href');
 
           if (this.options.updateHistory) {
@@ -8901,12 +9093,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       /**
        * Public method for selecting a content pane to display.
        * @param {jQuery | String} elem - jQuery object or string of the id of the pane to display.
+       * @param {boolean} historyHandled - browser has already handled a history update
        * @function
        */
 
     }, {
       key: 'selectTab',
-      value: function selectTab(elem) {
+      value: function selectTab(elem, historyHandled) {
         var idStr;
 
         if (typeof elem === 'object') {
@@ -8921,7 +9114,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         var $target = this.$tabTitles.find('[href="' + idStr + '"]').parent('.' + this.options.linkClass);
 
-        this._handleTabChange($target);
+        this._handleTabChange($target, historyHandled);
       }
     }, {
       key: '_setHeight',
@@ -8930,14 +9123,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
        * Sets the height of each panel to the height of the tallest panel.
        * If enabled in options, gets called on media query change.
        * If loading content via external source, can be called directly or with _reflow.
+       * If enabled with `data-match-height="true"`, tabs sets to equal height
        * @function
        * @private
        */
       value: function _setHeight() {
-        var max = 0;
+        var max = 0,
+            _this = this; // Lock down the `this` value for the root tabs object
+
         this.$tabContent.find('.' + this.options.panelClass).css('height', '').each(function () {
+
           var panel = $(this),
-              isActive = panel.hasClass('' + this.options.panelActiveClass);
+              isActive = panel.hasClass('' + _this.options.panelActiveClass); // get the options from the parent instead of trying to get them from the child
 
           if (!isActive) {
             panel.css({ 'visibility': 'hidden', 'display': 'block' });
@@ -8972,6 +9169,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }
         }
 
+        if (this.options.deepLink) {
+          $(window).off('popstate', this._checkDeepLink);
+        }
+
         Foundation.unregisterPlugin(this);
       }
     }]);
@@ -8983,28 +9184,32 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /**
      * Allows the window to scroll to content of pane specified by hash anchor
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     deepLink: false,
 
     /**
      * Adjust the deep link scroll to make sure the top of the tab panel is visible
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     deepLinkSmudge: false,
 
     /**
      * Animation time (ms) for the deep link adjustment
      * @option
-     * @example 300
+     * @type {number}
+     * @default 300
      */
     deepLinkSmudgeDelay: 300,
 
     /**
      * Update the browser history with the open tab
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     updateHistory: false,
 
@@ -9012,56 +9217,64 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      * Allows the window to scroll to content of active pane on load if set to true.
      * Not recommended if more than one tab panel per page.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     autoFocus: false,
 
     /**
      * Allows keyboard input to 'wrap' around the tab links.
      * @option
-     * @example true
+     * @type {boolean}
+     * @default true
      */
     wrapOnKeys: true,
 
     /**
      * Allows the tab content panes to match heights if set to true.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     matchHeight: false,
 
     /**
      * Allows active tabs to collapse when clicked.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     activeCollapse: false,
 
     /**
      * Class applied to `li`'s in tab link list.
      * @option
-     * @example 'tabs-title'
+     * @type {string}
+     * @default 'tabs-title'
      */
     linkClass: 'tabs-title',
 
     /**
      * Class applied to the active `li` in tab link list.
      * @option
-     * @example 'is-active'
+     * @type {string}
+     * @default 'is-active'
      */
     linkActiveClass: 'is-active',
 
     /**
      * Class applied to the content containers.
      * @option
-     * @example 'tabs-panel'
+     * @type {string}
+     * @default 'tabs-panel'
      */
     panelClass: 'tabs-panel',
 
     /**
      * Class applied to the active content container.
      * @option
-     * @example 'is-active'
+     * @type {string}
+     * @default 'is-active'
      */
     panelActiveClass: 'is-active'
   };
@@ -9229,7 +9442,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /**
      * Tells the plugin if the element should animated when toggled.
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     animate: false
   };
@@ -9616,93 +9830,108 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /**
      * Time, in ms, before a tooltip should open on hover.
      * @option
-     * @example 200
+     * @type {number}
+     * @default 200
      */
     hoverDelay: 200,
     /**
      * Time, in ms, a tooltip should take to fade into view.
      * @option
-     * @example 150
+     * @type {number}
+     * @default 150
      */
     fadeInDuration: 150,
     /**
      * Time, in ms, a tooltip should take to fade out of view.
      * @option
-     * @example 150
+     * @type {number}
+     * @default 150
      */
     fadeOutDuration: 150,
     /**
      * Disables hover events from opening the tooltip if set to true
      * @option
-     * @example false
+     * @type {boolean}
+     * @default false
      */
     disableHover: false,
     /**
      * Optional addtional classes to apply to the tooltip template on init.
      * @option
-     * @example 'my-cool-tip-class'
+     * @type {string}
+     * @default ''
      */
     templateClasses: '',
     /**
      * Non-optional class added to tooltip templates. Foundation default is 'tooltip'.
      * @option
-     * @example 'tooltip'
+     * @type {string}
+     * @default 'tooltip'
      */
     tooltipClass: 'tooltip',
     /**
      * Class applied to the tooltip anchor element.
      * @option
-     * @example 'has-tip'
+     * @type {string}
+     * @default 'has-tip'
      */
     triggerClass: 'has-tip',
     /**
      * Minimum breakpoint size at which to open the tooltip.
      * @option
-     * @example 'small'
+     * @type {string}
+     * @default 'small'
      */
     showOn: 'small',
     /**
      * Custom template to be used to generate markup for tooltip.
      * @option
-     * @example '&lt;div class="tooltip"&gt;&lt;/div&gt;'
+     * @type {string}
+     * @default ''
      */
     template: '',
     /**
      * Text displayed in the tooltip template on open.
      * @option
-     * @example 'Some cool space fact here.'
+     * @type {string}
+     * @default ''
      */
     tipText: '',
     touchCloseText: 'Tap to close.',
     /**
      * Allows the tooltip to remain open if triggered with a click or touch event.
      * @option
-     * @example true
+     * @type {boolean}
+     * @default true
      */
     clickOpen: true,
     /**
      * Additional positioning classes, set by the JS
      * @option
-     * @example 'top'
+     * @type {string}
+     * @default ''
      */
     positionClass: '',
     /**
      * Distance, in pixels, the template should push away from the anchor on the Y axis.
      * @option
-     * @example 10
+     * @type {number}
+     * @default 10
      */
     vOffset: 10,
     /**
      * Distance, in pixels, the template should push away from the anchor on the X axis, if aligned to a side.
      * @option
-     * @example 12
+     * @type {number}
+     * @default 12
      */
     hOffset: 12,
     /**
     * Allow HTML in tooltip. Warning: If you are loading user-generated content into tooltips,
     * allowing HTML may open yourself up to XSS attacks.
     * @option
-    * @example false
+    * @type {boolean}
+    * @default false
     */
     allowHtml: false
   };
