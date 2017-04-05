@@ -65,7 +65,6 @@ class Tabs {
 
       $tabContent.attr({
         'role': 'tabpanel',
-        'aria-hidden': !isActive,
         'aria-labelledby': linkId
       });
 
@@ -280,7 +279,6 @@ class Tabs {
 
       $targetContent
         .addClass(`${this.options.panelActiveClass}`)
-        .attr({'aria-hidden': ''});
   }
 
   /**
@@ -296,7 +294,6 @@ class Tabs {
 
     $(`#${$target_anchor.attr('aria-controls')}`)
       .removeClass(`${this.options.panelActiveClass}`)
-      .attr({ 'aria-hidden': 'true' });
   }
 
   /**
