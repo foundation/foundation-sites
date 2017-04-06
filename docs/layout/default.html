@@ -43,10 +43,32 @@
 
       {{> navigation}}
       {{> mobile-navigation}}
-
-      <input type="text" class="docs-search" data-docs-search placeholder="Find a page, component, variable, mixin, function...">
-
-      <div class="expanded row">
+  
+      <div class="collapse row secondary-bar">
+        <div class="medium-3 large-2 columns">
+          <ul class="dropdown menu version-dropdown" data-dropdown-menu>
+            <li class="version-menu-list">
+              <a href="#" class="version-dropdown-label">Foundation for Sites 6.3.0</a>
+              <ul class="menu version-dropdown-menu">
+                <li class="version-dropdown-menu-link"><a href="#">Foundation 6.2.0</a></li>
+                <li class="version-dropdown-menu-link"><a href="#">Foundation 6.0</a></li>
+                <li class="version-dropdown-menu-link"><a href="#">Foundation 5.0</a></li>
+                <li class="version-dropdown-menu-link"><a href="#">Foundation 4.0</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="medium-7 large-8 columns">
+          <input type="text" class="docs-search" data-docs-search placeholder="Find a page, component, variable, mixin, function...">
+        </div>
+        <div class="medium-2 large-2 columns">
+          <p>Stars and Tweets</p>
+        </div>
+      </div>
+      
+      
+      
+      <div class="collapse row">
         <div class="medium-9 large-10 medium-push-3 large-push-2 columns">
 <!-- do not indent -->
 {{> body}}
