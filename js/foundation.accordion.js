@@ -153,7 +153,8 @@ class Accordion {
    * @function
    */
   toggle($target) {
-    if ($target.closest('.accordion').is('[disabled]')) {
+    if ($target.closest('[data-accordion]').is('[disabled]')) {
+      console.info('Cannot toggle an accordion that is disabled.');
       return;
     }
     if($target.parent().hasClass('is-active')) {
@@ -185,7 +186,8 @@ class Accordion {
      * checking firstTime allows for initial render of the accordion
      * to render preset is-active panes.
      */
-    if ($target.closest('.accordion').is('[disabled]') && !firstTime)  {
+    if ($target.closest('[data-accordion]').is('[disabled]') && !firstTime)  {
+      console.info('Cannot call down on an accordion that is disabled.');
       return;
     }
     $target
@@ -222,7 +224,8 @@ class Accordion {
    * @function
    */
   up($target) {
-    if ($target.closest('.accordion').is('[disabled]')) {
+    if ($target.closest('[data-accordion]').is('[disabled]')) {
+      console.info('Cannot call up on an accordion that is disabled.');
       return;
     }
 

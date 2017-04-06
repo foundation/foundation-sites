@@ -131,13 +131,17 @@ By default, at least one pane in an accordion must be open. This can be changed 
 
 ### Disabled
 
-There may be times where you want to disable pane switching on an accordion. This can be accomplished by setting the disabled attribute.
+There may be times where you want to disable pane switching on an accordion. This can be accomplished by setting the `disabled` option.
+
+<div class="warning callout">
+  <p>The `disabled` option disables all up, down, and toggle methods of an accordion.  If you wish to manipulate a disabled accordion with <a href='#javascript-reference'>JavaScript</a>, you will need to remove the `disabled` option from the accordion.</p>
+</div>
 
 ```html_example
 <ul class="accordion" data-accordion disabled>
   <li class="accordion-item is-active" data-accordion-item>
     <a href="#" class="accordion-title">Accordion 1</a>
-    <div class="accordion-content" data-tab-content >
+    <div class="accordion-content" data-tab-content>
       Panel 1. I'm open because I'm loaded that way, but you can't close me
     </div>
   </li>
