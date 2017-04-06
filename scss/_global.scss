@@ -102,6 +102,10 @@ $global-flexbox: false !default;
 $global-left: if($global-text-direction == rtl, right, left);
 $global-right: if($global-text-direction == rtl, left, right);
 
+/// Global tolerance for color pick contrast.
+/// @type Number
+$global-color-pick-contrast-tolerance: 0 !default;
+
 // Internal variables used for colors
 $primary-color: get-color(primary);
 $secondary-color: get-color(secondary);
