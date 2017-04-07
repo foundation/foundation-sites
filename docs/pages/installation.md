@@ -101,9 +101,9 @@ Start with this HTML template and adapt it to your needs. Be sure to include the
   <body>
     <h1>Hello, world!</h1>
 
-    <script src="js/vendor/jquery.min.js"></script>
-    <script src="js/vendor/what-input.min.js"></script>
-    <script src="js/foundation.min.js"></script>
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/vendor/what-input.js"></script>
+    <script src="js/vendor/foundation.min.js"></script>
     <script>
       $(document).foundation();
     </script>
