@@ -70,7 +70,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
 
 ## Experienced with Foundation for Sites?
 
-With an easy to understand syntax and consistent structure, you'll learn your way around Foudnation in no time!
+With an easy to understand syntax and consistent structure, you'll learn your way around Foundation in no time!
 
 <ul class="accordion" data-accordion>
   <li class="accordion-item is-active" data-accordion-item>

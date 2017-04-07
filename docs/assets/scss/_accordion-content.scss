@@ -1,6 +1,46 @@
+.accordion {
+  margin-top: 2rem;
+}
+
 .accordion-content-item {
   margin-bottom: 1rem;
 }
+
+.accordion-title {
+  background-color: #f5f5f5;
+  color: #676767;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.accordion-title:hover,
+.accordion-title:focus {
+  color: $black;
+  background-color: #efefef;
+}
+
+
+.accordion-item {
+  
+  &.is-active {
+    box-shadow: 0px 1px 8px 0px rgba(0,0,0,0.15);  
+    
+    .accordion-title {
+      margin-bottom: 0;
+      border-bottom: none;
+      color: $black;
+    }
+    
+    .accordion-content {
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #e6e6e6;
+    }
+  }
+}
+
+
+
 
 .accordion-content-item-divider {
   border-bottom: 1px dashed #e5e5e5;
