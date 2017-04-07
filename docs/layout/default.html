@@ -11,6 +11,7 @@
   <link href="assets/css/docs.css" rel="stylesheet" />
   <link href="//cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
   <!-- <link rel="stylesheet" href="./node_modules/motion-ui/dist/motion-ui.css" /> -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
 </head>
 <body>
 
@@ -44,31 +45,34 @@
       {{> navigation}}
       {{> mobile-navigation}}
   
-      <div class="collapse row secondary-bar">
+      <div class="collapse expanded row secondary-bar">
         <div class="medium-3 large-2 columns">
           <ul class="dropdown menu version-dropdown" data-dropdown-menu>
             <li class="version-menu-list">
-              <a href="#" class="version-dropdown-label">Foundation for Sites 6.3.0</a>
+              <a href="#" class="version-dropdown-label"><span class="foundation-version-label">Foundation for Sites</span><span class="foundation-version-number">6.3.0</span></a>
               <ul class="menu version-dropdown-menu">
-                <li class="version-dropdown-menu-link"><a href="#">Foundation 6.2.0</a></li>
-                <li class="version-dropdown-menu-link"><a href="#">Foundation 6.0</a></li>
-                <li class="version-dropdown-menu-link"><a href="#">Foundation 5.0</a></li>
-                <li class="version-dropdown-menu-link"><a href="#">Foundation 4.0</a></li>
+                <li class="version-dropdown-menu-link"><a href="#">6.2.0</a></li>
+                <li class="version-dropdown-menu-link"><a href="#">6.0</a></li>
+                <li class="version-dropdown-menu-link"><a href="#">5.0</a></li>
+                <li class="version-dropdown-menu-link"><a href="#">4.0</a></li>
               </ul>
             </li>
           </ul>
         </div>
-        <div class="medium-7 large-8 columns">
+        <div class="medium-6 large-7 columns">
           <input type="text" class="docs-search" data-docs-search placeholder="Find a page, component, variable, mixin, function...">
         </div>
-        <div class="medium-2 large-2 columns">
-          <p>Stars and Tweets</p>
+        <div class="medium-3 large-3 columns social-container">
+          <ul class="social-list">
+            <li><a class="github-button" href="https://github.com/ntkme/github-buttons" data-style="mega" data-count-href="/ntkme/github-buttons/stargazers" data-count-api="/repos/ntkme/github-buttons#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star ntkme/github-buttons on GitHub">Star</a></li>
+            <li><a class="github-button" href="https://github.com/ntkme/github-buttons" data-style="mega" data-count-href="/ntkme/github-buttons/stargazers" data-count-api="/repos/ntkme/github-buttons#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star ntkme/github-buttons on GitHub">Star</a></li>
+          </ul>
         </div>
       </div>
       
       
       
-      <div class="collapse row">
+      <div class="collapse expanded row">
         <div class="medium-9 large-10 medium-push-3 large-push-2 columns">
 <!-- do not indent -->
 {{> body}}
