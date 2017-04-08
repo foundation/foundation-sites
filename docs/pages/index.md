@@ -6,6 +6,14 @@ tags:
   - home
 ---
 
+## Welcome to Foundation 6
+
+We built Foundation for Sites to be the most advanced responsive front-end framework in the world.
+
+<iframe width="500" height="315" src="https://www.youtube.com/embed/sKYsLkJ0yvQ" frameborder="0" allowfullscreen></iframe>
+
+---
+
 ## Installing Foundation
 
 There are a number of ways to install Foundation for Sites. Our installation page will help you find the best option for you.
