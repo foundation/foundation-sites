@@ -5,19 +5,33 @@
 
 .docs-nav-category {
   background: none;
-  
+
   .accordion-title {
-    border: none; 
-    color: #383838;
+    border: none;
+    color: #444444;
     font-weight: 600;
   }
-  
+
+  .accordion-title:hover {
+    border: none;
+    color: $black;
+    font-weight: 600;
+  }
+
+  .accordion-item:last-child {
+
+    .accordion-title{
+      border-bottom: none;
+    }
+  }
+
   .accordion-content {
     padding-top: 0;
     border: none;
     background: none;
+    padding-bottom: 0.5rem;
   }
-  
+
   .is-active > .accordion-title::before {
     content: '';
   }
@@ -26,7 +40,6 @@
     content: '';
   }
 }
-
 
 .docs-nav.menu a:hover {
   background: none;
@@ -43,16 +56,22 @@
 
 .docs-nav-subcategory {
   list-style: none;
-  margin-left: 0.65rem;
-  
+  margin-left: 0.85rem;
+
   li {
     padding: 0.25rem 0;
   }
-  
+
   li a {
     font-size: 1rem;
-    color: #414141;
+    color: #717171;
     line-height: 1.5;
+    transition: color 0.3s ease;
+  }
+
+  li a:hover {
+    color: $black;
+    transition: color 0.3s ease;
   }
 }
 

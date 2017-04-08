@@ -8,7 +8,7 @@ tags:
 
 ## Installing Foundation
 
-There are a number of ways to install Foundation for Sites. Our installatin page will help you find the best option for you. 
+There are a number of ways to install Foundation for Sites. Our installation page will help you find the best option for you.
 
 <a href="installation.html" class="large button">Install Foundation for Sites</a>
 
@@ -16,13 +16,13 @@ There are a number of ways to install Foundation for Sites. Our installatin page
 
 ## New to Foundation for Sites?
 
-With an easy to understand syntax and consistent structure, you'll learn your way around Foudnation in no time!
+With an easy to understand syntax and consistent structure, you'll learn your way around Foundation in no time!
 
-<ul class="accordion" data-accordion>
-  <li class="accordion-item welcome-accordion-item is-active" data-accordion-item>
+<ul class="accordion welcome-accordion" data-accordion data-allow-all-closed="true">
+  <li class="accordion-item welcome-accordion-item" data-accordion-item>
     <a href="#" class="accordion-title">Intro Videos</a>
     <div class="accordion-content " data-tab-content>
-      
+
       <div class="row">
         <div class="medium-4 columns">
           <img src="http://placehold.it/350x250">
@@ -32,9 +32,9 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
           <a href="#" class="accordion-content-item-cta"><img src="http://placehold.it/20x20">Watch Video</a>
         </div>
       </div>
-      
+
       <hr class="accordion-content-item-divider">
-      
+
       <div class="row">
         <div class="medium-4 columns">
           <img src="http://placehold.it/350x250">
@@ -44,9 +44,9 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
           <a href="#" class="accordion-content-item-cta"><img src="http://placehold.it/20x20">Watch Video</a>
         </div>
       </div>
-      
+
       <hr class="accordion-content-item-divider">
-      
+
       <div class="row">
         <div class="medium-4 columns">
           <img src="http://placehold.it/350x250">
@@ -56,13 +56,13 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
           <a href="#" class="accordion-content-item-cta"><img src="http://placehold.it/20x20">Watch Video</a>
         </div>
       </div>
-      
+
     </div>
   </li>
   <li class="accordion-item welcome-accordion-item" data-accordion-item>
     <a href="#" class="accordion-title">Beginner Lessons</a>
       <div class="accordion-content " data-tab-content>
-      
+
         <div class="row">
           <div class="medium-4 columns">
             <img src="http://placehold.it/350x250">
@@ -102,7 +102,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
   <li class="accordion-item welcome-accordion-item" data-accordion-item>
     <a href="#" class="accordion-title">Simple Templates</a>
       <div class="accordion-content " data-tab-content>
-      
+
         <div class="row">
           <div class="medium-4 columns">
             <img src="http://placehold.it/350x250">
@@ -142,7 +142,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
   <li class="accordion-item welcome-accordion-item" data-accordion-item>
     <a href="#" class="accordion-title">Basic Documentation</a>
       <div class="accordion-content " data-tab-content>
-      
+
         <div class="row">
           <div class="medium-4 columns">
             <img src="http://placehold.it/350x250">
@@ -187,8 +187,8 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
 
 With an easy to understand syntax and consistent structure, you'll learn your way around Foundation in no time!
 
-<ul class="accordion" data-accordion>
-  <li class="accordion-item welcome-accordion-item is-active" data-accordion-item>
+<ul class="accordion welcome-accordion" data-accordion data-allow-all-closed="true">
+  <li class="accordion-item welcome-accordion-item" data-accordion-item>
     <a href="#" class="accordion-title">Latest updates in Foundation 6.3.0</a>
     <div class="accordion-content" data-tab-content>
       I would start in the open state, due to using the `is-active` state class.
