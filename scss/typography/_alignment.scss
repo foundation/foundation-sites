@@ -5,15 +5,29 @@
 @mixin foundation-text-alignment {
   @each $size in $breakpoint-classes {
     @include breakpoint($size) {
-      @each $align in (left, right, center, justify) {
-        @if $size != $-zf-zero-breakpoint {
+      @if $size != $-zf-zero-breakpoint {
+        @each $align in (center, justify) {
           .#{$size}-text-#{$align} {
             text-align: $align;
           }
         }
-        @else {
+        @each $align-ltr, $align-rtl in (left: start, right: end) {
+          .#{$size}-text-#{$align-ltr} {
+            text-align: $align-ltr;
+            text-align: $align-rtl;
+          }
+        }
+      }
+      @else {
+        @each $align in (center, justify) {
           .text-#{$align} {
             text-align: $align;
+          }
+        }
+        @each $align-ltr, $align-rtl in (left: start, right: end) {
+          .text-#{$align-ltr} {
+            text-align: $align-ltr;
+            text-align: $align-rtl;
           }
         }
       }
