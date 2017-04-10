@@ -76,6 +76,10 @@ $table-foot-font-color: $body-font-color !default;
 /// @type Boolean
 $show-header-for-stacked: false !default;
 
+/// Breakpoint at which stacked table switches from mobile to desktop view.
+/// @type Breakpoint
+$table-stack-breakpoint: medium !default;
+
 @mixin -zf-table-stripe($stripe: $table-stripe) {
   tr {
     // If stripe is set to even, darken the even rows.
@@ -306,7 +310,7 @@ $show-header-for-stacked: false !default;
   }
 
   table.stack {
-    @include breakpoint(medium down) {
+    @include breakpoint($table-stack-breakpoint down) {
       @include table-stack;
     }
   }

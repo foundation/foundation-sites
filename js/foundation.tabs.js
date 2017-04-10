@@ -50,7 +50,7 @@ class Tabs {
       var $elem = $(this),
           $link = $elem.find('a'),
           isActive = $elem.hasClass(`${_this.options.linkActiveClass}`),
-          hash = $link[0].hash.slice(1),
+          hash = $link.attr('data-tabs-target') || $link[0].hash.slice(1),
           linkId = $link[0].id ? $link[0].id : `${hash}-label`,
           $tabContent = $(`#${hash}`);
 
@@ -234,8 +234,8 @@ class Tabs {
     var $oldTab = this.$element.
           find(`.${this.options.linkClass}.${this.options.linkActiveClass}`),
           $tabLink = $target.find('[role="tab"]'),
-          hash = $tabLink[0].hash,
-          $targetContent = this.$tabContent.find(hash);
+          hash = $tabLink.attr('data-tabs-target') || $tabLink[0].hash.slice(1),
+          $targetContent = this.$tabContent.find(`#${hash}`);
 
     //close old tab
     this._collapseTab($oldTab);
@@ -271,8 +271,8 @@ class Tabs {
    */
   _openTab($target) {
       var $tabLink = $target.find('[role="tab"]'),
-          hash = $tabLink[0].hash,
-          $targetContent = this.$tabContent.find(hash);
+          hash = $tabLink.attr('data-tabs-target') || $tabLink[0].hash.slice(1),
+          $targetContent = this.$tabContent.find(`#${hash}`);
 
       $target.addClass(`${this.options.linkActiveClass}`);
 

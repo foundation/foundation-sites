@@ -69,7 +69,7 @@ $button-palette: map-remove($foundation-palette, (
     primary,
     secondary
 )) !default;
-```  
+```
 
 Or you can add more colors to the default palette.
 
@@ -132,6 +132,27 @@ Add the `.hollow` class to a button to give it a hollow style. Change the `$butt
 
 ---
 
+## Clear Style
+
+Add the `.clear` class to a button to give it a clear style. Change the `$button-fill` variable in your settings file to `clear` to make this the default style. Changing this setting will remove the `.clear` class from your CSS.
+
+```html_example
+<a class="clear button" href="#">Primary</a>
+<a class="clear button secondary" href="#">Secondary</a>
+<a class="clear button success" href="#">Success</a>
+<a class="clear button alert" href="#">Alert</a>
+<a class="clear button warning" href="#">Warning</a>
+<a class="clear button" href="#" disabled>Disabled</a>
+```
+
+<p>This is especially useful as a secondary action button. This way you get proper spacing and line-height. Example:</p>
+
+<button class="button primary" href="#">Primary Action</button>
+<button class="clear button" href="#">Secondary Action</button>
+
+
+---
+
 ## Dropdown Arrows
 
 Add a dropdown arrow to your button with the `.dropdown` class.
@@ -141,11 +162,11 @@ Add a dropdown arrow to your button with the `.dropdown` class.
 </div>
 
 ```html_example
-<button class="dropdown button tiny ">Dropdown Button</button>
-<button class="dropdown button small ">Dropdown Button</button>
+<button class="dropdown button tiny">Dropdown Button</button>
+<button class="dropdown button small">Dropdown Button</button>
 <button class="dropdown button">Dropdown Button</button>
-<button class="dropdown button large ">Dropdown Button</button>
-<button class="dropdown button expanded ">Dropdown Button</button>
+<button class="dropdown button large">Dropdown Button</button>
+<button class="dropdown button expanded">Dropdown Button</button>
 ```
 
 ---

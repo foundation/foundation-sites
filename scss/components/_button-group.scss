@@ -63,13 +63,13 @@ $buttongroup-radius-on-each: true !default;
       border-radius: 0;
 
       &:first-child {
-        border-top-#{$global-left}-radius: $global-radius;
-        border-bottom-#{$global-left}-radius: $global-radius;
+        border-top-#{$global-left}-radius: $button-radius;
+        border-bottom-#{$global-left}-radius: $button-radius;
       }
 
       &:last-child {
-        border-top-#{$global-right}-radius: $global-radius;
-        border-bottom-#{$global-right}-radius: $global-radius;
+        border-top-#{$global-right}-radius: $button-radius;
+        border-bottom-#{$global-right}-radius: $button-radius;
       }
     }
 
