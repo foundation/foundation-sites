@@ -162,6 +162,14 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
   &:hover, &:focus {
     background-color: transparent;
   }
+
+  &.disabled,
+  &[disabled] {
+    &, 
+    &:hover, &:focus {
+      background-color: transparent;
+    }
+  }
 }
 
 @mixin button-hollow-style(
@@ -325,13 +333,6 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
       &.hollow {
         @include button-hollow;
         @include button-hollow-style;
-
-        &.disabled,
-        &[disabled] {
-          &, &:hover, &:focus {
-            background-color: transparent;
-          }
-        }
 
         @each $name, $color in $button-palette {
           &.#{$name} {
