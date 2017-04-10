@@ -101,6 +101,21 @@ The text color for each button class is determined by either `$button-color` or 
 
 ---
 
+## Hollow Style
+
+Add the `.hollow` class to a button to give it a hollow style. Change the `$button-fill` variable in your settings file to `hollow` to make this the default style. Changing this setting will remove the `.hollow` class from your CSS.
+
+```html_example
+<button class="hollow button" href="#">Primary</button>
+<button class="hollow button secondary" href="#">Secondary</button>
+<button class="hollow button success" href="#">Success</button>
+<button class="hollow button alert" href="#">Alert</button>
+<button class="hollow button warning" href="#">Warning</button>
+<button class="hollow button" href="#" disabled>Disabled</button>
+```
+
+---
+
 ## Disabled Buttons
 
 The `.disabled` class will give buttons a faded appearance. The class is a purely visual style, and won't actually disable a control. For `<button>` elements, you can add the `disabled` attribute to both disable and style it. If you want to disable a link, you should add the `aria-disabled` attribute to mark it as disabled for assistive technology.
@@ -115,19 +130,15 @@ The `.disabled` class will give buttons a faded appearance. The class is a purel
 <button type="button" class="button warning" disabled>Disabled</button>
 ```
 
----
-
-## Hollow Style
-
-Add the `.hollow` class to a button to give it a hollow style. Change the `$button-fill` variable in your settings file to `hollow` to make this the default style. Changing this setting will remove the `.hollow` class from your CSS.
+Alternatively, you can also disable hollow buttons.
 
 ```html_example
-<button class="hollow button" href="#">Primary</button>
-<button class="hollow button secondary" href="#">Secondary</button>
-<button class="hollow button success" href="#">Success</button>
-<button class="hollow button alert" href="#">Alert</button>
-<button class="hollow button warning" href="#">Warning</button>
-<button class="hollow button" href="#" disabled>Disabled</button>
+<a class="button hollow disabled" href="#" aria-disabled>Disabled</a>
+<button type="button" class="button hollow primary" disabled>Disabled</button>
+<button type="button" class="button hollow secondary" disabled>Disabled</button>
+<button type="button" class="button hollow success" disabled>Disabled</button>
+<button type="button" class="button hollow alert" disabled>Disabled</button>
+<button type="button" class="button hollow warning" disabled>Disabled</button>
 ```
 
 ---
