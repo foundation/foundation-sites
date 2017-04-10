@@ -29,9 +29,11 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
 <ul class="accordion welcome-accordion" data-accordion data-allow-all-closed="true">
   <li class="accordion-item welcome-accordion-item" data-accordion-item>
     <a href="#" class="accordion-title">Intro Videos</a>
-    <div class="accordion-content " data-tab-content>
 
-      <div class="row">
+    <div class="accordion-content" data-tab-content>
+
+      <div class="row accordion-content-item">
+
         <div class="medium-4 columns">
           <img src="http://placehold.it/350x250">
         </div>
