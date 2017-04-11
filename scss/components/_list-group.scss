@@ -18,6 +18,10 @@ $list-group-active-background: $primary-color !default;
 /// @type Color
 $list-group-hover-background: $light-gray !default;
 
+/// Default background color for disabled list groups.
+/// @type Color
+$list-group-disabled-background: $white !default;
+
 /// Default font color for list-groups.
 /// @type Color
 $list-group-font-color: $body-font-color !default;
@@ -55,12 +59,12 @@ $list-group-padding: $global-padding !default;
 $list-group-margin: $global-margin !default;
 
 /// Adds styles for a list-group.
-/// @param {Color} $background - Background color of the list-group.
-/// @param {Color} $color - font color of the list-group.
-/// @param {Number} $margin - Bottom margin of the list-group.
-/// @param {List} $border - Border around the list-group.
-/// @param {List} $radius - border radius of the list-group.
-/// @param {List} $shadow - box shadow of the list-group.
+/// @param {Color} $background[$list-group-background] - Background color of the list-group.
+/// @param {Color} $color[$list-group-font-color] - font color of the list-group.
+/// @param {Number} $margin[$list-group-margin] - Bottom margin of the list-group.
+/// @param {List} $border[$list-group-border] - Border around the list-group.
+/// @param {List} $radius[$list-group-border-radius] - border radius of the list-group.
+/// @param {List} $shadow[$list-group-shadow] - box shadow of the list-group.
 @mixin list-group(
   $background: $list-group-background,
   $color: $list-group-font-color,
@@ -91,6 +95,14 @@ $list-group-margin: $global-margin !default;
 }
 
 /// Adds styles for a list-group section.
+/// @param {Number} $padding[$list-group-padding] - Padding of the list-group.
+/// @param {List} $border[$list-group-border] - Border around the list-group.
+/// @param {Color} $active-color[$list-group-font-active-color] - font color of an active list-group.
+/// @param {Color} $active-background[$list-group-active-background] - Background color of an active list-group.
+/// @param {List} $active-border[$list-group-active-border] - Border around the list-group for an active item.
+/// @param {Color} $hover-background[$list-group-hover-background] - Background color of list-group on hover focus.
+/// @param {Color} $disabled-color[$list-group-font-disabled-color] - font color of the disabled list-group.
+/// @param {Color} $disabled-background[$list-group-disabled-background] - Background color of the disabled list-group.
 @mixin list-group-item(
   $padding: $list-group-padding,
   $border: $list-group-border,
@@ -99,7 +111,7 @@ $list-group-margin: $global-margin !default;
   $active-border: $list-group-active-border,
   $hover-background: $list-group-hover-background,
   $disabled-color: $list-group-font-disabled-color,
-  $disabled-background: $list-group-background
+  $disabled-background: $list-group-disabled-background
 ) {
   @if $global-flexbox {
     flex: 1 0 auto;
