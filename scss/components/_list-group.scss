@@ -1,0 +1,148 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group list-group
+////
+
+/// Default background color.
+/// @type Color
+$list-group-background: $white !default;
+
+/// Default background color for active.
+/// @type Color
+$list-group-active-background: $primary-color !default;
+
+/// Default background color on hover focus.
+/// @type Color
+$list-group-hover-background: $light-gray !default;
+
+/// Default font color for list-groups.
+/// @type Color
+$list-group-font-color: $body-font-color !default;
+
+/// Default font color for disabled list-groups.
+/// @type Color
+$list-group-font-disabled-color: $dark-gray !default;
+
+/// Default font color for active list-groups.
+/// @type Color
+$list-group-font-active-color: $white !default;
+
+/// Default border style.
+/// @type List
+$list-group-border: 1px solid $light-gray !default;
+
+/// Default border style for active list group item.
+/// @type List
+$list-group-active-border: 1px solid $primary-color !default;
+
+/// Default list-group shadow.
+/// @type List
+$list-group-shadow: none !default;
+
+/// Default border radius.
+/// @type List
+$list-group-border-radius: $global-radius !default;
+
+/// Default padding.
+/// @type Number
+$list-group-padding: $global-padding !default;
+
+/// Default bottom margin.
+/// @type number
+$list-group-margin: $global-margin !default;
+
+/// Adds styles for a list-group.
+/// @param {Color} $background - Background color of the list-group.
+/// @param {Color} $color - font color of the list-group.
+/// @param {Number} $margin - Bottom margin of the list-group.
+/// @param {List} $border - Border around the list-group.
+/// @param {List} $radius - border radius of the list-group.
+/// @param {List} $shadow - box shadow of the list-group.
+@mixin list-group(
+  $background: $list-group-background,
+  $color: $list-group-font-color,
+  $margin: $list-group-margin,
+  $border: $list-group-border,
+  $radius: $list-group-border-radius,
+  $shadow: $list-group-shadow
+) {
+  @if $global-flexbox {
+    display: flex;
+    flex-direction: column;
+  }
+
+  margin-bottom: $margin;
+
+  border: $border;
+  border-radius: $radius;
+
+  background: $background;
+  box-shadow: $shadow;
+
+  overflow: hidden;
+  color: $color;
+
+  & > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+/// Adds styles for a list-group section.
+@mixin list-group-item(
+  $padding: $list-group-padding,
+  $border: $list-group-border,
+  $active-color: $list-group-font-active-color,
+  $active-background: $list-group-active-background,
+  $active-border: $list-group-active-border,
+  $hover-background: $list-group-hover-background,
+  $disabled-color: $list-group-font-disabled-color,
+  $disabled-background: $list-group-background
+) {
+  @if $global-flexbox {
+    flex: 1 0 auto;
+  }
+
+  padding: $padding;
+  border-bottom: $border;
+
+  & > :last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+  }
+
+  &.active {
+    color: $active-color;
+    background-color: $active-background;
+    border-color: $active-border;
+  }
+
+  &:hover, &:focus {
+    background-color: $hover-background;
+    &.active {
+      background-color: $active-background;
+    }
+  }
+
+  &.disabled,
+  &[disabled] {
+    &,
+    &:hover, &:focus {
+      color: $disabled-color;
+      cursor: not-allowed;
+      background-color: $disabled-background;
+    }
+  }
+}
+
+@mixin foundation-list-group {
+  .list-group {
+    @include list-group;
+  }
+
+  .list-group-item {
+    @include list-group-item;
+  }
+}
