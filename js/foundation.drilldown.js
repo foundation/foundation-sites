@@ -153,7 +153,6 @@ class Drilldown {
         });
       }
     });
-	  this.$element.on('mutateme.zf.trigger', this._resize.bind(this));
   }
 
   /**
@@ -166,6 +165,7 @@ class Drilldown {
       this._bindHandler = this._scrollTop.bind(this);
       this.$element.on('open.zf.drilldown hide.zf.drilldown closed.zf.drilldown',this._bindHandler);
     }
+    this.$element.on('mutateme.zf.trigger', this._resize.bind(this));
   }
 
   /**
