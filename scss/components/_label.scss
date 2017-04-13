@@ -12,7 +12,15 @@ $label-background: $primary-color !default;
 
 /// Default text color for labels.
 /// @type Color
-$label-color: foreground($label-background) !default;
+$label-color: $white !default;
+
+/// Alternate text color for labels.
+/// @type Color
+$label-color-alt: $black !default;
+
+/// Coloring classes. A map of classes to output in your CSS, like `.secondary`, `.success`, and so on.
+/// @type Map
+$label-palette: $foundation-palette !default;
 
 /// Default font size for labels.
 /// @type Number
@@ -30,11 +38,13 @@ $label-radius: $global-radius !default;
 @mixin label {
   display: inline-block;
   padding: $label-padding;
+
+  border-radius: $label-radius;
+
   font-size: $label-font-size;
   line-height: 1;
   white-space: nowrap;
   cursor: default;
-  border-radius: $label-radius;
 }
 
 @mixin foundation-label {
@@ -44,12 +54,10 @@ $label-radius: $global-radius !default;
     background: $label-background;
     color: $label-color;
 
-    @each $name, $color in $foundation-palette {
-      @if $name != primary {
-        &.#{$name} {
-          background: $color;
-          color: foreground($color);
-        }
+    @each $name, $color in $label-palette {
+      &.#{$name} {
+        background: $color;
+        color: color-pick-contrast($color, ($label-color, $label-color-alt));
       }
     }
   }

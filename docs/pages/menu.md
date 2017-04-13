@@ -52,7 +52,7 @@ By default, each item in the menu aligns to the left. They can also be aligned t
 To align items in the middle, add a wrapping element with the class `.menu-centered`.
 
 <div class="primary callout">
-  <p>If you're using <a href="flexbox.html">Flexbox mode</a>, you don't need the wrapper class. Instead, you can just add the class <code>.align-center</code> to the menu.</p>
+  <p>If you're using <a href="flexbox.html">Flexbox mode</a>, you have the option of either using <code>.align-center</code> to the menu like this <a href="http://codepen.io/IamManchanda/pen/jyGjmV">codepen</a> or instead you can use the default wrapper class below.</p>
 </div>
 
 ```html_example
@@ -78,16 +78,16 @@ Items can also be set to expand out and take up an even amount of space, with th
 ```
 
 <ul class="menu expanded">
-  <li><a href="#">One</a></li>
-  <li><a href="#">Two</a></li>
-  <li><a href="#">Three</a></li>
+  <li><a href="#0">One</a></li>
+  <li><a href="#0">Two</a></li>
+  <li><a href="#0">Three</a></li>
 </ul>
 
 <ul class="menu expanded">
-  <li><a href="#">One</a></li>
-  <li><a href="#">Two</a></li>
-  <li><a href="#">Three</a></li>
-  <li><a href="#">Four</a></li>
+  <li><a href="#0">One</a></li>
+  <li><a href="#0">Two</a></li>
+  <li><a href="#0">Three</a></li>
+  <li><a href="#0">Four</a></li>
 </ul>
 
 ---

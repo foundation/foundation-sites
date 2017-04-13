@@ -30,13 +30,21 @@ $button-background-hover: scale-color($button-background, $lightness: -15%) !def
 /// @type List
 $button-color: $white !default;
 
-/// Font color for buttons, if the background is light.
+/// Alternative font color for buttons.
 /// @type List
 $button-color-alt: $black !default;
 
 /// Border radius for buttons, defaulted to global-radius.
 /// @type Number
 $button-radius: $global-radius !default;
+
+/// Border width for hollow outline buttons
+/// @type Number
+$button-hollow-border-width: 1px !default;
+
+/// Border width for hollow outline buttons
+/// @type Number
+$button-clear-border-width: 1px !default;
 
 /// Sizes for buttons.
 /// @type Map
@@ -47,30 +55,62 @@ $button-sizes: (
   large: 1.25rem,
 ) !default;
 
+/// Coloring classes. A map of classes to output in your CSS, like `.secondary`, `.success`, and so on.
+/// @type Map
+$button-palette: $foundation-palette !default;
+
 /// opacity for a disabled button.
 /// @type List
 $button-opacity-disabled: 0.25 !default;
+
+/// Background color lightness on hover for buttons.
+/// @type Number
+$button-background-hover-lightness: -20% !default;
+
+/// Color lightness on hover for hollow buttons.
+/// @type Number
+$button-hollow-hover-lightness: -50% !default;
+
+/// Color lightness on hover for clear buttons.
+/// @type Number
+$button-clear-hover-lightness: -50% !default;
 
 // Internal: flip from margin-right to margin-left for defaults
 @if $global-text-direction == 'rtl' {
   $button-margin: 0 0 $global-margin $global-margin !default;
 }
 
+/// transitions for buttons.
+/// @type List
+$button-transition: background-color 0.25s ease-out, color 0.25s ease-out !default;
+
 // TODO: Document button-base() mixin
 @mixin button-base {
   @include disable-mouse-outline;
   display: inline-block;
-  text-align: center;
-  line-height: 1;
-  cursor: pointer;
-  -webkit-appearance: none;
-  transition: background-color 0.25s ease-out, color 0.25s ease-out;
   vertical-align: middle;
+  margin: $button-margin;
+
+  @if (type-of($button-padding) == 'map') {
+    @each $size, $padding in $button-padding {
+      @include breakpoint($size) {
+        padding: $padding;
+      }
+    }
+  }
+  @else {
+    padding: $button-padding;
+  }
+
+  -webkit-appearance: none;
   border: 1px solid transparent;
   border-radius: $button-radius;
-  padding: $button-padding;
-  margin: $button-margin;
+  transition: $button-transition;
+
   font-size: map-get($button-sizes, default);
+  line-height: 1;
+  text-align: center;
+  cursor: pointer;
 }
 
 /// Expands a button to make it full-width.
@@ -79,8 +119,8 @@ $button-opacity-disabled: 0.25 !default;
   @if $expand {
     display: block;
     width: 100%;
-    margin-left: 0;
     margin-right: 0;
+    margin-left: 0;
   }
   @else {
     display: inline-block;
@@ -96,14 +136,15 @@ $button-opacity-disabled: 0.25 !default;
 @mixin button-style(
   $background: $button-background,
   $background-hover: $button-background-hover,
-  $color: $button-color
+  $color: $button-color,
+  $background-hover-lightness: $button-background-hover-lightness
 ) {
   @if $color == auto {
-    $color: foreground($background, $button-color-alt, $button-color);
+    $color: color-pick-contrast($background, ($button-color, $button-color-alt));
   }
 
   @if $background-hover == auto {
-    $background-hover: scale-color($background, $lightness: -20%);
+    $background-hover: scale-color($background, $lightness: $background-hover-lightness);
   }
 
   background-color: $background;
@@ -121,28 +162,78 @@ $button-opacity-disabled: 0.25 !default;
   &:hover, &:focus {
     background-color: transparent;
   }
+
+  &.disabled,
+  &[disabled] {
+    &, 
+    &:hover, &:focus {
+      background-color: transparent;
+    }
+  }
 }
 
-@mixin button-hollow-style($color: $primary-color) {
-  $color-hover: scale-color($color, $lightness: -50%);
+@mixin button-hollow-style(
+  $color: $button-background,
+  $hover-lightness: $button-hollow-hover-lightness,
+  $border-width: $button-hollow-border-width
+) {
+  $color-hover: scale-color($color, $lightness: $hover-lightness);
 
-  border: 1px solid $color;
+  border: $border-width solid $color;
   color: $color;
 
   &:hover, &:focus {
     border-color: $color-hover;
     color: $color-hover;
+    &.disabled,
+    &[disabled] {
+      border: $border-width solid $color;
+      color: $color;
+    }
+  }
+}
+
+/// Removes background fill on hover and focus for hollow buttons.
+@mixin button-clear {
+  &,
+  &:hover, &:focus {
+    background-color: transparent;
+  }
+}
+
+@mixin button-clear-style(
+  $color: $primary-color,
+  $hover-lightness: $button-clear-hover-lightness,
+  $border-width: $button-clear-border-width
+) {
+  $color-hover: scale-color($color, $lightness: $hover-lightness);
+
+  border: $border-width solid transparent;
+  color: $color;
+
+  &:hover, &:focus {
+    border-color: transparent;
+    color: $color-hover;
   }
 }
 
 /// Adds disabled styles to a button by fading the element, reseting the cursor, and disabling pointer events.
-@mixin button-disabled {
+/// @param [Color] $background [$button-background] - Background color of the disabled button.
+/// @param [Color] $color [$button-color] - Text color of the disabled button. Set to `auto` to have the mixin automatically generate a color based on the background color.
+@mixin button-disabled(
+  $background: $button-background,
+  $color: $button-color
+) {
+  @if $color == auto {
+    $color: color-pick-contrast($background, ($button-color, $button-color-alt));
+  }
+
   opacity: $button-opacity-disabled;
   cursor: not-allowed;
 
-  &:hover, &:focus {
-    background-color: $button-background;
-    color: $button-color;
+  &, &:hover, &:focus {
+    background-color: $background;
+    color: $color;
   }
 }
 
@@ -159,9 +250,10 @@ $button-opacity-disabled: 0.25 !default;
     @include css-triangle($size, $color, down);
     position: relative;
     top: 0.4em; // Aligns the arrow with the text of the button
+
+    display: inline-block;
     float: #{$global-right};
     margin-#{$global-left}: get-side($button-padding, right);
-    display: inline-block;
   }
 }
 
@@ -207,7 +299,7 @@ $button-opacity-disabled: 0.25 !default;
     &.expanded { @include button-expand; }
 
     // Colors
-    @each $name, $color in $foundation-palette {
+    @each $name, $color in $button-palette {
       @if $button-fill != hollow {
         &.#{$name} {
           @include button-style($color, auto, auto);
@@ -224,13 +316,25 @@ $button-opacity-disabled: 0.25 !default;
       }
     }
 
+    // Disabled style
+    &.disabled,
+    &[disabled] {
+      @include button-disabled;
+
+      @each $name, $color in $button-palette {
+        &.#{$name} {
+          @include button-disabled($color, auto);
+        }
+      }
+    }
+
     // Hollow style
     @if $button-fill != hollow {
       &.hollow {
         @include button-hollow;
         @include button-hollow-style;
 
-        @each $name, $color in $foundation-palette {
+        @each $name, $color in $button-palette {
           &.#{$name} {
             @include button-hollow-style($color);
           }
@@ -238,10 +342,18 @@ $button-opacity-disabled: 0.25 !default;
       }
     }
 
-    // Disabled style
-    &.disabled,
-    &[disabled] {
-      @include button-disabled;
+    // Clear style
+    @if $button-fill != clear {
+      &.clear {
+        @include button-clear;
+        @include button-clear-style;
+
+        @each $name, $color in $button-palette {
+          &.#{$name} {
+            @include button-clear-style($color);
+          }
+        }
+      }
     }
 
     // Dropdown arrow
@@ -253,13 +365,27 @@ $button-opacity-disabled: 0.25 !default;
           border-top-color: $button-background;
         }
       }
+
+      &.hollow {
+        &::after {
+          border-top-color: $button-background;
+        }
+
+        @each $name, $color in $button-palette {
+          &.#{$name} {
+            &::after {
+              border-top-color: $color;
+            }
+          }
+        }
+      }
     }
 
     // Button with dropdown arrow only
     &.arrow-only::after {
-      margin-#{$global-left}: 0;
-      float: none;
       top: -0.1em;
+      float: none;
+      margin-#{$global-left}: 0;
     }
   }
 }

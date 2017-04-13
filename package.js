@@ -1,7 +1,7 @@
 Package.describe({
   name: 'zurb:foundation-sites',
   summary: 'Foundation 6 - The most advanced responsive front-end framework in the world.',
-  version: '6.2.3',
+  version: '6.3.1',
   git: 'https://github.com/zurb/foundation-sites.git',
   documentation: 'meteor-README.md'
 });
@@ -10,7 +10,7 @@ Package.onUse(function(api) {
   api.versionsFrom('1.2.1');
   api.imply('fourseven:scss@3.4.1');
   api.use(['ecmascript', 'jquery', 'fourseven:scss@3.4.1'], 'client');
-  api.addFiles('dist/foundation.js', 'client');
+  api.addFiles('dist/js/foundation.js', 'client');
   api.addFiles([
 
     'scss/foundation.scss',
@@ -28,7 +28,6 @@ Package.onUse(function(api) {
     'scss/components/_drilldown.scss',
     'scss/components/_dropdown-menu.scss',
     'scss/components/_dropdown.scss',
-    'scss/components/_flex-video.scss',
     'scss/components/_flex.scss',
     'scss/components/_float.scss',
     'scss/components/_label.scss',
@@ -39,6 +38,7 @@ Package.onUse(function(api) {
     'scss/components/_orbit.scss',
     'scss/components/_pagination.scss',
     'scss/components/_progress-bar.scss',
+    'scss/components/_responsive-embed.scss',
     'scss/components/_reveal.scss',
     'scss/components/_slider.scss',
     'scss/components/_sticky.scss',

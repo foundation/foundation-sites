@@ -16,66 +16,64 @@ The default font size is set to 100% of the browser style sheet, usually 16 pixe
 
 ## Colors
 
-All interactive elements in Foundation, such as links and buttons, use the same color. The default shade of blue you see all over Foundation comes from the `$primary-color` Sass variable.
-
-Many components can also be colored with four other colors: secondary, alert, success, and warning. Use these colors to give more context to UI elements and actions.
+Foundation has an accessible default color palette. The primary color is used for interactive elements, such as links and buttons. The secondary, success, warning, and alert colors are used to give more context to UI elements and actions.
 
 <div class="row small-up-1 medium-up-3 large-up-5">
-  <div class="column">
+  <div class="column column-block">
     <div class="docs-color-block">
       <div class="docs-color-block-primary"></div>
       <p>Primary</p>
     </div>
   </div>
-  <div class="column">
+  <div class="column column-block">
     <div class="docs-color-block">
       <div class="docs-color-block-secondary"></div>
       <p>Secondary</p>
     </div>
   </div>
-  <div class="column">
+  <div class="column column-block">
     <div class="docs-color-block">
       <div class="docs-color-block-success"></div>
       <p>Success</p>
     </div>
   </div>
-  <div class="column">
+  <div class="column column-block">
     <div class="docs-color-block">
       <div class="docs-color-block-warning"></div>
       <p>Warning</p>
     </div>
   </div>
-  <div class="column">
+  <div class="column column-block">
     <div class="docs-color-block">
       <div class="docs-color-block-alert"></div>
       <p>Alert</p>
     </div>
   </div>
-  <div class="column">
+  <div class="column column-block">
     <div class="docs-color-block">
       <div class="docs-color-block-white"></div>
       <p>White</p>
     </div>
   </div>
-  <div class="column">
+  <div class="column column-block">
     <div class="docs-color-block">
       <div class="docs-color-block-light-gray"></div>
       <p>Light Gray</p>
     </div>
   </div>
-  <div class="column">
+  <div class="column column-block">
     <div class="docs-color-block">
       <div class="docs-color-block-medium-gray"></div>
       <p>Medium Gray</p>
     </div>
   </div>
-  <div class="column">
+  <div class="column column-block">
     <div class="docs-color-block">
       <div class="docs-color-block-dark-gray"></div>
       <p>Dark Gray</p>
     </div>
   </div>
-  <div class="column">
+  <div class="column column-block">
     <div class="docs-color-block">
       <div class="docs-color-block-black"></div>
       <p>Black</p>
@@ -83,47 +81,49 @@ Many components can also be colored with four other colors: secondary, alert, su
   </div>
 </div>
 
-If you're using the Sass version of Foundation, it's possible to edit the default color palette, by changing the `$foundation-palette` variable in your settings file. The only required color is one named "primary". The names used in the palette will be output as CSS classes.
+---
+
+### Changing the Color Palette
+
+If you're using the Sass version of Foundation, you can easily change the color palette by editing the variables in your settings file.
+
+The semantic colors (primary, secondary, success, warning, and alert) can be changed in the `$foundation-palette` map. The keys in this map are referenced by various settings to style components and output alternate class names.
 
 ```scss
 $foundation-palette: (
-  primary: #E44347,
-  mars: #D7525C,
-  saturn: #E4B884,
-  neptune: #5147D7,
-)
-```
-
-Using the above palette, we can add the `.mars`, `.saturn`, or `.neptune` classes to buttons, labels, badges, and more.
-
-To access the colors in your code, use Sass's `map-get()` function:
-
-```scss
-.mars {
-  color: map-get($foundation-palette, mars);
-}
+  primary: #1779ba,
+  secondary: #767676,
+  success: #3adb76,
+  warning: #ffae00,
+  alert: #cc4b37,
+);
 ```
 
 <div class="warning callout">
-  <p>If you're upgrading an older version of Foundation 6 to 6.2, add the line <code>@include add-foundation-colors;</code> <em>below the Global section of your settings file</em>. This will allow legacy color variables, such as <code>$primary-color</code> and <code>$secondary-color</code>, to continue working.
+  <p>If you remove a default key from `$foundation-palette`, be sure to edit any variables in your settings file that reference that color.</p>
 </div>
 
----
+The named colors (white, light gray, medium gray, dark gray, and black) can be changed in their respective variables
 
-### Color Classes
-
-Some components, such as [buttons](button.html), [callouts](callout.html), and [labels](label.html), have *coloring classes*, which let you change the color of the element by adding the name of the color as a CSS class.
-
-```html_example
-<button class="button">Primary Action</button>
-<button class="secondary button">Secondary Action</button>
+```scss
+$light-gray: #e6e6e6;
+$medium-gray: #cacaca;
+$dark-gray: #8a8a8a;
+$black: #0a0a0a;
+$white: #fefefe;
 ```
 
-```html_example
-<div class="success callout">
-  <p>Created a new folder.</p>
-</div>
-<div class="alert callout">
-  <p>Error fetching stick.</p>
-</div>
+The line `@include add-foundation-colors;` in your settings file allows you to use the following Sass variables to reference *default colors* from the palette:
+
+- `$primary-color`
+- `$secondary-color`
+- `$success-color`
+- `$warning-color`
+- `$alert-color`
+
+You can also use Foundation's `get-color()` function to reference *any color* from the palette. This function gives you access to custom colors you've added to the palette.
+
+```scss
+// Create a variable for my custom color.
+$custom-color: get-color(custom);
 ```

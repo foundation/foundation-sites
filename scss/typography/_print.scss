@@ -6,8 +6,9 @@
 /// @type Boolean
 /// @group global
 $print-transparent-backgrounds: true !default;
+$print-hrefs: true !default;
 
-// scss-lint:disable all
+// sass-lint:disable-all
 
 @mixin foundation-print-styles {
   .show-for-print { display: none !important; }
@@ -18,8 +19,9 @@ $print-transparent-backgrounds: true !default;
         background: transparent !important;
       }
 
-      color: black !important; // Black prints faster: h5bp.com/s
       box-shadow: none !important;
+
+      color: black !important; // Black prints faster: h5bp.com/s
       text-shadow: none !important;
     }
 
@@ -36,7 +38,9 @@ $print-transparent-backgrounds: true !default;
     // Display the URL of a link after the text
     a,
     a:visited { text-decoration: underline;}
-    a[href]:after { content: ' (' attr(href) ')'; }
+    @if $print-hrefs {
+      a[href]:after { content: ' (' attr(href) ')'; }
+    }
 
     // Don't display the URL for images or JavaScript/internal links
     .ir a:after,
@@ -73,5 +77,10 @@ $print-transparent-backgrounds: true !default;
     // Avoid page breaks after a heading
     h2,
     h3 { page-break-after: avoid; }
+
+    // Helper to re-allow page breaks in the middle of certain elements (e.g. pre, blockquote, tr)
+    .print-break-inside {
+      page-break-inside: auto;
+    }
   }
 }

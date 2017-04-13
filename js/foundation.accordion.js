@@ -38,7 +38,7 @@ class Accordion {
    */
   _init() {
     this.$element.attr('role', 'tablist');
-    this.$tabs = this.$element.children('li, [data-accordion-item]');
+    this.$tabs = this.$element.children('[data-accordion-item]');
 
     this.$tabs.each(function(idx, el) {
       var $el = $(el),
@@ -57,9 +57,48 @@ class Accordion {
       $content.attr({'role': 'tabpanel', 'aria-labelledby': linkId, 'aria-hidden': true, 'id': id});
     });
     var $initActive = this.$element.find('.is-active').children('[data-tab-content]');
+    this.firstTimeInit = true;
     if($initActive.length){
-      this.down($initActive, true);
+      this.down($initActive, this.firstTimeInit);
+      this.firstTimeInit = false;
     }
+
+    this._checkDeepLink = () => {
+      var anchor = window.location.hash;
+      //need a hash and a relevant anchor in this tabset
+      if(anchor.length) {
+        var $link = this.$element.find('[href$="'+anchor+'"]'),
+        $anchor = $(anchor);
+
+        if ($link.length && $anchor) {
+          if (!$link.parent('[data-accordion-item]').hasClass('is-active')) {
+            this.down($anchor, this.firstTimeInit);
+            this.firstTimeInit = false;
+          };
+
+          //roll up a little to show the titles
+          if (this.options.deepLinkSmudge) {
+            var _this = this;
+            $(window).load(function() {
+              var offset = _this.$element.offset();
+              $('html, body').animate({ scrollTop: offset.top }, _this.options.deepLinkSmudgeDelay);
+            });
+          }
+
+          /**
+            * Fires when the zplugin has deeplinked at pageload
+            * @event Accordion#deeplink
+            */
+          this.$element.trigger('deeplink.zf.accordion', [$link, $anchor]);
+        }
+      }
+    }
+
+    //use browser to open a tab, if it exists in this tabset
+    if (this.options.deepLink) {
+      this._checkDeepLink();
+    }
+
     this._events();
   }
 
@@ -76,16 +115,8 @@ class Accordion {
       if ($tabContent.length) {
         $elem.children('a').off('click.zf.accordion keydown.zf.accordion')
                .on('click.zf.accordion', function(e) {
-        // $(this).children('a').on('click.zf.accordion', function(e) {
           e.preventDefault();
-          if ($elem.hasClass('is-active')) {
-            if(_this.options.allowAllClosed || $elem.siblings().hasClass('is-active')){
-              _this.up($tabContent);
-            }
-          }
-          else {
-            _this.down($tabContent);
-          }
+          _this.toggle($tabContent);
         }).on('keydown.zf.accordion', function(e){
           Foundation.Keyboard.handleKey(e, 'Accordion', {
             toggle: function() {
@@ -111,43 +142,54 @@ class Accordion {
         });
       }
     });
+    if(this.options.deepLink) {
+      $(window).on('popstate', this._checkDeepLink);
+    }
   }
 
   /**
    * Toggles the selected content pane's open/close state.
-   * @param {jQuery} $target - jQuery object of the pane to toggle.
+   * @param {jQuery} $target - jQuery object of the pane to toggle (`.accordion-content`).
    * @function
    */
   toggle($target) {
     if($target.parent().hasClass('is-active')) {
-      if(this.options.allowAllClosed || $target.parent().siblings().hasClass('is-active')){
-        this.up($target);
-      } else { return; }
+      this.up($target);
     } else {
       this.down($target);
+    }
+    //either replace or update browser history
+    if (this.options.deepLink) {
+      var anchor = $target.prev('a').attr('href');
+
+      if (this.options.updateHistory) {
+        history.pushState({}, '', anchor);
+      } else {
+        history.replaceState({}, '', anchor);
+      }
     }
   }
 
   /**
    * Opens the accordion tab defined by `$target`.
-   * @param {jQuery} $target - Accordion pane to open.
+   * @param {jQuery} $target - Accordion pane to open (`.accordion-content`).
    * @param {Boolean} firstTime - flag to determine if reflow should happen.
    * @fires Accordion#down
    * @function
    */
   down($target, firstTime) {
-    if (!this.options.multiExpand && !firstTime) {
-      var $currentActive = this.$element.children('.is-active').children('[data-tab-content]');
-      if($currentActive.length){
-        this.up($currentActive);
-      }
-    }
-
     $target
       .attr('aria-hidden', false)
       .parent('[data-tab-content]')
       .addBack()
       .parent().addClass('is-active');
+
+    if (!this.options.multiExpand && !firstTime) {
+      var $currentActive = this.$element.children('.is-active').children('[data-tab-content]');
+      if ($currentActive.length) {
+        this.up($currentActive.not($target));
+      }
+    }
 
     $target.slideDown(this.options.slideSpeed, () => {
       /**
@@ -165,16 +207,15 @@ class Accordion {
 
   /**
    * Closes the tab defined by `$target`.
-   * @param {jQuery} $target - Accordion tab to close.
+   * @param {jQuery} $target - Accordion tab to close (`.accordion-content`).
    * @fires Accordion#up
    * @function
    */
   up($target) {
     var $aunts = $target.parent().siblings(),
         _this = this;
-    var canClose = this.options.multiExpand ? $aunts.hasClass('is-active') : $target.parent().hasClass('is-active');
 
-    if(!this.options.allowAllClosed && !canClose) {
+    if((!this.options.allowAllClosed && !$aunts.hasClass('is-active')) || !$target.parent().hasClass('is-active')) {
       return;
     }
 
@@ -205,6 +246,9 @@ class Accordion {
   destroy() {
     this.$element.find('[data-tab-content]').stop(true).slideUp(0).css('display', '');
     this.$element.find('a').off('.zf.accordion');
+    if(this.options.deepLink) {
+      $(window).off('popstate', this._checkDeepLink);
+    }
 
     Foundation.unregisterPlugin(this);
   }
@@ -214,21 +258,55 @@ Accordion.defaults = {
   /**
    * Amount of time to animate the opening of an accordion pane.
    * @option
-   * @example 250
+   * @type {number}
+   * @default 250
    */
   slideSpeed: 250,
   /**
    * Allow the accordion to have multiple open panes.
    * @option
-   * @example false
+   * @type {boolean}
+   * @default false
    */
   multiExpand: false,
   /**
    * Allow the accordion to close all panes.
    * @option
-   * @example false
+   * @type {boolean}
+   * @default false
    */
-  allowAllClosed: false
+  allowAllClosed: false,
+  /**
+   * Allows the window to scroll to content of pane specified by hash anchor
+   * @option
+   * @type {boolean}
+   * @default false
+   */
+  deepLink: false,
+
+  /**
+   * Adjust the deep link scroll to make sure the top of the accordion panel is visible
+   * @option
+   * @type {boolean}
+   * @default false
+   */
+  deepLinkSmudge: false,
+
+  /**
+   * Animation time (ms) for the deep link adjustment
+   * @option
+   * @type {number}
+   * @default 300
+   */
+  deepLinkSmudgeDelay: 300,
+
+  /**
+   * Update the browser history with the open accordion
+   * @option
+   * @type {boolean}
+   * @default false
+   */
+  updateHistory: false
 };
 
 // Window exports

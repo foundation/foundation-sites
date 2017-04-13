@@ -36,7 +36,12 @@ $(document).on('click.zf.trigger', '[data-close]', function() {
 
 // Elements with [data-toggle] will toggle a plugin that supports it when clicked.
 $(document).on('click.zf.trigger', '[data-toggle]', function() {
-  triggers($(this), 'toggle');
+  let id = $(this).data('toggle');
+  if (id) {
+    triggers($(this), 'toggle');
+  } else {
+    $(this).trigger('toggle.zf.trigger');
+  }
 });
 
 // Elements with [data-closable] will respond to close.zf.trigger events.
@@ -155,43 +160,44 @@ function eventsListener() {
   let nodes = document.querySelectorAll('[data-resize], [data-scroll], [data-mutate]');
 
   //element callback
-  var listeningElementsMutation = function(mutationRecordsList) {
-    var $target = $(mutationRecordsList[0].target);
-    //trigger the event handler for the element depending on type
-    switch ($target.attr("data-events")) {
+  var listeningElementsMutation = function (mutationRecordsList) {
+      var $target = $(mutationRecordsList[0].target);
 
-      case "resize" :
-      $target.triggerHandler('resizeme.zf.trigger', [$target]);
-      break;
+	  //trigger the event handler for the element depending on type
+      switch (mutationRecordsList[0].type) {
 
-      case "scroll" :
-      $target.triggerHandler('scrollme.zf.trigger', [$target, window.pageYOffset]);
-      break;
+        case "attributes":
+          if ($target.attr("data-events") === "scroll" && mutationRecordsList[0].attributeName === "data-events") {
+		  	$target.triggerHandler('scrollme.zf.trigger', [$target, window.pageYOffset]);
+		  }
+		  if ($target.attr("data-events") === "resize" && mutationRecordsList[0].attributeName === "data-events") {
+		  	$target.triggerHandler('resizeme.zf.trigger', [$target]);
+		   }
+		  if (mutationRecordsList[0].attributeName === "style") {
+			  $target.closest("[data-mutate]").attr("data-events","mutate");
+			  $target.closest("[data-mutate]").triggerHandler('mutateme.zf.trigger', [$target.closest("[data-mutate]")]);
+		  }
+		  break;
 
-      // case "mutate" :
-      // console.log('mutate', $target);
-      // $target.triggerHandler('mutate.zf.trigger');
-      //
-      // //make sure we don't get stuck in an infinite loop from sloppy codeing
-      // if ($target.index('[data-mutate]') == $("[data-mutate]").length-1) {
-      //   domMutationObserver();
-      // }
-      // break;
+        case "childList":
+		  $target.closest("[data-mutate]").attr("data-events","mutate");
+		  $target.closest("[data-mutate]").triggerHandler('mutateme.zf.trigger', [$target.closest("[data-mutate]")]);
+          break;
 
-      default :
-      return false;
-      //nothing
+        default:
+          return false;
+        //nothing
+      }
+    };
+
+    if (nodes.length) {
+      //for each element that needs to listen for resizing, scrolling, or mutation add a single observer
+      for (var i = 0; i <= nodes.length - 1; i++) {
+        var elementObserver = new MutationObserver(listeningElementsMutation);
+        elementObserver.observe(nodes[i], { attributes: true, childList: true, characterData: false, subtree: true, attributeFilter: ["data-events", "style"] });
+      }
     }
   }
-
-  if(nodes.length){
-    //for each element that needs to listen for resizing, scrolling, (or coming soon mutation) add a single observer
-    for (var i = 0; i <= nodes.length-1; i++) {
-      let elementObserver = new MutationObserver(listeningElementsMutation);
-      elementObserver.observe(nodes[i], { attributes: true, childList: false, characterData: false, subtree:false, attributeFilter:["data-events"]});
-    }
-  }
-}
 
 // ------------------------------------
 
@@ -202,38 +208,3 @@ Foundation.IHearYou = checkListeners;
 // Foundation.IFeelYou = closemeListener;
 
 }(jQuery);
-
-// function domMutationObserver(debounce) {
-//   // !!! This is coming soon and needs more work; not active  !!! //
-//   var timer,
-//   nodes = document.querySelectorAll('[data-mutate]');
-//   //
-//   if (nodes.length) {
-//     // var MutationObserver = (function () {
-//     //   var prefixes = ['WebKit', 'Moz', 'O', 'Ms', ''];
-//     //   for (var i=0; i < prefixes.length; i++) {
-//     //     if (prefixes[i] + 'MutationObserver' in window) {
-//     //       return window[prefixes[i] + 'MutationObserver'];
-//     //     }
-//     //   }
-//     //   return false;
-//     // }());
-//
-//
-//     //for the body, we need to listen for all changes effecting the style and class attributes
-//     var bodyObserver = new MutationObserver(bodyMutation);
-//     bodyObserver.observe(document.body, { attributes: true, childList: true, characterData: false, subtree:true, attributeFilter:["style", "class"]});
-//
-//
-//     //body callback
-//     function bodyMutation(mutate) {
-//       //trigger all listening elements and signal a mutation event
-//       if (timer) { clearTimeout(timer); }
-//
-//       timer = setTimeout(function() {
-//         bodyObserver.disconnect();
-//         $('[data-mutate]').attr('data-events',"mutate");
-//       }, debounce || 150);
-//     }
-//   }
-// }

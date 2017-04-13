@@ -25,31 +25,75 @@ If an element is described by multiple labels, place multiple IDs inside of `ari
 
 ```html
 <p aria-describedby="emailLabel1 emailLabel2">Re: re: re: you won't believe what's in this email!</p>
-<span class="label" id="emailLabel">High Priority<span>
-<span class="label" id="emailLabe2">Unread<span>
+<span class="label" id="emailLabel1">High Priority<span>
+<span class="label" id="emailLabel2">Unread<span>
 ```
 
 ---
 
 ## Coloring
 
-Labels can be colored with the same classes used for buttons and other components.
+Add color classes to give labels additional meaning.
 
 ```html_example
-<span class="secondary label">Secondary Label</span>
-<span class="success label">Success Label</span>
-<span class="alert label">Alert Label</span>
-<span class="warning label">Warning Label</span>
+<span class="label primary">Primary Label</span>
+<span class="label secondary">Secondary Label</span>
+<span class="label success">Success Label</span>
+<span class="label alert">Alert Label</span>
+<span class="label warning">Warning Label</span>
 ```
 
 ---
 
-### With Icons
+### Custom Colors
+
+If you're using the Sass version of Foundation, you can customize the label classes by editing the `$label-palette` map in your settings file. The label palette defaults to `$foundation-palette`.
+
+If you don't need certain colors from the default palette, simply remove them from the list.
+
+```scss
+$label-palette: map-remove($foundation-palette, (
+    primary,
+    secondary
+)) !default;
+```  
+
+Or you can add more colors to the default palette.
+
+```scss
+$label-palette: map-merge($foundation-palette, (
+    purple: #bb00ff
+)) !default;
+```
+
+Or you can define your own custom label palette.
+
+```scss
+$label-palette: (
+    black: #000000,
+    red: #ff0000,
+    purple: #bb00ff
+) !default;
+```
+
+---
+
+### Text Colors
+
+The text color for each label class is determined by either `$label-color` or `$label-color-alt`, whichever settings variable has more contrast.
+
+<div class="primary callout">
+  <p>The default settings meet WCAG 2.0 level AA contrast requirements. Be sure to [check the contrast](http://webaim.org/resources/contrastchecker/) when changing color variables. To give all labels the same color text, set `$label-color` and `$label-color-alt` to the same value &mdash; but know that doing so may decrease accessibility.</p>
+</div>
+
+---
+
+## Icons
 
 An icon can be dropped into a label just fine. We're using the [Foundation icon font](http://zurb.com/playground/foundation-icon-fonts-3) here, but any icon fonts or image-based icons will work fine.
 
 ```html_example
-<span class="alert label"><i class="fi-x-circle"></i> Alert Label</span>
-<span class="warning label"><i class="fi-x"></i> Warning Label</span>
-<span class="info label"><i class="fi-widget"></i> Info Label</span>
+<span class="label alert"><i class="fi-x-circle"></i> Alert Label</span>
+<span class="label warning"><i class="fi-x"></i> Warning Label</span>
+<span class="label info"><i class="fi-widget"></i> Info Label</span>
 ```

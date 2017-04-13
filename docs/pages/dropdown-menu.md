@@ -41,7 +41,7 @@ To create dropdown menus, nest a new `<ul>` inside an `<li>`. You can nest furth
 
 <ul class="dropdown menu" data-dropdown-menu>
   <li>
-    <a>Item 1</a>
+    <a href="#Item-1">Item 1</a>
     <ul class="menu">
       <li><a href="#Item-1A">Item 1A</a></li>
       <li>
@@ -97,7 +97,7 @@ Add the `.vertical` class to the top-level menu to make it vertical. Sub-menus a
 
 <ul class="vertical dropdown menu" data-dropdown-menu style="max-width: 300px;">
   <li>
-    <a>Item 1</a>
+    <a href="#Item-1">Item 1</a>
     <ul class="menu">
       <li><a href="#Item-1A">Item 1A</a></li>
       <li>
@@ -138,17 +138,17 @@ Add the `.vertical` class to the top-level menu to make it vertical. Sub-menus a
 
 ## Sticky Navigation
 
-See the documentation for the [Sticky](sticky.html#sticky-navigation) plugin to see how to easily make a sticky nav bar. 
+See the documentation for the [Sticky](sticky.html#sticky-navigation) plugin to see how to easily make a sticky nav bar.
 
 ---
 
 ### Preventing FOUC
 
-Before the JavaScript on your page loads, the dropdown menus will not have arrows. However, once the JavaScript file has loaded, the arrows will appear causing a [flash of unstyled content](https://en.wikipedia.org/wiki/Flash_of_unstyled_content). You can prevent this by adding the `.is-dropdown-submenu-parent` class manually. 
+Before the JavaScript on your page loads, the dropdown menus will not have arrows. However, once the JavaScript file has loaded, the arrows will appear causing a [flash of unstyled content](https://en.wikipedia.org/wiki/Flash_of_unstyled_content). You can prevent this by adding the `.is-dropdown-submenu-parent` class manually.
 
 ```html
 <ul class="dropdown menu" data-dropdown-menu>
-  <li class=".is-dropdown-submenu-parent">
+  <li class="is-dropdown-submenu-parent">
     <a href="#">Item 1</a>
     <ul class="menu">
       <li><a href="#">Item 1A</a></li>

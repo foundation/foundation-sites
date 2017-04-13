@@ -20,7 +20,7 @@ $topbar-submenu-background: $topbar-background !default;
 
 /// Spacing for the top bar title.
 /// @type Number
-$topbar-title-spacing: 1rem !default;
+$topbar-title-spacing: 0.5rem 1rem 0.5rem 0 !default;
 
 /// Maximum width of `<input>` elements inside the top bar.
 /// @type Number
@@ -34,9 +34,9 @@ $topbar-unstack-breakpoint: medium !default;
 @mixin top-bar-container {
   @if $global-flexbox {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
     flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
   }
   @else {
     @include clearfix;
@@ -68,8 +68,7 @@ $topbar-unstack-breakpoint: medium !default;
     margin-#{$global-right}: 0;
   }
 
-  // scss-lint:disable QualifyingElement
-  input.button {
+  input.button { // sass-lint:disable-line no-qualifying-elements
     width: auto;
   }
 }
@@ -100,10 +99,12 @@ $topbar-unstack-breakpoint: medium !default;
   @if $global-flexbox {
     flex-wrap: nowrap;
 
-    // scss-lint:disable ZeroUnit
-    .top-bar-left,
+    .top-bar-left {
+      flex: 1 1 auto;
+    }
+
     .top-bar-right {
-      flex: 1 1 0px;
+      flex: 0 1 auto;
     }
   }
   @else {
@@ -142,7 +143,7 @@ $topbar-unstack-breakpoint: medium !default;
   @if $global-flexbox {
     .top-bar-title {
       flex: 0 0 auto;
-      margin-right: $topbar-title-spacing;
+      margin: $topbar-title-spacing;
     }
 
     .top-bar-left,
@@ -152,9 +153,13 @@ $topbar-unstack-breakpoint: medium !default;
   }
   @else {
     .top-bar-title {
+      display: inline-block;
       float: left;
-      margin-right: $topbar-title-spacing;
+      padding: $topbar-title-spacing;
 
+      .menu-icon {
+        bottom: 2px;
+      }
     }
 
     .top-bar-left {

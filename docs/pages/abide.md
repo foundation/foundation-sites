@@ -1,6 +1,6 @@
 ---
 title: Abide
-description: Abide is an form validation library that extends the HTML5 validation API with custom validators.
+description: Abide is a form validation library that extends the HTML5 validation API with custom validators.
 sass: scss/forms/_error.scss
 js: js/foundation.abide.js
 tags:
@@ -8,7 +8,7 @@ tags:
   - validation
 ---
 
-### Abide Demo
+## Abide Demo
 
 These input types create a text field: `text`, `date`, `datetime`, `datetime-local`, `email`, `month`, `number`, `password`, `search`, `tel`, `time`, `url`, and `week`.
 
@@ -26,12 +26,6 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
         </span>
       </label>
       <p class="help-text" id="exampleHelpText">Here's how you use this input field!</p>
-    </div>
-    <div class="small-12 columns">
-      <label>Nothing Required!
-        <input type="text" placeholder="Use me, or don't" aria-describedby="exampleHelpTex" data-abide-ignore>
-      </label>
-      <p class="help-text" id="exampleHelpTex">This input is ignored by Abide using `data-abide-ignore`</p>
     </div>
     <div class="small-12 columns">
       <label>Password Required
@@ -121,6 +115,29 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
   <textarea type="text" class="is-invalid-input"></textarea>
 </label>
 
+---
+
+### Form Errors
+
+Abide automatically detects Form Errors of an input by their class (`.form-error` by default, see the `formErrorSelector` option) when they are siblings of the input or inside the same parent.
+
+When the Form Errors cannot be placed next to its field, like in an Input Group, the relation can be declared with `[data-form-error-for]` attribute.
+
+```html_example
+<form data-abide novalidate>
+  <label>
+    Amount
+    <div class="input-group">
+      <span class="input-group-label">$</span>
+      <input class="input-group-field" id="exampleNumberInput" type="number" required pattern="number"/>
+    </div>
+    <span class="form-error" data-form-error-for="exampleNumberInput">Amount is required.</span>
+  </label>
+  <button class="button" type="submit" value="Submit">Submit</button>
+</form>
+```
+
+
 ## Initial State
 
 ```html
@@ -156,6 +173,40 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
   </label>
 </form>
 ```
+
+## Ignored Inputs
+
+```html
+<form data-abide>
+    <div class="small-12 columns">
+      <label>Nothing Required!
+        <input type="text" placeholder="Use me, or don't" aria-describedby="exampleHelpTex" data-abide-ignore>
+      </label>
+      <p class="help-text" id="exampleHelpTex">This input is ignored by Abide using `data-abide-ignore`</p>
+    </div>
+    <div class="small-12 columns">
+      <label>Disabled!
+        <input type="text" placeholder="Disabled input" aria-describedby="exampleHelpTex" disabled>
+      </label>
+      <p class="help-text" id="exampleHelpTex">This input is ignored by Abide using `disabled`</p>
+    </div>
+    <div class="small-12 columns">
+      <label>Hidden!
+        <input type="hidden" placeholder="Hidden input" aria-describedby="exampleHelpTex" >
+      </label>
+      <p class="help-text" id="exampleHelpTex">This input is ignored by Abide using `type="hidden"`</p>
+    </div>
+  <div class="row">
+    <fieldset class="large-6 columns">
+      <button class="button" type="submit" value="Submit">Submit</button>
+    </fieldset>
+    <fieldset class="large-6 columns">
+      <button class="button" type="reset" value="Reset">Reset</button>
+    </fieldset>
+  </div>
+</form>
+```
+
 ## Event Listener
 Setup event listener after foundation is initialized (especially for formvalid/forminvalid). Easier to chain via document selector.
 * valid.zf.abide and invalid.zf.abide are field level events, triggered in validateInput function 
@@ -198,6 +249,72 @@ $("#bar").on("formvalid.zf.abide", function(ev,frm) {
   // do something perhaps
 });
   ```
+
+## Builtin Patterns and Validators
+
+The following patterns and validators are already built in: 
+
+`alpha`,
+`alpha_numeric`,
+`card`,
+`color`
+`cvv`,
+`date`,
+`dateISO`,
+`datetime`,
+`day_month_year`,
+`domain`,
+`email`,
+`integer`,
+`month_day_year`,
+`number`,
+`time`,
+`url`
+
+They are defined by regular expressions as you can see below. Note, that the patterns that relate to text such as `alpha` and `alpha_numeric` do not consider special characters from other languages. You need to add these special characters yourself to the regular expressions. For instance, for the German language you need to add:
+
+```JS
+alpha : /^[a-zäöüßA-ZÄÖÜ]+$/,
+alpha_numeric : /^[a-zäöüßA-ZÄÖÜ0-9]+$/,
+```
+
+Then you need to customize the builtin patterns as explained in the next section. Otherwise Abide will produce an error if a special character is input in your text field which is validated with `pattern="alpha"` or  `pattern="alpha_numeric"`.
+
+Here are the definitions of the builtin patterns:
+
+```JS
+alpha : /^[a-zA-Z]+$/,
+alpha_numeric : /^[a-zA-Z0-9]+$/,
+integer : /^[-+]?\d+$/,
+number : /^[-+]?\d*(?:[\.\,]\d+)?$/,
+
+// amex, visa, diners
+card : /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9][0-9])[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$/,
+cvv : /^([0-9]){3,4}$/,
+
+// http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#valid-e-mail-address
+email : /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/,
+
+url : /^(https?|ftp|file|ssh):\/\/(((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-zA-Z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-zA-Z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-zA-Z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-zA-Z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-zA-Z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-zA-Z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-zA-Z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/,
+// abc.de
+domain : /^([a-zA-Z0-9]([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,8}$/,
+
+datetime : /^([0-2][0-9]{3})\-([0-1][0-9])\-([0-3][0-9])T([0-5][0-9])\:([0-5][0-9])\:([0-5][0-9])(Z|([\-\+]([0-1][0-9])\:00))$/,
+// YYYY-MM-DD
+date : /(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))$/,
+// HH:MM:SS
+time : /^(0[0-9]|1[0-9]|2[0-3])(:[0-5][0-9]){2}$/,
+dateISO : /^\d{4}[\/\-]\d{1,2}[\/\-]\d{1,2}$/,
+// MM/DD/YYYY
+month_day_year : /^(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.]\d{4}$/,
+// DD/MM/YYYY
+day_month_year : /^(0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])[- \/.]\d{4}$/,
+
+// #FFF or #FFFFFF
+color : /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/
+```
+
+
 ## Adding Custom Pattern and Validator
 * Override builtin patterns and validators before foundation is initialized
 * Add new patterns and validators before or after foundation is initialized

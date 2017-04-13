@@ -85,5 +85,11 @@ When using Interchange programmatically, you need to pass in your ruleset in the
 
 ```js
 var $photoFrame = $('#some-container');
-var interchange = new Foundation.Interchange($photoFrame, {rules: "[path/to/default.jpg, small], [path/to/medium.jpg, medium], [path/to/large.jpg, large]"});
+var interchange = new Foundation.Interchange($photoFrame, {
+  rules: [
+    "[path/to/default.jpg, small]", 
+    "[path/to/medium.jpg, medium]",
+    "[path/to/large.jpg, large]"
+  ]
+ });
 ```

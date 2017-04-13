@@ -42,14 +42,15 @@ class Tabs {
   _init() {
     var _this = this;
 
+    this.$element.attr({'role': 'tablist'});
     this.$tabTitles = this.$element.find(`.${this.options.linkClass}`);
     this.$tabContent = $(`[data-tabs-content="${this.$element[0].id}"]`);
 
     this.$tabTitles.each(function(){
       var $elem = $(this),
           $link = $elem.find('a'),
-          isActive = $elem.hasClass('is-active'),
-          hash = $link[0].hash.slice(1),
+          isActive = $elem.hasClass(`${_this.options.linkActiveClass}`),
+          hash = $link.attr('data-tabs-target') || $link[0].hash.slice(1),
           linkId = $link[0].id ? $link[0].id : `${hash}-label`,
           $tabContent = $(`#${hash}`);
 
@@ -69,10 +70,13 @@ class Tabs {
       });
 
       if(isActive && _this.options.autoFocus){
-        $link.focus();
+        $(window).load(function() {
+          $('html, body').animate({ scrollTop: $elem.offset().top }, _this.options.deepLinkSmudgeDelay, () => {
+            $link.focus();
+          });
+        });
       }
     });
-
     if(this.options.matchHeight) {
       var $images = this.$tabContent.find('img');
 
@@ -81,6 +85,35 @@ class Tabs {
       } else {
         this._setHeight();
       }
+    }
+
+     //current context-bound function to open tabs on page load or history popstate
+    this._checkDeepLink = () => {
+      var anchor = window.location.hash;
+      //need a hash and a relevant anchor in this tabset
+      if(anchor.length) {
+        var $link = this.$element.find('[href$="'+anchor+'"]');
+        if ($link.length) {
+          this.selectTab($(anchor), true);
+
+          //roll up a little to show the titles
+          if (this.options.deepLinkSmudge) {
+            var offset = this.$element.offset();
+            $('html, body').animate({ scrollTop: offset.top }, this.options.deepLinkSmudgeDelay);
+          }
+
+          /**
+            * Fires when the zplugin has deeplinked at pageload
+            * @event Tabs#deeplink
+            */
+           this.$element.trigger('deeplink.zf.tabs', [$link, $(anchor)]);
+         }
+       }
+     }
+
+    //use browser to open a tab, if it exists in this tabset
+    if (this.options.deepLink) {
+      this._checkDeepLink();
     }
 
     this._events();
@@ -94,11 +127,15 @@ class Tabs {
     this._addKeyHandler();
     this._addClickHandler();
     this._setHeightMqHandler = null;
-    
+
     if (this.options.matchHeight) {
       this._setHeightMqHandler = this._setHeight.bind(this);
-      
+
       $(window).on('changed.zf.mediaquery', this._setHeightMqHandler);
+    }
+
+    if(this.options.deepLink) {
+      $(window).on('popstate', this._checkDeepLink);
     }
   }
 
@@ -114,9 +151,6 @@ class Tabs {
       .on('click.zf.tabs', `.${this.options.linkClass}`, function(e){
         e.preventDefault();
         e.stopPropagation();
-        if ($(this).hasClass('is-active')) {
-          return;
-        }
         _this._handleTabChange($(this));
       });
   }
@@ -127,12 +161,10 @@ class Tabs {
    */
   _addKeyHandler() {
     var _this = this;
-    var $firstTab = _this.$element.find('li:first-of-type');
-    var $lastTab = _this.$element.find('li:last-of-type');
 
     this.$tabTitles.off('keydown.zf.tabs').on('keydown.zf.tabs', function(e){
       if (e.which === 9) return;
-      
+
 
       var $element = $(this),
         $elements = $element.parent('ul').children('li'),
@@ -175,46 +207,105 @@ class Tabs {
   }
 
   /**
-   * Opens the tab `$targetContent` defined by `$target`.
+   * Opens the tab `$targetContent` defined by `$target`. Collapses active tab.
    * @param {jQuery} $target - Tab to open.
+   * @param {boolean} historyHandled - browser has already handled a history update
    * @fires Tabs#change
    * @function
    */
-  _handleTabChange($target) {
-    var $tabLink = $target.find('[role="tab"]'),
-        hash = $tabLink[0].hash,
-        $targetContent = this.$tabContent.find(hash),
-        $oldTab = this.$element.
-          find(`.${this.options.linkClass}.is-active`)
-          .removeClass('is-active')
-          .find('[role="tab"]')
-          .attr({ 'aria-selected': 'false' });
+  _handleTabChange($target, historyHandled) {
 
-    $(`#${$oldTab.attr('aria-controls')}`)
-      .removeClass('is-active')
-      .attr({ 'aria-hidden': 'true' });
+    /**
+     * Check for active class on target. Collapse if exists.
+     */
+    if ($target.hasClass(`${this.options.linkActiveClass}`)) {
+        if(this.options.activeCollapse) {
+            this._collapseTab($target);
 
-    $target.addClass('is-active');
+           /**
+            * Fires when the zplugin has successfully collapsed tabs.
+            * @event Tabs#collapse
+            */
+            this.$element.trigger('collapse.zf.tabs', [$target]);
+        }
+        return;
+    }
 
-    $tabLink.attr({'aria-selected': 'true'});
+    var $oldTab = this.$element.
+          find(`.${this.options.linkClass}.${this.options.linkActiveClass}`),
+          $tabLink = $target.find('[role="tab"]'),
+          hash = $tabLink.attr('data-tabs-target') || $tabLink[0].hash.slice(1),
+          $targetContent = this.$tabContent.find(`#${hash}`);
 
-    $targetContent
-      .addClass('is-active')
-      .attr({'aria-hidden': 'false'});
+    //close old tab
+    this._collapseTab($oldTab);
+
+    //open new tab
+    this._openTab($target);
+
+    //either replace or update browser history
+    if (this.options.deepLink && !historyHandled) {
+      var anchor = $target.find('a').attr('href');
+
+      if (this.options.updateHistory) {
+        history.pushState({}, '', anchor);
+      } else {
+        history.replaceState({}, '', anchor);
+      }
+    }
 
     /**
      * Fires when the plugin has successfully changed tabs.
      * @event Tabs#change
      */
-    this.$element.trigger('change.zf.tabs', [$target]);
+    this.$element.trigger('change.zf.tabs', [$target, $targetContent]);
+
+    //fire to children a mutation event
+    $targetContent.find("[data-mutate]").trigger("mutateme.zf.trigger");
+  }
+
+  /**
+   * Opens the tab `$targetContent` defined by `$target`.
+   * @param {jQuery} $target - Tab to Open.
+   * @function
+   */
+  _openTab($target) {
+      var $tabLink = $target.find('[role="tab"]'),
+          hash = $tabLink.attr('data-tabs-target') || $tabLink[0].hash.slice(1),
+          $targetContent = this.$tabContent.find(`#${hash}`);
+
+      $target.addClass(`${this.options.linkActiveClass}`);
+
+      $tabLink.attr({'aria-selected': 'true'});
+
+      $targetContent
+        .addClass(`${this.options.panelActiveClass}`)
+        .attr({'aria-hidden': 'false'});
+  }
+
+  /**
+   * Collapses `$targetContent` defined by `$target`.
+   * @param {jQuery} $target - Tab to Open.
+   * @function
+   */
+  _collapseTab($target) {
+    var $target_anchor = $target
+      .removeClass(`${this.options.linkActiveClass}`)
+      .find('[role="tab"]')
+      .attr({ 'aria-selected': 'false' });
+
+    $(`#${$target_anchor.attr('aria-controls')}`)
+      .removeClass(`${this.options.panelActiveClass}`)
+      .attr({ 'aria-hidden': 'true' });
   }
 
   /**
    * Public method for selecting a content pane to display.
    * @param {jQuery | String} elem - jQuery object or string of the id of the pane to display.
+   * @param {boolean} historyHandled - browser has already handled a history update
    * @function
    */
-  selectTab(elem) {
+  selectTab(elem, historyHandled) {
     var idStr;
 
     if (typeof elem === 'object') {
@@ -227,25 +318,29 @@ class Tabs {
       idStr = `#${idStr}`;
     }
 
-    var $target = this.$tabTitles.find(`[href="${idStr}"]`).parent(`.${this.options.linkClass}`);
+    var $target = this.$tabTitles.find(`[href$="${idStr}"]`).parent(`.${this.options.linkClass}`);
 
-    this._handleTabChange($target);
+    this._handleTabChange($target, historyHandled);
   };
   /**
    * Sets the height of each panel to the height of the tallest panel.
    * If enabled in options, gets called on media query change.
    * If loading content via external source, can be called directly or with _reflow.
+   * If enabled with `data-match-height="true"`, tabs sets to equal height
    * @function
    * @private
    */
   _setHeight() {
-    var max = 0;
+    var max = 0,
+        _this = this; // Lock down the `this` value for the root tabs object
+
     this.$tabContent
       .find(`.${this.options.panelClass}`)
       .css('height', '')
       .each(function() {
+
         var panel = $(this),
-            isActive = panel.hasClass('is-active');
+            isActive = panel.hasClass(`${_this.options.panelActiveClass}`); // get the options from the parent instead of trying to get them from the child
 
         if (!isActive) {
           panel.css({'visibility': 'hidden', 'display': 'block'});
@@ -282,50 +377,112 @@ class Tabs {
       }
     }
 
+    if (this.options.deepLink) {
+      $(window).off('popstate', this._checkDeepLink);
+    }
+
     Foundation.unregisterPlugin(this);
   }
 }
 
 Tabs.defaults = {
   /**
-   * Allows the window to scroll to content of active pane on load if set to true.
+   * Allows the window to scroll to content of pane specified by hash anchor
    * @option
-   * @example false
+   * @type {boolean}
+   * @default false
+   */
+  deepLink: false,
+
+  /**
+   * Adjust the deep link scroll to make sure the top of the tab panel is visible
+   * @option
+   * @type {boolean}
+   * @default false
+   */
+  deepLinkSmudge: false,
+
+  /**
+   * Animation time (ms) for the deep link adjustment
+   * @option
+   * @type {number}
+   * @default 300
+   */
+  deepLinkSmudgeDelay: 300,
+
+  /**
+   * Update the browser history with the open tab
+   * @option
+   * @type {boolean}
+   * @default false
+   */
+  updateHistory: false,
+
+  /**
+   * Allows the window to scroll to content of active pane on load if set to true.
+   * Not recommended if more than one tab panel per page.
+   * @option
+   * @type {boolean}
+   * @default false
    */
   autoFocus: false,
 
   /**
    * Allows keyboard input to 'wrap' around the tab links.
    * @option
-   * @example true
+   * @type {boolean}
+   * @default true
    */
   wrapOnKeys: true,
 
   /**
    * Allows the tab content panes to match heights if set to true.
    * @option
-   * @example false
+   * @type {boolean}
+   * @default false
    */
   matchHeight: false,
 
   /**
+   * Allows active tabs to collapse when clicked.
+   * @option
+   * @type {boolean}
+   * @default false
+   */
+  activeCollapse: false,
+
+  /**
    * Class applied to `li`'s in tab link list.
    * @option
-   * @example 'tabs-title'
+   * @type {string}
+   * @default 'tabs-title'
    */
   linkClass: 'tabs-title',
 
   /**
+   * Class applied to the active `li` in tab link list.
+   * @option
+   * @type {string}
+   * @default 'is-active'
+   */
+  linkActiveClass: 'is-active',
+
+  /**
    * Class applied to the content containers.
    * @option
-   * @example 'tabs-panel'
+   * @type {string}
+   * @default 'tabs-panel'
    */
-  panelClass: 'tabs-panel'
-};
+  panelClass: 'tabs-panel',
 
-function checkClass($elem){
-  return $elem.hasClass('is-active');
-}
+  /**
+   * Class applied to the active content container.
+   * @option
+   * @type {string}
+   * @default 'is-active'
+   */
+  panelActiveClass: 'is-active'
+};
 
 // Window exports
 Foundation.plugin(Tabs, 'Tabs');
