@@ -366,6 +366,9 @@ $menu-border: $light-gray !default;
         display: inline-block;
         vertical-align: top;
       }
+      &.vertical > li > a {
+        justify-content: center;
+      }
     }
   }
 
