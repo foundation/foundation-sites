@@ -152,6 +152,7 @@ class AccordionMenu {
         toggle: function() {
           if ($element.children('[data-submenu]').length) {
             _this.toggle($element.children('[data-submenu]'));
+            return true;
           }
         },
         closeAll: function() {
