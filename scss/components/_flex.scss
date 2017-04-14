@@ -2,7 +2,10 @@
   // Horizontal alignment using justify-content
   @each $hdir, $prop in map-remove($-zf-flex-justify, left) {
     .align-#{$hdir} {
-      @include flex-align($x: $hdir);
+      &,
+      &.vertical.menu > li > a { // Specific for Vertical Menu
+        @include flex-align($x: $hdir);
+      }
     }
   }
 
