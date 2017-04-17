@@ -10,7 +10,7 @@ tags:
 
 ## Abide Demo
 
-These input types create a text field: `text`, `date`, `datetime`, `datetime-local`, `email`, `month`, `number`, `password`, `search`, `tel`, `time`, `url`, and `week`.
+These input types create a text field: `text`, `date`, `datetime`, `datetime-local`, `email`, `month`, `number`, `password`, `search`, `tel`, `time`, `url`, and `week`. Note the use of the novalidate attribute to disable any browser validation that could conflict with Abide.
 
 ```html_example
 <form data-abide novalidate>
