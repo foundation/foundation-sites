@@ -6,6 +6,10 @@
 /// @group button
 ////
 
+/// Font family for button elements.
+/// @type Font
+$button-font-family: inherit !default;
+
 /// Padding inside buttons.
 /// @type List
 $button-padding: 0.85em 1em !default;
@@ -90,6 +94,7 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
   display: inline-block;
   vertical-align: middle;
   margin: $button-margin;
+  font-family: $button-font-family;
 
   @if (type-of($button-padding) == 'map') {
     @each $size, $padding in $button-padding {
@@ -165,7 +170,7 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
 
   &.disabled,
   &[disabled] {
-    &, 
+    &,
     &:hover, &:focus {
       background-color: transparent;
     }
