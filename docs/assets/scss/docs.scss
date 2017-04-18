@@ -145,54 +145,6 @@ a#notice {
   background: $topbar-background;
 }
 
-.ad-unit {
-  max-width: 250px;
-  padding: .5rem;
-  background: #074E68;
-  border-radius: 4px;
-}
-
-.ad-unit-title {
-  padding: 10px 16px 5px 16px;
-  text-align: center;
-  color: #fff;
-  font-size: 23px;
-  font-weight: bold;
-  font-family: 'proxima nova', helvetica, arial;
-  animation:  ad-title-anim 1.5s 1 ease;
-  animation-fill-mode: backwards;
-}
-
-.ad-unit-text {
-  color: #fff;
-  font-size: 13px;
-  text-align: center;
-  padding: 0 15px 10px 15px;
-  animation:  ad-text-anim 1s 1 ease;
-  animation-delay: 1s;
-  animation-fill-mode: backwards;
-}
-
-.ad-unit-button {
-  margin-bottom: 0;
-  width: 100%;
-  box-shadow: 0 -2px 0 rgba(0,0,0,0.2) inset;
-  border: 0;
-  border-radius: 3px;
-  font-weight: bold;
-}
-
-
-@keyframes ad-title-anim {
-  0%   { opacity: 0; transform: translateY(50%); }
-  100% { opacity: 1; }
-}
-
-@keyframes ad-text-anim {
-  0%   { opacity: 0; transform: scale(.7, .7); }
-  100% { opacity: 1; transform: scale(1, 1);}
-}
-
 .youtube {
   background: url("../img/icons/youtube.png") no-repeat center 0;
 }
