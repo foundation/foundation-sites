@@ -1,5 +1,5 @@
 <div class="vertical menu docs-nav" id="docs-menu">
-  
+
 <!--
   <ul class="docs-nav-version-container">
     <li class="docs-nav-version">
@@ -7,12 +7,12 @@
     </li>
   </ul>
 -->
-   
-  
+
+
   <ul class="accordion docs-nav-category" data-accordion>
-    <li class="accordion-item is-active" data-accordion-item>
+    <li class="accordion-item {{#ifpage 'index' 'installation' 'starter-projects' 'accessibility' 'kitchen-sink'}}is-active{{/ifpage}}" data-accordion-item>
       <a href="#" class="accordion-title">Getting Started</a>
-      <div class="accordion-content" data-tab-content>
+      <div class="accordion-content {{#ifpage 'index' 'installation' 'starter-projects' 'accessibility' 'kitchen-sink'}}is-active{{/ifpage}}" data-tab-content>
         <ul class="docs-nav-subcategory">
           <li{{#ifpage 'index'}} class="current"{{/ifpage}}><a href="index.html">Welcome</a></li>
           <li{{#ifpage 'installation'}} class="current"{{/ifpage}}><a href="installation.html">Installation</a></li>
@@ -23,10 +23,10 @@
         </ul>
       </div>
     </li>
-    
-    <li class="accordion-item" data-accordion-item>
+
+    <li class="accordion-item {{#ifpage 'global' 'rtl' 'flexbox' 'sass' 'javascript' 'javascript-utilities' 'media-queries'}}is-active{{/ifpage}}" data-accordion-item>
       <a href="#" class="accordion-title">Setup</a>
-      <div class="accordion-content" data-tab-content>
+      <div class="accordion-content {{#ifpage 'global' 'rtl' 'flexbox' 'sass' 'javascript' 'javascript-utilities' 'media-queries'}}is-active{{/ifpage}}" data-tab-content>
         <ul class="docs-nav-subcategory">
           <li{{#ifpage 'global'}} class="current"{{/ifpage}}><a href="global.html">Global Styles</a></li>
           <li{{#ifpage 'rtl'}} class="current"{{/ifpage}}><a href="rtl.html">Right-to-Left Support</a></li>
@@ -38,10 +38,10 @@
         </ul>
       </div>
     </li>
-    
-    <li class="accordion-item" data-accordion-item>
+
+    <li class="accordion-item {{#ifpage 'grid' 'flex-grid' 'forms' 'visibility' 'float-classes'}}is-active{{/ifpage}}" data-accordion-item>
       <a href="#" class="accordion-title">General</a>
-      <div class="accordion-content" data-tab-content>
+      <div class="accordion-content {{#ifpage 'grid' 'flex-grid' 'forms' 'visibility' 'float-classes'}}is-active{{/ifpage}}" data-tab-content>
         <ul class="docs-nav-subcategory">
           <li{{#ifpage 'grid'}} class="current"{{/ifpage}}><a href="grid.html">Grid</a></li>
           <li{{#ifpage 'flex-grid'}} class="current"{{/ifpage}}><a href="flex-grid.html">Flex Grid</a></li>
@@ -51,20 +51,20 @@
         </ul>
       </div>
     </li>
-    
-    <li class="accordion-item" data-accordion-item>
+
+    <li class="accordion-item {{#ifpage 'typography-base' 'typography-helpers'}}is-active{{/ifpage}}" data-accordion-item>
       <a href="#" class="accordion-title">Typography</a>
-      <div class="accordion-content" data-tab-content>
+      <div class="accordion-content {{#ifpage 'typography-base' 'typography-helpers'}}is-active{{/ifpage}}" data-tab-content>
         <ul class="docs-nav-subcategory">
           <li{{#ifpage 'typography-base'}} class="current"{{/ifpage}}><a href="typography-base.html">Base Styles</a></li>
           <li{{#ifpage 'typography-helpers'}} class="current"{{/ifpage}}><a href="typography-helpers.html">Helper Classes</a></li>
         </ul>
       </div>
     </li>
-    
-    <li class="accordion-item" data-accordion-item>
+
+    <li class="accordion-item {{#ifpage 'button' 'button-group' 'close-button' 'slider' 'switch'}}is-active{{/ifpage}}" data-accordion-item>
       <a href="#" class="accordion-title">Controls</a>
-      <div class="accordion-content" data-tab-content>
+      <div class="accordion-content {{#ifpage 'button' 'button-group' 'close-button' 'slider' 'switch'}}is-active{{/ifpage}}" data-tab-content>
         <ul class="docs-nav-subcategory">
           <li{{#ifpage 'button'}} class="current"{{/ifpage}}><a href="button.html">Button</a></li>
           <li{{#ifpage 'button-group'}} class="current"{{/ifpage}}><a href="button-group.html">Button Group</a></li>
@@ -74,10 +74,10 @@
         </ul>
       </div>
     </li>
-    
-    <li class="accordion-item" data-accordion-item>
+
+    <li class="accordion-item {{#ifpage 'navigation' 'menu' 'dropdown-menu' 'drilldown-menu' 'accordion-menu' 'top-bar' 'responsive-navigation' 'magellan' 'pagination' 'breadcrumbs'}}is-active{{/ifpage}}" data-accordion-item>
       <a href="#" class="accordion-title">Navigation</a>
-      <div class="accordion-content" data-tab-content>
+      <div class="accordion-content {{#ifpage 'navigation' 'menu' 'dropdown-menu' 'drilldown-menu' 'accordion-menu' 'top-bar' 'responsive-navigation' 'magellan' 'pagination' 'breadcrumbs'}}is-active{{/ifpage}}" data-tab-content>
         <ul class="docs-nav-subcategory">
           <li{{#ifpage 'navigation'}} class="current"{{/ifpage}}><a href="navigation.html">Overview</a></li>
           <li{{#ifpage 'menu'}} class="current"{{/ifpage}}><a href="menu.html">Menu</a></li>
@@ -92,10 +92,10 @@
         </ul>
       </div>
     </li>
-    
-    <li class="accordion-item" data-accordion-item>
+
+    <li class="accordion-item {{#ifpage 'accordion' 'callout' 'card' 'dropdown' 'media-object' 'off-canvas' 'reveal' 'table' 'tabs' 'responsive-accordion-tabs'}}is-active{{/ifpage}}" data-accordion-item>
       <a href="#" class="accordion-title">Containers</a>
-      <div class="accordion-content" data-tab-content>
+      <div class="accordion-content {{#ifpage 'accordion' 'callout' 'card' 'dropdown' 'media-object' 'off-canvas' 'reveal' 'table' 'tabs' 'responsive-accordion-tabs'}}is-active{{/ifpage}}" data-tab-content>
         <ul class="docs-nav-subcategory">
           <li{{#ifpage 'accordion'}} class="current"{{/ifpage}}><a href="accordion.html">Accordion <span class="label">JS</span></a></li>
           <li{{#ifpage 'callout'}} class="current"{{/ifpage}}><a href="callout.html">Callout</a></li>
@@ -110,10 +110,10 @@
         </ul>
       </div>
     </li>
-    
-    <li class="accordion-item" data-accordion-item>
+
+    <li class="accordion-item {{#ifpage 'badge' 'responsive-embed' 'label' 'orbit' 'progress-bar' 'thumbnail' 'tooltip'}}is-active{{/ifpage}}" data-accordion-item>
       <a href="#" class="accordion-title">Media</a>
-      <div class="accordion-content" data-tab-content>
+      <div class="accordion-content {{#ifpage 'accordion' 'callout' 'card' 'dropdown' 'media-object' 'off-canvas' 'reveal' 'table' 'tabs' 'responsive-accordion-tabs'}}is-active{{/ifpage}}" data-tab-content>
         <ul class="docs-nav-subcategory">
           <li{{#ifpage 'badge'}} class="current"{{/ifpage}}><a href="badge.html">Badge</a></li>
           <li{{#ifpage 'responsive-embed'}} class="current"{{/ifpage}}><a href="responsive-embed.html">Responsive Embed</a></li>
@@ -125,10 +125,10 @@
         </ul>
       </div>
     </li>
-    
-    <li class="accordion-item" data-accordion-item>
+
+    <li class="accordion-item {{#ifpage 'abide' 'equalizer' 'interchange' 'toggler' 'sticky'}}is-active{{/ifpage}}" data-accordion-item>
       <a href="#" class="accordion-title">Plugins</a>
-      <div class="accordion-content" data-tab-content>
+      <div class="accordion-content {{#ifpage 'abide' 'equalizer' 'interchange' 'toggler' 'sticky'}}is-active{{/ifpage}}" data-tab-content>
         <ul class="docs-nav-subcategory">
           <li{{#ifpage 'abide'}} class="current"{{/ifpage}}><a href="abide.html">Abide <small>Form Validation</small></a></li>
           <li{{#ifpage 'equalizer'}} class="current"{{/ifpage}}><a href="equalizer.html">Equalizer <small>Column Alignment</small></a></li>
@@ -138,20 +138,20 @@
         </ul>
       </div>
     </li>
-    
-    <li class="accordion-item" data-accordion-item>
+
+    <li class="accordion-item {{#ifpage 'sass-functions' 'sass-mixins'}}is-active{{/ifpage}}" data-accordion-item>
       <a href="#" class="accordion-title">Sass</a>
-      <div class="accordion-content" data-tab-content>
+      <div class="accordion-content {{#ifpage 'sass-functions' 'sass-mixins'}}is-active{{/ifpage}}" data-tab-content>
         <ul class="docs-nav-subcategory">
           <li{{#ifpage 'sass-functions'}} class="current"{{/ifpage}}><a href="sass-functions.html">Functions</a></li>
           <li{{#ifpage 'sass-mixins'}} class="current"{{/ifpage}}><a href="sass-mixins.html">Mixins</a></li>
         </ul>
       </div>
     </li>
-    
-    <li class="accordion-item" data-accordion-item>
+
+    <li class="accordion-item {{#ifpage 'motion-ui' 'panini' 'style-sherpa'}}is-active{{/ifpage}}" data-accordion-item>
       <a href="#" class="accordion-title">Libraries</a>
-      <div class="accordion-content" data-tab-content>
+      <div class="accordion-content {{#ifpage 'motion-ui' 'panini' 'style-sherpa'}}is-active{{/ifpage}}" data-tab-content>
         <ul class="docs-nav-subcategory">
           <li{{#ifpage 'motion-ui'}} class="current"{{/ifpage}}><a href="motion-ui.html">Motion UI</a></li>
           <li{{#ifpage 'panini'}} class="current"{{/ifpage}}><a href="panini.html">Panini</a></li>
@@ -159,7 +159,7 @@
         </ul>
       </div>
     </li>
-    
+
     <li class="accordion-item" data-accordion-item>
       <a href="#" class="accordion-title">Older Versions</a>
       <div class="accordion-content" data-tab-content>
@@ -171,7 +171,7 @@
         </ul>
       </div>
     </li>
-    
+
   </ul>
 
 </div>

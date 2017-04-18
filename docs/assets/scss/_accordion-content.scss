@@ -22,7 +22,7 @@
       border-bottom: 1px dashed #e6e6e6;
     }
   }
-  
+
   .accordion-title:focus,
   .accordion-title:active {
     background: none;
@@ -40,7 +40,7 @@
     border-bottom: 1px dashed #e6e6e6;
     transition: all 0.3s ease;
   }
-  
+
   .accordion-title:hover {
     padding-left: 1rem;
     color: $black;
@@ -48,7 +48,7 @@
     transition: all 0.3s ease;
 //    transition: background 0.3s ease;
   }
-  
+
   .accordion-title::before {
     color: $dark-gray;
     font-size: 1.25rem;
@@ -61,12 +61,12 @@
     text-align: center;
     transition: all 0.3s ease;
   }
-  
+
   .accordion-title:hover::before {
     color: $black;
     background-color: lighten($light-gray,8%);
     border: 1px solid $medium-gray;
-    transition: all 0.3s ease;  
+    transition: all 0.3s ease;
   }
 }
 
@@ -86,4 +86,9 @@
   img {
     margin-right: 0.5rem;
   }
+}
+
+// Prevent FOUC on nav accordion
+.accordion-content.is-active {
+  display: block;
 }
