@@ -5,7 +5,7 @@ description: There are many ways to install Foundation, but if you're just getti
 
 ## Installation
 
-<div class="subpage-intro-video">
+<div class="subpage-intro-video responsive-embed widescreen">
   <iframe width="690" height="385" src="https://www.youtube.com/embed/sKYsLkJ0yvQ" frameborder="0" allowfullscreen></iframe>
 </div>
 
