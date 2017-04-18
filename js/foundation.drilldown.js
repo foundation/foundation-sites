@@ -410,7 +410,7 @@ class Drilldown {
       $(this).off('.zf.drilldown');
     });
 
-    this.$submenus.removeClass('drilldown-submenu-cover-previous');
+    this.$submenus.removeClass('drilldown-submenu-cover-previous invisible');
 
     this.$element.find('a').each(function(){
       var $link = $(this);
