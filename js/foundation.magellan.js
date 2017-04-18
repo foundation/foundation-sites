@@ -4,6 +4,7 @@
 import $ from 'jquery';
 import { GetYoDigits } from './foundation.util.core';
 import { Plugin } from './foundation.plugin';
+import { SmoothScroll } from './foundation.smoothScroll';
 
 /**
  * Magellan module.
@@ -121,7 +122,7 @@ class Magellan extends Plugin {
       offset: this.options.offset
     };
 
-    Foundation.SmoothScroll.scrollToLoc(loc, options, function() {
+    SmoothScroll.scrollToLoc(loc, options, function() {
       _this._inTransition = false;
       _this._updateActive();
     })
