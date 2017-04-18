@@ -259,5 +259,3 @@ Triggers.init = function(Foundation, $) {
 }
 
 export default Triggers;
-
-}(jQuery);
