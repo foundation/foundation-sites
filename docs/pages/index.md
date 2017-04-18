@@ -29,36 +29,36 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
 
       <div class="row accordion-content-item">
 
-        <div class="medium-4 columns">
+        <div class="medium-4 columns accordion-content-item-thumbnail">
           <img src="http://placehold.it/350x250">
         </div>
-        <div class="medium-8 columns">
-          <h4>Foundation 6.3 Update: Cards, Mutation Observers, Off-Canvas and More</h4>
-          <a href="#" class="accordion-content-item-cta"><img src="http://placehold.it/20x20">Watch Video</a>
+        <div class="medium-8 columns accordion-content-item-text">
+          <h4>Foundation 6.3 Update: Cards, Mutation Observers, Off-Canvas</h4>
+          <a href="#" class="accordion-content-item-cta">Watch Video</a>
         </div>
       </div>
 
       <hr class="accordion-content-item-divider">
 
       <div class="row">
-        <div class="medium-4 columns">
+        <div class="medium-4 columns accordion-content-item-thumbnail">
           <img src="http://placehold.it/350x250">
         </div>
         <div class="medium-8 columns">
-          <h4>Foundation 6.4 Update: Cards, Mutation Observers, Off-Canvas and More</h4>
-          <a href="#" class="accordion-content-item-cta"><img src="http://placehold.it/20x20">Watch Video</a>
+          <h4>Foundation 6.4 Update: Cards, Mutation Observers, Off-Canvas</h4>
+          <a href="#" class="accordion-content-item-cta">Watch Video</a>
         </div>
       </div>
 
       <hr class="accordion-content-item-divider">
 
       <div class="row">
-        <div class="medium-4 columns">
+        <div class="medium-4 columns accordion-content-item-thumbnail">
           <img src="http://placehold.it/350x250">
         </div>
         <div class="medium-8 columns">
-          <h4>Foundation 6.4 Update: Cards, Mutation Observers, Off-Canvas and More</h4>
-          <a href="#" class="accordion-content-item-cta"><img src="http://placehold.it/20x20">Watch Video</a>
+          <h4>Foundation 6.4 Update: Cards, Mutation Observers, Off-Canvas</h4>
+          <a href="#" class="accordion-content-item-cta">Watch Video</a>
         </div>
       </div>
 
@@ -69,36 +69,36 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
       <div class="accordion-content " data-tab-content>
 
         <div class="row">
-          <div class="medium-4 columns">
+          <div class="medium-4 columns accordion-content-item-thumbnail">
             <img src="http://placehold.it/350x250">
           </div>
           <div class="medium-8 columns">
-            <h4>Foundation 6.3 Update: Cards, Mutation Observers, Off-Canvas and More</h4>
-            <a href="#" class="accordion-content-item-cta"><img src="http://placehold.it/20x20">Watch Video</a>
+            <h4>Foundation 6.3 Update: Cards, Mutation Observers, Off-Canvas</h4>
+            <a href="#" class="accordion-content-item-cta">Watch Video</a>
           </div>
         </div>
 
         <hr class="accordion-content-item-divider">
 
         <div class="row">
-          <div class="medium-4 columns">
+          <div class="medium-4 columns accordion-content-item-thumbnail">
             <img src="http://placehold.it/350x250">
           </div>
           <div class="medium-8 columns">
-            <h4>Foundation 6.4 Update: Cards, Mutation Observers, Off-Canvas and More</h4>
-            <a href="#" class="accordion-content-item-cta"><img src="http://placehold.it/20x20">Watch Video</a>
+            <h4>Foundation 6.4 Update: Cards, Mutation Observers, Off-Canvas</h4>
+            <a href="#" class="accordion-content-item-cta">Watch Video</a>
           </div>
         </div>
 
         <hr class="accordion-content-item-divider">
 
         <div class="row">
-          <div class="medium-4 columns">
+          <div class="medium-4 columns accordion-content-item-thumbnail">
             <img src="http://placehold.it/350x250">
           </div>
           <div class="medium-8 columns">
-            <h4>Foundation 6.4 Update: Cards, Mutation Observers, Off-Canvas and More</h4>
-            <a href="#" class="accordion-content-item-cta"><img src="http://placehold.it/20x20">Watch Video</a>
+            <h4>Foundation 6.4 Update: Cards, Mutation Observers, Off-Canvas</h4>
+            <a href="#" class="accordion-content-item-cta">Watch Video</a>
           </div>
         </div>
 
@@ -109,36 +109,36 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
       <div class="accordion-content " data-tab-content>
 
         <div class="row">
-          <div class="medium-4 columns">
+          <div class="medium-4 columns accordion-content-item-thumbnail">
             <img src="http://placehold.it/350x250">
           </div>
           <div class="medium-8 columns">
-            <h4>Foundation 6.3 Update: Cards, Mutation Observers, Off-Canvas and More</h4>
-            <a href="#" class="accordion-content-item-cta"><img src="http://placehold.it/20x20">Watch Video</a>
+            <h4>Foundation 6.3 Update: Cards, Mutation Observers, Off-Canvas</h4>
+            <a href="#" class="accordion-content-item-cta">Watch Video</a>
           </div>
         </div>
 
         <hr class="accordion-content-item-divider">
 
         <div class="row">
-          <div class="medium-4 columns">
+          <div class="medium-4 columns accordion-content-item-thumbnail">
             <img src="http://placehold.it/350x250">
           </div>
           <div class="medium-8 columns">
-            <h4>Foundation 6.4 Update: Cards, Mutation Observers, Off-Canvas and More</h4>
-            <a href="#" class="accordion-content-item-cta"><img src="http://placehold.it/20x20">Watch Video</a>
+            <h4>Foundation 6.4 Update: Cards, Mutation Observers, Off-Canvas</h4>
+            <a href="#" class="accordion-content-item-cta">Watch Video</a>
           </div>
         </div>
 
         <hr class="accordion-content-item-divider">
 
         <div class="row">
-          <div class="medium-4 columns">
+          <div class="medium-4 columns accordion-content-item-thumbnail">
             <img src="http://placehold.it/350x250">
           </div>
           <div class="medium-8 columns">
-            <h4>Foundation 6.4 Update: Cards, Mutation Observers, Off-Canvas and More</h4>
-            <a href="#" class="accordion-content-item-cta"><img src="http://placehold.it/20x20">Watch Video</a>
+            <h4>Foundation 6.4 Update: Cards, Mutation Observers, Off-Canvas</h4>
+            <a href="#" class="accordion-content-item-cta">Watch Video</a>
           </div>
         </div>
 
@@ -149,36 +149,36 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
       <div class="accordion-content " data-tab-content>
 
         <div class="row">
-          <div class="medium-4 columns">
+          <div class="medium-4 columns accordion-content-item-thumbnail">
             <img src="http://placehold.it/350x250">
           </div>
           <div class="medium-8 columns">
-            <h4>Foundation 6.3 Update: Cards, Mutation Observers, Off-Canvas and More</h4>
-            <a href="#" class="accordion-content-item-cta"><img src="http://placehold.it/20x20">Watch Video</a>
+            <h4>Foundation 6.3 Update: Cards, Mutation Observers, Off-Canvas</h4>
+            <a href="#" class="accordion-content-item-cta">Watch Video</a>
           </div>
         </div>
 
         <hr class="accordion-content-item-divider">
 
         <div class="row">
-          <div class="medium-4 columns">
+          <div class="medium-4 columns accordion-content-item-thumbnail">
             <img src="http://placehold.it/350x250">
           </div>
           <div class="medium-8 columns">
-            <h4>Foundation 6.4 Update: Cards, Mutation Observers, Off-Canvas and More</h4>
-            <a href="#" class="accordion-content-item-cta"><img src="http://placehold.it/20x20">Watch Video</a>
+            <h4>Foundation 6.4 Update: Cards, Mutation Observers, Off-Canvas</h4>
+            <a href="#" class="accordion-content-item-cta">Watch Video</a>
           </div>
         </div>
 
         <hr class="accordion-content-item-divider">
 
         <div class="row">
-          <div class="medium-4 columns">
+          <div class="medium-4 columns accordion-content-item-thumbnail">
             <img src="http://placehold.it/350x250">
           </div>
           <div class="medium-8 columns">
-            <h4>Foundation 6.4 Update: Cards, Mutation Observers, Off-Canvas and More</h4>
-            <a href="#" class="accordion-content-item-cta"><img src="http://placehold.it/20x20">Watch Video</a>
+            <h4>Foundation 6.4 Update: Cards, Mutation Observers, Off-Canvas</h4>
+            <a href="#" class="accordion-content-item-cta">Watch Video</a>
           </div>
         </div>
 

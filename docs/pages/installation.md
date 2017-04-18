@@ -5,7 +5,11 @@ description: There are many ways to install Foundation, but if you're just getti
 
 ## Installation
 
-<iframe width="500" height="315" src="https://www.youtube.com/embed/sKYsLkJ0yvQ" frameborder="0" allowfullscreen></iframe>
+<div class="subpage-intro-video">
+  <iframe width="690" height="385" src="https://www.youtube.com/embed/sKYsLkJ0yvQ" frameborder="0" allowfullscreen></iframe>
+</div>
+
+---
 
 ### Command-Line Tool
 

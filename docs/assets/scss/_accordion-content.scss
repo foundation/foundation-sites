@@ -83,10 +83,22 @@
   border-bottom: 1px dashed #e5e5e5;
 }
 
+.accordion-content-item-thumbnail {
+  
+  @include breakpoint(small down) {
+    margin-bottom: 1rem;
+  }
+}
+
+.accordion-content-item {
+  font-family: "Proxima Nova", Helvetica, Arial, sans-serif;
+}
+
 .accordion-content-item-cta {
 
   img {
     margin-right: 0.5rem;
+    
   }
 }
 
