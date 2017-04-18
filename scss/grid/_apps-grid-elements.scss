@@ -1,0 +1,42 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group frame
+////
+
+/// Creates the top-level app frame.
+@mixin frame($size: expand, $orientation: horizontal, $align: left) {
+  display: flex;
+  height: calc(100% - 0px);
+  position: relative;
+  overflow: hidden;
+  backface-visibility: hidden;
+  flex-wrap: nowrap;
+  align-items: stretch;
+
+  @include grid-size($size);
+  @include grid-orient($orientation);
+  @include grid-align($align);
+}
+
+/// Creates a frame group, which is used to nest multiple blocks together.
+@mixin frame-group($size: expand, $orientation: horizontal, $align: left) {
+  @include frame($size, $orientation, $align);
+  height: auto;
+}
+
+/// Creates a frame block, which is an independently-scrolling pane of content.
+@mixin frame-block($size: expand) {
+  // Content blocks are not flex items and have padding
+  display: block;
+  padding: $block-padding;
+
+  // Add scrolling with inertia
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+
+  @include grid-size($size);
+}

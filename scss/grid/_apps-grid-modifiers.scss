@@ -1,0 +1,92 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group frame
+////
+
+/// Define the size of a grid block. Blocks are flex items. By default, they stretch to fill all available space, based on the size of sibling blocks. This is the "expand" behavior.
+/// If set to "shrink", the block will contract and only fill as much space as it needs for its content.
+/// If set to a number, the block will be given a percentage width, based on the total number of columns (12 by default). Percentage widths don't work if a block is inside a vertical grid.
+/// @param {number|string} $size - Sizing behavior of the block. Should be expand, shrink, or a number.
+/// @output The flex-basis, flex-grow, and flex-shrink properties.
+@mixin grid-size($size: expand) {
+  @if (type-of($size) == 'number') {
+    $pct: percentage($size / $total-columns);
+    flex: 0 0 $pct;
+    // max-width prevents columns from wrapping early in IE10/11
+    max-width: $pct;
+  }
+  @else if ($size == shrink) {
+    flex: 0 0 auto;
+    overflow: visible;
+  }
+  @else if ($size == expand) {
+    flex: 1 1 auto;
+  }
+}
+
+/// Set the orientation of blocks within this block. The grid is re-oriented by changing the flex direction of the block.
+/// @param {string} $orientation - Direction of the grid, either horizontal or vertical.
+/// @output A flex-flow property to match the direction given.
+@mixin grid-orient($orientation: horizontal) {
+  @if ($orientation == vertical) {
+    flex-direction: column;
+  }
+  @else {
+    flex-direction: row;
+  }
+}
+
+/// Set the alignment of blocks within a grid.
+///  - left: Items align to the left.
+///  - right: Items align to the right.
+///  - center: Items align to the center.
+///  - justify: Items are spaced equally apart so they occupy the space of the entire grid.
+///  - spaced: Items are given equal space to their left and right.
+/// @param {string} $align - Alignment to use.
+/// @output An appropriate justify-content value.
+@mixin grid-align($align: left) {
+  $options: (
+    left: flex-start,
+    right: flex-end,
+    center: center,
+    justify: space-between,
+    spaced: space-around,
+  );
+  justify-content: map-get($options, $align);
+}
+
+/// Set the source order of a block. Items with lower numbers appear first. If multiple items have the same number, the one in the HTML first will appear first.
+/// @param {number} $order - Position in source order.
+/// @output An order property.
+@mixin grid-order($order: 0) {
+  order: $order;
+}
+
+/// Offset a block by adding a left margin.
+/// @param {number | bool} $offset - If false, nothing is output. If a number, offsets the column by the specified number of columns.
+/// @output A left margin based on the number of columns specified, and the global number of columns.
+@mixin grid-offset($offset: false) {
+  @if ($offset != false) {
+    margin-left: percentage($offset / $total-columns);
+  }
+}
+
+/// Resets styles set by panels. Use this when a panel transforms into a block on larger screens.
+/// @output Resets to transform, position, and a few visual styles.
+@mixin frame-panel-reset {
+  position: relative;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  left: auto;
+  z-index: auto;
+  width: auto;
+  height: auto;
+  padding: $block-padding;
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+}

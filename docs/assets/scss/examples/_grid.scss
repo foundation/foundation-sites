@@ -74,3 +74,34 @@
     }
   }
 }
+
+// Frame Grid
+.frame-grid-sample.frame {
+  width: 80%;
+  height: 350px;
+  background: #eee;
+  font-size: 11px;
+  margin-bottom: 10px;
+  line-height: 2rem;
+  border: solid 1px #c6c6c6;
+  text-align: center;
+
+  p {
+    text-align: left;
+  }
+
+  .frame-group, .frame-block {
+
+    &:nth-child(odd) {
+      background: #eee;
+    }
+    &:nth-child(even) {
+      background: #ddd;
+    }
+
+    &.test-header, &.test-footer {
+      background: $dark-gray;
+    }
+  }
+
+}
