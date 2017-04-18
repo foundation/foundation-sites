@@ -1,5 +1,5 @@
-import Foundation from './foundation.core';
+import { Foundation } from './foundation.core';
 
-import Dropdown from '../../foundation.dropdown';
+import { Dropdown } from '../../foundation.dropdown';
 Foundation.plugin(Dropdown, 'Dropdown');
 

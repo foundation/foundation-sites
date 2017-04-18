@@ -1,12 +1,12 @@
 'use strict';
 
 import $ from 'jquery';
-import Keyboard from './foundation.util.keyboard';
+import { Keyboard } from './foundation.util.keyboard';
 import { Motion } from './foundation.util.motion';
-import Timer from './foundation.util.timer';
-import onImagesLoaded from './foundation.util.imageLoader';
+import { Timer } from './foundation.util.timer';
+import { onImagesLoaded } from './foundation.util.imageLoader';
 import { GetYoDigits } from './foundation.util.core';
-import Plugin from './foundation.plugin';
+import { Plugin } from './foundation.plugin';
 
   // import "foundation.util.touch.js"
   // TODO:  Figure out what a touch import should really do.
@@ -525,4 +525,4 @@ Orbit.defaults = {
   useMUI: true
 };
 
-export default Orbit;
+export {Orbit};

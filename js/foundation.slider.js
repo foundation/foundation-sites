@@ -1,12 +1,12 @@
 'use strict';
 
 import $ from 'jquery';
-import Keyboard from './foundation.util.keyboard';
+import { Keyboard } from './foundation.util.keyboard';
 import { Move } from './foundation.util.motion';
 import { GetYoDigits, rtl } from './foundation.util.core';
 let Rtl = rtl;
 
-import Plugin from './foundation.plugin';
+import { Plugin } from './foundation.plugin';
 /**
  * Slider module.
  * @module foundation.slider
@@ -692,4 +692,4 @@ function baseLog(base, value) {
   return Math.log(value)/Math.log(base)
 }
 
-export default Slider;
+export {Slider};

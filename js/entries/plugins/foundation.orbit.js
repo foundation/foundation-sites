@@ -1,5 +1,5 @@
-import Foundation from './foundation.core';
+import { Foundation } from './foundation.core';
 
-import Orbit from '../../foundation.orbit';
+import { Orbit } from '../../foundation.orbit';
 Foundation.plugin(Orbit, 'Orbit');
 

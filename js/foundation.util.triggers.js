@@ -258,4 +258,4 @@ Triggers.init = function(Foundation, $) {
   Foundation.IHearYou = Triggers.Initializers.addGlobalListeners
 }
 
-export default Triggers;
+export {Triggers};

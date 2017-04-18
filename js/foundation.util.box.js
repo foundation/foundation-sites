@@ -195,4 +195,4 @@ function GetOffsets(element, anchor, position, vOffset, hOffset, isOverflow) {
   }
 }
 
-export default Box;
+export {Box};

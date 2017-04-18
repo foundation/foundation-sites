@@ -1,10 +1,10 @@
 'use strict';
 
 import $ from 'jquery';
-import Keyboard from './foundation.util.keyboard';
-import MediaQuery from './foundation.util.mediaQuery';
+import { Keyboard } from './foundation.util.keyboard';
+import { MediaQuery } from './foundation.util.mediaQuery';
 import { transitionend } from './foundation.util.core';
-import Plugin from './foundation.plugin';
+import { Plugin } from './foundation.plugin';
 
   // import "foundation.util.triggers.js";
   // TODO: Figure out what triggers import should actually do, given how indirect their use is
@@ -431,4 +431,4 @@ OffCanvas.defaults = {
   trapFocus: false
 }
 
-export default OffCanvas;
+export {OffCanvas};

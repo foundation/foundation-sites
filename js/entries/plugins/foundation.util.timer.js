@@ -1,5 +1,5 @@
-import Foundation from './foundation.core';
+import { Foundation } from './foundation.core';
 
-import Timer from '../../foundation.util.timer';
+import { Timer } from '../../foundation.util.timer';
 
 Foundation.Timer = Timer;

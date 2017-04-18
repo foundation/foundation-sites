@@ -39,4 +39,4 @@ function onImagesLoaded(images, callback){
   }
 }
 
-export default onImagesLoaded;
+export { onImagesLoaded };

@@ -1,11 +1,11 @@
 'use strict';
 
 import $ from 'jquery';
-import Keyboard from './foundation.util.keyboard';
-import Nest from './foundation.util.nest';
-import Box from './foundation.util.box';
+import { Keyboard } from './foundation.util.keyboard';
+import { Nest } from './foundation.util.nest';
+import { Box } from './foundation.util.box';
 import { rtl } from './foundation.util.core';
-import Plugin from './foundation.plugin';
+import { Plugin } from './foundation.plugin';
 
 const Rtl = rtl;
 
@@ -441,4 +441,4 @@ DropdownMenu.defaults = {
   forceFollow: true
 };
 
-export default DropdownMenu;
+export {DropdownMenu};

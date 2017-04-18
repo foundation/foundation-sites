@@ -2,10 +2,10 @@
 
 
 import $ from 'jquery';
-import Keyboard from './foundation.util.keyboard';
-import Nest from './foundation.util.nest';
+import { Keyboard } from './foundation.util.keyboard';
+import { Nest } from './foundation.util.nest';
 import { GetYoDigits } from './foundation.util.core';
-import Plugin from './foundation.plugin';
+import { Plugin } from './foundation.plugin';
 
 /**
  * AccordionMenu module.
@@ -275,4 +275,4 @@ AccordionMenu.defaults = {
   multiOpen: true
 };
 
-export default AccordionMenu;
+export {AccordionMenu};

@@ -145,4 +145,4 @@ class Touch {}
   };
 
 
-export default Touch;
+export {Touch};

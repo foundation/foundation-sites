@@ -1,4 +1,4 @@
-import Foundation from './foundation.core';
+import { Foundation } from './foundation.core';
 
-import Interchange from '../../foundation.interchange';
+import { Interchange } from '../../foundation.interchange';
 Foundation.plugin(Interchange, 'Interchange');

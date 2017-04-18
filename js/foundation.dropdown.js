@@ -1,10 +1,10 @@
 'use strict';
 
 import $ from 'jquery';
-import Keyboard from './foundation.util.keyboard';
-import Box from './foundation.util.box';
+import { Keyboard } from './foundation.util.keyboard';
+import { Box } from './foundation.util.box';
 import { GetYoDigits } from './foundation.util.core';
-import Plugin from './foundation.plugin';
+import { Plugin } from './foundation.plugin';
 
   // import "foundation.util.triggers.js";
   // TODO: Figure out what a triggers import "means", since triggers are always accessed indirectly.
@@ -433,4 +433,4 @@ Dropdown.defaults = {
   closeOnClick: false
 }
 
-export default Dropdown;
+export {Dropdown};

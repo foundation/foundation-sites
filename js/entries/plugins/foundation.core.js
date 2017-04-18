@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-import Foundation from '../../foundation.core';
+import { Foundation } from '../../foundation.core';
 Foundation.addToJquery($);
 
 // These are now separated out, but historically were a part of this module,
@@ -14,7 +14,7 @@ Foundation.transitionend = transitionend;
 // Every plugin depends on plugin now, we can include that on the core for the
 // script inclusion path.
 
-import Plugin from '../../foundation.plugin';
+import { Plugin } from '../../foundation.plugin';
 Foundation.Plugin = Plugin;
 
 

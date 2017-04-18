@@ -1,9 +1,9 @@
 'use strict';
 
 import $ from 'jquery';
-import Keyboard from './foundation.util.keyboard';
+import { Keyboard } from './foundation.util.keyboard';
 import { GetYoDigits } from './foundation.util.core';
-import Plugin from './foundation.plugin';
+import { Plugin } from './foundation.plugin';
 
 /**
  * Accordion module.
@@ -307,4 +307,4 @@ Accordion.defaults = {
   updateHistory: false
 };
 
-export default Accordion;
+export {Accordion};

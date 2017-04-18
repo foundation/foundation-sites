@@ -1,5 +1,5 @@
-import Foundation from './foundation.core';
+import { Foundation } from './foundation.core';
 
-import ResponsiveAccordionTabs from '../../foundation.zf.responsiveAccordionTabs';
+import { ResponsiveAccordionTabs } from '../../foundation.zf.responsiveAccordionTabs';
 Foundation.plugin(ResponsiveAccordionTabs, 'ResponsiveAccordionTabs');
 

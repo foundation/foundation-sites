@@ -45,4 +45,4 @@ function Timer(elem, options, cb) {
   }
 }
 
-export default Timer;
+export {Timer};

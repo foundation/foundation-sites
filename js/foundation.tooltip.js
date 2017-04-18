@@ -2,10 +2,10 @@
 
 import $ from 'jquery';
 
-import Box from './foundation.util.box';
+import { Box } from './foundation.util.box';
 import { GetYoDigits } from './foundation.util.core';
-import MediaQuery from './foundation.util.mediaQuery';
-import Plugin from './foundation.plugin';
+import { MediaQuery } from './foundation.util.mediaQuery';
+import { Plugin } from './foundation.plugin';
 
   // import "foundation.util.triggers";
 
@@ -466,4 +466,4 @@ Tooltip.defaults = {
  * TODO utilize resize event trigger
  */
 
-export default Tooltip;
+export {Tooltip};

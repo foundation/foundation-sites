@@ -1,7 +1,7 @@
 'use strict';
 
 import $ from 'jquery';
-import Plugin from './foundation.plugin';
+import { Plugin } from './foundation.plugin';
 
 /**
  * Abide module.
@@ -241,7 +241,7 @@ class Abide extends Plugin {
   }
 
   /**
-   * Goes through a form to find inputs and proceeds to validate them in ways specific to their type. 
+   * Goes through a form to find inputs and proceeds to validate them in ways specific to their type.
    * Ignores inputs with data-abide-ignore, type="hidden" or disabled attributes set
    * @fires Abide#invalid
    * @fires Abide#valid
@@ -575,4 +575,4 @@ Abide.defaults = {
   }
 }
 
-export default Abide;
+export {Abide};

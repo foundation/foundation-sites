@@ -1,12 +1,12 @@
 'use strict';
 
 import $ from 'jquery';
-import MediaQuery from './foundation.util.mediaQuery';
+import { MediaQuery } from './foundation.util.mediaQuery';
 import { GetYoDigits } from './foundation.util.core';
-import Plugin from './foundation.plugin';
+import { Plugin }from './foundation.plugin';
 
-import Accordion from './foundation.accordion';
-import Tabs from './foundation.tabs';
+import { Accordion } from './foundation.accordion';
+import { Tabs } from './foundation.tabs';
 
 // The plugin matches the plugin classes with these plugin instances.
 var MenuPlugins = {
@@ -236,4 +236,4 @@ class ResponsiveAccordionTabs extends Plugin{
 
 ResponsiveAccordionTabs.defaults = {};
 
-export default ResponsiveAccordionTabs;
+export {ResponsiveAccordionTabs};
