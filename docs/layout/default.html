@@ -44,50 +44,15 @@
 
       {{> navigation}}
       {{> mobile-navigation}}
-
-      <div class="collapse expanded row secondary-bar">
-        <div class="medium-3 large-2 columns">
-
-          <button class="button version-dropdown-label" data-toggle="example-dropdown"><span class="foundation-version-label">Foundation for Sites</span><span class="foundation-version-number">6.0</span></button>
-            <div class="dropdown-pane version-dropdown" id="example-dropdown" data-dropdown data-auto-focus="true">
-              <ul class="version-dropdown-menu">
-                <li class="version-dropdown-menu-link"><a href="#">6.0</a></li>
-                <li class="version-dropdown-menu-link"><a href="#">5.0</a></li>
-                <li class="version-dropdown-menu-link"><a href="#">4.0</a></li>
-                <li class="version-dropdown-menu-link"><a href="#">3.0</a></li>
-              </ul>
-            </div>
-<!--
-          <ul class="dropdown menu version-dropdown" data-dropdown-menu>
-            <li class="version-menu-list">
-              <a href="#" class="version-dropdown-label"><span class="foundation-version-label">Foundation for Sites</span><span class="foundation-version-number">6.3.0</span></a>
-              <ul class="menu version-dropdown-menu">
-                <li class="version-dropdown-menu-link"><a href="#">6.2.0</a></li>
-                <li class="version-dropdown-menu-link"><a href="#">6.0</a></li>
-                <li class="version-dropdown-menu-link"><a href="#">5.0</a></li>
-                <li class="version-dropdown-menu-link"><a href="#">4.0</a></li>
-              </ul>
-            </li>
-          </ul>
--->
-        </div>
-        <div class="medium-6 large-7 columns">
-          <input type="text" class="docs-search" data-docs-search placeholder="Find a page, component, variable, mixin, function...">
-        </div>
-        <div class="medium-3 large-3 columns social-container">
-          <ul class="social-list">
-            <li><a class="github-button" href="https://github.com/ntkme/github-buttons" data-style="mega" data-count-href="/ntkme/github-buttons/stargazers" data-count-api="/repos/ntkme/github-buttons#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star ntkme/github-buttons on GitHub">Star</a></li>
-            <li><a class="github-button" href="https://github.com/ntkme/github-buttons" data-style="mega" data-count-href="/ntkme/github-buttons/stargazers" data-count-api="/repos/ntkme/github-buttons#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star ntkme/github-buttons on GitHub">Star</a></li>
-          </ul>
-        </div>
-      </div>
+      {{> search-bar}}
+      
 
       <div class="collapse expanded row">
-        <div class="medium-9 large-10 medium-push-3 large-push-2 columns">
+        <div class="small-12 medium-9 large-10 medium-push-3 large-push-2 columns">
 <!-- do not indent -->
 {{> body}}
         </div>
-        <div class="medium-3 large-2 medium-pull-9 large-pull-10 columns">
+        <div class="medium-3 large-2 medium-pull-9 large-pull-10 hide-for-small-only columns">
           {{> component-list}}
         </div>
       </div>

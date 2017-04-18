@@ -30,7 +30,7 @@
 
   .accordion-title {
     background-color: #f5f5f5;
-    color: $dark-gray;
+    color: darken($dark-gray,10%);
     font-size: 1.25rem;
     padding-left: 0;
     // margin-bottom: 1rem;
