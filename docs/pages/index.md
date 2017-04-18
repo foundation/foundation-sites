@@ -4,13 +4,8 @@ description: We built Foundation for Sites to be the most advanced responsive fr
 tags:
   - index
   - home
----
-
-## Welcome to Foundation 6
-
-We built Foundation for Sites to be the most advanced responsive front-end framework in the world.
-
-<iframe width="500" height="315" src="https://www.youtube.com/embed/sKYsLkJ0yvQ" frameborder="0" allowfullscreen></iframe>
+  
+video-hero: true
 
 ---
 

@@ -3,6 +3,10 @@ title: Installation
 description: There are many ways to install Foundation, but if you're just getting started, we have a few suggestions.
 ---
 
+## Installation
+
+<iframe width="500" height="315" src="https://www.youtube.com/embed/sKYsLkJ0yvQ" frameborder="0" allowfullscreen></iframe>
+
 ### Command-Line Tool
 
 Not a fan of GUIs? The Node-powered Foundation CLI can install the same template projects for you. Install it with npm:
