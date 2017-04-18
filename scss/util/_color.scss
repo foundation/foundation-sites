@@ -94,15 +94,15 @@
 
 /// Get color from foundation-palette
 ///
-/// @param {key} color key from foundation-palette
+/// @param {key} color key from any color map
 ///
-/// @returns {Color} color from foundation-palette
-@function get-color($key) {
-  @if map-has-key($foundation-palette, $key) {
-    @return map-get($foundation-palette, $key);
+/// @returns {Color} color from any color map (foundation-palette is the default)
+@function get-color($key, $palette: $foundation-palette) {
+  @if map-has-key($palette, $key) {
+    @return map-get($palette, $key);
   }
   @else {
-    @error 'given $key is not available in $foundation-palette';
+    @error 'given $key `#{$key}` is not available in the palette';
   }
 }
 
