@@ -1,5 +1,5 @@
-import Foundation from './foundation.core';
+import { Foundation } from './foundation.core';
 
-import onImageLoaded from '../../foundation.util.imageLoader';
+import { onImagesLoaded } from '../../foundation.util.imageLoader';
 
-Foundation.onImageLoaded = onImageLoaded;
+Foundation.onImagesLoaded = onImagesLoaded;

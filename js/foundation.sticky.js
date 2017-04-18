@@ -2,8 +2,8 @@
 
 import $ from 'jquery';
 import { GetYoDigits } from './foundation.util.core';
-import MediaQuery from './foundation.util.mediaQuery';
-import Plugin from './foundation.plugin';
+import { MediaQuery } from './foundation.util.mediaQuery';
+import { Plugin } from './foundation.plugin';
 /**
  * Sticky module.
  * @module foundation.sticky
@@ -495,4 +495,4 @@ function emCalc(em) {
   return parseInt(window.getComputedStyle(document.body, null).fontSize, 10) * em;
 }
 
-export default Sticky;
+export {Sticky};

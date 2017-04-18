@@ -1,11 +1,11 @@
 'use strict';
 
 import $ from 'jquery';
-import Keyboard from './foundation.util.keyboard';
-import Nest from './foundation.util.nest';
-import {GetYoDigits, transitionend} from './foundation.util.core';
-import Box from './foundation.util.box';
-import Plugin from './foundation.plugin';
+import { Keyboard } from './foundation.util.keyboard';
+import { Nest } from './foundation.util.nest';
+import { GetYoDigits, transitionend } from './foundation.util.core';
+import { Box } from './foundation.util.box';
+import { Plugin } from './foundation.plugin';
 
 /**
  * Drilldown module.
@@ -515,4 +515,4 @@ Drilldown.defaults = {
   // holdOpen: false
 };
 
-export default Drilldown;
+export {Drilldown};

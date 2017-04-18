@@ -2,13 +2,13 @@
 
 import $ from 'jquery';
 
-import MediaQuery from './foundation.util.mediaQuery';
+import { MediaQuery } from './foundation.util.mediaQuery';
 import { GetYoDigits } from './foundation.util.core';
-import Plugin from './foundation.plugin';
+import { Plugin } from './foundation.plugin';
 
-import DropdownMenu from './foundation.dropdownMenu';
-import Drilldown from './foundation.drilldown';
-import AccordionMenu from './foundation.accordionMenu';
+import { DropdownMenu } from './foundation.dropdownMenu';
+import { Drilldown } from './foundation.drilldown';
+import { AccordionMenu } from './foundation.accordionMenu';
 
 let MenuPlugins = {
   dropdown: {
@@ -148,4 +148,4 @@ class ResponsiveMenu extends Plugin {
 
 ResponsiveMenu.defaults = {};
 
-export default ResponsiveMenu;
+export {ResponsiveMenu};

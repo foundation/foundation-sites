@@ -1,5 +1,5 @@
-import Foundation from './foundation.core';
+import { Foundation } from './foundation.core';
 
-import ResponsiveMenu from '../../foundation.responsiveMenu';
+import { ResponsiveMenu } from '../../foundation.responsiveMenu';
 Foundation.plugin(ResponsiveMenu, 'ResponsiveMenu');
 

@@ -1,10 +1,10 @@
 'use strict';
 
 import $ from 'jquery';
-import MediaQuery from './foundation.util.mediaQuery';
-import onImagesLoaded from './foundation.util.imageLoader';
+import { MediaQuery } from './foundation.util.mediaQuery';
+import { onImagesLoaded } from './foundation.util.imageLoader';
 import { GetYoDigits } from './foundation.util.core';
-import Plugin from './foundation.plugin';
+import { Plugin } from './foundation.plugin';
 
 /**
  * Equalizer module.
@@ -311,4 +311,4 @@ Equalizer.defaults = {
   equalizeOn: ''
 };
 
-export default Equalizer;
+export {Equalizer};

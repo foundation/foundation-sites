@@ -1,5 +1,5 @@
-import Foundation from './foundation.core';
+import { Foundation } from './foundation.core';
 
-import ResponsiveToggle from '../../foundation.responsiveToggle';
+import { ResponsiveToggle } from '../../foundation.responsiveToggle';
 Foundation.plugin(ResponsiveToggle, 'ResponsiveToggle');
 

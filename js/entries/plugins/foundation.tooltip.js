@@ -1,4 +1,4 @@
-import Foundation from './foundation.core';
+import { Foundation } from './foundation.core';
 
-import Tooltip from '../../foundation.tooltip';
+import { Tooltip } from '../../foundation.tooltip';
 Foundation.plugin(Tooltip, 'Tooltip');

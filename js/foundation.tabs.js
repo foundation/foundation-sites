@@ -1,9 +1,9 @@
 'use strict';
 
 import $ from 'jquery';
-import Keyboard from './foundation.util.keyboard';
-import onImagesLoaded from './foundation.util.imageLoader';
-import Plugin from './foundation.plugin';
+import { Keyboard } from './foundation.util.keyboard';
+import { onImagesLoaded } from './foundation.util.imageLoader';
+import { Plugin } from './foundation.plugin';
 /**
  * Tabs module.
  * @module foundation.tabs
@@ -493,4 +493,4 @@ Tabs.defaults = {
   panelActiveClass: 'is-active'
 };
 
-export default Tabs;
+export {Tabs};

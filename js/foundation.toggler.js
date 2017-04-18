@@ -2,7 +2,7 @@
 
 import $ from 'jquery';
 import { Motion } from './foundation.util.motion';
-import Plugin from './foundation.plugin';
+import { Plugin } from './foundation.plugin';
 
   // import "foundation.util.triggersjs";
 
@@ -143,4 +143,4 @@ Toggler.defaults = {
   animate: false
 };
 
-export default Toggler;
+export {Toggler};
