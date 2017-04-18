@@ -34,6 +34,7 @@ var pluginsAsExternals = {
   './foundation.accordionMenu' : '{AccordionMenu: window.Foundation.AccordionMenu}',
   './foundation.accordion' : '{Accordion: window.Foundation.Accordion}',
   './foundation.tabs' : '{Tabs: window.Foundation.Tabs}',
+  './foundation.smoothScroll' : '{SmoothScroll: window.Foundation.SmoothScroll}',
 }
 
 // Core has to be dealt with slightly differently due to bootstrapping externals

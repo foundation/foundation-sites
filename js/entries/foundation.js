@@ -82,6 +82,9 @@ Foundation.plugin(Reveal, 'Reveal');
 import { Slider } from '../foundation.slider';
 Foundation.plugin(Slider, 'Slider');
 
+import { SmoothScroll } from '../foundation.smoothScroll';
+Foundation.plugin(SmoothScroll, 'SmoothScroll');
+
 import { Sticky } from '../foundation.sticky';
 Foundation.plugin(Sticky, 'Sticky');
 
