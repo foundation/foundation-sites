@@ -2,11 +2,15 @@
 
 !function($) {
 
+  let MediaQuery     = Foundation.MediaQuery; // import MediaQuery from "foundation.util.mediaQuery";
+  let onImagesLoaded = Foundation.onImagesLoaded; // import onImagesLoaded from "foundation.util.imageLoader";
+  let GetYoDigits    = Foundation.GetYoDigits; // import { GetYoDigits } from "foundation.util.core"
+
 /**
  * Equalizer module.
  * @module foundation.equalizer
  * @requires foundation.util.mediaQuery
- * @requires foundation.util.timerAndImageLoader if equalizer contains images
+ * @requires foundation.util.imageLoader if equalizer contains images
  */
 
 class Equalizer {
@@ -35,8 +39,8 @@ class Equalizer {
     var $watched = this.$element.find(`[data-equalizer-watch="${eqId}"]`);
 
     this.$watched = $watched.length ? $watched : this.$element.find('[data-equalizer-watch]');
-    this.$element.attr('data-resize', (eqId || Foundation.GetYoDigits(6, 'eq')));
-	this.$element.attr('data-mutate', (eqId || Foundation.GetYoDigits(6, 'eq')));
+    this.$element.attr('data-resize', (eqId || GetYoDigits(6, 'eq')));
+	this.$element.attr('data-mutate', (eqId || GetYoDigits(6, 'eq')));
 
     this.hasNested = this.$element.find('[data-equalizer]').length > 0;
     this.isNested = this.$element.parentsUntil(document.body, '[data-equalizer]').length > 0;
@@ -56,7 +60,7 @@ class Equalizer {
     }
     if((tooSmall !== undefined && tooSmall === false) || tooSmall === undefined){
       if(imgs.length){
-        Foundation.onImagesLoaded(imgs, this._reflow.bind(this));
+        onImagesLoaded(imgs, this._reflow.bind(this));
       }else{
         this._reflow();
       }
@@ -113,7 +117,7 @@ class Equalizer {
    * @private
    */
   _checkMQ() {
-    var tooSmall = !Foundation.MediaQuery.is(this.options.equalizeOn);
+    var tooSmall = !MediaQuery.is(this.options.equalizeOn);
     if(tooSmall){
       if(this.isOn){
         this._pauseEvents();

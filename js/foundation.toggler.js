@@ -2,6 +2,10 @@
 
 !function($) {
 
+  let Motion = Foundation.Motion; // import { Motion } from "foundation.util.motion";
+
+  // import "foundation.util.triggersjs";
+
 /**
  * Toggler module.
  * @module foundation.toggler
@@ -103,14 +107,14 @@ class Toggler {
     var _this = this;
 
     if (this.$element.is(':hidden')) {
-      Foundation.Motion.animateIn(this.$element, this.animationIn, function() {
+      Motion.animateIn(this.$element, this.animationIn, function() {
         _this._updateARIA(true);
         this.trigger('on.zf.toggler');
         this.find('[data-mutate]').trigger('mutateme.zf.trigger');
       });
     }
     else {
-      Foundation.Motion.animateOut(this.$element, this.animationOut, function() {
+      Motion.animateOut(this.$element, this.animationOut, function() {
         _this._updateARIA(false);
         this.trigger('off.zf.toggler');
         this.find('[data-mutate]').trigger('mutateme.zf.trigger');

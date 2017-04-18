@@ -2,11 +2,14 @@
 
 !function($) {
 
+  let Keyboard    = Foundation.Keyboard; // import Keyboard from "foundation.util.keyboard"
+  let Nest        = Foundation.Nest; // import Nest from "foundation.util.nest"
+  let GetYoDigits = Foundation.GetYoDigits; //import { GetYoDigits } from "foundation.util.core"
+
 /**
  * AccordionMenu module.
  * @module foundation.accordionMenu
  * @requires foundation.util.keyboard
- * @requires foundation.util.motion
  * @requires foundation.util.nest
  */
 
@@ -22,12 +25,12 @@ class AccordionMenu {
     this.$element = element;
     this.options = $.extend({}, AccordionMenu.defaults, this.$element.data(), options);
 
-    Foundation.Nest.Feather(this.$element, 'accordion');
+    Nest.Feather(this.$element, 'accordion');
 
     this._init();
 
     Foundation.registerPlugin(this, 'AccordionMenu');
-    Foundation.Keyboard.register('AccordionMenu', {
+    Keyboard.register('AccordionMenu', {
       'ENTER': 'toggle',
       'SPACE': 'toggle',
       'ARROW_RIGHT': 'open',
@@ -53,10 +56,10 @@ class AccordionMenu {
 
     this.$menuLinks = this.$element.find('.is-accordion-submenu-parent');
     this.$menuLinks.each(function(){
-      var linkId = this.id || Foundation.GetYoDigits(6, 'acc-menu-link'),
+      var linkId = this.id || GetYoDigits(6, 'acc-menu-link'),
           $elem = $(this),
           $sub = $elem.children('[data-submenu]'),
-          subId = $sub[0].id || Foundation.GetYoDigits(6, 'acc-menu'),
+          subId = $sub[0].id || GetYoDigits(6, 'acc-menu'),
           isActive = $sub.hasClass('is-active');
       $elem.attr({
         'aria-controls': subId,
@@ -126,7 +129,7 @@ class AccordionMenu {
         }
       });
 
-      Foundation.Keyboard.handleKey(e, 'AccordionMenu', {
+      Keyboard.handleKey(e, 'AccordionMenu', {
         open: function() {
           if ($target.is(':hidden')) {
             _this.down($target);
@@ -214,15 +217,13 @@ class AccordionMenu {
     $target.addClass('is-active').attr({'aria-hidden': false})
       .parent('.is-accordion-submenu-parent').attr({'aria-expanded': true});
 
-      //Foundation.Move(this.options.slideSpeed, $target, function() {
-        $target.slideDown(_this.options.slideSpeed, function () {
-          /**
-           * Fires when the menu is done opening.
-           * @event AccordionMenu#down
-           */
-          _this.$element.trigger('down.zf.accordionMenu', [$target]);
-        });
-      //});
+    $target.slideDown(_this.options.slideSpeed, function () {
+      /**
+       * Fires when the menu is done opening.
+       * @event AccordionMenu#down
+       */
+      _this.$element.trigger('down.zf.accordionMenu', [$target]);
+    });
   }
 
   /**
@@ -232,15 +233,13 @@ class AccordionMenu {
    */
   up($target) {
     var _this = this;
-    //Foundation.Move(this.options.slideSpeed, $target, function(){
-      $target.slideUp(_this.options.slideSpeed, function () {
-        /**
-         * Fires when the menu is done collapsing up.
-         * @event AccordionMenu#up
-         */
-        _this.$element.trigger('up.zf.accordionMenu', [$target]);
-      });
-    //});
+    $target.slideUp(_this.options.slideSpeed, function () {
+      /**
+       * Fires when the menu is done collapsing up.
+       * @event AccordionMenu#up
+       */
+      _this.$element.trigger('up.zf.accordionMenu', [$target]);
+    });
 
     var $menus = $target.find('[data-submenu]').slideUp(0).addBack().attr('aria-hidden', true);
 
@@ -255,7 +254,7 @@ class AccordionMenu {
     this.$element.find('[data-submenu]').slideDown(0).css('display', '');
     this.$element.find('a').off('click.zf.accordionMenu');
 
-    Foundation.Nest.Burn(this.$element, 'accordion');
+    Nest.Burn(this.$element, 'accordion');
     Foundation.unregisterPlugin(this);
   }
 }

@@ -2,6 +2,12 @@
 
 !function($) {
 
+  let Box         = Foundation.Box; // import Box from "foundation.utils.box";
+  let GetYoDigits = Foundation.GetYoDigits; // import { GetYoDigits } from "foundation.utils.core";
+  let MediaQuery  = Foundation.MediaQuery; // import MediaQuery from "foundation.utils.mediaQuery";
+
+  // import "foundation.util.triggers";
+
 /**
  * Tooltip module.
  * @module foundation.tooltip
@@ -34,7 +40,7 @@ class Tooltip {
    * @private
    */
   _init() {
-    var elemId = this.$element.attr('aria-describedby') || Foundation.GetYoDigits(6, 'tooltip');
+    var elemId = this.$element.attr('aria-describedby') || GetYoDigits(6, 'tooltip');
 
     this.options.positionClass = this.options.positionClass || this._getPositionClass(this.$element);
     this.options.tipText = this.options.tipText || this.$element.attr('title');
@@ -140,25 +146,24 @@ class Tooltip {
    */
   _setPosition() {
     var position = this._getPositionClass(this.template),
-        $tipDims = Foundation.Box.GetDimensions(this.template),
-        $anchorDims = Foundation.Box.GetDimensions(this.$element),
+        $tipDims = Box.GetDimensions(this.template),
+        $anchorDims = Box.GetDimensions(this.$element),
         direction = (position === 'left' ? 'left' : ((position === 'right') ? 'left' : 'top')),
         param = (direction === 'top') ? 'height' : 'width',
         offset = (param === 'height') ? this.options.vOffset : this.options.hOffset,
         _this = this;
 
-    if (($tipDims.width >= $tipDims.windowDims.width) || (!this.counter && !Foundation.Box.ImNotTouchingYou(this.template))) {
-      this.template.offset(Foundation.Box.GetOffsets(this.template, this.$element, 'center bottom', this.options.vOffset, this.options.hOffset, true)).css({
-      // this.$element.offset(Foundation.GetOffsets(this.template, this.$element, 'center bottom', this.options.vOffset, this.options.hOffset, true)).css({
+    if (($tipDims.width >= $tipDims.windowDims.width) || (!this.counter && !Box.ImNotTouchingYou(this.template))) {
+      this.template.offset(Box.GetOffsets(this.template, this.$element, 'center bottom', this.options.vOffset, this.options.hOffset, true)).css({
         'width': $anchorDims.windowDims.width - (this.options.hOffset * 2),
         'height': 'auto'
       });
       return false;
     }
 
-    this.template.offset(Foundation.Box.GetOffsets(this.template, this.$element,'center ' + (position || 'bottom'), this.options.vOffset, this.options.hOffset));
+    this.template.offset(Box.GetOffsets(this.template, this.$element,'center ' + (position || 'bottom'), this.options.vOffset, this.options.hOffset));
 
-    while(!Foundation.Box.ImNotTouchingYou(this.template) && this.counter) {
+    while(!Box.ImNotTouchingYou(this.template) && this.counter) {
       this._reposition(position);
       this._setPosition();
     }
@@ -171,7 +176,7 @@ class Tooltip {
    * @function
    */
   show() {
-    if (this.options.showOn !== 'all' && !Foundation.MediaQuery.is(this.options.showOn)) {
+    if (this.options.showOn !== 'all' && !MediaQuery.is(this.options.showOn)) {
       // console.error('The screen is too small to display this tooltip');
       return false;
     }

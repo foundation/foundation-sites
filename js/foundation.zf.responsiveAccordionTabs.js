@@ -2,11 +2,12 @@
 
 !function($) {
 
+  let MediaQuery  = Foundation.MediaQuery; // import MediaQuery from "foundation.util.mediaQuery";
+  let GetYoDigits = Foundation.GetYoDigits; // import { GetYoDigits } from "foundation.util.core";
+
 /**
  * ResponsiveAccordionTabs module.
  * @module foundation.responsiveAccordionTabs
- * @requires foundation.util.keyboard
- * @requires foundation.util.timerAndImageLoader
  * @requires foundation.util.motion
  * @requires foundation.accordion
  * @requires foundation.tabs
@@ -27,7 +28,7 @@ class ResponsiveAccordionTabs {
     this.currentMq = null;
     this.currentPlugin = null;
     if (!this.$element.attr('id')) {
-      this.$element.attr('id',Foundation.GetYoDigits(6, 'responsiveaccordiontabs'));
+      this.$element.attr('id',GetYoDigits(6, 'responsiveaccordiontabs'));
     };
 
     this._init();
@@ -116,7 +117,7 @@ class ResponsiveAccordionTabs {
     var matchedMq, _this = this;
     // Iterate through each rule and find the last matching rule
     $.each(this.rules, function(key) {
-      if (Foundation.MediaQuery.atLeast(key)) {
+      if (MediaQuery.atLeast(key)) {
         matchedMq = key;
       }
     });
@@ -190,7 +191,7 @@ class ResponsiveAccordionTabs {
       $panels.each(function(key,value){
         var tempValue = $(value).appendTo($tabsContent).addClass(tabsPanel);
         var hash = $liHeadsA.get(key).hash.slice(1);
-        var id = $(value).attr('id') || Foundation.GetYoDigits(6, 'accordion');
+        var id = $(value).attr('id') || GetYoDigits(6, 'accordion');
         if (hash !== id) {
           if (hash !== '') {
             $(value).attr('id',hash);
@@ -222,6 +223,8 @@ class ResponsiveAccordionTabs {
 
 ResponsiveAccordionTabs.defaults = {};
 
+// TODO9438 move this to initialize in order to eliminate side effects
+//
 // The plugin matches the plugin classes with these plugin instances.
 var MenuPlugins = {
   tabs: {

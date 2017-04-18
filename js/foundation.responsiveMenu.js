@@ -2,6 +2,12 @@
 
 !function($) {
 
+  let MediaQuery  = Foundation.MediaQuery; // import MediaQuery from "foundation.util.mediaQuery";
+  let GetYoDigits = Foundation.GetYoDigits; // import { GetYoDigits } from "foundation.util.core";
+
+  // import "foundation.util.triggers.js";
+
+
 /**
  * ResponsiveMenu module.
  * @module foundation.responsiveMenu
@@ -60,7 +66,7 @@ class ResponsiveMenu {
       this._checkMediaQueries();
     }
     // Add data-mutate since children may need it.
-    this.$element.attr('data-mutate', (this.$element.attr('data-mutate') || Foundation.GetYoDigits(6, 'responsive-menu')));
+    this.$element.attr('data-mutate', (this.$element.attr('data-mutate') || GetYoDigits(6, 'responsive-menu')));
   }
 
   /**
@@ -88,7 +94,7 @@ class ResponsiveMenu {
     var matchedMq, _this = this;
     // Iterate through each rule and find the last matching rule
     $.each(this.rules, function(key) {
-      if (Foundation.MediaQuery.atLeast(key)) {
+      if (MediaQuery.atLeast(key)) {
         matchedMq = key;
       }
     });
@@ -125,6 +131,8 @@ class ResponsiveMenu {
 
 ResponsiveMenu.defaults = {};
 
+// TODO9438: refactor this to happen on init, rather than as side effect.
+//
 // The plugin matches the plugin classes with these plugin instances.
 var MenuPlugins = {
   dropdown: {

@@ -2,10 +2,14 @@
 
 !function($) {
 
+  let MediaQuery = Foundation.MediaQuery; // import MediaQuery from "foundation.util.mediaQuery";
+  let Motion     = Foundation.Motion; // import { Motion } from "foundation.util.motion";
+
 /**
  * ResponsiveToggle module.
  * @module foundation.responsiveToggle
  * @requires foundation.util.mediaQuery
+ * @requires foundation.util.motion
  */
 
 class ResponsiveToggle {
@@ -74,7 +78,7 @@ class ResponsiveToggle {
    */
   _update() {
     // Mobile
-    if (!Foundation.MediaQuery.atLeast(this.options.hideFor)) {
+    if (!MediaQuery.atLeast(this.options.hideFor)) {
       this.$element.show();
       this.$targetMenu.hide();
     }
@@ -92,7 +96,7 @@ class ResponsiveToggle {
    * @fires ResponsiveToggle#toggled
    */
   toggleMenu() {
-    if (!Foundation.MediaQuery.atLeast(this.options.hideFor)) {
+    if (!MediaQuery.atLeast(this.options.hideFor)) {
       /**
        * Fires when the element attached to the tab bar toggles.
        * @event ResponsiveToggle#toggled
@@ -105,7 +109,7 @@ class ResponsiveToggle {
           });
         }
         else {
-          Foundation.Motion.animateOut(this.$targetMenu, this.animationOut, () => {
+          Motion.animateOut(this.$targetMenu, this.animationOut, () => {
             this.$element.trigger('toggled.zf.responsiveToggle');
           });
         }
