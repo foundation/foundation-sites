@@ -22,9 +22,15 @@
     }
   }
 
-  .accordion-title:hover,
-  .accordion-title:focus {
+  .accordion-title:hover {
     color: $black;
+    background: lighten($light-gray,7%);
+    transition: color 0.3s ease;
+    transition: background 0.3s ease;
+  }
+  
+  .accordion-title:focus,
+  .accordion-title:active {
     background: none;
   }
 
@@ -37,10 +43,19 @@
     background: none;
     border: none;
     border-bottom: 1px dashed #e6e6e6;
+    transition: color 0.3s ease;
+    transition: background 0.3s ease;
   }
 
   .accordion-title::before {
-    color: $medium-gray;
+    color: $dark-gray;
+    font-size: 1.25rem;
+    transition: color 0.3s ease;
+  }
+  
+  .accordion-title:hover::before {
+    color: $black;
+    transition: color 0.3s ease;
   }
 }
 
