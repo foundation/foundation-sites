@@ -35,16 +35,16 @@ $prototype-position-z-index: 975 !default;
 ) {
   position: $position !important;
   @if $top != null {
-    top: $top * $global-postion !important;
+    top: $top * $global-position !important;
   }
   @if $right != null {
-    right: $right * $global-postion !important;
+    right: $right * $global-position !important;
   }
   @if $bottom != null {
-    bottom: $bottom * $global-postion !important;
+    bottom: $bottom * $global-position !important;
   }
   @if $left != null {
-    left: $left * $global-postion !important;
+    left: $left * $global-position !important;
   }
 }
 
