@@ -5,6 +5,8 @@
     'ENTER': 13,
     'ESCAPE': 27,
     'SPACE': 32,
+    'END': 35,
+    'HOME': 36,
     'ARROW_LEFT': 37,
     'ARROW_UP': 38,
     'ARROW_RIGHT': 39,
