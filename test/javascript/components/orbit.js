@@ -194,4 +194,27 @@ describe('Orbit', function() {
       }, 201);
     });
   });
+
+  describe('keyboard events', function() {
+    it('moves switches to next slide using ARROW_RIGHT', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Orbit($html, {});
+      let spy = sinon.spy(plugin, 'changeSlide');
+
+      plugin.$wrapper.focus()
+        .trigger(window.mockKeyboardEvent('ARROW_RIGHT'));
+
+      sinon.assert.calledWith(spy, true);
+    });
+    it('moves switches to previous slide using ARROW_LEFT', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Orbit($html, {});
+      let spy = sinon.spy(plugin, 'changeSlide');
+
+      plugin.$wrapper.focus()
+        .trigger(window.mockKeyboardEvent('ARROW_LEFT'));
+
+      sinon.assert.calledWith(spy, false);
+    });
+  });
 });

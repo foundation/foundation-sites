@@ -61,12 +61,12 @@ class Tabs extends Plugin {
         'role': 'tab',
         'aria-controls': hash,
         'aria-selected': isActive,
-        'id': linkId
+        'id': linkId,
+        'tabindex': isActive ? '0' : '-1'
       });
 
       $tabContent.attr({
         'role': 'tabpanel',
-        'aria-hidden': !isActive,
         'aria-labelledby': linkId
       });
 
@@ -277,11 +277,13 @@ class Tabs extends Plugin {
 
       $target.addClass(`${this.options.linkActiveClass}`);
 
-      $tabLink.attr({'aria-selected': 'true'});
+      $tabLink.attr({
+        'aria-selected': 'true',
+        'tabindex': '0'
+      });
 
       $targetContent
         .addClass(`${this.options.panelActiveClass}`)
-        .attr({'aria-hidden': 'false'});
   }
 
   /**
@@ -293,11 +295,13 @@ class Tabs extends Plugin {
     var $target_anchor = $target
       .removeClass(`${this.options.linkActiveClass}`)
       .find('[role="tab"]')
-      .attr({ 'aria-selected': 'false' });
+      .attr({ 
+        'aria-selected': 'false',
+        'tabindex': -1
+      });
 
     $(`#${$target_anchor.attr('aria-controls')}`)
       .removeClass(`${this.options.panelActiveClass}`)
-      .attr({ 'aria-hidden': 'true' });
   }
 
   /**

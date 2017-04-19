@@ -157,7 +157,6 @@ class Drilldown extends Plugin {
         });
       }
     });
-	  this.$element.on('mutateme.zf.trigger', this._resize.bind(this));
   }
 
   /**
@@ -170,6 +169,7 @@ class Drilldown extends Plugin {
       this._bindHandler = this._scrollTop.bind(this);
       this.$element.on('open.zf.drilldown hide.zf.drilldown closed.zf.drilldown',this._bindHandler);
     }
+    this.$element.on('mutateme.zf.trigger', this._resize.bind(this));
   }
 
   /**
@@ -414,7 +414,7 @@ class Drilldown extends Plugin {
       $(this).off('.zf.drilldown');
     });
 
-    this.$submenus.removeClass('drilldown-submenu-cover-previous');
+    this.$submenus.removeClass('drilldown-submenu-cover-previous invisible');
 
     this.$element.find('a').each(function(){
       var $link = $(this);
