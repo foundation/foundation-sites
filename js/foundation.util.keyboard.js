@@ -15,6 +15,8 @@ const keyCodes = {
   13: 'ENTER',
   27: 'ESCAPE',
   32: 'SPACE',
+  35: 'END',
+  36: 'HOME',
   37: 'ARROW_LEFT',
   38: 'ARROW_UP',
   39: 'ARROW_RIGHT',
