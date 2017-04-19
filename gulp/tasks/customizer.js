@@ -114,6 +114,13 @@ gulp.task('customizer:javascript', ['customizer:javascript-entry'], function() {
   return gulp.src(path.join(OUTPUT_DIR, 'js/vendor/foundation.js'))
     .pipe(webpackStream({externals: {jquery: 'jQuery'}, module: WEBPACK_MODULE_CONFIG}, webpack2))
     .pipe(rename('foundation.js'))
+    .pipe(gulp.dest(path.join(OUTPUT_DIR, 'js/vendor')))
+    .pipe(uglify())
+    .pipe(rename('foundation.min.js'))
+    .pipe(addSrc([
+      'node_modules/jquery/dist/jquery.js',
+      'node_modules/what-input/dist/what-input.js'
+    ]))
     .pipe(gulp.dest(path.join(OUTPUT_DIR, 'js/vendor')));
 });
 
