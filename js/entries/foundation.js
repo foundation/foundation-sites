@@ -97,5 +97,5 @@ Foundation.plugin(Toggler, 'Toggler');
 import { Tooltip } from '../foundation.tooltip';
 Foundation.plugin(Tooltip, 'Tooltip');
 
-import { ResponsiveAccordionTabs } from '../foundation.zf.responsiveAccordionTabs';
+import { ResponsiveAccordionTabs } from '../foundation.responsiveAccordionTabs';
 Foundation.plugin(ResponsiveAccordionTabs, 'ResponsiveAccordionTabs');
