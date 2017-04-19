@@ -16,15 +16,15 @@ $abide-labels: true !default;
 
 /// Background color to use for invalid text inputs.
 /// @type Color
-$input-background-invalid: map-get($foundation-palette, alert) !default;
+$input-background-invalid: get-color(alert) !default;
 
 /// Color to use for labels of invalid inputs.
 /// @type Color
-$form-label-color-invalid: map-get($foundation-palette, alert) !default;
+$form-label-color-invalid: get-color(alert) !default;
 
 /// Default font color for form error text.
 /// @type Color
-$input-error-color: map-get($foundation-palette, alert) !default;
+$input-error-color: get-color(alert) !default;
 
 /// Default font size for form error text.
 /// @type Number
@@ -37,14 +37,17 @@ $input-error-font-weight: $global-weight-bold !default;
 /// Styles the background and border of an input field to have an error state.
 ///
 /// @param {Color} $background [$alert-color] - Color to use for the background and border.
-/// @param {Number} $background-alpha [0.1] - Transparency level of the background color.
+/// @param {Number} $background-lighten [10%] - Lightness level of the background color.
 @mixin form-input-error(
   $background: $input-background-invalid,
-  $background-alpha: 0.1
+  $background-lighten: 10%
 ) {
   &:not(:focus) {
-    background-color: rgba($background, $background-alpha);
     border-color: $background;
+    background-color: mix($background, $white, $background-lighten);
+    &::placeholder {
+      color: $background;
+    }
   }
 }
 
@@ -53,6 +56,7 @@ $input-error-font-weight: $global-weight-bold !default;
   display: none;
   margin-top: $form-spacing * -0.5;
   margin-bottom: $form-spacing;
+
   font-size: $input-error-font-size;
   font-weight: $input-error-font-weight;
   color: $input-error-color;

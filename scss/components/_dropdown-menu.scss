@@ -14,6 +14,10 @@ $dropdownmenu-arrows: true !default;
 /// @type Color
 $dropdownmenu-arrow-color: $anchor-color !default;
 
+/// Sets dropdown menu arrow size if arrow is used.
+/// @type Length
+$dropdownmenu-arrow-size: 6px !default;
+
 /// Minimum width of dropdown sub-menus.
 /// @type Length
 $dropdownmenu-min-width: 200px !default;
@@ -34,15 +38,14 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
 @mixin left-right-arrows {
   > a::after {
     #{$global-right}: 14px;
-    margin-top: -3px;
   }
 
   &.opens-left > a::after {
-    @include css-triangle(5px, $dropdownmenu-arrow-color, left);
+    @include css-triangle($dropdownmenu-arrow-size, $dropdownmenu-arrow-color, left);
   }
 
   &.opens-right > a::after {
-    @include css-triangle(5px, $dropdownmenu-arrow-color, right);
+    @include css-triangle($dropdownmenu-arrow-size, $dropdownmenu-arrow-color, right);
   }
 }
 
@@ -50,30 +53,30 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
   @if $dir == horizontal {
     > li.opens-left {
       > .is-dropdown-submenu {
-        left: auto;
-        right: 0;
         top: 100%;
+        right: 0;
+        left: auto;
       }
     }
 
     > li.opens-right {
       > .is-dropdown-submenu {
+        top: 100%;
         right: auto;
         left: 0;
-        top: 100%;
       }
     }
 
     @if $dropdownmenu-arrows {
       > li.is-dropdown-submenu-parent > a {
-        padding-#{$global-right}: 1.5rem;
         position: relative;
+        padding-#{$global-right}: 1.5rem;
       }
 
       > li.is-dropdown-submenu-parent > a::after {
-        @include css-triangle(5px, $dropdownmenu-arrow-color, down);
+        @include css-triangle($dropdownmenu-arrow-size, $dropdownmenu-arrow-color, down);
         #{$global-right}: 5px;
-        margin-top: -2px;
+        margin-top: -1 * ($dropdownmenu-arrow-size / 2);
       }
     }
   }
@@ -85,8 +88,8 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
 
       &.opens-left {
         > .is-dropdown-submenu {
-          left: auto;
           right: 100%;
+          left: auto;
         }
       }
 
@@ -140,8 +143,8 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
     &.align-right {
       .is-dropdown-submenu.first-sub {
         top: 100%;
-        left: auto;
         right: 0;
+        left: auto;
       }
     }
   }
@@ -161,7 +164,7 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
       position: absolute;
       top: 50%;
       #{$global-right}: 5px;
-      margin-top: -2px;
+      margin-top: -1 * $dropdownmenu-arrow-size;
     }
 
     &.opens-inner > .is-dropdown-submenu {
@@ -169,14 +172,15 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
       top: 100%;
       @if $global-text-direction == 'rtl' {
         right: auto;
-      } @else {
+      }
+      @else {
         left: auto;
       }
     }
 
     &.opens-left > .is-dropdown-submenu {
-      left: auto;
       right: 100%;
+      left: auto;
     }
 
     &.opens-right > .is-dropdown-submenu {
@@ -186,14 +190,16 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
   }
 
   .is-dropdown-submenu {
-    display: none;
     position: absolute;
     top: 0;
     #{$global-left}: 100%;
-    min-width: $dropdownmenu-min-width;
     z-index: 1;
-    background: $dropdownmenu-background;
+
+    display: none;
+    min-width: $dropdownmenu-min-width;
+
     border: $dropdownmenu-border;
+    background: $dropdownmenu-background;
 
     .is-dropdown-submenu-parent {
       @if $dropdownmenu-arrows {
@@ -212,7 +218,6 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
     }
 
     // [TODO] Cut back specificity
-    // scss-lint:disable SelectorDepth
     //&:not(.js-dropdown-nohover) > .is-dropdown-submenu-parent:hover > &, // why is this line needed? Opening is handled by JS and this causes some ugly flickering when the sub is re-positioned automatically...
     &.js-dropdown-active {
       display: block;

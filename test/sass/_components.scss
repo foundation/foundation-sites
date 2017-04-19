@@ -1,13 +1,14 @@
 @import "true";
 
+@import '../../scss/util/math';
 @import '../../scss/global';
 @import '../../scss/components/responsive-embed';
 @import '../../scss/grid/grid';
 
 @include test-module('Components') {
 
-  @include test('Responsive Embed [function]') {
-    $test: responsive-embed(3 by 4);
+  @include test('Ratio to Percentage [function]') {
+    $test: ratio-to-percentage(3 by 4);
     $expect: 4 / 3 * 100%;
 
     @include assert-equal($test, $expect,

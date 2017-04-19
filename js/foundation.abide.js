@@ -62,6 +62,14 @@ class Abide {
           this.validateInput($(e.target));
         });
     }
+
+    if (this.options.validateOnBlur) {
+      this.$inputs
+        .off('blur.zf.abide')
+        .on('blur.zf.abide', (e) => {
+          this.validateInput($(e.target));
+        });
+    }
   }
 
   /**
@@ -102,9 +110,11 @@ class Abide {
   }
 
   /**
-   * Based on $el, get the first element with selector in this order:
-   * 1. The element's direct sibling('s).
-   * 3. The element's parent's children.
+   * Get:
+   * - Based on $el, the first element(s) corresponding to `formErrorSelector` in this order:
+   *   1. The element's direct sibling('s).
+   *   2. The element's parent's children.
+   * - Element(s) with the attribute `[data-form-error-for]` set with the element's id.
    *
    * This allows for multiple form errors per input, though if none are found, no form errors will be shown.
    *
@@ -112,11 +122,14 @@ class Abide {
    * @returns {Object} jQuery object with the selector.
    */
   findFormError($el) {
+    var id = $el[0].id;
     var $error = $el.siblings(this.options.formErrorSelector);
 
     if (!$error.length) {
       $error = $el.parent().find(this.options.formErrorSelector);
     }
+
+    $error = $error.add(this.$element.find(`[data-form-error-for="${id}"]`));
 
     return $error;
   }
@@ -229,7 +242,8 @@ class Abide {
   }
 
   /**
-   * Goes through a form to find inputs and proceeds to validate them in ways specific to their type
+   * Goes through a form to find inputs and proceeds to validate them in ways specific to their type. 
+   * Ignores inputs with data-abide-ignore, type="hidden" or disabled attributes set
    * @fires Abide#invalid
    * @fires Abide#valid
    * @param {Object} element - jQuery object to validate, should be an HTML input
@@ -242,8 +256,8 @@ class Abide {
         validator = $el.attr('data-validator'),
         equalTo = true;
 
-    // don't validate ignored inputs or hidden inputs
-    if ($el.is('[data-abide-ignore]') || $el.is('[type="hidden"]')) {
+    // don't validate ignored inputs or hidden inputs or disabled inputs
+    if ($el.is('[data-abide-ignore]') || $el.is('[type="hidden"]') || $el.is('[disabled]')) {
       return true;
     }
 
@@ -277,6 +291,19 @@ class Abide {
 
     var goodToGo = [clearRequire, validated, customValidator, equalTo].indexOf(false) === -1;
     var message = (goodToGo ? 'valid' : 'invalid') + '.zf.abide';
+
+    if (goodToGo) {
+      // Re-validate inputs that depend on this one with equalto
+      const dependentElements = this.$element.find(`[data-equalto="${$el.attr('id')}"]`);
+      if (dependentElements.length) {
+        let _this = this;
+        dependentElements.each(function() {
+          if ($(this).val()) {
+            _this.validateInput($(this));
+          }
+        });
+      }
+    }
 
     this[goodToGo ? 'removeErrorClasses' : 'addErrorClasses']($el);
 
@@ -451,44 +478,58 @@ Abide.defaults = {
    * The default event to validate inputs. Checkboxes and radios validate immediately.
    * Remove or change this value for manual validation.
    * @option
-   * @example 'fieldChange'
+   * @type {?string}
+   * @default 'fieldChange'
    */
   validateOn: 'fieldChange',
 
   /**
    * Class to be applied to input labels on failed validation.
    * @option
-   * @example 'is-invalid-label'
+   * @type {string}
+   * @default 'is-invalid-label'
    */
   labelErrorClass: 'is-invalid-label',
 
   /**
    * Class to be applied to inputs on failed validation.
    * @option
-   * @example 'is-invalid-input'
+   * @type {string}
+   * @default 'is-invalid-input'
    */
   inputErrorClass: 'is-invalid-input',
 
   /**
    * Class selector to use to target Form Errors for show/hide.
    * @option
-   * @example '.form-error'
+   * @type {string}
+   * @default '.form-error'
    */
   formErrorSelector: '.form-error',
 
   /**
    * Class added to Form Errors on failed validation.
    * @option
-   * @example 'is-visible'
+   * @type {string}
+   * @default 'is-visible'
    */
   formErrorClass: 'is-visible',
 
   /**
    * Set to true to validate text inputs on any value change.
    * @option
-   * @example false
+   * @type {boolean}
+   * @default false
    */
   liveValidate: false,
+
+  /**
+   * Set to true to validate inputs on blur.
+   * @option
+   * @type {boolean}
+   * @default false
+   */
+  validateOnBlur: false,
 
   patterns: {
     alpha : /^[a-zA-Z]+$/,

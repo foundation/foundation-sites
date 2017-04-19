@@ -25,7 +25,6 @@
 @import 'examples/orbit';
 @import 'examples/responsive-embed';
 @import 'examples/reveal';
-@import 'examples/top-bar';
 
 @import 'course-callout';
 
@@ -190,4 +189,17 @@ a#notice {
 @keyframes ad-text-anim {
   0%   { opacity: 0; transform: scale(.7, .7); }
   100% { opacity: 1; transform: scale(1, 1);}
+}
+
+.youtube {
+  background: url("../img/icons/youtube.png") no-repeat center 0;
+}
+
+.menu li.docs-nav-version {
+  display: flex;
+  align-items: center;
+
+  span {
+    line-height: 2.5;
+  }
 }

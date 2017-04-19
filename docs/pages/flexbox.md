@@ -6,7 +6,7 @@ sass:
   - scss/util/_flex.scss
 ---
 
-Foundation components use a combination of floats, vertical alignment, table cells, and various other CSS hacks to get layouts looking right. These days, there's a better way... if you have the browser support!
+Foundation components use a combination of floats, vertical alignment, table cells, and various other CSS hacks to get layouts looking right. These days though, there's a better way... if you are happy with the below browser support!
 
 Enabling **flexbox mode** replaces those hacks with flexbox properties, streamlining how layouts are made, and making sizing and alignment of elements much easier.
 
@@ -47,11 +47,12 @@ $global-flexbox: true;
 Besides the flex grid, these components have flexbox modes:
 
 - [Button group](button-group.html)
-- [Input group](forms.html#inline-labels-and-buttons)
+- [Input group - (Forms)](forms.html#inline-labels-and-buttons)
 - [Menu](menu.html)
 - [Top bar](top-bar.html)
 - [Media object](media-object.html)
 - [Title bar](off-canvas.html#title-bar)
+- [Card](card.html)
 
 In general, all of the components work exactly the same. However, a few of them require slight changes to CSS classes used to work properly. Refer to the documentation for each to find out what's different.
 
@@ -129,7 +130,7 @@ Stretch alignment is the default. To set parent alignment, use these classes:
 - `.align-stretch`
 
 <div class="primary callout">
-  <p>Note that with vertical alignment, we use the term "middle" for the midpoint, while with horizontal alignment, we use the term "center". Otherwise, we'd have two CSS classes with the same name, but different functionality.</p>
+  <p>Note that with vertical alignment, we use the term "middle" for the midpoint, while with horizontal alignment, we use the term "center". As we can't have two CSS classes with the same name, thus we are using different terms.</p>
 </div>
 
 ```html_example
@@ -165,6 +166,72 @@ To align an individual child, use the below classes. They use the same alignment
 
 ---
 
+### Central Alignment
+
+Central alignment can be applied to a flex parent, which will centrally align all children's automatically. To set this to your layout, simply use the class: `.align-center-middle`.
+
+<div class="primary callout">
+  <p>We are using `.text-center` class just for demo purposes here.</p>
+</div>
+
+```html_example
+<div class="row align-center-middle text-center">
+  <div class="columns small-4">I am in the center-middle</div>
+  <div class="columns small-4">I am also centrally located</div>
+</div>
+```
+
+---
+
+## Vanilla Flexbox Helper Classes
+
+Foundation also includes some helper classes for quickly applying flex
+container & direction attributes to elements.
+
+To make something a flex container, simply apply
+- `.flex-container`
+
+And to change its flex direction from row to column you can use the helper classes:
+
+- `.flex-dir-row` (default)
+- `.flex-dir-row-reverse`
+- `.flex-dir-column`
+- `.flex-dir-column-reverse`
+
+For children, there are 3 quick helper classes
+
+- `.flex-child-auto` (auto size flex child)
+- `.flex-child-grow` (flex child that will grow to take up all possible space)
+- `.flex-child-shrink` (flex child that will shrink to minimum possible space)
+
+```html_example
+<div class="row">
+  <div class="column flex-container flex-dir-column">
+    <div class="callout flex-child-auto">Auto</div>
+    <div class="callout flex-child-auto">Auto</div>
+    <div class="callout flex-child-shrink">Shrink</div>
+  </div>
+  <div class="column">
+  </div>
+  <div class="column align-self-top">Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?</div>
+</div>
+```
+
+All of these helper classes come in responsive varieties, prefixed with all of your named breakpoints.  So you can do things like
+
+```html_example
+  <div class="row">
+    <div class="column large-12 flex-container flex-dir-column large-flex-dir-row">
+      <div class="callout flex-child-auto">Auto</div>
+      <div class="callout flex-child-auto">Auto</div>
+      <div class="callout flex-child-shrink large-flex-child-auto">Auto on Large</div>
+    </div>
+    <div class="column align-self-top">Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?</div>
+  </div>
+```
+
+---
+
 ## Helper Mixins
 
 If you're using the Sass version of Foundation, you can access the above helpers as mixins as well.
@@ -177,7 +244,7 @@ For parent-level alignment, use `flex-align()`. You can pass in a horizontal ali
 }
 ```
 
-For child-level alignment, use `flex-align-self()`. You can pass in any horizontal alignment.
+For child-level alignment, use `flex-align-self()`. You can pass in any vertical alignment.
 
 ```scss
 .sidebar {

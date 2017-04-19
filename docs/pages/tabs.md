@@ -7,12 +7,12 @@ js: js/foundation.tabs.js
 
 ## Basics
 
-There are two pieces to a tabbed interface: the tabs themselves, and the content for each tab. The tabs are an element with the class `.tabs`, and each item has the class `.tabs-title`. Each tab contains a link to a tab. The `href` of each link should match the ID of a tab.
+There are two pieces to a tabbed interface: the tabs themselves, and the content for each tab. The tabs are an element with the class `.tabs`, and each item has the class `.tabs-title`. Each tab contains a link to a tab. The `href` of each link should match the ID of a tab. Alternatively, the ID can be specified with the attribute `data-tabs-target`.
 
 ```html
 <ul class="tabs" data-tabs id="example-tabs">
   <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Tab 1</a></li>
-  <li class="tabs-title"><a href="#panel2">Tab 2</a></li>
+  <li class="tabs-title"><a data-tabs-target="#panel2" href="#/tabs/panel2">Tab 2</a></li>
 </ul>
 ```
 
@@ -44,10 +44,12 @@ Put it all together, and we get this:
   <div class="tabs-panel is-active" id="panel1">
     <p>one</p>
     <p>Check me out! I'm a super cool Tab panel with text content!</p>
+    <p><a href="#">I am a link but don't do anything</a></p>
   </div>
   <div class="tabs-panel" id="panel2">
     <p>two</p>
-    <img class="thumbnail" src="assets/img/generic/rectangle-7.jpg">
+    <textarea></textarea>
+    <button class="button">I do nothing!</button>
   </div>
   <div class="tabs-panel" id="panel3">
     <p>three</p>
@@ -89,9 +91,11 @@ Add the `.vertical` class to a tabstrip to stack tabs vertically. You can also p
     <div class="tabs-content vertical" data-tabs-content="example-vert-tabs">
       <div class="tabs-panel is-active" id="panel1v">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p><a href="#">I am a link but don't do anything</a></p>
       </div>
       <div class="tabs-panel" id="panel2v">
-        <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
+        <textarea></textarea>
+        <button class="button">I do nothing!</button>
       </div>
       <div class="tabs-panel" id="panel3v">
         <img class="thumbnail" src="assets/img/generic/rectangle-3.jpg">
@@ -138,4 +142,52 @@ Add the attribute `data-active-collapse="true"` to a tabstrip to collapse active
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
   </div>
 </div>
+```
+
+---
+
+## Tabs and URLs
+
+### Browser history
+
+When the `data-deep-link` option is set to `true`, the current state of the tabset is recorded by adding a hash with the tab panel ID to the browser URL when a tab opens. By default, tabs *replace* the browser history (using `history.replaceState()`). Modify this behavior by using attribute `data-update-history="true"` to *append* to the browser history (using `history.pushState()`). In the latter case the browser back button will track each click that opens a tab panel.
+
+By using deep linking (see below), the open state of a page's tabset may be shared by copy-pasting the browser URL.
+
+### Deep linking
+
+Add the attribute `data-deep-link="true"` to a tabstrip to:
+- modify the browser history when a tab is clicked
+- allow users to open a particular tab at page load with a hash-appended URL
+
+```html_example
+<ul class="tabs" data-deep-link="true" data-update-history="true" data-deep-link-smudge="true" data-deep-link-smudge="500" data-tabs id="deeplinked-tabs">
+  <li class="tabs-title is-active"><a href="#panel1d" aria-selected="true">Tab 1</a></li>
+  <li class="tabs-title"><a href="#panel2d">Tab 2</a></li>
+  <li class="tabs-title"><a href="#panel3d">Tab 3</a></li>
+  <li class="tabs-title"><a href="#panel4d">Tab 4</a></li>
+</ul>
+
+<div class="tabs-content" data-tabs-content="deeplinked-tabs">
+  <div class="tabs-panel is-active" id="panel1d">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  </div>
+  <div class="tabs-panel" id="panel2d">
+    <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
+  </div>
+  <div class="tabs-panel" id="panel3d">
+    <img class="thumbnail" src="assets/img/generic/rectangle-3.jpg">
+  </div>
+  <div class="tabs-panel" id="panel4d">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  </div>
+</div>
+```
+
+For example, <a target="_blank" href="#panel3d">http://example.com/#panel3d</a> will open the third tab panel at page load. This example will open a new browser tab and scroll you to the open tab.
+
+When linking directly to a tab panel, it might not be obvious that the content appears within a tab panel. An additional attribute `data-deep-link-smudge` rolls the page up slightly after deep linking (to a horizontal tabset) so that the tabstrip is at the top of the viewport.
+
+```html_example
+<ul class="tabs" data-deep-link="true" data-deep-link-smudge="true" data-deep-link-smudge-delay="600" data-tabs id="deeplinked-tabs-with-smudge">
 ```

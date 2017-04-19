@@ -35,6 +35,12 @@ class Interchange {
    * @private
    */
   _init() {
+    var id = this.$element[0].id || Foundation.GetYoDigits(6, 'interchange');
+    this.$element.attr({
+      'data-resize': id,
+      'id': id
+    });
+
     this._addBreakpoints();
     this._generateRules();
     this._reflow();
@@ -46,7 +52,7 @@ class Interchange {
    * @private
    */
   _events() {
-    $(window).on('resize.zf.interchange', Foundation.util.throttle(this._reflow.bind(this), 50));
+    this.$element.off('resizeme.zf.trigger').on('resizeme.zf.trigger', () => {this._reflow();});
   }
 
   /**
@@ -61,7 +67,6 @@ class Interchange {
     for (var i in this.rules) {
       if(this.rules.hasOwnProperty(i)) {
         var rule = this.rules[i];
-
         if (window.matchMedia(rule.query).matches) {
           match = rule;
         }
@@ -102,8 +107,10 @@ class Interchange {
       rules = this.options.rules;
     }
     else {
-      rules = this.$element.data('interchange').match(/\[.*?\]/g);
+      rules = this.$element.data('interchange');
     }
+    
+    rules =  typeof rules === 'string' ? rules.match(/\[.*?\]/g) : rules;
 
     for (var i in rules) {
       if(rules.hasOwnProperty(i)) {
@@ -171,7 +178,7 @@ class Interchange {
    * @function
    */
   destroy() {
-    //TODO this.
+    this.$element.off('resizeme.zf.trigger')
   }
 }
 
@@ -182,6 +189,8 @@ Interchange.defaults = {
   /**
    * Rules to be applied to Interchange elements. Set with the `data-interchange` array notation.
    * @option
+   * @type {?array}
+   * @default null
    */
   rules: null
 };

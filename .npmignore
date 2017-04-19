@@ -17,3 +17,4 @@ test
 .editorconfig
 .versions
 .babelrc
+yarn.lock

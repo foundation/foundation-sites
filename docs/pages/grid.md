@@ -10,9 +10,14 @@ tags:
 
 ## Basics
 
-Start by adding an element with a class of `.row`. This will create a horizontal block to contain vertical columns. Then add elements with a `.column` class within that row. You can use `.column` or `.columns`&mdash;the only difference is grammar. Specify the widths of each column with the `.small-#`, `.medium-#`, and `.large-#` classes.
+Start by adding an element with a class of `.row`. This will create a horizontal block to contain vertical columns. Then add elements with a `.column` class within that row. Specify the widths of each column with the `.small-#`, `.medium-#`, and `.large-#` classes.
 
 **Foundation is mobile-first.** Code for small screens first, and larger devices will inherit those styles. Customize for larger screens as necessary.
+
+<div class="primary callout">
+  <p>By default `.column` has an alias `.columns` (see the <a href="http://localhost:3000/grid.html#sass-reference">`$grid-column-alias` option</a>) &mdash;the only difference is grammar.</p>
+  <p>Disabling the alias can reduce the Foundation CSS file size from 3 to 5%. It is recommended if the alias is not used.</p>
+</div>
 
 ```html
 <div class="row">
@@ -433,27 +438,27 @@ Using these source ordering classes, you can shift columns around between our br
 
 ### Block Grids
 
-The block grid from Foundation 5 has been merged into the main grid. Add a class of the format `[size]-up-[n]` to change the size of all columns within the row. By default, the max number of columns you can use with block grid are 8.
+Block grids are a shorthand way to create equally-sized columns. Add a class of the format `.[size]-up-[n]` to change the number of columns within the row. By default, the max number of columns you can use with block grid are 8. Adding the `.column-block` class to columns will apply a bottom margin equal to the width of gutters.
 
 ```html_example
-<div class="row small-up-1 medium-up-2 large-up-4">
-  <div class="column">
-    <img src="//placehold.it/300x300" class="thumbnail" alt="">
+<div class="row small-up-2 medium-up-3 large-up-4">
+  <div class="column column-block">
+    <img src="//placehold.it/600x600" class="thumbnail" alt="">
   </div>
-  <div class="column">
-    <img src="//placehold.it/300x300" class="thumbnail" alt="">
+  <div class="column column-block">
+    <img src="//placehold.it/600x600" class="thumbnail" alt="">
   </div>
-  <div class="column">
-    <img src="//placehold.it/300x300" class="thumbnail" alt="">
+  <div class="column column-block">
+    <img src="//placehold.it/600x600" class="thumbnail" alt="">
   </div>
-  <div class="column">
-    <img src="//placehold.it/300x300" class="thumbnail" alt="">
+  <div class="column column-block">
+    <img src="//placehold.it/600x600" class="thumbnail" alt="">
   </div>
-  <div class="column">
-    <img src="//placehold.it/300x300" class="thumbnail" alt="">
+  <div class="column column-block">
+    <img src="//placehold.it/600x600" class="thumbnail" alt="">
   </div>
-  <div class="column">
-    <img src="//placehold.it/300x300" class="thumbnail" alt="">
+  <div class="column column-block">
+    <img src="//placehold.it/600x600" class="thumbnail" alt="">
   </div>
 </div>
 ```

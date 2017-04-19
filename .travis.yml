@@ -1,9 +1,9 @@
 language: node_js
 node_js:
-  - "0.12"
-before_install:
-  - rvm install 2.2.2
+  - "6"
 install:
-  - npm install -g bower
+  - npm install -g bower browserstack-runner
   - npm install
-  - gem install scss_lint
+script: npm run test:ci
+notifications:
+  email: false

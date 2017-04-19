@@ -1,7 +1,9 @@
 ---
 title: Responsive Navigation
 description: Our three Menu patterns form like Voltron into one responsive Menu plugin, which allows you to switch between patterns at different screen sizes.
-js: js/foundation.responsiveToggle.js
+js:
+  - js/foundation.responsiveMenu.js
+  - js/foundation.responsiveToggle.js
 ---
 
 ## Responsive Menu
@@ -65,7 +67,7 @@ For example, a drilldown menu works well on mobile, but on larger screens, you m
 
 In Foundation 5, the top bar combined this menu toggling concept into one plugin. We now have a separate, optional component you can use in tandem with the responsive plugin. It's called the title bar, and it allows you to quickly setup a menu toggle on mobile. The title bar hides itself on larger screens.
 
-To set it up, first give your menu a unique ID. (You don't even need to use Menu! Any element will work.) Next, add a title bar with the class `.title-bar` and the attribute `data-responsive-toggle`. The value of `data-responsive-toggle` should be the ID of the menu you're toggling.
+To set it up, first give your menu a unique ID. (You don't even need to use Menu! Any element will work.) Next, add a title bar with the class `.title-bar` and the attribute `data-responsive-toggle`. The value of `data-responsive-toggle` should be the ID of the menu you're toggling. Lastly, add `data-toggle` to the element that will trigger the toggle. The value of `data-toggle` should also be the ID of the menu you're toggling.
 
 By default, the title bar will be visible on small screens, and the Menu hides. At the medium breakpoint, the title bar disappears, and the menu is always visible. This breakpoint can be changed with the `data-hide-for` attribute in HTML, or the `hideFor` setting in JavaScript.
 
@@ -75,7 +77,7 @@ By default, the title bar will be visible on small screens, and the Menu hides. 
 
 ```html_example
 <div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
-  <button class="menu-icon" type="button" data-toggle></button>
+  <button class="menu-icon" type="button" data-toggle="example-menu"></button>
   <div class="title-bar-title">Menu</div>
 </div>
 

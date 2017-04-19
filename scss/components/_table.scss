@@ -2,7 +2,7 @@
 // foundation.zurb.com
 // Licensed under MIT Open Source
 
-// scss-lint:disable MergeableSelector, QualifyingElement
+// sass-lint:disable force-element-nesting, no-qualifying-elements
 
 ////
 /// @group table
@@ -76,13 +76,17 @@ $table-foot-font-color: $body-font-color !default;
 /// @type Boolean
 $show-header-for-stacked: false !default;
 
+/// Breakpoint at which stacked table switches from mobile to desktop view.
+/// @type Breakpoint
+$table-stack-breakpoint: medium !default;
+
 @mixin -zf-table-stripe($stripe: $table-stripe) {
   tr {
     // If stripe is set to even, darken the even rows.
     @if $stripe == even {
       &:nth-child(even) {
-        background-color: $table-striped-background;
         border-bottom: 0;
+        background-color: $table-striped-background;
       }
     }
 
@@ -97,9 +101,9 @@ $show-header-for-stacked: false !default;
 
 @mixin -zf-table-unstripe() {
   tr {
-    background-color: $table-background;
     border-bottom: 0;
     border-bottom: $table-border;
+    background-color: $table-background;
   }
 }
 
@@ -113,8 +117,8 @@ $show-header-for-stacked: false !default;
 
   // Caption
   caption {
-    font-weight: $global-weight-bold;
     padding: $table-padding;
+    font-weight: $global-weight-bold;
   }
 
   // Table head
@@ -148,22 +152,23 @@ $show-header-for-stacked: false !default;
 
   // Table rows
   tbody {
-     th,
-     td {
-       padding: $table-padding;
-     }
-   }
+    th,
+    td {
+      padding: $table-padding;
+    }
+  }
 
-   // If tables are striped
-   @if $is-striped == true {
-     tbody {
-       @include -zf-table-stripe($stripe);
-     }
-     &.unstriped {
-       tbody {
-         @include -zf-table-unstripe();
-         background-color: $table-background;
-       }
+  // If tables are striped
+  @if $is-striped == true {
+    tbody {
+      @include -zf-table-stripe($stripe);
+    }
+
+    &.unstriped {
+      tbody {
+        @include -zf-table-unstripe();
+        background-color: $table-background;
+      }
     }
   }
 
@@ -172,6 +177,7 @@ $show-header-for-stacked: false !default;
     tbody {
       @include -zf-table-unstripe();
     }
+
     &.striped {
       tbody {
         @include -zf-table-stripe($stripe);
@@ -304,7 +310,7 @@ $show-header-for-stacked: false !default;
   }
 
   table.stack {
-    @include breakpoint(medium down) {
+    @include breakpoint($table-stack-breakpoint down) {
       @include table-stack;
     }
   }

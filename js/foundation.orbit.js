@@ -43,10 +43,20 @@ class Orbit {
   * @private
   */
   _init() {
+    // @TODO: consider discussion on PR #9278 about DOM pollution by changeSlide
+    this._reset();
+
     this.$wrapper = this.$element.find(`.${this.options.containerClass}`);
     this.$slides = this.$element.find(`.${this.options.slideClass}`);
+
     var $images = this.$element.find('img'),
-    initActive = this.$slides.filter('.is-active');
+        initActive = this.$slides.filter('.is-active'),
+        id = this.$element[0].id || Foundation.GetYoDigits(6, 'orbit');
+
+    this.$element.attr({
+      'data-resize': id,
+      'id': id
+    });
 
     if (!initActive.length) {
       this.$slides.eq(0).addClass('is-active');
@@ -111,9 +121,7 @@ class Orbit {
   */
   _prepareForOrbit() {
     var _this = this;
-    this._setWrapperHeight(function(max){
-      _this._setSlideHeight(max);
-    });
+    this._setWrapperHeight();
   }
 
   /**
@@ -138,7 +146,7 @@ class Orbit {
 
     if (counter === this.$slides.length) {
       this.$wrapper.css({'height': max}); //only change the wrapper height property once.
-      cb(max); //fire callback with max height dimension.
+      if(cb) {cb(max);} //fire callback with max height dimension.
     }
   }
 
@@ -165,6 +173,10 @@ class Orbit {
     //**Now using custom event - thanks to:**
     //**      Yohai Ararat of Toronto      **
     //***************************************
+    //
+    this.$element.off('.resizeme.zf.trigger').on({
+      'resizeme.zf.trigger': this._prepareForOrbit.bind(this)
+    })
     if (this.$slides.length > 1) {
 
       if (this.options.swipe) {
@@ -239,6 +251,44 @@ class Orbit {
   }
 
   /**
+   * Resets Orbit so it can be reinitialized
+   */
+  _reset() {
+    // Don't do anything if there are no slides (first run)
+    if (typeof this.$slides == 'undefined') {
+      return;
+    }
+
+    if (this.$slides.length > 1) {
+      // Remove old events
+      this.$element.off('.zf.orbit').find('*').off('.zf.orbit')
+
+      // Restart timer if autoPlay is enabled
+      if (this.options.autoPlay) {
+        this.timer.restart();
+      }
+
+      // Reset all sliddes
+      this.$slides.each(function(el) {
+        $(el).removeClass('is-active is-active is-in')
+          .removeAttr('aria-live')
+          .hide();
+      });
+
+      // Show the first slide
+      this.$slides.first().addClass('is-active').show();
+
+      // Triggers when the slide has finished animating
+      this.$element.trigger('slidechange.zf.orbit', [this.$slides.first()]);
+
+      // Select first bullet if bullets are present
+      if (this.options.bullets) {
+        this._updateBullets(0);
+      }
+    }
+  }
+
+  /**
   * Changes the current slide to a new one.
   * @function
   * @param {Boolean} isLTR - flag if the slide should move left to right.
@@ -280,7 +330,7 @@ class Orbit {
         this._updateBullets(idx);
       }
 
-      if (this.options.useMUI) {
+      if (this.options.useMUI && !this.$element.is(':hidden')) {
         Foundation.Motion.animateIn(
           $newSlide.addClass('is-active').css({'position': 'absolute', 'top': 0}),
           this.options[`animInFrom${dirIn}`],
@@ -341,110 +391,128 @@ Orbit.defaults = {
   /**
   * Tells the JS to look for and loadBullets.
   * @option
-  * @example true
+   * @type {boolean}
+  * @default true
   */
   bullets: true,
   /**
   * Tells the JS to apply event listeners to nav buttons
   * @option
-  * @example true
+   * @type {boolean}
+  * @default true
   */
   navButtons: true,
   /**
   * motion-ui animation class to apply
   * @option
-  * @example 'slide-in-right'
+   * @type {string}
+  * @default 'slide-in-right'
   */
   animInFromRight: 'slide-in-right',
   /**
   * motion-ui animation class to apply
   * @option
-  * @example 'slide-out-right'
+   * @type {string}
+  * @default 'slide-out-right'
   */
   animOutToRight: 'slide-out-right',
   /**
   * motion-ui animation class to apply
   * @option
-  * @example 'slide-in-left'
+   * @type {string}
+  * @default 'slide-in-left'
   *
   */
   animInFromLeft: 'slide-in-left',
   /**
   * motion-ui animation class to apply
   * @option
-  * @example 'slide-out-left'
+   * @type {string}
+  * @default 'slide-out-left'
   */
   animOutToLeft: 'slide-out-left',
   /**
   * Allows Orbit to automatically animate on page load.
   * @option
-  * @example true
+   * @type {boolean}
+  * @default true
   */
   autoPlay: true,
   /**
   * Amount of time, in ms, between slide transitions
   * @option
-  * @example 5000
+   * @type {number}
+  * @default 5000
   */
   timerDelay: 5000,
   /**
   * Allows Orbit to infinitely loop through the slides
   * @option
-  * @example true
+   * @type {boolean}
+  * @default true
   */
   infiniteWrap: true,
   /**
   * Allows the Orbit slides to bind to swipe events for mobile, requires an additional util library
   * @option
-  * @example true
+   * @type {boolean}
+  * @default true
   */
   swipe: true,
   /**
   * Allows the timing function to pause animation on hover.
   * @option
-  * @example true
+   * @type {boolean}
+  * @default true
   */
   pauseOnHover: true,
   /**
   * Allows Orbit to bind keyboard events to the slider, to animate frames with arrow keys
   * @option
-  * @example true
+   * @type {boolean}
+  * @default true
   */
   accessible: true,
   /**
   * Class applied to the container of Orbit
   * @option
-  * @example 'orbit-container'
+   * @type {string}
+  * @default 'orbit-container'
   */
   containerClass: 'orbit-container',
   /**
   * Class applied to individual slides.
   * @option
-  * @example 'orbit-slide'
+   * @type {string}
+  * @default 'orbit-slide'
   */
   slideClass: 'orbit-slide',
   /**
   * Class applied to the bullet container. You're welcome.
   * @option
-  * @example 'orbit-bullets'
+   * @type {string}
+  * @default 'orbit-bullets'
   */
   boxOfBullets: 'orbit-bullets',
   /**
   * Class applied to the `next` navigation button.
   * @option
-  * @example 'orbit-next'
+   * @type {string}
+  * @default 'orbit-next'
   */
   nextClass: 'orbit-next',
   /**
   * Class applied to the `previous` navigation button.
   * @option
-  * @example 'orbit-previous'
+   * @type {string}
+  * @default 'orbit-previous'
   */
   prevClass: 'orbit-previous',
   /**
   * Boolean to flag the js to use motion ui classes or not. Default to true for backwards compatability.
   * @option
-  * @example true
+   * @type {boolean}
+  * @default true
   */
   useMUI: true
 };

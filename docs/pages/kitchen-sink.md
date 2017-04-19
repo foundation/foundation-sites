@@ -98,34 +98,33 @@ description: Everything but.
 
 ## Accordion
 
+
 ```html_example
-<ul class="accordion" data-accordion role="tablist">
-  <li class="accordion-item is-active">
-    <!-- The tab title needs role="tab", an href, a unique ID, and aria-controls. -->
-    <a href="#panel1d" role="tab" class="accordion-title" id="panel1d-heading" aria-controls="panel1d">Accordion 1</a>
-    <!-- The content pane needs an ID that matches the above href, role="tabpanel", data-tab-content, and aria-labelledby. -->
-    <div id="panel1d" class="accordion-content" role="tabpanel" data-tab-content aria-labelledby="panel1d-heading">
-      Panel 1. Lorem ipsum dolor
+<ul class="accordion" data-accordion>
+  <li class="accordion-item is-active" data-accordion-item>
+    <a href="#" class="accordion-title">Accordion 1</a>
+    <div class="accordion-content" data-tab-content >
+      <p>Panel 1. Lorem ipsum dolor</p>
+      <a href="#">Nowhere to Go</a>
     </div>
   </li>
-  <li class="accordion-item">
-    <!-- The tab title needs role="tab", an href, a unique ID, and aria-controls. -->
-    <a href="#panel1d" role="tab" class="accordion-title" id="panel1d-heading" aria-controls="panel1d">Accordion 1</a>
-    <!-- The content pane needs an ID that matches the above href, role="tabpanel", data-tab-content, and aria-labelledby. -->
-    <div id="panel1d" class="accordion-content" role="tabpanel" data-tab-content aria-labelledby="panel1d-heading">
-      Panel 2. Lorem ipsum dolor
+  <li class="accordion-item" data-accordion-item>
+    <a href="#" class="accordion-title">Accordion 2</a>
+    <div class="accordion-content" data-tab-content>
+      <textarea></textarea>
+      <button class="button">I do nothing!</button>
     </div>
   </li>
-  <li class="accordion-item">
-    <!-- The tab title needs role="tab", an href, a unique ID, and aria-controls. -->
-    <a href="#panel1d" role="tab" class="accordion-title" id="panel1d-heading" aria-controls="panel1d">Accordion 1</a>
-    <!-- The content pane needs an ID that matches the above href, role="tabpanel", data-tab-content, and aria-labelledby. -->
-    <div id="panel1d" class="accordion-content" role="tabpanel" data-tab-content aria-labelledby="panel1d-heading">
-      Panel 3. Lorem ipsum dolor
+  <li class="accordion-item" data-accordion-item>
+    <a href="#" class="accordion-title">Accordion 3</a>
+    <div class="accordion-content" data-tab-content>
+      Type your name!
+      <input type="text"></input>
     </div>
   </li>
 </ul>
 ```
+
 
 ---
 
@@ -219,6 +218,12 @@ description: Everything but.
 ```html_example
 <div class="callout">
   <h5>This is a callout.</h5>
+  <p>It has an easy to override visual style, and is appropriately subdued.</p>
+  <a href="#0">It's dangerous to go alone, take this.</a>
+</div>
+
+<div class="callout primary">
+  <h5>This is a primary callout.</h5>
   <p>It has an easy to override visual style, and is appropriately subdued.</p>
   <a href="#0">It's dangerous to go alone, take this.</a>
 </div>
@@ -486,7 +491,9 @@ description: Everything but.
   <div class="input-group">
     <span class="input-group-label">$</span>
     <input class="input-group-field" type="url">
-    <a class="input-group-button button">Submit</a>
+    <div class="input-group-button">
+      <input type="submit" class="button" value="Submit">
+    </div>
   </div>
 </form>
 ```

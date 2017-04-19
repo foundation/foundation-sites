@@ -26,21 +26,16 @@ $grid-column-gutter: (
 /// @type Boolean
 $grid-column-align-edge: true !default;
 
+/// Selector used for an alias of column (with @extend). If `false`, no alias is created.
+/// @type String
+$grid-column-alias: 'columns' !default;
+
 /// The highest number of `.x-up` classes available when using the block grid CSS.
 /// @type Number
 $block-grid-max: 8 !default;
 
 // Internal value to store the end column float direction
 $-zf-end-float: if($grid-column-align-edge, $global-right, $global-left);
-
-// The last piece to transition the responsive gutter feature
-// Remove this in 6.3
-$grid-column-responsive-gutter: null !default;
-@if $grid-column-responsive-gutter {
-  // scss-lint:disable DebugStatement
-  @warn 'Rename $grid-column-responsive-gutter to $grid-column-gutter to remove this warning.';
-  $grid-column-gutter: $grid-column-responsive-gutter;
-}
 
 @import 'row';
 @import 'column';
