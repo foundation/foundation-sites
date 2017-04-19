@@ -241,21 +241,24 @@ Triggers.Initializers.addGlobalListeners = function() {
 
 
 Triggers.init = function(Foundation, $) {
-  let $document = $(document);
+  if (typeof($.triggersInitialized) === 'undefined') {
+    let $document = $(document);
 
-  Triggers.Initializers.addSimpleListeners();
+    Triggers.Initializers.addSimpleListeners();
 
-  if(document.readyState === "complete") {
-    Triggers.Initializers.addGlobalListeners();
-  } else {
-    $(window).on('load', () => {
+    if(document.readyState === "complete") {
       Triggers.Initializers.addGlobalListeners();
-    });
-  }
-  Foundation.Triggers = Triggers;
+    } else {
+      $(window).on('load', () => {
+        Triggers.Initializers.addGlobalListeners();
+      });
+    }
+    Foundation.Triggers = Triggers;
 
-  // Legacy included to be backwards compatible for now.
-  Foundation.IHearYou = Triggers.Initializers.addGlobalListeners
+    // Legacy included to be backwards compatible for now.
+    Foundation.IHearYou = Triggers.Initializers.addGlobalListeners
+    $.triggersInitialized = true;
+  }
 }
 
 export {Triggers};

@@ -7,9 +7,8 @@ import { Timer } from './foundation.util.timer';
 import { onImagesLoaded } from './foundation.util.imageLoader';
 import { GetYoDigits } from './foundation.util.core';
 import { Plugin } from './foundation.plugin';
+import { Touch } from './foundation.util.touch'
 
-  // import "foundation.util.touch.js"
-  // TODO:  Figure out what a touch import should really do.
 
 /**
  * Orbit module.
@@ -31,6 +30,8 @@ class Orbit extends Plugin {
   _setup(element, options){
     this.$element = element;
     this.options = $.extend({}, Orbit.defaults, this.$element.data(), options);
+
+    Touch.init($); // Touch init is idempotent, we just need to make sure it's initialied.
 
     this._init();
 

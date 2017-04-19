@@ -140,9 +140,10 @@ class Touch {}
   };
 
   Touch.init = function($) {
-    Touch.setupSpotSwipe($);
-    Touch.setupTouchHandler($);
+    if(typeof($.spotSwipe) === 'undefined') {
+      Touch.setupSpotSwipe($);
+      Touch.setupTouchHandler($);
+    }
   };
-
 
 export {Touch};
