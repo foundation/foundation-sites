@@ -27,6 +27,7 @@ var pluginsAsExternals = {
   './foundation.util.motion' : '{Motion: window.Foundation.Motion, Move: window.Foundation.Move}',
   './foundation.util.nest' : '{Nest: window.Foundation.Nest}',
   './foundation.util.timer' : '{Timer: window.Foundation.Timer}',
+  './foundation.util.touch' : '{Touch: window.Foundation.Touch}',
   './foundation.util.box' : '{Box: window.Foundation.Box}',
   './foundation.plugin' : '{Plugin: window.Foundation.Plugin}',
   './foundation.dropdownMenu' : '{DropdownMenu: window.Foundation.DropdownMenu}',
@@ -35,6 +36,19 @@ var pluginsAsExternals = {
   './foundation.accordion' : '{Accordion: window.Foundation.Accordion}',
   './foundation.tabs' : '{Tabs: window.Foundation.Tabs}',
   './foundation.smoothScroll' : '{SmoothScroll: window.Foundation.SmoothScroll}',
+};
+
+var moduleConfig = {
+  rules: [
+    {
+      test: /.js$/,
+      use: [
+        {
+          loader: 'babel-loader'
+        }
+      ]
+    }
+  ]
 }
 
 // Core has to be dealt with slightly differently due to bootstrapping externals
@@ -43,20 +57,20 @@ var pluginsAsExternals = {
 gulp.task('javascript:plugin-core', function() {
   return gulp.src('js/entries/plugins/foundation.core.js')
     .pipe(named())
-    .pipe(webpackStream({externals: {'jquery': 'jQuery'}}, webpack2))
+    .pipe(webpackStream({externals: {'jquery': 'jQuery'}, module: moduleConfig}, webpack2))
     .pipe(gulp.dest('_build/assets/js/plugins'));
 });
 gulp.task('javascript:plugins', ['javascript:plugin-core'], function() {
   return gulp.src(['js/entries/plugins/*.js', '!js/entries/plugins/foundation.core.js'])
     .pipe(named())
-    .pipe(webpackStream({externals: pluginsAsExternals}, webpack2))
+    .pipe(webpackStream({externals: pluginsAsExternals, module: moduleConfig}, webpack2))
     .pipe(gulp.dest('_build/assets/js/plugins'));
 });
 
 gulp.task('javascript:foundation', ['javascript:plugins'], function() {
   return gulp.src('js/entries/foundation.js')
     .pipe(named())
-    .pipe(webpackStream({externals: {jquery: 'jQuery'}}, webpack2))
+    .pipe(webpackStream({externals: {jquery: 'jQuery'}, module: moduleConfig}, webpack2))
     .pipe(gulp.dest('_build/assets/js'));
 });
 //gulp.task('javascript:foundation', function() {
