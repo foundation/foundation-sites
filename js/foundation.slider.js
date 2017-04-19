@@ -7,6 +7,8 @@ import { GetYoDigits, rtl } from './foundation.util.core';
 let Rtl = rtl;
 
 import { Plugin } from './foundation.plugin';
+
+import { Touch } from './foundation.util.touch';
 /**
  * Slider module.
  * @module foundation.slider
@@ -27,6 +29,7 @@ class Slider extends Plugin {
     this.$element = element;
     this.options = $.extend({}, Slider.defaults, this.$element.data(), options);
 
+    Touch.init($); // Touch init is idempotent, we just need to make sure it's initialied.
     this._init();
 
     Keyboard.register('Slider', {
