@@ -22,6 +22,10 @@ $progress-margin-bottom: $global-margin !default;
 /// @type Color
 $progress-meter-background: $primary-color !default;
 
+/// Coloring classes. A map of classes to output in your CSS, like `.secondary`, `.success`, and so on.
+/// @type Map
+$progress-states: $foundation-states !default;
+
 /// Default radius of a progress bar.
 /// @type Number
 $progress-radius: $global-radius !default;
@@ -67,7 +71,7 @@ $progress-radius: $global-radius !default;
       }
     }
 
-    @each $name, $color-name in $foundation-states {
+    @each $name, $color-name in $progress-states {
       $color: get-color($color-name);
 
       &.#{$name} {

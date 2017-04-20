@@ -34,6 +34,10 @@ $callout-font-color: $body-font-color !default;
 /// @type Color
 $callout-font-color-alt: $body-background !default;
 
+/// Coloring classes. A map of classes to output in your CSS, like `.secondary`, `.success`, and so on.
+/// @type Map
+$callout-states: $foundation-states !default;
+
 /// Default border radius for callouts.
 /// @type Color
 $callout-radius: $global-radius !default;
@@ -89,7 +93,7 @@ $callout-link-tint: 30% !default;
   .callout {
     @include callout;
 
-    @each $name, $color-name in $foundation-states {
+    @each $name, $color-name in $callout-states {
       $color: get-color($color-name);
 
       &.#{$name} {

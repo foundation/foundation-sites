@@ -43,7 +43,7 @@
   .progress {
     @include progress-container;
 
-    @each $name, $color-name in $foundation-states {
+    @each $name, $color-name in $progress-states {
       $color: get-color($color-name);
 
       &.#{$name} {
