@@ -41,7 +41,9 @@ class Slider extends Plugin {
         'SHIFT_ARROW_RIGHT': 'increase_fast',
         'SHIFT_ARROW_UP': 'increase_fast',
         'SHIFT_ARROW_DOWN': 'decrease_fast',
-        'SHIFT_ARROW_LEFT': 'decrease_fast'
+        'SHIFT_ARROW_LEFT': 'decrease_fast',
+        'HOME': 'min',
+        'END': 'max'
       },
       'rtl': {
         'ARROW_LEFT': 'increase',
@@ -523,6 +525,12 @@ class Slider extends Plugin {
         },
         increase_fast: function() {
           newValue = oldValue + _this.options.step * 10;
+        },
+        min: function() {
+          newValue = _this.options.start;
+        },
+        max: function() {
+          newValue = _this.options.end;
         },
         handled: function() { // only set handle pos when event was handled specially
           e.preventDefault();
