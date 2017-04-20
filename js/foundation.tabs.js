@@ -69,6 +69,10 @@ class Tabs {
         'aria-labelledby': linkId
       });
 
+      if(!isActive) {
+        $tabContent.attr('aria-hidden', 'true');
+      }
+
       if(isActive && _this.options.autoFocus){
         $(window).load(function() {
           $('html, body').animate({ scrollTop: $elem.offset().top }, _this.options.deepLinkSmudgeDelay, () => {
@@ -282,7 +286,7 @@ class Tabs {
       });
 
       $targetContent
-        .addClass(`${this.options.panelActiveClass}`)
+        .addClass(`${this.options.panelActiveClass}`).removeAttr('aria-hidden');
   }
 
   /**
@@ -294,13 +298,14 @@ class Tabs {
     var $target_anchor = $target
       .removeClass(`${this.options.linkActiveClass}`)
       .find('[role="tab"]')
-      .attr({ 
+      .attr({
         'aria-selected': 'false',
         'tabindex': -1
       });
 
     $(`#${$target_anchor.attr('aria-controls')}`)
       .removeClass(`${this.options.panelActiveClass}`)
+      .attr({ 'aria-hidden': 'true' })
   }
 
   /**
