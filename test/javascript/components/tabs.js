@@ -44,11 +44,11 @@ describe('Tabs', function() {
     it('sets ARIA attributes', function() {
       $html = $(template).appendTo('body');
       plugin = new Foundation.Tabs($html.find('[data-tabs]'), {});
-            
+
       // Panels
       $html.find('#panel1').should.have.attr('role', 'tabpanel');
       $html.find('#panel1').should.have.attr('aria-labelledby', $html.find('[href="#panel1"]').attr('id'));
-      $html.find('#panel1').should.have.attr('aria-hidden', 'false');
+      $html.find('#panel1').should.not.have.attr('aria-hidden');
       $html.find('#panel2').should.have.attr('aria-hidden', 'true');
 
       // Links
@@ -102,7 +102,7 @@ describe('Tabs', function() {
       plugin = new Foundation.Tabs($html.find('[data-tabs]'), {});
 
       plugin.selectTab('#panel2');
-      $html.find('#panel2').should.have.attr('aria-hidden', 'false');
+      $html.find('#panel2').should.have.not.attr('aria-hidden');
       $html.find('[href="#panel2"]').should.have.attr('aria-selected', 'true');
     });
 
