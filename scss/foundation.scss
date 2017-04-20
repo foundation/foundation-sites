@@ -71,6 +71,7 @@
   } @else {
     @if $css-grid {
       $global-css-grid: true !global;
+      $global-flexbox: true !global;
     }
   }
 
@@ -121,7 +122,7 @@
   @include foundation-visibility-classes;
   @include foundation-float-classes;
 
-  @if $flex {
+  @if $global-flexbox {
     @include foundation-flex-classes;
   }
 }

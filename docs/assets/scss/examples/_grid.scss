@@ -43,7 +43,14 @@
 // Flex Grid
 [id^="docs-flex"].docs-component .docs-code-live {
   @include foundation-flex-grid;
+}
+// CSS Grid
+[id^="docs-css"].docs-component .docs-code-live {
+  @include foundation-css-grid;
+}
 
+[id^="docs-flex"].docs-component .docs-code-live,
+[id^="docs-css"].docs-component .docs-code-live {
   .row {
     background: #f9f9f9;
     font-size: 11px;
