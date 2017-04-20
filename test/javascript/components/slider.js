@@ -211,7 +211,7 @@ describe('Slider', function() {
 
       plugin.$handle.should.have.attr('aria-valuenow', (10 - 1).toString());
     });
-    it('decreases value by step size times 10 on SHIFT_AARROW_RIGHT', function() {
+    it('decreases value by step size times 10 on SHIFT_ARROW_RIGHT', function() {
       $html = $(template).appendTo('body');
       plugin = new Foundation.Slider($html, {
         initialStart: 10,
