@@ -306,6 +306,7 @@ $content: $maincontent-class
   z-index: $zindex;
   visibility: visible;
   transition: none;
+  visibility: visible;
 
   @if not $offcanvas-fixed-reveal {
     position: absolute;
