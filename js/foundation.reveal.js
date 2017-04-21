@@ -26,8 +26,6 @@ class Reveal {
 
     Foundation.registerPlugin(this, 'Reveal');
     Foundation.Keyboard.register('Reveal', {
-      'ENTER': 'open',
-      'SPACE': 'open',
       'ESCAPE': 'close',
     });
   }
@@ -288,17 +286,15 @@ class Reveal {
       .focus();
     Foundation.Keyboard.trapFocus(this.$element);
 
+    addRevealOpenClasses();
+
+    this._extraHandlers();
+
     /**
      * Fires when the modal has successfully opened.
      * @event Reveal#open
      */
     this.$element.trigger('open.zf.reveal');
-
-    addRevealOpenClasses();
-
-    setTimeout(() => {
-      this._extraHandlers();
-    }, 0);
   }
 
   /**
@@ -308,6 +304,7 @@ class Reveal {
   _extraHandlers() {
     var _this = this;
     if(!this.$element) { return; } // If we're in the middle of cleanup, don't freak out
+
     this.focusableElements = Foundation.Keyboard.findFocusable(this.$element);
 
     if (!this.options.overlay && this.options.closeOnClick && !this.options.fullScreen) {
@@ -331,34 +328,6 @@ class Reveal {
         });
       });
     }
-
-    // lock focus within modal while tabbing
-    this.$element.on('keydown.zf.reveal', function(e) {
-      var $target = $(this);
-      // handle keyboard event with keyboard util
-      Foundation.Keyboard.handleKey(e, 'Reveal', {
-        open: function() {
-          if (_this.$element.find(':focus').is(_this.$element.find('[data-close]'))) {
-            setTimeout(function() { // set focus back to anchor if close button has been activated
-              _this.$anchor.focus();
-            }, 1);
-          } else if ($target.is(_this.focusableElements)) { // dont't trigger if acual element has focus (i.e. inputs, links, ...)
-            _this.open();
-          }
-        },
-        close: function() {
-          if (_this.options.closeOnEsc) {
-            _this.close();
-            _this.$anchor.focus();
-          }
-        },
-        handled: function(preventDefault) {
-          if (preventDefault) {
-            e.preventDefault();
-          }
-        }
-      });
-    });
   }
 
   /**

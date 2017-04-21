@@ -355,5 +355,20 @@ describe('Reveal', function() {
         done();
       }, 10);
     });
+    it('closes Reveal with click on close button', function(done) {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Reveal($html, {});
+
+      // Open it first
+      plugin.open();
+
+      $html.on('closed.zf.reveal', function() {
+        $html.should.be.hidden;
+      	done();
+      });
+
+      $html.find('[data-close]').focus()
+        .trigger('click');
+    });
   });
 });
