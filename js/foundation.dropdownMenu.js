@@ -147,16 +147,14 @@ class DropdownMenu {
       $elements.each(function(i) {
         if ($(this).is($element)) {
           $prevElement = $elements.eq(i-1);
-          $nextElement = $elements.eq(i+1);
+          $nextElement = $elements.length === i + 1 ? $elements.eq(0) : $elements.eq(i+1);
           return;
         }
       });
 
       var nextSibling = function() {
-        if (!$element.is(':last-child')) {
-          $nextElement.children('a:first').focus();
-          e.preventDefault();
-        }
+        $nextElement.children('a:first').focus();
+        e.preventDefault();
       }, prevSibling = function() {
         $prevElement.children('a:first').focus();
         e.preventDefault();
@@ -179,7 +177,7 @@ class DropdownMenu {
         open: openSub,
         close: function() {
           _this._hide(_this.$element);
-          _this.$menuItems.find('a:first').focus(); // focus to first element
+          _this.$tabs.has(e.target).children('a').focus(); // focus to first element
           e.preventDefault();
         },
         handled: function() {
