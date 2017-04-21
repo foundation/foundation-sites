@@ -206,6 +206,15 @@ $alert-color: get-color(alert);
     overflow: auto;
   }
 
+  // Make reset inherit font-family instead of settings sans-serif
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    font-family: inherit;
+  }
+
   // Internal classes to show/hide elements in JavaScript
   .is-visible {
     display: block !important;
