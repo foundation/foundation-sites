@@ -81,7 +81,11 @@ class OffCanvas extends Plugin {
       overlay.setAttribute('class', 'js-off-canvas-overlay ' + overlayPosition);
       this.$overlay = $(overlay);
       if(overlayPosition === 'is-overlay-fixed') {
-        $(this.$overlay).insertAfter(this.$element);
+        if ($('.off-canvas-wrapper').length) {
+          $(this.$overlay).insertAfter('.off-canvas-wrapper'); // immediately after wrapper to prevent overlay issue for nested off-canvas
+        } else {
+          $('body').append(this.$overlay);
+        }
       } else {
         this.$content.append(this.$overlay);
       }
