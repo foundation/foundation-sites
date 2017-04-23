@@ -153,6 +153,10 @@ class Accordion {
    * @function
    */
   toggle($target) {
+    if ($target.closest('[data-accordion]').is('[disabled]')) {
+      console.info('Cannot toggle an accordion that is disabled.');
+      return;
+    }
     if($target.parent().hasClass('is-active')) {
       this.up($target);
     } else {
@@ -178,6 +182,14 @@ class Accordion {
    * @function
    */
   down($target, firstTime) {
+    /**
+     * checking firstTime allows for initial render of the accordion
+     * to render preset is-active panes.
+     */
+    if ($target.closest('[data-accordion]').is('[disabled]') && !firstTime)  {
+      console.info('Cannot call down on an accordion that is disabled.');
+      return;
+    }
     $target
       .attr('aria-hidden', false)
       .parent('[data-tab-content]')
@@ -212,6 +224,11 @@ class Accordion {
    * @function
    */
   up($target) {
+    if ($target.closest('[data-accordion]').is('[disabled]')) {
+      console.info('Cannot call up on an accordion that is disabled.');
+      return;
+    }
+
     var $aunts = $target.parent().siblings(),
         _this = this;
 

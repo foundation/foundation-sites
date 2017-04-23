@@ -6,6 +6,10 @@
 /// @group button
 ////
 
+/// Font family for button elements.
+/// @type Font
+$button-font-family: inherit !default;
+
 /// Padding inside buttons.
 /// @type List
 $button-padding: 0.85em 1em !default;
@@ -90,6 +94,7 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
   display: inline-block;
   vertical-align: middle;
   margin: $button-margin;
+  font-family: $button-font-family;
 
   @if (type-of($button-padding) == 'map') {
     @each $size, $padding in $button-padding {
@@ -162,6 +167,14 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
   &:hover, &:focus {
     background-color: transparent;
   }
+
+  &.disabled,
+  &[disabled] {
+    &,
+    &:hover, &:focus {
+      background-color: transparent;
+    }
+  }
 }
 
 @mixin button-hollow-style(
@@ -177,6 +190,11 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
   &:hover, &:focus {
     border-color: $color-hover;
     color: $color-hover;
+    &.disabled,
+    &[disabled] {
+      border: $border-width solid $color;
+      color: $color;
+    }
   }
 }
 
@@ -303,6 +321,18 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
       }
     }
 
+    // Disabled style
+    &.disabled,
+    &[disabled] {
+      @include button-disabled;
+
+      @each $name, $color in $button-palette {
+        &.#{$name} {
+          @include button-disabled($color, auto);
+        }
+      }
+    }
+
     // Hollow style
     @if $button-fill != hollow {
       &.hollow {
@@ -327,18 +357,6 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
           &.#{$name} {
             @include button-clear-style($color);
           }
-        }
-      }
-    }
-
-    // Disabled style
-    &.disabled,
-    &[disabled] {
-      @include button-disabled;
-
-      @each $name, $color in $button-palette {
-        &.#{$name} {
-          @include button-disabled($color, auto);
         }
       }
     }

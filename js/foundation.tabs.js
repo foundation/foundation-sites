@@ -60,14 +60,18 @@ class Tabs {
         'role': 'tab',
         'aria-controls': hash,
         'aria-selected': isActive,
-        'id': linkId
+        'id': linkId,
+        'tabindex': isActive ? '0' : '-1'
       });
 
       $tabContent.attr({
         'role': 'tabpanel',
-        'aria-hidden': !isActive,
         'aria-labelledby': linkId
       });
+
+      if(!isActive) {
+        $tabContent.attr('aria-hidden', 'true');
+      }
 
       if(isActive && _this.options.autoFocus){
         $(window).load(function() {
@@ -276,11 +280,13 @@ class Tabs {
 
       $target.addClass(`${this.options.linkActiveClass}`);
 
-      $tabLink.attr({'aria-selected': 'true'});
+      $tabLink.attr({
+        'aria-selected': 'true',
+        'tabindex': '0'
+      });
 
       $targetContent
-        .addClass(`${this.options.panelActiveClass}`)
-        .attr({'aria-hidden': 'false'});
+        .addClass(`${this.options.panelActiveClass}`).removeAttr('aria-hidden');
   }
 
   /**
@@ -292,11 +298,14 @@ class Tabs {
     var $target_anchor = $target
       .removeClass(`${this.options.linkActiveClass}`)
       .find('[role="tab"]')
-      .attr({ 'aria-selected': 'false' });
+      .attr({
+        'aria-selected': 'false',
+        'tabindex': -1
+      });
 
     $(`#${$target_anchor.attr('aria-controls')}`)
       .removeClass(`${this.options.panelActiveClass}`)
-      .attr({ 'aria-hidden': 'true' });
+      .attr({ 'aria-hidden': 'true' })
   }
 
   /**

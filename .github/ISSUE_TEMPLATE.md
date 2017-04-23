@@ -10,7 +10,9 @@
 
 #### What happened instead:
 
-#### Test case:
+#### Browser(s) and Device(s) tested on:
+
+#### Test case link:
 
 <!-- Give us a link to a CodePen or JSFiddle that recreates the issue. -->
 

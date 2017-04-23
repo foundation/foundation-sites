@@ -153,4 +153,24 @@ describe('Slider', function() {
     });
   });
 
+  describe('keyboard events', function() {
+    it('sets value to minimum using HOME', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Slider($html, {});
+
+      plugin.$handle.focus()
+        .trigger(window.mockKeyboardEvent('HOME'));
+
+      plugin.$handle.should.have.attr('aria-valuenow', plugin.$handle.attr('aria-valuemin'));
+    });
+    it('sets value to maximum using END', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Slider($html, {});
+
+      plugin.$handle.focus()
+        .trigger(window.mockKeyboardEvent('END'));
+
+      plugin.$handle.should.have.attr('aria-valuenow', plugin.$handle.attr('aria-valuemax'));
+    });
+  });
 });
