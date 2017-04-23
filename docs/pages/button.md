@@ -6,6 +6,12 @@ tags:
   - dropdown button
 ---
 
+<div class="primary callout">
+  <p>Heads up! Folk's from Foundation community have created a **Social Buttons** Building Block on top of this component. [Check it out here.](http://foundation.zurb.com/building-blocks/blocks/social-buttons.html) </p>
+</div>
+
+---
+
 ## Basics
 
 A basic button can be created with minimal markup. Because buttons can be used for many purposes, it's important to use the right tag.
