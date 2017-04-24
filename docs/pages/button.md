@@ -42,7 +42,6 @@ Additional classes can be added to your button to change its size and shape.
 <a class="button small expanded" href="#">Wow, Small Expand</a>
 ```
 
-
 ---
 
 ## Coloring
