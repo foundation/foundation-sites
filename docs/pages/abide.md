@@ -47,12 +47,18 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
     </div>
   </div>
   <div class="row">
-    <div class="medium-6 columns">
+    <div class="large-6 columns">
+      <label>URL Pattern, not required, but throws error if it doesn't match the Regular Expression for a valid URL.
+      <input type="text" placeholder="http://foundation.zurb.com" pattern="url">
+    </div>
+    <div class="large-6 columns">
       <label>Website Pattern, not required, but throws error if it doesn't match the Regular Expression for a valid URL or a Domain.
         <input type="text" placeholder="http://zurb.com or zurb.com" pattern="website">
       </label>
     </div>
-    <div class="medium-6 columns">
+  </div>
+  <div class="row">
+    <div class="large-6 columns">
       <label>European Cars, Choose One, it can't be the blank option.
         <select id="select" required>
           <option value=""></option>
@@ -63,14 +69,14 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
         </select>
       </label>
     </div>
-  </div>
-  <div class="row">
     <fieldset class="large-6 columns">
       <legend>Choose Your Favorite, and this is required, so you have to pick one.</legend>
       <input type="radio" name="pokemon" value="Red" id="pokemonRed"><label for="pokemonRed">Red</label>
       <input type="radio" name="pokemon" value="Blue" id="pokemonBlue" required><label for="pokemonBlue">Blue</label>
       <input type="radio" name="pokemon" value="Yellow" id="pokemonYellow"><label for="pokemonYellow">Yellow</label>
     </fieldset>
+  </div>
+  <div class="row">
     <fieldset class="large-6 columns">
       <legend>Choose Your Favorite - not required, you can leave this one blank.</legend>
       <input type="radio" name="pockets" value="Red" id="pocketsRed"><label for="pocketsRed">Red</label>
