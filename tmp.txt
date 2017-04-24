@@ -1,4 +1,0 @@
-$button-padding: 4px;
-$button-padding: 4px 2px;
-$button-padding: 4px 1px 3px;
-$button-padding: 4px 5px 3px 1px;
