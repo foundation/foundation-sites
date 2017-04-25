@@ -327,7 +327,6 @@ class Reveal extends Plugin {
           close: function() {
             if (_this.options.closeOnEsc) {
               _this.close();
-              _this.$anchor.focus();
             }
           }
         });
@@ -450,10 +449,7 @@ class Reveal extends Plugin {
        }
      }
 
-     // Set focus back to anchor if modal was closed by keyboard
-     if(typeof window.whatInput === 'undefined' || window.whatInput.ask() === 'keyboard') {
-      _this.$anchor.focus();
-     }
+    this.$anchor.focus();
   }
 
   /**
