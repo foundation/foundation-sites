@@ -449,12 +449,9 @@ class Reveal extends Plugin {
          window.location.hash = '';
        }
      }
-      console.log('DEF', _this.$anchor.html());
 
      // Set focus back to anchor if modal was closed by keyboard
      if(typeof window.whatInput === 'undefined' || window.whatInput.ask() === 'keyboard') {
-      console.log('ASDASD', _this.$anchor[0]);
-
       _this.$anchor.focus();
      }
   }
