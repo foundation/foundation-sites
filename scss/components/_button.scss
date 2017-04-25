@@ -258,7 +258,7 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
 
     display: inline-block;
     float: #{$global-right};
-    margin-#{$global-left}: get-side($button-padding, right);
+    margin-#{$global-left}: $offset;
   }
 }
 

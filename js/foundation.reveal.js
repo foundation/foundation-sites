@@ -28,8 +28,6 @@ class Reveal extends Plugin {
     this._init();
 
     Keyboard.register('Reveal', {
-      'ENTER': 'open',
-      'SPACE': 'open',
       'ESCAPE': 'close',
     });
   }
@@ -290,17 +288,15 @@ class Reveal extends Plugin {
       .focus();
     Keyboard.trapFocus(this.$element);
 
+    addRevealOpenClasses();
+
+    this._extraHandlers();
+
     /**
      * Fires when the modal has successfully opened.
      * @event Reveal#open
      */
     this.$element.trigger('open.zf.reveal');
-
-    addRevealOpenClasses();
-
-    setTimeout(() => {
-      this._extraHandlers();
-    }, 0);
   }
 
   /**
@@ -327,40 +323,11 @@ class Reveal extends Plugin {
           close: function() {
             if (_this.options.closeOnEsc) {
               _this.close();
-              _this.$anchor.focus();
             }
           }
         });
       });
     }
-
-    // lock focus within modal while tabbing
-    this.$element.on('keydown.zf.reveal', function(e) {
-      var $target = $(this);
-      // handle keyboard event with keyboard util
-      Keyboard.handleKey(e, 'Reveal', {
-        open: function() {
-          if (_this.$element.find(':focus').is(_this.$element.find('[data-close]'))) {
-            setTimeout(function() { // set focus back to anchor if close button has been activated
-              _this.$anchor.focus();
-            }, 1);
-          } else if ($target.is(_this.focusableElements)) { // dont't trigger if acual element has focus (i.e. inputs, links, ...)
-            _this.open();
-          }
-        },
-        close: function() {
-          if (_this.options.closeOnEsc) {
-            _this.close();
-            _this.$anchor.focus();
-          }
-        },
-        handled: function(preventDefault) {
-          if (preventDefault) {
-            e.preventDefault();
-          }
-        }
-      });
-    });
   }
 
   /**
@@ -449,6 +416,8 @@ class Reveal extends Plugin {
          window.location.hash = '';
        }
      }
+
+    this.$anchor.focus();
   }
 
   /**
