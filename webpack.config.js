@@ -1,8 +1,8 @@
 module.exports = {
-  entry: "./js/entries/all.js",
+  entry: './js/entries/all.js',
   output: {
       path: './_build/assets/js/',
-      filename: "foundation.js"
+      filename: 'foundation.js'
   },
   externals: {
     jquery: 'jQuery'
