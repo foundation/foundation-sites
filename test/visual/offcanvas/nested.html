@@ -159,7 +159,7 @@
 
           <p>The buttons above are taken over from all-options to test backwards compatibility since the nested feature is supposed to enable upgrading without any issues.</p>
 
-          <div class="off-canvas position-left in-canvas-for-large off-canvas-absolute" id="offCanvasNestedLeft" data-off-canvas>
+          <div class="off-canvas position-left in-canvas-for-large" id="offCanvasNestedLeftPush" data-off-canvas data-transition="push">
             <button class="close-button" aria-label="Close panel" type="button" data-close>
               <span aria-hidden="true">&times;</span>
             </button>
@@ -167,16 +167,25 @@
             <p>In this example it is used as regular page content for large and move into off-canvas for medium down.</p>
           </div>
 
-          <div class="off-canvas position-left in-canvas-for-large off-canvas-absolute" id="offCanvasNestedLeftSharing" data-off-canvas data-transition="overlap">
+          <div class="off-canvas position-left in-canvas-for-large" id="offCanvasNestedLeftPushSharing" data-off-canvas data-transition="push">
             <button class="close-button" aria-label="Close panel" type="button" data-close>
               <span aria-hidden="true">&times;</span>
             </button>
             <p>I'm a nested off-canvas, sharing the same position and content container of my sibling.</p>
           </div>
 
-          <div class="button-group expanded hide-for-large">
-            <button type="button" class="button" data-toggle="offCanvasNestedLeft">Nested Left Push</button>
-            <button type="button" class="button" data-toggle="offCanvasNestedLeftSharing">Nested Left Sharing</button>
+          <div class="off-canvas position-right" id="offCanvasNestedRightOverlap" data-off-canvas data-transition="overlap">
+            <button class="close-button" aria-label="Close panel" type="button" data-close>
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h3>This is a nested right off-canvas panel</h3>
+            <p>Just a test to see if overlap is also working without problems.</p>
+          </div>
+
+          <div class="button-group expanded">
+            <button type="button" class="button hide-for-large" data-toggle="offCanvasNestedLeftPush">Nested Left Push</button>
+            <button type="button" class="button hide-for-large" data-toggle="offCanvasNestedLeftPushSharing">Nested Left Push Sharing</button>
+            <button type="button" class="button" data-toggle="offCanvasNestedRightOverlap">Nested Right Overlap</button>
           </div>
 
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eros massa, lacinia sed rutrum non, sodales quis urna. In hac habitasse platea dictumst. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus in rutrum magna, a varius lorem. Suspendisse nec nisi massa. Sed id lacus feugiat, commodo risus id, vulputate odio. Quisque aliquam lacus id mi euismod, ut sodales odio porttitor. Donec finibus dui vitae odio ultricies, sit amet volutpat risus bibendum. Nulla sagittis rhoncus fermentum. Nulla nisi mi, cursus posuere mollis in, faucibus ut lacus.

@@ -340,8 +340,13 @@ class OffCanvas {
       Foundation.Keyboard.releaseFocus(this.$element);
     }
 
-    this.$element.one(Foundation.transitionend(this.$element), function() {
-      _this.$element.addClass('is-closed');
+    // Listen to transitionEnd of content container and add class when done.
+    // The listener is not assigned to the off-canvas element itself because it doesn't transform if nested (push).
+    this.$content.on(Foundation.transitionend(this.$content), function(e) {
+      if (e.originalEvent.propertyName.match(/transform/i)) {
+        _this.$element.addClass('is-closed');
+        _this.$content.off(Foundation.transitionend(_this.$content));
+      }
     });
   }
 
