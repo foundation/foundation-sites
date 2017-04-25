@@ -280,6 +280,24 @@ describe('Reveal', function() {
 
       plugin.close();
     });
+    it('sets focus to anchor', function(done) {
+      $html = $(template).appendTo('body');
+      var $anchor = $('<button data-open="exampleModal1">Open</button>').appendTo('body');
+      plugin = new Foundation.Reveal($html, {});
+
+      // Open it first
+      plugin.open();
+
+      $html.on('closed.zf.reveal', function() {
+        setTimeout(function() {
+          $anchor[0].should.be.equal(document.activeElement);
+          $anchor.remove();
+          done();
+        }, 0);
+      });
+
+      plugin.close();
+    });
   });
 
 	describe('toggle()', function() {
