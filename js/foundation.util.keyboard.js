@@ -10,7 +10,6 @@
 
 import $ from 'jquery';
 import { rtl } from './foundation.util.core';
-let Rtl =  rtl;
 
 const keyCodes = {
   9: 'TAB',
@@ -81,7 +80,7 @@ var Keyboard = {
     if (typeof commandList.ltr === 'undefined') { // this component does not differentiate between ltr and rtl
         cmds = commandList; // use plain list
     } else { // merge ltr and rtl: if document is rtl, rtl overwrites ltr and vice versa
-        if (Rtl()) cmds = $.extend({}, commandList.ltr, commandList.rtl);
+        if (rtl()) cmds = $.extend({}, commandList.ltr, commandList.rtl);
 
         else cmds = $.extend({}, commandList.rtl, commandList.ltr);
     }

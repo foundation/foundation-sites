@@ -15,10 +15,10 @@ class Plugin {
 
     if(!this.$element.attr(`data-${pluginName}`)){ this.$element.attr(`data-${pluginName}`, this.uuid); }
     if(!this.$element.data('zfPlugin')){ this.$element.data('zfPlugin', this); }
-          /**
-           * Fires when the plugin has initialized.
-           * @event Plugin#init
-           */
+    /**
+     * Fires when the plugin has initialized.
+     * @event Plugin#init
+     */
     this.$element.trigger(`init.zf.${pluginName}`);
   }
 
