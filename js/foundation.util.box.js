@@ -1,9 +1,7 @@
 'use strict';
 
 
-import { rtl } from "./foundation.util.core";
-
-var Rtl = rtl;
+import { rtl as Rtl } from "./foundation.util.core";
 
 var Box = {
   ImNotTouchingYou: ImNotTouchingYou,
