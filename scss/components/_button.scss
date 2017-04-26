@@ -331,8 +331,11 @@ $button-transition: background-color 0.25s ease-out, color 0.25s ease-out !defau
           &.#{$name} {
             @include button-hollow-style($color);
 
-            &, &:hover, &:focus {
-              &, &.disabled, &[disabled] {
+            &, &:hover,
+            &:focus {
+              &,
+              &.disabled,
+              &[disabled] {
                 border-color: transparent;
               }
             }
