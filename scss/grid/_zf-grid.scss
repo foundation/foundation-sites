@@ -150,24 +150,44 @@ $grid-debug: false !default;
 
   // Sizing properties
   @if($size == 'full') {
-    $size: if($type == 'margin', calc(100% - #{$grid-gutters}), 100%);
-
-    flex: 1 1 $size;
+    @if($type == 'margin') {
+      @include -zf-breakpoint-value(auto, $grid-gutters) {
+        $gutter: rem-calc($-zf-bp-value);
+        flex: 1 1 calc(100% - #{$gutter});
+      }
+    }
+    @else {
+      flex: 1 1 100%;
+    }
   }
   @elseif($size == 'auto') {
     flex: 1 1 0px; // sass-lint:disable-line zero-unit - https://github.com/philipwalton/flexbugs#4-flex-shorthand-declarations-with-unitless-flex-basis-values-are-ignored
   }
   @elseif($size == 'shrink') {
-    $size: if($type == 'margin', calc(100% - #{$grid-gutters}), 100%);
-
     flex: 0 0 auto;
-    max-#{$direction}: $size;
+
+    @if($type == 'margin') {
+      @include -zf-breakpoint-value(auto, $grid-gutters) {
+        $gutter: rem-calc($-zf-bp-value);
+        max-#{$direction}: calc(100% - #{$gutter});
+      }
+    }
+    @else {
+      max-#{$direction}: 100%;
+    }
   }
   @else {
-    $size: if($type == 'margin', calc(#{zf-cell-size($size)} - #{$grid-gutters}), zf-cell-size($size));
-
-    flex: 0 0 $size;
-    max-#{$direction}: $size;
+    @if($type == 'margin') {
+      @include -zf-breakpoint-value(auto, $grid-gutters) {
+        $gutter: rem-calc($-zf-bp-value);
+        flex: 0 0 calc(#{zf-cell-size($size)} - #{$gutter});
+        max-#{$direction}: calc(#{zf-cell-size($size)} - #{$gutter});
+      }
+    }
+    @else {
+      flex: 0 0 $size;
+      max-#{$direction}: zf-cell-size($size);
+    }
   }
 }
 
