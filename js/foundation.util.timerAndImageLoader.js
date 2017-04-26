@@ -58,19 +58,22 @@ function onImagesLoaded(images, callback){
     callback();
   }
 
-  images.each(function() {
+  images.each(function(){
     // Check if image is loaded
-    if (this.complete || (this.readyState === 4) || (this.readyState === 'complete')) {
+    if (this.complete && this.naturalWidth !== undefined) {
       singleImageLoaded();
     }
-    // Force load the image
     else {
-      // fix for IE. See https://css-tricks.com/snippets/jquery/fixing-load-in-ie-for-cached-images/
-      var src = $(this).attr('src');
-      $(this).attr('src', src + (src.indexOf('?') >= 0 ? '&' : '?') + (new Date().getTime()));
-      $(this).one('load', function() {
+      // If the above check failed, simulate loading on detached element.
+      var image = new Image();
+      // Still count image as loaded if it finalizes with an error.
+      var events = "load.zf.images error.zf.images";
+      $(image).one(events, function me(event){
+        // Unbind the event listeners. We're using 'one' but only one of the two events will have fired.
+        $(this).off(events, me);
         singleImageLoaded();
       });
+      image.src = $(this).attr('src');
     }
   });
 
