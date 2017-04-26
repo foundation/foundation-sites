@@ -30,6 +30,22 @@ Accordion content should also have an ID, or the # of the href should be specifi
 ```
 
 <div class="secondary callout">
+  <p>The accordion/tabs values can be in any order.</p>
+</div>
+
+```html
+<ul class="tabs" data-responsive-accordion-tabs="tabs medium-accordion large-tabs">
+  <li class="accordion-item is-active" data-accordion-item>
+    <a href="#" class="accordion-title">Accordion 1</a>
+    <div class="accordion-content" data-tab-content>
+      I would start in the open state, due to using the `is-active` state class.
+    </div>
+  </li>
+  <!-- ... -->
+</ul>
+```
+
+<div class="secondary callout">
   <p>Once you put it all together, here's what you get!<br>Scale your browser down to see the toggle happen.<br>I am an `Accordion on small and large` but I am `Tabs on medium`</p>
 </div>
 
