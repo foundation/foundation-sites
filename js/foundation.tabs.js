@@ -1,15 +1,17 @@
 'use strict';
 
-!function($) {
-
+import $ from 'jquery';
+import { Keyboard } from './foundation.util.keyboard';
+import { onImagesLoaded } from './foundation.util.imageLoader';
+import { Plugin } from './foundation.plugin';
 /**
  * Tabs module.
  * @module foundation.tabs
  * @requires foundation.util.keyboard
- * @requires foundation.util.timerAndImageLoader if tabs contain images
+ * @requires foundation.util.imageLoader if tabs contain images
  */
 
-class Tabs {
+class Tabs extends Plugin {
   /**
    * Creates a new instance of tabs.
    * @class
@@ -17,13 +19,12 @@ class Tabs {
    * @param {jQuery} element - jQuery object to make into tabs.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  constructor(element, options) {
+  _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, Tabs.defaults, this.$element.data(), options);
 
     this._init();
-    Foundation.registerPlugin(this, 'Tabs');
-    Foundation.Keyboard.register('Tabs', {
+    Keyboard.register('Tabs', {
       'ENTER': 'open',
       'SPACE': 'open',
       'ARROW_RIGHT': 'next',
@@ -85,7 +86,7 @@ class Tabs {
       var $images = this.$tabContent.find('img');
 
       if ($images.length) {
-        Foundation.onImagesLoaded($images, this._setHeight.bind(this));
+        onImagesLoaded($images, this._setHeight.bind(this));
       } else {
         this._setHeight();
       }
@@ -189,7 +190,7 @@ class Tabs {
       });
 
       // handle keyboard event with keyboard util
-      Foundation.Keyboard.handleKey(e, 'Tabs', {
+      Keyboard.handleKey(e, 'Tabs', {
         open: function() {
           $element.find('[role="tab"]').focus();
           _this._handleTabChange($element);
@@ -373,7 +374,7 @@ class Tabs {
    * Destroys an instance of an tabs.
    * @fires Tabs#destroyed
    */
-  destroy() {
+  _destroy() {
     this.$element
       .find(`.${this.options.linkClass}`)
       .off('.zf.tabs').hide().end()
@@ -390,7 +391,6 @@ class Tabs {
       $(window).off('popstate', this._checkDeepLink);
     }
 
-    Foundation.unregisterPlugin(this);
   }
 }
 
@@ -493,7 +493,4 @@ Tabs.defaults = {
   panelActiveClass: 'is-active'
 };
 
-// Window exports
-Foundation.plugin(Tabs, 'Tabs');
-
-}(jQuery);
+export {Tabs};

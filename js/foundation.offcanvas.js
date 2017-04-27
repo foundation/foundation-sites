@@ -1,6 +1,13 @@
 'use strict';
 
-!function($) {
+import $ from 'jquery';
+import { Keyboard } from './foundation.util.keyboard';
+import { MediaQuery } from './foundation.util.mediaQuery';
+import { transitionend } from './foundation.util.core';
+import { Plugin } from './foundation.plugin';
+
+  // import "foundation.util.triggers.js";
+  // TODO: Figure out what triggers import should actually do, given how indirect their use is
 
 /**
  * OffCanvas module.
@@ -8,10 +15,9 @@
  * @requires foundation.util.keyboard
  * @requires foundation.util.mediaQuery
  * @requires foundation.util.triggers
- * @requires foundation.util.motion
  */
 
-class OffCanvas {
+class OffCanvas extends Plugin {
   /**
    * Creates a new instance of an off-canvas wrapper.
    * @class
@@ -19,7 +25,7 @@ class OffCanvas {
    * @param {Object} element - jQuery object to initialize.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  constructor(element, options) {
+  _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, OffCanvas.defaults, this.$element.data(), options);
     this.$lastTrigger = $();
@@ -28,8 +34,7 @@ class OffCanvas {
     this._init();
     this._events();
 
-    Foundation.registerPlugin(this, 'OffCanvas')
-    Foundation.Keyboard.register('OffCanvas', {
+    Keyboard.register('OffCanvas', {
       'ESCAPE': 'close'
     });
 
@@ -105,13 +110,13 @@ class OffCanvas {
     var _this = this;
 
     $(window).on('changed.zf.mediaquery', function() {
-      if (Foundation.MediaQuery.atLeast(_this.options.revealOn)) {
+      if (MediaQuery.atLeast(_this.options.revealOn)) {
         _this.reveal(true);
       } else {
         _this.reveal(false);
       }
     }).one('load.zf.offcanvas', function() {
-      if (Foundation.MediaQuery.atLeast(_this.options.revealOn)) {
+      if (MediaQuery.atLeast(_this.options.revealOn)) {
         _this.reveal(true);
       }
     });
@@ -238,7 +243,7 @@ class OffCanvas {
     }
 
     if (this.options.autoFocus === true) {
-      this.$element.one(Foundation.transitionend(this.$element), function() {
+      this.$element.one(transitionend(this.$element), function() {
         var canvasFocus = _this.$element.find('[data-autofocus]');
         if (canvasFocus.length) {
             canvasFocus.eq(0).focus();
@@ -250,7 +255,7 @@ class OffCanvas {
 
     if (this.options.trapFocus === true) {
       this.$element.siblings('[data-off-canvas-content]').attr('tabindex', '-1');
-      Foundation.Keyboard.trapFocus(this.$element);
+      Keyboard.trapFocus(this.$element);
     }
   }
 
@@ -293,7 +298,7 @@ class OffCanvas {
 
     if (this.options.trapFocus === true) {
       this.$element.siblings('[data-off-canvas-content]').removeAttr('tabindex');
-      Foundation.Keyboard.releaseFocus(this.$element);
+      Keyboard.releaseFocus(this.$element);
     }
   }
 
@@ -318,7 +323,7 @@ class OffCanvas {
    * @private
    */
   _handleKeyboard(e) {
-    Foundation.Keyboard.handleKey(e, 'OffCanvas', {
+    Keyboard.handleKey(e, 'OffCanvas', {
       close: () => {
         this.close();
         this.$lastTrigger.focus();
@@ -335,12 +340,10 @@ class OffCanvas {
    * Destroys the offcanvas plugin.
    * @function
    */
-  destroy() {
+  _destroy() {
     this.close();
     this.$element.off('.zf.trigger .zf.offcanvas');
     this.$overlay.off('.zf.offcanvas');
-
-    Foundation.unregisterPlugin(this);
   }
 }
 
@@ -435,7 +438,4 @@ OffCanvas.defaults = {
   trapFocus: false
 }
 
-// Window exports
-Foundation.plugin(OffCanvas, 'OffCanvas');
-
-}(jQuery);
+export {OffCanvas};

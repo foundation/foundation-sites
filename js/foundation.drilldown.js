@@ -1,32 +1,36 @@
 'use strict';
 
-!function($) {
+import $ from 'jquery';
+import { Keyboard } from './foundation.util.keyboard';
+import { Nest } from './foundation.util.nest';
+import { GetYoDigits, transitionend } from './foundation.util.core';
+import { Box } from './foundation.util.box';
+import { Plugin } from './foundation.plugin';
 
 /**
  * Drilldown module.
  * @module foundation.drilldown
  * @requires foundation.util.keyboard
- * @requires foundation.util.motion
  * @requires foundation.util.nest
+ * @requires foundation.util.box
  */
 
-class Drilldown {
+class Drilldown extends Plugin {
   /**
    * Creates a new instance of a drilldown menu.
    * @class
    * @param {jQuery} element - jQuery object to make into an accordion menu.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  constructor(element, options) {
+  _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, Drilldown.defaults, this.$element.data(), options);
 
-    Foundation.Nest.Feather(this.$element, 'drilldown');
+    Nest.Feather(this.$element, 'drilldown');
 
     this._init();
 
-    Foundation.registerPlugin(this, 'Drilldown');
-    Foundation.Keyboard.register('Drilldown', {
+    Keyboard.register('Drilldown', {
       'ENTER': 'open',
       'SPACE': 'open',
       'ARROW_RIGHT': 'next',
@@ -47,7 +51,7 @@ class Drilldown {
     this.$submenuAnchors = this.$element.find('li.is-drilldown-submenu-parent').children('a');
     this.$submenus = this.$submenuAnchors.parent('li').children('[data-submenu]');
     this.$menuItems = this.$element.find('li').not('.js-drilldown-back').attr('role', 'menuitem').find('a');
-    this.$element.attr('data-mutate', (this.$element.attr('data-drilldown') || Foundation.GetYoDigits(6, 'drilldown')));
+    this.$element.attr('data-mutate', (this.$element.attr('data-drilldown') || GetYoDigits(6, 'drilldown')));
 
     this._prepareMenu();
     this._registerEvents();
@@ -207,11 +211,11 @@ class Drilldown {
         }
       });
 
-      Foundation.Keyboard.handleKey(e, 'Drilldown', {
+      Keyboard.handleKey(e, 'Drilldown', {
         next: function() {
           if ($element.is(_this.$submenuAnchors)) {
             _this._show($element.parent('li'));
-            $element.parent('li').one(Foundation.transitionend($element), function(){
+            $element.parent('li').one(transitionend($element), function(){
               $element.parent('li').find('ul li a').filter(_this.$menuItems).first().focus();
             });
             return true;
@@ -219,7 +223,7 @@ class Drilldown {
         },
         previous: function() {
           _this._hide($element.parent('li').parent('ul'));
-          $element.parent('li').parent('ul').one(Foundation.transitionend($element), function(){
+          $element.parent('li').parent('ul').one(transitionend($element), function(){
             setTimeout(function() {
               $element.parent('li').parent('ul').parent('li').children('a').first().focus();
             }, 1);
@@ -246,7 +250,7 @@ class Drilldown {
         open: function() {
           if (!$element.is(_this.$menuItems)) { // not menu item means back button
             _this._hide($element.parent('li').parent('ul'));
-            $element.parent('li').parent('ul').one(Foundation.transitionend($element), function(){
+            $element.parent('li').parent('ul').one(transitionend($element), function(){
               setTimeout(function() {
                 $element.parent('li').parent('ul').parent('li').children('a').first().focus();
               }, 1);
@@ -254,7 +258,7 @@ class Drilldown {
             return true;
           } else if ($element.is(_this.$submenuAnchors)) {
             _this._show($element.parent('li'));
-            $element.parent('li').one(Foundation.transitionend($element), function(){
+            $element.parent('li').one(transitionend($element), function(){
               $element.parent('li').find('ul li a').filter(_this.$menuItems).first().focus();
             });
             return true;
@@ -278,7 +282,7 @@ class Drilldown {
   _hideAll() {
     var $elem = this.$element.find('.is-drilldown-submenu.is-active').addClass('is-closing');
     if(this.options.autoHeight) this.$wrapper.css({height:$elem.parent().closest('ul').data('calcHeight')});
-    $elem.one(Foundation.transitionend($elem), function(e){
+    $elem.one(transitionend($elem), function(e){
       $elem.removeClass('is-active is-closing');
     });
         /**
@@ -357,7 +361,7 @@ class Drilldown {
     $elem.parent('li').attr('aria-expanded', false);
     $elem.attr('aria-hidden', true).addClass('is-closing')
     $elem.addClass('is-closing')
-         .one(Foundation.transitionend($elem), function(){
+         .one(transitionend($elem), function(){
            $elem.removeClass('is-active is-closing');
            $elem.blur().addClass('invisible');
          });
@@ -378,7 +382,7 @@ class Drilldown {
     var  maxHeight = 0, result = {}, _this = this;
     this.$submenus.add(this.$element).each(function(){
       var numOfElems = $(this).children('li').length;
-      var height = Foundation.Box.GetDimensions(this).height;
+      var height = Box.GetDimensions(this).height;
       maxHeight = height > maxHeight ? height : maxHeight;
       if(_this.options.autoHeight) {
         $(this).data('calcHeight',height);
@@ -397,11 +401,11 @@ class Drilldown {
    * Destroys the Drilldown Menu
    * @function
    */
-  destroy() {
+  _destroy() {
     if(this.options.scrollTop) this.$element.off('.zf.drilldown',this._bindHandler);
     this._hideAll();
 	  this.$element.off('mutateme.zf.trigger');
-    Foundation.Nest.Burn(this.$element, 'drilldown');
+    Nest.Burn(this.$element, 'drilldown');
     this.$element.unwrap()
                  .find('.js-drilldown-back, .is-submenu-parent-item').remove()
                  .end().find('.is-active, .is-closing, .is-drilldown-submenu').removeClass('is-active is-closing is-drilldown-submenu')
@@ -419,7 +423,6 @@ class Drilldown {
         $link.attr('href', $link.data('savedHref')).removeData('savedHref');
       }else{ return; }
     });
-    Foundation.unregisterPlugin(this);
   };
 }
 
@@ -512,7 +515,4 @@ Drilldown.defaults = {
   // holdOpen: false
 };
 
-// Window exports
-Foundation.plugin(Drilldown, 'Drilldown');
-
-}(jQuery);
+export {Drilldown};
