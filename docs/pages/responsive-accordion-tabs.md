@@ -18,7 +18,7 @@ The Accordion should have an id specified, but the plugin will automatically gen
 Accordion content should also have an ID, or the # of the href should be specified, otherwise a random id will be generated
 
 ```html
-<ul class="accordion" data-responsive-accordion-tabs="tabs medium-accordion large-tabs">
+<ul class="accordion" data-responsive-accordion-tabs="accordion medium-tabs large-accordion">
   <li class="accordion-item is-active" data-accordion-item>
     <a href="#" class="accordion-title">Accordion 1</a>
     <div class="accordion-content" data-tab-content>
@@ -28,7 +28,6 @@ Accordion content should also have an ID, or the # of the href should be specifi
   <!-- ... -->
 </ul>
 ```
-
 <div class="secondary callout">
   <p>Once you put it all together, here's what you get!<br>Scale your browser down to see the toggle happen.<br>I am an `Accordion on small and large` but I am `Tabs on medium`</p>
 </div>
@@ -57,9 +56,22 @@ Accordion content should also have an ID, or the # of the href should be specifi
   </li>
 </ul>
 
+<div class="secondary callout">
+  <p>The accordion/tabs values can be in any order.</p>
+</div>
+
 Tabs HTML Markup
 
 ```html
+<ul class="tabs" data-responsive-accordion-tabs="tabs medium-accordion large-tabs" id="example-tabs">
+  <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Tab 1</a></li>
+  <li class="tabs-title"><a href="#panel2">Tab 2</a></li>
+  <li class="tabs-title"><a href="#panel3">Tab 3</a></li>
+  <li class="tabs-title"><a href="#panel4">Tab 4</a></li>
+  <li class="tabs-title"><a href="#panel5">Tab 5</a></li>
+  <li class="tabs-title"><a href="#panel6">Tab 6</a></li>
+</ul>
+
 <div class="tabs-content" data-tabs-content="example-tabs">
   <div class="tabs-panel is-active" id="panel1">
     <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
@@ -69,7 +81,6 @@ Tabs HTML Markup
   </div>
 </div>
 ```
-
 <div class="secondary callout">
   <p>Once you put it all together, here's what you get!<br>Scale your browser down to see the toggle happen.<br>I am `Tabs on small and large` and `Accordion on medium`</p>
 </div>
