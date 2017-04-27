@@ -424,7 +424,7 @@
     optgroup,
     select,
     textarea {
-      font-family: inherit; /* 1 */
+      font-family: $base-font-family; /* 1 */
       font-size: 100%; /* 1 */
       @if $normalize-vertical-rhythm {
         line-height: ($base-line-height / $base-font-size) * 1em; /* 1 */
