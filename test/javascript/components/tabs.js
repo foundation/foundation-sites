@@ -138,4 +138,46 @@ describe('Tabs', function() {
     });
   });
 
+  describe('keyboard events', function() {
+    it('switches to next tab on ARROW_RIGHT', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Tabs($html.find('[data-tabs]'), {});
+
+      $html.find('[href="#panel1"]').focus()
+        .trigger(window.mockKeyboardEvent('ARROW_RIGHT'));
+
+      $html.find('#panel2').should.be.visible;
+      $html.find('#panel2').should.have.class('is-active');
+    });
+    it('switches to next tab on ARROW_DOWN', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Tabs($html.find('[data-tabs]'), {});
+
+      $html.find('[href="#panel1"]').focus()
+        .trigger(window.mockKeyboardEvent('ARROW_DOWN'));
+
+      $html.find('#panel2').should.be.visible;
+      $html.find('#panel2').should.have.class('is-active');
+    });
+    it('switches to previous tab on ARROW_LEFT', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Tabs($html.find('[data-tabs]'), {});
+
+      $html.find('[href="#panel2"]').focus()
+        .trigger(window.mockKeyboardEvent('ARROW_LEFT'));
+
+      $html.find('#panel1').should.be.visible;
+      $html.find('#panel1').should.have.class('is-active');
+    });
+    it('switches to previous tab on ARROW_UP', function() {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.Tabs($html.find('[data-tabs]'), {});
+
+      $html.find('[href="#panel2"]').focus()
+        .trigger(window.mockKeyboardEvent('ARROW_UP'));
+
+      $html.find('#panel1').should.be.visible;
+      $html.find('#panel1').should.have.class('is-active');
+    });
+  });
 });

@@ -252,5 +252,23 @@ describe('Off Canvas', function() {
       plugin.toggle();
     });
   });
+  
+  describe('keyboard events', function() {
+    it('closes Off Canvas on ESCAPE', function(done) {
+      $html = $(template).appendTo('body');
+      plugin = new Foundation.OffCanvas($html.find('[data-off-canvas]'), {});
+
+      $html.one('opened.zf.offcanvas', function() {
+        plugin.$element.focus()
+          .trigger(window.mockKeyboardEvent('ESCAPE'));
+
+        plugin.$element.should.not.have.class('is-open');
+        done();
+      });
+
+      // Open it first
+      plugin.open();
+    });
+  });
 
 });
