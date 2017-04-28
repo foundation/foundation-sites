@@ -52,7 +52,7 @@ class Interchange extends Plugin {
    * @private
    */
   _events() {
-    this.$element.off('resizeme.zf.trigger').on('resizeme.zf.trigger', () => {this._reflow();});
+    this.$element.off('resizeme.zf.trigger').on('resizeme.zf.trigger', () => this._reflow());
   }
 
   /**
