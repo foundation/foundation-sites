@@ -70,60 +70,103 @@ describe('Dropdown Menu', function () {
       $html.find('> li:nth-child(1) > ul').should.not.have.class('js-dropdown-active');
       document.activeElement.should.be.equal($html.find('> li:nth-child(1) > a')[0]);
     });
-    it('moves focus to next tab on ARROW_RIGHT', function () {
-      $html = $(template).appendTo('body');
-      plugin = new Foundation.DropdownMenu($html, {});
+    describe('horizontal', function() {
+      beforeEach(function() {
+        $html = $(template).appendTo('body');
+        plugin = new Foundation.DropdownMenu($html, {});
+      });
+      it('moves focus to next tab on ARROW_RIGHT', function () {
+        $html.find('> li:nth-child(1) > a').focus()
+          .trigger(window.mockKeyboardEvent('ARROW_RIGHT'));
 
-      $html.find('> li:nth-child(1) > a').focus()
-        .trigger(window.mockKeyboardEvent('ARROW_RIGHT'));
+        document.activeElement.should.be.equal($html.find('> li:nth-child(2) > a')[0]);
+      });
+      it('moves focus to previous tab on ARROW_LEFT', function () {
+        $html.find('> li:nth-child(2) > a').focus()
+          .trigger(window.mockKeyboardEvent('ARROW_LEFT'));
 
-      document.activeElement.should.be.equal($html.find('> li:nth-child(2) > a')[0]);
+        document.activeElement.should.be.equal($html.find('> li:nth-child(1) > a')[0]);
+      });
+      it('opens child element of tab on ARROW_DOWN', function() {
+        $html.find('> li:nth-child(1) > a').focus()
+          .trigger(window.mockKeyboardEvent('ARROW_DOWN'));
+
+        $html.find('> li:nth-child(1)').should.have.class('is-active');
+        $html.find('> li:nth-child(1) > ul').should.have.class('js-dropdown-active');
+        document.activeElement.should.be.equal($html.find('> li:nth-child(1) > ul > li:nth-child(1) > a')[0]);	
+      });
+      it('moves focus to previous sub element on ARROW_UP', function () {
+        // Open it first
+        plugin._show($html.find('> li:nth-child(1) > ul'));
+
+        $html.find('> li:nth-child(1) > ul > li:nth-child(2) > a').focus()
+          .trigger(window.mockKeyboardEvent('ARROW_UP'));
+
+        document.activeElement.should.be.equal($html.find('> li:nth-child(1) > ul > li:nth-child(1) > a')[0]);
+      });
+      it('opens child element of sub menu on ARROW_RIGHT', function() {
+        // Open it first
+        plugin._show($html.find('> li:nth-child(1) > ul'));
+
+        $html.find('> li:nth-child(1) > ul > li:nth-child(2) > a').focus()
+          .trigger(window.mockKeyboardEvent('ARROW_RIGHT'));
+
+        $html.find('> li:nth-child(1) > ul > li:nth-child(2)').should.have.class('is-active');
+        $html.find('> li:nth-child(1) > ul > li:nth-child(2) > ul').should.have.class('js-dropdown-active');
+        document.activeElement.should.be.equal($html.find('> li:nth-child(1) > ul > li:nth-child(2) > ul > li:nth-child(1) > a')[0]);	
+      });
     });
-    it('moves focus to previous tab on ARROW_LEFT', function () {
-      $html = $(template).appendTo('body');
-      plugin = new Foundation.DropdownMenu($html, {});
+    describe('vertical', function() {
+      beforeEach(function() {
+        $html = $(template).addClass('vertical').appendTo('body');
+        plugin = new Foundation.DropdownMenu($html, {});
+      });
+      it('moves focus to next tab on ARROW_DOWN', function () {
+        $html.find('> li:nth-child(1) > a').focus()
+          .trigger(window.mockKeyboardEvent('ARROW_DOWN'));
 
-      $html.find('> li:nth-child(2) > a').focus()
-        .trigger(window.mockKeyboardEvent('ARROW_LEFT'));
+        document.activeElement.should.be.equal($html.find('> li:nth-child(2) > a')[0]);
+      });
+      it('moves focus to previous tab on ARROW_UP', function () {
+        $html.find('> li:nth-child(2) > a').focus()
+          .trigger(window.mockKeyboardEvent('ARROW_UP'));
 
-      document.activeElement.should.be.equal($html.find('> li:nth-child(1) > a')[0]);
-    });
-    it('opens child element of tab on ARROW_DOWN', function() {
-      $html = $(template).appendTo('body');
-      plugin = new Foundation.DropdownMenu($html, {});
+        document.activeElement.should.be.equal($html.find('> li:nth-child(1) > a')[0]);
+      });
+      it('opens child element of tab on ARROW_RIGHT', function() {
+        $html.find('> li:nth-child(1) > a').focus()
+          .trigger(window.mockKeyboardEvent('ARROW_RIGHT'));
 
-      $html.find('> li:nth-child(1) > a').focus()
-        .trigger(window.mockKeyboardEvent('ARROW_DOWN'));
+        $html.find('> li:nth-child(1)').should.have.class('is-active');
+        $html.find('> li:nth-child(1) > ul').should.have.class('js-dropdown-active');
+        document.activeElement.should.be.equal($html.find('> li:nth-child(1) > ul > li:nth-child(1) > a')[0]);	
+      });
+      it('moves focus to previous sub element on ARROW_UP', function () {
+        $html = $(template).appendTo('body');
+        plugin = new Foundation.DropdownMenu($html, {});
 
-      $html.find('> li:nth-child(1)').should.have.class('is-active');
-      $html.find('> li:nth-child(1) > ul').should.have.class('js-dropdown-active');
-      document.activeElement.should.be.equal($html.find('> li:nth-child(1) > ul > li:nth-child(1) > a')[0]);	
-    });
-    it('moves focus to previous sub element on ARROW_UP', function () {
-      $html = $(template).appendTo('body');
-      plugin = new Foundation.DropdownMenu($html, {});
+        // Open it first
+        plugin._show($html.find('> li:nth-child(1) > ul'));
 
-      // Open it first
-      plugin._show($html.find('> li:nth-child(1) > ul'));
+        $html.find('> li:nth-child(1) > ul > li:nth-child(2) > a').focus()
+          .trigger(window.mockKeyboardEvent('ARROW_UP'));
 
-      $html.find('> li:nth-child(1) > ul > li:nth-child(2) > a').focus()
-        .trigger(window.mockKeyboardEvent('ARROW_UP'));
+        document.activeElement.should.be.equal($html.find('> li:nth-child(1) > ul > li:nth-child(1) > a')[0]);
+      });
+      it('opens child element of sub menu on ARROW_RIGHT', function() {
+        $html = $(template).appendTo('body');
+        plugin = new Foundation.DropdownMenu($html, {});
 
-      document.activeElement.should.be.equal($html.find('> li:nth-child(1) > ul > li:nth-child(1) > a')[0]);
-    });
-    it('opens child element of sub menu on ARROW_RIGHT', function() {
-      $html = $(template).appendTo('body');
-      plugin = new Foundation.DropdownMenu($html, {});
+        // Open it first
+        plugin._show($html.find('> li:nth-child(1) > ul'));
 
-      // Open it first
-      plugin._show($html.find('> li:nth-child(1) > ul'));
+        $html.find('> li:nth-child(1) > ul > li:nth-child(2) > a').focus()
+          .trigger(window.mockKeyboardEvent('ARROW_RIGHT'));
 
-      $html.find('> li:nth-child(1) > ul > li:nth-child(2) > a').focus()
-        .trigger(window.mockKeyboardEvent('ARROW_RIGHT'));
-
-      $html.find('> li:nth-child(1) > ul > li:nth-child(2)').should.have.class('is-active');
-      $html.find('> li:nth-child(1) > ul > li:nth-child(2) > ul').should.have.class('js-dropdown-active');
-      document.activeElement.should.be.equal($html.find('> li:nth-child(1) > ul > li:nth-child(2) > ul > li:nth-child(1) > a')[0]);	
+        $html.find('> li:nth-child(1) > ul > li:nth-child(2)').should.have.class('is-active');
+        $html.find('> li:nth-child(1) > ul > li:nth-child(2) > ul').should.have.class('js-dropdown-active');
+        document.activeElement.should.be.equal($html.find('> li:nth-child(1) > ul > li:nth-child(2) > ul > li:nth-child(1) > a')[0]);	
+      });
     });
   });
 });
