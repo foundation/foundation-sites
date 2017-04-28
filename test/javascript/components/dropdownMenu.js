@@ -56,17 +56,19 @@ describe('Dropdown Menu', function () {
   });
 
   describe('keyboard events', function () {
-    it.skip('closes current sub menu using ESC', function () {
+    it('closes current sub menu using ESCAPE', function () {
       $html = $(template).appendTo('body');
       plugin = new Foundation.DropdownMenu($html, {});
 
       // Open it first
-      plugin._show($html.find('> li:nth-child(1)'));
+      plugin._show($html.find('> li:nth-child(1) > ul'));
 
-      $html.find('> li:nth-child(1) > a > li:first-child > a').focus()
+      $html.find('> li:nth-child(1) > ul > li:nth-child(1) > a').focus()
         .trigger(window.mockKeyboardEvent('ESCAPE'));
 
-      $html.find('li a').first();
+      $html.find('> li:nth-child(1)').should.not.have.class('is-active');
+      $html.find('> li:nth-child(1) > ul').should.not.have.class('js-dropdown-active');
+      document.activeElement.should.be.equal($html.find('> li:nth-child(1) > a')[0]);
     });
     it('moves focus to next tab on ARROW_RIGHT', function () {
       $html = $(template).appendTo('body');
