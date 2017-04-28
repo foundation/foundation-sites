@@ -1,6 +1,6 @@
 ---
 title: Responsive Accordion Tabs
-description: Use the Markup of the Accordion or Tabs components to create Responsive Accordion Tabs.
+description: Added in 6.3.0, use the Markup of the Accordion or Tabs components to create Responsive Accordion Tabs.
 sass: 
   - scss/components/_accordion.scss
   - scss/components/_tabs.scss
