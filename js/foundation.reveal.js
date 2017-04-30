@@ -194,10 +194,14 @@ class Reveal extends Plugin {
     if (this.options.deepLink) {
       var hash = `#${this.id}`;
 
-      if (this.options.updateHistory) {
-        history.pushState({}, '', hash);
+      if (window.history.pushState) {
+        if (this.options.updateHistory) {
+          window.history.pushState({}, '', hash);
+        } else {
+          window.history.replaceState({}, '', hash);
+        }
       } else {
-        history.replaceState({}, '', hash);
+        window.location.hash = hash;
       }
     }
 
@@ -550,7 +554,7 @@ Reveal.defaults = {
   /**
    * Update the browser history with the open modal
    * @option
-   * @example false
+   * @default false
    */
   updateHistory: false,
     /**
