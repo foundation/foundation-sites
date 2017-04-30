@@ -99,6 +99,7 @@ $grid-column-gutter: (
   medium: 30px,
 );
 $grid-column-align-edge: true;
+$grid-column-alias: 'columns';
 $block-grid-max: 8;
 
 // 4. Base Typography
@@ -236,6 +237,7 @@ $breadcrumbs-item-color-disabled: $medium-gray;
 $breadcrumbs-item-margin: 0.75rem;
 $breadcrumbs-item-uppercase: true;
 $breadcrumbs-item-slash: true;
+$breadcrumbs-item-slash-color: $medium-gray;
 
 // 11. Button
 // ----------
@@ -248,6 +250,8 @@ $button-background-hover: scale-color($button-background, $lightness: -15%);
 $button-color: $white;
 $button-color-alt: $black;
 $button-radius: $global-radius;
+$button-hollow-border-width: 1px;
+$button-clear-border-width: 1px;
 $button-sizes: (
   tiny: 0.6rem,
   small: 0.75rem,
@@ -258,6 +262,7 @@ $button-palette: $foundation-palette;
 $button-opacity-disabled: 0.25;
 $button-background-hover-lightness: -20%;
 $button-hollow-hover-lightness: -50%;
+$button-clear-hover-lightness: -50%;
 $button-transition: background-color 0.25s ease-out, color 0.25s ease-out;
 
 // 12. Button Group
@@ -292,7 +297,7 @@ $card-border: 1px solid $light-gray;
 $card-shadow: none;
 $card-border-radius: $global-radius;
 $card-padding: $global-padding;
-$card-margin: $global-margin;
+$card-margin-bottom: $global-margin;
 
 // 15. Close Button
 // ----------------
@@ -618,4 +623,3 @@ $topbar-submenu-background: $topbar-background;
 $topbar-title-spacing: 0.5rem 1rem 0.5rem 0;
 $topbar-input-width: 200px;
 $topbar-unstack-breakpoint: medium;
-

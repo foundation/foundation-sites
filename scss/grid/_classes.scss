@@ -167,8 +167,8 @@
     @include grid-column-margin;
   }
 
-  @if $column == 'column' {
-    .columns {
+  @if $column == 'column' and has-value($grid-column-alias) {
+    .#{$grid-column-alias} {
       // sass-lint:disable-block placeholder-in-extend
       @extend .column;
     }

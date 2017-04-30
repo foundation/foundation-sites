@@ -69,7 +69,7 @@ $button-palette: map-remove($foundation-palette, (
     primary,
     secondary
 )) !default;
-```  
+```
 
 Or you can add more colors to the default palette.
 
@@ -101,18 +101,6 @@ The text color for each button class is determined by either `$button-color` or 
 
 ---
 
-## Disabled Buttons
-
-The `.disabled` class will give buttons a faded appearance. The class is a purely visual style, and won't actually disable a control. For `<button>` elements, you can add the `disabled` attribute to both disable and style it. If you want to disable a link, you should add the `aria-disabled` attribute to mark it as disabled for assistive technology.
-
-
-```html_example
-<button type="button" class="button" disabled>Disabled</button>
-<a class="button disabled" href="#" aria-disabled>Disabled</a>
-```
-
----
-
 ## Hollow Style
 
 Add the `.hollow` class to a button to give it a hollow style. Change the `$button-fill` variable in your settings file to `hollow` to make this the default style. Changing this setting will remove the `.hollow` class from your CSS.
@@ -128,6 +116,54 @@ Add the `.hollow` class to a button to give it a hollow style. Change the `$butt
 
 ---
 
+## Disabled Buttons
+
+The `.disabled` class will give buttons a faded appearance. The class is a purely visual style, and won't actually disable a control. For `<button>` elements, you can add the `disabled` attribute to both disable and style it. If you want to disable a link, you should add the `aria-disabled` attribute to mark it as disabled for assistive technology.
+
+
+```html_example
+<a class="button disabled" href="#" aria-disabled>Disabled</a>
+<button type="button" class="button primary" disabled>Disabled</button>
+<button type="button" class="button secondary" disabled>Disabled</button>
+<button type="button" class="button success" disabled>Disabled</button>
+<button type="button" class="button alert" disabled>Disabled</button>
+<button type="button" class="button warning" disabled>Disabled</button>
+```
+
+Alternatively, you can also use disabled hollow buttons.
+
+```html_example
+<a class="button hollow disabled" href="#" aria-disabled>Disabled</a>
+<button type="button" class="button hollow primary" disabled>Disabled</button>
+<button type="button" class="button hollow secondary" disabled>Disabled</button>
+<button type="button" class="button hollow success" disabled>Disabled</button>
+<button type="button" class="button hollow alert" disabled>Disabled</button>
+<button type="button" class="button hollow warning" disabled>Disabled</button>
+```
+
+---
+
+## Clear Style
+
+Add the `.clear` class to a button to give it a clear style. Change the `$button-fill` variable in your settings file to `clear` to make this the default style. Changing this setting will remove the `.clear` class from your CSS.
+
+```html_example
+<a class="clear button" href="#">Primary</a>
+<a class="clear button secondary" href="#">Secondary</a>
+<a class="clear button success" href="#">Success</a>
+<a class="clear button alert" href="#">Alert</a>
+<a class="clear button warning" href="#">Warning</a>
+<a class="clear button" href="#" disabled>Disabled</a>
+```
+
+<p>This is especially useful as a secondary action button. This way you get proper spacing and line-height. Example:</p>
+
+<button class="button primary" href="#">Primary Action</button>
+<button class="clear button" href="#">Secondary Action</button>
+
+
+---
+
 ## Dropdown Arrows
 
 Add a dropdown arrow to your button with the `.dropdown` class.
@@ -137,11 +173,11 @@ Add a dropdown arrow to your button with the `.dropdown` class.
 </div>
 
 ```html_example
-<button class="dropdown button tiny ">Dropdown Button</button>
-<button class="dropdown button small ">Dropdown Button</button>
+<button class="dropdown button tiny">Dropdown Button</button>
+<button class="dropdown button small">Dropdown Button</button>
 <button class="dropdown button">Dropdown Button</button>
-<button class="dropdown button large ">Dropdown Button</button>
-<button class="dropdown button expanded ">Dropdown Button</button>
+<button class="dropdown button large">Dropdown Button</button>
+<button class="dropdown button expanded">Dropdown Button</button>
 ```
 
 ---

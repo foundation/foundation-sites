@@ -1,6 +1,6 @@
 {
   "name": "foundation-sites",
-  "version": "6.3.0",
+  "version": "6.3.1",
   "main": "dist/js/foundation.js",
   "typings": "dist/js/foundation.d.ts",
   "description": "The most advanced responsive front-end framework in the world.",
@@ -8,9 +8,13 @@
   "homepage": "http://foundation.zurb.com/sites",
   "scripts": {
     "start": "gulp",
-    "test": "npm run test:sass && npm run test:javascript",
+    "test": "npm run test:sass && npm run test:javascript:phantomjs",
+    "test:ci": "npm run test:sass && npm run test:javascript:ci",
     "test:sass": "mocha test/sass/test_sass.js",
-    "test:javascript": "gulp sass:foundation && gulp test:transpile-js && mocha-phantomjs --ignore-resource-errors test/javascript/index.html",
+    "test:javascript:transpile": "gulp sass:foundation && gulp test:transpile-js",
+    "test:javascript:phantomjs": "npm run test:javascript:transpile && mocha-phantomjs --ignore-resource-errors test/javascript/index.html",
+    "test:javascript:browserstack": "npm run test:javascript:transpile && browserstack-runner",
+    "test:javascript:ci": "npm run test:javascript:transpile && mocha-phantomjs --ignore-resource-errors test/javascript/index.html && browserstack-runner",
     "test:visual": "gulp test",
     "deploy": "gulp deploy",
     "deploy:prep": "gulp deploy:prep",
@@ -25,6 +29,7 @@
     "array-uniq": "^1.0.2",
     "autoprefixer": "^6.5.3",
     "babel-core": "^6.3.26",
+    "babel-loader": "^6.2.10",
     "babel-plugin-transform-es2015-arrow-functions": "^6.3.13",
     "babel-plugin-transform-es2015-block-scoped-functions": "^6.3.13",
     "babel-plugin-transform-es2015-block-scoping": "^6.4.0",
@@ -87,7 +92,10 @@
     "supercollider": "^1.4.0",
     "touch": "^1.0.0",
     "vinyl": "^2.0.1",
+    "vinyl-named": "^1.1.0",
     "vinyl-source-stream": "^1.1.0",
+    "webpack": "^2.2.0-rc.7",
+    "webpack-stream": "^3.2.0",
     "yargs": "^6.5.0"
   },
   "engines": {

@@ -110,6 +110,7 @@ Get to know the pieces of Foundation.
       <ul>
         <li><a href="motion-ui.html">Motion UI</a></li>
         <li><a href="panini.html">Panini</a></li>
+        <li><a href="style-sherpa.html">Style Sherpa</a></li>
       </ul>
     </section>
   </div>
@@ -167,6 +168,7 @@ Get to know the pieces of Foundation.
         <li><a href="equalizer.html">Equalizer</a></li>
         <li><a href="interchange.html">Interchange</a></li>
         <li><a href="toggler.html">Toggler</a></li>
+        <li><a href="smooth-scroll.html">Smooth Scroll</a></li>
         <li><a href="sticky.html">Sticky</a></li>
       </ul>
     </section>

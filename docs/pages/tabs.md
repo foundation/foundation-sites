@@ -7,12 +7,12 @@ js: js/foundation.tabs.js
 
 ## Basics
 
-There are two pieces to a tabbed interface: the tabs themselves, and the content for each tab. The tabs are an element with the class `.tabs`, and each item has the class `.tabs-title`. Each tab contains a link to a tab. The `href` of each link should match the ID of a tab.
+There are two pieces to a tabbed interface: the tabs themselves, and the content for each tab. The tabs are an element with the class `.tabs`, and each item has the class `.tabs-title`. Each tab contains a link to a tab. The `href` of each link should match the ID of a tab. Alternatively, the ID can be specified with the attribute `data-tabs-target`.
 
 ```html
 <ul class="tabs" data-tabs id="example-tabs">
   <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Tab 1</a></li>
-  <li class="tabs-title"><a href="#panel2">Tab 2</a></li>
+  <li class="tabs-title"><a data-tabs-target="#panel2" href="#/tabs/panel2">Tab 2</a></li>
 </ul>
 ```
 
@@ -44,10 +44,12 @@ Put it all together, and we get this:
   <div class="tabs-panel is-active" id="panel1">
     <p>one</p>
     <p>Check me out! I'm a super cool Tab panel with text content!</p>
+    <p><a href="#">I am a link but don't do anything</a></p>
   </div>
   <div class="tabs-panel" id="panel2">
     <p>two</p>
-    <img class="thumbnail" src="assets/img/generic/rectangle-7.jpg">
+    <textarea></textarea>
+    <button class="button">I do nothing!</button>
   </div>
   <div class="tabs-panel" id="panel3">
     <p>three</p>
@@ -89,9 +91,11 @@ Add the `.vertical` class to a tabstrip to stack tabs vertically. You can also p
     <div class="tabs-content vertical" data-tabs-content="example-vert-tabs">
       <div class="tabs-panel is-active" id="panel1v">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p><a href="#">I am a link but don't do anything</a></p>
       </div>
       <div class="tabs-panel" id="panel2v">
-        <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
+        <textarea></textarea>
+        <button class="button">I do nothing!</button>
       </div>
       <div class="tabs-panel" id="panel3v">
         <img class="thumbnail" src="assets/img/generic/rectangle-3.jpg">
@@ -157,7 +161,7 @@ Add the attribute `data-deep-link="true"` to a tabstrip to:
 - allow users to open a particular tab at page load with a hash-appended URL
 
 ```html_example
-<ul class="tabs" data-deep-link="true" data-tabs id="deeplinked-tabs">
+<ul class="tabs" data-deep-link="true" data-update-history="true" data-deep-link-smudge="true" data-deep-link-smudge="500" data-tabs id="deeplinked-tabs">
   <li class="tabs-title is-active"><a href="#panel1d" aria-selected="true">Tab 1</a></li>
   <li class="tabs-title"><a href="#panel2d">Tab 2</a></li>
   <li class="tabs-title"><a href="#panel3d">Tab 3</a></li>

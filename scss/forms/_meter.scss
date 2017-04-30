@@ -37,7 +37,13 @@ $meter-fill-bad: $alert-color !default;
     height: $meter-height;
     margin-bottom: 1rem;
 
-    appearance: none;
+    // Disable `-webkit-appearance: none` from getting prefixed,
+    // We have disabled autoprefixer first and are just only using 
+    // `-moz-appearance: none` as a prefix and neglecting the webkit.
+    
+    /*! autoprefixer: off */
+    -moz-appearance: none;
+         appearance: none;
 
     @if has-value($meter-radius) {
       border-radius: $meter-radius;
