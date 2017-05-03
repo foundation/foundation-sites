@@ -48,7 +48,7 @@ $legend-padding: rem-calc(0 3) !default;
     margin-bottom: $form-spacing * 0.5;
   }
 
-  .fieldset {
+  fieldset {
     @include fieldset;
   }
 }
