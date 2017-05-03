@@ -57,6 +57,11 @@ var Foundation = {
 
     this._uuids.push(plugin.uuid);
 
+    // To active plugins
+    if(this._activePlugins[pluginName] === undefined)
+      this._activePlugins[pluginName] = [];
+    this._activePlugins[pluginName].push(plugin);
+
     return;
   },
   /**
@@ -80,6 +85,13 @@ var Foundation = {
     for(var prop in plugin){
       plugin[prop] = null;//clean up script to prep for garbage collection.
     }
+
+    // Remove from active plugins
+    if(this._activePlugins[pluginName] !== undefined) {
+      var index = this._activePlugins[pluginName].indexOf(plugin);
+      this._activePlugins[pluginName].splice(index, 1);
+    }
+
     return;
   },
 
