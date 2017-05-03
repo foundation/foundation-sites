@@ -157,3 +157,12 @@ a#notice {
   }
 }
 
+.off-canvas {
+  z-index: 2;
+}
+
+.off-canvas-content {
+  height: 100vh;
+  overflow: hidden;
+}
+
