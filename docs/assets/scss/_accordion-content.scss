@@ -84,7 +84,11 @@
 }
 
 .accordion-content-item-thumbnail {
-  
+
+  img {
+    border: 1px solid $light-gray;
+  }
+
   @include breakpoint(small down) {
     margin-bottom: 1rem;
   }
@@ -98,7 +102,7 @@
 
   img {
     margin-right: 0.5rem;
-    
+
   }
 }
 
