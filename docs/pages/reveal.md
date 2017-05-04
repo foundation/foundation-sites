@@ -130,7 +130,7 @@ A full-screen modal is 100% of the width *and* height of the window. Add the `.f
 
 <div class="full reveal" id="exampleModal8" data-reveal>
   <p>OH I'M SO FUUUUL</p>
-  <img src="http://placekitten.com/1920/1280" alt="Intropsective Cage">
+  <img src="http://placekitten.com/1920/1280" alt="Introspective Cage">
   <button class="close-button" data-close aria-label="Close reveal" type="button">
     <span aria-hidden="true">&times;</span>
   </button>
