@@ -1,6 +1,7 @@
 ---
 title: Breadcrumbs
 description: Breadcrumbs come in handy to show a navigation trail for users clicking through your site.
+video: 'vQz-Kv5f_Ts'
 sass: scss/components/_breadcrumbs.scss
 ---
 

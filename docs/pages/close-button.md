@@ -1,6 +1,7 @@
 ---
 title: Close Button
 description: The humble close button can be used anywhere you need something to go away on click.
+video: '8CDk9lUAbUM'
 sass: scss/components/_close-button.scss
 ---
 

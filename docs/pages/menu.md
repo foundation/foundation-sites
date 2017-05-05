@@ -1,6 +1,7 @@
 ---
 title: Menu
 description: Our flexible menu component makes it easy to build many common navigation patterns, all with the same markup.
+video: 'CmMGPCd-fYc'
 sass: scss/components/_menu.scss
 tags:
   - navigation

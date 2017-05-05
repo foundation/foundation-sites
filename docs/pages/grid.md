@@ -1,6 +1,7 @@
 ---
 title: The Grid
 description: Create powerful multi-device layouts quickly and easily with the default 12-column, nestable Foundation grid. If you're familiar with grid systems, you'll feel right at home. If not, you'll learn quickly.
+video: k1zizfK2xbQ
 sass:
   - scss/grid/*.scss
   - '!scss/grid/_flex-grid.scss'

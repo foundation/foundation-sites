@@ -1,6 +1,7 @@
 ---
 title: Starter Projects
 description: We have a few starter project templates that can be installed with the Foundation CLI. You can also download them manually!
+video: 'lFrpnk0Oo_8'
 ---
 
 Our project templates give you a solid... *Foundation* on which to start a new project. Both templates use the [Gulp](http://gulpjs.com) build system to automate the process of compiling Sass, processing JavaScript, copying files, and more.

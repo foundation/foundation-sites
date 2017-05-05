@@ -1,6 +1,7 @@
 ---
 title: Base Typography
 description: Typography in Foundation 6 is meant to make your life easier by providing clean, attractive, simple default styles for all of the most basic typographical elements.
+video: pzAyIfsXis4
 sass:
   - scss/typography/_base.scss
   - scss/typography/_print.scss

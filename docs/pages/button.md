@@ -1,6 +1,7 @@
 ---
 title: Button
 description: Buttons are convenient tools when you need more traditional actions. To that end, Foundation has many easy to use button styles that you can customize or override to fit your needs.
+video: Qe8KHC2ZtMM
 sass: scss/components/_button.scss
 tags:
   - dropdown button

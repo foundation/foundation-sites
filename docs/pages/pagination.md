@@ -1,6 +1,7 @@
 ---
 title: Pagination
 description: Pagination is a type of navigation that lets users click through pages of search results, products, or other related items.
+video: 'zyk8c6-SpLU'
 sass: scss/components/_pagination.scss
 ---
 

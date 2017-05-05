@@ -1,6 +1,7 @@
 ---
 title: Typography Helpers
 description: Our helper classes allow you to scaffold certain typographic styles faster.
+video: dq7s3PVpQ7M
 sass:
   - scss/typography/_helpers.scss
   - scss/typography/_alignment.scss

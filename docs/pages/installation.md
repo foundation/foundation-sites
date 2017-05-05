@@ -4,19 +4,6 @@ description: There are many ways to install Foundation, but if you're just getti
 video: sKYsLkJ0yvQ
 ---
 
-## Installation
-
-{{#if video}}<div id="subpage-intro-video" class="subpage-intro-video">
-  <div class="docs-video-inner">
-    <span class="close-button" data-close-video>&times;</span>
-    <div class="responsive-embed widescreen">
-      <div id="main-video" data-video="{{video}}"></div>
-    </div>
-  </div>
-</div>{{/if}}
-
----
-
 ### Command-Line Tool
 
 Not a fan of GUIs? The Node-powered Foundation CLI can install the same template projects for you. Install it with npm:

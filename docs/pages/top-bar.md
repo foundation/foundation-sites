@@ -1,6 +1,7 @@
 ---
 title: Top Bar
 description: The new top bar is a simpler wrapper around our flexible menu components.
+video: cxPwwixHEJg
 sass: ./scss/components/_top-bar.scss
 flex: true
 ---

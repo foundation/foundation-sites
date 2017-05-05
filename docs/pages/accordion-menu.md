@@ -3,6 +3,7 @@ title: Accordion Menu
 sass: scss/components/_accordion-menu.scss
 js: js/foundation.accordionMenu.js
 description: Change a basic vertical Menu into a expandable accordion menu with the Accordion Menu plugin.
+video: yPGdaMRx60w
 ---
 
 ## Basics
