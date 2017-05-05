@@ -7,7 +7,7 @@
 ////
 $grid-container: 1200px !default;
 $grid-columns: 12 !default;
-$grid-type: padding !default;
+$grid-type: margin !default;
 $grid-gutters: (
   small: 20px,
   medium: 30px
@@ -214,7 +214,7 @@ $grid-debug: false !default;
 }
 
 // Final classes
-@mixin zf-grid-classes() {
+@mixin zf-grid-classes($vertical: true, $collapse: true) {
 
   // Grid Container
   .grid-container {
@@ -238,42 +238,52 @@ $grid-debug: false !default;
     }
   }
 
-  // Vertical grid.
-  .grid-vertical {
-    @include zf-grid(vertical, false);
+  // Vertical Grid Classes
+  @if ($vertical) {
+    // Vertical grid.
+    .grid-vertical {
+      @include zf-grid(vertical, false);
 
-    // Cells
-    .cell {
-      @include zf-cell($position: vertical);
-      #{$grid-type}-right: 0;
-      #{$grid-type}-left: 0;
-      max-width: 100%;
-    }
+      // Cells
+      .cell {
+        @include zf-cell($position: vertical);
+        #{$grid-type}-right: 0;
+        #{$grid-type}-left: 0;
+        max-width: 100%;
+      }
 
-    @include -zf-each-breakpoint {
-      @for $i from 1 through $grid-columns {
-        // Sizing (percentage)
-        .#{$-zf-size}-#{$i} {
-          @include zf-cell($i, $direction: vertical, $gutters: false);
+      @include -zf-each-breakpoint {
+        @for $i from 1 through $grid-columns {
+          // Sizing (percentage)
+          .#{$-zf-size}-#{$i} {
+            @include zf-cell($i, $direction: vertical, $gutters: false);
+          }
         }
       }
     }
-  }
 
-  // Collapse gutters.
-  .grid-collapse {
-    > .cell {
-      #{$grid-type}-right: 0;
-      #{$grid-type}-left: 0;
+    // Collapse gutters.
+    .grid-collapse {
+      @if ($grid-type == 'margin') {
+        margin-right: 0;
+        margin-left: 0;
+    
+        > .cell {
+          #{$grid-type}-right: 0;
+          #{$grid-type}-left: 0;
+        }
+      }
     }
-  }
 
-  
-  // Collapse vertical gutters.
-  .grid-vertical-collapse {
-    > .cell {
-      #{$grid-type}-top: 0;
-      #{$grid-type}-bottom: 0;
+    // Vertical collapse classes
+    @if ($vertical) {
+      // Collapse vertical gutters.
+      .grid-vertical-collapse {
+        > .cell {
+          #{$grid-type}-top: 0;
+          #{$grid-type}-bottom: 0;
+        }
+      }
     }
   }
 
@@ -292,19 +302,24 @@ $grid-debug: false !default;
   }
 
   @include -zf-each-breakpoint($small: false) {
-    // Responsive collapse classes
-    .#{$-zf-size}-grid-collapse {
-      > .cell {
-        #{$grid-type}-right: 0;
-        #{$grid-type}-left: 0;
+    @if ($collapse) {
+      // Responsive collapse classes
+      .#{$-zf-size}-grid-collapse {
+        > .cell {
+          #{$grid-type}-right: 0;
+          #{$grid-type}-left: 0;
+        }
       }
-    }
 
-    // Responsive vertical collapse classes
-    .#{$-zf-size}-grid-vertical-collapse {
-      > .cell {
-        #{$grid-type}-top: 0;
-        #{$grid-type}-bottom: 0;
+      // Vertical collapse classes
+      @if ($vertical) {
+        // Responsive vertical collapse classes
+        .#{$-zf-size}-grid-vertical-collapse {
+          > .cell {
+            #{$grid-type}-top: 0;
+            #{$grid-type}-bottom: 0;
+          }
+        }
       }
     }
 
