@@ -1,6 +1,7 @@
 ---
 title: JavaScript
 description: Our JavaScript is easy to set up and only requires jQuery to get going.
+video: 'Mf5ZZfKTe-I'
 ---
 
 ## Installing
