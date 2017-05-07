@@ -34,11 +34,9 @@
     font-size: 1.25rem;
     line-height: 1.5;
     padding-left: 0;
-    // margin-bottom: 1rem;
-    // border-bottom: 1px solid #e6e6e6;
     background: none;
     border: none;
-    border-bottom: 1px dashed #e6e6e6;
+    border-bottom: 1px dashed #d6d6d6;
     transition: all 0.3s ease;
   }
 
@@ -79,8 +77,14 @@
   }
 }
 
-.accordion-content-item-divider {
+.accordion-content-item {
+  font-family: "Proxima Nova", Helvetica, Arial, sans-serif;
+  margin-bottom: 2rem;
+}
+
+.docs-component .accordion-content-item-divider {
   border-bottom: 1px dashed #e5e5e5;
+  margin-bottom: 0;
 }
 
 .accordion-content-item-thumbnail {
@@ -94,19 +98,18 @@
   }
 }
 
-.accordion-content-item {
-  font-family: "Proxima Nova", Helvetica, Arial, sans-serif;
-}
-
 .accordion-content-item-cta {
 
   img {
     margin-right: 0.5rem;
-
   }
 }
 
 // Prevent FOUC on nav accordion
 .accordion-content.is-active {
   display: block;
+}
+
+.responsive-embed {
+  margin-bottom: 0;
 }
