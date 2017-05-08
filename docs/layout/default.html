@@ -30,9 +30,10 @@
     </div>
   </a> -->
 
-  <div class="off-canvas-wrapper"><div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
-
-    {{> off-canvi}}
+  <div class="off-canvas-wrapper">
+    <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+      {{> off-canvi}}
+    </div>
 
     <div class="docs-off-canvas-content off-canvas-content" data-off-canvas-content>
       <!-- Info Banner For Announcements or Links -->
@@ -41,16 +42,17 @@
           <h5>Foundation 6 is here!</h5>
         </div>
       </a> -->
-      <div class="docs-sticky-top-bar">
+ 
+      <div class="docs-sticky-top-bar"> 
         {{> navigation}}
         {{> mobile-navigation}}
         {{> search-bar}}
       </div>
-
-
+  
+  
       <div class="collapse expanded row">
         <div id="body-container" class="small-12 medium-9 large-10 medium-push-3 large-push-2 columns">
-<!-- do not indent -->
+  <!-- do not indent -->
 {{> body}}
         </div>
         <div class="medium-3 large-2 medium-pull-9 large-pull-10 hide-for-small-only columns" data-sticky-container>
@@ -59,10 +61,10 @@
           </div>
         </div>
       </div>
-
+  
       {{> footer}}
     </div>
-  </div></div>
+  </div>
 
   <script>
   var _gaq = _gaq || [];
