@@ -1,6 +1,5 @@
 var gulp = require('gulp');
 var opener = require('opener');
-var mocha = require('gulp-mocha');
 var browser = require('browser-sync');
 var concat = require('gulp-concat');
 var babel = require('gulp-babel');

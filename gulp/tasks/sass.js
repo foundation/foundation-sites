@@ -5,27 +5,32 @@ var gulp = require('gulp');
 var Parker = require('parker/lib/Parker');
 var prettyJSON = require('prettyjson');
 var sass = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
 var plumber = require('gulp-plumber');
 var sourcemaps = require('gulp-sourcemaps');
 var sassLint = require('gulp-sass-lint');
+var postcss = require('gulp-postcss');
+var autoprefixer = require('autoprefixer');
 
 var CONFIG = require('../config.js');
 
 // Compiles Sass files into CSS
 gulp.task('sass', ['sass:foundation', 'sass:docs']);
 
+// Prepare dependencies
+gulp.task('sass:deps', function() {
+  return gulp.src(CONFIG.SASS_DEPS_FILES)
+    .pipe(gulp.dest('_vendor'));
+});
+
 // Compiles Foundation Sass
-gulp.task('sass:foundation', function() {
+gulp.task('sass:foundation', ['sass:deps'], function() {
   return gulp.src(['assets/*'])
     .pipe(sourcemaps.init())
     .pipe(plumber())
-    .pipe(sass({
-      includePaths: CONFIG.SASS_DEPS_PATHS
-    }).on('error', sass.logError))
-    .pipe(autoprefixer({
+    .pipe(sass().on('error', sass.logError))
+    .pipe(postcss([autoprefixer({
       browsers: CONFIG.CSS_COMPATIBILITY
-    }))
+    })]))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('_build/assets/css'))
     .on('finish', function() {
@@ -38,15 +43,15 @@ gulp.task('sass:foundation', function() {
 });
 
 // Compiles docs Sass (includes Foundation code also)
-gulp.task('sass:docs', function() {
+gulp.task('sass:docs', ['sass:deps'], function() {
   return gulp.src('docs/assets/scss/docs.scss')
     .pipe(sourcemaps.init())
     .pipe(sass({
-      includePaths: CONFIG.SASS_DEPS_PATHS.concat(CONFIG.SASS_DOC_PATHS)
+      includePaths: CONFIG.SASS_DOC_PATHS
     }).on('error', sass.logError))
-    .pipe(autoprefixer({
+    .pipe(postcss([autoprefixer({
       browsers: CONFIG.CSS_COMPATIBILITY
-    }))
+    })]))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('_build/assets/css'));
 });

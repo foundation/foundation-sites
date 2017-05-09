@@ -21,7 +21,8 @@
   $uncollapse: 'uncollapse',
   $offset: 'offset',
   $end: 'end',
-  $expanded: 'expanded'
+  $expanded: 'expanded',
+  $block: 'block'
 ) {
   // Row
   .#{$row} {
@@ -54,11 +55,18 @@
       }
     }
 
-    // Static (unresponsive) row gutters
-    @each $breakpoint, $value in $grid-column-gutter {
-      &.#{$gutter}-#{$breakpoint} {
-        > .#{$column} {
-          @include grid-col-gutter($value);
+    &:not(.#{$expanded}) .#{$row} {
+      @include grid-row-size(expand);
+    }
+
+    @if type-of($grid-column-gutter) == 'map' {
+      // Static (unresponsive) row gutters
+      //
+      @each $breakpoint, $value in $grid-column-gutter {
+        &.#{$gutter}-#{$breakpoint} {
+          > .#{$column} {
+            @include grid-col-gutter($value);
+          }
         }
       }
     }
@@ -154,8 +162,13 @@
     }
   }
 
-  @if $column == 'column' {
-    .columns {
+  // Block grid columns
+  .#{$column}-#{$block} {
+    @include grid-column-margin;
+  }
+
+  @if $column == 'column' and has-value($grid-column-alias) {
+    .#{$grid-column-alias} {
       // sass-lint:disable-block placeholder-in-extend
       @extend .column;
     }

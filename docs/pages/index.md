@@ -8,9 +8,9 @@ tags:
 
 ## Installing
 
-There are a number of ways to install Foundation for Sites. If you're just getting started, we recommend downloading Yeti Launch, which allows you to quickly set up starter projects with any Foundation framework. You can also install our Node CLI to do the same thing.
+There are a number of ways to install Foundation for Sites. If you're just getting started, we recommend installing our Node CLI, which allows you to quickly set up starter projects with any Foundation framework.
 
-It's also possible to manually install Foundation for Sites into your project through npm, Bower, Meteor, or Composer.
+It's also possible to manually install Foundation for Sites into your project through npm, Bower, Meteor, NuGet or Composer.
 
 <a href="installation.html" class="large button">Install Foundation for Sites</a>
 
@@ -110,6 +110,7 @@ Get to know the pieces of Foundation.
       <ul>
         <li><a href="motion-ui.html">Motion UI</a></li>
         <li><a href="panini.html">Panini</a></li>
+        <li><a href="style-sherpa.html">Style Sherpa</a></li>
       </ul>
     </section>
   </div>
@@ -135,6 +136,7 @@ Get to know the pieces of Foundation.
       <ul>
         <li><a href="accordion.html">Accordion</a></li>
         <li><a href="callout.html">Callout</a></li>
+        <li><a href="card.html">Card</a></li>
         <li><a href="dropdown.html">Dropdown</a></li>
         <li><a href="media-object.html">Media Object</a></li>
         <li><a href="off-canvas.html">Off-canvas</a></li>
@@ -166,6 +168,7 @@ Get to know the pieces of Foundation.
         <li><a href="equalizer.html">Equalizer</a></li>
         <li><a href="interchange.html">Interchange</a></li>
         <li><a href="toggler.html">Toggler</a></li>
+        <li><a href="smooth-scroll.html">Smooth Scroll</a></li>
         <li><a href="sticky.html">Sticky</a></li>
       </ul>
     </section>

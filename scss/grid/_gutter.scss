@@ -6,24 +6,6 @@
 /// @group grid
 ////
 
-/// Get a gutter size for a given breakpoint
-/// @param {Keyword} $breakpoint [small] - Breakpoint name.
-/// @param {Number|Map} $gutters [$grid-column-gutter] - Gutter map or single value to use. Responsive gutter settings by default.
-///
-/// @returns {Number} Gutter size.
-@function grid-column-gutter(
-  $breakpoint: $-zf-zero-breakpoint,
-  $gutters: $grid-column-gutter
-) {
-  // If gutter is single value, return it
-  @if type-of($gutters) == 'number' {
-    @return $gutters;
-  }
-
-  // Else, return the corresponding responsive value
-  @return -zf-get-bp-val($gutters, $breakpoint);
-}
-
 /// Set the gutters on a column
 /// @param {Number|Keyword} $gutter [auto]
 ///   Spacing between columns, accepts multiple values:
@@ -35,22 +17,8 @@
   $gutter: auto,
   $gutters: $grid-column-gutter
 ) {
-  @if $gutter == auto and type-of($gutters) == 'map' {
-    // "auto"
-    @each $breakpoint, $value in $gutters {
-      @include breakpoint($breakpoint) {
-        @include grid-column-gutter($value);
-      }
-    }
-  }
-  @else {
-    // breakpoint name
-    @if type-of($gutter) == 'string' {
-      $gutter: grid-column-gutter($gutter, $gutters);
-    }
-
-    // single value
-    $padding: rem-calc($gutter) / 2;
+  @include -zf-breakpoint-value($gutter, $gutters) {
+    $padding: rem-calc($-zf-bp-value) / 2;
 
     padding-right: $padding;
     padding-left: $padding;
@@ -90,4 +58,25 @@
 @mixin grid-col-uncollapse($gutter: $grid-column-gutter) {
   @warn 'This mixin is being replaced by grid-col-gutter(). grid-col-uncollapse() will be removed in Foundation 6.4.';
   @include grid-column-uncollapse($gutter);
+}
+
+/// Sets bottom margin on grid columns to match gutters
+/// @param {Number|Keyword} $margin [auto]
+///   The bottom margin on grid columns, accepts multiple values:
+///   - A single value will make the margin that exact size.
+///   - A breakpoint name will make the margin the corresponding size in the $margins map.
+///   - "auto" will make the margin responsive, using the $margins map values.
+/// @param {Number|Map} $margins [$grid-column-gutter] - Map or single value to use. Responsive gutter settings by default.
+@mixin grid-column-margin (
+  $margin: auto,
+  $margins: $grid-column-gutter
+) {
+  @include -zf-breakpoint-value($margin, $margins) {
+    $margin-bottom: rem-calc($-zf-bp-value);
+    margin-bottom: $margin-bottom;
+
+    > :last-child {
+      margin-bottom: 0;
+    }
+  }
 }

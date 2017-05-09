@@ -1,26 +1,12 @@
 describe('Keyboard util', function() {
   /**
-   * Create object to use as fake event.
+   * Creates a dummy event to parse.
+   * Uses jQuery Event class constructor.
    * @param  {number} keyCode Key code of the key that is simulated.
    * @param  {object} opts    Options that say if modifiers are pressed.
-   * @return {object}         Object to use intead of an event.
+   * @return {Event}          Event to use.
    */
-  const createEvent = function(keyCode, opts) {
-    let options = opts || {},
-        isCtrl = !!options.ctrl,
-        isAlt = !!options.alt,
-        isShift = !!options.shift,
-        isMeta = !!options.meta,
-        event = {
-          shiftKey: isShift,
-          altKey: isAlt,
-          ctrlKey: isCtrl,
-          metaKey: isMeta,
-          keyCode: keyCode,
-          which: keyCode
-        };
-    return event;
-  };
+  const createEvent = window.mockKeyboardEvent;
   const keyCodes = {
     'A': 65,
     'TAB': 9,
@@ -184,6 +170,87 @@ describe('Keyboard util', function() {
       let $focusable = Foundation.Keyboard.findFocusable($html);
 
       $focusable.length.should.be.equal(0);
+
+      $html.remove();
+    });
+  });
+
+  describe('trapFocus()', function() {
+    it('moves the focus to the first focusable element', function() {
+      let $html = $(`<div>
+            <a href="#">Link1</a>
+            <a href="#">Link2</a>
+            <a href="#">Link3</a>
+          </div>`).appendTo('body');
+
+      Foundation.Keyboard.trapFocus($html);
+      $html.find('a').last().focus();
+
+      let event = createEvent(keyCodes['TAB']);
+      $(document.activeElement).trigger(event);
+
+      document.activeElement.should.be.equal($html.find('a').eq(0)[0]);
+
+      $html.remove();
+    });
+
+    it('moves the focus to the last focusable element', function() {
+      let $html = $(`<div>
+            <a href="#">Link1</a>
+            <a href="#">Link2</a>
+            <a href="#">Link3</a>
+          </div>`).appendTo('body');
+
+      Foundation.Keyboard.trapFocus($html);
+      $html.find('a').first().focus();
+
+      let event = createEvent(keyCodes['TAB'], {shift: true});
+      $(document.activeElement).trigger(event);
+
+      document.activeElement.should.be.equal($html.find('a').eq(2)[0]);
+
+      $html.remove();
+    });
+  });
+
+  describe('releaseFocus()', function() {
+    it('stops trapping the focus at the end', function() {
+      let $html = $(`<div>
+            <a href="#">Link1</a>
+            <a href="#">Link2</a>
+            <a href="#">Link3</a>
+          </div>`).appendTo('body');
+
+      Foundation.Keyboard.trapFocus($html);
+      $html.find('a').last().focus();
+
+      Foundation.Keyboard.releaseFocus($html);
+
+      let event = createEvent(keyCodes['TAB']);
+      $(document.activeElement).trigger(event);
+
+      document.activeElement.should.not.be.equal($html.find('a').eq(0)[0]);
+
+      $html.remove();
+    });
+
+    it('stops trapping the focus at the top', function() {
+      let $html = $(`<div>
+            <a href="#">Link1</a>
+            <a href="#">Link2</a>
+            <a href="#">Link3</a>
+          </div>`).appendTo('body');
+
+      Foundation.Keyboard.trapFocus($html);
+      $html.find('a').first().focus();
+
+      Foundation.Keyboard.releaseFocus($html);
+
+
+      let event = createEvent(createEvent(keyCodes['TAB'], {shift: true}));
+      $(document.activeElement).trigger(event);
+
+      document.activeElement.should.not.be.equal($html.find('a').eq(2)[0]);
 
       $html.remove();
     });

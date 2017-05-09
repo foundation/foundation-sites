@@ -4,7 +4,6 @@ var cssnano = require('gulp-cssnano');
 var rename = require('gulp-rename');
 var uglify = require('gulp-uglify');
 var confirm = require('gulp-prompt').confirm;
-var prompt = require('gulp-prompt').prompt;
 var rsync = require('gulp-rsync');
 var replace = require('gulp-replace');
 var octophant = require('octophant');
@@ -31,7 +30,8 @@ gulp.task('deploy:prompt', function(cb) {
     type: 'input',
     name: 'version',
     message: 'What version are we moving to? (Current version is ' + CURRENT_VERSION + ')'
-  }], function(res) {
+  }])
+  .then(function(res) {
     NEXT_VERSION = res.version;
     cb();
   });
@@ -46,9 +46,10 @@ gulp.task('deploy:version', function() {
 
 // Generates compiled CSS and JS files and puts them in the dist/ folder
 gulp.task('deploy:dist', ['sass:foundation', 'javascript:foundation'], function() {
-  var cssFilter = filter(['*.css'], { restore: true });
-  var jsFilter  = filter(['*.js'], { restore: true });
+  var cssFilter = filter(['**/*.css'], { restore: true });
+  var jsFilter  = filter(['**/*.js'], { restore: true });
 
+  console.log(CONFIG.DIST_FILES)
   return gulp.src(CONFIG.DIST_FILES)
     .pipe(plumber())
     .pipe(cssFilter)

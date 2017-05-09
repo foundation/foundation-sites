@@ -53,6 +53,11 @@ $accordion-content-padding: 1rem !default;
   margin-#{$global-left}: 0;
   background: $background;
   list-style-type: none;
+  &[disabled] {
+    .accordion-title {
+      cursor: not-allowed;
+    }
+  }
 }
 
 /// Adds styles for the accordion item. Apply this to the list item within an accordion ul.
@@ -105,7 +110,7 @@ $accordion-content-padding: 1rem !default;
     }
 
     .is-active > &::before {
-      content: '–';
+      content: '\2013';
     }
   }
 }

@@ -135,7 +135,7 @@ It's possible to use both the JavaScript slider and the native slider in the sam
 
 ## Non-linear value translation
 
-Sometimes not every value is of equal importance. In the example below, the slider focusses on the higher numbers by adding a `log`-type position value funtion.
+Sometimes not every value is of equal importance. In the example below, the slider focusses on the higher numbers by adding a `log`-type position value function.
 Alternatively there is also a `pow`-type position value function available, making the reverse possible.
 
 ```html_example
@@ -146,7 +146,6 @@ Alternatively there is also a `pow`-type position value function available, maki
 </div>
 <div class="small-2 columns">
   <input type="number" id="sliderOutputNonLinear">
-</div>
 </div>
 ```
 

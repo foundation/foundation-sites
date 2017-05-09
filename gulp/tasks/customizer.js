@@ -3,7 +3,7 @@ var babel = require('gulp-babel');
 var concat = require('gulp-concat');
 var cssnano = require('gulp-cssnano');
 var customizer = require('../../customizer/lib');
-var File = require('vinyl');
+var Vinyl = require('vinyl');
 var fs = require('fs');
 var gulp = require('gulp');
 var If = require('gulp-if');
@@ -13,15 +13,20 @@ var replace = require('gulp-replace');
 var rename = require('gulp-rename');
 var rimraf = require('rimraf');
 var sass = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
 var source = require('vinyl-source-stream');
 var touch = require('touch');
 var uglify = require('gulp-uglify');
 var yaml = require('js-yaml').safeLoad;
 var yargs = require('yargs');
 var zip = require('gulp-zip');
+var postcss = require('gulp-postcss');
+var autoprefixer = require('autoprefixer');
+var webpackStream = require('webpack-stream');
+var webpack2 = require('webpack');
+var named = require('vinyl-named');
 
-var ARGS = require('yargs').argv;
+
+var ARGS = yargs.argv;
 var FOUNDATION_VERSION = require('../../package.json').version;
 var OUTPUT_DIR = ARGS.output || 'custom-build';
 var COMPATIBILITY = [
@@ -32,6 +37,19 @@ var COMPATIBILITY = [
 var CUSTOMIZER_CONFIG;
 var MODULE_LIST;
 var VARIABLE_LIST;
+
+var WEBPACK_MODULE_CONFIG = {
+  rules: [
+    {
+      test: /.js$/,
+      use: [
+        {
+          loader: 'babel-loader'
+        }
+      ]
+    }
+  ]
+}
 
 // Load the configuration file for the customizer. It's a list of modules to load and Sass variables to override
 gulp.task('customizer:loadConfig', function(done) {
@@ -46,18 +64,25 @@ gulp.task('customizer:loadConfig', function(done) {
   });
 });
 
+// Prepare dependencies
+gulp.task('customizer:prepareSassDeps', function() {
+  return gulp.src([
+      'node_modules/@(normalize-scss)/sass/**/*.scss',
+      'node_modules/@(sassy-lists)/stylesheets/helpers/missing-dependencies',
+      'node_modules/@(sassy-lists)/stylesheets/helpers/true',
+      'node_modules/@(sassy-lists)/stylesheets/functions/purge',
+      'node_modules/@(sassy-lists)/stylesheets/functions/remove',
+      'node_modules/@(sassy-lists)/stylesheets/functions/replace',
+      'node_modules/@(sassy-lists)/stylesheets/functions/to-list'
+    ])
+    .pipe(gulp.dest('_vendor'));
+});
+
 // Creates a Sass file from the module/variable list and creates foundation.css and foundation.min.css
-gulp.task('customizer:sass', ['customizer:loadConfig'], function() {
+gulp.task('customizer:sass', ['customizer:loadConfig', 'customizer:prepareSassDeps'], function() {
   var sassFile = customizer.sass(CUSTOMIZER_CONFIG, MODULE_LIST, VARIABLE_LIST);
 
-  // Create a stream with our makeshift Sass file
-  var stream = new Readable({ objectMode: true });
-  stream._read = function() {};
-  stream.push(new File({
-    path: 'foundation.scss',
-    contents: new Buffer(sassFile)
-  }));
-  stream.push(null);
+  var stream = createStream('foundation.scss', sassFile);
 
   return stream
     .pipe(sass({
@@ -66,9 +91,9 @@ gulp.task('customizer:sass', ['customizer:loadConfig'], function() {
         'node_modules/motion-ui/src'
       ]
     }))
-    .pipe(autoprefixer({
+    .pipe(postcss([autoprefixer({
       browsers: COMPATIBILITY
-    }))
+    })]))
     .pipe(gulp.dest(path.join(OUTPUT_DIR, 'css')))
     .pipe(cssnano())
     .pipe(rename('foundation.min.css'))
@@ -76,18 +101,25 @@ gulp.task('customizer:sass', ['customizer:loadConfig'], function() {
 });
 
 // Creates a Foundation JavaScript file from the module list, and also copies dependencies (jQuery, what-input)
-gulp.task('customizer:javascript', ['customizer:loadConfig'], function() {
-  var jsPaths = customizer.js(CUSTOMIZER_CONFIG, MODULE_LIST);
+gulp.task('customizer:javascript-entry', ['customizer:loadConfig'], function() {
+  var entryFile = customizer.js(CUSTOMIZER_CONFIG, MODULE_LIST);
+  // Create a stream with our entry file
+  var stream = createStream('foundation.js', entryFile);
 
-  return gulp.src(jsPaths)
-    .pipe(babel())
-    .pipe(concat('foundation.js'))
+  return stream
+    .pipe(gulp.dest(path.join(OUTPUT_DIR, 'js/vendor')));
+});
+
+gulp.task('customizer:javascript', ['customizer:javascript-entry'], function() {
+  return gulp.src(path.join(OUTPUT_DIR, 'js/vendor/foundation.js'))
+    .pipe(webpackStream({externals: {jquery: 'jQuery'}, module: WEBPACK_MODULE_CONFIG}, webpack2))
+    .pipe(rename('foundation.js'))
     .pipe(gulp.dest(path.join(OUTPUT_DIR, 'js/vendor')))
     .pipe(uglify())
     .pipe(rename('foundation.min.js'))
     .pipe(addSrc([
       'node_modules/jquery/dist/jquery.js',
-      'node_modules/what-input/what-input.js'
+      'node_modules/what-input/dist/what-input.js'
     ]))
     .pipe(gulp.dest(path.join(OUTPUT_DIR, 'js/vendor')));
 });
@@ -121,4 +153,16 @@ gulp.task('customizer', ['customizer:sass', 'customizer:javascript', 'customizer
     .on('finish', function() {
       rimraf(OUTPUT_DIR, done);
     });
-});
+  });
+
+function createStream(name, content) {
+  // Create a stream with our entry file
+  var stream = new Readable({ objectMode: true });
+  stream._read = function() {};
+  stream.push(new Vinyl({
+    path: name,
+    contents: new Buffer(content)
+  }));
+  stream.push(null);
+  return stream;
+}

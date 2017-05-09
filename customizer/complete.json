@@ -10,6 +10,7 @@
     "badge",
     "breadcrumbs",
     "button_group",
+    "card",
     "callout",
     "close_button",
     "menu",
@@ -41,6 +42,7 @@
     "tooltip",
     "top_bar",
     "visibility",
+    "responsive_accordion_tabs",
     "float"
   ]
 }

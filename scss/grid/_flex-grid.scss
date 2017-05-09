@@ -72,7 +72,7 @@
 /// Creates a column for a flex grid. By default, the column will stretch to the full width of its container, but this can be overridden with sizing classes, or by using the `unstack` class on the parent flex row.
 ///
 /// @param {Mixed} $columns [expand] - Width of the column. Refer to the `flex-grid-column()` function to see possible values.
-/// @param {Number} $gutter [$grid-column-gutter] - Space between columns, added as a left and right padding.
+/// @param {Number|Map} $gutters [$grid-column-gutter] - Map or single value for gutters width. See the `grid-column-gutter` mixin.
 @mixin flex-grid-column(
   $columns: expand,
   $gutters: $grid-column-gutter
@@ -86,7 +86,7 @@
   // fixes recent Chrome version not limiting child width
   // https://stackoverflow.com/questions/34934586/white-space-nowrap-and-flexbox-did-not-work-in-chrome
   @if $columns == expand {
-    min-width: initial;
+    min-width: 0;
   }
   // max-width fixes IE 10/11 not respecting the flex-basis property
   @if $columns != expand and $columns != shrink {
@@ -125,29 +125,6 @@
   }
 }
 
-/// Changes the source order of a flex grid column. Columns with lower numbers appear first in the layout.
-/// @param {Number} $order [0] - Order number to apply.
-@mixin flex-grid-order($order: 0) {
-  @warn 'This mixin is being replaced by flex-order(). flex-grid-order() will be removed in Foundation 6.3.';
-  @include flex-order($order);
-}
-
-/// Horizontally or vertically aligns the columns within a flex row. Apply this mixin to a flex row.
-///
-/// @param {Keyword} $x [null] - Horizontal alignment to use. Can be `left`, `right`, `center`, `justify`, or `spaced`. Or, set it to `null` (the default) to not set horizontal alignment.
-/// @param {Keyword} $y [null] - Vertical alignment to use. Can be `top`, `bottom`, `middle`, or `stretch`. Or, set it to `null` (the default) to not set vertical alignment.
-@mixin flex-grid-row-align($x: null, $y: null) {
-  @warn 'This mixin is being replaced by flex-align(). flex-grid-row-align() will be removed in Foundation 6.3.';
-  @include flex-align($x, $y);
-}
-
-/// Vertically align a single column within a flex row. Apply this mixin to a flex column.
-///
-/// @param {Keyword} $y [null] - Vertical alignment to use. Can be `top`, `bottom`, `middle`, or `stretch`. Or, set it to `null` (the default) to not set vertical alignment.
-@mixin flex-grid-column-align($y: null) {
-  @warn 'This mixin is being replaced by flex-align-self(). flex-grid-column-align() will be removed in Foundation 6.3.';
-  @include flex-align-self($y);
-}
 
 @mixin foundation-flex-grid {
   // Row
@@ -157,10 +134,24 @@
     // Nesting behavior
     & .row {
       @include flex-grid-row(nest, $base: false);
+
+      &.collapse {
+        margin-right: 0;
+        margin-left: 0;
+      }
     }
 
     // Expanded row
     &.expanded {
+      @include grid-row-size(expand); 
+      
+      .row {
+        margin-right: auto;
+        margin-left: auto;
+      }
+    }
+
+    &:not(.expanded) .row {
       @include grid-row-size(expand);
     }
 
@@ -187,7 +178,8 @@
   // Column row
   // The double .row class is needed to bump up the specificity
   .column.row.row {
-    display: flex;
+    float: none;
+    display: block;
   }
 
   // To properly nest a column row, padding and margin is removed
@@ -308,12 +300,9 @@
     max-width: 100%;
   }
 
-  // Vertical alignment using align-items and align-self
-  // Remove these in 6.3
-  @each $vdir, $prop in $-zf-flex-align {
-    .column.align-#{$vdir} {
-      @include flex-align-self($vdir);
-    }
+  // Block grid columns
+  .column-block {
+    @include grid-column-margin;
   }
 
   .columns {

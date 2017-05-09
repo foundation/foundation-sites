@@ -34,6 +34,10 @@ $accordionmenu-submenu-toggle-width: 40px !default;
 /// @type Number
 $accordionmenu-submenu-toggle-height: $accordionmenu-submenu-toggle-width !default;
 
+/// Sets accordion menu arrow size if arrow is used.
+/// @type Length
+$accordionmenu-arrow-size: 6px !default;
+
 @mixin foundation-accordion-menu {
   .accordion-menu {
     @if $accordionmenu-border {
@@ -112,19 +116,17 @@ $accordionmenu-submenu-toggle-height: $accordionmenu-submenu-toggle-width !defau
       position: relative;
 
       &::after {
-        @include css-triangle(6px, $accordionmenu-arrow-color, down);
+        @include css-triangle($accordionmenu-arrow-size, $accordionmenu-arrow-color, down);
 
         position: absolute;
-        top: 0;
+        top: 50%;
+        margin-top: -1 * ($accordionmenu-arrow-size / 2);
         #{$global-right}: 1rem;
-        bottom: 0;
-
-        margin: auto 0;
       }
     }
 
     .is-accordion-submenu-parent[aria-expanded='true'] > a::after {
-      transform: scaleY(-1);
+      transform: rotate(180deg);
       transform-origin: 50% 50%;
     }
   }

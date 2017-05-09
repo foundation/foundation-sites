@@ -1,6 +1,10 @@
 'use strict';
 
-!function($) {
+import $ from 'jquery';
+import { Motion } from './foundation.util.motion';
+import { Plugin } from './foundation.plugin';
+
+  // import "foundation.util.triggersjs";
 
 /**
  * Toggler module.
@@ -9,7 +13,7 @@
  * @requires foundation.util.triggers
  */
 
-class Toggler {
+class Toggler extends Plugin {
   /**
    * Creates a new instance of Toggler.
    * @class
@@ -17,15 +21,13 @@ class Toggler {
    * @param {Object} element - jQuery object to add the trigger to.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  constructor(element, options) {
+  _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, Toggler.defaults, element.data(), options);
     this.className = '';
 
     this._init();
     this._events();
-
-    Foundation.registerPlugin(this, 'Toggler');
   }
 
   /**
@@ -96,21 +98,24 @@ class Toggler {
     }
 
     this._updateARIA(isOn);
+    this.$element.find('[data-mutate]').trigger('mutateme.zf.trigger');
   }
 
   _toggleAnimate() {
     var _this = this;
 
     if (this.$element.is(':hidden')) {
-      Foundation.Motion.animateIn(this.$element, this.animationIn, function() {
+      Motion.animateIn(this.$element, this.animationIn, function() {
         _this._updateARIA(true);
         this.trigger('on.zf.toggler');
+        this.find('[data-mutate]').trigger('mutateme.zf.trigger');
       });
     }
     else {
-      Foundation.Motion.animateOut(this.$element, this.animationOut, function() {
+      Motion.animateOut(this.$element, this.animationOut, function() {
         _this._updateARIA(false);
         this.trigger('off.zf.toggler');
+        this.find('[data-mutate]').trigger('mutateme.zf.trigger');
       });
     }
   }
@@ -123,9 +128,8 @@ class Toggler {
    * Destroys the instance of Toggler on the element.
    * @function
    */
-  destroy() {
+  _destroy() {
     this.$element.off('.zf.toggler');
-    Foundation.unregisterPlugin(this);
   }
 }
 
@@ -133,12 +137,10 @@ Toggler.defaults = {
   /**
    * Tells the plugin if the element should animated when toggled.
    * @option
-   * @example false
+   * @type {boolean}
+   * @default false
    */
   animate: false
 };
 
-// Window exports
-Foundation.plugin(Toggler, 'Toggler');
-
-}(jQuery);
+export {Toggler};

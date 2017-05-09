@@ -6,6 +6,10 @@
 /// @group tooltip
 ////
 
+/// Default cursor of the defined term.
+/// @type Keyword
+$has-tip-cursor: help !default;
+
 /// Default font weight of the defined term.
 /// @type Keyword | Number
 $has-tip-font-weight: $global-weight-bold !default;
@@ -48,7 +52,7 @@ $tooltip-radius: $global-radius !default;
 
   border-bottom: $has-tip-border-bottom;
   font-weight: $has-tip-font-weight;
-  cursor: help;
+  cursor: $has-tip-cursor;
 }
 
 @mixin tooltip {

@@ -8,9 +8,9 @@ tags:
   - validation
 ---
 
-### Abide Demo
+## Abide Demo
 
-These input types create a text field: `text`, `date`, `datetime`, `datetime-local`, `email`, `month`, `number`, `password`, `search`, `tel`, `time`, `url`, and `week`.
+These input types create a text field: `text`, `date`, `datetime`, `datetime-local`, `email`, `month`, `number`, `password`, `search`, `tel`, `time`, `url` and `week`. Note the use of the novalidate attribute to disable any browser validation that could conflict with Abide.
 
 ```html_example
 <form data-abide novalidate>
@@ -26,12 +26,6 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
         </span>
       </label>
       <p class="help-text" id="exampleHelpText">Here's how you use this input field!</p>
-    </div>
-    <div class="small-12 columns">
-      <label>Nothing Required!
-        <input type="text" placeholder="Use me, or don't" aria-describedby="exampleHelpTex" data-abide-ignore>
-      </label>
-      <p class="help-text" id="exampleHelpTex">This input is ignored by Abide using `data-abide-ignore`</p>
     </div>
     <div class="small-12 columns">
       <label>Password Required
@@ -53,12 +47,18 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
     </div>
   </div>
   <div class="row">
-    <div class="medium-6 columns">
+    <div class="large-6 columns">
       <label>URL Pattern, not required, but throws error if it doesn't match the Regular Expression for a valid URL.
-        <input type="text" placeholder="http://foundation.zurb.com" pattern="url">
+      <input type="text" placeholder="http://foundation.zurb.com" pattern="url">
+    </div>
+    <div class="large-6 columns">
+      <label>Website Pattern, not required, but throws error if it doesn't match the Regular Expression for a valid URL or a Domain.
+        <input type="text" placeholder="http://zurb.com or zurb.com" pattern="website">
       </label>
     </div>
-    <div class="medium-6 columns">
+  </div>
+  <div class="row">
+    <div class="large-6 columns">
       <label>European Cars, Choose One, it can't be the blank option.
         <select id="select" required>
           <option value=""></option>
@@ -69,14 +69,14 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
         </select>
       </label>
     </div>
+    <fieldset class="large-6 columns">
+      <legend>Check these out</legend>
+      <input id="checkbox1" type="checkbox"><label for="checkbox1">Checkbox 1</label>
+      <input id="checkbox2" type="checkbox" required><label for="checkbox2">Checkbox 2</label>
+      <input id="checkbox3" type="checkbox"><label for="checkbox3">Checkbox 3</label>
+    </fieldset>
   </div>
   <div class="row">
-    <fieldset class="large-6 columns">
-      <legend>Choose Your Favorite, and this is required, so you have to pick one.</legend>
-      <input type="radio" name="pokemon" value="Red" id="pokemonRed"><label for="pokemonRed">Red</label>
-      <input type="radio" name="pokemon" value="Blue" id="pokemonBlue" required><label for="pokemonBlue">Blue</label>
-      <input type="radio" name="pokemon" value="Yellow" id="pokemonYellow"><label for="pokemonYellow">Yellow</label>
-    </fieldset>
     <fieldset class="large-6 columns">
       <legend>Choose Your Favorite - not required, you can leave this one blank.</legend>
       <input type="radio" name="pockets" value="Red" id="pocketsRed"><label for="pocketsRed">Red</label>
@@ -84,10 +84,10 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
       <input type="radio" name="pockets" value="Yellow" id="pocketsYellow"><label for="pocketsYellow">Yellow</label>
     </fieldset>
     <fieldset class="large-6 columns">
-      <legend>Check these out</legend>
-      <input id="checkbox1" type="checkbox"><label for="checkbox1">Checkbox 1</label>
-      <input id="checkbox2" type="checkbox" required><label for="checkbox2">Checkbox 2</label>
-      <input id="checkbox3" type="checkbox"><label for="checkbox3">Checkbox 3</label>
+      <legend>Choose Your Favorite, and this is required, so you have to pick one.</legend>
+      <input type="radio" name="pokemon" value="Red" id="pokemonRed"><label for="pokemonRed">Red</label>
+      <input type="radio" name="pokemon" value="Blue" id="pokemonBlue" required><label for="pokemonBlue">Blue</label>
+      <input type="radio" name="pokemon" value="Yellow" id="pokemonYellow"><label for="pokemonYellow">Yellow</label>
     </fieldset>
   </div>
   <div class="row">
@@ -120,6 +120,29 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
   Required Thing
   <textarea type="text" class="is-invalid-input"></textarea>
 </label>
+
+---
+
+### Form Errors
+
+Abide automatically detects Form Errors of an input by their class (`.form-error` by default, see the `formErrorSelector` option) when they are siblings of the input or inside the same parent.
+
+When the Form Errors cannot be placed next to its field, like in an Input Group, the relation can be declared with `[data-form-error-for]` attribute.
+
+```html_example
+<form data-abide novalidate>
+  <label>
+    Amount
+    <div class="input-group">
+      <span class="input-group-label">$</span>
+      <input class="input-group-field" id="exampleNumberInput" type="number" required pattern="number"/>
+    </div>
+    <span class="form-error" data-form-error-for="exampleNumberInput">Amount is required.</span>
+  </label>
+  <button class="button" type="submit" value="Submit">Submit</button>
+</form>
+```
+
 
 ## Initial State
 
@@ -156,6 +179,40 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
   </label>
 </form>
 ```
+
+## Ignored Inputs
+
+```html
+<form data-abide>
+    <div class="small-12 columns">
+      <label>Nothing Required!
+        <input type="text" placeholder="Use me, or don't" aria-describedby="exampleHelpTex" data-abide-ignore>
+      </label>
+      <p class="help-text" id="exampleHelpTex">This input is ignored by Abide using `data-abide-ignore`</p>
+    </div>
+    <div class="small-12 columns">
+      <label>Disabled!
+        <input type="text" placeholder="Disabled input" aria-describedby="exampleHelpTex" disabled>
+      </label>
+      <p class="help-text" id="exampleHelpTex">This input is ignored by Abide using `disabled`</p>
+    </div>
+    <div class="small-12 columns">
+      <label>Hidden!
+        <input type="hidden" placeholder="Hidden input" aria-describedby="exampleHelpTex" >
+      </label>
+      <p class="help-text" id="exampleHelpTex">This input is ignored by Abide using `type="hidden"`</p>
+    </div>
+  <div class="row">
+    <fieldset class="large-6 columns">
+      <button class="button" type="submit" value="Submit">Submit</button>
+    </fieldset>
+    <fieldset class="large-6 columns">
+      <button class="button" type="reset" value="Reset">Reset</button>
+    </fieldset>
+  </div>
+</form>
+```
+
 ## Event Listener
 Setup event listener after foundation is initialized (especially for formvalid/forminvalid). Easier to chain via document selector.
 * valid.zf.abide and invalid.zf.abide are field level events, triggered in validateInput function 
@@ -220,6 +277,8 @@ The following patterns and validators are already built in:
 `time`,
 `url`
 
+Apart from these standard patterns, we have a `website` pattern too which is basically a combo of both `domain` and `url` pattern and we recommend you to use this `website` pattern for validating websites.
+
 They are defined by regular expressions as you can see below. Note, that the patterns that relate to text such as `alpha` and `alpha_numeric` do not consider special characters from other languages. You need to add these special characters yourself to the regular expressions. For instance, for the German language you need to add:
 
 ```JS
@@ -260,7 +319,14 @@ month_day_year : /^(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.]\d{4}$/,
 day_month_year : /^(0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])[- \/.]\d{4}$/,
 
 // #FFF or #FFFFFF
-color : /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/
+color : /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/,
+
+// Domain || URL
+website: {
+  test: (text) => {
+    return Abide.defaults.patterns['domain'].test(text) || Abide.defaults.patterns['url'].test(text);
+  }
+}
 ```
 
 

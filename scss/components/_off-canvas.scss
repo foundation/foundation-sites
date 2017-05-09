@@ -22,10 +22,6 @@ $offcanvas-background: $light-gray !default;
 /// @type Shadow
 $offcanvas-shadow: 0 0 10px rgba($black, 0.7) !default;
 
-/// If `true`, an off-canvas panel will be fixed-position, and scroll with the screen. Otherwise it will be absolute positioned.
-/// @type Bool
-$offcanvas-fixed: false !default;
-
 /// Z-index of an off-canvas panel with the `push` transition.
 /// @type Number
 $offcanvas-push-zindex: 1 !default;
@@ -90,6 +86,14 @@ $maincontent-class: 'off-canvas-content' !default;
     &.is-closable {
       cursor: pointer;
     }
+
+    &.is-overlay-absolute {
+      position: absolute;
+    }
+    
+    &.is-overlay-fixed {
+      position: fixed;
+    }
   }
 }
 
@@ -103,7 +107,7 @@ $maincontent-class: 'off-canvas-content' !default;
 @mixin off-canvas-base(
   $background: $offcanvas-background,
   $transition: $offcanvas-transition-length $offcanvas-transition-timing,
-  $fixed: $offcanvas-fixed
+  $fixed: true
 ) {
   @include disable-mouse-outline;
 
@@ -261,6 +265,7 @@ $content: $maincontent-class
 ) {
   transform: none;
   z-index: $zindex;
+  transition: none;
 
   @if not $offcanvas-fixed-reveal {
     position: absolute;
@@ -284,9 +289,9 @@ $content: $maincontent-class
     @include off-canvas-base;
   }
 
-  // Off-canvas container with fixed position
-  .off-canvas-fixed {
-    @include off-canvas-base($fixed: true);
+  // Off-canvas container with absolute position
+  .off-canvas-absolute {
+    @include off-canvas-base($fixed: false);
   }
 
   // Off-canvas position classes

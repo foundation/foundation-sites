@@ -32,7 +32,7 @@ To create a modal, add the class `.reveal`, the attribute `data-reveal`, and a u
 You'll also need a way to open the modal. Add the attribute `data-open` to any element. The value of `data-open` should be the ID of the modal.
 
 ```html_example
-<p><a data-open="exampleModal1">Click me for a modal</a></p>
+<p><button class="button" data-open="exampleModal1">Click me for a modal</button></p>
 ```
 
 You'll also need a way to *close* the modal from inside. By default, modals will close if clicked outside of, or if the <kbd>esc</kbd> key is pressed. However, you'll generally also want to add your own click trigger. Add the attribute `data-close` to any element within the modal to add one.
@@ -64,7 +64,7 @@ The size of a modal can be changed with these sizing classes, which are added to
 </div>
 ```
 
-<p><a data-toggle="exampleModal5" aria-controls="exampleModal5">Click me for a tiny modal</a></p>
+<p><button class="button" data-toggle="exampleModal5" aria-controls="exampleModal5">Click me for a tiny modal</button></p>
 
 <div class="tiny reveal" id="exampleModal5" data-reveal>
   <p>OH I'M SO TIIINY</p>
@@ -73,7 +73,7 @@ The size of a modal can be changed with these sizing classes, which are added to
   </button>
 </div>
 
-<p><a data-toggle="exampleModal6">Click me for a small modal</a></p>
+<p><button class="button" data-toggle="exampleModal6">Click me for a small modal</button></p>
 
 <div class="small reveal" id="exampleModal6" data-reveal>
   <p>I may be small, but I've got a big heart!</p>
@@ -82,7 +82,7 @@ The size of a modal can be changed with these sizing classes, which are added to
   </button>
 </div>
 
-<p><a data-toggle="exampleModal7">Click me for a large modal</a></p>
+<p><button class="button" data-toggle="exampleModal7">Click me for a large modal</button></p>
 
 <div class="large reveal" id="exampleModal7" data-reveal>
   <p>I'm big, like bear!</p>
@@ -98,13 +98,13 @@ The size of a modal can be changed with these sizing classes, which are added to
 It's possible for modals to open other modals. Create a second modal with a unique ID, and then add a click trigger with `data-open` inside the first modal.
 
 ```html_example
-<p><a data-open="exampleModal2">Click me for a modal</a></p>
+<p><button class="button" data-open="exampleModal2">Click me for a modal</button></p>
 
 <!-- This is the first modal -->
 <div class="reveal" id="exampleModal2" data-reveal>
   <h1>Awesome!</h1>
   <p class="lead">I have another modal inside of me!</p>
-  <a class="button" data-open="exampleModal3">Click me for another modal!</a>
+  <button class="button" data-open="exampleModal3">Click me for another modal!</button>
   <button class="close-button" data-close aria-label="Close reveal" type="button">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -126,7 +126,7 @@ It's possible for modals to open other modals. Create a second modal with a uniq
 A full-screen modal is 100% of the width *and* height of the window. Add the `.full` class to make it go.
 
 ```html_example
-<p><a data-toggle="exampleModal8">Click me for a full-screen modal</a></p>
+<p><button class="button" data-toggle="exampleModal8">Click me for a full-screen modal</button></p>
 
 <div class="full reveal" id="exampleModal8" data-reveal>
   <p>OH I'M SO FUUUUL</p>
@@ -144,7 +144,7 @@ A full-screen modal is 100% of the width *and* height of the window. Add the `.f
 To remove the overlay, add the attribute `data-overlay="false"` to the modal.
 
 ```html_example
-<p><a data-toggle="exampleModal9">Click me for an overlay-lacking modal</a></p>
+<p><button class="button" data-toggle="exampleModal9">Click me for an overlay-lacking modal</button></p>
 
 <div class="reveal" id="exampleModal9" data-reveal data-overlay="false">
   <p>I feel so free!</p>
@@ -161,7 +161,7 @@ To remove the overlay, add the attribute `data-overlay="false"` to the modal.
 To use animations from the Motion UI library, include the <code>data-animation-in="someAnimationIn"</code> and <code>data-animation-out="someAnimationOut"</code> attributes.
 
 ```html_example
-<p><a data-toggle="animatedModal10">Click me for a modal</a></p>
+<p><button class="button" data-toggle="animatedModal10">Click me for a modal</button></p>
 
 <div class="reveal" id="animatedModal10" data-reveal data-close-on-click="true" data-animation-in="spin-in" data-animation-out="spin-out">
   <h1>Whoa, I'm dizzy!</h1>
@@ -195,7 +195,7 @@ $.ajax('/url')
 Modals by default are accessible through the use of various ARIA attributes.  To make a modal even more accessible, designate a label to the modal by adding `aria-labelledby="exampleModalHeader11"` to the container and `id="exampleModalHeader11"` to the elment you want to designate as the label.
 
 ```html_example
-<p><a data-open="exampleModal11">Click me for a modal</a></p>
+<p><button class="button" data-open="exampleModal11">Click me for a modal</button></p>
 
 <div class="reveal" id="exampleModal11" aria-labelledby="exampleModalHeader11" data-reveal>
   <h1 id="exampleModalHeader11">Label for the Modal!</h1>

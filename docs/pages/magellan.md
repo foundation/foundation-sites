@@ -7,8 +7,8 @@ tags:
 ---
 
 <div data-sticky-container>
-  <div class="sticky" id="sticky-magellan" style="width:100%;" data-sticky data-margin-top="0" data-margin-bottom="0" data-top-anchor="setup" data-btm-anchor="destroy:bottom">
-    <nav data-magellan class="sticky-mag" data-bar-offset="25">
+  <div class="sticky" id="sticky-magellan" style="width:100%;" data-sticky data-margin-top="0" data-margin-bottom="0" data-top-anchor="setup" data-btm-anchor="destroy:bottom" data-sticky-on="small">
+    <nav data-magellan class="sticky-mag" data-offset="25">
       <ul class="horizontal menu expanded">
         <li><a href="#setup">Setup</a></li>
         <li><a href="#sticky-navigation">Sticky Navigation</a></li>

@@ -3,6 +3,7 @@ module.exports = {
   // Javascript
   JS_FILES: [
   'js/foundation.core.js',
+  'js/foundation.util.core.js',
   'js/foundation.util.*.js',
   'js/*.js'
   ],
@@ -10,7 +11,7 @@ module.exports = {
   JS_DEPS: [
     'node_modules/jquery/dist/jquery.js',
     'node_modules/motion-ui/dist/motion-ui.js',
-    'node_modules/what-input/what-input.js'
+    'node_modules/what-input/dist/what-input.js'
   ],
 
   JS_DOCS: [
@@ -22,8 +23,14 @@ module.exports = {
   ],
 
   // Sass
-  SASS_DEPS_PATHS: [
-    'node_modules/normalize-scss/sass'
+  SASS_DEPS_FILES: [
+    'node_modules/@(normalize-scss)/sass/**/*.scss',
+    'node_modules/@(sassy-lists)/stylesheets/helpers/_missing-dependencies.scss',
+    'node_modules/@(sassy-lists)/stylesheets/helpers/_true.scss',
+    'node_modules/@(sassy-lists)/stylesheets/functions/_purge.scss',
+    'node_modules/@(sassy-lists)/stylesheets/functions/_remove.scss',
+    'node_modules/@(sassy-lists)/stylesheets/functions/_replace.scss',
+    'node_modules/@(sassy-lists)/stylesheets/functions/_to-list.scss'
   ],
 
   SASS_DOC_PATHS: [

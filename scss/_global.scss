@@ -102,16 +102,16 @@ $global-flexbox: false !default;
 $global-left: if($global-text-direction == rtl, right, left);
 $global-right: if($global-text-direction == rtl, left, right);
 
-// Internal variables used for colors
-$primary-color: map-get($foundation-palette, primary);
-$secondary-color: map-get($foundation-palette, secondary);
-$success-color: map-get($foundation-palette, success);
-$warning-color: map-get($foundation-palette, warning);
-$alert-color: map-get($foundation-palette, alert);
+/// Global tolerance for color pick contrast.
+/// @type Number
+$global-color-pick-contrast-tolerance: 0 !default;
 
-// Remove this in 6.3
-$-zf-menu-icon-imported: false;
-$-zf-flex-classes-imported: false;
+// Internal variables used for colors
+$primary-color: get-color(primary);
+$secondary-color: get-color(secondary);
+$success-color: get-color(success);
+$warning-color: get-color(warning);
+$alert-color: get-color(alert);
 
 @mixin foundation-global-styles {
   @include -zf-normalize;
@@ -171,6 +171,7 @@ $-zf-flex-classes-imported: false;
 
   // Make select elements are 100% width by default
   select {
+    box-sizing: border-box;
     width: 100%;
     border-radius: $global-radius;
   }
@@ -198,6 +199,20 @@ $-zf-flex-classes-imported: false;
     background: transparent;
 
     line-height: 1;
+  }
+
+  // Prevent text overflow on pre
+  pre {
+    overflow: auto;
+  }
+
+  // Make reset inherit font-family instead of settings sans-serif
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    font-family: inherit;
   }
 
   // Internal classes to show/hide elements in JavaScript

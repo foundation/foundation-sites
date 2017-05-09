@@ -1,13 +1,14 @@
 'use strict';
 
-!function($) {
+import $ from 'jquery';
+import { Plugin } from './foundation.plugin';
 
 /**
  * Abide module.
  * @module foundation.abide
  */
 
-class Abide {
+class Abide extends Plugin {
   /**
    * Creates a new instance of Abide.
    * @class
@@ -15,13 +16,11 @@ class Abide {
    * @param {Object} element - jQuery object to add the trigger to.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  constructor(element, options = {}) {
+  _setup(element, options = {}) {
     this.$element = element;
     this.options  = $.extend({}, Abide.defaults, this.$element.data(), options);
 
     this._init();
-
-    Foundation.registerPlugin(this, 'Abide');
   }
 
   /**
@@ -110,9 +109,11 @@ class Abide {
   }
 
   /**
-   * Based on $el, get the first element with selector in this order:
-   * 1. The element's direct sibling('s).
-   * 3. The element's parent's children.
+   * Get:
+   * - Based on $el, the first element(s) corresponding to `formErrorSelector` in this order:
+   *   1. The element's direct sibling('s).
+   *   2. The element's parent's children.
+   * - Element(s) with the attribute `[data-form-error-for]` set with the element's id.
    *
    * This allows for multiple form errors per input, though if none are found, no form errors will be shown.
    *
@@ -120,11 +121,14 @@ class Abide {
    * @returns {Object} jQuery object with the selector.
    */
   findFormError($el) {
+    var id = $el[0].id;
     var $error = $el.siblings(this.options.formErrorSelector);
 
     if (!$error.length) {
       $error = $el.parent().find(this.options.formErrorSelector);
     }
+
+    $error = $error.add(this.$element.find(`[data-form-error-for="${id}"]`));
 
     return $error;
   }
@@ -237,7 +241,8 @@ class Abide {
   }
 
   /**
-   * Goes through a form to find inputs and proceeds to validate them in ways specific to their type
+   * Goes through a form to find inputs and proceeds to validate them in ways specific to their type.
+   * Ignores inputs with data-abide-ignore, type="hidden" or disabled attributes set
    * @fires Abide#invalid
    * @fires Abide#valid
    * @param {Object} element - jQuery object to validate, should be an HTML input
@@ -250,8 +255,8 @@ class Abide {
         validator = $el.attr('data-validator'),
         equalTo = true;
 
-    // don't validate ignored inputs or hidden inputs
-    if ($el.is('[data-abide-ignore]') || $el.is('[type="hidden"]')) {
+    // don't validate ignored inputs or hidden inputs or disabled inputs
+    if ($el.is('[data-abide-ignore]') || $el.is('[type="hidden"]') || $el.is('[disabled]')) {
       return true;
     }
 
@@ -447,7 +452,7 @@ class Abide {
    * Destroys an instance of Abide.
    * Removes error styles and classes from elements, without resetting their values.
    */
-  destroy() {
+  _destroy() {
     var _this = this;
     this.$element
       .off('.abide')
@@ -459,8 +464,6 @@ class Abide {
       .each(function() {
         _this.removeErrorClasses($(this));
       });
-
-    Foundation.unregisterPlugin(this);
   }
 }
 
@@ -472,49 +475,56 @@ Abide.defaults = {
    * The default event to validate inputs. Checkboxes and radios validate immediately.
    * Remove or change this value for manual validation.
    * @option
-   * @example 'fieldChange'
+   * @type {?string}
+   * @default 'fieldChange'
    */
   validateOn: 'fieldChange',
 
   /**
    * Class to be applied to input labels on failed validation.
    * @option
-   * @example 'is-invalid-label'
+   * @type {string}
+   * @default 'is-invalid-label'
    */
   labelErrorClass: 'is-invalid-label',
 
   /**
    * Class to be applied to inputs on failed validation.
    * @option
-   * @example 'is-invalid-input'
+   * @type {string}
+   * @default 'is-invalid-input'
    */
   inputErrorClass: 'is-invalid-input',
 
   /**
    * Class selector to use to target Form Errors for show/hide.
    * @option
-   * @example '.form-error'
+   * @type {string}
+   * @default '.form-error'
    */
   formErrorSelector: '.form-error',
 
   /**
    * Class added to Form Errors on failed validation.
    * @option
-   * @example 'is-visible'
+   * @type {string}
+   * @default 'is-visible'
    */
   formErrorClass: 'is-visible',
 
   /**
    * Set to true to validate text inputs on any value change.
    * @option
-   * @example false
+   * @type {boolean}
+   * @default false
    */
   liveValidate: false,
 
   /**
    * Set to true to validate inputs on blur.
    * @option
-   * @example false
+   * @type {boolean}
+   * @default false
    */
   validateOnBlur: false,
 
@@ -547,7 +557,14 @@ Abide.defaults = {
     day_month_year : /^(0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])[- \/.]\d{4}$/,
 
     // #FFF or #FFFFFF
-    color : /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/
+    color : /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/,
+
+    // Domain || URL
+    website: {
+      test: (text) => {
+        return Abide.defaults.patterns['domain'].test(text) || Abide.defaults.patterns['url'].test(text);
+      }
+    }
   },
 
   /**
@@ -565,7 +582,4 @@ Abide.defaults = {
   }
 }
 
-// Window exports
-Foundation.plugin(Abide, 'Abide');
-
-}(jQuery);
+export {Abide};

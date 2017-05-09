@@ -1,0 +1,36 @@
+//
+// Variables
+//
+// You can override the default values by setting the variables in your Sass
+// before importing the normalize-scss library.
+
+// The font size set on the root html element.
+$base-font-size: 16px !default;
+
+// The base line height determines the basic unit of vertical rhythm.
+$base-line-height: 24px !default;
+
+// The length unit in which to output vertical rhythm values.
+// Supported values: px, em, rem.
+$base-unit: 'em' !default;
+
+// The default font family.
+$base-font-family: sans-serif !default;
+
+// The font sizes for h1-h6.
+$h1-font-size: 2    * $base-font-size !default;
+$h2-font-size: 1.5  * $base-font-size !default;
+$h3-font-size: 1.17 * $base-font-size !default;
+$h4-font-size: 1    * $base-font-size !default;
+$h5-font-size: 0.83 * $base-font-size !default;
+$h6-font-size: 0.67 * $base-font-size !default;
+
+// The amount lists and blockquotes are indented.
+$indent-amount: 40px !default;
+
+// The following variable controls whether normalize-scss will output
+// font-sizes, line-heights and block-level top/bottom margins that form a basic
+// vertical rhythm on the page, which differs from the original Normalize.css.
+// However, changing any of the variables above will cause
+// $normalize-vertical-rhythm to be automatically set to true.
+$normalize-vertical-rhythm: false !default;

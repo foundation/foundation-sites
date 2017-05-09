@@ -1,15 +1,19 @@
 'use strict';
 
-!function($) {
+import $ from 'jquery';
+import { MediaQuery } from './foundation.util.mediaQuery';
+import { onImagesLoaded } from './foundation.util.imageLoader';
+import { GetYoDigits } from './foundation.util.core';
+import { Plugin } from './foundation.plugin';
 
 /**
  * Equalizer module.
  * @module foundation.equalizer
  * @requires foundation.util.mediaQuery
- * @requires foundation.util.timerAndImageLoader if equalizer contains images
+ * @requires foundation.util.imageLoader if equalizer contains images
  */
 
-class Equalizer {
+class Equalizer extends Plugin {
   /**
    * Creates a new instance of Equalizer.
    * @class
@@ -17,13 +21,11 @@ class Equalizer {
    * @param {Object} element - jQuery object to add the trigger to.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  constructor(element, options){
+  _setup(element, options){
     this.$element = element;
     this.options  = $.extend({}, Equalizer.defaults, this.$element.data(), options);
 
     this._init();
-
-    Foundation.registerPlugin(this, 'Equalizer');
   }
 
   /**
@@ -35,8 +37,8 @@ class Equalizer {
     var $watched = this.$element.find(`[data-equalizer-watch="${eqId}"]`);
 
     this.$watched = $watched.length ? $watched : this.$element.find('[data-equalizer-watch]');
-    this.$element.attr('data-resize', (eqId || Foundation.GetYoDigits(6, 'eq')));
-	this.$element.attr('data-mutate', (eqId || Foundation.GetYoDigits(6, 'eq')));
+    this.$element.attr('data-resize', (eqId || GetYoDigits(6, 'eq')));
+	this.$element.attr('data-mutate', (eqId || GetYoDigits(6, 'eq')));
 
     this.hasNested = this.$element.find('[data-equalizer]').length > 0;
     this.isNested = this.$element.parentsUntil(document.body, '[data-equalizer]').length > 0;
@@ -56,7 +58,7 @@ class Equalizer {
     }
     if((tooSmall !== undefined && tooSmall === false) || tooSmall === undefined){
       if(imgs.length){
-        Foundation.onImagesLoaded(imgs, this._reflow.bind(this));
+        onImagesLoaded(imgs, this._reflow.bind(this));
       }else{
         this._reflow();
       }
@@ -113,7 +115,7 @@ class Equalizer {
    * @private
    */
   _checkMQ() {
-    var tooSmall = !Foundation.MediaQuery.is(this.options.equalizeOn);
+    var tooSmall = !MediaQuery.is(this.options.equalizeOn);
     if(tooSmall){
       if(this.isOn){
         this._pauseEvents();
@@ -236,8 +238,8 @@ class Equalizer {
    * Changes the CSS height property of each child in an Equalizer parent to match the tallest by row
    * @param {array} groups - An array of heights of children within Equalizer container grouped by row with element,height and max as last child
    * @fires Equalizer#preequalized
-   * @fires Equalizer#preequalizedRow
-   * @fires Equalizer#postequalizedRow
+   * @fires Equalizer#preequalizedrow
+   * @fires Equalizer#postequalizedrow
    * @fires Equalizer#postequalized
    */
   applyHeightByRow(groups) {
@@ -254,7 +256,7 @@ class Equalizer {
       }
       /**
         * Fires before the heights per row are applied
-        * @event Equalizer#preequalizedRow
+        * @event Equalizer#preequalizedrow
         */
       this.$element.trigger('preequalizedrow.zf.equalizer');
       for (var j = 0, lenJ = (groupsILength-1); j < lenJ ; j++) {
@@ -262,7 +264,7 @@ class Equalizer {
       }
       /**
         * Fires when the heights per row have been applied
-        * @event Equalizer#postequalizedRow
+        * @event Equalizer#postequalizedrow
         */
       this.$element.trigger('postequalizedrow.zf.equalizer');
     }
@@ -276,11 +278,9 @@ class Equalizer {
    * Destroys an instance of Equalizer.
    * @function
    */
-  destroy() {
+  _destroy() {
     this._pauseEvents();
     this.$watched.css('height', 'auto');
-
-    Foundation.unregisterPlugin(this);
   }
 }
 
@@ -291,24 +291,24 @@ Equalizer.defaults = {
   /**
    * Enable height equalization when stacked on smaller screens.
    * @option
-   * @example true
+   * @type {boolean}
+   * @default false
    */
   equalizeOnStack: false,
   /**
    * Enable height equalization row by row.
    * @option
-   * @example false
+   * @type {boolean}
+   * @default false
    */
   equalizeByRow: false,
   /**
    * String representing the minimum breakpoint size the plugin should equalize heights on.
    * @option
-   * @example 'medium'
+   * @type {string}
+   * @default ''
    */
   equalizeOn: ''
 };
 
-// Window exports
-Foundation.plugin(Equalizer, 'Equalizer');
-
-}(jQuery);
+export {Equalizer};

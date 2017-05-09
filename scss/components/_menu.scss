@@ -24,7 +24,7 @@ $menu-item-color-active: $white !default;
 
 /// Background color of an active menu item.
 /// @type Color
-$menu-item-background-active: map-get($foundation-palette, primary) !default;
+$menu-item-background-active: get-color(primary) !default;
 
 /// Spacing between an icon and text in a menu item.
 /// @type Number
@@ -91,6 +91,10 @@ $menu-border: $light-gray !default;
     width: 100%;
     table-layout: fixed;
   }
+
+  > li:first-child:last-child {
+    width: 100%;
+  }
 }
 
 /// Sets the direction of a Menu.
@@ -136,15 +140,32 @@ $menu-border: $light-gray !default;
 }
 
 /// Creates a simple Menu, which has no padding or hover state.
-@mixin menu-simple {
+/// @param {Keyword} $dir [$global-left] - Direction of the menu. Set to `null` to do not generate styles for direction.
+@mixin menu-simple($dir: $global-left) {
   li {
     display: inline-block;
-    margin-#{$global-right}: get-side($menu-item-padding, $global-right);
+    vertical-align: top;
     line-height: 1;
   }
 
   a {
     padding: 0;
+  }
+
+  @if $dir != null {
+    @include menu-simple-direction($dir);
+  }
+}
+
+/// Direction modifier for a simple Menu
+/// @param {Keyword} $dir [$global-left] - Direction of the menu
+@mixin menu-simple-direction($dir: $global-left) {
+  $no-margin-dir: $dir;
+  $margin-dir: direction-opposite($dir);
+
+  li {
+    margin-#{$no-margin-dir}: 0;
+    margin-#{$margin-dir}: get-side($menu-item-padding, $margin-dir);
   }
 }
 
@@ -237,30 +258,42 @@ $menu-border: $light-gray !default;
     @include menu-base;
     @include menu-icons;
 
-    // Orientation
-    @include menu-direction(horizontal);
+    // Default orientation: horizontal
+    &, &.horizontal {
+      @include menu-direction(horizontal);
+    }
 
+    // Even-width modifier for horizontal orientation
+    &.expanded {
+      @include menu-expand;
+    }
+
+    // Vertical orientation modifier
     &.vertical {
       @include menu-direction(vertical);
     }
 
-    @each $size in $breakpoint-classes {
-      @if $size != $-zf-zero-breakpoint {
-        @include breakpoint($size) {
-          &.#{$size}-horizontal {
-            @include menu-direction(horizontal);
-          }
+    @include -zf-each-breakpoint($small: false) {
+      &.#{$-zf-size}-horizontal {
+        @include menu-direction(horizontal);
+      }
 
-          &.#{$size}-vertical {
-            @include menu-direction(vertical);
-          }
-        }
+      &.#{$-zf-size}-expanded {
+        @include menu-expand;
+      }
+
+      &.#{$-zf-size}-vertical {
+        @include menu-direction(vertical);
       }
     }
 
     // Simple
     &.simple {
       @include menu-simple;
+
+      &.align-#{$global-right} {
+        @include menu-simple-direction($global-right);
+      }
     }
 
     // Align right
@@ -274,15 +307,6 @@ $menu-border: $light-gray !default;
         > li {
           float: $global-right;
         }
-      }
-    }
-
-    // Even-width
-    &.expanded {
-      @include menu-expand;
-
-      > li:first-child:last-child {
-        width: 100%;
       }
     }
 
@@ -335,7 +359,13 @@ $menu-border: $light-gray !default;
     text-align: center;
 
     > .menu {
-      display: inline-block;
+      @if $global-flexbox {
+        @include flex-align($x: center, $y: top);
+      }
+      @else {
+        display: inline-block;
+        vertical-align: top;
+      }
     }
   }
 
