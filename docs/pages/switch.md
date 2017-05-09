@@ -14,6 +14,10 @@ Give the `<input>` a unique ID and point the `<label>` to it with the `for` attr
   <p>Inside the switch label is screen reader-only text, which uses the <code>.show-for-sr</code> class to visually mask the text.</p>
 </div>
 
+<div class='primary callout'>
+  <p>Inspecting the value of the underlying input should be done by evaluating the <code>checked</code> property of said input.</p>
+</div>
+
 <div class="callout warning">
   <p>Make sure the HTML of the switch goes in the order you see above&mdash;<code>&lt;input&gt;</code>, then <code>&lt;label&gt;</code></p>
 </div>
