@@ -257,6 +257,12 @@
           @include flex-direction($prop);
         }
       }
+      
+      // flex container
+      .#{$-zf-size}-flex-container {
+        @include flex;
+      }
+
       // child helper classes
       .#{$-zf-size}-flex-child-auto {
         flex: 1 1 auto;
