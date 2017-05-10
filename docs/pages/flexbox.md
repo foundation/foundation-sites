@@ -1,6 +1,7 @@
 ---
 title: Flexbox
 description: For browsers with cutting-edge support, some of Foundation's key components can be converted to flexbox.
+video: 'KxafSdyTCIg'
 sass:
   - scss/components/_flex.scss
   - scss/util/_flex.scss
