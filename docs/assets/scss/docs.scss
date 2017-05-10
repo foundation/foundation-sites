@@ -157,3 +157,19 @@ a#notice {
   }
 }
 
+.codepen-logo-link {
+  position: relative;
+  bottom: -1rem;
+  display: flex;
+  justify-content: flex-end;
+
+  &.left {
+    justify-content: flex-start;
+    bottom: 0;
+  }
+
+  img {
+    max-width: 200px;
+    height: 32px;
+  }
+}
