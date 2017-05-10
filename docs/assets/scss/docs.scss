@@ -110,6 +110,10 @@ a#notice {
     background: $topbar-background;
   }
 }
+.docs-sticky-top-bar .title-bar {
+  padding-top: 9px;
+  padding-bottom: 9px;
+}
 
 .dropdown.menu a.button {
   background: $primary-color;
