@@ -20,7 +20,8 @@ $select-radius: $global-radius !default;
 
 @mixin form-select {
   $height: ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
-
+  
+  box-sizing: border-box;
   height: $height;
   margin: 0 0 $form-spacing;
   padding: ($form-spacing / 2);
