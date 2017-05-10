@@ -1,6 +1,7 @@
 ---
 title: Global Styles
 description: Our global CSS includes helpful resets to ensure consistent styling across browsers.
+video: 'nEgHk2wmMjU'
 sass: scss/_global.scss
 ---
 

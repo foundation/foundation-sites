@@ -115,7 +115,20 @@ gulp.task('deploy:docs', ['build'], function() {
       hostname: 'deployer@72.32.134.77',
       destination: '/home/deployer/sites/foundation-sites-6-docs'
     }));
+  });
+
+// Uploads the documentation to the live server in beta env
+gulp.task('deploy:beta', ['build'], function() {
+  return gulp.src('./_build/**')
+    .pipe(confirm('Make sure everything looks right before you deploy.'))
+    .pipe(rsync({
+      root: './_build',
+      hostname: 'deployer@72.32.134.77',
+      destination: '/home/deployer/sites/scalingsexiness/foundation-sites-6-docs'
+    }));
 });
+
+
 
 // This part of the deploy process hasn't been tested! It should be done manually for now
 gulp.task('deploy:templates', function(done) {

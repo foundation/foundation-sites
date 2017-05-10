@@ -1,6 +1,7 @@
 ---
 title: Off-canvas
 description: Off-canvas panels are positioned outside of the viewport and slide in when activated. Setting up an off-canvas layout in Foundation is super easy.
+video: 'RK_k__4Y4TU'
 sass:
   - scss/components/_off-canvas.scss
   - scss/components/_title-bar.scss
