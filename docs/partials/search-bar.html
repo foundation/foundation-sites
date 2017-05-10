@@ -5,6 +5,7 @@
   </div>
 
   <div class="small-6 columns show-for-small-only">
+    <span class="search-button" data-toggle="inline-search"></span>
     <a href="#" class="float-right small hollow button mobile-nav-button" data-open="navModal">Component List</a>
     <div class="reveal" id="navModal" data-reveal>
       {{> component-list}}
@@ -12,8 +13,11 @@
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
+    <div id="inline-search" class="inline-search" data-toggler="expanded">
+      <input type="text" class="docs-search" data-docs-search placeholder="Find a page, component, variable, mixin, function...">
+    </div>
   </div>
-  <div class="small-12 medium-5 large-7 columns">
+  <div class="small-12 medium-5 large-7 columns show-for-medium">
     <input type="text" class="docs-search" data-docs-search placeholder="Find a page, component, variable, mixin, function...">
   </div>
   <div class="medium-4 large-3 columns social-container hide-for-small-only">
