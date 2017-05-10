@@ -20,6 +20,8 @@ Start by adding an element with a class of `.row`. This will create a horizontal
   <p>Disabling the alias can reduce the Foundation CSS file size from 3 to 5%. It is recommended if the alias is not used.</p>
 </div>
 
+<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/ZKrdZz?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+
 ```html
 <div class="row">
   <div class="small-2 large-4 columns"><!-- ... --></div>
@@ -92,6 +94,8 @@ Start by adding an element with a class of `.row`. This will create a horizontal
 
 Small grids expand to large screens easier than large grids cram into small screens.
 
+<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/oWEKXw?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+
 ```html
 <div class="row">
   <div class="small-2 columns">2 <span class="hide-for-small-only">columns</span></div>
@@ -116,7 +120,13 @@ Small grids expand to large screens easier than large grids cram into small scre
 
 ### Medium Grid
 
-Medium sized screens will inherit styles from small, unless you specify a different layout using the medium grid classes. [<a data-open-video="705">Video</a>]
+Medium sized screens will inherit styles from small, unless you specify a different layout using the medium grid classes.
+
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="705"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/vmdoxj?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html
 <div class="row">
@@ -150,6 +160,8 @@ If you need a full-width column to use as a container, put the `.column` and `.r
   <p>Column rows can use sizing classes like <code>.small-8</code>, but only when used as a top-level container&mdash;not when nested inside another row.</p>
 </div>
 
+<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/ZKrgop?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+
 ```html
 <div class="column row">
   Row column
@@ -166,6 +178,8 @@ If you need a full-width column to use as a container, put the `.column` and `.r
 
 Normally, a row is always 1200 pixels wide. Make a row completely fluid by adding the `.expanded` class.
 
+<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/rmJXZy?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+
 ```html
 <div class="expanded row">
 </div>
@@ -176,6 +190,8 @@ Normally, a row is always 1200 pixels wide. Make a row completely fluid by addin
 ### Nesting
 
 You can nest the grids indefinitely, though at a certain point it will get absurd.
+
+<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/zwRgbE?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 
 ```html
 <div class="row">
@@ -214,6 +230,8 @@ You can nest the grids indefinitely, though at a certain point it will get absur
 ### Offsets
 
 Move blocks up to 11 columns to the right by using classes like `.large-offset-1` and `.small-offset-3`.
+
+<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/YVaKyg?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 
 ```html
 <div class="row">
@@ -256,6 +274,8 @@ Move blocks up to 11 columns to the right by using classes like `.large-offset-1
 ### Incomplete Rows
 
 In order to work around browsers' different rounding behaviors, Foundation will float the last column in a row to the right so the edge aligns. If your row doesn't have a count that adds up to 12 columns, you can tag the last column with a class of `.end` in order to override that behavior. Alternatively, you can set the `$grid-column-align-edge` variable to `false` to turn off this behavior entirely.
+
+<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/dWmbpa?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 
 ```html
 <div class="row">
@@ -321,6 +341,8 @@ The `.collapse` class lets you remove column gutters (padding).
 
 There are times when you won't want each media query to be collapsed or uncollapsed. In this case, use the media query size you want and collapse or uncollapse and add that to your row element. Example shows no gutter at small media size and then adds the gutter to columns at medium.
 
+<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/xdWKqa?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+
 ```html
 <div class="row medium-uncollapse large-collapse">
   <div class="small-6 columns">
@@ -357,6 +379,8 @@ There are times when you won't want each media query to be collapsed or uncollap
 
 Center your columns by adding a class of `.small-centered` to your column. Large will inherit small centering by default, but you can also center solely on large by applying a `.large-centered` class. To uncenter on large screens, use `.large-uncentered`.
 
+<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/zwWOpL?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+
 ```html
 <div class="row">
   <div class="small-3 small-centered columns">3 centered</div>
@@ -390,6 +414,8 @@ Center your columns by adding a class of `.small-centered` to your column. Large
 ### Source Ordering
 
 Using these source ordering classes, you can shift columns around between our breakpoints. This means if you place sub-navigation below main content on small displays, you have the option to position the sub-navigation on either the left or right of the page for large displays. Prefix push/pull with the size of the device you want to apply the styles to. `.medium-push-#`, `.large-push-#` is the syntax you'll use. Use the number 0 instead to reset a push/pull, such as `.medium-push-0` or `.large-pull-0`.
+
+<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/QvmLmv?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 
 ```html
 <div class="row">
@@ -440,6 +466,8 @@ Using these source ordering classes, you can shift columns around between our br
 ### Block Grids
 
 Block grids are a shorthand way to create equally-sized columns. Add a class of the format `.[size]-up-[n]` to change the number of columns within the row. By default, the max number of columns you can use with block grid are 8. Adding the `.column-block` class to columns will apply a bottom margin equal to the width of gutters.
+
+<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/eWMOjK?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 
 ```html_example
 <div class="row small-up-2 medium-up-3 large-up-4">

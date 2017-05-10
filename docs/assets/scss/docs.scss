@@ -173,3 +173,29 @@ a#notice {
     height: 32px;
   }
 }
+
+a[data-open-video] {
+  padding: 0.3rem 0;
+  transition: all 0.25s ease-in;
+
+  .video-icon {
+    margin-top: -4px;
+    margin-right: 4px;
+  }
+
+  &:hover {
+    .video-icon {
+      transform: scale(1.2);
+    }
+  }
+}
+
+.docs-video-codepen-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .codepen-logo-link {
+    bottom: -0.25rem;
+  }
+}
