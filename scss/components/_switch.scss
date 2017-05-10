@@ -14,6 +14,18 @@ $switch-background: $medium-gray !default;
 /// @type Color
 $switch-background-active: $primary-color !default;
 
+/// Background active color of a switch - semantic success
+/// @type Color
+$switch-background-active-success: $success-color !default;
+
+/// Background active color of a switch - semantic warning
+/// @type Color
+$switch-background-active-warning: $warning-color !default;
+
+/// Background active color of a switch - semantic alert
+/// @type Color
+$switch-background-active-alert: $alert-color !default;
+
 /// Height of a switch, with no class applied.
 /// @type Number
 $switch-height: 2rem !default;
@@ -126,6 +138,16 @@ $switch-paddle-transition: all 0.25s ease-out !default;
   // Change the visual style when the switch is active
   input:checked ~ & {
     background: $switch-background-active;
+
+    &.success {
+      background: $switch-background-active-success;
+    }
+    &.warning {
+      background: $switch-background-active-warning;
+    }
+    &.alert {
+      background: $switch-background-active-alert;
+    }
 
     &::after {
       #{$global-left}: $paddle-active-offest;
