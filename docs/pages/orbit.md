@@ -4,6 +4,7 @@ description: An image and content carousel with animation support and many custo
 sass: scss/components/_orbit.scss
 js: js/foundation.orbit.js
 mui: true
+video: l0bdHvBuylA
 tags:
   - slider
   - carousel
