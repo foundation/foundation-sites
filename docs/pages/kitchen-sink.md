@@ -9,8 +9,12 @@ description: Everything but.
 
 ```html_example
 <form data-abide novalidate>
-  <div data-abide-error class="alert callout" style="display: none;">
-    <p><i class="fi-alert"></i> There are some errors in your form.</p>
+  <div class="row">
+    <div class="columns">
+      <div data-abide-error class="alert callout" style="display: none;">
+        <p><i class="fi-alert"></i> There are some errors in your form.</p>
+      </div>
+    </div>
   </div>
   <div class="row">
     <div class="small-12 columns">
