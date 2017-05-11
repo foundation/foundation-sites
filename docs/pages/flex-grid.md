@@ -238,6 +238,12 @@ Your options for vertical alignment are `top`, `middle`, `bottom`, and `stretch`
 
 Applying a vertical alignment class to the flex row will affect every column directly inside it.
 
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="13:32"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/BRrYQy?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <div class="row align-middle">
   <div class="columns">I'm in the middle!</div>
@@ -254,10 +260,18 @@ Applying a vertical alignment class to the flex row will affect every column dir
 
 ---
 
+### Vertical Alignment of child columns (individually)
+
 Similar alignment classes can also be applied to individual columns, which use the format `.align-self-*` instead of `.align-*`.
 
 <div class="warning callout">
-  <p>In Foundation 6.2, we introduced the <code>.align-self-&ast;</code> classes, which replace the old method of using <code>.align-&ast;</code> classes on columns. The old classes will be removed completely in Foundation 6.3.</p>
+  <p>In Foundation 6.2, we introduced the <code>.align-self-&ast;</code> classes, which replace the old method of using <code>.align-&ast;</code> classes on columns. The old classes have been removed completely in Foundation 6.3.</p>
+</div>
+
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="13:32"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/pPLaPe?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -278,6 +292,8 @@ The `.collapse` class lets you remove column gutters (padding).
 There are times when you won't want each media query to be collapsed or uncollapsed. In this case, use the media query size you want and collapse or uncollapse and add that to your row element. Example shows no gutter at small media size and then adds the gutter to columns at medium.
 
 The `.is-collapse-child` class removes negative margins from nested row under collapsed parent.
+
+<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/pPLaWP?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 
 ```html
 <div class="row small-collapse medium-uncollapse">
@@ -314,6 +330,8 @@ The `.is-collapse-child` class removes negative margins from nested row under co
 ## Offsets
 
 Offsets work identically to the float grid, by applying `margin-left` to a column.
+
+<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/mmxXpb?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 
 ```html_example
 <div class="row">
