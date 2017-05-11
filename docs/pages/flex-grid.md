@@ -25,6 +25,10 @@ If you're using the CSS version of Foundation, you can generate a <a href="https
 
 If you're using the Sass version of Foundation, you can enable a framework-wide flexbox mode, and add exports for the flex grid and flexbox helper classes. [Learn more about enabling flexbox mode.](flexbox.html#enabling-flexbox-mode)
 
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="2:45"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</div>
+
 ```scss
 @import 'foundation';
 
@@ -48,7 +52,7 @@ If you're using the Sass version of Foundation, you can enable a framework-wide 
 The structure of the flex grid is identical to that of the float grid. Rows use the class `.row`, and columns use the class `.column` (or `.columns`). Basic percentage-based sizing can also be done using the same grid classes you're used to: `.small-6`, `.medium-12`, and so on.
 
 <div class="docs-video-codepen-container">
-  <a class="" data-open-video="13:32"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="6:09"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
   <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/dWmVax?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
@@ -71,7 +75,7 @@ The structure of the flex grid is identical to that of the float grid. Rows use 
 If no sizing class is added to the column, it will simply expand to fill the leftover space. We call this an *expand behavior*.
 
 <div class="docs-video-codepen-container">
-  <a class="" data-open-video="13:32"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="10:29"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
   <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/XREzBv?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
@@ -88,7 +92,7 @@ If no sizing class is added to the column, it will simply expand to fill the lef
 Multiple expanding columns will share the leftover space equally.
 
 <div class="docs-video-codepen-container">
-  <a class="" data-open-video="13:32"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="11:04"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
   <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/pPLdYY?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
@@ -106,7 +110,7 @@ Multiple expanding columns will share the leftover space equally.
 A column can also be made to *shrink*, by adding the `.shrink` class. This means it will only take up the horizontal space its contents need.
 
 <div class="docs-video-codepen-container">
-  <a class="" data-open-video="13:32"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="13:34"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
   <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/aWYVgd?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
@@ -361,7 +365,7 @@ We have a set of classes that make it easy to setup source ordering in your HTML
 <div class="docs-video-codepen-container">
   <a class="" data-open-video="27:19"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/aWYVgd?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/gWedmK?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -383,6 +387,12 @@ To define column widths at the row-level, instead of the individual column level
 
 <div class="primary callout">
   <p>A block grid row has the property <code>align-items: stretch</code> by default, meaning the columns in each row are equal height. To change this, change the <code>align-items</code> property of the row, or use one of the <a href="flexbox.html#vertical-alignment">vertical alignment flexbox classes</a>.</p>
+</div>
+
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="27:19"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/PmRdOy?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
