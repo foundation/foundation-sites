@@ -133,6 +133,8 @@ description: Everything but.
 
 ## Accordion Menu
 
+<a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/XREPVK" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+
 ```html_example
 <ul class="vertical menu" data-accordion-menu>
   <li>
