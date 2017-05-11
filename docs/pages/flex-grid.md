@@ -47,6 +47,12 @@ If you're using the Sass version of Foundation, you can enable a framework-wide 
 
 The structure of the flex grid is identical to that of the float grid. Rows use the class `.row`, and columns use the class `.column` (or `.columns`). Basic percentage-based sizing can also be done using the same grid classes you're used to: `.small-6`, `.medium-12`, and so on.
 
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="13:32"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/dWmVax?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <div class="row">
   <div class="small-6 columns">6 columns</div>
@@ -64,6 +70,12 @@ The structure of the flex grid is identical to that of the float grid. Rows use 
 
 If no sizing class is added to the column, it will simply expand to fill the leftover space. We call this an *expand behavior*.
 
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="13:32"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/XREzBv?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <div class="row">
   <div class="small-4 columns">4 columns</div>
@@ -74,6 +86,12 @@ If no sizing class is added to the column, it will simply expand to fill the lef
 ---
 
 Multiple expanding columns will share the leftover space equally.
+
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="13:32"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/pPLdYY?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <div class="row">
@@ -86,6 +104,12 @@ Multiple expanding columns will share the leftover space equally.
 ---
 
 A column can also be made to *shrink*, by adding the `.shrink` class. This means it will only take up the horizontal space its contents need.
+
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="13:32"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/aWYVgd?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <div class="row">
@@ -101,6 +125,8 @@ A column can also be made to *shrink*, by adding the `.shrink` class. This means
 Columns in a flex grid will not wrap if not given an explicit size&mdash;this is what allows the magical auto-sizing to work. To make columns stack on smaller screens, add the class `.small-12` manually.
 
 To switch back to the expand behavior from a percentage or shrink behavior, use the classes `.medium-expand` or `.large-expand`. In the below example, the columns stack on small screens, and become even-width on large screens.
+
+<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/vmRpBJ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 
 ```html_example
 <div class="row">
@@ -118,6 +144,8 @@ To switch back to the expand behavior from a percentage or shrink behavior, use 
 ### Automatic Stacking
 
 We have a few shorthand classes for the above behavior. Use the `.[size]-unstack` classes to stack all columns in the row by default, and then unstack them on a larger screen size, making each one equal-width.
+
+<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/xdWpER?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 
 ```html_example
 <div class="row medium-unstack">
@@ -139,6 +167,12 @@ Columns in a flex grid can be aligned across the horizontal or vertical axis of 
 ### Horizontal Alignment
 
 Columns can be aligned the same way you would align text in a paragraph. By default, all columns align to the left (or the right in RTL), but this can be overridden with by adding the `.align-[dir]` class to the flex row.
+
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="13:32"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/mmxpGz?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html
 <div class="row">
@@ -305,6 +339,12 @@ The CSS property is easy enough to remember.
 Columns within a row will be sorted by their `order` property. Lower numbers are placed first. If multiple columns have the same number, they're sorted in the order they appear in the HTML.
 
 We have a set of classes that make it easy to setup source ordering in your HTML. They also come in responsive flavors, allowing you to reorder a grid on different screen sizes.
+
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="27:19"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/aWYVgd?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <div class="row">

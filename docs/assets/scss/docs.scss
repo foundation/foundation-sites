@@ -188,6 +188,7 @@ a[data-open-video] {
   }
 
   &:hover {
+    transition: all 0.25s ease-in;
     .video-icon {
       transform: scale(1.2);
     }
