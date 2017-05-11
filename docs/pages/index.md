@@ -398,7 +398,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
     </div>
   </li>
   <li class="accordion-item welcome-accordion-item" data-accordion-item>
-    <a href="#" class="accordion-title">Advanced Foundation Training</a>
+    <a href="#" class="accordion-title">Advanced Lessons</a>
     <div class="accordion-content" data-tab-content>
 
       <div class="row accordion-content-item">
@@ -415,7 +415,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
       <div class="row accordion-content-item">
         <div class="medium-4 columns accordion-content-item-thumbnail">
           <div class="responsive-embed widescreen">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/P2rbx0sGPJo" frameborder="0" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/nEgHk2wmMjU" frameborder="0" allowfullscreen></iframe>
           </div>
         </div>
         <div class="medium-8 columns">
