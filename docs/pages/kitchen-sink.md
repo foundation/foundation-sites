@@ -5,6 +5,8 @@ description: Everything but.
 
 ## Abide
 
+<a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/qmoKbK" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+
 ```html_example
 <form data-abide novalidate>
   <div data-abide-error class="alert callout" style="display: none;">
@@ -64,19 +66,19 @@ description: Everything but.
     </div>
   </div>
   <div class="row">
-    <fieldset class="large-6 columns">
+    <fieldset class="medium-6 columns">
       <legend>Choose Your Favorite, and this is required, so you have to pick one.</legend>
       <input type="radio" name="pokemon" value="Red" id="pokemonRed"><label for="pokemonRed">Red</label>
       <input type="radio" name="pokemon" value="Blue" id="pokemonBlue" required><label for="pokemonBlue">Blue</label>
       <input type="radio" name="pokemon" value="Yellow" id="pokemonYellow"><label for="pokemonYellow">Yellow</label>
     </fieldset>
-    <fieldset class="large-6 columns">
+    <fieldset class="medium-6 columns">
       <legend>Choose Your Favorite - not required, you can leave this one blank.</legend>
       <input type="radio" name="pockets" value="Red" id="pocketsRed"><label for="pocketsRed">Red</label>
       <input type="radio" name="pockets" value="Blue" id="pocketsBlue"><label for="pocketsBlue">Blue</label>
       <input type="radio" name="pockets" value="Yellow" id="pocketsYellow"><label for="pocketsYellow">Yellow</label>
     </fieldset>
-    <fieldset class="large-6 columns">
+    <fieldset class="medium-6 columns">
       <legend>Check these out</legend>
       <input id="checkbox1" type="checkbox"><label for="checkbox1">Checkbox 1</label>
       <input id="checkbox2" type="checkbox" required><label for="checkbox2">Checkbox 2</label>
@@ -84,10 +86,10 @@ description: Everything but.
     </fieldset>
   </div>
   <div class="row">
-    <fieldset class="large-6 columns">
+    <fieldset class="medium-6 columns">
       <button class="button" type="submit" value="Submit">Submit</button>
     </fieldset>
-    <fieldset class="large-6 columns">
+    <fieldset class="medium-6 columns">
       <button class="button" type="reset" value="Reset">Reset</button>
     </fieldset>
   </div>
