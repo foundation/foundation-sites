@@ -51,7 +51,7 @@ $grid-debug: false !default;
     @return $size;
 }
 
-/// Create gutters for a cell/container. 
+/// Create gutters for a cell/container.
 ///
 /// @param {Number|Map} $gutters [$grid-gutters] - Map or single value for gutters size.
 /// @param {Keyword} $type [$grid-type] - The type of gutter to apply. Accepts either `padding` or `margin`.
@@ -64,7 +64,7 @@ $grid-debug: false !default;
   $negative: false
 ) {
   $format: if($negative, '-', '');
-  
+
   // If we have declared negative gutters, force type to `margin.
   $type: if($negative, 'margin', $type);
 
@@ -83,7 +83,7 @@ $grid-debug: false !default;
   @else {
     $gutter-output: $position;
   }
-  
+
   // Output our gutters.
   @if ($gutters == 'auto') {
     @include -zf-breakpoint-value($gutters, $grid-gutters) {
@@ -121,7 +121,7 @@ $grid-debug: false !default;
   margin: 0 auto;
 }
 
-/// Creates a container for your flex cells. 
+/// Creates a container for your flex cells.
 ///
 /// @param {Keyword} $direction [horizontal] - Either horizontal or vertical direction of cells within.
 /// @param {Boolean} $wrap [true] - If the cells within should wrap or not.
@@ -136,7 +136,7 @@ $grid-debug: false !default;
   flex-flow: $direction $wrap;
 }
 
-/// Creates a cell for your grid. 
+/// Creates a cell for your grid.
 ///
 /// @param {Keyword|Number} $size [full] - The size of your cell. Can be `full` (default) for 100% width, `auto` to use up available space and `shrink` to use up only required space.
 /// @param {Keyword} $direction [horizontal] - Either horizontal or vertical direction - used to apply gutters in the right place.
@@ -185,13 +185,13 @@ $grid-debug: false !default;
       }
     }
     @else {
-      flex: 0 0 $size;
+      flex: 0 0 zf-cell-size($size);
       max-#{$direction}: zf-cell-size($size);
     }
   }
 }
 
-/// Creates a cell for your grid. 
+/// Creates a cell for your grid.
 ///
 /// @param {Keyword|Number} $size [full] - The size of your cell. Can be `full` (default) for 100% width, `auto` to use up available space and `shrink` to use up only required space.
 /// @param {Number|Map} $gutters [$grid-gutters] - Map or single value for gutters size.
@@ -205,7 +205,7 @@ $grid-debug: false !default;
   $direction: horizontal
 ) {
   // Sizing
-  @include zf-cell-size($size: $size, $direction: $direction);
+  @include zf-cell-size($size: $size, $direction: $direction, $type: $type);
 
   // Gutters
   @if($gutters) {
@@ -213,164 +213,132 @@ $grid-debug: false !default;
   }
 }
 
+// Margin Grid classes
+@mixin zf-margin-grid-classes {
+  .margin-gutters {
+    @include zf-gutters($negative: true);
+
+    // Base cell styles
+    .cell {
+      @include zf-cell($type: margin);
+    }
+
+    // Auto width
+    @include -zf-each-breakpoint() {
+      .#{$-zf-size}-auto {
+        @include zf-cell-size(auto, $type: margin);
+      }
+    }
+
+    // Shrink
+    @include -zf-each-breakpoint() {
+      .#{$-zf-size}-shrink {
+        @include zf-cell-size(shrink, $type: margin);
+      }
+    }
+
+    // Sizing classes
+    @include -zf-each-breakpoint {
+      @for $i from 1 through $grid-columns {
+        // Sizing (percentage)
+        .#{$-zf-size}-#{$i} {
+          @include zf-cell-size($i, $type: margin);
+        }
+      }
+    }
+  }
+}
+
+// Padding Grid classes
+@mixin zf-padding-grid-classes {
+  .padding-gutters {
+
+    // Negative margin for nested grids
+    .padding-gutters {
+      @include zf-gutters($negative: true);
+    }
+
+    // Base cell styles
+    .cell {
+      @include zf-cell($type: padding);
+    }
+
+    // Auto width
+    @include -zf-each-breakpoint() {
+      .#{$-zf-size}-auto {
+        @include zf-cell-size(auto, $type: padding);
+      }
+    }
+
+    // Shrink
+    @include -zf-each-breakpoint() {
+      .#{$-zf-size}-shrink {
+        @include zf-cell-size(shrink, $type: padding);
+      }
+    }
+
+    // Sizing classes
+    @include -zf-each-breakpoint {
+      @for $i from 1 through $grid-columns {
+        // Sizing (percentage)
+        .#{$-zf-size}-#{$i} {
+          @include zf-cell-size($i, $type: padding);
+        }
+      }
+    }
+  }
+}
+
+// Collapse classes
+@mixin zf-collapse-grid-classes {
+  @include -zf-each-breakpoint {
+    .#{$-zf-size}-collapse {
+      margin-right: 0;
+      margin-left: 0;
+
+      > .cell {
+        margin: 0;
+        padding: 0;
+      }
+
+      @include -zf-each-breakpoint {
+        // Output new widths to not include gutters
+        @for $i from 1 through $grid-columns {
+          // Sizing (percentage)
+          & > .#{$-zf-size}-#{$i} {
+            @include zf-cell-size($i, $type: padding);
+          }
+        }
+      }
+    }
+  }
+}
+
 // Final classes
-@mixin zf-grid-classes($vertical: true, $collapse: true) {
+@mixin zf-grid-classes($margin-grid: true, $padding-grid: true, $collapse: true) {
 
   // Grid Container
   .grid-container {
     @include zf-grid-container;
   }
 
-  // Default Grid
+  // Base grid styles
   .grid {
     @include zf-grid;
-
-    // Negative margins for margin grid.
-    @if ($grid-type == 'margin') {
-      @include zf-gutters($negative: true);
-    }
-
-    // Negative nested margin for padding grid.
-    @if ($grid-type == 'padding') {
-      .grid {
-        @include zf-gutters($negative: true);
-      }
-    }
   }
 
-  // Vertical Grid Classes
-  @if ($vertical) {
-    // Vertical grid.
-    .grid-vertical {
-      @include zf-grid(vertical, false);
-
-      // Cells
-      .cell {
-        @include zf-cell($position: vertical);
-        #{$grid-type}-right: 0;
-        #{$grid-type}-left: 0;
-        max-width: 100%;
-      }
-
-      @include -zf-each-breakpoint {
-        @for $i from 1 through $grid-columns {
-          // Sizing (percentage)
-          .#{$-zf-size}-#{$i} {
-            @include zf-cell($i, $direction: vertical, $gutters: false);
-          }
-        }
-      }
-    }
-
-    // Collapse gutters.
-    .grid-collapse {
-      @if ($grid-type == 'margin') {
-        margin-right: 0;
-        margin-left: 0;
-    
-        > .cell {
-          #{$grid-type}-right: 0;
-          #{$grid-type}-left: 0;
-        }
-      }
-    }
-
-    // Vertical collapse classes
-    @if ($vertical) {
-      // Collapse vertical gutters.
-      .grid-vertical-collapse {
-        > .cell {
-          #{$grid-type}-top: 0;
-          #{$grid-type}-bottom: 0;
-        }
-      }
-    }
+  // Margin grid
+  @if($margin-grid) {
+    @include zf-margin-grid-classes();
   }
 
-  // Grid shrink classes
-  .grid-shrink {
-    > .cell {
-      @include zf-cell(shrink, false);
-    }
+  // Padding grid
+  @if($padding-grid) {
+    @include zf-padding-grid-classes();
   }
 
-  // Grid auto classes
-  .grid-auto {
-    > .cell {
-      @include zf-cell(auto, false);
-    }
-  }
-
-  @include -zf-each-breakpoint($small: false) {
-    @if ($collapse) {
-      // Responsive collapse classes
-      .#{$-zf-size}-grid-collapse {
-        > .cell {
-          #{$grid-type}-right: 0;
-          #{$grid-type}-left: 0;
-        }
-      }
-
-      // Vertical collapse classes
-      @if ($vertical) {
-        // Responsive vertical collapse classes
-        .#{$-zf-size}-grid-vertical-collapse {
-          > .cell {
-            #{$grid-type}-top: 0;
-            #{$grid-type}-bottom: 0;
-          }
-        }
-      }
-    }
-
-    // Responsive grid shrink classes
-    .#{$-zf-size}-grid-shrink {
-      > .cell {
-        @include zf-cell(shrink, false);
-      }
-    }
-
-    // Responsive grid auto classes
-    .#{$-zf-size}-grid-auto {
-      > .cell {
-        @include zf-cell(auto, false);
-      }
-    }
-  }
-
-  // Cells
-  .cell {
-    @include zf-cell;
-  }
-
-  // Shrink
-  .shrink {
-    @include zf-cell(shrink, false);
-  }
-
-  // Auto
-  .auto {
-    @include zf-cell(auto, false);
-  }
-
-  @include -zf-each-breakpoint($small: false) {
-    // Responsive shrink sizes
-    .#{$-zf-size}-shrink {
-      @include zf-cell(shrink, false);
-    }
-
-    // Responsive auto sizes
-    .#{$-zf-size}-auto {
-      @include zf-cell(auto, false);
-    }
-  }
-
-  @include -zf-each-breakpoint {
-    @for $i from 1 through $grid-columns {
-      // Sizing (percentage)
-      .#{$-zf-size}-#{$i} {
-        @include zf-cell($i, $gutters: false);
-      }
-    }
+  // Collapse gutters
+  @if($collapse) {
+    @include zf-collapse-grid-classes();
   }
 }
