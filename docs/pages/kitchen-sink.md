@@ -100,6 +100,7 @@ description: Everything but.
 
 ## Accordion
 
+<a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/WjzKqa" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 
 ```html_example
 <ul class="accordion" data-accordion>
