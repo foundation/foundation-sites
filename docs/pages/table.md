@@ -1,6 +1,7 @@
 ---
 title: Tables
 description: Okay, they're not the sexiest things ever, but tables get the job done (for tabular data, of course). They have responsive modifiers to help solve some of your layout issues based on your tables needs.
+video: '-Omv7c3Qg4s'
 sass: scss/components/_table.scss
 ---
 

@@ -1,6 +1,7 @@
 ---
 title: Right-to-Left Support
 description: Foundation can easily adapt its components to work with languages that read from right to left.
+video: 'TPz2Uzr4urE'
 ---
 
 ## HTML
