@@ -23,13 +23,19 @@ Give the `<input>` a unique ID and point the `<label>` to it with the `for` attr
   <p>Make sure the HTML of the switch goes in the order you see above&mdash;<code>&lt;input&gt;</code>, then <code>&lt;label&gt;</code></p>
 </div>
 
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="0:18"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/aWGpGg?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <div class="switch">
   <input class="switch-input" id="exampleSwitch" type="checkbox" name="exampleSwitch">
   <label class="switch-paddle" for="exampleSwitch">
     <span class="show-for-sr">Download Kittens</span>
   </label>
-</div> 
+</div>
 ```
 
 ---
@@ -37,6 +43,12 @@ Give the `<input>` a unique ID and point the `<label>` to it with the `for` attr
 ## Radio Switch
 
 You can also use `<input type="radio">` instead of `checkbox` to create a series of options.
+
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="1:48"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/GmdrYW?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <div class="switch">
@@ -52,7 +64,7 @@ You can also use `<input type="radio">` instead of `checkbox` to create a series
   <label class="switch-paddle" for="exampleRadioSwitch2">
     <span class="show-for-sr">Charmander</span>
   </label>
-</div> 
+</div>
 
 <div class="switch">
   <input class="switch-input" id="exampleRadioSwitch3" type="radio" name="testGroup">
@@ -67,6 +79,12 @@ You can also use `<input type="radio">` instead of `checkbox` to create a series
 
 Use the classes `.tiny`, `.small`, or `.large` to change the switch size.
 
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="2:08"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/mmLRgm?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <div class="switch tiny">
   <input class="switch-input" id="tinySwitch" type="checkbox" name="exampleSwitch">
@@ -80,14 +98,14 @@ Use the classes `.tiny`, `.small`, or `.large` to change the switch size.
   <label class="switch-paddle" for="smallSwitch">
     <span class="show-for-sr">Small Portions Only</span>
   </label>
-</div> 
+</div>
 
 <div class="switch large">
   <input class="switch-input" id="largeSwitch" type="checkbox" name="exampleSwitch">
   <label class="switch-paddle" for="largeSwitch">
     <span class="show-for-sr">Show Large Elephants</span>
   </label>
-</div> 
+</div>
 ```
 
 ---
@@ -104,6 +122,12 @@ Active/inactive text goes inside of the switch's `<label>`.
 
 <div class="primary callout">
   <p>Add <code>aria-hidden="true"</code> to these labels to prevent AT from reading them.</p>
+</div>
+
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="2:25"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/qmYRzb?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
