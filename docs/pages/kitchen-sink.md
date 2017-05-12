@@ -171,7 +171,10 @@ description: Everything but.
 
 ## Badge
 
+<a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/JNvKZj" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+
 ```html_example
+<span class="primary badge">1</span>
 <span class="secondary badge">2</span>
 <span class="success badge">3</span>
 <span class="alert badge">A</span>
