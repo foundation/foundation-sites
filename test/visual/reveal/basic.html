@@ -87,12 +87,31 @@
           <p><button class="button" data-close>Close modal</button></p>
         </div>
       </section>
+
+      <section>
+        <h2>Eventlistener for anchor</h2>
+        <p>When triggering the modal with the keyboard (space or enter) it should change content.</p>
+        <p><button class="button" data-open="exampleModal8" id="exampleAnchor18-1">Open modal</button></p>
+        <p><a href="#" data-open="exampleModal8" id="exampleAnchor18-2">Open modal</a></p>
+        <div class="reveal" id="exampleModal8" data-reveal>
+          <p>Something went wrong</p>
+          <p><button class="button" data-close>Close modal</button></p>
+        </div>
+      </section>
     </div>
 
     <script src="../assets/js/vendor.js"></script>
     <script src="../assets/js/foundation.js"></script>
     <script>
       $(document).foundation();
+    </script>
+    <script>
+      // Additional script related to "Eventlistener for anchor"
+      $('#exampleAnchor18-1, #exampleAnchor18-2').on('click', function() {
+        $('#exampleModal8 p').first().html('If you see this, everything works out.');
+      }).on('closed.zf.reveal', function() {
+        $('#exampleModal8 p').first().html('Something went wrong');
+      });
     </script>
   </body>
 </html>
