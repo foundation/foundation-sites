@@ -23,6 +23,12 @@ Creating a form in Foundation is designed to be easy but extremely flexible. For
 
 These input types create a text field: `text`, `date`, `datetime`, `datetime-local`, `email`, `month`, `number`, `password`, `search`, `tel`, `time`, `url`, and `week`.
 
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="0:38"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/wdmQrr?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <form>
   <div class="row">
@@ -46,6 +52,8 @@ These input types create a text field: `text`, `date`, `datetime`, `datetime-loc
 
 In most desktop browsers, `<input type="number">` elements will have up/down controls inside them, which increment and decrement the number inside the field. These are called *spin buttons*. You can disable them by setting the `$input-number-spinners` Sass variable to `false`.
 
+<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/WjzYJJ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+
 ```html_example
 <label>
   How many puppies?
@@ -59,6 +67,12 @@ In most desktop browsers, `<input type="number">` elements will have up/down con
 
 The `<textarea>` element creates a multi-line text input.
 
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="5:20"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/rmdQrg?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <label>
   What books did you read over summer break?
@@ -71,6 +85,12 @@ The `<textarea>` element creates a multi-line text input.
 #### Select Menus
 
 Use select menus to combine many choices into one menu.
+
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="7:27"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/XREyxv?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <label>Select Menu
@@ -104,6 +124,12 @@ Use groups of checkboxes when the user may select multiple choices from a list, 
 
 Wrap a group of checkboxes or radio buttons in a `<fieldset>` element, and give them a common label using the `<legend>` element. Each individual control should also have its own label, created using a typical `<label>`.
 
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="9:03"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/Omvadz?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <div class="row">
   <fieldset class="large-6 columns">
@@ -127,6 +153,12 @@ Wrap a group of checkboxes or radio buttons in a `<fieldset>` element, and give 
 
 To encourage their use as an accessibility tool, the `<fieldset>` element is no longer styled by default. Those styles are now contained in the `.fieldset` class.
 
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="9:03"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/XREyxv?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <fieldset class="fieldset">
   <legend>Check these out</legend>
@@ -138,9 +170,15 @@ To encourage their use as an accessibility tool, the `<fieldset>` element is no 
 
 ---
 
-## Help Text
+## Help Text (Accessibility)
 
-Place help text below a field to clarify its purpose. Whenever you use help text, give the text a unique ID, and add the attribute `aria-describedby` to the input.
+Place help text below a field to clarify its purpose. Whenever you use help text, give the text a unique ID, and add the attribute `aria-describedby` to the input. Doing so associates the helper text to the input. A screen reader then can read the helper text when the user focusses on the input.
+
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="11:19"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/wdmOqr?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <label>Password
@@ -157,6 +195,12 @@ Sometimes you want a form with labels to the left of your inputs. Piece of cake!
 
 <div class="warning callout">
   <p>In a <a href="rtl.html">right-to-left</a> environment, use <code>.float-left</code> instead.</p>
+</div>
+
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/eWMXex?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html
@@ -225,6 +269,12 @@ To attach extra text or controls to the left or right of an input field, wrap th
   <p>This component supports flexbox mode. <a href="flexbox.html">Learn how to enable flexbox mode</a>.</p>
 </div>
 
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="14:53"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/rmdRqg?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <div class="input-group">
   <span class="input-group-label">$</span>
@@ -241,6 +291,12 @@ To attach extra text or controls to the left or right of an input field, wrap th
 
 Use `<input type="file">` to create a file upload button. For security reasons, most browsers don't let you style file inputs. To work around that, we can style a form label as a button, and point it to the `<input>`. To properly mask the input, the `.show-for-sr` class is added.
 
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="17:45"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/NjYJZB?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <label for="exampleFileUpload" class="button">Upload File</label>
 <input type="file" id="exampleFileUpload" class="show-for-sr">
@@ -248,7 +304,7 @@ Use `<input type="file">` to create a file upload button. For security reasons, 
 
 ---
 
-## Custom Controls
+## Custom Controls (Accessibility)
 
 Custom form controls, like date pickers, range sliders, or switches need some extra attention to be made accessible. Our custom inputs, such as the range slider and switch, do most of this work for you.
 
