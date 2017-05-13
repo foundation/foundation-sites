@@ -17,6 +17,14 @@ Inside the container are three elements:
 - The fill (`.slider-fill`), which resizes dynamically based on where the handle is.
 - A hidden `<input>`, which is where the value of the slider is stored.
 
+The `data-initial-start=""` value is where along the slider the handle starts. The `data-end=""` is the maximum value for the slider. In the below example, starting at 50 of 200 means the slider handle will start at 25% of the total.
+
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="1:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/MmGpWR?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <div class="slider" data-slider data-initial-start="50" data-end="200">
   <span class="slider-handle"  data-slider-handle role="slider" tabindex="1"></span>
@@ -31,6 +39,12 @@ Inside the container are three elements:
 
 To get *vertical*, just add a `.vertical` class and `data-vertical="true"` the slider.
 
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="3:24"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/eWrvRm?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <div class="slider vertical" data-slider data-initial-start="25" data-end="200" data-vertical="true">
   <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
@@ -44,6 +58,8 @@ To get *vertical*, just add a `.vertical` class and `data-vertical="true"` the s
 ## Disabled
 
 Add the class `.disabled` to disable interaction with the slider.
+
+<a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/dWeRRy?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 
 ```html_example
 <div class="slider disabled" data-slider data-initial-start="78">
@@ -63,6 +79,12 @@ You can add IDs to the `<input>`s inside the sliders to make it easier to access
 
 Note that the first handle manipulates the first `<input>`, while the second handle manipulates the second `<input>`.
 
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="8:18"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/oWdwdX?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <div class="slider" data-slider data-initial-start="25" data-initial-end="75">
   <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
@@ -80,6 +102,12 @@ Note that the first handle manipulates the first `<input>`, while the second han
 Data binding allows you to connect the slider to an external `<input>` field. With data binding set up, dragging the handle will change the value inside the text field, and editing the number in the text field will move the slider in real-time.
 
 To set it all up, create an `<input>` with an ID and add `aria-controls="id"` to the slider handle, where `id` is the ID of the `<input>`.
+
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="4:56"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/dWeRRy?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <div class="small-10 columns">
@@ -114,6 +142,12 @@ Or with a step size:
 
 In Foundation 6.2, we introduced styles for `<input type="range">`, the native HTML element for range sliders. It's not supported in every browser, namely IE9 and some older mobile browsers. [View browser support for the range input type.](http://caniuse.com/#feat=input-range)
 
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="10:05"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/GmdEem?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <input type="range" min="1" max="100" step="1">
 ```
@@ -139,6 +173,8 @@ It's possible to use both the JavaScript slider and the native slider in the sam
 Sometimes not every value is of equal importance. In the example below, the slider focusses on the higher numbers by adding a `log`-type position value function.
 Alternatively there is also a `pow`-type position value function available, making the reverse possible.
 
+The nonLinearBase-option is optional and defaults to 5.
+
 ```html_example
 <div class="small-10 columns">
 <div class="slider" data-slider data-initial-start="50" data-step="1" data-position-value-function="log" data-non-linear-base="5">
@@ -149,8 +185,6 @@ Alternatively there is also a `pow`-type position value function available, maki
   <input type="number" id="sliderOutputNonLinear">
 </div>
 ```
-
-The nonLinearBase-option is optional and defaults to 5.
 
 ## Reflow
 
