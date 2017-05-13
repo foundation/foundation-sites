@@ -1,7 +1,9 @@
 'use strict';
 
-!function($) {
-
+import $ from 'jquery';
+import { GetYoDigits } from './foundation.util.core';
+import { MediaQuery } from './foundation.util.mediaQuery';
+import { Plugin } from './foundation.plugin';
 /**
  * Sticky module.
  * @module foundation.sticky
@@ -9,20 +11,18 @@
  * @requires foundation.util.mediaQuery
  */
 
-class Sticky {
+class Sticky extends Plugin {
   /**
    * Creates a new instance of a sticky thing.
    * @class
    * @param {jQuery} element - jQuery object to make sticky.
    * @param {Object} options - options object passed when creating the element programmatically.
    */
-  constructor(element, options) {
+  _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, Sticky.defaults, this.$element.data(), options);
 
     this._init();
-
-    Foundation.registerPlugin(this, 'Sticky');
   }
 
   /**
@@ -32,7 +32,7 @@ class Sticky {
    */
   _init() {
     var $parent = this.$element.parent('[data-sticky-container]'),
-        id = this.$element[0].id || Foundation.GetYoDigits(6, 'sticky'),
+        id = this.$element[0].id || GetYoDigits(6, 'sticky'),
         _this = this;
 
     if($parent.length){
@@ -296,7 +296,7 @@ class Sticky {
    * @private
    */
   _setSizes(cb) {
-    this.canStick = Foundation.MediaQuery.is(this.options.stickyOn);
+    this.canStick = MediaQuery.is(this.options.stickyOn);
     if (!this.canStick) {
       if (cb && typeof cb === 'function') { cb(); }
     }
@@ -379,7 +379,7 @@ class Sticky {
    * Removes event listeners, JS-added css properties and classes, and unwraps the $element if the JS added the $container.
    * @function
    */
-  destroy() {
+  _destroy() {
     this._removeSticky(true);
 
     this.$element.removeClass(`${this.options.stickyClass} is-anchored is-at-top`)
@@ -404,7 +404,6 @@ class Sticky {
                        height: ''
                      });
     }
-    Foundation.unregisterPlugin(this);
   }
 }
 
@@ -496,7 +495,4 @@ function emCalc(em) {
   return parseInt(window.getComputedStyle(document.body, null).fontSize, 10) * em;
 }
 
-// Window exports
-Foundation.plugin(Sticky, 'Sticky');
-
-}(jQuery);
+export {Sticky};

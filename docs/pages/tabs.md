@@ -44,10 +44,12 @@ Put it all together, and we get this:
   <div class="tabs-panel is-active" id="panel1">
     <p>one</p>
     <p>Check me out! I'm a super cool Tab panel with text content!</p>
+    <p><a href="#">I am a link but don't do anything</a></p>
   </div>
   <div class="tabs-panel" id="panel2">
     <p>two</p>
-    <img class="thumbnail" src="assets/img/generic/rectangle-7.jpg">
+    <textarea></textarea>
+    <button class="button">I do nothing!</button>
   </div>
   <div class="tabs-panel" id="panel3">
     <p>three</p>
@@ -89,9 +91,11 @@ Add the `.vertical` class to a tabstrip to stack tabs vertically. You can also p
     <div class="tabs-content vertical" data-tabs-content="example-vert-tabs">
       <div class="tabs-panel is-active" id="panel1v">
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p><a href="#">I am a link but don't do anything</a></p>
       </div>
       <div class="tabs-panel" id="panel2v">
-        <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
+        <textarea></textarea>
+        <button class="button">I do nothing!</button>
       </div>
       <div class="tabs-panel" id="panel3v">
         <img class="thumbnail" src="assets/img/generic/rectangle-3.jpg">

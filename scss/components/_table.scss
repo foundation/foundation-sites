@@ -192,6 +192,7 @@ $table-stack-breakpoint: medium !default;
   $stripe: $table-stripe,
   $nest: false
 ) {
+  border-collapse: collapse;
   width: 100%;
   margin-bottom: $global-margin;
   border-radius: $global-radius;
