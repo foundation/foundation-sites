@@ -1232,6 +1232,12 @@ description: Everything but.
 
 ## Tooltip
 
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/pPVOdm?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <p>The <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover='false' tabindex=1 title="Fancy word for a beetle.">scarabaeus</span> hung quite clear of any branches, and, if allowed to fall, would have fallen at our feet. Legrand immediately took the scythe, and cleared with it a circular space, three or four yards in diameter, just beneath the insect, and, having accomplished this, ordered Jupiter to let go the string and come down from the tree.</p>
 ```
