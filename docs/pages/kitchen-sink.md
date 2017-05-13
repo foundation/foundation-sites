@@ -1117,6 +1117,12 @@ description: Everything but.
 
 ## Tabs
 
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/qmYygE?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <ul class="tabs" data-tabs id="example-tabs">
   <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Tab 1</a></li>
@@ -1129,27 +1135,27 @@ description: Everything but.
 
 <div class="tabs-content" data-tabs-content="example-tabs">
   <div class="tabs-panel is-active" id="panel1">
-    <p>one</p>
+    <p>One</p>
     <p>Check me out! I'm a super cool Tab panel with text content!</p>
   </div>
   <div class="tabs-panel" id="panel2">
-    <p>two</p>
+    <p>Two</p>
     <img class="thumbnail" src="assets/img/generic/rectangle-7.jpg">
   </div>
   <div class="tabs-panel" id="panel3">
-    <p>three</p>
+    <p>Three</p>
     <p>Check me out! I'm a super cool Tab panel with text content!</p>
   </div>
   <div class="tabs-panel" id="panel4">
-    <p>four</p>
+    <p>Four</p>
     <img class="thumbnail" src="assets/img/generic/rectangle-2.jpg">
   </div>
   <div class="tabs-panel" id="panel5">
-    <p>five</p>
+    <p>Five</p>
     <p>Check me out! I'm a super cool Tab panel with text content!</p>
   </div>
   <div class="tabs-panel" id="panel6">
-    <p>six</p>
+    <p>Six</p>
     <img class="thumbnail" src="assets/img/generic/rectangle-8.jpg">
   </div>
 </div>
