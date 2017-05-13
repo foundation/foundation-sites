@@ -768,7 +768,6 @@ description: Everything but.
 
 ## Off-canvas
 
-```
 <body>
   <div class="off-canvas-wrapper">
     <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
@@ -784,7 +783,6 @@ description: Everything but.
     </div>
   </div>
 </body>
-```
 
 ```html_example
 <button type="button" class="button" data-toggle="offCanvasLeft">Open Menu</button>
