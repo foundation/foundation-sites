@@ -1215,10 +1215,10 @@ description: Everything but.
 <p><a data-toggle="menuBar">Expand!</a></p>
 
 <ul class="menu" id="menuBar" data-toggler=".expanded">
-  <li><a href="#0">One</a></li>
-  <li><a href="#0">Two</a></li>
-  <li><a href="#0">Three</a></li>
-  <li><a href="#0">Four</a></li>
+  <li><a href="#0"><i class="fi-list"></i> <span>One</span></a></li>
+  <li><a href="#0"><i class="fi-list"></i> <span>Two</span></a></li>
+  <li><a href="#0"><i class="fi-list"></i> <span>Three</span></a></li>
+  <li><a href="#0"><i class="fi-list"></i> <span>Four</span></a></li>
 </ul>
 ```
 
