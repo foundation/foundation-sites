@@ -120,16 +120,18 @@ Foundation.Move(durationInMS, $element, function(){
 ```
 When the animation is complete, your jQuery element will fire `finished.zf.animate`.
 
-## Timer & Images Loaded
-`js/foundation.util.timerAndImageLoader.js`
+## Timer
+`js/foundation.util.timer.js`
 
-Both functions are used by [Orbit](orbit.html), and can be useful elsewhere as well.
 ```js
 
 var timer = new Foundation.Timer($element, {duration: ms, infinite: bool}, callback);
 // includes: timer.start(), timer.pause(), timer.restart()
 ```
 Similar to `setInterval`, except you can pause and resume where you left off.
+
+## ImageLoader
+`js/foundation.util.imageLoader.js`
 
 ```js
 Foundation.onImagesLoaded($images, callback);

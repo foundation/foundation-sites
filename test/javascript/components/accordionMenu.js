@@ -45,7 +45,7 @@ describe('Accordion Menu', function() {
   });
   
   describe('up()', function() {
-    it('closes the targeted submenu', function() {
+    it('closes the targeted submenu', function(done) {
       $html = $(template).appendTo('body');
       plugin = new Foundation.AccordionMenu($html);
 
@@ -53,7 +53,10 @@ describe('Accordion Menu', function() {
       plugin.down($html.find('.is-accordion-submenu').eq(0));
       
       plugin.up($html.find('.is-accordion-submenu').eq(0));
-      $html.find('.is-accordion-submenu').eq(0).should.be.hidden;
+      setTimeout(() => {
+        $html.find('.is-accordion-submenu').eq(0).should.be.hidden;
+        done();
+      }, 1);
     });
 
     it('toggles attributes of title of the targeted container', function() {

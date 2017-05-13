@@ -4,7 +4,7 @@ description: Use the Markup of the Accordion or Tabs components to create Respon
 sass: 
   - scss/components/_accordion.scss
   - scss/components/_tabs.scss
-js: js/foundation.zf.responsiveAccordionTabs.js
+js: js/foundation.responsiveAccordionTabs.js
 tags:
   - tabcordion
 ---

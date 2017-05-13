@@ -1,19 +1,19 @@
 'use strict';
 
-!function($) {
+import $ from 'jquery';
+import { GetYoDigits } from './foundation.util.core';
+import { Plugin } from './foundation.plugin';
 
 /**
  * SmoothScroll module.
  * @module foundation.smooth-scroll
  */
-class SmoothScroll {
-    constructor(element, options) {
+class SmoothScroll extends Plugin {
+    _setup(element, options) {
         this.$element = element;
         this.options = $.extend({}, SmoothScroll.defaults, this.$element.data(), options);
 
         this._init();
-
-        Foundation.registerPlugin(this, 'SmoothScroll');
     }
 
     /**
@@ -21,7 +21,7 @@ class SmoothScroll {
      * @private
      */
     _init() {
-        var id = this.$element[0].id || Foundation.GetYoDigits(6, 'smooth-scroll');
+        var id = this.$element[0].id || GetYoDigits(6, 'smooth-scroll');
         var _this = this;
         this.$element.attr({
             'id': id
@@ -86,14 +86,6 @@ class SmoothScroll {
             }
         );
     }
-
-   /**
-    * Destroys an instance of SmoothScroll.
-    * @function
-    */
-    destory() {
-        Foundation.unregisterPlugin(this);
-    }
 }
 
 /**
@@ -131,6 +123,4 @@ SmoothScroll.defaults = {
   offset: 0
 }
 
-// Window exports
-Foundation.plugin(SmoothScroll, 'SmoothScroll');
-}(jQuery);
+export {SmoothScroll}
