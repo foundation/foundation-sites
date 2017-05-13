@@ -670,7 +670,14 @@ description: Everything but.
 
 ## Label
 
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/VbxMXq?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
+<span class="primary label">Primary Label</span>
 <span class="secondary label">Secondary Label</span>
 <span class="success label">Success Label</span>
 <span class="alert label">Alert Label</span>
