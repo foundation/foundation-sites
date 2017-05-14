@@ -121,8 +121,14 @@ Items can also be set to expand out and take up an even amount of space, with th
 
 Add the `.vertical` class to a Menu to switch its orientation.
 
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/YVLmBY?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
-<ul class="menu vertical">
+<ul class="vertical menu">
   <li><a href="#">One</a></li>
   <li><a href="#">Two</a></li>
   <li><a href="#">Three</a></li>
