@@ -33,7 +33,7 @@ Any `<a>` will behave like a standard link. However, any `<a>` paired with a nes
 </ul>
 ```
 
-<ul class="vertical menu" data-accordion-menu>
+<ul class="vertical menu" data-accordion-menu style="max-width: 250px">
   <li>
     <a href="#">Item 1</a>
     <ul class="menu vertical nested">

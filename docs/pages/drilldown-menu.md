@@ -31,7 +31,7 @@ Any `<a>` without a submenu will function like a normal link.
   <p>The drilldown menu takes on the height of the tallest menu in the hierarchy, so the menu doesn't change height as the user navigates it.</p>
 </div>
 
-<ul class="menu" data-drilldown style="width: 200px" id="m1">
+<ul class="menu" data-drilldown style="max-width: 250px" id="m1">
   <li>
     <a href="#">Item 1</a>
     <ul class="menu">
