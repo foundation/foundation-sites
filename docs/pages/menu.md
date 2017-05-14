@@ -65,7 +65,7 @@ By default, each item in the menu aligns to the left. They can also be aligned t
 To align items in the middle, add a wrapping element with the class `.menu-centered`.
 
 <div class="primary callout">
-  <p>If you're using <a href="flexbox.html">Flexbox mode</a>, you have the option of either using <code>.align-center</code> to the menu like this <a href="http://codepen.io/IamManchanda/pen/jyGjmV">codepen</a> or instead you can use the default wrapper class below.</p>
+  <p>If you're using <a href="flexbox.html">Flexbox mode</a>, you have the option of either using <code>.align-center</code> to the menu like this <a href="https://codepen.io/IamManchanda/pen/bWMXKQ?editors=1100">codepen</a> or instead you can use the default wrapper class below.</p>
 </div>
 
 ```html_example
