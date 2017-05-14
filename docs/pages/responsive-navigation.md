@@ -11,11 +11,18 @@ js:
 
 The Menu has some responsive CSS classes built in, which allow you to re-orient a menu on different screen sizes.
 
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/qmYKgJ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <ul class="vertical medium-horizontal menu">
-  <li><a href="#">Item 1</a></li>
-  <li><a href="#">Item 2</a></li>
-  <li><a href="#">Item 3</a></li>
+  <li><a href="#0"><i class="fi-list"></i> <span>One</span></a></li>
+  <li><a href="#0"><i class="fi-list"></i> <span>Two</span></a></li>
+  <li><a href="#0"><i class="fi-list"></i> <span>Three</span></a></li>
+  <li><a href="#0"><i class="fi-list"></i> <span>Four</span></a></li>
 </ul>
 ```
 
