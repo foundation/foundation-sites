@@ -34,6 +34,12 @@ With our responsive Menu plugin, you can apply a default pattern to a Menu, and 
 
 For example, a drilldown menu works well on mobile, but on larger screens, you may want to convert that same menu into a dropdown. Here's an example that does just that:
 
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/jmKPdM?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <ul class="vertical medium-horizontal menu" data-responsive-menu="drilldown medium-dropdown">
   <li>
