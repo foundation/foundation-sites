@@ -309,7 +309,9 @@ class Orbit extends Plugin {
   changeSlide(isLTR, chosenSlide, idx) {
     if (!this.$slides) {return; } // Don't freak out if we're in the middle of cleanup
     var $curSlide = this.$slides.filter('.is-active').eq(0);
-
+    
+    if (this.$element.is(':hidden')) { return false; } // do not changeSlide if the element is not visible because mui fisnish event will not be called leaving mui classes on in current and next slides
+    
     if (/mui/g.test($curSlide[0].className)) { return false; } //if the slide is currently animating, kick out of the function
 
     var $firstSlide = this.$slides.first(),
