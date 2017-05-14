@@ -1300,6 +1300,12 @@ description: Everything but.
 
 ## Visibility Classes
 
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/vmjqVG?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <p>You are on a small screen or larger.</p>
 <p class="show-for-medium">You are on a medium screen or larger.</p>
