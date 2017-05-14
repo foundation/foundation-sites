@@ -14,6 +14,12 @@ To create sub-menus, place a `<ul>` *next to* an `<a>`. Clicking that `<a>` will
 
 Any `<a>` without a submenu will function like a normal link.
 
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/JNZodd?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html
 <ul class="vertical menu" data-drilldown>
   <li>
@@ -81,7 +87,13 @@ Any `<a>` without a submenu will function like a normal link.
   <button class="button expanded" onclick="$('#m3').foundation('destroy');if($('#m3').data('autoHeight')){$('#m3').data('autoHeight',false);$(this).html('autoHeight is Off');}else{$('#m3').data('autoHeight',true);$(this).html('autoHeight is On');}new Foundation.Drilldown($('#m3'));return false;">autoHeight is On</button>
 </div>
 
-<ul class="menu" data-drilldown data-auto-height="true" data-animate-height="true" style="width: 200px" id="m3">
+```html 
+<ul class="menu" data-drilldown data-auto-height="true" data-animate-height="true">
+  <!--  -->
+</ul>
+```
+
+<ul class="menu" data-drilldown data-auto-height="true" data-animate-height="true" style="max-width: 250px" id="m3">
   <li>
     <a href="#">Item 1</a>
     <ul class="menu">
@@ -148,7 +160,13 @@ Any `<a>` without a submenu will function like a normal link.
 
 <div class="callout">Scroll to the top of the menu when selecting a submenu/navigating back using the menu back button. Can be useful with a longer menu to provide a better user experience.</div>
 
-<ul class="menu" data-drilldown data-scroll-top="true" style="width: 200px" id="m2">
+```html 
+<ul class="menu" data-drilldown data-scroll-top="true">
+  <!--  -->
+</ul>
+```
+
+<ul class="menu" data-drilldown data-scroll-top="true" style="max-width: 250px" id="m2">
   <li><a href="#">Item</a></li>
   <li><a href="#">Item</a></li>
   <li><a href="#">Item</a></li>
