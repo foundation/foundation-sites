@@ -172,7 +172,7 @@ Any `<a>` without a submenu will function like a normal link.
 </ul>
 ```
 
-<ul class="menu" data-drilldown data-scroll-top="true" style="max-width: 250px" id="m2">
+<ul class="menu" data-drilldown data-scroll-top="true" data-auto-height="true" data-animate-height="true" style="max-width: 250px" id="m2">
   <li><a href="#">Item</a></li>
   <li><a href="#">Item</a></li>
   <li><a href="#">Item</a></li>
