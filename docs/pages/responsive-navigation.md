@@ -35,7 +35,7 @@ With our responsive Menu plugin, you can apply a default pattern to a Menu, and 
 For example, a drilldown menu works well on mobile, but on larger screens, you may want to convert that same menu into a dropdown. Here's an example that does just that:
 
 ```html_example
-<ul class="vertical menu" data-responsive-menu="drilldown medium-dropdown" style="width: 300px;">
+<ul class="vertical medium-horizontal menu" data-responsive-menu="drilldown medium-dropdown">
   <li>
     <a href="#">Item 1</a>
     <ul class="vertical menu">
