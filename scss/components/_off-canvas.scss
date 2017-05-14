@@ -298,7 +298,7 @@ $maincontent-class: 'off-canvas-content' !default;
 
   // No transform on overlap transition
   @at-root .#{$maincontent-class}.has-transition-overlap[class*="is-open"] {
-    transform: none;
+    transform: translate(0, 0);
   }
 }
 
