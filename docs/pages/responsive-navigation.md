@@ -123,6 +123,12 @@ To use animations from the Motion UI library, include the <code>data-animation="
   <p>Scale your browser down to see the toggle happen.</p>
 </div>
 
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/KmepBg?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <div class="title-bar" data-responsive-toggle="example-animated-menu" data-hide-for="medium">
   <button class="menu-icon" type="button" data-toggle></button>
