@@ -192,6 +192,12 @@ Add a new menu inside the `<li>` of a Menu and add the class `.nested` to create
 
 Add the class `.active` to any `<li>` to create an active state. You could apply this server-side to mark the active page, or dynamically with JavaScript.
 
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/XRYrKp?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <ul class="menu">
   <li class="active"><a>Home</a></li>
