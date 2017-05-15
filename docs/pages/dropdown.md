@@ -16,6 +16,15 @@ To create a dropdown pane, add the class `.dropdown-pane` and the attribute `dat
 
 To create the dropdown trigger, add `data-toggle` to a `<button>`. The value of `data-toggle` is the ID of the dropdown.
 
+<p>
+  <a class="" data-open-video="0:39"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/NjzByp?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
+
 ```html_example
 <button class="button" type="button" data-toggle="example-dropdown">Toggle Dropdown</button>
 <div class="dropdown-pane" id="example-dropdown" data-dropdown data-auto-focus="true">
