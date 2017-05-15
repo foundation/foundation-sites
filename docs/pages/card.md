@@ -15,6 +15,12 @@ Make sure you wrap your content in a `.card-section` element in order to achieve
 
 A card container has no padding, allowing you to place full-bleed images inside. Use the `.card-divider` and `.card-section` classes to sub-divide a card.
 
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="0:32"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/PmabmL?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <div class="card" style="width: 300px;">
   <div class="card-divider">
@@ -34,6 +40,12 @@ A card container has no padding, allowing you to place full-bleed images inside.
 
 You can also include a `.card-divider` element as a title, footer or to break up content.
 
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="1:30"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/PmabmL?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <div class="card" style="width: 300px;">
   <div class="card-divider">
@@ -51,6 +63,12 @@ You can also include a `.card-divider` element as a title, footer or to break up
 ### Images
 
 Images play nicely with cards. Simply include one outside of the `.card-section` element to span nicely to the edges. Or move the image inside the `.card-section` to have padding around the image.
+
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="2:12"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/PmabmL?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html
 <!-- image has no padding -->
@@ -118,6 +136,12 @@ Images play nicely with cards. Simply include one outside of the `.card-section`
 ## Sizing
 
 You can either set the width of cards with custom css or add them into the Foundation grid.
+
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="0:34"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/PmabmL?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <div class="row small-up-2 medium-up-3">
