@@ -58,6 +58,14 @@ To create the dropdown trigger, add `data-toggle` to a `<button>`. The value of 
 
 By default, a dropdown anchors below the button that opened it. Add the class `.top`, `.right`, or `.bottom` to the dropdown to change this.
 
+<p>
+  <a class="" data-open-video="0:39"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/YVvjvz?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <button class="button" type="button" data-toggle="example-dropdown2">Top Aligned</button>
 
@@ -78,6 +86,7 @@ By default, a dropdown anchors below the button that opened it. Add the class `.
 
 
 Adding `.float-right` or `.float-left` to the anchor will change the direction of the dropdown as well.
+
 <button class="button float-right" type="button" data-toggle="example-dropdown5">Bottom-right Aligned</button>
 <div class="dropdown-pane bottom" id="example-dropdown5" data-dropdown>
   Just some junk that needs to be said. Or not. Your choice.
