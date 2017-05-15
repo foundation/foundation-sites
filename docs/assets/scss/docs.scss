@@ -163,9 +163,8 @@ a#notice {
 
 .codepen-logo-link {
   position: relative;
-  bottom: -1rem;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
 
   &.left {
     justify-content: flex-start;
@@ -177,6 +176,31 @@ a#notice {
     height: 32px;
   }
 }
+
+.docs-codepen-container {
+  width: 100%;
+  border: 1px solid #cacaca;
+  border-bottom: 0;
+  height: rem-calc(36);
+  a {
+    width: 100%;
+  }
+  &.standalone {
+    border: 0;
+    a {
+      width: auto;
+      border: 1px solid #cacaca;
+      display: inline-block;
+    }
+  }
+}
+
+.docs-codepen-container + .docs-code {
+  .docs-code-copy {
+    transform: translateY(-100%);
+  }
+}
+
 
 a[data-open-video] {
   padding: 0.3rem 0;
