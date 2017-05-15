@@ -7,12 +7,18 @@ sass: scss/components/_thumbnail.scss
 
 The `.thumbnail` class can be applied directly to an `<img>` element, or an `<a>` that wraps it. Make sure the `<img>` has an `alt` attribute that describes the contents of the image.
 
-```html
-<img class="thumbnail" src="thumbnail.jpg" alt="Photo of Uranus.">
-```
+<p>
+  <a class="" data-open-video="0:39"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/EmLexY?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html
-<a href="#" class="thumbnail"><img src="thumbnail.jpg" alt="Photo of Neptune."></a>
+<img class="thumbnail" src="assets/img/thumbnail/01.jpg" alt="Photo of Uranus.">
+<a href="#" class="thumbnail"><img src="assets/img/thumbnail/02.jpg" alt="Photo of Neptune."></a>
+<img class="thumbnail" src="assets/img/thumbnail/03.jpg" alt="Photo of Pluto.">
 ```
 
 <div class="row">
