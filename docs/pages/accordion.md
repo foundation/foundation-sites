@@ -18,13 +18,21 @@ Inside the accordion, place a series of panes with the class `.accordion-item` a
 
 Each pane has a **title**, an `<a>` with the class `.accordion-title`, and a **content area**, an element with the class `.accordion-content` and the attribute `data-tab-content`.
 
+<p>
+  <a class="" data-open-video="0:39"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/WjzKqa?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html
 <ul class="accordion" data-accordion>
   <li class="accordion-item is-active" data-accordion-item>
     <!-- Accordion tab title -->
     <a href="#" class="accordion-title">Accordion 1</a>
 
-    <!-- Accordion tab content: it would start in the open state due to using the `is-active` state class. -->
+    <!-- Accordion tab content: it would start in the open state due to using the is-active` state class. -->
     <div class="accordion-content" data-tab-content>
       <p>Panel 1. Lorem ipsum dolor</p>
       <a href="#">Nowhere to Go</a>
