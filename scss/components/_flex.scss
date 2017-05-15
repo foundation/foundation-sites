@@ -62,11 +62,3 @@
 .gimbal-test {
   @include flex-gimbal($o: column, $x: justify, $y: middle);
 }
-
-// @include flex-gimbal($o:column,$x:left,$y:top) yields...
-// .gimbal-test {
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: flex-start;
-//   align-items: flex-start;
-// }
