@@ -76,6 +76,15 @@ Once you put it all together, here's what you get!
 
 By default, only one pane of an accordion can be open at a time. This can be changed by setting the `multiExpand` option to `true`.
 
+<p>
+  <a class="" data-open-video="0:39"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/ybEErg?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
+
 ```html
 <ul class="accordion" data-accordion data-multi-expand="true">
   <!-- ... -->
