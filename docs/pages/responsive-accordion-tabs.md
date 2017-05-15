@@ -71,6 +71,8 @@ Accordion content should also have an ID, or the # of the href should be specifi
   </li>
 </ul>
 
+#### Tabs HTML Markup
+
 <p>
   <a class="" data-open-video="0:39"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 </p>
@@ -78,8 +80,6 @@ Accordion content should also have an ID, or the # of the href should be specifi
 <div class="docs-codepen-container">
   <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/mmKQVN?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
-
-#### Tabs HTML Markup
 
 ```html
 <ul class="tabs" data-responsive-accordion-tabs="tabs medium-accordion large-tabs" id="example-tabs">
