@@ -17,7 +17,7 @@ To create a dropdown pane, add the class `.dropdown-pane` and the attribute `dat
 To create the dropdown trigger, add `data-toggle` to a `<button>`. The value of `data-toggle` is the ID of the dropdown.
 
 <p>
-  <a class="" data-open-video="0:39"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="0:47"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 </p>
 
 <div class="docs-codepen-container">
@@ -57,10 +57,6 @@ To create the dropdown trigger, add `data-toggle` to a `<button>`. The value of 
 ## Positioning
 
 By default, a dropdown anchors below the button that opened it. Add the class `.top`, `.right`, or `.bottom` to the dropdown to change this.
-
-<p>
-  <a class="" data-open-video="0:39"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
-</p>
 
 <div class="docs-codepen-container">
   <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/YVvjvz?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
