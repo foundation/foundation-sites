@@ -8,6 +8,14 @@ sass: scss/components/_badge.scss
 
 Add the `.badge` class to an element to create a badge. In the below example, we're using `<span>`, but any tag will work fine.
 
+<p>
+  <a class="" data-open-video="0:39"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/MmXxWm?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <span class="badge">1</span>
 ```
