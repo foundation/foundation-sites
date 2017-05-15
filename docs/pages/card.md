@@ -16,7 +16,7 @@ Make sure you wrap your content in a `.card-section` element in order to achieve
 A card container has no padding, allowing you to place full-bleed images inside. Use the `.card-divider` and `.card-section` classes to sub-divide a card.
 
 <p>
-  <a class="" data-open-video="0:32"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="0:32"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 </p>
 
 <div class="docs-codepen-container">
@@ -43,7 +43,7 @@ A card container has no padding, allowing you to place full-bleed images inside.
 You can also include a `.card-divider` element as a title, footer or to break up content.
 
 <p>
-  <a class="" data-open-video="1:30"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="1:30"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 </p>
 
 <div class="docs-codepen-container">
@@ -69,7 +69,7 @@ You can also include a `.card-divider` element as a title, footer or to break up
 Images play nicely with cards. Simply include one outside of the `.card-section` element to span nicely to the edges. Or move the image inside the `.card-section` to have padding around the image.
 
 <p>
-  <a class="" data-open-video="2:12"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="2:12"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 </p>
 
 <div class="docs-codepen-container">
@@ -144,7 +144,7 @@ Images play nicely with cards. Simply include one outside of the `.card-section`
 You can either set the width of cards with custom css or add them into the Foundation grid.
 
 <p>
-  <a class="" data-open-video="0:34"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="0:34"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 </p>
 
 <div class="docs-codepen-container">

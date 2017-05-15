@@ -20,7 +20,7 @@ There are two pieces to a tabbed interface: the tabs themselves, and the content
 The tab content container has the class `.tabs-content`, while each section has the class `.tabs-panel`. Each content pane also has a unique ID, which is targeted by a link in the tabstrip.
 
 <p>
-  <a class="" data-open-video="0:39"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="0:39"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 </p>
 
 <div class="docs-codepen-container">
@@ -83,7 +83,7 @@ Put it all together, and we get this:
 Add the `.vertical` class to a tabstrip to stack tabs vertically. You can also place the tabstrip and the tab contents in a grid to make them sit side-by-side.
 
 <p>
-  <a class="" data-open-video="0:39"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="0:39"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 </p>
 
 <div class="docs-codepen-container">
@@ -140,7 +140,7 @@ Add the `.vertical` class to a tabstrip to stack tabs vertically. You can also p
 Add the attribute `data-active-collapse="true"` to a tabstrip to collapse active tabs.
 
 <p>
-  <a class="" data-open-video="0:39"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="0:39"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 </p>
 
 <div class="docs-codepen-container">
