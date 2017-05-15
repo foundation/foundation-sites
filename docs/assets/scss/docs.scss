@@ -185,6 +185,14 @@ a#notice {
   a {
     width: 100%;
   }
+  &.standalone {
+    border: 0;
+    a {
+      width: auto;
+      border: 1px solid #cacaca;
+      display: inline-block;
+    }
+  }
 }
 
 .docs-codepen-container + .docs-code {

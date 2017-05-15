@@ -5,10 +5,9 @@ description: Everything but.
 
 ## Abide
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/qmoKbK?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/qmoKbK?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -108,10 +107,9 @@ description: Everything but.
 
 ## Accordion
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/WjzKqa?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/WjzKqa?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -145,10 +143,9 @@ description: Everything but.
 
 ## Accordion Menu
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/XREPVK?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/XREPVK?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -183,10 +180,9 @@ description: Everything but.
 
 ## Badge
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/JNvKZj?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/JNvKZj?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -201,10 +197,9 @@ description: Everything but.
 
 ## Breadcrumbs
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/MmGeMx?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/MmGeMx?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -224,10 +219,9 @@ description: Everything but.
 
 ## Button
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/ybjagd?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/ybjagd?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -255,10 +249,9 @@ description: Everything but.
 
 ## Callout
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/XRqjxj?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/XRqjxj?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -303,10 +296,9 @@ description: Everything but.
 
 ## Close Button
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/dWepJz?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/dWepJz?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -322,10 +314,9 @@ description: Everything but.
 
 ## Drilldown Menu
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/mmLrZz?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/mmLrZz?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -377,10 +368,9 @@ description: Everything but.
 
 ## Dropdown Menu
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/jmxVPP?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/jmxVPP?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -428,10 +418,9 @@ description: Everything but.
 
 ## Dropdown Pane
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/QvrGGj?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/QvrGGj?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -445,10 +434,9 @@ description: Everything but.
 
 ## Equalizer
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/mmLBEa?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/mmLBEa?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -475,10 +463,9 @@ description: Everything but.
 
 ## Flex Grid
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/dWmVax?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/dWmVax?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html
@@ -505,10 +492,9 @@ description: Everything but.
 
 ## Responsive Embed
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/MmGEbb?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/MmGEbb?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -521,10 +507,9 @@ description: Everything but.
 
 ## Float Classes
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/zwjEPP?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/zwjEPP?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -538,10 +523,9 @@ description: Everything but.
 
 ## Forms
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/jmxGGr?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/jmxGGr?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -602,10 +586,9 @@ description: Everything but.
 
 ## Grid
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/rmvEBJ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/rmvEBJ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html
@@ -662,10 +645,9 @@ description: Everything but.
 
 ## Interchange
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/xdjXYj?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/xdjXYj?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -676,10 +658,9 @@ description: Everything but.
 
 ## Label
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/VbxMXq?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/VbxMXq?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -694,10 +675,9 @@ description: Everything but.
 
 ## Magellan
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/MmGEXo?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/MmGEXo?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html
@@ -732,10 +712,9 @@ description: Everything but.
 
 ## Media Object
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/NjMaEr?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/NjMaEr?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -754,10 +733,9 @@ description: Everything but.
 
 ## Menu
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/bWMMzZ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/bWMMzZ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -773,10 +751,9 @@ description: Everything but.
 
 ## Off-canvas
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/oWdrLR?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/oWdrLR?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -805,10 +782,9 @@ description: Everything but.
 
 ## Orbit
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/zwjjgN?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/zwjjgN?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -850,10 +826,9 @@ description: Everything but.
 
 ## Pagination
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/BRxVmB?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/BRxVmB?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -874,10 +849,9 @@ description: Everything but.
 
 ## Progress Bar
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/YVLvvB?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/YVLvvB?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -910,10 +884,9 @@ description: Everything but.
 
 ## Responsive Menu
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/qmYKgJ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/qmYKgJ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -929,10 +902,9 @@ description: Everything but.
 
 ## Responsive Toggle
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/LymroM?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/LymroM?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -970,10 +942,9 @@ description: Everything but.
 
 ## Reveal
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/RVyBPw?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/RVyBPw?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -993,10 +964,9 @@ description: Everything but.
 
 ## Slider
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/xdjJVm?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/xdjJVm?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -1025,10 +995,9 @@ description: Everything but.
 
 ## Sticky
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/ZKodJR?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/ZKodJR?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -1059,10 +1028,9 @@ description: Everything but.
 
 ## Switch
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/dWejpx?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/dWejpx?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -1092,10 +1060,9 @@ description: Everything but.
 
 ## Table
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/eWrjQx?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/eWrjQx?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -1135,10 +1102,9 @@ description: Everything but.
 
 ## Tabs
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/qmYygE?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/qmYygE?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -1183,10 +1149,9 @@ description: Everything but.
 
 ## Thumbnail
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/EmLexY?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/EmLexY?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -1207,10 +1172,9 @@ description: Everything but.
 
 ## Title Bar
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/qmYMZZ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/qmYMZZ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -1229,10 +1193,9 @@ description: Everything but.
 
 ## Toggler
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/LymJLb?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/LymJLb?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -1250,10 +1213,9 @@ description: Everything but.
 
 ## Tooltip
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/pPVOdm?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/pPVOdm?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -1264,10 +1226,9 @@ description: Everything but.
 
 ## Top Bar
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/eWrwKP?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/eWrwKP?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -1300,10 +1261,9 @@ description: Everything but.
 
 ## Visibility Classes
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/vmjqVG?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container standalone">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/vmjqVG?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
