@@ -236,6 +236,14 @@ Since those option names are pretty *long*, you can also set them all in one HTM
 
 To disable Motion UI, set the plugin option `useMUI` to `false`. Written as an HTML attribute, that's `data-use-m-u-i="false"`.
 
+<p>
+  <a class="" data-open-video="0:39"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/VbdgNV?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html
 <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit data-use-m-u-i="false">
 </div>
