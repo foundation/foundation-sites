@@ -42,7 +42,7 @@ Foundation includes styles for all headings&mdash;they're balanced and sized alo
 </div>
 
 <div class="docs-video-codepen-container">
-  <a class="" data-open-video="0:25"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="0:25"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
   <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/PmeKme" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
@@ -62,7 +62,7 @@ Foundation includes styles for all headings&mdash;they're balanced and sized alo
 
 The framework includes two typographic scales&mdash;one uses a narrow range of sizes for small-sized screens, and the other uses a wider range of sizes for medium- and larger-sized screens. You can change these scales, or add new ones for other breakpoints, by editing the `$header-styles` map in your project's <a href="sass.html#the-settings-file">Settings File</a>.
 
-<a class="" data-open-video="1:28"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+<a class="" data-open-video="1:28"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
 Header  | Default | Medium and up
 --------|---------|--------------
@@ -139,7 +139,7 @@ The value for `'line-height'`/`'lh'` is transformed into a unitless number, that
 By inserting a `<small>` element into a header Foundation will scale the header font size down for an inline element, allowing you to use this for subtitles or other secondary header text.
 
 <div class="docs-video-codepen-container">
-  <a class="" data-open-video="2:46"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="2:46"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
   <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/eWrEEm" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
@@ -159,7 +159,7 @@ Links are very standard, and the color is preset to the Foundation primary color
 </div>
 
 <div class="docs-video-codepen-container">
-  <a class="" data-open-video="3:22"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="3:22"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
   <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/wdjqrY" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
@@ -357,7 +357,7 @@ Foundation includes print styles developed by HTML5 Boilerplate to give you some
 
 On top of that, Foundation includes a couple of simple classes you can use to control elements printing, or not printing. Simply attach `.show-for-print` to an element to only show when printing, and `.hide-for-print` to hide something when printing.
 
-<a class="" data-open-video="4:42"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+<a class="" data-open-video="4:42"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
 <div class="callout primary">
   <p>Print styles use `!important` to ensure they aren't overriden by more specific selectors. This framework conscientiously avoids using `!important` declarations. This is one of the few components that does.</p>

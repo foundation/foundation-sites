@@ -24,7 +24,7 @@ Give the `<input>` a unique ID and point the `<label>` to it with the `for` attr
 </div>
 
 <div class="docs-video-codepen-container">
-  <a class="" data-open-video="0:18"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="0:18"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
   <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/aWGpGg?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
@@ -45,7 +45,7 @@ Give the `<input>` a unique ID and point the `<label>` to it with the `for` attr
 You can also use `<input type="radio">` instead of `checkbox` to create a series of options.
 
 <div class="docs-video-codepen-container">
-  <a class="" data-open-video="1:48"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="1:48"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
   <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/GmdrYW?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
@@ -80,7 +80,7 @@ You can also use `<input type="radio">` instead of `checkbox` to create a series
 Use the classes `.tiny`, `.small`, or `.large` to change the switch size.
 
 <div class="docs-video-codepen-container">
-  <a class="" data-open-video="2:08"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="2:08"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
   <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/mmLRgm?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
@@ -125,7 +125,7 @@ Active/inactive text goes inside of the switch's `<label>`.
 </div>
 
 <div class="docs-video-codepen-container">
-  <a class="" data-open-video="2:25"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="2:25"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
   <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/qmYRzb?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>

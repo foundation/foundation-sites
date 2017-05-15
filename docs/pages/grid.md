@@ -21,7 +21,7 @@ Start by adding an element with a class of `.row`. This will create a horizontal
 </div>
 
 <div class="docs-video-codepen-container">
-  <a class="" data-open-video="1:07"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="1:07"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
   <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/ZKrdZz?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
@@ -99,7 +99,7 @@ Start by adding an element with a class of `.row`. This will create a horizontal
 Small grids expand to large screens easier than large grids cram into small screens.
 
 <div class="docs-video-codepen-container">
-  <a class="" data-open-video="9:14"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="9:14"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
   <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/oWEKXw?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
@@ -131,7 +131,7 @@ Small grids expand to large screens easier than large grids cram into small scre
 Medium sized screens will inherit styles from small, unless you specify a different layout using the medium grid classes.
 
 <div class="docs-video-codepen-container">
-  <a class="" data-open-video="11:44"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="11:44"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
   <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/vmdoxj?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
@@ -187,7 +187,7 @@ If you need a full-width column to use as a container, put the `.column` and `.r
 Normally, a row is always 1200 pixels wide. Make a row completely fluid by adding the `.expanded` class.
 
 <div class="docs-video-codepen-container">
-  <a class="" data-open-video="14:51"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="14:51"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
   <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/rmJXZy?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
@@ -204,7 +204,7 @@ Normally, a row is always 1200 pixels wide. Make a row completely fluid by addin
 You can nest the grids indefinitely, though at a certain point it will get absurd.
 
 <div class="docs-video-codepen-container">
-  <a class="" data-open-video="26:29"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="26:29"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
   <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/zwRgbE?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
@@ -247,7 +247,7 @@ You can nest the grids indefinitely, though at a certain point it will get absur
 Move blocks up to 11 columns to the right by using classes like `.large-offset-1` and `.small-offset-3`.
 
 <div class="docs-video-codepen-container">
-  <a class="" data-open-video="16:12"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="16:12"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
   <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/YVaKyg?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
@@ -398,7 +398,7 @@ There are times when you won't want each media query to be collapsed or uncollap
 Center your columns by adding a class of `.small-centered` to your column. Large will inherit small centering by default, but you can also center solely on large by applying a `.large-centered` class. To uncenter on large screens, use `.large-uncentered`.
 
 <div class="docs-video-codepen-container">
-  <a class="" data-open-video="23:16"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="23:16"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
   <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/zwWOpL?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
@@ -437,7 +437,7 @@ Center your columns by adding a class of `.small-centered` to your column. Large
 Using these source ordering classes, you can shift columns around between our breakpoints. This means if you place sub-navigation below main content on small displays, you have the option to position the sub-navigation on either the left or right of the page for large displays. Prefix push/pull with the size of the device you want to apply the styles to. `.medium-push-#`, `.large-push-#` is the syntax you'll use. Use the number 0 instead to reset a push/pull, such as `.medium-push-0` or `.large-pull-0`.
 
 <div class="docs-video-codepen-container">
-  <a class="" data-open-video="19:28"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="19:28"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
   <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/QvmLmv?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
@@ -492,7 +492,7 @@ Using these source ordering classes, you can shift columns around between our br
 Block grids are a shorthand way to create equally-sized columns. Add a class of the format `.[size]-up-[n]` to change the number of columns within the row. By default, the max number of columns you can use with block grid are 8. Adding the `.column-block` class to columns will apply a bottom margin equal to the width of gutters.
 
 <div class="docs-video-codepen-container">
-  <a class="" data-open-video="30:07"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="30:07"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
   <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/eWMOjK?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 

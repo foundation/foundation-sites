@@ -20,7 +20,7 @@ Inside the container are three elements:
 The `data-initial-start=""` value is where along the slider the handle starts. The `data-end=""` is the maximum value for the slider. In the below example, starting at 50 of 200 means the slider handle will start at 25% of the total.
 
 <div class="docs-video-codepen-container">
-  <a class="" data-open-video="1:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="1:00"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
   <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/MmGpWR?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
@@ -40,7 +40,7 @@ The `data-initial-start=""` value is where along the slider the handle starts. T
 To get *vertical*, just add a `.vertical` class and `data-vertical="true"` the slider.
 
 <div class="docs-video-codepen-container">
-  <a class="" data-open-video="3:24"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="3:24"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
   <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/eWrvRm?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
@@ -80,7 +80,7 @@ You can add IDs to the `<input>`s inside the sliders to make it easier to access
 Note that the first handle manipulates the first `<input>`, while the second handle manipulates the second `<input>`.
 
 <div class="docs-video-codepen-container">
-  <a class="" data-open-video="8:18"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="8:18"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
   <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/oWdwdX?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
@@ -104,7 +104,7 @@ Data binding allows you to connect the slider to an external `<input>` field. Wi
 To set it all up, create an `<input>` with an ID and add `aria-controls="id"` to the slider handle, where `id` is the ID of the `<input>`.
 
 <div class="docs-video-codepen-container">
-  <a class="" data-open-video="4:56"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="4:56"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
   <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/dWeRRy?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
@@ -143,7 +143,7 @@ Or with a step size:
 In Foundation 6.2, we introduced styles for `<input type="range">`, the native HTML element for range sliders. It's not supported in every browser, namely IE9 and some older mobile browsers. [View browser support for the range input type.](http://caniuse.com/#feat=input-range)
 
 <div class="docs-video-codepen-container">
-  <a class="" data-open-video="10:05"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="10:05"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
   <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/GmdEem?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>

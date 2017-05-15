@@ -13,7 +13,7 @@ flexbox: true
 Add the `.button-group` class to a container, and inside it place any number of buttons. The buttons are separated by a small border.
 
 <div class="docs-video-codepen-container">
-  <a class="" data-open-video="0:40"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="0:40"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
   <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/JNvXam?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
@@ -33,7 +33,7 @@ Add the `.button-group` class to a container, and inside it place any number of 
 Button groups can be sized with the same classes as standard buttons: `.tiny`, `.small`, and `.large`.
 
 <div class="docs-video-codepen-container">
-  <a class="" data-open-video="0:40"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="0:40"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
   <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/dWeMwL?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
@@ -53,7 +53,7 @@ Button groups can be sized with the same classes as standard buttons: `.tiny`, `
 Buttons within a button group can be colored individually with the `.secondary`, `.success`, `.warning`, and `.alert` classes.
 
 <div class="docs-video-codepen-container">
-  <a class="" data-open-video="0:40"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="0:40"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
   <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/KmRzEq?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
@@ -85,7 +85,7 @@ The entire group can also be colored using the same classes.
 Add the `.expanded` class to the container to make a full-width button group. Each item will automatically size itself based on how many buttons there are, up to a maximum of six.
 
 <div class="docs-video-codepen-container">
-  <a class="" data-open-video="2:49"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="2:49"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
   <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/bWMpXB?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
@@ -105,7 +105,7 @@ Add the `.expanded` class to the container to make a full-width button group. Ea
 A button group can be made vertical with the `.stacked` class. You can also use `.stacked-for-small` to only stack a button group on small screens, or `.stacked-for-medium` to only stack on small and medium screens.
 
 <div class="docs-video-codepen-container">
-  <a class="" data-open-video="5:14"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="5:14"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
   <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/bWMemL?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
@@ -129,7 +129,7 @@ To build a split button, just create a button group with two buttons.
 To create a button with only an arrow, add the class `.arrow-only`. Note that the button still needs a label for screen readers, which can be embedded inside the button with a `.show-for-sr` element. In the example below, an assistive device will read the arrow button as "Show menu".
 
 <div class="docs-video-codepen-container">
-  <a class="" data-open-video="7:32"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="7:32"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
   <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/GmdjKM?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>

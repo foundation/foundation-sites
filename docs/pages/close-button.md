@@ -10,7 +10,7 @@ A close button is a `<button>` element with the class `.close-button`. We use th
 The button is also labeled with `aria-label` to clarify what the button's purpose is.
 
 <div class="docs-video-codepen-container">
-  <a class="" data-open-video="1:30"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="1:30"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
   <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/xdjEgO?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
@@ -39,7 +39,7 @@ The button is also labeled with `aria-label` to clarify what the button's purpos
 The below example pairs the callout with the close button component and `data-closable` attribute to create a dismissible alert box.
 
 <div class="docs-video-codepen-container">
-  <a class="" data-open-video="1:30"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="1:30"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
   <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/JNvEox?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
