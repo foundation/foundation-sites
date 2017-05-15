@@ -19,7 +19,7 @@ Inside the accordion, place a series of panes with the class `.accordion-item` a
 Each pane has a **title**, an `<a>` with the class `.accordion-title`, and a **content area**, an element with the class `.accordion-content` and the attribute `data-tab-content`.
 
 <p>
-  <a class="" data-open-video="0:39"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="1:25"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 </p>
 
 <div class="docs-codepen-container">
@@ -77,7 +77,7 @@ Once you put it all together, here's what you get!
 By default, only one pane of an accordion can be open at a time. This can be changed by setting the `multiExpand` option to `true`.
 
 <p>
-  <a class="" data-open-video="0:39"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="5:11"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 </p>
 
 <div class="docs-codepen-container">
@@ -119,7 +119,7 @@ By default, only one pane of an accordion can be open at a time. This can be cha
 By default, at least one pane in an accordion must be open. This can be changed by setting `allowAllClosed` option to `true`.
 
 <p>
-  <a class="" data-open-video="0:39"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="6:09"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 </p>
 
 <div class="docs-codepen-container">
