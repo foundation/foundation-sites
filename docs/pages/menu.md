@@ -20,6 +20,12 @@ The menu is a flexible, all-purpose component for navigation. It replaces Founda
 
 All versions of the menu are a `<ul>` filled with `<li>` elements containing links. By default, a Menu is horizontally oriented.
 
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/rmvXMX?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <ul class="menu">
   <li><a href="#">One</a></li>
@@ -39,6 +45,12 @@ By default, each item in the menu aligns to the left. They can also be aligned t
   <p>In a <a href="rtl.html">right-to-left</a> environment, items align to the right by default, and the class <code>.align-left</code> can be used to reverse direction.</p>
 </div>
 
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/zwjgWv?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <ul class="menu align-right">
   <li><a href="#">One</a></li>
@@ -53,7 +65,13 @@ By default, each item in the menu aligns to the left. They can also be aligned t
 To align items in the middle, add a wrapping element with the class `.menu-centered`.
 
 <div class="primary callout">
-  <p>If you're using <a href="flexbox.html">Flexbox mode</a>, you have the option of either using <code>.align-center</code> to the menu like this <a href="http://codepen.io/IamManchanda/pen/jyGjmV">codepen</a> or instead you can use the default wrapper class below.</p>
+  <p>If you're using <a href="flexbox.html">Flexbox mode</a>, you have the option of either using <code>.align-center</code> to the menu like this <a href="https://codepen.io/IamManchanda/pen/bWMXKQ?editors=1100">codepen</a> or instead you can use the default wrapper class below.</p>
+</div>
+
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/BRxXxO?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -70,6 +88,12 @@ To align items in the middle, add a wrapping element with the class `.menu-cente
 <br>
 
 Items can also be set to expand out and take up an even amount of space, with the `.expanded` class. Thanks to the magic of CSS, the items will automatically size themselves equally depending on how many are inside the menu.
+
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/bWMXQO?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <ul class="menu expanded">
@@ -97,8 +121,14 @@ Items can also be set to expand out and take up an even amount of space, with th
 
 Add the `.vertical` class to a Menu to switch its orientation.
 
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/YVLmBY?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
-<ul class="menu vertical">
+<ul class="vertical menu">
   <li><a href="#">One</a></li>
   <li><a href="#">Two</a></li>
   <li><a href="#">Three</a></li>
@@ -111,6 +141,12 @@ Add the `.vertical` class to a Menu to switch its orientation.
 ## Simple Style
 
 Add the `.simple` class to a Menu to remove the padding and color change. This style imitates the inline list from Foundation 5.
+
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/ZKogNb?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <ul class="menu simple">
@@ -126,6 +162,12 @@ Add the `.simple` class to a Menu to remove the padding and color change. This s
 ## Nested Style
 
 Add a new menu inside the `<li>` of a Menu and add the class `.nested` to create a nested menu. The nested Menu has extra padding on the inside.
+
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/vmrBOr?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <ul class="vertical menu">
@@ -150,6 +192,12 @@ Add a new menu inside the `<li>` of a Menu and add the class `.nested` to create
 
 Add the class `.active` to any `<li>` to create an active state. You could apply this server-side to mark the active page, or dynamically with JavaScript.
 
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/XRYrKp?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <ul class="menu">
   <li class="active"><a>Home</a></li>
@@ -161,6 +209,12 @@ Add the class `.active` to any `<li>` to create an active state. You could apply
 ---
 
 ## Text
+
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/GmGRWp?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 Because the padding of the menu item is applied to the `<a>`, if you try to add an item that's text only, it will be misaligned. To get around this, add the class `.menu-text` to any `<li>` that doesn't have a link inside of it.
 
@@ -179,6 +233,13 @@ Because the padding of the menu item is applied to the `<a>`, if you try to add 
 
 Menu items can have icons. Wrap the text of the item in a `<span>`, and then add an `<img>` element before the `<span>`. If you're using the Foundation icon font, the `<img>` will be an `<i>` instead.
 
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/OmEJQW?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
+
 ```html_example
 <ul class="menu">
   <li><a href="#"><i class="fi-list"></i> <span>One</span></a></li>
@@ -191,6 +252,12 @@ Menu items can have icons. Wrap the text of the item in a `<span>`, and then add
 ---
 
 Add the class `.icon-top` to the Menu to orient icons above the text.
+
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/vmrYjN?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <ul class="menu icon-top">

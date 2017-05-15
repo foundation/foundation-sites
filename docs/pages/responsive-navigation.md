@@ -11,11 +11,18 @@ js:
 
 The Menu has some responsive CSS classes built in, which allow you to re-orient a menu on different screen sizes.
 
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/qmYKgJ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <ul class="vertical medium-horizontal menu">
-  <li><a href="#">Item 1</a></li>
-  <li><a href="#">Item 2</a></li>
-  <li><a href="#">Item 3</a></li>
+  <li><a href="#0"><i class="fi-list"></i> <span>One</span></a></li>
+  <li><a href="#0"><i class="fi-list"></i> <span>Two</span></a></li>
+  <li><a href="#0"><i class="fi-list"></i> <span>Three</span></a></li>
+  <li><a href="#0"><i class="fi-list"></i> <span>Four</span></a></li>
 </ul>
 ```
 
@@ -27,8 +34,14 @@ With our responsive Menu plugin, you can apply a default pattern to a Menu, and 
 
 For example, a drilldown menu works well on mobile, but on larger screens, you may want to convert that same menu into a dropdown. Here's an example that does just that:
 
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/jmKPdM?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
-<ul class="vertical menu" data-responsive-menu="drilldown medium-dropdown" style="width: 300px;">
+<ul class="vertical medium-horizontal menu" data-responsive-menu="drilldown medium-dropdown">
   <li>
     <a href="#">Item 1</a>
     <ul class="vertical menu">
@@ -76,6 +89,12 @@ By default, the title bar will be visible on small screens, and the Menu hides. 
   <p>Scale your browser down to see the toggle happen.</p>
 </div>
 
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/LymroM?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
   <button class="menu-icon" type="button" data-toggle="example-menu"></button>
@@ -115,6 +134,12 @@ To use animations from the Motion UI library, include the <code>data-animation="
 
 <div class="primary callout show-for-medium">
   <p>Scale your browser down to see the toggle happen.</p>
+</div>
+
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/KmepBg?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example

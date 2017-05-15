@@ -20,6 +20,12 @@ Any `<a>` will behave like a standard link. However, any `<a>` paired with a nes
   <p>To have a sub-menu already open when the page loads, add the class <code>.is-active</code> to that sub-menu.</p>
 </div>
 
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/qmKEQr?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html
 <ul class="vertical menu" data-accordion-menu>
   <li>
@@ -33,7 +39,7 @@ Any `<a>` will behave like a standard link. However, any `<a>` paired with a nes
 </ul>
 ```
 
-<ul class="vertical menu" data-accordion-menu>
+<ul class="vertical menu" data-accordion-menu style="max-width: 250px">
   <li>
     <a href="#">Item 1</a>
     <ul class="menu vertical nested">
