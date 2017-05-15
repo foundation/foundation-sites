@@ -188,6 +188,14 @@ There are four plugin options you can set to change the default effects:
 
 Since those option names are pretty *long*, you can also set them all in one HTML attribute, using `data-options`:
 
+<p>
+  <a class="" data-open-video="0:39"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/oWymQy?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html
 <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit data-options="animInFromLeft:fade-in; animInFromRight:fade-in; animOutToLeft:fade-out; animOutToRight:fade-out;">
 </div>
