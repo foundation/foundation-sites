@@ -32,7 +32,7 @@ Each pane has a **title**, an `<a>` with the class `.accordion-title`, and a **c
     <!-- Accordion tab title -->
     <a href="#" class="accordion-title">Accordion 1</a>
 
-    <!-- Accordion tab content: it would start in the open state due to using the is-active` state class. -->
+    <!-- Accordion tab content: it would start in the open state due to using the `is-active` state class. -->
     <div class="accordion-content" data-tab-content>
       <p>Panel 1. Lorem ipsum dolor</p>
       <a href="#">Nowhere to Go</a>
