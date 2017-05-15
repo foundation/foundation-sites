@@ -82,10 +82,18 @@ Put it all together, and we get this:
 
 Add the `.vertical` class to a tabstrip to stack tabs vertically. You can also place the tabstrip and the tab contents in a grid to make them sit side-by-side.
 
+<p>
+  <a class="" data-open-video="0:39"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/VbdGKj?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <div class="row collapse">
   <div class="medium-3 columns">
-    <ul class="tabs vertical" id="example-vert-tabs" data-tabs>
+    <ul class="vertical tabs" data-tabs id="example-tabs">
       <li class="tabs-title is-active"><a href="#panel1v" aria-selected="true">Tab 1</a></li>
       <li class="tabs-title"><a href="#panel2v">Tab 2</a></li>
       <li class="tabs-title"><a href="#panel3v">Tab 3</a></li>
@@ -93,26 +101,32 @@ Add the `.vertical` class to a tabstrip to stack tabs vertically. You can also p
       <li class="tabs-title"><a href="#panel5v">Tab 5</a></li>
       <li class="tabs-title"><a href="#panel6v">Tab 6</a></li>
     </ul>
-    </div>
-    <div class="medium-9 columns">
-    <div class="tabs-content vertical" data-tabs-content="example-vert-tabs">
+  </div>
+  <div class="medium-9 columns">
+    <div class="tabs-content" data-tabs-content="example-tabs">
       <div class="tabs-panel is-active" id="panel1v">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p>One</p>
+        <p>Check me out! I'm a super cool Tab panel with text content!</p>
       </div>
       <div class="tabs-panel" id="panel2v">
-        <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
+        <p>Two</p>
+        <img class="thumbnail" src="assets/img/generic/rectangle-7.jpg">
       </div>
       <div class="tabs-panel" id="panel3v">
-        <img class="thumbnail" src="assets/img/generic/rectangle-3.jpg">
+        <p>Three</p>
+        <p>Check me out! I'm a super cool Tab panel with text content!</p>
       </div>
       <div class="tabs-panel" id="panel4v">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p>Four</p>
+        <img class="thumbnail" src="assets/img/generic/rectangle-2.jpg">
       </div>
       <div class="tabs-panel" id="panel5v">
-        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Five</p>
+        <p>Check me out! I'm a super cool Tab panel with text content!</p>
       </div>
       <div class="tabs-panel" id="panel6v">
-        <img class="thumbnail" src="assets/img/generic/rectangle-5.jpg">
+        <p>Six</p>
+        <img class="thumbnail" src="assets/img/generic/rectangle-8.jpg">
       </div>
     </div>
   </div>
