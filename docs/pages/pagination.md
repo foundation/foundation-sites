@@ -18,7 +18,7 @@ Extra screen reader-only text should also be added to a pagination element. In t
 </p>
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/BRxVmB?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/BRxVmB?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -43,7 +43,7 @@ The items in a pagination list are `display: inline-block`, which makes centerin
 
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/dWKYZb?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/dWKYZb?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example

@@ -19,7 +19,7 @@ Any `<a>` without a submenu will function like a normal link.
 </p>
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/JNZodd?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/JNZodd?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html
@@ -94,7 +94,7 @@ Any `<a>` without a submenu will function like a normal link.
 </p>
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/mmKyrw?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/mmKyrw?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html 
@@ -172,7 +172,7 @@ Any `<a>` without a submenu will function like a normal link.
 
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/jmKEwX?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/jmKEwX?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html 

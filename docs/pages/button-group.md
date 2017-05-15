@@ -17,7 +17,7 @@ Add the `.button-group` class to a container, and inside it place any number of 
 </p>
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/JNvXam?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/JNvXam?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -39,7 +39,7 @@ Button groups can be sized with the same classes as standard buttons: `.tiny`, `
 </p>
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/dWeMwL?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/dWeMwL?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -61,7 +61,7 @@ Buttons within a button group can be colored individually with the `.secondary`,
 </p>
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/KmRzEq?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/KmRzEq?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -95,7 +95,7 @@ Add the `.expanded` class to the container to make a full-width button group. Ea
 </p>
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/bWMpXB?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/bWMpXB?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -117,7 +117,7 @@ A button group can be made vertical with the `.stacked` class. You can also use 
 </p>
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/bWMemL?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/bWMemL?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -144,7 +144,7 @@ To create a button with only an arrow, add the class `.arrow-only`. Note that th
 </p>
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/GmdjKM?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/GmdjKM?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example

@@ -15,7 +15,7 @@ Foundation's Media Object will help you create this common repeatable pattern an
 </p>
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/NjzbEG?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/NjzbEG?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -61,7 +61,7 @@ Each section aligns to the top by default, but individual sections can also be m
 </p>
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/aWKpOj" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/aWKpOj" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -117,7 +117,7 @@ By adding the `.stack-for-small` class, you can make your media object responsiv
 </p>
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/JNZEKe?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/JNZEKe?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -141,7 +141,7 @@ By adding the `.stack-for-small` class, you can make your media object responsiv
 By nesting a media object into the media-object-section section, you can easily indent it. This is great for comment strings.
 
 <div class="docs-codepen-container">
-<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/aWKpOj" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/aWKpOj" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example

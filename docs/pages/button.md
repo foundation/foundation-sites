@@ -20,7 +20,7 @@ A basic button can be created with minimal markup. Because buttons can be used f
 </div>
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/wdmZME?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/wdmZME?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -44,7 +44,7 @@ Additional classes can be added to your button to change its size and shape.
 </p>
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/JNLVRb?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/JNLVRb?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -68,7 +68,7 @@ Add color classes to give buttons additional meaning.
 
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/xdjVOp?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/xdjVOp?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -133,7 +133,7 @@ The `.disabled` class will give buttons a faded appearance. The class is a purel
 </p>
 
 <div class="docs-video-codepen-container">
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/xdjVOp?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/xdjVOp?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -157,7 +157,7 @@ Add the `.hollow` class to a button to give it a hollow style. Change the `$butt
 
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/LymNyB?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/LymNyB?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -180,7 +180,7 @@ Add a dropdown arrow to your button with the `.dropdown` class.
 </div>
 
 <div class="docs-codepen-container">
-<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/PmeNOY?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/PmeNOY?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example

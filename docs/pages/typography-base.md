@@ -26,7 +26,7 @@ This is a paragraph. Paragraphs are preset with a font size, line height and spa
 </div>
 
 <div class="docs-codepen-container">
-<a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/GmdEem?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/GmdEem?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html
@@ -45,7 +45,7 @@ Foundation includes styles for all headings&mdash;they're balanced and sized alo
 </div>
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/PmeKme" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/PmeKme" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -144,7 +144,7 @@ By inserting a `<small>` element into a header Foundation will scale the header 
 </p>
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/eWrEEm" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/eWrEEm" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -163,7 +163,7 @@ Links are very standard, and the color is preset to the Foundation primary color
 </div>
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/wdjqrY" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/wdjqrY" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html
@@ -177,7 +177,7 @@ Links are very standard, and the color is preset to the Foundation primary color
 Use dividers to define thematic breaks between paragraphs. To denote the end of one section of a page and the start of another, it's better to use the `<section>` tag.
 
 <div class="docs-codepen-container">
-<a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/Vbxzrz" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/Vbxzrz" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html
@@ -191,7 +191,7 @@ Use dividers to define thematic breaks between paragraphs. To denote the end of 
 Use an unordered list to... *list things*, if the order of the items doesn't matter.
 
 <div class="docs-codepen-container">
-<a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/mmLMXx" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/mmLMXx" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -216,7 +216,7 @@ Use an unordered list to... *list things*, if the order of the items doesn't mat
 ## Ordered Lists
 
 <div class="docs-codepen-container">
-<a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/XRqaBd" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/XRqaBd" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -242,7 +242,7 @@ Use an unordered list to... *list things*, if the order of the items doesn't mat
 A definition list (`<dl>`) is used to display name-value pairs, like metadata or a dictionary definition. Each term (`<dt>`) is paired with one or more definitions (`<dd>`).
 
 <div class="docs-codepen-container">
-<a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/oWdeMe" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/oWdeMe" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -262,7 +262,7 @@ A definition list (`<dl>`) is used to display name-value pairs, like metadata or
 Sometimes other people say smart things, and you may want to mention those things with a quote. We've got you covered.
 
 <div class="docs-codepen-container">
-<a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/ZKoJMb" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/ZKoJMb" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -279,7 +279,7 @@ Sometimes other people say smart things, and you may want to mention those thing
 Use the `<abbr>` tag to annotate a shortened term. Abbreviations must always have a `title` attribute which clarifies the full term.
 
 <div class="docs-codepen-container">
-<a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/QvrMVX" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/QvrMVX" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -293,7 +293,7 @@ Use the `<abbr>` tag to annotate a shortened term. Abbreviations must always hav
 Format references to code with the `<code>` tag. In order for angle brackets `<>` to render correctly, you need to change them to `&lt; and &gt;`.
 
 <div class="docs-codepen-container">
-<a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/LymjvO" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/LymjvO" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -307,7 +307,7 @@ Remember to escape angle brackets when printing HTML: <code>&lt;div&gt;</code>
 Use the `<kbd>` element to annotate a key stroke or combination.
 
 <div class="docs-codepen-container">
-<a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/XRqaBd" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/XRqaBd" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example

@@ -24,7 +24,7 @@ Any `<a>` will behave like a standard link. However, any `<a>` paired with a nes
 
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/qmKEQr?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/qmKEQr?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html

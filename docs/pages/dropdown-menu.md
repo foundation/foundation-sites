@@ -28,7 +28,7 @@ To create dropdown menus, nest a new `<ul>` inside an `<li>`. You can nest furth
 </div>
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/XRYWPO?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/XRYWPO?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html
@@ -97,7 +97,7 @@ Add the `.vertical` class to the top-level menu to make it vertical. Sub-menus a
 
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/LyrYaE?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/LyrYaE?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html

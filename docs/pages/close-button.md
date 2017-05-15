@@ -14,7 +14,7 @@ The button is also labeled with `aria-label` to clarify what the button's purpos
 </p>
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/xdjEgO?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/xdjEgO?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -42,7 +42,7 @@ The button is also labeled with `aria-label` to clarify what the button's purpos
 The below example pairs the callout with the close button component and `data-closable` attribute to create a dismissible alert box.
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/JNvEox?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/JNvEox?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example

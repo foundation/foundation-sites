@@ -16,7 +16,7 @@ You can use Magellan with any navigation element, like our [Menu](menu.html) or 
 </p>
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/MmGEXo?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/MmGEXo?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html
@@ -42,7 +42,7 @@ You can use Magellan with any navigation element, like our [Menu](menu.html) or 
 You can use Magellan with our Sticky plugin to create a persistent navigation header or sidebar.
 
 <div class="docs-codepen-container">
-  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/gWKLqV?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/gWKLqV?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html 
