@@ -1,0 +1,75 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group frame
+////
+
+// Shared styles for frames and groups (parent elements)
+%parent-core {
+  // Change the direction children flow
+  &.vertical { @include grid-orient(vertical); }
+
+  @each $size in $breakpoint-classes {
+    @include breakpoint($size) {
+      &.#{$size}-vertical   { @include grid-orient(vertical); }
+      &.#{$size}-horizontal { @include grid-orient(horizontal); }
+    }
+  }
+}
+
+// Shared styles for groups and blocks (child elements)
+%child-core {
+  // Shrink a flex item so it only takes up the space it needs
+  &.shrink { @include grid-size(shrink); }
+
+  // Prevent an element from scrolling
+  &.noscroll { overflow: visible; }
+}
+
+// The core grid elements:
+//  - Frame
+//  - Group
+//  - Block
+.frame {
+  @extend %parent-core;
+  @include frame;
+}
+
+.frame-group {
+  @extend %parent-core;
+  @extend %child-core;
+  @include frame-group;
+}
+
+.frame-block {
+  @extend %child-core;
+  @include frame-block;
+
+  &.collapse {
+    padding: 0;
+  }
+}
+
+// Breakpoint classes for blocks
+@each $size in $breakpoint-classes {
+  .#{$size}-frame-group {
+    @extend %parent-core;
+    @extend %child-core;
+  }
+
+  .#{$size}-frame-block {
+    @extend %child-core;
+  }
+
+  @include breakpoint($size) {
+    .#{$size}-frame-group { @include frame-group; }
+    .#{$size}-frame-block { @include frame-block; }
+
+    .#{$size}-frame-group,
+    .#{$size}-frame-block {
+      &.panel { @include frame-panel-reset; }
+    }
+  }
+}
