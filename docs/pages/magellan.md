@@ -32,11 +32,14 @@ You can use Magellan with any navigation element, like our [Menu](menu.html) or 
 </div>
 
 ```html
-<ul class="horizontal menu" data-magellan>
+<!-- Add a Menu -->
+<ul class="menu expanded" data-magellan>
   <li><a href="#first">First Arrival</a></li>
   <li><a href="#second">Second Arrival</a></li>
   <li><a href="#third">Third Arrival</a></li>
 </ul>
+
+<!-- Add content where magellan will be linked -->
 <div class="sections">
   <section id="first" data-magellan-target="first">First Section</section>
   <section id="second" data-magellan-target="second">Second Section</section>
@@ -50,7 +53,40 @@ You can use Magellan with any navigation element, like our [Menu](menu.html) or 
 
 You can use Magellan with our Sticky plugin to create a persistent navigation header or sidebar.
 
-This first example is a simplified version of the table of contents on the right side of this page:
+<div class="docs-video-codepen-container">
+  <a class="" data-open-video="12:00"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/gWKLqV?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
+```html 
+<!-- Add a Sticky Menu -->
+<div data-sticky-container>
+  <div class="top-bar" data-sticky data-margin-top="0" id="example-menu">
+    <div class="top-bar-left">
+      <ul class="menu">
+        <li class="menu-text">Site Title</li>
+      </ul>
+    </div>
+    <div class="top-bar-right">
+      <ul class="menu" data-magellan>
+        <li><a href="#first">One</a></li>
+        <li><a href="#second">Two</a></li>
+        <li><a href="#third">Three</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Add content where magellan will be linked -->
+<div class="sections">
+  <section id="first" data-magellan-target="first">First Section</section>
+  <section id="second" data-magellan-target="second">Second Section</section>
+  <section id="third" data-magellan-target="third">Third Section</section>
+</div>
+```
+
+This below example is a simplified version of the table of contents on the right side of this page.
 
 ```html
 <div class="large-3 columns" data-sticky-container>
@@ -64,7 +100,7 @@ This first example is a simplified version of the table of contents on the right
 </div>
 ```
 
-This example is the menu bar floating at the top of the page.
+This below example is the menu bar floating at the top of the page.
 
 ```html
 <div data-sticky-container>
