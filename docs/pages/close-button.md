@@ -9,10 +9,12 @@ A close button is a `<button>` element with the class `.close-button`. We use th
 
 The button is also labeled with `aria-label` to clarify what the button's purpose is.
 
-<div class="docs-video-codepen-container">
+<p>
   <a class="" data-open-video="1:30"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
 
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/xdjEgO?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/xdjEgO?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -32,16 +34,15 @@ The button is also labeled with `aria-label` to clarify what the button's purpos
   <p>The close button on its own doesn't close elements, but you can use it with <a href="toggler.html">Toggler</a>, <a href="reveal.html">Reveal</a>, <a href="off-canvas.html">Off-canvas</a>, and other plugins that have open and close behaviors.</p>
 </div>
 
+<a class="" data-open-video="1:30"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 <div class="primary callout">
   <p>Any element can be used as a close trigger, not just close button. Adding the attribute <code>data-close</code> to any element within the callout will turn it into a close trigger.</p>
 </div>
 
 The below example pairs the callout with the close button component and `data-closable` attribute to create a dismissible alert box.
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="1:30"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
-
-  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/JNvEox?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/JNvEox?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
