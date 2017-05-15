@@ -106,6 +106,14 @@ The text color for each badge class is determined by either `$badge-color` or `$
 
 An icon can be used in place of text. We're using the [Foundation icon font](http://zurb.com/playground/foundation-icon-fonts-3) here, but any icon fonts or image-based icons will work fine.
 
+<p>
+  <a class="" data-open-video="0:39"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/jmKJXa?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <span class="badge secondary"><i class="fi-share"></i></span>
 <span class="badge success"><i class="fi-check"></i></span>
