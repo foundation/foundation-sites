@@ -12,11 +12,12 @@ Accordion menus follow the basic [Menu](menu.html) syntax of `<ul>`, `<li>`, and
 
 Any `<a>` will behave like a standard link. However, any `<a>` paired with a nested `<ul>` menu will then slide that sub-menu up and down when clicked on.
 
+<a class="" data-open-video="0:29"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
 <div class="primary callout">
   <p>You can use the built-in <code>.nested</code> class to add an indent to a nested menu.</p>
 </div>
 
-<a class="" data-open-video="12:00"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 <div class="primary callout">
   <p>To have a sub-menu already open when the page loads, add the class <code>.is-active</code> to that sub-menu.</p>
 </div>

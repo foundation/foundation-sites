@@ -15,7 +15,7 @@ To create sub-menus, place a `<ul>` *next to* an `<a>`. Clicking that `<a>` will
 Any `<a>` without a submenu will function like a normal link.
 
 <p>
-  <a class="" data-open-video="12:00"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="0:30"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 </p>
 
 <div class="docs-codepen-container">
@@ -84,12 +84,14 @@ Any `<a>` without a submenu will function like a normal link.
 
 ## autoHeight
 
-<a class="" data-open-video="12:00"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 <div class="secondary callout">
   <p>If you like to set the height to auto you can also set the autoHeight and animateHeight params</p>
   <button class="button expanded" onclick="$('#m3').foundation('destroy');if($('#m3').data('autoHeight')){$('#m3').data('autoHeight',false);$(this).html('autoHeight is Off');}else{$('#m3').data('autoHeight',true);$(this).html('autoHeight is On');}new Foundation.Drilldown($('#m3'));return false;">autoHeight is On</button>
 </div>
 
+<p>
+<a class="" data-open-video="3:27"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
 
 <div class="docs-codepen-container">
   <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/mmKyrw?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
@@ -165,8 +167,6 @@ Any `<a>` without a submenu will function like a normal link.
 </ul>
 
 ## ScrollTop Drilldown
-
-<a class="" data-open-video="12:00"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 
 <div class="callout">Scroll to the top of the menu when selecting a submenu/navigating back using the menu back button. Can be useful with a longer menu to provide a better user experience.</div>
 

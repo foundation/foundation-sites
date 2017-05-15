@@ -7,26 +7,12 @@ tags:
   - navigation
 ---
 
-<div data-sticky-container>
-  <div class="sticky" id="sticky-magellan" style="width:100%;" data-sticky data-margin-top="0" data-margin-bottom="0" data-top-anchor="setup" data-btm-anchor="destroy:bottom" data-sticky-on="small">
-    <nav data-magellan class="sticky-mag" data-bar-offset="25">
-      <ul class="horizontal menu expanded">
-        <li><a href="#setup">Setup</a></li>
-        <li><a href="#sticky-navigation">Sticky Navigation</a></li>
-        <li><a href="#javascript-reference">JavaScript Reference</a></li>
-      </ul>
-    </nav>
-  </div>
-</div>
-
-<br>
-
 ## Setup
 
 You can use Magellan with any navigation element, like our [Menu](menu.html) or your own custom component. Just add the attribute `data-magellan` to the container, and links to specific sections of your page. Each section needs a unique ID.
 
 <p>
-  <a class="" data-open-video="12:00"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="0:42"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 </p>
 
 <div class="docs-codepen-container">
@@ -54,10 +40,6 @@ You can use Magellan with any navigation element, like our [Menu](menu.html) or 
 ## Sticky Navigation
 
 You can use Magellan with our Sticky plugin to create a persistent navigation header or sidebar.
-
-<p>
-  <a class="" data-open-video="12:00"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
-</p>
 
 <div class="docs-codepen-container">
   <a class="codepen-logo-link" href="https://codepen.io/ZURBFoundation/pen/gWKLqV?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
@@ -104,18 +86,3 @@ This below example is a simplified version of the table of contents on the right
 </div>
 ```
 
-This below example is the menu bar floating at the top of the page.
-
-```html
-<div data-sticky-container>
-  <div class="sticky" id="example" data-sticky data-margin-top="0" style="width:100%;" data-margin-bottom="0" data-top-anchor="topAnchorExample" data-btm-anchor="bottomOfContentId:bottom">
-    <nav data-magellan>
-      <ul class="horizontal menu expanded">
-      <li><a href="#first">First Arrival</a></li>
-      <li><a href="#second">Second Arrival</a></li>
-      <li><a href="#third">Third Arrival</a></li>
-      </ul>
-    </nav>
-  </div>
-</div>
-```
