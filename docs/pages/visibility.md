@@ -1,6 +1,7 @@
 ---
 title: Visibility Classes
 description: Visibility classes let you show or hide elements based on screen size or device orientation. You can also use visibility classes to control which elements users see depending on their browsing environment.
+video: 'j__6VmFdSnc'
 sass: scss/components/_visibility.scss
 tags:
   - hide

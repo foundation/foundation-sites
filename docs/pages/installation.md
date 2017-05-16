@@ -1,6 +1,7 @@
 ---
 title: Installation
 description: There are many ways to install Foundation, but if you're just getting started, we have a few suggestions.
+video: '6KwsGcEHVTE'
 ---
 
 ### Command-Line Tool
