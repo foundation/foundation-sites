@@ -338,6 +338,7 @@ $content: $maincontent-class
 @mixin in-canvas() {
   transform: none !important;
   visibility: visible !important;
+  height: auto !important;
   position: static;
   background: inherit;
   width: inherit;

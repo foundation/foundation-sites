@@ -32,6 +32,7 @@ class OffCanvas extends Plugin {
     this.$triggers = $();
     this.position = 'left';
     this.$content = $();
+    this.nested = false;
 
     this._init();
     this._events();
@@ -72,6 +73,9 @@ class OffCanvas extends Plugin {
       this.$content = this.$element.closest('[data-off-canvas-content]').first();
     }
 
+    // Assume that the off-canvas element is nested if it isn't a sibling of the content
+    this.nested = this.$element.siblings('[data-off-canvas-content]').length && !this.options.contentId ? false : true;
+
     this.$content.addClass(`has-transition-${this.options.transition}`);
 
     // Add an overlay over the content if necessary
@@ -99,6 +103,8 @@ class OffCanvas extends Plugin {
     }
 
     this._setContentClasses();
+
+    this._emulateFixedPosition(true);
   }
 
   /**
@@ -107,6 +113,8 @@ class OffCanvas extends Plugin {
    * @private
    */
   _events() {
+    var id = this.$element.attr('id');
+
     this.$element.off('.zf.trigger .zf.offcanvas').on({
       'open.zf.trigger': this.open.bind(this),
       'close.zf.trigger': this.close.bind(this),
@@ -118,6 +126,19 @@ class OffCanvas extends Plugin {
       var $target = this.options.contentOverlay ? this.$overlay : this.$content;
       $target.on({'click.zf.offcanvas': this.close.bind(this)});
     }
+
+    var resizeListener = this.resizeListener = `resize.zf.${id}`;
+    var resizeTimeout;
+
+    $(window).off(resizeListener).on(resizeListener, () => {
+      // Delay as timeout to prevent too many calls on resizing
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        if (this.$element.hasClass('is-open') || this.isRevealed) {
+          this._emulateFixedPosition(true);
+        }
+      }, 250);
+    });
   }
 
   /**
@@ -154,6 +175,23 @@ class OffCanvas extends Plugin {
     if (hasReveal === true) {
       this.$content
         .addClass(`has-reveal-${this.position}`);
+    }
+  }
+
+  /**
+   * Emulate fixed position for a nested off-canvas element by using fixed height and current document scrollTop.
+   * This is necessary due to the transform property of the content that creates a new local coordinate system.
+   * @param  {Boolean} resetHeight - true if the element's height should be set as well (mostly on init and window resize)
+   * @private
+   */
+  _emulateFixedPosition(resetHeight = false) {
+    if (this.nested === true) {
+
+      this.$element.css('top', $(document).scrollTop());
+      
+      if (resetHeight === true) {
+        this.$element.height( $(window).height() );
+      }
     }
   }
 
@@ -255,6 +293,8 @@ class OffCanvas extends Plugin {
       this.$element.siblings('[data-off-canvas-content]').css('transition-duration', '');
     }
 
+    this._emulateFixedPosition();
+
     /**
      * Fires when the off-canvas menu opens.
      * @event OffCanvas#opened
@@ -268,7 +308,8 @@ class OffCanvas extends Plugin {
     this.$content.addClass('is-open-' + this.position);
 
     // If `contentScroll` is set to false, add class and disable scrolling on touch devices.
-    if (this.options.contentScroll === false) {
+    // If off-canvas element is nested, force `contentScroll` false.
+    if (this.options.contentScroll === false || this.nested === true) {
       $('body').addClass('is-off-canvas-open').on('touchmove', this._stopScrolling);
       this.$element.on('touchstart', this._recordScrollable);
       this.$element.on('touchmove', this._stopScrollPropagation);
@@ -324,7 +365,8 @@ class OffCanvas extends Plugin {
     this.$content.removeClass('is-open-left is-open-top is-open-right is-open-bottom');
 
     // If `contentScroll` is set to false, remove class and re-enable scrolling on touch devices.
-    if (this.options.contentScroll === false) {
+    // // If off-canvas element is nested, force `contentScroll` false.
+    if (this.options.contentScroll === false || this.nested === true) {
       $('body').removeClass('is-off-canvas-open').off('touchmove', this._stopScrolling);
       this.$element.off('touchstart', this._recordScrollable);
       this.$element.off('touchmove', this._stopScrollPropagation);
@@ -397,6 +439,7 @@ class OffCanvas extends Plugin {
     this.close();
     this.$element.off('.zf.trigger .zf.offcanvas');
     this.$overlay.off('.zf.offcanvas');
+    $(window).off(this.resizeListener);
   }
 }
 
