@@ -26,7 +26,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
     <a href="#" class="accordion-title">Getting Started</a>
     <div class="accordion-content" data-tab-content>
 
-      <a href="https://youtu.be/lFrpnk0Oo_8?list=PLJVWPVPk_D_0-LDRu8k29w-7ktRk_dJ5n" target="_blank">
+      <a href="{{root}}starter-projects.html?video=lFrpnk0Oo_8" target="_blank">
         <div class="row accordion-content-item">
           <div class="medium-4 columns accordion-content-item-thumbnail">
             <img src="http://i3.ytimg.com/vi/lFrpnk0Oo_8/maxresdefault.jpg" class="" height="" width="" alt="">
@@ -39,7 +39,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
         </div>
       </a>
 
-      <a target="_blank" href="https://youtu.be/3Uj74uJ3GSQ">
+      <a href="{{root}}starter-projects.html?video=3Uj74uJ3GSQ" target="_blank">
         <div class="row accordion-content-item">
           <div class="medium-4 columns accordion-content-item-thumbnail">
             <img src="http://i3.ytimg.com/vi/3Uj74uJ3GSQ/maxresdefault.jpg" class="" height="" width="" alt="">
