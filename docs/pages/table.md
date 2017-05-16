@@ -9,10 +9,12 @@ sass: scss/components/_table.scss
 
 No bells or whistles here, just a straight up table for all of your basic table needs.
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="5:45"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+<p>
+  <a class="" data-open-video="5:45"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
 
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/zwaazZ" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/zwaazZ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -54,10 +56,12 @@ No bells or whistles here, just a straight up table for all of your basic table 
 
 Need to spiff up the table just a tad? Just add the class `.hover` to lightly darken the table rows on hover.
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="5:45"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+<p>
+  <a class="" data-open-video="5:45"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
 
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/xdzzgr" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/xdzzgr?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html
@@ -102,10 +106,12 @@ Need to spiff up the table just a tad? Just add the class `.hover` to lightly da
 
 By default, table rows are striped. There's an `.unstriped` class to remove the stripes. If you change `$table-is-striped` to `false` to remove stripes from all tables, use the `.striped` class to add stripes.
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="5:45"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+<p>
+  <a class="" data-open-video="5:45"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
 
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/QvxxMW" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/IamManchanda/pen/MmBQag?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html
@@ -150,10 +156,12 @@ By default, table rows are striped. There's an `.unstriped` class to remove the 
 
 To stack a table on small screens, add the class `.stack`.
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="5:45"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+<p>
+  <a class="" data-open-video="5:45"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
 
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/JNZEKe?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/IamManchanda/pen/EmpQPK?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html
@@ -198,13 +206,18 @@ To stack a table on small screens, add the class `.stack`.
 
 Got a lot of tubular tabular data? Add a wrapper element with the class `.table-scroll` around your table to enable horizontal scrolling.
 
-<a class="" data-open-video="5:45"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
+<p>
+  <a class="" data-open-video="5:45"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
 
 <div class="primary callout">
   <p>The wrapping element was added in Foundation 6.2&mdash;prior to that, you just added the class <code>.scroll</code> to the table itself. However, this method doesn't work great with Internet Explorer 9. <strong>If you don't need IE9 support, you can just add <code>.scroll</code> to your table, and the wrapping element isn't necessary.</strong>
 </div>
 
-<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/JNZEKe?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/IamManchanda/pen/vmadKp?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html
 <div class="table-scroll">
