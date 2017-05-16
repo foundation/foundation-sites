@@ -34,6 +34,10 @@ The Off-canvas container also needs a positioning class to determine which side 
 - `.position-top`
 - `.position-bottom`
 
+<p>
+  <a class="" data-open-video="2:00"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
 Also be sure the off-canvas panel has a unique ID so it can be targeted by the click trigger.
 
 Example:
@@ -54,6 +58,10 @@ Along with the Off-canvas container, the main content of your page will be house
 
 So putting it all together:
 
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/ZKjXvQ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html
 <body>
   <div class="off-canvas position-left" id="offCanvas" data-off-canvas>
@@ -67,7 +75,7 @@ So putting it all together:
 
 ### Wrapper
 
-You can add an optionalwrapper around off-canvas and the content. This hides the vertical (on top/bottom off-canvas) or horizontal (on left/right off-canvas) scrollbars the body will have.
+You can add an optional wrapper around off-canvas and the content. This hides the vertical (on top/bottom off-canvas) or horizontal (on left/right off-canvas) scrollbars the body will have.
 Simply add a container with the class `.off-canvas-wrapper`.
 
 ```html
@@ -87,6 +95,10 @@ Simply add a container with the class `.off-canvas-wrapper`.
 
 To create a click trigger that opens the panel, add the attribute `data-open` or `data-toggle` to any element. That element will then open or toggle the panel when clicked on. The value of the data attribute should be the ID of the off-canvas.
 
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/ZKjXvQ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <button type="button" class="button" data-toggle="offCanvasLeft">Open Menu</button>
 ```
@@ -94,6 +106,10 @@ To create a click trigger that opens the panel, add the attribute `data-open` or
 ### Close Button
 
 Foundation's Close component can be used inside the off-canvas to close it.
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/QvBQjo?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html
 <button class="close-button" aria-label="Close menu" type="button" data-close>
