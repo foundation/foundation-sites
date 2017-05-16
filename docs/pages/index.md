@@ -165,7 +165,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
       <div class="row accordion-content-item">
         <div class="medium-4 columns accordion-content-item-thumbnail">
           <div class="responsive-embed widescreen">
-            <img src="http://placehold.it/300x300" class="" height="" width="" alt="">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/dZZk9Kz5j_0" frameborder="0" allowfullscreen></iframe>
           </div>
         </div>
         <div class="medium-8 columns">
@@ -179,7 +179,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
       <div class="row accordion-content-item">
         <div class="medium-4 columns accordion-content-item-thumbnail">
           <div class="responsive-embed widescreen">
-            <img src="http://placehold.it/300x300" class="" height="" width="" alt="">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/dZZk9Kz5j_0" frameborder="0" allowfullscreen></iframe>
           </div>
         </div>
         <div class="medium-8 columns">
@@ -190,10 +190,11 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
         </div>
       </div>
 
+      <!-- 
       <div class="row accordion-content-item">
         <div class="medium-4 columns accordion-content-item-thumbnail">
           <div class="responsive-embed widescreen">
-            <img src="http://placehold.it/300x300" class="" height="" width="" alt="">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/dZZk9Kz5j_0" frameborder="0" allowfullscreen></iframe>
           </div>
         </div>
         <div class="medium-8 columns">
@@ -203,6 +204,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
           <a target="_blank" href="#" class="accordion-content-item-cta">Learn More</a>
         </div>
       </div>
+      -->
 
 
     </div>
