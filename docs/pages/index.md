@@ -67,7 +67,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
           </div>
           <div class="medium-8 columns">
             <h5>The World’s Most Advanced Front-end Framework</h5>
-            <p>Coming from another framework? It’s the perfect time to make the switch and learn Foundation. Not only have we revamped all of our documentation and put together a brand new, cutting edge set of Building Blocks to learn from, but we’ve prepared a great resource to help you bring your team on board. Download our free e-book to get your guide to convincing your team that Foundation is better, easy to learn, and more flexible than their current framework.
+            <p>Coming from another framework? It’s the perfect time to make the switch and learn Foundation. Download our free e-book that will help you convince your team that Foundation is better, easier to learn, and more flexible than anything else out there.
             </p>
             <span class="accordion-content-item-cta">Learn More</span>
           </div>
