@@ -10,10 +10,12 @@ flex: true
 
 Foundation's Media Object will help you create this common repeatable pattern and can be used several different ways. A media object is a container with the class `.media-object`, and two or three sections with the class `.media-object-section`.
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="1:58"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+<p>
+  <a class="" data-open-video="1:58"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
 
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/NjzbEG?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/NjzbEG?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -54,10 +56,12 @@ Foundation's Media Object will help you create this common repeatable pattern an
 
 Each section aligns to the top by default, but individual sections can also be middle- or bottom-aligned with the `.middle` and `.bottom` classes.
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="3:33"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+<p>
+  <a class="" data-open-video="3:33"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
 
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/aWKpOj" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/aWKpOj" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -108,10 +112,12 @@ In flexbox mode, you can use the <a href="flexbox.html#helper-classes">flexbox h
 
 By adding the `.stack-for-small` class, you can make your media object responsive. Images will get a width of 100%, but this can be changed.
 
-<div class="docs-video-codepen-container">
-  <a class="" data-open-video="5:45"><img src="https://www.elastic.co/static/images/svg/video-play-btn.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+<p>
+  <a class="" data-open-video="5:45"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
 
-  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/JNZEKe?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/JNZEKe?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -134,7 +140,9 @@ By adding the `.stack-for-small` class, you can make your media object responsiv
 
 By nesting a media object into the media-object-section section, you can easily indent it. This is great for comment strings.
 
-<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/aWKpOj" target="_blank"><img src="{{root}}assets/img/logos/cp1.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/aWKpOj" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <div class="media-object">

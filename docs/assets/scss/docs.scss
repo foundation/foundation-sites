@@ -209,6 +209,7 @@ a[data-open-video] {
   .video-icon {
     margin-top: -4px;
     margin-right: 4px;
+    transition: all 0.25s ease-in;
   }
 
   &:hover {

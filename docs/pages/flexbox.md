@@ -68,7 +68,7 @@ To understand how these classes work, you need to understand the parent-child re
 Here's a basic example: when using the grid, a row is a flex parent, and a column is a flex child.
 
 <div class="docs-codepen-container">
-<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/XRZOjE?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/XRZOjE?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html
@@ -116,7 +116,7 @@ Horizontal alignment classes are applied to flex parents. Left alignment is the 
 </div>
 
 <div class="docs-codepen-container">
-<a class="codepen-logo-link left" href="http://codepen.io/ZURBFoundation/pen/WjMmvM?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<a class="codepen-logo-link left" href="http://codepen.io/ZURBFoundation/pen/WjMmvM?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 You might be wondering what the difference between `.align-justify` and `.align-spaced` is. A justified grid (`justify-content: space-between`) evenly distributes the space *between* each column. The first and last columns pin to the edge of the grid.
@@ -143,7 +143,7 @@ Stretch alignment is the default. To set parent alignment, use these classes:
 </div>
 
 <div class="docs-codepen-container">
-<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/pPaYwQ" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/pPaYwQ" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -170,7 +170,7 @@ To align an individual child, use the below classes. They use the same alignment
 - `.align-self-stretch`
 
 <div class="docs-codepen-container">
-<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/zwRbjY?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/zwRbjY?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -192,7 +192,7 @@ Central alignment can be applied to a flex parent, which will centrally align al
 </div>
 
 <div class="docs-codepen-container">
-<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/pPamOp?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/pPamOp?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -226,7 +226,7 @@ For children, there are 3 quick helper classes to apply the flex property. These
 - `.flex-child-shrink` (flex child that will shrink to minimum possible space)
 
 <div class="docs-codepen-container">
-<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/jmZoQa?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/jmZoQa?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -245,7 +245,7 @@ For children, there are 3 quick helper classes to apply the flex property. These
 All of these helper classes come in responsive varieties, prefixed with all of your named breakpoints. So you can do things like:
 
 <div class="docs-codepen-container">
-<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/pPaXEO?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/codepen-button.svg" class="" height="" width="" alt="edit on codepen button"></a>
+<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/pPaXEO?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example

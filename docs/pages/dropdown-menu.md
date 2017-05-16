@@ -1,7 +1,7 @@
 ---
 title: Dropdown Menu
 description: Change a basic Menu into an expandable dropdown menu with the Dropdown Menu plugin.
-video: qDybCaxK3bA
+video: '0F68zptD_nQ'
 sass: scss/components/_dropdown-menu.scss
 js: js/foundation.dropdownMenu.js
 ---
@@ -21,8 +21,14 @@ Dropdown menus build on the [Menu](menu.html) component's syntax. Add the class 
 
 To create dropdown menus, nest a new `<ul>` inside an `<li>`. You can nest further to create more levels of dropdowns.
 
+<a class="" data-open-video="0:33"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
 <div class="primary callout">
   <p>Note that the <code>&lt;ul&gt;</code> goes <em>after</em> the <code>&lt;a&gt;</code>, and not inside of it.</p>
+</div>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/XRYWPO?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html
@@ -89,14 +95,19 @@ Add the `.vertical` class to the top-level menu to make it vertical. Sub-menus a
   <p>Menus are block-level elements, which means they stretch to fill the width of their container. To make the below example less goofy, we've hard-coded a <code>max-width</code> on the menu.</p>
 </div>
 
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/LyrYaE?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html
-<ul class="vertical dropdown menu" data-dropdown-menu style="max-width: 300px;">
+<ul class="vertical dropdown menu" data-dropdown-menu style="max-width: 250px;">
   <li><a href="#">Item 1</a></li>
   <!-- ... -->
 </ul>
 ```
 
-<ul class="vertical dropdown menu" data-dropdown-menu style="max-width: 300px;">
+<ul class="vertical dropdown menu" data-dropdown-menu style="max-width: 250px;">
   <li>
     <a href="#Item-1">Item 1</a>
     <ul class="menu">

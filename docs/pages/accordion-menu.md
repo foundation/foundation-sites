@@ -12,12 +12,19 @@ Accordion menus follow the basic [Menu](menu.html) syntax of `<ul>`, `<li>`, and
 
 Any `<a>` will behave like a standard link. However, any `<a>` paired with a nested `<ul>` menu will then slide that sub-menu up and down when clicked on.
 
+<a class="" data-open-video="0:29"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
 <div class="primary callout">
   <p>You can use the built-in <code>.nested</code> class to add an indent to a nested menu.</p>
 </div>
 
 <div class="primary callout">
   <p>To have a sub-menu already open when the page loads, add the class <code>.is-active</code> to that sub-menu.</p>
+</div>
+
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/qmKEQr?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html
@@ -33,7 +40,7 @@ Any `<a>` will behave like a standard link. However, any `<a>` paired with a nes
 </ul>
 ```
 
-<ul class="vertical menu" data-accordion-menu>
+<ul class="vertical menu" data-accordion-menu style="max-width: 250px">
   <li>
     <a href="#">Item 1</a>
     <ul class="menu vertical nested">

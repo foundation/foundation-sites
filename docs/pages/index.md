@@ -160,8 +160,8 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
     <a href="#" class="accordion-title">Additional Resources</a>
     <div class="accordion-content" data-tab-content>
 
-      <div class="row accordion-content-item">
-        <a target="_blank" href="https://youtu.be/3nCXVJXe_gg">
+      <a target="_blank" href="https://youtu.be/3nCXVJXe_gg">
+        <div class="row accordion-content-item">
           <div class="medium-4 columns accordion-content-item-thumbnail">
             <img src="{{root}}assets/img/zero-to-website.png" class="" height="" width="" alt="">
           </div>
@@ -170,21 +170,21 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
             <p>A great place to start! Laurel and Christine from ZURB take you through the basics all the way to deploying your first site.</p>
             <span class="accordion-content-item-cta">Watch Video</span>
           </div>
-        </a>
-      </div>
-
-      <div class="row accordion-content-item accordion-course-callout">
-        <div class="medium-4 columns accordion-content-item-thumbnail">
-          <a target="_blank" href="http://zurb.com/university/foundation-intro" class="accordion-content-item-cta">
-            <img src="{{root}}assets/img/foundation-intro-class.jpg" style="height: 142px;">
-          </a>
         </div>
+      </a>
+
+      <a target="_blank" href="http://zurb.com/university/foundation-intro">
+        <div class="row accordion-content-item accordion-course-callout">
+          <div class="medium-4 columns accordion-content-item-thumbnail">
+            <img src="{{root}}assets/img/foundation-intro-class.jpg" style="height: 142px;">
+          </div>
         <div class="medium-8 columns">
           <h5>Live Webinar: Introduction to Foundation 6</h5>
           <p>Achieve maximum thrust by learning how to use Foundation 6 to power your projects. The Foundation team will get you up to speed on everything you need to know to get the most out of Foundation 6.</p>
-          <a target="_blank" href="http://zurb.com/university/foundation-intro" class="accordion-content-item-cta">Learn More</a>
+          <span href="http://zurb.com/university/foundation-intro" class="accordion-content-item-cta">Learn More</span>
         </div>
       </div>
+
 
     </div>
   </li>

@@ -22,6 +22,12 @@ It's also possible to download the template files directly from GitHub. Run `npm
 
 ## ZURB Template
 
+<div class="responsive-embed widescreen">
+  <iframe width="500" height="315" src="https://www.youtube.com/embed/3Uj74uJ3GSQ" frameborder="0" allowfullscreen></iframe>
+  <a id="docs-mobile-video-link" class="docs-mobile-video" target="_blank" href="https://www.youtube.com/watch?v=3Uj74uJ3GSQ"></a>
+</div>
+
+
 The official ZURB Template includes not only Sass processing, but also JavaScript processing, Handlebars templating, and image compression. We use this exact template at ZURB for our client work!
 
 You can set up an advanced project through the Foundation CLI with this command:

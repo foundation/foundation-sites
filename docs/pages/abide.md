@@ -13,6 +13,14 @@ tags:
 
 These input types create a text field: `text`, `date`, `datetime`, `datetime-local`, `email`, `month`, `number`, `password`, `search`, `tel`, `time`, `url`, and `week`. Note the use of the novalidate attribute to disable any browser validation that could conflict with Abide.
 
+<p>
+  <a class="" data-open-video="0:27"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/brettsmason/pen/wdXRWP?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <form data-abide novalidate>
   <div data-abide-error class="alert callout" style="display: none;">

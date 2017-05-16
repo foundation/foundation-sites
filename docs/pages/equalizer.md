@@ -9,6 +9,14 @@ js: js/foundation.equalizer.js
 
 To set up an Equalizer group, you need a container, which gets the attribute `data-equalizer`, and then a series of child elements, which get the attribute `data-equalizer-watch`. The child elements will all be resized to have the same height.
 
+<p>
+  <a class="" data-open-video="0:47"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/brettsmason/pen/pPKqrq?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <div class="row" data-equalizer data-equalize-on="medium" id="test-eq">
   <div class="medium-4 columns">
@@ -36,6 +44,10 @@ To set up an Equalizer group, you need a container, which gets the attribute `da
 To use one Equalizer inside another, each container needs a unique ID, assigned with the `data-equalizer` attribute. Each `data-equalizer-watch` element should then have a value that matches its parent.
 
 In the below example, the first set of Equalizer elements have the value `foo`, while the inside elements have the value `bar`. In the live example, we've also set the `equalizeOn` option to 'medium' for the parent elements, and the child Equalizer contained in the first div equalizes on stack, and maintains equal height.
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/brettsmason/pen/zwayPO?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html
 <div class="row" data-equalizer="foo">
@@ -89,10 +101,16 @@ In the below example, the first set of Equalizer elements have the value `foo`, 
 
 If you have a gallery of items that wrap multiple times, Equalizer can be configured to match each row's items in height. Works great with the block grid!
 
+<a class="" data-open-video="4:24"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
 <div class="callout primary">
   <p><strong>Under the Hood:</strong></p>
   <p>Equalizer splits the `data-equalizer-watch` elements into groups by checking their vertical offsets, and grouping ones with the same offset into a "row".</p>
   <p>Be aware on what you set `data-equalizer-watch`, if the top position is different, Equalizer will interpret that as a new "row" and equalize accordingly.</p>
+</div>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/brettsmason/pen/pPKqrq?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html

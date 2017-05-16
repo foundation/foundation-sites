@@ -18,6 +18,14 @@ Inside the accordion, place a series of panes with the class `.accordion-item` a
 
 Each pane has a **title**, an `<a>` with the class `.accordion-title`, and a **content area**, an element with the class `.accordion-content` and the attribute `data-tab-content`.
 
+<p>
+  <a class="" data-open-video="1:25"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/WjzKqa?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html
 <ul class="accordion" data-accordion>
   <li class="accordion-item is-active" data-accordion-item>
@@ -68,6 +76,15 @@ Once you put it all together, here's what you get!
 
 By default, only one pane of an accordion can be open at a time. This can be changed by setting the `multiExpand` option to `true`.
 
+<p>
+  <a class="" data-open-video="5:11"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/ybEErg?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
+
 ```html
 <ul class="accordion" data-accordion data-multi-expand="true">
   <!-- ... -->
@@ -100,6 +117,14 @@ By default, only one pane of an accordion can be open at a time. This can be cha
 ### All Closed
 
 By default, at least one pane in an accordion must be open. This can be changed by setting `allowAllClosed` option to `true`.
+
+<p>
+  <a class="" data-open-video="6:09"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/zwaaVp?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html
 <ul class="accordion" data-accordion data-allow-all-closed="true">
