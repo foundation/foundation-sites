@@ -294,6 +294,28 @@ $maincontent-class: 'off-canvas-content' !default;
       box-shadow: $offcanvas-shadow;
       content: " ";
     }
+
+    // Use inner box-shadow for nested off-canvas element because ::after doesn't work if the element's height is greater than the viewport's height
+    // TODO: after cross-broswer testing, adapt this for EVERY push element no matter if nested or not
+    @at-root .#{$maincontent-class} &.is-transition-push {
+      @if $position == left {
+        @include inner-side-shadow(right);
+      }
+      @else if $position == right {
+        @include inner-side-shadow(left);
+      }
+      @else if $position == top {
+        @include inner-side-shadow(bottom);
+      }
+      @else if $position == bottom {
+        @include inner-side-shadow(top);
+      }
+
+      &::after {
+        width: 0;
+        box-shadow: none;
+      }
+    }
   }
 
   // No transform on overlap transition
@@ -339,6 +361,7 @@ $content: $maincontent-class
   transform: none !important;
   visibility: visible !important;
   height: auto !important;
+  box-shadow: none !important;
   position: static;
   background: inherit;
   width: inherit;
