@@ -60,10 +60,10 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
 
     <div class="accordion-content" data-tab-content>
 
-      <a target="_blank" href="#">
+      <a target="_blank" href="http://foundation.zurb.com/learn/get-your-team-on-a-solid-foundation.html">
         <div class="row accordion-content-item">
           <div class="medium-4 columns accordion-content-item-thumbnail">
-            <img src="http://placehold.it/300x300" class="" height="" width="" alt="">
+            <img src="http://i3.ytimg.com/vi/aPd3B5CqXYw/maxresdefault.jpg" class="" height="" width="" alt="">
           </div>
           <div class="medium-8 columns">
             <h5>The World’s Most Advanced Front-end Framework</h5>
@@ -74,14 +74,14 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
         </div>
       </a>
 
-      <a target="_blank" href="#">
+      <a target="_blank" href="http://foundation.zurb.com/learn/build-your-career-on-a-solid-foundation.html">
         <div class="row accordion-content-item">
           <div class="medium-4 columns accordion-content-item-thumbnail">
-            <img src="http://placehold.it/300x300" class="" height="" width="" alt="">
+            <img src="http://i3.ytimg.com/vi/aPd3B5CqXYw/maxresdefault.jpg" class="" height="" width="" alt="">
           </div>
           <div class="medium-8 columns">
             <h5>Build Your Career on a Solid Foundation</h5>
-            <p>Web technologies are rapidly changing, but time and resources are finite. It can be difficult to determine where to invest your energy to get a return on your investment. Learning Foundation places you at the cutting edge of the website development. Over Foundation’s 5 year history, it has consistently led the pack, changing the way the web is designed and built. Download our free e-book to learn more about the professional opportunities with the world’s most advanced front-end framework, and get started building YOUR career on a solid Foundation.
+            <p>Web technologies are rapidly changing, but time and resources are finite. Find out why Learning Foundation places you at the cutting edge of the website development.
             </p>
             <span class="accordion-content-item-cta">Learn More</span>
           </div>
