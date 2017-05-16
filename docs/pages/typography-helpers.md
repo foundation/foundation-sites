@@ -18,6 +18,14 @@ You can change the text alignment of an element by adding `.text-left`, `.text-r
 
 Adding a breakpoint to the front of a text alignment class will cause it to only be applied on that size screen or larger. For example, `.medium-text-center` will keep text left-aligned on the smallest screens, but switch to center-aligned on medium screens and larger.
 
+<p>
+  <a class="" data-open-video="5:45"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/IamManchanda/pen/QvBQOe?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html
 <p class="text-left"><!-- ... --></p>
 <p class="text-right"><!-- ... --></p>
@@ -39,6 +47,14 @@ Adding a breakpoint to the front of a text alignment class will cause it to only
 
 Lighten up your headers by adding a class of `.subheader` to any header element.
 
+<p>
+  <a class="" data-open-video="5:45"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/IamManchanda/pen/vmadjr?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <h1 class="subheader">h1.subheader</h1>
 <h2 class="subheader">h2.subheader</h2>
@@ -54,6 +70,14 @@ Lighten up your headers by adding a class of `.subheader` to any header element.
 
 A slightly-larger-than-normal block of text, useful for decks, blurbs, or other descriptive text.
 
+<p>
+  <a class="" data-open-video="5:45"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/IamManchanda/pen/GmBQGY?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <p class="lead">What are your cats <em>really</em> dreaming about while they sleep?</p>
 ```
@@ -63,6 +87,14 @@ A slightly-larger-than-normal block of text, useful for decks, blurbs, or other 
 ## Un-bulleted List
 
 In Foundation, the `<ul>` is a bulleted list by default, but you can add the class `.no-bullet` to remove the bullets.
+
+<p>
+  <a class="" data-open-video="5:45"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/IamManchanda/pen/wdxyxb?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <ul class="no-bullet">
@@ -86,6 +118,14 @@ In Foundation, the `<ul>` is a bulleted list by default, but you can add the cla
 ## Statistics
 
 If you're building a dashboard, you might need to display some important numbers *real big*. Just add the `.stat` class to any element to amp up the font size.
+
+<p>
+  <a class="" data-open-video="5:45"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/IamManchanda/pen/XRBZxp?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <p>Days without merge conflict</p>
