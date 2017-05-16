@@ -63,7 +63,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
       <a target="_blank" href="http://foundation.zurb.com/learn/get-your-team-on-a-solid-foundation.html">
         <div class="row accordion-content-item">
           <div class="medium-4 columns accordion-content-item-thumbnail">
-            <img src="http://i3.ytimg.com/vi/aPd3B5CqXYw/maxresdefault.jpg" class="" height="" width="" alt="">
+            <img src="https://i.ytimg.com/vi/kLgRITKjcWw/mqdefault.jpg" class="" height="" width="" alt="">
           </div>
           <div class="medium-8 columns">
             <h5>The World’s Most Advanced Front-end Framework</h5>
@@ -77,7 +77,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
       <a target="_blank" href="http://foundation.zurb.com/learn/build-your-career-on-a-solid-foundation.html">
         <div class="row accordion-content-item">
           <div class="medium-4 columns accordion-content-item-thumbnail">
-            <img src="http://i3.ytimg.com/vi/aPd3B5CqXYw/maxresdefault.jpg" class="" height="" width="" alt="">
+            <img src="https://i.ytimg.com/vi/dZZk9Kz5j_0/mqdefault.jpg" class="" height="" width="" alt="">
           </div>
           <div class="medium-8 columns">
             <h5>Build Your Career on a Solid Foundation</h5>
