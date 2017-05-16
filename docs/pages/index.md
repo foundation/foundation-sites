@@ -26,133 +26,31 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
     <a href="#" class="accordion-title">Getting Started</a>
     <div class="accordion-content" data-tab-content>
 
-
-      <div class="row accordion-content-item">
-        <div class="medium-4 columns accordion-content-item-thumbnail">
-          <div class="responsive-embed widescreen">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/lFrpnk0Oo_8" frameborder="0" allowfullscreen></iframe>
+      <a href="https://youtu.be/lFrpnk0Oo_8?list=PLJVWPVPk_D_0-LDRu8k29w-7ktRk_dJ5n" target="_blank">
+        <div class="row accordion-content-item">
+          <div class="medium-4 columns accordion-content-item-thumbnail">
+            <img src="http://i3.ytimg.com/vi/lFrpnk0Oo_8/maxresdefault.jpg" class="" height="" width="" alt="">
+          </div>
+          <div class="medium-8 columns">
+            <h5>Foundation Starter Projects - CSS Download</h5>
+            <p>This video will take you through downloading and getting started with the Foundation CSS project.</p>
+            <span class="accordion-content-item-cta"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="" height="" width="" alt=""> Watch Video</span>
           </div>
         </div>
-        <div class="medium-8 columns">
-          <h5>Foundation Starter Projects - CSS Download</h5>
-          <p>This video will take you through downloading and getting started with the Foundation CSS project.</p>
-          <a target="_blank" href="https://youtu.be/lFrpnk0Oo_8?list=PLJVWPVPk_D_0-LDRu8k29w-7ktRk_dJ5n" class="accordion-content-item-cta">Watch Video</a>
-        </div>
-      </div>
+      </a>
 
-      <div class="row accordion-content-item">
-        <div class="medium-4 columns accordion-content-item-thumbnail">
-          <div class="responsive-embed widescreen">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/3Uj74uJ3GSQ" frameborder="0" allowfullscreen></iframe>
+      <a target="_blank" href="https://youtu.be/3Uj74uJ3GSQ">
+        <div class="row accordion-content-item">
+          <div class="medium-4 columns accordion-content-item-thumbnail">
+            <img src="http://i3.ytimg.com/vi/3Uj74uJ3GSQ/maxresdefault.jpg" class="" height="" width="" alt="">
+          </div>
+          <div class="medium-8 columns">
+            <h5>Foundation Starter Projects - ZURB Stack</h5>
+            <p>This video will take you through downloading and getting started with the Foundation ZURB stack.</p>
+            <span class="accordion-content-item-cta"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="" height="" width="" alt=""> Watch Video</span>
           </div>
         </div>
-        <div class="medium-8 columns">
-          <h5>Foundation Starter Projects - ZURB Stack</h5>
-          <p>This video will take you through downloading and getting started with the Foundation ZURB stack.</p>
-          <a target="_blank" href="https://youtu.be/3Uj74uJ3GSQ" class="accordion-content-item-cta">Watch Video</a>
-        </div>
-      </div>
-
-      <div class="row accordion-content-item accordion-course-callout">
-        <div class="medium-4 columns accordion-content-item-thumbnail">
-          <a target="_blank" href="http://zurb.com/university/foundation-intro" class="accordion-content-item-cta">
-          <img src="{{root}}assets/img/foundation-intro-class.jpg">
-        </a>
-        </div>
-        <div class="medium-8 columns">
-          <h5>Live Webinar: Introduction to Foundation 6</h5>
-          <p>Achieve maximum thrust by learning how to use Foundation 6 to power your projects. The Foundation team will get you up to speed on everything you need to know to get the most out of Foundation 6.</p>
-          <a target="_blank" href="http://zurb.com/university/foundation-intro" class="accordion-content-item-cta">Learn More</a>
-        </div>
-      </div>
-
-    </div>
-  </li>
-  <li class="accordion-item welcome-accordion-item" data-accordion-item>
-    <a href="#" class="accordion-title">Beginner Lessons</a>
-    <div class="accordion-content" data-tab-content>
-      <div class="row accordion-content-item">
-        <div class="medium-4 columns accordion-content-item-thumbnail">
-          <div class="responsive-embed widescreen">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/3nCXVJXe_gg" frameborder="0" allowfullscreen></iframe>
-          </div>
-        </div>
-        <div class="medium-8 columns">
-          <h5>Digging Into Foundation's Starter Package</h5>
-          <p>Frameworks are a great resource to start with when building your site because they include a boilerplate, a CSS reset, a grid and pre-built UI components. Covers the Foundation file structure, how to add pages, and how to overwrite our premade CSS.</p>
-          <a target="_blank" href="https://youtu.be/3nCXVJXe_gg" class="accordion-content-item-cta">Watch Video</a>
-        </div>
-      </div>
-      <div class="row accordion-content-item">
-        <div class="medium-4 columns accordion-content-item-thumbnail">
-          <div class="responsive-embed widescreen">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/yGDTqm713AI" frameborder="0" allowfullscreen></iframe>
-          </div>
-        </div>
-        <div class="medium-8 columns">
-          <h5>Intro to the Foundation Grid</h5>
-          <p>Dive into the Foundation grid system. You’ll learn to wield the magical powers of the Foundation grid to make your content fit nicely on any device. Foundation’s grid is based on tried-and-true CSS — specifically, floats and clears or display: flex in the Flexbox version.
-</p>
-          <a target="_blank" href="https://youtu.be/yGDTqm713AI" class="accordion-content-item-cta">View Lesson</a>
-        </div>
-      </div>
-
-      <div class="row accordion-content-item">
-        <div class="medium-4 columns accordion-content-item-thumbnail">
-          <div class="responsive-embed widescreen">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/mLiX230QVRM" frameborder="0" allowfullscreen></iframe>
-          </div>
-        </div>
-        <div class="medium-8 columns">
-          <h5>Have It Your Way with Foundation's Modular Responsive Navigation</h5>
-          <p>Learn how Foundation’s Responsive Navigation plugin lets you write a menu once and display it any number of different ways depending on media query.</p>
-          <a target="_blank" href="https://www.youtube.com/watch?v=mLiX230QVRM" class="accordion-content-item-cta">View Lesson</a>
-        </div>
-      </div>
-    </div>
-  </li>
-  <li class="accordion-item welcome-accordion-item" data-accordion-item>
-    <a href="#" class="accordion-title">Templates and Code Snippets</a>
-    <div class="accordion-content " data-tab-content>
-
-      <div class="row accordion-content-item">
-        <div class="medium-4 columns accordion-content-item-thumbnail">
-          <a target="_blank" href="http://foundation.zurb.com/templates.html">
-            <img src="http://foundation.zurb.com/assets/img/sites-templates/foundation6-templates-07.svg">
-          </a>
-        </div>
-        <div class="medium-8 columns">
-          <h5>Foundation Templates</h5>
-          <p>Get eight responsive templates to kick off your projects. Each of these responsive HTML templates were built with the same techniques and principles we teach in our Introduction to Foundation 6 Course to build your business upon.</p>
-          <a target="_blank" href="http://foundation.zurb.com/templates.html">View Templates</a>
-        </div>
-      </div>
-
-      <div class="row accordion-content-item">
-        <div class="medium-4 columns accordion-content-item-thumbnail">
-          <div class="responsive-embed widescreen">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/SmhGUT_N-jw" frameborder="0" allowfullscreen></iframe>
-          </div>
-        </div>
-        <div class="medium-8 columns">
-          <h5>Foundation Building Blocks</h5>
-          <p>Building Blocks are coded UI components you can drop into any standard Foundation project. From navigation components to media and everything in between, Building Blocks will help you rapidly accelerate your development time. Browse our library of over 100 Building Blocks created by the team at ZURB and the Foundation community.</p>
-          <a target="_blank" href="http://zurb.com/article/1469/foundation-building-blocks-over-100-compo" class="accordion-content-item-cta">Learn More</a>
-        </div>
-      </div>
-
-      <div class="row accordion-content-item">
-        <div class="medium-4 columns accordion-content-item-thumbnail">
-          <a target="_blank" href="http://foundation.zurb.com/building-blocks/kits.html" class="accordion-content-item-cta">
-            <img src="https://foundation.zurb.com/building-blocks/assets/img/kits/dashboard/dashboard-kit.jpg">
-          </a>
-        </div>
-        <div class="medium-8 columns">
-          <h5>Foundation Kits</h5>
-          <p>Foundation Kits are curated bundles of Building Blocks designed for building specific types of websites and apps. Download 7 powerful Kits to jumpstart your responsive ecommerce site, mobile app, marketing site, portfolio page, admin dashboard and more.</p>
-          <a target="_blank" href="http://foundation.zurb.com/building-blocks/kits.html" class="accordion-content-item-cta">View Kits</a>
-        </div>
-      </div>
+      </a>
 
     </div>
   </li>
@@ -162,35 +60,39 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
 
     <div class="accordion-content" data-tab-content>
 
-      <div class="row accordion-content-item">
-        <div class="medium-4 columns accordion-content-item-thumbnail">
-          <div class="responsive-embed widescreen">
-            <img src="http://placehold.it/300x300" class="" height="" width="" alt="">
+      <a target="_blank" href="#">
+        <div class="row accordion-content-item">
+          <div class="medium-4 columns accordion-content-item-thumbnail">
+            <div class="responsive-embed widescreen">
+              <img src="http://placehold.it/300x300" class="" height="" width="" alt="">
+            </div>
+          </div>
+          <div class="medium-8 columns">
+            <h5>The World’s Most Advanced Front-end Framework</h5>
+            <p>Coming from another framework? It’s the perfect time to make the switch and learn Foundation. Not only have we revamped all of our documentation and put together a brand new, cutting edge set of Building Blocks to learn from, but we’ve prepared a great resource to help you bring your team on board. Download our free e-book to get your guide to convincing your team that Foundation is better, easy to learn, and more flexible than their current framework.
+            </p>
+            <span class="accordion-content-item-cta">Learn More</span>
           </div>
         </div>
-        <div class="medium-8 columns">
-          <h5>The World’s Most Advanced Front-end Framework</h5>
-          <p>Coming from another framework? It’s the perfect time to make the switch and learn Foundation. Not only have we revamped all of our documentation and put together a brand new, cutting edge set of Building Blocks to learn from, but we’ve prepared a great resource to help you bring your team on board. Download our free e-book to get your guide to convincing your team that Foundation is better, easy to learn, and more flexible than their current framework.
-          </p>
-          <a target="_blank" href="#" class="accordion-content-item-cta">Learn More</a>
-        </div>
-      </div>
+      </a>
 
-      <div class="row accordion-content-item">
-        <div class="medium-4 columns accordion-content-item-thumbnail">
-          <div class="responsive-embed widescreen">
-            <img src="http://placehold.it/300x300" class="" height="" width="" alt="">
+      <a target="_blank" href="#">
+        <div class="row accordion-content-item">
+          <div class="medium-4 columns accordion-content-item-thumbnail">
+            <div class="responsive-embed widescreen">
+              <img src="http://placehold.it/300x300" class="" height="" width="" alt="">
+            </div>
+          </div>
+          <div class="medium-8 columns">
+            <h5>Build Your Career on a Solid Foundation</h5>
+            <p>Web technologies are rapidly changing, but time and resources are finite. It can be difficult to determine where to invest your energy to get a return on your investment. Learning Foundation places you at the cutting edge of the website development. Over Foundation’s 5 year history, it has consistently led the pack, changing the way the web is designed and built. Download our free e-book to learn more about the professional opportunities with the world’s most advanced front-end framework, and get started building YOUR career on a solid Foundation.
+            </p>
+            <span class="accordion-content-item-cta">Learn More</span>
           </div>
         </div>
-        <div class="medium-8 columns">
-          <h5>Build Your Career on a Solid Foundation</h5>
-          <p>Web technologies are rapidly changing, but time and resources are finite. It can be difficult to determine where to invest your energy to get a return on your investment. Learning Foundation places you at the cutting edge of the website development. Over Foundation’s 5 year history, it has consistently led the pack, changing the way the web is designed and built. Download our free e-book to learn more about the professional opportunities with the world’s most advanced front-end framework, and get started building YOUR career on a solid Foundation.
-          </p>
-          <a target="_blank" href="#" class="accordion-content-item-cta">Learn More</a>
-        </div>
-      </div>
+      </a>
 
-      <div class="row accordion-content-item">
+      <!-- <div class="row accordion-content-item">
         <div class="medium-4 columns accordion-content-item-thumbnail">
           <div class="responsive-embed widescreen">
             <img src="http://placehold.it/300x300" class="" height="" width="" alt="">
@@ -202,8 +104,87 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
           </p>
           <a target="_blank" href="#" class="accordion-content-item-cta">Learn More</a>
         </div>
+      </div> -->
+
+
+    </div>
+  </li>
+
+  <li class="accordion-item welcome-accordion-item" data-accordion-item>
+    <a href="#" class="accordion-title">Templates and Code Snippets</a>
+    <div class="accordion-content " data-tab-content>
+
+      <a target="_blank" href="http://foundation.zurb.com/templates.html">
+        <div class="row accordion-content-item">
+          <div class="medium-4 columns accordion-content-item-thumbnail">
+            <img src="http://foundation.zurb.com/assets/img/sites-templates/foundation6-templates-07.svg">
+          </div>
+          <div class="medium-8 columns">
+            <h5>Foundation Templates</h5>
+            <p>Get eight responsive templates to kick off your projects built with the same techniques we teach in our Introduction to Foundation 6 Course to build your business upon.</p>
+            <span class="accordion-content-item-cta">View Templates</span>
+          </div>
+        </div>
+      </a>
+
+      <a target="_blank" href="http://zurb.com/article/1469/foundation-building-blocks-over-100-compo">
+        <div class="row accordion-content-item">
+          <div class="medium-4 columns accordion-content-item-thumbnail">
+            <img src="http://i3.ytimg.com/vi/SmhGUT_N-jw/maxresdefault.jpg" class="" height="" width="" alt="" style="height: 142px;">
+          </div>
+          <div class="medium-8 columns">
+            <h5>Foundation Building Blocks</h5>
+            <p>Building Blocks are coded UI components you can drop into any standard Foundation project. Building Blocks will help you rapidly accelerate your development time.</p>
+            <span class="accordion-content-item-cta">Learn More</span>
+          </div>
+        </div>
+      </a>
+
+      <a target="_blank" href="http://foundation.zurb.com/building-blocks/kits.html">
+        <div class="row accordion-content-item">
+          <div class="medium-4 columns accordion-content-item-thumbnail">
+            <img src="https://foundation.zurb.com/building-blocks/assets/img/kits/dashboard/dashboard-kit.jpg" style="height: 142px; width: 100%;">
+          </div>
+          <div class="medium-8 columns">
+            <h5>Foundation Kits</h5>
+            <p>Foundation Kits are curated bundles of Building Blocks designed for building specific types of websites and apps. Download 7 powerful Kits to jumpstart your responsive ecommerce site, mobile app, marketing site, portfolio page, admin dashboard and more.</p>
+            <span class="accordion-content-item-cta">View Kits</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </li>
+
+  <li class="accordion-item welcome-accordion-item" data-accordion-item>
+    <a href="#" class="accordion-title">Additional Resources</a>
+    <div class="accordion-content" data-tab-content>
+
+      <div class="row accordion-content-item">
+        <a target="_blank" href="https://youtu.be/3nCXVJXe_gg">
+          <div class="medium-4 columns accordion-content-item-thumbnail">
+            <img src="{{root}}assets/img/zero-to-website.png" class="" height="" width="" alt="">
+          </div>
+          <div class="medium-8 columns">
+            <h5>Zero to Website Lessons</h5>
+            <p>A great place to start! Laurel and Christine from ZURB take you through the basics all the way to deploying your first site.</p>
+            <span class="accordion-content-item-cta">Watch Video</span>
+          </div>
+        </a>
       </div>
 
+      <div class="row accordion-content-item accordion-course-callout">
+        <div class="medium-4 columns accordion-content-item-thumbnail">
+          <a target="_blank" href="http://zurb.com/university/foundation-intro" class="accordion-content-item-cta">
+            <img src="{{root}}assets/img/foundation-intro-class.jpg" style="height: 142px;">
+          </a>
+        </div>
+        <div class="medium-8 columns">
+          <h5>Live Webinar: Introduction to Foundation 6</h5>
+          <p>Achieve maximum thrust by learning how to use Foundation 6 to power your projects. The Foundation team will get you up to speed on everything you need to know to get the most out of Foundation 6.</p>
+          <a target="_blank" href="http://zurb.com/university/foundation-intro" class="accordion-content-item-cta">Learn More</a>
+        </div>
+      </div>
 
     </div>
   </li>
@@ -272,7 +253,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
         </div>
         <div class="medium-8 columns">
           <h5>How to Create a Foundation Building Block</h5>
-          <p>So you want to build a Building Block? Well fear not! You can get in on the action too and get your work featured! We’ve put together a simple guide to submitting a Building Block. Once it’s submitted, we’ll promote your awesomeness to the greater Foundation community because you rock! 
+          <p>So you want to build a Building Block? Well fear not! You can get in on the action too and get your work featured! We’ve put together a simple guide to submitting a Building Block. Once it’s submitted, we’ll promote your awesomeness to the greater Foundation community because you rock!
 </p>
           <a target="_blank" href="https://youtu.be/DeTHUSa3NcQ" class="accordion-content-item-cta">Learn More</a>
         </div>

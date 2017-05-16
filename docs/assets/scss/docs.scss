@@ -228,3 +228,13 @@ a[data-open-video] {
     bottom: -0.25rem;
   }
 }
+
+.accordion-content-item {
+  color: $body-font-color;
+
+  .accordion-content-item-cta {
+    color: $anchor-color;
+    display: flex;
+    align-items: center;
+  }
+}
