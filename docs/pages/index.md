@@ -63,9 +63,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
       <a target="_blank" href="#">
         <div class="row accordion-content-item">
           <div class="medium-4 columns accordion-content-item-thumbnail">
-            <div class="responsive-embed widescreen">
-              <img src="http://placehold.it/300x300" class="" height="" width="" alt="">
-            </div>
+            <img src="http://placehold.it/300x300" class="" height="" width="" alt="">
           </div>
           <div class="medium-8 columns">
             <h5>The World’s Most Advanced Front-end Framework</h5>
@@ -79,9 +77,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
       <a target="_blank" href="#">
         <div class="row accordion-content-item">
           <div class="medium-4 columns accordion-content-item-thumbnail">
-            <div class="responsive-embed widescreen">
-              <img src="http://placehold.it/300x300" class="" height="" width="" alt="">
-            </div>
+            <img src="http://placehold.it/300x300" class="" height="" width="" alt="">
           </div>
           <div class="medium-8 columns">
             <h5>Build Your Career on a Solid Foundation</h5>
@@ -147,7 +143,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
           </div>
           <div class="medium-8 columns">
             <h5>Foundation Kits</h5>
-            <p>Foundation Kits are curated bundles of Building Blocks designed for building specific types of websites and apps. Download 7 powerful Kits to jumpstart your responsive ecommerce site, mobile app, marketing site, portfolio page, admin dashboard and more.</p>
+            <p>Foundation Kits are curated bundles of Building Blocks designed for building specific types of websites and apps. Download from 7 powerful Kits to jumpstart your next project.</p>
             <span class="accordion-content-item-cta">View Kits</span>
           </div>
         </div>
@@ -178,15 +174,14 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
           <div class="medium-4 columns accordion-content-item-thumbnail">
             <img src="{{root}}assets/img/foundation-intro-class.jpg" style="height: 142px;">
           </div>
-        <div class="medium-8 columns">
-          <h5>Live Webinar: Introduction to Foundation 6</h5>
-          <p>Achieve maximum thrust by learning how to use Foundation 6 to power your projects. The Foundation team will get you up to speed on everything you need to know to get the most out of Foundation 6.</p>
-          <span href="http://zurb.com/university/foundation-intro" class="accordion-content-item-cta">Learn More</span>
+          <div class="medium-8 columns">
+            <h5>Live Webinar: Introduction to Foundation 6</h5>
+            <p>Master Foundation ultra fast. The Foundation team will get you up to speed on everything you need to know to get the most out of Foundation 6.</p>
+            <span href="http://zurb.com/university/foundation-intro" class="accordion-content-item-cta">Learn More</span>
+          </div>
         </div>
-      </div>
+      </a>
 
-
-    </div>
   </li>
 
 </ul>
@@ -202,31 +197,32 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
     <a href="#" class="accordion-title">Latest Foundation Updates</a>
     <div class="accordion-content" data-tab-content>
 
-      <div class="row accordion-content-item">
-        <div class="columns accordion-content-item-thumbnail">
-          <div class="responsive-embed widescreen">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/sKYsLkJ0yvQ" frameborder="0" allowfullscreen></iframe>
+      <a target="_blank" href="http://zurb.us/2gFxwrP">
+        <div class="row accordion-content-item">
+          <div class="medium-4 columns accordion-content-item-thumbnail">
+            <img src="{{root}}assets/img/docs-630.png" class="" height="" width="" alt="">
+          </div>
+          <div class="medium-8 columns">
+            <h5>Foundation 6.3 Update: Cards, Mutation Observers, Off Canvas and More</h5>
+            <p>Our biggest update since we first released Foundation 6 last year, the 6.3 update adds loads of new components including Cards, Mutation Observers, an improved Off Canvas and more. Big thanks to our international community for all of their hard work!</p>
+            <span class="accordion-content-item-cta">Learn More</span>
           </div>
         </div>
-        <div class="columns">
-          <h5>Foundation 6.3 Update: Cards, Mutation Observers, Off Canvas and More</h5>
-          <p>Our biggest update since we first released Foundation 6 last year, the 6.3 update adds loads of new components including Cards, Mutation Observers, an improved Off Canvas and more. Big thanks to our international community for all of their hard work!</p>
-          <a target="_blank" href="http://zurb.us/2gFxwrP" class="accordion-content-item-cta">Learn More</a>
-        </div>
-      </div>
+      </a>
 
-      <div class="row accordion-content-item">
-        <div class="medium-4 columns accordion-content-item-thumbnail">
-          <div class="responsive-embed widescreen">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/KIfmv5A2ik0" frameborder="0" allowfullscreen></iframe>
+      <a target="_blank" href="https://github.com/zurb/foundation-sites/releases/tag/6.3.1">
+        <div class="row accordion-content-item">
+          <div class="medium-4 columns accordion-content-item-thumbnail">
+            <img src="{{root}}assets/img/docs-631.png" class="" height="" width="" alt="">
+          </div>
+          <div class="medium-8 columns">
+            <h5>Foundation 6.3.1 Update: Sass mixins and bug fixes</h5>
+            <p>Foundation 6.3.1 contains plenty of bug fixes underlying reworks to old features. Along with bug fixes, Foundation gets some some new Sass mixins and optimizations that make it work in more scenarios and the docs got a lot of love. Enjoy it!</p>
+            <span class="accordion-content-item-cta">Learn More</span>
           </div>
         </div>
-        <div class="medium-8 columns">
-          <h5>Foundation 6.3.1 Update: Sass mixins and bug fixes</h5>
-          <p>Foundation 6.3.1 contains plenty of bug fixes underlying reworks to old features. Along with bug fixes, Foundation gets some some new Sass mixins and optimizations that make it work in more scenarios and the docs got a lot of love. Enjoy it!</p>
-          <a target="_blank" href="https://github.com/zurb/foundation-sites/releases/tag/6.3.1" class="accordion-content-item-cta">Learn More</a>
-        </div>
-      </div>
+      </a>
+
     </div>
 
   </li>
@@ -291,18 +287,18 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
 
       <div class="row accordion-content-item">
         <div class="medium-3 columns accordion-content-item-thumbnail">
-          <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSZKUjHInXydkP7CocVvyOVtV_pDFCD5mYav0J_37YdUpnbFlNA7-1mHjdB8g" class="" height="" width="" alt="" style="border: 0;">
+          <img src="https://cdn.worldvectorlogo.com/logos/react.svg" class="" height="" width="" alt="" style="border: 0;">
         </div>
         <div class="medium-9 columns">
           <h5>React + Foundation 6</h5>
-          <p>Foundation Sites 6 components implemented in React with CSS Modules!</p>
+          <p>React is a JavaScript library for building user interfaces. Now you can use Foundation for Sites 6 components implemented in React with CSS Modules!</p>
           <a target="_blank" href="https://react.foundation/" class="accordion-content-item-cta">Learn More</a>
         </div>
       </div>
 
       <div class="row accordion-content-item">
         <div class="medium-3 columns accordion-content-item-thumbnail">
-          <img src="https://s.w.org/about/images/logos/wordpress-logo-stacked-rgb.png" class="" height="147" width="147" alt="" style="border: 0;">
+          <img src="https://s.w.org/about/images/logos/wordpress-logo-simplified-rgb.png" class="" height="147" width="147" alt="" style="border: 0;">
         </div>
         <div class="medium-9 columns">
           <h5>JointsWP: Foundation 6 meets WordPress</h5>
@@ -313,7 +309,7 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
 
       <div class="row accordion-content-item">
         <div class="medium-3 columns accordion-content-item-thumbnail">
-          <img src="https://hal0gen.github.io/vue-foundation/static/img/vue-yeti.076c405.jpg" class="" height="147" width="147" alt="" style="border: 0;">
+          <img src="{{root}}assets/img/docs-vue.jpeg" class="" height="147" width="147" alt="" style="border: 0;">
         </div>
         <div class="medium-9 columns">
           <h5>Setting up Vue 2 and Foundation 6</h5>
