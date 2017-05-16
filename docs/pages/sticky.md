@@ -51,7 +51,7 @@ Add the `.sticky` class and `[data-sticky]` to an element to create something th
     </p>
   </div>
   <div class="columns small-6 right" data-sticky-container>
-    <div class="sticky" data-sticky data-anchor="example1" data-sticky-on="small">
+    <div class="sticky" data-sticky data-margin-top="6" data-anchor="example1" data-sticky-on="small">
       <img class="thumbnail" src="assets/img/generic/rectangle-3.jpg">
     </div>
   </div>
@@ -99,7 +99,7 @@ You can also use two anchors, if you please. Using `data-top-anchor="idOfSomethi
     </p>
   </div>
   <div class="columns small-6 right" data-sticky-container>
-    <div class="sticky" data-sticky data-top-anchor="example2:top" data-btm-anchor="foo:bottom">
+    <div class="sticky" data-sticky data-margin-top="6" data-top-anchor="example2:top" data-btm-anchor="foo:bottom">
       <img class="thumbnail" src="assets/img/generic/rectangle-5.jpg">
     </div>
   </div>
@@ -136,7 +136,7 @@ Here is an example using two anchors (like above) with a stick to bottom.
     </p>
   </div>
   <div class="columns small-6 right" data-sticky-container>
-    <div class="sticky" data-sticky data-top-anchor="example3:top" data-btm-anchor="foo2:top" data-stick-to="bottom">
+    <div class="sticky" data-sticky data-margin-top="6" data-top-anchor="example3:top" data-btm-anchor="foo2:top" data-stick-to="bottom">
       <img class="thumbnail" src="assets/img/generic/rectangle-5.jpg">
     </div>
   </div>
