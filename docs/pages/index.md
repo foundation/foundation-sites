@@ -156,15 +156,15 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
     <a href="#" class="accordion-title">Additional Resources</a>
     <div class="accordion-content" data-tab-content>
 
-      <a target="_blank" href="https://youtu.be/3nCXVJXe_gg">
+      <a target="_blank" href="http://foundation.zurb.com/learn/zero-to-website-in-no-time-flat.html">
         <div class="row accordion-content-item">
           <div class="medium-4 columns accordion-content-item-thumbnail">
-            <img src="{{root}}assets/img/zero-to-website.png" class="" height="" width="" alt="">
+            <img src="https://i.ytimg.com/vi/KHMXOTbLAGE/mqdefault.jpg" class="" height="" width="" alt="">
           </div>
           <div class="medium-8 columns">
-            <h5>Zero to Website Lessons</h5>
-            <p>A great place to start! Laurel and Christine from ZURB take you through the basics all the way to deploying your first site.</p>
-            <span class="accordion-content-item-cta">Watch Video</span>
+            <h5>Zero to Website Guide</h5>
+            <p>Learning a framework for the first time can be overwhelming, so we’ve put together “Zero to Website,” a 60-page guide that will walk you through coding a real, live, responsive website from scratch with Foundation.</p>
+            <span class="accordion-content-item-cta">Get The Guide</span>
           </div>
         </div>
       </a>
