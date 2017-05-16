@@ -229,44 +229,33 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
   <li class="accordion-item welcome-accordion-item" data-accordion-item>
     <a href="#" class="accordion-title">Building Blocks</a>
     <div class="accordion-content" data-tab-content>
-      <div class="row accordion-content-item">
-        <div class="medium-4 columns accordion-content-item-thumbnail">
-          <div class="responsive-embed widescreen">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/adLpmsU9v2g" frameborder="0" allowfullscreen></iframe>
+
+      <a target="_blank" href="http://zurb.com/article/1469/foundation-building-blocks-over-100-compo">
+        <div class="row accordion-content-item">
+          <div class="medium-4 columns accordion-content-item-thumbnail">
+            <img src="http://i3.ytimg.com/vi/SmhGUT_N-jw/maxresdefault.jpg" class="" height="" width="" alt="">
+          </div>
+          <div class="medium-8 columns">
+            <h5>Foundation Building Blocks Accelerate Your Development</h5>
+            <p>Building Blocks are coded UI components you can drop into any standard Foundation project. Building Blocks will help you rapidly accelerate your development time.</p>
+            <span class="accordion-content-item-cta">Learn More</span>
           </div>
         </div>
-        <div class="medium-8 columns">
-          <h5>How to Use the New ZURB Foundation Building Blocks</h5>
-          <p>The Foundation team has cut your development time in half again with Foundation Building Blocks. There are Hundreds of Coded UI Components for Your Foundation Projects. In this tutorial we'll show you how to find the right building block and the way to install it that works best for you.</p>
-          <a target="_blank" href="https://youtu.be/adLpmsU9v2g" class="accordion-content-item-cta">Learn More</a>
-        </div>
-      </div>
-      <div class="row accordion-content-item">
-        <div class="medium-4 columns accordion-content-item-thumbnail">
-          <div class="responsive-embed widescreen">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/DeTHUSa3NcQ" frameborder="0" allowfullscreen></iframe>
+      </a>
+
+      <a target="_blank" href="http://foundation.zurb.com/building-blocks/how-to.html">
+        <div class="row accordion-content-item">
+          <div class="medium-4 columns accordion-content-item-thumbnail">
+            <img src="http://i3.ytimg.com/vi/adLpmsU9v2g/maxresdefault.jpg" class="" height="" width="" alt="">
+          </div>
+          <div class="medium-8 columns">
+            <h5>How to Use ZURB Foundation's Building Blocks</h5>
+            <p>The Foundation team has cut your development time in half again with Foundation Building Blocks. In this tutorial we'll show you how to find the right building block and the way to install it that works best for you.</p>
+            <span class="accordion-content-item-cta">Learn More</span>
           </div>
         </div>
-        <div class="medium-8 columns">
-          <h5>How to Create a Foundation Building Block</h5>
-          <p>So you want to build a Building Block? Well fear not! You can get in on the action too and get your work featured! We’ve put together a simple guide to submitting a Building Block. Once it’s submitted, we’ll promote your awesomeness to the greater Foundation community because you rock!
-</p>
-          <a target="_blank" href="https://youtu.be/DeTHUSa3NcQ" class="accordion-content-item-cta">Learn More</a>
-        </div>
-      </div>
-      <div class="row accordion-content-item">
-        <div class="medium-4 columns accordion-content-item-thumbnail">
-          <div class="responsive-embed widescreen">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/PKr0ItjFeX0" frameborder="0" allowfullscreen></iframe>
-          </div>
-        </div>
-        <div class="medium-8 columns">
-          <h5>How to Submit a ZURB Foundation Building Block</h5>
-          <p>The Building Blocks site is open source just like Foundation, meaning anyone can contribute to it. It’s built on the same Node based build system the ZURB Stack is built on. Submissions are made through GitHub, with pull requests. In this video, you'll learn how to submit your building block!
-</p>
-          <a target="_blank" href="https://youtu.be/PKr0ItjFeX0" class="accordion-content-item-cta">Learn More</a>
-        </div>
-      </div>
+      </a>
+
     </div>
 
   </li>
@@ -274,146 +263,101 @@ With an easy to understand syntax and consistent structure, you'll learn your wa
     <a href="#" class="accordion-title">Foundation Integrations</a>
     <div class="accordion-content" data-tab-content>
 
-      <div class="row accordion-content-item">
-        <div class="medium-3 columns accordion-content-item-thumbnail">
-          <img src="https://circlingthesun.github.io/angular-foundation-6/assets/logo.png" class="" height="147" width="147" alt="" style="border: 0;">
+      <a target="_blank" href="https://circlingthesun.github.io/angular-foundation-6/">
+        <div class="row accordion-content-item">
+          <div class="medium-3 columns accordion-content-item-thumbnail">
+            <img src="https://circlingthesun.github.io/angular-foundation-6/assets/logo.png" class="" height="147" width="147" alt="" style="border: 0;">
+          </div>
+          <div class="medium-9 columns">
+            <h5>Angular Foundation 6</h5>
+            <p>The awesome folks at Pinecone created an Angular port for Foundation. Angular.js assists with creating single-page applications, one-page web applications that only require HTML, CSS, and JavaScript on the client side.</p>
+            <span class="accordion-content-item-cta">Learn More</span>
+          </div>
         </div>
-        <div class="medium-9 columns">
-          <h5>Angular Foundation 6</h5>
-          <p>The awesome folks at Pinecone created an Angular port for Foundation. Angular.js assists with creating single-page applications, one-page web applications that only require HTML, CSS, and JavaScript on the client side.</p>
-          <a target="_blank" href="https://circlingthesun.github.io/angular-foundation-6/" class="accordion-content-item-cta">Learn More</a>
-        </div>
-      </div>
+      </a>
 
-      <div class="row accordion-content-item">
-        <div class="medium-3 columns accordion-content-item-thumbnail">
-          <img src="https://cdn.worldvectorlogo.com/logos/react.svg" class="" height="" width="" alt="" style="border: 0;">
+      <a target="_blank" href="https://react.foundation/">
+        <div class="row accordion-content-item">
+          <div class="medium-3 columns accordion-content-item-thumbnail">
+            <img src="https://cdn.worldvectorlogo.com/logos/react.svg" class="" height="" width="" alt="" style="border: 0;">
+          </div>
+          <div class="medium-9 columns">
+            <h5>React + Foundation 6</h5>
+            <p>React is a JavaScript library for building user interfaces. Now you can use Foundation for Sites 6 components implemented in React with CSS Modules!</p>
+            <span class="accordion-content-item-cta">Learn More</span>
+          </div>
         </div>
-        <div class="medium-9 columns">
-          <h5>React + Foundation 6</h5>
-          <p>React is a JavaScript library for building user interfaces. Now you can use Foundation for Sites 6 components implemented in React with CSS Modules!</p>
-          <a target="_blank" href="https://react.foundation/" class="accordion-content-item-cta">Learn More</a>
-        </div>
-      </div>
+      </a>
 
-      <div class="row accordion-content-item">
-        <div class="medium-3 columns accordion-content-item-thumbnail">
-          <img src="https://s.w.org/about/images/logos/wordpress-logo-simplified-rgb.png" class="" height="147" width="147" alt="" style="border: 0;">
+      <a target="_blank" href="http://jointswp.com/">
+        <div class="row accordion-content-item">
+          <div class="medium-3 columns accordion-content-item-thumbnail">
+            <img src="https://s.w.org/about/images/logos/wordpress-logo-simplified-rgb.png" class="" height="147" width="147" alt="" style="border: 0;">
+          </div>
+          <div class="medium-9 columns">
+            <h5>JointsWP: Foundation 6 meets WordPress</h5>
+            <p>JointsWP is a blank WordPress theme built with Foundation 6, giving you all the power and flexibility you need to build complex, mobile friendly websites without starting from scratch.</p>
+            <span class="accordion-content-item-cta">Learn More</span>
+          </div>
         </div>
-        <div class="medium-9 columns">
-          <h5>JointsWP: Foundation 6 meets WordPress</h5>
-          <p>JointsWP is a blank WordPress theme built with Foundation 6, giving you all the power and flexibility you need to build complex, mobile friendly websites without starting from scratch.</p>
-          <a target="_blank" href="http://jointswp.com/">Learn More</a>
-        </div>
-      </div>
+      </a>
 
-      <div class="row accordion-content-item">
-        <div class="medium-3 columns accordion-content-item-thumbnail">
-          <img src="{{root}}assets/img/docs-vue.jpeg" class="" height="147" width="147" alt="" style="border: 0;">
-        </div>
-        <div class="medium-9 columns">
-          <h5>Setting up Vue 2 and Foundation 6</h5>
-          <p>This is a demo integration of Foundation for Sites 6.3 in a VueJS 2.1 single-page application.</p>
-          <a target="_blank" href="https://medium.com/@tommaso.marcelli/setting-up-vue-2-and-foundation-6-3f858b4ad20">Learn More</a>
+      <a target="_blank" href="https://medium.com/@tommaso.marcelli/setting-up-vue-2-and-foundation-6-3f858b4ad20">
+        <div class="row accordion-content-item">
+          <div class="medium-3 columns accordion-content-item-thumbnail">
+            <img src="{{root}}assets/img/docs-vue.jpeg" class="" height="147" width="147" alt="" style="border: 0;">
+          </div>
+          <div class="medium-9 columns">
+            <h5>Setting up Vue 2 and Foundation 6</h5>
+            <p>This is a demo integration of Foundation for Sites 6.3 in a VueJS 2.1 single-page application.</p>
+            <span class="accordion-content-item-cta">Learn More</span>
+          </div>
         </div>
       </div>
-    </div>
+    </a>
 
   </li>
   <li class="accordion-item welcome-accordion-item" data-accordion-item>
     <a href="#" class="accordion-title">Foundation Showcase</a>
     <div class="accordion-content" data-tab-content>
-      <div class="row accordion-content-item">
-        <div class="medium-5 columns accordion-content-item-thumbnail">
-          <img src="{{root}}assets/img/foundation-turns-5.png" class="" height="" width="" alt="">
-        </div>
-        <div class="medium-7 columns">
-          <h5>5 Years of Shaping the Web</h5>
-          <p>This year Foundation turned five years old. What started out as an internal styleguide so our team could build websites faster and easier has transformed into powerful front-end framework that thousands of brands and millions of people use every day. It was the first to be responsive, the first to be semantic, the first to be mobile first, the first to be built with Sass, and the first to have accessibility built in. Learn more about the framework and where it's going next</p>
-          <a target="_blank" href="http://foundation.zurb.com/foundationturns5">Learn More</a>
-        </div>
-      </div>
 
-      <div class="row accordion-content-item">
-        <div class="medium-5 columns accordion-content-item-thumbnail">
-          <img src="{{root}}assets/img/foundation-brands.png" class="" height="" width="" alt="">
-        </div>
-        <div class="medium-7 columns">
-          <h5>Foundation Website Showcase and Brands</h5>
-          <p>Big brands are relying more and more on the world's most advanced, responsive front-end framework. Their sites are now built so that customers can connect with them on any device.</p>
-          <div class="row">
-            <div class="column small-6">
-              <a target="_blank" href="http://foundation.zurb.com/showcase/brands.html">Brands</a>
-            </div>
-            <div class="column small-6">
-              <a target="_blank" href="http://zurb.com/responsive">Showcase</a>
-            </div>
+      <a target="_blank" href="http://foundation.zurb.com/foundationturns5">
+        <div class="row accordion-content-item">
+          <div class="medium-4 columns accordion-content-item-thumbnail">
+            <img src="{{root}}assets/img/foundation-turns-5.png" class="" height="" width="" alt="">
+          </div>
+          <div class="medium-8 columns">
+            <h5>5 Years of Shaping the Web</h5>
+            <p>This year Foundation turned five years old. It was the first to be responsive, the first to be semantic, the first to be mobile first, the first to be built with Sass, and the first to have accessibility built in. Learn more about the framework and where it's going next.</p>
+            <span class="accordion-content-item-cta">Learn More</span>
           </div>
         </div>
-      </div>
+      </a>
 
-      <div class="row accordion-content-item">
-        <div class="medium-12 columns">
-          <h5>Foundation Case Studies</h5>
-          <p>Foundation in the wild. See how people are using Foundation to build responsive, future-friendly sites. We learn what went into their designs, decisions, and how Foundation helped them get to their goals.</p>
-          <div class="row">
-            <div class="column small-6 text-center">
-              <a target="_blank" href="http://zurb.com/responsive">
-                <img src="http://foundation.zurb.com/assets/img/learn/case-studies/meundies-mockup1.jpg" class="" height="" width="" alt="">
-                <h6>MeUndies Uses Foundation to Build a World Class Shopping Experience</h6>
-              </a>
-            </div>
-            <div class="column small-6 text-center">
-              <a target="_blank" href="http://foundation.zurb.com/showcase/brands.html">
-                <img src="http://foundation.zurb.com/assets/img/learn/case-studies/case-arlington-variations.png" class="" height="" width="" alt="">
-                <h6>How Materiell Built a School Website That People Actually Want to Use</h6>
-              </a>
-            </div>
+      <a target="_blank" href="http://foundation.zurb.com/showcase/brands.html">
+        <div class="row accordion-content-item">
+          <div class="medium-4 columns accordion-content-item-thumbnail">
+            <img src="{{root}}assets/img/foundation-brands.png" class="" height="" width="" alt="">
+          </div>
+          <div class="medium-8 columns">
+            <h5>Foundation Brands</h5>
+            <p>Big brands are relying more and more on the world's most advanced, responsive front-end framework. Their sites are now built so that customers can connect with them on any device.</p>
+            <span class="accordion-content-item-cta">Learn More</span>
           </div>
         </div>
-      </div>
-    </div>
-  </li>
-  <li class="accordion-item welcome-accordion-item" data-accordion-item>
-    <a href="#" class="accordion-title">Advanced Lessons</a>
-    <div class="accordion-content" data-tab-content>
+      </a>
 
-      <div class="row accordion-content-item">
-        <div class="medium-4 columns accordion-content-item-thumbnail">
-          <img src="{{root}}assets/img/advanced-class.png" class="" alt="">
-        </div>
-        <div class="medium-8 columns">
-          <h5>Advanced Foundation 6 Online Course</h5>
-          <p>An in-depth class covering the techniques and application of Foundation for sophisticated product design. You'll learn the Advanced skills that ZURB uses to deliver quality client work in short timeframes. We'll cover topics including optimizing your workflow with the ZURB stack, saving time and reducing mistakes by using Panini, getting more styling done faster with Sass, building more powerful layouts with the Flexbox grid, and creating custom components easily. See you in class!</p>
-          <a target="_blank" href="http://zurb.com/university/advanced-foundation-training">Learn More</a>
-        </div>
-      </div>
-
-      <div class="row accordion-content-item">
-        <div class="medium-4 columns accordion-content-item-thumbnail">
-          <div class="responsive-embed widescreen">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/nEgHk2wmMjU" frameborder="0" allowfullscreen></iframe>
+      <a target="_blank" href="http://foundation.zurb.com/showcase/case-studies.html">
+        <div class="row accordion-content-item">
+          <div class="medium-4 columns accordion-content-item-thumbnail">
+            <img src="http://foundation.zurb.com/assets/img/learn/case-studies/meundies-mockup1.jpg" class="" height="" width="" alt="">
+          </div>
+          <div class="medium-8 columns">
+            <h5>Foundation Case Studies</h5>
+            <p>Foundation in the wild. See how people are using Foundation to build responsive, future-friendly sites. We learn what went into their designs, decisions, and how Foundation helped them get to their goals.</p>
           </div>
         </div>
-        <div class="medium-8 columns">
-          <h5>Raise Your Style's IQ with Foundation’s Sass Settings</h5>
-          <p>Learn how to use the Foundation's Sass Settings File to quickly theme your project.</p>
-          <a target="_blank" href="http://zurb.com/university/lessons/raise-your-style-s-iq-with-foundation-s-sass-settings">View Lesson</a>
-        </div>
-      </div>
-
-      <div class="row accordion-content-item">
-        <div class="medium-4 columns accordion-content-item-thumbnail">
-          <div class="responsive-embed widescreen">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/t_ekdBMj4cc" frameborder="0" allowfullscreen></iframe>
-          </div>
-        </div>
-        <div class="medium-8 columns">
-          <h5>Panini: A delicious way to optimize your workflow</h5>
-          <p>Save time and reduce mistakes: Intro to Foundation’s Panini Handlebar Templating Engine</p>
-          <a target="_blank" href="http://zurb.com/university/lessons/panini-a-delicious-way-to-optimize-your-workflow">View Lesson</a>
-        </div>
-      </div>
+      </a>
     </div>
   </li>
 </ul>
