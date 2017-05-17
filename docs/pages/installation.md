@@ -80,6 +80,11 @@ To create compressed, production-ready assets, run `npm run build`.
 
 ## CSS Download
 
+<div class="responsive-embed widescreen mb1">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/lFrpnk0Oo_8" frameborder="0" allowfullscreen></iframe>
+  <a id="docs-mobile-video-link" class="docs-mobile-video" target="_blank" href="https://youtu.be/lFrpnk0Oo_8"></a>
+</div>
+
 If you aren't into Sass, we have a starter template with compiled CSS and JavaScript, as well as a starting `index.html` file for you to hack on. Just unzip and get coding!
 
 <a href="http://foundation.zurb.com/sites/download" class="large button">Download CSS Version</a>

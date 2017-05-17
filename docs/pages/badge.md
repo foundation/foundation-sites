@@ -2,6 +2,7 @@
 title: Badge
 description: The badge is a basic component that displays a number. It's useful for calling out a number of unread items.
 sass: scss/components/_badge.scss
+video: '_S_OO9NiWQ8'
 ---
 
 ## Basics
@@ -9,7 +10,7 @@ sass: scss/components/_badge.scss
 Add the `.badge` class to an element to create a badge. In the below example, we're using `<span>`, but any tag will work fine.
 
 <p>
-  <a class="" data-open-video="0:39"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="1:28"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 </p>
 
 <div class="docs-codepen-container">
@@ -42,7 +43,7 @@ Finally, the content itself might need more context for users that use screen re
 Add color classes to give badges additional meaning.
 
 <p>
-  <a class="" data-open-video="0:39"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="2:05"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 </p>
 
 <div class="docs-codepen-container">
@@ -70,7 +71,7 @@ $badge-palette: map-remove($foundation-palette, (
     primary,
     secondary
 )) !default;
-```  
+```
 
 Or you can add more colors to the default palette.
 
