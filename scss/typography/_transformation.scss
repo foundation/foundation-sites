@@ -1,0 +1,15 @@
+// Foundation for Sites by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+////
+/// @group text-transformation
+////
+
+@mixin foundation-text-transformation {
+  @each $transformation in (lowercase, uppercase, capitalize) {
+    .text-#{$transformation} {
+      text-transform: $transformation;
+    }
+  }
+}
