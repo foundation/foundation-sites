@@ -200,7 +200,7 @@ Add a new menu inside the `<li>` of a Menu and add the class `.nested` to create
 
 ## Active State
 
-Add the class `.active` to any `<li>` to create an active state. You could apply this server-side to mark the active page, or dynamically with JavaScript.
+Add the class `.is-active` to any `<li>` to create an active state. You could apply this server-side to mark the active page, or dynamically with JavaScript.
 
 <p>
   <a class="" data-open-video="8:18"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
@@ -212,7 +212,7 @@ Add the class `.active` to any `<li>` to create an active state. You could apply
 
 ```html_example
 <ul class="menu">
-  <li class="active"><a>Home</a></li>
+  <li class="is-active"><a>Home</a></li>
   <li><a>About</a></li>
   <li><a>Nachos</a></li>
 </ul>

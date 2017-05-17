@@ -229,9 +229,9 @@ Magellan.defaults = {
    * Class applied to the active locations link on the magellan container.
    * @option
    * @type {string}
-   * @default 'active'
+   * @default 'is-active'
    */
-  activeClass: 'active',
+  activeClass: 'is-active',
   /**
    * Allows the script to manipulate the url of the current page, and if supported, alter the history.
    * @option
