@@ -134,9 +134,7 @@ class OffCanvas extends Plugin {
       // Delay as timeout to prevent too many calls on resizing
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(() => {
-        if (this.$element.hasClass('is-open') || this.isRevealed) {
-          this._emulateFixedPosition(true);
-        }
+        this._emulateFixedPosition(true);
       }, 250);
     });
   }
