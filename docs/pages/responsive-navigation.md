@@ -82,7 +82,7 @@ For example, a drilldown menu works well on mobile, but on larger screens, you m
 <br>
 <div class="alert callout">
   <p>
-    <strong>Bug Patch(v6.3.1):</strong> There is a bug within drilldown-dropdown combo. If you set up a responsive menu with drilldown on small, then dropdown for medium up, and resize to small and then back to medium the dropdowns will not work. <br>
+    <strong>Bug(v6.3.1):</strong> There is a bug within <strong>drilldown-dropdown menu</strong> combo. If you set up a responsive menu with drilldown on small, then dropdown for medium up, and resize to small and then back to medium the dropdowns will not work. The bug can be reproduced <a href="http://codepen.io/IamManchanda/pen/mmGOgG?editors=1000">here</a> <br>
     <strong>Good News:</strong> The Bug will be fixed with the upcoming foundation release. If you are specifically using <strong>v6.3.1</strong>, we recommend to use this below patch to fix this.
   </p>
 </div>
