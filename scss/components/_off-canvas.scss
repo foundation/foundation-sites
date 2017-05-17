@@ -380,6 +380,12 @@ $content: $maincontent-class
   // Off-canvas container
   .off-canvas {
     @include off-canvas-base;
+
+    // Force position absolute for nested off-canvas because fixed doesn't work in this case (and gets emulated by JS anyway).
+    // This is important for the IE which doesn't show an opened push off-canvas element otherwise!
+    @at-root .#{$maincontent-class} & {
+      position: absolute;
+    }
   }
 
   // Off-canvas container with absolute position
