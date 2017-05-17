@@ -362,7 +362,7 @@ $content: $maincontent-class
   visibility: visible !important;
   height: auto !important;
   box-shadow: none !important;
-  position: static;
+  position: static !important;
   background: inherit;
   width: inherit;
   overflow: inherit;
