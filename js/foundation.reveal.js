@@ -148,16 +148,6 @@ class Reveal extends Plugin {
       }
     });
 
-    if (this.$anchor.length) {
-      this.$anchor.on('keydown.zf.reveal', function(e) {
-        if (e.which === 13 || e.which === 32) {
-          e.stopPropagation();
-          e.preventDefault();
-          _this.open();
-        }
-      });
-    }
-
     if (this.options.closeOnClick && this.options.overlay) {
       this.$overlay.off('.zf.reveal').on('click.zf.reveal', function(e) {
         if (e.target === _this.$element[0] ||
