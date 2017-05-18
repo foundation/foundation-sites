@@ -410,3 +410,18 @@ a[data-open-video] {
 .mb1 {
   margin-bottom: 1rem;
 }
+
+.docs-nav-category {
+  position: relative;
+}
+
+.docs-nav.menu {
+  .docs-expand-all {
+    font-size: 0.6rem;
+    position: absolute;
+    right: 10px;
+    top: 0px;
+    z-index: 1;
+    color: #aaa;
+  }
+}
