@@ -1,15 +1,5 @@
   <div class="vertical menu docs-nav" id="docs-menu">
-
-  <!--
-    <ul class="docs-nav-version-container">
-      <li class="docs-nav-version">
-        <a href="https://github.com/zurb/foundation-sites/releases/" target="_blank">Changelog</a>
-      </li>
-    </ul>
-  -->
-
-
-    <ul class="accordion docs-nav-category" data-accordion data-allow-all-closed="true">
+    <ul class="accordion docs-nav-category" data-accordion data-allow-all-closed="true" data-multi-expand="true">
       <li class="accordion-item {{#ifpage 'index' 'installation' 'starter-projects' 'compatibility' 'accessibility' 'kitchen-sink'}}is-active{{/ifpage}}" data-accordion-item>
         <a href="#" class="accordion-title">Getting Started</a>
         <div class="accordion-content {{#ifpage 'index' 'installation' 'starter-projects' 'compatibility' 'accessibility' 'kitchen-sink'}}is-active{{/ifpage}}" data-tab-content>
