@@ -270,6 +270,14 @@ $global-nav-hover-color: lighten($global-nav-bg, 10%);
 .global-nav-mobile-wrapper {
   background: $global-nav-bg;
   position: relative;
+  display: flex;
+  vertical-align: middle;
+
+  button,
+  [type="button"] {
+    appearance: none;
+    height: rem-calc(45);
+  }
 
   @media screen and (min-width: 775px) {
     display: none;
@@ -284,9 +292,8 @@ $global-nav-hover-color: lighten($global-nav-bg, 10%);
   // hamburger-menu
 
   .hamburger-icon {
-    @include vertical-center;
     height: 12px;
-    left: 10px;
+    margin-left: 10px;
   }
 
   // zurb logo
