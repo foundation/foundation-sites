@@ -100,6 +100,7 @@ a#notice {
   }
 }
 /* COUNTDOWN END */
+
 $transition-slow: all 0.5s ease-in-out;
 $transition: all 0.25s ease-in-out;
 $transition-fast: all 0.15s ease-in-out;
@@ -110,12 +111,12 @@ $global-nav-hover-color: lighten($global-nav-bg, 10%);
 
 .global-nav {
   background: $global-nav-bg !important;
-  display: flex;
   font-size: rem-calc(13);
   font-weight: bold;
   height: rem-calc(45);
   justify-content: space-between;
   position: relative;
+  display: none;
 
   .dropdown {
     width: auto;
@@ -130,6 +131,12 @@ $global-nav-hover-color: lighten($global-nav-bg, 10%);
           background: darken($primary-color, 10%);
         }
       }
+    }
+  }
+
+  &.show-for-smedium {
+    @media screen and (min-width: 775px) {
+      display: flex;
     }
   }
 
@@ -255,6 +262,41 @@ $global-nav-hover-color: lighten($global-nav-bg, 10%);
 
     &:hover {
       opacity: 1;
+    }
+  }
+}
+
+// --- Mobile Top Bar
+.global-nav-mobile-wrapper {
+  background: $global-nav-bg;
+  position: relative;
+
+  @media screen and (min-width: 775px) {
+    display: none;
+  }
+
+  .global-nav-mobile {
+    .global-nav-title {
+      margin-left: 1.5rem;
+    }
+  }
+
+  // hamburger-menu
+
+  .hamburger-icon {
+    @include vertical-center;
+    height: 12px;
+    left: 10px;
+  }
+
+  // zurb logo
+  .title-bar-title {
+    img {
+      @include vertical-center;
+      height: 14px;
+      left: 2.25rem;
+      opacity: 0.9;
+      width: 76px;
     }
   }
 }
