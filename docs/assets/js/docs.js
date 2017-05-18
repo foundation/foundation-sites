@@ -20,14 +20,14 @@ $(function() {
 var ACCORDION_KEY = 'docs-accordion-expandall';
 var expandAccordion = function($a) {
   $a.parent('.accordion').find('.accordion-item, .accordion-content').addClass('is-active');
-  $a.text('(Contract All)');
+  $a.text('Collapse');
   $a.data('expandAll', false);
   if(localStorage) { localStorage.setItem(ACCORDION_KEY, 'true'); }
 };
 
 var contractAccordion = function($a) {
   $a.parent('.accordion').find('.accordion-item, .accordion-content').removeClass('is-active');
-  $a.text('(Expand All)');
+  $a.text('Expand');
   $a.data('expandAll', true);
   if(localStorage) { localStorage.setItem(ACCORDION_KEY, 'false'); }
 };
@@ -43,4 +43,6 @@ $('[data-expand-all]').on('click', function() {
 
 if(localStorage.getItem(ACCORDION_KEY) === 'true') {
   expandAccordion($('[data-expand-all]'));
+} else {
+  $('[data-expand-all]').text('Expand');
 }
