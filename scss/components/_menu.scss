@@ -52,6 +52,11 @@ $menu-item-background-hover: $light-gray !default;
 
   li {
     @include disable-mouse-outline;
+
+    @if $global-flexbox {
+      margin-left: 0.125rem;
+      margin-right: 0.125rem;
+    }
   }
 
   a,
