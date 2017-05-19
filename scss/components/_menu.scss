@@ -54,7 +54,8 @@ $menu-item-background-hover: $light-gray !default;
     @include disable-mouse-outline;
   }
 
-  a {
+  a,
+  .button {
     line-height: 1;
     text-decoration: none;
     white-space: nowrap;
