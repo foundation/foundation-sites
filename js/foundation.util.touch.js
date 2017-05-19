@@ -97,7 +97,7 @@ Touch.setupSpotSwipe = function($) {
 };
 
 /****************************************************
- * Method for adding psuedo drag events to elements *
+ * Method for adding pseudo drag events to elements *
  ***************************************************/
 Touch.setupTouchHandler = function($) {
   $.fn.addTouch = function(){
