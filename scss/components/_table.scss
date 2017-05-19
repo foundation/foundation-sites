@@ -275,12 +275,8 @@ $table-stack-breakpoint: medium !default;
 @mixin table-stack($header: $show-header-for-stacked) {
   @if $header {
     thead {
-      th:first-child {
-        display: block;
-      }
-
       th {
-        display: none;
+        display: block;
       }
     }
   }
