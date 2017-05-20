@@ -1,7 +1,7 @@
 var addSrc = require('gulp-add-src');
 var babel = require('gulp-babel');
 var concat = require('gulp-concat');
-var cssnano = require('gulp-cssnano');
+var cleancss = require('gulp-clean-css');
 var customizer = require('../../customizer/lib');
 var Vinyl = require('vinyl');
 var fs = require('fs');
@@ -95,7 +95,7 @@ gulp.task('customizer:sass', ['customizer:loadConfig', 'customizer:prepareSassDe
       browsers: COMPATIBILITY
     })]))
     .pipe(gulp.dest(path.join(OUTPUT_DIR, 'css')))
-    .pipe(cssnano())
+    .pipe(cleancss({ compatibility: 'ie9' }))
     .pipe(rename('foundation.min.css'))
     .pipe(gulp.dest(path.join(OUTPUT_DIR, 'css')));
 });
