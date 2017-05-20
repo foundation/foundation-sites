@@ -6,7 +6,8 @@ import { rtl as Rtl } from "./foundation.util.core";
 var Box = {
   ImNotTouchingYou: ImNotTouchingYou,
   GetDimensions: GetDimensions,
-  GetOffsets: GetOffsets
+  GetOffsets: GetOffsets,
+  GetExplicitOffsets: GetExplicitOffsets
 }
 
 /**
@@ -99,7 +100,9 @@ function GetDimensions(elem, test){
 
 /**
  * Returns an object of top and left integer pixel values for dynamically rendered elements,
- * such as: Tooltip, Reveal, and Dropdown
+ * such as: Tooltip, Reveal, and Dropdown. Maintained for backwards compatibility, and where
+ * you don't know alignment, but generally from
+ * 6.4 forward you should use GetExplicitOffsets, as GetOffsets conflates position and alignment.
  * @function
  * @param {jQuery} element - jQuery object for the element being positioned.
  * @param {jQuery} anchor - jQuery object for the element's anchor point.
@@ -110,58 +113,34 @@ function GetDimensions(elem, test){
  * TODO alter/rewrite to work with `em` values as well/instead of pixels
  */
 function GetOffsets(element, anchor, position, vOffset, hOffset, isOverflow) {
-  var $eleDims = GetDimensions(element),
-      $anchorDims = anchor ? GetDimensions(anchor) : null;
-
   switch (position) {
     case 'top':
-      return {
-        left: (Rtl() ? $anchorDims.offset.left - $eleDims.width + $anchorDims.width - hOffset: $anchorDims.offset.left + hOffset),
-        top: $anchorDims.offset.top - ($eleDims.height + vOffset)
-      }
-      break;
-    case 'left':
-      return {
-        left: $anchorDims.offset.left - ($eleDims.width + hOffset),
-        top: $anchorDims.offset.top + vOffset
-      }
-      break;
-    case 'right':
-      return {
-        left: $anchorDims.offset.left + $anchorDims.width + hOffset,
-        top: $anchorDims.offset.top + vOffset
-      }
-      break;
+      return Rtl() ?
+        GetExplicitOffsets(element, anchor, 'top', 'left', vOffset, hOffset, isOverflow) :
+        GetExplicitOffsets(element, anchor, 'top', 'right', vOffset, hOffset, isOverflow);
+    case 'bottom':
+      return Rtl() ?
+        GetExplicitOffsets(element, anchor, 'bottom', 'left', vOffset, hOffset, isOverflow) :
+        GetExplicitOffsets(element, anchor, 'bottom', 'right', vOffset, hOffset, isOverflow);
     case 'center top':
-      return {
-        left: ($anchorDims.offset.left + ($anchorDims.width / 2)) - ($eleDims.width / 2) + hOffset,
-        top: $anchorDims.offset.top - ($eleDims.height + vOffset)
-      }
-      break;
+      return GetExplicitOffsets(element, anchor, 'top', 'center', vOffset, hOffset, isOverflow);
     case 'center bottom':
-      return {
-        left: isOverflow ? hOffset : (($anchorDims.offset.left + ($anchorDims.width / 2)) - ($eleDims.width / 2)) + hOffset,
-        top: $anchorDims.offset.top + $anchorDims.height + vOffset
-      }
-      break;
+      return GetExplicitOffsets(element, anchor, 'bottom', 'center', vOffset, hOffset, isOverflow);
     case 'center left':
-      return {
-        left: $anchorDims.offset.left - ($eleDims.width + hOffset),
-        top: ($anchorDims.offset.top + vOffset + ($anchorDims.height / 2)) - ($eleDims.height / 2)
-      }
-      break;
+      return GetExplicitOffsets(element, anchor, 'left', 'center', vOffset, hOffset, isOverflow);
     case 'center right':
-      return {
-        left: $anchorDims.offset.left + $anchorDims.width + hOffset + 1,
-        top: ($anchorDims.offset.top + ($anchorDims.height / 2)) - ($eleDims.height / 2) + vOffset
-      }
-      break;
+      return GetExplicitOffsets(element, anchor, 'right', 'center', vOffset, hOffset, isOverflow);
+    case 'left bottom':
+      return GetExplicitOffsets(element, anchor, 'bottom', 'left', vOffset, hOffset, isOverflow);
+    case 'right bottom':
+      return GetExplicitOffsets(element, anchor, 'bottom', 'right', vOffset, hOffset, isOverflow);
+    // Backwards compatibility... this along with the reveal and reveal full
+    // classes are the only ones that didn't reference anchor
     case 'center':
       return {
         left: ($eleDims.windowDims.offset.left + ($eleDims.windowDims.width / 2)) - ($eleDims.width / 2) + hOffset,
         top: ($eleDims.windowDims.offset.top + ($eleDims.windowDims.height / 2)) - ($eleDims.height / 2 + vOffset)
       }
-      break;
     case 'reveal':
       return {
         left: ($eleDims.windowDims.width - $eleDims.width) / 2 + hOffset,
@@ -173,24 +152,72 @@ function GetOffsets(element, anchor, position, vOffset, hOffset, isOverflow) {
         top: $eleDims.windowDims.offset.top
       }
       break;
-    case 'left bottom':
-      return {
-        left: $anchorDims.offset.left - hOffset,
-        top: $anchorDims.offset.top + $anchorDims.height + vOffset
-      };
-      break;
-    case 'right bottom':
-      return {
-        left: $anchorDims.offset.left + $anchorDims.width + hOffset - $eleDims.width,
-        top: $anchorDims.offset.top + $anchorDims.height + vOffset
-      };
-      break;
     default:
       return {
         left: (Rtl() ? $anchorDims.offset.left - $eleDims.width + $anchorDims.width - hOffset: $anchorDims.offset.left + hOffset),
         top: $anchorDims.offset.top + $anchorDims.height + vOffset
       }
+
   }
+
+}
+
+function GetExplicitOffsets(element, anchor, position, alignment, vOffset, hOffset, isOverflow) {
+  var $eleDims = GetDimensions(element),
+      $anchorDims = anchor ? GetDimensions(anchor) : null;
+
+      var topVal, leftVal;
+
+  // set position related attribute
+
+  switch (position) {
+    case 'top':
+      topVal = $anchorDims.offset.top - ($eleDims.height + vOffset);
+      break;
+    case 'bottom':
+      topVal = $anchorDims.offset.top + $anchorDims.height + vOffset;
+      break;
+    case 'left':
+      leftVal = $anchorDims.offset.left - ($eleDims.width + hOffset);
+      break;
+    case 'right':
+      leftVal = $anchorDims.offset.left + $anchorDims.width + hOffset;
+      break;
+  }
+
+
+  // set alignment related attribute
+  switch (position) {
+    case 'top':
+    case 'bottom':
+      switch (alignment) {
+        case 'left':
+          leftVal = $anchorDims.offset.left + hOffset;
+          break;
+        case 'right':
+          leftVal = $anchorDims.offset.left - $eleDims.width + $anchorDims.width - hOffset;
+          break;
+        case 'center':
+          leftVal = isOverflow ? hOffset : (($anchorDims.offset.left + ($anchorDims.width / 2)) - ($eleDims.width / 2)) + hOffset;
+          break;
+      }
+      break;
+    case 'right':
+    case 'left':
+      switch (alignment) {
+        case 'bottom':
+          topVal = $anchorDims.offset.top - vOffset + $anchorDims.height - $eleDims.height;
+          break;
+        case 'top':
+          topVal = $anchorDims.offset.top + vOffset
+          break;
+        case 'center':
+          topVal = ($anchorDims.offset.top + vOffset + ($anchorDims.height / 2)) - ($eleDims.height / 2)
+          break;
+      }
+      break;
+  }
+  return {top: topVal, left: leftVal};
 }
 
 export {Box};
