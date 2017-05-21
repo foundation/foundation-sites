@@ -38,7 +38,7 @@ Some Menu Combination (but not limited) to are
 
 - [Drilldown Dropdown Menu](#drilldown-dropdown-menu)
 - [Accordion Dropdown Menu](#accordion-dropdown-menu)
-- Accordion Drilldown Menu
+- [Drilldown Accordion Menu](#drilldown-accordion-menu)
 
 #### Drilldown Dropdown Menu
 
@@ -143,6 +143,66 @@ Same like drilldowns, an accordion menu works well on mobile, but on larger scre
     </ul>
   </li>
 </ul>
+```
+
+<br>
+
+#### Drilldown Accordion Menu
+
+Just like foundation docs itself (see left sidenav), an accordion menu is great for a sidenav of a website on desktop, but for mobile, You might need Drilldown menu.
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/bWQjQP?editors=1010" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
+```html_example
+<ul class="vertical menu" data-responsive-menu="drilldown medium-accordion" style="max-width: 250px;">
+  <li>
+    <a href="#">Item 1</a>
+    <ul class="vertical menu">
+      <li>
+        <a href="#">Item 1A</a>
+        <ul class="vertical menu">
+          <li><a href="#">Item 1A</a></li>
+          <li><a href="#">Item 1B</a></li>
+          <li><a href="#">Item 1C</a></li>
+          <li><a href="#">Item 1D</a></li>
+          <li><a href="#">Item 1E</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Item 1B</a></li>
+    </ul>
+  </li>
+  <li>
+    <a href="#">Item 2</a>
+    <ul class="vertical menu">
+      <li><a href="#">Item 2A</a></li>
+      <li><a href="#">Item 2B</a></li>
+    </ul>
+  </li>
+  <li>
+    <a href="#">Item 3</a>
+    <ul class="vertical menu">
+      <li><a href="#">Item 3A</a></li>
+      <li><a href="#">Item 3B</a></li>
+    </ul>
+  </li>
+</ul>
+```
+
+<br>
+<div class="alert callout">
+  <p>
+    <strong>Bug(v6.3.1):</strong> There is a bug within <strong>drilldown-accordion menu</strong> combo. If you set up a responsive menu with drilldown on small, then accordion for medium up, and resize to small and then back to medium the accordions will not work. The bug can be reproduced <a href="http://codepen.io/IamManchanda/pen/OmawKe?editors=1000">here</a> <br>
+    <strong>Good News:</strong> The Bug will be fixed with the upcoming foundation release. If you are specifically using <strong>v6.3.1</strong>, we recommend to use this below patch to fix this.
+  </p>
+</div>
+
+```javascript
+// Patch for a Bug in v6.3.1
+$(window).on('changed.zf.mediaquery', function() {
+  $('.is-accordion-submenu.invisible').removeClass('invisible');
+});
 ```
 
 ---
