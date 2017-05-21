@@ -54,7 +54,7 @@ In the below example, our top bar includes a [dropdown menu](dropdown-menu.html)
 
 ## Advanced Layout
 
-<p>To set up a Responsive menu with toggle, first give your menu a unique ID. Next, add a title bar with the class <code>.title-bar</code> and the attribute <code>data-responsive-toggle</code>. The value of <code>data-responsive-toggle</code> should be the ID of the menu you're toggling. Lastly, add <code>data-toggle</code> to the element that will trigger the toggle. The value of <code>data-toggle</code> should also be the ID of the menu you're toggling.</p>
+<p>To set up a Responsive menu with toggle click trigger on mobile, first give your menu a unique ID. Next, add a title bar with the class <code>.title-bar</code> and the attribute <code>data-responsive-toggle</code>. The value of <code>data-responsive-toggle</code> should be the ID of the menu you're toggling. Lastly, add <code>data-toggle</code> to the element that will trigger the toggle. The value of <code>data-toggle</code> should also be the ID of the menu you're toggling.</p>
 
 <p>By default, the title bar will be visible on small screens, and the Menu hides. At the medium breakpoint, the title bar disappears, and the menu is always visible. This breakpoint can be changed with the <code>data-hide-for</code> attribute in HTML, or the <code>hideFor</code> setting in JavaScript.</p>
 
