@@ -55,6 +55,7 @@ or, if you looking for specific utility instead of all, these helper classes can
 @include foundation-prototype-display;
 @include foundation-prototype-position;
 @include foundation-prototype-border-box;
+@include foundation-prototype-border-none;
 @include foundation-prototype-sizing;
 @include foundation-prototype-spacing;
 ```
@@ -581,6 +582,18 @@ Border box lets you only add the content, padding and border, but not the margin
 
 ```html
 <div class="border-box"></div>
+``` 
+
+---
+
+## Border none 
+
+Border none lets you quickly resets border to `none` into a component.
+
+```html_example
+<div class="callout primary border-none">
+  Hi! I am a callout with no Borders
+</div>
 ``` 
 
 ---
