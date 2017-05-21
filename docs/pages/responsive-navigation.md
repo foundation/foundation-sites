@@ -34,7 +34,15 @@ The Menu can be augmented with one of three different plugins&mdash;dropdown men
 
 With our responsive Menu plugin, you can apply a default pattern to a Menu, and then change that pattern on other screen sizes.
 
-For example, a drilldown menu works well on mobile, but on larger screens, you may want to convert that same menu into a dropdown. Here's an example that does just that:
+Some Menu Combination (but not limited) to are
+
+- [Drilldown Dropdown Menu](#drilldown-dropdown-menu)
+- [Accordion Dropdown Menu](#accordion-dropdown-menu)
+- Accordion Drilldown Menu
+
+#### Drilldown Dropdown Menu
+
+A drilldown menu works well on mobile, but on larger screens, you may want to convert that same menu into a dropdown. Here's an example that does just that:
 
 <p>
   <a class="" data-open-video="2:35"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
@@ -92,6 +100,49 @@ For example, a drilldown menu works well on mobile, but on larger screens, you m
 $(window).on('changed.zf.mediaquery', function() {
   $('.is-dropdown-submenu.invisible').removeClass('invisible');
 });
+```
+
+#### Accordion Dropdown Menu
+
+Same like drilldowns, an accordion menu works well on mobile, but on larger screens, you may want to convert that same menu into a dropdown. Here's an example for the same:
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/LyXBQz?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
+```html_example
+<ul class="vertical medium-horizontal menu" data-responsive-menu="accordion medium-dropdown">
+  <li>
+    <a href="#">Item 1</a>
+    <ul class="vertical menu">
+      <li>
+        <a href="#">Item 1A</a>
+        <ul class="vertical menu">
+          <li><a href="#">Item 1A</a></li>
+          <li><a href="#">Item 1B</a></li>
+          <li><a href="#">Item 1C</a></li>
+          <li><a href="#">Item 1D</a></li>
+          <li><a href="#">Item 1E</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Item 1B</a></li>
+    </ul>
+  </li>
+  <li>
+    <a href="#">Item 2</a>
+    <ul class="vertical menu">
+      <li><a href="#">Item 2A</a></li>
+      <li><a href="#">Item 2B</a></li>
+    </ul>
+  </li>
+  <li>
+    <a href="#">Item 3</a>
+    <ul class="vertical menu">
+      <li><a href="#">Item 3A</a></li>
+      <li><a href="#">Item 3B</a></li>
+    </ul>
+  </li>
+</ul>
 ```
 
 ---
