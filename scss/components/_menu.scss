@@ -92,7 +92,6 @@ $menu-item-background-hover: $light-gray !default;
 
 /// Align menu items.
 @mixin menu-align($alignment) {
-  
   @if $alignment == left {
     @if $global-flexbox {
       justify-content: flex-start;
@@ -103,7 +102,10 @@ $menu-item-background-hover: $light-gray !default;
   }
   @else if $alignment == right {
     @if $global-flexbox {
-      justify-content: flex-end;
+      li {
+        display: flex;
+        justify-content: flex-end;
+      }
     }
     @else {
       text-align: $global-right;
@@ -116,6 +118,7 @@ $menu-item-background-hover: $light-gray !default;
   @else if $alignment == center {
     @if $global-flexbox {
       li {
+        display: flex;
         justify-content: center;
       }
     }
