@@ -238,37 +238,44 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /**
      * Amount of time, in ms, the animated scrolling should take between locations.
      * @option
-     * @example 500
+     * @type {number}
+     * @default 500
      */
     animationDuration: 500,
     /**
-     * Animation style to use when scrolling between locations.
+     * Animation style to use when scrolling between locations. Can be `'swing'` or `'linear'`.
      * @option
-     * @example 'ease-in-out'
+     * @type {string}
+     * @default 'linear'
+     * @see {@link https://api.jquery.com/animate|Jquery animate}
      */
     animationEasing: 'linear',
     /**
      * Number of pixels to use as a marker for location changes.
      * @option
-     * @example 50
+     * @type {number}
+     * @default 50
      */
     threshold: 50,
     /**
      * Class applied to the active locations link on the magellan container.
      * @option
-     * @example 'active'
+     * @type {string}
+     * @default 'active'
      */
     activeClass: 'active',
     /**
      * Allows the script to manipulate the url of the current page, and if supported, alter the history.
      * @option
-     * @example true
+     * @type {boolean}
+     * @default false
      */
     deepLinking: false,
     /**
      * Number of pixels to offset the scroll of the page on item click if using a sticky nav bar.
      * @option
-     * @example 25
+     * @type {number}
+     * @default 0
      */
     barOffset: 0
   };

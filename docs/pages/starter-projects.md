@@ -1,6 +1,7 @@
 ---
 title: Starter Projects
 description: We have a few starter project templates that can be installed with the Foundation CLI. You can also download them manually!
+video: 'lFrpnk0Oo_8'
 ---
 
 Our project templates give you a solid... *Foundation* on which to start a new project. Both templates use the [Gulp](http://gulpjs.com) build system to automate the process of compiling Sass, processing JavaScript, copying files, and more.
@@ -20,6 +21,12 @@ It's also possible to download the template files directly from GitHub. Run `npm
 ---
 
 ## ZURB Template
+
+<div class="responsive-embed widescreen">
+  <iframe id="zurb-template-starter" data-linkable-video='3Uj74uJ3GSQ' width="500" height="315" src="//www.youtube.com/embed/3Uj74uJ3GSQ?enablejsapi=1" enablejsapi="1" frameborder="0" allowfullscreen ></iframe>
+  <a id="docs-mobile-video-link" class="docs-mobile-video" target="_blank" href="https://www.youtube.com/watch?v=3Uj74uJ3GSQ"></a>
+</div>
+
 
 The official ZURB Template includes not only Sass processing, but also JavaScript processing, Handlebars templating, and image compression. We use this exact template at ZURB for our client work!
 

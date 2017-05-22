@@ -1,6 +1,7 @@
 ---
 title: Responsive Navigation
 description: Our three Menu patterns form like Voltron into one responsive Menu plugin, which allows you to switch between patterns at different screen sizes.
+video: 'dmKun75_9oc'
 js:
   - js/foundation.responsiveMenu.js
   - js/foundation.responsiveToggle.js
@@ -10,11 +11,20 @@ js:
 
 The Menu has some responsive CSS classes built in, which allow you to re-orient a menu on different screen sizes.
 
+<p>
+  <a class="" data-open-video="0:58"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/qmYKgJ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <ul class="vertical medium-horizontal menu">
-  <li><a href="#">Item 1</a></li>
-  <li><a href="#">Item 2</a></li>
-  <li><a href="#">Item 3</a></li>
+  <li><a href="#0"><i class="fi-list"></i> <span>One</span></a></li>
+  <li><a href="#0"><i class="fi-list"></i> <span>Two</span></a></li>
+  <li><a href="#0"><i class="fi-list"></i> <span>Three</span></a></li>
+  <li><a href="#0"><i class="fi-list"></i> <span>Four</span></a></li>
 </ul>
 ```
 
@@ -26,8 +36,16 @@ With our responsive Menu plugin, you can apply a default pattern to a Menu, and 
 
 For example, a drilldown menu works well on mobile, but on larger screens, you may want to convert that same menu into a dropdown. Here's an example that does just that:
 
+<p>
+  <a class="" data-open-video="2:35"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/jmKPdM?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
-<ul class="vertical menu" data-responsive-menu="drilldown medium-dropdown" style="width: 300px;">
+<ul class="vertical medium-horizontal menu" data-responsive-menu="drilldown medium-dropdown">
   <li>
     <a href="#">Item 1</a>
     <ul class="vertical menu">
@@ -71,8 +89,14 @@ To set it up, first give your menu a unique ID. (You don't even need to use Menu
 
 By default, the title bar will be visible on small screens, and the Menu hides. At the medium breakpoint, the title bar disappears, and the menu is always visible. This breakpoint can be changed with the `data-hide-for` attribute in HTML, or the `hideFor` setting in JavaScript.
 
+<a class="" data-open-video="5:05"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+
 <div class="primary callout show-for-medium">
   <p>Scale your browser down to see the toggle happen.</p>
+</div>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/LymroM?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -112,8 +136,13 @@ By default, the title bar will be visible on small screens, and the Menu hides. 
 
 To use animations from the Motion UI library, include the <code>data-animation="someAnimationIn someAnimationOut"</code> attribute.
 
+
 <div class="primary callout show-for-medium">
   <p>Scale your browser down to see the toggle happen.</p>
+</div>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/KmepBg?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example

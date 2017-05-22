@@ -1,6 +1,7 @@
 ---
-title: Drilldown
+title: Drilldown Menu
 description: Drilldown is one of Foundation's three menu patterns, which converts a series of nested lists into a vertical drilldown menu.
+video: risWADXGMYs
 scss: scss/components/_drilldown.scss
 js: js/foundation.drilldown.js
 ---
@@ -12,6 +13,14 @@ Drilldowns use the standard [Menu](menu.html#nested-style) syntax, using `<ul>`,
 To create sub-menus, place a `<ul>` *next to* an `<a>`. Clicking that `<a>` will then open the `<ul>` that it's next to.
 
 Any `<a>` without a submenu will function like a normal link.
+
+<p>
+  <a class="" data-open-video="0:30"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/JNZodd?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html
 <ul class="vertical menu" data-drilldown>
@@ -30,7 +39,7 @@ Any `<a>` without a submenu will function like a normal link.
   <p>The drilldown menu takes on the height of the tallest menu in the hierarchy, so the menu doesn't change height as the user navigates it.</p>
 </div>
 
-<ul class="menu" data-drilldown style="width: 200px" id="m1">
+<ul class="menu" data-drilldown style="max-width: 250px" id="m1">
   <li>
     <a href="#">Item 1</a>
     <ul class="menu">
@@ -80,7 +89,21 @@ Any `<a>` without a submenu will function like a normal link.
   <button class="button expanded" onclick="$('#m3').foundation('destroy');if($('#m3').data('autoHeight')){$('#m3').data('autoHeight',false);$(this).html('autoHeight is Off');}else{$('#m3').data('autoHeight',true);$(this).html('autoHeight is On');}new Foundation.Drilldown($('#m3'));return false;">autoHeight is On</button>
 </div>
 
-<ul class="menu" data-drilldown data-auto-height="true" data-animate-height="true" style="width: 200px" id="m3">
+<p>
+<a class="" data-open-video="3:27"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/mmKyrw?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
+```html 
+<ul class="menu" data-drilldown data-auto-height="true" data-animate-height="true">
+  <!--  -->
+</ul>
+```
+
+<ul class="menu" data-drilldown data-auto-height="true" data-animate-height="true" style="max-width: 250px" id="m3">
   <li>
     <a href="#">Item 1</a>
     <ul class="menu">
@@ -147,7 +170,18 @@ Any `<a>` without a submenu will function like a normal link.
 
 <div class="callout">Scroll to the top of the menu when selecting a submenu/navigating back using the menu back button. Can be useful with a longer menu to provide a better user experience.</div>
 
-<ul class="menu" data-drilldown data-scroll-top="true" style="width: 200px" id="m2">
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/jmKEwX?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
+```html 
+<ul class="menu" data-drilldown data-scroll-top="true">
+  <!--  -->
+</ul>
+```
+
+<ul class="menu" data-drilldown data-scroll-top="true" data-auto-height="true" data-animate-height="true" style="max-width: 250px" id="m2">
   <li><a href="#">Item</a></li>
   <li><a href="#">Item</a></li>
   <li><a href="#">Item</a></li>

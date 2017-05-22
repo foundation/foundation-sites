@@ -86,7 +86,7 @@
   // fixes recent Chrome version not limiting child width
   // https://stackoverflow.com/questions/34934586/white-space-nowrap-and-flexbox-did-not-work-in-chrome
   @if $columns == expand {
-    min-width: initial;
+    min-width: 0;
   }
   // max-width fixes IE 10/11 not respecting the flex-basis property
   @if $columns != expand and $columns != shrink {
@@ -178,7 +178,8 @@
   // Column row
   // The double .row class is needed to bump up the specificity
   .column.row.row {
-    display: flex;
+    float: none;
+    display: block;
   }
 
   // To properly nest a column row, padding and margin is removed

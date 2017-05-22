@@ -4,6 +4,7 @@ description: An image and content carousel with animation support and many custo
 sass: scss/components/_orbit.scss
 js: js/foundation.orbit.js
 mui: true
+video: l0bdHvBuylA
 tags:
   - slider
   - carousel
@@ -12,6 +13,14 @@ tags:
 ## Basics
 
 Orbit doesn't automatically generate any HTML for you, giving you the flexibility to move around the various pieces of the plugin. Here's a complete example&mdash;we'll break down the individual pieces farther down.
+
+<p>
+  <a class="" data-open-video="0:48"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/GmGzWY?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
@@ -109,6 +118,14 @@ The bullets serve two purposes: they mark the current slide, and can be clicked 
 
 A carousel slide can contain images or HTML&mdash;you can even mix between slides in one carousel!
 
+<p>
+  <a class="" data-open-video="5:20"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/vmrbrV?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html
 <li class="orbit-slide">
   <div>
@@ -171,6 +188,11 @@ There are four plugin options you can set to change the default effects:
 
 Since those option names are pretty *long*, you can also set them all in one HTML attribute, using `data-options`:
 
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/oWymQy?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html
 <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit data-options="animInFromLeft:fade-in; animInFromRight:fade-in; animOutToLeft:fade-out; animOutToRight:fade-out;">
 </div>
@@ -210,6 +232,10 @@ Since those option names are pretty *long*, you can also set them all in one HTM
 ### Disabling Animation
 
 To disable Motion UI, set the plugin option `useMUI` to `false`. Written as an HTML attribute, that's `data-use-m-u-i="false"`.
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/VbdgNV?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html
 <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit data-use-m-u-i="false">

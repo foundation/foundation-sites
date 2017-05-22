@@ -1,6 +1,7 @@
 ---
 title: Button
 description: Buttons are convenient tools when you need more traditional actions. To that end, Foundation has many easy to use button styles that you can customize or override to fit your needs.
+video: Qe8KHC2ZtMM
 sass: scss/components/_button.scss
 tags:
   - dropdown button
@@ -13,8 +14,13 @@ A basic button can be created with minimal markup. Because buttons can be used f
 - Use the `<a>` tag if the button is a link to another page, or a link to an anchor within a page. Generally anchors don't require JavaScript to work.
 - Use the `<button>` tag if the button performs an action that changes something on the current page. `<button>` elements almost always require JavaScript to function.
 
+<a class="" data-open-video="0:51"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 <div class="primary callout">
   <p>Add the attribute <code>type="button"</code> to <code>&lt;button&gt;</code> elements, unless the button submits a form, in which case you use <code>type="submit"</code></p>
+</div>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/wdmZME?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -33,6 +39,14 @@ A basic button can be created with minimal markup. Because buttons can be used f
 
 Additional classes can be added to your button to change its size and shape.
 
+<p>
+  <a class="" data-open-video="2:08"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/JNLVRb?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <a class="button tiny" href="#">So Tiny</a>
 <a class="button small" href="#">So Small</a>
@@ -47,6 +61,15 @@ Additional classes can be added to your button to change its size and shape.
 ## Coloring
 
 Add color classes to give buttons additional meaning.
+
+<p>
+  <a class="" data-open-video="2:52"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/ZKjxOy?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <a class="button primary" href="#">Primary</a>
@@ -69,7 +92,7 @@ $button-palette: map-remove($foundation-palette, (
     primary,
     secondary
 )) !default;
-```  
+```
 
 Or you can add more colors to the default palette.
 
@@ -101,22 +124,6 @@ The text color for each button class is determined by either `$button-color` or 
 
 ---
 
-## Disabled Buttons
-
-The `.disabled` class will give buttons a faded appearance. The class is a purely visual style, and won't actually disable a control. For `<button>` elements, you can add the `disabled` attribute to both disable and style it. If you want to disable a link, you should add the `aria-disabled` attribute to mark it as disabled for assistive technology.
-
-
-```html_example
-<a class="button disabled" href="#" aria-disabled>Disabled</a>
-<button type="button" class="button primary" disabled>Disabled</button>
-<button type="button" class="button secondary" disabled>Disabled</button>
-<button type="button" class="button success" disabled>Disabled</button>
-<button type="button" class="button alert" disabled>Disabled</button>
-<button type="button" class="button warning" disabled>Disabled</button>
-```
-
----
-
 ## Hollow Style
 
 Add the `.hollow` class to a button to give it a hollow style. Change the `$button-fill` variable in your settings file to `hollow` to make this the default style. Changing this setting will remove the `.hollow` class from your CSS.
@@ -132,6 +139,70 @@ Add the `.hollow` class to a button to give it a hollow style. Change the `$butt
 
 ---
 
+## Disabled Buttons
+
+The `.disabled` class will give buttons a faded appearance. The class is a purely visual style, and won't actually disable a control. For `<button>` elements, you can add the `disabled` attribute to both disable and style it. If you want to disable a link, you should add the `aria-disabled` attribute to mark it as disabled for assistive technology.
+
+<p>
+  <a class="" data-open-video="3:19"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-video-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/xdjVOp?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
+```html_example
+<a class="button disabled" href="#" aria-disabled>Disabled</a>
+<button type="button" class="button primary" disabled>Disabled</button>
+<button type="button" class="button secondary" disabled>Disabled</button>
+<button type="button" class="button success" disabled>Disabled</button>
+<button type="button" class="button alert" disabled>Disabled</button>
+<button type="button" class="button warning" disabled>Disabled</button>
+```
+
+Alternatively, you can also use disabled hollow buttons.
+
+```html_example
+<a class="button hollow disabled" href="#" aria-disabled>Disabled</a>
+<button type="button" class="button hollow primary" disabled>Disabled</button>
+<button type="button" class="button hollow secondary" disabled>Disabled</button>
+<button type="button" class="button hollow success" disabled>Disabled</button>
+<button type="button" class="button hollow alert" disabled>Disabled</button>
+<button type="button" class="button hollow warning" disabled>Disabled</button>
+```
+
+---
+
+## Clear Style
+
+Add the `.clear` class to a button to give it a clear style. Change the `$button-fill` variable in your settings file to `clear` to make this the default style. Changing this setting will remove the `.clear` class from your CSS.
+
+<p>
+  <a class="" data-open-video="4:04"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/LymNyB?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
+```html_example
+<a class="clear button" href="#">Primary</a>
+<a class="clear button secondary" href="#">Secondary</a>
+<a class="clear button success" href="#">Success</a>
+<a class="clear button alert" href="#">Alert</a>
+<a class="clear button warning" href="#">Warning</a>
+<a class="clear button" href="#" disabled>Disabled</a>
+```
+
+<p>This is especially useful as a secondary action button. This way you get proper spacing and line-height. Example:</p>
+
+<button class="button primary" href="#">Primary Action</button>
+<button class="clear button" href="#">Secondary Action</button>
+
+
+---
+
 ## Dropdown Arrows
 
 Add a dropdown arrow to your button with the `.dropdown` class.
@@ -140,12 +211,16 @@ Add a dropdown arrow to your button with the `.dropdown` class.
   <p>This doesn't add dropdown functionality automatically. To do that, you can attach our <a href="dropdown.html">Dropdown plugin</a>.</p>
 </div>
 
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/PmeNOY?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
-<button class="dropdown button tiny ">Dropdown Button</button>
-<button class="dropdown button small ">Dropdown Button</button>
+<button class="dropdown button tiny">Dropdown Button</button>
+<button class="dropdown button small">Dropdown Button</button>
 <button class="dropdown button">Dropdown Button</button>
-<button class="dropdown button large ">Dropdown Button</button>
-<button class="dropdown button expanded ">Dropdown Button</button>
+<button class="dropdown button large">Dropdown Button</button>
+<button class="dropdown button expanded">Dropdown Button</button>
 ```
 
 ---

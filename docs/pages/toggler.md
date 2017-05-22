@@ -9,6 +9,14 @@ mui: true
 
 To setup a class toggle, start by adding the attribute `data-toggler` to an element. The value of `data-toggler` is the class you want to toggle. Also give the element a unique ID so it can be targeted.
 
+<p>
+  <a class="" data-open-video="0:27"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/brettsmason/pen/xdzmmO?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html
 <ul class="menu" id="menuBar" data-toggler=".expanded">
   <li><a href="#">One</a></li>
@@ -40,6 +48,13 @@ Then, add `data-toggle` to any element, with the ID of the target as the value o
 Instead of toggling a class, you can also toggle visibility. When toggled, the element comes into or out of view using a Motion UI class.
 
 Instead of `data-toggler`, add the attribute `data-animate`. The value of the attribute is the *in animation* you want, followed by the *out animation*.
+<p>
+  <a class="" data-open-video="0:27"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/brettsmason/pen/ZKRVNE?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <p><a data-toggle="panel">Toggle Panel</a></p>
@@ -55,6 +70,13 @@ Instead of `data-toggler`, add the attribute `data-animate`. The value of the at
 ## Mark as Closable
 
 To create an element that can be closed once, add the attribute `data-closable`. Then add a click trigger inside the element using `data-close`.
+<p>
+  <a class="" data-open-video="0:27"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/brettsmason/pen/ZKRwEY?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <div class="callout" data-closable>
@@ -69,6 +91,14 @@ To create an element that can be closed once, add the attribute `data-closable`.
 
 `data-closable` can be configured with a custom exit animation.
 
+<p>
+  <a class="" data-open-video="0:27"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/brettsmason/pen/mmKvdx?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <div class="callout" data-closable="slide-out-right">
   <button class="close-button" data-close>&times;</button>
@@ -81,6 +111,14 @@ To create an element that can be closed once, add the attribute `data-closable`.
 ### Toggle on focus
 
 The `data-toggle` attribute only toggles classes/visibility on click. You can also have the toggle fire when an element is *focused* or *unfocused* using `data-toggle-focus`.
+
+<p>
+  <a class="" data-open-video="0:27"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/brettsmason/pen/gWKqbj?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <input type="text" data-toggle-focus="form-callout" placeholder="Click in here to reveal extra content">
@@ -95,6 +133,14 @@ The `data-toggle` attribute only toggles classes/visibility on click. You can al
 ## Multiple Targets
 
 The `data-toggle`, `data-close`, and `data-open` attributes can now target multiple elements! The syntax is simple; just pass a *space* separated list to the `data-x` attribute like so:
+<p>
+  <a class="" data-open-video="0:27"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/brettsmason/pen/YVvBXY?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html
 <button class="button" data-toggle="foo bar baz">Toggle things</button>
 ```

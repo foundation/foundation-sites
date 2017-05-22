@@ -1,15 +1,17 @@
 'use strict';
 
-!function($) {
-
+import $ from 'jquery';
+import { Keyboard } from './foundation.util.keyboard';
+import { onImagesLoaded } from './foundation.util.imageLoader';
+import { Plugin } from './foundation.plugin';
 /**
  * Tabs module.
  * @module foundation.tabs
  * @requires foundation.util.keyboard
- * @requires foundation.util.timerAndImageLoader if tabs contain images
+ * @requires foundation.util.imageLoader if tabs contain images
  */
 
-class Tabs {
+class Tabs extends Plugin {
   /**
    * Creates a new instance of tabs.
    * @class
@@ -17,13 +19,12 @@ class Tabs {
    * @param {jQuery} element - jQuery object to make into tabs.
    * @param {Object} options - Overrides to the default plugin settings.
    */
-  constructor(element, options) {
+  _setup(element, options) {
     this.$element = element;
     this.options = $.extend({}, Tabs.defaults, this.$element.data(), options);
 
     this._init();
-    Foundation.registerPlugin(this, 'Tabs');
-    Foundation.Keyboard.register('Tabs', {
+    Keyboard.register('Tabs', {
       'ENTER': 'open',
       'SPACE': 'open',
       'ARROW_RIGHT': 'next',
@@ -50,7 +51,7 @@ class Tabs {
       var $elem = $(this),
           $link = $elem.find('a'),
           isActive = $elem.hasClass(`${_this.options.linkActiveClass}`),
-          hash = $link[0].hash.slice(1),
+          hash = $link.attr('data-tabs-target') || $link[0].hash.slice(1),
           linkId = $link[0].id ? $link[0].id : `${hash}-label`,
           $tabContent = $(`#${hash}`);
 
@@ -60,14 +61,18 @@ class Tabs {
         'role': 'tab',
         'aria-controls': hash,
         'aria-selected': isActive,
-        'id': linkId
+        'id': linkId,
+        'tabindex': isActive ? '0' : '-1'
       });
 
       $tabContent.attr({
         'role': 'tabpanel',
-        'aria-hidden': !isActive,
         'aria-labelledby': linkId
       });
+
+      if(!isActive) {
+        $tabContent.attr('aria-hidden', 'true');
+      }
 
       if(isActive && _this.options.autoFocus){
         $(window).load(function() {
@@ -77,12 +82,11 @@ class Tabs {
         });
       }
     });
-
     if(this.options.matchHeight) {
       var $images = this.$tabContent.find('img');
 
       if ($images.length) {
-        Foundation.onImagesLoaded($images, this._setHeight.bind(this));
+        onImagesLoaded($images, this._setHeight.bind(this));
       } else {
         this._setHeight();
       }
@@ -186,7 +190,7 @@ class Tabs {
       });
 
       // handle keyboard event with keyboard util
-      Foundation.Keyboard.handleKey(e, 'Tabs', {
+      Keyboard.handleKey(e, 'Tabs', {
         open: function() {
           $element.find('[role="tab"]').focus();
           _this._handleTabChange($element);
@@ -235,8 +239,8 @@ class Tabs {
     var $oldTab = this.$element.
           find(`.${this.options.linkClass}.${this.options.linkActiveClass}`),
           $tabLink = $target.find('[role="tab"]'),
-          hash = $tabLink[0].hash,
-          $targetContent = this.$tabContent.find(hash);
+          hash = $tabLink.attr('data-tabs-target') || $tabLink[0].hash.slice(1),
+          $targetContent = this.$tabContent.find(`#${hash}`);
 
     //close old tab
     this._collapseTab($oldTab);
@@ -272,16 +276,18 @@ class Tabs {
    */
   _openTab($target) {
       var $tabLink = $target.find('[role="tab"]'),
-          hash = $tabLink[0].hash,
-          $targetContent = this.$tabContent.find(hash);
+          hash = $tabLink.attr('data-tabs-target') || $tabLink[0].hash.slice(1),
+          $targetContent = this.$tabContent.find(`#${hash}`);
 
       $target.addClass(`${this.options.linkActiveClass}`);
 
-      $tabLink.attr({'aria-selected': 'true'});
+      $tabLink.attr({
+        'aria-selected': 'true',
+        'tabindex': '0'
+      });
 
       $targetContent
-        .addClass(`${this.options.panelActiveClass}`)
-        .attr({'aria-hidden': 'false'});
+        .addClass(`${this.options.panelActiveClass}`).removeAttr('aria-hidden');
   }
 
   /**
@@ -293,11 +299,14 @@ class Tabs {
     var $target_anchor = $target
       .removeClass(`${this.options.linkActiveClass}`)
       .find('[role="tab"]')
-      .attr({ 'aria-selected': 'false' });
+      .attr({
+        'aria-selected': 'false',
+        'tabindex': -1
+      });
 
     $(`#${$target_anchor.attr('aria-controls')}`)
       .removeClass(`${this.options.panelActiveClass}`)
-      .attr({ 'aria-hidden': 'true' });
+      .attr({ 'aria-hidden': 'true' })
   }
 
   /**
@@ -365,7 +374,7 @@ class Tabs {
    * Destroys an instance of an tabs.
    * @fires Tabs#destroyed
    */
-  destroy() {
+  _destroy() {
     this.$element
       .find(`.${this.options.linkClass}`)
       .off('.zf.tabs').hide().end()
@@ -382,7 +391,6 @@ class Tabs {
       $(window).off('popstate', this._checkDeepLink);
     }
 
-    Foundation.unregisterPlugin(this);
   }
 }
 
@@ -485,7 +493,4 @@ Tabs.defaults = {
   panelActiveClass: 'is-active'
 };
 
-// Window exports
-Foundation.plugin(Tabs, 'Tabs');
-
-}(jQuery);
+export {Tabs};

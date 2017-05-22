@@ -1,6 +1,7 @@
 ---
 title: Off-canvas
 description: Off-canvas panels are positioned outside of the viewport and slide in when activated. Setting up an off-canvas layout in Foundation is super easy.
+video: 'RK_k__4Y4TU'
 sass:
   - scss/components/_off-canvas.scss
   - scss/components/_title-bar.scss
@@ -20,7 +21,7 @@ flex: true
 
 <button class="button" type="button" data-toggle="offCanvasLeft">Toggle Off-canvas</button>
 
-Foundation's Off-canvas is a well established mobile pattern for navigation that can also be used to create a responsive sidebar. It can open from any direction, left, tight, top, and bottom. There are options to allow the Off-canvas to push your page over or to overlap your page plus a few other neat tricks.
+Foundation's Off-canvas is a well established mobile pattern for navigation that can also be used to create a responsive sidebar. It can open from any direction, left, right, top, and bottom. There are options to allow the Off-canvas to push your page over or to overlap your page plus a few other neat tricks.
 
 ## Setup
 
@@ -32,6 +33,10 @@ The Off-canvas container also needs a positioning class to determine which side 
 - `.position-right`
 - `.position-top`
 - `.position-bottom`
+
+<p>
+  <a class="" data-open-video="2:00"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
 
 Also be sure the off-canvas panel has a unique ID so it can be targeted by the click trigger.
 
@@ -53,6 +58,10 @@ Along with the Off-canvas container, the main content of your page will be house
 
 So putting it all together:
 
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/ZKjXvQ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html
 <body>
   <div class="off-canvas position-left" id="offCanvas" data-off-canvas>
@@ -66,7 +75,7 @@ So putting it all together:
 
 ### Wrapper
 
-You can add an optionalwrapper around off-canvas and the content. This hides the vertical (on top/bottom off-canvas) or horizontal (on left/right off-canvas) scrollbars the body will have.
+You can add an optional wrapper around off-canvas and the content. This hides the vertical (on top/bottom off-canvas) or horizontal (on left/right off-canvas) scrollbars the body will have.
 Simply add a container with the class `.off-canvas-wrapper`.
 
 ```html
@@ -86,6 +95,10 @@ Simply add a container with the class `.off-canvas-wrapper`.
 
 To create a click trigger that opens the panel, add the attribute `data-open` or `data-toggle` to any element. That element will then open or toggle the panel when clicked on. The value of the data attribute should be the ID of the off-canvas.
 
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/ZKjXvQ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <button type="button" class="button" data-toggle="offCanvasLeft">Open Menu</button>
 ```
@@ -93,6 +106,10 @@ To create a click trigger that opens the panel, add the attribute `data-open` or
 ### Close Button
 
 Foundation's Close component can be used inside the off-canvas to close it.
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/QvBQjo?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html
 <button class="close-button" aria-label="Close menu" type="button" data-close>
@@ -137,13 +154,13 @@ Here's a complete example that can be pasted into the `<body>` tag of your page.
 Foundation's Off-canvas is set to `position: fixed` by default using the `.off-canvas` class. This makes the off-canvas panel sit in relation to the viewport, and is the desired behavior for most users. However you can also set an off-canvas container to `position: absolute` by using the alternative class `.off-canvas-absolute`. Also be sure to use the `.off-canvas-wrapper` when using this method.
 
 ```html_example
-<button type="button" class="button" data-toggle="offCanvasLeftSPlit1">Open Left</button>
+<button type="button" class="button" data-toggle="offCanvasLeftSplit1">Open Left</button>
 <button type="button" class="button" data-toggle="offCanvasRightSplit2">Open Right</button>
 
 <div class="row">
   <div class="small-6 columns">
     <div class="off-canvas-wrapper">
-      <div class="off-canvas-absolute position-left" id="offCanvasLeftSPlit1" data-off-canvas>
+      <div class="off-canvas-absolute position-left" id="offCanvasLeftSplit1" data-off-canvas>
         <!-- Your menu or Off-canvas content goes here -->
       </div>
       <div class="off-canvas-content" style="min-height: 300px;" data-off-canvas-content>

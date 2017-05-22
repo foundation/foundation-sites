@@ -1,22 +1,31 @@
 ---
 title: Tabs
 description: Tabs are elements that help you organize and navigate multiple documents in a single container. They can be used for switching between items in the container.
+video: '8FtJRXPF5Cs'
 sass: scss/components/_tabs.scss
 js: js/foundation.tabs.js
 ---
 
 ## Basics
 
-There are two pieces to a tabbed interface: the tabs themselves, and the content for each tab. The tabs are an element with the class `.tabs`, and each item has the class `.tabs-title`. Each tab contains a link to a tab. The `href` of each link should match the ID of a tab.
+There are two pieces to a tabbed interface: the tabs themselves, and the content for each tab. The tabs are an element with the class `.tabs`, and each item has the class `.tabs-title`. Each tab contains a link to a tab. The `href` of each link should match the ID of a tab. Alternatively, the ID can be specified with the attribute `data-tabs-target`.
 
 ```html
 <ul class="tabs" data-tabs id="example-tabs">
   <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Tab 1</a></li>
-  <li class="tabs-title"><a href="#panel2">Tab 2</a></li>
+  <li class="tabs-title"><a data-tabs-target="#panel2" href="#/tabs/panel2">Tab 2</a></li>
 </ul>
 ```
 
 The tab content container has the class `.tabs-content`, while each section has the class `.tabs-panel`. Each content pane also has a unique ID, which is targeted by a link in the tabstrip.
+
+<p>
+  <a class="" data-open-video="0:50"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/VbdGKj?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html
 <div class="tabs-content" data-tabs-content="example-tabs">
@@ -44,10 +53,12 @@ Put it all together, and we get this:
   <div class="tabs-panel is-active" id="panel1">
     <p>one</p>
     <p>Check me out! I'm a super cool Tab panel with text content!</p>
+    <p><a href="#">I am a link but don't do anything</a></p>
   </div>
   <div class="tabs-panel" id="panel2">
     <p>two</p>
-    <img class="thumbnail" src="assets/img/generic/rectangle-7.jpg">
+    <textarea></textarea>
+    <button class="button">I do nothing!</button>
   </div>
   <div class="tabs-panel" id="panel3">
     <p>three</p>
@@ -73,10 +84,18 @@ Put it all together, and we get this:
 
 Add the `.vertical` class to a tabstrip to stack tabs vertically. You can also place the tabstrip and the tab contents in a grid to make them sit side-by-side.
 
+<p>
+  <a class="" data-open-video="3:46"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/eWKLdX?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <div class="row collapse">
   <div class="medium-3 columns">
-    <ul class="tabs vertical" id="example-vert-tabs" data-tabs>
+    <ul class="vertical tabs" data-tabs id="example-tabs">
       <li class="tabs-title is-active"><a href="#panel1v" aria-selected="true">Tab 1</a></li>
       <li class="tabs-title"><a href="#panel2v">Tab 2</a></li>
       <li class="tabs-title"><a href="#panel3v">Tab 3</a></li>
@@ -84,26 +103,32 @@ Add the `.vertical` class to a tabstrip to stack tabs vertically. You can also p
       <li class="tabs-title"><a href="#panel5v">Tab 5</a></li>
       <li class="tabs-title"><a href="#panel6v">Tab 6</a></li>
     </ul>
-    </div>
-    <div class="medium-9 columns">
-    <div class="tabs-content vertical" data-tabs-content="example-vert-tabs">
+  </div>
+  <div class="medium-9 columns">
+    <div class="tabs-content" data-tabs-content="example-tabs">
       <div class="tabs-panel is-active" id="panel1v">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p>One</p>
+        <p>Check me out! I'm a super cool Tab panel with text content!</p>
       </div>
       <div class="tabs-panel" id="panel2v">
-        <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus.</p>
+        <p>Two</p>
+        <img class="thumbnail" src="assets/img/generic/rectangle-7.jpg">
       </div>
       <div class="tabs-panel" id="panel3v">
-        <img class="thumbnail" src="assets/img/generic/rectangle-3.jpg">
+        <p>Three</p>
+        <p>Check me out! I'm a super cool Tab panel with text content!</p>
       </div>
       <div class="tabs-panel" id="panel4v">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p>Four</p>
+        <img class="thumbnail" src="assets/img/generic/rectangle-2.jpg">
       </div>
       <div class="tabs-panel" id="panel5v">
-        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Five</p>
+        <p>Check me out! I'm a super cool Tab panel with text content!</p>
       </div>
       <div class="tabs-panel" id="panel6v">
-        <img class="thumbnail" src="assets/img/generic/rectangle-5.jpg">
+        <p>Six</p>
+        <img class="thumbnail" src="assets/img/generic/rectangle-8.jpg">
       </div>
     </div>
   </div>
@@ -115,6 +140,10 @@ Add the `.vertical` class to a tabstrip to stack tabs vertically. You can also p
 ## Collapsing Tabs
 
 Add the attribute `data-active-collapse="true"` to a tabstrip to collapse active tabs.
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="https://codepen.io/IamManchanda/pen/LyrJQZ?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <ul class="tabs" data-active-collapse="true" data-tabs id="collapsing-tabs">
@@ -155,6 +184,10 @@ By using deep linking (see below), the open state of a page's tabset may be shar
 Add the attribute `data-deep-link="true"` to a tabstrip to:
 - modify the browser history when a tab is clicked
 - allow users to open a particular tab at page load with a hash-appended URL
+
+<p>
+  <a class="" data-open-video="5:14"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
 
 ```html_example
 <ul class="tabs" data-deep-link="true" data-update-history="true" data-deep-link-smudge="true" data-deep-link-smudge="500" data-tabs id="deeplinked-tabs">

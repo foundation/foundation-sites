@@ -1,6 +1,7 @@
 ---
 title: Tooltip
 description: Tooltips? More like <em>Cooltips</em>. But really though, tooltips are nifty for displaying extended information for a term or action on a page.
+video: 'PJMYScItyP4'
 sass: scss/components/_tooltip.scss
 js: js/foundation.tooltip.js
 ---
@@ -8,6 +9,14 @@ js: js/foundation.tooltip.js
 
 ## Basic Tooltip
 By default, a tooltip appears below the defined term on hover.
+
+<p>
+  <a class="" data-open-video="0:49"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/zwLxaY?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <p>
@@ -20,6 +29,14 @@ The <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="
 ## Tooltip Top
 To get a tip-top top tooltip (lol), just add the class `.top` to the `<span>` element.
 
+<p>
+  <a class="" data-open-video="3:00"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/BRPyqx?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <p>
 ...clearing away the brambles with the
@@ -31,14 +48,23 @@ At the spot thus attained a second peg was driven, and about this, as a centre, 
 ---
 
 ## Tooltip clicking
-By default, clicking on a tooltip will leave it open until you click somewhere else.  However, you can disable that by adding data-click-open="false"
+
+By default, clicking on a tooltip will leave it open until you click somewhere else.  However, you can disable that by adding `data-click-open="false"`
+
+<p>
+  <a class="" data-open-video="4:12"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/XRBJvm?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <p>
-this 
+this
 <span data-tooltip aria-haspopup="true" class="has-tip top" data-disable-hover="false" tabindex="2" title="You see?  I'm open!">tooltip will stay open</span>
 
-while 
+while
 <span data-tooltip aria-haspopup="true" class="has-tip top" data-click-open="false" data-disable-hover="false" tabindex="2" title="I don't stay open">this one will only be open when hovered</span>
 </p>
 ```
@@ -49,8 +75,16 @@ while
 
 You can also position the tooltips to the right and left of the word by adding the classes `.right` or `.left` to the `<span>` element.
 
+<p>
+  <a class="" data-open-video="3:00"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
 <div class="primary callout">
   <p>When using Foundation in <a href="rtl.html">right-to-left</a> mode, "right" still means right, and "left" still means left.</p>
+</div>
+
+<div class="docs-codepen-container">
+  <a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/EmpaJP?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
