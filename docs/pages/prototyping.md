@@ -603,7 +603,6 @@ Border none lets you quickly resets border to `none` into any component.
 Display classes helps to display the elements in specific positions inside any other HTML elements.
 
 ```html
-<div class="display-none"></div>
 <div class="display-inline"></div>
 <div class="display-inline-block"></div>
 <div class="display-block"></div>
@@ -611,6 +610,10 @@ Display classes helps to display the elements in specific positions inside any o
 ``` 
 
 By default, we have just added the most used display classes. but as you would know, there are many other display classes as specified by MDN [here](https://developer.mozilla.org/en-US/docs/Web/CSS/display). If you need some of those classes, then you can add them easily through Sass variables with `$prototype-display`. Sass Reference [here](#sass-reference)
+
+<div class="primary callout">
+  <p>For `display: flex` and `display: none`, use generic `.flex-container` and `.hide` respectively!</p>
+</div>
 
 ---
 
