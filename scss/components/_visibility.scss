@@ -29,12 +29,12 @@
   @if $upper-bound-size == null {
     @if $orientation == null {
       @media screen and (max-width: $lower-bound) {
-	display: none !important;
+	      display: none !important;
       }
     }
     @else {
       @media screen and (max-width: $lower-bound) and (orientation: $orientation) {
-	display: none !important;
+	      display: none !important;
       }
     }
   }
@@ -43,12 +43,12 @@
 
     @if $orientation == null {
       @media screen and (max-width: $lower-bound), screen and (min-width: $upper-bound) {
-	display: none !important;
+	      display: none !important;
       }
     }
     @else {
       @media screen and (max-width: $lower-bound) and (orientation: $orientation), screen and (min-width: $upper-bound) and (orientation: $orientation) {
-	display: none !important;
+	      display: none !important;
       }
     }
   }
@@ -90,10 +90,10 @@
   @each $size in $breakpoint-classes {
     @if $size != $-zf-zero-breakpoint {
       .hide-for-#{$size} {
-	@include hide-for($size);
+	      @include hide-for($size);
       }
       .show-for-#{$size} {
-	@include show-for($size);
+	      @include show-for($size);
       }
     }
     .hide-for-#{$size}-only {
