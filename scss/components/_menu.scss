@@ -105,6 +105,10 @@ $menu-item-background-hover: $light-gray !default;
       li {
         display: flex;
         justify-content: flex-end;
+
+        .submenu li {
+          justify-content: flex-start;
+        }
       }
     }
     @else {
@@ -120,6 +124,10 @@ $menu-item-background-hover: $light-gray !default;
       li {
         display: flex;
         justify-content: center;
+
+        .submenu li {
+          justify-content: flex-start;
+        }
       }
     }
     @else {
