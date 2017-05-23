@@ -432,3 +432,13 @@ a[data-open-video] {
     color: #aaa;
   }
 }
+
+.button.clear {
+  border: 0;
+  background: transparent;
+  color: $primary-color;
+
+  &:hover {
+    background: $light-gray;
+  }
+}

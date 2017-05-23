@@ -1,10 +1,51 @@
 ---
 title: Installation
-description: There are many ways to install Foundation, but if you're just getting started, we have a few suggestions.
+description: There are many ways to install Foundation from downloading the compiled CSS, automated Sass installs to popular package managers. Each one serves a different skill level or preferred workflow. If this is all new to you, don’t worry; The video below will give you an overview of each method and help you decide which is best for you.
 video: '6KwsGcEHVTE'
 ---
 
-### Command-Line Tool
+## How to choose the right version for you?
+
+Depending on your skill level or how quick you want to get started, each of these different ways to get started might suit you better. Here’s a breakdown of the options you’ll see on this page:
+
+<ul class="no-bullet" data-magellan data-bar-offset="90">
+
+  <li><a href="#download-the-css-starter-template"><strong>Download the CSS Starter Template</strong></a> - A ready-to-go zip file with Foundation’s CSS and JS. <span style="vertical-align: top; border: 0; border-radius: 3px;" class="label secondary">CSS</span></li>
+
+  <li><a href="#css-download"><strong>Use the Foundation CDN</strong></a> - Foundation’s CDN (Content Delivery Network) can be linked into a new or existing project without any downloading. <span style="vertical-align: top; border: 0; border-radius: 3px;" class="label secondary">CSS</span></li>
+
+  <li><a href="#css-download"><strong>Foundation CLI </strong></a> - Foundation’s CLI (Command Line Interface) is the recommended way to create ready-to-go Foundation Sass projects. <span style="vertical-align: top; border: 0; border-radius: 3px;" class="label">Sass</span></li>
+
+  <li><a href="#css-download"><strong>Manual Setup</strong></a> - You can Install from either the ZURB Stack or Basic Template manually. <span style="vertical-align: top; border: 0; border-radius: 3px;" class="label">Sass</span></li>
+
+  <li><a href="#css-download"><strong>Package Managers</strong></a> - Install foundation through your favorite package manager like npm, Bower, Meteor, RubyGems, Composer or NuGet. <span style="vertical-align: top; border: 0; border-radius: 3px;" class="label">Sass</span></li>
+
+  <li><a href="#css-download"><strong>Download the Sass files</strong></a> - Already have a workflow you like? No problem, download Foundation's core SCSS files and you can go your own way. <span style="vertical-align: top; border: 0; border-radius: 3px;" class="label">Sass</span></li>
+
+</ul>
+
+
+---
+
+## Download the CSS Starter Template
+
+<p>
+  <a class="" data-open-video="0:58"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+This is the quickest way to get started with Foundation. If you aren't into Sass, we have a starter template with compiled CSS and JavaScript, as well as a starting index.html file for you to hack on. Just unzip and get coding!
+
+<a href="http://foundation.zurb.com/sites/download" class="large button">Download CSS Version</a>
+<a href="#" class="button large clear">Learn more →</a>
+
+---
+
+
+## Command-Line Tool
+
+<p>
+  <a class="" data-open-video="0:58"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
 
 Not a fan of GUIs? The Node-powered Foundation CLI can install the same template projects for you. Install it with npm:
 
@@ -33,6 +74,10 @@ foundation new
 ---
 
 ## Manual Setup
+
+<p>
+  <a class="" data-open-video="0:58"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
 
 ### Basic Template
 
@@ -78,50 +123,11 @@ To create compressed, production-ready assets, run `npm run build`.
 
 ---
 
-## CSS Download
-
-<div class="responsive-embed widescreen mb1">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/lFrpnk0Oo_8" frameborder="0" allowfullscreen></iframe>
-  <a id="docs-mobile-video-link" class="docs-mobile-video" target="_blank" href="https://youtu.be/lFrpnk0Oo_8"></a>
-</div>
-
-If you aren't into Sass, we have a starter template with compiled CSS and JavaScript, as well as a starting `index.html` file for you to hack on. Just unzip and get coding!
-
-<a href="http://foundation.zurb.com/sites/download" class="large button">Download CSS Version</a>
-
----
-
-## HTML Starter Template
-Start with this HTML template and adapt it to your needs. Be sure to include the `.no-js` class on the `html` tag of your template.  Adding this class prevents [flash of unstyled content](https://en.wikipedia.org/wiki/Flash_of_unstyled_content) for a number of foundation components.
-
-```html
-<!doctype html>
-<html class="no-js" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Foundation Starter Template</title>
-    <link rel="stylesheet" href="css/foundation.css" />
-  </head>
-  <body>
-    <h1>Hello, world!</h1>
-
-    <script src="js/vendor/jquery.js"></script>
-    <script src="js/vendor/what-input.js"></script>
-    <script src="js/vendor/foundation.min.js"></script>
-    <script>
-      $(document).foundation();
-    </script>
-
-  </body>
-</html>
-
-```
-
----
-
 ## CDN Links
+
+<p>
+  <a class="" data-open-video="0:58"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
 
 The folks at [cdnjs](https://cdnjs.com) host the compressed Foundation CSS and JavaScript for us. Just drop one of these `<script>` tags into your HTML and you're set:
 
@@ -136,6 +142,10 @@ The folks at [cdnjs](https://cdnjs.com) host the compressed Foundation CSS and J
 ---
 
 ## Package Managers
+
+<p>
+  <a class="" data-open-video="0:58"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
 
 Foundation is available on npm, Bower, Meteor, and Composer. The package includes all of the source Sass and JavaScript files, as well as compiled CSS and JavaScript, in uncompressed and compressed flavors.
 
@@ -159,5 +169,9 @@ Here's what comes in the package.
 ---
 
 ## Other Integrations
+
+<p>
+  <a class="" data-open-video="0:58"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
 
 The Foundation community has helped us integrate the framework into Rails, WordPress, Django, and more. Head to our [resources page](http://foundation.zurb.com/sites/resources) to find even more ways to use Foundation.
