@@ -183,12 +183,24 @@ class OffCanvas extends Plugin {
    * @private
    */
   _emulateFixedPosition(resetHeight = false) {
+    
     if (this.nested === true) {
 
-      this.$element.css('top', $(document).scrollTop());
+      if (this.position === 'top') {
+        
+        this.$element.css('top', $(document).scrollTop());
+
+      } else if (this.position === 'bottom') {
+
+        this.$element.css('top', $(document).scrollTop() + $(window).height() - this.$element.outerHeight());
+
+      } else { // left|right
+
+        this.$element.css('top', $(document).scrollTop());
       
-      if (resetHeight === true) {
-        this.$element.height( $(window).height() );
+        if (resetHeight === true) {
+          this.$element.height( $(window).height() );
+        }
       }
     }
   }
