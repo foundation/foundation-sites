@@ -35,8 +35,60 @@ Depending on your skill level or how quick you want to get started, each of thes
 
 This is the quickest way to get started with Foundation. If you aren't into Sass, we have a starter template with compiled CSS and JavaScript, as well as a starting index.html file for you to hack on. Just unzip and get coding!
 
-<a href="http://foundation.zurb.com/sites/download" class="large button">Download CSS Version</a>
+Our Starter template comes set up from the jump complete with:
+
+- Foundation’s CSS
+- Foundation’s JavaScript
+- A Starter HTML Index page
+- A blank CSS file for custom styles
+- Viewport meta tag and other boilerplate for building your responsive site
+
+<a href="http://foundation.zurb.com/sites/download" class="large button">Go to Download Page</a>
 <a href="#" class="button large clear">Learn more →</a>
+
+---
+
+## CDN Links
+
+<p>
+  <a class="" data-open-video="0:58"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+</p>
+
+The folks at [cdnjs](https://cdnjs.com) host the compressed Foundation CSS and JavaScript for us. Just drop one of these `<script>` tags into your HTML and you're set:
+
+```html
+<!-- Compressed CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css" integrity="sha256-itWEYdFWzZPBG78bJOOiQIn06QCgN/F0wMDcC4nOhxY=" crossorigin="anonymous" />
+
+<!-- Compressed JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/foundation.min.js" integrity="sha256-Nd2xznOkrE9HkrAMi4xWy/hXkQraXioBg9iYsBrcFrs=" crossorigin="anonymous"></script>
+```
+
+Example usage:
+
+```html
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Foundation CDN Boilerplate</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css" integrity="sha256-itWEYdFWzZPBG78bJOOiQIn06QCgN/F0wMDcC4nOhxY=" crossorigin="anonymous" />
+  </head>
+  <body>
+    <!-- page content -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/foundation.min.js" integrity="sha256-Nd2xznOkrE9HkrAMi4xWy/hXkQraXioBg9iYsBrcFrs=" crossorigin="anonymous"></script>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
+</html>
+
+```
+
+<a target="_blank" href="https://cdnjs.com/libraries/foundation" class="button large">See all Foundation 6 CDN Links →</a>
 
 ---
 
@@ -120,24 +172,6 @@ http://localhost:8000
 ```
 
 To create compressed, production-ready assets, run `npm run build`.
-
----
-
-## CDN Links
-
-<p>
-  <a class="" data-open-video="0:58"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
-</p>
-
-The folks at [cdnjs](https://cdnjs.com) host the compressed Foundation CSS and JavaScript for us. Just drop one of these `<script>` tags into your HTML and you're set:
-
-```html
-<!-- Compressed CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation.min.css" integrity="sha256-itWEYdFWzZPBG78bJOOiQIn06QCgN/F0wMDcC4nOhxY=" crossorigin="anonymous" />
-
-<!-- Compressed JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/js/foundation.min.js" integrity="sha256-Nd2xznOkrE9HkrAMi4xWy/hXkQraXioBg9iYsBrcFrs=" crossorigin="anonymous"></script>
-```
 
 ---
 
