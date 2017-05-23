@@ -442,3 +442,16 @@ a[data-open-video] {
     background: $light-gray;
   }
 }
+
+.icon-list {
+  margin-bottom: 1.3rem;
+
+  li {
+    margin-bottom: 0.35rem;
+  }
+
+  img {
+    max-width: 50px;
+    margin-right: 1rem;
+  }
+}
