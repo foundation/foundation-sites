@@ -68,7 +68,7 @@ class OffCanvas extends Plugin {
     if (this.options.contentId) {
       this.$content = $('#'+this.options.contentId);
     } else if (this.$element.siblings('[data-off-canvas-content]').length) {
-      this.$content = this.$element.siblings('[data-off-canvas-content]');
+      this.$content = this.$element.siblings('[data-off-canvas-content]').first();
     } else {
       this.$content = this.$element.closest('[data-off-canvas-content]').first();
     }
