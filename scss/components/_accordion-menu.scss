@@ -6,6 +6,10 @@
 /// @type Number
 $accordionmenu-padding: $global-menu-padding !default;
 
+/// Sets accordion menu nested margin
+/// @type Number
+$accordionmenu-nested-margin: $global-menu-nested-margin !default; 
+
 /// Sets accordion menu submenu padding.
 /// @type Number
 $accordionmenu-submenu-padding: $accordionmenu-padding !default;
@@ -31,6 +35,10 @@ $accordionmenu-arrow-size: 6px !default;
 
     a {
       padding: $accordionmenu-padding;
+    }
+
+    .nested.is-accordion-submenu {
+      @include menu-nested($accordionmenu-nested-margin);
     }
   }
 

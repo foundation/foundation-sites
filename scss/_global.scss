@@ -90,6 +90,9 @@ $global-radius: 0 !default;
 /// @type Number
 $global-menu-padding: 0.7rem 1rem !default;
 
+/// Global value used for all menu styles. Nested margin for submenu.
+$global-menu-nested-margin: 1rem !default;
+
 /// Sets the text direction of the CSS. Can be either `ltr` or `rtl`.
 /// @type Keyword
 $global-text-direction: ltr !default;

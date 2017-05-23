@@ -18,6 +18,10 @@ $drilldown-arrows: true !default;
 /// @type Number
 $drilldown-padding: $global-menu-padding !default;
 
+/// Sets dropdown menu nested margin
+/// @type Number
+$drilldown-nested-margin: 0px !default; 
+
 /// Background color for drilldown top level items.
 /// @type Color
 $drilldown-background: $white !default;
@@ -54,63 +58,69 @@ $drilldown-arrow-size: 6px !default;
   }
 
   // The top level <ul>
-  .drilldown a {
-    padding: $drilldown-padding;
-    background: $drilldown-background;
-  }
-
-  // Applied to nested <ul>s
-  .is-drilldown-submenu {
-    position: absolute;
-    top: 0;
-    #{$global-left}: 100%;
-    z-index: -1;
-
-    width: 100%;
-    background: $drilldown-submenu-background;
-    transition: $drilldown-transition;
-
-    &.is-active {
-      z-index: 1;
-      display: block;
-      transform: translateX(if($global-text-direction == ltr, -100%, 100%));
-    }
-
-    &.is-closing {
-      transform: translateX(if($global-text-direction == ltr, 100%, -100%));
-    }
-
-    // Submenu item padding
+  .drilldown {
     a {
-      padding: $drilldown-submenu-padding;
+      padding: $drilldown-padding;
+      background: $drilldown-background;
     }
-  }
 
-  .drilldown-submenu-cover-previous {
-    min-height: 100%;
-  }
+    // Applied to submenu <ul>s
+    .is-drilldown-submenu {
+      position: absolute;
+      top: 0;
+      #{$global-left}: 100%;
+      z-index: -1;
 
-  @if $drilldown-arrows {
-    .is-drilldown-submenu-parent > a {
-      position: relative;
+      width: 100%;
+      background: $drilldown-submenu-background;
+      transition: $drilldown-transition;
 
-      &::after {
-        @include css-triangle($drilldown-arrow-size, $drilldown-arrow-color, $global-right);
-        position: absolute;
-        top: 50%;
-        margin-top: -1 * $drilldown-arrow-size;
-        #{$global-right}: 1rem;
+      &.is-active {
+        z-index: 1;
+        display: block;
+        transform: translateX(if($global-text-direction == ltr, -100%, 100%));
+      }
+
+      &.is-closing {
+        transform: translateX(if($global-text-direction == ltr, 100%, -100%));
+      }
+
+      // Submenu item padding
+      a {
+        padding: $drilldown-submenu-padding;
       }
     }
 
-    .js-drilldown-back > a::before {
-      @include css-triangle($drilldown-arrow-size, $drilldown-arrow-color, $global-left);
-      border-#{$global-left}-width: 0;
-      display: inline-block;
-      vertical-align: middle;
-      margin-#{$global-right}: 0.75rem; // Creates space between the arrow and the text
+    .nested.is-drilldown-submenu {
+      @include menu-nested($drilldown-nested-margin);
+    }
 
-      border-#{$global-left}-width: 0;
+    .drilldown-submenu-cover-previous {
+      min-height: 100%;
+    }
+
+    @if $drilldown-arrows {
+      .is-drilldown-submenu-parent > a {
+        position: relative;
+
+        &::after {
+          @include css-triangle($drilldown-arrow-size, $drilldown-arrow-color, $global-right);
+          position: absolute;
+          top: 50%;
+          margin-top: -1 * $drilldown-arrow-size;
+          #{$global-right}: 1rem;
+        }
+      }
+
+      .js-drilldown-back > a::before {
+        @include css-triangle($drilldown-arrow-size, $drilldown-arrow-color, $global-left);
+        border-#{$global-left}-width: 0;
+        display: inline-block;
+        vertical-align: middle;
+        margin-#{$global-right}: 0.75rem; // Creates space between the arrow and the text
+
+        border-#{$global-left}-width: 0;
+      }
     }
   }
 }

@@ -34,6 +34,10 @@ $dropdownmenu-submenu-background: $dropdownmenu-background !default;
 /// @type Number
 $dropdownmenu-padding: $global-menu-padding !default;
 
+/// Sets dropdown menu nested margin
+/// @type Number
+$dropdownmenu-nested-margin: 0px !default; 
+
 /// Padding for sub-menu items.
 /// @type Number
 $dropdownmenu-submenu-padding: $dropdownmenu-padding !default;
@@ -133,6 +137,10 @@ $dropdownmenu-border-width: nth($dropdownmenu-border, 1);
 
     .no-js & ul {
       display: none;
+    }
+
+    .nested.is-dropdown-submenu {
+      @include menu-nested($dropdownmenu-nested-margin);
     }
 
     &.vertical {

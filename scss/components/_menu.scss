@@ -12,7 +12,7 @@ $menu-margin: 0 !default;
 
 /// Left-hand margin of a nested menu.
 /// @type Number
-$menu-nested-margin: 1rem !default;
+$menu-nested-margin: $global-menu-nested-margin !default;
 
 /// Padding for items in a pill menu.
 /// @type Number
