@@ -244,8 +244,6 @@ $menu-border: $light-gray !default;
 }
 
 @mixin menu-text {
-  padding-top: 0;
-  padding-bottom: 0;
   padding: $menu-item-padding;
 
   font-weight: bold;
