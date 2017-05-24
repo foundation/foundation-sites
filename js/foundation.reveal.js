@@ -148,16 +148,6 @@ class Reveal extends Plugin {
       }
     });
 
-    if (this.$anchor.length) {
-      this.$anchor.on('keydown.zf.reveal', function(e) {
-        if (e.which === 13 || e.which === 32) {
-          e.stopPropagation();
-          e.preventDefault();
-          _this.open();
-        }
-      });
-    }
-
     if (this.options.closeOnClick && this.options.overlay) {
       this.$overlay.off('.zf.reveal').on('click.zf.reveal', function(e) {
         if (e.target === _this.$element[0] ||
@@ -190,11 +180,16 @@ class Reveal extends Plugin {
    * @fires Reveal#open
    */
   open() {
+    // either update or replace browser history
     if (this.options.deepLink) {
       var hash = `#${this.id}`;
 
       if (window.history.pushState) {
-        window.history.pushState(null, null, hash);
+        if (this.options.updateHistory) {
+          window.history.pushState({}, '', hash);
+        } else {
+          window.history.replaceState({}, '', hash);
+        }
       } else {
         window.location.hash = hash;
       }
@@ -546,6 +541,12 @@ Reveal.defaults = {
    * @default false
    */
   deepLink: false,
+  /**
+   * Update the browser history with the open modal
+   * @option
+   * @default false
+   */
+  updateHistory: false,
     /**
    * Allows the modal to append to custom div.
    * @option

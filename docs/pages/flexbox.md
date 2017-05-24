@@ -1,6 +1,7 @@
 ---
 title: Flexbox
 description: For browsers with cutting-edge support, some of Foundation's key components can be converted to flexbox.
+video: 'KxafSdyTCIg'
 sass:
   - scss/components/_flex.scss
   - scss/util/_flex.scss
@@ -66,6 +67,10 @@ To understand how these classes work, you need to understand the parent-child re
 
 Here's a basic example: when using the grid, a row is a flex parent, and a column is a flex child.
 
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/XRZOjE?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html
 <div class="row">
   <div class="column"></div>
@@ -110,6 +115,10 @@ Horizontal alignment classes are applied to flex parents. Left alignment is the 
   </div>
 </div>
 
+<div class="docs-codepen-container">
+<a class="codepen-logo-link left" href="http://codepen.io/ZURBFoundation/pen/WjMmvM?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 You might be wondering what the difference between `.align-justify` and `.align-spaced` is. A justified grid (`justify-content: space-between`) evenly distributes the space *between* each column. The first and last columns pin to the edge of the grid.
 
 A spaced grid (`justify-content: space-around`) evenly distributes the space *around* each column. This means there will always be space to the left of the first column, and to the right of the last column.
@@ -131,6 +140,10 @@ Stretch alignment is the default. To set parent alignment, use these classes:
 
 <div class="primary callout">
   <p>Note that with vertical alignment, we use the term "middle" for the midpoint, while with horizontal alignment, we use the term "center". As we can't have two CSS classes with the same name, thus we are using different terms.</p>
+</div>
+
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/pPaYwQ" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
 </div>
 
 ```html_example
@@ -156,6 +169,10 @@ To align an individual child, use the below classes. They use the same alignment
 - `.align-self-bottom`
 - `.align-self-stretch`
 
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/zwRbjY?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
 <div class="row">
   <div class="column align-self-bottom">Align bottom</div>
@@ -168,14 +185,18 @@ To align an individual child, use the below classes. They use the same alignment
 
 ### Central Alignment
 
-Central alignment can be applied to a flex parent, which will centrally align all children's automatically. To set this to your layout, simply use the class: `.align-center-middle`.
+Central alignment can be applied to a flex parent, which will centrally align all children horizontally and vertically automatically. To set this to your layout, simply use the class: `.align-center-middle`.
 
 <div class="primary callout">
   <p>We are using `.text-center` class just for demo purposes here.</p>
 </div>
 
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/pPamOp?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
+
 ```html_example
-<div class="row align-center-middle text-center">
+<div class="row align-center-middle text-center" style="height: 200px;">
   <div class="columns small-4">I am in the center-middle</div>
   <div class="columns small-4">I am also centrally located</div>
 </div>
@@ -198,11 +219,15 @@ And to change its flex direction from row to column you can use the helper class
 - `.flex-dir-column`
 - `.flex-dir-column-reverse`
 
-For children, there are 3 quick helper classes
+For children, there are 3 quick helper classes to apply the flex property. These control how the containers take up space relative to their siblings:
 
 - `.flex-child-auto` (auto size flex child)
 - `.flex-child-grow` (flex child that will grow to take up all possible space)
 - `.flex-child-shrink` (flex child that will shrink to minimum possible space)
+
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/jmZoQa?editors=1100" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
 <div class="row">
@@ -217,18 +242,26 @@ For children, there are 3 quick helper classes
 </div>
 ```
 
-All of these helper classes come in responsive varieties, prefixed with all of your named breakpoints.  So you can do things like
+All of these helper classes come in responsive varieties, prefixed with all of your named breakpoints. So you can do things like:
+
+<div class="docs-codepen-container">
+<a class="codepen-logo-link" href="http://codepen.io/ZURBFoundation/pen/pPaXEO?editors=1000" target="_blank"><img src="{{root}}assets/img/logos/edit-in-browser.svg" class="" height="" width="" alt="edit on codepen button"></a>
+</div>
 
 ```html_example
-  <div class="row">
-    <div class="column large-12 flex-container flex-dir-column large-flex-dir-row">
-      <div class="callout flex-child-auto">Auto</div>
-      <div class="callout flex-child-auto">Auto</div>
-      <div class="callout flex-child-shrink large-flex-child-auto">Auto on Large</div>
-    </div>
-    <div class="column align-self-top">Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?</div>
+<div class="row">
+  <div class="column large-12 flex-container flex-dir-column large-flex-dir-row">
+    <div class="callout flex-child-auto">Auto</div>
+    <div class="callout flex-child-auto">Auto</div>
+    <div class="callout flex-child-shrink large-flex-child-auto">Auto on Large</div>
   </div>
+  <div class="column align-self-top">Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?Align top. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non harum laborum cum voluptate vel, eius adipisci similique dignissimos nobis at excepturi incidunt fugit molestiae quaerat, consequuntur porro temporibus. Nisi, ex?</div>
+</div>
 ```
+
+<div class="primary callout">
+  <p>Foundation's CSS is mobile first, so setting a class will apply to the small breakpoint and large unless overridden by a class for a larger breakpoint. Example: `class="flex-child-shrink large-flex-child-auto"` will be shrink on the small and medium breakpoints and then auto on large.</p>
+</div>
 
 ---
 
