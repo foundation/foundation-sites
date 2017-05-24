@@ -60,10 +60,12 @@ gulp.src('./src/scss/app.scss')
   }));
 ```
 
-Finally, import the library into your Sass file.
+Finally, import the library into your Sass file and include the mixins.
 
 ```scss
 @import 'motion-ui'
+@include motion-ui-transitions;
+@include motion-ui-animations;
 ```
 
 Or, another way to start using Motion UI is through a CDN.

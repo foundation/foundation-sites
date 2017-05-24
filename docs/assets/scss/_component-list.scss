@@ -3,12 +3,13 @@
   border-right: 1px solid #efefef;
 }
 
-.docs-nav-category {
+.menu .docs-nav-category {
   background: none;
 
   .accordion-title {
     border: none;
     color: #444444;
+    background-color: inherit;
     font-weight: 600;
   }
 
