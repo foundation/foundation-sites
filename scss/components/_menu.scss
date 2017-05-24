@@ -348,6 +348,23 @@ $menu-border: $light-gray !default;
         background-color: $menu-item-background-hover;
       }
     }
+
+    // Menu with border
+    &.menu-bordered {
+      li {
+        border: 1px solid $menu-border;
+        &:not(:first-child) {
+          border-top: 0;
+        }
+      }
+    }
+
+    // Menu with background hover
+    &.menu-hover {
+      li:hover {
+        background-color: $menu-item-background-hover;
+      }
+    }
   }
 
   .menu-text {
