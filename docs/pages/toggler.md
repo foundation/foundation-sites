@@ -3,6 +3,7 @@ title: Toggler
 description: Toggler makes it easy to toggle CSS or animate any element with a click.
 js: js/foundation.toggler.js
 mui: true
+video: 'wHpZCrpKlBc'
 ---
 
 ## Toggle a CSS class
@@ -10,7 +11,7 @@ mui: true
 To setup a class toggle, start by adding the attribute `data-toggler` to an element. The value of `data-toggler` is the class you want to toggle. Also give the element a unique ID so it can be targeted.
 
 <p>
-  <a class="" data-open-video="0:27"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="0:53"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 </p>
 
 <div class="docs-codepen-container">
@@ -49,7 +50,7 @@ Instead of toggling a class, you can also toggle visibility. When toggled, the e
 
 Instead of `data-toggler`, add the attribute `data-animate`. The value of the attribute is the *in animation* you want, followed by the *out animation*.
 <p>
-  <a class="" data-open-video="0:27"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="3:49"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 </p>
 
 <div class="docs-codepen-container">
@@ -71,7 +72,7 @@ Instead of `data-toggler`, add the attribute `data-animate`. The value of the at
 
 To create an element that can be closed once, add the attribute `data-closable`. Then add a click trigger inside the element using `data-close`.
 <p>
-  <a class="" data-open-video="0:27"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="7:42"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 </p>
 
 <div class="docs-codepen-container">
@@ -92,7 +93,7 @@ To create an element that can be closed once, add the attribute `data-closable`.
 `data-closable` can be configured with a custom exit animation.
 
 <p>
-  <a class="" data-open-video="0:27"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="9:35"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 </p>
 
 <div class="docs-codepen-container">
@@ -113,7 +114,7 @@ To create an element that can be closed once, add the attribute `data-closable`.
 The `data-toggle` attribute only toggles classes/visibility on click. You can also have the toggle fire when an element is *focused* or *unfocused* using `data-toggle-focus`.
 
 <p>
-  <a class="" data-open-video="0:27"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="10:27"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 </p>
 
 <div class="docs-codepen-container">
@@ -134,7 +135,7 @@ The `data-toggle` attribute only toggles classes/visibility on click. You can al
 
 The `data-toggle`, `data-close`, and `data-open` attributes can now target multiple elements! The syntax is simple; just pass a *space* separated list to the `data-x` attribute like so:
 <p>
-  <a class="" data-open-video="0:27"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
+  <a class="" data-open-video="12:52"><img src="{{root}}assets/img/icons/watch-video-icon.svg" class="video-icon" height="30" width="30" alt=""> Watch this part in video</a>
 </p>
 
 <div class="docs-codepen-container">

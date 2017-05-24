@@ -8,8 +8,8 @@
   </ul>
 -->
 
-
-  <ul class="accordion docs-nav-category" data-accordion data-allow-all-closed="true">
+  <ul class="accordion docs-nav-category" data-accordion data-allow-all-closed="true" data-multi-expand="true">
+    <a class="docs-expand-all" data-expand-all="true"></a>
     <li class="accordion-item {{#ifpage 'index' 'installation' 'starter-projects' 'compatibility' 'accessibility' 'kitchen-sink'}}is-active{{/ifpage}}" data-accordion-item>
       <a href="#" class="accordion-title">Getting Started</a>
       <div class="accordion-content {{#ifpage 'index' 'installation' 'starter-projects' 'compatibility' 'accessibility' 'kitchen-sink'}}is-active{{/ifpage}}" data-tab-content>
@@ -112,7 +112,7 @@
 
     <li class="accordion-item {{#ifpage 'badge' 'responsive-embed' 'label' 'orbit' 'progress-bar' 'thumbnail' 'tooltip'}}is-active{{/ifpage}}" data-accordion-item>
       <a href="#" class="accordion-title">Media</a>
-      <div class="accordion-content {{#ifpage 'accordion' 'callout' 'card' 'dropdown' 'media-object' 'off-canvas' 'reveal' 'table' 'tabs' 'responsive-accordion-tabs'}}is-active{{/ifpage}}" data-tab-content>
+      <div class="accordion-content {{#ifpage 'badge' 'responsive-embed' 'label' 'orbit' 'progress-bar' 'thumbnail' 'tooltip'}}is-active{{/ifpage}}" data-tab-content>
         <ul class="docs-nav-subcategory">
           <li{{#ifpage 'badge'}} class="current"{{/ifpage}}><a href="badge.html">Badge</a></li>
           <li{{#ifpage 'responsive-embed'}} class="current"{{/ifpage}}><a href="responsive-embed.html">Responsive Embed</a></li>
