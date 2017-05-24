@@ -13,8 +13,8 @@
 /// @param {Color} $color - Color of the shadow.
 @mixin inner-side-shadow(
   $side: bottom,
-  $size: 15px,
-  $color: rgba(#000, 0.25)
+  $size: 20px,
+  $color: rgba($black, 0.25)
 ) {
 
   $helper: round($size * 0.65);

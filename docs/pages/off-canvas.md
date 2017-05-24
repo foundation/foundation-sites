@@ -368,6 +368,17 @@ So there are three ways to place the off-canvas element now:
 
 ---
 
+## Migrating from versions prior to v6.4
+
+If you're upgrading from v6.3 there's nothing to do unless you haven't changed the default value of `$offcanvas-shadow`. Prior to v6.4 this variable was used for both, overlap and push off-canvas elements. Now it's only used for the overlap element whereas the push element uses two new variables:
+
+- `$offcanvas-inner-shadow-size` which is a number (mostly px)
+- `$offcanvas-inner-shadow-color` which is a color (mostly rgba)
+
+So if you have changed the default off-canvas shadow you have to adjust the value of these variables in your settings.
+
+---
+
 ## Migrating from versions prior to v6.3
 
 <div class="primary callout">

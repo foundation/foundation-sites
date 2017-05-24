@@ -18,9 +18,17 @@ $offcanvas-vertical-size: 250px !default;
 /// @type Color
 $offcanvas-background: $light-gray !default;
 
-/// Box shadow for the off-canvas panel.
+/// Box shadow for the off-canvas overlap panel.
 /// @type Shadow
 $offcanvas-shadow: 0 0 10px rgba($black, 0.7) !default;
+
+/// Inner box shadow size for the off-canvas push panel.
+/// @type Number
+$offcanvas-inner-shadow-size: 20px !default;
+
+/// Inner box shadow color for the off-canvas push panel.
+/// @type Color
+$offcanvas-inner-shadow-color: rgba($black, 0.25) !default;
 
 /// Z-index of an off-canvas content overlay.
 /// @type Number
@@ -256,66 +264,23 @@ $maincontent-class: 'off-canvas-content' !default;
     }
   }
 
-  // If $offcanvas-shadow is set, add it as a pseudo-element.
+  // If $offcanvas-inner-shadow-size is set, add inner box-shadow.
   // This mimics the off-canvas panel having a lower z-index, without having to have one.
-  @if $offcanvas-shadow {
-    &.is-transition-push::after {
-      position: absolute;
-
+  @if $offcanvas-inner-shadow-size {
+    &.is-transition-push {
       @if $position == left {
-        top: 0;
-        right: 0;
-
-        height: 100%;
-        width: 1px;
+        @include inner-side-shadow(right, $offcanvas-inner-shadow-size, $offcanvas-inner-shadow-color);
       }
       @else if $position == right {
-        top: 0;
-        left: 0;
-
-        height: 100%;
-        width: 1px;
+        @include inner-side-shadow(left, $offcanvas-inner-shadow-size, $offcanvas-inner-shadow-color);
       }
       @else if $position == top {
-        bottom: 0;
-        left: 0;
-
-        height: 1px;
-        width: 100%;
+        @include inner-side-shadow(bottom, $offcanvas-inner-shadow-size, $offcanvas-inner-shadow-color);
       }
       @else if $position == bottom {
-        top: 0;
-        left: 0;
-
-        height: 1px;
-        width: 100%;
+        @include inner-side-shadow(top, $offcanvas-inner-shadow-size, $offcanvas-inner-shadow-color);
       }
-
-      box-shadow: $offcanvas-shadow;
-      content: " ";
-    }
-
-    // Use inner box-shadow for nested off-canvas element because ::after doesn't work if the element's height is greater than the viewport's height
-    // TODO: after cross-broswer testing, adapt this for EVERY push element no matter if nested or not
-    @at-root .#{$maincontent-class} &.is-transition-push {
-      @if $position == left {
-        @include inner-side-shadow(right);
-      }
-      @else if $position == right {
-        @include inner-side-shadow(left);
-      }
-      @else if $position == top {
-        @include inner-side-shadow(bottom);
-      }
-      @else if $position == bottom {
-        @include inner-side-shadow(top);
-      }
-
-      &::after {
-        width: 0;
-        box-shadow: none;
-      }
-    }
+    }    
   }
 
   // No transform on overlap transition

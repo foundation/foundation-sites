@@ -440,6 +440,8 @@ $offcanvas-size: 250px;
 $offcanvas-vertical-size: 250px;
 $offcanvas-background: $light-gray;
 $offcanvas-shadow: 0 0 10px rgba($black, 0.7);
+$offcanvas-inner-shadow-size: 20px;
+$offcanvas-inner-shadow-color: rgba($black, 0.25);
 $offcanvas-push-zindex: 1;
 $offcanvas-overlap-zindex: 10;
 $offcanvas-reveal-zindex: 1;
