@@ -151,7 +151,6 @@ class Dropdown extends Plugin {
     if(this._alignmentsExhausted(this.position)) {
       this.position = nextItem(this.position, POSITIONS);
       this.alignment = ALIGNMENTS[this.position][0];
-      console.log('alignments exhausted, repositioned to ', this.position, this.alignment);
     } else {
       this._realign();
     }
@@ -167,7 +166,6 @@ class Dropdown extends Plugin {
   _realign() {
     this._addTriedPosition(this.position, this.alignment)
     this.alignment = nextItem(this.alignment, ALIGNMENTS[this.position])
-    console.log('realigning to', this.position, this.alignment);
   }
 
   _addTriedPosition(position, alignment) {
