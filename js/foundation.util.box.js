@@ -5,6 +5,7 @@ import { rtl as Rtl } from "./foundation.util.core";
 
 var Box = {
   ImNotTouchingYou: ImNotTouchingYou,
+  OverlapArea: OverlapArea,
   GetDimensions: GetDimensions,
   GetOffsets: GetOffsets,
   GetExplicitOffsets: GetExplicitOffsets
@@ -21,36 +22,42 @@ var Box = {
  * @returns {Boolean} - true if collision free, false if a collision in any direction.
  */
 function ImNotTouchingYou(element, parent, lrOnly, tbOnly) {
-  var eleDims = GetDimensions(element),
-      top, bottom, left, right;
+  return OverlapArea(element, parent, lrOnly, tbOnly) === 0;
+};
 
+function OverlapArea(element, parent, lrOnly, tbOnly) {
+  var eleDims = GetDimensions(element),
+      topOver, bottomOver, leftOver, rightOver;
   if (parent) {
     var parDims = GetDimensions(parent);
 
-    bottom = (eleDims.offset.top + eleDims.height <= parDims.height + parDims.offset.top);
-    top    = (eleDims.offset.top >= parDims.offset.top);
-    left   = (eleDims.offset.left >= parDims.offset.left);
-    right  = (eleDims.offset.left + eleDims.width <= parDims.width + parDims.offset.left);
+    bottomOver = (parDims.height + parDims.offset.top) - (eleDims.offset.top + eleDims.height);
+    topOver    = eleDims.offset.top - parDims.offset.top;
+    leftOver   = eleDims.offset.left - parDims.offset.left;
+    rightOver  = (parDims.width + parDims.offset.left) - (eleDims.offset.left + eleDims.width);
   }
   else {
-    bottom = (eleDims.offset.top + eleDims.height <= eleDims.windowDims.height + eleDims.windowDims.offset.top);
-    top    = (eleDims.offset.top >= eleDims.windowDims.offset.top);
-    left   = (eleDims.offset.left >= eleDims.windowDims.offset.left);
-    right  = (eleDims.offset.left + eleDims.width <= eleDims.windowDims.width);
+    bottomOver = (eleDims.windowDims.height + eleDims.windowDims.offset.top) - (eleDims.offset.top + eleDims.height);
+    topOver    = eleDims.offset.top - eleDims.windowDims.offset.top;
+    leftOver   = eleDims.offset.left - eleDims.windowDims.offset.left;
+    rightOver  = eleDims.windowDims.width - (eleDims.offset.left + eleDims.width);
   }
 
-  var allDirs = [bottom, top, left, right];
+  bottomOver = Math.min(bottomOver, 0);
+  topOver    = Math.min(topOver, 0);
+  leftOver   = Math.min(leftOver, 0);
+  rightOver  = Math.min(rightOver, 0);
 
   if (lrOnly) {
-    return left === right === true;
+    return leftOver + rightOver;
   }
-
   if (tbOnly) {
-    return top === bottom === true;
+    return topOver + bottomOver;
   }
 
-  return allDirs.indexOf(false) === -1;
-};
+  // use sum of squares b/c we care about overlap area.
+  return Math.sqrt((topOver * topOver) + (bottomOver * bottomOver) + (leftOver * leftOver) + (rightOver * rightOver));
+}
 
 /**
  * Uses native methods to return an object of dimension values.

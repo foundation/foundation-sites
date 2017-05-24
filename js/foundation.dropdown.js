@@ -29,6 +29,15 @@ const ALIGNMENTS = {
   'bottom': HORIZONTAL_ALIGNMENTS
 }
 
+function nextItem(item, array) {
+  var currentIdx = array.indexOf(item);
+  if(currentIdx === array.length - 1) {
+    return array[0];
+  } else {
+    return array[currentIdx + 1];
+  }
+}
+
 class Dropdown extends Plugin {
   /**
    * Creates a new instance of a dropdown.
@@ -85,13 +94,6 @@ class Dropdown extends Plugin {
   }
 
   _setupPositionAndAlignment() {
-    if(this.options.position === 'left' || this.options.position === 'right') {
-      this.isHorizontallyPositioned = true;
-    }
-    if(this.options.position === 'top' || this.options.position === 'bottom') {
-      this.isVerticallyPositioned = true;
-    }
-
     this.position  = this.options.position === 'auto' ? this._getDefaultPosition() : this.options.position;
     this.alignment = this.options.alignment === 'auto' ? this._getDefaultAlignment() : this.options.alignment;
   }
@@ -146,6 +148,13 @@ class Dropdown extends Plugin {
    * @private
    */
   _reposition() {
+    if(this._alignmentsExhausted(this.position)) {
+      this.position = nextItem(this.position, POSITIONS);
+      this.alignment = ALIGNMENTS[this.position][0];
+      console.log('alignments exhausted, repositioned to ', this.position, this.alignment);
+    } else {
+      this._realign();
+    }
   }
 
 
@@ -157,13 +166,8 @@ class Dropdown extends Plugin {
    */
   _realign() {
     this._addTriedPosition(this.position, this.alignment)
-    var alignments = ALIGNMENTS[this.position]
-    var currentIdx = alignments.indexOf(this.alignment);
-    if(currentIdx === alignments.length - 1) {
-      this.alignment = alignments[0];
-    } else {
-      this.alignment = alignments[currentIdx + 1];
-    }
+    this.alignment = nextItem(this.alignment, ALIGNMENTS[this.position])
+    console.log('realigning to', this.position, this.alignment);
   }
 
   _addTriedPosition(position, alignment) {
@@ -172,10 +176,15 @@ class Dropdown extends Plugin {
   }
 
   _positionsExhausted() {
-    if(this.options.position === 'auto') {
-    } else {
-      return this.triedPositions[this.position] && this.triedPositions[this.position].length == ALIGNMENTS[this.position].length;
+    var isExhausted = true;
+    for(var i = 0; i < POSITIONS.length; i++) {
+      isExhausted = isExhausted && this._alignmentsExhausted(POSITIONS[i]);
     }
+    return isExhausted;
+  }
+
+  _alignmentsExhausted(position) {
+    return this.triedPositions[position] && this.triedPositions[position].length == ALIGNMENTS[position].length;
   }
 
   /**
@@ -193,15 +202,30 @@ class Dropdown extends Plugin {
     this.$element.offset(Box.GetExplicitOffsets(this.$element, this.$anchor, this.position, this.alignment, this.options.vOffset, this.options.hOffset));
 
     if(!this.options.allowOverlap) {
-      while(!Box.ImNotTouchingYou(this.$element, this.$parent, this.isVerticallyPositioned, this.isHorizontallyPositioned) && !this._positionsExhausted()){
-        if(this.options.position === 'auto') {
-          this._reposition();
-        } else {
-          console.log('realigning');
-          this._realign();
+      var overlaps = {};
+      var minOverlap = 100000000;
+      // default coordinates to how we start, in case we can't figure out better
+      var minCoordinates = {position: this.position, alignment: this.alignment};
+      while(!this._positionsExhausted()) {
+        let overlap = Box.OverlapArea(this.$element, this.$parent);
+        if(overlap === 0) {
+          return;
         }
-        this._setPosition();
+
+        if(overlap < minOverlap) {
+          minOverlap = overlap;
+          minCoordinates = {position: this.position, alignment: this.alignment};
+        }
+
+        this._reposition();
+
+        this.$element.offset(Box.GetExplicitOffsets(this.$element, this.$anchor, this.position, this.alignment, this.options.vOffset, this.options.hOffset));
       }
+      // If we get through the entire loop, there was no non-overlapping
+      // position available. Pick the version with least overlap.
+      this.position = minCoordinates.position;
+      this.alignment = minCoordinates.alignment;
+      this.$element.offset(Box.GetExplicitOffsets(this.$element, this.$anchor, this.position, this.alignment, this.options.vOffset, this.options.hOffset));
     }
   }
 
