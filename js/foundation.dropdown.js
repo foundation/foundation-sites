@@ -70,21 +70,6 @@ class Dropdown extends Positionable {
     this._events();
   }
 
-  /**
-   * Helper function to determine current orientation of dropdown pane.
-   * @function
-   * @returns {String} position - string value of a position class.
-   */
-  getPositionClass() {
-    var verticalPosition = this.$element[0].className.match(/(top|left|right|bottom)/g);
-        verticalPosition = verticalPosition ? verticalPosition[0] : '';
-    var horizontalPosition = /float-(\S+)/.exec(this.$anchor[0].className);
-        horizontalPosition = horizontalPosition ? horizontalPosition[1] : '';
-    var position = horizontalPosition ? horizontalPosition + ' ' + verticalPosition : verticalPosition;
-
-    return position;
-  }
-
   _getDefaultPosition() {
     // handle legacy classnames
     var position = this.$element[0].className.match(/(top|left|right|bottom)/g);
