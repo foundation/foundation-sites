@@ -18,27 +18,29 @@
   .grid {
     @include zf-grid;
   }
-  
+
   // Base cell styles
   .cell {
     @include zf-cell($gutter-output: false, $gutter-type: padding);
   }
 
-  // Auto width
-  @include -zf-each-breakpoint() {
-    > .#{$-zf-size}-auto {
-      @include zf-cell(auto, false, $gutter-type: padding);
+  .grid {
+    // Auto width
+    @include -zf-each-breakpoint() {
+      > .#{$-zf-size}-auto {
+        @include zf-cell(auto, false, $gutter-type: padding);
+      }
+    }
+
+    // Shrink
+    @include -zf-each-breakpoint() {
+      > .#{$-zf-size}-shrink {
+        @include zf-cell(shrink, false, $gutter-type: padding);
+      }
     }
   }
 
-  // Shrink
-  @include -zf-each-breakpoint() {
-    > .#{$-zf-size}-shrink {
-      @include zf-cell(shrink, false, $gutter-type: padding);
-    }
-  }
-
-  // Sizing classes
+    // Sizing classes
   @include -zf-each-breakpoint {
     @for $i from 1 through $grid-columns {
       // Sizing (percentage)
