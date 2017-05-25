@@ -59,6 +59,21 @@ foundation new --framework sites --template basic
 
 It's also possible to download the template files directly from GitHub. Run `npm install` and `bower install` first to set it up, then `npm start` to run it. [Download basic template](https://github.com/zurb/foundation-sites-template/archive/master.zip).
 
+### Compile Foundation Sass
+
+To compile Foundation's Sass, you can use the included build scripts.
+
+```
+# Run once to install all dependencies
+npm install
+
+# Watch files and compile automatically everytime a file changes
+npm start
+
+# Compile all source files and optimize for production
+npm run build
+```
+
 ---
 
 ## ZURB Template
@@ -127,3 +142,18 @@ The template creates a [BrowserSync](http://www.browsersync.io/) server, which i
 Under `src/styleguide` are two files to create a style guide for your project. The style guide is generated using Style Sherpa, a small plugin created by ZURB.
 
 Style Sherpa has a dedicated page here in the docs that explains its various features. **[Learn more about Style Sherpa.](style-sherpa.html)**
+
+### Compile Foundation Sass
+
+To compile Foundation's Sass, you can use the included build scripts.
+
+```
+# Run once to install all dependencies
+npm install
+
+# Watch files and compile automatically everytime a file changes
+npm start
+
+# Compile all source files and optimize for production
+npm run build
+```

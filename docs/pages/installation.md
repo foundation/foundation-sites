@@ -1,12 +1,14 @@
 ---
 title: Installation
-description: There are many ways to install Foundation from downloading the compiled CSS, automated Sass installs to popular package managers. Each one serves a different skill level or preferred workflow. If this is all new to you, don’t worry; The video below will give you an overview of each method and help you decide which is best for you.
+description: There are many ways to install Foundation from downloading the compiled CSS, automated Sass installs to popular package managers.
 video: '6KwsGcEHVTE'
 ---
 
 ## How to choose the right version for you?
 
-Depending on your skill level or how quick you want to get started, each of these different ways to get started might suit you better. Here’s a breakdown of the options you’ll see on this page:
+Each of these different ways to get started serves a different skill level or preferred workflow. If this is all new to you, don’t worry; The video above will give you an overview of each method and help you decide which is best for you.
+
+Here’s a breakdown of the options you’ll see on this page:
 
 <ul class="no-bullet" data-magellan data-bar-offset="90">
 
@@ -47,7 +49,7 @@ Our Starter template comes set up from the jump complete with:
 - A blank CSS file for custom styles
 - Viewport meta tag and other boilerplate for building your responsive site
 
-<a href="http://foundation.zurb.com/sites/download" class="large button">Go to Download Page</a>
+<a href="http://foundation.zurb.com/sites/download" class="large button">Go to Download Page →</a>
 <a href="#" class="button large clear">Learn more →</a>
 
 ---
@@ -112,7 +114,7 @@ This is the recommended way to create ready-to-go Foundation Sass projects. The 
 
 What is needed?
 
-- [Node.JS](https://nodejs.org/en/) (Version 0.12 - 6.10.3)
+- [Node.JS](https://nodejs.org/en/) (Version 4 - 6.10.3)
 - [Git](https://git-scm.com/downloads)
 - Bower (CLI will install for you)
 - Gulp (CLI will install for you)
@@ -121,6 +123,9 @@ The CLI and the ZURB Stack are both Node.JS based and required to run these mode
 
 As mentioned, Foundation CLI uses Gulp and Bower under the hood. In case you’re not familiar with Gulp and Bower, Gulp is a JavaScript task runner that will help you automate painful or time-consuming tasks in your development workflow. This includes SCSS compilation, minification, concatenation, image compression and other useful tasks.
 
+**Step 1** - Install Node: To install the CLI, you must first download and install [node.js](https://nodejs.org/en/) (which includes npm). npm stands for [node packaged modules](https://www.npmjs.com/) and is the package manager for JavaScript and the world’s largest software registry.
+
+**Step 2** - Then, from the command line (Terminal for Mac):
 
 ```bash
 npm install --global foundation-cli
@@ -134,13 +139,26 @@ npm install --global foundation-cli
 sudo npm install --global foundation-cli
 ```
 
-Once you've installed the CLI, use the `new` command to start making a new project:
+**Step 3** - Once you've installed the CLI, use the `new` command to start making a new project:
 
 ```bash
 foundation new
 ```
 
+You have a choice to build the Advanced template (ZURB Stack) or Basic template using the CLI.
+
+Choose your project type and name and the CLI will go to work for you building your Sass project. This will download all the packages needed to run the project. It could take a few minutes depending on your internet connection.
+
+<p><img src="{{root}}assets/img/cli-start.png"></p>
+
 That's it! The CLI will now build you a project that is ready to go!
+
+You will see a message like this:
+<p><img src="{{root}}assets/img/cli-complete.png"></p>
+
+**Step 4** - Now you can `cd` (change directory) into your new project and run `npm start` to start the build system and begin creating your next project.
+
+What's next? <a href="starter-projects.html">Learn more about our Sass starter templates →</a>
 
 --
 
@@ -228,6 +246,10 @@ Finally, run `npm start` to run the Sass compiler. It will re-run every time you
 
 Foundation is available on <a href="https://www.npmjs.com/" target="_blank">NPM</a>, <a href="https://bower.io/" target="_blank">Bower</a>, <a href="https://atmospherejs.com/" target="_blank">Meteor</a>, <a href="https://rubygems.org/" target="_blank">RubyGems</a>, <a href="https://getcomposer.org/" target="_blank">Composer</a> and <a href="https://www.nuget.org/" target="_blank">NuGet</a>. The package includes all of the source Sass and JavaScript files, as well as compiled CSS and JavaScript, in uncompressed and compressed flavors.
 
+Install with a package manager gets you the compiled CSS and JS files as well as the source JavaScript, and Sass source files. If you're using Gulp, Grunt, or another task runner, you'll use this package to set up your project. You'll need to compile the Sass yourself.
+
+There are two ways to do this. You can either add your dependency (the package) to your bower.json (Bower) or package.json (npm) file, or you can use the command line. To make things simple, you can use the command line:
+
 <ul class="icon-list menu vertical">
   <li><img src="https://eg2.gallerycdn.vsassets.io/extensions/eg2/vscode-npm-script/0.1.9/1491853545308/Microsoft.VisualStudio.Services.Icons.Default" class="" height="" width="" alt=""><strong>npm:</strong> <code>npm install foundation-sites</code></li>
   <li><img src="https://bower.io/img/bower-logo.png" class="" height="" width="" alt=""><strong>Bower:</strong> <code>bower install foundation-sites</code></li>
@@ -248,6 +270,12 @@ Here's what comes in the package.
   - `js/`: Concatenated JavaScript files. Includes minified and unminified files.
     - `plugins/`: Standalone JavaScript plugins.
 
+Once installed with one of the above commands, Foundation has been downloaded via git and installed into the `assets/` directory.
+
+If you are using Foundation Sass, you'll `@import` Foundation from the `scss/` folder. You will also link to the `js/` folder where all the uncompressed JS files live.
+
+If you are using the compiled CSS and JS then you'll use the `css/` and `js/` files in the `dist/` folder.
+
 ---
 
 ## Yeoman Generator
@@ -258,6 +286,16 @@ A generator is basically a plugin that can be run with the `yo` command to scaff
 - [Foundation 6 web app generator](https://github.com/bassjobsen/generator-foundation6/)
 
 <a href="starter-projects.html#basic-template">Search Foundation Yeoman Generators →</a>
+
+---
+
+## Download The Sass Files
+
+If you want to get the Sass files and use your own build system or workflow you can dowload the Sass source files and have it your way. This method requires a Sass compiler and some setup.
+
+*Note: Foundation uses <a href="https://autoprefixer.github.io/" target="_blank">Autoprefixer</a> to deal with <a href="https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix" target="_blank">CSS vendor prefixes</a>. If you're compiling Foundation from its Sass source and not using our Gulpfile, you'll need to integrate Autoprefixer into your build process yourself.*
+
+<a href="https://github.com/zurb/foundation-sites/archive/v6.3.1.zip" class="large button">Download Sass Source</a>
 
 ---
 

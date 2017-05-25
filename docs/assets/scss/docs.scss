@@ -433,7 +433,8 @@ a[data-open-video] {
   }
 }
 
-.button.clear {
+// .clear class is added in 6.4 so this css can be removed
+.docs-component-inner .button.clear {
   border: 0;
   background: transparent;
   color: $primary-color;
