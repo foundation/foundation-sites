@@ -341,7 +341,7 @@ Dropdown.defaults = {
    */
   hOffset: 0,
   /**
-   * Class applied to adjust open position. JS will test and fill this in.
+   * DEPRECATED: Class applied to adjust open position.
    * @option
    * @type {string}
    * @default ''
